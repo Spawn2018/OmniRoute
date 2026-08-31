@@ -3,7 +3,7 @@
 **Plan Cursor (pełny):** `.cursor/plans/omniroute-realizacja.plan.md`  
 **ADR:** [0001 Cursor factory](adr/0001-cursor-software-factory-weryfikacja.md) · [0002 Frontend 2026](adr/0002-frontend-platform-2026.md)  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
-**Stan:** B + C.1–C.5 + 0.11–0.14 leftover + D minimal **DONE** · następny leftover **OAuth/OIDC** (hasła)
+**Stan:** B + C.1–C.5 + 0.11–0.15 leftover + D minimal **DONE** · następny **D0** (uczciwość OS; OAuth = Auth0 I1 po Wave A)
 
 ```mermaid
 flowchart LR
@@ -13,7 +13,8 @@ flowchart LR
   doneXor --> doneJwt[0.12_JWT]
   doneJwt --> doneSplit[0.13_split_HITL]
   doneSplit --> doneHttp[0.14_HTTP_happy]
-  doneHttp --> next[OAuth_OIDC]
+  doneHttp --> donePwd[0.15_passwords]
+  donePwd --> next[D0_OS]
   doneB --> doneD[D_minimal_DONE]
 ```
 
@@ -32,7 +33,7 @@ flowchart LR
 | B.5 Frontend Shell 0.5 | ✅ Vite, Compiler, TanStack, shadcn, ⌘K, lazy PostHog |
 | B.6 DataTableShell 0.6 | ✅ ColumnEditor, table_view RLS, vitest |
 | B.7 Branch protection | ✅ procedura (Free private 403) |
-| C.1–C.5 / 0.7–0.14 | ✅ HITL … JWT, split HITL, HTTP happy-path unit |
+| C.1–C.5 / 0.7–0.15 | ✅ HITL … JWT, HTTP extract unit, hasła + refresh |
 | D minimal | ✅ agentlint, pr-nudge, rytm refaktor/retro |
 
 ---
@@ -67,7 +68,8 @@ flowchart LR
 - Referencja layoutu: satnaing/shadcn-admin (**wzorce, nie fork**)
 - **Spłacone:** openapi-ts (`just api-types`, `frontend/src/api/`); PostHog lazy (`dynamic import("posthog-js")`) — nie w main chunk
 - **Spłacone (0.12):** hello JWT (`Authorization: Bearer`); tożsamość z claims, nie z headerów
-- **Dług świadomy (poza zakresem):** OAuth/OIDC, hasła, rotacja refresh
+- **Spłacone (0.15):** hasła argon2id + rotacja refresh; UUID-login wycięty
+- **Dług świadomy (poza zakresem teraz):** Auth0 BFF I1 po Wave A
 
 ### B.6 DataTableShell — **DONE**
 - ColumnEditor: checkbox + DnD (@dnd-kit / TanStack columnOrder)
@@ -112,13 +114,14 @@ flowchart LR
 
 ## Rejestr leftoverów (audyt + canvas 2026-08-31)
 
-Canvas `post-audit-review` to **przegląd** 0.5–0.9, nie lista do zaimplementowania w syncu docs. Sync spłacił P1 nagłówek tego pliku i `just test` bez `|| true` na unitach. Poniżej — kolejność po 0.14, żeby nie zgubić.
+Canvas `post-audit-review` to **przegląd** 0.5–0.9, nie lista do zaimplementowania w syncu docs. Sync spłacił P1 nagłówek tego pliku i `just test` bez `|| true` na unitach. Poniżej — kolejność po 0.15, żeby nie zgubić.
 
 Pełna lista z „dlaczego”: [docs/ops/docs-debt.md](ops/docs-debt.md)
 
 | Kolejność | Co | Nie mylić z |
 |---|---|---|
-| następny | OAuth/OIDC / hasła (nie hello JWT) | 0.12 = HS256 Bearer |
+| następny | D0 uczciwość OS → 0.15 T0 `document_base64` max_length | nie OAuth teraz |
+| 0.15 DONE | hasła argon2id + rotacja refresh | UUID-login wycięty; RLS isolation = CI |
 | C.1–C.5 / 0.7–0.14 DONE | HITL … HTTP happy-path unit | nie live PG, nie IdP |
 | 0.14 DONE | HTTP happy-path extract/accept/reject | unit + stub serwisu; nie integration PG |
 | 0.13 DONE | Split-screen HITL (podgląd \| recenzja) | tekst źródła, nie PDF canvas |

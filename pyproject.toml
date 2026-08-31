@@ -13,6 +13,7 @@ dependencies = [
     "openfga-sdk>=0.9",
     "pendulum>=3.0",
     "psycopg2-binary>=2.9",
+    "argon2-cffi>=23.1",
     "pyjwt>=2.9",
     "pydantic-settings>=2.6",
     "sqlalchemy[asyncio]>=2.0",
@@ -20,6 +21,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
+    "hypothesis>=6.122",
     "httpx>=0.28",
     "import-linter>=2.1",
     "mypy>=1.14",
@@ -66,7 +68,7 @@ mypy_path = "backend"
 plugins = []
 
 [[tool.mypy.overrides]]
-module = ["alembic.*", "openfga_sdk", "openfga_sdk.*", "instructor", "instructor.*", "openai", "openai.*", "llm_guard", "llm_guard.*", "docling", "docling.*", "langfuse", "langfuse.*"]
+module = ["alembic.*", "openfga_sdk", "openfga_sdk.*", "instructor", "instructor.*", "openai", "openai.*", "llm_guard", "llm_guard.*", "docling", "docling.*", "langfuse", "langfuse.*", "argon2", "argon2.*"]
 ignore_missing_imports = true
 
 [[tool.mypy.overrides]]

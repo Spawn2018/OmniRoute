@@ -4,7 +4,7 @@ import {
   healthHealthGet,
   listUsersApiV1TenancyUsersGet,
 } from "@/api/sdk.gen"
-import type { AppUserResponse } from "@/api/types.gen"
+import type { AppUserResponse, SessionTokenRequest } from "@/api/types.gen"
 import { getSessionToken } from "@/lib/tenant"
 
 client.setConfig({
@@ -31,14 +31,14 @@ export function httpErrorStatus(response: Response | undefined): number {
 }
 
 export async function issueSessionToken(input: {
-  organizationId: string
-  userId: string
+  email: string
+  password: string
 }): Promise<string> {
   const { data, error, response } = await createSessionTokenApiV1SessionTokenPost({
     body: {
-      organization_id: input.organizationId,
-      user_id: input.userId,
-    },
+      email: input.email,
+      password: input.password,
+    } as SessionTokenRequest,
   })
   if (error || !data?.access_token) {
     throw new ApiError("Nie udało się uzyskać tokenu sesji", httpErrorStatus(response))

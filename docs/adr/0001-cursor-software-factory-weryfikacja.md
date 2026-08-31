@@ -151,7 +151,7 @@ Nazwy archiwalne (PLAN-GLOWNY V.3) nie są bytami w repo.
 
 - **Pozytywne:** Powtarzalna jakość, audytowalność, zgodność z badaniami, kod bliżej „ludzkiego” przez bramki nie przez persony.
 - **Negatywne:** Narzut ~15 min/plaster (delta-spec); kuracja `_knowledge/` i kompilacja spec wymaga czasu operatora.
-- **Następne kroki (produkt):** OAuth/OIDC / hasła (0.12 JWT = hello HS256 bez hasła).
+- **Następne kroki (produkt):** D0 (uczciwość OS) → 0.15 T0. Auth0 I1 po Wave A.
   0.3 jest golden exemplar (zarchiwizowany). `agentlint` już w `just gate`.
 
 ---

@@ -1,7 +1,7 @@
-"""Seed lokalny bez Dockera: organization + app_user + OpenFGA member.
+"""Seed lokalny: organization + app_user z hasłem + OpenFGA member.
 
 Wymaga: Postgres (migracje), OpenFGA na OPENFGA_API_URL (domyślnie :8080).
-Wypisuje ID do wklejenia w UI /session (hello JWT) oraz wartości do .env.
+Wypisuje email/hasło do UI /session oraz wartości do .env.
 """
 
 from __future__ import annotations
@@ -18,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "backend"))
 
 from app.core.database import bind_tenant  # noqa: E402
+from app.core.password_hash import hash_password  # noqa: E402
 from app.integrations.openfga.client import (  # noqa: E402
     OpenFgaAuthz,
     bootstrap_store,
@@ -57,6 +58,7 @@ async def main() -> None:
                 organization_id=org_id,
                 email="dev@local.test",
                 display_name="Dev Local",
+                password_hash=hash_password("correct-horse-battery"),
                 created_by=user_id,
             ),
         )
@@ -80,9 +82,9 @@ async def main() -> None:
         await client.close()
 
     print()
-    print("SEED OK — wklej w UI /session (hello JWT):")
-    print(f"  organization_id = {org_id}")
-    print(f"  user_id         = {user_id}")
+    print("SEED OK — logowanie /session:")
+    print("  email    = dev@local.test")
+    print("  password = correct-horse-battery")
     print()
     print("Ustaw w środowisku API (PowerShell):")
     print('  $env:OPENFGA_API_URL="http://127.0.0.1:8080"')

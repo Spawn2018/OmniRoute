@@ -31,4 +31,5 @@
 | 2026-08-31 | 0.13 | M-20 | split-screen HITL: podgląd input_text \| recenzja kandydatów |
 | 2026-08-31 | 0.14 | M-20 | HTTP happy-path extract/list/accept/reject (JWT, stub serwisu) |
 | 2026-08-31 | docs/OS | — | kanon `/testy` `/bramka` zamiast person z archiwum |
-| — | leftover | M-01 | **Następny:** OAuth/OIDC / hasła |
+| 2026-08-31 | 0.15 | M-01 | hasła argon2id + rotacja refresh; UUID-login wycięty |
+| — | leftover | OS | **Następny:** D0 (uczciwość OS) → 0.15 T0 `document_base64` max_length |

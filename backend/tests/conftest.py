@@ -12,6 +12,7 @@ from app.models.app_user import AppUser
 from app.models.base import Base
 from app.models.extraction_draft import ExtractionDraft  # noqa: F401 — rejestr metadanych RLS
 from app.models.organization import Organization
+from app.models.refresh_token import RefreshToken  # noqa: F401 — rejestr metadanych RLS
 from app.models.table_view import TableView  # noqa: F401 — rejestr metadanych RLS
 
 _TEST_JWT_SECRET = "ci-unit-test-jwt-secret-32bytes-min"
@@ -54,6 +55,16 @@ async def _apply_rls_policies(conn) -> None:
             """
         ),
     )
+    await conn.execute(text("DROP POLICY IF EXISTS app_user_login_email ON app_user"))
+    await conn.execute(
+        text(
+            """
+            CREATE POLICY app_user_login_email ON app_user
+            FOR SELECT
+            USING (email = NULLIF(current_setting('app.login_email', true), ''))
+            """
+        ),
+    )
     await conn.execute(text("ALTER TABLE table_view ENABLE ROW LEVEL SECURITY"))
     await conn.execute(text("ALTER TABLE table_view FORCE ROW LEVEL SECURITY"))
     await conn.execute(text("DROP POLICY IF EXISTS table_view_tenant_isolation ON table_view"))
@@ -75,6 +86,29 @@ async def _apply_rls_policies(conn) -> None:
             """
             CREATE POLICY extraction_draft_tenant_isolation ON extraction_draft
             USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
+            """
+        ),
+    )
+    await conn.execute(text("ALTER TABLE refresh_token ENABLE ROW LEVEL SECURITY"))
+    await conn.execute(text("ALTER TABLE refresh_token FORCE ROW LEVEL SECURITY"))
+    await conn.execute(
+        text("DROP POLICY IF EXISTS refresh_token_tenant_isolation ON refresh_token")
+    )
+    await conn.execute(
+        text(
+            """
+            CREATE POLICY refresh_token_tenant_isolation ON refresh_token
+            USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
+            """
+        ),
+    )
+    await conn.execute(text("DROP POLICY IF EXISTS refresh_token_by_hash ON refresh_token"))
+    await conn.execute(
+        text(
+            """
+            CREATE POLICY refresh_token_by_hash ON refresh_token
+            FOR SELECT
+            USING (token_hash = NULLIF(current_setting('app.refresh_hash', true), ''))
             """
         ),
     )

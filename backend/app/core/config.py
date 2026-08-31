@@ -19,6 +19,7 @@ class Settings(BaseSettings):
     extraction_parser: str = "stub"
     jwt_secret: str = ""
     jwt_expire_minutes: int = 60
+    jwt_refresh_expire_days: int = 14
 
 
 settings = Settings()

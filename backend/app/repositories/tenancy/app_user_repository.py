@@ -16,3 +16,10 @@ class AppUserRepository:
 
     async def get_by_id(self, user_id: UUID) -> AppUser | None:
         return await self._session.get(AppUser, user_id)
+
+    async def get_by_email(self, email: str) -> AppUser | None:
+        result = await self._session.scalars(select(AppUser).where(AppUser.email == email))
+        rows = list(result.all())
+        if len(rows) != 1:
+            return None
+        return rows[0]

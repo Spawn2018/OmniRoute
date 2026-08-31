@@ -10,6 +10,8 @@
 | odcinek | shipment_leg | operacyjne |
 | tenant | organization | organization_id wszędzie |
 | token sesji | session token | JWT HS256; claims `sub` + `org` |
+| token odświeżający | refresh_token | rotacja; RLS; nie access JWT |
+| skrót hasła | password_hash | argon2id; nigdy plaintext w API |
 | pochodzenie | source_ref | obowiązkowe |
 | szkic ekstrakcji | extraction_draft | HITL przed zapisem domeny |
 | region nierozpoznany | unparsed_region | zawsze w payloadzie ekstrakcji |

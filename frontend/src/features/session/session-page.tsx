@@ -17,21 +17,21 @@ export function SessionPage() {
 
   const form = useForm({
     defaultValues: {
-      organizationId: initial.organizationId,
-      userId: initial.userId,
+      email: "",
+      password: "",
     },
     onSubmit: async ({ value }) => {
       setError(null)
       try {
         const token = await issueSessionToken({
-          organizationId: value.organizationId.trim(),
-          userId: value.userId.trim(),
+          email: value.email.trim(),
+          password: value.password,
         })
         setSessionToken(token)
         setSaved(true)
       } catch {
         setSaved(false)
-        setError("Nie udało się uzyskać tokenu sesji. Sprawdź ID z seeda.")
+        setError("Nie udało się zalogować. Sprawdź email i hasło.")
       }
     },
   })
@@ -39,9 +39,10 @@ export function SessionPage() {
   return (
     <div className="max-w-lg space-y-3">
       <div>
-        <h2 className="text-base font-semibold">Sesja deweloperska</h2>
+        <h2 className="text-base font-semibold">Sesja</h2>
         <p className="text-xs text-muted-foreground">
-          Hello JWT: token z claims org/sub. Headery X-Organization-Id nie ustalają tenanta.
+          Email i hasło. Token JWT z claims org/sub. Headery X-Organization-Id nie ustalają
+          tenanta.
         </p>
       </div>
       <form
@@ -52,11 +53,13 @@ export function SessionPage() {
           void form.handleSubmit()
         }}
       >
-        <form.Field name="organizationId">
+        <form.Field name="email">
           {(field) => (
             <label className="block space-y-1">
-              <span className="text-xs text-muted-foreground">organization_id</span>
+              <span className="text-xs text-muted-foreground">email</span>
               <Input
+                type="email"
+                autoComplete="username"
                 value={field.state.value}
                 onBlur={field.handleBlur}
                 onChange={(e) => field.handleChange(e.target.value)}
@@ -64,11 +67,13 @@ export function SessionPage() {
             </label>
           )}
         </form.Field>
-        <form.Field name="userId">
+        <form.Field name="password">
           {(field) => (
             <label className="block space-y-1">
-              <span className="text-xs text-muted-foreground">user_id</span>
+              <span className="text-xs text-muted-foreground">hasło</span>
               <Input
+                type="password"
+                autoComplete="current-password"
                 value={field.state.value}
                 onBlur={field.handleBlur}
                 onChange={(e) => field.handleChange(e.target.value)}
@@ -77,7 +82,7 @@ export function SessionPage() {
           )}
         </form.Field>
         <div className="flex gap-2">
-          <Button type="submit">Pobierz token</Button>
+          <Button type="submit">Zaloguj</Button>
           <Button
             type="button"
             variant="outline"

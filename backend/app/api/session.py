@@ -1,11 +1,11 @@
 from uuid import UUID
 
-from fastapi import APIRouter, Depends
-from pydantic import BaseModel
+from fastapi import APIRouter, Depends, status
+from pydantic import BaseModel, EmailStr, Field
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import get_current_identity
-from app.core.database import bind_tenant, get_session
+from app.core.database import get_session
 from app.core.session_token import SessionIdentity
 from app.services.tenancy.session_service import SessionService
 
@@ -13,12 +13,17 @@ router = APIRouter(prefix="/session", tags=["session"])
 
 
 class SessionTokenRequest(BaseModel):
-    organization_id: UUID
-    user_id: UUID
+    email: EmailStr
+    password: str = Field(min_length=1, max_length=72)
+
+
+class SessionRefreshRequest(BaseModel):
+    refresh_token: str = Field(min_length=1, max_length=512)
 
 
 class SessionTokenResponse(BaseModel):
     access_token: str
+    refresh_token: str
     token_type: str = "bearer"
 
 
@@ -27,17 +32,31 @@ class SessionMeResponse(BaseModel):
     organization_id: UUID
 
 
-@router.post("/token", response_model=SessionTokenResponse)
+@router.post("/token", response_model=SessionTokenResponse, status_code=status.HTTP_201_CREATED)
 async def create_session_token(
     body: SessionTokenRequest,
     session: AsyncSession = Depends(get_session),
 ) -> SessionTokenResponse:
-    await bind_tenant(session, body.organization_id)
-    token = await SessionService(session).issue_for_app_user(
-        organization_id=body.organization_id,
-        user_id=body.user_id,
+    issued = await SessionService(session).issue_for_credentials(
+        email=str(body.email),
+        password=body.password,
     )
-    return SessionTokenResponse(access_token=token)
+    return SessionTokenResponse(
+        access_token=issued.access_token,
+        refresh_token=issued.refresh_token,
+    )
+
+
+@router.post("/refresh", response_model=SessionTokenResponse)
+async def refresh_session(
+    body: SessionRefreshRequest,
+    session: AsyncSession = Depends(get_session),
+) -> SessionTokenResponse:
+    issued = await SessionService(session).rotate_refresh(body.refresh_token)
+    return SessionTokenResponse(
+        access_token=issued.access_token,
+        refresh_token=issued.refresh_token,
+    )
 
 
 @router.get("/me", response_model=SessionMeResponse)

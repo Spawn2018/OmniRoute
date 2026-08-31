@@ -1,6 +1,6 @@
 # OmniRoute — architektura
 
-**Status:** Faza C (B + C.1–C.5 + 0.11–0.14 leftover + D minimal DONE; następny leftover: OAuth/OIDC / hasła)  
+**Status:** Faza C (B + C.1–C.5 + 0.11–0.15 leftover + D minimal DONE; następny: D0 OS, nie OAuth)  
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002-frontend-platform-2026](adr/0002-frontend-platform-2026.md)
 

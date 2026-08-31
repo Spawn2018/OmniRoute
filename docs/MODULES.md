@@ -9,7 +9,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 
 | ID | Moduł | Plaster | Status |
 |---|---|---|---|
-| M-01 | Wielodostępność / tenancy | 0.3 RLS + 0.4 OpenFGA + 0.12 JWT | **ukończony (fundament)** · następny leftover: OAuth/OIDC / hasła |
+| M-01 | Wielodostępność / tenancy | 0.3 RLS + 0.4 OpenFGA + 0.12 JWT + 0.15 hasła | **ukończony (fundament)** · Auth0 I1 po Wave A |
 | M-20 | Ekstrakcja dokumentów | 0.7–0.14 HITL/instructor/docling/langfuse/XOR/split/HTTP unit | **ukończony (fundament)** (HTTP = unit stub, nie live PG) |
 | M-02 | Outbox / idempotencja | nie 0.4 | planowany |
 | M-03 | Konfiguracja jako dane | nie 0.5 | planowany |

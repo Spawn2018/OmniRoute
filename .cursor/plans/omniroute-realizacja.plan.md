@@ -39,7 +39,10 @@ todos:
     content: "0.14 HTTP happy-path extract/accept/reject (unit stub)"
     status: completed
   - id: leftover-after-014
-    content: "Następny: OAuth/OIDC/hasła; echo recipes; branch protection UI"
+    content: "0.15 hasła argon2id + rotacja refresh"
+    status: completed
+  - id: leftover-after-015
+    content: "Następny: D0 OS → 0.15 T0 document_base64 max_length; Auth0 I1 po Wave A"
     status: pending
   - id: leftover-os-canon
     content: "OS słownik: /testy /bramka zamiast person z archiwum"
@@ -105,7 +108,7 @@ isProject: false
 - **Metafora:** nie „30 agentów na stand-upie” — **kontrolowana fabryka** (Gemini) / **AI software factory** (ChatGPT).
 - **Kształt produktu:** modularny monolit OmniRoute (morze → droga → lot); wejście wąskie = stawki/wyceny.
 - **Metodyka:** WIP=1 + delta-spec + XP. Bez Scrum/person CEO–CFO.
-- **Deliverable:** Fazy **0+A+B + C.1–C.5 + 0.11–0.14 leftover + D minimal** ukończone (31.08.2026). Następne: OAuth/OIDC / hasła.
+- **Deliverable:** Fazy **0+A+B + C.1–C.5 + 0.11–0.15 leftover + D minimal** ukończone (31.08.2026). Następne: D0 → 0.15 T0.
 
 ---
 
@@ -684,7 +687,7 @@ AGENTS.md (v2), GROUNDING.md, rules (+ui-design-system), skills (+module-factory
 
 ### Faza C — Platforma AI/docs — **C.1–C.5 DONE**
 
-HITL + instructor + docling A/B + langfuse/promptfoo echo + 0.11–0.14 leftover w kodzie. **Następny leftover: OAuth/OIDC / hasła** (0.12 = hello JWT).
+HITL + instructor + docling A/B + langfuse/promptfoo echo + 0.11–0.15 leftover w kodzie. **Następny leftover: D0 → 0.15 T0.** Auth0 I1 po Wave A.
 
 ### Faza D — Operacyjny rytm — **DONE (minimal)**
 
@@ -715,15 +718,15 @@ agentlint w `just gate`; `pr-nudge.yml`; weekly-refactor + friday-retrospective.
 
 ## Blokada realizacji — **zdjęta** (stan 2026-08-31 wieczór, po docs/OS sync)
 
-**Audyt planu = aktualny:** Fazy 0+A+B + C.1–C.5 + 0.11–0.14 leftover + D minimal w kodzie; gate pełny (nie agent-refs only).
+**Audyt planu = aktualny:** Fazy 0+A+B + C.1–C.5 + 0.11–0.15 leftover + D minimal w kodzie; gate pełny (nie agent-refs only).
 
 **Otwarte (kolejność pracy, nie blokada planu):**
 
-1. OAuth/OIDC, hasła, rotacja refresh (0.12 = hello JWT bez hasła)
+1. D0 → 0.15 T0 `document_base64` max_length (PROGRAM-12M Wave A)
 2. Branch protection w UI GitHub — po Pro/Team; do wtedy `docs/ops/branch-protection.md`
 3. Echo recipes (`just perf` / k6 / vulture / pip-audit) — dopiero gdy nie `echo`
 4. `npx promptfoo eval` / 30 cenników / żywy LLM / llm-guard ML / presidio / langfuse cloud
-5. HTTP extract vs live Postgres (0.14 = unit + stub serwisu)
+5. HTTP extract vs live Postgres (0.14 = unit + stub serwisu); Auth0 I1 po Wave A
 
 Canvas `post-audit-review` = przegląd, nie lista do kodu. Rejestr: `docs/ops/docs-debt.md` + `docs/PLAN-REALIZACJA.md` § leftoverów. Załączony plan software-house **nietknięty**.
 

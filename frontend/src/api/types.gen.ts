@@ -109,17 +109,27 @@ export type SessionMeResponse = {
 };
 
 /**
+ * SessionRefreshRequest
+ */
+export type SessionRefreshRequest = {
+    /**
+     * Refresh Token
+     */
+    refresh_token: string;
+};
+
+/**
  * SessionTokenRequest
  */
 export type SessionTokenRequest = {
     /**
-     * Organization Id
+     * Email
      */
-    organization_id: string;
+    email: string;
     /**
-     * User Id
+     * Password
      */
-    user_id: string;
+    password: string;
 };
 
 /**
@@ -130,6 +140,10 @@ export type SessionTokenResponse = {
      * Access Token
      */
     access_token: string;
+    /**
+     * Refresh Token
+     */
+    refresh_token: string;
     /**
      * Token Type
      */
@@ -274,10 +288,35 @@ export type CreateSessionTokenApiV1SessionTokenPostResponses = {
     /**
      * Successful Response
      */
-    200: SessionTokenResponse;
+    201: SessionTokenResponse;
 };
 
 export type CreateSessionTokenApiV1SessionTokenPostResponse = CreateSessionTokenApiV1SessionTokenPostResponses[keyof CreateSessionTokenApiV1SessionTokenPostResponses];
+
+export type RefreshSessionApiV1SessionRefreshPostData = {
+    body: SessionRefreshRequest;
+    path?: never;
+    query?: never;
+    url: '/api/v1/session/refresh';
+};
+
+export type RefreshSessionApiV1SessionRefreshPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type RefreshSessionApiV1SessionRefreshPostError = RefreshSessionApiV1SessionRefreshPostErrors[keyof RefreshSessionApiV1SessionRefreshPostErrors];
+
+export type RefreshSessionApiV1SessionRefreshPostResponses = {
+    /**
+     * Successful Response
+     */
+    200: SessionTokenResponse;
+};
+
+export type RefreshSessionApiV1SessionRefreshPostResponse = RefreshSessionApiV1SessionRefreshPostResponses[keyof RefreshSessionApiV1SessionRefreshPostResponses];
 
 export type ReadSessionApiV1SessionMeGetData = {
     body?: never;

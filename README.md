@@ -36,6 +36,6 @@ Seed: `scripts/dev_seed_local.py`.
 
 ## Stan faz
 
-- **0.5–0.14 + B.7:** done (HITL, JWT hello, split-screen recenzji, HTTP extract unit/stub, branch protection = procedura Free/403)
-- **Następny:** OAuth/OIDC / hasła (0.12 JWT = hello HS256 bez hasła)
+- **0.5–0.15 + B.7:** done (HITL, JWT, hasła+refresh, HTTP extract unit/stub)
+- **Następny:** D0 (uczciwość OS) → 0.15 T0 `document_base64` max_length
 - Szczegóły: `docs/PLAN-REALIZACJA.md` · dług poza sync: `docs/ops/docs-debt.md`

@@ -1,6 +1,6 @@
 # M-20 — Ekstrakcja dokumentów (HITL)
 
-**Status:** 0.7–0.14 DONE · następny leftover: OAuth/OIDC / hasła (M-01)  
+**Status:** 0.7–0.14 DONE · następny leftover: D0 → 0.15 T0 (nie OAuth)  
 **Delty:** `docs/deltas/archived/0.7-ai-extract-hitl.md`, `0.8-instructor-llm-guard.md`, `0.9-docling-ab.md`, `0.10-langfuse-promptfoo.md`, `0.11-hitl-xor-vitest.md`, `0.12-jwt-session.md`, `0.13-hitl-split.md`, `0.14-http-happy-path.md`  
 **GROUNDING:** HC-03 (`source_ref`, `unparsed_regions`), HC-04 (zero zapisu autonomicznego)
 
@@ -77,8 +77,8 @@ CI nie odpala transformerów llm-guard ani OpenAI.
 
 ## Następny leftover
 
-OAuth/OIDC / hasła (M-01). 0.12 JWT = hello HS256 bez hasła.
-Presidio i żywy llm-guard = później.
+D0 (uczciwość OS) → 0.15 T0 `document_base64` max_length.
+Auth0 I1 po Wave A. Presidio i żywy llm-guard = później.
 Nie startuj kolejnego plastra przy niepushniętym WIP.
 
 ### Poza 0.14 (zostaje)

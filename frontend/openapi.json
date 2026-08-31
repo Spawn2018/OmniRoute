@@ -23,6 +23,47 @@
           "required": true
         },
         "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionTokenResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/session/refresh": {
+      "post": {
+        "tags": [
+          "session"
+        ],
+        "summary": "Refresh Session",
+        "operationId": "refresh_session_api_v1_session_refresh_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionRefreshRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
           "200": {
             "description": "Successful Response",
             "content": {
@@ -691,23 +732,39 @@
         ],
         "title": "SessionMeResponse"
       },
-      "SessionTokenRequest": {
+      "SessionRefreshRequest": {
         "properties": {
-          "organization_id": {
+          "refresh_token": {
             "type": "string",
-            "format": "uuid",
-            "title": "Organization Id"
-          },
-          "user_id": {
-            "type": "string",
-            "format": "uuid",
-            "title": "User Id"
+            "maxLength": 512,
+            "minLength": 1,
+            "title": "Refresh Token"
           }
         },
         "type": "object",
         "required": [
-          "organization_id",
-          "user_id"
+          "refresh_token"
+        ],
+        "title": "SessionRefreshRequest"
+      },
+      "SessionTokenRequest": {
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "title": "Email"
+          },
+          "password": {
+            "type": "string",
+            "maxLength": 72,
+            "minLength": 1,
+            "title": "Password"
+          }
+        },
+        "type": "object",
+        "required": [
+          "email",
+          "password"
         ],
         "title": "SessionTokenRequest"
       },
@@ -717,6 +774,10 @@
             "type": "string",
             "title": "Access Token"
           },
+          "refresh_token": {
+            "type": "string",
+            "title": "Refresh Token"
+          },
           "token_type": {
             "type": "string",
             "title": "Token Type",
@@ -725,7 +786,8 @@
         },
         "type": "object",
         "required": [
-          "access_token"
+          "access_token",
+          "refresh_token"
         ],
         "title": "SessionTokenResponse"
       },

@@ -2,7 +2,7 @@
 
 import type { Client, ClientMeta, Options as Options2, RequestResult, TDataShape } from './client';
 import { client } from './client.gen';
-import type { AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostData, AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostErrors, AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostResponses, CreateExtractionDraftApiV1ExtractionsPostData, CreateExtractionDraftApiV1ExtractionsPostErrors, CreateExtractionDraftApiV1ExtractionsPostResponses, CreateSessionTokenApiV1SessionTokenPostData, CreateSessionTokenApiV1SessionTokenPostErrors, CreateSessionTokenApiV1SessionTokenPostResponses, CreateTableViewApiV1TenancyTableViewsPostData, CreateTableViewApiV1TenancyTableViewsPostErrors, CreateTableViewApiV1TenancyTableViewsPostResponses, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteData, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteErrors, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteResponses, HealthHealthGetData, HealthHealthGetResponses, ListExtractionDraftsApiV1ExtractionsGetData, ListExtractionDraftsApiV1ExtractionsGetErrors, ListExtractionDraftsApiV1ExtractionsGetResponses, ListTableViewsApiV1TenancyTableViewsGetData, ListTableViewsApiV1TenancyTableViewsGetErrors, ListTableViewsApiV1TenancyTableViewsGetResponses, ListUsersApiV1TenancyUsersGetData, ListUsersApiV1TenancyUsersGetResponses, ReadSessionApiV1SessionMeGetData, ReadSessionApiV1SessionMeGetResponses, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostData, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostErrors, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostResponses, UpdateTableViewApiV1TenancyTableViewsViewIdPatchData, UpdateTableViewApiV1TenancyTableViewsViewIdPatchErrors, UpdateTableViewApiV1TenancyTableViewsViewIdPatchResponses } from './types.gen';
+import type { AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostData, AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostErrors, AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostResponses, CreateExtractionDraftApiV1ExtractionsPostData, CreateExtractionDraftApiV1ExtractionsPostErrors, CreateExtractionDraftApiV1ExtractionsPostResponses, CreateSessionTokenApiV1SessionTokenPostData, CreateSessionTokenApiV1SessionTokenPostErrors, CreateSessionTokenApiV1SessionTokenPostResponses, CreateTableViewApiV1TenancyTableViewsPostData, CreateTableViewApiV1TenancyTableViewsPostErrors, CreateTableViewApiV1TenancyTableViewsPostResponses, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteData, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteErrors, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteResponses, HealthHealthGetData, HealthHealthGetResponses, ListExtractionDraftsApiV1ExtractionsGetData, ListExtractionDraftsApiV1ExtractionsGetErrors, ListExtractionDraftsApiV1ExtractionsGetResponses, ListTableViewsApiV1TenancyTableViewsGetData, ListTableViewsApiV1TenancyTableViewsGetErrors, ListTableViewsApiV1TenancyTableViewsGetResponses, ListUsersApiV1TenancyUsersGetData, ListUsersApiV1TenancyUsersGetResponses, ReadSessionApiV1SessionMeGetData, ReadSessionApiV1SessionMeGetResponses, RefreshSessionApiV1SessionRefreshPostData, RefreshSessionApiV1SessionRefreshPostErrors, RefreshSessionApiV1SessionRefreshPostResponses, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostData, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostErrors, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostResponses, UpdateTableViewApiV1TenancyTableViewsViewIdPatchData, UpdateTableViewApiV1TenancyTableViewsViewIdPatchErrors, UpdateTableViewApiV1TenancyTableViewsViewIdPatchResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean, TResponse = unknown> = Options2<TData, ThrowOnError, TResponse> & {
     /**
@@ -23,6 +23,18 @@ export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends 
  */
 export const createSessionTokenApiV1SessionTokenPost = <ThrowOnError extends boolean = false>(options: Options<CreateSessionTokenApiV1SessionTokenPostData, ThrowOnError>): RequestResult<CreateSessionTokenApiV1SessionTokenPostResponses, CreateSessionTokenApiV1SessionTokenPostErrors, ThrowOnError> => (options.client ?? client).post<CreateSessionTokenApiV1SessionTokenPostResponses, CreateSessionTokenApiV1SessionTokenPostErrors, ThrowOnError>({
     url: '/api/v1/session/token',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Refresh Session
+ */
+export const refreshSessionApiV1SessionRefreshPost = <ThrowOnError extends boolean = false>(options: Options<RefreshSessionApiV1SessionRefreshPostData, ThrowOnError>): RequestResult<RefreshSessionApiV1SessionRefreshPostResponses, RefreshSessionApiV1SessionRefreshPostErrors, ThrowOnError> => (options.client ?? client).post<RefreshSessionApiV1SessionRefreshPostResponses, RefreshSessionApiV1SessionRefreshPostErrors, ThrowOnError>({
+    url: '/api/v1/session/refresh',
     ...options,
     headers: {
         'Content-Type': 'application/json',

@@ -1,0 +1,27 @@
+# Wklejka — agent budujący (nowy czat)
+
+Skopiuj **cały blok** poniżej do czatu z agentem **D0**. Nie startuj OAuth/OIDC.
+
+---
+
+```
+0.15 hasła + refresh jest na origin (zarchiwizowany). Nie startuj OAuth/OIDC.
+
+1. Przeczytaj docs/state/CURRENT.md
+2. Przeczytaj docs/state/PROGRAM-12M.md (jedyny SoT programu; canvas NIE jest git SoT)
+3. git status — drzewo ma być czyste; jeśli nie, STOP
+4. Wykonaj D0, potem 0.15 T0 — wg PROGRAM-12M.md. D0 NIE MA spec produktu.
+
+WIP=1. Max 12 plików. Test-first. Schemat = MCP Postgres (brak = stop).
+Nie czytaj Informacje z claude/. Nie twórz Temporal/Hatchet/outbox na zapas, Infisical, 70 pustych M-xx, haseł + Auth0 naraz.
+
+Kolejność:
+D0 — uczciwość OS: AGENTS dziś/później, .cursorignore na dump, zagnieżdżone AGENTS.md → AGENTS.ARCHIVE.md, leftover≠DONE.
+→ 0.15 T0 — document_base64 max_length → 422 (spec: docs/spec/extraction.md)
+→ 0.16 T1 — rola omniroute_app NOBYPASSRLS
+→ 0.17 T2 — matryca RLS S1–S6
+→ 0.18 — HTTP extract na żywej PG + token A / draft B = 404
+→ 0.19–0.23 — deny undeclared, reviewer≠member, hello off default, iss/aud/jti, sekrety poza YAML
+
+Auth0 BFF+cookie = I1 po Wave A. echo ≠ DoD. Po plasterze: post-plaster + push + nowa rozmowa.
+```
