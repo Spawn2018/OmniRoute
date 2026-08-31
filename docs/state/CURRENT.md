@@ -1,21 +1,16 @@
-# Phase 0 — GitHub (bootstrap)
+# Bieżący focus
 
-**Status:** lokalny commit gotowy; push zablokowany do gh auth login (Spawn2018)
-**Repo (docelowy):** https://github.com/Spawn2018/OmniRoute
-**Branch:** main
-
-## Ustalenia Phase 0
-- git init -b main w D:\\OMNIROUTE
-- Initial commit: Cursor OS, docs, CI skeleton
-- Push / gh repo create / branch protection: wymaga zalogowania gh jako Spawn2018
+**Faza:** Bootstrap zakończony (Phase 0 + Phase A)  
+**Repo:** https://github.com/Spawn2018/OmniRoute (`main`, zsynchronizowany z `origin/main`)  
+**Następny krok:** plaster **0.3** (M-01 RLS Golden Standard) — start Fazy B lub sam plaster wg `docs/spec/tenancy.md` (do utworzenia w Fazie B)
 
 ---
 
-# Plaster 0.3 · M-01 Wielodostępność — RLS (Golden Standard)
+# Plaster 0.3 — M-01 Wielodostępność — RLS (Golden Standard)
 
 **Spec:** docs/spec/tenancy.md (do utworzenia w Fazie B)  
 **Moduły:** M-01  
-**Status:** następny po bootstrapie Cursor OS
+**Status:** **następny do realizacji** (Agent mode, `/plaster` lub skill `nowy-plaster`)
 
 ## Zakres
 Tabela `organization`, `app_user`, polityki RLS, test izolacji jako wzorzec dla wszystkich modułów.
@@ -31,3 +26,14 @@ OpenFGA (0.4), outbox (0.4), UI admin tenanta, billing.
 - [ ] Migracja up/down działa
 - [ ] Test izolacji tenantów green
 - [ ] Brak zapytania bez organization_id w repozytoriach
+
+---
+
+## Ukończone (nie czekać w Plan mode)
+
+| Faza | Co zrobiono |
+|---|---|
+| **Phase 0** | `git init`, remote `origin`, initial commit + push na GitHub |
+| **Phase A** | AGENTS.md, GROUNDING.md, rules, skills, hooks, commands, CI skeleton (`gate.yml`) |
+
+Opcjonalnie później: branch protection na `main` po pierwszym green `gate`; `gh auth` lokalnie jeśli potrzebny CLI.

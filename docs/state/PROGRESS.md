@@ -1,1 +1,7 @@
-# Historia plastrów\n\n| Data | Plaster | Moduł | Opis |\n|---|---|---|---|\n| 2026-08-31 | Phase 0 | — | GitHub: init + initial commit; push pending gh auth (Spawn2018/OmniRoute) |\n| 2026-08-31 | — | — | Bootstrap Faza A: Cursor OS (rules, skills, hooks, docs skeleton) |\n
+# Historia plastrów
+
+| Data | Plaster | Moduł | Opis |
+|---|---|---|---|
+| 2026-08-31 | Phase 0 | — | GitHub: repo Spawn2018/OmniRoute, init, initial commit, push na origin/main |
+| 2026-08-31 | Phase A | — | Bootstrap Cursor OS: AGENTS.md, GROUNDING.md, rules, skills, hooks, gate.yml |
+| — | 0.3 | M-01 | **Następny:** RLS Golden Standard (Agent mode) |
