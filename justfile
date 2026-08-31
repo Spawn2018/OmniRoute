@@ -3,8 +3,8 @@ default: gate
 agent-refs:
     python scripts/quality/check_agent_refs.py
 
-gate: agent-refs check test-unit arch frontend-typecheck frontend-test dup
-    @echo "gate: agent-refs + check + test-unit + arch + frontend + dup OK"
+gate: agent-refs agentlint check test-unit arch frontend-typecheck frontend-test dup
+    @echo "gate: agent-refs + agentlint + check + test-unit + arch + frontend + dup OK"
 
 dev:
     docker compose up -d db
@@ -81,7 +81,7 @@ dup:
     cd frontend && pnpm exec jscpd ../backend/app ../frontend/src --min-lines 5 --threshold 3 --ignore "**/api/**,**/routeTree.gen.ts,**/node_modules/**"
 
 agentlint:
-    @echo "agentlint: Faza D"
+    python scripts/quality/agentlint.py
 
 new-module name:
     @echo "new-module {{name}}: patrz skill module-factory"

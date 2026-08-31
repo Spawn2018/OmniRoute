@@ -2,7 +2,7 @@
 
 import type { Client, ClientMeta, Options as Options2, RequestResult, TDataShape } from './client';
 import { client } from './client.gen';
-import type { CreateTableViewApiV1TenancyTableViewsPostData, CreateTableViewApiV1TenancyTableViewsPostErrors, CreateTableViewApiV1TenancyTableViewsPostResponses, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteData, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteErrors, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteResponses, HealthHealthGetData, HealthHealthGetResponses, ListTableViewsApiV1TenancyTableViewsGetData, ListTableViewsApiV1TenancyTableViewsGetErrors, ListTableViewsApiV1TenancyTableViewsGetResponses, ListUsersApiV1TenancyUsersGetData, ListUsersApiV1TenancyUsersGetErrors, ListUsersApiV1TenancyUsersGetResponses, UpdateTableViewApiV1TenancyTableViewsViewIdPatchData, UpdateTableViewApiV1TenancyTableViewsViewIdPatchErrors, UpdateTableViewApiV1TenancyTableViewsViewIdPatchResponses } from './types.gen';
+import type { AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostData, AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostErrors, AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostResponses, CreateExtractionDraftApiV1ExtractionsPostData, CreateExtractionDraftApiV1ExtractionsPostErrors, CreateExtractionDraftApiV1ExtractionsPostResponses, CreateTableViewApiV1TenancyTableViewsPostData, CreateTableViewApiV1TenancyTableViewsPostErrors, CreateTableViewApiV1TenancyTableViewsPostResponses, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteData, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteErrors, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteResponses, HealthHealthGetData, HealthHealthGetResponses, ListExtractionDraftsApiV1ExtractionsGetData, ListExtractionDraftsApiV1ExtractionsGetErrors, ListExtractionDraftsApiV1ExtractionsGetResponses, ListTableViewsApiV1TenancyTableViewsGetData, ListTableViewsApiV1TenancyTableViewsGetErrors, ListTableViewsApiV1TenancyTableViewsGetResponses, ListUsersApiV1TenancyUsersGetData, ListUsersApiV1TenancyUsersGetErrors, ListUsersApiV1TenancyUsersGetResponses, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostData, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostErrors, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostResponses, UpdateTableViewApiV1TenancyTableViewsViewIdPatchData, UpdateTableViewApiV1TenancyTableViewsViewIdPatchErrors, UpdateTableViewApiV1TenancyTableViewsViewIdPatchResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean, TResponse = unknown> = Options2<TData, ThrowOnError, TResponse> & {
     /**
@@ -56,6 +56,33 @@ export const updateTableViewApiV1TenancyTableViewsViewIdPatch = <ThrowOnError ex
         ...options.headers
     }
 });
+
+/**
+ * List Extraction Drafts
+ */
+export const listExtractionDraftsApiV1ExtractionsGet = <ThrowOnError extends boolean = false>(options: Options<ListExtractionDraftsApiV1ExtractionsGetData, ThrowOnError>): RequestResult<ListExtractionDraftsApiV1ExtractionsGetResponses, ListExtractionDraftsApiV1ExtractionsGetErrors, ThrowOnError> => (options.client ?? client).get<ListExtractionDraftsApiV1ExtractionsGetResponses, ListExtractionDraftsApiV1ExtractionsGetErrors, ThrowOnError>({ url: '/api/v1/extractions', ...options });
+
+/**
+ * Create Extraction Draft
+ */
+export const createExtractionDraftApiV1ExtractionsPost = <ThrowOnError extends boolean = false>(options: Options<CreateExtractionDraftApiV1ExtractionsPostData, ThrowOnError>): RequestResult<CreateExtractionDraftApiV1ExtractionsPostResponses, CreateExtractionDraftApiV1ExtractionsPostErrors, ThrowOnError> => (options.client ?? client).post<CreateExtractionDraftApiV1ExtractionsPostResponses, CreateExtractionDraftApiV1ExtractionsPostErrors, ThrowOnError>({
+    url: '/api/v1/extractions',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Accept Extraction Draft
+ */
+export const acceptExtractionDraftApiV1ExtractionsDraftIdAcceptPost = <ThrowOnError extends boolean = false>(options: Options<AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostData, ThrowOnError>): RequestResult<AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostResponses, AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostErrors, ThrowOnError> => (options.client ?? client).post<AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostResponses, AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostErrors, ThrowOnError>({ url: '/api/v1/extractions/{draft_id}/accept', ...options });
+
+/**
+ * Reject Extraction Draft
+ */
+export const rejectExtractionDraftApiV1ExtractionsDraftIdRejectPost = <ThrowOnError extends boolean = false>(options: Options<RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostData, ThrowOnError>): RequestResult<RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostResponses, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostErrors, ThrowOnError> => (options.client ?? client).post<RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostResponses, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostErrors, ThrowOnError>({ url: '/api/v1/extractions/{draft_id}/reject', ...options });
 
 /**
  * Health

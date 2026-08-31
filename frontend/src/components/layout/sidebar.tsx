@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils"
 const NAV = [
   { to: "/", label: "Pulpit" },
   { to: "/tenancy/users", label: "Użytkownicy" },
+  { to: "/extractions", label: "Ekstrakcje" },
   { to: "/session", label: "Sesja" },
 ] as const
 

@@ -25,6 +25,9 @@ def authorization_model_request() -> WriteAuthorizationModelRequest:
                     "can_manage_table_views": Userset(
                         computed_userset=ObjectRelation(object="", relation="member"),
                     ),
+                    "can_review_extractions": Userset(
+                        computed_userset=ObjectRelation(object="", relation="member"),
+                    ),
                 },
                 metadata=Metadata(
                     relations={

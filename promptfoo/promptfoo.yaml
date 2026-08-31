@@ -1,0 +1,26 @@
+# Extraction prompt smoke (MockExtractor schema)
+
+# CI: `npx promptfoo@latest eval -c promptfoo/promptfoo.yaml` gdy klucze dostępne.
+# Bez kluczy: walidacja schematu JSON lokalnie przez pytest MockExtractor.
+
+prompts:
+  - |
+    Extract freight charges from:
+    {{document}}
+    Return JSON with source_ref, unparsed_regions, candidates[{code,amount_text,currency}].
+
+providers:
+  - id: echo
+    config:
+      # Placeholder — prawdziwy provider w 0.10
+      text: '{"source_ref":"smoke","unparsed_regions":[],"candidates":[]}'
+
+tests:
+  - vars:
+      document: "THC 100 EUR"
+    assert:
+      - type: is-json
+      - type: javascript
+        value: |
+          const o = JSON.parse(output);
+          return o.source_ref && Array.isArray(o.unparsed_regions) && Array.isArray(o.candidates);

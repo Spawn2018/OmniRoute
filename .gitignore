@@ -21,6 +21,7 @@ htmlcov/
 node_modules/
 dist/
 .turbo/
+frontend/.tanstack/
 
 # Cursor
 .cursor/browser-logs/

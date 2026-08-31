@@ -1,0 +1,44 @@
+name: pr-nudge
+
+on:
+  pull_request:
+    types: [opened, ready_for_review]
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  nudge:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
+    steps:
+      - name: Checklist comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = [
+              '## OmniRoute PR checklist',
+              '',
+              '- [ ] `just gate` zielone (lub CI `gate`)',
+              '- [ ] Test izolacji RLS dla nowych tabel',
+              '- [ ] OpenFGA: jawna relacja na każdym nowym endpoincie',
+              '- [ ] Brak zapisu domenowego z AI bez HITL (HC-04)',
+              '- [ ] Delta zarchiwizowana / CURRENT zaktualizowany',
+              '',
+              '_Automatyczny nudge Faza D — nie zastępuje review człowieka._',
+            ].join('\n');
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+            if (comments.some(c => c.body && c.body.includes('OmniRoute PR checklist'))) {
+              return;
+            }
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body,
+            });

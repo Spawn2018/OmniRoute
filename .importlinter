@@ -17,6 +17,7 @@ name = Niezależność modułów domenowych
 type = independence
 modules =
     app.services.tenancy
+    app.services.extraction
 
 [importlinter:contract:integracje]
 name = Integracje nie znają serwisów

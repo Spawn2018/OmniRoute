@@ -1,21 +1,18 @@
 ﻿# Bieżący focus
 
-**Faza:** C — Platforma AI (po B + slot jakości)  
+**Faza:** C → D (rytm)  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
-**Następny krok:** start **Fazy C** (instructor / docling / langfuse / HITL) — osobny plaster
+
+**Ostatni plaster:** **0.7 AI extract HITL** (zarchiwizowany)  
+**Następny:** **0.8 instructor + llm-guard** (żywy provider; nadal HITL przed zapisem)
 
 **Plan:** [docs/PLAN-REALIZACJA.md](docs/PLAN-REALIZACJA.md)  
-**B.7:** [docs/ops/branch-protection.md](docs/ops/branch-protection.md)
+**Ops:** [branch-protection](docs/ops/branch-protection.md) · [weekly-refactor](docs/ops/weekly-refactor.md) · [friday-retrospective](docs/ops/friday-retrospective.md)
 
 ---
 
-# Ukończone (B + jakość)
-- 0.5 Shell · 0.6 DataTableShell · B.7 procedura  
-- Slot: openapi-ts · cov≥80% · jscpd≤3% · lazy PostHog  
-
----
-
-## Następne
-1. **Faza C** AI (HITL na DataTableShell)  
-2. **Faza D** agentlint / refaktor-pass / Automations  
-3. B.7 upgrade: required check `gate` po GitHub Pro
+## Stan
+- Faza B: done  
+- Faza C hello (0.7) + sandbox stubs: done  
+- Faza D: agentlint w gate, PR nudge workflow, docs rytmu: done  
+- Lokalny smoke PG: odroczony (brak natywnego Postgres / Docker)

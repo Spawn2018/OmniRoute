@@ -9,6 +9,7 @@ from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_asyn
 from app.core.database import bind_tenant
 from app.models.app_user import AppUser
 from app.models.base import Base
+from app.models.extraction_draft import ExtractionDraft  # noqa: F401 — rejestr metadanych RLS
 from app.models.organization import Organization
 from app.models.table_view import TableView  # noqa: F401 — rejestr metadanych RLS
 
@@ -52,6 +53,19 @@ async def _apply_rls_policies(conn) -> None:
         text(
             """
             CREATE POLICY table_view_tenant_isolation ON table_view
+            USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
+            """
+        ),
+    )
+    await conn.execute(text("ALTER TABLE extraction_draft ENABLE ROW LEVEL SECURITY"))
+    await conn.execute(text("ALTER TABLE extraction_draft FORCE ROW LEVEL SECURITY"))
+    await conn.execute(
+        text("DROP POLICY IF EXISTS extraction_draft_tenant_isolation ON extraction_draft")
+    )
+    await conn.execute(
+        text(
+            """
+            CREATE POLICY extraction_draft_tenant_isolation ON extraction_draft
             USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
             """
         ),

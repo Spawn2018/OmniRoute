@@ -10,6 +10,8 @@
 | odcinek | shipment_leg | operacyjne |
 | tenant | organization | organization_id wszędzie |
 | pochodzenie | source_ref | obowiązkowe |
+| szkic ekstrakcji | extraction_draft | HITL przed zapisem domeny |
+| region nierozpoznany | unparsed_region | zawsze w payloadzie ekstrakcji |
 | kurs NBP | nbp_rate | D-1 roboczy |
 | narzut | markup | kaskada — Python mały zbiór (DECISIONS) |
 

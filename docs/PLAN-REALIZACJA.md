@@ -43,7 +43,7 @@ flowchart LR
 | jscpd ≤ 3% | ✅ `just dup` w gate | — |
 | openapi-ts | ✅ `just api-types` + `frontend/src/api/` | regeneruj przy zmianie API |
 | size-limit / perf | ❌ stub | po dalszym budgetingu |
-| agentlint | ❌ echo | Faza D |
+| agentlint | ✅ `just agentlint` + baseline | — |
 | lazy PostHog | ✅ dynamic `import("posthog-js")` | — |
 
 ---
@@ -77,12 +77,23 @@ flowchart LR
 
 ---
 
-## Faza C — Platforma AI (po B.6)
-instructor, docling A/B, langfuse, promptfoo, HITL na DataTableShell / split-view
+## Faza C — Platforma AI (po B)
 
-## Faza D — Rytm operacyjny
-Automations PR, Bugbot, refaktor-pass (cotygodniowy — nie po każdym plastrze), agentlint CI, jscpd w gate  
-(branch protection — jeśli nie B.7)
+### C.1 / 0.7 AI extract HITL hello — **DONE**
+- `extraction_draft` RLS · MockExtractor · accept/reject · UI DataTableShell
+- Delta: `docs/deltas/archived/0.7-ai-extract-hitl.md`
+
+### C.2 scaffold (równolegle z 0.7) — **DONE**
+- docling stub · langfuse no-op · `promptfoo/promptfoo.yaml` · knowledge cards
+
+### C.3+ (następne)
+0.8 instructor+llm-guard · 0.9 docling A/B · 0.10 langfuse/promptfoo CI
+
+## Faza D — Rytm operacyjny — **DONE (minimal)**
+- `agentlint` w `just gate` + baseline
+- `.github/workflows/pr-nudge.yml` (checklist PR)
+- `docs/ops/weekly-refactor.md` + `docs/ops/friday-retrospective.md`
+- Bugbot: osobna GitHub App (nie w repo)
 
 ---
 

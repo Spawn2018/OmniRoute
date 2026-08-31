@@ -13,6 +13,7 @@ def test_authorization_model_includes_table_view_permission() -> None:
     org = next(td for td in request.type_definitions if td.type == "organization")
     assert "can_list_users" in org.relations
     assert "can_manage_table_views" in org.relations
+    assert "can_review_extractions" in org.relations
     assert "member" in org.relations
 
 

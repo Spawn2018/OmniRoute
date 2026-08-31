@@ -9,6 +9,9 @@ class Settings(BaseSettings):
     openfga_api_url: str = "http://localhost:8080"
     openfga_store_id: str = ""
     openfga_model_id: str = ""
+    langfuse_public_key: str = ""
+    langfuse_secret_key: str = ""
+    langfuse_host: str = "https://cloud.langfuse.com"
 
 
 settings = Settings()

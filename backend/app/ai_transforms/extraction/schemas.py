@@ -1,0 +1,20 @@
+"""Schemat wyjścia ekstrakcji — wspólny dla MockExtractor i przyszłego instructor."""
+
+from pydantic import BaseModel, Field
+
+
+class ExtractedChargeCandidate(BaseModel):
+    """Kandydat opłaty — nie jest jeszcze charge/rate_line w bazie."""
+
+    code: str = Field(min_length=1, max_length=64)
+    amount_text: str = Field(min_length=1, max_length=64)
+    currency: str = Field(min_length=3, max_length=3)
+    note: str = ""
+
+
+class ExtractionPayload(BaseModel):
+    """HC-03: source_ref + unparsed_regions obowiązkowe; LLM nie liczy kwot."""
+
+    source_ref: str = Field(min_length=1, max_length=512)
+    unparsed_regions: list[str] = Field(default_factory=list)
+    candidates: list[ExtractedChargeCandidate] = Field(default_factory=list)

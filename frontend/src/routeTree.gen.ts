@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ExtractionsRouteImport } from './routes/extractions'
 import { Route as SessionRouteImport } from './routes/session'
 import { Route as TenancyUsersRouteImport } from './routes/tenancy.users'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExtractionsRoute = ExtractionsRouteImport.update({
+  id: '/extractions',
+  path: '/extractions',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SessionRoute = SessionRouteImport.update({
@@ -31,30 +37,34 @@ const TenancyUsersRoute = TenancyUsersRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/extractions': typeof ExtractionsRoute
   '/session': typeof SessionRoute
   '/tenancy/users': typeof TenancyUsersRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/extractions': typeof ExtractionsRoute
   '/session': typeof SessionRoute
   '/tenancy/users': typeof TenancyUsersRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/extractions': typeof ExtractionsRoute
   '/session': typeof SessionRoute
   '/tenancy/users': typeof TenancyUsersRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/session' | '/tenancy/users'
+  fullPaths: '/' | '/extractions' | '/session' | '/tenancy/users'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/session' | '/tenancy/users'
-  id: '__root__' | '/' | '/session' | '/tenancy/users'
+  to: '/' | '/extractions' | '/session' | '/tenancy/users'
+  id: '__root__' | '/' | '/extractions' | '/session' | '/tenancy/users'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ExtractionsRoute: typeof ExtractionsRoute
   SessionRoute: typeof SessionRoute
   TenancyUsersRoute: typeof TenancyUsersRoute
 }
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/extractions': {
+      id: '/extractions'
+      path: '/extractions'
+      fullPath: '/extractions'
+      preLoaderRoute: typeof ExtractionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/session': {
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ExtractionsRoute: ExtractionsRoute,
   SessionRoute: SessionRoute,
   TenancyUsersRoute: TenancyUsersRoute,
 }

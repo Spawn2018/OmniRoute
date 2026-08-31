@@ -12,3 +12,7 @@ class PermissionDenied(DomainError):
 
 class ResourceNotFound(DomainError):
     """Zasób nie istnieje w kontekście tenanta / właściciela."""
+
+
+class DraftNotPending(DomainError):
+    """Akceptacja/odrzucenie tylko dla szkicu w statusie pending."""
