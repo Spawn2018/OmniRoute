@@ -42,12 +42,24 @@ class OpenFgaAuthz:
         return bool(response.allowed)
 
     async def write_member(self, *, user_id: UUID, organization_id: UUID) -> None:
+        await self._write_relation(
+            user_id=user_id, organization_id=organization_id, relation="member"
+        )
+
+    async def write_reviewer(self, *, user_id: UUID, organization_id: UUID) -> None:
+        await self._write_relation(
+            user_id=user_id, organization_id=organization_id, relation="reviewer"
+        )
+
+    async def _write_relation(
+        self, *, user_id: UUID, organization_id: UUID, relation: str
+    ) -> None:
         await self._client.write(
             ClientWriteRequest(
                 writes=[
                     ClientTuple(
                         user=f"user:{user_id}",
-                        relation="member",
+                        relation=relation,
                         object=f"organization:{organization_id}",
                     ),
                 ],

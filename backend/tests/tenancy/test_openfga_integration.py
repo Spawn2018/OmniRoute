@@ -42,5 +42,19 @@ async def test_openfga_member_can_list_users(monkeypatch: pytest.MonkeyPatch) ->
             object_type="organization",
             object_id=org_id,
         )
+        assert not await authz.check(
+            user_id=member_id,
+            relation="can_review_extractions",
+            object_type="organization",
+            object_id=org_id,
+        )
+        reviewer_id = uuid4()
+        await authz.write_reviewer(user_id=reviewer_id, organization_id=org_id)
+        assert await authz.check(
+            user_id=reviewer_id,
+            relation="can_review_extractions",
+            object_type="organization",
+            object_id=org_id,
+        )
     finally:
         await client.close()

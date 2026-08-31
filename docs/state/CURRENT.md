@@ -1,12 +1,12 @@
 ﻿# Bieżący focus
 
-**Faza:** C — leftover AuthZ  
+**Faza:** C — leftover session  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
 
-**Ostatni plaster:** **0.19 A1** undeclared `/api/v1` deny + playground off (zarchiwizowany)  
-**Następny:** **0.20 A2** `can_review` = reviewer, nie member
+**Ostatni plaster:** **0.20 A2** `can_review_extractions` = reviewer (zarchiwizowany)  
+**Następny:** **0.21 T4** `hello_token` default **false** (ON tylko local+CI)
 
-**Spec (jedna na sesję):** PROGRAM-12M Wave A 0.20 + `authz/model.fga`
+**Spec (jedna na sesję):** [docs/spec/tenancy.md](docs/spec/tenancy.md)
 
 **Kanon:** [docs/state/PROGRAM-12M.md](docs/state/PROGRAM-12M.md)
 
@@ -14,4 +14,4 @@
 
 **Plan:** [docs/PLAN-REALIZACJA.md](docs/PLAN-REALIZACJA.md)
 
-**2026-09-01:** 0.19 A1 — nieznane `/api/v1` → 403; Swagger off.
+**2026-09-01:** 0.20 A2 — member ≠ reviewer; first-login zostaje member.

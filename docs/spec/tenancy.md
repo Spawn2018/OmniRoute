@@ -39,5 +39,10 @@ Jawne `WITH CHECK` na politykach tenant (nie FOR SELECT). Integration = CI.
 | S5 | DELETE | DELETE wiersza B przy kontekście A → 0 wierszy |
 | S6 | brak `app.current_org` | SELECT pusty; INSERT odrzut |
 
+## OpenFGA (0.20 A2)
+
+- `can_review_extractions` = `reviewer`, nie `member`
+- First-login zapisuje tylko `member`. Reviewer = ręczny seed.
+
 ## Poza zakresem (nadal)
-OpenFGA (0.4 — zrobione), UI admin, billing, IdP/OIDC.
+UI admin, billing, IdP/OIDC.

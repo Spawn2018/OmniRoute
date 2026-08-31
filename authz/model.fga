@@ -6,6 +6,7 @@ type user
 type organization
   relations
     define member: [user]
+    define reviewer: [user]
     define can_list_users: member
     define can_manage_table_views: member
-    define can_review_extractions: member
+    define can_review_extractions: reviewer

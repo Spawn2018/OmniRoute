@@ -19,6 +19,7 @@ def authorization_model_request() -> WriteAuthorizationModelRequest:
                 type="organization",
                 relations={
                     "member": Userset(this={}),
+                    "reviewer": Userset(this={}),
                     "can_list_users": Userset(
                         computed_userset=ObjectRelation(object="", relation="member"),
                     ),
@@ -26,12 +27,15 @@ def authorization_model_request() -> WriteAuthorizationModelRequest:
                         computed_userset=ObjectRelation(object="", relation="member"),
                     ),
                     "can_review_extractions": Userset(
-                        computed_userset=ObjectRelation(object="", relation="member"),
+                        computed_userset=ObjectRelation(object="", relation="reviewer"),
                     ),
                 },
                 metadata=Metadata(
                     relations={
                         "member": RelationMetadata(
+                            directly_related_user_types=[RelationReference(type="user")],
+                        ),
+                        "reviewer": RelationMetadata(
                             directly_related_user_types=[RelationReference(type="user")],
                         ),
                     },

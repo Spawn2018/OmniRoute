@@ -15,6 +15,13 @@ def test_authorization_model_includes_table_view_permission() -> None:
     assert "can_manage_table_views" in org.relations
     assert "can_review_extractions" in org.relations
     assert "member" in org.relations
+    assert "reviewer" in org.relations
+    review = org.relations["can_review_extractions"]
+    assert review.computed_userset is not None
+    assert review.computed_userset.relation == "reviewer"
+    listing = org.relations["can_list_users"]
+    assert listing.computed_userset is not None
+    assert listing.computed_userset.relation == "member"
 
 
 @pytest.mark.asyncio

@@ -39,4 +39,5 @@
 | 2026-09-01 | 0.17 T2 | M-01 | matryca RLS S1–S6 + WITH CHECK; integration = CI |
 | 2026-09-01 | 0.18 | M-20 | HTTP extract live PG; token A / draft B → 404; integration = CI |
 | 2026-09-01 | 0.19 A1 | API | undeclared `/api/v1` → 403; playground off |
-| — | leftover | AuthZ | **Następny:** 0.20 A2 `can_review` = reviewer, nie member |
+| 2026-09-01 | 0.20 A2 | AuthZ | `can_review_extractions` = reviewer; member nie recenzuje |
+| — | leftover | M-01 | **Następny:** 0.21 T4 `hello_token` default false |
