@@ -1,22 +1,36 @@
-default: check test
+default: gate
 
-# --- codzienne (wymaga backend/frontend w Fazie B) ---
+# --- bootstrap (działa bez Fazy B) ---
+# Pełne check/test/arch dopiero gdy istnieje pyproject.toml + narzędzia.
+
+agent-refs:
+    python scripts/quality/check_agent_refs.py
+
+# Bramka CI: do Fazy B tylko to, co da się uruchomić bez ruff/mypy/pytest.
+gate: agent-refs
+    @echo "gate (bootstrap): agent-refs OK"
+    @echo "Po Fazie B: gate rozszerzy się o check + test + arch + perf"
+
+# --- Faza B+ (wymaga pyproject.toml / package.json) ---
 dev:
     @echo "Faza B: docker compose up -d && granian --interface asgi app.main:app --reload"
 
 check:
-    @echo "check: uruchom po Fazie B (ruff, mypy, eslint, tsc)"
-    @test -d backend && ruff check backend || true
-    @test -d backend && mypy backend/app || true
+    @if [ ! -f pyproject.toml ]; then echo "check: pominięte (brak pyproject.toml — Faza B)"; exit 0; fi
+    ruff check backend
+    mypy backend/app
 
 fix:
-    @test -d backend && ruff check --fix backend && ruff format backend || true
+    @if [ ! -f pyproject.toml ]; then echo "fix: pominięte — Faza B"; exit 0; fi
+    ruff check --fix backend
+    ruff format backend
 
 test:
-    @echo "test: uruchom po Fazie B (pytest, vitest)"
-    @test -d backend && pytest -x backend/tests || true
+    @if [ ! -f pyproject.toml ]; then echo "test: pominięte — Faza B"; exit 0; fi
+    pytest -x backend/tests
 
 arch:
+    @if [ ! -f pyproject.toml ]; then echo "arch: pominięte — Faza B"; exit 0; fi
     lint-imports
 
 perf:
@@ -25,42 +39,37 @@ perf:
 audit:
     @echo "audit: pip-audit, pnpm audit (Faza B)"
 
-# --- baza ---
 migrate:
+    @if [ ! -f pyproject.toml ]; then echo "migrate: pominięte — Faza B"; exit 0; fi
     alembic upgrade head
 
 migrate-down:
+    @if [ ! -f pyproject.toml ]; then echo "migrate-down: pominięte — Faza B"; exit 0; fi
     alembic downgrade -1 && alembic upgrade head
 
 migration name:
     alembic revision --autogenerate -m "{{name}}"
 
-# --- generowanie ---
 api-types:
     @echo "api-types: Faza B"
 
 docs:
     @echo "docs: Faza B"
 
-# --- jakość ---
 complexity:
-    @test -d backend && ruff check --select C901 backend || true
+    @if [ ! -f pyproject.toml ]; then echo "complexity: pominięte — Faza B"; exit 0; fi
+    ruff check --select C901 backend
 
 dead:
-    @test -d backend && vulture backend/app --min-confidence 80 || true
+    @if [ ! -f pyproject.toml ]; then echo "dead: pominięte — Faza B"; exit 0; fi
+    vulture backend/app --min-confidence 80
 
 dup:
-    jscpd backend/app frontend/src --min-lines 5 --threshold 3 || true
-
-agent-refs:
-    python scripts/quality/check_agent_refs.py
+    @if [ ! -f pyproject.toml ]; then echo "dup: pominięte — Faza B"; exit 0; fi
+    jscpd backend/app frontend/src --min-lines 5 --threshold 3
 
 agentlint:
-    @echo "agentlint: pip install agentlint && agentlint (opcjonalnie CI)"
-
-# --- pełna bramka ---
-gate: check test arch agent-refs
-    @echo "gate: rozszerz o perf, migrate-down, docs w Fazie B"
+    @echo "agentlint: opcjonalnie w CI po Fazie B (pip install agentlint)"
 
 new-module name:
     @echo "new-module {{name}}: generator w Fazie B — patrz skill module-factory"

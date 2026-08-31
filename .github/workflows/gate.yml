@@ -1,4 +1,4 @@
-# CI gate — full `just gate` implementation arrives in Phase A (justfile).
+# Bootstrap gate: agent-refs only until Phase B (pyproject + ruff/mypy/pytest).
 # Branch protection on main should require this check once green.
 name: gate
 
@@ -22,10 +22,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "22"
 
       - name: Run quality gate
         run: just gate
