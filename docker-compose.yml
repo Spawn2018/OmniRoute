@@ -1,0 +1,19 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: omniroute
+      POSTGRES_PASSWORD: omniroute
+      POSTGRES_DB: omniroute
+    ports:
+      - "5432:5432"
+    volumes:
+      - omniroute_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U omniroute -d omniroute"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  omniroute_pg:

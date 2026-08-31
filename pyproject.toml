@@ -1,0 +1,65 @@
+[project]
+name = "omniroute"
+version = "0.1.0"
+description = "Wielodostępna platforma spedycyjna"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "alembic>=1.14",
+    "asyncpg>=0.30",
+    "email-validator>=2.2",
+    "fastapi>=0.115",
+    "granian>=1.6",
+    "pendulum>=3.0",
+    "pydantic-settings>=2.6",
+    "sqlalchemy[asyncio]>=2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "httpx>=0.28",
+    "import-linter>=2.1",
+    "mypy>=1.14",
+    "pytest>=8.3",
+    "pytest-asyncio>=0.24",
+    "ruff>=0.8",
+]
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["backend"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+src = ["backend"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "C901"]
+
+[tool.ruff.lint.per-file-ignores]
+"backend/app/api/**" = ["B008"]
+"backend/alembic/**" = ["I001"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+packages = ["app"]
+mypy_path = "backend"
+plugins = []
+
+[[tool.mypy.overrides]]
+module = ["alembic.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["backend/tests"]
+pythonpath = ["backend"]
+markers = [
+    "integration: wymaga PostgreSQL",
+]

@@ -16,12 +16,7 @@ layers =
 name = Niezależność modułów domenowych
 type = independence
 modules =
-    app.services.rates
-    app.services.quotation
-    app.services.shipment
-    app.services.finance
-    app.services.compliance
-    app.services.extraction
+    app.services.tenancy
 
 [importlinter:contract:integracje]
 name = Integracje nie znają serwisów

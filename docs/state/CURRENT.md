@@ -1,36 +1,27 @@
 # Bieżący focus
 
-**Faza:** Bootstrap zakończony (Phase 0 + Phase A); plan zsynchronizowany  
+**Faza:** Faza B — plaster 0.3 (M-01 RLS Golden Standard)  
 **Repo:** https://github.com/Spawn2018/OmniRoute (`main`)  
-**Ostatnie commity:** `58facbd` (bootstrap CI gate), `e21ac45` (ADR-0001)  
-**Następny krok:** plaster **0.3** (M-01 RLS Golden Standard) — start Fazy B
+**Następny krok:** OpenFGA hello (0.4) / pełny frontend Vite
 
-**Plan Cursor:** Fazy 0+A = completed; B/C/D = pending.  
-**ADR:** [docs/adr/0001-cursor-software-factory-weryfikacja.md](../adr/0001-cursor-software-factory-weryfikacja.md)
+**Plan Cursor:** Fazy 0+A+A.5 done; B.2 done; B.4/C/D pending.  
+**ADR:** [docs/adr/0001-cursor-software-factory-weryfikacja.md](docs/adr/0001-cursor-software-factory-weryfikacja.md)
 
 ---
 
 # Plaster 0.3 — M-01 Wielodostępność — RLS (Golden Standard)
 
-**Spec:** docs/spec/tenancy.md (do utworzenia w Fazie B)  
+**Spec:** [docs/spec/tenancy.md](spec/tenancy.md)  
 **Moduły:** M-01  
-**Status:** **następny do realizacji** (Agent mode, `/plaster` lub skill `nowy-plaster`)
+**Status:** **ukończony** (migracja + test w CI)
 
 ## Zakres
-Tabela `organization`, `app_user`, polityki RLS, test izolacji jako wzorzec dla wszystkich modułów.
-
-## Poza zakresem
-OpenFGA (0.4), outbox (0.4), UI admin tenanta, billing.
-
-## Ustalenia
-- RLS wymuszony FORCE ROW LEVEL SECURITY
-- Test izolacji kopiowany z `tests/patterns/tenant_isolation.py`
-- `just gate` do Fazy B = tylko `agent-refs`; pełny gate po `pyproject.toml`
+Tabela `organization`, `app_user`, polityki RLS FORCE, test izolacji jako wzorzec.
 
 ## Kryteria akceptacji
-- [ ] Migracja up/down działa
-- [ ] Test izolacji tenantów green
-- [ ] Brak zapytania bez organization_id w repozytoriach
+- [x] Migracja up/down zdefiniowana (`001_tenancy_rls`)
+- [x] Test izolacji tenantów (CI + `just test-integration`)
+- [x] Repozytoria bez jawnego cross-tenant SQL — RLS przez `app.current_org`
 
 ---
 
@@ -39,7 +30,13 @@ OpenFGA (0.4), outbox (0.4), UI admin tenanta, billing.
 | Faza | Co zrobiono |
 |---|---|
 | **Phase 0** | GitHub Spawn2018/OmniRoute, push, gate.yml |
-| **Phase A** | Cursor OS + ADR-0001 (weryfikacja Gemini/ChatGPT/nauka) |
-| **CI fix** | Bootstrap gate: `just gate` → agent-refs (bez ruff do Fazy B) |
+| **Phase A** | Cursor OS + ADR-0001 |
+| **Phase A.5** | gh CLI auth OK, `.env.example`, plan w repo |
+| **Phase B.1** | pyproject.toml, FastAPI szkielet, docker-compose |
+| **Phase B.2** | Plaster 0.3 RLS + nested AGENTS tenancy |
+| **Phase B.3** | Pełny `just gate` (check + test-unit + arch) |
 
-Opcjonalnie: branch protection na `main` po green `gate`.
+## Następne
+- B.4 OpenFGA hello
+- Faza C (instructor, docling, langfuse)
+- Branch protection po green CI
