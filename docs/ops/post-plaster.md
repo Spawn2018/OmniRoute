@@ -1,7 +1,7 @@
 # Pętla po każdym kroku planu
 
 Obowiązkowa **przed** push i przed następnym plasterem. Nie zastępuje `just gate`.
-`just perf` / `just docs` / `just dead` = `echo` — nie DoD, nie wołaj ich tu.
+`just docs` / `just dead` = `echo` — nie DoD, nie wołaj ich tu. `just perf` = size-limit initial JS (U-size-limit-real).
 
 Bramka (`/bramka`, skill `pr-review`) **mierzy** i nie naprawia.
 Ten plik: po tabeli **napraw** to, co nie psuje jakości; reszta → [docs-debt.md](docs-debt.md).

@@ -7,4 +7,4 @@ description: Pętla po kroku planu — pomiar, potem naprawa
 3. Napraw max 3 rzeczy, które nie psują jakości. Reszta → `docs/ops/docs-debt.md`.
 4. Dopiero potem skill `zamknij-plaster` (archiwum, CURRENT, commit, push).
 
-Nie wołaj `just perf` / `just docs` / `just dead` — to `echo`, nie DoD.
+Nie wołaj `just docs` / `just dead` — to `echo`, nie DoD. `just perf` = size-limit (w gate).

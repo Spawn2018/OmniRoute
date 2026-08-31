@@ -3,7 +3,7 @@
 **Plan Cursor (pełny):** `.cursor/plans/omniroute-realizacja.plan.md`  
 **ADR:** [0001 Cursor factory](adr/0001-cursor-software-factory-weryfikacja.md) · [0002 Frontend 2026](adr/0002-frontend-platform-2026.md)  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
-**Stan:** B + C.1–C.5 + 0.11–0.15 leftover + **Exit Wave A (D0–0.23)** + **0.25 Money** + **1.0–1.3 charge** + **U-art50** + **U-palette-ops** + **U-density** + **U-a11y** + D minimal · następny **U-size-limit-real** (Wave FE; nie Exit Wave FE; Auth0 I1 po U-*)
+**Stan:** B + C.1–C.5 + 0.11–0.15 leftover + **Exit Wave A (D0–0.23)** + **0.25 Money** + **1.0–1.3 charge** + **U-art50** + **U-palette-ops** + **U-density** + **U-a11y** + **U-size-limit-real** + D minimal · następny **U-pdf-spans** (Wave FE; nie Exit Wave FE; Auth0 I1 po U-*)
 
 ```mermaid
 flowchart LR
@@ -62,7 +62,7 @@ flowchart LR
 | cov ≥ 80% | ✅ `test-unit --cov-fail-under=80` | — |
 | jscpd ≤ 3% | ✅ `just dup` w gate | — |
 | openapi-ts | ✅ `just api-types` + `frontend/src/api/` | regeneruj przy zmianie API |
-| size-limit / perf | ❌ stub | po dalszym budgetingu |
+| size-limit / perf | ✅ `just perf` initial JS gzip < 250 kB | k6 p95 nadal stub |
 | agentlint | ✅ `just agentlint` + baseline | — |
 | lazy PostHog | ✅ dynamic `import("posthog-js")` | — |
 
@@ -130,7 +130,8 @@ Pełna lista z „dlaczego”: [docs/ops/docs-debt.md](ops/docs-debt.md)
 
 | Kolejność | Co | Nie mylić z |
 |---|---|---|
-| następny | U-size-limit-real `just perf` fail CI | echo ≠ DoD; gzip initial < 250 kB |
+| następny | U-pdf-spans viewer + spany HITL, lazy pdf.js | nie OCR; nie dmuchać 250 kB |
+| U-size-limit-real DONE | `just perf` + gate pada przy ≥ 250 kB | k6 nadal echo |
 | U-a11y DONE | skip-to-main + focus-visible + Tab/⌘K | RTL ≠ DoD |
 | U-density DONE | compact + toggle na 5 listach biznesowych | nie tylko users |
 | U-palette-ops DONE | ⌘K extract / accept-focus / save-view / clear-session | nie tylko nawigacja; clear = client |
@@ -156,11 +157,12 @@ Pełna lista z „dlaczego”: [docs/ops/docs-debt.md](ops/docs-debt.md)
 | 0.13 DONE | Split-screen HITL (podgląd \| recenzja) | tekst źródła, nie PDF canvas |
 | 0.12 DONE | JWT zamiast spoofowalnych `X-Organization-Id` / `X-User-Id` | hello HS256, nie IdP |
 | 0.10+ (nie ten plaster) | żywy instructor/OpenAI w CI, llm-guard transformers, presidio, promptfoo 30 cenników, langfuse cloud | 0.10 = echo fixtures + no-op bez kluczy |
+| U-size-limit-real DONE | just perf size-limit w gate | k6 nadal echo |
 | U-a11y DONE | skip-to-main + focus-visible | RTL ≠ DoD |
 | U-density DONE | compact + toggle na listach biznesowych | nie tylko users |
 | U-palette-ops DONE | ⌘K akcje operatora | nie tylko nawigacja |
 | U-art50 DONE | label „propozycja AI” na szkicu HITL | nie PDF prawny; nie Exit Wave FE |
-| gdy recipe realne | `just perf` / size-limit / k6 / vulture / pip-audit | dziś `echo`, nie DoD |
+| gdy recipe realne | k6 / vulture / pip-audit | dziś `echo`, nie DoD; `just perf` = size-limit |
 | po Pro/Team | branch protection UI (required check `gate`) | Free private → API 403 |
 
 **Nie ruszać:** ręczny edit `frontend/src/api/*` (flatten anyOf\|null → cast w wrapperze); fałszywy `refactor_ratio`; persony `.cursor/agents/`; dump `Informacje z claude/`.

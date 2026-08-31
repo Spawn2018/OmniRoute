@@ -3,8 +3,8 @@ default: gate
 agent-refs:
     python scripts/quality/check_agent_refs.py
 
-gate: agent-refs agentlint check test-unit arch frontend-typecheck frontend-test dup
-    @echo "gate: agent-refs + agentlint + check + test-unit + arch + frontend + dup OK"
+gate: agent-refs agentlint check test-unit arch frontend-typecheck frontend-test dup perf
+    @echo "gate: agent-refs + agentlint + check + test-unit + arch + frontend + dup + perf OK"
 
 dev:
     docker compose up -d db
@@ -32,7 +32,8 @@ arch:
     lint-imports
 
 perf:
-    @echo "perf: stub, nie DoD (k6 / budżety p95)"
+    cd frontend && pnpm build
+    python scripts/quality/check_initial_js_size.py frontend/dist
 
 audit:
     @echo "audit: stub, nie DoD (pip-audit)"

@@ -20,7 +20,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **0.21 T4 DONE:** `hello_token` default false; mint UUID tylko przy fladze
 - **0.22 T5 DONE:** JWT iss/aud/jti/ver; TTL 15 min
 - **0.23 S1 DONE:** JWT_SECRET z GitHub Encrypted Secrets; literał usunięty z gate.yml
-- **U-a11y DONE:** skip-to-main + `:focus-visible` + ścieżka operatora. **Następny (kod):** U-size-limit-real. Auth0 I1 po wszystkich U-*
+- **U-size-limit-real DONE:** `just perf` = build + gzip initial JS < 250 kB; w `just gate`. **Następny (kod):** U-pdf-spans. k6/vulture/pip-audit nadal echo. Auth0 I1 po wszystkich U-*
+- **U-a11y DONE:** skip-to-main + `:focus-visible` + ścieżka operatora.
 - **U-density DONE:** compact + toggle na users / charge-codes / rate-lines / charges / extractions.
 - **U-palette-ops DONE:** ⌘K akcje operatora (extract, accept-focus, save-view, clear-session).
 - **U-art50 DONE:** label „propozycja AI” na recenzji HITL.
@@ -49,6 +50,6 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **Wizja, nie kod:** outbox, Temporal/Hatchet/OTel jako działające systemy
 - **Backlog produktu:** HTTP extract vs live Postgres; PDF canvas
 - **0.14 leftover (dlaczego nie w tym plasterze):** `api/extractions.py:78` `UnparseableDocument("Brak input_text")` — gałąź obronna po XOR Pydantic (0.11); C901/jscpd na diffie czyste, bez refaktoru testów HTTP
-- **Ops:** branch protection UI (GitHub Free private 403) — [branch-protection.md](branch-protection.md); `just perf` / size-limit / k6 / vulture / pip-audit = echo
+- **Ops:** branch protection UI (GitHub Free private 403) — [branch-protection.md](branch-protection.md); k6 / vulture / pip-audit = echo; `just perf` = size-limit (U-size-limit-real)
 - **Kontrakt FE:** nie edytuj ręcznie `frontend/src/api/*` (flatten anyOf|null → cast w wrapperze)
 - **Zakaz:** fałszywe ruchy `refactor_ratio`, folder `.cursor/agents/` z personami, dump `Informacje z claude/` do nowych docs
