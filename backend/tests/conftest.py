@@ -126,6 +126,13 @@ async def engine() -> AsyncGenerator:
                   CREATE ROLE tenant_tester LOGIN PASSWORD 'test' NOINHERIT NOBYPASSRLS;
                 EXCEPTION WHEN duplicate_object THEN NULL;
                 END $$;
+                DO $$ BEGIN
+                  CREATE ROLE omniroute_app LOGIN PASSWORD 'omniroute'
+                    NOSUPERUSER NOCREATEDB NOCREATEROLE NOINHERIT NOBYPASSRLS;
+                EXCEPTION WHEN duplicate_object THEN
+                  ALTER ROLE omniroute_app WITH NOSUPERUSER NOCREATEDB
+                    NOCREATEROLE NOINHERIT NOBYPASSRLS LOGIN;
+                END $$;
                 """
             ),
         )
@@ -133,10 +140,17 @@ async def engine() -> AsyncGenerator:
         await conn.run_sync(Base.metadata.create_all)
         await _apply_rls_policies(conn)
         await conn.execute(text("GRANT USAGE ON SCHEMA public TO tenant_tester"))
+        await conn.execute(text("GRANT USAGE ON SCHEMA public TO omniroute_app"))
         await conn.execute(
             text(
                 "GRANT SELECT, INSERT, UPDATE, DELETE "
                 "ON ALL TABLES IN SCHEMA public TO tenant_tester"
+            )
+        )
+        await conn.execute(
+            text(
+                "GRANT SELECT, INSERT, UPDATE, DELETE "
+                "ON ALL TABLES IN SCHEMA public TO omniroute_app"
             )
         )
 

@@ -35,4 +35,5 @@
 | 2026-09-01 | docs/OS | FE | Exit Wave FE: twardy pasek powierzchni 2026 (U-density…U-admin-ref, Art. 50 UI); adapter+RTL nie zamyka fali |
 | 2026-09-01 | D0 | OS | uczciwość OS: stos dziś vs cel; GitHub Encrypted Secrets; `.cursorignore` dump; leftover≠DONE; HITL bez zmian |
 | 2026-09-01 | 0.15 T0 | M-20 | `document_base64` max_length → 422 przed decode |
-| — | leftover | M-01 | **Następny:** 0.16 T1 `omniroute_app` NOBYPASSRLS |
+| 2026-09-01 | 0.16 T1 | M-01 | rola `omniroute_app` NOBYPASSRLS; runtime URL; RLS integration = CI |
+| — | leftover | M-01 | **Następny:** 0.17 T2 matryca RLS S1–S6 + WITH CHECK |

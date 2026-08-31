@@ -12,7 +12,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **0.15 DONE:** hasła argon2id + `refresh_token` + rotacja; UUID-login wycięty. RLS isolation = integration CI (lokalnie PG wisiał)
 - **D0 DONE:** AGENTS stos dziś vs cel; Infisical wycięty; `.cursorignore` na dump; `AGENTS.ARCHIVE.md`; leftover ≠ DONE. HITL i 13 zasad zostają.
 - **0.15 T0 DONE:** `document_base64` max_length 2_666_668 → 422 przed decode
-- **Następny (kod):** 0.16 T1 `omniroute_app` NOBYPASSRLS ([PROGRAM-12M.md](../state/PROGRAM-12M.md))
+- **0.16 T1 DONE:** rola `omniroute_app` NOBYPASSRLS; `DATABASE_URL` runtime. Integration RLS = CI (lokalnie PG wisiał)
+- **Następny (kod):** 0.17 T2 matryca RLS S1–S6 + WITH CHECK ([PROGRAM-12M.md](../state/PROGRAM-12M.md))
 - **Leftover ≠ DONE:** wiersz w tym pliku / PLAN nie zamyka plastra i nie zastępuje `just gate`
 - **OAuth/OIDC:** Auth0 I1 **po Wave A**; nie następny kod. 0.12 JWT = hello HS256
 - **0.11 DONE:** HTTP XOR 422 + vitest `extractionCreateBody`

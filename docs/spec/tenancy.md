@@ -19,5 +19,13 @@
 - Tożsamość wyłącznie z JWT (`sub`, `org`). OpenFGA = autoryzacja. RLS z `org`.
 - Tabela `refresh_token` + RLS. Logowanie: polityka SELECT po `app.login_email` (org jeszcze nieznane).
 
+## Runtime RLS (0.16 T1)
+
+- Rola `omniroute_app`: `NOSUPERUSER` + `NOBYPASSRLS` (migracja 005)
+- `DATABASE_URL` runtime = `omniroute_app`; `DATABASE_URL_SYNC` = owner `omniroute` (Alembic)
+- Superuser `omniroute` nie jest rolą aplikacji
+- Test atrybutów roli + SELECT bez `app.current_org` → 0 wierszy: integration CI (lokalnie PG może wisieć)
+
 ## Poza zakresem (nadal)
 OpenFGA (0.4 — zrobione), UI admin, billing, IdP/OIDC.
+Matryca S1–S6 + WITH CHECK = 0.17 T2.
