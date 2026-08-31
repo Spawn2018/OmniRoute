@@ -25,7 +25,7 @@
 ## Kryteria akceptacji
 - [x] Endpoint bez uprawnienia → 403
 - [x] Unit gate lokalnie
-- [ ] Integration OpenFGA green w CI (po push)
+- [x] Integration OpenFGA green w CI
 
 ---
 
