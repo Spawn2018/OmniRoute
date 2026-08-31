@@ -36,16 +36,46 @@ export class ApiError extends Error {
 }
 
 export async function apiGet<T>(path: string): Promise<T> {
+  const response = await tenantFetch(path, { method: "GET" })
+  return (await response.json()) as T
+}
+
+export async function apiSend<T>(
+  path: string,
+  options: { method: "POST" | "PATCH" | "DELETE"; body?: unknown },
+): Promise<T> {
+  const response = await tenantFetch(path, {
+    method: options.method,
+    body: options.body === undefined ? undefined : JSON.stringify(options.body),
+    headers: options.body === undefined ? undefined : { "Content-Type": "application/json" },
+  })
+  if (response.status === 204) {
+    return undefined as T
+  }
+  return (await response.json()) as T
+}
+
+async function tenantFetch(
+  path: string,
+  init: {
+    method: string
+    body?: string
+    headers?: Record<string, string>
+  },
+): Promise<Response> {
   const { organizationId, userId } = getTenantContext()
   if (!organizationId || !userId) {
     throw new ApiError("Ustaw X-Organization-Id i X-User-Id w ustawieniach sesji", 400)
   }
 
   const response = await fetch(path, {
+    method: init.method,
+    body: init.body,
     headers: {
       Accept: "application/json",
       "X-Organization-Id": organizationId,
       "X-User-Id": userId,
+      ...init.headers,
     },
   })
 
@@ -54,7 +84,7 @@ export async function apiGet<T>(path: string): Promise<T> {
     throw new ApiError(detail || response.statusText, response.status)
   }
 
-  return (await response.json()) as T
+  return response
 }
 
 export async function fetchTenancyUsers(): Promise<AppUser[]> {

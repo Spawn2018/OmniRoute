@@ -15,4 +15,5 @@
 | 2026-08-31 | ADR-0002 | — | Frontend platform 2026 (Thoughtworks/SoR/NN/G) + DataTableShell |
 | 2026-08-31 | Audyt | — | Gate vs DoD + B.7 Free/403 wciągnięte do planu, AGENTS, skills, rules |
 | 2026-08-31 | 0.5 | UI | Frontend Shell: Vite, Compiler, TanStack R/Q/Form, shadcn, ⌘K, PostHog, /tenancy/users |
-| — | 0.6 | UI/M-01 | **Następny po push 0.5:** DataTableShell + vitest + table_view RLS |
+| 2026-08-31 | 0.6 | UI/M-01 | DataTableShell + table_view RLS + ColumnEditor DnD + ViewManager + vitest |
+| — | B.7 / jakość | — | Branch protection (Pro) · openapi-ts · cov/jscpd |

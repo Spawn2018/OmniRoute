@@ -3,8 +3,8 @@ default: gate
 agent-refs:
     python scripts/quality/check_agent_refs.py
 
-gate: agent-refs check test-unit arch frontend-typecheck
-    @echo "gate: agent-refs + check + test-unit + arch + frontend-typecheck OK"
+gate: agent-refs check test-unit arch frontend-typecheck frontend-test
+    @echo "gate: agent-refs + check + test-unit + arch + frontend-typecheck + frontend-test OK"
 
 dev:
     docker compose up -d db
@@ -63,6 +63,9 @@ frontend-build:
 
 frontend-typecheck:
     cd frontend && pnpm typecheck
+
+frontend-test:
+    cd frontend && pnpm test
 
 docs:
     @echo "docs: Faza B+"

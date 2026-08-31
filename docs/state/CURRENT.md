@@ -1,37 +1,29 @@
 # Bieżący focus
 
 **Faza:** B — DataTableShell  
-**Repo:** https://github.com/Spawn2018/OmniRoute (`main` @ `c985089`)  
-**Następny krok:** plaster **0.6 DataTableShell** (po green CI dla 0.5)
+**Repo:** https://github.com/Spawn2018/OmniRoute (`main`)  
+**Następny krok:** push **0.6** + green CI → B.7 / slot jakości
 
-**Plan:** [docs/PLAN-REALIZACJA.md](docs/PLAN-REALIZACJA.md) (§ Gate dziś vs DoD)  
-**ADR:** [docs/adr/0001-cursor-software-factory-weryfikacja.md](docs/adr/0001-cursor-software-factory-weryfikacja.md) · [docs/adr/0002-frontend-platform-2026.md](docs/adr/0002-frontend-platform-2026.md)
-
----
-
-# Plaster 0.5 — Frontend Shell 2026
-
-**Delta:** [docs/deltas/archived/0.5-frontend-shell.md](docs/deltas/archived/0.5-frontend-shell.md)  
-**Status:** **wypchnięty** (`c985089`) — czekamy na green CI
+**Plan:** [docs/PLAN-REALIZACJA.md](docs/PLAN-REALIZACJA.md)  
+**ADR:** [docs/adr/0002-frontend-platform-2026.md](docs/adr/0002-frontend-platform-2026.md)
 
 ---
 
-# Plaster 0.6 — DataTableShell (AKTYWNY po green CI)
+# Plaster 0.6 — DataTableShell
 
-**Delta:** [docs/deltas/open/0.6-datatable-views.md](docs/deltas/open/0.6-datatable-views.md)
+**Delta:** [docs/deltas/open/0.6-datatable-views.md](docs/deltas/open/0.6-datatable-views.md)  
+**Status:** lokalnie gotowy — commit/push
 
-## Kolejność implementacji (jeden pion)
-1. Migracja `table_view` + RLS + test izolacji  
-2. Model → repo → service → API CRUD (+ OpenFGA)  
-3. Frontend: DataTableShell + ColumnEditor + ViewManager  
-4. Consumer `tenancy.users`  
-5. vitest minimum · (openapi-ts jeśli mieści się)  
-6. PostHog events
+## Dostarczone
+`table_view` RLS + API CRUD + OpenFGA `can_manage_table_views` · DataTableShell (ColumnEditor DnD, ViewManager, virtual, filtry) · consumer `tenancy.users` · vitest
 
-## Poza zakresem
-cov/jscpd w gate, B.7 Pro, JWT, Faza C
+## Poza zakresem / później
+openapi-ts · cov-fail-under / jscpd · lazy PostHog · B.7 Pro · JWT · Faza C
 
 ---
 
-## Następne po 0.6
-B.7 (gdy Pro/public) · slot jakości · Faza C · Faza D
+## Następne (bez kolizji)
+1. Green CI dla 0.6  
+2. B.7 lub procedura ręczna  
+3. Slot jakości (openapi-ts, cov, jscpd)  
+4. Faza C

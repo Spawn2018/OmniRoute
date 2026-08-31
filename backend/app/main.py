@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
 from app.api.router import api_router
-from app.domain.errors import DomainError, PermissionDenied, TenantContextMissing
+from app.domain.errors import DomainError, PermissionDenied, ResourceNotFound, TenantContextMissing
 
 app = FastAPI(title="OmniRoute", version="0.1.0")
 app.include_router(api_router)
@@ -11,6 +11,11 @@ app.include_router(api_router)
 @app.exception_handler(PermissionDenied)
 async def permission_denied_handler(_request: Request, exc: PermissionDenied) -> JSONResponse:
     return JSONResponse(status_code=403, content={"detail": str(exc) or "Brak uprawnień"})
+
+
+@app.exception_handler(ResourceNotFound)
+async def resource_not_found_handler(_request: Request, exc: ResourceNotFound) -> JSONResponse:
+    return JSONResponse(status_code=404, content={"detail": str(exc)})
 
 
 @app.exception_handler(TenantContextMissing)

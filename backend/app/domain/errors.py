@@ -8,3 +8,7 @@ class TenantContextMissing(DomainError):
 
 class PermissionDenied(DomainError):
     """Brak uprawnienia OpenFGA — endpoint bez jawnej zgody = odmowa."""
+
+
+class ResourceNotFound(DomainError):
+    """Zasób nie istnieje w kontekście tenanta / właściciela."""

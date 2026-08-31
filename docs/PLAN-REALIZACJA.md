@@ -37,12 +37,12 @@ flowchart LR
 | ruff + mypy | ✅ `just check` | — |
 | pytest unit + integration | ✅ CI | — |
 | import-linter | ✅ `just arch` | — |
-| frontend typecheck | ✅ `frontend-typecheck` w gate (po push 0.5) | — |
+| frontend typecheck | ✅ `frontend-typecheck` w gate | — |
+| vitest | ✅ `frontend-test` w gate (od 0.6) | — |
 | cov ≥ 80% | ❌ brak `--cov-fail-under` | spłata po 0.6 / slot jakości |
-| vitest | ❌ brak | minimum w **0.6** |
 | jscpd ≤ 3% | ❌ `just dup` = echo | Faza D / slot jakości |
-| openapi-ts | ❌ `just api-types` = echo; tymczasowy `lib/api.ts` | **0.6** lub plaster kontraktu |
-| size-limit / perf | ❌ stub | po lazy PostHog + 0.6 |
+| openapi-ts | ❌ `just api-types` = echo; tymczasowy `lib/api.ts` | slot kontraktu po 0.6 |
+| size-limit / perf | ❌ stub | po lazy PostHog |
 | agentlint | ❌ echo | Faza D |
 
 ---

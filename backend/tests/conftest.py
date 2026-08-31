@@ -10,6 +10,7 @@ from app.core.database import bind_tenant
 from app.models.app_user import AppUser
 from app.models.base import Base
 from app.models.organization import Organization
+from app.models.table_view import TableView  # noqa: F401 — rejestr metadanych RLS
 
 ADMIN_TEST_DATABASE_URL = os.getenv(
     "ADMIN_TEST_DATABASE_URL",
@@ -40,6 +41,17 @@ async def _apply_rls_policies(conn) -> None:
         text(
             """
             CREATE POLICY app_user_tenant_isolation ON app_user
+            USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
+            """
+        ),
+    )
+    await conn.execute(text("ALTER TABLE table_view ENABLE ROW LEVEL SECURITY"))
+    await conn.execute(text("ALTER TABLE table_view FORCE ROW LEVEL SECURITY"))
+    await conn.execute(text("DROP POLICY IF EXISTS table_view_tenant_isolation ON table_view"))
+    await conn.execute(
+        text(
+            """
+            CREATE POLICY table_view_tenant_isolation ON table_view
             USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
             """
         ),
