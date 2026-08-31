@@ -9,3 +9,5 @@
 ## Zakaz
 - zapis `rate_line` / `charge` z tego serwisu (HC-04)
 - import innych BC services
+- wywołanie LLM bez `ExtractionInputGuard`
+- logowanie `OPENAI_API_KEY` / treści sekretów z guarda

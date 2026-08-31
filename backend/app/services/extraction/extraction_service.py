@@ -3,6 +3,7 @@ from uuid import UUID, uuid4
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.ai_transforms.extraction.input_guard import ExtractionInputGuard
 from app.ai_transforms.extraction.protocol import DocumentExtractor
 from app.ai_transforms.extraction.provider import default_extractor
 from app.domain.errors import DraftNotPending, ResourceNotFound
@@ -17,10 +18,12 @@ class ExtractionService:
         self,
         session: AsyncSession,
         extractor: DocumentExtractor | None = None,
+        guard: ExtractionInputGuard | None = None,
     ) -> None:
         self._drafts = ExtractionDraftRepository(session)
         self._session = session
         self._extractor = extractor or default_extractor()
+        self._guard = guard or ExtractionInputGuard()
 
     async def list_drafts(self, status: str | None = "pending") -> list[ExtractionDraft]:
         return await self._drafts.list_by_status(status)
@@ -33,6 +36,7 @@ class ExtractionService:
         source_ref: str,
         input_text: str,
     ) -> ExtractionDraft:
+        self._guard.scan(input_text)
         payload = self._extractor.extract(source_ref=source_ref, input_text=input_text)
         draft = ExtractionDraft(
             id=uuid4(),

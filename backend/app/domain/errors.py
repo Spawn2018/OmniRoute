@@ -16,3 +16,11 @@ class ResourceNotFound(DomainError):
 
 class DraftNotPending(DomainError):
     """Akceptacja/odrzucenie tylko dla szkicu w statusie pending."""
+
+
+class UntrustedExtractionInput(DomainError):
+    """Wejście odrzucone przez llm-guard zanim trafi do modelu."""
+
+
+class ExtractionProviderUnavailable(DomainError):
+    """Provider instructor bez klucza / nieznana wartość EXTRACTION_PROVIDER."""

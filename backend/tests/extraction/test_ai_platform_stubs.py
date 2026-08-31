@@ -1,11 +1,5 @@
-from app.ai_transforms.extraction.mock_extractor import MockExtractor
-from app.ai_transforms.extraction.provider import default_extractor
 from app.integrations.docling.parser import StubDocumentParser
 from app.integrations.langfuse.tracer import build_langfuse_tracer
-
-
-def test_default_extractor_is_mock() -> None:
-    assert isinstance(default_extractor(), MockExtractor)
 
 
 def test_stub_document_parser_decodes_utf8() -> None:

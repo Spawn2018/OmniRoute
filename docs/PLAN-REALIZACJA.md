@@ -86,8 +86,12 @@ flowchart LR
 ### C.2 scaffold (równolegle z 0.7) — **DONE**
 - docling stub · langfuse no-op · `promptfoo/promptfoo.yaml` · knowledge cards
 
-### C.3+ (następne)
-0.8 instructor+llm-guard · 0.9 docling A/B · 0.10 langfuse/promptfoo CI
+### C.3 / 0.8 instructor + llm-guard — **DONE**
+- Guard na wejściu · InstructorExtractor · provider mock|instructor
+- Delta: `docs/deltas/archived/0.8-instructor-llm-guard.md`
+
+### C.4+ (następne)
+0.9 docling A/B · 0.10 langfuse/promptfoo CI
 
 ## Faza D — Rytm operacyjny — **DONE (minimal)**
 - `agentlint` w `just gate` + baseline

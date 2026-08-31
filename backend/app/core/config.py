@@ -12,6 +12,10 @@ class Settings(BaseSettings):
     langfuse_public_key: str = ""
     langfuse_secret_key: str = ""
     langfuse_host: str = "https://cloud.langfuse.com"
+    extraction_provider: str = "mock"
+    extraction_model: str = "gpt-4o-mini"
+    openai_api_key: str = ""
+    extraction_llm_guard: bool = False
 
 
 settings = Settings()
