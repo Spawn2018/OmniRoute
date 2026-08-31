@@ -26,10 +26,6 @@ jobs:
           --health-interval 5s
           --health-timeout 5s
           --health-retries 5
-      openfga:
-        image: openfga/openfga:v1.8.13
-        ports:
-          - 8080:8080
 
     env:
       DATABASE_URL: postgresql+asyncpg://omniroute:omniroute@localhost:5432/omniroute
@@ -55,8 +51,9 @@ jobs:
         run: |
           PGPASSWORD=omniroute psql -h localhost -U omniroute -d postgres -c "CREATE DATABASE omniroute_test;"
 
-      - name: Wait for OpenFGA
+      - name: Start OpenFGA
         run: |
+          docker run -d --name openfga -p 8080:8080 openfga/openfga:v1.8.13 run
           for i in $(seq 1 30); do
             if curl -sf http://localhost:8080/healthz >/dev/null; then
               echo "OpenFGA ready"
@@ -64,7 +61,7 @@ jobs:
             fi
             sleep 1
           done
-          echo "OpenFGA not ready"
+          docker logs openfga || true
           exit 1
 
       - name: Run migrations
