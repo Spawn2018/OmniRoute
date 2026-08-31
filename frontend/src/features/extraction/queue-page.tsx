@@ -5,6 +5,7 @@ import { useState } from "react"
 import { DataTableShell } from "@/components/data-table/data-table-shell"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { HitlReviewSplit } from "@/features/extraction/hitl-review-split"
 import { track } from "@/lib/analytics"
 import {
   acceptExtractionDraft,
@@ -34,6 +35,7 @@ export function ExtractionQueuePage() {
   const [inputText, setInputText] = useState("THC 125.50 EUR\nweekend note\nBAF 12 USD")
   const [documentBase64, setDocumentBase64] = useState<string | null>(null)
   const [fileName, setFileName] = useState<string | null>(null)
+  const [selectedDraftId, setSelectedDraftId] = useState<string | null>(null)
 
   const query = useQuery({
     queryKey: ["extractions", "pending", ctx.organizationId],
@@ -64,6 +66,7 @@ export function ExtractionQueuePage() {
     mutationFn: (draftId: string) => acceptExtractionDraft(draftId),
     onSuccess: () => {
       track("extraction_draft_accepted")
+      setSelectedDraftId(null)
       invalidate()
     },
   })
@@ -72,6 +75,7 @@ export function ExtractionQueuePage() {
     mutationFn: (draftId: string) => rejectExtractionDraft(draftId),
     onSuccess: () => {
       track("extraction_draft_rejected")
+      setSelectedDraftId(null)
       invalidate()
     },
   })
@@ -126,26 +130,14 @@ export function ExtractionQueuePage() {
       id: "actions",
       header: "Akcje",
       cell: ({ row }) => (
-        <div className="flex gap-1">
-          <Button
-            type="button"
-            size="sm"
-            variant="default"
-            disabled={acceptMutation.isPending}
-            onClick={() => acceptMutation.mutate(row.original.id)}
-          >
-            Akceptuj
-          </Button>
-          <Button
-            type="button"
-            size="sm"
-            variant="outline"
-            disabled={rejectMutation.isPending}
-            onClick={() => rejectMutation.mutate(row.original.id)}
-          >
-            Odrzuć
-          </Button>
-        </div>
+        <Button
+          type="button"
+          size="sm"
+          variant="outline"
+          onClick={() => setSelectedDraftId(row.original.id)}
+        >
+          Otwórz
+        </Button>
       ),
     }),
   ]
@@ -233,6 +225,13 @@ export function ExtractionQueuePage() {
           {(query.error as Error).message}
         </div>
       ) : null}
+
+      <HitlReviewSplit
+        draft={query.data?.find((row) => row.id === selectedDraftId) ?? null}
+        busy={acceptMutation.isPending || rejectMutation.isPending}
+        onAccept={(draftId) => acceptMutation.mutate(draftId)}
+        onReject={(draftId) => rejectMutation.mutate(draftId)}
+      />
 
       {query.data ? (
         <DataTableShell

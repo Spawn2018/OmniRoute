@@ -1,7 +1,7 @@
 # M-20 — Ekstrakcja dokumentów (HITL)
 
-**Status:** 0.7–0.12 DONE · następny leftover: split-screen HITL  
-**Delty:** `docs/deltas/archived/0.7-ai-extract-hitl.md`, `0.8-instructor-llm-guard.md`, `0.9-docling-ab.md`, `0.10-langfuse-promptfoo.md`, `0.11-hitl-xor-vitest.md`, `0.12-jwt-session.md`  
+**Status:** 0.7–0.13 DONE · następny leftover: HTTP happy-path extract/accept  
+**Delty:** `docs/deltas/archived/0.7-ai-extract-hitl.md`, `0.8-instructor-llm-guard.md`, `0.9-docling-ab.md`, `0.10-langfuse-promptfoo.md`, `0.11-hitl-xor-vitest.md`, `0.12-jwt-session.md`, `0.13-hitl-split.md`  
 **GROUNDING:** HC-03 (`source_ref`, `unparsed_regions`), HC-04 (zero zapisu autonomicznego)
 
 ## Zakres (kod dziś)
@@ -9,7 +9,7 @@
 - Tabela `extraction_draft` + RLS + test izolacji tenantów
 - API: list / extract→draft / accept / reject; upload `document_base64` XOR `input_text`
 - OpenFGA: `can_review_extractions` na każdym endpoincie `/extractions`
-- UI: kolejka DataTableShell + formularz (nie split-screen podgląd | formularz)
+- UI: kolejka DataTableShell + split-screen (podgląd `input_text` | recenzja)
 - Provider: `EXTRACTION_PROVIDER=mock` (default CI) | `instructor` (wymaga `OPENAI_API_KEY`)
 - Guard: skanery regex przed modelem; pakiet `llm-guard` (transformers) tylko przy `EXTRACTION_LLM_GUARD=true`
 - Parser: fingerprint + A (`stub` / `pdf_strings`) vs B (opcjonalny docling); tryb `ab` → `ab_delta_chars`
@@ -19,8 +19,8 @@
 - Zapis `rate_line` / `charge` z serwisu ekstrakcji
 - Żywy instructor / OpenAI w CI, langfuse cloud, eval promptfoo 30 cenników
 - Presidio na każdym endpoincie, outbox, Temporal/Hatchet
-- Split-screen HITL
-- Vitest: `extractionCreateBody` (XOR plik/tekst); brak RTL całej kolejki / split-screen
+- Split-screen PDF canvas / OCR overlay
+- Vitest: `extractionCreateBody` (XOR) + `hitlSplitView`; brak RTL całej kolejki
 
 ## Kontrakt HITL
 
@@ -60,7 +60,7 @@ CI nie odpala transformerów llm-guard ani OpenAI.
 ## UI
 
 - Kolejka: `frontend/src/features/extraction/queue-page.tsx` na DataTableShell
-- Split-screen HITL = backlog UX, nie obecny kanon
+- Split-screen: `hitl-review-split.tsx` — podgląd źródła | kandydaci + accept/reject
 - Typy: `just api-types` → `frontend/src/api/`; wrapper rzutuje `ExtractRequest` (flatten anyOf|null)
 
 ## Kryteria 0.7–0.10 (spełnione)
@@ -75,13 +75,13 @@ CI nie odpala transformerów llm-guard ani OpenAI.
 
 ## Następny leftover
 
-Split-screen HITL (podgląd \| formularz). Presidio i żywy llm-guard = później.
+HTTP happy-path extract/accept/reject. Presidio i żywy llm-guard = później.
 Nie startuj kolejnego plastra przy niepushniętym WIP.
 
-### Poza 0.12 (zostaje)
+### Poza 0.13 (zostaje)
 
 - Cloud Langfuse jako wymóg merge
 - 30 cenników eval (osobna decyzja danych)
 - Presidio na wszystkich endpointach API
-- HTTP happy-path extract/accept/reject, split-screen — [docs/ops/docs-debt.md](../ops/docs-debt.md)
+- HTTP happy-path extract/accept/reject, PDF canvas — [docs/ops/docs-debt.md](../ops/docs-debt.md)
 - OAuth/OIDC, hasła, rotacja refresh

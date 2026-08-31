@@ -31,8 +31,7 @@ Pencil & Paper enterprise data tables, State of React/JS 2025.
 - Command palette ⌘K / Ctrl+K (nawigacja + akcje).
 - hover / focus-visible / active wyraźne.
 - Animacje 150–200ms; motion tylko gdy uzasadnione.
-- HITL ekstrakcji dziś: kolejka DataTableShell + formularz.
-  Split-screen (podgląd | formularz) = **backlog UX**, nie obecny kanon.
+- HITL ekstrakcji: kolejka DataTableShell + split-screen (podgląd | recenzja).
 
 ## WZORCE
 - shadcn/ui + Tailwind v4 + Radix — styl linijka po linijce.

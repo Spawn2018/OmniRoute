@@ -36,6 +36,6 @@ Seed: `scripts/dev_seed_local.py`.
 
 ## Stan faz
 
-- **0.5–0.11 + B.7:** done (Frontend Shell, DataTableShell, HITL, instructor, docling A/B, langfuse/promptfoo echo, XOR/vitest; branch protection = procedura Free/403)
-- **Następny:** JWT (zamiast spoofowalnych headerów)
+- **0.5–0.13 + B.7:** done (HITL, JWT hello, split-screen recenzji, branch protection = procedura Free/403)
+- **Następny:** HTTP happy-path extract/accept/reject
 - Szczegóły: `docs/PLAN-REALIZACJA.md` · dług poza sync: `docs/ops/docs-debt.md`

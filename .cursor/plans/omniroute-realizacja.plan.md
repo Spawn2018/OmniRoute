@@ -33,7 +33,10 @@ todos:
     content: "0.11 HTTP XOR 422 + vitest extractionCreateBody"
     status: completed
   - id: leftover-after-011
-    content: "Następny: JWT; potem split-screen, echo recipes, branch protection UI — docs/ops/docs-debt.md"
+    content: "0.12 JWT + 0.13 split-screen HITL DONE"
+    status: completed
+  - id: leftover-after-013
+    content: "Następny: HTTP happy-path extract/accept/reject; potem echo recipes, branch protection UI"
     status: pending
   - id: phase-d-ops-rhythm
     content: "D minimal: agentlint w just gate, pr-nudge, weekly-refactor + friday-retrospective"
@@ -710,12 +713,11 @@ agentlint w `just gate`; `pr-nudge.yml`; weekly-refactor + friday-retrospective.
 
 **Otwarte (kolejność pracy, nie blokada planu):**
 
-1. JWT zamiast spoofowalnych headerów sesji
-2. Split-screen HITL
-3. Branch protection w UI GitHub — po Pro/Team; do wtedy `docs/ops/branch-protection.md`
-4. Echo recipes (`just perf` / k6 / vulture / pip-audit) — dopiero gdy nie `echo`
-5. `npx promptfoo eval` / 30 cenników / żywy LLM / llm-guard ML / presidio / langfuse cloud
-6. HTTP happy-path `/extractions` (accept/reject) — poza XOR 422
+1. HTTP happy-path `/extractions` (extract/accept/reject) — poza XOR 422
+2. Branch protection w UI GitHub — po Pro/Team; do wtedy `docs/ops/branch-protection.md`
+3. Echo recipes (`just perf` / k6 / vulture / pip-audit) — dopiero gdy nie `echo`
+4. `npx promptfoo eval` / 30 cenników / żywy LLM / llm-guard ML / presidio / langfuse cloud
+5. OAuth/OIDC, hasła, rotacja refresh
 
 Canvas `post-audit-review` = przegląd, nie lista do kodu. Rejestr: `docs/ops/docs-debt.md` + `docs/PLAN-REALIZACJA.md` § leftoverów. Załączony plan software-house **nietknięty**.
 
