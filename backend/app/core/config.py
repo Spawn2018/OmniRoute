@@ -6,6 +6,9 @@ class Settings(BaseSettings):
 
     database_url: str = "postgresql+asyncpg://omniroute:omniroute@localhost:5432/omniroute"
     database_url_sync: str = "postgresql://omniroute:omniroute@localhost:5432/omniroute"
+    openfga_api_url: str = "http://localhost:8080"
+    openfga_store_id: str = ""
+    openfga_model_id: str = ""
 
 
 settings = Settings()

@@ -12,4 +12,4 @@
 - Repozytoria filtrują przez RLS (brak jawnego organization_id w SELECT — kontekst sesji)
 
 ## Poza zakresem
-OpenFGA, outbox, UI admin, billing
+OpenFGA, UI admin, billing.

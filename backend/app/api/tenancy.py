@@ -4,7 +4,7 @@ from fastapi import APIRouter, Depends
 from pydantic import BaseModel, ConfigDict, EmailStr
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.api.deps import require_tenant_session
+from app.api.deps import require_permission, require_tenant_session
 from app.services.tenancy.service import TenancyService
 
 
@@ -22,6 +22,7 @@ router = APIRouter(prefix="/tenancy", tags=["tenancy"])
 
 @router.get("/users", response_model=list[AppUserResponse])
 async def list_users(
+    _authz: None = Depends(require_permission("can_list_users", "organization")),
     session: AsyncSession = Depends(require_tenant_session),
 ) -> list[AppUserResponse]:
     service = TenancyService(session)

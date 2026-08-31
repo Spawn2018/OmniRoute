@@ -13,7 +13,7 @@ todos:
     status: completed
   - id: phase-b-app-skeleton
     content: Szkielet FastAPI+Vite; matryca modułu; RLS 0.3; OpenFGA; import-linter
-    status: in_progress
+    status: completed
   - id: phase-c-ai-platform
     content: instructor + docling A/B + langfuse + promptfoo; Knowledge Library index (nie dump kontekstu)
     status: pending

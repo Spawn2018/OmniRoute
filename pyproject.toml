@@ -10,6 +10,7 @@ dependencies = [
     "email-validator>=2.2",
     "fastapi>=0.115",
     "granian>=1.6",
+    "openfga-sdk>=0.9",
     "pendulum>=3.0",
     "psycopg2-binary>=2.9",
     "pydantic-settings>=2.6",
@@ -53,8 +54,12 @@ mypy_path = "backend"
 plugins = []
 
 [[tool.mypy.overrides]]
-module = ["alembic.*"]
+module = ["alembic.*", "openfga_sdk", "openfga_sdk.*"]
 ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["app.integrations.openfga.*"]
+disallow_untyped_calls = false
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"

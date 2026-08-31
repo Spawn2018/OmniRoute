@@ -15,5 +15,20 @@ services:
       timeout: 5s
       retries: 5
 
+  openfga:
+    image: openfga/openfga:v1.8.13
+    command: ["run"]
+    ports:
+      - "8080:8080"
+      - "3000:3000"
+    environment:
+      OPENFGA_PLAYGROUND_ENABLED: "true"
+    healthcheck:
+      test: ["CMD", "/usr/local/bin/grpc_health_probe", "-addr=localhost:8081"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+
 volumes:
   omniroute_pg:

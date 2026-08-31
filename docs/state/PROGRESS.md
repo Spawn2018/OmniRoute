@@ -11,4 +11,5 @@
 | 2026-08-31 | Phase B.1 | — | pyproject.toml, FastAPI, docker-compose, alembic |
 | 2026-08-31 | 0.3 | M-01 | RLS Golden Standard: organization, app_user, test izolacji |
 | 2026-08-31 | Phase B.3 | — | Pełny gate: ruff, mypy, pytest-unit, import-linter + CI postgres |
-| — | 0.4 | M-01 | **Następny:** OpenFGA hello |
+| 2026-08-31 | 0.4 | M-01 | OpenFGA hello: model, klient, require_permission, CI service |
+| — | C | — | **Następny:** platforma AI (instructor / docling) |
