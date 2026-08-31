@@ -3,7 +3,7 @@
 **Plan Cursor (pełny):** `.cursor/plans/omniroute-realizacja.plan.md`  
 **ADR:** [0001 Cursor factory](adr/0001-cursor-software-factory-weryfikacja.md) · [0002 Frontend 2026](adr/0002-frontend-platform-2026.md)  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
-**Stan:** B + C.1–C.5 + 0.11–0.15 leftover + D minimal **DONE** · następny **D0** (uczciwość OS; OAuth = Auth0 I1 po Wave A)
+**Stan:** B + C.1–C.5 + 0.11–0.15 leftover + **D0 OS** + D minimal · następny **0.15 T0** (`document_base64` max_length; OAuth = Auth0 I1 po Wave A)
 
 ```mermaid
 flowchart LR
@@ -14,7 +14,8 @@ flowchart LR
   doneJwt --> doneSplit[0.13_split_HITL]
   doneSplit --> doneHttp[0.14_HTTP_happy]
   doneHttp --> donePwd[0.15_passwords]
-  donePwd --> next[D0_OS]
+  donePwd --> doneD0[D0_OS]
+  doneD0 --> next[T0_upload_limit]
   doneB --> doneD[D_minimal_DONE]
 ```
 
@@ -120,7 +121,8 @@ Pełna lista z „dlaczego”: [docs/ops/docs-debt.md](ops/docs-debt.md)
 
 | Kolejność | Co | Nie mylić z |
 |---|---|---|
-| następny | D0 uczciwość OS → 0.15 T0 `document_base64` max_length | nie OAuth teraz |
+| następny | 0.15 T0 `document_base64` max_length | nie OAuth; D0 OS DONE |
+| D0 DONE | AGENTS dziś/później, `.cursorignore` dump, leftover≠DONE | nie kasuje HITL / 13 zasad |
 | 0.15 DONE | hasła argon2id + rotacja refresh | UUID-login wycięty; RLS isolation = CI |
 | C.1–C.5 / 0.7–0.14 DONE | HITL … HTTP happy-path unit | nie live PG, nie IdP |
 | 0.14 DONE | HTTP happy-path extract/accept/reject | unit + stub serwisu; nie integration PG |

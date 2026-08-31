@@ -7,10 +7,13 @@ Kontrakt dla agenta kodującego. Zawsze w kontekście. **Limit: 130 linii.**
 Wielodostępna platforma spedycyjna. 70 modułów (`M-01`…`M-70`), ~130 obiektów.
 Produkt na sprzedaż, wielu tenantów, ruch produkcyjny.
 
-**Stos:** PostgreSQL 16 (+RLS, pgvector, pg_trgm) · FastAPI + granian ·
-SQLAlchemy 2.0 · Alembic · Pydantic v2 · Temporal · Hatchet · OpenFGA ·
+**Stos dziś:** PostgreSQL 16 (+RLS, pg_trgm) · FastAPI + granian ·
+SQLAlchemy 2.0 · Alembic · Pydantic v2 · OpenFGA ·
 React 19 (+Compiler) + Vite + TanStack (Router/Query/Form/Table) + shadcn/ui +
-Tailwind v4 + PostHog · OpenTelemetry
+Tailwind v4 + PostHog.
+
+**Cel, nie runtime:** Temporal · Hatchet · OpenTelemetry · pgvector —
+zakazane, aż będzie realne zdarzenie async między BC albo wektor. JWT hello ≠ IdP.
 
 ## Nawigacja
 
@@ -21,11 +24,14 @@ Tailwind v4 + PostHog · OpenTelemetry
 | Rejestr modułów `M-xx` | `docs/MODULES.md` |
 | Specyfikacja modułu | `docs/spec/<nazwa>.md` |
 | Słownik domenowy PL/EN | `docs/GLOSSARY.md` |
-| Twarde ograniczenia domenowe | `GROUNDING.md` |
-| Decyzje architektoniczne | `docs/adr/` (0001 Cursor factory, 0002 Frontend 2026) |
+| Twarde ograniczenia | `GROUNDING.md` |
+| Decyzje | `docs/adr/` |
 | Bieżące zadanie | `docs/state/CURRENT.md` |
+| Program 12m (SoT) | `docs/state/PROGRAM-12M.md` |
 | Historia plastrów | `docs/state/PROGRESS.md` |
-| Archiwum planów (60+ MD) | `Informacje z claude/` |
+
+`Informacje z claude/` zostaje na dysku; **nie ładuj** (`.cursorignore`).
+Historyczny kontrakt: `Informacje z claude/AGENTS.ARCHIVE.md` — nie kanon.
 
 **Schemat bazy sprawdzasz przez MCP Postgres.** Nie czytaj wszystkich modeli.
 Windows bez Dockera (PG natywnie): `scripts/dev-native.ps1`. `just dev` stawia PG w Dockerze.
@@ -46,7 +52,7 @@ Wygrywają z każdą inną sugestią, także z twoją.
 10. Wszystko z zewnątrz jest niezaufane.
 11. **Nie licz w Pythonie tego, co Postgres policzy z indeksem.**
 12. **Żadne zapytanie nie sięga po dane więcej niż jednego tenanta.**
-13. **Każde wywołanie zewnętrzne idempotentne. Każde zdarzenie przez outbox.**
+13. **Każde wywołanie zewnętrzne idempotentne.** Outbox = cel, gdy są zdarzenia między BC — nie teatr Temporal.
 
 ## Jak pracujesz
 
@@ -56,6 +62,7 @@ Wygrywają z każdą inną sugestią, także z twoją.
 - **Test przed implementacją** dla każdej reguły biznesowej.
 - Nie dotykaj plików spoza zakresu. Zgłoś, jeśli to konieczne.
 - Po zakończeniu: pętla `docs/ops/post-plaster.md`, linia w `PROGRESS.md`, `CURRENT.md`, push.
+- Leftover w PLAN / `docs-debt.md` **nie** jest ukończonym plasterem.
 
 ## Styl
 
@@ -75,7 +82,7 @@ Wygrywają z każdą inną sugestią, także z twoją.
 - Zmian w zastosowanych migracjach. Nowa migracja, zawsze.
 - Zapytań w pętli. N+1 poprawiasz natychmiast.
 - Pisania od nowa tego, co jest w `docs/MODULES.md` jako zależność.
-- Ładowania kontekstu „na wszelki wypadek". Pytaj zamiast zgadywać.
+- Ładowania `Informacje z claude/` ani kontekstu „na wszelki wypadek".
 
 ## Definicja ukończenia
 
@@ -90,9 +97,10 @@ just migrate    # alembic w górę i w dół
 just docs       # stub echo — nie DoD
 ```
 
-**Egzekucja dziś ≠ cel.** Co gate naprawdę odpala vs stub (`echo`):  
-`docs/PLAN-REALIZACJA.md` § „Gate dziś vs cel DoD”.  
-Nie twierdź, że recipe-`echo` jest spełnione. Nie startuj kolejnego plastra przy niepushniętym WIP.
+**Egzekucja dziś ≠ cel.** Co gate naprawdę odpala vs stub (`echo`):
+`docs/PLAN-REALIZACJA.md` § „Gate dziś vs cel DoD”.
+Recipe-`echo` ≠ spełnione. Leftover ≠ DONE.
+Nie startuj kolejnego plastra przy niepushniętym WIP.
 
 Plus test izolacji tenantów dla każdej nowej tabeli. Bez wyjątków.
 
@@ -111,7 +119,8 @@ Przekroczenie blokuje merge.
 
 ## Bezpieczeństwo
 
-- Sekrety nigdy w kodzie. `.env` w `.gitignore`, produkcja przez Infisical.
+- Sekrety nigdy w kodzie. `.env` w `.gitignore`. CI/produkcja: **GitHub Encrypted Secrets**.
+  **Zakaz Infisical.**
 - Każdy endpoint ma jawną deklarację uprawnień. Brak = odmowa.
 - Wejście zewnętrzne: cel HC = llm-guard + presidio; dziś guard regex, presidio = 0.10+.
 - Zapytania SQL generowane przez model przechodzą przez `sqlglot` przed wykonaniem.

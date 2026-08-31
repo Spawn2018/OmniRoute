@@ -1,6 +1,6 @@
 # M-20 — Ekstrakcja dokumentów (HITL)
 
-**Status:** 0.7–0.14 DONE · następny leftover: D0 → 0.15 T0 (nie OAuth)  
+**Status:** 0.7–0.14 DONE · następny leftover: 0.15 T0 `document_base64` max_length (nie OAuth)  
 **Delty:** `docs/deltas/archived/0.7-ai-extract-hitl.md`, `0.8-instructor-llm-guard.md`, `0.9-docling-ab.md`, `0.10-langfuse-promptfoo.md`, `0.11-hitl-xor-vitest.md`, `0.12-jwt-session.md`, `0.13-hitl-split.md`, `0.14-http-happy-path.md`  
 **GROUNDING:** HC-03 (`source_ref`, `unparsed_regions`), HC-04 (zero zapisu autonomicznego)
 

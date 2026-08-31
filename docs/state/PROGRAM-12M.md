@@ -25,8 +25,8 @@ Po plasterze: docs/ops/post-plaster.md + push + nowa rozmowa.
 
 | Teraz (git) | Po zamknięciu WIP | Nie wolno |
 |---|---|---|
-| **Ostatni:** 0.15 hasła + refresh (archived) | **D0** → **0.15 T0** (`document_base64` max_length) | Start OAuth/OIDC |
-| WIP czysty po pushu 0.15 | D0 nie miesza się z T0 | Dwa agenty na tych samych plikach |
+| **Ostatni:** D0 honesty OS | **0.15 T0** (`document_base64` max_length) | Start OAuth/OIDC; powtórka D0 |
+| WIP czysty po pushu D0 | T0 nie miesza się z T1 | Dwa agenty na tych samych plikach |
 
 **Kolizja numeru:** WIP **0.15 hasła** ≠ kanon **0.15 T0**. Po zamknięciu hasła zostają 0.15 w PROGRESS; T0 zostaje **0.15 T0** w tym pliku.
 
@@ -73,7 +73,7 @@ Po plasterze: docs/ops/post-plaster.md + push + nowa rozmowa.
 
 ## Plastry — kolejność (WIP=1)
 
-Najpierw **0.15 hasła jest DONE** (po pushu). Potem:
+**D0 DONE** (po pushu). **0.15 hasła DONE.** Potem:
 
 | ID | Co | Spec | Zabija |
 |---|---|---|---|

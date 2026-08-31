@@ -1,6 +1,6 @@
 # OmniRoute — architektura
 
-**Status:** Faza C (B + C.1–C.5 + 0.11–0.15 leftover + D minimal DONE; następny: D0 OS, nie OAuth)  
+**Status:** Faza C (B + C.1–C.5 + 0.11–0.15 leftover + D0 OS + D minimal; następny: 0.15 T0, nie OAuth)  
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002-frontend-platform-2026](adr/0002-frontend-platform-2026.md)
 
@@ -32,7 +32,8 @@ authz/             model.fga (źródło prawdy AuthZ)
 
 ## Integracje
 
-PostgreSQL 16 · OpenFGA · (plan) Redis · MinIO · Temporal · Hatchet · EmailEngine · Langfuse · PostHog
+PostgreSQL 16 · OpenFGA · Langfuse (trace, no-op bez kluczy) · PostHog  
+**(cel, nie runtime):** Redis · MinIO · Temporal · Hatchet · EmailEngine
 
 ## Dokumentacja
 

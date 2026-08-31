@@ -37,5 +37,5 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 - **0.5–0.15 + B.7:** done (HITL, JWT, hasła+refresh, HTTP extract unit/stub)
-- **Następny:** D0 (uczciwość OS) → 0.15 T0 `document_base64` max_length
+- **Następny:** 0.15 T0 `document_base64` max_length (D0 OS done)
 - Szczegóły: `docs/PLAN-REALIZACJA.md` · dług poza sync: `docs/ops/docs-debt.md`
