@@ -1,8 +1,12 @@
 # Bieżący focus
 
-**Faza:** Bootstrap zakończony (Phase 0 + Phase A)  
-**Repo:** https://github.com/Spawn2018/OmniRoute (`main`, zsynchronizowany z `origin/main`)  
-**Następny krok:** plaster **0.3** (M-01 RLS Golden Standard) — start Fazy B lub sam plaster wg `docs/spec/tenancy.md` (do utworzenia w Fazie B)
+**Faza:** Bootstrap zakończony (Phase 0 + Phase A); plan zsynchronizowany  
+**Repo:** https://github.com/Spawn2018/OmniRoute (`main`)  
+**Ostatnie commity:** `58facbd` (bootstrap CI gate), `e21ac45` (ADR-0001)  
+**Następny krok:** plaster **0.3** (M-01 RLS Golden Standard) — start Fazy B
+
+**Plan Cursor:** Fazy 0+A = completed; B/C/D = pending.  
+**ADR:** [docs/adr/0001-cursor-software-factory-weryfikacja.md](../adr/0001-cursor-software-factory-weryfikacja.md)
 
 ---
 
@@ -21,6 +25,7 @@ OpenFGA (0.4), outbox (0.4), UI admin tenanta, billing.
 ## Ustalenia
 - RLS wymuszony FORCE ROW LEVEL SECURITY
 - Test izolacji kopiowany z `tests/patterns/tenant_isolation.py`
+- `just gate` do Fazy B = tylko `agent-refs`; pełny gate po `pyproject.toml`
 
 ## Kryteria akceptacji
 - [ ] Migracja up/down działa
@@ -29,11 +34,12 @@ OpenFGA (0.4), outbox (0.4), UI admin tenanta, billing.
 
 ---
 
-## Ukończone (nie czekać w Plan mode)
+## Ukończone
 
 | Faza | Co zrobiono |
 |---|---|
-| **Phase 0** | `git init`, remote `origin`, initial commit + push na GitHub |
-| **Phase A** | AGENTS.md, GROUNDING.md, rules, skills, hooks, commands, CI skeleton (`gate.yml`) |
+| **Phase 0** | GitHub Spawn2018/OmniRoute, push, gate.yml |
+| **Phase A** | Cursor OS + ADR-0001 (weryfikacja Gemini/ChatGPT/nauka) |
+| **CI fix** | Bootstrap gate: `just gate` → agent-refs (bez ruff do Fazy B) |
 
-Opcjonalnie później: branch protection na `main` po pierwszym green `gate`; `gh auth` lokalnie jeśli potrzebny CLI.
+Opcjonalnie: branch protection na `main` po green `gate`.
