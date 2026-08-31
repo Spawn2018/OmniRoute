@@ -107,7 +107,14 @@ async def two_tenants() -> dict[str, object]:
 
     session_factory = async_sessionmaker(admin_engine, expire_on_commit=False)
     async with session_factory() as db_session:
-        db_session.add_all([org_a, org_b, user_a, user_b])
+        for org in (org_a, org_b):
+            await bind_tenant(db_session, org.id)
+            db_session.add(org)
+        await db_session.flush()
+
+        for user in (user_a, user_b):
+            await bind_tenant(db_session, user.organization_id)
+            db_session.add(user)
         await db_session.commit()
 
     await admin_engine.dispose()
