@@ -28,9 +28,9 @@ todos:
     status: completed
   - id: phase-c5-langfuse-promptfoo
     content: "0.10 langfuse trace + promptfoo CI (echo fixtures; nie cloud, nie żywy LLM)"
-    status: pending
+    status: completed
   - id: leftover-after-010
-    content: "Po 0.10: vitest HITL + HTTP XOR; JWT; split-screen; echo recipes; branch protection UI — docs/ops/docs-debt.md + PLAN § leftoverów"
+    content: "Następny: vitest HITL + HTTP XOR; potem JWT, split-screen, echo recipes, branch protection UI — docs/ops/docs-debt.md"
     status: pending
   - id: phase-d-ops-rhythm
     content: "D minimal: agentlint w just gate, pr-nudge, weekly-refactor + friday-retrospective"
@@ -93,7 +93,7 @@ isProject: false
 - **Metafora:** nie „30 agentów na stand-upie” — **kontrolowana fabryka** (Gemini) / **AI software factory** (ChatGPT).
 - **Kształt produktu:** modularny monolit OmniRoute (morze → droga → lot); wejście wąskie = stawki/wyceny.
 - **Metodyka:** WIP=1 + delta-spec + XP. Bez Scrum/person CEO–CFO.
-- **Deliverable:** Fazy **0+A+B + C.1–C.4 + D minimal** ukończone (31.08.2026). Następne: plaster **0.10** langfuse / promptfoo CI.
+- **Deliverable:** Fazy **0+A+B + C.1–C.5 + D minimal** ukończone (31.08.2026). Następne: vitest HITL + HTTP XOR.
 
 ---
 
@@ -175,7 +175,7 @@ flowchart LR
 | Branch protection na `main`                                          | opisane                             | API 403 (Free private)                     | procedura: `docs/ops/branch-protection.md` |
 | Pełny gate (ruff/mypy/pytest/import-linter)                          | DoD §9                              | `just gate` + CI                           | DONE                         |
 | Plaster 0.3 RLS                                                      | Faza B                              | `docs/deltas/archived/0.3-tenancy.md`      | DONE                         |
-| Fazy C–D                                                             | C + D                               | C.1–C.4 + D minimal w kodzie               | next = 0.10 langfuse/promptfoo |
+| Fazy C–D                                                             | C + D                               | C.1–C.5 + D minimal w kodzie               | next = vitest HITL + XOR |
 
 
 ```mermaid
@@ -670,9 +670,9 @@ AGENTS.md (v2), GROUNDING.md, rules (+ui-design-system), skills (+module-factory
 
 **TanStack Start:** Thoughtworks Assess 2026-04 — **odroczony**; wewnętrzna SPA wystarczy.
 
-### Faza C — Platforma AI/docs — **C.1–C.4 DONE**
+### Faza C — Platforma AI/docs — **C.1–C.5 DONE**
 
-HITL + instructor + docling A/B w kodzie. **Następny plaster: 0.10** langfuse / promptfoo CI (nie cloud, nie żywy LLM w CI).
+HITL + instructor + docling A/B + langfuse/promptfoo echo w kodzie. **Następny leftover: vitest HITL + HTTP XOR.**
 
 ### Faza D — Operacyjny rytm — **DONE (minimal)**
 
@@ -703,17 +703,16 @@ agentlint w `just gate`; `pr-nudge.yml`; weekly-refactor + friday-retrospective.
 
 ## Blokada realizacji — **zdjęta** (stan 2026-08-31 wieczór, po docs/OS sync)
 
-**Audyt planu = aktualny:** Fazy 0+A+B + C.1–C.4 + D minimal w kodzie; gate pełny (nie agent-refs only).
+**Audyt planu = aktualny:** Fazy 0+A+B + C.1–C.5 + D minimal w kodzie; gate pełny (nie agent-refs only).
 
 **Otwarte (kolejność pracy, nie blokada planu):**
 
-1. Plaster **0.10** langfuse / promptfoo CI (echo fixtures; no-op bez kluczy)
-2. Vitest kolejki HITL + test HTTP XOR (`input_text` XOR `document_base64`)
-3. JWT zamiast spoofowalnych headerów sesji
-4. Split-screen HITL
-5. Branch protection w UI GitHub — po Pro/Team; do wtedy `docs/ops/branch-protection.md`
-6. Echo recipes (`just perf` / k6 / vulture / pip-audit) — dopiero gdy nie `echo`
-7. 0.10+ : żywy LLM w CI, llm-guard ML, presidio, promptfoo 30 cenników, langfuse cloud
+1. Vitest kolejki HITL + test HTTP XOR (`input_text` XOR `document_base64`)
+2. JWT zamiast spoofowalnych headerów sesji
+3. Split-screen HITL
+4. Branch protection w UI GitHub — po Pro/Team; do wtedy `docs/ops/branch-protection.md`
+5. Echo recipes (`just perf` / k6 / vulture / pip-audit) — dopiero gdy nie `echo`
+6. Poza 0.10: żywy LLM w CI, llm-guard ML, presidio, promptfoo 30 cenników, langfuse cloud
 
 Canvas `post-audit-review` = przegląd, nie lista do kodu. Rejestr: `docs/ops/docs-debt.md` + `docs/PLAN-REALIZACJA.md` § leftoverów. Załączony plan software-house **nietknięty**.
 

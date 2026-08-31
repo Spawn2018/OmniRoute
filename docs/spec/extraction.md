@@ -1,7 +1,7 @@
 # M-20 — Ekstrakcja dokumentów (HITL)
 
-**Status:** 0.7–0.9 DONE · następny plaster **0.10** (langfuse / promptfoo CI)  
-**Delty:** `docs/deltas/archived/0.7-ai-extract-hitl.md`, `0.8-instructor-llm-guard.md`, `0.9-docling-ab.md`  
+**Status:** 0.7–0.10 DONE · następny leftover: vitest HITL + HTTP XOR  
+**Delty:** `docs/deltas/archived/0.7-ai-extract-hitl.md`, `0.8-instructor-llm-guard.md`, `0.9-docling-ab.md`, `0.10-langfuse-promptfoo.md`  
 **GROUNDING:** HC-03 (`source_ref`, `unparsed_regions`), HC-04 (zero zapisu autonomicznego)
 
 ## Zakres (kod dziś)
@@ -53,7 +53,8 @@ CI nie odpala transformerów llm-guard ani OpenAI.
 - Serwis: `backend/app/services/extraction/`
 - Transformy: `backend/app/ai_transforms/extraction/`
 - Parser: `backend/app/integrations/docling/`
-- Langfuse dziś: no-op w `backend/app/integrations/langfuse/`
+- Langfuse: no-op bez kluczy; przy extract — trace bez `input_text` (`app.integrations.langfuse`)
+- Promptfoo: `promptfoo/promptfoo.yaml` echo w CI (`just promptfoo`); pytest fixture’e MockExtractor
 
 ## UI
 
@@ -61,25 +62,23 @@ CI nie odpala transformerów llm-guard ani OpenAI.
 - Split-screen HITL = backlog UX, nie obecny kanon
 - Typy: `just api-types` → `frontend/src/api/`; wrapper rzutuje `ExtractRequest` (flatten anyOf|null)
 
-## Kryteria 0.7–0.9 (spełnione)
+## Kryteria 0.7–0.10 (spełnione)
 
 - Test izolacji `extraction_draft`; accept ≠ `rate_line`
 - Guard przed ekstraktorem; CI = mock
 - PDF bez docling → `pdf_strings`; A/B zapisuje deltę znaków
+- Trace langfuse przy extract; bez kluczy no-op; metadane bez `input_text`
+- promptfoo echo w CI; pytest na tych samych fixture’ach
 - `just gate` green (unit); integration OpenFGA/RLS w CI
 
-## Następny plaster: 0.10
+## Następny leftover (nie 0.10)
 
-Langfuse (nie tylko no-op) + promptfoo w CI. Presidio i żywy llm-guard = później.
-Nie startuj 0.10 przy niepushniętym WIP syncu docs — to osobny plaster produktowy.
+Vitest kolejki HITL + test HTTP XOR. Presidio i żywy llm-guard = później.
+Nie startuj kolejnego plastra przy niepushniętym WIP.
 
-### 0.10 — w zakresie (szkic)
-
-- Trace langfuse przy extract (klucze z env, no-op gdy brak)
-- Job promptfoo w CI na fixture’ach, nie na żywym cenniku produkcyjnym
-
-### 0.10 — poza zakresem
+### Poza 0.10 (zostaje)
 
 - Cloud Langfuse jako wymóg merge
 - 30 cenników eval (osobna decyzja danych)
 - Presidio na wszystkich endpointach API
+- Vitest kolejki, JWT, split-screen — [docs/ops/docs-debt.md](../ops/docs-debt.md)

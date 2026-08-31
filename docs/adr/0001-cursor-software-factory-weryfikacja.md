@@ -139,7 +139,7 @@ Obecny stack (AGENTS.md + GROUNDING.md + cienkie Rules + Skills on-demand + Hook
 
 - **Pozytywne:** Powtarzalna jakość, audytowalność, zgodność z badaniami, kod bliżej „ludzkiego” przez bramki nie przez persony.
 - **Negatywne:** Narzut ~15 min/plaster (delta-spec); kuracja `_knowledge/` i kompilacja spec wymaga czasu operatora.
-- **Następne kroki (produkt):** plaster **0.10** langfuse / promptfoo CI.
+- **Następne kroki (produkt):** vitest HITL + HTTP XOR (po 0.10 langfuse/promptfoo echo).
   0.3 jest golden exemplar (zarchiwizowany). `agentlint` już w `just gate`.
 
 ---

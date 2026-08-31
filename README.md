@@ -36,6 +36,6 @@ Seed: `scripts/dev_seed_local.py`.
 
 ## Stan faz
 
-- **0.5–0.9 + B.7:** done (Frontend Shell, DataTableShell, HITL, instructor, docling A/B; branch protection = procedura Free/403)
-- **Następny:** 0.10 langfuse / promptfoo CI
+- **0.5–0.10 + B.7:** done (Frontend Shell, DataTableShell, HITL, instructor, docling A/B, langfuse/promptfoo echo; branch protection = procedura Free/403)
+- **Następny:** vitest HITL + HTTP XOR
 - Szczegóły: `docs/PLAN-REALIZACJA.md` · dług poza sync: `docs/ops/docs-debt.md`

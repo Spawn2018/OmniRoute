@@ -83,5 +83,8 @@ dup:
 agentlint:
     python scripts/quality/agentlint.py
 
+promptfoo:
+    pytest backend/tests/extraction/test_promptfoo_fixtures.py -q
+
 new-module name:
     @echo "new-module {{name}}: stub, nie DoD — skill module-factory"

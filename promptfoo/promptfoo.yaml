@@ -1,7 +1,7 @@
-# Extraction prompt smoke (MockExtractor schema)
+# Extraction prompt smoke — echo provider, bez żywego LLM (plaster 0.10)
 
-# CI: `npx promptfoo@latest eval -c promptfoo/promptfoo.yaml` gdy klucze dostępne.
-# Bez kluczy: walidacja schematu JSON lokalnie przez pytest MockExtractor.
+# Lokalnie: `just promptfoo` = pytest fixture’e (ten sam dokument co vars poniżej).
+# CI: `npx promptfoo@0.114.3 eval` na tym pliku (echo, nie OpenAI).
 
 prompts:
   - |
@@ -12,8 +12,7 @@ prompts:
 providers:
   - id: echo
     config:
-      # Placeholder — prawdziwy provider w 0.10
-      text: '{"source_ref":"smoke","unparsed_regions":[],"candidates":[]}'
+      text: '{"source_ref":"doc://promptfoo/thc","unparsed_regions":[],"candidates":[{"code":"THC","amount_text":"100","currency":"EUR"}]}'
 
 tests:
   - vars:
@@ -23,4 +22,11 @@ tests:
       - type: javascript
         value: |
           const o = JSON.parse(output);
-          return o.source_ref && Array.isArray(o.unparsed_regions) && Array.isArray(o.candidates);
+          return typeof o.source_ref === "string"
+            && Array.isArray(o.unparsed_regions)
+            && Array.isArray(o.candidates)
+            && o.candidates.every((c) => c.code && c.amount_text && c.currency);
+  - vars:
+      document: "BAF 12 USD; weekend note"
+    assert:
+      - type: is-json

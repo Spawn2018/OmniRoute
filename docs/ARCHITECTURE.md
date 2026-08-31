@@ -1,6 +1,6 @@
 # OmniRoute — architektura
 
-**Status:** Faza C (B + C.1–C.4 + D minimal DONE; następny plaster 0.10)  
+**Status:** Faza C (B + C.1–C.5 + D minimal DONE; następny leftover: vitest HITL + XOR)  
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002-frontend-platform-2026](adr/0002-frontend-platform-2026.md)
 
@@ -19,7 +19,7 @@ backend/app/
   domain/          typy, wyjątki, Money
   ai_transforms/   ekstrakcja → JSON (stateless, HITL)
   workflows/       Temporal (wizja — nie działający system)
-  integrations/    OpenFGA, docling, langfuse (no-op bez kluczy)
+  integrations/    OpenFGA, docling, langfuse (trace przy extract; no-op bez kluczy)
 authz/             model.fga (źródło prawdy AuthZ)
 ```
 

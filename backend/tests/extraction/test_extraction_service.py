@@ -5,6 +5,7 @@ import pytest
 
 from app.ai_transforms.extraction.mock_extractor import MockExtractor
 from app.domain.errors import DraftNotPending, ResourceNotFound
+from app.integrations.langfuse.tracer import LangfuseTracer, PromptTrace
 from app.models.extraction_draft import ExtractionDraft
 from app.services.extraction.extraction_service import ExtractionService
 
@@ -30,6 +31,40 @@ async def test_extract_to_draft_stores_payload_without_rate_line() -> None:
     assert "unparsed_regions" in draft.payload
     assert draft.payload["candidates"][0]["code"] == "THC"
     session.add.assert_called_once()
+
+
+class _RecordingTracer(LangfuseTracer):
+    def __init__(self) -> None:
+        super().__init__(enabled=False)
+        self.traces: list[PromptTrace] = []
+
+    def finish(self, trace: PromptTrace) -> None:
+        self.traces.append(trace)
+        super().finish(trace)
+
+
+@pytest.mark.asyncio
+async def test_extract_records_trace_without_input_text() -> None:
+    session = AsyncMock()
+    session.add = MagicMock()
+    session.flush = AsyncMock()
+    tracer = _RecordingTracer()
+    service = ExtractionService(session, extractor=MockExtractor(), tracer=tracer)
+
+    await service.extract_to_draft(
+        organization_id=uuid4(),
+        user_id=uuid4(),
+        source_ref="doc://x",
+        input_text="THC 10 EUR secret-should-not-trace",
+    )
+
+    assert len(tracer.traces) == 1
+    trace = tracer.traces[0]
+    assert trace.name == "extract"
+    assert trace.metadata["source_ref"] == "doc://x"
+    assert trace.metadata["candidate_count"] == 1
+    assert "input_text" not in trace.metadata
+    assert "secret-should-not-trace" not in str(trace.metadata)
 
 
 @pytest.mark.asyncio

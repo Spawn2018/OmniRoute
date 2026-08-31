@@ -3,12 +3,13 @@
 **Plan Cursor (pełny):** `.cursor/plans/omniroute-realizacja.plan.md`  
 **ADR:** [0001 Cursor factory](adr/0001-cursor-software-factory-weryfikacja.md) · [0002 Frontend 2026](adr/0002-frontend-platform-2026.md)  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
-**Stan:** B + C.1–C.4 + D minimal **DONE** · następny plaster **0.10** langfuse / promptfoo CI
+**Stan:** B + C.1–C.5 + D minimal **DONE** · następny leftover **vitest HITL + HTTP XOR**
 
 ```mermaid
 flowchart LR
   doneB[B_DONE] --> doneC[C1_C4_DONE]
-  doneC --> next[0.10_langfuse_promptfoo]
+  doneC --> doneC5[0.10_DONE]
+  doneC5 --> next[vitest_HITL_XOR]
   doneB --> doneD[D_minimal_DONE]
 ```
 
@@ -27,7 +28,7 @@ flowchart LR
 | B.5 Frontend Shell 0.5 | ✅ Vite, Compiler, TanStack, shadcn, ⌘K, lazy PostHog |
 | B.6 DataTableShell 0.6 | ✅ ColumnEditor, table_view RLS, vitest |
 | B.7 Branch protection | ✅ procedura (Free private 403) |
-| C.1–C.4 / 0.7–0.9 | ✅ HITL, instructor+guard, docling A/B |
+| C.1–C.5 / 0.7–0.10 | ✅ HITL, instructor+guard, docling A/B, langfuse+promptfoo echo |
 | D minimal | ✅ agentlint, pr-nudge, rytm refaktor/retro |
 
 ---
@@ -99,8 +100,10 @@ flowchart LR
 - fingerprint · parser A deterministyczny · B docling · `ab_delta_chars`
 - Delta: `docs/deltas/archived/0.9-docling-ab.md`
 
-### C.5 (następne)
-0.10 langfuse/promptfoo CI — trace przy extract (no-op bez kluczy); promptfoo w CI na fixture’ach echo, **nie** żywy LLM / cloud / 30 cenników.
+### C.5 / 0.10 langfuse + promptfoo CI — **DONE**
+- Trace przy extract; no-op bez kluczy; metadane bez `input_text`
+- `just promptfoo` echo w CI; pytest fixture’e MockExtractor
+- Delta: `docs/deltas/archived/0.10-langfuse-promptfoo.md`
 
 ## Rejestr leftoverów (audyt + canvas 2026-08-31)
 
@@ -110,7 +113,7 @@ Pełna lista z „dlaczego”: [docs/ops/docs-debt.md](ops/docs-debt.md)
 
 | Kolejność | Co | Nie mylić z |
 |---|---|---|
-| po 0.10 | Vitest kolejki HITL + test HTTP XOR (`input_text` XOR `document_base64`) — `api/extractions.py` ~45% | 0.10 nie pokrywa UI ani XOR |
+| następny | Vitest kolejki HITL + test HTTP XOR (`input_text` XOR `document_base64`) — `api/extractions.py` ~45% | 0.10 nie pokrywa UI ani XOR |
 | potem | JWT zamiast spoofowalnych `X-Organization-Id` / `X-User-Id` | B.5 świadomy dług |
 | potem | Split-screen HITL (podgląd \| formularz) | kolejka DataTableShell już jest |
 | 0.10+ (nie ten plaster) | żywy instructor/OpenAI w CI, llm-guard transformers, presidio, promptfoo 30 cenników, langfuse cloud | 0.10 = echo fixtures + no-op bez kluczy |

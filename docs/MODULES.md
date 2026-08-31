@@ -10,7 +10,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | ID | Moduł | Plaster | Status |
 |---|---|---|---|
 | M-01 | Wielodostępność / tenancy | 0.3 RLS + 0.4 OpenFGA | **ukończony (fundament)** |
-| M-20 | Ekstrakcja dokumentów | 0.7 HITL · 0.8 instructor · 0.9 docling A/B | **w toku** (następny 0.10) |
+| M-20 | Ekstrakcja dokumentów | 0.7–0.10 HITL/instructor/docling/langfuse | **w toku** (następny: vitest HITL + XOR) |
 | M-02 | Outbox / idempotencja | nie 0.4 | planowany |
 | M-03 | Konfiguracja jako dane | nie 0.5 | planowany |
 | M-06 | charge_code + aliasy | 1.x | planowany |

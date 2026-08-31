@@ -84,5 +84,8 @@ jobs:
       - name: Run quality gate
         run: just gate
 
+      - name: Promptfoo schema smoke (echo, no live LLM)
+        run: just promptfoo
+
       - name: Run integration tests
         run: just test-integration

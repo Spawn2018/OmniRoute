@@ -4,6 +4,7 @@
 - `app.repositories.extraction`
 - `app.ai_transforms.extraction`
 - `app.integrations.docling`
+- `app.integrations.langfuse`
 - `app.models.extraction_draft`
 - `app.domain`
 

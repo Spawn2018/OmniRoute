@@ -9,6 +9,7 @@ from app.ai_transforms.extraction.provider import default_extractor
 from app.domain.errors import DraftNotPending, ResourceNotFound, UnparseableDocument
 from app.integrations.docling.parser import DocumentParser
 from app.integrations.docling.provider import default_parser
+from app.integrations.langfuse.tracer import LangfuseTracer, build_langfuse_tracer
 from app.models.extraction_draft import ExtractionDraft
 from app.repositories.extraction.extraction_draft_repository import ExtractionDraftRepository
 
@@ -24,12 +25,14 @@ class ExtractionService:
         extractor: DocumentExtractor | None = None,
         guard: ExtractionInputGuard | None = None,
         parser: DocumentParser | None = None,
+        tracer: LangfuseTracer | None = None,
     ) -> None:
         self._drafts = ExtractionDraftRepository(session)
         self._session = session
         self._extractor = extractor or default_extractor()
         self._guard = guard or ExtractionInputGuard()
         self._parser = parser or default_parser()
+        self._tracer = tracer or build_langfuse_tracer()
 
     async def list_drafts(self, status: str | None = "pending") -> list[ExtractionDraft]:
         return await self._drafts.list_by_status(status)
@@ -46,6 +49,7 @@ class ExtractionService:
         ab_delta_chars: int | None = None,
     ) -> ExtractionDraft:
         self._guard.scan(input_text)
+        trace = self._tracer.start_trace("extract")
         payload = self._extractor.extract(source_ref=source_ref, input_text=input_text)
         payload = payload.model_copy(
             update={
@@ -54,6 +58,13 @@ class ExtractionService:
                 "ab_delta_chars": ab_delta_chars,
             },
         )
+        trace.update(
+            source_ref=payload.source_ref,
+            parser_name=parser_name,
+            candidate_count=len(payload.candidates),
+            unparsed_count=len(payload.unparsed_regions),
+        )
+        self._tracer.finish(trace)
         draft = ExtractionDraft(
             id=uuid4(),
             organization_id=organization_id,

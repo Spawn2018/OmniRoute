@@ -16,7 +16,8 @@ description: Pipeline ekstrakcji cenników i dokumentów M-20
 - `EXTRACTION_PROVIDER=instructor` wymaga `OPENAI_API_KEY` — nie w CI.
 - Guard: skanery regex, chyba że `EXTRACTION_LLM_GUARD=true` (pakiet transformers).
 - Docling A/B: plaster 0.9 (`EXTRACTION_PARSER=stub|pdf_strings|docling|ab`).
-- Presidio + promptfoo na 30 cennikach + langfuse cloud = **0.10+**, nie zrobione.
+- Presidio + promptfoo na 30 cennikach + langfuse cloud = **po 0.10**, nie zrobione.
+- 0.10: trace langfuse przy extract (no-op bez kluczy); `just promptfoo` echo w CI.
 - Nie twierdź, że CI odpala żywe transformery llm-guard.
 
 ## Kolejność
