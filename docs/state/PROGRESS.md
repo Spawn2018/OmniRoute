@@ -41,4 +41,5 @@
 | 2026-09-01 | 0.19 A1 | API | undeclared `/api/v1` → 403; playground off |
 | 2026-09-01 | 0.20 A2 | AuthZ | `can_review_extractions` = reviewer; member nie recenzuje |
 | 2026-09-01 | 0.21 T4 | M-01 | `hello_token` default false; mint UUID tylko local/CI |
-| — | leftover | M-01 | **Następny:** 0.22 T5 iss/aud/jti, TTL 15 min, token_version |
+| 2026-09-01 | 0.22 T5 | M-01 | JWT iss/aud/jti/ver; TTL 15 min |
+| — | leftover | ops | **Następny:** 0.23 S1 JWT_SECRET z GitHub Encrypted Secrets |

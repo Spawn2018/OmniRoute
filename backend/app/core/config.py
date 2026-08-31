@@ -18,8 +18,11 @@ class Settings(BaseSettings):
     extraction_llm_guard: bool = False
     extraction_parser: str = "stub"
     jwt_secret: str = ""
-    jwt_expire_minutes: int = 60
+    jwt_expire_minutes: int = 15
     jwt_refresh_expire_days: int = 14
+    jwt_issuer: str = "omniroute"
+    jwt_audience: str = "omniroute-api"
+    jwt_token_version: int = 1
     hello_token: bool = False
 
 

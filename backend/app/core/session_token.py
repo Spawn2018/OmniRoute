@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
-from uuid import UUID
+from uuid import UUID, uuid4
 
 import jwt
 
@@ -30,6 +30,10 @@ def encode_session_token(*, user_id: UUID, organization_id: UUID) -> str:
         {
             "sub": str(user_id),
             "org": str(organization_id),
+            "iss": settings.jwt_issuer,
+            "aud": settings.jwt_audience,
+            "jti": str(uuid4()),
+            "ver": settings.jwt_token_version,
             "iat": now,
             "exp": now + timedelta(minutes=settings.jwt_expire_minutes),
         },
@@ -44,7 +48,9 @@ def decode_session_token(token: str) -> SessionIdentity:
             token,
             _secret(),
             algorithms=[_JWT_ALG],
-            options={"require": ["exp", "sub", "org"]},
+            issuer=settings.jwt_issuer,
+            audience=settings.jwt_audience,
+            options={"require": ["exp", "sub", "org", "iss", "aud", "jti", "ver"]},
         )
     except jwt.ExpiredSignatureError as exc:
         raise Unauthenticated("Token sesji wygasł") from exc
@@ -55,7 +61,13 @@ def decode_session_token(token: str) -> SessionIdentity:
         raise Unauthenticated("Brak ważnego tokenu sesji")
     sub: object = raw.get("sub")
     org: object = raw.get("org")
+    ver: object = raw.get("ver")
+    jti: object = raw.get("jti")
     if not isinstance(sub, str) or not isinstance(org, str):
+        raise Unauthenticated("Brak ważnego tokenu sesji")
+    if not isinstance(jti, str) or jti == "":
+        raise Unauthenticated("Brak ważnego tokenu sesji")
+    if ver != settings.jwt_token_version:
         raise Unauthenticated("Brak ważnego tokenu sesji")
     try:
         return SessionIdentity(user_id=UUID(sub), organization_id=UUID(org))

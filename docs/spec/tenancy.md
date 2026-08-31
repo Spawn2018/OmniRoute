@@ -39,6 +39,10 @@ Jawne `WITH CHECK` na politykach tenant (nie FOR SELECT). Integration = CI.
 | S5 | DELETE | DELETE wiersza B przy kontekście A → 0 wierszy |
 | S6 | brak `app.current_org` | SELECT pusty; INSERT odrzut |
 
+## JWT claims (0.22 T5)
+
+- Access: `iss`, `aud`, `jti`, `ver` (`jwt_token_version`). TTL default 15 min.
+
 ## hello_token (0.21 T4)
 
 - `HELLO_TOKEN` default **false**. `issue_for_app_user` (mint UUID) tylko gdy true (local/CI).
