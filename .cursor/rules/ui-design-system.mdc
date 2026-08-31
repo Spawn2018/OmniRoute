@@ -1,26 +1,39 @@
 ---
-description: Enterprise UI — anti AI-slop, data density
+description: Enterprise UI 2026 — anti AI-slop, data density, DataTableShell
 globs: ["frontend/**/*.{ts,tsx,css}"]
 ---
 
-# ENTERPRISE UI/UX
+# ENTERPRISE UI/UX 2026
+
+Źródła decyzji: ADR-0002, Thoughtworks Radar 2026-04, NN/G complex apps,
+Pencil & Paper enterprise data tables, State of React/JS 2025.
 
 ## ZAKAZ „AI SLOP"
-- Brak niepotrzebnych gradientów (szczególnie fiolet/róż).
-- Brak gigantycznych paddingów z landing page'y.
-- Zaokrąglenia max `rounded-md` dla elementów operacyjnych (data-dense).
-- Brak dekoracyjnych hero sections w widokach operacyjnych.
+- Brak niepotrzebnych gradientów (szczególnie fiolet/róż) i glow.
+- Brak gigantycznych paddingów / hero z landing page w widokach operacyjnych.
+- Zaokrąglenia max `rounded-md` dla elementów operacyjnych.
+- Zakaz ThemeForest / „AI dashboard” templates.
+- Agent nie inventuje palety — tylko tokeny z design system.
 
-## GĘSTOŚĆ DANYCH
-- Compact mode domyślnie: text-sm / text-xs w tabelach, py-1.5 px-3.
-- TanStack Table: sort, filter, sticky header, pinned first column.
-- Kwoty: tabular-nums, wyrównanie prawo, `<Money/>` zawsze.
+## GĘSTOŚĆ (density ≠ clutter)
+- Compact domyślnie: `text-sm` / `text-xs` w tabelach, `py-1.5 px-3`.
+- Toggle density: compact | comfortable (zapis w widoku tabeli).
+- TanStack Table: sort, filter, sticky header, pin pierwszej kolumny, virtual >500.
+- Kwoty: tabular-nums, prawo, `<Money/>`.
+
+## DATATABLESHELL (obowiązkowy wzorzec list)
+- ColumnEditor: checkbox widoczności + DnD kolejności (@dnd-kit).
+- ViewManager: zapisz / wczytaj / import / reset — persist przez API `table_view` (RLS).
+- Filtry faceted + sync z URL; advanced filters = progressive disclosure (NN/G).
+- Jeden shell na cały produkt — kopiuj, nie wymyślaj nowej tabeli.
 
 ## INTERAKCJE
-- hover / focus-visible / active wyraźne (border, shadow-sm).
-- Animacje krótkie (150–200ms); framer-motion tylko gdy uzasadnione.
-- Split-screen verification dla ekstrakcji dokumentów (podgląd | formularz).
+- Command palette ⌘K / Ctrl+K (nawigacja + akcje).
+- hover / focus-visible / active wyraźne.
+- Animacje 150–200ms; motion tylko gdy uzasadnione.
+- Split-screen HITL dla ekstrakcji (podgląd | formularz) — Faza C.
 
 ## WZORCE
-- shadcn/ui + Tailwind v4 na Radix primitives — styl linijka po linijce.
-- Wzorzec gęstości: patrz `satnaing/shadcn-admin` (referencja, nie kopiuj ślepo).
+- shadcn/ui + Tailwind v4 + Radix — styl linijka po linijce.
+- Layout: wzorce z `satnaing/shadcn-admin` (nie fork całego repo).
+- PostHog od dnia 1: mierz użycie widoków i filtrów, nie zgaduj UX.

@@ -12,13 +12,22 @@ todos:
     content: "Audyt IDE: gh CLI + auth, GITHUB_PAT dla MCP, Customize ON, .env.example, commit .cursor/plans/"
     status: completed
   - id: phase-b-app-skeleton
-    content: Szkielet FastAPI+Vite; matryca modułu; RLS 0.3; OpenFGA; import-linter
+    content: "Szkielet FastAPI+Vite; RLS 0.3; OpenFGA; import-linter — DONE backend; frontend = B.5/B.6"
     status: completed
+  - id: phase-b5-frontend-shell
+    content: "B.5 Frontend Shell 2026: Vite, React Compiler, TanStack Router/Query/Form, shadcn, tokens, PostHog, ⌘K (ADR-0002)"
+    status: pending
+  - id: phase-b6-datatable
+    content: "B.6 DataTableShell: ColumnEditor DnD, filtry, table_view RLS, tenancy.users, PostHog events"
+    status: pending
+  - id: phase-b7-branch-protection
+    content: "B.7 Branch protection main wymaga gate (pull-forward z D)"
+    status: pending
   - id: phase-c-ai-platform
-    content: instructor + docling A/B + langfuse + promptfoo; Knowledge Library index (nie dump kontekstu)
+    content: instructor + docling A/B + langfuse + promptfoo; HITL na DataTableShell
     status: pending
   - id: phase-d-ops-rhythm
-    content: Automations PR/Bugbot; tygodniowy refaktor; piątkowa retrospektywa reguł
+    content: Automations PR/Bugbot; tygodniowy refaktor; agentlint CI (branch protection jeśli nie B.7)
     status: pending
 isProject: false
 ---
@@ -428,9 +437,9 @@ Zapisy wrażliwe (migracje, sekrety, prod) → **CLI/skrypty + approval**, nie s
 | IdP                   | Keycloak **lub** Ory Kratos (wybór przy bootstrapie IdP: **Keycloak** jako default — bogatszy ecosystem docs dla agentów) | Własny auth                                                                 |
 | Workflow              | `temporalio/temporal`                                                                                                     | Celery jako fundament procesów                                              |
 | Fairness/jobs         | `hatchet-dev/hatchet` + `procrastinate-org/procrastinate`                                                                 | Tylko Redis queue                                                           |
-| UI                    | Vite + React + TanStack + `shadcn-ui/ui` (+ wzorzec gęstości z `satnaing/shadcn-admin`)                                   | Next.js App Router jako primary (odrzucone na app wewnętrzną); Refine later |
-| Grid                  | TanStack Table + wirtualizacja; opcjonalnie glide-data-grid                                                               | Ag Grid enterprise później                                                  |
-| UX analytics          | `PostHog/posthog-js` od dnia 1                                                                                            | Brak telemetrii                                                             |
+| UI                    | Vite + React 19 (+Compiler) + TanStack Router/Query/Form/Table + `shadcn-ui/ui` + DataTableShell; wzorce z `satnaing/shadcn-admin`; PostHog | Next.js primary (odrzucone); TanStack Start = Assess — odroczony; ThemeForest AI dashboards |
+| Grid                  | **DataTableShell** = TanStack Table + Virtual + @dnd-kit ColumnEditor + `table_view` RLS | Ag Grid / drugi engine — tylko z ADR |
+| UX analytics          | `PostHog/posthog-js` od B.5 (shell) — eventy widoków/filtrów                                                          | Brak telemetrii                                                             |
 | AI extract            | `567-labs/instructor` + Claude                                                                                            | LangChain-first                                                             |
 | Docs OCR              | `docling-project/docling` (+ marker A/B); opcjonalnie unstructured                                                        | Tylko pdfplumber                                                            |
 | Agent instr. security | `kriskimmerle/agentlint` w CI                                                                                             | Brak skanu injection                                                        |
@@ -643,20 +652,25 @@ Dodać w sekcji Nawigacja:
 
 AGENTS.md (v2), GROUNDING.md, rules (+ui-design-system), skills (+module-factory, knowledge-retrieve), hooks, commands, justfile bootstrap, check_agent_refs, ADR-0001.
 
-### Faza B — Szkielet app (3–7 dni) — **NASTĘPNA**
+### Faza B — Szkielet app — **BACKEND UKOŃCZONY; FRONTEND = B.5–B.6**
 
-1. Template FastAPI+Vite + `pyproject.toml`
-2. Rozszerzenie `just gate` + CI install deps (bez kasowania bootstrap)
-3. Plaster **0.3 RLS** jako Golden Standard / exemplar „kod jak człowiek”
-4. OpenFGA hello; import-linter; nested AGENTS per BC (wg ADR-0001)
+1. ~~Template FastAPI + `pyproject.toml`~~ ✅
+2. ~~`just gate` + CI~~ ✅
+3. ~~Plaster 0.3 RLS~~ ✅
+4. ~~OpenFGA hello~~ ✅
+5. **B.5 Frontend Shell 2026** (ADR-0002): Vite, React Compiler, TanStack Router/Query/Form, shadcn, tokens, ⌘K, PostHog
+6. **B.6 DataTableShell**: ColumnEditor (checkbox+DnD), filtry, `table_view` RLS, consumer `tenancy.users`
+7. **B.7** Branch protection na `main` (nie czekać na D)
 
-### Faza C — Platforma AI/docs (równolegle)
+**TanStack Start:** Thoughtworks Assess 2026-04 — **odroczony**; wewnętrzna SPA wystarczy.
 
-instructor+docling sandbox; langfuse; promptfoo smoke.
+### Faza C — Platforma AI/docs (**po B.6**)
+
+instructor+docling; langfuse; promptfoo; HITL na gęstym UI (nie terminal-only).
 
 ### Faza D — Operacyjny rytm
 
-Pierwsza Automation PR; tygodniowy refaktor; retrospektywa rules/skills w piątki.
+Automations PR; tygodniowy refaktor; agentlint; retrospektywa rules (branch protection = B.7 jeśli wcześniej).
 
 ---
 

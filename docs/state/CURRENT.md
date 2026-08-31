@@ -1,47 +1,46 @@
 # Bieżący focus
 
-**Faza:** Faza B — plaster 0.4 (OpenFGA hello)  
+**Faza:** B — domknięcie frontendu (po RLS + OpenFGA)  
 **Repo:** https://github.com/Spawn2018/OmniRoute (`main`)  
-**Następny krok:** frontend Vite / Faza C
+**Następny krok:** plaster **0.5 Frontend Shell 2026** → potem **0.6 DataTableShell**
 
-**Plan Cursor:** Fazy 0+A+A.5 done; B.1–B.4 done; C/D pending.  
-**ADR:** [docs/adr/0001-cursor-software-factory-weryfikacja.md](docs/adr/0001-cursor-software-factory-weryfikacja.md)
+**Plan:** [docs/PLAN-REALIZACJA.md](PLAN-REALIZACJA.md)  
+**ADR:** [0001](adr/0001-cursor-software-factory-weryfikacja.md) · [0002 Frontend 2026](adr/0002-frontend-platform-2026.md)
 
 ---
 
-# Plaster 0.4 — OpenFGA hello
+# Plaster 0.5 — Frontend Shell 2026
 
-**Delta:** [docs/deltas/open/0.4-openfga.md](docs/deltas/open/0.4-openfga.md)  
-**Spec:** [docs/spec/tenancy.md](docs/spec/tenancy.md)  
-**Moduły:** M-01  
-**Status:** **ukończony** (skill + compose + model + API + CI green)
+**Delta:** [docs/deltas/open/0.5-frontend-shell.md](docs/deltas/open/0.5-frontend-shell.md)  
+**Status:** **następny do realizacji**
 
-## Zakres
-- OpenFGA w docker-compose + CI
-- Model: `organization.member` → `can_list_users`
-- `require_permission` na `GET /tenancy/users`
-- Skill `openfga-change`
+## Zakres (skrót)
+Vite + React 19/Compiler + TanStack Router/Query/Form + shadcn + tokens + ⌘K + PostHog.
 
-## Kryteria akceptacji
-- [x] Endpoint bez uprawnienia → 403
-- [x] Unit gate lokalnie
-- [x] Integration OpenFGA green w CI
+## Poza zakresem
+ColumnEditor / `table_view` (to 0.6), Faza C AI.
+
+---
+
+# Plaster 0.6 — DataTableShell (kolejny)
+
+**Delta:** [docs/deltas/open/0.6-datatable-views.md](docs/deltas/open/0.6-datatable-views.md)  
+Filtry, widoki, checkbox + DnD kolumn, persist RLS — Golden Standard dla wszystkich list.
 
 ---
 
 ## Ukończone
 
-| Faza | Co zrobiono |
+| Faza | Co |
 |---|---|
-| **Phase 0** | GitHub Spawn2018/OmniRoute, push, gate.yml |
-| **Phase A** | Cursor OS + ADR-0001 |
-| **Phase A.5** | gh CLI auth OK, `.env.example`, plan w repo |
-| **Phase B.1** | pyproject.toml, FastAPI szkielet, docker-compose |
-| **Phase B.2** | Plaster 0.3 RLS + nested AGENTS tenancy |
-| **Phase B.3** | Pełny `just gate` (check + test-unit + arch) |
-| **Phase B.4** | OpenFGA hello (model, klient, require_permission) |
+| 0–A.5 | GitHub, Cursor OS, MCP |
+| B.2–B.4 | RLS, pełny gate, OpenFGA |
+| ADR-0002 | Frontend platform 2026 (źródła Thoughtworks / SoR / NN/G) |
 
-## Następne
-- Faza C (instructor, docling, langfuse)
-- Frontend Vite pełny
-- Branch protection po green CI
+## Następne (kolejność bez kolizji)
+
+1. **0.5** Frontend Shell  
+2. **0.6** DataTableShell + `table_view`  
+3. **B.7** Branch protection (po green CI)  
+4. **Faza C** AI (HITL na gęstym UI)  
+5. **Faza D** Automations / agentlint

@@ -9,7 +9,8 @@ Produkt na sprzedaż, wielu tenantów, ruch produkcyjny.
 
 **Stos:** PostgreSQL 16 (+RLS, pgvector, pg_trgm) · FastAPI + granian ·
 SQLAlchemy 2.0 · Alembic · Pydantic v2 · Temporal · Hatchet · OpenFGA ·
-React 19 + Vite + TanStack + shadcn/ui + Tailwind v4 · OpenTelemetry
+React 19 (+Compiler) + Vite + TanStack (Router/Query/Form/Table) + shadcn/ui +
+Tailwind v4 + PostHog · OpenTelemetry
 
 ## Nawigacja
 
@@ -21,7 +22,7 @@ React 19 + Vite + TanStack + shadcn/ui + Tailwind v4 · OpenTelemetry
 | Specyfikacja modułu | `docs/spec/<nazwa>.md` |
 | Słownik domenowy PL/EN | `docs/GLOSSARY.md` |
 | Twarde ograniczenia domenowe | `GROUNDING.md` |
-| Decyzje architektoniczne | `docs/adr/` (start: ADR-0001 Cursor setup) |
+| Decyzje architektoniczne | `docs/adr/` (0001 Cursor factory, 0002 Frontend 2026) |
 | Bieżące zadanie | `docs/state/CURRENT.md` |
 | Historia plastrów | `docs/state/PROGRESS.md` |
 | Archiwum planów (60+ MD) | `Informacje z claude/` |
