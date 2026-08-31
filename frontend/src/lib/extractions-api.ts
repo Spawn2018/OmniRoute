@@ -35,6 +35,17 @@ export type ExtractionDraft = {
   reviewed_at: string | null
 }
 
+export function extractionCreateBody(args: {
+  sourceRef: string
+  inputText: string
+  documentBase64: string | null
+}): { source_ref: string; input_text?: string; document_base64?: string } {
+  if (args.documentBase64 !== null && args.documentBase64.length > 0) {
+    return { source_ref: args.sourceRef, document_base64: args.documentBase64 }
+  }
+  return { source_ref: args.sourceRef, input_text: args.inputText }
+}
+
 function statusOf(response: Response | undefined): number {
   return response?.status ?? 500
 }

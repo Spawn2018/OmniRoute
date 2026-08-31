@@ -9,6 +9,7 @@ import { track } from "@/lib/analytics"
 import {
   acceptExtractionDraft,
   createExtractionDraft,
+  extractionCreateBody,
   fetchExtractionDrafts,
   rejectExtractionDraft,
   type ExtractionDraft,
@@ -47,9 +48,11 @@ export function ExtractionQueuePage() {
   const createMutation = useMutation({
     mutationFn: () =>
       createExtractionDraft(
-        documentBase64
-          ? { source_ref: sourceRef, document_base64: documentBase64 }
-          : { source_ref: sourceRef, input_text: inputText },
+        extractionCreateBody({
+          sourceRef,
+          inputText,
+          documentBase64,
+        }),
       ),
     onSuccess: () => {
       track("extraction_draft_created")

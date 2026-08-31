@@ -4,6 +4,6 @@
     "GROUNDING.md": "d70167008da30e328c30cf9255d70a7b863ed37068109097fab5ba07c5598ada",
     ".cursor/rules/security-tenancy.mdc": "2bd22d865acf47d1b56c4b053125357b3d8674543e76d21f23eda6b5a49b50c4",
     ".cursor/rules/no-slop.mdc": "4d88ba43d21a29be8edf97dd18e4343ed29792133429ab1fa2a4d32c7884929c",
-    ".cursor/rules/context.mdc": "e9b993271ac26b6821f6e6b1864419a3a493ffefd707a804070f4317e8492ec1"
+    ".cursor/rules/context.mdc": "064148c8d37bbc98c6d4b66a568524beb47c80623d791ba6e4f6272dd5dc4ab7"
   }
 }

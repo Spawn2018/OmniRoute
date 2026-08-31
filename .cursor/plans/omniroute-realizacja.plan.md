@@ -29,8 +29,11 @@ todos:
   - id: phase-c5-langfuse-promptfoo
     content: "0.10 langfuse trace + promptfoo CI (echo fixtures; nie cloud, nie żywy LLM)"
     status: completed
-  - id: leftover-after-010
-    content: "Następny: vitest HITL + HTTP XOR; potem JWT, split-screen, echo recipes, branch protection UI — docs/ops/docs-debt.md"
+  - id: leftover-xor-vitest
+    content: "0.11 HTTP XOR 422 + vitest extractionCreateBody"
+    status: completed
+  - id: leftover-after-011
+    content: "Następny: JWT; potem split-screen, echo recipes, branch protection UI — docs/ops/docs-debt.md"
     status: pending
   - id: phase-d-ops-rhythm
     content: "D minimal: agentlint w just gate, pr-nudge, weekly-refactor + friday-retrospective"
@@ -334,7 +337,7 @@ Skills ładują się **on-demand** → anty–context-rot. To tu żyje „jak so
 | `zamknij-plaster`    | Koniec                  | pętla post-plaster.md, delta→spec, CURRENT, push, nowa rozmowa |
 
 
-Commands (UX człowieka): `/plaster`, `/testy`, `/bramka`, `/zamknij`, `/delta`, `/refaktor` — cienkie wrappery nad skills.
+Commands (UX człowieka): `/plaster`, `/testy`, `/bramka`, `/po-plastrze`, `/zamknij`, `/delta`, `/refaktor` — cienkie wrappery nad skills.
 
 
 |        | Skills on-demand                     | Alternatywa: wszystko w Rules / długi system prompt |
@@ -707,12 +710,12 @@ agentlint w `just gate`; `pr-nudge.yml`; weekly-refactor + friday-retrospective.
 
 **Otwarte (kolejność pracy, nie blokada planu):**
 
-1. Vitest kolejki HITL + test HTTP XOR (`input_text` XOR `document_base64`)
-2. JWT zamiast spoofowalnych headerów sesji
-3. Split-screen HITL
-4. Branch protection w UI GitHub — po Pro/Team; do wtedy `docs/ops/branch-protection.md`
-5. Echo recipes (`just perf` / k6 / vulture / pip-audit) — dopiero gdy nie `echo`
-6. `npx promptfoo eval` / 30 cenników / żywy LLM / llm-guard ML / presidio / langfuse cloud
+1. JWT zamiast spoofowalnych headerów sesji
+2. Split-screen HITL
+3. Branch protection w UI GitHub — po Pro/Team; do wtedy `docs/ops/branch-protection.md`
+4. Echo recipes (`just perf` / k6 / vulture / pip-audit) — dopiero gdy nie `echo`
+5. `npx promptfoo eval` / 30 cenników / żywy LLM / llm-guard ML / presidio / langfuse cloud
+6. HTTP happy-path `/extractions` (accept/reject) — poza XOR 422
 
 Canvas `post-audit-review` = przegląd, nie lista do kodu. Rejestr: `docs/ops/docs-debt.md` + `docs/PLAN-REALIZACJA.md` § leftoverów. Załączony plan software-house **nietknięty**.
 

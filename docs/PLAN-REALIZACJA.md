@@ -3,13 +3,14 @@
 **Plan Cursor (pełny):** `.cursor/plans/omniroute-realizacja.plan.md`  
 **ADR:** [0001 Cursor factory](adr/0001-cursor-software-factory-weryfikacja.md) · [0002 Frontend 2026](adr/0002-frontend-platform-2026.md)  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
-**Stan:** B + C.1–C.5 + D minimal **DONE** · następny leftover **vitest HITL + HTTP XOR**
+**Stan:** B + C.1–C.5 + 0.11 XOR/vitest + D minimal **DONE** · następny leftover **JWT**
 
 ```mermaid
 flowchart LR
   doneB[B_DONE] --> doneC[C1_C4_DONE]
   doneC --> doneC5[0.10_DONE]
-  doneC5 --> next[vitest_HITL_XOR]
+  doneC5 --> doneXor[0.11_XOR_vitest]
+  doneXor --> next[JWT]
   doneB --> doneD[D_minimal_DONE]
 ```
 
@@ -28,7 +29,7 @@ flowchart LR
 | B.5 Frontend Shell 0.5 | ✅ Vite, Compiler, TanStack, shadcn, ⌘K, lazy PostHog |
 | B.6 DataTableShell 0.6 | ✅ ColumnEditor, table_view RLS, vitest |
 | B.7 Branch protection | ✅ procedura (Free private 403) |
-| C.1–C.5 / 0.7–0.10 | ✅ HITL, instructor+guard, docling A/B, langfuse+promptfoo echo |
+| C.1–C.5 / 0.7–0.11 | ✅ HITL, instructor+guard, docling A/B, langfuse+promptfoo echo, XOR/vitest |
 | D minimal | ✅ agentlint, pr-nudge, rytm refaktor/retro |
 
 ---
@@ -113,9 +114,8 @@ Pełna lista z „dlaczego”: [docs/ops/docs-debt.md](ops/docs-debt.md)
 
 | Kolejność | Co | Nie mylić z |
 |---|---|---|
-| następny | Vitest kolejki HITL + test HTTP XOR (`input_text` XOR `document_base64`) — `api/extractions.py` ~45% | 0.10 nie pokrywa UI ani XOR |
-| potem | JWT zamiast spoofowalnych `X-Organization-Id` / `X-User-Id` | B.5 świadomy dług |
-| potem | Split-screen HITL (podgląd \| formularz) | kolejka DataTableShell już jest |
+| następny | JWT zamiast spoofowalnych `X-Organization-Id` / `X-User-Id` | B.5 świadomy dług |
+| potem | Split-screen HITL (podgląd \| formularz) | kolejka DataTableShell + vitest body XOR |
 | 0.10+ (nie ten plaster) | żywy instructor/OpenAI w CI, llm-guard transformers, presidio, promptfoo 30 cenników, langfuse cloud | 0.10 = echo fixtures + no-op bez kluczy |
 | gdy recipe realne | `just perf` / size-limit / k6 / vulture / pip-audit | dziś `echo`, nie DoD |
 | po Pro/Team | branch protection UI (required check `gate`) | Free private → API 403 |

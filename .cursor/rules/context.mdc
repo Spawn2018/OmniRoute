@@ -18,7 +18,7 @@ NIE RÓB:
 
 Brakuje informacji → zapytaj jednym pytaniem. Nie eksploruj.
 
-Po zadaniu: linia w PROGRESS.md, aktualizacja CURRENT.md, koniec.
+Po zadaniu: pętla `docs/ops/post-plaster.md`, linia w PROGRESS.md, aktualizacja CURRENT.md, push.
 
 WIP: nie zaczynaj kolejnego plastra, gdy bieżący ma niezacommitowany / niepushnięty zakres.
 DoD: stan egzekucji gate (stub vs real) — `docs/PLAN-REALIZACJA.md`, nie zgaduj.

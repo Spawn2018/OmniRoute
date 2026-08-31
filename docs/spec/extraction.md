@@ -1,7 +1,7 @@
 # M-20 — Ekstrakcja dokumentów (HITL)
 
-**Status:** 0.7–0.10 DONE · następny leftover: vitest HITL + HTTP XOR  
-**Delty:** `docs/deltas/archived/0.7-ai-extract-hitl.md`, `0.8-instructor-llm-guard.md`, `0.9-docling-ab.md`, `0.10-langfuse-promptfoo.md`  
+**Status:** 0.7–0.11 DONE · następny leftover: JWT  
+**Delty:** `docs/deltas/archived/0.7-ai-extract-hitl.md`, `0.8-instructor-llm-guard.md`, `0.9-docling-ab.md`, `0.10-langfuse-promptfoo.md`, `0.11-hitl-xor-vitest.md`  
 **GROUNDING:** HC-03 (`source_ref`, `unparsed_regions`), HC-04 (zero zapisu autonomicznego)
 
 ## Zakres (kod dziś)
@@ -20,7 +20,7 @@
 - Żywy instructor / OpenAI w CI, langfuse cloud, eval promptfoo 30 cenników
 - Presidio na każdym endpoincie, outbox, Temporal/Hatchet
 - Split-screen HITL, JWT zamiast headerów sesji
-- Vitest kolejki ekstrakcji (jest tylko DataTableShell)
+- Vitest: `extractionCreateBody` (XOR plik/tekst); brak RTL całej kolejki / split-screen
 
 ## Kontrakt HITL
 
@@ -69,16 +69,17 @@ CI nie odpala transformerów llm-guard ani OpenAI.
 - PDF bez docling → `pdf_strings`; A/B zapisuje deltę znaków
 - Trace langfuse przy extract; bez kluczy no-op; metadane bez `input_text`
 - promptfoo echo w CI (`just promptfoo` = pytest, nie npx); te same fixture’e MockExtractor
+- HTTP XOR 422; vitest `extractionCreateBody`
 - `just gate` green (unit); integration OpenFGA/RLS w CI
 
-## Następny leftover (nie 0.10)
+## Następny leftover
 
-Vitest kolejki HITL + test HTTP XOR. Presidio i żywy llm-guard = później.
+JWT zamiast headerów sesji. Presidio i żywy llm-guard = później.
 Nie startuj kolejnego plastra przy niepushniętym WIP.
 
-### Poza 0.10 (zostaje)
+### Poza 0.11 (zostaje)
 
 - Cloud Langfuse jako wymóg merge
 - 30 cenników eval (osobna decyzja danych)
 - Presidio na wszystkich endpointach API
-- Vitest kolejki, JWT, split-screen — [docs/ops/docs-debt.md](../ops/docs-debt.md)
+- HTTP happy-path extract/accept/reject, JWT, split-screen — [docs/ops/docs-debt.md](../ops/docs-debt.md)

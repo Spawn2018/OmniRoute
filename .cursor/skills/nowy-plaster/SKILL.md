@@ -37,7 +37,7 @@ Kolejność jest obowiązkowa. Nie przeskakuj etapów.
 ## 8. Test
 - hypothesis dla reguł biznesowych
 - izolacja tenantów dla nowych tabel
-- Vitest: DataTableShell + nowe UI list. Kolejka ekstrakcji — vitest **brak** (osobny plaster, nie ten skill)
+- Vitest: DataTableShell + `extractionCreateBody` (kolejka HITL XOR). Split-screen HITL — brak.
 
 ## Definicja ukończenia
 `just gate` zielone (tylko realne kroki, nie `echo`) + pętla `docs/ops/post-plaster.md` + człowiek + delta zarchiwizowana + **push**.
