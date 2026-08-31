@@ -1,5 +1,12 @@
+import { createElement } from "react"
+import { renderToStaticMarkup } from "react-dom/server"
 import { describe, expect, it } from "vitest"
-import { hitlSplitView } from "@/features/extraction/hitl-split"
+import { HitlReviewSplit } from "@/features/extraction/hitl-review-split"
+import {
+  HITL_AI_LABEL,
+  hitlGeneratedContentLabel,
+  hitlSplitView,
+} from "@/features/extraction/hitl-split"
 import type { ExtractionDraft } from "@/lib/extractions-api"
 
 function sampleDraft(): ExtractionDraft {
@@ -33,5 +40,37 @@ describe("hitlSplitView", () => {
     expect(view.preview).toContain("THC 100 EUR")
     expect(view.candidates).toEqual([{ code: "THC", amount_text: "100", currency: "EUR" }])
     expect(view.unparsedRegions).toEqual(["note weekend"])
+    expect(hitlGeneratedContentLabel(view)).toBe(HITL_AI_LABEL)
+  })
+
+  it("does not mark empty HITL as generated content", () => {
+    expect(hitlGeneratedContentLabel(hitlSplitView(null))).toBeNull()
+  })
+
+  it("fails if the draft review UI has no AI label", () => {
+    const html = renderToStaticMarkup(
+      createElement(HitlReviewSplit, {
+        draft: sampleDraft(),
+        busy: false,
+        onAccept: () => undefined,
+        onReject: () => undefined,
+      }),
+    )
+    expect(html).toContain(HITL_AI_LABEL)
+    expect(html).toContain('data-generated-content="ai"')
+    expect(html).toContain('role="status"')
+  })
+
+  it("does not show the AI label when no draft is selected", () => {
+    const html = renderToStaticMarkup(
+      createElement(HitlReviewSplit, {
+        draft: null,
+        busy: false,
+        onAccept: () => undefined,
+        onReject: () => undefined,
+      }),
+    )
+    expect(html).not.toContain(HITL_AI_LABEL)
+    expect(html).not.toContain("data-generated-content")
   })
 })

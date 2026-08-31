@@ -1,6 +1,6 @@
 import { Money } from "@/components/money"
 import { Button } from "@/components/ui/button"
-import { hitlSplitView } from "@/features/extraction/hitl-split"
+import { hitlGeneratedContentLabel, hitlSplitView } from "@/features/extraction/hitl-split"
 import type { ExtractionDraft } from "@/lib/extractions-api"
 
 type HitlReviewSplitProps = {
@@ -29,7 +29,16 @@ export function HitlReviewSplit({ draft, busy, onAccept, onReject }: HitlReviewS
         <pre className="mt-2 max-h-64 overflow-auto whitespace-pre-wrap text-xs">{view.preview}</pre>
       </section>
       <section className="min-w-0 rounded-md border border-border bg-card p-3">
-        <h3 className="text-xs font-medium text-muted-foreground">Recenzja</h3>
+        <div className="flex flex-wrap items-baseline justify-between gap-2">
+          <h3 className="text-xs font-medium text-muted-foreground">Recenzja</h3>
+          <p
+            data-generated-content="ai"
+            role="status"
+            className="text-xs font-medium text-accent"
+          >
+            {hitlGeneratedContentLabel(view)}
+          </p>
+        </div>
         <ul className="mt-2 space-y-1 text-sm">
           {view.candidates.length === 0 ? (
             <li className="text-muted-foreground">Brak kandydatów</li>

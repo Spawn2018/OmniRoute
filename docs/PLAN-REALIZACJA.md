@@ -3,7 +3,7 @@
 **Plan Cursor (pełny):** `.cursor/plans/omniroute-realizacja.plan.md`  
 **ADR:** [0001 Cursor factory](adr/0001-cursor-software-factory-weryfikacja.md) · [0002 Frontend 2026](adr/0002-frontend-platform-2026.md)  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
-**Stan:** B + C.1–C.5 + 0.11–0.15 leftover + **Exit Wave A (D0–0.23)** + **0.25 Money** + **1.0–1.3 charge** + D minimal · następny **Auth0 I1** (Wave FE U-* leftover; nie startowane tu)
+**Stan:** B + C.1–C.5 + 0.11–0.15 leftover + **Exit Wave A (D0–0.23)** + **0.25 Money** + **1.0–1.3 charge** + **U-art50** + D minimal · następny **U-palette-ops** (Wave FE; nie Exit Wave FE; Auth0 I1 po U-*)
 
 ```mermaid
 flowchart LR
@@ -130,7 +130,7 @@ Pełna lista z „dlaczego”: [docs/ops/docs-debt.md](ops/docs-debt.md)
 
 | Kolejność | Co | Nie mylić z |
 |---|---|---|
-| następny | Auth0 I1 BFF + PKCE + cookie | nie hasła+Auth0; first-login bez org = odmowa |
+| następny | U-palette-ops ⌘K akcje operatora | nie Auth0 I1; nie Exit Wave FE |
 | 1.3 DONE | accept → `rate_line` w jednej transakcji HTTP | nie ExtractionService → rates; nie outbox; nie charge/sell z LLM |
 | 1.2 DONE | `charge` buy+sell + `margin()` + `/charges` | nie accept HITL; U-routes-breadth = jedna trasa, nie Exit Wave FE |
 | 1.1 DONE | `rate_line` immutable + `source_ref` + `/rate-lines` | nie charge / marża; U-routes-breadth = jedna trasa, nie Exit Wave FE |
@@ -153,6 +153,7 @@ Pełna lista z „dlaczego”: [docs/ops/docs-debt.md](ops/docs-debt.md)
 | 0.13 DONE | Split-screen HITL (podgląd \| recenzja) | tekst źródła, nie PDF canvas |
 | 0.12 DONE | JWT zamiast spoofowalnych `X-Organization-Id` / `X-User-Id` | hello HS256, nie IdP |
 | 0.10+ (nie ten plaster) | żywy instructor/OpenAI w CI, llm-guard transformers, presidio, promptfoo 30 cenników, langfuse cloud | 0.10 = echo fixtures + no-op bez kluczy |
+| U-art50 DONE | label „propozycja AI” na szkicu HITL | nie PDF prawny; nie Exit Wave FE |
 | gdy recipe realne | `just perf` / size-limit / k6 / vulture / pip-audit | dziś `echo`, nie DoD |
 | po Pro/Team | branch protection UI (required check `gate`) | Free private → API 403 |
 

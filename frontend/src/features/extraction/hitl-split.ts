@@ -15,6 +15,12 @@ export type HitlSplitReview = {
 
 export type HitlSplitView = HitlSplitEmpty | HitlSplitReview
 
+export const HITL_AI_LABEL = "propozycja AI"
+
+export function hitlGeneratedContentLabel(view: HitlSplitView): string | null {
+  return view.kind === "review" ? HITL_AI_LABEL : null
+}
+
 export function hitlSplitView(draft: ExtractionDraft | null): HitlSplitView {
   if (draft === null) {
     return { kind: "empty" }
