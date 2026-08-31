@@ -3,8 +3,8 @@
 **Faza:** C — leftover session  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
 
-**Ostatni plaster:** **0.20 A2** `can_review_extractions` = reviewer (zarchiwizowany)  
-**Następny:** **0.21 T4** `hello_token` default **false** (ON tylko local+CI)
+**Ostatni plaster:** **0.21 T4** `hello_token` default false (zarchiwizowany)  
+**Następny:** **0.22 T5** iss/aud/jti, TTL 15 min, `token_version`
 
 **Spec (jedna na sesję):** [docs/spec/tenancy.md](docs/spec/tenancy.md)
 
@@ -14,4 +14,4 @@
 
 **Plan:** [docs/PLAN-REALIZACJA.md](docs/PLAN-REALIZACJA.md)
 
-**2026-09-01:** 0.20 A2 — member ≠ reviewer; first-login zostaje member.
+**2026-09-01:** 0.21 T4 — mint UUID wyłączony, chyba że `HELLO_TOKEN` local/CI.

@@ -17,7 +17,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **0.18 DONE:** HTTP extract live PG + token A / draft B → 404; integration = CI
 - **0.19 A1 DONE:** undeclared `/api/v1` → 403; Swagger/ReDoc off
 - **0.20 A2 DONE:** `can_review_extractions` = reviewer; seed first-login = member
-- **Następny (kod):** 0.21 T4 `hello_token` default false ([PROGRAM-12M.md](../state/PROGRAM-12M.md))
+- **0.21 T4 DONE:** `hello_token` default false; mint UUID tylko przy fladze
+- **Następny (kod):** 0.22 T5 iss/aud/jti + TTL 15 min ([PROGRAM-12M.md](../state/PROGRAM-12M.md))
 - **Leftover ≠ DONE:** wiersz w tym pliku / PLAN nie zamyka plastra i nie zastępuje `just gate`
 - **OAuth/OIDC:** Auth0 I1 **po Wave A**; nie następny kod. 0.12 JWT = hello HS256
 - **0.11 DONE:** HTTP XOR 422 + vitest `extractionCreateBody`

@@ -47,6 +47,8 @@ class SessionService:
         self._refresh = RefreshTokenRepository(session)
 
     async def issue_for_app_user(self, organization_id: UUID, user_id: UUID) -> str:
+        if not settings.hello_token:
+            raise Unauthenticated("Mint UUID wyłączony")
         user = await self._users.get_by_id(user_id)
         if user is None or user.organization_id != organization_id:
             raise Unauthenticated("Nieznany użytkownik sesji")

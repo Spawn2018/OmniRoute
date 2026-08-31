@@ -39,6 +39,10 @@ Jawne `WITH CHECK` na politykach tenant (nie FOR SELECT). Integration = CI.
 | S5 | DELETE | DELETE wiersza B przy kontekście A → 0 wierszy |
 | S6 | brak `app.current_org` | SELECT pusty; INSERT odrzut |
 
+## hello_token (0.21 T4)
+
+- `HELLO_TOKEN` default **false**. `issue_for_app_user` (mint UUID) tylko gdy true (local/CI).
+
 ## OpenFGA (0.20 A2)
 
 - `can_review_extractions` = `reviewer`, nie `member`

@@ -20,6 +20,7 @@ class Settings(BaseSettings):
     jwt_secret: str = ""
     jwt_expire_minutes: int = 60
     jwt_refresh_expire_days: int = 14
+    hello_token: bool = False
 
 
 settings = Settings()

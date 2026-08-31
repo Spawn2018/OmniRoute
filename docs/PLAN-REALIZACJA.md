@@ -3,7 +3,7 @@
 **Plan Cursor (pełny):** `.cursor/plans/omniroute-realizacja.plan.md`  
 **ADR:** [0001 Cursor factory](adr/0001-cursor-software-factory-weryfikacja.md) · [0002 Frontend 2026](adr/0002-frontend-platform-2026.md)  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
-**Stan:** B + C.1–C.5 + 0.11–0.15 leftover + **D0–0.20** + D minimal · następny **0.21 T4** (`hello_token` default false; OAuth = Auth0 I1 po Wave A)
+**Stan:** B + C.1–C.5 + 0.11–0.15 leftover + **D0–0.21** + D minimal · następny **0.22 T5** (iss/aud/jti; OAuth = Auth0 I1 po Wave A)
 
 ```mermaid
 flowchart LR
@@ -21,7 +21,8 @@ flowchart LR
   doneT2 --> done018[P018_http_live_pg]
   done018 --> doneA1[A1_undeclared_deny]
   doneA1 --> doneA2[A2_reviewer]
-  doneA2 --> next[T4_hello_off]
+  doneA2 --> doneT4[T4_hello_off]
+  doneT4 --> next[T5_jwt_claims]
   doneB --> doneD[D_minimal_DONE]
 ```
 
@@ -127,7 +128,8 @@ Pełna lista z „dlaczego”: [docs/ops/docs-debt.md](ops/docs-debt.md)
 
 | Kolejność | Co | Nie mylić z |
 |---|---|---|
-| następny | 0.21 T4 `hello_token` default false | ON tylko local+CI |
+| następny | 0.22 T5 iss/aud/jti, TTL 15 min, token_version | nie goły HMAC |
+| 0.21 T4 DONE | `hello_token` default false | mint UUID tylko local/CI |
 | 0.20 A2 DONE | `can_review_extractions` = reviewer | first-login = member |
 | 0.19 A1 DONE | undeclared `/api/v1` → 403; playground off | /health publiczne |
 | 0.18 DONE | HTTP extract live PG; token A / draft B → 404 | integration = CI (local PG hang) |

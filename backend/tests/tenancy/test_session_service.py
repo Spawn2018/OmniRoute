@@ -3,6 +3,7 @@ from uuid import uuid4
 
 import pytest
 
+from app.core.config import Settings
 from app.core.database import bind_tenant
 from app.core.session_token import decode_session_token
 from app.domain.errors import Unauthenticated
@@ -10,8 +11,17 @@ from app.models.app_user import AppUser
 from app.services.tenancy.session_service import SessionService
 
 
+def test_hello_token_defaults_false() -> None:
+    assert Settings.model_fields["hello_token"].default is False
+
+
+@pytest.fixture
+def hello_token_on(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr("app.core.config.settings.hello_token", True)
+
+
 @pytest.mark.asyncio
-async def test_issue_for_known_app_user() -> None:
+async def test_issue_for_known_app_user(hello_token_on: None) -> None:
     org_id = uuid4()
     user_id = uuid4()
     user = AppUser(
@@ -29,7 +39,7 @@ async def test_issue_for_known_app_user() -> None:
 
 
 @pytest.mark.asyncio
-async def test_issue_rejects_missing_user() -> None:
+async def test_issue_rejects_missing_user(hello_token_on: None) -> None:
     session = AsyncMock()
     session.get = AsyncMock(return_value=None)
     with pytest.raises(Unauthenticated):
@@ -37,7 +47,7 @@ async def test_issue_rejects_missing_user() -> None:
 
 
 @pytest.mark.asyncio
-async def test_issue_rejects_user_from_other_org() -> None:
+async def test_issue_rejects_user_from_other_org(hello_token_on: None) -> None:
     user = AppUser(
         id=uuid4(),
         organization_id=uuid4(),
@@ -52,7 +62,9 @@ async def test_issue_rejects_user_from_other_org() -> None:
 
 @pytest.mark.integration
 @pytest.mark.asyncio
-async def test_cannot_issue_token_for_foreign_tenant(session, two_tenants) -> None:
+async def test_cannot_issue_token_for_foreign_tenant(
+    session, two_tenants, hello_token_on: None
+) -> None:
     org_b = two_tenants["org_b"]
     user_a = two_tenants["user_a"]
     await bind_tenant(session, org_b.id)
@@ -62,7 +74,9 @@ async def test_cannot_issue_token_for_foreign_tenant(session, two_tenants) -> No
 
 @pytest.mark.integration
 @pytest.mark.asyncio
-async def test_issue_token_for_tenant_member(session, two_tenants) -> None:
+async def test_issue_token_for_tenant_member(
+    session, two_tenants, hello_token_on: None
+) -> None:
     org_a = two_tenants["org_a"]
     user_a = two_tenants["user_a"]
     await bind_tenant(session, org_a.id)
@@ -70,3 +84,11 @@ async def test_issue_token_for_tenant_member(session, two_tenants) -> None:
     identity = decode_session_token(token)
     assert identity.user_id == user_a.id
     assert identity.organization_id == org_a.id
+
+
+@pytest.mark.asyncio
+async def test_issue_for_app_user_denied_when_hello_token_off() -> None:
+    session = AsyncMock()
+    with pytest.raises(Unauthenticated, match="Mint UUID wyłączony"):
+        await SessionService(session).issue_for_app_user(uuid4(), uuid4())
+    session.get.assert_not_called()

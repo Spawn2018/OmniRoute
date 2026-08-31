@@ -40,4 +40,5 @@
 | 2026-09-01 | 0.18 | M-20 | HTTP extract live PG; token A / draft B → 404; integration = CI |
 | 2026-09-01 | 0.19 A1 | API | undeclared `/api/v1` → 403; playground off |
 | 2026-09-01 | 0.20 A2 | AuthZ | `can_review_extractions` = reviewer; member nie recenzuje |
-| — | leftover | M-01 | **Następny:** 0.21 T4 `hello_token` default false |
+| 2026-09-01 | 0.21 T4 | M-01 | `hello_token` default false; mint UUID tylko local/CI |
+| — | leftover | M-01 | **Następny:** 0.22 T5 iss/aud/jti, TTL 15 min, token_version |
