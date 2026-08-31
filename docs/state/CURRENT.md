@@ -4,8 +4,8 @@
 **Repo:** https://github.com/Spawn2018/OmniRoute (`main`)  
 **Następny krok:** plaster **0.5 Frontend Shell 2026** → potem **0.6 DataTableShell**
 
-**Plan:** [docs/PLAN-REALIZACJA.md](PLAN-REALIZACJA.md)  
-**ADR:** [0001](adr/0001-cursor-software-factory-weryfikacja.md) · [0002 Frontend 2026](adr/0002-frontend-platform-2026.md)
+**Plan:** [docs/PLAN-REALIZACJA.md](docs/PLAN-REALIZACJA.md)  
+**ADR:** [docs/adr/0001-cursor-software-factory-weryfikacja.md](docs/adr/0001-cursor-software-factory-weryfikacja.md) · [docs/adr/0002-frontend-platform-2026.md](docs/adr/0002-frontend-platform-2026.md)
 
 ---
 

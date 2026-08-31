@@ -4,7 +4,8 @@ globs: ["frontend/**/*.{ts,tsx}"]
 ---
 
 STRUKTURA: `features/<moduł>/` — komponenty, hooki, typy, testy.
-Współdzielone: `components/ui/` (shadcn), `components/data-table/` (DataTableShell), `lib/`.
+Współdzielone: shadcn w `frontend/src/components/ui/`, DataTableShell w
+`frontend/src/components/data-table/`, wspólne w `frontend/src/lib/`.
 
 STACK (ADR-0002):
 - React 19 + React Compiler (Vite) — bez ręcznego useMemo/useCallback na gorąco.
