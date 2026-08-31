@@ -65,7 +65,10 @@ async def engine() -> AsyncGenerator:
         await _apply_rls_policies(conn)
         await conn.execute(text("GRANT USAGE ON SCHEMA public TO tenant_tester"))
         await conn.execute(
-            text("GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO tenant_tester")
+            text(
+                "GRANT SELECT, INSERT, UPDATE, DELETE "
+                "ON ALL TABLES IN SCHEMA public TO tenant_tester"
+            )
         )
 
     await admin_engine.dispose()
