@@ -42,12 +42,18 @@ async def test_table_view_rls_isolates_tenants(session, two_tenants) -> None:
     session.add(view_b)
     await session.flush()
 
+    # expunge — session.get omija RLS przez identity map
+    session.expunge_all()
+
     await bind_tenant(session, org_a.id)
     visible_a = list((await session.scalars(select(TableView))).all())
     assert {row.id for row in visible_a} == {view_a.id}
-    assert await session.get(TableView, view_b.id) is None
+    foreign_b = await session.scalar(select(TableView).where(TableView.id == view_b.id))
+    assert foreign_b is None
 
+    session.expunge_all()
     await bind_tenant(session, org_b.id)
     visible_b = list((await session.scalars(select(TableView))).all())
     assert {row.id for row in visible_b} == {view_b.id}
-    assert await session.get(TableView, view_a.id) is None
+    foreign_a = await session.scalar(select(TableView).where(TableView.id == view_a.id))
+    assert foreign_a is None
