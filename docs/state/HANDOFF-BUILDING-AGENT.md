@@ -2,6 +2,8 @@
 
 Skopiuj **cały blok** poniżej do czatu z agentem **D0**. Nie startuj OAuth/OIDC.
 
+**Wave FE (twardy pasek, nie D0):** Exit Wave FE = **wszystkie** ID `U-*` w `docs/state/PROGRAM-12M.md` § **Exit Wave FE — powierzchnia 2026**. Adapter OpenAPI + RTL **nie** zamyka fali. Claim „scaffold 2026 + powierzchnia 2026” jest **zakazany**, dopóki U-density, U-palette-ops, U-pdf-spans, U-routes-breadth, U-a11y, U-size-limit-real, U-art50 i U-admin-ref nie przejdą (plus scaffold U0–U2, który **nie** zastępuje U-*). Nie startuj Wave FE przed Exit Wave A.
+
 ---
 
 ```
@@ -24,4 +26,6 @@ D0 — uczciwość OS: AGENTS dziś/później, .cursorignore na dump, zagnieżd�
 → 0.19–0.23 — deny undeclared, reviewer≠member, hello off default, iss/aud/jti, sekrety poza YAML
 
 Auth0 BFF+cookie = I1 po Wave A. echo ≠ DoD. Po plasterze: post-plaster + push + nowa rozmowa.
+
+Wave FE: NIE TERAZ. Po Exit Wave A. Exit Wave FE ≠ adapter + RTL. SoT: PROGRAM-12M.md § Exit Wave FE. Powierzchnia 2026 = twardy claim dopiero po WSZYSTKICH U-* (U-density, U-palette-ops, U-pdf-spans, U-routes-breadth, U-a11y, U-size-limit-real, U-art50, U-admin-ref). D0 nie zdejmuje HITL / LLM nigdy nie liczy. Art. 50 = label UI (U-art50), nie PDF prawny.
 ```

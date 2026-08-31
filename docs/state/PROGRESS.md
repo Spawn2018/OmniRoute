@@ -32,4 +32,5 @@
 | 2026-08-31 | 0.14 | M-20 | HTTP happy-path extract/list/accept/reject (JWT, stub serwisu) |
 | 2026-08-31 | docs/OS | — | kanon `/testy` `/bramka` zamiast person z archiwum |
 | 2026-08-31 | 0.15 | M-01 | hasła argon2id + rotacja refresh; UUID-login wycięty |
+| 2026-09-01 | docs/OS | FE | Exit Wave FE: twardy pasek powierzchni 2026 (U-density…U-admin-ref, Art. 50 UI); adapter+RTL nie zamyka fali |
 | — | leftover | OS | **Następny:** D0 (uczciwość OS) → 0.15 T0 `document_base64` max_length |
