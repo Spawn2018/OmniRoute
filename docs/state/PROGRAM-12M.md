@@ -25,8 +25,8 @@ Po plasterze: docs/ops/post-plaster.md + push + nowa rozmowa.
 
 | Teraz (git) | Po zamknięciu WIP | Nie wolno |
 |---|---|---|
-| **Ostatni:** 0.15 T0 max_length | **0.16 T1** (`omniroute_app` NOBYPASSRLS) | Start OAuth/OIDC; powtórka T0 |
-| WIP czysty po pushu T0 | T1 nie miesza się z T2 | Dwa agenty na tych samych plikach |
+| **Ostatni:** Exit Wave A (0.23 S1) | **Charge 0.25** / Auth0 I1 / Wave FE U-* | Start Charge∥FE∥Auth0 tylko po tym exicie |
+| WIP czysty po pushu 0.23 | max 3 agenty; pliki ∩ = ∅ | Dwa agenty na tych samych plikach |
 
 **Kolizja numeru:** WIP **0.15 hasła** ≠ kanon **0.15 T0**. Po zamknięciu hasła zostają 0.15 w PROGRESS; T0 zostaje **0.15 T0** w tym pliku.
 
@@ -73,7 +73,7 @@ Po plasterze: docs/ops/post-plaster.md + push + nowa rozmowa.
 
 ## Plastry — kolejność (WIP=1)
 
-**D0 DONE.** **0.15 hasła DONE.** **0.15 T0 DONE** (po pushu). Potem:
+**Wave A DONE** (D0 + 0.15 T0 … 0.23 po pushu). Potem fork:
 
 | ID | Co | Spec | Zabija |
 |---|---|---|---|

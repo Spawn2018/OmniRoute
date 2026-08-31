@@ -37,5 +37,5 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 - **0.5–0.15 + B.7:** done (HITL, JWT, hasła+refresh, HTTP extract unit/stub)
-- **Następny:** 0.16 T1 `omniroute_app` NOBYPASSRLS (T0 max_length done)
+- **Następny:** Charge 0.25 Money (Exit Wave A done)
 - Szczegóły: `docs/PLAN-REALIZACJA.md` · dług poza sync: `docs/ops/docs-debt.md`

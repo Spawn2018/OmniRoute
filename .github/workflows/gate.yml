@@ -34,7 +34,7 @@ jobs:
       ADMIN_TEST_DATABASE_URL: postgresql+asyncpg://omniroute:omniroute@localhost:5432/omniroute_test
       TENANT_TEST_DATABASE_URL: postgresql+asyncpg://tenant_tester:test@localhost:5432/omniroute_test
       OPENFGA_API_URL: http://localhost:8080
-      JWT_SECRET: ci-gate-jwt-secret-not-for-production-use
+      JWT_SECRET: ${{ secrets.JWT_SECRET }}
 
     steps:
       - uses: actions/checkout@v4

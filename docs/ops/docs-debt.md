@@ -19,7 +19,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **0.20 A2 DONE:** `can_review_extractions` = reviewer; seed first-login = member
 - **0.21 T4 DONE:** `hello_token` default false; mint UUID tylko przy fladze
 - **0.22 T5 DONE:** JWT iss/aud/jti/ver; TTL 15 min
-- **Następny (kod):** 0.23 S1 JWT_SECRET z GitHub Encrypted Secrets ([PROGRAM-12M.md](../state/PROGRAM-12M.md))
+- **0.23 S1 DONE:** JWT_SECRET z GitHub Encrypted Secrets; literał usunięty z gate.yml
+- **Exit Wave A:** D0 + T0…0.23. **Następny (kod):** Charge 0.25 Money ([PROGRAM-12M.md](../state/PROGRAM-12M.md))
 - **Leftover ≠ DONE:** wiersz w tym pliku / PLAN nie zamyka plastra i nie zastępuje `just gate`
 - **OAuth/OIDC:** Auth0 I1 **po Wave A**; nie następny kod. 0.12 JWT = hello HS256
 - **0.11 DONE:** HTTP XOR 422 + vitest `extractionCreateBody`

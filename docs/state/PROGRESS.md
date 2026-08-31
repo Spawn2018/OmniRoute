@@ -42,4 +42,6 @@
 | 2026-09-01 | 0.20 A2 | AuthZ | `can_review_extractions` = reviewer; member nie recenzuje |
 | 2026-09-01 | 0.21 T4 | M-01 | `hello_token` default false; mint UUID tylko local/CI |
 | 2026-09-01 | 0.22 T5 | M-01 | JWT iss/aud/jti/ver; TTL 15 min |
-| — | leftover | ops | **Następny:** 0.23 S1 JWT_SECRET z GitHub Encrypted Secrets |
+| 2026-09-01 | 0.23 S1 | ops | JWT_SECRET z GitHub Encrypted Secrets, nie YAML |
+| 2026-09-01 | Exit Wave A | — | D0 + 0.15 T0 … 0.23 na origin. Charge/FE/Auth0 nie startowane. |
+| — | leftover | Charge | **Następny:** 0.25 Money Decimal + `<Money/>` (po Exit Wave A) |

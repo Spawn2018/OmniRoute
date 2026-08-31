@@ -3,7 +3,7 @@
 **Plan Cursor (pełny):** `.cursor/plans/omniroute-realizacja.plan.md`  
 **ADR:** [0001 Cursor factory](adr/0001-cursor-software-factory-weryfikacja.md) · [0002 Frontend 2026](adr/0002-frontend-platform-2026.md)  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
-**Stan:** B + C.1–C.5 + 0.11–0.15 leftover + **D0–0.22** + D minimal · następny **0.23 S1** (JWT_SECRET poza YAML; OAuth = Auth0 I1 po Wave A)
+**Stan:** B + C.1–C.5 + 0.11–0.15 leftover + **Exit Wave A (D0–0.23)** + D minimal · następny **Charge 0.25** (Money; Auth0 I1 i Wave FE mogą równolegle)
 
 ```mermaid
 flowchart LR
@@ -23,7 +23,8 @@ flowchart LR
   doneA1 --> doneA2[A2_reviewer]
   doneA2 --> doneT4[T4_hello_off]
   doneT4 --> doneT5[T5_jwt_claims]
-  doneT5 --> next[S1_secrets]
+  doneT5 --> doneS1[S1_secrets]
+  doneS1 --> next[Charge_025]
   doneB --> doneD[D_minimal_DONE]
 ```
 
@@ -129,7 +130,9 @@ Pełna lista z „dlaczego”: [docs/ops/docs-debt.md](ops/docs-debt.md)
 
 | Kolejność | Co | Nie mylić z |
 |---|---|---|
-| następny | 0.23 S1 JWT_SECRET z GitHub Encrypted Secrets | nie literał w YAML |
+| następny | Charge 0.25 Money Decimal + `<Money/>` | nie start w sesji Wave A |
+| Exit Wave A | D0 + 0.15 T0 … 0.23 | Charge/FE/Auth0 nie tu |
+| 0.23 S1 DONE | JWT_SECRET z GitHub Encrypted Secrets | nie literał w YAML |
 | 0.22 T5 DONE | iss/aud/jti/ver; TTL 15 min | nie Auth0 RS256 |
 | 0.21 T4 DONE | `hello_token` default false | mint UUID tylko local/CI |
 | 0.20 A2 DONE | `can_review_extractions` = reviewer | first-login = member |
