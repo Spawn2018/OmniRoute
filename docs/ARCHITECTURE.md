@@ -1,6 +1,6 @@
 # OmniRoute — architektura
 
-**Status:** Faza B (backend Golden Standard done; frontend shell = następny)  
+**Status:** Faza C (B + C.1–C.4 + D minimal DONE; następny plaster 0.10)  
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002-frontend-platform-2026](adr/0002-frontend-platform-2026.md)
 
@@ -8,17 +8,18 @@
 
 ```
 frontend/                 React 19 + Compiler, Vite, TanStack, shadcn, PostHog
-  src/features/<moduł>/   ekrany, hooki, testy
+  src/features/<moduł>/   ekrany, hooki, testy (tenancy, extraction, session)
   src/components/ui/      shadcn
   src/components/data-table/  DataTableShell (Golden Standard)
 backend/app/
   api/             routery, DTO, require_permission — bez logiki
-  services/        logika domenowa
+  services/<bc>/   logika domenowa (tenancy, extraction)
   repositories/    dostęp SQL
   models/          SQLAlchemy
   domain/          typy, wyjątki, Money
-  workflows/       Temporal
-  integrations/    OpenFGA, adaptery zewnętrzne
+  ai_transforms/   ekstrakcja → JSON (stateless, HITL)
+  workflows/       Temporal (wizja — nie działający system)
+  integrations/    OpenFGA, docling, langfuse (no-op bez kluczy)
 authz/             model.fga (źródło prawdy AuthZ)
 ```
 

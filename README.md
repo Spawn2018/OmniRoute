@@ -31,11 +31,11 @@ powershell -ExecutionPolicy Bypass -File scripts/dev-native.ps1 -SkipInstall -Se
 
 Wymaga natywnego **PostgreSQL 16** (instalator EDB / winget — często z UAC).  
 OpenFGA: `tools/openfga/openfga.exe` (gitignored, skrypt pobiera).  
-Seed: `scripts/dev_seed_local.py`.
+Seed: `scripts/dev_seed_local.py`.  
+`just dev` nadal stawia **Postgres w Dockerze** — skrypt natywny jest alternatywą, nie zamianą recipe.
 
 ## Stan faz
 
-- **0+A+A.5+B.2–B.4:** done (RLS, OpenFGA, CI green)
-- **B.5 (0.5):** Frontend Shell — lokalnie / w toku push
-- **B.6 (0.6):** DataTableShell — następny
-- **B.7:** branch protection — ograniczenie GitHub Free private (403); szczegóły w `docs/PLAN-REALIZACJA.md`
+- **0.5–0.9 + B.7:** done (Frontend Shell, DataTableShell, HITL, instructor, docling A/B; branch protection = procedura Free/403)
+- **Następny:** 0.10 langfuse / promptfoo CI
+- Szczegóły: `docs/PLAN-REALIZACJA.md` · dług poza sync: `docs/ops/docs-debt.md`

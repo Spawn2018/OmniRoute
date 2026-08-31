@@ -12,23 +12,29 @@ todos:
     content: "Audyt IDE: gh CLI + auth, GITHUB_PAT dla MCP, Customize ON, .env.example, commit .cursor/plans/"
     status: completed
   - id: phase-b-app-skeleton
-    content: "Szkielet FastAPI+Vite; RLS 0.3; OpenFGA; import-linter — DONE backend; frontend = B.5/B.6"
+    content: "Szkielet FastAPI+Vite; RLS 0.3; OpenFGA; import-linter — DONE; frontend B.5/B.6 DONE"
     status: completed
   - id: phase-b5-frontend-shell
     content: "B.5 Frontend Shell 2026: Vite, React Compiler, TanStack Router/Query/Form, shadcn, tokens, PostHog, ⌘K (ADR-0002)"
-    status: pending
+    status: completed
   - id: phase-b6-datatable
     content: "B.6 DataTableShell: ColumnEditor DnD, filtry, table_view RLS, tenancy.users, PostHog events"
-    status: pending
+    status: completed
   - id: phase-b7-branch-protection
-    content: "B.7 Branch protection main wymaga gate (pull-forward z D)"
-    status: pending
+    content: "B.7 Branch protection: procedura ręczna (GitHub Free private 403) — docs/ops/branch-protection.md"
+    status: completed
   - id: phase-c-ai-platform
-    content: instructor + docling A/B + langfuse + promptfoo; HITL na DataTableShell
+    content: "C.1–C.4 HITL/instructor/docling A/B DONE"
+    status: completed
+  - id: phase-c5-langfuse-promptfoo
+    content: "0.10 langfuse trace + promptfoo CI (echo fixtures; nie cloud, nie żywy LLM)"
+    status: pending
+  - id: leftover-after-010
+    content: "Po 0.10: vitest HITL + HTTP XOR; JWT; split-screen; echo recipes; branch protection UI — docs/ops/docs-debt.md + PLAN § leftoverów"
     status: pending
   - id: phase-d-ops-rhythm
-    content: Automations PR/Bugbot; tygodniowy refaktor; agentlint CI (branch protection jeśli nie B.7)
-    status: pending
+    content: "D minimal: agentlint w just gate, pr-nudge, weekly-refactor + friday-retrospective"
+    status: completed
 isProject: false
 ---
 
@@ -87,7 +93,7 @@ isProject: false
 - **Metafora:** nie „30 agentów na stand-upie” — **kontrolowana fabryka** (Gemini) / **AI software factory** (ChatGPT).
 - **Kształt produktu:** modularny monolit OmniRoute (morze → droga → lot); wejście wąskie = stawki/wyceny.
 - **Metodyka:** WIP=1 + delta-spec + XP. Bez Scrum/person CEO–CFO.
-- **Deliverable:** Fazy **0 + A ukończone** (31.08.2026). **Przed Build:** Faza **A.5** (gh + MCP + Customize). Następne: Faza B / plaster **0.3 RLS**.
+- **Deliverable:** Fazy **0+A+B + C.1–C.4 + D minimal** ukończone (31.08.2026). Następne: plaster **0.10** langfuse / promptfoo CI.
 
 ---
 
@@ -122,7 +128,7 @@ isProject: false
 | **Postgres MCP** | Celowo brak | Faza B — gdy jest lokalna DB |
 | **Context7 / Playwright MCP** | Celowo brak | Faza B/D — nie teraz |
 | **Skills Phase B+** | Celowo brak | `openfga-change`, `temporal-workflow` itd. — przy modułach |
-| **agentlint CI** | Celowo brak | Faza D |
+| **agentlint CI** | w `just gate` | DONE (D minimal) |
 | **Bugbot / Automations** | Celowo brak | Faza D |
 | **Memories Cursor** | N/A (usunięte v2.1+) | Zastąpione przez `.cursor/rules/` — OK |
 
@@ -163,13 +169,13 @@ flowchart LR
 | §0 Gemini + ChatGPT + nauka                                          | Tak (§0)                            | ADR-0001                                   | OK                           |
 | Faza 0: private repo Spawn2018/OmniRoute + push                      | Tak                                 | origin/main                                | OK                           |
 | Faza A: Cursor OS (rules/skills/hooks/AGENTS/GROUNDING)              | Tak                                 | pliki na main                              | OK                           |
-| Bootstrap `just gate` = tylko `agent-refs` do Fazy B                 | częściowo (stary opis pełnego gate) | `justfile` + `gate.yml` (commit `58facbd`) | **zsynchronizowano poniżej** |
+| Bootstrap `just gate` = tylko `agent-refs` do Fazy B                 | historyczne (commit `58facbd`)      | `just gate` = check + test-unit + arch + frontend + dup + agentlint | **supersedowane** |
 | ADR-0001 w docs/adr                                                  | brakowało linku                     | plik na main (`e21ac45`)                   | **dopisane**                 |
-| 8 ulepszeń wykonania (nested AGENTS, golden exemplar, agentlint CI…) | w ADR-0001                          | ADR-0001                                   | OK — realizacja w B–D        |
-| Branch protection na `main`                                          | opisane                             | **jeszcze nie w UI**                       | opcjonalne po green `gate`   |
-| Pełny gate (ruff/mypy/pytest/import-linter)                          | DoD §9                              | po `pyproject.toml` (Faza B)               | pending                      |
-| Plaster 0.3 RLS                                                      | Faza B                              | delta `docs/deltas/open/0.3-tenancy.md`    | **następny krok**            |
-| Fazy C–D                                                             | pending                             | —                                          | pending                      |
+| 8 ulepszeń wykonania (nested AGENTS, golden exemplar, agentlint CI…) | w ADR-0001                          | 0.3 exemplar + agentlint w gate + nested AGENTS w tenancy/extraction | OK — D minimal |
+| Branch protection na `main`                                          | opisane                             | API 403 (Free private)                     | procedura: `docs/ops/branch-protection.md` |
+| Pełny gate (ruff/mypy/pytest/import-linter)                          | DoD §9                              | `just gate` + CI                           | DONE                         |
+| Plaster 0.3 RLS                                                      | Faza B                              | `docs/deltas/archived/0.3-tenancy.md`      | DONE                         |
+| Fazy C–D                                                             | C + D                               | C.1–C.4 + D minimal w kodzie               | next = 0.10 langfuse/promptfoo |
 
 
 ```mermaid
@@ -390,7 +396,7 @@ Zapisy wrażliwe (migracje, sekrety, prod) → **CLI/skrypty + approval**, nie s
 
 ### 6.2 Subagenci (efemeryczne)
 
-`lowca-duplikatow` (obowiązkowy), `weryfikator`, `testolog`, `audytor-wydajnosci`, `kronikarz` (tło), `migrator`. Parallel tylko na **niezależnych** jednostkach; **jeden writer**.
+`lowca-duplikatow` (jest w `.cursor/subagents/`). Persony `weryfikator` / `kronikarz` / `audytor-wydajnosci` **nie istnieją** w repo — człowiek + `just gate` + skill `zamknij-plaster`. Parallel tylko na **niezależnych** jednostkach; **jeden writer**.
 
 ### 6.3 Hooks (deterministyczne — „nie da się uprzejmie zignorować”)
 
@@ -468,7 +474,7 @@ Zapisy wrażliwe (migracje, sekrety, prod) → **CLI/skrypty + approval**, nie s
 Kod przechodzi merge tylko gdy:
 
 1. Delta-spec zamknięta; testy domenowe napisane/zaakceptowane przez człowieka.
-2. `just gate` green. **Do Fazy B:** tylko `agent-refs`. **Od Fazy B** (gdy jest `pyproject.toml`): + lint, types, cov≥80%, arch, jscpd≤3%, izolacja tenantów.
+2. `just gate` green: agent-refs, agentlint, ruff/mypy, test-unit cov≥80%, arch, frontend typecheck+vitest, jscpd≤3%. Recipes `perf`/`docs`/`audit`/`dead` = **echo, nie DoD**.
 3. Łowca duplikatów + review 4-pass.
 4. Docs/spec/CURRENT zaktualizowane w tym samym PR.
 5. Brak `noqa` bez ADR; brak float na money; brak cross-tenant SQL.
@@ -652,25 +658,25 @@ Dodać w sekcji Nawigacja:
 
 AGENTS.md (v2), GROUNDING.md, rules (+ui-design-system), skills (+module-factory, knowledge-retrieve), hooks, commands, justfile bootstrap, check_agent_refs, ADR-0001.
 
-### Faza B — Szkielet app — **BACKEND UKOŃCZONY; FRONTEND = B.5–B.6**
+### Faza B — Szkielet app — **UKOŃCZONA** (B.5–B.7 włącznie)
 
 1. ~~Template FastAPI + `pyproject.toml`~~ ✅
 2. ~~`just gate` + CI~~ ✅
 3. ~~Plaster 0.3 RLS~~ ✅
 4. ~~OpenFGA hello~~ ✅
-5. **B.5 Frontend Shell 2026** (ADR-0002): Vite, React Compiler, TanStack Router/Query/Form, shadcn, tokens, ⌘K, PostHog
-6. **B.6 DataTableShell**: ColumnEditor (checkbox+DnD), filtry, `table_view` RLS, consumer `tenancy.users`
-7. **B.7** Branch protection na `main` (nie czekać na D)
+5. ~~B.5 Frontend Shell 2026~~ ✅ (openapi-ts + lazy PostHog spłacone)
+6. ~~B.6 DataTableShell~~ ✅
+7. ~~B.7 Branch protection~~ ✅ procedura (`docs/ops/branch-protection.md`; Free private 403)
 
 **TanStack Start:** Thoughtworks Assess 2026-04 — **odroczony**; wewnętrzna SPA wystarczy.
 
-### Faza C — Platforma AI/docs (**po B.6**)
+### Faza C — Platforma AI/docs — **C.1–C.4 DONE**
 
-instructor+docling; langfuse; promptfoo; HITL na gęstym UI (nie terminal-only).
+HITL + instructor + docling A/B w kodzie. **Następny plaster: 0.10** langfuse / promptfoo CI (nie cloud, nie żywy LLM w CI).
 
-### Faza D — Operacyjny rytm
+### Faza D — Operacyjny rytm — **DONE (minimal)**
 
-Automations PR; tygodniowy refaktor; agentlint; retrospektywa rules (branch protection = B.7 jeśli wcześniej).
+agentlint w `just gate`; `pr-nudge.yml`; weekly-refactor + friday-retrospective. Bugbot = osobna GitHub App.
 
 ---
 
@@ -695,14 +701,20 @@ Automations PR; tygodniowy refaktor; agentlint; retrospektywa rules (branch prot
 - Nowe: Gemini audyt ERP (PDF), ChatGPT share (Ocena repozytoriów / systemdesign)
 - Nauka/eksperci: Cursor Skills/Rules 2026; Morph alwaysApply budget; Galster; Treude context rot; Palmblad GROUNDING; Lulla/Gloaguen AGENTS.md; arXiv 2606.26924 deterministic control plane; CSA README/rules injection; agentlint
 
-## Blokada realizacji — **zdjęta dla 0+A**
+## Blokada realizacji — **zdjęta** (stan 2026-08-31 wieczór, po docs/OS sync)
 
-**Audyt planu = aktualny (31.08.2026 wieczór):** decyzje Gemini/ChatGPT/nauka, Fazy 0+A, ADR-0001, bootstrap CI — zsynchronizowane.
+**Audyt planu = aktualny:** Fazy 0+A+B + C.1–C.4 + D minimal w kodzie; gate pełny (nie agent-refs only).
 
 **Otwarte (kolejność pracy, nie blokada planu):**
 
-1. Agent mode → plaster **0.3** / Faza B
-2. Branch protection po green `gate`
-3. Fazy C–D
+1. Plaster **0.10** langfuse / promptfoo CI (echo fixtures; no-op bez kluczy)
+2. Vitest kolejki HITL + test HTTP XOR (`input_text` XOR `document_base64`)
+3. JWT zamiast spoofowalnych headerów sesji
+4. Split-screen HITL
+5. Branch protection w UI GitHub — po Pro/Team; do wtedy `docs/ops/branch-protection.md`
+6. Echo recipes (`just perf` / k6 / vulture / pip-audit) — dopiero gdy nie `echo`
+7. 0.10+ : żywy LLM w CI, llm-guard ML, presidio, promptfoo 30 cenników, langfuse cloud
+
+Canvas `post-audit-review` = przegląd, nie lista do kodu. Rejestr: `docs/ops/docs-debt.md` + `docs/PLAN-REALIZACJA.md` § leftoverów. Załączony plan software-house **nietknięty**.
 
 Źródło prawdy stanu dnia: `docs/state/CURRENT.md` + ADR-0001.

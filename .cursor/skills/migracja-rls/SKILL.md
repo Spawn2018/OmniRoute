@@ -17,6 +17,8 @@ description: Dodanie tabeli z izolacją tenantów i testem dowodzącym
 Skopiuj wzorzec z `tests/patterns/tenant_isolation.py`.
 Bez tego testu plaster nie jest ukończony.
 
-## Plaster 0.3
+## Plaster 0.3 — exemplar, nie WIP
 
-Pierwszy moduł wzorcowy: multi-tenancy + test izolacji jako Golden Standard.
+0.3 jest **ukończony**. Kopiuj wzorzec (`organization`, `app_user`, test izolacji)
+przy nowej tabeli. Bieżący plaster: `docs/state/CURRENT.md`.
+Delta: `docs/deltas/archived/0.3-tenancy.md`.

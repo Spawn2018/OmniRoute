@@ -59,7 +59,7 @@ Po Fazie B (RLS + OpenFGA) brakuje produkcyjnego frontendu. Wymagania operatora:
 - Branch protection na `main` = **po green gate B**, nie czekać na Fazę D.
   **Uwaga operacyjna:** GitHub Free + private → API protection HTTP 403;
   wymaga Pro/Team/public albo procedury ręcznej (patrz PLAN B.7).
-- Faza C (AI) startuje **po** B.6 — HITL na gęstym UI.
+- Faza C.1–C.4 (HITL, instructor, docling A/B) **zrobiona**; UI = kolejka DataTableShell + formularz (split-screen = backlog). Następny plaster produktowy: 0.10.
 - Uczciwość DoD/gate (stub vs real): `docs/PLAN-REALIZACJA.md` § Gate dziś.
 
 ## Źródła (nie plotki)

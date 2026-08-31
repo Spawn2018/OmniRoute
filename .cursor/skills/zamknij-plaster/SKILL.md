@@ -5,7 +5,7 @@ description: Zamyka plaster, archiwizuje delta-spec, przygotowuje następną roz
 
 # Zamknij plaster
 
-1. `/bramka` — weryfikator + audytor (jeśli SQL)
+1. `/bramka` — człowiek + `just gate` (brak person `weryfikator` / `audytor-wydajnosci`)
 2. Sprawdź `docs/PLAN-REALIZACJA.md` § Gate dziś — **nie** oznaczaj DoD dla recipe `echo`
 3. Scal delta → `docs/spec/` jeśli wymagane
 4. Przenieś `docs/deltas/open/<id>.md` → `docs/deltas/archived/`

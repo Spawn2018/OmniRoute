@@ -9,8 +9,9 @@ Agent używa skill `knowledge-retrieve` → max 8–20 kart.
 - `tools/` — integracje, MCP, CLI, **frontend platform 2026** (`002-frontend-platform-2026.md`)
 - `prompts/` — wzorce promptów ekstrakcji, nie logika biznesowa
 - `memory-patterns/` — RAG, pgvector, kiedy tak/nie
-- `rules-catalog/` — przykłady reguł (referencja)
-- `skills-catalog/` — przykłady procedur (referencja)
+- `rules-catalog/` — **puste** — nie dumpuj tu 500 reguł
+- `skills-catalog/` — **puste** — nie dumpuj tu procedur
+
 
 ## Źródła do kuracji
 

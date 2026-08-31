@@ -23,11 +23,12 @@ Kolejność jest obowiązkowa. Nie przeskakuj etapów.
 
 ## 2. Model → 3. Repozytorium → 4. Serwis → 5. Endpoint
 - Zgodnie z `.cursor/rules/backend.mdc`
-- Zdarzenia przez outbox
+- Outbox **gdy są zdarzenia między modułami** — nie pisz outbox „na zapas”
 
 ## 6. Typy frontendu
-- `just api-types` (openapi-ts) — docelowo zawsze.
-- Do czasu spłaty długu: tymczasowy typed klient OK, jeśli delta to dopuszcza; nie twierdź że openapi-ts jest gotowe.
+- `just api-types` (openapi-ts) — katalog `frontend/src/api/` tylko do odczytu.
+- Gate: typecheck, nie regen. Nie edytuj wygenerowanych plików.
+- Dług: generator spłaszcza `ExtractRequest` anyOf|null — wrapper `as ExtractRequest`.
 
 ## 7. Komponent
 - `features/<moduł>/`, TanStack Query, `<Money/>`
@@ -36,7 +37,8 @@ Kolejność jest obowiązkowa. Nie przeskakuj etapów.
 ## 8. Test
 - hypothesis dla reguł biznesowych
 - izolacja tenantów dla nowych tabel
-- Frontend: vitest gdy delta wymaga (od 0.6 obowiązkowo dla DataTableShell)
+- Vitest: DataTableShell + nowe UI list. Kolejka ekstrakcji — vitest **brak** (osobny plaster, nie ten skill)
 
 ## Definicja ukończenia
-`just gate` zielone (tylko realne kroki, nie `echo`) + weryfikator + delta zarchiwizowana + **push**.
+`just gate` zielone (tylko realne kroki, nie `echo`) + człowiek + delta zarchiwizowana + **push**.
+Brak subagentów `weryfikator` / `kronikarz` w repo — skill `zamknij-plaster`.

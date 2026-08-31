@@ -1,0 +1,85 @@
+# M-20 — Ekstrakcja dokumentów (HITL)
+
+**Status:** 0.7–0.9 DONE · następny plaster **0.10** (langfuse / promptfoo CI)  
+**Delty:** `docs/deltas/archived/0.7-ai-extract-hitl.md`, `0.8-instructor-llm-guard.md`, `0.9-docling-ab.md`  
+**GROUNDING:** HC-03 (`source_ref`, `unparsed_regions`), HC-04 (zero zapisu autonomicznego)
+
+## Zakres (kod dziś)
+
+- Tabela `extraction_draft` + RLS + test izolacji tenantów
+- API: list / extract→draft / accept / reject; upload `document_base64` XOR `input_text`
+- OpenFGA: `can_review_extractions` na każdym endpoincie `/extractions`
+- UI: kolejka DataTableShell + formularz (nie split-screen podgląd | formularz)
+- Provider: `EXTRACTION_PROVIDER=mock` (default CI) | `instructor` (wymaga `OPENAI_API_KEY`)
+- Guard: skanery regex przed modelem; pakiet `llm-guard` (transformers) tylko przy `EXTRACTION_LLM_GUARD=true`
+- Parser: fingerprint + A (`stub` / `pdf_strings`) vs B (opcjonalny docling); tryb `ab` → `ab_delta_chars`
+
+## Poza zakresem (nie twierdź że jest)
+
+- Zapis `rate_line` / `charge` z serwisu ekstrakcji
+- Żywy instructor / OpenAI w CI, langfuse cloud, eval promptfoo 30 cenników
+- Presidio na każdym endpoincie, outbox, Temporal/Hatchet
+- Split-screen HITL, JWT zamiast headerów sesji
+- Vitest kolejki ekstrakcji (jest tylko DataTableShell)
+
+## Kontrakt HITL
+
+1. Model wyciąga dane. Kod nie liczy kwot; payload ma `amount_text`, nie float.
+2. Nic nie wchodzi do domeny bez akceptacji człowieka. Accept/reject zmienia tylko status draftu.
+3. Każdy payload: `source_ref` (nadpisuje serwis z requestu) + `unparsed_regions`.
+4. `ExtractionService` nie importuje innych BC i nie woła LLM bez guarda.
+
+## Provider i guard
+
+| Zmienna | Domyślnie | Znaczenie |
+|---|---|---|
+| `EXTRACTION_PROVIDER` | `mock` | CI: `MockExtractor`. `instructor` = żywy LLM |
+| `EXTRACTION_LLM_GUARD` | `false` | `true` wymaga pakietu `llm-guard` |
+| `EXTRACTION_PARSER` | `stub` | `pdf_strings` / `docling` / `ab` |
+
+CI nie odpala transformerów llm-guard ani OpenAI.
+
+## Docling A/B (0.9)
+
+- `layout_fingerprint`: pdf vs text
+- A wygrywa w CI bez pakietu docling
+- `EXTRACTION_PARSER=docling` bez pakietu → błąd domenowy
+- Tryb `ab`: dłuższy tekst; w payloadzie `parser_name` + `ab_delta_chars`
+
+## AuthZ i API
+
+- Brak `can_review_extractions` → 403
+- Router: `backend/app/api/extractions.py`
+- Serwis: `backend/app/services/extraction/`
+- Transformy: `backend/app/ai_transforms/extraction/`
+- Parser: `backend/app/integrations/docling/`
+- Langfuse dziś: no-op w `backend/app/integrations/langfuse/`
+
+## UI
+
+- Kolejka: `frontend/src/features/extraction/queue-page.tsx` na DataTableShell
+- Split-screen HITL = backlog UX, nie obecny kanon
+- Typy: `just api-types` → `frontend/src/api/`; wrapper rzutuje `ExtractRequest` (flatten anyOf|null)
+
+## Kryteria 0.7–0.9 (spełnione)
+
+- Test izolacji `extraction_draft`; accept ≠ `rate_line`
+- Guard przed ekstraktorem; CI = mock
+- PDF bez docling → `pdf_strings`; A/B zapisuje deltę znaków
+- `just gate` green (unit); integration OpenFGA/RLS w CI
+
+## Następny plaster: 0.10
+
+Langfuse (nie tylko no-op) + promptfoo w CI. Presidio i żywy llm-guard = później.
+Nie startuj 0.10 przy niepushniętym WIP syncu docs — to osobny plaster produktowy.
+
+### 0.10 — w zakresie (szkic)
+
+- Trace langfuse przy extract (klucze z env, no-op gdy brak)
+- Job promptfoo w CI na fixture’ach, nie na żywym cenniku produkcyjnym
+
+### 0.10 — poza zakresem
+
+- Cloud Langfuse jako wymóg merge
+- 30 cenników eval (osobna decyzja danych)
+- Presidio na wszystkich endpointach API

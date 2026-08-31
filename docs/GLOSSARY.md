@@ -13,7 +13,9 @@
 | szkic ekstrakcji | extraction_draft | HITL przed zapisem domeny |
 | region nierozpoznany | unparsed_region | zawsze w payloadzie ekstrakcji |
 | odcisk układu | layout_fingerprint | pdf vs text przed parserem |
+| delta A/B parsera | ab_delta_chars | różnica długości tekstu A vs B (0.9) |
 | kurs NBP | nbp_rate | D-1 roboczy |
 | narzut | markup | kaskada — Python mały zbiór (DECISIONS) |
 
-Pełny słownik: kompilacja z `Informacje z claude/OmniRoute-dokumentacja/docs/` w Fazie B.
+Pełny słownik archiwalny: `Informacje z claude/OmniRoute-dokumentacja/docs/` — **nie dumpować**; uzupełniaj ten plik przy plastrze.
+

@@ -2,11 +2,11 @@
 description: Pełna weryfikacja plastra
 ---
 
-Uruchom subagenta `weryfikator` z:
-- ścieżką do delta-spec
-- listą zmienionych plików (`git diff --name-only main`)
+Człowiek + `just gate`. Brak subagentów `weryfikator` / `audytor-wydajnosci`
+w repo — nie wymyślaj folderu person. Przy zmianie SQL: EXPLAIN / test izolacji
+ręcznie albo w tym samym przebiegu agenta.
 
-Następnie subagenta `audytor-wydajnosci`, jeśli zmieniły się zapytania.
+Wejście: ścieżka do delta-spec + `git diff --name-only main`.
 
 Zwróć tabelę: kryterium → PRZESZŁO / NIE / NIE DA SIĘ SPRAWDZIĆ.
 Przy NIE — dokładny komunikat, bez interpretacji.

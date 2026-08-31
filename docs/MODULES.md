@@ -1,25 +1,31 @@
-# Rejestr modułów M-01…M-71 (skrót)
+# Rejestr modułów (skrót)
 
 Pełny rejestr, plastry i zależności:  
-`Informacje z claude/REJESTR-MODULOW-I-PLAN-v2.md`
+`Informacje z claude/REJESTR-MODULOW-I-PLAN-v2.md` — **nie dumpować** do kontekstu.
 
-## Faza 0 — fundament (start)
+Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0.5 = Frontend Shell** (nie konfiguracja).
 
-| ID | Moduł | Plaster startowy | Status |
+## Fundament i AI (to, co istnieje w kodzie)
+
+| ID | Moduł | Plaster | Status |
 |---|---|---|---|
-| M-01 | Wielodostępność / tenancy | 0.3 RLS + test izolacji | **następny** |
-| M-02 | Outbox / idempotencja | 0.4 | planowany |
-| M-03 | Konfiguracja jako dane | 0.5 | planowany |
+| M-01 | Wielodostępność / tenancy | 0.3 RLS + 0.4 OpenFGA | **ukończony (fundament)** |
+| M-20 | Ekstrakcja dokumentów | 0.7 HITL · 0.8 instructor · 0.9 docling A/B | **w toku** (następny 0.10) |
+| M-02 | Outbox / idempotencja | nie 0.4 | planowany |
+| M-03 | Konfiguracja jako dane | nie 0.5 | planowany |
 | M-06 | charge_code + aliasy | 1.x | planowany |
 | M-21 | Silnik wyceny (SQL) | 2.x | planowany |
+
+Nie dopisuj tu 70 pustych wierszy M-xx. Reszta rejestru zostaje w archiwum Claude.
 
 ## Legenda statusów
 
 - **planowany** — spec w `docs/spec/` do uzupełnienia przed kodem
 - **w toku** — wpis w CURRENT.md
+- **ukończony (fundament)** — gate green + wzorzec do kopiowania; nie oznacza całego produktu
 - **ukończony** — gate green + spec scalona
 
 ## Specyfikacje
 
-Każdy moduł: `docs/spec/<nazwa>.md` (max 400 linii).  
-Na start tylko szkielety — kompilacja z aneksów w Fazie B.
+Każdy moduł w kodzie: `docs/spec/<nazwa>.md` (max 400 linii).  
+Dziś: `tenancy.md`, `extraction.md`. Szkielety uzupełniane przy plastrze — nie kompiluj całego archiwum.

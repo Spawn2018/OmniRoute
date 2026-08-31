@@ -19,7 +19,7 @@ fix:
     ruff format backend
 
 test:
-    pytest backend/tests -m "not integration" -q || true
+    pytest backend/tests -m "not integration" -q
     pytest backend/tests -m integration -q
 
 test-unit:
@@ -32,10 +32,10 @@ arch:
     lint-imports
 
 perf:
-    @echo "perf: pytest -m perf (Faza B+)"
+    @echo "perf: stub, nie DoD (k6 / budżety p95)"
 
 audit:
-    @echo "audit: pip-audit (Faza B+)"
+    @echo "audit: stub, nie DoD (pip-audit)"
 
 migrate:
     cd backend && alembic upgrade head
@@ -69,13 +69,13 @@ frontend-test:
     cd frontend && pnpm test
 
 docs:
-    @echo "docs: Faza B+"
+    @echo "docs: stub, nie DoD"
 
 complexity:
     ruff check --select C901 backend
 
 dead:
-    @echo "dead: vulture (Faza B+)"
+    @echo "dead: stub, nie DoD (vulture)"
 
 dup:
     cd frontend && pnpm exec jscpd ../backend/app ../frontend/src --min-lines 5 --threshold 3 --ignore "**/api/**,**/routeTree.gen.ts,**/node_modules/**"
@@ -84,4 +84,4 @@ agentlint:
     python scripts/quality/agentlint.py
 
 new-module name:
-    @echo "new-module {{name}}: patrz skill module-factory"
+    @echo "new-module {{name}}: stub, nie DoD — skill module-factory"

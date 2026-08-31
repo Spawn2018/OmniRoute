@@ -10,5 +10,8 @@ HC z `GROUNDING.md` — nie negocjuj:
 - AI nie zapisuje do bazy produkcyjnej. Zapis przez `service` + walidacja.
 - Sekrety tenanta szyfrowane; nigdy w kodzie/logach/promptach.
 - Endpoint bez jawnej deklaracji uprawnień (OpenFGA) = odmowa.
-- Ekstrakcja LLM: human-in-the-loop przed zapisem; `llm-guard` + `presidio`.
-- Idempotencja na wywołaniach zewnętrznych; zdarzenia przez outbox.
+- Ekstrakcja LLM: human-in-the-loop przed zapisem (draft + accept).
+  Guard regex jest w kodzie; żywy `llm-guard` (transformers) i `presidio`
+  to **cel HC**, nie „już na każdym endpoincie”.
+- Idempotencja na wywołaniach zewnętrznych; zdarzenia przez outbox —
+  **cel HC**, nie działający system (pisz outbox gdy są zdarzenia między modułami).

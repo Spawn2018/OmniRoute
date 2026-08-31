@@ -22,11 +22,17 @@ Każda lista biznesowa:
 
 Neutral tokens, compact, `rounded-md`, zero fioletowych gradientów / landing hero w ops UI.
 
-## Dług / spłaty (nie blokują shella)
+## Utrzymanie kontraktu (spłacone — nie wrzucaj z powrotem do długu)
 
-- openapi-ts zamiast ręcznego klienta · vitest od DataTableShell (0.6)
-- lazy PostHog przy zbliżaniu się do 250 kB gzip
+- openapi-ts: `just api-types` → `frontend/src/api/` (gate = typecheck, nie regen)
+- PostHog: lazy `dynamic import("posthog-js")` — nie w main chunk
+- vitest: minimum na DataTableShell; kolejka ekstrakcji bez vitest
 - Gate vs DoD: `docs/PLAN-REALIZACJA.md`
+
+## Dług pozostały
+
+- auth localStorage / JWT — poza zakresem B.5/B.6
+- flatten `ExtractRequest` anyOf|null — cast w wrapperze, nie ręczny edit `src/api/*`
 
 ## Źródła
 

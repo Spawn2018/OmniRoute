@@ -3,14 +3,13 @@
 **Plan Cursor (pełny):** `.cursor/plans/omniroute-realizacja.plan.md`  
 **ADR:** [0001 Cursor factory](adr/0001-cursor-software-factory-weryfikacja.md) · [0002 Frontend 2026](adr/0002-frontend-platform-2026.md)  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
-**Stan:** Fazy 0+A+A.5+B.2–B.4 done · **0.5 lokalnie** → push → **0.6 DataTableShell** → B.7 → C → D
+**Stan:** B + C.1–C.4 + D minimal **DONE** · następny plaster **0.10** langfuse / promptfoo CI
 
 ```mermaid
 flowchart LR
-  doneB[B_RLS_OpenFGA] --> b5[B5_FrontendShell]
-  b5 --> b6[B6_DataTableShell]
-  b6 --> phaseC[FazaC_AI]
-  phaseC --> phaseD[FazaD_Ops]
+  doneB[B_DONE] --> doneC[C1_C4_DONE]
+  doneC --> next[0.10_langfuse_promptfoo]
+  doneB --> doneD[D_minimal_DONE]
 ```
 
 ---
@@ -25,6 +24,11 @@ flowchart LR
 | B.2 RLS 0.3 | ✅ organization, app_user, test izolacji |
 | B.3 Gate | ✅ ruff/mypy/pytest/import-linter + PG |
 | B.4 OpenFGA 0.4 | ✅ model, require_permission, CI |
+| B.5 Frontend Shell 0.5 | ✅ Vite, Compiler, TanStack, shadcn, ⌘K, lazy PostHog |
+| B.6 DataTableShell 0.6 | ✅ ColumnEditor, table_view RLS, vitest |
+| B.7 Branch protection | ✅ procedura (Free private 403) |
+| C.1–C.4 / 0.7–0.9 | ✅ HITL, instructor+guard, docling A/B |
+| D minimal | ✅ agentlint, pr-nudge, rytm refaktor/retro |
 
 ---
 
@@ -50,21 +54,22 @@ flowchart LR
 
 ## Faza B — domknięcie
 
-### B.5 Frontend Shell 2026 — delta `0.5-frontend-shell`
+### B.5 Frontend Shell 2026 — **DONE**
 - Vite + React 19 + **React Compiler** + Tailwind v4 + shadcn
 - TanStack **Router + Query + Form** (+ Table/Virtual w B.6)
 - Design tokens (neutral, compact) — anti AI-slop
 - Command palette ⌘K · PostHog od dnia 1
 - Referencja layoutu: satnaing/shadcn-admin (**wzorce, nie fork**)
-- **Dług świadomy 0.5:** ręczny klient API; PostHog w main chunk (~213 kB gzip); auth localStorage (JWT poza zakresem)
+- **Spłacone:** openapi-ts (`just api-types`, `frontend/src/api/`); PostHog lazy (`dynamic import("posthog-js")`) — nie w main chunk
+- **Dług świadomy (poza zakresem):** auth localStorage / JWT
 
-### B.6 DataTableShell — delta `0.6-datatable-views`
+### B.6 DataTableShell — **DONE**
 - ColumnEditor: checkbox + DnD (@dnd-kit / TanStack columnOrder)
 - Filtry faceted + URL sync
 - ViewManager + tabela `table_view` (RLS)
 - Consumer: `tenancy.users`
 - UX events PostHog
-- **Dodatkowo w 0.6:** vitest minimum na DataTableShell; preferuj start openapi-ts (spłata długu kontraktu)
+- **Dodatkowo w 0.6:** vitest minimum na DataTableShell; openapi-ts spłacone poza tym plasterem
 - Źródła: Pencil & Paper; NN/G; TanStack Column DnD
 
 ### B.7 Branch protection (pull-forward z D) — **DONE (procedura)**
@@ -95,7 +100,26 @@ flowchart LR
 - Delta: `docs/deltas/archived/0.9-docling-ab.md`
 
 ### C.5 (następne)
-0.10 langfuse/promptfoo CI
+0.10 langfuse/promptfoo CI — trace przy extract (no-op bez kluczy); promptfoo w CI na fixture’ach echo, **nie** żywy LLM / cloud / 30 cenników.
+
+## Rejestr leftoverów (audyt + canvas 2026-08-31)
+
+Canvas `post-audit-review` to **przegląd** 0.5–0.9, nie lista do zaimplementowania w syncu docs. Sync spłacił P1 nagłówek tego pliku i `just test` bez `|| true` na unitach. Poniżej — kolejność po 0.10, żeby nie zgubić.
+
+Pełna lista z „dlaczego”: [docs/ops/docs-debt.md](ops/docs-debt.md)
+
+| Kolejność | Co | Nie mylić z |
+|---|---|---|
+| po 0.10 | Vitest kolejki HITL + test HTTP XOR (`input_text` XOR `document_base64`) — `api/extractions.py` ~45% | 0.10 nie pokrywa UI ani XOR |
+| potem | JWT zamiast spoofowalnych `X-Organization-Id` / `X-User-Id` | B.5 świadomy dług |
+| potem | Split-screen HITL (podgląd \| formularz) | kolejka DataTableShell już jest |
+| 0.10+ (nie ten plaster) | żywy instructor/OpenAI w CI, llm-guard transformers, presidio, promptfoo 30 cenników, langfuse cloud | 0.10 = echo fixtures + no-op bez kluczy |
+| gdy recipe realne | `just perf` / size-limit / k6 / vulture / pip-audit | dziś `echo`, nie DoD |
+| po Pro/Team | branch protection UI (required check `gate`) | Free private → API 403 |
+
+**Nie ruszać:** ręczny edit `frontend/src/api/*` (flatten anyOf\|null → cast w wrapperze); fałszywy `refactor_ratio`; persony `.cursor/agents/`; dump `Informacje z claude/`.
+
+**Wizja, nie kod:** outbox, Temporal/Hatchet/OTel jako działające systemy — dopiero gdy są zdarzenia między modułami.
 
 ## Faza D — Rytm operacyjny — **DONE (minimal)**
 - `agentlint` w `just gate` + baseline

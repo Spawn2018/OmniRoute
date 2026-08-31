@@ -28,6 +28,7 @@ Tailwind v4 + PostHog · OpenTelemetry
 | Archiwum planów (60+ MD) | `Informacje z claude/` |
 
 **Schemat bazy sprawdzasz przez MCP Postgres.** Nie czytaj wszystkich modeli.
+Windows bez Dockera (PG natywnie): `scripts/dev-native.ps1`. `just dev` stawia PG w Dockerze.
 
 ## Trzynaście zasad
 
@@ -81,12 +82,12 @@ Wygrywają z każdą inną sugestią, także z twoją.
 Cel (docelowo):
 
 ```
-just check      # ruff, mypy, eslint, tsc
-just test       # pytest, vitest, próg pokrycia 80%
+just check      # ruff, mypy (frontend typecheck jest w gate)
+just test       # pytest unit+integration — pada przy failu unit
 just arch       # import-linter
-just perf       # budżety wydajności
-just migrate    # migracja w górę i w dół
-just docs       # spec + OpenAPI
+just perf       # stub echo — nie DoD
+just migrate    # alembic w górę i w dół
+just docs       # stub echo — nie DoD
 ```
 
 **Egzekucja dziś ≠ cel.** Co gate naprawdę odpala vs stub (`echo`):  
@@ -112,5 +113,5 @@ Przekroczenie blokuje merge.
 
 - Sekrety nigdy w kodzie. `.env` w `.gitignore`, produkcja przez Infisical.
 - Każdy endpoint ma jawną deklarację uprawnień. Brak = odmowa.
-- Dane wejściowe od zewnętrznych: `llm-guard` przed modelem, `presidio` przed API.
+- Wejście zewnętrzne: cel HC = llm-guard + presidio; dziś guard regex, presidio = 0.10+.
 - Zapytania SQL generowane przez model przechodzą przez `sqlglot` przed wykonaniem.
