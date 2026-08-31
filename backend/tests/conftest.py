@@ -29,9 +29,11 @@ async def engine():
             text("ALTER TABLE organization FORCE ROW LEVEL SECURITY"),
         )
         await conn.execute(
+            text("DROP POLICY IF EXISTS organization_tenant_isolation ON organization")
+        )
+        await conn.execute(
             text(
                 """
-                DROP POLICY IF EXISTS organization_tenant_isolation ON organization;
                 CREATE POLICY organization_tenant_isolation ON organization
                 USING (id = NULLIF(current_setting('app.current_org', true), '')::uuid)
                 """
@@ -39,10 +41,10 @@ async def engine():
         )
         await conn.execute(text("ALTER TABLE app_user ENABLE ROW LEVEL SECURITY"))
         await conn.execute(text("ALTER TABLE app_user FORCE ROW LEVEL SECURITY"))
+        await conn.execute(text("DROP POLICY IF EXISTS app_user_tenant_isolation ON app_user"))
         await conn.execute(
             text(
                 """
-                DROP POLICY IF EXISTS app_user_tenant_isolation ON app_user;
                 CREATE POLICY app_user_tenant_isolation ON app_user
                 USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
                 """
