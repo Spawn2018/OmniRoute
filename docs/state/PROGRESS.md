@@ -30,4 +30,5 @@
 | 2026-08-31 | 0.12 | M-01 | JWT HS256 session: Bearer claims, nie spoofowalne headery |
 | 2026-08-31 | 0.13 | M-20 | split-screen HITL: podgląd input_text \| recenzja kandydatów |
 | 2026-08-31 | 0.14 | M-20 | HTTP happy-path extract/list/accept/reject (JWT, stub serwisu) |
+| 2026-08-31 | docs/OS | — | kanon `/testy` `/bramka` zamiast person z archiwum |
 | — | leftover | M-01 | **Następny:** OAuth/OIDC / hasła |

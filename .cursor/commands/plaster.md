@@ -16,3 +16,6 @@ Wykonaj w kolejności, zatrzymując się po każdym kroku po potwierdzenie:
    NIE PISZ KODU.
 
 Zatrzymaj się i czekaj na akceptację planu.
+
+Po akceptacji (osobna tura, nie ten sam przebieg): `/testy` — czerwone testy
+z delty, bez implementacji. Dopiero potem kod.

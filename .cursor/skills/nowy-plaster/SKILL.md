@@ -13,6 +13,8 @@ Kolejność jest obowiązkowa. Nie przeskakuj etapów.
 - Sprawdź `docs/PLAN-REALIZACJA.md` § Gate dziś vs DoD (co jest stubem).
 - Uruchom `lowca-duplikatow`.
 - Plan → akceptacja człowieka.
+- Po akceptacji, osobna tura: `/testy` (czerwone testy z delty, bez implementacji).
+  Ten sam przebieg nie pisze testów i kodu.
 
 ## 1. Migracja
 - sprawdź aktualny schemat przez MCP Postgres
@@ -34,11 +36,10 @@ Kolejność jest obowiązkowa. Nie przeskakuj etapów.
 - `features/<moduł>/`, TanStack Query, `<Money/>`
 - Listy: wyłącznie DataTableShell (ADR-0002)
 
-## 8. Test
-- hypothesis dla reguł biznesowych
-- izolacja tenantów dla nowych tabel
+## 8. Testy z `/testy` muszą przejść
+- hypothesis dla reguł biznesowych i izolacja tenantów — z tury `/testy`
 - Vitest: DataTableShell + `extractionCreateBody` + `hitlSplitView`. PDF canvas HITL — brak.
 
 ## Definicja ukończenia
 `just gate` zielone (tylko realne kroki, nie `echo`) + pętla `docs/ops/post-plaster.md` + człowiek + delta zarchiwizowana + **push**.
-Brak subagentów `weryfikator` / `kronikarz` w repo — skill `zamknij-plaster`.
+Zamknięcie: skill `zamknij-plaster`.

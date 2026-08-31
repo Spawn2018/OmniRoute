@@ -102,13 +102,14 @@ Obecny stack (AGENTS.md + GROUNDING.md + cienkie Rules + Skills on-demand + Hook
 | 5 | **Kompilacja MD → spec/** partiami (nie „całe archiwum”) | Jedno źródło prawdy bez poisoning | Praca redakcyjna | @Informacje z claude w każdym czacie | Gemini + ChatGPT + własny AUDYT poziom C |
 | 6 | **Piątkowa retrospektywa rules/hooks** (15 min) | Usuwanie rot; +23% compliance w badaniach reguł | Czas operatora | Nigdy nie czyścić | Cai 2026 rule evolution |
 | 7 | **Metryka „kod jak człowiek”** | transferred/added ≥10%, jscpd ≤3%, cov ≥80% | Wymaga dyscypliny | Subiektywny „wygląda OK” | Mierzalne, egzekwowane w gate |
-| 8 | **Testy domenowe pisze człowiek** (skill testolog tylko szkielet) | Mniej fałszywego green | Wolniej | AI pisze testy i kod | Claude Consensus + Wasza zasada |
+| 8 | **Testy domenowe zatwierdza człowiek** (`/testy` w osobnej turze, bez implementacji) | Mniej fałszywego green | Wolniej | Testy i kod w jednym przebiegu | Claude Consensus + Wasza zasada |
 
 ### Czego NIE robić (potwierdzone wszystkimi źródłami)
 
 - Nie ładować `Informacje z claude/` hurtowo do kontekstu.
 - Nie generować AGENTS.md / rules LLM-em „na całość”.
 - Nie uruchamiać 30 subagentów-person równolegle.
+- Nie dodawaj person do `.cursor/subagents/`. Jedyny subagent w tym katalogu: `lowca-duplikatow`.
 - Nie zastępować hooks „prośbą w prompcie”.
 - Nie używać Memories Cursor na pipeline cenników.
 
@@ -119,7 +120,18 @@ Obecny stack (AGENTS.md + GROUNDING.md + cienkie Rules + Skills on-demand + Hook
 1. **Przyjmujemy** obecną architekturę Cursor OS (Phase A) jako kanoniczną.
 2. **Uzupełniamy** ją o ulepszenia #1–#8 powyżej w Fazach B–D (priorytet: golden exemplar po 0.3, agentlint w CI, nested AGENTS per BC).
 3. **Archiwum** `Informacje z claude/` traktujemy jako **materiał źródłowy do kompilacji**, nigdy jako kontekst sesji.
-4. **Metafora 30 osób** = 6 powierzchni procesu + efemeryczne subagenty review/QA, **nie** 30 chatujących person.
+4. **Metafora 30 osób** = 6 powierzchni procesu + `lowca-duplikatow` w `.cursor/subagents/`; review/QA = `/bramka` + człowiek, **nie** 30 chatujących person.
+
+<!-- os-canon-table:start -->
+Nazwy archiwalne (PLAN-GLOWNY V.3) nie są bytami w repo.
+
+| Archiwum | Kanon |
+|---|---|
+| testolog | `/testy` + akceptacja człowieka |
+| weryfikator | `/bramka` + `just gate` + człowiek |
+| audytor-wydajnosci | EXPLAIN w tym samym `/bramka`, gdy zmienił się SQL |
+| kronikarz | skill `zamknij-plaster` (ten sam writer, nie tło) |
+<!-- os-canon-table:end -->
 
 ---
 
@@ -139,7 +151,7 @@ Obecny stack (AGENTS.md + GROUNDING.md + cienkie Rules + Skills on-demand + Hook
 
 - **Pozytywne:** Powtarzalna jakość, audytowalność, zgodność z badaniami, kod bliżej „ludzkiego” przez bramki nie przez persony.
 - **Negatywne:** Narzut ~15 min/plaster (delta-spec); kuracja `_knowledge/` i kompilacja spec wymaga czasu operatora.
-- **Następne kroki (produkt):** vitest HITL + HTTP XOR (po 0.10 langfuse/promptfoo echo).
+- **Następne kroki (produkt):** OAuth/OIDC / hasła (0.12 JWT = hello HS256 bez hasła).
   0.3 jest golden exemplar (zarchiwizowany). `agentlint` już w `just gate`.
 
 ---

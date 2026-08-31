@@ -3,7 +3,6 @@ description: Zamyka plaster i przygotowuje następny
 ---
 
 1. Człowiek + `just gate` + skill `zamknij-plaster` (w tym pętla `docs/ops/post-plaster.md`).
-   Brak subagentów-person (kronikarz, weryfikator) w repo — nie wymyślaj folderu person.
 2. Sprawdź, czy `docs/deltas/open/` jest puste (albo tylko bieżąca delta).
 3. Utwórz commit wg konwencji: `feat(M-xx): <opis> [plaster <id>]`
    ze stopką `Co-authored-by: Cursor Agent <agent@cursor.sh>`.

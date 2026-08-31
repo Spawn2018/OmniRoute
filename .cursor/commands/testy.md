@@ -2,6 +2,9 @@
 description: Pisze testy z kryteriów akceptacji, bez implementacji
 ---
 
+Człowiek zatwierdza kryteria i testy domenowe (property / izolacja tenantów).
+Ta komenda tylko pisze czerwone testy. Nie implementuj.
+
 Z `docs/deltas/open/<id>.md` weź kryteria akceptacji.
 
 Dla każdego kryterium napisz test, który MUSI FAILOWAĆ przy obecnym kodzie.

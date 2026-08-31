@@ -2,9 +2,8 @@
 description: Pełna weryfikacja plastra
 ---
 
-Człowiek + `just gate`. Brak subagentów `weryfikator` / `audytor-wydajnosci`
-w repo — nie wymyślaj folderu person. Przy zmianie SQL: EXPLAIN / test izolacji
-ręcznie albo w tym samym przebiegu agenta.
+Człowiek + `just gate`. Przy zmianie SQL: EXPLAIN / test izolacji
+w tym samym przebiegu.
 
 Wejście: ścieżka do delta-spec + `git diff --name-only main`.
 

@@ -41,6 +41,9 @@ todos:
   - id: leftover-after-014
     content: "Następny: OAuth/OIDC/hasła; echo recipes; branch protection UI"
     status: pending
+  - id: leftover-os-canon
+    content: "OS słownik: /testy /bramka zamiast person z archiwum"
+    status: completed
   - id: phase-d-ops-rhythm
     content: "D minimal: agentlint w just gate, pr-nudge, weekly-refactor + friday-retrospective"
     status: completed
@@ -240,7 +243,7 @@ flowchart TB
 | Architect / TL            | Plan Mode + `GROUNDING.md` + import-linter                                             | Granice BC, ADR                     |
 | Backend / Frontend / Data | Agent implementujący + rules globs + nested `AGENTS.md`                                | Kod w jednym plastrze               |
 | Platform / DevOps         | Skills Temporal/OpenFGA + Automations CI                                               | Workers, deploy, babysit PR         |
-| QA                        | Hooks + testolog + `just gate`                                                         | Fail-first tests, izolacja tenantów |
+| QA                        | Hooks + `/testy` + `just gate`                                                         | Fail-first tests, izolacja tenantów |
 | Security / Review board   | always-security rule + równoległe review (correctness / security / duplikaty / domena) | Przed merge                         |
 
 
@@ -363,7 +366,7 @@ Commands (UX człowieka): `/plaster`, `/testy`, `/bramka`, `/po-plastrze`, `/zam
 2. **Plan Mode** domyślnie przy zmianie cross-module / pieniądze / authz / migracje.
 3. **Jedna rozmowa = jeden plaster**; po zamknięciu — nowa.
 4. **Prompt implementacji:** wskaż `@delta`, `@spec`, `@GROUNDING`, dozwolone ścieżki; zakaz „ulepsz po drodze”.
-5. **Fail-first:** testolog pisze testy czerwone zanim agent koduje.
+5. **Fail-first:** `/testy` w osobnej turze pisze testy czerwone; człowiek zatwierdza; ten sam przebieg nie implementuje.
 6. **Po błędzie agenta:** nie tylko „spróbuj inaczej” — **update Rule/Skill/Hook** (pętla uczenia SH).
 7. **GROUNDING HCs** mają pierwszeństwo nad „pomocnym” promptem użytkownika (np. nie wolno pominąć RLS „dla szybkości”).
 
@@ -405,7 +408,7 @@ Zapisy wrażliwe (migracje, sekrety, prod) → **CLI/skrypty + approval**, nie s
 
 ### 6.2 Subagenci (efemeryczne)
 
-`lowca-duplikatow` (jest w `.cursor/subagents/`). Persony `weryfikator` / `kronikarz` / `audytor-wydajnosci` **nie istnieją** w repo — człowiek + `just gate` + skill `zamknij-plaster`. Parallel tylko na **niezależnych** jednostkach; **jeden writer**.
+W `.cursor/subagents/` jest tylko `lowca-duplikatow`. Review/QA = `/bramka` + `just gate` + człowiek. Skill `zamknij-plaster` (ten sam writer). Parallel tylko na **niezależnych** jednostkach; **jeden writer**.
 
 ### 6.3 Hooks (deterministyczne — „nie da się uprzejmie zignorować”)
 

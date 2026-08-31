@@ -5,7 +5,7 @@ description: Zamyka plaster, archiwizuje delta-spec, przygotowuje następną roz
 
 # Zamknij plaster
 
-1. `/bramka` — człowiek + `just gate` (brak person `weryfikator` / `audytor-wydajnosci`)
+1. `/bramka` — człowiek + `just gate`
 2. **Pętla** `docs/ops/post-plaster.md`: skuteczność, szybkość (lub N/A), dług w diffie, docs/OS. Bramka mierzy; tu naprawiasz to, co nie psuje jakości.
 3. Leftovery z „dlaczego” → `docs/ops/docs-debt.md` + PLAN § leftoverów
 4. Sprawdź `docs/PLAN-REALIZACJA.md` § Gate dziś — **nie** oznaczaj DoD dla recipe `echo`
