@@ -36,7 +36,10 @@ todos:
     content: "0.12 JWT + 0.13 split-screen HITL DONE"
     status: completed
   - id: leftover-after-013
-    content: "Następny: HTTP happy-path extract/accept/reject; potem echo recipes, branch protection UI"
+    content: "0.14 HTTP happy-path extract/accept/reject (unit stub)"
+    status: completed
+  - id: leftover-after-014
+    content: "Następny: OAuth/OIDC/hasła; echo recipes; branch protection UI"
     status: pending
   - id: phase-d-ops-rhythm
     content: "D minimal: agentlint w just gate, pr-nudge, weekly-refactor + friday-retrospective"
@@ -99,7 +102,7 @@ isProject: false
 - **Metafora:** nie „30 agentów na stand-upie” — **kontrolowana fabryka** (Gemini) / **AI software factory** (ChatGPT).
 - **Kształt produktu:** modularny monolit OmniRoute (morze → droga → lot); wejście wąskie = stawki/wyceny.
 - **Metodyka:** WIP=1 + delta-spec + XP. Bez Scrum/person CEO–CFO.
-- **Deliverable:** Fazy **0+A+B + C.1–C.5 + D minimal** ukończone (31.08.2026). Następne: vitest HITL + HTTP XOR.
+- **Deliverable:** Fazy **0+A+B + C.1–C.5 + 0.11–0.14 leftover + D minimal** ukończone (31.08.2026). Następne: OAuth/OIDC / hasła.
 
 ---
 
@@ -181,7 +184,7 @@ flowchart LR
 | Branch protection na `main`                                          | opisane                             | API 403 (Free private)                     | procedura: `docs/ops/branch-protection.md` |
 | Pełny gate (ruff/mypy/pytest/import-linter)                          | DoD §9                              | `just gate` + CI                           | DONE                         |
 | Plaster 0.3 RLS                                                      | Faza B                              | `docs/deltas/archived/0.3-tenancy.md`      | DONE                         |
-| Fazy C–D                                                             | C + D                               | C.1–C.5 + D minimal w kodzie               | next = vitest HITL + XOR |
+| Fazy C–D                                                             | C + D                               | C.1–C.5 + 0.11–0.14 leftover + D minimal w kodzie | next = OAuth/OIDC |
 
 
 ```mermaid
@@ -678,7 +681,7 @@ AGENTS.md (v2), GROUNDING.md, rules (+ui-design-system), skills (+module-factory
 
 ### Faza C — Platforma AI/docs — **C.1–C.5 DONE**
 
-HITL + instructor + docling A/B + langfuse/promptfoo echo w kodzie. **Następny leftover: vitest HITL + HTTP XOR.**
+HITL + instructor + docling A/B + langfuse/promptfoo echo + 0.11–0.14 leftover w kodzie. **Następny leftover: OAuth/OIDC / hasła** (0.12 = hello JWT).
 
 ### Faza D — Operacyjny rytm — **DONE (minimal)**
 
@@ -709,15 +712,15 @@ agentlint w `just gate`; `pr-nudge.yml`; weekly-refactor + friday-retrospective.
 
 ## Blokada realizacji — **zdjęta** (stan 2026-08-31 wieczór, po docs/OS sync)
 
-**Audyt planu = aktualny:** Fazy 0+A+B + C.1–C.5 + D minimal w kodzie; gate pełny (nie agent-refs only).
+**Audyt planu = aktualny:** Fazy 0+A+B + C.1–C.5 + 0.11–0.14 leftover + D minimal w kodzie; gate pełny (nie agent-refs only).
 
 **Otwarte (kolejność pracy, nie blokada planu):**
 
-1. HTTP happy-path `/extractions` (extract/accept/reject) — poza XOR 422
+1. OAuth/OIDC, hasła, rotacja refresh (0.12 = hello JWT bez hasła)
 2. Branch protection w UI GitHub — po Pro/Team; do wtedy `docs/ops/branch-protection.md`
 3. Echo recipes (`just perf` / k6 / vulture / pip-audit) — dopiero gdy nie `echo`
 4. `npx promptfoo eval` / 30 cenników / żywy LLM / llm-guard ML / presidio / langfuse cloud
-5. OAuth/OIDC, hasła, rotacja refresh
+5. HTTP extract vs live Postgres (0.14 = unit + stub serwisu)
 
 Canvas `post-audit-review` = przegląd, nie lista do kodu. Rejestr: `docs/ops/docs-debt.md` + `docs/PLAN-REALIZACJA.md` § leftoverów. Załączony plan software-house **nietknięty**.
 

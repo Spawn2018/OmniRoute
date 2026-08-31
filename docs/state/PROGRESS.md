@@ -29,4 +29,5 @@
 | 2026-08-31 | 0.11 | M-20 | HTTP XOR 422 + vitest extractionCreateBody (kolejka HITL) |
 | 2026-08-31 | 0.12 | M-01 | JWT HS256 session: Bearer claims, nie spoofowalne headery |
 | 2026-08-31 | 0.13 | M-20 | split-screen HITL: podgląd input_text \| recenzja kandydatów |
-| — | leftover | M-20 | **Następny:** HTTP happy-path extract/accept/reject |
+| 2026-08-31 | 0.14 | M-20 | HTTP happy-path extract/list/accept/reject (JWT, stub serwisu) |
+| — | leftover | M-01 | **Następny:** OAuth/OIDC / hasła |

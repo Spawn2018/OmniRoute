@@ -1,7 +1,7 @@
 # M-20 — Ekstrakcja dokumentów (HITL)
 
-**Status:** 0.7–0.13 DONE · następny leftover: HTTP happy-path extract/accept  
-**Delty:** `docs/deltas/archived/0.7-ai-extract-hitl.md`, `0.8-instructor-llm-guard.md`, `0.9-docling-ab.md`, `0.10-langfuse-promptfoo.md`, `0.11-hitl-xor-vitest.md`, `0.12-jwt-session.md`, `0.13-hitl-split.md`  
+**Status:** 0.7–0.14 DONE · następny leftover: OAuth/OIDC / hasła (M-01)  
+**Delty:** `docs/deltas/archived/0.7-ai-extract-hitl.md`, `0.8-instructor-llm-guard.md`, `0.9-docling-ab.md`, `0.10-langfuse-promptfoo.md`, `0.11-hitl-xor-vitest.md`, `0.12-jwt-session.md`, `0.13-hitl-split.md`, `0.14-http-happy-path.md`  
 **GROUNDING:** HC-03 (`source_ref`, `unparsed_regions`), HC-04 (zero zapisu autonomicznego)
 
 ## Zakres (kod dziś)
@@ -19,6 +19,7 @@
 - Zapis `rate_line` / `charge` z serwisu ekstrakcji
 - Żywy instructor / OpenAI w CI, langfuse cloud, eval promptfoo 30 cenników
 - Presidio na każdym endpoincie, outbox, Temporal/Hatchet
+- HTTP extract vs live Postgres (0.14 = unit + stub `ExtractionService`, nie integration PG)
 - Split-screen PDF canvas / OCR overlay
 - Vitest: `extractionCreateBody` (XOR) + `hitlSplitView`; brak RTL całej kolejki
 
@@ -63,7 +64,7 @@ CI nie odpala transformerów llm-guard ani OpenAI.
 - Split-screen: `hitl-review-split.tsx` — podgląd źródła | kandydaci + accept/reject
 - Typy: `just api-types` → `frontend/src/api/`; wrapper rzutuje `ExtractRequest` (flatten anyOf|null)
 
-## Kryteria 0.7–0.10 (spełnione)
+## Kryteria 0.7–0.14 (spełnione)
 
 - Test izolacji `extraction_draft`; accept ≠ `rate_line`
 - Guard przed ekstraktorem; CI = mock
@@ -71,17 +72,20 @@ CI nie odpala transformerów llm-guard ani OpenAI.
 - Trace langfuse przy extract; bez kluczy no-op; metadane bez `input_text`
 - promptfoo echo w CI (`just promptfoo` = pytest, nie npx); te same fixture’e MockExtractor
 - HTTP XOR 422; vitest `extractionCreateBody`
+- HTTP happy-path (0.14): extract/list/accept/reject unit + stub serwisu; nie live PG
 - `just gate` green (unit); integration OpenFGA/RLS w CI
 
 ## Następny leftover
 
-HTTP happy-path extract/accept/reject. Presidio i żywy llm-guard = później.
+OAuth/OIDC / hasła (M-01). 0.12 JWT = hello HS256 bez hasła.
+Presidio i żywy llm-guard = później.
 Nie startuj kolejnego plastra przy niepushniętym WIP.
 
-### Poza 0.13 (zostaje)
+### Poza 0.14 (zostaje)
 
+- HTTP extract vs live Postgres (0.14 = unit + stub serwisu)
+- Split-screen PDF canvas / OCR overlay
 - Cloud Langfuse jako wymóg merge
 - 30 cenników eval (osobna decyzja danych)
 - Presidio na wszystkich endpointach API
-- HTTP happy-path extract/accept/reject, PDF canvas — [docs/ops/docs-debt.md](../ops/docs-debt.md)
-- OAuth/OIDC, hasła, rotacja refresh
+- Leftovery: [docs/ops/docs-debt.md](../ops/docs-debt.md)

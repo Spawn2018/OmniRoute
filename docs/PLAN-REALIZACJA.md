@@ -3,7 +3,7 @@
 **Plan Cursor (pełny):** `.cursor/plans/omniroute-realizacja.plan.md`  
 **ADR:** [0001 Cursor factory](adr/0001-cursor-software-factory-weryfikacja.md) · [0002 Frontend 2026](adr/0002-frontend-platform-2026.md)  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
-**Stan:** B + C.1–C.5 + 0.11–0.13 leftover + D minimal **DONE** · następny leftover **HTTP happy-path extract/accept**
+**Stan:** B + C.1–C.5 + 0.11–0.14 leftover + D minimal **DONE** · następny leftover **OAuth/OIDC** (hasła)
 
 ```mermaid
 flowchart LR
@@ -12,7 +12,8 @@ flowchart LR
   doneC5 --> doneXor[0.11_XOR_vitest]
   doneXor --> doneJwt[0.12_JWT]
   doneJwt --> doneSplit[0.13_split_HITL]
-  doneSplit --> next[HTTP_happy_path]
+  doneSplit --> doneHttp[0.14_HTTP_happy]
+  doneHttp --> next[OAuth_OIDC]
   doneB --> doneD[D_minimal_DONE]
 ```
 
@@ -31,7 +32,7 @@ flowchart LR
 | B.5 Frontend Shell 0.5 | ✅ Vite, Compiler, TanStack, shadcn, ⌘K, lazy PostHog |
 | B.6 DataTableShell 0.6 | ✅ ColumnEditor, table_view RLS, vitest |
 | B.7 Branch protection | ✅ procedura (Free private 403) |
-| C.1–C.5 / 0.7–0.13 | ✅ HITL, instructor+guard, docling A/B, langfuse+promptfoo echo, XOR/vitest, JWT, split HITL |
+| C.1–C.5 / 0.7–0.14 | ✅ HITL … JWT, split HITL, HTTP happy-path unit |
 | D minimal | ✅ agentlint, pr-nudge, rytm refaktor/retro |
 
 ---
@@ -111,13 +112,15 @@ flowchart LR
 
 ## Rejestr leftoverów (audyt + canvas 2026-08-31)
 
-Canvas `post-audit-review` to **przegląd** 0.5–0.9, nie lista do zaimplementowania w syncu docs. Sync spłacił P1 nagłówek tego pliku i `just test` bez `|| true` na unitach. Poniżej — kolejność po 0.10, żeby nie zgubić.
+Canvas `post-audit-review` to **przegląd** 0.5–0.9, nie lista do zaimplementowania w syncu docs. Sync spłacił P1 nagłówek tego pliku i `just test` bez `|| true` na unitach. Poniżej — kolejność po 0.14, żeby nie zgubić.
 
 Pełna lista z „dlaczego”: [docs/ops/docs-debt.md](ops/docs-debt.md)
 
 | Kolejność | Co | Nie mylić z |
 |---|---|---|
-| następny | HTTP happy-path extract/accept/reject | XOR 422 i split-screen już są |
+| następny | OAuth/OIDC / hasła (nie hello JWT) | 0.12 = HS256 Bearer |
+| C.1–C.5 / 0.7–0.14 DONE | HITL … HTTP happy-path unit | nie live PG, nie IdP |
+| 0.14 DONE | HTTP happy-path extract/accept/reject | unit + stub serwisu; nie integration PG |
 | 0.13 DONE | Split-screen HITL (podgląd \| recenzja) | tekst źródła, nie PDF canvas |
 | 0.12 DONE | JWT zamiast spoofowalnych `X-Organization-Id` / `X-User-Id` | hello HS256, nie IdP |
 | 0.10+ (nie ten plaster) | żywy instructor/OpenAI w CI, llm-guard transformers, presidio, promptfoo 30 cenników, langfuse cloud | 0.10 = echo fixtures + no-op bez kluczy |
