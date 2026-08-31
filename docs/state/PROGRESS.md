@@ -38,4 +38,5 @@
 | 2026-09-01 | 0.16 T1 | M-01 | rola `omniroute_app` NOBYPASSRLS; runtime URL; RLS integration = CI |
 | 2026-09-01 | 0.17 T2 | M-01 | matryca RLS S1–S6 + WITH CHECK; integration = CI |
 | 2026-09-01 | 0.18 | M-20 | HTTP extract live PG; token A / draft B → 404; integration = CI |
-| — | leftover | API | **Następny:** 0.19 A1 undeclared `/api/v1` = deny |
+| 2026-09-01 | 0.19 A1 | API | undeclared `/api/v1` → 403; playground off |
+| — | leftover | AuthZ | **Następny:** 0.20 A2 `can_review` = reviewer, nie member |

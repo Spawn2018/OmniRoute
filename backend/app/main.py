@@ -10,7 +10,13 @@ from app.domain.errors import (
     Unauthenticated,
 )
 
-app = FastAPI(title="OmniRoute", version="0.1.0")
+app = FastAPI(
+    title="OmniRoute",
+    version="0.1.0",
+    docs_url=None,
+    redoc_url=None,
+    openapi_url=None,
+)
 app.include_router(api_router)
 
 

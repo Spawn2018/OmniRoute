@@ -3,7 +3,7 @@
 **Plan Cursor (pełny):** `.cursor/plans/omniroute-realizacja.plan.md`  
 **ADR:** [0001 Cursor factory](adr/0001-cursor-software-factory-weryfikacja.md) · [0002 Frontend 2026](adr/0002-frontend-platform-2026.md)  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
-**Stan:** B + C.1–C.5 + 0.11–0.15 leftover + **D0–0.18** + D minimal · następny **0.19 A1** (undeclared deny; OAuth = Auth0 I1 po Wave A)
+**Stan:** B + C.1–C.5 + 0.11–0.15 leftover + **D0–0.19** + D minimal · następny **0.20 A2** (`can_review` = reviewer; OAuth = Auth0 I1 po Wave A)
 
 ```mermaid
 flowchart LR
@@ -19,7 +19,8 @@ flowchart LR
   doneT0 --> doneT1[T1_nobypassrls]
   doneT1 --> doneT2[T2_rls_matrix]
   doneT2 --> done018[P018_http_live_pg]
-  done018 --> next[A1_undeclared_deny]
+  done018 --> doneA1[A1_undeclared_deny]
+  doneA1 --> next[A2_reviewer]
   doneB --> doneD[D_minimal_DONE]
 ```
 
@@ -125,7 +126,8 @@ Pełna lista z „dlaczego”: [docs/ops/docs-debt.md](ops/docs-debt.md)
 
 | Kolejność | Co | Nie mylić z |
 |---|---|---|
-| następny | 0.19 A1 undeclared `/api/v1` = deny; playground off | nie OAuth |
+| następny | 0.20 A2 `can_review` = reviewer, nie member | nie każdy member = admin |
+| 0.19 A1 DONE | undeclared `/api/v1` → 403; playground off | /health publiczne |
 | 0.18 DONE | HTTP extract live PG; token A / draft B → 404 | integration = CI (local PG hang) |
 | 0.17 T2 DONE | matryca RLS S1–S6 + WITH CHECK | integration = CI (local PG hang) |
 | 0.16 T1 DONE | `omniroute_app` NOBYPASSRLS; runtime URL | RLS integration = CI (local PG hang) |

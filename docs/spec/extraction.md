@@ -1,6 +1,6 @@
 # M-20 — Ekstrakcja dokumentów (HITL)
 
-**Status:** 0.7–0.18 DONE · następny leftover: 0.19 A1 undeclared `/api/v1` = deny  
+**Status:** 0.7–0.18 DONE · następny leftover: 0.19 A1 DONE → 0.20 A2 reviewer  
 **Delty:** `docs/deltas/archived/0.7-ai-extract-hitl.md`, `0.8-instructor-llm-guard.md`, `0.9-docling-ab.md`, `0.10-langfuse-promptfoo.md`, `0.11-hitl-xor-vitest.md`, `0.12-jwt-session.md`, `0.13-hitl-split.md`, `0.14-http-happy-path.md`, `0.15-t0-document-base64-max.md`, `0.18-http-extract-live-pg.md`  
 **GROUNDING:** HC-03 (`source_ref`, `unparsed_regions`), HC-04 (zero zapisu autonomicznego)
 
@@ -80,7 +80,7 @@ CI nie odpala transformerów llm-guard ani OpenAI.
 
 ## Następny leftover
 
-0.18 DONE → 0.19 A1 undeclared `/api/v1` = deny.
+0.19 A1 DONE → 0.20 A2 `can_review` = reviewer.
 Auth0 I1 po Wave A. Presidio i żywy llm-guard = później.
 Nie startuj kolejnego plastra przy niepushniętym WIP.
 
