@@ -36,3 +36,7 @@ class DocumentParserUnavailable(DomainError):
 
 class UnparseableDocument(DomainError):
     """Bajty dokumentu nie dały się zamienić na tekst do ekstrakcji."""
+
+
+class InvalidMoney(DomainError):
+    """Kwota musi być Decimal z walutą ISO 4217 — nigdy float."""

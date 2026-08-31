@@ -1,3 +1,4 @@
+import { Money } from "@/components/money"
 import { Button } from "@/components/ui/button"
 import { hitlSplitView } from "@/features/extraction/hitl-split"
 import type { ExtractionDraft } from "@/lib/extractions-api"
@@ -36,7 +37,8 @@ export function HitlReviewSplit({ draft, busy, onAccept, onReject }: HitlReviewS
             view.candidates.map((candidate) => (
               <li key={`${candidate.code}-${candidate.amount_text}-${candidate.currency}`}>
                 <span className="font-mono text-xs">
-                  {candidate.code} {candidate.amount_text} {candidate.currency}
+                  {candidate.code}{" "}
+                  <Money amount={candidate.amount_text} currency={candidate.currency} />
                 </span>
               </li>
             ))

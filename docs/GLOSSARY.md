@@ -19,6 +19,9 @@
 | delta A/B parsera | ab_delta_chars | różnica długości tekstu A vs B (0.9) |
 | kurs NBP | nbp_rate | D-1 roboczy |
 | narzut | markup | kaskada — Python mały zbiór (DECISIONS) |
+| pieniądze | money | para `amount` + `currency`; nigdy float |
+| kwota | amount | `Decimal` / tekst dziesiętny, skala Numeric(14,4) |
+| waluta | currency | ISO 4217 CHAR(3), nierozerwalnie z kwotą |
 
 Pełny słownik archiwalny: `Informacje z claude/OmniRoute-dokumentacja/docs/` — **nie dumpować**; uzupełniaj ten plik przy plastrze.
 

@@ -3,7 +3,7 @@
 **Plan Cursor (pełny):** `.cursor/plans/omniroute-realizacja.plan.md`  
 **ADR:** [0001 Cursor factory](adr/0001-cursor-software-factory-weryfikacja.md) · [0002 Frontend 2026](adr/0002-frontend-platform-2026.md)  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
-**Stan:** B + C.1–C.5 + 0.11–0.15 leftover + **Exit Wave A (D0–0.23)** + D minimal · następny **Charge 0.25** (Money; Auth0 I1 i Wave FE mogą równolegle)
+**Stan:** B + C.1–C.5 + 0.11–0.15 leftover + **Exit Wave A (D0–0.23)** + **0.25 Money** + D minimal · następny **Charge 1.0** (`charge_code`; Auth0 I1 i Wave FE mogą równolegle)
 
 ```mermaid
 flowchart LR
@@ -130,7 +130,8 @@ Pełna lista z „dlaczego”: [docs/ops/docs-debt.md](ops/docs-debt.md)
 
 | Kolejność | Co | Nie mylić z |
 |---|---|---|
-| następny | Charge 0.25 Money Decimal + `<Money/>` | nie start w sesji Wave A |
+| następny | Charge 1.0 `charge_code` M-06 | nie luźny string; nie 0.25 |
+| 0.25 DONE | Money Decimal + `<Money/>` na HITL | nie tabela charge / rate_line; U-routes-breadth nie tu |
 | Exit Wave A | D0 + 0.15 T0 … 0.23 | Charge/FE/Auth0 nie tu |
 | 0.23 S1 DONE | JWT_SECRET z GitHub Encrypted Secrets | nie literał w YAML |
 | 0.22 T5 DONE | iss/aud/jti/ver; TTL 15 min | nie Auth0 RS256 |

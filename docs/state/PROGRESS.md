@@ -44,4 +44,5 @@
 | 2026-09-01 | 0.22 T5 | M-01 | JWT iss/aud/jti/ver; TTL 15 min |
 | 2026-09-01 | 0.23 S1 | ops | JWT_SECRET z GitHub Encrypted Secrets, nie YAML |
 | 2026-09-01 | Exit Wave A | — | D0 + 0.15 T0 … 0.23 na origin. Charge/FE/Auth0 nie startowane. |
-| — | leftover | Charge | **Następny:** 0.25 Money Decimal + `<Money/>` (po Exit Wave A) |
+| 2026-09-01 | 0.25 | domain | Money Decimal + waluta ISO 4217 + `<Money/>` na HITL; bez tabeli charge |
+| — | leftover | Charge | **Następny:** 1.0 `charge_code` M-06. U-routes-breadth nie w 0.25. 0.24 pip-audit opcjonalny |
