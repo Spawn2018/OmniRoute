@@ -3,6 +3,7 @@ import { useNavigate } from "@tanstack/react-router"
 import { Command } from "cmdk"
 import { Search } from "lucide-react"
 import { track } from "@/lib/analytics"
+import { OPERATOR_ACTIONS, runOperatorAction } from "@/lib/operator-actions"
 import { cn } from "@/lib/utils"
 
 type CommandPaletteProps = {
@@ -10,7 +11,7 @@ type CommandPaletteProps = {
   onOpenChange: (open: boolean) => void
 }
 
-const ACTIONS = [
+const NAV_ACTIONS = [
   { id: "nav-home", label: "Idź do pulpitu", to: "/" },
   { id: "nav-users", label: "Idź do użytkowników tenanta", to: "/tenancy/users" },
   { id: "nav-extractions", label: "Idź do kolejki ekstrakcji", to: "/extractions" },
@@ -19,6 +20,10 @@ const ACTIONS = [
   { id: "nav-rate-lines", label: "Idź do stawek kupna", to: "/rate-lines" },
   { id: "nav-session", label: "Ustawienia sesji (tenant)", to: "/session" },
 ] as const
+
+export function commandPaletteActionIds(): string[] {
+  return [...NAV_ACTIONS.map((action) => action.id), ...OPERATOR_ACTIONS.map((action) => action.id)]
+}
 
 export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
   const navigate = useNavigate()
@@ -58,7 +63,7 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
               Brak wyników
             </Command.Empty>
             <Command.Group heading="Nawigacja" className="px-1 py-1 text-xs text-muted-foreground">
-              {ACTIONS.map((action) => (
+              {NAV_ACTIONS.map((action) => (
                 <Command.Item
                   key={action.id}
                   value={action.label}
@@ -70,6 +75,28 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
                     track("command_palette_used", { action: action.id })
                     onOpenChange(false)
                     void navigate({ to: action.to })
+                  }}
+                >
+                  {action.label}
+                </Command.Item>
+              ))}
+            </Command.Group>
+            <Command.Group heading="Akcje operatora" className="px-1 py-1 text-xs text-muted-foreground">
+              {OPERATOR_ACTIONS.map((action) => (
+                <Command.Item
+                  key={action.id}
+                  value={action.label}
+                  className={cn(
+                    "flex cursor-pointer items-center rounded-md px-2 py-1.5 text-sm text-foreground",
+                    "data-[selected=true]:bg-muted",
+                  )}
+                  onSelect={() => {
+                    track("command_palette_used", { action: action.id })
+                    onOpenChange(false)
+                    if (action.route) {
+                      void navigate({ to: action.route })
+                    }
+                    runOperatorAction(action.id)
                   }}
                 >
                   {action.label}

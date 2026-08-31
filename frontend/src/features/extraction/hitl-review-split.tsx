@@ -62,6 +62,7 @@ export function HitlReviewSplit({ draft, busy, onAccept, onReject }: HitlReviewS
           <Button
             type="button"
             size="sm"
+            data-operator-target="accept"
             disabled={busy}
             onClick={() => onAccept(view.draftId)}
           >

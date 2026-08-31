@@ -1,4 +1,5 @@
-import { useMemo, useState, type ReactNode } from "react"
+import { useEffect, useMemo, useState, type ReactNode } from "react"
+import { subscribeOperatorAction } from "@/lib/operator-actions"
 import {
   flexRender,
   getCoreRowModel,
@@ -125,15 +126,16 @@ export function DataTableShell<TData>({
   }
 
   const saveMutation = useMutation({
-    mutationFn: async () => {
+    mutationFn: async (name: string) => {
+      const trimmed = name.trim() || "operator"
       const config = currentConfig()
-      const existing = viewsQuery.data?.find((view) => view.name === draftName.trim())
+      const existing = viewsQuery.data?.find((view) => view.name === trimmed)
       if (existing) {
         return updateTableView(existing.id, { config })
       }
       return createTableView({
         table_key: tableKey,
-        name: draftName.trim(),
+        name: trimmed,
         config,
       })
     },
@@ -143,6 +145,18 @@ export function DataTableShell<TData>({
       await queryClient.invalidateQueries({ queryKey: ["table-views", tableKey] })
     },
   })
+
+  useEffect(() => {
+    return subscribeOperatorAction((id) => {
+      if (id !== "save-view") {
+        return
+      }
+      setPanelOpen(true)
+      const name = draftName.trim() || "operator"
+      setDraftName(name)
+      saveMutation.mutate(name)
+    })
+  }, [draftName, saveMutation])
 
   const rowHeight = density === "compact" ? "py-1" : "py-2"
 
@@ -204,7 +218,7 @@ export function DataTableShell<TData>({
               setDraftName(view.name)
               track("table_view_applied", { table_key: tableKey, view_id: view.id })
             }}
-            onSave={() => saveMutation.mutate()}
+            onSave={() => saveMutation.mutate(draftName)}
             onReset={() => {
               applyConfig(DEFAULT_TABLE_VIEW_CONFIG)
               setColumnOrder(allColumnIds)

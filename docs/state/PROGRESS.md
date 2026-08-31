@@ -50,4 +50,5 @@
 | 2026-09-01 | 1.2 | M-08 | `charge` buy+sell na jednym wierszu + `margin()` w kodzie + `/charges`; nie accept HITL |
 | 2026-09-01 | 1.3 | M-20 | accept HITL → `rate_line` (kupno) w jednej transakcji HTTP; ExtractionService bez rates; nie outbox |
 | 2026-09-01 | U-art50 | M-20 UI | label „propozycja AI” na recenzji HITL; Art. 50 = UI, nie PDF prawny |
-| — | leftover | Wave FE | **Następny:** U-palette-ops. U-density…U-admin-ref + U-routes-breadth otwarte. Nie Exit Wave FE. Auth0 I1 po FE. |
+| 2026-09-01 | U-palette-ops | UI | ⌘K: extract, accept-focus, save-view, clear-session; nie tylko nawigacja |
+| — | leftover | Wave FE | **Następny:** U-density. U-a11y…U-admin-ref + U-routes-breadth otwarte. Nie Exit Wave FE. Auth0 I1 po FE. |

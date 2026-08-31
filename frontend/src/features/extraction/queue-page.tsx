@@ -1,12 +1,13 @@
 import { Link } from "@tanstack/react-router"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { createColumnHelper } from "@tanstack/react-table"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { DataTableShell } from "@/components/data-table/data-table-shell"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { HitlReviewSplit } from "@/features/extraction/hitl-review-split"
 import { track } from "@/lib/analytics"
+import { subscribeOperatorAction } from "@/lib/operator-actions"
 import {
   acceptExtractionDraft,
   createExtractionDraft,
@@ -82,6 +83,21 @@ export function ExtractionQueuePage() {
       invalidate()
     },
   })
+
+  useEffect(() => {
+    return subscribeOperatorAction((id) => {
+      if (id === "extract") {
+        document.querySelector<HTMLButtonElement>("[data-operator-target=extract]")?.click()
+        return
+      }
+      if (id === "accept-focus") {
+        setSelectedDraftId((current) => current ?? query.data?.[0]?.id ?? null)
+        queueMicrotask(() => {
+          document.querySelector<HTMLButtonElement>("[data-operator-target=accept]")?.focus()
+        })
+      }
+    })
+  }, [query.data])
 
   const columns = [
     columnHelper.accessor("source_ref", {
@@ -212,6 +228,7 @@ export function ExtractionQueuePage() {
         </label>
         <Button
           type="button"
+          data-operator-target="extract"
           disabled={createMutation.isPending || !ctx.organizationId}
           onClick={() => createMutation.mutate()}
         >

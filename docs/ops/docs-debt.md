@@ -20,7 +20,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **0.21 T4 DONE:** `hello_token` default false; mint UUID tylko przy fladze
 - **0.22 T5 DONE:** JWT iss/aud/jti/ver; TTL 15 min
 - **0.23 S1 DONE:** JWT_SECRET z GitHub Encrypted Secrets; literał usunięty z gate.yml
-- **U-art50 DONE:** label „propozycja AI” na recenzji HITL. **Następny (kod):** U-palette-ops. Auth0 I1 po Exit Wave FE (wszystkie U-*)
+- **U-palette-ops DONE:** ⌘K akcje operatora (extract, accept-focus, save-view, clear-session). **Następny (kod):** U-density. Auth0 I1 po wszystkich U-*
+- **U-art50 DONE:** label „propozycja AI” na recenzji HITL.
 - **1.3 DONE:** accept HITL + `rate_line` (kupno) w jednej transakcji HTTP; `ExtractionService` nie importuje rates.
 - **1.2 DONE:** `charge` buy+sell + `margin(buy, sell)` + `/charges`. Nie accept HITL
 - **1.3 leftover (dlaczego nie w tym plasterze):** isolation/integration = CI — lokalnie PG wisiał przy `pytest -m integration` (jak 0.16–1.2); `just api-types` nie regen — `rate_line_ids` w wrapperze nieczytane, gate = typecheck; brak MCP Postgres w sesji — nowej tabeli nie było; Wave FE U-* i Auth0 I1 nie startowane (CURRENT = I1)
