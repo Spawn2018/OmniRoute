@@ -14,7 +14,7 @@
 **Delta:** [docs/deltas/open/0.4-openfga.md](docs/deltas/open/0.4-openfga.md)  
 **Spec:** [docs/spec/tenancy.md](docs/spec/tenancy.md)  
 **Moduły:** M-01  
-**Status:** w toku → commit
+**Status:** **ukończony** (skill + compose + model + API + CI green)
 
 ## Zakres
 - OpenFGA w docker-compose + CI
