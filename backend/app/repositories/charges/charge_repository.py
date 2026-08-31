@@ -1,0 +1,26 @@
+from uuid import UUID
+
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
+
+from app.models.charge import Charge
+
+
+class ChargeRepository:
+    def __init__(self, session: AsyncSession) -> None:
+        self._session = session
+
+    async def list_all(self) -> list[Charge]:
+        result = await self._session.scalars(
+            select(Charge).order_by(Charge.created_at.desc(), Charge.id),
+        )
+        return list(result.all())
+
+    async def get(self, charge_id: UUID) -> Charge | None:
+        found = await self._session.get(Charge, charge_id)
+        return found if isinstance(found, Charge) else None
+
+    async def add(self, row: Charge) -> Charge:
+        self._session.add(row)
+        await self._session.flush()
+        return row

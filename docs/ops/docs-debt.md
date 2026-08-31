@@ -20,11 +20,13 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **0.21 T4 DONE:** `hello_token` default false; mint UUID tylko przy fladze
 - **0.22 T5 DONE:** JWT iss/aud/jti/ver; TTL 15 min
 - **0.23 S1 DONE:** JWT_SECRET z GitHub Encrypted Secrets; literał usunięty z gate.yml
-- **1.1 DONE:** `rate_line` immutable + `source_ref` + `/rate-lines`. **Następny (kod):** Charge 1.2 `charge` buy+sell ([PROGRAM-12M.md](../state/PROGRAM-12M.md))
+- **1.2 DONE:** `charge` buy+sell + `margin(buy, sell)` + `/charges`. **Następny (kod):** Charge 1.3 accept → RatesService ([PROGRAM-12M.md](../state/PROGRAM-12M.md))
+- **1.1 DONE:** `rate_line` immutable + `source_ref` + `/rate-lines`. Nie `charge` / marża
 - **1.0 DONE:** `charge_code` katalog + aliasy + RLS + `/charge-codes`. Nie `rate_line` / `charge`
 - **0.25 DONE:** Money Decimal + waluta + `<Money/>` na HITL. Bez tabeli charge
 - **Exit Wave A:** D0 + T0…0.23. 0.24 pip-audit opcjonalny
-- **U-routes-breadth:** 1.1 ma `/rate-lines` (lista+dodaj+supersede). 1.0 ma `/charge-codes`. Nie Exit Wave FE (U-density…U-admin-ref)
+- **U-routes-breadth:** 1.2 ma `/charges`. 1.1 ma `/rate-lines`. 1.0 ma `/charge-codes`. Nie Exit Wave FE (U-density…U-admin-ref)
+- **1.2 leftover (dlaczego nie w tym plasterze):** isolation/integration = CI — lokalnie PG wisiał przy `pytest -m integration` (jak 0.16–1.1); `just api-types` nie regen — wrapper fetch, gate = typecheck; brak MCP Postgres w sesji — schemat z migracji 008/009
 - **1.1 leftover (dlaczego nie w tym plasterze):** isolation/integration = CI — lokalnie PG wisiał przy `pytest -m integration` (jak 0.16–0.18 / 1.0); `just api-types` nie regen — wrapper fetch, gate = typecheck
 - **1.0 leftover (dlaczego nie w tym plasterze):** isolation/integration = CI — lokalnie PG wisiał (jak 0.16–0.18); `just api-types` nie regen — wrapper fetch, gate = typecheck
 - **1.0 leftover:** aliasy jako `TEXT[]` na wierszu, nie osobna tabela — wystarcza resolve; osobny wiersz aliasu gdy 1.1+ tego wymaga

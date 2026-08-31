@@ -11,6 +11,7 @@ from app.models.base import Base
 from app.models.organization import Organization  # noqa: F401
 from app.models.charge_code import ChargeCode  # noqa: F401
 from app.models.rate_line import RateLine  # noqa: F401
+from app.models.charge import Charge  # noqa: F401
 from app.models.extraction_draft import ExtractionDraft  # noqa: F401
 from app.models.table_view import TableView  # noqa: F401
 

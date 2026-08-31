@@ -10,6 +10,7 @@ from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_asyn
 from app.core.database import bind_tenant
 from app.models.app_user import AppUser
 from app.models.base import Base
+from app.models.charge import Charge  # noqa: F401 — rejestr metadanych RLS
 from app.models.charge_code import ChargeCode  # noqa: F401 — rejestr metadanych RLS
 from app.models.extraction_draft import ExtractionDraft  # noqa: F401 — rejestr metadanych RLS
 from app.models.organization import Organization
@@ -195,6 +196,20 @@ async def _apply_rls_policies(conn) -> None:
             CREATE TRIGGER rate_line_forbid_mutate
             BEFORE UPDATE OR DELETE ON rate_line
             FOR EACH ROW EXECUTE FUNCTION rate_line_forbid_mutate()
+            """
+        ),
+    )
+    await conn.execute(text("ALTER TABLE charge ENABLE ROW LEVEL SECURITY"))
+    await conn.execute(text("ALTER TABLE charge FORCE ROW LEVEL SECURITY"))
+    await conn.execute(text("DROP POLICY IF EXISTS charge_tenant_isolation ON charge"))
+    await conn.execute(
+        text(
+            """
+            CREATE POLICY charge_tenant_isolation ON charge
+            USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
+            WITH CHECK (
+              organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid
+            )
             """
         ),
     )

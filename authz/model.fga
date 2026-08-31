@@ -12,3 +12,4 @@ type organization
     define can_review_extractions: reviewer
     define can_manage_charge_codes: member
     define can_manage_rate_lines: member
+    define can_manage_charges: member

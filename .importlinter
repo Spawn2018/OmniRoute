@@ -20,6 +20,7 @@ modules =
     app.services.extraction
     app.services.charge_codes
     app.services.rate_lines
+    app.services.charges
 
 [importlinter:contract:integracje]
 name = Integracje nie znają serwisów

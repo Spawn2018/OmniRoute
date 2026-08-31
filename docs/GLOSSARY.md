@@ -3,7 +3,10 @@
 | PL | EN (kod) | Uwagi |
 |---|---|---|
 | stawka | rate_line | niemutowalna, source_ref |
-| opłata / charge | charge / shipment_charge | jedyne miejsce prawdy o marży |
+| opłata / charge | charge / shipment_charge | jedyne miejsce prawdy o marży; buy+sell na jednym wierszu |
+| kupno | buy | kwota zakupu na `charge` |
+| sprzedaż | sell | kwota sprzedaży na `charge` |
+| marża | margin | sell − buy, ta sama waluta; tylko funkcja `margin()` |
 | kod opłaty | charge_code | katalog M-06; typowany token, nie luźny string |
 | alias kodu opłaty | charge_code alias | synonim w katalogu tenanta |
 | wycena | quotation | |

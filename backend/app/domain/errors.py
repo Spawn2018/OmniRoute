@@ -60,3 +60,11 @@ class InvalidSourceRef(DomainError):
 
 class RateLineAlreadySuperseded(DomainError):
     """Zmiana stawki to nowy wiersz; już zastąpionej nie rusza się drugi raz."""
+
+
+class MixedCurrencyCharge(DomainError):
+    """buy i sell na charge muszą mieć tę samą walutę — marża nie liczy kursu."""
+
+
+class ChargeRateMismatch(DomainError):
+    """rate_line na charge musi mieć ten sam charge_code."""
