@@ -17,6 +17,8 @@ class Settings(BaseSettings):
     openai_api_key: str = ""
     extraction_llm_guard: bool = False
     extraction_parser: str = "stub"
+    jwt_secret: str = ""
+    jwt_expire_minutes: int = 60
 
 
 settings = Settings()

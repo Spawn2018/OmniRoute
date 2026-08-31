@@ -1,12 +1,16 @@
 import { client } from "@/api/client.gen"
 import {
+  createSessionTokenApiV1SessionTokenPost,
   healthHealthGet,
   listUsersApiV1TenancyUsersGet,
 } from "@/api/sdk.gen"
 import type { AppUserResponse } from "@/api/types.gen"
-import { requireTenantHeaders } from "@/lib/tenant"
+import { getSessionToken } from "@/lib/tenant"
 
-client.setConfig({ baseUrl: "" })
+client.setConfig({
+  baseUrl: "",
+  auth: () => getSessionToken() ?? undefined,
+})
 
 export type AppUser = AppUserResponse
 
@@ -20,18 +24,32 @@ export class ApiError extends Error {
   }
 }
 
-export { getTenantContext, setTenantContext } from "@/lib/tenant"
+export { clearSessionToken, getTenantContext, setSessionToken } from "@/lib/tenant"
 
-function statusOf(response: Response | undefined): number {
+export function httpErrorStatus(response: Response | undefined): number {
   return response?.status ?? 500
 }
 
-export async function fetchTenancyUsers(): Promise<AppUser[]> {
-  const { data, error, response } = await listUsersApiV1TenancyUsersGet({
-    headers: requireTenantHeaders(),
+export async function issueSessionToken(input: {
+  organizationId: string
+  userId: string
+}): Promise<string> {
+  const { data, error, response } = await createSessionTokenApiV1SessionTokenPost({
+    body: {
+      organization_id: input.organizationId,
+      user_id: input.userId,
+    },
   })
+  if (error || !data?.access_token) {
+    throw new ApiError("Nie udało się uzyskać tokenu sesji", httpErrorStatus(response))
+  }
+  return data.access_token
+}
+
+export async function fetchTenancyUsers(): Promise<AppUser[]> {
+  const { data, error, response } = await listUsersApiV1TenancyUsersGet()
   if (error || !data) {
-    throw new ApiError(JSON.stringify(error) || "Błąd listy użytkowników", statusOf(response))
+    throw new ApiError(JSON.stringify(error) || "Błąd listy użytkowników", httpErrorStatus(response))
   }
   return data
 }
@@ -39,7 +57,7 @@ export async function fetchTenancyUsers(): Promise<AppUser[]> {
 export async function fetchHealth(): Promise<{ status: string }> {
   const { data, error, response } = await healthHealthGet()
   if (error || !data || typeof data.status !== "string") {
-    throw new ApiError("API niedostępne", statusOf(response))
+    throw new ApiError("API niedostępne", httpErrorStatus(response))
   }
   return { status: data.status }
 }

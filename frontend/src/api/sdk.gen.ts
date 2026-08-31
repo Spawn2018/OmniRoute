@@ -2,7 +2,7 @@
 
 import type { Client, ClientMeta, Options as Options2, RequestResult, TDataShape } from './client';
 import { client } from './client.gen';
-import type { AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostData, AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostErrors, AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostResponses, CreateExtractionDraftApiV1ExtractionsPostData, CreateExtractionDraftApiV1ExtractionsPostErrors, CreateExtractionDraftApiV1ExtractionsPostResponses, CreateTableViewApiV1TenancyTableViewsPostData, CreateTableViewApiV1TenancyTableViewsPostErrors, CreateTableViewApiV1TenancyTableViewsPostResponses, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteData, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteErrors, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteResponses, HealthHealthGetData, HealthHealthGetResponses, ListExtractionDraftsApiV1ExtractionsGetData, ListExtractionDraftsApiV1ExtractionsGetErrors, ListExtractionDraftsApiV1ExtractionsGetResponses, ListTableViewsApiV1TenancyTableViewsGetData, ListTableViewsApiV1TenancyTableViewsGetErrors, ListTableViewsApiV1TenancyTableViewsGetResponses, ListUsersApiV1TenancyUsersGetData, ListUsersApiV1TenancyUsersGetErrors, ListUsersApiV1TenancyUsersGetResponses, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostData, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostErrors, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostResponses, UpdateTableViewApiV1TenancyTableViewsViewIdPatchData, UpdateTableViewApiV1TenancyTableViewsViewIdPatchErrors, UpdateTableViewApiV1TenancyTableViewsViewIdPatchResponses } from './types.gen';
+import type { AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostData, AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostErrors, AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostResponses, CreateExtractionDraftApiV1ExtractionsPostData, CreateExtractionDraftApiV1ExtractionsPostErrors, CreateExtractionDraftApiV1ExtractionsPostResponses, CreateSessionTokenApiV1SessionTokenPostData, CreateSessionTokenApiV1SessionTokenPostErrors, CreateSessionTokenApiV1SessionTokenPostResponses, CreateTableViewApiV1TenancyTableViewsPostData, CreateTableViewApiV1TenancyTableViewsPostErrors, CreateTableViewApiV1TenancyTableViewsPostResponses, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteData, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteErrors, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteResponses, HealthHealthGetData, HealthHealthGetResponses, ListExtractionDraftsApiV1ExtractionsGetData, ListExtractionDraftsApiV1ExtractionsGetErrors, ListExtractionDraftsApiV1ExtractionsGetResponses, ListTableViewsApiV1TenancyTableViewsGetData, ListTableViewsApiV1TenancyTableViewsGetErrors, ListTableViewsApiV1TenancyTableViewsGetResponses, ListUsersApiV1TenancyUsersGetData, ListUsersApiV1TenancyUsersGetResponses, ReadSessionApiV1SessionMeGetData, ReadSessionApiV1SessionMeGetResponses, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostData, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostErrors, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostResponses, UpdateTableViewApiV1TenancyTableViewsViewIdPatchData, UpdateTableViewApiV1TenancyTableViewsViewIdPatchErrors, UpdateTableViewApiV1TenancyTableViewsViewIdPatchResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean, TResponse = unknown> = Options2<TData, ThrowOnError, TResponse> & {
     /**
@@ -19,19 +19,49 @@ export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends 
 };
 
 /**
+ * Create Session Token
+ */
+export const createSessionTokenApiV1SessionTokenPost = <ThrowOnError extends boolean = false>(options: Options<CreateSessionTokenApiV1SessionTokenPostData, ThrowOnError>): RequestResult<CreateSessionTokenApiV1SessionTokenPostResponses, CreateSessionTokenApiV1SessionTokenPostErrors, ThrowOnError> => (options.client ?? client).post<CreateSessionTokenApiV1SessionTokenPostResponses, CreateSessionTokenApiV1SessionTokenPostErrors, ThrowOnError>({
+    url: '/api/v1/session/token',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Read Session
+ */
+export const readSessionApiV1SessionMeGet = <ThrowOnError extends boolean = false>(options?: Options<ReadSessionApiV1SessionMeGetData, ThrowOnError>): RequestResult<ReadSessionApiV1SessionMeGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<ReadSessionApiV1SessionMeGetResponses, unknown, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/session/me',
+    ...options
+});
+
+/**
  * List Users
  */
-export const listUsersApiV1TenancyUsersGet = <ThrowOnError extends boolean = false>(options: Options<ListUsersApiV1TenancyUsersGetData, ThrowOnError>): RequestResult<ListUsersApiV1TenancyUsersGetResponses, ListUsersApiV1TenancyUsersGetErrors, ThrowOnError> => (options.client ?? client).get<ListUsersApiV1TenancyUsersGetResponses, ListUsersApiV1TenancyUsersGetErrors, ThrowOnError>({ url: '/api/v1/tenancy/users', ...options });
+export const listUsersApiV1TenancyUsersGet = <ThrowOnError extends boolean = false>(options?: Options<ListUsersApiV1TenancyUsersGetData, ThrowOnError>): RequestResult<ListUsersApiV1TenancyUsersGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<ListUsersApiV1TenancyUsersGetResponses, unknown, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/tenancy/users',
+    ...options
+});
 
 /**
  * List Table Views
  */
-export const listTableViewsApiV1TenancyTableViewsGet = <ThrowOnError extends boolean = false>(options: Options<ListTableViewsApiV1TenancyTableViewsGetData, ThrowOnError>): RequestResult<ListTableViewsApiV1TenancyTableViewsGetResponses, ListTableViewsApiV1TenancyTableViewsGetErrors, ThrowOnError> => (options.client ?? client).get<ListTableViewsApiV1TenancyTableViewsGetResponses, ListTableViewsApiV1TenancyTableViewsGetErrors, ThrowOnError>({ url: '/api/v1/tenancy/table-views', ...options });
+export const listTableViewsApiV1TenancyTableViewsGet = <ThrowOnError extends boolean = false>(options: Options<ListTableViewsApiV1TenancyTableViewsGetData, ThrowOnError>): RequestResult<ListTableViewsApiV1TenancyTableViewsGetResponses, ListTableViewsApiV1TenancyTableViewsGetErrors, ThrowOnError> => (options.client ?? client).get<ListTableViewsApiV1TenancyTableViewsGetResponses, ListTableViewsApiV1TenancyTableViewsGetErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/tenancy/table-views',
+    ...options
+});
 
 /**
  * Create Table View
  */
 export const createTableViewApiV1TenancyTableViewsPost = <ThrowOnError extends boolean = false>(options: Options<CreateTableViewApiV1TenancyTableViewsPostData, ThrowOnError>): RequestResult<CreateTableViewApiV1TenancyTableViewsPostResponses, CreateTableViewApiV1TenancyTableViewsPostErrors, ThrowOnError> => (options.client ?? client).post<CreateTableViewApiV1TenancyTableViewsPostResponses, CreateTableViewApiV1TenancyTableViewsPostErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
     url: '/api/v1/tenancy/table-views',
     ...options,
     headers: {
@@ -43,12 +73,17 @@ export const createTableViewApiV1TenancyTableViewsPost = <ThrowOnError extends b
 /**
  * Delete Table View
  */
-export const deleteTableViewApiV1TenancyTableViewsViewIdDelete = <ThrowOnError extends boolean = false>(options: Options<DeleteTableViewApiV1TenancyTableViewsViewIdDeleteData, ThrowOnError>): RequestResult<DeleteTableViewApiV1TenancyTableViewsViewIdDeleteResponses, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteErrors, ThrowOnError> => (options.client ?? client).delete<DeleteTableViewApiV1TenancyTableViewsViewIdDeleteResponses, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteErrors, ThrowOnError>({ url: '/api/v1/tenancy/table-views/{view_id}', ...options });
+export const deleteTableViewApiV1TenancyTableViewsViewIdDelete = <ThrowOnError extends boolean = false>(options: Options<DeleteTableViewApiV1TenancyTableViewsViewIdDeleteData, ThrowOnError>): RequestResult<DeleteTableViewApiV1TenancyTableViewsViewIdDeleteResponses, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteErrors, ThrowOnError> => (options.client ?? client).delete<DeleteTableViewApiV1TenancyTableViewsViewIdDeleteResponses, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/tenancy/table-views/{view_id}',
+    ...options
+});
 
 /**
  * Update Table View
  */
 export const updateTableViewApiV1TenancyTableViewsViewIdPatch = <ThrowOnError extends boolean = false>(options: Options<UpdateTableViewApiV1TenancyTableViewsViewIdPatchData, ThrowOnError>): RequestResult<UpdateTableViewApiV1TenancyTableViewsViewIdPatchResponses, UpdateTableViewApiV1TenancyTableViewsViewIdPatchErrors, ThrowOnError> => (options.client ?? client).patch<UpdateTableViewApiV1TenancyTableViewsViewIdPatchResponses, UpdateTableViewApiV1TenancyTableViewsViewIdPatchErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
     url: '/api/v1/tenancy/table-views/{view_id}',
     ...options,
     headers: {
@@ -60,12 +95,17 @@ export const updateTableViewApiV1TenancyTableViewsViewIdPatch = <ThrowOnError ex
 /**
  * List Extraction Drafts
  */
-export const listExtractionDraftsApiV1ExtractionsGet = <ThrowOnError extends boolean = false>(options: Options<ListExtractionDraftsApiV1ExtractionsGetData, ThrowOnError>): RequestResult<ListExtractionDraftsApiV1ExtractionsGetResponses, ListExtractionDraftsApiV1ExtractionsGetErrors, ThrowOnError> => (options.client ?? client).get<ListExtractionDraftsApiV1ExtractionsGetResponses, ListExtractionDraftsApiV1ExtractionsGetErrors, ThrowOnError>({ url: '/api/v1/extractions', ...options });
+export const listExtractionDraftsApiV1ExtractionsGet = <ThrowOnError extends boolean = false>(options?: Options<ListExtractionDraftsApiV1ExtractionsGetData, ThrowOnError>): RequestResult<ListExtractionDraftsApiV1ExtractionsGetResponses, ListExtractionDraftsApiV1ExtractionsGetErrors, ThrowOnError> => (options?.client ?? client).get<ListExtractionDraftsApiV1ExtractionsGetResponses, ListExtractionDraftsApiV1ExtractionsGetErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/extractions',
+    ...options
+});
 
 /**
  * Create Extraction Draft
  */
 export const createExtractionDraftApiV1ExtractionsPost = <ThrowOnError extends boolean = false>(options: Options<CreateExtractionDraftApiV1ExtractionsPostData, ThrowOnError>): RequestResult<CreateExtractionDraftApiV1ExtractionsPostResponses, CreateExtractionDraftApiV1ExtractionsPostErrors, ThrowOnError> => (options.client ?? client).post<CreateExtractionDraftApiV1ExtractionsPostResponses, CreateExtractionDraftApiV1ExtractionsPostErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
     url: '/api/v1/extractions',
     ...options,
     headers: {
@@ -77,12 +117,20 @@ export const createExtractionDraftApiV1ExtractionsPost = <ThrowOnError extends b
 /**
  * Accept Extraction Draft
  */
-export const acceptExtractionDraftApiV1ExtractionsDraftIdAcceptPost = <ThrowOnError extends boolean = false>(options: Options<AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostData, ThrowOnError>): RequestResult<AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostResponses, AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostErrors, ThrowOnError> => (options.client ?? client).post<AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostResponses, AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostErrors, ThrowOnError>({ url: '/api/v1/extractions/{draft_id}/accept', ...options });
+export const acceptExtractionDraftApiV1ExtractionsDraftIdAcceptPost = <ThrowOnError extends boolean = false>(options: Options<AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostData, ThrowOnError>): RequestResult<AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostResponses, AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostErrors, ThrowOnError> => (options.client ?? client).post<AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostResponses, AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/extractions/{draft_id}/accept',
+    ...options
+});
 
 /**
  * Reject Extraction Draft
  */
-export const rejectExtractionDraftApiV1ExtractionsDraftIdRejectPost = <ThrowOnError extends boolean = false>(options: Options<RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostData, ThrowOnError>): RequestResult<RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostResponses, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostErrors, ThrowOnError> => (options.client ?? client).post<RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostResponses, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostErrors, ThrowOnError>({ url: '/api/v1/extractions/{draft_id}/reject', ...options });
+export const rejectExtractionDraftApiV1ExtractionsDraftIdRejectPost = <ThrowOnError extends boolean = false>(options: Options<RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostData, ThrowOnError>): RequestResult<RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostResponses, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostErrors, ThrowOnError> => (options.client ?? client).post<RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostResponses, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/extractions/{draft_id}/reject',
+    ...options
+});
 
 /**
  * Health

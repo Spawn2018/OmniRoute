@@ -1,10 +1,9 @@
-from uuid import uuid4
-
 import pytest
 from fastapi.testclient import TestClient
 
 from app.api.deps import set_authz_checker
 from app.main import app
+from tests.http_auth import bearer_auth_headers
 
 
 class DenyAllAuthz:
@@ -24,9 +23,6 @@ def test_list_extractions_forbidden_without_permission() -> None:
     client = TestClient(app)
     response = client.get(
         "/api/v1/extractions",
-        headers={
-            "X-Organization-Id": str(uuid4()),
-            "X-User-Id": str(uuid4()),
-        },
+        headers=bearer_auth_headers(),
     )
     assert response.status_code == 403

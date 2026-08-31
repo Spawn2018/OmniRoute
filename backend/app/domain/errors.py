@@ -6,6 +6,10 @@ class TenantContextMissing(DomainError):
     """Brak organization_id w kontekście sesji DB (RLS)."""
 
 
+class Unauthenticated(DomainError):
+    """Brak albo nieważny token sesji — zanim OpenFGA."""
+
+
 class PermissionDenied(DomainError):
     """Brak uprawnienia OpenFGA — endpoint bez jawnej zgody = odmowa."""
 

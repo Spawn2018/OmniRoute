@@ -4,11 +4,12 @@ from datetime import datetime
 from typing import Any, Self
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, Header, Query, status
+from fastapi import APIRouter, Depends, Query, status
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.api.deps import require_permission, require_tenant_session
+from app.api.deps import get_current_identity, require_permission, require_tenant_session
+from app.core.session_token import SessionIdentity
 from app.domain.errors import UnparseableDocument
 from app.services.extraction.extraction_service import ExtractionService
 
@@ -27,7 +28,6 @@ class ExtractRequest(BaseModel):
         if has_text == has_doc:
             raise ValueError("Podaj dokładnie jedno: input_text albo document_base64")
         return self
-
 
 
 class ExtractionDraftResponse(BaseModel):
@@ -59,8 +59,7 @@ async def create_extraction_draft(
     body: ExtractRequest,
     _authz: None = Depends(require_permission("can_review_extractions", "organization")),
     session: AsyncSession = Depends(require_tenant_session),
-    x_organization_id: UUID = Header(..., alias="X-Organization-Id"),
-    x_user_id: UUID = Header(..., alias="X-User-Id"),
+    identity: SessionIdentity = Depends(get_current_identity),
 ) -> ExtractionDraftResponse:
     service = ExtractionService(session)
     if body.document_base64 is not None:
@@ -69,8 +68,8 @@ async def create_extraction_draft(
         except BinasciiError as exc:
             raise UnparseableDocument("document_base64 niepoprawne") from exc
         draft = await service.extract_from_document(
-            organization_id=x_organization_id,
-            user_id=x_user_id,
+            organization_id=identity.organization_id,
+            user_id=identity.user_id,
             source_ref=body.source_ref,
             raw_bytes=raw_bytes,
         )
@@ -78,8 +77,8 @@ async def create_extraction_draft(
         if body.input_text is None:
             raise UnparseableDocument("Brak input_text")
         draft = await service.extract_to_draft(
-            organization_id=x_organization_id,
-            user_id=x_user_id,
+            organization_id=identity.organization_id,
+            user_id=identity.user_id,
             source_ref=body.source_ref,
             input_text=body.input_text,
         )
@@ -92,10 +91,10 @@ async def accept_extraction_draft(
     draft_id: UUID,
     _authz: None = Depends(require_permission("can_review_extractions", "organization")),
     session: AsyncSession = Depends(require_tenant_session),
-    x_user_id: UUID = Header(..., alias="X-User-Id"),
+    identity: SessionIdentity = Depends(get_current_identity),
 ) -> ExtractionDraftResponse:
     service = ExtractionService(session)
-    draft = await service.accept(draft_id=draft_id, user_id=x_user_id)
+    draft = await service.accept(draft_id=draft_id, user_id=identity.user_id)
     await session.commit()
     return ExtractionDraftResponse.model_validate(draft)
 
@@ -105,9 +104,9 @@ async def reject_extraction_draft(
     draft_id: UUID,
     _authz: None = Depends(require_permission("can_review_extractions", "organization")),
     session: AsyncSession = Depends(require_tenant_session),
-    x_user_id: UUID = Header(..., alias="X-User-Id"),
+    identity: SessionIdentity = Depends(get_current_identity),
 ) -> ExtractionDraftResponse:
     service = ExtractionService(session)
-    draft = await service.reject(draft_id=draft_id, user_id=x_user_id)
+    draft = await service.reject(draft_id=draft_id, user_id=identity.user_id)
     await session.commit()
     return ExtractionDraftResponse.model_validate(draft)

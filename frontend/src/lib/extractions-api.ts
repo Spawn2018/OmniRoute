@@ -5,8 +5,7 @@ import {
   rejectExtractionDraftApiV1ExtractionsDraftIdRejectPost,
 } from "@/api/sdk.gen"
 import type { ExtractRequest, ExtractionDraftResponse } from "@/api/types.gen"
-import { ApiError } from "@/lib/api"
-import { requireTenantHeaders } from "@/lib/tenant"
+import { ApiError, httpErrorStatus } from "@/lib/api"
 
 export type ExtractionCandidate = {
   code: string
@@ -44,10 +43,6 @@ export function extractionCreateBody(args: {
     return { source_ref: args.sourceRef, document_base64: args.documentBase64 }
   }
   return { source_ref: args.sourceRef, input_text: args.inputText }
-}
-
-function statusOf(response: Response | undefined): number {
-  return response?.status ?? 500
 }
 
 function asPayload(raw: { [key: string]: unknown }): ExtractionPayload {
@@ -98,11 +93,10 @@ function toDraft(row: ExtractionDraftResponse): ExtractionDraft {
 
 export async function fetchExtractionDrafts(status = "pending"): Promise<ExtractionDraft[]> {
   const { data, error, response } = await listExtractionDraftsApiV1ExtractionsGet({
-    headers: requireTenantHeaders(),
     query: { status },
   })
   if (error || !data) {
-    throw new ApiError(JSON.stringify(error) || "Błąd listy ekstrakcji", statusOf(response))
+    throw new ApiError(JSON.stringify(error) || "Błąd listy ekstrakcji", httpErrorStatus(response))
   }
   return data.map(toDraft)
 }
@@ -113,34 +107,31 @@ export async function createExtractionDraft(body: {
   document_base64?: string
 }): Promise<ExtractionDraft> {
   const { data, error, response } = await createExtractionDraftApiV1ExtractionsPost({
-    headers: requireTenantHeaders(),
     // openapi-ts spłaszcza anyOf|null — payload XOR idzie w JSON
     body: body as ExtractRequest,
   })
   if (error || !data) {
-    throw new ApiError(JSON.stringify(error) || "Błąd ekstrakcji", statusOf(response))
+    throw new ApiError(JSON.stringify(error) || "Błąd ekstrakcji", httpErrorStatus(response))
   }
   return toDraft(data)
 }
 
 export async function acceptExtractionDraft(draftId: string): Promise<ExtractionDraft> {
   const { data, error, response } = await acceptExtractionDraftApiV1ExtractionsDraftIdAcceptPost({
-    headers: requireTenantHeaders(),
     path: { draft_id: draftId },
   })
   if (error || !data) {
-    throw new ApiError(JSON.stringify(error) || "Błąd akceptacji", statusOf(response))
+    throw new ApiError(JSON.stringify(error) || "Błąd akceptacji", httpErrorStatus(response))
   }
   return toDraft(data)
 }
 
 export async function rejectExtractionDraft(draftId: string): Promise<ExtractionDraft> {
   const { data, error, response } = await rejectExtractionDraftApiV1ExtractionsDraftIdRejectPost({
-    headers: requireTenantHeaders(),
     path: { draft_id: draftId },
   })
   if (error || !data) {
-    throw new ApiError(JSON.stringify(error) || "Błąd odrzucenia", statusOf(response))
+    throw new ApiError(JSON.stringify(error) || "Błąd odrzucenia", httpErrorStatus(response))
   }
   return toDraft(data)
 }

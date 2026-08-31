@@ -2,10 +2,25 @@ from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
 from app.api.router import api_router
-from app.domain.errors import DomainError, PermissionDenied, ResourceNotFound, TenantContextMissing
+from app.domain.errors import (
+    DomainError,
+    PermissionDenied,
+    ResourceNotFound,
+    TenantContextMissing,
+    Unauthenticated,
+)
 
 app = FastAPI(title="OmniRoute", version="0.1.0")
 app.include_router(api_router)
+
+
+@app.exception_handler(Unauthenticated)
+async def unauthenticated_handler(_request: Request, exc: Unauthenticated) -> JSONResponse:
+    return JSONResponse(
+        status_code=401,
+        content={"detail": str(exc) or "Brak tokenu sesji"},
+        headers={"WWW-Authenticate": "Bearer"},
+    )
 
 
 @app.exception_handler(PermissionDenied)

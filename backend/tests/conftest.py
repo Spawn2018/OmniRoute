@@ -2,6 +2,7 @@ import os
 import uuid
 from collections.abc import AsyncGenerator
 
+import pytest
 import pytest_asyncio
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
@@ -12,6 +13,13 @@ from app.models.base import Base
 from app.models.extraction_draft import ExtractionDraft  # noqa: F401 — rejestr metadanych RLS
 from app.models.organization import Organization
 from app.models.table_view import TableView  # noqa: F401 — rejestr metadanych RLS
+
+_TEST_JWT_SECRET = "ci-unit-test-jwt-secret-32bytes-min"
+
+
+@pytest.fixture(autouse=True)
+def _jwt_secret_for_tests(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr("app.core.config.settings.jwt_secret", _TEST_JWT_SECRET)
 
 ADMIN_TEST_DATABASE_URL = os.getenv(
     "ADMIN_TEST_DATABASE_URL",

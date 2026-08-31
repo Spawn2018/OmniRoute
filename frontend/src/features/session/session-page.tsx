@@ -2,23 +2,37 @@ import { useState } from "react"
 import { useForm } from "@tanstack/react-form"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { getTenantContext, setTenantContext } from "@/lib/api"
+import {
+  clearSessionToken,
+  getTenantContext,
+  issueSessionToken,
+  setSessionToken,
+} from "@/lib/api"
 
 export function SessionPage() {
   const initial = getTenantContext()
-  const [saved, setSaved] = useState(false)
+  const [saved, setSaved] = useState(initial.organizationId.length > 0)
+  const [error, setError] = useState<string | null>(null)
+  const claims = getTenantContext()
 
   const form = useForm({
     defaultValues: {
       organizationId: initial.organizationId,
       userId: initial.userId,
     },
-    onSubmit: ({ value }) => {
-      setTenantContext({
-        organizationId: value.organizationId.trim(),
-        userId: value.userId.trim(),
-      })
-      setSaved(true)
+    onSubmit: async ({ value }) => {
+      setError(null)
+      try {
+        const token = await issueSessionToken({
+          organizationId: value.organizationId.trim(),
+          userId: value.userId.trim(),
+        })
+        setSessionToken(token)
+        setSaved(true)
+      } catch {
+        setSaved(false)
+        setError("Nie udało się uzyskać tokenu sesji. Sprawdź ID z seeda.")
+      }
     },
   })
 
@@ -27,7 +41,7 @@ export function SessionPage() {
       <div>
         <h2 className="text-base font-semibold">Sesja deweloperska</h2>
         <p className="text-xs text-muted-foreground">
-          Tymczasowe headery pod RLS/OpenFGA (JWT w kolejnym plastrze).
+          Hello JWT: token z claims org/sub. Headery X-Organization-Id nie ustalają tenanta.
         </p>
       </div>
       <form
@@ -41,7 +55,7 @@ export function SessionPage() {
         <form.Field name="organizationId">
           {(field) => (
             <label className="block space-y-1">
-              <span className="text-xs text-muted-foreground">X-Organization-Id</span>
+              <span className="text-xs text-muted-foreground">organization_id</span>
               <Input
                 value={field.state.value}
                 onBlur={field.handleBlur}
@@ -53,7 +67,7 @@ export function SessionPage() {
         <form.Field name="userId">
           {(field) => (
             <label className="block space-y-1">
-              <span className="text-xs text-muted-foreground">X-User-Id</span>
+              <span className="text-xs text-muted-foreground">user_id</span>
               <Input
                 value={field.state.value}
                 onBlur={field.handleBlur}
@@ -62,9 +76,27 @@ export function SessionPage() {
             </label>
           )}
         </form.Field>
-        <Button type="submit">Zapisz w localStorage</Button>
+        <div className="flex gap-2">
+          <Button type="submit">Pobierz token</Button>
+          <Button
+            type="button"
+            variant="outline"
+            onClick={() => {
+              clearSessionToken()
+              setSaved(false)
+              setError(null)
+            }}
+          >
+            Wyczyść
+          </Button>
+        </div>
       </form>
-      {saved ? <p className="text-xs text-accent">Zapisano.</p> : null}
+      {error ? <p className="text-xs text-destructive">{error}</p> : null}
+      {saved ? (
+        <p className="text-xs text-accent">
+          Token zapisany. Tenant {claims.organizationId || getTenantContext().organizationId}
+        </p>
+      ) : null}
     </div>
   )
 }

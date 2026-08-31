@@ -1,15 +1,17 @@
 from collections.abc import Callable
 from typing import Annotated
-from uuid import UUID
 
-from fastapi import Depends, Header
+from fastapi import Depends
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import bind_tenant, get_session
-from app.domain.errors import PermissionDenied
+from app.core.session_token import SessionIdentity, decode_session_token
+from app.domain.errors import PermissionDenied, Unauthenticated
 from app.integrations.openfga.client import AuthzChecker, OpenFgaAuthz, build_openfga_client
 
 _authz: AuthzChecker | None = None
+_bearer = HTTPBearer(auto_error=False)
 
 
 def set_authz_checker(checker: AuthzChecker | None) -> None:
@@ -24,11 +26,19 @@ async def get_authz() -> AuthzChecker:
     return OpenFgaAuthz(client)
 
 
+async def get_current_identity(
+    credentials: Annotated[HTTPAuthorizationCredentials | None, Depends(_bearer)],
+) -> SessionIdentity:
+    if credentials is None or credentials.scheme.lower() != "bearer":
+        raise Unauthenticated("Brak tokenu sesji")
+    return decode_session_token(credentials.credentials)
+
+
 async def tenant_session(
-    x_organization_id: UUID = Header(..., alias="X-Organization-Id"),
+    identity: Annotated[SessionIdentity, Depends(get_current_identity)],
     session: AsyncSession = Depends(get_session),
 ) -> AsyncSession:
-    await bind_tenant(session, x_organization_id)
+    await bind_tenant(session, identity.organization_id)
     return session
 
 
@@ -40,15 +50,14 @@ async def require_tenant_session(
 
 def require_permission(relation: str, object_type: str) -> Callable[..., object]:
     async def _check(
-        x_organization_id: Annotated[UUID, Header(alias="X-Organization-Id")],
-        x_user_id: Annotated[UUID, Header(alias="X-User-Id")],
+        identity: Annotated[SessionIdentity, Depends(get_current_identity)],
         authz: Annotated[AuthzChecker, Depends(get_authz)],
     ) -> None:
         allowed = await authz.check(
-            user_id=x_user_id,
+            user_id=identity.user_id,
             relation=relation,
             object_type=object_type,
-            object_id=x_organization_id,
+            object_id=identity.organization_id,
         )
         if not allowed:
             raise PermissionDenied(f"Brak uprawnienia {relation} na {object_type}")

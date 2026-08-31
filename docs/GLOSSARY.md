@@ -9,6 +9,7 @@
 | zlecenie | shipment | handlowe |
 | odcinek | shipment_leg | operacyjne |
 | tenant | organization | organization_id wszędzie |
+| token sesji | session token | JWT HS256; claims `sub` + `org` |
 | pochodzenie | source_ref | obowiązkowe |
 | szkic ekstrakcji | extraction_draft | HITL przed zapisem domeny |
 | region nierozpoznany | unparsed_region | zawsze w payloadzie ekstrakcji |

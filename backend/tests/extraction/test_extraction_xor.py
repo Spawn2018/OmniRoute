@@ -1,5 +1,3 @@
-from uuid import uuid4
-
 import pytest
 from fastapi.testclient import TestClient
 from pydantic import ValidationError
@@ -7,6 +5,7 @@ from pydantic import ValidationError
 from app.api.deps import require_tenant_session, set_authz_checker
 from app.api.extractions import ExtractRequest
 from app.main import app
+from tests.http_auth import bearer_auth_headers
 
 
 class AllowAllAuthz:
@@ -39,10 +38,7 @@ def test_extract_request_rejects_neither_source() -> None:
 def test_http_extract_rejects_both_sources(xor_client: TestClient) -> None:
     response = xor_client.post(
         "/api/v1/extractions",
-        headers={
-            "X-Organization-Id": str(uuid4()),
-            "X-User-Id": str(uuid4()),
-        },
+        headers=bearer_auth_headers(),
         json={
             "source_ref": "doc://x",
             "input_text": "THC 1 EUR",
@@ -55,10 +51,7 @@ def test_http_extract_rejects_both_sources(xor_client: TestClient) -> None:
 def test_http_extract_rejects_neither_source(xor_client: TestClient) -> None:
     response = xor_client.post(
         "/api/v1/extractions",
-        headers={
-            "X-Organization-Id": str(uuid4()),
-            "X-User-Id": str(uuid4()),
-        },
+        headers=bearer_auth_headers(),
         json={"source_ref": "doc://x"},
     )
     assert response.status_code == 422

@@ -37,7 +37,11 @@ export type ExtractRequest = {
     /**
      * Input Text
      */
-    input_text: string;
+    input_text?: string | null;
+    /**
+     * Document Base64
+     */
+    document_base64?: string | null;
 };
 
 /**
@@ -88,6 +92,48 @@ export type HttpValidationError = {
      * Detail
      */
     detail?: Array<ValidationError>;
+};
+
+/**
+ * SessionMeResponse
+ */
+export type SessionMeResponse = {
+    /**
+     * User Id
+     */
+    user_id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+};
+
+/**
+ * SessionTokenRequest
+ */
+export type SessionTokenRequest = {
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * User Id
+     */
+    user_id: string;
+};
+
+/**
+ * SessionTokenResponse
+ */
+export type SessionTokenResponse = {
+    /**
+     * Access Token
+     */
+    access_token: string;
+    /**
+     * Token Type
+     */
+    token_type?: string;
 };
 
 /**
@@ -208,31 +254,53 @@ export type ValidationError = {
     };
 };
 
-export type ListUsersApiV1TenancyUsersGetData = {
-    body?: never;
-    headers: {
-        /**
-         * X-Organization-Id
-         */
-        'X-Organization-Id': string;
-        /**
-         * X-User-Id
-         */
-        'X-User-Id': string;
-    };
+export type CreateSessionTokenApiV1SessionTokenPostData = {
+    body: SessionTokenRequest;
     path?: never;
     query?: never;
-    url: '/api/v1/tenancy/users';
+    url: '/api/v1/session/token';
 };
 
-export type ListUsersApiV1TenancyUsersGetErrors = {
+export type CreateSessionTokenApiV1SessionTokenPostErrors = {
     /**
      * Validation Error
      */
     422: HttpValidationError;
 };
 
-export type ListUsersApiV1TenancyUsersGetError = ListUsersApiV1TenancyUsersGetErrors[keyof ListUsersApiV1TenancyUsersGetErrors];
+export type CreateSessionTokenApiV1SessionTokenPostError = CreateSessionTokenApiV1SessionTokenPostErrors[keyof CreateSessionTokenApiV1SessionTokenPostErrors];
+
+export type CreateSessionTokenApiV1SessionTokenPostResponses = {
+    /**
+     * Successful Response
+     */
+    200: SessionTokenResponse;
+};
+
+export type CreateSessionTokenApiV1SessionTokenPostResponse = CreateSessionTokenApiV1SessionTokenPostResponses[keyof CreateSessionTokenApiV1SessionTokenPostResponses];
+
+export type ReadSessionApiV1SessionMeGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/session/me';
+};
+
+export type ReadSessionApiV1SessionMeGetResponses = {
+    /**
+     * Successful Response
+     */
+    200: SessionMeResponse;
+};
+
+export type ReadSessionApiV1SessionMeGetResponse = ReadSessionApiV1SessionMeGetResponses[keyof ReadSessionApiV1SessionMeGetResponses];
+
+export type ListUsersApiV1TenancyUsersGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tenancy/users';
+};
 
 export type ListUsersApiV1TenancyUsersGetResponses = {
     /**
@@ -247,16 +315,6 @@ export type ListUsersApiV1TenancyUsersGetResponse = ListUsersApiV1TenancyUsersGe
 
 export type ListTableViewsApiV1TenancyTableViewsGetData = {
     body?: never;
-    headers: {
-        /**
-         * X-User-Id
-         */
-        'X-User-Id': string;
-        /**
-         * X-Organization-Id
-         */
-        'X-Organization-Id': string;
-    };
     path?: never;
     query: {
         /**
@@ -289,16 +347,6 @@ export type ListTableViewsApiV1TenancyTableViewsGetResponse = ListTableViewsApiV
 
 export type CreateTableViewApiV1TenancyTableViewsPostData = {
     body: TableViewCreate;
-    headers: {
-        /**
-         * X-Organization-Id
-         */
-        'X-Organization-Id': string;
-        /**
-         * X-User-Id
-         */
-        'X-User-Id': string;
-    };
     path?: never;
     query?: never;
     url: '/api/v1/tenancy/table-views';
@@ -324,16 +372,6 @@ export type CreateTableViewApiV1TenancyTableViewsPostResponse = CreateTableViewA
 
 export type DeleteTableViewApiV1TenancyTableViewsViewIdDeleteData = {
     body?: never;
-    headers: {
-        /**
-         * X-User-Id
-         */
-        'X-User-Id': string;
-        /**
-         * X-Organization-Id
-         */
-        'X-Organization-Id': string;
-    };
     path: {
         /**
          * View Id
@@ -364,16 +402,6 @@ export type DeleteTableViewApiV1TenancyTableViewsViewIdDeleteResponse = DeleteTa
 
 export type UpdateTableViewApiV1TenancyTableViewsViewIdPatchData = {
     body: TableViewUpdate;
-    headers: {
-        /**
-         * X-User-Id
-         */
-        'X-User-Id': string;
-        /**
-         * X-Organization-Id
-         */
-        'X-Organization-Id': string;
-    };
     path: {
         /**
          * View Id
@@ -404,16 +432,6 @@ export type UpdateTableViewApiV1TenancyTableViewsViewIdPatchResponse = UpdateTab
 
 export type ListExtractionDraftsApiV1ExtractionsGetData = {
     body?: never;
-    headers: {
-        /**
-         * X-Organization-Id
-         */
-        'X-Organization-Id': string;
-        /**
-         * X-User-Id
-         */
-        'X-User-Id': string;
-    };
     path?: never;
     query?: {
         /**
@@ -446,16 +464,6 @@ export type ListExtractionDraftsApiV1ExtractionsGetResponse = ListExtractionDraf
 
 export type CreateExtractionDraftApiV1ExtractionsPostData = {
     body: ExtractRequest;
-    headers: {
-        /**
-         * X-Organization-Id
-         */
-        'X-Organization-Id': string;
-        /**
-         * X-User-Id
-         */
-        'X-User-Id': string;
-    };
     path?: never;
     query?: never;
     url: '/api/v1/extractions';
@@ -481,16 +489,6 @@ export type CreateExtractionDraftApiV1ExtractionsPostResponse = CreateExtraction
 
 export type AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostData = {
     body?: never;
-    headers: {
-        /**
-         * X-User-Id
-         */
-        'X-User-Id': string;
-        /**
-         * X-Organization-Id
-         */
-        'X-Organization-Id': string;
-    };
     path: {
         /**
          * Draft Id
@@ -521,16 +519,6 @@ export type AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostResponse = Acc
 
 export type RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostData = {
     body?: never;
-    headers: {
-        /**
-         * X-User-Id
-         */
-        'X-User-Id': string;
-        /**
-         * X-Organization-Id
-         */
-        'X-Organization-Id': string;
-    };
     path: {
         /**
          * Draft Id

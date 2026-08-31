@@ -1,11 +1,12 @@
 from typing import Any
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, Header, Query, Response, status
+from fastapi import APIRouter, Depends, Query, Response, status
 from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.api.deps import require_permission, require_tenant_session
+from app.api.deps import get_current_identity, require_permission, require_tenant_session
+from app.core.session_token import SessionIdentity
 from app.services.tenancy.table_view_service import TableViewService
 
 router = APIRouter(prefix="/tenancy/table-views", tags=["table-views"])
@@ -46,10 +47,10 @@ async def list_table_views(
     table_key: str = Query(..., min_length=1, max_length=128),
     _authz: None = Depends(require_permission("can_manage_table_views", "organization")),
     session: AsyncSession = Depends(require_tenant_session),
-    x_user_id: UUID = Header(..., alias="X-User-Id"),
+    identity: SessionIdentity = Depends(get_current_identity),
 ) -> list[TableViewResponse]:
     service = TableViewService(session)
-    views = await service.list_views(x_user_id, table_key)
+    views = await service.list_views(identity.user_id, table_key)
     return [TableViewResponse.model_validate(view) for view in views]
 
 
@@ -58,13 +59,12 @@ async def create_table_view(
     body: TableViewCreate,
     _authz: None = Depends(require_permission("can_manage_table_views", "organization")),
     session: AsyncSession = Depends(require_tenant_session),
-    x_organization_id: UUID = Header(..., alias="X-Organization-Id"),
-    x_user_id: UUID = Header(..., alias="X-User-Id"),
+    identity: SessionIdentity = Depends(get_current_identity),
 ) -> TableViewResponse:
     service = TableViewService(session)
     view = await service.create_view(
-        organization_id=x_organization_id,
-        user_id=x_user_id,
+        organization_id=identity.organization_id,
+        user_id=identity.user_id,
         table_key=body.table_key,
         name=body.name,
         config=body.config.model_dump(),
@@ -79,12 +79,12 @@ async def update_table_view(
     body: TableViewUpdate,
     _authz: None = Depends(require_permission("can_manage_table_views", "organization")),
     session: AsyncSession = Depends(require_tenant_session),
-    x_user_id: UUID = Header(..., alias="X-User-Id"),
+    identity: SessionIdentity = Depends(get_current_identity),
 ) -> TableViewResponse:
     service = TableViewService(session)
     view = await service.update_view(
         view_id=view_id,
-        user_id=x_user_id,
+        user_id=identity.user_id,
         name=body.name,
         config=body.config.model_dump() if body.config is not None else None,
     )
@@ -97,9 +97,9 @@ async def delete_table_view(
     view_id: UUID,
     _authz: None = Depends(require_permission("can_manage_table_views", "organization")),
     session: AsyncSession = Depends(require_tenant_session),
-    x_user_id: UUID = Header(..., alias="X-User-Id"),
+    identity: SessionIdentity = Depends(get_current_identity),
 ) -> Response:
     service = TableViewService(session)
-    await service.delete_view(view_id, x_user_id)
+    await service.delete_view(view_id, identity.user_id)
     await session.commit()
     return Response(status_code=status.HTTP_204_NO_CONTENT)

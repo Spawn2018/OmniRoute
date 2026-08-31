@@ -3,11 +3,11 @@
 **Faza:** C — Platforma AI  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
 
-**Ostatni plaster:** **0.11 vitest HITL + HTTP XOR** (zarchiwizowany)  
-**Następny:** **JWT** zamiast spoofowalnych headerów sesji
+**Ostatni plaster:** **0.12 JWT session** (zarchiwizowany)  
+**Następny:** **split-screen HITL** (podgląd \| formularz)
 
-**Spec (jedna na sesję):** [docs/spec/extraction.md](docs/spec/extraction.md) — M-20 HITL  
+**Spec (jedna na sesję):** [docs/spec/extraction.md](../spec/extraction.md) — M-20 HITL
 
-**Plan:** [docs/PLAN-REALIZACJA.md](docs/PLAN-REALIZACJA.md)
+**Plan:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md)
 
-**2026-08-31:** pętla po kroku w OS (`docs/ops/post-plaster.md`, `/po-plastrze`). 0.11 — XOR 422 + vitest body kolejki. Leftovery: [docs/ops/docs-debt.md](docs/ops/docs-debt.md).
+**2026-08-31:** pętla po kroku w OS (`docs/ops/post-plaster.md`, `/po-plastrze`). 0.12 — JWT Bearer zamiast spoofowalnych headerów. Leftovery: [docs/ops/docs-debt.md](../ops/docs-debt.md).

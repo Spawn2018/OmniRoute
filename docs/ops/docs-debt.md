@@ -10,11 +10,12 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 
 - **0.10 DONE:** langfuse trace (no-op bez kluczy) + `just promptfoo` pytest echo — nie cloud, nie żywy LLM, nie `npx promptfoo eval`
 - **0.11 DONE:** HTTP XOR 422 + vitest `extractionCreateBody`; `api/extractions.py` happy-path/accept nadal bez testu HTTP
-- **Następny (kod):** JWT zamiast spoofowalnych headerów
+- **0.12 DONE:** JWT HS256 hello (`Authorization: Bearer`); identity z claims; OpenFGA nadal AuthZ
+- **Następny (kod):** split-screen HITL (podgląd \| formularz)
 - **Po 0.10 (eval):** `npx promptfoo eval` — lokalnie ENOSPC / playwright peers; 30 cenników = osobna decyzja danych
 - **0.10+ produkt:** żywy instructor/OpenAI w CI, transformers llm-guard, presidio, promptfoo 30 cenników, langfuse cloud
 - **Wizja, nie kod:** outbox, Temporal/Hatchet/OTel jako działające systemy
-- **Backlog produktu:** JWT zamiast spoofowalnych headerów; split-screen HITL
+- **Backlog produktu:** OAuth/OIDC / hasła / refresh; split-screen HITL; HTTP happy-path extract/accept/reject
 - **Ops:** branch protection UI (GitHub Free private 403) — [branch-protection.md](branch-protection.md); `just perf` / size-limit / k6 / vulture / pip-audit = echo
 - **Kontrakt FE:** nie edytuj ręcznie `frontend/src/api/*` (flatten anyOf|null → cast w wrapperze)
 - **Zakaz:** fałszywe ruchy `refactor_ratio`, folder `.cursor/agents/` z personami, dump `Informacje z claude/` do nowych docs

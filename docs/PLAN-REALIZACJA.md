@@ -3,14 +3,15 @@
 **Plan Cursor (pełny):** `.cursor/plans/omniroute-realizacja.plan.md`  
 **ADR:** [0001 Cursor factory](adr/0001-cursor-software-factory-weryfikacja.md) · [0002 Frontend 2026](adr/0002-frontend-platform-2026.md)  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
-**Stan:** B + C.1–C.5 + 0.11 XOR/vitest + D minimal **DONE** · następny leftover **JWT**
+**Stan:** B + C.1–C.5 + 0.11 XOR/vitest + 0.12 JWT + D minimal **DONE** · następny leftover **split-screen HITL**
 
 ```mermaid
 flowchart LR
   doneB[B_DONE] --> doneC[C1_C4_DONE]
   doneC --> doneC5[0.10_DONE]
   doneC5 --> doneXor[0.11_XOR_vitest]
-  doneXor --> next[JWT]
+  doneXor --> doneJwt[0.12_JWT]
+  doneJwt --> next[split_screen]
   doneB --> doneD[D_minimal_DONE]
 ```
 
@@ -63,7 +64,8 @@ flowchart LR
 - Command palette ⌘K · PostHog od dnia 1
 - Referencja layoutu: satnaing/shadcn-admin (**wzorce, nie fork**)
 - **Spłacone:** openapi-ts (`just api-types`, `frontend/src/api/`); PostHog lazy (`dynamic import("posthog-js")`) — nie w main chunk
-- **Dług świadomy (poza zakresem):** auth localStorage / JWT
+- **Spłacone (0.12):** hello JWT (`Authorization: Bearer`); tożsamość z claims, nie z headerów
+- **Dług świadomy (poza zakresem):** OAuth/OIDC, hasła, rotacja refresh
 
 ### B.6 DataTableShell — **DONE**
 - ColumnEditor: checkbox + DnD (@dnd-kit / TanStack columnOrder)
@@ -114,8 +116,8 @@ Pełna lista z „dlaczego”: [docs/ops/docs-debt.md](ops/docs-debt.md)
 
 | Kolejność | Co | Nie mylić z |
 |---|---|---|
-| następny | JWT zamiast spoofowalnych `X-Organization-Id` / `X-User-Id` | B.5 świadomy dług |
-| potem | Split-screen HITL (podgląd \| formularz) | kolejka DataTableShell + vitest body XOR |
+| następny | Split-screen HITL (podgląd \| formularz) | kolejka DataTableShell + vitest body XOR |
+| 0.12 DONE | JWT zamiast spoofowalnych `X-Organization-Id` / `X-User-Id` | hello HS256, nie IdP |
 | 0.10+ (nie ten plaster) | żywy instructor/OpenAI w CI, llm-guard transformers, presidio, promptfoo 30 cenników, langfuse cloud | 0.10 = echo fixtures + no-op bez kluczy |
 | gdy recipe realne | `just perf` / size-limit / k6 / vulture / pip-audit | dziś `echo`, nie DoD |
 | po Pro/Team | branch protection UI (required check `gate`) | Free private → API 403 |
