@@ -1,0 +1,15 @@
+---
+description: Testy
+globs: ["**/tests/**", "**/*.test.ts", "**/*_test.py"]
+---
+
+- Reguły biznesowe: testy pisane z wiedzy domenowej, nie z implementacji.
+- Postgres przez testcontainers. Nigdy SQLite.
+- Property-based (hypothesis): przeliczenia walutowe, waga obliczeniowa,
+  kaskada narzutów, koszt finansowania, alokacja kosztu przejazdu.
+- Każda nowa tabela: test izolacji tenantów (wzorzec `tests/patterns/`).
+- Integracje zewnętrzne: pact (kontrakt) + wiremock (zachowanie).
+- Nazwa testu to zdanie opisujące regułę:
+  test_chargeable_weight_uses_higher_of_tonnes_or_cbm
+- Bez mockowania własnego kodu. Mockuj wyłącznie granice.
+- Test wydajnościowy dla każdej ścieżki z budżetem w AGENTS.md.

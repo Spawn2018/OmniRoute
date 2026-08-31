@@ -1,0 +1,24 @@
+---
+description: Kod ma wyglądać na napisany przez człowieka
+alwaysApply: true
+---
+
+ZAKAZANE BEZWZGLĘDNIE:
+- Komentarz powtarzający kod: `# pobierz użytkownika` nad `get_user()`
+- Docstring wypisujący parametry bez wnoszenia informacji
+- `try/except Exception` bez konkretnej obsługi
+- Nazwy: data, result, temp, item, obj, handler, manager, helper, utils
+- Fabryki, interfejsy i warstwy z jedną implementacją
+- Emoji, banery ASCII, ozdobne separatory komentarzowe
+- Kod zakomentowany „na wszelki wypadek"
+- `if x is not None` tam, gdzie typ tego nie dopuszcza
+- Powtarzanie tej samej walidacji w trzech warstwach
+- Float na kwotach; LLM liczący marże/VAT/kursy
+
+WYMAGANE:
+- Komentarz uzasadnia decyzję: `# NBP D-1 roboczy — wymóg ustawy o VAT art. 31a`
+- Nazwy z GLOSSARY.md: chargeable_weight, nie calc_weight
+- Wczesne wyjścia zamiast zagnieżdżeń
+- Jedna funkcja = jedna odpowiedzialność
+- Wyjątki domenowe z domain/errors.py, mapowane na HTTP w jednym miejscu
+- Przed nową funkcją: skill/subagent `lowca-duplikatow`

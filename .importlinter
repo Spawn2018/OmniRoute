@@ -1,0 +1,39 @@
+[importlinter]
+root_package = app
+include_external_packages = True
+
+[importlinter:contract:warstwy]
+name = Warstwy
+type = layers
+layers =
+    app.api
+    app.workflows
+    app.services
+    app.repositories
+    app.models
+
+[importlinter:contract:moduly]
+name = Niezależność modułów domenowych
+type = independence
+modules =
+    app.services.rates
+    app.services.quotation
+    app.services.shipment
+    app.services.finance
+    app.services.compliance
+    app.services.extraction
+
+[importlinter:contract:integracje]
+name = Integracje nie znają serwisów
+type = forbidden
+source_modules = app.integrations
+forbidden_modules = app.services
+
+[importlinter:contract:domena]
+name = Domena bez zależności zewnętrznych
+type = forbidden
+source_modules = app.domain
+forbidden_modules =
+    fastapi
+    sqlalchemy
+    httpx

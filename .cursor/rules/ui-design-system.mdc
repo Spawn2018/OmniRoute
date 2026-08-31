@@ -1,0 +1,26 @@
+---
+description: Enterprise UI — anti AI-slop, data density
+globs: ["frontend/**/*.{ts,tsx,css}"]
+---
+
+# ENTERPRISE UI/UX
+
+## ZAKAZ „AI SLOP"
+- Brak niepotrzebnych gradientów (szczególnie fiolet/róż).
+- Brak gigantycznych paddingów z landing page'y.
+- Zaokrąglenia max `rounded-md` dla elementów operacyjnych (data-dense).
+- Brak dekoracyjnych hero sections w widokach operacyjnych.
+
+## GĘSTOŚĆ DANYCH
+- Compact mode domyślnie: text-sm / text-xs w tabelach, py-1.5 px-3.
+- TanStack Table: sort, filter, sticky header, pinned first column.
+- Kwoty: tabular-nums, wyrównanie prawo, `<Money/>` zawsze.
+
+## INTERAKCJE
+- hover / focus-visible / active wyraźne (border, shadow-sm).
+- Animacje krótkie (150–200ms); framer-motion tylko gdy uzasadnione.
+- Split-screen verification dla ekstrakcji dokumentów (podgląd | formularz).
+
+## WZORCE
+- shadcn/ui + Tailwind v4 na Radix primitives — styl linijka po linijce.
+- Wzorzec gęstości: patrz `satnaing/shadcn-admin` (referencja, nie kopiuj ślepo).

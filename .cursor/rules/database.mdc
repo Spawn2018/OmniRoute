@@ -1,0 +1,16 @@
+---
+description: Baza i migracje
+globs: ["backend/alembic/**", "backend/app/models/**"]
+---
+
+- Każda tabela: organization_id, created_at, updated_at, created_by.
+- Każda tabela: polityka RLS + test izolacji. Bez wyjątków.
+- Kwoty: Numeric(14,4) + CHAR(3) waluta obok. Zawsze parami.
+- Klucze obce z jawnym ondelete. Bez kaskad na danych finansowych.
+- Migracja działa w górę i w dół. Oba kierunki testowane.
+- Zmiany wstecznie zgodne: dodaj kolumnę → przepnij kod → usuń starą.
+  Trzy migracje, nigdy jedna.
+- Indeksy CONCURRENTLY na tabelach z danymi.
+- Tabele dystrybuowane (Citus) kluczem organization_id — projektuj tak,
+  żeby żadne złączenie nie przekraczało granicy tenanta.
+- Widoki materializowane na ścieżkach gorących, odświeżane zdarzeniem.

@@ -1,0 +1,25 @@
+---
+description: Backend Python / FastAPI
+globs: ["backend/**/*.py"]
+---
+
+WARSTWY — zależności tylko w dół, egzekwowane przez import-linter:
+api → services → repositories → models
+workflows → services (nigdy odwrotnie)
+integrations → domain (nigdy do services)
+
+- Endpoint: walidacja, wywołanie serwisu, mapowanie DTO. Zero logiki.
+- Serwis nie zna FastAPI. Bez Request, Depends, HTTPException.
+- Repozytorium nie zna reguł biznesowych.
+- Każde zapytanie do bazy przez repozytorium.
+- Kwoty: Money(Decimal, Currency). Bez gołych liczb w domenie.
+- Daty: pendulum ze strefą. Bez naiwnych datetime.
+- Async przy I/O. Bez blokujących wywołań w ścieżce żądania.
+- Wywołania zewnętrzne: idempotencja + retry z backoffem + timeout.
+- Zdarzenia dla innych modułów: przez outbox, nie bezpośrednie wywołanie.
+
+ZAPYTANIA (zasada 11):
+- Filtrowanie i agregacja w SQL, nie w Pythonie.
+- Ścieżki gorące (silnik wyceny): asyncpg + surowy SQL, nie ORM.
+- Relacje: selectinload/joinedload świadomie. N+1 to błąd blokujący.
+- Nowa migracja: przemyśl indeks, zapisz uzasadnienie w komentarzu migracji.

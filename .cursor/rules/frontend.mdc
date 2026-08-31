@@ -1,0 +1,20 @@
+---
+description: Frontend React / Vite
+globs: ["frontend/**/*.{ts,tsx}"]
+---
+
+STRUKTURA: features/<moduł>/ zawiera komponenty, hooki, typy, testy modułu.
+Współdzielone tylko w components/ui/ i lib/.
+
+- Stan serwera wyłącznie TanStack Query. Bez useEffect do pobierania.
+- Typy API generowane przez openapi-ts. Katalog api/ jest tylko do odczytu.
+- Formularze: react-hook-form + zod. Schemat zod z typów OpenAPI.
+- Tabele: TanStack Table. Powyżej 500 wierszy wirtualizacja obowiązkowa.
+- Kwoty: komponent <Money/>. Nigdy surowy number w JSX.
+  Tabular numerals, wyrównanie do prawej, separator tysięcy per locale.
+- Bez any. as tylko przy parsowaniu odpowiedzi zewnętrznych.
+- Każdy interaktywny element osiągalny klawiaturą, focus widoczny.
+- Skróty klawiszowe rejestrowane centralnie w lib/shortcuts.
+- Stany: loading, empty, error i partial to komponenty pierwszej klasy,
+  nie warunki inline.
+- Import z barrel files zabroniony — psuje tree shaking.

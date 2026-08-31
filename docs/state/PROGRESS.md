@@ -1,0 +1,1 @@
+# Historia plastrów\n\n| Data | Plaster | Moduł | Opis |\n|---|---|---|---|\n| 2026-08-31 | Phase 0 | — | GitHub: init + initial commit; push pending gh auth (Spawn2018/OmniRoute) |\n| 2026-08-31 | — | — | Bootstrap Faza A: Cursor OS (rules, skills, hooks, docs skeleton) |\n

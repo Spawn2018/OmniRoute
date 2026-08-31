@@ -1,0 +1,13 @@
+---
+description: Workflow Temporal
+globs: ["backend/app/workflows/**"]
+---
+
+- Workflow jest deterministyczny. Bez random, datetime.now, I/O.
+  Czas przez workflow.now(), losowość przez workflow.random().
+- I/O wyłącznie w activities. Activity idempotentna.
+- Timery przez workflow.sleep i wait_condition, nigdy asyncio.sleep.
+- Sygnały do przyjmowania zdarzeń zewnętrznych (odpowiedź agenta).
+- Kompensacja jawna dla operacji z efektem zewnętrznym (booking).
+- Wersjonowanie workflow przy zmianie logiki — patch, nie nadpisanie.
+- Agenci AI w workflow: tylko transformacja danych w activity; brak chat agent↔agent.

@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "hooks": {
+    "afterFileEdit": [
+      {
+        "command": "python .cursor/hooks/post_edit.py"
+      }
+    ],
+    "beforeSubmitPrompt": [
+      {
+        "command": "python .cursor/hooks/pre_edit.py"
+      }
+    ],
+    "stop": [
+      {
+        "command": "python .cursor/hooks/pre_commit.py"
+      }
+    ]
+  }
+}

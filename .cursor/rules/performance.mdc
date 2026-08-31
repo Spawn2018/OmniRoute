@@ -1,0 +1,12 @@
+---
+description: Wydajność
+globs: ["backend/app/services/**", "backend/app/repositories/**"]
+---
+
+- Przed napisaniem zapytania: ile wierszy zwróci przy 50k rate_line?
+- Zapytanie zwracające ponad 1000 wierszy do Pythona wymaga uzasadnienia.
+- Agregacja, sortowanie i filtrowanie zawsze w SQL.
+- Wywołania zewnętrzne równolegle (asyncio.gather) z timeoutem.
+- Cache: Redis z kluczem zawierającym organization_id i wersję danych.
+- Każdy nowy endpoint w ścieżce krytycznej: test wydajnościowy z progiem.
+- EXPLAIN ANALYZE na nowym zapytaniu do rate_line — dołącz do PR.

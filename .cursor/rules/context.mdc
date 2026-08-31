@@ -1,0 +1,21 @@
+---
+description: Zarządzanie kontekstem i tokenami
+alwaysApply: true
+---
+
+Przed zadaniem:
+1. Przeczytaj `docs/state/CURRENT.md` — zakres, moduł, ustalenia.
+2. Przeczytaj TYLKO ten plik ze `docs/spec/`, który wskazuje CURRENT.md.
+3. Schemat bazy — przez MCP Postgres, nie przez czytanie modeli.
+4. Struktura repo — `docs/ARCHITECTURE.md`, nie przeszukiwanie.
+
+NIE RÓB:
+- Nie czytaj plików „żeby zrozumieć kontekst". Kontekst jest w CURRENT.md.
+- Nie przeszukuj repozytorium rekurencyjnie bez skill `lowca-duplikatow`.
+- Nie otwieraj więcej niż jednego pliku spec.
+- Nie ładuj `Informacje z claude/` ani `docs/_source/` do kontekstu.
+- Nie zgaduj nazw kolumn ani endpointów.
+
+Brakuje informacji → zapytaj jednym pytaniem. Nie eksploruj.
+
+Po zadaniu: linia w PROGRESS.md, aktualizacja CURRENT.md, koniec.

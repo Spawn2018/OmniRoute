@@ -1,0 +1,30 @@
+{
+  "autoReview": {
+    "enabled": true,
+    "allowlist": [
+      "just check", "just test", "just arch", "just perf",
+      "just migrate", "just migrate-down", "just api-types",
+      "just complexity", "just dup", "just dead",
+      "ruff *", "mypy *", "pytest *", "alembic upgrade *",
+      "pnpm test", "pnpm tsc *", "pnpm lint *",
+      "jscpd *", "vulture *", "lint-imports",
+      "git status", "git diff *", "git log *"
+    ],
+    "sandbox": ["python *", "node *", "psql *", "uv *"],
+    "requireApproval": [
+      "git push *", "git commit *", "docker *", "curl *",
+      "rm *", "alembic downgrade *", "just gate"
+    ]
+  },
+  "context": {
+    "maxFilesPerRequest": 12,
+    "excludePatterns": [
+      "docs/_source/**",
+      "Informacje z claude/**",
+      "frontend/src/api/**",
+      "**/node_modules/**",
+      "**/.venv/**",
+      "**/*.lock"
+    ]
+  }
+}
