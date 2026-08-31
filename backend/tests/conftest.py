@@ -2,7 +2,7 @@ import os
 import uuid
 from collections.abc import AsyncGenerator
 
-import pytest
+import pytest_asyncio
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
@@ -16,12 +16,7 @@ TEST_DATABASE_URL = os.getenv(
 )
 
 
-@pytest.fixture(scope="session")
-def anyio_backend() -> str:
-    return "asyncio"
-
-
-@pytest.fixture(scope="session")
+@pytest_asyncio.fixture(scope="session")
 async def engine():
     test_engine = create_async_engine(TEST_DATABASE_URL, pool_pre_ping=True)
     async with test_engine.begin() as conn:
@@ -57,7 +52,7 @@ async def engine():
     await test_engine.dispose()
 
 
-@pytest.fixture
+@pytest_asyncio.fixture
 async def session(engine) -> AsyncGenerator[AsyncSession, None]:
     session_factory = async_sessionmaker(engine, expire_on_commit=False)
     async with session_factory() as db_session:
@@ -65,7 +60,7 @@ async def session(engine) -> AsyncGenerator[AsyncSession, None]:
         await db_session.rollback()
 
 
-@pytest.fixture
+@pytest_asyncio.fixture
 async def two_tenants(session: AsyncSession) -> dict[str, object]:
     org_a = Organization(id=uuid.uuid4(), name="Tenant A", slug=f"tenant-a-{uuid.uuid4().hex[:8]}")
     org_b = Organization(id=uuid.uuid4(), name="Tenant B", slug=f"tenant-b-{uuid.uuid4().hex[:8]}")
