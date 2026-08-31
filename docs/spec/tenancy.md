@@ -26,6 +26,18 @@
 - Superuser `omniroute` nie jest rolą aplikacji
 - Test atrybutów roli + SELECT bez `app.current_org` → 0 wierszy: integration CI (lokalnie PG może wisieć)
 
+## Matryca RLS S1–S6 (0.17 T2)
+
+Jawne `WITH CHECK` na politykach tenant (nie FOR SELECT). Integration = CI.
+
+| ID | Scenariusz | Dowód |
+|---|---|---|
+| S1 | SELECT | tenant A nie czyta wierszy B |
+| S2 | INSERT | wiersz z `organization_id` B przy kontekście A → odrzut |
+| S3 | UPDATE USING | UPDATE wiersza B przy kontekście A → 0 wierszy |
+| S4 | UPDATE WITH CHECK | zmiana `organization_id` A→B → odrzut |
+| S5 | DELETE | DELETE wiersza B przy kontekście A → 0 wierszy |
+| S6 | brak `app.current_org` | SELECT pusty; INSERT odrzut |
+
 ## Poza zakresem (nadal)
 OpenFGA (0.4 — zrobione), UI admin, billing, IdP/OIDC.
-Matryca S1–S6 + WITH CHECK = 0.17 T2.

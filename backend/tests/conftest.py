@@ -41,6 +41,7 @@ async def _apply_rls_policies(conn) -> None:
             """
             CREATE POLICY organization_tenant_isolation ON organization
             USING (id = NULLIF(current_setting('app.current_org', true), '')::uuid)
+            WITH CHECK (id = NULLIF(current_setting('app.current_org', true), '')::uuid)
             """
         ),
     )
@@ -52,6 +53,9 @@ async def _apply_rls_policies(conn) -> None:
             """
             CREATE POLICY app_user_tenant_isolation ON app_user
             USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
+            WITH CHECK (
+              organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid
+            )
             """
         ),
     )
@@ -73,6 +77,9 @@ async def _apply_rls_policies(conn) -> None:
             """
             CREATE POLICY table_view_tenant_isolation ON table_view
             USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
+            WITH CHECK (
+              organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid
+            )
             """
         ),
     )
@@ -86,6 +93,9 @@ async def _apply_rls_policies(conn) -> None:
             """
             CREATE POLICY extraction_draft_tenant_isolation ON extraction_draft
             USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
+            WITH CHECK (
+              organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid
+            )
             """
         ),
     )
@@ -99,6 +109,9 @@ async def _apply_rls_policies(conn) -> None:
             """
             CREATE POLICY refresh_token_tenant_isolation ON refresh_token
             USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
+            WITH CHECK (
+              organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid
+            )
             """
         ),
     )
