@@ -1,7 +1,7 @@
 # M-20 — Ekstrakcja dokumentów (HITL)
 
-**Status:** 0.7–0.15 T0 DONE · następny leftover: 0.16 T1 `omniroute_app` NOBYPASSRLS  
-**Delty:** `docs/deltas/archived/0.7-ai-extract-hitl.md`, `0.8-instructor-llm-guard.md`, `0.9-docling-ab.md`, `0.10-langfuse-promptfoo.md`, `0.11-hitl-xor-vitest.md`, `0.12-jwt-session.md`, `0.13-hitl-split.md`, `0.14-http-happy-path.md`, `0.15-t0-document-base64-max.md`  
+**Status:** 0.7–0.18 DONE · następny leftover: 0.19 A1 undeclared `/api/v1` = deny  
+**Delty:** `docs/deltas/archived/0.7-ai-extract-hitl.md`, `0.8-instructor-llm-guard.md`, `0.9-docling-ab.md`, `0.10-langfuse-promptfoo.md`, `0.11-hitl-xor-vitest.md`, `0.12-jwt-session.md`, `0.13-hitl-split.md`, `0.14-http-happy-path.md`, `0.15-t0-document-base64-max.md`, `0.18-http-extract-live-pg.md`  
 **GROUNDING:** HC-03 (`source_ref`, `unparsed_regions`), HC-04 (zero zapisu autonomicznego)
 
 ## Zakres (kod dziś)
@@ -20,7 +20,7 @@
 - Zapis `rate_line` / `charge` z serwisu ekstrakcji
 - Żywy instructor / OpenAI w CI, langfuse cloud, eval promptfoo 30 cenników
 - Presidio na każdym endpoincie, outbox, Temporal/Hatchet
-- HTTP extract vs live Postgres (0.14 = unit + stub `ExtractionService`, nie integration PG)
+- HTTP extract vs live Postgres — 0.18 integration CI (lokalnie PG może wisieć)
 - Split-screen PDF canvas / OCR overlay
 - Vitest: `extractionCreateBody` (XOR) + `hitlSplitView`; brak RTL całej kolejki
 
@@ -74,18 +74,19 @@ CI nie odpala transformerów llm-guard ani OpenAI.
 - promptfoo echo w CI (`just promptfoo` = pytest, nie npx); te same fixture’e MockExtractor
 - HTTP XOR 422; vitest `extractionCreateBody`
 - `document_base64` max_length → 422 przed decode (0.15 T0)
-- HTTP happy-path (0.14): extract/list/accept/reject unit + stub serwisu; nie live PG
-- `just gate` green (unit); integration OpenFGA/RLS w CI
+- HTTP happy-path (0.14): extract/list/accept/reject unit + stub serwisu
+- HTTP extract live PG (0.18): 201 + token A / draft B → 404; integration CI
+- `just gate` green (unit); integration OpenFGA/RLS/0.18 w CI
 
 ## Następny leftover
 
-0.15 T0 DONE → 0.16 T1 `omniroute_app` NOBYPASSRLS (`tenancy.md`).
+0.18 DONE → 0.19 A1 undeclared `/api/v1` = deny.
 Auth0 I1 po Wave A. Presidio i żywy llm-guard = później.
 Nie startuj kolejnego plastra przy niepushniętym WIP.
 
 ### Poza 0.14 (zostaje)
 
-- HTTP extract vs live Postgres (0.14 = unit + stub serwisu)
+- HTTP extract vs live Postgres — 0.18 testy integration (CI)
 - Split-screen PDF canvas / OCR overlay
 - Cloud Langfuse jako wymóg merge
 - 30 cenników eval (osobna decyzja danych)

@@ -37,4 +37,5 @@
 | 2026-09-01 | 0.15 T0 | M-20 | `document_base64` max_length → 422 przed decode |
 | 2026-09-01 | 0.16 T1 | M-01 | rola `omniroute_app` NOBYPASSRLS; runtime URL; RLS integration = CI |
 | 2026-09-01 | 0.17 T2 | M-01 | matryca RLS S1–S6 + WITH CHECK; integration = CI |
-| — | leftover | M-20 | **Następny:** 0.18 HTTP extract live PG + token A / draft B → 404 |
+| 2026-09-01 | 0.18 | M-20 | HTTP extract live PG; token A / draft B → 404; integration = CI |
+| — | leftover | API | **Następny:** 0.19 A1 undeclared `/api/v1` = deny |
