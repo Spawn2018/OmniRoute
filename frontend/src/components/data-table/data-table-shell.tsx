@@ -177,7 +177,7 @@ export function DataTableShell<TData>({
           <select
             aria-label="Gęstość tabeli"
             data-table-density={density}
-            className="h-8 rounded-md border border-input bg-card px-2 text-sm text-foreground"
+            className="h-8 rounded-md border border-input bg-card px-2 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             value={density}
             onChange={(e) => setDensity(e.target.value as TableDensity)}
           >
@@ -187,7 +187,7 @@ export function DataTableShell<TData>({
         </label>
         <button
           type="button"
-          className="h-8 rounded-md border border-border px-2 text-xs hover:bg-muted"
+          className="h-8 rounded-md border border-border px-2 text-xs hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           onClick={() => setPanelOpen((open) => !open)}
         >
           {panelOpen ? "Ukryj kolumny" : "Kolumny / widoki"}

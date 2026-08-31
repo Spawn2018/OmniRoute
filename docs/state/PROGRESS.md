@@ -52,4 +52,5 @@
 | 2026-09-01 | U-art50 | M-20 UI | label „propozycja AI” na recenzji HITL; Art. 50 = UI, nie PDF prawny |
 | 2026-09-01 | U-palette-ops | UI | ⌘K: extract, accept-focus, save-view, clear-session; nie tylko nawigacja |
 | 2026-09-01 | U-density | UI | compact default + toggle na users / charge-codes / rate-lines / charges / extractions |
-| — | leftover | Wave FE | **Następny:** U-a11y. U-size-limit-real…U-admin-ref + U-routes-breadth otwarte. Nie Exit Wave FE. Auth0 I1 po FE. |
+| 2026-09-01 | U-a11y | UI | skip-to-main + `:focus-visible` + ścieżka Tab/⌘K; RTL ≠ DoD |
+| — | leftover | Wave FE | **Następny:** U-size-limit-real. U-pdf-spans, U-admin-ref, U-routes-breadth otwarte. Nie Exit Wave FE. Auth0 I1 po FE. |

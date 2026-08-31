@@ -66,3 +66,12 @@ body {
 .tabular-nums {
   font-variant-numeric: tabular-nums;
 }
+
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}

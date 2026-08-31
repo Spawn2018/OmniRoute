@@ -25,6 +25,12 @@ export function commandPaletteActionIds(): string[] {
   return [...NAV_ACTIONS.map((action) => action.id), ...OPERATOR_ACTIONS.map((action) => action.id)]
 }
 
+const PALETTE_ITEM_CLASS = cn(
+  "flex cursor-pointer items-center rounded-md px-2 py-1.5 text-sm text-foreground",
+  "data-[selected=true]:bg-muted",
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+)
+
 export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
   const navigate = useNavigate()
   const [query, setQuery] = useState("")
@@ -48,14 +54,14 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
         onClick={() => onOpenChange(false)}
       />
       <div className="relative mx-auto mt-[12vh] w-full max-w-lg rounded-md border border-border bg-card shadow-sm">
-        <Command label="Paleta poleceń" shouldFilter>
+        <Command data-operator-target="command-palette" label="Paleta poleceń" shouldFilter>
           <div className="flex items-center gap-2 border-b border-border px-3">
             <Search className="size-4 text-muted-foreground" />
             <Command.Input
               value={query}
               onValueChange={setQuery}
               placeholder="Szukaj akcji…"
-              className="h-10 w-full bg-transparent text-sm outline-none placeholder:text-muted-foreground"
+              className="h-10 w-full bg-transparent text-sm outline-none placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring"
             />
           </div>
           <Command.List className="max-h-72 overflow-auto p-1">
@@ -67,10 +73,7 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
                 <Command.Item
                   key={action.id}
                   value={action.label}
-                  className={cn(
-                    "flex cursor-pointer items-center rounded-md px-2 py-1.5 text-sm text-foreground",
-                    "data-[selected=true]:bg-muted",
-                  )}
+                  className={PALETTE_ITEM_CLASS}
                   onSelect={() => {
                     track("command_palette_used", { action: action.id })
                     onOpenChange(false)
@@ -86,10 +89,7 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
                 <Command.Item
                   key={action.id}
                   value={action.label}
-                  className={cn(
-                    "flex cursor-pointer items-center rounded-md px-2 py-1.5 text-sm text-foreground",
-                    "data-[selected=true]:bg-muted",
-                  )}
+                  className={PALETTE_ITEM_CLASS}
                   onSelect={() => {
                     track("command_palette_used", { action: action.id })
                     onOpenChange(false)

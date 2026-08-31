@@ -25,8 +25,9 @@ export function Sidebar({ currentPath }: { currentPath: string }) {
             <Link
               key={item.to}
               to={item.to}
+              aria-current={active ? "page" : undefined}
               className={cn(
-                "rounded-md px-2 py-1.5 text-sm hover:bg-muted",
+                "rounded-md px-2 py-1.5 text-sm hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                 active && "bg-muted font-medium",
               )}
             >
