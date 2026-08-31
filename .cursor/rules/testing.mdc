@@ -8,8 +8,10 @@ globs: ["**/tests/**", "**/*.test.ts", "**/*_test.py"]
 - Property-based (hypothesis): przeliczenia walutowe, waga obliczeniowa,
   kaskada narzutów, koszt finansowania, alokacja kosztu przejazdu.
 - Każda nowa tabela: test izolacji tenantów (wzorzec `tests/patterns/`).
+- Frontend (od plastra 0.6): vitest dla DataTableShell / krytycznych shelli.
 - Integracje zewnętrzne: pact (kontrakt) + wiremock (zachowanie).
 - Nazwa testu to zdanie opisujące regułę:
   test_chargeable_weight_uses_higher_of_tonnes_or_cbm
 - Bez mockowania własnego kodu. Mockuj wyłącznie granice.
 - Test wydajnościowy dla każdej ścieżki z budżetem w AGENTS.md.
+- cov≥80% / jscpd: cel DoD; egzekucja w gate — patrz PLAN § Gate dziś (nie udawaj).

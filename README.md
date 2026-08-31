@@ -22,14 +22,16 @@ wskaż ścieżkę do archiwum przy potrzebie głębszego kontekstu.
 ## Komendy
 
 ```bash
-just gate    # pełna bramka jakości
-just check   # lint + typy
+just gate    # bramka jakości (patrz PLAN: co jest realne vs stub)
+just check   # lint + typy (backend)
 just test    # testy
 just arch    # import-linter
+cd frontend; pnpm dev   # PowerShell: użyj ; nie &&
 ```
 
-## Faza bootstrap
+## Stan faz
 
-- **Faza 0 (current):** GitHub — repo, git, CI skeleton, branch protection, MCP
-- **Faza A (next):** OS Cursor — rules, skills, hooks, docs skeleton, `just gate`
-- **Faza B:** Szkielet FastAPI + Vite, RLS plaster 0.3, OpenFGA
+- **0+A+A.5+B.2–B.4:** done (RLS, OpenFGA, CI green)
+- **B.5 (0.5):** Frontend Shell — lokalnie / w toku push
+- **B.6 (0.6):** DataTableShell — następny
+- **B.7:** branch protection — ograniczenie GitHub Free private (403); szczegóły w `docs/PLAN-REALIZACJA.md`

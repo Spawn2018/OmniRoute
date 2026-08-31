@@ -9,6 +9,8 @@ Kolejność jest obowiązkowa. Nie przeskakuj etapów.
 
 ## 0. Przygotowanie
 - Przeczytaj `docs/state/CURRENT.md` i delta-spec.
+- Jeśli poprzedni plaster ma niezacommitowany / niepushnięty WIP — **stop**, domknij go.
+- Sprawdź `docs/PLAN-REALIZACJA.md` § Gate dziś vs DoD (co jest stubem).
 - Uruchom `lowca-duplikatow`.
 - Plan → akceptacja człowieka.
 
@@ -24,14 +26,17 @@ Kolejność jest obowiązkowa. Nie przeskakuj etapów.
 - Zdarzenia przez outbox
 
 ## 6. Typy frontendu
-- `just api-types` — nigdy ręcznie
+- `just api-types` (openapi-ts) — docelowo zawsze.
+- Do czasu spłaty długu: tymczasowy typed klient OK, jeśli delta to dopuszcza; nie twierdź że openapi-ts jest gotowe.
 
 ## 7. Komponent
 - `features/<moduł>/`, TanStack Query, `<Money/>`
+- Listy: wyłącznie DataTableShell (ADR-0002)
 
 ## 8. Test
 - hypothesis dla reguł biznesowych
 - izolacja tenantów dla nowych tabel
+- Frontend: vitest gdy delta wymaga (od 0.6 obowiązkowo dla DataTableShell)
 
 ## Definicja ukończenia
-`just gate` zielone + weryfikator + delta-spec zarchiwizowana.
+`just gate` zielone (tylko realne kroki, nie `echo`) + weryfikator + delta zarchiwizowana + **push**.

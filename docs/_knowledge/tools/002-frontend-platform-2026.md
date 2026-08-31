@@ -22,6 +22,12 @@ Każda lista biznesowa:
 
 Neutral tokens, compact, `rounded-md`, zero fioletowych gradientów / landing hero w ops UI.
 
+## Dług / spłaty (nie blokują shella)
+
+- openapi-ts zamiast ręcznego klienta · vitest od DataTableShell (0.6)
+- lazy PostHog przy zbliżaniu się do 250 kB gzip
+- Gate vs DoD: `docs/PLAN-REALIZACJA.md`
+
 ## Źródła
 
 Thoughtworks Radar 2026-04 (React Adopt, TanStack Start Assess) · State of React/JS 2025 · NN/G complex apps · Pencil & Paper data tables · TanStack Column DnD docs

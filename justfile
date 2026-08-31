@@ -3,8 +3,8 @@ default: gate
 agent-refs:
     python scripts/quality/check_agent_refs.py
 
-gate: agent-refs check test-unit arch
-    @echo "gate: agent-refs + check + test-unit + arch OK"
+gate: agent-refs check test-unit arch frontend-typecheck
+    @echo "gate: agent-refs + check + test-unit + arch + frontend-typecheck OK"
 
 dev:
     docker compose up -d db
@@ -53,7 +53,16 @@ db-test-init:
     docker compose exec -T db psql -U omniroute -d postgres -c "CREATE DATABASE omniroute_test;" || true
 
 api-types:
-    @echo "api-types: Faza B+ (openapi-ts)"
+    @echo "api-types: openapi-ts (Faza B.5+)"
+
+frontend-dev:
+    cd frontend && pnpm dev
+
+frontend-build:
+    cd frontend && pnpm install && pnpm typecheck && pnpm build
+
+frontend-typecheck:
+    cd frontend && pnpm typecheck
 
 docs:
     @echo "docs: Faza B+"

@@ -11,6 +11,8 @@ STACK (ADR-0002):
 - React 19 + React Compiler (Vite) — bez ręcznego useMemo/useCallback na gorąco.
 - TanStack Router, Query, Form (+ Table/Virtual w DataTableShell).
 - Typy API: openapi-ts — katalog wygenerowany tylko do odczytu.
+  Do czasu spłaty: tymczasowy typed `frontend/src/lib/api.ts` OK jeśli delta dopuszcza;
+  nie twierdź że openapi-ts jest w gate.
 - Formularze: TanStack Form + Zod. Nie mieszaj react-hook-form.
 - Tabele: wyłącznie DataTableShell. Drugi grid engine = ADR.
 - Kwoty: `<Money/>`, tabular-nums, align right.
@@ -18,4 +20,5 @@ STACK (ADR-0002):
 - Stany loading / empty / error / partial = komponenty 1. klasy.
 - Import z barrel files zabroniony.
 - Skróty: `lib/shortcuts` (w tym ⌘K command palette).
-- Telemetria: PostHog — eventy widoków/filtrów przy DataTableShell.
+- Telemetria: PostHog — eventy widoków/filtrów przy DataTableShell;
+  unikaj trzymania ciężkiego SDK w initial chunk bez lazy-load (budżet 250 kB gzip).

@@ -3,7 +3,7 @@
 **Plan Cursor (pełny):** `.cursor/plans/omniroute-realizacja.plan.md`  
 **ADR:** [0001 Cursor factory](adr/0001-cursor-software-factory-weryfikacja.md) · [0002 Frontend 2026](adr/0002-frontend-platform-2026.md)  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
-**Stan:** Fazy 0+A+A.5+B.2–B.4 done · **Następne:** B.5 shell → B.6 DataTableShell → C → D
+**Stan:** Fazy 0+A+A.5+B.2–B.4 done · **0.5 lokalnie** → push → **0.6 DataTableShell** → B.7 → C → D
 
 ```mermaid
 flowchart LR
@@ -28,7 +28,26 @@ flowchart LR
 
 ---
 
-## Faza B — domknięcie (NASTĘPNE)
+## Gate dziś vs cel DoD (uczciwość)
+
+Źródło: audyt 2026-08-31. **Nie zamykaj plastra ani nie twierdź „pełny DoD”, jeśli recipe to `echo`.**
+
+| Obietnica | Egzekwowane teraz | Kiedy |
+|---|---|---|
+| ruff + mypy | ✅ `just check` | — |
+| pytest unit + integration | ✅ CI | — |
+| import-linter | ✅ `just arch` | — |
+| frontend typecheck | ✅ `frontend-typecheck` w gate (po push 0.5) | — |
+| cov ≥ 80% | ❌ brak `--cov-fail-under` | spłata po 0.6 / slot jakości |
+| vitest | ❌ brak | minimum w **0.6** |
+| jscpd ≤ 3% | ❌ `just dup` = echo | Faza D / slot jakości |
+| openapi-ts | ❌ `just api-types` = echo; tymczasowy `lib/api.ts` | **0.6** lub plaster kontraktu |
+| size-limit / perf | ❌ stub | po lazy PostHog + 0.6 |
+| agentlint | ❌ echo | Faza D |
+
+---
+
+## Faza B — domknięcie
 
 ### B.5 Frontend Shell 2026 — delta `0.5-frontend-shell`
 - Vite + React 19 + **React Compiler** + Tailwind v4 + shadcn
@@ -36,7 +55,7 @@ flowchart LR
 - Design tokens (neutral, compact) — anti AI-slop
 - Command palette ⌘K · PostHog od dnia 1
 - Referencja layoutu: satnaing/shadcn-admin (**wzorce, nie fork**)
-- Źródła: Thoughtworks Radar 2026-04 Adopt React/Vite; State of React/JS 2025
+- **Dług świadomy 0.5:** ręczny klient API; PostHog w main chunk (~213 kB gzip); auth localStorage (JWT poza zakresem)
 
 ### B.6 DataTableShell — delta `0.6-datatable-views`
 - ColumnEditor: checkbox + DnD (@dnd-kit / TanStack columnOrder)
@@ -44,10 +63,13 @@ flowchart LR
 - ViewManager + tabela `table_view` (RLS)
 - Consumer: `tenancy.users`
 - UX events PostHog
-- Źródła: Pencil & Paper enterprise tables; NN/G progressive disclosure; TanStack Column DnD docs
+- **Dodatkowo w 0.6:** vitest minimum na DataTableShell; preferuj start openapi-ts (spłata długu kontraktu)
+- Źródła: Pencil & Paper; NN/G; TanStack Column DnD
 
 ### B.7 Branch protection (pull-forward z D)
-- Wymaga status check `gate` na `main` — **teraz**, nie czekać na Fazę D
+- Cel: status check `gate` na `main`
+- **Constraint (2026-08-31):** GitHub **Free + private** → API branch protection **HTTP 403**. Opcje: GitHub Pro / Team, repo public, albo procedura ręczna (zakaz force-push, review przed merge) do czasu Pro.
+- Nie blokuj 0.6 czekaniem na Pro.
 
 **TanStack Start:** Thoughtworks **Assess** (2026-04) — **nie** jako fundament; SPA wystarczy.
 
@@ -57,18 +79,19 @@ flowchart LR
 instructor, docling A/B, langfuse, promptfoo, HITL na DataTableShell / split-view
 
 ## Faza D — Rytm operacyjny
-Automations PR, Bugbot, refaktor-pass, agentlint CI  
-(branch protection — jeśli nie zrobione w B.7)
+Automations PR, Bugbot, refaktor-pass (cotygodniowy — nie po każdym plastrze), agentlint CI, jscpd w gate  
+(branch protection — jeśli nie B.7)
 
 ---
 
 ## Definition of Done (merge)
 
-1. Delta zamknięta; testy zaakceptowane
+1. Delta zamknięta; testy zaakceptowane — tylko to, co gate **naprawdę** egzekwuje + kryteria delty
 2. `just gate` green (+ integration gdy dotyczy)
 3. Łowca duplikatów + review 4-pass
 4. CURRENT + PROGRESS zaktualizowane
 5. GROUNDING HCs + ADR-0002 (brak drugiego table engine / AI-slop)
+6. **WIP:** nie startuj kolejnego plastra przy niezacommitowanym / niepushniętym zakresie bieżącego
 
 ## Start
 
@@ -76,4 +99,4 @@ Automations PR, Bugbot, refaktor-pass, agentlint CI
 /plaster
 ```
 
-Kontekst: `@docs/deltas/open/0.5-frontend-shell.md` `@docs/adr/0002-frontend-platform-2026.md` `@GROUNDING.md`
+Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@docs/adr/0002-frontend-platform-2026.md` `@GROUNDING.md`

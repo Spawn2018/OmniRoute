@@ -78,14 +78,20 @@ Wygrywają z każdą inną sugestią, także z twoją.
 
 ## Definicja ukończenia
 
+Cel (docelowo):
+
 ```
 just check      # ruff, mypy, eslint, tsc
 just test       # pytest, vitest, próg pokrycia 80%
-just arch       # import-linter: warstwy i niezależność modułów
+just arch       # import-linter
 just perf       # budżety wydajności
 just migrate    # migracja w górę i w dół
-just docs       # spec zaktualizowana, OpenAPI wygenerowane
+just docs       # spec + OpenAPI
 ```
+
+**Egzekucja dziś ≠ cel.** Co gate naprawdę odpala vs stub (`echo`):  
+`docs/PLAN-REALIZACJA.md` § „Gate dziś vs cel DoD”.  
+Nie twierdź, że recipe-`echo` jest spełnione. Nie startuj kolejnego plastra przy niepushniętym WIP.
 
 Plus test izolacji tenantów dla każdej nowej tabeli. Bez wyjątków.
 

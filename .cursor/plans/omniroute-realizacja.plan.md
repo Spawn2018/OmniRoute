@@ -118,7 +118,7 @@ isProject: false
 | **Customize panel** | Do weryfikacji | **Settings → Open Customize** → Rules/Skills/MCP z projektu widoczne |
 | **`.env.example`** | Brak | Utworzyć szablon (`GITHUB_PAT=`, później DB keys) |
 | **`.cursor/plans/` w git** | Untracked | Commit po akceptacji planu |
-| **Branch protection** | Brak | Opcjonalnie po green gate (Faza D) |
+| **Branch protection** | Cel B.7 | **Free private → API 403** (2026-08-31); Pro/public lub procedura ręczna |
 | **Postgres MCP** | Celowo brak | Faza B — gdy jest lokalna DB |
 | **Context7 / Playwright MCP** | Celowo brak | Faza B/D — nie teraz |
 | **Skills Phase B+** | Celowo brak | `openfga-change`, `temporal-workflow` itd. — przy modułach |
