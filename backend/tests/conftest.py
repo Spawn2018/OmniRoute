@@ -6,6 +6,7 @@ import pytest_asyncio
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
+from app.core.database import bind_tenant
 from app.models.app_user import AppUser
 from app.models.base import Base
 from app.models.organization import Organization
