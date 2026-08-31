@@ -21,7 +21,7 @@ React 19 + Vite + TanStack + shadcn/ui + Tailwind v4 · OpenTelemetry
 | Specyfikacja modułu | `docs/spec/<nazwa>.md` |
 | Słownik domenowy PL/EN | `docs/GLOSSARY.md` |
 | Twarde ograniczenia domenowe | `GROUNDING.md` |
-| Decyzje architektoniczne | `docs/adr/` |
+| Decyzje architektoniczne | `docs/adr/` (start: ADR-0001 Cursor setup) |
 | Bieżące zadanie | `docs/state/CURRENT.md` |
 | Historia plastrów | `docs/state/PROGRESS.md` |
 | Archiwum planów (60+ MD) | `Informacje z claude/` |

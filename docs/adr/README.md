@@ -5,11 +5,12 @@ Szablon: `docs/adr/0000-szablon.md`
 Kanoniczne decyzje produktowe:  
 `Informacje z claude/OmniRoute-dokumentacja/docs/07-projekt/DECISIONS.md`
 
-## Indeks (bootstrap)
+## Indeks
 
 | ADR | Tytuł | Status |
 |---|---|---|
+| [0001](0001-cursor-software-factory-weryfikacja.md) | Cursor software factory — weryfikacja Gemini/ChatGPT/nauka | przyjęta |
 | (pending) | Modularny monolit, nie mikroserwisy | przyjęta w DECISIONS |
 | (pending) | Outbox zamiast event sourcing | przyjęta w DECISIONS |
 
-Nowe ADR numeruj sekwencyjnie od 0001.
+Nowe ADR numeruj sekwencyjnie od 0002.
