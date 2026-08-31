@@ -15,6 +15,7 @@
 | token odświeżający | refresh_token | rotacja; RLS; nie access JWT |
 | skrót hasła | password_hash | argon2id; nigdy plaintext w API |
 | pochodzenie | source_ref | obowiązkowe |
+| zastąpiona przez | superseded_by | stary wiersz wskazuje nowy; kwoty się nie nadpisuje |
 | szkic ekstrakcji | extraction_draft | HITL przed zapisem domeny |
 | region nierozpoznany | unparsed_region | zawsze w payloadzie ekstrakcji |
 | odcisk układu | layout_fingerprint | pdf vs text przed parserem |

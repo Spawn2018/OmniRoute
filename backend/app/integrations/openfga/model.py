@@ -32,6 +32,9 @@ def authorization_model_request() -> WriteAuthorizationModelRequest:
                     "can_manage_charge_codes": Userset(
                         computed_userset=ObjectRelation(object="", relation="member"),
                     ),
+                    "can_manage_rate_lines": Userset(
+                        computed_userset=ObjectRelation(object="", relation="member"),
+                    ),
                 },
                 metadata=Metadata(
                     relations={

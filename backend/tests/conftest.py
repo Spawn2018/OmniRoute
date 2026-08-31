@@ -13,6 +13,7 @@ from app.models.base import Base
 from app.models.charge_code import ChargeCode  # noqa: F401 — rejestr metadanych RLS
 from app.models.extraction_draft import ExtractionDraft  # noqa: F401 — rejestr metadanych RLS
 from app.models.organization import Organization
+from app.models.rate_line import RateLine  # noqa: F401 — rejestr metadanych RLS
 from app.models.refresh_token import RefreshToken  # noqa: F401 — rejestr metadanych RLS
 from app.models.table_view import TableView  # noqa: F401 — rejestr metadanych RLS
 
@@ -22,6 +23,7 @@ _TEST_JWT_SECRET = "ci-unit-test-jwt-secret-32bytes-min"
 @pytest.fixture(autouse=True)
 def _jwt_secret_for_tests(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr("app.core.config.settings.jwt_secret", _TEST_JWT_SECRET)
+
 
 ADMIN_TEST_DATABASE_URL = os.getenv(
     "ADMIN_TEST_DATABASE_URL",
@@ -137,6 +139,62 @@ async def _apply_rls_policies(conn) -> None:
             WITH CHECK (
               organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid
             )
+            """
+        ),
+    )
+    await conn.execute(text("ALTER TABLE rate_line ENABLE ROW LEVEL SECURITY"))
+    await conn.execute(text("ALTER TABLE rate_line FORCE ROW LEVEL SECURITY"))
+    await conn.execute(text("DROP POLICY IF EXISTS rate_line_tenant_isolation ON rate_line"))
+    await conn.execute(
+        text(
+            """
+            CREATE POLICY rate_line_tenant_isolation ON rate_line
+            USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
+            WITH CHECK (
+              organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid
+            )
+            """
+        ),
+    )
+    await conn.execute(text("DROP TRIGGER IF EXISTS rate_line_forbid_mutate ON rate_line"))
+    await conn.execute(text("DROP FUNCTION IF EXISTS rate_line_forbid_mutate()"))
+    await conn.execute(
+        text(
+            """
+            CREATE FUNCTION rate_line_forbid_mutate() RETURNS trigger
+            LANGUAGE plpgsql
+            AS $$
+            BEGIN
+              IF TG_OP = 'DELETE' THEN
+                RAISE EXCEPTION 'rate_line niemutowalny';
+              END IF;
+              IF NEW.organization_id IS DISTINCT FROM OLD.organization_id
+                 OR NEW.charge_code IS DISTINCT FROM OLD.charge_code
+                 OR NEW.amount IS DISTINCT FROM OLD.amount
+                 OR NEW.currency IS DISTINCT FROM OLD.currency
+                 OR NEW.source_ref IS DISTINCT FROM OLD.source_ref
+                 OR NEW.created_by IS DISTINCT FROM OLD.created_by
+                 OR NEW.id IS DISTINCT FROM OLD.id
+              THEN
+                RAISE EXCEPTION 'rate_line niemutowalny';
+              END IF;
+              IF OLD.superseded_by IS NOT NULL
+                 AND NEW.superseded_by IS DISTINCT FROM OLD.superseded_by
+              THEN
+                RAISE EXCEPTION 'rate_line już zastąpiony';
+              END IF;
+              RETURN NEW;
+            END;
+            $$;
+            """
+        ),
+    )
+    await conn.execute(
+        text(
+            """
+            CREATE TRIGGER rate_line_forbid_mutate
+            BEFORE UPDATE OR DELETE ON rate_line
+            FOR EACH ROW EXECUTE FUNCTION rate_line_forbid_mutate()
             """
         ),
     )

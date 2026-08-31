@@ -52,3 +52,11 @@ class ChargeCodeConflict(DomainError):
 
 class UnknownChargeCode(DomainError):
     """Token nie ma wpisu w katalogu charge_code tenanta."""
+
+
+class InvalidSourceRef(DomainError):
+    """Stawka bez source_ref nie wchodzi do bazy (HC-03)."""
+
+
+class RateLineAlreadySuperseded(DomainError):
+    """Zmiana stawki to nowy wiersz; już zastąpionej nie rusza się drugi raz."""

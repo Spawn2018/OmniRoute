@@ -23,6 +23,7 @@ _BASE_TENANT_POLICY_NAMES = (
 _ALL_TENANT_POLICY_NAMES = (
     *_BASE_TENANT_POLICY_NAMES,
     "charge_code_tenant_isolation",
+    "rate_line_tenant_isolation",
 )
 
 
@@ -30,7 +31,7 @@ def test_conftest_tenant_policies_declare_with_check() -> None:
     source = Path("backend/tests/conftest.py").read_text(encoding="utf-8")
     for name in _ALL_TENANT_POLICY_NAMES:
         assert name in source
-    assert source.count("WITH CHECK") >= 6
+    assert source.count("WITH CHECK") >= 7
 
 
 def test_migration_006_declares_with_check() -> None:
@@ -45,6 +46,14 @@ def test_migration_007_declares_charge_code_with_check() -> None:
     assert "WITH CHECK" in source
     assert "charge_code_tenant_isolation" in source
     assert "FORCE ROW LEVEL SECURITY" in source
+
+
+def test_migration_008_declares_rate_line_with_check() -> None:
+    source = Path("backend/alembic/versions/008_rate_line_rls.py").read_text(encoding="utf-8")
+    assert "WITH CHECK" in source
+    assert "rate_line_tenant_isolation" in source
+    assert "FORCE ROW LEVEL SECURITY" in source
+    assert "rate_line_forbid_mutate" in source
 
 
 @pytest.mark.integration
@@ -114,9 +123,7 @@ async def test_rls_matrix_s5_delete_foreign_row_is_noop(session, two_tenants) ->
 
 @pytest.mark.integration
 @pytest.mark.asyncio
-async def test_rls_matrix_s6_missing_org_hides_rows_and_blocks_insert(
-    session, two_tenants
-) -> None:
+async def test_rls_matrix_s6_missing_org_hides_rows_and_blocks_insert(session, two_tenants) -> None:
     org_a = two_tenants["org_a"]
     await assert_missing_tenant_context_returns_no_rows(session)
     session.add(

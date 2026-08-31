@@ -30,6 +30,17 @@ export function httpErrorStatus(response: Response | undefined): number {
   return response?.status ?? 500
 }
 
+export async function readApiDetail(response: Response, fallback: string): Promise<string> {
+  const payload: unknown = await response.json().catch(() => null)
+  if (typeof payload === "object" && payload !== null && "detail" in payload) {
+    const detail = (payload as { detail: unknown }).detail
+    if (typeof detail === "string") {
+      return detail
+    }
+  }
+  return fallback
+}
+
 export async function issueSessionToken(input: {
   email: string
   password: string

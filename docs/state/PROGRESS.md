@@ -46,4 +46,5 @@
 | 2026-09-01 | Exit Wave A | — | D0 + 0.15 T0 … 0.23 na origin. Charge/FE/Auth0 nie startowane. |
 | 2026-09-01 | 0.25 | domain | Money Decimal + waluta ISO 4217 + `<Money/>` na HITL; bez tabeli charge |
 | 2026-09-01 | 1.0 | M-06 | `charge_code` katalog + aliasy + RLS + `/charge-codes`; nie luźny string |
-| — | leftover | Charge | **Następny:** 1.1 `rate_line`. U-routes-breadth = jedna trasa, nie Exit Wave FE. Isolation = CI |
+| 2026-09-01 | 1.1 | M-07 | `rate_line` immutable + `source_ref` + `/rate-lines`; nie `charge` / accept |
+| — | leftover | Charge | **Następny:** 1.2 `charge` buy+sell. U-routes-breadth = jedna trasa, nie Exit Wave FE. Isolation = CI |

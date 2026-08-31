@@ -1,4 +1,4 @@
-import { ApiError, httpErrorStatus } from "@/lib/api"
+import { ApiError, httpErrorStatus, readApiDetail } from "@/lib/api"
 import { requireAuthHeaders } from "@/lib/tenant"
 
 export type ChargeCode = {
@@ -23,26 +23,15 @@ export function chargeCodeCreateBody(args: {
 
 async function readChargeCode(response: Response, fallback: string): Promise<ChargeCode> {
   if (!response.ok) {
-    throw new ApiError(await readDetail(response, fallback), httpErrorStatus(response))
+    throw new ApiError(await readApiDetail(response, fallback), httpErrorStatus(response))
   }
   return (await response.json()) as ChargeCode
-}
-
-async function readDetail(response: Response, fallback: string): Promise<string> {
-  const payload: unknown = await response.json().catch(() => null)
-  if (typeof payload === "object" && payload !== null && "detail" in payload) {
-    const detail = (payload as { detail: unknown }).detail
-    if (typeof detail === "string") {
-      return detail
-    }
-  }
-  return fallback
 }
 
 export async function fetchChargeCodes(): Promise<ChargeCode[]> {
   const response = await fetch("/api/v1/charge-codes", { headers: requireAuthHeaders() })
   if (!response.ok) {
-    throw new ApiError(await readDetail(response, "Błąd listy kodów opłat"), httpErrorStatus(response))
+    throw new ApiError(await readApiDetail(response, "Błąd listy kodów opłat"), httpErrorStatus(response))
   }
   return (await response.json()) as ChargeCode[]
 }

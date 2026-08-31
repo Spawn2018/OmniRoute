@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ChargeCodesRouteImport } from './routes/charge-codes'
 import { Route as ExtractionsRouteImport } from './routes/extractions'
+import { Route as RateLinesRouteImport } from './routes/rate-lines'
 import { Route as SessionRouteImport } from './routes/session'
 import { Route as TenancyUsersRouteImport } from './routes/tenancy.users'
 
@@ -30,6 +31,11 @@ const ExtractionsRoute = ExtractionsRouteImport.update({
   path: '/extractions',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RateLinesRoute = RateLinesRouteImport.update({
+  id: '/rate-lines',
+  path: '/rate-lines',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SessionRoute = SessionRouteImport.update({
   id: '/session',
   path: '/session',
@@ -45,6 +51,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/charge-codes': typeof ChargeCodesRoute
   '/extractions': typeof ExtractionsRoute
+  '/rate-lines': typeof RateLinesRoute
   '/session': typeof SessionRoute
   '/tenancy/users': typeof TenancyUsersRoute
 }
@@ -52,6 +59,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/charge-codes': typeof ChargeCodesRoute
   '/extractions': typeof ExtractionsRoute
+  '/rate-lines': typeof RateLinesRoute
   '/session': typeof SessionRoute
   '/tenancy/users': typeof TenancyUsersRoute
 }
@@ -60,20 +68,33 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/charge-codes': typeof ChargeCodesRoute
   '/extractions': typeof ExtractionsRoute
+  '/rate-lines': typeof RateLinesRoute
   '/session': typeof SessionRoute
   '/tenancy/users': typeof TenancyUsersRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/charge-codes' | '/extractions' | '/session' | '/tenancy/users'
+    | '/'
+    | '/charge-codes'
+    | '/extractions'
+    | '/rate-lines'
+    | '/session'
+    | '/tenancy/users'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/charge-codes' | '/extractions' | '/session' | '/tenancy/users'
+  to:
+    | '/'
+    | '/charge-codes'
+    | '/extractions'
+    | '/rate-lines'
+    | '/session'
+    | '/tenancy/users'
   id:
     | '__root__'
     | '/'
     | '/charge-codes'
     | '/extractions'
+    | '/rate-lines'
     | '/session'
     | '/tenancy/users'
   fileRoutesById: FileRoutesById
@@ -82,6 +103,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ChargeCodesRoute: typeof ChargeCodesRoute
   ExtractionsRoute: typeof ExtractionsRoute
+  RateLinesRoute: typeof RateLinesRoute
   SessionRoute: typeof SessionRoute
   TenancyUsersRoute: typeof TenancyUsersRoute
 }
@@ -109,6 +131,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ExtractionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/rate-lines': {
+      id: '/rate-lines'
+      path: '/rate-lines'
+      fullPath: '/rate-lines'
+      preLoaderRoute: typeof RateLinesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/session': {
       id: '/session'
       path: '/session'
@@ -130,6 +159,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ChargeCodesRoute: ChargeCodesRoute,
   ExtractionsRoute: ExtractionsRoute,
+  RateLinesRoute: RateLinesRoute,
   SessionRoute: SessionRoute,
   TenancyUsersRoute: TenancyUsersRoute,
 }
