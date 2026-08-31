@@ -12,6 +12,7 @@
 | pochodzenie | source_ref | obowiązkowe |
 | szkic ekstrakcji | extraction_draft | HITL przed zapisem domeny |
 | region nierozpoznany | unparsed_region | zawsze w payloadzie ekstrakcji |
+| odcisk układu | layout_fingerprint | pdf vs text przed parserem |
 | kurs NBP | nbp_rate | D-1 roboczy |
 | narzut | markup | kaskada — Python mały zbiór (DECISIONS) |
 

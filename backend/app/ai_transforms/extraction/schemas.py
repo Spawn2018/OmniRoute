@@ -18,3 +18,6 @@ class ExtractionPayload(BaseModel):
     source_ref: str = Field(min_length=1, max_length=512)
     unparsed_regions: list[str] = Field(default_factory=list)
     candidates: list[ExtractedChargeCandidate] = Field(default_factory=list)
+    parser_name: str = "plain"
+    parser_challenger: str | None = None
+    ab_delta_chars: int | None = None

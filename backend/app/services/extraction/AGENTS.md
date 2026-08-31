@@ -3,6 +3,7 @@
 ## Dozwolone zależności
 - `app.repositories.extraction`
 - `app.ai_transforms.extraction`
+- `app.integrations.docling`
 - `app.models.extraction_draft`
 - `app.domain`
 

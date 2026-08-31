@@ -90,8 +90,12 @@ flowchart LR
 - Guard na wejściu · InstructorExtractor · provider mock|instructor
 - Delta: `docs/deltas/archived/0.8-instructor-llm-guard.md`
 
-### C.4+ (następne)
-0.9 docling A/B · 0.10 langfuse/promptfoo CI
+### C.4 / 0.9 docling A/B — **DONE**
+- fingerprint · parser A deterministyczny · B docling · `ab_delta_chars`
+- Delta: `docs/deltas/archived/0.9-docling-ab.md`
+
+### C.5 (następne)
+0.10 langfuse/promptfoo CI
 
 ## Faza D — Rytm operacyjny — **DONE (minimal)**
 - `agentlint` w `just gate` + baseline

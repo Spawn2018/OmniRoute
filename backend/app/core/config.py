@@ -16,6 +16,7 @@ class Settings(BaseSettings):
     extraction_model: str = "gpt-4o-mini"
     openai_api_key: str = ""
     extraction_llm_guard: bool = False
+    extraction_parser: str = "stub"
 
 
 settings = Settings()

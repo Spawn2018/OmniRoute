@@ -4,7 +4,7 @@ import {
   listExtractionDraftsApiV1ExtractionsGet,
   rejectExtractionDraftApiV1ExtractionsDraftIdRejectPost,
 } from "@/api/sdk.gen"
-import type { ExtractionDraftResponse } from "@/api/types.gen"
+import type { ExtractRequest, ExtractionDraftResponse } from "@/api/types.gen"
 import { ApiError } from "@/lib/api"
 import { requireTenantHeaders } from "@/lib/tenant"
 
@@ -19,6 +19,9 @@ export type ExtractionPayload = {
   source_ref: string
   unparsed_regions: string[]
   candidates: ExtractionCandidate[]
+  parser_name?: string
+  parser_challenger?: string | null
+  ab_delta_chars?: number | null
 }
 
 export type ExtractionDraft = {
@@ -63,6 +66,9 @@ function asPayload(raw: { [key: string]: unknown }): ExtractionPayload {
     source_ref: typeof raw.source_ref === "string" ? raw.source_ref : "",
     unparsed_regions: regionsRaw.filter((r): r is string => typeof r === "string"),
     candidates,
+    parser_name: typeof raw.parser_name === "string" ? raw.parser_name : undefined,
+    parser_challenger: typeof raw.parser_challenger === "string" ? raw.parser_challenger : null,
+    ab_delta_chars: typeof raw.ab_delta_chars === "number" ? raw.ab_delta_chars : null,
   }
 }
 
@@ -92,11 +98,13 @@ export async function fetchExtractionDrafts(status = "pending"): Promise<Extract
 
 export async function createExtractionDraft(body: {
   source_ref: string
-  input_text: string
+  input_text?: string
+  document_base64?: string
 }): Promise<ExtractionDraft> {
   const { data, error, response } = await createExtractionDraftApiV1ExtractionsPost({
     headers: requireTenantHeaders(),
-    body,
+    // openapi-ts spłaszcza anyOf|null — payload XOR idzie w JSON
+    body: body as ExtractRequest,
   })
   if (error || !data) {
     throw new ApiError(JSON.stringify(error) || "Błąd ekstrakcji", statusOf(response))

@@ -31,6 +31,9 @@ ai = [
     "instructor>=1.7",
     "openai>=1.40",
 ]
+parsers = [
+    "docling>=2.0",
+]
 
 [build-system]
 requires = ["setuptools>=61"]
@@ -59,7 +62,7 @@ mypy_path = "backend"
 plugins = []
 
 [[tool.mypy.overrides]]
-module = ["alembic.*", "openfga_sdk", "openfga_sdk.*", "instructor", "instructor.*", "openai", "openai.*", "llm_guard", "llm_guard.*"]
+module = ["alembic.*", "openfga_sdk", "openfga_sdk.*", "instructor", "instructor.*", "openai", "openai.*", "llm_guard", "llm_guard.*", "docling", "docling.*"]
 ignore_missing_imports = true
 
 [[tool.mypy.overrides]]

@@ -644,16 +644,34 @@
             "title": "Source Ref"
           },
           "input_text": {
-            "type": "string",
-            "maxLength": 50000,
-            "minLength": 1,
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 50000,
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Input Text"
+          },
+          "document_base64": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Document Base64"
           }
         },
         "type": "object",
         "required": [
-          "source_ref",
-          "input_text"
+          "source_ref"
         ],
         "title": "ExtractRequest"
       },

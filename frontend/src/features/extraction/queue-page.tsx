@@ -20,6 +20,7 @@ const columnHelper = createColumnHelper<ExtractionDraft>()
 const COLUMN_LABELS = {
   source_ref: "Źródło",
   status: "Status",
+  parser: "Parser",
   candidates: "Kandydaci",
   unparsed: "Nierozpoznane",
   actions: "Akcje",
@@ -30,6 +31,8 @@ export function ExtractionQueuePage() {
   const queryClient = useQueryClient()
   const [sourceRef, setSourceRef] = useState("tariff://demo")
   const [inputText, setInputText] = useState("THC 125.50 EUR\nweekend note\nBAF 12 USD")
+  const [documentBase64, setDocumentBase64] = useState<string | null>(null)
+  const [fileName, setFileName] = useState<string | null>(null)
 
   const query = useQuery({
     queryKey: ["extractions", "pending", ctx.organizationId],
@@ -42,7 +45,12 @@ export function ExtractionQueuePage() {
     void queryClient.invalidateQueries({ queryKey: ["extractions", "pending", ctx.organizationId] })
 
   const createMutation = useMutation({
-    mutationFn: () => createExtractionDraft({ source_ref: sourceRef, input_text: inputText }),
+    mutationFn: () =>
+      createExtractionDraft(
+        documentBase64
+          ? { source_ref: sourceRef, document_base64: documentBase64 }
+          : { source_ref: sourceRef, input_text: inputText },
+      ),
     onSuccess: () => {
       track("extraction_draft_created")
       invalidate()
@@ -75,6 +83,21 @@ export function ExtractionQueuePage() {
       id: "status",
       header: "Status",
       cell: (info) => info.getValue(),
+    }),
+    columnHelper.display({
+      id: "parser",
+      header: "Parser",
+      cell: ({ row }) => {
+        const name = row.original.payload.parser_name ?? "plain"
+        const delta = row.original.payload.ab_delta_chars
+        const deltaLabel = typeof delta === "number" ? ` Δ${delta}` : ""
+        return (
+          <span className="font-mono text-xs">
+            {name}
+            {deltaLabel}
+          </span>
+        )
+      },
     }),
     columnHelper.display({
       id: "candidates",
@@ -129,7 +152,7 @@ export function ExtractionQueuePage() {
       <div>
         <h2 className="text-base font-semibold">Kolejka ekstrakcji (HITL)</h2>
         <p className="text-xs text-muted-foreground">
-          MockExtractor · accept nie zapisuje rate_line · DataTableShell
+          Parser A/B · MockExtractor · accept nie zapisuje rate_line
         </p>
       </div>
 
@@ -157,8 +180,37 @@ export function ExtractionQueuePage() {
           <textarea
             className="mt-1 min-h-24 w-full rounded-md border border-input bg-background px-2 py-1.5 text-sm"
             value={inputText}
-            onChange={(e) => setInputText(e.target.value)}
+            onChange={(e) => {
+              setDocumentBase64(null)
+              setFileName(null)
+              setInputText(e.target.value)
+            }}
           />
+        </label>
+        <label className="block text-xs text-muted-foreground">
+          Albo plik (PDF / tekst)
+          <input
+            className="mt-1 block w-full text-sm"
+            type="file"
+            onChange={(event) => {
+              const file = event.target.files?.[0]
+              if (!file) {
+                setDocumentBase64(null)
+                setFileName(null)
+                return
+              }
+              void file.arrayBuffer().then((buffer) => {
+                const bytes = new Uint8Array(buffer)
+                let binary = ""
+                for (const byte of bytes) {
+                  binary += String.fromCharCode(byte)
+                }
+                setDocumentBase64(btoa(binary))
+                setFileName(file.name)
+              })
+            }}
+          />
+          {fileName ? <span className="mt-1 block text-xs">{fileName}</span> : null}
         </label>
         <Button
           type="button"

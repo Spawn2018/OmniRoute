@@ -1,12 +1,15 @@
+from base64 import b64decode
+from binascii import Error as BinasciiError
 from datetime import datetime
-from typing import Any
+from typing import Any, Self
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, Header, Query, status
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import require_permission, require_tenant_session
+from app.domain.errors import UnparseableDocument
 from app.services.extraction.extraction_service import ExtractionService
 
 router = APIRouter(prefix="/extractions", tags=["extractions"])
@@ -14,7 +17,17 @@ router = APIRouter(prefix="/extractions", tags=["extractions"])
 
 class ExtractRequest(BaseModel):
     source_ref: str = Field(min_length=1, max_length=512)
-    input_text: str = Field(min_length=1, max_length=50_000)
+    input_text: str | None = Field(default=None, min_length=1, max_length=50_000)
+    document_base64: str | None = Field(default=None, min_length=1)
+
+    @model_validator(mode="after")
+    def require_one_source(self) -> Self:
+        has_text = self.input_text is not None
+        has_doc = self.document_base64 is not None
+        if has_text == has_doc:
+            raise ValueError("Podaj dokładnie jedno: input_text albo document_base64")
+        return self
+
 
 
 class ExtractionDraftResponse(BaseModel):
@@ -50,12 +63,26 @@ async def create_extraction_draft(
     x_user_id: UUID = Header(..., alias="X-User-Id"),
 ) -> ExtractionDraftResponse:
     service = ExtractionService(session)
-    draft = await service.extract_to_draft(
-        organization_id=x_organization_id,
-        user_id=x_user_id,
-        source_ref=body.source_ref,
-        input_text=body.input_text,
-    )
+    if body.document_base64 is not None:
+        try:
+            raw_bytes = b64decode(body.document_base64, validate=True)
+        except BinasciiError as exc:
+            raise UnparseableDocument("document_base64 niepoprawne") from exc
+        draft = await service.extract_from_document(
+            organization_id=x_organization_id,
+            user_id=x_user_id,
+            source_ref=body.source_ref,
+            raw_bytes=raw_bytes,
+        )
+    else:
+        if body.input_text is None:
+            raise UnparseableDocument("Brak input_text")
+        draft = await service.extract_to_draft(
+            organization_id=x_organization_id,
+            user_id=x_user_id,
+            source_ref=body.source_ref,
+            input_text=body.input_text,
+        )
     await session.commit()
     return ExtractionDraftResponse.model_validate(draft)
 

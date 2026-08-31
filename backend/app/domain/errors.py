@@ -24,3 +24,11 @@ class UntrustedExtractionInput(DomainError):
 
 class ExtractionProviderUnavailable(DomainError):
     """Provider instructor bez klucza / nieznana wartość EXTRACTION_PROVIDER."""
+
+
+class DocumentParserUnavailable(DomainError):
+    """Parser docling niedostępny albo nieznany EXTRACTION_PARSER."""
+
+
+class UnparseableDocument(DomainError):
+    """Bajty dokumentu nie dały się zamienić na tekst do ekstrakcji."""
