@@ -1,13 +1,14 @@
 # M-20 — Ekstrakcja dokumentów (HITL)
 
-**Status:** 0.7–0.14 DONE · następny leftover: 0.15 T0 `document_base64` max_length (nie OAuth)  
-**Delty:** `docs/deltas/archived/0.7-ai-extract-hitl.md`, `0.8-instructor-llm-guard.md`, `0.9-docling-ab.md`, `0.10-langfuse-promptfoo.md`, `0.11-hitl-xor-vitest.md`, `0.12-jwt-session.md`, `0.13-hitl-split.md`, `0.14-http-happy-path.md`  
+**Status:** 0.7–0.15 T0 DONE · następny leftover: 0.16 T1 `omniroute_app` NOBYPASSRLS  
+**Delty:** `docs/deltas/archived/0.7-ai-extract-hitl.md`, `0.8-instructor-llm-guard.md`, `0.9-docling-ab.md`, `0.10-langfuse-promptfoo.md`, `0.11-hitl-xor-vitest.md`, `0.12-jwt-session.md`, `0.13-hitl-split.md`, `0.14-http-happy-path.md`, `0.15-t0-document-base64-max.md`  
 **GROUNDING:** HC-03 (`source_ref`, `unparsed_regions`), HC-04 (zero zapisu autonomicznego)
 
 ## Zakres (kod dziś)
 
 - Tabela `extraction_draft` + RLS + test izolacji tenantów
 - API: list / extract→draft / accept / reject; upload `document_base64` XOR `input_text`
+- `document_base64` `max_length=2_666_668` → 422 przed decode
 - OpenFGA: `can_review_extractions` na każdym endpoincie `/extractions`
 - UI: kolejka DataTableShell + split-screen (podgląd `input_text` | recenzja)
 - Provider: `EXTRACTION_PROVIDER=mock` (default CI) | `instructor` (wymaga `OPENAI_API_KEY`)
@@ -72,12 +73,13 @@ CI nie odpala transformerów llm-guard ani OpenAI.
 - Trace langfuse przy extract; bez kluczy no-op; metadane bez `input_text`
 - promptfoo echo w CI (`just promptfoo` = pytest, nie npx); te same fixture’e MockExtractor
 - HTTP XOR 422; vitest `extractionCreateBody`
+- `document_base64` max_length → 422 przed decode (0.15 T0)
 - HTTP happy-path (0.14): extract/list/accept/reject unit + stub serwisu; nie live PG
 - `just gate` green (unit); integration OpenFGA/RLS w CI
 
 ## Następny leftover
 
-D0 (uczciwość OS) → 0.15 T0 `document_base64` max_length.
+0.15 T0 DONE → 0.16 T1 `omniroute_app` NOBYPASSRLS (`tenancy.md`).
 Auth0 I1 po Wave A. Presidio i żywy llm-guard = później.
 Nie startuj kolejnego plastra przy niepushniętym WIP.
 

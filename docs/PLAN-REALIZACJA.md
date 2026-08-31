@@ -3,7 +3,7 @@
 **Plan Cursor (pełny):** `.cursor/plans/omniroute-realizacja.plan.md`  
 **ADR:** [0001 Cursor factory](adr/0001-cursor-software-factory-weryfikacja.md) · [0002 Frontend 2026](adr/0002-frontend-platform-2026.md)  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
-**Stan:** B + C.1–C.5 + 0.11–0.15 leftover + **D0 OS** + D minimal · następny **0.15 T0** (`document_base64` max_length; OAuth = Auth0 I1 po Wave A)
+**Stan:** B + C.1–C.5 + 0.11–0.15 leftover + **D0 OS** + **0.15 T0** + D minimal · następny **0.16 T1** (`omniroute_app` NOBYPASSRLS; OAuth = Auth0 I1 po Wave A)
 
 ```mermaid
 flowchart LR
@@ -15,7 +15,8 @@ flowchart LR
   doneSplit --> doneHttp[0.14_HTTP_happy]
   doneHttp --> donePwd[0.15_passwords]
   donePwd --> doneD0[D0_OS]
-  doneD0 --> next[T0_upload_limit]
+  doneD0 --> doneT0[T0_upload_limit]
+  doneT0 --> next[T1_nobypassrls]
   doneB --> doneD[D_minimal_DONE]
 ```
 
@@ -121,7 +122,8 @@ Pełna lista z „dlaczego”: [docs/ops/docs-debt.md](ops/docs-debt.md)
 
 | Kolejność | Co | Nie mylić z |
 |---|---|---|
-| następny | 0.15 T0 `document_base64` max_length | nie OAuth; D0 OS DONE |
+| następny | 0.16 T1 `omniroute_app` NOBYPASSRLS | nie T2; T0 DONE |
+| 0.15 T0 DONE | `document_base64` max_length → 422 przed decode | nie live PG |
 | D0 DONE | AGENTS dziś/później, `.cursorignore` dump, leftover≠DONE | nie kasuje HITL / 13 zasad |
 | 0.15 DONE | hasła argon2id + rotacja refresh | UUID-login wycięty; RLS isolation = CI |
 | C.1–C.5 / 0.7–0.14 DONE | HITL … HTTP happy-path unit | nie live PG, nie IdP |

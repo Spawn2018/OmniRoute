@@ -15,11 +15,16 @@ from app.services.extraction.extraction_service import ExtractionService
 
 router = APIRouter(prefix="/extractions", tags=["extractions"])
 
+# 4/3 znaków + padding z limitu 2 MB surowych bajtów (ExtractionService) — 422 przed decode (T0).
+DOCUMENT_BASE64_MAX_LENGTH = 2_666_668
+
 
 class ExtractRequest(BaseModel):
     source_ref: str = Field(min_length=1, max_length=512)
     input_text: str | None = Field(default=None, min_length=1, max_length=50_000)
-    document_base64: str | None = Field(default=None, min_length=1)
+    document_base64: str | None = Field(
+        default=None, min_length=1, max_length=DOCUMENT_BASE64_MAX_LENGTH
+    )
 
     @model_validator(mode="after")
     def require_one_source(self) -> Self:
