@@ -20,7 +20,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **0.21 T4 DONE:** `hello_token` default false; mint UUID tylko przy fladze
 - **0.22 T5 DONE:** JWT iss/aud/jti/ver; TTL 15 min
 - **0.23 S1 DONE:** JWT_SECRET z GitHub Encrypted Secrets; literał usunięty z gate.yml
-- **U-palette-ops DONE:** ⌘K akcje operatora (extract, accept-focus, save-view, clear-session). **Następny (kod):** U-density. Auth0 I1 po wszystkich U-*
+- **U-density DONE:** compact + toggle na users / charge-codes / rate-lines / charges / extractions. **Następny (kod):** U-a11y. Auth0 I1 po wszystkich U-*
+- **U-palette-ops DONE:** ⌘K akcje operatora (extract, accept-focus, save-view, clear-session).
 - **U-art50 DONE:** label „propozycja AI” na recenzji HITL.
 - **1.3 DONE:** accept HITL + `rate_line` (kupno) w jednej transakcji HTTP; `ExtractionService` nie importuje rates.
 - **1.2 DONE:** `charge` buy+sell + `margin(buy, sell)` + `/charges`. Nie accept HITL

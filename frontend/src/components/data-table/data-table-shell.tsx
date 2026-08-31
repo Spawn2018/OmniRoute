@@ -172,14 +172,19 @@ export function DataTableShell<TData>({
           placeholder={globalFilterPlaceholder}
           className="h-8 max-w-xs"
         />
-        <select
-          className="h-8 rounded-md border border-input bg-card px-2 text-sm"
-          value={density}
-          onChange={(e) => setDensity(e.target.value as TableDensity)}
-        >
-          <option value="compact">Compact</option>
-          <option value="comfortable">Comfortable</option>
-        </select>
+        <label className="flex items-center gap-1 text-xs text-muted-foreground">
+          Gęstość
+          <select
+            aria-label="Gęstość tabeli"
+            data-table-density={density}
+            className="h-8 rounded-md border border-input bg-card px-2 text-sm text-foreground"
+            value={density}
+            onChange={(e) => setDensity(e.target.value as TableDensity)}
+          >
+            <option value="compact">Zwarta</option>
+            <option value="comfortable">Wygodna</option>
+          </select>
+        </label>
         <button
           type="button"
           className="h-8 rounded-md border border-border px-2 text-xs hover:bg-muted"

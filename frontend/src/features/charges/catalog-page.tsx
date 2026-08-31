@@ -6,6 +6,7 @@ import { DataTableShell } from "@/components/data-table/data-table-shell"
 import { Money } from "@/components/money"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { BUSINESS_LISTS } from "@/lib/business-lists"
 import { chargeCreateBody, createCharge, fetchCharges, type Charge } from "@/lib/charges-api"
 import { getTenantContext } from "@/lib/tenant"
 
@@ -123,7 +124,7 @@ export function ChargeCatalogPage() {
       {query.isError ? <p className="text-sm text-destructive">{(query.error as Error).message}</p> : null}
       {query.data ? (
         <DataTableShell
-          tableKey="charges"
+          tableKey={BUSINESS_LISTS.charges.tableKey}
           columns={columns}
           data={query.data}
           columnLabels={COLUMN_LABELS}

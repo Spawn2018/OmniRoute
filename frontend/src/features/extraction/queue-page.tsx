@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { HitlReviewSplit } from "@/features/extraction/hitl-review-split"
 import { track } from "@/lib/analytics"
+import { BUSINESS_LISTS } from "@/lib/business-lists"
 import { subscribeOperatorAction } from "@/lib/operator-actions"
 import {
   acceptExtractionDraft,
@@ -266,7 +267,7 @@ export function ExtractionQueuePage() {
 
       {query.data ? (
         <DataTableShell
-          tableKey="extraction.queue"
+          tableKey={BUSINESS_LISTS.extractions.tableKey}
           columns={columns}
           data={query.data}
           columnLabels={COLUMN_LABELS}

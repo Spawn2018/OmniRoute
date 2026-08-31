@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query"
 import { createColumnHelper } from "@tanstack/react-table"
 import { DataTableShell } from "@/components/data-table/data-table-shell"
 import { fetchTenancyUsers, getTenantContext, type AppUser } from "@/lib/api"
+import { BUSINESS_LISTS } from "@/lib/business-lists"
 
 const columnHelper = createColumnHelper<AppUser>()
 
@@ -70,7 +71,7 @@ export function UsersPage() {
 
       {query.data ? (
         <DataTableShell
-          tableKey="tenancy.users"
+          tableKey={BUSINESS_LISTS.users.tableKey}
           columns={columns}
           data={query.data}
           columnLabels={COLUMN_LABELS}

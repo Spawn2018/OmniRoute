@@ -14,6 +14,7 @@ import {
   supersedeRateLine,
   type RateLine,
 } from "@/lib/rate-lines-api"
+import { BUSINESS_LISTS } from "@/lib/business-lists"
 import { getTenantContext } from "@/lib/tenant"
 
 const columnHelper = createColumnHelper<RateLine>()
@@ -208,7 +209,7 @@ export function RateLineCatalogPage() {
 
       {query.data ? (
         <DataTableShell
-          tableKey="rate_lines"
+          tableKey={BUSINESS_LISTS.rateLines.tableKey}
           columns={columns}
           data={query.data}
           columnLabels={COLUMN_LABELS}

@@ -12,6 +12,7 @@ import {
   resolveChargeCode,
   type ChargeCode,
 } from "@/lib/charge-codes-api"
+import { BUSINESS_LISTS } from "@/lib/business-lists"
 import { getTenantContext } from "@/lib/tenant"
 
 const columnHelper = createColumnHelper<ChargeCode>()
@@ -172,7 +173,7 @@ export function ChargeCodeCatalogPage() {
 
       {query.data ? (
         <DataTableShell
-          tableKey="charge_codes"
+          tableKey={BUSINESS_LISTS.chargeCodes.tableKey}
           columns={columns}
           data={query.data}
           columnLabels={COLUMN_LABELS}
