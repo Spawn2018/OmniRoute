@@ -1,29 +1,25 @@
-# Bieżący focus
+﻿# Bieżący focus
 
-**Faza:** B — DataTableShell  
-**Repo:** https://github.com/Spawn2018/OmniRoute (`main`)  
-**Następny krok:** push **0.6** + green CI → B.7 / slot jakości
+**Faza:** B — domknięcie operacyjne  
+**Repo:** https://github.com/Spawn2018/OmniRoute (main @ 36b89b9)  
+**Następny krok:** **B.7** branch protection (Pro/public) lub procedura ręczna → slot jakości (openapi-ts, cov, jscpd)
 
 **Plan:** [docs/PLAN-REALIZACJA.md](docs/PLAN-REALIZACJA.md)  
 **ADR:** [docs/adr/0002-frontend-platform-2026.md](docs/adr/0002-frontend-platform-2026.md)
 
 ---
 
-# Plaster 0.6 — DataTableShell
+# Ukończone w tej sesji
+- Sync audytu → plan / AGENTS / skills / rules  
+- **0.5** Frontend Shell — CI green  
+- **0.6** DataTableShell + `table_view` RLS — CI green  
 
-**Delta:** [docs/deltas/open/0.6-datatable-views.md](docs/deltas/open/0.6-datatable-views.md)  
-**Status:** lokalnie gotowy — commit/push
-
-## Dostarczone
-`table_view` RLS + API CRUD + OpenFGA `can_manage_table_views` · DataTableShell (ColumnEditor DnD, ViewManager, virtual, filtry) · consumer `tenancy.users` · vitest
-
-## Poza zakresem / później
-openapi-ts · cov-fail-under / jscpd · lazy PostHog · B.7 Pro · JWT · Faza C
+**Delty:** [0.5](docs/deltas/archived/0.5-frontend-shell.md) · [0.6](docs/deltas/archived/0.6-datatable-views.md)
 
 ---
 
 ## Następne (bez kolizji)
-1. Green CI dla 0.6  
-2. B.7 lub procedura ręczna  
-3. Slot jakości (openapi-ts, cov, jscpd)  
-4. Faza C
+1. B.7 — gdy GitHub Pro/Team/public; inaczej procedura ręczna (zakaz force-push)  
+2. Slot jakości: openapi-ts, `--cov-fail-under`, jscpd, lazy PostHog  
+3. Faza C AI  
+4. Faza D agentlint / refaktor-pass
