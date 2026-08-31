@@ -16,7 +16,7 @@ TEST_DATABASE_URL = os.getenv(
 )
 
 
-@pytest_asyncio.fixture(scope="session")
+@pytest_asyncio.fixture
 async def engine():
     test_engine = create_async_engine(TEST_DATABASE_URL, pool_pre_ping=True)
     async with test_engine.begin() as conn:
