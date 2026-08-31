@@ -68,7 +68,7 @@ CI nie odpala transformerów llm-guard ani OpenAI.
 - Guard przed ekstraktorem; CI = mock
 - PDF bez docling → `pdf_strings`; A/B zapisuje deltę znaków
 - Trace langfuse przy extract; bez kluczy no-op; metadane bez `input_text`
-- promptfoo echo w CI; pytest na tych samych fixture’ach
+- promptfoo echo w CI (`just promptfoo` = pytest, nie npx); te same fixture’e MockExtractor
 - `just gate` green (unit); integration OpenFGA/RLS w CI
 
 ## Następny leftover (nie 0.10)

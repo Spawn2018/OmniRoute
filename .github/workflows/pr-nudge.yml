@@ -25,6 +25,8 @@ jobs:
               '- [ ] OpenFGA: jawna relacja na każdym nowym endpoincie',
               '- [ ] Brak zapisu domenowego z AI bez HITL (HC-04)',
               '- [ ] Delta zarchiwizowana / CURRENT zaktualizowany',
+              '- [ ] Pętla po plasterze: docs/ops/post-plaster.md (skuteczność, szybkość lub N/A, dług, docs)',
+              '- [ ] Leftovery w docs/ops/docs-debt.md',
               '',
               '_Automatyczny nudge Faza D — nie zastępuje review człowieka._',
             ].join('\n');

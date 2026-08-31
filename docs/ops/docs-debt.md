@@ -6,8 +6,9 @@ Canvas = przegląd, nie backlog do kodu na tamtą turę. Kolejność pracy: [PLA
 
 **Zrobione w syncu (nie wracać):** nagłówek PLAN nie mówi „0.5 lokalnie”; `just test` pada przy failu unita (bez `|| true`).
 
-- **0.10 DONE:** langfuse trace (no-op bez kluczy) + promptfoo CI na fixture’ach echo — nie cloud, nie żywy LLM
+- **0.10 DONE:** langfuse trace (no-op bez kluczy) + `just promptfoo` pytest echo — nie cloud, nie żywy LLM, nie `npx promptfoo eval`
 - **Następny (kod):** vitest kolejki HITL; test HTTP XOR `input_text` XOR `document_base64` (`api/extractions.py` ~45% pokrycia)
+- **Po 0.10 (eval):** `npx promptfoo eval` — lokalnie ENOSPC / playwright peers; 30 cenników = osobna decyzja danych
 - **0.10+ produkt:** żywy instructor/OpenAI w CI, transformers llm-guard, presidio, promptfoo 30 cenników, langfuse cloud
 - **Wizja, nie kod:** outbox, Temporal/Hatchet/OTel jako działające systemy
 - **Backlog produktu:** JWT zamiast spoofowalnych headerów; split-screen HITL

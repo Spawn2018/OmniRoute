@@ -6,10 +6,12 @@ description: Zamyka plaster, archiwizuje delta-spec, przygotowuje następną roz
 # Zamknij plaster
 
 1. `/bramka` — człowiek + `just gate` (brak person `weryfikator` / `audytor-wydajnosci`)
-2. Sprawdź `docs/PLAN-REALIZACJA.md` § Gate dziś — **nie** oznaczaj DoD dla recipe `echo`
-3. Scal delta → `docs/spec/` jeśli wymagane
-4. Przenieś `docs/deltas/open/<id>.md` → `docs/deltas/archived/`
-5. Linia w `docs/state/PROGRESS.md`
-6. Ustaw `docs/state/CURRENT.md` na następny plaster
-7. Commit + push: `feat(M-xx): opis [plaster id]` — **dopiero potem** wolno startować kolejny plaster
-8. **Nowa rozmowa Cursor** — nie kontynuuj w tym wątku
+2. **Pętla** `docs/ops/post-plaster.md`: skuteczność, szybkość (lub N/A), dług w diffie, docs/OS. Bramka mierzy; tu naprawiasz to, co nie psuje jakości.
+3. Leftovery z „dlaczego” → `docs/ops/docs-debt.md` + PLAN § leftoverów
+4. Sprawdź `docs/PLAN-REALIZACJA.md` § Gate dziś — **nie** oznaczaj DoD dla recipe `echo`
+5. Scal delta → `docs/spec/` jeśli wymagane
+6. Przenieś `docs/deltas/open/<id>.md` → `docs/deltas/archived/`
+7. Linia w `docs/state/PROGRESS.md`
+8. Ustaw `docs/state/CURRENT.md` na następny plaster
+9. Commit + push: `feat(M-xx): opis [plaster id]` — **dopiero potem** wolno startować kolejny plaster
+10. **Nowa rozmowa Cursor** — nie kontynuuj w tym wątku

@@ -128,6 +128,7 @@ Pełna lista z „dlaczego”: [docs/ops/docs-debt.md](ops/docs-debt.md)
 - `agentlint` w `just gate` + baseline
 - `.github/workflows/pr-nudge.yml` (checklist PR)
 - `docs/ops/weekly-refactor.md` + `docs/ops/friday-retrospective.md`
+- Pętla po każdym plasterze: [docs/ops/post-plaster.md](ops/post-plaster.md)
 - Bugbot: osobna GitHub App (nie w repo)
 
 ---
@@ -136,10 +137,11 @@ Pełna lista z „dlaczego”: [docs/ops/docs-debt.md](ops/docs-debt.md)
 
 1. Delta zamknięta; testy zaakceptowane — tylko to, co gate **naprawdę** egzekwuje + kryteria delty
 2. `just gate` green (+ integration gdy dotyczy)
-3. Łowca duplikatów + review 4-pass
-4. CURRENT + PROGRESS zaktualizowane
-5. GROUNDING HCs + ADR-0002 (brak drugiego table engine / AI-slop)
-6. **WIP:** nie startuj kolejnego plastra przy niezacommitowanym / niepushniętym zakresie bieżącego
+3. Łowca duplikatów + review 4-pass (**pomiar**; naprawa w pętli)
+4. **Pętla po kroku:** [docs/ops/post-plaster.md](ops/post-plaster.md) — skuteczność, szybkość lub N/A, dług w diffie, honesty docs; leftover → [docs-debt.md](ops/docs-debt.md)
+5. CURRENT + PROGRESS zaktualizowane
+6. GROUNDING HCs + ADR-0002 (brak drugiego table engine / AI-slop)
+7. **WIP:** nie startuj kolejnego plastra przy niezacommitowanym / niepushniętym zakresie bieżącego
 
 ## Start
 

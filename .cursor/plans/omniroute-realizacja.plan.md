@@ -331,7 +331,7 @@ Skills ładują się **on-demand** → anty–context-rot. To tu żyje „jak so
 | `refaktor-pass`      | Tygodniowo / w plastrze | transferred/added ≥10%                                        |
 | `temporal-workflow`  | RFQ / OCR jobs          | Retry, HITL, zero chat agent↔agent                            |
 | `openfga-change`     | AuthZ                   | Model + testy                                                 |
-| `zamknij-plaster`    | Koniec                  | delta→spec, CURRENT, nowa rozmowa                             |
+| `zamknij-plaster`    | Koniec                  | pętla post-plaster.md, delta→spec, CURRENT, push, nowa rozmowa |
 
 
 Commands (UX człowieka): `/plaster`, `/testy`, `/bramka`, `/zamknij`, `/delta`, `/refaktor` — cienkie wrappery nad skills.
@@ -712,7 +712,7 @@ agentlint w `just gate`; `pr-nudge.yml`; weekly-refactor + friday-retrospective.
 3. Split-screen HITL
 4. Branch protection w UI GitHub — po Pro/Team; do wtedy `docs/ops/branch-protection.md`
 5. Echo recipes (`just perf` / k6 / vulture / pip-audit) — dopiero gdy nie `echo`
-6. Poza 0.10: żywy LLM w CI, llm-guard ML, presidio, promptfoo 30 cenników, langfuse cloud
+6. `npx promptfoo eval` / 30 cenników / żywy LLM / llm-guard ML / presidio / langfuse cloud
 
 Canvas `post-audit-review` = przegląd, nie lista do kodu. Rejestr: `docs/ops/docs-debt.md` + `docs/PLAN-REALIZACJA.md` § leftoverów. Załączony plan software-house **nietknięty**.
 

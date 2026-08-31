@@ -10,4 +10,4 @@
 
 **Plan:** [docs/PLAN-REALIZACJA.md](docs/PLAN-REALIZACJA.md)
 
-**2026-08-31:** 0.10 — trace przy extract (no-op bez kluczy); promptfoo echo w CI. Leftovery: [docs/ops/docs-debt.md](docs/ops/docs-debt.md).
+**2026-08-31:** 0.10 — trace przy extract (no-op bez kluczy); `just promptfoo` = pytest echo. Pętla po kroku: [docs/ops/post-plaster.md](docs/ops/post-plaster.md). Leftovery: [docs/ops/docs-debt.md](docs/ops/docs-debt.md).

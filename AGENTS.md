@@ -55,7 +55,7 @@ Wygrywają z każdą inną sugestią, także z twoją.
 - **Plan przed kodem.** Powyżej trzech plików: napisz plan, czekaj na akceptację.
 - **Test przed implementacją** dla każdej reguły biznesowej.
 - Nie dotykaj plików spoza zakresu. Zgłoś, jeśli to konieczne.
-- Po zakończeniu: jedna linia w `PROGRESS.md`, aktualizacja `CURRENT.md`.
+- Po zakończeniu: pętla `docs/ops/post-plaster.md`, linia w `PROGRESS.md`, `CURRENT.md`, push.
 
 ## Styl
 

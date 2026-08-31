@@ -40,5 +40,5 @@ Kolejność jest obowiązkowa. Nie przeskakuj etapów.
 - Vitest: DataTableShell + nowe UI list. Kolejka ekstrakcji — vitest **brak** (osobny plaster, nie ten skill)
 
 ## Definicja ukończenia
-`just gate` zielone (tylko realne kroki, nie `echo`) + człowiek + delta zarchiwizowana + **push**.
+`just gate` zielone (tylko realne kroki, nie `echo`) + pętla `docs/ops/post-plaster.md` + człowiek + delta zarchiwizowana + **push**.
 Brak subagentów `weryfikator` / `kronikarz` w repo — skill `zamknij-plaster`.

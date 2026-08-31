@@ -25,3 +25,4 @@ Agenci nie „rozmawiają”. Wymieniają **artefakty**. Wykonaj 4 passa sekwenc
 
 ## Output
 Tabela + lista blokujących vs informacyjnych. Nie naprawiaj w tym kroku.
+Naprawa i leftovery: `docs/ops/post-plaster.md` + `docs/ops/docs-debt.md`.
