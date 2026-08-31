@@ -34,3 +34,9 @@ Thumbs.db
 
 # Optional: large archive PDFs (MD files remain tracked)
 Informacje z claude/*.pdf
+
+# Local native tooling (no Docker)
+tools/openfga/openfga.exe
+tools/openfga/*.tgz
+tools/openfga/*.tar.gz
+tools/openfga/assets/

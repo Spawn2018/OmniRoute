@@ -19,15 +19,19 @@ Informacje z claude/
 Kanoniczne pliki operacyjne żyją w `docs/` tego repozytorium. Nie duplikuj aneksów —
 wskaż ścieżkę do archiwum przy potrzebie głębszego kontekstu.
 
-## Komendy
+## Lokalnie bez Dockera (Windows, bez wirtualizacji)
 
-```bash
-just gate    # bramka jakości (patrz PLAN: co jest realne vs stub)
-just check   # lint + typy (backend)
-just test    # testy
-just arch    # import-linter
-cd frontend; pnpm dev   # PowerShell: użyj ; nie &&
+```powershell
+# 1) dociąga openfga.exe, próbuje Postgres/winget, migracje, opcjonalny seed
+powershell -ExecutionPolicy Bypass -File scripts/dev-native.ps1
+
+# jeśli Postgres już jest skonfigurowany:
+powershell -ExecutionPolicy Bypass -File scripts/dev-native.ps1 -SkipInstall -Seed
 ```
+
+Wymaga natywnego **PostgreSQL 16** (instalator EDB / winget — często z UAC).  
+OpenFGA: `tools/openfga/openfga.exe` (gitignored, skrypt pobiera).  
+Seed: `scripts/dev_seed_local.py`.
 
 ## Stan faz
 
