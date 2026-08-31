@@ -1,17 +1,17 @@
 ﻿# Bieżący focus
 
-**Faza:** Charge  
+**Faza:** Auth0  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
 
-**Ostatni plaster:** **1.2** `charge` M-08 (zarchiwizowany)  
-**Następny:** **Charge 1.3** accept → RatesService, ta sama transakcja HTTP. Równolegle: Auth0 I1, Wave FE U-* (pliki ∩ = ∅). 0.24 pip-audit pominięty (opcjonalny).
+**Ostatni plaster:** **1.3** accept → `rate_line` (zarchiwizowany)  
+**Następny:** **Auth0 I1** BFF + PKCE + cookie. Charge 1.3 DONE. Wave FE U-* nadal otwarte (nie startowane tu). 0.24 pip-audit pominięty (opcjonalny).
 
-**Spec (jedna na sesję):** [docs/state/PROGRAM-12M.md](docs/state/PROGRAM-12M.md) Charge 1.3
+**Spec (jedna na sesję):** [docs/state/PROGRAM-12M.md](docs/state/PROGRAM-12M.md) Auth0 I1
 
 **Kanon:** [docs/state/PROGRAM-12M.md](docs/state/PROGRAM-12M.md)
 
-**Uczciwość:** 1.2 = buy+sell na jednym wierszu + `margin(buy, sell)` w kodzie + `/charges`. Nie accept HITL. U-routes-breadth = jedna trasa operatora, **nie** Exit Wave FE. Isolation RLS = CI (lokalnie PG wisiał). Leftover ≠ DONE. echo ≠ DoD.
+**Uczciwość:** 1.3 = accept HITL + `rate_line` (kupno) w jednej transakcji HTTP, orchestracja API. `ExtractionService` nie importuje rates. Nie `charge`/sell z LLM. Nie outbox. U-routes-breadth = link na HITL + istniejące `/rate-lines`, **nie** Exit Wave FE. Isolation/integration = CI (lokalnie PG wisiał). Leftover ≠ DONE. echo ≠ DoD.
 
 **Plan:** [docs/PLAN-REALIZACJA.md](docs/PLAN-REALIZACJA.md)
 
-**2026-09-01:** 1.2 — `charge` buy+sell, marża w kodzie M-08.
+**2026-09-01:** 1.3 — accept zapisuje `rate_line` w jednej transakcji HTTP.

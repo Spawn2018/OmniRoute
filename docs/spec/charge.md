@@ -1,7 +1,7 @@
 # M-08 charge — buy + sell, marża
 
-**Plaster:** 1.2  
-**Status:** fundament (jeden wiersz buy+sell). Nie accept HITL → RatesService (1.3).
+**Plaster:** 1.2 DONE · 1.3 = accept HITL → `rate_line` (nie ten spec; `extraction.md`)  
+**Status:** fundament (jeden wiersz buy+sell). Accept HITL nie tworzy `charge` / sell.
 
 ## Zakres
 
@@ -14,7 +14,7 @@
 
 ## Poza zakresem
 
-accept HITL → RatesService (1.3), outbox, Wave FE U-*, druga tabela marży.
+accept HITL → `charge` / sell z LLM, outbox, Wave FE U-*, druga tabela marży. 1.3 zapisuje tylko `rate_line` (kupno) z warstwy API.
 
 ## HC
 

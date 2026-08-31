@@ -6,8 +6,10 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app.api.deps import require_tenant_session, set_authz_checker
+from app.domain.errors import UnknownChargeCode
 from app.main import app
 from app.models.extraction_draft import ExtractionDraft
+from app.models.rate_line import RateLine
 from tests.http_auth import bearer_auth_headers
 
 _NOW = datetime(2026, 8, 31, 12, 0, tzinfo=UTC)
@@ -99,6 +101,28 @@ class StubExtractionService:
         return [self.draft]
 
 
+class StubAcceptToRates:
+    def __init__(self, _session: object, stub: StubExtractionService) -> None:
+        self._stub = stub
+
+    async def accept(
+        self,
+        *,
+        draft_id: UUID,
+        user_id: UUID,
+    ) -> tuple[ExtractionDraft, list[RateLine]]:
+        draft = await self._stub.accept(draft_id=draft_id, user_id=user_id)
+        rate = RateLine(
+            id=uuid4(),
+            organization_id=draft.organization_id,
+            charge_code="THC",
+            amount="10.0000",
+            currency="EUR",
+            source_ref=draft.source_ref,
+        )
+        return draft, [rate]
+
+
 @pytest.fixture
 def happy_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
     stub = StubExtractionService(object())
@@ -106,12 +130,16 @@ def happy_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
     def _factory(session: object) -> StubExtractionService:
         return stub
 
+    def _orchestrator(session: object) -> StubAcceptToRates:
+        return StubAcceptToRates(session, stub)
+
     async def _fake_tenant_session() -> object:
         session = AsyncMock()
         session.commit = AsyncMock()
         return session
 
     monkeypatch.setattr("app.api.extractions.ExtractionService", _factory)
+    monkeypatch.setattr("app.api.extractions.AcceptExtractionToRates", _orchestrator)
     set_authz_checker(AllowAllAuthz())
     app.dependency_overrides[require_tenant_session] = _fake_tenant_session
     yield TestClient(app)
@@ -133,7 +161,7 @@ def test_http_extract_input_text_creates_pending_draft(happy_client: TestClient)
     assert body["organization_id"] == str(org_id)
     assert body["source_ref"] == "doc://x"
     assert body["payload"]["candidates"][0]["amount_text"] == "10"
-    assert "rate_line" not in body
+    assert body["rate_line_ids"] == []
     assert "rate_line" not in body["payload"]
 
 
@@ -163,6 +191,7 @@ def test_http_accept_marks_draft_accepted(happy_client: TestClient) -> None:
     body = accepted.json()
     assert body["status"] == "accepted"
     assert body["reviewed_by"] == str(user_id)
+    assert len(body["rate_line_ids"]) == 1
     assert "rate_line" not in body["payload"]
 
 
@@ -191,6 +220,41 @@ def test_http_list_returns_created_draft(happy_client: TestClient) -> None:
     rows = listed.json()
     assert len(rows) == 1
     assert rows[0]["id"] == created.json()["id"]
+
+
+def test_http_accept_unknown_code_returns_polish_400(monkeypatch: pytest.MonkeyPatch) -> None:
+    stub = StubExtractionService(object())
+
+    class _FailingOrchestrator:
+        def __init__(self, _session: object) -> None:
+            pass
+
+        async def accept(self, *, draft_id: UUID, user_id: UUID):
+            await stub.accept(draft_id=draft_id, user_id=user_id)
+            raise UnknownChargeCode("nieznany kod opłaty: LOOSE")
+
+    async def _fake_tenant_session() -> object:
+        session = AsyncMock()
+        session.commit = AsyncMock()
+        return session
+
+    monkeypatch.setattr("app.api.extractions.ExtractionService", lambda session: stub)
+    monkeypatch.setattr("app.api.extractions.AcceptExtractionToRates", _FailingOrchestrator)
+    set_authz_checker(AllowAllAuthz())
+    app.dependency_overrides[require_tenant_session] = _fake_tenant_session
+    client = TestClient(app)
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/extractions",
+        headers=headers,
+        json={"source_ref": "doc://x", "input_text": "THC 10 EUR"},
+    )
+    draft_id = created.json()["id"]
+    accepted = client.post(f"/api/v1/extractions/{draft_id}/accept", headers=headers)
+    app.dependency_overrides.clear()
+    set_authz_checker(None)
+    assert accepted.status_code == 400
+    assert accepted.json()["detail"] == "nieznany kod opłaty: LOOSE"
 
 
 def test_http_extract_rejects_invalid_base64(happy_client: TestClient) -> None:

@@ -3,7 +3,7 @@
 **Plan Cursor (pełny):** `.cursor/plans/omniroute-realizacja.plan.md`  
 **ADR:** [0001 Cursor factory](adr/0001-cursor-software-factory-weryfikacja.md) · [0002 Frontend 2026](adr/0002-frontend-platform-2026.md)  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
-**Stan:** B + C.1–C.5 + 0.11–0.15 leftover + **Exit Wave A (D0–0.23)** + **0.25 Money** + **1.0–1.2 charge** + D minimal · następny **Charge 1.3** (accept → RatesService; Auth0 I1 i Wave FE mogą równolegle)
+**Stan:** B + C.1–C.5 + 0.11–0.15 leftover + **Exit Wave A (D0–0.23)** + **0.25 Money** + **1.0–1.3 charge** + D minimal · następny **Auth0 I1** (Wave FE U-* leftover; nie startowane tu)
 
 ```mermaid
 flowchart LR
@@ -130,7 +130,8 @@ Pełna lista z „dlaczego”: [docs/ops/docs-debt.md](ops/docs-debt.md)
 
 | Kolejność | Co | Nie mylić z |
 |---|---|---|
-| następny | Charge 1.3 accept → RatesService | ta sama transakcja HTTP; nie outbox; nie ExtractionService → rates |
+| następny | Auth0 I1 BFF + PKCE + cookie | nie hasła+Auth0; first-login bez org = odmowa |
+| 1.3 DONE | accept → `rate_line` w jednej transakcji HTTP | nie ExtractionService → rates; nie outbox; nie charge/sell z LLM |
 | 1.2 DONE | `charge` buy+sell + `margin()` + `/charges` | nie accept HITL; U-routes-breadth = jedna trasa, nie Exit Wave FE |
 | 1.1 DONE | `rate_line` immutable + `source_ref` + `/rate-lines` | nie charge / marża; U-routes-breadth = jedna trasa, nie Exit Wave FE |
 | 1.0 DONE | `charge_code` katalog M-06 + `/charge-codes` | nie rate_line / charge; U-routes-breadth = jedna trasa, nie Exit Wave FE |

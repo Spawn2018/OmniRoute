@@ -17,7 +17,7 @@ _MAX_DOCUMENT_BYTES = 2_000_000
 
 
 class ExtractionService:
-    """HITL: ekstrakcja → draft; accept nie tworzy rate_line (HC-04)."""
+    """HITL: ekstrakcja → draft; accept tylko status — rate_line pisze warstwa API (1.3)."""
 
     def __init__(
         self,

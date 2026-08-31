@@ -68,3 +68,7 @@ class MixedCurrencyCharge(DomainError):
 
 class ChargeRateMismatch(DomainError):
     """rate_line na charge musi mieć ten sam charge_code."""
+
+
+class AcceptRequiresRateLine(DomainError):
+    """Accept HITL bez poprawnej stawki kupna — cała transakcja wraca (1.3)."""

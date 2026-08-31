@@ -62,10 +62,13 @@ export function ExtractionQueuePage() {
     },
   })
 
+  const [acceptedRateNote, setAcceptedRateNote] = useState(false)
+
   const acceptMutation = useMutation({
     mutationFn: (draftId: string) => acceptExtractionDraft(draftId),
     onSuccess: () => {
       track("extraction_draft_accepted")
+      setAcceptedRateNote(true)
       setSelectedDraftId(null)
       invalidate()
     },
@@ -147,7 +150,7 @@ export function ExtractionQueuePage() {
       <div>
         <h2 className="text-base font-semibold">Kolejka ekstrakcji (HITL)</h2>
         <p className="text-xs text-muted-foreground">
-          Parser A/B · MockExtractor · accept nie zapisuje rate_line
+          Parser A/B · MockExtractor · akceptacja zapisuje stawki kupna w tej samej transakcji
         </p>
       </div>
 
@@ -232,6 +235,17 @@ export function ExtractionQueuePage() {
         onAccept={(draftId) => acceptMutation.mutate(draftId)}
         onReject={(draftId) => rejectMutation.mutate(draftId)}
       />
+      {acceptMutation.isError ? (
+        <p className="text-sm text-destructive">{(acceptMutation.error as Error).message}</p>
+      ) : null}
+      {acceptedRateNote ? (
+        <p className="text-sm">
+          Zaakceptowano — zapisano stawki kupna.{" "}
+          <Link className="underline" to="/rate-lines">
+            Stawki
+          </Link>
+        </p>
+      ) : null}
 
       {query.data ? (
         <DataTableShell

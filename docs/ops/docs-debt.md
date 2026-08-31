@@ -20,7 +20,10 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **0.21 T4 DONE:** `hello_token` default false; mint UUID tylko przy fladze
 - **0.22 T5 DONE:** JWT iss/aud/jti/ver; TTL 15 min
 - **0.23 S1 DONE:** JWT_SECRET z GitHub Encrypted Secrets; literał usunięty z gate.yml
-- **1.2 DONE:** `charge` buy+sell + `margin(buy, sell)` + `/charges`. **Następny (kod):** Charge 1.3 accept → RatesService ([PROGRAM-12M.md](../state/PROGRAM-12M.md))
+- **1.3 DONE:** accept HITL + `rate_line` (kupno) w jednej transakcji HTTP; `ExtractionService` nie importuje rates. **Następny (kod):** Auth0 I1 ([PROGRAM-12M.md](../state/PROGRAM-12M.md))
+- **1.2 DONE:** `charge` buy+sell + `margin(buy, sell)` + `/charges`. Nie accept HITL
+- **1.3 leftover (dlaczego nie w tym plasterze):** isolation/integration = CI — lokalnie PG wisiał przy `pytest -m integration` (jak 0.16–1.2); `just api-types` nie regen — `rate_line_ids` w wrapperze nieczytane, gate = typecheck; brak MCP Postgres w sesji — nowej tabeli nie było; Wave FE U-* i Auth0 I1 nie startowane (CURRENT = I1)
+- **U-routes-breadth:** 1.3 = status + link `/rate-lines` na HITL. Nie Exit Wave FE (U-density…U-admin-ref)
 - **1.1 DONE:** `rate_line` immutable + `source_ref` + `/rate-lines`. Nie `charge` / marża
 - **1.0 DONE:** `charge_code` katalog + aliasy + RLS + `/charge-codes`. Nie `rate_line` / `charge`
 - **0.25 DONE:** Money Decimal + waluta + `<Money/>` na HITL. Bez tabeli charge
@@ -31,7 +34,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **1.0 leftover (dlaczego nie w tym plasterze):** isolation/integration = CI — lokalnie PG wisiał (jak 0.16–0.18); `just api-types` nie regen — wrapper fetch, gate = typecheck
 - **1.0 leftover:** aliasy jako `TEXT[]` na wierszu, nie osobna tabela — wystarcza resolve; osobny wiersz aliasu gdy 1.1+ tego wymaga
 - **Leftover ≠ DONE:** wiersz w tym pliku / PLAN nie zamyka plastra i nie zastępuje `just gate`
-- **OAuth/OIDC:** Auth0 I1 **po Wave A**; nie następny kod. 0.12 JWT = hello HS256
+- **OAuth/OIDC:** Auth0 I1 = następny kod (BFF+PKCE+cookie). 0.12 JWT = hello HS256, nie IdP
 - **0.11 DONE:** HTTP XOR 422 + vitest `extractionCreateBody`
 - **0.12 DONE:** JWT HS256 hello (`Authorization: Bearer`); identity z claims; OpenFGA nadal AuthZ
 - **0.13 DONE:** split-screen HITL (podgląd `input_text` | recenzja); nie PDF canvas

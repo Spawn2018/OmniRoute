@@ -36,3 +36,17 @@ forbidden_modules =
     fastapi
     sqlalchemy
     httpx
+
+[importlinter:contract:extraction-no-rates]
+name = Extraction nie zna stawek ani charge
+type = forbidden
+source_modules =
+    app.services.extraction
+    app.repositories.extraction
+forbidden_modules =
+    app.services.rate_lines
+    app.services.charges
+    app.repositories.rate_lines
+    app.repositories.charges
+    app.models.rate_line
+    app.models.charge

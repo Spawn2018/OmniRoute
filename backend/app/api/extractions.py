@@ -8,9 +8,11 @@ from fastapi import APIRouter, Depends, Query, status
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.api.accept_extraction import AcceptExtractionToRates
 from app.api.deps import get_current_identity, require_permission, require_tenant_session
 from app.core.session_token import SessionIdentity
 from app.domain.errors import UnparseableDocument
+from app.models.rate_line import RateLine
 from app.services.extraction.extraction_service import ExtractionService
 
 router = APIRouter(prefix="/extractions", tags=["extractions"])
@@ -46,6 +48,7 @@ class ExtractionDraftResponse(BaseModel):
     payload: dict[str, Any]
     reviewed_by: UUID | None
     reviewed_at: datetime | None
+    rate_line_ids: list[UUID] = Field(default_factory=list)
 
 
 @router.get("", response_model=list[ExtractionDraftResponse])
@@ -56,7 +59,7 @@ async def list_extraction_drafts(
 ) -> list[ExtractionDraftResponse]:
     service = ExtractionService(session)
     drafts = await service.list_drafts(status_filter)
-    return [ExtractionDraftResponse.model_validate(draft) for draft in drafts]
+    return [_draft_response(draft) for draft in drafts]
 
 
 @router.post("", response_model=ExtractionDraftResponse, status_code=status.HTTP_201_CREATED)
@@ -88,7 +91,7 @@ async def create_extraction_draft(
             input_text=body.input_text,
         )
     await session.commit()
-    return ExtractionDraftResponse.model_validate(draft)
+    return _draft_response(draft)
 
 
 @router.post("/{draft_id}/accept", response_model=ExtractionDraftResponse)
@@ -98,10 +101,12 @@ async def accept_extraction_draft(
     session: AsyncSession = Depends(require_tenant_session),
     identity: SessionIdentity = Depends(get_current_identity),
 ) -> ExtractionDraftResponse:
-    service = ExtractionService(session)
-    draft = await service.accept(draft_id=draft_id, user_id=identity.user_id)
+    draft, rates = await AcceptExtractionToRates(session).accept(
+        draft_id=draft_id,
+        user_id=identity.user_id,
+    )
     await session.commit()
-    return ExtractionDraftResponse.model_validate(draft)
+    return _draft_response(draft, rates)
 
 
 @router.post("/{draft_id}/reject", response_model=ExtractionDraftResponse)
@@ -114,4 +119,14 @@ async def reject_extraction_draft(
     service = ExtractionService(session)
     draft = await service.reject(draft_id=draft_id, user_id=identity.user_id)
     await session.commit()
-    return ExtractionDraftResponse.model_validate(draft)
+    return _draft_response(draft)
+
+
+def _draft_response(
+    draft: object,
+    rates: list[RateLine] | None = None,
+) -> ExtractionDraftResponse:
+    body = ExtractionDraftResponse.model_validate(draft)
+    if rates is None:
+        return body
+    return body.model_copy(update={"rate_line_ids": [row.id for row in rates]})

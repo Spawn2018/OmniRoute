@@ -48,4 +48,5 @@
 | 2026-09-01 | 1.0 | M-06 | `charge_code` katalog + aliasy + RLS + `/charge-codes`; nie luźny string |
 | 2026-09-01 | 1.1 | M-07 | `rate_line` immutable + `source_ref` + `/rate-lines`; nie `charge` / accept |
 | 2026-09-01 | 1.2 | M-08 | `charge` buy+sell na jednym wierszu + `margin()` w kodzie + `/charges`; nie accept HITL |
-| — | leftover | Charge | **Następny:** 1.3 accept → RatesService, ta sama transakcja HTTP. U-routes-breadth = jedna trasa, nie Exit Wave FE. Isolation = CI |
+| 2026-09-01 | 1.3 | M-20 | accept HITL → `rate_line` (kupno) w jednej transakcji HTTP; ExtractionService bez rates; nie outbox |
+| — | leftover | Auth0 | **Następny:** Auth0 I1 BFF+PKCE+cookie. Wave FE U-* otwarte. Isolation 1.3 = CI |
