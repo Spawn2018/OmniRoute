@@ -3,8 +3,8 @@ default: gate
 agent-refs:
     python scripts/quality/check_agent_refs.py
 
-gate: agent-refs check test-unit arch frontend-typecheck frontend-test
-    @echo "gate: agent-refs + check + test-unit + arch + frontend-typecheck + frontend-test OK"
+gate: agent-refs check test-unit arch frontend-typecheck frontend-test dup
+    @echo "gate: agent-refs + check + test-unit + arch + frontend + dup OK"
 
 dev:
     docker compose up -d db
@@ -23,7 +23,7 @@ test:
     pytest backend/tests -m integration -q
 
 test-unit:
-    pytest backend/tests -m "not integration" -q
+    pytest backend/tests -m "not integration" -q --cov=app --cov-fail-under=80
 
 test-integration:
     pytest backend/tests -m integration -q
@@ -53,7 +53,8 @@ db-test-init:
     docker compose exec -T db psql -U omniroute -d postgres -c "CREATE DATABASE omniroute_test;" || true
 
 api-types:
-    @echo "api-types: openapi-ts (Faza B.5+)"
+    python scripts/export_openapi.py
+    cd frontend && pnpm exec openapi-ts
 
 frontend-dev:
     cd frontend && pnpm dev
@@ -77,7 +78,7 @@ dead:
     @echo "dead: vulture (Faza B+)"
 
 dup:
-    @echo "dup: jscpd (Faza B+)"
+    cd frontend && pnpm exec jscpd ../backend/app ../frontend/src --min-lines 5 --threshold 3 --ignore "**/api/**,**/routeTree.gen.ts,**/node_modules/**"
 
 agentlint:
     @echo "agentlint: Faza D"

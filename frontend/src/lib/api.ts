@@ -1,29 +1,14 @@
-export type TenantContext = {
-  organizationId: string
-  userId: string
-}
+import { client } from "@/api/client.gen"
+import {
+  healthHealthGet,
+  listUsersApiV1TenancyUsersGet,
+} from "@/api/sdk.gen"
+import type { AppUserResponse } from "@/api/types.gen"
+import { requireTenantHeaders } from "@/lib/tenant"
 
-const ORG_KEY = "omniroute.organizationId"
-const USER_KEY = "omniroute.userId"
+client.setConfig({ baseUrl: "" })
 
-export function getTenantContext(): TenantContext {
-  return {
-    organizationId: localStorage.getItem(ORG_KEY) ?? "",
-    userId: localStorage.getItem(USER_KEY) ?? "",
-  }
-}
-
-export function setTenantContext(ctx: TenantContext): void {
-  localStorage.setItem(ORG_KEY, ctx.organizationId)
-  localStorage.setItem(USER_KEY, ctx.userId)
-}
-
-export type AppUser = {
-  id: string
-  organization_id: string
-  email: string
-  display_name: string
-}
+export type AppUser = AppUserResponse
 
 export class ApiError extends Error {
   readonly status: number
@@ -35,66 +20,26 @@ export class ApiError extends Error {
   }
 }
 
-export async function apiGet<T>(path: string): Promise<T> {
-  const response = await tenantFetch(path, { method: "GET" })
-  return (await response.json()) as T
-}
+export { getTenantContext, setTenantContext } from "@/lib/tenant"
 
-export async function apiSend<T>(
-  path: string,
-  options: { method: "POST" | "PATCH" | "DELETE"; body?: unknown },
-): Promise<T> {
-  const response = await tenantFetch(path, {
-    method: options.method,
-    body: options.body === undefined ? undefined : JSON.stringify(options.body),
-    headers: options.body === undefined ? undefined : { "Content-Type": "application/json" },
-  })
-  if (response.status === 204) {
-    return undefined as T
-  }
-  return (await response.json()) as T
-}
-
-async function tenantFetch(
-  path: string,
-  init: {
-    method: string
-    body?: string
-    headers?: Record<string, string>
-  },
-): Promise<Response> {
-  const { organizationId, userId } = getTenantContext()
-  if (!organizationId || !userId) {
-    throw new ApiError("Ustaw X-Organization-Id i X-User-Id w ustawieniach sesji", 400)
-  }
-
-  const response = await fetch(path, {
-    method: init.method,
-    body: init.body,
-    headers: {
-      Accept: "application/json",
-      "X-Organization-Id": organizationId,
-      "X-User-Id": userId,
-      ...init.headers,
-    },
-  })
-
-  if (!response.ok) {
-    const detail = await response.text()
-    throw new ApiError(detail || response.statusText, response.status)
-  }
-
-  return response
+function statusOf(response: Response | undefined): number {
+  return response?.status ?? 500
 }
 
 export async function fetchTenancyUsers(): Promise<AppUser[]> {
-  return apiGet<AppUser[]>("/api/v1/tenancy/users")
+  const { data, error, response } = await listUsersApiV1TenancyUsersGet({
+    headers: requireTenantHeaders(),
+  })
+  if (error || !data) {
+    throw new ApiError(JSON.stringify(error) || "Błąd listy użytkowników", statusOf(response))
+  }
+  return data
 }
 
 export async function fetchHealth(): Promise<{ status: string }> {
-  const response = await fetch("/health")
-  if (!response.ok) {
-    throw new ApiError("API niedostępne", response.status)
+  const { data, error, response } = await healthHealthGet()
+  if (error || !data || typeof data.status !== "string") {
+    throw new ApiError("API niedostępne", statusOf(response))
   }
-  return (await response.json()) as { status: string }
+  return { status: data.status }
 }

@@ -1,25 +1,21 @@
 ﻿# Bieżący focus
 
-**Faza:** B — domknięcie operacyjne  
-**Repo:** https://github.com/Spawn2018/OmniRoute (main @ 36b89b9)  
-**Następny krok:** **B.7** branch protection (Pro/public) lub procedura ręczna → slot jakości (openapi-ts, cov, jscpd)
+**Faza:** C — Platforma AI (po B + slot jakości)  
+**Repo:** https://github.com/Spawn2018/OmniRoute  
+**Następny krok:** start **Fazy C** (instructor / docling / langfuse / HITL) — osobny plaster
 
 **Plan:** [docs/PLAN-REALIZACJA.md](docs/PLAN-REALIZACJA.md)  
-**ADR:** [docs/adr/0002-frontend-platform-2026.md](docs/adr/0002-frontend-platform-2026.md)
+**B.7:** [docs/ops/branch-protection.md](docs/ops/branch-protection.md)
 
 ---
 
-# Ukończone w tej sesji
-- Sync audytu → plan / AGENTS / skills / rules  
-- **0.5** Frontend Shell — CI green  
-- **0.6** DataTableShell + `table_view` RLS — CI green  
-
-**Delty:** [0.5](docs/deltas/archived/0.5-frontend-shell.md) · [0.6](docs/deltas/archived/0.6-datatable-views.md)
+# Ukończone (B + jakość)
+- 0.5 Shell · 0.6 DataTableShell · B.7 procedura  
+- Slot: openapi-ts · cov≥80% · jscpd≤3% · lazy PostHog  
 
 ---
 
-## Następne (bez kolizji)
-1. B.7 — gdy GitHub Pro/Team/public; inaczej procedura ręczna (zakaz force-push)  
-2. Slot jakości: openapi-ts, `--cov-fail-under`, jscpd, lazy PostHog  
-3. Faza C AI  
-4. Faza D agentlint / refaktor-pass
+## Następne
+1. **Faza C** AI (HITL na DataTableShell)  
+2. **Faza D** agentlint / refaktor-pass / Automations  
+3. B.7 upgrade: required check `gate` po GitHub Pro

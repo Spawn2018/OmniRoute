@@ -40,3 +40,8 @@ tools/openfga/openfga.exe
 tools/openfga/*.tgz
 tools/openfga/*.tar.gz
 tools/openfga/assets/
+
+# jscpd / coverage reports
+report/
+htmlcov/
+.jscpd-report/

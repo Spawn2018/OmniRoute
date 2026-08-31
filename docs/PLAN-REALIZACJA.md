@@ -38,12 +38,13 @@ flowchart LR
 | pytest unit + integration | ✅ CI | — |
 | import-linter | ✅ `just arch` | — |
 | frontend typecheck | ✅ `frontend-typecheck` w gate | — |
-| vitest | ✅ `frontend-test` w gate (od 0.6) | — |
-| cov ≥ 80% | ❌ brak `--cov-fail-under` | spłata po 0.6 / slot jakości |
-| jscpd ≤ 3% | ❌ `just dup` = echo | Faza D / slot jakości |
-| openapi-ts | ❌ `just api-types` = echo; tymczasowy `lib/api.ts` | slot kontraktu po 0.6 |
-| size-limit / perf | ❌ stub | po lazy PostHog |
+| vitest | ✅ `frontend-test` w gate | — |
+| cov ≥ 80% | ✅ `test-unit --cov-fail-under=80` | — |
+| jscpd ≤ 3% | ✅ `just dup` w gate | — |
+| openapi-ts | ✅ `just api-types` + `frontend/src/api/` | regeneruj przy zmianie API |
+| size-limit / perf | ❌ stub | po dalszym budgetingu |
 | agentlint | ❌ echo | Faza D |
+| lazy PostHog | ✅ dynamic `import("posthog-js")` | — |
 
 ---
 
@@ -66,10 +67,11 @@ flowchart LR
 - **Dodatkowo w 0.6:** vitest minimum na DataTableShell; preferuj start openapi-ts (spłata długu kontraktu)
 - Źródła: Pencil & Paper; NN/G; TanStack Column DnD
 
-### B.7 Branch protection (pull-forward z D)
+### B.7 Branch protection (pull-forward z D) — **DONE (procedura)**
 - Cel: status check `gate` na `main`
-- **Constraint (2026-08-31):** GitHub **Free + private** → API branch protection **HTTP 403**. Opcje: GitHub Pro / Team, repo public, albo procedura ręczna (zakaz force-push, review przed merge) do czasu Pro.
-- Nie blokuj 0.6 czekaniem na Pro.
+- **Constraint:** GitHub Free + private → API **403**
+- **Obowiązuje:** [docs/ops/branch-protection.md](ops/branch-protection.md) (zakaz force-push, green CI przed push)
+- Po Pro/Team: włączyć required check `gate` w UI i supersedować procedurę
 
 **TanStack Start:** Thoughtworks **Assess** (2026-04) — **nie** jako fundament; SPA wystarczy.
 
