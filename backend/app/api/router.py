@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from app.api import extractions, session, table_views, tenancy
+from app.api import charge_codes, extractions, session, table_views, tenancy
 from app.domain.errors import PermissionDenied
 
 api_router = APIRouter(prefix="/api/v1")
@@ -8,6 +8,7 @@ api_router.include_router(session.router)
 api_router.include_router(tenancy.router)
 api_router.include_router(table_views.router)
 api_router.include_router(extractions.router)
+api_router.include_router(charge_codes.router)
 
 
 @api_router.api_route(

@@ -18,6 +18,7 @@ type = independence
 modules =
     app.services.tenancy
     app.services.extraction
+    app.services.charge_codes
 
 [importlinter:contract:integracje]
 name = Integracje nie znają serwisów

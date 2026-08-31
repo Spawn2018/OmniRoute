@@ -10,6 +10,7 @@ from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_asyn
 from app.core.database import bind_tenant
 from app.models.app_user import AppUser
 from app.models.base import Base
+from app.models.charge_code import ChargeCode  # noqa: F401 — rejestr metadanych RLS
 from app.models.extraction_draft import ExtractionDraft  # noqa: F401 — rejestr metadanych RLS
 from app.models.organization import Organization
 from app.models.refresh_token import RefreshToken  # noqa: F401 — rejestr metadanych RLS
@@ -122,6 +123,20 @@ async def _apply_rls_policies(conn) -> None:
             CREATE POLICY refresh_token_by_hash ON refresh_token
             FOR SELECT
             USING (token_hash = NULLIF(current_setting('app.refresh_hash', true), ''))
+            """
+        ),
+    )
+    await conn.execute(text("ALTER TABLE charge_code ENABLE ROW LEVEL SECURITY"))
+    await conn.execute(text("ALTER TABLE charge_code FORCE ROW LEVEL SECURITY"))
+    await conn.execute(text("DROP POLICY IF EXISTS charge_code_tenant_isolation ON charge_code"))
+    await conn.execute(
+        text(
+            """
+            CREATE POLICY charge_code_tenant_isolation ON charge_code
+            USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
+            WITH CHECK (
+              organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid
+            )
             """
         ),
     )

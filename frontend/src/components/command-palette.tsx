@@ -14,6 +14,7 @@ const ACTIONS = [
   { id: "nav-home", label: "Idź do pulpitu", to: "/" },
   { id: "nav-users", label: "Idź do użytkowników tenanta", to: "/tenancy/users" },
   { id: "nav-extractions", label: "Idź do kolejki ekstrakcji", to: "/extractions" },
+  { id: "nav-charge-codes", label: "Idź do katalogu kodów opłat", to: "/charge-codes" },
   { id: "nav-session", label: "Ustawienia sesji (tenant)", to: "/session" },
 ] as const
 

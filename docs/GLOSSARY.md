@@ -4,6 +4,8 @@
 |---|---|---|
 | stawka | rate_line | niemutowalna, source_ref |
 | opłata / charge | charge / shipment_charge | jedyne miejsce prawdy o marży |
+| kod opłaty | charge_code | katalog M-06; typowany token, nie luźny string |
+| alias kodu opłaty | charge_code alias | synonim w katalogu tenanta |
 | wycena | quotation | |
 | luka wyceny | quotation_gap | brakująca dopłata |
 | zlecenie | shipment | handlowe |

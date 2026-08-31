@@ -40,3 +40,15 @@ class UnparseableDocument(DomainError):
 
 class InvalidMoney(DomainError):
     """Kwota musi być Decimal z walutą ISO 4217 — nigdy float."""
+
+
+class InvalidChargeCode(DomainError):
+    """Token katalogu: 2–32 znaki A-Z, 0-9, _ — nie luźny string."""
+
+
+class ChargeCodeConflict(DomainError):
+    """Kod albo alias już zajęty w katalogu tenanta."""
+
+
+class UnknownChargeCode(DomainError):
+    """Token nie ma wpisu w katalogu charge_code tenanta."""

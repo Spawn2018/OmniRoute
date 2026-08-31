@@ -13,27 +13,38 @@ from tests.patterns.tenant_isolation import (
     assert_tenant_sees_only_own_rows,
 )
 
-_TENANT_POLICY_NAMES = (
+_BASE_TENANT_POLICY_NAMES = (
     "organization_tenant_isolation",
     "app_user_tenant_isolation",
     "table_view_tenant_isolation",
     "extraction_draft_tenant_isolation",
     "refresh_token_tenant_isolation",
 )
+_ALL_TENANT_POLICY_NAMES = (
+    *_BASE_TENANT_POLICY_NAMES,
+    "charge_code_tenant_isolation",
+)
 
 
 def test_conftest_tenant_policies_declare_with_check() -> None:
     source = Path("backend/tests/conftest.py").read_text(encoding="utf-8")
-    for name in _TENANT_POLICY_NAMES:
+    for name in _ALL_TENANT_POLICY_NAMES:
         assert name in source
-    assert source.count("WITH CHECK") >= 5
+    assert source.count("WITH CHECK") >= 6
 
 
 def test_migration_006_declares_with_check() -> None:
     source = Path("backend/alembic/versions/006_rls_with_check.py").read_text(encoding="utf-8")
     assert "WITH CHECK" in source
-    for name in _TENANT_POLICY_NAMES:
+    for name in _BASE_TENANT_POLICY_NAMES:
         assert name in source
+
+
+def test_migration_007_declares_charge_code_with_check() -> None:
+    source = Path("backend/alembic/versions/007_charge_code_rls.py").read_text(encoding="utf-8")
+    assert "WITH CHECK" in source
+    assert "charge_code_tenant_isolation" in source
+    assert "FORCE ROW LEVEL SECURITY" in source
 
 
 @pytest.mark.integration

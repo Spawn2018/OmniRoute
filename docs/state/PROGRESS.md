@@ -45,4 +45,5 @@
 | 2026-09-01 | 0.23 S1 | ops | JWT_SECRET z GitHub Encrypted Secrets, nie YAML |
 | 2026-09-01 | Exit Wave A | — | D0 + 0.15 T0 … 0.23 na origin. Charge/FE/Auth0 nie startowane. |
 | 2026-09-01 | 0.25 | domain | Money Decimal + waluta ISO 4217 + `<Money/>` na HITL; bez tabeli charge |
-| — | leftover | Charge | **Następny:** 1.0 `charge_code` M-06. U-routes-breadth nie w 0.25. 0.24 pip-audit opcjonalny |
+| 2026-09-01 | 1.0 | M-06 | `charge_code` katalog + aliasy + RLS + `/charge-codes`; nie luźny string |
+| — | leftover | Charge | **Następny:** 1.1 `rate_line`. U-routes-breadth = jedna trasa, nie Exit Wave FE. Isolation = CI |

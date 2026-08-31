@@ -20,9 +20,12 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **0.21 T4 DONE:** `hello_token` default false; mint UUID tylko przy fladze
 - **0.22 T5 DONE:** JWT iss/aud/jti/ver; TTL 15 min
 - **0.23 S1 DONE:** JWT_SECRET z GitHub Encrypted Secrets; literał usunięty z gate.yml
-- **0.25 DONE:** Money Decimal + waluta + `<Money/>` na HITL. Bez tabeli. **Następny (kod):** Charge 1.0 `charge_code` ([PROGRAM-12M.md](../state/PROGRAM-12M.md))
-- **Exit Wave A:** D0 + T0…0.23. 0.24 pip-audit opcjonalny — nie w 0.25
-- **U-routes-breadth:** 0.25 pokazuje `<Money/>` na istniejącej recenzji HITL; nowa trasa BC = Charge 1.0+ — nie claim powierzchni 2026
+- **1.0 DONE:** `charge_code` katalog + aliasy + RLS + `/charge-codes`. **Następny (kod):** Charge 1.1 `rate_line` ([PROGRAM-12M.md](../state/PROGRAM-12M.md))
+- **0.25 DONE:** Money Decimal + waluta + `<Money/>` na HITL. Bez tabeli charge
+- **Exit Wave A:** D0 + T0…0.23. 0.24 pip-audit opcjonalny
+- **U-routes-breadth:** 1.0 ma `/charge-codes` (lista+dodaj+resolve). Nie Exit Wave FE (U-density…U-admin-ref)
+- **1.0 leftover (dlaczego nie w tym plasterze):** isolation/integration = CI — lokalnie PG wisiał (jak 0.16–0.18); `just api-types` nie regen — wrapper fetch, gate = typecheck
+- **1.0 leftover:** aliasy jako `TEXT[]` na wierszu, nie osobna tabela — wystarcza resolve; osobny wiersz aliasu gdy 1.1+ tego wymaga
 - **Leftover ≠ DONE:** wiersz w tym pliku / PLAN nie zamyka plastra i nie zastępuje `just gate`
 - **OAuth/OIDC:** Auth0 I1 **po Wave A**; nie następny kod. 0.12 JWT = hello HS256
 - **0.11 DONE:** HTTP XOR 422 + vitest `extractionCreateBody`
