@@ -29,6 +29,31 @@ Po `/plan-modul` **nie** klikaj **Build** / **wdroż plan** w Cursorze.
 
 `/testy` to nie opcjonalna rada. `/plaster` sam każe: po akceptacji planu plików osobna tura `/testy`, potem kod.
 
+## Push: bramka włącza się sama
+
+Jednorazowo, raz na komputer (wklej agentowi albo wpisz w PowerShellu w katalogu repo):
+
+```
+powershell -ExecutionPolicy Bypass -File scripts/install-hooks.ps1
+```
+
+Od tej chwili każdy `git push` z tego komputera najpierw odpala pełną bramkę
+(`just gate` — to samo, co GitHub Actions). Trwa **ok. 70 sekund**. Jeśli coś pada,
+push **nie idzie** i w oknie widzisz, co naprawić. To jest dobra wiadomość: czerwony
+GitHub kosztuje więcej niż te 70 sekund.
+
+Bramka **nie** sprawdza migracji bazy, `pip-audit` ani testów integracyjnych —
+te wymagają uruchomionego Postgresa i OpenFGA. Robi to CI po pushu.
+
+Sprawdzenie, czy jest włączona: `git config --get core.hooksPath` ma wypisać `scripts/githooks`.
+
+### Furtka awaryjna
+
+`git push --no-verify` przepycha z pominięciem bramki. To **wyjątek**, nie sposób pracy:
+używa się go, gdy trzeba wypchnąć samą poprawkę do dokumentacji przy zepsutym
+lokalnym środowisku. Po użyciu CI i tak sprawdzi wszystko — jeśli GitHub zaświeci
+na czerwono, naprawa wraca do ciebie.
+
 ## Czego nie robić
 
 - Nie dopisuj `/plaster` pod rozmową z `/plan-modul`.

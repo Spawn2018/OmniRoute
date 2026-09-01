@@ -3,8 +3,25 @@ default: gate
 agent-refs:
     python scripts/quality/check_agent_refs.py
 
-gate: docs-check agent-refs agentlint check test-unit arch frontend-typecheck frontend-test dup perf
-    @echo "gate: docs-check + agent-refs + agentlint + check + test-unit + arch + frontend + dup + perf OK"
+gate: code-gate meta-gate
+    @echo "gate: code-gate + meta-gate OK"
+
+# Rozdział na dwie bramki wynika z audytu runów #79-#88: meta-checki stały przed
+# check/test-unit/arch, a just przerywa na pierwszym błędzie, więc przez siedem
+# pushy CI nie odpaliło ani ruffa, ani mypy, ani testów, ani import-lintera.
+# W tym oknie przeszedł niezauważony realny błąd architektury (87c4cf3).
+
+code-gate: check test-unit arch frontend-typecheck frontend-test dup perf
+    @echo "code-gate: check + test-unit + arch + frontend + dup + perf OK"
+
+meta-gate: docs-check agent-refs agentlint
+    @echo "meta-gate: docs-check + agent-refs + agentlint OK"
+
+hooks:
+    git config core.hooksPath scripts/githooks
+    -chmod +x scripts/githooks/pre-push
+    @echo "core.hooksPath = $(git config --get core.hooksPath)"
+    @echo "pre-push odpala 'just gate'. Furtka awaryjna: git push --no-verify"
 
 dev:
     docker compose up -d db

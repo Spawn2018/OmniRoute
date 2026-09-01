@@ -1,0 +1,84 @@
+#!/bin/sh
+set -eu
+
+repo_root=$(git rev-parse --show-toplevel)
+cd "$repo_root"
+
+# Git dokłada do PATH tylko własne /usr/bin i /mingw64/bin. Reszta pochodzi z okna,
+# w którym stał Cursor, a to okno bywa starsze niż ostatnia zmiana PATH użytkownika:
+# zmierzone na Windows, w takiej sesji nie ma ani 'just', ani skryptów pip --user
+# (ruff, mypy, pytest, lint-imports). Hook padający na środowisku zamiast na kodzie
+# zostałby obchodzony przez --no-verify, więc składa sobie PATH sam.
+prepend_path() {
+    # PATH w sh jest rozdzielany dwukropkiem, a 'D:/OMNIROUTE' i 'C:\Users\...'
+    # rozpadłyby się na dwa wpisy — stąd konwersja do postaci /d/OMNIROUTE.
+    if command -v cygpath >/dev/null 2>&1; then
+        candidate=$(cygpath -u "$1")
+    else
+        candidate=$1
+    fi
+    if [ ! -d "$candidate" ]; then
+        return 0
+    fi
+    case ":$PATH:" in
+        *":$candidate:"*) ;;
+        *) PATH="$candidate:$PATH" ;;
+    esac
+}
+
+prepend_path "$repo_root/tools/just"
+python_scripts=$(python -c "import os, sysconfig; print(sysconfig.get_path('scripts', os.name + '_user'))" 2>/dev/null || true)
+if [ -n "$python_scripts" ]; then
+    prepend_path "$python_scripts"
+fi
+export PATH
+
+if ! command -v just >/dev/null 2>&1; then
+    echo "pre-push: nie znalazłem 'just' ani w PATH, ani w tools/just." >&2
+    echo "pre-push: bez bramki nie puszczam pusha. Zainstaluj just, potem: just hooks" >&2
+    exit 1
+fi
+
+# stdin hooka: "<local ref> <local sha> <remote ref> <remote sha>" na linię.
+# Kasowanie zdalnej gałęzi ma local sha z samych zer i nie wnosi kodu do bramki.
+pushes_commits=0
+while read -r _local_ref local_sha _remote_ref _remote_sha; do
+    case "$local_sha" in
+        *[!0]*) pushes_commits=1 ;;
+    esac
+done
+if [ "$pushes_commits" -eq 0 ]; then
+    exit 0
+fi
+
+if ! git diff --quiet HEAD 2>/dev/null; then
+    echo "pre-push: drzewo robocze nie jest czyste — bramka sprawdza pliki na dysku," >&2
+    echo "pre-push: a na zdalne repo pojedzie sam commit. Zacommituj przed pushem." >&2
+fi
+
+echo "pre-push: 'just gate' — pełny zakres bramki z CI, ok. 70 s"
+
+if just gate; then
+    exit 0
+fi
+
+{
+    echo ""
+    echo "pre-push: bramka padła, push zatrzymany. CI padłoby dokładnie tak samo."
+
+    # agentlint dał 6 z 7 czerwonych pushy w oknie #79-#88 i kosztuje ułamek sekundy,
+    # więc dopytujemy wprost, zamiast zgadywać przyczynę z wyjścia całej bramki.
+    if ! just agentlint >/dev/null 2>&1; then
+        echo ""
+        echo "pre-push: pada agentlint — hash AGENTS.md albo .cursor/rules/* rozjechał się z baseline."
+        echo "pre-push: jeśli ta zmiana była zamierzona, przepisz baseline i dołóż go do TEGO SAMEGO commita:"
+        echo "pre-push:     python scripts/quality/agentlint.py --write"
+        echo "pre-push:     git add scripts/quality/agentlint.baseline.json"
+    fi
+
+    echo ""
+    echo "Napraw to, co wypisała bramka powyżej, i pushuj ponownie."
+    echo "Same meta-checki (ok. 1 s): just meta-gate"
+    echo "Furtka awaryjna, tylko wyjątkowo: git push --no-verify"
+} >&2
+exit 1

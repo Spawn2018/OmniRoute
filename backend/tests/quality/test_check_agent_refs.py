@@ -49,3 +49,16 @@ def test_live_os_tree_has_no_archive_persona_names() -> None:
 def test_uri_scheme_is_not_reported_as_missing_file() -> None:
     refs = _load_refs()
     assert not any("://" in err for err in refs.stale_ref_errors())
+
+
+def test_relative_link_resolves_against_its_own_file() -> None:
+    refs = _load_refs()
+    state = _ROOT / "docs" / "state"
+    assert refs.exists("../deltas/archived/4.0-port.md", state)
+    assert refs.exists("../adr/0003-frontend-ui-system-2026.md", state)
+
+
+def test_relative_link_to_absent_file_is_still_reported() -> None:
+    refs = _load_refs()
+    state = _ROOT / "docs" / "state"
+    assert not refs.exists("../deltas/archived/9.9-nie-ma.md", state)

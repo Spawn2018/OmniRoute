@@ -29,7 +29,10 @@ MAX_ALWAYS_APPLY_HINT = 25_000  # bajty — miękki budżet pliku always-on
 
 
 def _sha256(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    # Hash po treści, nie po bajtach: przy core.autocrlf=true edytor zapisuje kontrakt
+    # z CRLF, git widzi plik jako niezmieniony (indeks trzyma LF), a surowy hash
+    # rozjeżdża się z baseline zbudowanym na LF w CI. Baseline LF zostaje ważny.
+    return hashlib.sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
 
 
 def _collect() -> dict[str, str]:

@@ -25,3 +25,7 @@ Ten plik: po tabeli **napraw** to, co nie psuje jakości; reszta → [docs-debt.
 ## Dopiero potem
 
 Skill `zamknij-plaster`: archiwum delty, CURRENT/PROGRESS, commit, **push**. WIP=1.
+
+Push przechodzi przez hook `scripts/githooks/pre-push` (włącz raz: `just hooks`), który
+odpala `just gate` i przerywa push przy błędzie. Nie zwalnia to z tabeli powyżej — hook
+sprawdza bramkę, nie skuteczność ani dług w diffie.

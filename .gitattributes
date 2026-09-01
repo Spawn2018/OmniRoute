@@ -1,0 +1,3 @@
+# core.autocrlf=true zamieniłby LF na CRLF, a sh z Git for Windows nie strawi
+# shebanga zakończonego CR — hook przestałby się uruchamiać po świeżym clone.
+scripts/githooks/** text eol=lf

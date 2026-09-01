@@ -46,7 +46,8 @@ def collect_paths(text: str) -> set[str]:
     return found
 
 
-def exists(rel: str) -> bool:
+def _unverifiable_token(rel: str) -> bool:
+    """Adres, fragment prozy albo wzorzec z placeholderem — nie ścieżka w repo."""
     if rel.startswith(("http://", "https://", "mailto:")):
         return True
     if any(ch in rel for ch in (" ", "(", ")", "except", "→")):
@@ -56,8 +57,21 @@ def exists(rel: str) -> bool:
     if "/" in rel and not rel.startswith(
         ("docs/", "backend/", "frontend/", ".cursor/", "scripts/", "tests/")
     ):
-        if rel.count("/") == 1 and not rel.endswith((".md", ".mdc", ".py", ".ts", ".tsx", ".json")):
-            return True
+        return rel.count("/") == 1 and not rel.endswith(
+            (".md", ".mdc", ".py", ".ts", ".tsx", ".json")
+        )
+    return False
+
+
+def exists(rel: str, base: Path) -> bool:
+    if _unverifiable_token(rel):
+        return True
+
+    # Link w Markdownie jest względny wobec własnego pliku, nie wobec ROOT —
+    # bez tego poprawne `../deltas/...` z docs/state/CURRENT.md wygląda na martwy ref.
+    linked = (base / rel).resolve()
+    if linked.is_relative_to(ROOT) and linked.exists():
+        return True
 
     candidates = [rel]
     bare = Path(rel).name
@@ -113,7 +127,7 @@ def stale_ref_errors() -> list[str]:
                     continue
                 if "://" in rel:
                     continue
-                if not exists(rel):
+                if not exists(rel, path.parent):
                     errors.append(f"{path.relative_to(ROOT)}: brak `{rel}`")
     return errors
 
