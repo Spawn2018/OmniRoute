@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **8.0** M-11 `resolve_email` (zarchiwizowany). **Etap:** Plan. **Następny:** M-12 Sieci i stowarzyszenia (`/plan-modul`). Nie Fala 8. Nie zgaduj zakresu. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **8.0** M-11 `resolve_email` (zarchiwizowany). **Etap:** Plaster. **Następny:** **9.0** M-12 `network` (`/plaster`). Nie katalog agentów. Nie scraping. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

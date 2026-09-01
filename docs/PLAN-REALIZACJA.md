@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** M-12 Sieci i stowarzyszenia (`/plan-modul`). Nie Fala 8. Nie zgaduj zakresu.
+**Następny (zablokowany):** **9.0** M-12 `network` (`/plaster`). Nie katalog agentów. Nie scraping.
 <!-- os-status:end -->
 
 ```mermaid
@@ -317,6 +317,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | Q5 | **Waluty i kurs NBP** (archiwum M-07; **nie** nadpisuj żywego M-07) | Plan → plaster | zamknięty (`docs/deltas/archived/6.0-nbp-rate.md`) |
 | Q6 | **Towary niebezpieczne** (archiwum M-08; **nie** nadpisuj żywego M-08) | Plan → plaster | zamknięty (`docs/deltas/archived/7.0-dangerous-good.md`) |
 | F2.0 | **M-11 Automatyczne kontakty** | Plan → plaster | zamknięty (`docs/deltas/archived/8.0-party-email-match.md`) |
+| F2.1 | **M-12 Sieci i stowarzyszenia** | Plan → plaster | otwarty (`docs/deltas/open/9.0-network.md`) |
 
 ### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster
 
@@ -376,8 +377,8 @@ Nie implementuj z tej tabeli „na zapas”. To mapa, żeby nic nie zginęło. S
 | M-08 | Towary niebezpieczne | kolejka Q6; żywy ID **M-52** `dangerous_good` (nie M-08) |
 | M-09 | Kody towarowe | DONE fundament (5.2 katalog) |
 | M-10 | Kontrahenci | DONE fundament (5.0 katalog; lookup = fixture) |
-| M-11 | Automatyczne kontakty | Fala 2 |
-| M-12 | Sieci i stowarzyszenia | Fala 2 |
+| M-11 | Automatyczne kontakty | DONE fundament (8.0 `resolve_email`) |
+| M-12 | Sieci i stowarzyszenia | plan 9.0 `network` (nie katalog agentów) |
 | M-13 | Karta wyników kontrahenta | Fala 2 |
 | M-14 | Ocena kredytowa | Fala 2 + zakaz auto-scoringu osoby |
 | M-15 | Wirtualny Dyrektor Finansowy | Fala 2; LLM nie liczy |
@@ -427,13 +428,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

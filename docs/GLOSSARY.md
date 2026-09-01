@@ -57,6 +57,8 @@
 | dopasowanie maila | resolve_email | M-11; domena z adresu → `party`; nie IMAP |
 | wyjątek stawki kontrahenta | party_charge_override | katalog uzgodnień; nie silnik wyceny / nie marża |
 | profil armatora | carrier_profile | 1:1 z `party`; adapter tylko jako dane |
+| sieć spedycyjna | network | katalog M-12; token kodu (`wca`, `fiata`, …); kopia per tenant; nie scraping |
+| kod sieci | network code | snake 2–32; `resolve` po kodzie albo aliasie |
 | numer WPI | wpi_number | World Port Index (NGA Pub 150) na `port` |
 | wielkość portu | harbor_size | WPI: Very Small / Small / Medium / Large |
 | typ portu | harbor_type | WPI, słownik NGA |
