@@ -46,6 +46,8 @@ describe("parties catalog surface for 5.0", () => {
     expect(page).toContain("email-domain")
     expect(page).toContain("carrier")
     expect(page).toContain("charge-override")
+    expect(page).toContain("Karta wyników")
+    expect(page).toContain("upsertPartyScorecard")
     expect(page).toContain("<Money")
   })
 

@@ -67,6 +67,7 @@ forbidden_modules =
     app.services.parties
     app.repositories.parties
     app.models.party
+    app.models.party_scorecard
     app.services.commodity_codes
     app.repositories.commodity_codes
     app.models.commodity_code

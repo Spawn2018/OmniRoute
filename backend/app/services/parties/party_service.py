@@ -1,3 +1,4 @@
+from datetime import UTC, datetime
 from decimal import Decimal
 from uuid import UUID, uuid4
 
@@ -5,7 +6,13 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.charge_code import normalize_charge_code
-from app.domain.errors import InvalidPartyData, ResourceNotFound, UnknownEmailDomain, UnknownParty
+from app.domain.errors import (
+    InvalidPartyData,
+    ResourceNotFound,
+    UnknownEmailDomain,
+    UnknownParty,
+    UnknownPartyScorecard,
+)
 from app.domain.money import Money
 from app.domain.party import (
     email_domain_from_address,
@@ -18,12 +25,20 @@ from app.domain.party import (
     normalize_roles,
     normalize_tax_id,
 )
+from app.domain.party_scorecard import (
+    optional_non_negative_hours,
+    optional_non_negative_int,
+    optional_unit_interval,
+    required_sample_size,
+    required_window_days,
+)
 from app.models.carrier_profile import CarrierProfile
 from app.models.party import Party
 from app.models.party_bank_account import PartyBankAccount
 from app.models.party_charge_override import PartyChargeOverride
 from app.models.party_contact import PartyContact
 from app.models.party_email_domain import PartyEmailDomain
+from app.models.party_scorecard import PartyScorecard
 from app.repositories.parties.party_repository import PartyRepository
 from app.services.parties.lookup import (
     IbanWhitelistDraft,
@@ -308,3 +323,69 @@ class PartyService:
             created_by=user_id,
         )
         return await self._parties.add_carrier_profile(row)
+
+    async def list_scorecards(self) -> list[PartyScorecard]:
+        return await self._parties.list_scorecards()
+
+    async def get_scorecard(self, party_id: UUID) -> PartyScorecard:
+        await self.get_party(party_id)
+        found = await self._parties.get_scorecard(party_id)
+        if found is None:
+            raise UnknownPartyScorecard(f"brak karty wyników: {party_id}")
+        return found
+
+    async def upsert_scorecard(
+        self,
+        *,
+        organization_id: UUID,
+        user_id: UUID,
+        party_id: UUID,
+        response_rate: object | None = None,
+        median_response_hours: object | None = None,
+        price_position: object | None = None,
+        quote_invoice_match_rate: object | None = None,
+        rollover_count: object | None = None,
+        sample_size: object | None = None,
+        window_days: object | None = None,
+    ) -> PartyScorecard:
+        await self.get_party(party_id)
+        now = datetime.now(UTC)
+        stored_response = optional_unit_interval(response_rate, "response_rate")
+        stored_hours = optional_non_negative_hours(median_response_hours)
+        stored_price = optional_unit_interval(price_position, "price_position")
+        stored_match = optional_unit_interval(
+            quote_invoice_match_rate,
+            "quote_invoice_match_rate",
+        )
+        stored_rollover = optional_non_negative_int(rollover_count, "rollover_count")
+        stored_sample = required_sample_size(sample_size)
+        stored_window = required_window_days(window_days)
+        origin = manual_source_ref()
+        existing = await self._parties.get_scorecard(party_id)
+        if existing is not None:
+            existing.response_rate = stored_response
+            existing.median_response_hours = stored_hours
+            existing.price_position = stored_price
+            existing.quote_invoice_match_rate = stored_match
+            existing.rollover_count = stored_rollover
+            existing.sample_size = stored_sample
+            existing.window_days = stored_window
+            existing.computed_at = now
+            existing.source_ref = origin
+            return existing
+        row = PartyScorecard(
+            id=uuid4(),
+            organization_id=organization_id,
+            party_id=party_id,
+            window_days=stored_window,
+            sample_size=stored_sample,
+            response_rate=stored_response,
+            median_response_hours=stored_hours,
+            price_position=stored_price,
+            quote_invoice_match_rate=stored_match,
+            rollover_count=stored_rollover,
+            computed_at=now,
+            source_ref=origin,
+            created_by=user_id,
+        )
+        return await self._parties.add_scorecard(row)

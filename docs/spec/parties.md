@@ -39,7 +39,7 @@ IMAP / Outlook · auto-INSERT kontaktu · denylista domen publicznych · portal 
 
 ### Poza 5.0
 
-Q3 (`quotation.party_id`, POL/POD) · M-12 sieci · M-13 scorecard · M-14 auto-scoring · M-19 live adapter · portal · outbox · Auth0 · `quotation`/`charge` czytające override · „handlowiec widzi swoich”.
+Q3 (`quotation.party_id`, POL/POD) · M-12 sieci · M-13 scorecard (10.0 snapshot — `party-scorecard.md`) · M-14 auto-scoring · M-19 live adapter · portal · outbox · Auth0 · `quotation`/`charge` czytające override · „handlowiec widzi swoich”.
 
 ### HC
 

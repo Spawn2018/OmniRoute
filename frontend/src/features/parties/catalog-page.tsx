@@ -31,6 +31,12 @@ import {
   type Party,
   type PartyDraft,
 } from "@/lib/parties-api"
+import {
+  EMPTY_SCORECARD_DRAFT,
+  fetchPartyScorecard,
+  scorecardUpsertBody,
+  upsertPartyScorecard,
+} from "@/lib/party-scorecards-api"
 import { getTenantContext } from "@/lib/tenant"
 
 const columnHelper = createColumnHelper<Party>()
@@ -97,6 +103,7 @@ export function PartyCatalogPage() {
   const [overrideAmount, setOverrideAmount] = useState("")
   const [overrideCurrency, setOverrideCurrency] = useState("USD")
   const [scac, setScac] = useState("")
+  const [scoreDraft, setScoreDraft] = useState(EMPTY_SCORECARD_DRAFT)
 
   const listQuery = useQuery({
     queryKey: ["parties", ctx.organizationId],
@@ -126,6 +133,12 @@ export function PartyCatalogPage() {
   const overridesQuery = useQuery({
     queryKey: ["party-charge-overrides", selectedId],
     queryFn: () => fetchChargeOverrides(selectedId ?? ""),
+    enabled: selectedId !== null,
+    retry: false,
+  })
+  const scorecardQuery = useQuery({
+    queryKey: ["party-scorecard", selectedId],
+    queryFn: () => fetchPartyScorecard(selectedId ?? ""),
     enabled: selectedId !== null,
     retry: false,
   })
@@ -432,6 +445,53 @@ export function PartyCatalogPage() {
                 </li>
               ))}
             </ul>
+          </fieldset>
+
+          <fieldset className="space-y-2 rounded-md border border-border p-3 md:col-span-2">
+            <legend className="text-sm font-medium">Karta wyników</legend>
+            <form
+              className="grid gap-2 md:grid-cols-4"
+              onSubmit={(event) => {
+                event.preventDefault()
+                void upsertPartyScorecard(
+                  selectedId,
+                  scorecardUpsertBody({ ...scoreDraft, partyId: selectedId }),
+                ).then(() => {
+                  void queryClient.invalidateQueries({ queryKey: ["party-scorecard", selectedId] })
+                })
+              }}
+            >
+              <Input
+                aria-label="Wskaźnik odpowiedzi panelu"
+                placeholder="response_rate 0–1"
+                value={scoreDraft.responseRate}
+                onChange={(event) =>
+                  setScoreDraft({ ...scoreDraft, responseRate: event.target.value })
+                }
+              />
+              <Input
+                aria-label="Mediana godzin panelu"
+                placeholder="median_response_hours"
+                value={scoreDraft.medianHours}
+                onChange={(event) =>
+                  setScoreDraft({ ...scoreDraft, medianHours: event.target.value })
+                }
+              />
+              <Input
+                aria-label="Wielkość próby panelu"
+                placeholder="sample_size"
+                value={scoreDraft.sampleSize}
+                onChange={(event) =>
+                  setScoreDraft({ ...scoreDraft, sampleSize: event.target.value })
+                }
+              />
+              <Button type="submit">Zapisz kartę</Button>
+            </form>
+            <p className="text-xs text-muted-foreground">
+              {scorecardQuery.data
+                ? `snapshot ${scorecardQuery.data.response_rate ?? "—"} · ${scorecardQuery.data.source_ref}`
+                : "brak snapshotu"}
+            </p>
           </fieldset>
         </div>
       ) : null}

@@ -1223,6 +1223,94 @@ export type RateLineSupersede = {
 };
 
 /**
+ * ScorecardResponse
+ */
+export type ScorecardResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Response Rate
+     */
+    response_rate: string | null;
+    /**
+     * Median Response Hours
+     */
+    median_response_hours: string | null;
+    /**
+     * Price Position
+     */
+    price_position: string | null;
+    /**
+     * Quote Invoice Match Rate
+     */
+    quote_invoice_match_rate: string | null;
+    /**
+     * Rollover Count
+     */
+    rollover_count: number | null;
+    /**
+     * Sample Size
+     */
+    sample_size: number;
+    /**
+     * Window Days
+     */
+    window_days: number;
+    /**
+     * Computed At
+     */
+    computed_at: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ScorecardUpsert
+ */
+export type ScorecardUpsert = {
+    /**
+     * Response Rate
+     */
+    response_rate?: string | null;
+    /**
+     * Median Response Hours
+     */
+    median_response_hours?: string | null;
+    /**
+     * Price Position
+     */
+    price_position?: string | null;
+    /**
+     * Quote Invoice Match Rate
+     */
+    quote_invoice_match_rate?: string | null;
+    /**
+     * Rollover Count
+     */
+    rollover_count?: number | null;
+    /**
+     * Sample Size
+     */
+    sample_size?: number;
+    /**
+     * Window Days
+     */
+    window_days?: number;
+};
+
+/**
  * SessionMeResponse
  */
 export type SessionMeResponse = {
@@ -2915,6 +3003,84 @@ export type UpsertCarrierProfileApiV1PartiesPartyIdCarrierProfilePutResponses = 
 };
 
 export type UpsertCarrierProfileApiV1PartiesPartyIdCarrierProfilePutResponse = UpsertCarrierProfileApiV1PartiesPartyIdCarrierProfilePutResponses[keyof UpsertCarrierProfileApiV1PartiesPartyIdCarrierProfilePutResponses];
+
+export type ListScorecardsApiV1PartyScorecardsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/party-scorecards';
+};
+
+export type ListScorecardsApiV1PartyScorecardsGetResponses = {
+    /**
+     * Response List Scorecards Api V1 Party Scorecards Get
+     *
+     * Successful Response
+     */
+    200: Array<ScorecardResponse>;
+};
+
+export type ListScorecardsApiV1PartyScorecardsGetResponse = ListScorecardsApiV1PartyScorecardsGetResponses[keyof ListScorecardsApiV1PartyScorecardsGetResponses];
+
+export type GetScorecardApiV1PartyScorecardsPartyIdGetData = {
+    body?: never;
+    path: {
+        /**
+         * Party Id
+         */
+        party_id: string;
+    };
+    query?: never;
+    url: '/api/v1/party-scorecards/{party_id}';
+};
+
+export type GetScorecardApiV1PartyScorecardsPartyIdGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type GetScorecardApiV1PartyScorecardsPartyIdGetError = GetScorecardApiV1PartyScorecardsPartyIdGetErrors[keyof GetScorecardApiV1PartyScorecardsPartyIdGetErrors];
+
+export type GetScorecardApiV1PartyScorecardsPartyIdGetResponses = {
+    /**
+     * Successful Response
+     */
+    200: ScorecardResponse;
+};
+
+export type GetScorecardApiV1PartyScorecardsPartyIdGetResponse = GetScorecardApiV1PartyScorecardsPartyIdGetResponses[keyof GetScorecardApiV1PartyScorecardsPartyIdGetResponses];
+
+export type UpsertScorecardApiV1PartyScorecardsPartyIdPostData = {
+    body: ScorecardUpsert;
+    path: {
+        /**
+         * Party Id
+         */
+        party_id: string;
+    };
+    query?: never;
+    url: '/api/v1/party-scorecards/{party_id}';
+};
+
+export type UpsertScorecardApiV1PartyScorecardsPartyIdPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type UpsertScorecardApiV1PartyScorecardsPartyIdPostError = UpsertScorecardApiV1PartyScorecardsPartyIdPostErrors[keyof UpsertScorecardApiV1PartyScorecardsPartyIdPostErrors];
+
+export type UpsertScorecardApiV1PartyScorecardsPartyIdPostResponses = {
+    /**
+     * Successful Response
+     */
+    200: ScorecardResponse;
+};
+
+export type UpsertScorecardApiV1PartyScorecardsPartyIdPostResponse = UpsertScorecardApiV1PartyScorecardsPartyIdPostResponses[keyof UpsertScorecardApiV1PartyScorecardsPartyIdPostResponses];
 
 export type ListPortsApiV1PortsGetData = {
     body?: never;

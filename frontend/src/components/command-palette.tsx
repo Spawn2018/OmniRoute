@@ -19,6 +19,7 @@ const NAV_ACTIONS = [
   { id: "nav-commodity-codes", label: "Idź do katalogu kodów towarowych", to: "/commodity-codes" },
   { id: "nav-dangerous-goods", label: "Idź do katalogu towarów niebezpiecznych", to: "/dangerous-goods" },
   { id: "nav-networks", label: "Idź do katalogu sieci", to: "/networks" },
+  { id: "nav-party-scorecards", label: "Idź do kart wyników kontrahenta", to: "/party-scorecards" },
   { id: "nav-nbp-rates", label: "Idź do katalogu kursów NBP", to: "/nbp-rates" },
   { id: "nav-charges", label: "Idź do opłat", to: "/charges" },
   { id: "nav-rate-lines", label: "Idź do stawek kupna", to: "/rate-lines" },

@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **9.0** M-12 `network` (zarchiwizowany). **Etap:** Plan. **Następny:** 10.0 M-13 `party_scorecard` (`/plaster`). Nie Fala 8. Nie zgaduj zakresu. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **10.0** M-13 `party_scorecard` (zarchiwizowany). **Etap:** Plan. **Następny:** M-16 Procedury operacyjne klienta (`/plan-modul`). Nie Fala 8. Nie zgaduj zakresu. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
@@ -11,7 +11,7 @@
 <!-- os-tree:start -->
 ```
 frontend/                 React 19 + Compiler, Vite, TanStack, shadcn, PostHog
-  src/features/           charge-codes · charges · commodity-codes · dangerous-goods · extraction · geography · nbp-rates · networks · ops · organization-settings · parties · quotations · rate-lines · session · tenancy
+  src/features/           charge-codes · charges · commodity-codes · dangerous-goods · extraction · geography · nbp-rates · networks · ops · organization-settings · parties · party-scorecards · quotations · rate-lines · session · tenancy
   src/components/ui/      shadcn
   src/components/data-table/  DataTableShell (Golden Standard)
 backend/app/

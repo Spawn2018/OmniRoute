@@ -1,10 +1,10 @@
 # M-13 party_scorecard — karta wyników kontrahenta
 
 **Moduł żywy:** M-13 (archiwum M-13; nie koliduje z żywym M-10 `party` / M-08 `charge` / M-14)  
-**Plaster:** **10.0** (plan)  
-**Status:** plan — snapshot karty. Nie silnik RFQ. Nie scoring osoby.
+**Plaster:** **10.0** (w kodzie)  
+**Status:** ukończony (fundament) — snapshot karty per tenant. Nie silnik RFQ. Nie scoring osoby.
 
-Delta: [docs/deltas/open/10.0-party-scorecard.md](../deltas/open/10.0-party-scorecard.md).
+Delta: [docs/deltas/archived/10.0-party-scorecard.md](../deltas/archived/10.0-party-scorecard.md).
 
 ## 10.0 snapshot karty
 

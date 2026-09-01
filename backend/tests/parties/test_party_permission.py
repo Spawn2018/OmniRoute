@@ -27,6 +27,19 @@ _ENDPOINTS = (
             "roles": ["customer"],
         },
     ),
+    ("GET", "/api/v1/party-scorecards", None, None),
+    (
+        "GET",
+        "/api/v1/party-scorecards/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+        None,
+        None,
+    ),
+    (
+        "POST",
+        "/api/v1/party-scorecards/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+        None,
+        {"sample_size": 0, "window_days": 90},
+    ),
 )
 
 

@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **9.0** M-12 `network` (zarchiwizowany)
+- **Ostatni plaster:** **10.0** M-13 `party_scorecard` (zarchiwizowany)
 - **Etap:** Plan
-- **Następny:** 10.0 M-13 `party_scorecard` (`/plaster`). Nie Fala 8. Nie zgaduj zakresu.
+- **Następny:** M-16 Procedury operacyjne klienta (`/plan-modul`). Nie Fala 8. Nie zgaduj zakresu.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

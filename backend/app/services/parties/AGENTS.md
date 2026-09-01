@@ -3,6 +3,7 @@
 Katalog kontrahenta per tenant: `party` i tabele zależne.
 `resolve` po `tax_id` albo `resolve_email` po adresie — nie luźna nazwa. Lookup GUS/VIES/whitelist zwraca szkic.
 Matcher maila (M-11) nie zapisuje `party_contact`.
+Karta wyników (M-13) to snapshot — nie silnik RFQ i nie scoring osoby.
 
 ## Dozwolone zależności
 - `app.models.party`
@@ -11,6 +12,7 @@ Matcher maila (M-11) nie zapisuje `party_contact`.
 - `app.models.party_email_domain`
 - `app.models.party_charge_override`
 - `app.models.carrier_profile`
+- `app.models.party_scorecard`
 - `app.repositories.parties`
 - `app.domain`
 

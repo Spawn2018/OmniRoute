@@ -17,6 +17,7 @@ const NAV = [
   { to: "/locations", label: "Lokalizacje" },
   { to: "/terminals", label: "Terminale" },
   { to: "/parties", label: "Kontrahenci" },
+  { to: "/party-scorecards", label: "Karty wyników" },
   { to: "/organization-settings", label: "Ustawienia" },
   { to: "/session", label: "Sesja" },
 ] as const

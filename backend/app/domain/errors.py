@@ -224,3 +224,11 @@ class UnknownNetwork(DomainError):
 
 class NetworkConflict(DomainError):
     """Kod albo alias sieci już zajęty w katalogu tenanta."""
+
+
+class InvalidPartyScorecard(DomainError):
+    """Wskaźnik karty poza zakresem albo nie jest Decimal — nie float, nie scoring osoby."""
+
+
+class UnknownPartyScorecard(DomainError):
+    """Brak karty wyników dla tego kontrahenta w tenancie."""

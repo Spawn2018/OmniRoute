@@ -9,6 +9,7 @@ from app.models.party_bank_account import PartyBankAccount
 from app.models.party_charge_override import PartyChargeOverride
 from app.models.party_contact import PartyContact
 from app.models.party_email_domain import PartyEmailDomain
+from app.models.party_scorecard import PartyScorecard
 
 
 class PartyRepository:
@@ -93,6 +94,26 @@ class PartyRepository:
         return found if isinstance(found, CarrierProfile) else None
 
     async def add_carrier_profile(self, row: CarrierProfile) -> CarrierProfile:
+        self._session.add(row)
+        await self._session.flush()
+        return row
+
+    async def get_scorecard(self, party_id: UUID) -> PartyScorecard | None:
+        found = await self._session.scalar(
+            select(PartyScorecard).where(PartyScorecard.party_id == party_id),
+        )
+        return found if isinstance(found, PartyScorecard) else None
+
+    async def list_scorecards(self) -> list[PartyScorecard]:
+        result = await self._session.scalars(
+            select(PartyScorecard).order_by(
+                PartyScorecard.response_rate.desc().nulls_last(),
+                PartyScorecard.median_response_hours.asc().nulls_last(),
+            ),
+        )
+        return list(result.all())
+
+    async def add_scorecard(self, row: PartyScorecard) -> PartyScorecard:
         self._session.add(row)
         await self._session.flush()
         return row
