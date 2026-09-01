@@ -78,3 +78,4 @@
 | 2026-09-01 | 5.1 | M-21 | `quotation.origin_port_id` / `destination_port_id` / `party_id`; FK złożone; CHECK kompletności; lista filtruje w SQL; UI `/quotations` z pickerami. Kwota nadal ze stawki. Nie override, nie k6. |
 | 2026-09-01 | Plan 5.2 | M-09 | delta `docs/deltas/archived/5.2-commodity-code.md` + spec. Katalog HS/CN per tenant. Nie podpięcie do wyceny. Następny: `/plaster` 5.2. |
 | 2026-09-01 | 5.2 | M-09 | `commodity_code` HS/CN + aliasy + `source_ref` + RLS FORCE + `resolve` + OpenFGA `can_manage_commodity_codes` + `/commodity-codes`. Nie podpięcie do wyceny, nie IMDG, nie TARIC live. |
+| 2026-09-01 | Plan 6.0 | M-23 | delta `docs/deltas/open/6.0-nbp-rate.md` + spec. Katalog kursu NBP tabeli A. Nie przeliczenie wyceny. Nie M-07 `rate_line`. Następny: `/plaster` 6.0. |
