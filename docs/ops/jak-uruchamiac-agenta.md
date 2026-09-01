@@ -34,3 +34,19 @@ Po `/plan-modul` **nie** klikaj **Build** / **wdroż plan** w Cursorze.
 - Nie dopisuj `/plaster` pod rozmową z `/plan-modul`.
 - Nie szukaj menu „Nowy czat” jak w Messengerze.
 - Nie pisz „zrób geografię” — wystarczy komenda; kolejka jest w `CURRENT.md`.
+- Nie startuj 4.1 / 4.2 / Q2, dopóki bieżący plaster nie jest zamknięty i wypchnięty. Jeden naraz.
+
+## Trzy plastry geografii (jeden po drugim)
+
+Q1 to **nie** jeden wielki plaster. Kolejność z planu:
+
+| Kiedy | Co | Ty robisz |
+|---|---|---|
+| **Teraz** | **4.0** `port` | Dokończ ten plaster: `/plaster` → `/testy` → `implementuj` → `/zamknij` (push). |
+| Potem | **4.1** `location` + strefy | **Nowa** rozmowa. Najpierw Plan: `/plan-modul`. Potem nowa rozmowa Agent: `/plaster` → `/testy` → kod → `/zamknij`. |
+| Potem | **4.2** `terminal` + WPI | Tak samo: Plan, potem plaster. |
+| Potem | **Q2** kontrahenci | Dopiero po 4.2. |
+
+Po `/zamknij` agent sam wpisuje do CURRENT **następny** numer. Ty nie wybierasz „który plaster” — czytasz CURRENT albo po prostu odpalasz `/plan-modul` albo `/plaster` zgodnie z **Etapem** w CURRENT.
+
+Nie otwieraj trzech Agentów naraz. Nie dopisuj 4.1 w czacie 4.0.
