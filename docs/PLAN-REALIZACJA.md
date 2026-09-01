@@ -3,7 +3,7 @@
 **Plan Cursor (pełny):** `.cursor/plans/omniroute-realizacja.plan.md`  
 **ADR:** [0001 Cursor factory](adr/0001-cursor-software-factory-weryfikacja.md) · [0002 Frontend 2026](adr/0002-frontend-platform-2026.md)  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
-**Stan:** B + C.1–C.5 + 0.11–0.15 leftover + **Exit Wave A (D0–0.23)** + **0.25 Money** + **1.0–1.3 charge** + U-* ID na origin + D minimal · następny **0.24**. Auth0 I1/I2 **odroczone** (brak tenanta). **Exit Wave FE nie claim** (U-routes-breadth = standing, nie 70 UI / nie „powierzchnia 2026”).
+**Stan:** B + C.1–C.5 + 0.11–0.15 leftover + **Exit Wave A (D0–0.23)** + **0.25 Money** + **1.0–1.3 charge** + **0.24 ops** + U-* ID na origin + D minimal · następny **2.1–2.2**. Auth0 I1/I2 **odroczone** (brak tenanta). **Exit Wave FE nie claim** (U-routes-breadth = standing, nie 70 UI / nie „powierzchnia 2026”).
 
 ```mermaid
 flowchart LR
@@ -130,7 +130,8 @@ Pełna lista z „dlaczego”: [docs/ops/docs-debt.md](ops/docs-debt.md)
 
 | Kolejność | Co | Nie mylić z |
 |---|---|---|
-| następny | 0.24 pip-audit / pin SHA / `/ready` / request-id | Auth0 I1/I2 odroczone (brak tenanta); 0.12/0.15 ≠ IdP |
+| następny | 2.1–2.2 Presidio instructor stub + 8–12 syntetyk | nie 30 PDF klienta; nie Presidio-all; Auth0 odroczone |
+| 0.24 DONE | `/ready` + request-id + SHA pin + `just audit` (CI) | nie w local `just gate`; k6/vulture echo |
 | U-routes-breadth DONE | standing + trasy 1.0–1.2 | nie 70 stubów; nie Exit Wave FE |
 | U-admin-ref DONE | pulpit jobów + gęsty sidebar/toolbar/⌘K | nie hello-dashboard |
 | U-pdf-spans DONE | PDF + spany HITL, lazy pdf.js | nie OCR; initial ~125 kB |
@@ -166,7 +167,7 @@ Pełna lista z „dlaczego”: [docs/ops/docs-debt.md](ops/docs-debt.md)
 | U-density DONE | compact + toggle na listach biznesowych | nie tylko users |
 | U-palette-ops DONE | ⌘K akcje operatora | nie tylko nawigacja |
 | U-art50 DONE | label „propozycja AI” na szkicu HITL | nie PDF prawny; nie Exit Wave FE |
-| gdy recipe realne | k6 / vulture / pip-audit | dziś `echo`, nie DoD; `just perf` = size-limit |
+| gdy recipe realne | k6 / vulture | dziś `echo`, nie DoD; `just audit` = pip-audit (0.24); `just perf` = size-limit |
 | po Pro/Team | branch protection UI (required check `gate`) | Free private → API 403 |
 
 **Nie ruszać:** ręczny edit `frontend/src/api/*` (flatten anyOf\|null → cast w wrapperze); fałszywy `refactor_ratio`; persony `.cursor/agents/`; dump `Informacje z claude/`.

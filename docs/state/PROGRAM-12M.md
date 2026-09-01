@@ -25,8 +25,8 @@ Po plasterze: docs/ops/post-plaster.md + push + nowa rozmowa.
 
 | Teraz (git) | Po zamknięciu WIP | Nie wolno |
 |---|---|---|
-| **Ostatni:** U-routes-breadth + Charge 1.3 | **0.24** (potem leftover AI 2.1–2.2). Auth0 I1/I2 **odroczone** | Start I1/I2 bez tenanta Auth0 |
-| WIP czysty po pushu U-routes-breadth | max 3 agenty; pliki ∩ = ∅ | Dwa agenty na tych samych plikach |
+| **Ostatni:** 0.24 | **2.1–2.2** Presidio instructor stub + 8–12 syntetyk. Auth0 I1/I2 **odroczone** | Start I1/I2 bez tenanta Auth0 |
+| WIP czysty po pushu 0.24 | max 3 agenty; pliki ∩ = ∅ | Dwa agenty na tych samych plikach |
 
 **Kolizja numeru:** WIP **0.15 hasła** ≠ kanon **0.15 T0**. Po zamknięciu hasła zostają 0.15 w PROGRESS; T0 zostaje **0.15 T0** w tym pliku.
 
@@ -92,7 +92,7 @@ Po plasterze: docs/ops/post-plaster.md + push + nowa rozmowa.
 
 | Tor | ID | Co | Zakaz równoległy |
 |---|---|---|---|
-| Charge | 0.24 | pip-audit, pin SHA, `/ready`, request-id (opcjonalnie tu) | — |
+| Charge | 0.24 | **DONE:** pip-audit projektu, pin SHA Actions, `/ready`, request-id | — |
 | Charge | 0.25 | Money Decimal + `<Money/>` | float |
 | Charge | 1.0 | `charge_code` M-06 | luźny string |
 | Charge | 1.1 | `rate_line` immutable + `source_ref` | pusta domena |

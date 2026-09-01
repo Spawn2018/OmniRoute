@@ -36,7 +36,7 @@ perf:
     python scripts/quality/check_initial_js_size.py frontend/dist
 
 audit:
-    @echo "audit: stub, nie DoD (pip-audit)"
+    python -m pip_audit --skip-editable --progress-spinner off .
 
 migrate:
     cd backend && alembic upgrade head

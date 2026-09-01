@@ -2,6 +2,8 @@ from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
 from app.api.router import api_router
+from app.core.database import probe_database
+from app.core.request_id import RequestIdMiddleware
 from app.domain.errors import (
     DomainError,
     PermissionDenied,
@@ -17,6 +19,7 @@ app = FastAPI(
     redoc_url=None,
     openapi_url=None,
 )
+app.add_middleware(RequestIdMiddleware)
 app.include_router(api_router)
 
 
@@ -52,3 +55,10 @@ async def domain_error_handler(_request: Request, exc: DomainError) -> JSONRespo
 @app.get("/health")
 async def health() -> dict[str, str]:
     return {"status": "ok"}
+
+
+@app.get("/ready")
+async def ready() -> JSONResponse:
+    if await probe_database():
+        return JSONResponse({"status": "ok"})
+    return JSONResponse({"status": "not_ready"}, status_code=503)

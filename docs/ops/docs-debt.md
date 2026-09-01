@@ -20,7 +20,9 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **0.21 T4 DONE:** `hello_token` default false; mint UUID tylko przy fladze
 - **0.22 T5 DONE:** JWT iss/aud/jti/ver; TTL 15 min
 - **0.23 S1 DONE:** JWT_SECRET z GitHub Encrypted Secrets; literał usunięty z gate.yml
-- **U-routes-breadth DONE:** standing (Charge 1.0–1.2 mają trasy). **Następny (kod):** 0.24. Auth0 I1/I2 **odroczone** (brak tenanta). Exit Wave FE **nie** claim — nie 70 UI, nie „powierzchnia 2026”
+- **0.24 DONE:** `/ready` + `X-Request-ID` + SHA pin Actions + `just audit` (pip-audit projektu, nie echo). **Następny (kod):** 2.1–2.2. Auth0 I1/I2 **odroczone**.
+- **0.24 leftover (dlaczego nie w tym plasterze):** `just audit` nie w lokalnym `just gate` (~80 s + sieć PyPI) — CI woła `just audit`; audit = drzewo pyproject, nie host site-packages (pillow/gitpython); image Dockera bez digestu; OpenFGA nie w `/ready`; k6/vulture nadal echo
+- **U-routes-breadth DONE:** standing (Charge 1.0–1.2 mają trasy). Exit Wave FE **nie** claim — nie 70 UI, nie „powierzchnia 2026”
 - **U-admin-ref DONE:** pulpit = joby operatora; sidebar/toolbar/⌘K.
 - **U-pdf-spans DONE:** viewer PDF + spany HITL; lazy pdf.js. Draft nie trzyma PDF (tylko input_text).
 - **U-size-limit-real DONE:** `just perf` = build + gzip initial JS < 250 kB; w `just gate`. k6/vulture/pip-audit nadal echo.
@@ -35,7 +37,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **1.1 DONE:** `rate_line` immutable + `source_ref` + `/rate-lines`. Nie `charge` / marża
 - **1.0 DONE:** `charge_code` katalog + aliasy + RLS + `/charge-codes`. Nie `rate_line` / `charge`
 - **0.25 DONE:** Money Decimal + waluta + `<Money/>` na HITL. Bez tabeli charge
-- **Exit Wave A:** D0 + T0…0.23. 0.24 pip-audit opcjonalny
+- **Exit Wave A:** D0 + T0…0.23. 0.24 DONE (audit w CI, nie w local gate)
 - **U-routes-breadth:** 1.2 ma `/charges`. 1.1 ma `/rate-lines`. 1.0 ma `/charge-codes`. Nie Exit Wave FE (U-density…U-admin-ref)
 - **1.2 leftover (dlaczego nie w tym plasterze):** isolation/integration = CI — lokalnie PG wisiał przy `pytest -m integration` (jak 0.16–1.1); `just api-types` nie regen — wrapper fetch, gate = typecheck; brak MCP Postgres w sesji — schemat z migracji 008/009
 - **1.1 leftover (dlaczego nie w tym plasterze):** isolation/integration = CI — lokalnie PG wisiał przy `pytest -m integration` (jak 0.16–0.18 / 1.0); `just api-types` nie regen — wrapper fetch, gate = typecheck
@@ -53,6 +55,6 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **Wizja, nie kod:** outbox, Temporal/Hatchet/OTel jako działające systemy
 - **Backlog produktu:** HTTP extract vs live Postgres. PDF canvas HITL = U-pdf-spans (lazy); draft nadal bez blob PDF
 - **0.14 leftover (dlaczego nie w tym plasterze):** `api/extractions.py:78` `UnparseableDocument("Brak input_text")` — gałąź obronna po XOR Pydantic (0.11); C901/jscpd na diffie czyste, bez refaktoru testów HTTP
-- **Ops:** branch protection UI (GitHub Free private 403) — [branch-protection.md](branch-protection.md); k6 / vulture / pip-audit = echo; `just perf` = size-limit (U-size-limit-real)
+- **Ops:** branch protection UI (GitHub Free private 403) — [branch-protection.md](branch-protection.md); k6 / vulture = echo; `just audit` = pip-audit projektu (0.24); `just perf` = size-limit (U-size-limit-real)
 - **Kontrakt FE:** nie edytuj ręcznie `frontend/src/api/*` (flatten anyOf|null → cast w wrapperze)
 - **Zakaz:** fałszywe ruchy `refactor_ratio`, folder `.cursor/agents/` z personami, dump `Informacje z claude/` do nowych docs
