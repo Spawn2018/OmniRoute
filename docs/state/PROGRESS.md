@@ -54,4 +54,5 @@
 | 2026-09-01 | U-density | UI | compact default + toggle na users / charge-codes / rate-lines / charges / extractions |
 | 2026-09-01 | U-a11y | UI | skip-to-main + `:focus-visible` + ścieżka Tab/⌘K; RTL ≠ DoD |
 | 2026-09-01 | U-size-limit-real | ops/FE | `just perf` size-limit initial JS gzip < 250 kB; w gate; echo usunięte |
-| — | leftover | Wave FE | **Następny:** U-pdf-spans. U-admin-ref + U-routes-breadth otwarte. Nie Exit Wave FE. Auth0 I1 po FE. |
+| 2026-09-01 | U-pdf-spans | M-20 UI | PDF viewer + highlight spanów HITL; lazy pdf.js; bez OCR |
+| — | leftover | Wave FE | **Następny:** U-admin-ref. U-routes-breadth otwarte. Nie Exit Wave FE. Auth0 I1 po FE. |

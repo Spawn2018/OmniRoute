@@ -49,6 +49,7 @@ describe("operator keyboard path", () => {
     const hitl = renderToStaticMarkup(
       createElement(HitlReviewSplit, {
         draft: sampleDraft(),
+        pdfBase64: null,
         busy: false,
         onAccept: () => undefined,
         onReject: () => undefined,

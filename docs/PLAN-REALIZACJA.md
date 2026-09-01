@@ -3,7 +3,7 @@
 **Plan Cursor (pełny):** `.cursor/plans/omniroute-realizacja.plan.md`  
 **ADR:** [0001 Cursor factory](adr/0001-cursor-software-factory-weryfikacja.md) · [0002 Frontend 2026](adr/0002-frontend-platform-2026.md)  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
-**Stan:** B + C.1–C.5 + 0.11–0.15 leftover + **Exit Wave A (D0–0.23)** + **0.25 Money** + **1.0–1.3 charge** + **U-art50** + **U-palette-ops** + **U-density** + **U-a11y** + **U-size-limit-real** + D minimal · następny **U-pdf-spans** (Wave FE; nie Exit Wave FE; Auth0 I1 po U-*)
+**Stan:** B + C.1–C.5 + 0.11–0.15 leftover + **Exit Wave A (D0–0.23)** + **0.25 Money** + **1.0–1.3 charge** + **U-art50** + **U-palette-ops** + **U-density** + **U-a11y** + **U-size-limit-real** + **U-pdf-spans** + D minimal · następny **U-admin-ref** (Wave FE; nie Exit Wave FE; Auth0 I1 po U-*)
 
 ```mermaid
 flowchart LR
@@ -130,7 +130,8 @@ Pełna lista z „dlaczego”: [docs/ops/docs-debt.md](ops/docs-debt.md)
 
 | Kolejność | Co | Nie mylić z |
 |---|---|---|
-| następny | U-pdf-spans viewer + spany HITL, lazy pdf.js | nie OCR; nie dmuchać 250 kB |
+| następny | U-admin-ref gęsty admin (sidebar/toolbar/⌘K) | nie markdown-only; nie hello-dashboard |
+| U-pdf-spans DONE | PDF + spany HITL, lazy pdf.js | nie OCR; initial ~125 kB |
 | U-size-limit-real DONE | `just perf` + gate pada przy ≥ 250 kB | k6 nadal echo |
 | U-a11y DONE | skip-to-main + focus-visible + Tab/⌘K | RTL ≠ DoD |
 | U-density DONE | compact + toggle na 5 listach biznesowych | nie tylko users |
@@ -157,6 +158,7 @@ Pełna lista z „dlaczego”: [docs/ops/docs-debt.md](ops/docs-debt.md)
 | 0.13 DONE | Split-screen HITL (podgląd \| recenzja) | tekst źródła, nie PDF canvas |
 | 0.12 DONE | JWT zamiast spoofowalnych `X-Organization-Id` / `X-User-Id` | hello HS256, nie IdP |
 | 0.10+ (nie ten plaster) | żywy instructor/OpenAI w CI, llm-guard transformers, presidio, promptfoo 30 cenników, langfuse cloud | 0.10 = echo fixtures + no-op bez kluczy |
+| U-pdf-spans DONE | PDF + spany HITL lazy | nie OCR |
 | U-size-limit-real DONE | just perf size-limit w gate | k6 nadal echo |
 | U-a11y DONE | skip-to-main + focus-visible | RTL ≠ DoD |
 | U-density DONE | compact + toggle na listach biznesowych | nie tylko users |

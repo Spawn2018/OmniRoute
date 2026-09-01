@@ -1,16 +1,31 @@
+import { lazy, Suspense } from "react"
 import { Money } from "@/components/money"
 import { Button } from "@/components/ui/button"
 import { hitlGeneratedContentLabel, hitlSplitView } from "@/features/extraction/hitl-split"
+import {
+  hitlPreviewSegments,
+  hitlPreviewSpans,
+  isPdfBase64,
+} from "@/features/extraction/hitl-spans"
 import type { ExtractionDraft } from "@/lib/extractions-api"
+
+const HitlPdfViewer = lazy(() => import("@/features/extraction/hitl-pdf-viewer"))
 
 type HitlReviewSplitProps = {
   draft: ExtractionDraft | null
+  pdfBase64: string | null
   busy: boolean
   onAccept: (draftId: string) => void
   onReject: (draftId: string) => void
 }
 
-export function HitlReviewSplit({ draft, busy, onAccept, onReject }: HitlReviewSplitProps) {
+export function HitlReviewSplit({
+  draft,
+  pdfBase64,
+  busy,
+  onAccept,
+  onReject,
+}: HitlReviewSplitProps) {
   const view = hitlSplitView(draft)
 
   if (view.kind === "empty") {
@@ -26,7 +41,31 @@ export function HitlReviewSplit({ draft, busy, onAccept, onReject }: HitlReviewS
       <section className="min-w-0 rounded-md border border-border bg-card p-3">
         <h3 className="text-xs font-medium text-muted-foreground">Podgląd</h3>
         <p className="mt-1 font-mono text-xs text-muted-foreground">{view.sourceRef}</p>
-        <pre className="mt-2 max-h-64 overflow-auto whitespace-pre-wrap text-xs">{view.preview}</pre>
+        {pdfBase64 !== null && isPdfBase64(pdfBase64) ? (
+          <Suspense fallback={<p className="mt-2 text-xs text-muted-foreground">Ładowanie PDF…</p>}>
+            <HitlPdfViewer
+              pdfBase64={pdfBase64}
+              highlightTexts={view.candidates.flatMap((candidate) => [
+                candidate.code,
+                candidate.amount_text,
+                candidate.currency,
+              ])}
+            />
+          </Suspense>
+        ) : (
+          <pre className="mt-2 max-h-64 overflow-auto whitespace-pre-wrap text-xs">
+            {hitlPreviewSegments(view.preview, hitlPreviewSpans(view.preview, view.candidates)).map(
+              (segment, index) =>
+                segment.highlight ? (
+                  <mark key={`${segment.text}-${index}`} data-hitl-span="text">
+                    {segment.text}
+                  </mark>
+                ) : (
+                  <span key={`${segment.text}-${index}`}>{segment.text}</span>
+                ),
+            )}
+          </pre>
+        )}
       </section>
       <section className="min-w-0 rounded-md border border-border bg-card p-3">
         <div className="flex flex-wrap items-baseline justify-between gap-2">

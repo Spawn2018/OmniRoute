@@ -249,6 +249,7 @@ export function ExtractionQueuePage() {
 
       <HitlReviewSplit
         draft={query.data?.find((row) => row.id === selectedDraftId) ?? null}
+        pdfBase64={documentBase64}
         busy={acceptMutation.isPending || rejectMutation.isPending}
         onAccept={(draftId) => acceptMutation.mutate(draftId)}
         onReject={(draftId) => rejectMutation.mutate(draftId)}

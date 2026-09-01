@@ -51,6 +51,7 @@ describe("hitlSplitView", () => {
     const html = renderToStaticMarkup(
       createElement(HitlReviewSplit, {
         draft: sampleDraft(),
+        pdfBase64: null,
         busy: false,
         onAccept: () => undefined,
         onReject: () => undefined,
@@ -59,12 +60,14 @@ describe("hitlSplitView", () => {
     expect(html).toContain(HITL_AI_LABEL)
     expect(html).toContain('data-generated-content="ai"')
     expect(html).toContain('role="status"')
+    expect(html).toContain("data-hitl-span")
   })
 
   it("does not show the AI label when no draft is selected", () => {
     const html = renderToStaticMarkup(
       createElement(HitlReviewSplit, {
         draft: null,
+        pdfBase64: null,
         busy: false,
         onAccept: () => undefined,
         onReject: () => undefined,
