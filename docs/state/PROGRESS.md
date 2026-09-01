@@ -67,3 +67,4 @@
 | — | leftover | Auth0 | I1/I2 **odroczone** aż będzie tenant. Nie pytać. 0.12/0.15 ≠ IdP. |
 | — | leftover | produkt | **Następny:** 4.0 M-05 `port` (`/plaster`). Leftovery UI ADR-0003 **nie** zamiast 4.0. M-02 parked. |
 | 2026-09-01 | Plan 4.0 | M-05 | delta `docs/deltas/open/4.0-port.md` + spec `geography.md`. Następny: `/plaster` 4.0 w nowej rozmowie. Nie 4.1. Nie Q2. |
+| 2026-09-01 | 4.0 | M-05 | `port` UN/LOCODE + RLS FORCE + `resolve` (Gdingen→PLGDY) + `/ports` + `seed_ports.py`; 45 testów integracyjnych zielonych lokalnie na PG 16; nie `location`, nie `terminal`, nie WPI |

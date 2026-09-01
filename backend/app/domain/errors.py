@@ -54,6 +54,30 @@ class UnknownChargeCode(DomainError):
     """Token nie ma wpisu w katalogu charge_code tenanta."""
 
 
+class InvalidUnlocode(DomainError):
+    """Kod portu: 5 znaków UN/LOCODE — dwie litery kraju, trzy znaki miejsca."""
+
+
+class InvalidPortToken(DomainError):
+    """Token do rozwiązania nazwy portu musi być niepustym tekstem."""
+
+
+class InvalidPortData(DomainError):
+    """Pole rekordu UN/LOCODE nie da się zdekodować — klasyfikator albo pozycja."""
+
+
+class UnknownPort(DomainError):
+    """Token nie ma wpisu w katalogu port tenanta — luźna nazwa nie przechodzi."""
+
+
+class AmbiguousPortToken(DomainError):
+    """Alias wskazuje więcej niż jeden oficjalny port — wybór należy do człowieka."""
+
+
+class PortConflict(DomainError):
+    """UN/LOCODE już zajęty w katalogu tenanta."""
+
+
 class InvalidSourceRef(DomainError):
     """Stawka bez source_ref nie wchodzi do bazy (HC-03)."""
 

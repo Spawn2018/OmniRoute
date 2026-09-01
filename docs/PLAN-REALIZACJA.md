@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** **4.0** M-05 `port` + seed `cristan/improved-un-locodes` + `resolve` (Gdingen→PLGDY) + `/ports`. Delta: `docs/deltas/open/4.0-port.md`. Spec: `docs/spec/geography.md`. Nie 4.1/4.2. Nie Q2.
+**Następny (zablokowany):** **4.1** M-05 `location` + strefy (`location_zone_member`). Spec: `docs/spec/geography.md`. Nie 4.2. Nie Q2.
 <!-- os-status:end -->
 
 ```mermaid
@@ -423,13 +423,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

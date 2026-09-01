@@ -16,6 +16,7 @@ from app.models.quotation import Quotation  # noqa: F401
 from app.models.organization_setting import OrganizationSetting  # noqa: F401
 from app.models.extraction_draft import ExtractionDraft  # noqa: F401
 from app.models.table_view import TableView  # noqa: F401
+from app.models.port import Port  # noqa: F401
 
 config = context.config
 config.set_main_option("sqlalchemy.url", settings.database_url_sync)

@@ -17,6 +17,7 @@ from app.models.organization import Organization
 from app.models.organization_setting import (  # noqa: F401 — rejestr metadanych RLS
     OrganizationSetting,
 )
+from app.models.port import Port  # noqa: F401 — rejestr metadanych RLS
 from app.models.quotation import Quotation  # noqa: F401 — rejestr metadanych RLS
 from app.models.rate_line import RateLine  # noqa: F401 — rejestr metadanych RLS
 from app.models.refresh_token import RefreshToken  # noqa: F401 — rejestr metadanych RLS
@@ -240,6 +241,20 @@ async def _apply_rls_policies(conn) -> None:
         text(
             """
             CREATE POLICY organization_setting_tenant_isolation ON organization_setting
+            USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
+            WITH CHECK (
+              organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid
+            )
+            """
+        ),
+    )
+    await conn.execute(text("ALTER TABLE port ENABLE ROW LEVEL SECURITY"))
+    await conn.execute(text("ALTER TABLE port FORCE ROW LEVEL SECURITY"))
+    await conn.execute(text("DROP POLICY IF EXISTS port_tenant_isolation ON port"))
+    await conn.execute(
+        text(
+            """
+            CREATE POLICY port_tenant_isolation ON port
             USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
             WITH CHECK (
               organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid

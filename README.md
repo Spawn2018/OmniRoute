@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **3.0** M-03 `organization_setting` (zarchiwizowany)
-- **Etap:** **Plaster** (delta 4.0 zaakceptowana). Nowa rozmowa Agent + `/plaster`.
-- **Następny:** **4.0** M-05 `port` + seed `cristan/improved-un-locodes` + `resolve` (Gdingen→PLGDY) + `/ports`. Delta: `docs/deltas/open/4.0-port.md`. Spec: `docs/spec/geography.md`. Nie 4.1/4.2. Nie Q2.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
+- **Ostatni plaster:** **4.0** M-05 `port` (zarchiwizowany)
+- **Etap:** **Plan** (brak delty 4.1). Nowa rozmowa, tryb Plan + `/plan-modul`. Zero kodu.
+- **Następny:** **4.1** M-05 `location` + strefy (`location_zone_member`). Spec: `docs/spec/geography.md`. Nie 4.2. Nie Q2.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

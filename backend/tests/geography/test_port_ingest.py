@@ -78,7 +78,9 @@ async def test_reingest_updates_the_existing_row_instead_of_inserting(
     original_id = original.id
 
     renamed = [
-        replace(record, name="Gdynia Port") if record.unlocode == "PLGDY" else record
+        replace(record, name="Gdynia Port")
+        if record.unlocode.replace(" ", "") == "PLGDY"
+        else record
         for record in records
     ]
     await ingest_ports(

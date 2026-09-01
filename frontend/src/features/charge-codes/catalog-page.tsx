@@ -1,7 +1,12 @@
-import { Link } from "@tanstack/react-router"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { createColumnHelper } from "@tanstack/react-table"
 import { useState } from "react"
+import {
+  CatalogError,
+  CatalogHeading,
+  ResolveTokenForm,
+  TenantSessionNotice,
+} from "@/components/catalog/catalog-parts"
 import { DataTableShell } from "@/components/data-table/data-table-shell"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -47,7 +52,6 @@ export function ChargeCodeCatalogPage() {
   const [code, setCode] = useState("")
   const [name, setName] = useState("")
   const [aliasesText, setAliasesText] = useState("")
-  const [lookup, setLookup] = useState("")
   const [resolved, setResolved] = useState<ChargeCode | null>(null)
 
   const query = useQuery({
@@ -68,7 +72,7 @@ export function ChargeCodeCatalogPage() {
   })
 
   const resolveMutation = useMutation({
-    mutationFn: () => resolveChargeCode(lookup),
+    mutationFn: (token: string) => resolveChargeCode(token),
     onSuccess: (row) => {
       setResolved(row)
     },
@@ -79,22 +83,12 @@ export function ChargeCodeCatalogPage() {
 
   return (
     <div className="space-y-3">
-      <div>
-        <h2 className="text-base font-semibold">Katalog kodów opłat</h2>
-        <p className="text-xs text-muted-foreground">
-          charge_code M-06 · typowany kod, nie luźny string
-        </p>
-      </div>
+      <CatalogHeading
+        title="Katalog kodów opłat"
+        subtitle="charge_code M-06 · typowany kod, nie luźny string"
+      />
 
-      {!ctx.organizationId || !ctx.userId ? (
-        <div className="rounded-md border border-border bg-card p-3 text-sm">
-          Ustaw identyfikatory sesji na stronie{" "}
-          <Link className="underline" to="/session">
-            Sesja
-          </Link>
-          .
-        </div>
-      ) : null}
+      {!ctx.organizationId || !ctx.userId ? <TenantSessionNotice /> : null}
 
       <form
         className="grid gap-2 rounded-md border border-border bg-card p-3 md:grid-cols-4"
@@ -128,48 +122,21 @@ export function ChargeCodeCatalogPage() {
         </Button>
       </form>
 
-      {createMutation.isError ? (
-        <div className="rounded-md border border-destructive/40 bg-card p-3 text-sm text-destructive">
-          {(createMutation.error as Error).message}
-        </div>
-      ) : null}
+      {createMutation.isError ? <CatalogError error={createMutation.error} /> : null}
 
-      <form
-        className="flex gap-2 rounded-md border border-border bg-card p-3"
-        onSubmit={(event) => {
-          event.preventDefault()
-          resolveMutation.mutate()
-        }}
-      >
-        <Input
-          aria-label="Sprawdź token kodu opłaty"
-          placeholder="sprawdź kod albo alias"
-          value={lookup}
-          onChange={(event) => setLookup(event.target.value)}
-        />
-        <Button type="submit" variant="outline" disabled={resolveMutation.isPending || !lookup}>
-          Rozwiąż
-        </Button>
-        {resolved ? (
-          <div className="self-center font-mono text-xs">
-            {resolved.code} · {resolved.name}
-          </div>
-        ) : null}
-      </form>
+      <ResolveTokenForm
+        label="Sprawdź token kodu opłaty"
+        placeholder="sprawdź kod albo alias"
+        pending={resolveMutation.isPending}
+        resolved={resolved === null ? null : `${resolved.code} · ${resolved.name}`}
+        onResolve={(token) => resolveMutation.mutate(token)}
+      />
 
-      {resolveMutation.isError ? (
-        <div className="rounded-md border border-destructive/40 bg-card p-3 text-sm text-destructive">
-          {(resolveMutation.error as Error).message}
-        </div>
-      ) : null}
+      {resolveMutation.isError ? <CatalogError error={resolveMutation.error} /> : null}
 
       {query.isLoading ? <div className="text-sm text-muted-foreground">Ładowanie…</div> : null}
 
-      {query.isError ? (
-        <div className="rounded-md border border-destructive/40 bg-card p-3 text-sm text-destructive">
-          {(query.error as Error).message}
-        </div>
-      ) : null}
+      {query.isError ? <CatalogError error={query.error} /> : null}
 
       {query.data ? (
         <DataTableShell

@@ -23,6 +23,7 @@ modules =
     app.services.charges
     app.services.quotations
     app.services.organization_settings
+    app.services.geography
 
 [importlinter:contract:integracje]
 name = Integracje nie znają serwisów
