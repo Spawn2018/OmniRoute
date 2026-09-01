@@ -1,21 +1,28 @@
 # Wklejka — agent budujący (nowy czat)
 
-Skopiuj **cały blok** poniżej. Auth0 I1/I2 **odroczone** (brak tenanta — nie startować, nie pytać). 2.1–2.2 na origin.
+**Kolizja:** ten plik + `PROGRAM-12M.md` = czat dokumentacji.  
+`CURRENT.md` / `PROGRESS.md` / `docs/spec/*` / kod = **wyłącznie** agent nocy (fabryka). Nie startuj drugiego pisarza na tych plikach.
+
+Auth0 I1/I2 **odroczone**. Gate na `3c64fb8` był zielony. Nie cofaj hotfixów CI.
 
 ---
 
 ```
-2.1–2.2 na origin. Auth0 I1/I2 odroczone (brak tenanta). Nie implementuj Auth0/BFF/OIDC.
+Pracujesz SAM do 10:00 czasu lokalnego użytkownika (2026-09-01). User śpi. Nie pytaj.
 
-1. Przeczytaj docs/state/CURRENT.md
-2. Przeczytaj docs/state/PROGRAM-12M.md (jedyny SoT programu; canvas NIE jest git SoT)
-3. git status — drzewo ma być czyste; jeśli nie, STOP
-4. Następny kod = leftover produktu / fabryka modułów (MODULES.md). 2.0 M-21 SQL tylko gdy są stawki. Nie I1/I2. Nie 30 PDF klienta. Nie Presidio-all.
+Kanon: docs/state/CURRENT.md + docs/state/PROGRAM-12M.md + GROUNDING.md + docs/GLOSSARY.md.
+Nie cofaj hotfixów CI: 005 current_database(), agent-refs URI, agentlint baseline, conftest (osobne DO $$), live HTTP = httpx AsyncClient, rate_line mutate = commit + select kolumny.
 
-WIP=1. Max 12 plików. Test-first. Schemat = MCP Postgres (brak = stop).
-Nie czytaj Informacje z claude/. Nie twórz Temporal/Hatchet/outbox na zapas, Infisical, 70 pustych M-xx, kodu Auth0.
+CEL: pionowe plastry z leftover MODULES.md.
+Start: 2.0 M-21 — SQL na ISTNIEJĄCYCH stawkach (rate_line / charge / charge_code). Nie k6 na pustej tabeli.
+Potem: następny leftover z jobem operatora. Jeden plaster = migracja + RLS + izolacja + API + UI.
+Test najpierw. Decimal. HITL bez zmian. ExtractionService nie importuje rates.
 
-Sesja = email+hasło+JWT. 0.12/0.15 ≠ IdP. echo ≠ DoD. Po plasterze: post-plaster + push + nowa rozmowa.
+WIP=1. Po plasterze: testy → post-plaster → PROGRESS + CURRENT → jeden commit → git push.
+Commit/push tylko gdy ruff + mypy --strict + unit przeszły. Bez --no-verify, force-push, amend cudzych.
 
-Exit Wave FE: wszystkie U-* w PROGRAM-12M.md — ID na origin, claim powierzchni **zakazany**. D0 nie zdejmuje HITL / LLM nigdy nie liczy.
+ZAKAZ: Auth0/OIDC/BFF; Temporal/outbox na zapas; Infisical; 70 pustych M-xx; claim Exit Wave FE / powierzchnia 2026; Presidio-all; PDF klienta w git.
+Sesja = email+hasło+JWT. 0.12/0.15 ≠ IdP.
+
+O 10:00 lub po ostatnim kompletnym pushu: STOP. Lista SHA + leftover.
 ```

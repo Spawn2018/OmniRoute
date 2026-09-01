@@ -25,8 +25,8 @@ Po plasterze: docs/ops/post-plaster.md + push + nowa rozmowa.
 
 | Teraz (git) | Po zamknięciu WIP | Nie wolno |
 |---|---|---|
-| **Ostatni:** 2.1–2.2 | fabryka modułów / leftover produktu (`MODULES.md`). Auth0 I1/I2 **odroczone** | Start I1/I2 bez tenanta Auth0 |
-| WIP czysty po pushu 2.1–2.2 | max 3 agenty; pliki ∩ = ∅ | Dwa agenty na tych samych plikach |
+| **Ostatni kanon docs:** 2.1–2.2 + CI hotfix (`3c64fb8`, gate zielony) | Fabryka: **2.0 M-21** SQL na istniejących stawkach, potem leftover `MODULES.md` | Start I1/I2 bez tenanta Auth0 |
+| Noc 2026-09-01: **jeden** agent na kod + `CURRENT`/`PROGRESS` | Ten plik + `HANDOFF-BUILDING-AGENT.md` = drugi czat (docs) | Drugi agent na `CURRENT.md` / kod / spec |
 
 **Kolizja numeru:** WIP **0.15 hasła** ≠ kanon **0.15 T0**. Po zamknięciu hasła zostają 0.15 w PROGRESS; T0 zostaje **0.15 T0** w tym pliku.
 
