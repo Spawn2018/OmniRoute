@@ -29,3 +29,8 @@ Skill `zamknij-plaster`: archiwum delty, CURRENT/PROGRESS, commit, **push**. WIP
 Push przechodzi przez hook `scripts/githooks/pre-push` (włącz raz: `just hooks`), który
 odpala `just gate` i przerywa push przy błędzie. Nie zwalnia to z tabeli powyżej — hook
 sprawdza bramkę, nie skuteczność ani dług w diffie.
+
+`gate` = `code-gate` (ruff, mypy, testy, import-linter, frontend, dup, perf) i dopiero potem
+`meta-gate` (docs-check, agent-refs, agentlint). Kolejność jest z audytu runów #79-#88:
+meta stojące pierwsze przerywało bramkę i przez siedem pushy CI nie powiedziało nic o kodzie.
+W CI oba idą jako niezależne joby, więc czerwona dokumentacja nie przykrywa wyniku kodu.

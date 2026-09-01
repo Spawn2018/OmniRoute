@@ -45,6 +45,10 @@ GitHub kosztuje więcej niż te 70 sekund.
 Bramka **nie** sprawdza migracji bazy, `pip-audit` ani testów integracyjnych —
 te wymagają uruchomionego Postgresa i OpenFGA. Robi to CI po pushu.
 
+Najczęstsza porażka to `agentlint`: ktoś zmienił `AGENTS.md` albo reguły w `.cursor/rules/`
+i nie przepisał odcisku. Hook wypisze wtedy gotowe polecenie do wklejenia — nie trzeba
+nic wymyślać. Samo to sprawdzenie trwa sekundę: `just meta-gate`.
+
 Sprawdzenie, czy jest włączona: `git config --get core.hooksPath` ma wypisać `scripts/githooks`.
 
 ### Furtka awaryjna

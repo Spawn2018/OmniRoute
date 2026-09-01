@@ -11,6 +11,10 @@ description: Zamyka plaster i przygotowuje następny
 5. **Bramka przed push:** `git config --get core.hooksPath` musi dać `scripts/githooks`.
    Brak → `just hooks` (albo `scripts/install-hooks.ps1`). Hook odpala `just gate` i blokuje
    czerwony push. `git push --no-verify` to wyjątek do uzasadnienia, nie skrót.
+5b. Ruszałeś `AGENTS.md`, `GROUNDING.md` albo `.cursor/rules/*`? Przepisz baseline
+   (`python scripts/quality/agentlint.py --write`) i włóż `scripts/quality/agentlint.baseline.json`
+   do **tego samego** commita. Bez tego agentlint pada — to była przyczyna 6 z 7 czerwonych
+   runów #79-#88. Kontrola trwa sekundę: `just meta-gate`.
 6. Wypisz jednym zdaniem, co zostało niedokończone albo odłożone (`docs/ops/docs-debt.md`).
 
 Po tym kroku otwieram nową rozmowę. Nie kontynuuj.

@@ -15,5 +15,6 @@ description: Zamyka plaster, archiwizuje delta-spec, przygotowuje następną roz
 8. Ustaw `docs/state/CURRENT.md` na **następną pozycję Q** z `docs/PLAN-REALIZACJA.md` § Kolejka (nie pytaj „co chcesz”). Jeśli następne Q to wydmuszka: **Etap: Plan**, komenda `/plan-modul`, nie `/plaster`.
 8b. `just docs` — przepisuje README / ARCHITECTURE / PLAN z CURRENT. Potem `just docs-check`. GitHub = ten README **po pushu**.
 8c. **Bramka przed push** włączona: `git config --get core.hooksPath` = `scripts/githooks`. Brak → `just hooks`. Hook `scripts/githooks/pre-push` odpala `just gate` i zatrzymuje push, gdy bramka pada — tego kroku nie zastępuje ręczne `just gate` z punktu 1.
+8d. Zmiana `AGENTS.md` / `GROUNDING.md` / `.cursor/rules/*` bez przepisanego baseline zawsze daje czerwony CI (6 z 7 runów #79-#88). Przy takiej zmianie: `python scripts/quality/agentlint.py --write` + `scripts/quality/agentlint.baseline.json` w tym samym commicie. Sprawdzenie: `just meta-gate` (ok. 1 s).
 9. Commit + push: `feat(M-xx): opis [plaster id]` — **dopiero potem** wolno startować kolejny plaster. `git push --no-verify` tylko z powodem wpisanym do `docs/ops/docs-debt.md`
 10. **Nowa rozmowa Cursor** — nie kontynuuj w tym wątku
