@@ -227,6 +227,12 @@ async def engine() -> AsyncGenerator:
                   CREATE ROLE tenant_tester LOGIN PASSWORD 'test' NOINHERIT NOBYPASSRLS;
                 EXCEPTION WHEN duplicate_object THEN NULL;
                 END $$;
+                """
+            ),
+        )
+        await conn.execute(
+            text(
+                """
                 DO $$ BEGIN
                   CREATE ROLE omniroute_app LOGIN PASSWORD 'omniroute'
                     NOSUPERUSER NOCREATEDB NOCREATEROLE NOINHERIT NOBYPASSRLS;
