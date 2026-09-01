@@ -192,3 +192,19 @@ class UnknownNbpRate(DomainError):
 
 class NbpRateConflict(DomainError):
     """Kurs tej waluty na ten dzień już jest w katalogu tenanta."""
+
+
+class InvalidDangerousGood(DomainError):
+    """Numer UN: 4 cyfry — prefiks UN zbędny, nie luźna nazwa."""
+
+
+class InvalidImdgClass(DomainError):
+    """Klasa IMDG spoza allowlisty 1–9 z podziałem."""
+
+
+class UnknownDangerousGood(DomainError):
+    """Token nie ma wpisu w katalogu dangerous_good tenanta."""
+
+
+class DangerousGoodConflict(DomainError):
+    """Numer UN albo alias już zajęty w katalogu tenanta."""

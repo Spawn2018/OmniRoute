@@ -21,7 +21,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-10 | Kontrahenci | 5.0 `party` + katalog zależny | **ukończony (fundament)** · lookup = szkic/fixture; override nie karmić wyceny |
 | M-09 | Kody towarowe | 5.2 `commodity_code` | **ukończony (fundament)** · nie podpięcie do wyceny; nie IMDG |
 | M-23 | Kurs NBP | 6.0 `nbp_rate` | **ukończony (fundament)** · nie przeliczenie wyceny; nie żywe M-07 `rate_line` |
-| M-52 | Towary niebezpieczne | 7.0 `dangerous_good` (delta) | **w toku** · nie podpięcie do wyceny; nie żywe M-08 `charge` |
+| M-52 | Towary niebezpieczne | 7.0 `dangerous_good` | **ukończony (fundament)** · nie podpięcie do wyceny; nie żywe M-08 `charge` |
 
 Nie dopisuj tu 70 pustych wierszy M-xx. Katalog + **kolejka Q1…** (co budować jedno po drugim, tryb Plan potem plaster): `docs/PLAN-REALIZACJA.md` § Kolejka. Archiwum Claude zostaje magazynem specyfikacji, nie SoT kolejności.
 
@@ -35,4 +35,4 @@ Nie dopisuj tu 70 pustych wierszy M-xx. Katalog + **kolejka Q1…** (co budować
 ## Specyfikacje
 
 Każdy moduł w kodzie: `docs/spec/<nazwa>.md` (max 400 linii).  
-Dziś: `tenancy.md`, `extraction.md`, `charge-code.md`, `rate-line.md`, `charge.md`, `quotation.md`, `organization-setting.md`, `geography.md` (4.0–4.2 w kodzie), `parties.md` (5.0 w kodzie), `commodity-code.md` (5.2 w kodzie), `nbp-rate.md` (6.0 w kodzie), `dangerous-good.md` (7.0 delta). Szkielety uzupełniane przy plastrze — nie kompiluj całego archiwum.
+Dziś: `tenancy.md`, `extraction.md`, `charge-code.md`, `rate-line.md`, `charge.md`, `quotation.md`, `organization-setting.md`, `geography.md` (4.0–4.2 w kodzie), `parties.md` (5.0 w kodzie), `commodity-code.md` (5.2 w kodzie), `nbp-rate.md` (6.0 w kodzie), `dangerous-good.md` (7.0 w kodzie). Szkielety uzupełniane przy plastrze — nie kompiluj całego archiwum.

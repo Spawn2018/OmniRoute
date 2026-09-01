@@ -1,7 +1,7 @@
 # M-52 dangerous_good — katalog towarów niebezpiecznych
 
-**Plaster:** 7.0 (delta `docs/deltas/open/7.0-dangerous-good.md`)  
-**Status:** planowany katalog numeru UN + klasy IMDG per tenant. Nie podpięcie do wyceny. Nie żywe M-08 `charge`.
+**Plaster:** 7.0 (delta `docs/deltas/archived/7.0-dangerous-good.md`)  
+**Status:** ukończony (fundament) — katalog numeru UN + klasy IMDG per tenant. Nie podpięcie do wyceny. Nie żywe M-08 `charge`.
 
 ## Zakres
 

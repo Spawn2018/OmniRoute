@@ -29,6 +29,7 @@ _ALL_TENANT_POLICY_NAMES = (
     "organization_setting_tenant_isolation",
     "commodity_code_tenant_isolation",
     "nbp_rate_tenant_isolation",
+    "dangerous_good_tenant_isolation",
 )
 
 

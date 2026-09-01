@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **6.0** M-23 `nbp_rate` (zarchiwizowany)
-- **Etap:** Plaster
-- **Następny:** **7.0** M-52 `dangerous_good` ([delta](../deltas/open/7.0-dangerous-good.md)). Nie Fala 2.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
+- **Ostatni plaster:** **7.0** M-52 `dangerous_good` (zarchiwizowany)
+- **Etap:** Plan
+- **Następny:** M-11 Automatyczne kontakty (`/plan-modul`). Nie Fala 8. Nie zgaduj zakresu.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

@@ -782,6 +782,129 @@
         }
       }
     },
+    "/api/v1/dangerous-goods": {
+      "get": {
+        "tags": [
+          "dangerous-goods"
+        ],
+        "summary": "List Dangerous Goods",
+        "operationId": "list_dangerous_goods_api_v1_dangerous_goods_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/DangerousGoodResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Dangerous Goods Api V1 Dangerous Goods Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "dangerous-goods"
+        ],
+        "summary": "Create Dangerous Good",
+        "operationId": "create_dangerous_good_api_v1_dangerous_goods_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DangerousGoodCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DangerousGoodResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/dangerous-goods/resolve": {
+      "get": {
+        "tags": [
+          "dangerous-goods"
+        ],
+        "summary": "Resolve Dangerous Good",
+        "operationId": "resolve_dangerous_good_api_v1_dangerous_goods_resolve_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 6,
+              "title": "Token"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DangerousGoodResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/nbp-rates": {
       "get": {
         "tags": [
@@ -3479,6 +3602,91 @@
           "is_primary"
         ],
         "title": "ContactResponse"
+      },
+      "DangerousGoodCreate": {
+        "properties": {
+          "un_number": {
+            "type": "string",
+            "maxLength": 6,
+            "minLength": 1,
+            "title": "Un Number"
+          },
+          "imdg_class": {
+            "type": "string",
+            "maxLength": 3,
+            "minLength": 1,
+            "title": "Imdg Class"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 1,
+            "title": "Name"
+          },
+          "aliases": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Aliases"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "un_number",
+          "imdg_class",
+          "name"
+        ],
+        "title": "DangerousGoodCreate"
+      },
+      "DangerousGoodResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "un_number": {
+            "type": "string",
+            "title": "Un Number"
+          },
+          "imdg_class": {
+            "type": "string",
+            "title": "Imdg Class"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "aliases": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Aliases"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "un_number",
+          "imdg_class",
+          "name",
+          "aliases",
+          "source_ref"
+        ],
+        "title": "DangerousGoodResponse"
       },
       "EmailDomainCreate": {
         "properties": {

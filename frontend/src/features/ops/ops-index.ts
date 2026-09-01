@@ -15,6 +15,11 @@ export const OPS_JOBS = [
     job: "katalog commodity_code",
   },
   {
+    route: BUSINESS_LISTS.dangerousGoods.route,
+    label: "Towary niebezpieczne",
+    job: "katalog dangerous_good UN/IMDG",
+  },
+  {
     route: BUSINESS_LISTS.nbpRates.route,
     label: "Kursy NBP",
     job: "katalog nbp_rate tabeli A",
@@ -57,6 +62,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "5.0": "/parties",
   "5.2": "/commodity-codes",
   "6.0": "/nbp-rates",
+  "7.0": "/dangerous-goods",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

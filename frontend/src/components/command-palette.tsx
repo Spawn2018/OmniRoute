@@ -17,6 +17,7 @@ const NAV_ACTIONS = [
   { id: "nav-extractions", label: "Idź do kolejki ekstrakcji", to: "/extractions" },
   { id: "nav-charge-codes", label: "Idź do katalogu kodów opłat", to: "/charge-codes" },
   { id: "nav-commodity-codes", label: "Idź do katalogu kodów towarowych", to: "/commodity-codes" },
+  { id: "nav-dangerous-goods", label: "Idź do katalogu towarów niebezpiecznych", to: "/dangerous-goods" },
   { id: "nav-nbp-rates", label: "Idź do katalogu kursów NBP", to: "/nbp-rates" },
   { id: "nav-charges", label: "Idź do opłat", to: "/charges" },
   { id: "nav-rate-lines", label: "Idź do stawek kupna", to: "/rate-lines" },

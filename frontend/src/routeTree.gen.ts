@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ChargeCodesRouteImport } from './routes/charge-codes'
 import { Route as ChargesRouteImport } from './routes/charges'
 import { Route as CommodityCodesRouteImport } from './routes/commodity-codes'
+import { Route as DangerousGoodsRouteImport } from './routes/dangerous-goods'
 import { Route as ExtractionsRouteImport } from './routes/extractions'
 import { Route as LocationsRouteImport } from './routes/locations'
 import { Route as NbpRatesRouteImport } from './routes/nbp-rates'
@@ -43,6 +44,11 @@ const ChargesRoute = ChargesRouteImport.update({
 const CommodityCodesRoute = CommodityCodesRouteImport.update({
   id: '/commodity-codes',
   path: '/commodity-codes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DangerousGoodsRoute = DangerousGoodsRouteImport.update({
+  id: '/dangerous-goods',
+  path: '/dangerous-goods',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ExtractionsRoute = ExtractionsRouteImport.update({
@@ -106,6 +112,7 @@ export interface FileRoutesByFullPath {
   '/charge-codes': typeof ChargeCodesRoute
   '/charges': typeof ChargesRoute
   '/commodity-codes': typeof CommodityCodesRoute
+  '/dangerous-goods': typeof DangerousGoodsRoute
   '/extractions': typeof ExtractionsRoute
   '/locations': typeof LocationsRoute
   '/nbp-rates': typeof NbpRatesRoute
@@ -123,6 +130,7 @@ export interface FileRoutesByTo {
   '/charge-codes': typeof ChargeCodesRoute
   '/charges': typeof ChargesRoute
   '/commodity-codes': typeof CommodityCodesRoute
+  '/dangerous-goods': typeof DangerousGoodsRoute
   '/extractions': typeof ExtractionsRoute
   '/locations': typeof LocationsRoute
   '/nbp-rates': typeof NbpRatesRoute
@@ -141,6 +149,7 @@ export interface FileRoutesById {
   '/charge-codes': typeof ChargeCodesRoute
   '/charges': typeof ChargesRoute
   '/commodity-codes': typeof CommodityCodesRoute
+  '/dangerous-goods': typeof DangerousGoodsRoute
   '/extractions': typeof ExtractionsRoute
   '/locations': typeof LocationsRoute
   '/nbp-rates': typeof NbpRatesRoute
@@ -160,6 +169,7 @@ export interface FileRouteTypes {
     | '/charge-codes'
     | '/charges'
     | '/commodity-codes'
+    | '/dangerous-goods'
     | '/extractions'
     | '/locations'
     | '/nbp-rates'
@@ -177,6 +187,7 @@ export interface FileRouteTypes {
     | '/charge-codes'
     | '/charges'
     | '/commodity-codes'
+    | '/dangerous-goods'
     | '/extractions'
     | '/locations'
     | '/nbp-rates'
@@ -194,6 +205,7 @@ export interface FileRouteTypes {
     | '/charge-codes'
     | '/charges'
     | '/commodity-codes'
+    | '/dangerous-goods'
     | '/extractions'
     | '/locations'
     | '/nbp-rates'
@@ -212,6 +224,7 @@ export interface RootRouteChildren {
   ChargeCodesRoute: typeof ChargeCodesRoute
   ChargesRoute: typeof ChargesRoute
   CommodityCodesRoute: typeof CommodityCodesRoute
+  DangerousGoodsRoute: typeof DangerousGoodsRoute
   ExtractionsRoute: typeof ExtractionsRoute
   LocationsRoute: typeof LocationsRoute
   NbpRatesRoute: typeof NbpRatesRoute
@@ -253,6 +266,13 @@ declare module '@tanstack/react-router' {
       path: '/commodity-codes'
       fullPath: '/commodity-codes'
       preLoaderRoute: typeof CommodityCodesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dangerous-goods': {
+      id: '/dangerous-goods'
+      path: '/dangerous-goods'
+      fullPath: '/dangerous-goods'
+      preLoaderRoute: typeof DangerousGoodsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/extractions': {
@@ -340,6 +360,7 @@ const rootRouteChildren: RootRouteChildren = {
   ChargeCodesRoute: ChargeCodesRoute,
   ChargesRoute: ChargesRoute,
   CommodityCodesRoute: CommodityCodesRoute,
+  DangerousGoodsRoute: DangerousGoodsRoute,
   ExtractionsRoute: ExtractionsRoute,
   LocationsRoute: LocationsRoute,
   NbpRatesRoute: NbpRatesRoute,

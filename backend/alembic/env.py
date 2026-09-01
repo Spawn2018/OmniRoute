@@ -11,6 +11,7 @@ from app.models.base import Base
 from app.models.organization import Organization  # noqa: F401
 from app.models.charge_code import ChargeCode  # noqa: F401
 from app.models.commodity_code import CommodityCode  # noqa: F401
+from app.models.dangerous_good import DangerousGood  # noqa: F401
 from app.models.nbp_rate import NbpRate  # noqa: F401
 from app.models.rate_line import RateLine  # noqa: F401
 from app.models.charge import Charge  # noqa: F401

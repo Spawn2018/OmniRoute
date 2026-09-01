@@ -435,6 +435,62 @@ export type ContactResponse = {
 };
 
 /**
+ * DangerousGoodCreate
+ */
+export type DangerousGoodCreate = {
+    /**
+     * Un Number
+     */
+    un_number: string;
+    /**
+     * Imdg Class
+     */
+    imdg_class: string;
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Aliases
+     */
+    aliases?: Array<string>;
+};
+
+/**
+ * DangerousGoodResponse
+ */
+export type DangerousGoodResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Un Number
+     */
+    un_number: string;
+    /**
+     * Imdg Class
+     */
+    imdg_class: string;
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Aliases
+     */
+    aliases: Array<string>;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * EmailDomainCreate
  */
 export type EmailDomainCreate = {
@@ -1877,6 +1933,79 @@ export type ResolveCommodityCodeApiV1CommodityCodesResolveGetResponses = {
 };
 
 export type ResolveCommodityCodeApiV1CommodityCodesResolveGetResponse = ResolveCommodityCodeApiV1CommodityCodesResolveGetResponses[keyof ResolveCommodityCodeApiV1CommodityCodesResolveGetResponses];
+
+export type ListDangerousGoodsApiV1DangerousGoodsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/dangerous-goods';
+};
+
+export type ListDangerousGoodsApiV1DangerousGoodsGetResponses = {
+    /**
+     * Response List Dangerous Goods Api V1 Dangerous Goods Get
+     *
+     * Successful Response
+     */
+    200: Array<DangerousGoodResponse>;
+};
+
+export type ListDangerousGoodsApiV1DangerousGoodsGetResponse = ListDangerousGoodsApiV1DangerousGoodsGetResponses[keyof ListDangerousGoodsApiV1DangerousGoodsGetResponses];
+
+export type CreateDangerousGoodApiV1DangerousGoodsPostData = {
+    body: DangerousGoodCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/dangerous-goods';
+};
+
+export type CreateDangerousGoodApiV1DangerousGoodsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateDangerousGoodApiV1DangerousGoodsPostError = CreateDangerousGoodApiV1DangerousGoodsPostErrors[keyof CreateDangerousGoodApiV1DangerousGoodsPostErrors];
+
+export type CreateDangerousGoodApiV1DangerousGoodsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: DangerousGoodResponse;
+};
+
+export type CreateDangerousGoodApiV1DangerousGoodsPostResponse = CreateDangerousGoodApiV1DangerousGoodsPostResponses[keyof CreateDangerousGoodApiV1DangerousGoodsPostResponses];
+
+export type ResolveDangerousGoodApiV1DangerousGoodsResolveGetData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Token
+         */
+        token: string;
+    };
+    url: '/api/v1/dangerous-goods/resolve';
+};
+
+export type ResolveDangerousGoodApiV1DangerousGoodsResolveGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ResolveDangerousGoodApiV1DangerousGoodsResolveGetError = ResolveDangerousGoodApiV1DangerousGoodsResolveGetErrors[keyof ResolveDangerousGoodApiV1DangerousGoodsResolveGetErrors];
+
+export type ResolveDangerousGoodApiV1DangerousGoodsResolveGetResponses = {
+    /**
+     * Successful Response
+     */
+    200: DangerousGoodResponse;
+};
+
+export type ResolveDangerousGoodApiV1DangerousGoodsResolveGetResponse = ResolveDangerousGoodApiV1DangerousGoodsResolveGetResponses[keyof ResolveDangerousGoodApiV1DangerousGoodsResolveGetResponses];
 
 export type ListNbpRatesApiV1NbpRatesGetData = {
     body?: never;

@@ -19,3 +19,4 @@ type organization
     define can_manage_parties: member
     define can_manage_commodity_codes: member
     define can_manage_nbp_rates: member
+    define can_manage_dangerous_goods: member

@@ -1,0 +1,163 @@
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
+import { createColumnHelper } from "@tanstack/react-table"
+import { useState } from "react"
+import {
+  CatalogError,
+  CatalogHeading,
+  CatalogLoadedTable,
+  ResolveTokenForm,
+  TenantSessionNotice,
+} from "@/components/catalog/catalog-parts"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { BUSINESS_LISTS } from "@/lib/business-lists"
+import {
+  createDangerousGood,
+  dangerousGoodCreateBody,
+  fetchDangerousGoods,
+  resolveDangerousGood,
+  type DangerousGood,
+} from "@/lib/dangerous-goods-api"
+import { getTenantContext } from "@/lib/tenant"
+
+const helper = createColumnHelper<DangerousGood>()
+
+const columns = [
+  helper.accessor("un_number", {
+    header: "Numer UN",
+    cell: (info) => <span className="font-mono text-xs">{info.getValue()}</span>,
+  }),
+  helper.accessor("imdg_class", {
+    header: "Klasa IMDG",
+    cell: (info) => info.getValue(),
+  }),
+  helper.accessor("name", { header: "Nazwa ładunku" }),
+  helper.accessor("aliases", {
+    header: "Aliasy UN",
+    cell: (info) => info.getValue().join(" · ") || "brak",
+  }),
+  helper.accessor("source_ref", { header: "Źródło" }),
+]
+
+const COLUMN_LABELS = {
+  un_number: "Numer UN",
+  imdg_class: "Klasa IMDG",
+  name: "Nazwa ładunku",
+  aliases: "Aliasy UN",
+  source_ref: "Źródło",
+}
+
+export function DangerousGoodCatalogPage() {
+  const ctx = getTenantContext()
+  const queryClient = useQueryClient()
+  const [unNumber, setUnNumber] = useState("")
+  const [imdgClass, setImdgClass] = useState("")
+  const [name, setName] = useState("")
+  const [aliasesText, setAliasesText] = useState("")
+  const [resolved, setResolved] = useState<DangerousGood | null>(null)
+  const sessionReady = Boolean(ctx.organizationId && ctx.userId)
+
+  const query = useQuery({
+    queryKey: ["dangerous-goods", ctx.organizationId],
+    queryFn: fetchDangerousGoods,
+    enabled: sessionReady,
+    retry: false,
+  })
+
+  const createMutation = useMutation({
+    mutationFn: () =>
+      createDangerousGood(dangerousGoodCreateBody({ unNumber, imdgClass, name, aliasesText })),
+    onSuccess: () => {
+      setUnNumber("")
+      setImdgClass("")
+      setName("")
+      setAliasesText("")
+      void queryClient.invalidateQueries({ queryKey: ["dangerous-goods", ctx.organizationId] })
+    },
+  })
+
+  const resolveMutation = useMutation({
+    mutationFn: resolveDangerousGood,
+    onSuccess: setResolved,
+    onError: () => setResolved(null),
+  })
+
+  return (
+    <div className="space-y-3">
+      <CatalogHeading
+        title="Katalog towarów niebezpiecznych"
+        subtitle="dangerous_good M-52 · numer UN i klasa IMDG · nie podpina wyceny"
+      />
+
+      {sessionReady ? null : <TenantSessionNotice />}
+
+      <form
+        className="flex flex-col gap-2 rounded-md border border-border bg-card p-3 lg:grid lg:grid-cols-5"
+        onSubmit={(event) => {
+          event.preventDefault()
+          if (!sessionReady) return
+          createMutation.mutate()
+        }}
+      >
+        <Input
+          aria-label="Numer UN"
+          placeholder="1203"
+          maxLength={6}
+          value={unNumber}
+          onChange={(event) => setUnNumber(event.target.value)}
+          required
+        />
+        <Input
+          aria-label="Klasa IMDG"
+          placeholder="3"
+          maxLength={3}
+          value={imdgClass}
+          onChange={(event) => setImdgClass(event.target.value)}
+          required
+        />
+        <Input
+          aria-label="Nazwa ładunku"
+          placeholder="Benzyna"
+          value={name}
+          onChange={(event) => setName(event.target.value)}
+          required
+        />
+        <Input
+          aria-label="Aliasy UN"
+          placeholder="1213"
+          value={aliasesText}
+          onChange={(event) => setAliasesText(event.target.value)}
+        />
+        <Button type="submit" disabled={createMutation.isPending || !sessionReady}>
+          Dodaj towar
+        </Button>
+      </form>
+
+      {createMutation.isError ? <CatalogError error={createMutation.error} /> : null}
+
+      <ResolveTokenForm
+        label="Sprawdź numer UN"
+        placeholder="1203 albo alias"
+        pending={resolveMutation.isPending}
+        resolved={
+          resolved === null
+            ? null
+            : `UN${resolved.un_number} · klasa ${resolved.imdg_class} · ${resolved.name}`
+        }
+        onResolve={(token) => resolveMutation.mutate(token)}
+      />
+
+      {resolveMutation.isError ? <CatalogError error={resolveMutation.error} /> : null}
+
+      <CatalogLoadedTable
+        data={query.data}
+        columns={columns}
+        columnLabels={COLUMN_LABELS}
+        tableKey={BUSINESS_LISTS.dangerousGoods.tableKey}
+        globalFilterPlaceholder="Szukaj numeru UN albo klasy…"
+        loading={query.isLoading}
+        error={query.error}
+      />
+    </div>
+  )
+}
