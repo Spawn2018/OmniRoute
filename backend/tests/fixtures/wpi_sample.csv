@@ -1,0 +1,4 @@
+World Port Index Number,Main Port Name,UN/LOCODE,Harbor Size,Harbor Type,Shelter Afforded,Channel Depth (m),Cargo Pier Depth (m)
+28770,GDYNIA,PL GDY,Medium,Coastal Breakwater,Good,11.0,9.4
+,SKIP EMPTY UNLOCODE,,Small,Coastal Natural,Fair,5.0,4.0
+99999,NOWHERE,ZZ UNK,Very Small,Open Roadstead,Poor,3.0,2.0

@@ -19,6 +19,11 @@ export const OPS_JOBS = [
     label: "Lokalizacje",
     job: "strefy taryfowe + resolve kodu",
   },
+  {
+    route: BUSINESS_LISTS.terminals.route,
+    label: "Terminale",
+    job: "katalog ISPS + resolve",
+  },
   { route: BUSINESS_LISTS.users.route, label: "Użytkownicy", job: "tenant users" },
   { route: "/session", label: "Sesja", job: "token klienta" },
 ] as const
@@ -33,6 +38,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "3.0": "/organization-settings",
   "4.0": "/ports",
   "4.1": "/locations",
+  "4.2": "/terminals",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

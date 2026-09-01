@@ -2,7 +2,7 @@
 
 import type { Client, ClientMeta, Options as Options2, RequestResult, TDataShape } from './client';
 import { client } from './client.gen';
-import type { AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostData, AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostErrors, AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostResponses, CreateExtractionDraftApiV1ExtractionsPostData, CreateExtractionDraftApiV1ExtractionsPostErrors, CreateExtractionDraftApiV1ExtractionsPostResponses, CreateSessionTokenApiV1SessionTokenPostData, CreateSessionTokenApiV1SessionTokenPostErrors, CreateSessionTokenApiV1SessionTokenPostResponses, CreateTableViewApiV1TenancyTableViewsPostData, CreateTableViewApiV1TenancyTableViewsPostErrors, CreateTableViewApiV1TenancyTableViewsPostResponses, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteData, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteErrors, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteResponses, HealthHealthGetData, HealthHealthGetResponses, ListExtractionDraftsApiV1ExtractionsGetData, ListExtractionDraftsApiV1ExtractionsGetErrors, ListExtractionDraftsApiV1ExtractionsGetResponses, ListTableViewsApiV1TenancyTableViewsGetData, ListTableViewsApiV1TenancyTableViewsGetErrors, ListTableViewsApiV1TenancyTableViewsGetResponses, ListUsersApiV1TenancyUsersGetData, ListUsersApiV1TenancyUsersGetResponses, ReadSessionApiV1SessionMeGetData, ReadSessionApiV1SessionMeGetResponses, RefreshSessionApiV1SessionRefreshPostData, RefreshSessionApiV1SessionRefreshPostErrors, RefreshSessionApiV1SessionRefreshPostResponses, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostData, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostErrors, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostResponses, UpdateTableViewApiV1TenancyTableViewsViewIdPatchData, UpdateTableViewApiV1TenancyTableViewsViewIdPatchErrors, UpdateTableViewApiV1TenancyTableViewsViewIdPatchResponses } from './types.gen';
+import type { AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostData, AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostErrors, AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostResponses, AddZoneMemberApiV1LocationsZoneIdMembersPostData, AddZoneMemberApiV1LocationsZoneIdMembersPostErrors, AddZoneMemberApiV1LocationsZoneIdMembersPostResponses, CreateChargeApiV1ChargesPostData, CreateChargeApiV1ChargesPostErrors, CreateChargeApiV1ChargesPostResponses, CreateChargeCodeApiV1ChargeCodesPostData, CreateChargeCodeApiV1ChargeCodesPostErrors, CreateChargeCodeApiV1ChargeCodesPostResponses, CreateExtractionDraftApiV1ExtractionsPostData, CreateExtractionDraftApiV1ExtractionsPostErrors, CreateExtractionDraftApiV1ExtractionsPostResponses, CreatePortApiV1PortsPostData, CreatePortApiV1PortsPostErrors, CreatePortApiV1PortsPostResponses, CreateQuotationApiV1QuotationsPostData, CreateQuotationApiV1QuotationsPostErrors, CreateQuotationApiV1QuotationsPostResponses, CreateRateLineApiV1RateLinesPostData, CreateRateLineApiV1RateLinesPostErrors, CreateRateLineApiV1RateLinesPostResponses, CreateSessionTokenApiV1SessionTokenPostData, CreateSessionTokenApiV1SessionTokenPostErrors, CreateSessionTokenApiV1SessionTokenPostResponses, CreateTableViewApiV1TenancyTableViewsPostData, CreateTableViewApiV1TenancyTableViewsPostErrors, CreateTableViewApiV1TenancyTableViewsPostResponses, CreateTerminalApiV1TerminalsPostData, CreateTerminalApiV1TerminalsPostErrors, CreateTerminalApiV1TerminalsPostResponses, CreateZoneApiV1LocationsPostData, CreateZoneApiV1LocationsPostErrors, CreateZoneApiV1LocationsPostResponses, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteData, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteErrors, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteResponses, HealthHealthGetData, HealthHealthGetResponses, ListChargeCodesApiV1ChargeCodesGetData, ListChargeCodesApiV1ChargeCodesGetResponses, ListChargesApiV1ChargesGetData, ListChargesApiV1ChargesGetResponses, ListExtractionDraftsApiV1ExtractionsGetData, ListExtractionDraftsApiV1ExtractionsGetErrors, ListExtractionDraftsApiV1ExtractionsGetResponses, ListLocationsApiV1LocationsGetData, ListLocationsApiV1LocationsGetErrors, ListLocationsApiV1LocationsGetResponses, ListOrganizationSettingsApiV1OrganizationSettingsGetData, ListOrganizationSettingsApiV1OrganizationSettingsGetResponses, ListPortsApiV1PortsGetData, ListPortsApiV1PortsGetErrors, ListPortsApiV1PortsGetResponses, ListQuotationsApiV1QuotationsGetData, ListQuotationsApiV1QuotationsGetResponses, ListRateLinesApiV1RateLinesGetData, ListRateLinesApiV1RateLinesGetResponses, ListTableViewsApiV1TenancyTableViewsGetData, ListTableViewsApiV1TenancyTableViewsGetErrors, ListTableViewsApiV1TenancyTableViewsGetResponses, ListTerminalsApiV1TerminalsGetData, ListTerminalsApiV1TerminalsGetErrors, ListTerminalsApiV1TerminalsGetResponses, ListUsersApiV1TenancyUsersGetData, ListUsersApiV1TenancyUsersGetResponses, ListZoneMembersApiV1LocationsZoneIdMembersGetData, ListZoneMembersApiV1LocationsZoneIdMembersGetErrors, ListZoneMembersApiV1LocationsZoneIdMembersGetResponses, ReadSessionApiV1SessionMeGetData, ReadSessionApiV1SessionMeGetResponses, ReadyReadyGetData, ReadyReadyGetResponses, RefreshSessionApiV1SessionRefreshPostData, RefreshSessionApiV1SessionRefreshPostErrors, RefreshSessionApiV1SessionRefreshPostResponses, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostData, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostErrors, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostResponses, ResolveChargeCodeApiV1ChargeCodesResolveGetData, ResolveChargeCodeApiV1ChargeCodesResolveGetErrors, ResolveChargeCodeApiV1ChargeCodesResolveGetResponses, ResolvePortApiV1PortsResolveGetData, ResolvePortApiV1PortsResolveGetErrors, ResolvePortApiV1PortsResolveGetResponses, ResolvePostalCodeApiV1LocationsResolveGetData, ResolvePostalCodeApiV1LocationsResolveGetErrors, ResolvePostalCodeApiV1LocationsResolveGetResponses, ResolveTerminalApiV1TerminalsResolveGetData, ResolveTerminalApiV1TerminalsResolveGetErrors, ResolveTerminalApiV1TerminalsResolveGetResponses, SupersedeRateLineApiV1RateLinesRateLineIdSupersedePostData, SupersedeRateLineApiV1RateLinesRateLineIdSupersedePostErrors, SupersedeRateLineApiV1RateLinesRateLineIdSupersedePostResponses, UpdateTableViewApiV1TenancyTableViewsViewIdPatchData, UpdateTableViewApiV1TenancyTableViewsViewIdPatchErrors, UpdateTableViewApiV1TenancyTableViewsViewIdPatchResponses, UpsertOrganizationSettingApiV1OrganizationSettingsPutData, UpsertOrganizationSettingApiV1OrganizationSettingsPutErrors, UpsertOrganizationSettingApiV1OrganizationSettingsPutResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean, TResponse = unknown> = Options2<TData, ThrowOnError, TResponse> & {
     /**
@@ -145,6 +145,258 @@ export const rejectExtractionDraftApiV1ExtractionsDraftIdRejectPost = <ThrowOnEr
 });
 
 /**
+ * List Charge Codes
+ */
+export const listChargeCodesApiV1ChargeCodesGet = <ThrowOnError extends boolean = false>(options?: Options<ListChargeCodesApiV1ChargeCodesGetData, ThrowOnError>): RequestResult<ListChargeCodesApiV1ChargeCodesGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<ListChargeCodesApiV1ChargeCodesGetResponses, unknown, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/charge-codes',
+    ...options
+});
+
+/**
+ * Create Charge Code
+ */
+export const createChargeCodeApiV1ChargeCodesPost = <ThrowOnError extends boolean = false>(options: Options<CreateChargeCodeApiV1ChargeCodesPostData, ThrowOnError>): RequestResult<CreateChargeCodeApiV1ChargeCodesPostResponses, CreateChargeCodeApiV1ChargeCodesPostErrors, ThrowOnError> => (options.client ?? client).post<CreateChargeCodeApiV1ChargeCodesPostResponses, CreateChargeCodeApiV1ChargeCodesPostErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/charge-codes',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Resolve Charge Code
+ */
+export const resolveChargeCodeApiV1ChargeCodesResolveGet = <ThrowOnError extends boolean = false>(options: Options<ResolveChargeCodeApiV1ChargeCodesResolveGetData, ThrowOnError>): RequestResult<ResolveChargeCodeApiV1ChargeCodesResolveGetResponses, ResolveChargeCodeApiV1ChargeCodesResolveGetErrors, ThrowOnError> => (options.client ?? client).get<ResolveChargeCodeApiV1ChargeCodesResolveGetResponses, ResolveChargeCodeApiV1ChargeCodesResolveGetErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/charge-codes/resolve',
+    ...options
+});
+
+/**
+ * List Charges
+ */
+export const listChargesApiV1ChargesGet = <ThrowOnError extends boolean = false>(options?: Options<ListChargesApiV1ChargesGetData, ThrowOnError>): RequestResult<ListChargesApiV1ChargesGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<ListChargesApiV1ChargesGetResponses, unknown, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/charges',
+    ...options
+});
+
+/**
+ * Create Charge
+ */
+export const createChargeApiV1ChargesPost = <ThrowOnError extends boolean = false>(options: Options<CreateChargeApiV1ChargesPostData, ThrowOnError>): RequestResult<CreateChargeApiV1ChargesPostResponses, CreateChargeApiV1ChargesPostErrors, ThrowOnError> => (options.client ?? client).post<CreateChargeApiV1ChargesPostResponses, CreateChargeApiV1ChargesPostErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/charges',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * List Rate Lines
+ */
+export const listRateLinesApiV1RateLinesGet = <ThrowOnError extends boolean = false>(options?: Options<ListRateLinesApiV1RateLinesGetData, ThrowOnError>): RequestResult<ListRateLinesApiV1RateLinesGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<ListRateLinesApiV1RateLinesGetResponses, unknown, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/rate-lines',
+    ...options
+});
+
+/**
+ * Create Rate Line
+ */
+export const createRateLineApiV1RateLinesPost = <ThrowOnError extends boolean = false>(options: Options<CreateRateLineApiV1RateLinesPostData, ThrowOnError>): RequestResult<CreateRateLineApiV1RateLinesPostResponses, CreateRateLineApiV1RateLinesPostErrors, ThrowOnError> => (options.client ?? client).post<CreateRateLineApiV1RateLinesPostResponses, CreateRateLineApiV1RateLinesPostErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/rate-lines',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Supersede Rate Line
+ */
+export const supersedeRateLineApiV1RateLinesRateLineIdSupersedePost = <ThrowOnError extends boolean = false>(options: Options<SupersedeRateLineApiV1RateLinesRateLineIdSupersedePostData, ThrowOnError>): RequestResult<SupersedeRateLineApiV1RateLinesRateLineIdSupersedePostResponses, SupersedeRateLineApiV1RateLinesRateLineIdSupersedePostErrors, ThrowOnError> => (options.client ?? client).post<SupersedeRateLineApiV1RateLinesRateLineIdSupersedePostResponses, SupersedeRateLineApiV1RateLinesRateLineIdSupersedePostErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/rate-lines/{rate_line_id}/supersede',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * List Quotations
+ */
+export const listQuotationsApiV1QuotationsGet = <ThrowOnError extends boolean = false>(options?: Options<ListQuotationsApiV1QuotationsGetData, ThrowOnError>): RequestResult<ListQuotationsApiV1QuotationsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<ListQuotationsApiV1QuotationsGetResponses, unknown, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/quotations',
+    ...options
+});
+
+/**
+ * Create Quotation
+ */
+export const createQuotationApiV1QuotationsPost = <ThrowOnError extends boolean = false>(options: Options<CreateQuotationApiV1QuotationsPostData, ThrowOnError>): RequestResult<CreateQuotationApiV1QuotationsPostResponses, CreateQuotationApiV1QuotationsPostErrors, ThrowOnError> => (options.client ?? client).post<CreateQuotationApiV1QuotationsPostResponses, CreateQuotationApiV1QuotationsPostErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/quotations',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * List Organization Settings
+ */
+export const listOrganizationSettingsApiV1OrganizationSettingsGet = <ThrowOnError extends boolean = false>(options?: Options<ListOrganizationSettingsApiV1OrganizationSettingsGetData, ThrowOnError>): RequestResult<ListOrganizationSettingsApiV1OrganizationSettingsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<ListOrganizationSettingsApiV1OrganizationSettingsGetResponses, unknown, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/organization-settings',
+    ...options
+});
+
+/**
+ * Upsert Organization Setting
+ */
+export const upsertOrganizationSettingApiV1OrganizationSettingsPut = <ThrowOnError extends boolean = false>(options: Options<UpsertOrganizationSettingApiV1OrganizationSettingsPutData, ThrowOnError>): RequestResult<UpsertOrganizationSettingApiV1OrganizationSettingsPutResponses, UpsertOrganizationSettingApiV1OrganizationSettingsPutErrors, ThrowOnError> => (options.client ?? client).put<UpsertOrganizationSettingApiV1OrganizationSettingsPutResponses, UpsertOrganizationSettingApiV1OrganizationSettingsPutErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/organization-settings',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * List Ports
+ */
+export const listPortsApiV1PortsGet = <ThrowOnError extends boolean = false>(options?: Options<ListPortsApiV1PortsGetData, ThrowOnError>): RequestResult<ListPortsApiV1PortsGetResponses, ListPortsApiV1PortsGetErrors, ThrowOnError> => (options?.client ?? client).get<ListPortsApiV1PortsGetResponses, ListPortsApiV1PortsGetErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/ports',
+    ...options
+});
+
+/**
+ * Create Port
+ */
+export const createPortApiV1PortsPost = <ThrowOnError extends boolean = false>(options: Options<CreatePortApiV1PortsPostData, ThrowOnError>): RequestResult<CreatePortApiV1PortsPostResponses, CreatePortApiV1PortsPostErrors, ThrowOnError> => (options.client ?? client).post<CreatePortApiV1PortsPostResponses, CreatePortApiV1PortsPostErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/ports',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Resolve Port
+ */
+export const resolvePortApiV1PortsResolveGet = <ThrowOnError extends boolean = false>(options: Options<ResolvePortApiV1PortsResolveGetData, ThrowOnError>): RequestResult<ResolvePortApiV1PortsResolveGetResponses, ResolvePortApiV1PortsResolveGetErrors, ThrowOnError> => (options.client ?? client).get<ResolvePortApiV1PortsResolveGetResponses, ResolvePortApiV1PortsResolveGetErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/ports/resolve',
+    ...options
+});
+
+/**
+ * List Locations
+ */
+export const listLocationsApiV1LocationsGet = <ThrowOnError extends boolean = false>(options?: Options<ListLocationsApiV1LocationsGetData, ThrowOnError>): RequestResult<ListLocationsApiV1LocationsGetResponses, ListLocationsApiV1LocationsGetErrors, ThrowOnError> => (options?.client ?? client).get<ListLocationsApiV1LocationsGetResponses, ListLocationsApiV1LocationsGetErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/locations',
+    ...options
+});
+
+/**
+ * Create Zone
+ */
+export const createZoneApiV1LocationsPost = <ThrowOnError extends boolean = false>(options: Options<CreateZoneApiV1LocationsPostData, ThrowOnError>): RequestResult<CreateZoneApiV1LocationsPostResponses, CreateZoneApiV1LocationsPostErrors, ThrowOnError> => (options.client ?? client).post<CreateZoneApiV1LocationsPostResponses, CreateZoneApiV1LocationsPostErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/locations',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Resolve Postal Code
+ */
+export const resolvePostalCodeApiV1LocationsResolveGet = <ThrowOnError extends boolean = false>(options: Options<ResolvePostalCodeApiV1LocationsResolveGetData, ThrowOnError>): RequestResult<ResolvePostalCodeApiV1LocationsResolveGetResponses, ResolvePostalCodeApiV1LocationsResolveGetErrors, ThrowOnError> => (options.client ?? client).get<ResolvePostalCodeApiV1LocationsResolveGetResponses, ResolvePostalCodeApiV1LocationsResolveGetErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/locations/resolve',
+    ...options
+});
+
+/**
+ * List Zone Members
+ */
+export const listZoneMembersApiV1LocationsZoneIdMembersGet = <ThrowOnError extends boolean = false>(options: Options<ListZoneMembersApiV1LocationsZoneIdMembersGetData, ThrowOnError>): RequestResult<ListZoneMembersApiV1LocationsZoneIdMembersGetResponses, ListZoneMembersApiV1LocationsZoneIdMembersGetErrors, ThrowOnError> => (options.client ?? client).get<ListZoneMembersApiV1LocationsZoneIdMembersGetResponses, ListZoneMembersApiV1LocationsZoneIdMembersGetErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/locations/{zone_id}/members',
+    ...options
+});
+
+/**
+ * Add Zone Member
+ */
+export const addZoneMemberApiV1LocationsZoneIdMembersPost = <ThrowOnError extends boolean = false>(options: Options<AddZoneMemberApiV1LocationsZoneIdMembersPostData, ThrowOnError>): RequestResult<AddZoneMemberApiV1LocationsZoneIdMembersPostResponses, AddZoneMemberApiV1LocationsZoneIdMembersPostErrors, ThrowOnError> => (options.client ?? client).post<AddZoneMemberApiV1LocationsZoneIdMembersPostResponses, AddZoneMemberApiV1LocationsZoneIdMembersPostErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/locations/{zone_id}/members',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * List Terminals
+ */
+export const listTerminalsApiV1TerminalsGet = <ThrowOnError extends boolean = false>(options?: Options<ListTerminalsApiV1TerminalsGetData, ThrowOnError>): RequestResult<ListTerminalsApiV1TerminalsGetResponses, ListTerminalsApiV1TerminalsGetErrors, ThrowOnError> => (options?.client ?? client).get<ListTerminalsApiV1TerminalsGetResponses, ListTerminalsApiV1TerminalsGetErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/terminals',
+    ...options
+});
+
+/**
+ * Create Terminal
+ */
+export const createTerminalApiV1TerminalsPost = <ThrowOnError extends boolean = false>(options: Options<CreateTerminalApiV1TerminalsPostData, ThrowOnError>): RequestResult<CreateTerminalApiV1TerminalsPostResponses, CreateTerminalApiV1TerminalsPostErrors, ThrowOnError> => (options.client ?? client).post<CreateTerminalApiV1TerminalsPostResponses, CreateTerminalApiV1TerminalsPostErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/terminals',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Resolve Terminal
+ */
+export const resolveTerminalApiV1TerminalsResolveGet = <ThrowOnError extends boolean = false>(options: Options<ResolveTerminalApiV1TerminalsResolveGetData, ThrowOnError>): RequestResult<ResolveTerminalApiV1TerminalsResolveGetResponses, ResolveTerminalApiV1TerminalsResolveGetErrors, ThrowOnError> => (options.client ?? client).get<ResolveTerminalApiV1TerminalsResolveGetResponses, ResolveTerminalApiV1TerminalsResolveGetErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/terminals/resolve',
+    ...options
+});
+
+/**
  * Health
  */
 export const healthHealthGet = <ThrowOnError extends boolean = false>(options?: Options<HealthHealthGetData, ThrowOnError>): RequestResult<HealthHealthGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<HealthHealthGetResponses, unknown, ThrowOnError>({ url: '/health', ...options });
+
+/**
+ * Ready
+ */
+export const readyReadyGet = <ThrowOnError extends boolean = false>(options?: Options<ReadyReadyGetData, ThrowOnError>): RequestResult<ReadyReadyGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<ReadyReadyGetResponses, unknown, ThrowOnError>({ url: '/ready', ...options });

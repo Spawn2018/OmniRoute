@@ -14,6 +14,13 @@ export type Port = {
   aliases: string[]
   is_official: boolean
   source_ref: string
+  wpi_number: number | null
+  harbor_size: string | null
+  harbor_type: string | null
+  shelter: string | null
+  channel_depth_m: string | null
+  cargo_pier_depth_m: string | null
+  wpi_source_ref: string | null
 }
 
 export type PortCreateBody = {

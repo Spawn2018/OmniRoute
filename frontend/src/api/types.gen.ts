@@ -27,6 +27,126 @@ export type AppUserResponse = {
 };
 
 /**
+ * ChargeCodeCreate
+ */
+export type ChargeCodeCreate = {
+    /**
+     * Code
+     */
+    code: string;
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Aliases
+     */
+    aliases?: Array<string>;
+};
+
+/**
+ * ChargeCodeResponse
+ */
+export type ChargeCodeResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Code
+     */
+    code: string;
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Aliases
+     */
+    aliases: Array<string>;
+};
+
+/**
+ * ChargeCreate
+ */
+export type ChargeCreate = {
+    /**
+     * Charge Code
+     */
+    charge_code: string;
+    /**
+     * Buy Amount
+     */
+    buy_amount: string;
+    /**
+     * Buy Currency
+     */
+    buy_currency: string;
+    /**
+     * Sell Amount
+     */
+    sell_amount: string;
+    /**
+     * Sell Currency
+     */
+    sell_currency: string;
+    /**
+     * Rate Line Id
+     */
+    rate_line_id?: string | null;
+};
+
+/**
+ * ChargeResponse
+ */
+export type ChargeResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Charge Code
+     */
+    charge_code: string;
+    /**
+     * Buy Amount
+     */
+    buy_amount: string;
+    /**
+     * Buy Currency
+     */
+    buy_currency: string;
+    /**
+     * Sell Amount
+     */
+    sell_amount: string;
+    /**
+     * Sell Currency
+     */
+    sell_currency: string;
+    /**
+     * Margin Amount
+     */
+    margin_amount: string;
+    /**
+     * Margin Currency
+     */
+    margin_currency: string;
+    /**
+     * Rate Line Id
+     */
+    rate_line_id: string | null;
+};
+
+/**
  * ExtractRequest
  */
 export type ExtractRequest = {
@@ -82,6 +202,10 @@ export type ExtractionDraftResponse = {
      * Reviewed At
      */
     reviewed_at: string | null;
+    /**
+     * Rate Line Ids
+     */
+    rate_line_ids?: Array<string>;
 };
 
 /**
@@ -92,6 +216,338 @@ export type HttpValidationError = {
      * Detail
      */
     detail?: Array<ValidationError>;
+};
+
+/**
+ * LocationResponse
+ */
+export type LocationResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Kind
+     */
+    kind: string;
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Code
+     */
+    code: string | null;
+    /**
+     * Port Id
+     */
+    port_id: string | null;
+    /**
+     * Country Code
+     */
+    country_code: string | null;
+    /**
+     * City
+     */
+    city: string | null;
+    /**
+     * Address Line
+     */
+    address_line: string | null;
+    /**
+     * Postal Code
+     */
+    postal_code: string | null;
+    /**
+     * Lat
+     */
+    lat: string | null;
+    /**
+     * Lng
+     */
+    lng: string | null;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * OrganizationSettingResponse
+ */
+export type OrganizationSettingResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Setting Key
+     */
+    setting_key: string;
+    /**
+     * Setting Value
+     */
+    setting_value: string;
+};
+
+/**
+ * OrganizationSettingUpsert
+ */
+export type OrganizationSettingUpsert = {
+    /**
+     * Setting Key
+     */
+    setting_key: string;
+    /**
+     * Setting Value
+     */
+    setting_value: string;
+};
+
+/**
+ * PortCreate
+ */
+export type PortCreate = {
+    /**
+     * Unlocode
+     */
+    unlocode: string;
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Country Code
+     */
+    country_code: string;
+    /**
+     * Lat
+     */
+    lat?: number | string | null;
+    /**
+     * Lng
+     */
+    lng?: number | string | null;
+    /**
+     * Is Seaport
+     */
+    is_seaport?: boolean;
+    /**
+     * Function Flags
+     */
+    function_flags?: Array<string>;
+    /**
+     * Aliases
+     */
+    aliases?: Array<string>;
+};
+
+/**
+ * PortResponse
+ */
+export type PortResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Unlocode
+     */
+    unlocode: string;
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Country Code
+     */
+    country_code: string;
+    /**
+     * Lat
+     */
+    lat: string | null;
+    /**
+     * Lng
+     */
+    lng: string | null;
+    /**
+     * Is Seaport
+     */
+    is_seaport: boolean;
+    /**
+     * Function Flags
+     */
+    function_flags: Array<string>;
+    /**
+     * Aliases
+     */
+    aliases: Array<string>;
+    /**
+     * Is Official
+     */
+    is_official: boolean;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+    /**
+     * Wpi Number
+     */
+    wpi_number?: number | null;
+    /**
+     * Harbor Size
+     */
+    harbor_size?: string | null;
+    /**
+     * Harbor Type
+     */
+    harbor_type?: string | null;
+    /**
+     * Shelter
+     */
+    shelter?: string | null;
+    /**
+     * Channel Depth M
+     */
+    channel_depth_m?: string | null;
+    /**
+     * Cargo Pier Depth M
+     */
+    cargo_pier_depth_m?: string | null;
+    /**
+     * Wpi Source Ref
+     */
+    wpi_source_ref?: string | null;
+};
+
+/**
+ * QuotationCreate
+ */
+export type QuotationCreate = {
+    /**
+     * Charge Code
+     */
+    charge_code: string;
+};
+
+/**
+ * QuotationResponse
+ */
+export type QuotationResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Charge Code
+     */
+    charge_code: string;
+    /**
+     * Rate Line Id
+     */
+    rate_line_id: string;
+    /**
+     * Amount
+     */
+    amount: string;
+    /**
+     * Currency
+     */
+    currency: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * RateLineCreate
+ */
+export type RateLineCreate = {
+    /**
+     * Charge Code
+     */
+    charge_code: string;
+    /**
+     * Amount
+     */
+    amount: string;
+    /**
+     * Currency
+     */
+    currency: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * RateLineResponse
+ */
+export type RateLineResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Charge Code
+     */
+    charge_code: string;
+    /**
+     * Amount
+     */
+    amount: string;
+    /**
+     * Currency
+     */
+    currency: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+    /**
+     * Superseded By
+     */
+    superseded_by: string | null;
+};
+
+/**
+ * RateLineSupersede
+ */
+export type RateLineSupersede = {
+    /**
+     * Amount
+     */
+    amount: string;
+    /**
+     * Currency
+     */
+    currency: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
 };
 
 /**
@@ -241,6 +697,78 @@ export type TableViewUpdate = {
 };
 
 /**
+ * TerminalCreate
+ */
+export type TerminalCreate = {
+    /**
+     * Port Id
+     */
+    port_id: string;
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Isps Code
+     */
+    isps_code?: string | null;
+    /**
+     * Operator Name
+     */
+    operator_name?: string | null;
+    /**
+     * Lat
+     */
+    lat?: number | string | null;
+    /**
+     * Lng
+     */
+    lng?: number | string | null;
+};
+
+/**
+ * TerminalResponse
+ */
+export type TerminalResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Port Id
+     */
+    port_id: string;
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Isps Code
+     */
+    isps_code: string | null;
+    /**
+     * Operator Name
+     */
+    operator_name: string | null;
+    /**
+     * Lat
+     */
+    lat: string | null;
+    /**
+     * Lng
+     */
+    lng: string | null;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * ValidationError
  */
 export type ValidationError = {
@@ -266,6 +794,72 @@ export type ValidationError = {
     ctx?: {
         [key: string]: unknown;
     };
+};
+
+/**
+ * ZoneCreate
+ */
+export type ZoneCreate = {
+    /**
+     * Code
+     */
+    code: string;
+    /**
+     * Name
+     */
+    name: string;
+};
+
+/**
+ * ZoneMemberCreate
+ */
+export type ZoneMemberCreate = {
+    /**
+     * Country Code
+     */
+    country_code: string;
+    /**
+     * Postal From
+     */
+    postal_from: string;
+    /**
+     * Postal To
+     */
+    postal_to: string;
+};
+
+/**
+ * ZoneMemberResponse
+ */
+export type ZoneMemberResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Zone Location Id
+     */
+    zone_location_id: string;
+    /**
+     * Country Code
+     */
+    country_code: string;
+    /**
+     * Postal From
+     */
+    postal_from: string;
+    /**
+     * Postal To
+     */
+    postal_to: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
 };
 
 export type CreateSessionTokenApiV1SessionTokenPostData = {
@@ -586,6 +1180,616 @@ export type RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostResponses = {
 
 export type RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostResponse = RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostResponses[keyof RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostResponses];
 
+export type ListChargeCodesApiV1ChargeCodesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/charge-codes';
+};
+
+export type ListChargeCodesApiV1ChargeCodesGetResponses = {
+    /**
+     * Response List Charge Codes Api V1 Charge Codes Get
+     *
+     * Successful Response
+     */
+    200: Array<ChargeCodeResponse>;
+};
+
+export type ListChargeCodesApiV1ChargeCodesGetResponse = ListChargeCodesApiV1ChargeCodesGetResponses[keyof ListChargeCodesApiV1ChargeCodesGetResponses];
+
+export type CreateChargeCodeApiV1ChargeCodesPostData = {
+    body: ChargeCodeCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/charge-codes';
+};
+
+export type CreateChargeCodeApiV1ChargeCodesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateChargeCodeApiV1ChargeCodesPostError = CreateChargeCodeApiV1ChargeCodesPostErrors[keyof CreateChargeCodeApiV1ChargeCodesPostErrors];
+
+export type CreateChargeCodeApiV1ChargeCodesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ChargeCodeResponse;
+};
+
+export type CreateChargeCodeApiV1ChargeCodesPostResponse = CreateChargeCodeApiV1ChargeCodesPostResponses[keyof CreateChargeCodeApiV1ChargeCodesPostResponses];
+
+export type ResolveChargeCodeApiV1ChargeCodesResolveGetData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Token
+         */
+        token: string;
+    };
+    url: '/api/v1/charge-codes/resolve';
+};
+
+export type ResolveChargeCodeApiV1ChargeCodesResolveGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ResolveChargeCodeApiV1ChargeCodesResolveGetError = ResolveChargeCodeApiV1ChargeCodesResolveGetErrors[keyof ResolveChargeCodeApiV1ChargeCodesResolveGetErrors];
+
+export type ResolveChargeCodeApiV1ChargeCodesResolveGetResponses = {
+    /**
+     * Successful Response
+     */
+    200: ChargeCodeResponse;
+};
+
+export type ResolveChargeCodeApiV1ChargeCodesResolveGetResponse = ResolveChargeCodeApiV1ChargeCodesResolveGetResponses[keyof ResolveChargeCodeApiV1ChargeCodesResolveGetResponses];
+
+export type ListChargesApiV1ChargesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/charges';
+};
+
+export type ListChargesApiV1ChargesGetResponses = {
+    /**
+     * Response List Charges Api V1 Charges Get
+     *
+     * Successful Response
+     */
+    200: Array<ChargeResponse>;
+};
+
+export type ListChargesApiV1ChargesGetResponse = ListChargesApiV1ChargesGetResponses[keyof ListChargesApiV1ChargesGetResponses];
+
+export type CreateChargeApiV1ChargesPostData = {
+    body: ChargeCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/charges';
+};
+
+export type CreateChargeApiV1ChargesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateChargeApiV1ChargesPostError = CreateChargeApiV1ChargesPostErrors[keyof CreateChargeApiV1ChargesPostErrors];
+
+export type CreateChargeApiV1ChargesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ChargeResponse;
+};
+
+export type CreateChargeApiV1ChargesPostResponse = CreateChargeApiV1ChargesPostResponses[keyof CreateChargeApiV1ChargesPostResponses];
+
+export type ListRateLinesApiV1RateLinesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/rate-lines';
+};
+
+export type ListRateLinesApiV1RateLinesGetResponses = {
+    /**
+     * Response List Rate Lines Api V1 Rate Lines Get
+     *
+     * Successful Response
+     */
+    200: Array<RateLineResponse>;
+};
+
+export type ListRateLinesApiV1RateLinesGetResponse = ListRateLinesApiV1RateLinesGetResponses[keyof ListRateLinesApiV1RateLinesGetResponses];
+
+export type CreateRateLineApiV1RateLinesPostData = {
+    body: RateLineCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/rate-lines';
+};
+
+export type CreateRateLineApiV1RateLinesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateRateLineApiV1RateLinesPostError = CreateRateLineApiV1RateLinesPostErrors[keyof CreateRateLineApiV1RateLinesPostErrors];
+
+export type CreateRateLineApiV1RateLinesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: RateLineResponse;
+};
+
+export type CreateRateLineApiV1RateLinesPostResponse = CreateRateLineApiV1RateLinesPostResponses[keyof CreateRateLineApiV1RateLinesPostResponses];
+
+export type SupersedeRateLineApiV1RateLinesRateLineIdSupersedePostData = {
+    body: RateLineSupersede;
+    path: {
+        /**
+         * Rate Line Id
+         */
+        rate_line_id: string;
+    };
+    query?: never;
+    url: '/api/v1/rate-lines/{rate_line_id}/supersede';
+};
+
+export type SupersedeRateLineApiV1RateLinesRateLineIdSupersedePostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type SupersedeRateLineApiV1RateLinesRateLineIdSupersedePostError = SupersedeRateLineApiV1RateLinesRateLineIdSupersedePostErrors[keyof SupersedeRateLineApiV1RateLinesRateLineIdSupersedePostErrors];
+
+export type SupersedeRateLineApiV1RateLinesRateLineIdSupersedePostResponses = {
+    /**
+     * Successful Response
+     */
+    201: RateLineResponse;
+};
+
+export type SupersedeRateLineApiV1RateLinesRateLineIdSupersedePostResponse = SupersedeRateLineApiV1RateLinesRateLineIdSupersedePostResponses[keyof SupersedeRateLineApiV1RateLinesRateLineIdSupersedePostResponses];
+
+export type ListQuotationsApiV1QuotationsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/quotations';
+};
+
+export type ListQuotationsApiV1QuotationsGetResponses = {
+    /**
+     * Response List Quotations Api V1 Quotations Get
+     *
+     * Successful Response
+     */
+    200: Array<QuotationResponse>;
+};
+
+export type ListQuotationsApiV1QuotationsGetResponse = ListQuotationsApiV1QuotationsGetResponses[keyof ListQuotationsApiV1QuotationsGetResponses];
+
+export type CreateQuotationApiV1QuotationsPostData = {
+    body: QuotationCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/quotations';
+};
+
+export type CreateQuotationApiV1QuotationsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateQuotationApiV1QuotationsPostError = CreateQuotationApiV1QuotationsPostErrors[keyof CreateQuotationApiV1QuotationsPostErrors];
+
+export type CreateQuotationApiV1QuotationsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: QuotationResponse;
+};
+
+export type CreateQuotationApiV1QuotationsPostResponse = CreateQuotationApiV1QuotationsPostResponses[keyof CreateQuotationApiV1QuotationsPostResponses];
+
+export type ListOrganizationSettingsApiV1OrganizationSettingsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/organization-settings';
+};
+
+export type ListOrganizationSettingsApiV1OrganizationSettingsGetResponses = {
+    /**
+     * Response List Organization Settings Api V1 Organization Settings Get
+     *
+     * Successful Response
+     */
+    200: Array<OrganizationSettingResponse>;
+};
+
+export type ListOrganizationSettingsApiV1OrganizationSettingsGetResponse = ListOrganizationSettingsApiV1OrganizationSettingsGetResponses[keyof ListOrganizationSettingsApiV1OrganizationSettingsGetResponses];
+
+export type UpsertOrganizationSettingApiV1OrganizationSettingsPutData = {
+    body: OrganizationSettingUpsert;
+    path?: never;
+    query?: never;
+    url: '/api/v1/organization-settings';
+};
+
+export type UpsertOrganizationSettingApiV1OrganizationSettingsPutErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type UpsertOrganizationSettingApiV1OrganizationSettingsPutError = UpsertOrganizationSettingApiV1OrganizationSettingsPutErrors[keyof UpsertOrganizationSettingApiV1OrganizationSettingsPutErrors];
+
+export type UpsertOrganizationSettingApiV1OrganizationSettingsPutResponses = {
+    /**
+     * Successful Response
+     */
+    200: OrganizationSettingResponse;
+};
+
+export type UpsertOrganizationSettingApiV1OrganizationSettingsPutResponse = UpsertOrganizationSettingApiV1OrganizationSettingsPutResponses[keyof UpsertOrganizationSettingApiV1OrganizationSettingsPutResponses];
+
+export type ListPortsApiV1PortsGetData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Search
+         */
+        search?: string | null;
+    };
+    url: '/api/v1/ports';
+};
+
+export type ListPortsApiV1PortsGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ListPortsApiV1PortsGetError = ListPortsApiV1PortsGetErrors[keyof ListPortsApiV1PortsGetErrors];
+
+export type ListPortsApiV1PortsGetResponses = {
+    /**
+     * Response List Ports Api V1 Ports Get
+     *
+     * Successful Response
+     */
+    200: Array<PortResponse>;
+};
+
+export type ListPortsApiV1PortsGetResponse = ListPortsApiV1PortsGetResponses[keyof ListPortsApiV1PortsGetResponses];
+
+export type CreatePortApiV1PortsPostData = {
+    body: PortCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/ports';
+};
+
+export type CreatePortApiV1PortsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreatePortApiV1PortsPostError = CreatePortApiV1PortsPostErrors[keyof CreatePortApiV1PortsPostErrors];
+
+export type CreatePortApiV1PortsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: PortResponse;
+};
+
+export type CreatePortApiV1PortsPostResponse = CreatePortApiV1PortsPostResponses[keyof CreatePortApiV1PortsPostResponses];
+
+export type ResolvePortApiV1PortsResolveGetData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Token
+         */
+        token: string;
+    };
+    url: '/api/v1/ports/resolve';
+};
+
+export type ResolvePortApiV1PortsResolveGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ResolvePortApiV1PortsResolveGetError = ResolvePortApiV1PortsResolveGetErrors[keyof ResolvePortApiV1PortsResolveGetErrors];
+
+export type ResolvePortApiV1PortsResolveGetResponses = {
+    /**
+     * Successful Response
+     */
+    200: PortResponse;
+};
+
+export type ResolvePortApiV1PortsResolveGetResponse = ResolvePortApiV1PortsResolveGetResponses[keyof ResolvePortApiV1PortsResolveGetResponses];
+
+export type ListLocationsApiV1LocationsGetData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Kind
+         */
+        kind?: string | null;
+        /**
+         * Search
+         */
+        search?: string | null;
+    };
+    url: '/api/v1/locations';
+};
+
+export type ListLocationsApiV1LocationsGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ListLocationsApiV1LocationsGetError = ListLocationsApiV1LocationsGetErrors[keyof ListLocationsApiV1LocationsGetErrors];
+
+export type ListLocationsApiV1LocationsGetResponses = {
+    /**
+     * Response List Locations Api V1 Locations Get
+     *
+     * Successful Response
+     */
+    200: Array<LocationResponse>;
+};
+
+export type ListLocationsApiV1LocationsGetResponse = ListLocationsApiV1LocationsGetResponses[keyof ListLocationsApiV1LocationsGetResponses];
+
+export type CreateZoneApiV1LocationsPostData = {
+    body: ZoneCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/locations';
+};
+
+export type CreateZoneApiV1LocationsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateZoneApiV1LocationsPostError = CreateZoneApiV1LocationsPostErrors[keyof CreateZoneApiV1LocationsPostErrors];
+
+export type CreateZoneApiV1LocationsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: LocationResponse;
+};
+
+export type CreateZoneApiV1LocationsPostResponse = CreateZoneApiV1LocationsPostResponses[keyof CreateZoneApiV1LocationsPostResponses];
+
+export type ResolvePostalCodeApiV1LocationsResolveGetData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Country Code
+         */
+        country_code: string;
+        /**
+         * Postal Code
+         */
+        postal_code: string;
+    };
+    url: '/api/v1/locations/resolve';
+};
+
+export type ResolvePostalCodeApiV1LocationsResolveGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ResolvePostalCodeApiV1LocationsResolveGetError = ResolvePostalCodeApiV1LocationsResolveGetErrors[keyof ResolvePostalCodeApiV1LocationsResolveGetErrors];
+
+export type ResolvePostalCodeApiV1LocationsResolveGetResponses = {
+    /**
+     * Successful Response
+     */
+    200: LocationResponse;
+};
+
+export type ResolvePostalCodeApiV1LocationsResolveGetResponse = ResolvePostalCodeApiV1LocationsResolveGetResponses[keyof ResolvePostalCodeApiV1LocationsResolveGetResponses];
+
+export type ListZoneMembersApiV1LocationsZoneIdMembersGetData = {
+    body?: never;
+    path: {
+        /**
+         * Zone Id
+         */
+        zone_id: string;
+    };
+    query?: never;
+    url: '/api/v1/locations/{zone_id}/members';
+};
+
+export type ListZoneMembersApiV1LocationsZoneIdMembersGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ListZoneMembersApiV1LocationsZoneIdMembersGetError = ListZoneMembersApiV1LocationsZoneIdMembersGetErrors[keyof ListZoneMembersApiV1LocationsZoneIdMembersGetErrors];
+
+export type ListZoneMembersApiV1LocationsZoneIdMembersGetResponses = {
+    /**
+     * Response List Zone Members Api V1 Locations  Zone Id  Members Get
+     *
+     * Successful Response
+     */
+    200: Array<ZoneMemberResponse>;
+};
+
+export type ListZoneMembersApiV1LocationsZoneIdMembersGetResponse = ListZoneMembersApiV1LocationsZoneIdMembersGetResponses[keyof ListZoneMembersApiV1LocationsZoneIdMembersGetResponses];
+
+export type AddZoneMemberApiV1LocationsZoneIdMembersPostData = {
+    body: ZoneMemberCreate;
+    path: {
+        /**
+         * Zone Id
+         */
+        zone_id: string;
+    };
+    query?: never;
+    url: '/api/v1/locations/{zone_id}/members';
+};
+
+export type AddZoneMemberApiV1LocationsZoneIdMembersPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type AddZoneMemberApiV1LocationsZoneIdMembersPostError = AddZoneMemberApiV1LocationsZoneIdMembersPostErrors[keyof AddZoneMemberApiV1LocationsZoneIdMembersPostErrors];
+
+export type AddZoneMemberApiV1LocationsZoneIdMembersPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ZoneMemberResponse;
+};
+
+export type AddZoneMemberApiV1LocationsZoneIdMembersPostResponse = AddZoneMemberApiV1LocationsZoneIdMembersPostResponses[keyof AddZoneMemberApiV1LocationsZoneIdMembersPostResponses];
+
+export type ListTerminalsApiV1TerminalsGetData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Port Id
+         */
+        port_id?: string | null;
+        /**
+         * Search
+         */
+        search?: string | null;
+    };
+    url: '/api/v1/terminals';
+};
+
+export type ListTerminalsApiV1TerminalsGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ListTerminalsApiV1TerminalsGetError = ListTerminalsApiV1TerminalsGetErrors[keyof ListTerminalsApiV1TerminalsGetErrors];
+
+export type ListTerminalsApiV1TerminalsGetResponses = {
+    /**
+     * Response List Terminals Api V1 Terminals Get
+     *
+     * Successful Response
+     */
+    200: Array<TerminalResponse>;
+};
+
+export type ListTerminalsApiV1TerminalsGetResponse = ListTerminalsApiV1TerminalsGetResponses[keyof ListTerminalsApiV1TerminalsGetResponses];
+
+export type CreateTerminalApiV1TerminalsPostData = {
+    body: TerminalCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/terminals';
+};
+
+export type CreateTerminalApiV1TerminalsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTerminalApiV1TerminalsPostError = CreateTerminalApiV1TerminalsPostErrors[keyof CreateTerminalApiV1TerminalsPostErrors];
+
+export type CreateTerminalApiV1TerminalsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TerminalResponse;
+};
+
+export type CreateTerminalApiV1TerminalsPostResponse = CreateTerminalApiV1TerminalsPostResponses[keyof CreateTerminalApiV1TerminalsPostResponses];
+
+export type ResolveTerminalApiV1TerminalsResolveGetData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Isps Code
+         */
+        isps_code: string;
+    };
+    url: '/api/v1/terminals/resolve';
+};
+
+export type ResolveTerminalApiV1TerminalsResolveGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ResolveTerminalApiV1TerminalsResolveGetError = ResolveTerminalApiV1TerminalsResolveGetErrors[keyof ResolveTerminalApiV1TerminalsResolveGetErrors];
+
+export type ResolveTerminalApiV1TerminalsResolveGetResponses = {
+    /**
+     * Successful Response
+     */
+    200: TerminalResponse;
+};
+
+export type ResolveTerminalApiV1TerminalsResolveGetResponse = ResolveTerminalApiV1TerminalsResolveGetResponses[keyof ResolveTerminalApiV1TerminalsResolveGetResponses];
+
 export type HealthHealthGetData = {
     body?: never;
     path?: never;
@@ -605,3 +1809,17 @@ export type HealthHealthGetResponses = {
 };
 
 export type HealthHealthGetResponse = HealthHealthGetResponses[keyof HealthHealthGetResponses];
+
+export type ReadyReadyGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/ready';
+};
+
+export type ReadyReadyGetResponses = {
+    /**
+     * Successful Response
+     */
+    200: unknown;
+};

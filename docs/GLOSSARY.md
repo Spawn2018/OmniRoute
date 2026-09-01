@@ -36,7 +36,15 @@
 | alias portu | port alias | synonim na wierszu `port`; seed z improved-un-locodes |
 | lokalizacja | location | 4.1; kind unlocode / postal_zone / address |
 | strefa taryfowa | location_zone_member | 4.1; zakresy kodów pocztowych per tenant |
-| terminal | terminal | 4.2; ISPS na terminalu |
+| terminal | terminal | 4.2; osobna tabela, nie `location.kind` |
+| kod ISPS | isps_code | identyfikator obiektu portowego; unikat per tenant gdy nie NULL |
+| operator terminalu | operator_name | tekst; `operator_party_id` dopiero M-10 |
+| numer WPI | wpi_number | World Port Index (NGA Pub 150) na `port` |
+| wielkość portu | harbor_size | WPI: Very Small / Small / Medium / Large |
+| typ portu | harbor_type | WPI, słownik NGA |
+| schronienie | shelter | WPI: Excellent / Good / Fair / Poor / None |
+| głębokość toru | channel_depth_m | WPI, metry, Numeric |
+| głębokość nabrzeża | cargo_pier_depth_m | WPI, metry, Numeric |
 
 Pełny słownik archiwalny: `Informacje z claude/OmniRoute-dokumentacja/docs/` — **nie dumpować**; uzupełniaj ten plik przy plastrze.
 

@@ -26,6 +26,7 @@ from app.models.quotation import Quotation  # noqa: F401 — rejestr metadanych 
 from app.models.rate_line import RateLine  # noqa: F401 — rejestr metadanych RLS
 from app.models.refresh_token import RefreshToken  # noqa: F401 — rejestr metadanych RLS
 from app.models.table_view import TableView  # noqa: F401 — rejestr metadanych RLS
+from app.models.terminal import Terminal  # noqa: F401 — rejestr metadanych RLS
 
 _TEST_JWT_SECRET = "ci-unit-test-jwt-secret-32bytes-min"
 
@@ -266,7 +267,7 @@ async def _apply_rls_policies(conn) -> None:
             """
         ),
     )
-    for table in ("location", "location_zone_member"):
+    for table in ("location", "location_zone_member", "terminal"):
         await conn.execute(text(f"ALTER TABLE {table} ENABLE ROW LEVEL SECURITY"))
         await conn.execute(text(f"ALTER TABLE {table} FORCE ROW LEVEL SECURITY"))
         await conn.execute(text(f"DROP POLICY IF EXISTS {table}_tenant_isolation ON {table}"))

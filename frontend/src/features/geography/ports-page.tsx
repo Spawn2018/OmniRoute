@@ -53,6 +53,26 @@ const columns = [
     header: "Pochodzenie",
     cell: (info) => (info.getValue() ? "UN/LOCODE" : "własny"),
   }),
+  columnHelper.accessor("wpi_number", {
+    id: "wpi_number",
+    header: "WPI",
+    cell: (info) => info.getValue() ?? "—",
+  }),
+  columnHelper.accessor("harbor_size", {
+    id: "harbor_size",
+    header: "Wielkość",
+    cell: (info) => info.getValue() ?? "—",
+  }),
+  columnHelper.accessor("harbor_type", {
+    id: "harbor_type",
+    header: "Typ",
+    cell: (info) => info.getValue() ?? "—",
+  }),
+  columnHelper.accessor("shelter", {
+    id: "shelter",
+    header: "Schronienie",
+    cell: (info) => info.getValue() ?? "—",
+  }),
 ]
 
 const COLUMN_LABELS = {
@@ -62,6 +82,10 @@ const COLUMN_LABELS = {
   function_flags: "Funkcje",
   aliases: "Aliasy",
   is_official: "Pochodzenie",
+  wpi_number: "WPI",
+  harbor_size: "Wielkość",
+  harbor_type: "Typ",
+  shelter: "Schronienie",
 }
 
 export function PortCatalogPage() {

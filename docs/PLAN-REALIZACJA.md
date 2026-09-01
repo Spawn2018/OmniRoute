@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** **4.2** M-05 `terminal` (ISPS, operator jako tekst) + pola World Port Index na `port`. Spec: `docs/spec/geography.md`. Nie Q2.
+**Następny (zablokowany):** **Q2** M-10 Kontrahenci. Archiwum M-10; żywy ID nadajesz w Planie. Nie Q3.
 <!-- os-status:end -->
 
 ```mermaid
@@ -310,8 +310,8 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 |---|---|---|---|
 | Q1.0 | M-05 plaster **4.0** `port` + seed `improved-un-locodes` + `resolve` + `/ports` | Plaster (delta `docs/deltas/archived/4.0-port.md`) | zamknięty |
 | Q1.1 | M-05 plaster **4.1** `location` + `location_zone_member` | Plaster (delta `docs/deltas/archived/4.1-location-zones.md`) | zamknięty |
-| **Q1.2** | M-05 plaster **4.2** `terminal` + World Port Index | **Plan** → plaster | **TERAZ** |
-| Q2 | Archiwum **M-10 Kontrahenci** | Plan → plaster | kolejka (po 4.2) |
+| Q1.2 | M-05 plaster **4.2** `terminal` + World Port Index | Plaster (delta `docs/deltas/archived/4.2-terminal-wpi.md`) | zamknięty |
+| **Q2** | Archiwum **M-10 Kontrahenci** | Plan → plaster | **TERAZ** |
 | Q3 | Pogłębienie żywego **M-21** `quotation` o port + kontrahent (lista/filtry; SQL na istniejących `rate_line`; nie marża; nie k6) | Plan → plaster | kolejka |
 | Q4 | Archiwum **M-09 Kody towarowe** | Plan → plaster | kolejka |
 | Q5 | **Waluty i kurs NBP** (archiwum M-07; **nie** nadpisuj żywego M-07) | Plan → plaster | kolejka |
@@ -369,7 +369,7 @@ Nie implementuj z tej tabeli „na zapas”. To mapa, żeby nic nie zginęło. S
 | M-02 | Niezawodność zdarzeń | PARKED |
 | M-03 | Konfiguracja per organizacja | CZĘŚĆ (`default_currency`) |
 | M-04 | Uprawnienia i tożsamość | CZĘŚĆ (OpenFGA hello; SSO parked) |
-| M-05 | Geografia | `port` + `location`/strefy DONE; **Q1 4.2** `terminal` + WPI |
+| M-05 | Geografia | DONE fundament (`port` + `location`/strefy + `terminal`/WPI) |
 | M-06 | Słownik opłat | DONE jako `charge_code` |
 | M-07 | Waluty i czas | kolejka Q5; ID żywy ≠ M-07 |
 | M-08 | Towary niebezpieczne | kolejka Q6; ID żywy ≠ M-08 |

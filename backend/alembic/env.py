@@ -18,6 +18,7 @@ from app.models.extraction_draft import ExtractionDraft  # noqa: F401
 from app.models.table_view import TableView  # noqa: F401
 from app.models.port import Port  # noqa: F401
 from app.models.location import Location, LocationZoneMember  # noqa: F401
+from app.models.terminal import Terminal  # noqa: F401
 
 config = context.config
 config.set_main_option("sqlalchemy.url", settings.database_url_sync)

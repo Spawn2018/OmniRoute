@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **4.1** M-05 `location` + strefy taryfowe (zarchiwizowany)
-- **Etap:** **Plan** — brak delty dla 4.2. Najpierw tryb Plan i `/plan-modul`, zero kodu.
-- **Następny:** **4.2** M-05 `terminal` (ISPS, operator jako tekst) + pola World Port Index na `port`. Spec: `docs/spec/geography.md`. Nie Q2.
+- **Ostatni plaster:** **4.2** M-05 `terminal` + WPI (zarchiwizowany)
+- **Etap:** Plan — wydmuszka Q2, zero kodu do `/plan-modul`.
+- **Następny:** **Q2** M-10 Kontrahenci. Archiwum M-10; żywy ID nadajesz w Planie. Nie Q3.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

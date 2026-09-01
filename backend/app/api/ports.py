@@ -40,6 +40,13 @@ class PortResponse(BaseModel):
     aliases: list[str]
     is_official: bool
     source_ref: str
+    wpi_number: int | None = None
+    harbor_size: str | None = None
+    harbor_type: str | None = None
+    shelter: str | None = None
+    channel_depth_m: Decimal | None = None
+    cargo_pier_depth_m: Decimal | None = None
+    wpi_source_ref: str | None = None
 
 
 @router.get("", response_model=list[PortResponse])

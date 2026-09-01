@@ -1,8 +1,8 @@
 # M-05 Geografia — port, lokalizacja, strefy, terminal
 
 **Moduł żywy:** M-05 (archiwum M-05; nie koliduje z żywym M-07 `rate_line` / M-08 `charge`)  
-**Plastry:** **4.0** `port` (w kodzie) · **4.1** `location` + strefy (w kodzie) · **4.2** `terminal` + WPI (kolejka)  
-**Status:** 4.0 i 4.1 na origin, gate zielony. 4.2 czeka na Plan.
+**Plastry:** **4.0** `port` (w kodzie) · **4.1** `location` + strefy (w kodzie) · **4.2** `terminal` + WPI (w kodzie)  
+**Status:** 4.0–4.2 na origin, gate zielony. Q1 M-05 zamknięte.
 
 ## 4.0 `port`
 
@@ -51,8 +51,29 @@
 - Wymóg `kind = 'postal_zone'` dla `zone_location_id` egzekwuje serwis; CHECK nie sięga innej tabeli
 - `source_ref` obowiązkowy; strefy tenanta = `tenant:manual`
 
-## 4.2 — kolejka (nie ten plaster)
+## 4.2 `terminal` + World Port Index
 
-`terminal` (kod ISPS na terminalu; operator jako tekst, bez `operator_party_id` aż M-10) + pola World Port Index (NGA) na `port`. OSM geometria **poza M-05**.
+Delta: [docs/deltas/archived/4.2-terminal-wpi.md](../deltas/archived/4.2-terminal-wpi.md). W kodzie.
 
-Start: `/plan-modul` po 4.1. Potem Q2 M-10.
+### Zakres
+
+- Tabela `terminal`: `organization_id`, `port_id`, `name`, `isps_code` (nullable), `operator_name` (nullable text — nie FK do party), `lat`/`lng` Numeric nullable, `source_ref` (`tenant:manual`), timestamps. Brak `is_official` — to nie katalog światowy
+- FK złożone `(organization_id, port_id)` → `port(organization_id, id)` (nośnik `uq_port_org_id` z 4.1)
+- Unikat częściowy `(organization_id, isps_code)` gdy kod nie NULL; unikat `(organization_id, port_id, name)`
+- `resolve(isps_code)` — dokładne, bez wielkości liter; nieznany = `UnknownTerminal`. Bez aliasów, bez `pg_trgm`
+- `location.kind` **bez** `terminal` — osobna tabela
+- ALTER `port`: `wpi_number`, `harbor_size`, `harbor_type`, `shelter`, `channel_depth_m`, `cargo_pier_depth_m` (Numeric, metry), `wpi_source_ref`. Nie nadpisywać `lat`/`lng` ani `source_ref` UN/LOCODE
+- Ingest WPI poza HTTP: NGA Pub 150, plik + pin SHA; match po `unlocode` ze zwiniętą spacją (`PL GDY` → `PLGDY`); UPDATE, nie INSERT portu; CI = fixture, zero sieci
+- OpenFGA bez zmian: `can_manage_geography`
+- UI `/terminals`: DataTableShell + dodanie + filtr po porcie + resolve ISPS. Kolumny WPI (odczyt) na `/ports`
+
+### Poza 4.2
+
+OSM, geometria, strefy czasu dojazdu, `operator_party_id`, FK do `party`, POL/POD w `quotation`, podpięcie `rate_line`, `pg_trgm`, `kind='terminal'` na `location`, pełny dump NGA, live fetch, światowy seed ISPS. Potem Q2 M-10.
+
+### HC
+
+- RLS FORCE na `terminal` + test izolacji
+- `organization_id` na każdym wierszu
+- LLM nie liczy; współrzędne i głębokości nie float
+- Wywołanie zewnętrzne (ingest WPI) idempotentne; nie w requestcie API

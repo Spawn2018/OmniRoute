@@ -106,6 +106,26 @@ class LocationConflict(DomainError):
     """Kod strefy już zajęty w katalogu lokalizacji tenanta."""
 
 
+class InvalidTerminalData(DomainError):
+    """Nazwa terminalu pusta albo kod ISPS nie jest tekstem."""
+
+
+class UnknownTerminal(DomainError):
+    """Kod ISPS nie ma wpisu w katalogu terminal tenanta."""
+
+
+class TerminalConflict(DomainError):
+    """Kod ISPS albo nazwa przy porcie już zajęta w katalogu tenanta."""
+
+
+class InvalidWpiData(DomainError):
+    """Pole World Port Index spoza słownika NGA albo nie da się sparsować."""
+
+
+class DuplicateWpiCode(DomainError):
+    """Dwa wiersze WPI na ten sam UN/LOCODE — nie last-write-wins."""
+
+
 class InvalidSourceRef(DomainError):
     """Stawka bez source_ref nie wchodzi do bazy (HC-03)."""
 
