@@ -80,20 +80,22 @@ Ekstrakcja HITL, brak scoringu osoby fizycznej = **minimal risk**. **Zakaz:** au
 
 Źródło: audyt 2026-08-31 + stan 2026-09-01. **Nie zamykaj plastra ani nie twierdź „pełny DoD”, jeśli recipe to `echo`.**
 
+**Podział bramki (audyt runów #79–#88):** `gate` = `code-gate` + `meta-gate`. CI woła je jako **dwa niezależne joby** (`gate` i `meta`), nie `just gate`. Powód: meta-checki stały przed kodem w łańcuchu fail-fast i przez siedem pushy zasłoniły ruff, mypy, testy i import-linter — w tym oknie przeszedł niezauważony realny błąd granic modułów. Żadna kategoria nie może już tłumić drugiej.
+
 | Obietnica | Egzekwowane teraz | Kiedy |
 |---|---|---|
 | ruff + mypy | tak `just check` | — |
 | pytest unit + integration | tak CI | — |
 | import-linter | tak `just arch` | — |
-| frontend typecheck | tak `frontend-typecheck` w gate | — |
-| vitest | tak `frontend-test` w gate | — |
+| frontend typecheck | tak `frontend-typecheck` w `code-gate` | — |
+| vitest | tak `frontend-test` w `code-gate` | — |
 | cov ≥ 80% | tak `test-unit --cov-fail-under=80` | — |
-| jscpd ≤ 3% | tak `just dup` w gate | — |
+| jscpd ≤ 3% | tak `just dup` w `code-gate` | — |
 | openapi-ts | tak `just api-types` + `frontend/src/api/` | regeneruj przy zmianie API |
 | size-limit / perf | tak `just perf` initial JS gzip < 250 kB | **k6 p95 nadal stub/echo** |
-| agentlint | tak `just agentlint` + baseline | — |
-| just docs (status OS) | tak `just docs-check` w gate | CURRENT → README / ARCHITECTURE / PLAN |
-| bramka przed push | hook `pre-push` = pełne `just gate` (~68 s) | **lokalnie, per-clone.** Wymaga `just hooks` po każdym clone; CI tego nie widzi. `--no-verify` omija. Migracje, `audit`, promptfoo, integration nadal tylko w CI |
+| agentlint | tak `just agentlint` + baseline, job `meta` | podpis pod kontraktem: zmiana `AGENTS.md` / `.cursor/rules` wymaga `agentlint.py --write` **w tym samym commicie** |
+| just docs (status OS) | tak `just docs-check`, job `meta` | CURRENT → README / ARCHITECTURE / PLAN |
+| bramka przed push | hook `pre-push` = pełne `just gate` (~70 s) | **lokalnie, per-clone.** Wymaga `just hooks` po każdym clone; CI tego nie widzi. `--no-verify` omija. Migracje, `audit`, promptfoo, integration nadal tylko w CI. Sam składa PATH; błąd agentlinta wraca po ~96 s — szybciej `just meta-gate` (~1 s) |
 
 **Nie cofaj hotfixów CI:** `005` `current_database()` zamiast `Connection.url`; agent-refs URI ≠ plik; agentlint baseline; conftest — osobne `DO $$`; live HTTP = `httpx` AsyncClient; `rate_line` mutate = commit + select kolumny.
 
