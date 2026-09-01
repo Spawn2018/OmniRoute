@@ -25,7 +25,7 @@ flowchart LR
   FE --> AI[2.1_2.2]
   AI --> Q[2.0_M21]
   Q --> S[3.0_M03]
-  S --> Q1[Q1_Plan_M05_geografia]
+  S --> Q1[Q1_4.0_port]
 ```
 
 ---
@@ -285,7 +285,7 @@ Wydmuszka ≠ 70 pustych stubów w repo. Plan ustala **jeden** plaster. Kod pows
 
 Źródło nazw: archiwum `REJESTR-MODULOW-I-PLAN-v2.md` (na dysku, nie dumpować specyfikacji). **Kolejność budowy ≠ numer M-xx** — numery archiwum i żywy kod się rozjechały (patrz mapa kolizji).
 
-Po zamknięciu plastra `CURRENT.md` = **następna pozycja Q**. Nie pytaj operatora „co chcesz”. Wykonaj tryb z kolumny.
+Po zamknięciu plastra `CURRENT.md` = **następna pozycja Q**. Nie pytaj operatora „co chcesz”. Wykonaj tryb z kolumny. Q1 ma trzy żywe plastry (4.0 → 4.1 → 4.2); Q2 dopiero po 4.2.
 
 ### Mapa kolizji ID (czytaj zanim nazwiesz tabelę)
 
@@ -305,8 +305,10 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 
 | Q | Co | Tryb startu | Status |
 |---|---|---|---|
-| **Q1** | Archiwum **M-05 Geografia** — **4.0** `port` (delta zaakceptowana) → 4.1 → 4.2 | **Plaster** 4.0 (`/plaster` w nowej rozmowie) | **TERAZ** |
-| Q2 | Archiwum **M-10 Kontrahenci** | Plan → plaster | kolejka |
+| **Q1.0** | M-05 plaster **4.0** `port` + seed `improved-un-locodes` + `resolve` + `/ports` | **Plaster** (delta `docs/deltas/open/4.0-port.md`) | **TERAZ** |
+| Q1.1 | M-05 plaster **4.1** `location` + `location_zone_member` | Plan → plaster | kolejka |
+| Q1.2 | M-05 plaster **4.2** `terminal` + World Port Index | Plan → plaster | kolejka |
+| Q2 | Archiwum **M-10 Kontrahenci** | Plan → plaster | kolejka (po 4.2) |
 | Q3 | Pogłębienie żywego **M-21** `quotation` o port + kontrahent (lista/filtry; SQL na istniejących `rate_line`; nie marża; nie k6) | Plan → plaster | kolejka |
 | Q4 | Archiwum **M-09 Kody towarowe** | Plan → plaster | kolejka |
 | Q5 | **Waluty i kurs NBP** (archiwum M-07; **nie** nadpisuj żywego M-07) | Plan → plaster | kolejka |

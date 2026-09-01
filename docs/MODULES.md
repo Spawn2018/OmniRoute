@@ -30,4 +30,4 @@ Nie dopisuj tu 70 pustych wierszy M-xx. Katalog + **kolejka Q1…** (co budować
 ## Specyfikacje
 
 Każdy moduł w kodzie: `docs/spec/<nazwa>.md` (max 400 linii).  
-Dziś: `tenancy.md`, `extraction.md`, `charge-code.md`, `rate-line.md`, `charge.md`, `quotation.md`, `organization-setting.md`. Szkielety uzupełniane przy plastrze — nie kompiluj całego archiwum.
+Dziś: `tenancy.md`, `extraction.md`, `charge-code.md`, `rate-line.md`, `charge.md`, `quotation.md`, `organization-setting.md`, `geography.md` (4.0 Plan zaakceptowany; nie w kodzie). Szkielety uzupełniane przy plastrze — nie kompiluj całego archiwum.

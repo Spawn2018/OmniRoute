@@ -25,6 +25,6 @@ haseł + Auth0 naraz.
 JWT hello ≠ IdP. echo ≠ DoD. Accept HITL ≠ rate_line aż 1.3.
 1.3 = ta sama transakcja HTTP, orchestracja API, nie ExtractionService, nie outbox.
 Po plasterze: docs/ops/post-plaster.md + push + nowa rozmowa.
-Kanon: docs/PLAN-REALIZACJA.md. CURRENT = Q1 Plan M-05. Komenda: /plan-modul.
+Kanon: docs/PLAN-REALIZACJA.md. CURRENT = 4.0 M-05 port. Komenda: /plaster.
 M-02 parked. Auth0 odroczone. Exit Wave FE nie claim.
 ```

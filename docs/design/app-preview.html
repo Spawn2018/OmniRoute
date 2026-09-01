@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="pl" data-theme="light" data-density="compact">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OmniRoute — makieta kanoniczna</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: oklch(.22 .03 250);
+  --ink-2: oklch(.30 .028 250);
+  --ink-3: oklch(.36 .02 250);
+  --paper: oklch(.99 .002 250);
+  --paper-2: oklch(.972 .003 250);
+  --paper-3: oklch(.945 .005 250);
+  --rule: oklch(.885 .008 250);
+  --rule-2: oklch(.82 .010 250);
+  --text: oklch(.24 .02 250);
+  --text-2: oklch(.50 .015 250);
+  --text-3: oklch(.62 .012 250);
+  --accent: oklch(.42 .09 165);
+  --accent-soft: oklch(.95 .035 165);
+  --signal: var(--accent);
+  --signal-soft: var(--accent-soft);
+  --alert: oklch(.62 .14 65);
+  --alert-soft: oklch(.96 .045 80);
+  --stop: oklch(.53 .19 25);
+  --ok: oklch(.52 .10 165);
+  --ok-soft: oklch(.95 .035 165);
+  --focus: oklch(.22 .01 95);
+  --on-ink: oklch(.98 .005 250);
+  --row-h: 30px;
+  --pad-y: 5px;
+  --fs: 13px;
+  --fs-sm: 12px;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+}
+[data-density="comfortable"] { --row-h: 40px; --pad-y: 9px; --fs: 13.5px; --fs-sm: 12.5px; }
+[data-theme="dark"] {
+  --ink: oklch(.16 .02 250);
+  --ink-2: oklch(.22 .022 250);
+  --ink-3: oklch(.36 .02 250);
+  --paper: oklch(.19 .015 250);
+  --paper-2: oklch(.225 .017 250);
+  --paper-3: oklch(.26 .018 250);
+  --rule: oklch(.32 .018 250);
+  --rule-2: oklch(.40 .02 250);
+  --text: oklch(.93 .008 250);
+  --text-2: oklch(.70 .012 250);
+  --text-3: oklch(.58 .012 250);
+  --accent: oklch(.78 .08 165);
+  --accent-soft: oklch(.28 .04 165);
+  --alert: oklch(.78 .13 75);
+  --alert-soft: oklch(.31 .05 70);
+  --stop: oklch(.68 .16 25);
+  --ok: oklch(.72 .10 165);
+  --ok-soft: oklch(.28 .04 165);
+  --focus: oklch(.93 .008 95);
+  --on-ink: oklch(.93 .008 250);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  font: var(--fs)/1.45 var(--sans);
+  background: var(--paper-2);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+.num { font-variant-numeric: tabular-nums lining-nums; }
+.code { font-family: var(--mono); font-size: .92em; letter-spacing: -.01em; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; border-radius: 2px; }
+:focus:not(:focus-visible) { outline: none; }
+button, select, input { font: inherit; color: inherit; }
+button { background: none; border: 0; cursor: pointer; }
+select, input[type="text"] {
+  background: var(--paper);
+  border: 1px solid var(--rule-2);
+  border-radius: 6px;
+  height: 27px;
+  padding: 0 8px;
+}
+.app { display: grid; grid-template-columns: 52px 1fr; height: 100vh; }
+.rail {
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+  gap: 2px;
+}
+.mark {
+  width: 30px; height: 30px; border-radius: 7px;
+  background: var(--accent); color: var(--on-ink);
+  display: grid; place-items: center;
+  font-weight: 600; font-size: 14px; margin-bottom: 14px;
+}
+.rail button {
+  width: 34px; height: 34px; border-radius: 7px;
+  display: grid; place-items: center;
+  color: oklch(.70 .02 250); position: relative;
+}
+.rail button:hover { background: var(--ink-2); color: var(--on-ink); }
+.rail button[aria-current="page"] { background: var(--ink-3); color: var(--on-ink); }
+.rail button svg { width: 17px; height: 17px; stroke-width: 1.6; }
+.rail .sp { flex: 1; }
+.tip {
+  position: absolute; left: 44px; background: var(--ink-3); color: var(--on-ink);
+  padding: 3px 8px; border-radius: 5px; font-size: 11.5px; white-space: nowrap;
+  opacity: 0; pointer-events: none; z-index: 60;
+}
+.rail button:hover .tip { opacity: 1; }
+.main { display: flex; flex-direction: column; min-width: 0; background: var(--paper-2); }
+.topbar {
+  height: 44px; border-bottom: 1px solid var(--rule);
+  display: flex; align-items: center; gap: 10px;
+  padding: 0 12px; background: var(--paper); flex-shrink: 0;
+}
+.crumb { display: flex; align-items: center; gap: 7px; font-size: var(--fs-sm); color: var(--text-2); }
+.crumb b { font-weight: 500; color: var(--text); }
+.omni {
+  margin-left: auto; display: flex; align-items: center; gap: 6px;
+  height: 27px; padding: 0 9px; border: 1px solid var(--rule-2);
+  border-radius: 6px; color: var(--text-3); font-size: var(--fs-sm);
+  min-width: 220px; background: var(--paper-2);
+}
+.omni kbd {
+  margin-left: auto; font-family: var(--mono); font-size: 10.5px;
+  padding: 1px 5px; border: 1px solid var(--rule-2); border-radius: 3px;
+}
+.tset { display: flex; border: 1px solid var(--rule-2); border-radius: 6px; overflow: hidden; height: 27px; }
+.tset button { padding: 0 9px; font-size: var(--fs-sm); color: var(--text-2); display: grid; place-items: center; }
+.tset button + button { border-left: 1px solid var(--rule-2); }
+.tset button[aria-pressed="true"] { background: var(--ink); color: var(--on-ink); }
+.body { flex: 1; display: grid; grid-template-columns: 1fr 292px; min-height: 0; }
+.body.no-rail { grid-template-columns: 1fr; }
+.work { overflow-y: auto; min-width: 0; }
+.rail-r { border-left: 1px solid var(--rule); background: var(--paper); overflow-y: auto; }
+.view { display: none; }
+.view.on { display: block; }
+.head { background: var(--paper); border-bottom: 1px solid var(--rule); padding: 13px 18px 0; }
+.head-top { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 11px; }
+.h-id { font-family: var(--mono); font-size: 11.5px; color: var(--text-3); margin-bottom: 3px; }
+.h-route { display: flex; align-items: baseline; gap: 9px; font-size: 19px; font-weight: 500; letter-spacing: -.012em; }
+.h-route .arw { color: var(--text-3); font-weight: 400; }
+.h-route .loc { font-family: var(--mono); font-size: 12px; color: var(--text-2); font-weight: 400; }
+.h-cust { font-size: var(--fs-sm); color: var(--text-2); margin-top: 4px; }
+.h-act { margin-left: auto; display: flex; gap: 7px; flex-shrink: 0; }
+.btn {
+  height: 29px; padding: 0 12px; border-radius: 6px; font-size: var(--fs-sm); font-weight: 500;
+  border: 1px solid var(--rule-2); background: var(--paper);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.btn:hover { background: var(--paper-3); }
+.btn-p { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
+.btn-p:hover { background: var(--ink-2); }
+.facts { display: flex; gap: 0; border-top: 1px solid var(--rule); }
+.fact { padding: 8px 20px 9px 0; margin-right: 20px; border-right: 1px solid var(--rule); }
+.fact:last-child { border-right: 0; }
+.fact dt { font-size: 11px; color: var(--text-3); margin-bottom: 2px; }
+.fact dd { font-size: var(--fs); font-weight: 500; }
+.fact dd small { font-weight: 400; color: var(--text-2); font-size: 11.5px; }
+.warn-inline { color: var(--alert); font-size: 11.5px; display: inline-flex; align-items: center; gap: 3px; }
+.tabs { display: flex; padding: 0 18px; background: var(--paper); border-bottom: 1px solid var(--rule); }
+.tabs span, .tabs button {
+  padding: 8px 0; margin-right: 20px; font-size: var(--fs-sm); color: var(--text-2);
+  border-bottom: 2px solid transparent; margin-bottom: -1px;
+}
+.tabs [aria-current="true"] { color: var(--text); border-bottom-color: var(--ink); font-weight: 500; }
+.wrap { padding: 14px 18px 40px; }
+.srcbar { display: flex; align-items: center; gap: 9px; margin-bottom: 11px; font-size: var(--fs-sm); color: var(--text-2); flex-wrap: wrap; }
+.chan {
+  display: inline-flex; align-items: center; gap: 5px; padding: 2px 8px 2px 6px;
+  border-radius: 11px; border: 1px solid var(--rule-2); background: var(--paper); font-size: 11.5px;
+}
+.chan .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--text-3); flex-shrink: 0; }
+.chan.done .dot { background: var(--ok); }
+.chan.wait .dot { background: var(--accent); }
+.chan .ms { font-family: var(--mono); font-size: 10.5px; color: var(--text-3); }
+.vlist { display: flex; flex-direction: column; gap: 7px; }
+.v {
+  background: var(--paper); border: 1px solid var(--rule); border-radius: 8px;
+  border-left: 3px solid var(--rule-2); overflow: hidden;
+}
+.v[data-src="db"] { border-left-color: var(--text-3); }
+.v[data-src="api"] { border-left-color: var(--accent); }
+.v[data-src="mail"] { border-left-color: var(--alert); }
+.v.best { border-color: var(--ok); }
+.vh {
+  display: grid; grid-template-columns: 1fr auto auto auto; gap: 16px; align-items: center;
+  padding: var(--pad-y) 13px; min-height: var(--row-h); cursor: pointer; width: 100%; text-align: left;
+}
+.vh:hover { background: var(--paper-2); }
+.vname { font-weight: 500; display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.vmeta { font-size: 11.5px; color: var(--text-2); margin-top: 1px; }
+.tag { font-size: 10px; padding: 1px 5px; border-radius: 3px; font-weight: 500; }
+.tag.db { background: var(--paper-3); color: var(--text-2); }
+.tag.api { background: var(--accent-soft); color: var(--accent); }
+.tag.mail { background: var(--alert-soft); color: var(--alert); }
+.tag.ok { background: var(--ok-soft); color: var(--ok); }
+.tag.warn { background: var(--alert-soft); color: var(--alert); }
+.vtrans { font-size: var(--fs-sm); color: var(--text-2); text-align: right; white-space: nowrap; }
+.vamt { font-size: 15px; font-weight: 500; letter-spacing: -.015em; }
+.vamt .cur { font-size: 11px; font-weight: 400; color: var(--text-3); margin-left: 3px; }
+.vmar { font-size: 11.5px; color: var(--text-2); margin-top: 1px; }
+.vmar b { font-weight: 500; color: var(--ok); }
+.chev { color: var(--text-3); }
+.v.open .chev { transform: rotate(90deg); }
+.vb { display: none; border-top: 1px solid var(--rule); background: var(--paper-2); }
+.v.open .vb { display: block; }
+table.lines, table.grid, table.mini { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); }
+.lines th, .grid th {
+  text-align: left; font-weight: 500; color: var(--text-3); font-size: 11px;
+  padding: 6px 10px; border-bottom: 1px solid var(--rule); white-space: nowrap;
+}
+.lines td, .grid td { padding: var(--pad-y) 10px; border-bottom: 1px solid var(--rule); white-space: nowrap; }
+.lines th.r, .lines td.r, .grid th.r, .grid td.r { text-align: right; }
+.lines .cc { font-family: var(--mono); font-size: 11.5px; color: var(--text-2); }
+.lines tr.gap td { background: var(--alert-soft); }
+.lines tfoot td { font-weight: 500; border-top: 1px solid var(--rule-2); background: var(--paper); }
+.mval { font-variant-numeric: tabular-nums lining-nums; white-space: nowrap; }
+.mval .cur { color: var(--text-3); font-size: .86em; margin-left: 3px; }
+.vfoot {
+  display: flex; align-items: center; gap: 8px; padding: 8px 10px;
+  background: var(--paper); border-top: 1px solid var(--rule);
+}
+.vfoot .why { margin-right: auto; font-size: 11.5px; color: var(--text-2); }
+.tbar {
+  display: flex; align-items: center; gap: 9px; padding: 10px 18px;
+  background: var(--paper); border-bottom: 1px solid var(--rule); flex-wrap: wrap;
+}
+.pill { font-size: 11.5px; padding: 3px 9px; border-radius: 12px; background: var(--paper-3); color: var(--text-2); }
+.tscroll { overflow: auto; max-height: calc(100vh - 92px); }
+.grid th { position: sticky; top: 0; z-index: 3; background: var(--paper-3); }
+.grid td { background: var(--paper); }
+.grid .fz1 { position: sticky; left: 0; z-index: 2; }
+.grid th.fz1 { z-index: 4; }
+.age.fresh { color: var(--ok); }
+.age.old { color: var(--alert); }
+.dead { color: var(--text-3); }
+.linkish { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; background: none; border: 0; padding: 0; cursor: pointer; }
+.rsec { border-bottom: 1px solid var(--rule); padding: 12px 14px; }
+.rsec h3 { font-size: 11.5px; font-weight: 500; color: var(--text-2); margin-bottom: 9px; }
+.gap { display: flex; gap: 8px; padding: 7px 0; border-bottom: 1px dashed var(--rule); font-size: var(--fs-sm); }
+.gap:last-child { border-bottom: 0; }
+.gap b { font-weight: 500; display: block; }
+.gap p { color: var(--text-2); font-size: 11.5px; margin-top: 1px; }
+.gap .fix { color: var(--accent); font-size: 11.5px; margin-top: 3px; display: inline-block; }
+.mini td { padding: 3px 0; color: var(--text-2); }
+.mini td + td { text-align: right; color: var(--text); font-variant-numeric: tabular-nums; }
+.split { display: grid; grid-template-columns: 1.1fr 1fr; gap: 12px; padding: 14px 18px; }
+.panel { background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; padding: 12px; }
+.pdf { font-family: var(--mono); font-size: 12px; line-height: 1.7; margin-top: 10px; }
+.pdf .hot { background: var(--accent-soft); outline: 2px solid var(--focus); }
+.cand {
+  display: block; width: 100%; text-align: left;
+  border: 1px solid var(--rule); background: var(--paper);
+  border-radius: 6px; padding: 8px; margin-top: 6px;
+}
+.cand[aria-selected="true"] { border-color: var(--ink); background: var(--paper-3); }
+.badge { display: inline-block; background: var(--accent-soft); border-radius: 4px; padding: 1px 6px; font-size: 11px; font-weight: 500; }
+.legs { padding: 16px 18px 40px; }
+.leg { display: grid; grid-template-columns: 22px 1fr; gap: 13px; }
+.spine { display: flex; flex-direction: column; align-items: center; }
+.node { width: 11px; height: 11px; border-radius: 50%; border: 2px solid var(--paper); margin-top: 5px; }
+.node.done { background: var(--ok); }
+.node.now { background: var(--accent); }
+.node.next { background: var(--paper); outline: 1.5px solid var(--rule-2); }
+.line { width: 2px; flex: 1; background: var(--rule-2); margin: 3px 0; }
+.line.done { background: var(--ok); }
+.legc { background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; padding: 11px 13px; margin-bottom: 10px; }
+.jobs { display: grid; gap: 8px; padding: 14px 18px; }
+.job {
+  display: flex; justify-content: space-between; align-items: center;
+  background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; padding: 10px 12px;
+}
+.note { font-size: 11px; color: var(--text-3); margin-top: 8px; }
+.scrim {
+  position: fixed; inset: 0; background: oklch(.20 .02 250 / .42);
+  display: none; z-index: 80; align-items: flex-start; justify-content: center; padding-top: 12vh;
+}
+.scrim.on { display: flex; }
+.pal {
+  width: min(560px, 92vw); background: var(--paper); border: 1px solid var(--rule-2);
+  border-radius: 11px; overflow: hidden;
+}
+.pal input {
+  width: 100%; height: 46px; border: 0; padding: 0 15px; font-size: 15px;
+  background: transparent; border-bottom: 1px solid var(--rule); border-radius: 0;
+}
+.pgrp { font-size: 10.5px; color: var(--text-3); padding: 7px 11px 3px; }
+.pit { display: flex; align-items: center; gap: 10px; padding: 7px 11px; border-radius: 6px; cursor: pointer; }
+.pit[aria-selected="true"] { background: var(--paper-3); }
+.pit .sub { margin-left: auto; font-family: var(--mono); font-size: 11.5px; color: var(--text-3); }
+.toast {
+  position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%);
+  background: var(--ink); color: var(--on-ink); padding: 9px 15px; border-radius: 7px;
+  font-size: var(--fs-sm); opacity: 0; pointer-events: none; z-index: 90;
+}
+.toast.on { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .toast { transition: none; }
+}
+@media (max-width: 980px) { .body { grid-template-columns: 1fr; } .rail-r { display: none; } }
+</style>
+</head>
+<body>
+<div class="app">
+  <nav class="rail" aria-label="Moduły">
+    <div class="mark">O</div>
+    <button data-go="pulpit" title="Pulpit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span class="tip">Pulpit</span></button>
+    <button data-go="quote" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16h16V8z"/><path d="M14 2v6h6"/></svg><span class="tip">Wyceny</span></button>
+    <button data-go="rates"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 10v10"/></svg><span class="tip">Stawki</span></button>
+    <button data-go="hitl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h5"/></svg><span class="tip">Ekstrakcje</span></button>
+    <button data-go="ship"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 17l9 4 9-4M4 11l8-4 8 4-8 4-8-4z"/></svg><span class="tip">Zlecenia</span></button>
+    <div class="sp"></div>
+    <button data-go="users"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="3"/><path d="M5 20a7 7 0 0 1 14 0"/></svg><span class="tip">Użytkownicy</span></button>
+  </nav>
+  <div class="main">
+    <header class="topbar">
+      <label class="crumb">
+        <select id="tenant" aria-label="Organizacja">
+          <option>Sped Bałtyk</option>
+          <option>Nordic Forwarding</option>
+        </select>
+      </label>
+      <div class="crumb"><span id="mod">Wyceny</span><span>/</span><b id="crumb">ZAP/2026/00318</b></div>
+      <button class="omni" id="omni" type="button">Szukaj albo wykonaj polecenie<kbd>⌘K</kbd></button>
+      <div class="tset" role="group" aria-label="Gęstość">
+        <button type="button" id="dc" aria-pressed="true" title="Zwarty">zwarty</button>
+        <button type="button" id="dr" aria-pressed="false" title="Swobodny">swobodny</button>
+      </div>
+      <div class="tset"><button type="button" id="th" aria-pressed="false" title="Motyw">jasny</button></div>
+    </header>
+    <div class="body" id="body">
+      <main class="work">
+        <section class="view" id="v-pulpit">
+          <div class="wrap">
+            <p class="h-id">joby operatora · tenant z paska</p>
+            <div class="jobs">
+              <div class="job"><span><b>3 szkice HITL</b><div class="note">kolejka ekstrakcji · reviewer</div></span><button class="btn" type="button" data-go="hitl">Otwórz</button></div>
+              <div class="job"><span><b>ZAP/2026/00318 czeka na lukę HS</b><div class="note">Gdynia → Callao · Meblexport</div></span><button class="btn" type="button" data-go="quote">Wycena</button></div>
+              <div class="job"><span><b>GD/2026/00412 · wolny czas 4 dni</b><div class="note">detention po 02.10</div></span><button class="btn" type="button" data-go="ship">Zlecenie</button></div>
+            </div>
+          </div>
+        </section>
+        <section class="view on" id="v-quote">
+          <div class="head">
+            <div class="head-top">
+              <div>
+                <div class="h-id">ZAP/2026/00318 · wpłynęło 28.08 o 09:12 · operator: Anna Nowak</div>
+                <div class="h-route">Gdynia <span class="loc">PLGDY</span><span class="arw">→</span>Callao <span class="loc">PECLL</span></div>
+                <div class="h-cust">Meblexport Sp. z o.o. · limit kredytowy z karty kontrahenta (M-13), nie scoring LLM</div>
+              </div>
+              <div class="h-act">
+                <button class="btn" type="button" id="askAgents">Zapytaj agentów</button>
+                <button class="btn btn-p" type="button" id="sendQuote">Wyślij ofertę</button>
+              </div>
+            </div>
+            <dl class="facts">
+              <div class="fact"><dt>Ładunek</dt><dd>2 × 40HC <small>meble drewniane</small></dd></div>
+              <div class="fact"><dt>Kod HS</dt><dd class="warn-inline">brak — dopytaj klienta</dd></div>
+              <div class="fact"><dt>Incoterm</dt><dd>FOB <small>Gdynia</small></dd></div>
+              <div class="fact"><dt>Gotowość</dt><dd class="num">10–20.09</dd></div>
+              <div class="fact"><dt>Cut-off bramowy</dt><dd class="num">18–24.09</dd></div>
+            </dl>
+          </div>
+          <div class="tabs"><span aria-current="true">Warianty</span><span>Korespondencja</span><span>Załączniki</span></div>
+          <div class="wrap">
+            <div class="srcbar">
+              <span>Źródła:</span>
+              <span class="chan done"><i class="dot"></i>Baza stawek<span class="ms">natychmiast</span></span>
+              <span class="chan"><i class="dot"></i>Hapag-Lloyd<span class="ms">niesprawdzone</span></span>
+              <span class="chan"><i class="dot"></i>Maersk<span class="ms">niesprawdzone</span></span>
+              <button class="btn" type="button" id="spot" style="height:24px;padding:0 10px;font-size:11.5px">Pokaż wariant spot (dane z API)</button>
+            </div>
+            <div class="vlist" id="vlist"></div>
+            <p class="note">Kwoty i marża przychodzą z serwera (`charge.margin()`). Ta makieta ich nie liczy.</p>
+          </div>
+        </section>
+        <section class="view" id="v-rates">
+          <div class="tbar">
+            <select aria-label="Relacja"><option>Wszystkie relacje</option><option>PLGDY → PECLL</option></select>
+            <select aria-label="Sprzęt"><option>FCL</option><option>LCL</option></select>
+            <span class="pill num">rate_line · RLS</span>
+            <span class="pill">widok: operacyjny</span>
+          </div>
+          <div class="tscroll"><table class="grid" id="ratesTbl"></table></div>
+        </section>
+        <section class="view" id="v-hitl">
+          <div class="split">
+            <div class="panel">
+              <h3 style="font-size:12px;color:var(--text-2);font-weight:500">Podgląd</h3>
+              <div class="note">source_ref MAERSK-SHA-0926.pdf · lazy pdf.js</div>
+              <div class="pdf" id="pdf">
+                <div>MAERSK SPOT · SHA–GDY · SEP 2026</div>
+                <div>OCEAN FREIGHT USD 1,850 / 40HC</div>
+                <div id="span-baf">BAF USD 120 subject to change</div>
+                <div>THC origin EUR 145</div>
+                <div>Validity 01–30 Sep 2026</div>
+              </div>
+            </div>
+            <div class="panel">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <h3 style="font-size:12px;color:var(--text-2);font-weight:500">Recenzja</h3>
+                <span class="badge">propozycja AI</span>
+              </div>
+              <div id="cands"></div>
+              <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap">
+                <button class="btn btn-p" type="button" id="acceptHitl">Akceptuj zaznaczone</button>
+                <button class="btn" type="button" id="rejectHitl">Odrzuć szkic</button>
+              </div>
+              <p class="note">HAX G10: 0.61 dopytuje. Accept → rate_line w jednej transakcji HTTP. Nie optimistic.</p>
+            </div>
+          </div>
+        </section>
+        <section class="view" id="v-ship">
+          <div class="head">
+            <div class="head-top">
+              <div>
+                <div class="h-id">GD/2026/00412 · HBL <span class="code">OMR2609441</span></div>
+                <div class="h-route">Poznań <span class="arw">→</span>Lima <span class="loc">door–door</span></div>
+                <div class="h-cust">Meblexport Sp. z o.o.</div>
+              </div>
+              <div class="h-act"><button class="btn" type="button">Dokumenty 7/9</button></div>
+            </div>
+            <dl class="facts">
+              <div class="fact"><dt>Kontenery</dt><dd class="code">MSKU7823410 · MSKU7823528</dd></div>
+              <div class="fact"><dt>Marża planowana</dt><dd class="num">2 900,00 <span class="cur">PLN</span></dd></div>
+              <div class="fact"><dt>Marża prognozowana</dt><dd class="num">2 590,00 <span class="cur">PLN</span></dd></div>
+            </dl>
+          </div>
+          <div class="legs" id="legs"></div>
+        </section>
+        <section class="view" id="v-users">
+          <div class="wrap">
+            <table class="grid">
+              <thead><tr><th>Email</th><th>Rola FGA</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>anna@spedbaltyk.pl</td><td>reviewer</td><td>aktywny</td></tr>
+                <tr><td>marek@spedbaltyk.pl</td><td>member</td><td>aktywny</td></tr>
+              </tbody>
+            </table>
+            <p class="note">Brak can_review_extractions = Accept nie istnieje. Tenant z paska, nie z URL.</p>
+          </div>
+        </section>
+      </main>
+      <aside class="rail-r" id="rrail"></aside>
+    </div>
+  </div>
+</div>
+<div class="scrim" id="scrim">
+  <div class="pal" role="dialog" aria-label="Paleta poleceń">
+    <input id="palIn" placeholder="Szukaj zleceń, stawek, akcji…" autocomplete="off">
+    <div id="palRes"></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+const $ = (s, c = document) => c.querySelector(s);
+const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+
+function money(amount, currency) {
+  if (typeof amount !== "string" || typeof currency !== "string") {
+    throw new Error("kwota tylko jako string");
+  }
+  if (amount === "") {
+    return `<span class="mval">—</span>`;
+  }
+  return `<span class="mval">${amount}<span class="cur">${currency}</span></span>`;
+}
+
+const VARIANTS = [
+  {
+    id: "andes", src: "db", name: "Andes Cargo SAC", via: "agent · Lima", age: "cennik sprzed 4 dni",
+    transit: "32 dni", etd: "ETD 18.09", best: true, gapLabel: "1 brak",
+    sell: "8 442,00", buy: "7 318,00", margin: "1 124,00", pct: "13,3%", currency: "USD",
+    why: "source_ref Andes Cargo „FCL EXPORT” · marża z charge.margin() na serwerze",
+    lines: [
+      { c: "OFR", d: "Fracht morski 40HC × 2", b: "per kontener", buy: "4 680,00", sell: "5 150,00", margin: "470,00", currency: "USD", gap: false },
+      { c: "BAF", d: "Dopłata paliwowa", b: "per kontener", buy: "420,00", sell: "462,00", margin: "42,00", currency: "USD", gap: false },
+      { c: "OTHC", d: "THC Gdynia", b: "per kontener", buy: "620,00", sell: "760,00", margin: "140,00", currency: "USD", gap: false },
+      { c: "DTHC", d: "THC Callao", b: "per kontener", buy: "620,00", sell: "775,00", margin: "155,00", currency: "USD", gap: false },
+      { c: "ISPS-D", d: "Ochrona portu Callao — brak w źródle", b: "per kontener", buy: "", sell: "", margin: "", currency: "USD", gap: true }
+    ]
+  },
+  {
+    id: "pacific", src: "db", name: "Pacific Forwarding Peru", via: "agent · Callao", age: "cennik sprzed 19 dni",
+    transit: "34 dni", etd: "ETD 20.09", best: false, gapLabel: "2 braki",
+    sell: "8 436,00", buy: "7 313,00", margin: "1 123,00", pct: "13,3%", currency: "USD",
+    why: "source_ref Pacific Forwarding · stawka wygasa 15.09 — przed cut-off 18–24.09",
+    lines: [
+      { c: "OFR", d: "Fracht morski 40HC × 2", b: "per kontener", buy: "4 820,00", sell: "5 300,00", margin: "480,00", currency: "USD", gap: false },
+      { c: "DO-FEE", d: "Delivery order — brak w źródle", b: "per B/L", buy: "", sell: "", margin: "", currency: "USD", gap: true },
+      { c: "ISPS-D", d: "Ochrona portu Callao — brak w źródle", b: "per kontener", buy: "", sell: "", margin: "", currency: "USD", gap: true }
+    ]
+  },
+  {
+    id: "trans", src: "mail", name: "TransAndina Logistics", via: "odpowiedź mailem · 27.08", age: "z zapytania ZAP/00318",
+    transit: "35 dni", etd: "ETD 21.09", best: false, gapLabel: "5 braków",
+    sell: "7 860,00", buy: "6 800,00", margin: "1 060,00", pct: "13,5%", currency: "USD",
+    why: "ekstrakcja maila · HITL zaakceptowany · pierwsza współpraca",
+    lines: [
+      { c: "OFR", d: "Ocean freight 40HC ×2", b: "per kontener", buy: "4 390,00", sell: "4 830,00", margin: "440,00", currency: "USD", gap: false },
+      { c: "ETS", d: "EU ETS — brak w źródle", b: "per kontener", buy: "", sell: "", margin: "", currency: "USD", gap: true }
+    ]
+  }
+];
+
+const SPOT = {
+  id: "hapag", src: "api", name: "Hapag-Lloyd", via: "Quick Quotes · QQ-8841203", age: "pobrano z API",
+  transit: "29 dni", etd: "ETD 19.09", best: false, gapLabel: "2 braki",
+  sell: "8 768,00", buy: "7 882,00", margin: "886,00", pct: "10,1%", currency: "USD",
+  why: "kanał live · source_ref QQ-8841203 · marża z serwera po mapowaniu charge",
+  lines: [
+    { c: "OFR", d: "Fracht morski 40HC × 2", b: "per kontener", buy: "5 240,00", sell: "5 764,00", margin: "524,00", currency: "USD", gap: false },
+    { c: "CUST-IMP", d: "Odprawa Peru — brak w API", b: "per zlecenie", buy: "", sell: "", margin: "", currency: "USD", gap: true }
+  ]
+};
+
+const RATES = [
+  { lane: "PLGDY→PECLL", vendor: "Andes Cargo SAC", eq: "40HC", code: "OFR", amt: "2 340,00", cur: "USD", src: "ANDES-FCL-0826", age: "4 dni", ageCls: "fresh", status: "aktywna", live: true },
+  { lane: "PLGDY→PECLL", vendor: "Pacific Forwarding", eq: "40HC", code: "OFR", amt: "2 410,00", cur: "USD", src: "PAC-PE-0826", age: "19 dni", ageCls: "old", status: "aktywna", live: true },
+  { lane: "PLGDY→CNSHA", vendor: "Hapag-Lloyd", eq: "40HC", code: "OFR", amt: "1 850,00", cur: "USD", src: "HAPAG-SHA-0826", age: "13 dni", ageCls: "fresh", status: "aktywna", live: true },
+  { lane: "CNSHA→PLGDY", vendor: "Maersk", eq: "40HC", code: "OFR", amt: "1 920,00", cur: "USD", src: "MAERSK-SHA-0826", age: "—", ageCls: "", status: "zastąpiona przez rl-1001", live: false }
+];
+
+function renderVariant(v) {
+  const tag = { db: "z cennika", api: "live spot", mail: "z maila" }[v.src];
+  const lines = v.lines.map((l) => `<tr class="${l.gap ? "gap" : ""}">
+    <td class="cc">${l.c}</td>
+    <td>${l.d}</td>
+    <td>${l.b}</td>
+    <td class="r">${money(l.buy, l.currency)}</td>
+    <td class="r">${money(l.sell, l.currency)}</td>
+    <td class="r">${l.gap ? "—" : money(l.margin, l.currency)}</td>
+  </tr>`).join("");
+  return `<article class="v${v.best ? " best" : ""}" data-src="${v.src}">
+    <button class="vh" type="button" aria-expanded="false">
+      <div>
+        <div class="vname">${v.name}<span class="tag ${v.src}">${tag}</span>
+          ${v.best ? '<span class="tag ok">najlepsza marża</span>' : ""}
+          ${v.gapLabel ? `<span class="tag warn">${v.gapLabel}</span>` : ""}</div>
+        <div class="vmeta">${v.via} · ${v.age}</div>
+      </div>
+      <div class="vtrans">${v.transit}<br><span style="color:var(--text-3)">${v.etd}</span></div>
+      <div>
+        <div class="vamt num">${v.sell}<span class="cur">${v.currency}</span></div>
+        <div class="vmar">marża <b class="num">${v.pct}</b> · ${money(v.margin, v.currency)}</div>
+      </div>
+      <span class="chev">›</span>
+    </button>
+    <div class="vb">
+      <table class="lines">
+        <thead><tr><th>Kod</th><th>Opłata</th><th>Podstawa</th><th class="r">Zakup</th><th class="r">Sprzedaż</th><th class="r">Marża</th></tr></thead>
+        <tbody>${lines}</tbody>
+        <tfoot><tr><td colspan="3">Razem (z serwera)</td>
+          <td class="r">${money(v.buy, v.currency)}</td>
+          <td class="r">${money(v.sell, v.currency)}</td>
+          <td class="r">${money(v.margin, v.currency)}</td></tr></tfoot>
+      </table>
+      <div class="vfoot">
+        <span class="why">${v.why}</span>
+        <button class="btn btn-p" type="button" data-pick="${v.id}">Wybierz wariant</button>
+      </div>
+    </div>
+  </article>`;
+}
+
+function bindVariants() {
+  $$("#vlist .vh").forEach((h) => h.addEventListener("click", () => {
+    const art = h.closest(".v");
+    const open = art.classList.toggle("open");
+    h.setAttribute("aria-expanded", String(open));
+  }));
+  $$("#vlist [data-pick]").forEach((b) => b.addEventListener("click", (e) => {
+    e.stopPropagation();
+    toast("Wariant wybrany. Marża już jest na rekordzie charge — UI nic nie dolicza.");
+  }));
+}
+
+function paintQuote(list) {
+  $("#vlist").innerHTML = list.map(renderVariant).join("");
+  bindVariants();
+}
+
+function paintRates() {
+  $("#ratesTbl").innerHTML = `<thead><tr>
+    <th class="fz1">Relacja · pin</th><th>Dostawca</th><th>Sprzęt</th><th>Kod</th>
+    <th class="r">Stawka</th><th>source_ref</th><th>Wiek</th><th>Wersja</th></tr></thead>
+    <tbody>${RATES.map((r) => `<tr class="${r.live ? "" : "dead"}">
+      <td class="fz1 code">${r.lane}</td><td>${r.vendor}</td><td class="code">${r.eq}</td>
+      <td class="code">${r.code}</td><td class="r">${money(r.amt, r.cur)}</td>
+      <td><button class="linkish" type="button">${r.src}</button></td>
+      <td class="age ${r.ageCls}">${r.age}</td><td>${r.status}</td></tr>`).join("")}</tbody>`;
+}
+
+function paintLegs() {
+  const legs = [
+    { mode: "droga", t: "Poznań → Gdynia", car: "Trans-Pol", st: "done", ev: "12.09 14:05 · BCT, CMR podpisany" },
+    { mode: "morze", t: "Gdynia → Callao", car: "Hapag-Lloyd · Cape Pioneer", st: "now", ev: "01.10 · Algeciras · ETA 23.10 ±2 d" },
+    { mode: "kolej", t: "Callao → Lima", car: "Ferrovías Perú", st: "next", ev: "oczekuje na odprawę" }
+  ];
+  $("#legs").innerHTML = legs.map((l, i) => `<div class="leg">
+    <div class="spine"><span class="node ${l.st}"></span>${i < 2 ? `<span class="line ${l.st === "done" ? "done" : ""}"></span>` : ""}</div>
+    <div class="legc"><div class="vname">${l.mode} · ${l.t}</div><div class="vmeta">${l.car}</div><div class="note">${l.ev}</div></div>
+  </div>`).join("");
+}
+
+const CANDS = [
+  { id: "c1", code: "OFR", amt: "1 850,00", cur: "USD", state: "potwierdzone", pct: "94%" },
+  { id: "c2", code: "BAF", amt: "120,00", cur: "USD", state: "niepewne", pct: "61%" },
+  { id: "c3", code: "THC", amt: "145,00", cur: "EUR", state: "niepewne", pct: "38%" }
+];
+let hitl = "c2";
+function paintHitl() {
+  $("#cands").innerHTML = CANDS.map((c) => `<button type="button" class="cand" data-hitl="${c.id}" aria-selected="${hitl === c.id}">
+    <span class="num"><b>${c.code}</b> ${c.amt} ${c.cur}</span> <span class="badge">${c.state} ${c.pct}</span>
+  </button>`).join("");
+  const baf = $("#span-baf");
+  if (baf) baf.className = hitl === "c2" ? "hot" : "";
+}
+
+const RRAIL = {
+  pulpit: "",
+  quote: `<div class="rsec"><h3>Luki i ostrzeżenia</h3>
+    <div class="gap"><div><b>Brak kodu HS</b><p>Wymagany przy odprawie importowej w Peru.</p><span class="fix">Wyślij pytanie do klienta</span></div></div>
+    <div class="gap"><div><b>ISPS Callao w żadnym wariancie</b><p>Na tej relacji zwykle 45 USD / kontener.</p><span class="fix">Dopisz charge ręcznie</span></div></div>
+    <div class="gap"><div><b>Pacific wygasa 15.09</b><p>Cut-off bramowy 18–24.09 — stawka nie pokryje wypłynięcia.</p></div></div>
+  </div>
+  <div class="rsec"><h3>Marża (z serwera)</h3>
+    <table class="mini">
+      <tr><td>Andes · po charge.margin()</td><td>1 124,00 USD</td></tr>
+      <tr><td>Nie sumowane w przeglądarce</td><td>—</td></tr>
+    </table></div>`,
+  rates: `<div class="rsec"><h3>Pokrycie relacji</h3>
+    <table class="mini"><tr><td>Peru</td><td>sprawdzeni</td></tr>
+    <tr><td>Kolumbia</td><td>biała plama</td></tr></table></div>
+    <div class="rsec"><h3>Wygasa w 14 dni</h3>
+    <table class="mini"><tr><td>PLGDY → PECLL</td><td>5 pozycji</td></tr></table></div>`,
+  hitl: `<div class="rsec"><h3>Szkic</h3>
+    <table class="mini"><tr><td>source_ref</td><td>MAERSK-SHA-0926</td></tr>
+    <tr><td>Art. 50</td><td>propozycja AI</td></tr>
+    <tr><td>Zapis</td><td>tylko po accept</td></tr></table></div>`,
+  ship: `<div class="rsec"><h3>Wyjątki</h3>
+    <div class="gap"><div><b>Wolny czas upływa 02.10</b><p>Detention po tej dacie — wartość z operacji, nie z modelu.</p></div></div>
+    <div class="gap"><div><b>ETA ±2 dni</b><p>Niepewność zostaje na osi. HAX G10.</p></div></div></div>`,
+  users: `<div class="rsec"><h3>OpenFGA</h3><p class="note">Ukryj bez relacji. Wyszarzyj read-only. Nie 404-teatr.</p></div>`
+};
+
+let cur = "quote";
+const META = {
+  pulpit: ["Pulpit", "Joby"],
+  quote: ["Wyceny", "ZAP/2026/00318"],
+  rates: ["Stawki", "Baza stawek kupna"],
+  hitl: ["Ekstrakcje", "MAERSK-SHA-0926"],
+  ship: ["Zlecenia", "GD/2026/00412"],
+  users: ["Organizacja", "Użytkownicy"]
+};
+
+function go(v) {
+  cur = v;
+  $$(".view").forEach((s) => s.classList.toggle("on", s.id === "v-" + v));
+  $$(".rail button[data-go]").forEach((b) => {
+    if (b.dataset.go === v) b.setAttribute("aria-current", "page");
+    else b.removeAttribute("aria-current");
+  });
+  $("#mod").textContent = META[v][0];
+  $("#crumb").textContent = META[v][1];
+  $("#rrail").innerHTML = RRAIL[v];
+  $("#body").classList.toggle("no-rail", v === "pulpit");
+}
+
+$$(".rail button[data-go]").forEach((b) => b.addEventListener("click", () => go(b.dataset.go)));
+document.addEventListener("click", (e) => {
+  const goBtn = e.target.closest("[data-go]");
+  if (goBtn && !goBtn.closest(".rail")) go(goBtn.dataset.go);
+  const h = e.target.closest("[data-hitl]");
+  if (h) { hitl = h.dataset.hitl; paintHitl(); }
+});
+
+$("#dc").addEventListener("click", () => {
+  document.documentElement.dataset.density = "compact";
+  $("#dc").setAttribute("aria-pressed", "true");
+  $("#dr").setAttribute("aria-pressed", "false");
+});
+$("#dr").addEventListener("click", () => {
+  document.documentElement.dataset.density = "comfortable";
+  $("#dc").setAttribute("aria-pressed", "false");
+  $("#dr").setAttribute("aria-pressed", "true");
+});
+$("#th").addEventListener("click", () => {
+  const dark = document.documentElement.dataset.theme === "dark";
+  document.documentElement.dataset.theme = dark ? "light" : "dark";
+  $("#th").textContent = dark ? "jasny" : "ciemny";
+  $("#th").setAttribute("aria-pressed", dark ? "false" : "true");
+});
+
+let spotShown = false;
+$("#spot").addEventListener("click", () => {
+  if (spotShown) {
+    toast("Wariant spot już na liście. Ponowne odpytanie = idempotentny request.");
+    return;
+  }
+  spotShown = true;
+  VARIANTS.push(SPOT);
+  paintQuote(VARIANTS);
+  toast("Hapag-Lloyd dodany z payloadu API. Marża przyszła w JSON, nie z JS.");
+});
+$("#askAgents").addEventListener("click", () => toast("Zapytanie do agentów — podgląd wiadomości przed wysłaniem."));
+$("#sendQuote").addEventListener("click", () => toast("Wysyłka zablokowana: luka HS. Nie omijamy HITL/walidacji."));
+$("#acceptHitl").addEventListener("click", () => toast("Accept → rate_line w jednej transakcji. ExtractionService nie importuje rates."));
+$("#rejectHitl").addEventListener("click", () => toast("Szkic odrzucony. PDF zostaje. Brak rate_line."));
+
+const CMD = [
+  { g: "Nawigacja", i: "Pulpit", s: "G P", a: () => go("pulpit") },
+  { g: "Nawigacja", i: "Wyceny", s: "G W", a: () => go("quote") },
+  { g: "Nawigacja", i: "Stawki", s: "G S", a: () => go("rates") },
+  { g: "Nawigacja", i: "Ekstrakcje HITL", s: "G E", a: () => go("hitl") },
+  { g: "Nawigacja", i: "Zlecenia", s: "G Z", a: () => go("ship") },
+  { g: "Akcje", i: "Akceptuj szkic HITL", s: "A", a: () => { go("hitl"); toast("Fokus na Accept"); } },
+  { g: "Rekordy", i: "ZAP/2026/00318", s: "", a: () => go("quote") },
+  { g: "Rekordy", i: "CNSHA–PLGDY 40HC", s: "", a: () => go("rates") }
+];
+let sel = 0;
+let filt = CMD;
+function pal(open) {
+  $("#scrim").classList.toggle("on", open);
+  if (open) { $("#palIn").value = ""; filt = CMD; sel = 0; drawPal(); $("#palIn").focus(); }
+}
+function drawPal() {
+  let g = "";
+  let h = "";
+  filt.forEach((c, i) => {
+    if (c.g !== g) { g = c.g; h += `<div class="pgrp">${g}</div>`; }
+    h += `<div class="pit" role="option" aria-selected="${i === sel}" data-i="${i}">
+      <span>${c.i}</span>${c.s ? `<span class="sub">${c.s}</span>` : ""}</div>`;
+  });
+  $("#palRes").innerHTML = h || '<div class="pgrp">Brak wyników</div>';
+  $$(".pit").forEach((e) => e.addEventListener("click", () => run(+e.dataset.i)));
+}
+function run(i) { const c = filt[i]; pal(false); if (c) c.a(); }
+$("#palIn").addEventListener("input", (e) => {
+  const q = e.target.value.toLowerCase().trim();
+  filt = q ? CMD.filter((c) => c.i.toLowerCase().includes(q)) : CMD;
+  sel = 0;
+  drawPal();
+});
+$("#omni").addEventListener("click", () => pal(true));
+$("#scrim").addEventListener("click", (e) => { if (e.target === $("#scrim")) pal(false); });
+addEventListener("keydown", (e) => {
+  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") { e.preventDefault(); pal(!$("#scrim").classList.contains("on")); return; }
+  if (!$("#scrim").classList.contains("on")) return;
+  if (e.key === "Escape") pal(false);
+  if (e.key === "ArrowDown") { e.preventDefault(); sel = Math.min(sel + 1, filt.length - 1); drawPal(); }
+  if (e.key === "ArrowUp") { e.preventDefault(); sel = Math.max(sel - 1, 0); drawPal(); }
+  if (e.key === "Enter") { e.preventDefault(); run(sel); }
+});
+
+let tt;
+function toast(m) {
+  const t = $("#toast");
+  t.textContent = m;
+  t.classList.add("on");
+  clearTimeout(tt);
+  tt = setTimeout(() => t.classList.remove("on"), 3200);
+}
+
+paintQuote(VARIANTS);
+paintRates();
+paintLegs();
+paintHitl();
+go("quote");
+</script>
+</body>
+</html>

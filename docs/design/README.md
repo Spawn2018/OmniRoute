@@ -1,7 +1,13 @@
 # Makiety UI OmniRoute
 
 **ADR:** [0003](../adr/0003-frontend-ui-system-2026.md) (uzupełnia 0002).  
-**Nie kod produktu.** Pliki `.canvas.tsx` nie wchodzą do bundla Vite. Podgląd obok czatu: otwórz kopię w katalogu Canvas IDE.
+**Nie kod produktu.** Nie bundel Vite.
+
+**Kanon wizualny:** [app-preview.html](app-preview.html) — układ rail + powierzchnia + prawa szyna (wzorzec z makiety Claude), tokeny OKLCH OmniRoute (zieleń, nie niebieski SaaS), tenant w topbarze, HITL, kwoty jako string z „serwera” (zero `sum()` w JS). Otwórz w przeglądarce, nie w Canvas IDE.
+
+Canvas IDE dziedziczy kolory edytora i wygląda jak dokument, nie jak aplikacja.
+
+Statyczne klatki: [screens/omniroute-stawki-light.png](screens/omniroute-stawki-light.png), [screens/omniroute-hitl-light.png](screens/omniroute-hitl-light.png), [screens/omniroute-oferta-light.png](screens/omniroute-oferta-light.png).
 
 | Plik | Ekran |
 |---|---|

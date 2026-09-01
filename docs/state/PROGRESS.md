@@ -66,3 +66,4 @@
 | 2026-09-01 | CI | ops | gate: 005 `current_database()` zamiast `Connection.url`; `docs-debt` path; URI ≠ plik w agent-refs |
 | — | leftover | Auth0 | I1/I2 **odroczone** aż będzie tenant. Nie pytać. 0.12/0.15 ≠ IdP. |
 | — | leftover | produkt | **Następny:** 4.0 M-05 `port` (`/plaster`). Leftovery UI ADR-0003 **nie** zamiast 4.0. M-02 parked. |
+| 2026-09-01 | Plan 4.0 | M-05 | delta `docs/deltas/open/4.0-port.md` + spec `geography.md`. Następny: `/plaster` 4.0 w nowej rozmowie. Nie 4.1. Nie Q2. |
