@@ -248,3 +248,15 @@ class CustomerSopConflict(DomainError):
 
 class CustomerSopAlreadyApproved(DomainError):
     """Zatwierdzonej procedury nie zatwierdza się drugi raz — nowa wersja = leftover."""
+
+
+class InvalidPortSurcharge(DomainError):
+    """Kod extra: snake 2–32, albo kwota/waluta/warunek poza katalogiem — nie marża."""
+
+
+class UnknownPortSurcharge(DomainError):
+    """Extra nie ma wpisu w katalogu port_surcharge tenanta."""
+
+
+class PortSurchargeConflict(DomainError):
+    """Kod extra już zajęty przy tym porcie w tenancie."""

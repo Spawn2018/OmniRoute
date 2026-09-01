@@ -1,10 +1,10 @@
 # M-18 port_surcharge — opłaty portowe warunkowe
 
 **Moduł żywy:** M-18 (archiwum M-18; nie koliduje z żywym M-08 `charge` / M-07 `rate_line`)  
-**Plaster:** **12.0** (plan)  
-**Status:** plan — katalog extra per `port`. Nie aplikacja do wyceny. Nie drugi `charge`.
+**Plaster:** **12.0** (zamknięty)  
+**Status:** katalog extra per `port`. Nie aplikacja do wyceny. Nie drugi `charge`.
 
-Delta: [docs/deltas/open/12.0-port-surcharge.md](../deltas/open/12.0-port-surcharge.md).
+Delta: [docs/deltas/archived/12.0-port-surcharge.md](../deltas/archived/12.0-port-surcharge.md).
 
 ## 12.0 katalog extra portowego
 

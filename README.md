@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **11.0** M-16 `customer_sop` (zarchiwizowany)
+- **Ostatni plaster:** **12.0** M-18 `port_surcharge` (zarchiwizowany)
 - **Etap:** Plan
-- **Następny:** 12.0 M-18 `port_surcharge` (`/plaster`). Nie Fala 8. Nie zgaduj zakresu.
+- **Następny:** M-19 Stawki live i kanały (`/plan-modul`). Nie Fala 8. Nie zgaduj zakresu.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

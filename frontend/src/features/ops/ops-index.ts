@@ -35,6 +35,11 @@ export const OPS_JOBS = [
   { route: BUSINESS_LISTS.organizationSettings.route, label: "Ustawienia", job: "config jako dane" },
   { route: BUSINESS_LISTS.ports.route, label: "Porty", job: "katalog UN/LOCODE + resolve" },
   {
+    route: BUSINESS_LISTS.portSurcharges.route,
+    label: "Opłaty portowe",
+    job: "katalog port_surcharge + resolve",
+  },
+  {
     route: BUSINESS_LISTS.locations.route,
     label: "Lokalizacje",
     job: "strefy taryfowe + resolve kodu",
@@ -82,6 +87,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "9.0": "/networks",
   "10.0": "/party-scorecards",
   "11.0": "/customer-sops",
+  "12.0": "/port-surcharges",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

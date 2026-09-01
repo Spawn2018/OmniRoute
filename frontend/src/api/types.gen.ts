@@ -1145,6 +1145,78 @@ export type PortResponse = {
 };
 
 /**
+ * PortSurchargeCreate
+ */
+export type PortSurchargeCreate = {
+    /**
+     * Port Id
+     */
+    port_id: string;
+    /**
+     * Code
+     */
+    code: string;
+    /**
+     * Title
+     */
+    title: string;
+    /**
+     * Applies When
+     */
+    applies_when: string;
+    /**
+     * Amount
+     */
+    amount: string;
+    /**
+     * Currency
+     */
+    currency: string;
+};
+
+/**
+ * PortSurchargeResponse
+ */
+export type PortSurchargeResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Port Id
+     */
+    port_id: string;
+    /**
+     * Code
+     */
+    code: string;
+    /**
+     * Title
+     */
+    title: string;
+    /**
+     * Applies When
+     */
+    applies_when: string;
+    /**
+     * Amount
+     */
+    amount: string;
+    /**
+     * Currency
+     */
+    currency: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * QuotationCreate
  */
 export type QuotationCreate = {
@@ -3339,6 +3411,83 @@ export type ResolvePortApiV1PortsResolveGetResponses = {
 };
 
 export type ResolvePortApiV1PortsResolveGetResponse = ResolvePortApiV1PortsResolveGetResponses[keyof ResolvePortApiV1PortsResolveGetResponses];
+
+export type ListPortSurchargesApiV1PortSurchargesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/port-surcharges';
+};
+
+export type ListPortSurchargesApiV1PortSurchargesGetResponses = {
+    /**
+     * Response List Port Surcharges Api V1 Port Surcharges Get
+     *
+     * Successful Response
+     */
+    200: Array<PortSurchargeResponse>;
+};
+
+export type ListPortSurchargesApiV1PortSurchargesGetResponse = ListPortSurchargesApiV1PortSurchargesGetResponses[keyof ListPortSurchargesApiV1PortSurchargesGetResponses];
+
+export type CreatePortSurchargeApiV1PortSurchargesPostData = {
+    body: PortSurchargeCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/port-surcharges';
+};
+
+export type CreatePortSurchargeApiV1PortSurchargesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreatePortSurchargeApiV1PortSurchargesPostError = CreatePortSurchargeApiV1PortSurchargesPostErrors[keyof CreatePortSurchargeApiV1PortSurchargesPostErrors];
+
+export type CreatePortSurchargeApiV1PortSurchargesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: PortSurchargeResponse;
+};
+
+export type CreatePortSurchargeApiV1PortSurchargesPostResponse = CreatePortSurchargeApiV1PortSurchargesPostResponses[keyof CreatePortSurchargeApiV1PortSurchargesPostResponses];
+
+export type ResolvePortSurchargeApiV1PortSurchargesResolveGetData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Port Id
+         */
+        port_id: string;
+        /**
+         * Code
+         */
+        code: string;
+    };
+    url: '/api/v1/port-surcharges/resolve';
+};
+
+export type ResolvePortSurchargeApiV1PortSurchargesResolveGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ResolvePortSurchargeApiV1PortSurchargesResolveGetError = ResolvePortSurchargeApiV1PortSurchargesResolveGetErrors[keyof ResolvePortSurchargeApiV1PortSurchargesResolveGetErrors];
+
+export type ResolvePortSurchargeApiV1PortSurchargesResolveGetResponses = {
+    /**
+     * Successful Response
+     */
+    200: PortSurchargeResponse;
+};
+
+export type ResolvePortSurchargeApiV1PortSurchargesResolveGetResponse = ResolvePortSurchargeApiV1PortSurchargesResolveGetResponses[keyof ResolvePortSurchargeApiV1PortSurchargesResolveGetResponses];
 
 export type ListLocationsApiV1LocationsGetData = {
     body?: never;

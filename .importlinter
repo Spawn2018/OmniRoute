@@ -29,6 +29,7 @@ modules =
     app.services.nbp_rates
     app.services.dangerous_goods
     app.services.networks
+    app.services.port_surcharges
 
 [importlinter:contract:integracje]
 name = Integracje nie znają serwisów
@@ -81,3 +82,6 @@ forbidden_modules =
     app.services.networks
     app.repositories.networks
     app.models.network
+    app.services.port_surcharges
+    app.repositories.port_surcharges
+    app.models.port_surcharge

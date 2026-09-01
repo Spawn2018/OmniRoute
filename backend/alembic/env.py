@@ -31,6 +31,7 @@ from app.models.party_charge_override import PartyChargeOverride  # noqa: F401
 from app.models.carrier_profile import CarrierProfile  # noqa: F401
 from app.models.party_scorecard import PartyScorecard  # noqa: F401
 from app.models.customer_sop import CustomerSop  # noqa: F401
+from app.models.port_surcharge import PortSurcharge  # noqa: F401
 
 config = context.config
 config.set_main_option("sqlalchemy.url", settings.database_url_sync)

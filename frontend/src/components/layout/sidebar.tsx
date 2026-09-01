@@ -14,6 +14,7 @@ const NAV = [
   { to: "/rate-lines", label: "Stawki" },
   { to: "/quotations", label: "Wyceny" },
   { to: "/ports", label: "Porty" },
+  { to: "/port-surcharges", label: "Opłaty portowe" },
   { to: "/locations", label: "Lokalizacje" },
   { to: "/terminals", label: "Terminale" },
   { to: "/parties", label: "Kontrahenci" },

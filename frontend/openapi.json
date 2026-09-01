@@ -2853,6 +2853,139 @@
         }
       }
     },
+    "/api/v1/port-surcharges": {
+      "get": {
+        "tags": [
+          "port-surcharges"
+        ],
+        "summary": "List Port Surcharges",
+        "operationId": "list_port_surcharges_api_v1_port_surcharges_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PortSurchargeResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Port Surcharges Api V1 Port Surcharges Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "port-surcharges"
+        ],
+        "summary": "Create Port Surcharge",
+        "operationId": "create_port_surcharge_api_v1_port_surcharges_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PortSurchargeCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PortSurchargeResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/port-surcharges/resolve": {
+      "get": {
+        "tags": [
+          "port-surcharges"
+        ],
+        "summary": "Resolve Port Surcharge",
+        "operationId": "resolve_port_surcharge_api_v1_port_surcharges_resolve_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "port_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Port Id"
+            }
+          },
+          {
+            "name": "code",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 32,
+              "title": "Code"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PortSurchargeResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/locations": {
       "get": {
         "tags": [
@@ -5371,6 +5504,112 @@
           "source_ref"
         ],
         "title": "PortResponse"
+      },
+      "PortSurchargeCreate": {
+        "properties": {
+          "port_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Port Id"
+          },
+          "code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 1,
+            "title": "Code"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 1,
+            "title": "Title"
+          },
+          "applies_when": {
+            "type": "string",
+            "maxLength": 512,
+            "minLength": 1,
+            "title": "Applies When"
+          },
+          "amount": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 1,
+            "title": "Amount"
+          },
+          "currency": {
+            "type": "string",
+            "maxLength": 3,
+            "minLength": 3,
+            "title": "Currency"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "port_id",
+          "code",
+          "title",
+          "applies_when",
+          "amount",
+          "currency"
+        ],
+        "title": "PortSurchargeCreate"
+      },
+      "PortSurchargeResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "port_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Port Id"
+          },
+          "code": {
+            "type": "string",
+            "title": "Code"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "applies_when": {
+            "type": "string",
+            "title": "Applies When"
+          },
+          "amount": {
+            "type": "string",
+            "title": "Amount"
+          },
+          "currency": {
+            "type": "string",
+            "title": "Currency"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "port_id",
+          "code",
+          "title",
+          "applies_when",
+          "amount",
+          "currency",
+          "source_ref"
+        ],
+        "title": "PortSurchargeResponse"
       },
       "QuotationCreate": {
         "properties": {

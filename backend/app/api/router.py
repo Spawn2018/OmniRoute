@@ -13,6 +13,7 @@ from app.api import (
     organization_settings,
     parties,
     party_scorecards,
+    port_surcharges,
     ports,
     quotations,
     rate_lines,
@@ -41,6 +42,7 @@ api_router.include_router(parties.router)
 api_router.include_router(party_scorecards.router)
 api_router.include_router(customer_sops.router)
 api_router.include_router(ports.router)
+api_router.include_router(port_surcharges.router)
 api_router.include_router(locations.router)
 api_router.include_router(terminals.router)
 

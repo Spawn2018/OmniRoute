@@ -90,4 +90,5 @@
 | 2026-09-02 | 10.0 | M-13 | `party_scorecard` snapshot + RLS FORCE + ranking + OpenFGA `can_manage_parties` + `/party-scorecards` + panel na `/parties`. Nie SQL-refresh, nie scoring osoby, nie RFQ. |
 | 2026-09-02 | Plan 11.0 | M-16 | delta `docs/deltas/archived/11.0-customer-sop.md` + spec. Katalog `customer_sop` + zatwierdzenie. Nie generator zadań, nie M-35. Następny: `/plaster` 11.0. |
 | 2026-09-02 | 11.0 | M-16 | `customer_sop` katalog + RLS FORCE + `resolve(party_id, code)` + zatwierdzenie + OpenFGA `can_manage_parties` + `/customer-sops` + panel na `/parties`. Nie generator zadań, nie M-35, nie `superseded_by`. |
-| 2026-09-02 | Plan 12.0 | M-18 | delta `docs/deltas/open/12.0-port-surcharge.md` + spec. Katalog `port_surcharge` per port. Nie zapis do `charge`, nie ewaluacja warunku. Następny: `/plaster` 12.0. |
+| 2026-09-02 | Plan 12.0 | M-18 | delta `docs/deltas/archived/12.0-port-surcharge.md` + spec. Katalog `port_surcharge` per port. Nie zapis do `charge`, nie ewaluacja warunku. Następny: `/plaster` 12.0. |
+| 2026-09-02 | 12.0 | M-18 | `port_surcharge` katalog extra + RLS FORCE + `resolve(port_id, code)` + OpenFGA `can_manage_geography` + `/port-surcharges` + panel na `/ports`. Nie zapis do `charge`, nie ewaluacja warunku, nie M-19 live. |
