@@ -1,4 +1,4 @@
-#Requires -Version 5.1
+﻿#Requires -Version 5.1
 <#
 .SYNOPSIS
   Przed /noc: git, Postgres, OpenFGA, internet, GitHub.
@@ -46,7 +46,7 @@ Write-Host "noc-preflight  $Root"
 
 $dirty = git status --porcelain
 if ($dirty) {
-  Write-Fail "Drzewo git nieczyste. Inny agent albo niedokończona robota — noc nie startuje."
+  Write-Fail "Drzewo git nieczyste. Inny agent albo niedokończona robota - noc nie startuje."
 } else {
   Write-Ok "git czysty"
 }
@@ -169,8 +169,8 @@ if ($fgaUp) {
 }
 
 if ($script:failed) {
-  Write-Host "noc-preflight: STOP — nie włączaj pętli /noc."
+  Write-Host "noc-preflight: STOP - nie włączaj pętli /noc."
   exit 1
 }
-Write-Host "noc-preflight: OK — wolno /noc."
+Write-Host "noc-preflight: OK - wolno /noc."
 exit 0
