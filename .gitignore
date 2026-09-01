@@ -39,6 +39,7 @@ Informacje z claude/
 # Local native tooling (no Docker)
 tools/pg16/
 tools/pgdata/
+tools/just/
 tools/openfga/openfga.exe
 tools/openfga/*.tgz
 tools/openfga/*.tar.gz

@@ -14,6 +14,6 @@ Q1.2 = 4.2 `terminal`+WPI (też najpierw Plan). Q2 = M-10 **po** 4.2. M-02 **par
 
 **Uczciwość:** 4.0 na origin. Żywe M-07 = `rate_line`, żywe M-08 = `charge` — nie nadpisuj numerami archiwum M-07/M-08. HITL zostaje. ExtractionService nie importuje rates. LLM nie liczy. `port.organization_id` obowiązkowy. `resolve` portu dopasowuje kod albo alias dokładnie — `pg_trgm` nadal poza zakresem.
 
-**Baza lokalnie:** PG 16 jako klaster przenośny — `tools\pg16\pgsql\bin\pg_ctl.exe -D tools\pgdata -o "-p 5432" start`. Instalator EDB przez winget nie przechodzi (exit 1). Testy: `ADMIN_TEST_DATABASE_URL` + `TENANT_TEST_DATABASE_URL` na `omniroute_test`, OpenFGA z `tools\openfga\openfga.exe run`.
+**Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` są w PATH. Przed pracą podnieś dwie rzeczy: `pg_ctl -D tools\pgdata -o "-p 5432" start` oraz `tools\openfga\openfga.exe run`. Potem `just gate` i `just test` działają bez ustawiania zmiennych. PG 16 to klaster przenośny w `tools\pg16` — instalator EDB przez winget nie przechodzi (exit 1).
 
 **2026-09-01:** 4.0 zamknięte — `port`, RLS, `resolve`, `/ports`. Następne: Plan 4.1.
