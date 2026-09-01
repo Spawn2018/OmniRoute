@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **5.1** M-21 `quotation` POL/POD + `party_id` (zarchiwizowany). **Etap:** Plan. **Następny:** **Q4** archiwum **M-09 Kody towarowe** (`/plan-modul`). Nie Q5. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **5.1** M-21 `quotation` POL/POD + `party_id` (zarchiwizowany). **Etap:** Plaster. **Następny:** **5.2** M-09 `commodity_code` ([delta](../deltas/open/5.2-commodity-code.md)). Nie Q5. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

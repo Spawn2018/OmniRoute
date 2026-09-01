@@ -9,6 +9,7 @@
 | marża | margin | sell − buy, ta sama waluta; tylko funkcja `margin()` |
 | kod opłaty | charge_code | katalog M-06; typowany token, nie luźny string |
 | alias kodu opłaty | charge_code alias | synonim w katalogu tenanta |
+| kod towarowy | commodity_code | katalog M-09; token HS/CN cyframi; nie luźna nazwa |
 | wycena | quotation | |
 | luka wyceny | quotation_gap | brakująca dopłata |
 | port załadunku | origin_port_id | POL na `quotation`; FK do `port` |
