@@ -2,6 +2,7 @@
 
 from collections.abc import Callable
 
+from app.ai_transforms.extraction.presidio_stub import InstructorPresidioStub
 from app.ai_transforms.extraction.schemas import ExtractionPayload
 from app.core.config import settings
 from app.domain.errors import ExtractionProviderUnavailable
@@ -17,11 +18,17 @@ _SYSTEM = (
 
 
 class InstructorExtractor:
-    def __init__(self, complete: CompletionFn) -> None:
+    def __init__(
+        self,
+        complete: CompletionFn,
+        presidio: InstructorPresidioStub | None = None,
+    ) -> None:
         self._complete = complete
+        self._presidio = presidio or InstructorPresidioStub()
 
     def extract(self, *, source_ref: str, input_text: str) -> ExtractionPayload:
         origin = source_ref.strip()
+        self._presidio.scan(input_text)
         payload = self._complete(origin, input_text)
         # HC-03: pochodzenie z żądania, model nie jest źródłem prawdy
         return payload.model_copy(update={"source_ref": origin})

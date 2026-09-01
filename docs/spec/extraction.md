@@ -1,7 +1,7 @@
 # M-20 — Ekstrakcja dokumentów (HITL)
 
-**Status:** 0.7–0.18 DONE · Charge **1.3** accept → `rate_line` (warstwa API)  
-**Delty:** `docs/deltas/archived/0.7-ai-extract-hitl.md`, `0.8-instructor-llm-guard.md`, `0.9-docling-ab.md`, `0.10-langfuse-promptfoo.md`, `0.11-hitl-xor-vitest.md`, `0.12-jwt-session.md`, `0.13-hitl-split.md`, `0.14-http-happy-path.md`, `0.15-t0-document-base64-max.md`, `0.18-http-extract-live-pg.md`, `1.3-accept-rate-line.md`  
+**Status:** 0.7–0.18 DONE · Charge **1.3** accept → `rate_line` (warstwa API) · **2.1–2.2** Presidio instructor stub + syntetyki  
+**Delty:** `docs/deltas/archived/0.7-ai-extract-hitl.md`, `0.8-instructor-llm-guard.md`, `0.9-docling-ab.md`, `0.10-langfuse-promptfoo.md`, `0.11-hitl-xor-vitest.md`, `0.12-jwt-session.md`, `0.13-hitl-split.md`, `0.14-http-happy-path.md`, `0.15-t0-document-base64-max.md`, `0.18-http-extract-live-pg.md`, `1.3-accept-rate-line.md`, `2.1-2.2-presidio-synthetics.md`  
 **GROUNDING:** HC-03 (`source_ref`, `unparsed_regions`), HC-04 (zero zapisu autonomicznego)
 
 ## Zakres (kod dziś)
@@ -13,13 +13,15 @@
 - UI: kolejka DataTableShell + split-screen (podgląd `input_text` | recenzja)
 - Provider: `EXTRACTION_PROVIDER=mock` (default CI) | `instructor` (wymaga `OPENAI_API_KEY`)
 - Guard: skanery regex przed modelem; pakiet `llm-guard` (transformers) tylko przy `EXTRACTION_LLM_GUARD=true`
+- Presidio: `InstructorPresidioStub` tylko na `InstructorExtractor` (`engine=stub`); nie middleware, nie każdy endpoint
+- Syntetyki: 10 tekstów `synth://` w `ai_transforms/extraction/synthetics.py` — extract/eval; zero PDF klienta
 - Parser: fingerprint + A (`stub` / `pdf_strings`) vs B (opcjonalny docling); tryb `ab` → `ab_delta_chars`
 
 ## Poza zakresem (nie twierdź że jest)
 
 - Zapis `rate_line` / `charge` z `ExtractionService` (1.3: accept → RatesService w API, nie tu)
 - Żywy instructor / OpenAI w CI, langfuse cloud, eval promptfoo 30 cenników
-- Presidio na każdym endpoincie, outbox, Temporal/Hatchet
+- Presidio na każdym endpoincie (żywy microsoft-presidio), outbox, Temporal/Hatchet
 - HTTP extract vs live Postgres — 0.18 integration CI (lokalnie PG może wisieć)
 - Split-screen PDF canvas / OCR overlay
 - Vitest: `extractionCreateBody` (XOR) + `hitlSplitView`; brak RTL całej kolejki
@@ -78,19 +80,19 @@ CI nie odpala transformerów llm-guard ani OpenAI.
 - HTTP happy-path (0.14): extract/list/accept/reject unit + stub serwisu
 - HTTP extract live PG (0.18): 201 + token A / draft B → 404; integration CI
 - Charge 1.3: accept + `rate_line` w jednej transakcji HTTP; `ExtractionService` bez importu rates
+- 2.1–2.2: 10 syntetyk `synth://`; Presidio stub tylko instructor; git bez PDF klienta
 - `just gate` green (unit); integration OpenFGA/RLS/0.18/1.3 w CI
 
 ## Następny leftover
 
-Auth0 I1. Wave FE U-* otwarte (ta strona HITL nie zamyka fali).
-Presidio i żywy llm-guard = później.
+Fabryka modułów / leftover produktu (`MODULES.md`). Auth0 I1/I2 **odroczone** (brak tenanta).
+Presidio-all + żywy llm-guard + 30 PDF klienta = nie ten produkt (anti-cele).
 Nie startuj kolejnego plastra przy niepushniętym WIP.
 
 ### Poza 0.14 (zostaje)
 
 - HTTP extract vs live Postgres — 0.18 testy integration (CI)
-- Split-screen PDF canvas / OCR overlay
 - Cloud Langfuse jako wymóg merge
-- 30 cenników eval (osobna decyzja danych)
-- Presidio na wszystkich endpointach API
+- 30 cenników eval (osobna decyzja danych; zero PDF klienta w git)
+- Presidio na wszystkich endpointach API (cel HC, nie dziś)
 - Leftovery: [docs/ops/docs-debt.md](../ops/docs-debt.md)

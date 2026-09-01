@@ -59,5 +59,6 @@
 | 2026-09-01 | U-routes-breadth | UI/program | standing: Charge 1.0–1.2 mają trasy; nowe BC = UI w tym samym plasterze; nie 70 stubów |
 | 2026-09-01 | docs/OS | program | Auth0 I1/I2 **odroczone** (brak tenanta). Sesja = email+hasło+JWT. |
 | 2026-09-01 | 0.24 | ops | pip-audit projektu + SHA pin Actions + `/ready` + `X-Request-ID`; nie w local gate |
+| 2026-09-01 | 2.1–2.2 | M-20 | Presidio stub tylko instructor + 10 syntetyk `synth://`; zero PDF klienta; nie Presidio-all |
 | — | leftover | Auth0 | I1/I2 **odroczone** aż będzie tenant. Nie pytać. 0.12/0.15 ≠ IdP. |
-| — | leftover | AI | **Następny:** 2.1–2.2 Presidio instructor stub + 8–12 syntetyk. |
+| — | leftover | produkt | **Następny:** fabryka modułów / leftover produktu (`MODULES.md`). 2.0 M-21 SQL tylko gdy są stawki. |

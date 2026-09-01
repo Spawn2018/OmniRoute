@@ -20,6 +20,8 @@
 | pochodzenie | source_ref | obowiązkowe |
 | zastąpiona przez | superseded_by | stary wiersz wskazuje nowy; kwoty się nie nadpisuje |
 | szkic ekstrakcji | extraction_draft | HITL przed zapisem domeny |
+| syntetyk ewaluacji | synthetic document | fixture extract/eval (`synth://`); zero PDF klienta |
+| stub Presidio | InstructorPresidioStub | tylko ścieżka instructor; nie każdy endpoint |
 | region nierozpoznany | unparsed_region | zawsze w payloadzie ekstrakcji |
 | odcisk układu | layout_fingerprint | pdf vs text przed parserem |
 | delta A/B parsera | ab_delta_chars | różnica długości tekstu A vs B (0.9) |

@@ -25,8 +25,8 @@ Po plasterze: docs/ops/post-plaster.md + push + nowa rozmowa.
 
 | Teraz (git) | Po zamknięciu WIP | Nie wolno |
 |---|---|---|
-| **Ostatni:** 0.24 | **2.1–2.2** Presidio instructor stub + 8–12 syntetyk. Auth0 I1/I2 **odroczone** | Start I1/I2 bez tenanta Auth0 |
-| WIP czysty po pushu 0.24 | max 3 agenty; pliki ∩ = ∅ | Dwa agenty na tych samych plikach |
+| **Ostatni:** 2.1–2.2 | fabryka modułów / leftover produktu (`MODULES.md`). Auth0 I1/I2 **odroczone** | Start I1/I2 bez tenanta Auth0 |
+| WIP czysty po pushu 2.1–2.2 | max 3 agenty; pliki ∩ = ∅ | Dwa agenty na tych samych plikach |
 
 **Kolizja numeru:** WIP **0.15 hasła** ≠ kanon **0.15 T0**. Po zamknięciu hasła zostają 0.15 w PROGRESS; T0 zostaje **0.15 T0** w tym pliku.
 
@@ -111,7 +111,7 @@ Po plasterze: docs/ops/post-plaster.md + push + nowa rozmowa.
 | FE | U-admin-ref | Checklist vs dense shadcn-admin | U0 adapter = Exit Wave FE |
 | Auth0 | **I1** | **ODROCZONE** (brak tenanta). Gdy będzie: BFF + PKCE + cookie; org z `app_metadata`; first-login bez org = odmowa | start I1 bez tenanta; hasła + Auth0; auto-create org; hello OAuth |
 | Auth0 | I2 | **ODROCZONE**. Gdy będzie: RS256 JWKS; hello OFF staging/prod | start I2 bez tenanta; nowy HS256 |
-| AI leftover | 2.1–2.2 | Presidio **tylko** instructor stub; 8–12 syntetyk | 30 PDF klienta; Presidio-all |
+| AI leftover | 2.1–2.2 | **DONE:** Presidio **tylko** instructor stub; 10 syntetyk | 30 PDF klienta; Presidio-all |
 | Q4 | 2.0 | M-21 SQL **tylko** jeśli są stawki | k6 na pustej tabeli |
 
 Auth0 I1/I2: **nie teraz**. Hasła + refresh zostają sesją. Nie pytać ponownie, dopóki user nie ma tenanta Auth0. Gdy będzie tenant: SPA Vite → BFF FastAPI → Auth0; cookie HttpOnly; Secure; SameSite=Lax; region EU / SCC jeśli plan pozwala; OpenFGA = SoT ról (first-login = member; reviewer ręczny seed). Organizations feature **nie** w I1. Zero kodu Auth0 / placeholder tenanta / „hello OAuth” do tego czasu.

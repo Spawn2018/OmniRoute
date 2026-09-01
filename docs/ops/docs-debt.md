@@ -20,7 +20,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **0.21 T4 DONE:** `hello_token` default false; mint UUID tylko przy fladze
 - **0.22 T5 DONE:** JWT iss/aud/jti/ver; TTL 15 min
 - **0.23 S1 DONE:** JWT_SECRET z GitHub Encrypted Secrets; literał usunięty z gate.yml
-- **0.24 DONE:** `/ready` + `X-Request-ID` + SHA pin Actions + `just audit` (pip-audit projektu, nie echo). **Następny (kod):** 2.1–2.2. Auth0 I1/I2 **odroczone**.
+- **0.24 DONE:** `/ready` + `X-Request-ID` + SHA pin Actions + `just audit` (pip-audit projektu, nie echo). Auth0 I1/I2 **odroczone**.
+- **2.1–2.2 DONE:** Presidio stub tylko na `InstructorExtractor` + 10 syntetyk `synth://`. Nie Presidio-all, nie 30 PDF klienta, nie żywy OpenAI w gate. **Następny (kod):** fabryka / leftover produktu (`MODULES.md`).
 - **0.24 leftover (dlaczego nie w tym plasterze):** `just audit` nie w lokalnym `just gate` (~80 s + sieć PyPI) — CI woła `just audit`; audit = drzewo pyproject, nie host site-packages (pillow/gitpython); image Dockera bez digestu; OpenFGA nie w `/ready`; k6/vulture nadal echo
 - **U-routes-breadth DONE:** standing (Charge 1.0–1.2 mają trasy). Exit Wave FE **nie** claim — nie 70 UI, nie „powierzchnia 2026”
 - **U-admin-ref DONE:** pulpit = joby operatora; sidebar/toolbar/⌘K.
@@ -51,7 +52,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **0.14 DONE:** HTTP extract/list/accept/reject (unit + stub `ExtractionService`); `api/extractions.py` ~97%; nie live Postgres
 - **0.10 DONE:** langfuse trace (no-op bez kluczy) + `just promptfoo` pytest echo — nie cloud, nie żywy LLM, nie `npx promptfoo eval`
 - **Po 0.10 (eval):** `npx promptfoo eval` — lokalnie ENOSPC / playwright peers; 30 cenników = osobna decyzja danych
-- **0.10+ produkt:** żywy instructor/OpenAI w CI, transformers llm-guard, presidio, promptfoo 30 cenników, langfuse cloud
+- **2.1–2.2 leftover (dlaczego nie w tym plasterze):** żywy microsoft-presidio; Presidio na każdym endpoincie (cel HC); 30 PDF klienta w eval (zakaz git); `npx promptfoo eval` / OpenAI w gate
+- **0.10+ produkt:** żywy instructor/OpenAI w CI, transformers llm-guard, Presidio-all, promptfoo 30 cenników, langfuse cloud
 - **Wizja, nie kod:** outbox, Temporal/Hatchet/OTel jako działające systemy
 - **Backlog produktu:** HTTP extract vs live Postgres. PDF canvas HITL = U-pdf-spans (lazy); draft nadal bez blob PDF
 - **0.14 leftover (dlaczego nie w tym plasterze):** `api/extractions.py:78` `UnparseableDocument("Brak input_text")` — gałąź obronna po XOR Pydantic (0.11); C901/jscpd na diffie czyste, bez refaktoru testów HTTP

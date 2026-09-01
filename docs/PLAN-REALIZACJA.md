@@ -3,7 +3,7 @@
 **Plan Cursor (pełny):** `.cursor/plans/omniroute-realizacja.plan.md`  
 **ADR:** [0001 Cursor factory](adr/0001-cursor-software-factory-weryfikacja.md) · [0002 Frontend 2026](adr/0002-frontend-platform-2026.md)  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
-**Stan:** B + C.1–C.5 + 0.11–0.15 leftover + **Exit Wave A (D0–0.23)** + **0.25 Money** + **1.0–1.3 charge** + **0.24 ops** + U-* ID na origin + D minimal · następny **2.1–2.2**. Auth0 I1/I2 **odroczone** (brak tenanta). **Exit Wave FE nie claim** (U-routes-breadth = standing, nie 70 UI / nie „powierzchnia 2026”).
+**Stan:** B + C.1–C.5 + 0.11–0.15 leftover + **Exit Wave A (D0–0.23)** + **0.25 Money** + **1.0–1.3 charge** + **0.24 ops** + **2.1–2.2** + U-* ID na origin + D minimal · następny **fabryka / leftover produktu**. Auth0 I1/I2 **odroczone** (brak tenanta). **Exit Wave FE nie claim** (U-routes-breadth = standing, nie 70 UI / nie „powierzchnia 2026”).
 
 ```mermaid
 flowchart LR
@@ -130,7 +130,8 @@ Pełna lista z „dlaczego”: [docs/ops/docs-debt.md](ops/docs-debt.md)
 
 | Kolejność | Co | Nie mylić z |
 |---|---|---|
-| następny | 2.1–2.2 Presidio instructor stub + 8–12 syntetyk | nie 30 PDF klienta; nie Presidio-all; Auth0 odroczone |
+| następny | fabryka modułów / leftover produktu (`MODULES.md`) | 2.0 M-21 SQL tylko gdy stawki; Auth0 odroczone |
+| 2.1–2.2 DONE | Presidio instructor stub + 10 syntetyk | nie 30 PDF klienta; nie Presidio-all |
 | 0.24 DONE | `/ready` + request-id + SHA pin + `just audit` (CI) | nie w local `just gate`; k6/vulture echo |
 | U-routes-breadth DONE | standing + trasy 1.0–1.2 | nie 70 stubów; nie Exit Wave FE |
 | U-admin-ref DONE | pulpit jobów + gęsty sidebar/toolbar/⌘K | nie hello-dashboard |
@@ -160,7 +161,7 @@ Pełna lista z „dlaczego”: [docs/ops/docs-debt.md](ops/docs-debt.md)
 | 0.14 DONE | HTTP happy-path extract/accept/reject | unit + stub serwisu; nie integration PG |
 | 0.13 DONE | Split-screen HITL (podgląd \| recenzja) | tekst źródła, nie PDF canvas |
 | 0.12 DONE | JWT zamiast spoofowalnych `X-Organization-Id` / `X-User-Id` | hello HS256, nie IdP |
-| 0.10+ (nie ten plaster) | żywy instructor/OpenAI w CI, llm-guard transformers, presidio, promptfoo 30 cenników, langfuse cloud | 0.10 = echo fixtures + no-op bez kluczy |
+| 0.10+ (nie ten plaster) | żywy instructor/OpenAI w CI, llm-guard transformers, Presidio-all, promptfoo 30 cenników, langfuse cloud | 2.1–2.2 = stub instructor + 10 syntetyk; 0.10 = echo + no-op |
 | U-pdf-spans DONE | PDF + spany HITL lazy | nie OCR |
 | U-size-limit-real DONE | just perf size-limit w gate | k6 nadal echo |
 | U-a11y DONE | skip-to-main + focus-visible | RTL ≠ DoD |
