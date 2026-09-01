@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** **6.0** M-23 `nbp_rate` ([delta](../deltas/open/6.0-nbp-rate.md)). Nie Q6.
+**Następny (zablokowany):** Q6 Plan (`/plan-modul`) — towary niebezpieczne (archiwum M-08; **nie** nadpisuj żywego M-08 `charge`).
 <!-- os-status:end -->
 
 ```mermaid
@@ -302,7 +302,7 @@ Po zamknięciu plastra `CURRENT.md` = **następna pozycja Q**. Nie pytaj operato
 
 ### Fala 0 — już w kodzie (nie wracaj)
 
-M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-06 `charge_code` · M-07 `rate_line` · M-08 `charge` · M-09 `commodity_code` · M-20 ekstrakcja HITL · M-21 `quotation`. OpenFGA hello = kawałek archiwum M-04, **nie** IdP.
+M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-06 `charge_code` · M-07 `rate_line` · M-08 `charge` · M-09 `commodity_code` · M-20 ekstrakcja HITL · M-21 `quotation` · M-23 `nbp_rate`. OpenFGA hello = kawałek archiwum M-04, **nie** IdP.
 
 ### Fala 1 — następna robota (tu jesteśmy)
 
@@ -314,7 +314,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q2** | Archiwum **M-10 Kontrahenci** | Plan → plaster | zamknięty (`docs/deltas/archived/5.0-party.md`) |
 | Q3 | Pogłębienie żywego **M-21** `quotation` o port + kontrahent (lista/filtry; SQL na istniejących `rate_line`; nie marża; nie k6) | Plan → plaster | zamknięty (`docs/deltas/archived/5.1-quotation-port-party.md`) |
 | Q4 | Archiwum **M-09 Kody towarowe** | Plan → plaster | zamknięty (`docs/deltas/archived/5.2-commodity-code.md`) |
-| Q5 | **Waluty i kurs NBP** (archiwum M-07; **nie** nadpisuj żywego M-07) | Plan → plaster | delta **6.0** zaakceptowana `/noc`; plaster |
+| Q5 | **Waluty i kurs NBP** (archiwum M-07; **nie** nadpisuj żywego M-07) | Plan → plaster | zamknięty (`docs/deltas/archived/6.0-nbp-rate.md`) |
 | Q6 | **Towary niebezpieczne** (archiwum M-08; **nie** nadpisuj żywego M-08) | Plan → plaster | kolejka |
 
 ### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster
@@ -371,7 +371,7 @@ Nie implementuj z tej tabeli „na zapas”. To mapa, żeby nic nie zginęło. S
 | M-04 | Uprawnienia i tożsamość | CZĘŚĆ (OpenFGA hello; SSO parked) |
 | M-05 | Geografia | DONE fundament (`port` + `location`/strefy + `terminal`/WPI; `operator_party_id` od 5.0) |
 | M-06 | Słownik opłat | DONE jako `charge_code` |
-| M-07 | Waluty i czas | kolejka Q5; żywy ID **M-23** `nbp_rate` (nie M-07) |
+| M-07 | Waluty i czas | DONE katalog 6.0; żywy ID **M-23** `nbp_rate` (nie M-07) |
 | M-08 | Towary niebezpieczne | kolejka Q6; ID żywy ≠ M-08 |
 | M-09 | Kody towarowe | DONE fundament (5.2 katalog) |
 | M-10 | Kontrahenci | DONE fundament (5.0 katalog; lookup = fixture) |
@@ -426,13 +426,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

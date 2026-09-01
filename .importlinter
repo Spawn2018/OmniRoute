@@ -26,6 +26,7 @@ modules =
     app.services.geography
     app.services.parties
     app.services.commodity_codes
+    app.services.nbp_rates
 
 [importlinter:contract:integracje]
 name = Integracje nie znają serwisów
@@ -67,3 +68,6 @@ forbidden_modules =
     app.services.commodity_codes
     app.repositories.commodity_codes
     app.models.commodity_code
+    app.services.nbp_rates
+    app.repositories.nbp_rates
+    app.models.nbp_rate

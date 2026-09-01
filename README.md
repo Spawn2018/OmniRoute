@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **5.2** M-09 `commodity_code` (zarchiwizowany)
-- **Etap:** Plaster
-- **Następny:** **6.0** M-23 `nbp_rate` ([delta](../deltas/open/6.0-nbp-rate.md)). Nie Q6.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
+- **Ostatni plaster:** **6.0** M-23 `nbp_rate` (zarchiwizowany)
+- **Etap:** Plan
+- **Następny:** Q6 Plan (`/plan-modul`) — towary niebezpieczne (archiwum M-08; **nie** nadpisuj żywego M-08 `charge`).
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

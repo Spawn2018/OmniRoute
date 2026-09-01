@@ -28,6 +28,7 @@ _ALL_TENANT_POLICY_NAMES = (
     "quotation_tenant_isolation",
     "organization_setting_tenant_isolation",
     "commodity_code_tenant_isolation",
+    "nbp_rate_tenant_isolation",
 )
 
 

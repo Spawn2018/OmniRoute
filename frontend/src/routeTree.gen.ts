@@ -15,6 +15,7 @@ import { Route as ChargesRouteImport } from './routes/charges'
 import { Route as CommodityCodesRouteImport } from './routes/commodity-codes'
 import { Route as ExtractionsRouteImport } from './routes/extractions'
 import { Route as LocationsRouteImport } from './routes/locations'
+import { Route as NbpRatesRouteImport } from './routes/nbp-rates'
 import { Route as OrganizationSettingsRouteImport } from './routes/organization-settings'
 import { Route as PartiesRouteImport } from './routes/parties'
 import { Route as PortsRouteImport } from './routes/ports'
@@ -52,6 +53,11 @@ const ExtractionsRoute = ExtractionsRouteImport.update({
 const LocationsRoute = LocationsRouteImport.update({
   id: '/locations',
   path: '/locations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NbpRatesRoute = NbpRatesRouteImport.update({
+  id: '/nbp-rates',
+  path: '/nbp-rates',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OrganizationSettingsRoute = OrganizationSettingsRouteImport.update({
@@ -102,6 +108,7 @@ export interface FileRoutesByFullPath {
   '/commodity-codes': typeof CommodityCodesRoute
   '/extractions': typeof ExtractionsRoute
   '/locations': typeof LocationsRoute
+  '/nbp-rates': typeof NbpRatesRoute
   '/organization-settings': typeof OrganizationSettingsRoute
   '/parties': typeof PartiesRoute
   '/ports': typeof PortsRoute
@@ -118,6 +125,7 @@ export interface FileRoutesByTo {
   '/commodity-codes': typeof CommodityCodesRoute
   '/extractions': typeof ExtractionsRoute
   '/locations': typeof LocationsRoute
+  '/nbp-rates': typeof NbpRatesRoute
   '/organization-settings': typeof OrganizationSettingsRoute
   '/parties': typeof PartiesRoute
   '/ports': typeof PortsRoute
@@ -135,6 +143,7 @@ export interface FileRoutesById {
   '/commodity-codes': typeof CommodityCodesRoute
   '/extractions': typeof ExtractionsRoute
   '/locations': typeof LocationsRoute
+  '/nbp-rates': typeof NbpRatesRoute
   '/organization-settings': typeof OrganizationSettingsRoute
   '/parties': typeof PartiesRoute
   '/ports': typeof PortsRoute
@@ -153,6 +162,7 @@ export interface FileRouteTypes {
     | '/commodity-codes'
     | '/extractions'
     | '/locations'
+    | '/nbp-rates'
     | '/organization-settings'
     | '/parties'
     | '/ports'
@@ -169,6 +179,7 @@ export interface FileRouteTypes {
     | '/commodity-codes'
     | '/extractions'
     | '/locations'
+    | '/nbp-rates'
     | '/organization-settings'
     | '/parties'
     | '/ports'
@@ -185,6 +196,7 @@ export interface FileRouteTypes {
     | '/commodity-codes'
     | '/extractions'
     | '/locations'
+    | '/nbp-rates'
     | '/organization-settings'
     | '/parties'
     | '/ports'
@@ -202,6 +214,7 @@ export interface RootRouteChildren {
   CommodityCodesRoute: typeof CommodityCodesRoute
   ExtractionsRoute: typeof ExtractionsRoute
   LocationsRoute: typeof LocationsRoute
+  NbpRatesRoute: typeof NbpRatesRoute
   OrganizationSettingsRoute: typeof OrganizationSettingsRoute
   PartiesRoute: typeof PartiesRoute
   PortsRoute: typeof PortsRoute
@@ -254,6 +267,13 @@ declare module '@tanstack/react-router' {
       path: '/locations'
       fullPath: '/locations'
       preLoaderRoute: typeof LocationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nbp-rates': {
+      id: '/nbp-rates'
+      path: '/nbp-rates'
+      fullPath: '/nbp-rates'
+      preLoaderRoute: typeof NbpRatesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/organization-settings': {
@@ -322,6 +342,7 @@ const rootRouteChildren: RootRouteChildren = {
   CommodityCodesRoute: CommodityCodesRoute,
   ExtractionsRoute: ExtractionsRoute,
   LocationsRoute: LocationsRoute,
+  NbpRatesRoute: NbpRatesRoute,
   OrganizationSettingsRoute: OrganizationSettingsRoute,
   PartiesRoute: PartiesRoute,
   PortsRoute: PortsRoute,

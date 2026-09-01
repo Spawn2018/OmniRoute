@@ -176,3 +176,19 @@ class UnknownCommodityCode(DomainError):
 
 class CommodityCodeConflict(DomainError):
     """Kod albo alias towaru już zajęty w katalogu tenanta."""
+
+
+class InvalidCurrency(DomainError):
+    """Waluta kursu NBP: ISO 4217, trzy litery A–Z — nie luźna nazwa."""
+
+
+class InvalidNbpRate(DomainError):
+    """Kurs NBP: mid Decimal dodatni, data dzienna — nie float."""
+
+
+class UnknownNbpRate(DomainError):
+    """Brak kursu NBP tabeli A dla waluty i dnia w katalogu tenanta."""
+
+
+class NbpRateConflict(DomainError):
+    """Kurs tej waluty na ten dzień już jest w katalogu tenanta."""

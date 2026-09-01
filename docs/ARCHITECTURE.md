@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **5.2** M-09 `commodity_code` (zarchiwizowany). **Etap:** Plaster. **Następny:** **6.0** M-23 `nbp_rate` ([delta](../deltas/open/6.0-nbp-rate.md)). Nie Q6. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **6.0** M-23 `nbp_rate` (zarchiwizowany). **Etap:** Plan. **Następny:** Q6 Plan (`/plan-modul`) — towary niebezpieczne (archiwum M-08; **nie** nadpisuj żywego M-08 `charge`). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
@@ -11,12 +11,12 @@
 <!-- os-tree:start -->
 ```
 frontend/                 React 19 + Compiler, Vite, TanStack, shadcn, PostHog
-  src/features/           charge-codes · charges · commodity-codes · extraction · geography · ops · organization-settings · parties · quotations · rate-lines · session · tenancy
+  src/features/           charge-codes · charges · commodity-codes · extraction · geography · nbp-rates · ops · organization-settings · parties · quotations · rate-lines · session · tenancy
   src/components/ui/      shadcn
   src/components/data-table/  DataTableShell (Golden Standard)
 backend/app/
   api/             routery, DTO, require_permission — bez logiki
-  services/        charge_codes · charges · commodity_codes · extraction · geography · organization_settings · parties · quotations · rate_lines · tenancy
+  services/        charge_codes · charges · commodity_codes · extraction · geography · nbp_rates · organization_settings · parties · quotations · rate_lines · tenancy
   repositories/    dostęp SQL
   models/          SQLAlchemy
   domain/          typy, wyjątki, Money

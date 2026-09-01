@@ -19,6 +19,7 @@ from app.models.location import (  # noqa: F401 — rejestr metadanych RLS
     Location,
     LocationZoneMember,
 )
+from app.models.nbp_rate import NbpRate  # noqa: F401 — rejestr metadanych RLS
 from app.models.organization import Organization
 from app.models.organization_setting import (  # noqa: F401 — rejestr metadanych RLS
     OrganizationSetting,
@@ -171,6 +172,22 @@ async def _apply_rls_policies(conn) -> None:
         text(
             """
             CREATE POLICY commodity_code_tenant_isolation ON commodity_code
+            USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
+            WITH CHECK (
+              organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid
+            )
+            """
+        ),
+    )
+    await conn.execute(text("ALTER TABLE nbp_rate ENABLE ROW LEVEL SECURITY"))
+    await conn.execute(text("ALTER TABLE nbp_rate FORCE ROW LEVEL SECURITY"))
+    await conn.execute(
+        text("DROP POLICY IF EXISTS nbp_rate_tenant_isolation ON nbp_rate"),
+    )
+    await conn.execute(
+        text(
+            """
+            CREATE POLICY nbp_rate_tenant_isolation ON nbp_rate
             USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
             WITH CHECK (
               organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid

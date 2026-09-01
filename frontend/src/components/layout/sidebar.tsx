@@ -7,6 +7,7 @@ const NAV = [
   { to: "/extractions", label: "Ekstrakcje" },
   { to: "/charge-codes", label: "Kody opłat" },
   { to: "/commodity-codes", label: "Kody towarowe" },
+  { to: "/nbp-rates", label: "Kursy NBP" },
   { to: "/charges", label: "Opłaty" },
   { to: "/rate-lines", label: "Stawki" },
   { to: "/quotations", label: "Wyceny" },

@@ -782,6 +782,139 @@
         }
       }
     },
+    "/api/v1/nbp-rates": {
+      "get": {
+        "tags": [
+          "nbp-rates"
+        ],
+        "summary": "List Nbp Rates",
+        "operationId": "list_nbp_rates_api_v1_nbp_rates_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/NbpRateResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Nbp Rates Api V1 Nbp Rates Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "nbp-rates"
+        ],
+        "summary": "Create Nbp Rate",
+        "operationId": "create_nbp_rate_api_v1_nbp_rates_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NbpRateCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NbpRateResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/nbp-rates/resolve": {
+      "get": {
+        "tags": [
+          "nbp-rates"
+        ],
+        "summary": "Resolve Nbp Rate",
+        "operationId": "resolve_nbp_rate_api_v1_nbp_rates_resolve_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "currency",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 3,
+              "title": "Currency"
+            }
+          },
+          {
+            "name": "on_date",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "title": "On Date"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NbpRateResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/charges": {
       "get": {
         "tags": [
@@ -3698,6 +3831,76 @@
           "source_ref"
         ],
         "title": "LocationResponse"
+      },
+      "NbpRateCreate": {
+        "properties": {
+          "currency": {
+            "type": "string",
+            "maxLength": 3,
+            "minLength": 3,
+            "title": "Currency"
+          },
+          "rate_date": {
+            "type": "string",
+            "format": "date",
+            "title": "Rate Date"
+          },
+          "mid": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 1,
+            "title": "Mid"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "currency",
+          "rate_date",
+          "mid"
+        ],
+        "title": "NbpRateCreate"
+      },
+      "NbpRateResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "currency": {
+            "type": "string",
+            "title": "Currency"
+          },
+          "rate_date": {
+            "type": "string",
+            "format": "date",
+            "title": "Rate Date"
+          },
+          "mid": {
+            "type": "string",
+            "title": "Mid"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "currency",
+          "rate_date",
+          "mid",
+          "source_ref"
+        ],
+        "title": "NbpRateResponse"
       },
       "OrganizationSettingResponse": {
         "properties": {

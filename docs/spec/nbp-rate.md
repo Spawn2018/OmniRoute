@@ -1,7 +1,7 @@
 # M-23 nbp_rate — katalog kursu NBP
 
-**Plaster:** 6.0 (delta `docs/deltas/open/6.0-nbp-rate.md`)  
-**Status:** planowany katalog kursu średniego tabeli A per tenant. Nie przeliczenie wyceny. Nie żywe M-07 `rate_line`.
+**Plaster:** 6.0 (delta `docs/deltas/archived/6.0-nbp-rate.md`)  
+**Status:** katalog kursu średniego tabeli A per tenant. Nie przeliczenie wyceny. Nie żywe M-07 `rate_line`.
 
 ## Zakres
 

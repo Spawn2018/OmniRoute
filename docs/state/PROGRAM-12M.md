@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **5.2** M-09 `commodity_code` (zarchiwizowany) **Następny:** **6.0** M-23 `nbp_rate` ([delta](../deltas/open/6.0-nbp-rate.md)). Nie Q6.
+**Stan (z CURRENT.md):** **6.0** M-23 `nbp_rate` (zarchiwizowany) **Następny:** Q6 Plan (`/plan-modul`) — towary niebezpieczne (archiwum M-08; **nie** nadpisuj żywego M-08 `charge`).
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

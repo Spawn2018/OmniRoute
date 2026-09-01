@@ -625,6 +625,54 @@ export type LocationResponse = {
 };
 
 /**
+ * NbpRateCreate
+ */
+export type NbpRateCreate = {
+    /**
+     * Currency
+     */
+    currency: string;
+    /**
+     * Rate Date
+     */
+    rate_date: string;
+    /**
+     * Mid
+     */
+    mid: string;
+};
+
+/**
+ * NbpRateResponse
+ */
+export type NbpRateResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Currency
+     */
+    currency: string;
+    /**
+     * Rate Date
+     */
+    rate_date: string;
+    /**
+     * Mid
+     */
+    mid: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * OrganizationSettingResponse
  */
 export type OrganizationSettingResponse = {
@@ -1829,6 +1877,83 @@ export type ResolveCommodityCodeApiV1CommodityCodesResolveGetResponses = {
 };
 
 export type ResolveCommodityCodeApiV1CommodityCodesResolveGetResponse = ResolveCommodityCodeApiV1CommodityCodesResolveGetResponses[keyof ResolveCommodityCodeApiV1CommodityCodesResolveGetResponses];
+
+export type ListNbpRatesApiV1NbpRatesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/nbp-rates';
+};
+
+export type ListNbpRatesApiV1NbpRatesGetResponses = {
+    /**
+     * Response List Nbp Rates Api V1 Nbp Rates Get
+     *
+     * Successful Response
+     */
+    200: Array<NbpRateResponse>;
+};
+
+export type ListNbpRatesApiV1NbpRatesGetResponse = ListNbpRatesApiV1NbpRatesGetResponses[keyof ListNbpRatesApiV1NbpRatesGetResponses];
+
+export type CreateNbpRateApiV1NbpRatesPostData = {
+    body: NbpRateCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/nbp-rates';
+};
+
+export type CreateNbpRateApiV1NbpRatesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateNbpRateApiV1NbpRatesPostError = CreateNbpRateApiV1NbpRatesPostErrors[keyof CreateNbpRateApiV1NbpRatesPostErrors];
+
+export type CreateNbpRateApiV1NbpRatesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: NbpRateResponse;
+};
+
+export type CreateNbpRateApiV1NbpRatesPostResponse = CreateNbpRateApiV1NbpRatesPostResponses[keyof CreateNbpRateApiV1NbpRatesPostResponses];
+
+export type ResolveNbpRateApiV1NbpRatesResolveGetData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Currency
+         */
+        currency: string;
+        /**
+         * On Date
+         */
+        on_date: string;
+    };
+    url: '/api/v1/nbp-rates/resolve';
+};
+
+export type ResolveNbpRateApiV1NbpRatesResolveGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ResolveNbpRateApiV1NbpRatesResolveGetError = ResolveNbpRateApiV1NbpRatesResolveGetErrors[keyof ResolveNbpRateApiV1NbpRatesResolveGetErrors];
+
+export type ResolveNbpRateApiV1NbpRatesResolveGetResponses = {
+    /**
+     * Successful Response
+     */
+    200: NbpRateResponse;
+};
+
+export type ResolveNbpRateApiV1NbpRatesResolveGetResponse = ResolveNbpRateApiV1NbpRatesResolveGetResponses[keyof ResolveNbpRateApiV1NbpRatesResolveGetResponses];
 
 export type ListChargesApiV1ChargesGetData = {
     body?: never;

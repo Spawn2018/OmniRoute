@@ -14,6 +14,11 @@ export const OPS_JOBS = [
     label: "Kody towarowe",
     job: "katalog commodity_code",
   },
+  {
+    route: BUSINESS_LISTS.nbpRates.route,
+    label: "Kursy NBP",
+    job: "katalog nbp_rate tabeli A",
+  },
   { route: BUSINESS_LISTS.rateLines.route, label: "Stawki kupna", job: "rate_line + source_ref" },
   { route: BUSINESS_LISTS.charges.route, label: "Opłaty", job: "buy+sell / marża" },
   { route: BUSINESS_LISTS.quotations.route, label: "Wyceny", job: "SQL z bieżącego rate_line" },
@@ -51,6 +56,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "4.2": "/terminals",
   "5.0": "/parties",
   "5.2": "/commodity-codes",
+  "6.0": "/nbp-rates",
 } as const
 
 export const ROUTES_BREADTH_STANDING =
