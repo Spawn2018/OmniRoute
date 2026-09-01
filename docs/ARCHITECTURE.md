@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **4.2** M-05 `terminal` + WPI (zarchiwizowany). **Etap:** Plan — wydmuszka Q2, zero kodu do `/plan-modul`. **Następny:** **Q2** M-10 Kontrahenci. Archiwum M-10; żywy ID nadajesz w Planie. Nie Q3. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **4.2** M-05 `terminal` + WPI (zarchiwizowany). **Etap:** Agent — delta 5.0 zaakceptowana; kod tylko w nowej rozmowie `/plaster`. **Następny:** **5.0** M-10 `party` (`docs/deltas/open/5.0-party.md`). Nie Q3. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
