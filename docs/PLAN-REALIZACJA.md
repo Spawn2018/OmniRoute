@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** M-19 Stawki live i kanały (`/plan-modul`). Nie Fala 8. Nie zgaduj zakresu.
+**Następny (zablokowany):** 13.0 M-19 `channel_quote` (`/plaster`). Nie Fala 8. Nie zgaduj zakresu.
 <!-- os-status:end -->
 
 ```mermaid
@@ -321,7 +321,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | F2.2 | **M-13 Karta wyników kontrahenta** | Plan → plaster | zamknięty (`docs/deltas/archived/10.0-party-scorecard.md`) |
 | F2.3 | **M-16 Procedury operacyjne klienta** | Plan → plaster | zamknięty (`docs/deltas/archived/11.0-customer-sop.md`) |
 | F2.4 | **M-18 Opłaty portowe warunkowe** | Plan → plaster | zamknięty (`docs/deltas/archived/12.0-port-surcharge.md`) |
-| F2.5 | **M-19 Stawki live i kanały** | Plan → plaster | kolejka |
+| F2.5 | **M-19 Stawki live i kanały** | Plan → plaster | Plan (`docs/deltas/open/13.0-channel-quote.md`) |
 
 ### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster
 

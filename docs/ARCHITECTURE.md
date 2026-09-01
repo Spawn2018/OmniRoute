@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **12.0** M-18 `port_surcharge` (zarchiwizowany). **Etap:** Plan. **Następny:** M-19 Stawki live i kanały (`/plan-modul`). Nie Fala 8. Nie zgaduj zakresu. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **12.0** M-18 `port_surcharge` (zarchiwizowany). **Etap:** Plan. **Następny:** 13.0 M-19 `channel_quote` (`/plaster`). Nie Fala 8. Nie zgaduj zakresu. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

@@ -45,6 +45,7 @@
 | terminal | terminal | 4.2; osobna tabela, nie `location.kind` |
 | kod ISPS | isps_code | identyfikator obiektu portowego; unikat per tenant gdy nie NULL |
 | opłata portowa warunkowa | port_surcharge | M-18; katalog extra per `port`; warunek to dane; nie `charge.margin` |
+| oferta z kanału | channel_quote | M-19; katalog oferty armatora per POL/POD; nie live HTTP; nie `rate_line` |
 | operator terminalu | operator_name / operator_party_id | tekst zostaje; FK nullable do `party` od 5.0 |
 | kontrahent | party | katalog M-10; jeden podmiot, wiele ról |
 | identyfikator podatkowy | tax_id | NIP / VAT krajowy; `resolve` po tokenie |
