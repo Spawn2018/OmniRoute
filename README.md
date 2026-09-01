@@ -38,8 +38,8 @@ Seed: `scripts/dev_seed_local.py`.
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **7.0** M-52 `dangerous_good` (zarchiwizowany)
-- **Etap:** Plan
-- **Następny:** M-11 Automatyczne kontakty (`/plan-modul`). Nie Fala 8. Nie zgaduj zakresu.
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
+- **Etap:** Plaster
+- **Następny:** **8.0** M-11 `resolve_email` ([delta](../deltas/open/8.0-party-email-match.md)). Nie Fala 8.
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

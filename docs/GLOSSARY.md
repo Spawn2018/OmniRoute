@@ -54,6 +54,7 @@
 | kontakt kontrahenta | party_contact | bez portalu w 5.0 |
 | rachunek kontrahenta | party_bank_account | IBAN; `whitelist_status` z lookupu |
 | domena mailowa kontrahenta | party_email_domain | katalog; matcher maili = M-11 |
+| dopasowanie maila | resolve_email | M-11; domena z adresu → `party`; nie IMAP |
 | wyjątek stawki kontrahenta | party_charge_override | katalog uzgodnień; nie silnik wyceny / nie marża |
 | profil armatora | carrier_profile | 1:1 z `party`; adapter tylko jako dane |
 | numer WPI | wpi_number | World Port Index (NGA Pub 150) na `port` |

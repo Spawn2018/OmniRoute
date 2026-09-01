@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** M-11 Automatyczne kontakty (`/plan-modul`). Nie Fala 8. Nie zgaduj zakresu.
+**Następny (zablokowany):** **8.0** M-11 `resolve_email` ([delta](../deltas/open/8.0-party-email-match.md)). Nie Fala 8.
 <!-- os-status:end -->
 
 ```mermaid
@@ -316,6 +316,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | Q4 | Archiwum **M-09 Kody towarowe** | Plan → plaster | zamknięty (`docs/deltas/archived/5.2-commodity-code.md`) |
 | Q5 | **Waluty i kurs NBP** (archiwum M-07; **nie** nadpisuj żywego M-07) | Plan → plaster | zamknięty (`docs/deltas/archived/6.0-nbp-rate.md`) |
 | Q6 | **Towary niebezpieczne** (archiwum M-08; **nie** nadpisuj żywego M-08) | Plan → plaster | zamknięty (`docs/deltas/archived/7.0-dangerous-good.md`) |
+| F2.0 | **M-11 Automatyczne kontakty** | Plan → plaster | delta **8.0** zaakceptowana `/noc`; plaster |
 
 ### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster
 
@@ -426,13 +427,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

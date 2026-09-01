@@ -2,7 +2,7 @@
 
 **Moduł żywy:** M-10 (archiwum M-10; nie koliduje z żywym M-07 `rate_line` / M-08 `charge`)  
 **Plaster:** **5.0** (w kodzie)  
-**Status:** fundament katalogu. Nie Q3. Nie M-11–M-14. Nie M-19.
+**Status:** fundament katalogu (5.0). Matcher maila = plaster **8.0** (M-11). Nie M-12–M-14. Nie M-19.
 
 Delta: [docs/deltas/archived/5.0-party.md](../deltas/archived/5.0-party.md).
 
@@ -24,9 +24,22 @@ Delta: [docs/deltas/archived/5.0-party.md](../deltas/archived/5.0-party.md).
 - UI `/parties`: DataTableShell + dodanie + resolve + lookup + panele zależne
 - ALTER `terminal.operator_party_id` (nullable, FK złożone); `operator_name` zostaje. Picker na `/terminals` woła API `/parties`. Serwis geografii nie importuje `app.services.parties`
 
+## 8.0 matcher maila (M-11)
+
+### Zakres
+
+- `resolve_email(raw)` w `PartyService`: domena z adresu (`local@domain`) → dokładny wiersz `party_email_domain` → `party`
+- Nieznana domena = `UnknownEmailDomain`. Adres bez `@` = `InvalidPartyData`
+- UI `/parties`: pole „Sprawdź mail” obok resolve `tax_id`. Prefill kontaktu wolno; INSERT `party_contact` tylko istniejącym POST po kliknięciu
+- Bez nowej tabeli. OpenFGA bez nowej relacji (`can_manage_parties`)
+
+### Poza 8.0
+
+IMAP / Outlook · auto-INSERT kontaktu · denylista domen publicznych · portal / `portal_user_id` · tuple OpenFGA na `party` · M-12 sieci
+
 ### Poza 5.0
 
-Q3 (`quotation.party_id`, POL/POD) · M-11 matcher domen · M-12 sieci · M-13 scorecard · M-14 auto-scoring · M-19 live adapter · portal · outbox · Auth0 · `quotation`/`charge` czytające override · „handlowiec widzi swoich”.
+Q3 (`quotation.party_id`, POL/POD) · M-12 sieci · M-13 scorecard · M-14 auto-scoring · M-19 live adapter · portal · outbox · Auth0 · `quotation`/`charge` czytające override · „handlowiec widzi swoich”.
 
 ### HC
 
