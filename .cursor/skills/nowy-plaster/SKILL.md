@@ -12,7 +12,8 @@ Kolejność jest obowiązkowa. Nie przeskakuj etapów.
 - Jeśli poprzedni plaster ma niezacommitowany / niepushnięty WIP — **stop**, domknij go.
 - Sprawdź `docs/PLAN-REALIZACJA.md` § Gate dziś vs DoD (co jest stubem).
 - Uruchom `lowca-duplikatow`.
-- Plan → akceptacja człowieka.
+- Jeśli `CURRENT.md` mówi **Etap: Plan** albo pozycja kolejki to nowa wydmuszka M-xx: **stop** — najpierw `/plan-modul` (tryb Plan w Cursorze), zero kodu.
+- Plan → akceptacja człowieka. Kolejka „co dalej” jest w `docs/PLAN-REALIZACJA.md`, nie w pamięci operatora.
 - Po akceptacji, osobna tura: `/testy` (czerwone testy z delty, bez implementacji).
   Ten sam przebieg nie pisze testów i kodu.
 

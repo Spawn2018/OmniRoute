@@ -1,17 +1,17 @@
 ﻿# Bieżący focus
 
-**Faza:** leftover produktu / fabryka modułów  
+**Faza:** kolejka Q1 — wydmuszka **M-05 Geografia**  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
 
 **Ostatni plaster:** **3.0** M-03 `organization_setting` (zarchiwizowany)  
-**Następny:** leftover `MODULES.md` bez joba operatora = **M-02 outbox** — nie startować (brak zdarzeń między modułami). Auth0 I1/I2 **odroczone** — brak tenanta; nie pytać. Sesja = email+hasło+JWT. Exit Wave FE **nie** claim.
+**Etap:** **Plan** (zero kodu). Nie `/plaster`.  
+**Następny:** **Q1** archiwum M-05 Geografia — `port` / UN/LOCODE / lokalizacja / strefy taryfowe tenanta. Komenda: `/plan-modul`. Po akceptacji delty: nowa rozmowa + `/plaster`.  
+Q2 = M-10 Kontrahenci (też najpierw Plan). M-02 **parked**. Auth0 **odroczone**. Exit Wave FE **nie** claim.
 
-**Spec (jedna na sesję):** wskaż spec z `MODULES.md` przy starcie plastra.
+**Spec (jedna na sesję):** powstaje w Planie (`docs/spec/` + delta). Dziś jeszcze nie.
 
-**Kanon:** [docs/state/PROGRAM-12M.md](docs/state/PROGRAM-12M.md)
+**Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka realizacji.
 
-**Uczciwość:** 3.0 na origin. U-* ID na origin — Exit Wave FE **nie** claim. 0.12/0.15 = session email+hasło+JWT, **nie** IdP. Auth0 I1/I2 nie ruszane. HITL zostaje. ExtractionService nie importuje rates/quotations/settings. Accept→`rate_line` zostaje w API.
+**Uczciwość:** 3.0 na origin. Żywe M-07 = `rate_line`, żywe M-08 = `charge` — nie nadpisuj numerami archiwum M-07/M-08. HITL zostaje. ExtractionService nie importuje rates. LLM nie liczy.
 
-**Plan:** [docs/PLAN-REALIZACJA.md](docs/PLAN-REALIZACJA.md)
-
-**2026-09-01:** 3.0 zamknięty. MODULES leftover z jobem operatora = 0 (M-02 bez zdarzeń).
+**2026-09-01:** Kolejka wpisana do kanonu. Operator nie pamięta „co dalej” — czyta CURRENT + PLAN.

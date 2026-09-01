@@ -1,28 +1,25 @@
 # Wklejka — agent budujący (nowy czat)
 
-**Kolizja:** ten plik + `PROGRAM-12M.md` = czat dokumentacji.  
-`CURRENT.md` / `PROGRESS.md` / `docs/spec/*` / kod = **wyłącznie** agent nocy (fabryka). Nie startuj drugiego pisarza na tych plikach.
+**Kanon planu = [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md).**  
+`PROGRAM-12M.md` = alias + stara wklejka, nie SoT. Ten plik = historyczna wklejka nocnego agenta, nie drugi pisarz na kod. Czat scalający docs (2026-09-01) **nie** jest drugim building agentem.
 
-Auth0 I1/I2 **odroczone**. Gate na `3c64fb8` był zielony. Nie cofaj hotfixów CI.
+Auth0 I1/I2 **odroczone**. HEAD `8fb8c93` (3.0) — gate zielony. Nie cofaj hotfixów CI.
 
 ---
 
 ```
-Pracujesz SAM do 10:00 czasu lokalnego użytkownika (2026-09-01). User śpi. Nie pytaj.
+Kanon: docs/PLAN-REALIZACJA.md + docs/state/CURRENT.md + GROUNDING.md + docs/GLOSSARY.md.
+Nie cofaj hotfixów CI: 005 current_database(), agent-refs URI, agentlint baseline,
+conftest (osobne DO $$), live HTTP = httpx AsyncClient, rate_line mutate = commit + select kolumny.
 
-Kanon: docs/state/CURRENT.md + docs/state/PROGRAM-12M.md + GROUNDING.md + docs/GLOSSARY.md.
-Nie cofaj hotfixów CI: 005 current_database(), agent-refs URI, agentlint baseline, conftest (osobne DO $$), live HTTP = httpx AsyncClient, rate_line mutate = commit + select kolumny.
+Następny = Q1 Plan M-05 Geografia. Komenda `/plan-modul` (tryb Plan), nie kod.
+M-02 parked. Auth0 I1/I2 odroczone (brak tenanta).
+Exit Wave FE nie claim. Sesja = email+hasło+JWT. 0.12/0.15 ≠ IdP.
 
-CEL: pionowe plastry z leftover MODULES.md.
-Start: 2.0 M-21 — SQL na ISTNIEJĄCYCH stawkach (rate_line / charge / charge_code). Nie k6 na pustej tabeli.
-Potem: następny leftover z jobem operatora. Jeden plaster = migracja + RLS + izolacja + API + UI.
+WIP=1. Po akceptacji Planu: nowa rozmowa + `/plaster`.
 Test najpierw. Decimal. HITL bez zmian. ExtractionService nie importuje rates.
+Po plasterze: post-plaster → PROGRESS + CURRENT → commit → push → nowa rozmowa.
 
-WIP=1. Po plasterze: testy → post-plaster → PROGRESS + CURRENT → jeden commit → git push.
-Commit/push tylko gdy ruff + mypy --strict + unit przeszły. Bez --no-verify, force-push, amend cudzych.
-
-ZAKAZ: Auth0/OIDC/BFF; Temporal/outbox na zapas; Infisical; 70 pustych M-xx; claim Exit Wave FE / powierzchnia 2026; Presidio-all; PDF klienta w git.
-Sesja = email+hasło+JWT. 0.12/0.15 ≠ IdP.
-
-O 10:00 lub po ostatnim kompletnym pushu: STOP. Lista SHA + leftover.
+ZAKAZ: Auth0/OIDC/BFF; Temporal/outbox na zapas; Infisical; 70 pustych M-xx;
+claim Exit Wave FE / powierzchnia 2026; Presidio-all; PDF klienta w git.
 ```

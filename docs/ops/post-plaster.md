@@ -1,7 +1,7 @@
 # Pętla po każdym kroku planu
 
 Obowiązkowa **przed** push i przed następnym plasterem. Nie zastępuje `just gate`.
-`just docs` / `just dead` = `echo` — nie DoD, nie wołaj ich tu. `just perf` = size-limit initial JS (U-size-limit-real).
+`just docs` = sync statusu z CURRENT.md (README, ARCHITECTURE, PLAN). `just dead` = `echo` — nie DoD. `just perf` = size-limit initial JS (U-size-limit-real).
 
 Bramka (`/bramka`, skill `pr-review`) **mierzy** i nie naprawia.
 Ten plik: po tabeli **napraw** to, co nie psuje jakości; reszta → [docs-debt.md](docs-debt.md).
@@ -13,7 +13,7 @@ Ten plik: po tabeli **napraw** to, co nie psuje jakości; reszta → [docs-debt.
 | Skuteczność | PRZESZŁO / NIE / STUB | kryteria delty vs hello/echo/no-op |
 | Szybkość | N/A ten plaster / PRZESZŁO / NIE | tylko ścieżki z budżetu w AGENTS.md; inaczej N/A |
 | Dług w diffie | OK / 1–3 poprawki / leftover | `just complexity` + `just dup` na plikach z `git diff` |
-| Docs/OS | PRZESZŁO / NIE | CURRENT, PLAN nagłówek, spec z CURRENT, skill jeśli dotyczy |
+| Docs/OS | PRZESZŁO / NIE | CURRENT, potem `just docs`; spec z CURRENT; skill jeśli dotyczy |
 
 ## Naprawa
 

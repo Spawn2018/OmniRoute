@@ -1,19 +1,22 @@
 # OmniRoute — architektura
 
-**Status:** Faza C (B + C.1–C.5 + 0.11–0.15 leftover + D0 OS + 0.15 T0 + D minimal; następny: 0.16 T1, nie OAuth)  
+<!-- os-status:start -->
+**Status:** **3.0** M-03 `organization_setting` (zarchiwizowany). **Etap:** **Plan** (zero kodu). Nie `/plaster`. **Następny:** **Q1** archiwum M-05 Geografia — `port` / UN/LOCODE / lokalizacja / strefy taryfowe tenanta. Komenda: `/plan-modul`. Po akceptacji delty: nowa rozmowa + `/plaster`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+<!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002-frontend-platform-2026](adr/0002-frontend-platform-2026.md)
 
 ## Warstwy
 
+<!-- os-tree:start -->
 ```
 frontend/                 React 19 + Compiler, Vite, TanStack, shadcn, PostHog
-  src/features/<moduł>/   ekrany, hooki, testy (tenancy, extraction, session)
+  src/features/           charge-codes · charges · extraction · ops · organization-settings · quotations · rate-lines · session · tenancy
   src/components/ui/      shadcn
   src/components/data-table/  DataTableShell (Golden Standard)
 backend/app/
   api/             routery, DTO, require_permission — bez logiki
-  services/<bc>/   logika domenowa (tenancy, extraction)
+  services/        charge_codes · charges · extraction · organization_settings · quotations · rate_lines · tenancy
   repositories/    dostęp SQL
   models/          SQLAlchemy
   domain/          typy, wyjątki, Money
@@ -22,6 +25,7 @@ backend/app/
   integrations/    OpenFGA, docling, langfuse (trace przy extract; no-op bez kluczy)
 authz/             model.fga (źródło prawdy AuthZ)
 ```
+<!-- os-tree:end -->
 
 ## Granice
 

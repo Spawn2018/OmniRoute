@@ -42,7 +42,10 @@ todos:
     content: "0.15 hasła argon2id + rotacja refresh"
     status: completed
   - id: leftover-after-015
-    content: "Następny: D0 OS → 0.15 T0 document_base64 max_length; Auth0 I1 po Wave A"
+    content: "Wave A D0–0.23 + Charge 0.24–1.3 + U-* IDs + leftover AI 2.1–2.2 + 2.0 M-21 + 3.0 M-03 landed"
+    status: completed
+  - id: leftover-modules-job0
+    content: "Q1 Plan M-05 Geografia (/plan-modul). Kolejka w docs/PLAN-REALIZACJA.md. M-02 parked. Auth0 odroczone."
     status: pending
   - id: leftover-os-canon
     content: "OS słownik: /testy /bramka zamiast person z archiwum"
@@ -54,6 +57,8 @@ isProject: false
 ---
 
 # Plan: Cursor jako software factory (~30 osób) dla OmniRoute
+
+> **Kanon „co dalej” (2026-09-01):** `docs/PLAN-REALIZACJA.md` § Kolejka. Q1 = Plan M-05 Geografia (`/plan-modul`). Ten plik = historyczna fabryka Cursor. Nie czytaj „next = OAuth / D0”. M-02 parked; Auth0 odroczone.
 
 ## 0. Werdykt weryfikacji nowych źródeł (31.08.2026)
 
@@ -108,7 +113,7 @@ isProject: false
 - **Metafora:** nie „30 agentów na stand-upie” — **kontrolowana fabryka** (Gemini) / **AI software factory** (ChatGPT).
 - **Kształt produktu:** modularny monolit OmniRoute (morze → droga → lot); wejście wąskie = stawki/wyceny.
 - **Metodyka:** WIP=1 + delta-spec + XP. Bez Scrum/person CEO–CFO.
-- **Deliverable:** Fazy **0+A+B + C.1–C.5 + 0.11–0.15 leftover + D minimal** ukończone (31.08.2026). Następne: D0 → 0.15 T0.
+- **Deliverable:** Fazy **0+A+B + C.1–C.5 + 0.11–0.15 leftover + D minimal** ukończone (31.08.2026). Overlay 12m (Wave A → Charge → U-* → 2.0 → 3.0) w kodzie 2026-09-01. **Następny:** leftover MODULES job = 0 — kanon `docs/PLAN-REALIZACJA.md`.
 
 ---
 
@@ -190,7 +195,7 @@ flowchart LR
 | Branch protection na `main`                                          | opisane                             | API 403 (Free private)                     | procedura: `docs/ops/branch-protection.md` |
 | Pełny gate (ruff/mypy/pytest/import-linter)                          | DoD §9                              | `just gate` + CI                           | DONE                         |
 | Plaster 0.3 RLS                                                      | Faza B                              | `docs/deltas/archived/0.3-tenancy.md`      | DONE                         |
-| Fazy C–D                                                             | C + D                               | C.1–C.5 + 0.11–0.14 leftover + D minimal w kodzie | next = OAuth/OIDC |
+| Fazy C–D                                                             | C + D                               | C.1–C.5 + 0.11–0.15 leftover + D minimal + overlay 12m (3.0) w kodzie | next = leftover MODULES job 0 (nie OAuth) |
 
 
 ```mermaid
@@ -687,7 +692,7 @@ AGENTS.md (v2), GROUNDING.md, rules (+ui-design-system), skills (+module-factory
 
 ### Faza C — Platforma AI/docs — **C.1–C.5 DONE**
 
-HITL + instructor + docling A/B + langfuse/promptfoo echo + 0.11–0.15 leftover w kodzie. **Następny leftover: D0 → 0.15 T0.** Auth0 I1 po Wave A.
+HITL + instructor + docling A/B + langfuse/promptfoo echo + 0.11–0.15 leftover w kodzie. Overlay 12m (Wave A–3.0) **DONE**. Auth0 I1/I2 **odroczone**. **Następny:** leftover MODULES job = 0 (`docs/PLAN-REALIZACJA.md`).
 
 ### Faza D — Operacyjny rytm — **DONE (minimal)**
 
@@ -720,13 +725,13 @@ agentlint w `just gate`; `pr-nudge.yml`; weekly-refactor + friday-retrospective.
 
 **Audyt planu = aktualny:** Fazy 0+A+B + C.1–C.5 + 0.11–0.15 leftover + D minimal w kodzie; gate pełny (nie agent-refs only).
 
-**Otwarte (kolejność pracy, nie blokada planu):**
+**Otwarte (kolejność pracy, nie blokada planu) — kanon `docs/PLAN-REALIZACJA.md`:**
 
-1. D0 → 0.15 T0 `document_base64` max_length (PROGRAM-12M Wave A)
+1. Leftover MODULES z jobem operatora = **0**. M-02 outbox **nie startować**. Auth0 I1/I2 **odroczone**.
 2. Branch protection w UI GitHub — po Pro/Team; do wtedy `docs/ops/branch-protection.md`
-3. Echo recipes (`just perf` / k6 / vulture / pip-audit) — dopiero gdy nie `echo`
-4. `npx promptfoo eval` / 30 cenników / żywy LLM / llm-guard ML / presidio / langfuse cloud
-5. HTTP extract vs live Postgres (0.14 = unit + stub serwisu); Auth0 I1 po Wave A
+3. k6 / vulture nadal echo — nie DoD (`just perf` = size-limit real; `just audit` = pip-audit w CI)
+4. `npx promptfoo eval` / 30 cenników / żywy LLM / llm-guard ML / Presidio-all / langfuse cloud — nie teraz
+5. HTTP extract live PG = **0.18 DONE**. 0.14 zostaje jako historyczny unit stub.
 
 Canvas `post-audit-review` = przegląd, nie lista do kodu. Rejestr: `docs/ops/docs-debt.md` + `docs/PLAN-REALIZACJA.md` § leftoverów. Załączony plan software-house **nietknięty**.
 

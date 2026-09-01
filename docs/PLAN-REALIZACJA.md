@@ -1,205 +1,408 @@
-# Plan realizacji OmniRoute — aktualny (2026-08-31)
+# Plan realizacji OmniRoute — jedyny kanon (2026-09-01)
 
-**Plan Cursor (pełny):** `.cursor/plans/omniroute-realizacja.plan.md`  
+**To jest jeden plan.** Pierwotna fabryka Cursor (fazy 0→A→B→C→D, leftover 0.11–0.15) i nakładka 12m (Wave A → Charge → U-* → powrót do MODULES) to **jedna oś czasu**, nie dwa drogi. Rozjazd był tylko po plasterze **0.15 hasła**. Rdzeń nigdy się nie rozszedł: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`, pętla post-plaster.
+
+**Alias (nie kanon):** [docs/state/PROGRAM-12M.md](state/PROGRAM-12M.md) — krótki wskaźnik + wklejka starych promptów.  
+**Plan Cursor (historia fabryki):** `.cursor/plans/omniroute-realizacja.plan.md` — nie czytaj z niego „następny = OAuth / D0”.  
 **ADR:** [0001 Cursor factory](adr/0001-cursor-software-factory-weryfikacja.md) · [0002 Frontend 2026](adr/0002-frontend-platform-2026.md)  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
-**Stan:** B + C.1–C.5 + 0.11–0.15 leftover + **Exit Wave A (D0–0.23)** + **0.25 Money** + **1.0–1.3 charge** + **0.24 ops** + **2.1–2.2** + **2.0 M-21** + **3.0 M-03** + U-* ID na origin + D minimal · następny **brak leftoveru MODULES z jobem operatora** (M-02 outbox bez zdarzeń). Auth0 I1/I2 **odroczone** (brak tenanta). **Exit Wave FE nie claim** (U-routes-breadth = standing, nie 70 UI / nie „powierzchnia 2026”).
+**HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
+
+<!-- os-status:start -->
+**Następny (zablokowany):** **Q1** archiwum M-05 Geografia — `port` / UN/LOCODE / lokalizacja / strefy taryfowe tenanta. Komenda: `/plan-modul`. Po akceptacji delty: nowa rozmowa + `/plaster`.
+<!-- os-status:end -->
 
 ```mermaid
 flowchart LR
-  doneB[B_DONE] --> doneC[C1_C4_DONE]
-  doneC --> doneC5[0.10_DONE]
-  doneC5 --> doneXor[0.11_XOR_vitest]
-  doneXor --> doneJwt[0.12_JWT]
-  doneJwt --> doneSplit[0.13_split_HITL]
-  doneSplit --> doneHttp[0.14_HTTP_happy]
-  doneHttp --> donePwd[0.15_passwords]
-  donePwd --> doneD0[D0_OS]
-  doneD0 --> doneT0[T0_upload_limit]
-  doneT0 --> doneT1[T1_nobypassrls]
-  doneT1 --> doneT2[T2_rls_matrix]
-  doneT2 --> done018[P018_http_live_pg]
-  done018 --> doneA1[A1_undeclared_deny]
-  doneA1 --> doneA2[A2_reviewer]
-  doneA2 --> doneT4[T4_hello_off]
-  doneT4 --> doneT5[T5_jwt_claims]
-  doneT5 --> doneS1[S1_secrets]
-  doneS1 --> next[Charge_025]
-  doneB --> doneD[D_minimal_DONE]
+  P0[Faza0] --> PA[FazaA]
+  PA --> PB[FazaB]
+  PB --> PC[FazaC]
+  PC --> PD[FazaD]
+  PD --> L15[0.11_0.15]
+  L15 --> WA[WaveA_D0_0.23]
+  WA --> CH[Charge_0.24_1.3]
+  CH --> FE[U_star]
+  FE --> AI[2.1_2.2]
+  AI --> Q[2.0_M21]
+  Q --> S[3.0_M03]
+  S --> Q1[Q1_Plan_M05_geografia]
 ```
 
 ---
 
-## Ukończone
+## Jak czytać
 
-| Faza | Status |
-|------|--------|
-| 0 GitHub | ✅ private repo, CI |
-| A Cursor OS | ✅ AGENTS, GROUNDING, rules, skills |
-| A.5 IDE | ✅ gh + GitHub MCP |
-| B.2 RLS 0.3 | ✅ organization, app_user, test izolacji |
-| B.3 Gate | ✅ ruff/mypy/pytest/import-linter + PG |
-| B.4 OpenFGA 0.4 | ✅ model, require_permission, CI |
-| B.5 Frontend Shell 0.5 | ✅ Vite, Compiler, TanStack, shadcn, ⌘K, lazy PostHog |
-| B.6 DataTableShell 0.6 | ✅ ColumnEditor, table_view RLS, vitest |
-| B.7 Branch protection | ✅ procedura (Free private 403) |
-| C.1–C.5 / 0.7–0.15 | ✅ HITL … JWT, HTTP extract unit, hasła + refresh |
-| D minimal | ✅ agentlint, pr-nudge, rytm refaktor/retro |
+| Plik | Rola |
+|---|---|
+| **ten dokument** | Jedyny plan: oś, reguły, honesty gate, co dalej. |
+| [CURRENT.md](state/CURRENT.md) | Co jest „teraz” w tej sesji (ostatni plaster, następny, spec). |
+| [PROGRESS.md](state/PROGRESS.md) | Historia plastrów — fakty, nie kolejka. |
+| [MODULES.md](MODULES.md) | **Żywy** rejestr: tylko to, co jest w kodzie (+ M-02 parked). Kolejka Q i katalog M-01…M-70: ten dokument § Kolejka. |
+| Archiwum `Informacje z claude/` | Pełny katalog ~70 M-xx. **Zostaje na dysku. Nie dumpować.** |
+| Spec `docs/spec/<nazwa>.md` | Jedna na sesję plastra. Szkielet uzupełniany przy starcie, nie z góry. |
+
+Dwa katalogi to nie dwa produkty. Archiwum = magazyn specyfikacji. `MODULES.md` = to, co już jest w kodzie. **Kolejność budowy** jest w tym dokumencie (§ Kolejka), nie w pamięci operatora. Gdy CURRENT wskazuje wydmuszkę: najpierw tryb **Plan** (`/plan-modul`), potem `/plaster`. Zakaz 70 pustych stubów.
+
+---
+
+## Cel produktu
+
+Wielodostępna platforma spedycyjna na sprzedaż: stawki, wyceny, zlecenia; wielu tenantów; ruch produkcyjny. Praktyki ~4.4, nie teatr 5.0. Horyzont „12m” = standing rules i anti-cele, nie „czekaj rok na moduły”.
+
+---
+
+## Standing rules (zawsze, też po powrocie do MODULES)
+
+1. `organization_id` w każdej tabeli biznesowej + RLS + test izolacji. Runtime: rola `omniroute_app` **NOBYPASSRLS** (nie superuser).
+2. Auth produkcyjny **gdy będzie tenant** = Auth0 BFF + cookie httpOnly (Code + PKCE). **I1/I2 nie teraz.** Sesja dziś = email+hasło+JWT (0.12 + 0.15). Hello HS256 = local/CI. 0.12/0.15 **nie** są IdP.
+3. Sekrety: **GitHub Encrypted Secrets** + `.env` w gitignore. **Zakaz Infisical.** JWT/AUTH0 nie w YAML.
+4. GitHub **Pro później**. Branch protection = procedura + hooki, nie required check UI na Free (403).
+5. Kwoty: **Decimal / Numeric**, komponent `<Money/>`. LLM **nie liczy**.
+6. **charge** = jedyna prawda o marży (kupno+sprzedaż na jednym rekordzie). **rate_line** niemutowalna + `source_ref`.
+7. Accept HITL → `rate_line` przez **orchestrację API** (ten sam request/transakcja). `ExtractionService` **nie** importuje rates.
+8. PDF HITL w zakresie = **U-pdf-spans** (viewer + spany, lazy pdf.js). Nie teatr OCR.
+9. Paleta ⌘K = akcje operatora = **U-palette-ops**, nie sam skok po trasach.
+10. Ewaluacje AI = **syntetyki**. Zero PDF klienta w git.
+11. Temporal / Hatchet / outbox **zakazane**, dopóki nie ma realnego zdarzenia async **między** BC poza HTTP.
+12. `Informacje z claude/` zostaje na dysku. Nie dumpuj do nowych docs.
+13. Echo recipe ≠ DoD. `can_*` ≠ `member`. Recenzent ≠ każdy member.
+14. **Zakaz 70 pustych stubów** / `module-factory` na cały rejestr.
+15. Każdy endpoint: jawne uprawnienie OpenFGA. Brak = deny.
+16. **Exit Wave FE** = **wszystkie** ID `U-*`. Adapter+RTL **nie** zamyka fali. Twierdzenie „scaffold 2026 + powierzchnia 2026” **zakazane**, dopóki każdy U-* nie ma widocznego DoD i gate, który pada.
+
+### AI Act (produkt, nie PDF prawny)
+
+Ekstrakcja HITL, brak scoringu osoby fizycznej = **minimal risk**. **Zakaz:** automatyczny credit scoring `natural_person` / JDG. Art. 50 = label w UI (**U-art50**), nie notatka prawna. D0 **nie** zdejmuje HITL / „LLM nigdy nie liczy”.
 
 ---
 
 ## Gate dziś vs cel DoD (uczciwość)
 
-Źródło: audyt 2026-08-31. **Nie zamykaj plastra ani nie twierdź „pełny DoD”, jeśli recipe to `echo`.**
+Źródło: audyt 2026-08-31 + stan 2026-09-01. **Nie zamykaj plastra ani nie twierdź „pełny DoD”, jeśli recipe to `echo`.**
 
 | Obietnica | Egzekwowane teraz | Kiedy |
 |---|---|---|
-| ruff + mypy | ✅ `just check` | — |
-| pytest unit + integration | ✅ CI | — |
-| import-linter | ✅ `just arch` | — |
-| frontend typecheck | ✅ `frontend-typecheck` w gate | — |
-| vitest | ✅ `frontend-test` w gate | — |
-| cov ≥ 80% | ✅ `test-unit --cov-fail-under=80` | — |
-| jscpd ≤ 3% | ✅ `just dup` w gate | — |
-| openapi-ts | ✅ `just api-types` + `frontend/src/api/` | regeneruj przy zmianie API |
-| size-limit / perf | ✅ `just perf` initial JS gzip < 250 kB | k6 p95 nadal stub |
-| agentlint | ✅ `just agentlint` + baseline | — |
-| lazy PostHog | ✅ dynamic `import("posthog-js")` | — |
+| ruff + mypy | tak `just check` | — |
+| pytest unit + integration | tak CI | — |
+| import-linter | tak `just arch` | — |
+| frontend typecheck | tak `frontend-typecheck` w gate | — |
+| vitest | tak `frontend-test` w gate | — |
+| cov ≥ 80% | tak `test-unit --cov-fail-under=80` | — |
+| jscpd ≤ 3% | tak `just dup` w gate | — |
+| openapi-ts | tak `just api-types` + `frontend/src/api/` | regeneruj przy zmianie API |
+| size-limit / perf | tak `just perf` initial JS gzip < 250 kB | **k6 p95 nadal stub/echo** |
+| agentlint | tak `just agentlint` + baseline | — |
+| just docs (status OS) | tak `just docs-check` w gate | CURRENT → README / ARCHITECTURE / PLAN |
+
+**Nie cofaj hotfixów CI:** `005` `current_database()` zamiast `Connection.url`; agent-refs URI ≠ plik; agentlint baseline; conftest — osobne `DO $$`; live HTTP = `httpx` AsyncClient; `rate_line` mutate = commit + select kolumny.
 
 ---
 
-## Faza B — domknięcie
+## Fabryka 0–D — ukończona
 
-### B.5 Frontend Shell 2026 — **DONE**
-- Vite + React 19 + **React Compiler** + Tailwind v4 + shadcn
-- TanStack **Router + Query + Form** (+ Table/Virtual w B.6)
-- Design tokens (neutral, compact) — anti AI-slop
-- Command palette ⌘K · PostHog od dnia 1
-- Referencja layoutu: satnaing/shadcn-admin (**wzorce, nie fork**)
-- **Spłacone:** openapi-ts (`just api-types`, `frontend/src/api/`); PostHog lazy (`dynamic import("posthog-js")`) — nie w main chunk
-- **Spłacone (0.12):** hello JWT (`Authorization: Bearer`); tożsamość z claims, nie z headerów
-- **Spłacone (0.15):** hasła argon2id + rotacja refresh; UUID-login wycięty
-- **Dług świadomy (poza zakresem teraz):** Auth0 BFF I1 po Wave A
+| Faza | Co dała | Status |
+|------|---------|--------|
+| 0 GitHub | private repo Spawn2018/OmniRoute, CI `gate.yml` | DONE |
+| A Cursor OS | AGENTS, GROUNDING, rules, skills, hooks | DONE |
+| A.5 IDE | gh + GitHub MCP | DONE |
+| B.1 szkielet | FastAPI, alembic, docker-compose | DONE |
+| B.2 / 0.3 | RLS: `organization`, `app_user`, test izolacji | DONE |
+| B.3 Gate | ruff/mypy/pytest/import-linter + PG | DONE |
+| B.4 / 0.4 | OpenFGA model, `require_permission`, CI | DONE |
+| B.5 / 0.5 | Vite, Compiler, TanStack, shadcn, ⌘K, lazy PostHog | DONE |
+| B.6 / 0.6 | DataTableShell, ColumnEditor, `table_view` RLS, vitest | DONE |
+| B.7 | branch protection = procedura (Free private 403) | DONE (procedura) |
+| C.1–C.5 / 0.7–0.10 | HITL, instructor, docling A/B, langfuse no-op, promptfoo echo | DONE |
+| leftover 0.11–0.15 | XOR vitest, JWT, split HITL, HTTP unit, hasła+refresh | DONE |
+| D minimal | agentlint, pr-nudge, rytm refaktor/retro | DONE |
 
-### B.6 DataTableShell — **DONE**
-- ColumnEditor: checkbox + DnD (@dnd-kit / TanStack columnOrder)
-- Filtry faceted + URL sync
-- ViewManager + tabela `table_view` (RLS)
-- Consumer: `tenancy.users`
-- UX events PostHog
-- **Dodatkowo w 0.6:** vitest minimum na DataTableShell; openapi-ts spłacone poza tym plasterem
-- Źródła: Pencil & Paper; NN/G; TanStack Column DnD
+**Dług świadomy poza zakresem teraz:** Auth0 BFF (I1/I2 odroczone); k6; vulture; żywy OpenAI w gate; Presidio-all; branch protection UI po Pro.
 
-### B.7 Branch protection (pull-forward z D) — **DONE (procedura)**
-- Cel: status check `gate` na `main`
-- **Constraint:** GitHub Free + private → API **403**
-- **Obowiązuje:** [docs/ops/branch-protection.md](ops/branch-protection.md) (zakaz force-push, green CI przed push)
-- Po Pro/Team: włączyć required check `gate` w UI i supersedować procedurę
-
-**TanStack Start:** Thoughtworks **Assess** (2026-04) — **nie** jako fundament; SPA wystarczy.
+TanStack Start: Thoughtworks Assess — **nie** fundament; SPA wystarczy.
 
 ---
 
-## Faza C — Platforma AI (po B)
+## Overlay 12m — Wave A (D0–0.23) — Exit DONE
 
-### C.1 / 0.7 AI extract HITL hello — **DONE**
-- `extraction_draft` RLS · MockExtractor · accept/reject · UI DataTableShell
-- Delta: `docs/deltas/archived/0.7-ai-extract-hitl.md`
+Fala bezpieczeństwa i honesty **przed** powrotem do MODULES. Wave FE **nie** jest częścią Wave A.
 
-### C.2 scaffold (równolegle z 0.7) — **DONE**
-- docling stub · langfuse no-op · `promptfoo/promptfoo.yaml` · knowledge cards
-
-### C.3 / 0.8 instructor + llm-guard — **DONE**
-- Guard na wejściu · InstructorExtractor · provider mock|instructor
-- Delta: `docs/deltas/archived/0.8-instructor-llm-guard.md`
-
-### C.4 / 0.9 docling A/B — **DONE**
-- fingerprint · parser A deterministyczny · B docling · `ab_delta_chars`
-- Delta: `docs/deltas/archived/0.9-docling-ab.md`
-
-### C.5 / 0.10 langfuse + promptfoo CI — **DONE**
-- Trace przy extract; no-op bez kluczy; metadane bez `input_text`
-- `just promptfoo` echo w CI; pytest fixture’e MockExtractor
-- Delta: `docs/deltas/archived/0.10-langfuse-promptfoo.md`
-
-## Rejestr leftoverów (audyt + canvas 2026-08-31)
-
-Canvas `post-audit-review` to **przegląd** 0.5–0.9, nie lista do zaimplementowania w syncu docs. Sync spłacił P1 nagłówek tego pliku i `just test` bez `|| true` na unitach. Poniżej — kolejność po 0.15, żeby nie zgubić.
-
-Pełna lista z „dlaczego”: [docs/ops/docs-debt.md](ops/docs-debt.md)
-
-| Kolejność | Co | Nie mylić z |
+| ID | Daje | Zabija |
 |---|---|---|
-| następny | brak leftoveru MODULES z jobem operatora | M-02 outbox bez zdarzeń; Auth0 odroczone |
-| 3.0 DONE | M-03 `organization_setting` + `/organization-settings` | nie sekrety; nie env; nie table_view |
-| 2.0 DONE | M-21 `quotation` SQL z istniejącego `rate_line` + `/quotations` | nie k6; nie marża poza `charge` |
-| 2.1–2.2 DONE | Presidio instructor stub + 10 syntetyk | nie 30 PDF klienta; nie Presidio-all |
-| 0.24 DONE | `/ready` + request-id + SHA pin + `just audit` (CI) | nie w local `just gate`; k6/vulture echo |
-| U-routes-breadth DONE | standing + trasy 1.0–1.2 | nie 70 stubów; nie Exit Wave FE |
-| U-admin-ref DONE | pulpit jobów + gęsty sidebar/toolbar/⌘K | nie hello-dashboard |
-| U-pdf-spans DONE | PDF + spany HITL, lazy pdf.js | nie OCR; initial ~125 kB |
-| U-size-limit-real DONE | `just perf` + gate pada przy ≥ 250 kB | k6 nadal echo |
-| U-a11y DONE | skip-to-main + focus-visible + Tab/⌘K | RTL ≠ DoD |
-| U-density DONE | compact + toggle na 5 listach biznesowych | nie tylko users |
-| U-palette-ops DONE | ⌘K extract / accept-focus / save-view / clear-session | nie tylko nawigacja; clear = client |
-| 1.3 DONE | accept → `rate_line` w jednej transakcji HTTP | nie ExtractionService → rates; nie outbox; nie charge/sell z LLM |
-| 1.2 DONE | `charge` buy+sell + `margin()` + `/charges` | nie accept HITL; U-routes-breadth = jedna trasa, nie Exit Wave FE |
-| 1.1 DONE | `rate_line` immutable + `source_ref` + `/rate-lines` | nie charge / marża; U-routes-breadth = jedna trasa, nie Exit Wave FE |
-| 1.0 DONE | `charge_code` katalog M-06 + `/charge-codes` | nie rate_line / charge; U-routes-breadth = jedna trasa, nie Exit Wave FE |
-| 0.25 DONE | Money Decimal + `<Money/>` na HITL | nie tabela charge / rate_line |
-| Exit Wave A | D0 + 0.15 T0 … 0.23 | Charge/FE/Auth0 nie tu |
-| 0.23 S1 DONE | JWT_SECRET z GitHub Encrypted Secrets | nie literał w YAML |
-| 0.22 T5 DONE | iss/aud/jti/ver; TTL 15 min | nie Auth0 RS256 |
-| 0.21 T4 DONE | `hello_token` default false | mint UUID tylko local/CI |
-| 0.20 A2 DONE | `can_review_extractions` = reviewer | first-login = member |
-| 0.19 A1 DONE | undeclared `/api/v1` → 403; playground off | /health publiczne |
-| 0.18 DONE | HTTP extract live PG; token A / draft B → 404 | integration = CI (local PG hang) |
-| 0.17 T2 DONE | matryca RLS S1–S6 + WITH CHECK | integration = CI (local PG hang) |
-| 0.16 T1 DONE | `omniroute_app` NOBYPASSRLS; runtime URL | RLS integration = CI (local PG hang) |
-| 0.15 T0 DONE | `document_base64` max_length → 422 przed decode | nie live PG |
-| D0 DONE | AGENTS dziś/później, `.cursorignore` dump, leftover≠DONE | nie kasuje HITL / 13 zasad |
-| 0.15 DONE | hasła argon2id + rotacja refresh | UUID-login wycięty; RLS isolation = CI |
-| C.1–C.5 / 0.7–0.14 DONE | HITL … HTTP happy-path unit | nie live PG, nie IdP |
-| 0.14 DONE | HTTP happy-path extract/accept/reject | unit + stub serwisu; nie integration PG |
-| 0.13 DONE | Split-screen HITL (podgląd \| recenzja) | tekst źródła, nie PDF canvas |
-| 0.12 DONE | JWT zamiast spoofowalnych `X-Organization-Id` / `X-User-Id` | hello HS256, nie IdP |
-| 0.10+ (nie ten plaster) | żywy instructor/OpenAI w CI, llm-guard transformers, Presidio-all, promptfoo 30 cenników, langfuse cloud | 2.1–2.2 = stub instructor + 10 syntetyk; 0.10 = echo + no-op |
-| U-pdf-spans DONE | PDF + spany HITL lazy | nie OCR |
-| U-size-limit-real DONE | just perf size-limit w gate | k6 nadal echo |
-| U-a11y DONE | skip-to-main + focus-visible | RTL ≠ DoD |
-| U-density DONE | compact + toggle na listach biznesowych | nie tylko users |
-| U-palette-ops DONE | ⌘K akcje operatora | nie tylko nawigacja |
-| U-art50 DONE | label „propozycja AI” na szkicu HITL | nie PDF prawny; nie Exit Wave FE |
-| gdy recipe realne | k6 / vulture | dziś `echo`, nie DoD; `just audit` = pip-audit (0.24); `just perf` = size-limit |
-| po Pro/Team | branch protection UI (required check `gate`) | Free private → API 403 |
+| **D0** | AGENTS dziś/później, `.cursorignore` dump, leftover≠DONE | overclaim Infisical/Temporal |
+| **0.15 T0** | `document_base64` max_length → 422 przed decode | DoS |
+| **0.16 T1** | rola `omniroute_app` NOBYPASSRLS | superuser omija RLS |
+| **0.17 T2** | matryca izolacji S1–S6 + WITH CHECK | luki SQL |
+| **0.18** | HTTP extract na żywej PG; token A / draft B → 404 | stub serwisu jako „HTTP done” |
+| **0.19 A1** | undeclared `/api/v1` = deny; playground off | HC-05 konwencja |
+| **0.20 A2** | `can_review_extractions` = reviewer, nie member | każdy member = admin |
+| **0.21 T4** | `hello_token` default false (ON tylko local+CI) | mint UUID na sieci |
+| **0.22 T5** | iss/aud/jti, TTL 15 min, `token_version` | goły HMAC |
+| **0.23 S1** | `JWT_SECRET` z GitHub Encrypted Secrets | literał w YAML |
 
-**Nie ruszać:** ręczny edit `frontend/src/api/*` (flatten anyOf\|null → cast w wrapperze); fałszywy `refactor_ratio`; persony `.cursor/agents/`; dump `Informacje z claude/`.
+---
 
-**Wizja, nie kod:** outbox, Temporal/Hatchet/OTel jako działające systemy — dopiero gdy są zdarzenia między modułami.
+## Charge 0.24–1.3 — DONE
 
-## Faza D — Rytm operacyjny — **DONE (minimal)**
-- `agentlint` w `just gate` + baseline
-- `.github/workflows/pr-nudge.yml` (checklist PR)
-- `docs/ops/weekly-refactor.md` + `docs/ops/friday-retrospective.md`
-- Pętla po każdym plasterze: [docs/ops/post-plaster.md](ops/post-plaster.md)
-- Bugbot: osobna GitHub App (nie w repo)
+| ID | Moduł | Daje | Nie mylić z |
+|---|---|---|---|
+| **0.24** | ops | pip-audit, pin SHA Actions, `/ready`, request-id | nie w local `just gate`; k6/vulture echo |
+| **0.25** | domain | Money Decimal + `<Money/>` na HITL | nie tabela `charge` / `rate_line` |
+| **1.0** | M-06 | `charge_code` katalog + aliasy + `/charge-codes` | luźny string; nie stawka |
+| **1.1** | M-07 | `rate_line` immutable + `source_ref` + `/rate-lines` | `charge` / marża |
+| **1.2** | M-08 | `charge` buy+sell + `margin()` + `/charges` | accept HITL |
+| **1.3** | M-20 | accept → `rate_line` w jednej transakcji HTTP | ExtractionService → rates; outbox; sell z LLM |
+
+---
+
+## Wave FE U-* — ID na origin; Exit **nie** claim
+
+U0 adapter / U1 shell / U2 tabela ADR weszły jako 0.5 / 0.6 / openapi-ts — to **scaffold**, nie Exit Wave FE.
+
+| ID | Operator zobaczy | Gate co padnie | Status |
+|---|---|---|---|
+| **U-density** | compact + toggle na listach biznesowych | lista bez compact / bez toggle | ID na origin |
+| **U-palette-ops** | ⌘K: extract, accept-focus, save-view, clear-session | paleta tylko nawigacja | ID na origin |
+| **U-pdf-spans** | PDF + highlight spanów HITL, lazy pdf.js | brak highlightów; PDF w initial JS; gzip > 250 kB | ID na origin |
+| **U-routes-breadth** | każdy BC z jobem operatora = trasa w tym samym plasterze | backend-only charge/rate_line/session | **standing**, nie 70 UI |
+| **U-a11y** | skip-to-main, focus-visible, Tab/⌘K | tylko mysz; zamknięcie na RTL | ID na origin |
+| **U-size-limit-real** | `just perf` failuje CI przy ≥ 250 kB | recipe-echo | ID na origin |
+| **U-art50** | label „propozycja AI” na szkicu HITL | draft bez labelu | ID na origin |
+| **U-admin-ref** | gęsty sidebar/toolbar/⌘K; pulpit = joby | „adapter = Exit Wave FE” | ID na origin |
+
+**Zakaz claim:** „scaffold 2026 + powierzchnia 2026”, „70 UI”, zamykanie fali na adapter+RTL. U-routes-breadth = standing na **kolejne** BC, nie dowód że powierzchnia 2026 jest skończona.
+
+---
+
+## Auth0 — odroczone
+
+I1 (BFF + PKCE + cookie; org z `app_metadata`; first-login bez org = odmowa) i I2 (RS256 JWKS; hello OFF staging/prod) **nie teraz** — brak tenanta. Nie pytać. Hasła + refresh zostają sesją. Zero kodu Auth0 / placeholder / „hello OAuth”. Organizations feature **nie** w I1. OpenFGA = SoT ról (first-login = member; reviewer ręczny seed).
+
+Gdy user **ma** tenant: SPA Vite → BFF FastAPI → Auth0; cookie HttpOnly; Secure; SameSite=Lax; region EU / SCC jeśli plan pozwala. **Nie** w tym samym plasterze co hasła.
+
+---
+
+## Moduły w kodzie (żywy rejestr)
+
+Szczegół: [MODULES.md](MODULES.md). Poniżej odpowiedzialność, zysk, plastry, anti-confusion.
+
+### M-01 tenancy — fundament
+
+**Za co:** izolacja tenantów, tożsamość sesji, OpenFGA.  
+**Daje:** RLS + test izolacji; JWT Bearer; hasła argon2id + refresh; `hello_token` off poza local/CI.  
+**Plusy:** baza egzekwuje tenancy (NOBYPASSRLS); headery nie spoofują org; recenzent ≠ member.  
+**Plastry:** 0.3, 0.4, 0.12, 0.15, 0.16 T1, 0.17 T2, 0.21 T4, 0.22 T5.  
+**Nie:** IdP. 0.12/0.15 ≠ Auth0. Auth0 I1/I2 odroczone.
+
+### M-02 outbox — planowany, **zakazany teraz**
+
+**Za co (gdy będzie):** zdarzenia async **między** bounded contextami + idempotencja wywołań zewnętrznych.  
+**Dlaczego nie:** nie ma takich zdarzeń poza HTTP. Outbox bez konsumenta = teatr Temporal.  
+**Nie startować.** Nie mylić z 0.4 (OpenFGA).
+
+### M-03 organization_setting — fundament (3.0)
+
+**Za co:** konfiguracja jako dane (HC-02). Allowlista `default_currency`.  
+**Daje:** `/organization-settings`; RLS; waluta tenanta w bazie, nie w env.  
+**Plusy:** zmiana konfiguracji bez deployu; nie sekrety.  
+**Nie:** Infisical, `table_view`, sekrety tenanta, env jako źródło prawdy.
+
+### M-06 charge_code — fundament (1.0)
+
+**Za co:** słownik kodów opłat + aliasy.  
+**Daje:** `/charge-codes`; brak luźnego stringa w stawkach.  
+**Nie:** `rate_line`, `charge`, marża.
+
+### M-07 rate_line — fundament (1.1)
+
+**Za co:** niemutowalna stawka kupna + `source_ref`.  
+**Daje:** `/rate-lines`; zmiana = nowy wiersz + `superseded_by`.  
+**Plusy:** audyt pochodzenia; LLM nie wstawia stawki bez HITL (1.3).  
+**Nie:** marża; `charge`; k6 na 50k.
+
+### M-08 charge — fundament (1.2)
+
+**Za co:** jedyna prawda o marży — kupno i sprzedaż na jednym rekordzie.  
+**Daje:** `margin()` w kodzie; `/charges`.  
+**Nie:** accept HITL; liczenie marży w quotation / LLM.
+
+### M-20 extraction HITL — fundament
+
+**Za co:** wyciąg z dokumentu → draft → człowiek accept/reject.  
+**Daje:** kolejka HITL, instructor+guard, docling A/B, live HTTP PG (0.18), accept→`rate_line` (1.3), label Art. 50, PDF+spany, Presidio stub + 10 `synth://`.  
+**Plusy:** nic z ekstrakcji nie idzie do stawek bez HITL; `ExtractionService` nie importuje rates.  
+**Plastry:** 0.7–0.14, T0, 0.18, 1.3, U-art50, U-pdf-spans, 2.1–2.2.  
+**Nie:** OCR-teatr; Presidio-all; żywy OpenAI w gate; 30 PDF klienta; import rates.
+
+### M-21 quotation — fundament (2.0)
+
+**Za co:** wycena SQL z **bieżącego** `rate_line` (`INSERT…SELECT`).  
+**Daje:** `/quotations`; RLS.  
+**Plusy:** Postgres liczy z indeksem; nie Python na 50k.  
+**Nie:** k6 p95 na pustej tabeli; marża (zostaje w `charge`).
+
+---
+
+## Dwa tryby pracy (jak Agent / Plan / Multitask)
+
+Kolejka poniżej **zdejmuje z Ciebie pamiętanie „co dalej”**. Agent czyta `CURRENT.md` + tę sekcję. Nie zgaduje.
+
+| Tryb w Cursorze | Kiedy | Komenda | Co wolno |
+|---|---|---|---|
+| **Plan** | Każda nowa pozycja kolejki, zanim powstanie kod — zwłaszcza **wydmuszka** (moduł z katalogu M-xx, którego jeszcze nie ma w `MODULES.md` jako fundament) | `/plan-modul` | Rozmowa: job operatora, tabele, UI, poza zakresem, kolizje ID. Wynik: delta w `docs/deltas/open/` + spec szkielet + `CURRENT.md` z zakresem. **Zero kodu produktu.** |
+| **Agent** | Dopiero gdy Plan tej pozycji jest **zaakceptowany** (delta bez „DO USTALENIA” blokujących) | `/plaster` | Pionowy plaster: migracja → RLS → izolacja → API → UI → test → post-plaster → push. |
+
+`/plaster` przy `CURRENT.md` **Etap: Plan** = **stop**. Nie implementuj. Powiedz, żeby przełączyć na Plan i odpalić `/plan-modul`.
+
+Wydmuszka ≠ 70 pustych stubów w repo. Plan ustala **jeden** plaster. Kod powstaje dopiero w Agent.
+
+---
+
+## Kolejka realizacji (jedno po drugim)
+
+Źródło nazw: archiwum `REJESTR-MODULOW-I-PLAN-v2.md` (na dysku, nie dumpować specyfikacji). **Kolejność budowy ≠ numer M-xx** — numery archiwum i żywy kod się rozjechały (patrz mapa kolizji).
+
+Po zamknięciu plastra `CURRENT.md` = **następna pozycja Q**. Nie pytaj operatora „co chcesz”. Wykonaj tryb z kolumny.
+
+### Mapa kolizji ID (czytaj zanim nazwiesz tabelę)
+
+| Archiwum | Żywy kod dziś | Skutek |
+|---|---|---|
+| M-06 słownik opłat | **M-06** `charge_code` | fundament; aliasy na wierszu, bez pgvector |
+| M-07 waluty i czas | **kolizja** — żywe **M-07** = `rate_line` | w kolejce: „Waluty i kurs NBP”; żywy ID nadajesz **w Planie** |
+| M-08 towary niebezpieczne | **kolizja** — żywe **M-08** = `charge` | w kolejce: „Towary niebezpieczne”; żywy ID w Planie |
+| M-17 stawki statyczne | pokryte przez żywe **M-07** `rate_line` | nie startuj drugiego silnika stawek |
+| M-22 narzuty i marża | pokryte przez żywe **M-08** `charge` | marża zostaje w `margin()` |
+
+### Fala 0 — już w kodzie (nie wracaj)
+
+M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-06 `charge_code` · M-07 `rate_line` · M-08 `charge` · M-20 ekstrakcja HITL · M-21 `quotation`. OpenFGA hello = kawałek archiwum M-04, **nie** IdP.
+
+### Fala 1 — następna robota (tu jesteśmy)
+
+| Q | Co | Tryb startu | Status |
+|---|---|---|---|
+| **Q1** | Archiwum **M-05 Geografia** (`port`, UN/LOCODE, lokalizacja, strefy taryfowe tenanta) | **Plan** → plaster | **TERAZ** |
+| Q2 | Archiwum **M-10 Kontrahenci** | Plan → plaster | kolejka |
+| Q3 | Pogłębienie żywego **M-21** `quotation` o port + kontrahent (lista/filtry; SQL na istniejących `rate_line`; nie marża; nie k6) | Plan → plaster | kolejka |
+| Q4 | Archiwum **M-09 Kody towarowe** | Plan → plaster | kolejka |
+| Q5 | **Waluty i kurs NBP** (archiwum M-07; **nie** nadpisuj żywego M-07) | Plan → plaster | kolejka |
+| Q6 | **Towary niebezpieczne** (archiwum M-08; **nie** nadpisuj żywego M-08) | Plan → plaster | kolejka |
+
+### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster
+
+M-11 Automatyczne kontakty · M-12 Sieci i stowarzyszenia · M-13 Karta wyników kontrahenta · M-16 Procedury operacyjne klienta · M-18 Opłaty portowe warunkowe · M-19 Stawki live i kanały.
+
+**M-14 Ocena kredytowa:** w kolejce po M-13, ale Plan **musi** zakazać automatycznego scoringu `natural_person` / JDG (AI Act). M-15 VDF — po M-14, LLM nie liczy.
+
+### Fala 3 — ofertowanie
+
+M-23 Waluty w ofercie · M-24 Ryzyko oferty · M-25 Negocjacja i wynik · M-26 Dokument oferty · M-27 Wycena wsadowa · M-28 Zapytania od klientów · M-29 Wykrywanie akceptacji · M-30 Zapytania do agentów/armatorów · M-31 Porównanie odpowiedzi.
+
+### Fala 4 — komunikacja
+
+M-32 Integracja pocztowa · M-33 Dodatek do Outlooka · M-34 Powiadomienia. Copilot/mail = label Art. 50 (U-art50).
+
+### Fala 5 — zlecenie
+
+M-35 Zlecenie · M-36 Tracking · M-37 Wyjątki · M-38 Dokumenty zlecenia · M-39 EDI.
+
+### Fala 6 — finanse
+
+M-40 Fakturowanie i KSeF · M-41 Rozliczenie wyceny z fakturą · M-42 Bank i płatności · M-43 Koszt pieniądza · M-44 Różnice kursowe · M-45 Przepływy · M-46 Koszt obsługi klienta · M-47 Księgowość (integracja). Kwoty Decimal; LLM nie liczy.
+
+### Fala 7–11 — modały, compliance, AI, portal, ops
+
+M-48…M-51 modały · M-52…M-56 compliance (M-53 sankcje, M-56 RODO) · M-57…M-60 AI (HITL; Art. 50; nie scoring osoby) · M-61…M-67 rynek/portal/subskrypcja · M-68…M-70 obserwowalność, jakość, wdrożenie.
+
+### Parked (w katalogu, nie w kolejce aktywnej)
+
+| ID | Dlaczego nie teraz |
+|---|---|
+| **M-02** outbox | Brak zdarzeń async między BC poza HTTP. Wejdzie, gdy Fala 5/integracje naprawdę publikują zdarzenie. Wtedy najpierw **Plan**. |
+| **Auth0 I1/I2** | Brak tenanta. Nie moduł M-xx. Nie pytać. |
+| **M-04 SSO** | Kawałek OpenFGA jest. Reszta tożsamości = Auth0 parked. „Handlowiec widzi swoich” **po Q2** (kontrahenci), Plan bez SSO. |
+| **M-03 reszta** | Żyje tylko `default_currency`. Szablony, numeracja, workflow — Plan jako leftover M-03 **po Fali 1**, nie zamiast Q1. |
+
+**WIP=1.** Po plasterze: [docs/ops/post-plaster.md](ops/post-plaster.md), PROGRESS, CURRENT = następne Q, push, **nowa rozmowa**. Nie startuj kolejnego Q przy niepushniętym zakresie.
+
+Kolizja numeru historyczna: WIP **0.15 hasła** ≠ **0.15 T0**.
+
+---
+
+## Katalog wydmuszek M-01…M-70 (status, nie spec)
+
+Nie implementuj z tej tabeli „na zapas”. To mapa, żeby nic nie zginęło. Szczegóły obiektów zostają w archiwum aż **Plan** danej pozycji je wciągnie do `docs/spec/` + `MODULES.md`.
+
+| Arch. | Nazwa | Status żywy |
+|---|---|---|
+| M-01 | Wielodostępność | DONE fundament |
+| M-02 | Niezawodność zdarzeń | PARKED |
+| M-03 | Konfiguracja per organizacja | CZĘŚĆ (`default_currency`) |
+| M-04 | Uprawnienia i tożsamość | CZĘŚĆ (OpenFGA hello; SSO parked) |
+| M-05 | Geografia | **Q1 Plan** |
+| M-06 | Słownik opłat | DONE jako `charge_code` |
+| M-07 | Waluty i czas | kolejka Q5; ID żywy ≠ M-07 |
+| M-08 | Towary niebezpieczne | kolejka Q6; ID żywy ≠ M-08 |
+| M-09 | Kody towarowe | Fala 1 Q4 |
+| M-10 | Kontrahenci | Fala 1 Q2 |
+| M-11 | Automatyczne kontakty | Fala 2 |
+| M-12 | Sieci i stowarzyszenia | Fala 2 |
+| M-13 | Karta wyników kontrahenta | Fala 2 |
+| M-14 | Ocena kredytowa | Fala 2 + zakaz auto-scoringu osoby |
+| M-15 | Wirtualny Dyrektor Finansowy | Fala 2; LLM nie liczy |
+| M-16 | Procedury operacyjne klienta | Fala 2 |
+| M-17 | Stawki statyczne | COVERED (`rate_line`) |
+| M-18 | Opłaty portowe warunkowe | Fala 2 |
+| M-19 | Stawki live i kanały | Fala 2 |
+| M-20 | Pipeline ekstrakcji | DONE fundament HITL |
+| M-21 | Silnik wyceny | DONE + Q3 pogłębienie |
+| M-22 | Narzuty i marża | COVERED (`charge`) |
+| M-23–M-31 | Ofertowanie | Fala 3 |
+| M-32–M-34 | Komunikacja | Fala 4 |
+| M-35–M-39 | Zlecenie / EDI | Fala 5 |
+| M-40–M-47 | Finanse | Fala 6 |
+| M-48–M-51 | Modały | Fala 7 |
+| M-52–M-56 | Compliance | Fala 8 |
+| M-57–M-60 | AI / copilot | Fala 9 |
+| M-61–M-67 | Rynek / portal | Fala 10 |
+| M-68–M-70 | Ops / wdrożenie | Fala 11 |
+
+---
+
+## Anti-cele (odmów) + nie pytaj ponownie
+
+Temporal/Hatchet/outbox na zapas · Infisical · 70 pustych M-xx · k6 50k · OTel-sprint · `just perf` / k6 echo jako DoD · Presidio na każdym endpoincie · żywy OpenAI w gate · `can_*` = member · accept bez HITL · hasła+Auth0 w jednym plasterze · persony `.cursor/agents/` · dump Claude · zmiana starych migracji · Next.js · pgvector „bo stos” · required checks na Free · twierdzenie że 0.12 = IdP · OCR-teatr · zamknięcie Wave FE na adapter+RTL · „powierzchnia 2026” przed Exit Wave FE · auto credit scoring `natural_person` / JDG · zdejmowanie HITL w D0.
+
+**Nie pytaj ponownie:** Auth0 I1/I2 (aż user ma tenant), IdP, Infisical, Temporal, Pro, dump, „adapter wystarczy na powierzchnię 2026”, „0.12/0.15 = IdP”, start M-02 bez zdarzeń, kompromis na Exit Wave FE.
+
+**Nie ruszać:** ręczny edit `frontend/src/api/*` (flatten anyOf\|null → cast w wrapperze); fałszywy `refactor_ratio`; persony `.cursor/agents/`.
 
 ---
 
 ## Definition of Done (merge)
 
-1. Delta zamknięta; testy zaakceptowane — tylko to, co gate **naprawdę** egzekwuje + kryteria delty
-2. `just gate` green (+ integration gdy dotyczy)
-3. Łowca duplikatów + review 4-pass (**pomiar**; naprawa w pętli)
-4. **Pętla po kroku:** [docs/ops/post-plaster.md](ops/post-plaster.md) — skuteczność, szybkość lub N/A, dług w diffie, honesty docs; leftover → [docs-debt.md](ops/docs-debt.md)
-5. CURRENT + PROGRESS zaktualizowane
-6. GROUNDING HCs + ADR-0002 (brak drugiego table engine / AI-slop)
-7. **WIP:** nie startuj kolejnego plastra przy niezacommitowanym / niepushniętym zakresie bieżącego
+1. Delta zamknięta; testy zaakceptowane — tylko to, co gate **naprawdę** egzekwuje + kryteria delty.
+2. `just gate` green (+ integration gdy dotyczy).
+3. Łowca duplikatów + review 4-pass (**pomiar**; naprawa w pętli).
+4. Pętla [post-plaster.md](ops/post-plaster.md); leftover → [docs-debt.md](ops/docs-debt.md).
+5. CURRENT + PROGRESS + `just docs` (README/ARCHITECTURE/PLAN z CURRENT).
+6. GROUNDING HCs + ADR-0002 (brak drugiego table engine / AI-slop).
+7. **WIP:** nie startuj kolejnego plastra przy niezacommitowanym / niepushniętym zakresie.
 
-## Start
+## Skills i start
+
+Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem), `migracja-rls`, `openfga-change` (gdy model FGA), `ekstraktor` (granica accept), `pr-review`, `knowledge-retrieve` ≤8 kart.
+
+**Nie:** `module-factory` na 70 BC.
+
+<!-- os-start:start -->
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
-Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@docs/adr/0002-frontend-platform-2026.md` `@GROUNDING.md`
+Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
+
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+<!-- os-start:end -->

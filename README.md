@@ -6,7 +6,7 @@ Wielodostępna platforma spedycyjna (LOGMAR Sp. z o.o.) — stawki, wyceny, zlec
 
 1. Przeczytaj `AGENTS.md` i `GROUNDING.md`.
 2. Sprawdź `docs/state/CURRENT.md` — bieżący plaster.
-3. Uruchom `/plaster` w Cursorze.
+3. Komenda z sekcji **Stan faz** (generowana z `docs/state/CURRENT.md`).
 
 ## Archiwum dokumentacji projektowej
 
@@ -36,6 +36,10 @@ Seed: `scripts/dev_seed_local.py`.
 
 ## Stan faz
 
-- **0.5–0.15 + B.7:** done (HITL, JWT, hasła+refresh, HTTP extract unit/stub)
-- **Następny:** Charge 0.25 Money (Exit Wave A done)
-- Szczegóły: `docs/PLAN-REALIZACJA.md` · dług poza sync: `docs/ops/docs-debt.md`
+<!-- os-status:start -->
+- **Ostatni plaster:** **3.0** M-03 `organization_setting` (zarchiwizowany)
+- **Etap:** **Plan** (zero kodu). Nie `/plaster`.
+- **Następny:** **Q1** archiwum M-05 Geografia — `port` / UN/LOCODE / lokalizacja / strefy taryfowe tenanta. Komenda: `/plan-modul`. Po akceptacji delty: nowa rozmowa + `/plaster`.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
+- **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
+<!-- os-status:end -->

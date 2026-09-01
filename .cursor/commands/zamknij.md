@@ -6,7 +6,8 @@ description: Zamyka plaster i przygotowuje następny
 2. Sprawdź, czy `docs/deltas/open/` jest puste (albo tylko bieżąca delta).
 3. Utwórz commit wg konwencji: `feat(M-xx): <opis> [plaster <id>]`
    ze stopką `Co-authored-by: Cursor Agent <agent@cursor.sh>`.
-4. Zaktualizuj `docs/state/CURRENT.md` na następny plaster z planu.
+4. Zaktualizuj `docs/state/CURRENT.md` na **następną pozycję Q** z `docs/PLAN-REALIZACJA.md` (wydmuszka → Etap Plan, `/plan-modul`).
+4b. `just docs` (przepisze README na GitHub po pushu).
 5. Wypisz jednym zdaniem, co zostało niedokończone albo odłożone (`docs/ops/docs-debt.md`).
 
 Po tym kroku otwieram nową rozmowę. Nie kontynuuj.

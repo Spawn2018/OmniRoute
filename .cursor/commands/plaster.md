@@ -4,6 +4,10 @@ description: Rozpoczyna realizację plastra według procedury
 
 Przeczytaj `docs/state/CURRENT.md`.
 
+Jeśli **Etap: Plan** albo brak zaakceptowanej delty dla tej pozycji kolejki:
+**stop.** Nie pisz kodu. Powiedz: przełącz Cursor na tryb **Plan** i uruchom `/plan-modul`.
+Kolejka: `docs/PLAN-REALIZACJA.md` § Kolejka realizacji.
+
 Wykonaj w kolejności, zatrzymując się po każdym kroku po potwierdzenie:
 
 1. Wypisz w jednym zdaniu, co budujesz i czego NIE budujesz.

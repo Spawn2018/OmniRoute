@@ -3,8 +3,8 @@ default: gate
 agent-refs:
     python scripts/quality/check_agent_refs.py
 
-gate: agent-refs agentlint check test-unit arch frontend-typecheck frontend-test dup perf
-    @echo "gate: agent-refs + agentlint + check + test-unit + arch + frontend + dup + perf OK"
+gate: docs-check agent-refs agentlint check test-unit arch frontend-typecheck frontend-test dup perf
+    @echo "gate: docs-check + agent-refs + agentlint + check + test-unit + arch + frontend + dup + perf OK"
 
 dev:
     docker compose up -d db
@@ -70,7 +70,10 @@ frontend-test:
     cd frontend && pnpm test
 
 docs:
-    @echo "docs: stub, nie DoD"
+    python scripts/quality/sync_os_status.py
+
+docs-check:
+    python scripts/quality/sync_os_status.py --check
 
 complexity:
     ruff check --select C901 backend

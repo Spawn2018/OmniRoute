@@ -27,7 +27,7 @@ zakazane, aż będzie realne zdarzenie async między BC albo wektor. JWT hello �
 | Twarde ograniczenia | `GROUNDING.md` |
 | Decyzje | `docs/adr/` |
 | Bieżące zadanie | `docs/state/CURRENT.md` |
-| Program 12m (SoT) | `docs/state/PROGRAM-12M.md` |
+| Plan realizacji (jedyny) | `docs/PLAN-REALIZACJA.md` |
 | Historia plastrów | `docs/state/PROGRESS.md` |
 
 `Informacje z claude/` zostaje na dysku; **nie ładuj** (`.cursorignore`).
@@ -58,7 +58,8 @@ Wygrywają z każdą inną sugestią, także z twoją.
 
 - **Jeden pionowy plaster naraz**: migracja → model → repozytorium → serwis →
   endpoint → test → typ na froncie → komponent. Nie buduj modułu w jednym przebiegu.
-- **Plan przed kodem.** Powyżej trzech plików: napisz plan, czekaj na akceptację.
+- **Wydmuszka / pozycja Q = najpierw tryb Plan** w Cursorze (`/plan-modul`), potem `/plaster`.
+  Kolejka: `docs/PLAN-REALIZACJA.md`. Nie pytaj „co chcesz”, jeśli CURRENT wskazuje Q.
 - **Test przed implementacją** dla każdej reguły biznesowej.
 - Nie dotykaj plików spoza zakresu. Zgłoś, jeśli to konieczne.
 - Po zakończeniu: pętla `docs/ops/post-plaster.md`, linia w `PROGRESS.md`, `CURRENT.md`, push.
@@ -94,7 +95,7 @@ just test       # pytest unit+integration — pada przy failu unit
 just arch       # import-linter
 just perf       # stub echo — nie DoD
 just migrate    # alembic w górę i w dół
-just docs       # stub echo — nie DoD
+just docs       # sync status z CURRENT.md (README, ARCHITECTURE, PLAN)
 ```
 
 **Egzekucja dziś ≠ cel.** Co gate naprawdę odpala vs stub (`echo`):

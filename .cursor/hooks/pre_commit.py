@@ -5,6 +5,10 @@ import subprocess
 import sys
 
 checks = [
+    (
+        "OS status vs CURRENT.md",
+        ["python", "scripts/quality/sync_os_status.py", "--check"],
+    ),
     ("architektura", ["lint-imports"]),
     (
         "duplikacja",

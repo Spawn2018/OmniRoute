@@ -64,4 +64,4 @@
 | 2026-09-01 | 3.0 | M-03 | `organization_setting` allowlista `default_currency` + RLS + `/organization-settings`; nie sekrety |
 | 2026-09-01 | CI | ops | gate: 005 `current_database()` zamiast `Connection.url`; `docs-debt` path; URI ≠ plik w agent-refs |
 | — | leftover | Auth0 | I1/I2 **odroczone** aż będzie tenant. Nie pytać. 0.12/0.15 ≠ IdP. |
-| — | leftover | produkt | **Następny:** brak leftoveru MODULES z jobem operatora. M-02 outbox bez zdarzeń — nie startować. |
+| — | leftover | produkt | **Następny:** Q1 Plan M-05 Geografia (`/plan-modul`). M-02 parked. |
