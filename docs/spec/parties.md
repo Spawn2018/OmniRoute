@@ -2,7 +2,7 @@
 
 **Moduł żywy:** M-10 (archiwum M-10; nie koliduje z żywym M-07 `rate_line` / M-08 `charge`)  
 **Plaster:** **5.0** (w kodzie)  
-**Status:** fundament katalogu (5.0). Matcher maila = plaster **8.0** (M-11). Nie M-12–M-14. Nie M-19.
+**Status:** fundament katalogu (5.0) + matcher maila (8.0). Nie M-12–M-14. Nie M-19.
 
 Delta: [docs/deltas/archived/5.0-party.md](../deltas/archived/5.0-party.md).
 

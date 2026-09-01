@@ -5,9 +5,10 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.charge_code import normalize_charge_code
-from app.domain.errors import InvalidPartyData, ResourceNotFound, UnknownParty
+from app.domain.errors import InvalidPartyData, ResourceNotFound, UnknownEmailDomain, UnknownParty
 from app.domain.money import Money
 from app.domain.party import (
+    email_domain_from_address,
     lookup_source_ref,
     manual_source_ref,
     normalize_country_code,
@@ -65,6 +66,13 @@ class PartyService:
         found = await self._parties.find_by_tax_id(token)
         if found is None:
             raise UnknownParty(f"nieznany kontrahent: {raw.strip()}")
+        return found
+
+    async def resolve_email(self, raw: str) -> Party:
+        domain = email_domain_from_address(raw)
+        found = await self._parties.find_party_by_email_domain(domain)
+        if found is None:
+            raise UnknownEmailDomain(f"nieznana domena mailowa: {domain}")
         return found
 
     async def lookup_party(self, *, tax_id: str, country_code: str) -> PartyDraft:

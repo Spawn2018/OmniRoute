@@ -86,6 +86,18 @@ def normalize_email_domain(raw: str) -> str:
     return folded
 
 
+def email_domain_from_address(raw: object) -> str:
+    if type(raw) is not str:
+        raise InvalidPartyData("adres mailowy musi być tekstem")
+    folded = raw.strip().lower()
+    if folded.count("@") != 1:
+        raise InvalidPartyData("adres mailowy wymaga dokładnie jednego @")
+    local, domain = folded.split("@", 1)
+    if local == "":
+        raise InvalidPartyData("adres mailowy: pusta część lokalna")
+    return normalize_email_domain(domain)
+
+
 def normalize_credit_pair(
     limit: object | None,
     currency: str | None,

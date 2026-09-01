@@ -6,7 +6,7 @@ from uuid import uuid4
 import pytest
 
 from app.api.parties import ChargeOverrideResponse, PartyResponse
-from app.domain.errors import InvalidPartyData, ResourceNotFound, UnknownParty
+from app.domain.errors import InvalidPartyData, ResourceNotFound, UnknownEmailDomain, UnknownParty
 from app.models.party import Party
 from app.services.parties.lookup import lookup_iban_draft, lookup_party_draft
 from app.services.parties.party_service import PartyService
@@ -47,6 +47,21 @@ async def test_service_resolve_unknown_tax_id() -> None:
     service._parties.find_by_tax_id = AsyncMock(return_value=None)
     with pytest.raises(UnknownParty, match="GHOST"):
         await service.resolve("GHOSTTAX")
+
+
+@pytest.mark.asyncio
+async def test_service_resolve_email_unknown_domain() -> None:
+    service = _service()
+    service._parties.find_party_by_email_domain = AsyncMock(return_value=None)
+    with pytest.raises(UnknownEmailDomain, match="ghost.test"):
+        await service.resolve_email("ops@ghost.test")
+
+
+@pytest.mark.asyncio
+async def test_service_resolve_email_rejects_address_without_at() -> None:
+    service = _service()
+    with pytest.raises(InvalidPartyData, match="@"):
+        await service.resolve_email("ghost.test")
 
 
 @pytest.mark.asyncio

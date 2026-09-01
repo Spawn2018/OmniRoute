@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **7.0** M-52 `dangerous_good` (zarchiwizowany)
-- **Etap:** Plaster
-- **Następny:** **8.0** M-11 `resolve_email` ([delta](../deltas/open/8.0-party-email-match.md)). Nie Fala 8.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
+- **Ostatni plaster:** **8.0** M-11 `resolve_email` (zarchiwizowany)
+- **Etap:** Plan
+- **Następny:** M-12 Sieci i stowarzyszenia (`/plan-modul`). Nie Fala 8. Nie zgaduj zakresu.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

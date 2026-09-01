@@ -118,6 +118,22 @@ def test_email_domain_is_stored_lowercase(raw: str) -> None:
     assert normalize_email_domain(folded) == folded
 
 
+@given(raw=_DOMAIN)
+def test_address_domain_matches_stored_domain(raw: str) -> None:
+    email_domain_from_address = _party_domain().email_domain_from_address
+    assert email_domain_from_address(f"Ops@{raw}") == raw.strip().lower()
+
+
+def test_address_without_at_is_rejected() -> None:
+    with pytest.raises(_invalid(), match="@"):
+        _party_domain().email_domain_from_address("acme.test")
+
+
+def test_address_with_empty_local_part_is_rejected() -> None:
+    with pytest.raises(_invalid(), match="lokalna"):
+        _party_domain().email_domain_from_address("@acme.test")
+
+
 def test_credit_pair_rejects_a_limit_without_currency() -> None:
     with pytest.raises(_invalid(), match="credit"):
         _party_domain().normalize_credit_pair(Decimal("1000.0000"), None)

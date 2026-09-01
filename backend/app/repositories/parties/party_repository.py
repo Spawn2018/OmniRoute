@@ -67,6 +67,14 @@ class PartyRepository:
         await self._session.flush()
         return row
 
+    async def find_party_by_email_domain(self, domain: str) -> Party | None:
+        found = await self._session.scalar(
+            select(Party)
+            .join(PartyEmailDomain, PartyEmailDomain.party_id == Party.id)
+            .where(PartyEmailDomain.domain == domain),
+        )
+        return found if isinstance(found, Party) else None
+
     async def list_charge_overrides(self, party_id: UUID) -> list[PartyChargeOverride]:
         result = await self._session.scalars(
             select(PartyChargeOverride).where(PartyChargeOverride.party_id == party_id),

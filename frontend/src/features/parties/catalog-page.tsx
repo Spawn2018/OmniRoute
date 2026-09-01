@@ -26,6 +26,7 @@ import {
   lookupParty,
   partyCreateBody,
   resolveParty,
+  resolvePartyEmail,
   upsertCarrierProfile,
   type Party,
   type PartyDraft,
@@ -85,6 +86,7 @@ export function PartyCatalogPage() {
   const [taxId, setTaxId] = useState("")
   const [rolesText, setRolesText] = useState("customer")
   const [resolved, setResolved] = useState<Party | null>(null)
+  const [resolvedEmail, setResolvedEmail] = useState<Party | null>(null)
   const [draft, setDraft] = useState<PartyDraft | null>(null)
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [contactName, setContactName] = useState("")
@@ -157,13 +159,25 @@ export function PartyCatalogPage() {
       setLegalName(row.legal_name)
       setTaxId(row.tax_id)
     },
+    onError: () => {
+      setDraft(null)
+    },
+  })
+
+  const resolveEmailMutation = useMutation({
+    mutationFn: resolvePartyEmail,
+    onSuccess: (row) => {
+      setResolvedEmail(row)
+      setSelectedId(row.id)
+    },
+    onError: () => setResolvedEmail(null),
   })
 
   return (
     <div className="space-y-3">
       <CatalogHeading
         title="Katalog kontrahentów"
-        subtitle="party M-10 · tax_id, nie luźna nazwa; lookup to szkic"
+        subtitle="party M-10 · tax_id i mail domeny, nie luźna nazwa; lookup to szkic"
       />
 
       {!ctx.organizationId || !ctx.userId ? <TenantSessionNotice /> : null}
@@ -233,6 +247,17 @@ export function PartyCatalogPage() {
         onResolve={(token) => resolveMutation.mutate(token)}
       />
       {resolveMutation.isError ? <CatalogError error={resolveMutation.error} /> : null}
+
+      <ResolveTokenForm
+        label="Sprawdź mail"
+        placeholder="ops@acme.test"
+        pending={resolveEmailMutation.isPending}
+        resolved={
+          resolvedEmail === null ? null : `${resolvedEmail.legal_name} · ${resolvedEmail.tax_id ?? "—"}`
+        }
+        onResolve={(token) => resolveEmailMutation.mutate(token)}
+      />
+      {resolveEmailMutation.isError ? <CatalogError error={resolveEmailMutation.error} /> : null}
 
       {listQuery.isLoading ? <div className="text-sm text-muted-foreground">Ładowanie…</div> : null}
       {listQuery.isError ? <CatalogError error={listQuery.error} /> : null}

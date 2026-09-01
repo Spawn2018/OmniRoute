@@ -82,4 +82,5 @@
 | 2026-09-01 | 6.0 | M-23 | `nbp_rate` tabela A + `source_ref` + RLS FORCE + `resolve(currency, on_date)` + OpenFGA `can_manage_nbp_rates` + `/nbp-rates`. Nie przeliczenie wyceny, nie live NBP, nie M-07 `rate_line`. |
 | 2026-09-01 | Plan 7.0 | M-52 | delta `docs/deltas/archived/7.0-dangerous-good.md` + spec. Katalog UN/IMDG per tenant. Nie podpięcie do wyceny. Nie M-08 `charge`. Następny: `/plaster` 7.0. |
 | 2026-09-01 | 7.0 | M-52 | `dangerous_good` UN/IMDG + aliasy + `source_ref` + RLS FORCE + `resolve` + OpenFGA `can_manage_dangerous_goods` + `/dangerous-goods`. Nie podpięcie do wyceny, nie M-08 `charge`, nie live IMO. |
-| 2026-09-01 | Plan 8.0 | M-11 | delta `docs/deltas/open/8.0-party-email-match.md`. Matcher `resolve_email` na `party_email_domain`. Nie nowa tabela, nie IMAP, nie auto-INSERT kontaktu. Następny: `/plaster` 8.0. |
+| 2026-09-01 | Plan 8.0 | M-11 | delta `docs/deltas/archived/8.0-party-email-match.md`. Matcher `resolve_email` na `party_email_domain`. Nie nowa tabela, nie IMAP, nie auto-INSERT kontaktu. Następny: `/plaster` 8.0. |
+| 2026-09-01 | 8.0 | M-11 | `resolve_email` na `party_email_domain`; `UnknownEmailDomain`; GET `/parties/resolve-email`; pole „Sprawdź mail” na `/parties`. Nie nowa tabela, nie IMAP, nie auto-INSERT kontaktu. |

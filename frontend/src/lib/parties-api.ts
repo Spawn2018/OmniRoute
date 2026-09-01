@@ -128,6 +128,14 @@ export async function resolveParty(taxId: string): Promise<Party> {
   return parseBody<Party>(response, "Nieznany kontrahent")
 }
 
+export async function resolvePartyEmail(email: string): Promise<Party> {
+  const params = new URLSearchParams({ email })
+  const response = await fetch(`/api/v1/parties/resolve-email?${params.toString()}`, {
+    headers: requireAuthHeaders(),
+  })
+  return parseBody<Party>(response, "Nieznana domena mailowa")
+}
+
 export async function lookupParty(taxId: string, countryCode: string): Promise<PartyDraft> {
   const response = await fetch("/api/v1/parties/lookup", {
     method: "POST",

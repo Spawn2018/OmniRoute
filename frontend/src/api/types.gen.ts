@@ -2381,6 +2381,36 @@ export type ResolvePartyApiV1PartiesResolveGetResponses = {
 
 export type ResolvePartyApiV1PartiesResolveGetResponse = ResolvePartyApiV1PartiesResolveGetResponses[keyof ResolvePartyApiV1PartiesResolveGetResponses];
 
+export type ResolvePartyEmailApiV1PartiesResolveEmailGetData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Email
+         */
+        email: string;
+    };
+    url: '/api/v1/parties/resolve-email';
+};
+
+export type ResolvePartyEmailApiV1PartiesResolveEmailGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ResolvePartyEmailApiV1PartiesResolveEmailGetError = ResolvePartyEmailApiV1PartiesResolveEmailGetErrors[keyof ResolvePartyEmailApiV1PartiesResolveEmailGetErrors];
+
+export type ResolvePartyEmailApiV1PartiesResolveEmailGetResponses = {
+    /**
+     * Successful Response
+     */
+    200: PartyResponse;
+};
+
+export type ResolvePartyEmailApiV1PartiesResolveEmailGetResponse = ResolvePartyEmailApiV1PartiesResolveEmailGetResponses[keyof ResolvePartyEmailApiV1PartiesResolveEmailGetResponses];
+
 export type LookupPartyApiV1PartiesLookupPostData = {
     body: PartyLookupRequest;
     path?: never;

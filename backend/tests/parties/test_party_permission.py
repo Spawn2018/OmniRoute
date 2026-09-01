@@ -14,6 +14,7 @@ _DENIED = "Brak uprawnienia can_manage_parties na organization"
 _ENDPOINTS = (
     ("GET", "/api/v1/parties", None, None),
     ("GET", "/api/v1/parties/resolve", {"tax_id": "5252345178"}, None),
+    ("GET", "/api/v1/parties/resolve-email", {"email": "a@acme.test"}, None),
     ("POST", "/api/v1/parties/lookup", None, {"tax_id": "5252345178", "country_code": "PL"}),
     ("POST", "/api/v1/parties/iban-lookup", None, {"iban": "PL61109010140000071219812874"}),
     (

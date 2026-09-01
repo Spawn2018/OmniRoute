@@ -38,6 +38,8 @@ describe("parties catalog surface for 5.0", () => {
     expect(page).toContain("DataTableShell")
     expect(page).toContain("createParty")
     expect(page).toContain("resolveParty")
+    expect(page).toContain("resolvePartyEmail")
+    expect(page).toContain("Sprawdź mail")
     expect(page).toContain("lookupParty")
     expect(page).toContain("contacts")
     expect(page).toContain("bank")

@@ -240,6 +240,16 @@ async def resolve_party(
     return PartyResponse.from_row(row)
 
 
+@router.get("/resolve-email", response_model=PartyResponse)
+async def resolve_party_email(
+    email: str = Query(..., min_length=3, max_length=256),
+    _authz: None = Depends(_PARTIES),
+    session: AsyncSession = Depends(require_tenant_session),
+) -> PartyResponse:
+    row = await PartyService(session).resolve_email(email)
+    return PartyResponse.from_row(row)
+
+
 @router.post("/lookup", response_model=PartyDraftResponse)
 async def lookup_party(
     body: PartyLookupRequest,
