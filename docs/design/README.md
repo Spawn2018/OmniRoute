@@ -3,7 +3,9 @@
 **ADR:** [0003](../adr/0003-frontend-ui-system-2026.md) (uzupełnia 0002).  
 **Nie kod produktu.** Nie bundel Vite.
 
-**Kanon wizualny:** [app-preview.html](app-preview.html) — układ rail + powierzchnia + prawa szyna (wzorzec z makiety Claude), tokeny OKLCH OmniRoute (zieleń, nie niebieski SaaS), tenant w topbarze, HITL, kwoty jako string z „serwera” (zero `sum()` w JS). Otwórz w przeglądarce, nie w Canvas IDE.
+**Podgląd sprzedażowy (klikalny, M-01…M-212):** [omniroute-ui.html](omniroute-ui.html) — nie kod produktu, nie plaster kolejki. Katalog: [omniroute-ui-catalog.js](omniroute-ui-catalog.js).
+
+**Kanon leftoverów ADR-0003:** [app-preview.html](app-preview.html) — układ rail + powierzchnia + prawa szyna, tokeny OKLCH (zieleń hue 165), tenant w topbarze, HITL, kwoty jako string z „serwera” (zero `sum()` w JS). Otwórz w przeglądarce, nie w Canvas IDE.
 
 Canvas IDE dziedziczy kolory edytora i wygląda jak dokument, nie jak aplikacja.
 

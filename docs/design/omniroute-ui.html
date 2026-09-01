@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="pl" data-theme="light" data-density="compact">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>OmniRoute — podgląd sprzedażowy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Makieta. Nie bundel Vite. Nie ruszać frontend/. */
+:root {
+  --s1: 4px; --s2: 6px; --s3: 8px; --s4: 12px; --s5: 16px; --s6: 24px;
+  --r: 12px; --r-sm: 8px; --r-pill: 999px;
+  --fs-xs: 11px; --fs-sm: 12.5px; --fs: 14px; --fs-md: 16px; --fs-lg: 22px; --fs-xl: 28px;
+  --row-h: 32px; --pad-y: 6px;
+  --rail: 3.35rem; --insp: 19.5rem; --top: 3rem;
+  --sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --cond: "IBM Plex Sans Condensed", "IBM Plex Sans", sans-serif;
+  --ink: oklch(.2 .04 165);
+  --on-ink: oklch(.97 .01 165);
+  --canvas: oklch(.955 .014 165);
+  --surface: oklch(.995 .004 165);
+  --surface-2: oklch(.975 .01 165);
+  --surface-3: oklch(.945 .018 165);
+  --rule: oklch(.9 .02 165);
+  --rule-2: oklch(.82 .03 165);
+  --text: oklch(.23 .03 165);
+  --text-2: oklch(.42 .03 165);
+  --text-3: oklch(.54 .025 165);
+  --accent: oklch(.42 .11 165);
+  --accent-2: oklch(.52 .12 165);
+  --accent-soft: oklch(.94 .05 165);
+  --ok: oklch(.44 .11 165);
+  --ok-soft: oklch(.94 .05 165);
+  --alert: oklch(.48 .11 62);
+  --alert-tint: oklch(.972 .028 78);
+  --alert-line: oklch(.74 .14 70);
+  --stop: oklch(.52 .19 25);
+  --focus: oklch(.42 .12 165);
+  --lift: 0 1px 2px oklch(.22 .03 165 / .06), 0 10px 28px oklch(.22 .03 165 / .1);
+  --scrim: oklch(.2 .03 165 / .42);
+  color-scheme: light;
+}
+[data-theme="dark"] {
+  --ink: oklch(.16 .03 165);
+  --on-ink: oklch(.95 .015 165);
+  --canvas: oklch(.15 .02 165);
+  --surface: oklch(.22 .025 165);
+  --surface-2: oklch(.26 .028 165);
+  --surface-3: oklch(.3 .03 165);
+  --rule: oklch(.34 .03 165);
+  --rule-2: oklch(.42 .035 165);
+  --text: oklch(.94 .015 165);
+  --text-2: oklch(.76 .02 165);
+  --text-3: oklch(.64 .02 165);
+  --accent: oklch(.78 .11 165);
+  --accent-2: oklch(.72 .11 165);
+  --accent-soft: oklch(.3 .05 165);
+  --ok: oklch(.76 .11 165);
+  --ok-soft: oklch(.3 .05 165);
+  --alert: oklch(.83 .12 78);
+  --alert-tint: oklch(.28 .045 72);
+  --alert-line: oklch(.66 .13 70);
+  --stop: oklch(.7 .16 25);
+  --focus: oklch(.8 .1 165);
+  --lift: 0 1px 2px oklch(0 0 0 / .4), 0 14px 36px oklch(0 0 0 / .45);
+  --scrim: oklch(.08 .02 165 / .55);
+  color-scheme: dark;
+}
+[data-density="comfortable"] { --row-h: 40px; --pad-y: 9px; --fs: 14.5px; }
+[data-grid="condensed"] .grid { font-family: var(--cond); --row-h: 24px; --pad-y: 3px; --fs-xs: 10.5px; }
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  overflow-x: auto;
+  overflow-y: auto;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0; font: var(--fs)/1.4 var(--sans); background: var(--canvas); color: var(--text);
+  min-height: 100dvh; overflow-x: auto; overflow-y: auto;
+  -webkit-font-smoothing: antialiased; overflow-wrap: anywhere;
+}
+button, select, input { font: inherit; color: inherit; }
+button { background: none; border: 0; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: var(--r-sm); }
+svg { display: block; }
+.app {
+  min-height: 100dvh; width: 100%; max-width: 100%;
+}
+.rail {
+  background: var(--ink); color: var(--on-ink); display: flex; flex-direction: column;
+  align-items: center; gap: var(--s2); padding: var(--s3) 0 env(safe-area-inset-bottom);
+  position: fixed; left: 0; top: 0; bottom: 0; width: var(--rail); height: 100dvh; z-index: 30;
+}
+.mark {
+  width: 2rem; height: 2rem; margin: var(--s2) 0 var(--s3); border-radius: var(--r-sm);
+  background: oklch(.72 .12 165); color: oklch(.16 .04 165);
+  display: grid; place-items: center; font-weight: 600;
+}
+.rail button, .rail a {
+  width: 2.35rem; height: 2.35rem; display: grid; place-items: center; border-radius: var(--r-sm);
+  color: color-mix(in oklch, var(--on-ink) 72%, transparent); position: relative;
+}
+.rail button[aria-current="page"] { background: color-mix(in oklch, var(--on-ink) 14%, transparent); color: var(--on-ink); }
+.rail svg { width: 1.15rem; height: 1.15rem; }
+.rail .sp { flex: 1; }
+.who { width: 1.85rem; height: 1.85rem; border-radius: 50%; background: color-mix(in oklch, var(--on-ink) 16%, transparent); display: grid; place-items: center; font-size: 10px; font-weight: 600; }
+.shell { display: flex; flex-direction: column; min-width: 0; min-height: 100dvh; flex: 1; margin-left: var(--rail); }
+.top {
+  display: flex; align-items: center; flex-wrap: wrap; gap: var(--s3); padding: var(--s3) var(--s4);
+  background: var(--surface); border-bottom: 1px solid var(--rule); min-width: 0;
+  position: sticky; top: 0; z-index: 15;
+}
+.top select {
+  border: 1px solid var(--rule-2); border-radius: var(--r-sm); background: var(--surface-2);
+  min-height: 2rem; padding: 0 var(--s3); max-width: 11rem;
+}
+.crumb { font-size: var(--fs-sm); color: var(--text-2); min-width: 0; }
+.nav-back {
+  min-height: 2rem; min-width: 2rem; padding: 0 var(--s2); display: inline-flex; align-items: center; gap: var(--s1);
+  border: 1px solid var(--rule-2); border-radius: var(--r-sm); background: var(--surface-2); color: var(--text-2);
+  font-size: var(--fs-xs); font-weight: 500;
+}
+.nav-back:hover:not(:disabled) { background: var(--surface-3); color: var(--text); }
+.nav-back:disabled { opacity: .38; cursor: not-allowed; }
+.nav-back svg { width: 14px; height: 14px; flex-shrink: 0; }
+.crumb b { color: var(--text); font-weight: 500; }
+.omni {
+  flex: 1; min-width: 8rem; display: flex; align-items: center; gap: var(--s2);
+  min-height: 2rem; padding: 0 var(--s4); border: 1px solid var(--rule);
+  border-radius: var(--r-pill); background: var(--surface-2); color: var(--text-3); font-size: var(--fs-sm);
+}
+.omni kbd { margin-left: auto; font: 500 10px/1 var(--mono); border: 1px solid var(--rule-2); padding: 2px 5px; border-radius: 4px; }
+.tools { display: flex; gap: var(--s2); margin-inline-start: auto; }
+.icb {
+  min-height: 2rem; padding: 0 var(--s3); border: 1px solid var(--rule-2);
+  border-radius: var(--r-sm); background: var(--surface-2); color: var(--text-2); font-size: var(--fs-xs);
+}
+.icb[aria-pressed="true"] { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
+.avatar { width: 1.85rem; height: 1.85rem; border-radius: 50%; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; font-size: 10px; font-weight: 600; }
+.body { display: block; min-width: 0; flex: 1; }
+.body.no-insp .work { margin-right: 0; }
+.work { min-width: 0; overflow: visible; margin-right: var(--insp); }
+.insp {
+  background: var(--surface); border-left: 1px solid var(--rule); min-width: 0;
+  overflow: auto; padding: 0; position: fixed; top: var(--top); right: 0; bottom: 0;
+  width: var(--insp); z-index: 25;
+}
+.view { display: none; min-height: 0; }
+.view.on { display: block; }
+.pad { padding: var(--s5); max-width: 92rem; margin-inline: auto; width: 100%; }
+.xscroll {
+  overflow-x: auto; overflow-y: visible; max-width: 100%;
+  -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain;
+}
+table.lines, table.grid { width: 100%; border-collapse: collapse; min-width: 36rem; }
+.card {
+  background: var(--surface); border-radius: var(--r); box-shadow: var(--lift);
+  border: 1px solid color-mix(in oklch, var(--rule) 70%, transparent); padding: var(--s5); min-width: 0;
+}
+.h-id { font-size: var(--fs-xs); color: var(--text-3); margin: 0 0 var(--s2); }
+.h-route { font-size: var(--fs-lg); font-weight: 600; letter-spacing: -.02em; margin: 0 0 var(--s2); }
+.loc { font-family: var(--mono); font-size: var(--fs-sm); color: var(--text-2); font-weight: 400; }
+.banner .loc { color: oklch(.9 .02 165); opacity: .92; }
+.note { font-size: var(--fs-xs); color: var(--text-3); margin: 0; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: var(--s4); margin-bottom: var(--s5); }
+.kpi { padding: var(--s5); }
+.kpi dt { font-size: var(--fs-xs); letter-spacing: .06em; text-transform: uppercase; color: var(--text-3); margin: 0 0 var(--s2); }
+.kpi dd { margin: 0; font-size: var(--fs-xl); font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: -.03em; }
+.spark { height: 28px; margin-top: var(--s3); }
+.spark path { fill: none; stroke: var(--accent-2); stroke-width: 1.6; }
+.pages { display: grid; grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr)); gap: var(--s3); margin-bottom: var(--s5); }
+.page {
+  min-height: 5.5rem; border-radius: var(--r); padding: var(--s4); color: oklch(.18 .03 165);
+  display: flex; flex-direction: column; justify-content: flex-end; font-weight: 600; font-size: var(--fs-sm); text-align: left;
+}
+.page small { font-weight: 400; opacity: .8; font-size: var(--fs-xs); }
+.todo { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s3); align-items: start; padding: var(--s4) 0; border-bottom: 1px solid var(--rule); }
+.todo:last-child { border-bottom: 0; }
+.todo .meta { display: grid; grid-template-columns: 1fr 1fr; gap: 2px var(--s4); font-size: var(--fs-xs); color: var(--text-2); margin-top: var(--s2); }
+.linkish { color: var(--accent); font-weight: 500; font-size: var(--fs-sm); }
+.linkish.stop { color: var(--stop); }
+.btn {
+  display: inline-flex; align-items: center; gap: var(--s2); min-height: 2rem; padding: 0 var(--s4);
+  border: 1px solid var(--rule-2); border-radius: var(--r-sm); background: var(--surface); font-weight: 500; font-size: var(--fs-sm);
+}
+.btn-p { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
+.btn[aria-disabled="true"] { color: var(--text-3); border-style: dashed; cursor: not-allowed; }
+.cmd { display: flex; flex-wrap: wrap; gap: var(--s2); padding: var(--s3) var(--s5); background: var(--surface); border-bottom: 1px solid var(--rule); overflow-x: auto; max-width: 100%; }
+.banner {
+  margin: var(--s4) var(--s5) 0; border-radius: var(--r); padding: var(--s5) var(--s6);
+  background: linear-gradient(120deg, oklch(.32 .06 165), oklch(.42 .1 165));
+  color: oklch(.97 .01 165); max-width: calc(100% - 2 * var(--s5));
+}
+.facts {
+  display: grid; grid-template-columns: repeat(7, minmax(8rem, 1fr));
+  border-top: 1px solid var(--rule); margin: 0;
+}
+.fact { padding: var(--s3) var(--s2); border-right: 1px solid var(--rule); min-width: 0; text-align: center; }
+.fact:last-child { border-right: 0; }
+.fact dt { font-size: 10.5px; text-transform: uppercase; letter-spacing: .05em; color: var(--text-3); margin-bottom: 2px; }
+.fact dd { font-size: var(--fs); font-weight: 500; margin: 0; display: flex; flex-direction: column; align-items: center; }
+.fact dd small { display: block; font-weight: 400; color: var(--text-2); font-size: var(--fs-xs); margin-top: 1px; }
+.num { font-variant-numeric: tabular-nums lining-nums; }
+.facts-wrap { box-shadow: none; padding: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.tabs { display: flex; gap: 0; padding: 0 var(--s5); background: var(--surface); border-bottom: 1px solid var(--rule); overflow-x: auto; max-width: 100%; -webkit-overflow-scrolling: touch; }
+.tabs button { min-height: 2.5rem; padding: 0 var(--s4); color: var(--text-2); border-bottom: 2px solid transparent; white-space: nowrap; flex-shrink: 0; }
+.tabs button[aria-selected="true"] { color: var(--text); border-bottom-color: var(--accent); font-weight: 500; }
+.pane { display: none; padding: var(--s5); }
+.pane.on { display: block; }
+.chan { display: inline-flex; align-items: center; gap: var(--s2); font-size: var(--fs-xs); padding: 4px 8px; border-radius: var(--r-pill); background: var(--surface-2); margin-right: var(--s2); }
+.chan .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--text-3); }
+.chan.done .dot { background: var(--ok); }
+.chan.err .dot { background: var(--stop); }
+.v { border-radius: var(--r); box-shadow: var(--lift); background: var(--surface); margin-bottom: var(--s4); overflow: clip; border: 1px solid transparent; }
+.v.best { outline: 1px solid color-mix(in oklch, var(--ok) 45%, transparent); }
+.v.picked { outline: 2px solid var(--accent); }
+.vh { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: var(--s4); width: 100%; text-align: left; padding: var(--s4) var(--s5); min-width: 0; }
+.vb { display: none; border-top: 1px solid var(--rule); }
+.v.open .vb { display: block; }
+.chip { display: inline-flex; align-items: center; min-height: 1.2rem; padding: 0 7px; border-radius: 6px; font-size: 10px; font-weight: 500; letter-spacing: .03em; text-transform: uppercase; background: var(--surface-3); color: var(--text-2); }
+.chip.ok { background: var(--ok-soft); color: var(--ok); }
+.chip.alert { background: var(--alert-tint); color: var(--alert); }
+.chip.stop { background: color-mix(in oklch, var(--stop) 16%, var(--surface)); color: var(--stop); }
+.mval { display: inline-grid; grid-template-columns: auto auto auto; font-variant-numeric: tabular-nums; font-family: var(--mono); white-space: nowrap; }
+.mval .f { color: var(--text-2); }
+.cur { color: var(--text-3); font-size: .8em; padding-left: .3ch; }
+.mval.lg { font-size: var(--fs-md); font-weight: 500; }
+.mval.down { color: var(--stop); }
+.mval.down .f { color: color-mix(in oklch, var(--stop) 65%, var(--text-2)); }
+.fact-warn { color: var(--alert-line); font-weight: 500; }
+.ship-banner-top { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--s4); }
+.ship-banner-top .btn {
+  flex-shrink: 0; background: color-mix(in oklch, var(--on-ink) 10%, transparent);
+  border-color: color-mix(in oklch, var(--on-ink) 22%, transparent); color: inherit;
+}
+.ship-kpis-board { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.ship-kpis {
+  display: grid; grid-template-columns: repeat(9, minmax(6.5rem, 1fr));
+  grid-template-rows: auto auto; margin: 0; min-width: 58rem;
+}
+.ship-kpis .fact {
+  text-align: center; padding: var(--s3) var(--s2); border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule); display: flex; flex-direction: column; justify-content: center;
+  min-height: 4.5rem;
+}
+.ship-kpis .fact:nth-child(9n), .ship-kpis .fact:last-child { border-right: 0; }
+.ship-kpis .fact:nth-child(n + 10) { border-bottom: 0; }
+.ship-kpis .fact.fin { min-height: 6.75rem; }
+.ship-kpis .fact dd { display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1; margin: 0; gap: 1px; }
+.ship-kpis .fact dd small { display: block; font-weight: 400; color: var(--text-2); font-size: var(--fs-xs); margin-top: 1px; }
+.ship-kpis .fact dt { text-align: center; margin-bottom: var(--s1); flex-shrink: 0; }
+.ship-kpis .val.mono { font-family: var(--mono); letter-spacing: -.01em; }
+.ship-kpis .val { font-weight: 600; font-size: var(--fs-sm); line-height: 1.25; }
+.mstack { display: flex; flex-direction: column; align-items: stretch; gap: 0; width: 100%; }
+.mstack .mval { font-size: 10px; justify-self: center; margin-inline: auto; line-height: 1.35; }
+.mstack-total {
+  margin-top: var(--s1); padding-top: var(--s1); border-top: 1px solid var(--rule);
+  display: flex; flex-direction: column; align-items: center; gap: 0;
+}
+.mstack-total .mval { font-size: var(--fs-sm); font-weight: 600; }
+.mstack-total small { font: 400 8.5px var(--sans); color: var(--text-3); letter-spacing: 0; line-height: 1.2; }
+.mstack-total.down .mval { color: var(--stop); }
+.mstack-total.down .mval .f { color: color-mix(in oklch, var(--stop) 65%, var(--text-2)); }
+.ship-map-wrap { margin-top: var(--s4); padding: 0; overflow: hidden; }
+.ship-map-head {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2) var(--s3);
+  padding: var(--s3) var(--s4); border-bottom: 1px solid var(--rule);
+}
+.ship-map-head h3 { margin: 0; font-size: var(--fs-sm); font-weight: 600; }
+.ship-map-head .note { margin: 0; flex: 1 1 100%; }
+.map-layer-tools { display: flex; gap: var(--s2); margin-left: auto; }
+.map-layer-btn { min-height: 1.65rem; padding: 0 var(--s3); font-size: var(--fs-xs); }
+.map-layer-btn[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); font-weight: 500; }
+.map-legend { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s3); font-size: 10px; color: var(--text-3); }
+#shipMapNote .map-legend { margin-top: var(--s2); }
+.map-legend i { display: inline-block; width: 14px; height: 3px; border-radius: 2px; vertical-align: middle; margin-right: 3px; }
+.map-legend i.sea-done { background: var(--accent-2); }
+.map-legend i.sea-plan { background: var(--rule-2); }
+.map-legend i.road-done { background: #6b5e54; }
+.map-legend i.rail-plan { background: var(--ok); opacity: .75; }
+.ship-map { position: relative; min-height: 22rem; height: 22rem; }
+#shipMapLeaflet { width: 100%; height: 100%; background: var(--surface-2); }
+.ship-map .leaflet-container { font-family: var(--sans); z-index: 0; }
+.port-pin-wrap, .ship-marker-wrap { background: none; border: 0; }
+.port-pin { display: block; width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--accent); background: var(--surface); box-shadow: 0 1px 3px oklch(.2 .03 165 / .25); }
+.port-pin.done { border-color: var(--ok); background: var(--ok-soft); }
+.port-pin.plan { border-color: var(--text-3); background: var(--surface); border-style: dashed; }
+.leaflet-tooltip.port-tip {
+  background: var(--surface); border: 1px solid var(--rule); color: var(--text-2);
+  font: 500 11px var(--sans); padding: 2px 7px; border-radius: var(--r-sm); box-shadow: var(--lift);
+}
+.leaflet-tooltip.port-tip::before { border-top-color: var(--rule); }
+.ship-marker {
+  position: relative; width: 30px; height: 30px; border: 0; padding: 0; cursor: pointer;
+  background: none; display: grid; place-items: center;
+}
+.ais-target {
+  display: block; filter: drop-shadow(0 1px 2px oklch(.2 .03 165 / .4));
+  transition: filter 120ms ease;
+}
+.ship-marker:hover .ais-target, .ship-marker.on .ais-target {
+  filter: drop-shadow(0 0 5px oklch(.78 .14 75 / .85));
+}
+.ship-pulse {
+  position: absolute; inset: 0; border-radius: 50%; border: 2px solid oklch(.78 .14 75);
+  opacity: 0; pointer-events: none;
+}
+.ship-marker.on .ship-pulse { opacity: 1; animation: ais-pulse 1.8s ease-out infinite; }
+@keyframes ais-pulse { 0% { transform: scale(.55); opacity: .65; } 100% { transform: scale(1.35); opacity: 0; } }
+.ais-pop {
+  position: absolute; top: var(--s3); right: var(--s3); width: min(19rem, calc(100% - 1.5rem));
+  background: var(--surface); border: 1px solid var(--rule); border-radius: var(--r); box-shadow: var(--lift);
+  padding: var(--s4); z-index: 500;
+}
+.ais-pop[hidden] { display: none; }
+.ais-pop-head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--s3); margin-bottom: var(--s3); }
+.ais-pop h4 { margin: 0; font-size: var(--fs-sm); font-weight: 600; }
+.ais-pop .sub { font-size: var(--fs-xs); color: var(--text-3); margin: 2px 0 0; }
+.ais-pop-close { min-height: 1.5rem; padding: 0 var(--s2); font-size: var(--fs-xs); }
+.ais-pop dl { display: grid; grid-template-columns: auto 1fr; gap: 3px var(--s3); font-size: var(--fs-xs); margin: 0; }
+.ais-pop dt { color: var(--text-3); white-space: nowrap; }
+.ais-pop dd { margin: 0; font-family: var(--mono); font-size: 11px; color: var(--text); text-align: right; }
+.ais-pop .src { margin-top: var(--s3); padding-top: var(--s3); border-top: 1px solid var(--rule); font-size: var(--fs-xs); color: var(--text-3); }
+.legs { padding: var(--s4) 0 0; display: grid; gap: 0; }
+.leg { display: grid; grid-template-columns: 22px 1fr; gap: var(--s4); padding: 0; }
+.spine { display: flex; flex-direction: column; align-items: center; min-height: 100%; }
+.node { width: 11px; height: 11px; border-radius: 50%; margin-top: 14px; flex-shrink: 0; background: var(--text-3); }
+.node.done { background: var(--ok); }
+.node.now { background: var(--accent-2); box-shadow: 0 0 0 3px var(--accent-soft); }
+.node.next { background: var(--surface); outline: 1.5px solid var(--rule-2); }
+.line { width: 2px; flex: 1; min-height: 12px; background: var(--rule-2); margin: 3px 0; }
+.line.done { background: var(--ok); }
+.legc {
+  background: var(--surface); border: 1px solid var(--rule); border-radius: var(--r);
+  padding: var(--s4); margin-bottom: var(--s3); box-shadow: var(--lift);
+}
+.leg-head { display: grid; grid-template-columns: auto 1fr auto; gap: var(--s3); align-items: center; margin-bottom: var(--s3); }
+.leg-route { font-weight: 600; font-size: var(--fs); letter-spacing: -.01em; }
+.leg-car { font-size: var(--fs-xs); color: var(--text-2); text-align: right; white-space: nowrap; }
+.chip.mode-road { background: var(--surface-3); color: var(--text-2); }
+.chip.mode-sea { background: color-mix(in oklch, var(--accent-2) 14%, var(--surface)); color: var(--accent); }
+.chip.mode-rail { background: var(--ok-soft); color: var(--ok); }
+.leg-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s3); padding: var(--s3) 0; border-top: 1px solid var(--rule); border-bottom: 1px dashed var(--rule); }
+.leg-stat dt { font-size: 10.5px; text-transform: uppercase; letter-spacing: .05em; color: var(--text-3); margin-bottom: 2px; }
+.leg-stat dd { margin: 0; font-weight: 500; font-variant-numeric: tabular-nums; font-size: var(--fs-sm); display: flex; flex-direction: column; align-items: flex-start; }
+.leg-stat dd small { font-weight: 400; color: var(--text-2); font-size: var(--fs-xs); margin-top: 1px; }
+.leg-foot { padding-top: var(--s3); font-size: var(--fs-xs); color: var(--text-2); }
+.leg-foot::before { content: "•"; margin-right: var(--s2); color: var(--text-3); }
+.mini td.gap { color: var(--stop); }
+.bar { height: 4px; border-radius: 2px; background: var(--surface-3); margin-top: 4px; max-width: 10rem; }
+.bar i { display: block; height: 100%; background: var(--accent-2); border-radius: 2px; }
+.lines th, .lines td, .grid th, .grid td { padding: var(--pad-y) var(--s3); border-bottom: 1px solid var(--rule); text-align: left; }
+.lines th, .grid th { font-size: 10px; text-transform: uppercase; letter-spacing: .04em; color: var(--text-3); background: var(--surface-2); }
+.r { text-align: right; }
+.gap td { background: var(--alert-tint); }
+.grid tr.dead td { color: var(--text-3); text-decoration: line-through; }
+.tbar { display: flex; flex-wrap: wrap; gap: var(--s2); padding: var(--s3) var(--s5); align-items: center; overflow-x: auto; max-width: 100%; }
+.tbar select { min-height: 2rem; border: 1px solid var(--rule-2); border-radius: var(--r-sm); background: var(--surface); padding: 0 var(--s3); }
+.split { display: grid; grid-template-columns: 1fr 1fr; min-height: 0; }
+.sheet { font-family: var(--mono); font-size: var(--fs-xs); line-height: 1.75; background: var(--surface-2); border-radius: var(--r-sm); padding: var(--s4); }
+.export-mark.on {
+  background: oklch(.93 .06 25); color: oklch(.42 .2 25);
+  box-decoration-break: clone; -webkit-box-decoration-break: clone;
+  padding: 0 3px; border-radius: 2px;
+}
+[data-theme="dark"] .export-mark.on {
+  background: oklch(.72 .14 85); color: oklch(.18 .04 85);
+}
+.cand { display: grid; grid-template-columns: 1fr auto auto; gap: var(--s3); width: 100%; text-align: left; padding: var(--s3); border: 1px solid var(--rule); border-radius: var(--r-sm); margin-top: var(--s2); background: var(--surface); }
+.cand[aria-selected="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.hole { color: var(--alert); border-bottom: 1px dashed var(--alert-line); }
+.empty { text-align: center; padding: var(--s6); color: var(--text-2); }
+.drawer {
+  position: fixed; inset: 0 auto 0 0; width: min(22rem, 92vw); background: var(--surface);
+  box-shadow: var(--lift); z-index: 30; transform: translateX(-105%); transition: transform 160ms ease; display: flex; flex-direction: column;
+}
+.drawer.on { transform: none; }
+.dhead { padding: var(--s4); border-bottom: 1px solid var(--rule); font-weight: 600; }
+.dsearch { margin: var(--s3) var(--s4); min-height: 2rem; width: calc(100% - 2 * var(--s4)); border: 1px solid var(--rule-2); border-radius: var(--r-sm); padding: 0 var(--s3); background: var(--surface-2); }
+.dlist { overflow: auto; flex: 1; padding: 0 var(--s3) var(--s5); }
+.dgrp { font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--text-3); padding: var(--s3) var(--s2); }
+.ditem { display: grid; grid-template-columns: auto 1fr auto; gap: var(--s2); width: 100%; text-align: left; padding: 7px var(--s2); border-radius: var(--r-sm); }
+.ditem:hover, .ditem[aria-current="true"] { background: var(--accent-soft); }
+.badge { font-size: 9px; text-transform: uppercase; letter-spacing: .04em; color: var(--text-3); }
+.scrim { display: none; position: fixed; inset: 0; background: var(--scrim); z-index: 40; place-items: start center; padding-top: 12vh; }
+.scrim.on { display: grid; }
+.pal { width: min(36rem, 92vw); background: var(--surface); border-radius: var(--r); box-shadow: var(--lift); overflow: clip; }
+.pal input { width: 100%; border: 0; padding: var(--s4); background: transparent; }
+.pit { display: flex; gap: var(--s3); padding: var(--s3) var(--s4); cursor: pointer; }
+.pit[aria-selected="true"], .pit:hover { background: var(--accent-soft); }
+.pgrp { font-size: 10px; letter-spacing: .05em; text-transform: uppercase; color: var(--text-3); padding: var(--s3) var(--s4); }
+.toast { position: fixed; bottom: 1.25rem; left: 50%; transform: translateX(-50%) translateY(120%); background: var(--ink); color: var(--on-ink); padding: .6rem 1rem; border-radius: var(--r-sm); z-index: 50; font-size: var(--fs-sm); max-width: 36rem; }
+.toast.on { transform: translateX(-50%); }
+.risk { display: grid; grid-template-columns: 8px 1fr; gap: var(--s3); margin-bottom: var(--s3); }
+.risk:last-child { margin-bottom: 0; }
+.sev { width: 7px; height: 7px; border-radius: 50%; margin-top: 6px; background: var(--text-3); flex-shrink: 0; }
+.sev.alert { background: var(--alert-line); }
+.sev.stop { background: var(--stop); }
+.rsec { border-bottom: 1px solid var(--rule); padding: var(--s4); }
+.rsec:last-child { border-bottom: 0; }
+.rsec h3 {
+  font-size: 10.5px; font-weight: 500; text-transform: uppercase; letter-spacing: .05em;
+  color: var(--text-3); margin: 0 0 var(--s3); display: flex; align-items: center; gap: var(--s2);
+}
+.cnt {
+  font-size: 10px; min-width: 16px; height: 16px; padding: 0 4px; border-radius: var(--r-pill);
+  background: var(--surface-3); color: var(--text-2); display: grid; place-items: center; letter-spacing: 0;
+}
+.risk b { font-weight: 500; display: block; font-size: var(--fs-sm); }
+.risk p { color: var(--text-2); font-size: var(--fs-xs); margin: 2px 0 0; }
+.fix { color: var(--accent); font-size: var(--fs-xs); margin-top: var(--s1); font-weight: 500; text-decoration: underline; text-underline-offset: 2px; }
+.score { font-size: var(--fs-xl); font-weight: 600; color: var(--alert); font-variant-numeric: tabular-nums; margin: 0 0 var(--s2); }
+.score small { font-size: var(--fs-sm); font-weight: 400; color: var(--text-2); }
+.scorebar { height: 6px; border-radius: 3px; background: var(--surface-3); margin-bottom: var(--s3); }
+.scorebar i { display: block; height: 100%; width: 54%; background: var(--alert-line); border-radius: 3px; }
+table.mini { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); }
+.mini td { padding: 3px 0; color: var(--text-2); vertical-align: top; }
+.mini td + td { text-align: right; color: var(--text); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.mini tr.total td { font-weight: 600; color: var(--text); border-top: 1px solid var(--rule); padding-top: var(--s2); }
+.integ { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: var(--s3); }
+.integ .card { padding: var(--s4); }
+@media (max-width: 72rem) {
+  .work { margin-right: 0; }
+  .insp { position: static; width: auto; border-left: 0; border-top: 1px solid var(--rule); max-height: none; }
+  .split { grid-template-columns: 1fr; }
+}
+@media (max-width: 52rem) {
+  .shell { margin-left: 0; }
+  .rail {
+    left: 0; right: 0; top: auto; bottom: 0; width: 100%; height: auto;
+    flex-direction: row; justify-content: space-around; align-items: center;
+    padding: var(--s2) var(--s3) calc(var(--s2) + env(safe-area-inset-bottom));
+  }
+  .rail .sp, .rail .who, .rail .mark { display: none; }
+  .work { padding-bottom: calc(3.25rem + env(safe-area-inset-bottom)); }
+  .top { padding: var(--s3); row-gap: var(--s2); }
+  .top select { max-width: none; flex: 1 1 8rem; min-width: 0; }
+  .crumb { flex: 1 1 100%; order: 3; }
+  .omni { flex: 1 1 100%; order: 2; min-width: 0; }
+  .omni kbd { display: none; }
+  .tools { order: 1; margin-inline-start: 0; flex-wrap: wrap; }
+  .pad { padding: var(--s4); }
+  .banner { margin-inline: var(--s4); padding: var(--s4); max-width: calc(100% - 2 * var(--s4)); }
+  .cmd { padding-inline: var(--s4); }
+  .tabs { padding-inline: var(--s4); }
+  .pane { padding: var(--s4); }
+  .todo { grid-template-columns: 1fr; }
+  .todo .meta { grid-template-columns: 1fr; }
+  .vh { grid-template-columns: 1fr; gap: var(--s2); }
+  .cand { grid-template-columns: 1fr; gap: var(--s2); }
+  .pages { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .leg-head { grid-template-columns: 1fr; gap: var(--s2); }
+  .leg-car { text-align: left; white-space: normal; }
+  .leg-grid { grid-template-columns: 1fr; }
+@media (max-width: 28rem) {
+  .pages { grid-template-columns: 1fr; }
+  .kpis { grid-template-columns: 1fr; }
+}
+</style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+</head>
+<body>
+<div class="app">
+  <nav class="rail" aria-label="Moduły">
+    <span class="mark">O</span>
+    <button type="button" data-go="home" aria-current="page" title="Dzień"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></button>
+    <button type="button" data-go="quote" title="Wyceny"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg></button>
+    <button type="button" data-go="rates" title="Stawki"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 19V5M4 19h16M8 16V9m4 7V7m4 9v-5"/></svg></button>
+    <button type="button" data-go="hitl" title="Ekstrakcje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2M7 8h8M7 12h10M7 16h6"/></svg></button>
+    <button type="button" data-go="ship" title="Zlecenia"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M19.4 20A11.6 11.6 0 0 0 21 14l-9-4-9 4c0 2.9.9 5.3 2.8 7.8"/></svg></button>
+    <button type="button" data-go="channels" title="Kanały"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></button>
+    <button type="button" id="openCat" title="Wszystkie moduły"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    <div class="sp"></div>
+    <button type="button" data-go="users" title="Użytkownicy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></button>
+    <div class="who" id="tenantInitials">SB</div>
+  </nav>
+  <div class="shell">
+    <header class="top">
+      <select id="tenant" aria-label="Organizacja"><option>Sped Bałtyk</option><option>Nordic Forwarding</option></select>
+      <button class="nav-back" type="button" id="navBack" title="Wstecz (Alt+←)" aria-label="Wstecz" disabled aria-disabled="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+        <span>Wstecz</span>
+      </button>
+      <div class="crumb"><span id="mod">Dzień</span> / <b id="crumb">Joby operatora</b></div>
+      <button class="omni" id="omni" type="button">Szukaj albo wykonaj polecenie <kbd>⌘K</kbd></button>
+      <div class="tools">
+        <button class="icb" type="button" id="dc" aria-pressed="true">Zwarty</button>
+        <button class="icb" type="button" id="dr" aria-pressed="false">Swobodny</button>
+        <button class="icb" type="button" id="th" aria-pressed="false">Motyw ciemny</button>
+        <div class="avatar" title="Anna Nowak">AN</div>
+      </div>
+    </header>
+    <div class="body no-insp" id="body">
+      <main class="work">
+        <section class="view on" id="v-home"></section>
+        <section class="view" id="v-quote"></section>
+        <section class="view" id="v-rates"></section>
+        <section class="view" id="v-hitl"></section>
+        <section class="view" id="v-ship"></section>
+        <section class="view" id="v-users"></section>
+        <section class="view" id="v-channels"></section>
+        <section class="view" id="v-mod"></section>
+      </main>
+      <aside class="insp" id="insp" hidden></aside>
+    </div>
+  </div>
+</div>
+<aside class="drawer" id="drawer" aria-label="Katalog modułów" aria-hidden="true" inert>
+  <div class="dhead">Moduły <span id="modCount"></span></div>
+  <input class="dsearch" id="dsearch" placeholder="Szukaj M-xx albo nazwy…" aria-label="Szukaj modułu">
+  <div class="dlist" id="dlist"></div>
+</aside>
+<div class="scrim" id="scrim">
+  <div class="pal" role="dialog" aria-label="Paleta">
+    <input id="palIn" placeholder="Szukaj zleceń, stawek, modułów…" autocomplete="off">
+    <div id="palRes"></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script src="omniroute-ui-catalog.js"></script>
+<script>
+const $ = (s, c = document) => c.querySelector(s);
+const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+function money(amount, currency, cls) {
+  if (typeof amount !== "string" || typeof currency !== "string") throw new Error("kwota tylko jako string");
+  if (amount === "") return `<span class="mval hole ${cls || ""}"><b>brak</b></span>`;
+  const comma = amount.lastIndexOf(",");
+  const int = comma === -1 ? amount : amount.slice(0, comma);
+  const fra = comma === -1 ? "" : amount.slice(comma);
+  return `<span class="mval ${cls || ""}"><span>${int}</span><span class="f">${fra}</span><span class="cur">${currency}</span></span>`;
+}
+function moneyStack(rows, totalPln, cls) {
+  const body = rows.map((r) => money(r.amount, r.currency)).join("");
+  return `<span class="mstack">${body}<span class="mstack-total${cls ? " " + cls : ""}">${money(totalPln, "PLN")}</span></span>`;
+}
+const INCOTERM_SCOPE = {
+  EXW: { pre: false, main: false, on: false },
+  FCA: { pre: true, main: false, on: false },
+  FAS: { pre: true, main: false, on: false },
+  FOB: { pre: true, main: false, on: false },
+  CFR: { pre: true, main: true, on: false },
+  CIF: { pre: true, main: true, on: false },
+  CPT: { pre: true, main: true, on: false },
+  CIP: { pre: true, main: true, on: false },
+  DAP: { pre: true, main: true, on: true },
+  DPU: { pre: true, main: true, on: true },
+  DDP: { pre: true, main: true, on: true },
+};
+const SHIP_ROUTE = {
+  incoterm: "DAP",
+  namedPlace: "Lima",
+  poznan: [52.4064, 16.9252],
+  gdynia: [54.5189, 18.5305],
+  callao: [-12.0464, -77.1509],
+  lima: [-12.0432, -77.0289],
+  ship: [36.1233, -5.4352],
+  panama: [9.08, -79.68],
+  course: 142,
+  preDone: true,
+  mainDonePart: true,
+};
+const SHIP_META = {
+  ref: "GD/2026/00412",
+  customerPo: "PO/MEX/2026-08847",
+  roadPodjecie: "TR/POZ/2026-0193",
+  roadOdwóz: "TR/LIM/2026-0144",
+  storageLeft: "upływa za 4 dni",
+  detentionLeft: "upływa za 14 dni",
+  hbl: "OMR2609441",
+  hs: "9403.60.00",
+  hsDesc: "Meble drewniane, pozostałe",
+  equipment: "2 × 40HC",
+  containers: [
+    { no: "MSKU7823410", grossKg: "24 500" },
+    { no: "MSKU7823528", grossKg: "24 120" },
+  ],
+  paymentTerm: "52 dni netto",
+  paymentTermNote: "karta M-13",
+  portArrival: {
+    port: "Callao",
+    planned: "20.10",
+    current: "23.10",
+    delayDays: 3,
+    updatedAt: "28.08 09:40",
+  },
+};
+function shipInspHtml() {
+  const pa = SHIP_META.portArrival;
+  return `<div class="rsec"><h3>Wyjątki <span class="cnt">3</span></h3>
+    <div class="risk"><span class="sev alert"></span><div><b>Przypłynięcie do ${pa.port} opóźnione o ${pa.delayDays} dni</b><p>Prognoza ATD/ATA w porcie zmieniła się z ${pa.planned} na ${pa.current} (akt. ${pa.updatedAt}). Klient nie został powiadomiony.</p><button class="fix linkish" type="button" data-act="notify">Wyślij powiadomienie</button></div></div>
+    <div class="risk"><span class="sev stop"></span><div><b>Storage upływa 02.10</b><p>Po tej dacie naliczany storage 85 USD/dzień/kontener. Odwóz nie jest jeszcze zaplanowany.</p><button class="fix linkish" type="button" data-act="haul">Zleć odwóz</button></div></div>
+    <div class="risk"><span class="sev alert"></span><div><b>Detention upływa 18.10</b><p>Po tej dacie naliczane detention 165 USD/dzień/kontener.</p><button class="fix linkish" type="button" data-act="haul-det">Potwierdź odwóz</button></div></div>
+  </div>
+  <div class="rsec"><h3>Rozliczenie</h3>
+    <table class="mini">
+      <tr><td>Przychód</td><td>24 800,00</td></tr>
+      <tr><td>Koszty zafakturowane</td><td>18 420,00</td></tr>
+      <tr><td>Rezerwy otwarte</td><td>3 480,00</td></tr>
+      <tr><td>Rozbieżność Andes</td><td class="gap">+310,00</td></tr>
+      <tr class="total"><td>Wynik prognozowany</td><td>2 590,00</td></tr>
+    </table>
+    <p class="note" style="margin-top:var(--s3)">Wartości z serwera (M-24). UI nie liczy marży ani kosztu pieniądza.</p>
+  </div>`;
+}
+const SHIP_FIN = {
+  revenue: {
+    rows: [{ amount: "8 442,00", currency: "USD" }, { amount: "290,00", currency: "EUR" }, { amount: "1 240,00", currency: "PLN" }],
+    totalPln: "24 800,00",
+  },
+  cost: {
+    rows: [{ amount: "18 420,00", currency: "USD" }, { amount: "145,00", currency: "EUR" }, { amount: "1 240,00", currency: "PLN" }],
+    totalPln: "22 210,00",
+  },
+  marginPlan: {
+    rows: [{ amount: "1 124,00", currency: "USD" }, { amount: "145,00", currency: "EUR" }, { amount: "1 631,00", currency: "PLN" }],
+    totalPln: "2 900,00",
+  },
+  marginForecast: {
+    rows: [{ amount: "1 123,00", currency: "USD" }, { amount: "145,00", currency: "EUR" }, { amount: "1 322,00", currency: "PLN" }],
+    totalPln: "2 590,00",
+  },
+};
+function toast(m) {
+  const t = $("#toast");
+  t.textContent = m;
+  t.classList.add("on");
+  clearTimeout(toast._id);
+  toast._id = setTimeout(() => t.classList.remove("on"), 3200);
+}
+const SPARK = '<svg class="spark" viewBox="0 0 120 28" aria-hidden="true"><path d="M2 22 C18 20 22 8 40 12 S70 26 90 10 118 6 118 6"/></svg>';
+const LAYER = { kanon: "kanon", uzup: "uzup.", a: "luka A", b: "linia B", c: "odroczone", plat: "platforma", ops: "ops" };
+let mailOn = false;
+let spotOn = false;
+let hitlId = "c2";
+let picked = "andes";
+let gridDense = false;
+let current = "home";
+let currentMod = null;
+
+const VARIANTS = [
+  { id: "andes", src: "db", name: "Andes Cargo SAC", via: "agent · Lima", age: "cennik sprzed 4 dni", transit: "32 dni", etd: "ETD 18.09", best: true, gapLabel: "1 brak", sell: "8 442,00", buy: "7 318,00", margin: "1 124,00", pct: "13,3%", share: "66%", currency: "USD", why: "source_ref Andes Cargo FCL EXPORT · marża z charge.margin() na serwerze",
+    lines: [
+      { c: "OFR", d: "Fracht morski 40HC × 2", b: "per kontener", buy: "4 680,00", sell: "5 150,00", margin: "470,00", currency: "USD", gap: false },
+      { c: "BAF", d: "Dopłata paliwowa", b: "per kontener", buy: "420,00", sell: "462,00", margin: "42,00", currency: "USD", gap: false },
+      { c: "DTHC", d: "THC Callao", b: "per kontener", buy: "620,00", sell: "775,00", margin: "155,00", currency: "USD", gap: false },
+      { c: "ISPS-D", d: "Ochrona portu Callao — brak w źródle", b: "per kontener", buy: "", sell: "", margin: "", currency: "USD", gap: true }
+    ]},
+  { id: "pacific", src: "db", name: "Pacific Forwarding Peru", via: "agent · Callao", age: "cennik sprzed 19 dni", transit: "34 dni", etd: "ETD 20.09", best: false, gapLabel: "2 braki", sell: "8 436,00", buy: "7 313,00", margin: "1 123,00", pct: "13,3%", share: "66%", currency: "USD", why: "stawka wygasa 15.09 — przed cut-off 18–24.09",
+    lines: [
+      { c: "OFR", d: "Fracht morski 40HC × 2", b: "per kontener", buy: "4 820,00", sell: "5 300,00", margin: "480,00", currency: "USD", gap: false },
+      { c: "ISPS-D", d: "Ochrona portu Callao — brak w źródle", b: "per kontener", buy: "", sell: "", margin: "", currency: "USD", gap: true }
+    ]},
+  { id: "trans", src: "mail", name: "TransAndina Logistics", via: "odpowiedź mailem · 27.08", age: "z zapytania ZAP/00318", transit: "35 dni", etd: "ETD 21.09", best: false, gapLabel: "5 braków", sell: "7 860,00", buy: "6 800,00", margin: "1 060,00", pct: "13,5%", share: "68%", currency: "USD", why: "ekstrakcja maila · HITL zaakceptowany",
+    lines: [
+      { c: "OFR", d: "Ocean freight 40HC × 2", b: "per kontener", buy: "4 390,00", sell: "4 830,00", margin: "440,00", currency: "USD", gap: false },
+      { c: "ETS", d: "EU ETS — brak w źródle", b: "per kontener", buy: "", sell: "", margin: "", currency: "USD", gap: true }
+    ]}
+];
+const SPOT = { id: "hapag", src: "api", name: "Hapag-Lloyd", via: "Quick Quotes · QQ-8841203", age: "pobrano z API", transit: "29 dni", etd: "ETD 19.09", best: false, gapLabel: "2 braki", sell: "8 768,00", buy: "7 882,00", margin: "886,00", pct: "10,1%", share: "50%", currency: "USD", why: "kanał live · source_ref QQ-8841203",
+  lines: [
+    { c: "OFR", d: "Fracht morski 40HC × 2", b: "per kontener", buy: "5 240,00", sell: "5 764,00", margin: "524,00", currency: "USD", gap: false },
+    { c: "CUST-IMP", d: "Odprawa Peru — brak w API", b: "per zlecenie", buy: "", sell: "", margin: "", currency: "USD", gap: true }
+  ]};
+const RATES = [
+  { lane: "PLGDY→PECLL", vendor: "Andes Cargo SAC", eq: "40HC", code: "OFR", amt: "2 340,00", cur: "USD", src: "ANDES-FCL-0826", valid: "01.08–30.09", min: "2 kontenery", age: "4 dni", live: true, status: "rl-1044" },
+  { lane: "PLGDY→PECLL", vendor: "Pacific Forwarding", eq: "40HC", code: "OFR", amt: "2 410,00", cur: "USD", src: "PAC-PE-0826", valid: "12.07–15.09", min: "1 kontener", age: "19 dni", live: true, status: "rl-1046" },
+  { lane: "PLGDY→CNSHA", vendor: "Hapag-Lloyd", eq: "40HC", code: "OFR", amt: "1 850,00", cur: "USD", src: "HAPAG-SHA-0826", valid: "01.08–30.09", min: "—", age: "13 dni", live: true, status: "rl-1012" },
+  { lane: "PLGDY→CNSHA", vendor: "CMA CGM", eq: "40HC", code: "OFR", amt: "1 795,00", cur: "USD", src: "CMA-QQ-773101", valid: "25.08–08.09", min: "—", age: "7 dni", live: true, status: "rl-1030" },
+  { lane: "CNSHA→PLGDY", vendor: "Maersk", eq: "40HC", code: "OFR", amt: "1 920,00", cur: "USD", src: "MAERSK-SHA-0826", valid: "01.08–31.08", min: "—", age: "—", live: false, status: "rl-1001" },
+  { lane: "CNSHA→PLGDY", vendor: "Maersk", eq: "40HC", code: "OFR", amt: "2 040,00", cur: "USD", src: "MAERSK-SHA-0926", valid: "01.09–30.09", min: "—", age: "2 dni", live: true, status: "rl-1061" }
+];
+const CANDS = [
+  { id: "c1", code: "OFR", amt: "1 850,00", cur: "USD", state: "potwierdzone", pct: "94%" },
+  { id: "c2", code: "BAF", amt: "120,00", cur: "USD", state: "niepewne", pct: "61%" },
+  { id: "c3", code: "THC", amt: "145,00", cur: "EUR", state: "niepewne", pct: "38%" }
+];
+const CARRIERS = [
+  { n: "Maersk", st: "done", last: "dziś 09:12", note: "spot QQ zmapowany na charge" },
+  { n: "Hapag-Lloyd", st: "done", last: "dziś 08:40", note: "Quick Quotes" },
+  { n: "MSC", st: "", last: "wczoraj", note: "credentials tenanta zaszyfrowane" },
+  { n: "CMA CGM", st: "err", last: "błąd 14:02", note: "ponów z M-191" },
+  { n: "ONE", st: "", last: "niesprawdzone", note: "kanał w konfiguracji" },
+  { n: "HMM", st: "", last: "niesprawdzone", note: "kanał w konfiguracji" },
+  { n: "Yang Ming", st: "", last: "niesprawdzone", note: "kanał w konfiguracji" },
+  { n: "INTTRA / DCSA", st: "done", last: "dziś", note: "booking stub" }
+];
+
+function variants() { return spotOn ? VARIANTS.concat([SPOT]) : VARIANTS; }
+function renderVariant(v) {
+  const tag = { db: "z cennika", api: "live spot", mail: "z maila" }[v.src];
+  const lines = v.lines.map((l) => `<tr class="${l.gap ? "gap" : ""}"><td>${l.c}</td><td>${l.d}</td><td>${l.b}</td><td class="r">${money(l.buy, l.currency)}</td><td class="r">${money(l.sell, l.currency)}</td><td class="r">${money(l.margin, l.currency)}</td></tr>`).join("");
+  return `<article class="v${v.best ? " best" : ""}${picked === v.id ? " picked" : ""}" data-id="${v.id}">
+    <button class="vh" type="button" data-open="${v.id}"><div><div class="vname">${v.name} <span class="chip">${tag}</span> ${v.best ? '<span class="chip ok">najlepsza marża</span>' : ""} <span class="chip alert">${v.gapLabel}</span></div><div class="note">${v.via} · ${v.age}</div></div>
+    <div class="note">${v.transit}<br>${v.etd}</div>
+    <div>${money(v.sell, v.currency, "lg")}<div class="note">marża ${v.pct} · ${v.margin} ${v.currency}</div><div class="bar"><i style="width:${v.share}"></i></div></div></button>
+    <div class="vb"><table class="lines"><thead><tr><th>Kod</th><th>Opłata</th><th>Podstawa</th><th class="r">Zakup</th><th class="r">Sprzedaż</th><th class="r">Marża</th></tr></thead><tbody>${lines}</tbody>
+    <tfoot><tr><td colspan="3">Razem (z serwera)</td><td class="r">${money(v.buy, v.currency)}</td><td class="r">${money(v.sell, v.currency)}</td><td class="r">${money(v.margin, v.currency)}</td></tr></tfoot></table>
+    <div class="cmd"><span class="note">${v.why}</span><button class="btn" type="button" data-gap="${v.id}">Dopisz charge</button><button class="btn btn-p" type="button" data-pick="${v.id}">Wybierz wariant</button></div></div></article>`;
+}
+
+function paintHome() {
+  $("#v-home").innerHTML = `<div class="pad">
+    <div class="kpis">
+      <article class="card kpi"><dt>Oferty otwarte</dt><dd>14</dd><p class="note">3 bez HS — blokada</p>${SPARK}</article>
+      <article class="card kpi"><dt>Szkice HITL</dt><dd>6</dd><p class="note" style="color:var(--stop)">2 powyżej 24 h</p>${SPARK}</article>
+      <article class="card kpi"><dt>Luki ISPS</dt><dd>4</dd><p class="note">Callao, Santos, NYC</p>${SPARK}</article>
+      <article class="card kpi"><dt>Marża tygodnia</dt><dd>${money("38 420,00", "USD", "lg")}</dd><p class="note">z charge, nie z LLM</p>${SPARK}</article>
+    </div>
+    <div class="pages">
+      <button class="page" type="button" data-go="quote" style="background:oklch(.78 .12 165)">Wyceny<small>M-21</small></button>
+      <button class="page" type="button" data-go="rates" style="background:oklch(.82 .08 200)">Stawki<small>M-17</small></button>
+      <button class="page" type="button" data-go="hitl" style="background:oklch(.86 .1 85)">Ekstrakcje<small>M-20</small></button>
+      <button class="page" type="button" data-go="ship" style="background:oklch(.84 .08 250)">Zlecenia<small>M-35</small></button>
+      <button class="page" type="button" data-mod="M-10" style="background:oklch(.88 .06 30)">Kontrahenci<small>M-10</small></button>
+      <button class="page" type="button" data-go="channels" style="background:oklch(.8 .09 140)">Kanały<small>M-19</small></button>
+      <button class="page" type="button" data-mod="M-40" style="background:oklch(.86 .07 320)">KSeF<small>M-40</small></button>
+      <button class="page" type="button" data-mod="M-119" style="background:oklch(.9 .05 70)">CBAM<small>M-119</small></button>
+    </div>
+    <div class="card">
+      <h2 class="h-id">Do zrobienia · HITL</h2>
+      <div class="todo"><div><b>Akceptuj stawki Maersk SHA → GDY</b><div class="meta"><span>source_ref MAERSK-SHA-0926.pdf</span><span>4 wiersze · 09:14</span></div></div><div><button class="linkish" type="button" data-go="hitl">Akceptuj</button> · <button class="linkish stop" type="button" data-act="reject-home">Odrzuć</button></div></div>
+      <div class="todo"><div><b>Brak HS na ZAP/2026/00318</b><div class="meta"><span>Meblexport · PLGDY → PECLL</span><span>blokuje ofertę</span></div></div><button class="linkish" type="button" data-go="quote">Uzupełnij HS</button></div>
+      <div class="todo"><div><b>ISPS Callao w żadnym wariancie</b><div class="meta"><span>zwykle 45,00 USD / kontener</span><span>wymaga source_ref</span></div></div><button class="linkish" type="button" data-go="quote">Dopisz charge</button></div>
+    </div>
+  </div>`;
+}
+function paintQuote() {
+  const mail = mailOn
+    ? `<div class="card"><b>Do: Andes Cargo, Pacific, TransAndina</b><p class="note">ZAP/2026/00318 · PLGDY→PECLL · 2×40HC · podgląd przed wysłaniem. Idempotencja na wysyłce.</p><button class="btn btn-p" type="button" data-act="send-rfq">Wyślij zapytanie</button></div>`
+    : `<div class="empty"><b>Brak korespondencji</b><p>Wiadomości pojawią się po zapytaniu do agentów.</p><button class="btn" type="button" data-act="ask">Zapytaj agentów</button></div>`;
+  $("#v-quote").innerHTML = `<div class="cmd">
+      <button class="btn" type="button" data-act="save">Zapisz</button>
+      <button class="btn" type="button" data-act="ask">Zapytaj agentów</button>
+      <button class="btn" type="button" id="sendQuote" aria-disabled="true">Wyślij ofertę — brak HS</button>
+      <button class="btn" type="button" data-act="spot" id="spot">Pokaż wariant spot</button>
+    </div>
+    <div class="banner"><p class="h-id" style="color:inherit;opacity:.8">ZAP/2026/00318 · 28.08 · Anna Nowak · org z paska</p><p class="h-route" style="color:inherit">Gdynia <span class="loc">PLGDY</span> → Callao <span class="loc">PECLL</span></p><p style="margin:0;opacity:.9">Meblexport Sp. z o.o. · limit z karty M-13, nie scoring LLM</p></div>
+    <div class="pad" style="padding-top:var(--s4)">
+      <div class="card facts-wrap xscroll">
+        <dl class="facts">
+          <div class="fact"><dt>Ładunek</dt><dd>2 × 40HC <small>meble drewniane</small></dd></div>
+          <div class="fact"><dt>Kod HS</dt><dd><span class="chip alert">brak</span></dd></div>
+          <div class="fact"><dt>Incoterm</dt><dd>FOB <small>Gdynia</small></dd></div>
+          <div class="fact"><dt>Gotowość do podjęcia</dt><dd class="num">10–20.09<small>połowa września</small></dd></div>
+          <div class="fact"><dt>Cut-off bramowy</dt><dd class="num">18–24.09<small>+ 2 dni dowozu</small></dd></div>
+          <div class="fact"><dt>Ważność oferty</dt><dd class="num">14 dni<small>sugerowane</small></dd></div>
+          <div class="fact"><dt>Termin płatności</dt><dd class="num">52 dni netto<small>sugerowany · karta M-13</small></dd></div>
+        </dl>
+      </div>
+    </div>
+    <div class="tabs" role="tablist">
+      <button type="button" data-tab="warianty" aria-selected="true">Warianty</button>
+      <button type="button" data-tab="mail" aria-selected="false">Korespondencja</button>
+      <button type="button" data-tab="zal" aria-selected="false">Załączniki</button>
+    </div>
+    <div class="pane on" id="p-warianty">
+      <p><span class="chan done"><i class="dot"></i>Baza stawek</span><span class="chan"><i class="dot"></i>Hapag-Lloyd</span><span class="chan"><i class="dot"></i>Maersk</span><span class="chan ${spotOn ? "done" : ""}"><i class="dot"></i>spot API</span></p>
+      <div id="vlist">${variants().map(renderVariant).join("")}</div>
+      <p class="note">Kwoty i pasek z serwera. Ta makieta niczego nie liczy.</p>
+    </div>
+    <div class="pane" id="p-mail">${mail}</div>
+    <div class="pane" id="p-zal"><div class="empty"><b>Brak załączników</b><p>Pliki po ekstrakcji i akceptacji recenzenta.</p></div></div>`;
+}
+function paintRates() {
+  document.documentElement.dataset.grid = gridDense ? "condensed" : "";
+  $("#v-rates").innerHTML = `<div class="tbar">
+    <select aria-label="Relacja"><option>Wszystkie relacje</option><option>PLGDY → PECLL</option></select>
+    <select aria-label="Sprzęt"><option>FCL</option><option>LCL</option></select>
+    <span class="chip">rate_line · RLS</span>
+    <button class="icb" type="button" id="gk" aria-pressed="${gridDense}">Gęsty (tylko ta tabela)</button>
+  </div>
+  <div class="xscroll"><table class="grid"><thead><tr><th>Relacja</th><th>Dostawca</th><th>Sprzęt</th><th>Kod</th><th class="r">Stawka</th><th>source_ref</th><th>Ważność</th><th>Wersja</th></tr></thead>
+  <tbody>${RATES.map((r) => `<tr class="${r.live ? "" : "dead"}"><td>${r.lane}</td><td>${r.vendor}</td><td>${r.eq}</td><td>${r.code}</td><td class="r">${money(r.amt, r.cur)}</td><td><button class="linkish" type="button" data-act="src">${r.src}</button></td><td>${r.valid}</td><td>${r.live ? `<span class="chip ok">aktywna ${r.status}</span>` : `<span class="chip">superseded_by ${r.status}</span>`}</td></tr>`).join("")}</tbody></table></div>
+  <p class="note" style="padding:var(--s4)">Edycja = nowy rekord + superseded_by. Gęsty wyłącznie tu.</p>`;
+}
+function hitlExportSpan(id, text) {
+  return `<span class="export-mark${hitlId === id ? " on" : ""}">${text}</span>`;
+}
+function paintHitl() {
+  $("#v-hitl").innerHTML = `<div class="split">
+    <div class="pad"><h3 class="h-id">Podgląd źródła</h3>
+      <button class="linkish" type="button" data-act="pdf">MAERSK-SHA-0926.pdf</button>
+      <div class="sheet" style="margin-top:var(--s3)"><div>MAERSK LINE · SPOT RATE SHEET</div><div>SHANGHAI (CNSHA) — GDYNIA (PLGDY)</div><div>${hitlExportSpan("c1", "OCEAN FREIGHT USD 1,850 / 40HC")}</div><div>${hitlExportSpan("c2", "BAF USD 120 subject to change")}</div><div>${hitlExportSpan("c3", "THC origin EUR 145")}</div><div>Validity 01–30 Sep 2026</div></div>
+      <p class="note">Czerwony znacznik = pole eksportowane do rate_line (art. 50).</p></div>
+    <div class="pad"><h3 class="h-id">Recenzja · art. 50</h3>
+      ${CANDS.map((c) => `<button type="button" class="cand" data-hitl="${c.id}" aria-selected="${hitlId === c.id}"><span><b>${c.code}</b> ${c.amt} ${c.cur}</span><span class="chip ${c.state === "potwierdzone" ? "ok" : "alert"}">${c.state} ${c.pct}</span></button>`).join("")}
+      <div class="cmd" style="border:0;padding:var(--s4) 0"><button class="btn btn-p" type="button" id="acceptHitl">Akceptuj zaznaczone</button><button class="btn" type="button" id="rejectHitl">Odrzuć szkic</button></div>
+      <p class="note">Accept → rate_line w jednej transakcji. Bez optymistycznego UI.</p></div></div>`;
+}
+function paintShip() {
+  const pa = SHIP_META.portArrival;
+  const legs = [
+    {
+      mode: "droga", modeCls: "mode-road", route: "Poznań → Gdynia", car: "Trans-Pol Sp. z o.o.", st: "done",
+      depLbl: "Wyjazd", dep: "12.09 06:20", arrLbl: "Przyjazd", arr: "12.09 14:05",
+      cost: money("1 240,00", "PLN"), ev: "12.09 14:05 · przyjęcie na terminalu BCT, CMR podpisany", lineDone: true
+    },
+    {
+      mode: "morze", modeCls: "mode-sea", route: "Gdynia → Callao", car: "Hapag-Lloyd · Cape Pioneer 2639W", st: "now",
+      depLbl: "Wypłynięcie", dep: "01.10", arrLbl: "Przypłynięcie", arr: `${pa.current} prognoza`, arrNote: `${pa.port} · akt. ${pa.updatedAt}`,
+      cost: money("18 420,00", "USD"), ev: `01.10 22:14 · przeładunek Algeciras · ETA ${pa.port} przesunięta z ${pa.planned} na ${pa.current}`, lineDone: false
+    },
+    {
+      mode: "kolej", modeCls: "mode-rail", route: "Callao → Lima", car: "Ferrovías Perú", st: "next",
+      depLbl: "Wyjazd", dep: "—", arrLbl: "Przyjazd", arr: "po odprawie",
+      cost: money("", "USD"), ev: "oczekuje na przypłynięcie do portu", lineDone: false, last: true
+    }
+  ];
+  const legHtml = legs.map((l) => `<div class="leg">
+    <div class="spine"><span class="node ${l.st}"></span>${l.last ? "" : `<span class="line ${l.lineDone ? "done" : ""}"></span>`}</div>
+    <div class="legc">
+      <div class="leg-head"><span class="chip ${l.modeCls}">${l.mode}</span><span class="leg-route">${l.route}</span><span class="leg-car">${l.car}</span></div>
+      <div class="leg-grid">
+        <div class="leg-stat"><dt>${l.depLbl}</dt><dd>${l.dep}</dd></div>
+        <div class="leg-stat"><dt>${l.arrLbl}</dt><dd>${l.arr}${l.arrNote ? `<small>${l.arrNote}</small>` : ""}</dd></div>
+        <div class="leg-stat"><dt>Koszt</dt><dd>${l.cost}</dd></div>
+      </div>
+      <div class="leg-foot">${l.ev}</div>
+    </div>
+  </div>`).join("");
+  $("#v-ship").innerHTML = `<div class="banner">
+    <div class="ship-banner-top">
+      <div>
+        <p class="h-id" style="color:inherit;opacity:.85">GD/2026/00412 · HBL <span class="loc">OMR2609441</span></p>
+        <p class="h-route" style="color:inherit">Poznań → Lima · <span class="loc">${SHIP_ROUTE.incoterm} · ${SHIP_ROUTE.namedPlace}</span></p>
+        <p style="margin:0;opacity:.9;font-size:var(--fs-sm)">Meblexport Sp. z o.o.</p>
+      </div>
+      <button class="btn" type="button" data-act="docs">Dokumenty 7/9</button>
+    </div>
+  </div>
+  <div class="pad" style="padding-top:var(--s4)">
+    <div class="card ship-kpis-board" style="box-shadow:var(--lift);padding:0">
+      <dl class="facts ship-kpis">
+        <div class="fact"><dt>Aktualny status</dt><dd><span class="val">Morze · Algeciras</span><small>${pa.port} ETA ${pa.current} · akt. ${pa.updatedAt}</small></dd></div>
+        <div class="fact"><dt>Incoterms</dt><dd><span class="val">${SHIP_ROUTE.incoterm}</span></dd></div>
+        <div class="fact"><dt>Numer zlecenia</dt><dd><span class="val mono">${SHIP_META.ref}</span></dd></div>
+        <div class="fact"><dt>Nr zamówienia klienta</dt><dd><span class="val mono">${SHIP_META.customerPo}</span></dd></div>
+        <div class="fact"><dt>Numer zlecenia podjęcia</dt><dd><span class="val mono">${SHIP_META.roadPodjecie}</span></dd></div>
+        <div class="fact"><dt>Numer zlecenia odwozu</dt><dd><span class="val mono">${SHIP_META.roadOdwóz}</span></dd></div>
+        <div class="fact"><dt>HBL</dt><dd><span class="val mono">${SHIP_META.hbl}</span></dd></div>
+        <div class="fact"><dt>Kod HS</dt><dd><span class="val mono">${SHIP_META.hs}</span><small>${SHIP_META.hsDesc}</small></dd></div>
+        <div class="fact"><dt>Rozmiary kontenerów</dt><dd><span class="val">${SHIP_META.equipment}</span></dd></div>
+        <div class="fact"><dt>Numery kontenerów</dt><dd>${SHIP_META.containers.map((c) => `<span class="val mono">${c.no}</span>`).join("")}</dd></div>
+        <div class="fact"><dt>Waga</dt><dd>${SHIP_META.containers.map((c) => `<span class="val">${c.grossKg} kg</span>`).join("")}</dd></div>
+        <div class="fact"><dt>Termin płatności</dt><dd><span class="val">${SHIP_META.paymentTerm}</span><small>${SHIP_META.paymentTermNote}</small></dd></div>
+        <div class="fact"><dt>Storage</dt><dd class="fact-warn val">${SHIP_META.storageLeft}</dd></div>
+        <div class="fact"><dt>Detention</dt><dd class="fact-warn val">${SHIP_META.detentionLeft}</dd></div>
+        <div class="fact fin"><dt>Przychód</dt><dd>${moneyStack(SHIP_FIN.revenue.rows, SHIP_FIN.revenue.totalPln)}</dd></div>
+        <div class="fact fin"><dt>Koszt</dt><dd>${moneyStack(SHIP_FIN.cost.rows, SHIP_FIN.cost.totalPln)}</dd></div>
+        <div class="fact fin"><dt>Marża planowana</dt><dd>${moneyStack(SHIP_FIN.marginPlan.rows, SHIP_FIN.marginPlan.totalPln)}</dd></div>
+        <div class="fact fin"><dt>Marża prognozowana</dt><dd>${moneyStack(SHIP_FIN.marginForecast.rows, SHIP_FIN.marginForecast.totalPln, "down")}</dd></div>
+      </dl>
+    </div>
+    <div class="legs">${legHtml}</div>
+    <div class="card ship-map-wrap">
+      <div class="ship-map-head">
+        <h3>Śledzenie AIS</h3>
+        <span class="chip ok">Cape Pioneer · na żywo</span>
+        <div class="map-layer-tools">
+          <button type="button" class="btn map-layer-btn" id="mapLayerOsm" aria-pressed="true">Mapa</button>
+          <button type="button" class="btn map-layer-btn" id="mapLayerSat" aria-pressed="false">Satelita</button>
+        </div>
+        <p class="note" id="shipMapNote">Feed M-42 · zakres tras z Incoterms ${SHIP_ROUTE.incoterm}</p>
+      </div>
+      <div class="ship-map" id="shipMap">
+        <div id="shipMapLeaflet" role="application" aria-label="Mapa trasy Gdynia — Algeciras — Callao"></div>
+        <aside class="ais-pop" id="aisPop" hidden aria-label="Telematyka AIS">
+          <div class="ais-pop-head">
+            <div><h4>Cape Pioneer</h4><p class="sub">Hapag-Lloyd · voyage 2639W</p></div>
+            <button type="button" class="btn ais-pop-close" aria-label="Zamknij">&times;</button>
+          </div>
+          <dl>
+            <dt>IMO / MMSI</dt><dd>9785789 · 636019825</dd>
+            <dt>Pozycja</dt><dd>36°07.4′ N · 5°26.1′ W</dd>
+            <dt>Kurs / prędkość</dt><dd>142° · 12,4 w</dd>
+            <dt>Status AIS</dt><dd>Under way using engine</dd>
+            <dt>Ostatnia pozycja</dt><dd>01.10 22:14 UTC</dd>
+            <dt>ETA ${pa.port}</dt><dd>${pa.current} ±2 d</dd>
+            <dt>ETA aktualizacja</dt><dd>${pa.updatedAt}</dd>
+            <dt>Plan pierwotny</dt><dd>${pa.planned} → ${pa.current}</dd>
+          </dl>
+          <p class="src">Produkcja: feed AIS tenanta. Makieta ładuje kafelki OSM/Esri — wymaga sieci.</p>
+        </aside>
+      </div>
+    </div>
+  </div>`;
+  bindShipMap(SHIP_ROUTE);
+}
+let shipMapState = null;
+function destroyShipMap() {
+  if (!shipMapState) return;
+  shipMapState.map.remove();
+  shipMapState = null;
+}
+function bindShipMap(route) {
+  destroyShipMap();
+  const el = $("#shipMapLeaflet");
+  const pop = $("#aisPop");
+  if (!el || !pop) return;
+  const scope = INCOTERM_SCOPE[route.incoterm] || INCOTERM_SCOPE.DAP;
+  const toggleAis = (on) => {
+    pop.hidden = !on;
+    el.querySelector(".ship-marker")?.classList.toggle("on", on);
+    el.querySelector(".ship-marker")?.setAttribute("aria-expanded", String(on));
+  };
+  pop.querySelector(".ais-pop-close")?.addEventListener("click", () => toggleAis(false));
+  if (typeof L === "undefined") {
+    el.innerHTML = "<p class=\"note\" style=\"padding:var(--s4)\">Brak Leaflet — otwórz makietę przez HTTP z dostępem do sieci.</p>";
+    return;
+  }
+  const map = L.map(el, { zoomControl: true, scrollWheelZoom: true });
+  const osm = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { attribution: "© OpenStreetMap", maxZoom: 19 });
+  const sat = L.tileLayer(
+    "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+    { attribution: "© Esri", maxZoom: 19 },
+  );
+  osm.addTo(map);
+  const accent = getComputedStyle(document.documentElement).getPropertyValue("--accent-2").trim() || "#3a9a78";
+  const muted = getComputedStyle(document.documentElement).getPropertyValue("--rule-2").trim() || "#9ab0a8";
+  const roadClr = "#6b5e54";
+  const railClr = getComputedStyle(document.documentElement).getPropertyValue("--ok").trim() || "#2d8a5e";
+  const bounds = [];
+  const legend = [];
+  const portIcon = (kind) => L.divIcon({
+    className: "port-pin-wrap",
+    html: `<span class="port-pin ${kind}"></span>`,
+    iconSize: [14, 14],
+    iconAnchor: [7, 7],
+  });
+  const pin = (latlng, label, kind, dir, offset) => {
+    L.marker(latlng, { icon: portIcon(kind), interactive: false })
+      .bindTooltip(label, { permanent: true, direction: dir, className: "port-tip", offset }).addTo(map);
+  };
+  if (scope.pre) {
+    const roadDone = [
+      route.poznan,
+      [52.39, 17.05],
+      [52.28, 17.85],
+      [52.18, 18.63],
+      [52.08, 19.40],
+      [52.18, 20.58],
+      [52.55, 21.05],
+      [53.48, 20.03],
+      [53.88, 18.78],
+      [54.35, 18.62],
+      route.gdynia,
+    ];
+    L.polyline(roadDone, { color: roadClr, weight: 4, opacity: 0.92 }).addTo(map);
+    pin(route.poznan, "Poznań", "done", "right", [8, 0]);
+    pin(route.gdynia, "Gdynia", "done", "right", [8, 0]);
+    bounds.push(...roadDone);
+    legend.push('<span><i class="road-done"></i>droga · pokonana</span>');
+  }
+  if (scope.main) {
+    const sailed = [
+      route.gdynia,
+      [54.75, 16.8], [55.05, 14.2], [54.85, 11.6], [55.35, 10.5], [57.85, 8.95], [56.10, 3.40],
+      [51.80, -2.10], [49.20, -5.80], [45.50, -8.60], [41.20, -10.40], [38.60, -10.20], [36.85, -8.40],
+      [35.98, -6.20], route.ship,
+    ];
+    const planned = [
+      route.ship,
+      [35.75, -7.80], [33.20, -12.50], [28.50, -20.00], [23.50, -30.00], [17.80, -42.00], [13.50, -55.00],
+      [11.20, -66.00], [10.00, -74.50], [9.35, -79.92], route.panama, [8.95, -79.55], [5.50, -81.20],
+      [0.20, -81.80], [-5.80, -81.50], [-10.20, -79.00], route.callao,
+    ];
+    L.polyline(sailed, { color: accent, weight: 4, opacity: 0.92 }).addTo(map);
+    L.polyline(planned, { color: muted, weight: 3, opacity: 0.88, dashArray: "9 7" }).addTo(map);
+    if (!scope.pre) pin(route.gdynia, "Gdynia", "done", "right", [8, 0]);
+    pin(route.callao, "Callao", "plan", "left", [-8, 0]);
+    pin(route.panama, "Kanał Panamański", "plan", "top", [0, -8]);
+    bounds.push(...sailed, ...planned);
+    legend.push('<span><i class="sea-done"></i>morze · pokonane</span>', '<span><i class="sea-plan"></i>morze · plan</span>');
+    const shipIcon = L.divIcon({
+      className: "ship-marker-wrap",
+      html: `<button type="button" class="ship-marker" aria-expanded="false" aria-label="Cape Pioneer — telematyka AIS"><span class="ship-pulse"></span><svg class="ais-target" viewBox="0 0 24 24" width="26" height="26" style="transform:rotate(${route.course}deg)" aria-hidden="true"><path d="M12 3 L20 21 L12 17 L4 21 Z" fill="#f0a030" stroke="#222" stroke-width="1.35" stroke-linejoin="round"/></svg></button>`,
+      iconSize: [30, 30],
+      iconAnchor: [15, 15],
+    });
+    L.marker(route.ship, { icon: shipIcon, zIndexOffset: 1000 }).addTo(map).on("click", (e) => {
+      L.DomEvent.stopPropagation(e);
+      toggleAis(pop.hidden);
+    });
+  }
+  if (scope.on) {
+    const railPlan = [
+      route.callao,
+      [-12.048, -77.135],
+      [-12.050, -77.105],
+      [-12.048, -77.075],
+      route.lima,
+    ];
+    L.polyline(railPlan, { color: railClr, weight: 3, opacity: 0.88, dashArray: "6 5" }).addTo(map);
+    pin(route.lima, "Lima", "plan", "top", [0, -8]);
+    if (!scope.main) pin(route.callao, "Callao", "plan", "left", [-8, 0]);
+    bounds.push(...railPlan);
+    legend.push('<span><i class="rail-plan"></i>kolej · plan</span>');
+  }
+  map.on("click", () => toggleAis(false));
+  if (bounds.length) map.fitBounds(L.latLngBounds(bounds), { padding: [32, 32] });
+  const note = $("#shipMapNote");
+  if (note) {
+    const hidden = [];
+    if (!scope.pre) hidden.push("droga");
+    if (!scope.main) hidden.push("morze");
+    if (!scope.on) hidden.push("kolej");
+    const hideTxt = hidden.length ? ` · ukryte (${hidden.join(", ")}): poza ${route.incoterm}` : "";
+    note.innerHTML = `Feed M-42 · ${route.incoterm} · ${route.namedPlace}${hideTxt}<span class="map-legend">${legend.join("")}</span>`;
+  }
+  const btnOsm = $("#mapLayerOsm");
+  const btnSat = $("#mapLayerSat");
+  const setLayer = (mode) => {
+    if (mode === "sat") {
+      map.removeLayer(osm);
+      if (!map.hasLayer(sat)) sat.addTo(map);
+      btnOsm?.setAttribute("aria-pressed", "false");
+      btnSat?.setAttribute("aria-pressed", "true");
+    } else {
+      map.removeLayer(sat);
+      if (!map.hasLayer(osm)) osm.addTo(map);
+      btnOsm?.setAttribute("aria-pressed", "true");
+      btnSat?.setAttribute("aria-pressed", "false");
+    }
+  };
+  btnOsm?.addEventListener("click", () => setLayer("osm"));
+  btnSat?.addEventListener("click", () => setLayer("sat"));
+  shipMapState = { map };
+  requestAnimationFrame(() => map.invalidateSize());
+}
+function paintUsers() {
+  $("#v-users").innerHTML = `<div class="pad"><div class="card"><div class="xscroll"><table class="grid"><thead><tr><th>Email</th><th>Rola FGA</th><th>Status</th><th>Akcje</th></tr></thead>
+    <tbody><tr><td>anna@spedbaltyk.pl</td><td>reviewer</td><td>aktywny</td><td><button class="linkish" type="button" data-act="edit-user">edytuj</button></td></tr>
+    <tr><td>marek@spedbaltyk.pl</td><td>member</td><td>aktywny</td><td><span class="chip">tylko odczyt</span></td></tr></tbody></table></div>
+    <p class="note">Brak can_review_extractions = Accept nie istnieje. Tenant z paska.</p></div></div>`;
+}
+function paintChannels() {
+  $("#v-channels").innerHTML = `<div class="pad"><h2 class="h-route">Kanały i armatorzy</h2><p class="note">Poświadczenia tenanta szyfrowane. Wywołania idempotentne. Makieta nie woła sieci.</p>
+    <div class="integ">${CARRIERS.map((c) => `<article class="card"><b>${c.n}</b><p><span class="chan ${c.st}"><i class="dot"></i>${c.last}</span></p><p class="note">${c.note}</p>
+      <button class="btn" type="button" data-act="sync" data-who="${c.n}">Odśwież</button>
+      <button class="btn" type="button" data-act="connect" data-who="${c.n}">Połącz</button></article>`).join("")}</div>
+    <div class="integ" style="margin-top:var(--s4)">
+      <article class="card"><b>Poczta M-32</b><p class="note">wątki RFQ</p><button class="btn" type="button" data-act="ask">Otwórz skrzynkę</button></article>
+      <article class="card"><b>Outlook M-33</b><p class="note">dodatek</p><button class="btn" type="button" data-act="outlook">Zainstaluj (podgląd)</button></article>
+      <article class="card"><b>EDI M-39</b><p class="note">IFTMIN stub</p><button class="btn" type="button" data-mod="M-39">Kolejka</button></article>
+      <article class="card"><b>KSeF M-40</b><p class="note">faktura jako string</p><button class="btn" type="button" data-mod="M-40">Status</button></article>
+      <article class="card"><b>Bank M-209</b><p class="note">wyciągi, nie scoring</p><button class="btn" type="button" data-mod="M-209">Dopasuj</button></article>
+      <article class="card"><b>NBP D-1</b><p class="note">kurs z tabeli, nie LLM</p><button class="btn" type="button" data-mod="M-07">Tabela</button></article>
+      <article class="card"><b>Hub M-201</b><p class="note">kolejka błędów M-190</p><button class="btn" type="button" data-mod="M-201">Otwórz hub</button></article>
+      <article class="card"><b>API M-94</b><p class="note">webhooki tenanta</p><button class="btn" type="button" data-mod="M-94">Klucze</button></article>
+    </div></div>`;
+}
+function seedRows(mod) {
+  const st = ["aktywny", "szkic", "HITL", "zablokowany", "ok"];
+  return Array.from({ length: 8 }, (_, i) => ({
+    ref: `${mod.id}-${2026}-${String(318 + i).padStart(5, "0")}`,
+    title: `${mod.name} · rekord ${i + 1}`,
+    party: ["Meblexport", "Nordwood", "Baltic Parts", "Andes Cargo"][i % 4],
+    lane: ["PLGDY→PECLL", "CNSHA→PLGDY", "DEHAM→USNYC", "PLGDY→SGSIN"][i % 4],
+    status: st[i % st.length],
+    amt: ["1 240,00", "8 442,00", "410,00", "2 040,00"][i % 4],
+    cur: ["USD", "USD", "EUR", "USD"][i % 4]
+  }));
+}
+function paintMod(mod) {
+  currentMod = mod;
+  const warn = mod.n === 14 ? `<p class="note">Zakaz auto-scoringu natural_person / JDG (AI Act). Ocena tylko z karty i wywiadowni po HITL.</p>` : "";
+  const def = mod.layer === "c" ? `<p class="note">Warstwa C — w rejestrze dla kompletności modelu, nie w roadmapie 12 m.</p>` : "";
+  const rows = seedRows(mod).map((r) => `<tr><td><button class="linkish" type="button" data-act="open-row">${r.ref}</button></td><td>${r.title}</td><td>${r.party}</td><td>${r.lane}</td><td>${money(r.amt, r.cur)}</td><td><span class="chip">${r.status}</span></td><td><button class="btn" type="button" data-act="row-act">Otwórz</button></td></tr>`).join("");
+  $("#v-mod").innerHTML = `<div class="cmd"><button class="btn" type="button" data-act="new">Nowy</button><button class="btn" type="button" data-act="filter">Filtr</button><button class="btn" type="button" data-act="export">Eksport podglądu</button><span class="chip">${LAYER[mod.layer] || mod.layer}</span><span class="chip">${mod.tpl}</span></div>
+    <div class="pad"><p class="h-id">${mod.id} · org z paska · makieta</p><h1 class="h-route">${mod.name}</h1>${warn}${def}
+    <div class="card xscroll" style="padding:0"><table class="grid"><thead><tr><th>Ref</th><th>Opis</th><th>Strona</th><th>Relacja</th><th class="r">Kwota</th><th>Status</th><th></th></tr></thead><tbody>${rows}</tbody></table></div></div>`;
+}
+
+const INSP = {
+  home: `<h3 class="h-id">Dzień</h3><p class="note">Tenant z paska. Jobu otwierają ekrany.</p>`,
+  quote: `<div class="rsec"><h3>Luki i ostrzeżenia <span class="cnt">4</span></h3>
+    <div class="risk"><span class="sev alert"></span><div><b>Brak kodu HS</b><p>Wymagany przy odprawie importowej w Peru i kontroli eksportowej.</p><button class="fix linkish" type="button" data-act="ask-hs">Wyślij pytanie do klienta</button></div></div>
+    <div class="risk"><span class="sev alert"></span><div><b>ISPS Callao w żadnym wariancie</b><p>W 7 z 8 ostatnich zleceń — zwykle 45,00 USD / kontener.</p><button class="fix linkish" type="button" data-gap="isps">Dopisz pozycję ręcznie</button></div></div>
+    <div class="risk"><span class="sev stop"></span><div><b>Pacific wygasa 15.09</b><p>Cut-off bramowy 18–24.09 — stawka nie pokryje wypłynięcia.</p></div></div>
+    <div class="risk"><span class="sev"></span><div><b>GRI ogłoszone na 01.10</b><p>Hapag-Lloyd · +800 USD/FEU · poza zakresem przy ważności 14 dni.</p></div></div>
+  </div>
+  <div class="rsec"><h3>Ryzyko oferty</h3>
+    <p class="score">54 <small>/ 100 — podwyższone</small></p>
+    <div class="scorebar" aria-hidden="true"><i></i></div>
+    <ul class="note" style="margin:0 0 var(--s3); padding-left:1.1rem">
+      <li>Zmienność relacji σ = 11% w 30 dni</li>
+      <li>Dwie stawki starsze niż 14 dni</li>
+      <li>Ekspozycja USD/PLN — netto −8&nbsp;240 USD</li>
+    </ul>
+    <p class="note">Przy ważności 14 dni prawdopodobieństwo spadku poniżej progu 8% wynosi 22%. Skrócenie do 7 dni obniża do 6%.</p>
+  </div>
+  <div class="rsec"><h3>Marża po kosztach</h3>
+    <table class="mini">
+      <tr><td>Marża brutto</td><td>13,2%</td></tr>
+      <tr><td>Koszt finansowania 52 dni</td><td>−1,4 pkt</td></tr>
+      <tr><td>Ekspozycja walutowa</td><td>−0,8 pkt</td></tr>
+      <tr class="total"><td>Po kosztach</td><td>11,0%</td></tr>
+    </table>
+    <p class="note" style="margin-top:var(--s3)">Wartości z serwera (M-24). UI nie liczy marży ani kosztu pieniądza.</p>
+  </div>`,
+  rates: `<h3 class="h-id">Pokrycie</h3><p class="note">Peru: sprawdzone. Kolumbia: biała plama.</p>`,
+  hitl: `<h3 class="h-id">Szkic</h3><p class="note">source_ref MAERSK-SHA-0926. Zapis tylko po accept.</p>`,
+  users: `<h3 class="h-id">OpenFGA</h3><p class="note">Brak relacji — ukryj. Read-only — wyszarz z powodem.</p>`,
+  channels: `<h3 class="h-id">Integracje</h3><p class="note">Sekrety tenanta nie w logach. M-190 kolejka błędów.</p>`,
+  mod: `<h3 class="h-id">Inspector</h3><p class="note">Kwoty string. LLM nie liczy. HITL przed zapisem do bazy.</p>`
+};
+const META = { home: ["Dzień", "Joby operatora"], quote: ["Wyceny", "ZAP/2026/00318"], rates: ["Stawki", "Baza stawek kupna"], hitl: ["Ekstrakcje", "MAERSK-SHA-0926"], ship: ["Zlecenia", "GD/2026/00412"], users: ["Organizacja", "Użytkownicy"], channels: ["Kanały", "Armatorzy i łączniki"] };
+
+function setInsp(html, on) {
+  const el = $("#insp");
+  el.hidden = !on;
+  el.innerHTML = html || "";
+  $("#body").classList.toggle("no-insp", !on);
+}
+const navPast = [];
+let navSilent = false;
+function navCurrent() {
+  return currentMod ? { type: "mod", id: currentMod.id } : { type: "view", id: current };
+}
+function navKey(loc) {
+  return loc.type === "mod" ? `mod:${loc.id}` : `view:${loc.id}`;
+}
+function syncBackBtn() {
+  const btn = $("#navBack");
+  if (!btn) return;
+  const can = navPast.length > 0;
+  btn.disabled = !can;
+  btn.setAttribute("aria-disabled", String(!can));
+}
+function applyView(v) {
+  setDrawer(false);
+  if (v !== "ship") destroyShipMap();
+  current = v;
+  currentMod = null;
+  $$(".view").forEach((s) => s.classList.toggle("on", s.id === "v-" + v));
+  $$(".rail button[data-go]").forEach((b) => {
+    if (b.dataset.go === v) b.setAttribute("aria-current", "page");
+    else b.removeAttribute("aria-current");
+  });
+  const m = META[v] || ["Moduł", v];
+  $("#mod").textContent = m[0];
+  $("#crumb").textContent = m[1];
+  setInsp(v === "ship" ? shipInspHtml() : (INSP[v] || INSP.mod), v !== "home");
+  if (v === "home") paintHome();
+  if (v === "quote") paintQuote();
+  if (v === "rates") paintRates();
+  if (v === "hitl") paintHitl();
+  if (v === "ship") paintShip();
+  if (v === "users") paintUsers();
+  if (v === "channels") paintChannels();
+}
+function go(v) {
+  if (!navSilent && navKey(navCurrent()) !== `view:${v}`) navPast.push(navCurrent());
+  applyView(v);
+  syncBackBtn();
+}
+function applyMod(found) {
+  current = "mod";
+  currentMod = found;
+  $$(".view").forEach((s) => s.classList.toggle("on", s.id === "v-mod"));
+  $$(".rail button[data-go]").forEach((b) => b.removeAttribute("aria-current"));
+  $("#mod").textContent = found.id;
+  $("#crumb").textContent = found.name;
+  setInsp(INSP.mod, true);
+  paintMod(found);
+  setDrawer(false);
+}
+function goMod(id) {
+  const found = (window.OR_CATALOG || []).find((m) => m.id === id || m.n === Number(String(id).replace(/\D/g, "")));
+  if (!found) { toast("Brak modułu " + id); return; }
+  if (found.tpl === "quote" && found.n <= 31) { go("quote"); return; }
+  if (found.tpl === "rates" && found.n === 17) { go("rates"); return; }
+  if (found.tpl === "hitl" && found.n === 20) { go("hitl"); return; }
+  if (found.tpl === "ship" && found.n === 35) { go("ship"); return; }
+  if (found.tpl === "channels" && (found.n === 19 || found.n === 30)) { go("channels"); return; }
+  if (found.tpl === "home") { go("home"); return; }
+  if (!navSilent && navKey(navCurrent()) !== `mod:${found.id}`) navPast.push(navCurrent());
+  applyMod(found);
+  syncBackBtn();
+}
+function goBack() {
+  const prev = navPast.pop();
+  if (!prev) { syncBackBtn(); return; }
+  navSilent = true;
+  if (prev.type === "mod") {
+    const found = (window.OR_CATALOG || []).find((m) => m.id === prev.id);
+    if (found) applyMod(found);
+    else applyView("home");
+  } else {
+    applyView(prev.id);
+  }
+  navSilent = false;
+  syncBackBtn();
+}
+
+function paintDrawer(q) {
+  const cat = window.OR_CATALOG || [];
+  const qq = (q || "").toLowerCase().trim();
+  const groups = {};
+  cat.forEach((m) => {
+    if (qq && !(m.id + " " + m.name).toLowerCase().includes(qq)) return;
+    const g = LAYER[m.layer] || m.layer;
+    (groups[g] = groups[g] || []).push(m);
+  });
+  $("#modCount").textContent = "(" + cat.length + ")";
+  let h = "";
+  Object.keys(groups).forEach((g) => {
+    h += `<div class="dgrp">${g}</div>`;
+    groups[g].forEach((m) => {
+      h += `<button class="ditem" type="button" data-mod="${m.id}"><span>${m.id}</span><span>${m.name}</span><span class="badge">${m.layer === "c" ? "C" : ""}</span></button>`;
+    });
+  });
+  $("#dlist").innerHTML = h || "<p class='note' style='padding:12px'>Brak</p>";
+}
+
+function setDrawer(open) {
+  $("#drawer").classList.toggle("on", open);
+  $("#drawer").inert = !open;
+  $("#drawer").setAttribute("aria-hidden", String(!open));
+  if (open) paintDrawer($("#dsearch").value);
+}
+function pal(open) {
+  $("#scrim").classList.toggle("on", open);
+  if (!open) return;
+  $("#palIn").value = "";
+  drawPal("");
+  $("#palIn").focus();
+}
+function drawPal(q) {
+  const qq = q.toLowerCase();
+  const nav = [
+    { g: "Nawigacja", i: "Dzień", a: () => go("home") },
+    { g: "Nawigacja", i: "Wyceny", a: () => go("quote") },
+    { g: "Nawigacja", i: "Stawki", a: () => go("rates") },
+    { g: "Nawigacja", i: "HITL", a: () => go("hitl") },
+    { g: "Nawigacja", i: "Zlecenia", a: () => go("ship") },
+    { g: "Nawigacja", i: "Kanały", a: () => go("channels") },
+    { g: "Akcje", i: "Akceptuj szkic HITL", a: () => { go("hitl"); toast("Fokus na Accept — potwierdzenie recenzenta."); } },
+    { g: "Rekordy", i: "ZAP/2026/00318", a: () => go("quote") }
+  ];
+  const mods = (window.OR_CATALOG || []).map((m) => ({ g: "Moduły", i: m.id + " " + m.name, a: () => goMod(m.id) }));
+  const all = nav.concat(mods).filter((c) => !qq || c.i.toLowerCase().includes(qq));
+  all.sort((a, b) => {
+    const idA = a.i.split(" ")[0].toLowerCase();
+    const idB = b.i.split(" ")[0].toLowerCase();
+    const rank = (id) => (id === qq ? 0 : id.startsWith(qq) ? 1 : 2);
+    return rank(idA) - rank(idB);
+  });
+  let g = ""; let h = "";
+  all.slice(0, 40).forEach((c, i) => {
+    if (c.g !== g) { g = c.g; h += `<div class="pgrp">${g}</div>`; }
+    h += `<div class="pit" data-i="${i}" role="option">${c.i}</div>`;
+  });
+  $("#palRes").innerHTML = h || "<div class='pgrp'>Brak</div>";
+  drawPal._list = all.slice(0, 40);
+  $$(".pit").forEach((e) => e.addEventListener("click", () => { const c = drawPal._list[+e.dataset.i]; pal(false); if (c) c.a(); }));
+}
+
+document.addEventListener("click", (e) => {
+  const aisP = $("#aisPop");
+  if (aisP && !aisP.hidden && !e.target.closest(".ship-marker") && !e.target.closest("#aisPop") && !e.target.closest(".leaflet-marker-icon")) {
+    aisP.hidden = true;
+    $("#shipMapLeaflet")?.querySelector(".ship-marker")?.classList.remove("on");
+    $("#shipMapLeaflet")?.querySelector(".ship-marker")?.setAttribute("aria-expanded", "false");
+  }
+  const goBtn = e.target.closest("[data-go]");
+  if (goBtn) { go(goBtn.dataset.go); return; }
+  const modBtn = e.target.closest("[data-mod]");
+  if (modBtn) { goMod(modBtn.dataset.mod); return; }
+  if (e.target.closest("#openCat")) { setDrawer(!$("#drawer").classList.contains("on")); return; }
+  if (e.target.closest("#omni")) { pal(true); return; }
+  if (e.target.closest("[data-tab]")) {
+    const t = e.target.closest("[data-tab]");
+    $$(".tabs [data-tab]").forEach((o) => o.setAttribute("aria-selected", String(o === t)));
+    $$(".pane").forEach((p) => p.classList.toggle("on", p.id === "p-" + t.dataset.tab));
+    return;
+  }
+  if (e.target.closest("[data-open]")) {
+    const id = e.target.closest("[data-open]").dataset.open;
+    const art = e.target.closest(".v");
+    art.classList.toggle("open");
+    return;
+  }
+  if (e.target.closest("[data-pick]")) { picked = e.target.closest("[data-pick]").dataset.pick; paintQuote(); toast("Wariant wybrany. Marża jest na charge — UI nic nie dolicza."); return; }
+  if (e.target.closest("[data-gap]")) { toast("Ręczna charża wymaga source_ref. Bez pochodzenia rekord nie wchodzi."); return; }
+  if (e.target.closest("[data-hitl]")) { hitlId = e.target.closest("[data-hitl]").dataset.hitl; paintHitl(); return; }
+  const act = e.target.closest("[data-act]");
+  if (!act) return;
+  const a = act.dataset.act;
+  if (a === "ask" || a === "ask-hs") { mailOn = true; if (current === "quote") paintQuote(); $$(".tabs [data-tab]").forEach((o) => o.setAttribute("aria-selected", String(o.dataset.tab === "mail"))); $$(".pane").forEach((p) => p.classList.toggle("on", p.id === "p-mail")); toast("Zapytanie do agentów — podgląd wiadomości przed wysłaniem."); }
+  if (a === "send-rfq") toast("Wysłano (idempotentny klucz). Odpowiedzi wpadną do HITL.");
+  if (a === "spot") { spotOn = true; paintQuote(); toast("Hapag-Lloyd dodany z payloadu API. Marża przyszła w JSON, nie z JS."); }
+  if (a === "save") toast("Zapis szkicu wyceny. Kwoty nietknięte.");
+  if (a === "src") toast("source_ref otwiera dokument. Stawka niemutowalna.");
+  if (a === "pdf") toast("PDF w nowej warstwie (leniwy renderer).");
+  if (a === "docs") toast("7 z 9 dokumentów. Brak POD — M-205.");
+  if (a === "edit-user") toast("Edycja roli w OpenFGA. Brak relacji = ukryj akcję.");
+  if (a === "sync") toast("Odśwież " + act.dataset.who + " — idempotentne. Makieta bez sieci.");
+  if (a === "connect") toast("Połączenie " + act.dataset.who + " — sekret tenanta, nie w logu.");
+  if (a === "outlook") toast("Dodatek Outlook to makieta. Brak instalacji.");
+  if (a === "new" || a === "row-act" || a === "open-row") toast("Otworzono rekord. Zapis do bazy tylko po HITL tam, gdzie ekstrakcja.");
+  if (a === "filter") toast("Filtr w ramach jednego tenanta.");
+  if (a === "export") toast("Eksport podglądu. Nie produkcja.");
+  if (a === "reject-home") toast("Szkic odrzucony z powodem. PDF zostaje.");
+});
+document.addEventListener("click", (e) => {
+  if (e.target.closest("#sendQuote")) toast("Wysyłka zablokowana: brak kodu HS. Nie omijamy walidacji ani HITL.");
+  if (e.target.closest("#acceptHitl")) toast("Accept → rate_line w jednej transakcji. ExtractionService nie importuje rates.");
+  if (e.target.closest("#rejectHitl")) toast("Szkic odrzucony z powodem. PDF zostaje, rate_line nie powstaje.");
+  if (e.target.closest("#gk")) { gridDense = !gridDense; paintRates(); }
+});
+$("#tenant").addEventListener("change", (e) => {
+  $("#tenantInitials").textContent = e.target.value.split(" ").map((w) => w[0]).join("").slice(0, 2).toUpperCase();
+  toast("Zmiana organizacji przeładowuje dane przez RLS. Żadne zapytanie nie łączy tenantów.");
+});
+$("#dc").addEventListener("click", () => { document.documentElement.dataset.density = "compact"; $("#dc").ariaPressed = "true"; $("#dr").ariaPressed = "false"; });
+$("#dr").addEventListener("click", () => { document.documentElement.dataset.density = "comfortable"; $("#dr").ariaPressed = "true"; $("#dc").ariaPressed = "false"; });
+$("#th").addEventListener("click", () => {
+  const dark = document.documentElement.dataset.theme !== "dark";
+  document.documentElement.dataset.theme = dark ? "dark" : "light";
+  $("#th").textContent = dark ? "Motyw jasny" : "Motyw ciemny";
+  $("#th").ariaPressed = String(dark);
+});
+$("#dsearch").addEventListener("input", (e) => paintDrawer(e.target.value));
+$("#palIn").addEventListener("input", (e) => drawPal(e.target.value));
+$("#scrim").addEventListener("click", (e) => { if (e.target === $("#scrim")) pal(false); });
+$("#navBack").addEventListener("click", goBack);
+addEventListener("keydown", (e) => {
+  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") { e.preventDefault(); pal(true); }
+  if (e.altKey && e.key === "ArrowLeft") { e.preventDefault(); goBack(); }
+  if (e.key === "Escape") { pal(false); setDrawer(false); }
+});
+paintDrawer("");
+applyView("home");
+syncBackBtn();
+</script>
+</body>
+</html>
