@@ -1,6 +1,6 @@
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, status
+from fastapi import APIRouter, Depends, Query, status
 from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -17,6 +17,9 @@ class QuotationCreate(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     charge_code: str = Field(min_length=1, max_length=32)
+    origin_port_id: UUID
+    destination_port_id: UUID
+    party_id: UUID
 
 
 class QuotationResponse(BaseModel):
@@ -27,6 +30,9 @@ class QuotationResponse(BaseModel):
     amount: str
     currency: str
     source_ref: str
+    origin_port_id: UUID | None
+    destination_port_id: UUID | None
+    party_id: UUID | None
 
     @classmethod
     def from_row(cls, row: Quotation) -> "QuotationResponse":
@@ -40,6 +46,9 @@ class QuotationResponse(BaseModel):
             amount=amount_text,
             currency=currency,
             source_ref=row.source_ref,
+            origin_port_id=row.origin_port_id,
+            destination_port_id=row.destination_port_id,
+            party_id=row.party_id,
         )
 
 
@@ -47,9 +56,16 @@ class QuotationResponse(BaseModel):
 async def list_quotations(
     _authz: None = Depends(require_permission("can_manage_quotations", "organization")),
     session: AsyncSession = Depends(require_tenant_session),
+    party_id: UUID | None = Query(default=None),
+    origin_port_id: UUID | None = Query(default=None),
+    destination_port_id: UUID | None = Query(default=None),
 ) -> list[QuotationResponse]:
     service = QuotationService(session)
-    rows = await service.list_quotations()
+    rows = await service.list_quotations(
+        party_id=party_id,
+        origin_port_id=origin_port_id,
+        destination_port_id=destination_port_id,
+    )
     return [QuotationResponse.from_row(row) for row in rows]
 
 
@@ -65,6 +81,9 @@ async def create_quotation(
         organization_id=identity.organization_id,
         user_id=identity.user_id,
         charge_code=body.charge_code,
+        origin_port_id=body.origin_port_id,
+        destination_port_id=body.destination_port_id,
+        party_id=body.party_id,
     )
     await session.commit()
     return QuotationResponse.from_row(row)

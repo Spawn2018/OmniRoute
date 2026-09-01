@@ -1,6 +1,6 @@
 # M-21 quotation — silnik wyceny SQL
 
-**Plaster:** 2.0 fundament · **5.1** POL/POD + `party_id` (delta `docs/deltas/open/5.1-quotation-port-party.md`)  
+**Plaster:** 2.0 fundament · **5.1** POL/POD + `party_id`  
 **Status:** fundament + snapshot portu i kontrahenta. Kwota ze stawki. Nie marża. Nie k6. Nie `party_charge_override`.
 
 ## Zakres

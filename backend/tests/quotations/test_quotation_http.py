@@ -12,6 +12,15 @@ from app.models.quotation import Quotation
 from tests.http_auth import bearer_auth_headers
 
 
+def _lane_body(charge_code: str = "THC") -> dict[str, str]:
+    return {
+        "charge_code": charge_code,
+        "origin_port_id": str(uuid4()),
+        "destination_port_id": str(uuid4()),
+        "party_id": str(uuid4()),
+    }
+
+
 class AllowAllAuthz:
     async def check(
         self,
@@ -34,7 +43,13 @@ class StubQuotationService:
         self._session = session
         self.rows: list[Quotation] = []
 
-    async def list_quotations(self) -> list[Quotation]:
+    async def list_quotations(
+        self,
+        *,
+        party_id: UUID | None = None,
+        origin_port_id: UUID | None = None,
+        destination_port_id: UUID | None = None,
+    ) -> list[Quotation]:
         return list(self.rows)
 
     async def quote_from_current_rate(
@@ -43,6 +58,9 @@ class StubQuotationService:
         organization_id: UUID,
         user_id: UUID,
         charge_code: str,
+        origin_port_id: UUID | None,
+        destination_port_id: UUID | None,
+        party_id: UUID | None,
     ) -> Quotation:
         token = charge_code.strip().upper()
         if token == "LOOSE":
@@ -58,6 +76,9 @@ class StubQuotationService:
             currency="EUR",
             source_ref="tariff://a",
             created_by=user_id,
+            origin_port_id=origin_port_id,
+            destination_port_id=destination_port_id,
+            party_id=party_id,
         )
         self.rows.append(row)
         return row
@@ -89,7 +110,7 @@ def test_http_quote_and_list(quotations_client: TestClient) -> None:
     created = quotations_client.post(
         "/api/v1/quotations",
         headers=headers,
-        json={"charge_code": "THC"},
+        json=_lane_body("THC"),
     )
     assert created.status_code == 201
     body = created.json()
@@ -112,7 +133,7 @@ def test_http_rejects_unknown_charge_code(quotations_client: TestClient) -> None
     response = quotations_client.post(
         "/api/v1/quotations",
         headers=bearer_auth_headers(),
-        json={"charge_code": "LOOSE"},
+        json=_lane_body("LOOSE"),
     )
     assert response.status_code == 400
     assert "LOOSE" in response.json()["detail"]
@@ -122,7 +143,7 @@ def test_http_quotation_gap(quotations_client: TestClient) -> None:
     response = quotations_client.post(
         "/api/v1/quotations",
         headers=bearer_auth_headers(),
-        json={"charge_code": "GAP"},
+        json=_lane_body("GAP"),
     )
     assert response.status_code == 400
     assert "quotation_gap" in response.json()["detail"]
@@ -132,9 +153,39 @@ def test_http_rejects_amount_in_body(quotations_client: TestClient) -> None:
     response = quotations_client.post(
         "/api/v1/quotations",
         headers=bearer_auth_headers(),
-        json={"charge_code": "THC", "amount": "99.0000"},
+        json={**_lane_body("THC"), "amount": "99.0000"},
     )
     assert response.status_code == 422
+
+
+def test_http_rejects_quote_without_lane_and_party(quotations_client: TestClient) -> None:
+    response = quotations_client.post(
+        "/api/v1/quotations",
+        headers=bearer_auth_headers(),
+        json={"charge_code": "THC"},
+    )
+    assert response.status_code == 422
+
+
+def test_http_quote_returns_snapshot_ids(quotations_client: TestClient) -> None:
+    origin = uuid4()
+    destination = uuid4()
+    party = uuid4()
+    response = quotations_client.post(
+        "/api/v1/quotations",
+        headers=bearer_auth_headers(),
+        json={
+            "charge_code": "THC",
+            "origin_port_id": str(origin),
+            "destination_port_id": str(destination),
+            "party_id": str(party),
+        },
+    )
+    assert response.status_code == 201
+    body = response.json()
+    assert body["origin_port_id"] == str(origin)
+    assert body["destination_port_id"] == str(destination)
+    assert body["party_id"] == str(party)
 
 
 def test_list_quotations_forbidden_without_permission() -> None:

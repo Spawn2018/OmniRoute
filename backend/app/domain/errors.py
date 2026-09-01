@@ -150,6 +150,10 @@ class QuotationGap(DomainError):
     """Brak bieżącej stawki do wyceny — luka, nie liczona w Pythonie."""
 
 
+class IncompleteQuotationSnapshot(DomainError):
+    """Nowa wycena wymaga POL, POD i kontrahenta — częściowy snapshot nie wchodzi."""
+
+
 class InvalidOrganizationSetting(DomainError):
     """Ustawienie tenanta poza allowlistą, sekret albo zła wartość."""
 

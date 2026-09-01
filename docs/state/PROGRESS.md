@@ -75,3 +75,4 @@
 | 2026-09-01 | Plan 5.0 | M-10 | delta `docs/deltas/archived/5.0-party.md` + spec `parties.md`. Cały katalog M-10 w jednym plastrze. Następny: `/plaster` 5.0 w nowej rozmowie. Nie Q3. |
 | 2026-09-01 | 5.0 | M-10 | `party` + kontakty/rachunki/domeny/override/`carrier_profile`; RLS FORCE; `resolve(tax_id)`; lookup GUS/VIES/IBAN jako szkic (fixture); OpenFGA `can_manage_parties`; `/parties`; leftover `terminal.operator_party_id`. Nie Q3, nie silnik wyceny z override. |
 | 2026-09-01 | Plan 5.1 | M-21 | delta `docs/deltas/open/5.1-quotation-port-party.md`: POL/POD + `party_id` na `quotation`; SQL nadal z istniejącego `rate_line`; nie override, nie k6. Następny: `/plaster` 5.1. |
+| 2026-09-01 | 5.1 | M-21 | `quotation.origin_port_id` / `destination_port_id` / `party_id`; FK złożone; CHECK kompletności; lista filtruje w SQL; UI `/quotations` z pickerami. Kwota nadal ze stawki. Nie override, nie k6. |

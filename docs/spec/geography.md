@@ -69,7 +69,7 @@ Delta: [docs/deltas/archived/4.2-terminal-wpi.md](../deltas/archived/4.2-termina
 
 ### Poza 4.2
 
-OSM, geometria, strefy czasu dojazdu, POL/POD w `quotation`, podpięcie `rate_line`, `pg_trgm`, `kind='terminal'` na `location`, pełny dump NGA, live fetch, światowy seed ISPS. `operator_party_id` = plaster 5.0.
+OSM, geometria, strefy czasu dojazdu, podpięcie `rate_line`, `pg_trgm`, `kind='terminal'` na `location`, pełny dump NGA, live fetch, światowy seed ISPS. `operator_party_id` = plaster 5.0. POL/POD na `quotation` = plaster 5.1.
 
 ### HC
 

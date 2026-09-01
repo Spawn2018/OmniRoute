@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** **5.1** M-21 `quotation` POL/POD + `party_id` ([delta](../deltas/open/5.1-quotation-port-party.md)). Nie Q4.
+**Następny (zablokowany):** **Q4** archiwum **M-09 Kody towarowe** (`/plan-modul`). Nie Q5.
 <!-- os-status:end -->
 
 ```mermaid
@@ -312,8 +312,8 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | Q1.1 | M-05 plaster **4.1** `location` + `location_zone_member` | Plaster (delta `docs/deltas/archived/4.1-location-zones.md`) | zamknięty |
 | Q1.2 | M-05 plaster **4.2** `terminal` + World Port Index | Plaster (delta `docs/deltas/archived/4.2-terminal-wpi.md`) | zamknięty |
 | **Q2** | Archiwum **M-10 Kontrahenci** | Plan → plaster | zamknięty (`docs/deltas/archived/5.0-party.md`) |
-| Q3 | Pogłębienie żywego **M-21** `quotation` o port + kontrahent (lista/filtry; SQL na istniejących `rate_line`; nie marża; nie k6) | Plan → plaster | delta **5.1** zaakceptowana `/noc`; plaster |
-| Q4 | Archiwum **M-09 Kody towarowe** | Plan → plaster | kolejka |
+| Q3 | Pogłębienie żywego **M-21** `quotation` o port + kontrahent (lista/filtry; SQL na istniejących `rate_line`; nie marża; nie k6) | Plan → plaster | zamknięty (`docs/deltas/archived/5.1-quotation-port-party.md`) |
+| Q4 | Archiwum **M-09 Kody towarowe** | Plan → plaster | **następny** |
 | Q5 | **Waluty i kurs NBP** (archiwum M-07; **nie** nadpisuj żywego M-07) | Plan → plaster | kolejka |
 | Q6 | **Towary niebezpieczne** (archiwum M-08; **nie** nadpisuj żywego M-08) | Plan → plaster | kolejka |
 
@@ -385,7 +385,7 @@ Nie implementuj z tej tabeli „na zapas”. To mapa, żeby nic nie zginęło. S
 | M-18 | Opłaty portowe warunkowe | Fala 2 |
 | M-19 | Stawki live i kanały | Fala 2 |
 | M-20 | Pipeline ekstrakcji | DONE fundament HITL |
-| M-21 | Silnik wyceny | DONE + Q3 pogłębienie |
+| M-21 | Silnik wyceny | DONE 2.0 + 5.1 POL/POD/`party_id` |
 | M-22 | Narzuty i marża | COVERED (`charge`) |
 | M-23–M-31 | Ofertowanie | Fala 3 |
 | M-32–M-34 | Komunikacja | Fala 4 |
@@ -426,13 +426,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

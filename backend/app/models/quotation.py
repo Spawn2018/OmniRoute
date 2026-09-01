@@ -1,15 +1,52 @@
 import uuid
 from decimal import Decimal
 
-from sqlalchemy import CHAR, ForeignKey, Numeric, String
+from sqlalchemy import (
+    CHAR,
+    CheckConstraint,
+    ForeignKey,
+    ForeignKeyConstraint,
+    Index,
+    Numeric,
+    String,
+)
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.models.base import Base, TimestampMixin
 
+_LANE_PARTY_SQL = (
+    "(origin_port_id IS NULL AND destination_port_id IS NULL AND party_id IS NULL) OR "
+    "(origin_port_id IS NOT NULL AND destination_port_id IS NOT NULL AND party_id IS NOT NULL)"
+)
+
 
 class Quotation(Base, TimestampMixin):
     __tablename__ = "quotation"
+    __table_args__ = (
+        ForeignKeyConstraint(
+            ["organization_id", "origin_port_id"],
+            ["port.organization_id", "port.id"],
+            name="fk_quotation_origin_port",
+            ondelete="RESTRICT",
+        ),
+        ForeignKeyConstraint(
+            ["organization_id", "destination_port_id"],
+            ["port.organization_id", "port.id"],
+            name="fk_quotation_destination_port",
+            ondelete="RESTRICT",
+        ),
+        ForeignKeyConstraint(
+            ["organization_id", "party_id"],
+            ["party.organization_id", "party.id"],
+            name="fk_quotation_party",
+            ondelete="RESTRICT",
+        ),
+        CheckConstraint(_LANE_PARTY_SQL, name="ck_quotation_lane_party_complete"),
+        Index("ix_quotation_org_party_id", "organization_id", "party_id"),
+        Index("ix_quotation_org_origin_port_id", "organization_id", "origin_port_id"),
+        Index("ix_quotation_org_destination_port_id", "organization_id", "destination_port_id"),
+    )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     organization_id: Mapped[uuid.UUID] = mapped_column(
@@ -27,3 +64,6 @@ class Quotation(Base, TimestampMixin):
     amount: Mapped[Decimal] = mapped_column(Numeric(14, 4), nullable=False)
     currency: Mapped[str] = mapped_column(CHAR(3), nullable=False)
     source_ref: Mapped[str] = mapped_column(String(512), nullable=False)
+    origin_port_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
+    destination_port_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
+    party_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)

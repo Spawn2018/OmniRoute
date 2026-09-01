@@ -872,27 +872,90 @@
         ],
         "summary": "List Quotations",
         "operationId": "list_quotations_api_v1_quotations_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "party_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Party Id"
+            }
+          },
+          {
+            "name": "origin_port_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Origin Port Id"
+            }
+          },
+          {
+            "name": "destination_port_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Destination Port Id"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful Response",
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/QuotationResponse"
                   },
-                  "type": "array",
                   "title": "Response List Quotations Api V1 Quotations Get"
                 }
               }
             }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
           }
-        },
-        "security": [
-          {
-            "HTTPBearer": []
-          }
-        ]
+        }
       },
       "post": {
         "tags": [
@@ -900,15 +963,20 @@
         ],
         "summary": "Create Quotation",
         "operationId": "create_quotation_api_v1_quotations_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/QuotationCreate"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "201": {
@@ -931,12 +999,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "HTTPBearer": []
-          }
-        ]
+        }
       }
     },
     "/api/v1/organization-settings": {
@@ -3991,12 +4054,30 @@
             "maxLength": 32,
             "minLength": 1,
             "title": "Charge Code"
+          },
+          "origin_port_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Origin Port Id"
+          },
+          "destination_port_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Destination Port Id"
+          },
+          "party_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Party Id"
           }
         },
         "additionalProperties": false,
         "type": "object",
         "required": [
-          "charge_code"
+          "charge_code",
+          "origin_port_id",
+          "destination_port_id",
+          "party_id"
         ],
         "title": "QuotationCreate"
       },
@@ -4032,6 +4113,42 @@
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
+          },
+          "origin_port_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin Port Id"
+          },
+          "destination_port_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Destination Port Id"
+          },
+          "party_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Party Id"
           }
         },
         "type": "object",
@@ -4042,7 +4159,10 @@
           "rate_line_id",
           "amount",
           "currency",
-          "source_ref"
+          "source_ref",
+          "origin_port_id",
+          "destination_port_id",
+          "party_id"
         ],
         "title": "QuotationResponse"
       },

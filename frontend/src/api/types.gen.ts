@@ -864,6 +864,18 @@ export type QuotationCreate = {
      * Charge Code
      */
     charge_code: string;
+    /**
+     * Origin Port Id
+     */
+    origin_port_id: string;
+    /**
+     * Destination Port Id
+     */
+    destination_port_id: string;
+    /**
+     * Party Id
+     */
+    party_id: string;
 };
 
 /**
@@ -898,6 +910,18 @@ export type QuotationResponse = {
      * Source Ref
      */
     source_ref: string;
+    /**
+     * Origin Port Id
+     */
+    origin_port_id: string | null;
+    /**
+     * Destination Port Id
+     */
+    destination_port_id: string | null;
+    /**
+     * Party Id
+     */
+    party_id: string | null;
 };
 
 /**
@@ -1804,9 +1828,31 @@ export type SupersedeRateLineApiV1RateLinesRateLineIdSupersedePostResponse = Sup
 export type ListQuotationsApiV1QuotationsGetData = {
     body?: never;
     path?: never;
-    query?: never;
+    query?: {
+        /**
+         * Party Id
+         */
+        party_id?: string | null;
+        /**
+         * Origin Port Id
+         */
+        origin_port_id?: string | null;
+        /**
+         * Destination Port Id
+         */
+        destination_port_id?: string | null;
+    };
     url: '/api/v1/quotations';
 };
+
+export type ListQuotationsApiV1QuotationsGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ListQuotationsApiV1QuotationsGetError = ListQuotationsApiV1QuotationsGetErrors[keyof ListQuotationsApiV1QuotationsGetErrors];
 
 export type ListQuotationsApiV1QuotationsGetResponses = {
     /**

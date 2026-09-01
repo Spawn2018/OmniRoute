@@ -61,6 +61,9 @@ async def test_quote_copies_amount_from_sql_not_request() -> None:
         "currency": row.currency,
         "source_ref": row.source_ref,
         "created_by": None,
+        "origin_port_id": None,
+        "destination_port_id": None,
+        "party_id": None,
     }
     execute_result = MagicMock()
     execute_result.mappings.return_value = mappings
@@ -71,6 +74,9 @@ async def test_quote_copies_amount_from_sql_not_request() -> None:
         organization_id=uuid4(),
         user_id=uuid4(),
         charge_code=" thc ",
+        origin_port_id=uuid4(),
+        destination_port_id=uuid4(),
+        party_id=uuid4(),
     )
 
     assert quoted.amount == row.amount
@@ -95,6 +101,9 @@ async def test_quote_gap_when_no_current_rate() -> None:
             organization_id=uuid4(),
             user_id=uuid4(),
             charge_code="THC",
+            origin_port_id=uuid4(),
+            destination_port_id=uuid4(),
+            party_id=uuid4(),
         )
 
 
@@ -108,6 +117,9 @@ async def test_quote_rejects_unknown_charge_code() -> None:
             organization_id=uuid4(),
             user_id=uuid4(),
             charge_code="loose",
+            origin_port_id=uuid4(),
+            destination_port_id=uuid4(),
+            party_id=uuid4(),
         )
 
 

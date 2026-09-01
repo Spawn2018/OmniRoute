@@ -42,6 +42,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **4.2 leftover — `operator_party_id`:** **DONE w 5.0.** Tekst `operator_name` zostaje; FK nullable do `party`.
 - **5.0 DONE:** `party` + dzieci, RLS FORCE, `resolve(tax_id)`, lookup fixture, OpenFGA `can_manage_parties`, `/parties`, `terminal.operator_party_id`. Nie Q3, nie silnik wyceny z override.
 - **5.0 leftover — żywe GUS/VIES/whitelist (dlaczego nie w tym plasterze):** delta = CI fixture, zero sieci. Piaskownica REGON bez klucza w repo. Żywy HTTP = gdy operator ma konto API, nie „na przyszłość” w 5.0.
+- **5.1 DONE:** POL/POD + `party_id` na `quotation`, FK złożone, CHECK kompletności, filtry SQL, `/quotations` z pickerami. Kwota nadal ze stawki. Nie override, nie k6.
+- **5.1 leftover — powtórzone pickery POL/POD (dlaczego nie w tym plasterze):** formularz i filtry na `/quotations` powielają `<select>`. `dup` poniżej 3%. Wspólny kontroler = gdy trzeci katalog zacznie ten sam wzorzec, albo slot `refaktor-pass`.
 - **5.0 leftover — `quotation.party_id` / POL/POD:** Q3, Plan (`/plan-modul`), nie plaster w tym commicie.
 - **5.0 leftover — `party_charge_override` w wycenie:** katalog uzgodnień. `quotations` / `charges` / `rate_lines` nie importują. Marża zostaje w `charge.margin()`.
 - **5.0 leftover — M-11 matcher domen / OpenFGA per party:** katalog `party_email_domain` bez matchera maili; `can_manage_parties` = member organizacji, nie tuple na wiersz.

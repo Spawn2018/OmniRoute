@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **5.0** M-10 `party` (zarchiwizowany)
-- **Etap:** Plaster
-- **Następny:** **5.1** M-21 `quotation` POL/POD + `party_id` ([delta](../deltas/open/5.1-quotation-port-party.md)). Nie Q4.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
+- **Ostatni plaster:** **5.1** M-21 `quotation` POL/POD + `party_id` (zarchiwizowany)
+- **Etap:** Plan
+- **Następny:** **Q4** archiwum **M-09 Kody towarowe** (`/plan-modul`). Nie Q5.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
