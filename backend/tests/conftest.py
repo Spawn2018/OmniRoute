@@ -11,6 +11,7 @@ from app.core.database import bind_tenant
 from app.models.app_user import AppUser
 from app.models.base import Base
 from app.models.carrier_profile import CarrierProfile  # noqa: F401 — rejestr metadanych RLS
+from app.models.channel_quote import ChannelQuote  # noqa: F401 — rejestr metadanych RLS
 from app.models.charge import Charge  # noqa: F401 — rejestr metadanych RLS
 from app.models.charge_code import ChargeCode  # noqa: F401 — rejestr metadanych RLS
 from app.models.commodity_code import CommodityCode  # noqa: F401 — rejestr metadanych RLS
@@ -359,6 +360,7 @@ async def _apply_rls_policies(conn) -> None:
         ("party_scorecard", "party_scorecard_tenant_isolation"),
         ("customer_sop", "customer_sop_tenant_isolation"),
         ("port_surcharge", "port_surcharge_tenant_isolation"),
+        ("channel_quote", "channel_quote_tenant_isolation"),
     ):
         await conn.execute(text(f"ALTER TABLE {table} ENABLE ROW LEVEL SECURITY"))
         await conn.execute(text(f"ALTER TABLE {table} FORCE ROW LEVEL SECURITY"))

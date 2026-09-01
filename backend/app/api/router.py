@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 
 from app.api import (
+    channel_quotes,
     charge_codes,
     charges,
     commodity_codes,
@@ -36,6 +37,7 @@ api_router.include_router(networks.router)
 api_router.include_router(nbp_rates.router)
 api_router.include_router(charges.router)
 api_router.include_router(rate_lines.router)
+api_router.include_router(channel_quotes.router)
 api_router.include_router(quotations.router)
 api_router.include_router(organization_settings.router)
 api_router.include_router(parties.router)

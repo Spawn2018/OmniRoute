@@ -1,10 +1,10 @@
 # M-19 channel_quote — stawka z kanału armatora
 
 **Moduł żywy:** M-19 (archiwum M-19; nie koliduje z żywym M-07 `rate_line` / M-08 `charge`)  
-**Plaster:** **13.0** (plan)  
-**Status:** plan — katalog oferty z kanału per `party`+POL/POD. Nie live HTTP. Nie zapis do `rate_line` / `charge`.
+**Plaster:** **13.0** (zamknięty)  
+**Status:** katalog oferty z kanału per `party`+POL/POD. Nie live HTTP. Nie zapis do `rate_line` / `charge`.
 
-Delta: [docs/deltas/open/13.0-channel-quote.md](../deltas/open/13.0-channel-quote.md).
+Delta: [docs/deltas/archived/13.0-channel-quote.md](../deltas/archived/13.0-channel-quote.md).
 
 ## 13.0 katalog oferty z kanału
 

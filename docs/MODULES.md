@@ -27,6 +27,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-13 | Karta wyników kontrahenta | 10.0 `party_scorecard` | **ukończony (fundament)** · snapshot karty; nie SQL-refresh; nie scoring osoby |
 | M-16 | Procedury operacyjne klienta | 11.0 `customer_sop` | **ukończony (fundament)** · katalog + zatwierdzenie; nie generator zadań; nie M-35 |
 | M-18 | Opłaty portowe warunkowe | 12.0 `port_surcharge` | **ukończony (fundament)** · katalog extra; nie zapis do `charge`; nie ewaluacja warunku |
+| M-19 | Stawki live i kanały | 13.0 `channel_quote` | **ukończony (fundament)** · katalog oferty; nie live HTTP; nie zapis do `rate_line` / `charge` |
 
 Nie dopisuj tu 70 pustych wierszy M-xx. Katalog + **kolejka Q1…** (co budować jedno po drugim, tryb Plan potem plaster): `docs/PLAN-REALIZACJA.md` § Kolejka. Archiwum Claude zostaje magazynem specyfikacji, nie SoT kolejności.
 

@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** 13.0 M-19 `channel_quote` (`/plaster`). Nie Fala 8. Nie zgaduj zakresu.
+**Następny (zablokowany):** `/plan-modul` M-14 ocena kredytowa (zakaz auto-scoringu `natural_person` / JDG). Nie Fala 8. Nie zgaduj zakresu.
 <!-- os-status:end -->
 
 ```mermaid
@@ -321,7 +321,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | F2.2 | **M-13 Karta wyników kontrahenta** | Plan → plaster | zamknięty (`docs/deltas/archived/10.0-party-scorecard.md`) |
 | F2.3 | **M-16 Procedury operacyjne klienta** | Plan → plaster | zamknięty (`docs/deltas/archived/11.0-customer-sop.md`) |
 | F2.4 | **M-18 Opłaty portowe warunkowe** | Plan → plaster | zamknięty (`docs/deltas/archived/12.0-port-surcharge.md`) |
-| F2.5 | **M-19 Stawki live i kanały** | Plan → plaster | Plan (`docs/deltas/open/13.0-channel-quote.md`) |
+| F2.5 | **M-19 Stawki live i kanały** | Plan → plaster | zamknięty (`docs/deltas/archived/13.0-channel-quote.md`) |
 
 ### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster
 
@@ -389,7 +389,7 @@ Nie implementuj z tej tabeli „na zapas”. To mapa, żeby nic nie zginęło. S
 | M-16 | Procedury operacyjne klienta | DONE fundament (11.0 `customer_sop`; nie generator zadań) |
 | M-17 | Stawki statyczne | COVERED (`rate_line`) |
 | M-18 | Opłaty portowe warunkowe | DONE fundament (12.0 `port_surcharge`; nie zapis do `charge`) |
-| M-19 | Stawki live i kanały | Fala 2 |
+| M-19 | Stawki live i kanały | DONE fundament (13.0 `channel_quote`; nie live HTTP) |
 | M-20 | Pipeline ekstrakcji | DONE fundament HITL |
 | M-21 | Silnik wyceny | DONE 2.0 + 5.1 POL/POD/`party_id` |
 | M-22 | Narzuty i marża | COVERED (`charge`) |

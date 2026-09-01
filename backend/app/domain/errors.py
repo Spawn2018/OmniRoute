@@ -260,3 +260,19 @@ class UnknownPortSurcharge(DomainError):
 
 class PortSurchargeConflict(DomainError):
     """Kod extra już zajęty przy tym porcie w tenancie."""
+
+
+class InvalidChannelQuote(DomainError):
+    """Kwota/waluta/data oferty z kanału poza katalogiem — nie marża."""
+
+
+class UnknownChannelQuote(DomainError):
+    """Oferta nie ma wpisu w katalogu channel_quote tenanta."""
+
+
+class ChannelQuoteConflict(DomainError):
+    """Oferta na ten dzień i lane już istnieje u tego armatora."""
+
+
+class UnknownCarrierProfile(DomainError):
+    """Kontrahent nie ma carrier_profile — oferta z kanału wymaga profilu armatora."""

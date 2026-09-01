@@ -1,0 +1,103 @@
+from uuid import UUID, uuid4
+
+from sqlalchemy.exc import IntegrityError
+from sqlalchemy.ext.asyncio import AsyncSession
+
+from app.domain.channel_quote import (
+    normalize_quote_amount,
+    normalize_quote_currency,
+    normalize_quote_date,
+)
+from app.domain.errors import (
+    ChannelQuoteConflict,
+    UnknownCarrierProfile,
+    UnknownChannelQuote,
+    UnknownPort,
+)
+from app.models.channel_quote import ChannelQuote
+from app.repositories.channel_quotes.channel_quote_repository import ChannelQuoteRepository
+
+_MANUAL = "tenant:manual"
+
+
+class ChannelQuoteService:
+    def __init__(self, session: AsyncSession) -> None:
+        self._quotes = ChannelQuoteRepository(session)
+
+    async def list_quotes(self) -> list[ChannelQuote]:
+        return await self._quotes.list_all()
+
+    async def resolve(
+        self,
+        *,
+        party_id: UUID,
+        origin_port_id: UUID,
+        destination_port_id: UUID,
+        on_date: object,
+    ) -> ChannelQuote:
+        day = normalize_quote_date(on_date)
+        await self._require_carrier(party_id)
+        await self._require_port(origin_port_id)
+        await self._require_port(destination_port_id)
+        found = await self._quotes.find_as_of(
+            party_id=party_id,
+            origin_port_id=origin_port_id,
+            destination_port_id=destination_port_id,
+            on_date=day,
+        )
+        if found is None:
+            raise UnknownChannelQuote(f"brak oferty kanału na {day.isoformat()}")
+        return found
+
+    async def create_quote(
+        self,
+        *,
+        organization_id: UUID,
+        user_id: UUID,
+        party_id: UUID,
+        origin_port_id: UUID,
+        destination_port_id: UUID,
+        quote_date: object,
+        amount: object,
+        currency: object,
+    ) -> ChannelQuote:
+        day = normalize_quote_date(quote_date)
+        stored_amount = normalize_quote_amount(amount)
+        iso = normalize_quote_currency(currency)
+        await self._require_carrier(party_id)
+        await self._require_port(origin_port_id)
+        await self._require_port(destination_port_id)
+        existing = await self._quotes.find_as_of(
+            party_id=party_id,
+            origin_port_id=origin_port_id,
+            destination_port_id=destination_port_id,
+            on_date=day,
+        )
+        if existing is not None and existing.quote_date == day:
+            raise ChannelQuoteConflict(f"oferta na {day.isoformat()} już istnieje")
+        row = ChannelQuote(
+            id=uuid4(),
+            organization_id=organization_id,
+            amount=stored_amount,
+            currency=iso,
+            party_id=party_id,
+            origin_port_id=origin_port_id,
+            destination_port_id=destination_port_id,
+            quote_date=day,
+            source_ref=_MANUAL,
+            created_by=user_id,
+        )
+        try:
+            return await self._quotes.add(row)
+        except IntegrityError as exc:
+            raise ChannelQuoteConflict(f"oferta na {day.isoformat()} już istnieje") from exc
+
+    async def _require_carrier(self, party_id: UUID) -> None:
+        found = await self._quotes.get_carrier_profile(party_id)
+        if found is None:
+            raise UnknownCarrierProfile(f"brak profilu armatora: {party_id}")
+
+    async def _require_port(self, port_id: UUID) -> None:
+        found = await self._quotes.get_port(port_id)
+        if found is None:
+            raise UnknownPort(f"nieznany port: {port_id}")

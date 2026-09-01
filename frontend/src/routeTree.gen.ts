@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ChannelQuotesRouteImport } from './routes/channel-quotes'
 import { Route as ChargeCodesRouteImport } from './routes/charge-codes'
 import { Route as ChargesRouteImport } from './routes/charges'
 import { Route as CommodityCodesRouteImport } from './routes/commodity-codes'
@@ -33,6 +34,11 @@ import { Route as TenancyUsersRouteImport } from './routes/tenancy.users'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChannelQuotesRoute = ChannelQuotesRouteImport.update({
+  id: '/channel-quotes',
+  path: '/channel-quotes',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ChargeCodesRoute = ChargeCodesRouteImport.update({
@@ -133,6 +139,7 @@ const TenancyUsersRoute = TenancyUsersRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/channel-quotes': typeof ChannelQuotesRoute
   '/charge-codes': typeof ChargeCodesRoute
   '/charges': typeof ChargesRoute
   '/commodity-codes': typeof CommodityCodesRoute
@@ -155,6 +162,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/channel-quotes': typeof ChannelQuotesRoute
   '/charge-codes': typeof ChargeCodesRoute
   '/charges': typeof ChargesRoute
   '/commodity-codes': typeof CommodityCodesRoute
@@ -178,6 +186,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/channel-quotes': typeof ChannelQuotesRoute
   '/charge-codes': typeof ChargeCodesRoute
   '/charges': typeof ChargesRoute
   '/commodity-codes': typeof CommodityCodesRoute
@@ -202,6 +211,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/channel-quotes'
     | '/charge-codes'
     | '/charges'
     | '/commodity-codes'
@@ -224,6 +234,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/channel-quotes'
     | '/charge-codes'
     | '/charges'
     | '/commodity-codes'
@@ -246,6 +257,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/channel-quotes'
     | '/charge-codes'
     | '/charges'
     | '/commodity-codes'
@@ -269,6 +281,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ChannelQuotesRoute: typeof ChannelQuotesRoute
   ChargeCodesRoute: typeof ChargeCodesRoute
   ChargesRoute: typeof ChargesRoute
   CommodityCodesRoute: typeof CommodityCodesRoute
@@ -297,6 +310,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/channel-quotes': {
+      id: '/channel-quotes'
+      path: '/channel-quotes'
+      fullPath: '/channel-quotes'
+      preLoaderRoute: typeof ChannelQuotesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/charge-codes': {
@@ -437,6 +457,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ChannelQuotesRoute: ChannelQuotesRoute,
   ChargeCodesRoute: ChargeCodesRoute,
   ChargesRoute: ChargesRoute,
   CommodityCodesRoute: CommodityCodesRoute,

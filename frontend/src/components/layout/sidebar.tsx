@@ -11,6 +11,7 @@ const NAV = [
   { to: "/networks", label: "Sieci" },
   { to: "/nbp-rates", label: "Kursy NBP" },
   { to: "/charges", label: "Opłaty" },
+  { to: "/channel-quotes", label: "Oferty kanału" },
   { to: "/rate-lines", label: "Stawki" },
   { to: "/quotations", label: "Wyceny" },
   { to: "/ports", label: "Porty" },

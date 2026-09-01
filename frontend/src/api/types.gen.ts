@@ -139,6 +139,78 @@ export type CarrierProfileUpsert = {
 };
 
 /**
+ * ChannelQuoteCreate
+ */
+export type ChannelQuoteCreate = {
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Origin Port Id
+     */
+    origin_port_id: string;
+    /**
+     * Destination Port Id
+     */
+    destination_port_id: string;
+    /**
+     * Quote Date
+     */
+    quote_date: string;
+    /**
+     * Amount
+     */
+    amount: string;
+    /**
+     * Currency
+     */
+    currency: string;
+};
+
+/**
+ * ChannelQuoteResponse
+ */
+export type ChannelQuoteResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Origin Port Id
+     */
+    origin_port_id: string;
+    /**
+     * Destination Port Id
+     */
+    destination_port_id: string;
+    /**
+     * Quote Date
+     */
+    quote_date: string;
+    /**
+     * Amount
+     */
+    amount: string;
+    /**
+     * Currency
+     */
+    currency: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * ChargeCodeCreate
  */
 export type ChargeCodeCreate = {
@@ -2568,6 +2640,91 @@ export type SupersedeRateLineApiV1RateLinesRateLineIdSupersedePostResponses = {
 };
 
 export type SupersedeRateLineApiV1RateLinesRateLineIdSupersedePostResponse = SupersedeRateLineApiV1RateLinesRateLineIdSupersedePostResponses[keyof SupersedeRateLineApiV1RateLinesRateLineIdSupersedePostResponses];
+
+export type ListChannelQuotesApiV1ChannelQuotesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/channel-quotes';
+};
+
+export type ListChannelQuotesApiV1ChannelQuotesGetResponses = {
+    /**
+     * Response List Channel Quotes Api V1 Channel Quotes Get
+     *
+     * Successful Response
+     */
+    200: Array<ChannelQuoteResponse>;
+};
+
+export type ListChannelQuotesApiV1ChannelQuotesGetResponse = ListChannelQuotesApiV1ChannelQuotesGetResponses[keyof ListChannelQuotesApiV1ChannelQuotesGetResponses];
+
+export type CreateChannelQuoteApiV1ChannelQuotesPostData = {
+    body: ChannelQuoteCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/channel-quotes';
+};
+
+export type CreateChannelQuoteApiV1ChannelQuotesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateChannelQuoteApiV1ChannelQuotesPostError = CreateChannelQuoteApiV1ChannelQuotesPostErrors[keyof CreateChannelQuoteApiV1ChannelQuotesPostErrors];
+
+export type CreateChannelQuoteApiV1ChannelQuotesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ChannelQuoteResponse;
+};
+
+export type CreateChannelQuoteApiV1ChannelQuotesPostResponse = CreateChannelQuoteApiV1ChannelQuotesPostResponses[keyof CreateChannelQuoteApiV1ChannelQuotesPostResponses];
+
+export type ResolveChannelQuoteApiV1ChannelQuotesResolveGetData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Party Id
+         */
+        party_id: string;
+        /**
+         * Origin Port Id
+         */
+        origin_port_id: string;
+        /**
+         * Destination Port Id
+         */
+        destination_port_id: string;
+        /**
+         * On Date
+         */
+        on_date: string;
+    };
+    url: '/api/v1/channel-quotes/resolve';
+};
+
+export type ResolveChannelQuoteApiV1ChannelQuotesResolveGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ResolveChannelQuoteApiV1ChannelQuotesResolveGetError = ResolveChannelQuoteApiV1ChannelQuotesResolveGetErrors[keyof ResolveChannelQuoteApiV1ChannelQuotesResolveGetErrors];
+
+export type ResolveChannelQuoteApiV1ChannelQuotesResolveGetResponses = {
+    /**
+     * Successful Response
+     */
+    200: ChannelQuoteResponse;
+};
+
+export type ResolveChannelQuoteApiV1ChannelQuotesResolveGetResponse = ResolveChannelQuoteApiV1ChannelQuotesResolveGetResponses[keyof ResolveChannelQuoteApiV1ChannelQuotesResolveGetResponses];
 
 export type ListQuotationsApiV1QuotationsGetData = {
     body?: never;

@@ -24,6 +24,7 @@ const NAV_ACTIONS = [
   { id: "nav-port-surcharges", label: "Idź do katalogu extra portowych", to: "/port-surcharges" },
   { id: "nav-nbp-rates", label: "Idź do katalogu kursów NBP", to: "/nbp-rates" },
   { id: "nav-charges", label: "Idź do opłat", to: "/charges" },
+  { id: "nav-channel-quotes", label: "Idź do katalogu ofert z kanału", to: "/channel-quotes" },
   { id: "nav-rate-lines", label: "Idź do stawek kupna", to: "/rate-lines" },
   { id: "nav-quotations", label: "Idź do wycen", to: "/quotations" },
   { id: "nav-organization-settings", label: "Idź do ustawień tenanta", to: "/organization-settings" },

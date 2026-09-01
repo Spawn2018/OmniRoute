@@ -1367,6 +1367,158 @@
         }
       }
     },
+    "/api/v1/channel-quotes": {
+      "get": {
+        "tags": [
+          "channel-quotes"
+        ],
+        "summary": "List Channel Quotes",
+        "operationId": "list_channel_quotes_api_v1_channel_quotes_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ChannelQuoteResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Channel Quotes Api V1 Channel Quotes Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "channel-quotes"
+        ],
+        "summary": "Create Channel Quote",
+        "operationId": "create_channel_quote_api_v1_channel_quotes_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChannelQuoteCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChannelQuoteResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/channel-quotes/resolve": {
+      "get": {
+        "tags": [
+          "channel-quotes"
+        ],
+        "summary": "Resolve Channel Quote",
+        "operationId": "resolve_channel_quote_api_v1_channel_quotes_resolve_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "party_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Party Id"
+            }
+          },
+          {
+            "name": "origin_port_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Origin Port Id"
+            }
+          },
+          {
+            "name": "destination_port_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Destination Port Id"
+            }
+          },
+          {
+            "name": "on_date",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "title": "On Date"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChannelQuoteResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/quotations": {
       "get": {
         "tags": [
@@ -3714,6 +3866,112 @@
         },
         "type": "object",
         "title": "CarrierProfileUpsert"
+      },
+      "ChannelQuoteCreate": {
+        "properties": {
+          "party_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Party Id"
+          },
+          "origin_port_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Origin Port Id"
+          },
+          "destination_port_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Destination Port Id"
+          },
+          "quote_date": {
+            "type": "string",
+            "format": "date",
+            "title": "Quote Date"
+          },
+          "amount": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 1,
+            "title": "Amount"
+          },
+          "currency": {
+            "type": "string",
+            "maxLength": 3,
+            "minLength": 3,
+            "title": "Currency"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "party_id",
+          "origin_port_id",
+          "destination_port_id",
+          "quote_date",
+          "amount",
+          "currency"
+        ],
+        "title": "ChannelQuoteCreate"
+      },
+      "ChannelQuoteResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "party_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Party Id"
+          },
+          "origin_port_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Origin Port Id"
+          },
+          "destination_port_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Destination Port Id"
+          },
+          "quote_date": {
+            "type": "string",
+            "format": "date",
+            "title": "Quote Date"
+          },
+          "amount": {
+            "type": "string",
+            "title": "Amount"
+          },
+          "currency": {
+            "type": "string",
+            "title": "Currency"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "party_id",
+          "origin_port_id",
+          "destination_port_id",
+          "quote_date",
+          "amount",
+          "currency",
+          "source_ref"
+        ],
+        "title": "ChannelQuoteResponse"
       },
       "ChargeCodeCreate": {
         "properties": {

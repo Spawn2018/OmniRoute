@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **12.0** M-18 `port_surcharge` (zarchiwizowany). **Etap:** Plan. **Następny:** 13.0 M-19 `channel_quote` (`/plaster`). Nie Fala 8. Nie zgaduj zakresu. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **13.0** M-19 `channel_quote` (zarchiwizowany). **Etap:** Plan. **Następny:** `/plan-modul` M-14 ocena kredytowa (zakaz auto-scoringu `natural_person` / JDG). Nie Fala 8. Nie zgaduj zakresu. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
@@ -11,12 +11,12 @@
 <!-- os-tree:start -->
 ```
 frontend/                 React 19 + Compiler, Vite, TanStack, shadcn, PostHog
-  src/features/           charge-codes · charges · commodity-codes · customer-sops · dangerous-goods · extraction · geography · nbp-rates · networks · ops · organization-settings · parties · party-scorecards · port-surcharges · quotations · rate-lines · session · tenancy
+  src/features/           channel-quotes · charge-codes · charges · commodity-codes · customer-sops · dangerous-goods · extraction · geography · nbp-rates · networks · ops · organization-settings · parties · party-scorecards · port-surcharges · quotations · rate-lines · session · tenancy
   src/components/ui/      shadcn
   src/components/data-table/  DataTableShell (Golden Standard)
 backend/app/
   api/             routery, DTO, require_permission — bez logiki
-  services/        charge_codes · charges · commodity_codes · dangerous_goods · extraction · geography · nbp_rates · networks · organization_settings · parties · port_surcharges · quotations · rate_lines · tenancy
+  services/        channel_quotes · charge_codes · charges · commodity_codes · dangerous_goods · extraction · geography · nbp_rates · networks · organization_settings · parties · port_surcharges · quotations · rate_lines · tenancy
   repositories/    dostęp SQL
   models/          SQLAlchemy
   domain/          typy, wyjątki, Money

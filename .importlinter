@@ -30,6 +30,7 @@ modules =
     app.services.dangerous_goods
     app.services.networks
     app.services.port_surcharges
+    app.services.channel_quotes
 
 [importlinter:contract:integracje]
 name = Integracje nie znają serwisów
@@ -85,3 +86,6 @@ forbidden_modules =
     app.services.port_surcharges
     app.repositories.port_surcharges
     app.models.port_surcharge
+    app.services.channel_quotes
+    app.repositories.channel_quotes
+    app.models.channel_quote
