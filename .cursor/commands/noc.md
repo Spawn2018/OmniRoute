@@ -19,10 +19,10 @@ Zostań w trybie **Agent**. **Nie** przełączaj Cursora na tryb Plan (ekran cze
 
 1. `powershell -ExecutionPolicy Bypass -File scripts/noc-preflight.ps1`  
    Postgres, OpenFGA, internet, GitHub, czysty git, `main`, `pull --ff-only` gdy origin jest do przodu. Exit ≠ 0 → **stop**, nie pętla. Nie `--no-verify`, nie force-push, nie stash cudzej roboty.
-2. Zapisz `docs/state/NOC-LIVE.md` (nie commitować): godzina stopu ISO, `status: busy` / `idle`, `last_beat`. Ten plik jest w `.gitignore`.
+2. Zapisz lokalne bicie serca wg `docs/state/NOC-LIVE.example.md` (żywy plik gitignore, nie commitować): godzina stopu ISO, `status: busy` / `idle`, `last_beat`.
 3. Strażnik: skill `/loop` co **15 minut**, nazwa `loop-noc`. Prompt budzika:
 
-   > Czytaj `docs/state/NOC-LIVE.md` i `docs/state/CURRENT.md`. Jeśli po godzinie stopu: raport z `docs/ops/nocna-zmiana.md` § Raport, wyłącz loop, stop. Jeśli `status: busy` i `last_beat` świeższy niż 25 min: nic nie rób. Jeśli cisza > 25 min i przed godziną: preflight, jeden cykl z CURRENT, bije serce. Nie odpalaj drugiego agenta równolegle.
+   > Czytaj lokalne bicie serca nocy (szablon `docs/state/NOC-LIVE.example.md`) i `docs/state/CURRENT.md`. Jeśli po godzinie stopu: raport z `docs/ops/nocna-zmiana.md` § Raport, wyłącz loop, stop. Jeśli `status: busy` i `last_beat` świeższy niż 25 min: nic nie rób. Jeśli cisza > 25 min i przed godziną: preflight, jeden cykl z CURRENT, bije serce. Nie odpalaj drugiego agenta równolegle.
 
 4. Od razu pierwszy cykl (nie czekaj na pierwszy tik).
 
@@ -39,10 +39,10 @@ Czytaj CURRENT + kolejkę. Parked (M-02, Auth0, portale) **pomijaj**.
 Moduł niecały → następny plaster (plan jeśli trzeba, potem kod).  
 Moduł domknięty → następny Q z PLAN: plan (rozbicie na plastry) → push → plaster → push.
 
-Po pushu zaktualizuj `last_beat` i `status: idle` w NOC-LIVE, potem od razu kolejny cykl jeśli przed godziną. Źródło prawdy = CURRENT + git, nie czat.
+Po pushu zaktualizuj `last_beat` i `status: idle` w lokalnym biciu serca, potem od razu kolejny cykl jeśli przed godziną. Źródło prawdy = CURRENT + git, nie czat.
 
 ## Raport (koniec zmiany)
 
-Język dla laika, bez żargonu. Pięć nagłówków z `docs/ops/nocna-zmiana.md` § Raport. Wyłącz strażnika. NOC-LIVE: `status: stop`.
+Język dla laika, bez żargonu. Pięć nagłówków z `docs/ops/nocna-zmiana.md` § Raport. Wyłącz strażnika. Lokalne bicie serca: `status: stop`.
 
 Kanon: GROUNDING, GLOSSARY, Decimal, `charge` = marża, ExtractionService bez rates. Nie cofaj hotfixów CI (HANDOFF). Nie 70 stubów.

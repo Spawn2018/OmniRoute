@@ -25,7 +25,7 @@ Ty: komputer nie usypia, Cursor otwarty, **żaden inny agent nie pisze**.
 
 Planowanie zostaje (delta, zakres, testy zanim kod). Znika tylko czekanie na kliknięcie.
 
-Strażnik co 15 minut (`/loop`, `loop-noc`): jeśli sesja umarła (brak bicia serca > 25 min) i jest przed godziną — wraca do CURRENT, nie do pamięci czatu. Jeśli właśnie trwa pytest/commit — budzik nic nie robi. Plik `docs/state/NOC-LIVE.md` jest lokalny (gitignore), nie commitować.
+Strażnik co 15 minut (`/loop`, `loop-noc`): jeśli sesja umarła (brak bicia serca > 25 min) i jest przed godziną — wraca do CURRENT, nie do pamięci czatu. Jeśli właśnie trwa pytest/commit — budzik nic nie robi. Szablon: [NOC-LIVE.example.md](../state/NOC-LIVE.example.md). Żywy plik jest lokalny (gitignore), nie commitować.
 
 ## Twarde stop
 
