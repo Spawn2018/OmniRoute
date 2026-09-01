@@ -62,6 +62,7 @@
 | 2026-09-01 | 2.1–2.2 | M-20 | Presidio stub tylko instructor + 10 syntetyk `synth://`; zero PDF klienta; nie Presidio-all |
 | 2026-09-01 | 2.0 | M-21 | `quotation` INSERT…SELECT z bieżącego `rate_line` + RLS + `/quotations`; nie k6; nie marża |
 | 2026-09-01 | 3.0 | M-03 | `organization_setting` allowlista `default_currency` + RLS + `/organization-settings`; nie sekrety |
+| 2026-09-01 | ADR-0003 | UI | System UI: OKLCH/dark, Radix pin, wzorce HITL/charge/tenant; makiety `docs/design/`; **nie Q1**; zero kodu `frontend/` |
 | 2026-09-01 | CI | ops | gate: 005 `current_database()` zamiast `Connection.url`; `docs-debt` path; URI ≠ plik w agent-refs |
 | — | leftover | Auth0 | I1/I2 **odroczone** aż będzie tenant. Nie pytać. 0.12/0.15 ≠ IdP. |
-| — | leftover | produkt | **Następny:** Q1 Plan M-05 Geografia (`/plan-modul`). M-02 parked. |
+| — | leftover | produkt | **Następny:** 4.0 M-05 `port` (`/plaster`). Leftovery UI ADR-0003 **nie** zamiast 4.0. M-02 parked. |

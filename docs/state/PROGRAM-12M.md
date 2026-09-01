@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **3.0** M-03 `organization_setting` (zarchiwizowany) **Następny:** **Q1** archiwum M-05 Geografia — `port` / UN/LOCODE / lokalizacja / strefy taryfowe tenanta. Komenda: `/plan-modul`. Po akceptacji delty: nowa rozmowa + `/plaster`.
+**Stan (z CURRENT.md):** **3.0** M-03 `organization_setting` (zarchiwizowany) **Następny:** **4.0** M-05 `port` + seed `cristan/improved-un-locodes` + `resolve` (Gdingen→PLGDY) + `/ports`. Delta: `docs/deltas/open/4.0-port.md`. Spec: `docs/spec/geography.md`. Nie 4.1/4.2. Nie Q2.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

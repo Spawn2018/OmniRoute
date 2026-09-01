@@ -4,12 +4,12 @@
 
 **Alias (nie kanon):** [docs/state/PROGRAM-12M.md](state/PROGRAM-12M.md) — krótki wskaźnik + wklejka starych promptów.  
 **Plan Cursor (historia fabryki):** `.cursor/plans/omniroute-realizacja.plan.md` — nie czytaj z niego „następny = OAuth / D0”.  
-**ADR:** [0001 Cursor factory](adr/0001-cursor-software-factory-weryfikacja.md) · [0002 Frontend 2026](adr/0002-frontend-platform-2026.md)  
+**ADR:** [0001 Cursor factory](adr/0001-cursor-software-factory-weryfikacja.md) · [0002 Frontend 2026](adr/0002-frontend-platform-2026.md) · [0003 System UI](adr/0003-frontend-ui-system-2026.md)  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** **Q1** archiwum M-05 Geografia — `port` / UN/LOCODE / lokalizacja / strefy taryfowe tenanta. Komenda: `/plan-modul`. Po akceptacji delty: nowa rozmowa + `/plaster`.
+**Następny (zablokowany):** **4.0** M-05 `port` + seed `cristan/improved-un-locodes` + `resolve` (Gdingen→PLGDY) + `/ports`. Delta: `docs/deltas/open/4.0-port.md`. Spec: `docs/spec/geography.md`. Nie 4.1/4.2. Nie Q2.
 <!-- os-status:end -->
 
 ```mermaid
@@ -171,6 +171,30 @@ U0 adapter / U1 shell / U2 tabela ADR weszły jako 0.5 / 0.6 / openapi-ts — to
 
 **Zakaz claim:** „scaffold 2026 + powierzchnia 2026”, „70 UI”, zamykanie fali na adapter+RTL. U-routes-breadth = standing na **kolejne** BC, nie dowód że powierzchnia 2026 jest skończona.
 
+### Wave FE — leftover po audycie UI (2026-09-01) — **nie Q1**
+
+ADR-0003 + makiety [docs/design/](design/README.md). **Nie** konsumują slotu Q1 (M-05). Każdy ID = osobny plaster **po** Planie tej pozycji albo wpleciony w najbliższy plaster UI, który i tak rusza dany plik. Zero kodu `frontend/` przy samym ADR.
+
+| ID | Operator zobaczy | Gate co padnie | Zależność |
+|---|---|---|---|
+| **U-oklch-dark** | tokeny OKLCH, motyw jasny/ciemny, kontrast AA | hex-only; brak `.dark`; para tokenów < 4.5:1 | `index.css` |
+| **U-money-align** | kwota wyrównana do przecinka + kod waluty | `<Money/>` bez osi dziesiętnej | `money.tsx` |
+| **U-condensed** | trzeci tryb gęstości na gridzie stawek | condensed globalnie albo brak na `rate_line` | DataTableShell |
+| **U-primitives-json** | `frontend/components.json` base radix | `shadcn add` bez `-b radix` wciąga Base UI | CLI |
+| **U-i18n-structure** | klucze + locale format; jeden język (pl) w paczce | hardcoded string w **nowym** ekranie | nowe trasy |
+| **U-playwright-axe** | 3 ścieżki E2E + axe na trasie | brak Playwright w gate; axe poza CI | po U-oklch-dark |
+| **U-print** | arkusz druku B/L / FV / list | `@media print` chaos albo PDF-teatr | Fala 5/6 |
+
+**Wizja (canvas 06) — parked aż będą dane:**
+
+| Ekran | Najwcześniej |
+|---|---|
+| Watchtower (mapa + wyjątki) | po M-05 **i** M-35–M-37; mapa = lazy chunk, nie initial 250 kB |
+| Oś multimodalna | Fala 5 (tracking) |
+| Portale klienta / przewoźnika | Fala 10 (M-61+) |
+
+Optimistic UI: wolno na filtrach/widokach/kolumnach. **Zakaz** na kwocie, `charge`, `rate_line`, accept HITL.
+
 ---
 
 ## Auth0 — odroczone
@@ -281,7 +305,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 
 | Q | Co | Tryb startu | Status |
 |---|---|---|---|
-| **Q1** | Archiwum **M-05 Geografia** (`port`, UN/LOCODE, lokalizacja, strefy taryfowe tenanta) | **Plan** → plaster | **TERAZ** |
+| **Q1** | Archiwum **M-05 Geografia** — **4.0** `port` (delta zaakceptowana) → 4.1 → 4.2 | **Plaster** 4.0 (`/plaster` w nowej rozmowie) | **TERAZ** |
 | Q2 | Archiwum **M-10 Kontrahenci** | Plan → plaster | kolejka |
 | Q3 | Pogłębienie żywego **M-21** `quotation` o port + kontrahent (lista/filtry; SQL na istniejących `rate_line`; nie marża; nie k6) | Plan → plaster | kolejka |
 | Q4 | Archiwum **M-09 Kody towarowe** | Plan → plaster | kolejka |
@@ -320,6 +344,7 @@ M-48…M-51 modały · M-52…M-56 compliance (M-53 sankcje, M-56 RODO) · M-57�
 |---|---|
 | **M-02** outbox | Brak zdarzeń async między BC poza HTTP. Wejdzie, gdy Fala 5/integracje naprawdę publikują zdarzenie. Wtedy najpierw **Plan**. |
 | **Auth0 I1/I2** | Brak tenanta. Nie moduł M-xx. Nie pytać. |
+| **Watchtower / mapa / portale** | Canvas 06. Po M-05 + Fali 5/10. Nie Q1. |
 | **M-04 SSO** | Kawałek OpenFGA jest. Reszta tożsamości = Auth0 parked. „Handlowiec widzi swoich” **po Q2** (kontrahenci), Plan bez SSO. |
 | **M-03 reszta** | Żyje tylko `default_currency`. Szablony, numeracja, workflow — Plan jako leftover M-03 **po Fali 1**, nie zamiast Q1. |
 
@@ -339,7 +364,7 @@ Nie implementuj z tej tabeli „na zapas”. To mapa, żeby nic nie zginęło. S
 | M-02 | Niezawodność zdarzeń | PARKED |
 | M-03 | Konfiguracja per organizacja | CZĘŚĆ (`default_currency`) |
 | M-04 | Uprawnienia i tożsamość | CZĘŚĆ (OpenFGA hello; SSO parked) |
-| M-05 | Geografia | **Q1 Plan** |
+| M-05 | Geografia | **Q1 4.0** plaster `port` |
 | M-06 | Słownik opłat | DONE jako `charge_code` |
 | M-07 | Waluty i czas | kolejka Q5; ID żywy ≠ M-07 |
 | M-08 | Towary niebezpieczne | kolejka Q6; ID żywy ≠ M-08 |
@@ -371,7 +396,7 @@ Nie implementuj z tej tabeli „na zapas”. To mapa, żeby nic nie zginęło. S
 
 ## Anti-cele (odmów) + nie pytaj ponownie
 
-Temporal/Hatchet/outbox na zapas · Infisical · 70 pustych M-xx · k6 50k · OTel-sprint · `just perf` / k6 echo jako DoD · Presidio na każdym endpoincie · żywy OpenAI w gate · `can_*` = member · accept bez HITL · hasła+Auth0 w jednym plasterze · persony `.cursor/agents/` · dump Claude · zmiana starych migracji · Next.js · pgvector „bo stos” · required checks na Free · twierdzenie że 0.12 = IdP · OCR-teatr · zamknięcie Wave FE na adapter+RTL · „powierzchnia 2026” przed Exit Wave FE · auto credit scoring `natural_person` / JDG · zdejmowanie HITL w D0.
+Temporal/Hatchet/outbox na zapas · Infisical · 70 pustych M-xx · k6 50k · OTel-sprint · `just perf` / k6 echo jako DoD · Presidio na każdym endpoincie · żywy OpenAI w gate · `can_*` = member · accept bez HITL · hasła+Auth0 w jednym plasterze · persony `.cursor/agents/` · dump Claude · zmiana starych migracji · Next.js · pgvector „bo stos” · required checks na Free · twierdzenie że 0.12 = IdP · OCR-teatr · zamknięcie Wave FE na adapter+RTL · „powierzchnia 2026” przed Exit Wave FE · auto credit scoring `natural_person` / JDG · zdejmowanie HITL w D0 · Base UI bez ADR · mapa w initial JS · optimistic na kwocie/`accept` · cztery silniki tabel Fiori.
 
 **Nie pytaj ponownie:** Auth0 I1/I2 (aż user ma tenant), IdP, Infisical, Temporal, Pro, dump, „adapter wystarczy na powierzchnię 2026”, „0.12/0.15 = IdP”, start M-02 bez zdarzeń, kompromis na Exit Wave FE.
 
@@ -386,7 +411,7 @@ Temporal/Hatchet/outbox na zapas · Infisical · 70 pustych M-xx · k6 50k · OT
 3. Łowca duplikatów + review 4-pass (**pomiar**; naprawa w pętli).
 4. Pętla [post-plaster.md](ops/post-plaster.md); leftover → [docs-debt.md](ops/docs-debt.md).
 5. CURRENT + PROGRESS + `just docs` (README/ARCHITECTURE/PLAN z CURRENT).
-6. GROUNDING HCs + ADR-0002 (brak drugiego table engine / AI-slop).
+6. GROUNDING HCs + ADR-0002 (brak drugiego table engine / AI-slop) + ADR-0003 (tokeny, Money, HITL, tenant).
 7. **WIP:** nie startuj kolejnego plastra przy niezacommitowanym / niepushniętym zakresie.
 
 ## Skills i start
@@ -396,13 +421,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

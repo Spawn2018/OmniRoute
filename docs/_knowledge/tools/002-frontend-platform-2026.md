@@ -1,11 +1,12 @@
 # Frontend platform 2026 — kanon OmniRoute
 
-**ADR:** [docs/adr/0002-frontend-platform-2026.md](../../adr/0002-frontend-platform-2026.md)
+**ADR:** [0002](../../adr/0002-frontend-platform-2026.md) (stack) · [0003](../../adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce, HITL/tenant). Makiety: [docs/design/](../../design/README.md).
 
 ## Stack (Adopt)
 
 - React 19 + React Compiler · Vite · TanStack Router/Query/Form/Table/Virtual
-- shadcn/ui + Tailwind v4 + Radix · @dnd-kit · PostHog
+- shadcn/ui + Tailwind v4 + **Radix** (pin `components.json`; Base UI tylko nowym ADR) · @dnd-kit · PostHog
+- Tokeny: OKLCH luminance-first + dark (leftover U-oklch-dark). Condensed tylko na gridzie stawek.
 - Referencja layoutu: satnaing/shadcn-admin (wzorce, nie fork)
 
 ## DataTableShell (Golden Standard)

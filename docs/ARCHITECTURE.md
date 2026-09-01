@@ -1,10 +1,10 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **3.0** M-03 `organization_setting` (zarchiwizowany). **Etap:** **Plan** (zero kodu). Nie `/plaster`. **Następny:** **Q1** archiwum M-05 Geografia — `port` / UN/LOCODE / lokalizacja / strefy taryfowe tenanta. Komenda: `/plan-modul`. Po akceptacji delty: nowa rozmowa + `/plaster`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **3.0** M-03 `organization_setting` (zarchiwizowany). **Etap:** **Plaster** (delta 4.0 zaakceptowana). Nowa rozmowa Agent + `/plaster`. **Następny:** **4.0** M-05 `port` + seed `cristan/improved-un-locodes` + `resolve` (Gdingen→PLGDY) + `/ports`. Delta: `docs/deltas/open/4.0-port.md`. Spec: `docs/spec/geography.md`. Nie 4.1/4.2. Nie Q2. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
-**ADR frontend:** [0002-frontend-platform-2026](adr/0002-frontend-platform-2026.md)
+**ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
 
 ## Warstwy
 
