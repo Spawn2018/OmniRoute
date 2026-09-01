@@ -88,4 +88,5 @@
 | 2026-09-02 | 9.0 | M-12 | `network` katalog + `source_ref` + RLS FORCE + `resolve` + OpenFGA `can_manage_networks` + `/networks`. Nie katalog agentów, nie scraping. |
 | 2026-09-02 | Plan 10.0 | M-13 | delta `docs/deltas/archived/10.0-party-scorecard.md` + spec. Snapshot `party_scorecard` per party. Nie SQL-refresh, nie scoring osoby, nie RFQ. Następny: `/plaster` 10.0. |
 | 2026-09-02 | 10.0 | M-13 | `party_scorecard` snapshot + RLS FORCE + ranking + OpenFGA `can_manage_parties` + `/party-scorecards` + panel na `/parties`. Nie SQL-refresh, nie scoring osoby, nie RFQ. |
-| 2026-09-02 | Plan 11.0 | M-16 | delta `docs/deltas/open/11.0-customer-sop.md` + spec. Katalog `customer_sop` + zatwierdzenie. Nie generator zadań, nie M-35. Następny: `/plaster` 11.0. |
+| 2026-09-02 | Plan 11.0 | M-16 | delta `docs/deltas/archived/11.0-customer-sop.md` + spec. Katalog `customer_sop` + zatwierdzenie. Nie generator zadań, nie M-35. Następny: `/plaster` 11.0. |
+| 2026-09-02 | 11.0 | M-16 | `customer_sop` katalog + RLS FORCE + `resolve(party_id, code)` + zatwierdzenie + OpenFGA `can_manage_parties` + `/customer-sops` + panel na `/parties`. Nie generator zadań, nie M-35, nie `superseded_by`. |

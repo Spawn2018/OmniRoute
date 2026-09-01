@@ -54,6 +54,11 @@ export const OPS_JOBS = [
     label: "Karty wyników",
     job: "snapshot party_scorecard",
   },
+  {
+    route: BUSINESS_LISTS.customerSops.route,
+    label: "Procedury klienta",
+    job: "katalog customer_sop + zatwierdzenie",
+  },
   { route: BUSINESS_LISTS.users.route, label: "Użytkownicy", job: "tenant users" },
   { route: "/session", label: "Sesja", job: "token klienta" },
 ] as const
@@ -76,6 +81,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "8.0": "/parties",
   "9.0": "/networks",
   "10.0": "/party-scorecards",
+  "11.0": "/customer-sops",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **10.0** M-13 `party_scorecard` (zarchiwizowany)
+- **Ostatni plaster:** **11.0** M-16 `customer_sop` (zarchiwizowany)
 - **Etap:** Plan
-- **Następny:** 11.0 M-16 `customer_sop` (`/plaster`). Nie Fala 8. Nie zgaduj zakresu.
+- **Następny:** M-18 Opłaty portowe warunkowe (`/plan-modul`). Nie Fala 8. Nie zgaduj zakresu.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

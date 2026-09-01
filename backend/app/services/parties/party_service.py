@@ -6,9 +6,13 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.charge_code import normalize_charge_code
+from app.domain.customer_sop import normalize_sop_body, normalize_sop_code, normalize_sop_title
 from app.domain.errors import (
+    CustomerSopAlreadyApproved,
+    CustomerSopConflict,
     InvalidPartyData,
     ResourceNotFound,
+    UnknownCustomerSop,
     UnknownEmailDomain,
     UnknownParty,
     UnknownPartyScorecard,
@@ -33,6 +37,7 @@ from app.domain.party_scorecard import (
     required_window_days,
 )
 from app.models.carrier_profile import CarrierProfile
+from app.models.customer_sop import CustomerSop
 from app.models.party import Party
 from app.models.party_bank_account import PartyBankAccount
 from app.models.party_charge_override import PartyChargeOverride
@@ -389,3 +394,63 @@ class PartyService:
             created_by=user_id,
         )
         return await self._parties.add_scorecard(row)
+
+    async def list_sops(self) -> list[CustomerSop]:
+        return await self._parties.list_sops()
+
+    async def resolve_sop(self, party_id: UUID, code: object) -> CustomerSop:
+        token = normalize_sop_code(code)
+        await self._require_known_party(party_id)
+        found = await self._parties.find_sop_by_party_and_code(party_id, token)
+        if found is None:
+            raise UnknownCustomerSop(f"nieznana procedura: {token}")
+        return found
+
+    async def create_sop(
+        self,
+        *,
+        organization_id: UUID,
+        user_id: UUID,
+        party_id: UUID,
+        code: object,
+        title: object,
+        body: object,
+    ) -> CustomerSop:
+        token = normalize_sop_code(code)
+        heading = normalize_sop_title(title)
+        text_body = normalize_sop_body(body)
+        await self._require_known_party(party_id)
+        duplicate = await self._parties.find_sop_by_party_and_code(party_id, token)
+        if duplicate is not None:
+            raise CustomerSopConflict(f"procedura {token} już istnieje")
+        row = CustomerSop(
+            id=uuid4(),
+            organization_id=organization_id,
+            party_id=party_id,
+            status="draft",
+            code=token,
+            title=heading,
+            body=text_body,
+            approved_at=None,
+            source_ref=manual_source_ref(),
+            created_by=user_id,
+        )
+        try:
+            return await self._parties.add_sop(row)
+        except IntegrityError as exc:
+            raise CustomerSopConflict(f"procedura {token} już istnieje") from exc
+
+    async def approve_sop(self, sop_id: UUID) -> CustomerSop:
+        found = await self._parties.get_sop(sop_id)
+        if found is None:
+            raise UnknownCustomerSop(f"nieznana procedura: {sop_id}")
+        if found.status != "draft":
+            raise CustomerSopAlreadyApproved("procedura już zatwierdzona")
+        found.status = "approved"
+        found.approved_at = datetime.now(UTC)
+        return found
+
+    async def _require_known_party(self, party_id: UUID) -> None:
+        found = await self._parties.get(party_id)
+        if found is None:
+            raise UnknownParty(f"nieznany kontrahent: {party_id}")

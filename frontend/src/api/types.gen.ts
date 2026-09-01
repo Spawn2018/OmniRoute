@@ -435,6 +435,70 @@ export type ContactResponse = {
 };
 
 /**
+ * CustomerSopCreate
+ */
+export type CustomerSopCreate = {
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Code
+     */
+    code: string;
+    /**
+     * Title
+     */
+    title: string;
+    /**
+     * Body
+     */
+    body: string;
+};
+
+/**
+ * CustomerSopResponse
+ */
+export type CustomerSopResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Code
+     */
+    code: string;
+    /**
+     * Title
+     */
+    title: string;
+    /**
+     * Body
+     */
+    body: string;
+    /**
+     * Status
+     */
+    status: string;
+    /**
+     * Approved At
+     */
+    approved_at: string | null;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * DangerousGoodCreate
  */
 export type DangerousGoodCreate = {
@@ -3081,6 +3145,113 @@ export type UpsertScorecardApiV1PartyScorecardsPartyIdPostResponses = {
 };
 
 export type UpsertScorecardApiV1PartyScorecardsPartyIdPostResponse = UpsertScorecardApiV1PartyScorecardsPartyIdPostResponses[keyof UpsertScorecardApiV1PartyScorecardsPartyIdPostResponses];
+
+export type ListCustomerSopsApiV1CustomerSopsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/customer-sops';
+};
+
+export type ListCustomerSopsApiV1CustomerSopsGetResponses = {
+    /**
+     * Response List Customer Sops Api V1 Customer Sops Get
+     *
+     * Successful Response
+     */
+    200: Array<CustomerSopResponse>;
+};
+
+export type ListCustomerSopsApiV1CustomerSopsGetResponse = ListCustomerSopsApiV1CustomerSopsGetResponses[keyof ListCustomerSopsApiV1CustomerSopsGetResponses];
+
+export type CreateCustomerSopApiV1CustomerSopsPostData = {
+    body: CustomerSopCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/customer-sops';
+};
+
+export type CreateCustomerSopApiV1CustomerSopsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCustomerSopApiV1CustomerSopsPostError = CreateCustomerSopApiV1CustomerSopsPostErrors[keyof CreateCustomerSopApiV1CustomerSopsPostErrors];
+
+export type CreateCustomerSopApiV1CustomerSopsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CustomerSopResponse;
+};
+
+export type CreateCustomerSopApiV1CustomerSopsPostResponse = CreateCustomerSopApiV1CustomerSopsPostResponses[keyof CreateCustomerSopApiV1CustomerSopsPostResponses];
+
+export type ResolveCustomerSopApiV1CustomerSopsResolveGetData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Party Id
+         */
+        party_id: string;
+        /**
+         * Code
+         */
+        code: string;
+    };
+    url: '/api/v1/customer-sops/resolve';
+};
+
+export type ResolveCustomerSopApiV1CustomerSopsResolveGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ResolveCustomerSopApiV1CustomerSopsResolveGetError = ResolveCustomerSopApiV1CustomerSopsResolveGetErrors[keyof ResolveCustomerSopApiV1CustomerSopsResolveGetErrors];
+
+export type ResolveCustomerSopApiV1CustomerSopsResolveGetResponses = {
+    /**
+     * Successful Response
+     */
+    200: CustomerSopResponse;
+};
+
+export type ResolveCustomerSopApiV1CustomerSopsResolveGetResponse = ResolveCustomerSopApiV1CustomerSopsResolveGetResponses[keyof ResolveCustomerSopApiV1CustomerSopsResolveGetResponses];
+
+export type ApproveCustomerSopApiV1CustomerSopsSopIdApprovePostData = {
+    body?: never;
+    path: {
+        /**
+         * Sop Id
+         */
+        sop_id: string;
+    };
+    query?: never;
+    url: '/api/v1/customer-sops/{sop_id}/approve';
+};
+
+export type ApproveCustomerSopApiV1CustomerSopsSopIdApprovePostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ApproveCustomerSopApiV1CustomerSopsSopIdApprovePostError = ApproveCustomerSopApiV1CustomerSopsSopIdApprovePostErrors[keyof ApproveCustomerSopApiV1CustomerSopsSopIdApprovePostErrors];
+
+export type ApproveCustomerSopApiV1CustomerSopsSopIdApprovePostResponses = {
+    /**
+     * Successful Response
+     */
+    200: CustomerSopResponse;
+};
+
+export type ApproveCustomerSopApiV1CustomerSopsSopIdApprovePostResponse = ApproveCustomerSopApiV1CustomerSopsSopIdApprovePostResponses[keyof ApproveCustomerSopApiV1CustomerSopsSopIdApprovePostResponses];
 
 export type ListPortsApiV1PortsGetData = {
     body?: never;

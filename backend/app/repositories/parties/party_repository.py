@@ -4,6 +4,7 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models.carrier_profile import CarrierProfile
+from app.models.customer_sop import CustomerSop
 from app.models.party import Party
 from app.models.party_bank_account import PartyBankAccount
 from app.models.party_charge_override import PartyChargeOverride
@@ -114,6 +115,28 @@ class PartyRepository:
         return list(result.all())
 
     async def add_scorecard(self, row: PartyScorecard) -> PartyScorecard:
+        self._session.add(row)
+        await self._session.flush()
+        return row
+
+    async def get_sop(self, sop_id: UUID) -> CustomerSop | None:
+        found = await self._session.scalar(select(CustomerSop).where(CustomerSop.id == sop_id))
+        return found if isinstance(found, CustomerSop) else None
+
+    async def find_sop_by_party_and_code(self, party_id: UUID, code: str) -> CustomerSop | None:
+        found = await self._session.scalar(
+            select(CustomerSop).where(
+                CustomerSop.party_id == party_id,
+                CustomerSop.code == code,
+            ),
+        )
+        return found if isinstance(found, CustomerSop) else None
+
+    async def list_sops(self) -> list[CustomerSop]:
+        result = await self._session.scalars(select(CustomerSop).order_by(CustomerSop.title))
+        return list(result.all())
+
+    async def add_sop(self, row: CustomerSop) -> CustomerSop:
         self._session.add(row)
         await self._session.flush()
         return row

@@ -40,6 +40,30 @@ _ENDPOINTS = (
         None,
         {"sample_size": 0, "window_days": 90},
     ),
+    ("GET", "/api/v1/customer-sops", None, None),
+    (
+        "GET",
+        "/api/v1/customer-sops/resolve",
+        {"party_id": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa", "code": "booking"},
+        None,
+    ),
+    (
+        "POST",
+        "/api/v1/customer-sops",
+        None,
+        {
+            "party_id": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+            "code": "booking",
+            "title": "Booking",
+            "body": "zarezerwuj slot",
+        },
+    ),
+    (
+        "POST",
+        "/api/v1/customer-sops/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa/approve",
+        None,
+        None,
+    ),
 )
 
 

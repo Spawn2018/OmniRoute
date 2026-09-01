@@ -32,6 +32,7 @@ _ALL_TENANT_POLICY_NAMES = (
     "dangerous_good_tenant_isolation",
     "network_tenant_isolation",
     "party_scorecard_tenant_isolation",
+    "customer_sop_tenant_isolation",
 )
 
 

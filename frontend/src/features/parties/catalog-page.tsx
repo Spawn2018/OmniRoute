@@ -37,6 +37,13 @@ import {
   scorecardUpsertBody,
   upsertPartyScorecard,
 } from "@/lib/party-scorecards-api"
+import {
+  EMPTY_SOP_DRAFT,
+  approveCustomerSop,
+  createCustomerSop,
+  customerSopCreateBody,
+  fetchCustomerSops,
+} from "@/lib/customer-sops-api"
 import { getTenantContext } from "@/lib/tenant"
 
 const columnHelper = createColumnHelper<Party>()
@@ -104,6 +111,7 @@ export function PartyCatalogPage() {
   const [overrideCurrency, setOverrideCurrency] = useState("USD")
   const [scac, setScac] = useState("")
   const [scoreDraft, setScoreDraft] = useState(EMPTY_SCORECARD_DRAFT)
+  const [sopDraft, setSopDraft] = useState(EMPTY_SOP_DRAFT)
 
   const listQuery = useQuery({
     queryKey: ["parties", ctx.organizationId],
@@ -139,6 +147,12 @@ export function PartyCatalogPage() {
   const scorecardQuery = useQuery({
     queryKey: ["party-scorecard", selectedId],
     queryFn: () => fetchPartyScorecard(selectedId ?? ""),
+    enabled: selectedId !== null,
+    retry: false,
+  })
+  const sopsQuery = useQuery({
+    queryKey: ["customer-sops", ctx.organizationId],
+    queryFn: fetchCustomerSops,
     enabled: selectedId !== null,
     retry: false,
   })
@@ -492,6 +506,73 @@ export function PartyCatalogPage() {
                 ? `snapshot ${scorecardQuery.data.response_rate ?? "—"} · ${scorecardQuery.data.source_ref}`
                 : "brak snapshotu"}
             </p>
+          </fieldset>
+
+          <fieldset className="space-y-2 rounded-md border border-border p-3 md:col-span-2">
+            <legend className="text-sm font-medium">Procedury operacyjne</legend>
+            <form
+              className="grid gap-2 md:grid-cols-2"
+              onSubmit={(event) => {
+                event.preventDefault()
+                void createCustomerSop(
+                  customerSopCreateBody({ ...sopDraft, partyId: selectedId ?? "" }),
+                ).then(() => {
+                  setSopDraft(EMPTY_SOP_DRAFT)
+                  void queryClient.invalidateQueries({
+                    queryKey: ["customer-sops", ctx.organizationId],
+                  })
+                })
+              }}
+            >
+              <Input
+                aria-label="Kod procedury panelu"
+                placeholder="pre_alert"
+                value={sopDraft.code}
+                onChange={(event) => setSopDraft({ ...sopDraft, code: event.target.value })}
+                required
+              />
+              <Input
+                aria-label="Tytuł procedury panelu"
+                placeholder="tytuł"
+                value={sopDraft.title}
+                onChange={(event) => setSopDraft({ ...sopDraft, title: event.target.value })}
+                required
+              />
+              <textarea
+                aria-label="Treść procedury panelu"
+                placeholder="treść operacyjna"
+                className="min-h-20 w-full rounded-md border border-input bg-card px-3 py-1.5 text-sm md:col-span-2"
+                value={sopDraft.body}
+                onChange={(event) => setSopDraft({ ...sopDraft, body: event.target.value })}
+                required
+              />
+              <Button type="submit">Dodaj szkic SOP</Button>
+            </form>
+            <ul className="text-xs">
+              {sopsQuery.data
+                ?.filter((row) => row.party_id === selectedId)
+                .map((row) => (
+                  <li key={row.id} className="flex items-center gap-2">
+                    <span className="font-mono">{row.code}</span>
+                    <span>{row.title}</span>
+                    <span>{row.status}</span>
+                    {row.status === "draft" ? (
+                      <Button
+                        type="button"
+                        onClick={() => {
+                          void approveCustomerSop(row.id).then(() => {
+                            void queryClient.invalidateQueries({
+                              queryKey: ["customer-sops", ctx.organizationId],
+                            })
+                          })
+                        }}
+                      >
+                        Zatwierdź
+                      </Button>
+                    ) : null}
+                  </li>
+                ))}
+            </ul>
           </fieldset>
         </div>
       ) : null}

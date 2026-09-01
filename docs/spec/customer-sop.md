@@ -1,10 +1,10 @@
 # M-16 customer_sop — procedury operacyjne klienta
 
 **Moduł żywy:** M-16 (archiwum M-16; nie koliduje z M-03 `organization_setting` / M-35 zlecenie)  
-**Plaster:** **11.0** (plan)  
-**Status:** plan — katalog SOP + zatwierdzenie. Nie generator zadań. Nie walidacja zlecenia.
+**Plaster:** **11.0** (zamknięty)  
+**Status:** katalog SOP + zatwierdzenie. Nie generator zadań. Nie walidacja zlecenia.
 
-Delta: [docs/deltas/open/11.0-customer-sop.md](../deltas/open/11.0-customer-sop.md).
+Delta: [docs/deltas/archived/11.0-customer-sop.md](../deltas/archived/11.0-customer-sop.md).
 
 ## 11.0 katalog SOP
 

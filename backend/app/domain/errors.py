@@ -232,3 +232,19 @@ class InvalidPartyScorecard(DomainError):
 
 class UnknownPartyScorecard(DomainError):
     """Brak karty wyników dla tego kontrahenta w tenancie."""
+
+
+class InvalidCustomerSop(DomainError):
+    """Kod SOP: snake 2–32, albo pusta treść — nie luźny tytuł."""
+
+
+class UnknownCustomerSop(DomainError):
+    """Procedura nie ma wpisu w katalogu customer_sop tenanta."""
+
+
+class CustomerSopConflict(DomainError):
+    """Kod SOP już zajęty u tego kontrahenta w tenancie."""
+
+
+class CustomerSopAlreadyApproved(DomainError):
+    """Zatwierdzonej procedury nie zatwierdza się drugi raz — nowa wersja = leftover."""

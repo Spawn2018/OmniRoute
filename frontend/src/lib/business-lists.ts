@@ -15,6 +15,7 @@ export const BUSINESS_LISTS = {
   terminals: { route: "/terminals", tableKey: "terminals" },
   parties: { route: "/parties", tableKey: "parties" },
   partyScorecards: { route: "/party-scorecards", tableKey: "party_scorecards" },
+  customerSops: { route: "/customer-sops", tableKey: "customer_sops" },
 } as const
 
 export const REQUIRED_BUSINESS_LIST_ROUTES = [
@@ -34,6 +35,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/terminals",
   "/parties",
   "/party-scorecards",
+  "/customer-sops",
 ] as const
 
 export function businessListRoutes(): string[] {

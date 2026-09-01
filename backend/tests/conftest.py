@@ -14,6 +14,7 @@ from app.models.carrier_profile import CarrierProfile  # noqa: F401 — rejestr 
 from app.models.charge import Charge  # noqa: F401 — rejestr metadanych RLS
 from app.models.charge_code import ChargeCode  # noqa: F401 — rejestr metadanych RLS
 from app.models.commodity_code import CommodityCode  # noqa: F401 — rejestr metadanych RLS
+from app.models.customer_sop import CustomerSop  # noqa: F401 — rejestr metadanych RLS
 from app.models.dangerous_good import DangerousGood  # noqa: F401 — rejestr metadanych RLS
 from app.models.extraction_draft import ExtractionDraft  # noqa: F401 — rejestr metadanych RLS
 from app.models.location import (  # noqa: F401 — rejestr metadanych RLS
@@ -355,6 +356,7 @@ async def _apply_rls_policies(conn) -> None:
         ("party_charge_override", "party_charge_override_tenant_isolation"),
         ("carrier_profile", "carrier_profile_tenant_isolation"),
         ("party_scorecard", "party_scorecard_tenant_isolation"),
+        ("customer_sop", "customer_sop_tenant_isolation"),
     ):
         await conn.execute(text(f"ALTER TABLE {table} ENABLE ROW LEVEL SECURITY"))
         await conn.execute(text(f"ALTER TABLE {table} FORCE ROW LEVEL SECURITY"))

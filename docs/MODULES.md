@@ -25,6 +25,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-11 | Automatyczne kontakty | 8.0 `resolve_email` | **ukończony (fundament)** · matcher domeny z 5.0; nie IMAP; nie portal |
 | M-12 | Sieci i stowarzyszenia | 9.0 `network` | **ukończony (fundament)** · katalog sieci; nie `network_member`; nie scraping |
 | M-13 | Karta wyników kontrahenta | 10.0 `party_scorecard` | **ukończony (fundament)** · snapshot karty; nie SQL-refresh; nie scoring osoby |
+| M-16 | Procedury operacyjne klienta | 11.0 `customer_sop` | **ukończony (fundament)** · katalog + zatwierdzenie; nie generator zadań; nie M-35 |
 
 Nie dopisuj tu 70 pustych wierszy M-xx. Katalog + **kolejka Q1…** (co budować jedno po drugim, tryb Plan potem plaster): `docs/PLAN-REALIZACJA.md` § Kolejka. Archiwum Claude zostaje magazynem specyfikacji, nie SoT kolejności.
 

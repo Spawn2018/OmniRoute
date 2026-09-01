@@ -18,6 +18,7 @@ const NAV = [
   { to: "/terminals", label: "Terminale" },
   { to: "/parties", label: "Kontrahenci" },
   { to: "/party-scorecards", label: "Karty wyników" },
+  { to: "/customer-sops", label: "Procedury klienta" },
   { to: "/organization-settings", label: "Ustawienia" },
   { to: "/session", label: "Sesja" },
 ] as const
