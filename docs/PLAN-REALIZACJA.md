@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** M-18 Opłaty portowe warunkowe (`/plan-modul`). Nie Fala 8. Nie zgaduj zakresu.
+**Następny (zablokowany):** 12.0 M-18 `port_surcharge` (`/plaster`). Nie Fala 8. Nie zgaduj zakresu.
 <!-- os-status:end -->
 
 ```mermaid
@@ -320,7 +320,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | F2.1 | **M-12 Sieci i stowarzyszenia** | Plan → plaster | zamknięty (`docs/deltas/archived/9.0-network.md`) |
 | F2.2 | **M-13 Karta wyników kontrahenta** | Plan → plaster | zamknięty (`docs/deltas/archived/10.0-party-scorecard.md`) |
 | F2.3 | **M-16 Procedury operacyjne klienta** | Plan → plaster | zamknięty (`docs/deltas/archived/11.0-customer-sop.md`) |
-| F2.4 | **M-18 Opłaty portowe warunkowe** | Plan → plaster | następny (`/plan-modul`) |
+| F2.4 | **M-18 Opłaty portowe warunkowe** | Plan → plaster | Plan (`docs/deltas/open/12.0-port-surcharge.md`) |
 
 ### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster
 
