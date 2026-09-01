@@ -111,6 +111,8 @@ def stale_ref_errors() -> list[str]:
                 rel = rel.replace("\\", "/")
                 if rel.startswith("/") or rel.startswith("Informacje"):
                     continue
+                if "://" in rel:
+                    continue
                 if not exists(rel):
                     errors.append(f"{path.relative_to(ROOT)}: brak `{rel}`")
     return errors

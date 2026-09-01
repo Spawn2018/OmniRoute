@@ -44,3 +44,8 @@ def test_command_slash_testy_is_not_an_archive_persona() -> None:
 def test_live_os_tree_has_no_archive_persona_names() -> None:
     refs = _load_refs()
     assert refs.persona_errors() == []
+
+
+def test_uri_scheme_is_not_reported_as_missing_file() -> None:
+    refs = _load_refs()
+    assert not any("://" in err for err in refs.stale_ref_errors())

@@ -27,12 +27,18 @@ END $$;
 """
 
 
+def _current_database() -> str:
+    # op.get_bind() is a Connection — no .url (SQLAlchemy 2 / Alembic online).
+    name = op.get_bind().execute(sa.text("SELECT current_database()")).scalar()
+    if name is None:
+        raise RuntimeError("current_database() returned NULL")
+    return name
+
+
 def upgrade() -> None:
     op.execute(_CREATE_APP_ROLE)
-    bind = op.get_bind()
-    db_name = bind.url.database
-    if db_name:
-        op.execute(sa.text(f'GRANT CONNECT ON DATABASE "{db_name}" TO omniroute_app'))
+    db_name = _current_database()
+    op.execute(sa.text(f'GRANT CONNECT ON DATABASE "{db_name}" TO omniroute_app'))
     op.execute("GRANT USAGE ON SCHEMA public TO omniroute_app")
     op.execute(
         "GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO omniroute_app"
@@ -52,8 +58,6 @@ def downgrade() -> None:
     op.execute("REVOKE ALL ON ALL TABLES IN SCHEMA public FROM omniroute_app")
     op.execute("REVOKE ALL ON ALL SEQUENCES IN SCHEMA public FROM omniroute_app")
     op.execute("REVOKE USAGE ON SCHEMA public FROM omniroute_app")
-    bind = op.get_bind()
-    db_name = bind.url.database
-    if db_name:
-        op.execute(sa.text(f'REVOKE CONNECT ON DATABASE "{db_name}" FROM omniroute_app'))
+    db_name = _current_database()
+    op.execute(sa.text(f'REVOKE CONNECT ON DATABASE "{db_name}" FROM omniroute_app'))
     op.execute("DROP ROLE IF EXISTS omniroute_app")

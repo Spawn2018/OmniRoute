@@ -62,7 +62,7 @@ Wygrywają z każdą inną sugestią, także z twoją.
 - **Test przed implementacją** dla każdej reguły biznesowej.
 - Nie dotykaj plików spoza zakresu. Zgłoś, jeśli to konieczne.
 - Po zakończeniu: pętla `docs/ops/post-plaster.md`, linia w `PROGRESS.md`, `CURRENT.md`, push.
-- Leftover w PLAN / `docs-debt.md` **nie** jest ukończonym plasterem.
+- Leftover w PLAN / `docs/ops/docs-debt.md` **nie** jest ukończonym plasterem.
 
 ## Styl
 
