@@ -3,7 +3,7 @@
 **Plan Cursor (pełny):** `.cursor/plans/omniroute-realizacja.plan.md`  
 **ADR:** [0001 Cursor factory](adr/0001-cursor-software-factory-weryfikacja.md) · [0002 Frontend 2026](adr/0002-frontend-platform-2026.md)  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
-**Stan:** B + C.1–C.5 + 0.11–0.15 leftover + **Exit Wave A (D0–0.23)** + **0.25 Money** + **1.0–1.3 charge** + **0.24 ops** + **2.1–2.2** + **2.0 M-21** + U-* ID na origin + D minimal · następny **M-03 config-as-data**. Auth0 I1/I2 **odroczone** (brak tenanta). **Exit Wave FE nie claim** (U-routes-breadth = standing, nie 70 UI / nie „powierzchnia 2026”).
+**Stan:** B + C.1–C.5 + 0.11–0.15 leftover + **Exit Wave A (D0–0.23)** + **0.25 Money** + **1.0–1.3 charge** + **0.24 ops** + **2.1–2.2** + **2.0 M-21** + **3.0 M-03** + U-* ID na origin + D minimal · następny **brak leftoveru MODULES z jobem operatora** (M-02 outbox bez zdarzeń). Auth0 I1/I2 **odroczone** (brak tenanta). **Exit Wave FE nie claim** (U-routes-breadth = standing, nie 70 UI / nie „powierzchnia 2026”).
 
 ```mermaid
 flowchart LR
@@ -130,7 +130,8 @@ Pełna lista z „dlaczego”: [docs/ops/docs-debt.md](ops/docs-debt.md)
 
 | Kolejność | Co | Nie mylić z |
 |---|---|---|
-| następny | M-03 konfiguracja jako dane (`MODULES.md`) | outbox M-02 bez zdarzeń; Auth0 odroczone |
+| następny | brak leftoveru MODULES z jobem operatora | M-02 outbox bez zdarzeń; Auth0 odroczone |
+| 3.0 DONE | M-03 `organization_setting` + `/organization-settings` | nie sekrety; nie env; nie table_view |
 | 2.0 DONE | M-21 `quotation` SQL z istniejącego `rate_line` + `/quotations` | nie k6; nie marża poza `charge` |
 | 2.1–2.2 DONE | Presidio instructor stub + 10 syntetyk | nie 30 PDF klienta; nie Presidio-all |
 | 0.24 DONE | `/ready` + request-id + SHA pin + `just audit` (CI) | nie w local `just gate`; k6/vulture echo |

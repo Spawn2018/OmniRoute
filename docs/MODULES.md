@@ -12,7 +12,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-01 | Wielodostępność / tenancy | 0.3 RLS + 0.4 OpenFGA + 0.12 JWT + 0.15 hasła | **ukończony (fundament)** · Auth0 I1 po Wave A |
 | M-20 | Ekstrakcja dokumentów | 0.7–0.14 HITL/instructor/docling/langfuse/XOR/split/HTTP unit | **ukończony (fundament)** (HTTP = unit stub, nie live PG) |
 | M-02 | Outbox / idempotencja | nie 0.4 | planowany |
-| M-03 | Konfiguracja jako dane | nie 0.5 | planowany |
+| M-03 | Konfiguracja jako dane | 3.0 `organization_setting` | **ukończony (fundament)** · allowlista; nie sekrety; nie env |
 | M-06 | charge_code + aliasy | 1.0 katalog | **ukończony (fundament)** · aliasy na wierszu; nie `rate_line` / `charge` |
 | M-07 | rate_line (stawka kupna) | 1.1 immutable + source_ref | **ukończony (fundament)** · nie `charge` / marża |
 | M-08 | charge (buy+sell, marża) | 1.2 jeden wiersz | **ukończony (fundament)** · nie accept HITL (1.3) |
@@ -30,4 +30,4 @@ Nie dopisuj tu 70 pustych wierszy M-xx. Reszta rejestru zostaje w archiwum Claud
 ## Specyfikacje
 
 Każdy moduł w kodzie: `docs/spec/<nazwa>.md` (max 400 linii).  
-Dziś: `tenancy.md`, `extraction.md`, `charge-code.md`, `rate-line.md`, `charge.md`, `quotation.md`. Szkielety uzupełniane przy plastrze — nie kompiluj całego archiwum.
+Dziś: `tenancy.md`, `extraction.md`, `charge-code.md`, `rate-line.md`, `charge.md`, `quotation.md`, `organization-setting.md`. Szkielety uzupełniane przy plastrze — nie kompiluj całego archiwum.

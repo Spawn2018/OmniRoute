@@ -9,6 +9,7 @@ const NAV = [
   { to: "/charges", label: "Opłaty" },
   { to: "/rate-lines", label: "Stawki" },
   { to: "/quotations", label: "Wyceny" },
+  { to: "/organization-settings", label: "Ustawienia" },
   { to: "/session", label: "Sesja" },
 ] as const
 

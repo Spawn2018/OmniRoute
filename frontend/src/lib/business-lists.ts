@@ -4,6 +4,7 @@ export const BUSINESS_LISTS = {
   rateLines: { route: "/rate-lines", tableKey: "rate_lines" },
   charges: { route: "/charges", tableKey: "charges" },
   quotations: { route: "/quotations", tableKey: "quotations" },
+  organizationSettings: { route: "/organization-settings", tableKey: "organization_settings" },
   extractions: { route: "/extractions", tableKey: "extraction.queue" },
 } as const
 
@@ -13,6 +14,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/rate-lines",
   "/charges",
   "/quotations",
+  "/organization-settings",
   "/extractions",
 ] as const
 

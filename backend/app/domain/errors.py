@@ -76,3 +76,7 @@ class AcceptRequiresRateLine(DomainError):
 
 class QuotationGap(DomainError):
     """Brak bieżącej stawki do wyceny — luka, nie liczona w Pythonie."""
+
+
+class InvalidOrganizationSetting(DomainError):
+    """Ustawienie tenanta poza allowlistą, sekret albo zła wartość."""

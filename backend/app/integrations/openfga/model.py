@@ -41,6 +41,9 @@ def authorization_model_request() -> WriteAuthorizationModelRequest:
                     "can_manage_quotations": Userset(
                         computed_userset=ObjectRelation(object="", relation="member"),
                     ),
+                    "can_manage_organization_settings": Userset(
+                        computed_userset=ObjectRelation(object="", relation="member"),
+                    ),
                 },
                 metadata=Metadata(
                     relations={

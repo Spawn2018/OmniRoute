@@ -4,6 +4,7 @@ from app.api import (
     charge_codes,
     charges,
     extractions,
+    organization_settings,
     quotations,
     rate_lines,
     session,
@@ -21,6 +22,7 @@ api_router.include_router(charge_codes.router)
 api_router.include_router(charges.router)
 api_router.include_router(rate_lines.router)
 api_router.include_router(quotations.router)
+api_router.include_router(organization_settings.router)
 
 
 @api_router.api_route(

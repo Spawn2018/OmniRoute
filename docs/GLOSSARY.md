@@ -14,6 +14,7 @@
 | zlecenie | shipment | handlowe |
 | odcinek | shipment_leg | operacyjne |
 | tenant | organization | organization_id wszędzie |
+| ustawienie tenanta | organization_setting | konfiguracja jako dane; allowlista kluczy; nie sekret |
 | token sesji | session token | JWT HS256; claims `sub` + `org` |
 | token odświeżający | refresh_token | rotacja; RLS; nie access JWT |
 | skrót hasła | password_hash | argon2id; nigdy plaintext w API |
