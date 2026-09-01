@@ -68,3 +68,5 @@
 | — | leftover | produkt | **Następny:** 4.0 M-05 `port` (`/plaster`). Leftovery UI ADR-0003 **nie** zamiast 4.0. M-02 parked. |
 | 2026-09-01 | Plan 4.0 | M-05 | delta `docs/deltas/open/4.0-port.md` + spec `geography.md`. Następny: `/plaster` 4.0 w nowej rozmowie. Nie 4.1. Nie Q2. |
 | 2026-09-01 | 4.0 | M-05 | `port` UN/LOCODE + RLS FORCE + `resolve` (Gdingen→PLGDY) + `/ports` + `seed_ports.py`; 45 testów integracyjnych zielonych lokalnie na PG 16; nie `location`, nie `terminal`, nie WPI |
+| 2026-09-01 | ops | toolchain | `just` 1.58 w `tools/just`, PG 16 przenośny w `tools/pg16`, `lint-imports`/`psql` w PATH, `sh` z `D:\Git\bin`. **`just gate` i `just test` przechodzą lokalnie w całości** — koniec wpisów „PG wisiał, zostaje CI” |
+| 2026-09-01 | kontrakt | os | wrócił próg **plan przed kodem powyżej trzech plików**, jawnie także poza kolejką Q (hotfix, leftover); w `AGENTS.md`, `context.mdc`, `/plaster`, skillu `nowy-plaster`; baseline `agentlint` przepisany |
