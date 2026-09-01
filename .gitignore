@@ -33,8 +33,8 @@ frontend/.tanstack/
 Thumbs.db
 .DS_Store
 
-# Optional: large archive PDFs (MD files remain tracked)
-Informacje z claude/*.pdf
+# Archiwum na dysku, nie w repo (AGENTS.md) — git nie śledzi tu niczego
+Informacje z claude/
 
 # Local native tooling (no Docker)
 tools/openfga/openfga.exe
