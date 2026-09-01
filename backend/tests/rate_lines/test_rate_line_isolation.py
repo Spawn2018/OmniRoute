@@ -73,6 +73,7 @@ async def test_rate_line_amount_cannot_mutate_in_place(session, two_tenants) -> 
         )
         await session.flush()
 
+    await session.rollback()
     session.expunge_all()
     await bind_tenant(session, org_a.id)
     stored = await session.scalar(select(RateLine).where(RateLine.id == rate.id))
@@ -94,3 +95,4 @@ async def test_rate_line_delete_is_rejected(session, two_tenants) -> None:
     with pytest.raises(DBAPIError):
         await session.execute(text("DELETE FROM rate_line WHERE id = :id"), {"id": rate.id})
         await session.flush()
+    await session.rollback()
