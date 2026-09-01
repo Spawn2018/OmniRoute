@@ -62,6 +62,7 @@ async def test_rate_line_amount_cannot_mutate_in_place(session, two_tenants) -> 
     org_a = two_tenants["org_a"]
     user_a = two_tenants["user_a"]
     rate = _buy_rate(organization_id=org_a.id, created_by=user_a.id, source_ref="tariff://a")
+    rate_id = rate.id
 
     await bind_tenant(session, org_a.id)
     session.add(rate)
@@ -70,16 +71,14 @@ async def test_rate_line_amount_cannot_mutate_in_place(session, two_tenants) -> 
     await bind_tenant(session, org_a.id)
     with pytest.raises(DBAPIError):
         await session.execute(
-            update(RateLine).where(RateLine.id == rate.id).values(amount=Decimal("99.0000"))
+            update(RateLine).where(RateLine.id == rate_id).values(amount=Decimal("99.0000"))
         )
         await session.flush()
 
     await session.rollback()
-    session.expunge_all()
     await bind_tenant(session, org_a.id)
-    stored = await session.scalar(select(RateLine).where(RateLine.id == rate.id))
-    assert stored is not None
-    assert stored.amount == Decimal("10.0000")
+    amount = await session.scalar(select(RateLine.amount).where(RateLine.id == rate_id))
+    assert amount == Decimal("10.0000")
 
 
 @pytest.mark.integration
