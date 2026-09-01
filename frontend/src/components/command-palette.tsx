@@ -16,6 +16,7 @@ const NAV_ACTIONS = [
   { id: "nav-users", label: "Idź do użytkowników tenanta", to: "/tenancy/users" },
   { id: "nav-extractions", label: "Idź do kolejki ekstrakcji", to: "/extractions" },
   { id: "nav-charge-codes", label: "Idź do katalogu kodów opłat", to: "/charge-codes" },
+  { id: "nav-commodity-codes", label: "Idź do katalogu kodów towarowych", to: "/commodity-codes" },
   { id: "nav-charges", label: "Idź do opłat", to: "/charges" },
   { id: "nav-rate-lines", label: "Idź do stawek kupna", to: "/rate-lines" },
   { id: "nav-quotations", label: "Idź do wycen", to: "/quotations" },

@@ -25,6 +25,7 @@ modules =
     app.services.organization_settings
     app.services.geography
     app.services.parties
+    app.services.commodity_codes
 
 [importlinter:contract:integracje]
 name = Integracje nie znają serwisów
@@ -63,3 +64,6 @@ forbidden_modules =
     app.services.parties
     app.repositories.parties
     app.models.party
+    app.services.commodity_codes
+    app.repositories.commodity_codes
+    app.models.commodity_code

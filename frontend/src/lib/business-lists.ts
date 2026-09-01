@@ -1,6 +1,7 @@
 export const BUSINESS_LISTS = {
   users: { route: "/tenancy/users", tableKey: "tenancy.users" },
   chargeCodes: { route: "/charge-codes", tableKey: "charge_codes" },
+  commodityCodes: { route: "/commodity-codes", tableKey: "commodity_codes" },
   rateLines: { route: "/rate-lines", tableKey: "rate_lines" },
   charges: { route: "/charges", tableKey: "charges" },
   quotations: { route: "/quotations", tableKey: "quotations" },
@@ -15,6 +16,7 @@ export const BUSINESS_LISTS = {
 export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/tenancy/users",
   "/charge-codes",
+  "/commodity-codes",
   "/rate-lines",
   "/charges",
   "/quotations",

@@ -13,6 +13,7 @@ from app.models.base import Base
 from app.models.carrier_profile import CarrierProfile  # noqa: F401 — rejestr metadanych RLS
 from app.models.charge import Charge  # noqa: F401 — rejestr metadanych RLS
 from app.models.charge_code import ChargeCode  # noqa: F401 — rejestr metadanych RLS
+from app.models.commodity_code import CommodityCode  # noqa: F401 — rejestr metadanych RLS
 from app.models.extraction_draft import ExtractionDraft  # noqa: F401 — rejestr metadanych RLS
 from app.models.location import (  # noqa: F401 — rejestr metadanych RLS
     Location,
@@ -154,6 +155,22 @@ async def _apply_rls_policies(conn) -> None:
         text(
             """
             CREATE POLICY charge_code_tenant_isolation ON charge_code
+            USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
+            WITH CHECK (
+              organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid
+            )
+            """
+        ),
+    )
+    await conn.execute(text("ALTER TABLE commodity_code ENABLE ROW LEVEL SECURITY"))
+    await conn.execute(text("ALTER TABLE commodity_code FORCE ROW LEVEL SECURITY"))
+    await conn.execute(
+        text("DROP POLICY IF EXISTS commodity_code_tenant_isolation ON commodity_code"),
+    )
+    await conn.execute(
+        text(
+            """
+            CREATE POLICY commodity_code_tenant_isolation ON commodity_code
             USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
             WITH CHECK (
               organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid

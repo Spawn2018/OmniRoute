@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ChargeCodesRouteImport } from './routes/charge-codes'
 import { Route as ChargesRouteImport } from './routes/charges'
+import { Route as CommodityCodesRouteImport } from './routes/commodity-codes'
 import { Route as ExtractionsRouteImport } from './routes/extractions'
 import { Route as LocationsRouteImport } from './routes/locations'
 import { Route as OrganizationSettingsRouteImport } from './routes/organization-settings'
@@ -36,6 +37,11 @@ const ChargeCodesRoute = ChargeCodesRouteImport.update({
 const ChargesRoute = ChargesRouteImport.update({
   id: '/charges',
   path: '/charges',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommodityCodesRoute = CommodityCodesRouteImport.update({
+  id: '/commodity-codes',
+  path: '/commodity-codes',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ExtractionsRoute = ExtractionsRouteImport.update({
@@ -93,6 +99,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/charge-codes': typeof ChargeCodesRoute
   '/charges': typeof ChargesRoute
+  '/commodity-codes': typeof CommodityCodesRoute
   '/extractions': typeof ExtractionsRoute
   '/locations': typeof LocationsRoute
   '/organization-settings': typeof OrganizationSettingsRoute
@@ -108,6 +115,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/charge-codes': typeof ChargeCodesRoute
   '/charges': typeof ChargesRoute
+  '/commodity-codes': typeof CommodityCodesRoute
   '/extractions': typeof ExtractionsRoute
   '/locations': typeof LocationsRoute
   '/organization-settings': typeof OrganizationSettingsRoute
@@ -124,6 +132,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/charge-codes': typeof ChargeCodesRoute
   '/charges': typeof ChargesRoute
+  '/commodity-codes': typeof CommodityCodesRoute
   '/extractions': typeof ExtractionsRoute
   '/locations': typeof LocationsRoute
   '/organization-settings': typeof OrganizationSettingsRoute
@@ -141,6 +150,7 @@ export interface FileRouteTypes {
     | '/'
     | '/charge-codes'
     | '/charges'
+    | '/commodity-codes'
     | '/extractions'
     | '/locations'
     | '/organization-settings'
@@ -156,6 +166,7 @@ export interface FileRouteTypes {
     | '/'
     | '/charge-codes'
     | '/charges'
+    | '/commodity-codes'
     | '/extractions'
     | '/locations'
     | '/organization-settings'
@@ -171,6 +182,7 @@ export interface FileRouteTypes {
     | '/'
     | '/charge-codes'
     | '/charges'
+    | '/commodity-codes'
     | '/extractions'
     | '/locations'
     | '/organization-settings'
@@ -187,6 +199,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ChargeCodesRoute: typeof ChargeCodesRoute
   ChargesRoute: typeof ChargesRoute
+  CommodityCodesRoute: typeof CommodityCodesRoute
   ExtractionsRoute: typeof ExtractionsRoute
   LocationsRoute: typeof LocationsRoute
   OrganizationSettingsRoute: typeof OrganizationSettingsRoute
@@ -220,6 +233,13 @@ declare module '@tanstack/react-router' {
       path: '/charges'
       fullPath: '/charges'
       preLoaderRoute: typeof ChargesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/commodity-codes': {
+      id: '/commodity-codes'
+      path: '/commodity-codes'
+      fullPath: '/commodity-codes'
+      preLoaderRoute: typeof CommodityCodesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/extractions': {
@@ -299,6 +319,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ChargeCodesRoute: ChargeCodesRoute,
   ChargesRoute: ChargesRoute,
+  CommodityCodesRoute: CommodityCodesRoute,
   ExtractionsRoute: ExtractionsRoute,
   LocationsRoute: LocationsRoute,
   OrganizationSettingsRoute: OrganizationSettingsRoute,

@@ -50,6 +50,9 @@ def authorization_model_request() -> WriteAuthorizationModelRequest:
                     "can_manage_parties": Userset(
                         computed_userset=ObjectRelation(object="", relation="member"),
                     ),
+                    "can_manage_commodity_codes": Userset(
+                        computed_userset=ObjectRelation(object="", relation="member"),
+                    ),
                 },
                 metadata=Metadata(
                     relations={

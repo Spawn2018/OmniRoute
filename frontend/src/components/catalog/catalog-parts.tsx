@@ -1,5 +1,7 @@
 import { Link } from "@tanstack/react-router"
 import { useState } from "react"
+import type { ColumnDef } from "@tanstack/react-table"
+import { DataTableShell } from "@/components/data-table/data-table-shell"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
@@ -29,6 +31,114 @@ export function CatalogHeading({ title, subtitle }: { title: string; subtitle: s
       <h2 className="text-base font-semibold">{title}</h2>
       <p className="text-xs text-muted-foreground">{subtitle}</p>
     </div>
+  )
+}
+
+export function CatalogCreateForm({
+  code,
+  name,
+  aliasesText,
+  onCodeChange,
+  onNameChange,
+  onAliasesChange,
+  codeLabel,
+  nameLabel,
+  aliasesLabel,
+  codePlaceholder,
+  namePlaceholder,
+  aliasesPlaceholder,
+  submitLabel,
+  pending,
+  disabled,
+  onSubmit,
+}: {
+  code: string
+  name: string
+  aliasesText: string
+  onCodeChange: (value: string) => void
+  onNameChange: (value: string) => void
+  onAliasesChange: (value: string) => void
+  codeLabel: string
+  nameLabel: string
+  aliasesLabel: string
+  codePlaceholder: string
+  namePlaceholder: string
+  aliasesPlaceholder: string
+  submitLabel: string
+  pending: boolean
+  disabled: boolean
+  onSubmit: () => void
+}) {
+  return (
+    <form
+      className="grid gap-2 rounded-md border border-border bg-card p-3 md:grid-cols-4"
+      onSubmit={(event) => {
+        event.preventDefault()
+        onSubmit()
+      }}
+    >
+      <Input
+        aria-label={codeLabel}
+        placeholder={codePlaceholder}
+        value={code}
+        onChange={(event) => onCodeChange(event.target.value)}
+        required
+      />
+      <Input
+        aria-label={nameLabel}
+        placeholder={namePlaceholder}
+        value={name}
+        onChange={(event) => onNameChange(event.target.value)}
+        required
+      />
+      <Input
+        aria-label={aliasesLabel}
+        placeholder={aliasesPlaceholder}
+        value={aliasesText}
+        onChange={(event) => onAliasesChange(event.target.value)}
+      />
+      <Button type="submit" disabled={pending || disabled}>
+        {submitLabel}
+      </Button>
+    </form>
+  )
+}
+
+export function CatalogLoadedTable<TData>({
+  loading,
+  error,
+  data,
+  tableKey,
+  columns,
+  columnLabels,
+  globalFilterPlaceholder,
+}: {
+  loading: boolean
+  error: unknown
+  data: TData[] | undefined
+  tableKey: string
+  // TanStack ColumnDef: wariancja TValue — `any` tylko na granicy API tabeli.
+  columns: ColumnDef<TData, any>[]
+  columnLabels: Record<string, string>
+  globalFilterPlaceholder: string
+}) {
+  if (loading) {
+    return <div className="text-sm text-muted-foreground">Ładowanie…</div>
+  }
+  if (error) {
+    return <CatalogError error={error} />
+  }
+  if (data === undefined) {
+    return null
+  }
+  return (
+    <DataTableShell
+      tableKey={tableKey}
+      columns={columns}
+      data={data}
+      columnLabels={columnLabels}
+      globalFilterPlaceholder={globalFilterPlaceholder}
+    />
   )
 }
 

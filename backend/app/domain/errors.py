@@ -164,3 +164,15 @@ class UnknownParty(DomainError):
 
 class InvalidPartyData(DomainError):
     """Pole kontrahenta puste, NIP bez sumy, rola spoza allowlisty albo para kredytu rozjechana."""
+
+
+class InvalidCommodityCode(DomainError):
+    """Kod towarowy: 4–10 cyfr HS/CN — nie luźna nazwa."""
+
+
+class UnknownCommodityCode(DomainError):
+    """Token nie ma wpisu w katalogu commodity_code tenanta."""
+
+
+class CommodityCodeConflict(DomainError):
+    """Kod albo alias towaru już zajęty w katalogu tenanta."""

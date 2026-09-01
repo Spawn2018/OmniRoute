@@ -10,21 +10,21 @@ import {
   TenantSessionNotice,
 } from "@/components/catalog/catalog-parts"
 import {
-  chargeCodeCreateBody,
-  createChargeCode,
-  fetchChargeCodes,
-  resolveChargeCode,
-  type ChargeCode,
-} from "@/lib/charge-codes-api"
+  commodityCodeCreateBody,
+  createCommodityCode,
+  fetchCommodityCodes,
+  resolveCommodityCode,
+  type CommodityCode,
+} from "@/lib/commodity-codes-api"
 import { BUSINESS_LISTS } from "@/lib/business-lists"
 import { getTenantContext } from "@/lib/tenant"
 
-const columnHelper = createColumnHelper<ChargeCode>()
+const columnHelper = createColumnHelper<CommodityCode>()
 
 const columns = [
   columnHelper.accessor("code", {
     id: "code",
-    header: "Kod",
+    header: "Kod CN",
     cell: (info) => <span className="font-mono text-xs">{info.getValue()}</span>,
   }),
   columnHelper.accessor("name", {
@@ -37,41 +37,47 @@ const columns = [
     header: "Aliasy",
     cell: (info) => info.getValue().join(", ") || "—",
   }),
+  columnHelper.accessor("source_ref", {
+    id: "source_ref",
+    header: "Pochodzenie",
+    cell: (info) => <span className="font-mono text-xs">{info.getValue()}</span>,
+  }),
 ]
 
 const COLUMN_LABELS = {
-  code: "Kod",
+  code: "Kod CN",
   name: "Nazwa",
   aliases: "Aliasy",
+  source_ref: "Pochodzenie",
 }
 
-export function ChargeCodeCatalogPage() {
+export function CommodityCodeCatalogPage() {
   const ctx = getTenantContext()
   const queryClient = useQueryClient()
   const [code, setCode] = useState("")
   const [name, setName] = useState("")
   const [aliasesText, setAliasesText] = useState("")
-  const [resolved, setResolved] = useState<ChargeCode | null>(null)
+  const [resolved, setResolved] = useState<CommodityCode | null>(null)
 
   const query = useQuery({
-    queryKey: ["charge-codes", ctx.organizationId],
-    queryFn: fetchChargeCodes,
+    queryKey: ["commodity-codes", ctx.organizationId],
+    queryFn: fetchCommodityCodes,
     enabled: Boolean(ctx.organizationId && ctx.userId),
     retry: false,
   })
 
   const createMutation = useMutation({
-    mutationFn: () => createChargeCode(chargeCodeCreateBody({ code, name, aliasesText })),
+    mutationFn: () => createCommodityCode(commodityCodeCreateBody({ code, name, aliasesText })),
     onSuccess: () => {
       setCode("")
       setName("")
       setAliasesText("")
-      void queryClient.invalidateQueries({ queryKey: ["charge-codes", ctx.organizationId] })
+      void queryClient.invalidateQueries({ queryKey: ["commodity-codes", ctx.organizationId] })
     },
   })
 
   const resolveMutation = useMutation({
-    mutationFn: (token: string) => resolveChargeCode(token),
+    mutationFn: (token: string) => resolveCommodityCode(token),
     onSuccess: (row) => {
       setResolved(row)
     },
@@ -83,8 +89,8 @@ export function ChargeCodeCatalogPage() {
   return (
     <div className="space-y-3">
       <CatalogHeading
-        title="Katalog kodów opłat"
-        subtitle="charge_code M-06 · typowany kod, nie luźny string"
+        title="Katalog kodów towarowych"
+        subtitle="commodity_code M-09 · HS/CN cyframi, nie luźna nazwa · nie podpina wyceny"
       />
 
       {!ctx.organizationId || !ctx.userId ? <TenantSessionNotice /> : null}
@@ -96,12 +102,12 @@ export function ChargeCodeCatalogPage() {
         onCodeChange={setCode}
         onNameChange={setName}
         onAliasesChange={setAliasesText}
-        codeLabel="Kod opłaty"
-        nameLabel="Nazwa kodu opłaty"
-        aliasesLabel="Aliasy kodu opłaty"
-        codePlaceholder="BAF"
-        namePlaceholder="Bunker Adjustment Factor"
-        aliasesPlaceholder="BUNKER, BAF_ADJ"
+        codeLabel="Kod towarowy"
+        nameLabel="Nazwa kodu towarowego"
+        aliasesLabel="Aliasy kodu towarowego"
+        codePlaceholder="0805"
+        namePlaceholder="Owoce cytrusowe"
+        aliasesPlaceholder="080510"
         submitLabel="Dodaj kod"
         pending={createMutation.isPending}
         disabled={!ctx.organizationId}
@@ -111,8 +117,8 @@ export function ChargeCodeCatalogPage() {
       {createMutation.isError ? <CatalogError error={createMutation.error} /> : null}
 
       <ResolveTokenForm
-        label="Sprawdź token kodu opłaty"
-        placeholder="sprawdź kod albo alias"
+        label="Sprawdź kod CN"
+        placeholder="0805 albo alias"
         pending={resolveMutation.isPending}
         resolved={resolved === null ? null : `${resolved.code} · ${resolved.name}`}
         onResolve={(token) => resolveMutation.mutate(token)}
@@ -124,10 +130,10 @@ export function ChargeCodeCatalogPage() {
         loading={query.isLoading}
         error={query.error}
         data={query.data}
-        tableKey={BUSINESS_LISTS.chargeCodes.tableKey}
+        tableKey={BUSINESS_LISTS.commodityCodes.tableKey}
         columns={columns}
         columnLabels={COLUMN_LABELS}
-        globalFilterPlaceholder="Szukaj kodu opłaty…"
+        globalFilterPlaceholder="Szukaj kodu towarowego…"
       />
     </div>
   )

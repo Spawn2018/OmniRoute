@@ -327,6 +327,54 @@ export type ChargeResponse = {
 };
 
 /**
+ * CommodityCodeCreate
+ */
+export type CommodityCodeCreate = {
+    /**
+     * Code
+     */
+    code: string;
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Aliases
+     */
+    aliases?: Array<string>;
+};
+
+/**
+ * CommodityCodeResponse
+ */
+export type CommodityCodeResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Code
+     */
+    code: string;
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Aliases
+     */
+    aliases: Array<string>;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * ContactCreate
  */
 export type ContactCreate = {
@@ -1708,6 +1756,79 @@ export type ResolveChargeCodeApiV1ChargeCodesResolveGetResponses = {
 };
 
 export type ResolveChargeCodeApiV1ChargeCodesResolveGetResponse = ResolveChargeCodeApiV1ChargeCodesResolveGetResponses[keyof ResolveChargeCodeApiV1ChargeCodesResolveGetResponses];
+
+export type ListCommodityCodesApiV1CommodityCodesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/commodity-codes';
+};
+
+export type ListCommodityCodesApiV1CommodityCodesGetResponses = {
+    /**
+     * Response List Commodity Codes Api V1 Commodity Codes Get
+     *
+     * Successful Response
+     */
+    200: Array<CommodityCodeResponse>;
+};
+
+export type ListCommodityCodesApiV1CommodityCodesGetResponse = ListCommodityCodesApiV1CommodityCodesGetResponses[keyof ListCommodityCodesApiV1CommodityCodesGetResponses];
+
+export type CreateCommodityCodeApiV1CommodityCodesPostData = {
+    body: CommodityCodeCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/commodity-codes';
+};
+
+export type CreateCommodityCodeApiV1CommodityCodesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCommodityCodeApiV1CommodityCodesPostError = CreateCommodityCodeApiV1CommodityCodesPostErrors[keyof CreateCommodityCodeApiV1CommodityCodesPostErrors];
+
+export type CreateCommodityCodeApiV1CommodityCodesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CommodityCodeResponse;
+};
+
+export type CreateCommodityCodeApiV1CommodityCodesPostResponse = CreateCommodityCodeApiV1CommodityCodesPostResponses[keyof CreateCommodityCodeApiV1CommodityCodesPostResponses];
+
+export type ResolveCommodityCodeApiV1CommodityCodesResolveGetData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Token
+         */
+        token: string;
+    };
+    url: '/api/v1/commodity-codes/resolve';
+};
+
+export type ResolveCommodityCodeApiV1CommodityCodesResolveGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ResolveCommodityCodeApiV1CommodityCodesResolveGetError = ResolveCommodityCodeApiV1CommodityCodesResolveGetErrors[keyof ResolveCommodityCodeApiV1CommodityCodesResolveGetErrors];
+
+export type ResolveCommodityCodeApiV1CommodityCodesResolveGetResponses = {
+    /**
+     * Successful Response
+     */
+    200: CommodityCodeResponse;
+};
+
+export type ResolveCommodityCodeApiV1CommodityCodesResolveGetResponse = ResolveCommodityCodeApiV1CommodityCodesResolveGetResponses[keyof ResolveCommodityCodeApiV1CommodityCodesResolveGetResponses];
 
 export type ListChargesApiV1ChargesGetData = {
     body?: never;

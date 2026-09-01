@@ -42,6 +42,7 @@ describe("business list density", () => {
     expect(businessListRoutes().sort()).toEqual([...REQUIRED_BUSINESS_LIST_ROUTES].sort())
     expect(BUSINESS_LISTS.users.tableKey).toBe("tenancy.users")
     expect(BUSINESS_LISTS.chargeCodes.tableKey).toBe("charge_codes")
+    expect(BUSINESS_LISTS.commodityCodes.tableKey).toBe("commodity_codes")
     expect(BUSINESS_LISTS.rateLines.tableKey).toBe("rate_lines")
     expect(BUSINESS_LISTS.charges.tableKey).toBe("charges")
     expect(BUSINESS_LISTS.quotations.tableKey).toBe("quotations")

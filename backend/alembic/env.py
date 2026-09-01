@@ -10,6 +10,7 @@ from app.models.app_user import AppUser  # noqa: F401
 from app.models.base import Base
 from app.models.organization import Organization  # noqa: F401
 from app.models.charge_code import ChargeCode  # noqa: F401
+from app.models.commodity_code import CommodityCode  # noqa: F401
 from app.models.rate_line import RateLine  # noqa: F401
 from app.models.charge import Charge  # noqa: F401
 from app.models.quotation import Quotation  # noqa: F401

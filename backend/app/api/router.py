@@ -3,6 +3,7 @@ from fastapi import APIRouter
 from app.api import (
     charge_codes,
     charges,
+    commodity_codes,
     extractions,
     locations,
     organization_settings,
@@ -23,6 +24,7 @@ api_router.include_router(tenancy.router)
 api_router.include_router(table_views.router)
 api_router.include_router(extractions.router)
 api_router.include_router(charge_codes.router)
+api_router.include_router(commodity_codes.router)
 api_router.include_router(charges.router)
 api_router.include_router(rate_lines.router)
 api_router.include_router(quotations.router)

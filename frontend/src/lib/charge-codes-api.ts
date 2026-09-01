@@ -1,4 +1,5 @@
 import { ApiError, httpErrorStatus, readApiDetail } from "@/lib/api"
+import { catalogCreateBody } from "@/lib/catalog-create"
 import { requireAuthHeaders } from "@/lib/tenant"
 
 export type ChargeCode = {
@@ -9,17 +10,7 @@ export type ChargeCode = {
   aliases: string[]
 }
 
-export function chargeCodeCreateBody(args: {
-  code: string
-  name: string
-  aliasesText: string
-}): { code: string; name: string; aliases: string[] } {
-  const aliases = args.aliasesText
-    .split(",")
-    .map((part) => part.trim())
-    .filter((part) => part.length > 0)
-  return { code: args.code.trim(), name: args.name.trim(), aliases }
-}
+export const chargeCodeCreateBody = catalogCreateBody
 
 async function readChargeCode(response: Response, fallback: string): Promise<ChargeCode> {
   if (!response.ok) {

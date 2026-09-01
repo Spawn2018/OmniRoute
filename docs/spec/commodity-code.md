@@ -1,7 +1,7 @@
 # M-09 commodity_code — katalog kodów towarowych
 
-**Plaster:** 5.2 (delta `docs/deltas/open/5.2-commodity-code.md`)  
-**Status:** planowany katalog HS/CN per tenant. Nie podpięcie do wyceny. Nie IMDG (Q6).
+**Plaster:** 5.2 (delta `docs/deltas/archived/5.2-commodity-code.md`)  
+**Status:** katalog HS/CN per tenant w kodzie. Nie podpięcie do wyceny. Nie IMDG (Q6).
 
 ## Zakres
 

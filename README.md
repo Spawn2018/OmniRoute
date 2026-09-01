@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **5.1** M-21 `quotation` POL/POD + `party_id` (zarchiwizowany)
-- **Etap:** Plaster
-- **Następny:** **5.2** M-09 `commodity_code` ([delta](../deltas/open/5.2-commodity-code.md)). Nie Q5.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
+- **Ostatni plaster:** **5.2** M-09 `commodity_code` (zarchiwizowany)
+- **Etap:** Plan
+- **Następny:** **Q5** waluty i kurs NBP (archiwum M-07; **nie** nadpisuj żywego M-07 `rate_line`). Nie Q6.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
