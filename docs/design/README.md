@@ -7,7 +7,13 @@
 
 Canvas IDE dziedziczy kolory edytora i wygląda jak dokument, nie jak aplikacja.
 
-Statyczne klatki: [screens/omniroute-stawki-light.png](screens/omniroute-stawki-light.png), [screens/omniroute-hitl-light.png](screens/omniroute-hitl-light.png), [screens/omniroute-oferta-light.png](screens/omniroute-oferta-light.png).
+Statyczne klatki (1480 × 940, render z `app-preview.html`):
+[oferta jasna](screens/omniroute-oferta-light.png) · [oferta ciemna](screens/omniroute-oferta-dark.png) ·
+[stawki jasne](screens/omniroute-stawki-light.png) · [stawki ciemne](screens/omniroute-stawki-dark.png) ·
+[HITL](screens/omniroute-hitl-light.png) · [zlecenie](screens/omniroute-zlecenie-light.png).
+
+Kanon jest źródłem dla leftoverów **U-oklch-dark** (rampy i elewacja w obu motywach),
+**U-money-align** (siatka integer / fraction / ISO 4217) i **U-condensed** (tryb gęsty wyłącznie na katalogu `rate_line`).
 
 | Plik | Ekran |
 |---|---|
