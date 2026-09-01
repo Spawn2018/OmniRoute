@@ -38,8 +38,8 @@ Seed: `scripts/dev_seed_local.py`.
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **4.0** M-05 `port` (zarchiwizowany)
-- **Etap:** **Plan** (brak delty 4.1). Nowa rozmowa, tryb Plan + `/plan-modul`. Zero kodu.
+- **Etap:** **Delta 4.1 zaakceptowana** — `docs/deltas/open/4.1-location-zones.md`, bez „DO USTALENIA”. Wolno `/plaster` w **nowej** rozmowie, tryb Agent.
 - **Następny:** **4.1** M-05 `location` + strefy (`location_zone_member`). Spec: `docs/spec/geography.md`. Nie 4.2. Nie Q2.
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
