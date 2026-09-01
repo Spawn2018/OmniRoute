@@ -11,7 +11,7 @@
 <!-- os-tree:start -->
 ```
 frontend/                 React 19 + Compiler, Vite, TanStack, shadcn, PostHog
-  src/features/           charge-codes · charges · extraction · ops · organization-settings · quotations · rate-lines · session · tenancy
+  src/features/           charge-codes · charges · extraction · geography · ops · organization-settings · quotations · rate-lines · session · tenancy
   src/components/ui/      shadcn
   src/components/data-table/  DataTableShell (Golden Standard)
 backend/app/

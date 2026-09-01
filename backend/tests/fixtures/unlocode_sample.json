@@ -1,0 +1,42 @@
+[
+  {
+    "unlocode": "PL GDY",
+    "name": "Gdynia",
+    "countryCode": "PL",
+    "coordinates": "5431N 01833E",
+    "functions": "12-4-6--",
+    "aliases": ["Gdingen"]
+  },
+  {
+    "unlocode": "PL GDN",
+    "name": "Gdansk",
+    "countryCode": "PL",
+    "coordinates": "5421N 01840E",
+    "functions": "12------",
+    "aliases": ["Danzig"]
+  },
+  {
+    "unlocode": "PL SZZ",
+    "name": "Szczecin",
+    "countryCode": "PL",
+    "coordinates": "5325N 01433E",
+    "functions": "12-4----",
+    "aliases": ["Stettin"]
+  },
+  {
+    "unlocode": "DE HAM",
+    "name": "Hamburg",
+    "countryCode": "DE",
+    "coordinates": "5333N 00959E",
+    "functions": "12-4-6--",
+    "aliases": []
+  },
+  {
+    "unlocode": "PL WAW",
+    "name": "Warszawa",
+    "countryCode": "PL",
+    "coordinates": "",
+    "functions": "---4----",
+    "aliases": ["Warsaw"]
+  }
+]
