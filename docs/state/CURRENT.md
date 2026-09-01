@@ -5,6 +5,7 @@
 
 **Ostatni plaster:** **4.0** M-05 `port` (zarchiwizowany)  
 **Etap:** **Delta 4.1 zaakceptowana** — `docs/deltas/open/4.1-location-zones.md`, bez „DO USTALENIA”. Wolno `/plaster` w **nowej** rozmowie, tryb Agent.  
+**Noc:** [docs/ops/nocna-zmiana.md](../ops/nocna-zmiana.md) — jeden plaster kodu na bieg; po 4.1 kolejka idzie na 4.2.  
 **Następny:** **4.1** M-05 `location` + strefy (`location_zone_member`). Spec: `docs/spec/geography.md`. Nie 4.2. Nie Q2.  
 Q1.2 = 4.2 `terminal`+WPI (też najpierw Plan). Q2 = M-10 **po** 4.2. M-02 **parked**. Auth0 **odroczone**. Exit Wave FE **nie** claim. Leftovery UI ADR-0003 **nie** zamiast 4.1.
 

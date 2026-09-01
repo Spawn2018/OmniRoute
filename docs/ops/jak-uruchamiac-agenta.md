@@ -63,7 +63,18 @@ na czerwono, naprawa wraca do ciebie.
 - Nie dopisuj `/plaster` pod rozmową z `/plan-modul`.
 - Nie szukaj menu „Nowy czat” jak w Messengerze.
 - Nie pisz „zrób geografię” — wystarczy komenda; kolejka jest w `CURRENT.md`.
-- Nie startuj 4.1 / 4.2 / Q2, dopóki bieżący plaster nie jest zamknięty i wypchnięty. Jeden naraz.
+- Nie startuj 4.2 / Q2, dopóki bieżący plaster nie jest zamknięty i wypchnięty. Jeden naraz.
+
+## Noc / Cloud 5
+
+Ryzyko nocnego kodu jest **włączone** — szczegóły: [nocna-zmiana.md](nocna-zmiana.md).
+
+1. Sprawdź **Etap** w `docs/state/CURRENT.md`. Dziś: delta 4.1 zaakceptowana → noc = `/plaster`, nie Plan.
+2. Cloud: [cursor.com/agents](https://cursor.com/agents) → nowy agent → najmocniejszy model (**Cloud 5 / Claude 5**, nie fast). Wklej blok z [HANDOFF-BUILDING-AGENT.md](../state/HANDOFF-BUILDING-AGENT.md) albo w polu wpisz `/noc`.
+3. Rano: otwórz PR, nie zakładaj że jest na `main`. Merge dopiero przy zielonym CI.
+4. W Planie (kolejna noc / rano 4.2): gdy wyskakują opcje, bierz **rekomendowaną**.
+
+Lokalnie na Windows nadal: `+` / `Ctrl+N`, tryb Agent, `/plaster`. Postgres: `pg_ctl -D tools\pgdata -o "-p 5432" start`.
 
 ## Trzy plastry geografii (jeden po drugim)
 
@@ -71,11 +82,11 @@ Q1 to **nie** jeden wielki plaster. Kolejność z planu:
 
 | Kiedy | Co | Ty robisz |
 |---|---|---|
-| **Teraz** | **4.0** `port` | Dokończ ten plaster: `/plaster` → `/testy` → `implementuj` → `/zamknij` (push). |
-| Potem | **4.1** `location` + strefy | **Nowa** rozmowa. Najpierw Plan: `/plan-modul`. Potem nowa rozmowa Agent: `/plaster` → `/testy` → kod → `/zamknij`. |
-| Potem | **4.2** `terminal` + WPI | Tak samo: Plan, potem plaster. |
+| Zrobione | **4.0** `port` | Zamknięte. |
+| **Teraz** | **4.1** `location` + strefy | Delta jest. Agent / Cloud: `/plaster` → `/testy` → kod → `/zamknij`. |
+| Potem | **4.2** `terminal` + WPI | Najpierw Plan (`/plan-modul`, opcja rekomendowana). Potem plaster. |
 | Potem | **Q2** kontrahenci | Dopiero po 4.2. |
 
 Po `/zamknij` agent sam wpisuje do CURRENT **następny** numer. Ty nie wybierasz „który plaster” — czytasz CURRENT albo po prostu odpalasz `/plan-modul` albo `/plaster` zgodnie z **Etapem** w CURRENT.
 
-Nie otwieraj trzech Agentów naraz. Nie dopisuj 4.1 w czacie 4.0.
+Nie otwieraj trzech Agentów naraz. Nie dopisuj 4.2 w czacie 4.1.
