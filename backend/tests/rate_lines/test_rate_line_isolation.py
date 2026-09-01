@@ -65,8 +65,9 @@ async def test_rate_line_amount_cannot_mutate_in_place(session, two_tenants) -> 
 
     await bind_tenant(session, org_a.id)
     session.add(rate)
-    await session.flush()
+    await session.commit()
 
+    await bind_tenant(session, org_a.id)
     with pytest.raises(DBAPIError):
         await session.execute(
             update(RateLine).where(RateLine.id == rate.id).values(amount=Decimal("99.0000"))
