@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **4.2** M-05 `terminal` + WPI (zarchiwizowany). **Etap:** Agent — delta 5.0 zaakceptowana; kod tylko w nowej rozmowie `/plaster`. **Następny:** **5.0** M-10 `party` (`docs/deltas/open/5.0-party.md`). Nie Q3. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **5.0** M-10 `party` (zarchiwizowany). **Etap:** Plan. **Następny:** **Q3** pogłębienie żywego M-21 `quotation` o port + `party_id` (`docs/spec/quotation.md`). Nie Q4. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
@@ -11,12 +11,12 @@
 <!-- os-tree:start -->
 ```
 frontend/                 React 19 + Compiler, Vite, TanStack, shadcn, PostHog
-  src/features/           charge-codes · charges · extraction · geography · ops · organization-settings · quotations · rate-lines · session · tenancy
+  src/features/           charge-codes · charges · extraction · geography · ops · organization-settings · parties · quotations · rate-lines · session · tenancy
   src/components/ui/      shadcn
   src/components/data-table/  DataTableShell (Golden Standard)
 backend/app/
   api/             routery, DTO, require_permission — bez logiki
-  services/        charge_codes · charges · extraction · geography · organization_settings · quotations · rate_lines · tenancy
+  services/        charge_codes · charges · extraction · geography · organization_settings · parties · quotations · rate_lines · tenancy
   repositories/    dostęp SQL
   models/          SQLAlchemy
   domain/          typy, wyjątki, Money

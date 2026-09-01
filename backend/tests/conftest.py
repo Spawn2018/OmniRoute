@@ -10,6 +10,7 @@ from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_asyn
 from app.core.database import bind_tenant
 from app.models.app_user import AppUser
 from app.models.base import Base
+from app.models.carrier_profile import CarrierProfile  # noqa: F401 — rejestr metadanych RLS
 from app.models.charge import Charge  # noqa: F401 — rejestr metadanych RLS
 from app.models.charge_code import ChargeCode  # noqa: F401 — rejestr metadanych RLS
 from app.models.extraction_draft import ExtractionDraft  # noqa: F401 — rejestr metadanych RLS
@@ -21,6 +22,13 @@ from app.models.organization import Organization
 from app.models.organization_setting import (  # noqa: F401 — rejestr metadanych RLS
     OrganizationSetting,
 )
+from app.models.party import Party  # noqa: F401 — rejestr metadanych RLS
+from app.models.party_bank_account import PartyBankAccount  # noqa: F401 — rejestr metadanych RLS
+from app.models.party_charge_override import (  # noqa: F401 — rejestr metadanych RLS
+    PartyChargeOverride,
+)
+from app.models.party_contact import PartyContact  # noqa: F401 — rejestr metadanych RLS
+from app.models.party_email_domain import PartyEmailDomain  # noqa: F401 — rejestr metadanych RLS
 from app.models.port import Port  # noqa: F401 — rejestr metadanych RLS
 from app.models.quotation import Quotation  # noqa: F401 — rejestr metadanych RLS
 from app.models.rate_line import RateLine  # noqa: F401 — rejestr metadanych RLS
@@ -267,14 +275,24 @@ async def _apply_rls_policies(conn) -> None:
             """
         ),
     )
-    for table in ("location", "location_zone_member", "terminal"):
+    for table, policy in (
+        ("location", "location_tenant_isolation"),
+        ("location_zone_member", "location_zone_member_tenant_isolation"),
+        ("terminal", "terminal_tenant_isolation"),
+        ("party", "party_tenant_isolation"),
+        ("party_contact", "party_contact_tenant_isolation"),
+        ("party_bank_account", "party_bank_account_tenant_isolation"),
+        ("party_email_domain", "party_email_domain_tenant_isolation"),
+        ("party_charge_override", "party_charge_override_tenant_isolation"),
+        ("carrier_profile", "carrier_profile_tenant_isolation"),
+    ):
         await conn.execute(text(f"ALTER TABLE {table} ENABLE ROW LEVEL SECURITY"))
         await conn.execute(text(f"ALTER TABLE {table} FORCE ROW LEVEL SECURITY"))
-        await conn.execute(text(f"DROP POLICY IF EXISTS {table}_tenant_isolation ON {table}"))
+        await conn.execute(text(f"DROP POLICY IF EXISTS {policy} ON {table}"))
         await conn.execute(
             text(
                 f"""
-                CREATE POLICY {table}_tenant_isolation ON {table}
+                CREATE POLICY {policy} ON {table}
                 USING (
                   organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid
                 )

@@ -8,6 +8,7 @@ export type Terminal = {
   name: string
   isps_code: string | null
   operator_name: string | null
+  operator_party_id: string | null
   lat: string | null
   lng: string | null
   source_ref: string
@@ -18,6 +19,7 @@ export type TerminalCreateBody = {
   name: string
   isps_code: string | null
   operator_name: string | null
+  operator_party_id: string | null
 }
 
 export function terminalCreateBody(args: {
@@ -25,14 +27,17 @@ export function terminalCreateBody(args: {
   name: string
   ispsCode: string
   operatorName: string
+  operatorPartyId?: string
 }): TerminalCreateBody {
   const isps = args.ispsCode.trim().toUpperCase()
   const operator = args.operatorName.trim()
+  const partyId = (args.operatorPartyId ?? "").trim()
   return {
     port_id: args.portId,
     name: args.name.trim(),
     isps_code: isps === "" ? null : isps,
     operator_name: operator === "" ? null : operator,
+    operator_party_id: partyId === "" ? null : partyId,
   }
 }
 

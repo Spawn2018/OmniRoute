@@ -19,6 +19,7 @@ class TerminalCreate(BaseModel):
     name: str = Field(min_length=1, max_length=128)
     isps_code: str | None = Field(default=None, max_length=32)
     operator_name: str | None = Field(default=None, max_length=256)
+    operator_party_id: UUID | None = None
     lat: Decimal | None = None
     lng: Decimal | None = None
 
@@ -32,6 +33,7 @@ class TerminalResponse(BaseModel):
     name: str
     isps_code: str | None
     operator_name: str | None
+    operator_party_id: UUID | None
     lat: Decimal | None
     lng: Decimal | None
     source_ref: str
@@ -72,6 +74,7 @@ async def create_terminal(
         name=body.name,
         isps_code=body.isps_code,
         operator_name=body.operator_name,
+        operator_party_id=body.operator_party_id,
         lat=body.lat,
         lng=body.lng,
     )

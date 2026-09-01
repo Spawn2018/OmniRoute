@@ -9,6 +9,7 @@ export const BUSINESS_LISTS = {
   ports: { route: "/ports", tableKey: "ports" },
   locations: { route: "/locations", tableKey: "locations" },
   terminals: { route: "/terminals", tableKey: "terminals" },
+  parties: { route: "/parties", tableKey: "parties" },
 } as const
 
 export const REQUIRED_BUSINESS_LIST_ROUTES = [
@@ -22,6 +23,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/ports",
   "/locations",
   "/terminals",
+  "/parties",
 ] as const
 
 export function businessListRoutes(): string[] {

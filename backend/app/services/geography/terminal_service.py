@@ -48,6 +48,7 @@ class TerminalService:
         operator_name: str | None,
         lat: Decimal | None,
         lng: Decimal | None,
+        operator_party_id: UUID | None = None,
     ) -> Terminal:
         row = Terminal(
             id=uuid4(),
@@ -56,6 +57,7 @@ class TerminalService:
             name=normalize_terminal_name(name),
             isps_code=normalize_isps_code(isps_code),
             operator_name=normalize_operator_name(operator_name),
+            operator_party_id=operator_party_id,
             lat=lat,
             lng=lng,
             source_ref=MANUAL_SOURCE_REF,

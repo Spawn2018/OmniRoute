@@ -152,3 +152,11 @@ class QuotationGap(DomainError):
 
 class InvalidOrganizationSetting(DomainError):
     """Ustawienie tenanta poza allowlistą, sekret albo zła wartość."""
+
+
+class UnknownParty(DomainError):
+    """Token tax_id nie ma wpisu w katalogu party tenanta — luźna nazwa nie przechodzi."""
+
+
+class InvalidPartyData(DomainError):
+    """Pole kontrahenta puste, NIP bez sumy, rola spoza allowlisty albo para kredytu rozjechana."""

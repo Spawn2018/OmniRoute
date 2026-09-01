@@ -57,7 +57,7 @@ Delta: [docs/deltas/archived/4.2-terminal-wpi.md](../deltas/archived/4.2-termina
 
 ### Zakres
 
-- Tabela `terminal`: `organization_id`, `port_id`, `name`, `isps_code` (nullable), `operator_name` (nullable text — nie FK do party), `lat`/`lng` Numeric nullable, `source_ref` (`tenant:manual`), timestamps. Brak `is_official` — to nie katalog światowy
+- Tabela `terminal`: `organization_id`, `port_id`, `name`, `isps_code` (nullable), `operator_name` (nullable text), `operator_party_id` (nullable UUID, FK złożone do `party` od 5.0), `lat`/`lng` Numeric nullable, `source_ref` (`tenant:manual`), timestamps. Brak `is_official` — to nie katalog światowy
 - FK złożone `(organization_id, port_id)` → `port(organization_id, id)` (nośnik `uq_port_org_id` z 4.1)
 - Unikat częściowy `(organization_id, isps_code)` gdy kod nie NULL; unikat `(organization_id, port_id, name)`
 - `resolve(isps_code)` — dokładne, bez wielkości liter; nieznany = `UnknownTerminal`. Bez aliasów, bez `pg_trgm`
@@ -69,7 +69,7 @@ Delta: [docs/deltas/archived/4.2-terminal-wpi.md](../deltas/archived/4.2-termina
 
 ### Poza 4.2
 
-OSM, geometria, strefy czasu dojazdu, `operator_party_id`, FK do `party`, POL/POD w `quotation`, podpięcie `rate_line`, `pg_trgm`, `kind='terminal'` na `location`, pełny dump NGA, live fetch, światowy seed ISPS. Potem Q2 M-10.
+OSM, geometria, strefy czasu dojazdu, POL/POD w `quotation`, podpięcie `rate_line`, `pg_trgm`, `kind='terminal'` na `location`, pełny dump NGA, live fetch, światowy seed ISPS. `operator_party_id` = plaster 5.0.
 
 ### HC
 

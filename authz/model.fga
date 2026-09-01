@@ -16,3 +16,4 @@ type organization
     define can_manage_quotations: member
     define can_manage_organization_settings: member
     define can_manage_geography: member
+    define can_manage_parties: member

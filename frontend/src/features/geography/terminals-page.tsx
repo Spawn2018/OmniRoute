@@ -19,6 +19,7 @@ import {
   terminalCreateBody,
   type Terminal,
 } from "@/lib/terminals-api"
+import { fetchParties } from "@/lib/parties-api"
 
 const columnHelper = createColumnHelper<Terminal>()
 
@@ -38,6 +39,13 @@ const columns = [
     header: "Operator",
     cell: (info) => info.getValue() ?? "—",
   }),
+  columnHelper.accessor("operator_party_id", {
+    id: "operator_party_id",
+    header: "Operator party",
+    cell: (info) => (
+      <span className="font-mono text-xs">{info.getValue() ?? "—"}</span>
+    ),
+  }),
   columnHelper.accessor("port_id", {
     id: "port_id",
     header: "Port",
@@ -49,6 +57,7 @@ const COLUMN_LABELS = {
   name: "Nazwa",
   isps_code: "ISPS",
   operator_name: "Operator",
+  operator_party_id: "Operator party",
   port_id: "Port",
 }
 
@@ -60,7 +69,15 @@ export function TerminalCatalogPage() {
   const [name, setName] = useState("")
   const [ispsCode, setIspsCode] = useState("")
   const [operatorName, setOperatorName] = useState("")
+  const [operatorPartyId, setOperatorPartyId] = useState("")
   const [resolved, setResolved] = useState<Terminal | null>(null)
+
+  const partiesQuery = useQuery({
+    queryKey: ["parties-picker", ctx.organizationId],
+    queryFn: fetchParties,
+    enabled: Boolean(ctx.organizationId && ctx.userId),
+    retry: false,
+  })
 
   const query = useQuery({
     queryKey: ["terminals", ctx.organizationId, portFilter],
@@ -71,12 +88,21 @@ export function TerminalCatalogPage() {
 
   const createMutation = useMutation({
     mutationFn: () =>
-      createTerminal(terminalCreateBody({ portId, name, ispsCode, operatorName })),
+      createTerminal(
+        terminalCreateBody({
+          portId,
+          name,
+          ispsCode,
+          operatorName,
+          operatorPartyId,
+        }),
+      ),
     onSuccess: () => {
       setPortId("")
       setName("")
       setIspsCode("")
       setOperatorName("")
+      setOperatorPartyId("")
       void queryClient.invalidateQueries({ queryKey: ["terminals", ctx.organizationId] })
     },
   })
@@ -161,6 +187,22 @@ export function TerminalCatalogPage() {
             value={operatorName}
             onChange={(event) => setOperatorName(event.target.value)}
           />
+          <label className="flex flex-col gap-1 text-xs">
+            operator_party_id
+            <select
+              aria-label="Operator party_id"
+              className="h-8 rounded-md border border-border bg-card px-2 text-sm"
+              value={operatorPartyId}
+              onChange={(event) => setOperatorPartyId(event.target.value)}
+            >
+              <option value="">—</option>
+              {(partiesQuery.data ?? []).map((party) => (
+                <option key={party.id} value={party.id}>
+                  {party.legal_name}
+                </option>
+              ))}
+            </select>
+          </label>
           <Button type="submit" disabled={createMutation.isPending || !ctx.organizationId}>
             Dodaj terminal
           </Button>

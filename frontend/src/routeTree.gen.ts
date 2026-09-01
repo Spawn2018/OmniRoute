@@ -15,6 +15,7 @@ import { Route as ChargesRouteImport } from './routes/charges'
 import { Route as ExtractionsRouteImport } from './routes/extractions'
 import { Route as LocationsRouteImport } from './routes/locations'
 import { Route as OrganizationSettingsRouteImport } from './routes/organization-settings'
+import { Route as PartiesRouteImport } from './routes/parties'
 import { Route as PortsRouteImport } from './routes/ports'
 import { Route as QuotationsRouteImport } from './routes/quotations'
 import { Route as RateLinesRouteImport } from './routes/rate-lines'
@@ -50,6 +51,11 @@ const LocationsRoute = LocationsRouteImport.update({
 const OrganizationSettingsRoute = OrganizationSettingsRouteImport.update({
   id: '/organization-settings',
   path: '/organization-settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartiesRoute = PartiesRouteImport.update({
+  id: '/parties',
+  path: '/parties',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PortsRoute = PortsRouteImport.update({
@@ -90,6 +96,7 @@ export interface FileRoutesByFullPath {
   '/extractions': typeof ExtractionsRoute
   '/locations': typeof LocationsRoute
   '/organization-settings': typeof OrganizationSettingsRoute
+  '/parties': typeof PartiesRoute
   '/ports': typeof PortsRoute
   '/quotations': typeof QuotationsRoute
   '/rate-lines': typeof RateLinesRoute
@@ -104,6 +111,7 @@ export interface FileRoutesByTo {
   '/extractions': typeof ExtractionsRoute
   '/locations': typeof LocationsRoute
   '/organization-settings': typeof OrganizationSettingsRoute
+  '/parties': typeof PartiesRoute
   '/ports': typeof PortsRoute
   '/quotations': typeof QuotationsRoute
   '/rate-lines': typeof RateLinesRoute
@@ -119,6 +127,7 @@ export interface FileRoutesById {
   '/extractions': typeof ExtractionsRoute
   '/locations': typeof LocationsRoute
   '/organization-settings': typeof OrganizationSettingsRoute
+  '/parties': typeof PartiesRoute
   '/ports': typeof PortsRoute
   '/quotations': typeof QuotationsRoute
   '/rate-lines': typeof RateLinesRoute
@@ -135,6 +144,7 @@ export interface FileRouteTypes {
     | '/extractions'
     | '/locations'
     | '/organization-settings'
+    | '/parties'
     | '/ports'
     | '/quotations'
     | '/rate-lines'
@@ -149,6 +159,7 @@ export interface FileRouteTypes {
     | '/extractions'
     | '/locations'
     | '/organization-settings'
+    | '/parties'
     | '/ports'
     | '/quotations'
     | '/rate-lines'
@@ -163,6 +174,7 @@ export interface FileRouteTypes {
     | '/extractions'
     | '/locations'
     | '/organization-settings'
+    | '/parties'
     | '/ports'
     | '/quotations'
     | '/rate-lines'
@@ -178,6 +190,7 @@ export interface RootRouteChildren {
   ExtractionsRoute: typeof ExtractionsRoute
   LocationsRoute: typeof LocationsRoute
   OrganizationSettingsRoute: typeof OrganizationSettingsRoute
+  PartiesRoute: typeof PartiesRoute
   PortsRoute: typeof PortsRoute
   QuotationsRoute: typeof QuotationsRoute
   RateLinesRoute: typeof RateLinesRoute
@@ -228,6 +241,13 @@ declare module '@tanstack/react-router' {
       path: '/organization-settings'
       fullPath: '/organization-settings'
       preLoaderRoute: typeof OrganizationSettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/parties': {
+      id: '/parties'
+      path: '/parties'
+      fullPath: '/parties'
+      preLoaderRoute: typeof PartiesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ports': {
@@ -282,6 +302,7 @@ const rootRouteChildren: RootRouteChildren = {
   ExtractionsRoute: ExtractionsRoute,
   LocationsRoute: LocationsRoute,
   OrganizationSettingsRoute: OrganizationSettingsRoute,
+  PartiesRoute: PartiesRoute,
   PortsRoute: PortsRoute,
   QuotationsRoute: QuotationsRoute,
   RateLinesRoute: RateLinesRoute,

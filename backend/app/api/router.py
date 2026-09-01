@@ -6,6 +6,7 @@ from app.api import (
     extractions,
     locations,
     organization_settings,
+    parties,
     ports,
     quotations,
     rate_lines,
@@ -26,6 +27,7 @@ api_router.include_router(charges.router)
 api_router.include_router(rate_lines.router)
 api_router.include_router(quotations.router)
 api_router.include_router(organization_settings.router)
+api_router.include_router(parties.router)
 api_router.include_router(ports.router)
 api_router.include_router(locations.router)
 api_router.include_router(terminals.router)

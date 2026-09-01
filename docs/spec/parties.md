@@ -1,10 +1,10 @@
 # M-10 Kontrahenci — `party` i katalog zależny
 
 **Moduł żywy:** M-10 (archiwum M-10; nie koliduje z żywym M-07 `rate_line` / M-08 `charge`)  
-**Plaster:** **5.0** (Plan zaakceptowany; kod w `/plaster`)  
-**Status:** szkielet. Nie Q3. Nie M-11–M-14. Nie M-19.
+**Plaster:** **5.0** (w kodzie)  
+**Status:** fundament katalogu. Nie Q3. Nie M-11–M-14. Nie M-19.
 
-Delta: [docs/deltas/open/5.0-party.md](../deltas/open/5.0-party.md).
+Delta: [docs/deltas/archived/5.0-party.md](../deltas/archived/5.0-party.md).
 
 ## 5.0 katalog kontrahenta
 

@@ -38,7 +38,7 @@
 | strefa taryfowa | location_zone_member | 4.1; zakresy kodów pocztowych per tenant |
 | terminal | terminal | 4.2; osobna tabela, nie `location.kind` |
 | kod ISPS | isps_code | identyfikator obiektu portowego; unikat per tenant gdy nie NULL |
-| operator terminalu | operator_name | tekst na `terminal`; FK `operator_party_id` = plaster 5.0 |
+| operator terminalu | operator_name / operator_party_id | tekst zostaje; FK nullable do `party` od 5.0 |
 | kontrahent | party | katalog M-10; jeden podmiot, wiele ról |
 | identyfikator podatkowy | tax_id | NIP / VAT krajowy; `resolve` po tokenie |
 | numer VAT UE | vat_eu | opcjonalny; lookup VIES nie zapisuje sam |

@@ -19,6 +19,12 @@ from app.models.table_view import TableView  # noqa: F401
 from app.models.port import Port  # noqa: F401
 from app.models.location import Location, LocationZoneMember  # noqa: F401
 from app.models.terminal import Terminal  # noqa: F401
+from app.models.party import Party  # noqa: F401
+from app.models.party_contact import PartyContact  # noqa: F401
+from app.models.party_bank_account import PartyBankAccount  # noqa: F401
+from app.models.party_email_domain import PartyEmailDomain  # noqa: F401
+from app.models.party_charge_override import PartyChargeOverride  # noqa: F401
+from app.models.carrier_profile import CarrierProfile  # noqa: F401
 
 config = context.config
 config.set_main_option("sqlalchemy.url", settings.database_url_sync)

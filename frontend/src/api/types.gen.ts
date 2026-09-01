@@ -27,6 +27,118 @@ export type AppUserResponse = {
 };
 
 /**
+ * BankAccountCreate
+ */
+export type BankAccountCreate = {
+    /**
+     * Iban
+     */
+    iban: string;
+    /**
+     * Currency
+     */
+    currency: string;
+    /**
+     * Bank Name
+     */
+    bank_name?: string | null;
+    /**
+     * Whitelist Status
+     */
+    whitelist_status?: string;
+};
+
+/**
+ * BankAccountResponse
+ */
+export type BankAccountResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Iban
+     */
+    iban: string;
+    /**
+     * Currency
+     */
+    currency: string;
+    /**
+     * Bank Name
+     */
+    bank_name: string | null;
+    /**
+     * Whitelist Status
+     */
+    whitelist_status: string;
+};
+
+/**
+ * CarrierProfileResponse
+ */
+export type CarrierProfileResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Scac Code
+     */
+    scac_code: string | null;
+    /**
+     * Is Nvocc
+     */
+    is_nvocc: boolean;
+    /**
+     * Rate Source Email
+     */
+    rate_source_email: string | null;
+    /**
+     * Api Adapter
+     */
+    api_adapter: string;
+    /**
+     * Dcsa Tnt Version
+     */
+    dcsa_tnt_version: string | null;
+};
+
+/**
+ * CarrierProfileUpsert
+ */
+export type CarrierProfileUpsert = {
+    /**
+     * Scac Code
+     */
+    scac_code?: string | null;
+    /**
+     * Is Nvocc
+     */
+    is_nvocc?: boolean;
+    /**
+     * Rate Source Email
+     */
+    rate_source_email?: string | null;
+    /**
+     * Api Adapter
+     */
+    api_adapter?: string;
+    /**
+     * Dcsa Tnt Version
+     */
+    dcsa_tnt_version?: string | null;
+};
+
+/**
  * ChargeCodeCreate
  */
 export type ChargeCodeCreate = {
@@ -101,6 +213,74 @@ export type ChargeCreate = {
 };
 
 /**
+ * ChargeOverrideCreate
+ */
+export type ChargeOverrideCreate = {
+    /**
+     * Charge Code
+     */
+    charge_code: string;
+    /**
+     * Amount
+     */
+    amount: string;
+    /**
+     * Currency
+     */
+    currency: string;
+    /**
+     * Lane Pattern
+     */
+    lane_pattern?: string | null;
+    /**
+     * Basis
+     */
+    basis?: string | null;
+    /**
+     * Source Ref
+     */
+    source_ref?: string | null;
+};
+
+/**
+ * ChargeOverrideResponse
+ */
+export type ChargeOverrideResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Charge Code
+     */
+    charge_code: string;
+    /**
+     * Amount
+     */
+    amount: string;
+    /**
+     * Currency
+     */
+    currency: string;
+    /**
+     * Lane Pattern
+     */
+    lane_pattern: string | null;
+    /**
+     * Basis
+     */
+    basis: string | null;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * ChargeResponse
  */
 export type ChargeResponse = {
@@ -144,6 +324,102 @@ export type ChargeResponse = {
      * Rate Line Id
      */
     rate_line_id: string | null;
+};
+
+/**
+ * ContactCreate
+ */
+export type ContactCreate = {
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Email
+     */
+    email?: string | null;
+    /**
+     * Phone
+     */
+    phone?: string | null;
+    /**
+     * Position
+     */
+    position?: string | null;
+    /**
+     * Is Primary
+     */
+    is_primary?: boolean;
+};
+
+/**
+ * ContactResponse
+ */
+export type ContactResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Email
+     */
+    email: string | null;
+    /**
+     * Phone
+     */
+    phone: string | null;
+    /**
+     * Position
+     */
+    position: string | null;
+    /**
+     * Is Primary
+     */
+    is_primary: boolean;
+};
+
+/**
+ * EmailDomainCreate
+ */
+export type EmailDomainCreate = {
+    /**
+     * Domain
+     */
+    domain: string;
+    /**
+     * Source Ref
+     */
+    source_ref?: string | null;
+};
+
+/**
+ * EmailDomainResponse
+ */
+export type EmailDomainResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Domain
+     */
+    domain: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
 };
 
 /**
@@ -216,6 +492,30 @@ export type HttpValidationError = {
      * Detail
      */
     detail?: Array<ValidationError>;
+};
+
+/**
+ * IbanDraftResponse
+ */
+export type IbanDraftResponse = {
+    /**
+     * Iban
+     */
+    iban: string;
+    /**
+     * Whitelist Status
+     */
+    whitelist_status: string;
+};
+
+/**
+ * IbanLookupRequest
+ */
+export type IbanLookupRequest = {
+    /**
+     * Iban
+     */
+    iban: string;
 };
 
 /**
@@ -310,6 +610,130 @@ export type OrganizationSettingUpsert = {
      * Setting Value
      */
     setting_value: string;
+};
+
+/**
+ * PartyCreate
+ */
+export type PartyCreate = {
+    /**
+     * Legal Name
+     */
+    legal_name: string;
+    /**
+     * Country Code
+     */
+    country_code: string;
+    /**
+     * Roles
+     */
+    roles: Array<string>;
+    /**
+     * Tax Id
+     */
+    tax_id?: string | null;
+    /**
+     * Short Name
+     */
+    short_name?: string | null;
+    /**
+     * Credit Limit
+     */
+    credit_limit?: string | null;
+    /**
+     * Credit Currency
+     */
+    credit_currency?: string | null;
+    /**
+     * Lookup Source
+     */
+    lookup_source?: string | null;
+};
+
+/**
+ * PartyDraftResponse
+ */
+export type PartyDraftResponse = {
+    /**
+     * Legal Name
+     */
+    legal_name: string;
+    /**
+     * Tax Id
+     */
+    tax_id: string;
+    /**
+     * Source
+     */
+    source: string;
+    /**
+     * Vies Valid
+     */
+    vies_valid: boolean | null;
+};
+
+/**
+ * PartyLookupRequest
+ */
+export type PartyLookupRequest = {
+    /**
+     * Tax Id
+     */
+    tax_id: string;
+    /**
+     * Country Code
+     */
+    country_code: string;
+};
+
+/**
+ * PartyResponse
+ */
+export type PartyResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Legal Name
+     */
+    legal_name: string;
+    /**
+     * Short Name
+     */
+    short_name: string | null;
+    /**
+     * Tax Id
+     */
+    tax_id: string | null;
+    /**
+     * Country Code
+     */
+    country_code: string;
+    /**
+     * Roles
+     */
+    roles: Array<string>;
+    /**
+     * Credit Limit
+     */
+    credit_limit: string | null;
+    /**
+     * Credit Currency
+     */
+    credit_currency: string | null;
+    /**
+     * Is Active
+     */
+    is_active: boolean;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
 };
 
 /**
@@ -717,6 +1141,10 @@ export type TerminalCreate = {
      */
     operator_name?: string | null;
     /**
+     * Operator Party Id
+     */
+    operator_party_id?: string | null;
+    /**
      * Lat
      */
     lat?: number | string | null;
@@ -754,6 +1182,10 @@ export type TerminalResponse = {
      * Operator Name
      */
     operator_name: string | null;
+    /**
+     * Operator Party Id
+     */
+    operator_party_id: string | null;
     /**
      * Lat
      */
@@ -1454,6 +1886,439 @@ export type UpsertOrganizationSettingApiV1OrganizationSettingsPutResponses = {
 };
 
 export type UpsertOrganizationSettingApiV1OrganizationSettingsPutResponse = UpsertOrganizationSettingApiV1OrganizationSettingsPutResponses[keyof UpsertOrganizationSettingApiV1OrganizationSettingsPutResponses];
+
+export type ListPartiesApiV1PartiesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/parties';
+};
+
+export type ListPartiesApiV1PartiesGetResponses = {
+    /**
+     * Response List Parties Api V1 Parties Get
+     *
+     * Successful Response
+     */
+    200: Array<PartyResponse>;
+};
+
+export type ListPartiesApiV1PartiesGetResponse = ListPartiesApiV1PartiesGetResponses[keyof ListPartiesApiV1PartiesGetResponses];
+
+export type CreatePartyApiV1PartiesPostData = {
+    body: PartyCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/parties';
+};
+
+export type CreatePartyApiV1PartiesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreatePartyApiV1PartiesPostError = CreatePartyApiV1PartiesPostErrors[keyof CreatePartyApiV1PartiesPostErrors];
+
+export type CreatePartyApiV1PartiesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: PartyResponse;
+};
+
+export type CreatePartyApiV1PartiesPostResponse = CreatePartyApiV1PartiesPostResponses[keyof CreatePartyApiV1PartiesPostResponses];
+
+export type ResolvePartyApiV1PartiesResolveGetData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Tax Id
+         */
+        tax_id: string;
+    };
+    url: '/api/v1/parties/resolve';
+};
+
+export type ResolvePartyApiV1PartiesResolveGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ResolvePartyApiV1PartiesResolveGetError = ResolvePartyApiV1PartiesResolveGetErrors[keyof ResolvePartyApiV1PartiesResolveGetErrors];
+
+export type ResolvePartyApiV1PartiesResolveGetResponses = {
+    /**
+     * Successful Response
+     */
+    200: PartyResponse;
+};
+
+export type ResolvePartyApiV1PartiesResolveGetResponse = ResolvePartyApiV1PartiesResolveGetResponses[keyof ResolvePartyApiV1PartiesResolveGetResponses];
+
+export type LookupPartyApiV1PartiesLookupPostData = {
+    body: PartyLookupRequest;
+    path?: never;
+    query?: never;
+    url: '/api/v1/parties/lookup';
+};
+
+export type LookupPartyApiV1PartiesLookupPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type LookupPartyApiV1PartiesLookupPostError = LookupPartyApiV1PartiesLookupPostErrors[keyof LookupPartyApiV1PartiesLookupPostErrors];
+
+export type LookupPartyApiV1PartiesLookupPostResponses = {
+    /**
+     * Successful Response
+     */
+    200: PartyDraftResponse;
+};
+
+export type LookupPartyApiV1PartiesLookupPostResponse = LookupPartyApiV1PartiesLookupPostResponses[keyof LookupPartyApiV1PartiesLookupPostResponses];
+
+export type LookupIbanApiV1PartiesIbanLookupPostData = {
+    body: IbanLookupRequest;
+    path?: never;
+    query?: never;
+    url: '/api/v1/parties/iban-lookup';
+};
+
+export type LookupIbanApiV1PartiesIbanLookupPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type LookupIbanApiV1PartiesIbanLookupPostError = LookupIbanApiV1PartiesIbanLookupPostErrors[keyof LookupIbanApiV1PartiesIbanLookupPostErrors];
+
+export type LookupIbanApiV1PartiesIbanLookupPostResponses = {
+    /**
+     * Successful Response
+     */
+    200: IbanDraftResponse;
+};
+
+export type LookupIbanApiV1PartiesIbanLookupPostResponse = LookupIbanApiV1PartiesIbanLookupPostResponses[keyof LookupIbanApiV1PartiesIbanLookupPostResponses];
+
+export type ListContactsApiV1PartiesPartyIdContactsGetData = {
+    body?: never;
+    path: {
+        /**
+         * Party Id
+         */
+        party_id: string;
+    };
+    query?: never;
+    url: '/api/v1/parties/{party_id}/contacts';
+};
+
+export type ListContactsApiV1PartiesPartyIdContactsGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ListContactsApiV1PartiesPartyIdContactsGetError = ListContactsApiV1PartiesPartyIdContactsGetErrors[keyof ListContactsApiV1PartiesPartyIdContactsGetErrors];
+
+export type ListContactsApiV1PartiesPartyIdContactsGetResponses = {
+    /**
+     * Response List Contacts Api V1 Parties  Party Id  Contacts Get
+     *
+     * Successful Response
+     */
+    200: Array<ContactResponse>;
+};
+
+export type ListContactsApiV1PartiesPartyIdContactsGetResponse = ListContactsApiV1PartiesPartyIdContactsGetResponses[keyof ListContactsApiV1PartiesPartyIdContactsGetResponses];
+
+export type CreateContactApiV1PartiesPartyIdContactsPostData = {
+    body: ContactCreate;
+    path: {
+        /**
+         * Party Id
+         */
+        party_id: string;
+    };
+    query?: never;
+    url: '/api/v1/parties/{party_id}/contacts';
+};
+
+export type CreateContactApiV1PartiesPartyIdContactsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateContactApiV1PartiesPartyIdContactsPostError = CreateContactApiV1PartiesPartyIdContactsPostErrors[keyof CreateContactApiV1PartiesPartyIdContactsPostErrors];
+
+export type CreateContactApiV1PartiesPartyIdContactsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ContactResponse;
+};
+
+export type CreateContactApiV1PartiesPartyIdContactsPostResponse = CreateContactApiV1PartiesPartyIdContactsPostResponses[keyof CreateContactApiV1PartiesPartyIdContactsPostResponses];
+
+export type ListBankAccountsApiV1PartiesPartyIdBankAccountsGetData = {
+    body?: never;
+    path: {
+        /**
+         * Party Id
+         */
+        party_id: string;
+    };
+    query?: never;
+    url: '/api/v1/parties/{party_id}/bank-accounts';
+};
+
+export type ListBankAccountsApiV1PartiesPartyIdBankAccountsGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ListBankAccountsApiV1PartiesPartyIdBankAccountsGetError = ListBankAccountsApiV1PartiesPartyIdBankAccountsGetErrors[keyof ListBankAccountsApiV1PartiesPartyIdBankAccountsGetErrors];
+
+export type ListBankAccountsApiV1PartiesPartyIdBankAccountsGetResponses = {
+    /**
+     * Response List Bank Accounts Api V1 Parties  Party Id  Bank Accounts Get
+     *
+     * Successful Response
+     */
+    200: Array<BankAccountResponse>;
+};
+
+export type ListBankAccountsApiV1PartiesPartyIdBankAccountsGetResponse = ListBankAccountsApiV1PartiesPartyIdBankAccountsGetResponses[keyof ListBankAccountsApiV1PartiesPartyIdBankAccountsGetResponses];
+
+export type CreateBankAccountApiV1PartiesPartyIdBankAccountsPostData = {
+    body: BankAccountCreate;
+    path: {
+        /**
+         * Party Id
+         */
+        party_id: string;
+    };
+    query?: never;
+    url: '/api/v1/parties/{party_id}/bank-accounts';
+};
+
+export type CreateBankAccountApiV1PartiesPartyIdBankAccountsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateBankAccountApiV1PartiesPartyIdBankAccountsPostError = CreateBankAccountApiV1PartiesPartyIdBankAccountsPostErrors[keyof CreateBankAccountApiV1PartiesPartyIdBankAccountsPostErrors];
+
+export type CreateBankAccountApiV1PartiesPartyIdBankAccountsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: BankAccountResponse;
+};
+
+export type CreateBankAccountApiV1PartiesPartyIdBankAccountsPostResponse = CreateBankAccountApiV1PartiesPartyIdBankAccountsPostResponses[keyof CreateBankAccountApiV1PartiesPartyIdBankAccountsPostResponses];
+
+export type ListEmailDomainsApiV1PartiesPartyIdEmailDomainsGetData = {
+    body?: never;
+    path: {
+        /**
+         * Party Id
+         */
+        party_id: string;
+    };
+    query?: never;
+    url: '/api/v1/parties/{party_id}/email-domains';
+};
+
+export type ListEmailDomainsApiV1PartiesPartyIdEmailDomainsGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ListEmailDomainsApiV1PartiesPartyIdEmailDomainsGetError = ListEmailDomainsApiV1PartiesPartyIdEmailDomainsGetErrors[keyof ListEmailDomainsApiV1PartiesPartyIdEmailDomainsGetErrors];
+
+export type ListEmailDomainsApiV1PartiesPartyIdEmailDomainsGetResponses = {
+    /**
+     * Response List Email Domains Api V1 Parties  Party Id  Email Domains Get
+     *
+     * Successful Response
+     */
+    200: Array<EmailDomainResponse>;
+};
+
+export type ListEmailDomainsApiV1PartiesPartyIdEmailDomainsGetResponse = ListEmailDomainsApiV1PartiesPartyIdEmailDomainsGetResponses[keyof ListEmailDomainsApiV1PartiesPartyIdEmailDomainsGetResponses];
+
+export type CreateEmailDomainApiV1PartiesPartyIdEmailDomainsPostData = {
+    body: EmailDomainCreate;
+    path: {
+        /**
+         * Party Id
+         */
+        party_id: string;
+    };
+    query?: never;
+    url: '/api/v1/parties/{party_id}/email-domains';
+};
+
+export type CreateEmailDomainApiV1PartiesPartyIdEmailDomainsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateEmailDomainApiV1PartiesPartyIdEmailDomainsPostError = CreateEmailDomainApiV1PartiesPartyIdEmailDomainsPostErrors[keyof CreateEmailDomainApiV1PartiesPartyIdEmailDomainsPostErrors];
+
+export type CreateEmailDomainApiV1PartiesPartyIdEmailDomainsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: EmailDomainResponse;
+};
+
+export type CreateEmailDomainApiV1PartiesPartyIdEmailDomainsPostResponse = CreateEmailDomainApiV1PartiesPartyIdEmailDomainsPostResponses[keyof CreateEmailDomainApiV1PartiesPartyIdEmailDomainsPostResponses];
+
+export type ListChargeOverridesApiV1PartiesPartyIdChargeOverridesGetData = {
+    body?: never;
+    path: {
+        /**
+         * Party Id
+         */
+        party_id: string;
+    };
+    query?: never;
+    url: '/api/v1/parties/{party_id}/charge-overrides';
+};
+
+export type ListChargeOverridesApiV1PartiesPartyIdChargeOverridesGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ListChargeOverridesApiV1PartiesPartyIdChargeOverridesGetError = ListChargeOverridesApiV1PartiesPartyIdChargeOverridesGetErrors[keyof ListChargeOverridesApiV1PartiesPartyIdChargeOverridesGetErrors];
+
+export type ListChargeOverridesApiV1PartiesPartyIdChargeOverridesGetResponses = {
+    /**
+     * Response List Charge Overrides Api V1 Parties  Party Id  Charge Overrides Get
+     *
+     * Successful Response
+     */
+    200: Array<ChargeOverrideResponse>;
+};
+
+export type ListChargeOverridesApiV1PartiesPartyIdChargeOverridesGetResponse = ListChargeOverridesApiV1PartiesPartyIdChargeOverridesGetResponses[keyof ListChargeOverridesApiV1PartiesPartyIdChargeOverridesGetResponses];
+
+export type CreateChargeOverrideApiV1PartiesPartyIdChargeOverridesPostData = {
+    body: ChargeOverrideCreate;
+    path: {
+        /**
+         * Party Id
+         */
+        party_id: string;
+    };
+    query?: never;
+    url: '/api/v1/parties/{party_id}/charge-overrides';
+};
+
+export type CreateChargeOverrideApiV1PartiesPartyIdChargeOverridesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateChargeOverrideApiV1PartiesPartyIdChargeOverridesPostError = CreateChargeOverrideApiV1PartiesPartyIdChargeOverridesPostErrors[keyof CreateChargeOverrideApiV1PartiesPartyIdChargeOverridesPostErrors];
+
+export type CreateChargeOverrideApiV1PartiesPartyIdChargeOverridesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ChargeOverrideResponse;
+};
+
+export type CreateChargeOverrideApiV1PartiesPartyIdChargeOverridesPostResponse = CreateChargeOverrideApiV1PartiesPartyIdChargeOverridesPostResponses[keyof CreateChargeOverrideApiV1PartiesPartyIdChargeOverridesPostResponses];
+
+export type GetCarrierProfileApiV1PartiesPartyIdCarrierProfileGetData = {
+    body?: never;
+    path: {
+        /**
+         * Party Id
+         */
+        party_id: string;
+    };
+    query?: never;
+    url: '/api/v1/parties/{party_id}/carrier-profile';
+};
+
+export type GetCarrierProfileApiV1PartiesPartyIdCarrierProfileGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type GetCarrierProfileApiV1PartiesPartyIdCarrierProfileGetError = GetCarrierProfileApiV1PartiesPartyIdCarrierProfileGetErrors[keyof GetCarrierProfileApiV1PartiesPartyIdCarrierProfileGetErrors];
+
+export type GetCarrierProfileApiV1PartiesPartyIdCarrierProfileGetResponses = {
+    /**
+     * Response Get Carrier Profile Api V1 Parties  Party Id  Carrier Profile Get
+     *
+     * Successful Response
+     */
+    200: CarrierProfileResponse | null;
+};
+
+export type GetCarrierProfileApiV1PartiesPartyIdCarrierProfileGetResponse = GetCarrierProfileApiV1PartiesPartyIdCarrierProfileGetResponses[keyof GetCarrierProfileApiV1PartiesPartyIdCarrierProfileGetResponses];
+
+export type UpsertCarrierProfileApiV1PartiesPartyIdCarrierProfilePutData = {
+    body: CarrierProfileUpsert;
+    path: {
+        /**
+         * Party Id
+         */
+        party_id: string;
+    };
+    query?: never;
+    url: '/api/v1/parties/{party_id}/carrier-profile';
+};
+
+export type UpsertCarrierProfileApiV1PartiesPartyIdCarrierProfilePutErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type UpsertCarrierProfileApiV1PartiesPartyIdCarrierProfilePutError = UpsertCarrierProfileApiV1PartiesPartyIdCarrierProfilePutErrors[keyof UpsertCarrierProfileApiV1PartiesPartyIdCarrierProfilePutErrors];
+
+export type UpsertCarrierProfileApiV1PartiesPartyIdCarrierProfilePutResponses = {
+    /**
+     * Successful Response
+     */
+    200: CarrierProfileResponse;
+};
+
+export type UpsertCarrierProfileApiV1PartiesPartyIdCarrierProfilePutResponse = UpsertCarrierProfileApiV1PartiesPartyIdCarrierProfilePutResponses[keyof UpsertCarrierProfileApiV1PartiesPartyIdCarrierProfilePutResponses];
 
 export type ListPortsApiV1PortsGetData = {
     body?: never;

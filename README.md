@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **4.2** M-05 `terminal` + WPI (zarchiwizowany)
-- **Etap:** Agent — delta 5.0 zaakceptowana; kod tylko w nowej rozmowie `/plaster`.
-- **Następny:** **5.0** M-10 `party` (`docs/deltas/open/5.0-party.md`). Nie Q3.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
+- **Ostatni plaster:** **5.0** M-10 `party` (zarchiwizowany)
+- **Etap:** Plan
+- **Następny:** **Q3** pogłębienie żywego M-21 `quotation` o port + `party_id` (`docs/spec/quotation.md`). Nie Q4.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

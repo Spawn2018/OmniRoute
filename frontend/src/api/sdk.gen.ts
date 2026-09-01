@@ -2,7 +2,7 @@
 
 import type { Client, ClientMeta, Options as Options2, RequestResult, TDataShape } from './client';
 import { client } from './client.gen';
-import type { AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostData, AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostErrors, AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostResponses, AddZoneMemberApiV1LocationsZoneIdMembersPostData, AddZoneMemberApiV1LocationsZoneIdMembersPostErrors, AddZoneMemberApiV1LocationsZoneIdMembersPostResponses, CreateChargeApiV1ChargesPostData, CreateChargeApiV1ChargesPostErrors, CreateChargeApiV1ChargesPostResponses, CreateChargeCodeApiV1ChargeCodesPostData, CreateChargeCodeApiV1ChargeCodesPostErrors, CreateChargeCodeApiV1ChargeCodesPostResponses, CreateExtractionDraftApiV1ExtractionsPostData, CreateExtractionDraftApiV1ExtractionsPostErrors, CreateExtractionDraftApiV1ExtractionsPostResponses, CreatePortApiV1PortsPostData, CreatePortApiV1PortsPostErrors, CreatePortApiV1PortsPostResponses, CreateQuotationApiV1QuotationsPostData, CreateQuotationApiV1QuotationsPostErrors, CreateQuotationApiV1QuotationsPostResponses, CreateRateLineApiV1RateLinesPostData, CreateRateLineApiV1RateLinesPostErrors, CreateRateLineApiV1RateLinesPostResponses, CreateSessionTokenApiV1SessionTokenPostData, CreateSessionTokenApiV1SessionTokenPostErrors, CreateSessionTokenApiV1SessionTokenPostResponses, CreateTableViewApiV1TenancyTableViewsPostData, CreateTableViewApiV1TenancyTableViewsPostErrors, CreateTableViewApiV1TenancyTableViewsPostResponses, CreateTerminalApiV1TerminalsPostData, CreateTerminalApiV1TerminalsPostErrors, CreateTerminalApiV1TerminalsPostResponses, CreateZoneApiV1LocationsPostData, CreateZoneApiV1LocationsPostErrors, CreateZoneApiV1LocationsPostResponses, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteData, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteErrors, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteResponses, HealthHealthGetData, HealthHealthGetResponses, ListChargeCodesApiV1ChargeCodesGetData, ListChargeCodesApiV1ChargeCodesGetResponses, ListChargesApiV1ChargesGetData, ListChargesApiV1ChargesGetResponses, ListExtractionDraftsApiV1ExtractionsGetData, ListExtractionDraftsApiV1ExtractionsGetErrors, ListExtractionDraftsApiV1ExtractionsGetResponses, ListLocationsApiV1LocationsGetData, ListLocationsApiV1LocationsGetErrors, ListLocationsApiV1LocationsGetResponses, ListOrganizationSettingsApiV1OrganizationSettingsGetData, ListOrganizationSettingsApiV1OrganizationSettingsGetResponses, ListPortsApiV1PortsGetData, ListPortsApiV1PortsGetErrors, ListPortsApiV1PortsGetResponses, ListQuotationsApiV1QuotationsGetData, ListQuotationsApiV1QuotationsGetResponses, ListRateLinesApiV1RateLinesGetData, ListRateLinesApiV1RateLinesGetResponses, ListTableViewsApiV1TenancyTableViewsGetData, ListTableViewsApiV1TenancyTableViewsGetErrors, ListTableViewsApiV1TenancyTableViewsGetResponses, ListTerminalsApiV1TerminalsGetData, ListTerminalsApiV1TerminalsGetErrors, ListTerminalsApiV1TerminalsGetResponses, ListUsersApiV1TenancyUsersGetData, ListUsersApiV1TenancyUsersGetResponses, ListZoneMembersApiV1LocationsZoneIdMembersGetData, ListZoneMembersApiV1LocationsZoneIdMembersGetErrors, ListZoneMembersApiV1LocationsZoneIdMembersGetResponses, ReadSessionApiV1SessionMeGetData, ReadSessionApiV1SessionMeGetResponses, ReadyReadyGetData, ReadyReadyGetResponses, RefreshSessionApiV1SessionRefreshPostData, RefreshSessionApiV1SessionRefreshPostErrors, RefreshSessionApiV1SessionRefreshPostResponses, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostData, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostErrors, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostResponses, ResolveChargeCodeApiV1ChargeCodesResolveGetData, ResolveChargeCodeApiV1ChargeCodesResolveGetErrors, ResolveChargeCodeApiV1ChargeCodesResolveGetResponses, ResolvePortApiV1PortsResolveGetData, ResolvePortApiV1PortsResolveGetErrors, ResolvePortApiV1PortsResolveGetResponses, ResolvePostalCodeApiV1LocationsResolveGetData, ResolvePostalCodeApiV1LocationsResolveGetErrors, ResolvePostalCodeApiV1LocationsResolveGetResponses, ResolveTerminalApiV1TerminalsResolveGetData, ResolveTerminalApiV1TerminalsResolveGetErrors, ResolveTerminalApiV1TerminalsResolveGetResponses, SupersedeRateLineApiV1RateLinesRateLineIdSupersedePostData, SupersedeRateLineApiV1RateLinesRateLineIdSupersedePostErrors, SupersedeRateLineApiV1RateLinesRateLineIdSupersedePostResponses, UpdateTableViewApiV1TenancyTableViewsViewIdPatchData, UpdateTableViewApiV1TenancyTableViewsViewIdPatchErrors, UpdateTableViewApiV1TenancyTableViewsViewIdPatchResponses, UpsertOrganizationSettingApiV1OrganizationSettingsPutData, UpsertOrganizationSettingApiV1OrganizationSettingsPutErrors, UpsertOrganizationSettingApiV1OrganizationSettingsPutResponses } from './types.gen';
+import type { AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostData, AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostErrors, AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostResponses, AddZoneMemberApiV1LocationsZoneIdMembersPostData, AddZoneMemberApiV1LocationsZoneIdMembersPostErrors, AddZoneMemberApiV1LocationsZoneIdMembersPostResponses, CreateBankAccountApiV1PartiesPartyIdBankAccountsPostData, CreateBankAccountApiV1PartiesPartyIdBankAccountsPostErrors, CreateBankAccountApiV1PartiesPartyIdBankAccountsPostResponses, CreateChargeApiV1ChargesPostData, CreateChargeApiV1ChargesPostErrors, CreateChargeApiV1ChargesPostResponses, CreateChargeCodeApiV1ChargeCodesPostData, CreateChargeCodeApiV1ChargeCodesPostErrors, CreateChargeCodeApiV1ChargeCodesPostResponses, CreateChargeOverrideApiV1PartiesPartyIdChargeOverridesPostData, CreateChargeOverrideApiV1PartiesPartyIdChargeOverridesPostErrors, CreateChargeOverrideApiV1PartiesPartyIdChargeOverridesPostResponses, CreateContactApiV1PartiesPartyIdContactsPostData, CreateContactApiV1PartiesPartyIdContactsPostErrors, CreateContactApiV1PartiesPartyIdContactsPostResponses, CreateEmailDomainApiV1PartiesPartyIdEmailDomainsPostData, CreateEmailDomainApiV1PartiesPartyIdEmailDomainsPostErrors, CreateEmailDomainApiV1PartiesPartyIdEmailDomainsPostResponses, CreateExtractionDraftApiV1ExtractionsPostData, CreateExtractionDraftApiV1ExtractionsPostErrors, CreateExtractionDraftApiV1ExtractionsPostResponses, CreatePartyApiV1PartiesPostData, CreatePartyApiV1PartiesPostErrors, CreatePartyApiV1PartiesPostResponses, CreatePortApiV1PortsPostData, CreatePortApiV1PortsPostErrors, CreatePortApiV1PortsPostResponses, CreateQuotationApiV1QuotationsPostData, CreateQuotationApiV1QuotationsPostErrors, CreateQuotationApiV1QuotationsPostResponses, CreateRateLineApiV1RateLinesPostData, CreateRateLineApiV1RateLinesPostErrors, CreateRateLineApiV1RateLinesPostResponses, CreateSessionTokenApiV1SessionTokenPostData, CreateSessionTokenApiV1SessionTokenPostErrors, CreateSessionTokenApiV1SessionTokenPostResponses, CreateTableViewApiV1TenancyTableViewsPostData, CreateTableViewApiV1TenancyTableViewsPostErrors, CreateTableViewApiV1TenancyTableViewsPostResponses, CreateTerminalApiV1TerminalsPostData, CreateTerminalApiV1TerminalsPostErrors, CreateTerminalApiV1TerminalsPostResponses, CreateZoneApiV1LocationsPostData, CreateZoneApiV1LocationsPostErrors, CreateZoneApiV1LocationsPostResponses, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteData, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteErrors, DeleteTableViewApiV1TenancyTableViewsViewIdDeleteResponses, GetCarrierProfileApiV1PartiesPartyIdCarrierProfileGetData, GetCarrierProfileApiV1PartiesPartyIdCarrierProfileGetErrors, GetCarrierProfileApiV1PartiesPartyIdCarrierProfileGetResponses, HealthHealthGetData, HealthHealthGetResponses, ListBankAccountsApiV1PartiesPartyIdBankAccountsGetData, ListBankAccountsApiV1PartiesPartyIdBankAccountsGetErrors, ListBankAccountsApiV1PartiesPartyIdBankAccountsGetResponses, ListChargeCodesApiV1ChargeCodesGetData, ListChargeCodesApiV1ChargeCodesGetResponses, ListChargeOverridesApiV1PartiesPartyIdChargeOverridesGetData, ListChargeOverridesApiV1PartiesPartyIdChargeOverridesGetErrors, ListChargeOverridesApiV1PartiesPartyIdChargeOverridesGetResponses, ListChargesApiV1ChargesGetData, ListChargesApiV1ChargesGetResponses, ListContactsApiV1PartiesPartyIdContactsGetData, ListContactsApiV1PartiesPartyIdContactsGetErrors, ListContactsApiV1PartiesPartyIdContactsGetResponses, ListEmailDomainsApiV1PartiesPartyIdEmailDomainsGetData, ListEmailDomainsApiV1PartiesPartyIdEmailDomainsGetErrors, ListEmailDomainsApiV1PartiesPartyIdEmailDomainsGetResponses, ListExtractionDraftsApiV1ExtractionsGetData, ListExtractionDraftsApiV1ExtractionsGetErrors, ListExtractionDraftsApiV1ExtractionsGetResponses, ListLocationsApiV1LocationsGetData, ListLocationsApiV1LocationsGetErrors, ListLocationsApiV1LocationsGetResponses, ListOrganizationSettingsApiV1OrganizationSettingsGetData, ListOrganizationSettingsApiV1OrganizationSettingsGetResponses, ListPartiesApiV1PartiesGetData, ListPartiesApiV1PartiesGetResponses, ListPortsApiV1PortsGetData, ListPortsApiV1PortsGetErrors, ListPortsApiV1PortsGetResponses, ListQuotationsApiV1QuotationsGetData, ListQuotationsApiV1QuotationsGetResponses, ListRateLinesApiV1RateLinesGetData, ListRateLinesApiV1RateLinesGetResponses, ListTableViewsApiV1TenancyTableViewsGetData, ListTableViewsApiV1TenancyTableViewsGetErrors, ListTableViewsApiV1TenancyTableViewsGetResponses, ListTerminalsApiV1TerminalsGetData, ListTerminalsApiV1TerminalsGetErrors, ListTerminalsApiV1TerminalsGetResponses, ListUsersApiV1TenancyUsersGetData, ListUsersApiV1TenancyUsersGetResponses, ListZoneMembersApiV1LocationsZoneIdMembersGetData, ListZoneMembersApiV1LocationsZoneIdMembersGetErrors, ListZoneMembersApiV1LocationsZoneIdMembersGetResponses, LookupIbanApiV1PartiesIbanLookupPostData, LookupIbanApiV1PartiesIbanLookupPostErrors, LookupIbanApiV1PartiesIbanLookupPostResponses, LookupPartyApiV1PartiesLookupPostData, LookupPartyApiV1PartiesLookupPostErrors, LookupPartyApiV1PartiesLookupPostResponses, ReadSessionApiV1SessionMeGetData, ReadSessionApiV1SessionMeGetResponses, ReadyReadyGetData, ReadyReadyGetResponses, RefreshSessionApiV1SessionRefreshPostData, RefreshSessionApiV1SessionRefreshPostErrors, RefreshSessionApiV1SessionRefreshPostResponses, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostData, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostErrors, RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostResponses, ResolveChargeCodeApiV1ChargeCodesResolveGetData, ResolveChargeCodeApiV1ChargeCodesResolveGetErrors, ResolveChargeCodeApiV1ChargeCodesResolveGetResponses, ResolvePartyApiV1PartiesResolveGetData, ResolvePartyApiV1PartiesResolveGetErrors, ResolvePartyApiV1PartiesResolveGetResponses, ResolvePortApiV1PortsResolveGetData, ResolvePortApiV1PortsResolveGetErrors, ResolvePortApiV1PortsResolveGetResponses, ResolvePostalCodeApiV1LocationsResolveGetData, ResolvePostalCodeApiV1LocationsResolveGetErrors, ResolvePostalCodeApiV1LocationsResolveGetResponses, ResolveTerminalApiV1TerminalsResolveGetData, ResolveTerminalApiV1TerminalsResolveGetErrors, ResolveTerminalApiV1TerminalsResolveGetResponses, SupersedeRateLineApiV1RateLinesRateLineIdSupersedePostData, SupersedeRateLineApiV1RateLinesRateLineIdSupersedePostErrors, SupersedeRateLineApiV1RateLinesRateLineIdSupersedePostResponses, UpdateTableViewApiV1TenancyTableViewsViewIdPatchData, UpdateTableViewApiV1TenancyTableViewsViewIdPatchErrors, UpdateTableViewApiV1TenancyTableViewsViewIdPatchResponses, UpsertCarrierProfileApiV1PartiesPartyIdCarrierProfilePutData, UpsertCarrierProfileApiV1PartiesPartyIdCarrierProfilePutErrors, UpsertCarrierProfileApiV1PartiesPartyIdCarrierProfilePutResponses, UpsertOrganizationSettingApiV1OrganizationSettingsPutData, UpsertOrganizationSettingApiV1OrganizationSettingsPutErrors, UpsertOrganizationSettingApiV1OrganizationSettingsPutResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean, TResponse = unknown> = Options2<TData, ThrowOnError, TResponse> & {
     /**
@@ -269,6 +269,173 @@ export const listOrganizationSettingsApiV1OrganizationSettingsGet = <ThrowOnErro
 export const upsertOrganizationSettingApiV1OrganizationSettingsPut = <ThrowOnError extends boolean = false>(options: Options<UpsertOrganizationSettingApiV1OrganizationSettingsPutData, ThrowOnError>): RequestResult<UpsertOrganizationSettingApiV1OrganizationSettingsPutResponses, UpsertOrganizationSettingApiV1OrganizationSettingsPutErrors, ThrowOnError> => (options.client ?? client).put<UpsertOrganizationSettingApiV1OrganizationSettingsPutResponses, UpsertOrganizationSettingApiV1OrganizationSettingsPutErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/api/v1/organization-settings',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * List Parties
+ */
+export const listPartiesApiV1PartiesGet = <ThrowOnError extends boolean = false>(options?: Options<ListPartiesApiV1PartiesGetData, ThrowOnError>): RequestResult<ListPartiesApiV1PartiesGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<ListPartiesApiV1PartiesGetResponses, unknown, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/parties',
+    ...options
+});
+
+/**
+ * Create Party
+ */
+export const createPartyApiV1PartiesPost = <ThrowOnError extends boolean = false>(options: Options<CreatePartyApiV1PartiesPostData, ThrowOnError>): RequestResult<CreatePartyApiV1PartiesPostResponses, CreatePartyApiV1PartiesPostErrors, ThrowOnError> => (options.client ?? client).post<CreatePartyApiV1PartiesPostResponses, CreatePartyApiV1PartiesPostErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/parties',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Resolve Party
+ */
+export const resolvePartyApiV1PartiesResolveGet = <ThrowOnError extends boolean = false>(options: Options<ResolvePartyApiV1PartiesResolveGetData, ThrowOnError>): RequestResult<ResolvePartyApiV1PartiesResolveGetResponses, ResolvePartyApiV1PartiesResolveGetErrors, ThrowOnError> => (options.client ?? client).get<ResolvePartyApiV1PartiesResolveGetResponses, ResolvePartyApiV1PartiesResolveGetErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/parties/resolve',
+    ...options
+});
+
+/**
+ * Lookup Party
+ */
+export const lookupPartyApiV1PartiesLookupPost = <ThrowOnError extends boolean = false>(options: Options<LookupPartyApiV1PartiesLookupPostData, ThrowOnError>): RequestResult<LookupPartyApiV1PartiesLookupPostResponses, LookupPartyApiV1PartiesLookupPostErrors, ThrowOnError> => (options.client ?? client).post<LookupPartyApiV1PartiesLookupPostResponses, LookupPartyApiV1PartiesLookupPostErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/parties/lookup',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Lookup Iban
+ */
+export const lookupIbanApiV1PartiesIbanLookupPost = <ThrowOnError extends boolean = false>(options: Options<LookupIbanApiV1PartiesIbanLookupPostData, ThrowOnError>): RequestResult<LookupIbanApiV1PartiesIbanLookupPostResponses, LookupIbanApiV1PartiesIbanLookupPostErrors, ThrowOnError> => (options.client ?? client).post<LookupIbanApiV1PartiesIbanLookupPostResponses, LookupIbanApiV1PartiesIbanLookupPostErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/parties/iban-lookup',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * List Contacts
+ */
+export const listContactsApiV1PartiesPartyIdContactsGet = <ThrowOnError extends boolean = false>(options: Options<ListContactsApiV1PartiesPartyIdContactsGetData, ThrowOnError>): RequestResult<ListContactsApiV1PartiesPartyIdContactsGetResponses, ListContactsApiV1PartiesPartyIdContactsGetErrors, ThrowOnError> => (options.client ?? client).get<ListContactsApiV1PartiesPartyIdContactsGetResponses, ListContactsApiV1PartiesPartyIdContactsGetErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/parties/{party_id}/contacts',
+    ...options
+});
+
+/**
+ * Create Contact
+ */
+export const createContactApiV1PartiesPartyIdContactsPost = <ThrowOnError extends boolean = false>(options: Options<CreateContactApiV1PartiesPartyIdContactsPostData, ThrowOnError>): RequestResult<CreateContactApiV1PartiesPartyIdContactsPostResponses, CreateContactApiV1PartiesPartyIdContactsPostErrors, ThrowOnError> => (options.client ?? client).post<CreateContactApiV1PartiesPartyIdContactsPostResponses, CreateContactApiV1PartiesPartyIdContactsPostErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/parties/{party_id}/contacts',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * List Bank Accounts
+ */
+export const listBankAccountsApiV1PartiesPartyIdBankAccountsGet = <ThrowOnError extends boolean = false>(options: Options<ListBankAccountsApiV1PartiesPartyIdBankAccountsGetData, ThrowOnError>): RequestResult<ListBankAccountsApiV1PartiesPartyIdBankAccountsGetResponses, ListBankAccountsApiV1PartiesPartyIdBankAccountsGetErrors, ThrowOnError> => (options.client ?? client).get<ListBankAccountsApiV1PartiesPartyIdBankAccountsGetResponses, ListBankAccountsApiV1PartiesPartyIdBankAccountsGetErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/parties/{party_id}/bank-accounts',
+    ...options
+});
+
+/**
+ * Create Bank Account
+ */
+export const createBankAccountApiV1PartiesPartyIdBankAccountsPost = <ThrowOnError extends boolean = false>(options: Options<CreateBankAccountApiV1PartiesPartyIdBankAccountsPostData, ThrowOnError>): RequestResult<CreateBankAccountApiV1PartiesPartyIdBankAccountsPostResponses, CreateBankAccountApiV1PartiesPartyIdBankAccountsPostErrors, ThrowOnError> => (options.client ?? client).post<CreateBankAccountApiV1PartiesPartyIdBankAccountsPostResponses, CreateBankAccountApiV1PartiesPartyIdBankAccountsPostErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/parties/{party_id}/bank-accounts',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * List Email Domains
+ */
+export const listEmailDomainsApiV1PartiesPartyIdEmailDomainsGet = <ThrowOnError extends boolean = false>(options: Options<ListEmailDomainsApiV1PartiesPartyIdEmailDomainsGetData, ThrowOnError>): RequestResult<ListEmailDomainsApiV1PartiesPartyIdEmailDomainsGetResponses, ListEmailDomainsApiV1PartiesPartyIdEmailDomainsGetErrors, ThrowOnError> => (options.client ?? client).get<ListEmailDomainsApiV1PartiesPartyIdEmailDomainsGetResponses, ListEmailDomainsApiV1PartiesPartyIdEmailDomainsGetErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/parties/{party_id}/email-domains',
+    ...options
+});
+
+/**
+ * Create Email Domain
+ */
+export const createEmailDomainApiV1PartiesPartyIdEmailDomainsPost = <ThrowOnError extends boolean = false>(options: Options<CreateEmailDomainApiV1PartiesPartyIdEmailDomainsPostData, ThrowOnError>): RequestResult<CreateEmailDomainApiV1PartiesPartyIdEmailDomainsPostResponses, CreateEmailDomainApiV1PartiesPartyIdEmailDomainsPostErrors, ThrowOnError> => (options.client ?? client).post<CreateEmailDomainApiV1PartiesPartyIdEmailDomainsPostResponses, CreateEmailDomainApiV1PartiesPartyIdEmailDomainsPostErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/parties/{party_id}/email-domains',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * List Charge Overrides
+ */
+export const listChargeOverridesApiV1PartiesPartyIdChargeOverridesGet = <ThrowOnError extends boolean = false>(options: Options<ListChargeOverridesApiV1PartiesPartyIdChargeOverridesGetData, ThrowOnError>): RequestResult<ListChargeOverridesApiV1PartiesPartyIdChargeOverridesGetResponses, ListChargeOverridesApiV1PartiesPartyIdChargeOverridesGetErrors, ThrowOnError> => (options.client ?? client).get<ListChargeOverridesApiV1PartiesPartyIdChargeOverridesGetResponses, ListChargeOverridesApiV1PartiesPartyIdChargeOverridesGetErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/parties/{party_id}/charge-overrides',
+    ...options
+});
+
+/**
+ * Create Charge Override
+ */
+export const createChargeOverrideApiV1PartiesPartyIdChargeOverridesPost = <ThrowOnError extends boolean = false>(options: Options<CreateChargeOverrideApiV1PartiesPartyIdChargeOverridesPostData, ThrowOnError>): RequestResult<CreateChargeOverrideApiV1PartiesPartyIdChargeOverridesPostResponses, CreateChargeOverrideApiV1PartiesPartyIdChargeOverridesPostErrors, ThrowOnError> => (options.client ?? client).post<CreateChargeOverrideApiV1PartiesPartyIdChargeOverridesPostResponses, CreateChargeOverrideApiV1PartiesPartyIdChargeOverridesPostErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/parties/{party_id}/charge-overrides',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Get Carrier Profile
+ */
+export const getCarrierProfileApiV1PartiesPartyIdCarrierProfileGet = <ThrowOnError extends boolean = false>(options: Options<GetCarrierProfileApiV1PartiesPartyIdCarrierProfileGetData, ThrowOnError>): RequestResult<GetCarrierProfileApiV1PartiesPartyIdCarrierProfileGetResponses, GetCarrierProfileApiV1PartiesPartyIdCarrierProfileGetErrors, ThrowOnError> => (options.client ?? client).get<GetCarrierProfileApiV1PartiesPartyIdCarrierProfileGetResponses, GetCarrierProfileApiV1PartiesPartyIdCarrierProfileGetErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/parties/{party_id}/carrier-profile',
+    ...options
+});
+
+/**
+ * Upsert Carrier Profile
+ */
+export const upsertCarrierProfileApiV1PartiesPartyIdCarrierProfilePut = <ThrowOnError extends boolean = false>(options: Options<UpsertCarrierProfileApiV1PartiesPartyIdCarrierProfilePutData, ThrowOnError>): RequestResult<UpsertCarrierProfileApiV1PartiesPartyIdCarrierProfilePutResponses, UpsertCarrierProfileApiV1PartiesPartyIdCarrierProfilePutErrors, ThrowOnError> => (options.client ?? client).put<UpsertCarrierProfileApiV1PartiesPartyIdCarrierProfilePutResponses, UpsertCarrierProfileApiV1PartiesPartyIdCarrierProfilePutErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/v1/parties/{party_id}/carrier-profile',
     ...options,
     headers: {
         'Content-Type': 'application/json',

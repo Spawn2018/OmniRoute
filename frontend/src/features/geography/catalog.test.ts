@@ -82,6 +82,7 @@ describe("terminalCreateBody", () => {
       name: "BCT Gdynia",
       isps_code: "PLGDY-BCT",
       operator_name: null,
+      operator_party_id: null,
     })
   })
 })
