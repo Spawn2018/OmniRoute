@@ -8,6 +8,9 @@ Jeśli **Etap: Plan** albo brak zaakceptowanej delty dla tej pozycji kolejki:
 **stop.** Nie pisz kodu. Powiedz: przełącz Cursor na tryb **Plan** i uruchom `/plan-modul`.
 Kolejka: `docs/PLAN-REALIZACJA.md` § Kolejka realizacji.
 
+Jeśli zakres **powyżej trzech plików** (także hotfix / leftover **poza** kolejką Q) i nie ma jeszcze zaakceptowanego planu plików:
+**stop.** Napisz plan (krok 6), czekaj. Nie koduj „bo to nie jest Q”.
+
 Wykonaj w kolejności, zatrzymując się po każdym kroku po potwierdzenie:
 
 1. Wypisz w jednym zdaniu, co budujesz i czego NIE budujesz.

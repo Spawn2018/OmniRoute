@@ -13,7 +13,8 @@ Kolejność jest obowiązkowa. Nie przeskakuj etapów.
 - Sprawdź `docs/PLAN-REALIZACJA.md` § Gate dziś vs DoD (co jest stubem).
 - Uruchom `lowca-duplikatow`.
 - Jeśli `CURRENT.md` mówi **Etap: Plan** albo pozycja kolejki to nowa wydmuszka M-xx: **stop** — najpierw `/plan-modul` (tryb Plan w Cursorze), zero kodu.
-- Plan → akceptacja człowieka. Kolejka „co dalej” jest w `docs/PLAN-REALIZACJA.md`, nie w pamięci operatora.
+- **Plan przed kodem** przy >3 plikach — także poza kolejką. Czekaj na akceptację.
+- Kolejka „co dalej” jest w `docs/PLAN-REALIZACJA.md`, nie w pamięci operatora.
 - Po akceptacji, osobna tura: `/testy` (czerwone testy z delty, bez implementacji).
   Ten sam przebieg nie pisze testów i kodu.
 

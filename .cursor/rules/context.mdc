@@ -6,6 +6,7 @@ alwaysApply: true
 Przed zadaniem:
 1. Przeczytaj `docs/state/CURRENT.md` — zakres, moduł, ustalenia, **Etap (Plan vs plaster)**.
 2. Jeśli **Etap: Plan** albo brak spec: `/plan-modul`, zero kodu. Nie zgaduj następnego Q — jest w CURRENT i `docs/PLAN-REALIZACJA.md` § Kolejka.
+2b. Powyżej trzech plików (także zmiana **poza** kolejką Q): plan + akceptacja człowieka, zero kodu do zgody.
 3. Plaster: TYLKO ten plik ze `docs/spec/`, który wskazuje CURRENT.md.
 4. Schemat bazy — przez MCP Postgres, nie przez czytanie modeli.
 5. Struktura repo — `docs/ARCHITECTURE.md`, nie przeszukiwanie.

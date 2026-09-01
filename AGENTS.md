@@ -58,8 +58,8 @@ Wygrywają z każdą inną sugestią, także z twoją.
 
 - **Jeden pionowy plaster naraz**: migracja → model → repozytorium → serwis →
   endpoint → test → typ na froncie → komponent. Nie buduj modułu w jednym przebiegu.
-- **Wydmuszka / pozycja Q = najpierw tryb Plan** w Cursorze (`/plan-modul`), potem `/plaster`.
-  Kolejka: `docs/PLAN-REALIZACJA.md`. Nie pytaj „co chcesz”, jeśli CURRENT wskazuje Q.
+- **Wydmuszka / Q = `/plan-modul`**, potem `/plaster`. Nie pytaj „co chcesz”, gdy CURRENT ma Q.
+- **Plan przed kodem.** Powyżej trzech plików — także poza kolejką, hotfix, leftover UI — napisz plan, czekaj na akceptację. `/plaster` i tak stop po kroku 6.
 - **Test przed implementacją** dla każdej reguły biznesowej.
 - Nie dotykaj plików spoza zakresu. Zgłoś, jeśli to konieczne.
 - Po zakończeniu: pętla `docs/ops/post-plaster.md`, linia w `PROGRESS.md`, `CURRENT.md`, push.
