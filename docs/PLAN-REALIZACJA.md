@@ -3,7 +3,7 @@
 **Plan Cursor (pełny):** `.cursor/plans/omniroute-realizacja.plan.md`  
 **ADR:** [0001 Cursor factory](adr/0001-cursor-software-factory-weryfikacja.md) · [0002 Frontend 2026](adr/0002-frontend-platform-2026.md)  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
-**Stan:** B + C.1–C.5 + 0.11–0.15 leftover + **Exit Wave A (D0–0.23)** + **0.25 Money** + **1.0–1.3 charge** + U-* ID na origin + D minimal · następny **Auth0 I1** (nie startowane). **Exit Wave FE nie claim** (U-routes-breadth = standing, nie 70 UI / nie „powierzchnia 2026”).
+**Stan:** B + C.1–C.5 + 0.11–0.15 leftover + **Exit Wave A (D0–0.23)** + **0.25 Money** + **1.0–1.3 charge** + U-* ID na origin + D minimal · następny **0.24**. Auth0 I1/I2 **odroczone** (brak tenanta). **Exit Wave FE nie claim** (U-routes-breadth = standing, nie 70 UI / nie „powierzchnia 2026”).
 
 ```mermaid
 flowchart LR
@@ -130,7 +130,7 @@ Pełna lista z „dlaczego”: [docs/ops/docs-debt.md](ops/docs-debt.md)
 
 | Kolejność | Co | Nie mylić z |
 |---|---|---|
-| następny | Auth0 I1 BFF + PKCE + cookie | nie hasła+Auth0; nie start bez credentiali |
+| następny | 0.24 pip-audit / pin SHA / `/ready` / request-id | Auth0 I1/I2 odroczone (brak tenanta); 0.12/0.15 ≠ IdP |
 | U-routes-breadth DONE | standing + trasy 1.0–1.2 | nie 70 stubów; nie Exit Wave FE |
 | U-admin-ref DONE | pulpit jobów + gęsty sidebar/toolbar/⌘K | nie hello-dashboard |
 | U-pdf-spans DONE | PDF + spany HITL, lazy pdf.js | nie OCR; initial ~125 kB |

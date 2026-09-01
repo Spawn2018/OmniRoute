@@ -20,7 +20,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **0.21 T4 DONE:** `hello_token` default false; mint UUID tylko przy fladze
 - **0.22 T5 DONE:** JWT iss/aud/jti/ver; TTL 15 min
 - **0.23 S1 DONE:** JWT_SECRET z GitHub Encrypted Secrets; literał usunięty z gate.yml
-- **U-routes-breadth DONE:** standing (Charge 1.0–1.2 mają trasy). **Następny (kod):** Auth0 I1. Exit Wave FE **nie** claim — nie 70 UI, nie „powierzchnia 2026”
+- **U-routes-breadth DONE:** standing (Charge 1.0–1.2 mają trasy). **Następny (kod):** 0.24. Auth0 I1/I2 **odroczone** (brak tenanta). Exit Wave FE **nie** claim — nie 70 UI, nie „powierzchnia 2026”
 - **U-admin-ref DONE:** pulpit = joby operatora; sidebar/toolbar/⌘K.
 - **U-pdf-spans DONE:** viewer PDF + spany HITL; lazy pdf.js. Draft nie trzyma PDF (tylko input_text).
 - **U-size-limit-real DONE:** `just perf` = build + gzip initial JS < 250 kB; w `just gate`. k6/vulture/pip-audit nadal echo.
@@ -30,7 +30,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **U-art50 DONE:** label „propozycja AI” na recenzji HITL.
 - **1.3 DONE:** accept HITL + `rate_line` (kupno) w jednej transakcji HTTP; `ExtractionService` nie importuje rates.
 - **1.2 DONE:** `charge` buy+sell + `margin(buy, sell)` + `/charges`. Nie accept HITL
-- **1.3 leftover (dlaczego nie w tym plasterze):** isolation/integration = CI — lokalnie PG wisiał przy `pytest -m integration` (jak 0.16–1.2); `just api-types` nie regen — `rate_line_ids` w wrapperze nieczytane, gate = typecheck; brak MCP Postgres w sesji — nowej tabeli nie było; Wave FE U-* i Auth0 I1 nie startowane (CURRENT = I1)
+- **1.3 leftover (dlaczego nie w tym plasterze):** isolation/integration = CI — lokalnie PG wisiał przy `pytest -m integration` (jak 0.16–1.2); `just api-types` nie regen — `rate_line_ids` w wrapperze nieczytane, gate = typecheck; brak MCP Postgres w sesji — nowej tabeli nie było; Wave FE U-* DONE; Auth0 I1/I2 odroczone (brak tenanta)
 - **U-routes-breadth:** 1.3 = status + link `/rate-lines` na HITL. Nie Exit Wave FE (U-density…U-admin-ref)
 - **1.1 DONE:** `rate_line` immutable + `source_ref` + `/rate-lines`. Nie `charge` / marża
 - **1.0 DONE:** `charge_code` katalog + aliasy + RLS + `/charge-codes`. Nie `rate_line` / `charge`
@@ -42,7 +42,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **1.0 leftover (dlaczego nie w tym plasterze):** isolation/integration = CI — lokalnie PG wisiał (jak 0.16–0.18); `just api-types` nie regen — wrapper fetch, gate = typecheck
 - **1.0 leftover:** aliasy jako `TEXT[]` na wierszu, nie osobna tabela — wystarcza resolve; osobny wiersz aliasu gdy 1.1+ tego wymaga
 - **Leftover ≠ DONE:** wiersz w tym pliku / PLAN nie zamyka plastra i nie zastępuje `just gate`
-- **OAuth/OIDC:** Auth0 I1 = następny kod (BFF+PKCE+cookie). 0.12 JWT = hello HS256, nie IdP
+- **OAuth/OIDC:** Auth0 I1/I2 **odroczone** (brak tenanta; nie pytać aż będzie). Sesja = email+hasło+JWT (0.15 + 0.12). 0.12/0.15 **nie** są IdP. Zero kodu Auth0 / placeholder tenanta.
 - **0.11 DONE:** HTTP XOR 422 + vitest `extractionCreateBody`
 - **0.12 DONE:** JWT HS256 hello (`Authorization: Bearer`); identity z claims; OpenFGA nadal AuthZ
 - **0.13 DONE:** split-screen HITL (podgląd `input_text` | recenzja); nie PDF canvas

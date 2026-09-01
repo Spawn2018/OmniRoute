@@ -25,19 +25,19 @@ Po plasterze: docs/ops/post-plaster.md + push + nowa rozmowa.
 
 | Teraz (git) | Po zamknięciu WIP | Nie wolno |
 |---|---|---|
-| **Ostatni:** Exit Wave A (0.23 S1) | **Charge 0.25** / Auth0 I1 / Wave FE U-* | Start Charge∥FE∥Auth0 tylko po tym exicie |
-| WIP czysty po pushu 0.23 | max 3 agenty; pliki ∩ = ∅ | Dwa agenty na tych samych plikach |
+| **Ostatni:** U-routes-breadth + Charge 1.3 | **0.24** (potem leftover AI 2.1–2.2). Auth0 I1/I2 **odroczone** | Start I1/I2 bez tenanta Auth0 |
+| WIP czysty po pushu U-routes-breadth | max 3 agenty; pliki ∩ = ∅ | Dwa agenty na tych samych plikach |
 
 **Kolizja numeru:** WIP **0.15 hasła** ≠ kanon **0.15 T0**. Po zamknięciu hasła zostają 0.15 w PROGRESS; T0 zostaje **0.15 T0** w tym pliku.
 
-**OAuth** = Auth0 **I1 po Wave A**, nie skasowany leftover.
+**OAuth** = Auth0 I1/I2 **odroczone** (brak tenanta). Nie pytać aż user ma tenant. Sesja = email+hasło+JWT. 0.12/0.15 **nie** są IdP.
 
 ---
 
 ## Standing rules (na zawsze, też po powrocie do MODULES)
 
 1. `organization_id` + RLS + test izolacji. Runtime: rola `omniroute_app` **NOBYPASSRLS** (nie superuser).
-2. Auth produkcyjny = **Auth0 BFF + cookie httpOnly** (Code + PKCE). Hello HS256 = local/CI. Nie hasła jako produkt IdP.
+2. Auth produkcyjny **gdy będzie tenant** = Auth0 BFF + cookie httpOnly (Code + PKCE). **I1/I2 nie teraz** — brak tenanta; nie pytać aż user go ma. Sesja dziś = email+hasło+JWT (0.15 + 0.12). Hello HS256 = local/CI. 0.12/0.15 **nie** są IdP.
 3. Sekrety: **GitHub Encrypted Secrets** + `.env` w gitignore. **Zakaz Infisical.** JWT/AUTH0 nie w YAML.
 4. GitHub **Pro później**. Branch protection = procedura + hooki, nie required check UI.
 5. Kwoty: **Decimal / Numeric**, komponent `<Money/>`. LLM **nie liczy**.
@@ -109,12 +109,12 @@ Po plasterze: docs/ops/post-plaster.md + push + nowa rozmowa.
 | FE | U-size-limit-real | `just perf` / size-limit **failuje** CI | echo jako DoD |
 | FE | U-art50 | Label „propozycja AI” na draftach HITL | Art. 50 = PDF prawny zamiast UI |
 | FE | U-admin-ref | Checklist vs dense shadcn-admin | U0 adapter = Exit Wave FE |
-| Auth0 | **I1** | BFF + PKCE + cookie; org z `app_metadata`; first-login bez org = odmowa | hasła + Auth0; auto-create org |
-| Auth0 | I2 | RS256 JWKS; hello OFF staging/prod | nowy HS256 |
+| Auth0 | **I1** | **ODROCZONE** (brak tenanta). Gdy będzie: BFF + PKCE + cookie; org z `app_metadata`; first-login bez org = odmowa | start I1 bez tenanta; hasła + Auth0; auto-create org; hello OAuth |
+| Auth0 | I2 | **ODROCZONE**. Gdy będzie: RS256 JWKS; hello OFF staging/prod | start I2 bez tenanta; nowy HS256 |
 | AI leftover | 2.1–2.2 | Presidio **tylko** instructor stub; 8–12 syntetyk | 30 PDF klienta; Presidio-all |
 | Q4 | 2.0 | M-21 SQL **tylko** jeśli są stawki | k6 na pustej tabeli |
 
-Auth0: SPA Vite → BFF FastAPI → Auth0. Cookie HttpOnly; Secure; SameSite=Lax. OpenFGA = SoT ról (first-login = member; reviewer ręczny seed). Region EU jeśli plan pozwala. Organizations feature **nie** w I1.
+Auth0 I1/I2: **nie teraz**. Hasła + refresh zostają sesją. Nie pytać ponownie, dopóki user nie ma tenanta Auth0. Gdy będzie tenant: SPA Vite → BFF FastAPI → Auth0; cookie HttpOnly; Secure; SameSite=Lax; region EU / SCC jeśli plan pozwala; OpenFGA = SoT ról (first-login = member; reviewer ręczny seed). Organizations feature **nie** w I1. Zero kodu Auth0 / placeholder tenanta / „hello OAuth” do tego czasu.
 
 Wave FE startuje **dopiero po Exit Wave A** (fork równoległy z Charge/Auth0, **nie** zamiast D0/T0). **Exit Wave FE** = wszystkie wiersze FE powyżej **oraz** tabela DoD poniżej. U0–U2 (adapter, shell, tabela) zostają jako scaffold; **nie** zastępują U-*.
 
@@ -145,7 +145,7 @@ Debt-zero na plasterze FE, RLS nietknięte od strony UI (tenancy z BE). Charge p
 
 Temporal/Hatchet/outbox na zapas · Infisical · 70 pustych M-xx · k6 50k · OTel-sprint · `just perf` echo jako DoD · Presidio na każdym endpoincie · żywy OpenAI w gate · `can_*` = member · accept bez HITL · hasła+Auth0 w jednym plasterze · persony `.cursor/agents/` · dump Claude w kontekście · zmiana starych migracji · Next.js · pgvector „bo stos” · required checks na Free · twierdzenie że 0.12 = IdP · OCR-teatr zamiast viewer+spans · zamknięcie Wave FE na adapter OpenAPI + RTL · „powierzchnia 2026” przed Exit Wave FE · auto credit scoring `natural_person` / JDG · zdejmowanie HITL w D0.
 
-**Nie pytaj ponownie:** IdP, Infisical, PDF w zakresie, Temporal, Pro, dump, paleta, horyzont, eval PDF klienta, kolejność charge vs leftover AI, kompromis na Exit Wave FE, „adapter wystarczy na powierzchnię 2026”.
+**Nie pytaj ponownie:** Auth0 I1/I2 (aż user ma tenant), IdP, Infisical, PDF w zakresie, Temporal, Pro, dump, paleta, horyzont, eval PDF klienta, kolejność charge vs leftover AI, kompromis na Exit Wave FE, „adapter wystarczy na powierzchnię 2026”, „0.12/0.15 = IdP”.
 
 ---
 

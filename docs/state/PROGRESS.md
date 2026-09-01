@@ -57,4 +57,6 @@
 | 2026-09-01 | U-pdf-spans | M-20 UI | PDF viewer + highlight spanów HITL; lazy pdf.js; bez OCR |
 | 2026-09-01 | U-admin-ref | UI | gęsty admin: sidebar, toolbar, ⌘K; pulpit = joby, nie hello-dashboard |
 | 2026-09-01 | U-routes-breadth | UI/program | standing: Charge 1.0–1.2 mają trasy; nowe BC = UI w tym samym plasterze; nie 70 stubów |
-| — | leftover | Auth0 | **Następny:** Auth0 I1 (nie startowane). Exit Wave FE **nie** claim. U-* mają SHA. |
+| 2026-09-01 | docs/OS | program | Auth0 I1/I2 **odroczone** (brak tenanta). Sesja = email+hasło+JWT. Następny kod = 0.24. |
+| — | leftover | Auth0 | I1/I2 **odroczone** aż będzie tenant. Nie pytać. 0.12/0.15 ≠ IdP. |
+| — | leftover | Charge | **Następny:** 0.24 pip-audit / pin SHA / `/ready` / request-id (echo). Potem AI 2.1–2.2. |
