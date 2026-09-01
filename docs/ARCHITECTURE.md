@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **6.0** M-23 `nbp_rate` (zarchiwizowany). **Etap:** Plan. **Następny:** Q6 Plan (`/plan-modul`) — towary niebezpieczne (archiwum M-08; **nie** nadpisuj żywego M-08 `charge`). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **6.0** M-23 `nbp_rate` (zarchiwizowany). **Etap:** Plaster. **Następny:** **7.0** M-52 `dangerous_good` ([delta](../deltas/open/7.0-dangerous-good.md)). Nie Fala 2. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

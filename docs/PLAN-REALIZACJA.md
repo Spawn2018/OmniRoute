@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** Q6 Plan (`/plan-modul`) — towary niebezpieczne (archiwum M-08; **nie** nadpisuj żywego M-08 `charge`).
+**Następny (zablokowany):** **7.0** M-52 `dangerous_good` ([delta](../deltas/open/7.0-dangerous-good.md)). Nie Fala 2.
 <!-- os-status:end -->
 
 ```mermaid
@@ -296,7 +296,7 @@ Po zamknięciu plastra `CURRENT.md` = **następna pozycja Q**. Nie pytaj operato
 |---|---|---|
 | M-06 słownik opłat | **M-06** `charge_code` | fundament; aliasy na wierszu, bez pgvector |
 | M-07 waluty i czas | **kolizja** — żywe **M-07** = `rate_line` | Q5 żywy ID **M-23** `nbp_rate` |
-| M-08 towary niebezpieczne | **kolizja** — żywe **M-08** = `charge` | w kolejce: „Towary niebezpieczne”; żywy ID w Planie |
+| M-08 towary niebezpieczne | **kolizja** — żywe **M-08** = `charge` | Q6 żywy ID **M-52** `dangerous_good` |
 | M-17 stawki statyczne | pokryte przez żywe **M-07** `rate_line` | nie startuj drugiego silnika stawek |
 | M-22 narzuty i marża | pokryte przez żywe **M-08** `charge` | marża zostaje w `margin()` |
 
@@ -315,7 +315,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | Q3 | Pogłębienie żywego **M-21** `quotation` o port + kontrahent (lista/filtry; SQL na istniejących `rate_line`; nie marża; nie k6) | Plan → plaster | zamknięty (`docs/deltas/archived/5.1-quotation-port-party.md`) |
 | Q4 | Archiwum **M-09 Kody towarowe** | Plan → plaster | zamknięty (`docs/deltas/archived/5.2-commodity-code.md`) |
 | Q5 | **Waluty i kurs NBP** (archiwum M-07; **nie** nadpisuj żywego M-07) | Plan → plaster | zamknięty (`docs/deltas/archived/6.0-nbp-rate.md`) |
-| Q6 | **Towary niebezpieczne** (archiwum M-08; **nie** nadpisuj żywego M-08) | Plan → plaster | kolejka |
+| Q6 | **Towary niebezpieczne** (archiwum M-08; **nie** nadpisuj żywego M-08) | Plan → plaster | delta **7.0** zaakceptowana `/noc`; plaster |
 
 ### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster
 
@@ -372,7 +372,7 @@ Nie implementuj z tej tabeli „na zapas”. To mapa, żeby nic nie zginęło. S
 | M-05 | Geografia | DONE fundament (`port` + `location`/strefy + `terminal`/WPI; `operator_party_id` od 5.0) |
 | M-06 | Słownik opłat | DONE jako `charge_code` |
 | M-07 | Waluty i czas | DONE katalog 6.0; żywy ID **M-23** `nbp_rate` (nie M-07) |
-| M-08 | Towary niebezpieczne | kolejka Q6; ID żywy ≠ M-08 |
+| M-08 | Towary niebezpieczne | kolejka Q6; żywy ID **M-52** `dangerous_good` (nie M-08) |
 | M-09 | Kody towarowe | DONE fundament (5.2 katalog) |
 | M-10 | Kontrahenci | DONE fundament (5.0 katalog; lookup = fixture) |
 | M-11 | Automatyczne kontakty | Fala 2 |
@@ -392,7 +392,7 @@ Nie implementuj z tej tabeli „na zapas”. To mapa, żeby nic nie zginęło. S
 | M-35–M-39 | Zlecenie / EDI | Fala 5 |
 | M-40–M-47 | Finanse | Fala 6 |
 | M-48–M-51 | Modały | Fala 7 |
-| M-52–M-56 | Compliance | Fala 8 |
+| M-52–M-56 | Compliance | Fala 8 (żywe M-52 = `dangerous_good` z 7.0, nie drugi `charge`) |
 | M-57–M-60 | AI / copilot | Fala 9 |
 | M-61–M-67 | Rynek / portal | Fala 10 |
 | M-68–M-70 | Ops / wdrożenie | Fala 11 |
@@ -426,13 +426,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->
