@@ -20,7 +20,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **0.21 T4 DONE:** `hello_token` default false; mint UUID tylko przy fladze
 - **0.22 T5 DONE:** JWT iss/aud/jti/ver; TTL 15 min
 - **0.23 S1 DONE:** JWT_SECRET z GitHub Encrypted Secrets; literał usunięty z gate.yml
-- **U-admin-ref DONE:** pulpit = joby operatora; sidebar/toolbar/⌘K. **Następny (kod):** U-routes-breadth. Auth0 I1 po wszystkich U-*
+- **U-routes-breadth DONE:** standing (Charge 1.0–1.2 mają trasy). **Następny (kod):** Auth0 I1. Exit Wave FE **nie** claim — nie 70 UI, nie „powierzchnia 2026”
+- **U-admin-ref DONE:** pulpit = joby operatora; sidebar/toolbar/⌘K.
 - **U-pdf-spans DONE:** viewer PDF + spany HITL; lazy pdf.js. Draft nie trzyma PDF (tylko input_text).
 - **U-size-limit-real DONE:** `just perf` = build + gzip initial JS < 250 kB; w `just gate`. k6/vulture/pip-audit nadal echo.
 - **U-a11y DONE:** skip-to-main + `:focus-visible` + ścieżka operatora.

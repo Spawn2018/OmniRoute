@@ -56,4 +56,5 @@
 | 2026-09-01 | U-size-limit-real | ops/FE | `just perf` size-limit initial JS gzip < 250 kB; w gate; echo usunięte |
 | 2026-09-01 | U-pdf-spans | M-20 UI | PDF viewer + highlight spanów HITL; lazy pdf.js; bez OCR |
 | 2026-09-01 | U-admin-ref | UI | gęsty admin: sidebar, toolbar, ⌘K; pulpit = joby, nie hello-dashboard |
-| — | leftover | Wave FE | **Następny:** U-routes-breadth (standing, nie 70 stubów). Nie Exit Wave FE aż ten ID. Auth0 I1 po FE. |
+| 2026-09-01 | U-routes-breadth | UI/program | standing: Charge 1.0–1.2 mają trasy; nowe BC = UI w tym samym plasterze; nie 70 stubów |
+| — | leftover | Auth0 | **Następny:** Auth0 I1 (nie startowane). Exit Wave FE **nie** claim. U-* mają SHA. |

@@ -1,0 +1,32 @@
+import { createElement } from "react"
+import { renderToStaticMarkup } from "react-dom/server"
+import { describe, expect, it } from "vitest"
+import { OpsIndex } from "@/features/ops/ops-index-page"
+import {
+  OPS_JOBS,
+  ROUTES_BREADTH_STANDING,
+  SHIPPED_CHARGE_ROUTES,
+} from "@/features/ops/ops-index"
+
+describe("U-routes-breadth standing", () => {
+  it("records Charge 1.0–1.2 routes and refuses a 70-module claim", () => {
+    expect(SHIPPED_CHARGE_ROUTES).toEqual({
+      "1.0": "/charge-codes",
+      "1.1": "/rate-lines",
+      "1.2": "/charges",
+    })
+    expect(OPS_JOBS.map((job) => job.route)).toEqual(
+      expect.arrayContaining(Object.values(SHIPPED_CHARGE_ROUTES)),
+    )
+    expect(OPS_JOBS).toHaveLength(6)
+    expect(OPS_JOBS.length).not.toBe(70)
+
+    const html = renderToStaticMarkup(
+      createElement(OpsIndex, { healthLabel: "ok", healthState: "ok" }),
+    )
+    expect(html).toContain(ROUTES_BREADTH_STANDING)
+    expect(html).toContain('data-routes-breadth="standing"')
+    expect(html).not.toContain("70 modułów done")
+    expect(html).not.toContain("powierzchnia 2026")
+  })
+})

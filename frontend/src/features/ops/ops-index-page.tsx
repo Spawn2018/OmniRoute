@@ -1,4 +1,4 @@
-import { OPS_JOBS } from "@/features/ops/ops-index"
+import { OPS_JOBS, ROUTES_BREADTH_STANDING } from "@/features/ops/ops-index"
 
 type OpsIndexProps = {
   healthLabel: string
@@ -19,6 +19,9 @@ export function OpsIndex({ healthLabel, healthState }: OpsIndexProps) {
       </div>
       <p className="text-xs text-muted-foreground">
         Gęsty admin · sidebar compact · toolbar tabeli · ⌘K akcje. Bez pustych modułów.
+      </p>
+      <p data-routes-breadth="standing" className="text-xs text-muted-foreground">
+        {ROUTES_BREADTH_STANDING}
       </p>
       <table className="w-full border-collapse text-sm">
         <thead className="bg-muted text-left text-xs text-muted-foreground">

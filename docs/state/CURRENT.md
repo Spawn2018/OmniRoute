@@ -1,17 +1,17 @@
 ﻿# Bieżący focus
 
-**Faza:** Wave FE  
+**Faza:** Auth0  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
 
-**Ostatni plaster:** **U-admin-ref** gęsty admin (zarchiwizowany)  
-**Następny:** **U-routes-breadth** standing na przyszłe BC (nie 70 stubów). Nie Auth0 I1. Nie Exit Wave FE aż U-routes-breadth zamknięte.
+**Ostatni plaster:** **U-routes-breadth** standing (zarchiwizowany)  
+**Następny:** **Auth0 I1** BFF + PKCE + cookie. Nie startować tu (brak credentiali tenanta; `session*` reserved). Exit Wave FE **nie** claim.
 
-**Spec (jedna na sesję):** [docs/state/PROGRAM-12M.md](docs/state/PROGRAM-12M.md) U-routes-breadth
+**Spec (jedna na sesję):** [docs/state/PROGRAM-12M.md](docs/state/PROGRAM-12M.md) Auth0 I1
 
 **Kanon:** [docs/state/PROGRAM-12M.md](docs/state/PROGRAM-12M.md)
 
-**Uczciwość:** U-art50 … U-admin-ref DONE. Pulpit ≠ hello-dashboard. U-routes-breadth jeszcze otwarte. Nie powierzchnia 2026.
+**Uczciwość:** Wszystkie ID U-* mają commit na origin. U-routes-breadth = standing na przyszłe BC, nie 70 UI. **Zakaz** twierdzenia „powierzchnia 2026” / Exit Wave FE. Adapter + RTL ≠ exit. HITL zostaje. Auth0 I1 nie ruszany.
 
 **Plan:** [docs/PLAN-REALIZACJA.md](docs/PLAN-REALIZACJA.md)
 
-**2026-09-01:** U-admin-ref — gęsty sidebar, toolbar tabeli, ⌘K; pulpit = joby operatora.
+**2026-09-01:** U-routes-breadth — Charge 1.0–1.2 już mają trasy; standing na nowe BC.

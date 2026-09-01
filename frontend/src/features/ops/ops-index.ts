@@ -16,3 +16,12 @@ export const OPS_JOBS = [
 ] as const
 
 export const HELLO_DASHBOARD_MARKERS = ["Shell 0.5", "hello-dashboard", "kafelki"] as const
+
+export const SHIPPED_CHARGE_ROUTES = {
+  "1.0": "/charge-codes",
+  "1.1": "/rate-lines",
+  "1.2": "/charges",
+} as const
+
+export const ROUTES_BREADTH_STANDING =
+  "Nowe BC z jobem operatora = trasa w tym samym plasterze. Charge 1.0–1.2 już mają UI. To standing, nie 70 modułów."
