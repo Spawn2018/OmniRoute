@@ -1,49 +1,48 @@
-# Nocna zmiana (kod bez Ciebie przy klawiaturze)
+# Nocna zmiana
 
-Operator przyjął ryzyko: **noc może pisać kod**. HITL produktowe (akceptacja ekstrakcji do bazy) **nie** znika. Znika tylko czekanie na Ciebie przy już zaplanowanym plasterze.
+Operator odpalasz w Cursorze, tryb Agent: **`/noc 7`** (albo `/noc 8`). To jest pętla do **najbliższej** takiej godziny czasu polskiego. Komenda bez godziny nie startuje. **`/noc stop`** kończy strażnika.
 
-To nie jest drugi plan produktu. Kolejka nadal jest w [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Ten plik = jak agent ma się zachować, gdy Cię nie ma.
+To nie jest drugi plan produktu. Kolejka: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Tablica: [CURRENT.md](../state/CURRENT.md). Numer plastra **nie** jest wpisany w `/noc` — agent zawsze czyta CURRENT.
 
-## Co wolno tej nocy
+## Zanim cokolwiek ruszy
 
-| CURRENT.md Etap | Noc robi | Noc nie robi |
-|---|---|---|
-| Delta zaakceptowana / wolno `/plaster` | Jeden plaster: `/plaster` → `/testy` (czerwone) → kod → gate → `/zamknij` | Następnego plastra kodu. 4.2, Q2, M-02, Auth0 |
-| Etap: Plan / brak delty | Plan z **rekomendowanymi** opcjami (niżej), zapis delty, stop | Kod nowego zakresu w tej samej nocy |
-| Niejasne / DO USTALENIA w delcie | Stop. Zostaw pytanie w CURRENT | Zgadywanie poza listą rekomendowaną |
+Za każdym włączeniem i przed każdym **nowym** cyklem:
 
-**Limit: jeden plaster kodu na noc.** Po zamknięciu 4.1 CURRENT skacze na Plan 4.2 — rano `/plan-modul`, nie 4.2 w tym samym biegu.
+```
+powershell -ExecutionPolicy Bypass -File scripts/noc-preflight.ps1
+```
 
-Cloud Agent zwykle **nie pushuje na `main`**. Robi gałąź + PR. Rano merge, gdy CI zielone. To jest pożądane: zły nocny diff nie ląduje od razu na origin/main.
+Skrypt sprawdza: czysty git, gałąź `main`, internet (GitHub), `git fetch` / `ls-remote`, Postgres `:5432`, OpenFGA `:8080`. Jeśli baza albo OpenFGA leżą — próbuje je podnieść (`pg_ctl`, `openfga.exe`). FAIL = noc **nie** startuje i nie sprząta cudzego drzewa.
 
-Lokalny agent (Windows, `pg_ctl`) może pushować na `main` tylko gdy `just gate` przechodzi i hook `scripts/githooks` jest włączony. Czerwony gate = stop, nie `--no-verify`.
+Ty: komputer nie usypia, Cursor otwarty, **żaden inny agent nie pisze**.
 
-## Opcje w Planie (to, co zawsze wyskakuje)
+## Pętla
 
-Cursor w trybie Plan pokazuje wybór. Operator: **zawsze bierz to, co jest oznaczone jako rekomendowane.**
+1. **`/plan-modul` w Agencie** (nie przełączaj na tryb Plan w Cursorze — ten ekran czeka na Ciebie). Opcja rekomendowana. Delta + CURRENT. **Commit i push.** Zero kodu produktu.
+2. **`/plaster`**: plan plików bez `akceptuję` → czerwone `/testy` → kod → zamknięcie. **Commit i push** na `origin/main`. Naprawia do skutku. Po pushu czeka na CI GitHub i poprawia, aż zielone albo padnie godzina.
+3. Kolejny plaster tego modułu, potem kolejny moduł z kolejki — aż do godziny.
+4. Po godzinie: nie zaczyna nowego planu ani plastra. Dokańcza rozgrzebane, puszcza, **raport**.
 
-Gdy etykiety nie ma:
+Planowanie zostaje (delta, zakres, testy zanim kod). Znika tylko czekanie na kliknięcie.
 
-1. Opcja zgodna z kolejką Q i z już zapisaną deltą / spec z CURRENT.
-2. Opcja węższa (mniej tabel, mniej UI) zamiast szerszej.
-3. Stop i pytanie w CURRENT, jeśli żadna nie jest oczywista.
+Strażnik co 15 minut (`/loop`, `loop-noc`): jeśli sesja umarła (brak bicia serca > 25 min) i jest przed godziną — wraca do CURRENT, nie do pamięci czatu. Jeśli właśnie trwa pytest/commit — budzik nic nie robi. Plik `docs/state/NOC-LIVE.md` jest lokalny (gitignore), nie commitować.
 
-Nie wymyślaj czwartej drogi. Nie otwieraj M-02, Auth0, 70 pustych modułów, Temporal, Infisical.
+## Twarde stop
 
-## Twarde stop (nawet o 3 w nocy)
-
-- HITL: nic z ekstrakcji LLM do bazy bez akceptacji człowieka.
-- LLM nie liczy. `charge` = jedyna prawda o marży. Decimal, nie float.
+- HITL: nic z ekstrakcji LLM do bazy bez Ciebie.
+- LLM nie liczy. `charge` = marża. Decimal.
 - ExtractionService nie importuje rates.
-- WIP=1 — nie zaczynaj drugiego plastra kodu.
-- Brak `organization_id` / RLS / testu izolacji = nie merge.
-- Nie cofaj hotfixów CI (lista w HANDOFF).
-- Gate czerwony po dwóch naprawach = zostaw PR otwarty, nie sil.
+- Brak `organization_id` / RLS / testu izolacji = nie push.
+- Brudne drzewo, rozjazd z origin, nie-main = preflight FAIL.
+- M-02, Auth0, portale — parked, nie zgaduj.
+- Bez `--no-verify` i bez force-push.
 
-## Cloud 5
+Zarys modułu: Plan rozbija na plastry i robi gęsty job operatora (ekran + baza + flagi w ustawieniach tam, gdzie da się wyciąć na produkcji). Nie 70 pustych szafek.
 
-Odpalasz **Cloud Agent** (cursor.com/agents albo Agents → Cloud), najmocniejszy dostępny model — u Ciebie: **Cloud 5 / Claude 5**, nie fast/Composer.
+## Raport (koniec, język jak dla laika)
 
-VM w chmurze **nie ma** Twojego `tools\pgdata`. Żeby testy RLS 4.1 nie były teatrem, środowisko Cloud musi mieć Postgres 16 (Docker w setupie agenta) albo agent ma napisać migrację + testy i zostawić w PR adnotację, że integracja RLS nie była odpalona lokalnie w VM — wtedy **nie** twierdź, że izolacja jest udowodniona, dopóki CI z PG nie przejdzie.
-
-Wklejka: [HANDOFF-BUILDING-AGENT.md](../state/HANDOFF-BUILDING-AGENT.md) albo komenda `/noc`.
+1. **Co się udało** — co weszło na główną szynę, bez nazw plików.
+2. **Gdzie jesteśmy** — jedno zdanie z tablicy.
+3. **Ile jeszcze przed nami** — następne duże tematy z kolejki (nie numery M-xx); parked nazwij „odłożone”.
+4. **Problemy i jak je załatwiono** — albo „spokojna zmiana”.
+5. **Co warto pochwalić** — jedna–trzy rzeczy, bez laurki na siłę.

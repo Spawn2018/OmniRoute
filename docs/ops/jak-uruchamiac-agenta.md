@@ -13,7 +13,8 @@ Jesteś w **oknie Agentów** (nie w edytorze kodu). Windows.
 | Tryb Plan vs Agent | W **polu wiadomości na dole**, zwykle **po lewej** nad klawiaturą / w pasku inputu: lista **Agent / Plan / Ask**. Szybko: kursor w polu, **`Shift+Tab`** aż zobaczysz **Plan** albo **Agent**. |
 | Komenda `/plan-modul` | W tym samym polu na dole wpisz `/` — pojawi się lista komend projektu. Wybierz `plan-modul` albo dopisz ręcznie. |
 | Komenda `/plaster` | Tak samo: `/` → `plaster`. |
-| Komenda `/testy` | Tak samo: `/` → `testy`. **Po** akceptacji planu plików z `/plaster`, **zanim** powstanie kod. Tryb **Agent**. |
+| Komenda `/testy` | Tak samo: `/` → `testy`. **Po** akceptacji planu plików z `/plaster`, **zanim** powstanie kod. Tryb **Agent**. W `/noc` agent nie czeka na to słowo. |
+| Komenda `/noc` | `/` → `noc`. Godzina obowiązkowa: `/noc 7` = pętla do 7:00. Umowa: [nocna-zmiana.md](nocna-zmiana.md). |
 
 Otworzenie okna Agentów z edytora: `Ctrl+I`. Ty już jesteś w widoku Agenta — tego nie potrzebujesz.
 
@@ -63,30 +64,21 @@ na czerwono, naprawa wraca do ciebie.
 - Nie dopisuj `/plaster` pod rozmową z `/plan-modul`.
 - Nie szukaj menu „Nowy czat” jak w Messengerze.
 - Nie pisz „zrób geografię” — wystarczy komenda; kolejka jest w `CURRENT.md`.
-- Nie startuj 4.2 / Q2, dopóki bieżący plaster nie jest zamknięty i wypchnięty. Jeden naraz.
+- Nie startuj kolejnej pozycji Q, dopóki bieżący plaster nie jest zamknięty i wypchnięty — chyba że to pętla `/noc` (jeden cykl naraz, potem następny z CURRENT).
 
-## Noc / Cloud 5
+## Noc (`/noc 7`)
 
-Ryzyko nocnego kodu jest **włączone** — szczegóły: [nocna-zmiana.md](nocna-zmiana.md).
+Szczegóły: [nocna-zmiana.md](nocna-zmiana.md).
 
-1. Sprawdź **Etap** w `docs/state/CURRENT.md`. Dziś: delta 4.1 zaakceptowana → noc = `/plaster`, nie Plan.
-2. Cloud: [cursor.com/agents](https://cursor.com/agents) → nowy agent → najmocniejszy model (**Cloud 5 / Claude 5**, nie fast). Wklej blok z [HANDOFF-BUILDING-AGENT.md](../state/HANDOFF-BUILDING-AGENT.md) albo w polu wpisz `/noc`.
-3. Rano: otwórz PR, nie zakładaj że jest na `main`. Merge dopiero przy zielonym CI.
-4. W Planie (kolejna noc / rano 4.2): gdy wyskakują opcje, bierz **rekomendowaną**.
+1. Tryb **Agent**. Komputer nie usypia. Żaden inny agent nie pisze. `git status` czysty.
+2. Wpisz **`/noc 7`** (albo inną godzinę rano). Agent sam odpala `scripts/noc-preflight.ps1` (Postgres, OpenFGA, internet, GitHub). FAIL = stop.
+3. Do tej godziny: plan + push, plaster + push, kolejna pozycja z CURRENT. Nie klikasz `akceptuję`.
+4. Po godzinie: raport w czacie (co weszło, gdzie jesteśmy, ile w kolejce, problemy, pochwały).
 
-Lokalnie na Windows nadal: `+` / `Ctrl+N`, tryb Agent, `/plaster`. Postgres: `pg_ctl -D tools\pgdata -o "-p 5432" start`.
+W dzień nadal: `+` / `Ctrl+N`, tryb Plan do `/plan-modul`, druga rozmowa Agent do `/plaster`. Postgres: `pg_ctl -D tools\pgdata -o "-p 5432" start`.
 
-## Trzy plastry geografii (jeden po drugim)
+## Kolejka
 
-Q1 to **nie** jeden wielki plaster. Kolejność z planu:
+Nie zapamiętuj numeru plastra. Po `/zamknij` (albo cyklu `/noc`) tablica jest w `CURRENT.md`. Dziennie: `/plan-modul` albo `/plaster` zgodnie z **Etapem**. Nocą: jedna rozmowa, pętla aż do godziny.
 
-| Kiedy | Co | Ty robisz |
-|---|---|---|
-| Zrobione | **4.0** `port` | Zamknięte. |
-| **Teraz** | **4.1** `location` + strefy | Delta jest. Agent / Cloud: `/plaster` → `/testy` → kod → `/zamknij`. |
-| Potem | **4.2** `terminal` + WPI | Najpierw Plan (`/plan-modul`, opcja rekomendowana). Potem plaster. |
-| Potem | **Q2** kontrahenci | Dopiero po 4.2. |
-
-Po `/zamknij` agent sam wpisuje do CURRENT **następny** numer. Ty nie wybierasz „który plaster” — czytasz CURRENT albo po prostu odpalasz `/plan-modul` albo `/plaster` zgodnie z **Etapem** w CURRENT.
-
-Nie otwieraj trzech Agentów naraz. Nie dopisuj 4.2 w czacie 4.1.
+Nie otwieraj trzech Agentów naraz na ten sam folder.

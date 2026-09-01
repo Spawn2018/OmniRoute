@@ -18,3 +18,5 @@ Zasady:
 
 Uruchom `pytest` i pokaż, że wszystkie nowe testy failują.
 NIE PISZ IMPLEMENTACJI.
+
+**Wyjątek `/noc`:** po czerwonych testach od razu implementuj — nie czekaj na komendę `implementuj`.

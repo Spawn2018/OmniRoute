@@ -26,6 +26,9 @@ frontend/.tanstack/
 # Cursor
 .cursor/browser-logs/
 
+# Nocna zmiana — bicie serca strażnika, nie commitować
+docs/state/NOC-LIVE.md
+
 # IDE / OS
 .idea/
 .vscode/

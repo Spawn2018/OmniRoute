@@ -4,7 +4,9 @@ description: Etap Plan dla pozycji kolejki — rozmowa i delta, zero kodu produk
 
 Przeczytaj `docs/state/CURRENT.md` i `docs/PLAN-REALIZACJA.md` § Kolejka realizacji.
 
-Jeśli w Cursorze jesteś w trybie Agent: przełącz na **Plan** (ten sam wybór co Agent / Multitask). Nie implementuj.
+**Wyjątek `/noc`:** zostań w Agencie. Nie przełączaj na tryb Plan. Nie czekaj na `akceptuję`. Opcja rekomendowana, delta, `just docs`, commit + push, od razu `/plaster` jeśli przed godziną stopu. Szczegóły: `docs/ops/nocna-zmiana.md`.
+
+Jeśli w Cursorze jesteś w trybie Agent **i to nie jest `/noc`**: przełącz na **Plan** (ten sam wybór co Agent / Multitask). Nie implementuj.
 
 Ta komenda = wydmuszka albo kolejna pozycja Q. Nie dumpuj `Informacje z claude/`. Nie twórz 70 stubów.
 

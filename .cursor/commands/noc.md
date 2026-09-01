@@ -1,21 +1,48 @@
 ---
-description: Nocna zmiana — jeden zaakceptowany plaster, Cloud Agent
+description: Nocna zmiana — pętla plan+plaster+push do podanej godziny
 ---
 
-Czytaj `docs/state/CURRENT.md` i `docs/ops/nocna-zmiana.md`. Potem wykonaj **tylko** to, co CURRENT pozwala.
+Umowa: `docs/ops/nocna-zmiana.md`. Tablica: `docs/state/CURRENT.md`. Kolejka: `docs/PLAN-REALIZACJA.md` § Kolejka.
 
-Teraz (2026-09-01): Etap = **Plan 4.2**, brak zaakceptowanej delty. Spec: `docs/spec/geography.md`. Delta 4.1 zamknięta: `docs/deltas/archived/4.1-location-zones.md`.
+**Nie wpisuj tu numeru plastra.** Zawsze czytaj CURRENT. Zignoruj pamięć czatu i stare kartki (4.2, jeden plaster, Cloud/PR, stop po dwóch poprawkach).
 
-1. Tryb Plan. Komenda `/plan-modul` — delta 4.2 do `docs/deltas/open/`, zero kodu bez akceptacji.
-2. Po akceptacji, tryb Agent: `/plaster`, potem `/testy` — czerwone testy z kryteriów delty. Dopiero potem implementacja.
-3. `just gate`. Czerwone = napraw max dwa razy, potem stop.
-4. `/zamknij`: post-plaster, PROGRESS, CURRENT = **Plan Q2 M-10** (nie kod), commit.
-5. Cloud: gałąź + PR, nie force-push na main. CI czerwone = napraw na tej samej gałęzi, max 10 autofix jak w Cloud.
-6. Stop. Nie 4.2, nie Q2, nie M-02, nie Auth0.
+## Godzina
 
-Kanon: `docs/PLAN-REALIZACJA.md` + GROUNDING.md + GLOSSARY.md.
-WIP=1. Decimal. HITL bez zmian. ExtractionService nie importuje rates.
-Nie cofaj hotfixów CI: `005` `current_database()`, agent-refs URI, agentlint baseline,
-conftest (osobne `DO $$`), live HTTP = `httpx.AsyncClient`, `rate_line` mutate = commit + select kolumny.
+- `/noc` bez liczby albo `/noc stop` bez trwającej zmiany: wypisz `Użycie: /noc 7` (albo `/noc 8`) i **stop**.
+- `/noc stop` przy trwającej zmianie: wyłącz strażnika, dokończ tylko to, co już rozgrzebane, raport, stop.
+- `/noc 7` = pętla do **najbliższego 7:00** czasu polskiego (`Europe/Warsaw`). `/noc 8` = do 8:00. Samo `7` = 07:00, nie 19:00.
+- Po godzinie: **nie** startuj kolejnego planu ani plastra. Dokończ rozgrzebane, push, raport.
 
-W Planie (nie ten bieg): bierz opcję **rekomendowaną**. Brak etykiety → węższa opcja z kolejki Q.
+Zostań w trybie **Agent**. **Nie** przełączaj Cursora na tryb Plan (ekran czeka na kliknięcie). **Nie** wołaj narzędzi pytań do operatora.
+
+## Start (za każdym razem, zanim cokolwiek planujesz)
+
+1. `powershell -ExecutionPolicy Bypass -File scripts/noc-preflight.ps1`  
+   Postgres, OpenFGA, internet, GitHub, czysty git, `main`, `pull --ff-only` gdy origin jest do przodu. Exit ≠ 0 → **stop**, nie pętla. Nie `--no-verify`, nie force-push, nie stash cudzej roboty.
+2. Zapisz `docs/state/NOC-LIVE.md` (nie commitować): godzina stopu ISO, `status: busy` / `idle`, `last_beat`. Ten plik jest w `.gitignore`.
+3. Strażnik: skill `/loop` co **15 minut**, nazwa `loop-noc`. Prompt budzika:
+
+   > Czytaj `docs/state/NOC-LIVE.md` i `docs/state/CURRENT.md`. Jeśli po godzinie stopu: raport z `docs/ops/nocna-zmiana.md` § Raport, wyłącz loop, stop. Jeśli `status: busy` i `last_beat` świeższy niż 25 min: nic nie rób. Jeśli cisza > 25 min i przed godziną: preflight, jeden cykl z CURRENT, bije serce. Nie odpalaj drugiego agenta równolegle.
+
+4. Od razu pierwszy cykl (nie czekaj na pierwszy tik).
+
+Przed **każdym nowym** cyklem (nie w środku pytest): znowu `scripts/noc-preflight.ps1`. Padł Postgres / OpenFGA / sieć / GitHub → próbuj start w skrypcie; jak dalej FAIL → stop i raport.
+
+## Cykl (aż do godziny)
+
+Czytaj CURRENT + kolejkę. Parked (M-02, Auth0, portale) **pomijaj**.
+
+**Brak delty / Etap Plan / wydmuszka** → procedura `/plan-modul` **w tym Agencie** (nie tryb Plan): opcja rekomendowana (bez etykiety: węższa z kolejki Q). W delcie zdanie „wybrane / odrzucone / dlaczego”. Zero kodu produktu. CURRENT: delta zaakceptowana, wolno `/plaster`. `just docs`. Commit + **push** (`docs(M-xx): delta…`). HITL nie zatwierdzaj. Od razu plaster, jeśli przed godziną.
+
+**Delta jest, wolno plaster** → `/plaster` bez czekania na `akceptuję`: łowca duplikatów, spec z CURRENT, plan plików, od razu `/testy` (czerwone), potem kod, gate, `/zamknij` (skill `zamknij-plaster`) **bez nowej rozmowy**. Naprawiaj do skutku. `just docs`. Commit + **push na origin/main**. Po pushu poczekaj na CI GitHub (`gh run watch` / najnowszy run na `main`); czerwone → napraw + push, do skutku albo do godziny. WIP=1: jeden plaster na raz.
+
+Moduł niecały → następny plaster (plan jeśli trzeba, potem kod).  
+Moduł domknięty → następny Q z PLAN: plan (rozbicie na plastry) → push → plaster → push.
+
+Po pushu zaktualizuj `last_beat` i `status: idle` w NOC-LIVE, potem od razu kolejny cykl jeśli przed godziną. Źródło prawdy = CURRENT + git, nie czat.
+
+## Raport (koniec zmiany)
+
+Język dla laika, bez żargonu. Pięć nagłówków z `docs/ops/nocna-zmiana.md` § Raport. Wyłącz strażnika. NOC-LIVE: `status: stop`.
+
+Kanon: GROUNDING, GLOSSARY, Decimal, `charge` = marża, ExtractionService bez rates. Nie cofaj hotfixów CI (HANDOFF). Nie 70 stubów.

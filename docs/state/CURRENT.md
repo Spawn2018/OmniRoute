@@ -5,6 +5,7 @@
 
 **Ostatni plaster:** **5.0** M-10 `party` (zarchiwizowany)  
 **Etap:** Plan  
+**Noc:** `/noc <godzina>` (np. `/noc 7` = pętla do 7:00 czasu polskiego). Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md). Przed startem: `scripts/noc-preflight.ps1`.  
 **Następny:** **Q3** pogłębienie żywego M-21 `quotation` o port + `party_id` (`docs/spec/quotation.md`). Nie Q4.  
 M-02 **parked**. Auth0 **odroczone**. Exit Wave FE **nie** claim. Leftovery UI ADR-0003 **nie** zamiast Q3.
 

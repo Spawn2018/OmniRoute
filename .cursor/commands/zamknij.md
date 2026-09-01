@@ -18,3 +18,5 @@ description: Zamyka plaster i przygotowuje następny
 6. Wypisz jednym zdaniem, co zostało niedokończone albo odłożone (`docs/ops/docs-debt.md`).
 
 Po tym kroku otwieram nową rozmowę. Nie kontynuuj.
+
+**Wyjątek `/noc`:** nie otwieraj nowej rozmowy. Po pushu wróć do pętli z `docs/ops/nocna-zmiana.md` (albo raport, jeśli minęła godzina stopu).

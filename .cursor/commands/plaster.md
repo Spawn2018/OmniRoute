@@ -4,9 +4,12 @@ description: Rozpoczyna realizację plastra według procedury
 
 Przeczytaj `docs/state/CURRENT.md`.
 
+**Wyjątek `/noc`:** nie zatrzymuj się po kroku 6 i nie czekaj na `akceptuję`. Od razu `/testy`, potem kod, `/zamknij` bez nowej rozmowy, commit + push, wróć do pętli. Szczegóły: `docs/ops/nocna-zmiana.md`.
+
 Jeśli **Etap: Plan** albo brak zaakceptowanej delty dla tej pozycji kolejki:
 **stop.** Nie pisz kodu. Powiedz: przełącz Cursor na tryb **Plan** i uruchom `/plan-modul`.
 Kolejka: `docs/PLAN-REALIZACJA.md` § Kolejka realizacji.
+**Wyjątek `/noc`:** nie mów o trybie Plan — wykonaj `/plan-modul` w tym Agencie (opcja rekomendowana, push), potem wróć do plastra.
 
 Jeśli zakres **powyżej trzech plików** (także hotfix / leftover **poza** kolejką Q) i nie ma jeszcze zaakceptowanego planu plików:
 **stop.** Napisz plan (krok 6), czekaj. Nie koduj „bo to nie jest Q”.
