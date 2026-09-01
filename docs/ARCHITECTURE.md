@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **4.0** M-05 `port` (zarchiwizowany). **Etap:** **Delta 4.1 zaakceptowana** — `docs/deltas/open/4.1-location-zones.md`, bez „DO USTALENIA”. Wolno `/plaster` w **nowej** rozmowie, tryb Agent. **Następny:** **4.1** M-05 `location` + strefy (`location_zone_member`). Spec: `docs/spec/geography.md`. Nie 4.2. Nie Q2. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **4.1** M-05 `location` + strefy taryfowe (zarchiwizowany). **Etap:** **Plan** — brak delty dla 4.2. Najpierw tryb Plan i `/plan-modul`, zero kodu. **Następny:** **4.2** M-05 `terminal` (ISPS, operator jako tekst) + pola World Port Index na `port`. Spec: `docs/spec/geography.md`. Nie Q2. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

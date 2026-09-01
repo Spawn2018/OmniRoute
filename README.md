@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **4.0** M-05 `port` (zarchiwizowany)
-- **Etap:** **Delta 4.1 zaakceptowana** — `docs/deltas/open/4.1-location-zones.md`, bez „DO USTALENIA”. Wolno `/plaster` w **nowej** rozmowie, tryb Agent.
-- **Następny:** **4.1** M-05 `location` + strefy (`location_zone_member`). Spec: `docs/spec/geography.md`. Nie 4.2. Nie Q2.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
+- **Ostatni plaster:** **4.1** M-05 `location` + strefy taryfowe (zarchiwizowany)
+- **Etap:** **Plan** — brak delty dla 4.2. Najpierw tryb Plan i `/plan-modul`, zero kodu.
+- **Następny:** **4.2** M-05 `terminal` (ISPS, operator jako tekst) + pola World Port Index na `port`. Spec: `docs/spec/geography.md`. Nie Q2.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

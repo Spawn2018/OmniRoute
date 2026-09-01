@@ -78,6 +78,34 @@ class PortConflict(DomainError):
     """UN/LOCODE już zajęty w katalogu tenanta."""
 
 
+class InvalidLocationData(DomainError):
+    """Pole lokalizacji puste albo rodzaj spoza unlocode / postal_zone / address."""
+
+
+class InvalidPostalCode(DomainError):
+    """Kod pocztowy po normalizacji musi zostać znakami A-Z i 0-9."""
+
+
+class InvalidPostalRange(DomainError):
+    """Zakres pocztowy: równa długość obu końców, początek nie po końcu."""
+
+
+class PostalRangeOverlap(DomainError):
+    """Zakres nachodzi na inny w tej samej strefie tenanta — baza odmawia."""
+
+
+class UnknownPostalZone(DomainError):
+    """Kod pocztowy nie trafia w żaden zakres tenanta — luźny string nie przechodzi."""
+
+
+class NotAPostalZone(DomainError):
+    """Zakres można dopiąć wyłącznie do lokalizacji kind = postal_zone."""
+
+
+class LocationConflict(DomainError):
+    """Kod strefy już zajęty w katalogu lokalizacji tenanta."""
+
+
 class InvalidSourceRef(DomainError):
     """Stawka bez source_ref nie wchodzi do bazy (HC-03)."""
 

@@ -13,6 +13,10 @@ from app.models.base import Base
 from app.models.charge import Charge  # noqa: F401 — rejestr metadanych RLS
 from app.models.charge_code import ChargeCode  # noqa: F401 — rejestr metadanych RLS
 from app.models.extraction_draft import ExtractionDraft  # noqa: F401 — rejestr metadanych RLS
+from app.models.location import (  # noqa: F401 — rejestr metadanych RLS
+    Location,
+    LocationZoneMember,
+)
 from app.models.organization import Organization
 from app.models.organization_setting import (  # noqa: F401 — rejestr metadanych RLS
     OrganizationSetting,
@@ -262,6 +266,64 @@ async def _apply_rls_policies(conn) -> None:
             """
         ),
     )
+    for table in ("location", "location_zone_member"):
+        await conn.execute(text(f"ALTER TABLE {table} ENABLE ROW LEVEL SECURITY"))
+        await conn.execute(text(f"ALTER TABLE {table} FORCE ROW LEVEL SECURITY"))
+        await conn.execute(text(f"DROP POLICY IF EXISTS {table}_tenant_isolation ON {table}"))
+        await conn.execute(
+            text(
+                f"""
+                CREATE POLICY {table}_tenant_isolation ON {table}
+                USING (
+                  organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid
+                )
+                WITH CHECK (
+                  organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid
+                )
+                """
+            ),
+        )
+
+
+async def _apply_postal_zone_ddl(conn) -> None:
+    """Odtwarza to, czego metadane ORM nie niosą: własny typ range i wykluczanie nakładek.
+
+    Lustro migracji `013_location_rls` — typ `postal_range` z kolacją "C" oraz
+    kolumna generowana `postal_span` żyją wyłącznie w bazie.
+    """
+    await conn.execute(text("CREATE EXTENSION IF NOT EXISTS btree_gist"))
+    await conn.execute(
+        text(
+            """
+            DO $$ BEGIN
+              CREATE TYPE postal_range AS RANGE (subtype = text, collation = "C");
+            EXCEPTION WHEN duplicate_object THEN NULL;
+            END $$;
+            """
+        ),
+    )
+    await conn.execute(
+        text(
+            "CREATE UNIQUE INDEX uq_location_org_code ON location (organization_id, code) "
+            "WHERE code IS NOT NULL"
+        ),
+    )
+    await conn.execute(
+        text(
+            "ALTER TABLE location_zone_member ADD COLUMN postal_span postal_range "
+            "GENERATED ALWAYS AS (postal_range(postal_from, postal_to, '[]')) STORED"
+        ),
+    )
+    await conn.execute(
+        text(
+            """
+            ALTER TABLE location_zone_member ADD CONSTRAINT ex_zone_member_no_overlap
+            EXCLUDE USING gist (
+              organization_id WITH =, country_code WITH =, postal_span WITH &&
+            )
+            """
+        ),
+    )
 
 
 @pytest_asyncio.fixture
@@ -294,6 +356,7 @@ async def engine() -> AsyncGenerator:
         )
         await conn.run_sync(Base.metadata.drop_all)
         await conn.run_sync(Base.metadata.create_all)
+        await _apply_postal_zone_ddl(conn)
         await _apply_rls_policies(conn)
         await conn.execute(text("GRANT USAGE ON SCHEMA public TO tenant_tester"))
         await conn.execute(text("GRANT USAGE ON SCHEMA public TO omniroute_app"))

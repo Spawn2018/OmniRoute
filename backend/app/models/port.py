@@ -10,7 +10,11 @@ from app.models.base import Base, TimestampMixin
 
 class Port(Base, TimestampMixin):
     __tablename__ = "port"
-    __table_args__ = (UniqueConstraint("organization_id", "unlocode", name="uq_port_org_unlocode"),)
+    __table_args__ = (
+        UniqueConstraint("organization_id", "unlocode", name="uq_port_org_unlocode"),
+        # Nośnik dla FK złożonego z location — bez niego port innego tenanta przeszedłby.
+        UniqueConstraint("organization_id", "id", name="uq_port_org_id"),
+    )
 
     id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True),

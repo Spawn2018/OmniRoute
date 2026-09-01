@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** **4.1** M-05 `location` + strefy (`location_zone_member`). Spec: `docs/spec/geography.md`. Nie 4.2. Nie Q2.
+**Następny (zablokowany):** **4.2** M-05 `terminal` (ISPS, operator jako tekst) + pola World Port Index na `port`. Spec: `docs/spec/geography.md`. Nie Q2.
 <!-- os-status:end -->
 
 ```mermaid
@@ -308,9 +308,9 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 
 | Q | Co | Tryb startu | Status |
 |---|---|---|---|
-| **Q1.0** | M-05 plaster **4.0** `port` + seed `improved-un-locodes` + `resolve` + `/ports` | **Plaster** (delta `docs/deltas/open/4.0-port.md`) | **TERAZ** |
-| Q1.1 | M-05 plaster **4.1** `location` + `location_zone_member` | Plan → plaster | kolejka |
-| Q1.2 | M-05 plaster **4.2** `terminal` + World Port Index | Plan → plaster | kolejka |
+| Q1.0 | M-05 plaster **4.0** `port` + seed `improved-un-locodes` + `resolve` + `/ports` | Plaster (delta `docs/deltas/archived/4.0-port.md`) | zamknięty |
+| Q1.1 | M-05 plaster **4.1** `location` + `location_zone_member` | Plaster (delta `docs/deltas/archived/4.1-location-zones.md`) | zamknięty |
+| **Q1.2** | M-05 plaster **4.2** `terminal` + World Port Index | **Plan** → plaster | **TERAZ** |
 | Q2 | Archiwum **M-10 Kontrahenci** | Plan → plaster | kolejka (po 4.2) |
 | Q3 | Pogłębienie żywego **M-21** `quotation` o port + kontrahent (lista/filtry; SQL na istniejących `rate_line`; nie marża; nie k6) | Plan → plaster | kolejka |
 | Q4 | Archiwum **M-09 Kody towarowe** | Plan → plaster | kolejka |
@@ -369,7 +369,7 @@ Nie implementuj z tej tabeli „na zapas”. To mapa, żeby nic nie zginęło. S
 | M-02 | Niezawodność zdarzeń | PARKED |
 | M-03 | Konfiguracja per organizacja | CZĘŚĆ (`default_currency`) |
 | M-04 | Uprawnienia i tożsamość | CZĘŚĆ (OpenFGA hello; SSO parked) |
-| M-05 | Geografia | **Q1 4.0** plaster `port` |
+| M-05 | Geografia | `port` + `location`/strefy DONE; **Q1 4.2** `terminal` + WPI |
 | M-06 | Słownik opłat | DONE jako `charge_code` |
 | M-07 | Waluty i czas | kolejka Q5; ID żywy ≠ M-07 |
 | M-08 | Towary niebezpieczne | kolejka Q6; ID żywy ≠ M-08 |
@@ -426,13 +426,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

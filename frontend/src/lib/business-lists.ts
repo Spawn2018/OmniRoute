@@ -7,6 +7,7 @@ export const BUSINESS_LISTS = {
   organizationSettings: { route: "/organization-settings", tableKey: "organization_settings" },
   extractions: { route: "/extractions", tableKey: "extraction.queue" },
   ports: { route: "/ports", tableKey: "ports" },
+  locations: { route: "/locations", tableKey: "locations" },
 } as const
 
 export const REQUIRED_BUSINESS_LIST_ROUTES = [
@@ -18,6 +19,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/organization-settings",
   "/extractions",
   "/ports",
+  "/locations",
 ] as const
 
 export function businessListRoutes(): string[] {

@@ -14,6 +14,11 @@ export const OPS_JOBS = [
   { route: BUSINESS_LISTS.quotations.route, label: "Wyceny", job: "SQL z bieżącego rate_line" },
   { route: BUSINESS_LISTS.organizationSettings.route, label: "Ustawienia", job: "config jako dane" },
   { route: BUSINESS_LISTS.ports.route, label: "Porty", job: "katalog UN/LOCODE + resolve" },
+  {
+    route: BUSINESS_LISTS.locations.route,
+    label: "Lokalizacje",
+    job: "strefy taryfowe + resolve kodu",
+  },
   { route: BUSINESS_LISTS.users.route, label: "Użytkownicy", job: "tenant users" },
   { route: "/session", label: "Sesja", job: "token klienta" },
 ] as const
@@ -27,6 +32,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "2.0": "/quotations",
   "3.0": "/organization-settings",
   "4.0": "/ports",
+  "4.1": "/locations",
 } as const
 
 export const ROUTES_BREADTH_STANDING =
