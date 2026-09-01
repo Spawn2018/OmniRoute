@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** M-13 Karta wyników kontrahenta (`/plan-modul`). Nie Fala 8. Nie zgaduj zakresu.
+**Następny (zablokowany):** 10.0 M-13 `party_scorecard` (`/plaster`). Nie Fala 8. Nie zgaduj zakresu.
 <!-- os-status:end -->
 
 ```mermaid
@@ -318,6 +318,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | Q6 | **Towary niebezpieczne** (archiwum M-08; **nie** nadpisuj żywego M-08) | Plan → plaster | zamknięty (`docs/deltas/archived/7.0-dangerous-good.md`) |
 | F2.0 | **M-11 Automatyczne kontakty** | Plan → plaster | zamknięty (`docs/deltas/archived/8.0-party-email-match.md`) |
 | F2.1 | **M-12 Sieci i stowarzyszenia** | Plan → plaster | zamknięty (`docs/deltas/archived/9.0-network.md`) |
+| F2.2 | **M-13 Karta wyników kontrahenta** | Plan → plaster | Plan (`docs/deltas/open/10.0-party-scorecard.md`) |
 
 ### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster
 

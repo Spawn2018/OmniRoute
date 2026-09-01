@@ -59,6 +59,10 @@
 | profil armatora | carrier_profile | 1:1 z `party`; adapter tylko jako dane |
 | sieć spedycyjna | network | katalog M-12; token kodu (`wca`, `fiata`, …); kopia per tenant; nie scraping |
 | kod sieci | network code | snake 2–32; `resolve` po kodzie albo aliasie |
+| karta wyników kontrahenta | party_scorecard | M-13; snapshot wskaźników per `party`; nie scoring osoby; nie silnik RFQ |
+| wskaźnik odpowiedzi | response_rate | 0–1 Numeric na karcie; NULL = nieznany |
+| mediana czasu odpowiedzi | median_response_hours | godziny Numeric na karcie |
+| pozycja cenowa | price_position | 0–1 Numeric na karcie partii w 10.0; per lane = leftover |
 | numer WPI | wpi_number | World Port Index (NGA Pub 150) na `port` |
 | wielkość portu | harbor_size | WPI: Very Small / Small / Medium / Large |
 | typ portu | harbor_type | WPI, słownik NGA |

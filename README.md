@@ -39,7 +39,7 @@ Seed: `scripts/dev_seed_local.py`.
 <!-- os-status:start -->
 - **Ostatni plaster:** **9.0** M-12 `network` (zarchiwizowany)
 - **Etap:** Plan
-- **Następny:** M-13 Karta wyników kontrahenta (`/plan-modul`). Nie Fala 8. Nie zgaduj zakresu.
+- **Następny:** 10.0 M-13 `party_scorecard` (`/plaster`). Nie Fala 8. Nie zgaduj zakresu.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
