@@ -112,7 +112,7 @@ Po plasterze: docs/ops/post-plaster.md + push + nowa rozmowa.
 | Auth0 | **I1** | **ODROCZONE** (brak tenanta). Gdy będzie: BFF + PKCE + cookie; org z `app_metadata`; first-login bez org = odmowa | start I1 bez tenanta; hasła + Auth0; auto-create org; hello OAuth |
 | Auth0 | I2 | **ODROCZONE**. Gdy będzie: RS256 JWKS; hello OFF staging/prod | start I2 bez tenanta; nowy HS256 |
 | AI leftover | 2.1–2.2 | **DONE:** Presidio **tylko** instructor stub; 10 syntetyk | 30 PDF klienta; Presidio-all |
-| Q4 | 2.0 | M-21 SQL **tylko** jeśli są stawki | k6 na pustej tabeli |
+| Q4 | 2.0 | **DONE:** M-21 SQL na istniejącym `rate_line` + `/quotations` | k6 na pustej tabeli |
 
 Auth0 I1/I2: **nie teraz**. Hasła + refresh zostają sesją. Nie pytać ponownie, dopóki user nie ma tenanta Auth0. Gdy będzie tenant: SPA Vite → BFF FastAPI → Auth0; cookie HttpOnly; Secure; SameSite=Lax; region EU / SCC jeśli plan pozwala; OpenFGA = SoT ról (first-login = member; reviewer ręczny seed). Organizations feature **nie** w I1. Zero kodu Auth0 / placeholder tenanta / „hello OAuth” do tego czasu.
 

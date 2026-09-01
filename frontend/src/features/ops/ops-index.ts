@@ -11,6 +11,7 @@ export const OPS_JOBS = [
   { route: BUSINESS_LISTS.chargeCodes.route, label: "Kody opłat", job: "katalog charge_code" },
   { route: BUSINESS_LISTS.rateLines.route, label: "Stawki kupna", job: "rate_line + source_ref" },
   { route: BUSINESS_LISTS.charges.route, label: "Opłaty", job: "buy+sell / marża" },
+  { route: BUSINESS_LISTS.quotations.route, label: "Wyceny", job: "SQL z bieżącego rate_line" },
   { route: BUSINESS_LISTS.users.route, label: "Użytkownicy", job: "tenant users" },
   { route: "/session", label: "Sesja", job: "token klienta" },
 ] as const
@@ -21,6 +22,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "1.0": "/charge-codes",
   "1.1": "/rate-lines",
   "1.2": "/charges",
+  "2.0": "/quotations",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

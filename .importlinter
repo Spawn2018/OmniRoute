@@ -21,6 +21,7 @@ modules =
     app.services.charge_codes
     app.services.rate_lines
     app.services.charges
+    app.services.quotations
 
 [importlinter:contract:integracje]
 name = Integracje nie znają serwisów
@@ -48,5 +49,8 @@ forbidden_modules =
     app.services.charges
     app.repositories.rate_lines
     app.repositories.charges
+    app.services.quotations
+    app.repositories.quotations
     app.models.rate_line
     app.models.charge
+    app.models.quotation

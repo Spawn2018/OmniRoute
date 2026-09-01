@@ -21,7 +21,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **0.22 T5 DONE:** JWT iss/aud/jti/ver; TTL 15 min
 - **0.23 S1 DONE:** JWT_SECRET z GitHub Encrypted Secrets; literał usunięty z gate.yml
 - **0.24 DONE:** `/ready` + `X-Request-ID` + SHA pin Actions + `just audit` (pip-audit projektu, nie echo). Auth0 I1/I2 **odroczone**.
-- **2.1–2.2 DONE:** Presidio stub tylko na `InstructorExtractor` + 10 syntetyk `synth://`. Nie Presidio-all, nie 30 PDF klienta, nie żywy OpenAI w gate. **Następny (kod):** fabryka / leftover produktu (`MODULES.md`).
+- **2.1–2.2 DONE:** Presidio stub tylko na `InstructorExtractor` + 10 syntetyk `synth://`. Nie Presidio-all, nie 30 PDF klienta, nie żywy OpenAI w gate.
+- **2.0 DONE:** `quotation` INSERT…SELECT z bieżącego `rate_line` + RLS + `/quotations`. Nie k6, nie marża, HITL bez zmian. **Następny (kod):** M-03 config-as-data. Isolation/integration = CI. p95 50k niewymierzony (N/A, nie teatr).
 - **0.24 leftover (dlaczego nie w tym plasterze):** `just audit` nie w lokalnym `just gate` (~80 s + sieć PyPI) — CI woła `just audit`; audit = drzewo pyproject, nie host site-packages (pillow/gitpython); image Dockera bez digestu; OpenFGA nie w `/ready`; k6/vulture nadal echo
 - **U-routes-breadth DONE:** standing (Charge 1.0–1.2 mają trasy). Exit Wave FE **nie** claim — nie 70 UI, nie „powierzchnia 2026”
 - **U-admin-ref DONE:** pulpit = joby operatora; sidebar/toolbar/⌘K.

@@ -25,6 +25,7 @@ _ALL_TENANT_POLICY_NAMES = (
     "charge_code_tenant_isolation",
     "rate_line_tenant_isolation",
     "charge_tenant_isolation",
+    "quotation_tenant_isolation",
 )
 
 
@@ -32,7 +33,7 @@ def test_conftest_tenant_policies_declare_with_check() -> None:
     source = Path("backend/tests/conftest.py").read_text(encoding="utf-8")
     for name in _ALL_TENANT_POLICY_NAMES:
         assert name in source
-    assert source.count("WITH CHECK") >= 8
+    assert source.count("WITH CHECK") >= 9
 
 
 def test_migration_006_declares_with_check() -> None:
@@ -63,6 +64,15 @@ def test_migration_009_declares_charge_with_check() -> None:
     assert "charge_tenant_isolation" in source
     assert "FORCE ROW LEVEL SECURITY" in source
     assert "charge_same_currency" in source
+
+
+def test_migration_010_declares_quotation_with_check() -> None:
+    source = Path("backend/alembic/versions/010_quotation_rls.py").read_text(encoding="utf-8")
+    assert "WITH CHECK" in source
+    assert "quotation_tenant_isolation" in source
+    assert "FORCE ROW LEVEL SECURITY" in source
+    assert "INSERT INTO quotation" not in source
+    assert "ix_rate_line_current_charge_code" in source
 
 
 @pytest.mark.integration

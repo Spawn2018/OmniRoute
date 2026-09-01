@@ -18,6 +18,7 @@ const NAV_ACTIONS = [
   { id: "nav-charge-codes", label: "Idź do katalogu kodów opłat", to: "/charge-codes" },
   { id: "nav-charges", label: "Idź do opłat", to: "/charges" },
   { id: "nav-rate-lines", label: "Idź do stawek kupna", to: "/rate-lines" },
+  { id: "nav-quotations", label: "Idź do wycen", to: "/quotations" },
   { id: "nav-session", label: "Ustawienia sesji (tenant)", to: "/session" },
 ] as const
 

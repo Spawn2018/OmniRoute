@@ -14,6 +14,7 @@ from app.models.charge import Charge  # noqa: F401 — rejestr metadanych RLS
 from app.models.charge_code import ChargeCode  # noqa: F401 — rejestr metadanych RLS
 from app.models.extraction_draft import ExtractionDraft  # noqa: F401 — rejestr metadanych RLS
 from app.models.organization import Organization
+from app.models.quotation import Quotation  # noqa: F401 — rejestr metadanych RLS
 from app.models.rate_line import RateLine  # noqa: F401 — rejestr metadanych RLS
 from app.models.refresh_token import RefreshToken  # noqa: F401 — rejestr metadanych RLS
 from app.models.table_view import TableView  # noqa: F401 — rejestr metadanych RLS
@@ -206,6 +207,20 @@ async def _apply_rls_policies(conn) -> None:
         text(
             """
             CREATE POLICY charge_tenant_isolation ON charge
+            USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
+            WITH CHECK (
+              organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid
+            )
+            """
+        ),
+    )
+    await conn.execute(text("ALTER TABLE quotation ENABLE ROW LEVEL SECURITY"))
+    await conn.execute(text("ALTER TABLE quotation FORCE ROW LEVEL SECURITY"))
+    await conn.execute(text("DROP POLICY IF EXISTS quotation_tenant_isolation ON quotation"))
+    await conn.execute(
+        text(
+            """
+            CREATE POLICY quotation_tenant_isolation ON quotation
             USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
             WITH CHECK (
               organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid

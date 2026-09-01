@@ -13,3 +13,4 @@ type organization
     define can_manage_charge_codes: member
     define can_manage_rate_lines: member
     define can_manage_charges: member
+    define can_manage_quotations: member

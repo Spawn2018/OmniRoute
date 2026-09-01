@@ -17,6 +17,7 @@ def test_authorization_model_includes_table_view_permission() -> None:
     assert "can_manage_charge_codes" in org.relations
     assert "can_manage_rate_lines" in org.relations
     assert "can_manage_charges" in org.relations
+    assert "can_manage_quotations" in org.relations
     assert "member" in org.relations
     assert "reviewer" in org.relations
     review = org.relations["can_review_extractions"]
@@ -34,6 +35,9 @@ def test_authorization_model_includes_table_view_permission() -> None:
     charges = org.relations["can_manage_charges"]
     assert charges.computed_userset is not None
     assert charges.computed_userset.relation == "member"
+    quotations = org.relations["can_manage_quotations"]
+    assert quotations.computed_userset is not None
+    assert quotations.computed_userset.relation == "member"
 
 
 @pytest.mark.asyncio

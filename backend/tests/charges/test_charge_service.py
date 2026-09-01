@@ -213,3 +213,5 @@ def test_extraction_service_does_not_import_rates_or_charges() -> None:
     assert "from app.repositories.rate_lines" not in source
     assert "from app.services.charges" not in source
     assert "from app.repositories.charges" not in source
+    assert "from app.services.quotations" not in source
+    assert "from app.repositories.quotations" not in source

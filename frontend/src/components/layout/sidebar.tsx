@@ -8,6 +8,7 @@ const NAV = [
   { to: "/charge-codes", label: "Kody opłat" },
   { to: "/charges", label: "Opłaty" },
   { to: "/rate-lines", label: "Stawki" },
+  { to: "/quotations", label: "Wyceny" },
   { to: "/session", label: "Sesja" },
 ] as const
 

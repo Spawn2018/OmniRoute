@@ -72,3 +72,7 @@ class ChargeRateMismatch(DomainError):
 
 class AcceptRequiresRateLine(DomainError):
     """Accept HITL bez poprawnej stawki kupna — cała transakcja wraca (1.3)."""
+
+
+class QuotationGap(DomainError):
+    """Brak bieżącej stawki do wyceny — luka, nie liczona w Pythonie."""
