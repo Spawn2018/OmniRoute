@@ -1,7 +1,7 @@
 # M-12 network — katalog sieci i stowarzyszeń
 
-**Plaster:** **9.0** (delta `docs/deltas/open/9.0-network.md`)  
-**Status:** plan — katalog per tenant. Nie katalog agentów. Nie scraping.
+**Plaster:** **9.0** (delta `docs/deltas/archived/9.0-network.md`)  
+**Status:** ukończony (fundament) — katalog sieci per tenant. Nie katalog agentów. Nie scraping.
 
 ## Zakres
 

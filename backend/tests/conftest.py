@@ -21,6 +21,7 @@ from app.models.location import (  # noqa: F401 — rejestr metadanych RLS
     LocationZoneMember,
 )
 from app.models.nbp_rate import NbpRate  # noqa: F401 — rejestr metadanych RLS
+from app.models.network import Network  # noqa: F401 — rejestr metadanych RLS
 from app.models.organization import Organization
 from app.models.organization_setting import (  # noqa: F401 — rejestr metadanych RLS
     OrganizationSetting,
@@ -205,6 +206,22 @@ async def _apply_rls_policies(conn) -> None:
         text(
             """
             CREATE POLICY dangerous_good_tenant_isolation ON dangerous_good
+            USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
+            WITH CHECK (
+              organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid
+            )
+            """
+        ),
+    )
+    await conn.execute(text("ALTER TABLE network ENABLE ROW LEVEL SECURITY"))
+    await conn.execute(text("ALTER TABLE network FORCE ROW LEVEL SECURITY"))
+    await conn.execute(
+        text("DROP POLICY IF EXISTS network_tenant_isolation ON network"),
+    )
+    await conn.execute(
+        text(
+            """
+            CREATE POLICY network_tenant_isolation ON network
             USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
             WITH CHECK (
               organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid

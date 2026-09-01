@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **8.0** M-11 `resolve_email` (zarchiwizowany)
-- **Etap:** Plaster
-- **Następny:** **9.0** M-12 `network` (`/plaster`). Nie katalog agentów. Nie scraping.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
+- **Ostatni plaster:** **9.0** M-12 `network` (zarchiwizowany)
+- **Etap:** Plan
+- **Następny:** M-13 Karta wyników kontrahenta (`/plan-modul`). Nie Fala 8. Nie zgaduj zakresu.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

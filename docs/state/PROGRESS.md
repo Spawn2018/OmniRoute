@@ -84,4 +84,5 @@
 | 2026-09-01 | 7.0 | M-52 | `dangerous_good` UN/IMDG + aliasy + `source_ref` + RLS FORCE + `resolve` + OpenFGA `can_manage_dangerous_goods` + `/dangerous-goods`. Nie podpięcie do wyceny, nie M-08 `charge`, nie live IMO. |
 | 2026-09-01 | Plan 8.0 | M-11 | delta `docs/deltas/archived/8.0-party-email-match.md`. Matcher `resolve_email` na `party_email_domain`. Nie nowa tabela, nie IMAP, nie auto-INSERT kontaktu. Następny: `/plaster` 8.0. |
 | 2026-09-01 | 8.0 | M-11 | `resolve_email` na `party_email_domain`; `UnknownEmailDomain`; GET `/parties/resolve-email`; pole „Sprawdź mail” na `/parties`. Nie nowa tabela, nie IMAP, nie auto-INSERT kontaktu. |
-| 2026-09-01 | Plan 9.0 | M-12 | delta `docs/deltas/open/9.0-network.md` + spec. Katalog `network` per tenant. Nie `network_member`, nie scraping, nie RapidFuzz. Następny: `/plaster` 9.0. |
+| 2026-09-01 | Plan 9.0 | M-12 | delta `docs/deltas/archived/9.0-network.md` + spec. Katalog `network` per tenant. Nie `network_member`, nie scraping, nie RapidFuzz. Następny: `/plaster` 9.0. |
+| 2026-09-02 | 9.0 | M-12 | `network` katalog + `source_ref` + RLS FORCE + `resolve` + OpenFGA `can_manage_networks` + `/networks`. Nie katalog agentów, nie scraping. |

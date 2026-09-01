@@ -8,6 +8,7 @@ const NAV = [
   { to: "/charge-codes", label: "Kody opłat" },
   { to: "/commodity-codes", label: "Kody towarowe" },
   { to: "/dangerous-goods", label: "Towary niebezpieczne" },
+  { to: "/networks", label: "Sieci" },
   { to: "/nbp-rates", label: "Kursy NBP" },
   { to: "/charges", label: "Opłaty" },
   { to: "/rate-lines", label: "Stawki" },

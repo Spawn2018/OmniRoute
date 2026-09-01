@@ -729,6 +729,78 @@ export type NbpRateResponse = {
 };
 
 /**
+ * NetworkCreate
+ */
+export type NetworkCreate = {
+    /**
+     * Code
+     */
+    code: string;
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Aliases
+     */
+    aliases?: Array<string>;
+    /**
+     * Website
+     */
+    website?: string | null;
+    /**
+     * Region Scope
+     */
+    region_scope?: string | null;
+    /**
+     * Is Global
+     */
+    is_global?: boolean;
+};
+
+/**
+ * NetworkResponse
+ */
+export type NetworkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Code
+     */
+    code: string;
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Aliases
+     */
+    aliases: Array<string>;
+    /**
+     * Website
+     */
+    website: string | null;
+    /**
+     * Region Scope
+     */
+    region_scope: string | null;
+    /**
+     * Is Global
+     */
+    is_global: boolean;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * OrganizationSettingResponse
  */
 export type OrganizationSettingResponse = {
@@ -2006,6 +2078,79 @@ export type ResolveDangerousGoodApiV1DangerousGoodsResolveGetResponses = {
 };
 
 export type ResolveDangerousGoodApiV1DangerousGoodsResolveGetResponse = ResolveDangerousGoodApiV1DangerousGoodsResolveGetResponses[keyof ResolveDangerousGoodApiV1DangerousGoodsResolveGetResponses];
+
+export type ListNetworksApiV1NetworksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/networks';
+};
+
+export type ListNetworksApiV1NetworksGetResponses = {
+    /**
+     * Response List Networks Api V1 Networks Get
+     *
+     * Successful Response
+     */
+    200: Array<NetworkResponse>;
+};
+
+export type ListNetworksApiV1NetworksGetResponse = ListNetworksApiV1NetworksGetResponses[keyof ListNetworksApiV1NetworksGetResponses];
+
+export type CreateNetworkApiV1NetworksPostData = {
+    body: NetworkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/networks';
+};
+
+export type CreateNetworkApiV1NetworksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateNetworkApiV1NetworksPostError = CreateNetworkApiV1NetworksPostErrors[keyof CreateNetworkApiV1NetworksPostErrors];
+
+export type CreateNetworkApiV1NetworksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: NetworkResponse;
+};
+
+export type CreateNetworkApiV1NetworksPostResponse = CreateNetworkApiV1NetworksPostResponses[keyof CreateNetworkApiV1NetworksPostResponses];
+
+export type ResolveNetworkApiV1NetworksResolveGetData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Token
+         */
+        token: string;
+    };
+    url: '/api/v1/networks/resolve';
+};
+
+export type ResolveNetworkApiV1NetworksResolveGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ResolveNetworkApiV1NetworksResolveGetError = ResolveNetworkApiV1NetworksResolveGetErrors[keyof ResolveNetworkApiV1NetworksResolveGetErrors];
+
+export type ResolveNetworkApiV1NetworksResolveGetResponses = {
+    /**
+     * Successful Response
+     */
+    200: NetworkResponse;
+};
+
+export type ResolveNetworkApiV1NetworksResolveGetResponse = ResolveNetworkApiV1NetworksResolveGetResponses[keyof ResolveNetworkApiV1NetworksResolveGetResponses];
 
 export type ListNbpRatesApiV1NbpRatesGetData = {
     body?: never;

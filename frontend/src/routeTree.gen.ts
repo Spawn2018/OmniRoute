@@ -17,6 +17,7 @@ import { Route as DangerousGoodsRouteImport } from './routes/dangerous-goods'
 import { Route as ExtractionsRouteImport } from './routes/extractions'
 import { Route as LocationsRouteImport } from './routes/locations'
 import { Route as NbpRatesRouteImport } from './routes/nbp-rates'
+import { Route as NetworksRouteImport } from './routes/networks'
 import { Route as OrganizationSettingsRouteImport } from './routes/organization-settings'
 import { Route as PartiesRouteImport } from './routes/parties'
 import { Route as PortsRouteImport } from './routes/ports'
@@ -64,6 +65,11 @@ const LocationsRoute = LocationsRouteImport.update({
 const NbpRatesRoute = NbpRatesRouteImport.update({
   id: '/nbp-rates',
   path: '/nbp-rates',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NetworksRoute = NetworksRouteImport.update({
+  id: '/networks',
+  path: '/networks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OrganizationSettingsRoute = OrganizationSettingsRouteImport.update({
@@ -116,6 +122,7 @@ export interface FileRoutesByFullPath {
   '/extractions': typeof ExtractionsRoute
   '/locations': typeof LocationsRoute
   '/nbp-rates': typeof NbpRatesRoute
+  '/networks': typeof NetworksRoute
   '/organization-settings': typeof OrganizationSettingsRoute
   '/parties': typeof PartiesRoute
   '/ports': typeof PortsRoute
@@ -134,6 +141,7 @@ export interface FileRoutesByTo {
   '/extractions': typeof ExtractionsRoute
   '/locations': typeof LocationsRoute
   '/nbp-rates': typeof NbpRatesRoute
+  '/networks': typeof NetworksRoute
   '/organization-settings': typeof OrganizationSettingsRoute
   '/parties': typeof PartiesRoute
   '/ports': typeof PortsRoute
@@ -153,6 +161,7 @@ export interface FileRoutesById {
   '/extractions': typeof ExtractionsRoute
   '/locations': typeof LocationsRoute
   '/nbp-rates': typeof NbpRatesRoute
+  '/networks': typeof NetworksRoute
   '/organization-settings': typeof OrganizationSettingsRoute
   '/parties': typeof PartiesRoute
   '/ports': typeof PortsRoute
@@ -173,6 +182,7 @@ export interface FileRouteTypes {
     | '/extractions'
     | '/locations'
     | '/nbp-rates'
+    | '/networks'
     | '/organization-settings'
     | '/parties'
     | '/ports'
@@ -191,6 +201,7 @@ export interface FileRouteTypes {
     | '/extractions'
     | '/locations'
     | '/nbp-rates'
+    | '/networks'
     | '/organization-settings'
     | '/parties'
     | '/ports'
@@ -209,6 +220,7 @@ export interface FileRouteTypes {
     | '/extractions'
     | '/locations'
     | '/nbp-rates'
+    | '/networks'
     | '/organization-settings'
     | '/parties'
     | '/ports'
@@ -228,6 +240,7 @@ export interface RootRouteChildren {
   ExtractionsRoute: typeof ExtractionsRoute
   LocationsRoute: typeof LocationsRoute
   NbpRatesRoute: typeof NbpRatesRoute
+  NetworksRoute: typeof NetworksRoute
   OrganizationSettingsRoute: typeof OrganizationSettingsRoute
   PartiesRoute: typeof PartiesRoute
   PortsRoute: typeof PortsRoute
@@ -294,6 +307,13 @@ declare module '@tanstack/react-router' {
       path: '/nbp-rates'
       fullPath: '/nbp-rates'
       preLoaderRoute: typeof NbpRatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/networks': {
+      id: '/networks'
+      path: '/networks'
+      fullPath: '/networks'
+      preLoaderRoute: typeof NetworksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/organization-settings': {
@@ -364,6 +384,7 @@ const rootRouteChildren: RootRouteChildren = {
   ExtractionsRoute: ExtractionsRoute,
   LocationsRoute: LocationsRoute,
   NbpRatesRoute: NbpRatesRoute,
+  NetworksRoute: NetworksRoute,
   OrganizationSettingsRoute: OrganizationSettingsRoute,
   PartiesRoute: PartiesRoute,
   PortsRoute: PortsRoute,

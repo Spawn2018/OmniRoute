@@ -8,6 +8,7 @@ from app.api import (
     extractions,
     locations,
     nbp_rates,
+    networks,
     organization_settings,
     parties,
     ports,
@@ -28,6 +29,7 @@ api_router.include_router(extractions.router)
 api_router.include_router(charge_codes.router)
 api_router.include_router(commodity_codes.router)
 api_router.include_router(dangerous_goods.router)
+api_router.include_router(networks.router)
 api_router.include_router(nbp_rates.router)
 api_router.include_router(charges.router)
 api_router.include_router(rate_lines.router)

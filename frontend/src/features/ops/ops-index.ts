@@ -20,6 +20,11 @@ export const OPS_JOBS = [
     job: "katalog dangerous_good UN/IMDG",
   },
   {
+    route: BUSINESS_LISTS.networks.route,
+    label: "Sieci",
+    job: "katalog network per tenant",
+  },
+  {
     route: BUSINESS_LISTS.nbpRates.route,
     label: "Kursy NBP",
     job: "katalog nbp_rate tabeli A",
@@ -64,6 +69,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "6.0": "/nbp-rates",
   "7.0": "/dangerous-goods",
   "8.0": "/parties",
+  "9.0": "/networks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

@@ -212,3 +212,15 @@ class UnknownDangerousGood(DomainError):
 
 class DangerousGoodConflict(DomainError):
     """Numer UN albo alias już zajęty w katalogu tenanta."""
+
+
+class InvalidNetworkCode(DomainError):
+    """Kod sieci: snake 2–32 (a-z, potem a-z0-9_) — nie luźna nazwa."""
+
+
+class UnknownNetwork(DomainError):
+    """Token nie ma wpisu w katalogu network tenanta."""
+
+
+class NetworkConflict(DomainError):
+    """Kod albo alias sieci już zajęty w katalogu tenanta."""
