@@ -162,7 +162,7 @@ export function DataTableShell<TData>({
 
   return (
     <div className="space-y-3">
-      <div className="flex flex-wrap items-center gap-2">
+      <div data-admin-ref="table-toolbar" className="flex flex-wrap items-center gap-2">
         <Input
           value={globalFilter}
           onChange={(e) => {

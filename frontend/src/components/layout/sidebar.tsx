@@ -13,12 +13,15 @@ const NAV = [
 
 export function Sidebar({ currentPath }: { currentPath: string }) {
   return (
-    <aside className="flex w-52 shrink-0 flex-col border-r border-border bg-sidebar text-sidebar-foreground">
-      <div className="border-b border-border px-3 py-3">
+    <aside
+      data-admin-ref="sidebar-density"
+      className="flex w-44 shrink-0 flex-col border-r border-border bg-sidebar text-sidebar-foreground"
+    >
+      <div className="border-b border-border px-2 py-1.5">
         <div className="text-sm font-semibold tracking-tight">OmniRoute</div>
-        <div className="text-xs text-muted-foreground">ops · compact</div>
+        <div className="text-[11px] text-muted-foreground">gęsty admin</div>
       </div>
-      <nav className="flex flex-col gap-0.5 p-2">
+      <nav className="flex flex-col gap-px p-1">
         {NAV.map((item) => {
           const active = currentPath === item.to
           return (
@@ -27,7 +30,7 @@ export function Sidebar({ currentPath }: { currentPath: string }) {
               to={item.to}
               aria-current={active ? "page" : undefined}
               className={cn(
-                "rounded-md px-2 py-1.5 text-sm hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                "rounded-md px-2 py-1 text-xs hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                 active && "bg-muted font-medium",
               )}
             >
@@ -36,8 +39,8 @@ export function Sidebar({ currentPath }: { currentPath: string }) {
           )
         })}
       </nav>
-      <div className="mt-auto border-t border-border px-3 py-2 text-xs text-muted-foreground">
-        Ctrl+K · paleta
+      <div className="mt-auto border-t border-border px-2 py-1.5 text-[11px] text-muted-foreground">
+        ⌘K · akcje operatora
       </div>
     </aside>
   )

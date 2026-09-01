@@ -32,10 +32,11 @@ export function AppShell({ children }: { children: ReactNode }) {
           <h1 className="text-sm font-medium">Platforma spedycyjna</h1>
           <button
             type="button"
+            data-admin-ref="command-actions"
             className="rounded-md border border-border px-2 py-1 text-xs text-muted-foreground hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             onClick={() => setPaletteOpen(true)}
           >
-            Szukaj ⌘K
+            Akcje ⌘K
           </button>
         </header>
         <main id={MAIN_CONTENT_ID} tabIndex={-1} className="min-h-0 flex-1 overflow-auto p-4">
