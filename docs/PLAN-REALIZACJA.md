@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** M-16 Procedury operacyjne klienta (`/plan-modul`). Nie Fala 8. Nie zgaduj zakresu.
+**Następny (zablokowany):** 11.0 M-16 `customer_sop` (`/plaster`). Nie Fala 8. Nie zgaduj zakresu.
 <!-- os-status:end -->
 
 ```mermaid
@@ -319,6 +319,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | F2.0 | **M-11 Automatyczne kontakty** | Plan → plaster | zamknięty (`docs/deltas/archived/8.0-party-email-match.md`) |
 | F2.1 | **M-12 Sieci i stowarzyszenia** | Plan → plaster | zamknięty (`docs/deltas/archived/9.0-network.md`) |
 | F2.2 | **M-13 Karta wyników kontrahenta** | Plan → plaster | zamknięty (`docs/deltas/archived/10.0-party-scorecard.md`) |
+| F2.3 | **M-16 Procedury operacyjne klienta** | Plan → plaster | Plan (`docs/deltas/open/11.0-customer-sop.md`) |
 
 ### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster
 
