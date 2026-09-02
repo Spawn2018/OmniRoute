@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **62.0** Q-E3 how-to jobów zapisu + C4 **Następny:** 63.0 Q-E4 `/plaster` — threat model tenant+HITL + CodeQL w CI. Nie GHAS. Nie F9.1. Nie S1. Parked: M-02, Auth0, portale (odblokowanie w Fali S).
+**Stan (z CURRENT.md):** **63.0** Q-E4 threat model tenant+HITL + CodeQL **Następny:** S1 `/plan-modul` — żywe M-32 tabela wiadomości + draft, fixture. RLS, `source_ref`. Nie Graph, nie IMAP, nie send, nie `shipment`. Nie F9.1.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.
