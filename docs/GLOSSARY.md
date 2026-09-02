@@ -19,6 +19,7 @@
 | port wyładunku | destination_port_id | POD na `quotation`; FK do `port` |
 | zlecenie | shipment | 28.0 tablica wycen z `party_id`; nie tabela; nie tracking |
 | śledzenie | tracking | 29.0 tablica lane POL/POD z wyceny; nie AIS; nie mapa |
+| wyjątek operacyjny | operational_exception | 30.0 tablica wycen z party bez pełnego POL/POD; nie tabela; nie AIS; nie `party_charge_override` |
 | odcinek | shipment_leg | operacyjne; nie w 29.0 |
 | tenant | organization | organization_id wszędzie |
 | ustawienie tenanta | organization_setting | konfiguracja jako dane; allowlista kluczy; nie sekret |
