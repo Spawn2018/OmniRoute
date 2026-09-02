@@ -19,6 +19,7 @@ const NAV_ACTIONS = [
   { id: "nav-mail", label: "Idź do tablicy poczty", to: "/mail" },
   { id: "nav-notifications", label: "Idź do powiadomień", to: "/notifications" },
   { id: "nav-shipments", label: "Idź do zleceń", to: "/shipments" },
+  { id: "nav-tracking", label: "Idź do trackingu", to: "/tracking" },
   { id: "nav-charge-codes", label: "Idź do katalogu kodów opłat", to: "/charge-codes" },
   { id: "nav-commodity-codes", label: "Idź do katalogu kodów towarowych", to: "/commodity-codes" },
   { id: "nav-dangerous-goods", label: "Idź do katalogu towarów niebezpiecznych", to: "/dangerous-goods" },

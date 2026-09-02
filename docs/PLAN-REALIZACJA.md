@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** 29.0 M-36 `tracking` (`/plaster`). Tablica lane POL/POD. Nie tabela. Nie mapa.
+**Następny (zablokowany):** M-37 Wyjątki (`/plan-modul`). Nie zgaduj schematu. Nie nowa tabela.
 <!-- os-status:end -->
 
 ```mermaid
@@ -337,7 +337,8 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | F4.1 | **M-33 Dodatek do Outlooka** | 26.0 | zamknięty (`docs/deltas/archived/26.0-mail-client.md`) |
 | F4.2 | **M-34 Powiadomienia** | 27.0 | zamknięty (`docs/deltas/archived/27.0-operator-notice.md`) |
 | F5.0 | **M-35 Zlecenie** | 28.0 | zamknięty (`docs/deltas/archived/28.0-shipment.md`) |
-| F5.1 | **M-36 Tracking** | Plan → plaster | Plan (`docs/deltas/open/29.0-tracking.md`) |
+| F5.1 | **M-36 Tracking** | 29.0 | zamknięty (`docs/deltas/archived/29.0-tracking.md`) |
+| F5.2 | **M-37 Wyjątki** | Plan | kolejka (`/plan-modul`; nie zgaduj schematu) |
 
 ### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster
 

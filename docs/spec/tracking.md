@@ -1,10 +1,10 @@
 # M-36 tracking — tablica znanego lane POL/POD
 
 **Moduł żywy:** M-36 (token UI `tracking`, nie tabela) + ekrany M-21 `quotation` i M-05 `port`  
-**Plaster:** **29.0** (plan)  
+**Plaster:** **29.0** (zamknięty)  
 **Status:** operator **widzi** lane wyceny (POL→POD). Nie AIS. Nie mapa. Nie nowa tabela.
 
-Delta: [docs/deltas/open/29.0-tracking.md](../deltas/open/29.0-tracking.md).
+Delta: [docs/deltas/archived/29.0-tracking.md](../deltas/archived/29.0-tracking.md).
 
 ## 29.0 tablica odczytu na `/tracking`
 

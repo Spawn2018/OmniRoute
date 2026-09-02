@@ -34,6 +34,7 @@ import { Route as RateLinesRouteImport } from './routes/rate-lines'
 import { Route as SessionRouteImport } from './routes/session'
 import { Route as ShipmentsRouteImport } from './routes/shipments'
 import { Route as TerminalsRouteImport } from './routes/terminals'
+import { Route as TrackingRouteImport } from './routes/tracking'
 import { Route as TenancyUsersRouteImport } from './routes/tenancy.users'
 
 const IndexRoute = IndexRouteImport.update({
@@ -161,6 +162,11 @@ const TerminalsRoute = TerminalsRouteImport.update({
   path: '/terminals',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TrackingRoute = TrackingRouteImport.update({
+  id: '/tracking',
+  path: '/tracking',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TenancyUsersRoute = TenancyUsersRouteImport.update({
   id: '/tenancy/users',
   path: '/tenancy/users',
@@ -193,6 +199,7 @@ export interface FileRoutesByFullPath {
   '/session': typeof SessionRoute
   '/shipments': typeof ShipmentsRoute
   '/terminals': typeof TerminalsRoute
+  '/tracking': typeof TrackingRoute
   '/tenancy/users': typeof TenancyUsersRoute
 }
 export interface FileRoutesByTo {
@@ -221,6 +228,7 @@ export interface FileRoutesByTo {
   '/session': typeof SessionRoute
   '/shipments': typeof ShipmentsRoute
   '/terminals': typeof TerminalsRoute
+  '/tracking': typeof TrackingRoute
   '/tenancy/users': typeof TenancyUsersRoute
 }
 export interface FileRoutesById {
@@ -250,6 +258,7 @@ export interface FileRoutesById {
   '/session': typeof SessionRoute
   '/shipments': typeof ShipmentsRoute
   '/terminals': typeof TerminalsRoute
+  '/tracking': typeof TrackingRoute
   '/tenancy/users': typeof TenancyUsersRoute
 }
 export interface FileRouteTypes {
@@ -280,6 +289,7 @@ export interface FileRouteTypes {
     | '/session'
     | '/shipments'
     | '/terminals'
+    | '/tracking'
     | '/tenancy/users'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -308,6 +318,7 @@ export interface FileRouteTypes {
     | '/session'
     | '/shipments'
     | '/terminals'
+    | '/tracking'
     | '/tenancy/users'
   id:
     | '__root__'
@@ -336,6 +347,7 @@ export interface FileRouteTypes {
     | '/session'
     | '/shipments'
     | '/terminals'
+    | '/tracking'
     | '/tenancy/users'
   fileRoutesById: FileRoutesById
 }
@@ -365,6 +377,7 @@ export interface RootRouteChildren {
   SessionRoute: typeof SessionRoute
   ShipmentsRoute: typeof ShipmentsRoute
   TerminalsRoute: typeof TerminalsRoute
+  TrackingRoute: typeof TrackingRoute
   TenancyUsersRoute: typeof TenancyUsersRoute
 }
 
@@ -545,6 +558,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TerminalsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tracking': {
+      id: '/tracking'
+      path: '/tracking'
+      fullPath: '/tracking'
+      preLoaderRoute: typeof TrackingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tenancy/users': {
       id: '/tenancy/users'
       path: '/tenancy/users'
@@ -581,6 +601,7 @@ const rootRouteChildren: RootRouteChildren = {
   SessionRoute: SessionRoute,
   ShipmentsRoute: ShipmentsRoute,
   TerminalsRoute: TerminalsRoute,
+  TrackingRoute: TrackingRoute,
   TenancyUsersRoute: TenancyUsersRoute,
 }
 export const routeTree = rootRouteImport
