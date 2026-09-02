@@ -324,6 +324,68 @@ function OfferNegotiationPanel(args: { lanes: QuotationLane[]; signedIn: boolean
   )
 }
 
+function OfferDocumentPanel(args: { rows: Quotation[] }) {
+  const [quoteId, setQuoteId] = useState("")
+  const selected = args.rows.find((row) => row.id === quoteId)
+
+  return (
+    <article className="space-y-2 p-3 outline outline-1 outline-border" data-offer-document="preview">
+      <h3 className="text-sm font-medium">Dokument oferty</h3>
+      <p className="text-xs text-muted-foreground">fakty z quotation · nie PDF · nie szablon FV</p>
+      {args.rows.length === 0 ? (
+        <p className="text-sm text-muted-foreground">Najpierw wycena — dokument z wiersza.</p>
+      ) : (
+        <label className="flex flex-col gap-1 text-xs">
+          quotation.id
+          <select
+            aria-label="Wycena do dokumentu"
+            className="h-8 rounded-md border border-border bg-card px-2 text-sm"
+            value={quoteId}
+            onChange={(event) => setQuoteId(event.target.value)}
+          >
+            <option value="">Wybierz wycenę</option>
+            {args.rows.map((row) => (
+              <option key={row.id} value={row.id}>
+                {row.charge_code} {row.id}
+              </option>
+            ))}
+          </select>
+        </label>
+      )}
+      {selected ? (
+        <dl className="grid gap-1 text-xs">
+          <div>
+            <dt className="text-muted-foreground">Kod opłaty</dt>
+            <dd>{selected.charge_code}</dd>
+          </div>
+          <div>
+            <dt className="text-muted-foreground">Kwota ze stawki</dt>
+            <dd>
+              <Money amount={selected.amount} currency={selected.currency} />
+            </dd>
+          </div>
+          <div>
+            <dt className="text-muted-foreground">party_id</dt>
+            <dd className="font-mono">{selected.party_id ?? "—"}</dd>
+          </div>
+          <div>
+            <dt className="text-muted-foreground">origin_port_id</dt>
+            <dd className="font-mono">{selected.origin_port_id ?? "—"}</dd>
+          </div>
+          <div>
+            <dt className="text-muted-foreground">destination_port_id</dt>
+            <dd className="font-mono">{selected.destination_port_id ?? "—"}</dd>
+          </div>
+          <div>
+            <dt className="text-muted-foreground">source_ref</dt>
+            <dd>{selected.source_ref}</dd>
+          </div>
+        </dl>
+      ) : null}
+    </article>
+  )
+}
+
 export function QuotationCatalogPage() {
   const ctx = getTenantContext()
   const queryClient = useQueryClient()
@@ -533,6 +595,7 @@ export function QuotationCatalogPage() {
           <OfferNbpFieldset currencies={quotationCurrencies(query.data)} signedIn={signedIn} />
           <OfferRiskPanel partyIds={quotationPartyIds(query.data)} signedIn={signedIn} />
           <OfferNegotiationPanel lanes={quotationLanes(query.data)} signedIn={signedIn} />
+          <OfferDocumentPanel rows={query.data} />
         </>
       ) : null}
 

@@ -1,10 +1,10 @@
 # M-26 dokument oferty — podgląd faktów `quotation`
 
 **Moduł żywy:** M-26 (token UI `offer_document`, nie tabela) + ekran M-21 `quotation`  
-**Plaster:** **19.0** (plan)  
-**Status:** plan — wycena **pokazuje** swoje pola jako dokument. Nie PDF. Nie `@media print` (U-print = Fala 5/6).
+**Plaster:** **19.0** (zamknięty)  
+**Status:** wycena **pokazuje** swoje pola jako dokument. Nie PDF. Nie `@media print` (U-print = Fala 5/6).
 
-Delta: [docs/deltas/open/19.0-offer-document.md](../deltas/open/19.0-offer-document.md).
+Delta: [docs/deltas/archived/19.0-offer-document.md](../deltas/archived/19.0-offer-document.md).
 
 ## 19.0 podgląd dokumentu oferty
 
