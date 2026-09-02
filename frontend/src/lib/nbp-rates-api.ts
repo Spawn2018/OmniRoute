@@ -40,6 +40,25 @@ export async function fetchNbpRates(): Promise<NbpRate[]> {
   return (await response.json()) as NbpRate[]
 }
 
+export function nbpRatesForKnownCurrencies<
+  ChargeRow extends { buy_currency: string; sell_currency: string },
+  QuoteRow extends { currency: string },
+>(
+  rates: readonly NbpRate[],
+  charges: readonly ChargeRow[],
+  quotations: readonly QuoteRow[],
+): NbpRate[] {
+  const codes = new Set<string>()
+  for (const charge of charges) {
+    codes.add(charge.buy_currency)
+    codes.add(charge.sell_currency)
+  }
+  for (const quotation of quotations) {
+    codes.add(quotation.currency)
+  }
+  return rates.filter((row) => codes.has(row.currency))
+}
+
 export async function createNbpRate(body: {
   currency: string
   rate_date: string

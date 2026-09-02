@@ -21,6 +21,7 @@ import { Route as EdiRouteImport } from './routes/edi'
 import { Route as ExceptionsRouteImport } from './routes/exceptions'
 import { Route as ExtractionsRouteImport } from './routes/extractions'
 import { Route as FinanceRouteImport } from './routes/finance'
+import { Route as FxDifferencesRouteImport } from './routes/fx-differences'
 import { Route as InvoicesRouteImport } from './routes/invoices'
 import { Route as LocationsRouteImport } from './routes/locations'
 import { Route as MailRouteImport } from './routes/mail'
@@ -102,6 +103,11 @@ const ExtractionsRoute = ExtractionsRouteImport.update({
 const FinanceRoute = FinanceRouteImport.update({
   id: '/finance',
   path: '/finance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FxDifferencesRoute = FxDifferencesRouteImport.update({
+  id: '/fx-differences',
+  path: '/fx-differences',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InvoicesRoute = InvoicesRouteImport.update({
@@ -228,6 +234,7 @@ export interface FileRoutesByFullPath {
   '/exceptions': typeof ExceptionsRoute
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
+  '/fx-differences': typeof FxDifferencesRoute
   '/invoices': typeof InvoicesRoute
   '/locations': typeof LocationsRoute
   '/mail': typeof MailRoute
@@ -264,6 +271,7 @@ export interface FileRoutesByTo {
   '/exceptions': typeof ExceptionsRoute
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
+  '/fx-differences': typeof FxDifferencesRoute
   '/invoices': typeof InvoicesRoute
   '/locations': typeof LocationsRoute
   '/mail': typeof MailRoute
@@ -301,6 +309,7 @@ export interface FileRoutesById {
   '/exceptions': typeof ExceptionsRoute
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
+  '/fx-differences': typeof FxDifferencesRoute
   '/invoices': typeof InvoicesRoute
   '/locations': typeof LocationsRoute
   '/mail': typeof MailRoute
@@ -339,6 +348,7 @@ export interface FileRouteTypes {
     | '/exceptions'
     | '/extractions'
     | '/finance'
+    | '/fx-differences'
     | '/invoices'
     | '/locations'
     | '/mail'
@@ -375,6 +385,7 @@ export interface FileRouteTypes {
     | '/exceptions'
     | '/extractions'
     | '/finance'
+    | '/fx-differences'
     | '/invoices'
     | '/locations'
     | '/mail'
@@ -411,6 +422,7 @@ export interface FileRouteTypes {
     | '/exceptions'
     | '/extractions'
     | '/finance'
+    | '/fx-differences'
     | '/invoices'
     | '/locations'
     | '/mail'
@@ -448,6 +460,7 @@ export interface RootRouteChildren {
   ExceptionsRoute: typeof ExceptionsRoute
   ExtractionsRoute: typeof ExtractionsRoute
   FinanceRoute: typeof FinanceRoute
+  FxDifferencesRoute: typeof FxDifferencesRoute
   InvoicesRoute: typeof InvoicesRoute
   LocationsRoute: typeof LocationsRoute
   MailRoute: typeof MailRoute
@@ -556,6 +569,13 @@ declare module '@tanstack/react-router' {
       path: '/finance'
       fullPath: '/finance'
       preLoaderRoute: typeof FinanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fx-differences': {
+      id: '/fx-differences'
+      path: '/fx-differences'
+      fullPath: '/fx-differences'
+      preLoaderRoute: typeof FxDifferencesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/invoices': {
@@ -728,6 +748,7 @@ const rootRouteChildren: RootRouteChildren = {
   ExceptionsRoute: ExceptionsRoute,
   ExtractionsRoute: ExtractionsRoute,
   FinanceRoute: FinanceRoute,
+  FxDifferencesRoute: FxDifferencesRoute,
   InvoicesRoute: InvoicesRoute,
   LocationsRoute: LocationsRoute,
   MailRoute: MailRoute,

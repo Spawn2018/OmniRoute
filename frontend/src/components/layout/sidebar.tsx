@@ -10,6 +10,7 @@ const NAV = [
   { to: "/quote-invoices", label: "Rozliczenie wyceny" },
   { to: "/payments", label: "Bank i płatności" },
   { to: "/money-cost", label: "Koszt pieniądza" },
+  { to: "/fx-differences", label: "Różnice kursowe" },
   { to: "/mail", label: "Poczta" },
   { to: "/notifications", label: "Powiadomienia" },
   { to: "/shipments", label: "Zlecenia" },

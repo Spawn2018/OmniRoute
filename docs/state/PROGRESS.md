@@ -140,4 +140,5 @@
 | 2026-09-02 | 35.0 | M-42 | `bank_payment` tablica `/payments` (IBAN + sell z charge). Nie tabela płatności, nie SEPA, nie N+1. |
 | 2026-09-02 | Plan 36.0 | M-43 | delta `docs/deltas/archived/36.0-money-cost.md` + spec. Tablica NBP + buy. Nie tabela odsetek. Następny: `/plaster` 36.0. |
 | 2026-09-02 | 36.0 | M-43 | `money_cost` tablica `/money-cost` (NBP + buy z charge). Nie tabela odsetek, nie mnożenie kursem. |
-| 2026-09-02 | Plan 37.0 | M-44 | delta `docs/deltas/open/37.0-fx-difference.md` + spec. Tablica NBP walut z charge/quotation. Nie tabela FX. Następny: `/plaster` 37.0. |
+| 2026-09-02 | Plan 37.0 | M-44 | delta `docs/deltas/archived/37.0-fx-difference.md` + spec. Tablica NBP walut z charge/quotation. Nie tabela FX. Następny: `/plaster` 37.0. |
+| 2026-09-02 | 37.0 | M-44 | `fx_difference` tablica `/fx-differences` (NBP walut z charge/quotation). Nie tabela, nie przeliczenie. |

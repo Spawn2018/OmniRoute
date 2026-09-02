@@ -50,6 +50,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-41 | Rozliczenie wyceny z fakturą | 34.0 `quote_invoice_settlement` | **ukończony (fundament)** · tablica wycena + `sell` po `rate_line_id`; nie tabela; nie odejmowanie |
 | M-42 | Bank i płatności | 35.0 `bank_payment` | **ukończony (fundament)** · tablica IBAN + `sell` z `charge`; nie tabela płatności; nie SEPA |
 | M-43 | Koszt pieniądza | 36.0 `money_cost` | **ukończony (fundament)** · tablica NBP + `buy` z `charge`; nie tabela odsetek; nie mnożenie |
+| M-44 | Różnice kursowe | 37.0 `fx_difference` | **ukończony (fundament)** · tablica NBP walut z `charge`/`quotation`; nie tabela; nie przeliczenie |
 
 Nie dopisuj tu 70 pustych wierszy M-xx. Katalog + **kolejka Q1…** (co budować jedno po drugim, tryb Plan potem plaster): `docs/PLAN-REALIZACJA.md` § Kolejka. Archiwum Claude zostaje magazynem specyfikacji, nie SoT kolejności.
 
