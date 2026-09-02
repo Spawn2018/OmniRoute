@@ -201,3 +201,4 @@
 | 2026-09-02 | OS-2 | ops | factory_cycle na komendach, C2, E2 run_gate, podłoga jakości, bench 66.0, karty z 3× CI. Nie Auto-AGENTS. Nie S4. |
 | 2026-09-02 | OS-3 | ops | Test z nowym serwisem/API, how-to albo leftover przy zapisie, delta produktu zanim kod. Nie S4. |
 | 2026-09-02 | OS-4 | ops | Skaner slopu (`craft-style`) + sufit funkcji >40 linii. Nie tożsamość z człowiekiem. Nie S4. |
+| 2026-09-03 | Plan 67.0 | M-28 | S4: `customer_rfq` powiązany z `inbound_message`. Delta zaakceptowana (`/noc`). Nie ślad wycen, nie silnik. Następny: `/plaster` 67.0. |
