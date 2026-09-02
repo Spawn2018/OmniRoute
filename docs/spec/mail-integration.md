@@ -1,10 +1,10 @@
 # M-32 integracja pocztowa — tablica znanych adresów + inbound_message
 
 **Moduł żywy:** M-32  
-**Plaster:** **64.0** (zamknięty) · 25.0 tablica adresów zostaje  
-**Status:** operator **widzi** domeny i maile kontaktów, resolve adresu, oraz **zapisuje** wiadomość przychodzącą z fixture. Nie IMAP. Nie Graph. Nie send.
+**Plaster:** **65.0** (zamknięty) · 64.0 tabela · 25.0 tablica adresów  
+**Status:** operator zapisuje fixture, dopina nadawcę przez `resolve_email`. Nie IMAP. Nie Graph. Nie send. Extract z treści = S3.
 
-Delta: [docs/deltas/archived/64.0-inbound-message.md](../deltas/archived/64.0-inbound-message.md) · [25.0](../deltas/archived/25.0-mail-integration.md).
+Delta: [65.0](../deltas/archived/65.0-inbound-resolve-email.md) · [64.0](../deltas/archived/64.0-inbound-message.md) · [25.0](../deltas/archived/25.0-mail-integration.md).
 
 ## 25.0 tablica odczytu na `/mail`
 
@@ -29,7 +29,20 @@ Live IMAP · magazyn sekretów tenanta · Outlook (M-33) · powiadomienia (M-34)
 
 ### Poza 64.0
 
-`resolve_email` na wierszu (S2) · extract z treści (S3) · IMAP · Graph · send · `party_id` · załączniki blob · outbox
+extract z treści (S3) · IMAP · Graph · send · załączniki blob · outbox
+
+## 65.0 resolve_email na wiadomości
+
+### Zakres
+
+- `inbound_message.party_id` nullable, FK tenanta (`organization_id` + `party_id`)
+- `POST /inbound-messages/{id}/resolve-email` — istniejący matcher domeny
+- `/mail`: przycisk „Dopasuj nadawcę”
+- BC inbound nie importuje parties; API składa
+
+### Poza 65.0
+
+extract (S3) · IMAP · Graph · auto przy INSERT · INSERT kontaktu
 
 ### HC
 

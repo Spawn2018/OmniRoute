@@ -9,6 +9,7 @@ export type InboundMessage = {
   subject: string
   body_text: string
   status: string
+  party_id: string | null
 }
 
 export function inboundMessageCreateBody(input: {
@@ -65,4 +66,14 @@ export async function createInboundMessage(body: {
     body: JSON.stringify(body),
   })
   return readInboundMessage(response, "Błąd zapisu wiadomości")
+}
+
+export async function resolveInboundMessageEmail(
+  messageId: string,
+): Promise<InboundMessage> {
+  const response = await fetch(`/api/v1/inbound-messages/${messageId}/resolve-email`, {
+    method: "POST",
+    headers: requireAuthHeaders(),
+  })
+  return readInboundMessage(response, "Błąd dopasowania nadawcy")
 }

@@ -868,6 +868,10 @@ export type InboundMessageResponse = {
      * Status
      */
     status: string;
+    /**
+     * Party Id
+     */
+    party_id: string | null;
 };
 
 /**
@@ -2624,6 +2628,36 @@ export type CreateInboundMessageApiV1InboundMessagesPostResponses = {
 };
 
 export type CreateInboundMessageApiV1InboundMessagesPostResponse = CreateInboundMessageApiV1InboundMessagesPostResponses[keyof CreateInboundMessageApiV1InboundMessagesPostResponses];
+
+export type ResolveInboundMessageEmailApiV1InboundMessagesMessageIdResolveEmailPostData = {
+    body?: never;
+    path: {
+        /**
+         * Message Id
+         */
+        message_id: string;
+    };
+    query?: never;
+    url: '/api/v1/inbound-messages/{message_id}/resolve-email';
+};
+
+export type ResolveInboundMessageEmailApiV1InboundMessagesMessageIdResolveEmailPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ResolveInboundMessageEmailApiV1InboundMessagesMessageIdResolveEmailPostError = ResolveInboundMessageEmailApiV1InboundMessagesMessageIdResolveEmailPostErrors[keyof ResolveInboundMessageEmailApiV1InboundMessagesMessageIdResolveEmailPostErrors];
+
+export type ResolveInboundMessageEmailApiV1InboundMessagesMessageIdResolveEmailPostResponses = {
+    /**
+     * Successful Response
+     */
+    200: InboundMessageResponse;
+};
+
+export type ResolveInboundMessageEmailApiV1InboundMessagesMessageIdResolveEmailPostResponse = ResolveInboundMessageEmailApiV1InboundMessagesMessageIdResolveEmailPostResponses[keyof ResolveInboundMessageEmailApiV1InboundMessagesMessageIdResolveEmailPostResponses];
 
 export type ListNbpRatesApiV1NbpRatesGetData = {
     body?: never;

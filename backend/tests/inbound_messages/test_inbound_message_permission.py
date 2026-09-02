@@ -1,5 +1,5 @@
 from pathlib import Path
-from uuid import UUID
+from uuid import UUID, uuid4
 
 import pytest
 from fastapi.testclient import TestClient
@@ -23,6 +23,12 @@ _ENDPOINTS = (
             "subject": "RFQ",
             "body_text": "treść",
         },
+    ),
+    (
+        "POST",
+        f"/api/v1/inbound-messages/{uuid4()}/resolve-email",
+        None,
+        None,
     ),
 )
 

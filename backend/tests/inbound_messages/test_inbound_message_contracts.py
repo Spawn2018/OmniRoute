@@ -2,6 +2,7 @@ from pathlib import Path
 
 _ROOT = Path(__file__).resolve().parents[3]
 _MIGRATION = _ROOT / "backend" / "alembic" / "versions" / "026_inbound_message_rls.py"
+_MIGRATION_PARTY = _ROOT / "backend" / "alembic" / "versions" / "027_inbound_message_party.py"
 _SERVICES = _ROOT / "backend" / "app" / "services"
 
 
@@ -18,6 +19,27 @@ def test_migration_026_creates_inbound_message_and_forces_rls() -> None:
     assert "source_ref" in source
     assert "def downgrade" in source
     assert "drop_table" in source.split("def downgrade")[1]
+
+
+def test_migration_027_adds_same_tenant_party_fk() -> None:
+    source = _MIGRATION_PARTY.read_text(encoding="utf-8")
+    assert 'revision: str = "027_inbound_message_party"' in source
+    assert "fk_inbound_message_party" in source
+    assert "party_id" in source
+    assert "organization_id" in source
+
+
+def test_inbound_service_does_not_import_parties() -> None:
+    service = (
+        _ROOT
+        / "backend"
+        / "app"
+        / "services"
+        / "inbound_messages"
+        / "inbound_message_service.py"
+    ).read_text(encoding="utf-8")
+    assert "app.services.parties" not in service
+    assert "app.models.party" not in service
 
 
 def test_importlinter_lists_inbound_messages_as_independent() -> None:

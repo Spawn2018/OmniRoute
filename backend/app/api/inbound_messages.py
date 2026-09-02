@@ -7,6 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.api.deps import get_current_identity, require_permission, require_tenant_session
 from app.core.session_token import SessionIdentity
 from app.services.inbound_messages.inbound_message_service import InboundMessageService
+from app.services.parties.party_service import PartyService
 
 router = APIRouter(prefix="/inbound-messages", tags=["inbound-messages"])
 
@@ -30,6 +31,7 @@ class InboundMessageResponse(BaseModel):
     subject: str
     body_text: str
     status: str
+    party_id: UUID | None
 
 
 @router.get("", response_model=list[InboundMessageResponse])
@@ -60,3 +62,17 @@ async def create_inbound_message(
     )
     await session.commit()
     return InboundMessageResponse.model_validate(row)
+
+
+@router.post("/{message_id}/resolve-email", response_model=InboundMessageResponse)
+async def resolve_inbound_message_email(
+    message_id: UUID,
+    _authz: None = Depends(require_permission("can_manage_inbound_messages", "organization")),
+    session: AsyncSession = Depends(require_tenant_session),
+) -> InboundMessageResponse:
+    messages = InboundMessageService(session)
+    row = await messages.get_message(message_id)
+    party = await PartyService(session).resolve_email(row.from_address)
+    attached = await messages.attach_party(row.id, party.id)
+    await session.commit()
+    return InboundMessageResponse.model_validate(attached)

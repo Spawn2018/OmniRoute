@@ -13,6 +13,7 @@ import {
   createInboundMessage,
   fetchInboundMessages,
   inboundMessageCreateBody,
+  resolveInboundMessageEmail,
   type InboundMessage,
 } from "@/lib/inbound-messages-api"
 import {
@@ -32,12 +33,17 @@ const columns = [
   }),
   helper.accessor("subject", { header: "Temat" }),
   helper.accessor("status", { header: "Status" }),
+  helper.accessor("party_id", {
+    header: "party_id",
+    cell: (info) => info.getValue() ?? "—",
+  }),
   helper.accessor("source_ref", { header: "Źródło" }),
 ]
 const COLUMN_LABELS = {
   from_address: "Nadawca",
   subject: "Temat",
   status: "Status",
+  party_id: "party_id",
   source_ref: "Źródło",
 }
 
@@ -100,6 +106,14 @@ export function MailIntegrationPage() {
       })
     },
   })
+  const resolveSender = useMutation({
+    mutationFn: resolveInboundMessageEmail,
+    onSuccess: () => {
+      void queryClient.invalidateQueries({
+        queryKey: ["inbound-messages", ctx.organizationId],
+      })
+    },
+  })
 
   return (
     <div className="flex flex-col gap-4" data-mail-integration="board">
@@ -114,6 +128,7 @@ export function MailIntegrationPage() {
       {lookup.isError ? <CatalogError error={lookup.error} /> : null}
       {inbound.isError ? <CatalogError error={inbound.error} /> : null}
       {createMutation.isError ? <CatalogError error={createMutation.error} /> : null}
+      {resolveSender.isError ? <CatalogError error={resolveSender.error} /> : null}
 
       <section className="space-y-2" data-inbound-message="fixture">
         <h2 className="text-sm font-medium">Wiadomości przychodzące</h2>
@@ -165,6 +180,19 @@ export function MailIntegrationPage() {
           columnLabels={COLUMN_LABELS}
           globalFilterPlaceholder="Filtruj wiadomości"
         />
+        {(inbound.data ?? [])
+          .filter((row) => row.party_id === null)
+          .map((row) => (
+            <Button
+              key={row.id}
+              type="button"
+              variant="outline"
+              disabled={!ready || resolveSender.isPending}
+              onClick={() => resolveSender.mutate(row.id)}
+            >
+              Dopasuj nadawcę {row.from_address}
+            </Button>
+          ))}
       </section>
 
       <form

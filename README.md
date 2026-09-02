@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **64.0** S1 `inbound_message` draft+fixture
-- **Etap:** Plaster
-- **Następny:** 65.0 S2 `/plaster` — `resolve_email` na `inbound_message`. Nie IMAP. Nie Graph. Nie F9.1.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **65.0** S2 `resolve_email` na `inbound_message`
+- **Etap:** Plan
+- **Następny:** Plan 66.0 S3 `/plan-modul` — treść maila → extract HITL. Serwis nie zapisuje `rate_line`. Nie IMAP. Nie F9.1.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

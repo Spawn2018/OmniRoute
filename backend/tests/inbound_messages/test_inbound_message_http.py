@@ -5,6 +5,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app.api.deps import require_tenant_session, set_authz_checker
+from app.domain.errors import ResourceNotFound
 from app.main import app
 from app.models.inbound_message import InboundMessage
 from tests.http_auth import bearer_auth_headers
@@ -53,6 +54,28 @@ class StubInboundMessageService:
         self.rows.append(row)
         return row
 
+    async def get_message(self, message_id: UUID) -> InboundMessage:
+        for row in self.rows:
+            if row.id == message_id:
+                return row
+        raise ResourceNotFound(f"nieznana wiadomość: {message_id}")
+
+    async def attach_party(self, message_id: UUID, party_id: UUID) -> InboundMessage:
+        row = await self.get_message(message_id)
+        row.party_id = party_id
+        return row
+
+
+class StubPartyService:
+    last_id = uuid4()
+
+    def __init__(self, session: object) -> None:
+        self._session = session
+
+    async def resolve_email(self, raw: str) -> object:
+        _ = raw
+        return type("PartyRow", (), {"id": StubPartyService.last_id})()
+
 
 @pytest.fixture
 def catalog_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
@@ -69,6 +92,10 @@ def catalog_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
     monkeypatch.setattr(
         "app.api.inbound_messages.InboundMessageService",
         _factory,
+    )
+    monkeypatch.setattr(
+        "app.api.inbound_messages.PartyService",
+        StubPartyService,
     )
     set_authz_checker(AllowAllAuthz())
     app.dependency_overrides[require_tenant_session] = _fake_tenant_session
@@ -95,8 +122,8 @@ def test_http_create_and_list_inbound_messages(catalog_client: TestClient) -> No
     assert body["organization_id"] == str(org_id)
     assert body["source_ref"] == "fixture://inbound-mail/1"
     assert body["status"] == "draft"
+    assert body["party_id"] is None
     assert "amount" not in body
-    assert "party_id" not in body
 
     listed = catalog_client.get("/api/v1/inbound-messages", headers=headers)
     assert listed.status_code == 200
@@ -118,3 +145,24 @@ def test_http_create_rejects_client_status(catalog_client: TestClient) -> None:
         },
     )
     assert response.status_code == 422
+
+
+def test_http_resolve_email_attaches_party(catalog_client: TestClient) -> None:
+    headers = bearer_auth_headers()
+    created = catalog_client.post(
+        "/api/v1/inbound-messages",
+        headers=headers,
+        json={
+            "source_ref": "fixture://inbound-mail/1",
+            "from_address": "ops@carrier.example",
+            "subject": "RFQ",
+            "body_text": "treść",
+        },
+    )
+    message_id = created.json()["id"]
+    resolved = catalog_client.post(
+        f"/api/v1/inbound-messages/{message_id}/resolve-email",
+        headers=headers,
+    )
+    assert resolved.status_code == 200
+    assert resolved.json()["party_id"] == str(StubPartyService.last_id)

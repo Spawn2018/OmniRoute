@@ -1102,6 +1102,54 @@
         ]
       }
     },
+    "/api/v1/inbound-messages/{message_id}/resolve-email": {
+      "post": {
+        "tags": [
+          "inbound-messages"
+        ],
+        "summary": "Resolve Inbound Message Email",
+        "operationId": "resolve_inbound_message_email_api_v1_inbound_messages__message_id__resolve_email_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "message_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Message Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InboundMessageResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/nbp-rates": {
       "get": {
         "tags": [
@@ -5302,6 +5350,18 @@
           "status": {
             "type": "string",
             "title": "Status"
+          },
+          "party_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Party Id"
           }
         },
         "type": "object",
@@ -5312,7 +5372,8 @@
           "from_address",
           "subject",
           "body_text",
-          "status"
+          "status",
+          "party_id"
         ],
         "title": "InboundMessageResponse"
       },

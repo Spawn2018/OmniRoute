@@ -2,6 +2,7 @@ from uuid import UUID, uuid4
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.domain.errors import ResourceNotFound
 from app.domain.inbound_message import (
     inbound_draft_status,
     require_body_text,
@@ -21,6 +22,12 @@ class InboundMessageService:
 
     async def list_messages(self) -> list[InboundMessage]:
         return await self._messages.list_all()
+
+    async def get_message(self, message_id: UUID) -> InboundMessage:
+        found = await self._messages.get(message_id)
+        if found is None:
+            raise ResourceNotFound(f"nieznana wiadomość: {message_id}")
+        return found
 
     async def create_message(
         self,
@@ -43,3 +50,9 @@ class InboundMessageService:
             created_by=user_id,
         )
         return await self._messages.add(row)
+
+    async def attach_party(self, message_id: UUID, party_id: UUID) -> InboundMessage:
+        row = await self.get_message(message_id)
+        row.party_id = party_id
+        await self._messages.add(row)
+        return row

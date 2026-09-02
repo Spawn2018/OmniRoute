@@ -195,3 +195,4 @@
 | 2026-09-02 | Plan 64.0 | M-32 | S1: `inbound_message` draft+fixture. Delta zaakceptowana (`/noc`). Nie Graph/IMAP/send. Następny: `/plaster` 64.0. |
 | 2026-09-02 | 64.0 | M-32 | `inbound_message` per tenant, RLS FORCE, fixture `source_ref`, OpenFGA, GET/POST, `/mail` lista+zapis. Nie Graph/IMAP/send. Następny: S2 Plan. |
 | 2026-09-02 | Plan 65.0 | M-11 | S2: `resolve_email` na `inbound_message`. Delta zaakceptowana (`/noc`). Nie IMAP/Graph. Następny: `/plaster` 65.0. |
+| 2026-09-02 | 65.0 | M-11 | `resolve_email` dopina `party_id` na `inbound_message`. FK tenanta. Nie IMAP. Nie auto przy INSERT. Następny: S3 Plan. |

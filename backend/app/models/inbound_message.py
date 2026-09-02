@@ -1,6 +1,6 @@
 import uuid
 
-from sqlalchemy import CheckConstraint, ForeignKey, String, Text
+from sqlalchemy import CheckConstraint, ForeignKey, ForeignKeyConstraint, String, Text
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -14,6 +14,12 @@ class InboundMessage(Base, TimestampMixin):
         CheckConstraint(
             "source_ref ~ '^(fixture|synth)://'",
             name="ck_inbound_message_source_fixture",
+        ),
+        ForeignKeyConstraint(
+            ["organization_id", "party_id"],
+            ["party.organization_id", "party.id"],
+            name="fk_inbound_message_party",
+            ondelete="RESTRICT",
         ),
     )
 
@@ -29,3 +35,4 @@ class InboundMessage(Base, TimestampMixin):
     subject: Mapped[str] = mapped_column(String(512), nullable=False)
     body_text: Mapped[str] = mapped_column(Text(), nullable=False)
     status: Mapped[str] = mapped_column(String(8), nullable=False)
+    party_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)

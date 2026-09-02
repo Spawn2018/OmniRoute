@@ -2,9 +2,11 @@ from uuid import uuid4
 
 import pytest
 from sqlalchemy import select
+from sqlalchemy.exc import IntegrityError
 
 from app.core.database import bind_tenant
 from app.models.inbound_message import InboundMessage
+from app.models.party import Party
 
 
 def _message(*, organization_id, user_id, suffix: str) -> InboundMessage:
@@ -57,3 +59,35 @@ async def test_inbound_message_rls_isolates_tenants(session, two_tenants) -> Non
         select(InboundMessage).where(InboundMessage.id == mail_a.id),
     )
     assert foreign_a is None
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_inbound_message_rejects_foreign_party_id(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    org_b = two_tenants["org_b"]
+    user_a = two_tenants["user_a"]
+    user_b = two_tenants["user_b"]
+
+    party_b = Party(
+        id=uuid4(),
+        organization_id=org_b.id,
+        legal_name="B",
+        country_code="PL",
+        roles=["customer"],
+        source_ref="tenant:manual",
+        is_active=True,
+        created_by=user_b.id,
+    )
+    mail_a = _message(organization_id=org_a.id, user_id=user_a.id, suffix="a")
+
+    await bind_tenant(session, org_b.id)
+    session.add(party_b)
+    await session.flush()
+
+    await bind_tenant(session, org_a.id)
+    session.add(mail_a)
+    await session.flush()
+    mail_a.party_id = party_b.id
+    with pytest.raises(IntegrityError):
+        await session.flush()
