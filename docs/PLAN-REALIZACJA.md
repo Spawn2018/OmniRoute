@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** M-35 Zlecenie (`/plan-modul`). Nie zgaduj schematu. Nie nowa tabela.
+**Następny (zablokowany):** 28.0 M-35 `shipment` (`/plaster`). Tablica wycen z `party_id`. Nie tabela. Nie tracking.
 <!-- os-status:end -->
 
 ```mermaid
@@ -336,7 +336,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | F4.0 | **M-32 Integracja pocztowa** | 25.0 | zamknięty (`docs/deltas/archived/25.0-mail-integration.md`) |
 | F4.1 | **M-33 Dodatek do Outlooka** | 26.0 | zamknięty (`docs/deltas/archived/26.0-mail-client.md`) |
 | F4.2 | **M-34 Powiadomienia** | 27.0 | zamknięty (`docs/deltas/archived/27.0-operator-notice.md`) |
-| F5.0 | **M-35 Zlecenie** | Plan | kolejka (`/plan-modul`; nie zgaduj schematu) |
+| F5.0 | **M-35 Zlecenie** | Plan → plaster | Plan (`docs/deltas/open/28.0-shipment.md`) |
 
 ### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster
 

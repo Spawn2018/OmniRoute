@@ -17,7 +17,7 @@
 | luka wyceny | quotation_gap | brakująca dopłata |
 | port załadunku | origin_port_id | POL na `quotation`; FK do `port` |
 | port wyładunku | destination_port_id | POD na `quotation`; FK do `port` |
-| zlecenie | shipment | handlowe |
+| zlecenie | shipment | 28.0 tablica wycen z `party_id`; nie tabela; nie tracking |
 | odcinek | shipment_leg | operacyjne |
 | tenant | organization | organization_id wszędzie |
 | ustawienie tenanta | organization_setting | konfiguracja jako dane; allowlista kluczy; nie sekret |

@@ -39,7 +39,7 @@ Seed: `scripts/dev_seed_local.py`.
 <!-- os-status:start -->
 - **Ostatni plaster:** **27.0** M-34 `operator_notice` tablica `/notifications` (zarchiwizowany)
 - **Etap:** Plan
-- **Następny:** M-35 Zlecenie (`/plan-modul`). Nie zgaduj schematu. Nie nowa tabela.
+- **Następny:** 28.0 M-35 `shipment` (`/plaster`). Tablica wycen z `party_id`. Nie tabela. Nie tracking.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

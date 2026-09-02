@@ -41,6 +41,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-32 | Integracja pocztowa | 25.0 `mail_integration` | **ukończony (fundament)** · tablica znanych adresów; nie IMAP; nie tabela skrzynki |
 | M-33 | Dodatek do Outlooka | 26.0 `mail_client` | **ukończony (fundament)** · `mailto:` na `/mail`; nie Office.js; nie Graph |
 | M-34 | Powiadomienia | 27.0 `operator_notice` | **ukończony (fundament)** · tablica HITL i wycen pending; nie tabela; nie wysyłka |
+| M-35 | Zlecenie | 28.0 `shipment` | **w toku** · Plan; tablica wycen z `party_id`; nie tabela; nie tracking |
 
 Nie dopisuj tu 70 pustych wierszy M-xx. Katalog + **kolejka Q1…** (co budować jedno po drugim, tryb Plan potem plaster): `docs/PLAN-REALIZACJA.md` § Kolejka. Archiwum Claude zostaje magazynem specyfikacji, nie SoT kolejności.
 

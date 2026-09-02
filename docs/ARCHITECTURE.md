@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **27.0** M-34 `operator_notice` tablica `/notifications` (zarchiwizowany). **Etap:** Plan. **Następny:** M-35 Zlecenie (`/plan-modul`). Nie zgaduj schematu. Nie nowa tabela. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **27.0** M-34 `operator_notice` tablica `/notifications` (zarchiwizowany). **Etap:** Plan. **Następny:** 28.0 M-35 `shipment` (`/plaster`). Tablica wycen z `party_id`. Nie tabela. Nie tracking. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
