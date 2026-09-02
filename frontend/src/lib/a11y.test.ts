@@ -41,6 +41,15 @@ describe("operator keyboard path", () => {
     expect(css).toContain("outline: 2px solid var(--ring)")
   })
 
+  it("ships oklch tokens and a dark theme instead of hex-only :root", () => {
+    const root = css.slice(css.indexOf(":root"), css.indexOf("@theme"))
+    expect(css).toContain("oklch(")
+    expect(css).toContain(".dark")
+    expect(root).not.toMatch(
+      /--(background|foreground|card|muted-foreground|primary):\s*#/,
+    )
+  })
+
   it("exposes skip-to-main and HITL accept in the keyboard path", () => {
     const skip = renderToStaticMarkup(createElement(SkipToMain))
     expect(skip).toContain(SKIP_TO_MAIN_LABEL)

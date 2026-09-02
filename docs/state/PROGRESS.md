@@ -168,4 +168,5 @@
 | 2026-09-02 | 49.0 | M-69 | `extraction_quality` tablica `/quality` (`unparsed_regions`). Nie scoring, nie tabela QA. |
 | 2026-09-02 | Plan 50.0 | M-70 | delta `docs/deltas/archived/50.0-tenant-rollout.md` + spec. Tablica `default_currency`. Nie tabela rollout. Następny: `/plaster` 50.0. |
 | 2026-09-02 | 50.0 | M-70 | `tenant_rollout` tablica `/rollout` (`default_currency`). Nie tabela, nie upsert. |
-| 2026-09-02 | Plan 51.0 | U-oklch-dark | delta `docs/deltas/open/51.0-oklch-dark.md` + spec. Tokeny oklch + `.dark`. Następny: `/plaster` 51.0. |
+| 2026-09-02 | Plan 51.0 | U-oklch-dark | delta `docs/deltas/archived/51.0-oklch-dark.md` + spec. Tokeny oklch + `.dark`. Następny: `/plaster` 51.0. |
+| 2026-09-02 | 51.0 | U-oklch-dark | tokeny `oklch` + `.dark` w `index.css`. Nie tabela, nie nowa trasa. |

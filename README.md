@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **50.0** M-70 `tenant_rollout` tablica `/rollout` (zarchiwizowany)
-- **Etap:** Plaster
-- **Następny:** 51.0 U-oklch-dark tokeny `oklch` + `.dark`. Nie zgaduj schematu. Nie nowa tabela.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
+- **Ostatni plaster:** **51.0** U-oklch-dark tokeny `oklch` + `.dark` (zarchiwizowany)
+- **Etap:** Plan
+- **Następny:** U-money-align (`/plan-modul`). PLAN § Wave FE leftover. Nie zgaduj schematu. Nie nowa tabela.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

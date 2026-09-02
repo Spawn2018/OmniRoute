@@ -1,25 +1,46 @@
 @import "tailwindcss";
 
-/* Design tokens — neutral enterprise (ADR-0002). Agent nie zmienia palety bez akceptacji. */
+/* Design tokens — OKLCH + .dark (51.0 leftover U-oklch-dark). Nie druga paleta poza tym plikiem. */
 :root {
-  --background: #f7f7f5;
-  --foreground: #1a1a1a;
-  --card: #ffffff;
-  --card-foreground: #1a1a1a;
-  --muted: #efefec;
-  --muted-foreground: #5c5c5c;
-  --border: #d9d9d4;
-  --input: #d9d9d4;
-  --ring: #1a1a1a;
-  --primary: #1a1a1a;
-  --primary-foreground: #f7f7f5;
-  --accent: #0f6e56;
-  --accent-foreground: #f7f7f5;
-  --sidebar: #efefec;
-  --sidebar-foreground: #1a1a1a;
-  --destructive: #b42318;
+  --background: oklch(0.9756 0.0026 106.45);
+  --foreground: oklch(0.2178 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2178 0 0);
+  --muted: oklch(0.9513 0.004 106.48);
+  --muted-foreground: oklch(0.4748 0 0);
+  --border: oklch(0.8839 0.0068 106.54);
+  --input: oklch(0.8839 0.0068 106.54);
+  --ring: oklch(0.2178 0 0);
+  --primary: oklch(0.2178 0 0);
+  --primary-foreground: oklch(0.9756 0.0026 106.45);
+  --accent: oklch(0.4809 0.0908 170.11);
+  --accent-foreground: oklch(0.9756 0.0026 106.45);
+  --sidebar: oklch(0.9513 0.004 106.48);
+  --sidebar-foreground: oklch(0.2178 0 0);
+  --destructive: oklch(0.5003 0.1821 29.51);
   --radius: 0.375rem;
   --font-sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+
+.dark {
+  --background: oklch(0.2178 0 0);
+  --foreground: oklch(0.9756 0.0026 106.45);
+  --card: oklch(0.26 0 0);
+  --card-foreground: oklch(0.9756 0.0026 106.45);
+  --muted: oklch(0.3 0 0);
+  --muted-foreground: oklch(0.78 0 0);
+  --border: oklch(0.38 0 0);
+  --input: oklch(0.38 0 0);
+  --ring: oklch(0.9756 0.0026 106.45);
+  --primary: oklch(0.9756 0.0026 106.45);
+  --primary-foreground: oklch(0.2178 0 0);
+  --accent: oklch(0.72 0.09 170.11);
+  --accent-foreground: oklch(0.2178 0 0);
+  --sidebar: oklch(0.24 0 0);
+  --sidebar-foreground: oklch(0.9756 0.0026 106.45);
+  --destructive: oklch(0.68 0.16 29.51);
+  color-scheme: dark;
 }
 
 @theme inline {

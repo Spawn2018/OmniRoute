@@ -120,7 +120,9 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **49.0 DONE:** `/quality` odczyt szkiców z niepustym `unparsed_regions`. Nie nowa tabela. Nie scoring. Nie accept.
 - **49.0 leftover — scoring / tabela QA / `ab_delta_chars` (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. LLM/JS nie liczy jakości. M-70 wdrożenie **DONE w 50.0**.
 - **50.0 DONE:** `/rollout` odczyt `organization_setting` z kluczem `default_currency`. Nie nowa tabela. Nie upsert. Nie CI.
-- **50.0 leftover — tabela rollout / CI / sekrety (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Zapis zostaje na `/organization-settings`. Fala 11 Q zamknięta; leftover Wave FE = `U-oklch-dark`.
+- **50.0 leftover — tabela rollout / CI / sekrety (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Zapis zostaje na `/organization-settings`. Fala 11 Q zamknięta; leftover Wave FE **U-oklch-dark DONE w 51.0**.
+- **51.0 DONE:** `index.css` `oklch()` + `.dark`; `prefers-color-scheme` na `html`. Nie tabela. Nie nowa trasa.
+- **51.0 leftover — U-money-align (dlaczego nie w tym plasterze):** PLAN leftover po U-oklch-dark. Kwota Decimal zostaje; ten plaster to tylko paleta.
 - **6.0 leftover — klon nagłówka modelu (dlaczego nie w tym plasterze):** `jscpd` 6 linii `charge.py` przeciw `nbp_rate.py` (blok `id`). Miksin wszystkich modeli = `refaktor-pass`. `just dup` 2,83% po kompaktowym `id` i osobnym formularzu kursu (nie `CatalogCreateForm`).
 - **7.0 DONE:** `dangerous_good` UN/IMDG + aliasy + `source_ref`, RLS FORCE, `resolve`, OpenFGA `can_manage_dangerous_goods`, `/dangerous-goods`. Nie podpięcie do wyceny, nie live IMO, nie M-08 `charge`.
 - **7.0 leftover — live IMO / ADN-ADR / Fala 8 (dlaczego nie w tym plasterze):** ręczny wpis = `tenant:manual`; fixture = `imdg:<un_number>`. Seed tysięcy UN i live HTTP do IMO = jak 4.0/5.0. ADN/ADR osobne tabele i grupy zgodności 1.xA = później. Fala 8 M-53–M-56 zostaje.
