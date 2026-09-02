@@ -84,6 +84,11 @@ export const OPS_JOBS = [
     job: "emaile kont tenanta",
   },
   {
+    route: BUSINESS_LISTS.aiCopilot.route,
+    label: "Propozycje AI",
+    job: "szkice HITL pending",
+  },
+  {
     route: BUSINESS_LISTS.mailIntegration.route,
     label: "Poczta",
     job: "odczyt domen i kontaktów",
@@ -246,6 +251,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "44.0": "/lcl",
   "45.0": "/sanctions",
   "46.0": "/gdpr",
+  "47.0": "/ai",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

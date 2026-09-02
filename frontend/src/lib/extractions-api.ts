@@ -101,6 +101,10 @@ export async function fetchExtractionDrafts(status = "pending"): Promise<Extract
   return data.map(toDraft)
 }
 
+export function aiProposals<Row extends { status: string }>(drafts: readonly Row[]): Row[] {
+  return drafts.filter((row) => row.status === "pending")
+}
+
 export async function createExtractionDraft(body: {
   source_ref: string
   input_text?: string

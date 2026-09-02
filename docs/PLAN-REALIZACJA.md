@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** 47.0 M-57 `ai_copilot` tablica `/ai`. Nie zgaduj schematu. Nie nowa tabela.
+**Następny (zablokowany):** M-58 (`/plan-modul`). Nie zgaduj nazwy ani schematu. Nie nowa tabela.
 <!-- os-status:end -->
 
 ```mermaid
@@ -355,7 +355,8 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | F7.3 | **M-51 Drobnica morska** | 44.0 | zamknięty (`docs/deltas/archived/44.0-ocean-lcl.md`) |
 | F8.0 | **M-53 Sankcje** | 45.0 | zamknięty (`docs/deltas/archived/45.0-sanctions.md`) |
 | F8.1 | **M-56 RODO** | 46.0 | zamknięty (`docs/deltas/archived/46.0-gdpr.md`) |
-| F9.0 | **M-57** | Plan | delta open 47.0 `ai_copilot` (HITL / Art. 50; nie zgaduj czatu) |
+| F9.0 | **M-57** | 47.0 | zamknięty (`docs/deltas/archived/47.0-ai-copilot.md`) |
+| F9.1 | **M-58** | Plan | kolejka (`/plan-modul`; nie zgaduj nazwy ani schematu) |
 
 ### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster
 
@@ -433,7 +434,7 @@ Nie implementuj z tej tabeli „na zapas”. To mapa, żeby nic nie zginęło. S
 | M-40–M-47 | Finanse | DONE fundament (33.0–40.0) |
 | M-48–M-51 | Modały | Fala 7 (M-48–M-51 DONE fundament 41.0–44.0) |
 | M-52–M-56 | Compliance | Fala 8 (M-52 7.0 + M-53/M-56 DONE 45.0–46.0; M-54/M-55 bez nazwy w PLAN) |
-| M-57–M-60 | AI / copilot | Fala 9 |
+| M-57–M-60 | AI / copilot | Fala 9 (M-57 DONE fundament 47.0) |
 | M-61–M-67 | Rynek / portal | Fala 10 |
 | M-68–M-70 | Ops / wdrożenie | Fala 11 |
 
@@ -466,13 +467,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

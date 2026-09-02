@@ -1,10 +1,10 @@
 # M-57 AI — tablica `extraction_draft` pending (Art. 50)
 
 **Moduł żywy:** M-57 (token UI `ai_copilot`, nie tabela) + M-20 `extraction_draft`  
-**Plaster:** **47.0** (plan)  
-**Status:** operator **zobaczy** szkice pending jako propozycje AI. Nie tabela czatu. Nie accept.
+**Plaster:** **47.0** (zamknięty)  
+**Status:** operator **widzi** szkice pending jako propozycje AI. Nie tabela czatu. Nie accept.
 
-Delta: [docs/deltas/open/47.0-ai-copilot.md](../deltas/open/47.0-ai-copilot.md).
+Delta: [docs/deltas/archived/47.0-ai-copilot.md](../deltas/archived/47.0-ai-copilot.md).
 
 ## 47.0 tablica odczytu na `/ai`
 

@@ -20,6 +20,7 @@ const NAV = [
   { to: "/lcl", label: "Drobnica morska" },
   { to: "/sanctions", label: "Sankcje" },
   { to: "/gdpr", label: "RODO" },
+  { to: "/ai", label: "Propozycje AI" },
   { to: "/mail", label: "Poczta" },
   { to: "/notifications", label: "Powiadomienia" },
   { to: "/shipments", label: "Zlecenia" },

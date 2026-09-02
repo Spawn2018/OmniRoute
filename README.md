@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **46.0** M-56 `gdpr` tablica `/gdpr` (zarchiwizowany)
-- **Etap:** Plaster
-- **Następny:** 47.0 M-57 `ai_copilot` tablica `/ai`. Nie zgaduj schematu. Nie nowa tabela.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
+- **Ostatni plaster:** **47.0** M-57 `ai_copilot` tablica `/ai` (zarchiwizowany)
+- **Etap:** Plan
+- **Następny:** M-58 (`/plan-modul`). Nie zgaduj nazwy ani schematu. Nie nowa tabela.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

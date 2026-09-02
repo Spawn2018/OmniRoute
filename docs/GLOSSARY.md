@@ -36,6 +36,7 @@
 | drobnica morska | ocean_lcl | 44.0 tablica `port` z `is_seaport`; nie tabela LCL; nie CFS |
 | sankcje | sanctions | 45.0 tablica aktywnych `party` (`tax_id`, `country_code`); nie OFAC; nie HTTP |
 | RODO | gdpr | 46.0 tablica `app_user` email; nie wniosek; nie usuwanie |
+| copilot AI | ai_copilot | 47.0 tablica `extraction_draft` pending; nie czat; nie accept |
 | odcinek | shipment_leg | operacyjne; nie w 29.0 |
 | tenant | organization | organization_id wszędzie |
 | ustawienie tenanta | organization_setting | konfiguracja jako dane; allowlista kluczy; nie sekret |
