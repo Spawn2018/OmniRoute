@@ -152,3 +152,4 @@
 | 2026-09-02 | 41.0 | M-48 | `road_transport` tablica `/road` (postal_zone i address). Nie TMS, nie GPS. |
 | 2026-09-02 | Plan 42.0 | M-49 | delta `docs/deltas/archived/42.0-intermodal-rail.md` + spec. Tablica portów z flagą rail. Nie wagon. Następny: `/plaster` 42.0. |
 | 2026-09-02 | 42.0 | M-49 | `intermodal_rail` tablica `/rail` (porty z flagą rail). Nie wagon, nie CIM. |
+| 2026-09-02 | Plan 43.0 | M-50 | delta `docs/deltas/open/43.0-china-rail.md` + spec. Tablica portów CN z flagą rail. Nie korytarz. Następny: `/plaster` 43.0. |
