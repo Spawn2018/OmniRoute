@@ -147,6 +147,30 @@ export function quotationAcceptancePending(rows: readonly Quotation[]): Quotatio
   return pending
 }
 
+export function quotationCarrierInquiries<
+  Quote extends {
+    id: string
+    party_id: string
+    origin_port_id: string
+    destination_port_id: string
+  },
+>(lanes: readonly QuotationLane[], quotes: readonly Quote[]): Quote[] {
+  const keys = new Set(
+    lanes.map((lane) => `${lane.partyId}:${lane.originPortId}:${lane.destinationPortId}`),
+  )
+  const matched: Quote[] = []
+  const seen = new Set<string>()
+  for (const quote of quotes) {
+    const key = `${quote.party_id}:${quote.origin_port_id}:${quote.destination_port_id}`
+    if (!keys.has(key) || seen.has(quote.id)) {
+      continue
+    }
+    seen.add(quote.id)
+    matched.push(quote)
+  }
+  return matched
+}
+
 async function readQuotation(response: Response, fallback: string): Promise<Quotation> {
   if (!response.ok) {
     throw new ApiError(await readApiDetail(response, fallback), httpErrorStatus(response))

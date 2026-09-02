@@ -7,7 +7,7 @@ import { Money } from "@/components/money"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { BUSINESS_LISTS } from "@/lib/business-lists"
-import { resolveChannelQuote, type ChannelQuote } from "@/lib/channel-quotes-api"
+import { fetchChannelQuotes, resolveChannelQuote, type ChannelQuote } from "@/lib/channel-quotes-api"
 import { resolveCreditReview, type CreditReview } from "@/lib/credit-reviews-api"
 import { resolveNbpRate, type NbpRate } from "@/lib/nbp-rates-api"
 import { fetchParties, type Party } from "@/lib/parties-api"
@@ -22,6 +22,7 @@ import {
   quotationCurrencies,
   quotationInquiryTrails,
   quotationAcceptancePending,
+  quotationCarrierInquiries,
   quotationLanes,
   quotationPartyIds,
   quotationSkipsNbpCatalog,
@@ -438,6 +439,27 @@ function OfferAcceptancePanel(args: { rows: Quotation[] }) {
   )
 }
 
+function OfferCarrierInquiryPanel(args: { lanes: QuotationLane[]; quotes: ChannelQuote[] }) {
+  const matched = quotationCarrierInquiries(args.lanes, args.quotes)
+  if (matched.length === 0) {
+    return null
+  }
+  return (
+    <article className="space-y-2 p-3 outline outline-1 outline-border" data-carrier-inquiry="trail">
+      <h3 className="text-sm font-medium">Zapytania do armatorów</h3>
+      <p className="text-xs text-muted-foreground">channel_quote na lane wyceny · nie HTTP · nie odejmuj</p>
+      <ul className="space-y-1 text-xs">
+        {matched.map((quote) => (
+          <li key={quote.id}>
+            {quote.quote_date} {quote.source_ref}{" "}
+            <Money amount={quote.amount} currency={quote.currency} />
+          </li>
+        ))}
+      </ul>
+    </article>
+  )
+}
+
 export function QuotationCatalogPage() {
   const ctx = getTenantContext()
   const queryClient = useQueryClient()
@@ -461,6 +483,13 @@ export function QuotationCatalogPage() {
   const portsQuery = useQuery({
     queryKey: ["ports-picker", ctx.organizationId],
     queryFn: () => fetchPorts(""),
+    enabled: signedIn,
+    retry: false,
+  })
+
+  const channelQuotesQuery = useQuery({
+    queryKey: ["channel-quotes", ctx.organizationId],
+    queryFn: fetchChannelQuotes,
     enabled: signedIn,
     retry: false,
   })
@@ -684,6 +713,10 @@ export function QuotationCatalogPage() {
           <OfferDocumentPanel rows={query.data} />
           <OfferInquiryPanel rows={query.data} parties={parties} />
           <OfferAcceptancePanel rows={query.data} />
+          <OfferCarrierInquiryPanel
+            lanes={quotationLanes(query.data)}
+            quotes={channelQuotesQuery.data ?? []}
+          />
         </>
       ) : null}
 

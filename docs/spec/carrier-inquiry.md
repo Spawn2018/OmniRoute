@@ -1,10 +1,10 @@
 # M-30 zapytania do armatorów — ślad `channel_quote` przy wycenie
 
 **Moduł żywy:** M-30 (token UI `carrier_inquiry`, nie tabela) + ekran M-21 `quotation` + katalog M-19 `channel_quote`  
-**Plaster:** **23.0** (plan)  
+**Plaster:** **23.0** (zamknięty)  
 **Status:** operator **widzi** oferty kanału pasujące do lane wyceny. Nie wysyłka HTTP. Nie nowa tabela RFQ.
 
-Delta: [docs/deltas/open/23.0-carrier-inquiry.md](../deltas/open/23.0-carrier-inquiry.md).
+Delta: [docs/deltas/archived/23.0-carrier-inquiry.md](../deltas/archived/23.0-carrier-inquiry.md).
 
 ## 23.0 ślad z katalogu kanału
 

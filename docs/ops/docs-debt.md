@@ -65,6 +65,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **21.0 leftover — tabela RFQ / IMAP (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Skrzynka = M-32. M-29 pending **DONE w 22.0**. `just dup` 2,70%.
 - **22.0 DONE:** `/quotations` panel pending akceptacji z wycen z `party_id`. Nie nowa tabela. Nie HITL accept. Nie `won`/`lost`.
 - **22.0 leftover — zapis wyniku / IMAP (dlaczego nie w tym plasterze):** leftover 18.0 (katalog won/lost). CURRENT zakazał zgadywania schematu. Skrzynka = M-32. `just dup` 2,70%.
+- **23.0 DONE:** `/quotations` ślad `channel_quote` na lane wyceny. Nie nowa tabela. Nie live HTTP. Nie odejmowanie kwot.
+- **23.0 leftover — wysyłka RFQ / live HTTP (dlaczego nie w tym plasterze):** leftover 13.0. Tabela jobów = zgadywanie schematu. M-31 porównanie = osobny Plan. `just dup` 2,69%.
 - **6.0 leftover — klon nagłówka modelu (dlaczego nie w tym plasterze):** `jscpd` 6 linii `charge.py` przeciw `nbp_rate.py` (blok `id`). Miksin wszystkich modeli = `refaktor-pass`. `just dup` 2,83% po kompaktowym `id` i osobnym formularzu kursu (nie `CatalogCreateForm`).
 - **7.0 DONE:** `dangerous_good` UN/IMDG + aliasy + `source_ref`, RLS FORCE, `resolve`, OpenFGA `can_manage_dangerous_goods`, `/dangerous-goods`. Nie podpięcie do wyceny, nie live IMO, nie M-08 `charge`.
 - **7.0 leftover — live IMO / ADN-ADR / Fala 8 (dlaczego nie w tym plasterze):** ręczny wpis = `tenant:manual`; fixture = `imdg:<un_number>`. Seed tysięcy UN i live HTTP do IMO = jak 4.0/5.0. ADN/ADR osobne tabele i grupy zgodności 1.xA = później. Fala 8 M-53–M-56 zostaje.

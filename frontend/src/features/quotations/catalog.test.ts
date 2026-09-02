@@ -5,6 +5,7 @@ import {
   quotationCreateBody,
   quotationCurrencies,
   quotationAcceptancePending,
+  quotationCarrierInquiries,
   quotationInquiryTrails,
   quotationLanes,
   quotationPartyIds,
@@ -146,6 +147,31 @@ describe("quotation NBP lookup", () => {
       quotationAcceptancePending([withParty, quotationWithCurrency("USD")]),
     ).toEqual([withParty])
   })
+
+  it("matches channel quotes to quotation lanes without subtracting amounts", () => {
+    const lane = {
+      id: "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      chargeCode: "THC",
+      partyId: PARTY,
+      originPortId: ORIGIN,
+      destinationPortId: DESTINATION,
+      amount: "10.0000",
+      currency: "EUR",
+    }
+    const hit = {
+      id: "ffffffff-ffff-4fff-8fff-ffffffffffff",
+      party_id: PARTY,
+      origin_port_id: ORIGIN,
+      destination_port_id: DESTINATION,
+    }
+    const miss = {
+      id: "99999999-9999-4999-8999-999999999999",
+      party_id: PARTY,
+      origin_port_id: ORIGIN,
+      destination_port_id: PARTY,
+    }
+    expect(quotationCarrierInquiries([lane], [hit, miss, hit])).toEqual([hit])
+  })
 })
 
 describe("quotation catalog screen", () => {
@@ -170,6 +196,9 @@ describe("quotation catalog screen", () => {
     expect(page).toContain("quotationInquiryTrails")
     expect(page).toContain('data-offer-acceptance="pending"')
     expect(page).toContain("quotationAcceptancePending")
+    expect(page).toContain("fetchChannelQuotes")
+    expect(page).toContain("quotationCarrierInquiries")
+    expect(page).toContain('data-carrier-inquiry="trail"')
     expect(page).not.toContain("acceptExtractionDraft")
     expect(page).not.toContain("imap")
     expect(page).not.toMatch(/reduce\s*\(/)

@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** 23.0 M-30 `carrier_inquiry` (`/plaster`). Ślad `channel_quote` przy lane. Nie tabela RFQ. Nie live HTTP.
+**Następny (zablokowany):** 24.0 M-31 Porównanie odpowiedzi (`/plan-modul`). Nie zgaduj schematu.
 <!-- os-status:end -->
 
 ```mermaid
@@ -331,7 +331,8 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | F3.4 | **M-27 Wycena wsadowa** | 20.0 | zamknięty (`docs/deltas/archived/20.0-quotation-batch.md`) |
 | F3.5 | **M-28 Zapytania od klientów** | 21.0 | zamknięty (`docs/deltas/archived/21.0-customer-inquiry.md`) |
 | F3.6 | **M-29 Wykrywanie akceptacji** | 22.0 | zamknięty (`docs/deltas/archived/22.0-offer-acceptance.md`) |
-| F3.7 | **M-30 Zapytania do agentów/armatorów** | Plan → plaster | Plan (`docs/deltas/open/23.0-carrier-inquiry.md`) |
+| F3.7 | **M-30 Zapytania do agentów/armatorów** | 23.0 | zamknięty (`docs/deltas/archived/23.0-carrier-inquiry.md`) |
+| F3.8 | **M-31 Porównanie odpowiedzi** | Plan → plaster | kolejka (`/plan-modul`; nie zgaduj schematu) |
 
 ### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster
 

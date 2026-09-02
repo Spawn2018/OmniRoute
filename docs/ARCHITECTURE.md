@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **22.0** M-29 `offer_acceptance` przy `quotation` (zarchiwizowany). **Etap:** Plan. **Następny:** 23.0 M-30 `carrier_inquiry` (`/plaster`). Ślad `channel_quote` przy lane. Nie tabela RFQ. Nie live HTTP. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **23.0** M-30 `carrier_inquiry` przy `quotation` (zarchiwizowany). **Etap:** Plan. **Następny:** 24.0 M-31 Porównanie odpowiedzi (`/plan-modul`). Nie zgaduj schematu. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
