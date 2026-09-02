@@ -154,3 +154,4 @@
 | 2026-09-02 | 42.0 | M-49 | `intermodal_rail` tablica `/rail` (porty z flagą rail). Nie wagon, nie CIM. |
 | 2026-09-02 | Plan 43.0 | M-50 | delta `docs/deltas/archived/43.0-china-rail.md` + spec. Tablica portów CN z flagą rail. Nie korytarz. Następny: `/plaster` 43.0. |
 | 2026-09-02 | 43.0 | M-50 | `china_rail` tablica `/china-rail` (porty CN z flagą rail). Nie korytarz, nie HTTP. |
+| 2026-09-02 | Plan 44.0 | M-51 | delta `docs/deltas/open/44.0-ocean-lcl.md` + spec. Tablica portów `is_seaport`. Nie tabela LCL. Następny: `/plaster` 44.0. |
