@@ -23,6 +23,11 @@ export const OPS_JOBS = [
     label: "Powiadomienia",
     job: "HITL pending i wyceny pending",
   },
+  {
+    route: BUSINESS_LISTS.shipment.route,
+    label: "Zlecenia",
+    job: "wyceny z party_id jako praca handlowa",
+  },
   { route: BUSINESS_LISTS.chargeCodes.route, label: "Kody opłat", job: "katalog charge_code" },
   {
     route: BUSINESS_LISTS.commodityCodes.route,
@@ -132,6 +137,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "25.0": "/mail",
   "26.0": "/mail",
   "27.0": "/notifications",
+  "28.0": "/shipments",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

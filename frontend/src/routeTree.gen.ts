@@ -32,6 +32,7 @@ import { Route as PortsRouteImport } from './routes/ports'
 import { Route as QuotationsRouteImport } from './routes/quotations'
 import { Route as RateLinesRouteImport } from './routes/rate-lines'
 import { Route as SessionRouteImport } from './routes/session'
+import { Route as ShipmentsRouteImport } from './routes/shipments'
 import { Route as TerminalsRouteImport } from './routes/terminals'
 import { Route as TenancyUsersRouteImport } from './routes/tenancy.users'
 
@@ -150,6 +151,11 @@ const SessionRoute = SessionRouteImport.update({
   path: '/session',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShipmentsRoute = ShipmentsRouteImport.update({
+  id: '/shipments',
+  path: '/shipments',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TerminalsRoute = TerminalsRouteImport.update({
   id: '/terminals',
   path: '/terminals',
@@ -185,6 +191,7 @@ export interface FileRoutesByFullPath {
   '/quotations': typeof QuotationsRoute
   '/rate-lines': typeof RateLinesRoute
   '/session': typeof SessionRoute
+  '/shipments': typeof ShipmentsRoute
   '/terminals': typeof TerminalsRoute
   '/tenancy/users': typeof TenancyUsersRoute
 }
@@ -212,6 +219,7 @@ export interface FileRoutesByTo {
   '/quotations': typeof QuotationsRoute
   '/rate-lines': typeof RateLinesRoute
   '/session': typeof SessionRoute
+  '/shipments': typeof ShipmentsRoute
   '/terminals': typeof TerminalsRoute
   '/tenancy/users': typeof TenancyUsersRoute
 }
@@ -240,6 +248,7 @@ export interface FileRoutesById {
   '/quotations': typeof QuotationsRoute
   '/rate-lines': typeof RateLinesRoute
   '/session': typeof SessionRoute
+  '/shipments': typeof ShipmentsRoute
   '/terminals': typeof TerminalsRoute
   '/tenancy/users': typeof TenancyUsersRoute
 }
@@ -269,6 +278,7 @@ export interface FileRouteTypes {
     | '/quotations'
     | '/rate-lines'
     | '/session'
+    | '/shipments'
     | '/terminals'
     | '/tenancy/users'
   fileRoutesByTo: FileRoutesByTo
@@ -296,6 +306,7 @@ export interface FileRouteTypes {
     | '/quotations'
     | '/rate-lines'
     | '/session'
+    | '/shipments'
     | '/terminals'
     | '/tenancy/users'
   id:
@@ -323,6 +334,7 @@ export interface FileRouteTypes {
     | '/quotations'
     | '/rate-lines'
     | '/session'
+    | '/shipments'
     | '/terminals'
     | '/tenancy/users'
   fileRoutesById: FileRoutesById
@@ -351,6 +363,7 @@ export interface RootRouteChildren {
   QuotationsRoute: typeof QuotationsRoute
   RateLinesRoute: typeof RateLinesRoute
   SessionRoute: typeof SessionRoute
+  ShipmentsRoute: typeof ShipmentsRoute
   TerminalsRoute: typeof TerminalsRoute
   TenancyUsersRoute: typeof TenancyUsersRoute
 }
@@ -518,6 +531,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SessionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/shipments': {
+      id: '/shipments'
+      path: '/shipments'
+      fullPath: '/shipments'
+      preLoaderRoute: typeof ShipmentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terminals': {
       id: '/terminals'
       path: '/terminals'
@@ -559,6 +579,7 @@ const rootRouteChildren: RootRouteChildren = {
   QuotationsRoute: QuotationsRoute,
   RateLinesRoute: RateLinesRoute,
   SessionRoute: SessionRoute,
+  ShipmentsRoute: ShipmentsRoute,
   TerminalsRoute: TerminalsRoute,
   TenancyUsersRoute: TenancyUsersRoute,
 }

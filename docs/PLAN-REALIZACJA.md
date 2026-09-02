@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** 28.0 M-35 `shipment` (`/plaster`). Tablica wycen z `party_id`. Nie tabela. Nie tracking.
+**Następny (zablokowany):** M-36 Tracking (`/plan-modul`). Nie zgaduj schematu. Nie nowa tabela.
 <!-- os-status:end -->
 
 ```mermaid
@@ -336,7 +336,8 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | F4.0 | **M-32 Integracja pocztowa** | 25.0 | zamknięty (`docs/deltas/archived/25.0-mail-integration.md`) |
 | F4.1 | **M-33 Dodatek do Outlooka** | 26.0 | zamknięty (`docs/deltas/archived/26.0-mail-client.md`) |
 | F4.2 | **M-34 Powiadomienia** | 27.0 | zamknięty (`docs/deltas/archived/27.0-operator-notice.md`) |
-| F5.0 | **M-35 Zlecenie** | Plan → plaster | Plan (`docs/deltas/open/28.0-shipment.md`) |
+| F5.0 | **M-35 Zlecenie** | 28.0 | zamknięty (`docs/deltas/archived/28.0-shipment.md`) |
+| F5.1 | **M-36 Tracking** | Plan | kolejka (`/plan-modul`; nie zgaduj schematu) |
 
 ### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster
 
@@ -410,7 +411,7 @@ Nie implementuj z tej tabeli „na zapas”. To mapa, żeby nic nie zginęło. S
 | M-22 | Narzuty i marża | COVERED (`charge`) |
 | M-23–M-31 | Ofertowanie | Fala 3 |
 | M-32–M-34 | Komunikacja | DONE fundament (25.0–27.0) |
-| M-35–M-39 | Zlecenie / EDI | Fala 5 |
+| M-35–M-39 | Zlecenie / EDI | Fala 5 (M-35 DONE fundament 28.0) |
 | M-40–M-47 | Finanse | Fala 6 |
 | M-48–M-51 | Modały | Fala 7 |
 | M-52–M-56 | Compliance | Fala 8 (żywe M-52 = `dangerous_good` z 7.0, nie drugi `charge`) |

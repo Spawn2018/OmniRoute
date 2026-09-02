@@ -122,4 +122,5 @@
 | 2026-09-02 | 26.0 | M-33 | `mail_client` `mailto:` z `party_contact.email` na `/mail`. Nie Office.js, nie Graph, nie IMAP. |
 | 2026-09-02 | Plan 27.0 | M-34 | delta `docs/deltas/archived/27.0-operator-notice.md` + spec. Tablica HITL i wycen pending. Nie tabela, nie wysyłka. Następny: `/plaster` 27.0. |
 | 2026-09-02 | 27.0 | M-34 | `operator_notice` tablica `/notifications` (HITL pending + wyceny pending). Nie tabela, nie wysyłka, nie HITL accept. |
-| 2026-09-02 | Plan 28.0 | M-35 | delta `docs/deltas/open/28.0-shipment.md` + spec. Tablica wycen z `party_id`. Nie tabela `shipment`, nie tracking. Następny: `/plaster` 28.0. |
+| 2026-09-02 | Plan 28.0 | M-35 | delta `docs/deltas/archived/28.0-shipment.md` + spec. Tablica wycen z `party_id`. Nie tabela `shipment`, nie tracking. Następny: `/plaster` 28.0. |
+| 2026-09-02 | 28.0 | M-35 | `shipment` tablica `/shipments` (wyceny z `party_id`). Nie tabela, nie tracking, nie odcinki. |

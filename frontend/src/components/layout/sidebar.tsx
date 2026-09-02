@@ -8,6 +8,7 @@ const NAV = [
   { to: "/finance", label: "Tablica finansowa" },
   { to: "/mail", label: "Poczta" },
   { to: "/notifications", label: "Powiadomienia" },
+  { to: "/shipments", label: "Zlecenia" },
   { to: "/charge-codes", label: "Kody opłat" },
   { to: "/commodity-codes", label: "Kody towarowe" },
   { to: "/dangerous-goods", label: "Towary niebezpieczne" },

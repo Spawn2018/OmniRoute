@@ -1,10 +1,10 @@
 # M-35 zlecenie — tablica wycen z kontrahentem
 
 **Moduł żywy:** M-35 (token UI `shipment`, nie tabela) + ekran M-21 `quotation`  
-**Plaster:** **28.0** (plan)  
+**Plaster:** **28.0** (zamknięty)  
 **Status:** operator **widzi** wyceny z `party_id` jako pracę handlową do zlecenia. Nie nowa tabela. Nie tracking.
 
-Delta: [docs/deltas/open/28.0-shipment.md](../deltas/open/28.0-shipment.md).
+Delta: [docs/deltas/archived/28.0-shipment.md](../deltas/archived/28.0-shipment.md).
 
 ## 28.0 tablica odczytu na `/shipments`
 
