@@ -1,9 +1,9 @@
 {
   "files": {
-    "AGENTS.md": "9fc70aa0d2a4ce462e3610ebe6f45d396cddc6a66dab8ffe2e94e36ac5781431",
+    "AGENTS.md": "4aa2a2e16f7569c345445fb99371f101e7f1709f8ff4dfbe8a2d3c1ca01b3bf7",
     "GROUNDING.md": "d70167008da30e328c30cf9255d70a7b863ed37068109097fab5ba07c5598ada",
     ".cursor/rules/security-tenancy.mdc": "2bd22d865acf47d1b56c4b053125357b3d8674543e76d21f23eda6b5a49b50c4",
     ".cursor/rules/no-slop.mdc": "4d88ba43d21a29be8edf97dd18e4343ed29792133429ab1fa2a4d32c7884929c",
-    ".cursor/rules/context.mdc": "b868a799711ce34090ff573b2bfbdb6a8ae96ae24060cae0525c306a4d9263be"
+    ".cursor/rules/context.mdc": "8f3b1cb2e2a437dd4c8b9b0cae9435ca1199409353a7e56605d1d3caf82fedca"
   }
 }

@@ -33,7 +33,7 @@ zakazane, aż będzie realne zdarzenie async między BC albo wektor. JWT hello �
 `Informacje z claude/` zostaje na dysku; **nie ładuj** (`.cursorignore`).
 Historyczny kontrakt: `Informacje z claude/AGENTS.ARCHIVE.md` — nie kanon.
 
-**Schemat bazy sprawdzasz przez MCP Postgres.** Nie czytaj wszystkich modeli.
+**Schemat czytasz z `backend/alembic/versions/`** (najnowsza migracja tej tabeli) **i z modeli tego BC.** Nie czytaj wszystkich modeli.
 Windows bez Dockera (PG natywnie): `scripts/dev-native.ps1`. `just dev` stawia PG w Dockerze.
 
 ## Trzynaście zasad
