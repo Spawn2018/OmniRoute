@@ -185,3 +185,4 @@
 | 2026-09-02 | 58.0 | ops | Karta jakości w `/po-plastrze`. Baseline drzewa: C901 OK, dup 2,81%, ratio 0,6%, EXPLAIN wyceny Index Scan, 0 wierszy `rate_line`. Proza: `docs/operator/ścieżka-pieniędzy.md`. |
 | 2026-09-02 | 59.0 | ops | Kanon 4,4–5 w PLAN. Fala E w kolejce. Etap Refaktor → `/refaktor`. Następny: Q-E1 katalogi. |
 | 2026-09-02 | Plan S | ops | Fala S (pogłębienia S1…) w PLAN po Q-E4. CURRENT zostaje Q-E1. Nie F9.1 po E. |
+| 2026-09-02 | 60.0 | UI | Q-E1: `/charges`, `/organization-settings`, `/rate-lines` na `catalog-parts`. Nie mixin modeli. Nie `/quotations`. Następny: Q-E2 Plan. |

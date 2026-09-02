@@ -1,8 +1,12 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
-import { Link } from "@tanstack/react-router"
 import { createColumnHelper } from "@tanstack/react-table"
 import { useState } from "react"
-import { DataTableShell } from "@/components/data-table/data-table-shell"
+import {
+  CatalogError,
+  CatalogHeading,
+  CatalogLoadedTable,
+  TenantSessionNotice,
+} from "@/components/catalog/catalog-parts"
 import { Money } from "@/components/money"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -86,19 +90,13 @@ export function ChargeCatalogPage() {
   }
 
   return (
-    <section className="space-y-3">
-      <header>
-        <h2 className="text-base font-semibold">Opłaty</h2>
-        <p className="text-xs text-muted-foreground">
-          charge M-08 · buy i sell na jednym wierszu · marża w kodzie · nie accept HITL
-        </p>
-      </header>
+    <div className="space-y-3">
+      <CatalogHeading
+        title="Opłaty"
+        subtitle="charge M-08 · buy i sell na jednym wierszu · marża w kodzie · nie accept HITL"
+      />
 
-      {signedIn ? null : (
-        <p className="text-sm">
-          Najpierw ustaw tenant na stronie <Link className="underline" to="/session">Sesja</Link>.
-        </p>
-      )}
+      {signedIn ? null : <TenantSessionNotice />}
 
       <form
         className="flex flex-col gap-2 rounded-md border border-border bg-card p-3 md:flex-row md:flex-wrap"
@@ -117,20 +115,17 @@ export function ChargeCatalogPage() {
         </Button>
       </form>
 
-      {createMutation.isError ? (
-        <p className="text-sm text-destructive">{(createMutation.error as Error).message}</p>
-      ) : null}
-      {query.isPending ? <p className="text-sm text-muted-foreground">Pobieranie opłat…</p> : null}
-      {query.isError ? <p className="text-sm text-destructive">{(query.error as Error).message}</p> : null}
-      {query.data ? (
-        <DataTableShell
-          tableKey={BUSINESS_LISTS.charges.tableKey}
-          columns={columns}
-          data={query.data}
-          columnLabels={COLUMN_LABELS}
-          globalFilterPlaceholder="Szukaj opłaty…"
-        />
-      ) : null}
-    </section>
+      {createMutation.isError ? <CatalogError error={createMutation.error} /> : null}
+
+      <CatalogLoadedTable
+        loading={query.isLoading}
+        error={query.error}
+        data={query.data}
+        tableKey={BUSINESS_LISTS.charges.tableKey}
+        columns={columns}
+        columnLabels={COLUMN_LABELS}
+        globalFilterPlaceholder="Szukaj opłaty…"
+      />
+    </div>
   )
 }

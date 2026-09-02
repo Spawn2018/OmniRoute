@@ -1,7 +1,11 @@
-import { Link } from "@tanstack/react-router"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { createColumnHelper } from "@tanstack/react-table"
 import { useState } from "react"
+import {
+  CatalogError,
+  CatalogHeading,
+  TenantSessionNotice,
+} from "@/components/catalog/catalog-parts"
 import { DataTableShell } from "@/components/data-table/data-table-shell"
 import { Money } from "@/components/money"
 import { Button } from "@/components/ui/button"
@@ -99,22 +103,12 @@ export function RateLineCatalogPage() {
 
   return (
     <div className="space-y-3">
-      <div>
-        <h2 className="text-base font-semibold">Stawki kupna</h2>
-        <p className="text-xs text-muted-foreground">
-          rate_line M-07 · niemutowalna · source_ref obowiązkowy · nie tabela charge
-        </p>
-      </div>
+      <CatalogHeading
+        title="Stawki kupna"
+        subtitle="rate_line M-07 · niemutowalna · source_ref obowiązkowy · nie tabela charge"
+      />
 
-      {ctx.organizationId && ctx.userId ? null : (
-        <p className="text-sm">
-          Brak sesji tenanta — ustaw ją na{" "}
-          <Link className="underline" to="/session">
-            Sesja
-          </Link>
-          .
-        </p>
-      )}
+      {ctx.organizationId && ctx.userId ? null : <TenantSessionNotice />}
 
       <form
         className="grid gap-2 rounded-md border border-border bg-card p-3 md:grid-cols-5"
@@ -156,9 +150,7 @@ export function RateLineCatalogPage() {
         </Button>
       </form>
 
-      {createMutation.isError ? (
-        <p className="text-sm text-destructive">{(createMutation.error as Error).message}</p>
-      ) : null}
+      {createMutation.isError ? <CatalogError error={createMutation.error} /> : null}
 
       <form
         className="grid gap-2 rounded-md border border-border bg-card p-3 md:grid-cols-5"
@@ -200,12 +192,10 @@ export function RateLineCatalogPage() {
         </Button>
       </form>
 
-      {supersedeMutation.isError ? (
-        <p className="text-sm text-destructive">{(supersedeMutation.error as Error).message}</p>
-      ) : null}
+      {supersedeMutation.isError ? <CatalogError error={supersedeMutation.error} /> : null}
 
       {query.isPending ? <p className="text-sm text-muted-foreground">Pobieranie stawek…</p> : null}
-      {query.isError ? <p className="text-sm text-destructive">{(query.error as Error).message}</p> : null}
+      {query.isError ? <CatalogError error={query.error} /> : null}
 
       {query.data ? (
         <DataTableShell

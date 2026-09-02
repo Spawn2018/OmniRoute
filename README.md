@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **59.0** kanon jakości 4,4–5 w PLAN + kolejka Q-E
-- **Etap:** Refaktor
-- **Następny:** Q-E1 `/refaktor` — katalogi Grupa A do 4,4 (`catalog-parts`). Nie F9.1. Nie S1. Parked: M-02, Auth0, portale (odblokowanie w Fali S).
-- **Komenda teraz:** `/refaktor` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **60.0** Q-E1 katalogi Grupa A na `catalog-parts`
+- **Etap:** Plan
+- **Następny:** Q-E2 `/plan-modul` — testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy). Nie F9.1. Nie S1. Parked: M-02, Auth0, portale (odblokowanie w Fali S).
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

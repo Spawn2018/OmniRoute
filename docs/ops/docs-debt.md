@@ -8,7 +8,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 
 **Zrobione w syncu (nie wracać):** nagłówek PLAN nie mówi „0.5 lokalnie”; `just test` pada przy failu unita (bez `|| true`).
 
-- **59.0 Fala E w kolejce:** kanon 4,4–5 w PLAN; Q-E1 = `/refaktor` katalogi. Nie 5,0 na tablicach-odczytach. Q-E2…E4 zostają w PLAN do skutku kolejki, nie „aż agent sam”.
+- **60.0 Q-E1 DONE:** `/charges`, `/organization-settings`, `/rate-lines` biorą nagłówek/sesję/błąd z `catalog-parts`; charges i ustawienia także `CatalogLoadedTable`. Formularze pól lokalne. `just dup` 2,78% total (tsx 2,76%). Mixin modeli **nie** w tym slocie.
+- **59.0 Fala E w kolejce:** kanon 4,4–5 w PLAN. Q-E1 zamknięty (60.0). Q-E2…E4 zostają w PLAN do skutku kolejki, nie „aż agent sam”. Nie 5,0 na tablicach-odczytach.
 
 - **58.0 baseline karty jakości (całe drzewo, nie rytm co plaster):** C901 czyste. jscpd 2,81% total (python 3,48% linii = nagłówki modeli + katalogi FE; gate liczy total). `refactor_ratio` 0,6% / 10% za 4 tyg. — slot `/refaktor`, nie mixin 40 modeli tutaj. N+1: `quote_batch` pętla max 20 = leftover 20.0. EXPLAIN wyceny na `omniroute`: Index Scan `ix_rate_line_current_charge_code`; `rate_line` = 0 wierszy — p95 50k = N/A aż będzie seed. Proza operatora rdzenia: `docs/operator/ścieżka-pieniędzy.md`. Reszta jobów zapisu (kontrahent, katalogi) bez how-to — gdy plaster da zapis, nie 70 stubów. Alembic vs `create_all`, `U-catalog-parts`, CodeQL/mutacje/STRIDE: bez zmian, pozycje już niżej albo poza tabelą co plaster.
 
@@ -158,7 +159,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **14.0 leftover — auto-scoring / biuro / limit (dlaczego nie w tym plasterze):** brak `legal_form` i PESEL; AI Act zakazuje scoringu osoby. HTTP BIK/KRD = sekrety tenanta (leftover HC). `party.credit_limit` zostaje ręczną parą Decimal z 5.0. M-15 VDF **DONE jako tablica odczytu** (15.0). `just dup` 2,76%.
 - **15.0 DONE:** `finance_board` `/finance` — odczyt marży z `charge`, kursów NBP, limitu i recenzji. Nie nowa tabela. LLM nie liczy.
 - **15.0 leftover — asystent LLM VDF (dlaczego nie w tym plasterze):** komentarz modelu do marży = liczenie/interpretacja kwot. PLAN: LLM nie liczy. `charge` zostaje prawdą. `just dup` 2,78%.
-- **U-catalog-parts:** `components/catalog/catalog-parts.tsx` (nagłówek, banner błędu, notka sesji, formularz resolve, formularz create, załadowana tabela). `/charge-codes` i `/commodity-codes` na wspólnym formularzu. `/nbp-rates` i `/dangerous-goods` biorą nagłówek/tabelę, ale mają własne pola. Pozostałe katalogi (`rate-lines`, `charges`, `quotations`, `organization-settings`) nadal mają własne kopie — przepięcie w slocie `refaktor-pass`, nie w plastrze domenowym.
+- **U-catalog-parts (reszta po 60.0):** `/quotations` nadal własny chrome (panele jobów, nie trzecie powtórzenie tabeli). `/rate-lines` ma nagłówek/sesję/błąd z parts, ale `DataTableShell` + `allowCondensed` zostają w źródle strony — test 53.0 czyta te stringi. Mixin nagłówków modeli = poza Q-E1.
 - **ADR-0003 DONE (dokument):** system UI + makiety `docs/design/`. Implementacja = leftover `U-oklch-dark` … `U-print` **poza Q1**. Nie Base UI. Nie mapa w initial JS.
 - **0.24 leftover (dlaczego nie w tym plasterze):** `just audit` nie w lokalnym `just gate` (~80 s + sieć PyPI) — CI woła `just audit`; audit = drzewo pyproject, nie host site-packages (pillow/gitpython); image Dockera bez digestu; OpenFGA nie w `/ready`; k6/vulture nadal echo
 - **U-routes-breadth DONE:** standing (Charge 1.0–1.2 mają trasy). Exit Wave FE **nie** claim — nie 70 UI, nie „powierzchnia 2026”

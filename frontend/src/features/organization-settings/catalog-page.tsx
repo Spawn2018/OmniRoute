@@ -1,8 +1,12 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
-import { Link } from "@tanstack/react-router"
 import { createColumnHelper } from "@tanstack/react-table"
 import { useState } from "react"
-import { DataTableShell } from "@/components/data-table/data-table-shell"
+import {
+  CatalogError,
+  CatalogHeading,
+  CatalogLoadedTable,
+  TenantSessionNotice,
+} from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { BUSINESS_LISTS } from "@/lib/business-lists"
@@ -55,19 +59,13 @@ export function OrganizationSettingCatalogPage() {
   })
 
   return (
-    <section className="space-y-3">
-      <header>
-        <h2 className="text-base font-semibold">Ustawienia tenanta</h2>
-        <p className="text-xs text-muted-foreground">
-          organization_setting M-03 · konfiguracja w bazie · nie env · nie sekrety
-        </p>
-      </header>
+    <div className="space-y-3">
+      <CatalogHeading
+        title="Ustawienia tenanta"
+        subtitle="organization_setting M-03 · konfiguracja w bazie · nie env · nie sekrety"
+      />
 
-      {signedIn ? null : (
-        <p className="text-sm">
-          Najpierw ustaw tenant na stronie <Link className="underline" to="/session">Sesja</Link>.
-        </p>
-      )}
+      {signedIn ? null : <TenantSessionNotice />}
 
       <form
         className="flex flex-col gap-2 rounded-md border border-border bg-card p-3 md:flex-row md:flex-wrap"
@@ -88,20 +86,17 @@ export function OrganizationSettingCatalogPage() {
         </Button>
       </form>
 
-      {saveMutation.isError ? (
-        <p className="text-sm text-destructive">{(saveMutation.error as Error).message}</p>
-      ) : null}
-      {query.isPending ? <p className="text-sm text-muted-foreground">Pobieranie ustawień…</p> : null}
-      {query.isError ? <p className="text-sm text-destructive">{(query.error as Error).message}</p> : null}
-      {query.data ? (
-        <DataTableShell
-          tableKey={BUSINESS_LISTS.organizationSettings.tableKey}
-          columns={columns}
-          data={query.data}
-          columnLabels={COLUMN_LABELS}
-          globalFilterPlaceholder="Szukaj ustawienia…"
-        />
-      ) : null}
-    </section>
+      {saveMutation.isError ? <CatalogError error={saveMutation.error} /> : null}
+
+      <CatalogLoadedTable
+        loading={query.isLoading}
+        error={query.error}
+        data={query.data}
+        tableKey={BUSINESS_LISTS.organizationSettings.tableKey}
+        columns={columns}
+        columnLabels={COLUMN_LABELS}
+        globalFilterPlaceholder="Szukaj ustawienia…"
+      />
+    </div>
   )
 }
