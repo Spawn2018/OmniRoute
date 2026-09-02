@@ -65,6 +65,10 @@ export async function fetchTenancyUsers(): Promise<AppUser[]> {
   return data
 }
 
+export function gdprSubjects<Row extends { email: string }>(users: readonly Row[]): Row[] {
+  return users.filter((row) => row.email.trim() !== "")
+}
+
 export async function fetchHealth(): Promise<{ status: string }> {
   const { data, error, response } = await healthHealthGet()
   if (error || !data || typeof data.status !== "string") {

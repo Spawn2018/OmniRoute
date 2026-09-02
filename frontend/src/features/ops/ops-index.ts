@@ -79,6 +79,11 @@ export const OPS_JOBS = [
     job: "aktywni kontrahenci tax_id i kraj",
   },
   {
+    route: BUSINESS_LISTS.gdpr.route,
+    label: "RODO",
+    job: "emaile kont tenanta",
+  },
+  {
     route: BUSINESS_LISTS.mailIntegration.route,
     label: "Poczta",
     job: "odczyt domen i kontaktów",
@@ -240,6 +245,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "43.0": "/china-rail",
   "44.0": "/lcl",
   "45.0": "/sanctions",
+  "46.0": "/gdpr",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

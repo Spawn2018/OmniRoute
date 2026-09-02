@@ -1,10 +1,10 @@
 # M-56 RODO — tablica `app_user` (`email`, `display_name`)
 
 **Moduł żywy:** M-56 (token UI `gdpr`, nie tabela) + M-01 `app_user`  
-**Plaster:** **46.0** (plan)  
-**Status:** operator **zobaczy** inwentarz kont tenanta. Nie tabela wniosków. Nie usuwanie.
+**Plaster:** **46.0** (zamknięty)  
+**Status:** operator **widzi** inwentarz kont tenanta. Nie tabela wniosków. Nie usuwanie.
 
-Delta: [docs/deltas/open/46.0-gdpr.md](../deltas/open/46.0-gdpr.md).
+Delta: [docs/deltas/archived/46.0-gdpr.md](../deltas/archived/46.0-gdpr.md).
 
 ## 46.0 tablica odczytu na `/gdpr`
 
