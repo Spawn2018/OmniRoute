@@ -38,8 +38,8 @@ Seed: `scripts/dev_seed_local.py`.
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **50.0** M-70 `tenant_rollout` tablica `/rollout` (zarchiwizowany)
-- **Etap:** Plan
-- **Następny:** U-oklch-dark (`/plan-modul`). PLAN § Wave FE leftover — nie Q1, po Fali 11. Nie zgaduj schematu. Nie nowa tabela.
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
+- **Etap:** Plaster
+- **Następny:** 51.0 U-oklch-dark tokeny `oklch` + `.dark`. Nie zgaduj schematu. Nie nowa tabela.
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
