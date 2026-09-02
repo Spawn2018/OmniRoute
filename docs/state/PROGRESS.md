@@ -104,3 +104,4 @@
 | 2026-09-02 | 17.0 | M-24 | `offer_risk` odczyt recenzji i karty przy `/quotations`. Nie nowa tabela, nie scoring, nie zapis `credit_limit`. |
 | 2026-09-02 | Plan 18.0 | M-25 | delta `docs/deltas/archived/18.0-offer-negotiation.md` + spec. Wycena czyta `channel_quote`. Nie wynik won/lost, nie spread. Następny: `/plaster` 18.0. |
 | 2026-09-02 | 18.0 | M-25 | `offer_negotiation` odczyt `channel_quote` przy `/quotations`. Nie nowa tabela, nie odejmowanie kwot, nie zapis wyniku. |
+| 2026-09-02 | Plan 19.0 | M-26 | delta `docs/deltas/open/19.0-offer-document.md` + spec. Podgląd faktów wyceny. Nie PDF, nie U-print. Następny: `/plaster` 19.0. |
