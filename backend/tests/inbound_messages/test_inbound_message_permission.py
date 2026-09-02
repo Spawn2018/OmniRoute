@@ -30,6 +30,12 @@ _ENDPOINTS = (
         None,
         None,
     ),
+    (
+        "POST",
+        f"/api/v1/inbound-messages/{uuid4()}/extract",
+        None,
+        None,
+    ),
 )
 
 

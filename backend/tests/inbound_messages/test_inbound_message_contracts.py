@@ -29,7 +29,7 @@ def test_migration_027_adds_same_tenant_party_fk() -> None:
     assert "organization_id" in source
 
 
-def test_inbound_service_does_not_import_parties() -> None:
+def test_inbound_service_does_not_import_parties_or_extraction() -> None:
     service = (
         _ROOT
         / "backend"
@@ -40,6 +40,8 @@ def test_inbound_service_does_not_import_parties() -> None:
     ).read_text(encoding="utf-8")
     assert "app.services.parties" not in service
     assert "app.models.party" not in service
+    assert "app.services.extraction" not in service
+    assert "app.models.extraction_draft" not in service
 
 
 def test_importlinter_lists_inbound_messages_as_independent() -> None:
@@ -72,6 +74,7 @@ def test_pricing_and_extraction_do_not_import_inbound_messages() -> None:
 def test_generated_api_types_include_inbound_message() -> None:
     source = (_ROOT / "frontend" / "src" / "api" / "types.gen.ts").read_text(encoding="utf-8")
     assert "InboundMessageResponse" in source or "InboundMessageCreate" in source
+    assert "InboundExtractResponse" in source
 
 
 def test_service_has_no_graph_or_imap() -> None:
@@ -87,3 +90,12 @@ def test_service_has_no_graph_or_imap() -> None:
     assert "graph.microsoft" not in lowered
     assert "imap" not in lowered
     assert "httpx" not in lowered
+
+
+def test_inbound_extract_api_does_not_accept_rates() -> None:
+    source = (_ROOT / "backend" / "app" / "api" / "inbound_messages.py").read_text(
+        encoding="utf-8",
+    )
+    assert "extract_to_draft" in source
+    assert "AcceptExtractionToRates" not in source
+    assert "rate_line" not in source

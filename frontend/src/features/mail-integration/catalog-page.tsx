@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import {
   createInboundMessage,
+  extractInboundMessage,
   fetchInboundMessages,
   inboundMessageCreateBody,
   resolveInboundMessageEmail,
@@ -106,6 +107,9 @@ export function MailIntegrationPage() {
       })
     },
   })
+  const extractDraft = useMutation({
+    mutationFn: extractInboundMessage,
+  })
   const resolveSender = useMutation({
     mutationFn: resolveInboundMessageEmail,
     onSuccess: () => {
@@ -129,6 +133,7 @@ export function MailIntegrationPage() {
       {inbound.isError ? <CatalogError error={inbound.error} /> : null}
       {createMutation.isError ? <CatalogError error={createMutation.error} /> : null}
       {resolveSender.isError ? <CatalogError error={resolveSender.error} /> : null}
+      {extractDraft.isError ? <CatalogError error={extractDraft.error} /> : null}
 
       <section className="space-y-2" data-inbound-message="fixture">
         <h2 className="text-sm font-medium">Wiadomości przychodzące</h2>
@@ -193,6 +198,17 @@ export function MailIntegrationPage() {
               Dopasuj nadawcę {row.from_address}
             </Button>
           ))}
+        {(inbound.data ?? []).map((row) => (
+          <Button
+            key={`extract-${row.id}`}
+            type="button"
+            variant="outline"
+            disabled={!ready || extractDraft.isPending}
+            onClick={() => extractDraft.mutate(row.id)}
+          >
+            Extract HITL {row.subject}
+          </Button>
+        ))}
       </section>
 
       <form

@@ -6,6 +6,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import get_current_identity, require_permission, require_tenant_session
 from app.core.session_token import SessionIdentity
+from app.domain.inbound_message import inbound_extract_text
+from app.services.extraction.extraction_service import ExtractionService
 from app.services.inbound_messages.inbound_message_service import InboundMessageService
 from app.services.parties.party_service import PartyService
 
@@ -32,6 +34,14 @@ class InboundMessageResponse(BaseModel):
     body_text: str
     status: str
     party_id: UUID | None
+
+
+class InboundExtractResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: UUID
+    status: str
+    source_ref: str
 
 
 @router.get("", response_model=list[InboundMessageResponse])
@@ -76,3 +86,29 @@ async def resolve_inbound_message_email(
     attached = await messages.attach_party(row.id, party.id)
     await session.commit()
     return InboundMessageResponse.model_validate(attached)
+
+
+@router.post(
+    "/{message_id}/extract",
+    response_model=InboundExtractResponse,
+    status_code=status.HTTP_201_CREATED,
+)
+async def extract_inbound_message(
+    message_id: UUID,
+    _authz: None = Depends(require_permission("can_manage_inbound_messages", "organization")),
+    session: AsyncSession = Depends(require_tenant_session),
+    identity: SessionIdentity = Depends(get_current_identity),
+) -> InboundExtractResponse:
+    row = await InboundMessageService(session).get_message(message_id)
+    draft = await ExtractionService(session).extract_to_draft(
+        organization_id=identity.organization_id,
+        user_id=identity.user_id,
+        source_ref=row.source_ref,
+        input_text=inbound_extract_text(row.subject, row.body_text),
+    )
+    await session.commit()
+    return InboundExtractResponse(
+        id=draft.id,
+        status=draft.status,
+        source_ref=draft.source_ref,
+    )

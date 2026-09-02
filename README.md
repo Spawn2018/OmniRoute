@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **65.0** S2 `resolve_email` na `inbound_message`
-- **Etap:** Plaster
-- **Następny:** 66.0 S3 `/plaster` — treść `inbound_message` → extract HITL. Serwis nie zapisuje `rate_line`. Nie IMAP. Nie F9.1.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **66.0** S3 treść `inbound_message` → extract HITL
+- **Etap:** Plan
+- **Następny:** S4 `/plan-modul` — obiekt RFQ powiązany z wiadomością. Nie ślad wycen. Nie IMAP. Nie F9.1.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

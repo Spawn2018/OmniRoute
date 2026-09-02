@@ -1,13 +1,13 @@
 # M-20 — Ekstrakcja dokumentów (HITL)
 
 **Status:** 0.7–0.18 DONE · Charge **1.3** accept → `rate_line` (warstwa API) · **2.1–2.2** Presidio instructor stub + syntetyki  
-**Delty:** `docs/deltas/archived/0.7-ai-extract-hitl.md`, `0.8-instructor-llm-guard.md`, `0.9-docling-ab.md`, `0.10-langfuse-promptfoo.md`, `0.11-hitl-xor-vitest.md`, `0.12-jwt-session.md`, `0.13-hitl-split.md`, `0.14-http-happy-path.md`, `0.15-t0-document-base64-max.md`, `0.18-http-extract-live-pg.md`, `1.3-accept-rate-line.md`, `2.1-2.2-presidio-synthetics.md`  
+**Delty:** `docs/deltas/archived/0.7-ai-extract-hitl.md`, `0.8-instructor-llm-guard.md`, `0.9-docling-ab.md`, `0.10-langfuse-promptfoo.md`, `0.11-hitl-xor-vitest.md`, `0.12-jwt-session.md`, `0.13-hitl-split.md`, `0.14-http-happy-path.md`, `0.15-t0-document-base64-max.md`, `0.18-http-extract-live-pg.md`, `1.3-accept-rate-line.md`, `2.1-2.2-presidio-synthetics.md`, `66.0-inbound-extract.md`  
 **GROUNDING:** HC-03 (`source_ref`, `unparsed_regions`), HC-04 (zero zapisu autonomicznego)
 
 ## Zakres (kod dziś)
 
 - Tabela `extraction_draft` + RLS + test izolacji tenantów
-- API: list / extract→draft / accept / reject; upload `document_base64` XOR `input_text`
+- API: list / extract→draft / accept / reject; upload `document_base64` XOR `input_text`; **66.0** treść `inbound_message` → ten sam `extract_to_draft` (API poczty, nie import inbound w serwisie)
 - `document_base64` `max_length=2_666_668` → 422 przed decode
 - OpenFGA: `can_review_extractions` na każdym endpoincie `/extractions`
 - UI: kolejka DataTableShell + split-screen (podgląd `input_text` | recenzja)

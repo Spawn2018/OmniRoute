@@ -1,10 +1,10 @@
 # M-32 integracja pocztowa — tablica znanych adresów + inbound_message
 
 **Moduł żywy:** M-32  
-**Plaster:** **65.0** (zamknięty) · 64.0 tabela · 25.0 tablica adresów  
-**Status:** operator zapisuje fixture, dopina nadawcę przez `resolve_email`. Nie IMAP. Nie Graph. Nie send. Extract z treści = S3.
+**Plaster:** **66.0** (zamknięty) · 65.0 resolve · 64.0 tabela · 25.0 tablica adresów  
+**Status:** operator zapisuje fixture, dopina nadawcę, wysyła treść na HITL. Nie IMAP. Nie Graph. Nie send. Nie blob.
 
-Delta: [65.0](../deltas/archived/65.0-inbound-resolve-email.md) · [64.0](../deltas/archived/64.0-inbound-message.md) · [25.0](../deltas/archived/25.0-mail-integration.md).
+Delta: [66.0](../deltas/archived/66.0-inbound-extract.md) · [65.0](../deltas/archived/65.0-inbound-resolve-email.md) · [64.0](../deltas/archived/64.0-inbound-message.md) · [25.0](../deltas/archived/25.0-mail-integration.md).
 
 ## 25.0 tablica odczytu na `/mail`
 
@@ -43,6 +43,19 @@ extract z treści (S3) · IMAP · Graph · send · załączniki blob · outbox
 ### Poza 65.0
 
 extract (S3) · IMAP · Graph · auto przy INSERT · INSERT kontaktu
+
+## 66.0 extract HITL z treści
+
+### Zakres
+
+- `POST /inbound-messages/{id}/extract` — temat + treść → `extract_to_draft`; `source_ref` z wiersza
+- Szkic na istniejącej kolejce `/extractions`. Accept zostaje tam. Brak `rate_line` na tym endpoincie
+- `/mail`: przycisk „Extract HITL”
+- API składa BC; ExtractionService nie importuje inbound
+
+### Poza 66.0
+
+załącznik blob · IMAP · Graph · auto-extract przy INSERT · RFQ (S4)
 
 ### HC
 

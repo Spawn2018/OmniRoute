@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** 66.0 S3 `/plaster` — treść `inbound_message` → extract HITL. Serwis nie zapisuje `rate_line`. Nie IMAP. Nie F9.1.
+**Następny (zablokowany):** S4 `/plan-modul` — obiekt RFQ powiązany z wiadomością. Nie ślad wycen. Nie IMAP. Nie F9.1.
 <!-- os-status:end -->
 
 ```mermaid
@@ -384,7 +384,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E2** | Testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy) | 61.0 | zamknięty (`docs/deltas/archived/61.0-alembic-quote-budget.md`) |
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | 62.0 | zamknięty (`docs/deltas/archived/62.0-operator-howto-c4.md`) |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | 63.0 | zamknięty (`docs/deltas/archived/63.0-threat-model-codeql.md`) |
-| po Q-E4 | **Fala S**, S1–S2 zamknięte; S3 plan 66.0 | Plan → plaster | **następny** |
+| po Q-E4 | **Fala S**, S1–S3 zamknięte; S4 Plan | Plan | **następny** |
 
 ### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
 
@@ -406,8 +406,8 @@ Reguły kolejności (żeby `/noc` nie złożył awarii):
 |---|---|---|---|---|
 | **S1** | Żywe **M-32** tabela wiadomości + draft, fixture | 64.0 | zamknięty (`docs/deltas/archived/64.0-inbound-message.md`) |
 | S2 | Żywe **M-11** `resolve_email` na wiadomości | 65.0 | zamknięty (`docs/deltas/archived/65.0-inbound-resolve-email.md`) |
-| S3 | Żywe **M-20** treść/załącznik maila → extract | 66.0 | **następny** | HITL zostaje. Serwis nie zapisuje `rate_line`. S3 = treść, nie blob |
-| S4 | Żywe **M-28** obiekt RFQ powiązany z wiadomością | Plan → plaster | po S3 | Nie ślad wycen |
+| S3 | Żywe **M-20** treść/załącznik maila → extract | 66.0 | zamknięty (`docs/deltas/archived/66.0-inbound-extract.md`) | HITL zostaje. Serwis nie zapisuje `rate_line`. S3 = treść, nie blob |
+| S4 | Żywe **M-28** obiekt RFQ powiązany z wiadomością | Plan → plaster | **następny** | Nie ślad wycen |
 | S5 | Żywe **M-21** istniejący silnik na tym RFQ | Plan → plaster | po S4 | Nie nowy silnik. LLM nie liczy |
 | S6 | Żywe **M-18** ewaluacja `applies_when` w SQL | Plan → plaster | po S5 | Nie zapis marży do `charge` |
 | S7 | Żywe **M-09** HS/CN na RFQ/wycenie | Plan → plaster | po S6 | Katalog jest. Opcjonalnie UN→M-52 z katalogu, nie z LLM |
@@ -529,7 +529,7 @@ Nie implementuj z tej tabeli „na zapas”. To mapa, żeby nic nie zginęło. S
 | M-21 | Silnik wyceny | DONE 2.0 + 5.1 POL/POD/`party_id` |
 | M-22 | Narzuty i marża | COVERED (`charge`) |
 | M-23–M-31 | Ofertowanie | Fala 3 |
-| M-32–M-34 | Komunikacja | DONE fundament (25.0–27.0, 64.0); pogłębienie **S2–S18** |
+| M-32–M-34 | Komunikacja | DONE fundament (25.0–27.0, 64.0, 66.0); pogłębienie **S4–S18** |
 | M-35–M-39 | Zlecenie / EDI | DONE fundament (28.0–32.0) |
 | M-40–M-47 | Finanse | DONE fundament (33.0–40.0) |
 | M-48–M-51 | Modały | Fala 7 (M-48–M-51 DONE fundament 41.0–44.0) |
@@ -567,13 +567,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

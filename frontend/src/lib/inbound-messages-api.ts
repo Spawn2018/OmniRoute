@@ -68,6 +68,24 @@ export async function createInboundMessage(body: {
   return readInboundMessage(response, "Błąd zapisu wiadomości")
 }
 
+export async function extractInboundMessage(messageId: string): Promise<{
+  id: string
+  status: string
+  source_ref: string
+}> {
+  const response = await fetch(`/api/v1/inbound-messages/${messageId}/extract`, {
+    method: "POST",
+    headers: requireAuthHeaders(),
+  })
+  if (!response.ok) {
+    throw new ApiError(
+      await readApiDetail(response, "Błąd extract z wiadomości"),
+      httpErrorStatus(response),
+    )
+  }
+  return (await response.json()) as { id: string; status: string; source_ref: string }
+}
+
 export async function resolveInboundMessageEmail(
   messageId: string,
 ): Promise<InboundMessage> {

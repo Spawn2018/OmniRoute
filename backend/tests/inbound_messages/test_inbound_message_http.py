@@ -7,6 +7,7 @@ from fastapi.testclient import TestClient
 from app.api.deps import require_tenant_session, set_authz_checker
 from app.domain.errors import ResourceNotFound
 from app.main import app
+from app.models.extraction_draft import ExtractionDraft
 from app.models.inbound_message import InboundMessage
 from tests.http_auth import bearer_auth_headers
 
@@ -77,6 +78,36 @@ class StubPartyService:
         return type("PartyRow", (), {"id": StubPartyService.last_id})()
 
 
+class StubExtractionService:
+    last_text = ""
+
+    def __init__(self, session: object) -> None:
+        self._session = session
+
+    async def extract_to_draft(
+        self,
+        *,
+        organization_id: UUID,
+        user_id: UUID,
+        source_ref: str,
+        input_text: str,
+        parser_name: str = "plain",
+        parser_challenger: str | None = None,
+        ab_delta_chars: int | None = None,
+    ) -> ExtractionDraft:
+        _ = parser_name, parser_challenger, ab_delta_chars
+        StubExtractionService.last_text = input_text
+        return ExtractionDraft(
+            id=uuid4(),
+            organization_id=organization_id,
+            status="pending",
+            source_ref=source_ref,
+            input_text=input_text,
+            payload={"source_ref": source_ref, "candidates": [], "unparsed_regions": []},
+            created_by=user_id,
+        )
+
+
 @pytest.fixture
 def catalog_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
     stub = StubInboundMessageService(object())
@@ -96,6 +127,10 @@ def catalog_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
     monkeypatch.setattr(
         "app.api.inbound_messages.PartyService",
         StubPartyService,
+    )
+    monkeypatch.setattr(
+        "app.api.inbound_messages.ExtractionService",
+        StubExtractionService,
     )
     set_authz_checker(AllowAllAuthz())
     app.dependency_overrides[require_tenant_session] = _fake_tenant_session
@@ -166,3 +201,38 @@ def test_http_resolve_email_attaches_party(catalog_client: TestClient) -> None:
     )
     assert resolved.status_code == 200
     assert resolved.json()["party_id"] == str(StubPartyService.last_id)
+
+
+def test_http_extract_creates_pending_draft_without_rate_line(
+    catalog_client: TestClient,
+) -> None:
+    headers = bearer_auth_headers()
+    created = catalog_client.post(
+        "/api/v1/inbound-messages",
+        headers=headers,
+        json={
+            "source_ref": "fixture://inbound-mail/1",
+            "from_address": "ops@carrier.example",
+            "subject": "RFQ",
+            "body_text": "1x40HC",
+        },
+    )
+    message_id = created.json()["id"]
+    extracted = catalog_client.post(
+        f"/api/v1/inbound-messages/{message_id}/extract",
+        headers=headers,
+    )
+    assert extracted.status_code == 201
+    body = extracted.json()
+    assert body["status"] == "pending"
+    assert body["source_ref"] == "fixture://inbound-mail/1"
+    assert "rate_line" not in body
+    assert StubExtractionService.last_text == "RFQ\n\n1x40HC"
+
+
+def test_http_extract_unknown_message_is_404(catalog_client: TestClient) -> None:
+    response = catalog_client.post(
+        f"/api/v1/inbound-messages/{uuid4()}/extract",
+        headers=bearer_auth_headers(),
+    )
+    assert response.status_code == 404

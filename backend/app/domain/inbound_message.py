@@ -6,6 +6,7 @@ _FIXTURE_PREFIXES = ("fixture://", "synth://")
 _FROM_MAX = 320
 _SUBJECT_MAX = 512
 _BODY_MAX = 65536
+_EXTRACT_TEXT_MAX = 50_000
 
 
 def inbound_draft_status() -> str:
@@ -55,3 +56,10 @@ def require_body_text(raw: object) -> str:
     if len(token) > _BODY_MAX:
         raise InvalidInboundMessage("treść za długa")
     return token
+
+
+def inbound_extract_text(subject: str, body_text: str) -> str:
+    text = f"{subject}\n\n{body_text}"
+    if len(text) > _EXTRACT_TEXT_MAX:
+        raise InvalidInboundMessage("treść do extract za długa")
+    return text

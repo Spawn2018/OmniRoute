@@ -5,6 +5,7 @@ from hypothesis import strategies as st
 from app.domain.errors import InvalidInboundMessage, InvalidSourceRef
 from app.domain.inbound_message import (
     inbound_draft_status,
+    inbound_extract_text,
     require_body_text,
     require_from_address,
     require_inbound_source_ref,
@@ -66,3 +67,12 @@ def test_require_body_text_rejects_blank() -> None:
 def test_from_address_roundtrip_lower(local: str) -> None:
     raw = f"{local.upper()}@carrier.example"
     assert require_from_address(raw) == f"{local}@carrier.example"
+
+
+def test_inbound_extract_text_joins_subject_and_body() -> None:
+    assert inbound_extract_text("RFQ", "1x40HC") == "RFQ\n\n1x40HC"
+
+
+def test_inbound_extract_text_rejects_over_extract_limit() -> None:
+    with pytest.raises(InvalidInboundMessage, match="extract"):
+        inbound_extract_text("RFQ", "x" * 50_000)

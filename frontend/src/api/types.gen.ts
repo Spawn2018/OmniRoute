@@ -815,6 +815,24 @@ export type IbanLookupRequest = {
 };
 
 /**
+ * InboundExtractResponse
+ */
+export type InboundExtractResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Status
+     */
+    status: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * InboundMessageCreate
  */
 export type InboundMessageCreate = {
@@ -2658,6 +2676,36 @@ export type ResolveInboundMessageEmailApiV1InboundMessagesMessageIdResolveEmailP
 };
 
 export type ResolveInboundMessageEmailApiV1InboundMessagesMessageIdResolveEmailPostResponse = ResolveInboundMessageEmailApiV1InboundMessagesMessageIdResolveEmailPostResponses[keyof ResolveInboundMessageEmailApiV1InboundMessagesMessageIdResolveEmailPostResponses];
+
+export type ExtractInboundMessageApiV1InboundMessagesMessageIdExtractPostData = {
+    body?: never;
+    path: {
+        /**
+         * Message Id
+         */
+        message_id: string;
+    };
+    query?: never;
+    url: '/api/v1/inbound-messages/{message_id}/extract';
+};
+
+export type ExtractInboundMessageApiV1InboundMessagesMessageIdExtractPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ExtractInboundMessageApiV1InboundMessagesMessageIdExtractPostError = ExtractInboundMessageApiV1InboundMessagesMessageIdExtractPostErrors[keyof ExtractInboundMessageApiV1InboundMessagesMessageIdExtractPostErrors];
+
+export type ExtractInboundMessageApiV1InboundMessagesMessageIdExtractPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: InboundExtractResponse;
+};
+
+export type ExtractInboundMessageApiV1InboundMessagesMessageIdExtractPostResponse = ExtractInboundMessageApiV1InboundMessagesMessageIdExtractPostResponses[keyof ExtractInboundMessageApiV1InboundMessagesMessageIdExtractPostResponses];
 
 export type ListNbpRatesApiV1NbpRatesGetData = {
     body?: never;

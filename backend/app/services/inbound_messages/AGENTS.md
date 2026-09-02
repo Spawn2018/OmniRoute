@@ -11,5 +11,5 @@ Wiadomość przychodząca per tenant: fixture, status `draft`. Nie IMAP, nie Gra
 - import innych BC services
 - HTTP do Graph / IMAP / SMTP
 - zapis `party` / `quotation` / `rate_line` / `charge`
-- extract z treści (S3)
+- wołać ExtractionService / zapis extraction_draft (API składa)
 - liczenie kwot / marży

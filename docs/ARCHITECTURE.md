@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **65.0** S2 `resolve_email` na `inbound_message`. **Etap:** Plaster. **Następny:** 66.0 S3 `/plaster` — treść `inbound_message` → extract HITL. Serwis nie zapisuje `rate_line`. Nie IMAP. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **66.0** S3 treść `inbound_message` → extract HITL. **Etap:** Plan. **Następny:** S4 `/plan-modul` — obiekt RFQ powiązany z wiadomością. Nie ślad wycen. Nie IMAP. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

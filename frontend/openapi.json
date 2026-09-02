@@ -1150,6 +1150,54 @@
         }
       }
     },
+    "/api/v1/inbound-messages/{message_id}/extract": {
+      "post": {
+        "tags": [
+          "inbound-messages"
+        ],
+        "summary": "Extract Inbound Message",
+        "operationId": "extract_inbound_message_api_v1_inbound_messages__message_id__extract_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "message_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Message Id"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InboundExtractResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/nbp-rates": {
       "get": {
         "tags": [
@@ -5281,6 +5329,30 @@
           "iban"
         ],
         "title": "IbanLookupRequest"
+      },
+      "InboundExtractResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "status",
+          "source_ref"
+        ],
+        "title": "InboundExtractResponse"
       },
       "InboundMessageCreate": {
         "properties": {
