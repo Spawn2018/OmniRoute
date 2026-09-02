@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **37.0** M-44 `fx_difference` tablica `/fx-differences` (zarchiwizowany). **Etap:** Plan. **Następny:** M-45 Przepływy (`/plan-modul`). Nie zgaduj schematu. Nie nowa tabela. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **37.0** M-44 `fx_difference` tablica `/fx-differences` (zarchiwizowany). **Etap:** Plaster. **Następny:** 38.0 M-45 `cash_flow` tablica `/cashflows`. Nie zgaduj schematu. Nie nowa tabela. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

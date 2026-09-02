@@ -38,8 +38,8 @@ Seed: `scripts/dev_seed_local.py`.
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **37.0** M-44 `fx_difference` tablica `/fx-differences` (zarchiwizowany)
-- **Etap:** Plan
-- **Następny:** M-45 Przepływy (`/plan-modul`). Nie zgaduj schematu. Nie nowa tabela.
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
+- **Etap:** Plaster
+- **Następny:** 38.0 M-45 `cash_flow` tablica `/cashflows`. Nie zgaduj schematu. Nie nowa tabela.
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
