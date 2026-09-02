@@ -24,6 +24,7 @@ import {
   quotationAcceptancePending,
   quotationCarrierInquiries,
   quotationLanes,
+  quotationResponseComparisons,
   quotationPartyIds,
   quotationSkipsNbpCatalog,
   type Quotation,
@@ -460,6 +461,34 @@ function OfferCarrierInquiryPanel(args: { lanes: QuotationLane[]; quotes: Channe
   )
 }
 
+function OfferResponseComparisonPanel(args: { lanes: QuotationLane[]; quotes: ChannelQuote[] }) {
+  const rows = quotationResponseComparisons(args.lanes, args.quotes)
+  if (rows.length === 0) {
+    return null
+  }
+  return (
+    <article className="space-y-2 p-3 outline outline-1 outline-border" data-response-comparison="lanes">
+      <h3 className="text-sm font-medium">Porównanie odpowiedzi</h3>
+      <p className="text-xs text-muted-foreground">wycena i channel_quote na POL/POD · nie odejmuj · nie tabela</p>
+      {rows.map((row) => (
+        <div key={`${row.originPortId}:${row.destinationPortId}`} className="space-y-1">
+          {row.quotations.map((lane) => (
+            <p key={lane.id} className="text-xs">
+              wycena {lane.chargeCode} <Money amount={lane.amount} currency={lane.currency} />
+            </p>
+          ))}
+          {row.quotes.map((quote) => (
+            <p key={quote.id} className="text-xs">
+              kanał {quote.quote_date} {quote.source_ref}{" "}
+              <Money amount={quote.amount} currency={quote.currency} />
+            </p>
+          ))}
+        </div>
+      ))}
+    </article>
+  )
+}
+
 export function QuotationCatalogPage() {
   const ctx = getTenantContext()
   const queryClient = useQueryClient()
@@ -714,6 +743,10 @@ export function QuotationCatalogPage() {
           <OfferInquiryPanel rows={query.data} parties={parties} />
           <OfferAcceptancePanel rows={query.data} />
           <OfferCarrierInquiryPanel
+            lanes={quotationLanes(query.data)}
+            quotes={channelQuotesQuery.data ?? []}
+          />
+          <OfferResponseComparisonPanel
             lanes={quotationLanes(query.data)}
             quotes={channelQuotesQuery.data ?? []}
           />

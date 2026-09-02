@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **23.0** M-30 `carrier_inquiry` przy `quotation` (zarchiwizowany). **Etap:** Plan. **Następny:** 24.0 M-31 `response_comparison` (`/plaster`). Zestawienie kwot na POL/POD. Nie tabela. Nie spread w JS. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **24.0** M-31 `response_comparison` przy `quotation` (zarchiwizowany). **Etap:** Plan. **Następny:** 25.0 M-32 Integracja pocztowa (`/plan-modul`). Nie zgaduj schematu. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

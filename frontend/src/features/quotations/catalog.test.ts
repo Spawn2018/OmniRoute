@@ -8,6 +8,7 @@ import {
   quotationCarrierInquiries,
   quotationInquiryTrails,
   quotationLanes,
+  quotationResponseComparisons,
   quotationPartyIds,
   quotationSkipsNbpCatalog,
   type Quotation,
@@ -172,6 +173,45 @@ describe("quotation NBP lookup", () => {
     }
     expect(quotationCarrierInquiries([lane], [hit, miss, hit])).toEqual([hit])
   })
+
+  it("pairs quotation lanes with channel quotes on POL/POD even when party_id differs", () => {
+    const lane = {
+      id: "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      chargeCode: "THC",
+      partyId: PARTY,
+      originPortId: ORIGIN,
+      destinationPortId: DESTINATION,
+      amount: "10.0000",
+      currency: "EUR",
+    }
+    const sameParty = {
+      id: "ffffffff-ffff-4fff-8fff-ffffffffffff",
+      party_id: PARTY,
+      origin_port_id: ORIGIN,
+      destination_port_id: DESTINATION,
+    }
+    const otherCarrier = "55555555-5555-4555-8555-555555555555"
+    const otherParty = {
+      id: "66666666-6666-4666-8666-666666666666",
+      party_id: otherCarrier,
+      origin_port_id: ORIGIN,
+      destination_port_id: DESTINATION,
+    }
+    const otherLane = {
+      id: "77777777-7777-4777-8777-777777777777",
+      party_id: PARTY,
+      origin_port_id: ORIGIN,
+      destination_port_id: PARTY,
+    }
+    expect(quotationResponseComparisons([lane], [sameParty, otherParty, otherLane, sameParty])).toEqual([
+      {
+        originPortId: ORIGIN,
+        destinationPortId: DESTINATION,
+        quotations: [lane],
+        quotes: [sameParty, otherParty],
+      },
+    ])
+  })
 })
 
 describe("quotation catalog screen", () => {
@@ -199,6 +239,8 @@ describe("quotation catalog screen", () => {
     expect(page).toContain("fetchChannelQuotes")
     expect(page).toContain("quotationCarrierInquiries")
     expect(page).toContain('data-carrier-inquiry="trail"')
+    expect(page).toContain("quotationResponseComparisons")
+    expect(page).toContain('data-response-comparison="lanes"')
     expect(page).not.toContain("acceptExtractionDraft")
     expect(page).not.toContain("imap")
     expect(page).not.toMatch(/reduce\s*\(/)

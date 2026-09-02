@@ -171,6 +171,68 @@ export function quotationCarrierInquiries<
   return matched
 }
 
+export type ResponseComparison<
+  Quote extends {
+    id: string
+    origin_port_id: string
+    destination_port_id: string
+  },
+> = {
+  originPortId: string
+  destinationPortId: string
+  quotations: QuotationLane[]
+  quotes: Quote[]
+}
+
+export function quotationResponseComparisons<
+  Quote extends {
+    id: string
+    origin_port_id: string
+    destination_port_id: string
+  },
+>(lanes: readonly QuotationLane[], quotes: readonly Quote[]): ResponseComparison<Quote>[] {
+  const lanesByPair = new Map<string, QuotationLane[]>()
+  for (const lane of lanes) {
+    const pair = `${lane.originPortId}:${lane.destinationPortId}`
+    const group = lanesByPair.get(pair)
+    if (group === undefined) {
+      lanesByPair.set(pair, [lane])
+      continue
+    }
+    group.push(lane)
+  }
+  const quotesByPair = new Map<string, Quote[]>()
+  const seenQuote = new Set<string>()
+  for (const quote of quotes) {
+    if (seenQuote.has(quote.id)) {
+      continue
+    }
+    seenQuote.add(quote.id)
+    const pair = `${quote.origin_port_id}:${quote.destination_port_id}`
+    const group = quotesByPair.get(pair)
+    if (group === undefined) {
+      quotesByPair.set(pair, [quote])
+      continue
+    }
+    group.push(quote)
+  }
+  const rows: ResponseComparison<Quote>[] = []
+  for (const [pair, quotations] of lanesByPair) {
+    const matched = quotesByPair.get(pair)
+    if (matched === undefined) {
+      continue
+    }
+    const first = quotations[0]
+    rows.push({
+      originPortId: first.originPortId,
+      destinationPortId: first.destinationPortId,
+      quotations,
+      quotes: matched,
+    })
+  }
+  return rows
+}
+
 async function readQuotation(response: Response, fallback: string): Promise<Quotation> {
   if (!response.ok) {
     throw new ApiError(await readApiDetail(response, fallback), httpErrorStatus(response))

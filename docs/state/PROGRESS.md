@@ -114,4 +114,5 @@
 | 2026-09-02 | 22.0 | M-29 | `offer_acceptance` pending z wycen na `/quotations`. Nie tabela wyniku, nie HITL accept, nie IMAP. |
 | 2026-09-02 | Plan 23.0 | M-30 | delta `docs/deltas/archived/23.0-carrier-inquiry.md` + spec. Ślad `channel_quote` przy lane. Nie tabela RFQ, nie live HTTP. Następny: `/plaster` 23.0. |
 | 2026-09-02 | 23.0 | M-30 | `carrier_inquiry` ślad `channel_quote` przy lane na `/quotations`. Nie tabela RFQ, nie live HTTP, nie odejmowanie kwot. |
-| 2026-09-02 | Plan 24.0 | M-31 | delta `docs/deltas/open/24.0-response-comparison.md` + spec. Zestawienie kwot na POL/POD. Nie tabela, nie spread w JS. Następny: `/plaster` 24.0. |
+| 2026-09-02 | Plan 24.0 | M-31 | delta `docs/deltas/archived/24.0-response-comparison.md` + spec. Zestawienie kwot na POL/POD. Nie tabela, nie spread w JS. Następny: `/plaster` 24.0. |
+| 2026-09-02 | 24.0 | M-31 | `response_comparison` zestawienie wyceny i `channel_quote` na POL/POD. Nie tabela, nie odejmowanie kwot, nie silnik spread. |
