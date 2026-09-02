@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** Q-E3 `/plan-modul` — how-to jobów zapisu + C4 w ARCHITECTURE. Nie F9.1. Nie S1. Parked: M-02, Auth0, portale (odblokowanie w Fali S).
+**Następny (zablokowany):** 62.0 Q-E3 `/plaster` — how-to jobów zapisu + C4 w ARCHITECTURE. Nie 70 stubów. Nie F9.1. Nie S1. Parked: M-02, Auth0, portale (odblokowanie w Fali S).
 <!-- os-status:end -->
 
 ```mermaid
@@ -567,13 +567,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

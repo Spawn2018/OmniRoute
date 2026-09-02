@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **61.0** Q-E2 testy przez Alembic + pomiar wyceny **Następny:** Q-E3 `/plan-modul` — how-to jobów zapisu + C4 w ARCHITECTURE. Nie F9.1. Nie S1. Parked: M-02, Auth0, portale (odblokowanie w Fali S).
+**Stan (z CURRENT.md):** **61.0** Q-E2 testy przez Alembic + pomiar wyceny **Następny:** 62.0 Q-E3 `/plaster` — how-to jobów zapisu + C4 w ARCHITECTURE. Nie 70 stubów. Nie F9.1. Nie S1. Parked: M-02, Auth0, portale (odblokowanie w Fali S).
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

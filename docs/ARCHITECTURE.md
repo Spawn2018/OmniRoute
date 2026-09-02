@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **61.0** Q-E2 testy przez Alembic + pomiar wyceny. **Etap:** Plan. **Następny:** Q-E3 `/plan-modul` — how-to jobów zapisu + C4 w ARCHITECTURE. Nie F9.1. Nie S1. Parked: M-02, Auth0, portale (odblokowanie w Fali S). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **61.0** Q-E2 testy przez Alembic + pomiar wyceny. **Etap:** Plaster. **Następny:** 62.0 Q-E3 `/plaster` — how-to jobów zapisu + C4 w ARCHITECTURE. Nie 70 stubów. Nie F9.1. Nie S1. Parked: M-02, Auth0, portale (odblokowanie w Fali S). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

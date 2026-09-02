@@ -38,8 +38,8 @@ Seed: `scripts/dev_seed_local.py`.
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **61.0** Q-E2 testy przez Alembic + pomiar wyceny
-- **Etap:** Plan
-- **Następny:** Q-E3 `/plan-modul` — how-to jobów zapisu + C4 w ARCHITECTURE. Nie F9.1. Nie S1. Parked: M-02, Auth0, portale (odblokowanie w Fali S).
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Etap:** Plaster
+- **Następny:** 62.0 Q-E3 `/plaster` — how-to jobów zapisu + C4 w ARCHITECTURE. Nie 70 stubów. Nie F9.1. Nie S1. Parked: M-02, Auth0, portale (odblokowanie w Fali S).
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

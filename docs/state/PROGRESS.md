@@ -188,3 +188,4 @@
 | 2026-09-02 | 60.0 | UI | Q-E1: `/charges`, `/organization-settings`, `/rate-lines` na `catalog-parts`. Nie mixin modeli. Nie `/quotations`. Następny: Q-E2 Plan. |
 | 2026-09-02 | Plan 61.0 | ops | Q-E2: testy przez Alembic + pomiar wyceny. Delta zaakceptowana (`/noc`). Nie seed 50k. Następny: `/plaster` 61.0. |
 | 2026-09-02 | 61.0 | ops | Q-E2: testy przez Alembic na `omniroute_test`. EXPLAIN Index Scan, 0 wierszy `rate_line` = N/A. Następny: Q-E3 Plan. |
+| 2026-09-02 | Plan 62.0 | ops | Q-E3: how-to kontrahent+katalogi + C4 context/container. Delta zaakceptowana (`/noc`). Następny: `/plaster` 62.0. |
