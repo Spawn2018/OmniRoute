@@ -1,10 +1,10 @@
 # M-27 wycena wsadowa — wiele kodów na jednej lane
 
 **Moduł żywy:** M-21 `quotation` (pogłębienie) · token `quotation_batch`  
-**Plaster:** **20.0** (plan)  
-**Status:** plan — jedna transakcja, wiele `charge_code`, ta sama POL/POD/`party_id`. Nie CSV. Nie nowa tabela.
+**Plaster:** **20.0** (zamknięty)  
+**Status:** jedna transakcja, wiele `charge_code`, ta sama POL/POD/`party_id`. Nie CSV. Nie nowa tabela.
 
-Delta: [docs/deltas/open/20.0-quotation-batch.md](../deltas/open/20.0-quotation-batch.md).
+Delta: [docs/deltas/archived/20.0-quotation-batch.md](../deltas/archived/20.0-quotation-batch.md).
 
 ## 20.0 wsad kodów
 

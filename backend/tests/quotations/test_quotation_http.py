@@ -83,6 +83,30 @@ class StubQuotationService:
         self.rows.append(row)
         return row
 
+    async def quote_batch_from_current_rates(
+        self,
+        *,
+        organization_id: UUID,
+        user_id: UUID,
+        charge_codes: list[str],
+        origin_port_id: UUID | None,
+        destination_port_id: UUID | None,
+        party_id: UUID | None,
+    ) -> list[Quotation]:
+        quoted: list[Quotation] = []
+        for code in charge_codes:
+            quoted.append(
+                await self.quote_from_current_rate(
+                    organization_id=organization_id,
+                    user_id=user_id,
+                    charge_code=code,
+                    origin_port_id=origin_port_id,
+                    destination_port_id=destination_port_id,
+                    party_id=party_id,
+                )
+            )
+        return quoted
+
 
 @pytest.fixture
 def quotations_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
@@ -197,3 +221,67 @@ def test_list_quotations_forbidden_without_permission() -> None:
     )
     assert response.status_code == 403
     set_authz_checker(None)
+
+
+def test_http_quote_batch_two_codes(quotations_client: TestClient) -> None:
+    origin = uuid4()
+    destination = uuid4()
+    party = uuid4()
+    response = quotations_client.post(
+        "/api/v1/quotations/batch",
+        headers=bearer_auth_headers(),
+        json={
+            "charge_codes": ["THC", "BAF"],
+            "origin_port_id": str(origin),
+            "destination_port_id": str(destination),
+            "party_id": str(party),
+        },
+    )
+    assert response.status_code == 201
+    rows = response.json()
+    assert [row["charge_code"] for row in rows] == ["THC", "BAF"]
+    assert all(row["amount"] == "10.5000" for row in rows)
+    assert "buy_amount" not in rows[0]
+
+
+def test_http_quote_batch_rejects_empty_list(quotations_client: TestClient) -> None:
+    response = quotations_client.post(
+        "/api/v1/quotations/batch",
+        headers=bearer_auth_headers(),
+        json={
+            "charge_codes": [],
+            "origin_port_id": str(uuid4()),
+            "destination_port_id": str(uuid4()),
+            "party_id": str(uuid4()),
+        },
+    )
+    assert response.status_code == 422
+
+
+def test_http_quote_batch_rejects_amount(quotations_client: TestClient) -> None:
+    response = quotations_client.post(
+        "/api/v1/quotations/batch",
+        headers=bearer_auth_headers(),
+        json={
+            "charge_codes": ["THC"],
+            "origin_port_id": str(uuid4()),
+            "destination_port_id": str(uuid4()),
+            "party_id": str(uuid4()),
+            "amount": "99.0000",
+        },
+    )
+    assert response.status_code == 422
+
+
+def test_http_quote_batch_gap_returns_400(quotations_client: TestClient) -> None:
+    response = quotations_client.post(
+        "/api/v1/quotations/batch",
+        headers=bearer_auth_headers(),
+        json={
+            "charge_codes": ["THC", "GAP"],
+            "origin_port_id": str(uuid4()),
+            "destination_port_id": str(uuid4()),
+            "party_id": str(uuid4()),
+        },
+    )
+    assert response.status_code == 400

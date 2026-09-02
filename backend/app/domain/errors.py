@@ -154,6 +154,10 @@ class IncompleteQuotationSnapshot(DomainError):
     """Nowa wycena wymaga POL, POD i kontrahenta — częściowy snapshot nie wchodzi."""
 
 
+class InvalidQuotationBatch(DomainError):
+    """Wycena wsadowa: 1–20 kodów, bez pustego wsadu."""
+
+
 class InvalidOrganizationSetting(DomainError):
     """Ustawienie tenanta poza allowlistą, sekret albo zła wartość."""
 

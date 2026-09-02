@@ -15,7 +15,9 @@ import { fetchPartyScorecard, type PartyScorecard } from "@/lib/party-scorecards
 import { fetchPorts } from "@/lib/ports-api"
 import {
   createQuotation,
+  createQuotationBatch,
   fetchQuotations,
+  quotationBatchBody,
   quotationCreateBody,
   quotationCurrencies,
   quotationLanes,
@@ -396,6 +398,7 @@ export function QuotationCatalogPage() {
   const [filterPartyId, setFilterPartyId] = useState("")
   const [filterOriginPortId, setFilterOriginPortId] = useState("")
   const [filterDestinationPortId, setFilterDestinationPortId] = useState("")
+  const [batchCodes, setBatchCodes] = useState("")
   const signedIn = Boolean(ctx.organizationId && ctx.userId)
 
   const partiesQuery = useQuery({
@@ -446,6 +449,22 @@ export function QuotationCatalogPage() {
     },
   })
 
+  const batchMutation = useMutation({
+    mutationFn: () =>
+      createQuotationBatch(
+        quotationBatchBody({
+          chargeCodesText: batchCodes,
+          originPortId,
+          destinationPortId,
+          partyId,
+        }),
+      ),
+    onSuccess: () => {
+      setBatchCodes("")
+      void queryClient.invalidateQueries({ queryKey: ["quotations", ctx.organizationId] })
+    },
+  })
+
   const parties = partiesQuery.data ?? []
   const ports = portsQuery.data ?? []
 
@@ -454,7 +473,7 @@ export function QuotationCatalogPage() {
       <header>
         <h2 className="text-base font-semibold">Wyceny</h2>
         <p className="text-xs text-muted-foreground">
-          quotation M-21 · kwota z bieżącego rate_line w SQL · kurs NBP i oferta kanału z katalogów ·
+          quotation M-21 · kwota z bieżącego rate_line w SQL · wsad kodów na tej samej lane ·
           nie licz w formularzu
         </p>
       </header>
@@ -533,6 +552,20 @@ export function QuotationCatalogPage() {
         <Button type="submit" disabled={quoteMutation.isPending || !signedIn}>
           Wycen z bieżącej stawki
         </Button>
+        <textarea
+          aria-label="Kody wsadowe"
+          className="min-h-16 w-full rounded-md border border-border bg-card px-2 py-1 text-sm md:w-40"
+          placeholder={"THC\nBAF"}
+          value={batchCodes}
+          onChange={(event) => setBatchCodes(event.target.value)}
+        />
+        <Button
+          type="button"
+          disabled={batchMutation.isPending || !signedIn}
+          onClick={() => batchMutation.mutate()}
+        >
+          Wycen wsadowo
+        </Button>
       </form>
 
       <div className="flex flex-col gap-2 md:flex-row md:flex-wrap">
@@ -588,6 +621,9 @@ export function QuotationCatalogPage() {
 
       {quoteMutation.isError ? (
         <p className="text-sm text-destructive">{(quoteMutation.error as Error).message}</p>
+      ) : null}
+      {batchMutation.isError ? (
+        <p className="text-sm text-destructive">{(batchMutation.error as Error).message}</p>
       ) : null}
 
       {query.data ? (

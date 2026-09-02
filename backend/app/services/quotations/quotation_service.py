@@ -12,7 +12,7 @@ from app.domain.errors import (
     UnknownParty,
     UnknownPort,
 )
-from app.domain.quotation import require_lane_party_snapshot
+from app.domain.quotation import require_batch_charge_codes, require_lane_party_snapshot
 from app.models.charge_code import ChargeCode
 from app.models.quotation import Quotation
 from app.repositories.charge_codes.charge_code_repository import ChargeCodeRepository
@@ -80,6 +80,32 @@ class QuotationService:
             raise mapped from exc
         if quoted is None:
             raise QuotationGap(f"quotation_gap: brak bieżącej stawki dla {catalog.code}")
+        return quoted
+
+    async def quote_batch_from_current_rates(
+        self,
+        *,
+        organization_id: UUID,
+        user_id: UUID,
+        charge_codes: list[str],
+        origin_port_id: UUID | None,
+        destination_port_id: UUID | None,
+        party_id: UUID | None,
+    ) -> list[Quotation]:
+        # Pętla woła istniejący INSERT…SELECT; wsad set-based = leftover 20.0.
+        codes = require_batch_charge_codes(charge_codes)
+        quoted: list[Quotation] = []
+        for code in codes:
+            quoted.append(
+                await self.quote_from_current_rate(
+                    organization_id=organization_id,
+                    user_id=user_id,
+                    charge_code=code,
+                    origin_port_id=origin_port_id,
+                    destination_port_id=destination_port_id,
+                    party_id=party_id,
+                )
+            )
         return quoted
 
     async def _require_catalog(self, charge_code: str) -> ChargeCode:

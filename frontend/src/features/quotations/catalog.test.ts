@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs"
 import { describe, expect, it } from "vitest"
 import {
+  quotationBatchBody,
   quotationCreateBody,
   quotationCurrencies,
   quotationLanes,
@@ -44,6 +45,24 @@ describe("quotationCreateBody", () => {
     })
     expect(body).not.toHaveProperty("amount")
     expect(body).not.toHaveProperty("currency")
+  })
+})
+
+describe("quotationBatchBody", () => {
+  it("sends charge_codes from lines, never an amount", () => {
+    const body = quotationBatchBody({
+      chargeCodesText: " thc \nBAF\n",
+      originPortId: ORIGIN,
+      destinationPortId: DESTINATION,
+      partyId: PARTY,
+    })
+    expect(body).toEqual({
+      charge_codes: ["thc", "BAF"],
+      origin_port_id: ORIGIN,
+      destination_port_id: DESTINATION,
+      party_id: PARTY,
+    })
+    expect(body).not.toHaveProperty("amount")
   })
 })
 
@@ -109,6 +128,10 @@ describe("quotation catalog screen", () => {
     expect(page).toContain("resolveCreditReview")
     expect(page).toContain("fetchPartyScorecard")
     expect(page).toContain("resolveChannelQuote")
+    expect(page).toContain("createQuotationBatch")
+    expect(page).toContain("quotationBatchBody")
+    expect(page).toContain("Kody wsadowe")
+    expect(page).not.toContain(".csv")
     expect(page).toContain('data-offer-document="preview"')
     expect(page).not.toMatch(/amount\s*\*\s*mid|mid\s*\*\s*amount/)
     expect(page).not.toMatch(/selected\.amount\s*-|channel\.amount\s*-/)

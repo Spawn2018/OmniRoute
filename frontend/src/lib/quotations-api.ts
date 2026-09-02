@@ -41,6 +41,31 @@ export function quotationCreateBody(args: {
   }
 }
 
+export type QuotationBatchBody = {
+  charge_codes: string[]
+  origin_port_id: string
+  destination_port_id: string
+  party_id: string
+}
+
+export function quotationBatchBody(args: {
+  chargeCodesText: string
+  originPortId: string
+  destinationPortId: string
+  partyId: string
+}): QuotationBatchBody {
+  const charge_codes = args.chargeCodesText
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter((line) => line !== "")
+  return {
+    charge_codes,
+    origin_port_id: args.originPortId,
+    destination_port_id: args.destinationPortId,
+    party_id: args.partyId,
+  }
+}
+
 export function quotationCurrencies(rows: readonly Quotation[]): string[] {
   return [...new Set(rows.map((row) => row.currency))].sort()
 }
@@ -121,4 +146,16 @@ export async function createQuotation(body: QuotationCreateBody): Promise<Quotat
     body: JSON.stringify(body),
   })
   return readQuotation(response, "Błąd wyceny")
+}
+
+export async function createQuotationBatch(body: QuotationBatchBody): Promise<Quotation[]> {
+  const response = await fetch("/api/v1/quotations/batch", {
+    method: "POST",
+    headers: { ...requireAuthHeaders(), "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  })
+  if (!response.ok) {
+    throw new ApiError(await readApiDetail(response, "Błąd wyceny wsadowej"), httpErrorStatus(response))
+  }
+  return (await response.json()) as Quotation[]
 }

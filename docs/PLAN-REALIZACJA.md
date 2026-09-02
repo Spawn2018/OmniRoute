@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** 20.0 M-27 `quotation_batch` (`/plaster`). Wiele kodów, jedna lane. Nie CSV. Nie nowa tabela.
+**Następny (zablokowany):** 21.0 M-28 Zapytania od klientów (`/plan-modul`). Nie zgaduj schematu.
 <!-- os-status:end -->
 
 ```mermaid
@@ -328,7 +328,8 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | F3.1 | **M-24 Ryzyko oferty** | 17.0 | zamknięty (`docs/deltas/archived/17.0-offer-risk.md`) |
 | F3.2 | **M-25 Negocjacja i wynik** | 18.0 | zamknięty (`docs/deltas/archived/18.0-offer-negotiation.md`) |
 | F3.3 | **M-26 Dokument oferty** | 19.0 | zamknięty (`docs/deltas/archived/19.0-offer-document.md`) |
-| F3.4 | **M-27 Wycena wsadowa** | Plan → plaster | Plan (`docs/deltas/open/20.0-quotation-batch.md`) |
+| F3.4 | **M-27 Wycena wsadowa** | 20.0 | zamknięty (`docs/deltas/archived/20.0-quotation-batch.md`) |
+| F3.5 | **M-28 Zapytania od klientów** | Plan → plaster | kolejka (`/plan-modul`; nie zgaduj schematu) |
 
 ### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster
 

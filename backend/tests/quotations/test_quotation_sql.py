@@ -22,18 +22,42 @@ def _catalog(*, code: str = "THC") -> ChargeCode:
     )
 
 
-def _quoted() -> Quotation:
+def _quoted(*, code: str = "THC") -> Quotation:
     from decimal import Decimal
 
     return Quotation(
         id=uuid4(),
         organization_id=uuid4(),
-        charge_code="THC",
+        charge_code=code,
         rate_line_id=uuid4(),
         amount=Decimal("10.0000"),
         currency="EUR",
         source_ref="tariff://a",
     )
+
+
+def _row_mapping(row: Quotation) -> dict[str, object]:
+    return {
+        "id": row.id,
+        "organization_id": row.organization_id,
+        "charge_code": row.charge_code,
+        "rate_line_id": row.rate_line_id,
+        "amount": row.amount,
+        "currency": row.currency,
+        "source_ref": row.source_ref,
+        "created_by": None,
+        "origin_port_id": None,
+        "destination_port_id": None,
+        "party_id": None,
+    }
+
+
+def _execute_returning(mapping: dict[str, object] | None) -> MagicMock:
+    mappings = MagicMock()
+    mappings.first.return_value = mapping
+    execute_result = MagicMock()
+    execute_result.mappings.return_value = mappings
+    return execute_result
 
 
 def test_quote_sql_selects_current_rate_line_amount() -> None:
@@ -134,6 +158,61 @@ async def test_list_returns_repository_rows() -> None:
 
     listed = await service.list_quotations()
     assert listed == [row]
+
+
+@pytest.mark.asyncio
+async def test_quote_batch_runs_sql_per_code() -> None:
+    session = AsyncMock()
+    session.scalar = AsyncMock(side_effect=[_catalog(code="THC"), _catalog(code="BAF")])
+    thc = _quoted(code="THC")
+    baf = _quoted(code="BAF")
+    session.execute = AsyncMock(
+        side_effect=[
+            _execute_returning(_row_mapping(thc)),
+            _execute_returning(_row_mapping(baf)),
+        ]
+    )
+    service = QuotationService(session)
+    origin = uuid4()
+    destination = uuid4()
+    party = uuid4()
+
+    quoted = await service.quote_batch_from_current_rates(
+        organization_id=uuid4(),
+        user_id=uuid4(),
+        charge_codes=["thc", "BAF"],
+        origin_port_id=origin,
+        destination_port_id=destination,
+        party_id=party,
+    )
+
+    assert [row.charge_code for row in quoted] == ["THC", "BAF"]
+    assert session.execute.await_count == 2
+
+
+@pytest.mark.asyncio
+async def test_quote_batch_gap_on_second_code_stops() -> None:
+    session = AsyncMock()
+    session.scalar = AsyncMock(side_effect=[_catalog(code="THC"), _catalog(code="BAF")])
+    thc = _quoted(code="THC")
+    session.execute = AsyncMock(
+        side_effect=[
+            _execute_returning(_row_mapping(thc)),
+            _execute_returning(None),
+        ]
+    )
+    service = QuotationService(session)
+
+    with pytest.raises(QuotationGap, match="BAF"):
+        await service.quote_batch_from_current_rates(
+            organization_id=uuid4(),
+            user_id=uuid4(),
+            charge_codes=["THC", "BAF"],
+            origin_port_id=uuid4(),
+            destination_port_id=uuid4(),
+            party_id=uuid4(),
+        )
+    assert session.execute.await_count == 2
 
 
 def test_extraction_service_does_not_import_quotations() -> None:

@@ -22,6 +22,15 @@ class QuotationCreate(BaseModel):
     party_id: UUID
 
 
+class QuotationBatchCreate(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    charge_codes: list[str] = Field(min_length=1, max_length=20)
+    origin_port_id: UUID
+    destination_port_id: UUID
+    party_id: UUID
+
+
 class QuotationResponse(BaseModel):
     id: UUID
     organization_id: UUID
@@ -87,3 +96,23 @@ async def create_quotation(
     )
     await session.commit()
     return QuotationResponse.from_row(row)
+
+
+@router.post("/batch", response_model=list[QuotationResponse], status_code=status.HTTP_201_CREATED)
+async def create_quotation_batch(
+    body: QuotationBatchCreate,
+    _authz: None = Depends(require_permission("can_manage_quotations", "organization")),
+    session: AsyncSession = Depends(require_tenant_session),
+    identity: SessionIdentity = Depends(get_current_identity),
+) -> list[QuotationResponse]:
+    service = QuotationService(session)
+    rows = await service.quote_batch_from_current_rates(
+        organization_id=identity.organization_id,
+        user_id=identity.user_id,
+        charge_codes=body.charge_codes,
+        origin_port_id=body.origin_port_id,
+        destination_port_id=body.destination_port_id,
+        party_id=body.party_id,
+    )
+    await session.commit()
+    return [QuotationResponse.from_row(row) for row in rows]
