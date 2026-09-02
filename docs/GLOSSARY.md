@@ -42,6 +42,7 @@
 | wdrożenie tenanta | tenant_rollout | 50.0 tablica `default_currency`; nie tabela rollout; nie upsert |
 | oś dziesiętna kwoty | money_axis | 52.0 siatka integer/ułamek/ISO na `<Money/>`; nie float |
 | gęstość zagęszczona | table_density_condensed | 53.0 trzeci tryb tylko na gridzie `rate_line`; nie globalnie |
+| pin Radix shadcn | shadcn_radix_base | 54.0 `components.json` `base: radix`; nie Base UI |
 | odcinek | shipment_leg | operacyjne; nie w 29.0 |
 | tenant | organization | organization_id wszędzie |
 | ustawienie tenanta | organization_setting | konfiguracja jako dane; allowlista kluczy; nie sekret |

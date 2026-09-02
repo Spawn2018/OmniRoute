@@ -174,4 +174,5 @@
 | 2026-09-02 | 52.0 | U-money-align | `<Money/>` siatka integer/ułamek/ISO. Nie float, nie grouping. |
 | 2026-09-02 | Plan 53.0 | U-condensed | delta `docs/deltas/archived/53.0-table-condensed.md` + spec. Condensed tylko na `/rate-lines`. Następny: `/plaster` 53.0. |
 | 2026-09-02 | 53.0 | U-condensed | `allowCondensed` na gridzie stawek. Nie globalnie. |
-| 2026-09-02 | Plan 54.0 | U-primitives-json | delta `docs/deltas/open/54.0-shadcn-radix-base.md` + spec. Pin Radix. Następny: `/plaster` 54.0. |
+| 2026-09-02 | Plan 54.0 | U-primitives-json | delta `docs/deltas/archived/54.0-shadcn-radix-base.md` + spec. Pin Radix. Następny: `/plaster` 54.0. |
+| 2026-09-02 | 54.0 | U-primitives-json | `components.json` `base: radix`. Nie Base UI. |

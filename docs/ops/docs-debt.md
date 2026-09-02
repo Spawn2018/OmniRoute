@@ -126,7 +126,9 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **52.0 DONE:** `<Money/>` siatka integer / 4 miejsca / ISO. Nie `parseFloat`. Nie grouping locale.
 - **52.0 leftover — grouping tysięcy / U-condensed (dlaczego nie w tym plasterze):** `toLocaleString` na kwocie = Number. U-condensed **DONE w 53.0**.
 - **53.0 DONE:** `allowCondensed` na `/rate-lines`; inny DataTableShell bez opcji `condensed`. Nie nowa tabela. Nie globalnie.
-- **53.0 leftover — U-primitives-json / freeze (dlaczego nie w tym plasterze):** PLAN leftover po U-condensed. `shadcn add` Base UI = osobny Plan.
+- **53.0 leftover — U-primitives-json / freeze (dlaczego nie w tym plasterze):** PLAN leftover po U-condensed. **DONE w 54.0**.
+- **54.0 DONE:** `frontend/components.json` `"base": "radix"`. Nie Base UI. Nie `shadcn init` na tokenach.
+- **54.0 leftover — U-i18n-structure (dlaczego nie w tym plasterze):** PLAN leftover po pinie CLI. Klucze i18n = osobny Plan.
 - **6.0 leftover — klon nagłówka modelu (dlaczego nie w tym plasterze):** `jscpd` 6 linii `charge.py` przeciw `nbp_rate.py` (blok `id`). Miksin wszystkich modeli = `refaktor-pass`. `just dup` 2,83% po kompaktowym `id` i osobnym formularzu kursu (nie `CatalogCreateForm`).
 - **7.0 DONE:** `dangerous_good` UN/IMDG + aliasy + `source_ref`, RLS FORCE, `resolve`, OpenFGA `can_manage_dangerous_goods`, `/dangerous-goods`. Nie podpięcie do wyceny, nie live IMO, nie M-08 `charge`.
 - **7.0 leftover — live IMO / ADN-ADR / Fala 8 (dlaczego nie w tym plasterze):** ręczny wpis = `tenant:manual`; fixture = `imdg:<un_number>`. Seed tysięcy UN i live HTTP do IMO = jak 4.0/5.0. ADN/ADR osobne tabele i grupy zgodności 1.xA = później. Fala 8 M-53–M-56 zostaje.
