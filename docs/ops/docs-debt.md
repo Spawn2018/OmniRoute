@@ -100,7 +100,9 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **39.0 DONE:** `/cost-to-serve` odczyt SOP i wycen wybranego kontrahenta. Nie nowa tabela. JS nie sumuje.
 - **39.0 leftover — ABC / suma wycen / party_id na charge (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. M-47 księgowość **DONE w 40.0**.
 - **40.0 DONE:** `/bookkeeping` odczyt `charge` z nazwą z `charge_code`. Nie nowa tabela. Nie JPK. JS nie odejmuje.
-- **40.0 leftover — JPK / ERP HTTP / tabela dekretów (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Fala 7 M-48 transport drogowy = osobny Plan.
+- **40.0 leftover — JPK / ERP HTTP / tabela dekretów (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Fala 7 M-48 transport drogowy **DONE w 41.0**.
+- **41.0 DONE:** `/road` odczyt `location` `postal_zone`/`address`. Nie nowa tabela. Nie TMS. Nie GPS.
+- **41.0 leftover — TMS / GPS (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. M-49 kolej = osobny Plan.
 - **6.0 leftover — klon nagłówka modelu (dlaczego nie w tym plasterze):** `jscpd` 6 linii `charge.py` przeciw `nbp_rate.py` (blok `id`). Miksin wszystkich modeli = `refaktor-pass`. `just dup` 2,83% po kompaktowym `id` i osobnym formularzu kursu (nie `CatalogCreateForm`).
 - **7.0 DONE:** `dangerous_good` UN/IMDG + aliasy + `source_ref`, RLS FORCE, `resolve`, OpenFGA `can_manage_dangerous_goods`, `/dangerous-goods`. Nie podpięcie do wyceny, nie live IMO, nie M-08 `charge`.
 - **7.0 leftover — live IMO / ADN-ADR / Fala 8 (dlaczego nie w tym plasterze):** ręczny wpis = `tenant:manual`; fixture = `imdg:<un_number>`. Seed tysięcy UN i live HTTP do IMO = jak 4.0/5.0. ADN/ADR osobne tabele i grupy zgodności 1.xA = później. Fala 8 M-53–M-56 zostaje.

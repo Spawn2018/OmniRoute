@@ -30,6 +30,7 @@
 | przepływ | cash_flow | 38.0 tablica `buy`/`sell` z `charge` jako wypływ/wpływ; nie tabela księgi; nie odejmowanie |
 | koszt obsługi klienta | cost_to_serve | 39.0 tablica SOP + wyceny kontrahenta; nie tabela ABC; nie suma |
 | księgowość | bookkeeping | 40.0 tablica `charge` + `charge_code.name`; nie JPK; nie ERP |
+| transport drogowy | road_transport | 41.0 tablica `location` `postal_zone`/`address`; nie TMS; nie GPS |
 | odcinek | shipment_leg | operacyjne; nie w 29.0 |
 | tenant | organization | organization_id wszędzie |
 | ustawienie tenanta | organization_setting | konfiguracja jako dane; allowlista kluczy; nie sekret |

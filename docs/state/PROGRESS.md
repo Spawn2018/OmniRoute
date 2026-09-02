@@ -148,4 +148,5 @@
 | 2026-09-02 | 39.0 | M-46 | `cost_to_serve` tablica `/cost-to-serve` (SOP + wyceny kontrahenta). Nie tabela ABC, nie suma kwot. |
 | 2026-09-02 | Plan 40.0 | M-47 | delta `docs/deltas/archived/40.0-bookkeeping.md` + spec. Tablica charge + nazwa kodu. Nie JPK. Następny: `/plaster` 40.0. |
 | 2026-09-02 | 40.0 | M-47 | `bookkeeping` tablica `/bookkeeping` (charge + charge_code.name). Nie JPK, nie ERP. |
-| 2026-09-02 | Plan 41.0 | M-48 | delta `docs/deltas/open/41.0-road-transport.md` + spec. Tablica location postal_zone/address. Nie TMS. Następny: `/plaster` 41.0. |
+| 2026-09-02 | Plan 41.0 | M-48 | delta `docs/deltas/archived/41.0-road-transport.md` + spec. Tablica location postal_zone/address. Nie TMS. Następny: `/plaster` 41.0. |
+| 2026-09-02 | 41.0 | M-48 | `road_transport` tablica `/road` (postal_zone i address). Nie TMS, nie GPS. |

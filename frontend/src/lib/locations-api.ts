@@ -17,6 +17,10 @@ export type Location = {
   source_ref: string
 }
 
+export function roadLocations<Row extends { kind: string }>(rows: readonly Row[]): Row[] {
+  return rows.filter((row) => row.kind === "postal_zone" || row.kind === "address")
+}
+
 export type ZoneMember = {
   id: string
   organization_id: string

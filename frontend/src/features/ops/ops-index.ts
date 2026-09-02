@@ -54,6 +54,11 @@ export const OPS_JOBS = [
     job: "nazwa charge_code oraz buy/sell",
   },
   {
+    route: BUSINESS_LISTS.roadTransport.route,
+    label: "Transport drogowy",
+    job: "lokalizacje postal_zone i address",
+  },
+  {
     route: BUSINESS_LISTS.mailIntegration.route,
     label: "Poczta",
     job: "odczyt domen i kontaktów",
@@ -210,6 +215,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "38.0": "/cashflows",
   "39.0": "/cost-to-serve",
   "40.0": "/bookkeeping",
+  "41.0": "/road",
 } as const
 
 export const ROUTES_BREADTH_STANDING =
