@@ -29,6 +29,12 @@ export function railPorts<Row extends { function_flags: readonly string[] }>(
   return ports.filter((row) => row.function_flags.includes("rail"))
 }
 
+export function chinaRailPorts<
+  Row extends { country_code: string; function_flags: readonly string[] },
+>(ports: readonly Row[]): Row[] {
+  return railPorts(ports).filter((row) => row.country_code === "CN")
+}
+
 export type PortCreateBody = {
   unlocode: string
   name: string

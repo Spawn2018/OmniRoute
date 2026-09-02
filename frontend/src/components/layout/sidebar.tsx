@@ -16,6 +16,7 @@ const NAV = [
   { to: "/bookkeeping", label: "Księgowość" },
   { to: "/road", label: "Transport drogowy" },
   { to: "/rail", label: "Kolej intermodalna" },
+  { to: "/china-rail", label: "Kolej z Chin" },
   { to: "/mail", label: "Poczta" },
   { to: "/notifications", label: "Powiadomienia" },
   { to: "/shipments", label: "Zlecenia" },

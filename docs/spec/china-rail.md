@@ -1,10 +1,10 @@
 # M-50 kolej z Chin — tablica `port` CN z flagą `rail`
 
 **Moduł żywy:** M-50 (token UI `china_rail`, nie tabela) + M-05 `port`  
-**Plaster:** **43.0** (do `/plaster`)  
+**Plaster:** **43.0** (zamknięty)  
 **Status:** operator **widzi** chińskie porty kolejowe. Nie tabela korytarza. Nie HTTP.
 
-Delta: [docs/deltas/open/43.0-china-rail.md](../deltas/open/43.0-china-rail.md).
+Delta: [docs/deltas/archived/43.0-china-rail.md](../deltas/archived/43.0-china-rail.md).
 
 ## 43.0 tablica odczytu na `/china-rail`
 

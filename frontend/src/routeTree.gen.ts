@@ -15,6 +15,7 @@ import { Route as CashflowsRouteImport } from './routes/cashflows'
 import { Route as ChannelQuotesRouteImport } from './routes/channel-quotes'
 import { Route as ChargeCodesRouteImport } from './routes/charge-codes'
 import { Route as ChargesRouteImport } from './routes/charges'
+import { Route as ChinaRailRouteImport } from './routes/china-rail'
 import { Route as CommodityCodesRouteImport } from './routes/commodity-codes'
 import { Route as CostToServeRouteImport } from './routes/cost-to-serve'
 import { Route as CreditReviewsRouteImport } from './routes/credit-reviews'
@@ -78,6 +79,11 @@ const ChargeCodesRoute = ChargeCodesRouteImport.update({
 const ChargesRoute = ChargesRouteImport.update({
   id: '/charges',
   path: '/charges',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChinaRailRoute = ChinaRailRouteImport.update({
+  id: '/china-rail',
+  path: '/china-rail',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CommodityCodesRoute = CommodityCodesRouteImport.update({
@@ -258,6 +264,7 @@ export interface FileRoutesByFullPath {
   '/channel-quotes': typeof ChannelQuotesRoute
   '/charge-codes': typeof ChargeCodesRoute
   '/charges': typeof ChargesRoute
+  '/china-rail': typeof ChinaRailRoute
   '/commodity-codes': typeof CommodityCodesRoute
   '/cost-to-serve': typeof CostToServeRoute
   '/credit-reviews': typeof CreditReviewsRoute
@@ -300,6 +307,7 @@ export interface FileRoutesByTo {
   '/channel-quotes': typeof ChannelQuotesRoute
   '/charge-codes': typeof ChargeCodesRoute
   '/charges': typeof ChargesRoute
+  '/china-rail': typeof ChinaRailRoute
   '/commodity-codes': typeof CommodityCodesRoute
   '/cost-to-serve': typeof CostToServeRoute
   '/credit-reviews': typeof CreditReviewsRoute
@@ -343,6 +351,7 @@ export interface FileRoutesById {
   '/channel-quotes': typeof ChannelQuotesRoute
   '/charge-codes': typeof ChargeCodesRoute
   '/charges': typeof ChargesRoute
+  '/china-rail': typeof ChinaRailRoute
   '/commodity-codes': typeof CommodityCodesRoute
   '/cost-to-serve': typeof CostToServeRoute
   '/credit-reviews': typeof CreditReviewsRoute
@@ -387,6 +396,7 @@ export interface FileRouteTypes {
     | '/channel-quotes'
     | '/charge-codes'
     | '/charges'
+    | '/china-rail'
     | '/commodity-codes'
     | '/cost-to-serve'
     | '/credit-reviews'
@@ -429,6 +439,7 @@ export interface FileRouteTypes {
     | '/channel-quotes'
     | '/charge-codes'
     | '/charges'
+    | '/china-rail'
     | '/commodity-codes'
     | '/cost-to-serve'
     | '/credit-reviews'
@@ -471,6 +482,7 @@ export interface FileRouteTypes {
     | '/channel-quotes'
     | '/charge-codes'
     | '/charges'
+    | '/china-rail'
     | '/commodity-codes'
     | '/cost-to-serve'
     | '/credit-reviews'
@@ -514,6 +526,7 @@ export interface RootRouteChildren {
   ChannelQuotesRoute: typeof ChannelQuotesRoute
   ChargeCodesRoute: typeof ChargeCodesRoute
   ChargesRoute: typeof ChargesRoute
+  ChinaRailRoute: typeof ChinaRailRoute
   CommodityCodesRoute: typeof CommodityCodesRoute
   CostToServeRoute: typeof CostToServeRoute
   CreditReviewsRoute: typeof CreditReviewsRoute
@@ -592,6 +605,13 @@ declare module '@tanstack/react-router' {
       path: '/charges'
       fullPath: '/charges'
       preLoaderRoute: typeof ChargesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/china-rail': {
+      id: '/china-rail'
+      path: '/china-rail'
+      fullPath: '/china-rail'
+      preLoaderRoute: typeof ChinaRailRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/commodity-codes': {
@@ -842,6 +862,7 @@ const rootRouteChildren: RootRouteChildren = {
   ChannelQuotesRoute: ChannelQuotesRoute,
   ChargeCodesRoute: ChargeCodesRoute,
   ChargesRoute: ChargesRoute,
+  ChinaRailRoute: ChinaRailRoute,
   CommodityCodesRoute: CommodityCodesRoute,
   CostToServeRoute: CostToServeRoute,
   CreditReviewsRoute: CreditReviewsRoute,

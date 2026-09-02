@@ -64,6 +64,11 @@ export const OPS_JOBS = [
     job: "porty z flagą rail",
   },
   {
+    route: BUSINESS_LISTS.chinaRail.route,
+    label: "Kolej z Chin",
+    job: "porty CN z flagą rail",
+  },
+  {
     route: BUSINESS_LISTS.mailIntegration.route,
     label: "Poczta",
     job: "odczyt domen i kontaktów",
@@ -222,6 +227,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "40.0": "/bookkeeping",
   "41.0": "/road",
   "42.0": "/rail",
+  "43.0": "/china-rail",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

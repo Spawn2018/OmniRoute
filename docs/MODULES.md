@@ -56,6 +56,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-47 | Księgowość (integracja) | 40.0 `bookkeeping` | **ukończony (fundament)** · tablica `charge` + nazwa kodu; nie JPK; nie ERP |
 | M-48 | Transport drogowy | 41.0 `road_transport` | **ukończony (fundament)** · tablica `postal_zone`/`address`; nie TMS; nie GPS |
 | M-49 | Kolej intermodalna | 42.0 `intermodal_rail` | **ukończony (fundament)** · tablica portów z flagą `rail`; nie wagon; nie CIM |
+| M-50 | Kolej z Chin | 43.0 `china_rail` | **ukończony (fundament)** · tablica portów CN z flagą `rail`; nie korytarz; nie HTTP |
 
 Nie dopisuj tu 70 pustych wierszy M-xx. Katalog + **kolejka Q1…** (co budować jedno po drugim, tryb Plan potem plaster): `docs/PLAN-REALIZACJA.md` § Kolejka. Archiwum Claude zostaje magazynem specyfikacji, nie SoT kolejności.
 
