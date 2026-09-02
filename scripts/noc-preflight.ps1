@@ -44,6 +44,11 @@ function Test-ListenPort([int]$Port) {
 
 Write-Host "noc-preflight  $Root"
 
+python (Join-Path $Root "scripts\quality\writer_preflight.py")
+if ($LASTEXITCODE -ne 0) {
+  Write-Fail "NOC-LIVE nie jest stop. Druga noc albo pisarz w tle."
+}
+
 $dirty = git status --porcelain
 if ($dirty) {
   Write-Fail "Drzewo git nieczyste. Inny agent albo niedokończona robota - noc nie startuje."

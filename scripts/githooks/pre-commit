@@ -1,0 +1,12 @@
+#!/bin/sh
+set -eu
+
+repo_root=$(git rev-parse --show-toplevel)
+cd "$repo_root"
+
+if ! command -v python >/dev/null 2>&1; then
+    echo "pre-commit: brak python w PATH." >&2
+    exit 1
+fi
+
+exec python "$repo_root/scripts/quality/pre_commit_factory.py"

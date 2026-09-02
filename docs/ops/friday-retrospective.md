@@ -1,15 +1,23 @@
 # Piątkowa retrospektywa reguł / skills (Faza D)
 
-**Cel:** prune context poisoning, nie „standup 30 osób”.
+**Cel:** prune context poisoning, nie „standup 30 osób”.  
+**Automacja** może otworzyć issue `retro-YYYY-MM-DD`. **Nie** edytuje `AGENTS.md` / `GROUNDING.md` / `.cursor/rules`. Merge kontraktu robi człowiek. Agent wolno dać diff **w komentarzu issue**.
+
+Ten plik jest **procedurą**, nie logiem. Log = zamknięte issues. Inaczej puchnie i sam truuje kontekst.
 
 ## Checklist (≤30 min)
 
-1. Przejrzyj alwaysApply rules — czy nadal ≤3 i ≤~2k tokenów łącznie?
-2. Czy któryś skill nie był używany >4 tygodnie? → archiwum lub skasuj.
-3. Czy `agentlint` baseline był aktualizowany świadomie (nie przypadkiem)?
-4. Czy Knowledge Library dostała karty bez dumpowania OSS?
+1. AlwaysApply — czy nadal ≤3 i ≤~2k tokenów łącznie?
+2. Skill nietknięty >4 tygodnie → archiwum albo skasuj.
+3. `agentlint` baseline — czy ruszany świadomie, w tym samym commicie co treść?
+4. Knowledge: karta po zdarzeniu, nie dump OSS. Max 8–20 retrieve.
 5. Jedna decyzja ADR albo linia w PROGRESS — zero „omówimy”.
+6. Czy leftover w `docs-debt.md` przestał być leftoverem?
 
-## Artefakt
+## Trzy kubełki — osobne commity, nigdy razem
 
-Notatka w `docs/state/PROGRESS.md` (jedna linia) albo issue `retro-YYYY-MM-DD`.
+1. Karta `docs/_knowledge/` — bez agentlinta.
+2. Wiersz w `docs-debt.md`.
+3. Zmiana kontraktu — `python scripts/quality/agentlint.py --write` w **tym samym** commicie.
+
+Sygnał do wyłączenia crona D1: issue zamykane bez czytania trzy tygodnie z rzędu.

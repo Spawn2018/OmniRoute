@@ -4,6 +4,8 @@ description: Rozpoczyna realizację plastra według procedury
 
 Przeczytaj `docs/state/CURRENT.md`.
 
+Na starcie (gdy to **nie** jest `/noc`): `python scripts/quality/writer_preflight.py` — jeśli `/noc` jedzie, **stop**.
+
 **Wyjątek `/noc`:** nie zatrzymuj się po kroku 6 i nie czekaj na `akceptuję`. Od razu `/testy`, potem kod, **`/po-plastrze` (pełna tabela)**, `/zamknij` bez nowej rozmowy, commit + push, wróć do pętli. Szczegóły: `docs/ops/nocna-zmiana.md`. `/noc` nie pomija kartki jakości.
 
 Jeśli **Etap: Plan** albo brak zaakceptowanej delty dla tej pozycji kolejki:
@@ -24,7 +26,7 @@ Wykonaj w kolejności, zatrzymując się po każdym kroku po potwierdzenie:
    Zaczekaj na werdykt ISTNIEJE / PODOBNE / BRAK.
 3. Jeśli ISTNIEJE — zaproponuj rozszerzenie zamiast nowego kodu i przerwij.
 4. Przeczytaj wyłącznie ten plik ze `docs/spec/`, który wskazuje CURRENT.md.
-5. Sprawdź schemat bazy przez MCP Postgres. Nie czytaj modeli.
+5. Sprawdź schemat w `backend/alembic/versions/` (najnowsza migracja tej tabeli) i w modelach **tego BC**. Nie czytaj wszystkich modeli.
 6. Napisz plan: pliki nowe, pliki zmieniane, kolejność, ryzyka.
    NIE PISZ KODU.
 

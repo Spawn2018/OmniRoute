@@ -18,7 +18,7 @@ Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-RE
 Kanon wklejaj z PLAN-REALIZACJA.md. Poniższy blok zostaje, żeby stare czaty nie gubiły kontraktu; **nie** nadpisuje kanonu.
 
 ```
-WIP=1. Max 12 plików. Test najpierw. Schemat = MCP Postgres (brak = stop).
+WIP=1. Max 12 plików. Test najpierw. Schemat = backend/alembic/versions/ tej tabeli + modele tego BC.
 Nie czytaj Informacje z claude/ (wyjątek: jeden nagłówek M-xx w /plan-modul).
 Nie twórz Temporal/Hatchet/outbox na zapas, Infisical, 70 pustych M-xx,
 haseł + Auth0 naraz.

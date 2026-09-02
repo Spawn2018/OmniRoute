@@ -4,7 +4,7 @@
 **Data:** 2026-09-02  
 **Oś:** fabryka. **Poza osią Q/S.** Nie ma wiersza w `PLAN-REALIZACJA.md`.  
 **Śledzenie:** jedna linia w [docs-debt.md](../../ops/docs-debt.md).  
-**Okno wykonania:** piątkowa retrospektywa. **Nie startuje zamiast 66.0 S3.**  
+**Okno wykonania:** poza osią Q/S. **Nie startuje zamiast S4.** Nie rebase'ować `0224f1b` (66.0) — commity E1/OS-1 są już rodzicami tego plastra przez kolizję pisarzy 2026-09-02.  
 **Docelowa lokalizacja pliku w repo:** `docs/deltas/open/OS-1-fabryka-uczenie-i-automacje.md`
 
 **Zakres:** kontrakt agenta, wiedza fabryki, rytm retro, automacje przypominające, dwa rozjazdy kontraktu.  
@@ -12,7 +12,7 @@
 
 **Wejście, którego autor delty nie miał pod ręką:** `docs/ops/docs-debt.md`, `post-plaster.md`, `nocna-zmiana.md`, `friday-retrospective.md`, `weekly-refactor.md`, `threat-model-tenant-hitl.md`, `.cursor/commands/*`, `.cursor/rules/*`, `.cursor/skills/*`, `.github/workflows/*`, ADR-0002. Twierdzenia o `context.mdc`, `no-slop.mdc`, komendach i `gate.yml` pochodzą z opisu w `claude-briefing-factory.md` §3 i **wymagają potwierdzenia przy wykonaniu**. Twierdzenia oparte na `mcp.json`, `settings.json`, `hooks.json`, `AGENTS.md`, `GROUNDING.md`, `PLAN-REALIZACJA.md`, `CURRENT.md` są twarde.
 
-**Potwierdzenie przy umieszczeniu w repo (2026-09-02):** `context.mdc` zawiera zdanie o MCP Postgres — E1 rusza oba pliki kontraktu. Ścieżka migracji w kontrakcie to `backend/alembic/versions/` (w korzeniu nie ma `alembic/`). CURRENT = 66.0 S3 plaster — ta delta nie startuje zamiast S3 i nie rusza WIP produktu. B12: `.cursorignore` ma tylko `Informacje z claude/`; `docs/_source/` jest w `excludePatterns`. `justfile` już nazywa `code-gate` / `meta-gate`; leftover E2 = lokalny fail-fast (zebrać oba wyniki). `/plaster` i skill `nowy-plaster` nadal mówią o MCP — poza commitem E1.
+**Potwierdzenie przy umieszczeniu w repo (2026-09-02):** E1 w `AGENTS.md` + `context.mdc` (`backend/alembic/versions/`). 66.0 S3 jest na `origin/main` *nad* commitami fabryki — nie cofać force-pushem. B12: `docs/_source/` dopisane do `.cursorignore` na `factory-learn`. `/plaster` i skill `nowy-plaster` czytają migracje, nie MCP. E3 = git `pre-commit` (nie auto `--write`). E2 (zebrać oba wyniki `just gate`) nadal bez zgody.
 
 ---
 
@@ -265,8 +265,8 @@ Wszystko poniżej to propozycje wierszy albo dopisków do **istniejących** sekc
 ## Definicja ukończenia tej delty
 
 1. E1 wykonane osobnym commitem (`AGENTS.md` + `context.mdc` + `agentlint --write`), `just meta-gate` zielony przed commitem.
-2. E2 i E3 pozostają **propozycjami** — implementacja dopiero po osobnej zgodzie operatora. Brak zgody = wiersz w `docs-debt.md`, nie milczenie.
-3. Trzy karty knowledge (1, 14, 15) utworzone w oknie pierwszej retro, każda ≤80 linii, osobny commit bez agentlinta.
+2. E2 pozostaje **propozycją** (lokalny `just gate` fail-fast). E3 wykonane: git `pre-commit` + `pre_commit_factory.py` — bez auto `--write`.
+3. Karty knowledge 006–008 (tools) i 002–003 (memory-patterns) w tym samym oknie co zamek drzewa. Dalsze karty tylko po zdarzeniu.
 4. `friday-retrospective.md` potwierdzony jako procedura; jeśli jest logiem — jeden ruch redakcyjny, bez zmian w AGENTS.
 5. Automacje D1–D4 opisane w `docs/ops/`; **żadna nie włączona** bez osobnej zgody. D5 nietknięta.
 6. Zero kodu produktu. Zero zmian w `PLAN-REALIZACJA.md` (śledzenie tylko przez docs-debt).
@@ -274,8 +274,7 @@ Wszystko poniżej to propozycje wierszy albo dopisków do **istniejących** sekc
 
 ## Leftover z tej delty (do `docs-debt.md`)
 
-- E2 kolejność i rozdzielenie lokalnego `just gate` — propozycja, brak zgody na implementację.
-- E3 lokalny pre-commit na baseline agentlinta — propozycja, brak zgody na implementację.
-- B12 test `.cursorignore` ⊇ `excludePatterns` w `meta-gate` — nie potwierdzono stanu obu list.
+- E2: lokalny `just gate` ma zebrać **oba** wyniki (code + meta), nie przerywać po pierwszym — brak zgody na zmianę `justfile` gate.
+- B12: `.cursorignore` ma `docs/_source/`; test `⊇ excludePatterns` w `meta-gate` nadal nie istnieje.
 - B3 promptfoo na `synth://` — nadal echo.
-- B11 dwie liczby kosztu w kartce `/po-plastrze` — wymaga edycji `post-plaster.md`, poza tą delta.
+- D1/D3/D4 Cursor Automations — szkic w [automations.md](../../ops/automations.md), **nie włączone**.

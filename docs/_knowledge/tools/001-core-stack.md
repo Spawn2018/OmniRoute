@@ -1,9 +1,8 @@
 # Tools — wzorce integracji
 
-## Postgres MCP
-**Kiedy:** podgląd schematu, EXPLAIN  
-**Repo:** mcp-server-postgres  
-**Alternatywa:** czytanie wszystkich modeli SQLAlchemy — odrzucona (context bloat)
+## Postgres — schemat
+**Kiedy:** plaster z tabelą albo `resolve`  
+**Skąd:** `backend/alembic/versions/` (ta tabela) + modele **tego BC**. Nie MCP (niepodłączony). Nie wszystkie modele.
 
 ## Temporal
 **Kiedy:** RFQ, ekstrakcja wielokrokowa, OCR pipeline  

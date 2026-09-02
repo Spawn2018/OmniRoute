@@ -19,7 +19,7 @@ Kolejność jest obowiązkowa. Nie przeskakuj etapów.
   Ten sam przebieg nie pisze testów i kodu.
 
 ## 1. Migracja
-- sprawdź aktualny schemat przez MCP Postgres
+- sprawdź aktualny schemat w `backend/alembic/versions/` (ta tabela) i w modelach tego BC
 - `organization_id`, `created_at`, `updated_at`, `created_by` w każdej tabeli
 - polityka RLS + FORCE ROW LEVEL SECURITY
 - kwoty: `Numeric(14,4)` + `CHAR(3)` waluta obok

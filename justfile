@@ -19,8 +19,9 @@ meta-gate: docs-check agent-refs agentlint
 
 hooks:
     git config core.hooksPath scripts/githooks
-    -chmod +x scripts/githooks/pre-push
+    -chmod +x scripts/githooks/pre-push scripts/githooks/pre-commit
     @echo "core.hooksPath = $(git config --get core.hooksPath)"
+    @echo "pre-commit: czyste drzewo poza indeksem + agentlint gdy ruszasz kontrakt"
     @echo "pre-push odpala 'just gate'. Furtka awaryjna: git push --no-verify"
 
 dev:

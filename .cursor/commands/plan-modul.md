@@ -4,6 +4,8 @@ description: Etap Plan dla pozycji kolejki — rozmowa i delta, zero kodu produk
 
 Przeczytaj `docs/state/CURRENT.md` i `docs/PLAN-REALIZACJA.md` § Kolejka realizacji.
 
+Na starcie (gdy to **nie** jest `/noc`): `python scripts/quality/writer_preflight.py` — jeśli `/noc` jedzie, **stop**. Nie otwieraj drugiej delty na to samo Q.
+
 **Wyjątek `/noc`:** zostań w Agencie. Nie przełączaj na tryb Plan. Nie czekaj na `akceptuję`. Opcja rekomendowana, delta, `just docs`, commit + push, od razu `/plaster` jeśli przed godziną stopu. Szczegóły: `docs/ops/nocna-zmiana.md`.
 
 Jeśli w Cursorze jesteś w trybie Agent **i to nie jest `/noc`**: przełącz na **Plan** (ten sam wybór co Agent / Multitask). Nie implementuj.

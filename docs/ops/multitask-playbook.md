@@ -8,6 +8,10 @@
 
 **Czego ten dokument nie robi:** nie znosi WIP=1, nie otwiera drugiej kolejki, nie pozwala na dwa plastry produktu na `origin/main` w tym samym czasie.
 
+**Zamek w git (2026-09-02):** `scripts/githooks/pre-commit` odmawia commita, gdy w drzewie zostają **inne** brudne albo nieśledzone pliki niż te w indeksie. To jest dokładnie kolizja „fabryka w środku plastra”. `writer_preflight.py` stopuje `/plaster` i `/plan-modul`, gdy `NOC-LIVE` ≠ `stop`. Markdown bez haka nic nie egzekwuje.
+
+Zobacz też [automations.md](automations.md).
+
 ---
 
 ## 1. Tryb Cursor × wolno / zakaz
