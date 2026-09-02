@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** 62.0 Q-E3 `/plaster` — how-to jobów zapisu + C4 w ARCHITECTURE. Nie 70 stubów. Nie F9.1. Nie S1. Parked: M-02, Auth0, portale (odblokowanie w Fali S).
+**Następny (zablokowany):** Q-E4 `/plan-modul` — threat model tenant+HITL + CodeQL w CI. Nie F9.1. Nie S1. Parked: M-02, Auth0, portale (odblokowanie w Fali S).
 <!-- os-status:end -->
 
 ```mermaid
@@ -382,8 +382,8 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E0** | Kanon jakości 4,4–5 w tym dokumencie | 59.0 | zamknięty (ten wiersz) |
 | **Q-E1** | `/refaktor` — katalogi Grupa A do 4,4 (`catalog-parts`) | 60.0 | zamknięty (`docs/deltas/archived/60.0-catalog-parts.md`) |
 | **Q-E2** | Testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy) | 61.0 | zamknięty (`docs/deltas/archived/61.0-alembic-quote-budget.md`) |
-| **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | Plaster docs | **następny** |
-| **Q-E4** | Threat model tenant+HITL + CodeQL w CI | Plan → plaster | po Q-E3 |
+| **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | 62.0 | zamknięty (`docs/deltas/archived/62.0-operator-howto-c4.md`) |
+| **Q-E4** | Threat model tenant+HITL + CodeQL w CI | Plan → plaster | **następny** |
 | po Q-E4 | **Fala S**, start **S1** (nie F9.1) | Plan → plaster | kolejka poniżej |
 
 ### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
@@ -567,13 +567,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

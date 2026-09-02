@@ -189,3 +189,4 @@
 | 2026-09-02 | Plan 61.0 | ops | Q-E2: testy przez Alembic + pomiar wyceny. Delta zaakceptowana (`/noc`). Nie seed 50k. Następny: `/plaster` 61.0. |
 | 2026-09-02 | 61.0 | ops | Q-E2: testy przez Alembic na `omniroute_test`. EXPLAIN Index Scan, 0 wierszy `rate_line` = N/A. Następny: Q-E3 Plan. |
 | 2026-09-02 | Plan 62.0 | ops | Q-E3: how-to kontrahent+katalogi + C4 context/container. Delta zaakceptowana (`/noc`). Następny: `/plaster` 62.0. |
+| 2026-09-02 | 62.0 | ops | Q-E3: how-to kontrahent i katalogi zapisu; C4 context+container w ARCHITECTURE. Nie 70 stubów. Następny: Q-E4 Plan. |

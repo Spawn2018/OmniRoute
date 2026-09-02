@@ -1,10 +1,44 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **61.0** Q-E2 testy przez Alembic + pomiar wyceny. **Etap:** Plaster. **Następny:** 62.0 Q-E3 `/plaster` — how-to jobów zapisu + C4 w ARCHITECTURE. Nie 70 stubów. Nie F9.1. Nie S1. Parked: M-02, Auth0, portale (odblokowanie w Fali S). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **62.0** Q-E3 how-to jobów zapisu + C4. **Etap:** Plan. **Następny:** Q-E4 `/plan-modul` — threat model tenant+HITL + CodeQL w CI. Nie F9.1. Nie S1. Parked: M-02, Auth0, portale (odblokowanie w Fali S). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
+
+## C4
+
+Context: operator pracuje w jednym produkcie; baza i uprawnienia są osobnymi systemami. LLM jest na zewnątrz i **nie zapisuje** stawek.
+
+```mermaid
+C4Context
+title OmniRoute — context
+Person(operator, "Operator", "spedytor tenanta")
+System(omniroute, "OmniRoute", "katalogi, wyceny, HITL")
+System_Ext(pg, "PostgreSQL", "RLS, Decimal")
+System_Ext(fga, "OpenFGA", "uprawnienia API")
+System_Ext(llm, "Model językowy", "szkic extractu, nie stawka")
+Rel(operator, omniroute, "joby zapisu i recenzja HITL")
+Rel(omniroute, pg, "SQL")
+Rel(omniroute, fga, "check")
+Rel(omniroute, llm, "extract; human-in-the-loop")
+```
+
+Container: SPA i API w jednym repozytorium, dwa procesy. Temporal / outbox — cel, nie runtime.
+
+```mermaid
+C4Container
+title OmniRoute — container
+Person(operator, "Operator")
+Container(spa, "SPA", "React + Vite", "ekrany jobów")
+Container(api, "API", "FastAPI", "serwisy BC")
+ContainerDb(pg, "PostgreSQL", "RLS + Numeric")
+Container(fga, "OpenFGA", "model.fga")
+Rel(operator, spa, "HTTPS")
+Rel(spa, api, "JSON / OpenAPI")
+Rel(api, pg, "SQL")
+Rel(api, fga, "check")
+```
 
 ## Warstwy
 
