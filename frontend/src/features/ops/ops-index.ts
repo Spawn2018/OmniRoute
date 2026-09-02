@@ -19,6 +19,11 @@ export const OPS_JOBS = [
     job: "sell z charge do zafakturowania",
   },
   {
+    route: BUSINESS_LISTS.quoteInvoiceSettlement.route,
+    label: "Rozliczenie wyceny",
+    job: "wycena i sell po rate_line_id",
+  },
+  {
     route: BUSINESS_LISTS.mailIntegration.route,
     label: "Poczta",
     job: "odczyt domen i kontaktów",
@@ -168,6 +173,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "31.0": "/shipment-documents",
   "32.0": "/edi",
   "33.0": "/invoices",
+  "34.0": "/quote-invoices",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

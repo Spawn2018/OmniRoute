@@ -33,6 +33,7 @@ import { Route as PartyScorecardsRouteImport } from './routes/party-scorecards'
 import { Route as PortSurchargesRouteImport } from './routes/port-surcharges'
 import { Route as PortsRouteImport } from './routes/ports'
 import { Route as QuotationsRouteImport } from './routes/quotations'
+import { Route as QuoteInvoicesRouteImport } from './routes/quote-invoices'
 import { Route as RateLinesRouteImport } from './routes/rate-lines'
 import { Route as SessionRouteImport } from './routes/session'
 import { Route as ShipmentDocumentsRouteImport } from './routes/shipment-documents'
@@ -161,6 +162,11 @@ const QuotationsRoute = QuotationsRouteImport.update({
   path: '/quotations',
   getParentRoute: () => rootRouteImport,
 } as any)
+const QuoteInvoicesRoute = QuoteInvoicesRouteImport.update({
+  id: '/quote-invoices',
+  path: '/quote-invoices',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RateLinesRoute = RateLinesRouteImport.update({
   id: '/rate-lines',
   path: '/rate-lines',
@@ -222,6 +228,7 @@ export interface FileRoutesByFullPath {
   '/port-surcharges': typeof PortSurchargesRoute
   '/ports': typeof PortsRoute
   '/quotations': typeof QuotationsRoute
+  '/quote-invoices': typeof QuoteInvoicesRoute
   '/rate-lines': typeof RateLinesRoute
   '/session': typeof SessionRoute
   '/shipment-documents': typeof ShipmentDocumentsRoute
@@ -255,6 +262,7 @@ export interface FileRoutesByTo {
   '/port-surcharges': typeof PortSurchargesRoute
   '/ports': typeof PortsRoute
   '/quotations': typeof QuotationsRoute
+  '/quote-invoices': typeof QuoteInvoicesRoute
   '/rate-lines': typeof RateLinesRoute
   '/session': typeof SessionRoute
   '/shipment-documents': typeof ShipmentDocumentsRoute
@@ -289,6 +297,7 @@ export interface FileRoutesById {
   '/port-surcharges': typeof PortSurchargesRoute
   '/ports': typeof PortsRoute
   '/quotations': typeof QuotationsRoute
+  '/quote-invoices': typeof QuoteInvoicesRoute
   '/rate-lines': typeof RateLinesRoute
   '/session': typeof SessionRoute
   '/shipment-documents': typeof ShipmentDocumentsRoute
@@ -324,6 +333,7 @@ export interface FileRouteTypes {
     | '/port-surcharges'
     | '/ports'
     | '/quotations'
+    | '/quote-invoices'
     | '/rate-lines'
     | '/session'
     | '/shipment-documents'
@@ -357,6 +367,7 @@ export interface FileRouteTypes {
     | '/port-surcharges'
     | '/ports'
     | '/quotations'
+    | '/quote-invoices'
     | '/rate-lines'
     | '/session'
     | '/shipment-documents'
@@ -390,6 +401,7 @@ export interface FileRouteTypes {
     | '/port-surcharges'
     | '/ports'
     | '/quotations'
+    | '/quote-invoices'
     | '/rate-lines'
     | '/session'
     | '/shipment-documents'
@@ -424,6 +436,7 @@ export interface RootRouteChildren {
   PortSurchargesRoute: typeof PortSurchargesRoute
   PortsRoute: typeof PortsRoute
   QuotationsRoute: typeof QuotationsRoute
+  QuoteInvoicesRoute: typeof QuoteInvoicesRoute
   RateLinesRoute: typeof RateLinesRoute
   SessionRoute: typeof SessionRoute
   ShipmentDocumentsRoute: typeof ShipmentDocumentsRoute
@@ -603,6 +616,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof QuotationsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/quote-invoices': {
+      id: '/quote-invoices'
+      path: '/quote-invoices'
+      fullPath: '/quote-invoices'
+      preLoaderRoute: typeof QuoteInvoicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/rate-lines': {
       id: '/rate-lines'
       path: '/rate-lines'
@@ -680,6 +700,7 @@ const rootRouteChildren: RootRouteChildren = {
   PortSurchargesRoute: PortSurchargesRoute,
   PortsRoute: PortsRoute,
   QuotationsRoute: QuotationsRoute,
+  QuoteInvoicesRoute: QuoteInvoicesRoute,
   RateLinesRoute: RateLinesRoute,
   SessionRoute: SessionRoute,
   ShipmentDocumentsRoute: ShipmentDocumentsRoute,

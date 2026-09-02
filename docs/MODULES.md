@@ -47,6 +47,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-38 | Dokumenty zlecenia | 31.0 `shipment_document` | **ukończony (fundament)** · tablica `source_ref` wycen z party; nie tabela; nie PDF |
 | M-39 | EDI | 32.0 `edi_message` | **ukończony (fundament)** · tablica `channel_quote` na lane wyceny; nie tabela; nie X12 |
 | M-40 | Fakturowanie i KSeF | 33.0 `sales_invoice` | **ukończony (fundament)** · tablica `sell` z `charge`; nie tabela; nie KSeF |
+| M-41 | Rozliczenie wyceny z fakturą | 34.0 `quote_invoice_settlement` | **ukończony (fundament)** · tablica wycena + `sell` po `rate_line_id`; nie tabela; nie odejmowanie |
 
 Nie dopisuj tu 70 pustych wierszy M-xx. Katalog + **kolejka Q1…** (co budować jedno po drugim, tryb Plan potem plaster): `docs/PLAN-REALIZACJA.md` § Kolejka. Archiwum Claude zostaje magazynem specyfikacji, nie SoT kolejności.
 

@@ -7,6 +7,7 @@ import {
   quotationAcceptancePending,
   quotationCarrierInquiries,
   quotationInquiryTrails,
+  quotationInvoiceSettlements,
   quotationLanes,
   quotationOperationalExceptions,
   quotationResponseComparisons,
@@ -228,6 +229,35 @@ describe("quotation NBP lookup", () => {
         destinationPortId: DESTINATION,
         quotations: [lane],
         quotes: [sameParty, otherParty],
+      },
+    ])
+  })
+
+  it("pairs quotations with charge sell on shared rate_line_id and skips nulls", () => {
+    const quoted = quotationWithCurrency("EUR")
+    const hit = {
+      id: "ffffffff-ffff-4fff-8fff-ffffffffffff",
+      rate_line_id: quoted.rate_line_id,
+      sell_amount: "12.0000",
+      sell_currency: "EUR",
+    }
+    const orphan = {
+      id: "99999999-9999-4999-8999-999999999999",
+      rate_line_id: null,
+      sell_amount: "1.0000",
+      sell_currency: "EUR",
+    }
+    const otherCharge = {
+      id: "88888888-8888-4888-8888-888888888888",
+      rate_line_id: "eeeeeeee-eeee-4eee-8eee-eeeeeeeeeeee",
+      sell_amount: "3.0000",
+      sell_currency: "USD",
+    }
+    expect(quotationInvoiceSettlements([quoted], [hit, orphan, hit, otherCharge])).toEqual([
+      {
+        rateLineId: quoted.rate_line_id,
+        quotations: [quoted],
+        charges: [hit],
       },
     ])
   })

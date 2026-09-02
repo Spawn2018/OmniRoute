@@ -134,4 +134,5 @@
 | 2026-09-02 | 32.0 | M-39 | `edi_message` tablica `/edi` (`channel_quote` na lane wyceny). Nie tabela, nie X12, nie live HTTP. |
 | 2026-09-02 | Plan 33.0 | M-40 | delta `docs/deltas/archived/33.0-sales-invoice.md` + spec. Tablica sell z charge. Nie tabela FV, nie KSeF. Następny: `/plaster` 33.0. |
 | 2026-09-02 | 33.0 | M-40 | `sales_invoice` tablica `/invoices` (sell z charge). Nie tabela, nie KSeF, nie odejmowanie kwot. |
-| 2026-09-02 | Plan 34.0 | M-41 | delta `docs/deltas/open/34.0-quote-invoice-settlement.md` + spec. Tablica wycena + sell po `rate_line_id`. Nie tabela rozliczenia. Następny: `/plaster` 34.0. |
+| 2026-09-02 | Plan 34.0 | M-41 | delta `docs/deltas/archived/34.0-quote-invoice-settlement.md` + spec. Tablica wycena + sell po `rate_line_id`. Nie tabela rozliczenia. Następny: `/plaster` 34.0. |
+| 2026-09-02 | 34.0 | M-41 | `quote_invoice_settlement` tablica `/quote-invoices` (wycena + sell po `rate_line_id`). Nie tabela, nie odejmowanie kwot. |

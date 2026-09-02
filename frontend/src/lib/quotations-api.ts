@@ -247,6 +247,57 @@ export function quotationResponseComparisons<
   return rows
 }
 
+export type QuoteInvoiceSettlement<
+  ChargeRow extends {
+    id: string
+    rate_line_id: string | null
+  },
+> = {
+  rateLineId: string
+  quotations: Quotation[]
+  charges: ChargeRow[]
+}
+
+export function quotationInvoiceSettlements<
+  ChargeRow extends {
+    id: string
+    rate_line_id: string | null
+  },
+>(rows: readonly Quotation[], charges: readonly ChargeRow[]): QuoteInvoiceSettlement<ChargeRow>[] {
+  const quotationsByLine = new Map<string, Quotation[]>()
+  for (const row of rows) {
+    const group = quotationsByLine.get(row.rate_line_id)
+    if (group === undefined) {
+      quotationsByLine.set(row.rate_line_id, [row])
+      continue
+    }
+    group.push(row)
+  }
+  const chargesByLine = new Map<string, ChargeRow[]>()
+  const seenCharge = new Set<string>()
+  for (const charge of charges) {
+    if (charge.rate_line_id === null || seenCharge.has(charge.id)) {
+      continue
+    }
+    seenCharge.add(charge.id)
+    const group = chargesByLine.get(charge.rate_line_id)
+    if (group === undefined) {
+      chargesByLine.set(charge.rate_line_id, [charge])
+      continue
+    }
+    group.push(charge)
+  }
+  const settlements: QuoteInvoiceSettlement<ChargeRow>[] = []
+  for (const [rateLineId, quotations] of quotationsByLine) {
+    const matched = chargesByLine.get(rateLineId)
+    if (matched === undefined) {
+      continue
+    }
+    settlements.push({ rateLineId, quotations, charges: matched })
+  }
+  return settlements
+}
+
 async function readQuotation(response: Response, fallback: string): Promise<Quotation> {
   if (!response.ok) {
     throw new ApiError(await readApiDetail(response, fallback), httpErrorStatus(response))

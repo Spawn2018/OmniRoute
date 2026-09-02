@@ -23,6 +23,7 @@
 | dokument zlecenia | shipment_document | 31.0 tablica `source_ref` wycen z party; nie tabela; nie PDF; nie HBL |
 | komunikat EDI | edi_message | 32.0 tablica `channel_quote` na lane wyceny; nie tabela; nie X12; nie live HTTP |
 | faktura sprzedaży | sales_invoice | 33.0 tablica `sell` z `charge`; nie tabela; nie KSeF; nie druga marża |
+| rozliczenie wyceny z fakturą | quote_invoice_settlement | 34.0 tablica wycena + `sell` z `charge` po `rate_line_id`; nie tabela; nie odejmowanie |
 | odcinek | shipment_leg | operacyjne; nie w 29.0 |
 | tenant | organization | organization_id wszędzie |
 | ustawienie tenanta | organization_setting | konfiguracja jako dane; allowlista kluczy; nie sekret |
