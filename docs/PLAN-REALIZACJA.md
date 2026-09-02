@@ -105,6 +105,7 @@ Ekstrakcja HITL, brak scoringu osoby fizycznej = **minimal risk**. **Zakaz:** au
 | openapi-ts | tak `just api-types` + `frontend/src/api/` | regeneruj przy zmianie API |
 | size-limit / perf | tak `just perf` initial JS gzip < 250 kB | **k6 p95 nadal stub/echo** |
 | agentlint | tak `just agentlint` + baseline, job `meta` | podpis pod kontraktem: zmiana `AGENTS.md` / `.cursor/rules` wymaga `agentlint.py --write` **w tym samym commicie** |
+| styl slopu (OS-4) | tak `just craft-style` + sufit w `quality-floor`, job `meta` | TODO, `except Exception`, echo-komentarz, `float()`, `as any`; funkcje >40 linii tylko w dół. **Nie** smak ani merytoryka. |
 | just docs (status OS) | tak `just docs-check`, job `meta` | CURRENT → README / ARCHITECTURE / PLAN |
 | bramka przed push | hook `pre-push` = pełne `just gate` (~70 s) | **lokalnie, per-clone.** Wymaga `just hooks` po każdym clone; CI tego nie widzi. `--no-verify` omija. Migracje, `audit`, promptfoo, integration nadal tylko w CI. Sam składa PATH; błąd agentlinta wraca po ~96 s — szybciej `just meta-gate` (~1 s) |
 

@@ -132,7 +132,7 @@ jobs:
             const meta = '${{ needs.meta.result }}';
             let which = 'gate i meta';
             if (meta === 'failure' && gate !== 'failure') {
-              which = 'meta (docs / agent-refs / agentlint / craft-check)';
+              which = 'meta (docs / agent-refs / agentlint / craft-check / craft-style)';
             } else if (gate === 'failure' && meta !== 'failure') {
               which = 'gate (code-gate)';
             }
@@ -141,7 +141,7 @@ jobs:
               '',
               `Padł job: **${which}**.`,
               '',
-              'code-gate = ruff, mypy, testy, arch, frontend. meta = podpis kontraktu, docs, C2, bench.',
+              'code-gate = ruff, mypy, testy, arch, frontend. meta = podpis, docs, C2, bench, styl slopu.',
               '',
               'Nie commituję `docs-debt.md`. Leftover kopiuje agent przy następnym `/zamknij`, albo odrzuca.',
               '',

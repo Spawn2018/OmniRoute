@@ -29,6 +29,8 @@ def test_floor_snapshot_has_isolation_and_hc() -> None:
     assert snap["grounding_hc"] == 8
     assert snap["bench_cases"] >= 1
     assert snap["promptfoo_fixtures"] >= 2
+    assert snap["long_functions"] <= 5
+    assert snap["long_function_overflow"] <= 54
 
 
 def test_floor_regression_is_reported() -> None:
@@ -39,6 +41,16 @@ def test_floor_regression_is_reported() -> None:
     )
     assert any("isolation_tests" in err for err in errors)
     assert any("grounding_hc" in err for err in errors)
+
+
+def test_floor_ceiling_regression_is_reported() -> None:
+    floor = _load(_FLOOR, "quality_floor")
+    errors = floor.regressions(
+        {"long_functions": 6, "long_function_overflow": 60},
+        {"long_functions": 5, "long_function_overflow": 54},
+    )
+    assert any("long_functions" in err for err in errors)
+    assert any("long_function_overflow" in err for err in errors)
 
 
 def test_repeat_threshold() -> None:

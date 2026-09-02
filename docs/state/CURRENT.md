@@ -17,4 +17,4 @@ M-02 **parked** (odblokowanie S16). Auth0 **odroczone** (S53). Portale **parked*
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` są w PATH. Przed pracą podnieś dwie rzeczy: `pg_ctl -D tools\pgdata -o "-p 5432" start` oraz `tools\openfga\openfga.exe run`. Potem `just gate` i `just test` działają bez ustawiania zmiennych. PG 16 to klaster przenośny w `tools\pg16` — instalator EDB przez winget nie przechodzi (exit 1).
 
-**2026-09-02:** 66.0 zamknięty. Fabryka OS-3: test/how-to/delta w `craft-check` (nie S4). Następny produkt: `/plan-modul` S4. Nie F9.1.
+**2026-09-02:** 66.0 zamknięty. Fabryka OS-4: `craft-style` + sufit funkcji w `quality-floor` (nie S4). Następny produkt: `/plan-modul` S4. Nie F9.1.

@@ -83,6 +83,8 @@ def start(phase: str) -> int:
             flush=True,
         )
         return 1
+    if _run("craft_style.py") != 0:
+        return 1
     return _run("quality_floor.py", "--check")
 
 
@@ -97,6 +99,8 @@ def _product_delta_missing() -> bool:
 
 
 def close() -> int:
+    if _run("craft_style.py") != 0:
+        return 1
     if _run("craft_close.py", "--write") != 0:
         return 1
     if _run("repeat_learn.py", "--write") != 0:

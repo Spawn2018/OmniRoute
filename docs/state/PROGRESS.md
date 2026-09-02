@@ -200,3 +200,4 @@
 | 2026-09-02 | 66.0 | M-20 | Treść `inbound_message` → `extract_to_draft` HITL. Przycisk na `/mail`. Nie accept, nie `rate_line` z poczty. Następny: S4 Plan. |
 | 2026-09-02 | OS-2 | ops | factory_cycle na komendach, C2, E2 run_gate, podłoga jakości, bench 66.0, karty z 3× CI. Nie Auto-AGENTS. Nie S4. |
 | 2026-09-02 | OS-3 | ops | Test z nowym serwisem/API, how-to albo leftover przy zapisie, delta produktu zanim kod. Nie S4. |
+| 2026-09-02 | OS-4 | ops | Skaner slopu (`craft-style`) + sufit funkcji >40 linii. Nie tożsamość z człowiekiem. Nie S4. |

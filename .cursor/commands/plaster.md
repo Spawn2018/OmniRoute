@@ -5,7 +5,7 @@ description: Rozpoczyna realizację plastra według procedury
 Przeczytaj `docs/state/CURRENT.md`.
 
 **Poza `/noc`:** `python scripts/quality/factory_cycle.py --start plaster`
-Retrieve + podłoga + **delta produktu** w `docs/deltas/open/` (pliki `OS-*` się nie liczą).
+Retrieve + styl slopu + podłoga + **delta produktu** w `docs/deltas/open/` (pliki `OS-*` się nie liczą).
 Brak delty = stop. Pominięcie retrieve = plaster bez pamięci fabryki.
 **W `/noc`:** nie powtarzaj `--start plaster` — preflight już zrobił `--start noc`.
 

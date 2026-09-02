@@ -16,7 +16,7 @@ description: Zamyka plaster i przygotowuje następny
    do **tego samego** commita. Bez tego agentlint pada — to była przyczyna 6 z 7 czerwonych
    runów #79-#88. Kontrola trwa sekundę: `just meta-gate`.
 5c. `python scripts/quality/factory_cycle.py --close`, potem `just meta-gate`.
-    Bench + karta z powtórzonych czerwonych CI + podłoga jakości w górę.
+    Styl slopu + bench + karta z powtórzonych czerwonych CI + podłoga w górę / sufit funkcji w dół.
     C2 pada → osobny commit higieny cytatu + agentlint, **nie** nowe zasady,
     **nie** GROUNDING.
 6. Wypisz jednym zdaniem, co zostało niedokończone albo odłożone (`docs/ops/docs-debt.md`).

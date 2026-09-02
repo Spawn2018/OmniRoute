@@ -12,8 +12,8 @@ gate:
 code-gate: check test-unit arch frontend-typecheck frontend-test dup perf frontend-e2e
     @echo "code-gate: check + test-unit + arch + frontend + dup + perf + e2e OK"
 
-meta-gate: docs-check agent-refs agentlint craft-check quality-floor
-    @echo "meta-gate: docs-check + agent-refs + agentlint + craft-check + quality-floor OK"
+meta-gate: docs-check agent-refs agentlint craft-check craft-style quality-floor
+    @echo "meta-gate: docs-check + agent-refs + agentlint + craft-check + craft-style + quality-floor OK"
 
 hooks:
     git config core.hooksPath scripts/githooks
@@ -111,6 +111,9 @@ craft-check:
 
 craft-close:
     python scripts/quality/craft_close.py --write
+
+craft-style:
+    python scripts/quality/craft_style.py
 
 quality-floor:
     python scripts/quality/quality_floor.py --check

@@ -8,6 +8,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 
 **Zrobione w syncu (nie wracać):** nagłówek PLAN nie mówi „0.5 lokalnie”; `just test` pada przy failu unita (bez `|| true`).
 
+- **OS-4 (fabryka, poza osią Q/S):** [delta](../deltas/open/OS-4-fabryka-styl-rzemiosla.md). `just craft-style` + sufit `long_functions` / `long_function_overflow`. Nie merytoryka spedycji. Nie S4.
+
 - **OS-3 (fabryka, poza osią Q/S):** [delta](../deltas/open/OS-3-fabryka-test-howto-delta.md). Test w tym samym commicie co nowy serwis/API; how-to albo leftover przy jobie zapisu; delta produktu zanim kod. Nie S4.
 
 - **OS-2 (fabryka, poza osią Q/S):** [delta](../deltas/open/OS-2-fabryka-monitoring-samouczenie.md). C2, E2 `run_gate`, bench, `factory_cycle` na `/noc` `/plan-modul` `/plaster` `/refaktor` `/zamknij`, podłoga jakości, karty z 3× CI. Nie Auto-AGENTS. Nie S4. Leftover: promptfoo `synth://`; D1/D3/D4 off.

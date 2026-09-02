@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
-"""Podłoga jakości: liczby tylko rosną. Nie edytuje AGENTS ani GROUNDING."""
+"""Podłoga w górę, sufit funkcji w dół. Nie edytuje AGENTS ani GROUNDING."""
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import json
 import re
 import sys
 from pathlib import Path
+from types import ModuleType
 
 ROOT = Path(__file__).resolve().parents[2]
 BASELINE = Path(__file__).resolve().parent / "quality_floor.json"
@@ -14,6 +16,7 @@ GROUNDING = ROOT / "GROUNDING.md"
 CASES = ROOT / "docs" / "_bench" / "cases"
 PROMPTFOO = ROOT / "backend" / "tests" / "extraction" / "test_promptfoo_fixtures.py"
 HC = re.compile(r"^## HC-0([1-8])\b", re.MULTILINE)
+CEILING = frozenset({"long_functions", "long_function_overflow"})
 
 
 def isolation_tests() -> int:
@@ -39,12 +42,25 @@ def grounding_hc() -> int:
     return len(HC.findall(GROUNDING.read_text(encoding="utf-8")))
 
 
+def _style() -> ModuleType:
+    path = Path(__file__).with_name("craft_style.py")
+    spec = importlib.util.spec_from_file_location("craft_style_floor", path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"cannot load {path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
 def snapshot() -> dict[str, int]:
+    long_count, overflow = _style().long_function_stats()
     return {
         "isolation_tests": isolation_tests(),
         "bench_cases": bench_cases(),
         "promptfoo_fixtures": promptfoo_fixtures(),
         "grounding_hc": grounding_hc(),
+        "long_functions": long_count,
+        "long_function_overflow": overflow,
     }
 
 
@@ -59,6 +75,10 @@ def regressions(current: dict[str, int], floor: dict[str, int]) -> list[str]:
     errors: list[str] = []
     for key, need in floor.items():
         got = current[key]
+        if key in CEILING:
+            if got > need:
+                errors.append(f"{key}: {got} > sufit {need}")
+            continue
         if got < need:
             errors.append(f"{key}: {got} < podłoga {need}")
     return errors

@@ -55,7 +55,7 @@ line-length = 100
 src = ["backend"]
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "UP", "B", "C901"]
+select = ["E", "F", "I", "UP", "B", "BLE", "C901"]
 
 [tool.ruff.lint.per-file-ignores]
 "backend/app/api/**" = ["B008"]

@@ -2,5 +2,7 @@
   "isolation_tests": 23,
   "bench_cases": 1,
   "promptfoo_fixtures": 2,
-  "grounding_hc": 8
+  "grounding_hc": 8,
+  "long_functions": 5,
+  "long_function_overflow": 54
 }
