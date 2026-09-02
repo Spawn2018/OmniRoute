@@ -162,3 +162,4 @@
 | 2026-09-02 | 46.0 | M-56 | `gdpr` tablica `/gdpr` (emaile kont tenanta). Nie wniosek, nie usuwanie. |
 | 2026-09-02 | Plan 47.0 | M-57 | delta `docs/deltas/archived/47.0-ai-copilot.md` + spec. Tablica extraction pending. Nie czat. Następny: `/plaster` 47.0. |
 | 2026-09-02 | 47.0 | M-57 | `ai_copilot` tablica `/ai` (szkice pending, source_ref). Nie czat, nie accept. |
+| 2026-09-02 | Plan 48.0 | M-68 | delta `docs/deltas/open/48.0-observability.md` + spec. Tablica `fetchHealth`. Nie OTel. Następny: `/plaster` 48.0. |

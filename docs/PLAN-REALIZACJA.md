@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** M-58 (`/plan-modul`). Nie zgaduj nazwy ani schematu. Nie nowa tabela.
+**Następny (zablokowany):** 48.0 M-68 `observability` tablica `/health`. Nie zgaduj schematu. Nie nowa tabela.
 <!-- os-status:end -->
 
 ```mermaid
@@ -356,7 +356,9 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | F8.0 | **M-53 Sankcje** | 45.0 | zamknięty (`docs/deltas/archived/45.0-sanctions.md`) |
 | F8.1 | **M-56 RODO** | 46.0 | zamknięty (`docs/deltas/archived/46.0-gdpr.md`) |
 | F9.0 | **M-57** | 47.0 | zamknięty (`docs/deltas/archived/47.0-ai-copilot.md`) |
-| F9.1 | **M-58** | Plan | kolejka (`/plan-modul`; nie zgaduj nazwy ani schematu) |
+| F9.1 | **M-58–M-60** | — | bez żywej nazwy w PLAN; nie zgaduję |
+| F10 | **M-61–M-67** | parked | portale (PLAN § Parked) |
+| F11.0 | **M-68 Obserwowalność** | Plan | delta open 48.0 |
 
 ### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster
 
@@ -467,13 +469,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->
