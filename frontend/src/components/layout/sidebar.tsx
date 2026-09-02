@@ -56,7 +56,7 @@ export function Sidebar({ currentPath }: { currentPath: string }) {
   return (
     <aside
       data-admin-ref="sidebar-density"
-      className="flex w-44 shrink-0 flex-col border-r border-border bg-sidebar text-sidebar-foreground"
+      className="flex h-full min-h-0 w-44 shrink-0 flex-col overflow-y-auto border-r border-border bg-sidebar text-sidebar-foreground"
     >
       <div className="border-b border-border px-2 py-1.5">
         <div className="text-sm font-semibold tracking-tight">OmniRoute</div>
@@ -80,7 +80,7 @@ export function Sidebar({ currentPath }: { currentPath: string }) {
           )
         })}
       </nav>
-      <div className="mt-auto border-t border-border px-2 py-1.5 text-[11px] text-muted-foreground">
+      <div className="mt-auto border-t border-border px-2 py-1.5 text-[11px] text-sidebar-foreground/70">
         ⌘K · akcje operatora
       </div>
     </aside>
