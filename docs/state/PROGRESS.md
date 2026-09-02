@@ -98,3 +98,4 @@
 | 2026-09-02 | 14.0 | M-14 | `credit_review` katalog recenzji + RLS FORCE + `resolve` as-of + OpenFGA `can_manage_parties` + `/credit-reviews` + panel na `/parties`. Nie auto-scoring, nie zapis `credit_limit`, nie biuro HTTP. |
 | 2026-09-02 | Plan 15.0 | M-15 | delta `docs/deltas/archived/15.0-finance-board.md` + spec. Tablica odczytu `/finance`. Nie nowa tabela, LLM nie liczy. Następny: `/plaster` 15.0. |
 | 2026-09-02 | 15.0 | M-15 | `finance_board` tablica odczytu `/finance` (marża z `charge`, NBP, limit, recenzja). Nie nowa tabela, LLM nie liczy, nie zapis `charge`/`credit_limit`. |
+| 2026-09-02 | Plan 16.0 | M-23 | delta `docs/deltas/open/16.0-quotation-nbp.md` + spec. Wycena czyta `nbp_rate`. Nie drugi katalog, nie mnożenie kwoty. Następny: `/plaster` 16.0. |

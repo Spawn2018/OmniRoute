@@ -39,7 +39,7 @@ Seed: `scripts/dev_seed_local.py`.
 <!-- os-status:start -->
 - **Ostatni plaster:** **15.0** M-15 `finance_board` (zarchiwizowany)
 - **Etap:** Plan
-- **Następny:** 16.0 M-23 waluty w ofercie (`/plan-modul`). Czyta `nbp_rate`. LLM nie liczy.
+- **Następny:** 16.0 M-23 `nbp_rate` przy `quotation` (`/plaster`). Czyta katalog 6.0. Nie mnożenie kwoty.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
