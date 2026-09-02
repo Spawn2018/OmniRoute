@@ -63,5 +63,6 @@ describe("business list density", () => {
     expect(BUSINESS_LISTS.shipment.tableKey).toBe("shipment")
     expect(BUSINESS_LISTS.tracking.tableKey).toBe("tracking")
     expect(BUSINESS_LISTS.operationalException.tableKey).toBe("operational_exception")
+    expect(BUSINESS_LISTS.shipmentDocument.tableKey).toBe("shipment_document")
   })
 })

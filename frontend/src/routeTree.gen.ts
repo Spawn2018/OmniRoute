@@ -33,6 +33,7 @@ import { Route as PortsRouteImport } from './routes/ports'
 import { Route as QuotationsRouteImport } from './routes/quotations'
 import { Route as RateLinesRouteImport } from './routes/rate-lines'
 import { Route as SessionRouteImport } from './routes/session'
+import { Route as ShipmentDocumentsRouteImport } from './routes/shipment-documents'
 import { Route as ShipmentsRouteImport } from './routes/shipments'
 import { Route as TerminalsRouteImport } from './routes/terminals'
 import { Route as TrackingRouteImport } from './routes/tracking'
@@ -158,6 +159,11 @@ const SessionRoute = SessionRouteImport.update({
   path: '/session',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShipmentDocumentsRoute = ShipmentDocumentsRouteImport.update({
+  id: '/shipment-documents',
+  path: '/shipment-documents',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShipmentsRoute = ShipmentsRouteImport.update({
   id: '/shipments',
   path: '/shipments',
@@ -204,6 +210,7 @@ export interface FileRoutesByFullPath {
   '/quotations': typeof QuotationsRoute
   '/rate-lines': typeof RateLinesRoute
   '/session': typeof SessionRoute
+  '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipments': typeof ShipmentsRoute
   '/terminals': typeof TerminalsRoute
   '/tracking': typeof TrackingRoute
@@ -234,6 +241,7 @@ export interface FileRoutesByTo {
   '/quotations': typeof QuotationsRoute
   '/rate-lines': typeof RateLinesRoute
   '/session': typeof SessionRoute
+  '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipments': typeof ShipmentsRoute
   '/terminals': typeof TerminalsRoute
   '/tracking': typeof TrackingRoute
@@ -265,6 +273,7 @@ export interface FileRoutesById {
   '/quotations': typeof QuotationsRoute
   '/rate-lines': typeof RateLinesRoute
   '/session': typeof SessionRoute
+  '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipments': typeof ShipmentsRoute
   '/terminals': typeof TerminalsRoute
   '/tracking': typeof TrackingRoute
@@ -297,6 +306,7 @@ export interface FileRouteTypes {
     | '/quotations'
     | '/rate-lines'
     | '/session'
+    | '/shipment-documents'
     | '/shipments'
     | '/terminals'
     | '/tracking'
@@ -327,6 +337,7 @@ export interface FileRouteTypes {
     | '/quotations'
     | '/rate-lines'
     | '/session'
+    | '/shipment-documents'
     | '/shipments'
     | '/terminals'
     | '/tracking'
@@ -357,6 +368,7 @@ export interface FileRouteTypes {
     | '/quotations'
     | '/rate-lines'
     | '/session'
+    | '/shipment-documents'
     | '/shipments'
     | '/terminals'
     | '/tracking'
@@ -388,6 +400,7 @@ export interface RootRouteChildren {
   QuotationsRoute: typeof QuotationsRoute
   RateLinesRoute: typeof RateLinesRoute
   SessionRoute: typeof SessionRoute
+  ShipmentDocumentsRoute: typeof ShipmentDocumentsRoute
   ShipmentsRoute: typeof ShipmentsRoute
   TerminalsRoute: typeof TerminalsRoute
   TrackingRoute: typeof TrackingRoute
@@ -564,6 +577,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SessionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/shipment-documents': {
+      id: '/shipment-documents'
+      path: '/shipment-documents'
+      fullPath: '/shipment-documents'
+      preLoaderRoute: typeof ShipmentDocumentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shipments': {
       id: '/shipments'
       path: '/shipments'
@@ -620,6 +640,7 @@ const rootRouteChildren: RootRouteChildren = {
   QuotationsRoute: QuotationsRoute,
   RateLinesRoute: RateLinesRoute,
   SessionRoute: SessionRoute,
+  ShipmentDocumentsRoute: ShipmentDocumentsRoute,
   ShipmentsRoute: ShipmentsRoute,
   TerminalsRoute: TerminalsRoute,
   TrackingRoute: TrackingRoute,

@@ -44,7 +44,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-35 | Zlecenie | 28.0 `shipment` | **ukończony (fundament)** · tablica wycen z `party_id`; nie tabela; nie tracking |
 | M-36 | Tracking | 29.0 `tracking` | **ukończony (fundament)** · tablica lane POL/POD; nie tabela; nie mapa |
 | M-37 | Wyjątki | 30.0 `operational_exception` | **ukończony (fundament)** · tablica wycen z party bez pełnego POL/POD; nie tabela; nie AIS |
-| M-38 | Dokumenty zlecenia | Plan `shipment_document` | **w toku** · tablica `source_ref` wycen z party; nie tabela; nie PDF |
+| M-38 | Dokumenty zlecenia | 31.0 `shipment_document` | **ukończony (fundament)** · tablica `source_ref` wycen z party; nie tabela; nie PDF |
 
 Nie dopisuj tu 70 pustych wierszy M-xx. Katalog + **kolejka Q1…** (co budować jedno po drugim, tryb Plan potem plaster): `docs/PLAN-REALIZACJA.md` § Kolejka. Archiwum Claude zostaje magazynem specyfikacji, nie SoT kolejności.
 

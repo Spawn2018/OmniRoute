@@ -38,6 +38,11 @@ export const OPS_JOBS = [
     label: "Wyjątki",
     job: "wyceny z party bez pełnego POL/POD",
   },
+  {
+    route: BUSINESS_LISTS.shipmentDocument.route,
+    label: "Dokumenty zlecenia",
+    job: "source_ref wycen z party_id",
+  },
   { route: BUSINESS_LISTS.chargeCodes.route, label: "Kody opłat", job: "katalog charge_code" },
   {
     route: BUSINESS_LISTS.commodityCodes.route,
@@ -150,6 +155,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "28.0": "/shipments",
   "29.0": "/tracking",
   "30.0": "/exceptions",
+  "31.0": "/shipment-documents",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

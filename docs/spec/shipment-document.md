@@ -1,10 +1,10 @@
 # M-38 dokumenty zlecenia — tablica `source_ref` wyceny
 
 **Moduł żywy:** M-38 (token UI `shipment_document`, nie tabela) + ekran M-21 `quotation`  
-**Plaster:** **31.0** (plan)  
+**Plaster:** **31.0** (zamknięty)  
 **Status:** operator **widzi** `source_ref` wycen z kontrahentem jako dokument. Nie PDF. Nie HBL. Nie nowa tabela.
 
-Delta: [docs/deltas/open/31.0-shipment-document.md](../deltas/open/31.0-shipment-document.md).
+Delta: [docs/deltas/archived/31.0-shipment-document.md](../deltas/archived/31.0-shipment-document.md).
 
 ## 31.0 tablica odczytu na `/shipment-documents`
 

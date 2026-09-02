@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **30.0** M-37 `operational_exception` tablica `/exceptions` (zarchiwizowany). **Etap:** Plan. **Następny:** `/plaster` 31.0 M-38 `shipment_document` tablica `/shipment-documents`. Nie nowa tabela. Nie zgaduj schematu HBL. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **31.0** M-38 `shipment_document` tablica `/shipment-documents` (zarchiwizowany). **Etap:** Plan. **Następny:** M-39 EDI (`/plan-modul`). Nie zgaduj schematu. Nie nowa tabela. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
@@ -11,7 +11,7 @@
 <!-- os-tree:start -->
 ```
 frontend/                 React 19 + Compiler, Vite, TanStack, shadcn, PostHog
-  src/features/           channel-quotes · charge-codes · charges · commodity-codes · credit-reviews · customer-sops · dangerous-goods · extraction · finance-board · geography · mail-integration · nbp-rates · networks · operational-exception · operator-notice · ops · organization-settings · parties · party-scorecards · port-surcharges · quotations · rate-lines · session · shipment · tenancy · tracking
+  src/features/           channel-quotes · charge-codes · charges · commodity-codes · credit-reviews · customer-sops · dangerous-goods · extraction · finance-board · geography · mail-integration · nbp-rates · networks · operational-exception · operator-notice · ops · organization-settings · parties · party-scorecards · port-surcharges · quotations · rate-lines · session · shipment · shipment-document · tenancy · tracking
   src/components/ui/      shadcn
   src/components/data-table/  DataTableShell (Golden Standard)
 backend/app/

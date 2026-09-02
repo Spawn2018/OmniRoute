@@ -128,3 +128,5 @@
 | 2026-09-02 | 29.0 | M-36 | `tracking` tablica `/tracking` (lane POL/POD + UN/LOCODE). Nie tabela, nie AIS, nie mapa. |
 | 2026-09-02 | Plan 30.0 | M-37 | delta `docs/deltas/archived/30.0-operational-exception.md` + spec. Tablica wycen z party bez pełnego POL/POD. Nie tabela zdarzeń, nie mapa. Następny: `/plaster` 30.0. |
 | 2026-09-02 | 30.0 | M-37 | `operational_exception` tablica `/exceptions` (party bez pełnego POL/POD). Nie tabela, nie AIS, nie mapa. |
+| 2026-09-02 | Plan 31.0 | M-38 | delta `docs/deltas/archived/31.0-shipment-document.md` + spec. Tablica `source_ref` wycen z party. Nie tabela HBL, nie PDF. Następny: `/plaster` 31.0. |
+| 2026-09-02 | 31.0 | M-38 | `shipment_document` tablica `/shipment-documents` (`source_ref` wycen z party). Nie tabela, nie PDF, nie HBL. |
