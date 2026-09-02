@@ -46,6 +46,18 @@ def test_live_os_tree_has_no_archive_persona_names() -> None:
     assert refs.persona_errors() == []
 
 
+def test_persona_scan_skips_untracked_scratch() -> None:
+    refs = _load_refs()
+    scratch = _ROOT / "docs" / "ops" / "_scratch_testolog.md"
+    scratch.write_text("kronikarz testolog weryfikator", encoding="utf-8")
+    try:
+        errors = refs.persona_errors()
+        assert errors == []
+        assert "_scratch_testolog.md" not in "\n".join(errors)
+    finally:
+        scratch.unlink(missing_ok=True)
+
+
 def test_uri_scheme_is_not_reported_as_missing_file() -> None:
     refs = _load_refs()
     assert not any("://" in err for err in refs.stale_ref_errors())

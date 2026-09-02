@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -132,14 +133,33 @@ def stale_ref_errors() -> list[str]:
     return errors
 
 
+def tracked_relative_paths() -> frozenset[str]:
+    # Żywy OS = pliki w git. Lokalna notatka w docs/ops nie blokuje bramki.
+    completed = subprocess.run(
+        ["git", "ls-files", "-z"],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+    )
+    return frozenset(
+        Path(part).as_posix()
+        for part in completed.stdout.decode("utf-8").split("\0")
+        if part
+    )
+
+
 def persona_errors() -> list[str]:
+    tracked = tracked_relative_paths()
     errors: list[str] = []
     for src in PERSONA_SCAN:
         for path in iter_md(src):
+            rel = path.relative_to(ROOT).as_posix()
+            if rel not in tracked:
+                continue
             names = archive_persona_names(path.read_text(encoding="utf-8"))
             if names:
                 listed = ", ".join(sorted(names))
-                errors.append(f"{path.relative_to(ROOT)}: nazwa archiwalna ({listed})")
+                errors.append(f"{rel}: nazwa archiwalna ({listed})")
     return errors
 
 
