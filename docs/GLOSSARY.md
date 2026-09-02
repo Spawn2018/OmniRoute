@@ -21,6 +21,7 @@
 | śledzenie | tracking | 29.0 tablica lane POL/POD z wyceny; nie AIS; nie mapa |
 | wyjątek operacyjny | operational_exception | 30.0 tablica wycen z party bez pełnego POL/POD; nie tabela; nie AIS; nie `party_charge_override` |
 | dokument zlecenia | shipment_document | 31.0 tablica `source_ref` wycen z party; nie tabela; nie PDF; nie HBL |
+| komunikat EDI | edi_message | 32.0 tablica `channel_quote` na lane wyceny; nie tabela; nie X12; nie live HTTP |
 | odcinek | shipment_leg | operacyjne; nie w 29.0 |
 | tenant | organization | organization_id wszędzie |
 | ustawienie tenanta | organization_setting | konfiguracja jako dane; allowlista kluczy; nie sekret |

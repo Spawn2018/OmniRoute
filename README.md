@@ -39,7 +39,7 @@ Seed: `scripts/dev_seed_local.py`.
 <!-- os-status:start -->
 - **Ostatni plaster:** **31.0** M-38 `shipment_document` tablica `/shipment-documents` (zarchiwizowany)
 - **Etap:** Plan
-- **Następny:** M-39 EDI (`/plan-modul`). Nie zgaduj schematu. Nie nowa tabela.
+- **Następny:** `/plaster` 32.0 M-39 `edi_message` tablica `/edi`. Nie nowa tabela. Nie zgaduj schematu X12.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

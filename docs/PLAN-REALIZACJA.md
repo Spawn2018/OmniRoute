@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** M-39 EDI (`/plan-modul`). Nie zgaduj schematu. Nie nowa tabela.
+**Następny (zablokowany):** `/plaster` 32.0 M-39 `edi_message` tablica `/edi`. Nie nowa tabela. Nie zgaduj schematu X12.
 <!-- os-status:end -->
 
 ```mermaid
@@ -340,7 +340,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | F5.1 | **M-36 Tracking** | 29.0 | zamknięty (`docs/deltas/archived/29.0-tracking.md`) |
 | F5.2 | **M-37 Wyjątki** | 30.0 | zamknięty (`docs/deltas/archived/30.0-operational-exception.md`) |
 | F5.3 | **M-38 Dokumenty zlecenia** | 31.0 | zamknięty (`docs/deltas/archived/31.0-shipment-document.md`) |
-| F5.4 | **M-39 EDI** | Plan | kolejka (`/plan-modul`; nie zgaduj schematu) |
+| F5.4 | **M-39 EDI** | Plan | delta `docs/deltas/open/32.0-edi-message.md` |
 
 ### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster
 
