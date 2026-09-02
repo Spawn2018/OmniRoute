@@ -9,7 +9,9 @@
 - [Zakres po planie](C:/Users/sebas/.cursor/projects/d-OMNIROUTE/canvases/zakres-po-planie.canvas.tsx)
 - [Software house Cursor](C:/Users/sebas/.cursor/projects/d-OMNIROUTE/canvases/software-house-cursor.canvas.tsx)
 
-**Mockup HTML (działający, nie produkt):** `docs/design/omniroute-briefing-mockup.html` — wzorzec: Wyceny + Zlecenia. Opis i uzupełnienie prompta: §6 (dopisek) + §8.
+**DNA wizualne (produkt):** `docs/design/omniroute-ui.html` — hue 165, s1–s6, radius 12px/8px, IBM Plex. Tokeny w `frontend/src/index.css`.
+
+**Mockup briefingu (nie paleta):** `docs/design/omniroute-briefing-mockup.html`. Opis prompta: §6 (dopisek) + §8.
 
 **Ograniczenie źródeł:** `Informacje z claude/` i `docs/_source/` są w `.cursorignore` i `excludePatterns`. Audyt nie dumpował 60+ MD ani PDF Gemini z dysku. Wkład Gemini/Claude/nauki wzięty z `docs/adr/0001-cursor-software-factory-weryfikacja.md` (cytuje PDF Gemini, ChatGPT share, Consensus, Treude 2026, ETH Auto-AGENTS, Palmblad GROUNDING, CSA 2025).
 
@@ -261,13 +263,10 @@ Operator załącza działający plik HTML: omniroute-briefing-mockup.html
 To jest mockup briefingu, nie kod produktu i nie plaster UI.
 Nie kopiuj go do frontend/. Nie traktuj go jako zakresu S1/S2 ani jako Watchtower S32.
 
-Wzorzec stylistyczny, kolorystyczny i graficzny całego mockupu:
-żywe ekrany Wyceny (/quotations) i Zlecenia (/shipments) — IBM Plex Sans,
-tokeny OKLCH z frontend/src/index.css (tło hue ~106, akcent zieleń hue ~170,
-radius 0.375rem, CatalogHeading z podtytułem „nie X”, panele outline 1px
-border, kwoty jako string z osią integer/fraction/ISO, sidebar 11rem,
-header „Platforma spedycyjna”). Nie wzoruj się na docs/design/omniroute-ui.html
-(makieta sprzedażowa, inna rampa hue-165).
+Wzorzec stylistyczny całego produktu: docs/design/omniroute-ui.html
+(hue 165, s1–s6, radius 12px/8px, IBM Plex Sans/Mono/Condensed, rail --ink).
+Tokeny w frontend/src/index.css kopiują ten plik. Nie hue 106 z briefing-mockup,
+nie hue 250 z app-preview. Nie kopiuj HTML do frontend/.
 
 Dlaczego mockup jest niedokończony (świadomie):
 - żywe Zlecenia to tablica-odczyt (~lista linków), nie tabela shipment (S28);

@@ -60,7 +60,7 @@ export function Sidebar({ currentPath }: { currentPath: string }) {
     >
       <div className="border-b border-border px-2 py-1.5">
         <div className="text-sm font-semibold tracking-tight">OmniRoute</div>
-        <div className="text-[11px] text-muted-foreground">gęsty admin</div>
+        <div className="text-[11px] text-sidebar-foreground/70">gęsty admin</div>
       </div>
       <nav className="flex flex-col gap-px p-1">
         {NAV.map((item) => {
@@ -71,8 +71,8 @@ export function Sidebar({ currentPath }: { currentPath: string }) {
               to={item.to}
               aria-current={active ? "page" : undefined}
               className={cn(
-                "rounded-md px-2 py-1 text-xs hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-                active && "bg-muted font-medium",
+                "rounded-sm px-2 py-1 text-xs text-sidebar-foreground/80 hover:bg-sidebar-foreground/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                active && "bg-sidebar-foreground/15 font-medium text-sidebar-foreground",
               )}
             >
               {item.label}

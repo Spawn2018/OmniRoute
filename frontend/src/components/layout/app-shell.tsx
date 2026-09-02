@@ -28,12 +28,12 @@ export function AppShell({ children }: { children: ReactNode }) {
       <SkipToMain />
       <Sidebar currentPath={pathname} />
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="flex h-10 items-center justify-between border-b border-border bg-card px-4">
+        <header className="flex h-12 items-center justify-between border-b border-border bg-card px-3">
           <h1 className="text-sm font-medium">Platforma spedycyjna</h1>
           <button
             type="button"
             data-admin-ref="command-actions"
-            className="rounded-md border border-border px-2 py-1 text-xs text-muted-foreground hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="rounded-sm border border-border px-2 py-1 text-xs text-muted-foreground hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             onClick={() => setPaletteOpen(true)}
           >
             Akcje ⌘K

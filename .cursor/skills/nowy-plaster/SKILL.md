@@ -38,8 +38,8 @@ Kolejność jest obowiązkowa. Nie przeskakuj etapów.
 ## 7. Komponent
 - `features/<moduł>/`, TanStack Query, `<Money/>`
 - Listy: wyłącznie DataTableShell (ADR-0002)
-- DNA wizualne (tylko wygląd): otwórz `docs/design/omniroute-briefing-mockup.html` — ekrany **Wyceny** i **Zlecenia**. Kolory wyłącznie tokenami z `frontend/src/index.css` (nie hardcode OKLCH). Spacing / padding / radius / typografia jak w mockupie: `rounded-md`, panele `p-3` + `outline` 1px `border`, powierzchnia `p-4 gap-4`, kontrolki `h-8`, body `text-sm`, meta/tabela `text-xs`. Żywy kod wzorca: `frontend/src/features/quotations/catalog-page.tsx` i `frontend/src/features/shipment/catalog-page.tsx`.
-- Zakaz: kopiowanie HTML mockupu do `frontend/`; `docs/design/omniroute-ui.html` (sprzedaż, hue-165); paleta `docs/design/app-preview.html` (hue 250); Watchtower / mapa z mockupu; `sum()` w JS.
+- DNA wizualne: `docs/design/omniroute-ui.html` — kolory (hue 165), `--s1`…`--s6`, radius 12px / 8px, IBM Plex Sans / Mono / Condensed, rail `--ink`, body 14px. Tokeny w `frontend/src/index.css` kopiują ten plik. Nie wpisuj OKLCH z palca.
+- Zakaz: kopiowanie HTML mockupu do `frontend/`; paleta `docs/design/app-preview.html` (hue 250); paleta `docs/design/omniroute-briefing-mockup.html` (hue 106); Watchtower / mapa; `sum()` w JS.
 
 ## 8. Testy z `/testy` muszą przejść
 - hypothesis dla reguł biznesowych i izolacja tenantów — z tury `/testy`
