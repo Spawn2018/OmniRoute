@@ -4074,6 +4074,42 @@ export type CreatePortSurchargeApiV1PortSurchargesPostResponses = {
 
 export type CreatePortSurchargeApiV1PortSurchargesPostResponse = CreatePortSurchargeApiV1PortSurchargesPostResponses[keyof CreatePortSurchargeApiV1PortSurchargesPostResponses];
 
+export type MatchPortSurchargesApiV1PortSurchargesMatchingGetData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Port Id
+         */
+        port_id: string;
+        /**
+         * Applies When
+         */
+        applies_when: string;
+    };
+    url: '/api/v1/port-surcharges/matching';
+};
+
+export type MatchPortSurchargesApiV1PortSurchargesMatchingGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type MatchPortSurchargesApiV1PortSurchargesMatchingGetError = MatchPortSurchargesApiV1PortSurchargesMatchingGetErrors[keyof MatchPortSurchargesApiV1PortSurchargesMatchingGetErrors];
+
+export type MatchPortSurchargesApiV1PortSurchargesMatchingGetResponses = {
+    /**
+     * Response Match Port Surcharges Api V1 Port Surcharges Matching Get
+     *
+     * Successful Response
+     */
+    200: Array<PortSurchargeResponse>;
+};
+
+export type MatchPortSurchargesApiV1PortSurchargesMatchingGetResponse = MatchPortSurchargesApiV1PortSurchargesMatchingGetResponses[keyof MatchPortSurchargesApiV1PortSurchargesMatchingGetResponses];
+
 export type ResolvePortSurchargeApiV1PortSurchargesResolveGetData = {
     body?: never;
     path?: never;

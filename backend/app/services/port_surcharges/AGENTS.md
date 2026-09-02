@@ -11,5 +11,5 @@ Katalog extra portowego per tenant: warunek to dane, kwota Decimal, nie marża.
 ## Zakaz
 - import innych BC services
 - zapis `quotation` / `rate_line` / `charge`
-- ewaluacja `applies_when`
+- parser AST `applies_when` — matching tylko w SQL
 - liczenie marży / float na kwocie

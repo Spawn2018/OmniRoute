@@ -15,6 +15,7 @@ import {
   EMPTY_SURCHARGE_DRAFT,
   createPortSurcharge,
   fetchPortSurcharges,
+  matchPortSurcharges,
   portSurchargeCreateBody,
   resolvePortSurcharge,
   type PortSurcharge,
@@ -74,6 +75,9 @@ export function PortSurchargeCatalogPage() {
   const [lookupPortId, setLookupPortId] = useState("")
   const [lookupCode, setLookupCode] = useState("")
   const [resolved, setResolved] = useState<PortSurcharge | null>(null)
+  const [matchPortId, setMatchPortId] = useState("")
+  const [matchWhen, setMatchWhen] = useState("")
+  const [matched, setMatched] = useState<PortSurcharge[]>([])
   const sessionReady = Boolean(ctx.organizationId && ctx.userId)
 
   const query = useQuery({
@@ -88,6 +92,16 @@ export function PortSurchargeCatalogPage() {
     onSuccess: () => {
       setDraft(EMPTY_SURCHARGE_DRAFT)
       void queryClient.invalidateQueries({ queryKey: ["port-surcharges", ctx.organizationId] })
+    },
+  })
+
+  const matchMutation = useMutation({
+    mutationFn: () => matchPortSurcharges(matchPortId.trim(), matchWhen.trim()),
+    onSuccess: (rows) => {
+      setMatched(rows)
+    },
+    onError: () => {
+      setMatched([])
     },
   })
 
@@ -197,6 +211,42 @@ export function PortSurchargeCatalogPage() {
         ) : null}
       </form>
       {resolveMutation.isError ? <CatalogError error={resolveMutation.error} /> : null}
+      <form
+        className="grid gap-2 rounded-md border border-border bg-card p-3 md:grid-cols-3"
+        onSubmit={(event) => {
+          event.preventDefault()
+          matchMutation.mutate()
+        }}
+      >
+        <Input
+          aria-label="Port do dopasowania extra"
+          placeholder="port_id"
+          value={matchPortId}
+          onChange={(event) => setMatchPortId(event.target.value)}
+        />
+        <Input
+          aria-label="Warunek applies_when"
+          placeholder="kontener 40HC w weekend"
+          value={matchWhen}
+          onChange={(event) => setMatchWhen(event.target.value)}
+        />
+        <Button
+          type="submit"
+          variant="outline"
+          disabled={matchMutation.isPending || !matchPortId || !matchWhen}
+        >
+          Dopasuj warunek
+        </Button>
+        <ul data-port-surcharge="matching" className="text-xs md:col-span-3">
+          {matched.map((row) => (
+            <li key={row.id}>
+              {row.code} · {row.applies_when}{" "}
+              <Money amount={row.amount} currency={row.currency} />
+            </li>
+          ))}
+        </ul>
+      </form>
+      {matchMutation.isError ? <CatalogError error={matchMutation.error} /> : null}
       <CatalogLoadedTable
         tableKey={BUSINESS_LISTS.portSurcharges.tableKey}
         columns={columns}

@@ -3522,6 +3522,69 @@
         ]
       }
     },
+    "/api/v1/port-surcharges/matching": {
+      "get": {
+        "tags": [
+          "port-surcharges"
+        ],
+        "summary": "Match Port Surcharges",
+        "operationId": "match_port_surcharges_api_v1_port_surcharges_matching_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "port_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Port Id"
+            }
+          },
+          {
+            "name": "applies_when",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 512,
+              "title": "Applies When"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PortSurchargeResponse"
+                  },
+                  "title": "Response Match Port Surcharges Api V1 Port Surcharges Matching Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/port-surcharges/resolve": {
       "get": {
         "tags": [

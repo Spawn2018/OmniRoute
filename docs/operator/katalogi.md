@@ -7,7 +7,7 @@ Ekrany, które **zapisują** (INSERT/upsert), nie tablice-odczyty:
 - kody opłat, kody HS/CN, numery UN, sieci — kod / nazwa / aliasy
 - stawki kupna — niemutowalne, `source_ref`; zmiana = nowy wiersz
 - opłaty — kupno i sprzedaż na jednym wierszu; marża z pary, nie z arkusza
-- kurs NBP, extra portowe, oferty kanału — katalog, nie live HTTP
+- kurs NBP, extra portowe, oferty kanału — katalog, nie live HTTP. Na extra portowych „Dopasuj warunek” pokazuje wiersze, których `applies_when` jest dokładnie taki jak wpisałeś. To nie dopisuje opłaty ani marży.
 - porty, strefy taryfowe, terminale — UN/LOCODE / zakres pocztowy / ISPS
 - ustawienie `default_currency` — allowlista, nie sekret
 - SOP klienta — treść + akceptacja procedury, nie generator zadań

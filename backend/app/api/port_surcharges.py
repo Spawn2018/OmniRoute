@@ -63,6 +63,18 @@ async def list_port_surcharges(
     return [PortSurchargeResponse.from_row(row) for row in rows]
 
 
+@router.get("/matching", response_model=list[PortSurchargeResponse])
+async def match_port_surcharges(
+    port_id: UUID = Query(...),
+    applies_when: str = Query(..., min_length=1, max_length=512),
+    _authz: None = Depends(_GEOGRAPHY),
+    session: AsyncSession = Depends(require_tenant_session),
+) -> list[PortSurchargeResponse]:
+    service = PortSurchargeService(session)
+    rows = await service.list_matching(port_id, applies_when)
+    return [PortSurchargeResponse.from_row(row) for row in rows]
+
+
 @router.get("/resolve", response_model=PortSurchargeResponse)
 async def resolve_port_surcharge(
     port_id: UUID = Query(...),

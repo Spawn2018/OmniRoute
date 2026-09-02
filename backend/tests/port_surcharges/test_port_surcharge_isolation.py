@@ -7,6 +7,7 @@ from sqlalchemy import select
 from app.core.database import bind_tenant
 from app.models.port import Port
 from app.models.port_surcharge import PortSurcharge
+from app.services.port_surcharges.port_surcharge_service import PortSurchargeService
 
 _UNLOCODE_SOURCE = "github:cristan/improved-un-locodes@fixture"
 _MANUAL = "tenant:manual"
@@ -87,3 +88,45 @@ async def test_port_surcharge_rls_isolates_tenants(session, two_tenants) -> None
     visible_b = list((await session.scalars(select(PortSurcharge))).all())
     assert {row.id for row in visible_b} == {extra_b.id}
     assert await session.scalar(select(PortSurcharge).where(PortSurcharge.id == extra_a.id)) is None
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_matching_does_not_return_foreign_tenant_extra(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    org_b = two_tenants["org_b"]
+    user_a = two_tenants["user_a"]
+    user_b = two_tenants["user_b"]
+    when = "kontener 40HC w weekend"
+
+    await bind_tenant(session, org_a.id)
+    port_a = _port(organization_id=org_a.id, unlocode="PLGDY")
+    session.add(port_a)
+    await session.flush()
+    extra_a = _extra(
+        organization_id=org_a.id,
+        port_id=port_a.id,
+        code="thc",
+        created_by=user_a.id,
+    )
+    session.add(extra_a)
+    await session.flush()
+
+    await bind_tenant(session, org_b.id)
+    port_b = _port(organization_id=org_b.id, unlocode="DEHAM")
+    session.add(port_b)
+    await session.flush()
+    session.add(
+        _extra(
+            organization_id=org_b.id,
+            port_id=port_b.id,
+            code="thc",
+            created_by=user_b.id,
+        )
+    )
+    await session.flush()
+
+    session.expunge_all()
+    await bind_tenant(session, org_a.id)
+    matched = await PortSurchargeService(session).list_matching(port_a.id, when)
+    assert {row.id for row in matched} == {extra_a.id}

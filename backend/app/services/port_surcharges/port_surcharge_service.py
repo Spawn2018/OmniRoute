@@ -28,6 +28,11 @@ class PortSurchargeService:
     async def list_surcharges(self) -> list[PortSurcharge]:
         return await self._extras.list_all()
 
+    async def list_matching(self, port_id: UUID, applies_when: object) -> list[PortSurcharge]:
+        when = normalize_applies_when(applies_when)
+        await self._require_port(port_id)
+        return await self._extras.list_matching(port_id, when)
+
     async def resolve(self, port_id: UUID, code: object) -> PortSurcharge:
         token = normalize_surcharge_code(code)
         await self._require_port(port_id)

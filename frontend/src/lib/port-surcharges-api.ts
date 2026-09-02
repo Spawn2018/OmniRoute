@@ -78,6 +78,26 @@ export async function createPortSurcharge(
   return readSurcharge(response, "Błąd zapisu extra portowego")
 }
 
+export async function matchPortSurcharges(
+  portId: string,
+  appliesWhen: string,
+): Promise<PortSurcharge[]> {
+  const params = new URLSearchParams({
+    port_id: portId,
+    applies_when: appliesWhen,
+  })
+  const response = await fetch(`/api/v1/port-surcharges/matching?${params.toString()}`, {
+    headers: requireAuthHeaders(),
+  })
+  if (!response.ok) {
+    throw new ApiError(
+      await readApiDetail(response, "Błąd dopasowania extra portowych"),
+      httpErrorStatus(response),
+    )
+  }
+  return (await response.json()) as PortSurcharge[]
+}
+
 export async function resolvePortSurcharge(portId: string, code: string): Promise<PortSurcharge> {
   const params = new URLSearchParams({ port_id: portId, code })
   const response = await fetch(`/api/v1/port-surcharges/resolve?${params.toString()}`, {

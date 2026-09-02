@@ -19,6 +19,17 @@ class PortSurchargeRepository:
         found = await self._session.scalar(select(Port).where(Port.id == port_id))
         return found if isinstance(found, Port) else None
 
+    async def list_matching(self, port_id: UUID, applies_when: str) -> list[PortSurcharge]:
+        result = await self._session.scalars(
+            select(PortSurcharge)
+            .where(
+                PortSurcharge.port_id == port_id,
+                PortSurcharge.applies_when == applies_when,
+            )
+            .order_by(PortSurcharge.title),
+        )
+        return list(result.all())
+
     async def find_by_port_and_code(self, port_id: UUID, code: str) -> PortSurcharge | None:
         found = await self._session.scalar(
             select(PortSurcharge).where(

@@ -1,8 +1,8 @@
 # M-18 port_surcharge — opłaty portowe warunkowe
 
 **Moduł żywy:** M-18 (archiwum M-18; nie koliduje z żywym M-08 `charge` / M-07 `rate_line`)  
-**Plaster:** **12.0** (zamknięty)  
-**Status:** katalog extra per `port`. Nie aplikacja do wyceny. Nie drugi `charge`.
+**Plaster:** **12.0** katalog · **69.0** matching `applies_when`  
+**Status:** katalog extra per `port` + ewaluacja warunku w SQL. Nie zapis do `charge`.
 
 Delta: [docs/deltas/archived/12.0-port-surcharge.md](../deltas/archived/12.0-port-surcharge.md).
 
@@ -18,7 +18,11 @@ Delta: [docs/deltas/archived/12.0-port-surcharge.md](../deltas/archived/12.0-por
 
 ### Poza 12.0
 
-Ewaluacja `applies_when` przy `quotation` / zleceniu · zapis do `charge` / `rate_line` · THC live z terminalu · M-19 kanały · ExtractionService · LLM liczący kwotę
+Ewaluacja `applies_when` (69.0) · zapis do `charge` / `rate_line` · THC live z terminalu · M-19 kanały · ExtractionService · LLM liczący kwotę
+
+## 69.0 matching `applies_when`
+
+`GET /port-surcharges/matching` — SQL `port_id` + równość znormalizowanego `applies_when`. Nie parser AST. Nie INSERT `charge`. UI „Dopasuj warunek” na `/port-surcharges`.
 
 ### HC
 
