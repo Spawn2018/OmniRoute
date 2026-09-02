@@ -563,6 +563,46 @@ export type CreditReviewResponse = {
 };
 
 /**
+ * CustomerRfqCreate
+ */
+export type CustomerRfqCreate = {
+    /**
+     * Inbound Message Id
+     */
+    inbound_message_id: string;
+};
+
+/**
+ * CustomerRfqResponse
+ */
+export type CustomerRfqResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Inbound Message Id
+     */
+    inbound_message_id: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+    /**
+     * Status
+     */
+    status: string;
+    /**
+     * Party Id
+     */
+    party_id: string | null;
+};
+
+/**
  * CustomerSopCreate
  */
 export type CustomerSopCreate = {
@@ -2706,6 +2746,49 @@ export type ExtractInboundMessageApiV1InboundMessagesMessageIdExtractPostRespons
 };
 
 export type ExtractInboundMessageApiV1InboundMessagesMessageIdExtractPostResponse = ExtractInboundMessageApiV1InboundMessagesMessageIdExtractPostResponses[keyof ExtractInboundMessageApiV1InboundMessagesMessageIdExtractPostResponses];
+
+export type ListCustomerRfqsApiV1CustomerRfqsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/customer-rfqs';
+};
+
+export type ListCustomerRfqsApiV1CustomerRfqsGetResponses = {
+    /**
+     * Response List Customer Rfqs Api V1 Customer Rfqs Get
+     *
+     * Successful Response
+     */
+    200: Array<CustomerRfqResponse>;
+};
+
+export type ListCustomerRfqsApiV1CustomerRfqsGetResponse = ListCustomerRfqsApiV1CustomerRfqsGetResponses[keyof ListCustomerRfqsApiV1CustomerRfqsGetResponses];
+
+export type CreateCustomerRfqApiV1CustomerRfqsPostData = {
+    body: CustomerRfqCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/customer-rfqs';
+};
+
+export type CreateCustomerRfqApiV1CustomerRfqsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCustomerRfqApiV1CustomerRfqsPostError = CreateCustomerRfqApiV1CustomerRfqsPostErrors[keyof CreateCustomerRfqApiV1CustomerRfqsPostErrors];
+
+export type CreateCustomerRfqApiV1CustomerRfqsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CustomerRfqResponse;
+};
+
+export type CreateCustomerRfqApiV1CustomerRfqsPostResponse = CreateCustomerRfqApiV1CustomerRfqsPostResponses[keyof CreateCustomerRfqApiV1CustomerRfqsPostResponses];
 
 export type ListNbpRatesApiV1NbpRatesGetData = {
     body?: never;

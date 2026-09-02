@@ -6,6 +6,7 @@ from app.api import (
     charges,
     commodity_codes,
     credit_reviews,
+    customer_rfqs,
     customer_sops,
     dangerous_goods,
     extractions,
@@ -37,6 +38,7 @@ api_router.include_router(commodity_codes.router)
 api_router.include_router(dangerous_goods.router)
 api_router.include_router(networks.router)
 api_router.include_router(inbound_messages.router)
+api_router.include_router(customer_rfqs.router)
 api_router.include_router(nbp_rates.router)
 api_router.include_router(charges.router)
 api_router.include_router(rate_lines.router)

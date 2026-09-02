@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **66.0** S3 treść `inbound_message` → extract HITL. **Etap:** Plaster. **Następny:** 67.0 S4 `/plaster` — `customer_rfq` powiązany z `inbound_message`. Nie ślad wycen. Nie silnik. Nie IMAP. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **67.0** S4 `customer_rfq` powiązany z `inbound_message`. **Etap:** Plan. **Następny:** S5 `/plan-modul` — istniejący silnik wyceny na tym RFQ. Nie nowy silnik. LLM nie liczy. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
@@ -50,7 +50,7 @@ frontend/                 React 19 + Compiler, Vite, TanStack, shadcn, PostHog
   src/components/data-table/  DataTableShell (Golden Standard)
 backend/app/
   api/             routery, DTO, require_permission — bez logiki
-  services/        channel_quotes · charge_codes · charges · commodity_codes · dangerous_goods · extraction · geography · inbound_messages · nbp_rates · networks · organization_settings · parties · port_surcharges · quotations · rate_lines · tenancy
+  services/        channel_quotes · charge_codes · charges · commodity_codes · customer_rfqs · dangerous_goods · extraction · geography · inbound_messages · nbp_rates · networks · organization_settings · parties · port_surcharges · quotations · rate_lines · tenancy
   repositories/    dostęp SQL
   models/          SQLAlchemy
   domain/          typy, wyjątki, Money

@@ -78,7 +78,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **20.0 DONE:** `POST /quotations/batch` + textarea na `/quotations`. Kwota z istniejącego INSERT…SELECT. Nie CSV. Nie nowa tabela.
 - **20.0 leftover — CSV / set-based SQL (dlaczego nie w tym plasterze):** ingest pliku i Temporal = zgadywanie schematu (M-02 parked). Pętla max 20 `quote_from_current_rate` jest świadoma; jeden INSERT…SELECT wielu kodów = gdy operator zgłosi p95. `just dup` 2,71%.
 - **21.0 DONE:** `/quotations` panel zapytań grupuje wyceny po `party_id`. Nie nowa tabela. Nie IMAP.
-- **21.0 leftover — tabela RFQ / IMAP (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Skrzynka = M-32. M-29 pending **DONE w 22.0**. `just dup` 2,70%.
+- **21.0 leftover — tabela RFQ / IMAP (dlaczego nie w tym plasterze):** tabela **DONE w 67.0** (`customer_rfq`). S17 IMAP. Silnik na RFQ = S5.
 - **22.0 DONE:** `/quotations` panel pending akceptacji z wycen z `party_id`. Nie nowa tabela. Nie HITL accept. Nie `won`/`lost`.
 - **22.0 leftover — zapis wyniku / IMAP (dlaczego nie w tym plasterze):** leftover 18.0 (katalog won/lost). CURRENT zakazał zgadywania schematu. Skrzynka = M-32. `just dup` 2,70%.
 - **23.0 DONE:** `/quotations` ślad `channel_quote` na lane wyceny. Nie nowa tabela. Nie live HTTP. Nie odejmowanie kwot.
@@ -92,7 +92,9 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **65.0 DONE:** `/mail` dopina nadawcę `inbound_message` przez `resolve_email`. Nie IMAP. Nie extract.
 - **65.0 leftover — extract z treści (dlaczego nie w tym plasterze):** **DONE w 66.0.** ExtractionService nie zapisuje `rate_line`.
 - **66.0 DONE:** `/mail` „Extract HITL” → `extract_to_draft` z tematu i treści. Nie accept. Nie `rate_line` z poczty.
-- **66.0 leftover — załącznik blob / IMAP (dlaczego nie w tym plasterze):** S3 = treść, nie plik. Parser dokumentu już jest inną ścieżką. IMAP leftover S17. RFQ = S4.
+- **66.0 leftover — załącznik blob / IMAP (dlaczego nie w tym plasterze):** S3 = treść, nie plik. Parser dokumentu już jest inną ścieżką. IMAP leftover S17. RFQ **DONE w 67.0**.
+- **67.0 DONE:** `/mail` „Utwórz RFQ” → `customer_rfq` z `inbound_message`. Nie kwota. Nie silnik.
+- **67.0 leftover — silnik wyceny na RFQ (dlaczego nie w tym plasterze):** S5 istniejący silnik. LLM nie liczy.
 - **26.0 DONE:** `/mail` `mailto:` z `party_contact.email`. Nie Office.js. Nie Graph.
 - **26.0 leftover — dodatek Office / Graph (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Auth0 odroczone. M-34 powiadomienia **DONE w 27.0**. `just dup` 2,69%.
 - **27.0 DONE:** `/notifications` odczyt HITL pending + wyceny pending. Nie nowa tabela. Nie wysyłka.

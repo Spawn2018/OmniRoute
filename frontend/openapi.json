@@ -1198,6 +1198,80 @@
         }
       }
     },
+    "/api/v1/customer-rfqs": {
+      "get": {
+        "tags": [
+          "customer-rfqs"
+        ],
+        "summary": "List Customer Rfqs",
+        "operationId": "list_customer_rfqs_api_v1_customer_rfqs_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CustomerRfqResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Customer Rfqs Api V1 Customer Rfqs Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "customer-rfqs"
+        ],
+        "summary": "Create Customer Rfq",
+        "operationId": "create_customer_rfq_api_v1_customer_rfqs_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomerRfqCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomerRfqResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/nbp-rates": {
       "get": {
         "tags": [
@@ -4926,6 +5000,70 @@
           "source_ref"
         ],
         "title": "CreditReviewResponse"
+      },
+      "CustomerRfqCreate": {
+        "properties": {
+          "inbound_message_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Inbound Message Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "inbound_message_id"
+        ],
+        "title": "CustomerRfqCreate"
+      },
+      "CustomerRfqResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "inbound_message_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Inbound Message Id"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "party_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Party Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "inbound_message_id",
+          "source_ref",
+          "status",
+          "party_id"
+        ],
+        "title": "CustomerRfqResponse"
       },
       "CustomerSopCreate": {
         "properties": {

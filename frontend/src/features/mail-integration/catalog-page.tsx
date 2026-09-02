@@ -9,6 +9,7 @@ import {
 } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { createCustomerRfq, fetchCustomerRfqs } from "@/lib/customer-rfqs-api"
 import {
   createInboundMessage,
   extractInboundMessage,
@@ -88,6 +89,12 @@ export function MailIntegrationPage() {
     enabled: ready,
     retry: false,
   })
+  const rfqs = useQuery({
+    queryKey: ["customer-rfqs", ctx.organizationId],
+    queryFn: fetchCustomerRfqs,
+    enabled: ready,
+    retry: false,
+  })
   const lookup = useMutation({
     mutationFn: () => resolvePartyEmail(email),
     onSuccess: (row) => {
@@ -118,6 +125,14 @@ export function MailIntegrationPage() {
       })
     },
   })
+  const createRfq = useMutation({
+    mutationFn: createCustomerRfq,
+    onSuccess: () => {
+      void queryClient.invalidateQueries({
+        queryKey: ["customer-rfqs", ctx.organizationId],
+      })
+    },
+  })
 
   return (
     <div className="flex flex-col gap-4" data-mail-integration="board">
@@ -134,6 +149,8 @@ export function MailIntegrationPage() {
       {createMutation.isError ? <CatalogError error={createMutation.error} /> : null}
       {resolveSender.isError ? <CatalogError error={resolveSender.error} /> : null}
       {extractDraft.isError ? <CatalogError error={extractDraft.error} /> : null}
+      {rfqs.isError ? <CatalogError error={rfqs.error} /> : null}
+      {createRfq.isError ? <CatalogError error={createRfq.error} /> : null}
 
       <section className="space-y-2" data-inbound-message="fixture">
         <h2 className="text-sm font-medium">Wiadomości przychodzące</h2>
@@ -209,6 +226,29 @@ export function MailIntegrationPage() {
             Extract HITL {row.subject}
           </Button>
         ))}
+        {(inbound.data ?? [])
+          .filter(
+            (row) =>
+              !(rfqs.data ?? []).some((rfq) => rfq.inbound_message_id === row.id),
+          )
+          .map((row) => (
+            <Button
+              key={`rfq-${row.id}`}
+              type="button"
+              variant="outline"
+              disabled={!ready || createRfq.isPending}
+              onClick={() => createRfq.mutate(row.id)}
+            >
+              Utwórz RFQ {row.subject}
+            </Button>
+          ))}
+        <ul data-customer-rfq="list" className="text-xs">
+          {(rfqs.data ?? []).map((row) => (
+            <li key={row.id}>
+              RFQ {row.id} · wiadomość {row.inbound_message_id}
+            </li>
+          ))}
+        </ul>
       </section>
 
       <form

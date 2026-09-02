@@ -234,6 +234,14 @@ class InvalidInboundMessage(DomainError):
     """Wiadomość przychodząca: fixture source_ref, nadawca, temat, treść — nie IMAP."""
 
 
+class CustomerRfqConflict(DomainError):
+    """Ta wiadomość już ma zapytanie ofertowe w tenancie."""
+
+
+class InvalidCustomerRfq(DomainError):
+    """Zapytanie ofertowe: fixture source_ref i wiadomość tenanta — nie kwota."""
+
+
 class InvalidPartyScorecard(DomainError):
     """Wskaźnik karty poza zakresem albo nie jest Decimal — nie float, nie scoring osoby."""
 

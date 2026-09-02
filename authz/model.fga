@@ -22,3 +22,4 @@ type organization
     define can_manage_dangerous_goods: member
     define can_manage_networks: member
     define can_manage_inbound_messages: member
+    define can_manage_customer_rfqs: member
