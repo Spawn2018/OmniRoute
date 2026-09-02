@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **17.0** M-24 `offer_risk` przy `quotation` (zarchiwizowany). **Etap:** Plan. **Następny:** 18.0 M-25 Negocjacja i wynik (`/plan-modul`). Nie zgaduj schematu. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **17.0** M-24 `offer_risk` przy `quotation` (zarchiwizowany). **Etap:** Plan. **Następny:** 18.0 M-25 `offer_negotiation` przy `quotation` (`/plaster`). Czyta `channel_quote`. Nie wynik won/lost. Nie spread w JS. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

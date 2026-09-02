@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **17.0** M-24 `offer_risk` przy `quotation` (zarchiwizowany) **Następny:** 18.0 M-25 Negocjacja i wynik (`/plan-modul`). Nie zgaduj schematu.
+**Stan (z CURRENT.md):** **17.0** M-24 `offer_risk` przy `quotation` (zarchiwizowany) **Następny:** 18.0 M-25 `offer_negotiation` przy `quotation` (`/plaster`). Czyta `channel_quote`. Nie wynik won/lost. Nie spread w JS.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

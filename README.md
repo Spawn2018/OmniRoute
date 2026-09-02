@@ -39,7 +39,7 @@ Seed: `scripts/dev_seed_local.py`.
 <!-- os-status:start -->
 - **Ostatni plaster:** **17.0** M-24 `offer_risk` przy `quotation` (zarchiwizowany)
 - **Etap:** Plan
-- **Następny:** 18.0 M-25 Negocjacja i wynik (`/plan-modul`). Nie zgaduj schematu.
+- **Następny:** 18.0 M-25 `offer_negotiation` przy `quotation` (`/plaster`). Czyta `channel_quote`. Nie wynik won/lost. Nie spread w JS.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
