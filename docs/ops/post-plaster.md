@@ -23,8 +23,9 @@ Skopiuj **wszystkie** wiersze. Nie skracaj do skuteczność / szybkość / dług
 | Dług / człowiek | OK / 1–3 poprawki / leftover | `just complexity` + `just dup` na plikach z `git diff`. Komentarz tylko *dlaczego*. Trzecie powtórzenie wycięte albo leftover. Brak nowej warstwy z jedną implementacją |
 | Proza operatora | N/A / 5–15 zdań / leftover | tylko gdy plaster dał **job zapisu** (nie panel-odczyt cudzej tabeli). Brak `docs/operator/` = leftover z „dlaczego nie”, nie 70 stubów |
 | Docs/OS | PRZESZŁO / NIE | CURRENT, potem `just docs`; spec z CURRENT; skill jeśli dotyczy |
-| Pushy do zielonego | liczba / N/A | ile pushy aż CI przeszło; metryka dla operatora, **nie** cel dla agenta |
-| Minuty plastra | liczba / N/A | zegar operatora; zakaz optymalizacji pod tę liczbę |
+| Pushy do zielonego | liczba / N/A | agent z `gh run list` albo N/A; **nie** job operatora |
+| Minuty plastra | liczba / N/A | zegar sesji agenta albo N/A; zakaz optymalizacji pod tę liczbę |
+| Bench rzemiosła | PRZESZŁO / NIE | `python scripts/quality/factory_cycle.py --close` przed commitem; `just craft-check` i `just quality-floor` w meta-gate |
 
 **Nie w tej tabeli** (osobne Q albo `/refaktor`): CodeQL, mutacje, STRIDE, C4, changelog od zera, mixin wszystkich modeli, vulture, k6 jako DoD, Alembic vs `create_all`.
 

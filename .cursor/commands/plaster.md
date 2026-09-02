@@ -4,7 +4,9 @@ description: Rozpoczyna realizację plastra według procedury
 
 Przeczytaj `docs/state/CURRENT.md`.
 
-Na starcie (gdy to **nie** jest `/noc`): `python scripts/quality/writer_preflight.py` — jeśli `/noc` jedzie, **stop**.
+**Poza `/noc`:** `python scripts/quality/factory_cycle.py --start plaster`
+Retrieve + podłoga. Pominięcie = plaster bez pamięci fabryki.
+**W `/noc`:** nie powtarzaj `--start plaster` — preflight już zrobił `--start noc`.
 
 **Wyjątek `/noc`:** nie zatrzymuj się po kroku 6 i nie czekaj na `akceptuję`. Od razu `/testy`, potem kod, **`/po-plastrze` (pełna tabela)**, `/zamknij` bez nowej rozmowy, commit + push, wróć do pętli. Szczegóły: `docs/ops/nocna-zmiana.md`. `/noc` nie pomija kartki jakości.
 

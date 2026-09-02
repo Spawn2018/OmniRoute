@@ -24,9 +24,9 @@ Zostań w trybie **Agent**. **Nie** przełączaj Cursora na tryb Plan (ekran cze
 
    > Czytaj lokalne bicie serca nocy (szablon `docs/state/NOC-LIVE.example.md`) i `docs/state/CURRENT.md`. Jeśli po godzinie stopu: raport z `docs/ops/nocna-zmiana.md` § Raport, wyłącz loop, stop. Jeśli `status: busy` i `last_beat` świeższy niż 25 min: nic nie rób. Jeśli cisza > 25 min i przed godziną: preflight, jeden cykl z CURRENT, bije serce. Nie odpalaj drugiego agenta równolegle.
 
-4. Od razu pierwszy cykl (nie czekaj na pierwszy tik).
+4. Od razu pierwszy cykl (nie czekaj na pierwszy tik). Preflight już odpalił `factory_cycle --start noc` (retrieve + podłoga). Stosuj wypisane karty. Nie pytaj operatora o karty.
 
-Przed **każdym nowym** cyklem (nie w środku pytest): znowu `scripts/noc-preflight.ps1`. Padł Postgres / OpenFGA / sieć / GitHub → próbuj start w skrypcie; jak dalej FAIL → stop i raport.
+Przed **każdym nowym** cyklem (nie w środku pytest): znowu `scripts/noc-preflight.ps1`. Padł Postgres / OpenFGA / sieć / GitHub / podłoga jakości → próbuj start w skrypcie; jak dalej FAIL → stop i raport.
 
 ## Cykl (aż do godziny)
 
@@ -36,7 +36,7 @@ Czytaj CURRENT + kolejkę. Parked (M-02, Auth0, portale) **pomijaj**. F9.1 bez �
 
 **Brak delty / Etap Plan / wydmuszka** → procedura `/plan-modul` **w tym Agencie** (nie tryb Plan): opcja rekomendowana (bez etykiety: węższa z kolejki Q). W delcie zdanie „wybrane / odrzucone / dlaczego”. Zero kodu produktu. CURRENT: delta zaakceptowana, wolno `/plaster`. `just docs`. Commit + **push** (`docs(M-xx): delta…`). HITL nie zatwierdzaj. Od razu plaster, jeśli przed godziną.
 
-**Delta jest, wolno plaster** → `/plaster` bez czekania na `akceptuję`: łowca duplikatów, spec z CURRENT, plan plików, od razu `/testy` (czerwone), potem kod, gate, `/zamknij` (skill `zamknij-plaster`) **bez nowej rozmowy**. Naprawiaj do skutku. `just docs`. Commit + **push na origin/main**. Po pushu poczekaj na CI GitHub (`gh run watch` / najnowszy run na `main`); czerwone → napraw + push, do skutku albo do godziny. WIP=1: jeden plaster na raz.
+**Delta jest, wolno plaster** → `/plaster` bez czekania na `akceptuję`: `factory_cycle --start plaster` (już w komendzie), łowca duplikatów, spec z CURRENT, plan plików, od razu `/testy` (czerwone), potem kod, gate, `python scripts/quality/factory_cycle.py --close`, skill `zamknij-plaster` **bez nowej rozmowy**. Naprawiaj do skutku. `just docs`. Commit + **push na origin/main**. Po pushu poczekaj na CI GitHub (`gh run watch` / najnowszy run na `main`); czerwone → napraw + push, do skutku albo do godziny. WIP=1: jeden plaster na raz.
 
 Moduł niecały → następny plaster (plan jeśli trzeba, potem kod).  
 Moduł domknięty → następny Q z PLAN: plan (rozbicie na plastry) → push → plaster → push.

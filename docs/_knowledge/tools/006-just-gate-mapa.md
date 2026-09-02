@@ -1,23 +1,29 @@
 # Tools — mapa bramki
 
-`just gate` lokalnie = `code-gate` potem `meta-gate`. Just **przerywa na pierwszym błędzie** — jeśli padnie ruff, meta się nie wykona. CI woła `gate` i `meta` jako **dwa niezależne joby**.
+`just gate` lokalnie woła `scripts/quality/run_gate.py`: **zbiera** `code-gate` i `meta-gate`, nie przerywa po pierwszym (E2). CI ma dwa niezależne joby.
 
 ## Co naprawdę egzekwuje
 
 | Recipe | Czas rzędu | Egzekucja |
 |---|---|---|
-| `just meta-gate` | ~1 s | `docs-check`, `agent-refs`, `agentlint` |
+| `just meta-gate` | ~1 s | `docs-check`, `agent-refs` (w tym C2), `agentlint`, `craft-check`, `quality-floor` |
 | `just code-gate` | dziesiątki sekund | ruff, mypy, unit, arch, frontend, dup, perf, e2e |
-| `just gate` | ~70 s | oba, fail-fast |
+| `just gate` | suma obu | oba wyniki na ekranie, exit ≠ 0 jeśli którykolwiek padł |
 | `just agentlint --write` | nie istnieje | `python scripts/quality/agentlint.py --write` |
 | `just perf` | w gate | size-limit JS; **k6 = echo** |
 | `just dead` | echo | nie DoD |
 | `just promptfoo` | CI | fixture, nie żywy OpenAI |
 
-## Kiedy które
+## Taśma komend (nie pomijaj)
 
-- Zmiana `AGENTS.md` / alwaysApply rules: `python scripts/quality/agentlint.py --write`, baseline w **tym samym** commicie, potem `just meta-gate`.
-- Przed pushem: hook `pre-push` = pełne `just gate` (wymaga `just hooks`).
-- Czerwony push „od razu”: najpierw `just meta-gate` — seria #79–#88 to był podpis, nie kod.
+| Komenda | Wejście |
+|---|---|
+| `/plan-modul` | `python scripts/quality/factory_cycle.py --start plan` |
+| `/plaster` | `python scripts/quality/factory_cycle.py --start plaster` |
+| `/refaktor` | `python scripts/quality/factory_cycle.py --start refactor` |
+| `/noc` | `noc-preflight.ps1` → `factory_cycle --start noc` |
+| `/zamknij` | `python scripts/quality/factory_cycle.py --close` |
+
+`--close` = bench + karta z powtórzonych czerwonych CI + podłoga tylko w górę. Nie edytuje GROUNDING. Nie dopisuje zasad do AGENTS.
 
 **Źródło:** PLAN § Gate dziś vs cel DoD. Nie zgaduj, który recipe jest stubem.

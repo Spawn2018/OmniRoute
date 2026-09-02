@@ -3,19 +3,17 @@ default: gate
 agent-refs:
     python scripts/quality/check_agent_refs.py
 
-gate: code-gate meta-gate
-    @echo "gate: code-gate + meta-gate OK"
+gate:
+    python scripts/quality/run_gate.py
 
-# Rozdział na dwie bramki wynika z audytu runów #79-#88: meta-checki stały przed
-# check/test-unit/arch, a just przerywa na pierwszym błędzie, więc przez siedem
-# pushy CI nie odpaliło ani ruffa, ani mypy, ani testów, ani import-lintera.
-# W tym oknie przeszedł niezauważony realny błąd architektury (87c4cf3).
+# Lokalny `just gate` zbiera code-gate i meta-gate (E2) — nie przerywa po pierwszym.
+# CI i tak ma dwa joby. Rozdział jobów w CI wynika z audytu runów #79-#88.
 
 code-gate: check test-unit arch frontend-typecheck frontend-test dup perf frontend-e2e
     @echo "code-gate: check + test-unit + arch + frontend + dup + perf + e2e OK"
 
-meta-gate: docs-check agent-refs agentlint
-    @echo "meta-gate: docs-check + agent-refs + agentlint OK"
+meta-gate: docs-check agent-refs agentlint craft-check quality-floor
+    @echo "meta-gate: docs-check + agent-refs + agentlint + craft-check + quality-floor OK"
 
 hooks:
     git config core.hooksPath scripts/githooks
@@ -107,6 +105,15 @@ dup:
 
 agentlint:
     python scripts/quality/agentlint.py
+
+craft-check:
+    python scripts/quality/craft_close.py --check
+
+craft-close:
+    python scripts/quality/craft_close.py --write
+
+quality-floor:
+    python scripts/quality/quality_floor.py --check
 
 promptfoo:
     pytest backend/tests/extraction/test_promptfoo_fixtures.py -q

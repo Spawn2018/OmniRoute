@@ -12,7 +12,7 @@ Za każdym włączeniem i przed każdym **nowym** cyklem:
 powershell -ExecutionPolicy Bypass -File scripts/noc-preflight.ps1
 ```
 
-Skrypt sprawdza: czysty git, gałąź `main`, internet (GitHub), `git fetch` / `ls-remote`, Postgres `:5432`, OpenFGA `:8080`. Jeśli baza albo OpenFGA leżą — próbuje je podnieść (`pg_ctl`, `openfga.exe`). FAIL = noc **nie** startuje i nie sprząta cudzego drzewa.
+Skrypt sprawdza: czysty git, gałąź `main`, internet (GitHub), `git fetch` / `ls-remote`, Postgres `:5432`, OpenFGA `:8080`, potem `factory_cycle --start noc` (retrieve + podłoga jakości). Jeśli baza albo OpenFGA leżą — próbuje je podnieść (`pg_ctl`, `openfga.exe`). FAIL = noc **nie** startuje i nie sprząta cudzego drzewa.
 
 Ty: komputer nie usypia, Cursor otwarty, **żaden inny agent nie pisze**.
 
@@ -20,7 +20,7 @@ Ty: komputer nie usypia, Cursor otwarty, **żaden inny agent nie pisze**.
 
 1. Czytaj `CURRENT.md`. **Etap: Refaktor** → `/refaktor` (max 3), karta post-plaster, commit i push — nie `/plan-modul`.
 2. **Etap: Plan** → `/plan-modul` w Agencie (nie przełączaj na tryb Plan w Cursorze — ten ekran czeka na Ciebie). Opcja rekomendowana. Delta + CURRENT. **Commit i push.** Zero kodu produktu.
-3. **`/plaster`** (gdy Etap nie jest Plan ani Refaktor): plan plików bez `akceptuję` → czerwone `/testy` → kod → `/po-plastrze` → zamknięcie. **Commit i push** na `origin/main`. Naprawia do skutku. Po pushu czeka na CI GitHub i poprawia, aż zielone albo padnie godzina.
+3. **`/plaster`** (gdy Etap nie jest Plan ani Refaktor): preflight już zrobił retrieve; **nie** wołaj `--start plaster` (NOC-LIVE ≠ stop). Plan plików bez `akceptuję` → czerwone `/testy` → kod → `/po-plastrze` → `factory_cycle --close` → zamknięcie. **Commit i push** na `origin/main`. Naprawia do skutku. Po pushu czeka na CI GitHub i poprawia, aż zielone albo padnie godzina.
 4. Kolejny plaster tego modułu, potem kolejne Q z PLAN (**Fala E**, potem **Fala S**; nie F9.1 po Q-E4) — aż do godziny.
 5. Po godzinie: nie zaczyna nowego planu ani plastra. Dokańcza rozgrzebane, puszcza, **raport**.
 

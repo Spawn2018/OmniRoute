@@ -1,9 +1,11 @@
 # Piątkowa retrospektywa reguł / skills (Faza D)
 
 **Cel:** prune context poisoning, nie „standup 30 osób”.  
-**Automacja** może otworzyć issue `retro-YYYY-MM-DD`. **Nie** edytuje `AGENTS.md` / `GROUNDING.md` / `.cursor/rules`. Merge kontraktu robi człowiek. Agent wolno dać diff **w komentarzu issue**.
+Operator **nie** prowadzi tego rytmu. C2 (`check_agent_refs`) i `craft_close` jadą w `just meta-gate` przy każdym `/zamknij`. Cron D1 zostaje wyłączony — issue, którego nikt nie czyta, nic nie uczy.
 
-Ten plik jest **procedurą**, nie logiem. Log = zamknięte issues. Inaczej puchnie i sam truuje kontekst.
+**Nie** edytuje `AGENTS.md` / `GROUNDING.md` / `.cursor/rules` automatycznie. GROUNDING tylko człowiek + ADR. Higiena cytatu (martwy `just` / MCP) = osobny commit + `agentlint.py --write`, bez nowych zasad.
+
+Ten plik jest **procedurą na wypadek ręcznego prune**, nie logiem i nie checklistą piątku operatora.
 
 ## Checklist (≤30 min)
 
@@ -20,4 +22,4 @@ Ten plik jest **procedurą**, nie logiem. Log = zamknięte issues. Inaczej puchn
 2. Wiersz w `docs-debt.md`.
 3. Zmiana kontraktu — `python scripts/quality/agentlint.py --write` w **tym samym** commicie.
 
-Sygnał do wyłączenia crona D1: issue zamykane bez czytania trzy tygodnie z rzędu.
+D1 nie włączamy. Ta checklista jest na ręczny prune, nie na piątek operatora.

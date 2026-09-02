@@ -44,9 +44,9 @@ function Test-ListenPort([int]$Port) {
 
 Write-Host "noc-preflight  $Root"
 
-python (Join-Path $Root "scripts\quality\writer_preflight.py")
+python (Join-Path $Root "scripts\quality\writer_preflight.py") --allow-noc
 if ($LASTEXITCODE -ne 0) {
-  Write-Fail "NOC-LIVE nie jest stop. Druga noc albo pisarz w tle."
+  Write-Fail "writer-preflight padł."
 }
 
 $dirty = git status --porcelain
@@ -175,6 +175,11 @@ if ($fgaUp) {
 
 if ($script:failed) {
   Write-Host "noc-preflight: STOP - nie włączaj pętli /noc."
+  exit 1
+}
+python (Join-Path $Root "scripts\quality\factory_cycle.py") --start noc
+if ($LASTEXITCODE -ne 0) {
+  Write-Host "noc-preflight: STOP - factory_cycle (retrieve / podłoga jakości)."
   exit 1
 }
 Write-Host "noc-preflight: OK - wolno /noc."

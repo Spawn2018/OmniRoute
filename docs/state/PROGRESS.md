@@ -198,3 +198,4 @@
 | 2026-09-02 | 65.0 | M-11 | `resolve_email` dopina `party_id` na `inbound_message`. FK tenanta. Nie IMAP. Nie auto przy INSERT. Następny: S3 Plan. |
 | 2026-09-02 | Plan 66.0 | M-20 | S3: treść `inbound_message` → extract HITL. Delta zaakceptowana (`/noc`). Nie blob, nie zapis `rate_line`. Następny: `/plaster` 66.0. |
 | 2026-09-02 | 66.0 | M-20 | Treść `inbound_message` → `extract_to_draft` HITL. Przycisk na `/mail`. Nie accept, nie `rate_line` z poczty. Następny: S4 Plan. |
+| 2026-09-02 | OS-2 | ops | factory_cycle na komendach, C2, E2 run_gate, podłoga jakości, bench 66.0, karty z 3× CI. Nie Auto-AGENTS. Nie S4. |

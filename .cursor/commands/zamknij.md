@@ -15,6 +15,10 @@ description: Zamyka plaster i przygotowuje następny
    (`python scripts/quality/agentlint.py --write`) i włóż `scripts/quality/agentlint.baseline.json`
    do **tego samego** commita. Bez tego agentlint pada — to była przyczyna 6 z 7 czerwonych
    runów #79-#88. Kontrola trwa sekundę: `just meta-gate`.
+5c. `python scripts/quality/factory_cycle.py --close`, potem `just meta-gate`.
+    Bench + karta z powtórzonych czerwonych CI + podłoga jakości w górę.
+    C2 pada → osobny commit higieny cytatu + agentlint, **nie** nowe zasady,
+    **nie** GROUNDING.
 6. Wypisz jednym zdaniem, co zostało niedokończone albo odłożone (`docs/ops/docs-debt.md`).
 
 Po tym kroku otwieram nową rozmowę. Nie kontynuuj.

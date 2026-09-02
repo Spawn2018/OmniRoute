@@ -2,10 +2,12 @@
 """Ścieżki w OS + zakaz imion person z archiwum w żywych plikach."""
 from __future__ import annotations
 
+import importlib.util
 import re
 import subprocess
 import sys
 from pathlib import Path
+from types import ModuleType
 
 ROOT = Path(__file__).resolve().parents[2]
 SCAN = [
@@ -163,6 +165,16 @@ def persona_errors() -> list[str]:
     return errors
 
 
+def _load_contract_drift() -> ModuleType:
+    path = Path(__file__).with_name("contract_drift.py")
+    spec = importlib.util.spec_from_file_location("contract_drift", path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"cannot load {path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
 def _print_capped(errors: list[str]) -> None:
     unique = sorted(set(errors))
     for err in unique[:50]:
@@ -175,13 +187,17 @@ def _print_capped(errors: list[str]) -> None:
 def main() -> int:
     stale = stale_ref_errors()
     personae = persona_errors()
+    drift = _load_contract_drift().contract_drift_errors()
     if stale:
         print("Context rot / stale refs:\n")
         _print_capped(stale)
     if personae:
         print("Archive SH role names in live OS files:\n")
         _print_capped(personae)
-    if stale or personae:
+    if drift:
+        print("Contract drift (recipe / MCP / scripts):\n")
+        _print_capped(drift)
+    if stale or personae or drift:
         return 1
     print("check_agent_refs: OK")
     return 0

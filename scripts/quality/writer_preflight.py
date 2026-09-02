@@ -21,6 +21,10 @@ def noc_status() -> str:
 
 def main() -> int:
     status = noc_status()
+    allow_noc = "--allow-noc" in sys.argv
+    if allow_noc:
+        print("writer-preflight: OK (sesja /noc)")
+        return 0
     if status != "stop":
         print(
             f"writer-preflight: NOC-LIVE status={status}. "

@@ -29,6 +29,10 @@ frontend/.tanstack/
 # Nocna zmiana — bicie serca strażnika, nie commitować
 docs/state/NOC-LIVE.md
 
+# Sygnały lokalne — nie magazyn w git (pre-commit brudzi drzewo)
+docs/_signals/*.jsonl
+docs/_knowledge/_drafts/
+
 # IDE / OS
 .idea/
 .vscode/

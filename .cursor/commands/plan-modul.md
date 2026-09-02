@@ -4,7 +4,8 @@ description: Etap Plan dla pozycji kolejki — rozmowa i delta, zero kodu produk
 
 Przeczytaj `docs/state/CURRENT.md` i `docs/PLAN-REALIZACJA.md` § Kolejka realizacji.
 
-Na starcie (gdy to **nie** jest `/noc`): `python scripts/quality/writer_preflight.py` — jeśli `/noc` jedzie, **stop**. Nie otwieraj drugiej delty na to samo Q.
+**Poza `/noc`:** `python scripts/quality/factory_cycle.py --start plan`
+Retrieve + podłoga + writer-preflight. **W `/noc`:** nie powtarzaj — `noc-preflight` już woła `--start noc`. Drugie `--start plan` padnie, bo NOC-LIVE ≠ stop.
 
 **Wyjątek `/noc`:** zostań w Agencie. Nie przełączaj na tryb Plan. Nie czekaj na `akceptuję`. Opcja rekomendowana, delta, `just docs`, commit + push, od razu `/plaster` jeśli przed godziną stopu. Szczegóły: `docs/ops/nocna-zmiana.md`.
 

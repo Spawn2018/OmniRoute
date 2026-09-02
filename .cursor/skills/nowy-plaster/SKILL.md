@@ -8,6 +8,7 @@ description: Pełna procedura pionowego plastra od migracji do komponentu
 Kolejność jest obowiązkowa. Nie przeskakuj etapów.
 
 ## 0. Przygotowanie
+- `python scripts/quality/factory_cycle.py --start plaster` — retrieve + podłoga. Obowiązkowe.
 - Przeczytaj `docs/state/CURRENT.md` i delta-spec.
 - Jeśli poprzedni plaster ma niezacommitowany / niepushnięty WIP — **stop**, domknij go.
 - Sprawdź `docs/PLAN-REALIZACJA.md` § Gate dziś vs DoD (co jest stubem).
