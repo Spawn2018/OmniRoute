@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** 26.0 M-33 `mail_client` (`/plaster`). `mailto:` na `/mail`. Nie Office.js. Nie Graph.
+**Następny (zablokowany):** 27.0 M-34 Powiadomienia (`/plan-modul`). Nie zgaduj schematu.
 <!-- os-status:end -->
 
 ```mermaid
@@ -334,7 +334,8 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | F3.7 | **M-30 Zapytania do agentów/armatorów** | 23.0 | zamknięty (`docs/deltas/archived/23.0-carrier-inquiry.md`) |
 | F3.8 | **M-31 Porównanie odpowiedzi** | 24.0 | zamknięty (`docs/deltas/archived/24.0-response-comparison.md`) |
 | F4.0 | **M-32 Integracja pocztowa** | 25.0 | zamknięty (`docs/deltas/archived/25.0-mail-integration.md`) |
-| F4.1 | **M-33 Dodatek do Outlooka** | Plan → plaster | Plan (`docs/deltas/open/26.0-mail-client.md`) |
+| F4.1 | **M-33 Dodatek do Outlooka** | 26.0 | zamknięty (`docs/deltas/archived/26.0-mail-client.md`) |
+| F4.2 | **M-34 Powiadomienia** | Plan → plaster | kolejka (`/plan-modul`; nie zgaduj schematu) |
 
 ### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster
 

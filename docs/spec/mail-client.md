@@ -1,10 +1,10 @@
 # M-33 klient poczty — `mailto:` z znanego kontaktu
 
 **Moduł żywy:** M-33 (token UI `mail_client`, nie tabela) + ekran M-32 `/mail`  
-**Plaster:** **26.0** (plan)  
+**Plaster:** **26.0** (zamknięty)  
 **Status:** operator **otwiera** znany adres w kliencie poczty. Nie dodatek Office. Nie Graph.
 
-Delta: [docs/deltas/open/26.0-mail-client.md](../deltas/open/26.0-mail-client.md).
+Delta: [docs/deltas/archived/26.0-mail-client.md](../deltas/archived/26.0-mail-client.md).
 
 ## 26.0 mailto na `/mail`
 

@@ -111,12 +111,15 @@ export function MailIntegrationPage() {
           </p>
         ))}
       </section>
-      <section className="space-y-1">
+      <section className="space-y-1" data-mail-client="mailto">
         <h2 className="text-sm font-medium">Kontakty</h2>
         {(contacts.data ?? []).map((row) =>
           row.email === null ? null : (
             <p key={row.id} className="text-xs">
-              {row.name} {row.email}
+              {row.name}{" "}
+              <a className="underline" href={`mailto:${row.email}`}>
+                {row.email}
+              </a>
             </p>
           ),
         )}

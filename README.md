@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **25.0** M-32 `mail_integration` tablica `/mail` (zarchiwizowany)
+- **Ostatni plaster:** **26.0** M-33 `mail_client` `mailto:` na `/mail` (zarchiwizowany)
 - **Etap:** Plan
-- **Następny:** 26.0 M-33 `mail_client` (`/plaster`). `mailto:` na `/mail`. Nie Office.js. Nie Graph.
+- **Następny:** 27.0 M-34 Powiadomienia (`/plan-modul`). Nie zgaduj schematu.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

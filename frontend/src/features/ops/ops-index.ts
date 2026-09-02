@@ -125,6 +125,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "23.0": "/quotations",
   "24.0": "/quotations",
   "25.0": "/mail",
+  "26.0": "/mail",
 } as const
 
 export const ROUTES_BREADTH_STANDING =
