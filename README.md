@@ -38,8 +38,8 @@ Seed: `scripts/dev_seed_local.py`.
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **40.0** M-47 `bookkeeping` tablica `/bookkeeping` (zarchiwizowany)
-- **Etap:** Plan
-- **Następny:** M-48 Transport drogowy (`/plan-modul`). Nie zgaduj schematu. Nie nowa tabela.
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
+- **Etap:** Plaster
+- **Następny:** 41.0 M-48 `road_transport` tablica `/road`. Nie zgaduj schematu. Nie nowa tabela.
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
