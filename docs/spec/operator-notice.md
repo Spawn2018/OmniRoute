@@ -1,10 +1,10 @@
 # M-34 powiadomienia — tablica istniejącej pracy operatora
 
 **Moduł żywy:** M-34 (token UI `operator_notice`, nie tabela) + ekrany M-20 HITL i M-21 `quotation`  
-**Plaster:** **27.0** (plan)  
+**Plaster:** **27.0** (zamknięty)  
 **Status:** operator **widzi** szkice do recenzji i wyceny oczekujące na akceptację. Nie nowa tabela. Nie wysyłka.
 
-Delta: [docs/deltas/open/27.0-operator-notice.md](../deltas/open/27.0-operator-notice.md).
+Delta: [docs/deltas/archived/27.0-operator-notice.md](../deltas/archived/27.0-operator-notice.md).
 
 ## 27.0 tablica odczytu na `/notifications`
 

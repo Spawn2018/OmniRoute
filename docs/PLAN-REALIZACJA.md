@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** 27.0 M-34 `operator_notice` (`/plaster`). Tablica HITL pending + wyceny pending. Nie tabela. Nie wysyłka.
+**Następny (zablokowany):** M-35 Zlecenie (`/plan-modul`). Nie zgaduj schematu. Nie nowa tabela.
 <!-- os-status:end -->
 
 ```mermaid
@@ -335,7 +335,8 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | F3.8 | **M-31 Porównanie odpowiedzi** | 24.0 | zamknięty (`docs/deltas/archived/24.0-response-comparison.md`) |
 | F4.0 | **M-32 Integracja pocztowa** | 25.0 | zamknięty (`docs/deltas/archived/25.0-mail-integration.md`) |
 | F4.1 | **M-33 Dodatek do Outlooka** | 26.0 | zamknięty (`docs/deltas/archived/26.0-mail-client.md`) |
-| F4.2 | **M-34 Powiadomienia** | Plan → plaster | Plan (`docs/deltas/open/27.0-operator-notice.md`) |
+| F4.2 | **M-34 Powiadomienia** | 27.0 | zamknięty (`docs/deltas/archived/27.0-operator-notice.md`) |
+| F5.0 | **M-35 Zlecenie** | Plan | kolejka (`/plan-modul`; nie zgaduj schematu) |
 
 ### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster
 
@@ -408,7 +409,7 @@ Nie implementuj z tej tabeli „na zapas”. To mapa, żeby nic nie zginęło. S
 | M-21 | Silnik wyceny | DONE 2.0 + 5.1 POL/POD/`party_id` |
 | M-22 | Narzuty i marża | COVERED (`charge`) |
 | M-23–M-31 | Ofertowanie | Fala 3 |
-| M-32–M-34 | Komunikacja | Fala 4 |
+| M-32–M-34 | Komunikacja | DONE fundament (25.0–27.0) |
 | M-35–M-39 | Zlecenie / EDI | Fala 5 |
 | M-40–M-47 | Finanse | Fala 6 |
 | M-48–M-51 | Modały | Fala 7 |

@@ -23,6 +23,7 @@ import { Route as LocationsRouteImport } from './routes/locations'
 import { Route as MailRouteImport } from './routes/mail'
 import { Route as NbpRatesRouteImport } from './routes/nbp-rates'
 import { Route as NetworksRouteImport } from './routes/networks'
+import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as OrganizationSettingsRouteImport } from './routes/organization-settings'
 import { Route as PartiesRouteImport } from './routes/parties'
 import { Route as PartyScorecardsRouteImport } from './routes/party-scorecards'
@@ -104,6 +105,11 @@ const NetworksRoute = NetworksRouteImport.update({
   path: '/networks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OrganizationSettingsRoute = OrganizationSettingsRouteImport.update({
   id: '/organization-settings',
   path: '/organization-settings',
@@ -170,6 +176,7 @@ export interface FileRoutesByFullPath {
   '/mail': typeof MailRoute
   '/nbp-rates': typeof NbpRatesRoute
   '/networks': typeof NetworksRoute
+  '/notifications': typeof NotificationsRoute
   '/organization-settings': typeof OrganizationSettingsRoute
   '/parties': typeof PartiesRoute
   '/party-scorecards': typeof PartyScorecardsRoute
@@ -196,6 +203,7 @@ export interface FileRoutesByTo {
   '/mail': typeof MailRoute
   '/nbp-rates': typeof NbpRatesRoute
   '/networks': typeof NetworksRoute
+  '/notifications': typeof NotificationsRoute
   '/organization-settings': typeof OrganizationSettingsRoute
   '/parties': typeof PartiesRoute
   '/party-scorecards': typeof PartyScorecardsRoute
@@ -223,6 +231,7 @@ export interface FileRoutesById {
   '/mail': typeof MailRoute
   '/nbp-rates': typeof NbpRatesRoute
   '/networks': typeof NetworksRoute
+  '/notifications': typeof NotificationsRoute
   '/organization-settings': typeof OrganizationSettingsRoute
   '/parties': typeof PartiesRoute
   '/party-scorecards': typeof PartyScorecardsRoute
@@ -251,6 +260,7 @@ export interface FileRouteTypes {
     | '/mail'
     | '/nbp-rates'
     | '/networks'
+    | '/notifications'
     | '/organization-settings'
     | '/parties'
     | '/party-scorecards'
@@ -277,6 +287,7 @@ export interface FileRouteTypes {
     | '/mail'
     | '/nbp-rates'
     | '/networks'
+    | '/notifications'
     | '/organization-settings'
     | '/parties'
     | '/party-scorecards'
@@ -303,6 +314,7 @@ export interface FileRouteTypes {
     | '/mail'
     | '/nbp-rates'
     | '/networks'
+    | '/notifications'
     | '/organization-settings'
     | '/parties'
     | '/party-scorecards'
@@ -330,6 +342,7 @@ export interface RootRouteChildren {
   MailRoute: typeof MailRoute
   NbpRatesRoute: typeof NbpRatesRoute
   NetworksRoute: typeof NetworksRoute
+  NotificationsRoute: typeof NotificationsRoute
   OrganizationSettingsRoute: typeof OrganizationSettingsRoute
   PartiesRoute: typeof PartiesRoute
   PartyScorecardsRoute: typeof PartyScorecardsRoute
@@ -442,6 +455,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NetworksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/organization-settings': {
       id: '/organization-settings'
       path: '/organization-settings'
@@ -530,6 +550,7 @@ const rootRouteChildren: RootRouteChildren = {
   MailRoute: MailRoute,
   NbpRatesRoute: NbpRatesRoute,
   NetworksRoute: NetworksRoute,
+  NotificationsRoute: NotificationsRoute,
   OrganizationSettingsRoute: OrganizationSettingsRoute,
   PartiesRoute: PartiesRoute,
   PartyScorecardsRoute: PartyScorecardsRoute,
