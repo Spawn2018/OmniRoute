@@ -62,7 +62,9 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **20.0 DONE:** `POST /quotations/batch` + textarea na `/quotations`. Kwota z istniejącego INSERT…SELECT. Nie CSV. Nie nowa tabela.
 - **20.0 leftover — CSV / set-based SQL (dlaczego nie w tym plasterze):** ingest pliku i Temporal = zgadywanie schematu (M-02 parked). Pętla max 20 `quote_from_current_rate` jest świadoma; jeden INSERT…SELECT wielu kodów = gdy operator zgłosi p95. `just dup` 2,71%.
 - **21.0 DONE:** `/quotations` panel zapytań grupuje wyceny po `party_id`. Nie nowa tabela. Nie IMAP.
-- **21.0 leftover — tabela RFQ / IMAP (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Skrzynka = M-32. Status zapytania i M-29 akceptacja = osobny Plan. `just dup` 2,70%.
+- **21.0 leftover — tabela RFQ / IMAP (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Skrzynka = M-32. M-29 pending **DONE w 22.0**. `just dup` 2,70%.
+- **22.0 DONE:** `/quotations` panel pending akceptacji z wycen z `party_id`. Nie nowa tabela. Nie HITL accept. Nie `won`/`lost`.
+- **22.0 leftover — zapis wyniku / IMAP (dlaczego nie w tym plasterze):** leftover 18.0 (katalog won/lost). CURRENT zakazał zgadywania schematu. Skrzynka = M-32. `just dup` 2,70%.
 - **6.0 leftover — klon nagłówka modelu (dlaczego nie w tym plasterze):** `jscpd` 6 linii `charge.py` przeciw `nbp_rate.py` (blok `id`). Miksin wszystkich modeli = `refaktor-pass`. `just dup` 2,83% po kompaktowym `id` i osobnym formularzu kursu (nie `CatalogCreateForm`).
 - **7.0 DONE:** `dangerous_good` UN/IMDG + aliasy + `source_ref`, RLS FORCE, `resolve`, OpenFGA `can_manage_dangerous_goods`, `/dangerous-goods`. Nie podpięcie do wyceny, nie live IMO, nie M-08 `charge`.
 - **7.0 leftover — live IMO / ADN-ADR / Fala 8 (dlaczego nie w tym plasterze):** ręczny wpis = `tenant:manual`; fixture = `imdg:<un_number>`. Seed tysięcy UN i live HTTP do IMO = jak 4.0/5.0. ADN/ADR osobne tabele i grupy zgodności 1.xA = później. Fala 8 M-53–M-56 zostaje.

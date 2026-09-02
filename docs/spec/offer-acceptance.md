@@ -1,10 +1,10 @@
 # M-29 wykrywanie akceptacji — pending z faktów wyceny
 
 **Moduł żywy:** M-29 (token UI `offer_acceptance`, nie tabela) + ekran M-21 `quotation`  
-**Plaster:** **22.0** (plan)  
+**Plaster:** **22.0** (zamknięty)  
 **Status:** operator **widzi** wyceny wystawione kontrahentowi jako oczekujące na akceptację. Nie zapis wyniku. Nie HITL extract. Nie IMAP.
 
-Delta: [docs/deltas/open/22.0-offer-acceptance.md](../deltas/open/22.0-offer-acceptance.md).
+Delta: [docs/deltas/archived/22.0-offer-acceptance.md](../deltas/archived/22.0-offer-acceptance.md).
 
 ## 22.0 pending z wycen
 

@@ -21,6 +21,7 @@ import {
   quotationCreateBody,
   quotationCurrencies,
   quotationInquiryTrails,
+  quotationAcceptancePending,
   quotationLanes,
   quotationPartyIds,
   quotationSkipsNbpCatalog,
@@ -416,6 +417,27 @@ function OfferInquiryPanel(args: { rows: Quotation[]; parties: Party[] }) {
   )
 }
 
+function OfferAcceptancePanel(args: { rows: Quotation[] }) {
+  const pending = quotationAcceptancePending(args.rows)
+  if (pending.length === 0) {
+    return null
+  }
+  return (
+    <article className="space-y-2 p-3 outline outline-1 outline-border" data-offer-acceptance="pending">
+      <h3 className="text-sm font-medium">Akceptacja oferty</h3>
+      <p className="text-xs text-muted-foreground">brak zapisu w bazie · nie HITL extract · nie skrzynka</p>
+      <ul className="space-y-1 text-xs">
+        {pending.map((row) => (
+          <li key={row.id}>
+            {row.charge_code}{" "}
+            <Money amount={row.amount} currency={row.currency} />
+          </li>
+        ))}
+      </ul>
+    </article>
+  )
+}
+
 export function QuotationCatalogPage() {
   const ctx = getTenantContext()
   const queryClient = useQueryClient()
@@ -661,6 +683,7 @@ export function QuotationCatalogPage() {
           <OfferNegotiationPanel lanes={quotationLanes(query.data)} signedIn={signedIn} />
           <OfferDocumentPanel rows={query.data} />
           <OfferInquiryPanel rows={query.data} parties={parties} />
+          <OfferAcceptancePanel rows={query.data} />
         </>
       ) : null}
 

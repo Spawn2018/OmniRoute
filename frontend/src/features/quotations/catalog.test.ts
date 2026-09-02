@@ -4,6 +4,7 @@ import {
   quotationBatchBody,
   quotationCreateBody,
   quotationCurrencies,
+  quotationAcceptancePending,
   quotationInquiryTrails,
   quotationLanes,
   quotationPartyIds,
@@ -138,6 +139,13 @@ describe("quotation NBP lookup", () => {
       { partyId: otherParty, quotations: [third] },
     ])
   })
+
+  it("lists quotations with party_id as pending acceptance, skipping nulls", () => {
+    const withParty = { ...quotationWithCurrency("EUR"), party_id: PARTY }
+    expect(
+      quotationAcceptancePending([withParty, quotationWithCurrency("USD")]),
+    ).toEqual([withParty])
+  })
 })
 
 describe("quotation catalog screen", () => {
@@ -160,6 +168,9 @@ describe("quotation catalog screen", () => {
     expect(page).toContain('data-offer-document="preview"')
     expect(page).toContain('data-customer-inquiry="trail"')
     expect(page).toContain("quotationInquiryTrails")
+    expect(page).toContain('data-offer-acceptance="pending"')
+    expect(page).toContain("quotationAcceptancePending")
+    expect(page).not.toContain("acceptExtractionDraft")
     expect(page).not.toContain("imap")
     expect(page).not.toMatch(/reduce\s*\(/)
     expect(page).not.toMatch(/amount\s*\*\s*mid|mid\s*\*\s*amount/)

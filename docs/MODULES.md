@@ -35,6 +35,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-26 | Dokument oferty | 19.0 `offer_document` | **ukończony (fundament)** · podgląd faktów `quotation`; nie PDF; nie U-print |
 | M-27 | Wycena wsadowa | 20.0 `quotation_batch` | **ukończony (fundament)** · wiele kodów na lane; nie CSV; nie nowa tabela |
 | M-28 | Zapytania od klientów | 21.0 `customer_inquiry` | **ukończony (fundament)** · ślad wycen per party; nie tabela RFQ; nie IMAP |
+| M-29 | Wykrywanie akceptacji | 22.0 `offer_acceptance` | **ukończony (fundament)** · pending z wycen; nie tabela wyniku; nie HITL accept |
 
 Nie dopisuj tu 70 pustych wierszy M-xx. Katalog + **kolejka Q1…** (co budować jedno po drugim, tryb Plan potem plaster): `docs/PLAN-REALIZACJA.md` § Kolejka. Archiwum Claude zostaje magazynem specyfikacji, nie SoT kolejności.
 

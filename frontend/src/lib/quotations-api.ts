@@ -136,6 +136,17 @@ export function quotationInquiryTrails(rows: readonly Quotation[]): CustomerInqu
     .map(([partyId, quotations]) => ({ partyId, quotations }))
 }
 
+export function quotationAcceptancePending(rows: readonly Quotation[]): Quotation[] {
+  const pending: Quotation[] = []
+  for (const row of rows) {
+    if (row.party_id === null) {
+      continue
+    }
+    pending.push(row)
+  }
+  return pending
+}
+
 async function readQuotation(response: Response, fallback: string): Promise<Quotation> {
   if (!response.ok) {
     throw new ApiError(await readApiDetail(response, fallback), httpErrorStatus(response))
