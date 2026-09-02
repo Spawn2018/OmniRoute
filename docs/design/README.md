@@ -27,3 +27,4 @@ Kanon jest źródłem dla leftoverów **U-oklch-dark** (rampy i elewacja w obu m
 | [ui-06-vision.canvas.tsx](ui-06-vision.canvas.tsx) | Watchtower / oś / portale — **bez backendu** |
 
 Implementacja w `frontend/` tylko przez leftover **U-oklch-dark** … **U-print** w [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Nie Q1.
+**2026-09-02:** makieta ujednolicona pod język Wyceny/Zlecenia; ekrany FE: Stawki, Opłaty, Ekstrakcje, Kontrahenci, Porty, Lokalizacje, Oferty kanału, Użytkownicy. Nie kod produktu.

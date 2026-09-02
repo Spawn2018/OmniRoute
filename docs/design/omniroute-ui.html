@@ -195,8 +195,25 @@ table.lines, table.grid { width: 100%; border-collapse: collapse; min-width: 36r
   color: oklch(.97 .01 165); max-width: calc(100% - 2 * var(--s5));
 }
 .facts {
-  display: grid; grid-template-columns: repeat(7, minmax(8rem, 1fr));
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
   border-top: 1px solid var(--rule); margin: 0;
+}
+.facts.n4 { grid-template-columns: repeat(4, minmax(7.5rem, 1fr)); }
+.facts.n5 { grid-template-columns: repeat(5, minmax(7.5rem, 1fr)); }
+.facts.n6 { grid-template-columns: repeat(6, minmax(7.5rem, 1fr)); }
+.facts.n7 { grid-template-columns: repeat(7, minmax(7.5rem, 1fr)); }
+.party-split { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(16rem, .9fr); gap: var(--s4); align-items: start; }
+.party-panel { padding: var(--s4); }
+.party-panel h3 { margin: 0 0 var(--s3); font-size: var(--fs-sm); }
+.party-panel .row { display: grid; grid-template-columns: 7rem 1fr; gap: var(--s2); font-size: var(--fs-sm); padding: 4px 0; border-bottom: 1px solid var(--rule); }
+.party-panel .row:last-child { border-bottom: 0; }
+.party-panel .row span:first-child { color: var(--text-3); font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: .04em; }
+.hitl-body { display: grid; grid-template-columns: 1fr 1fr; gap: 0; min-height: 0; }
+.hitl-body > div { border-right: 1px solid var(--rule); }
+.hitl-body > div:last-child { border-right: 0; }
+@media (max-width: 52rem) {
+  .party-split, .hitl-body { grid-template-columns: 1fr; }
+  .hitl-body > div { border-right: 0; border-bottom: 1px solid var(--rule); }
 }
 .fact { padding: var(--s3) var(--s2); border-right: 1px solid var(--rule); min-width: 0; text-align: center; }
 .fact:last-child { border-right: 0; }
@@ -356,6 +373,7 @@ table.lines, table.grid { width: 100%; border-collapse: collapse; min-width: 36r
 .lines th, .grid th { font-size: 10px; text-transform: uppercase; letter-spacing: .04em; color: var(--text-3); background: var(--surface-2); }
 .r { text-align: right; }
 .gap td { background: var(--alert-tint); }
+.grid tr.picked-row td { background: var(--accent-soft); }
 .grid tr.dead td { color: var(--text-3); text-decoration: line-through; }
 .tbar { display: flex; flex-wrap: wrap; gap: var(--s2); padding: var(--s3) var(--s5); align-items: center; overflow-x: auto; max-width: 100%; }
 .tbar select { min-height: 2rem; border: 1px solid var(--rule-2); border-radius: var(--r-sm); background: var(--surface); padding: 0 var(--s3); }
@@ -470,11 +488,15 @@ table.mini { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); }
     <button type="button" data-go="home" aria-current="page" title="Dzień"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></button>
     <button type="button" data-go="quote" title="Wyceny"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg></button>
     <button type="button" data-go="rates" title="Stawki"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 19V5M4 19h16M8 16V9m4 7V7m4 9v-5"/></svg></button>
+    <button type="button" data-go="charges" title="Opłaty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></button>
     <button type="button" data-go="hitl" title="Ekstrakcje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2M7 8h8M7 12h10M7 16h6"/></svg></button>
     <button type="button" data-go="ship" title="Zlecenia"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M19.4 20A11.6 11.6 0 0 0 21 14l-9-4-9 4c0 2.9.9 5.3 2.8 7.8"/></svg></button>
-    <button type="button" data-go="channels" title="Kanały"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></button>
+    <button type="button" data-go="parties" title="Kontrahenci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></button>
+    <button type="button" data-go="ports" title="Porty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></button>
+    <button type="button" data-go="channels" title="Oferty kanału"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></button>
     <button type="button" id="openCat" title="Wszystkie moduły"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
     <div class="sp"></div>
+    <button type="button" data-go="locations" title="Lokalizacje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></button>
     <button type="button" data-go="users" title="Użytkownicy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></button>
     <div class="who" id="tenantInitials">SB</div>
   </nav>
@@ -499,8 +521,12 @@ table.mini { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); }
         <section class="view on" id="v-home"></section>
         <section class="view" id="v-quote"></section>
         <section class="view" id="v-rates"></section>
+        <section class="view" id="v-charges"></section>
         <section class="view" id="v-hitl"></section>
         <section class="view" id="v-ship"></section>
+        <section class="view" id="v-parties"></section>
+        <section class="view" id="v-ports"></section>
+        <section class="view" id="v-locations"></section>
         <section class="view" id="v-users"></section>
         <section class="view" id="v-channels"></section>
         <section class="view" id="v-mod"></section>
@@ -689,6 +715,34 @@ const CARRIERS = [
   { n: "INTTRA / DCSA", st: "done", last: "dziś", note: "booking stub" }
 ];
 
+
+let partyId = "p1";
+const PARTIES = [
+  { id: "p1", name: "Meblexport Sp. z o.o.", tax: "PL5272651849", kind: "customer", limit: "120 000,00", cur: "PLN", status: "aktywny", contact: "anna@meblexport.pl", bank: "PL61 1090 1014 0000 0712 1981 2874", domain: "meblexport.pl", score: "B+" },
+  { id: "p2", name: "Andes Cargo SAC", tax: "PE20123456789", kind: "agent", limit: "—", cur: "USD", status: "aktywny", contact: "ops@andescargo.pe", bank: "—", domain: "andescargo.pe", score: "A-" },
+  { id: "p3", name: "Nordwood AB", tax: "SE556677889901", kind: "customer", limit: "80 000,00", cur: "EUR", status: "aktywny", contact: "logistics@nordwood.se", bank: "SE45 5000 0000 0583 9825 7466", domain: "nordwood.se", score: "A" },
+  { id: "p4", name: "Hapag-Lloyd AG", tax: "DE118797042", kind: "carrier", limit: "—", cur: "EUR", status: "aktywny", contact: "api@hlag.com", bank: "—", domain: "hapag-lloyd.com", score: "—" }
+];
+const CHARGES = [
+  { ref: "ch-1044", code: "OFR", party: "Andes Cargo SAC", buy: "7 318,00", sell: "8 442,00", margin: "1 124,00", cur: "USD", src: "rl-1044", quote: "ZAP/2026/00318" },
+  { ref: "ch-1045", code: "OTHC", party: "BCT Gdynia", buy: "290,00", sell: "360,00", margin: "70,00", cur: "EUR", src: "rl-0881", quote: "ZAP/2026/00318" },
+  { ref: "ch-1046", code: "DTHC", party: "Andes Cargo SAC", buy: "620,00", sell: "775,00", margin: "155,00", cur: "USD", src: "rl-1044", quote: "ZAP/2026/00318" },
+  { ref: "ch-1102", code: "OFR", party: "Maersk", buy: "1 850,00", sell: "2 040,00", margin: "190,00", cur: "USD", src: "rl-1061", quote: "ZAP/2026/00291" }
+];
+const PORTS = [
+  { code: "PLGDY", name: "Gdynia", country: "PL", kind: "sea", rail: true },
+  { code: "PECLL", name: "Callao", country: "PE", kind: "sea", rail: true },
+  { code: "CNSHA", name: "Shanghai", country: "CN", kind: "sea", rail: true },
+  { code: "DEHAM", name: "Hamburg", country: "DE", kind: "sea", rail: true },
+  { code: "USNYC", name: "New York", country: "US", kind: "sea", rail: false }
+];
+const LOCATIONS = [
+  { code: "POZ-WH1", name: "Poznań · magazyn Meblexport", kind: "address", zone: "—", postal: "61-131" },
+  { code: "LIM-DAP", name: "Lima · named place DAP", kind: "address", zone: "—", postal: "15001" },
+  { code: "PL-ZONE-N", name: "Strefa PL Północ", kind: "postal_zone", zone: "80-000–84-999", postal: "zakres" },
+  { code: "PE-ZONE-L", name: "Strefa Lima metro", kind: "postal_zone", zone: "15000–15099", postal: "zakres" }
+];
+
 function variants() { return spotOn ? VARIANTS.concat([SPOT]) : VARIANTS; }
 function renderVariant(v) {
   const tag = { db: "z cennika", api: "live spot", mail: "z maila" }[v.src];
@@ -702,31 +756,46 @@ function renderVariant(v) {
     <div class="cmd"><span class="note">${v.why}</span><button class="btn" type="button" data-gap="${v.id}">Dopisz charge</button><button class="btn btn-p" type="button" data-pick="${v.id}">Wybierz wariant</button></div></div></article>`;
 }
 
+function screenBanner(idLine, routeLine, subLine) {
+  return `<div class="banner"><p class="h-id" style="color:inherit;opacity:.8">${idLine}</p><p class="h-route" style="color:inherit">${routeLine}</p><p style="margin:0;opacity:.9;font-size:var(--fs-sm)">${subLine}</p></div>`;
+}
+function screenFacts(items, nClass) {
+  const cells = items.map((it) => {
+    const val = it.chip
+      ? `<span class="chip ${it.chip}">${it.v}</span>`
+      : `<span class="val">${it.v}</span>`;
+    const small = it.s ? `<small>${it.s}</small>` : "";
+    return `<div class="fact"><dt>${it.t}</dt><dd>${val}${small}</dd></div>`;
+  }).join("");
+  return `<div class="pad" style="padding-top:var(--s4)"><div class="card facts-wrap xscroll"><dl class="facts ${nClass || ""}">${cells}</dl></div></div>`;
+}
+
 function paintHome() {
-  $("#v-home").innerHTML = `<div class="pad">
-    <div class="kpis">
-      <article class="card kpi"><dt>Oferty otwarte</dt><dd>14</dd><p class="note">3 bez HS — blokada</p>${SPARK}</article>
-      <article class="card kpi"><dt>Szkice HITL</dt><dd>6</dd><p class="note" style="color:var(--stop)">2 powyżej 24 h</p>${SPARK}</article>
-      <article class="card kpi"><dt>Luki ISPS</dt><dd>4</dd><p class="note">Callao, Santos, NYC</p>${SPARK}</article>
-      <article class="card kpi"><dt>Marża tygodnia</dt><dd>${money("38 420,00", "USD", "lg")}</dd><p class="note">z charge, nie z LLM</p>${SPARK}</article>
+  $("#v-home").innerHTML = `<div class="cmd">
+      <button class="btn btn-p" type="button" data-go="hitl">Otwórz kolejkę HITL</button>
+      <button class="btn" type="button" data-go="quote">Wyceny</button>
+      <button class="btn" type="button" data-go="ship">Zlecenia</button>
+      <button class="btn" type="button" data-go="parties">Kontrahenci</button>
+      <span class="chip">tenant z paska · RLS</span>
     </div>
-    <div class="pages">
-      <button class="page" type="button" data-go="quote" style="background:oklch(.78 .12 165)">Wyceny<small>M-21</small></button>
-      <button class="page" type="button" data-go="rates" style="background:oklch(.82 .08 200)">Stawki<small>M-17</small></button>
-      <button class="page" type="button" data-go="hitl" style="background:oklch(.86 .1 85)">Ekstrakcje<small>M-20</small></button>
-      <button class="page" type="button" data-go="ship" style="background:oklch(.84 .08 250)">Zlecenia<small>M-35</small></button>
-      <button class="page" type="button" data-mod="M-10" style="background:oklch(.88 .06 30)">Kontrahenci<small>M-10</small></button>
-      <button class="page" type="button" data-go="channels" style="background:oklch(.8 .09 140)">Kanały<small>M-19</small></button>
-      <button class="page" type="button" data-mod="M-40" style="background:oklch(.86 .07 320)">KSeF<small>M-40</small></button>
-      <button class="page" type="button" data-mod="M-119" style="background:oklch(.9 .05 70)">CBAM<small>M-119</small></button>
-    </div>
-    <div class="card">
-      <h2 class="h-id">Do zrobienia · HITL</h2>
-      <div class="todo"><div><b>Akceptuj stawki Maersk SHA → GDY</b><div class="meta"><span>source_ref MAERSK-SHA-0926.pdf</span><span>4 wiersze · 09:14</span></div></div><div><button class="linkish" type="button" data-go="hitl">Akceptuj</button> · <button class="linkish stop" type="button" data-act="reject-home">Odrzuć</button></div></div>
-      <div class="todo"><div><b>Brak HS na ZAP/2026/00318</b><div class="meta"><span>Meblexport · PLGDY → PECLL</span><span>blokuje ofertę</span></div></div><button class="linkish" type="button" data-go="quote">Uzupełnij HS</button></div>
-      <div class="todo"><div><b>ISPS Callao w żadnym wariancie</b><div class="meta"><span>zwykle 45,00 USD / kontener</span><span>wymaga source_ref</span></div></div><button class="linkish" type="button" data-go="quote">Dopisz charge</button></div>
-    </div>
-  </div>`;
+    ${screenBanner("Dzień operatora · org z paska", "Joby do zamknięcia", "Kwoty i statusy z serwera — makieta nic nie liczy")}
+    ${screenFacts([
+      { t: "Oferty otwarte", v: "14", s: "3 bez HS" },
+      { t: "Szkice HITL", v: "6", s: "2 powyżej 24 h", chip: "alert" },
+      { t: "Luki ISPS", v: "4", s: "Callao · Santos · NYC" },
+      { t: "Marża tygodnia", v: "38 420,00 USD", s: "z charge, nie z LLM" },
+      { t: "Zlecenia w drodze", v: "11", s: "1 opóźnienie Callao" },
+      { t: "Wyjątki", v: "5", s: "storage · detention" }
+    ], "n6")}
+    <div class="pad" style="padding-top:0">
+      <div class="card">
+        <h2 class="h-id">Do zrobienia · HITL</h2>
+        <div class="todo"><div><b>Akceptuj stawki Maersk SHA → GDY</b><div class="meta"><span>source_ref MAERSK-SHA-0926.pdf</span><span>4 wiersze · 09:14</span></div></div><div><button class="linkish" type="button" data-go="hitl">Akceptuj</button> · <button class="linkish stop" type="button" data-act="reject-home">Odrzuć</button></div></div>
+        <div class="todo"><div><b>Brak HS na ZAP/2026/00318</b><div class="meta"><span>Meblexport · PLGDY → PECLL</span><span>blokuje ofertę</span></div></div><button class="linkish" type="button" data-go="quote">Uzupełnij HS</button></div>
+        <div class="todo"><div><b>ISPS Callao w żadnym wariancie</b><div class="meta"><span>zwykle 45,00 USD / kontener</span><span>wymaga source_ref</span></div></div><button class="linkish" type="button" data-go="quote">Dopisz charge</button></div>
+        <div class="todo"><div><b>Lookup tax_id Meblexport</b><div class="meta"><span>GUS/VIES → szkic</span><span>zapis tylko po potwierdzeniu</span></div></div><button class="linkish" type="button" data-go="parties">Otwórz kontrahenta</button></div>
+      </div>
+    </div>`;
 }
 function paintQuote() {
   const mail = mailOn
@@ -738,20 +807,16 @@ function paintQuote() {
       <button class="btn" type="button" id="sendQuote" aria-disabled="true">Wyślij ofertę — brak HS</button>
       <button class="btn" type="button" data-act="spot" id="spot">Pokaż wariant spot</button>
     </div>
-    <div class="banner"><p class="h-id" style="color:inherit;opacity:.8">ZAP/2026/00318 · 28.08 · Anna Nowak · org z paska</p><p class="h-route" style="color:inherit">Gdynia <span class="loc">PLGDY</span> → Callao <span class="loc">PECLL</span></p><p style="margin:0;opacity:.9">Meblexport Sp. z o.o. · limit z karty M-13, nie scoring LLM</p></div>
-    <div class="pad" style="padding-top:var(--s4)">
-      <div class="card facts-wrap xscroll">
-        <dl class="facts">
-          <div class="fact"><dt>Ładunek</dt><dd>2 × 40HC <small>meble drewniane</small></dd></div>
-          <div class="fact"><dt>Kod HS</dt><dd><span class="chip alert">brak</span></dd></div>
-          <div class="fact"><dt>Incoterm</dt><dd>FOB <small>Gdynia</small></dd></div>
-          <div class="fact"><dt>Gotowość do podjęcia</dt><dd class="num">10–20.09<small>połowa września</small></dd></div>
-          <div class="fact"><dt>Cut-off bramowy</dt><dd class="num">18–24.09<small>+ 2 dni dowozu</small></dd></div>
-          <div class="fact"><dt>Ważność oferty</dt><dd class="num">14 dni<small>sugerowane</small></dd></div>
-          <div class="fact"><dt>Termin płatności</dt><dd class="num">52 dni netto<small>sugerowany · karta M-13</small></dd></div>
-        </dl>
-      </div>
-    </div>
+    ${screenBanner("ZAP/2026/00318 · 28.08 · Anna Nowak · org z paska", 'Gdynia <span class="loc">PLGDY</span> → Callao <span class="loc">PECLL</span>', "Meblexport Sp. z o.o. · limit z karty M-13, nie scoring LLM")}
+    ${screenFacts([
+      { t: "Ładunek", v: "2 × 40HC", s: "meble drewniane" },
+      { t: "Kod HS", v: "brak", chip: "alert" },
+      { t: "Incoterm", v: "FOB", s: "Gdynia" },
+      { t: "Gotowość do podjęcia", v: "10–20.09", s: "połowa września" },
+      { t: "Cut-off bramowy", v: "18–24.09", s: "+ 2 dni dowozu" },
+      { t: "Ważność oferty", v: "14 dni", s: "sugerowane" },
+      { t: "Termin płatności", v: "52 dni netto", s: "karta M-13" }
+    ], "n7")}
     <div class="tabs" role="tablist">
       <button type="button" data-tab="warianty" aria-selected="true">Warianty</button>
       <button type="button" data-tab="mail" aria-selected="false">Korespondencja</button>
@@ -760,37 +825,225 @@ function paintQuote() {
     <div class="pane on" id="p-warianty">
       <p><span class="chan done"><i class="dot"></i>Baza stawek</span><span class="chan"><i class="dot"></i>Hapag-Lloyd</span><span class="chan"><i class="dot"></i>Maersk</span><span class="chan ${spotOn ? "done" : ""}"><i class="dot"></i>spot API</span></p>
       <div id="vlist">${variants().map(renderVariant).join("")}</div>
-      <p class="note">Kwoty i pasek z serwera. Ta makieta niczego nie liczy.</p>
+      <p class="note">Kwoty i pasek z serwera. Ta makieta niczego nie liczy. Marża wyłącznie na charge.</p>
     </div>
     <div class="pane" id="p-mail">${mail}</div>
     <div class="pane" id="p-zal"><div class="empty"><b>Brak załączników</b><p>Pliki po ekstrakcji i akceptacji recenzenta.</p></div></div>`;
 }
 function paintRates() {
   document.documentElement.dataset.grid = gridDense ? "condensed" : "";
-  $("#v-rates").innerHTML = `<div class="tbar">
-    <select aria-label="Relacja"><option>Wszystkie relacje</option><option>PLGDY → PECLL</option></select>
-    <select aria-label="Sprzęt"><option>FCL</option><option>LCL</option></select>
-    <span class="chip">rate_line · RLS</span>
-    <button class="icb" type="button" id="gk" aria-pressed="${gridDense}">Gęsty (tylko ta tabela)</button>
-  </div>
-  <div class="xscroll"><table class="grid"><thead><tr><th>Relacja</th><th>Dostawca</th><th>Sprzęt</th><th>Kod</th><th class="r">Stawka</th><th>source_ref</th><th>Ważność</th><th>Wersja</th></tr></thead>
-  <tbody>${RATES.map((r) => `<tr class="${r.live ? "" : "dead"}"><td>${r.lane}</td><td>${r.vendor}</td><td>${r.eq}</td><td>${r.code}</td><td class="r">${money(r.amt, r.cur)}</td><td><button class="linkish" type="button" data-act="src">${r.src}</button></td><td>${r.valid}</td><td>${r.live ? `<span class="chip ok">aktywna ${r.status}</span>` : `<span class="chip">superseded_by ${r.status}</span>`}</td></tr>`).join("")}</tbody></table></div>
-  <p class="note" style="padding:var(--s4)">Edycja = nowy rekord + superseded_by. Gęsty wyłącznie tu.</p>`;
+  const rows = RATES.map((r) => `<tr class="${r.live ? "" : "dead"}"><td>${r.lane}</td><td>${r.vendor}</td><td>${r.eq}</td><td>${r.code}</td><td class="r">${money(r.amt, r.cur)}</td><td><button class="linkish" type="button" data-act="src">${r.src}</button></td><td>${r.valid}</td><td>${r.live ? `<span class="chip ok">aktywna · ${r.status}</span>` : `<span class="chip">superseded_by · ${r.status}</span>`}</td><td>${r.live ? `<button class="btn" type="button" data-act="supersede">Zastąp</button>` : "—"}</td></tr>`).join("");
+  $("#v-rates").innerHTML = `<div class="cmd">
+      <button class="btn btn-p" type="button" data-act="new-rate">Dodaj stawkę</button>
+      <button class="btn" type="button" data-act="resolve-rate">Rozwiąż</button>
+      <select aria-label="Relacja"><option>Wszystkie relacje</option><option>PLGDY → PECLL</option><option>CNSHA → PLGDY</option></select>
+      <select aria-label="Sprzęt"><option>FCL</option><option>LCL</option></select>
+      <span class="chip">rate_line · RLS · niemutowalna</span>
+      <button class="icb" type="button" id="gk" aria-pressed="${gridDense}">Gęsty (tylko ta tabela)</button>
+    </div>
+    ${screenBanner("M-17 · baza stawek kupna", "rate_line per tenant", "Zmiana = nowy rekord + superseded_by. Bez source_ref rekord nie wchodzi.")}
+    ${screenFacts([
+      { t: "Aktywne", v: String(RATES.filter((r) => r.live).length), s: "w makiecie" },
+      { t: "Superseded", v: String(RATES.filter((r) => !r.live).length), s: "historia wersji" },
+      { t: "Pokrycie", v: "Peru OK", s: "Kolumbia · biała plama" },
+      { t: "Źródło", v: "source_ref", s: "PDF / API / mail" },
+      { t: "Waluta", v: "string", s: "nie float" }
+    ], "n5")}
+    <div class="pad" style="padding-top:0"><div class="card xscroll" style="padding:0">
+      <table class="grid"><thead><tr><th>Relacja</th><th>Dostawca</th><th>Sprzęt</th><th>Kod opłaty</th><th class="r">Kwota kupna</th><th>Pochodzenie</th><th>Ważność</th><th>Wersja</th><th></th></tr></thead>
+      <tbody>${rows}</tbody></table>
+    </div>
+    <p class="note" style="margin-top:var(--s3)">Zastąp otwiera nowy wiersz — stary zostaje z superseded_by. Gęsty wyłącznie na katalogu rate_line.</p></div>`;
 }
 function hitlExportSpan(id, text) {
   return `<span class="export-mark${hitlId === id ? " on" : ""}">${text}</span>`;
 }
 function paintHitl() {
-  $("#v-hitl").innerHTML = `<div class="split">
-    <div class="pad"><h3 class="h-id">Podgląd źródła</h3>
-      <button class="linkish" type="button" data-act="pdf">MAERSK-SHA-0926.pdf</button>
-      <div class="sheet" style="margin-top:var(--s3)"><div>MAERSK LINE · SPOT RATE SHEET</div><div>SHANGHAI (CNSHA) — GDYNIA (PLGDY)</div><div>${hitlExportSpan("c1", "OCEAN FREIGHT USD 1,850 / 40HC")}</div><div>${hitlExportSpan("c2", "BAF USD 120 subject to change")}</div><div>${hitlExportSpan("c3", "THC origin EUR 145")}</div><div>Validity 01–30 Sep 2026</div></div>
-      <p class="note">Czerwony znacznik = pole eksportowane do rate_line (art. 50).</p></div>
-    <div class="pad"><h3 class="h-id">Recenzja · art. 50</h3>
-      ${CANDS.map((c) => `<button type="button" class="cand" data-hitl="${c.id}" aria-selected="${hitlId === c.id}"><span><b>${c.code}</b> ${c.amt} ${c.cur}</span><span class="chip ${c.state === "potwierdzone" ? "ok" : "alert"}">${c.state} ${c.pct}</span></button>`).join("")}
-      <div class="cmd" style="border:0;padding:var(--s4) 0"><button class="btn btn-p" type="button" id="acceptHitl">Akceptuj zaznaczone</button><button class="btn" type="button" id="rejectHitl">Odrzuć szkic</button></div>
-      <p class="note">Accept → rate_line w jednej transakcji. Bez optymistycznego UI.</p></div></div>`;
+  const queue = [
+    { id: "q1", src: "MAERSK-SHA-0926.pdf", lane: "CNSHA→PLGDY", n: "4", age: "2 h", st: "w recenzji" },
+    { id: "q2", src: "ANDES-FCL-0826.pdf", lane: "PLGDY→PECLL", n: "6", age: "26 h", st: "powyżej 24 h" },
+    { id: "q3", src: "PAC-PE-0826.pdf", lane: "PLGDY→PECLL", n: "3", age: "5 h", st: "oczekuje" }
+  ];
+  const qRows = queue.map((q) => `<tr><td><button class="linkish" type="button" data-act="pdf">${q.src}</button></td><td>${q.lane}</td><td>${q.n}</td><td>${q.age}</td><td><span class="chip ${q.st.includes("24") ? "alert" : "ok"}">${q.st}</span></td></tr>`).join("");
+  $("#v-hitl").innerHTML = `<div class="cmd">
+      <button class="btn btn-p" type="button" id="acceptHitl">Akceptuj zaznaczone</button>
+      <button class="btn" type="button" id="rejectHitl">Odrzuć szkic</button>
+      <button class="btn" type="button" data-act="pdf">Otwórz PDF</button>
+      <span class="chip">HITL · art. 50 · bez zapisu do rate_line przed Accept</span>
+    </div>
+    ${screenBanner("M-20 · pipeline ekstrakcji", "MAERSK-SHA-0926 · szkic", "ExtractionService nie importuje rate_lines. Accept → jedna transakcja.")}
+    ${screenFacts([
+      { t: "Szkice w kolejce", v: "6", s: "2 powyżej 24 h" },
+      { t: "source_ref", v: "MAERSK-SHA-0926", s: "PDF" },
+      { t: "Kandydaci", v: String(CANDS.length), s: "OFR · BAF · THC" },
+      { t: "Zaznaczone", v: CANDS.find((c) => c.id === hitlId)?.code || "—", s: "eksport do rate_line" },
+      { t: "Guard", v: "regex", s: "llm-guard = cel HC" }
+    ], "n5")}
+    <div class="tabs" role="tablist">
+      <button type="button" data-tab="recenzja" aria-selected="true">Recenzja</button>
+      <button type="button" data-tab="kolejka" aria-selected="false">Kolejka</button>
+    </div>
+    <div class="pane on" id="p-recenzja">
+      <div class="hitl-body card" style="padding:0;overflow:hidden">
+        <div class="pad"><h3 class="h-id">Podgląd źródła</h3>
+          <button class="linkish" type="button" data-act="pdf">MAERSK-SHA-0926.pdf</button>
+          <div class="sheet" style="margin-top:var(--s3)"><div>MAERSK LINE · SPOT RATE SHEET</div><div>SHANGHAI (CNSHA) — GDYNIA (PLGDY)</div><div>${hitlExportSpan("c1", "OCEAN FREIGHT USD 1,850 / 40HC")}</div><div>${hitlExportSpan("c2", "BAF USD 120 subject to change")}</div><div>${hitlExportSpan("c3", "THC origin EUR 145")}</div><div>Validity 01–30 Sep 2026</div></div>
+          <p class="note">Znacznik = pole eksportowane (jasny: czerwony · ciemny: amber).</p>
+        </div>
+        <div class="pad"><h3 class="h-id">Recenzja · art. 50</h3>
+          ${CANDS.map((c) => `<button type="button" class="cand" data-hitl="${c.id}" aria-selected="${hitlId === c.id}"><span><b>${c.code}</b> ${c.amt} ${c.cur}</span><span class="chip ${c.state === "potwierdzone" ? "ok" : "alert"}">${c.state} ${c.pct}</span></button>`).join("")}
+          <p class="note" style="margin-top:var(--s3)">Accept → rate_line. Bez optymistycznego UI.</p>
+        </div>
+      </div>
+    </div>
+    <div class="pane" id="p-kolejka">
+      <div class="pad" style="padding-top:0"><div class="card xscroll" style="padding:0">
+        <table class="grid"><thead><tr><th>Źródło</th><th>Relacja</th><th>Wiersze</th><th>Wiek</th><th>Status</th></tr></thead><tbody>${qRows}</tbody></table>
+      </div></div>
+    </div>`;
 }
+function paintCharges() {
+  const rows = CHARGES.map((c) => `<tr><td class="mono">${c.ref}</td><td>${c.code}</td><td>${c.party}</td><td>${c.quote}</td><td class="r">${money(c.buy, c.cur)}</td><td class="r">${money(c.sell, c.cur)}</td><td class="r">${money(c.margin, c.cur)}</td><td><button class="linkish" type="button" data-act="src">${c.src}</button></td></tr>`).join("");
+  $("#v-charges").innerHTML = `<div class="cmd">
+      <button class="btn btn-p" type="button" data-act="new-charge">Dodaj opłatę</button>
+      <span class="chip">charge · jedyna prawda o marży</span>
+      <span class="chip">buy + sell na jednym rekordzie</span>
+    </div>
+    ${screenBanner("M-08 · charge", "Kupno + sprzedaż + marża", "Marża = margin(buy, sell) w domenie. UI nie liczy. ExtractionService nie zapisuje charge.")}
+    ${screenFacts([
+      { t: "Wiersze", v: String(CHARGES.length), s: "w makiecie" },
+      { t: "Źródło kupna", v: "rate_line", s: "odczyt, nie zapis" },
+      { t: "Kod opłaty", v: "charge_code", s: "katalog M-06" },
+      { t: "Kwoty", v: "Decimal string", s: "nie float" }
+    ], "n4")}
+    <div class="pad" style="padding-top:0"><div class="card xscroll" style="padding:0">
+      <table class="grid"><thead><tr><th>Ref</th><th>Kod</th><th>Strona</th><th>Wycena</th><th class="r">Kupno</th><th class="r">Sprzedaż</th><th class="r">Marża</th><th>Źródło</th></tr></thead><tbody>${rows}</tbody></table>
+    </div>
+    <p class="note" style="margin-top:var(--s3)">Marża przyszła z serwera. Makieta pokazuje string — zero sum() w JS.</p></div>`;
+}
+function paintParties() {
+  const p = PARTIES.find((x) => x.id === partyId) || PARTIES[0];
+  const rows = PARTIES.map((x) => `<tr class="${x.id === p.id ? "picked-row" : ""}"><td><button class="linkish" type="button" data-party="${x.id}">${x.name}</button></td><td class="mono">${x.tax}</td><td>${x.kind}</td><td class="r">${x.limit === "—" ? "—" : money(x.limit, x.cur)}</td><td><span class="chip">${x.status}</span></td></tr>`).join("");
+  $("#v-parties").innerHTML = `<div class="cmd">
+      <button class="btn btn-p" type="button" data-act="new-party">Nowy kontrahent</button>
+      <button class="btn" type="button" data-act="lookup-party">Lookup tax_id</button>
+      <button class="btn" type="button" data-act="resolve-party">Rozwiąż</button>
+      <span class="chip">M-10 · resolve po tax_id · lookup = szkic</span>
+    </div>
+    ${screenBanner("M-10 · kontrahenci", p.name, `Tax ID <span class="loc">${p.tax}</span> · org z paska · RLS`)}
+    ${screenFacts([
+      { t: "Typ", v: p.kind },
+      { t: "Limit", v: p.limit === "—" ? "—" : p.limit + " " + p.cur, s: "karta M-13" },
+      { t: "Scorecard", v: p.score, s: "snapshot, nie scoring LLM" },
+      { t: "Status", v: p.status },
+      { t: "Domena mail", v: p.domain }
+    ], "n5")}
+    <div class="pad" style="padding-top:0">
+      <div class="party-split">
+        <div class="card xscroll" style="padding:0">
+          <table class="grid"><thead><tr><th>Nazwa</th><th>Tax ID</th><th>Rola</th><th class="r">Limit</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>
+        </div>
+        <div class="card party-panel">
+          <h3>Panel wybranego · ${p.name}</h3>
+          <div class="row"><span>Tax ID</span><span class="mono">${p.tax}</span></div>
+          <div class="row"><span>Kontakt</span><span>${p.contact}</span></div>
+          <div class="row"><span>Domena</span><span>${p.domain}</span></div>
+          <div class="row"><span>Rachunek</span><span class="mono">${p.bank}</span></div>
+          <div class="row"><span>Limit</span><span>${p.limit === "—" ? "—" : money(p.limit, p.cur)}</span></div>
+          <div class="row"><span>Karta</span><span>${p.score} · bez auto-scoringu JDG</span></div>
+          <p class="note" style="margin-top:var(--s3)">Lookup GUS/VIES zwraca szkic. INSERT tylko po potwierdzeniu operatora.</p>
+          <div class="cmd" style="border:0;padding:var(--s3) 0 0;margin:0">
+            <button class="btn" type="button" data-act="edit-party">Edytuj</button>
+            <button class="btn" type="button" data-mod="M-13">Karta wyników</button>
+            <button class="btn" type="button" data-mod="M-16">SOP klienta</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+}
+function paintPorts() {
+  const rows = PORTS.map((x) => `<tr><td class="mono">${x.code}</td><td>${x.name}</td><td>${x.country}</td><td>${x.kind}</td><td>${x.rail ? '<span class="chip ok">kolej</span>' : "—"}</td><td><button class="btn" type="button" data-act="resolve-port">Rozwiąż</button></td></tr>`).join("");
+  $("#v-ports").innerHTML = `<div class="cmd">
+      <button class="btn btn-p" type="button" data-act="new-port">Dodaj port</button>
+      <button class="btn" type="button" data-act="resolve-port">Rozwiąż UN/LOCODE</button>
+      <span class="chip">M-05 · geography · nieznany token = odrzut</span>
+    </div>
+    ${screenBanner("M-05 · porty", "UN/LOCODE per tenant", "Aliasy na wierszu. World Port Index = kolumny na port, ingest poza HTTP.")}
+    ${screenFacts([
+      { t: "Porty", v: String(PORTS.length), s: "w makiecie" },
+      { t: "Z flagą rail", v: String(PORTS.filter((x) => x.rail).length), s: "→ kolej intermodalna" },
+      { t: "Resolve", v: "token", s: "nie luźna nazwa" },
+      { t: "Współrzędne", v: "Decimal", s: "nie float" }
+    ], "n4")}
+    <div class="pad" style="padding-top:0"><div class="card xscroll" style="padding:0">
+      <table class="grid"><thead><tr><th>UN/LOCODE</th><th>Nazwa</th><th>Kraj</th><th>Typ</th><th>Kolej</th><th></th></tr></thead><tbody>${rows}</tbody></table>
+    </div></div>`;
+}
+function paintLocations() {
+  const rows = LOCATIONS.map((x) => `<tr><td class="mono">${x.code}</td><td>${x.name}</td><td>${x.kind}</td><td>${x.zone}</td><td>${x.postal}</td></tr>`).join("");
+  $("#v-locations").innerHTML = `<div class="cmd">
+      <button class="btn btn-p" type="button" data-act="new-loc">Dodaj lokalizację</button>
+      <button class="btn" type="button" data-go="ports">Porty</button>
+      <button class="btn" type="button" data-mod="M-48">Transport drogowy</button>
+      <span class="chip">location · unlocode | postal_zone | address</span>
+    </div>
+    ${screenBanner("M-05 · lokalizacje i strefy", "zakresy pocztowe w Postgres", "Nakładanie blokuje exclusion constraint — nie walidujemy w Pythonie.")}
+    ${screenFacts([
+      { t: "Lokalizacje", v: String(LOCATIONS.length) },
+      { t: "postal_zone", v: String(LOCATIONS.filter((x) => x.kind === "postal_zone").length), s: "collation C" },
+      { t: "address", v: String(LOCATIONS.filter((x) => x.kind === "address").length) },
+      { t: "Droga", v: "M-48", s: "strefy → /locations" }
+    ], "n4")}
+    <div class="pad" style="padding-top:0"><div class="card xscroll" style="padding:0">
+      <table class="grid"><thead><tr><th>Kod</th><th>Nazwa</th><th>Typ</th><th>Strefa / zakres</th><th>Poczta</th></tr></thead><tbody>${rows}</tbody></table>
+    </div></div>`;
+}
+function paintUsers() {
+  $("#v-users").innerHTML = `<div class="cmd">
+      <button class="btn btn-p" type="button" data-act="edit-user">Edytuj rolę FGA</button>
+      <span class="chip">OpenFGA · brak relacji = ukryj akcję</span>
+    </div>
+    ${screenBanner("M-01 / M-04 · użytkownicy", "Organizacje i tożsamość", "Tenant z paska. Endpoint bez jawnej relacji OpenFGA = odmowa.")}
+    ${screenFacts([
+      { t: "Aktywni", v: "2", s: "w makiecie" },
+      { t: "Role", v: "reviewer · member" },
+      { t: "Accept HITL", v: "can_review", s: "brak = przycisk nie istnieje" },
+      { t: "Sesja", v: "JWT hello", s: "≠ IdP produkcyjny" }
+    ], "n4")}
+    <div class="pad" style="padding-top:0"><div class="card xscroll" style="padding:0">
+      <table class="grid"><thead><tr><th>Email</th><th>Nazwa</th><th>Rola FGA</th><th>Status</th><th>Akcje</th></tr></thead>
+      <tbody>
+        <tr><td>anna@spedbaltyk.pl</td><td>Anna Nowak</td><td>reviewer</td><td><span class="chip ok">aktywny</span></td><td><button class="linkish" type="button" data-act="edit-user">edytuj</button></td></tr>
+        <tr><td>marek@spedbaltyk.pl</td><td>Marek Kowalski</td><td>member</td><td><span class="chip ok">aktywny</span></td><td><span class="chip">tylko odczyt</span></td></tr>
+      </tbody></table>
+    </div></div>`;
+}
+function paintChannels() {
+  $("#v-channels").innerHTML = `<div class="cmd">
+      <button class="btn btn-p" type="button" data-act="sync" data-who="wszystkie">Odśwież kanały</button>
+      <button class="btn" type="button" data-act="new-cq">Dodaj ofertę kanału</button>
+      <span class="chip">M-19 · channel_quote · bez live HTTP w makiecie</span>
+    </div>
+    ${screenBanner("M-19 · oferty kanału i armatorzy", "payload z API → stringi", "Poświadczenia tenanta szyfrowane. Wywołania idempotentne. Makieta nie woła sieci.")}
+    ${screenFacts([
+      { t: "Armatorzy", v: String(CARRIERS.length) },
+      { t: "Gotowe dziś", v: String(CARRIERS.filter((c) => c.st === "done").length) },
+      { t: "Błędy", v: String(CARRIERS.filter((c) => c.st === "err").length), s: "M-190 kolejka" },
+      { t: "Kwoty", v: "Decimal", s: "nie marża" }
+    ], "n4")}
+    <div class="pad" style="padding-top:0">
+      <div class="integ">${CARRIERS.map((c) => `<article class="card"><b>${c.n}</b><p><span class="chan ${c.st}"><i class="dot"></i>${c.last}</span></p><p class="note">${c.note}</p>
+        <button class="btn" type="button" data-act="sync" data-who="${c.n}">Odśwież</button>
+        <button class="btn" type="button" data-act="connect" data-who="${c.n}">Połącz</button></article>`).join("")}</div>
+      <div class="integ" style="margin-top:var(--s4)">
+        <article class="card"><b>Poczta M-32</b><p class="note">wątki RFQ</p><button class="btn" type="button" data-act="ask">Otwórz skrzynkę</button></article>
+        <article class="card"><b>EDI M-39</b><p class="note">IFTMIN stub</p><button class="btn" type="button" data-mod="M-39">Kolejka</button></article>
+        <article class="card"><b>NBP D-1</b><p class="note">kurs z tabeli</p><button class="btn" type="button" data-mod="M-23">Tabela</button></article>
+        <article class="card"><b>Hub M-201</b><p class="note">błędy M-190</p><button class="btn" type="button" data-mod="M-201">Otwórz</button></article>
+      </div>
+    </div>`;
+}
+
 function paintShip() {
   const pa = SHIP_META.portArrival;
   const legs = [
@@ -1031,67 +1284,59 @@ function bindShipMap(route) {
   shipMapState = { map };
   requestAnimationFrame(() => map.invalidateSize());
 }
-function paintUsers() {
-  $("#v-users").innerHTML = `<div class="pad"><div class="card"><div class="xscroll"><table class="grid"><thead><tr><th>Email</th><th>Rola FGA</th><th>Status</th><th>Akcje</th></tr></thead>
-    <tbody><tr><td>anna@spedbaltyk.pl</td><td>reviewer</td><td>aktywny</td><td><button class="linkish" type="button" data-act="edit-user">edytuj</button></td></tr>
-    <tr><td>marek@spedbaltyk.pl</td><td>member</td><td>aktywny</td><td><span class="chip">tylko odczyt</span></td></tr></tbody></table></div>
-    <p class="note">Brak can_review_extractions = Accept nie istnieje. Tenant z paska.</p></div></div>`;
-}
-function paintChannels() {
-  $("#v-channels").innerHTML = `<div class="pad"><h2 class="h-route">Kanały i armatorzy</h2><p class="note">Poświadczenia tenanta szyfrowane. Wywołania idempotentne. Makieta nie woła sieci.</p>
-    <div class="integ">${CARRIERS.map((c) => `<article class="card"><b>${c.n}</b><p><span class="chan ${c.st}"><i class="dot"></i>${c.last}</span></p><p class="note">${c.note}</p>
-      <button class="btn" type="button" data-act="sync" data-who="${c.n}">Odśwież</button>
-      <button class="btn" type="button" data-act="connect" data-who="${c.n}">Połącz</button></article>`).join("")}</div>
-    <div class="integ" style="margin-top:var(--s4)">
-      <article class="card"><b>Poczta M-32</b><p class="note">wątki RFQ</p><button class="btn" type="button" data-act="ask">Otwórz skrzynkę</button></article>
-      <article class="card"><b>Outlook M-33</b><p class="note">dodatek</p><button class="btn" type="button" data-act="outlook">Zainstaluj (podgląd)</button></article>
-      <article class="card"><b>EDI M-39</b><p class="note">IFTMIN stub</p><button class="btn" type="button" data-mod="M-39">Kolejka</button></article>
-      <article class="card"><b>KSeF M-40</b><p class="note">faktura jako string</p><button class="btn" type="button" data-mod="M-40">Status</button></article>
-      <article class="card"><b>Bank M-209</b><p class="note">wyciągi, nie scoring</p><button class="btn" type="button" data-mod="M-209">Dopasuj</button></article>
-      <article class="card"><b>NBP D-1</b><p class="note">kurs z tabeli, nie LLM</p><button class="btn" type="button" data-mod="M-07">Tabela</button></article>
-      <article class="card"><b>Hub M-201</b><p class="note">kolejka błędów M-190</p><button class="btn" type="button" data-mod="M-201">Otwórz hub</button></article>
-      <article class="card"><b>API M-94</b><p class="note">webhooki tenanta</p><button class="btn" type="button" data-mod="M-94">Klucze</button></article>
-    </div></div>`;
-}
 function seedRows(mod) {
   const st = ["aktywny", "szkic", "HITL", "zablokowany", "ok"];
+  const parties = ["Meblexport", "Nordwood", "Baltic Parts", "Andes Cargo"];
+  const lanes = ["PLGDY→PECLL", "CNSHA→PLGDY", "DEHAM→USNYC", "PLGDY→SGSIN"];
   return Array.from({ length: 8 }, (_, i) => ({
     ref: `${mod.id}-${2026}-${String(318 + i).padStart(5, "0")}`,
     title: `${mod.name} · rekord ${i + 1}`,
-    party: ["Meblexport", "Nordwood", "Baltic Parts", "Andes Cargo"][i % 4],
-    lane: ["PLGDY→PECLL", "CNSHA→PLGDY", "DEHAM→USNYC", "PLGDY→SGSIN"][i % 4],
+    party: parties[i % 4],
+    lane: lanes[i % 4],
     status: st[i % st.length],
     amt: ["1 240,00", "8 442,00", "410,00", "2 040,00"][i % 4],
-    cur: ["USD", "USD", "EUR", "USD"][i % 4]
+    cur: ["USD", "USD", "EUR", "USD"][i % 4],
+    src: `${mod.id}-SRC-${1000 + i}`
   }));
 }
 function paintMod(mod) {
   currentMod = mod;
   const warn = mod.n === 14 ? `<p class="note">Zakaz auto-scoringu natural_person / JDG (AI Act). Ocena tylko z karty i wywiadowni po HITL.</p>` : "";
   const def = mod.layer === "c" ? `<p class="note">Warstwa C — w rejestrze dla kompletności modelu, nie w roadmapie 12 m.</p>` : "";
-  const rows = seedRows(mod).map((r) => `<tr><td><button class="linkish" type="button" data-act="open-row">${r.ref}</button></td><td>${r.title}</td><td>${r.party}</td><td>${r.lane}</td><td>${money(r.amt, r.cur)}</td><td><span class="chip">${r.status}</span></td><td><button class="btn" type="button" data-act="row-act">Otwórz</button></td></tr>`).join("");
-  $("#v-mod").innerHTML = `<div class="cmd"><button class="btn" type="button" data-act="new">Nowy</button><button class="btn" type="button" data-act="filter">Filtr</button><button class="btn" type="button" data-act="export">Eksport podglądu</button><span class="chip">${LAYER[mod.layer] || mod.layer}</span><span class="chip">${mod.tpl}</span></div>
-    <div class="pad"><p class="h-id">${mod.id} · org z paska · makieta</p><h1 class="h-route">${mod.name}</h1>${warn}${def}
-    <div class="card xscroll" style="padding:0"><table class="grid"><thead><tr><th>Ref</th><th>Opis</th><th>Strona</th><th>Relacja</th><th class="r">Kwota</th><th>Status</th><th></th></tr></thead><tbody>${rows}</tbody></table></div></div>`;
+  const rows = seedRows(mod).map((r) => `<tr><td><button class="linkish" type="button" data-act="open-row">${r.ref}</button></td><td>${r.title}</td><td>${r.party}</td><td>${r.lane}</td><td class="r">${money(r.amt, r.cur)}</td><td><button class="linkish" type="button" data-act="src">${r.src}</button></td><td><span class="chip">${r.status}</span></td><td><button class="btn" type="button" data-act="row-act">Otwórz</button></td></tr>`).join("");
+  $("#v-mod").innerHTML = `<div class="cmd">
+      <button class="btn btn-p" type="button" data-act="new">Nowy</button>
+      <button class="btn" type="button" data-act="filter">Filtr</button>
+      <button class="btn" type="button" data-act="export">Eksport podglądu</button>
+      <span class="chip">${LAYER[mod.layer] || mod.layer}</span>
+      <span class="chip">${mod.tpl}</span>
+      <span class="chip">${mod.id} · RLS</span>
+    </div>
+    ${screenBanner(`${mod.id} · org z paska · makieta`, mod.name, "Szablon jak Wyceny/Zlecenia. Kwoty string. LLM nie liczy. HITL przed zapisem tam, gdzie ekstrakcja.")}
+    ${screenFacts([
+      { t: "Moduł", v: mod.id },
+      { t: "Warstwa", v: LAYER[mod.layer] || mod.layer },
+      { t: "Szablon", v: mod.tpl },
+      { t: "Rekordy", v: "8", s: "seed makiety" },
+      { t: "Tenant", v: "z paska", s: "zero cross-tenant" }
+    ], "n5")}
+    <div class="pad" style="padding-top:0">${warn}${def}
+      <div class="card xscroll" style="padding:0"><table class="grid"><thead><tr><th>Ref</th><th>Opis</th><th>Strona</th><th>Relacja</th><th class="r">Kwota</th><th>Pochodzenie</th><th>Status</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>
+    </div>`;
 }
 
 const INSP = {
-  home: `<h3 class="h-id">Dzień</h3><p class="note">Tenant z paska. Jobu otwierają ekrany.</p>`,
+  home: `<h3 class="h-id">Dzień</h3><p class="note">Tenant z paska. Jobu otwierają ekrany zgodne z FE.</p>`,
   quote: `<div class="rsec"><h3>Luki i ostrzeżenia <span class="cnt">4</span></h3>
     <div class="risk"><span class="sev alert"></span><div><b>Brak kodu HS</b><p>Wymagany przy odprawie importowej w Peru i kontroli eksportowej.</p><button class="fix linkish" type="button" data-act="ask-hs">Wyślij pytanie do klienta</button></div></div>
-    <div class="risk"><span class="sev alert"></span><div><b>ISPS Callao w żadnym wariancie</b><p>W 7 z 8 ostatnich zleceń — zwykle 45,00 USD / kontener.</p><button class="fix linkish" type="button" data-gap="isps">Dopisz pozycję ręcznie</button></div></div>
+    <div class="risk"><span class="sev alert"></span><div><b>ISPS Callao w żadnym wariancie</b><p>W 7 z 8 ostatnich zleceń — zwykle 45,00 USD / kontener.</p><button class="form linkish" type="button" data-gap="isps">Dopisz pozycję ręcznie</button></div></div>
     <div class="risk"><span class="sev stop"></span><div><b>Pacific wygasa 15.09</b><p>Cut-off bramowy 18–24.09 — stawka nie pokryje wypłynięcia.</p></div></div>
     <div class="risk"><span class="sev"></span><div><b>GRI ogłoszone na 01.10</b><p>Hapag-Lloyd · +800 USD/FEU · poza zakresem przy ważności 14 dni.</p></div></div>
   </div>
   <div class="rsec"><h3>Ryzyko oferty</h3>
     <p class="score">54 <small>/ 100 — podwyższone</small></p>
     <div class="scorebar" aria-hidden="true"><i></i></div>
-    <ul class="note" style="margin:0 0 var(--s3); padding-left:1.1rem">
-      <li>Zmienność relacji σ = 11% w 30 dni</li>
-      <li>Dwie stawki starsze niż 14 dni</li>
-      <li>Ekspozycja USD/PLN — netto −8&nbsp;240 USD</li>
-    </ul>
-    <p class="note">Przy ważności 14 dni prawdopodobieństwo spadku poniżej progu 8% wynosi 22%. Skrócenie do 7 dni obniża do 6%.</p>
+    <p class="note">Wartości z serwera (M-24). UI nie liczy marży ani kosztu pieniądza.</p>
   </div>
   <div class="rsec"><h3>Marża po kosztach</h3>
     <table class="mini">
@@ -1100,15 +1345,30 @@ const INSP = {
       <tr><td>Ekspozycja walutowa</td><td>−0,8 pkt</td></tr>
       <tr class="total"><td>Po kosztach</td><td>11,0%</td></tr>
     </table>
-    <p class="note" style="margin-top:var(--s3)">Wartości z serwera (M-24). UI nie liczy marży ani kosztu pieniądza.</p>
   </div>`,
-  rates: `<h3 class="h-id">Pokrycie</h3><p class="note">Peru: sprawdzone. Kolumbia: biała plama.</p>`,
-  hitl: `<h3 class="h-id">Szkic</h3><p class="note">source_ref MAERSK-SHA-0926. Zapis tylko po accept.</p>`,
+  rates: `<h3 class="h-id">rate_line</h3><p class="note">Niemutowalna. Zastąp = nowy wiersz. source_ref obowiązkowy. Peru: pokryte. Kolumbia: biała plama.</p>`,
+  charges: `<h3 class="h-id">charge</h3><p class="note">Jedyny wiersz buy+sell. Marża z domeny. Nie druga tabela.</p>`,
+  hitl: `<h3 class="h-id">Szkic</h3><p class="note">source_ref MAERSK-SHA-0926. Zapis rate_line tylko po Accept. ExtractionService nie importuje rates.</p>`,
+  parties: `<h3 class="h-id">party</h3><p class="note">Resolve po tax_id. Lookup = szkic. Zero zapisu z sieci w CI (fixture).</p>`,
+  ports: `<h3 class="h-id">port</h3><p class="note">UN/LOCODE. Nieznany token = odrzut. WPI poza HTTP.</p>`,
+  locations: `<h3 class="h-id">location</h3><p class="note">postal_zone z exclusion constraint w Postgres.</p>`,
   users: `<h3 class="h-id">OpenFGA</h3><p class="note">Brak relacji — ukryj. Read-only — wyszarz z powodem.</p>`,
-  channels: `<h3 class="h-id">Integracje</h3><p class="note">Sekrety tenanta nie w logach. M-190 kolejka błędów.</p>`,
+  channels: `<h3 class="h-id">channel_quote</h3><p class="note">Sekrety tenanta nie w logach. Idempotencja. M-190 kolejka błędów.</p>`,
   mod: `<h3 class="h-id">Inspector</h3><p class="note">Kwoty string. LLM nie liczy. HITL przed zapisem do bazy.</p>`
 };
-const META = { home: ["Dzień", "Joby operatora"], quote: ["Wyceny", "ZAP/2026/00318"], rates: ["Stawki", "Baza stawek kupna"], hitl: ["Ekstrakcje", "MAERSK-SHA-0926"], ship: ["Zlecenia", "GD/2026/00412"], users: ["Organizacja", "Użytkownicy"], channels: ["Kanały", "Armatorzy i łączniki"] };
+const META = {
+  home: ["Dzień", "Joby operatora"],
+  quote: ["Wyceny", "ZAP/2026/00318"],
+  rates: ["Stawki", "Baza stawek kupna"],
+  charges: ["Opłaty", "charge buy+sell"],
+  hitl: ["Ekstrakcje", "MAERSK-SHA-0926"],
+  ship: ["Zlecenia", "GD/2026/00412"],
+  parties: ["Kontrahenci", "Meblexport Sp. z o.o."],
+  ports: ["Porty", "UN/LOCODE"],
+  locations: ["Lokalizacje", "Strefy i adresy"],
+  users: ["Organizacja", "Użytkownicy"],
+  channels: ["Oferty kanału", "Armatorzy i łączniki"]
+};
 
 function setInsp(html, on) {
   const el = $("#insp");
@@ -1148,8 +1408,12 @@ function applyView(v) {
   if (v === "home") paintHome();
   if (v === "quote") paintQuote();
   if (v === "rates") paintRates();
+  if (v === "charges") paintCharges();
   if (v === "hitl") paintHitl();
   if (v === "ship") paintShip();
+  if (v === "parties") paintParties();
+  if (v === "ports") paintPorts();
+  if (v === "locations") paintLocations();
   if (v === "users") paintUsers();
   if (v === "channels") paintChannels();
 }
@@ -1176,6 +1440,8 @@ function goMod(id) {
   if (found.tpl === "rates" && found.n === 17) { go("rates"); return; }
   if (found.tpl === "hitl" && found.n === 20) { go("hitl"); return; }
   if (found.tpl === "ship" && found.n === 35) { go("ship"); return; }
+  if (found.n === 10) { go("parties"); return; }
+  if (found.n === 5) { go("ports"); return; }
   if (found.tpl === "channels" && (found.n === 19 || found.n === 30)) { go("channels"); return; }
   if (found.tpl === "home") { go("home"); return; }
   if (!navSilent && navKey(navCurrent()) !== `mod:${found.id}`) navPast.push(navCurrent());
@@ -1236,9 +1502,14 @@ function drawPal(q) {
     { g: "Nawigacja", i: "Dzień", a: () => go("home") },
     { g: "Nawigacja", i: "Wyceny", a: () => go("quote") },
     { g: "Nawigacja", i: "Stawki", a: () => go("rates") },
+    { g: "Nawigacja", i: "Opłaty", a: () => go("charges") },
     { g: "Nawigacja", i: "HITL", a: () => go("hitl") },
     { g: "Nawigacja", i: "Zlecenia", a: () => go("ship") },
-    { g: "Nawigacja", i: "Kanały", a: () => go("channels") },
+    { g: "Nawigacja", i: "Kontrahenci", a: () => go("parties") },
+    { g: "Nawigacja", i: "Porty", a: () => go("ports") },
+    { g: "Nawigacja", i: "Lokalizacje", a: () => go("locations") },
+    { g: "Nawigacja", i: "Oferty kanału", a: () => go("channels") },
+    { g: "Nawigacja", i: "Użytkownicy", a: () => go("users") },
     { g: "Akcje", i: "Akceptuj szkic HITL", a: () => { go("hitl"); toast("Fokus na Accept — potwierdzenie recenzenta."); } },
     { g: "Rekordy", i: "ZAP/2026/00318", a: () => go("quote") }
   ];
@@ -1288,6 +1559,7 @@ document.addEventListener("click", (e) => {
   if (e.target.closest("[data-pick]")) { picked = e.target.closest("[data-pick]").dataset.pick; paintQuote(); toast("Wariant wybrany. Marża jest na charge — UI nic nie dolicza."); return; }
   if (e.target.closest("[data-gap]")) { toast("Ręczna charża wymaga source_ref. Bez pochodzenia rekord nie wchodzi."); return; }
   if (e.target.closest("[data-hitl]")) { hitlId = e.target.closest("[data-hitl]").dataset.hitl; paintHitl(); return; }
+  if (e.target.closest("[data-party]")) { partyId = e.target.closest("[data-party]").dataset.party; paintParties(); return; }
   const act = e.target.closest("[data-act]");
   if (!act) return;
   const a = act.dataset.act;
@@ -1306,6 +1578,20 @@ document.addEventListener("click", (e) => {
   if (a === "filter") toast("Filtr w ramach jednego tenanta.");
   if (a === "export") toast("Eksport podglądu. Nie produkcja.");
   if (a === "reject-home") toast("Szkic odrzucony z powodem. PDF zostaje.");
+
+  if (a === "supersede") toast("Zastąp = nowy rate_line + superseded_by. Stary niemutowalny.");
+  if (a === "new-rate") toast("Dodaj stawkę — wymaga source_ref. Bez pochodzenia rekord nie wchodzi.");
+  if (a === "resolve-rate") toast("Rozwiąż token relacji / kodu w ramach jednego tenanta.");
+  if (a === "new-charge") toast("Dodaj charge — marża z domeny, nie z UI.");
+  if (a === "new-party") toast("Nowy party — INSERT po potwierdzeniu. Lookup tylko szkic.");
+  if (a === "lookup-party") toast("Lookup GUS/VIES → szkic. Sieć wyłączona w CI (fixture).");
+  if (a === "resolve-party") toast("Resolve po tax_id albo resolve_email — nie po luźnej nazwie.");
+  if (a === "edit-party") toast("Edycja kontrahenta w tenantcie. RLS.");
+  if (a === "new-port") toast("Dodaj port UN/LOCODE. Ingest poza HTTP.");
+  if (a === "resolve-port") toast("Resolve tokenu UN/LOCODE. Nieznany = odrzut.");
+  if (a === "new-loc") toast("Dodaj location. Nakładanie zakresów blokuje baza.");
+  if (a === "new-cq") toast("Dodaj channel_quote — kwota Decimal, nie marża.");
+
 });
 document.addEventListener("click", (e) => {
   if (e.target.closest("#sendQuote")) toast("Wysyłka zablokowana: brak kodu HS. Nie omijamy walidacji ani HITL.");
