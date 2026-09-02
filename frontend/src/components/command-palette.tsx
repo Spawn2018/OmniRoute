@@ -31,6 +31,7 @@ const NAV_ACTIONS = [
   { id: "nav-sanctions", label: "Idź do sankcji", to: "/sanctions" },
   { id: "nav-gdpr", label: "Idź do RODO", to: "/gdpr" },
   { id: "nav-ai", label: "Idź do propozycji AI", to: "/ai" },
+  { id: "nav-health", label: "Idź do obserwowalności", to: "/health" },
   { id: "nav-mail", label: "Idź do tablicy poczty", to: "/mail" },
   { id: "nav-notifications", label: "Idź do powiadomień", to: "/notifications" },
   { id: "nav-shipments", label: "Idź do zleceń", to: "/shipments" },

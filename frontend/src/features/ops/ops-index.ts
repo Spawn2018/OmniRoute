@@ -89,6 +89,11 @@ export const OPS_JOBS = [
     job: "szkice HITL pending",
   },
   {
+    route: BUSINESS_LISTS.observability.route,
+    label: "Obserwowalność",
+    job: "status API fetchHealth",
+  },
+  {
     route: BUSINESS_LISTS.mailIntegration.route,
     label: "Poczta",
     job: "odczyt domen i kontaktów",
@@ -252,6 +257,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "45.0": "/sanctions",
   "46.0": "/gdpr",
   "47.0": "/ai",
+  "48.0": "/health",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

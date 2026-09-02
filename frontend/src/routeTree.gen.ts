@@ -28,6 +28,7 @@ import { Route as ExtractionsRouteImport } from './routes/extractions'
 import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as FxDifferencesRouteImport } from './routes/fx-differences'
 import { Route as GdprRouteImport } from './routes/gdpr'
+import { Route as HealthRouteImport } from './routes/health'
 import { Route as InvoicesRouteImport } from './routes/invoices'
 import { Route as LclRouteImport } from './routes/lcl'
 import { Route as LocationsRouteImport } from './routes/locations'
@@ -148,6 +149,11 @@ const FxDifferencesRoute = FxDifferencesRouteImport.update({
 const GdprRoute = GdprRouteImport.update({
   id: '/gdpr',
   path: '/gdpr',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HealthRoute = HealthRouteImport.update({
+  id: '/health',
+  path: '/health',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InvoicesRoute = InvoicesRouteImport.update({
@@ -301,6 +307,7 @@ export interface FileRoutesByFullPath {
   '/finance': typeof FinanceRoute
   '/fx-differences': typeof FxDifferencesRoute
   '/gdpr': typeof GdprRoute
+  '/health': typeof HealthRoute
   '/invoices': typeof InvoicesRoute
   '/lcl': typeof LclRoute
   '/locations': typeof LocationsRoute
@@ -348,6 +355,7 @@ export interface FileRoutesByTo {
   '/finance': typeof FinanceRoute
   '/fx-differences': typeof FxDifferencesRoute
   '/gdpr': typeof GdprRoute
+  '/health': typeof HealthRoute
   '/invoices': typeof InvoicesRoute
   '/lcl': typeof LclRoute
   '/locations': typeof LocationsRoute
@@ -396,6 +404,7 @@ export interface FileRoutesById {
   '/finance': typeof FinanceRoute
   '/fx-differences': typeof FxDifferencesRoute
   '/gdpr': typeof GdprRoute
+  '/health': typeof HealthRoute
   '/invoices': typeof InvoicesRoute
   '/lcl': typeof LclRoute
   '/locations': typeof LocationsRoute
@@ -445,6 +454,7 @@ export interface FileRouteTypes {
     | '/finance'
     | '/fx-differences'
     | '/gdpr'
+    | '/health'
     | '/invoices'
     | '/lcl'
     | '/locations'
@@ -492,6 +502,7 @@ export interface FileRouteTypes {
     | '/finance'
     | '/fx-differences'
     | '/gdpr'
+    | '/health'
     | '/invoices'
     | '/lcl'
     | '/locations'
@@ -539,6 +550,7 @@ export interface FileRouteTypes {
     | '/finance'
     | '/fx-differences'
     | '/gdpr'
+    | '/health'
     | '/invoices'
     | '/lcl'
     | '/locations'
@@ -587,6 +599,7 @@ export interface RootRouteChildren {
   FinanceRoute: typeof FinanceRoute
   FxDifferencesRoute: typeof FxDifferencesRoute
   GdprRoute: typeof GdprRoute
+  HealthRoute: typeof HealthRoute
   InvoicesRoute: typeof InvoicesRoute
   LclRoute: typeof LclRoute
   LocationsRoute: typeof LocationsRoute
@@ -748,6 +761,13 @@ declare module '@tanstack/react-router' {
       path: '/gdpr'
       fullPath: '/gdpr'
       preLoaderRoute: typeof GdprRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/health': {
+      id: '/health'
+      path: '/health'
+      fullPath: '/health'
+      preLoaderRoute: typeof HealthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/invoices': {
@@ -955,6 +975,7 @@ const rootRouteChildren: RootRouteChildren = {
   FinanceRoute: FinanceRoute,
   FxDifferencesRoute: FxDifferencesRoute,
   GdprRoute: GdprRoute,
+  HealthRoute: HealthRoute,
   InvoicesRoute: InvoicesRoute,
   LclRoute: LclRoute,
   LocationsRoute: LocationsRoute,

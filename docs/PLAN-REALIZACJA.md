@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** 48.0 M-68 `observability` tablica `/health`. Nie zgaduj schematu. Nie nowa tabela.
+**Następny (zablokowany):** M-69 Jakość (`/plan-modul`). Nie zgaduj schematu. Nie nowa tabela.
 <!-- os-status:end -->
 
 ```mermaid
@@ -358,7 +358,8 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | F9.0 | **M-57** | 47.0 | zamknięty (`docs/deltas/archived/47.0-ai-copilot.md`) |
 | F9.1 | **M-58–M-60** | — | bez żywej nazwy w PLAN; nie zgaduję |
 | F10 | **M-61–M-67** | parked | portale (PLAN § Parked) |
-| F11.0 | **M-68 Obserwowalność** | Plan | delta open 48.0 |
+| F11.0 | **M-68 Obserwowalność** | 48.0 | zamknięty (`docs/deltas/archived/48.0-observability.md`) |
+| F11.1 | **M-69 Jakość** | Plan | kolejka (`/plan-modul`; nie zgaduj schematu) |
 
 ### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster
 
@@ -438,7 +439,7 @@ Nie implementuj z tej tabeli „na zapas”. To mapa, żeby nic nie zginęło. S
 | M-52–M-56 | Compliance | Fala 8 (M-52 7.0 + M-53/M-56 DONE 45.0–46.0; M-54/M-55 bez nazwy w PLAN) |
 | M-57–M-60 | AI / copilot | Fala 9 (M-57 DONE fundament 47.0) |
 | M-61–M-67 | Rynek / portal | Fala 10 |
-| M-68–M-70 | Ops / wdrożenie | Fala 11 |
+| M-68–M-70 | Ops / wdrożenie | Fala 11 (M-68 DONE fundament 48.0) |
 
 ---
 
@@ -469,13 +470,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

@@ -114,7 +114,9 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **46.0 DONE:** `/gdpr` odczyt `app_user.email` / `display_name`. Nie nowa tabela. Nie wniosek. Nie usuwanie.
 - **46.0 leftover — wnioski / usuwanie / DPIA / M-54 nazwa (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Fala 9 M-57 **DONE w 47.0**.
 - **47.0 DONE:** `/ai` odczyt `extraction_draft` pending (`source_ref`). Nie nowa tabela. Nie czat. Nie accept.
-- **47.0 leftover — czat / prompt log / M-58 nazwa (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. M-58 = osobny Plan.
+- **47.0 leftover — czat / prompt log / M-58 nazwa (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. M-68 obserwowalność **DONE w 48.0** (M-58–M-60 bez nazwy; Fala 10 parked).
+- **48.0 DONE:** `/health` odczyt `fetchHealth`. Nie nowa tabela. Nie OTel. Nie k6.
+- **48.0 leftover — OTel / k6 (dlaczego nie w tym plasterze):** AGENTS: OTel = cel, nie runtime. M-69 jakość = osobny Plan.
 - **6.0 leftover — klon nagłówka modelu (dlaczego nie w tym plasterze):** `jscpd` 6 linii `charge.py` przeciw `nbp_rate.py` (blok `id`). Miksin wszystkich modeli = `refaktor-pass`. `just dup` 2,83% po kompaktowym `id` i osobnym formularzu kursu (nie `CatalogCreateForm`).
 - **7.0 DONE:** `dangerous_good` UN/IMDG + aliasy + `source_ref`, RLS FORCE, `resolve`, OpenFGA `can_manage_dangerous_goods`, `/dangerous-goods`. Nie podpięcie do wyceny, nie live IMO, nie M-08 `charge`.
 - **7.0 leftover — live IMO / ADN-ADR / Fala 8 (dlaczego nie w tym plasterze):** ręczny wpis = `tenant:manual`; fixture = `imdg:<un_number>`. Seed tysięcy UN i live HTTP do IMO = jak 4.0/5.0. ADN/ADR osobne tabele i grupy zgodności 1.xA = później. Fala 8 M-53–M-56 zostaje.

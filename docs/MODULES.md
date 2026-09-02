@@ -61,6 +61,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-53 | Sankcje | 45.0 `sanctions` | **ukończony (fundament)** · tablica aktywnych party tax_id/kraj; nie OFAC; nie HTTP |
 | M-56 | RODO | 46.0 `gdpr` | **ukończony (fundament)** · tablica emaili `app_user`; nie wniosek; nie usuwanie |
 | M-57 | Copilot AI | 47.0 `ai_copilot` | **ukończony (fundament)** · tablica extraction pending; nie czat; nie accept |
+| M-68 | Obserwowalność | 48.0 `observability` | **ukończony (fundament)** · tablica `fetchHealth`; nie OTel; nie k6 |
 
 Nie dopisuj tu 70 pustych wierszy M-xx. Katalog + **kolejka Q1…** (co budować jedno po drugim, tryb Plan potem plaster): `docs/PLAN-REALIZACJA.md` § Kolejka. Archiwum Claude zostaje magazynem specyfikacji, nie SoT kolejności.
 
