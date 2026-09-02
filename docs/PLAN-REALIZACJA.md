@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** M-54 (`/plan-modul`). Nie zgaduj nazwy ani schematu. Nie nowa tabela.
+**Następny (zablokowany):** 46.0 M-56 `gdpr` tablica `/gdpr`. Nie zgaduj schematu. Nie nowa tabela.
 <!-- os-status:end -->
 
 ```mermaid
@@ -354,7 +354,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | F7.2 | **M-50 Kolej z Chin** | 43.0 | zamknięty (`docs/deltas/archived/43.0-china-rail.md`) |
 | F7.3 | **M-51 Drobnica morska** | 44.0 | zamknięty (`docs/deltas/archived/44.0-ocean-lcl.md`) |
 | F8.0 | **M-53 Sankcje** | 45.0 | zamknięty (`docs/deltas/archived/45.0-sanctions.md`) |
-| F8.1 | **M-54** | Plan | kolejka (`/plan-modul`; nie zgaduj nazwy ani schematu) |
+| F8.1 | **M-56 RODO** | Plan | delta open 46.0 (M-54/M-55 bez nazwy w PLAN — nie zgaduję) |
 
 ### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster
 
@@ -465,13 +465,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

@@ -38,8 +38,8 @@ Seed: `scripts/dev_seed_local.py`.
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **45.0** M-53 `sanctions` tablica `/sanctions` (zarchiwizowany)
-- **Etap:** Plan
-- **Następny:** M-54 (`/plan-modul`). Nie zgaduj nazwy ani schematu. Nie nowa tabela.
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
+- **Etap:** Plaster
+- **Następny:** 46.0 M-56 `gdpr` tablica `/gdpr`. Nie zgaduj schematu. Nie nowa tabela.
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
