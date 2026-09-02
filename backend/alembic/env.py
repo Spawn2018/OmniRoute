@@ -12,6 +12,7 @@ from app.models.organization import Organization  # noqa: F401
 from app.models.charge_code import ChargeCode  # noqa: F401
 from app.models.channel_quote import ChannelQuote  # noqa: F401
 from app.models.commodity_code import CommodityCode  # noqa: F401
+from app.models.credit_review import CreditReview  # noqa: F401
 from app.models.dangerous_good import DangerousGood  # noqa: F401
 from app.models.network import Network  # noqa: F401
 from app.models.nbp_rate import NbpRate  # noqa: F401

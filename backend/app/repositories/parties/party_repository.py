@@ -1,9 +1,11 @@
+from datetime import date
 from uuid import UUID
 
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models.carrier_profile import CarrierProfile
+from app.models.credit_review import CreditReview as ReviewRow
 from app.models.customer_sop import CustomerSop
 from app.models.party import Party
 from app.models.party_bank_account import PartyBankAccount
@@ -137,6 +139,29 @@ class PartyRepository:
         return list(result.all())
 
     async def add_sop(self, row: CustomerSop) -> CustomerSop:
+        self._session.add(row)
+        await self._session.flush()
+        return row
+
+    async def list_reviews(self) -> list[ReviewRow]:
+        result = await self._session.scalars(
+            select(ReviewRow).order_by(ReviewRow.review_date.desc()),
+        )
+        return list(result.all())
+
+    async def find_review_as_of(self, *, party_id: UUID, on_date: date) -> ReviewRow | None:
+        found = await self._session.scalar(
+            select(ReviewRow)
+            .where(
+                ReviewRow.party_id == party_id,
+                ReviewRow.review_date <= on_date,
+            )
+            .order_by(ReviewRow.review_date.desc())
+            .limit(1),
+        )
+        return found if isinstance(found, ReviewRow) else None
+
+    async def add_review(self, row: ReviewRow) -> ReviewRow:
         self._session.add(row)
         await self._session.flush()
         return row

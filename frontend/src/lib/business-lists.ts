@@ -18,6 +18,7 @@ export const BUSINESS_LISTS = {
   parties: { route: "/parties", tableKey: "parties" },
   partyScorecards: { route: "/party-scorecards", tableKey: "party_scorecards" },
   customerSops: { route: "/customer-sops", tableKey: "customer_sops" },
+  creditReviews: { route: "/credit-reviews", tableKey: "credit_reviews" },
 } as const
 
 export const REQUIRED_BUSINESS_LIST_ROUTES = [
@@ -40,6 +41,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/parties",
   "/party-scorecards",
   "/customer-sops",
+  "/credit-reviews",
 ] as const
 
 export function businessListRoutes(): string[] {

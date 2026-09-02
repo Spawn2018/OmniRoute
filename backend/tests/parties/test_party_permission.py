@@ -64,6 +64,26 @@ _ENDPOINTS = (
         None,
         None,
     ),
+    ("GET", "/api/v1/credit-reviews", None, None),
+    (
+        "GET",
+        "/api/v1/credit-reviews/resolve",
+        {
+            "party_id": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+            "on_date": "2026-09-01",
+        },
+        None,
+    ),
+    (
+        "POST",
+        "/api/v1/credit-reviews",
+        None,
+        {
+            "party_id": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+            "review_date": "2026-09-01",
+            "decision": "ok",
+        },
+    ),
 )
 
 
@@ -120,3 +140,4 @@ def test_fga_source_declares_parties_relation_without_changing_geography() -> No
     source = (_ROOT / "authz" / "model.fga").read_text(encoding="utf-8")
     assert "can_manage_parties: member" in source
     assert "can_manage_geography: member" in source
+    assert "can_manage_credit_reviews" not in source

@@ -38,6 +38,11 @@ import {
   upsertPartyScorecard,
 } from "@/lib/party-scorecards-api"
 import {
+  createCreditReview,
+  creditReviewCreateBody,
+  fetchCreditReviews,
+} from "@/lib/credit-reviews-api"
+import {
   EMPTY_SOP_DRAFT,
   approveCustomerSop,
   createCustomerSop,
@@ -112,6 +117,9 @@ export function PartyCatalogPage() {
   const [scac, setScac] = useState("")
   const [scoreDraft, setScoreDraft] = useState(EMPTY_SCORECARD_DRAFT)
   const [sopDraft, setSopDraft] = useState(EMPTY_SOP_DRAFT)
+  const [reviewDate, setReviewDate] = useState("")
+  const [reviewDecision, setReviewDecision] = useState("ok")
+  const [reviewNote, setReviewNote] = useState("")
 
   const listQuery = useQuery({
     queryKey: ["parties", ctx.organizationId],
@@ -156,6 +164,13 @@ export function PartyCatalogPage() {
     enabled: selectedId !== null,
     retry: false,
   })
+  const reviewsQuery = useQuery({
+    queryKey: ["credit-reviews", ctx.organizationId],
+    queryFn: fetchCreditReviews,
+    enabled: selectedId !== null,
+    retry: false,
+  })
+  const selectedParty = listQuery.data?.find((row) => row.id === selectedId) ?? null
 
   const createMutation = useMutation({
     mutationFn: () =>
@@ -570,6 +585,73 @@ export function PartyCatalogPage() {
                         Zatwierdź
                       </Button>
                     ) : null}
+                  </li>
+                ))}
+            </ul>
+          </fieldset>
+
+          <fieldset className="space-y-2 rounded-md border border-border p-3 md:col-span-2">
+            <legend className="text-sm font-medium">Recenzja kredytowa</legend>
+            <p className="text-xs text-muted-foreground">
+              Limit z katalogu (tylko odczyt): {selectedParty?.credit_limit ?? "—"}{" "}
+              {selectedParty?.credit_currency ?? ""}
+            </p>
+            <form
+              className="grid gap-2 md:grid-cols-3"
+              onSubmit={(event) => {
+                event.preventDefault()
+                if (selectedId === null) {
+                  return
+                }
+                void createCreditReview(
+                  creditReviewCreateBody({
+                    partyId: selectedId,
+                    reviewDate,
+                    decision: reviewDecision,
+                    note: reviewNote,
+                  }),
+                ).then(() => {
+                  setReviewDate("")
+                  setReviewDecision("ok")
+                  setReviewNote("")
+                  void queryClient.invalidateQueries({
+                    queryKey: ["credit-reviews", ctx.organizationId],
+                  })
+                })
+              }}
+            >
+              <Input
+                aria-label="Dzień recenzji panelu"
+                type="date"
+                value={reviewDate}
+                onChange={(event) => setReviewDate(event.target.value)}
+                required
+              />
+              <select
+                aria-label="Decyzja recenzji panelu"
+                className="h-8 rounded-md border border-input bg-background px-2 text-sm"
+                value={reviewDecision}
+                onChange={(event) => setReviewDecision(event.target.value)}
+              >
+                <option value="ok">ok</option>
+                <option value="hold">hold</option>
+                <option value="refuse">refuse</option>
+              </select>
+              <Input
+                aria-label="Notatka recenzji panelu"
+                placeholder="notatka"
+                value={reviewNote}
+                onChange={(event) => setReviewNote(event.target.value)}
+              />
+              <Button type="submit">Dodaj recenzję</Button>
+            </form>
+            <ul className="text-xs">
+              {reviewsQuery.data
+                ?.filter((row) => row.party_id === selectedId)
+                .map((row) => (
+                  <li key={row.id} className="font-mono">
+                    {row.review_date} · {row.decision}
+                    {row.note ? ` · ${row.note}` : ""}
                   </li>
                 ))}
             </ul>

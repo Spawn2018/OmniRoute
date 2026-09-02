@@ -21,6 +21,7 @@ const NAV_ACTIONS = [
   { id: "nav-networks", label: "Idź do katalogu sieci", to: "/networks" },
   { id: "nav-party-scorecards", label: "Idź do kart wyników kontrahenta", to: "/party-scorecards" },
   { id: "nav-customer-sops", label: "Idź do procedur operacyjnych klienta", to: "/customer-sops" },
+  { id: "nav-credit-reviews", label: "Idź do katalogu recenzji kredytowych", to: "/credit-reviews" },
   { id: "nav-port-surcharges", label: "Idź do katalogu extra portowych", to: "/port-surcharges" },
   { id: "nav-nbp-rates", label: "Idź do katalogu kursów NBP", to: "/nbp-rates" },
   { id: "nav-charges", label: "Idź do opłat", to: "/charges" },

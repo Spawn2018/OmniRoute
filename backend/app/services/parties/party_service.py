@@ -6,12 +6,19 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.charge_code import normalize_charge_code
+from app.domain.credit_review import (
+    normalize_review_date,
+    normalize_review_decision,
+    normalize_review_note,
+)
 from app.domain.customer_sop import normalize_sop_body, normalize_sop_code, normalize_sop_title
 from app.domain.errors import (
+    CreditReviewConflict,
     CustomerSopAlreadyApproved,
     CustomerSopConflict,
     InvalidPartyData,
     ResourceNotFound,
+    UnknownCreditReview,
     UnknownCustomerSop,
     UnknownEmailDomain,
     UnknownParty,
@@ -37,6 +44,7 @@ from app.domain.party_scorecard import (
     required_window_days,
 )
 from app.models.carrier_profile import CarrierProfile
+from app.models.credit_review import CreditReview
 from app.models.customer_sop import CustomerSop
 from app.models.party import Party
 from app.models.party_bank_account import PartyBankAccount
@@ -439,6 +447,49 @@ class PartyService:
             return await self._parties.add_sop(row)
         except IntegrityError as exc:
             raise CustomerSopConflict(f"procedura {token} już istnieje") from exc
+
+    async def list_reviews(self) -> list[CreditReview]:
+        return await self._parties.list_reviews()
+
+    async def resolve_review(self, *, party_id: UUID, on_date: object) -> CreditReview:
+        day = normalize_review_date(on_date)
+        await self._require_known_party(party_id)
+        found = await self._parties.find_review_as_of(party_id=party_id, on_date=day)
+        if found is None:
+            raise UnknownCreditReview(f"brak recenzji kredytowej na {day.isoformat()}")
+        return found
+
+    async def create_review(
+        self,
+        *,
+        organization_id: UUID,
+        user_id: UUID,
+        party_id: UUID,
+        review_date: object,
+        decision: object,
+        note: object = None,
+    ) -> CreditReview:
+        day = normalize_review_date(review_date)
+        verdict = normalize_review_decision(decision)
+        stored_note = normalize_review_note(note)
+        await self._require_known_party(party_id)
+        existing = await self._parties.find_review_as_of(party_id=party_id, on_date=day)
+        if existing is not None and existing.review_date == day:
+            raise CreditReviewConflict(f"recenzja na {day.isoformat()} już istnieje")
+        row = CreditReview(
+            id=uuid4(),
+            organization_id=organization_id,
+            decision=verdict,
+            review_date=day,
+            party_id=party_id,
+            note=stored_note,
+            source_ref=manual_source_ref(),
+            created_by=user_id,
+        )
+        try:
+            return await self._parties.add_review(row)
+        except IntegrityError as exc:
+            raise CreditReviewConflict(f"recenzja na {day.isoformat()} już istnieje") from exc
 
     async def approve_sop(self, sop_id: UUID) -> CustomerSop:
         found = await self._parties.get_sop(sop_id)

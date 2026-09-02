@@ -276,3 +276,15 @@ class ChannelQuoteConflict(DomainError):
 
 class UnknownCarrierProfile(DomainError):
     """Kontrahent nie ma carrier_profile — oferta z kanału wymaga profilu armatora."""
+
+
+class InvalidCreditReview(DomainError):
+    """Decyzja recenzji poza ok/hold/refuse albo data nie jest dniem — nie scoring."""
+
+
+class UnknownCreditReview(DomainError):
+    """Recenzja nie ma wpisu w katalogu credit_review tenanta."""
+
+
+class CreditReviewConflict(DomainError):
+    """Recenzja na ten dzień u tego kontrahenta już istnieje."""

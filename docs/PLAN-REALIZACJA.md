@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** 14.0 M-14 `credit_review` (`/plaster`). Nie Fala 8. Nie zgaduj auto-scoringu.
+**Następny (zablokowany):** 15.0 M-15 VDF (`/plan-modul`). LLM nie liczy. Nie zgaduj schematu VDF.
 <!-- os-status:end -->
 
 ```mermaid
@@ -322,11 +322,12 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | F2.3 | **M-16 Procedury operacyjne klienta** | Plan → plaster | zamknięty (`docs/deltas/archived/11.0-customer-sop.md`) |
 | F2.4 | **M-18 Opłaty portowe warunkowe** | Plan → plaster | zamknięty (`docs/deltas/archived/12.0-port-surcharge.md`) |
 | F2.5 | **M-19 Stawki live i kanały** | Plan → plaster | zamknięty (`docs/deltas/archived/13.0-channel-quote.md`) |
-| F2.6 | **M-14 Ocena kredytowa** | Plan → plaster | Plan (`docs/deltas/open/14.0-credit-review.md`) |
+| F2.6 | **M-14 Ocena kredytowa** | Plan → plaster | zamknięty (`docs/deltas/archived/14.0-credit-review.md`) |
+| F2.7 | **M-15 Wirtualny Dyrektor Finansowy** | Plan → plaster | kolejka (`/plan-modul`; LLM nie liczy) |
 
 ### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster
 
-M-11 Automatyczne kontakty · M-12 Sieci i stowarzyszenia · M-13 Karta wyników kontrahenta · M-16 Procedury operacyjne klienta · M-18 Opłaty portowe warunkowe · M-19 Stawki live i kanały · M-14 Ocena kredytowa (zakaz auto-scoringu osoby).
+M-11 Automatyczne kontakty · M-12 Sieci i stowarzyszenia · M-13 Karta wyników kontrahenta · M-16 Procedury operacyjne klienta · M-18 Opłaty portowe warunkowe · M-19 Stawki live i kanały · M-14 Ocena kredytowa (zakaz auto-scoringu osoby) · M-15 Wirtualny Dyrektor Finansowy (LLM nie liczy).
 
 **M-14 Ocena kredytowa:** w kolejce po M-13, ale Plan **musi** zakazać automatycznego scoringu `natural_person` / JDG (AI Act). M-15 VDF — po M-14, LLM nie liczy.
 
@@ -385,7 +386,7 @@ Nie implementuj z tej tabeli „na zapas”. To mapa, żeby nic nie zginęło. S
 | M-11 | Automatyczne kontakty | DONE fundament (8.0 `resolve_email`) |
 | M-12 | Sieci i stowarzyszenia | DONE fundament (9.0 `network`; nie katalog agentów) |
 | M-13 | Karta wyników kontrahenta | DONE fundament (10.0 `party_scorecard`; nie SQL-refresh) |
-| M-14 | Ocena kredytowa | Fala 2 + zakaz auto-scoringu osoby |
+| M-14 | Ocena kredytowa | DONE fundament (14.0 `credit_review`; nie auto-scoring) |
 | M-15 | Wirtualny Dyrektor Finansowy | Fala 2; LLM nie liczy |
 | M-16 | Procedury operacyjne klienta | DONE fundament (11.0 `customer_sop`; nie generator zadań) |
 | M-17 | Stawki statyczne | COVERED (`rate_line`) |

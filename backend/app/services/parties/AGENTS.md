@@ -13,6 +13,7 @@ Karta wyników (M-13) to snapshot — nie silnik RFQ i nie scoring osoby.
 - `app.models.party_charge_override`
 - `app.models.carrier_profile`
 - `app.models.party_scorecard`
+- `app.models.credit_review`
 - `app.models.customer_sop`
 - `app.repositories.parties`
 - `app.domain`
@@ -21,4 +22,4 @@ Karta wyników (M-13) to snapshot — nie silnik RFQ i nie scoring osoby.
 - import innych BC services (w tym `charge_codes`, `charges`, `quotations`)
 - zapis z lookupu — INSERT tylko po potwierdzeniu operatora
 - sieć w CI — `PARTY_LOOKUP_BACKEND=fixture`
-- liczenie kwot / marży / scoringu
+- liczenie kwot / marży / scoringu / auto-scoringu kredytowego

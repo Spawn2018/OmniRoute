@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **13.0** M-19 `channel_quote` (zarchiwizowany). **Etap:** Plan. **Następny:** 14.0 M-14 `credit_review` (`/plaster`). Nie Fala 8. Nie zgaduj auto-scoringu. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **14.0** M-14 `credit_review` (zarchiwizowany). **Etap:** Plan. **Następny:** 15.0 M-15 VDF (`/plan-modul`). LLM nie liczy. Nie zgaduj schematu VDF. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
@@ -11,7 +11,7 @@
 <!-- os-tree:start -->
 ```
 frontend/                 React 19 + Compiler, Vite, TanStack, shadcn, PostHog
-  src/features/           channel-quotes · charge-codes · charges · commodity-codes · customer-sops · dangerous-goods · extraction · geography · nbp-rates · networks · ops · organization-settings · parties · party-scorecards · port-surcharges · quotations · rate-lines · session · tenancy
+  src/features/           channel-quotes · charge-codes · charges · commodity-codes · credit-reviews · customer-sops · dangerous-goods · extraction · geography · nbp-rates · networks · ops · organization-settings · parties · party-scorecards · port-surcharges · quotations · rate-lines · session · tenancy
   src/components/ui/      shadcn
   src/components/data-table/  DataTableShell (Golden Standard)
 backend/app/

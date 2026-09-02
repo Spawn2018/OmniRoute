@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **13.0** M-19 `channel_quote` (zarchiwizowany)
+- **Ostatni plaster:** **14.0** M-14 `credit_review` (zarchiwizowany)
 - **Etap:** Plan
-- **Następny:** 14.0 M-14 `credit_review` (`/plaster`). Nie Fala 8. Nie zgaduj auto-scoringu.
+- **Następny:** 15.0 M-15 VDF (`/plan-modul`). LLM nie liczy. Nie zgaduj schematu VDF.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

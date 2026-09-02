@@ -507,6 +507,62 @@ export type ContactResponse = {
 };
 
 /**
+ * CreditReviewCreate
+ */
+export type CreditReviewCreate = {
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Review Date
+     */
+    review_date: string;
+    /**
+     * Decision
+     */
+    decision: string;
+    /**
+     * Note
+     */
+    note?: string | null;
+};
+
+/**
+ * CreditReviewResponse
+ */
+export type CreditReviewResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Review Date
+     */
+    review_date: string;
+    /**
+     * Decision
+     */
+    decision: string;
+    /**
+     * Note
+     */
+    note: string | null;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * CustomerSopCreate
  */
 export type CustomerSopCreate = {
@@ -3374,6 +3430,83 @@ export type UpsertScorecardApiV1PartyScorecardsPartyIdPostResponses = {
 };
 
 export type UpsertScorecardApiV1PartyScorecardsPartyIdPostResponse = UpsertScorecardApiV1PartyScorecardsPartyIdPostResponses[keyof UpsertScorecardApiV1PartyScorecardsPartyIdPostResponses];
+
+export type ListCreditReviewsApiV1CreditReviewsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/credit-reviews';
+};
+
+export type ListCreditReviewsApiV1CreditReviewsGetResponses = {
+    /**
+     * Response List Credit Reviews Api V1 Credit Reviews Get
+     *
+     * Successful Response
+     */
+    200: Array<CreditReviewResponse>;
+};
+
+export type ListCreditReviewsApiV1CreditReviewsGetResponse = ListCreditReviewsApiV1CreditReviewsGetResponses[keyof ListCreditReviewsApiV1CreditReviewsGetResponses];
+
+export type CreateCreditReviewApiV1CreditReviewsPostData = {
+    body: CreditReviewCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/credit-reviews';
+};
+
+export type CreateCreditReviewApiV1CreditReviewsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCreditReviewApiV1CreditReviewsPostError = CreateCreditReviewApiV1CreditReviewsPostErrors[keyof CreateCreditReviewApiV1CreditReviewsPostErrors];
+
+export type CreateCreditReviewApiV1CreditReviewsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CreditReviewResponse;
+};
+
+export type CreateCreditReviewApiV1CreditReviewsPostResponse = CreateCreditReviewApiV1CreditReviewsPostResponses[keyof CreateCreditReviewApiV1CreditReviewsPostResponses];
+
+export type ResolveCreditReviewApiV1CreditReviewsResolveGetData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Party Id
+         */
+        party_id: string;
+        /**
+         * On Date
+         */
+        on_date: string;
+    };
+    url: '/api/v1/credit-reviews/resolve';
+};
+
+export type ResolveCreditReviewApiV1CreditReviewsResolveGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ResolveCreditReviewApiV1CreditReviewsResolveGetError = ResolveCreditReviewApiV1CreditReviewsResolveGetErrors[keyof ResolveCreditReviewApiV1CreditReviewsResolveGetErrors];
+
+export type ResolveCreditReviewApiV1CreditReviewsResolveGetResponses = {
+    /**
+     * Successful Response
+     */
+    200: CreditReviewResponse;
+};
+
+export type ResolveCreditReviewApiV1CreditReviewsResolveGetResponse = ResolveCreditReviewApiV1CreditReviewsResolveGetResponses[keyof ResolveCreditReviewApiV1CreditReviewsResolveGetResponses];
 
 export type ListCustomerSopsApiV1CustomerSopsGetData = {
     body?: never;

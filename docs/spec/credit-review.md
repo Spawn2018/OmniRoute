@@ -1,10 +1,10 @@
 # M-14 credit_review — ocena kredytowa (recenzja ręczna)
 
 **Moduł żywy:** M-14 (archiwum M-14; nie koliduje z żywym M-10 `party.credit_limit` / M-13 `party_scorecard` / M-08 `charge`)  
-**Plaster:** **14.0** (plan)  
-**Status:** plan — katalog recenzji kredytowej per `party`. Nie auto-scoring. Nie scoring `natural_person` / JDG. Nie zmiana `credit_limit`.
+**Plaster:** **14.0** (zamknięty)  
+**Status:** katalog recenzji kredytowej per `party`. Nie auto-scoring. Nie scoring `natural_person` / JDG. Nie zmiana `credit_limit`.
 
-Delta: [docs/deltas/open/14.0-credit-review.md](../deltas/open/14.0-credit-review.md).
+Delta: [docs/deltas/archived/14.0-credit-review.md](../deltas/archived/14.0-credit-review.md).
 
 ## 14.0 katalog recenzji kredytowej
 
