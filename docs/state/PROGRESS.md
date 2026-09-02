@@ -150,4 +150,5 @@
 | 2026-09-02 | 40.0 | M-47 | `bookkeeping` tablica `/bookkeeping` (charge + charge_code.name). Nie JPK, nie ERP. |
 | 2026-09-02 | Plan 41.0 | M-48 | delta `docs/deltas/archived/41.0-road-transport.md` + spec. Tablica location postal_zone/address. Nie TMS. Następny: `/plaster` 41.0. |
 | 2026-09-02 | 41.0 | M-48 | `road_transport` tablica `/road` (postal_zone i address). Nie TMS, nie GPS. |
-| 2026-09-02 | Plan 42.0 | M-49 | delta `docs/deltas/open/42.0-intermodal-rail.md` + spec. Tablica portów z flagą rail. Nie wagon. Następny: `/plaster` 42.0. |
+| 2026-09-02 | Plan 42.0 | M-49 | delta `docs/deltas/archived/42.0-intermodal-rail.md` + spec. Tablica portów z flagą rail. Nie wagon. Następny: `/plaster` 42.0. |
+| 2026-09-02 | 42.0 | M-49 | `intermodal_rail` tablica `/rail` (porty z flagą rail). Nie wagon, nie CIM. |

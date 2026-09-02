@@ -23,6 +23,12 @@ export type Port = {
   wpi_source_ref: string | null
 }
 
+export function railPorts<Row extends { function_flags: readonly string[] }>(
+  ports: readonly Row[],
+): Row[] {
+  return ports.filter((row) => row.function_flags.includes("rail"))
+}
+
 export type PortCreateBody = {
   unlocode: string
   name: string

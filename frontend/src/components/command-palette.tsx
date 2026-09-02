@@ -25,6 +25,7 @@ const NAV_ACTIONS = [
   { id: "nav-cost-to-serve", label: "Idź do kosztu obsługi klienta", to: "/cost-to-serve" },
   { id: "nav-bookkeeping", label: "Idź do księgowości", to: "/bookkeeping" },
   { id: "nav-road", label: "Idź do transportu drogowego", to: "/road" },
+  { id: "nav-rail", label: "Idź do kolei intermodalnej", to: "/rail" },
   { id: "nav-mail", label: "Idź do tablicy poczty", to: "/mail" },
   { id: "nav-notifications", label: "Idź do powiadomień", to: "/notifications" },
   { id: "nav-shipments", label: "Idź do zleceń", to: "/shipments" },

@@ -31,6 +31,7 @@
 | koszt obsługi klienta | cost_to_serve | 39.0 tablica SOP + wyceny kontrahenta; nie tabela ABC; nie suma |
 | księgowość | bookkeeping | 40.0 tablica `charge` + `charge_code.name`; nie JPK; nie ERP |
 | transport drogowy | road_transport | 41.0 tablica `location` `postal_zone`/`address`; nie TMS; nie GPS |
+| kolej intermodalna | intermodal_rail | 42.0 tablica `port` z flagą `rail`; nie wagon; nie CIM |
 | odcinek | shipment_leg | operacyjne; nie w 29.0 |
 | tenant | organization | organization_id wszędzie |
 | ustawienie tenanta | organization_setting | konfiguracja jako dane; allowlista kluczy; nie sekret |

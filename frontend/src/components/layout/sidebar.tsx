@@ -15,6 +15,7 @@ const NAV = [
   { to: "/cost-to-serve", label: "Koszt obsługi klienta" },
   { to: "/bookkeeping", label: "Księgowość" },
   { to: "/road", label: "Transport drogowy" },
+  { to: "/rail", label: "Kolej intermodalna" },
   { to: "/mail", label: "Poczta" },
   { to: "/notifications", label: "Powiadomienia" },
   { to: "/shipments", label: "Zlecenia" },

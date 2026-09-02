@@ -59,6 +59,11 @@ export const OPS_JOBS = [
     job: "lokalizacje postal_zone i address",
   },
   {
+    route: BUSINESS_LISTS.intermodalRail.route,
+    label: "Kolej intermodalna",
+    job: "porty z flagą rail",
+  },
+  {
     route: BUSINESS_LISTS.mailIntegration.route,
     label: "Poczta",
     job: "odczyt domen i kontaktów",
@@ -216,6 +221,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "39.0": "/cost-to-serve",
   "40.0": "/bookkeeping",
   "41.0": "/road",
+  "42.0": "/rail",
 } as const
 
 export const ROUTES_BREADTH_STANDING =
