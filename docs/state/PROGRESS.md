@@ -124,3 +124,4 @@
 | 2026-09-02 | 27.0 | M-34 | `operator_notice` tablica `/notifications` (HITL pending + wyceny pending). Nie tabela, nie wysyłka, nie HITL accept. |
 | 2026-09-02 | Plan 28.0 | M-35 | delta `docs/deltas/archived/28.0-shipment.md` + spec. Tablica wycen z `party_id`. Nie tabela `shipment`, nie tracking. Następny: `/plaster` 28.0. |
 | 2026-09-02 | 28.0 | M-35 | `shipment` tablica `/shipments` (wyceny z `party_id`). Nie tabela, nie tracking, nie odcinki. |
+| 2026-09-02 | Plan 29.0 | M-36 | delta `docs/deltas/open/29.0-tracking.md` + spec. Tablica lane POL/POD. Nie tabela zdarzeń, nie mapa. Następny: `/plaster` 29.0. |

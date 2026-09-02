@@ -18,7 +18,8 @@
 | port załadunku | origin_port_id | POL na `quotation`; FK do `port` |
 | port wyładunku | destination_port_id | POD na `quotation`; FK do `port` |
 | zlecenie | shipment | 28.0 tablica wycen z `party_id`; nie tabela; nie tracking |
-| odcinek | shipment_leg | operacyjne |
+| śledzenie | tracking | 29.0 tablica lane POL/POD z wyceny; nie AIS; nie mapa |
+| odcinek | shipment_leg | operacyjne; nie w 29.0 |
 | tenant | organization | organization_id wszędzie |
 | ustawienie tenanta | organization_setting | konfiguracja jako dane; allowlista kluczy; nie sekret |
 | token sesji | session token | JWT HS256; claims `sub` + `org` |

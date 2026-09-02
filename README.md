@@ -39,7 +39,7 @@ Seed: `scripts/dev_seed_local.py`.
 <!-- os-status:start -->
 - **Ostatni plaster:** **28.0** M-35 `shipment` tablica `/shipments` (zarchiwizowany)
 - **Etap:** Plan
-- **Następny:** M-36 Tracking (`/plan-modul`). Nie zgaduj schematu. Nie nowa tabela.
+- **Następny:** 29.0 M-36 `tracking` (`/plaster`). Tablica lane POL/POD. Nie tabela. Nie mapa.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
