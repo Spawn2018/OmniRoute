@@ -44,7 +44,7 @@ export const OPS_JOBS = [
   {
     route: BUSINESS_LISTS.quotations.route,
     label: "Wyceny",
-    job: "SQL z rate_line + nbp_rate + offer_risk",
+    job: "SQL z rate_line + nbp + ryzyko + kanał",
   },
   { route: BUSINESS_LISTS.organizationSettings.route, label: "Ustawienia", job: "config jako dane" },
   { route: BUSINESS_LISTS.ports.route, label: "Porty", job: "katalog UN/LOCODE + resolve" },
@@ -112,6 +112,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "15.0": "/finance",
   "16.0": "/quotations",
   "17.0": "/quotations",
+  "18.0": "/quotations",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

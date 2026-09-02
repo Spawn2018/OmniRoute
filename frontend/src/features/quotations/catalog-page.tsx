@@ -7,6 +7,7 @@ import { Money } from "@/components/money"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { BUSINESS_LISTS } from "@/lib/business-lists"
+import { resolveChannelQuote, type ChannelQuote } from "@/lib/channel-quotes-api"
 import { resolveCreditReview, type CreditReview } from "@/lib/credit-reviews-api"
 import { resolveNbpRate, type NbpRate } from "@/lib/nbp-rates-api"
 import { fetchParties } from "@/lib/parties-api"
@@ -17,9 +18,11 @@ import {
   fetchQuotations,
   quotationCreateBody,
   quotationCurrencies,
+  quotationLanes,
   quotationPartyIds,
   quotationSkipsNbpCatalog,
   type Quotation,
+  type QuotationLane,
 } from "@/lib/quotations-api"
 import { getTenantContext } from "@/lib/tenant"
 
@@ -233,6 +236,94 @@ function OfferRiskPanel(args: { partyIds: string[]; signedIn: boolean }) {
   )
 }
 
+function OfferNegotiationPanel(args: { lanes: QuotationLane[]; signedIn: boolean }) {
+  const [quoteId, setQuoteId] = useState("")
+  const [onDate, setOnDate] = useState("")
+  const [channel, setChannel] = useState<ChannelQuote | null>(null)
+  const selected = args.lanes.find((lane) => lane.id === quoteId)
+
+  const lookup = useMutation({
+    mutationFn: () => {
+      if (selected === undefined) {
+        throw new Error("Wybierz wycenę z POL/POD i kontrahentem")
+      }
+      return resolveChannelQuote({
+        partyId: selected.partyId,
+        originPortId: selected.originPortId,
+        destinationPortId: selected.destinationPortId,
+        onDate,
+      })
+    },
+    onSuccess: (row) => {
+      setChannel(row)
+    },
+    onError: () => {
+      setChannel(null)
+    },
+  })
+
+  return (
+    <div className="space-y-2 bg-card p-3 ring-1 ring-border">
+      <h3 className="text-sm font-medium">Oferta kanału przy wycenie</h3>
+      <p className="text-xs text-muted-foreground">
+        channel_quote 13.0 na tej samej lane · nie odejmuj kwot · nie zapis wyniku
+      </p>
+      {args.lanes.length === 0 ? (
+        <p className="text-sm text-muted-foreground">Najpierw wycena z party_id, POL i POD.</p>
+      ) : (
+        <form
+          className="flex flex-col gap-2"
+          onSubmit={(event) => {
+            event.preventDefault()
+            lookup.mutate()
+          }}
+        >
+          <label className="flex flex-col gap-1 text-xs">
+            quotation.id
+            <select
+              aria-label="Wycena do porównania z kanałem"
+              className="h-8 rounded-md border border-border bg-card px-2 text-sm"
+              value={quoteId}
+              onChange={(event) => setQuoteId(event.target.value)}
+              required
+            >
+              <option value="">Wycena z lane</option>
+              {args.lanes.map((lane) => (
+                <option key={lane.id} value={lane.id}>
+                  {lane.chargeCode} {lane.id}
+                </option>
+              ))}
+            </select>
+          </label>
+          <Input
+            aria-label="Dzień oferty kanału"
+            type="date"
+            value={onDate}
+            onChange={(event) => setOnDate(event.target.value)}
+            required
+          />
+          <Button type="submit" disabled={lookup.isPending || !args.signedIn}>
+            Pokaż ofertę kanału
+          </Button>
+        </form>
+      )}
+      {lookup.isError ? (
+        <p className="text-sm text-destructive">{(lookup.error as Error).message}</p>
+      ) : null}
+      {selected ? (
+        <p className="text-xs">
+          wycena <Money amount={selected.amount} currency={selected.currency} />
+        </p>
+      ) : null}
+      {channel ? (
+        <p className="text-xs">
+          kanał <Money amount={channel.amount} currency={channel.currency} /> {channel.source_ref}
+        </p>
+      ) : null}
+    </div>
+  )
+}
+
 export function QuotationCatalogPage() {
   const ctx = getTenantContext()
   const queryClient = useQueryClient()
@@ -301,8 +392,8 @@ export function QuotationCatalogPage() {
       <header>
         <h2 className="text-base font-semibold">Wyceny</h2>
         <p className="text-xs text-muted-foreground">
-          quotation M-21 · kwota z bieżącego rate_line w SQL · kurs NBP z katalogu 6.0 · nie mnoż kwoty
-          w formularzu
+          quotation M-21 · kwota z bieżącego rate_line w SQL · kurs NBP i oferta kanału z katalogów ·
+          nie licz w formularzu
         </p>
       </header>
 
@@ -441,6 +532,7 @@ export function QuotationCatalogPage() {
         <>
           <OfferNbpFieldset currencies={quotationCurrencies(query.data)} signedIn={signedIn} />
           <OfferRiskPanel partyIds={quotationPartyIds(query.data)} signedIn={signedIn} />
+          <OfferNegotiationPanel lanes={quotationLanes(query.data)} signedIn={signedIn} />
         </>
       ) : null}
 

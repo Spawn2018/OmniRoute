@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest"
 import {
   quotationCreateBody,
   quotationCurrencies,
+  quotationLanes,
   quotationPartyIds,
   quotationSkipsNbpCatalog,
   type Quotation,
@@ -69,6 +70,30 @@ describe("quotation NBP lookup", () => {
       ]),
     ).toEqual([PARTY])
   })
+
+  it("builds lanes only when party POL and POD are set", () => {
+    expect(quotationLanes([quotationWithCurrency("EUR")])).toEqual([])
+    expect(
+      quotationLanes([
+        {
+          ...quotationWithCurrency("EUR"),
+          party_id: PARTY,
+          origin_port_id: ORIGIN,
+          destination_port_id: DESTINATION,
+        },
+      ]),
+    ).toEqual([
+      {
+        id: "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+        chargeCode: "THC",
+        partyId: PARTY,
+        originPortId: ORIGIN,
+        destinationPortId: DESTINATION,
+        amount: "10.0000",
+        currency: "EUR",
+      },
+    ])
+  })
 })
 
 describe("quotation catalog screen", () => {
@@ -83,9 +108,12 @@ describe("quotation catalog screen", () => {
     expect(page).toContain("quotationSkipsNbpCatalog")
     expect(page).toContain("resolveCreditReview")
     expect(page).toContain("fetchPartyScorecard")
+    expect(page).toContain("resolveChannelQuote")
     expect(page).not.toMatch(/amount\s*\*\s*mid|mid\s*\*\s*amount/)
+    expect(page).not.toMatch(/selected\.amount\s*-|channel\.amount\s*-/)
     expect(page).not.toContain("CatalogCreateForm")
     expect(page).not.toContain("parseFloat")
     expect(page).not.toContain("risk_score")
+    expect(page).not.toContain("won")
   })
 })

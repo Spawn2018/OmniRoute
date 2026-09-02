@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** 18.0 M-25 `offer_negotiation` przy `quotation` (`/plaster`). Czyta `channel_quote`. Nie wynik won/lost. Nie spread w JS.
+**Następny (zablokowany):** 19.0 M-26 Dokument oferty (`/plan-modul`). Nie zgaduj schematu.
 <!-- os-status:end -->
 
 ```mermaid
@@ -326,7 +326,8 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | F2.7 | **M-15 Wirtualny Dyrektor Finansowy** | Plan → plaster | zamknięty (`docs/deltas/archived/15.0-finance-board.md`) |
 | F3.0 | **M-23 Waluty w ofercie** | 16.0 | zamknięty (`docs/deltas/archived/16.0-quotation-nbp.md`) |
 | F3.1 | **M-24 Ryzyko oferty** | 17.0 | zamknięty (`docs/deltas/archived/17.0-offer-risk.md`) |
-| F3.2 | **M-25 Negocjacja i wynik** | Plan → plaster | Plan (`docs/deltas/open/18.0-offer-negotiation.md`) |
+| F3.2 | **M-25 Negocjacja i wynik** | 18.0 | zamknięty (`docs/deltas/archived/18.0-offer-negotiation.md`) |
+| F3.3 | **M-26 Dokument oferty** | Plan → plaster | kolejka (`/plan-modul`; nie zgaduj schematu) |
 
 ### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster
 

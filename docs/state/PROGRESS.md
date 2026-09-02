@@ -102,4 +102,5 @@
 | 2026-09-02 | 16.0 | M-23 | `nbp_rate` odczyt przy `/quotations` (waluta oferty + dzień). Nie nowa tabela, nie mnożenie `amount`, nie drugi katalog FX. |
 | 2026-09-02 | Plan 17.0 | M-24 | delta `docs/deltas/archived/17.0-offer-risk.md` + spec. Wycena czyta recenzję i kartę. Nie scoring, nie nowa tabela. Następny: `/plaster` 17.0. |
 | 2026-09-02 | 17.0 | M-24 | `offer_risk` odczyt recenzji i karty przy `/quotations`. Nie nowa tabela, nie scoring, nie zapis `credit_limit`. |
-| 2026-09-02 | Plan 18.0 | M-25 | delta `docs/deltas/open/18.0-offer-negotiation.md` + spec. Wycena czyta `channel_quote`. Nie wynik won/lost, nie spread. Następny: `/plaster` 18.0. |
+| 2026-09-02 | Plan 18.0 | M-25 | delta `docs/deltas/archived/18.0-offer-negotiation.md` + spec. Wycena czyta `channel_quote`. Nie wynik won/lost, nie spread. Następny: `/plaster` 18.0. |
+| 2026-09-02 | 18.0 | M-25 | `offer_negotiation` odczyt `channel_quote` przy `/quotations`. Nie nowa tabela, nie odejmowanie kwot, nie zapis wyniku. |

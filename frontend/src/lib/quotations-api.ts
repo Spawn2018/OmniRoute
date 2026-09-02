@@ -59,6 +59,35 @@ export function quotationPartyIds(rows: readonly Quotation[]): string[] {
   return [...ids].sort()
 }
 
+export type QuotationLane = {
+  id: string
+  chargeCode: string
+  partyId: string
+  originPortId: string
+  destinationPortId: string
+  amount: string
+  currency: string
+}
+
+export function quotationLanes(rows: readonly Quotation[]): QuotationLane[] {
+  const lanes: QuotationLane[] = []
+  for (const row of rows) {
+    if (row.party_id === null || row.origin_port_id === null || row.destination_port_id === null) {
+      continue
+    }
+    lanes.push({
+      id: row.id,
+      chargeCode: row.charge_code,
+      partyId: row.party_id,
+      originPortId: row.origin_port_id,
+      destinationPortId: row.destination_port_id,
+      amount: row.amount,
+      currency: row.currency,
+    })
+  }
+  return lanes
+}
+
 async function readQuotation(response: Response, fallback: string): Promise<Quotation> {
   if (!response.ok) {
     throw new ApiError(await readApiDetail(response, fallback), httpErrorStatus(response))

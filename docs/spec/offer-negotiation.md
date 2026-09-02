@@ -1,10 +1,10 @@
 # M-25 negocjacja i wynik — odczyt `channel_quote` przy `quotation`
 
 **Moduł żywy:** M-25 (token UI `offer_negotiation`, nie tabela) + ekran M-21 `quotation`  
-**Plaster:** **18.0** (plan)  
-**Status:** plan — wycena **czyta** katalog 13.0 na tej samej lane. Nie zapis wyniku won/lost. Nie odejmowanie kwot.
+**Plaster:** **18.0** (zamknięty)  
+**Status:** wycena **czyta** katalog 13.0 na tej samej lane. Nie zapis wyniku won/lost. Nie odejmowanie kwot.
 
-Delta: [docs/deltas/open/18.0-offer-negotiation.md](../deltas/open/18.0-offer-negotiation.md).
+Delta: [docs/deltas/archived/18.0-offer-negotiation.md](../deltas/archived/18.0-offer-negotiation.md).
 
 ## 18.0 oferta kanału przy wycenie
 

@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **17.0** M-24 `offer_risk` przy `quotation` (zarchiwizowany)
+- **Ostatni plaster:** **18.0** M-25 `offer_negotiation` przy `quotation` (zarchiwizowany)
 - **Etap:** Plan
-- **Następny:** 18.0 M-25 `offer_negotiation` przy `quotation` (`/plaster`). Czyta `channel_quote`. Nie wynik won/lost. Nie spread w JS.
+- **Następny:** 19.0 M-26 Dokument oferty (`/plan-modul`). Nie zgaduj schematu.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
