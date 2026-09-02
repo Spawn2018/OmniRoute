@@ -88,6 +88,22 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
+.money-axis {
+  display: inline-grid;
+  grid-template-columns: minmax(6ch, auto) 5.5ch 3.25ch;
+  column-gap: 0.35ch;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.money-axis-int {
+  text-align: right;
+}
+
+.money-axis-frac,
+.money-axis-ccy {
+  text-align: left;
+}
+
 :focus-visible {
   outline: 2px solid var(--ring);
   outline-offset: 2px;

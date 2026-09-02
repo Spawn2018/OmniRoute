@@ -1,10 +1,10 @@
 # U-money-align — oś dziesiętna na `<Money/>`
 
 **Leftover żywy:** U-money-align (PLAN § Wave FE, token UI `money_axis`, nie tabela)  
-**Plaster:** **52.0** (plan)  
-**Status:** operator **zobaczy** kwotę wyrównaną do przecinka + kod waluty. Nie float. Nie nowa tabela.
+**Plaster:** **52.0** (zamknięty)  
+**Status:** operator **widzi** kwotę wyrównaną do przecinka + kod waluty. Nie float. Nie nowa tabela.
 
-Delta: [docs/deltas/open/52.0-money-align.md](../deltas/open/52.0-money-align.md).
+Delta: [docs/deltas/archived/52.0-money-align.md](../deltas/archived/52.0-money-align.md).
 
 ## 52.0 siatka na `<Money/>`
 

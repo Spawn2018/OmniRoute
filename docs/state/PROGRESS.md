@@ -170,4 +170,5 @@
 | 2026-09-02 | 50.0 | M-70 | `tenant_rollout` tablica `/rollout` (`default_currency`). Nie tabela, nie upsert. |
 | 2026-09-02 | Plan 51.0 | U-oklch-dark | delta `docs/deltas/archived/51.0-oklch-dark.md` + spec. Tokeny oklch + `.dark`. Następny: `/plaster` 51.0. |
 | 2026-09-02 | 51.0 | U-oklch-dark | tokeny `oklch` + `.dark` w `index.css`. Nie tabela, nie nowa trasa. |
-| 2026-09-02 | Plan 52.0 | U-money-align | delta `docs/deltas/open/52.0-money-align.md` + spec. Oś dziesiętna `<Money/>`. Następny: `/plaster` 52.0. |
+| 2026-09-02 | Plan 52.0 | U-money-align | delta `docs/deltas/archived/52.0-money-align.md` + spec. Oś dziesiętna `<Money/>`. Następny: `/plaster` 52.0. |
+| 2026-09-02 | 52.0 | U-money-align | `<Money/>` siatka integer/ułamek/ISO. Nie float, nie grouping. |

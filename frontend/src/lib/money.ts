@@ -67,3 +67,18 @@ export function formatMoney(amount: string, currency: string): string {
   }
   return `${parsed.amount} ${parsed.currency}`
 }
+
+export type MoneyAxis = {
+  integer: string
+  fraction: string
+  currency: string
+}
+
+export function moneyAxis(amount: string, currency: string): MoneyAxis | null {
+  const parsed = parseMoney(amount, currency)
+  if (parsed === null) {
+    return null
+  }
+  const [integer, fraction] = parsed.amount.split(".")
+  return { integer, fraction, currency: parsed.currency }
+}
