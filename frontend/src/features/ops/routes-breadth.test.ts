@@ -60,11 +60,12 @@ describe("U-routes-breadth standing", () => {
       "42.0": "/rail",
       "43.0": "/china-rail",
       "44.0": "/lcl",
+      "45.0": "/sanctions",
     })
     expect(OPS_JOBS.map((job) => job.route)).toEqual(
       expect.arrayContaining(Object.values(SHIPPED_CHARGE_ROUTES)),
     )
-    expect(OPS_JOBS).toHaveLength(41)
+    expect(OPS_JOBS).toHaveLength(42)
     expect(OPS_JOBS.length).not.toBe(70)
 
     const html = renderToStaticMarkup(

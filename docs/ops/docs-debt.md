@@ -108,7 +108,9 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **43.0 DONE:** `/china-rail` odczyt portów CN z flagą `rail`. Nie nowa tabela. Nie korytarz. Nie HTTP.
 - **43.0 leftover — korytarz / HTTP CR (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. M-51 drobnica **DONE w 44.0**.
 - **44.0 DONE:** `/lcl` odczyt portów z `is_seaport`. Nie nowa tabela. Nie CFS. Nie LCL vs FCL.
-- **44.0 leftover — CFS / LCL vs FCL / HTTP konsolidatora (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Fala 8 M-53 sankcje = osobny Plan.
+- **44.0 leftover — CFS / LCL vs FCL / HTTP konsolidatora (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Fala 8 M-53 sankcje **DONE w 45.0**.
+- **45.0 DONE:** `/sanctions` odczyt aktywnych `party` (`tax_id`, `country_code`). Nie nowa tabela. Nie OFAC. Nie auto-match.
+- **45.0 leftover — HTTP OFAC/EU / tabela hitów (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. M-54 = osobny Plan.
 - **6.0 leftover — klon nagłówka modelu (dlaczego nie w tym plasterze):** `jscpd` 6 linii `charge.py` przeciw `nbp_rate.py` (blok `id`). Miksin wszystkich modeli = `refaktor-pass`. `just dup` 2,83% po kompaktowym `id` i osobnym formularzu kursu (nie `CatalogCreateForm`).
 - **7.0 DONE:** `dangerous_good` UN/IMDG + aliasy + `source_ref`, RLS FORCE, `resolve`, OpenFGA `can_manage_dangerous_goods`, `/dangerous-goods`. Nie podpięcie do wyceny, nie live IMO, nie M-08 `charge`.
 - **7.0 leftover — live IMO / ADN-ADR / Fala 8 (dlaczego nie w tym plasterze):** ręczny wpis = `tenant:manual`; fixture = `imdg:<un_number>`. Seed tysięcy UN i live HTTP do IMO = jak 4.0/5.0. ADN/ADR osobne tabele i grupy zgodności 1.xA = później. Fala 8 M-53–M-56 zostaje.

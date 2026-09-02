@@ -156,4 +156,5 @@
 | 2026-09-02 | 43.0 | M-50 | `china_rail` tablica `/china-rail` (porty CN z flagą rail). Nie korytarz, nie HTTP. |
 | 2026-09-02 | Plan 44.0 | M-51 | delta `docs/deltas/archived/44.0-ocean-lcl.md` + spec. Tablica portów `is_seaport`. Nie tabela LCL. Następny: `/plaster` 44.0. |
 | 2026-09-02 | 44.0 | M-51 | `ocean_lcl` tablica `/lcl` (porty z `is_seaport`). Nie tabela LCL, nie CFS. |
-| 2026-09-02 | Plan 45.0 | M-53 | delta `docs/deltas/open/45.0-sanctions.md` + spec. Tablica aktywnych party tax_id/country. Nie OFAC. Następny: `/plaster` 45.0. |
+| 2026-09-02 | Plan 45.0 | M-53 | delta `docs/deltas/archived/45.0-sanctions.md` + spec. Tablica aktywnych party tax_id/country. Nie OFAC. Następny: `/plaster` 45.0. |
+| 2026-09-02 | 45.0 | M-53 | `sanctions` tablica `/sanctions` (aktywni party, tax_id i kraj). Nie OFAC, nie HTTP. |

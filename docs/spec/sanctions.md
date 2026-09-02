@@ -1,10 +1,10 @@
 # M-53 sankcje — tablica `party` z `tax_id` i `country_code`
 
 **Moduł żywy:** M-53 (token UI `sanctions`, nie tabela) + M-10 `party`  
-**Plaster:** **45.0** (plan)  
-**Status:** operator **zobaczy** aktywnych kontrahentów do ręcznego przeglądu. Nie tabela OFAC. Nie HTTP.
+**Plaster:** **45.0** (zamknięty)  
+**Status:** operator **widzi** aktywnych kontrahentów do ręcznego przeglądu. Nie tabela OFAC. Nie HTTP.
 
-Delta: [docs/deltas/open/45.0-sanctions.md](../deltas/open/45.0-sanctions.md).
+Delta: [docs/deltas/archived/45.0-sanctions.md](../deltas/archived/45.0-sanctions.md).
 
 ## 45.0 tablica odczytu na `/sanctions`
 

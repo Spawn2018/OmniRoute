@@ -74,6 +74,11 @@ export const OPS_JOBS = [
     job: "porty z is_seaport",
   },
   {
+    route: BUSINESS_LISTS.sanctions.route,
+    label: "Sankcje",
+    job: "aktywni kontrahenci tax_id i kraj",
+  },
+  {
     route: BUSINESS_LISTS.mailIntegration.route,
     label: "Poczta",
     job: "odczyt domen i kontaktów",
@@ -234,6 +239,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "42.0": "/rail",
   "43.0": "/china-rail",
   "44.0": "/lcl",
+  "45.0": "/sanctions",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

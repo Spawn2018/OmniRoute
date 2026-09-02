@@ -100,6 +100,12 @@ export async function fetchParties(): Promise<Party[]> {
   return parseBody<Party[]>(response, "Błąd listy kontrahentów")
 }
 
+export function sanctionsParties<Row extends { is_active: boolean }>(
+  parties: readonly Row[],
+): Row[] {
+  return parties.filter((row) => row.is_active)
+}
+
 export async function createParty(body: {
   legal_name: string
   country_code: string
