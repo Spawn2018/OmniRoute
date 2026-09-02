@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **33.0** M-40 `sales_invoice` tablica `/invoices` (zarchiwizowany). **Etap:** Plan. **Następny:** M-41 Rozliczenie wyceny z fakturą (`/plan-modul`). Nie zgaduj schematu. Nie nowa tabela. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **33.0** M-40 `sales_invoice` tablica `/invoices` (zarchiwizowany). **Etap:** Plaster. **Następny:** 34.0 M-41 `quote_invoice_settlement` tablica `/quote-invoices`. Nie zgaduj schematu. Nie nowa tabela. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
