@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **60.0** Q-E1 katalogi Grupa A na `catalog-parts`. **Etap:** Plan. **Następny:** Q-E2 `/plan-modul` — testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy). Nie F9.1. Nie S1. Parked: M-02, Auth0, portale (odblokowanie w Fali S). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **60.0** Q-E1 katalogi Grupa A na `catalog-parts`. **Etap:** Plaster. **Następny:** 61.0 Q-E2 `/plaster` — testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy). Nie seed 50k. Nie k6. Nie F9.1. Nie S1. Parked: M-02, Auth0, portale (odblokowanie w Fali S). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
