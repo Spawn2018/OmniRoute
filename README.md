@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **15.0** M-15 `finance_board` (zarchiwizowany)
+- **Ostatni plaster:** **16.0** M-23 `nbp_rate` przy `quotation` (zarchiwizowany)
 - **Etap:** Plan
-- **Następny:** 16.0 M-23 `nbp_rate` przy `quotation` (`/plaster`). Czyta katalog 6.0. Nie mnożenie kwoty.
+- **Następny:** 17.0 M-24 Ryzyko oferty (`/plan-modul`). Nie zgaduj schematu.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

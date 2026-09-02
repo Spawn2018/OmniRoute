@@ -7,9 +7,17 @@ import { Money } from "@/components/money"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { BUSINESS_LISTS } from "@/lib/business-lists"
+import { resolveNbpRate, type NbpRate } from "@/lib/nbp-rates-api"
 import { fetchParties } from "@/lib/parties-api"
 import { fetchPorts } from "@/lib/ports-api"
-import { createQuotation, fetchQuotations, quotationCreateBody, type Quotation } from "@/lib/quotations-api"
+import {
+  createQuotation,
+  fetchQuotations,
+  quotationCreateBody,
+  quotationCurrencies,
+  quotationSkipsNbpCatalog,
+  type Quotation,
+} from "@/lib/quotations-api"
 import { getTenantContext } from "@/lib/tenant"
 
 const helper = createColumnHelper<Quotation>()
@@ -46,6 +54,88 @@ const COLUMN_LABELS = {
   destination_port_id: "POD",
   source_ref: "Pochodzenie",
   rate_line_id: "Stawka",
+}
+
+function OfferNbpFieldset(args: { currencies: string[]; signedIn: boolean }) {
+  const [offerCurrency, setOfferCurrency] = useState("")
+  const [offerOnDate, setOfferOnDate] = useState("")
+  const [offerNbp, setOfferNbp] = useState<NbpRate | null>(null)
+  const [plnSkip, setPlnSkip] = useState(false)
+
+  const nbpLookup = useMutation({
+    mutationFn: () => resolveNbpRate(offerCurrency.trim().toUpperCase(), offerOnDate),
+    onSuccess: (row) => {
+      setOfferNbp(row)
+    },
+    onError: () => {
+      setOfferNbp(null)
+    },
+  })
+
+  return (
+    <fieldset className="flex flex-col gap-2 rounded-md border border-border bg-card p-3">
+      <legend className="px-1 text-sm font-medium">Kurs NBP waluty oferty</legend>
+      <p className="text-xs text-muted-foreground">
+        ISO z wiersza wyceny · resolve katalogu 6.0 · nie przeliczaj amount
+      </p>
+      {args.currencies.length === 0 ? (
+        <p className="text-sm text-muted-foreground">Najpierw wycena — waluta ze stawki.</p>
+      ) : (
+        <form
+          className="flex flex-col gap-2 md:flex-row md:flex-wrap md:items-end"
+          onSubmit={(event) => {
+            event.preventDefault()
+            if (quotationSkipsNbpCatalog(offerCurrency)) {
+              setPlnSkip(true)
+              setOfferNbp(null)
+              return
+            }
+            setPlnSkip(false)
+            nbpLookup.mutate()
+          }}
+        >
+          <label className="flex flex-col gap-1 text-xs">
+            quotation.currency
+            <select
+              aria-label="Waluta oferty"
+              className="h-8 rounded-md border border-border bg-card px-2 text-sm"
+              value={offerCurrency}
+              onChange={(event) => setOfferCurrency(event.target.value)}
+              required
+            >
+              <option value="">Waluta z listy wycen</option>
+              {args.currencies.map((iso) => (
+                <option key={iso} value={iso}>
+                  {iso}
+                </option>
+              ))}
+            </select>
+          </label>
+          <Input
+            aria-label="Dzień kursu oferty"
+            type="date"
+            value={offerOnDate}
+            onChange={(event) => setOfferOnDate(event.target.value)}
+            required
+          />
+          <Button type="submit" disabled={nbpLookup.isPending || !args.signedIn}>
+            Pokaż kurs NBP
+          </Button>
+        </form>
+      )}
+      {plnSkip ? (
+        <p className="text-sm text-muted-foreground">PLN — katalog 6.0 nie trzyma kursu PLN</p>
+      ) : null}
+      {nbpLookup.isError && !plnSkip ? (
+        <p className="text-sm text-destructive">{(nbpLookup.error as Error).message}</p>
+      ) : null}
+      {offerNbp ? (
+        <p className="font-mono text-xs">
+          {offerNbp.currency} {offerNbp.mid} {offerNbp.rate_date} {offerNbp.source_ref}
+        </p>
+      ) : null}
+    </fieldset>
+  )
 }
 
 export function QuotationCatalogPage() {
@@ -116,8 +206,8 @@ export function QuotationCatalogPage() {
       <header>
         <h2 className="text-base font-semibold">Wyceny</h2>
         <p className="text-xs text-muted-foreground">
-          quotation M-21 · kwota z bieżącego rate_line w SQL · POL/POD i kontrahent na wierszu · nie licz w
-          formularzu
+          quotation M-21 · kwota z bieżącego rate_line w SQL · kurs NBP z katalogu 6.0 · nie mnoż kwoty
+          w formularzu
         </p>
       </header>
 
@@ -251,6 +341,11 @@ export function QuotationCatalogPage() {
       {quoteMutation.isError ? (
         <p className="text-sm text-destructive">{(quoteMutation.error as Error).message}</p>
       ) : null}
+
+      {query.data ? (
+        <OfferNbpFieldset currencies={quotationCurrencies(query.data)} signedIn={signedIn} />
+      ) : null}
+
       {query.isPending ? <p className="text-sm text-muted-foreground">Pobieranie wycen…</p> : null}
       {query.isError ? <p className="text-sm text-destructive">{(query.error as Error).message}</p> : null}
       {query.data ? (

@@ -41,6 +41,14 @@ export function quotationCreateBody(args: {
   }
 }
 
+export function quotationCurrencies(rows: readonly Quotation[]): string[] {
+  return [...new Set(rows.map((row) => row.currency))].sort()
+}
+
+export function quotationSkipsNbpCatalog(currency: string): boolean {
+  return currency.trim().toUpperCase() === "PLN"
+}
+
 async function readQuotation(response: Response, fallback: string): Promise<Quotation> {
   if (!response.ok) {
     throw new ApiError(await readApiDetail(response, fallback), httpErrorStatus(response))

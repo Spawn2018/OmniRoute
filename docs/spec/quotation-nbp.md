@@ -1,17 +1,17 @@
 # M-23 waluty w ofercie — odczyt `nbp_rate` przy `quotation`
 
 **Moduł żywy:** M-23 (katalog `nbp_rate` z 6.0) + ekran M-21 `quotation`  
-**Plaster:** **16.0** (plan)  
-**Status:** plan — wycena **czyta** kurs tabeli A. Nie drugi katalog. Nie mnożenie kwoty.
+**Plaster:** **16.0** (zamknięty)  
+**Status:** wycena **czyta** kurs tabeli A. Nie drugi katalog. Nie mnożenie kwoty.
 
-Delta: [docs/deltas/open/16.0-quotation-nbp.md](../deltas/open/16.0-quotation-nbp.md).
+Delta: [docs/deltas/archived/16.0-quotation-nbp.md](../deltas/archived/16.0-quotation-nbp.md).
 
 ## 16.0 kurs przy ofercie
 
 ### Zakres
 
 - Na `/quotations`: panel „Kurs NBP waluty oferty” — `resolve` istniejącego `nbp_rate` (waluta + dzień)
-- Operator wpisuje ISO z wiersza wyceny (`quotation.currency`) i dzień; wynik to `mid` + `source_ref`
+- Operator wybiera ISO z listy wycen (`quotation.currency`) i dzień; wynik to `mid` + `source_ref`
 - PLN: komunikat, że katalog 6.0 nie trzyma PLN — bez wywołania resolve
 - Zero nowej tabeli. Zero importu `nbp_rates` z `quotations` service (niezależność BC)
 
