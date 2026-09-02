@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OmniRoute — mockup briefingu (wzorzec: Wyceny + Zlecenia)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Tokeny skopiowane z frontend/src/index.css (żywy app, nie makieta sprzedażowa hue-165). */
+:root {
+  --background: oklch(0.9756 0.0026 106.45);
+  --foreground: oklch(0.2178 0 0);
+  --card: oklch(1 0 0);
+  --muted: oklch(0.9513 0.004 106.48);
+  --muted-foreground: oklch(0.4748 0 0);
+  --border: oklch(0.8839 0.0068 106.54);
+  --ring: oklch(0.2178 0 0);
+  --primary: oklch(0.2178 0 0);
+  --primary-foreground: oklch(0.9756 0.0026 106.45);
+  --accent: oklch(0.4809 0.0908 170.11);
+  --accent-foreground: oklch(0.9756 0.0026 106.45);
+  --sidebar: oklch(0.9513 0.004 106.48);
+  --destructive: oklch(0.5003 0.1821 29.51);
+  --radius: 0.375rem;
+  --sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  color-scheme: light;
+}
+html.dark {
+  --background: oklch(0.2178 0 0);
+  --foreground: oklch(0.9756 0.0026 106.45);
+  --card: oklch(0.26 0 0);
+  --muted: oklch(0.3 0 0);
+  --muted-foreground: oklch(0.78 0 0);
+  --border: oklch(0.38 0 0);
+  --ring: oklch(0.9756 0.0026 106.45);
+  --primary: oklch(0.9756 0.0026 106.45);
+  --primary-foreground: oklch(0.2178 0 0);
+  --accent: oklch(0.72 0.09 170.11);
+  --accent-foreground: oklch(0.2178 0 0);
+  --sidebar: oklch(0.24 0 0);
+  --destructive: oklch(0.68 0.16 29.51);
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+button, input, select { font: inherit; color: inherit; }
+a { color: inherit; }
+.shell { display: flex; height: 100%; min-height: 0; }
+aside {
+  width: 11rem;
+  flex-shrink: 0;
+  border-right: 1px solid var(--border);
+  background: var(--sidebar);
+  display: flex;
+  flex-direction: column;
+}
+.brand { border-bottom: 1px solid var(--border); padding: 0.375rem 0.5rem; }
+.brand strong { font-size: 0.875rem; letter-spacing: -0.02em; }
+.brand span { display: block; font-size: 11px; color: var(--muted-foreground); }
+nav { display: flex; flex-direction: column; gap: 1px; padding: 0.25rem; overflow: auto; }
+nav button {
+  text-align: left;
+  border: 0;
+  background: transparent;
+  border-radius: var(--radius);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+nav button:hover { background: var(--muted); }
+nav button[aria-current="page"] { background: var(--muted); font-weight: 500; }
+nav .ghost { color: var(--muted-foreground); }
+.main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+header {
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--card);
+  padding: 0 1rem;
+}
+header h1 { margin: 0; font-size: 0.875rem; font-weight: 500; }
+.tools { display: flex; gap: 0.5rem; align-items: center; }
+.btn {
+  height: 2rem;
+  padding: 0 0.75rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--card);
+  cursor: pointer;
+  font-size: 0.75rem;
+}
+.btn:hover { background: var(--muted); }
+.btn-primary { background: var(--primary); color: var(--primary-foreground); border-color: transparent; }
+.btn-primary:hover { opacity: 0.9; }
+.surface { flex: 1; overflow: auto; padding: 1rem; display: flex; flex-direction: column; gap: 1rem; }
+.banner {
+  border: 1px solid var(--border);
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 0.75rem;
+}
+.banner h2 { margin: 0 0 0.25rem; font-size: 0.875rem; font-weight: 600; }
+.banner p { margin: 0; font-size: 0.75rem; color: var(--muted-foreground); }
+.heading h2 { margin: 0; font-size: 1rem; font-weight: 600; }
+.heading p { margin: 0.15rem 0 0; font-size: 0.75rem; color: var(--muted-foreground); }
+.panel {
+  padding: 0.75rem;
+  outline: 1px solid var(--border);
+  background: var(--card);
+  border-radius: var(--radius);
+}
+.panel h3 { margin: 0 0 0.25rem; font-size: 0.875rem; font-weight: 500; }
+.panel .sub { margin: 0 0 0.5rem; font-size: 0.75rem; color: var(--muted-foreground); }
+.grid-2 { display: grid; gap: 1rem; }
+@media (min-width: 900px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
+table { width: 100%; border-collapse: collapse; font-size: 0.75rem; }
+th, td { text-align: left; padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--border); }
+th { font-weight: 500; color: var(--muted-foreground); }
+.mono { font-family: var(--mono); font-size: 0.7rem; }
+.money {
+  display: inline-grid;
+  grid-template-columns: minmax(6ch, auto) 5.5ch 3.25ch;
+  column-gap: 0.35ch;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.money .i { text-align: right; }
+.money .f, .money .c { text-align: left; }
+label.field { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.75rem; }
+select, input[type="text"] {
+  height: 2rem;
+  border: 1px solid var(--border);
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 0 0.5rem;
+}
+.filters { display: grid; gap: 0.5rem; }
+@media (min-width: 700px) { .filters { grid-template-columns: repeat(3, 1fr); } }
+.list { margin: 0; padding: 0; list-style: none; }
+.list li { font-size: 0.75rem; padding: 0.15rem 0; }
+.ghost-map {
+  min-height: 8rem;
+  border: 1px dashed var(--border);
+  background: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+.hitl {
+  display: grid;
+  gap: 0.75rem;
+}
+@media (min-width: 900px) { .hitl { grid-template-columns: 1.2fr 1fr; } }
+.pdf {
+  min-height: 12rem;
+  background: var(--muted);
+  border: 1px solid var(--border);
+  padding: 0.75rem;
+  font-size: 0.75rem;
+}
+.chip {
+  display: inline-block;
+  font-size: 11px;
+  padding: 0.1rem 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--muted-foreground);
+}
+[hidden] { display: none !important; }
+:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside>
+    <div class="brand">
+      <strong>OmniRoute</strong>
+      <span>gęsty admin</span>
+    </div>
+    <nav id="nav" aria-label="Ekrany mockupu">
+      <button type="button" data-view="why" aria-current="page">Dlaczego niedokończony</button>
+      <button type="button" data-view="quote">Wyceny</button>
+      <button type="button" data-view="ship">Zlecenia</button>
+      <button type="button" data-view="tower" class="ghost">Watchtower (wizja)</button>
+      <button type="button" data-view="hitl">Ekstrakcje HITL</button>
+      <button type="button" data-view="fin" class="ghost">Tablica finansowa</button>
+    </nav>
+  </aside>
+  <div class="main">
+    <header>
+      <h1>Platforma spedycyjna</h1>
+      <div class="tools">
+        <span class="chip" title="Tenant zawsze w shellu — ADR-0003">tenant demo-a</span>
+        <button class="btn" type="button" id="theme">Motyw</button>
+        <button class="btn" type="button" disabled title="⌘K żyje w appie, nie w tym pliku">Akcje ⌘K</button>
+      </div>
+    </header>
+    <main class="surface" id="stage">
+      <section class="banner">
+        <h2>To nie jest produkt. To mockup briefingu dla Claude.</h2>
+        <p>
+          Wzorzec stylistyczny, kolorystyczny i graficzny: żywe ekrany
+          <strong>Wyceny</strong> (<code>/quotations</code>) i <strong>Zlecenia</strong>
+          (<code>/shipments</code>) — IBM Plex Sans, OKLCH z <code>frontend/src/index.css</code>,
+          radius 0.375rem, CatalogHeading (tytuł + podtytuł „nie X”), panele
+          <code>outline 1px border</code>, kwoty jako string z osi integer/fraction/ISO,
+          sidebar 11rem, header 2.5rem. Nie użyto makiety sprzedażowej hue-165
+          z <code>docs/design/omniroute-ui.html</code>.
+        </p>
+      </section>
+
+      <article id="view-why">
+        <div class="heading">
+          <h2>Dlaczego mockup jest niedokończony</h2>
+          <p>świadomy stan · nie niedoróbka grafika · nie drugi frontend</p>
+        </div>
+        <div class="panel">
+          <h3>1. Produkt w kodzie jest fundamentem tablic, nie wieżą operacyjną</h3>
+          <p class="sub">Audyt 2026-09-02: 27 tablic-odczyt, 8 nakładek na /quotations, 18 katalogów z tabelą.</p>
+          <p>
+            Żywe <strong>Zlecenia</strong> to ~40 linii: filtr wycen z <code>party_id</code>,
+            link do /quotations, podtytuł „nie tabela · nie tracking”. Żywe
+            <strong>Wyceny</strong> to najgęstszy ekran (tabela DataTableShell + panele
+            NBP / ryzyko / dokument / pending) — nadal jedna tabela <code>quotation</code>,
+            bez PDF, bez won/lost, bez skrzynki.
+          </p>
+        </div>
+        <div class="grid-2">
+          <div class="panel">
+            <h3>2. Fala S dopiero zdejmuje „nie X”</h3>
+            <p class="sub">CURRENT: po 64.0 S1; następny S2 resolve_email na inbound_message</p>
+            <p>Tabela <code>shipment</code> = S28. Watchtower = S32. Mapa = lazy chunk, nie initial JS (ADR-0003). Ten plik pokazuje duch celu, nie zaimplementowany S32.</p>
+          </div>
+          <div class="panel">
+            <h3>3. Tablice-odczyty nie idą na notę 5,0</h3>
+            <p class="sub">PLAN § Cel jakości</p>
+            <p>Makieta nie dorysowuje KSeF, IMAP, Office.js ani giełdy. Szare pozycje w nav to wizja / tablica. Kwoty poniżej są literalnym stringiem — ten HTML <strong>nie sumuje</strong> w JS (HC-02).</p>
+          </div>
+          <div class="panel">
+            <h3>4. To artefakt dla Claude, nie plaster UI</h3>
+            <p class="sub">docs/design/ · nie bundel Vite · nie frontend/src</p>
+            <p>Nie zastępuje ADR-0003 ani leftoverów U-oklch-dark / U-print. Nie wolno wklejać tego HTML do aplikacji jako „gotowy ekran”.</p>
+          </div>
+          <div class="panel">
+            <h3>5. Czego tu celowo nie ma</h3>
+            <p class="sub">żeby Claude nie wziął makiety za zakres S1</p>
+            <ul class="list">
+              <li>brak mapy (własny budżet chunka)</li>
+              <li>brak accept HITL (optimistic zakazany)</li>
+              <li>brak liczenia marży w przeglądarce</li>
+              <li>brak portalów M-61…67</li>
+              <li>⌘K wyłączone — żyje w AppShell</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article id="view-quote" hidden>
+        <div class="heading">
+          <h2>Wyceny</h2>
+          <p>quotation M-21 · SQL z rate_line · panele Fali 3 = nakładki · nie marża · nie PDF</p>
+        </div>
+        <div class="filters">
+          <label class="field">filtr party_id
+            <select aria-label="Filtr kontrahenta">
+              <option>Wszyscy kontrahenci</option>
+              <option>Baltic Forwarding sp. z o.o.</option>
+            </select>
+          </label>
+          <label class="field">filtr origin_port_id
+            <select aria-label="Filtr POL">
+              <option>Wszystkie POL</option>
+              <option>CNSHA Shanghai</option>
+            </select>
+          </label>
+          <label class="field">filtr destination_port_id
+            <select aria-label="Filtr POD">
+              <option>Wszystkie POD</option>
+              <option>PLGDY Gdynia</option>
+            </select>
+          </label>
+        </div>
+        <div class="panel" style="overflow:auto">
+          <table>
+            <thead>
+              <tr>
+                <th>Kod opłaty</th>
+                <th>Kwota ze stawki</th>
+                <th>Kontrahent</th>
+                <th>POL</th>
+                <th>POD</th>
+                <th>Pochodzenie</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>OCEAN_FRT</td>
+                <td><span class="money"><span class="i">1 850</span><span class="f">.00</span><span class="c">USD</span></span></td>
+                <td class="mono">party-ba…</td>
+                <td class="mono">CNSHA</td>
+                <td class="mono">PLGDY</td>
+                <td>extract:draft-1042</td>
+              </tr>
+              <tr>
+                <td>THC_POD</td>
+                <td><span class="money"><span class="i">420</span><span class="f">.00</span><span class="c">EUR</span></span></td>
+                <td class="mono">party-ba…</td>
+                <td class="mono">CNSHA</td>
+                <td class="mono">PLGDY</td>
+                <td>tenant:manual</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="grid-2">
+          <div class="panel">
+            <h3>Dokument oferty</h3>
+            <p class="sub">fakty z quotation · nie PDF · nie szablon FV</p>
+            <label class="field">quotation.id
+              <select aria-label="Wycena do dokumentu">
+                <option>Wybierz wycenę</option>
+                <option selected>OCEAN_FRT</option>
+              </select>
+            </label>
+            <p class="sub" style="margin-top:0.5rem">Kod opłaty OCEAN_FRT · source_ref extract:draft-1042</p>
+          </div>
+          <div class="panel">
+            <h3>Akceptacja oferty</h3>
+            <p class="sub">brak zapisu w bazie · nie HITL extract · nie skrzynka</p>
+            <ul class="list">
+              <li>OCEAN_FRT <span class="money"><span class="i">1 850</span><span class="f">.00</span><span class="c">USD</span></span></li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article id="view-ship" hidden>
+        <div class="heading">
+          <h2>Zlecenia</h2>
+          <p>shipment M-35 · wyceny z party_id · nie tabela · nie tracking</p>
+        </div>
+        <div class="panel">
+          <p class="sub">Tak wygląda żywy ekran: lista linków, nie karta zlecenia. Poniżej — duch S28, wyszarzony.</p>
+          <ul class="list">
+            <li><a href="#quote" id="to-quote">OCEAN_FRT</a> <span class="money"><span class="i">1 850</span><span class="f">.00</span><span class="c">USD</span></span></li>
+            <li><a href="#quote">THC_POD</a> <span class="money"><span class="i">420</span><span class="f">.00</span><span class="c">EUR</span></span></li>
+          </ul>
+        </div>
+        <div class="panel" style="opacity:0.55">
+          <h3>S28 — tabela shipment (jeszcze nie w kodzie)</h3>
+          <p class="sub">po screeningu S25–S27 · nie ta tablica wycen</p>
+          <p>SHA-GDY-1042 · CNSHA–PLGDY · status: nie istnieje w bazie tego mockupu.</p>
+        </div>
+      </article>
+
+      <article id="view-tower" hidden>
+        <div class="heading">
+          <h2>Watchtower</h2>
+          <p>wizja ui-06 · S32 po shipment + eventach · mapa poza initial JS</p>
+        </div>
+        <div class="ghost-map">
+          Miejsce na leniwy chunk mapy. Nie renderować silnika map w tym pliku
+          ani w paczce początkowej (&lt; 250 kB gzip).
+        </div>
+        <div class="panel">
+          <h3>Wyjątki (makieta, nie M-37 tabela)</h3>
+          <p class="sub">dziś /exceptions = wyceny bez pełnego POL/POD</p>
+          <ul class="list">
+            <li>EX-441 SHA-GDY-1042 — dwell (fakt z canvasu, nie z API)</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="view-hitl" hidden>
+        <div class="heading">
+          <h2>Ekstrakcje HITL</h2>
+          <p>M-20 · draft → accept · Art. 50 · optimistic accept zakazany</p>
+        </div>
+        <div class="hitl">
+          <div class="pdf">
+            <p>PDF / spany (U-pdf-spans). Mockup nie ładuje pdf.js.</p>
+            <p class="sub">source_ref: cennik-armator-kwiecien.pdf</p>
+          </div>
+          <div class="panel">
+            <h3>Kandydat</h3>
+            <p class="sub">confidence per pole · nie zapis rate_line z tego panelu</p>
+            <p>OCEAN_FRT · 1850.00 USD · przycisk Akceptuj w produkcie czeka na człowieka.</p>
+            <button class="btn-primary btn" type="button" disabled>Akceptuj (wyłączone w mockupie)</button>
+          </div>
+        </div>
+      </article>
+
+      <article id="view-fin" hidden>
+        <div class="heading">
+          <h2>Tablica finansowa</h2>
+          <p>finance_board M-15 · odczyt marży / NBP / limitu · nie silnik AI · LLM nie liczy</p>
+        </div>
+        <div class="panel">
+          <table>
+            <thead>
+              <tr><th>Kod</th><th>Marża z charge.margin</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>OCEAN_FRT</td>
+                <td><span class="money"><span class="i">210</span><span class="f">.00</span><span class="c">USD</span></span></td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="sub" style="margin-top:0.5rem">Wartość marży pochodzi z serwera (string). Ten plik jej nie wylicza.</p>
+        </div>
+      </article>
+    </main>
+  </div>
+</div>
+<script>
+(function () {
+  var views = ["why", "quote", "ship", "tower", "hitl", "fin"];
+  function show(id) {
+    views.forEach(function (v) {
+      document.getElementById("view-" + v).hidden = v !== id;
+    });
+    document.querySelectorAll("#nav button").forEach(function (btn) {
+      btn.setAttribute("aria-current", btn.getAttribute("data-view") === id ? "page" : null);
+    });
+  }
+  document.getElementById("nav").addEventListener("click", function (event) {
+    var btn = event.target.closest("button[data-view]");
+    if (!btn) return;
+    show(btn.getAttribute("data-view"));
+  });
+  document.getElementById("theme").addEventListener("click", function () {
+    document.documentElement.classList.toggle("dark");
+  });
+  document.getElementById("to-quote").addEventListener("click", function (event) {
+    event.preventDefault();
+    show("quote");
+  });
+})();
+</script>
+</body>
+</html>
