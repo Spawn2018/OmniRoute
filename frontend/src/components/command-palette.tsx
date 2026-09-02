@@ -19,6 +19,7 @@ const NAV_ACTIONS = [
   { id: "nav-invoices", label: "Idź do faktur", to: "/invoices" },
   { id: "nav-quote-invoices", label: "Idź do rozliczenia wyceny", to: "/quote-invoices" },
   { id: "nav-payments", label: "Idź do banku i płatności", to: "/payments" },
+  { id: "nav-money-cost", label: "Idź do kosztu pieniądza", to: "/money-cost" },
   { id: "nav-mail", label: "Idź do tablicy poczty", to: "/mail" },
   { id: "nav-notifications", label: "Idź do powiadomień", to: "/notifications" },
   { id: "nav-shipments", label: "Idź do zleceń", to: "/shipments" },

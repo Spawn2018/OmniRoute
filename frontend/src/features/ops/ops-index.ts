@@ -29,6 +29,11 @@ export const OPS_JOBS = [
     job: "IBAN kontrahenta i sell z charge",
   },
   {
+    route: BUSINESS_LISTS.moneyCost.route,
+    label: "Koszt pieniądza",
+    job: "NBP i buy z charge",
+  },
+  {
     route: BUSINESS_LISTS.mailIntegration.route,
     label: "Poczta",
     job: "odczyt domen i kontaktów",
@@ -180,6 +185,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "33.0": "/invoices",
   "34.0": "/quote-invoices",
   "35.0": "/payments",
+  "36.0": "/money-cost",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

@@ -24,6 +24,7 @@ import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as InvoicesRouteImport } from './routes/invoices'
 import { Route as LocationsRouteImport } from './routes/locations'
 import { Route as MailRouteImport } from './routes/mail'
+import { Route as MoneyCostRouteImport } from './routes/money-cost'
 import { Route as NbpRatesRouteImport } from './routes/nbp-rates'
 import { Route as NetworksRouteImport } from './routes/networks'
 import { Route as NotificationsRouteImport } from './routes/notifications'
@@ -116,6 +117,11 @@ const LocationsRoute = LocationsRouteImport.update({
 const MailRoute = MailRouteImport.update({
   id: '/mail',
   path: '/mail',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MoneyCostRoute = MoneyCostRouteImport.update({
+  id: '/money-cost',
+  path: '/money-cost',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NbpRatesRoute = NbpRatesRouteImport.update({
@@ -225,6 +231,7 @@ export interface FileRoutesByFullPath {
   '/invoices': typeof InvoicesRoute
   '/locations': typeof LocationsRoute
   '/mail': typeof MailRoute
+  '/money-cost': typeof MoneyCostRoute
   '/nbp-rates': typeof NbpRatesRoute
   '/networks': typeof NetworksRoute
   '/notifications': typeof NotificationsRoute
@@ -260,6 +267,7 @@ export interface FileRoutesByTo {
   '/invoices': typeof InvoicesRoute
   '/locations': typeof LocationsRoute
   '/mail': typeof MailRoute
+  '/money-cost': typeof MoneyCostRoute
   '/nbp-rates': typeof NbpRatesRoute
   '/networks': typeof NetworksRoute
   '/notifications': typeof NotificationsRoute
@@ -296,6 +304,7 @@ export interface FileRoutesById {
   '/invoices': typeof InvoicesRoute
   '/locations': typeof LocationsRoute
   '/mail': typeof MailRoute
+  '/money-cost': typeof MoneyCostRoute
   '/nbp-rates': typeof NbpRatesRoute
   '/networks': typeof NetworksRoute
   '/notifications': typeof NotificationsRoute
@@ -333,6 +342,7 @@ export interface FileRouteTypes {
     | '/invoices'
     | '/locations'
     | '/mail'
+    | '/money-cost'
     | '/nbp-rates'
     | '/networks'
     | '/notifications'
@@ -368,6 +378,7 @@ export interface FileRouteTypes {
     | '/invoices'
     | '/locations'
     | '/mail'
+    | '/money-cost'
     | '/nbp-rates'
     | '/networks'
     | '/notifications'
@@ -403,6 +414,7 @@ export interface FileRouteTypes {
     | '/invoices'
     | '/locations'
     | '/mail'
+    | '/money-cost'
     | '/nbp-rates'
     | '/networks'
     | '/notifications'
@@ -439,6 +451,7 @@ export interface RootRouteChildren {
   InvoicesRoute: typeof InvoicesRoute
   LocationsRoute: typeof LocationsRoute
   MailRoute: typeof MailRoute
+  MoneyCostRoute: typeof MoneyCostRoute
   NbpRatesRoute: typeof NbpRatesRoute
   NetworksRoute: typeof NetworksRoute
   NotificationsRoute: typeof NotificationsRoute
@@ -564,6 +577,13 @@ declare module '@tanstack/react-router' {
       path: '/mail'
       fullPath: '/mail'
       preLoaderRoute: typeof MailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/money-cost': {
+      id: '/money-cost'
+      path: '/money-cost'
+      fullPath: '/money-cost'
+      preLoaderRoute: typeof MoneyCostRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/nbp-rates': {
@@ -711,6 +731,7 @@ const rootRouteChildren: RootRouteChildren = {
   InvoicesRoute: InvoicesRoute,
   LocationsRoute: LocationsRoute,
   MailRoute: MailRoute,
+  MoneyCostRoute: MoneyCostRoute,
   NbpRatesRoute: NbpRatesRoute,
   NetworksRoute: NetworksRoute,
   NotificationsRoute: NotificationsRoute,

@@ -61,6 +61,7 @@ describe("business list density", () => {
     expect(BUSINESS_LISTS.salesInvoice.tableKey).toBe("sales_invoice")
     expect(BUSINESS_LISTS.quoteInvoiceSettlement.tableKey).toBe("quote_invoice_settlement")
     expect(BUSINESS_LISTS.bankPayment.tableKey).toBe("bank_payment")
+    expect(BUSINESS_LISTS.moneyCost.tableKey).toBe("money_cost")
     expect(BUSINESS_LISTS.mailIntegration.tableKey).toBe("mail_integration")
     expect(BUSINESS_LISTS.operatorNotice.tableKey).toBe("operator_notice")
     expect(BUSINESS_LISTS.shipment.tableKey).toBe("shipment")

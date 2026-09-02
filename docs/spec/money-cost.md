@@ -1,10 +1,10 @@
 # M-43 koszt pieniądza — tablica `nbp_rate` + `buy` z `charge`
 
 **Moduł żywy:** M-43 (token UI `money_cost`, nie tabela) + katalog M-23 `nbp_rate` + M-08 `charge`  
-**Plaster:** **36.0** (do `/plaster`)  
+**Plaster:** **36.0** (zamknięty)  
 **Status:** operator **widzi** kurs NBP i kupno z `charge`. Nie tabela odsetek. Nie mnożenie.
 
-Delta: [docs/deltas/open/36.0-money-cost.md](../deltas/open/36.0-money-cost.md).
+Delta: [docs/deltas/archived/36.0-money-cost.md](../deltas/archived/36.0-money-cost.md).
 
 ## 36.0 tablica odczytu na `/money-cost`
 
