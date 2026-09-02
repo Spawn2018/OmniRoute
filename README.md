@@ -39,7 +39,7 @@ Seed: `scripts/dev_seed_local.py`.
 <!-- os-status:start -->
 - **Ostatni plaster:** **30.0** M-37 `operational_exception` tablica `/exceptions` (zarchiwizowany)
 - **Etap:** Plan
-- **Następny:** M-38 Dokumenty zlecenia (`/plan-modul`). Nie zgaduj schematu. Nie nowa tabela.
+- **Następny:** `/plaster` 31.0 M-38 `shipment_document` tablica `/shipment-documents`. Nie nowa tabela. Nie zgaduj schematu HBL.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

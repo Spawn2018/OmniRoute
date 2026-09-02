@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** M-38 Dokumenty zlecenia (`/plan-modul`). Nie zgaduj schematu. Nie nowa tabela.
+**Następny (zablokowany):** `/plaster` 31.0 M-38 `shipment_document` tablica `/shipment-documents`. Nie nowa tabela. Nie zgaduj schematu HBL.
 <!-- os-status:end -->
 
 ```mermaid
@@ -339,7 +339,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | F5.0 | **M-35 Zlecenie** | 28.0 | zamknięty (`docs/deltas/archived/28.0-shipment.md`) |
 | F5.1 | **M-36 Tracking** | 29.0 | zamknięty (`docs/deltas/archived/29.0-tracking.md`) |
 | F5.2 | **M-37 Wyjątki** | 30.0 | zamknięty (`docs/deltas/archived/30.0-operational-exception.md`) |
-| F5.3 | **M-38 Dokumenty zlecenia** | Plan | kolejka (`/plan-modul`; nie zgaduj schematu) |
+| F5.3 | **M-38 Dokumenty zlecenia** | Plan | delta `docs/deltas/open/31.0-shipment-document.md` |
 
 ### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster
 
