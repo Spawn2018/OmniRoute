@@ -40,6 +40,16 @@ def test_plaster_command_when_etap_is_agent() -> None:
     assert status.command == "/plaster"
 
 
+def test_refaktor_command_when_etap_is_refaktor() -> None:
+    sync = _load()
+    status = sync.parse_current(
+        "**Ostatni plaster:** **59.0** kanon jakości\n"
+        "**Etap:** Refaktor\n"
+        "**Następny:** Q-E1 katalogi do 4,4\n"
+    )
+    assert status.command == "/refaktor"
+
+
 def test_missing_field_raises() -> None:
     sync = _load()
     try:

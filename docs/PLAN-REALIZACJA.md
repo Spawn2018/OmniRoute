@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** brak pozycji w kolejce. F9.1 M-58–M-60 bez żywej nazwy — nie zgaduj. Parked: M-02, Auth0, portale.
+**Następny (zablokowany):** Q-E1 `/refaktor` — katalogi Grupa A do 4,4 (`catalog-parts`). Nie F9.1. Parked: M-02, Auth0, portale.
 <!-- os-status:end -->
 
 ```mermaid
@@ -47,7 +47,17 @@ Dwa katalogi to nie dwa produkty. Archiwum = magazyn specyfikacji. `MODULES.md` 
 
 ## Cel produktu
 
-Wielodostępna platforma spedycyjna na sprzedaż: stawki, wyceny, zlecenia; wielu tenantów; ruch produkcyjny. Praktyki ~4.4, nie teatr 5.0. Horyzont „12m” = standing rules i anti-cele, nie „czekaj rok na moduły”.
+Wielodostępna platforma spedycyjna na sprzedaż: stawki, wyceny, zlecenia; wielu tenantów; ruch produkcyjny. Horyzont „12m” = standing rules i anti-cele, nie „czekaj rok na moduły”.
+
+## Cel jakości (4,4–5)
+
+Spedytor kończy job w czasie, który da się zmierzyć. Następny człowiek czyta kod i dokument jak czyjąś utrzymywaną rzecz, nie jak noc generatora. Cokolwiek nie jest **4,4** zostaje nazwane albo spłacone w tej samej cegiełce. Zielony gate jest podłogą, nie celem.
+
+Nota **4,4–5** stawia karta i diff — nie prompt „pisz jak senior”. Kalibracja: **5,0** = `charge.margin` + niemutowalna `rate_line` + `source_ref` + HITL przed stawką; **4,4** = to samo plus drobna kopia na trzy ruchy `/refaktor`; **3,x** = generator (bliźniaczy katalog, sklonowany nagłówek modelu); **2,x** = nowa nazwa M-xx, stara tabela. Cel 4,4–5 = **Grupa A** (własna tabela, zapis, izolacja). Tablice-odczyty Fal 3–11 nie idą na 5,0: makieta w docs albo prawdziwy moduł.
+
+Trzy twarde reguły: (1) szybkość jest liczbą z budżetu AGENTS albo jawnym N/A — k6-echo nie zamyka; (2) dług ukryty zakazany — wiersz w [docs-debt.md](ops/docs-debt.md) z „dlaczego” albo gwoźdź w diffie; (3) komentarz mówi *dlaczego* (ustawa, HC), linia powtarzająca kod obniża notę. Dokumentacja programu ≠ `AGENTS.md`.
+
+Procedura nie jedzie „aż 5,0 sama”. Hamulec: karta [post-plaster.md](ops/post-plaster.md). Spłata starego 3,x: `/refaktor` (max 3). Kolejka: **Fala E** poniżej, **przed** F9.1. F9.1 bez żywej nazwy — nie zgaduj.
 
 ---
 
@@ -278,8 +288,10 @@ Kolejka poniżej **zdejmuje z Ciebie pamiętanie „co dalej”**. Agent czyta `
 |---|---|---|---|
 | **Plan** | Każda nowa pozycja kolejki, zanim powstanie kod — zwłaszcza **wydmuszka** (moduł z katalogu M-xx, którego jeszcze nie ma w `MODULES.md` jako fundament) | `/plan-modul` | Rozmowa: job operatora, tabele, UI, poza zakresem, kolizje ID. Wynik: delta w `docs/deltas/open/` + spec szkielet + `CURRENT.md` z zakresem. **Zero kodu produktu.** |
 | **Agent** | Dopiero gdy Plan tej pozycji jest **zaakceptowany** (delta bez „DO USTALENIA” blokujących) | `/plaster` | Pionowy plaster: migracja → RLS → izolacja → API → UI → test → post-plaster → push. |
+| **Refaktor** | `CURRENT.md` **Etap: Refaktor** (Fala E, Q-E1 i kolejne sloty `/refaktor`) | `/refaktor` | Max 3 ruchy, zachowanie bez zmian, testy bez zmiany asercji. Nie nowy M-xx. |
 
 `/plaster` przy `CURRENT.md` **Etap: Plan** = **stop**. Nie implementuj. Powiedz, żeby przełączyć na Plan i odpalić `/plan-modul`.
+`/plaster` przy **Etap: Refaktor** = **stop**. Odpal `/refaktor`.
 
 Wydmuszka ≠ 70 pustych stubów w repo. Plan ustala **jeden** plaster. Kod powstaje dopiero w Agent.
 
@@ -290,6 +302,8 @@ Wydmuszka ≠ 70 pustych stubów w repo. Plan ustala **jeden** plaster. Kod pows
 Źródło nazw: archiwum `REJESTR-MODULOW-I-PLAN-v2.md` (na dysku, nie dumpować specyfikacji). **Kolejność budowy ≠ numer M-xx** — numery archiwum i żywy kod się rozjechały (patrz mapa kolizji).
 
 Po zamknięciu plastra `CURRENT.md` = **następna pozycja Q**. Nie pytaj operatora „co chcesz”. Wykonaj tryb z kolumny. Q1 ma trzy żywe plastry (4.0 → 4.1 → 4.2); Q2 dopiero po 4.2.
+
+Po Fali 11 i leftover FE: **Fala E (Q-E1…E4) przed F9.1**. F9.1 bez żywej nazwy — nie zgaduj. Q-E0 = 59.0 (kanon w tym dokumencie).
 
 ### Mapa kolizji ID (czytaj zanim nazwiesz tabelę)
 
@@ -362,6 +376,11 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | F11.0 | **M-68 Obserwowalność** | 48.0 | zamknięty (`docs/deltas/archived/48.0-observability.md`) |
 | F11.1 | **M-69 Jakość** | 49.0 | zamknięty (`docs/deltas/archived/49.0-extraction-quality.md`) |
 | F11.2 | **M-70 Wdrożenie** | 50.0 | zamknięty (`docs/deltas/archived/50.0-tenant-rollout.md`) |
+| **Q-E0** | Kanon jakości 4,4–5 w tym dokumencie | 59.0 | zamknięty (ten wiersz) |
+| **Q-E1** | `/refaktor` — katalogi Grupa A do 4,4 (`catalog-parts`) | `/refaktor` | **następny** |
+| **Q-E2** | Testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy) | Plan → plaster | po Q-E1 |
+| **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | Plaster docs | po Q-E2 |
+| **Q-E4** | Threat model tenant+HITL + CodeQL w CI | Plan → plaster | po Q-E3 |
 
 ### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster
 
@@ -447,9 +466,9 @@ Nie implementuj z tej tabeli „na zapas”. To mapa, żeby nic nie zginęło. S
 
 ## Anti-cele (odmów) + nie pytaj ponownie
 
-Temporal/Hatchet/outbox na zapas · Infisical · 70 pustych M-xx · k6 50k · OTel-sprint · `just perf` / k6 echo jako DoD · Presidio na każdym endpoincie · żywy OpenAI w gate · `can_*` = member · accept bez HITL · hasła+Auth0 w jednym plasterze · persony `.cursor/agents/` · dump Claude · zmiana starych migracji · Next.js · pgvector „bo stos” · required checks na Free · twierdzenie że 0.12 = IdP · OCR-teatr · zamknięcie Wave FE na adapter+RTL · „powierzchnia 2026” przed Exit Wave FE · auto credit scoring `natural_person` / JDG · zdejmowanie HITL w D0 · Base UI bez ADR · mapa w initial JS · optimistic na kwocie/`accept` · cztery silniki tabel Fiori.
+Temporal/Hatchet/outbox na zapas · Infisical · 70 pustych M-xx · k6 50k · OTel-sprint · `just perf` / k6 echo jako DoD · Presidio na każdym endpoincie · żywy OpenAI w gate · `can_*` = member · accept bez HITL · hasła+Auth0 w jednym plasterze · persony `.cursor/agents/` · dump Claude · zmiana starych migracji · Next.js · pgvector „bo stos” · required checks na Free · twierdzenie że 0.12 = IdP · OCR-teatr · zamknięcie Wave FE na adapter+RTL · „powierzchnia 2026” przed Exit Wave FE · auto credit scoring `natural_person` / JDG · zdejmowanie HITL w D0 · Base UI bez ADR · mapa w initial JS · optimistic na kwocie/`accept` · cztery silniki tabel Fiori · 5,0 na tablicy-odczycie · agent sam sobie stawia 4,4 · „szybkie” przy 0 wierszach `rate_line` · drugi plik `AUDIT_PLAN.md` · `.cursorrules` obok AGENTS.
 
-**Nie pytaj ponownie:** Auth0 I1/I2 (aż user ma tenant), IdP, Infisical, Temporal, Pro, dump, „adapter wystarczy na powierzchnię 2026”, „0.12/0.15 = IdP”, start M-02 bez zdarzeń, kompromis na Exit Wave FE.
+**Nie pytaj ponownie:** Auth0 I1/I2 (aż user ma tenant), IdP, Infisical, Temporal, Pro, dump, „adapter wystarczy na powierzchnię 2026”, „0.12/0.15 = IdP”, start M-02 bez zdarzeń, kompromis na Exit Wave FE, F9.1 bez żywej nazwy.
 
 **Nie ruszać:** ręczny edit `frontend/src/api/*` (flatten anyOf\|null → cast w wrapperze); fałszywy `refactor_ratio`; persony `.cursor/agents/`.
 
@@ -472,13 +491,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/refaktor` (Etap z CURRENT.md).
 
 ```
-/plaster
+/refaktor
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

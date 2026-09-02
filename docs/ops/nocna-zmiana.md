@@ -18,10 +18,11 @@ Ty: komputer nie usypia, Cursor otwarty, **żaden inny agent nie pisze**.
 
 ## Pętla
 
-1. **`/plan-modul` w Agencie** (nie przełączaj na tryb Plan w Cursorze — ten ekran czeka na Ciebie). Opcja rekomendowana. Delta + CURRENT. **Commit i push.** Zero kodu produktu.
-2. **`/plaster`**: plan plików bez `akceptuję` → czerwone `/testy` → kod → zamknięcie. **Commit i push** na `origin/main`. Naprawia do skutku. Po pushu czeka na CI GitHub i poprawia, aż zielone albo padnie godzina.
-3. Kolejny plaster tego modułu, potem kolejny moduł z kolejki — aż do godziny.
-4. Po godzinie: nie zaczyna nowego planu ani plastra. Dokańcza rozgrzebane, puszcza, **raport**.
+1. Czytaj `CURRENT.md`. **Etap: Refaktor** → `/refaktor` (max 3), karta post-plaster, commit i push — nie `/plan-modul`.
+2. **Etap: Plan** → `/plan-modul` w Agencie (nie przełączaj na tryb Plan w Cursorze — ten ekran czeka na Ciebie). Opcja rekomendowana. Delta + CURRENT. **Commit i push.** Zero kodu produktu.
+3. **`/plaster`** (gdy Etap nie jest Plan ani Refaktor): plan plików bez `akceptuję` → czerwone `/testy` → kod → `/po-plastrze` → zamknięcie. **Commit i push** na `origin/main`. Naprawia do skutku. Po pushu czeka na CI GitHub i poprawia, aż zielone albo padnie godzina.
+4. Kolejny plaster tego modułu, potem kolejne Q z PLAN (Fala E przed F9.1) — aż do godziny.
+5. Po godzinie: nie zaczyna nowego planu ani plastra. Dokańcza rozgrzebane, puszcza, **raport**.
 
 Planowanie zostaje (delta, zakres, testy zanim kod). Znika tylko czekanie na kliknięcie.
 

@@ -6,7 +6,7 @@ Obowiązkowa **przed** push i przed następnym plasterem. Nie zastępuje `just g
 Bramka (`/bramka`, skill `pr-review`) **mierzy** i nie naprawia.
 Ten plik: po tabeli **napraw** to, co nie psuje jakości; reszta → [docs-debt.md](docs-debt.md).
 
-To nie jest drugi plan produktu. `/refaktor` = slot tygodniowy poza plasterem; nie zastępuje tej tabeli. Tabela jest na **diffie plastra**. Jednorazowy pomiar całego drzewa = leftover / baseline, nie rytm co plaster.
+To nie jest drugi plan produktu. Gwiazda: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Cel jakości (4,4–5). `/refaktor` = spłata starego 3,x (max 3); nie zastępuje tej tabeli. Tabela jest na **diffie plastra**. Nota 4,4 stawia karta, nie autorecenzja. Tablice-odczyty nie idą na 5,0.
 
 Po kodzie: komenda `/po-plastrze` (pełna tabela, zero skrótu), dopiero potem `/zamknij`. `/noc` nie pomija tej kartki.
 

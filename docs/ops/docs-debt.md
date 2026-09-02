@@ -8,6 +8,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 
 **Zrobione w syncu (nie wracać):** nagłówek PLAN nie mówi „0.5 lokalnie”; `just test` pada przy failu unita (bez `|| true`).
 
+- **59.0 Fala E w kolejce:** kanon 4,4–5 w PLAN; Q-E1 = `/refaktor` katalogi. Nie 5,0 na tablicach-odczytach. Q-E2…E4 zostają w PLAN do skutku kolejki, nie „aż agent sam”.
+
 - **58.0 baseline karty jakości (całe drzewo, nie rytm co plaster):** C901 czyste. jscpd 2,81% total (python 3,48% linii = nagłówki modeli + katalogi FE; gate liczy total). `refactor_ratio` 0,6% / 10% za 4 tyg. — slot `/refaktor`, nie mixin 40 modeli tutaj. N+1: `quote_batch` pętla max 20 = leftover 20.0. EXPLAIN wyceny na `omniroute`: Index Scan `ix_rate_line_current_charge_code`; `rate_line` = 0 wierszy — p95 50k = N/A aż będzie seed. Proza operatora rdzenia: `docs/operator/ścieżka-pieniędzy.md`. Reszta jobów zapisu (kontrahent, katalogi) bez how-to — gdy plaster da zapis, nie 70 stubów. Alembic vs `create_all`, `U-catalog-parts`, CodeQL/mutacje/STRIDE: bez zmian, pozycje już niżej albo poza tabelą co plaster.
 
 - **Audyt gate #79–#88:** siedem czerwonych pushy, dwie przyczyny, zero z nich w kodzie produktu. Sześć runów (#79, #80, #82–#85) padło na `agentlint` — hash `AGENTS.md` i `.cursor/rules/context.mdc` rozjechany z baseline. Jeden (#81) na `check_agent_refs`. Kod plastra 4.0 przeszedł pełny gate dopiero w #86; #86/#87/#88 mają wszystkie kroki `success`, więc nic z tej serii nie zostało niezweryfikowane.

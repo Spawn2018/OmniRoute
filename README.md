@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **58.0** karta jakości w `/plaster` + baseline całego drzewa
-- **Etap:** Idle
-- **Następny:** brak pozycji w kolejce. F9.1 M-58–M-60 bez żywej nazwy — nie zgaduj. Parked: M-02, Auth0, portale.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
+- **Ostatni plaster:** **59.0** kanon jakości 4,4–5 w PLAN + kolejka Q-E
+- **Etap:** Refaktor
+- **Następny:** Q-E1 `/refaktor` — katalogi Grupa A do 4,4 (`catalog-parts`). Nie F9.1. Parked: M-02, Auth0, portale.
+- **Komenda teraz:** `/refaktor` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

@@ -183,3 +183,4 @@
 | 2026-09-02 | Plan 57.0 | U-print | delta `docs/deltas/archived/57.0-print-sheet.md` + spec. `@media print`. Następny: `/plaster` 57.0. |
 | 2026-09-02 | 57.0 | U-print | `@media print` chowa chrome. Nie PDF. |
 | 2026-09-02 | 58.0 | ops | Karta jakości w `/po-plastrze`. Baseline drzewa: C901 OK, dup 2,81%, ratio 0,6%, EXPLAIN wyceny Index Scan, 0 wierszy `rate_line`. Proza: `docs/operator/ścieżka-pieniędzy.md`. |
+| 2026-09-02 | 59.0 | ops | Kanon 4,4–5 w PLAN. Fala E w kolejce. Etap Refaktor → `/refaktor`. Następny: Q-E1 katalogi. |

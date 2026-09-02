@@ -40,9 +40,12 @@ class OsStatus:
 
     @property
     def command(self) -> str:
-        # Etap Plan = wydmuszka; Agent /plaster dopiero po akceptacji delty.
-        if "plan" in self.etap.casefold():
+        # Etap Plan = wydmuszka; Refaktor = slot /refaktor; inaczej /plaster.
+        etap = self.etap.casefold()
+        if "plan" in etap:
             return "/plan-modul"
+        if "refaktor" in etap:
+            return "/refaktor"
         return "/plaster"
 
 
@@ -90,7 +93,7 @@ def render_readme(status: OsStatus) -> str:
         f"- **Etap:** {status.etap}\n"
         f"- **Następny:** {status.next_step}\n"
         f"- **Komenda teraz:** `{status.command}` "
-        f"(z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)\n"
+        f"(z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)\n"
         f"- **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`"
     )
 
@@ -136,7 +139,12 @@ def render_plan_status(status: OsStatus) -> str:
 
 
 def render_plan_start(status: OsStatus) -> str:
-    other = "/plaster" if status.command == "/plan-modul" else "/plan-modul"
+    if status.command == "/plan-modul":
+        other = "/plaster"
+    elif status.command == "/refaktor":
+        other = "/plaster"
+    else:
+        other = "/plan-modul"
     return (
         f"**Teraz:** `{status.command}` (Etap z CURRENT.md).\n\n"
         "```\n"

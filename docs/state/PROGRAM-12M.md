@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **58.0** karta jakości w `/plaster` + baseline całego drzewa **Następny:** brak pozycji w kolejce. F9.1 M-58–M-60 bez żywej nazwy — nie zgaduj. Parked: M-02, Auth0, portale.
+**Stan (z CURRENT.md):** **59.0** kanon jakości 4,4–5 w PLAN + kolejka Q-E **Następny:** Q-E1 `/refaktor` — katalogi Grupa A do 4,4 (`catalog-parts`). Nie F9.1. Parked: M-02, Auth0, portale.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.
