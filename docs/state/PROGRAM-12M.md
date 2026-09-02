@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **54.0** U-primitives-json pin Radix w `components.json` (zarchiwizowany) **Następny:** U-i18n-structure (`/plan-modul`). PLAN § Wave FE leftover. Nie zgaduj schematu. Nie nowa tabela.
+**Stan (z CURRENT.md):** **54.0** U-primitives-json pin Radix w `components.json` (zarchiwizowany) **Następny:** 55.0 U-i18n-structure klucze pl na `/quality` i `/rollout`. Nie zgaduj schematu. Nie nowa tabela.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.
