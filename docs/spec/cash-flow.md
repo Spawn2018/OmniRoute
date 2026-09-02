@@ -1,10 +1,10 @@
 # M-45 przepływy — tablica `buy` i `sell` z `charge`
 
 **Moduł żywy:** M-45 (token UI `cash_flow`, nie tabela) + M-08 `charge`  
-**Plaster:** **38.0** (do `/plaster`)  
+**Plaster:** **38.0** (zamknięty)  
 **Status:** operator **widzi** wypływ (`buy`) i wpływ (`sell`) z istniejącej opłaty. Nie tabela księgi. Nie odejmowanie.
 
-Delta: [docs/deltas/open/38.0-cash-flow.md](../deltas/open/38.0-cash-flow.md).
+Delta: [docs/deltas/archived/38.0-cash-flow.md](../deltas/archived/38.0-cash-flow.md).
 
 ## 38.0 tablica odczytu na `/cashflows`
 

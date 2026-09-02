@@ -14,6 +14,35 @@ export type Charge = {
   rate_line_id: string | null
 }
 
+export type CashFlowLeg = {
+  id: string
+  charge_code: string
+  outflow_amount: string
+  outflow_currency: string
+  inflow_amount: string
+  inflow_currency: string
+}
+
+export function cashFlowLegs<
+  Row extends {
+    id: string
+    charge_code: string
+    buy_amount: string
+    buy_currency: string
+    sell_amount: string
+    sell_currency: string
+  },
+>(charges: readonly Row[]): CashFlowLeg[] {
+  return charges.map((charge) => ({
+    id: charge.id,
+    charge_code: charge.charge_code,
+    outflow_amount: charge.buy_amount,
+    outflow_currency: charge.buy_currency,
+    inflow_amount: charge.sell_amount,
+    inflow_currency: charge.sell_currency,
+  }))
+}
+
 export function chargeCreateBody(args: {
   chargeCode: string
   buyAmount: string

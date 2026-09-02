@@ -21,6 +21,7 @@ const NAV_ACTIONS = [
   { id: "nav-payments", label: "Idź do banku i płatności", to: "/payments" },
   { id: "nav-money-cost", label: "Idź do kosztu pieniądza", to: "/money-cost" },
   { id: "nav-fx-differences", label: "Idź do różnic kursowych", to: "/fx-differences" },
+  { id: "nav-cashflows", label: "Idź do przepływów", to: "/cashflows" },
   { id: "nav-mail", label: "Idź do tablicy poczty", to: "/mail" },
   { id: "nav-notifications", label: "Idź do powiadomień", to: "/notifications" },
   { id: "nav-shipments", label: "Idź do zleceń", to: "/shipments" },

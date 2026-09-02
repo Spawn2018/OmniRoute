@@ -39,6 +39,11 @@ export const OPS_JOBS = [
     job: "NBP walut z charge i wyceny",
   },
   {
+    route: BUSINESS_LISTS.cashFlow.route,
+    label: "Przepływy",
+    job: "wypływ buy i wpływ sell z charge",
+  },
+  {
     route: BUSINESS_LISTS.mailIntegration.route,
     label: "Poczta",
     job: "odczyt domen i kontaktów",
@@ -192,6 +197,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "35.0": "/payments",
   "36.0": "/money-cost",
   "37.0": "/fx-differences",
+  "38.0": "/cashflows",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

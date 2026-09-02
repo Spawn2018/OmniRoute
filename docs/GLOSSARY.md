@@ -27,6 +27,7 @@
 | bank i płatności | bank_payment | 35.0 tablica IBAN + `sell` z `charge`; nie tabela płatności; nie SEPA |
 | koszt pieniądza | money_cost | 36.0 tablica NBP + `buy` z `charge`; nie tabela odsetek; nie mnożenie |
 | różnica kursowa | fx_difference | 37.0 tablica NBP walut z `charge`/`quotation`; nie tabela; nie przeliczenie |
+| przepływ | cash_flow | 38.0 tablica `buy`/`sell` z `charge` jako wypływ/wpływ; nie tabela księgi; nie odejmowanie |
 | odcinek | shipment_leg | operacyjne; nie w 29.0 |
 | tenant | organization | organization_id wszędzie |
 | ustawienie tenanta | organization_setting | konfiguracja jako dane; allowlista kluczy; nie sekret |

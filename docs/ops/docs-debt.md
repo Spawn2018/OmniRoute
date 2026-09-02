@@ -94,7 +94,9 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **36.0 DONE:** `/money-cost` odczyt NBP i `buy` z `charge`. Nie nowa tabela. JS nie mnoży kursem.
 - **36.0 leftover — odsetki / WACC / payment_terms_days w API (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Mnożenie Decimal w SQL leftover. M-44 różnice kursowe **DONE w 37.0**.
 - **37.0 DONE:** `/fx-differences` odczyt NBP walut z `charge`/`quotation`. Nie nowa tabela. JS nie przelicza.
-- **37.0 leftover — tabela FX / amount×mid (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. MixedCurrencyCharge zostaje na `margin()`. M-45 przepływy = osobny Plan.
+- **37.0 leftover — tabela FX / amount×mid (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. MixedCurrencyCharge zostaje na `margin()`. M-45 przepływy **DONE w 38.0**.
+- **38.0 DONE:** `/cashflows` odczyt `buy` i `sell` z `charge` jako wypływ/wpływ. Nie nowa tabela. JS nie odejmuje.
+- **38.0 leftover — księga / DSO / sell−buy w JS (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Marża zostaje w `margin()`. M-46 koszt obsługi = osobny Plan.
 - **6.0 leftover — klon nagłówka modelu (dlaczego nie w tym plasterze):** `jscpd` 6 linii `charge.py` przeciw `nbp_rate.py` (blok `id`). Miksin wszystkich modeli = `refaktor-pass`. `just dup` 2,83% po kompaktowym `id` i osobnym formularzu kursu (nie `CatalogCreateForm`).
 - **7.0 DONE:** `dangerous_good` UN/IMDG + aliasy + `source_ref`, RLS FORCE, `resolve`, OpenFGA `can_manage_dangerous_goods`, `/dangerous-goods`. Nie podpięcie do wyceny, nie live IMO, nie M-08 `charge`.
 - **7.0 leftover — live IMO / ADN-ADR / Fala 8 (dlaczego nie w tym plasterze):** ręczny wpis = `tenant:manual`; fixture = `imdg:<un_number>`. Seed tysięcy UN i live HTTP do IMO = jak 4.0/5.0. ADN/ADR osobne tabele i grupy zgodności 1.xA = później. Fala 8 M-53–M-56 zostaje.

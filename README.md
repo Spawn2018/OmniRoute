@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **37.0** M-44 `fx_difference` tablica `/fx-differences` (zarchiwizowany)
-- **Etap:** Plaster
-- **Następny:** 38.0 M-45 `cash_flow` tablica `/cashflows`. Nie zgaduj schematu. Nie nowa tabela.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
+- **Ostatni plaster:** **38.0** M-45 `cash_flow` tablica `/cashflows` (zarchiwizowany)
+- **Etap:** Plan
+- **Następny:** M-46 Koszt obsługi klienta (`/plan-modul`). Nie zgaduj schematu. Nie nowa tabela.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
