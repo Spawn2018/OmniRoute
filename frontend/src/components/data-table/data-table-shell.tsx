@@ -16,6 +16,9 @@ import { ColumnEditor } from "@/components/data-table/column-editor"
 import {
   DEFAULT_TABLE_VIEW_CONFIG,
   mergeColumnOrder,
+  resolveTableDensity,
+  rowEstimatePx,
+  rowPadClass,
   type TableDensity,
   type TableViewConfig,
 } from "@/components/data-table/types"
@@ -33,6 +36,7 @@ type DataTableShellProps<TData> = {
   columnLabels: Record<string, string>
   globalFilterPlaceholder?: string
   toolbarExtra?: ReactNode
+  allowCondensed?: boolean
 }
 
 export function DataTableShell<TData>({
@@ -42,6 +46,7 @@ export function DataTableShell<TData>({
   columnLabels,
   globalFilterPlaceholder = "Filtruj…",
   toolbarExtra,
+  allowCondensed = false,
 }: DataTableShellProps<TData>) {
   const queryClient = useQueryClient()
   const allColumnIds = useMemo(
@@ -85,7 +90,7 @@ export function DataTableShell<TData>({
   const virtualizer = useVirtualizer({
     count: rows.length,
     getScrollElement: () => scrollEl,
-    estimateSize: () => (density === "compact" ? 32 : 40),
+    estimateSize: () => rowEstimatePx(density),
     overscan: 12,
   })
 
@@ -111,7 +116,7 @@ export function DataTableShell<TData>({
   function applyConfig(config: TableViewConfig) {
     setColumnOrder(mergeColumnOrder(config.column_order, allColumnIds))
     setColumnVisibility(config.column_visibility)
-    setDensity(config.density === "comfortable" ? "comfortable" : "compact")
+    setDensity(resolveTableDensity(config.density, allowCondensed))
     const nextFilters: ColumnFiltersState = []
     let nextGlobal = ""
     for (const [key, value] of Object.entries(config.filters ?? {})) {
@@ -158,7 +163,7 @@ export function DataTableShell<TData>({
     })
   }, [draftName, saveMutation])
 
-  const rowHeight = density === "compact" ? "py-1" : "py-2"
+  const rowHeight = rowPadClass(density)
 
   return (
     <div className="space-y-3">
@@ -179,10 +184,11 @@ export function DataTableShell<TData>({
             data-table-density={density}
             className="h-8 rounded-md border border-input bg-card px-2 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             value={density}
-            onChange={(e) => setDensity(e.target.value as TableDensity)}
+            onChange={(e) => setDensity(resolveTableDensity(e.target.value, allowCondensed))}
           >
             <option value="compact">Zwarta</option>
             <option value="comfortable">Wygodna</option>
+            {allowCondensed ? <option value="condensed">Zagęszczona</option> : null}
           </select>
         </label>
         <button

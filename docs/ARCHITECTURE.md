@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **52.0** U-money-align oś dziesiętna na `<Money/>` (zarchiwizowany). **Etap:** Plaster. **Następny:** 53.0 U-condensed trzeci tryb gęstości na `/rate-lines`. Nie zgaduj schematu. Nie nowa tabela. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **53.0** U-condensed trzeci tryb gęstości na `/rate-lines` (zarchiwizowany). **Etap:** Plan. **Następny:** U-primitives-json (`/plan-modul`). PLAN § Wave FE leftover. Nie zgaduj schematu. Nie nowa tabela. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

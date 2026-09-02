@@ -1,5 +1,8 @@
+import { readFileSync } from "node:fs"
 import { describe, expect, it } from "vitest"
 import { rateLineCreateBody, rateLineSupersedeBody } from "@/lib/rate-lines-api"
+
+const page = readFileSync(new URL("./catalog-page.tsx", import.meta.url), "utf8")
 
 describe("rateLineCreateBody", () => {
   it("trims fields and uppercases currency", () => {
@@ -32,5 +35,12 @@ describe("rateLineSupersedeBody", () => {
       currency: "EUR",
       source_ref: "tariff://b",
     })
+  })
+})
+
+describe("rate line grid density for 53.0", () => {
+  it("opts the rate line shell into condensed without making it global", () => {
+    expect(page).toContain("allowCondensed")
+    expect(page).toContain("DataTableShell")
   })
 })

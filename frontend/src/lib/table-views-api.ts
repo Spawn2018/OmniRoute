@@ -5,7 +5,7 @@ import {
   updateTableViewApiV1TenancyTableViewsViewIdPatch,
 } from "@/api/sdk.gen"
 import type { TableViewConfig as ApiTableViewConfig, TableViewResponse } from "@/api/types.gen"
-import type { TableViewConfig, TableViewRecord } from "@/components/data-table/types"
+import { resolveTableDensity, type TableViewConfig, type TableViewRecord } from "@/components/data-table/types"
 import { ApiError, httpErrorStatus } from "@/lib/api"
 
 function toRecord(view: TableViewResponse): TableViewRecord {
@@ -21,7 +21,7 @@ function toRecord(view: TableViewResponse): TableViewRecord {
       column_visibility: cfg.column_visibility ?? {},
       filters: (cfg.filters as Record<string, string>) ?? {},
       sorting: (cfg.sorting as TableViewConfig["sorting"]) ?? [],
-      density: cfg.density === "comfortable" ? "comfortable" : "compact",
+      density: resolveTableDensity(cfg.density, true),
     },
   }
 }

@@ -214,6 +214,7 @@ export function RateLineCatalogPage() {
           data={query.data}
           columnLabels={COLUMN_LABELS}
           globalFilterPlaceholder="Szukaj stawki kupna…"
+          allowCondensed
         />
       ) : null}
     </div>

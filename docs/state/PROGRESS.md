@@ -172,4 +172,5 @@
 | 2026-09-02 | 51.0 | U-oklch-dark | tokeny `oklch` + `.dark` w `index.css`. Nie tabela, nie nowa trasa. |
 | 2026-09-02 | Plan 52.0 | U-money-align | delta `docs/deltas/archived/52.0-money-align.md` + spec. Oś dziesiętna `<Money/>`. Następny: `/plaster` 52.0. |
 | 2026-09-02 | 52.0 | U-money-align | `<Money/>` siatka integer/ułamek/ISO. Nie float, nie grouping. |
-| 2026-09-02 | Plan 53.0 | U-condensed | delta `docs/deltas/open/53.0-table-condensed.md` + spec. Condensed tylko na `/rate-lines`. Następny: `/plaster` 53.0. |
+| 2026-09-02 | Plan 53.0 | U-condensed | delta `docs/deltas/archived/53.0-table-condensed.md` + spec. Condensed tylko na `/rate-lines`. Następny: `/plaster` 53.0. |
+| 2026-09-02 | 53.0 | U-condensed | `allowCondensed` na gridzie stawek. Nie globalnie. |

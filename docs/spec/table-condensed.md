@@ -1,10 +1,10 @@
 # U-condensed — trzeci tryb gęstości na gridzie stawek
 
 **Leftover żywy:** U-condensed (PLAN § Wave FE, token UI `table_density_condensed`, nie tabela)  
-**Plaster:** **53.0** (plan)  
-**Status:** operator **zobaczy** zagęszczone wiersze na `/rate-lines`. Nie globalnie. Nie nowa tabela.
+**Plaster:** **53.0** (zamknięty)  
+**Status:** operator **widzi** zagęszczone wiersze na `/rate-lines`. Nie globalnie. Nie nowa tabela.
 
-Delta: [docs/deltas/open/53.0-table-condensed.md](../deltas/open/53.0-table-condensed.md).
+Delta: [docs/deltas/archived/53.0-table-condensed.md](../deltas/archived/53.0-table-condensed.md).
 
 ## 53.0 `condensed` tylko na `rate_line`
 

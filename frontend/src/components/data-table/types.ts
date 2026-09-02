@@ -1,4 +1,4 @@
-export type TableDensity = "compact" | "comfortable"
+export type TableDensity = "compact" | "comfortable" | "condensed"
 
 export type TableViewConfig = {
   column_order: string[]
@@ -23,6 +23,36 @@ export const DEFAULT_TABLE_VIEW_CONFIG: TableViewConfig = {
   filters: {},
   sorting: [],
   density: "compact",
+}
+
+export function resolveTableDensity(raw: string | undefined, allowCondensed: boolean): TableDensity {
+  if (raw === "comfortable") {
+    return "comfortable"
+  }
+  if (raw === "condensed" && allowCondensed) {
+    return "condensed"
+  }
+  return "compact"
+}
+
+export function rowPadClass(density: TableDensity): string {
+  if (density === "condensed") {
+    return "py-0.5"
+  }
+  if (density === "compact") {
+    return "py-1"
+  }
+  return "py-2"
+}
+
+export function rowEstimatePx(density: TableDensity): number {
+  if (density === "condensed") {
+    return 24
+  }
+  if (density === "compact") {
+    return 32
+  }
+  return 40
 }
 
 export function mergeColumnOrder(preferred: string[], allIds: string[]): string[] {

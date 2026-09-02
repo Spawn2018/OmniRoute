@@ -10,7 +10,7 @@ import {
   businessListRoutes,
 } from "@/lib/business-lists"
 
-function renderDensityShell(): string {
+function renderDensityShell(allowCondensed = false): string {
   const client = new QueryClient({
     defaultOptions: { queries: { retry: false } },
   })
@@ -23,6 +23,7 @@ function renderDensityShell(): string {
         columns: [{ id: "email", header: "Email" }],
         data: [],
         columnLabels: { email: "Email" },
+        allowCondensed,
       }),
     ),
   )
@@ -36,6 +37,11 @@ describe("business list density", () => {
     expect(html).toContain('aria-label="Gęstość tabeli"')
     expect(html).toContain('value="compact"')
     expect(html).toContain('value="comfortable"')
+    expect(html).not.toContain('value="condensed"')
+  })
+
+  it("offers condensed only when the shell opts in", () => {
+    expect(renderDensityShell(true)).toContain('value="condensed"')
   })
 
   it("covers every existing business list, not only users", () => {
