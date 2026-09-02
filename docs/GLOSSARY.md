@@ -39,6 +39,7 @@
 | wycena wsadowa | quotation_batch | 20.0 wiele kodów na jednej lane; nie CSV; nie nowa tabela |
 | zapytanie od klienta | customer_inquiry | 21.0 ślad wycen per party; nie tabela RFQ; nie IMAP |
 | wykrywanie akceptacji | offer_acceptance | 22.0 pending z wycen; nie tabela wyniku; nie HITL accept; nie IMAP |
+| zapytanie do armatora | carrier_inquiry | 23.0 ślad `channel_quote` przy lane wyceny; nie tabela RFQ; nie live HTTP |
 | narzut | markup | kaskada — Python mały zbiór (DECISIONS) |
 | pieniądze | money | para `amount` + `currency`; nigdy float |
 | kwota | amount | `Decimal` / tekst dziesiętny, skala Numeric(14,4) |

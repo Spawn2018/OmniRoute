@@ -39,7 +39,7 @@ Seed: `scripts/dev_seed_local.py`.
 <!-- os-status:start -->
 - **Ostatni plaster:** **22.0** M-29 `offer_acceptance` przy `quotation` (zarchiwizowany)
 - **Etap:** Plan
-- **Następny:** 23.0 M-30 Zapytania do agentów/armatorów (`/plan-modul`). Nie zgaduj schematu.
+- **Następny:** 23.0 M-30 `carrier_inquiry` (`/plaster`). Ślad `channel_quote` przy lane. Nie tabela RFQ. Nie live HTTP.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
