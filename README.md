@@ -38,8 +38,8 @@ Seed: `scripts/dev_seed_local.py`.
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **64.0** S1 `inbound_message` draft+fixture
-- **Etap:** Plan
-- **Następny:** Plan 65.0 S2 `/plan-modul` — `resolve_email` na `inbound_message`. Nie IMAP. Nie Graph. Nie F9.1.
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Etap:** Plaster
+- **Następny:** 65.0 S2 `/plaster` — `resolve_email` na `inbound_message`. Nie IMAP. Nie Graph. Nie F9.1.
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
