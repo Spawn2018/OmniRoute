@@ -10,24 +10,27 @@ import { fetchChannelQuotes } from "@/lib/channel-quotes-api"
 import { fetchQuotations, quotationCarrierInquiries, quotationLanes } from "@/lib/quotations-api"
 import { getTenantContext } from "@/lib/tenant"
 
-const EMPTY_QUOTE_FILTERS = { partyId: "", originPortId: "", destinationPortId: "" }
+const EMPTY_LANE_FILTERS = { partyId: "", originPortId: "", destinationPortId: "" }
 
 export function EdiMessagePage() {
   const ctx = getTenantContext()
   const ready = Boolean(ctx.organizationId && ctx.userId)
   const quotations = useQuery({
     queryKey: ["edi-message-quotations", ctx.organizationId],
-    queryFn: () => fetchQuotations(EMPTY_QUOTE_FILTERS),
+    queryFn: () => fetchQuotations(EMPTY_LANE_FILTERS),
     enabled: ready,
     retry: false,
   })
-  const quotes = useQuery({
+  const channelQuotes = useQuery({
     queryKey: ["edi-message-channel-quotes", ctx.organizationId],
     queryFn: fetchChannelQuotes,
     enabled: ready,
     retry: false,
   })
-  const rows = quotationCarrierInquiries(quotationLanes(quotations.data ?? []), quotes.data ?? [])
+  const matched = quotationCarrierInquiries(
+    quotationLanes(quotations.data ?? []),
+    channelQuotes.data ?? [],
+  )
 
   return (
     <div className="flex flex-col gap-4" data-edi-message="board">
@@ -37,18 +40,22 @@ export function EdiMessagePage() {
       />
       {!ready ? <TenantSessionNotice /> : null}
       {quotations.isError ? <CatalogError error={quotations.error} /> : null}
-      {quotes.isError ? <CatalogError error={quotes.error} /> : null}
-      {rows.map((row) => (
-        <p key={row.id} className="text-xs">
-          <Link className="underline" to="/channel-quotes">
-            {row.source_ref}
-          </Link>{" "}
-          <Money amount={row.amount} currency={row.currency} />{" "}
-          <Link className="underline" to="/quotations">
-            quotation
-          </Link>
-        </p>
-      ))}
+      {channelQuotes.isError ? <CatalogError error={channelQuotes.error} /> : null}
+      <ul>
+        {matched.map((quote) => (
+          <li key={quote.id} className="text-xs">
+            {quote.source_ref} <Money amount={quote.amount} currency={quote.currency} />
+            {" · "}
+            <Link className="underline" to="/channel-quotes">
+              kanał
+            </Link>
+            {" · "}
+            <Link className="underline" to="/quotations">
+              wycena
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
