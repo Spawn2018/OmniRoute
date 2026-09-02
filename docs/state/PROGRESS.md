@@ -203,3 +203,4 @@
 | 2026-09-02 | OS-4 | ops | Skaner slopu (`craft-style`) + sufit funkcji >40 linii. Nie tożsamość z człowiekiem. Nie S4. |
 | 2026-09-03 | Plan 67.0 | M-28 | S4: `customer_rfq` powiązany z `inbound_message`. Delta zaakceptowana (`/noc`). Nie ślad wycen, nie silnik. Następny: `/plaster` 67.0. |
 | 2026-09-03 | 67.0 | M-28 | `customer_rfq` per tenant, FK tenanta do `inbound_message`, jeden RFQ na wiadomość, `/mail`. Nie kwota. Nie silnik. Następny: S5 Plan. |
+| 2026-09-03 | Plan 68.0 | M-21 | S5: istniejący silnik wyceny na `customer_rfq`. Delta zaakceptowana (`/noc`). Nie nowy silnik. LLM nie liczy. Następny: `/plaster` 68.0. |
