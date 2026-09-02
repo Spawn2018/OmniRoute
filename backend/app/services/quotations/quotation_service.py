@@ -7,6 +7,7 @@ from app.domain.charge_code import normalize_charge_code
 from app.domain.errors import (
     DomainError,
     IncompleteQuotationSnapshot,
+    InvalidCustomerRfq,
     QuotationGap,
     UnknownChargeCode,
     UnknownParty,
@@ -27,6 +28,8 @@ def _snapshot_integrity_error(exc: IntegrityError) -> DomainError | None:
         return UnknownPort("nieznany port wyceny")
     if "ck_quotation_lane_party_complete" in detail:
         return IncompleteQuotationSnapshot("wycena wymaga POL, POD i kontrahenta")
+    if "fk_quotation_customer_rfq" in detail:
+        return InvalidCustomerRfq("nieznane zapytanie ofertowe wyceny")
     return None
 
 
@@ -41,11 +44,13 @@ class QuotationService:
         party_id: UUID | None = None,
         origin_port_id: UUID | None = None,
         destination_port_id: UUID | None = None,
+        customer_rfq_id: UUID | None = None,
     ) -> list[Quotation]:
         return await self._quotations.list_all(
             party_id=party_id,
             origin_port_id=origin_port_id,
             destination_port_id=destination_port_id,
+            customer_rfq_id=customer_rfq_id,
         )
 
     async def quote_from_current_rate(
@@ -57,6 +62,7 @@ class QuotationService:
         origin_port_id: UUID | None,
         destination_port_id: UUID | None,
         party_id: UUID | None,
+        customer_rfq_id: UUID | None = None,
     ) -> Quotation:
         catalog = await self._require_catalog(charge_code)
         origin, destination, party = require_lane_party_snapshot(
@@ -72,6 +78,7 @@ class QuotationService:
                 origin_port_id=origin,
                 destination_port_id=destination,
                 party_id=party,
+                customer_rfq_id=customer_rfq_id,
             )
         except IntegrityError as exc:
             mapped = _snapshot_integrity_error(exc)
@@ -91,6 +98,7 @@ class QuotationService:
         origin_port_id: UUID | None,
         destination_port_id: UUID | None,
         party_id: UUID | None,
+        customer_rfq_id: UUID | None = None,
     ) -> list[Quotation]:
         # Pętla woła istniejący INSERT…SELECT; wsad set-based = leftover 20.0.
         codes = require_batch_charge_codes(charge_codes)
@@ -104,6 +112,7 @@ class QuotationService:
                     origin_port_id=origin_port_id,
                     destination_port_id=destination_port_id,
                     party_id=party_id,
+                    customer_rfq_id=customer_rfq_id,
                 )
             )
         return quoted

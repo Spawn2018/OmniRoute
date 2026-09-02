@@ -2,7 +2,7 @@
 
 **Moduł żywy:** M-28 (`customer_inquiry` ślad · `customer_rfq` obiekt)  
 **Plaster:** **67.0** (obiekt) · **21.0** (ślad na wycenach)  
-**Status:** operator tworzy zapytanie z wiadomości na `/mail`. Panel 21.0 na `/quotations` zostaje śladem. Nie silnik wyceny. Nie IMAP.
+**Status:** operator tworzy zapytanie z wiadomości na `/mail`. Silnik wyceny na RFQ = M-21 68.0. Panel 21.0 na `/quotations` zostaje śladem. Nie IMAP.
 
 Delta: [67.0](../deltas/archived/67.0-customer-rfq.md) · [21.0](../deltas/archived/21.0-customer-inquiry.md).
 
@@ -35,7 +35,11 @@ Tabela RFQ · IMAP (M-32) · status zapytania · auto-INSERT wyceny · M-29 akce
 
 ### Poza 67.0
 
-Silnik na RFQ (S5) · HS/CN · IMAP · zastąpienie panelu 21.0 · auto przy INSERT maila
+Silnik na RFQ (68.0) · HS/CN · IMAP · zastąpienie panelu 21.0 · auto przy INSERT maila
+
+## 68.0 silnik M-21 na tym RFQ
+
+`quotation.customer_rfq_id`. Kwota ze stawki. `/quotations` picker + `/mail` link Wycena. Nie nowy silnik.
 
 ### HC
 

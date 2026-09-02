@@ -16,7 +16,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-06 | charge_code + aliasy | 1.0 katalog | **ukończony (fundament)** · aliasy na wierszu; nie `rate_line` / `charge` |
 | M-07 | rate_line (stawka kupna) | 1.1 immutable + source_ref | **ukończony (fundament)** · nie `charge` / marża |
 | M-08 | charge (buy+sell, marża) | 1.2 jeden wiersz | **ukończony (fundament)** · nie accept HITL (1.3) |
-| M-21 | Silnik wyceny (SQL) | 2.0 INSERT…SELECT z `rate_line` · 5.1 POL/POD + `party_id` · 16.0 odczyt `nbp_rate` · 20.0 wsad kodów | **ukończony (fundament)** · nie marża; nie k6; nie override; nie mnożenie kwoty |
+| M-21 | Silnik wyceny (SQL) | 2.0 INSERT…SELECT z `rate_line` · 5.1 POL/POD + `party_id` · 16.0 odczyt `nbp_rate` · 20.0 wsad kodów · 68.0 `customer_rfq_id` | **ukończony (fundament)** · nie marża; nie k6; nie override; nie nowy silnik |
 | M-05 | Geografia | 4.0 `port` + 4.1 `location`/strefy + 4.2 `terminal`/WPI | **ukończony (fundament)** · `operator_party_id` od 5.0; `operator_name` zostaje |
 | M-10 | Kontrahenci | 5.0 `party` + katalog zależny | **ukończony (fundament)** · lookup = szkic/fixture; override nie karmić wyceny |
 | M-09 | Kody towarowe | 5.2 `commodity_code` | **ukończony (fundament)** · nie podpięcie do wyceny; nie IMDG |
@@ -34,7 +34,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-25 | Negocjacja i wynik | 18.0 `offer_negotiation` | **ukończony (fundament)** · odczyt `channel_quote` przy `/quotations`; nie wynik won/lost; nie spread |
 | M-26 | Dokument oferty | 19.0 `offer_document` | **ukończony (fundament)** · podgląd faktów `quotation`; nie PDF; nie U-print |
 | M-27 | Wycena wsadowa | 20.0 `quotation_batch` | **ukończony (fundament)** · wiele kodów na lane; nie CSV; nie nowa tabela |
-| M-28 | Zapytania od klientów | 21.0 `customer_inquiry` · 67.0 `customer_rfq` | **ukończony (fundament)** · ślad wycen per party + obiekt RFQ z wiadomości; nie silnik wyceny; nie IMAP |
+| M-28 | Zapytania od klientów | 21.0 `customer_inquiry` · 67.0 `customer_rfq` | **ukończony (fundament)** · ślad wycen + obiekt RFQ; silnik = M-21 68.0; nie IMAP |
 | M-29 | Wykrywanie akceptacji | 22.0 `offer_acceptance` | **ukończony (fundament)** · pending z wycen; nie tabela wyniku; nie HITL accept |
 | M-30 | Zapytania do agentów/armatorów | 23.0 `carrier_inquiry` | **ukończony (fundament)** · ślad `channel_quote` przy lane; nie RFQ; nie live HTTP |
 | M-31 | Porównanie odpowiedzi | 24.0 `response_comparison` | **ukończony (fundament)** · zestawienie kwot na POL/POD; nie tabela; nie spread |

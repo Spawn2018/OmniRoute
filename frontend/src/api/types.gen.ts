@@ -1482,6 +1482,10 @@ export type QuotationBatchCreate = {
      * Party Id
      */
     party_id: string;
+    /**
+     * Customer Rfq Id
+     */
+    customer_rfq_id?: string | null;
 };
 
 /**
@@ -1504,6 +1508,10 @@ export type QuotationCreate = {
      * Party Id
      */
     party_id: string;
+    /**
+     * Customer Rfq Id
+     */
+    customer_rfq_id?: string | null;
 };
 
 /**
@@ -1550,6 +1558,10 @@ export type QuotationResponse = {
      * Party Id
      */
     party_id: string | null;
+    /**
+     * Customer Rfq Id
+     */
+    customer_rfq_id: string | null;
 };
 
 /**
@@ -3084,6 +3096,10 @@ export type ListQuotationsApiV1QuotationsGetData = {
          * Destination Port Id
          */
         destination_port_id?: string | null;
+        /**
+         * Customer Rfq Id
+         */
+        customer_rfq_id?: string | null;
     };
     url: '/api/v1/quotations';
 };

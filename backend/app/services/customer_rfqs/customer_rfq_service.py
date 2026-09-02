@@ -8,7 +8,7 @@ from app.domain.customer_rfq import (
     require_inbound_message_id,
     require_rfq_source_ref,
 )
-from app.domain.errors import CustomerRfqConflict
+from app.domain.errors import CustomerRfqConflict, ResourceNotFound
 from app.models.customer_rfq import CustomerRfq
 from app.repositories.customer_rfqs.customer_rfq_repository import CustomerRfqRepository
 
@@ -19,6 +19,12 @@ class CustomerRfqService:
 
     async def list_rfqs(self) -> list[CustomerRfq]:
         return await self._rfqs.list_all()
+
+    async def get_rfq(self, rfq_id: UUID) -> CustomerRfq:
+        found = await self._rfqs.get(rfq_id)
+        if found is None:
+            raise ResourceNotFound(f"nieznane zapytanie ofertowe: {rfq_id}")
+        return found
 
     async def create_rfq(
         self,

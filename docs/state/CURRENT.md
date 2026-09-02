@@ -3,13 +3,13 @@
 **Faza:** Fala S — pogłębienie wydmuszek (po Fali E)  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
 
-**Ostatni plaster:** **67.0** S4 `customer_rfq` powiązany z `inbound_message`  
-**Etap:** Plaster  
+**Ostatni plaster:** **68.0** S5 istniejący silnik wyceny na `customer_rfq`  
+**Etap:** Plan  
 **Noc:** `/noc <godzina>` (np. `/noc 7` = pętla do 7:00 czasu polskiego). Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md). Przed startem: `scripts/noc-preflight.ps1`. Etap Plan → `/plan-modul`, nie `/plaster`.  
-**Następny:** 68.0 S5 `/plaster` — istniejący silnik wyceny na tym RFQ. Nie nowy silnik. LLM nie liczy. Nie F9.1.  
+**Następny:** S6 `/plan-modul` — ewaluacja `applies_when` w SQL. Nie zapis marży do `charge`. Nie F9.1.  
 M-02 **parked** (odblokowanie S16). Auth0 **odroczone** (S53). Portale **parked** (S55). Exit Wave FE **nie** claim.
 
-**Spec (jedna na sesję):** [68.0-quotation-on-rfq.md](../deltas/open/68.0-quotation-on-rfq.md). Nie otwieraj [print-sheet.md](../spec/print-sheet.md).
+**Spec (jedna na sesję):** brak delty S6. Nie otwieraj [print-sheet.md](../spec/print-sheet.md).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Cel jakości + § Kolejka realizacji.
 
@@ -17,4 +17,4 @@ M-02 **parked** (odblokowanie S16). Auth0 **odroczone** (S53). Portale **parked*
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` są w PATH. Przed pracą podnieś dwie rzeczy: `pg_ctl -D tools\pgdata -o "-p 5432" start` oraz `tools\openfga\openfga.exe run`. Potem `just gate` i `just test` działają bez ustawiania zmiennych. PG 16 to klaster przenośny w `tools\pg16` — instalator EDB przez winget nie przechodzi (exit 1).
 
-**2026-09-03:** Delta 68.0 zaakceptowana (`/noc`). Następny: `/plaster` 68.0 S5. Nie F9.1.
+**2026-09-03:** 68.0 zamknięty. Następny produkt: `/plan-modul` S6. Nie F9.1.

@@ -1826,6 +1826,23 @@
               ],
               "title": "Destination Port Id"
             }
+          },
+          {
+            "name": "customer_rfq_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Customer Rfq Id"
+            }
           }
         ],
         "responses": {
@@ -6597,6 +6614,18 @@
             "type": "string",
             "format": "uuid",
             "title": "Party Id"
+          },
+          "customer_rfq_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Customer Rfq Id"
           }
         },
         "additionalProperties": false,
@@ -6631,6 +6660,18 @@
             "type": "string",
             "format": "uuid",
             "title": "Party Id"
+          },
+          "customer_rfq_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Customer Rfq Id"
           }
         },
         "additionalProperties": false,
@@ -6711,6 +6752,18 @@
               }
             ],
             "title": "Party Id"
+          },
+          "customer_rfq_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Customer Rfq Id"
           }
         },
         "type": "object",
@@ -6724,7 +6777,8 @@
           "source_ref",
           "origin_port_id",
           "destination_port_id",
-          "party_id"
+          "party_id",
+          "customer_rfq_id"
         ],
         "title": "QuotationResponse"
       },

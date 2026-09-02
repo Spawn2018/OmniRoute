@@ -1,3 +1,5 @@
+from uuid import UUID
+
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -13,6 +15,10 @@ class CustomerRfqRepository:
             select(CustomerRfq).order_by(CustomerRfq.created_at.desc()),
         )
         return list(result.all())
+
+    async def get(self, rfq_id: UUID) -> CustomerRfq | None:
+        found = await self._session.get(CustomerRfq, rfq_id)
+        return found if isinstance(found, CustomerRfq) else None
 
     async def add(self, row: CustomerRfq) -> CustomerRfq:
         self._session.add(row)

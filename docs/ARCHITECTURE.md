@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **67.0** S4 `customer_rfq` powiązany z `inbound_message`. **Etap:** Plaster. **Następny:** 68.0 S5 `/plaster` — istniejący silnik wyceny na tym RFQ. Nie nowy silnik. LLM nie liczy. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **68.0** S5 istniejący silnik wyceny na `customer_rfq`. **Etap:** Plan. **Następny:** S6 `/plan-modul` — ewaluacja `applies_when` w SQL. Nie zapis marży do `charge`. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

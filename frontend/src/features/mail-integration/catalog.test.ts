@@ -44,6 +44,8 @@ describe("mail-integration surface for 25.0", () => {
     expect(page).toContain("Extract HITL")
     expect(page).toContain("createCustomerRfq")
     expect(page).toContain("Utwórz RFQ")
+    expect(page).toContain("Wycena")
+    expect(page).toContain("/quotations?rfq=")
     expect(page).toContain("party_id")
     expect(api).toContain("/api/v1/inbound-messages")
     expect(api).toContain("resolve-email")

@@ -12,6 +12,11 @@ class CustomerRfq(Base, TimestampMixin):
     __table_args__ = (
         UniqueConstraint(
             "organization_id",
+            "id",
+            name="uq_customer_rfq_org_id",
+        ),
+        UniqueConstraint(
+            "organization_id",
             "inbound_message_id",
             name="uq_customer_rfq_org_message",
         ),

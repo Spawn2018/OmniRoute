@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { Link } from "@tanstack/react-router"
 import { createColumnHelper } from "@tanstack/react-table"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { CatalogHeading } from "@/components/catalog/catalog-parts"
 import { DataTableShell } from "@/components/data-table/data-table-shell"
 import { Money } from "@/components/money"
@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { BUSINESS_LISTS } from "@/lib/business-lists"
 import { fetchChannelQuotes, resolveChannelQuote, type ChannelQuote } from "@/lib/channel-quotes-api"
+import { fetchCustomerRfqs, type CustomerRfq } from "@/lib/customer-rfqs-api"
 import { resolveCreditReview, type CreditReview } from "@/lib/credit-reviews-api"
 import { resolveNbpRate, type NbpRate } from "@/lib/nbp-rates-api"
 import { fetchParties, type Party } from "@/lib/parties-api"
@@ -41,6 +42,12 @@ const columns = [
     header: "Kwota ze stawki",
     cell: ({ row }) => <Money amount={row.original.amount} currency={row.original.currency} />,
   }),
+  helper.accessor("customer_rfq_id", {
+    header: "RFQ",
+    cell: ({ row }) => (
+      <span className="font-mono text-xs">{row.original.customer_rfq_id ?? "—"}</span>
+    ),
+  }),
   helper.accessor("party_id", {
     header: "Kontrahent",
     cell: ({ row }) => <span className="font-mono text-xs">{row.original.party_id ?? "—"}</span>,
@@ -62,6 +69,7 @@ const columns = [
 const COLUMN_LABELS = {
   charge_code: "Kod opłaty",
   amount: "Kwota ze stawki",
+  customer_rfq_id: "RFQ",
   party_id: "Kontrahent",
   origin_port_id: "POL",
   destination_port_id: "POD",
@@ -490,16 +498,30 @@ function OfferResponseComparisonPanel(args: { lanes: QuotationLane[]; quotes: Ch
   )
 }
 
+function initialSearchRfq(): string {
+  if (typeof window === "undefined") {
+    return ""
+  }
+  return new URLSearchParams(window.location.search).get("rfq") ?? ""
+}
+
+function rfqPartyId(rows: readonly CustomerRfq[], rfqId: string): string {
+  const found = rows.find((row) => row.id === rfqId)
+  return found?.party_id ?? ""
+}
+
 export function QuotationCatalogPage() {
   const ctx = getTenantContext()
   const queryClient = useQueryClient()
   const [chargeCode, setChargeCode] = useState("")
   const [partyId, setPartyId] = useState("")
+  const [rfqId, setRfqId] = useState(initialSearchRfq)
   const [originPortId, setOriginPortId] = useState("")
   const [destinationPortId, setDestinationPortId] = useState("")
   const [filterPartyId, setFilterPartyId] = useState("")
   const [filterOriginPortId, setFilterOriginPortId] = useState("")
   const [filterDestinationPortId, setFilterDestinationPortId] = useState("")
+  const [filterRfqId, setFilterRfqId] = useState("")
   const [batchCodes, setBatchCodes] = useState("")
   const signedIn = Boolean(ctx.organizationId && ctx.userId)
 
@@ -517,6 +539,23 @@ export function QuotationCatalogPage() {
     retry: false,
   })
 
+  const rfqsQuery = useQuery({
+    queryKey: ["customer-rfqs", ctx.organizationId],
+    queryFn: fetchCustomerRfqs,
+    enabled: signedIn,
+    retry: false,
+  })
+
+  useEffect(() => {
+    if (rfqId === "") {
+      return
+    }
+    const partyFromRfq = rfqPartyId(rfqsQuery.data ?? [], rfqId)
+    if (partyFromRfq !== "") {
+      setPartyId(partyFromRfq)
+    }
+  }, [rfqId, rfqsQuery.data])
+
   const channelQuotesQuery = useQuery({
     queryKey: ["channel-quotes", ctx.organizationId],
     queryFn: fetchChannelQuotes,
@@ -531,12 +570,14 @@ export function QuotationCatalogPage() {
       filterPartyId,
       filterOriginPortId,
       filterDestinationPortId,
+      filterRfqId,
     ],
     queryFn: () =>
       fetchQuotations({
         partyId: filterPartyId,
         originPortId: filterOriginPortId,
         destinationPortId: filterDestinationPortId,
+        customerRfqId: filterRfqId,
       }),
     enabled: signedIn,
     retry: false,
@@ -550,6 +591,7 @@ export function QuotationCatalogPage() {
           originPortId,
           destinationPortId,
           partyId,
+          customerRfqId: rfqId,
         }),
       ),
     onSuccess: () => {
@@ -566,6 +608,7 @@ export function QuotationCatalogPage() {
           originPortId,
           destinationPortId,
           partyId,
+          customerRfqId: rfqId,
         }),
       ),
     onSuccess: () => {
@@ -576,6 +619,9 @@ export function QuotationCatalogPage() {
 
   const parties = partiesQuery.data ?? []
   const ports = portsQuery.data ?? []
+  const rfqs = rfqsQuery.data ?? []
+  const selectedRfqParty = rfqPartyId(rfqs, rfqId)
+  const rfqMissingParty = rfqId !== "" && selectedRfqParty === ""
 
   return (
     <section className="space-y-3">
@@ -605,6 +651,29 @@ export function QuotationCatalogPage() {
           required
         />
         <label className="flex flex-col gap-1 text-xs">
+          customer_rfq_id
+          <select
+            aria-label="Zapytanie ofertowe"
+            className="h-8 rounded-md border border-border bg-card px-2 text-sm"
+            value={rfqId}
+            onChange={(event) => {
+              const next = event.target.value
+              setRfqId(next)
+              const partyFromRfq = rfqPartyId(rfqs, next)
+              if (partyFromRfq !== "") {
+                setPartyId(partyFromRfq)
+              }
+            }}
+          >
+            <option value="">Bez RFQ</option>
+            {rfqs.map((row) => (
+              <option key={row.id} value={row.id}>
+                {row.id}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className="flex flex-col gap-1 text-xs">
           party_id
           <select
             aria-label="Kontrahent"
@@ -612,6 +681,7 @@ export function QuotationCatalogPage() {
             value={partyId}
             onChange={(event) => setPartyId(event.target.value)}
             required
+            disabled={selectedRfqParty !== ""}
           >
             <option value="">Kontrahent</option>
             {parties.map((party) => (
@@ -655,7 +725,7 @@ export function QuotationCatalogPage() {
             ))}
           </select>
         </label>
-        <Button type="submit" disabled={quoteMutation.isPending || !signedIn}>
+        <Button type="submit" disabled={quoteMutation.isPending || !signedIn || rfqMissingParty}>
           Wycen z bieżącej stawki
         </Button>
         <textarea
@@ -667,7 +737,7 @@ export function QuotationCatalogPage() {
         />
         <Button
           type="button"
-          disabled={batchMutation.isPending || !signedIn}
+          disabled={batchMutation.isPending || !signedIn || rfqMissingParty}
           onClick={() => batchMutation.mutate()}
         >
           Wycen wsadowo
@@ -675,6 +745,22 @@ export function QuotationCatalogPage() {
       </form>
 
       <div className="flex flex-col gap-2 md:flex-row md:flex-wrap">
+        <label className="flex flex-col gap-1 text-xs">
+          filtr customer_rfq_id
+          <select
+            aria-label="Filtr zapytania ofertowego"
+            className="h-8 rounded-md border border-border bg-card px-2 text-sm"
+            value={filterRfqId}
+            onChange={(event) => setFilterRfqId(event.target.value)}
+          >
+            <option value="">Wszystkie RFQ</option>
+            {rfqs.map((row) => (
+              <option key={row.id} value={row.id}>
+                {row.id}
+              </option>
+            ))}
+          </select>
+        </label>
         <label className="flex flex-col gap-1 text-xs">
           filtr party_id
           <select

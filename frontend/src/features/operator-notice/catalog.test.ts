@@ -21,6 +21,7 @@ function quotation(partyId: string | null): Quotation {
     origin_port_id: null,
     destination_port_id: null,
     party_id: partyId,
+    customer_rfq_id: null,
   }
 }
 

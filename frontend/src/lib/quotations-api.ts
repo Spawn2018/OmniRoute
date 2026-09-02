@@ -12,6 +12,7 @@ export type Quotation = {
   origin_port_id: string | null
   destination_port_id: string | null
   party_id: string | null
+  customer_rfq_id: string | null
 }
 
 export type QuotationCreateBody = {
@@ -19,12 +20,14 @@ export type QuotationCreateBody = {
   origin_port_id: string
   destination_port_id: string
   party_id: string
+  customer_rfq_id?: string
 }
 
 export type QuotationListFilters = {
   partyId: string
   originPortId: string
   destinationPortId: string
+  customerRfqId?: string
 }
 
 export function quotationCreateBody(args: {
@@ -32,13 +35,19 @@ export function quotationCreateBody(args: {
   originPortId: string
   destinationPortId: string
   partyId: string
+  customerRfqId?: string
 }): QuotationCreateBody {
-  return {
+  const body: QuotationCreateBody = {
     charge_code: args.chargeCode.trim(),
     origin_port_id: args.originPortId,
     destination_port_id: args.destinationPortId,
     party_id: args.partyId,
   }
+  const rfqId = args.customerRfqId?.trim()
+  if (rfqId) {
+    body.customer_rfq_id = rfqId
+  }
+  return body
 }
 
 export type QuotationBatchBody = {
@@ -46,6 +55,7 @@ export type QuotationBatchBody = {
   origin_port_id: string
   destination_port_id: string
   party_id: string
+  customer_rfq_id?: string
 }
 
 export function quotationBatchBody(args: {
@@ -53,17 +63,23 @@ export function quotationBatchBody(args: {
   originPortId: string
   destinationPortId: string
   partyId: string
+  customerRfqId?: string
 }): QuotationBatchBody {
   const charge_codes = args.chargeCodesText
     .split(/\r?\n/)
     .map((line) => line.trim())
     .filter((line) => line !== "")
-  return {
+  const body: QuotationBatchBody = {
     charge_codes,
     origin_port_id: args.originPortId,
     destination_port_id: args.destinationPortId,
     party_id: args.partyId,
   }
+  const rfqId = args.customerRfqId?.trim()
+  if (rfqId) {
+    body.customer_rfq_id = rfqId
+  }
+  return body
 }
 
 export function quotationCurrencies(rows: readonly Quotation[]): string[] {
@@ -315,6 +331,9 @@ export async function fetchQuotations(filters: QuotationListFilters): Promise<Qu
   }
   if (filters.destinationPortId !== "") {
     params.set("destination_port_id", filters.destinationPortId)
+  }
+  if (filters.customerRfqId !== undefined && filters.customerRfqId !== "") {
+    params.set("customer_rfq_id", filters.customerRfqId)
   }
   const query = params.toString() === "" ? "" : `?${params.toString()}`
   const response = await fetch(`/api/v1/quotations${query}`, { headers: requireAuthHeaders() })

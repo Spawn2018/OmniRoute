@@ -66,7 +66,7 @@
 | dokument oferty | offer_document | 19.0 podgląd faktów `quotation`; nie PDF; nie U-print |
 | wycena wsadowa | quotation_batch | 20.0 wiele kodów na jednej lane; nie CSV; nie nowa tabela |
 | zapytanie od klienta | customer_inquiry | 21.0 ślad wycen per party; nie tabela RFQ; nie IMAP |
-| zapytanie ofertowe | customer_rfq | 67.0 obiekt per tenant, FK do `inbound_message`; nie ślad wycen; nie silnik; nie kwota |
+| zapytanie ofertowe | customer_rfq | 67.0 obiekt, FK do `inbound_message`; 68.0 `quotation.customer_rfq_id`; nie kwota na RFQ |
 | wykrywanie akceptacji | offer_acceptance | 22.0 pending z wycen; nie tabela wyniku; nie HITL accept; nie IMAP |
 | zapytanie do armatora | carrier_inquiry | 23.0 ślad `channel_quote` przy lane wyceny; nie tabela RFQ; nie live HTTP |
 | porównanie odpowiedzi | response_comparison | 24.0 zestawienie kwot wyceny i `channel_quote` na POL/POD; nie tabela; nie spread w JS |

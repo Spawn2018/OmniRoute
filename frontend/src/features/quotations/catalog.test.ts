@@ -32,6 +32,7 @@ function quotationWithCurrency(currency: string): Quotation {
     origin_port_id: null,
     destination_port_id: null,
     party_id: null,
+    customer_rfq_id: null,
   }
 }
 
@@ -51,6 +52,20 @@ describe("quotationCreateBody", () => {
     })
     expect(body).not.toHaveProperty("amount")
     expect(body).not.toHaveProperty("currency")
+    expect(body).not.toHaveProperty("customer_rfq_id")
+  })
+
+  it("sends customer_rfq_id only when selected", () => {
+    const rfqId = "44444444-4444-4444-8444-444444444444"
+    const body = quotationCreateBody({
+      chargeCode: "THC",
+      originPortId: ORIGIN,
+      destinationPortId: DESTINATION,
+      partyId: PARTY,
+      customerRfqId: rfqId,
+    })
+    expect(body.customer_rfq_id).toBe(rfqId)
+    expect(body).not.toHaveProperty("amount")
   })
 })
 
@@ -267,6 +282,8 @@ describe("quotation catalog screen", () => {
   it("filters and form use party_id origin_port_id destination_port_id", () => {
     const page = readFileSync(new URL("./catalog-page.tsx", import.meta.url), "utf8")
     expect(page).toContain("party_id")
+    expect(page).toContain("customer_rfq_id")
+    expect(page).toContain("fetchCustomerRfqs")
     expect(page).toContain("origin_port_id")
     expect(page).toContain("destination_port_id")
     expect(page).toContain("fetchParties")

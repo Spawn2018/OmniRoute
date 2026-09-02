@@ -245,7 +245,10 @@ export function MailIntegrationPage() {
         <ul data-customer-rfq="list" className="text-xs">
           {(rfqs.data ?? []).map((row) => (
             <li key={row.id}>
-              RFQ {row.id} · wiadomość {row.inbound_message_id}
+              RFQ {row.id} · wiadomość {row.inbound_message_id}{" "}
+              <a className="underline" href={`/quotations?rfq=${row.id}`}>
+                Wycena
+              </a>
             </li>
           ))}
         </ul>

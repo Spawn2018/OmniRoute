@@ -86,10 +86,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **67.0** S4 `customer_rfq` powiązany z `inbound_message`
-- **Etap:** Plaster
-- **Następny:** 68.0 S5 `/plaster` — istniejący silnik wyceny na tym RFQ. Nie nowy silnik. LLM nie liczy. Nie F9.1.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **68.0** S5 istniejący silnik wyceny na `customer_rfq`
+- **Etap:** Plan
+- **Następny:** S6 `/plan-modul` — ewaluacja `applies_when` w SQL. Nie zapis marży do `charge`. Nie F9.1.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 
