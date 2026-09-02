@@ -205,3 +205,4 @@
 | 2026-09-03 | 67.0 | M-28 | `customer_rfq` per tenant, FK tenanta do `inbound_message`, jeden RFQ na wiadomość, `/mail`. Nie kwota. Nie silnik. Następny: S5 Plan. |
 | 2026-09-03 | Plan 68.0 | M-21 | S5: istniejący silnik wyceny na `customer_rfq`. Delta zaakceptowana (`/noc`). Nie nowy silnik. LLM nie liczy. Następny: `/plaster` 68.0. |
 | 2026-09-03 | 68.0 | M-21 | Istniejący silnik na `customer_rfq` (`quotation.customer_rfq_id`). Kwota ze stawki. Nie nowy silnik. Następny: S6 Plan. |
+| 2026-09-03 | Plan 69.0 | M-18 | S6: ewaluacja `applies_when` w SQL. Delta zaakceptowana (`/noc`). Nie zapis marży do `charge`. Następny: `/plaster` 69.0. |
