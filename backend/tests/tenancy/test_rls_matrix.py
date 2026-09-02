@@ -39,11 +39,14 @@ _ALL_TENANT_POLICY_NAMES = (
 )
 
 
-def test_conftest_tenant_policies_declare_with_check() -> None:
-    source = Path("backend/tests/conftest.py").read_text(encoding="utf-8")
+def test_tenant_policies_live_in_alembic_not_conftest() -> None:
+    conftest = Path("backend/tests/conftest.py").read_text(encoding="utf-8")
+    versions = Path("backend/alembic/versions")
+    alembic = "\n".join(path.read_text(encoding="utf-8") for path in versions.glob("*.py"))
     for name in _ALL_TENANT_POLICY_NAMES:
-        assert name in source
-    assert source.count("WITH CHECK") >= 10
+        assert name not in conftest
+        assert name in alembic
+    assert alembic.count("WITH CHECK") >= 10
 
 
 def test_migration_006_declares_with_check() -> None:

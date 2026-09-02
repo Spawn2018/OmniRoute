@@ -1,15 +1,17 @@
 import os
 import uuid
 from collections.abc import AsyncGenerator
+from pathlib import Path
 
 import pytest
 import pytest_asyncio
-from sqlalchemy import text
+from alembic.config import Config
+from sqlalchemy import create_engine, text
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
+from alembic import command
 from app.core.database import bind_tenant
 from app.models.app_user import AppUser
-from app.models.base import Base
 from app.models.carrier_profile import CarrierProfile  # noqa: F401 — rejestr metadanych RLS
 from app.models.channel_quote import ChannelQuote  # noqa: F401 — rejestr metadanych RLS
 from app.models.charge import Charge  # noqa: F401 — rejestr metadanych RLS
@@ -46,6 +48,8 @@ from app.models.table_view import TableView  # noqa: F401 — rejestr metadanych
 from app.models.terminal import Terminal  # noqa: F401 — rejestr metadanych RLS
 
 _TEST_JWT_SECRET = "ci-unit-test-jwt-secret-32bytes-min"
+_BACKEND_ROOT = Path(__file__).resolve().parents[1]
+_test_schema_ready = False
 
 
 @pytest.fixture(autouse=True)
@@ -63,413 +67,118 @@ TENANT_TEST_DATABASE_URL = os.getenv(
 )
 
 
-async def _apply_rls_policies(conn) -> None:
-    await conn.execute(text("ALTER TABLE organization ENABLE ROW LEVEL SECURITY"))
-    await conn.execute(text("ALTER TABLE organization FORCE ROW LEVEL SECURITY"))
-    await conn.execute(text("DROP POLICY IF EXISTS organization_tenant_isolation ON organization"))
-    await conn.execute(
-        text(
-            """
-            CREATE POLICY organization_tenant_isolation ON organization
-            USING (id = NULLIF(current_setting('app.current_org', true), '')::uuid)
-            WITH CHECK (id = NULLIF(current_setting('app.current_org', true), '')::uuid)
-            """
-        ),
-    )
-    await conn.execute(text("ALTER TABLE app_user ENABLE ROW LEVEL SECURITY"))
-    await conn.execute(text("ALTER TABLE app_user FORCE ROW LEVEL SECURITY"))
-    await conn.execute(text("DROP POLICY IF EXISTS app_user_tenant_isolation ON app_user"))
-    await conn.execute(
-        text(
-            """
-            CREATE POLICY app_user_tenant_isolation ON app_user
-            USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
-            WITH CHECK (
-              organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid
-            )
-            """
-        ),
-    )
-    await conn.execute(text("DROP POLICY IF EXISTS app_user_login_email ON app_user"))
-    await conn.execute(
-        text(
-            """
-            CREATE POLICY app_user_login_email ON app_user
-            FOR SELECT
-            USING (email = NULLIF(current_setting('app.login_email', true), ''))
-            """
-        ),
-    )
-    await conn.execute(text("ALTER TABLE table_view ENABLE ROW LEVEL SECURITY"))
-    await conn.execute(text("ALTER TABLE table_view FORCE ROW LEVEL SECURITY"))
-    await conn.execute(text("DROP POLICY IF EXISTS table_view_tenant_isolation ON table_view"))
-    await conn.execute(
-        text(
-            """
-            CREATE POLICY table_view_tenant_isolation ON table_view
-            USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
-            WITH CHECK (
-              organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid
-            )
-            """
-        ),
-    )
-    await conn.execute(text("ALTER TABLE extraction_draft ENABLE ROW LEVEL SECURITY"))
-    await conn.execute(text("ALTER TABLE extraction_draft FORCE ROW LEVEL SECURITY"))
-    await conn.execute(
-        text("DROP POLICY IF EXISTS extraction_draft_tenant_isolation ON extraction_draft")
-    )
-    await conn.execute(
-        text(
-            """
-            CREATE POLICY extraction_draft_tenant_isolation ON extraction_draft
-            USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
-            WITH CHECK (
-              organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid
-            )
-            """
-        ),
-    )
-    await conn.execute(text("ALTER TABLE refresh_token ENABLE ROW LEVEL SECURITY"))
-    await conn.execute(text("ALTER TABLE refresh_token FORCE ROW LEVEL SECURITY"))
-    await conn.execute(
-        text("DROP POLICY IF EXISTS refresh_token_tenant_isolation ON refresh_token")
-    )
-    await conn.execute(
-        text(
-            """
-            CREATE POLICY refresh_token_tenant_isolation ON refresh_token
-            USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
-            WITH CHECK (
-              organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid
-            )
-            """
-        ),
-    )
-    await conn.execute(text("DROP POLICY IF EXISTS refresh_token_by_hash ON refresh_token"))
-    await conn.execute(
-        text(
-            """
-            CREATE POLICY refresh_token_by_hash ON refresh_token
-            FOR SELECT
-            USING (token_hash = NULLIF(current_setting('app.refresh_hash', true), ''))
-            """
-        ),
-    )
-    await conn.execute(text("ALTER TABLE charge_code ENABLE ROW LEVEL SECURITY"))
-    await conn.execute(text("ALTER TABLE charge_code FORCE ROW LEVEL SECURITY"))
-    await conn.execute(text("DROP POLICY IF EXISTS charge_code_tenant_isolation ON charge_code"))
-    await conn.execute(
-        text(
-            """
-            CREATE POLICY charge_code_tenant_isolation ON charge_code
-            USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
-            WITH CHECK (
-              organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid
-            )
-            """
-        ),
-    )
-    await conn.execute(text("ALTER TABLE commodity_code ENABLE ROW LEVEL SECURITY"))
-    await conn.execute(text("ALTER TABLE commodity_code FORCE ROW LEVEL SECURITY"))
-    await conn.execute(
-        text("DROP POLICY IF EXISTS commodity_code_tenant_isolation ON commodity_code"),
-    )
-    await conn.execute(
-        text(
-            """
-            CREATE POLICY commodity_code_tenant_isolation ON commodity_code
-            USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
-            WITH CHECK (
-              organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid
-            )
-            """
-        ),
-    )
-    await conn.execute(text("ALTER TABLE nbp_rate ENABLE ROW LEVEL SECURITY"))
-    await conn.execute(text("ALTER TABLE nbp_rate FORCE ROW LEVEL SECURITY"))
-    await conn.execute(
-        text("DROP POLICY IF EXISTS nbp_rate_tenant_isolation ON nbp_rate"),
-    )
-    await conn.execute(
-        text(
-            """
-            CREATE POLICY nbp_rate_tenant_isolation ON nbp_rate
-            USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
-            WITH CHECK (
-              organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid
-            )
-            """
-        ),
-    )
-    await conn.execute(text("ALTER TABLE dangerous_good ENABLE ROW LEVEL SECURITY"))
-    await conn.execute(text("ALTER TABLE dangerous_good FORCE ROW LEVEL SECURITY"))
-    await conn.execute(
-        text("DROP POLICY IF EXISTS dangerous_good_tenant_isolation ON dangerous_good"),
-    )
-    await conn.execute(
-        text(
-            """
-            CREATE POLICY dangerous_good_tenant_isolation ON dangerous_good
-            USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
-            WITH CHECK (
-              organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid
-            )
-            """
-        ),
-    )
-    await conn.execute(text("ALTER TABLE network ENABLE ROW LEVEL SECURITY"))
-    await conn.execute(text("ALTER TABLE network FORCE ROW LEVEL SECURITY"))
-    await conn.execute(
-        text("DROP POLICY IF EXISTS network_tenant_isolation ON network"),
-    )
-    await conn.execute(
-        text(
-            """
-            CREATE POLICY network_tenant_isolation ON network
-            USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
-            WITH CHECK (
-              organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid
-            )
-            """
-        ),
-    )
-    await conn.execute(text("ALTER TABLE rate_line ENABLE ROW LEVEL SECURITY"))
-    await conn.execute(text("ALTER TABLE rate_line FORCE ROW LEVEL SECURITY"))
-    await conn.execute(text("DROP POLICY IF EXISTS rate_line_tenant_isolation ON rate_line"))
-    await conn.execute(
-        text(
-            """
-            CREATE POLICY rate_line_tenant_isolation ON rate_line
-            USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
-            WITH CHECK (
-              organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid
-            )
-            """
-        ),
-    )
-    await conn.execute(text("DROP TRIGGER IF EXISTS rate_line_forbid_mutate ON rate_line"))
-    await conn.execute(text("DROP FUNCTION IF EXISTS rate_line_forbid_mutate()"))
-    await conn.execute(
-        text(
-            """
-            CREATE FUNCTION rate_line_forbid_mutate() RETURNS trigger
-            LANGUAGE plpgsql
-            AS $$
-            BEGIN
-              IF TG_OP = 'DELETE' THEN
-                RAISE EXCEPTION 'rate_line niemutowalny';
-              END IF;
-              IF NEW.organization_id IS DISTINCT FROM OLD.organization_id
-                 OR NEW.charge_code IS DISTINCT FROM OLD.charge_code
-                 OR NEW.amount IS DISTINCT FROM OLD.amount
-                 OR NEW.currency IS DISTINCT FROM OLD.currency
-                 OR NEW.source_ref IS DISTINCT FROM OLD.source_ref
-                 OR NEW.created_by IS DISTINCT FROM OLD.created_by
-                 OR NEW.id IS DISTINCT FROM OLD.id
-              THEN
-                RAISE EXCEPTION 'rate_line niemutowalny';
-              END IF;
-              IF OLD.superseded_by IS NOT NULL
-                 AND NEW.superseded_by IS DISTINCT FROM OLD.superseded_by
-              THEN
-                RAISE EXCEPTION 'rate_line już zastąpiony';
-              END IF;
-              RETURN NEW;
-            END;
-            $$;
-            """
-        ),
-    )
-    await conn.execute(
-        text(
-            """
-            CREATE TRIGGER rate_line_forbid_mutate
-            BEFORE UPDATE OR DELETE ON rate_line
-            FOR EACH ROW EXECUTE FUNCTION rate_line_forbid_mutate()
-            """
-        ),
-    )
-    await conn.execute(text("ALTER TABLE charge ENABLE ROW LEVEL SECURITY"))
-    await conn.execute(text("ALTER TABLE charge FORCE ROW LEVEL SECURITY"))
-    await conn.execute(text("DROP POLICY IF EXISTS charge_tenant_isolation ON charge"))
-    await conn.execute(
-        text(
-            """
-            CREATE POLICY charge_tenant_isolation ON charge
-            USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
-            WITH CHECK (
-              organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid
-            )
-            """
-        ),
-    )
-    await conn.execute(text("ALTER TABLE quotation ENABLE ROW LEVEL SECURITY"))
-    await conn.execute(text("ALTER TABLE quotation FORCE ROW LEVEL SECURITY"))
-    await conn.execute(text("DROP POLICY IF EXISTS quotation_tenant_isolation ON quotation"))
-    await conn.execute(
-        text(
-            """
-            CREATE POLICY quotation_tenant_isolation ON quotation
-            USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
-            WITH CHECK (
-              organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid
-            )
-            """
-        ),
-    )
-    await conn.execute(text("ALTER TABLE organization_setting ENABLE ROW LEVEL SECURITY"))
-    await conn.execute(text("ALTER TABLE organization_setting FORCE ROW LEVEL SECURITY"))
-    await conn.execute(
-        text("DROP POLICY IF EXISTS organization_setting_tenant_isolation ON organization_setting")
-    )
-    await conn.execute(
-        text(
-            """
-            CREATE POLICY organization_setting_tenant_isolation ON organization_setting
-            USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
-            WITH CHECK (
-              organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid
-            )
-            """
-        ),
-    )
-    await conn.execute(text("ALTER TABLE port ENABLE ROW LEVEL SECURITY"))
-    await conn.execute(text("ALTER TABLE port FORCE ROW LEVEL SECURITY"))
-    await conn.execute(text("DROP POLICY IF EXISTS port_tenant_isolation ON port"))
-    await conn.execute(
-        text(
-            """
-            CREATE POLICY port_tenant_isolation ON port
-            USING (organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid)
-            WITH CHECK (
-              organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid
-            )
-            """
-        ),
-    )
-    for table, policy in (
-        ("location", "location_tenant_isolation"),
-        ("location_zone_member", "location_zone_member_tenant_isolation"),
-        ("terminal", "terminal_tenant_isolation"),
-        ("party", "party_tenant_isolation"),
-        ("party_contact", "party_contact_tenant_isolation"),
-        ("party_bank_account", "party_bank_account_tenant_isolation"),
-        ("party_email_domain", "party_email_domain_tenant_isolation"),
-        ("party_charge_override", "party_charge_override_tenant_isolation"),
-        ("carrier_profile", "carrier_profile_tenant_isolation"),
-        ("party_scorecard", "party_scorecard_tenant_isolation"),
-        ("customer_sop", "customer_sop_tenant_isolation"),
-        ("port_surcharge", "port_surcharge_tenant_isolation"),
-        ("channel_quote", "channel_quote_tenant_isolation"),
-        ("credit_review", "credit_review_tenant_isolation"),
-    ):
-        await conn.execute(text(f"ALTER TABLE {table} ENABLE ROW LEVEL SECURITY"))
-        await conn.execute(text(f"ALTER TABLE {table} FORCE ROW LEVEL SECURITY"))
-        await conn.execute(text(f"DROP POLICY IF EXISTS {policy} ON {table}"))
-        await conn.execute(
-            text(
-                f"""
-                CREATE POLICY {policy} ON {table}
-                USING (
-                  organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid
-                )
-                WITH CHECK (
-                  organization_id = NULLIF(current_setting('app.current_org', true), '')::uuid
-                )
-                """
-            ),
-        )
+def _sync_admin_url() -> str:
+    override = os.getenv("ADMIN_TEST_DATABASE_URL_SYNC")
+    if override:
+        return override
+    return ADMIN_TEST_DATABASE_URL.replace("postgresql+asyncpg://", "postgresql://", 1)
 
 
-async def _apply_postal_zone_ddl(conn) -> None:
-    """Odtwarza to, czego metadane ORM nie niosą: własny typ range i wykluczanie nakładek.
-
-    Lustro migracji `013_location_rls` — typ `postal_range` z kolacją "C" oraz
-    kolumna generowana `postal_span` żyją wyłącznie w bazie.
-    """
-    await conn.execute(text("CREATE EXTENSION IF NOT EXISTS btree_gist"))
-    await conn.execute(
+def _ensure_roles(conn) -> None:
+    conn.execute(
         text(
             """
             DO $$ BEGIN
-              CREATE TYPE postal_range AS RANGE (subtype = text, collation = "C");
+              CREATE ROLE tenant_tester LOGIN PASSWORD 'test' NOINHERIT NOBYPASSRLS;
             EXCEPTION WHEN duplicate_object THEN NULL;
             END $$;
             """
         ),
     )
-    await conn.execute(
-        text(
-            "CREATE UNIQUE INDEX uq_location_org_code ON location (organization_id, code) "
-            "WHERE code IS NOT NULL"
-        ),
-    )
-    await conn.execute(
-        text(
-            "ALTER TABLE location_zone_member ADD COLUMN postal_span postal_range "
-            "GENERATED ALWAYS AS (postal_range(postal_from, postal_to, '[]')) STORED"
-        ),
-    )
-    await conn.execute(
+    conn.execute(
         text(
             """
-            ALTER TABLE location_zone_member ADD CONSTRAINT ex_zone_member_no_overlap
-            EXCLUDE USING gist (
-              organization_id WITH =, country_code WITH =, postal_span WITH &&
-            )
+            DO $$ BEGIN
+              CREATE ROLE omniroute_app LOGIN PASSWORD 'omniroute'
+                NOSUPERUSER NOCREATEDB NOCREATEROLE NOINHERIT NOBYPASSRLS;
+            EXCEPTION WHEN duplicate_object THEN
+              ALTER ROLE omniroute_app WITH NOSUPERUSER NOCREATEDB
+                NOCREATEROLE NOINHERIT NOBYPASSRLS LOGIN;
+            END $$;
             """
         ),
     )
+
+
+def _grant_test_roles(conn) -> None:
+    conn.execute(text("GRANT USAGE ON SCHEMA public TO tenant_tester"))
+    conn.execute(text("GRANT USAGE ON SCHEMA public TO omniroute_app"))
+    conn.execute(
+        text(
+            "GRANT SELECT, INSERT, UPDATE, DELETE "
+            "ON ALL TABLES IN SCHEMA public TO tenant_tester"
+        )
+    )
+    conn.execute(
+        text(
+            "GRANT SELECT, INSERT, UPDATE, DELETE "
+            "ON ALL TABLES IN SCHEMA public TO omniroute_app"
+        )
+    )
+    conn.execute(text("GRANT USAGE ON TYPE postal_range TO tenant_tester"))
+    conn.execute(text("GRANT USAGE ON TYPE postal_range TO omniroute_app"))
+
+
+def _upgrade_test_schema() -> None:
+    ini = _BACKEND_ROOT / "alembic.ini"
+    cfg = Config(str(ini))
+    cfg.set_main_option("script_location", str(_BACKEND_ROOT / "alembic"))
+    command.upgrade(cfg, "head")
+
+
+def _ensure_test_schema() -> None:
+    global _test_schema_ready
+    if _test_schema_ready:
+        return
+    sync_url = _sync_admin_url()
+    if "omniroute_test" not in sync_url:
+        raise RuntimeError("Alembic testów tylko na omniroute_test, nie na żywej bazie")
+    engine = create_engine(sync_url)
+    with engine.begin() as conn:
+        _ensure_roles(conn)
+        conn.execute(text("DROP SCHEMA public CASCADE"))
+        conn.execute(text("CREATE SCHEMA public"))
+        conn.execute(text("GRANT ALL ON SCHEMA public TO CURRENT_USER"))
+    previous = os.environ.get("ALEMBIC_DATABASE_URL")
+    os.environ["ALEMBIC_DATABASE_URL"] = sync_url
+    try:
+        _upgrade_test_schema()
+    finally:
+        if previous is None:
+            os.environ.pop("ALEMBIC_DATABASE_URL", None)
+        else:
+            os.environ["ALEMBIC_DATABASE_URL"] = previous
+    with engine.begin() as conn:
+        _grant_test_roles(conn)
+    engine.dispose()
+    _test_schema_ready = True
+
+
+def _truncate_sql(table_names: list[str]) -> str:
+    quoted = ", ".join(f'"{name}"' for name in table_names)
+    return f"TRUNCATE TABLE {quoted} CASCADE"
+
+
+async def _truncate_public_tables(conn) -> None:
+    rows = await conn.execute(
+        text(
+            "SELECT tablename FROM pg_tables "
+            "WHERE schemaname = 'public' AND tablename <> 'alembic_version' "
+            "ORDER BY tablename"
+        )
+    )
+    tables = [row[0] for row in rows]
+    if not tables:
+        return
+    await conn.execute(text(_truncate_sql(tables)))
 
 
 @pytest_asyncio.fixture
 async def engine() -> AsyncGenerator:
+    _ensure_test_schema()
     admin_engine = create_async_engine(ADMIN_TEST_DATABASE_URL, pool_pre_ping=True)
-
     async with admin_engine.begin() as conn:
-        await conn.execute(
-            text(
-                """
-                DO $$ BEGIN
-                  CREATE ROLE tenant_tester LOGIN PASSWORD 'test' NOINHERIT NOBYPASSRLS;
-                EXCEPTION WHEN duplicate_object THEN NULL;
-                END $$;
-                """
-            ),
-        )
-        await conn.execute(
-            text(
-                """
-                DO $$ BEGIN
-                  CREATE ROLE omniroute_app LOGIN PASSWORD 'omniroute'
-                    NOSUPERUSER NOCREATEDB NOCREATEROLE NOINHERIT NOBYPASSRLS;
-                EXCEPTION WHEN duplicate_object THEN
-                  ALTER ROLE omniroute_app WITH NOSUPERUSER NOCREATEDB
-                    NOCREATEROLE NOINHERIT NOBYPASSRLS LOGIN;
-                END $$;
-                """
-            ),
-        )
-        await conn.run_sync(Base.metadata.drop_all)
-        await conn.run_sync(Base.metadata.create_all)
-        await _apply_postal_zone_ddl(conn)
-        await _apply_rls_policies(conn)
-        await conn.execute(text("GRANT USAGE ON SCHEMA public TO tenant_tester"))
-        await conn.execute(text("GRANT USAGE ON SCHEMA public TO omniroute_app"))
-        await conn.execute(
-            text(
-                "GRANT SELECT, INSERT, UPDATE, DELETE "
-                "ON ALL TABLES IN SCHEMA public TO tenant_tester"
-            )
-        )
-        await conn.execute(
-            text(
-                "GRANT SELECT, INSERT, UPDATE, DELETE "
-                "ON ALL TABLES IN SCHEMA public TO omniroute_app"
-            )
-        )
-
+        await _truncate_public_tables(conn)
     await admin_engine.dispose()
 
     test_engine = create_async_engine(TENANT_TEST_DATABASE_URL, pool_pre_ping=True)
@@ -486,7 +195,8 @@ async def session(engine) -> AsyncGenerator[AsyncSession, None]:
 
 
 @pytest_asyncio.fixture
-async def two_tenants() -> dict[str, object]:
+async def two_tenants(engine) -> dict[str, object]:
+    _ = engine
     admin_engine = create_async_engine(ADMIN_TEST_DATABASE_URL, pool_pre_ping=True)
     org_a = Organization(id=uuid.uuid4(), name="Tenant A", slug=f"tenant-a-{uuid.uuid4().hex[:8]}")
     org_b = Organization(id=uuid.uuid4(), name="Tenant B", slug=f"tenant-b-{uuid.uuid4().hex[:8]}")

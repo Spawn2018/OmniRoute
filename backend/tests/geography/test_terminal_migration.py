@@ -30,12 +30,10 @@ def test_migration_014_creates_terminal_alters_port_and_forces_rls() -> None:
     assert "drop_column" in source or "wpi_number" in source.split("def downgrade")[1]
 
 
-def test_conftest_forces_rls_on_terminal() -> None:
+def test_conftest_registers_terminal_model_without_duplicating_rls() -> None:
     source = Path("backend/tests/conftest.py").read_text(encoding="utf-8")
-    assert "terminal" in source
-    assert "terminal_tenant_isolation" in source or (
-        'for table in ("location", "location_zone_member", "terminal")' in source
-    )
+    assert "from app.models.terminal import" in source
+    assert "terminal_tenant_isolation" not in source
 
 
 def test_generated_api_types_include_terminal_and_wpi_fields() -> None:

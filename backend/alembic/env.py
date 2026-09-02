@@ -1,5 +1,6 @@
 """Generic single-database configuration."""
 
+import os
 from logging.config import fileConfig
 
 from alembic import context
@@ -36,7 +37,11 @@ from app.models.customer_sop import CustomerSop  # noqa: F401
 from app.models.port_surcharge import PortSurcharge  # noqa: F401
 
 config = context.config
-config.set_main_option("sqlalchemy.url", settings.database_url_sync)
+# Testy nadpisują URL na omniroute_test. Domyślnie owner z settings — nie runtime omniroute_app.
+config.set_main_option(
+    "sqlalchemy.url",
+    os.environ.get("ALEMBIC_DATABASE_URL") or settings.database_url_sync,
+)
 
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
