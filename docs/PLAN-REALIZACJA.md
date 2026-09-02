@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** S1 `/plan-modul` — żywe M-32 tabela wiadomości + draft, fixture. RLS, `source_ref`. Nie Graph, nie IMAP, nie send, nie `shipment`. Nie F9.1.
+**Następny (zablokowany):** 64.0 S1 `/plaster` — `inbound_message` + draft + fixture. RLS, `source_ref`. Nie Graph, nie IMAP, nie send, nie `shipment`. Nie F9.1.
 <!-- os-status:end -->
 
 ```mermaid
@@ -567,13 +567,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

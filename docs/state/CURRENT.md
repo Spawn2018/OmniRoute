@@ -4,12 +4,12 @@
 **Repo:** https://github.com/Spawn2018/OmniRoute  
 
 **Ostatni plaster:** **63.0** Q-E4 threat model tenant+HITL + CodeQL  
-**Etap:** Plan  
+**Etap:** Plaster  
 **Noc:** `/noc <godzina>` (np. `/noc 7` = pętla do 7:00 czasu polskiego). Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md). Przed startem: `scripts/noc-preflight.ps1`. Etap Plan → `/plan-modul`, nie `/plaster`.  
-**Następny:** S1 `/plan-modul` — żywe M-32 tabela wiadomości + draft, fixture. RLS, `source_ref`. Nie Graph, nie IMAP, nie send, nie `shipment`. Nie F9.1.  
+**Następny:** 64.0 S1 `/plaster` — `inbound_message` + draft + fixture. RLS, `source_ref`. Nie Graph, nie IMAP, nie send, nie `shipment`. Nie F9.1.  
 M-02 **parked** (odblokowanie S16). Auth0 **odroczone** (S53). Portale **parked** (S55). Exit Wave FE **nie** claim.
 
-**Spec (jedna na sesję):** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Kolejka S1. Nie otwieraj [print-sheet.md](../spec/print-sheet.md).
+**Spec (jedna na sesję):** [64.0-inbound-message.md](../deltas/open/64.0-inbound-message.md). Nie otwieraj [print-sheet.md](../spec/print-sheet.md).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Cel jakości + § Kolejka realizacji.
 
@@ -17,4 +17,4 @@ M-02 **parked** (odblokowanie S16). Auth0 **odroczone** (S53). Portale **parked*
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` są w PATH. Przed pracą podnieś dwie rzeczy: `pg_ctl -D tools\pgdata -o "-p 5432" start` oraz `tools\openfga\openfga.exe run`. Potem `just gate` i `just test` działają bez ustawiania zmiennych. PG 16 to klaster przenośny w `tools\pg16` — instalator EDB przez winget nie przechodzi (exit 1).
 
-**2026-09-02:** 63.0 zamknięty. Fala E domknięta. Następny: `/plan-modul` S1 (M-32). Nie F9.1.
+**2026-09-02:** Delta 64.0 zaakceptowana (`/noc`). Następny: `/plaster` 64.0 S1. Nie F9.1.

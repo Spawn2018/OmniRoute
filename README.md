@@ -38,8 +38,8 @@ Seed: `scripts/dev_seed_local.py`.
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **63.0** Q-E4 threat model tenant+HITL + CodeQL
-- **Etap:** Plan
-- **Następny:** S1 `/plan-modul` — żywe M-32 tabela wiadomości + draft, fixture. RLS, `source_ref`. Nie Graph, nie IMAP, nie send, nie `shipment`. Nie F9.1.
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Etap:** Plaster
+- **Następny:** 64.0 S1 `/plaster` — `inbound_message` + draft + fixture. RLS, `source_ref`. Nie Graph, nie IMAP, nie send, nie `shipment`. Nie F9.1.
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
