@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** S7 `/plan-modul` — HS/CN na RFQ/wycenie. Katalog jest. Nie F9.1.
+**Następny (zablokowany):** `/plaster` **70.0** — HS/CN na RFQ/wycenie. Katalog jest. Nie F9.1.
 <!-- os-status:end -->
 
 ```mermaid
@@ -385,7 +385,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E2** | Testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy) | 61.0 | zamknięty (`docs/deltas/archived/61.0-alembic-quote-budget.md`) |
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | 62.0 | zamknięty (`docs/deltas/archived/62.0-operator-howto-c4.md`) |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | 63.0 | zamknięty (`docs/deltas/archived/63.0-threat-model-codeql.md`) |
-| po Q-E4 | **Fala S**, S1–S6 zamknięte; S7 Plan | Plan | **następny** |
+| po Q-E4 | **Fala S**, S1–S6 zamknięte; S7 plan 70.0 | Plan → plaster | **następny** |
 
 ### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
 
@@ -411,7 +411,7 @@ Reguły kolejności (żeby `/noc` nie złożył awarii):
 | S4 | Żywe **M-28** obiekt RFQ powiązany z wiadomością | 67.0 | zamknięty (`docs/deltas/archived/67.0-customer-rfq.md`) | Nie ślad wycen. S5 = silnik |
 | S5 | Żywe **M-21** istniejący silnik na tym RFQ | 68.0 | zamknięty (`docs/deltas/archived/68.0-quotation-on-rfq.md`) | Nie nowy silnik. LLM nie liczy |
 | S6 | Żywe **M-18** ewaluacja `applies_when` w SQL | 69.0 | zamknięty (`docs/deltas/archived/69.0-port-surcharge-when.md`) | Nie zapis marży do `charge` |
-| S7 | Żywe **M-09** HS/CN na RFQ/wycenie | Plan → plaster | **następny** | Katalog jest. Opcjonalnie UN→M-52 z katalogu, nie z LLM |
+| S7 | Żywe **M-09** HS/CN na RFQ/wycenie | 70.0 | **następny** | Katalog jest. UN→M-52 leftover (nie LLM) |
 | S8 | Żywe **M-03** reszta + arch. M-84 (scalać) | Plan → plaster | po S7 | Numer i szablon. Leftover Fali 1 |
 | S9 | Żywe **M-26** dokument oferty | Plan → plaster | po S8 | Print 57.0 jest. Nie send |
 | S10 | Żywe **M-16** SOP „kiedy nie wolno auto” | Plan → plaster | po S9 | Przed Graph send |

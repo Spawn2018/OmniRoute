@@ -207,3 +207,4 @@
 | 2026-09-03 | 68.0 | M-21 | Istniejący silnik na `customer_rfq` (`quotation.customer_rfq_id`). Kwota ze stawki. Nie nowy silnik. Następny: S6 Plan. |
 | 2026-09-03 | Plan 69.0 | M-18 | S6: ewaluacja `applies_when` w SQL. Delta zaakceptowana (`/noc`). Nie zapis marży do `charge`. Następny: `/plaster` 69.0. |
 | 2026-09-03 | 69.0 | M-18 | Matching `applies_when` w SQL na `port_surcharge`. Nie zapis do `charge`. Następny: S7 Plan. |
+| 2026-09-03 | Plan 70.0 | M-09 | S7: HS/CN na RFQ/wycenie. Delta zaakceptowana (`/noc`). UN z M-52 leftover. Następny: `/plaster` 70.0. |
