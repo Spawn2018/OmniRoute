@@ -9,7 +9,8 @@ Operator **nie** jest w pętli. `/plan-modul`, `/plaster`, `/refaktor`, `/noc`, 
 | Mechanizm | Co robi | Czego nie robi |
 |---|---|---|
 | `factory_cycle.py --start` | Retrieve kart + podłoga + (poza `/noc`) writer-preflight | Dump całej knowledge |
-| `factory_cycle.py --close` | Bench, karta z 3× czerwonego CI, podłoga w górę | GROUNDING / Auto-AGENTS |
+| `factory_cycle.py --close` | Bench, karta z 3× CI, podłoga w górę | GROUNDING / Auto-AGENTS |
+| `craft_close.py` | Bench, RLS, OS-3 (test/how-to/delta) | GROUNDING |
 | `run_gate.py` | Lokalny gate zbiera KOD i META | Ukrywanie meta za ruffem |
 | `quality_floor.py` | Izolacja / bench / promptfoo / HC nie spadają | Obniżanie podłogi |
 | `check_agent_refs.py` C2 | Kłamliwy `just` / MCP / skrypt | Edycja kontraktu |

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import re
 import subprocess
 import sys
@@ -75,7 +76,24 @@ def start(phase: str) -> int:
     print_retrieve()
     if _run("repeat_learn.py") != 0:
         return 1
+    if phase == "plaster" and _product_delta_missing():
+        print(
+            "factory_cycle: brak delty produktu w docs/deltas/open/ "
+            "(pliki OS-* sie nie licza). Najpierw /plan-modul.",
+            flush=True,
+        )
+        return 1
     return _run("quality_floor.py", "--check")
+
+
+def _product_delta_missing() -> bool:
+    path = QUALITY / "craft_oracles.py"
+    spec = importlib.util.spec_from_file_location("craft_oracles_start", path)
+    if spec is None or spec.loader is None:
+        return True
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return not module.product_open_deltas(module.OPEN)
 
 
 def close() -> int:

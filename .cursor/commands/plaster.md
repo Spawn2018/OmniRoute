@@ -5,7 +5,8 @@ description: Rozpoczyna realizację plastra według procedury
 Przeczytaj `docs/state/CURRENT.md`.
 
 **Poza `/noc`:** `python scripts/quality/factory_cycle.py --start plaster`
-Retrieve + podłoga. Pominięcie = plaster bez pamięci fabryki.
+Retrieve + podłoga + **delta produktu** w `docs/deltas/open/` (pliki `OS-*` się nie liczą).
+Brak delty = stop. Pominięcie retrieve = plaster bez pamięci fabryki.
 **W `/noc`:** nie powtarzaj `--start plaster` — preflight już zrobił `--start noc`.
 
 **Wyjątek `/noc`:** nie zatrzymuj się po kroku 6 i nie czekaj na `akceptuję`. Od razu `/testy`, potem kod, **`/po-plastrze` (pełna tabela)**, `/zamknij` bez nowej rozmowy, commit + push, wróć do pętli. Szczegóły: `docs/ops/nocna-zmiana.md`. `/noc` nie pomija kartki jakości.

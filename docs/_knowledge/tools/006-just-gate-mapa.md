@@ -24,6 +24,8 @@
 | `/noc` | `noc-preflight.ps1` → `factory_cycle --start noc` |
 | `/zamknij` | `python scripts/quality/factory_cycle.py --close` |
 
-`--close` = bench + karta z powtórzonych czerwonych CI + podłoga tylko w górę. Nie edytuje GROUNDING. Nie dopisuje zasad do AGENTS.
+`--close` = bench + karta z powtórzonych czerwonych CI + podłoga tylko w górę.
+`craft-check` = RLS + OS-3 (test z kodem, how-to albo leftover, delta zanim produkt).
+Nie edytuje GROUNDING. Nie dopisuje zasad do AGENTS.
 
 **Źródło:** PLAN § Gate dziś vs cel DoD. Nie zgaduj, który recipe jest stubem.

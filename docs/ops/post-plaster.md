@@ -25,7 +25,7 @@ Skopiuj **wszystkie** wiersze. Nie skracaj do skuteczność / szybkość / dług
 | Docs/OS | PRZESZŁO / NIE | CURRENT, potem `just docs`; spec z CURRENT; skill jeśli dotyczy |
 | Pushy do zielonego | liczba / N/A | agent z `gh run list` albo N/A; **nie** job operatora |
 | Minuty plastra | liczba / N/A | zegar sesji agenta albo N/A; zakaz optymalizacji pod tę liczbę |
-| Bench rzemiosła | PRZESZŁO / NIE | `python scripts/quality/factory_cycle.py --close` przed commitem; `just craft-check` i `just quality-floor` w meta-gate |
+| Bench rzemiosła | PRZESZŁO / NIE | `factory_cycle.py --close`; OS-3 w `craft-check` (test, how-to, delta) |
 
 **Nie w tej tabeli** (osobne Q albo `/refaktor`): CodeQL, mutacje, STRIDE, C4, changelog od zera, mixin wszystkich modeli, vulture, k6 jako DoD, Alembic vs `create_all`.
 

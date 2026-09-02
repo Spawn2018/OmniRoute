@@ -3,10 +3,12 @@
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import re
 import subprocess
 import sys
 from pathlib import Path
+from types import ModuleType
 
 ROOT = Path(__file__).resolve().parents[2]
 CURRENT = ROOT / "docs" / "state" / "CURRENT.md"
@@ -38,7 +40,29 @@ def review_paths() -> frozenset[str]:
     names |= _git_names(["git", "diff-tree", "--no-commit-id", "--name-only", "-r", "HEAD"])
     names |= _git_names(["git", "diff", "--name-only"])
     names |= _git_names(["git", "diff", "--cached", "--name-only"])
+    names |= _git_names(["git", "ls-files", "--others", "--exclude-standard"])
     return frozenset(names)
+
+
+def added_paths() -> frozenset[str]:
+    names: set[str] = set()
+    names |= _git_names(
+        ["git", "diff-tree", "--no-commit-id", "--name-only", "--diff-filter=A", "-r", "HEAD"]
+    )
+    names |= _git_names(["git", "diff", "--name-only", "--diff-filter=A"])
+    names |= _git_names(["git", "diff", "--cached", "--name-only", "--diff-filter=A"])
+    names |= _git_names(["git", "ls-files", "--others", "--exclude-standard"])
+    return frozenset(names)
+
+
+def _oracles() -> ModuleType:
+    path = Path(__file__).with_name("craft_oracles.py")
+    spec = importlib.util.spec_from_file_location("craft_oracles", path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"cannot load {path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 
 def bench_case_paths(plaster_id: str) -> list[Path]:
@@ -79,9 +103,28 @@ def bench_missing_error(plaster_id: str) -> list[str]:
     ]
 
 
+def oracle_errors() -> list[str]:
+    oracles = _oracles()
+    added = added_paths()
+    changed = review_paths() | added
+    sources = {rel: oracles.read_if_exists(rel) for rel in added}
+    archived_added = frozenset(
+        rel for rel in added if rel.startswith("docs/deltas/archived/")
+    )
+    return (
+        oracles.missing_tests(added, changed)
+        + oracles.missing_operator_docs(added, changed, sources)
+        + oracles.missing_product_delta(
+            changed,
+            oracles.product_open_deltas(oracles.OPEN),
+            archived_added,
+        )
+    )
+
+
 def check_errors() -> list[str]:
     plaster_id = last_plaster_id(CURRENT.read_text(encoding="utf-8"))
-    return bench_missing_error(plaster_id) + alembic_rls_errors(review_paths())
+    return bench_missing_error(plaster_id) + alembic_rls_errors(review_paths()) + oracle_errors()
 
 
 def _slug(plaster_id: str) -> str:
@@ -168,9 +211,53 @@ commicie co plaster, bez `FORCE ROW LEVEL SECURITY` albo bez pliku
     return path
 
 
+def write_os3_machine_cards() -> list[Path]:
+    KNOWLEDGE.mkdir(parents=True, exist_ok=True)
+    cards = (
+        (
+            "machine-test-w-tym-samym-commicie.md",
+            """# Machine — test z nowym serwisem/API
+
+**Status:** machine. Orakulum: `craft_oracles.missing_tests`.
+
+Nowy plik w `backend/app/services/` albo `backend/app/api/` (nie `__init__.py`)
+wymaga zmiany w `backend/tests/` w tym samym przeglądzie. Nie „test potem”.
+""",
+        ),
+        (
+            "machine-how-to-albo-leftover.md",
+            """# Machine — how-to albo leftover przy zapisie
+
+**Status:** machine. Orakulum: `craft_oracles.missing_operator_docs`.
+
+Nowy `catalog-page.tsx` albo `router.post` w API: w tym samym przeglądzie
+`docs/operator/` albo linia w `docs/ops/docs-debt.md`. Nie 70 stubów.
+""",
+        ),
+        (
+            "machine-delta-zanim-kod.md",
+            """# Machine — delta zanim kod produktu
+
+**Status:** machine. Orakulum: `craft_oracles.missing_product_delta`.
+
+`backend/app/`, Alembic, `frontend/src/features/` albo `routes/` bez delty
+w `docs/deltas/open/` (nie `OS-*`) i bez archiwum w tym commicie = stop.
+Najpierw `/plan-modul`.
+""",
+        ),
+    )
+    written: list[Path] = []
+    for name, body in cards:
+        path = KNOWLEDGE / name
+        if not path.is_file():
+            path.write_text(body, encoding="utf-8")
+        written.append(path)
+    return written
+
+
 def write_all() -> list[Path]:
     plaster_id = last_plaster_id(CURRENT.read_text(encoding="utf-8"))
-    return [write_bench_case(plaster_id), write_rls_machine_card()]
+    return [write_bench_case(plaster_id), write_rls_machine_card(), *write_os3_machine_cards()]
 
 
 def main() -> int:
