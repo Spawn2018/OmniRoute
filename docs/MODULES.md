@@ -30,6 +30,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-19 | Stawki live i kanały | 13.0 `channel_quote` | **ukończony (fundament)** · katalog oferty; nie live HTTP; nie zapis do `rate_line` / `charge` |
 | M-14 | Ocena kredytowa | 14.0 `credit_review` | **ukończony (fundament)** · katalog recenzji; nie auto-scoring; nie zapis `credit_limit` |
 | M-15 | Wirtualny Dyrektor Finansowy | 15.0 `finance_board` | **ukończony (fundament)** · tablica odczytu `/finance`; nie silnik AI; LLM nie liczy |
+| M-24 | Ryzyko oferty | 17.0 `offer_risk` | **ukończony (fundament)** · odczyt recenzji i karty przy `/quotations`; nie scoring; nie nowa tabela |
 
 Nie dopisuj tu 70 pustych wierszy M-xx. Katalog + **kolejka Q1…** (co budować jedno po drugim, tryb Plan potem plaster): `docs/PLAN-REALIZACJA.md` § Kolejka. Archiwum Claude zostaje magazynem specyfikacji, nie SoT kolejności.
 

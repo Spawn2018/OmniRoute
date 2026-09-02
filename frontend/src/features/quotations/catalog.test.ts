@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest"
 import {
   quotationCreateBody,
   quotationCurrencies,
+  quotationPartyIds,
   quotationSkipsNbpCatalog,
   type Quotation,
 } from "@/lib/quotations-api"
@@ -57,6 +58,17 @@ describe("quotation NBP lookup", () => {
       ]),
     ).toEqual(["EUR", "USD"])
   })
+
+  it("lists distinct party_id values and drops nulls", () => {
+    const withParty = quotationWithCurrency("EUR")
+    expect(
+      quotationPartyIds([
+        { ...withParty, party_id: PARTY },
+        { ...withParty, party_id: PARTY },
+        { ...withParty, party_id: null },
+      ]),
+    ).toEqual([PARTY])
+  })
 })
 
 describe("quotation catalog screen", () => {
@@ -69,8 +81,11 @@ describe("quotation catalog screen", () => {
     expect(page).toContain("fetchPorts")
     expect(page).toContain("resolveNbpRate")
     expect(page).toContain("quotationSkipsNbpCatalog")
+    expect(page).toContain("resolveCreditReview")
+    expect(page).toContain("fetchPartyScorecard")
     expect(page).not.toMatch(/amount\s*\*\s*mid|mid\s*\*\s*amount/)
     expect(page).not.toContain("CatalogCreateForm")
     expect(page).not.toContain("parseFloat")
+    expect(page).not.toContain("risk_score")
   })
 })

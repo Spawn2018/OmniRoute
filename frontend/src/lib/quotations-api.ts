@@ -49,6 +49,16 @@ export function quotationSkipsNbpCatalog(currency: string): boolean {
   return currency.trim().toUpperCase() === "PLN"
 }
 
+export function quotationPartyIds(rows: readonly Quotation[]): string[] {
+  const ids = new Set<string>()
+  for (const row of rows) {
+    if (row.party_id !== null) {
+      ids.add(row.party_id)
+    }
+  }
+  return [...ids].sort()
+}
+
 async function readQuotation(response: Response, fallback: string): Promise<Quotation> {
   if (!response.ok) {
     throw new ApiError(await readApiDetail(response, fallback), httpErrorStatus(response))

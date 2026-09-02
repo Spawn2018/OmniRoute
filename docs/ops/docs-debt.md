@@ -53,6 +53,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **6.0 leftover — live NBP / mnożenie (dlaczego nie w 6.0 ani 16.0):** ingest w CI = fixture; ręczny wpis = `tenant:manual`. `api.nbp.pl` zostaje. 16.0 = odczyt `mid` przy `/quotations`, nie `amount * mid`.
 - **16.0 DONE:** `/quotations` resolve `nbp_rate` (waluta z listy wycen + dzień). Nie nowa tabela. Nie mnożenie kwoty. PLN bez requestu.
 - **16.0 leftover — przeliczenie oferty (dlaczego nie w tym plasterze):** `amount * mid` w Pythonie/JS = silnik walut; PLAN: LLM nie liczy. Snapshot `nbp_rate_id` na `quotation` = zgadywanie schematu. Live NBP HTTP = leftover 6.0. `just dup` 2,76%.
+- **17.0 DONE:** `/quotations` resolve `credit_review` + `fetchPartyScorecard`. Nie nowa tabela. Nie scoring.
+- **17.0 leftover — scoring / biuro (dlaczego nie w tym plasterze):** leftover 14.0 (AI Act, BIK/KRD, zapis `credit_limit`). 17.0 tylko odczyt. `just dup` 2,75%.
 - **6.0 leftover — klon nagłówka modelu (dlaczego nie w tym plasterze):** `jscpd` 6 linii `charge.py` przeciw `nbp_rate.py` (blok `id`). Miksin wszystkich modeli = `refaktor-pass`. `just dup` 2,83% po kompaktowym `id` i osobnym formularzu kursu (nie `CatalogCreateForm`).
 - **7.0 DONE:** `dangerous_good` UN/IMDG + aliasy + `source_ref`, RLS FORCE, `resolve`, OpenFGA `can_manage_dangerous_goods`, `/dangerous-goods`. Nie podpięcie do wyceny, nie live IMO, nie M-08 `charge`.
 - **7.0 leftover — live IMO / ADN-ADR / Fala 8 (dlaczego nie w tym plasterze):** ręczny wpis = `tenant:manual`; fixture = `imdg:<un_number>`. Seed tysięcy UN i live HTTP do IMO = jak 4.0/5.0. ADN/ADR osobne tabele i grupy zgodności 1.xA = później. Fala 8 M-53–M-56 zostaje.

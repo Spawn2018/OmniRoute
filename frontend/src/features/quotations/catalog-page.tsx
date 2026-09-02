@@ -7,14 +7,17 @@ import { Money } from "@/components/money"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { BUSINESS_LISTS } from "@/lib/business-lists"
+import { resolveCreditReview, type CreditReview } from "@/lib/credit-reviews-api"
 import { resolveNbpRate, type NbpRate } from "@/lib/nbp-rates-api"
 import { fetchParties } from "@/lib/parties-api"
+import { fetchPartyScorecard, type PartyScorecard } from "@/lib/party-scorecards-api"
 import { fetchPorts } from "@/lib/ports-api"
 import {
   createQuotation,
   fetchQuotations,
   quotationCreateBody,
   quotationCurrencies,
+  quotationPartyIds,
   quotationSkipsNbpCatalog,
   type Quotation,
 } from "@/lib/quotations-api"
@@ -135,6 +138,98 @@ function OfferNbpFieldset(args: { currencies: string[]; signedIn: boolean }) {
         </p>
       ) : null}
     </fieldset>
+  )
+}
+
+function OfferRiskPanel(args: { partyIds: string[]; signedIn: boolean }) {
+  const [partyId, setPartyId] = useState("")
+  const [onDate, setOnDate] = useState("")
+  const [review, setReview] = useState<CreditReview | null>(null)
+  const [card, setCard] = useState<PartyScorecard | null>(null)
+
+  const reviewLookup = useMutation({
+    mutationFn: () => resolveCreditReview(partyId, onDate),
+    onSuccess: (row) => {
+      setReview(row)
+    },
+    onError: () => {
+      setReview(null)
+    },
+  })
+
+  const cardLookup = useMutation({
+    mutationFn: () => fetchPartyScorecard(partyId),
+    onSuccess: (row) => {
+      setCard(row)
+    },
+    onError: () => {
+      setCard(null)
+    },
+  })
+
+  return (
+    <aside className="space-y-2 rounded-md border border-dashed border-border p-3">
+      <h3 className="text-sm font-medium">Ryzyko kontrahenta oferty</h3>
+      <p className="text-xs text-muted-foreground">
+        recenzja 14.0 + karta 10.0 · nie scoring · nie zapis limitu
+      </p>
+      {args.partyIds.length === 0 ? (
+        <p className="text-sm text-muted-foreground">Najpierw wycena z party_id.</p>
+      ) : (
+        <form
+          className="grid gap-2 sm:grid-cols-[1fr_auto_auto]"
+          onSubmit={(event) => {
+            event.preventDefault()
+            reviewLookup.mutate()
+            cardLookup.mutate()
+          }}
+        >
+          <label className="flex flex-col gap-1 text-xs">
+            quotation.party_id
+            <select
+              aria-label="Kontrahent oferty"
+              className="h-8 rounded-md border border-border bg-card px-2 text-sm"
+              value={partyId}
+              onChange={(event) => setPartyId(event.target.value)}
+              required
+            >
+              <option value="">Kontrahent z listy wycen</option>
+              {args.partyIds.map((id) => (
+                <option key={id} value={id}>
+                  {id}
+                </option>
+              ))}
+            </select>
+          </label>
+          <Input
+            aria-label="Dzień recenzji oferty"
+            type="date"
+            value={onDate}
+            onChange={(event) => setOnDate(event.target.value)}
+            required
+          />
+          <Button type="submit" disabled={reviewLookup.isPending || cardLookup.isPending || !args.signedIn}>
+            Pokaż fakty ryzyka
+          </Button>
+        </form>
+      )}
+      {reviewLookup.isError ? (
+        <p className="text-sm text-destructive">{(reviewLookup.error as Error).message}</p>
+      ) : null}
+      {cardLookup.isError ? (
+        <p className="text-sm text-destructive">{(cardLookup.error as Error).message}</p>
+      ) : null}
+      {review ? (
+        <p className="text-xs">
+          recenzja {review.decision} {review.review_date} {review.source_ref}
+        </p>
+      ) : null}
+      {card ? (
+        <p className="text-xs">
+          karta {card.computed_at} {card.source_ref} n={card.sample_size}
+        </p>
+      ) : null}
+    </aside>
   )
 }
 
@@ -343,7 +438,10 @@ export function QuotationCatalogPage() {
       ) : null}
 
       {query.data ? (
-        <OfferNbpFieldset currencies={quotationCurrencies(query.data)} signedIn={signedIn} />
+        <>
+          <OfferNbpFieldset currencies={quotationCurrencies(query.data)} signedIn={signedIn} />
+          <OfferRiskPanel partyIds={quotationPartyIds(query.data)} signedIn={signedIn} />
+        </>
       ) : null}
 
       {query.isPending ? <p className="text-sm text-muted-foreground">Pobieranie wycen…</p> : null}

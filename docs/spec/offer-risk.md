@@ -1,10 +1,10 @@
 # M-24 ryzyko oferty — odczyt recenzji i karty przy `quotation`
 
 **Moduł żywy:** M-24 (token UI `offer_risk`, nie tabela) + ekran M-21 `quotation`  
-**Plaster:** **17.0** (plan)  
-**Status:** plan — wycena **czyta** `credit_review` i `party_scorecard` kontrahenta z wiersza. Nie scoring. Nie nowa tabela.
+**Plaster:** **17.0** (zamknięty)  
+**Status:** wycena **czyta** `credit_review` i `party_scorecard` kontrahenta z wiersza. Nie scoring. Nie nowa tabela.
 
-Delta: [docs/deltas/open/17.0-offer-risk.md](../deltas/open/17.0-offer-risk.md).
+Delta: [docs/deltas/archived/17.0-offer-risk.md](../deltas/archived/17.0-offer-risk.md).
 
 ## 17.0 fakty ryzyka przy ofercie
 
