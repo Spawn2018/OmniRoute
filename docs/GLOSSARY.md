@@ -45,6 +45,7 @@
 | pin Radix shadcn | shadcn_radix_base | 54.0 `components.json` `base: radix`; nie Base UI |
 | komunikat UI | ui_message | 55.0 klucz i18n w katalogu `pl`; nie drugi język |
 | ścieżka E2E axe | e2e_axe_route | 56.0 Playwright + axe na trasie; nie live accept |
+| arkusz druku | print_sheet | 57.0 `@media print` chowa chrome; nie PDF |
 | odcinek | shipment_leg | operacyjne; nie w 29.0 |
 | tenant | organization | organization_id wszędzie |
 | ustawienie tenanta | organization_setting | konfiguracja jako dane; allowlista kluczy; nie sekret |
