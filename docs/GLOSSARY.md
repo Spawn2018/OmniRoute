@@ -37,6 +37,7 @@
 | negocjacja oferty | offer_negotiation | 18.0 odczyt `channel_quote` przy wycenie; nie tabela wyniku; nie spread w JS |
 | dokument oferty | offer_document | 19.0 podgląd faktów `quotation`; nie PDF; nie U-print |
 | wycena wsadowa | quotation_batch | 20.0 wiele kodów na jednej lane; nie CSV; nie nowa tabela |
+| zapytanie od klienta | customer_inquiry | 21.0 ślad wycen per party; nie tabela RFQ; nie IMAP |
 | narzut | markup | kaskada — Python mały zbiór (DECISIONS) |
 | pieniądze | money | para `amount` + `currency`; nigdy float |
 | kwota | amount | `Decimal` / tekst dziesiętny, skala Numeric(14,4) |

@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **20.0** M-27 `quotation_batch` przy `quotation` (zarchiwizowany). **Etap:** Plan. **Następny:** 21.0 M-28 Zapytania od klientów (`/plan-modul`). Nie zgaduj schematu. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **20.0** M-27 `quotation_batch` przy `quotation` (zarchiwizowany). **Etap:** Plan. **Następny:** 21.0 M-28 `customer_inquiry` (`/plaster`). Ślad wycen per party. Nie tabela. Nie IMAP. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

@@ -108,3 +108,4 @@
 | 2026-09-02 | 19.0 | M-26 | `offer_document` podgląd faktów `quotation` na `/quotations`. Nie PDF, nie `window.print`, nie nowa tabela. |
 | 2026-09-02 | Plan 20.0 | M-27 | delta `docs/deltas/archived/20.0-quotation-batch.md` + spec. Wiele kodów na lane. Nie CSV, nie nowa tabela. Następny: `/plaster` 20.0. |
 | 2026-09-02 | 20.0 | M-27 | `quotation_batch` wiele kodów na jednej lane (`POST /quotations/batch`). Nie CSV, nie nowa tabela, nie set-based SQL. |
+| 2026-09-02 | Plan 21.0 | M-28 | delta `docs/deltas/open/21.0-customer-inquiry.md` + spec. Ślad wycen per party. Nie tabela RFQ, nie IMAP. Następny: `/plaster` 21.0. |
