@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **55.0** U-i18n-structure klucze pl na `/quality` i `/rollout` (zarchiwizowany). **Etap:** Plan. **Następny:** U-playwright-axe (`/plan-modul`). PLAN § Wave FE leftover. Nie zgaduj schematu. Nie nowa tabela. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **55.0** U-i18n-structure klucze pl na `/quality` i `/rollout` (zarchiwizowany). **Etap:** Plaster. **Następny:** 56.0 U-playwright-axe trzy ścieżki E2E + axe. Nie zgaduj schematu. Nie nowa tabela. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
