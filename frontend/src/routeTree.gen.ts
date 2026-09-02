@@ -17,6 +17,7 @@ import { Route as CommodityCodesRouteImport } from './routes/commodity-codes'
 import { Route as CreditReviewsRouteImport } from './routes/credit-reviews'
 import { Route as CustomerSopsRouteImport } from './routes/customer-sops'
 import { Route as DangerousGoodsRouteImport } from './routes/dangerous-goods'
+import { Route as ExceptionsRouteImport } from './routes/exceptions'
 import { Route as ExtractionsRouteImport } from './routes/extractions'
 import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as LocationsRouteImport } from './routes/locations'
@@ -75,6 +76,11 @@ const CustomerSopsRoute = CustomerSopsRouteImport.update({
 const DangerousGoodsRoute = DangerousGoodsRouteImport.update({
   id: '/dangerous-goods',
   path: '/dangerous-goods',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExceptionsRoute = ExceptionsRouteImport.update({
+  id: '/exceptions',
+  path: '/exceptions',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ExtractionsRoute = ExtractionsRouteImport.update({
@@ -182,6 +188,7 @@ export interface FileRoutesByFullPath {
   '/credit-reviews': typeof CreditReviewsRoute
   '/customer-sops': typeof CustomerSopsRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
+  '/exceptions': typeof ExceptionsRoute
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
   '/locations': typeof LocationsRoute
@@ -211,6 +218,7 @@ export interface FileRoutesByTo {
   '/credit-reviews': typeof CreditReviewsRoute
   '/customer-sops': typeof CustomerSopsRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
+  '/exceptions': typeof ExceptionsRoute
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
   '/locations': typeof LocationsRoute
@@ -241,6 +249,7 @@ export interface FileRoutesById {
   '/credit-reviews': typeof CreditReviewsRoute
   '/customer-sops': typeof CustomerSopsRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
+  '/exceptions': typeof ExceptionsRoute
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
   '/locations': typeof LocationsRoute
@@ -272,6 +281,7 @@ export interface FileRouteTypes {
     | '/credit-reviews'
     | '/customer-sops'
     | '/dangerous-goods'
+    | '/exceptions'
     | '/extractions'
     | '/finance'
     | '/locations'
@@ -301,6 +311,7 @@ export interface FileRouteTypes {
     | '/credit-reviews'
     | '/customer-sops'
     | '/dangerous-goods'
+    | '/exceptions'
     | '/extractions'
     | '/finance'
     | '/locations'
@@ -330,6 +341,7 @@ export interface FileRouteTypes {
     | '/credit-reviews'
     | '/customer-sops'
     | '/dangerous-goods'
+    | '/exceptions'
     | '/extractions'
     | '/finance'
     | '/locations'
@@ -360,6 +372,7 @@ export interface RootRouteChildren {
   CreditReviewsRoute: typeof CreditReviewsRoute
   CustomerSopsRoute: typeof CustomerSopsRoute
   DangerousGoodsRoute: typeof DangerousGoodsRoute
+  ExceptionsRoute: typeof ExceptionsRoute
   ExtractionsRoute: typeof ExtractionsRoute
   FinanceRoute: typeof FinanceRoute
   LocationsRoute: typeof LocationsRoute
@@ -437,6 +450,13 @@ declare module '@tanstack/react-router' {
       path: '/dangerous-goods'
       fullPath: '/dangerous-goods'
       preLoaderRoute: typeof DangerousGoodsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/exceptions': {
+      id: '/exceptions'
+      path: '/exceptions'
+      fullPath: '/exceptions'
+      preLoaderRoute: typeof ExceptionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/extractions': {
@@ -584,6 +604,7 @@ const rootRouteChildren: RootRouteChildren = {
   CreditReviewsRoute: CreditReviewsRoute,
   CustomerSopsRoute: CustomerSopsRoute,
   DangerousGoodsRoute: DangerousGoodsRoute,
+  ExceptionsRoute: ExceptionsRoute,
   ExtractionsRoute: ExtractionsRoute,
   FinanceRoute: FinanceRoute,
   LocationsRoute: LocationsRoute,

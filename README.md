@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **29.0** M-36 `tracking` tablica `/tracking` (zarchiwizowany)
+- **Ostatni plaster:** **30.0** M-37 `operational_exception` tablica `/exceptions` (zarchiwizowany)
 - **Etap:** Plan
-- **Następny:** `/plaster` 30.0 M-37 `operational_exception` tablica `/exceptions`. Nie nowa tabela. Nie zgaduj schematu zdarzeń.
+- **Następny:** M-38 Dokumenty zlecenia (`/plan-modul`). Nie zgaduj schematu. Nie nowa tabela.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

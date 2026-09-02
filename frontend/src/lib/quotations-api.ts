@@ -113,6 +113,20 @@ export function quotationLanes(rows: readonly Quotation[]): QuotationLane[] {
   return lanes
 }
 
+export function quotationOperationalExceptions(rows: readonly Quotation[]): Quotation[] {
+  const exceptions: Quotation[] = []
+  for (const row of rows) {
+    if (row.party_id === null) {
+      continue
+    }
+    if (row.origin_port_id !== null && row.destination_port_id !== null) {
+      continue
+    }
+    exceptions.push(row)
+  }
+  return exceptions
+}
+
 export type CustomerInquiryTrail = {
   partyId: string
   quotations: Quotation[]

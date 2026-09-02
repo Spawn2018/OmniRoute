@@ -1,10 +1,10 @@
 # M-37 wyjątki — tablica niepełnego lane wyceny
 
 **Moduł żywy:** M-37 (token UI `operational_exception`, nie tabela) + ekran M-21 `quotation`  
-**Plaster:** **30.0** (plan)  
+**Plaster:** **30.0** (zamknięty)  
 **Status:** operator **widzi** wyceny z kontrahentem bez pełnego POL/POD. Nie AIS. Nie mapa. Nie nowa tabela.
 
-Delta: [docs/deltas/open/30.0-operational-exception.md](../deltas/open/30.0-operational-exception.md).
+Delta: [docs/deltas/archived/30.0-operational-exception.md](../deltas/archived/30.0-operational-exception.md).
 
 ## 30.0 tablica odczytu na `/exceptions`
 

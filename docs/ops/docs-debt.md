@@ -78,7 +78,9 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **28.0 DONE:** `/shipments` odczyt wycen z `party_id`. Nie nowa tabela. Nie tracking.
 - **28.0 leftover — tabela `shipment` / odcinki / tracking (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. HBL, kontenery, dwie marże = makieta, nie kod. M-36 tracking **DONE w 29.0**. `just dup` 2,71%.
 - **29.0 DONE:** `/tracking` odczyt lane POL/POD + UN/LOCODE. Nie nowa tabela. Nie AIS. Nie mapa.
-- **29.0 leftover — tabela zdarzeń / AIS / mapa (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Watchtower parked. M-37 wyjątki = osobny Plan. `just dup` 2,73%.
+- **29.0 leftover — tabela zdarzeń / AIS / mapa (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Watchtower parked. M-37 wyjątki **DONE w 30.0**. `just dup` 2,73%.
+- **30.0 DONE:** `/exceptions` odczyt wycen z `party_id` bez pełnego POL/POD. Nie nowa tabela. Nie AIS. Nie mapa.
+- **30.0 leftover — tabela zdarzeń / AIS / mapa (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Hold/ETA = zgadywanie. Watchtower parked. M-38 dokumenty zlecenia = osobny Plan.
 - **6.0 leftover — klon nagłówka modelu (dlaczego nie w tym plasterze):** `jscpd` 6 linii `charge.py` przeciw `nbp_rate.py` (blok `id`). Miksin wszystkich modeli = `refaktor-pass`. `just dup` 2,83% po kompaktowym `id` i osobnym formularzu kursu (nie `CatalogCreateForm`).
 - **7.0 DONE:** `dangerous_good` UN/IMDG + aliasy + `source_ref`, RLS FORCE, `resolve`, OpenFGA `can_manage_dangerous_goods`, `/dangerous-goods`. Nie podpięcie do wyceny, nie live IMO, nie M-08 `charge`.
 - **7.0 leftover — live IMO / ADN-ADR / Fala 8 (dlaczego nie w tym plasterze):** ręczny wpis = `tenant:manual`; fixture = `imdg:<un_number>`. Seed tysięcy UN i live HTTP do IMO = jak 4.0/5.0. ADN/ADR osobne tabele i grupy zgodności 1.xA = później. Fala 8 M-53–M-56 zostaje.

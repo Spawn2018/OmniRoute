@@ -8,6 +8,7 @@ import {
   quotationCarrierInquiries,
   quotationInquiryTrails,
   quotationLanes,
+  quotationOperationalExceptions,
   quotationResponseComparisons,
   quotationPartyIds,
   quotationSkipsNbpCatalog,
@@ -92,6 +93,24 @@ describe("quotation NBP lookup", () => {
         { ...withParty, party_id: null },
       ]),
     ).toEqual([PARTY])
+  })
+
+  it("lists operational exceptions when party is set but POL or POD is missing", () => {
+    const withParty = { ...quotationWithCurrency("EUR"), party_id: PARTY }
+    expect(quotationOperationalExceptions([{ ...withParty, party_id: null }])).toEqual([])
+    expect(
+      quotationOperationalExceptions([
+        {
+          ...withParty,
+          origin_port_id: ORIGIN,
+          destination_port_id: DESTINATION,
+        },
+      ]),
+    ).toEqual([])
+    expect(quotationOperationalExceptions([withParty])).toEqual([withParty])
+    expect(
+      quotationOperationalExceptions([{ ...withParty, origin_port_id: ORIGIN }]),
+    ).toEqual([{ ...withParty, origin_port_id: ORIGIN }])
   })
 
   it("builds lanes only when party POL and POD are set", () => {
