@@ -94,6 +94,11 @@ export const OPS_JOBS = [
     job: "status API fetchHealth",
   },
   {
+    route: BUSINESS_LISTS.extractionQuality.route,
+    label: "Jakość ekstrakcji",
+    job: "szkice z unparsed_regions",
+  },
+  {
     route: BUSINESS_LISTS.mailIntegration.route,
     label: "Poczta",
     job: "odczyt domen i kontaktów",
@@ -258,6 +263,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "46.0": "/gdpr",
   "47.0": "/ai",
   "48.0": "/health",
+  "49.0": "/quality",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

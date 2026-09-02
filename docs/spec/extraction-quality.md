@@ -1,10 +1,10 @@
 # M-69 jakość — tablica `unparsed_regions` na szkicu
 
 **Moduł żywy:** M-69 (token UI `extraction_quality`, nie tabela) + M-20 `extraction_draft`  
-**Plaster:** **49.0** (plan)  
-**Status:** operator **zobaczy** szkice z nierozpoznanymi regionami. Nie tabela QA. Nie scoring.
+**Plaster:** **49.0** (zamknięty)  
+**Status:** operator **widzi** szkice z nierozpoznanymi regionami. Nie tabela QA. Nie scoring.
 
-Delta: [docs/deltas/open/49.0-extraction-quality.md](../deltas/open/49.0-extraction-quality.md).
+Delta: [docs/deltas/archived/49.0-extraction-quality.md](../deltas/archived/49.0-extraction-quality.md).
 
 ## 49.0 tablica odczytu na `/quality`
 

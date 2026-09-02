@@ -164,4 +164,5 @@
 | 2026-09-02 | 47.0 | M-57 | `ai_copilot` tablica `/ai` (szkice pending, source_ref). Nie czat, nie accept. |
 | 2026-09-02 | Plan 48.0 | M-68 | delta `docs/deltas/archived/48.0-observability.md` + spec. Tablica `fetchHealth`. Nie OTel. Następny: `/plaster` 48.0. |
 | 2026-09-02 | 48.0 | M-68 | `observability` tablica `/health` (`fetchHealth`). Nie OTel, nie k6. |
-| 2026-09-02 | Plan 49.0 | M-69 | delta `docs/deltas/open/49.0-extraction-quality.md` + spec. Tablica unparsed_regions. Nie scoring. Następny: `/plaster` 49.0. |
+| 2026-09-02 | Plan 49.0 | M-69 | delta `docs/deltas/archived/49.0-extraction-quality.md` + spec. Tablica unparsed_regions. Nie scoring. Następny: `/plaster` 49.0. |
+| 2026-09-02 | 49.0 | M-69 | `extraction_quality` tablica `/quality` (`unparsed_regions`). Nie scoring, nie tabela QA. |

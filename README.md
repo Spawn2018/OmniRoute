@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **48.0** M-68 `observability` tablica `/health` (zarchiwizowany)
-- **Etap:** Plaster
-- **Następny:** 49.0 M-69 `extraction_quality` tablica `/quality`. Nie zgaduj schematu. Nie nowa tabela.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
+- **Ostatni plaster:** **49.0** M-69 `extraction_quality` tablica `/quality` (zarchiwizowany)
+- **Etap:** Plan
+- **Następny:** M-70 Wdrożenie (`/plan-modul`). Nie zgaduj schematu. Nie nowa tabela.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

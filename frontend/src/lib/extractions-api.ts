@@ -105,6 +105,12 @@ export function aiProposals<Row extends { status: string }>(drafts: readonly Row
   return drafts.filter((row) => row.status === "pending")
 }
 
+export function qualityGaps<Row extends { payload: { unparsed_regions: readonly string[] } }>(
+  drafts: readonly Row[],
+): Row[] {
+  return drafts.filter((row) => row.payload.unparsed_regions.length > 0)
+}
+
 export async function createExtractionDraft(body: {
   source_ref: string
   input_text?: string

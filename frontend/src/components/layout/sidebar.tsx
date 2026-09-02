@@ -22,6 +22,7 @@ const NAV = [
   { to: "/gdpr", label: "RODO" },
   { to: "/ai", label: "Propozycje AI" },
   { to: "/health", label: "Obserwowalność" },
+  { to: "/quality", label: "Jakość ekstrakcji" },
   { to: "/mail", label: "Poczta" },
   { to: "/notifications", label: "Powiadomienia" },
   { to: "/shipments", label: "Zlecenia" },

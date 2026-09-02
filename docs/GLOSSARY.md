@@ -38,6 +38,7 @@
 | RODO | gdpr | 46.0 tablica `app_user` email; nie wniosek; nie usuwanie |
 | copilot AI | ai_copilot | 47.0 tablica `extraction_draft` pending; nie czat; nie accept |
 | obserwowalność | observability | 48.0 tablica `fetchHealth`; nie OTel; nie k6 |
+| jakość ekstrakcji | extraction_quality | 49.0 tablica `unparsed_regions`; nie scoring; nie tabela QA |
 | odcinek | shipment_leg | operacyjne; nie w 29.0 |
 | tenant | organization | organization_id wszędzie |
 | ustawienie tenanta | organization_setting | konfiguracja jako dane; allowlista kluczy; nie sekret |
