@@ -59,6 +59,10 @@ jobs:
         working-directory: frontend
         run: pnpm install --frozen-lockfile
 
+      - name: Install Playwright Chromium
+        working-directory: frontend
+        run: pnpm exec playwright install --with-deps chromium
+
       - name: Install dependencies
         run: pip install -e ".[dev]"
 

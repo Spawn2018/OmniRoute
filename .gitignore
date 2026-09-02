@@ -52,3 +52,8 @@ tools/openfga/assets/
 report/
 htmlcov/
 .jscpd-report/
+
+# Playwright
+playwright-report/
+test-results/
+blob-report/

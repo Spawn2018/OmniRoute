@@ -10,6 +10,7 @@
     "lint": "eslint .",
     "typecheck": "tsc -b --pretty false",
     "test": "vitest run",
+    "test:e2e": "playwright test",
     "generate:api": "openapi-ts"
   },
   "dependencies": {
@@ -36,8 +37,10 @@
     "zod": "^4.1.5"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
     "@eslint/js": "^9.34.0",
     "@hey-api/openapi-ts": "^0.99.0",
+    "@playwright/test": "^1.62.1",
     "@tailwindcss/vite": "^4.1.12",
     "@tanstack/router-plugin": "^1.131.27",
     "@testing-library/jest-dom": "^7.0.1",

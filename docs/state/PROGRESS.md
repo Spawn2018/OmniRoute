@@ -178,4 +178,5 @@
 | 2026-09-02 | 54.0 | U-primitives-json | `components.json` `base: radix`. Nie Base UI. |
 | 2026-09-02 | Plan 55.0 | U-i18n-structure | delta `docs/deltas/archived/55.0-i18n-structure.md` + spec. Klucze pl. Następny: `/plaster` 55.0. |
 | 2026-09-02 | 55.0 | U-i18n-structure | `t()` + katalog pl na `/quality` i `/rollout`. Nie EN. |
-| 2026-09-02 | Plan 56.0 | U-playwright-axe | delta `docs/deltas/open/56.0-playwright-axe.md` + spec. E2E+axe. Następny: `/plaster` 56.0. |
+| 2026-09-02 | Plan 56.0 | U-playwright-axe | delta `docs/deltas/archived/56.0-playwright-axe.md` + spec. E2E+axe. Następny: `/plaster` 56.0. |
+| 2026-09-02 | 56.0 | U-playwright-axe | Chromium + axe na sesji, stawkach, HITL, wycenie. Nie live accept. |

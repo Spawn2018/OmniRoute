@@ -11,8 +11,8 @@ gate: code-gate meta-gate
 # pushy CI nie odpaliło ani ruffa, ani mypy, ani testów, ani import-lintera.
 # W tym oknie przeszedł niezauważony realny błąd architektury (87c4cf3).
 
-code-gate: check test-unit arch frontend-typecheck frontend-test dup perf
-    @echo "code-gate: check + test-unit + arch + frontend + dup + perf OK"
+code-gate: check test-unit arch frontend-typecheck frontend-test dup perf frontend-e2e
+    @echo "code-gate: check + test-unit + arch + frontend + dup + perf + e2e OK"
 
 meta-gate: docs-check agent-refs agentlint
     @echo "meta-gate: docs-check + agent-refs + agentlint OK"
@@ -85,6 +85,9 @@ frontend-typecheck:
 
 frontend-test:
     cd frontend && pnpm test
+
+frontend-e2e:
+    cd frontend && pnpm exec playwright test
 
 docs:
     python scripts/quality/sync_os_status.py
