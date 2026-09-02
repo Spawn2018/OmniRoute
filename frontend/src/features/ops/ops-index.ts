@@ -14,6 +14,11 @@ export const OPS_JOBS = [
     job: "odczyt marży / NBP / limitu / recenzji",
   },
   {
+    route: BUSINESS_LISTS.salesInvoice.route,
+    label: "Faktury",
+    job: "sell z charge do zafakturowania",
+  },
+  {
     route: BUSINESS_LISTS.mailIntegration.route,
     label: "Poczta",
     job: "odczyt domen i kontaktów",
@@ -162,6 +167,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "30.0": "/exceptions",
   "31.0": "/shipment-documents",
   "32.0": "/edi",
+  "33.0": "/invoices",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

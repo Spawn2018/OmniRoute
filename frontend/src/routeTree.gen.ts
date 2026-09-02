@@ -21,6 +21,7 @@ import { Route as EdiRouteImport } from './routes/edi'
 import { Route as ExceptionsRouteImport } from './routes/exceptions'
 import { Route as ExtractionsRouteImport } from './routes/extractions'
 import { Route as FinanceRouteImport } from './routes/finance'
+import { Route as InvoicesRouteImport } from './routes/invoices'
 import { Route as LocationsRouteImport } from './routes/locations'
 import { Route as MailRouteImport } from './routes/mail'
 import { Route as NbpRatesRouteImport } from './routes/nbp-rates'
@@ -98,6 +99,11 @@ const ExtractionsRoute = ExtractionsRouteImport.update({
 const FinanceRoute = FinanceRouteImport.update({
   id: '/finance',
   path: '/finance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvoicesRoute = InvoicesRouteImport.update({
+  id: '/invoices',
+  path: '/invoices',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LocationsRoute = LocationsRouteImport.update({
@@ -204,6 +210,7 @@ export interface FileRoutesByFullPath {
   '/exceptions': typeof ExceptionsRoute
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
+  '/invoices': typeof InvoicesRoute
   '/locations': typeof LocationsRoute
   '/mail': typeof MailRoute
   '/nbp-rates': typeof NbpRatesRoute
@@ -236,6 +243,7 @@ export interface FileRoutesByTo {
   '/exceptions': typeof ExceptionsRoute
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
+  '/invoices': typeof InvoicesRoute
   '/locations': typeof LocationsRoute
   '/mail': typeof MailRoute
   '/nbp-rates': typeof NbpRatesRoute
@@ -269,6 +277,7 @@ export interface FileRoutesById {
   '/exceptions': typeof ExceptionsRoute
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
+  '/invoices': typeof InvoicesRoute
   '/locations': typeof LocationsRoute
   '/mail': typeof MailRoute
   '/nbp-rates': typeof NbpRatesRoute
@@ -303,6 +312,7 @@ export interface FileRouteTypes {
     | '/exceptions'
     | '/extractions'
     | '/finance'
+    | '/invoices'
     | '/locations'
     | '/mail'
     | '/nbp-rates'
@@ -335,6 +345,7 @@ export interface FileRouteTypes {
     | '/exceptions'
     | '/extractions'
     | '/finance'
+    | '/invoices'
     | '/locations'
     | '/mail'
     | '/nbp-rates'
@@ -367,6 +378,7 @@ export interface FileRouteTypes {
     | '/exceptions'
     | '/extractions'
     | '/finance'
+    | '/invoices'
     | '/locations'
     | '/mail'
     | '/nbp-rates'
@@ -400,6 +412,7 @@ export interface RootRouteChildren {
   ExceptionsRoute: typeof ExceptionsRoute
   ExtractionsRoute: typeof ExtractionsRoute
   FinanceRoute: typeof FinanceRoute
+  InvoicesRoute: typeof InvoicesRoute
   LocationsRoute: typeof LocationsRoute
   MailRoute: typeof MailRoute
   NbpRatesRoute: typeof NbpRatesRoute
@@ -504,6 +517,13 @@ declare module '@tanstack/react-router' {
       path: '/finance'
       fullPath: '/finance'
       preLoaderRoute: typeof FinanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/invoices': {
+      id: '/invoices'
+      path: '/invoices'
+      fullPath: '/invoices'
+      preLoaderRoute: typeof InvoicesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/locations': {
@@ -648,6 +668,7 @@ const rootRouteChildren: RootRouteChildren = {
   ExceptionsRoute: ExceptionsRoute,
   ExtractionsRoute: ExtractionsRoute,
   FinanceRoute: FinanceRoute,
+  InvoicesRoute: InvoicesRoute,
   LocationsRoute: LocationsRoute,
   MailRoute: MailRoute,
   NbpRatesRoute: NbpRatesRoute,

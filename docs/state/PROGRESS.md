@@ -132,3 +132,5 @@
 | 2026-09-02 | 31.0 | M-38 | `shipment_document` tablica `/shipment-documents` (`source_ref` wycen z party). Nie tabela, nie PDF, nie HBL. |
 | 2026-09-02 | Plan 32.0 | M-39 | delta `docs/deltas/archived/32.0-edi-message.md` + spec. Tablica `channel_quote` na lane. Nie tabela EDI, nie X12. Następny: `/plaster` 32.0. |
 | 2026-09-02 | 32.0 | M-39 | `edi_message` tablica `/edi` (`channel_quote` na lane wyceny). Nie tabela, nie X12, nie live HTTP. |
+| 2026-09-02 | Plan 33.0 | M-40 | delta `docs/deltas/archived/33.0-sales-invoice.md` + spec. Tablica sell z charge. Nie tabela FV, nie KSeF. Następny: `/plaster` 33.0. |
+| 2026-09-02 | 33.0 | M-40 | `sales_invoice` tablica `/invoices` (sell z charge). Nie tabela, nie KSeF, nie odejmowanie kwot. |

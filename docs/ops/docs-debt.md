@@ -84,7 +84,9 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **31.0 DONE:** `/shipment-documents` odczyt `source_ref` wycen z `party_id`. Nie nowa tabela. Nie PDF. Nie HBL.
 - **31.0 leftover — PDF / HBL / U-print (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. U-print = B/L/FV Fala 5/6. M-39 EDI **DONE w 32.0**.
 - **32.0 DONE:** `/edi` odczyt `channel_quote` na lane wyceny. Nie nowa tabela. Nie X12. Nie live HTTP.
-- **32.0 leftover — parser EDI / live HTTP (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. X12/EDIFACT = zgadywanie. Outbox = M-02 parked. M-40 fakturowanie = osobny Plan Fali 6.
+- **32.0 leftover — parser EDI / live HTTP (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. X12/EDIFACT = zgadywanie. Outbox = M-02 parked. M-40 fakturowanie **DONE w 33.0**.
+- **33.0 DONE:** `/invoices` odczyt `sell` z `charge`. Nie nowa tabela. Nie KSeF. JS nie odejmuje.
+- **33.0 leftover — KSeF / numer FV (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. U-print leftover. M-41 rozliczenie wyceny = osobny Plan.
 - **6.0 leftover — klon nagłówka modelu (dlaczego nie w tym plasterze):** `jscpd` 6 linii `charge.py` przeciw `nbp_rate.py` (blok `id`). Miksin wszystkich modeli = `refaktor-pass`. `just dup` 2,83% po kompaktowym `id` i osobnym formularzu kursu (nie `CatalogCreateForm`).
 - **7.0 DONE:** `dangerous_good` UN/IMDG + aliasy + `source_ref`, RLS FORCE, `resolve`, OpenFGA `can_manage_dangerous_goods`, `/dangerous-goods`. Nie podpięcie do wyceny, nie live IMO, nie M-08 `charge`.
 - **7.0 leftover — live IMO / ADN-ADR / Fala 8 (dlaczego nie w tym plasterze):** ręczny wpis = `tenant:manual`; fixture = `imdg:<un_number>`. Seed tysięcy UN i live HTTP do IMO = jak 4.0/5.0. ADN/ADR osobne tabele i grupy zgodności 1.xA = później. Fala 8 M-53–M-56 zostaje.
