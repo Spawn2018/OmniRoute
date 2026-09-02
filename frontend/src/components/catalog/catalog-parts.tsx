@@ -27,9 +27,9 @@ export function CatalogError({ error }: { error: unknown }) {
 
 export function CatalogHeading({ title, subtitle }: { title: string; subtitle: string }) {
   return (
-    <div>
-      <h2 className="text-base font-semibold">{title}</h2>
-      <p className="text-xs text-muted-foreground">{subtitle}</p>
+    <div className="banner">
+      <h2>{title}</h2>
+      <p>{subtitle}</p>
     </div>
   )
 }

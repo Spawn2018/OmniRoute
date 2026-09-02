@@ -41,6 +41,12 @@ describe("operator keyboard path", () => {
     expect(css).toContain("outline: 2px solid var(--ring)")
   })
 
+  it("ships the Wyceny/Zlecenia banner shade transition", () => {
+    expect(css).toContain("--banner-from: oklch(0.32 0.06 165)")
+    expect(css).toContain("--banner-to: oklch(0.42 0.1 165)")
+    expect(css).toContain("linear-gradient(120deg, var(--banner-from), var(--banner-to))")
+  })
+
   it("ships oklch tokens and a dark theme instead of hex-only :root", () => {
     const root = css.slice(css.indexOf(":root"), css.indexOf("@theme"))
     expect(css).toContain("oklch(")

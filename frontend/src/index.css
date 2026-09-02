@@ -24,6 +24,10 @@
   --accent-foreground: oklch(0.97 0.01 165);
   --sidebar: oklch(0.2 0.04 165);
   --sidebar-foreground: oklch(0.97 0.01 165);
+  /* Pasek .banner z #v-quote / #v-ship — 120deg, ciemniejszy ink → jaśniejszy emerald. */
+  --banner-from: oklch(0.32 0.06 165);
+  --banner-to: oklch(0.42 0.1 165);
+  --banner-foreground: oklch(0.97 0.01 165);
   --destructive: oklch(0.52 0.19 25);
   --radius: 12px;
   --radius-sm: 8px;
@@ -95,6 +99,26 @@ body {
   font-size: 14px;
   line-height: 1.4;
   -webkit-font-smoothing: antialiased;
+}
+
+.banner {
+  border-radius: var(--radius);
+  padding: var(--s5) var(--s6);
+  background: linear-gradient(120deg, var(--banner-from), var(--banner-to));
+  color: var(--banner-foreground);
+}
+
+.banner h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.banner p {
+  margin: var(--s1) 0 0;
+  font-size: 12.5px;
+  opacity: 0.9;
 }
 
 .tabular-nums {

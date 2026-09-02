@@ -2,6 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { Link } from "@tanstack/react-router"
 import { createColumnHelper } from "@tanstack/react-table"
 import { useState } from "react"
+import { CatalogHeading } from "@/components/catalog/catalog-parts"
 import { DataTableShell } from "@/components/data-table/data-table-shell"
 import { Money } from "@/components/money"
 import { Button } from "@/components/ui/button"
@@ -578,13 +579,10 @@ export function QuotationCatalogPage() {
 
   return (
     <section className="space-y-3">
-      <header>
-        <h2 className="text-base font-semibold">Wyceny</h2>
-        <p className="text-xs text-muted-foreground">
-          quotation M-21 · kwota z bieżącego rate_line w SQL · wsad kodów na tej samej lane ·
-          nie licz w formularzu
-        </p>
-      </header>
+      <CatalogHeading
+        title="Wyceny"
+        subtitle="quotation M-21 · kwota z bieżącego rate_line w SQL · wsad kodów na tej samej lane · nie licz w formularzu"
+      />
 
       {signedIn ? null : (
         <p className="text-sm">
