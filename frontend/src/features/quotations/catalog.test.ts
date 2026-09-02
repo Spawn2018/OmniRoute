@@ -4,6 +4,7 @@ import {
   quotationBatchBody,
   quotationCreateBody,
   quotationCurrencies,
+  quotationInquiryTrails,
   quotationLanes,
   quotationPartyIds,
   quotationSkipsNbpCatalog,
@@ -113,6 +114,30 @@ describe("quotation NBP lookup", () => {
       },
     ])
   })
+
+  it("groups quotations by party_id and never sums amounts", () => {
+    const first = { ...quotationWithCurrency("EUR"), party_id: PARTY, charge_code: "THC" }
+    const second = {
+      ...quotationWithCurrency("EUR"),
+      id: "dddddddd-dddd-4ddd-8ddd-dddddddddddd",
+      party_id: PARTY,
+      charge_code: "BAF",
+      amount: "3.0000",
+    }
+    const otherParty = "44444444-4444-4444-8444-444444444444"
+    const third = {
+      ...quotationWithCurrency("USD"),
+      id: "eeeeeeee-eeee-4eee-8eee-eeeeeeeeeeee",
+      party_id: otherParty,
+      charge_code: "OTHC",
+    }
+    expect(
+      quotationInquiryTrails([first, second, { ...first, party_id: null }, third]),
+    ).toEqual([
+      { partyId: PARTY, quotations: [first, second] },
+      { partyId: otherParty, quotations: [third] },
+    ])
+  })
 })
 
 describe("quotation catalog screen", () => {
@@ -133,6 +158,10 @@ describe("quotation catalog screen", () => {
     expect(page).toContain("Kody wsadowe")
     expect(page).not.toContain(".csv")
     expect(page).toContain('data-offer-document="preview"')
+    expect(page).toContain('data-customer-inquiry="trail"')
+    expect(page).toContain("quotationInquiryTrails")
+    expect(page).not.toContain("imap")
+    expect(page).not.toMatch(/reduce\s*\(/)
     expect(page).not.toMatch(/amount\s*\*\s*mid|mid\s*\*\s*amount/)
     expect(page).not.toMatch(/selected\.amount\s*-|channel\.amount\s*-/)
     expect(page).not.toContain("CatalogCreateForm")

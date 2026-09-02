@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **20.0** M-27 `quotation_batch` przy `quotation` (zarchiwizowany)
+- **Ostatni plaster:** **21.0** M-28 `customer_inquiry` przy `quotation` (zarchiwizowany)
 - **Etap:** Plan
-- **Następny:** 21.0 M-28 `customer_inquiry` (`/plaster`). Ślad wycen per party. Nie tabela. Nie IMAP.
+- **Następny:** 22.0 M-29 Wykrywanie akceptacji (`/plan-modul`). Nie zgaduj schematu.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

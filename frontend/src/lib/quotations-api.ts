@@ -113,6 +113,29 @@ export function quotationLanes(rows: readonly Quotation[]): QuotationLane[] {
   return lanes
 }
 
+export type CustomerInquiryTrail = {
+  partyId: string
+  quotations: Quotation[]
+}
+
+export function quotationInquiryTrails(rows: readonly Quotation[]): CustomerInquiryTrail[] {
+  const byParty = new Map<string, Quotation[]>()
+  for (const row of rows) {
+    if (row.party_id === null) {
+      continue
+    }
+    const group = byParty.get(row.party_id)
+    if (group === undefined) {
+      byParty.set(row.party_id, [row])
+      continue
+    }
+    group.push(row)
+  }
+  return [...byParty.entries()]
+    .sort(([left], [right]) => left.localeCompare(right))
+    .map(([partyId, quotations]) => ({ partyId, quotations }))
+}
+
 async function readQuotation(response: Response, fallback: string): Promise<Quotation> {
   if (!response.ok) {
     throw new ApiError(await readApiDetail(response, fallback), httpErrorStatus(response))

@@ -1,10 +1,10 @@
 # M-28 zapytania od klientów — ślad wycen per kontrahent
 
 **Moduł żywy:** M-28 (token UI `customer_inquiry`, nie tabela) + ekran M-21 `quotation`  
-**Plaster:** **21.0** (plan)  
+**Plaster:** **21.0** (zamknięty)  
 **Status:** operator **widzi** zapytania jako istniejące wyceny pogrupowane po `party_id`. Nie nowa tabela. Nie IMAP.
 
-Delta: [docs/deltas/open/21.0-customer-inquiry.md](../deltas/open/21.0-customer-inquiry.md).
+Delta: [docs/deltas/archived/21.0-customer-inquiry.md](../deltas/archived/21.0-customer-inquiry.md).
 
 ## 21.0 ślad zapytań z wycen
 

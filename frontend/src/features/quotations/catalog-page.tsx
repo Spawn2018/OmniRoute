@@ -10,7 +10,7 @@ import { BUSINESS_LISTS } from "@/lib/business-lists"
 import { resolveChannelQuote, type ChannelQuote } from "@/lib/channel-quotes-api"
 import { resolveCreditReview, type CreditReview } from "@/lib/credit-reviews-api"
 import { resolveNbpRate, type NbpRate } from "@/lib/nbp-rates-api"
-import { fetchParties } from "@/lib/parties-api"
+import { fetchParties, type Party } from "@/lib/parties-api"
 import { fetchPartyScorecard, type PartyScorecard } from "@/lib/party-scorecards-api"
 import { fetchPorts } from "@/lib/ports-api"
 import {
@@ -20,6 +20,7 @@ import {
   quotationBatchBody,
   quotationCreateBody,
   quotationCurrencies,
+  quotationInquiryTrails,
   quotationLanes,
   quotationPartyIds,
   quotationSkipsNbpCatalog,
@@ -388,6 +389,33 @@ function OfferDocumentPanel(args: { rows: Quotation[] }) {
   )
 }
 
+function OfferInquiryPanel(args: { rows: Quotation[]; parties: Party[] }) {
+  const trails = quotationInquiryTrails(args.rows)
+  if (trails.length === 0) {
+    return null
+  }
+  const names = new Map(args.parties.map((party) => [party.id, party.legal_name]))
+  return (
+    <article className="space-y-2 p-3 outline outline-1 outline-border" data-customer-inquiry="trail">
+      <h3 className="text-sm font-medium">Zapytania od klientów</h3>
+      <p className="text-xs text-muted-foreground">ślad quotation per party · nie RFQ · nie skrzynka</p>
+      {trails.map((trail) => (
+        <div key={trail.partyId} className="space-y-1">
+          <p className="text-xs font-medium">{names.get(trail.partyId) ?? trail.partyId}</p>
+          <ul className="space-y-1 text-xs">
+            {trail.quotations.map((row) => (
+              <li key={row.id}>
+                {row.charge_code}{" "}
+                <Money amount={row.amount} currency={row.currency} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </article>
+  )
+}
+
 export function QuotationCatalogPage() {
   const ctx = getTenantContext()
   const queryClient = useQueryClient()
@@ -632,6 +660,7 @@ export function QuotationCatalogPage() {
           <OfferRiskPanel partyIds={quotationPartyIds(query.data)} signedIn={signedIn} />
           <OfferNegotiationPanel lanes={quotationLanes(query.data)} signedIn={signedIn} />
           <OfferDocumentPanel rows={query.data} />
+          <OfferInquiryPanel rows={query.data} parties={parties} />
         </>
       ) : null}
 
