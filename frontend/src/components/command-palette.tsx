@@ -16,6 +16,7 @@ const NAV_ACTIONS = [
   { id: "nav-users", label: "Idź do użytkowników tenanta", to: "/tenancy/users" },
   { id: "nav-extractions", label: "Idź do kolejki ekstrakcji", to: "/extractions" },
   { id: "nav-finance", label: "Idź do tablicy finansowej", to: "/finance" },
+  { id: "nav-mail", label: "Idź do tablicy poczty", to: "/mail" },
   { id: "nav-charge-codes", label: "Idź do katalogu kodów opłat", to: "/charge-codes" },
   { id: "nav-commodity-codes", label: "Idź do katalogu kodów towarowych", to: "/commodity-codes" },
   { id: "nav-dangerous-goods", label: "Idź do katalogu towarów niebezpiecznych", to: "/dangerous-goods" },

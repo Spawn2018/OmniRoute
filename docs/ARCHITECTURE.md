@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **24.0** M-31 `response_comparison` przy `quotation` (zarchiwizowany). **Etap:** Plan. **Następny:** 25.0 M-32 `mail_integration` (`/plaster`). Tablica znanych adresów na `/mail`. Nie IMAP. Nie tabela skrzynki. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **25.0** M-32 `mail_integration` tablica `/mail` (zarchiwizowany). **Etap:** Plan. **Następny:** 26.0 M-33 Dodatek do Outlooka (`/plan-modul`). Nie zgaduj schematu. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
@@ -11,7 +11,7 @@
 <!-- os-tree:start -->
 ```
 frontend/                 React 19 + Compiler, Vite, TanStack, shadcn, PostHog
-  src/features/           channel-quotes · charge-codes · charges · commodity-codes · credit-reviews · customer-sops · dangerous-goods · extraction · finance-board · geography · nbp-rates · networks · ops · organization-settings · parties · party-scorecards · port-surcharges · quotations · rate-lines · session · tenancy
+  src/features/           channel-quotes · charge-codes · charges · commodity-codes · credit-reviews · customer-sops · dangerous-goods · extraction · finance-board · geography · mail-integration · nbp-rates · networks · ops · organization-settings · parties · party-scorecards · port-surcharges · quotations · rate-lines · session · tenancy
   src/components/ui/      shadcn
   src/components/data-table/  DataTableShell (Golden Standard)
 backend/app/

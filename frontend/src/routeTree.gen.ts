@@ -20,6 +20,7 @@ import { Route as DangerousGoodsRouteImport } from './routes/dangerous-goods'
 import { Route as ExtractionsRouteImport } from './routes/extractions'
 import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as LocationsRouteImport } from './routes/locations'
+import { Route as MailRouteImport } from './routes/mail'
 import { Route as NbpRatesRouteImport } from './routes/nbp-rates'
 import { Route as NetworksRouteImport } from './routes/networks'
 import { Route as OrganizationSettingsRouteImport } from './routes/organization-settings'
@@ -86,6 +87,11 @@ const FinanceRoute = FinanceRouteImport.update({
 const LocationsRoute = LocationsRouteImport.update({
   id: '/locations',
   path: '/locations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MailRoute = MailRouteImport.update({
+  id: '/mail',
+  path: '/mail',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NbpRatesRoute = NbpRatesRouteImport.update({
@@ -161,6 +167,7 @@ export interface FileRoutesByFullPath {
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
   '/locations': typeof LocationsRoute
+  '/mail': typeof MailRoute
   '/nbp-rates': typeof NbpRatesRoute
   '/networks': typeof NetworksRoute
   '/organization-settings': typeof OrganizationSettingsRoute
@@ -186,6 +193,7 @@ export interface FileRoutesByTo {
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
   '/locations': typeof LocationsRoute
+  '/mail': typeof MailRoute
   '/nbp-rates': typeof NbpRatesRoute
   '/networks': typeof NetworksRoute
   '/organization-settings': typeof OrganizationSettingsRoute
@@ -212,6 +220,7 @@ export interface FileRoutesById {
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
   '/locations': typeof LocationsRoute
+  '/mail': typeof MailRoute
   '/nbp-rates': typeof NbpRatesRoute
   '/networks': typeof NetworksRoute
   '/organization-settings': typeof OrganizationSettingsRoute
@@ -239,6 +248,7 @@ export interface FileRouteTypes {
     | '/extractions'
     | '/finance'
     | '/locations'
+    | '/mail'
     | '/nbp-rates'
     | '/networks'
     | '/organization-settings'
@@ -264,6 +274,7 @@ export interface FileRouteTypes {
     | '/extractions'
     | '/finance'
     | '/locations'
+    | '/mail'
     | '/nbp-rates'
     | '/networks'
     | '/organization-settings'
@@ -289,6 +300,7 @@ export interface FileRouteTypes {
     | '/extractions'
     | '/finance'
     | '/locations'
+    | '/mail'
     | '/nbp-rates'
     | '/networks'
     | '/organization-settings'
@@ -315,6 +327,7 @@ export interface RootRouteChildren {
   ExtractionsRoute: typeof ExtractionsRoute
   FinanceRoute: typeof FinanceRoute
   LocationsRoute: typeof LocationsRoute
+  MailRoute: typeof MailRoute
   NbpRatesRoute: typeof NbpRatesRoute
   NetworksRoute: typeof NetworksRoute
   OrganizationSettingsRoute: typeof OrganizationSettingsRoute
@@ -406,6 +419,13 @@ declare module '@tanstack/react-router' {
       path: '/locations'
       fullPath: '/locations'
       preLoaderRoute: typeof LocationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mail': {
+      id: '/mail'
+      path: '/mail'
+      fullPath: '/mail'
+      preLoaderRoute: typeof MailRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/nbp-rates': {
@@ -507,6 +527,7 @@ const rootRouteChildren: RootRouteChildren = {
   ExtractionsRoute: ExtractionsRoute,
   FinanceRoute: FinanceRoute,
   LocationsRoute: LocationsRoute,
+  MailRoute: MailRoute,
   NbpRatesRoute: NbpRatesRoute,
   NetworksRoute: NetworksRoute,
   OrganizationSettingsRoute: OrganizationSettingsRoute,

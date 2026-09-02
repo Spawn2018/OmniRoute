@@ -13,6 +13,11 @@ export const OPS_JOBS = [
     label: "Tablica finansowa",
     job: "odczyt marży / NBP / limitu / recenzji",
   },
+  {
+    route: BUSINESS_LISTS.mailIntegration.route,
+    label: "Poczta",
+    job: "odczyt domen i kontaktów",
+  },
   { route: BUSINESS_LISTS.chargeCodes.route, label: "Kody opłat", job: "katalog charge_code" },
   {
     route: BUSINESS_LISTS.commodityCodes.route,
@@ -119,6 +124,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "22.0": "/quotations",
   "23.0": "/quotations",
   "24.0": "/quotations",
+  "25.0": "/mail",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

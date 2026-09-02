@@ -1,10 +1,10 @@
 # M-32 integracja pocztowa — tablica znanych adresów
 
 **Moduł żywy:** M-32 (token UI `mail_integration`, nie tabela) + katalog M-10 `party`  
-**Plaster:** **25.0** (plan)  
+**Plaster:** **25.0** (zamknięty)  
 **Status:** operator **widzi** domeny i maile kontaktów oraz resolve adresu. Nie IMAP. Nie nowa tabela.
 
-Delta: [docs/deltas/open/25.0-mail-integration.md](../deltas/open/25.0-mail-integration.md).
+Delta: [docs/deltas/archived/25.0-mail-integration.md](../deltas/archived/25.0-mail-integration.md).
 
 ## 25.0 tablica odczytu na `/mail`
 

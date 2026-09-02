@@ -116,4 +116,5 @@
 | 2026-09-02 | 23.0 | M-30 | `carrier_inquiry` ślad `channel_quote` przy lane na `/quotations`. Nie tabela RFQ, nie live HTTP, nie odejmowanie kwot. |
 | 2026-09-02 | Plan 24.0 | M-31 | delta `docs/deltas/archived/24.0-response-comparison.md` + spec. Zestawienie kwot na POL/POD. Nie tabela, nie spread w JS. Następny: `/plaster` 24.0. |
 | 2026-09-02 | 24.0 | M-31 | `response_comparison` zestawienie wyceny i `channel_quote` na POL/POD. Nie tabela, nie odejmowanie kwot, nie silnik spread. |
-| 2026-09-02 | Plan 25.0 | M-32 | delta `docs/deltas/open/25.0-mail-integration.md` + spec. Tablica znanych adresów. Nie IMAP, nie tabela skrzynki. Następny: `/plaster` 25.0. |
+| 2026-09-02 | Plan 25.0 | M-32 | delta `docs/deltas/archived/25.0-mail-integration.md` + spec. Tablica znanych adresów. Nie IMAP, nie tabela skrzynki. Następny: `/plaster` 25.0. |
+| 2026-09-02 | 25.0 | M-32 | `mail_integration` tablica `/mail` (domeny, kontakty, resolve_email). Nie IMAP, nie tabela skrzynki, nie sekrety. |

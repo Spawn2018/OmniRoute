@@ -1,0 +1,29 @@
+import { readFileSync } from "node:fs"
+import path from "node:path"
+import { fileURLToPath } from "node:url"
+import { describe, expect, it } from "vitest"
+
+const srcRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..")
+
+describe("mail-integration surface for 25.0", () => {
+  it("ships /mail as read-only known addresses without IMAP", () => {
+    const page = readFileSync(path.join(srcRoot, "features/mail-integration/catalog-page.tsx"), "utf8")
+    const route = readFileSync(path.join(srcRoot, "routes/mail.tsx"), "utf8")
+    const nav = readFileSync(path.join(srcRoot, "components/layout/sidebar.tsx"), "utf8")
+    const lists = readFileSync(path.join(srcRoot, "lib/business-lists.ts"), "utf8")
+    const ops = readFileSync(path.join(srcRoot, "features/ops/ops-index.ts"), "utf8")
+    expect(route).toContain("/mail")
+    expect(nav).toContain("/mail")
+    expect(lists).toContain("mailIntegration")
+    expect(ops).toContain("/mail")
+    expect(page).toContain('data-mail-integration="board"')
+    expect(page).toContain("fetchEmailDomains")
+    expect(page).toContain("fetchContacts")
+    expect(page).toContain("resolvePartyEmail")
+    expect(page).not.toContain("createContact")
+    expect(page).not.toContain("createEmailDomain")
+    expect(page).not.toContain("imap")
+    expect(page).not.toContain("smtp")
+    expect(page).not.toContain("CatalogCreateForm")
+  })
+})

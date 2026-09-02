@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **24.0** M-31 `response_comparison` przy `quotation` (zarchiwizowany)
+- **Ostatni plaster:** **25.0** M-32 `mail_integration` tablica `/mail` (zarchiwizowany)
 - **Etap:** Plan
-- **Następny:** 25.0 M-32 `mail_integration` (`/plaster`). Tablica znanych adresów na `/mail`. Nie IMAP. Nie tabela skrzynki.
+- **Następny:** 26.0 M-33 Dodatek do Outlooka (`/plan-modul`). Nie zgaduj schematu.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

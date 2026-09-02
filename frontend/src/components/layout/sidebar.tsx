@@ -6,6 +6,7 @@ const NAV = [
   { to: "/tenancy/users", label: "Użytkownicy" },
   { to: "/extractions", label: "Ekstrakcje" },
   { to: "/finance", label: "Tablica finansowa" },
+  { to: "/mail", label: "Poczta" },
   { to: "/charge-codes", label: "Kody opłat" },
   { to: "/commodity-codes", label: "Kody towarowe" },
   { to: "/dangerous-goods", label: "Towary niebezpieczne" },

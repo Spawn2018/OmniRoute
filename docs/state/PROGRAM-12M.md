@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **24.0** M-31 `response_comparison` przy `quotation` (zarchiwizowany) **Następny:** 25.0 M-32 `mail_integration` (`/plaster`). Tablica znanych adresów na `/mail`. Nie IMAP. Nie tabela skrzynki.
+**Stan (z CURRENT.md):** **25.0** M-32 `mail_integration` tablica `/mail` (zarchiwizowany) **Następny:** 26.0 M-33 Dodatek do Outlooka (`/plan-modul`). Nie zgaduj schematu.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.
