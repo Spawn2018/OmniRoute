@@ -36,3 +36,5 @@ jobs:
       - uses: github/codeql-action/analyze@6f5948dfacef28e207b48d0905cf90c03365536d # v3
         with:
           category: "/language:${{ matrix.language }}"
+          # Private Free: Code Scanning/GHAS wyłączone. Analiza w CI; SARIF bez uploadu.
+          upload: never

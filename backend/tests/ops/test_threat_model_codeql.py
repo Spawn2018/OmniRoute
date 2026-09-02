@@ -20,6 +20,7 @@ def test_codeql_workflow_scans_python_and_javascript_outside_gate() -> None:
     workflow = _CODEQL.read_text(encoding="utf-8")
     assert "python" in workflow
     assert "javascript-typescript" in workflow
+    assert "upload: never" in workflow
     gate = _GATE.read_text(encoding="utf-8")
     assert "codeql" not in gate.casefold()
     justfile = _JUSTFILE.read_text(encoding="utf-8")

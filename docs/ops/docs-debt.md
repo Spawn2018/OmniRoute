@@ -8,7 +8,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 
 **Zrobione w syncu (nie wracać):** nagłówek PLAN nie mówi „0.5 lokalnie”; `just test` pada przy failu unita (bez `|| true`).
 
-- **63.0 Q-E4 DONE:** STRIDE tenant+HITL w `docs/ops/threat-model-tenant-hitl.md`. CodeQL workflow (python + JS/TS) poza `just gate`. Private Free: Code Scanning = GHAS — leftover, nie DoD.
+- **63.0 Q-E4 DONE:** STRIDE tenant+HITL w `docs/ops/threat-model-tenant-hitl.md`. CodeQL workflow (python + JS/TS) poza `just gate`. Pierwszy run: analiza OK, upload SARIF padł („Code scanning is not enabled”). `upload: never` — leftover GHAS, nie DoD.
 - **62.0 Q-E3 DONE:** how-to `docs/operator/kontrahent.md` i `katalogi.md`; C4 context+container w ARCHITECTURE. Nie 70 stubów. Nie how-to tablic-odczytów.
 - **61.0 Q-E2 DONE:** testy jadą przez `alembic upgrade head` na `omniroute_test` (`ALEMBIC_DATABASE_URL`). Indeks `ix_rate_line_current_charge_code` w EXPLAIN. `rate_line` = 0 wierszy — p95 50k = N/A ([quote-budget.md](quote-budget.md)). Nie seed. Nie k6.
 - **60.0 Q-E1 DONE:** `/charges`, `/organization-settings`, `/rate-lines` biorą nagłówek/sesję/błąd z `catalog-parts`; charges i ustawienia także `CatalogLoadedTable`. Formularze pól lokalne. `just dup` 2,78% total (tsx 2,76%). Mixin modeli **nie** w tym slocie.
