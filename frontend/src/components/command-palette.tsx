@@ -23,6 +23,7 @@ const NAV_ACTIONS = [
   { id: "nav-fx-differences", label: "Idź do różnic kursowych", to: "/fx-differences" },
   { id: "nav-cashflows", label: "Idź do przepływów", to: "/cashflows" },
   { id: "nav-cost-to-serve", label: "Idź do kosztu obsługi klienta", to: "/cost-to-serve" },
+  { id: "nav-bookkeeping", label: "Idź do księgowości", to: "/bookkeeping" },
   { id: "nav-mail", label: "Idź do tablicy poczty", to: "/mail" },
   { id: "nav-notifications", label: "Idź do powiadomień", to: "/notifications" },
   { id: "nav-shipments", label: "Idź do zleceń", to: "/shipments" },

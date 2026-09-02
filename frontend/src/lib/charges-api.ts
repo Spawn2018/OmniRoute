@@ -43,6 +43,39 @@ export function cashFlowLegs<
   }))
 }
 
+export type BookkeepingLine = {
+  id: string
+  charge_code: string
+  code_name: string
+  buy_amount: string
+  buy_currency: string
+  sell_amount: string
+  sell_currency: string
+}
+
+export function bookkeepingLines<
+  ChargeRow extends {
+    id: string
+    charge_code: string
+    buy_amount: string
+    buy_currency: string
+    sell_amount: string
+    sell_currency: string
+  },
+  CodeRow extends { code: string; name: string },
+>(charges: readonly ChargeRow[], codes: readonly CodeRow[]): BookkeepingLine[] {
+  const names = new Map(codes.map((row) => [row.code, row.name]))
+  return charges.map((charge) => ({
+    id: charge.id,
+    charge_code: charge.charge_code,
+    code_name: names.get(charge.charge_code) ?? "",
+    buy_amount: charge.buy_amount,
+    buy_currency: charge.buy_currency,
+    sell_amount: charge.sell_amount,
+    sell_currency: charge.sell_currency,
+  }))
+}
+
 export function chargeCreateBody(args: {
   chargeCode: string
   buyAmount: string

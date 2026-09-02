@@ -1,10 +1,10 @@
 # M-47 księgowość — tablica `charge` z nazwą z `charge_code`
 
 **Moduł żywy:** M-47 (token UI `bookkeeping`, nie tabela) + M-06 `charge_code` + M-08 `charge`  
-**Plaster:** **40.0** (do `/plaster`)  
+**Plaster:** **40.0** (zamknięty)  
 **Status:** operator **widzi** kod, nazwę katalogu oraz kupno/sprzedaż. Nie JPK. Nie ERP.
 
-Delta: [docs/deltas/open/40.0-bookkeeping.md](../deltas/open/40.0-bookkeeping.md).
+Delta: [docs/deltas/archived/40.0-bookkeeping.md](../deltas/archived/40.0-bookkeeping.md).
 
 ## 40.0 tablica odczytu na `/bookkeeping`
 

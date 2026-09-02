@@ -49,6 +49,11 @@ export const OPS_JOBS = [
     job: "SOP i wyceny wybranego kontrahenta",
   },
   {
+    route: BUSINESS_LISTS.bookkeeping.route,
+    label: "Księgowość",
+    job: "nazwa charge_code oraz buy/sell",
+  },
+  {
     route: BUSINESS_LISTS.mailIntegration.route,
     label: "Poczta",
     job: "odczyt domen i kontaktów",
@@ -204,6 +209,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "37.0": "/fx-differences",
   "38.0": "/cashflows",
   "39.0": "/cost-to-serve",
+  "40.0": "/bookkeeping",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

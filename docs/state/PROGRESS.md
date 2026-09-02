@@ -146,4 +146,5 @@
 | 2026-09-02 | 38.0 | M-45 | `cash_flow` tablica `/cashflows` (buy=wypływ, sell=wpływ). Nie tabela księgi, nie odejmowanie. |
 | 2026-09-02 | Plan 39.0 | M-46 | delta `docs/deltas/archived/39.0-cost-to-serve.md` + spec. Tablica SOP + wyceny kontrahenta. Nie tabela ABC. Następny: `/plaster` 39.0. |
 | 2026-09-02 | 39.0 | M-46 | `cost_to_serve` tablica `/cost-to-serve` (SOP + wyceny kontrahenta). Nie tabela ABC, nie suma kwot. |
-| 2026-09-02 | Plan 40.0 | M-47 | delta `docs/deltas/open/40.0-bookkeeping.md` + spec. Tablica charge + nazwa kodu. Nie JPK. Następny: `/plaster` 40.0. |
+| 2026-09-02 | Plan 40.0 | M-47 | delta `docs/deltas/archived/40.0-bookkeeping.md` + spec. Tablica charge + nazwa kodu. Nie JPK. Następny: `/plaster` 40.0. |
+| 2026-09-02 | 40.0 | M-47 | `bookkeeping` tablica `/bookkeeping` (charge + charge_code.name). Nie JPK, nie ERP. |

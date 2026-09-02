@@ -13,6 +13,7 @@ const NAV = [
   { to: "/fx-differences", label: "Różnice kursowe" },
   { to: "/cashflows", label: "Przepływy" },
   { to: "/cost-to-serve", label: "Koszt obsługi klienta" },
+  { to: "/bookkeeping", label: "Księgowość" },
   { to: "/mail", label: "Poczta" },
   { to: "/notifications", label: "Powiadomienia" },
   { to: "/shipments", label: "Zlecenia" },
