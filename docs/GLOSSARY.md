@@ -42,6 +42,7 @@
 | zapytanie do armatora | carrier_inquiry | 23.0 ślad `channel_quote` przy lane wyceny; nie tabela RFQ; nie live HTTP |
 | porównanie odpowiedzi | response_comparison | 24.0 zestawienie kwot wyceny i `channel_quote` na POL/POD; nie tabela; nie spread w JS |
 | integracja pocztowa | mail_integration | 25.0 tablica znanych adresów na `/mail`; nie IMAP; nie tabela skrzynki |
+| klient poczty | mail_client | 26.0 `mailto:` z `party_contact.email`; nie dodatek Office; nie Graph |
 | narzut | markup | kaskada — Python mały zbiór (DECISIONS) |
 | pieniądze | money | para `amount` + `currency`; nigdy float |
 | kwota | amount | `Decimal` / tekst dziesiętny, skala Numeric(14,4) |

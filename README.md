@@ -39,7 +39,7 @@ Seed: `scripts/dev_seed_local.py`.
 <!-- os-status:start -->
 - **Ostatni plaster:** **25.0** M-32 `mail_integration` tablica `/mail` (zarchiwizowany)
 - **Etap:** Plan
-- **Następny:** 26.0 M-33 Dodatek do Outlooka (`/plan-modul`). Nie zgaduj schematu.
+- **Następny:** 26.0 M-33 `mail_client` (`/plaster`). `mailto:` na `/mail`. Nie Office.js. Nie Graph.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
