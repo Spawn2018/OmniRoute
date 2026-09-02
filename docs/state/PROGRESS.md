@@ -209,3 +209,4 @@
 | 2026-09-03 | 69.0 | M-18 | Matching `applies_when` w SQL na `port_surcharge`. Nie zapis do `charge`. Następny: S7 Plan. |
 | 2026-09-03 | Plan 70.0 | M-09 | S7: HS/CN na RFQ/wycenie. Delta zaakceptowana (`/noc`). UN z M-52 leftover. Następny: `/plaster` 70.0. |
 | 2026-09-03 | 70.0 | M-09 | HS/CN z katalogu na RFQ i wycenie. Kwota nadal ze stawki. UN leftover. Następny: S8 Plan. |
+| 2026-09-03 | Plan 71.0 | M-03 | S8: prefiks numeru i token szablonu w `organization_setting`. Delta zaakceptowana (`/noc`). Następny: `/plaster` 71.0. |

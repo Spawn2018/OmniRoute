@@ -88,7 +88,7 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 <!-- os-status:start -->
 - **Ostatni plaster:** **70.0** S7 HS/CN na RFQ i wycenie
 - **Etap:** Plan
-- **Następny:** S8 `/plan-modul` — reszta M-03 + arch. M-84 (numer i szablon). Nie F9.1.
+- **Następny:** `/plaster` **71.0** — numer i szablon w `organization_setting`. Arch. M-84 scalać. Nie F9.1.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
