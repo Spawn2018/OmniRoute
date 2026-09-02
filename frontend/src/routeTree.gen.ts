@@ -27,6 +27,7 @@ import { Route as ExtractionsRouteImport } from './routes/extractions'
 import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as FxDifferencesRouteImport } from './routes/fx-differences'
 import { Route as InvoicesRouteImport } from './routes/invoices'
+import { Route as LclRouteImport } from './routes/lcl'
 import { Route as LocationsRouteImport } from './routes/locations'
 import { Route as MailRouteImport } from './routes/mail'
 import { Route as MoneyCostRouteImport } from './routes/money-cost'
@@ -139,6 +140,11 @@ const FxDifferencesRoute = FxDifferencesRouteImport.update({
 const InvoicesRoute = InvoicesRouteImport.update({
   id: '/invoices',
   path: '/invoices',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LclRoute = LclRouteImport.update({
+  id: '/lcl',
+  path: '/lcl',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LocationsRoute = LocationsRouteImport.update({
@@ -276,6 +282,7 @@ export interface FileRoutesByFullPath {
   '/finance': typeof FinanceRoute
   '/fx-differences': typeof FxDifferencesRoute
   '/invoices': typeof InvoicesRoute
+  '/lcl': typeof LclRoute
   '/locations': typeof LocationsRoute
   '/mail': typeof MailRoute
   '/money-cost': typeof MoneyCostRoute
@@ -319,6 +326,7 @@ export interface FileRoutesByTo {
   '/finance': typeof FinanceRoute
   '/fx-differences': typeof FxDifferencesRoute
   '/invoices': typeof InvoicesRoute
+  '/lcl': typeof LclRoute
   '/locations': typeof LocationsRoute
   '/mail': typeof MailRoute
   '/money-cost': typeof MoneyCostRoute
@@ -363,6 +371,7 @@ export interface FileRoutesById {
   '/finance': typeof FinanceRoute
   '/fx-differences': typeof FxDifferencesRoute
   '/invoices': typeof InvoicesRoute
+  '/lcl': typeof LclRoute
   '/locations': typeof LocationsRoute
   '/mail': typeof MailRoute
   '/money-cost': typeof MoneyCostRoute
@@ -408,6 +417,7 @@ export interface FileRouteTypes {
     | '/finance'
     | '/fx-differences'
     | '/invoices'
+    | '/lcl'
     | '/locations'
     | '/mail'
     | '/money-cost'
@@ -451,6 +461,7 @@ export interface FileRouteTypes {
     | '/finance'
     | '/fx-differences'
     | '/invoices'
+    | '/lcl'
     | '/locations'
     | '/mail'
     | '/money-cost'
@@ -494,6 +505,7 @@ export interface FileRouteTypes {
     | '/finance'
     | '/fx-differences'
     | '/invoices'
+    | '/lcl'
     | '/locations'
     | '/mail'
     | '/money-cost'
@@ -538,6 +550,7 @@ export interface RootRouteChildren {
   FinanceRoute: typeof FinanceRoute
   FxDifferencesRoute: typeof FxDifferencesRoute
   InvoicesRoute: typeof InvoicesRoute
+  LclRoute: typeof LclRoute
   LocationsRoute: typeof LocationsRoute
   MailRoute: typeof MailRoute
   MoneyCostRoute: typeof MoneyCostRoute
@@ -689,6 +702,13 @@ declare module '@tanstack/react-router' {
       path: '/invoices'
       fullPath: '/invoices'
       preLoaderRoute: typeof InvoicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lcl': {
+      id: '/lcl'
+      path: '/lcl'
+      fullPath: '/lcl'
+      preLoaderRoute: typeof LclRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/locations': {
@@ -874,6 +894,7 @@ const rootRouteChildren: RootRouteChildren = {
   FinanceRoute: FinanceRoute,
   FxDifferencesRoute: FxDifferencesRoute,
   InvoicesRoute: InvoicesRoute,
+  LclRoute: LclRoute,
   LocationsRoute: LocationsRoute,
   MailRoute: MailRoute,
   MoneyCostRoute: MoneyCostRoute,

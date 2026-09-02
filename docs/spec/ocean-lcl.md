@@ -1,10 +1,10 @@
 # M-51 drobnica morska — tablica `port` z `is_seaport`
 
 **Moduł żywy:** M-51 (token UI `ocean_lcl`, nie tabela) + M-05 `port`  
-**Plaster:** **44.0** (plan)  
-**Status:** operator **zobaczy** porty morskie. Nie tabela LCL. Nie CFS.
+**Plaster:** **44.0** (zamknięty)  
+**Status:** operator **widzi** porty morskie. Nie tabela LCL. Nie CFS.
 
-Delta: [docs/deltas/open/44.0-ocean-lcl.md](../deltas/open/44.0-ocean-lcl.md).
+Delta: [docs/deltas/archived/44.0-ocean-lcl.md](../deltas/archived/44.0-ocean-lcl.md).
 
 ## 44.0 tablica odczytu na `/lcl`
 

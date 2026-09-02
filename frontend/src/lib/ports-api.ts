@@ -35,6 +35,12 @@ export function chinaRailPorts<
   return railPorts(ports).filter((row) => row.country_code === "CN")
 }
 
+export function oceanLclPorts<Row extends { is_seaport: boolean }>(
+  ports: readonly Row[],
+): Row[] {
+  return ports.filter((row) => row.is_seaport)
+}
+
 export type PortCreateBody = {
   unlocode: string
   name: string
