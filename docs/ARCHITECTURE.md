@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **41.0** M-48 `road_transport` tablica `/road` (zarchiwizowany). **Etap:** Plan. **Następny:** M-49 Kolej intermodalna (`/plan-modul`). Nie zgaduj schematu. Nie nowa tabela. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **41.0** M-48 `road_transport` tablica `/road` (zarchiwizowany). **Etap:** Plaster. **Następny:** 42.0 M-49 `intermodal_rail` tablica `/rail`. Nie zgaduj schematu. Nie nowa tabela. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
