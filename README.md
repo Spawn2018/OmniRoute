@@ -39,7 +39,7 @@ Seed: `scripts/dev_seed_local.py`.
 <!-- os-status:start -->
 - **Ostatni plaster:** **23.0** M-30 `carrier_inquiry` przy `quotation` (zarchiwizowany)
 - **Etap:** Plan
-- **Następny:** 24.0 M-31 Porównanie odpowiedzi (`/plan-modul`). Nie zgaduj schematu.
+- **Następny:** 24.0 M-31 `response_comparison` (`/plaster`). Zestawienie kwot na POL/POD. Nie tabela. Nie spread w JS.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
