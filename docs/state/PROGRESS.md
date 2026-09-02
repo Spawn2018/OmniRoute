@@ -110,3 +110,4 @@
 | 2026-09-02 | 20.0 | M-27 | `quotation_batch` wiele kodów na jednej lane (`POST /quotations/batch`). Nie CSV, nie nowa tabela, nie set-based SQL. |
 | 2026-09-02 | Plan 21.0 | M-28 | delta `docs/deltas/archived/21.0-customer-inquiry.md` + spec. Ślad wycen per party. Nie tabela RFQ, nie IMAP. Następny: `/plaster` 21.0. |
 | 2026-09-02 | 21.0 | M-28 | `customer_inquiry` ślad wycen per party na `/quotations`. Nie tabela RFQ, nie IMAP, nie suma kwot. |
+| 2026-09-02 | Plan 22.0 | M-29 | delta `docs/deltas/open/22.0-offer-acceptance.md` + spec. Pending z wycen. Nie tabela wyniku, nie HITL accept. Następny: `/plaster` 22.0. |

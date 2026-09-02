@@ -39,7 +39,7 @@ Seed: `scripts/dev_seed_local.py`.
 <!-- os-status:start -->
 - **Ostatni plaster:** **21.0** M-28 `customer_inquiry` przy `quotation` (zarchiwizowany)
 - **Etap:** Plan
-- **Następny:** 22.0 M-29 Wykrywanie akceptacji (`/plan-modul`). Nie zgaduj schematu.
+- **Następny:** 22.0 M-29 `offer_acceptance` (`/plaster`). Pending z wycen. Nie tabela. Nie HITL accept.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

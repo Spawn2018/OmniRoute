@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** 22.0 M-29 Wykrywanie akceptacji (`/plan-modul`). Nie zgaduj schematu.
+**Następny (zablokowany):** 22.0 M-29 `offer_acceptance` (`/plaster`). Pending z wycen. Nie tabela. Nie HITL accept.
 <!-- os-status:end -->
 
 ```mermaid
@@ -330,7 +330,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | F3.3 | **M-26 Dokument oferty** | 19.0 | zamknięty (`docs/deltas/archived/19.0-offer-document.md`) |
 | F3.4 | **M-27 Wycena wsadowa** | 20.0 | zamknięty (`docs/deltas/archived/20.0-quotation-batch.md`) |
 | F3.5 | **M-28 Zapytania od klientów** | 21.0 | zamknięty (`docs/deltas/archived/21.0-customer-inquiry.md`) |
-| F3.6 | **M-29 Wykrywanie akceptacji** | Plan → plaster | kolejka (`/plan-modul`; nie zgaduj schematu) |
+| F3.6 | **M-29 Wykrywanie akceptacji** | Plan → plaster | Plan (`docs/deltas/open/22.0-offer-acceptance.md`) |
 
 ### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster
 
