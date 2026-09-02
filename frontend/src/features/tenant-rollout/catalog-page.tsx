@@ -5,6 +5,7 @@ import {
   CatalogHeading,
   TenantSessionNotice,
 } from "@/components/catalog/catalog-parts"
+import { t } from "@/lib/i18n"
 import { fetchOrganizationSettings, rolloutSettings } from "@/lib/organization-settings-api"
 import { getTenantContext } from "@/lib/tenant"
 
@@ -22,8 +23,8 @@ export function TenantRolloutPage() {
   return (
     <section className="flex flex-col gap-3" data-tenant-rollout="board">
       <CatalogHeading
-        title="Wdrożenie tenanta"
-        subtitle="tenant_rollout M-70 · default_currency · nie tabela · nie upsert"
+        title={t("tenant_rollout.title")}
+        subtitle={t("tenant_rollout.subtitle")}
       />
       {!ready ? <TenantSessionNotice /> : null}
       {settings.isError ? <CatalogError error={settings.error} /> : null}

@@ -6,6 +6,7 @@ import {
   TenantSessionNotice,
 } from "@/components/catalog/catalog-parts"
 import { fetchExtractionDrafts, qualityGaps } from "@/lib/extractions-api"
+import { t } from "@/lib/i18n"
 import { getTenantContext } from "@/lib/tenant"
 
 export function ExtractionQualityPage() {
@@ -22,8 +23,8 @@ export function ExtractionQualityPage() {
   return (
     <section className="flex flex-col gap-3" data-extraction-quality="board">
       <CatalogHeading
-        title="Jakość ekstrakcji"
-        subtitle="extraction_quality M-69 · unparsed_regions · nie scoring · nie accept"
+        title={t("extraction_quality.title")}
+        subtitle={t("extraction_quality.subtitle")}
       />
       {!ready ? <TenantSessionNotice /> : null}
       {drafts.isError ? <CatalogError error={drafts.error} /> : null}

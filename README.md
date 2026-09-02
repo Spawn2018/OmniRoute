@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **54.0** U-primitives-json pin Radix w `components.json` (zarchiwizowany)
-- **Etap:** Plaster
-- **Następny:** 55.0 U-i18n-structure klucze pl na `/quality` i `/rollout`. Nie zgaduj schematu. Nie nowa tabela.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
+- **Ostatni plaster:** **55.0** U-i18n-structure klucze pl na `/quality` i `/rollout` (zarchiwizowany)
+- **Etap:** Plan
+- **Następny:** U-playwright-axe (`/plan-modul`). PLAN § Wave FE leftover. Nie zgaduj schematu. Nie nowa tabela.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

@@ -176,4 +176,5 @@
 | 2026-09-02 | 53.0 | U-condensed | `allowCondensed` na gridzie stawek. Nie globalnie. |
 | 2026-09-02 | Plan 54.0 | U-primitives-json | delta `docs/deltas/archived/54.0-shadcn-radix-base.md` + spec. Pin Radix. Następny: `/plaster` 54.0. |
 | 2026-09-02 | 54.0 | U-primitives-json | `components.json` `base: radix`. Nie Base UI. |
-| 2026-09-02 | Plan 55.0 | U-i18n-structure | delta `docs/deltas/open/55.0-i18n-structure.md` + spec. Klucze pl. Następny: `/plaster` 55.0. |
+| 2026-09-02 | Plan 55.0 | U-i18n-structure | delta `docs/deltas/archived/55.0-i18n-structure.md` + spec. Klucze pl. Następny: `/plaster` 55.0. |
+| 2026-09-02 | 55.0 | U-i18n-structure | `t()` + katalog pl na `/quality` i `/rollout`. Nie EN. |

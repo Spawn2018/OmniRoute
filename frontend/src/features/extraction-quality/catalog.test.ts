@@ -23,6 +23,8 @@ describe("extraction quality surface for 49.0", () => {
     expect(src("lib/business-lists.ts")).toContain("extractionQuality")
     expect(src("features/ops/ops-index.ts")).toContain("/quality")
     expect(page).toContain('data-extraction-quality="board"')
+    expect(page).toContain('t("extraction_quality.title")')
+    expect(page).not.toContain("Jakość ekstrakcji")
     expect(page).toContain("qualityGaps")
     expect(page).toContain("fetchExtractionDrafts")
     expect(page).toContain("unparsed_regions")

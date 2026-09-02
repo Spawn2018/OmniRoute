@@ -1,10 +1,10 @@
 # U-i18n-structure — klucze pl i format locale
 
 **Leftover żywy:** U-i18n-structure (PLAN § Wave FE, token `ui_message`, nie tabela)  
-**Plaster:** **55.0** (plan)  
+**Plaster:** **55.0** (zamknięty)  
 **Status:** operator **widzi** polskie napisy z katalogu kluczy na `/quality` i `/rollout`. Jeden język w paczce. Nie drugi język. Nie nowa tabela.
 
-Delta: [docs/deltas/open/55.0-i18n-structure.md](../deltas/open/55.0-i18n-structure.md).
+Delta: [docs/deltas/archived/55.0-i18n-structure.md](../deltas/archived/55.0-i18n-structure.md).
 
 ## 55.0 `t()` + `formatInstant`
 
@@ -12,7 +12,7 @@ Delta: [docs/deltas/open/55.0-i18n-structure.md](../deltas/open/55.0-i18n-struct
 
 - Katalog `pl` i `t(key)` w `frontend/src/lib/i18n.ts` — bez i18next
 - `formatInstant` przez `Intl.DateTimeFormat("pl-PL")` na ISO; nie `Number` na kwocie
-- Nagłówki `/quality` i `/rollout` przez `t()` (gate: hardcoded na **nowym** ekranie)
+- Nagłówki `/quality` i `/rollout` przez `t()`
 - Test pinu kluczy i formatu
 - Zero nowej tabeli i trasy
 
