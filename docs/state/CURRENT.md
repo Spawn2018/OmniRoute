@@ -4,12 +4,12 @@
 **Repo:** https://github.com/Spawn2018/OmniRoute  
 
 **Ostatni plaster:** **65.0** S2 `resolve_email` na `inbound_message`  
-**Etap:** Plan  
+**Etap:** Plaster  
 **Noc:** `/noc <godzina>` (np. `/noc 7` = pętla do 7:00 czasu polskiego). Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md). Przed startem: `scripts/noc-preflight.ps1`. Etap Plan → `/plan-modul`, nie `/plaster`.  
-**Następny:** Plan 66.0 S3 `/plan-modul` — treść maila → extract HITL. Serwis nie zapisuje `rate_line`. Nie IMAP. Nie F9.1.  
+**Następny:** 66.0 S3 `/plaster` — treść `inbound_message` → extract HITL. Serwis nie zapisuje `rate_line`. Nie IMAP. Nie F9.1.  
 M-02 **parked** (odblokowanie S16). Auth0 **odroczone** (S53). Portale **parked** (S55). Exit Wave FE **nie** claim.
 
-**Spec (jedna na sesję):** brak delty S3. Nie otwieraj [print-sheet.md](../spec/print-sheet.md).
+**Spec (jedna na sesję):** [66.0-inbound-extract.md](../deltas/open/66.0-inbound-extract.md). Nie otwieraj [print-sheet.md](../spec/print-sheet.md).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Cel jakości + § Kolejka realizacji.
 
@@ -17,4 +17,4 @@ M-02 **parked** (odblokowanie S16). Auth0 **odroczone** (S53). Portale **parked*
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` są w PATH. Przed pracą podnieś dwie rzeczy: `pg_ctl -D tools\pgdata -o "-p 5432" start` oraz `tools\openfga\openfga.exe run`. Potem `just gate` i `just test` działają bez ustawiania zmiennych. PG 16 to klaster przenośny w `tools\pg16` — instalator EDB przez winget nie przechodzi (exit 1).
 
-**2026-09-02:** 65.0 zamknięty (`/noc`). Następny: `/plan-modul` S3. Nie F9.1.
+**2026-09-02:** Delta 66.0 zaakceptowana (`/noc`). Następny: `/plaster` 66.0 S3. Nie F9.1.

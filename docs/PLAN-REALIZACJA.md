@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** Plan 66.0 S3 `/plan-modul` — treść maila → extract HITL. Serwis nie zapisuje `rate_line`. Nie IMAP. Nie F9.1.
+**Następny (zablokowany):** 66.0 S3 `/plaster` — treść `inbound_message` → extract HITL. Serwis nie zapisuje `rate_line`. Nie IMAP. Nie F9.1.
 <!-- os-status:end -->
 
 ```mermaid
@@ -384,7 +384,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E2** | Testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy) | 61.0 | zamknięty (`docs/deltas/archived/61.0-alembic-quote-budget.md`) |
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | 62.0 | zamknięty (`docs/deltas/archived/62.0-operator-howto-c4.md`) |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | 63.0 | zamknięty (`docs/deltas/archived/63.0-threat-model-codeql.md`) |
-| po Q-E4 | **Fala S**, S1–S2 zamknięte (64.0–65.0); start **S3** | Plan → plaster | **następny** |
+| po Q-E4 | **Fala S**, S1–S2 zamknięte; S3 plan 66.0 | Plan → plaster | **następny** |
 
 ### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
 
@@ -406,7 +406,7 @@ Reguły kolejności (żeby `/noc` nie złożył awarii):
 |---|---|---|---|---|
 | **S1** | Żywe **M-32** tabela wiadomości + draft, fixture | 64.0 | zamknięty (`docs/deltas/archived/64.0-inbound-message.md`) |
 | S2 | Żywe **M-11** `resolve_email` na wiadomości | 65.0 | zamknięty (`docs/deltas/archived/65.0-inbound-resolve-email.md`) |
-| S3 | Żywe **M-20** treść/załącznik maila → extract | Plan → plaster | **następny** | HITL zostaje. Serwis nie zapisuje `rate_line` |
+| S3 | Żywe **M-20** treść/załącznik maila → extract | 66.0 | **następny** | HITL zostaje. Serwis nie zapisuje `rate_line`. S3 = treść, nie blob |
 | S4 | Żywe **M-28** obiekt RFQ powiązany z wiadomością | Plan → plaster | po S3 | Nie ślad wycen |
 | S5 | Żywe **M-21** istniejący silnik na tym RFQ | Plan → plaster | po S4 | Nie nowy silnik. LLM nie liczy |
 | S6 | Żywe **M-18** ewaluacja `applies_when` w SQL | Plan → plaster | po S5 | Nie zapis marży do `charge` |
@@ -567,13 +567,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->
