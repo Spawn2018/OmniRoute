@@ -180,4 +180,5 @@
 | 2026-09-02 | 55.0 | U-i18n-structure | `t()` + katalog pl na `/quality` i `/rollout`. Nie EN. |
 | 2026-09-02 | Plan 56.0 | U-playwright-axe | delta `docs/deltas/archived/56.0-playwright-axe.md` + spec. E2E+axe. Następny: `/plaster` 56.0. |
 | 2026-09-02 | 56.0 | U-playwright-axe | Chromium + axe na sesji, stawkach, HITL, wycenie. Nie live accept. |
-| 2026-09-02 | Plan 57.0 | U-print | delta `docs/deltas/open/57.0-print-sheet.md` + spec. `@media print`. Następny: `/plaster` 57.0. |
+| 2026-09-02 | Plan 57.0 | U-print | delta `docs/deltas/archived/57.0-print-sheet.md` + spec. `@media print`. Następny: `/plaster` 57.0. |
+| 2026-09-02 | 57.0 | U-print | `@media print` chowa chrome. Nie PDF. |

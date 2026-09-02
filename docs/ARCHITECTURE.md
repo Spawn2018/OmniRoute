@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **56.0** U-playwright-axe trzy ścieżki E2E + axe (zarchiwizowany). **Etap:** Plaster. **Następny:** 57.0 U-print arkusz `@media print` na ofercie / FV / dokumencie zlecenia. Nie zgaduj schematu. Nie nowa tabela. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **57.0** U-print arkusz `@media print` na ofercie / FV / dokumencie zlecenia (zarchiwizowany). **Etap:** Idle. **Następny:** brak pozycji w kolejce. F9.1 M-58–M-60 bez żywej nazwy — nie zgaduj. Parked: M-02, Auth0, portale. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

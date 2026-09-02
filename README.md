@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **56.0** U-playwright-axe trzy ścieżki E2E + axe (zarchiwizowany)
-- **Etap:** Plaster
-- **Następny:** 57.0 U-print arkusz `@media print` na ofercie / FV / dokumencie zlecenia. Nie zgaduj schematu. Nie nowa tabela.
+- **Ostatni plaster:** **57.0** U-print arkusz `@media print` na ofercie / FV / dokumencie zlecenia (zarchiwizowany)
+- **Etap:** Idle
+- **Następny:** brak pozycji w kolejce. F9.1 M-58–M-60 bez żywej nazwy — nie zgaduj. Parked: M-02, Auth0, portale.
 - **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

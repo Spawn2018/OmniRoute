@@ -1,10 +1,10 @@
 # U-print — arkusz druku B/L / FV / list
 
 **Leftover żywy:** U-print (PLAN § Wave FE, token `print_sheet`, nie tabela)  
-**Plaster:** **57.0** (plan)  
+**Plaster:** **57.0** (zamknięty)  
 **Status:** operator **drukuje** z przeglądarki: sidebar i pasek akcji znikają. Nie PDF. Nie nowa tabela.
 
-Delta: [docs/deltas/open/57.0-print-sheet.md](../deltas/open/57.0-print-sheet.md).
+Delta: [docs/deltas/archived/57.0-print-sheet.md](../deltas/archived/57.0-print-sheet.md).
 
 ## 57.0 `@media print` w `index.css`
 

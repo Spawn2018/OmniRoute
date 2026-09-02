@@ -132,7 +132,9 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **55.0 DONE:** `t()` + katalog `pl` na `/quality` i `/rollout`. `formatInstant` Intl. Nie EN. Nie `Number` na kwocie.
 - **55.0 leftover — U-playwright-axe (dlaczego nie w tym plasterze):** PLAN leftover po i18n. **DONE w 56.0**.
 - **56.0 DONE:** Playwright Chromium + axe na `/session`→`/rate-lines`, `/extractions`, `/quotations`. W `code-gate` po `perf`. Nie live accept.
-- **56.0 leftover — U-print (dlaczego nie w tym plasterze):** PLAN leftover po E2E. Arkusz druku B/L / FV / list = osobny Plan.
+- **56.0 leftover — U-print (dlaczego nie w tym plasterze):** PLAN leftover po E2E. **DONE w 57.0**.
+- **57.0 DONE:** `@media print` chowa `aside` / `header` / ⌘K. Nie jsPDF. Panele oferty / FV / dokumentu zlecenia zostają.
+- **57.0 leftover — F9.1 / parked (dlaczego nie w tym plasterze):** M-58–M-60 bez żywej nazwy w PLAN. M-02, Auth0, portale parked. Nie zgaduj.
 - **6.0 leftover — klon nagłówka modelu (dlaczego nie w tym plasterze):** `jscpd` 6 linii `charge.py` przeciw `nbp_rate.py` (blok `id`). Miksin wszystkich modeli = `refaktor-pass`. `just dup` 2,83% po kompaktowym `id` i osobnym formularzu kursu (nie `CatalogCreateForm`).
 - **7.0 DONE:** `dangerous_good` UN/IMDG + aliasy + `source_ref`, RLS FORCE, `resolve`, OpenFGA `can_manage_dangerous_goods`, `/dangerous-goods`. Nie podpięcie do wyceny, nie live IMO, nie M-08 `charge`.
 - **7.0 leftover — live IMO / ADN-ADR / Fala 8 (dlaczego nie w tym plasterze):** ręczny wpis = `tenant:manual`; fixture = `imdg:<un_number>`. Seed tysięcy UN i live HTTP do IMO = jak 4.0/5.0. ADN/ADR osobne tabele i grupy zgodności 1.xA = później. Fala 8 M-53–M-56 zostaje.
