@@ -380,8 +380,8 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | F11.1 | **M-69 Jakość** | 49.0 | zamknięty (`docs/deltas/archived/49.0-extraction-quality.md`) |
 | F11.2 | **M-70 Wdrożenie** | 50.0 | zamknięty (`docs/deltas/archived/50.0-tenant-rollout.md`) |
 | **Q-E0** | Kanon jakości 4,4–5 w tym dokumencie | 59.0 | zamknięty (ten wiersz) |
-| **Q-E1** | `/refaktor` — katalogi Grupa A do 4,4 (`catalog-parts`) | `/refaktor` | **następny** |
-| **Q-E2** | Testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy) | Plan → plaster | po Q-E1 |
+| **Q-E1** | `/refaktor` — katalogi Grupa A do 4,4 (`catalog-parts`) | 60.0 | zamknięty (`docs/deltas/archived/60.0-catalog-parts.md`) |
+| **Q-E2** | Testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy) | Plan → plaster | **następny** |
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | Plaster docs | po Q-E2 |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | Plan → plaster | po Q-E3 |
 | po Q-E4 | **Fala S**, start **S1** (nie F9.1) | Plan → plaster | kolejka poniżej |
@@ -390,7 +390,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 
 To **nie** jest nowy produkt. Fale 0–11 zostają fundamentem. Każdy wiersz S zdejmuje **jedno** „nie X” z [MODULES.md](MODULES.md) (obiekt → silnik → karta wieży). `/plan-modul` potem `/plaster`. WIP=1. LLM nie liczy. HITL zostaje.
 
-**Nie startuj S1 przy Q-E1.** CURRENT przy Fali E = `/refaktor`. Po zamknięciu Q-E4: `CURRENT` = **S1**, Etap **Plan**.
+**Nie startuj S1 przy Fali E.** CURRENT przy Q-E2…E4 = kolejka E (Plan albo `/refaktor`), nie S1. Po zamknięciu Q-E4: `CURRENT` = **S1**, Etap **Plan**.
 
 Reguły kolejności (żeby `/noc` nie złożył awarii):
 
