@@ -160,3 +160,4 @@
 | 2026-09-02 | 45.0 | M-53 | `sanctions` tablica `/sanctions` (aktywni party, tax_id i kraj). Nie OFAC, nie HTTP. |
 | 2026-09-02 | Plan 46.0 | M-56 | delta `docs/deltas/archived/46.0-gdpr.md` + spec. Tablica `app_user` email. Nie wnioski. Następny: `/plaster` 46.0. |
 | 2026-09-02 | 46.0 | M-56 | `gdpr` tablica `/gdpr` (emaile kont tenanta). Nie wniosek, nie usuwanie. |
+| 2026-09-02 | Plan 47.0 | M-57 | delta `docs/deltas/open/47.0-ai-copilot.md` + spec. Tablica extraction pending. Nie czat. Następny: `/plaster` 47.0. |
