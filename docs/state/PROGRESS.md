@@ -120,3 +120,4 @@
 | 2026-09-02 | 25.0 | M-32 | `mail_integration` tablica `/mail` (domeny, kontakty, resolve_email). Nie IMAP, nie tabela skrzynki, nie sekrety. |
 | 2026-09-02 | Plan 26.0 | M-33 | delta `docs/deltas/archived/26.0-mail-client.md` + spec. `mailto:` na `/mail`. Nie Office.js, nie Graph. Następny: `/plaster` 26.0. |
 | 2026-09-02 | 26.0 | M-33 | `mail_client` `mailto:` z `party_contact.email` na `/mail`. Nie Office.js, nie Graph, nie IMAP. |
+| 2026-09-02 | Plan 27.0 | M-34 | delta `docs/deltas/open/27.0-operator-notice.md` + spec. Tablica HITL i wycen pending. Nie tabela, nie wysyłka. Następny: `/plaster` 27.0. |

@@ -43,6 +43,7 @@
 | porównanie odpowiedzi | response_comparison | 24.0 zestawienie kwot wyceny i `channel_quote` na POL/POD; nie tabela; nie spread w JS |
 | integracja pocztowa | mail_integration | 25.0 tablica znanych adresów na `/mail`; nie IMAP; nie tabela skrzynki |
 | klient poczty | mail_client | 26.0 `mailto:` z `party_contact.email`; nie dodatek Office; nie Graph |
+| powiadomienie operatora | operator_notice | 27.0 tablica HITL pending i wycen pending; nie tabela; nie wysyłka |
 | narzut | markup | kaskada — Python mały zbiór (DECISIONS) |
 | pieniądze | money | para `amount` + `currency`; nigdy float |
 | kwota | amount | `Decimal` / tekst dziesiętny, skala Numeric(14,4) |

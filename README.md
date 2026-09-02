@@ -39,7 +39,7 @@ Seed: `scripts/dev_seed_local.py`.
 <!-- os-status:start -->
 - **Ostatni plaster:** **26.0** M-33 `mail_client` `mailto:` na `/mail` (zarchiwizowany)
 - **Etap:** Plan
-- **Następny:** 27.0 M-34 Powiadomienia (`/plan-modul`). Nie zgaduj schematu.
+- **Następny:** 27.0 M-34 `operator_notice` (`/plaster`). Tablica HITL pending + wyceny pending. Nie tabela. Nie wysyłka.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

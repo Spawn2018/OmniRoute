@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **26.0** M-33 `mail_client` `mailto:` na `/mail` (zarchiwizowany) **Następny:** 27.0 M-34 Powiadomienia (`/plan-modul`). Nie zgaduj schematu.
+**Stan (z CURRENT.md):** **26.0** M-33 `mail_client` `mailto:` na `/mail` (zarchiwizowany) **Następny:** 27.0 M-34 `operator_notice` (`/plaster`). Tablica HITL pending + wyceny pending. Nie tabela. Nie wysyłka.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.
