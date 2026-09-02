@@ -1,10 +1,10 @@
 # M-15 finance_board — Wirtualny Dyrektor Finansowy (tablica faktów)
 
 **Moduł żywy:** M-15  
-**Plaster:** **15.0** (plan)  
-**Status:** plan — odczyt istniejących faktów finansowych. Nie silnik AI. LLM nie liczy.
+**Plaster:** **15.0** (zamknięty)  
+**Status:** tablica odczytu `/finance`. Nie silnik AI. LLM nie liczy.
 
-Delta: [docs/deltas/open/15.0-finance-board.md](../deltas/open/15.0-finance-board.md).
+Delta: [docs/deltas/archived/15.0-finance-board.md](../deltas/archived/15.0-finance-board.md).
 
 ## 15.0 tablica faktów
 

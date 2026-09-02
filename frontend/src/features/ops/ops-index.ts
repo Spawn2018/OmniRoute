@@ -8,6 +8,11 @@ export const ADMIN_REF_SURFACES = [
 
 export const OPS_JOBS = [
   { route: BUSINESS_LISTS.extractions.route, label: "Ekstrakcje HITL", job: "extract / accept" },
+  {
+    route: BUSINESS_LISTS.financeBoard.route,
+    label: "Tablica finansowa",
+    job: "odczyt marży / NBP / limitu / recenzji",
+  },
   { route: BUSINESS_LISTS.chargeCodes.route, label: "Kody opłat", job: "katalog charge_code" },
   {
     route: BUSINESS_LISTS.commodityCodes.route,
@@ -100,6 +105,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "12.0": "/port-surcharges",
   "13.0": "/channel-quotes",
   "14.0": "/credit-reviews",
+  "15.0": "/finance",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

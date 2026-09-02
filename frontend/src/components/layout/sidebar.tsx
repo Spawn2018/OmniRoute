@@ -5,6 +5,7 @@ const NAV = [
   { to: "/", label: "Pulpit" },
   { to: "/tenancy/users", label: "Użytkownicy" },
   { to: "/extractions", label: "Ekstrakcje" },
+  { to: "/finance", label: "Tablica finansowa" },
   { to: "/charge-codes", label: "Kody opłat" },
   { to: "/commodity-codes", label: "Kody towarowe" },
   { to: "/dangerous-goods", label: "Towary niebezpieczne" },

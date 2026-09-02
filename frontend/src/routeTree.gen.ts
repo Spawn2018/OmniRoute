@@ -18,6 +18,7 @@ import { Route as CreditReviewsRouteImport } from './routes/credit-reviews'
 import { Route as CustomerSopsRouteImport } from './routes/customer-sops'
 import { Route as DangerousGoodsRouteImport } from './routes/dangerous-goods'
 import { Route as ExtractionsRouteImport } from './routes/extractions'
+import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as LocationsRouteImport } from './routes/locations'
 import { Route as NbpRatesRouteImport } from './routes/nbp-rates'
 import { Route as NetworksRouteImport } from './routes/networks'
@@ -75,6 +76,11 @@ const DangerousGoodsRoute = DangerousGoodsRouteImport.update({
 const ExtractionsRoute = ExtractionsRouteImport.update({
   id: '/extractions',
   path: '/extractions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinanceRoute = FinanceRouteImport.update({
+  id: '/finance',
+  path: '/finance',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LocationsRoute = LocationsRouteImport.update({
@@ -153,6 +159,7 @@ export interface FileRoutesByFullPath {
   '/customer-sops': typeof CustomerSopsRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
   '/extractions': typeof ExtractionsRoute
+  '/finance': typeof FinanceRoute
   '/locations': typeof LocationsRoute
   '/nbp-rates': typeof NbpRatesRoute
   '/networks': typeof NetworksRoute
@@ -177,6 +184,7 @@ export interface FileRoutesByTo {
   '/customer-sops': typeof CustomerSopsRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
   '/extractions': typeof ExtractionsRoute
+  '/finance': typeof FinanceRoute
   '/locations': typeof LocationsRoute
   '/nbp-rates': typeof NbpRatesRoute
   '/networks': typeof NetworksRoute
@@ -202,6 +210,7 @@ export interface FileRoutesById {
   '/customer-sops': typeof CustomerSopsRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
   '/extractions': typeof ExtractionsRoute
+  '/finance': typeof FinanceRoute
   '/locations': typeof LocationsRoute
   '/nbp-rates': typeof NbpRatesRoute
   '/networks': typeof NetworksRoute
@@ -228,6 +237,7 @@ export interface FileRouteTypes {
     | '/customer-sops'
     | '/dangerous-goods'
     | '/extractions'
+    | '/finance'
     | '/locations'
     | '/nbp-rates'
     | '/networks'
@@ -252,6 +262,7 @@ export interface FileRouteTypes {
     | '/customer-sops'
     | '/dangerous-goods'
     | '/extractions'
+    | '/finance'
     | '/locations'
     | '/nbp-rates'
     | '/networks'
@@ -276,6 +287,7 @@ export interface FileRouteTypes {
     | '/customer-sops'
     | '/dangerous-goods'
     | '/extractions'
+    | '/finance'
     | '/locations'
     | '/nbp-rates'
     | '/networks'
@@ -301,6 +313,7 @@ export interface RootRouteChildren {
   CustomerSopsRoute: typeof CustomerSopsRoute
   DangerousGoodsRoute: typeof DangerousGoodsRoute
   ExtractionsRoute: typeof ExtractionsRoute
+  FinanceRoute: typeof FinanceRoute
   LocationsRoute: typeof LocationsRoute
   NbpRatesRoute: typeof NbpRatesRoute
   NetworksRoute: typeof NetworksRoute
@@ -379,6 +392,13 @@ declare module '@tanstack/react-router' {
       path: '/extractions'
       fullPath: '/extractions'
       preLoaderRoute: typeof ExtractionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/finance': {
+      id: '/finance'
+      path: '/finance'
+      fullPath: '/finance'
+      preLoaderRoute: typeof FinanceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/locations': {
@@ -485,6 +505,7 @@ const rootRouteChildren: RootRouteChildren = {
   CustomerSopsRoute: CustomerSopsRoute,
   DangerousGoodsRoute: DangerousGoodsRoute,
   ExtractionsRoute: ExtractionsRoute,
+  FinanceRoute: FinanceRoute,
   LocationsRoute: LocationsRoute,
   NbpRatesRoute: NbpRatesRoute,
   NetworksRoute: NetworksRoute,

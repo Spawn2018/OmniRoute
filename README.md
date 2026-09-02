@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **14.0** M-14 `credit_review` (zarchiwizowany)
+- **Ostatni plaster:** **15.0** M-15 `finance_board` (zarchiwizowany)
 - **Etap:** Plan
-- **Następny:** 15.0 M-15 `finance_board` (`/plaster`). LLM nie liczy. Nie nowa tabela.
+- **Następny:** 16.0 M-23 waluty w ofercie (`/plan-modul`). Czyta `nbp_rate`. LLM nie liczy.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
