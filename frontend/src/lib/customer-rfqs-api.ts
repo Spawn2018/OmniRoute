@@ -8,6 +8,7 @@ export type CustomerRfq = {
   source_ref: string
   status: string
   party_id: string | null
+  commodity_code_id: string | null
 }
 
 async function readCustomerRfq(response: Response, fallback: string): Promise<CustomerRfq> {
@@ -37,4 +38,16 @@ export async function createCustomerRfq(inboundMessageId: string): Promise<Custo
     body: JSON.stringify({ inbound_message_id: inboundMessageId }),
   })
   return readCustomerRfq(response, "Błąd zapisu zapytania ofertowego")
+}
+
+export async function patchCustomerRfqCommodity(
+  rfqId: string,
+  commodityCodeId: string,
+): Promise<CustomerRfq> {
+  const response = await fetch(`/api/v1/customer-rfqs/${rfqId}`, {
+    method: "PATCH",
+    headers: { ...requireAuthHeaders(), "Content-Type": "application/json" },
+    body: JSON.stringify({ commodity_code_id: commodityCodeId }),
+  })
+  return readCustomerRfq(response, "Błąd podpięcia kodu towarowego")
 }

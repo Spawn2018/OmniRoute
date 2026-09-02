@@ -1,11 +1,11 @@
 # M-21 quotation — silnik wyceny SQL
 
-**Plaster:** 2.0 fundament · **5.1** POL/POD + `party_id` · **68.0** `customer_rfq_id`  
+**Plaster:** 2.0 fundament · **5.1** POL/POD + `party_id` · **68.0** `customer_rfq_id` · **70.0** `commodity_code_id`  
 **Status:** fundament + snapshot portu i kontrahenta + powiązanie z RFQ. Kwota ze stawki. Nie marża. Nie k6. Nie `party_charge_override`. Nie nowy silnik.
 
 ## Zakres
 
-- Tabela `quotation`: snapshot `organization_id`, `charge_code`, `rate_line_id`, `amount` Numeric(14,4) + `currency` CHAR(3), `source_ref`, `origin_port_id` (POL), `destination_port_id` (POD), `party_id`, `customer_rfq_id` (nullable, FK tenanta do `customer_rfq`), timestamps
+- Tabela `quotation`: snapshot `organization_id`, `charge_code`, `rate_line_id`, `amount` Numeric(14,4) + `currency` CHAR(3), `source_ref`, `origin_port_id` (POL), `destination_port_id` (POD), `party_id`, `customer_rfq_id` (nullable, FK tenanta do `customer_rfq`), `commodity_code_id` (nullable, FK tenanta do `commodity_code`), timestamps
 - INSERT…SELECT z `rate_line` gdzie `superseded_by IS NULL`; kwota tylko ze stawki, nigdy z requestu / LLM / Pythona
 - Port i kontrahent nie dobierają stawki — UUID z requestu, FK złożone do `port` / `party`
 - Nowa wycena: trójka POL+POD+`party_id` obowiązkowa (CHECK: wszystkie NULL albo wszystkie NOT NULL)

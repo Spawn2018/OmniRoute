@@ -573,6 +573,16 @@ export type CustomerRfqCreate = {
 };
 
 /**
+ * CustomerRfqPatch
+ */
+export type CustomerRfqPatch = {
+    /**
+     * Commodity Code Id
+     */
+    commodity_code_id: string;
+};
+
+/**
  * CustomerRfqResponse
  */
 export type CustomerRfqResponse = {
@@ -600,6 +610,10 @@ export type CustomerRfqResponse = {
      * Party Id
      */
     party_id: string | null;
+    /**
+     * Commodity Code Id
+     */
+    commodity_code_id: string | null;
 };
 
 /**
@@ -1486,6 +1500,10 @@ export type QuotationBatchCreate = {
      * Customer Rfq Id
      */
     customer_rfq_id?: string | null;
+    /**
+     * Commodity Code Id
+     */
+    commodity_code_id?: string | null;
 };
 
 /**
@@ -1512,6 +1530,10 @@ export type QuotationCreate = {
      * Customer Rfq Id
      */
     customer_rfq_id?: string | null;
+    /**
+     * Commodity Code Id
+     */
+    commodity_code_id?: string | null;
 };
 
 /**
@@ -1562,6 +1584,10 @@ export type QuotationResponse = {
      * Customer Rfq Id
      */
     customer_rfq_id: string | null;
+    /**
+     * Commodity Code Id
+     */
+    commodity_code_id: string | null;
 };
 
 /**
@@ -2801,6 +2827,36 @@ export type CreateCustomerRfqApiV1CustomerRfqsPostResponses = {
 };
 
 export type CreateCustomerRfqApiV1CustomerRfqsPostResponse = CreateCustomerRfqApiV1CustomerRfqsPostResponses[keyof CreateCustomerRfqApiV1CustomerRfqsPostResponses];
+
+export type PatchCustomerRfqApiV1CustomerRfqsRfqIdPatchData = {
+    body: CustomerRfqPatch;
+    path: {
+        /**
+         * Rfq Id
+         */
+        rfq_id: string;
+    };
+    query?: never;
+    url: '/api/v1/customer-rfqs/{rfq_id}';
+};
+
+export type PatchCustomerRfqApiV1CustomerRfqsRfqIdPatchErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type PatchCustomerRfqApiV1CustomerRfqsRfqIdPatchError = PatchCustomerRfqApiV1CustomerRfqsRfqIdPatchErrors[keyof PatchCustomerRfqApiV1CustomerRfqsRfqIdPatchErrors];
+
+export type PatchCustomerRfqApiV1CustomerRfqsRfqIdPatchResponses = {
+    /**
+     * Successful Response
+     */
+    200: CustomerRfqResponse;
+};
+
+export type PatchCustomerRfqApiV1CustomerRfqsRfqIdPatchResponse = PatchCustomerRfqApiV1CustomerRfqsRfqIdPatchResponses[keyof PatchCustomerRfqApiV1CustomerRfqsRfqIdPatchResponses];
 
 export type ListNbpRatesApiV1NbpRatesGetData = {
     body?: never;

@@ -1,7 +1,7 @@
 # M-09 commodity_code — katalog kodów towarowych
 
 **Plaster:** 5.2 (delta `docs/deltas/archived/5.2-commodity-code.md`)  
-**Status:** katalog HS/CN per tenant w kodzie. Nie podpięcie do wyceny. Nie IMDG (Q6).
+**Status:** katalog HS/CN per tenant. 70.0 podpina `commodity_code_id` do RFQ i wyceny. Nie IMDG.
 
 ## Zakres
 
@@ -13,7 +13,7 @@
 
 ## Poza zakresem
 
-`quotation` / `rate_line` z FK do kodu, TARIC live, towary niebezpieczne (Q6), osobna tabela aliasów.
+TARIC live, towary niebezpieczne (Q6), osobna tabela aliasów, UN z M-52.
 
 ## HC
 
@@ -21,3 +21,7 @@
 - Kwoty nie mieszkają na katalogu
 - LLM nie liczy
 - ExtractionService nie importuje commodity_codes
+
+## 70.0 HS/CN na RFQ i wycenie
+
+Nullable `commodity_code_id` na `customer_rfq` i `quotation`. API składa katalog. Kwota wyceny nadal ze stawki. `/mail` Podpnij HS. `/quotations` picker. UN z M-52 leftover.

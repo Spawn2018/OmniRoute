@@ -10,7 +10,8 @@ QUOTE_FROM_CURRENT_SQL = """
 INSERT INTO quotation (
     id, organization_id, charge_code, rate_line_id,
     amount, currency, source_ref, created_by,
-    origin_port_id, destination_port_id, party_id, customer_rfq_id
+    origin_port_id, destination_port_id, party_id, customer_rfq_id,
+    commodity_code_id
 )
 SELECT
     :qid,
@@ -24,7 +25,8 @@ SELECT
     :origin_port_id,
     :destination_port_id,
     :party_id,
-    :customer_rfq_id
+    :customer_rfq_id,
+    :commodity_code_id
 FROM rate_line AS rl
 WHERE rl.charge_code = :charge_code
   AND rl.superseded_by IS NULL
@@ -32,7 +34,8 @@ ORDER BY rl.created_at DESC, rl.id
 LIMIT 1
 RETURNING id, organization_id, charge_code, rate_line_id,
           amount, currency, source_ref, created_by,
-          origin_port_id, destination_port_id, party_id, customer_rfq_id
+          origin_port_id, destination_port_id, party_id, customer_rfq_id,
+          commodity_code_id
 """
 
 
@@ -50,6 +53,7 @@ def quotation_from_insert_row(row: RowMapping) -> Quotation:
         destination_port_id=row["destination_port_id"],
         party_id=row["party_id"],
         customer_rfq_id=row.get("customer_rfq_id"),
+        commodity_code_id=row.get("commodity_code_id"),
     )
 
 
@@ -88,6 +92,7 @@ class QuotationRepository:
         destination_port_id: UUID,
         party_id: UUID,
         customer_rfq_id: UUID | None = None,
+        commodity_code_id: UUID | None = None,
     ) -> Quotation | None:
         result = await self._session.execute(
             text(QUOTE_FROM_CURRENT_SQL),
@@ -100,6 +105,7 @@ class QuotationRepository:
                 "destination_port_id": destination_port_id,
                 "party_id": party_id,
                 "customer_rfq_id": customer_rfq_id,
+                "commodity_code_id": commodity_code_id,
             },
         )
         row = result.mappings().first()

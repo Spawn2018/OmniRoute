@@ -24,3 +24,7 @@ class CustomerRfqRepository:
         self._session.add(row)
         await self._session.flush()
         return row
+
+    async def save(self, row: CustomerRfq) -> CustomerRfq:
+        await self._session.flush()
+        return row

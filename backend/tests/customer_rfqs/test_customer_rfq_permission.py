@@ -18,6 +18,12 @@ _ENDPOINTS = (
         None,
         {"inbound_message_id": str(uuid4())},
     ),
+    (
+        "PATCH",
+        f"/api/v1/customer-rfqs/{uuid4()}",
+        None,
+        {"commodity_code_id": str(uuid4())},
+    ),
 )
 
 

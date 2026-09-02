@@ -1,6 +1,13 @@
 import uuid
 
-from sqlalchemy import CheckConstraint, ForeignKey, ForeignKeyConstraint, String, UniqueConstraint
+from sqlalchemy import (
+    CheckConstraint,
+    ForeignKey,
+    ForeignKeyConstraint,
+    Index,
+    String,
+    UniqueConstraint,
+)
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -37,6 +44,13 @@ class CustomerRfq(Base, TimestampMixin):
             name="fk_customer_rfq_party",
             ondelete="RESTRICT",
         ),
+        ForeignKeyConstraint(
+            ["organization_id", "commodity_code_id"],
+            ["commodity_code.organization_id", "commodity_code.id"],
+            name="fk_customer_rfq_commodity_code",
+            ondelete="RESTRICT",
+        ),
+        Index("ix_customer_rfq_org_commodity_code_id", "organization_id", "commodity_code_id"),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
@@ -50,3 +64,7 @@ class CustomerRfq(Base, TimestampMixin):
     source_ref: Mapped[str] = mapped_column(String(512), nullable=False)
     status: Mapped[str] = mapped_column(String(8), nullable=False)
     party_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
+    commodity_code_id: Mapped[uuid.UUID | None] = mapped_column(
+        UUID(as_uuid=True),
+        nullable=True,
+    )

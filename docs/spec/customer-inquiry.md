@@ -35,7 +35,7 @@ Tabela RFQ · IMAP (M-32) · status zapytania · auto-INSERT wyceny · M-29 akce
 
 ### Poza 67.0
 
-Silnik na RFQ (68.0) · HS/CN · IMAP · zastąpienie panelu 21.0 · auto przy INSERT maila
+Silnik na RFQ (68.0) · HS/CN (70.0) · IMAP · zastąpienie panelu 21.0 · auto przy INSERT maila
 
 ## 68.0 silnik M-21 na tym RFQ
 
@@ -46,3 +46,7 @@ Silnik na RFQ (68.0) · HS/CN · IMAP · zastąpienie panelu 21.0 · auto przy I
 - Kwota nie wchodzi na RFQ. Silnik wyceny = S5.
 - LLM nie liczy. `charge` zostaje prawdą o marży.
 - Serwis RFQ nie importuje inbound/quotations
+
+## 70.0 HS/CN
+
+`customer_rfq.commodity_code_id` i `quotation.commodity_code_id`. Katalog M-09. Nie kwota. UN leftover.

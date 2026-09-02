@@ -9,5 +9,5 @@ Katalog kodów HS/CN — nie luźna nazwa, nie `quotation`, nie IMDG.
 
 ## Zakaz
 - import innych BC services
-- zapis `quotation` / `rate_line` / `charge`
+- zapis `quotation` / `customer_rfq` / `rate_line` / `charge`
 - liczenie kwot / marży

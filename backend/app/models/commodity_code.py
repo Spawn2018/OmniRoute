@@ -11,6 +11,7 @@ class CommodityCode(Base, TimestampMixin):
     __tablename__ = "commodity_code"
     __table_args__ = (
         UniqueConstraint("organization_id", "code", name="uq_commodity_code_org_code"),
+        UniqueConstraint("organization_id", "id", name="uq_commodity_code_org_id"),
         CheckConstraint("code ~ '^[0-9]{4,10}$'", name="ck_commodity_code_digits"),
     )
 

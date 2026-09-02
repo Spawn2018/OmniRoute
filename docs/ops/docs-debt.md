@@ -65,6 +65,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **5.0 leftover — M-11 matcher domen / OpenFGA per party:** matcher **DONE w 8.0** (`resolve_email`). `can_manage_parties` = member organizacji, nie tuple na wiersz — tuple zostaje leftover.
 - **5.2 DONE:** `commodity_code` HS/CN + aliasy + `source_ref`, RLS FORCE, `resolve`, OpenFGA `can_manage_commodity_codes`, `/commodity-codes`. Nie podpięcie do wyceny, nie IMDG, nie TARIC.
 - **5.2 leftover — bliźniacze kolumny katalogu (dlaczego nie w tym plasterze):** `charge_code` i `commodity_code` nadal powielają accessor `code`/`name`/`aliases`. `just dup` 2,91% po wyodrębnieniu `CatalogCreateForm`, `CatalogLoadedTable` i `catalogCreateBody`. Wspólne kolumny = gdy czwarty katalog skopiuje ten sam blok, albo slot `refaktor-pass`.
+- **70.0 leftover — UN z M-52 na RFQ (dlaczego nie w tym plasterze):** PLAN S7 = opcjonalnie. `dangerous_good` to inny BC; HS/CN jest etykietą ładunku. LLM nie nadaje UN.
 - **6.0 DONE:** `nbp_rate` tabela A + `source_ref`, RLS FORCE, `resolve(currency, on_date)`, OpenFGA `can_manage_nbp_rates`, `/nbp-rates`. Nie przeliczenie wyceny, nie live NBP, nie M-07 `rate_line`.
 - **6.0 leftover — live NBP / mnożenie (dlaczego nie w 6.0 ani 16.0):** ingest w CI = fixture; ręczny wpis = `tenant:manual`. `api.nbp.pl` zostaje. 16.0 = odczyt `mid` przy `/quotations`, nie `amount * mid`.
 - **16.0 DONE:** `/quotations` resolve `nbp_rate` (waluta z listy wycen + dzień). Nie nowa tabela. Nie mnożenie kwoty. PLN bez requestu.

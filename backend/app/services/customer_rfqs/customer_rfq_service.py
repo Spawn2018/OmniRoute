@@ -8,7 +8,7 @@ from app.domain.customer_rfq import (
     require_inbound_message_id,
     require_rfq_source_ref,
 )
-from app.domain.errors import CustomerRfqConflict, ResourceNotFound
+from app.domain.errors import CustomerRfqConflict, ResourceNotFound, UnknownCommodityCode
 from app.models.customer_rfq import CustomerRfq
 from app.repositories.customer_rfqs.customer_rfq_repository import CustomerRfqRepository
 
@@ -52,4 +52,19 @@ class CustomerRfqService:
                 raise CustomerRfqConflict(
                     "to zapytanie już istnieje dla tej wiadomości",
                 ) from orig
+            raise
+
+    async def set_commodity_code(
+        self,
+        rfq_id: UUID,
+        commodity_code_id: UUID,
+    ) -> CustomerRfq:
+        row = await self.get_rfq(rfq_id)
+        row.commodity_code_id = commodity_code_id
+        try:
+            return await self._rfqs.save(row)
+        except IntegrityError as orig:
+            detail = str(orig.orig) if orig.orig is not None else str(orig)
+            if "fk_customer_rfq_commodity_code" in detail:
+                raise UnknownCommodityCode("nieznany kod towarowy zapytania") from orig
             raise

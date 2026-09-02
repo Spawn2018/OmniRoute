@@ -90,7 +90,7 @@ export function CommodityCodeCatalogPage() {
     <div className="space-y-3">
       <CatalogHeading
         title="Katalog kodów towarowych"
-        subtitle="commodity_code M-09 · HS/CN cyframi, nie luźna nazwa · nie podpina wyceny"
+        subtitle="commodity_code M-09 · HS/CN cyframi, nie luźna nazwa · 70.0 FK na RFQ/wycenie"
       />
 
       {!ctx.organizationId || !ctx.userId ? <TenantSessionNotice /> : null}

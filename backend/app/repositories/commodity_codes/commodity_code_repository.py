@@ -1,3 +1,5 @@
+from uuid import UUID
+
 from sqlalchemy import or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -11,6 +13,10 @@ class CommodityCodeRepository:
     async def list_all(self) -> list[CommodityCode]:
         result = await self._session.scalars(select(CommodityCode).order_by(CommodityCode.code))
         return list(result.all())
+
+    async def get(self, code_id: UUID) -> CommodityCode | None:
+        found = await self._session.get(CommodityCode, code_id)
+        return found if isinstance(found, CommodityCode) else None
 
     async def find_by_token(self, token: str) -> CommodityCode | None:
         stmt = select(CommodityCode).where(

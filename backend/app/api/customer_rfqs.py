@@ -6,6 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import get_current_identity, require_permission, require_tenant_session
 from app.core.session_token import SessionIdentity
+from app.services.commodity_codes.commodity_code_service import CommodityCodeService
 from app.services.customer_rfqs.customer_rfq_service import CustomerRfqService
 from app.services.inbound_messages.inbound_message_service import InboundMessageService
 
@@ -27,6 +28,13 @@ class CustomerRfqResponse(BaseModel):
     source_ref: str
     status: str
     party_id: UUID | None
+    commodity_code_id: UUID | None
+
+
+class CustomerRfqPatch(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    commodity_code_id: UUID
 
 
 @router.get("", response_model=list[CustomerRfqResponse])
@@ -53,5 +61,18 @@ async def create_customer_rfq(
         source_ref=message.source_ref,
         party_id=message.party_id,
     )
+    await session.commit()
+    return CustomerRfqResponse.model_validate(row)
+
+
+@router.patch("/{rfq_id}", response_model=CustomerRfqResponse)
+async def patch_customer_rfq(
+    rfq_id: UUID,
+    body: CustomerRfqPatch,
+    _authz: None = Depends(require_permission("can_manage_customer_rfqs", "organization")),
+    session: AsyncSession = Depends(require_tenant_session),
+) -> CustomerRfqResponse:
+    catalog = await CommodityCodeService(session).get_code(body.commodity_code_id)
+    row = await CustomerRfqService(session).set_commodity_code(rfq_id, catalog.id)
     await session.commit()
     return CustomerRfqResponse.model_validate(row)

@@ -33,6 +33,7 @@ function quotationWithCurrency(currency: string): Quotation {
     destination_port_id: null,
     party_id: null,
     customer_rfq_id: null,
+    commodity_code_id: null,
   }
 }
 
@@ -53,6 +54,7 @@ describe("quotationCreateBody", () => {
     expect(body).not.toHaveProperty("amount")
     expect(body).not.toHaveProperty("currency")
     expect(body).not.toHaveProperty("customer_rfq_id")
+    expect(body).not.toHaveProperty("commodity_code_id")
   })
 
   it("sends customer_rfq_id only when selected", () => {
@@ -65,6 +67,19 @@ describe("quotationCreateBody", () => {
       customerRfqId: rfqId,
     })
     expect(body.customer_rfq_id).toBe(rfqId)
+    expect(body).not.toHaveProperty("amount")
+  })
+
+  it("sends commodity_code_id only when selected", () => {
+    const hsId = "55555555-5555-4555-8555-555555555555"
+    const body = quotationCreateBody({
+      chargeCode: "THC",
+      originPortId: ORIGIN,
+      destinationPortId: DESTINATION,
+      partyId: PARTY,
+      commodityCodeId: hsId,
+    })
+    expect(body.commodity_code_id).toBe(hsId)
     expect(body).not.toHaveProperty("amount")
   })
 })
@@ -283,7 +298,9 @@ describe("quotation catalog screen", () => {
     const page = readFileSync(new URL("./catalog-page.tsx", import.meta.url), "utf8")
     expect(page).toContain("party_id")
     expect(page).toContain("customer_rfq_id")
+    expect(page).toContain("commodity_code_id")
     expect(page).toContain("fetchCustomerRfqs")
+    expect(page).toContain("fetchCommodityCodes")
     expect(page).toContain("origin_port_id")
     expect(page).toContain("destination_port_id")
     expect(page).toContain("fetchParties")

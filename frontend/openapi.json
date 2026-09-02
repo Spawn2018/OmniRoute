@@ -1272,6 +1272,64 @@
         ]
       }
     },
+    "/api/v1/customer-rfqs/{rfq_id}": {
+      "patch": {
+        "tags": [
+          "customer-rfqs"
+        ],
+        "summary": "Patch Customer Rfq",
+        "operationId": "patch_customer_rfq_api_v1_customer_rfqs__rfq_id__patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "rfq_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rfq Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomerRfqPatch"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomerRfqResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/nbp-rates": {
       "get": {
         "tags": [
@@ -5096,6 +5154,21 @@
         ],
         "title": "CustomerRfqCreate"
       },
+      "CustomerRfqPatch": {
+        "properties": {
+          "commodity_code_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Commodity Code Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "commodity_code_id"
+        ],
+        "title": "CustomerRfqPatch"
+      },
       "CustomerRfqResponse": {
         "properties": {
           "id": {
@@ -5132,6 +5205,18 @@
               }
             ],
             "title": "Party Id"
+          },
+          "commodity_code_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Commodity Code Id"
           }
         },
         "type": "object",
@@ -5141,7 +5226,8 @@
           "inbound_message_id",
           "source_ref",
           "status",
-          "party_id"
+          "party_id",
+          "commodity_code_id"
         ],
         "title": "CustomerRfqResponse"
       },
@@ -6689,6 +6775,18 @@
               }
             ],
             "title": "Customer Rfq Id"
+          },
+          "commodity_code_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Commodity Code Id"
           }
         },
         "additionalProperties": false,
@@ -6735,6 +6833,18 @@
               }
             ],
             "title": "Customer Rfq Id"
+          },
+          "commodity_code_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Commodity Code Id"
           }
         },
         "additionalProperties": false,
@@ -6827,6 +6937,18 @@
               }
             ],
             "title": "Customer Rfq Id"
+          },
+          "commodity_code_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Commodity Code Id"
           }
         },
         "type": "object",
@@ -6841,7 +6963,8 @@
           "origin_port_id",
           "destination_port_id",
           "party_id",
-          "customer_rfq_id"
+          "customer_rfq_id",
+          "commodity_code_id"
         ],
         "title": "QuotationResponse"
       },

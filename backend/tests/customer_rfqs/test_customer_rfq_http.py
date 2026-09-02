@@ -5,7 +5,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app.api.deps import require_tenant_session, set_authz_checker
-from app.domain.errors import CustomerRfqConflict, ResourceNotFound
+from app.domain.errors import CustomerRfqConflict, ResourceNotFound, UnknownCommodityCode
 from app.main import app
 from app.models.customer_rfq import CustomerRfq
 from app.models.inbound_message import InboundMessage
@@ -22,6 +22,17 @@ class AllowAllAuthz:
         object_id: UUID,
     ) -> bool:
         return True
+
+
+class StubCommodityCodeService:
+    def __init__(self, session: object) -> None:
+        self._session = session
+        self.known_id: UUID | None = None
+
+    async def get_code(self, code_id: UUID):
+        if self.known_id is None or self.known_id != code_id:
+            raise UnknownCommodityCode(f"nieznany kod towarowy: {code_id}")
+        return type("Catalog", (), {"id": code_id})()
 
 
 class StubInboundMessageService:
@@ -42,6 +53,21 @@ class StubCustomerRfqService:
 
     async def list_rfqs(self) -> list[CustomerRfq]:
         return list(self.rows)
+
+    async def get_rfq(self, rfq_id: UUID) -> CustomerRfq:
+        for row in self.rows:
+            if row.id == rfq_id:
+                return row
+        raise ResourceNotFound(f"nieznane zapytanie ofertowe: {rfq_id}")
+
+    async def set_commodity_code(
+        self,
+        rfq_id: UUID,
+        commodity_code_id: UUID,
+    ) -> CustomerRfq:
+        row = await self.get_rfq(rfq_id)
+        row.commodity_code_id = commodity_code_id
+        return row
 
     async def create_rfq(
         self,
@@ -71,12 +97,16 @@ class StubCustomerRfqService:
 def catalog_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
     messages = StubInboundMessageService(object())
     rfqs = StubCustomerRfqService(object())
+    codes = StubCommodityCodeService(object())
 
     def _messages(_session: object) -> StubInboundMessageService:
         return messages
 
     def _rfqs(_session: object) -> StubCustomerRfqService:
         return rfqs
+
+    def _codes(_session: object) -> StubCommodityCodeService:
+        return codes
 
     async def _fake_tenant_session() -> object:
         session = AsyncMock()
@@ -85,6 +115,7 @@ def catalog_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
 
     monkeypatch.setattr("app.api.customer_rfqs.InboundMessageService", _messages)
     monkeypatch.setattr("app.api.customer_rfqs.CustomerRfqService", _rfqs)
+    monkeypatch.setattr("app.api.customer_rfqs.CommodityCodeService", _codes)
     messages.row = InboundMessage(
         id=uuid4(),
         organization_id=uuid4(),
@@ -96,13 +127,13 @@ def catalog_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
     )
     set_authz_checker(AllowAllAuthz())
     app.dependency_overrides[require_tenant_session] = _fake_tenant_session
-    yield TestClient(app), messages, rfqs
+    yield TestClient(app), messages, rfqs, codes
     app.dependency_overrides.clear()
     set_authz_checker(None)
 
 
 def test_http_create_and_list_customer_rfq(catalog_client: object) -> None:
-    client, messages, _rfqs = catalog_client
+    client, messages, _rfqs, _codes = catalog_client
     assert messages.row is not None
     org_id = uuid4()
     headers = bearer_auth_headers(organization_id=org_id)
@@ -117,6 +148,7 @@ def test_http_create_and_list_customer_rfq(catalog_client: object) -> None:
     assert body["inbound_message_id"] == str(messages.row.id)
     assert body["source_ref"] == "fixture://inbound-mail/1"
     assert body["status"] == "draft"
+    assert body["commodity_code_id"] is None
     assert "amount" not in body
     assert "rate_line" not in body
 
@@ -128,7 +160,7 @@ def test_http_create_and_list_customer_rfq(catalog_client: object) -> None:
 
 
 def test_http_create_rfq_unknown_message_is_404(catalog_client: object) -> None:
-    client, _messages, _rfqs = catalog_client
+    client, _messages, _rfqs, _codes = catalog_client
     response = client.post(
         "/api/v1/customer-rfqs",
         headers=bearer_auth_headers(),
@@ -138,7 +170,7 @@ def test_http_create_rfq_unknown_message_is_404(catalog_client: object) -> None:
 
 
 def test_http_duplicate_rfq_for_message_is_conflict(catalog_client: object) -> None:
-    client, messages, _rfqs = catalog_client
+    client, messages, _rfqs, _codes = catalog_client
     assert messages.row is not None
     headers = bearer_auth_headers()
     payload = {"inbound_message_id": str(messages.row.id)}
@@ -147,3 +179,43 @@ def test_http_duplicate_rfq_for_message_is_conflict(catalog_client: object) -> N
     second = client.post("/api/v1/customer-rfqs", headers=headers, json=payload)
     assert second.status_code == 400
     assert "już istnieje" in second.json()["detail"]
+
+
+def test_http_patch_rfq_sets_commodity_code(catalog_client: object) -> None:
+    client, messages, _rfqs, codes = catalog_client
+    assert messages.row is not None
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/customer-rfqs",
+        headers=headers,
+        json={"inbound_message_id": str(messages.row.id)},
+    )
+    assert created.status_code == 201
+    code_id = uuid4()
+    codes.known_id = code_id
+    patched = client.patch(
+        f"/api/v1/customer-rfqs/{created.json()['id']}",
+        headers=headers,
+        json={"commodity_code_id": str(code_id)},
+    )
+    assert patched.status_code == 200
+    assert patched.json()["commodity_code_id"] == str(code_id)
+
+
+def test_http_patch_rfq_unknown_commodity_is_400(catalog_client: object) -> None:
+    client, messages, _rfqs, _codes = catalog_client
+    assert messages.row is not None
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/customer-rfqs",
+        headers=headers,
+        json={"inbound_message_id": str(messages.row.id)},
+    )
+    assert created.status_code == 201
+    response = client.patch(
+        f"/api/v1/customer-rfqs/{created.json()['id']}",
+        headers=headers,
+        json={"commodity_code_id": str(uuid4())},
+    )
+    assert response.status_code == 400
+    assert "kod towarowy" in response.json()["detail"]

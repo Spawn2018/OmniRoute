@@ -26,3 +26,12 @@ def require_rfq_party(rfq_party_id: UUID | None, party_id: UUID) -> UUID:
     if rfq_party_id != party_id:
         raise InvalidCustomerRfq("kontrahent wyceny musi być z zapytania")
     return rfq_party_id
+
+
+def inherit_rfq_commodity_code_id(
+    selected: UUID | None,
+    rfq_commodity_code_id: UUID | None,
+) -> UUID | None:
+    if selected is not None:
+        return selected
+    return rfq_commodity_code_id

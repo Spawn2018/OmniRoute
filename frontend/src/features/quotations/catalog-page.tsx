@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { BUSINESS_LISTS } from "@/lib/business-lists"
 import { fetchChannelQuotes, resolveChannelQuote, type ChannelQuote } from "@/lib/channel-quotes-api"
+import { fetchCommodityCodes } from "@/lib/commodity-codes-api"
 import { fetchCustomerRfqs, type CustomerRfq } from "@/lib/customer-rfqs-api"
 import { resolveCreditReview, type CreditReview } from "@/lib/credit-reviews-api"
 import { resolveNbpRate, type NbpRate } from "@/lib/nbp-rates-api"
@@ -48,6 +49,12 @@ const columns = [
       <span className="font-mono text-xs">{row.original.customer_rfq_id ?? "—"}</span>
     ),
   }),
+  helper.accessor("commodity_code_id", {
+    header: "HS/CN",
+    cell: ({ row }) => (
+      <span className="font-mono text-xs">{row.original.commodity_code_id ?? "—"}</span>
+    ),
+  }),
   helper.accessor("party_id", {
     header: "Kontrahent",
     cell: ({ row }) => <span className="font-mono text-xs">{row.original.party_id ?? "—"}</span>,
@@ -70,6 +77,7 @@ const COLUMN_LABELS = {
   charge_code: "Kod opłaty",
   amount: "Kwota ze stawki",
   customer_rfq_id: "RFQ",
+  commodity_code_id: "HS/CN",
   party_id: "Kontrahent",
   origin_port_id: "POL",
   destination_port_id: "POD",
@@ -510,12 +518,18 @@ function rfqPartyId(rows: readonly CustomerRfq[], rfqId: string): string {
   return found?.party_id ?? ""
 }
 
+function rfqCommodityCodeId(rows: readonly CustomerRfq[], rfqId: string): string {
+  const found = rows.find((row) => row.id === rfqId)
+  return found?.commodity_code_id ?? ""
+}
+
 export function QuotationCatalogPage() {
   const ctx = getTenantContext()
   const queryClient = useQueryClient()
   const [chargeCode, setChargeCode] = useState("")
   const [partyId, setPartyId] = useState("")
   const [rfqId, setRfqId] = useState(initialSearchRfq)
+  const [commodityCodeId, setCommodityCodeId] = useState("")
   const [originPortId, setOriginPortId] = useState("")
   const [destinationPortId, setDestinationPortId] = useState("")
   const [filterPartyId, setFilterPartyId] = useState("")
@@ -546,6 +560,13 @@ export function QuotationCatalogPage() {
     retry: false,
   })
 
+  const commodityCodesQuery = useQuery({
+    queryKey: ["commodity-codes", ctx.organizationId],
+    queryFn: fetchCommodityCodes,
+    enabled: signedIn,
+    retry: false,
+  })
+
   useEffect(() => {
     if (rfqId === "") {
       return
@@ -553,6 +574,10 @@ export function QuotationCatalogPage() {
     const partyFromRfq = rfqPartyId(rfqsQuery.data ?? [], rfqId)
     if (partyFromRfq !== "") {
       setPartyId(partyFromRfq)
+    }
+    const hsFromRfq = rfqCommodityCodeId(rfqsQuery.data ?? [], rfqId)
+    if (hsFromRfq !== "") {
+      setCommodityCodeId(hsFromRfq)
     }
   }, [rfqId, rfqsQuery.data])
 
@@ -592,6 +617,7 @@ export function QuotationCatalogPage() {
           destinationPortId,
           partyId,
           customerRfqId: rfqId,
+          commodityCodeId,
         }),
       ),
     onSuccess: () => {
@@ -609,6 +635,7 @@ export function QuotationCatalogPage() {
           destinationPortId,
           partyId,
           customerRfqId: rfqId,
+          commodityCodeId,
         }),
       ),
     onSuccess: () => {
@@ -620,6 +647,7 @@ export function QuotationCatalogPage() {
   const parties = partiesQuery.data ?? []
   const ports = portsQuery.data ?? []
   const rfqs = rfqsQuery.data ?? []
+  const commodityCodes = commodityCodesQuery.data ?? []
   const selectedRfqParty = rfqPartyId(rfqs, rfqId)
   const rfqMissingParty = rfqId !== "" && selectedRfqParty === ""
 
@@ -669,6 +697,22 @@ export function QuotationCatalogPage() {
             {rfqs.map((row) => (
               <option key={row.id} value={row.id}>
                 {row.id}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className="flex flex-col gap-1 text-xs">
+          commodity_code_id
+          <select
+            aria-label="Kod towarowy"
+            className="h-8 rounded-md border border-border bg-card px-2 text-sm"
+            value={commodityCodeId}
+            onChange={(event) => setCommodityCodeId(event.target.value)}
+          >
+            <option value="">Bez HS/CN</option>
+            {commodityCodes.map((row) => (
+              <option key={row.id} value={row.id}>
+                {row.code} {row.name}
               </option>
             ))}
           </select>

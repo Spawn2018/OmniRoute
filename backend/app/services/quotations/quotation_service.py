@@ -10,6 +10,7 @@ from app.domain.errors import (
     InvalidCustomerRfq,
     QuotationGap,
     UnknownChargeCode,
+    UnknownCommodityCode,
     UnknownParty,
     UnknownPort,
 )
@@ -30,6 +31,8 @@ def _snapshot_integrity_error(exc: IntegrityError) -> DomainError | None:
         return IncompleteQuotationSnapshot("wycena wymaga POL, POD i kontrahenta")
     if "fk_quotation_customer_rfq" in detail:
         return InvalidCustomerRfq("nieznane zapytanie ofertowe wyceny")
+    if "fk_quotation_commodity_code" in detail:
+        return UnknownCommodityCode("nieznany kod towarowy wyceny")
     return None
 
 
@@ -63,6 +66,7 @@ class QuotationService:
         destination_port_id: UUID | None,
         party_id: UUID | None,
         customer_rfq_id: UUID | None = None,
+        commodity_code_id: UUID | None = None,
     ) -> Quotation:
         catalog = await self._require_catalog(charge_code)
         origin, destination, party = require_lane_party_snapshot(
@@ -79,6 +83,7 @@ class QuotationService:
                 destination_port_id=destination,
                 party_id=party,
                 customer_rfq_id=customer_rfq_id,
+                commodity_code_id=commodity_code_id,
             )
         except IntegrityError as exc:
             mapped = _snapshot_integrity_error(exc)
@@ -99,6 +104,7 @@ class QuotationService:
         destination_port_id: UUID | None,
         party_id: UUID | None,
         customer_rfq_id: UUID | None = None,
+        commodity_code_id: UUID | None = None,
     ) -> list[Quotation]:
         # Pętla woła istniejący INSERT…SELECT; wsad set-based = leftover 20.0.
         codes = require_batch_charge_codes(charge_codes)
@@ -113,6 +119,7 @@ class QuotationService:
                     destination_port_id=destination_port_id,
                     party_id=party_id,
                     customer_rfq_id=customer_rfq_id,
+                    commodity_code_id=commodity_code_id,
                 )
             )
         return quoted

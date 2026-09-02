@@ -9,7 +9,12 @@ import {
 } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { createCustomerRfq, fetchCustomerRfqs } from "@/lib/customer-rfqs-api"
+import { fetchCommodityCodes } from "@/lib/commodity-codes-api"
+import {
+  createCustomerRfq,
+  fetchCustomerRfqs,
+  patchCustomerRfqCommodity,
+} from "@/lib/customer-rfqs-api"
 import {
   createInboundMessage,
   extractInboundMessage,
@@ -64,6 +69,7 @@ export function MailIntegrationPage() {
   const [email, setEmail] = useState("")
   const [resolved, setResolved] = useState<Party | null>(null)
   const [draft, setDraft] = useState(EMPTY_DRAFT)
+  const [hsCodeId, setHsCodeId] = useState("")
 
   const parties = useQuery({
     queryKey: ["mail-parties", ctx.organizationId],
@@ -92,6 +98,12 @@ export function MailIntegrationPage() {
   const rfqs = useQuery({
     queryKey: ["customer-rfqs", ctx.organizationId],
     queryFn: fetchCustomerRfqs,
+    enabled: ready,
+    retry: false,
+  })
+  const commodityCodes = useQuery({
+    queryKey: ["commodity-codes", ctx.organizationId],
+    queryFn: fetchCommodityCodes,
     enabled: ready,
     retry: false,
   })
@@ -133,6 +145,14 @@ export function MailIntegrationPage() {
       })
     },
   })
+  const attachHs = useMutation({
+    mutationFn: (rfqId: string) => patchCustomerRfqCommodity(rfqId, hsCodeId),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({
+        queryKey: ["customer-rfqs", ctx.organizationId],
+      })
+    },
+  })
 
   return (
     <div className="flex flex-col gap-4" data-mail-integration="board">
@@ -151,6 +171,8 @@ export function MailIntegrationPage() {
       {extractDraft.isError ? <CatalogError error={extractDraft.error} /> : null}
       {rfqs.isError ? <CatalogError error={rfqs.error} /> : null}
       {createRfq.isError ? <CatalogError error={createRfq.error} /> : null}
+      {commodityCodes.isError ? <CatalogError error={commodityCodes.error} /> : null}
+      {attachHs.isError ? <CatalogError error={attachHs.error} /> : null}
 
       <section className="space-y-2" data-inbound-message="fixture">
         <h2 className="text-sm font-medium">Wiadomości przychodzące</h2>
@@ -242,10 +264,35 @@ export function MailIntegrationPage() {
               Utwórz RFQ {row.subject}
             </Button>
           ))}
+        <label className="flex flex-col gap-1 text-xs">
+          commodity_code_id
+          <select
+            aria-label="Kod towarowy RFQ"
+            className="h-8 rounded-md border border-border bg-card px-2 text-sm"
+            value={hsCodeId}
+            onChange={(event) => setHsCodeId(event.target.value)}
+          >
+            <option value="">Bez HS/CN</option>
+            {(commodityCodes.data ?? []).map((row) => (
+              <option key={row.id} value={row.id}>
+                {row.code} {row.name}
+              </option>
+            ))}
+          </select>
+        </label>
         <ul data-customer-rfq="list" className="text-xs">
           {(rfqs.data ?? []).map((row) => (
             <li key={row.id}>
-              RFQ {row.id} · wiadomość {row.inbound_message_id}{" "}
+              RFQ {row.id} · wiadomość {row.inbound_message_id} · HS{" "}
+              {row.commodity_code_id ?? "—"}{" "}
+              <Button
+                type="button"
+                variant="outline"
+                disabled={!ready || hsCodeId === "" || attachHs.isPending}
+                onClick={() => attachHs.mutate(row.id)}
+              >
+                Podpnij HS
+              </Button>{" "}
               <a className="underline" href={`/quotations?rfq=${row.id}`}>
                 Wycena
               </a>

@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **69.0** S6 ewaluacja `applies_when` w SQL
+- **Ostatni plaster:** **70.0** S7 HS/CN na RFQ i wycenie
 - **Etap:** Plan
-- **Następny:** `/plaster` **70.0** — HS/CN na RFQ/wycenie. Katalog jest. Nie F9.1.
+- **Następny:** S8 `/plan-modul` — reszta M-03 + arch. M-84 (numer i szablon). Nie F9.1.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

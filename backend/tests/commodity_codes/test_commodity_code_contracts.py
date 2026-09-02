@@ -29,11 +29,18 @@ def test_importlinter_lists_commodity_codes_as_independent() -> None:
 
 
 def test_pricing_and_extraction_do_not_import_commodity_codes() -> None:
+    banned = (
+        "app.services.commodity_codes",
+        "app.models.commodity_code",
+        "app.repositories.commodity_codes",
+    )
     for bounded in ("quotations", "charges", "rate_lines", "extraction"):
         for path in (_SERVICES / bounded).rglob("*.py"):
             text = path.read_text(encoding="utf-8")
-            assert "commodity_code" not in text
-            assert "app.services.commodity_codes" not in text
+            for needle in banned:
+                assert needle not in text
+            if bounded != "quotations":
+                assert "commodity_code" not in text
 
 
 def test_generated_api_types_include_commodity_code() -> None:

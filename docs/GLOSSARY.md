@@ -9,7 +9,7 @@
 | marża | margin | sell − buy, ta sama waluta; tylko funkcja `margin()` |
 | kod opłaty | charge_code | katalog M-06; typowany token, nie luźny string |
 | alias kodu opłaty | charge_code alias | synonim w katalogu tenanta |
-| kod towarowy | commodity_code | katalog M-09; token HS/CN cyframi; nie luźna nazwa |
+| kod towarowy | commodity_code | katalog M-09; 70.0 FK na RFQ/wycenie; nie luźna nazwa |
 | towar niebezpieczny | dangerous_good | katalog M-52; token UN czterema cyframi; nie luźna nazwa |
 | numer UN | un_number | 4 cyfry na `dangerous_good`; prefiks UN zbędny |
 | klasa IMDG | imdg_class | allowlista 1–9 z podziałem (2.1, 4.1, …); nie packing group |
@@ -66,7 +66,7 @@
 | dokument oferty | offer_document | 19.0 podgląd faktów `quotation`; nie PDF; nie U-print |
 | wycena wsadowa | quotation_batch | 20.0 wiele kodów na jednej lane; nie CSV; nie nowa tabela |
 | zapytanie od klienta | customer_inquiry | 21.0 ślad wycen per party; nie tabela RFQ; nie IMAP |
-| zapytanie ofertowe | customer_rfq | 67.0 obiekt, FK do `inbound_message`; 68.0 `quotation.customer_rfq_id`; nie kwota na RFQ |
+| zapytanie ofertowe | customer_rfq | 67.0 obiekt; 68.0 wycena; 70.0 `commodity_code_id`; nie kwota na RFQ |
 | wykrywanie akceptacji | offer_acceptance | 22.0 pending z wycen; nie tabela wyniku; nie HITL accept; nie IMAP |
 | zapytanie do armatora | carrier_inquiry | 23.0 ślad `channel_quote` przy lane wyceny; nie tabela RFQ; nie live HTTP |
 | porównanie odpowiedzi | response_comparison | 24.0 zestawienie kwot wyceny i `channel_quote` na POL/POD; nie tabela; nie spread w JS |

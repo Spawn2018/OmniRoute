@@ -5,6 +5,7 @@ import pytest
 from sqlalchemy.exc import IntegrityError
 
 from app.core.database import bind_tenant
+from app.models.commodity_code import CommodityCode
 from app.models.customer_rfq import CustomerRfq
 from app.models.inbound_message import InboundMessage
 from app.models.party import Party
@@ -111,4 +112,60 @@ async def test_quotation_may_not_point_rfq_at_another_tenant(session, two_tenant
         )
     )
     with pytest.raises(IntegrityError, match="fk_quotation_customer_rfq"):
+        await session.flush()
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_quotation_may_not_point_hs_at_another_tenant(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    org_b = two_tenants["org_b"]
+    user_a = two_tenants["user_a"]
+    user_b = two_tenants["user_b"]
+
+    await bind_tenant(session, org_b.id)
+    code_b = CommodityCode(
+        id=uuid4(),
+        organization_id=org_b.id,
+        code="0901",
+        name="Coffee B",
+        aliases=[],
+        source_ref="tenant:manual",
+        created_by=user_b.id,
+    )
+    session.add(code_b)
+    await session.flush()
+
+    await bind_tenant(session, org_a.id)
+    origin = _port(organization_id=org_a.id, unlocode="PLGDY")
+    destination = _port(organization_id=org_a.id, unlocode="DEHAM")
+    party = _party(organization_id=org_a.id, created_by=user_a.id, legal_name="ACME A")
+    rate = RateLine(
+        id=uuid4(),
+        organization_id=org_a.id,
+        charge_code="THC",
+        amount=Decimal("10.0000"),
+        currency="EUR",
+        source_ref="tariff://a",
+        created_by=user_a.id,
+    )
+    session.add_all([origin, destination, party, rate])
+    await session.flush()
+    session.add(
+        Quotation(
+            id=uuid4(),
+            organization_id=org_a.id,
+            charge_code="THC",
+            rate_line_id=rate.id,
+            amount=Decimal("10.0000"),
+            currency="EUR",
+            source_ref="tariff://a",
+            created_by=user_a.id,
+            origin_port_id=origin.id,
+            destination_port_id=destination.id,
+            party_id=party.id,
+            commodity_code_id=code_b.id,
+        )
+    )
+    with pytest.raises(IntegrityError, match="fk_quotation_commodity_code"):
         await session.flush()

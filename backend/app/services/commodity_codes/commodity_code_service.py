@@ -49,6 +49,12 @@ class CommodityCodeService:
         except IntegrityError as exc:
             raise CommodityCodeConflict(f"kod towarowy {token} już istnieje") from exc
 
+    async def get_code(self, code_id: UUID) -> CommodityCode:
+        found = await self._codes.get(code_id)
+        if found is None:
+            raise UnknownCommodityCode(f"nieznany kod towarowy: {code_id}")
+        return found
+
     async def resolve(self, raw: str) -> CommodityCode:
         token = normalize_commodity_code(raw)
         found = await self._codes.find_by_token(token)
