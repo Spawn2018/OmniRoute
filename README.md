@@ -39,7 +39,7 @@ Seed: `scripts/dev_seed_local.py`.
 <!-- os-status:start -->
 - **Ostatni plaster:** **16.0** M-23 `nbp_rate` przy `quotation` (zarchiwizowany)
 - **Etap:** Plan
-- **Następny:** 17.0 M-24 Ryzyko oferty (`/plan-modul`). Nie zgaduj schematu.
+- **Następny:** 17.0 M-24 `offer_risk` przy `quotation` (`/plaster`). Czyta recenzję i kartę. Nie scoring. Nie nowa tabela.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

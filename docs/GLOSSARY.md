@@ -33,6 +33,7 @@
 | odcisk układu | layout_fingerprint | pdf vs text przed parserem |
 | delta A/B parsera | ab_delta_chars | różnica długości tekstu A vs B (0.9) |
 | kurs NBP | nbp_rate | D-1 roboczy; 16.0 odczyt przy wycenie; nie drugi katalog; nie mnożenie kwoty |
+| ryzyko oferty | offer_risk | 17.0 odczyt recenzji i karty przy wycenie; nie tabela; nie scoring |
 | narzut | markup | kaskada — Python mały zbiór (DECISIONS) |
 | pieniądze | money | para `amount` + `currency`; nigdy float |
 | kwota | amount | `Decimal` / tekst dziesiętny, skala Numeric(14,4) |

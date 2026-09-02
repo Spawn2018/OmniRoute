@@ -100,3 +100,4 @@
 | 2026-09-02 | 15.0 | M-15 | `finance_board` tablica odczytu `/finance` (marża z `charge`, NBP, limit, recenzja). Nie nowa tabela, LLM nie liczy, nie zapis `charge`/`credit_limit`. |
 | 2026-09-02 | Plan 16.0 | M-23 | delta `docs/deltas/archived/16.0-quotation-nbp.md` + spec. Wycena czyta `nbp_rate`. Nie drugi katalog, nie mnożenie kwoty. Następny: `/plaster` 16.0. |
 | 2026-09-02 | 16.0 | M-23 | `nbp_rate` odczyt przy `/quotations` (waluta oferty + dzień). Nie nowa tabela, nie mnożenie `amount`, nie drugi katalog FX. |
+| 2026-09-02 | Plan 17.0 | M-24 | delta `docs/deltas/open/17.0-offer-risk.md` + spec. Wycena czyta recenzję i kartę. Nie scoring, nie nowa tabela. Następny: `/plaster` 17.0. |
