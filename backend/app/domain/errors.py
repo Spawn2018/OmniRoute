@@ -230,6 +230,10 @@ class NetworkConflict(DomainError):
     """Kod albo alias sieci już zajęty w katalogu tenanta."""
 
 
+class InvalidInboundMessage(DomainError):
+    """Wiadomość przychodząca: fixture source_ref, nadawca, temat, treść — nie IMAP."""
+
+
 class InvalidPartyScorecard(DomainError):
     """Wskaźnik karty poza zakresem albo nie jest Decimal — nie float, nie scoring osoby."""
 

@@ -36,6 +36,7 @@ _ALL_TENANT_POLICY_NAMES = (
     "port_surcharge_tenant_isolation",
     "channel_quote_tenant_isolation",
     "credit_review_tenant_isolation",
+    "inbound_message_tenant_isolation",
 )
 
 

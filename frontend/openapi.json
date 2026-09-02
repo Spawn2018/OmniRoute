@@ -1028,6 +1028,80 @@
         }
       }
     },
+    "/api/v1/inbound-messages": {
+      "get": {
+        "tags": [
+          "inbound-messages"
+        ],
+        "summary": "List Inbound Messages",
+        "operationId": "list_inbound_messages_api_v1_inbound_messages_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/InboundMessageResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Inbound Messages Api V1 Inbound Messages Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "inbound-messages"
+        ],
+        "summary": "Create Inbound Message",
+        "operationId": "create_inbound_message_api_v1_inbound_messages_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InboundMessageCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InboundMessageResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/nbp-rates": {
       "get": {
         "tags": [
@@ -1654,6 +1728,56 @@
             }
           }
         }
+      }
+    },
+    "/api/v1/quotations/batch": {
+      "post": {
+        "tags": [
+          "quotations"
+        ],
+        "summary": "Create Quotation Batch",
+        "operationId": "create_quotation_batch_api_v1_quotations_batch_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuotationBatchCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/QuotationResponse"
+                  },
+                  "type": "array",
+                  "title": "Response Create Quotation Batch Api V1 Quotations Batch Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
       }
     },
     "/api/v1/organization-settings": {
@@ -5110,6 +5234,88 @@
         ],
         "title": "IbanLookupRequest"
       },
+      "InboundMessageCreate": {
+        "properties": {
+          "source_ref": {
+            "type": "string",
+            "maxLength": 512,
+            "minLength": 1,
+            "title": "Source Ref"
+          },
+          "from_address": {
+            "type": "string",
+            "maxLength": 320,
+            "minLength": 1,
+            "title": "From Address"
+          },
+          "subject": {
+            "type": "string",
+            "maxLength": 512,
+            "minLength": 1,
+            "title": "Subject"
+          },
+          "body_text": {
+            "type": "string",
+            "maxLength": 65536,
+            "minLength": 1,
+            "title": "Body Text"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "source_ref",
+          "from_address",
+          "subject",
+          "body_text"
+        ],
+        "title": "InboundMessageCreate"
+      },
+      "InboundMessageResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          },
+          "from_address": {
+            "type": "string",
+            "title": "From Address"
+          },
+          "subject": {
+            "type": "string",
+            "title": "Subject"
+          },
+          "body_text": {
+            "type": "string",
+            "title": "Body Text"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "source_ref",
+          "from_address",
+          "subject",
+          "body_text",
+          "status"
+        ],
+        "title": "InboundMessageResponse"
+      },
       "LocationResponse": {
         "properties": {
           "id": {
@@ -6094,6 +6300,43 @@
           "source_ref"
         ],
         "title": "PortSurchargeResponse"
+      },
+      "QuotationBatchCreate": {
+        "properties": {
+          "charge_codes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 20,
+            "minItems": 1,
+            "title": "Charge Codes"
+          },
+          "origin_port_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Origin Port Id"
+          },
+          "destination_port_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Destination Port Id"
+          },
+          "party_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Party Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "charge_codes",
+          "origin_port_id",
+          "destination_port_id",
+          "party_id"
+        ],
+        "title": "QuotationBatchCreate"
       },
       "QuotationCreate": {
         "properties": {

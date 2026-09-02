@@ -29,6 +29,7 @@ modules =
     app.services.nbp_rates
     app.services.dangerous_goods
     app.services.networks
+    app.services.inbound_messages
     app.services.port_surcharges
     app.services.channel_quotes
 
@@ -84,6 +85,9 @@ forbidden_modules =
     app.services.networks
     app.repositories.networks
     app.models.network
+    app.services.inbound_messages
+    app.repositories.inbound_messages
+    app.models.inbound_message
     app.services.port_surcharges
     app.repositories.port_surcharges
     app.models.port_surcharge

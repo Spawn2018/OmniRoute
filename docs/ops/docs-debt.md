@@ -78,7 +78,9 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **24.0 DONE:** `/quotations` zestawienie wyceny i `channel_quote` na POL/POD. Nie nowa tabela. Nie odejmowanie kwot.
 - **24.0 leftover — silnik różnicy Decimal (dlaczego nie w tym plasterze):** `quotation.amount − channel.amount` w JS zakazane (LLM nie liczy; nie drugi `margin()`). Tabela spread / won-lost = zgadywanie schematu. Adresy mail **DONE w 25.0**; live IMAP leftover 25.0. `just dup` 2,67%.
 - **25.0 DONE:** `/mail` odczyt `party_email_domain` + `party_contact.email` + `resolve_email`. Nie nowa tabela. Nie IMAP.
-- **25.0 leftover — live IMAP / sekrety (dlaczego nie w tym plasterze):** leftover HC magazynu kluczy tenanta. Tabela skrzynki = zgadywanie schematu. `mailto:` **DONE w 26.0**; dodatek Office leftover 26.0. `just dup` 2,69%.
+- **25.0 leftover — live IMAP / sekrety (dlaczego nie w tym plasterze):** leftover HC magazynu kluczy tenanta. Tabela `inbound_message` **DONE w 64.0**; live IMAP leftover S17. `mailto:` **DONE w 26.0**; dodatek Office leftover 26.0. `just dup` 2,69%.
+- **64.0 DONE:** `/mail` zapis `inbound_message` z fixture. RLS. Nie Graph. Nie IMAP.
+- **64.0 leftover — resolve_email na wierszu / IMAP (dlaczego nie w tym plasterze):** S2 matcher na wiadomości; S17 IMAP. Nie zgadujemy `party_id` w S1.
 - **26.0 DONE:** `/mail` `mailto:` z `party_contact.email`. Nie Office.js. Nie Graph.
 - **26.0 leftover — dodatek Office / Graph (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Auth0 odroczone. M-34 powiadomienia **DONE w 27.0**. `just dup` 2,69%.
 - **27.0 DONE:** `/notifications` odczyt HITL pending + wyceny pending. Nie nowa tabela. Nie wysyłka.

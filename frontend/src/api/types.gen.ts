@@ -815,6 +815,62 @@ export type IbanLookupRequest = {
 };
 
 /**
+ * InboundMessageCreate
+ */
+export type InboundMessageCreate = {
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+    /**
+     * From Address
+     */
+    from_address: string;
+    /**
+     * Subject
+     */
+    subject: string;
+    /**
+     * Body Text
+     */
+    body_text: string;
+};
+
+/**
+ * InboundMessageResponse
+ */
+export type InboundMessageResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+    /**
+     * From Address
+     */
+    from_address: string;
+    /**
+     * Subject
+     */
+    subject: string;
+    /**
+     * Body Text
+     */
+    body_text: string;
+    /**
+     * Status
+     */
+    status: string;
+};
+
+/**
  * LocationResponse
  */
 export type LocationResponse = {
@@ -1342,6 +1398,28 @@ export type PortSurchargeResponse = {
      * Source Ref
      */
     source_ref: string;
+};
+
+/**
+ * QuotationBatchCreate
+ */
+export type QuotationBatchCreate = {
+    /**
+     * Charge Codes
+     */
+    charge_codes: Array<string>;
+    /**
+     * Origin Port Id
+     */
+    origin_port_id: string;
+    /**
+     * Destination Port Id
+     */
+    destination_port_id: string;
+    /**
+     * Party Id
+     */
+    party_id: string;
 };
 
 /**
@@ -2504,6 +2582,49 @@ export type ResolveNetworkApiV1NetworksResolveGetResponses = {
 
 export type ResolveNetworkApiV1NetworksResolveGetResponse = ResolveNetworkApiV1NetworksResolveGetResponses[keyof ResolveNetworkApiV1NetworksResolveGetResponses];
 
+export type ListInboundMessagesApiV1InboundMessagesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/inbound-messages';
+};
+
+export type ListInboundMessagesApiV1InboundMessagesGetResponses = {
+    /**
+     * Response List Inbound Messages Api V1 Inbound Messages Get
+     *
+     * Successful Response
+     */
+    200: Array<InboundMessageResponse>;
+};
+
+export type ListInboundMessagesApiV1InboundMessagesGetResponse = ListInboundMessagesApiV1InboundMessagesGetResponses[keyof ListInboundMessagesApiV1InboundMessagesGetResponses];
+
+export type CreateInboundMessageApiV1InboundMessagesPostData = {
+    body: InboundMessageCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/inbound-messages';
+};
+
+export type CreateInboundMessageApiV1InboundMessagesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateInboundMessageApiV1InboundMessagesPostError = CreateInboundMessageApiV1InboundMessagesPostErrors[keyof CreateInboundMessageApiV1InboundMessagesPostErrors];
+
+export type CreateInboundMessageApiV1InboundMessagesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: InboundMessageResponse;
+};
+
+export type CreateInboundMessageApiV1InboundMessagesPostResponse = CreateInboundMessageApiV1InboundMessagesPostResponses[keyof CreateInboundMessageApiV1InboundMessagesPostResponses];
+
 export type ListNbpRatesApiV1NbpRatesGetData = {
     body?: never;
     path?: never;
@@ -2846,6 +2967,33 @@ export type CreateQuotationApiV1QuotationsPostResponses = {
 };
 
 export type CreateQuotationApiV1QuotationsPostResponse = CreateQuotationApiV1QuotationsPostResponses[keyof CreateQuotationApiV1QuotationsPostResponses];
+
+export type CreateQuotationBatchApiV1QuotationsBatchPostData = {
+    body: QuotationBatchCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/quotations/batch';
+};
+
+export type CreateQuotationBatchApiV1QuotationsBatchPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateQuotationBatchApiV1QuotationsBatchPostError = CreateQuotationBatchApiV1QuotationsBatchPostErrors[keyof CreateQuotationBatchApiV1QuotationsBatchPostErrors];
+
+export type CreateQuotationBatchApiV1QuotationsBatchPostResponses = {
+    /**
+     * Response Create Quotation Batch Api V1 Quotations Batch Post
+     *
+     * Successful Response
+     */
+    201: Array<QuotationResponse>;
+};
+
+export type CreateQuotationBatchApiV1QuotationsBatchPostResponse = CreateQuotationBatchApiV1QuotationsBatchPostResponses[keyof CreateQuotationBatchApiV1QuotationsBatchPostResponses];
 
 export type ListOrganizationSettingsApiV1OrganizationSettingsGetData = {
     body?: never;

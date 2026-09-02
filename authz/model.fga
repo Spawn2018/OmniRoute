@@ -21,3 +21,4 @@ type organization
     define can_manage_nbp_rates: member
     define can_manage_dangerous_goods: member
     define can_manage_networks: member
+    define can_manage_inbound_messages: member

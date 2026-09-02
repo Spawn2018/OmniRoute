@@ -19,6 +19,7 @@ def test_authorization_model_includes_table_view_permission() -> None:
     assert "can_manage_nbp_rates" in org.relations
     assert "can_manage_dangerous_goods" in org.relations
     assert "can_manage_networks" in org.relations
+    assert "can_manage_inbound_messages" in org.relations
     assert "can_manage_rate_lines" in org.relations
     assert "can_manage_charges" in org.relations
     assert "can_manage_quotations" in org.relations
@@ -46,6 +47,9 @@ def test_authorization_model_includes_table_view_permission() -> None:
     networks = org.relations["can_manage_networks"]
     assert networks.computed_userset is not None
     assert networks.computed_userset.relation == "member"
+    inbound = org.relations["can_manage_inbound_messages"]
+    assert inbound.computed_userset is not None
+    assert inbound.computed_userset.relation == "member"
     rates = org.relations["can_manage_rate_lines"]
     assert rates.computed_userset is not None
     assert rates.computed_userset.relation == "member"

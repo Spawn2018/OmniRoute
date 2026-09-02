@@ -62,6 +62,9 @@ def authorization_model_request() -> WriteAuthorizationModelRequest:
                     "can_manage_networks": Userset(
                         computed_userset=ObjectRelation(object="", relation="member"),
                     ),
+                    "can_manage_inbound_messages": Userset(
+                        computed_userset=ObjectRelation(object="", relation="member"),
+                    ),
                 },
                 metadata=Metadata(
                     relations={

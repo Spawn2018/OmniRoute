@@ -31,4 +31,17 @@ describe("mail-integration surface for 25.0", () => {
     expect(page).not.toContain("manifest.xml")
     expect(page).not.toContain("graph.microsoft")
   })
+
+  it("ships inbound_message fixture list and write on the same /mail board", () => {
+    const page = readFileSync(path.join(srcRoot, "features/mail-integration/catalog-page.tsx"), "utf8")
+    const api = readFileSync(path.join(srcRoot, "lib/inbound-messages-api.ts"), "utf8")
+    expect(page).toContain('data-inbound-message="fixture"')
+    expect(page).toContain("CatalogLoadedTable")
+    expect(page).toContain("createInboundMessage")
+    expect(page).toContain("fetchInboundMessages")
+    expect(page).toContain("inbound_message")
+    expect(api).toContain("/api/v1/inbound-messages")
+    expect(api).not.toContain("graph.microsoft")
+    expect(page).not.toContain("party_id")
+  })
 })

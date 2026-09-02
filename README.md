@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **63.0** Q-E4 threat model tenant+HITL + CodeQL
-- **Etap:** Plaster
-- **Następny:** 64.0 S1 `/plaster` — `inbound_message` + draft + fixture. RLS, `source_ref`. Nie Graph, nie IMAP, nie send, nie `shipment`. Nie F9.1.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **64.0** S1 `inbound_message` draft+fixture
+- **Etap:** Plan
+- **Następny:** Plan 65.0 S2 `/plan-modul` — `resolve_email` na `inbound_message`. Nie IMAP. Nie Graph. Nie F9.1.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

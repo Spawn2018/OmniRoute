@@ -106,7 +106,7 @@ export const OPS_JOBS = [
   {
     route: BUSINESS_LISTS.mailIntegration.route,
     label: "Poczta",
-    job: "odczyt domen i kontaktów",
+    job: "znane adresy i inbound_message fixture",
   },
   {
     route: BUSINESS_LISTS.operatorNotice.route,

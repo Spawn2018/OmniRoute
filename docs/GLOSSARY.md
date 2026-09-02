@@ -69,7 +69,8 @@
 | wykrywanie akceptacji | offer_acceptance | 22.0 pending z wycen; nie tabela wyniku; nie HITL accept; nie IMAP |
 | zapytanie do armatora | carrier_inquiry | 23.0 ślad `channel_quote` przy lane wyceny; nie tabela RFQ; nie live HTTP |
 | porównanie odpowiedzi | response_comparison | 24.0 zestawienie kwot wyceny i `channel_quote` na POL/POD; nie tabela; nie spread w JS |
-| integracja pocztowa | mail_integration | 25.0 tablica znanych adresów na `/mail`; nie IMAP; nie tabela skrzynki |
+| integracja pocztowa | mail_integration | 25.0 tablica znanych adresów na `/mail`; 64.0 dopina `inbound_message`; nie IMAP |
+| wiadomość przychodząca | inbound_message | 64.0 tabela per tenant, status `draft`, zapis z fixture; nie Graph; nie IMAP; nie send |
 | klient poczty | mail_client | 26.0 `mailto:` z `party_contact.email`; nie dodatek Office; nie Graph |
 | powiadomienie operatora | operator_notice | 27.0 tablica HITL pending i wycen pending; nie tabela; nie wysyłka |
 | narzut | markup | kaskada — Python mały zbiór (DECISIONS) |

@@ -11,6 +11,7 @@ Ekrany, które **zapisują** (INSERT/upsert), nie tablice-odczyty:
 - porty, strefy taryfowe, terminale — UN/LOCODE / zakres pocztowy / ISPS
 - ustawienie `default_currency` — allowlista, nie sekret
 - SOP klienta — treść + akceptacja procedury, nie generator zadań
+- poczta `/mail` — `inbound_message` z `fixture://` albo `synth://`; status `draft`; nie IMAP
 
 Czego tu nie ma: 70 osobnych instrukcji na pulpity odczytu (zlecenie, tracking, FV). Ścieżka extract → stawka → opłata → wycena jest w [ścieżka-pieniędzy.md](ścieżka-pieniędzy.md). Kontrahent: [kontrahent.md](kontrahent.md).
 

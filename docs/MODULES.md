@@ -38,7 +38,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-29 | Wykrywanie akceptacji | 22.0 `offer_acceptance` | **ukończony (fundament)** · pending z wycen; nie tabela wyniku; nie HITL accept |
 | M-30 | Zapytania do agentów/armatorów | 23.0 `carrier_inquiry` | **ukończony (fundament)** · ślad `channel_quote` przy lane; nie RFQ; nie live HTTP |
 | M-31 | Porównanie odpowiedzi | 24.0 `response_comparison` | **ukończony (fundament)** · zestawienie kwot na POL/POD; nie tabela; nie spread |
-| M-32 | Integracja pocztowa | 25.0 `mail_integration` | **ukończony (fundament)** · tablica znanych adresów; nie IMAP; nie tabela skrzynki |
+| M-32 | Integracja pocztowa | 64.0 `inbound_message` | **ukończony (fundament)** · tabela wiadomości draft+fixture na `/mail`; nie IMAP; nie Graph; nie send |
 | M-33 | Dodatek do Outlooka | 26.0 `mail_client` | **ukończony (fundament)** · `mailto:` na `/mail`; nie Office.js; nie Graph |
 | M-34 | Powiadomienia | 27.0 `operator_notice` | **ukończony (fundament)** · tablica HITL i wycen pending; nie tabela; nie wysyłka |
 | M-35 | Zlecenie | 28.0 `shipment` | **ukończony (fundament)** · tablica wycen z `party_id`; nie tabela; nie tracking |
