@@ -8,6 +8,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 
 **Zrobione w syncu (nie wracać):** nagłówek PLAN nie mówi „0.5 lokalnie”; `just test` pada przy failu unita (bez `|| true`).
 
+- **OS-1 (fabryka, poza osią Q/S, open):** uczenie i bezpieczne automatyzacje — [OS-1-fabryka-uczenie-i-automacje.md](../deltas/open/OS-1-fabryka-uczenie-i-automacje.md). Okno: piątkowa retro. Nie startuje zamiast 66.0 S3. E1 (schemat bez MCP) osobnym commitem z `agentlint --write`. E2/E3 = propozycje bez zgody na implementację. Playbook: [multitask-playbook.md](multitask-playbook.md). Leftover z delty: lokalny `just gate` fail-fast (E2); pre-commit baseline agentlinta (E3); `.cursorignore` nie pokrywa `docs/_source/` z `excludePatterns` (B12); promptfoo `synth://` nadal echo (B3); dwie liczby kosztu w kartce `/po-plastrze` (B11).
+
 - **63.0 Q-E4 DONE:** STRIDE tenant+HITL w `docs/ops/threat-model-tenant-hitl.md`. CodeQL workflow (python + JS/TS) poza `just gate`. Pierwszy run: analiza OK, upload SARIF padł („Code scanning is not enabled”). `upload: never` — leftover GHAS, nie DoD.
 - **62.0 Q-E3 DONE:** how-to `docs/operator/kontrahent.md` i `katalogi.md`; C4 context+container w ARCHITECTURE. Nie 70 stubów. Nie how-to tablic-odczytów.
 - **61.0 Q-E2 DONE:** testy jadą przez `alembic upgrade head` na `omniroute_test` (`ALEMBIC_DATABASE_URL`). Indeks `ix_rate_line_current_charge_code` w EXPLAIN. `rate_line` = 0 wierszy — p95 50k = N/A ([quote-budget.md](quote-budget.md)). Nie seed. Nie k6.
@@ -82,7 +84,9 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **64.0 DONE:** `/mail` zapis `inbound_message` z fixture. RLS. Nie Graph. Nie IMAP.
 - **64.0 leftover — resolve_email na wierszu / IMAP (dlaczego nie w tym plasterze):** `resolve_email` **DONE w 65.0**. S17 IMAP. Nie zgadujemy załączników w S1.
 - **65.0 DONE:** `/mail` dopina nadawcę `inbound_message` przez `resolve_email`. Nie IMAP. Nie extract.
-- **65.0 leftover — extract z treści (dlaczego nie w tym plasterze):** S3 HITL. ExtractionService nie zapisuje `rate_line`.
+- **65.0 leftover — extract z treści (dlaczego nie w tym plasterze):** **DONE w 66.0.** ExtractionService nie zapisuje `rate_line`.
+- **66.0 DONE:** `/mail` „Extract HITL” → `extract_to_draft` z tematu i treści. Nie accept. Nie `rate_line` z poczty.
+- **66.0 leftover — załącznik blob / IMAP (dlaczego nie w tym plasterze):** S3 = treść, nie plik. Parser dokumentu już jest inną ścieżką. IMAP leftover S17. RFQ = S4.
 - **26.0 DONE:** `/mail` `mailto:` z `party_contact.email`. Nie Office.js. Nie Graph.
 - **26.0 leftover — dodatek Office / Graph (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Auth0 odroczone. M-34 powiadomienia **DONE w 27.0**. `just dup` 2,69%.
 - **27.0 DONE:** `/notifications` odczyt HITL pending + wyceny pending. Nie nowa tabela. Nie wysyłka.
