@@ -38,8 +38,8 @@ Seed: `scripts/dev_seed_local.py`.
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **53.0** U-condensed trzeci tryb gęstości na `/rate-lines` (zarchiwizowany)
-- **Etap:** Plan
-- **Następny:** U-primitives-json (`/plan-modul`). PLAN § Wave FE leftover. Nie zgaduj schematu. Nie nowa tabela.
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
+- **Etap:** Plaster
+- **Następny:** 54.0 U-primitives-json pin Radix w `components.json`. Nie zgaduj schematu. Nie nowa tabela.
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
