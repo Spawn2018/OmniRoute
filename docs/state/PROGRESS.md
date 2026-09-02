@@ -166,3 +166,4 @@
 | 2026-09-02 | 48.0 | M-68 | `observability` tablica `/health` (`fetchHealth`). Nie OTel, nie k6. |
 | 2026-09-02 | Plan 49.0 | M-69 | delta `docs/deltas/archived/49.0-extraction-quality.md` + spec. Tablica unparsed_regions. Nie scoring. Następny: `/plaster` 49.0. |
 | 2026-09-02 | 49.0 | M-69 | `extraction_quality` tablica `/quality` (`unparsed_regions`). Nie scoring, nie tabela QA. |
+| 2026-09-02 | Plan 50.0 | M-70 | delta `docs/deltas/open/50.0-tenant-rollout.md` + spec. Tablica `default_currency`. Nie tabela rollout. Następny: `/plaster` 50.0. |
