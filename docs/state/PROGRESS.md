@@ -106,3 +106,4 @@
 | 2026-09-02 | 18.0 | M-25 | `offer_negotiation` odczyt `channel_quote` przy `/quotations`. Nie nowa tabela, nie odejmowanie kwot, nie zapis wyniku. |
 | 2026-09-02 | Plan 19.0 | M-26 | delta `docs/deltas/archived/19.0-offer-document.md` + spec. Podgląd faktów wyceny. Nie PDF, nie U-print. Następny: `/plaster` 19.0. |
 | 2026-09-02 | 19.0 | M-26 | `offer_document` podgląd faktów `quotation` na `/quotations`. Nie PDF, nie `window.print`, nie nowa tabela. |
+| 2026-09-02 | Plan 20.0 | M-27 | delta `docs/deltas/open/20.0-quotation-batch.md` + spec. Wiele kodów na lane. Nie CSV, nie nowa tabela. Następny: `/plaster` 20.0. |

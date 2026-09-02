@@ -39,7 +39,7 @@ Seed: `scripts/dev_seed_local.py`.
 <!-- os-status:start -->
 - **Ostatni plaster:** **19.0** M-26 `offer_document` przy `quotation` (zarchiwizowany)
 - **Etap:** Plan
-- **Następny:** 20.0 M-27 Wycena wsadowa (`/plan-modul`). Nie zgaduj schematu.
+- **Następny:** 20.0 M-27 `quotation_batch` (`/plaster`). Wiele kodów, jedna lane. Nie CSV. Nie nowa tabela.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
