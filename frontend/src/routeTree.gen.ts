@@ -15,6 +15,7 @@ import { Route as ChannelQuotesRouteImport } from './routes/channel-quotes'
 import { Route as ChargeCodesRouteImport } from './routes/charge-codes'
 import { Route as ChargesRouteImport } from './routes/charges'
 import { Route as CommodityCodesRouteImport } from './routes/commodity-codes'
+import { Route as CostToServeRouteImport } from './routes/cost-to-serve'
 import { Route as CreditReviewsRouteImport } from './routes/credit-reviews'
 import { Route as CustomerSopsRouteImport } from './routes/customer-sops'
 import { Route as DangerousGoodsRouteImport } from './routes/dangerous-goods'
@@ -74,6 +75,11 @@ const ChargesRoute = ChargesRouteImport.update({
 const CommodityCodesRoute = CommodityCodesRouteImport.update({
   id: '/commodity-codes',
   path: '/commodity-codes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CostToServeRoute = CostToServeRouteImport.update({
+  id: '/cost-to-serve',
+  path: '/cost-to-serve',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CreditReviewsRoute = CreditReviewsRouteImport.update({
@@ -234,6 +240,7 @@ export interface FileRoutesByFullPath {
   '/charge-codes': typeof ChargeCodesRoute
   '/charges': typeof ChargesRoute
   '/commodity-codes': typeof CommodityCodesRoute
+  '/cost-to-serve': typeof CostToServeRoute
   '/credit-reviews': typeof CreditReviewsRoute
   '/customer-sops': typeof CustomerSopsRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
@@ -272,6 +279,7 @@ export interface FileRoutesByTo {
   '/charge-codes': typeof ChargeCodesRoute
   '/charges': typeof ChargesRoute
   '/commodity-codes': typeof CommodityCodesRoute
+  '/cost-to-serve': typeof CostToServeRoute
   '/credit-reviews': typeof CreditReviewsRoute
   '/customer-sops': typeof CustomerSopsRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
@@ -311,6 +319,7 @@ export interface FileRoutesById {
   '/charge-codes': typeof ChargeCodesRoute
   '/charges': typeof ChargesRoute
   '/commodity-codes': typeof CommodityCodesRoute
+  '/cost-to-serve': typeof CostToServeRoute
   '/credit-reviews': typeof CreditReviewsRoute
   '/customer-sops': typeof CustomerSopsRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
@@ -351,6 +360,7 @@ export interface FileRouteTypes {
     | '/charge-codes'
     | '/charges'
     | '/commodity-codes'
+    | '/cost-to-serve'
     | '/credit-reviews'
     | '/customer-sops'
     | '/dangerous-goods'
@@ -389,6 +399,7 @@ export interface FileRouteTypes {
     | '/charge-codes'
     | '/charges'
     | '/commodity-codes'
+    | '/cost-to-serve'
     | '/credit-reviews'
     | '/customer-sops'
     | '/dangerous-goods'
@@ -427,6 +438,7 @@ export interface FileRouteTypes {
     | '/charge-codes'
     | '/charges'
     | '/commodity-codes'
+    | '/cost-to-serve'
     | '/credit-reviews'
     | '/customer-sops'
     | '/dangerous-goods'
@@ -466,6 +478,7 @@ export interface RootRouteChildren {
   ChargeCodesRoute: typeof ChargeCodesRoute
   ChargesRoute: typeof ChargesRoute
   CommodityCodesRoute: typeof CommodityCodesRoute
+  CostToServeRoute: typeof CostToServeRoute
   CreditReviewsRoute: typeof CreditReviewsRoute
   CustomerSopsRoute: typeof CustomerSopsRoute
   DangerousGoodsRoute: typeof DangerousGoodsRoute
@@ -540,6 +553,13 @@ declare module '@tanstack/react-router' {
       path: '/commodity-codes'
       fullPath: '/commodity-codes'
       preLoaderRoute: typeof CommodityCodesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cost-to-serve': {
+      id: '/cost-to-serve'
+      path: '/cost-to-serve'
+      fullPath: '/cost-to-serve'
+      preLoaderRoute: typeof CostToServeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/credit-reviews': {
@@ -762,6 +782,7 @@ const rootRouteChildren: RootRouteChildren = {
   ChargeCodesRoute: ChargeCodesRoute,
   ChargesRoute: ChargesRoute,
   CommodityCodesRoute: CommodityCodesRoute,
+  CostToServeRoute: CostToServeRoute,
   CreditReviewsRoute: CreditReviewsRoute,
   CustomerSopsRoute: CustomerSopsRoute,
   DangerousGoodsRoute: DangerousGoodsRoute,

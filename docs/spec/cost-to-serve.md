@@ -1,10 +1,10 @@
 # M-46 koszt obsługi klienta — tablica `customer_sop` i wycen kontrahenta
 
 **Moduł żywy:** M-46 (token UI `cost_to_serve`, nie tabela) + M-16 `customer_sop` + M-21 `quotation`  
-**Plaster:** **39.0** (do `/plaster`)  
+**Plaster:** **39.0** (zamknięty)  
 **Status:** operator **widzi** procedury i wyceny wybranego kontrahenta. Nie tabela ABC. Nie suma kwot.
 
-Delta: [docs/deltas/open/39.0-cost-to-serve.md](../deltas/open/39.0-cost-to-serve.md).
+Delta: [docs/deltas/archived/39.0-cost-to-serve.md](../deltas/archived/39.0-cost-to-serve.md).
 
 ## 39.0 tablica odczytu na `/cost-to-serve`
 

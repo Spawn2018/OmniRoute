@@ -27,6 +27,15 @@ export const EMPTY_SOP_DRAFT: CustomerSopDraft = {
   body: "",
 }
 
+export function customerSopsForParty<
+  Row extends { party_id: string },
+>(sops: readonly Row[], partyId: string): Row[] {
+  if (partyId === "") {
+    return []
+  }
+  return sops.filter((row) => row.party_id === partyId)
+}
+
 export function customerSopCreateBody(draft: CustomerSopDraft): {
   party_id: string
   code: string

@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** 39.0 M-46 `cost_to_serve` tablica `/cost-to-serve`. Nie zgaduj schematu. Nie nowa tabela.
+**Następny (zablokowany):** M-47 Księgowość (integracja) (`/plan-modul`). Nie zgaduj schematu. Nie nowa tabela.
 <!-- os-status:end -->
 
 ```mermaid
@@ -347,7 +347,8 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | F6.3 | **M-43 Koszt pieniądza** | 36.0 | zamknięty (`docs/deltas/archived/36.0-money-cost.md`) |
 | F6.4 | **M-44 Różnice kursowe** | 37.0 | zamknięty (`docs/deltas/archived/37.0-fx-difference.md`) |
 | F6.5 | **M-45 Przepływy** | 38.0 | zamknięty (`docs/deltas/archived/38.0-cash-flow.md`) |
-| F6.6 | **M-46 Koszt obsługi klienta** | Plan | kolejka (`/plan-modul`; nie zgaduj schematu) |
+| F6.6 | **M-46 Koszt obsługi klienta** | 39.0 | zamknięty (`docs/deltas/archived/39.0-cost-to-serve.md`) |
+| F6.7 | **M-47 Księgowość (integracja)** | Plan | kolejka (`/plan-modul`; nie zgaduj schematu) |
 
 ### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster
 
@@ -422,7 +423,7 @@ Nie implementuj z tej tabeli „na zapas”. To mapa, żeby nic nie zginęło. S
 | M-23–M-31 | Ofertowanie | Fala 3 |
 | M-32–M-34 | Komunikacja | DONE fundament (25.0–27.0) |
 | M-35–M-39 | Zlecenie / EDI | DONE fundament (28.0–32.0) |
-| M-40–M-47 | Finanse | Fala 6 (M-40–M-45 DONE fundament 33.0–38.0) |
+| M-40–M-47 | Finanse | Fala 6 (M-40–M-46 DONE fundament 33.0–39.0) |
 | M-48–M-51 | Modały | Fala 7 |
 | M-52–M-56 | Compliance | Fala 8 (żywe M-52 = `dangerous_good` z 7.0, nie drugi `charge`) |
 | M-57–M-60 | AI / copilot | Fala 9 |
@@ -458,13 +459,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

@@ -44,6 +44,11 @@ export const OPS_JOBS = [
     job: "wypływ buy i wpływ sell z charge",
   },
   {
+    route: BUSINESS_LISTS.costToServe.route,
+    label: "Koszt obsługi klienta",
+    job: "SOP i wyceny wybranego kontrahenta",
+  },
+  {
     route: BUSINESS_LISTS.mailIntegration.route,
     label: "Poczta",
     job: "odczyt domen i kontaktów",
@@ -198,6 +203,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "36.0": "/money-cost",
   "37.0": "/fx-differences",
   "38.0": "/cashflows",
+  "39.0": "/cost-to-serve",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

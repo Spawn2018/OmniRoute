@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **38.0** M-45 `cash_flow` tablica `/cashflows` (zarchiwizowany)
-- **Etap:** Plaster
-- **Następny:** 39.0 M-46 `cost_to_serve` tablica `/cost-to-serve`. Nie zgaduj schematu. Nie nowa tabela.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
+- **Ostatni plaster:** **39.0** M-46 `cost_to_serve` tablica `/cost-to-serve` (zarchiwizowany)
+- **Etap:** Plan
+- **Następny:** M-47 Księgowość (integracja) (`/plan-modul`). Nie zgaduj schematu. Nie nowa tabela.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
