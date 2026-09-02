@@ -39,7 +39,7 @@ Seed: `scripts/dev_seed_local.py`.
 <!-- os-status:start -->
 - **Ostatni plaster:** **13.0** M-19 `channel_quote` (zarchiwizowany)
 - **Etap:** Plan
-- **Następny:** `/plan-modul` M-14 ocena kredytowa (zakaz auto-scoringu `natural_person` / JDG). Nie Fala 8. Nie zgaduj zakresu.
+- **Następny:** 14.0 M-14 `credit_review` (`/plaster`). Nie Fala 8. Nie zgaduj auto-scoringu.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

@@ -94,3 +94,4 @@
 | 2026-09-02 | 12.0 | M-18 | `port_surcharge` katalog extra + RLS FORCE + `resolve(port_id, code)` + OpenFGA `can_manage_geography` + `/port-surcharges` + panel na `/ports`. Nie zapis do `charge`, nie ewaluacja warunku, nie M-19 live. |
 | 2026-09-02 | Plan 13.0 | M-19 | delta `docs/deltas/archived/13.0-channel-quote.md` + spec. Katalog `channel_quote` per armator+POL/POD. Nie live HTTP, nie zapis do `rate_line`. Następny: `/plaster` 13.0. |
 | 2026-09-02 | 13.0 | M-19 | `channel_quote` katalog oferty + RLS FORCE + `resolve` as-of + OpenFGA `can_manage_rate_lines` + `/channel-quotes`. Nie live HTTP, nie zapis do `rate_line`/`charge`, nie IMAP. |
+| 2026-09-02 | Plan 14.0 | M-14 | delta `docs/deltas/open/14.0-credit-review.md` + spec. Katalog `credit_review` per party. Nie auto-scoring, nie zmiana `credit_limit`. Następny: `/plaster` 14.0. |

@@ -62,6 +62,7 @@
 | sieć spedycyjna | network | katalog M-12; token kodu (`wca`, `fiata`, …); kopia per tenant; nie scraping |
 | kod sieci | network code | snake 2–32; `resolve` po kodzie albo aliasie |
 | karta wyników kontrahenta | party_scorecard | M-13; snapshot wskaźników per `party`; nie scoring osoby; nie silnik RFQ |
+| recenzja kredytowa | credit_review | M-14; decyzja operatora per `party`+dzień; nie auto-scoring; nie `credit_limit` |
 | wskaźnik odpowiedzi | response_rate | 0–1 Numeric na karcie; NULL = nieznany |
 | mediana czasu odpowiedzi | median_response_hours | godziny Numeric na karcie |
 | pozycja cenowa | price_position | 0–1 Numeric na karcie partii w 10.0; per lane = leftover |
