@@ -8,9 +8,9 @@ Wielodostępna platforma operacyjna dla spedycji. Jeden tenant, jeden zestaw sta
 
 OmniRoute obsługuje katalogi (porty, kontrahenci, kody opłat), niemutowalne stawki kupna, wiersz `charge` (kupno i sprzedaż razem), wyceny oraz ekstrakcję cenników z recenzją człowieka. Produkt jest prywatny, wielotenantowy, z ruchem produkcyjnym jako celem — nie demonstracją.
 
-![Makieta zlecenia](docs/design/screens/omniroute-zlecenie-light.png)
+![Makieta zlecenia](docs/design/screens/omniroute-ui-zlecenie.png)
 
-*Makieta powierzchni operatora (`docs/design/`). Nie zrzut z runtime.*
+*Makieta Zleceń z `docs/design/omniroute-ui.html`. Nie zrzut z runtime.*
 
 ## Co jest w produkcie
 
