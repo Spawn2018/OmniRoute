@@ -1,10 +1,10 @@
 # M-42 bank i płatności — tablica IBAN + `sell` z `charge`
 
 **Moduł żywy:** M-42 (token UI `bank_payment`, nie tabela) + katalog M-10 `party_bank_account` + M-08 `charge`  
-**Plaster:** **35.0** (do `/plaster`)  
+**Plaster:** **35.0** (zamknięty)  
 **Status:** operator **widzi** rachunek kontrahenta i sprzedaż z `charge`. Nie tabela płatności. Nie odejmowanie.
 
-Delta: [docs/deltas/open/35.0-bank-payment.md](../deltas/open/35.0-bank-payment.md).
+Delta: [docs/deltas/archived/35.0-bank-payment.md](../deltas/archived/35.0-bank-payment.md).
 
 ## 35.0 tablica odczytu na `/payments`
 

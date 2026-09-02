@@ -181,6 +181,20 @@ export async function createBankAccount(
   return parseBody<PartyBankAccount>(response, "Błąd zapisu rachunku")
 }
 
+export type IbanDraft = {
+  iban: string
+  whitelist_status: string
+}
+
+export async function lookupIban(iban: string): Promise<IbanDraft> {
+  const response = await fetch("/api/v1/parties/iban-lookup", {
+    method: "POST",
+    headers: { ...requireAuthHeaders(), "Content-Type": "application/json" },
+    body: JSON.stringify({ iban }),
+  })
+  return parseBody<IbanDraft>(response, "Błąd lookupu IBAN")
+}
+
 export async function fetchEmailDomains(partyId: string): Promise<PartyEmailDomain[]> {
   const response = await fetch(`/api/v1/parties/${partyId}/email-domains`, {
     headers: requireAuthHeaders(),

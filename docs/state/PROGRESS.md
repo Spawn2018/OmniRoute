@@ -136,4 +136,5 @@
 | 2026-09-02 | 33.0 | M-40 | `sales_invoice` tablica `/invoices` (sell z charge). Nie tabela, nie KSeF, nie odejmowanie kwot. |
 | 2026-09-02 | Plan 34.0 | M-41 | delta `docs/deltas/archived/34.0-quote-invoice-settlement.md` + spec. Tablica wycena + sell po `rate_line_id`. Nie tabela rozliczenia. Następny: `/plaster` 34.0. |
 | 2026-09-02 | 34.0 | M-41 | `quote_invoice_settlement` tablica `/quote-invoices` (wycena + sell po `rate_line_id`). Nie tabela, nie odejmowanie kwot. |
-| 2026-09-02 | Plan 35.0 | M-42 | delta `docs/deltas/open/35.0-bank-payment.md` + spec. Tablica IBAN + sell. Nie tabela płatności. Następny: `/plaster` 35.0. |
+| 2026-09-02 | Plan 35.0 | M-42 | delta `docs/deltas/archived/35.0-bank-payment.md` + spec. Tablica IBAN + sell. Nie tabela płatności. Następny: `/plaster` 35.0. |
+| 2026-09-02 | 35.0 | M-42 | `bank_payment` tablica `/payments` (IBAN + sell z charge). Nie tabela płatności, nie SEPA, nie N+1. |

@@ -8,6 +8,7 @@ const NAV = [
   { to: "/finance", label: "Tablica finansowa" },
   { to: "/invoices", label: "Faktury" },
   { to: "/quote-invoices", label: "Rozliczenie wyceny" },
+  { to: "/payments", label: "Bank i płatności" },
   { to: "/mail", label: "Poczta" },
   { to: "/notifications", label: "Powiadomienia" },
   { to: "/shipments", label: "Zlecenia" },

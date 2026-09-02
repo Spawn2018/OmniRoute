@@ -24,6 +24,11 @@ export const OPS_JOBS = [
     job: "wycena i sell po rate_line_id",
   },
   {
+    route: BUSINESS_LISTS.bankPayment.route,
+    label: "Bank i płatności",
+    job: "IBAN kontrahenta i sell z charge",
+  },
+  {
     route: BUSINESS_LISTS.mailIntegration.route,
     label: "Poczta",
     job: "odczyt domen i kontaktów",
@@ -174,6 +179,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "32.0": "/edi",
   "33.0": "/invoices",
   "34.0": "/quote-invoices",
+  "35.0": "/payments",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

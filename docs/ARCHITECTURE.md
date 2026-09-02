@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **34.0** M-41 `quote_invoice_settlement` tablica `/quote-invoices` (zarchiwizowany). **Etap:** Plaster. **Następny:** 35.0 M-42 `bank_payment` tablica `/payments`. Nie zgaduj schematu. Nie nowa tabela. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **35.0** M-42 `bank_payment` tablica `/payments` (zarchiwizowany). **Etap:** Plan. **Następny:** M-43 Koszt pieniądza (`/plan-modul`). Nie zgaduj schematu. Nie nowa tabela. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
@@ -11,7 +11,7 @@
 <!-- os-tree:start -->
 ```
 frontend/                 React 19 + Compiler, Vite, TanStack, shadcn, PostHog
-  src/features/           channel-quotes · charge-codes · charges · commodity-codes · credit-reviews · customer-sops · dangerous-goods · edi-message · extraction · finance-board · geography · mail-integration · nbp-rates · networks · operational-exception · operator-notice · ops · organization-settings · parties · party-scorecards · port-surcharges · quotations · quote-invoice-settlement · rate-lines · sales-invoice · session · shipment · shipment-document · tenancy · tracking
+  src/features/           bank-payment · channel-quotes · charge-codes · charges · commodity-codes · credit-reviews · customer-sops · dangerous-goods · edi-message · extraction · finance-board · geography · mail-integration · nbp-rates · networks · operational-exception · operator-notice · ops · organization-settings · parties · party-scorecards · port-surcharges · quotations · quote-invoice-settlement · rate-lines · sales-invoice · session · shipment · shipment-document · tenancy · tracking
   src/components/ui/      shadcn
   src/components/data-table/  DataTableShell (Golden Standard)
 backend/app/
