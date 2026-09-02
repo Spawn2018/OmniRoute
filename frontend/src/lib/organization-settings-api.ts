@@ -33,6 +33,10 @@ export async function fetchOrganizationSettings(): Promise<OrganizationSetting[]
   return (await response.json()) as OrganizationSetting[]
 }
 
+export function rolloutSettings<Row extends { setting_key: string }>(rows: readonly Row[]): Row[] {
+  return rows.filter((row) => row.setting_key === "default_currency")
+}
+
 export async function upsertOrganizationSetting(body: {
   setting_key: string
   setting_value: string

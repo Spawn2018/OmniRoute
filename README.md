@@ -37,9 +37,9 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **49.0** M-69 `extraction_quality` tablica `/quality` (zarchiwizowany)
-- **Etap:** Plaster
-- **Następny:** 50.0 M-70 `tenant_rollout` tablica `/rollout`. Nie zgaduj schematu. Nie nowa tabela.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
+- **Ostatni plaster:** **50.0** M-70 `tenant_rollout` tablica `/rollout` (zarchiwizowany)
+- **Etap:** Plan
+- **Następny:** U-oklch-dark (`/plan-modul`). PLAN § Wave FE leftover — nie Q1, po Fali 11. Nie zgaduj schematu. Nie nowa tabela.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

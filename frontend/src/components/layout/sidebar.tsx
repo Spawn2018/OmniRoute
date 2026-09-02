@@ -23,6 +23,7 @@ const NAV = [
   { to: "/ai", label: "Propozycje AI" },
   { to: "/health", label: "Obserwowalność" },
   { to: "/quality", label: "Jakość ekstrakcji" },
+  { to: "/rollout", label: "Wdrożenie" },
   { to: "/mail", label: "Poczta" },
   { to: "/notifications", label: "Powiadomienia" },
   { to: "/shipments", label: "Zlecenia" },

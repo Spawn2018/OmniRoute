@@ -1,10 +1,10 @@
 # M-70 wdrożenie — tablica `organization_setting` na allowliście
 
 **Moduł żywy:** M-70 (token UI `tenant_rollout`, nie tabela) + M-03 `organization_setting`  
-**Plaster:** **50.0** (plan)  
-**Status:** operator **zobaczy** klucz `default_currency`. Nie tabela rollout. Nie upsert.
+**Plaster:** **50.0** (zamknięty)  
+**Status:** operator **widzi** klucz `default_currency`. Nie tabela rollout. Nie upsert.
 
-Delta: [docs/deltas/open/50.0-tenant-rollout.md](../deltas/open/50.0-tenant-rollout.md).
+Delta: [docs/deltas/archived/50.0-tenant-rollout.md](../deltas/archived/50.0-tenant-rollout.md).
 
 ## 50.0 tablica odczytu na `/rollout`
 

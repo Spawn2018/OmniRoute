@@ -49,6 +49,7 @@ import { Route as QuoteInvoicesRouteImport } from './routes/quote-invoices'
 import { Route as RailRouteImport } from './routes/rail'
 import { Route as RateLinesRouteImport } from './routes/rate-lines'
 import { Route as RoadRouteImport } from './routes/road'
+import { Route as RolloutRouteImport } from './routes/rollout'
 import { Route as SanctionsRouteImport } from './routes/sanctions'
 import { Route as SessionRouteImport } from './routes/session'
 import { Route as ShipmentDocumentsRouteImport } from './routes/shipment-documents'
@@ -257,6 +258,11 @@ const RoadRoute = RoadRouteImport.update({
   path: '/road',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RolloutRoute = RolloutRouteImport.update({
+  id: '/rollout',
+  path: '/rollout',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SanctionsRoute = SanctionsRouteImport.update({
   id: '/sanctions',
   path: '/sanctions',
@@ -334,6 +340,7 @@ export interface FileRoutesByFullPath {
   '/rail': typeof RailRoute
   '/rate-lines': typeof RateLinesRoute
   '/road': typeof RoadRoute
+  '/rollout': typeof RolloutRoute
   '/sanctions': typeof SanctionsRoute
   '/session': typeof SessionRoute
   '/shipment-documents': typeof ShipmentDocumentsRoute
@@ -383,6 +390,7 @@ export interface FileRoutesByTo {
   '/rail': typeof RailRoute
   '/rate-lines': typeof RateLinesRoute
   '/road': typeof RoadRoute
+  '/rollout': typeof RolloutRoute
   '/sanctions': typeof SanctionsRoute
   '/session': typeof SessionRoute
   '/shipment-documents': typeof ShipmentDocumentsRoute
@@ -433,6 +441,7 @@ export interface FileRoutesById {
   '/rail': typeof RailRoute
   '/rate-lines': typeof RateLinesRoute
   '/road': typeof RoadRoute
+  '/rollout': typeof RolloutRoute
   '/sanctions': typeof SanctionsRoute
   '/session': typeof SessionRoute
   '/shipment-documents': typeof ShipmentDocumentsRoute
@@ -484,6 +493,7 @@ export interface FileRouteTypes {
     | '/rail'
     | '/rate-lines'
     | '/road'
+    | '/rollout'
     | '/sanctions'
     | '/session'
     | '/shipment-documents'
@@ -533,6 +543,7 @@ export interface FileRouteTypes {
     | '/rail'
     | '/rate-lines'
     | '/road'
+    | '/rollout'
     | '/sanctions'
     | '/session'
     | '/shipment-documents'
@@ -582,6 +593,7 @@ export interface FileRouteTypes {
     | '/rail'
     | '/rate-lines'
     | '/road'
+    | '/rollout'
     | '/sanctions'
     | '/session'
     | '/shipment-documents'
@@ -632,6 +644,7 @@ export interface RootRouteChildren {
   RailRoute: typeof RailRoute
   RateLinesRoute: typeof RateLinesRoute
   RoadRoute: typeof RoadRoute
+  RolloutRoute: typeof RolloutRoute
   SanctionsRoute: typeof SanctionsRoute
   SessionRoute: typeof SessionRoute
   ShipmentDocumentsRoute: typeof ShipmentDocumentsRoute
@@ -923,6 +936,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RoadRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/rollout': {
+      id: '/rollout'
+      path: '/rollout'
+      fullPath: '/rollout'
+      preLoaderRoute: typeof RolloutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sanctions': {
       id: '/sanctions'
       path: '/sanctions'
@@ -1016,6 +1036,7 @@ const rootRouteChildren: RootRouteChildren = {
   RailRoute: RailRoute,
   RateLinesRoute: RateLinesRoute,
   RoadRoute: RoadRoute,
+  RolloutRoute: RolloutRoute,
   SanctionsRoute: SanctionsRoute,
   SessionRoute: SessionRoute,
   ShipmentDocumentsRoute: ShipmentDocumentsRoute,

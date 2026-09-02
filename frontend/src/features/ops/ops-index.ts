@@ -99,6 +99,11 @@ export const OPS_JOBS = [
     job: "szkice z unparsed_regions",
   },
   {
+    route: BUSINESS_LISTS.tenantRollout.route,
+    label: "Wdrożenie",
+    job: "klucz default_currency z ustawień",
+  },
+  {
     route: BUSINESS_LISTS.mailIntegration.route,
     label: "Poczta",
     job: "odczyt domen i kontaktów",
@@ -264,6 +269,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "47.0": "/ai",
   "48.0": "/health",
   "49.0": "/quality",
+  "50.0": "/rollout",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

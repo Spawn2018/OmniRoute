@@ -75,6 +75,7 @@ describe("business list density", () => {
     expect(BUSINESS_LISTS.aiCopilot.tableKey).toBe("ai_copilot")
     expect(BUSINESS_LISTS.observability.tableKey).toBe("observability")
     expect(BUSINESS_LISTS.extractionQuality.tableKey).toBe("extraction_quality")
+    expect(BUSINESS_LISTS.tenantRollout.tableKey).toBe("tenant_rollout")
     expect(BUSINESS_LISTS.mailIntegration.tableKey).toBe("mail_integration")
     expect(BUSINESS_LISTS.operatorNotice.tableKey).toBe("operator_notice")
     expect(BUSINESS_LISTS.shipment.tableKey).toBe("shipment")

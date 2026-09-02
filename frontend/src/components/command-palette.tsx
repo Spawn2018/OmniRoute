@@ -33,6 +33,7 @@ const NAV_ACTIONS = [
   { id: "nav-ai", label: "Idź do propozycji AI", to: "/ai" },
   { id: "nav-health", label: "Idź do obserwowalności", to: "/health" },
   { id: "nav-quality", label: "Idź do jakości ekstrakcji", to: "/quality" },
+  { id: "nav-rollout", label: "Idź do wdrożenia", to: "/rollout" },
   { id: "nav-mail", label: "Idź do tablicy poczty", to: "/mail" },
   { id: "nav-notifications", label: "Idź do powiadomień", to: "/notifications" },
   { id: "nav-shipments", label: "Idź do zleceń", to: "/shipments" },

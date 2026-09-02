@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **49.0** M-69 `extraction_quality` tablica `/quality` (zarchiwizowany) **Następny:** 50.0 M-70 `tenant_rollout` tablica `/rollout`. Nie zgaduj schematu. Nie nowa tabela.
+**Stan (z CURRENT.md):** **50.0** M-70 `tenant_rollout` tablica `/rollout` (zarchiwizowany) **Następny:** U-oklch-dark (`/plan-modul`). PLAN § Wave FE leftover — nie Q1, po Fali 11. Nie zgaduj schematu. Nie nowa tabela.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.
