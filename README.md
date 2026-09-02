@@ -38,8 +38,8 @@ Seed: `scripts/dev_seed_local.py`.
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **62.0** Q-E3 how-to jobów zapisu + C4
-- **Etap:** Plan
-- **Następny:** Q-E4 `/plan-modul` — threat model tenant+HITL + CodeQL w CI. Nie F9.1. Nie S1. Parked: M-02, Auth0, portale (odblokowanie w Fali S).
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Etap:** Plaster
+- **Następny:** 63.0 Q-E4 `/plaster` — threat model tenant+HITL + CodeQL w CI. Nie GHAS. Nie F9.1. Nie S1. Parked: M-02, Auth0, portale (odblokowanie w Fali S).
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **62.0** Q-E3 how-to jobów zapisu + C4. **Etap:** Plan. **Następny:** Q-E4 `/plan-modul` — threat model tenant+HITL + CodeQL w CI. Nie F9.1. Nie S1. Parked: M-02, Auth0, portale (odblokowanie w Fali S). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **62.0** Q-E3 how-to jobów zapisu + C4. **Etap:** Plaster. **Następny:** 63.0 Q-E4 `/plaster` — threat model tenant+HITL + CodeQL w CI. Nie GHAS. Nie F9.1. Nie S1. Parked: M-02, Auth0, portale (odblokowanie w Fali S). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
