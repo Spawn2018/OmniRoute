@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** 15.0 M-15 VDF (`/plan-modul`). LLM nie liczy. Nie zgaduj schematu VDF.
+**Następny (zablokowany):** 15.0 M-15 `finance_board` (`/plaster`). LLM nie liczy. Nie nowa tabela.
 <!-- os-status:end -->
 
 ```mermaid
@@ -323,7 +323,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | F2.4 | **M-18 Opłaty portowe warunkowe** | Plan → plaster | zamknięty (`docs/deltas/archived/12.0-port-surcharge.md`) |
 | F2.5 | **M-19 Stawki live i kanały** | Plan → plaster | zamknięty (`docs/deltas/archived/13.0-channel-quote.md`) |
 | F2.6 | **M-14 Ocena kredytowa** | Plan → plaster | zamknięty (`docs/deltas/archived/14.0-credit-review.md`) |
-| F2.7 | **M-15 Wirtualny Dyrektor Finansowy** | Plan → plaster | kolejka (`/plan-modul`; LLM nie liczy) |
+| F2.7 | **M-15 Wirtualny Dyrektor Finansowy** | Plan → plaster | Plan (`docs/deltas/open/15.0-finance-board.md`) |
 
 ### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster
 
@@ -387,7 +387,7 @@ Nie implementuj z tej tabeli „na zapas”. To mapa, żeby nic nie zginęło. S
 | M-12 | Sieci i stowarzyszenia | DONE fundament (9.0 `network`; nie katalog agentów) |
 | M-13 | Karta wyników kontrahenta | DONE fundament (10.0 `party_scorecard`; nie SQL-refresh) |
 | M-14 | Ocena kredytowa | DONE fundament (14.0 `credit_review`; nie auto-scoring) |
-| M-15 | Wirtualny Dyrektor Finansowy | Fala 2; LLM nie liczy |
+| M-15 | Wirtualny Dyrektor Finansowy | Plan 15.0 tablica odczytu; LLM nie liczy |
 | M-16 | Procedury operacyjne klienta | DONE fundament (11.0 `customer_sop`; nie generator zadań) |
 | M-17 | Stawki statyczne | COVERED (`rate_line`) |
 | M-18 | Opłaty portowe warunkowe | DONE fundament (12.0 `port_surcharge`; nie zapis do `charge`) |

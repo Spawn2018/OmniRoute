@@ -96,3 +96,4 @@
 | 2026-09-02 | 13.0 | M-19 | `channel_quote` katalog oferty + RLS FORCE + `resolve` as-of + OpenFGA `can_manage_rate_lines` + `/channel-quotes`. Nie live HTTP, nie zapis do `rate_line`/`charge`, nie IMAP. |
 | 2026-09-02 | Plan 14.0 | M-14 | delta `docs/deltas/archived/14.0-credit-review.md` + spec. Katalog `credit_review` per party. Nie auto-scoring, nie zmiana `credit_limit`. Następny: `/plaster` 14.0. |
 | 2026-09-02 | 14.0 | M-14 | `credit_review` katalog recenzji + RLS FORCE + `resolve` as-of + OpenFGA `can_manage_parties` + `/credit-reviews` + panel na `/parties`. Nie auto-scoring, nie zapis `credit_limit`, nie biuro HTTP. |
+| 2026-09-02 | Plan 15.0 | M-15 | delta `docs/deltas/open/15.0-finance-board.md` + spec. Tablica odczytu `/finance`. Nie nowa tabela, LLM nie liczy. Następny: `/plaster` 15.0. |
