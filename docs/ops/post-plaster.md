@@ -1,19 +1,30 @@
 # Pętla po każdym kroku planu
 
 Obowiązkowa **przed** push i przed następnym plasterem. Nie zastępuje `just gate`.
-`just docs` = sync statusu z CURRENT.md (README, ARCHITECTURE, PLAN). `just dead` = `echo` — nie DoD. `just perf` = size-limit initial JS (U-size-limit-real).
+`just docs` = sync statusu z CURRENT.md (README, ARCHITECTURE, PLAN) — realne, woła `/zamknij`. `just dead` = `echo` — nie DoD. `just perf` = size-limit initial JS (U-size-limit-real).
 
 Bramka (`/bramka`, skill `pr-review`) **mierzy** i nie naprawia.
 Ten plik: po tabeli **napraw** to, co nie psuje jakości; reszta → [docs-debt.md](docs-debt.md).
 
+To nie jest drugi plan produktu. `/refaktor` = slot tygodniowy poza plasterem; nie zastępuje tej tabeli. Tabela jest na **diffie plastra**. Jednorazowy pomiar całego drzewa = leftover / baseline, nie rytm co plaster.
+
+Po kodzie: komenda `/po-plastrze` (pełna tabela, zero skrótu), dopiero potem `/zamknij`. `/noc` nie pomija tej kartki.
+
 ## Tabela (wklej do delty albo jedną linię w PROGRESS)
+
+Skopiuj **wszystkie** wiersze. Nie skracaj do skuteczność / szybkość / dług / docs.
 
 | Pytanie | Werdykt | Notatka |
 |---|---|---|
 | Skuteczność | PRZESZŁO / NIE / STUB | kryteria delty vs hello/echo/no-op |
 | Szybkość | N/A ten plaster / PRZESZŁO / NIE | tylko ścieżki z budżetu w AGENTS.md; inaczej N/A |
-| Dług w diffie | OK / 1–3 poprawki / leftover | `just complexity` + `just dup` na plikach z `git diff` |
+| SQL | N/A / EXPLAIN / leftover | nowy albo zmieniony SELECT/INSERT/UPDATE/resolve: `EXPLAIN ANALYZE` albo leftover z powodem. Brak zapytania w diffie = N/A |
+| N+1 | OK / 1–3 poprawki / leftover | zakaz pętli z zapytaniem w diffie. Jest `for` + `session` / `execute` / `fetch` — wyciąć albo leftover |
+| Dług / człowiek | OK / 1–3 poprawki / leftover | `just complexity` + `just dup` na plikach z `git diff`. Komentarz tylko *dlaczego*. Trzecie powtórzenie wycięte albo leftover. Brak nowej warstwy z jedną implementacją |
+| Proza operatora | N/A / 5–15 zdań / leftover | tylko gdy plaster dał **job zapisu** (nie panel-odczyt cudzej tabeli). Brak `docs/operator/` = leftover z „dlaczego nie”, nie 70 stubów |
 | Docs/OS | PRZESZŁO / NIE | CURRENT, potem `just docs`; spec z CURRENT; skill jeśli dotyczy |
+
+**Nie w tej tabeli** (osobne Q albo `/refaktor`): CodeQL, mutacje, STRIDE, C4, changelog od zera, mixin wszystkich modeli, vulture, k6 jako DoD, Alembic vs `create_all`.
 
 ## Naprawa
 

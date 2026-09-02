@@ -4,7 +4,7 @@ description: Rozpoczyna realizację plastra według procedury
 
 Przeczytaj `docs/state/CURRENT.md`.
 
-**Wyjątek `/noc`:** nie zatrzymuj się po kroku 6 i nie czekaj na `akceptuję`. Od razu `/testy`, potem kod, `/zamknij` bez nowej rozmowy, commit + push, wróć do pętli. Szczegóły: `docs/ops/nocna-zmiana.md`.
+**Wyjątek `/noc`:** nie zatrzymuj się po kroku 6 i nie czekaj na `akceptuję`. Od razu `/testy`, potem kod, **`/po-plastrze` (pełna tabela)**, `/zamknij` bez nowej rozmowy, commit + push, wróć do pętli. Szczegóły: `docs/ops/nocna-zmiana.md`. `/noc` nie pomija kartki jakości.
 
 Jeśli **Etap: Plan** albo brak zaakceptowanej delty dla tej pozycji kolejki:
 **stop.** Nie pisz kodu. Powiedz: przełącz Cursor na tryb **Plan** i uruchom `/plan-modul`.
@@ -29,3 +29,5 @@ Zatrzymaj się i czekaj na akceptację planu.
 
 Po akceptacji (osobna tura, nie ten sam przebieg): `/testy` — czerwone testy
 z delty, bez implementacji. Dopiero potem kod.
+
+Po kodzie, **zanim** `/zamknij`: komenda `/po-plastrze`. Skopiuj tabelę 1:1 z `docs/ops/post-plaster.md` (wszystkie wiersze, zero skrótu). Max 3 poprawki; reszta → `docs/ops/docs-debt.md`. Push bez tej kartki = plaster niedomknięty.

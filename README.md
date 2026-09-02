@@ -37,7 +37,7 @@ Seed: `scripts/dev_seed_local.py`.
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **57.0** U-print arkusz `@media print` na ofercie / FV / dokumencie zlecenia (zarchiwizowany)
+- **Ostatni plaster:** **58.0** karta jakości w `/plaster` + baseline całego drzewa
 - **Etap:** Idle
 - **Następny:** brak pozycji w kolejce. F9.1 M-58–M-60 bez żywej nazwy — nie zgaduj. Parked: M-02, Auth0, portale.
 - **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; nie zgaduj `/plaster` przy Etap Plan)
