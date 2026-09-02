@@ -11,7 +11,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 |---|---|---|---|
 | M-01 | Wielodostępność / tenancy | 0.3 RLS + 0.4 OpenFGA + 0.12 JWT + 0.15 hasła | **ukończony (fundament)** · Auth0 I1/I2 **odroczone** (brak tenanta); sesja email+hasło+JWT ≠ IdP |
 | M-20 | Ekstrakcja dokumentów | 0.7–0.14 HITL + T0 + 0.18 live HTTP PG + 1.3 accept→rate_line + U-art50 + U-pdf-spans + 2.1–2.2 | **ukończony (fundament)** · HTTP = live PG; ExtractionService nie importuje rates |
-| M-02 | Outbox / idempotencja | nie 0.4 | planowany · **nie startować** (brak zdarzeń między BC) |
+| M-02 | Outbox / idempotencja | nie 0.4 | planowany · parked aż **S16** (po Graph ingest); nie startuj przy Q-E |
 | M-03 | Konfiguracja jako dane | 3.0 `organization_setting` | **ukończony (fundament)** · allowlista; nie sekrety; nie env |
 | M-06 | charge_code + aliasy | 1.0 katalog | **ukończony (fundament)** · aliasy na wierszu; nie `rate_line` / `charge` |
 | M-07 | rate_line (stawka kupna) | 1.1 immutable + source_ref | **ukończony (fundament)** · nie `charge` / marża |
@@ -65,7 +65,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-69 | Jakość | 49.0 `extraction_quality` | **ukończony (fundament)** · tablica `unparsed_regions`; nie scoring; nie tabela QA |
 | M-70 | Wdrożenie | 50.0 `tenant_rollout` | **ukończony (fundament)** · tablica `default_currency`; nie tabela rollout; nie upsert |
 
-Nie dopisuj tu 70 pustych wierszy M-xx. Katalog + **kolejka Q1…** (co budować jedno po drugim, tryb Plan potem plaster): `docs/PLAN-REALIZACJA.md` § Kolejka. Archiwum Claude zostaje magazynem specyfikacji, nie SoT kolejności.
+Nie dopisuj tu 70 pustych wierszy M-xx. Katalog + **kolejka Q1… / Q-E / Fala S** (co budować jedno po drugim, tryb Plan potem plaster): `docs/PLAN-REALIZACJA.md` § Kolejka. Archiwum Claude zostaje magazynem specyfikacji, nie SoT kolejności.
 
 ## Legenda statusów
 

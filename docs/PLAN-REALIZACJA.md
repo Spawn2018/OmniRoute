@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** Q-E1 `/refaktor` — katalogi Grupa A do 4,4 (`catalog-parts`). Nie F9.1. Parked: M-02, Auth0, portale.
+**Następny (zablokowany):** Q-E1 `/refaktor` — katalogi Grupa A do 4,4 (`catalog-parts`). Nie F9.1. Nie S1. Parked: M-02, Auth0, portale (odblokowanie w Fali S).
 <!-- os-status:end -->
 
 ```mermaid
@@ -37,7 +37,7 @@ flowchart LR
 | **ten dokument** | Jedyny plan: oś, reguły, honesty gate, co dalej. |
 | [CURRENT.md](state/CURRENT.md) | Co jest „teraz” w tej sesji (ostatni plaster, następny, spec). |
 | [PROGRESS.md](state/PROGRESS.md) | Historia plastrów — fakty, nie kolejka. |
-| [MODULES.md](MODULES.md) | **Żywy** rejestr: tylko to, co jest w kodzie (+ M-02 parked). Kolejka Q i katalog M-01…M-70: ten dokument § Kolejka. |
+| [MODULES.md](MODULES.md) | **Żywy** rejestr: tylko to, co jest w kodzie (+ M-02 parked aż S16). Kolejka Q, Q-E i Fala S: ten dokument § Kolejka. |
 | Archiwum `Informacje z claude/` | Pełny katalog ~70 M-xx. **Zostaje na dysku. Nie dumpować.** |
 | Spec `docs/spec/<nazwa>.md` | Jedna na sesję plastra. Szkielet uzupełniany przy starcie, nie z góry. |
 
@@ -57,7 +57,7 @@ Nota **4,4–5** stawia karta i diff — nie prompt „pisz jak senior”. Kalib
 
 Trzy twarde reguły: (1) szybkość jest liczbą z budżetu AGENTS albo jawnym N/A — k6-echo nie zamyka; (2) dług ukryty zakazany — wiersz w [docs-debt.md](ops/docs-debt.md) z „dlaczego” albo gwoźdź w diffie; (3) komentarz mówi *dlaczego* (ustawa, HC), linia powtarzająca kod obniża notę. Dokumentacja programu ≠ `AGENTS.md`.
 
-Procedura nie jedzie „aż 5,0 sama”. Hamulec: karta [post-plaster.md](ops/post-plaster.md). Spłata starego 3,x: `/refaktor` (max 3). Kolejka: **Fala E** poniżej, **przed** F9.1. F9.1 bez żywej nazwy — nie zgaduj.
+Procedura nie jedzie „aż 5,0 sama”. Hamulec: karta [post-plaster.md](ops/post-plaster.md). Spłata starego 3,x: `/refaktor` (max 3). Kolejka: **Fala E**, potem **Fala S** (pogłębienie wydmuszek). F9.1 bez żywej nazwy aż wiersze **S56–S58**. Nie zgaduj.
 
 ---
 
@@ -303,7 +303,7 @@ Wydmuszka ≠ 70 pustych stubów w repo. Plan ustala **jeden** plaster. Kod pows
 
 Po zamknięciu plastra `CURRENT.md` = **następna pozycja Q**. Nie pytaj operatora „co chcesz”. Wykonaj tryb z kolumny. Q1 ma trzy żywe plastry (4.0 → 4.1 → 4.2); Q2 dopiero po 4.2.
 
-Po Fali 11 i leftover FE: **Fala E (Q-E1…E4) przed F9.1**. F9.1 bez żywej nazwy — nie zgaduj. Q-E0 = 59.0 (kanon w tym dokumencie).
+Po Fali 11 i leftover FE: **Fala E (Q-E1…E4)**, potem **Fala S** (S1…). Nie F9.1 po Q-E4. Q-E0 = 59.0 (kanon jakości). F9.1 = S56–S58.
 
 ### Mapa kolizji ID (czytaj zanim nazwiesz tabelę)
 
@@ -314,12 +314,15 @@ Po Fali 11 i leftover FE: **Fala E (Q-E1…E4) przed F9.1**. F9.1 bez żywej naz
 | M-08 towary niebezpieczne | **kolizja** — żywe **M-08** = `charge` | Q6 żywy ID **M-52** `dangerous_good` |
 | M-17 stawki statyczne | pokryte przez żywe **M-07** `rate_line` | nie startuj drugiego silnika stawek |
 | M-22 narzuty i marża | pokryte przez żywe **M-08** `charge` | marża zostaje w `margin()` |
+| M-52 ślad węglowy (katalog) | żywe **M-52** = `dangerous_good` | ślad = nowy żywy ID przy CBAM (Fala S faza 10); nie nadpisuj DG |
+| M-57 serwer MCP (katalog) | żywe **M-57** = tablica extract | MCP później; nie nadpisuj. Kat. M-58 = pogłębienie M-57 (**S56**) |
+| M-35 vs arch. M-89 booking | default: **jedna** tabela `shipment` | dwa obiekty tylko gdy Plan **S28** udowodni dwa joby |
 
 ### Fala 0 — już w kodzie (nie wracaj)
 
 M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-06 `charge_code` · M-07 `rate_line` · M-08 `charge` · M-09 `commodity_code` · M-20 ekstrakcja HITL · M-21 `quotation` · M-23 `nbp_rate`. OpenFGA hello = kawałek archiwum M-04, **nie** IdP.
 
-### Fala 1 — następna robota (tu jesteśmy)
+### Fala 1 — zamknięta (fundament; pogłębienia = Fala S)
 
 | Q | Co | Tryb startu | Status |
 |---|---|---|---|
@@ -371,8 +374,8 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | F8.0 | **M-53 Sankcje** | 45.0 | zamknięty (`docs/deltas/archived/45.0-sanctions.md`) |
 | F8.1 | **M-56 RODO** | 46.0 | zamknięty (`docs/deltas/archived/46.0-gdpr.md`) |
 | F9.0 | **M-57** | 47.0 | zamknięty (`docs/deltas/archived/47.0-ai-copilot.md`) |
-| F9.1 | **M-58–M-60** | — | bez żywej nazwy w PLAN; nie zgaduję |
-| F10 | **M-61–M-67** | parked | portale (PLAN § Parked) |
+| F9.1 | **M-58–M-60** | — | bez żywej nazwy aż **S56–S58**; nie zgaduj po Q-E |
+| F10 | **M-61–M-67** | parked | odblokowanie **S55** (po Auth0 **S53**) |
 | F11.0 | **M-68 Obserwowalność** | 48.0 | zamknięty (`docs/deltas/archived/48.0-observability.md`) |
 | F11.1 | **M-69 Jakość** | 49.0 | zamknięty (`docs/deltas/archived/49.0-extraction-quality.md`) |
 | F11.2 | **M-70 Wdrożenie** | 50.0 | zamknięty (`docs/deltas/archived/50.0-tenant-rollout.md`) |
@@ -381,6 +384,78 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E2** | Testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy) | Plan → plaster | po Q-E1 |
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | Plaster docs | po Q-E2 |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | Plan → plaster | po Q-E3 |
+| po Q-E4 | **Fala S**, start **S1** (nie F9.1) | Plan → plaster | kolejka poniżej |
+
+### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
+
+To **nie** jest nowy produkt. Fale 0–11 zostają fundamentem. Każdy wiersz S zdejmuje **jedno** „nie X” z [MODULES.md](MODULES.md) (obiekt → silnik → karta wieży). `/plan-modul` potem `/plaster`. WIP=1. LLM nie liczy. HITL zostaje.
+
+**Nie startuj S1 przy Q-E1.** CURRENT przy Fali E = `/refaktor`. Po zamknięciu Q-E4: `CURRENT` = **S1**, Etap **Plan**.
+
+Reguły kolejności (żeby `/noc` nie złożył awarii):
+
+1. Tabela + RLS zanim HTTP.
+2. Szyna Akceptuj/Zmień (**S11**, nowy żywy ID — **nie** M-57) i SOP zanim wysyłka.
+3. Ingest Graph (**S15**) ≠ send (**S18**). IMAP = **S17**, nie w tym samym plasterze co Graph.
+4. Screening i kredyt (**S25–S27**) zanim `shipment` (**S28**).
+5. Auth0 (**S53**) zanim portale (**S55**).
+6. Katalog 71–212 **wpinany** gdy jest poprzednik (faza 10), nie odliczany od 71.
+7. COVERED: nie drugi silnik pod arch. M-17 / M-22.
+
+| S | Co | Tryb | Status | Powód / poza zakresem tego wiersza |
+|---|---|---|---|---|
+| **S1** | Żywe **M-32** tabela wiadomości + draft, fixture | Plan → plaster | po Q-E4 | RLS, `source_ref`. Nie Graph, nie IMAP, nie send, nie `shipment` |
+| S2 | Żywe **M-11** `resolve_email` na wiadomości | Plan → plaster | po S1 | Matcher jest; tu podpięcie. Nie IMAP |
+| S3 | Żywe **M-20** treść/załącznik maila → extract | Plan → plaster | po S2 | HITL zostaje. Serwis nie zapisuje `rate_line` |
+| S4 | Żywe **M-28** obiekt RFQ powiązany z wiadomością | Plan → plaster | po S3 | Nie ślad wycen |
+| S5 | Żywe **M-21** istniejący silnik na tym RFQ | Plan → plaster | po S4 | Nie nowy silnik. LLM nie liczy |
+| S6 | Żywe **M-18** ewaluacja `applies_when` w SQL | Plan → plaster | po S5 | Nie zapis marży do `charge` |
+| S7 | Żywe **M-09** HS/CN na RFQ/wycenie | Plan → plaster | po S6 | Katalog jest. Opcjonalnie UN→M-52 z katalogu, nie z LLM |
+| S8 | Żywe **M-03** reszta + arch. M-84 (scalać) | Plan → plaster | po S7 | Numer i szablon. Leftover Fali 1 |
+| S9 | Żywe **M-26** dokument oferty | Plan → plaster | po S8 | Print 57.0 jest. Nie send |
+| S10 | Żywe **M-16** SOP „kiedy nie wolno auto” | Plan → plaster | po S9 | Przed Graph send |
+| **S11** | Arch. **M-179** szyna Akceptuj/Zmień/Odrzuć | Plan → plaster | po S10 | **Nowy żywy ID.** Nie numerować jako M-57 |
+| S12 | Żywe **M-34** tabela powiadomień | Plan → plaster | po S11 | Nie filtr pending z wycen |
+| S13 | Żywe **M-57** draft maila obok extract | Plan → plaster | po S12 | Accept przez S11. Nie czat. Nie drugi `rate_line` |
+| S14 | Arch. **M-187** lock optymistyczny na decyzji | Plan → plaster | po S13 | Dwa okna, dwa Akceptuj |
+| **S15** | Żywe **M-32** tylko ingest Graph | Plan → plaster | po S14 | Sekret tenanta, idempotencja. Wpinaj M-185/190/191/192. **Zakaz send** |
+| **S16** | Żywe **M-02** outbox | Plan → plaster | po S15 | Pierwsze zdarzenie „wiadomość zapisana”. Tu odblokowanie parked M-02 |
+| S17 | Żywe **M-32** ingest IMAP / EmailEngine | Plan → plaster | po S16 | Ta sama tabela. Nie Graph+IMAP w jednym commicie |
+| **S18** | Żywe **M-33** wysyłka po S11+S10 | Plan → plaster | po S17 | Graph send albo świadomy `mailto:`. Auto-send zakazane |
+| S19 | Żywe **M-12** `network_member` | Plan → plaster | po S18 | Nie scraping |
+| S20 | Żywe **M-30** zapytanie do agenta | Plan → plaster | po S19 | Buy side |
+| S21 | Żywe **M-19** live HTTP kanału **przy umowie** | Plan → plaster | po S20 | Bez umowy = park, nie teatr HTTP |
+| S22 | Żywe **M-31** porównanie | Plan → plaster | po S21 | Spread w `charge` |
+| S23 | Żywe **M-25** wynik negocjacji | Plan → plaster | po S22 | Nie zamiast `margin()` |
+| S24 | Żywe **M-29** won/lost; accept oferty przez S11 | Plan → plaster | po S23 | Nie accept extractu. CSV (M-27) z boku, nie na ścieżce |
+| S25 | Żywe **M-24** fakty ryzyka | Plan → plaster | po S24 | Nie scoring osoby |
+| S26 | Żywe **M-14** recenzja + załącznik wywiadowni | Plan → plaster | po S25 | Nie auto-limit |
+| **S27** | Żywe **M-53** sankcje HTTP na `party` | Plan → plaster | po S26 | Przed bookingiem. S27b: M-13 snapshot z won/lost |
+| **S28** | Żywe **M-35** tabela `shipment` (= M-89 default) | Plan → plaster | po S27 | Tablica wycen ≠ zlecenie |
+| S29 | Żywe **M-36** zdarzenia trackingu | Plan → plaster | po S28 | Nie mapa w paczce JS |
+| S30 | Żywe **M-38** + arch. M-205 dokumenty | Plan → plaster | po S29 | Skan = M-20 |
+| S31 | Żywe **M-37** tabela wyjątków | Plan → plaster | po S30 | Nie filtr wycen bez POL/POD |
+| **S32** | Watchtower UI (lista + S11 + lazy mapa) | Plan → plaster | po S31 | Nie nowy M-xx. Canvas 06 dokleja HITL |
+| S33 | Żywe **M-39** EDI gdy partner | Plan → plaster | po S32 | Nie warunek wieży |
+| S34 | Żywe **M-40** faktura | Plan → plaster | po S33 | Fakturujesz zlecenie |
+| S35 | KSeF (osobny plaster) | Plan → plaster | po S34 | Sieć prawna |
+| S36–S42 | M-41…M-47 kolejno Fali 6 | Plan → plaster | po S35 | Każdy ID = osobny plaster. Decimal. LLM nie liczy |
+| S43 | Arch. M-91 zbiorcze FV | Plan → plaster | po S42 | Gdy ktoś płaci paczką |
+| S44 | Żywe **M-15** tablica faktów (teraz z FV) | Plan → plaster | po S43 | Narracja NL = S57, nie silnik limitu |
+| S45 | Żywe **M-56** wniosek/usuwanie RODO | Plan → plaster | po S44 | PII od S1; przed portalem |
+| S46–S49 | M-48…M-51 obiekt nogi | Plan → plaster | po S45 | Nie druga mapa |
+| S50 | Arch. M-111 flota | Plan → plaster | po S46 | Tylko gdy job „własne auto” |
+| S51 | Kat. M-55 reklamacje | Plan → plaster | po S30+S45 | Żywa nazwa w Plan tego wiersza |
+| S52 | Kat. M-54 oszustwo | Plan → plaster | po płatnościach S37 | Nie scoring osoby |
+| **S53** | M-04 / Auth0 | Plan → plaster | po S52 | Tu odblokowanie Auth0. Przed portalami |
+| S54 | Arch. M-76 status klienta | Plan → plaster | po S29+S53 | Osobno od wieży operatora |
+| **S55** | F10 M-61…M-67, M-73, M-199 | Plan → plaster | po S53 | Giełda live tylko przy umowie i prawie do danych |
+| **S56** | Pogłębienie M-57 (kat. M-58) | Plan → plaster | po S32+S11 | Nie nowy czat |
+| S57 | Kat. M-59 narracja po SQL | Plan → plaster | po S44 | LLM nie liczy |
+| S58 | Kat. M-60 drafty po SOP | Plan → plaster | po S10+S11 | Nigdy auto-przelew / auto-send / auto-booking |
+| S59 | M-68 OTel, M-69 QA, M-70 rollout | Plan → plaster | po S16/S29 | Rollout ≠ billing SaaS (M-67 w S55) |
+
+Po S59: katalog 71–212 wpinany (clo, WMS, warstwa A/B, C na końcu, fintech 207–208 ostatnie). Luki **M-203, M-204** puste — nie zgaduj.
 
 ### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster
 
@@ -410,13 +485,14 @@ M-48…M-51 modały · M-52…M-56 compliance (M-53 sankcje, M-56 RODO) · M-57�
 
 ### Parked (w katalogu, nie w kolejce aktywnej)
 
-| ID | Dlaczego nie teraz |
-|---|---|
-| **M-02** outbox | Brak zdarzeń async między BC poza HTTP. Wejdzie, gdy Fala 5/integracje naprawdę publikują zdarzenie. Wtedy najpierw **Plan**. |
-| **Auth0 I1/I2** | Brak tenanta. Nie moduł M-xx. Nie pytać. |
-| **Watchtower / mapa / portale** | Canvas 06. Po M-05 + Fali 5/10. Nie Q1. |
-| **M-04 SSO** | Kawałek OpenFGA jest. Reszta tożsamości = Auth0 parked. „Handlowiec widzi swoich” **po Q2** (kontrahenci), Plan bez SSO. |
-| **M-03 reszta** | Żyje tylko `default_currency`. Szablony, numeracja, workflow — Plan jako leftover M-03 **po Fali 1**, nie zamiast Q1. |
+| ID | Dlaczego nie teraz | Kiedy |
+|---|---|---|
+| **M-02** outbox | Brak zdarzenia async między BC | **S16** (po Graph ingest S15). Nie startuj przy Q-E ani przy S1 fixture |
+| **Auth0 I1/I2** | Brak tenanta / nie bieżące Q | **S53**. JWT hello zostaje do tego wiersza |
+| **Watchtower / mapa** | Brak `shipment` + eventów | **S32** po S28–S31 |
+| **Portale F10** | Brak IdP | **S55** po **S53** |
+| **M-04 SSO** | OpenFGA hello ≠ IdP | Razem z Auth0 **S53** |
+| **M-03 reszta** | Żyje `default_currency` | **S8** (numeracja/szablon), nie zamiast Q-E |
 
 **WIP=1.** Po plasterze: [docs/ops/post-plaster.md](ops/post-plaster.md), PROGRESS, CURRENT = następne Q, push, **nowa rozmowa**. Nie startuj kolejnego Q przy niepushniętym zakresie.
 
@@ -431,7 +507,7 @@ Nie implementuj z tej tabeli „na zapas”. To mapa, żeby nic nie zginęło. S
 | Arch. | Nazwa | Status żywy |
 |---|---|---|
 | M-01 | Wielodostępność | DONE fundament |
-| M-02 | Niezawodność zdarzeń | PARKED |
+| M-02 | Niezawodność zdarzeń | PARKED aż **S16** |
 | M-03 | Konfiguracja per organizacja | CZĘŚĆ (`default_currency`) |
 | M-04 | Uprawnienia i tożsamość | CZĘŚĆ (OpenFGA hello; SSO parked) |
 | M-05 | Geografia | DONE fundament (`port` + `location`/strefy + `terminal`/WPI; `operator_party_id` od 5.0) |
@@ -453,7 +529,7 @@ Nie implementuj z tej tabeli „na zapas”. To mapa, żeby nic nie zginęło. S
 | M-21 | Silnik wyceny | DONE 2.0 + 5.1 POL/POD/`party_id` |
 | M-22 | Narzuty i marża | COVERED (`charge`) |
 | M-23–M-31 | Ofertowanie | Fala 3 |
-| M-32–M-34 | Komunikacja | DONE fundament (25.0–27.0) |
+| M-32–M-34 | Komunikacja | DONE fundament (25.0–27.0); pogłębienie **S1–S18** |
 | M-35–M-39 | Zlecenie / EDI | DONE fundament (28.0–32.0) |
 | M-40–M-47 | Finanse | DONE fundament (33.0–40.0) |
 | M-48–M-51 | Modały | Fala 7 (M-48–M-51 DONE fundament 41.0–44.0) |

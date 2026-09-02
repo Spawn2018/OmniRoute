@@ -12,7 +12,7 @@ Kolejka: `docs/PLAN-REALIZACJA.md` § Kolejka realizacji.
 **Wyjątek `/noc`:** nie mów o trybie Plan — wykonaj `/plan-modul` w tym Agencie (opcja rekomendowana, push), potem wróć do plastra.
 
 Jeśli **Etap: Refaktor**:
-**stop.** Nie pisz plastra domenowego. Odpal `/refaktor`. F9.1 nie zgaduj.
+**stop.** Nie pisz plastra domenowego. Odpal `/refaktor`. F9.1 nie zgaduj. S1 nie startuj przy Q-E.
 
 Jeśli zakres **powyżej trzech plików** (także hotfix / leftover **poza** kolejką Q) i nie ma jeszcze zaakceptowanego planu plików:
 **stop.** Napisz plan (krok 6), czekaj. Nie koduj „bo to nie jest Q”.

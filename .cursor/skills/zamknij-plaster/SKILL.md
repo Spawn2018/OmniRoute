@@ -12,7 +12,7 @@ description: Zamyka plaster, archiwizuje delta-spec, przygotowuje następną roz
 5. Scal delta → `docs/spec/` jeśli wymagane
 6. Przenieś `docs/deltas/open/<id>.md` → `docs/deltas/archived/`
 7. Linia w `docs/state/PROGRESS.md`
-8. Ustaw `docs/state/CURRENT.md` na **następną pozycję Q** z `docs/PLAN-REALIZACJA.md` § Kolejka (nie pytaj „co chcesz”). Jeśli następne Q to wydmuszka: **Etap: Plan**, komenda `/plan-modul`, nie `/plaster`. Jeśli następne Q to Fala E `/refaktor` (Q-E1 i sloty): **Etap: Refaktor**, komenda `/refaktor`. F9.1 bez nazwy — nie ustawiaj jako Następny.
+8. Ustaw `docs/state/CURRENT.md` na **następną pozycję Q** z `docs/PLAN-REALIZACJA.md` § Kolejka (nie pytaj „co chcesz”). Jeśli następne Q to wydmuszka albo wiersz Fali S: **Etap: Plan**, komenda `/plan-modul`, nie `/plaster`. Jeśli następne Q to Fala E `/refaktor` (Q-E1 i sloty): **Etap: Refaktor**, komenda `/refaktor`. Po **Q-E4**: następny = **S1**, nie F9.1. F9.1 bez nazwy — nie ustawiaj jako Następny (żywe nazwy dopiero S56–S58).
 8b. `just docs` — przepisuje README / ARCHITECTURE / PLAN z CURRENT. Potem `just docs-check`. GitHub = ten README **po pushu**.
 8c. **Bramka przed push** włączona: `git config --get core.hooksPath` = `scripts/githooks`. Brak → `just hooks`. Hook `scripts/githooks/pre-push` odpala `just gate` i zatrzymuje push, gdy bramka pada — tego kroku nie zastępuje ręczne `just gate` z punktu 1.
 8d. Zmiana `AGENTS.md` / `GROUNDING.md` / `.cursor/rules/*` bez przepisanego baseline zawsze daje czerwony CI (6 z 7 runów #79-#88). Przy takiej zmianie: `python scripts/quality/agentlint.py --write` + `scripts/quality/agentlint.baseline.json` w tym samym commicie. Sprawdzenie: `just meta-gate` (ok. 1 s).

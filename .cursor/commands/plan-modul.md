@@ -12,7 +12,7 @@ Ta komenda = wydmuszka albo kolejna pozycja Q. Nie dumpuj `Informacje z claude/`
 
 Wykonaj i zatrzymaj się po planie (czekaj na akceptację człowieka):
 
-1. Wypisz pozycję kolejki z CURRENT (np. Q1 M-05) oraz czego NIE robisz (M-02, Auth0, kolizje ID z PLAN).
+1. Wypisz pozycję kolejki z CURRENT (np. Q-E1, S1 M-32) oraz czego NIE robisz. Parked z PLAN (M-02, Auth0, portale) **pomijaj**, chyba że CURRENT to właśnie ten ID. Kolizje ID z PLAN § mapa kolizji — nie nadpisuj żywego M-07/M-08/M-52/M-57.
 2. Jeśli archiwum jest potrzebne: **tylko** nagłówek i obiekty tego jednego M-xx — nie ładuj aneksów.
 3. Ustal z człowiekiem: job operatora (ekran w tym samym plasterze), tabele, poza zakresem, OpenFGA, RLS.
 4. Nadaj **żywy** kod modułu, gdy archiwum koliduje z M-07/M-08 już w kodzie.

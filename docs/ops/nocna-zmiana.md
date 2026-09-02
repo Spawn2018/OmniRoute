@@ -2,7 +2,7 @@
 
 Operator odpalasz w Cursorze, tryb Agent: **`/noc 7`** (albo `/noc 8`). To jest pętla do **najbliższej** takiej godziny czasu polskiego. Komenda bez godziny nie startuje. **`/noc stop`** kończy strażnika.
 
-To nie jest drugi plan produktu. Kolejka: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Tablica: [CURRENT.md](../state/CURRENT.md). Numer plastra **nie** jest wpisany w `/noc` — agent zawsze czyta CURRENT.
+To nie jest drugi plan produktu. Kolejka: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md). Tablica: [CURRENT.md](../state/CURRENT.md). Numer plastra **nie** jest wpisany w `/noc` — agent zawsze czyta CURRENT. Po Fali E: **Fala S** (pogłębienia). `/plaster` przy Etap Refaktor = stop (`/refaktor`).
 
 ## Zanim cokolwiek ruszy
 
@@ -21,7 +21,7 @@ Ty: komputer nie usypia, Cursor otwarty, **żaden inny agent nie pisze**.
 1. Czytaj `CURRENT.md`. **Etap: Refaktor** → `/refaktor` (max 3), karta post-plaster, commit i push — nie `/plan-modul`.
 2. **Etap: Plan** → `/plan-modul` w Agencie (nie przełączaj na tryb Plan w Cursorze — ten ekran czeka na Ciebie). Opcja rekomendowana. Delta + CURRENT. **Commit i push.** Zero kodu produktu.
 3. **`/plaster`** (gdy Etap nie jest Plan ani Refaktor): plan plików bez `akceptuję` → czerwone `/testy` → kod → `/po-plastrze` → zamknięcie. **Commit i push** na `origin/main`. Naprawia do skutku. Po pushu czeka na CI GitHub i poprawia, aż zielone albo padnie godzina.
-4. Kolejny plaster tego modułu, potem kolejne Q z PLAN (Fala E przed F9.1) — aż do godziny.
+4. Kolejny plaster tego modułu, potem kolejne Q z PLAN (**Fala E**, potem **Fala S**; nie F9.1 po Q-E4) — aż do godziny.
 5. Po godzinie: nie zaczyna nowego planu ani plastra. Dokańcza rozgrzebane, puszcza, **raport**.
 
 Planowanie zostaje (delta, zakres, testy zanim kod). Znika tylko czekanie na kliknięcie.
@@ -35,7 +35,7 @@ Strażnik co 15 minut (`/loop`, `loop-noc`): jeśli sesja umarła (brak bicia se
 - ExtractionService nie importuje rates.
 - Brak `organization_id` / RLS / testu izolacji = nie push.
 - Brudne drzewo, rozjazd z origin, nie-main = preflight FAIL.
-- M-02, Auth0, portale — parked, nie zgaduj.
+- M-02, Auth0, portale — parked, **chyba że CURRENT wskazuje ten ID jako bieżące Q** (Fala S: S16 outbox, S53 Auth0, S55 portale). Nie zgaduj ich przy Q-E ani przy S1.
 - Bez `--no-verify` i bez force-push.
 
 Zarys modułu: Plan rozbija na plastry i robi gęsty job operatora (ekran + baza + flagi w ustawieniach tam, gdzie da się wyciąć na produkcji). Nie 70 pustych szafek.
