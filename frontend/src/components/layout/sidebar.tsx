@@ -12,6 +12,7 @@ const NAV = [
   { to: "/tracking", label: "Tracking" },
   { to: "/exceptions", label: "Wyjątki" },
   { to: "/shipment-documents", label: "Dokumenty zlecenia" },
+  { to: "/edi", label: "EDI" },
   { to: "/charge-codes", label: "Kody opłat" },
   { to: "/commodity-codes", label: "Kody towarowe" },
   { to: "/dangerous-goods", label: "Towary niebezpieczne" },

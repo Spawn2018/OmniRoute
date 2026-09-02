@@ -17,6 +17,7 @@ import { Route as CommodityCodesRouteImport } from './routes/commodity-codes'
 import { Route as CreditReviewsRouteImport } from './routes/credit-reviews'
 import { Route as CustomerSopsRouteImport } from './routes/customer-sops'
 import { Route as DangerousGoodsRouteImport } from './routes/dangerous-goods'
+import { Route as EdiRouteImport } from './routes/edi'
 import { Route as ExceptionsRouteImport } from './routes/exceptions'
 import { Route as ExtractionsRouteImport } from './routes/extractions'
 import { Route as FinanceRouteImport } from './routes/finance'
@@ -77,6 +78,11 @@ const CustomerSopsRoute = CustomerSopsRouteImport.update({
 const DangerousGoodsRoute = DangerousGoodsRouteImport.update({
   id: '/dangerous-goods',
   path: '/dangerous-goods',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EdiRoute = EdiRouteImport.update({
+  id: '/edi',
+  path: '/edi',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ExceptionsRoute = ExceptionsRouteImport.update({
@@ -194,6 +200,7 @@ export interface FileRoutesByFullPath {
   '/credit-reviews': typeof CreditReviewsRoute
   '/customer-sops': typeof CustomerSopsRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
+  '/edi': typeof EdiRoute
   '/exceptions': typeof ExceptionsRoute
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
@@ -225,6 +232,7 @@ export interface FileRoutesByTo {
   '/credit-reviews': typeof CreditReviewsRoute
   '/customer-sops': typeof CustomerSopsRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
+  '/edi': typeof EdiRoute
   '/exceptions': typeof ExceptionsRoute
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
@@ -257,6 +265,7 @@ export interface FileRoutesById {
   '/credit-reviews': typeof CreditReviewsRoute
   '/customer-sops': typeof CustomerSopsRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
+  '/edi': typeof EdiRoute
   '/exceptions': typeof ExceptionsRoute
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
@@ -290,6 +299,7 @@ export interface FileRouteTypes {
     | '/credit-reviews'
     | '/customer-sops'
     | '/dangerous-goods'
+    | '/edi'
     | '/exceptions'
     | '/extractions'
     | '/finance'
@@ -321,6 +331,7 @@ export interface FileRouteTypes {
     | '/credit-reviews'
     | '/customer-sops'
     | '/dangerous-goods'
+    | '/edi'
     | '/exceptions'
     | '/extractions'
     | '/finance'
@@ -352,6 +363,7 @@ export interface FileRouteTypes {
     | '/credit-reviews'
     | '/customer-sops'
     | '/dangerous-goods'
+    | '/edi'
     | '/exceptions'
     | '/extractions'
     | '/finance'
@@ -384,6 +396,7 @@ export interface RootRouteChildren {
   CreditReviewsRoute: typeof CreditReviewsRoute
   CustomerSopsRoute: typeof CustomerSopsRoute
   DangerousGoodsRoute: typeof DangerousGoodsRoute
+  EdiRoute: typeof EdiRoute
   ExceptionsRoute: typeof ExceptionsRoute
   ExtractionsRoute: typeof ExtractionsRoute
   FinanceRoute: typeof FinanceRoute
@@ -463,6 +476,13 @@ declare module '@tanstack/react-router' {
       path: '/dangerous-goods'
       fullPath: '/dangerous-goods'
       preLoaderRoute: typeof DangerousGoodsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/edi': {
+      id: '/edi'
+      path: '/edi'
+      fullPath: '/edi'
+      preLoaderRoute: typeof EdiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/exceptions': {
@@ -624,6 +644,7 @@ const rootRouteChildren: RootRouteChildren = {
   CreditReviewsRoute: CreditReviewsRoute,
   CustomerSopsRoute: CustomerSopsRoute,
   DangerousGoodsRoute: DangerousGoodsRoute,
+  EdiRoute: EdiRoute,
   ExceptionsRoute: ExceptionsRoute,
   ExtractionsRoute: ExtractionsRoute,
   FinanceRoute: FinanceRoute,

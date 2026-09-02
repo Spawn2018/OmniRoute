@@ -130,3 +130,5 @@
 | 2026-09-02 | 30.0 | M-37 | `operational_exception` tablica `/exceptions` (party bez pełnego POL/POD). Nie tabela, nie AIS, nie mapa. |
 | 2026-09-02 | Plan 31.0 | M-38 | delta `docs/deltas/archived/31.0-shipment-document.md` + spec. Tablica `source_ref` wycen z party. Nie tabela HBL, nie PDF. Następny: `/plaster` 31.0. |
 | 2026-09-02 | 31.0 | M-38 | `shipment_document` tablica `/shipment-documents` (`source_ref` wycen z party). Nie tabela, nie PDF, nie HBL. |
+| 2026-09-02 | Plan 32.0 | M-39 | delta `docs/deltas/archived/32.0-edi-message.md` + spec. Tablica `channel_quote` na lane. Nie tabela EDI, nie X12. Następny: `/plaster` 32.0. |
+| 2026-09-02 | 32.0 | M-39 | `edi_message` tablica `/edi` (`channel_quote` na lane wyceny). Nie tabela, nie X12, nie live HTTP. |

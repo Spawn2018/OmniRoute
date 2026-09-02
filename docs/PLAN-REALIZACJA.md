@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** `/plaster` 32.0 M-39 `edi_message` tablica `/edi`. Nie nowa tabela. Nie zgaduj schematu X12.
+**Następny (zablokowany):** M-40 Fakturowanie i KSeF (`/plan-modul`). Nie zgaduj schematu. Nie nowa tabela.
 <!-- os-status:end -->
 
 ```mermaid
@@ -340,7 +340,8 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | F5.1 | **M-36 Tracking** | 29.0 | zamknięty (`docs/deltas/archived/29.0-tracking.md`) |
 | F5.2 | **M-37 Wyjątki** | 30.0 | zamknięty (`docs/deltas/archived/30.0-operational-exception.md`) |
 | F5.3 | **M-38 Dokumenty zlecenia** | 31.0 | zamknięty (`docs/deltas/archived/31.0-shipment-document.md`) |
-| F5.4 | **M-39 EDI** | Plan | delta `docs/deltas/open/32.0-edi-message.md` |
+| F5.4 | **M-39 EDI** | 32.0 | zamknięty (`docs/deltas/archived/32.0-edi-message.md`) |
+| F6.0 | **M-40 Fakturowanie i KSeF** | Plan | kolejka (`/plan-modul`; nie zgaduj schematu) |
 
 ### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster
 
@@ -414,7 +415,7 @@ Nie implementuj z tej tabeli „na zapas”. To mapa, żeby nic nie zginęło. S
 | M-22 | Narzuty i marża | COVERED (`charge`) |
 | M-23–M-31 | Ofertowanie | Fala 3 |
 | M-32–M-34 | Komunikacja | DONE fundament (25.0–27.0) |
-| M-35–M-39 | Zlecenie / EDI | Fala 5 (M-35–M-38 DONE fundament 28.0–31.0) |
+| M-35–M-39 | Zlecenie / EDI | DONE fundament (28.0–32.0) |
 | M-40–M-47 | Finanse | Fala 6 |
 | M-48–M-51 | Modały | Fala 7 |
 | M-52–M-56 | Compliance | Fala 8 (żywe M-52 = `dangerous_good` z 7.0, nie drugi `charge`) |
