@@ -8,7 +8,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* Tokeny skopiowane z frontend/src/index.css (żywy app, nie makieta sprzedażowa hue-165). */
+/* Nie kanon DNA. Paleta produktu: Wyceny/Zlecenia w omniroute-ui.html (#v-quote, #v-ship).
+   Ten plik trzyma starą rampę hue 106 / radius 0.375rem — briefing, nie produkt. */
 :root {
   --background: oklch(0.9756 0.0026 106.45);
   --foreground: oklch(0.2178 0 0);
@@ -216,13 +217,14 @@ select, input[type="text"] {
       <section class="banner">
         <h2>To nie jest produkt. To mockup briefingu dla Claude.</h2>
         <p>
-          Wzorzec stylistyczny, kolorystyczny i graficzny: żywe ekrany
-          <strong>Wyceny</strong> (<code>/quotations</code>) i <strong>Zlecenia</strong>
-          (<code>/shipments</code>) — IBM Plex Sans, OKLCH z <code>frontend/src/index.css</code>,
-          radius 0.375rem, CatalogHeading (tytuł + podtytuł „nie X”), panele
-          <code>outline 1px border</code>, kwoty jako string z osi integer/fraction/ISO,
-          sidebar 11rem, header 2.5rem. Nie użyto makiety sprzedażowej hue-165
-          z <code>docs/design/omniroute-ui.html</code>.
+          Ten plik jest mockupem briefingu, <strong>nie</strong> paletą produktu.
+          DNA koloru, spacingu i radiusu: ekrany <strong>Wyceny</strong> i
+          <strong>Zlecenia</strong> w <code>docs/design/omniroute-ui.html</code>
+          (<code>#v-quote</code>, <code>#v-ship</code>). Żywy kod:
+          <code>frontend/src/features/quotations/catalog-page.tsx</code>,
+          <code>frontend/src/features/shipment/catalog-page.tsx</code>.
+          Tokeny poniżej (hue 106, radius 0.375rem) są historyczne — nie kopiować do
+          <code>frontend/src/index.css</code>.
         </p>
       </section>
 

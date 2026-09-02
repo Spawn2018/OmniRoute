@@ -38,8 +38,8 @@ Kolejność jest obowiązkowa. Nie przeskakuj etapów.
 ## 7. Komponent
 - `features/<moduł>/`, TanStack Query, `<Money/>`
 - Listy: wyłącznie DataTableShell (ADR-0002)
-- DNA wizualne: `docs/design/omniroute-ui.html` — kolory (hue 165), `--s1`…`--s6`, radius 12px / 8px, IBM Plex Sans / Mono / Condensed, rail `--ink`, body 14px. Tokeny w `frontend/src/index.css` kopiują ten plik. Nie wpisuj OKLCH z palca.
-- Zakaz: kopiowanie HTML mockupu do `frontend/`; paleta `docs/design/app-preview.html` (hue 250); paleta `docs/design/omniroute-briefing-mockup.html` (hue 106); Watchtower / mapa; `sum()` w JS.
+- DNA wizualne: ekrany **Wyceny** i **Zlecenia** w `docs/design/omniroute-ui.html` (`#v-quote`, `#v-ship`) — nie cały katalog M-01…M-212. Tokeny w `frontend/src/index.css` (hue 165, `--s1`…`--s6`, radius 12px / 8px, IBM Plex). Żywy kod: `frontend/src/features/quotations/catalog-page.tsx` i `frontend/src/features/shipment/catalog-page.tsx`. Nie wpisuj OKLCH z palca.
+- Zakaz: kopiowanie HTML mockupu do `frontend/`; paleta `docs/design/app-preview.html` (hue 250); paleta `docs/design/omniroute-briefing-mockup.html` (hue 106, nie kanon); Watchtower / mapa; `sum()` w JS. Condensed tylko na katalogu `rate_line`.
 
 ## 8. Testy z `/testy` muszą przejść
 - hypothesis dla reguł biznesowych i izolacja tenantów — z tury `/testy`

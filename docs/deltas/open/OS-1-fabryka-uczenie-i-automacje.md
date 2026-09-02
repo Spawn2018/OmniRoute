@@ -241,7 +241,7 @@ Wszystko poniżej to propozycje wierszy albo dopisków do **istniejących** sekc
 | `named park` w S21 (kanał live), S33 (EDI), S50 (flota) | Dopisek „parked aż umowa / partner / własne auta” | — | Nie HTTP-teatr bez kontrahenta po drugiej stronie |
 | M-203 / M-204 zostają puste | Dopisek w § po S59 | Człowiek nazwie | Nie zgadywanie nazwy |
 
-**Mockup `docs/design/omniroute-briefing-mockup.html`:** użyty wyłącznie jako DNA wizualne. Jest spójny z ADR-0003 tam, gdzie ADR jest jeszcze leftoverem (OKLCH, oś integer/fraction/ISO, `Akceptuj` wyłączony, brak `sum()` w JS) — czyli **wyprzedza kod**. To nie jest dowód, że `U-oklch-dark` albo `U-money-align` są zrobione. Zero wierszy produktu z tego pliku.
+**Mockup `docs/design/omniroute-briefing-mockup.html`:** nie jest DNA palety. DNA = ekrany Wyceny/Zlecenia w `docs/design/omniroute-ui.html`. Briefing zostaje ilustracją luki (ADR leftover: oś Money, `Akceptuj` wyłączony, brak `sum()` w JS). Zero wierszy produktu z tego pliku.
 
 ---
 

@@ -5,13 +5,26 @@
 
 ## DNA wizualne
 
-Jedyny wzór koloru, spacingu, paddingu, radiusu i czcionki: [omniroute-ui.html](omniroute-ui.html).
+Źródło wyglądu produktu (kolory, spacing, padding, radius, typografia, elementy):
+dopracowane ekrany **Wyceny** i **Zlecenia** w [omniroute-ui.html](omniroute-ui.html)
+(`#v-quote`, `#v-ship`) — nie cały katalog sprzedażowy M-01…M-212, nie Watchtower, nie mapa.
 
-`frontend/src/index.css` trzyma te same tokeny OKLCH (hue **165**), `--s1`…`--s6` (4–24px), `--radius` 12px / `--radius-sm` 8px, IBM Plex Sans / Mono / Condensed. Nowy ekran używa zmiennych, nie wpisuje OKLCH z palca. Kwoty: `<Money/>`, zero `sum()` w JS.
+Żywy kod tych dwóch obiektów: `frontend/src/features/quotations/catalog-page.tsx`
+i `frontend/src/features/shipment/catalog-page.tsx`. Tokeny w `frontend/src/index.css`
+mapują z tych widoków: OKLCH hue **165**, `--s1`…`--s6` (4–24px), `--radius` 12px /
+`--radius-sm` 8px, IBM Plex Sans / Mono. Condensed tylko przy gęstości katalogu `rate_line`.
+Nowy ekran używa zmiennych, nie wpisuje OKLCH z palca. Kwoty: `<Money/>`, zero `sum()` w JS.
 
-Nie kopiować HTML do `frontend/`. Nie brać palety z [app-preview.html](app-preview.html) (leftover, hue 250) ani z [omniroute-briefing-mockup.html](omniroute-briefing-mockup.html) (stara rampa hue 106). Nie dorysowywać Watchtower / mapy.
+Klatki [oferta](screens/omniroute-oferta-light.png) i [zlecenie](screens/omniroute-zlecenie-light.png)
+ilustrują te dwa ekrany. Render historyczny z [app-preview.html](app-preview.html) — nie paleta
+(chrom leftover, hue 250; akcent 165).
 
-**Podgląd sprzedażowy (klikalny, M-01…M-212):** [omniroute-ui.html](omniroute-ui.html) — nie kod produktu, nie plaster kolejki. Katalog: [omniroute-ui-catalog.js](omniroute-ui-catalog.js).
+**Nie kanon palety:** [omniroute-briefing-mockup.html](omniroute-briefing-mockup.html)
+(stara rampa hue 106, radius 0.375rem). [app-preview.html](app-preview.html) zostaje leftoverem
+ADR-0003 (układ rail + szyna), nie DNA koloru.
+
+**Reszta [omniroute-ui.html](omniroute-ui.html)** (M-01…M-212, Stawki, HITL, Watchtower):
+podgląd sprzedażowy, nie plaster kolejki, nie drugi kanon. Katalog: [omniroute-ui-catalog.js](omniroute-ui-catalog.js).
 
 **Kanon leftoverów ADR-0003:** [app-preview.html](app-preview.html) — układ rail + powierzchnia + prawa szyna, tokeny OKLCH (zieleń hue 165), tenant w topbarze, HITL, kwoty jako string z „serwera” (zero `sum()` w JS). Otwórz w przeglądarce, nie w Canvas IDE. Nie jest paletą produktu.
 
@@ -22,8 +35,8 @@ Statyczne klatki (1480 × 940, render z `app-preview.html`):
 [stawki jasne](screens/omniroute-stawki-light.png) · [stawki ciemne](screens/omniroute-stawki-dark.png) ·
 [HITL](screens/omniroute-hitl-light.png) · [zlecenie](screens/omniroute-zlecenie-light.png).
 
-Kanon jest źródłem dla leftoverów **U-oklch-dark** (rampy i elewacja w obu motywach),
-**U-money-align** (siatka integer / fraction / ISO 4217) i **U-condensed** (tryb gęsty wyłącznie na katalogu `rate_line`).
+Klatki leftoverów ADR-0003 zostają źródłem układu dla **U-oklch-dark** (elewacja w obu motywach),
+**U-money-align** (siatka integer / fraction / ISO 4217) i **U-condensed** (tryb gęsty wyłącznie na katalogu `rate_line`). Paleta produktu = Wyceny/Zlecenia, nie te klatki.
 
 | Plik | Ekran |
 |---|---|

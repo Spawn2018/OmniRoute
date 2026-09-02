@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
-/* Tokeny 1:1 z docs/design/omniroute-ui.html. Nie rampa hue 106. Nie hue 250 z app-preview. */
+/* DNA: widoki Wyceny (#v-quote) i Zlecenia (#v-ship) w docs/design/omniroute-ui.html.
+   Nie cały katalog M-01…M-212. Nie briefing hue 106. Nie app-preview hue 250. */
 :root {
   --s1: 4px;
   --s2: 6px;
@@ -73,6 +74,7 @@
   --radius-md: var(--radius);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
+  --font-cond: var(--font-cond);
 }
 
 * {

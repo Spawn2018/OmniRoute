@@ -9,7 +9,7 @@
 - [Zakres po planie](C:/Users/sebas/.cursor/projects/d-OMNIROUTE/canvases/zakres-po-planie.canvas.tsx)
 - [Software house Cursor](C:/Users/sebas/.cursor/projects/d-OMNIROUTE/canvases/software-house-cursor.canvas.tsx)
 
-**DNA wizualne (produkt):** `docs/design/omniroute-ui.html` — hue 165, s1–s6, radius 12px/8px, IBM Plex. Tokeny w `frontend/src/index.css`.
+**DNA wizualne (produkt):** ekrany **Wyceny** i **Zlecenia** w `docs/design/omniroute-ui.html` (`#v-quote`, `#v-ship`) — nie cały katalog sprzedażowy. Tokeny w `frontend/src/index.css`. Żywy kod: `frontend/src/features/quotations/catalog-page.tsx`, `frontend/src/features/shipment/catalog-page.tsx`.
 
 **Mockup briefingu (nie paleta):** `docs/design/omniroute-briefing-mockup.html`. Opis prompta: §6 (dopisek) + §8.
 
@@ -263,9 +263,11 @@ Operator załącza działający plik HTML: omniroute-briefing-mockup.html
 To jest mockup briefingu, nie kod produktu i nie plaster UI.
 Nie kopiuj go do frontend/. Nie traktuj go jako zakresu S1/S2 ani jako Watchtower S32.
 
-Wzorzec stylistyczny całego produktu: docs/design/omniroute-ui.html
-(hue 165, s1–s6, radius 12px/8px, IBM Plex Sans/Mono/Condensed, rail --ink).
-Tokeny w frontend/src/index.css kopiują ten plik. Nie hue 106 z briefing-mockup,
+Wzorzec stylistyczny produktu: ekrany Wyceny i Zlecenia w
+docs/design/omniroute-ui.html (#v-quote, #v-ship) — nie cały katalog M-01…M-212.
+Tokeny w frontend/src/index.css mapują te widoki (hue 165, s1–s6, radius 12px/8px,
+IBM Plex). Żywy kod: frontend/src/features/quotations/catalog-page.tsx
+i frontend/src/features/shipment/catalog-page.tsx. Nie hue 106 z briefing-mockup,
 nie hue 250 z app-preview. Nie kopiuj HTML do frontend/.
 
 Dlaczego mockup jest niedokończony (świadomie):
@@ -276,10 +278,10 @@ Dlaczego mockup jest niedokończony (świadomie):
 - przycisk Akceptuj w HITL jest wyłączony — optimistic accept zakazany;
 - ⌘K wyłączone, bo żyje w AppShell, nie w tym pliku.
 
-Użyj mockupu wyłącznie jako: (1) DNA wizualne frontendu do recenzji spójności,
-(2) ilustracja luki tablica vs wieża, (3) ostrzeżenie żeby nie dorysowywać
-KSeF/IMAP/portali jako „już jest”. Nie rozszerzaj punktu F o nowy frontend
-z tego HTML. Nie zmieniaj A–G.
+Użyj briefingu wyłącznie jako: (1) ilustracja luki tablica vs wieża,
+(2) ostrzeżenie żeby nie dorysowywać KSeF/IMAP/portali jako „już jest”.
+DNA palety = Wyceny/Zlecenia w docs/design/omniroute-ui.html, nie ten HTML.
+Nie rozszerzaj punktu F o nowy frontend z tego HTML. Nie zmieniaj A–G.
 ```
 
 ### Uzupełnienie prompta — Cursor Multitask (dopisz POD dwoma blokami powyżej; nie zastępuj ich i nie zmieniaj A–G)
@@ -369,7 +371,7 @@ Kopia do załączenia z dysku: `C:\Users\sebas\.cursor\projects\d-OMNIROUTE\omni
 
 **Co to jest:** jeden działający plik (otwórz w Chrome/Edge). Nav przełącza widoki; przycisk Motyw przełącza `.dark`. Zero bundlera. Zero `sum()` na kwotach.
 
-**Wzorzec:** strony **Wyceny** i **Zlecenia** z żywego `frontend/` — nie makieta sprzedażowa `omniroute-ui.html`.
+**Wzorzec DNA:** ekrany **Wyceny** i **Zlecenia** w `docs/design/omniroute-ui.html` (`#v-quote`, `#v-ship`). Ten plik briefingu **nie** jest paletą. Żywy kod: `frontend/src/features/quotations/catalog-page.tsx`, `frontend/src/features/shipment/catalog-page.tsx`.
 
 **Stan niedokończony:** zamierzony. Pokazuje DNA UI + lukę (lista zleceń vs duch S28, puste miejsce mapy, HITL bez accept). Szczegóły w samym HTML (widok „Dlaczego niedokończony”) i w uzupełnieniu prompta powyżej.
 
@@ -416,4 +418,4 @@ Przy umieszczeniu w repo (2026-09-02) potwierdzono: `context.mdc` zawiera zdanie
 
 ### 10.4 Mockup — status po audycie
 
-`docs/design/omniroute-briefing-mockup.html` jest spójny z ADR-0003 tam, gdzie ADR jest jeszcze leftoverem (OKLCH, oś integer/fraction/ISO, `Akceptuj` wyłączony, brak `sum()` w JS). Mockup **wyprzedza kod**. To nie jest dowód, że `U-oklch-dark` czy `U-money-align` są zrobione, i nie generuje żadnego wiersza produktu.
+`docs/design/omniroute-briefing-mockup.html` **nie** jest DNA palety (hue 106). DNA = `#v-quote` / `#v-ship` w `docs/design/omniroute-ui.html`. Briefing zostaje ilustracją luki tablica vs wieża i zakazu `sum()` w JS — zero wierszy produktu.

@@ -182,7 +182,7 @@ export function DataTableShell<TData>({
           <select
             aria-label="Gęstość tabeli"
             data-table-density={density}
-            className="h-8 rounded-md border border-input bg-card px-2 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="h-8 rounded-sm border border-input bg-card px-2 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             value={density}
             onChange={(e) => setDensity(resolveTableDensity(e.target.value, allowCondensed))}
           >
@@ -193,7 +193,7 @@ export function DataTableShell<TData>({
         </label>
         <button
           type="button"
-          className="h-8 rounded-md border border-border px-2 text-xs hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="h-8 rounded-sm border border-border px-2 text-xs hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           onClick={() => setPanelOpen((open) => !open)}
         >
           {panelOpen ? "Ukryj kolumny" : "Kolumny / widoki"}
@@ -244,7 +244,12 @@ export function DataTableShell<TData>({
         ref={setScrollEl}
         className="max-h-[28rem] overflow-auto rounded-md border border-border bg-card"
       >
-        <table className="w-full min-w-[480px] border-collapse text-sm">
+        <table
+          className={cn(
+            "w-full min-w-[480px] border-collapse text-sm",
+            density === "condensed" && "font-cond",
+          )}
+        >
           <thead className="sticky top-0 z-10 bg-muted">
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id} className="border-b border-border text-left text-xs text-muted-foreground">

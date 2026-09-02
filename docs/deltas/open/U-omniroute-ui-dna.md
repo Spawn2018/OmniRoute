@@ -1,17 +1,17 @@
-# Leftover U-omniroute-ui-dna · tokeny z makiety sprzedażowej
+# Leftover U-omniroute-ui-dna · tokeny z ekranów Wyceny i Zlecenia
 
-**Spec źródłowa:** [docs/design/omniroute-ui.html](../../design/omniroute-ui.html)  
+**Spec źródłowa:** [docs/design/omniroute-ui.html](../../design/omniroute-ui.html) — tylko `#v-quote` i `#v-ship`  
 **Zależy od:** ADR-0003 + leftover U-oklch-dark (51.0)
 
 **Status:** Otwarty leftover UI. Nie S4. Nie nowa tabela. Nie Watchtower.
 
 ## Wybrane / odrzucone / dlaczego
 
-**Wybrane:** `frontend/src/index.css` kopiuje rampę hue **165**, `--s1`…`--s6`, radius 12px/8px i IBM Plex Sans/Mono/Condensed z `docs/design/omniroute-ui.html`. Shell: header 3rem, rail `--ink`. Docs i skill `nowy-plaster` wskazują ten HTML jako DNA.
+**Wybrane:** DNA = dopracowane **Wyceny** i **Zlecenia** w `docs/design/omniroute-ui.html` (`#v-quote`, `#v-ship`). `frontend/src/index.css` mapuje hue **165**, `--s1`…`--s6`, radius 12px/8px i IBM Plex z tych widoków. Żywy kod: `frontend/src/features/quotations/catalog-page.tsx`, `frontend/src/features/shipment/catalog-page.tsx`. Shell: header 3rem, rail `--ink`.
 
-**Łowca:** ISTNIEJE `index.css` + `.dark`. PODOBNE: `omniroute-briefing-mockup.html` (hue 106) — nie paleta produktu.
+**Łowca:** ISTNIEJE `frontend/src/index.css` + `.dark`. PODOBNE: `docs/design/omniroute-briefing-mockup.html` (hue 106) — nie paleta.
 
-**Odrzucone:** kopiowanie markup HTML do `frontend/`; paleta hue 250 z `app-preview.html`; paleta hue 106 z briefingu; mapa / Watchtower.
+**Odrzucone:** cały katalog M-01…M-212 jako kanon; kopiowanie markup HTML; paleta hue 250 z `docs/design/app-preview.html`; paleta hue 106 z briefingu; mapa / Watchtower.
 
 ## Zakres
 
