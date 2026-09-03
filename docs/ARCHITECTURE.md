@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **108.0** S46 odcinek drogowy (M-48). **Etap:** Plan. **Następny:** `/plan-modul` **S47** — odcinek kolejowy na `shipment_leg` (M-49). Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **108.0** S46 odcinek drogowy (M-48). **Etap:** Plan. **Następny:** `/plaster` **109.0** — S47 odcinek kolejowy (M-49). Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
