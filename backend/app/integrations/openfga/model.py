@@ -42,6 +42,7 @@ def _organization_relations() -> dict[str, Userset]:
         "can_manage_mail_drafts": _member(),
         "can_manage_outbox_events": _member(),
         "can_manage_shipments": _member(),
+        "can_manage_tracking": _member(),
     }
 
 

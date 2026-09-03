@@ -3023,6 +3023,80 @@
         ]
       }
     },
+    "/api/v1/tracking-events": {
+      "get": {
+        "tags": [
+          "tracking-events"
+        ],
+        "summary": "List Tracking Events",
+        "operationId": "list_tracking_events_api_v1_tracking_events_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TrackingEventResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Tracking Events Api V1 Tracking Events Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "tracking-events"
+        ],
+        "summary": "Create Tracking Event",
+        "operationId": "create_tracking_event_api_v1_tracking_events_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TrackingEventCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrackingEventResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/organization-settings": {
       "get": {
         "tags": [
@@ -9680,6 +9754,79 @@
           "source_ref"
         ],
         "title": "TerminalResponse"
+      },
+      "TrackingEventCreate": {
+        "properties": {
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "event_kind": {
+            "type": "string",
+            "title": "Event Kind"
+          },
+          "occurred_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Occurred At"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "shipment_id",
+          "event_kind",
+          "occurred_at",
+          "source_ref"
+        ],
+        "title": "TrackingEventCreate"
+      },
+      "TrackingEventResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "event_kind": {
+            "type": "string",
+            "title": "Event Kind"
+          },
+          "occurred_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Occurred At"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "shipment_id",
+          "event_kind",
+          "occurred_at",
+          "source_ref"
+        ],
+        "title": "TrackingEventResponse"
       },
       "ValidationError": {
         "properties": {

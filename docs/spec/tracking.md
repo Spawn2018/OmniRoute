@@ -1,27 +1,27 @@
-# M-36 tracking — tablica znanego lane POL/POD
+# M-36 tracking — zdarzenia na zleceniu
 
-**Moduł żywy:** M-36 (token UI `tracking`, nie tabela) + ekrany M-21 `quotation` i M-05 `port`  
-**Plaster:** **29.0** (zamknięty)  
-**Status:** operator **widzi** lane wyceny (POL→POD). Nie AIS. Nie mapa. Nie nowa tabela.
+**Moduł żywy:** M-36 (token UI `tracking`, tabela `tracking_event`)  
+**Plaster:** **91.0** (S29; 29.0 był tablicą lane)  
+**Status:** operator **zapisuje** zdarzenie na `shipment`. Nie AIS. Nie mapa. Nie czas przybycia liczony w kodzie.
 
-Delta: [docs/deltas/archived/29.0-tracking.md](../deltas/archived/29.0-tracking.md).
+Delta: [docs/deltas/archived/91.0-tracking-event.md](../deltas/archived/91.0-tracking-event.md).
 
-## 29.0 tablica odczytu na `/tracking`
+## 91.0 tabela na `/tracking`
 
 ### Zakres
 
-- Ekran `/tracking`: lista `quotationLanes` (party + POL + POD)
-- UN/LOCODE z katalogu `port`. Link do `/shipments` i `/quotations`
-- Zero nowej tabeli. Zero mapy. Zero ETA
+- Tabela `tracking_event`: RLS FORCE, FK tenanta do `shipment`
+- `GET/POST /tracking-events`, OpenFGA `can_manage_tracking`
+- Ekran `/tracking`: lista zdarzeń + „Zapisz zdarzenie”. `data-tracking="board"`
 
-### Poza 29.0
+### Poza 91.0
 
-Tabela zdarzeń trackingu · `shipment_leg` · AIS / project44 · Watchtower mapa · wyjątki (M-37)
+`shipment_leg` · AIS · mapa / Watchtower · wyjątki (M-37) · dokumenty (M-38) · czas przybycia liczony
 
 ### HC
 
-- Marża zostaje w `charge`. Tablica nie liczy odległości.
-- LLM nie wylicza ETA.
+- Marża zostaje w `charge`. Zdarzenie nie niesie kwoty.
+- LLM nie wylicza czasu przybycia.
 - HITL zostaje na ekstrakcji.
-- ExtractionService nie importuje quotations
+- ExtractionService nie importuje trackingu ani quotations
 - Mapa nie wchodzi do initial JS (ADR-0003)

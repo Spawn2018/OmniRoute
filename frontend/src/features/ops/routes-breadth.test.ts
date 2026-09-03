@@ -83,6 +83,7 @@ describe("U-routes-breadth standing", () => {
       "88.0": "/credit-reviews",
       "89.0": "/sanctions",
       "90.0": "/shipments",
+      "91.0": "/tracking",
     })
     expect(OPS_JOBS.map((job) => job.route)).toEqual(
       expect.arrayContaining(Object.values(SHIPPED_CHARGE_ROUTES)),

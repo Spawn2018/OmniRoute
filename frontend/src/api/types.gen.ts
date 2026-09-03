@@ -2517,6 +2517,58 @@ export type TerminalResponse = {
 };
 
 /**
+ * TrackingEventCreate
+ */
+export type TrackingEventCreate = {
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Event Kind
+     */
+    event_kind: string;
+    /**
+     * Occurred At
+     */
+    occurred_at: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TrackingEventResponse
+ */
+export type TrackingEventResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Event Kind
+     */
+    event_kind: string;
+    /**
+     * Occurred At
+     */
+    occurred_at: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * ValidationError
  */
 export type ValidationError = {
@@ -4335,6 +4387,49 @@ export type CreateShipmentApiV1ShipmentsPostResponses = {
 };
 
 export type CreateShipmentApiV1ShipmentsPostResponse = CreateShipmentApiV1ShipmentsPostResponses[keyof CreateShipmentApiV1ShipmentsPostResponses];
+
+export type ListTrackingEventsApiV1TrackingEventsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tracking-events';
+};
+
+export type ListTrackingEventsApiV1TrackingEventsGetResponses = {
+    /**
+     * Response List Tracking Events Api V1 Tracking Events Get
+     *
+     * Successful Response
+     */
+    200: Array<TrackingEventResponse>;
+};
+
+export type ListTrackingEventsApiV1TrackingEventsGetResponse = ListTrackingEventsApiV1TrackingEventsGetResponses[keyof ListTrackingEventsApiV1TrackingEventsGetResponses];
+
+export type CreateTrackingEventApiV1TrackingEventsPostData = {
+    body: TrackingEventCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tracking-events';
+};
+
+export type CreateTrackingEventApiV1TrackingEventsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTrackingEventApiV1TrackingEventsPostError = CreateTrackingEventApiV1TrackingEventsPostErrors[keyof CreateTrackingEventApiV1TrackingEventsPostErrors];
+
+export type CreateTrackingEventApiV1TrackingEventsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TrackingEventResponse;
+};
+
+export type CreateTrackingEventApiV1TrackingEventsPostResponse = CreateTrackingEventApiV1TrackingEventsPostResponses[keyof CreateTrackingEventApiV1TrackingEventsPostResponses];
 
 export type ListOrganizationSettingsApiV1OrganizationSettingsGetData = {
     body?: never;

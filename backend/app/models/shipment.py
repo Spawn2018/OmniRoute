@@ -19,6 +19,11 @@ class Shipment(Base, TimestampMixin):
     __table_args__ = (
         UniqueConstraint(
             "organization_id",
+            "id",
+            name="uq_shipment_org_id",
+        ),
+        UniqueConstraint(
+            "organization_id",
             "quotation_id",
             name="uq_shipment_org_quotation",
         ),

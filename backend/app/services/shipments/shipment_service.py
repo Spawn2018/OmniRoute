@@ -3,7 +3,7 @@ from uuid import UUID, uuid4
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.domain.errors import ShipmentConflict
+from app.domain.errors import ResourceNotFound, ShipmentConflict
 from app.domain.shipment import (
     require_party_on_quotation,
     require_quotation_id,
@@ -20,6 +20,12 @@ class ShipmentService:
 
     async def list_shipments(self) -> list[Shipment]:
         return await self._shipments.list_all()
+
+    async def get_shipment(self, shipment_id: UUID) -> Shipment:
+        found = await self._shipments.get(shipment_id)
+        if found is None:
+            raise ResourceNotFound("nieznane zlecenie")
+        return found
 
     async def create_shipment(
         self,

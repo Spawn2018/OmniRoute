@@ -297,6 +297,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "88.0": "/credit-reviews",
   "89.0": "/sanctions",
   "90.0": "/shipments",
+  "91.0": "/tracking",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

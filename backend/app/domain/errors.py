@@ -266,6 +266,10 @@ class InvalidShipment(DomainError):
     """Zlecenie: source_ref zapisu i wycena z kontrahentem — nie kwota."""
 
 
+class InvalidTrackingEvent(DomainError):
+    """Zdarzenie trackingu: kind z allowlisty i czas ze strefą — nie czas przybycia liczony."""
+
+
 class InvalidPartyScorecard(DomainError):
     """Wskaźnik karty poza zakresem albo nie jest Decimal — nie float, nie scoring osoby."""
 
