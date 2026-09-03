@@ -25,6 +25,7 @@ function quotation(partyId: string | null): Quotation {
     commodity_code_id: null,
     document_number: null,
     negotiated_channel_quote_id: null,
+    noted_credit_review_id: null,
   }
 }
 

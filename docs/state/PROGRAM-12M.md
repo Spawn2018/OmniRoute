@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **86.0** S24 accept oferty przez S11 (M-29) **Następny:** `/plaster` **87.0** — S25 fakty ryzyka (M-24). Nie scoring osoby. Nie F9.1.
+**Stan (z CURRENT.md):** **87.0** S25 fakty ryzyka (M-24) **Następny:** `/plan-modul` **S26** — recenzja + załącznik wywiadowni (M-14). Nie auto-limit. Nie F9.1.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

@@ -132,6 +132,17 @@ class QuotationService:
             )
         return quoted
 
+    async def set_noted_credit_review(
+        self,
+        quotation_id: UUID,
+        credit_review_id: UUID,
+    ) -> Quotation:
+        row = await self._quotations.get(quotation_id)
+        if row is None:
+            raise ResourceNotFound("nieznana wycena")
+        row.noted_credit_review_id = credit_review_id
+        return await self._quotations.save(row)
+
     async def set_negotiated_channel_quote(
         self,
         quotation_id: UUID,

@@ -73,6 +73,11 @@ class Quotation(Base, TimestampMixin):
             "organization_id",
             "negotiated_channel_quote_id",
         ),
+        Index(
+            "ix_quotation_org_noted_credit_review",
+            "organization_id",
+            "noted_credit_review_id",
+        ),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
@@ -101,6 +106,10 @@ class Quotation(Base, TimestampMixin):
     )
     document_number: Mapped[str | None] = mapped_column(String(32), nullable=True)
     negotiated_channel_quote_id: Mapped[uuid.UUID | None] = mapped_column(
+        UUID(as_uuid=True),
+        nullable=True,
+    )
+    noted_credit_review_id: Mapped[uuid.UUID | None] = mapped_column(
         UUID(as_uuid=True),
         nullable=True,
     )

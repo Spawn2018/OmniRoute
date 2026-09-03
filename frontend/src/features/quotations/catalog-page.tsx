@@ -30,6 +30,7 @@ import {
   fetchQuotations,
   issueQuotationDocumentNumber,
   negotiateQuotation,
+  noteQuotationRisk,
   quotationBatchBody,
   quotationCreateBody,
   quotationCurrencies,
@@ -177,11 +178,17 @@ function OfferNbpFieldset(args: { currencies: string[]; signedIn: boolean }) {
   )
 }
 
-function OfferRiskPanel(args: { partyIds: string[]; signedIn: boolean }) {
+function OfferRiskPanel(args: { rows: Quotation[]; signedIn: boolean }) {
+  const queryClient = useQueryClient()
+  const ctx = getTenantContext()
+  const partyIds = quotationPartyIds(args.rows)
   const [partyId, setPartyId] = useState("")
+  const [quoteId, setQuoteId] = useState("")
   const [onDate, setOnDate] = useState("")
   const [review, setReview] = useState<CreditReview | null>(null)
   const [card, setCard] = useState<PartyScorecard | null>(null)
+  const [savedId, setSavedId] = useState<string | null>(null)
+  const forParty = args.rows.filter((row) => row.party_id === partyId)
 
   const reviewLookup = useMutation({
     mutationFn: () => resolveCreditReview(partyId, onDate),
@@ -203,13 +210,26 @@ function OfferRiskPanel(args: { partyIds: string[]; signedIn: boolean }) {
     },
   })
 
+  const saveFact = useMutation({
+    mutationFn: () => {
+      if (review === null || quoteId === "") {
+        throw new Error("Wybierz wycenę i pokaż recenzję")
+      }
+      return noteQuotationRisk(quoteId, review.id)
+    },
+    onSuccess: (row) => {
+      setSavedId(row.noted_credit_review_id)
+      void queryClient.invalidateQueries({ queryKey: ["quotations", ctx.organizationId] })
+    },
+  })
+
   return (
-    <aside className="space-y-2 rounded-md border border-dashed border-border p-3">
+    <aside className="space-y-2 rounded-md border border-dashed border-border p-3" data-offer-risk="fact">
       <h3 className="text-sm font-medium">Ryzyko kontrahenta oferty</h3>
       <p className="text-xs text-muted-foreground">
-        recenzja 14.0 + karta 10.0 · nie scoring · nie zapis limitu
+        recenzja 14.0 + karta 10.0 · wskazanie faktu · nie scoring
       </p>
-      {args.partyIds.length === 0 ? (
+      {partyIds.length === 0 ? (
         <p className="text-sm text-muted-foreground">Najpierw wycena z party_id.</p>
       ) : (
         <form
@@ -230,7 +250,7 @@ function OfferRiskPanel(args: { partyIds: string[]; signedIn: boolean }) {
               required
             >
               <option value="">Kontrahent z listy wycen</option>
-              {args.partyIds.map((id) => (
+              {partyIds.map((id) => (
                 <option key={id} value={id}>
                   {id}
                 </option>
@@ -265,6 +285,34 @@ function OfferRiskPanel(args: { partyIds: string[]; signedIn: boolean }) {
           karta {card.computed_at} {card.source_ref} n={card.sample_size}
         </p>
       ) : null}
+      {review !== null && forParty.length > 0 ? (
+        <div className="flex flex-wrap items-center gap-2">
+          <select
+            aria-label="Wycena do faktu ryzyka"
+            className="h-8 rounded-md border border-border bg-card px-2 text-sm"
+            value={quoteId}
+            onChange={(event) => setQuoteId(event.target.value)}
+          >
+            <option value="">Wycena</option>
+            {forParty.map((row) => (
+              <option key={row.id} value={row.id}>
+                {row.charge_code} {row.id}
+              </option>
+            ))}
+          </select>
+          <Button
+            type="button"
+            disabled={saveFact.isPending || quoteId === "" || !args.signedIn}
+            onClick={() => saveFact.mutate()}
+          >
+            Zapisz fakt
+          </Button>
+        </div>
+      ) : null}
+      {saveFact.isError ? (
+        <p className="text-sm text-destructive">{(saveFact.error as Error).message}</p>
+      ) : null}
+      {savedId !== null ? <p className="text-xs font-mono">fakt {savedId}</p> : null}
     </aside>
   )
 }
@@ -1080,7 +1128,7 @@ export function QuotationCatalogPage() {
       {query.data ? (
         <>
           <OfferNbpFieldset currencies={quotationCurrencies(query.data)} signedIn={signedIn} />
-          <OfferRiskPanel partyIds={quotationPartyIds(query.data)} signedIn={signedIn} />
+          <OfferRiskPanel rows={query.data} signedIn={signedIn} />
           <OfferNegotiationPanel lanes={quotationLanes(query.data)} signedIn={signedIn} />
           <OfferDocumentPanel rows={query.data} />
           <OfferInquiryPanel rows={query.data} parties={parties} />

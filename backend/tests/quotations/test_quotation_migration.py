@@ -49,7 +49,18 @@ def test_generated_api_types_include_quotation_lane_party() -> None:
     assert "QuotationCreate" in source or "QuotationResponse" in source
 
 
+def test_migration_046_adds_noted_credit_review_pointer() -> None:
+    path = _ROOT / "backend" / "alembic" / "versions" / "046_quotation_noted_credit_review.py"
+    source = path.read_text(encoding="utf-8")
+    assert 'revision: str = "046_quote_noted_review"' in source
+    assert "noted_credit_review_id" in source
+    assert "Numeric" not in source
+    assert "score" not in source
+
+
 def test_generated_api_types_include_negotiated_channel() -> None:
     source = (_ROOT / "frontend" / "src" / "api" / "types.gen.ts").read_text(encoding="utf-8")
     assert "negotiated_channel_quote_id" in source
     assert "QuotationNegotiate" in source
+    assert "noted_credit_review_id" in source
+    assert "QuotationNoteRisk" in source

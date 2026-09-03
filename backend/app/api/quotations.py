@@ -16,6 +16,7 @@ from app.services.customer_rfqs.customer_rfq_service import CustomerRfqService
 from app.services.organization_settings.organization_setting_service import (
     OrganizationSettingService,
 )
+from app.services.parties.party_service import PartyService
 from app.services.quotations.quotation_service import QuotationService
 
 router = APIRouter(prefix="/quotations", tags=["quotations"])
@@ -58,6 +59,7 @@ class QuotationResponse(BaseModel):
     commodity_code_id: UUID | None
     document_number: str | None
     negotiated_channel_quote_id: UUID | None
+    noted_credit_review_id: UUID | None
 
     @classmethod
     def from_row(cls, row: Quotation) -> "QuotationResponse":
@@ -78,7 +80,14 @@ class QuotationResponse(BaseModel):
             commodity_code_id=row.commodity_code_id,
             document_number=row.document_number,
             negotiated_channel_quote_id=row.negotiated_channel_quote_id,
+            noted_credit_review_id=row.noted_credit_review_id,
         )
+
+
+class QuotationNoteRisk(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    credit_review_id: UUID
 
 
 class QuotationNegotiate(BaseModel):
@@ -209,6 +218,22 @@ async def quotation_document_layout(
         prefix=await _quotation_prefix(session),
         print_template=await _quotation_print_template(session),
     )
+
+
+@router.patch("/{quotation_id}/note-risk", response_model=QuotationResponse)
+async def note_quotation_risk(
+    quotation_id: UUID,
+    body: QuotationNoteRisk,
+    _authz: None = Depends(require_permission("can_manage_quotations", "organization")),
+    session: AsyncSession = Depends(require_tenant_session),
+) -> QuotationResponse:
+    await PartyService(session).get_review(body.credit_review_id)
+    row = await QuotationService(session).set_noted_credit_review(
+        quotation_id,
+        body.credit_review_id,
+    )
+    await session.commit()
+    return QuotationResponse.from_row(row)
 
 
 @router.patch("/{quotation_id}/negotiate", response_model=QuotationResponse)

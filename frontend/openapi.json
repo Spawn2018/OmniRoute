@@ -2785,6 +2785,64 @@
         ]
       }
     },
+    "/api/v1/quotations/{quotation_id}/note-risk": {
+      "patch": {
+        "tags": [
+          "quotations"
+        ],
+        "summary": "Note Quotation Risk",
+        "operationId": "note_quotation_risk_api_v1_quotations__quotation_id__note_risk_patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "quotation_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Quotation Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuotationNoteRisk"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuotationResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/quotations/{quotation_id}/negotiate": {
       "patch": {
         "tags": [
@@ -8443,6 +8501,21 @@
         ],
         "title": "QuotationNegotiate"
       },
+      "QuotationNoteRisk": {
+        "properties": {
+          "credit_review_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Credit Review Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "credit_review_id"
+        ],
+        "title": "QuotationNoteRisk"
+      },
       "QuotationResponse": {
         "properties": {
           "id": {
@@ -8558,6 +8631,18 @@
               }
             ],
             "title": "Negotiated Channel Quote Id"
+          },
+          "noted_credit_review_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Noted Credit Review Id"
           }
         },
         "type": "object",
@@ -8575,7 +8660,8 @@
           "customer_rfq_id",
           "commodity_code_id",
           "document_number",
-          "negotiated_channel_quote_id"
+          "negotiated_channel_quote_id",
+          "noted_credit_review_id"
         ],
         "title": "QuotationResponse"
       },

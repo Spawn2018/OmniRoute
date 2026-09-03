@@ -153,6 +153,10 @@ class PartyRepository:
         await self._session.flush()
         return row
 
+    async def get_review(self, review_id: UUID) -> ReviewRow | None:
+        found = await self._session.get(ReviewRow, review_id)
+        return found if isinstance(found, ReviewRow) else None
+
     async def list_reviews(self) -> list[ReviewRow]:
         result = await self._session.scalars(
             select(ReviewRow).order_by(ReviewRow.review_date.desc()),

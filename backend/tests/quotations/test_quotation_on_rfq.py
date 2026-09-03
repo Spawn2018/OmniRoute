@@ -105,6 +105,8 @@ def test_quotation_service_does_not_import_rfq_or_inbound() -> None:
     assert "from app.repositories.channel_quotes" not in source
     assert "from app.services.charges" not in source
     assert "from app.repositories.charges" not in source
+    assert "from app.services.parties" not in source
+    assert "from app.repositories.parties" not in source
 
 
 def test_rfq_service_still_does_not_import_quotations() -> None:

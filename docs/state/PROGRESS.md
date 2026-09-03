@@ -243,3 +243,4 @@
 | 2026-09-03 | Plan 86.0 | M-29 | S24: accept oferty = `operator_decision` na `quotation`. Delta zaakceptowana (`/noc`). Nie HITL extract. Następny: `/plaster` 86.0. |
 | 2026-09-03 | 86.0 | M-29 | Accept oferty przez S11 (`quotation`). Nie HITL extract. Następny: S25 Plan. |
 | 2026-09-03 | Plan 87.0 | M-24 | S25: `noted_credit_review_id` na wycenie. Delta zaakceptowana (`/noc`). Nie scoring. Następny: `/plaster` 87.0. |
+| 2026-09-03 | 87.0 | M-24 | Wskazanie recenzji na wycenie. Nie scoring. Następny: S26 Plan. |

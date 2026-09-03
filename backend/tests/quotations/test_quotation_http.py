@@ -6,7 +6,13 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app.api.deps import require_tenant_session, set_authz_checker
-from app.domain.errors import QuotationGap, ResourceNotFound, UnknownChannelQuote, UnknownChargeCode
+from app.domain.errors import (
+    QuotationGap,
+    ResourceNotFound,
+    UnknownChannelQuote,
+    UnknownChargeCode,
+    UnknownCreditReview,
+)
 from app.main import app
 from app.models.quotation import Quotation
 from tests.http_auth import bearer_auth_headers
@@ -88,6 +94,17 @@ class StubQuotationService:
         self.rows.append(row)
         return row
 
+    async def set_noted_credit_review(
+        self,
+        quotation_id: UUID,
+        credit_review_id: UUID,
+    ) -> Quotation:
+        for row in self.rows:
+            if row.id == quotation_id:
+                row.noted_credit_review_id = credit_review_id
+                return row
+        raise ResourceNotFound("nieznana wycena")
+
     async def set_negotiated_channel_quote(
         self,
         quotation_id: UUID,
@@ -140,10 +157,23 @@ class StubChannelQuoteService:
         return object()
 
 
+class StubPartyService:
+    fail_review = False
+
+    def __init__(self, session: object) -> None:
+        self._session = session
+
+    async def get_review(self, review_id: UUID) -> object:
+        if type(self).fail_review:
+            raise UnknownCreditReview(f"nieznana recenzja kredytowa: {review_id}")
+        return object()
+
+
 @pytest.fixture
 def quotations_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
     stub = StubQuotationService(object())
     StubChannelQuoteService.fail_get = False
+    StubPartyService.fail_review = False
 
     def _factory(session: object) -> StubQuotationService:
         return stub
@@ -158,12 +188,17 @@ def quotations_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
 
     monkeypatch.setattr("app.api.quotations.QuotationService", _factory)
     monkeypatch.setattr("app.api.quotations.ChannelQuoteService", _channel_factory)
+    monkeypatch.setattr(
+        "app.api.quotations.PartyService",
+        lambda session: StubPartyService(session),
+    )
     set_authz_checker(AllowAllAuthz())
     app.dependency_overrides[require_tenant_session] = _fake_tenant_session
     yield TestClient(app)
     app.dependency_overrides.clear()
     set_authz_checker(None)
     StubChannelQuoteService.fail_get = False
+    StubPartyService.fail_review = False
 
 
 def test_http_quote_and_list(quotations_client: TestClient) -> None:
@@ -247,6 +282,41 @@ def test_http_negotiate_unknown_channel(quotations_client: TestClient) -> None:
     )
     assert response.status_code == 400
     assert "nieznana oferta" in response.json()["detail"]
+
+
+def test_http_note_risk_saves_pointer(quotations_client: TestClient) -> None:
+    headers = bearer_auth_headers()
+    created = quotations_client.post(
+        "/api/v1/quotations",
+        headers=headers,
+        json=_lane_body("THC"),
+    )
+    review_id = uuid4()
+    response = quotations_client.patch(
+        f"/api/v1/quotations/{created.json()['id']}/note-risk",
+        headers=headers,
+        json={"credit_review_id": str(review_id)},
+    )
+    assert response.status_code == 200
+    assert response.json()["noted_credit_review_id"] == str(review_id)
+    assert response.json()["amount"] == "10.5000"
+
+
+def test_http_note_risk_unknown_review(quotations_client: TestClient) -> None:
+    headers = bearer_auth_headers()
+    created = quotations_client.post(
+        "/api/v1/quotations",
+        headers=headers,
+        json=_lane_body("THC"),
+    )
+    StubPartyService.fail_review = True
+    response = quotations_client.patch(
+        f"/api/v1/quotations/{created.json()['id']}/note-risk",
+        headers=headers,
+        json={"credit_review_id": str(uuid4())},
+    )
+    assert response.status_code == 400
+    assert "recenzja" in response.json()["detail"]
 
 
 def test_http_negotiate_unknown_quotation(quotations_client: TestClient) -> None:

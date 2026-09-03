@@ -459,6 +459,12 @@ class PartyService:
     async def list_reviews(self) -> list[CreditReview]:
         return await self._parties.list_reviews()
 
+    async def get_review(self, review_id: UUID) -> CreditReview:
+        found = await self._parties.get_review(review_id)
+        if found is None:
+            raise UnknownCreditReview(f"nieznana recenzja kredytowa: {review_id}")
+        return found
+
     async def resolve_review(self, *, party_id: UUID, on_date: object) -> CreditReview:
         day = normalize_review_date(on_date)
         await self._require_known_party(party_id)

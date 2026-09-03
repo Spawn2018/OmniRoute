@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **86.0** S24 accept oferty przez S11 (M-29)
+- **Ostatni plaster:** **87.0** S25 fakty ryzyka (M-24)
 - **Etap:** Plan
-- **Następny:** `/plaster` **87.0** — S25 fakty ryzyka (M-24). Nie scoring osoby. Nie F9.1.
+- **Następny:** `/plan-modul` **S26** — recenzja + załącznik wywiadowni (M-14). Nie auto-limit. Nie F9.1.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

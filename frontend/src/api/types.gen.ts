@@ -1977,6 +1977,16 @@ export type QuotationNegotiate = {
 };
 
 /**
+ * QuotationNoteRisk
+ */
+export type QuotationNoteRisk = {
+    /**
+     * Credit Review Id
+     */
+    credit_review_id: string;
+};
+
+/**
  * QuotationResponse
  */
 export type QuotationResponse = {
@@ -2036,6 +2046,10 @@ export type QuotationResponse = {
      * Negotiated Channel Quote Id
      */
     negotiated_channel_quote_id: string | null;
+    /**
+     * Noted Credit Review Id
+     */
+    noted_credit_review_id: string | null;
 };
 
 /**
@@ -4112,6 +4126,36 @@ export type QuotationDocumentLayoutApiV1QuotationsDocumentLayoutGetResponses = {
 };
 
 export type QuotationDocumentLayoutApiV1QuotationsDocumentLayoutGetResponse = QuotationDocumentLayoutApiV1QuotationsDocumentLayoutGetResponses[keyof QuotationDocumentLayoutApiV1QuotationsDocumentLayoutGetResponses];
+
+export type NoteQuotationRiskApiV1QuotationsQuotationIdNoteRiskPatchData = {
+    body: QuotationNoteRisk;
+    path: {
+        /**
+         * Quotation Id
+         */
+        quotation_id: string;
+    };
+    query?: never;
+    url: '/api/v1/quotations/{quotation_id}/note-risk';
+};
+
+export type NoteQuotationRiskApiV1QuotationsQuotationIdNoteRiskPatchErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type NoteQuotationRiskApiV1QuotationsQuotationIdNoteRiskPatchError = NoteQuotationRiskApiV1QuotationsQuotationIdNoteRiskPatchErrors[keyof NoteQuotationRiskApiV1QuotationsQuotationIdNoteRiskPatchErrors];
+
+export type NoteQuotationRiskApiV1QuotationsQuotationIdNoteRiskPatchResponses = {
+    /**
+     * Successful Response
+     */
+    200: QuotationResponse;
+};
+
+export type NoteQuotationRiskApiV1QuotationsQuotationIdNoteRiskPatchResponse = NoteQuotationRiskApiV1QuotationsQuotationIdNoteRiskPatchResponses[keyof NoteQuotationRiskApiV1QuotationsQuotationIdNoteRiskPatchResponses];
 
 export type NegotiateQuotationApiV1QuotationsQuotationIdNegotiatePatchData = {
     body: QuotationNegotiate;

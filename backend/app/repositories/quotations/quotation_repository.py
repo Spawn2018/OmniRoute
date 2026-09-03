@@ -81,6 +81,7 @@ def quotation_from_insert_row(row: RowMapping) -> Quotation:
         commodity_code_id=row.get("commodity_code_id"),
         document_number=row.get("document_number"),
         negotiated_channel_quote_id=row.get("negotiated_channel_quote_id"),
+        noted_credit_review_id=row.get("noted_credit_review_id"),
     )
 
 

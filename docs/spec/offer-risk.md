@@ -1,26 +1,31 @@
-# M-24 ryzyko oferty — odczyt recenzji i karty przy `quotation`
+# M-24 ryzyko oferty — odczyt i wskazanie recenzji przy `quotation`
 
-**Moduł żywy:** M-24 (token UI `offer_risk`, nie tabela) + ekran M-21 `quotation`  
-**Plaster:** **17.0** (zamknięty)  
-**Status:** wycena **czyta** `credit_review` i `party_scorecard` kontrahenta z wiersza. Nie scoring. Nie nowa tabela.
+**Moduł żywy:** M-24 (token `offer_risk`) + ekran M-21 `quotation`  
+**Plaster:** **17.0** (odczyt) · **87.0** (wskazanie)  
+**Status:** wycena czyta recenzję/kartę i zapisuje `noted_credit_review_id`. Nie scoring.
 
-Delta: [docs/deltas/archived/17.0-offer-risk.md](../deltas/archived/17.0-offer-risk.md).
+Delta: [17.0](../deltas/archived/17.0-offer-risk.md) · [87.0](../deltas/archived/87.0-offer-risk-fact.md).
 
 ## 17.0 fakty ryzyka przy ofercie
 
 ### Zakres
 
-- Na `/quotations`: panel „Ryzyko kontrahenta oferty” — `party_id` z listy wycen
-- `resolveCreditReview(party_id, on_date)` + `fetchPartyScorecard(party_id)`
-- Pokazuje `decision` recenzji i snapshot karty (`source_ref`, `computed_at`) — bez nowej liczby
-- Zero nowej tabeli. Zero importu parties/scorecards z `quotations` service
+- Panel „Ryzyko kontrahenta oferty” — `resolveCreditReview` + `fetchPartyScorecard`
+- Zero importu parties z `quotations` service
 
-### Poza 17.0
+## 87.0 wskazanie recenzji
 
-Scoring / rating / AI Act · zapis `credit_limit` · nowa tabela `offer_risk` · LLM liczący ryzyko · ExtractionService
+### Zakres
 
-### HC
+- Kolumna `quotation.noted_credit_review_id`
+- `PATCH /quotations/{id}/note-risk` — API składa przez `PartyService.get_review`
+- UI „Zapisz fakt”
+
+### Poza 87.0
+
+Scoring · załącznik wywiadowni (S26) · mutacja recenzji · F9.1
+
+## HC
 
 - LLM nie liczy. `charge` zostaje prawdą o marży.
-- Recenzja i karta zostają w swoich BC (14.0 / 10.0).
-- ExtractionService nie importuje parties / quotations
+- ExtractionService nie importuje quotations / parties

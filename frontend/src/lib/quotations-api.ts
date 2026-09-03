@@ -16,6 +16,7 @@ export type Quotation = {
   commodity_code_id: string | null
   document_number: string | null
   negotiated_channel_quote_id: string | null
+  noted_credit_review_id: string | null
 }
 
 export type QuotationDocumentLayout = {
@@ -412,6 +413,18 @@ export async function issueQuotationDocumentNumber(quotationId: string): Promise
     headers: requireAuthHeaders(),
   })
   return readQuotation(response, "Błąd nadania numeru oferty")
+}
+
+export async function noteQuotationRisk(
+  quotationId: string,
+  creditReviewId: string,
+): Promise<Quotation> {
+  const response = await fetch(`/api/v1/quotations/${quotationId}/note-risk`, {
+    method: "PATCH",
+    headers: { ...requireAuthHeaders(), "Content-Type": "application/json" },
+    body: JSON.stringify({ credit_review_id: creditReviewId }),
+  })
+  return readQuotation(response, "Błąd zapisu faktu ryzyka")
 }
 
 export async function negotiateQuotation(
