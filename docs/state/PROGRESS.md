@@ -280,3 +280,4 @@
 | 2026-09-03 | 104.0 | M-47 | Tabela dekretu: opłata na fakturę. Nie JPK. Nie odejmowanie. Następny: S43 Plan. |
 | 2026-09-03 | Plan 105.0 | M-91 | S43: `collective_invoice` wiąże fakturę z dodatkowym zleceniem. Delta zaakceptowana (`/noc`). Nie płatność paczką. Następny: `/plaster` 105.0. |
 | 2026-09-03 | 105.0 | M-91 | Tabela zbiorczej: dodatkowe zlecenie na fakturze. Nie płatność paczką. Nie JPK. Następny: S44 Plan. |
+| 2026-09-03 | Plan 106.0 | M-15 | S44: `/finance` czyta faktury. Delta zaakceptowana (`/noc`). Nie narracja. Następny: `/plaster` 106.0. |

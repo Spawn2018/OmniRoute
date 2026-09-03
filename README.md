@@ -88,7 +88,7 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 <!-- os-status:start -->
 - **Ostatni plaster:** **105.0** S43 zbiorcza faktura (M-91)
 - **Etap:** Plan
-- **Następny:** `/plan-modul` **S44** — żywe M-15 tablica faktów (teraz z FV). Nie F9.1.
+- **Następny:** `/plaster` **106.0** — S44 tablica faktów z FV (M-15). Nie F9.1.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
