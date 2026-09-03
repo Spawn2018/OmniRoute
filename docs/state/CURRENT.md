@@ -6,10 +6,10 @@
 **Ostatni plaster:** **88.0** S26 załącznik wywiadowni (M-14)  
 **Etap:** Plan  
 **Noc:** `/noc <godzina>` (np. `/noc 7` = pętla do 7:00 czasu polskiego). Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md). Przed startem: `scripts/noc-preflight.ps1`.  
-**Następny:** `/plan-modul` **S27** — sankcje HTTP na `party` (M-53). Nie auto-match. Nie F9.1.  
+**Następny:** `/plaster` **89.0** — S27 sankcje HTTP na `party` (M-53). Nie auto-match. Nie F9.1.  
 M-02 **fundament 79.0**. Auth0 **odroczone** (S53). Portale **parked** (S55). S21 live HTTP **parked**. Exit Wave FE **nie** claim.
 
-**Spec (jedna na sesję):** brak — najpierw `/plan-modul`. Nie otwieraj [print-sheet.md](../spec/print-sheet.md).
+**Spec (jedna na sesję):** [docs/deltas/open/89.0-party-sanctions-screen.md](../deltas/open/89.0-party-sanctions-screen.md). Nie otwieraj [print-sheet.md](../spec/print-sheet.md).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Cel jakości + § Kolejka realizacji.
 
@@ -17,4 +17,4 @@ M-02 **fundament 79.0**. Auth0 **odroczone** (S53). Portale **parked** (S55). S2
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` są w PATH. Przed pracą podnieś dwie rzeczy: `pg_ctl -D tools\pgdata -o "-p 5432" start` oraz `tools\openfga\openfga.exe run`. Potem `just gate` i `just test` działają bez ustawiania zmiennych. PG 16 to klaster przenośny w `tools\pg16` — instalator EDB przez winget nie przechodzi (exit 1).
 
-**2026-09-03:** 88.0 na origin (`/noc`). Następny S27 Plan. Nie F9.1.
+**2026-09-03:** plan 89.0 zaakceptowany (`/noc`). Wolno `/plaster`. Nie F9.1.

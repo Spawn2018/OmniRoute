@@ -88,7 +88,7 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 <!-- os-status:start -->
 - **Ostatni plaster:** **88.0** S26 załącznik wywiadowni (M-14)
 - **Etap:** Plan
-- **Następny:** `/plan-modul` **S27** — sankcje HTTP na `party` (M-53). Nie auto-match. Nie F9.1.
+- **Następny:** `/plaster` **89.0** — S27 sankcje HTTP na `party` (M-53). Nie auto-match. Nie F9.1.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
