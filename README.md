@@ -88,7 +88,7 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 <!-- os-status:start -->
 - **Ostatni plaster:** **76.0** S13 tabela `mail_draft` (M-57)
 - **Etap:** Plan
-- **Następny:** `/plan-modul` **S14** — lock optymistyczny na decyzji (arch. M-187). Dwa okna, dwa Akceptuj. Nie F9.1.
+- **Następny:** `/plaster` **77.0** — lock optymistyczny na `operator_decision` (M-71). Dwa okna, dwa Akceptuj. Nie F9.1.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
