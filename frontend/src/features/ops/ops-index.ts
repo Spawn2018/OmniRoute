@@ -213,6 +213,11 @@ export const OPS_JOBS = [
     label: "Decyzje",
     job: "szyna operator_decision accept/reject",
   },
+  {
+    route: BUSINESS_LISTS.outboxEvents.route,
+    label: "Outbox",
+    job: "zdarzenie inbound_message_saved",
+  },
   { route: BUSINESS_LISTS.users.route, label: "Użytkownicy", job: "tenant users" },
   { route: "/session", label: "Sesja", job: "token klienta" },
 ] as const
@@ -280,6 +285,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "76.0": "/ai",
   "77.0": "/decisions",
   "78.0": "/mail",
+  "79.0": "/outbox",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

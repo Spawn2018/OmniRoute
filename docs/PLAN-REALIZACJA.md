@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** `/plaster` **79.0** — outbox M-02, zdarzenie `inbound_message_saved`. Nie Temporal. Nie send. Nie F9.1.
+**Następny (zablokowany):** `/plan-modul` **S17** — ingest IMAP / EmailEngine na `inbound_message` (M-32). Ta sama tabela. Nie Graph+IMAP w jednym commicie. Nie F9.1.
 <!-- os-status:end -->
 
 ```mermaid
@@ -232,11 +232,11 @@ Szczegół: [MODULES.md](MODULES.md). Poniżej odpowiedzialność, zysk, plastry
 **Plastry:** 0.3, 0.4, 0.12, 0.15, 0.16 T1, 0.17 T2, 0.21 T4, 0.22 T5.  
 **Nie:** IdP. 0.12/0.15 ≠ Auth0. Auth0 I1/I2 odroczone.
 
-### M-02 outbox — plan S16 zaakceptowany (`/noc`)
+### M-02 outbox — fundament (79.0)
 
 **Za co:** zdarzenia async **między** bounded contextami + idempotencja zapisu.  
-**Teraz:** pierwsze zdarzenie `inbound_message_saved` po zapisie `inbound_message`. Tabela + lista. Nie konsument.  
-**Nie:** Temporal / Hatchet / worker. Nie mylić z 0.4 (OpenFGA).
+**Daje:** `outbox_event` + `/outbox`; kind `inbound_message_saved` po zapisie wiadomości.  
+**Nie:** Temporal / Hatchet / worker / konsument. Nie mylić z 0.4 (OpenFGA).
 
 ### M-03 organization_setting — fundament (3.0)
 
@@ -386,7 +386,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E2** | Testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy) | 61.0 | zamknięty (`docs/deltas/archived/61.0-alembic-quote-budget.md`) |
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | 62.0 | zamknięty (`docs/deltas/archived/62.0-operator-howto-c4.md`) |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | 63.0 | zamknięty (`docs/deltas/archived/63.0-threat-model-codeql.md`) |
-| po Q-E4 | **Fala S**, S1–S15 zamknięte; S16 plaster 79.0 | Plan → plaster | **następny** |
+| po Q-E4 | **Fala S**, S1–S16 zamknięte; S17 IMAP | Plan → plaster | **następny** |
 
 ### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
 
@@ -421,8 +421,8 @@ Reguły kolejności (żeby `/noc` nie złożył awarii):
 | S13 | Żywe **M-57** draft maila obok extract | 76.0 | zamknięty (`docs/deltas/archived/76.0-mail-draft.md`) | Tabela. Accept przez S11. Nie send |
 | S14 | Arch. **M-187** lock optymistyczny na decyzji | 77.0 | zamknięty (`docs/deltas/archived/77.0-decision-lock.md`) | `lock_version`. Nie nowa tabela |
 | **S15** | Żywe **M-32** tylko ingest Graph | 78.0 | zamknięty (`docs/deltas/archived/78.0-graph-ingest.md`) | `graph://` + `external_id`. Live HTTP leftover. Nie send |
-| **S16** | Żywe **M-02** outbox | 79.0 | **następny** | `inbound_message_saved`. Nie Temporal. Nie send |
-| S17 | Żywe **M-32** ingest IMAP / EmailEngine | Plan → plaster | po S16 | Ta sama tabela. Nie Graph+IMAP w jednym commicie |
+| **S16** | Żywe **M-02** outbox | 79.0 | zamknięty (`docs/deltas/archived/79.0-outbox.md`) | `inbound_message_saved`. Konsument leftover. Nie Temporal |
+| S17 | Żywe **M-32** ingest IMAP / EmailEngine | Plan → plaster | **następny** | Ta sama tabela. Nie Graph+IMAP w jednym commicie |
 | **S18** | Żywe **M-33** wysyłka po S11+S10 | Plan → plaster | po S17 | Graph send albo świadomy `mailto:`. Auto-send zakazane |
 | S19 | Żywe **M-12** `network_member` | Plan → plaster | po S18 | Nie scraping |
 | S20 | Żywe **M-30** zapytanie do agenta | Plan → plaster | po S19 | Buy side |
@@ -489,7 +489,7 @@ M-48…M-51 modały · M-52…M-56 compliance (M-53 sankcje, M-56 RODO) · M-57�
 
 | ID | Dlaczego nie teraz | Kiedy |
 |---|---|---|
-| **M-02** outbox | Brak zdarzenia async między BC | **S16** (po Graph ingest S15). Nie startuj przy Q-E ani przy S1 fixture |
+| **M-02** outbox | **DONE 79.0** (`inbound_message_saved`). Konsument leftover | S17+ |
 | **Auth0 I1/I2** | Brak tenanta / nie bieżące Q | **S53**. JWT hello zostaje do tego wiersza |
 | **Watchtower / mapa** | Brak `shipment` + eventów | **S32** po S28–S31 |
 | **Portale F10** | Brak IdP | **S55** po **S53** |
@@ -509,7 +509,7 @@ Nie implementuj z tej tabeli „na zapas”. To mapa, żeby nic nie zginęło. S
 | Arch. | Nazwa | Status żywy |
 |---|---|---|
 | M-01 | Wielodostępność | DONE fundament |
-| M-02 | Niezawodność zdarzeń | PARKED aż **S16** |
+| M-02 | Niezawodność zdarzeń | DONE fundament 79.0 (`outbox_event`) |
 | M-03 | Konfiguracja per organizacja | CZĘŚĆ (`default_currency` + prefiks/szablon; numer oferty od 72.0) |
 | M-04 | Uprawnienia i tożsamość | CZĘŚĆ (OpenFGA hello; SSO parked) |
 | M-05 | Geografia | DONE fundament (`port` + `location`/strefy + `terminal`/WPI; `operator_party_id` od 5.0) |

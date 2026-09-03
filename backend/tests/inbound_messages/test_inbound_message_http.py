@@ -106,6 +106,16 @@ class StubPartyService:
         return type("PartyRow", (), {"id": StubPartyService.last_id})()
 
 
+class StubOutboxEventService:
+    recorded: list[object] = []
+
+    def __init__(self, session: object) -> None:
+        self._session = session
+
+    async def record_message_saved(self, **kwargs: object) -> None:
+        StubOutboxEventService.recorded.append(kwargs)
+
+
 class StubExtractionService:
     last_text = ""
 
@@ -160,6 +170,11 @@ def catalog_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
         "app.api.inbound_messages.ExtractionService",
         StubExtractionService,
     )
+    StubOutboxEventService.recorded = []
+    monkeypatch.setattr(
+        "app.api.inbound_messages.OutboxEventService",
+        StubOutboxEventService,
+    )
     set_authz_checker(AllowAllAuthz())
     app.dependency_overrides[require_tenant_session] = _fake_tenant_session
     yield TestClient(app)
@@ -193,6 +208,7 @@ def test_http_create_and_list_inbound_messages(catalog_client: TestClient) -> No
     rows = listed.json()
     assert len(rows) == 1
     assert rows[0]["id"] == body["id"]
+    assert len(StubOutboxEventService.recorded) == 1
 
 
 def test_http_create_rejects_client_status(catalog_client: TestClient) -> None:

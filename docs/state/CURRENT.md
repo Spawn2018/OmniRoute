@@ -3,13 +3,13 @@
 **Faza:** Fala S — pogłębienie wydmuszek (po Fali E)  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
 
-**Ostatni plaster:** **78.0** S15 ingest Graph na `inbound_message` (M-32)  
+**Ostatni plaster:** **79.0** S16 outbox `inbound_message_saved` (M-02)  
 **Etap:** Plan  
 **Noc:** `/noc <godzina>` (np. `/noc 7` = pętla do 7:00 czasu polskiego). Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md). Przed startem: `scripts/noc-preflight.ps1`.  
-**Następny:** `/plaster` **79.0** — outbox M-02, zdarzenie `inbound_message_saved`. Nie Temporal. Nie send. Nie F9.1.  
-M-02 **odblokowane na S16**. Auth0 **odroczone** (S53). Portale **parked** (S55). Exit Wave FE **nie** claim.
+**Następny:** `/plan-modul` **S17** — ingest IMAP / EmailEngine na `inbound_message` (M-32). Ta sama tabela. Nie Graph+IMAP w jednym commicie. Nie F9.1.  
+M-02 **fundament 79.0**. Auth0 **odroczone** (S53). Portale **parked** (S55). Exit Wave FE **nie** claim.
 
-**Spec (jedna na sesję):** [docs/deltas/open/79.0-outbox.md](../deltas/open/79.0-outbox.md). Nie otwieraj [print-sheet.md](../spec/print-sheet.md).
+**Spec (jedna na sesję):** następna delta po `/plan-modul` S17. Zamknięte: [79.0-outbox.md](../deltas/archived/79.0-outbox.md). Nie otwieraj [print-sheet.md](../spec/print-sheet.md).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Cel jakości + § Kolejka realizacji.
 
@@ -17,4 +17,4 @@ M-02 **odblokowane na S16**. Auth0 **odroczone** (S53). Portale **parked** (S55)
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` są w PATH. Przed pracą podnieś dwie rzeczy: `pg_ctl -D tools\pgdata -o "-p 5432" start` oraz `tools\openfga\openfga.exe run`. Potem `just gate` i `just test` działają bez ustawiania zmiennych. PG 16 to klaster przenośny w `tools\pg16` — instalator EDB przez winget nie przechodzi (exit 1).
 
-**2026-09-03:** plan 79.0 zaakceptowany (`/noc`). Wolno `/plaster`. Nie F9.1.
+**2026-09-03:** 79.0 zamknięty (`/noc`). Następny S17 `/plan-modul`. Nie F9.1.

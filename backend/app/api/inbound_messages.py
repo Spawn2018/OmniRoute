@@ -9,6 +9,7 @@ from app.core.session_token import SessionIdentity
 from app.domain.inbound_message import inbound_extract_text
 from app.services.extraction.extraction_service import ExtractionService
 from app.services.inbound_messages.inbound_message_service import InboundMessageService
+from app.services.outbox_events.outbox_event_service import OutboxEventService
 from app.services.parties.party_service import PartyService
 
 router = APIRouter(prefix="/inbound-messages", tags=["inbound-messages"])
@@ -81,6 +82,12 @@ async def create_inbound_message(
         subject=body.subject,
         body_text=body.body_text,
     )
+    await OutboxEventService(session).record_message_saved(
+        organization_id=identity.organization_id,
+        user_id=identity.user_id,
+        subject_id=row.id,
+        source_ref=f"outbox://inbound-message/{row.id}",
+    )
     await session.commit()
     return InboundMessageResponse.model_validate(row)
 
@@ -100,6 +107,12 @@ async def ingest_graph_inbound_message(
         from_address=body.from_address,
         subject=body.subject,
         body_text=body.body_text,
+    )
+    await OutboxEventService(session).record_message_saved(
+        organization_id=identity.organization_id,
+        user_id=identity.user_id,
+        subject_id=row.id,
+        source_ref=f"outbox://inbound-message/{row.id}",
     )
     await session.commit()
     return InboundMessageResponse.model_validate(row)

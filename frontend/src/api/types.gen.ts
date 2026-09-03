@@ -1383,6 +1383,50 @@ export type OrganizationSettingUpsert = {
 };
 
 /**
+ * OutboxEventCreate
+ */
+export type OutboxEventCreate = {
+    /**
+     * Subject Id
+     */
+    subject_id: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * OutboxEventResponse
+ */
+export type OutboxEventResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Event Kind
+     */
+    event_kind: string;
+    /**
+     * Subject Id
+     */
+    subject_id: string;
+    /**
+     * Status
+     */
+    status: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * PartyCreate
  */
 export type PartyCreate = {
@@ -3311,6 +3355,49 @@ export type CreateMailDraftApiV1MailDraftsPostResponses = {
 };
 
 export type CreateMailDraftApiV1MailDraftsPostResponse = CreateMailDraftApiV1MailDraftsPostResponses[keyof CreateMailDraftApiV1MailDraftsPostResponses];
+
+export type ListOutboxEventsApiV1OutboxEventsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/outbox-events';
+};
+
+export type ListOutboxEventsApiV1OutboxEventsGetResponses = {
+    /**
+     * Response List Outbox Events Api V1 Outbox Events Get
+     *
+     * Successful Response
+     */
+    200: Array<OutboxEventResponse>;
+};
+
+export type ListOutboxEventsApiV1OutboxEventsGetResponse = ListOutboxEventsApiV1OutboxEventsGetResponses[keyof ListOutboxEventsApiV1OutboxEventsGetResponses];
+
+export type CreateOutboxEventApiV1OutboxEventsPostData = {
+    body: OutboxEventCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/outbox-events';
+};
+
+export type CreateOutboxEventApiV1OutboxEventsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateOutboxEventApiV1OutboxEventsPostError = CreateOutboxEventApiV1OutboxEventsPostErrors[keyof CreateOutboxEventApiV1OutboxEventsPostErrors];
+
+export type CreateOutboxEventApiV1OutboxEventsPostResponses = {
+    /**
+     * Successful Response
+     */
+    200: OutboxEventResponse;
+};
+
+export type CreateOutboxEventApiV1OutboxEventsPostResponse = CreateOutboxEventApiV1OutboxEventsPostResponses[keyof CreateOutboxEventApiV1OutboxEventsPostResponses];
 
 export type ListNbpRatesApiV1NbpRatesGetData = {
     body?: never;

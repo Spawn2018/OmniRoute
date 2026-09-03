@@ -36,6 +36,7 @@ const NAV_ACTIONS = [
   { id: "nav-rollout", label: "Idź do wdrożenia", to: "/rollout" },
   { id: "nav-mail", label: "Idź do tablicy poczty", to: "/mail" },
   { id: "nav-notifications", label: "Idź do powiadomień", to: "/notifications" },
+  { id: "nav-outbox", label: "Idź do outbox", to: "/outbox" },
   { id: "nav-shipments", label: "Idź do zleceń", to: "/shipments" },
   { id: "nav-tracking", label: "Idź do trackingu", to: "/tracking" },
   { id: "nav-exceptions", label: "Idź do wyjątków", to: "/exceptions" },

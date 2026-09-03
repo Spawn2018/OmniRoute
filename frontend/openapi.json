@@ -1704,6 +1704,80 @@
         ]
       }
     },
+    "/api/v1/outbox-events": {
+      "get": {
+        "tags": [
+          "outbox-events"
+        ],
+        "summary": "List Outbox Events",
+        "operationId": "list_outbox_events_api_v1_outbox_events_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/OutboxEventResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Outbox Events Api V1 Outbox Events Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "outbox-events"
+        ],
+        "summary": "Create Outbox Event",
+        "operationId": "create_outbox_event_api_v1_outbox_events_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OutboxEventCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OutboxEventResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/nbp-rates": {
       "get": {
         "tags": [
@@ -6966,6 +7040,67 @@
           "setting_value"
         ],
         "title": "OrganizationSettingUpsert"
+      },
+      "OutboxEventCreate": {
+        "properties": {
+          "subject_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Subject Id"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "subject_id",
+          "source_ref"
+        ],
+        "title": "OutboxEventCreate"
+      },
+      "OutboxEventResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "event_kind": {
+            "type": "string",
+            "title": "Event Kind"
+          },
+          "subject_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Subject Id"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "event_kind",
+          "subject_id",
+          "status",
+          "source_ref"
+        ],
+        "title": "OutboxEventResponse"
       },
       "PartyCreate": {
         "properties": {

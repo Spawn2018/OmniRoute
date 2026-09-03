@@ -26,6 +26,7 @@ const NAV = [
   { to: "/rollout", label: "Wdrożenie" },
   { to: "/mail", label: "Poczta" },
   { to: "/notifications", label: "Powiadomienia" },
+  { to: "/outbox", label: "Outbox" },
   { to: "/shipments", label: "Zlecenia" },
   { to: "/tracking", label: "Tracking" },
   { to: "/exceptions", label: "Wyjątki" },

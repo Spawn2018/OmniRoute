@@ -328,3 +328,7 @@ class InvalidOperatorNotice(DomainError):
 
 class InvalidMailDraft(DomainError):
     """Szkic maila: kind, treść albo source_ref — nie czat, nie send."""
+
+
+class InvalidOutboxEvent(DomainError):
+    """Outbox: kind albo source_ref — nie Temporal, nie konsument."""

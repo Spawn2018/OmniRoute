@@ -40,6 +40,7 @@ _ALL_TENANT_POLICY_NAMES = (
     "operator_decision_tenant_isolation",
     "operator_notice_tenant_isolation",
     "mail_draft_tenant_isolation",
+    "outbox_event_tenant_isolation",
 )
 
 
