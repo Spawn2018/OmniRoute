@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** `/plaster` **84.0** — porównanie → `charge` (M-31). Spread = `margin()`. Nie odejmuj w JS. Nie F9.1.
+**Następny (zablokowany):** `/plan-modul` **S23** — wynik negocjacji (M-25). Nie zamiast `margin()`. Nie F9.1.
 <!-- os-status:end -->
 
 ```mermaid
@@ -386,7 +386,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E2** | Testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy) | 61.0 | zamknięty (`docs/deltas/archived/61.0-alembic-quote-budget.md`) |
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | 62.0 | zamknięty (`docs/deltas/archived/62.0-operator-howto-c4.md`) |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | 63.0 | zamknięty (`docs/deltas/archived/63.0-threat-model-codeql.md`) |
-| po Q-E4 | **Fala S**, S1–S21 (S21 parked); S22 plaster 84.0 | Plan → plaster | **następny** |
+| po Q-E4 | **Fala S**, S1–S22 zamknięte (S21 parked); S23 negocjacja | Plan → plaster | **następny** |
 
 ### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
 
@@ -427,8 +427,8 @@ Reguły kolejności (żeby `/noc` nie złożył awarii):
 | S19 | Żywe **M-12** `network_member` | 82.0 | zamknięty (`docs/deltas/archived/82.0-network-member.md`) | Ręczny katalog. Portal leftover |
 | S20 | Żywe **M-30** zapytanie do agenta | 83.0 | zamknięty (`docs/deltas/archived/83.0-carrier-inquiry.md`) | Buy side. Tabela. Live leftover |
 | S21 | Żywe **M-19** live HTTP kanału **przy umowie** | parked | brak umowy (`docs/deltas/archived/S21-channel-http-parked.md`) | Nie teatr HTTP |
-| S22 | Żywe **M-31** porównanie | 84.0 | **następny** | Spread w `charge` / `margin()` |
-| S23 | Żywe **M-25** wynik negocjacji | Plan → plaster | po S22 | Nie zamiast `margin()` |
+| S22 | Żywe **M-31** porównanie | 84.0 | zamknięty (`docs/deltas/archived/84.0-response-comparison-charge.md`) | Spread w `charge` / `margin()` |
+| S23 | Żywe **M-25** wynik negocjacji | Plan → plaster | **następny** | Nie zamiast `margin()` |
 | S24 | Żywe **M-29** won/lost; accept oferty przez S11 | Plan → plaster | po S23 | Nie accept extractu. CSV (M-27) z boku, nie na ścieżce |
 | S25 | Żywe **M-24** fakty ryzyka | Plan → plaster | po S24 | Nie scoring osoby |
 | S26 | Żywe **M-14** recenzja + załącznik wywiadowni | Plan → plaster | po S25 | Nie auto-limit |

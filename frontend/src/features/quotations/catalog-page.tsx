@@ -8,6 +8,7 @@ import { Money } from "@/components/money"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { BUSINESS_LISTS } from "@/lib/business-lists"
+import { comparisonChargeBody, createCharge, type Charge } from "@/lib/charges-api"
 import { fetchChannelQuotes, resolveChannelQuote, type ChannelQuote } from "@/lib/channel-quotes-api"
 import { fetchCommodityCodes } from "@/lib/commodity-codes-api"
 import { fetchCustomerRfqs, type CustomerRfq } from "@/lib/customer-rfqs-api"
@@ -546,13 +547,29 @@ function OfferCarrierInquiryPanel(args: { lanes: QuotationLane[]; quotes: Channe
 
 function OfferResponseComparisonPanel(args: { lanes: QuotationLane[]; quotes: ChannelQuote[] }) {
   const rows = quotationResponseComparisons(args.lanes, args.quotes)
+  const [laneId, setLaneId] = useState("")
+  const [quoteId, setQuoteId] = useState("")
+  const [saved, setSaved] = useState<Charge | null>(null)
+  const saveMargin = useMutation({
+    mutationFn: () => {
+      const lane = args.lanes.find((row) => row.id === laneId)
+      const quote = args.quotes.find((row) => row.id === quoteId)
+      if (lane === undefined || quote === undefined) {
+        return Promise.reject(new Error("Wybierz wycenę i ofertę kanału"))
+      }
+      return createCharge(comparisonChargeBody(lane, quote))
+    },
+    onSuccess: setSaved,
+  })
   if (rows.length === 0) {
     return null
   }
   return (
     <article className="space-y-2 p-3 outline outline-1 outline-border" data-response-comparison="lanes">
       <h3 className="text-sm font-medium">Porównanie odpowiedzi</h3>
-      <p className="text-xs text-muted-foreground">wycena i channel_quote na POL/POD · nie odejmuj · nie tabela</p>
+      <p className="text-xs text-muted-foreground">
+        wycena i channel_quote na POL/POD · marża w charge · nie odejmuj
+      </p>
       {rows.map((row) => (
         <div key={`${row.originPortId}:${row.destinationPortId}`} className="space-y-1">
           {row.quotations.map((lane) => (
@@ -568,6 +585,49 @@ function OfferResponseComparisonPanel(args: { lanes: QuotationLane[]; quotes: Ch
           ))}
         </div>
       ))}
+      <form
+        className="flex flex-col gap-2 lg:flex-row"
+        onSubmit={(event) => {
+          event.preventDefault()
+          if (laneId !== "" && quoteId !== "") saveMargin.mutate()
+        }}
+      >
+        <select
+          aria-label="Wycena do opłaty"
+          className="h-8 rounded-md border border-border bg-card px-2 text-sm"
+          value={laneId}
+          onChange={(event) => setLaneId(event.target.value)}
+        >
+          <option value="">Wycena</option>
+          {args.lanes.map((lane) => (
+            <option key={lane.id} value={lane.id}>
+              {lane.chargeCode} {lane.amount} {lane.currency}
+            </option>
+          ))}
+        </select>
+        <select
+          aria-label="Oferta kanału do opłaty"
+          className="h-8 rounded-md border border-border bg-card px-2 text-sm"
+          value={quoteId}
+          onChange={(event) => setQuoteId(event.target.value)}
+        >
+          <option value="">Kanał</option>
+          {args.quotes.map((quote) => (
+            <option key={quote.id} value={quote.id}>
+              {quote.source_ref} {quote.amount} {quote.currency}
+            </option>
+          ))}
+        </select>
+        <Button type="submit" disabled={saveMargin.isPending || laneId === "" || quoteId === ""}>
+          Zapisz marżę
+        </Button>
+      </form>
+      {saveMargin.isError ? <p className="text-xs text-destructive">{String(saveMargin.error)}</p> : null}
+      {saved === null ? null : (
+        <p className="text-xs">
+          marża <Money amount={saved.margin_amount} currency={saved.margin_currency} />
+        </p>
+      )}
     </article>
   )
 }

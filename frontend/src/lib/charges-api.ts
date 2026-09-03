@@ -76,6 +76,27 @@ export function bookkeepingLines<
   }))
 }
 
+export function comparisonChargeBody(
+  lane: { chargeCode: string; amount: string; currency: string },
+  quote: { amount: string; currency: string },
+): {
+  charge_code: string
+  buy_amount: string
+  buy_currency: string
+  sell_amount: string
+  sell_currency: string
+  rate_line_id: null
+} {
+  return {
+    charge_code: lane.chargeCode.trim(),
+    buy_amount: quote.amount.trim(),
+    buy_currency: quote.currency.trim().toUpperCase(),
+    sell_amount: lane.amount.trim(),
+    sell_currency: lane.currency.trim().toUpperCase(),
+    rate_line_id: null,
+  }
+}
+
 export function chargeCreateBody(args: {
   chargeCode: string
   buyAmount: string

@@ -37,7 +37,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-28 | Zapytania od klientów | 21.0 `customer_inquiry` · 67.0 `customer_rfq` | **ukończony (fundament)** · ślad wycen + obiekt RFQ; silnik = M-21 68.0; nie IMAP |
 | M-29 | Wykrywanie akceptacji | 22.0 `offer_acceptance` | **ukończony (fundament)** · pending z wycen; nie tabela wyniku; nie HITL accept |
 | M-30 | Zapytania do agentów/armatorów | 23.0 ślad · 83.0 `carrier_inquiry` | **ukończony (fundament)** · obiekt buy do `network_member`; ślad `channel_quote` przy lane; nie RFQ; nie live HTTP |
-| M-31 | Porównanie odpowiedzi | 24.0 `response_comparison` | **ukończony (fundament)** · zestawienie kwot na POL/POD; nie tabela; nie spread |
+| M-31 | Porównanie odpowiedzi | 24.0 ślad · 84.0 `charge` | **ukończony (fundament)** · zestawienie na POL/POD + zapis marży w `charge`; nie odejmuj w JS; nie won/lost |
 | M-32 | Integracja pocztowa | 64.0 `inbound_message` · 66.0 extract HITL · 78.0 ingest `graph://` · 80.0 ingest `imap://` | **ukończony (fundament)** · tabela wiadomości draft+fixture albo ingest Graph/skrzynka po `external_id` na `/mail`; treść → szkic HITL; nie live skrzynka; nie send; nie blob |
 | M-33 | Dodatek do Outlooka | 26.0 `mail_client` · 81.0 dispatch `mailto:` | **ukończony (fundament)** · `mailto:` kontaktu na `/mail` + świadoma wysyłka zaakceptowanego szkicu na `/ai`; nie Office.js; nie Graph HTTP |
 | M-34 | Powiadomienia | 27.0 tablica · 75.0 tabela `operator_notice` | **ukończony (fundament)** · inbox zapisany + leftover filtr pending; nie send |

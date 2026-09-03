@@ -237,3 +237,4 @@
 | 2026-09-03 | 83.0 | M-30 | Tabela `carrier_inquiry` RLS. Zapytanie do `network_member`, draft, bez kwoty. Nie live HTTP. Następny: S21 Plan. |
 | 2026-09-03 | S21 park | M-19 | Live HTTP kanału zaparkowane — brak umowy. Nie teatr HTTP. Następny: S22 Plan. |
 | 2026-09-03 | Plan 84.0 | M-31 | S22: porównanie zapisuje `charge` (buy kanał, sell wycena). Delta zaakceptowana (`/noc`). Nie odejmuj w JS. Następny: `/plaster` 84.0. |
+| 2026-09-03 | 84.0 | M-31 | Porównanie zapisuje `charge`; marża z `margin()`. Nie odejmuj w JS. Następny: S23 Plan. |

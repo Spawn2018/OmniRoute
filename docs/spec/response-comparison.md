@@ -1,26 +1,30 @@
-# M-31 porównanie odpowiedzi — zestawienie wyceny i `channel_quote` na POL/POD
+# M-31 porównanie odpowiedzi — zestawienie i zapis `charge`
 
-**Moduł żywy:** M-31 (token UI `response_comparison`, nie tabela) + ekran M-21 `quotation` + katalog M-19 `channel_quote`  
-**Plaster:** **24.0** (zamknięty)  
-**Status:** operator **widzi** kwoty wyceny i odpowiedzi kanałów na tej samej parze portów. Nie odejmowanie. Nie nowa tabela.
+**Moduł żywy:** M-31 `response_comparison` + ekran M-21 `/quotations` + katalog M-19 `channel_quote` + M-08 `charge`  
+**Plaster:** **84.0** (zamknięty) · 24.0 ślad (zamknięty)  
+**Status:** operator **widzi** kwoty na POL/POD i **zapisuje** marżę jako `charge`. Nie odejmowanie w JS. Nie nowa tabela.
 
-Delta: [docs/deltas/archived/24.0-response-comparison.md](../deltas/archived/24.0-response-comparison.md).
+Delta: [docs/deltas/archived/84.0-response-comparison-charge.md](../deltas/archived/84.0-response-comparison-charge.md).
 
-## 24.0 zestawienie na POL/POD
+## 84.0 spread w `charge`
 
 ### Zakres
 
-- Na `/quotations`: panel „Porównanie odpowiedzi” — lane wyceny + `channel_quote` o tym samym POL/POD (także inny armator)
-- Obie kwoty przez `<Money/>`. Zero odejmowania w JS
-- Zero nowej tabeli. Zero endpointu spread. Zero live HTTP
+- Helper `comparisonChargeBody`: kupno z oferty kanału, sprzedaż z wyceny, kod z wyceny
+- Na `/quotations`: „Zapisz marżę” w `data-response-comparison="lanes"`
+- Marża z `POST /charges` przez `<Money/>` — `margin()` w domenie
+- Zero nowej tabeli. Zero nowego endpointu
 
-### Poza 24.0
+### Poza 84.0
 
-Silnik różnicy Decimal (SQL/Python) · katalog `won`/`lost` · IMAP (M-32) · zapis do `rate_line`/`charge` · LLM
+won/lost · live HTTP · drugi magazyn spread · LLM
 
 ### HC
 
-- Kwoty zostają w `quotation` i `channel_quote` (SQL). Panel nic nie liczy.
-- `quotations` service nie importuje `channel_quotes`.
-- LLM nie liczy. `charge` zostaje prawdą o marży.
-- ExtractionService nie importuje channel_quotes / quotations
+- Panel nie odejmuje kwot. `charge` zostaje prawdą o marży.
+- `quotations` service nie importuje `channel_quotes` ani `charges`.
+- LLM nie liczy.
+
+## 24.0 zestawienie na POL/POD
+
+Lane wyceny + `channel_quote` o tym samym POL/POD. Obie kwoty przez `<Money/>`.
