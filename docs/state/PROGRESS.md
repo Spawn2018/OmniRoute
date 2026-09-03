@@ -248,3 +248,4 @@
 | 2026-09-03 | 88.0 | M-14 | Wskazanie raportu wywiadowni na recenzji. Nie auto-limit. Nie HTTP do biura. Następny: S27 Plan. |
 | 2026-09-03 | Plan 89.0 | M-53 | S27: sprawdzenie listy na `party`. Delta zaakceptowana (`/noc`). Nie auto-match. Następny: `/plaster` 89.0. |
 | 2026-09-03 | 89.0 | M-53 | Sprawdzenie listy na `party`. Nie auto-match. Nie live lista. Następny: S28 Plan. |
+| 2026-09-03 | Plan 90.0 | M-35 | S28: tabela `shipment` z wyceny. Delta zaakceptowana (`/noc`). Nie tracking. Następny: `/plaster` 90.0. |
