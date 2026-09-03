@@ -38,8 +38,8 @@ import { Route as MoneyCostRouteImport } from './routes/money-cost'
 import { Route as NbpRatesRouteImport } from './routes/nbp-rates'
 import { Route as NetworksRouteImport } from './routes/networks'
 import { Route as NotificationsRouteImport } from './routes/notifications'
-import { Route as OutboxRouteImport } from './routes/outbox'
 import { Route as OrganizationSettingsRouteImport } from './routes/organization-settings'
+import { Route as OutboxRouteImport } from './routes/outbox'
 import { Route as PartiesRouteImport } from './routes/parties'
 import { Route as PartyScorecardsRouteImport } from './routes/party-scorecards'
 import { Route as PaymentsRouteImport } from './routes/payments'
@@ -205,14 +205,14 @@ const NotificationsRoute = NotificationsRouteImport.update({
   path: '/notifications',
   getParentRoute: () => rootRouteImport,
 } as any)
-const OutboxRoute = OutboxRouteImport.update({
-  id: '/outbox',
-  path: '/outbox',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const OrganizationSettingsRoute = OrganizationSettingsRouteImport.update({
   id: '/organization-settings',
   path: '/organization-settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OutboxRoute = OutboxRouteImport.update({
+  id: '/outbox',
+  path: '/outbox',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PartiesRoute = PartiesRouteImport.update({
@@ -341,8 +341,8 @@ export interface FileRoutesByFullPath {
   '/nbp-rates': typeof NbpRatesRoute
   '/networks': typeof NetworksRoute
   '/notifications': typeof NotificationsRoute
-  '/outbox': typeof OutboxRoute
   '/organization-settings': typeof OrganizationSettingsRoute
+  '/outbox': typeof OutboxRoute
   '/parties': typeof PartiesRoute
   '/party-scorecards': typeof PartyScorecardsRoute
   '/payments': typeof PaymentsRoute
@@ -393,8 +393,8 @@ export interface FileRoutesByTo {
   '/nbp-rates': typeof NbpRatesRoute
   '/networks': typeof NetworksRoute
   '/notifications': typeof NotificationsRoute
-  '/outbox': typeof OutboxRoute
   '/organization-settings': typeof OrganizationSettingsRoute
+  '/outbox': typeof OutboxRoute
   '/parties': typeof PartiesRoute
   '/party-scorecards': typeof PartyScorecardsRoute
   '/payments': typeof PaymentsRoute
@@ -446,8 +446,8 @@ export interface FileRoutesById {
   '/nbp-rates': typeof NbpRatesRoute
   '/networks': typeof NetworksRoute
   '/notifications': typeof NotificationsRoute
-  '/outbox': typeof OutboxRoute
   '/organization-settings': typeof OrganizationSettingsRoute
+  '/outbox': typeof OutboxRoute
   '/parties': typeof PartiesRoute
   '/party-scorecards': typeof PartyScorecardsRoute
   '/payments': typeof PaymentsRoute
@@ -500,8 +500,8 @@ export interface FileRouteTypes {
     | '/nbp-rates'
     | '/networks'
     | '/notifications'
-    | '/outbox'
     | '/organization-settings'
+    | '/outbox'
     | '/parties'
     | '/party-scorecards'
     | '/payments'
@@ -552,8 +552,8 @@ export interface FileRouteTypes {
     | '/nbp-rates'
     | '/networks'
     | '/notifications'
-    | '/outbox'
     | '/organization-settings'
+    | '/outbox'
     | '/parties'
     | '/party-scorecards'
     | '/payments'
@@ -604,8 +604,8 @@ export interface FileRouteTypes {
     | '/nbp-rates'
     | '/networks'
     | '/notifications'
-    | '/outbox'
     | '/organization-settings'
+    | '/outbox'
     | '/parties'
     | '/party-scorecards'
     | '/payments'
@@ -657,8 +657,8 @@ export interface RootRouteChildren {
   NbpRatesRoute: typeof NbpRatesRoute
   NetworksRoute: typeof NetworksRoute
   NotificationsRoute: typeof NotificationsRoute
-  OutboxRoute: typeof OutboxRoute
   OrganizationSettingsRoute: typeof OrganizationSettingsRoute
+  OutboxRoute: typeof OutboxRoute
   PartiesRoute: typeof PartiesRoute
   PartyScorecardsRoute: typeof PartyScorecardsRoute
   PaymentsRoute: typeof PaymentsRoute
@@ -885,18 +885,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NotificationsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/outbox': {
-      id: '/outbox'
-      path: '/outbox'
-      fullPath: '/outbox'
-      preLoaderRoute: typeof OutboxRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/organization-settings': {
       id: '/organization-settings'
       path: '/organization-settings'
       fullPath: '/organization-settings'
       preLoaderRoute: typeof OrganizationSettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/outbox': {
+      id: '/outbox'
+      path: '/outbox'
+      fullPath: '/outbox'
+      preLoaderRoute: typeof OutboxRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/parties': {
@@ -1065,8 +1065,8 @@ const rootRouteChildren: RootRouteChildren = {
   NbpRatesRoute: NbpRatesRoute,
   NetworksRoute: NetworksRoute,
   NotificationsRoute: NotificationsRoute,
-  OutboxRoute: OutboxRoute,
   OrganizationSettingsRoute: OrganizationSettingsRoute,
+  OutboxRoute: OutboxRoute,
   PartiesRoute: PartiesRoute,
   PartyScorecardsRoute: PartyScorecardsRoute,
   PaymentsRoute: PaymentsRoute,
