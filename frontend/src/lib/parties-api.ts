@@ -13,6 +13,8 @@ export type Party = {
   credit_currency: string | null
   is_active: boolean
   source_ref: string
+  sanctions_list_ref: string | null
+  sanctions_checked_at: string | null
 }
 
 export type PartyDraft = {
@@ -248,4 +250,16 @@ export async function upsertCarrierProfile(
     body: JSON.stringify({ scac_code: scacCode === "" ? null : scacCode, api_adapter: "none" }),
   })
   return parseBody<CarrierProfile>(response, "Błąd zapisu profilu armatora")
+}
+
+export async function screenPartySanctions(
+  partyId: string,
+  body: { sanctions_list_ref: string },
+): Promise<Party> {
+  const response = await fetch(`/api/v1/parties/${partyId}/screen-sanctions`, {
+    method: "POST",
+    headers: { ...requireAuthHeaders(), "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  })
+  return parseBody<Party>(response, "Błąd zapisu sprawdzenia listy")
 }

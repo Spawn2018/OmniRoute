@@ -96,6 +96,37 @@ async def test_service_get_party_missing() -> None:
 
 
 @pytest.mark.asyncio
+async def test_screen_sanctions_keeps_source_ref_and_limit() -> None:
+    service = _service()
+    row = Party(
+        id=uuid4(),
+        organization_id=uuid4(),
+        legal_name="ACME",
+        country_code="PL",
+        roles=["customer"],
+        source_ref="tenant:manual",
+        is_active=True,
+        credit_limit=Decimal("10.0000"),
+        credit_currency="PLN",
+    )
+    origin = row.source_ref
+    service._parties.get = AsyncMock(return_value=row)
+    stored = await service.screen_sanctions(row.id, "  fixture://sanctions/eu-1  ")
+    assert stored.sanctions_list_ref == "fixture://sanctions/eu-1"
+    assert stored.sanctions_checked_at is not None
+    assert stored.source_ref == origin
+    assert stored.credit_limit == Decimal("10.0000")
+
+
+@pytest.mark.asyncio
+async def test_screen_sanctions_unknown_party() -> None:
+    service = _service()
+    service._parties.get = AsyncMock(return_value=None)
+    with pytest.raises(ResourceNotFound, match="nieznany kontrahent"):
+        await service.screen_sanctions(uuid4(), "fixture://sanctions/eu-1")
+
+
+@pytest.mark.asyncio
 async def test_service_create_contact_rejects_blank_name() -> None:
     service = _service()
     service._parties.get = AsyncMock(return_value=MagicMock())
@@ -121,6 +152,8 @@ def test_party_response_formats_credit_and_strips_country() -> None:
         credit_currency="PLN",
         is_active=True,
         source_ref="tenant:manual",
+        sanctions_list_ref=None,
+        sanctions_checked_at=None,
     )
     dto = PartyResponse.from_row(row)  # type: ignore[arg-type]
     assert dto.country_code == "PL"

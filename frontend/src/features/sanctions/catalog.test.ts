@@ -31,4 +31,18 @@ describe("sanctions surface for 45.0", () => {
     expect(page).not.toContain("CatalogCreateForm")
     expect(page).not.toContain("ofac")
   })
+
+  it("ships screen-sanctions job without live list or auto-match", () => {
+    const page = src("features/sanctions/catalog-page.tsx")
+    const api = src("lib/parties-api.ts")
+    const ops = src("features/ops/ops-index.ts")
+    expect(page).toContain("Zapisz sprawdzenie")
+    expect(page).toContain("screenPartySanctions")
+    expect(page).toContain("sanctions_list_ref")
+    expect(page).not.toContain("ofac")
+    expect(page).not.toContain("risk_score")
+    expect(api).toContain("/screen-sanctions")
+    expect(api).not.toContain("http://")
+    expect(ops).toContain('"89.0": "/sanctions"')
+  })
 })

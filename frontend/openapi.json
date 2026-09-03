@@ -3831,6 +3831,64 @@
         }
       }
     },
+    "/api/v1/parties/{party_id}/screen-sanctions": {
+      "post": {
+        "tags": [
+          "parties"
+        ],
+        "summary": "Screen Party Sanctions",
+        "operationId": "screen_party_sanctions_api_v1_parties__party_id__screen_sanctions_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "party_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Party Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PartyScreenSanctions"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PartyResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/party-scorecards": {
       "get": {
         "tags": [
@@ -8053,6 +8111,29 @@
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
+          },
+          "sanctions_list_ref": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sanctions List Ref"
+          },
+          "sanctions_checked_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sanctions Checked At"
           }
         },
         "type": "object",
@@ -8067,9 +8148,25 @@
           "credit_limit",
           "credit_currency",
           "is_active",
-          "source_ref"
+          "source_ref",
+          "sanctions_list_ref",
+          "sanctions_checked_at"
         ],
         "title": "PartyResponse"
+      },
+      "PartyScreenSanctions": {
+        "properties": {
+          "sanctions_list_ref": {
+            "type": "string",
+            "title": "Sanctions List Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "sanctions_list_ref"
+        ],
+        "title": "PartyScreenSanctions"
       },
       "PortCreate": {
         "properties": {

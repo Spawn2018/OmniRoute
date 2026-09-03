@@ -34,7 +34,7 @@
 | kolej intermodalna | intermodal_rail | 42.0 tablica `port` z flagą `rail`; nie wagon; nie CIM |
 | kolej z Chin | china_rail | 43.0 tablica `port` CN z flagą `rail`; nie korytarz; nie HTTP |
 | drobnica morska | ocean_lcl | 44.0 tablica `port` z `is_seaport`; nie tabela LCL; nie CFS |
-| sankcje | sanctions | 45.0 tablica aktywnych `party` (`tax_id`, `country_code`); nie OFAC; nie HTTP |
+| sankcje | sanctions | 45.0 tablica aktywnych `party`; 89.0 sprawdzenie `sanctions_list_ref` na karcie; nie auto-match; nie live lista |
 | RODO | gdpr | 46.0 tablica `app_user` email; nie wniosek; nie usuwanie |
 | copilot AI | ai_copilot | 47.0 tablica `extraction_draft` pending; 76.0 `mail_draft` obok extract; 81.0 świadomy mailto; nie czat |
 | szkic maila | mail_draft | 76.0 tabela wychodzącego szkicu; accept przez S11; 81.0 status `sent` + `to_address`; nie inbound |

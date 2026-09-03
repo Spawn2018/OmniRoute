@@ -90,6 +90,12 @@ _ENDPOINTS = (
         None,
         {"bureau_attachment_ref": "file://wywiad/raport-1"},
     ),
+    (
+        "POST",
+        "/api/v1/parties/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa/screen-sanctions",
+        None,
+        {"sanctions_list_ref": "fixture://sanctions/eu-1"},
+    ),
 )
 
 

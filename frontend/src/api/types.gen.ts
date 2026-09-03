@@ -1712,6 +1712,24 @@ export type PartyResponse = {
      * Source Ref
      */
     source_ref: string;
+    /**
+     * Sanctions List Ref
+     */
+    sanctions_list_ref: string | null;
+    /**
+     * Sanctions Checked At
+     */
+    sanctions_checked_at: string | null;
+};
+
+/**
+ * PartyScreenSanctions
+ */
+export type PartyScreenSanctions = {
+    /**
+     * Sanctions List Ref
+     */
+    sanctions_list_ref: string;
 };
 
 /**
@@ -4736,6 +4754,36 @@ export type UpsertCarrierProfileApiV1PartiesPartyIdCarrierProfilePutResponses = 
 };
 
 export type UpsertCarrierProfileApiV1PartiesPartyIdCarrierProfilePutResponse = UpsertCarrierProfileApiV1PartiesPartyIdCarrierProfilePutResponses[keyof UpsertCarrierProfileApiV1PartiesPartyIdCarrierProfilePutResponses];
+
+export type ScreenPartySanctionsApiV1PartiesPartyIdScreenSanctionsPostData = {
+    body: PartyScreenSanctions;
+    path: {
+        /**
+         * Party Id
+         */
+        party_id: string;
+    };
+    query?: never;
+    url: '/api/v1/parties/{party_id}/screen-sanctions';
+};
+
+export type ScreenPartySanctionsApiV1PartiesPartyIdScreenSanctionsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ScreenPartySanctionsApiV1PartiesPartyIdScreenSanctionsPostError = ScreenPartySanctionsApiV1PartiesPartyIdScreenSanctionsPostErrors[keyof ScreenPartySanctionsApiV1PartiesPartyIdScreenSanctionsPostErrors];
+
+export type ScreenPartySanctionsApiV1PartiesPartyIdScreenSanctionsPostResponses = {
+    /**
+     * Successful Response
+     */
+    200: PartyResponse;
+};
+
+export type ScreenPartySanctionsApiV1PartiesPartyIdScreenSanctionsPostResponse = ScreenPartySanctionsApiV1PartiesPartyIdScreenSanctionsPostResponses[keyof ScreenPartySanctionsApiV1PartiesPartyIdScreenSanctionsPostResponses];
 
 export type ListScorecardsApiV1PartyScorecardsGetData = {
     body?: never;

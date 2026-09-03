@@ -124,3 +124,20 @@ def lookup_source_ref(source: str) -> str:
     if token == "":
         raise InvalidPartyData("źródło lookupu jest wymagane")
     return f"tenant:lookup:{token}"
+
+
+_SANCTIONS_PREFIXES = ("fixture://sanctions/", "eu://")
+_SANCTIONS_REF_MAX = 256
+
+
+def normalize_sanctions_list_ref(raw: object) -> str:
+    if type(raw) is not str:
+        raise InvalidPartyData("wskazanie listy musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        raise InvalidPartyData("wskazanie listy jest obowiązkowe")
+    if len(token) > _SANCTIONS_REF_MAX:
+        raise InvalidPartyData("wskazanie listy za długie")
+    if not token.startswith(_SANCTIONS_PREFIXES):
+        raise InvalidPartyData("wskazanie listy: fixture://sanctions/ albo eu://")
+    return token

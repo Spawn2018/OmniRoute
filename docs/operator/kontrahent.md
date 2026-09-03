@@ -8,7 +8,8 @@ Lookup po NIP albo VIES **nie zapisuje** karty. Dostajesz szkic. Zapis `party` j
 4. Kontakty, IBAN i domeny maila dopinasz do **tej** karty. Matcher maila sam nic nie wstawia.
 5. Uzgodnienie stawki (`party_charge_override`) siedzi na karcie. Marża i tak liczy się na `charge`, nie tutaj.
 6. Ocena kredytowa to recenzja z decyzją, nie automatyczny scoring osoby.
+7. Na `/sanctions` widzisz aktywnych kontrahentów (`tax_id` i kraj). „Zapisz sprawdzenie” dopina URI listy, którą już masz (`fixture://sanctions/` albo `eu://`) do karty `party`. To nie pobiera listy z sieci i nie oznacza automatycznego trafienia. Pochodzenie karty (`source_ref`) i limit kredytowy zostają. Puste albo obce wskazanie jest odrzucane.
 
-Czego tu nie ma: live GUS w CI, tuple OpenFGA na wiersz, auto-limit kredytowy.
+Czego tu nie ma: live GUS w CI, tuple OpenFGA na wiersz, auto-limit kredytowy, live lista sankcji, auto-match.
 
 Nazwy w kodzie: `party` · `resolve(tax_id)` · `lookup` = szkic.

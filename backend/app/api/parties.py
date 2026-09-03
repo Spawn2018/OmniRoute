@@ -1,3 +1,4 @@
+from datetime import datetime
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, Query, status
@@ -45,6 +46,8 @@ class PartyResponse(BaseModel):
     credit_currency: str | None
     is_active: bool
     source_ref: str
+    sanctions_list_ref: str | None
+    sanctions_checked_at: datetime | None
 
     @classmethod
     def from_row(cls, row: Party) -> "PartyResponse":
@@ -61,6 +64,8 @@ class PartyResponse(BaseModel):
             credit_currency=row.credit_currency,
             is_active=row.is_active,
             source_ref=row.source_ref,
+            sanctions_list_ref=row.sanctions_list_ref,
+            sanctions_checked_at=row.sanctions_checked_at,
         )
 
 
@@ -469,3 +474,24 @@ async def upsert_carrier_profile(
     )
     await session.commit()
     return CarrierProfileResponse.from_row(row)
+
+
+class PartyScreenSanctions(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    sanctions_list_ref: str
+
+
+@router.post("/{party_id}/screen-sanctions", response_model=PartyResponse)
+async def screen_party_sanctions(
+    party_id: UUID,
+    body: PartyScreenSanctions,
+    _authz: None = Depends(_PARTIES),
+    session: AsyncSession = Depends(require_tenant_session),
+) -> PartyResponse:
+    row = await PartyService(session).screen_sanctions(
+        party_id,
+        body.sanctions_list_ref,
+    )
+    await session.commit()
+    return PartyResponse.from_row(row)

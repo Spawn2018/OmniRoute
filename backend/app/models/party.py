@@ -73,3 +73,9 @@ class Party(Base, TimestampMixin):
     vies_checked_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     is_active: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
     source_ref: Mapped[str] = mapped_column(String(256), nullable=False)
+    # URI listy, którą operator już ma — nie live HTTP i nie auto-match.
+    sanctions_list_ref: Mapped[str | None] = mapped_column(Text, nullable=True)
+    sanctions_checked_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True),
+        nullable=True,
+    )

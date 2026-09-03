@@ -46,3 +46,30 @@ def test_generated_api_types_include_party_and_operator_party_id() -> None:
     source = (_ROOT / "frontend" / "src" / "api" / "types.gen.ts").read_text(encoding="utf-8")
     assert "PartyResponse" in source
     assert "operator_party_id" in source
+    assert "sanctions_list_ref" in source
+    assert "PartyScreenSanctions" in source
+
+
+def test_parties_api_has_screen_sanctions_and_no_list_http() -> None:
+    api = (_ROOT / "backend" / "app" / "api" / "parties.py").read_text(encoding="utf-8")
+    assert "screen-sanctions" in api
+    assert "sanctions_list_ref" in api
+    assert "httpx" not in api
+    assert "requests" not in api
+    assert "risk_score" not in api
+
+
+def test_migration_048_adds_sanctions_screen_without_score_or_limit() -> None:
+    path = _ROOT / "backend" / "alembic" / "versions" / "048_party_sanctions_screen.py"
+    assert path.is_file()
+    source = path.read_text(encoding="utf-8")
+    assert 'revision: str = "048_party_sanctions_screen"' in source
+    assert 'down_revision: str | None = "047_review_bureau_ref"' in source
+    assert "sanctions_list_ref" in source
+    assert "sanctions_checked_at" in source
+    lowered = source.lower()
+    assert "score" not in lowered
+    assert "credit_limit" not in lowered
+    assert "ofac" not in lowered
+    assert "def downgrade" in source
+    assert "drop_column" in source.split("def downgrade")[1]

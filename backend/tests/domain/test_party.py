@@ -175,3 +175,20 @@ def test_credit_pair_none_is_ok_and_blank_source_is_rejected() -> None:
     assert _party_domain().normalize_credit_pair(None, None) == (None, None)
     with pytest.raises(_invalid()):
         _party_domain().lookup_source_ref("  ")
+
+
+@given(raw=st.sampled_from(["", " ", "\t", "http://example.test/list"]))
+def test_empty_or_live_http_sanctions_ref_is_rejected(raw: str) -> None:
+    with pytest.raises(_invalid(), match="wskazanie listy"):
+        _party_domain().normalize_sanctions_list_ref(raw)
+
+
+@given(n=st.integers(min_value=257, max_value=400))
+def test_sanctions_list_ref_longer_than_256_is_rejected(n: int) -> None:
+    with pytest.raises(_invalid(), match="za długie"):
+        _party_domain().normalize_sanctions_list_ref("fixture://sanctions/" + ("x" * n))
+
+
+@given(token=st.sampled_from(["fixture://sanctions/eu-1", "eu://consolidated"]))
+def test_allowed_sanctions_list_ref_strips(token: str) -> None:
+    assert _party_domain().normalize_sanctions_list_ref(f" {token} ") == token

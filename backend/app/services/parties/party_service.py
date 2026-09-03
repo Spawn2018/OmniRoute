@@ -40,6 +40,7 @@ from app.domain.party import (
     normalize_email_domain,
     normalize_legal_name,
     normalize_roles,
+    normalize_sanctions_list_ref,
     normalize_tax_id,
 )
 from app.domain.party_scorecard import (
@@ -94,6 +95,16 @@ class PartyService:
         if found is None:
             raise ResourceNotFound(f"nieznany kontrahent: {party_id}")
         return found
+
+    async def screen_sanctions(
+        self,
+        party_id: UUID,
+        sanctions_list_ref: object,
+    ) -> Party:
+        row = await self.get_party(party_id)
+        row.sanctions_list_ref = normalize_sanctions_list_ref(sanctions_list_ref)
+        row.sanctions_checked_at = datetime.now(UTC)
+        return row
 
     async def resolve(self, raw: str) -> Party:
         token = _resolve_tax_token(raw)
