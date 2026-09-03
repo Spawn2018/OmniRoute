@@ -24,4 +24,4 @@ TARIC live, towary niebezpieczne (Q6), osobna tabela aliasów, UN z M-52.
 
 ## 70.0 HS/CN na RFQ i wycenie
 
-Nullable `commodity_code_id` na `customer_rfq` i `quotation`. API składa katalog. Kwota wyceny nadal ze stawki. `/mail` Podpnij HS. `/quotations` picker. UN z M-52 leftover.
+Nullable `commodity_code_id` na `customer_rfq` i `quotation`. API składa katalog. Kwota wyceny nadal ze stawki. `/mail` Podpnij HS. `/quotations` picker. UN = 122.0.

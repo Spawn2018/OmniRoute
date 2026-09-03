@@ -88,7 +88,7 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 <!-- os-status:start -->
 - **Ostatni plaster:** **121.0** leftover S11 `changed` na `operator_decision` (M-71)
 - **Etap:** Plan
-- **Następny:** `/plan-modul` leftover S7 **UN z M-52** na RFQ. Nie LLM. Nie F9.1.
+- **Następny:** `/plaster` **122.0** — leftover S7 UN z M-52 na RFQ/wycenie. Nie LLM. Nie F9.1.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

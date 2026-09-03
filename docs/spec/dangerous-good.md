@@ -1,7 +1,9 @@
 # M-52 dangerous_good — katalog towarów niebezpiecznych
 
-**Plaster:** 7.0 (delta `docs/deltas/archived/7.0-dangerous-good.md`)  
-**Status:** ukończony (fundament) — katalog numeru UN + klasy IMDG per tenant. Nie podpięcie do wyceny. Nie żywe M-08 `charge`.
+**Plaster:** 7.0 (katalog) · **122.0** (S7 leftover UN na RFQ, plan)  
+**Status:** katalog numeru UN + klasy IMDG per tenant. 122.0 podpina `dangerous_good_id` do RFQ i wyceny. Nie żywe M-08 `charge`.
+
+Delta: [7.0](../deltas/archived/7.0-dangerous-good.md) · [122.0](../deltas/open/122.0-un-on-rfq.md).
 
 ## Zakres
 
@@ -13,7 +15,18 @@
 
 ## Poza zakresem
 
-`quotation` / `commodity_code` z FK · ADN/ADR jako osobne tabele · grupy zgodności 1.xA · packing group · live IMO · nadpisanie M-08 `charge`
+`quotation` / `commodity_code` z FK w 7.0 · ADN/ADR jako osobne tabele · grupy zgodności 1.xA · packing group · live IMO · nadpisanie M-08 `charge`
+
+## 122.0 UN na RFQ i wycenie
+
+### Zakres
+
+- Nullable `dangerous_good_id` na `customer_rfq` i `quotation`
+- API składa katalog. Kwota wyceny nadal ze stawki. `/mail` Podpnij UN.
+
+### Poza 122.0
+
+Live IMO · LLM nadaje UN · filtr `rate_line` po UN
 
 ## HC
 

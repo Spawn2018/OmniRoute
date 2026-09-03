@@ -309,3 +309,4 @@
 | 2026-09-04 | 120.0 | M-13 | S27b: karta czyta przyjęte/odrzucone wyceny. Nie scoring osoby. Następny: leftover S11 `changed`. |
 | 2026-09-04 | Plan 121.0 | M-71 | Leftover S11 `changed`. Delta zaakceptowana (`/noc`). Nie extract. Następny: `/plaster` 121.0. |
 | 2026-09-04 | 121.0 | M-71 | Leftover S11: werdykt `changed` z lock. Nie extract. Następny: leftover S7 UN na RFQ. |
+| 2026-09-04 | Plan 122.0 | M-52 | S7b: UN na RFQ/wycenie. Delta zaakceptowana (`/noc`). Nie LLM. Następny: `/plaster` 122.0. |
