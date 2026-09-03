@@ -88,7 +88,7 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 <!-- os-status:start -->
 - **Ostatni plaster:** **83.0** S20 zapytanie do agenta (M-30)
 - **Etap:** Plan
-- **Następny:** `/plan-modul` **S21** — live HTTP kanału (M-19) **przy umowie**. Bez umowy = park. Nie F9.1.
+- **Następny:** `/plan-modul` **S22** — porównanie odpowiedzi (M-31). Spread w `charge`. Nie F9.1.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

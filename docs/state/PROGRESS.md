@@ -235,3 +235,4 @@
 | 2026-09-03 | 82.0 | M-12 | Tabela `network_member` RLS. Ręczny agent w sieci. Nie portal. Następny: S20 Plan. |
 | 2026-09-03 | Plan 83.0 | M-30 | S20: tabela `carrier_inquiry` (buy, do `network_member`). Delta zaakceptowana (`/noc`). Nie live HTTP. Następny: `/plaster` 83.0. |
 | 2026-09-03 | 83.0 | M-30 | Tabela `carrier_inquiry` RLS. Zapytanie do `network_member`, draft, bez kwoty. Nie live HTTP. Następny: S21 Plan. |
+| 2026-09-03 | S21 park | M-19 | Live HTTP kanału zaparkowane — brak umowy. Nie teatr HTTP. Następny: S22 Plan. |

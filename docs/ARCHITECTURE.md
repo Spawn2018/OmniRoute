@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **83.0** S20 zapytanie do agenta (M-30). **Etap:** Plan. **Następny:** `/plan-modul` **S21** — live HTTP kanału (M-19) **przy umowie**. Bez umowy = park. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **83.0** S20 zapytanie do agenta (M-30). **Etap:** Plan. **Następny:** `/plan-modul` **S22** — porównanie odpowiedzi (M-31). Spread w `charge`. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
