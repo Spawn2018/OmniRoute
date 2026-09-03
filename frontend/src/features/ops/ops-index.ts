@@ -208,6 +208,11 @@ export const OPS_JOBS = [
     label: "Recenzje kredytowe",
     job: "katalog credit_review + resolve",
   },
+  {
+    route: BUSINESS_LISTS.operatorDecisions.route,
+    label: "Decyzje",
+    job: "szyna operator_decision accept/reject",
+  },
   { route: BUSINESS_LISTS.users.route, label: "Użytkownicy", job: "tenant users" },
   { route: "/session", label: "Sesja", job: "token klienta" },
 ] as const
@@ -270,6 +275,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "48.0": "/health",
   "49.0": "/quality",
   "50.0": "/rollout",
+  "74.0": "/decisions",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

@@ -48,6 +48,7 @@ const NAV = [
   { to: "/party-scorecards", label: "Karty wyników" },
   { to: "/customer-sops", label: "Procedury klienta" },
   { to: "/credit-reviews", label: "Recenzje kredytowe" },
+  { to: "/decisions", label: "Decyzje" },
   { to: "/organization-settings", label: "Ustawienia" },
   { to: "/session", label: "Sesja" },
 ] as const

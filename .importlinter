@@ -31,6 +31,7 @@ modules =
     app.services.networks
     app.services.inbound_messages
     app.services.customer_rfqs
+    app.services.operator_decisions
     app.services.port_surcharges
     app.services.channel_quotes
 
@@ -92,6 +93,9 @@ forbidden_modules =
     app.services.customer_rfqs
     app.repositories.customer_rfqs
     app.models.customer_rfq
+    app.services.operator_decisions
+    app.repositories.operator_decisions
+    app.models.operator_decision
     app.services.port_surcharges
     app.repositories.port_surcharges
     app.models.port_surcharge

@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** `/plaster` **74.0** — szyna `operator_decision` (M-71). Nie M-57. Nie F9.1.
+**Następny (zablokowany):** `/plan-modul` **S12** — tabela powiadomień (M-34). Nie filtr pending z wycen. Nie F9.1.
 <!-- os-status:end -->
 
 ```mermaid
@@ -386,7 +386,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E2** | Testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy) | 61.0 | zamknięty (`docs/deltas/archived/61.0-alembic-quote-budget.md`) |
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | 62.0 | zamknięty (`docs/deltas/archived/62.0-operator-howto-c4.md`) |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | 63.0 | zamknięty (`docs/deltas/archived/63.0-threat-model-codeql.md`) |
-| po Q-E4 | **Fala S**, S1–S10 zamknięte; S11 plan 74.0 | Plan → plaster | **następny** |
+| po Q-E4 | **Fala S**, S1–S11 zamknięte; S12 plan | Plan → plaster | **następny** |
 
 ### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
 
@@ -416,8 +416,8 @@ Reguły kolejności (żeby `/noc` nie złożył awarii):
 | S8 | Żywe **M-03** reszta + arch. M-84 (scalać) | 71.0 | zamknięty (`docs/deltas/archived/71.0-org-number-template.md`) | Prefiks i token szablonu. Nie licznik. Nie PDF |
 | S9 | Żywe **M-26** dokument oferty | 72.0 | zamknięty (`docs/deltas/archived/72.0-offer-document-number.md`) | Numer na ofercie + print 57.0. Nie send |
 | S10 | Żywe **M-16** SOP „kiedy nie wolno auto” | 73.0 | zamknięty (`docs/deltas/archived/73.0-sop-blocks-auto.md`) | `blocks_auto`. Nie send |
-| **S11** | Arch. **M-179** szyna Akceptuj/Zmień/Odrzuć | 74.0 | **następny** | Żywy **M-71** `operator_decision`. Nie M-57 |
-| S12 | Żywe **M-34** tabela powiadomień | Plan → plaster | po S11 | Nie filtr pending z wycen |
+| **S11** | Arch. **M-179** szyna Akceptuj/Zmień/Odrzuć | 74.0 | zamknięty (`docs/deltas/archived/74.0-operator-decision.md`) | Żywy **M-71**. Nie M-57. `changed` leftover S13/S14 |
+| S12 | Żywe **M-34** tabela powiadomień | Plan → plaster | **następny** | Nie filtr pending z wycen |
 | S13 | Żywe **M-57** draft maila obok extract | Plan → plaster | po S12 | Accept przez S11. Nie czat. Nie drugi `rate_line` |
 | S14 | Arch. **M-187** lock optymistyczny na decyzji | Plan → plaster | po S13 | Dwa okna, dwa Akceptuj |
 | **S15** | Żywe **M-32** tylko ingest Graph | Plan → plaster | po S14 | Sekret tenanta, idempotencja. Wpinaj M-185/190/191/192. **Zakaz send** |

@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **73.0** S10 SOP `blocks_auto`
+- **Ostatni plaster:** **74.0** S11 szyna `operator_decision` (M-71)
 - **Etap:** Plan
-- **Następny:** `/plaster` **74.0** — szyna `operator_decision` (M-71). Nie M-57. Nie F9.1.
+- **Następny:** `/plan-modul` **S12** — tabela powiadomień (M-34). Nie filtr pending z wycen. Nie F9.1.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

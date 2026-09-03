@@ -37,6 +37,7 @@ from app.models.carrier_profile import CarrierProfile  # noqa: F401
 from app.models.party_scorecard import PartyScorecard  # noqa: F401
 from app.models.customer_sop import CustomerSop  # noqa: F401
 from app.models.port_surcharge import PortSurcharge  # noqa: F401
+from app.models.operator_decision import OperatorDecision  # noqa: F401
 
 config = context.config
 # Testy nadpisują URL na omniroute_test. Domyślnie owner z settings — nie runtime omniroute_app.

@@ -1147,6 +1147,68 @@ export type NetworkResponse = {
 };
 
 /**
+ * OperatorDecisionCreate
+ */
+export type OperatorDecisionCreate = {
+    /**
+     * Subject Kind
+     */
+    subject_kind: string;
+    /**
+     * Subject Id
+     */
+    subject_id: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * OperatorDecisionDecide
+ */
+export type OperatorDecisionDecide = {
+    /**
+     * Status
+     */
+    status: string;
+};
+
+/**
+ * OperatorDecisionResponse
+ */
+export type OperatorDecisionResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Subject Kind
+     */
+    subject_kind: string;
+    /**
+     * Subject Id
+     */
+    subject_id: string;
+    /**
+     * Status
+     */
+    status: string;
+    /**
+     * Decided At
+     */
+    decided_at: string | null;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * OrganizationSettingResponse
  */
 export type OrganizationSettingResponse = {
@@ -2897,6 +2959,79 @@ export type PatchCustomerRfqApiV1CustomerRfqsRfqIdPatchResponses = {
 };
 
 export type PatchCustomerRfqApiV1CustomerRfqsRfqIdPatchResponse = PatchCustomerRfqApiV1CustomerRfqsRfqIdPatchResponses[keyof PatchCustomerRfqApiV1CustomerRfqsRfqIdPatchResponses];
+
+export type ListOperatorDecisionsApiV1OperatorDecisionsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/operator-decisions';
+};
+
+export type ListOperatorDecisionsApiV1OperatorDecisionsGetResponses = {
+    /**
+     * Response List Operator Decisions Api V1 Operator Decisions Get
+     *
+     * Successful Response
+     */
+    200: Array<OperatorDecisionResponse>;
+};
+
+export type ListOperatorDecisionsApiV1OperatorDecisionsGetResponse = ListOperatorDecisionsApiV1OperatorDecisionsGetResponses[keyof ListOperatorDecisionsApiV1OperatorDecisionsGetResponses];
+
+export type CreateOperatorDecisionApiV1OperatorDecisionsPostData = {
+    body: OperatorDecisionCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/operator-decisions';
+};
+
+export type CreateOperatorDecisionApiV1OperatorDecisionsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateOperatorDecisionApiV1OperatorDecisionsPostError = CreateOperatorDecisionApiV1OperatorDecisionsPostErrors[keyof CreateOperatorDecisionApiV1OperatorDecisionsPostErrors];
+
+export type CreateOperatorDecisionApiV1OperatorDecisionsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: OperatorDecisionResponse;
+};
+
+export type CreateOperatorDecisionApiV1OperatorDecisionsPostResponse = CreateOperatorDecisionApiV1OperatorDecisionsPostResponses[keyof CreateOperatorDecisionApiV1OperatorDecisionsPostResponses];
+
+export type DecideOperatorDecisionApiV1OperatorDecisionsDecisionIdDecidePostData = {
+    body: OperatorDecisionDecide;
+    path: {
+        /**
+         * Decision Id
+         */
+        decision_id: string;
+    };
+    query?: never;
+    url: '/api/v1/operator-decisions/{decision_id}/decide';
+};
+
+export type DecideOperatorDecisionApiV1OperatorDecisionsDecisionIdDecidePostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type DecideOperatorDecisionApiV1OperatorDecisionsDecisionIdDecidePostError = DecideOperatorDecisionApiV1OperatorDecisionsDecisionIdDecidePostErrors[keyof DecideOperatorDecisionApiV1OperatorDecisionsDecisionIdDecidePostErrors];
+
+export type DecideOperatorDecisionApiV1OperatorDecisionsDecisionIdDecidePostResponses = {
+    /**
+     * Successful Response
+     */
+    200: OperatorDecisionResponse;
+};
+
+export type DecideOperatorDecisionApiV1OperatorDecisionsDecisionIdDecidePostResponse = DecideOperatorDecisionApiV1OperatorDecisionsDecisionIdDecidePostResponses[keyof DecideOperatorDecisionApiV1OperatorDecisionsDecisionIdDecidePostResponses];
 
 export type ListNbpRatesApiV1NbpRatesGetData = {
     body?: never;

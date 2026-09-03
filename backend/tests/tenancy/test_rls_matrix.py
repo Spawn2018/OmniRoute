@@ -37,6 +37,7 @@ _ALL_TENANT_POLICY_NAMES = (
     "channel_quote_tenant_isolation",
     "credit_review_tenant_isolation",
     "inbound_message_tenant_isolation",
+    "operator_decision_tenant_isolation",
 )
 
 

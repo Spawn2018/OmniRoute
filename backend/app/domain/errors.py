@@ -312,3 +312,11 @@ class UnknownCreditReview(DomainError):
 
 class CreditReviewConflict(DomainError):
     """Recenzja na ten dzień u tego kontrahenta już istnieje."""
+
+
+class InvalidOperatorDecision(DomainError):
+    """Szyna decyzji: kind, status albo subject_id — nie accept extractu."""
+
+
+class OperatorDecisionConflict(DomainError):
+    """Pending na ten subject już istnieje w tenancie."""
