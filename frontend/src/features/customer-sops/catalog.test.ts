@@ -14,12 +14,14 @@ describe("customerSopCreateBody", () => {
         code: " Pre-Alert ",
         title: " Pre alert ",
         body: "  treść  ",
+        blocksAuto: true,
       }),
     ).toEqual({
       party_id: "party-1",
       code: "Pre-Alert",
       title: "Pre alert",
       body: "treść",
+      blocks_auto: true,
     })
   })
 })
@@ -43,6 +45,8 @@ describe("customer-sops catalog surface for 11.0", () => {
     expect(page).toContain("CatalogLoadedTable")
     expect(page).toContain("approveCustomerSop")
     expect(page).toContain("source_ref")
+    expect(page).toContain("Blokuj auto")
+    expect(page).toContain("blocks_auto")
     expect(page).not.toContain("amount")
     expect(page).not.toContain("CatalogCreateForm")
     expect(page).not.toContain("charge.margin")

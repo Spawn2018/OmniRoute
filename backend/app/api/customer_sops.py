@@ -22,6 +22,12 @@ class CustomerSopCreate(BaseModel):
     code: str = Field(min_length=1, max_length=32)
     title: str = Field(min_length=1, max_length=128)
     body: str = Field(min_length=1, max_length=8000)
+    blocks_auto: bool = True
+
+
+class CustomerSopAutoBlock(BaseModel):
+    party_id: UUID
+    blocks_auto: bool
 
 
 class CustomerSopResponse(BaseModel):
@@ -35,6 +41,7 @@ class CustomerSopResponse(BaseModel):
     body: str
     status: str
     approved_at: datetime | None
+    blocks_auto: bool
     source_ref: str
 
     @classmethod
@@ -79,9 +86,20 @@ async def create_customer_sop(
         code=body.code,
         title=body.title,
         body=body.body,
+        blocks_auto=body.blocks_auto,
     )
     await session.commit()
     return CustomerSopResponse.from_row(row)
+
+
+@router.get("/auto-block", response_model=CustomerSopAutoBlock)
+async def customer_sop_auto_block(
+    party_id: UUID = Query(...),
+    _authz: None = Depends(_PARTIES),
+    session: AsyncSession = Depends(require_tenant_session),
+) -> CustomerSopAutoBlock:
+    blocked = await PartyService(session).party_blocks_auto(party_id)
+    return CustomerSopAutoBlock(party_id=party_id, blocks_auto=blocked)
 
 
 @router.post("/{sop_id}/approve", response_model=CustomerSopResponse)

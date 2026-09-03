@@ -617,6 +617,20 @@ export type CustomerRfqResponse = {
 };
 
 /**
+ * CustomerSopAutoBlock
+ */
+export type CustomerSopAutoBlock = {
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Blocks Auto
+     */
+    blocks_auto: boolean;
+};
+
+/**
  * CustomerSopCreate
  */
 export type CustomerSopCreate = {
@@ -636,6 +650,10 @@ export type CustomerSopCreate = {
      * Body
      */
     body: string;
+    /**
+     * Blocks Auto
+     */
+    blocks_auto?: boolean;
 };
 
 /**
@@ -674,6 +692,10 @@ export type CustomerSopResponse = {
      * Approved At
      */
     approved_at: string | null;
+    /**
+     * Blocks Auto
+     */
+    blocks_auto: boolean;
     /**
      * Source Ref
      */
@@ -4033,6 +4055,36 @@ export type ResolveCustomerSopApiV1CustomerSopsResolveGetResponses = {
 };
 
 export type ResolveCustomerSopApiV1CustomerSopsResolveGetResponse = ResolveCustomerSopApiV1CustomerSopsResolveGetResponses[keyof ResolveCustomerSopApiV1CustomerSopsResolveGetResponses];
+
+export type CustomerSopAutoBlockApiV1CustomerSopsAutoBlockGetData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Party Id
+         */
+        party_id: string;
+    };
+    url: '/api/v1/customer-sops/auto-block';
+};
+
+export type CustomerSopAutoBlockApiV1CustomerSopsAutoBlockGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CustomerSopAutoBlockApiV1CustomerSopsAutoBlockGetError = CustomerSopAutoBlockApiV1CustomerSopsAutoBlockGetErrors[keyof CustomerSopAutoBlockApiV1CustomerSopsAutoBlockGetErrors];
+
+export type CustomerSopAutoBlockApiV1CustomerSopsAutoBlockGetResponses = {
+    /**
+     * Successful Response
+     */
+    200: CustomerSopAutoBlock;
+};
+
+export type CustomerSopAutoBlockApiV1CustomerSopsAutoBlockGetResponse = CustomerSopAutoBlockApiV1CustomerSopsAutoBlockGetResponses[keyof CustomerSopAutoBlockApiV1CustomerSopsAutoBlockGetResponses];
 
 export type ApproveCustomerSopApiV1CustomerSopsSopIdApprovePostData = {
     body?: never;

@@ -36,3 +36,9 @@ def normalize_sop_body(raw: object) -> str:
     if len(body) > _BODY_MAX:
         raise InvalidCustomerSop("treść SOP za długa")
     return body
+
+
+def normalize_sop_blocks_auto(raw: object) -> bool:
+    if type(raw) is not bool:
+        raise InvalidCustomerSop("blokada auto musi być tak albo nie")
+    return raw

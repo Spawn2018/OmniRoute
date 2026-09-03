@@ -10,6 +10,7 @@ export type CustomerSop = {
   body: string
   status: "draft" | "approved"
   approved_at: string | null
+  blocks_auto: boolean
   source_ref: string
 }
 
@@ -18,6 +19,7 @@ export type CustomerSopDraft = {
   code: string
   title: string
   body: string
+  blocksAuto: boolean
 }
 
 export const EMPTY_SOP_DRAFT: CustomerSopDraft = {
@@ -25,6 +27,7 @@ export const EMPTY_SOP_DRAFT: CustomerSopDraft = {
   code: "",
   title: "",
   body: "",
+  blocksAuto: true,
 }
 
 export function customerSopsForParty<
@@ -41,12 +44,14 @@ export function customerSopCreateBody(draft: CustomerSopDraft): {
   code: string
   title: string
   body: string
+  blocks_auto: boolean
 } {
   return {
     party_id: draft.partyId.trim(),
     code: draft.code.trim(),
     title: draft.title.trim(),
     body: draft.body.trim(),
+    blocks_auto: draft.blocksAuto,
   }
 }
 
@@ -82,6 +87,20 @@ export async function resolveCustomerSop(partyId: string, code: string): Promise
     headers: requireAuthHeaders(),
   })
   return readSop(response, "Nieznana procedura")
+}
+
+export async function fetchCustomerSopAutoBlock(partyId: string): Promise<{
+  party_id: string
+  blocks_auto: boolean
+}> {
+  const params = new URLSearchParams({ party_id: partyId })
+  const response = await fetch(`/api/v1/customer-sops/auto-block?${params.toString()}`, {
+    headers: requireAuthHeaders(),
+  })
+  if (!response.ok) {
+    throw new ApiError(await readApiDetail(response, "Błąd blokady auto"), httpErrorStatus(response))
+  }
+  return (await response.json()) as { party_id: string; blocks_auto: boolean }
 }
 
 export async function approveCustomerSop(sopId: string): Promise<CustomerSop> {

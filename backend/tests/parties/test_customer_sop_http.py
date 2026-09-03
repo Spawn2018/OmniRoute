@@ -48,6 +48,7 @@ class StubPartyService:
         code: object,
         title: object,
         body: object,
+        blocks_auto: object = True,
     ) -> CustomerSop:
         if str(party_id) == "00000000-0000-0000-0000-000000000000":
             raise UnknownParty(f"nieznany kontrahent: {party_id}")
@@ -61,11 +62,18 @@ class StubPartyService:
             title=str(title).strip(),
             body=str(body).strip(),
             approved_at=None,
+            blocks_auto=bool(blocks_auto),
             source_ref="tenant:manual",
             created_by=user_id,
         )
         self.rows.append(row)
         return row
+
+    async def party_blocks_auto(self, party_id: UUID) -> bool:
+        return any(
+            row.party_id == party_id and row.status == "approved" and row.blocks_auto
+            for row in self.rows
+        )
 
     async def approve_sop(self, sop_id: UUID) -> CustomerSop:
         for row in self.rows:
@@ -119,7 +127,16 @@ def test_http_create_list_resolve_and_approve(catalog_client: TestClient) -> Non
     assert body["status"] == "draft"
     assert body["approved_at"] is None
     assert body["source_ref"] == "tenant:manual"
+    assert body["blocks_auto"] is True
     assert "amount" not in body
+
+    draft_block = catalog_client.get(
+        "/api/v1/customer-sops/auto-block",
+        headers=headers,
+        params={"party_id": str(party_id)},
+    )
+    assert draft_block.status_code == 200
+    assert draft_block.json() == {"party_id": str(party_id), "blocks_auto": False}
 
     listed = catalog_client.get("/api/v1/customer-sops", headers=headers)
     assert listed.status_code == 200
@@ -140,6 +157,14 @@ def test_http_create_list_resolve_and_approve(catalog_client: TestClient) -> Non
     assert approved.status_code == 200
     assert approved.json()["status"] == "approved"
     assert approved.json()["approved_at"] is not None
+    assert approved.json()["blocks_auto"] is True
+
+    blocked = catalog_client.get(
+        "/api/v1/customer-sops/auto-block",
+        headers=headers,
+        params={"party_id": str(party_id)},
+    )
+    assert blocked.json()["blocks_auto"] is True
 
 
 def test_http_resolve_unknown_is_rejected(catalog_client: TestClient) -> None:

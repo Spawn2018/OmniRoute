@@ -28,6 +28,7 @@ def test_pricing_and_extraction_do_not_import_customer_sop() -> None:
         "nbp_rates",
         "dangerous_goods",
         "networks",
+        "inbound_messages",
     ):
         for path in (_SERVICES / bounded).rglob("*.py"):
             text = path.read_text(encoding="utf-8")
@@ -39,3 +40,14 @@ def test_generated_api_types_include_customer_sop() -> None:
     source = (_ROOT / "frontend" / "src" / "api" / "types.gen.ts").read_text(encoding="utf-8")
     assert "CustomerSopResponse" in source
     assert "CustomerSopCreate" in source
+
+
+def test_migration_033_adds_blocks_auto_without_new_rls() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "033_customer_sop_blocks_auto.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "033_customer_sop_blocks_auto"' in source
+    assert 'down_revision: str | None = "032_quotation_document_number"' in source
+    assert "blocks_auto" in source
+    assert "FORCE ROW LEVEL SECURITY" not in source
+    assert "blocks_auto" in source.split("def downgrade")[1]

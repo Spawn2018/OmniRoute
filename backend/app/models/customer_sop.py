@@ -2,6 +2,7 @@ import uuid
 from datetime import datetime
 
 from sqlalchemy import (
+    Boolean,
     CheckConstraint,
     DateTime,
     ForeignKey,
@@ -55,4 +56,9 @@ class CustomerSop(Base, TimestampMixin):
     title: Mapped[str] = mapped_column(String(128), nullable=False)
     body: Mapped[str] = mapped_column(Text, nullable=False)
     approved_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    blocks_auto: Mapped[bool] = mapped_column(
+        Boolean,
+        nullable=False,
+        server_default=text("true"),
+    )
     source_ref: Mapped[str] = mapped_column(String(256), nullable=False)

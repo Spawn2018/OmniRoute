@@ -25,7 +25,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-11 | Automatyczne kontakty | 8.0 `resolve_email` | **ukończony (fundament)** · matcher domeny z 5.0; nie IMAP; nie portal |
 | M-12 | Sieci i stowarzyszenia | 9.0 `network` | **ukończony (fundament)** · katalog sieci; nie `network_member`; nie scraping |
 | M-13 | Karta wyników kontrahenta | 10.0 `party_scorecard` | **ukończony (fundament)** · snapshot karty; nie SQL-refresh; nie scoring osoby |
-| M-16 | Procedury operacyjne klienta | 11.0 `customer_sop` | **ukończony (fundament)** · katalog + zatwierdzenie; nie generator zadań; nie M-35 |
+| M-16 | Procedury operacyjne klienta | 11.0 `customer_sop` · 73.0 `blocks_auto` | **ukończony (fundament)** · zatwierdzona SOP może blokować auto; nie send; nie S11 |
 | M-18 | Opłaty portowe warunkowe | 12.0 `port_surcharge` · 69.0 matching `applies_when` | **ukończony (fundament)** · katalog extra + SQL równość warunku; nie zapis do `charge`; nie parser AST |
 | M-19 | Stawki live i kanały | 13.0 `channel_quote` | **ukończony (fundament)** · katalog oferty; nie live HTTP; nie zapis do `rate_line` / `charge` |
 | M-14 | Ocena kredytowa | 14.0 `credit_review` | **ukończony (fundament)** · katalog recenzji; nie auto-scoring; nie zapis `credit_limit` |

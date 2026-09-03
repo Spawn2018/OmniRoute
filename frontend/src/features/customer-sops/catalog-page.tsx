@@ -34,6 +34,10 @@ function catalogColumns(onApprove: (id: string) => void) {
     }),
     helper.accessor("title", { header: "Tytuł" }),
     helper.accessor("status", { header: "Status" }),
+    helper.accessor("blocks_auto", {
+      header: "Blokuj auto",
+      cell: (info) => (info.getValue() ? "tak" : "nie"),
+    }),
     helper.accessor("source_ref", { header: "Źródło" }),
     helper.display({
       id: "approve",
@@ -55,6 +59,7 @@ const COLUMN_LABELS = {
   code: "Kod",
   title: "Tytuł",
   status: "Status",
+  blocks_auto: "Blokuj auto",
   source_ref: "Źródło",
   approve: "Zatwierdzenie",
 }
@@ -122,6 +127,14 @@ export function CustomerSopCatalogPage() {
           onChange={(event) => setDraft({ ...draft, title: event.target.value })}
           required
         />
+        <label className="flex items-center gap-2 text-sm">
+          <input
+            type="checkbox"
+            checked={draft.blocksAuto}
+            onChange={(event) => setDraft({ ...draft, blocksAuto: event.target.checked })}
+          />
+          Blokuj auto
+        </label>
         <textarea
           aria-label="Treść procedury"
           placeholder="treść operacyjna"

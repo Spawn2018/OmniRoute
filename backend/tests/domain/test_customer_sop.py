@@ -2,7 +2,12 @@ import pytest
 from hypothesis import given
 from hypothesis import strategies as st
 
-from app.domain.customer_sop import normalize_sop_body, normalize_sop_code, normalize_sop_title
+from app.domain.customer_sop import (
+    normalize_sop_blocks_auto,
+    normalize_sop_body,
+    normalize_sop_code,
+    normalize_sop_title,
+)
 from app.domain.errors import InvalidCustomerSop
 
 _TOKEN = st.from_regex(r"[a-z][a-z0-9_]{1,31}", fullmatch=True)
@@ -50,3 +55,10 @@ def test_normalize_sop_body_rejects_over_limit() -> None:
 def test_normalize_sop_code_is_idempotent(token: str) -> None:
     assert normalize_sop_code(token) == token
     assert normalize_sop_code(f" {token} ") == token
+
+
+def test_normalize_sop_blocks_auto_requires_bool() -> None:
+    assert normalize_sop_blocks_auto(True) is True
+    assert normalize_sop_blocks_auto(False) is False
+    with pytest.raises(InvalidCustomerSop, match="auto"):
+        normalize_sop_blocks_auto("true")

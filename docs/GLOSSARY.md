@@ -108,7 +108,7 @@
 | wskaźnik odpowiedzi | response_rate | 0–1 Numeric na karcie; NULL = nieznany |
 | mediana czasu odpowiedzi | median_response_hours | godziny Numeric na karcie |
 | pozycja cenowa | price_position | 0–1 Numeric na karcie partii w 10.0; per lane = leftover |
-| procedura operacyjna klienta | customer_sop | M-16; katalog per `party`; draft/zatwierdzenie; nie generator zadań |
+| procedura operacyjna klienta | customer_sop | M-16; 11.0 katalog; 73.0 `blocks_auto`; nie send; nie generator zadań |
 | numer WPI | wpi_number | World Port Index (NGA Pub 150) na `port` |
 | wielkość portu | harbor_size | WPI: Very Small / Small / Medium / Large |
 | typ portu | harbor_type | WPI, słownik NGA |

@@ -138,6 +138,16 @@ class PartyRepository:
         result = await self._session.scalars(select(CustomerSop).order_by(CustomerSop.title))
         return list(result.all())
 
+    async def approved_sop_blocks_auto(self, party_id: UUID) -> bool:
+        found = await self._session.scalar(
+            select(CustomerSop.id).where(
+                CustomerSop.party_id == party_id,
+                CustomerSop.status == "approved",
+                CustomerSop.blocks_auto.is_(True),
+            ),
+        )
+        return found is not None
+
     async def add_sop(self, row: CustomerSop) -> CustomerSop:
         self._session.add(row)
         await self._session.flush()

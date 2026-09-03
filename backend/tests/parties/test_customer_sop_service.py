@@ -63,6 +63,7 @@ async def test_create_sop_starts_as_draft_with_manual_origin() -> None:
     assert stored.approved_at is None
     assert stored.source_ref == "tenant:manual"
     assert stored.organization_id == org_id
+    assert stored.blocks_auto is True
 
 
 @pytest.mark.asyncio
@@ -159,3 +160,20 @@ async def test_approve_sop_unknown() -> None:
     service._parties.get_sop = AsyncMock(return_value=None)
     with pytest.raises(UnknownCustomerSop, match="nieznana procedura"):
         await service.approve_sop(uuid4())
+
+
+@pytest.mark.asyncio
+async def test_party_blocks_auto_requires_known_party() -> None:
+    service = _service()
+    service._parties.get = AsyncMock(return_value=None)
+    with pytest.raises(UnknownParty):
+        await service.party_blocks_auto(uuid4())
+
+
+@pytest.mark.asyncio
+async def test_party_blocks_auto_reads_repository() -> None:
+    service = _service()
+    party_id = uuid4()
+    service._parties.get = AsyncMock(return_value=SimpleNamespace(id=party_id))
+    service._parties.approved_sop_blocks_auto = AsyncMock(return_value=True)
+    assert await service.party_blocks_auto(party_id) is True

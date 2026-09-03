@@ -11,7 +11,12 @@ from app.domain.credit_review import (
     normalize_review_decision,
     normalize_review_note,
 )
-from app.domain.customer_sop import normalize_sop_body, normalize_sop_code, normalize_sop_title
+from app.domain.customer_sop import (
+    normalize_sop_blocks_auto,
+    normalize_sop_body,
+    normalize_sop_code,
+    normalize_sop_title,
+)
 from app.domain.errors import (
     CreditReviewConflict,
     CustomerSopAlreadyApproved,
@@ -423,10 +428,12 @@ class PartyService:
         code: object,
         title: object,
         body: object,
+        blocks_auto: object = True,
     ) -> CustomerSop:
         token = normalize_sop_code(code)
         heading = normalize_sop_title(title)
         text_body = normalize_sop_body(body)
+        auto_block = normalize_sop_blocks_auto(blocks_auto)
         await self._require_known_party(party_id)
         duplicate = await self._parties.find_sop_by_party_and_code(party_id, token)
         if duplicate is not None:
@@ -440,6 +447,7 @@ class PartyService:
             title=heading,
             body=text_body,
             approved_at=None,
+            blocks_auto=auto_block,
             source_ref=manual_source_ref(),
             created_by=user_id,
         )
@@ -490,6 +498,10 @@ class PartyService:
             return await self._parties.add_review(row)
         except IntegrityError as exc:
             raise CreditReviewConflict(f"recenzja na {day.isoformat()} już istnieje") from exc
+
+    async def party_blocks_auto(self, party_id: UUID) -> bool:
+        await self._require_known_party(party_id)
+        return await self._parties.approved_sop_blocks_auto(party_id)
 
     async def approve_sop(self, sop_id: UUID) -> CustomerSop:
         found = await self._parties.get_sop(sop_id)

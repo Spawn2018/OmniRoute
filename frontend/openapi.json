@@ -3380,6 +3380,54 @@
         }
       }
     },
+    "/api/v1/customer-sops/auto-block": {
+      "get": {
+        "tags": [
+          "customer-sops"
+        ],
+        "summary": "Customer Sop Auto Block",
+        "operationId": "customer_sop_auto_block_api_v1_customer_sops_auto_block_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "party_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Party Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomerSopAutoBlock"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/customer-sops/{sop_id}/approve": {
       "post": {
         "tags": [
@@ -5305,6 +5353,25 @@
         ],
         "title": "CustomerRfqResponse"
       },
+      "CustomerSopAutoBlock": {
+        "properties": {
+          "party_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Party Id"
+          },
+          "blocks_auto": {
+            "type": "boolean",
+            "title": "Blocks Auto"
+          }
+        },
+        "type": "object",
+        "required": [
+          "party_id",
+          "blocks_auto"
+        ],
+        "title": "CustomerSopAutoBlock"
+      },
       "CustomerSopCreate": {
         "properties": {
           "party_id": {
@@ -5329,6 +5396,11 @@
             "maxLength": 8000,
             "minLength": 1,
             "title": "Body"
+          },
+          "blocks_auto": {
+            "type": "boolean",
+            "title": "Blocks Auto",
+            "default": true
           }
         },
         "additionalProperties": false,
@@ -5386,6 +5458,10 @@
             ],
             "title": "Approved At"
           },
+          "blocks_auto": {
+            "type": "boolean",
+            "title": "Blocks Auto"
+          },
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
@@ -5401,6 +5477,7 @@
           "body",
           "status",
           "approved_at",
+          "blocks_auto",
           "source_ref"
         ],
         "title": "CustomerSopResponse"

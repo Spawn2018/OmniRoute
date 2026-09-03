@@ -3,13 +3,13 @@
 **Faza:** Fala S — pogłębienie wydmuszek (po Fali E)  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
 
-**Ostatni plaster:** **72.0** S9 numer na dokumencie oferty  
+**Ostatni plaster:** **73.0** S10 SOP `blocks_auto`  
 **Etap:** Plan  
-**Noc:** `/noc <godzina>` (np. `/noc 7` = pętla do 7:00 czasu polskiego). Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md). Przed startem: `scripts/noc-preflight.ps1`. Delta S10 zaakceptowana (`/noc`) — wolno `/plaster`.  
-**Następny:** `/plaster` **73.0** — SOP `blocks_auto`. Przed Graph send. Nie F9.1.  
+**Noc:** `/noc <godzina>` (np. `/noc 7` = pętla do 7:00 czasu polskiego). Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md). Przed startem: `scripts/noc-preflight.ps1`. Etap Plan → `/plan-modul`, nie `/plaster`.  
+**Następny:** S11 `/plan-modul` — szyna Akceptuj/Zmień/Odrzuć (nowy żywy ID, nie M-57). Nie F9.1.  
 M-02 **parked** (odblokowanie S16). Auth0 **odroczone** (S53). Portale **parked** (S55). Exit Wave FE **nie** claim.
 
-**Spec (jedna na sesję):** [docs/deltas/open/73.0-sop-blocks-auto.md](../deltas/open/73.0-sop-blocks-auto.md). Nie otwieraj [print-sheet.md](../spec/print-sheet.md).
+**Spec (jedna na sesję):** brak delty S11. Nie otwieraj [print-sheet.md](../spec/print-sheet.md).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Cel jakości + § Kolejka realizacji.
 
@@ -17,4 +17,4 @@ M-02 **parked** (odblokowanie S16). Auth0 **odroczone** (S53). Portale **parked*
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` są w PATH. Przed pracą podnieś dwie rzeczy: `pg_ctl -D tools\pgdata -o "-p 5432" start` oraz `tools\openfga\openfga.exe run`. Potem `just gate` i `just test` działają bez ustawiania zmiennych. PG 16 to klaster przenośny w `tools\pg16` — instalator EDB przez winget nie przechodzi (exit 1).
 
-**2026-09-03:** plan 73.0 zaakceptowany (`/noc`). Następny produkt: `/plaster` 73.0. Nie F9.1.
+**2026-09-03:** 73.0 zamknięty. Następny produkt: `/plan-modul` S11. Nie F9.1.
