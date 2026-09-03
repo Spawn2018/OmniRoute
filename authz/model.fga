@@ -36,3 +36,4 @@ type organization
     define can_manage_quote_invoice_settlements: member
     define can_manage_bank_payments: member
     define can_manage_money_costs: member
+    define can_manage_fx_differences: member

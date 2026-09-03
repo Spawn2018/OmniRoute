@@ -995,6 +995,50 @@ export type ExtractionDraftResponse = {
 };
 
 /**
+ * FxDifferenceCreate
+ */
+export type FxDifferenceCreate = {
+    /**
+     * Quotation Id
+     */
+    quotation_id: string;
+    /**
+     * Nbp Rate Id
+     */
+    nbp_rate_id: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * FxDifferenceResponse
+ */
+export type FxDifferenceResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Quotation Id
+     */
+    quotation_id: string;
+    /**
+     * Nbp Rate Id
+     */
+    nbp_rate_id: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * HTTPValidationError
  */
 export type HttpValidationError = {
@@ -5095,6 +5139,49 @@ export type CreateMoneyCostApiV1MoneyCostsPostResponses = {
 };
 
 export type CreateMoneyCostApiV1MoneyCostsPostResponse = CreateMoneyCostApiV1MoneyCostsPostResponses[keyof CreateMoneyCostApiV1MoneyCostsPostResponses];
+
+export type ListFxDifferencesApiV1FxDifferencesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/fx-differences';
+};
+
+export type ListFxDifferencesApiV1FxDifferencesGetResponses = {
+    /**
+     * Response List Fx Differences Api V1 Fx Differences Get
+     *
+     * Successful Response
+     */
+    200: Array<FxDifferenceResponse>;
+};
+
+export type ListFxDifferencesApiV1FxDifferencesGetResponse = ListFxDifferencesApiV1FxDifferencesGetResponses[keyof ListFxDifferencesApiV1FxDifferencesGetResponses];
+
+export type CreateFxDifferenceApiV1FxDifferencesPostData = {
+    body: FxDifferenceCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/fx-differences';
+};
+
+export type CreateFxDifferenceApiV1FxDifferencesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateFxDifferenceApiV1FxDifferencesPostError = CreateFxDifferenceApiV1FxDifferencesPostErrors[keyof CreateFxDifferenceApiV1FxDifferencesPostErrors];
+
+export type CreateFxDifferenceApiV1FxDifferencesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: FxDifferenceResponse;
+};
+
+export type CreateFxDifferenceApiV1FxDifferencesPostResponse = CreateFxDifferenceApiV1FxDifferencesPostResponses[keyof CreateFxDifferenceApiV1FxDifferencesPostResponses];
 
 export type ListOrganizationSettingsApiV1OrganizationSettingsGetData = {
     body?: never;

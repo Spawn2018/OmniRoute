@@ -50,7 +50,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-41 | Rozliczenie wyceny z fakturą | 34.0 tablica · 98.0 `quote_invoice_settlement` | **ukończony (S36)** · para wycena+faktura; nie druga marża |
 | M-42 | Bank i płatności | 35.0 tablica · 99.0 `bank_payment` | **ukończony (S37)** · para faktura+rachunek; nie SEPA |
 | M-43 | Koszt pieniądza | 36.0 tablica · 100.0 `money_cost` | **ukończony (S38)** · para płatność+kurs NBP; nie odsetki |
-| M-44 | Różnice kursowe | 37.0 `fx_difference` | **ukończony (fundament)** · tablica NBP walut z `charge`/`quotation`; nie tabela; nie przeliczenie |
+| M-44 | Różnice kursowe | 37.0 tablica · 101.0 `fx_difference` | **ukończony (S39)** · para wycena+kurs NBP; nie przeliczenie |
 | M-45 | Przepływy | 38.0 `cash_flow` | **ukończony (fundament)** · tablica `buy`/`sell` jako wypływ/wpływ; nie tabela księgi; nie odejmowanie |
 | M-46 | Koszt obsługi klienta | 39.0 `cost_to_serve` | **ukończony (fundament)** · tablica SOP + wyceny kontrahenta; nie tabela ABC; nie suma |
 | M-47 | Księgowość (integracja) | 40.0 `bookkeeping` | **ukończony (fundament)** · tablica `charge` + nazwa kodu; nie JPK; nie ERP |

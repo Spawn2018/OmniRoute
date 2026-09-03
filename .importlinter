@@ -47,6 +47,7 @@ modules =
     app.services.quote_invoice_settlements
     app.services.bank_payments
     app.services.money_costs
+    app.services.fx_differences
 
 [importlinter:contract:integracje]
 name = Integracje nie znają serwisów
@@ -151,3 +152,6 @@ forbidden_modules =
     app.services.money_costs
     app.repositories.money_costs
     app.models.money_cost
+    app.services.fx_differences
+    app.repositories.fx_differences
+    app.models.fx_difference

@@ -27,7 +27,7 @@
 | rozliczenie wyceny z fakturą | quote_invoice_settlement | 98.0 tabela pary wycena+faktura; nie kwota; nie druga marża |
 | bank i płatności | bank_payment | 99.0 tabela pary faktura+rachunek; nie kwota; nie SEPA |
 | koszt pieniądza | money_cost | 100.0 tabela pary płatność+kurs NBP; nie kwota; nie odsetki |
-| różnica kursowa | fx_difference | 37.0 tablica NBP walut z `charge`/`quotation`; nie tabela; nie przeliczenie |
+| różnica kursowa | fx_difference | 101.0 tabela pary wycena+kurs NBP; nie kwota; nie przeliczenie |
 | przepływ | cash_flow | 38.0 tablica `buy`/`sell` z `charge` jako wypływ/wpływ; nie tabela księgi; nie odejmowanie |
 | koszt obsługi klienta | cost_to_serve | 39.0 tablica SOP + wyceny kontrahenta; nie tabela ABC; nie suma |
 | księgowość | bookkeeping | 40.0 tablica `charge` + `charge_code.name`; nie JPK; nie ERP |

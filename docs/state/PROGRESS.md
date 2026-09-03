@@ -271,3 +271,4 @@
 | 2026-09-03 | Plan 100.0 | M-43 | S38: `money_cost` wiąże płatność z kursem NBP. Delta zaakceptowana (`/noc`). Nie odsetki. Następny: `/plaster` 100.0. |
 | 2026-09-03 | 100.0 | M-43 | Tabela kosztu pieniądza: płatność przy kursie NBP. Nie odsetki. Nie mnożenie. Następny: S39 Plan. |
 | 2026-09-03 | Plan 101.0 | M-44 | S39: `fx_difference` wiąże wycenę z kursem NBP. Delta zaakceptowana (`/noc`). Nie przeliczenie. Następny: `/plaster` 101.0. |
+| 2026-09-03 | 101.0 | M-44 | Tabela różnicy kursowej: wycena przy kursie NBP. Nie przeliczenie. Następny: S40 Plan. |

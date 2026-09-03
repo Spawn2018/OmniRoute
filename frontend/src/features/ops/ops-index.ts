@@ -36,7 +36,7 @@ export const OPS_JOBS = [
   {
     route: BUSINESS_LISTS.fxDifference.route,
     label: "Różnice kursowe",
-    job: "NBP walut z charge i wyceny",
+    job: "zapis różnicy kursowej przy wycenie",
   },
   {
     route: BUSINESS_LISTS.cashFlow.route,
@@ -312,6 +312,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "98.0": "/quote-invoices",
   "99.0": "/payments",
   "100.0": "/money-cost",
+  "101.0": "/fx-differences",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

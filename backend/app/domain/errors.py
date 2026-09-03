@@ -298,6 +298,10 @@ class InvalidMoneyCost(DomainError):
     """Koszt pieniądza: para płatność+kurs i source_ref — nie kwota, nie odsetki."""
 
 
+class InvalidFxDifference(DomainError):
+    """Różnica kursowa: para wycena+kurs i source_ref — nie kwota, nie przeliczenie."""
+
+
 class InvalidPartyScorecard(DomainError):
     """Wskaźnik karty poza zakresem albo nie jest Decimal — nie float, nie scoring osoby."""
 

@@ -3673,6 +3673,80 @@
         ]
       }
     },
+    "/api/v1/fx-differences": {
+      "get": {
+        "tags": [
+          "fx-differences"
+        ],
+        "summary": "List Fx Differences",
+        "operationId": "list_fx_differences_api_v1_fx_differences_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/FxDifferenceResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Fx Differences Api V1 Fx Differences Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "fx-differences"
+        ],
+        "summary": "Create Fx Difference",
+        "operationId": "create_fx_difference_api_v1_fx_differences_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FxDifferenceCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxDifferenceResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/organization-settings": {
       "get": {
         "tags": [
@@ -7629,6 +7703,69 @@
           "reviewed_at"
         ],
         "title": "ExtractionDraftResponse"
+      },
+      "FxDifferenceCreate": {
+        "properties": {
+          "quotation_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Quotation Id"
+          },
+          "nbp_rate_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Nbp Rate Id"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "quotation_id",
+          "nbp_rate_id",
+          "source_ref"
+        ],
+        "title": "FxDifferenceCreate"
+      },
+      "FxDifferenceResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "quotation_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Quotation Id"
+          },
+          "nbp_rate_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Nbp Rate Id"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "quotation_id",
+          "nbp_rate_id",
+          "source_ref"
+        ],
+        "title": "FxDifferenceResponse"
       },
       "HTTPValidationError": {
         "properties": {
