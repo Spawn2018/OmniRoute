@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** `/plan-modul` **S51** — reklamacje (kat. M-55). Żywa nazwa w tym planie. Nie F9.1.
+**Następny (zablokowany):** `/plaster` **113.0** — S51 reklamacja ładunku (M-55). Nie F9.1.
 <!-- os-status:end -->
 
 ```mermaid
@@ -387,7 +387,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E2** | Testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy) | 61.0 | zamknięty (`docs/deltas/archived/61.0-alembic-quote-budget.md`) |
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | 62.0 | zamknięty (`docs/deltas/archived/62.0-operator-howto-c4.md`) |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | 63.0 | zamknięty (`docs/deltas/archived/63.0-threat-model-codeql.md`) |
-| po Q-E4 | **Fala S**, S1–S49 zamknięte (S21 parked, S50 park floty); S51 plan | Plan → plaster | **następny** |
+| po Q-E4 | **Fala S**, S1–S49 zamknięte (S21 parked, S50 park floty); S51 plan 113.0 | Plan → plaster | **następny** |
 
 ### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
 
@@ -454,7 +454,7 @@ Reguły kolejności (żeby `/noc` nie złożył awarii):
 | S45 | Żywe **M-56** wniosek/usuwanie RODO | 107.0 | zamknięty (`docs/deltas/archived/107.0-gdpr-request.md`) | Wniosek na `/gdpr`. Nie DPIA. Nie kasowanie innych BC |
 | S46–S49 | M-48…M-51 obiekt nogi | 108.0 · 109.0 · 110.0 · 111.0 | zamknięte | Nie druga mapa. S50 leftover |
 | S50 | Arch. M-111 flota | 112.0 park | named park (`docs/deltas/archived/112.0-fleet-named-park.md`) | Brak jobu „własne auto”. Nie TMS |
-| S51 | Kat. M-55 reklamacje | Plan → plaster | po S30+S45 | Żywa nazwa w Plan tego wiersza |
+| S51 | Żywe **M-55** reklamacja | 113.0 | plan (`docs/deltas/open/113.0-cargo-claim.md`) | Reklamacja na zleceniu. Nie kwota. Nie scoring |
 | S52 | Kat. M-54 oszustwo | Plan → plaster | po płatnościach S37 | Nie scoring osoby |
 | **S53** | M-04 / Auth0 | Plan → plaster | po S52 | Tu odblokowanie Auth0. Przed portalami |
 | S54 | Arch. M-76 status klienta | Plan → plaster | po S29+S53 | Osobno od wieży operatora |

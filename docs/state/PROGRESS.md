@@ -293,3 +293,4 @@
 | 2026-09-04 | Plan 111.0 | M-51 | S49: `shipment_leg` `ocean_lcl` na zleceniu. Delta zaakceptowana (`/noc`). Nie CFS. Następny: `/plaster` 111.0. |
 | 2026-09-04 | 111.0 | M-51 | Odcinek drobnicy na tej samej tabeli nogi. Nie CFS. Nie CBM. Następny: S50 Plan (park floty). |
 | 2026-09-04 | Plan 112.0 | M-111 | S50 flota named park — brak jobu „własne auto”. Zero kodu. Następny: S51 Plan. |
+| 2026-09-04 | Plan 113.0 | M-55 | S51: `cargo_claim` na zleceniu. Delta zaakceptowana (`/noc`). Nie kwota. Następny: `/plaster` 113.0. |
