@@ -58,7 +58,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-48 | Transport drogowy | 41.0 `road_transport` · 108.0 `shipment_leg` | **ukończony (S46)** · odcinek `road` na zleceniu; nie TMS; nie mapa |
 | M-49 | Kolej intermodalna | 42.0 `intermodal_rail` · 109.0 `shipment_leg` rail | **ukończony (S47)** · odcinek `rail` na zleceniu; nie wagon; nie mapa |
 | M-50 | Kolej z Chin | 43.0 `china_rail` · 110.0 `shipment_leg` china_rail | **ukończony (S48)** · odcinek kolej z Chin na zleceniu; nie korytarz; nie HTTP |
-| M-51 | Drobnica morska | 44.0 `ocean_lcl` | **ukończony (fundament)** · tablica portów `is_seaport`; nie tabela LCL; nie CFS |
+| M-51 | Drobnica morska | 44.0 `ocean_lcl` · 111.0 `shipment_leg` ocean_lcl | **plan (S49)** · odcinek drobnicy na zleceniu; nie tabela LCL; nie CFS |
 | M-53 | Sankcje | 45.0 `sanctions` · 89.0 `sanctions_list_ref` | **ukończony (fundament)** · tablica + sprawdzenie na `party`; nie auto-match; nie live lista |
 | M-56 | RODO | 46.0 `gdpr` · 107.0 `gdpr_request` | **ukończony (fundament)** · wniosek access/erasure + tombstone konta; nie DPIA; nie DELETE `app_user` |
 | M-57 | Copilot AI | 47.0 `ai_copilot` · 76.0 `mail_draft` | **ukończony (fundament)** · pending extract + szkic maila; 81.0 send na M-33; nie czat |
