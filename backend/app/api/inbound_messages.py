@@ -6,7 +6,11 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import get_current_identity, require_permission, require_tenant_session
 from app.core.session_token import SessionIdentity
-from app.domain.inbound_message import inbound_extract_text
+from app.domain.inbound_message import (
+    inbound_extract_text,
+    require_graph_source_ref,
+    require_mailbox_source_ref,
+)
 from app.services.extraction.extraction_service import ExtractionService
 from app.services.inbound_messages.inbound_message_service import InboundMessageService
 from app.services.outbox_events.outbox_event_service import OutboxEventService
@@ -109,7 +113,7 @@ async def ingest_graph_inbound_message(
     session: AsyncSession = Depends(require_tenant_session),
     identity: SessionIdentity = Depends(get_current_identity),
 ) -> InboundMessageResponse:
-    row = await InboundMessageService(session).ingest_graph(
+    row = await InboundMessageService(session).ingest_by_external_id(
         organization_id=identity.organization_id,
         user_id=identity.user_id,
         external_id=body.external_id,
@@ -117,6 +121,7 @@ async def ingest_graph_inbound_message(
         from_address=body.from_address,
         subject=body.subject,
         body_text=body.body_text,
+        require_origin=require_graph_source_ref,
     )
     await OutboxEventService(session).record_message_saved(
         organization_id=identity.organization_id,
@@ -135,7 +140,7 @@ async def ingest_mailbox_inbound_message(
     session: AsyncSession = Depends(require_tenant_session),
     identity: SessionIdentity = Depends(get_current_identity),
 ) -> InboundMessageResponse:
-    row = await InboundMessageService(session).ingest_mailbox(
+    row = await InboundMessageService(session).ingest_by_external_id(
         organization_id=identity.organization_id,
         user_id=identity.user_id,
         external_id=body.external_id,
@@ -143,6 +148,7 @@ async def ingest_mailbox_inbound_message(
         from_address=body.from_address,
         subject=body.subject,
         body_text=body.body_text,
+        require_origin=require_mailbox_source_ref,
     )
     await OutboxEventService(session).record_message_saved(
         organization_id=identity.organization_id,

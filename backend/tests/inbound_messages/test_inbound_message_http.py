@@ -66,7 +66,7 @@ class StubInboundMessageService:
         row.party_id = party_id
         return row
 
-    async def ingest_graph(
+    async def ingest_by_external_id(
         self,
         *,
         organization_id: UUID,
@@ -76,7 +76,9 @@ class StubInboundMessageService:
         from_address: str,
         subject: str,
         body_text: str,
+        require_origin: object,
     ) -> InboundMessage:
+        _ = require_origin
         for row in self.rows:
             if row.external_id == external_id:
                 return row
@@ -93,27 +95,6 @@ class StubInboundMessageService:
         )
         self.rows.append(row)
         return row
-
-    async def ingest_mailbox(
-        self,
-        *,
-        organization_id: UUID,
-        user_id: UUID,
-        external_id: str,
-        source_ref: str,
-        from_address: str,
-        subject: str,
-        body_text: str,
-    ) -> InboundMessage:
-        return await self.ingest_graph(
-            organization_id=organization_id,
-            user_id=user_id,
-            external_id=external_id,
-            source_ref=source_ref,
-            from_address=from_address,
-            subject=subject,
-            body_text=body_text,
-        )
 
 
 class StubPartyService:

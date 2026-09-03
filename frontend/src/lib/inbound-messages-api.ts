@@ -87,34 +87,45 @@ export async function extractInboundMessage(messageId: string): Promise<{
   return (await response.json()) as { id: string; status: string; source_ref: string }
 }
 
-export async function ingestMailboxInboundMessage(body: {
+type InboundKeyedIngest = {
   external_id: string
   source_ref: string
   from_address: string
   subject: string
   body_text: string
-}): Promise<InboundMessage> {
-  const response = await fetch("/api/v1/inbound-messages/ingest-imap", {
-    method: "POST",
-    headers: { ...requireAuthHeaders(), "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  })
-  return readInboundMessage(response, "Błąd ingestu skrzynki")
 }
 
-export async function ingestGraphInboundMessage(body: {
-  external_id: string
-  source_ref: string
-  from_address: string
-  subject: string
-  body_text: string
-}): Promise<InboundMessage> {
-  const response = await fetch("/api/v1/inbound-messages/ingest-graph", {
+async function postKeyedInboundMessage(
+  path: "/api/v1/inbound-messages/ingest-graph" | "/api/v1/inbound-messages/ingest-imap",
+  body: InboundKeyedIngest,
+  fallback: string,
+): Promise<InboundMessage> {
+  const response = await fetch(path, {
     method: "POST",
     headers: { ...requireAuthHeaders(), "Content-Type": "application/json" },
     body: JSON.stringify(body),
   })
-  return readInboundMessage(response, "Błąd ingestu Graph")
+  return readInboundMessage(response, fallback)
+}
+
+export function ingestMailboxInboundMessage(
+  body: InboundKeyedIngest,
+): Promise<InboundMessage> {
+  return postKeyedInboundMessage(
+    "/api/v1/inbound-messages/ingest-imap",
+    body,
+    "Błąd ingestu skrzynki",
+  )
+}
+
+export function ingestGraphInboundMessage(
+  body: InboundKeyedIngest,
+): Promise<InboundMessage> {
+  return postKeyedInboundMessage(
+    "/api/v1/inbound-messages/ingest-graph",
+    body,
+    "Błąd ingestu Graph",
+  )
 }
 
 export async function resolveInboundMessageEmail(
