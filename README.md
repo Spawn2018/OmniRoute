@@ -88,7 +88,7 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 <!-- os-status:start -->
 - **Ostatni plaster:** **117.0** S57 narracja po SQL (M-15)
 - **Etap:** Plan
-- **Następny:** `/plan-modul` S58 — kat. M-60 drafty po SOP (po S10+S11). Nigdy auto-send. Nie F9.1.
+- **Następny:** `/plaster` **118.0** — S58 drafty po SOP (M-57). Nigdy auto-send. Nie F9.1.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

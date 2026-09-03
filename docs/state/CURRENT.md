@@ -6,10 +6,10 @@
 **Ostatni plaster:** **117.0** S57 narracja po SQL (M-15)  
 **Etap:** Plan  
 **Noc:** `/noc <godzina>` (np. `/noc 7` = pętla do 7:00 czasu polskiego). Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md). Przed startem: `scripts/noc-preflight.ps1`.  
-**Następny:** `/plan-modul` S58 — kat. M-60 drafty po SOP (po S10+S11). Nigdy auto-send. Nie F9.1.  
+**Następny:** `/plaster` **118.0** — S58 drafty po SOP (M-57). Nigdy auto-send. Nie F9.1.  
 M-02 **fundament 79.0**. Auth0 **odroczone** (S53). Portale **parked** (S55). S21 live HTTP **parked**. S50 flota **named park**. S54 status klienta **named park**. Exit Wave FE **nie** claim.
 
-**Spec (jedna na sesję):** brak — najpierw delta S58. Nie otwieraj [finance-board.md](../spec/finance-board.md).
+**Spec (jedna na sesję):** [docs/deltas/open/118.0-sop-drafts.md](../deltas/open/118.0-sop-drafts.md). Nie otwieraj [finance-board.md](../spec/finance-board.md).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Cel jakości + § Kolejka realizacji.
 
@@ -17,4 +17,4 @@ M-02 **fundament 79.0**. Auth0 **odroczone** (S53). Portale **parked** (S55). S2
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` są w PATH. Przed pracą podnieś dwie rzeczy: `pg_ctl -D tools\pgdata -o "-p 5432" start` oraz `tools\openfga\openfga.exe run`. Potem `just gate` i `just test` działają bez ustawiania zmiennych. PG 16 to klaster przenośny w `tools\pg16` — instalator EDB przez winget nie przechodzi (exit 1).
 
-**2026-09-04:** plaster 117.0 zamknięty (`/noc`). Następny: plan S58.
+**2026-09-04:** plan 118.0 zaakceptowany (`/noc`). Wolno `/plaster`. Nie F9.1.

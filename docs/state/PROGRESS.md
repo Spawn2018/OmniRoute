@@ -302,3 +302,4 @@
 | 2026-09-04 | 116.0 | M-57 | Wieża czyta `mail_draft`. Zapis zostaje na `/ai`. Nie czat. Następny: S57 Plan. |
 | 2026-09-04 | Plan 117.0 | M-15 | S57: narracja po SQL na `/finance`. Delta zaakceptowana (`/noc`). LLM nie liczy. Następny: `/plaster` 117.0. |
 | 2026-09-04 | 117.0 | M-15 | Narracja po SQL na `/finance`. Nie suma. Nie LLM. Następny: S58 Plan. |
+| 2026-09-04 | Plan 118.0 | M-57 | S58: SOP `blocks_auto` obok szkiców na `/ai`. Delta zaakceptowana (`/noc`). Nie auto-send. Następny: `/plaster` 118.0. |

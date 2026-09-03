@@ -42,7 +42,7 @@
 | sankcje | sanctions | 45.0 tablica aktywnych `party`; 89.0 sprawdzenie `sanctions_list_ref` na karcie; nie auto-match; nie live lista |
 | RODO | gdpr | 46.0 tablica `app_user` email; 107.0 wniosek `gdpr_request`; nie DPIA |
 | wniosek RODO | gdpr_request | 107.0 tabela access/erasure; erasure = tombstone konta; nie DELETE `app_user` |
-| copilot AI | ai_copilot | 47.0 tablica `extraction_draft` pending; 76.0 `mail_draft` obok extract; 81.0 świadomy mailto; 116.0 wieża czyta szkice; nie czat |
+| copilot AI | ai_copilot | 47.0 tablica `extraction_draft` pending; 76.0 `mail_draft` obok extract; 81.0 świadomy mailto; 116.0 wieża czyta szkice; 118.0 SOP `blocks_auto` na `/ai`; nie czat; nie auto-send |
 | szkic maila | mail_draft | 76.0 tabela wychodzącego szkicu; accept przez S11; 81.0 status `sent` + `to_address`; nie inbound |
 | obserwowalność | observability | 48.0 tablica `fetchHealth`; nie OTel; nie k6 |
 | jakość ekstrakcji | extraction_quality | 49.0 tablica `unparsed_regions`; nie scoring; nie tabela QA |
