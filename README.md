@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **113.0** S51 reklamacja ładunku (M-55)
+- **Ostatni plaster:** **114.0** S52 oszustwo (M-54)
 - **Etap:** Plan
-- **Następny:** `/plaster` **114.0** — S52 oszustwo (M-54). Nie scoring osoby. Nie F9.1.
+- **Następny:** `/plan-modul` **S54** — status klienta (arch. M-76). Auth0 **S53 parked**. Nie F9.1.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

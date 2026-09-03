@@ -1,10 +1,10 @@
 # M-54 oszustwo — tabela `fraud_flag`
 
 **Moduł żywy:** M-54 (token `fraud_flag`)  
-**Plaster:** **114.0** (S52 plan)  
+**Plaster:** **114.0** (zamknięty)  
 **Status:** operator zapisuje flagę oszustwa na kontrahencie. Nie scoring. Nie kwota.
 
-Delta: [docs/deltas/open/114.0-fraud-flag.md](../deltas/open/114.0-fraud-flag.md).
+Delta 114.0: [docs/deltas/archived/114.0-fraud-flag.md](../deltas/archived/114.0-fraud-flag.md).
 
 ## 114.0 zapis na `/fraud`
 

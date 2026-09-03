@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **113.0** S51 reklamacja ładunku (M-55). **Etap:** Plan. **Następny:** `/plaster` **114.0** — S52 oszustwo (M-54). Nie scoring osoby. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **114.0** S52 oszustwo (M-54). **Etap:** Plan. **Następny:** `/plan-modul` **S54** — status klienta (arch. M-76). Auth0 **S53 parked**. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
@@ -45,12 +45,12 @@ Rel(api, fga, "check")
 <!-- os-tree:start -->
 ```
 frontend/                 React 19 + Compiler, Vite, TanStack, shadcn, PostHog
-  src/features/           ai-copilot · bank-payment · bookkeeping · cargo-claim · cash-flow · channel-quotes · charge-codes · charges · china-rail · commodity-codes · cost-to-serve · credit-reviews · customer-sops · dangerous-goods · edi-message · extraction · extraction-quality · finance-board · fx-difference · gdpr · geography · intermodal-rail · mail-integration · money-cost · nbp-rates · networks · observability · ocean-lcl · operational-exception · operator-decisions · operator-notice · ops · organization-settings · outbox · parties · party-scorecards · port-surcharges · quotations · quote-invoice-settlement · rate-lines · road-transport · sales-invoice · sanctions · session · shipment · shipment-document · tenancy · tenant-rollout · tracking · watchtower
+  src/features/           ai-copilot · bank-payment · bookkeeping · cargo-claim · cash-flow · channel-quotes · charge-codes · charges · china-rail · commodity-codes · cost-to-serve · credit-reviews · customer-sops · dangerous-goods · edi-message · extraction · extraction-quality · finance-board · fraud-flag · fx-difference · gdpr · geography · intermodal-rail · mail-integration · money-cost · nbp-rates · networks · observability · ocean-lcl · operational-exception · operator-decisions · operator-notice · ops · organization-settings · outbox · parties · party-scorecards · port-surcharges · quotations · quote-invoice-settlement · rate-lines · road-transport · sales-invoice · sanctions · session · shipment · shipment-document · tenancy · tenant-rollout · tracking · watchtower
   src/components/ui/      shadcn
   src/components/data-table/  DataTableShell (Golden Standard)
 backend/app/
   api/             routery, DTO, require_permission — bez logiki
-  services/        bank_payments · bookkeeping · cargo_claims · carrier_inquiries · cash_flows · channel_quotes · charge_codes · charges · collective_invoices · commodity_codes · cost_to_serve · customer_rfqs · dangerous_goods · edi_messages · extraction · fx_differences · gdpr_requests · geography · inbound_messages · mail_drafts · money_costs · nbp_rates · networks · operational_exceptions · operator_decisions · operator_notices · organization_settings · outbox_events · parties · port_surcharges · quotations · quote_invoice_settlements · rate_lines · sales_invoices · shipment_documents · shipment_legs · shipments · tenancy · tracking_events
+  services/        bank_payments · bookkeeping · cargo_claims · carrier_inquiries · cash_flows · channel_quotes · charge_codes · charges · collective_invoices · commodity_codes · cost_to_serve · customer_rfqs · dangerous_goods · edi_messages · extraction · fraud_flags · fx_differences · gdpr_requests · geography · inbound_messages · mail_drafts · money_costs · nbp_rates · networks · operational_exceptions · operator_decisions · operator_notices · organization_settings · outbox_events · parties · port_surcharges · quotations · quote_invoice_settlements · rate_lines · sales_invoices · shipment_documents · shipment_legs · shipments · tenancy · tracking_events
   repositories/    dostęp SQL
   models/          SQLAlchemy
   domain/          typy, wyjątki, Money

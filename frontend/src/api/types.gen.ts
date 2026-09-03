@@ -1215,6 +1215,50 @@ export type ExtractionDraftResponse = {
 };
 
 /**
+ * FraudFlagCreate
+ */
+export type FraudFlagCreate = {
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Flag Kind
+     */
+    flag_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * FraudFlagResponse
+ */
+export type FraudFlagResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Flag Kind
+     */
+    flag_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * FxDifferenceCreate
  */
 export type FxDifferenceCreate = {
@@ -5265,6 +5309,49 @@ export type CreateCargoClaimApiV1CargoClaimsPostResponses = {
 };
 
 export type CreateCargoClaimApiV1CargoClaimsPostResponse = CreateCargoClaimApiV1CargoClaimsPostResponses[keyof CreateCargoClaimApiV1CargoClaimsPostResponses];
+
+export type ListFraudFlagsApiV1FraudFlagsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/fraud-flags';
+};
+
+export type ListFraudFlagsApiV1FraudFlagsGetResponses = {
+    /**
+     * Response List Fraud Flags Api V1 Fraud Flags Get
+     *
+     * Successful Response
+     */
+    200: Array<FraudFlagResponse>;
+};
+
+export type ListFraudFlagsApiV1FraudFlagsGetResponse = ListFraudFlagsApiV1FraudFlagsGetResponses[keyof ListFraudFlagsApiV1FraudFlagsGetResponses];
+
+export type CreateFraudFlagApiV1FraudFlagsPostData = {
+    body: FraudFlagCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/fraud-flags';
+};
+
+export type CreateFraudFlagApiV1FraudFlagsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateFraudFlagApiV1FraudFlagsPostError = CreateFraudFlagApiV1FraudFlagsPostErrors[keyof CreateFraudFlagApiV1FraudFlagsPostErrors];
+
+export type CreateFraudFlagApiV1FraudFlagsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: FraudFlagResponse;
+};
+
+export type CreateFraudFlagApiV1FraudFlagsPostResponse = CreateFraudFlagApiV1FraudFlagsPostResponses[keyof CreateFraudFlagApiV1FraudFlagsPostResponses];
 
 export type ListEdiMessagesApiV1EdiMessagesGetData = {
     body?: never;

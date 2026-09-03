@@ -29,6 +29,7 @@ const NAV_ACTIONS = [
   { id: "nav-china-rail", label: "Idź do kolei z Chin", to: "/china-rail" },
   { id: "nav-lcl", label: "Idź do drobnicy morskiej", to: "/lcl" },
   { id: "nav-sanctions", label: "Idź do sankcji", to: "/sanctions" },
+  { id: "nav-fraud", label: "Idź do oszustwa", to: "/fraud" },
   { id: "nav-gdpr", label: "Idź do RODO", to: "/gdpr" },
   { id: "nav-ai", label: "Idź do propozycji AI", to: "/ai" },
   { id: "nav-health", label: "Idź do obserwowalności", to: "/health" },

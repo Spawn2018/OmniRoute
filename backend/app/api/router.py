@@ -18,6 +18,7 @@ from app.api import (
     dangerous_goods,
     edi_messages,
     extractions,
+    fraud_flags,
     fx_differences,
     gdpr_requests,
     inbound_messages,
@@ -76,6 +77,7 @@ api_router.include_router(tracking_events.router)
 api_router.include_router(shipment_documents.router)
 api_router.include_router(operational_exceptions.router)
 api_router.include_router(cargo_claims.router)
+api_router.include_router(fraud_flags.router)
 api_router.include_router(edi_messages.router)
 api_router.include_router(sales_invoices.router)
 api_router.include_router(quote_invoice_settlements.router)

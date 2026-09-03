@@ -3319,6 +3319,80 @@
         ]
       }
     },
+    "/api/v1/fraud-flags": {
+      "get": {
+        "tags": [
+          "fraud-flags"
+        ],
+        "summary": "List Fraud Flags",
+        "operationId": "list_fraud_flags_api_v1_fraud_flags_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/FraudFlagResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Fraud Flags Api V1 Fraud Flags Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "fraud-flags"
+        ],
+        "summary": "Create Fraud Flag",
+        "operationId": "create_fraud_flag_api_v1_fraud_flags_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FraudFlagCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FraudFlagResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/edi-messages": {
       "get": {
         "tags": [
@@ -8582,6 +8656,67 @@
           "reviewed_at"
         ],
         "title": "ExtractionDraftResponse"
+      },
+      "FraudFlagCreate": {
+        "properties": {
+          "party_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Party Id"
+          },
+          "flag_kind": {
+            "type": "string",
+            "title": "Flag Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "party_id",
+          "flag_kind",
+          "source_ref"
+        ],
+        "title": "FraudFlagCreate"
+      },
+      "FraudFlagResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "party_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Party Id"
+          },
+          "flag_kind": {
+            "type": "string",
+            "title": "Flag Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "party_id",
+          "flag_kind",
+          "source_ref"
+        ],
+        "title": "FraudFlagResponse"
       },
       "FxDifferenceCreate": {
         "properties": {

@@ -28,6 +28,7 @@ import { Route as EdiRouteImport } from './routes/edi'
 import { Route as ExceptionsRouteImport } from './routes/exceptions'
 import { Route as ExtractionsRouteImport } from './routes/extractions'
 import { Route as FinanceRouteImport } from './routes/finance'
+import { Route as FraudRouteImport } from './routes/fraud'
 import { Route as FxDifferencesRouteImport } from './routes/fx-differences'
 import { Route as GdprRouteImport } from './routes/gdpr'
 import { Route as HealthRouteImport } from './routes/health'
@@ -155,6 +156,11 @@ const ExtractionsRoute = ExtractionsRouteImport.update({
 const FinanceRoute = FinanceRouteImport.update({
   id: '/finance',
   path: '/finance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FraudRoute = FraudRouteImport.update({
+  id: '/fraud',
+  path: '/fraud',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FxDifferencesRoute = FxDifferencesRouteImport.update({
@@ -343,6 +349,7 @@ export interface FileRoutesByFullPath {
   '/exceptions': typeof ExceptionsRoute
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
+  '/fraud': typeof FraudRoute
   '/fx-differences': typeof FxDifferencesRoute
   '/gdpr': typeof GdprRoute
   '/health': typeof HealthRoute
@@ -397,6 +404,7 @@ export interface FileRoutesByTo {
   '/exceptions': typeof ExceptionsRoute
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
+  '/fraud': typeof FraudRoute
   '/fx-differences': typeof FxDifferencesRoute
   '/gdpr': typeof GdprRoute
   '/health': typeof HealthRoute
@@ -452,6 +460,7 @@ export interface FileRoutesById {
   '/exceptions': typeof ExceptionsRoute
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
+  '/fraud': typeof FraudRoute
   '/fx-differences': typeof FxDifferencesRoute
   '/gdpr': typeof GdprRoute
   '/health': typeof HealthRoute
@@ -508,6 +517,7 @@ export interface FileRouteTypes {
     | '/exceptions'
     | '/extractions'
     | '/finance'
+    | '/fraud'
     | '/fx-differences'
     | '/gdpr'
     | '/health'
@@ -562,6 +572,7 @@ export interface FileRouteTypes {
     | '/exceptions'
     | '/extractions'
     | '/finance'
+    | '/fraud'
     | '/fx-differences'
     | '/gdpr'
     | '/health'
@@ -616,6 +627,7 @@ export interface FileRouteTypes {
     | '/exceptions'
     | '/extractions'
     | '/finance'
+    | '/fraud'
     | '/fx-differences'
     | '/gdpr'
     | '/health'
@@ -671,6 +683,7 @@ export interface RootRouteChildren {
   ExceptionsRoute: typeof ExceptionsRoute
   ExtractionsRoute: typeof ExtractionsRoute
   FinanceRoute: typeof FinanceRoute
+  FraudRoute: typeof FraudRoute
   FxDifferencesRoute: typeof FxDifferencesRoute
   GdprRoute: typeof GdprRoute
   HealthRoute: typeof HealthRoute
@@ -839,6 +852,13 @@ declare module '@tanstack/react-router' {
       path: '/finance'
       fullPath: '/finance'
       preLoaderRoute: typeof FinanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fraud': {
+      id: '/fraud'
+      path: '/fraud'
+      fullPath: '/fraud'
+      preLoaderRoute: typeof FraudRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/fx-differences': {
@@ -1095,6 +1115,7 @@ const rootRouteChildren: RootRouteChildren = {
   ExceptionsRoute: ExceptionsRoute,
   ExtractionsRoute: ExtractionsRoute,
   FinanceRoute: FinanceRoute,
+  FraudRoute: FraudRoute,
   FxDifferencesRoute: FxDifferencesRoute,
   GdprRoute: GdprRoute,
   HealthRoute: HealthRoute,

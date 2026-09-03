@@ -282,6 +282,10 @@ class InvalidCargoClaim(DomainError):
     """Reklamacja ładunku: kind z allowlisty i source_ref zapisu — nie kwota, nie scoring."""
 
 
+class InvalidFraudFlag(DomainError):
+    """Flaga oszustwa: kind z allowlisty i source_ref zapisu — nie kwota, nie scoring osoby."""
+
+
 class InvalidEdiMessage(DomainError):
     """Komunikat EDI: kind z allowlisty i source_ref zapisu — nie parser, nie kwota."""
 

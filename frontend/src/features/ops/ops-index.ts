@@ -134,6 +134,11 @@ export const OPS_JOBS = [
     job: "zapis reklamacji na zleceniu",
   },
   {
+    route: BUSINESS_LISTS.fraudFlag.route,
+    label: "Oszustwo",
+    job: "zapis flagi oszustwa na kontrahencie",
+  },
+  {
     route: BUSINESS_LISTS.watchtower.route,
     label: "Wieża",
     job: "wyjątki i pending S11 plus leniwy panel mapy",
@@ -329,6 +334,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "110.0": "/china-rail",
   "111.0": "/lcl",
   "113.0": "/claims",
+  "114.0": "/fraud",
 } as const
 
 export const ROUTES_BREADTH_STANDING =
