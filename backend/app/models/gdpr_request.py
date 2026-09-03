@@ -43,6 +43,7 @@ class GdprRequest(Base, TimestampMixin):
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
+    # RLS: ten sam tenant co app_user — FK złożony nie zastępuje current_org.
     organization_id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True), ForeignKey("organization.id", ondelete="RESTRICT"), index=True,
     )

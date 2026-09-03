@@ -1,20 +1,20 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
-import { Link } from "@tanstack/react-router"
 import { type FormEvent, useState } from "react"
+import { Link } from "@tanstack/react-router"
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 import {
   CatalogError,
   CatalogHeading,
   TenantSessionNotice,
 } from "@/components/catalog/catalog-parts"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { fetchTenancyUsers, gdprSubjects } from "@/lib/api"
+import { getTenantContext } from "@/lib/tenant"
 import {
   fetchGdprRequests,
   fulfillGdprRequest,
   recordGdprRequest,
 } from "@/lib/gdpr-requests-api"
-import { getTenantContext } from "@/lib/tenant"
 
 type RequestDraft = {
   userId: string

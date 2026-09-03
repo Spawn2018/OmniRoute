@@ -25,9 +25,10 @@ export async function recordGdprRequest(input: {
   request_kind: string
   source_ref: string
 }): Promise<GdprRequestRow> {
+  const headers = { ...requireAuthHeaders(), "Content-Type": "application/json" }
   const response = await fetch(REQUESTS_URL, {
     method: "POST",
-    headers: { ...requireAuthHeaders(), "Content-Type": "application/json" },
+    headers,
     body: JSON.stringify(input),
   })
   if (!response.ok) {
