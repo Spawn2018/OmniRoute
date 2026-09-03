@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **114.0** S52 oszustwo (M-54). **Etap:** Plan. **Następny:** `/plan-modul` **S54** — status klienta (arch. M-76). Auth0 **S53 parked**. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **114.0** S52 oszustwo (M-54). **Etap:** Plan. **Następny:** `/plan-modul` **S56** — pogłębienie M-57 (kat. M-58). Nie nowy czat. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

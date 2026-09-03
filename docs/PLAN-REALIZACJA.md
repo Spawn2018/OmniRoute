@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** `/plan-modul` **S54** — status klienta (arch. M-76). Auth0 **S53 parked**. Nie F9.1.
+**Następny (zablokowany):** `/plan-modul` **S56** — pogłębienie M-57 (kat. M-58). Nie nowy czat. Nie F9.1.
 <!-- os-status:end -->
 
 ```mermaid
@@ -387,7 +387,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E2** | Testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy) | 61.0 | zamknięty (`docs/deltas/archived/61.0-alembic-quote-budget.md`) |
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | 62.0 | zamknięty (`docs/deltas/archived/62.0-operator-howto-c4.md`) |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | 63.0 | zamknięty (`docs/deltas/archived/63.0-threat-model-codeql.md`) |
-| po Q-E4 | **Fala S**, S1–S52 zamknięte (S21 parked, S50 park floty, S53 Auth0 parked); S54 plan status klienta | Plan | **następny** |
+| po Q-E4 | **Fala S**, S1–S52 zamknięte (S21 parked, S50/S54 named park, S53 Auth0 parked, S55 portale parked); S56 plan copilot | Plan | **następny** |
 
 ### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
 
@@ -457,7 +457,7 @@ Reguły kolejności (żeby `/noc` nie złożył awarii):
 | S51 | Żywe **M-55** reklamacja | 113.0 | zamknięty (`docs/deltas/archived/113.0-cargo-claim.md`) | Reklamacja na zleceniu. Nie kwota. Nie scoring |
 | S52 | Kat. M-54 oszustwo | 114.0 | zamknięty (`docs/deltas/archived/114.0-fraud-flag.md`) | Flaga na kontrahencie. Nie scoring osoby |
 | **S53** | M-04 / Auth0 | Plan → plaster | po S52 | Tu odblokowanie Auth0. Przed portalami |
-| S54 | Arch. M-76 status klienta | Plan → plaster | po S29+S53 | Osobno od wieży operatora |
+| S54 | Arch. M-76 status klienta | 115.0 park | named park (`docs/deltas/archived/115.0-client-status-named-park.md`) | Aż Auth0 S53. Nie wieża operatora |
 | **S55** | F10 M-61…M-67, M-73, M-199 | Plan → plaster | po S53 | Giełda live tylko przy umowie i prawie do danych |
 | **S56** | Pogłębienie M-57 (kat. M-58) | Plan → plaster | po S32+S11 | Nie nowy czat |
 | S57 | Kat. M-59 narracja po SQL | Plan → plaster | po S44 | LLM nie liczy |

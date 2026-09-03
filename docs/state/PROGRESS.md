@@ -297,3 +297,4 @@
 | 2026-09-04 | 113.0 | M-55 | Tabela reklamacji ładunku na zleceniu. Nie kwota. Nie scoring. Następny: S52 Plan. |
 | 2026-09-04 | Plan 114.0 | M-54 | S52: `fraud_flag` na kontrahencie. Delta zaakceptowana (`/noc`). Nie scoring osoby. Następny: `/plaster` 114.0. |
 | 2026-09-04 | 114.0 | M-54 | Tabela flagi oszustwa na kontrahencie. Nie scoring osoby. Nie kwota. Następny: S54 Plan (S53 Auth0 parked). |
+| 2026-09-04 | Plan 115.0 | M-76 | S54 status klienta named park — brak Auth0 S53. Zero kodu. Następny: S56 Plan. |
