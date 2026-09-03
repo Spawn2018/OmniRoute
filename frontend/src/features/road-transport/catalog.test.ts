@@ -31,3 +31,20 @@ describe("road transport surface for 41.0", () => {
     expect(page).not.toContain("unlocode")
   })
 })
+
+describe("road transport surface for 108.0", () => {
+  it("records a road shipment_leg on /road", () => {
+    const page = src("features/road-transport/catalog-page.tsx")
+    const board = src("features/road-transport/road-leg-board.tsx")
+    expect(page).toContain("RoadLegBoard")
+    expect(board).toContain("listShipmentLegs")
+    expect(board).toContain("saveShipmentLeg")
+    expect(board).toContain('data-road-transport="leg-form"')
+    expect(board).toContain("Zapisz odcinek")
+    expect(board).not.toContain("parseFloat")
+    expect(board).not.toContain("leaflet")
+    expect(board).not.toContain("CatalogCreateForm")
+    expect(src("features/ops/ops-index.ts")).toContain('"108.0": "/road"')
+    expect(src("lib/shipment-legs-api.ts")).not.toContain("amount")
+  })
+})

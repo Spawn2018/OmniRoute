@@ -322,6 +322,10 @@ class InvalidGdprRequest(DomainError):
     """Wniosek RODO: konto+rodzaj i source_ref — nie kasowanie wiersza, nie DPIA."""
 
 
+class InvalidShipmentLeg(DomainError):
+    """Odcinek: zlecenie+dwie lokalizacje lądowe i source_ref — nie mapa, nie ETA."""
+
+
 class InvalidPartyScorecard(DomainError):
     """Wskaźnik karty poza zakresem albo nie jest Decimal — nie float, nie scoring osoby."""
 

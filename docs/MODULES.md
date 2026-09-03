@@ -55,7 +55,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-46 | Koszt obsługi klienta | 39.0 tablica · 103.0 `cost_to_serve` | **ukończony (S41)** · para SOP+wycena; nie suma |
 | M-47 | Księgowość (integracja) | 40.0 tablica · 104.0 `bookkeeping` | **ukończony (S42)** · para opłata+faktura; nie JPK |
 | M-91 | Zbiorcza faktura | 105.0 `collective_invoice` | **ukończony (S43)** · para faktura+dodatkowe zlecenie; nie płatność paczką |
-| M-48 | Transport drogowy | 41.0 `road_transport` · 108.0 `shipment_leg` | **plan (S46)** · odcinek drogowy na zleceniu; nie TMS; nie mapa |
+| M-48 | Transport drogowy | 41.0 `road_transport` · 108.0 `shipment_leg` | **ukończony (S46)** · odcinek `road` na zleceniu; nie TMS; nie mapa |
 | M-49 | Kolej intermodalna | 42.0 `intermodal_rail` | **ukończony (fundament)** · tablica portów z flagą `rail`; nie wagon; nie CIM |
 | M-50 | Kolej z Chin | 43.0 `china_rail` | **ukończony (fundament)** · tablica portów CN z flagą `rail`; nie korytarz; nie HTTP |
 | M-51 | Drobnica morska | 44.0 `ocean_lcl` | **ukończony (fundament)** · tablica portów `is_seaport`; nie tabela LCL; nie CFS |

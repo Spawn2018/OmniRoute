@@ -1,11 +1,11 @@
 # M-48 transport drogowy — tablica `location` lądowa
 
 **Moduł żywy:** M-48 (token UI `road_transport`, nie tabela) + M-05 `location`  
-**Plaster:** **41.0** (zamknięty) · **108.0** (S46 plan)  
+**Plaster:** **41.0** (zamknięty) · **108.0** (zamknięty)  
 **Status:** operator widzi strefy pocztowe i zapisuje odcinek drogowy na zleceniu. Nie TMS. Nie GPS. Nie mapa.
 
 Delta 41.0: [docs/deltas/archived/41.0-road-transport.md](../deltas/archived/41.0-road-transport.md).  
-Delta 108.0: [docs/deltas/open/108.0-shipment-leg.md](../deltas/open/108.0-shipment-leg.md).
+Delta 108.0: [docs/deltas/archived/108.0-shipment-leg.md](../deltas/archived/108.0-shipment-leg.md).
 
 ## 41.0 tablica odczytu na `/road`
 

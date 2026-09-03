@@ -56,6 +56,7 @@ from app.models.cost_to_serve import CostToServe  # noqa: F401
 from app.models.bookkeeping import Bookkeeping  # noqa: F401
 from app.models.collective_invoice import CollectiveInvoice  # noqa: F401
 from app.models.gdpr_request import GdprRequest  # noqa: F401
+from app.models.shipment_leg import ShipmentLeg  # noqa: F401
 from app.models.money_cost import MoneyCost  # noqa: F401
 from app.models.quote_invoice_settlement import QuoteInvoiceSettlement  # noqa: F401
 

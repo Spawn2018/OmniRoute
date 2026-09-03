@@ -53,6 +53,7 @@ modules =
     app.services.bookkeeping
     app.services.collective_invoices
     app.services.gdpr_requests
+    app.services.shipment_legs
 
 [importlinter:contract:integracje]
 name = Integracje nie znają serwisów
@@ -175,3 +176,6 @@ forbidden_modules =
     app.services.gdpr_requests
     app.repositories.gdpr_requests
     app.models.gdpr_request
+    app.services.shipment_legs
+    app.repositories.shipment_legs
+    app.models.shipment_leg

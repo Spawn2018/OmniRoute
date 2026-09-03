@@ -17,7 +17,7 @@ def _reviewer() -> Userset:
     return Userset(computed_userset=ObjectRelation(object="", relation="reviewer"))
 
 
-def _organization_relations() -> dict[str, Userset]:
+def _organization_core_relations() -> dict[str, Userset]:
     return {
         "member": Userset(this={}),
         "reviewer": Userset(this={}),
@@ -41,6 +41,11 @@ def _organization_relations() -> dict[str, Userset]:
         "can_manage_operator_notices": _member(),
         "can_manage_mail_drafts": _member(),
         "can_manage_outbox_events": _member(),
+    }
+
+
+def _organization_ops_relations() -> dict[str, Userset]:
+    return {
         "can_manage_shipments": _member(),
         "can_manage_tracking": _member(),
         "can_manage_shipment_documents": _member(),
@@ -56,7 +61,12 @@ def _organization_relations() -> dict[str, Userset]:
         "can_manage_bookkeeping": _member(),
         "can_manage_collective_invoices": _member(),
         "can_manage_gdpr_requests": _member(),
+        "can_manage_shipment_legs": _member(),
     }
+
+
+def _organization_relations() -> dict[str, Userset]:
+    return {**_organization_core_relations(), **_organization_ops_relations()}
 
 
 def _organization_relation_metadata() -> dict[str, RelationMetadata]:

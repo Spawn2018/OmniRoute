@@ -4165,6 +4165,80 @@
         }
       }
     },
+    "/api/v1/shipment-legs": {
+      "get": {
+        "tags": [
+          "shipment-legs"
+        ],
+        "summary": "List Shipment Legs",
+        "operationId": "list_shipment_legs_api_v1_shipment_legs_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ShipmentLegResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Shipment Legs Api V1 Shipment Legs Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "shipment-legs"
+        ],
+        "summary": "Create Shipment Leg",
+        "operationId": "create_shipment_leg_api_v1_shipment_legs_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipmentLegCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShipmentLegResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/organization-settings": {
       "get": {
         "tags": [
@@ -11321,6 +11395,86 @@
           "source_ref"
         ],
         "title": "ShipmentDocumentResponse"
+      },
+      "ShipmentLegCreate": {
+        "properties": {
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "origin_location_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Origin Location Id"
+          },
+          "destination_location_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Destination Location Id"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "shipment_id",
+          "origin_location_id",
+          "destination_location_id",
+          "source_ref"
+        ],
+        "title": "ShipmentLegCreate"
+      },
+      "ShipmentLegResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "origin_location_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Origin Location Id"
+          },
+          "destination_location_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Destination Location Id"
+          },
+          "leg_kind": {
+            "type": "string",
+            "title": "Leg Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "shipment_id",
+          "origin_location_id",
+          "destination_location_id",
+          "leg_kind",
+          "source_ref"
+        ],
+        "title": "ShipmentLegResponse"
       },
       "ShipmentResponse": {
         "properties": {

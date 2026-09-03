@@ -2919,6 +2919,62 @@ export type ShipmentDocumentResponse = {
 };
 
 /**
+ * ShipmentLegCreate
+ */
+export type ShipmentLegCreate = {
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Origin Location Id
+     */
+    origin_location_id: string;
+    /**
+     * Destination Location Id
+     */
+    destination_location_id: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ShipmentLegResponse
+ */
+export type ShipmentLegResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Origin Location Id
+     */
+    origin_location_id: string;
+    /**
+     * Destination Location Id
+     */
+    destination_location_id: string;
+    /**
+     * Leg Kind
+     */
+    leg_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * ShipmentResponse
  */
 export type ShipmentResponse = {
@@ -5651,6 +5707,49 @@ export type FulfillGdprRequestApiV1GdprRequestsRequestIdFulfillPostResponses = {
 };
 
 export type FulfillGdprRequestApiV1GdprRequestsRequestIdFulfillPostResponse = FulfillGdprRequestApiV1GdprRequestsRequestIdFulfillPostResponses[keyof FulfillGdprRequestApiV1GdprRequestsRequestIdFulfillPostResponses];
+
+export type ListShipmentLegsApiV1ShipmentLegsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/shipment-legs';
+};
+
+export type ListShipmentLegsApiV1ShipmentLegsGetResponses = {
+    /**
+     * Response List Shipment Legs Api V1 Shipment Legs Get
+     *
+     * Successful Response
+     */
+    200: Array<ShipmentLegResponse>;
+};
+
+export type ListShipmentLegsApiV1ShipmentLegsGetResponse = ListShipmentLegsApiV1ShipmentLegsGetResponses[keyof ListShipmentLegsApiV1ShipmentLegsGetResponses];
+
+export type CreateShipmentLegApiV1ShipmentLegsPostData = {
+    body: ShipmentLegCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/shipment-legs';
+};
+
+export type CreateShipmentLegApiV1ShipmentLegsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateShipmentLegApiV1ShipmentLegsPostError = CreateShipmentLegApiV1ShipmentLegsPostErrors[keyof CreateShipmentLegApiV1ShipmentLegsPostErrors];
+
+export type CreateShipmentLegApiV1ShipmentLegsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ShipmentLegResponse;
+};
+
+export type CreateShipmentLegApiV1ShipmentLegsPostResponse = CreateShipmentLegApiV1ShipmentLegsPostResponses[keyof CreateShipmentLegApiV1ShipmentLegsPostResponses];
 
 export type ListOrganizationSettingsApiV1OrganizationSettingsGetData = {
     body?: never;

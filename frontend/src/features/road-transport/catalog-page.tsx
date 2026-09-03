@@ -7,6 +7,7 @@ import {
 } from "@/components/catalog/catalog-parts"
 import { fetchLocations, roadLocations } from "@/lib/locations-api"
 import { getTenantContext } from "@/lib/tenant"
+import { RoadLegBoard } from "./road-leg-board"
 
 export function RoadTransportPage() {
   const ctx = getTenantContext()
@@ -23,7 +24,7 @@ export function RoadTransportPage() {
     <section className="flex flex-col gap-3" data-road-transport="board">
       <CatalogHeading
         title="Transport drogowy"
-        subtitle="road_transport M-48 · postal_zone i address · nie TMS · nie GPS"
+        subtitle="road_transport M-48 · odcinek shipment_leg road · nie TMS · nie GPS"
       />
       {!ready ? <TenantSessionNotice /> : null}
       {locations.isError ? <CatalogError error={locations.error} /> : null}
@@ -37,6 +38,7 @@ export function RoadTransportPage() {
           </li>
         ))}
       </ul>
+      {ready ? <RoadLegBoard organizationId={ctx.organizationId} /> : null}
     </section>
   )
 }

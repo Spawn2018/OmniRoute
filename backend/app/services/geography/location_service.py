@@ -38,6 +38,12 @@ class LocationService:
     ) -> list[Location]:
         return await self._locations.list_all(kind=kind, search=search)
 
+    async def get_location(self, location_id: UUID) -> Location:
+        found = await self._locations.get(location_id)
+        if found is None:
+            raise ResourceNotFound("nieznana lokalizacja")
+        return found
+
     async def list_zone_members(self, zone_id: UUID) -> list[LocationZoneMember]:
         await self._require_zone(zone_id)
         return await self._locations.list_members(zone_id)

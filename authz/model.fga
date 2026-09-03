@@ -42,3 +42,4 @@ type organization
     define can_manage_bookkeeping: member
     define can_manage_collective_invoices: member
     define can_manage_gdpr_requests: member
+    define can_manage_shipment_legs: member

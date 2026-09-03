@@ -152,7 +152,9 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **107.0 DONE:** tabela `gdpr_request` access/erasure + tombstone konta na `/gdpr`. Nie DPIA. Nie DELETE `app_user`.
 - **107.0 leftover — DPIA / kasowanie inbound/party / portal osoby / JWT (dlaczego nie w tym plasterze):** S45 to katalog konta, nie mapa PII w innych BC. Unieważnienie sesji leftover.
 - **41.0 DONE:** `/road` odczyt `location` `postal_zone`/`address`. Nie nowa tabela. Nie TMS. Nie GPS.
-- **41.0 leftover — TMS / GPS (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. M-49 kolej **DONE w 42.0**.
+- **41.0 leftover — TMS / GPS (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Tabela odcinka = 108.0. TMS i GPS zostają poza S46.
+- **108.0 DONE:** tabela `shipment_leg` `leg_kind=road` na `/road`. Nie mapa. Nie TMS. Nie GPS.
+- **108.0 leftover — S47–S49 kind / mapa / TMS (dlaczego nie w tym plasterze):** CHECK jest `road`. Kolej i drobnica to osobne Q. Mapa zakazana w PLAN.
 - **42.0 DONE:** `/rail` odczyt portów z flagą `rail`. Nie nowa tabela. Nie wagon. Nie CIM.
 - **42.0 leftover — wagon / CIM / GPS (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. M-50 kolej z Chin **DONE w 43.0**.
 - **43.0 DONE:** `/china-rail` odczyt portów CN z flagą `rail`. Nie nowa tabela. Nie korytarz. Nie HTTP.
