@@ -110,6 +110,43 @@ async def test_list_returns_repository_rows() -> None:
     assert listed == [row]
 
 
+@pytest.mark.asyncio
+async def test_upsert_stores_prefix_and_template() -> None:
+    session = AsyncMock()
+    session.scalar = AsyncMock(return_value=None)
+    session.add = MagicMock()
+    session.flush = AsyncMock()
+    service = OrganizationSettingService(session)
+    prefix = await service.upsert_setting(
+        organization_id=uuid4(),
+        user_id=uuid4(),
+        setting_key="quotation_number_prefix",
+        setting_value="or-q",
+    )
+    assert prefix.setting_key == "quotation_number_prefix"
+    assert prefix.setting_value == "OR-Q"
+    template = await service.upsert_setting(
+        organization_id=uuid4(),
+        user_id=uuid4(),
+        setting_key="quotation_print_template",
+        setting_value="plain",
+    )
+    assert template.setting_value == "plain"
+
+
+def test_settings_and_quote_services_stay_apart() -> None:
+    root = Path(__file__).resolve().parents[2]
+    settings = (
+        root / "app" / "services" / "organization_settings" / "organization_setting_service.py"
+    ).read_text(encoding="utf-8")
+    quotes = (root / "app" / "services" / "quotations" / "quotation_service.py").read_text(
+        encoding="utf-8",
+    )
+    assert "quotations" not in settings
+    assert "organization_settings" not in quotes
+    assert "quotation_number_prefix" not in quotes
+
+
 def test_extraction_service_does_not_import_organization_settings() -> None:
     source = Path(extraction_module.__file__).read_text(encoding="utf-8")
     assert "from app.services.organization_settings" not in source

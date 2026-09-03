@@ -34,6 +34,8 @@ export function OrganizationSettingCatalogPage() {
   const ctx = getTenantContext()
   const queryClient = useQueryClient()
   const [currency, setCurrency] = useState("EUR")
+  const [prefix, setPrefix] = useState("OR-Q")
+  const [template, setTemplate] = useState("plain")
   const signedIn = Boolean(ctx.organizationId && ctx.userId)
 
   const query = useQuery({
@@ -49,6 +51,36 @@ export function OrganizationSettingCatalogPage() {
         organizationSettingUpsertBody({
           settingKey: "default_currency",
           settingValue: currency,
+        }),
+      ),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({
+        queryKey: ["organization-settings", ctx.organizationId],
+      })
+    },
+  })
+
+  const savePrefix = useMutation({
+    mutationFn: () =>
+      upsertOrganizationSetting(
+        organizationSettingUpsertBody({
+          settingKey: "quotation_number_prefix",
+          settingValue: prefix,
+        }),
+      ),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({
+        queryKey: ["organization-settings", ctx.organizationId],
+      })
+    },
+  })
+
+  const saveTemplate = useMutation({
+    mutationFn: () =>
+      upsertOrganizationSetting(
+        organizationSettingUpsertBody({
+          settingKey: "quotation_print_template",
+          settingValue: template,
         }),
       ),
     onSuccess: () => {
@@ -86,7 +118,52 @@ export function OrganizationSettingCatalogPage() {
         </Button>
       </form>
 
+      <form
+        className="flex flex-col gap-2 rounded-md border border-border bg-card p-3 md:flex-row md:flex-wrap"
+        onSubmit={(event) => {
+          event.preventDefault()
+          savePrefix.mutate()
+        }}
+      >
+        <Input
+          aria-label="Prefiks numeru oferty"
+          placeholder="OR-Q"
+          value={prefix}
+          onChange={(event) => setPrefix(event.target.value)}
+          required
+        />
+        <Button type="submit" disabled={savePrefix.isPending || !signedIn}>
+          Zapisz prefiks numeru
+        </Button>
+      </form>
+
+      <form
+        className="flex flex-col gap-2 rounded-md border border-border bg-card p-3 md:flex-row md:flex-wrap"
+        onSubmit={(event) => {
+          event.preventDefault()
+          saveTemplate.mutate()
+        }}
+      >
+        <label className="flex flex-col gap-1 text-xs">
+          quotation_print_template
+          <select
+            aria-label="Szablon oferty"
+            className="h-8 rounded-md border border-border bg-card px-2 text-sm"
+            value={template}
+            onChange={(event) => setTemplate(event.target.value)}
+          >
+            <option value="plain">plain</option>
+            <option value="letter">letter</option>
+          </select>
+        </label>
+        <Button type="submit" disabled={saveTemplate.isPending || !signedIn}>
+          Zapisz szablon oferty
+        </Button>
+      </form>
+
       {saveMutation.isError ? <CatalogError error={saveMutation.error} /> : null}
+      {savePrefix.isError ? <CatalogError error={savePrefix.error} /> : null}
+      {saveTemplate.isError ? <CatalogError error={saveTemplate.error} /> : null}
 
       <CatalogLoadedTable
         loading={query.isLoading}

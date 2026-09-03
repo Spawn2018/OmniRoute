@@ -48,7 +48,7 @@
 | arkusz druku | print_sheet | 57.0 `@media print` chowa chrome; nie PDF |
 | odcinek | shipment_leg | operacyjne; nie w 29.0 |
 | tenant | organization | organization_id wszędzie |
-| ustawienie tenanta | organization_setting | konfiguracja jako dane; allowlista kluczy; nie sekret |
+| ustawienie tenanta | organization_setting | 3.0 waluta; 71.0 prefiks i token szablonu; nie sekret; nie licznik |
 | token sesji | session token | JWT HS256; claims `sub` + `org` |
 | token odświeżający | refresh_token | rotacja; RLS; nie access JWT |
 | skrót hasła | password_hash | argon2id; nigdy plaintext w API |

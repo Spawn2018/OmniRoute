@@ -9,7 +9,7 @@ Ekrany, które **zapisują** (INSERT/upsert), nie tablice-odczyty:
 - opłaty — kupno i sprzedaż na jednym wierszu; marża z pary, nie z arkusza
 - kurs NBP, extra portowe, oferty kanału — katalog, nie live HTTP. Na extra portowych „Dopasuj warunek” pokazuje wiersze, których `applies_when` jest dokładnie taki jak wpisałeś. To nie dopisuje opłaty ani marży.
 - porty, strefy taryfowe, terminale — UN/LOCODE / zakres pocztowy / ISPS
-- ustawienie `default_currency` — allowlista, nie sekret
+- ustawienie `default_currency`, `quotation_number_prefix`, `quotation_print_template` — allowlista, nie sekret, nie licznik oferty
 - SOP klienta — treść + akceptacja procedury, nie generator zadań
 - poczta `/mail` — `inbound_message` z `fixture://` albo `synth://`; status `draft`; nie IMAP
 

@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **70.0** S7 HS/CN na RFQ i wycenie. **Etap:** Plan. **Następny:** `/plaster` **71.0** — numer i szablon w `organization_setting`. Arch. M-84 scalać. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **71.0** S8 prefiks i szablon w organization_setting. **Etap:** Plan. **Następny:** S9 `/plan-modul` — dokument oferty (M-26). Print 57.0 jest. Nie send. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

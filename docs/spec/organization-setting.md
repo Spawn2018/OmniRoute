@@ -7,14 +7,14 @@
 
 - Tabela `organization_setting`: `organization_id`, `setting_key`, `setting_value`, timestamps
 - Unikalność `(organization_id, setting_key)`
-- Klucze z allowlisty (dziś: `default_currency` = ISO 4217 CHAR(3)); nieznany klucz = odrzut
+- Klucze z allowlisty: `default_currency` (ISO 4217), `quotation_number_prefix` (1–16 A–Z 0–9 . _ -), `quotation_print_template` (`plain` | `letter`); nieznany klucz = odrzut
 - Sekrety (`*secret*`, `*password*`, `*token*`, `*api_key*`) nie wchodzą
 - OpenFGA `can_manage_organization_settings` = member
-- UI `/organization-settings`: DataTableShell + zapis waluty domyślnej
+- UI `/organization-settings`: DataTableShell + zapis waluty, prefiksu i tokenu szablonu
 
 ## Poza zakresem
 
-outbox, Infisical, Auth0, sekrety tenanta, `table_view`, zmiana HITL, ExtractionService.
+outbox, Infisical, Auth0, sekrety tenanta, `table_view`, zmiana HITL, ExtractionService, licznik / `quotation.document_number`, PDF.
 
 ## HC
 
