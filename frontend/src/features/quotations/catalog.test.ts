@@ -347,7 +347,7 @@ describe("quotation catalog screen", () => {
     expect(page).toContain("createOperatorDecision")
     expect(page).toContain("decideOperatorDecision")
     expect(page).toContain("Przyjmij")
-    expect(page).toContain("Odrzuć")
+    expect(page).toContain("DecideStatusButtons")
     expect(page).toContain("fetchChannelQuotes")
     expect(page).toContain("quotationCarrierInquiries")
     expect(page).toContain('data-carrier-inquiry="trail"')

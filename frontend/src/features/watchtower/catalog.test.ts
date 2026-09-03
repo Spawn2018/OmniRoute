@@ -27,7 +27,7 @@ describe("watchtower surface for 94.0", () => {
     expect(page).toContain("fetchOperatorDecisions")
     expect(page).toContain("decideOperatorDecision")
     expect(page).toContain("Akceptuj")
-    expect(page).toContain("Odrzuć")
+    expect(page).toContain("DecideStatusButtons")
     expect(page).toContain("lock_version")
     expect(page).toContain('to="/ai"')
     expect(page).toContain("lazy(() => import(")

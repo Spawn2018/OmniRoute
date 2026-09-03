@@ -1,6 +1,8 @@
 import { ApiError, httpErrorStatus, readApiDetail } from "@/lib/api"
 import { requireAuthHeaders } from "@/lib/tenant"
 
+export type OperatorDecideStatus = "accepted" | "changed" | "rejected"
+
 export type OperatorDecision = {
   id: string
   organization_id: string
@@ -69,7 +71,7 @@ export async function createOperatorDecision(body: {
 
 export async function decideOperatorDecision(
   decisionId: string,
-  status: "accepted" | "rejected",
+  status: OperatorDecideStatus,
   lockVersion: number,
 ): Promise<OperatorDecision> {
   const response = await fetch(`/api/v1/operator-decisions/${decisionId}/decide`, {

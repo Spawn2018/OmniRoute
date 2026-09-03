@@ -46,14 +46,15 @@ def test_require_subject_id_passes_uuid() -> None:
     assert require_subject_id(token) == token
 
 
-def test_require_decide_status_accepts_accept_or_reject() -> None:
+def test_require_decide_status_accepts_accept_change_or_reject() -> None:
     assert require_decide_status("accepted") == "accepted"
+    assert require_decide_status(" changed ") == "changed"
     assert require_decide_status(" rejected ") == "rejected"
 
 
-def test_require_decide_status_rejects_changed() -> None:
-    with pytest.raises(InvalidOperatorDecision, match="accepted"):
-        require_decide_status("changed")
+def test_require_decide_status_rejects_pending() -> None:
+    with pytest.raises(InvalidOperatorDecision, match="changed"):
+        require_decide_status("pending")
 
 
 def test_require_pending_before_decide_rejects_second_write() -> None:

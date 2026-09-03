@@ -5,7 +5,8 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app.api.deps import require_tenant_session, set_authz_checker
-from app.domain.errors import InvalidOperatorDecision, OperatorDecisionConflict, ResourceNotFound
+from app.domain.errors import OperatorDecisionConflict, ResourceNotFound
+from app.domain.operator_decision import require_decide_status
 from app.main import app
 from app.models.operator_decision import OperatorDecision
 from tests.http_auth import bearer_auth_headers
@@ -75,9 +76,7 @@ class StubOperatorDecisionService:
         row = await self.get_decision(decision_id)
         if row.status != "pending" or row.lock_version != lock_version:
             raise OperatorDecisionConflict("wersja nieaktualna albo decyzja już zapisana")
-        if status not in {"accepted", "rejected"}:
-            raise InvalidOperatorDecision("status: accepted albo rejected")
-        row.status = status
+        row.status = require_decide_status(status)
         row.lock_version = lock_version + 1
         return row
 
@@ -198,6 +197,29 @@ def test_http_create_quotation_subject(catalog_client: object) -> None:
     assert created.json()["subject_kind"] == "quotation"
     assert created.json()["subject_id"] == str(quote_id)
     assert created.json()["status"] == "pending"
+
+
+def test_http_decide_changed(catalog_client: object) -> None:
+    client, _decisions = catalog_client
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/operator-decisions",
+        headers=headers,
+        json={
+            "subject_kind": "inbound_message",
+            "subject_id": str(uuid4()),
+            "source_ref": "fixture://operator-decision/1",
+        },
+    )
+    decision_id = created.json()["id"]
+    changed = client.post(
+        f"/api/v1/operator-decisions/{decision_id}/decide",
+        headers=headers,
+        json={"status": "changed", "lock_version": 0},
+    )
+    assert changed.status_code == 200
+    assert changed.json()["status"] == "changed"
+    assert changed.json()["lock_version"] == 1
 
 
 def test_http_unknown_decision_is_404(catalog_client: object) -> None:

@@ -5,7 +5,7 @@ from app.domain.rate_line import require_source_ref
 
 _PENDING = "pending"
 _SUBJECTS = frozenset({"inbound_message", "mail_draft", "quotation"})
-_DECIDE = frozenset({"accepted", "rejected"})
+_DECIDE = frozenset({"accepted", "changed", "rejected"})
 
 
 def operator_decision_pending_status() -> str:
@@ -36,7 +36,7 @@ def require_decide_status(raw: object) -> str:
         raise InvalidOperatorDecision("status decyzji musi być tekstem")
     token = raw.strip()
     if token not in _DECIDE:
-        raise InvalidOperatorDecision("status: accepted albo rejected")
+        raise InvalidOperatorDecision("status: accepted, changed albo rejected")
     return token
 
 

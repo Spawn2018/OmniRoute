@@ -12,9 +12,11 @@ import {
   fetchOperationalExceptions,
   type OperationalException,
 } from "@/lib/operational-exceptions-api"
+import { DecideStatusButtons } from "@/features/operator-decisions/decide-status-buttons"
 import {
   decideOperatorDecision,
   fetchOperatorDecisions,
+  type OperatorDecideStatus,
   type OperatorDecision,
 } from "@/lib/operator-decisions-api"
 import { getTenantContext } from "@/lib/tenant"
@@ -43,24 +45,16 @@ function MapGate() {
 
 function VerdictRow(args: {
   row: OperatorDecision
-  onDecide: (id: string, status: "accepted" | "rejected", lockVersion: number) => void
+  onDecide: (id: string, status: OperatorDecideStatus, lockVersion: number) => void
 }) {
   return (
     <p className="flex flex-wrap items-center gap-2 text-xs">
       <span className="font-mono">{args.row.subject_kind}</span>
       <span className="font-mono">{args.row.subject_id}</span>
-      <Button
-        type="button"
-        onClick={() => args.onDecide(args.row.id, "accepted", args.row.lock_version)}
-      >
-        Akceptuj
-      </Button>
-      <Button
-        type="button"
-        onClick={() => args.onDecide(args.row.id, "rejected", args.row.lock_version)}
-      >
-        Odrzuć
-      </Button>
+      <DecideStatusButtons
+        acceptLabel="Akceptuj"
+        onDecide={(status) => args.onDecide(args.row.id, status, args.row.lock_version)}
+      />
     </p>
   )
 }
@@ -95,7 +89,7 @@ function DraftSection(args: { rows: StoredMailDraft[] | undefined }) {
 
 function PendingSection(args: {
   rows: OperatorDecision[] | undefined
-  onDecide: (id: string, status: "accepted" | "rejected", lockVersion: number) => void
+  onDecide: (id: string, status: OperatorDecideStatus, lockVersion: number) => void
 }) {
   return (
     <section className="rounded-md border border-border bg-card p-3">
@@ -130,7 +124,7 @@ function useWatchtowerQueries() {
     retry: false,
   })
   const decide = useMutation({
-    mutationFn: (input: { id: string; status: "accepted" | "rejected"; lockVersion: number }) =>
+    mutationFn: (input: { id: string; status: OperatorDecideStatus; lockVersion: number }) =>
       decideOperatorDecision(input.id, input.status, input.lockVersion),
     onSuccess: () => {
       void client.invalidateQueries({ queryKey: ["operator-decisions", ctx.organizationId] })

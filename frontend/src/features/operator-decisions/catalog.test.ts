@@ -31,6 +31,10 @@ describe("operator decisions catalog surface for 74.0", () => {
     const nav = readFileSync(path.join(srcRoot, "components/layout/sidebar.tsx"), "utf8")
     const lists = readFileSync(path.join(srcRoot, "lib/business-lists.ts"), "utf8")
     const ops = readFileSync(path.join(srcRoot, "features/ops/ops-index.ts"), "utf8")
+    const buttons = readFileSync(
+      path.join(srcRoot, "features/operator-decisions/decide-status-buttons.tsx"),
+      "utf8",
+    )
     expect(route).toContain("/decisions")
     expect(nav).toContain("/decisions")
     expect(lists).toContain("operatorDecisions")
@@ -38,10 +42,27 @@ describe("operator decisions catalog surface for 74.0", () => {
     expect(page).toContain("CatalogLoadedTable")
     expect(page).toContain("createOperatorDecision")
     expect(page).toContain("decideOperatorDecision")
+    expect(page).toContain("DecideStatusButtons")
     expect(page).toContain("Akceptuj")
-    expect(page).toContain("Odrzuć")
+    expect(buttons).toContain("Zmień")
+    expect(buttons).toContain("Odrzuć")
     expect(page).toContain("lock_version")
     expect(page).not.toContain("amount")
     expect(page).not.toContain("ExtractionService")
+  })
+
+  it("ships changed as a locked decide verdict on /decisions", () => {
+    const page = readFileSync(
+      path.join(srcRoot, "features/operator-decisions/catalog-page.tsx"),
+      "utf8",
+    )
+    const ops = readFileSync(path.join(srcRoot, "features/ops/ops-index.ts"), "utf8")
+    const api = readFileSync(path.join(srcRoot, "lib/operator-decisions-api.ts"), "utf8")
+    expect(ops).toContain('"121.0": "/decisions"')
+    expect(page).toContain("DecideStatusButtons")
+    expect(api).toContain("OperatorDecideStatus")
+    expect(api).toContain("changed")
+    expect(page).not.toContain("acceptExtraction")
+    expect(page).not.toContain("parseFloat")
   })
 })

@@ -10,9 +10,11 @@ import {
   decideOperatorDecision,
   fetchOperatorDecisions,
   operatorDecisionCreateBody,
+  type OperatorDecideStatus,
   type OperatorDecision,
   type OperatorDecisionDraft,
 } from "@/lib/operator-decisions-api"
+import { DecideStatusButtons } from "@/features/operator-decisions/decide-status-buttons"
 import { getTenantContext } from "@/lib/tenant"
 import {
   CatalogError,
@@ -24,7 +26,7 @@ import {
 const helper = createColumnHelper<OperatorDecision>()
 
 function catalogColumns(
-  onDecide: (id: string, status: "accepted" | "rejected", lockVersion: number) => void,
+  onDecide: (id: string, status: OperatorDecideStatus, lockVersion: number) => void,
 ) {
   return [
     helper.accessor("subject_kind", { header: "Rodzaj" }),
@@ -47,20 +49,16 @@ function DecideCell({
   onDecide,
 }: {
   row: OperatorDecision
-  onDecide: (id: string, status: "accepted" | "rejected", lockVersion: number) => void
+  onDecide: (id: string, status: OperatorDecideStatus, lockVersion: number) => void
 }) {
   if (row.status !== "pending") {
     return row.status
   }
   return (
-    <span className="flex gap-1">
-      <Button type="button" onClick={() => onDecide(row.id, "accepted", row.lock_version)}>
-        Akceptuj
-      </Button>
-      <Button type="button" onClick={() => onDecide(row.id, "rejected", row.lock_version)}>
-        Odrzuć
-      </Button>
-    </span>
+    <DecideStatusButtons
+      acceptLabel="Akceptuj"
+      onDecide={(status) => onDecide(row.id, status, row.lock_version)}
+    />
   )
 }
 
@@ -140,7 +138,7 @@ function useDecisionBoard() {
       lockVersion,
     }: {
       id: string
-      status: "accepted" | "rejected"
+      status: OperatorDecideStatus
       lockVersion: number
     }) => decideOperatorDecision(id, status, lockVersion),
     onSuccess: () => {
@@ -156,7 +154,7 @@ export function OperatorDecisionCatalogPage() {
     <div className="space-y-3">
       <CatalogHeading
         title="Szyna decyzji operatora"
-        subtitle="operator_decision M-71 · lock_version · pending → Akceptuj / Odrzuć · nie extract HITL"
+        subtitle="operator_decision M-71 · lock_version · pending → Akceptuj / Zmień / Odrzuć · nie extract HITL"
       />
       {board.sessionReady ? null : <TenantSessionNotice />}
       <DecisionCreateForm

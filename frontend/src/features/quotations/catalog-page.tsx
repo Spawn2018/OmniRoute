@@ -20,8 +20,10 @@ import {
   createOperatorDecision,
   decideOperatorDecision,
   fetchOperatorDecisions,
+  type OperatorDecideStatus,
   type OperatorDecision,
 } from "@/lib/operator-decisions-api"
+import { DecideStatusButtons } from "@/features/operator-decisions/decide-status-buttons"
 import { fetchPorts } from "@/lib/ports-api"
 import {
   createQuotation,
@@ -598,7 +600,7 @@ function OfferAcceptancePanel(args: {
   const ctx = getTenantContext()
   const pending = quotationAcceptancePending(args.rows, args.decisions)
   const decideOffer = useMutation({
-    mutationFn: async (input: { quotationId: string; status: "accepted" | "rejected" }) => {
+    mutationFn: async (input: { quotationId: string; status: OperatorDecideStatus }) => {
       const open = args.decisions.find(
         (row) =>
           row.subject_kind === "quotation" &&
@@ -630,20 +632,11 @@ function OfferAcceptancePanel(args: {
           <li key={row.id} className="flex flex-wrap items-center gap-2">
             {row.charge_code}{" "}
             <Money amount={row.amount} currency={row.currency} />
-            <Button
-              type="button"
+            <DecideStatusButtons
+              acceptLabel="Przyjmij"
               disabled={decideOffer.isPending || !args.signedIn}
-              onClick={() => decideOffer.mutate({ quotationId: row.id, status: "accepted" })}
-            >
-              Przyjmij
-            </Button>
-            <Button
-              type="button"
-              disabled={decideOffer.isPending || !args.signedIn}
-              onClick={() => decideOffer.mutate({ quotationId: row.id, status: "rejected" })}
-            >
-              Odrzuć
-            </Button>
+              onDecide={(status) => decideOffer.mutate({ quotationId: row.id, status })}
+            />
           </li>
         ))}
       </ul>

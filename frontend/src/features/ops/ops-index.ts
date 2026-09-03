@@ -249,6 +249,11 @@ export const OPS_JOBS = [
     job: "szyna operator_decision accept/reject",
   },
   {
+    route: BUSINESS_LISTS.operatorDecisions.route,
+    label: "Decyzje — Zmień",
+    job: "werdykt changed z lock_version",
+  },
+  {
     route: BUSINESS_LISTS.outboxEvents.route,
     label: "Outbox",
     job: "zdarzenie inbound_message_saved",
@@ -359,6 +364,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "117.0": "/finance",
   "118.0": "/ai",
   "120.0": "/party-scorecards",
+  "121.0": "/decisions",
 } as const
 
 export const ROUTES_BREADTH_STANDING =
