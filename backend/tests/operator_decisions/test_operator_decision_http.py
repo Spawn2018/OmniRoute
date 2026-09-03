@@ -59,19 +59,26 @@ class StubOperatorDecisionService:
             subject_kind=subject_kind,
             subject_id=subject_id,
             status="pending",
+            lock_version=0,
             source_ref=source_ref,
             created_by=user_id,
         )
         self.rows.append(row)
         return row
 
-    async def decide(self, decision_id: UUID, status: str) -> OperatorDecision:
+    async def decide(
+        self,
+        decision_id: UUID,
+        status: str,
+        lock_version: int,
+    ) -> OperatorDecision:
         row = await self.get_decision(decision_id)
-        if row.status != "pending":
-            raise InvalidOperatorDecision("decyzja już zapisana")
+        if row.status != "pending" or row.lock_version != lock_version:
+            raise OperatorDecisionConflict("wersja nieaktualna albo decyzja już zapisana")
         if status not in {"accepted", "rejected"}:
             raise InvalidOperatorDecision("status: accepted albo rejected")
         row.status = status
+        row.lock_version = lock_version + 1
         return row
 
 
@@ -114,6 +121,7 @@ def test_http_create_list_and_accept_operator_decision(catalog_client: object) -
     assert body["organization_id"] == str(org_id)
     assert body["subject_id"] == str(subject_id)
     assert body["status"] == "pending"
+    assert body["lock_version"] == 0
     assert body["decided_at"] is None
     assert "amount" not in body
 
@@ -124,10 +132,11 @@ def test_http_create_list_and_accept_operator_decision(catalog_client: object) -
     accepted = client.post(
         f"/api/v1/operator-decisions/{body['id']}/decide",
         headers=headers,
-        json={"status": "accepted"},
+        json={"status": "accepted", "lock_version": 0},
     )
     assert accepted.status_code == 200
     assert accepted.json()["status"] == "accepted"
+    assert accepted.json()["lock_version"] == 1
 
 
 def test_http_duplicate_pending_is_conflict(catalog_client: object) -> None:
@@ -161,16 +170,16 @@ def test_http_second_decide_is_error(catalog_client: object) -> None:
     first = client.post(
         f"/api/v1/operator-decisions/{decision_id}/decide",
         headers=headers,
-        json={"status": "rejected"},
+        json={"status": "rejected", "lock_version": 0},
     )
     assert first.status_code == 200
     second = client.post(
         f"/api/v1/operator-decisions/{decision_id}/decide",
         headers=headers,
-        json={"status": "accepted"},
+        json={"status": "accepted", "lock_version": 0},
     )
     assert second.status_code == 400
-    assert "już zapisana" in second.json()["detail"]
+    assert "nieaktualna" in second.json()["detail"]
 
 
 def test_http_unknown_decision_is_404(catalog_client: object) -> None:
@@ -178,6 +187,6 @@ def test_http_unknown_decision_is_404(catalog_client: object) -> None:
     response = client.post(
         f"/api/v1/operator-decisions/{uuid4()}/decide",
         headers=bearer_auth_headers(),
-        json={"status": "accepted"},
+        json={"status": "accepted", "lock_version": 0},
     )
     assert response.status_code == 404

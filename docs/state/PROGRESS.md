@@ -222,3 +222,4 @@
 | 2026-09-03 | Plan 76.0 | M-57 | S13: tabela `mail_draft` obok extract. Delta zaakceptowana (`/noc`). Accept przez S11. Następny: `/plaster` 76.0. |
 | 2026-09-03 | 76.0 | M-57 | Tabela `mail_draft` obok extract. Accept przez S11. Nie czat. Nie send. Następny: S14 Plan. |
 | 2026-09-03 | Plan 77.0 | M-71 | S14: `lock_version` na decyzji. Delta zaakceptowana (`/noc`). Dwa Akceptuj = jeden konflikt. Następny: `/plaster` 77.0. |
+| 2026-09-03 | 77.0 | M-71 | `lock_version` na decide. Dwa Akceptuj = jeden konflikt. Nie send. Następny: S15 Plan. |

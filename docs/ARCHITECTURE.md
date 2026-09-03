@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **76.0** S13 tabela `mail_draft` (M-57). **Etap:** Plan. **Następny:** `/plaster` **77.0** — lock optymistyczny na `operator_decision` (M-71). Dwa okna, dwa Akceptuj. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **77.0** S14 `lock_version` na `operator_decision` (M-71). **Etap:** Plan. **Następny:** `/plan-modul` **S15** — ingest Graph na `inbound_message` (M-32). Sekret tenanta, idempotencja. Zakaz send. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

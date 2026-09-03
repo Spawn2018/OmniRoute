@@ -44,3 +44,15 @@ def require_pending_before_decide(current: str) -> str:
     if current != _PENDING:
         raise InvalidOperatorDecision("decyzja już zapisana")
     return current
+
+
+def require_lock_version(raw: object) -> int:
+    if type(raw) is not int:
+        raise InvalidOperatorDecision("lock_version musi być liczbą całkowitą")
+    if raw < 0:
+        raise InvalidOperatorDecision("lock_version nie może być ujemny")
+    return raw
+
+
+def next_lock_version(current: int) -> int:
+    return require_lock_version(current) + 1

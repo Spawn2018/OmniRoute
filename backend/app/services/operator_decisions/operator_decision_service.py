@@ -9,7 +9,7 @@ from app.domain.operator_decision import (
     operator_decision_pending_status,
     require_decide_status,
     require_decision_source_ref,
-    require_pending_before_decide,
+    require_lock_version,
     require_subject_id,
     require_subject_kind,
 )
@@ -47,6 +47,7 @@ class OperatorDecisionService:
             subject_kind=require_subject_kind(subject_kind),
             subject_id=require_subject_id(subject_id),
             status=operator_decision_pending_status(),
+            lock_version=0,
             source_ref=require_decision_source_ref(source_ref),
             created_by=user_id,
         )
@@ -60,9 +61,18 @@ class OperatorDecisionService:
                 ) from orig
             raise
 
-    async def decide(self, decision_id: UUID, status: str) -> OperatorDecision:
-        row = await self.get_decision(decision_id)
-        require_pending_before_decide(row.status)
-        row.status = require_decide_status(status)
-        row.decided_at = datetime.now(UTC)
-        return await self._rows.save(row)
+    async def decide(
+        self,
+        decision_id: UUID,
+        status: str,
+        lock_version: int,
+    ) -> OperatorDecision:
+        claimed = await self._rows.claim_pending(
+            decision_id=decision_id,
+            lock_version=require_lock_version(lock_version),
+            status=require_decide_status(status),
+            decided_at=datetime.now(UTC),
+        )
+        if claimed is None:
+            raise OperatorDecisionConflict("wersja nieaktualna albo decyzja już zapisana")
+        return claimed

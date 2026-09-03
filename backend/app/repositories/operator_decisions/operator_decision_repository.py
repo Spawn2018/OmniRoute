@@ -1,6 +1,7 @@
+from datetime import datetime
 from uuid import UUID
 
-from sqlalchemy import select
+from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models.operator_decision import OperatorDecision
@@ -28,3 +29,27 @@ class OperatorDecisionRepository:
     async def save(self, row: OperatorDecision) -> OperatorDecision:
         await self._session.flush()
         return row
+
+    async def claim_pending(
+        self,
+        *,
+        decision_id: UUID,
+        lock_version: int,
+        status: str,
+        decided_at: datetime,
+    ) -> OperatorDecision | None:
+        found = await self._session.scalar(
+            update(OperatorDecision)
+            .where(
+                OperatorDecision.id == decision_id,
+                OperatorDecision.status == "pending",
+                OperatorDecision.lock_version == lock_version,
+            )
+            .values(
+                status=status,
+                lock_version=lock_version + 1,
+                decided_at=decided_at,
+            )
+            .returning(OperatorDecision),
+        )
+        return found if isinstance(found, OperatorDecision) else None

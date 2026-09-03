@@ -105,7 +105,7 @@
 | kod sieci | network code | snake 2–32; `resolve` po kodzie albo aliasie |
 | karta wyników kontrahenta | party_scorecard | M-13; snapshot wskaźników per `party`; nie scoring osoby; nie silnik RFQ |
 | recenzja kredytowa | credit_review | M-14; decyzja operatora per `party`+dzień; nie auto-scoring; nie `credit_limit` |
-| decyzja operatora | operator_decision | 74.0 szyna pending/accept/reject; nie HITL extract; nie send |
+| decyzja operatora | operator_decision | 74.0 szyna pending/accept/reject; 77.0 `lock_version`; nie HITL extract; nie send |
 | tablica finansowa | finance_board | M-15; odczyt istniejących faktów (`charge.margin`, NBP, limit, recenzja); LLM nie liczy |
 | wskaźnik odpowiedzi | response_rate | 0–1 Numeric na karcie; NULL = nieznany |
 | mediana czasu odpowiedzi | median_response_hours | godziny Numeric na karcie |

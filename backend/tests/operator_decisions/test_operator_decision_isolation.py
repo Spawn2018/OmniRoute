@@ -15,6 +15,7 @@ def _pending(*, organization_id, user_id, subject_id, suffix: str) -> OperatorDe
         subject_kind="inbound_message",
         subject_id=subject_id,
         status="pending",
+        lock_version=0,
         source_ref=f"fixture://operator-decision/{suffix}",
         created_by=user_id,
     )
@@ -92,3 +93,43 @@ async def test_operator_decision_pending_unique_per_tenant(session, two_tenants)
     )
     with pytest.raises(IntegrityError):
         await session.flush()
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_operator_decision_lock_second_claim_loses(session, two_tenants) -> None:
+    from datetime import UTC, datetime
+
+    from app.repositories.operator_decisions.operator_decision_repository import (
+        OperatorDecisionRepository,
+    )
+
+    org_a = two_tenants["org_a"]
+    user_a = two_tenants["user_a"]
+    row = _pending(
+        organization_id=org_a.id,
+        user_id=user_a.id,
+        subject_id=uuid4(),
+        suffix="lock",
+    )
+    await bind_tenant(session, org_a.id)
+    session.add(row)
+    await session.flush()
+    repo = OperatorDecisionRepository(session)
+    now = datetime.now(UTC)
+    first = await repo.claim_pending(
+        decision_id=row.id,
+        lock_version=0,
+        status="accepted",
+        decided_at=now,
+    )
+    assert first is not None
+    assert first.status == "accepted"
+    assert first.lock_version == 1
+    second = await repo.claim_pending(
+        decision_id=row.id,
+        lock_version=0,
+        status="rejected",
+        decided_at=now,
+    )
+    assert second is None

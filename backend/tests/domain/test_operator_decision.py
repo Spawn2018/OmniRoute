@@ -4,9 +4,11 @@ import pytest
 
 from app.domain.errors import InvalidOperatorDecision, InvalidSourceRef
 from app.domain.operator_decision import (
+    next_lock_version,
     operator_decision_pending_status,
     require_decide_status,
     require_decision_source_ref,
+    require_lock_version,
     require_pending_before_decide,
     require_subject_id,
     require_subject_kind,
@@ -58,3 +60,12 @@ def test_require_pending_before_decide_rejects_second_write() -> None:
 def test_require_decision_source_ref_rejects_blank() -> None:
     with pytest.raises(InvalidSourceRef):
         require_decision_source_ref("  ")
+
+
+def test_require_lock_version_rejects_negative() -> None:
+    with pytest.raises(InvalidOperatorDecision, match="ujemny"):
+        require_lock_version(-1)
+
+
+def test_next_lock_version_increments() -> None:
+    assert next_lock_version(0) == 1

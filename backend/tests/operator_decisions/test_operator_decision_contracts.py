@@ -43,3 +43,12 @@ def test_importlinter_lists_operator_decisions_as_independent() -> None:
 def test_generated_api_types_include_operator_decision() -> None:
     source = (_ROOT / "frontend" / "src" / "api" / "types.gen.ts").read_text(encoding="utf-8")
     assert "OperatorDecisionResponse" in source or "OperatorDecisionCreate" in source
+
+
+def test_migration_037_adds_lock_version() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "037_operator_decision_lock.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "037_operator_decision_lock"' in source
+    assert "lock_version" in source
+    assert "036_mail_draft_rls" in source

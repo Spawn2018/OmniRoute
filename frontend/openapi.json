@@ -6668,12 +6668,17 @@
           "status": {
             "type": "string",
             "title": "Status"
+          },
+          "lock_version": {
+            "type": "integer",
+            "title": "Lock Version"
           }
         },
         "additionalProperties": false,
         "type": "object",
         "required": [
-          "status"
+          "status",
+          "lock_version"
         ],
         "title": "OperatorDecisionDecide"
       },
@@ -6714,6 +6719,10 @@
             ],
             "title": "Decided At"
           },
+          "lock_version": {
+            "type": "integer",
+            "title": "Lock Version"
+          },
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
@@ -6727,6 +6736,7 @@
           "subject_id",
           "status",
           "decided_at",
+          "lock_version",
           "source_ref"
         ],
         "title": "OperatorDecisionResponse"

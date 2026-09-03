@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **76.0** S13 tabela `mail_draft` (M-57)
+- **Ostatni plaster:** **77.0** S14 `lock_version` na `operator_decision` (M-71)
 - **Etap:** Plan
-- **Następny:** `/plaster` **77.0** — lock optymistyczny na `operator_decision` (M-71). Dwa okna, dwa Akceptuj. Nie F9.1.
+- **Następny:** `/plan-modul` **S15** — ingest Graph na `inbound_message` (M-32). Sekret tenanta, idempotencja. Zakaz send. Nie F9.1.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

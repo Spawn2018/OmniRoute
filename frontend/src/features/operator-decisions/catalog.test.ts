@@ -40,6 +40,7 @@ describe("operator decisions catalog surface for 74.0", () => {
     expect(page).toContain("decideOperatorDecision")
     expect(page).toContain("Akceptuj")
     expect(page).toContain("Odrzuć")
+    expect(page).toContain("lock_version")
     expect(page).not.toContain("amount")
     expect(page).not.toContain("ExtractionService")
   })

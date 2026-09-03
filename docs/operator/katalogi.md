@@ -12,7 +12,7 @@ Ekrany, które **zapisują** (INSERT/upsert), nie tablice-odczyty:
 - ustawienie `default_currency`, `quotation_number_prefix`, `quotation_print_template` — allowlista, nie sekret, nie licznik oferty
 - SOP klienta — treść + akceptacja procedury. Checkbox „Blokuj auto” mówi, że zatwierdzona procedura zabrania automatu (wysyłka przyjdzie później). Nie generator zadań.
 - poczta `/mail` — `inbound_message` z `fixture://` albo `synth://`; status `draft`; nie IMAP
-- decyzje `/decisions` — pending na `subject_id` (na start wiadomość); Akceptuj albo Odrzuć. Nie accept extractu. Nie send.
+- decyzje `/decisions` — pending na `subject_id`; Akceptuj albo Odrzuć z `lock_version`. Dwa okna, dwa Akceptuj: drugi dostaje konflikt. Nie accept extractu. Nie send.
 - powiadomienia `/notifications` — zapisany inbox `unread`/`read` z `source_ref`. Tablica pending HITL/wycen zostaje odczytem. Nie send.
 - szkic maila `/ai` — `mail_draft` obok extractu, status `draft`. Werdykt na `/decisions`. Nie czat. Nie send. Nie accept extractu.
 

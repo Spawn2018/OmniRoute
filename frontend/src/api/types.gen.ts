@@ -1224,6 +1224,10 @@ export type OperatorDecisionDecide = {
      * Status
      */
     status: string;
+    /**
+     * Lock Version
+     */
+    lock_version: number;
 };
 
 /**
@@ -1254,6 +1258,10 @@ export type OperatorDecisionResponse = {
      * Decided At
      */
     decided_at: string | null;
+    /**
+     * Lock Version
+     */
+    lock_version: number;
     /**
      * Source Ref
      */

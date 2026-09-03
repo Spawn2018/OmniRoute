@@ -8,6 +8,7 @@ export type OperatorDecision = {
   subject_id: string
   status: "pending" | "accepted" | "changed" | "rejected"
   decided_at: string | null
+  lock_version: number
   source_ref: string
 }
 
@@ -69,11 +70,12 @@ export async function createOperatorDecision(body: {
 export async function decideOperatorDecision(
   decisionId: string,
   status: "accepted" | "rejected",
+  lockVersion: number,
 ): Promise<OperatorDecision> {
   const response = await fetch(`/api/v1/operator-decisions/${decisionId}/decide`, {
     method: "POST",
     headers: { ...requireAuthHeaders(), "Content-Type": "application/json" },
-    body: JSON.stringify({ status }),
+    body: JSON.stringify({ status, lock_version: lockVersion }),
   })
   return readDecision(response, "Błąd zapisu werdyktu")
 }

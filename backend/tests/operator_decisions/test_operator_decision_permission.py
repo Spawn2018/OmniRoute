@@ -26,7 +26,7 @@ _ENDPOINTS = (
         "POST",
         f"/api/v1/operator-decisions/{uuid4()}/decide",
         None,
-        {"status": "accepted"},
+        {"status": "accepted", "lock_version": 0},
     ),
 )
 

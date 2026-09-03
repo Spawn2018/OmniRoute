@@ -6,6 +6,7 @@ from sqlalchemy import (
     DateTime,
     ForeignKey,
     Index,
+    Integer,
     String,
     text,
 )
@@ -51,4 +52,5 @@ class OperatorDecision(Base, TimestampMixin):
         DateTime(timezone=True),
         nullable=True,
     )
+    lock_version: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
     source_ref: Mapped[str] = mapped_column(String(512), nullable=False)

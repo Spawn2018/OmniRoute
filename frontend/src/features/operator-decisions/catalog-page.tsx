@@ -23,7 +23,9 @@ import {
 
 const helper = createColumnHelper<OperatorDecision>()
 
-function catalogColumns(onDecide: (id: string, status: "accepted" | "rejected") => void) {
+function catalogColumns(
+  onDecide: (id: string, status: "accepted" | "rejected", lockVersion: number) => void,
+) {
   return [
     helper.accessor("subject_kind", { header: "Rodzaj" }),
     helper.accessor("subject_id", {
@@ -45,17 +47,17 @@ function DecideCell({
   onDecide,
 }: {
   row: OperatorDecision
-  onDecide: (id: string, status: "accepted" | "rejected") => void
+  onDecide: (id: string, status: "accepted" | "rejected", lockVersion: number) => void
 }) {
   if (row.status !== "pending") {
     return row.status
   }
   return (
     <span className="flex gap-1">
-      <Button type="button" onClick={() => onDecide(row.id, "accepted")}>
+      <Button type="button" onClick={() => onDecide(row.id, "accepted", row.lock_version)}>
         Akceptuj
       </Button>
-      <Button type="button" onClick={() => onDecide(row.id, "rejected")}>
+      <Button type="button" onClick={() => onDecide(row.id, "rejected", row.lock_version)}>
         Odrzuć
       </Button>
     </span>
@@ -132,8 +134,15 @@ function useDecisionBoard() {
     },
   })
   const decideMutation = useMutation({
-    mutationFn: ({ id, status }: { id: string; status: "accepted" | "rejected" }) =>
-      decideOperatorDecision(id, status),
+    mutationFn: ({
+      id,
+      status,
+      lockVersion,
+    }: {
+      id: string
+      status: "accepted" | "rejected"
+      lockVersion: number
+    }) => decideOperatorDecision(id, status, lockVersion),
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: listKey })
     },
@@ -147,7 +156,7 @@ export function OperatorDecisionCatalogPage() {
     <div className="space-y-3">
       <CatalogHeading
         title="Szyna decyzji operatora"
-        subtitle="operator_decision M-71 · pending → Akceptuj / Odrzuć · nie extract HITL"
+        subtitle="operator_decision M-71 · lock_version · pending → Akceptuj / Odrzuć · nie extract HITL"
       />
       {board.sessionReady ? null : <TenantSessionNotice />}
       <DecisionCreateForm
@@ -161,8 +170,8 @@ export function OperatorDecisionCatalogPage() {
       {board.decideMutation.isError ? <CatalogError error={board.decideMutation.error} /> : null}
       <CatalogLoadedTable
         tableKey={BUSINESS_LISTS.operatorDecisions.tableKey}
-        columns={catalogColumns((id, status) =>
-          board.decideMutation.mutate({ id, status }),
+        columns={catalogColumns((id, status, lockVersion) =>
+          board.decideMutation.mutate({ id, status, lockVersion }),
         )}
         columnLabels={COLUMN_LABELS}
         data={board.query.data}

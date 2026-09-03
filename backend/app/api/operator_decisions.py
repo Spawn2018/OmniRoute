@@ -26,6 +26,7 @@ class OperatorDecisionDecide(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     status: str
+    lock_version: int
 
 
 class OperatorDecisionResponse(BaseModel):
@@ -37,6 +38,7 @@ class OperatorDecisionResponse(BaseModel):
     subject_id: UUID
     status: str
     decided_at: datetime | None
+    lock_version: int
     source_ref: str
 
 
@@ -74,6 +76,10 @@ async def decide_operator_decision(
     _authz: None = Depends(_AUTHZ),
     session: AsyncSession = Depends(require_tenant_session),
 ) -> OperatorDecisionResponse:
-    row = await OperatorDecisionService(session).decide(decision_id, body.status)
+    row = await OperatorDecisionService(session).decide(
+        decision_id,
+        body.status,
+        body.lock_version,
+    )
     await session.commit()
     return OperatorDecisionResponse.model_validate(row)
