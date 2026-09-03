@@ -5,6 +5,10 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { BUSINESS_LISTS } from "@/lib/business-lists"
 import {
+  createCarrierInquiry,
+  fetchCarrierInquiries,
+} from "@/lib/carrier-inquiries-api"
+import {
   createNetwork,
   createNetworkMember,
   fetchNetworkMembers,
@@ -69,6 +73,7 @@ export function NetworkCatalogPage() {
   const [networkId, setNetworkId] = useState("")
   const [memberCode, setMemberCode] = useState("")
   const [memberName, setMemberName] = useState("")
+  const [askedMemberId, setAskedMemberId] = useState("")
   const sessionReady = Boolean(ctx.organizationId && ctx.userId)
 
   const query = useQuery({
@@ -96,6 +101,21 @@ export function NetworkCatalogPage() {
     queryFn: () => fetchNetworkMembers(networkId),
     enabled: sessionReady && networkId !== "",
     retry: false,
+  })
+  const inquiries = useQuery({
+    queryKey: ["carrier-inquiries", ctx.organizationId],
+    queryFn: fetchCarrierInquiries,
+    enabled: sessionReady,
+    retry: false,
+  })
+  const askMember = useMutation({
+    mutationFn: () => createCarrierInquiry(askedMemberId),
+    onSuccess: () => {
+      setAskedMemberId("")
+      void queryClient.invalidateQueries({
+        queryKey: ["carrier-inquiries", ctx.organizationId],
+      })
+    },
   })
   const createMember = useMutation({
     mutationFn: () =>
@@ -239,6 +259,42 @@ export function NetworkCatalogPage() {
           {(members.data ?? []).map((row) => (
             <li key={row.id}>
               {row.member_code} · {row.legal_name}
+            </li>
+          ))}
+        </ul>
+      </section>
+      <section className="space-y-2" data-carrier-inquiry="catalog">
+        <h2 className="text-sm font-medium">Zapytania do agentów</h2>
+        <form
+          className="flex flex-col gap-2 rounded-md border border-border bg-card p-3 lg:flex-row"
+          onSubmit={(event) => {
+            event.preventDefault()
+            if (sessionReady && askedMemberId !== "") askMember.mutate()
+          }}
+        >
+          <select
+            aria-label="Członek do zapytania"
+            className="h-8 rounded-md border border-border bg-card px-2 text-sm"
+            value={askedMemberId}
+            onChange={(event) => setAskedMemberId(event.target.value)}
+          >
+            <option value="">Wybierz członka</option>
+            {(members.data ?? []).map((row) => (
+              <option key={row.id} value={row.id}>
+                {row.member_code} {row.legal_name}
+              </option>
+            ))}
+          </select>
+          <Button type="submit" disabled={askMember.isPending || !sessionReady || askedMemberId === ""}>
+            Zapisz zapytanie
+          </Button>
+        </form>
+        {askMember.isError ? <CatalogError error={askMember.error} /> : null}
+        {inquiries.isError ? <CatalogError error={inquiries.error} /> : null}
+        <ul className="text-xs">
+          {(inquiries.data ?? []).map((row) => (
+            <li key={row.id}>
+              {row.status} · {row.network_member_id}
             </li>
           ))}
         </ul>

@@ -1136,6 +1136,80 @@
         }
       }
     },
+    "/api/v1/carrier-inquiries": {
+      "get": {
+        "tags": [
+          "carrier-inquiries"
+        ],
+        "summary": "List Carrier Inquiries",
+        "operationId": "list_carrier_inquiries_api_v1_carrier_inquiries_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CarrierInquiryResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Carrier Inquiries Api V1 Carrier Inquiries Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "carrier-inquiries"
+        ],
+        "summary": "Create Carrier Inquiry",
+        "operationId": "create_carrier_inquiry_api_v1_carrier_inquiries_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CarrierInquiryCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarrierInquiryResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/inbound-messages": {
       "get": {
         "tags": [
@@ -5097,6 +5171,57 @@
           "whitelist_status"
         ],
         "title": "BankAccountResponse"
+      },
+      "CarrierInquiryCreate": {
+        "properties": {
+          "network_member_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Network Member Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "network_member_id"
+        ],
+        "title": "CarrierInquiryCreate"
+      },
+      "CarrierInquiryResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "network_member_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Network Member Id"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "network_member_id",
+          "source_ref",
+          "status"
+        ],
+        "title": "CarrierInquiryResponse"
       },
       "CarrierProfileResponse": {
         "properties": {

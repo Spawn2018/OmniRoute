@@ -238,6 +238,14 @@ class NetworkConflict(DomainError):
     """Kod albo alias sieci już zajęty w katalogu tenanta."""
 
 
+class UnknownNetworkMember(DomainError):
+    """network_member_id nie wskazuje członka tego tenanta."""
+
+
+class InvalidCarrierInquiry(DomainError):
+    """Zapytanie do agenta: network_member_id UUID, status draft — nie HTTP."""
+
+
 class InvalidInboundMessage(DomainError):
     """Wiadomość przychodząca: fixture source_ref, nadawca, temat, treść — nie IMAP."""
 

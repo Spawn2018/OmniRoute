@@ -29,6 +29,7 @@ modules =
     app.services.nbp_rates
     app.services.dangerous_goods
     app.services.networks
+    app.services.carrier_inquiries
     app.services.inbound_messages
     app.services.customer_rfqs
     app.services.operator_decisions

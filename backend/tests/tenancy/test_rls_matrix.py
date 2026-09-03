@@ -31,6 +31,8 @@ _ALL_TENANT_POLICY_NAMES = (
     "nbp_rate_tenant_isolation",
     "dangerous_good_tenant_isolation",
     "network_tenant_isolation",
+    "network_member_tenant_isolation",
+    "carrier_inquiry_tenant_isolation",
     "party_scorecard_tenant_isolation",
     "customer_sop_tenant_isolation",
     "port_surcharge_tenant_isolation",

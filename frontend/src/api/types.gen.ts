@@ -79,6 +79,42 @@ export type BankAccountResponse = {
 };
 
 /**
+ * CarrierInquiryCreate
+ */
+export type CarrierInquiryCreate = {
+    /**
+     * Network Member Id
+     */
+    network_member_id: string;
+};
+
+/**
+ * CarrierInquiryResponse
+ */
+export type CarrierInquiryResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Network Member Id
+     */
+    network_member_id: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+    /**
+     * Status
+     */
+    status: string;
+};
+
+/**
  * CarrierProfileResponse
  */
 export type CarrierProfileResponse = {
@@ -3141,6 +3177,49 @@ export type CreateNetworkMemberApiV1NetworksNetworkIdMembersPostResponses = {
 };
 
 export type CreateNetworkMemberApiV1NetworksNetworkIdMembersPostResponse = CreateNetworkMemberApiV1NetworksNetworkIdMembersPostResponses[keyof CreateNetworkMemberApiV1NetworksNetworkIdMembersPostResponses];
+
+export type ListCarrierInquiriesApiV1CarrierInquiriesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/carrier-inquiries';
+};
+
+export type ListCarrierInquiriesApiV1CarrierInquiriesGetResponses = {
+    /**
+     * Response List Carrier Inquiries Api V1 Carrier Inquiries Get
+     *
+     * Successful Response
+     */
+    200: Array<CarrierInquiryResponse>;
+};
+
+export type ListCarrierInquiriesApiV1CarrierInquiriesGetResponse = ListCarrierInquiriesApiV1CarrierInquiriesGetResponses[keyof ListCarrierInquiriesApiV1CarrierInquiriesGetResponses];
+
+export type CreateCarrierInquiryApiV1CarrierInquiriesPostData = {
+    body: CarrierInquiryCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/carrier-inquiries';
+};
+
+export type CreateCarrierInquiryApiV1CarrierInquiriesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCarrierInquiryApiV1CarrierInquiriesPostError = CreateCarrierInquiryApiV1CarrierInquiriesPostErrors[keyof CreateCarrierInquiryApiV1CarrierInquiriesPostErrors];
+
+export type CreateCarrierInquiryApiV1CarrierInquiriesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CarrierInquiryResponse;
+};
+
+export type CreateCarrierInquiryApiV1CarrierInquiriesPostResponse = CreateCarrierInquiryApiV1CarrierInquiriesPostResponses[keyof CreateCarrierInquiryApiV1CarrierInquiriesPostResponses];
 
 export type ListInboundMessagesApiV1InboundMessagesGetData = {
     body?: never;

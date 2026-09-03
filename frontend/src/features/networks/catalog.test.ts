@@ -46,6 +46,8 @@ describe("networks catalog surface for 9.0", () => {
     expect(page).not.toContain("amount")
     expect(page).toContain("createNetworkMember")
     expect(page).toContain('data-network-member="catalog"')
+    expect(page).toContain("createCarrierInquiry")
+    expect(page).toContain('data-carrier-inquiry="catalog"')
     expect(page).not.toContain("cheerio")
     expect(page).not.toContain("httpx")
   })

@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 
 from app.api import (
+    carrier_inquiries,
     channel_quotes,
     charge_codes,
     charges,
@@ -41,6 +42,7 @@ api_router.include_router(charge_codes.router)
 api_router.include_router(commodity_codes.router)
 api_router.include_router(dangerous_goods.router)
 api_router.include_router(networks.router)
+api_router.include_router(carrier_inquiries.router)
 api_router.include_router(inbound_messages.router)
 api_router.include_router(customer_rfqs.router)
 api_router.include_router(operator_decisions.router)

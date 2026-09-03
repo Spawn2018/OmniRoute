@@ -12,6 +12,7 @@ from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_asyn
 from alembic import command
 from app.core.database import bind_tenant
 from app.models.app_user import AppUser
+from app.models.carrier_inquiry import CarrierInquiry  # noqa: F401 — rejestr metadanych RLS
 from app.models.carrier_profile import CarrierProfile  # noqa: F401 — rejestr metadanych RLS
 from app.models.channel_quote import ChannelQuote  # noqa: F401 — rejestr metadanych RLS
 from app.models.charge import Charge  # noqa: F401 — rejestr metadanych RLS
@@ -28,6 +29,7 @@ from app.models.location import (  # noqa: F401 — rejestr metadanych RLS
 )
 from app.models.nbp_rate import NbpRate  # noqa: F401 — rejestr metadanych RLS
 from app.models.network import Network  # noqa: F401 — rejestr metadanych RLS
+from app.models.network_member import NetworkMember  # noqa: F401 — rejestr metadanych RLS
 from app.models.organization import Organization
 from app.models.organization_setting import (  # noqa: F401 — rejestr metadanych RLS
     OrganizationSetting,

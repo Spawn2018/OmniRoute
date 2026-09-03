@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** `/plaster` **83.0** — zapytanie do agenta (M-30). Buy side. Tabela. Nie live HTTP. Nie F9.1.
+**Następny (zablokowany):** `/plan-modul` **S21** — live HTTP kanału (M-19) **przy umowie**. Bez umowy = park. Nie F9.1.
 <!-- os-status:end -->
 
 ```mermaid
@@ -386,7 +386,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E2** | Testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy) | 61.0 | zamknięty (`docs/deltas/archived/61.0-alembic-quote-budget.md`) |
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | 62.0 | zamknięty (`docs/deltas/archived/62.0-operator-howto-c4.md`) |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | 63.0 | zamknięty (`docs/deltas/archived/63.0-threat-model-codeql.md`) |
-| po Q-E4 | **Fala S**, S1–S19 zamknięte; S20 plaster 83.0 | Plan → plaster | **następny** |
+| po Q-E4 | **Fala S**, S1–S20 zamknięte; S21 live HTTP kanału | Plan → plaster | **następny** |
 
 ### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
 
@@ -425,8 +425,8 @@ Reguły kolejności (żeby `/noc` nie złożył awarii):
 | S17 | Żywe **M-32** ingest IMAP / EmailEngine | 80.0 | zamknięty (`docs/deltas/archived/80.0-imap-ingest.md`) | `imap://` + `external_id`. Live leftover. Nie send |
 | **S18** | Żywe **M-33** wysyłka po S11+S10 | 81.0 | zamknięty (`docs/deltas/archived/81.0-mail-send.md`) | Świadomy `mailto:` po accept. Graph HTTP leftover. Auto-send zakazane |
 | S19 | Żywe **M-12** `network_member` | 82.0 | zamknięty (`docs/deltas/archived/82.0-network-member.md`) | Ręczny katalog. Portal leftover |
-| S20 | Żywe **M-30** zapytanie do agenta | 83.0 | **następny** | Buy side. Tabela. Nie live HTTP |
-| S21 | Żywe **M-19** live HTTP kanału **przy umowie** | Plan → plaster | po S20 | Bez umowy = park, nie teatr HTTP |
+| S20 | Żywe **M-30** zapytanie do agenta | 83.0 | zamknięty (`docs/deltas/archived/83.0-carrier-inquiry.md`) | Buy side. Tabela. Live leftover |
+| S21 | Żywe **M-19** live HTTP kanału **przy umowie** | Plan → plaster | **następny** | Bez umowy = park, nie teatr HTTP |
 | S22 | Żywe **M-31** porównanie | Plan → plaster | po S21 | Spread w `charge` |
 | S23 | Żywe **M-25** wynik negocjacji | Plan → plaster | po S22 | Nie zamiast `margin()` |
 | S24 | Żywe **M-29** won/lost; accept oferty przez S11 | Plan → plaster | po S23 | Nie accept extractu. CSV (M-27) z boku, nie na ścieżce |
