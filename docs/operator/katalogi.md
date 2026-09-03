@@ -29,8 +29,7 @@ Ekrany, które **zapisują** (INSERT/upsert), nie tablice-odczyty:
 - księgowość `/bookkeeping` — zapis pary opłata+faktura. How-to: [ksiegowosc.md](ksiegowosc.md). Nie kwota na tym wierszu. Nie JPK. Sprzedaż zostaje na `/charges`.
 - RODO `/gdpr` — wniosek `access`/`erasure` na koncie tenanta. How-to: [rodo.md](rodo.md). Wypełnienie erasure to tombstone emailu, nie `DELETE` wiersza. Nie DPIA.
 - droga `/road` — zapis odcinka `shipment_leg` (`leg_kind=road`) na zleceniu. How-to: [odcinek.md](odcinek.md). Start i koniec to strefa albo adres, nie port. Nie TMS. Nie mapa.
-- kolej `/rail` — zapis odcinka `shipment_leg` (`leg_kind=rail`). How-to: [kolej.md](kolej.md). Końce to lokalizacje UN/LOCODE portu z flagą `rail`. Nie wagon. Nie mapa.
-- kolej z Chin `/china-rail` — zapis odcinka `shipment_leg` (`leg_kind=china_rail`). How-to: [kolej-chiny.md](kolej-chiny.md). Końce to lokalizacje UN/LOCODE portu CN z flagą `rail`. Nie korytarz. Nie HTTP.
+- kolej `/rail` i `/china-rail` — `shipment_leg` `rail` / `china_rail`. How-to: [kolej.md](kolej.md), [kolej-chiny.md](kolej-chiny.md). UN/LOCODE z flagą `rail`; `china_rail` wymaga CN. Nie wagon. Nie korytarz.
 - wieża `/watchtower` — lista wyjątków + pending S11 (Akceptuj/Odrzuć). How-to: [wieza.md](wieza.md). HITL na `/ai`. Leniwy panel mapy, nie kafelki.
 - decyzje `/decisions` — pending na `subject_id`; Akceptuj albo Odrzuć z `lock_version`. Dwa okna, dwa Akceptuj: drugi dostaje konflikt. Nie accept extractu. Nie send.
 - powiadomienia `/notifications` — zapisany inbox `unread`/`read` z `source_ref`. Tablica pending HITL/wycen zostaje odczytem. Nie send.
