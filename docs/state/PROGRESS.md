@@ -288,3 +288,4 @@
 | 2026-09-03 | 108.0 | M-48 | Tabela odcinka drogowego na zleceniu. Nie mapa. Nie TMS. Następny: S47 Plan. |
 | 2026-09-03 | Plan 109.0 | M-49 | S47: `shipment_leg` `rail` na zleceniu. Delta zaakceptowana (`/noc`). Nie mapa. Następny: `/plaster` 109.0. |
 | 2026-09-03 | 109.0 | M-49 | Odcinek kolejowy na tej samej tabeli nogi. Nie wagon. Nie mapa. Następny: S48 Plan. |
+| 2026-09-03 | Plan 110.0 | M-50 | S48: `shipment_leg` `china_rail` na zleceniu. Delta zaakceptowana (`/noc`). Nie korytarz. Następny: `/plaster` 110.0. |

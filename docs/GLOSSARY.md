@@ -33,9 +33,9 @@
 | księgowość | bookkeeping | 104.0 tabela pary opłata+faktura; nie kwota; nie JPK |
 | zbiorcza faktura | collective_invoice | 105.0 tabela pary faktura+dodatkowe zlecenie; nie kwota; nie płatność paczką |
 | transport drogowy | road_transport | 41.0 tablica `location` lądowa; 108.0 odcinek `shipment_leg` road; nie TMS; nie GPS |
-| odcinek | shipment_leg | 108.0 `road` · 109.0 `rail` na zleceniu; nie mapa; nie ETA |
+| odcinek | shipment_leg | 108.0 `road` · 109.0 `rail` · 110.0 `china_rail` na zleceniu; nie mapa; nie ETA |
 | kolej intermodalna | intermodal_rail | 42.0 tablica `port` z flagą `rail`; 109.0 odcinek `shipment_leg` rail; nie wagon; nie CIM |
-| kolej z Chin | china_rail | 43.0 tablica `port` CN z flagą `rail`; nie korytarz; nie HTTP |
+| kolej z Chin | china_rail | 43.0 tablica `port` CN z flagą `rail`; 110.0 odcinek `shipment_leg` china_rail; nie korytarz; nie HTTP |
 | drobnica morska | ocean_lcl | 44.0 tablica `port` z `is_seaport`; nie tabela LCL; nie CFS |
 | sankcje | sanctions | 45.0 tablica aktywnych `party`; 89.0 sprawdzenie `sanctions_list_ref` na karcie; nie auto-match; nie live lista |
 | RODO | gdpr | 46.0 tablica `app_user` email; 107.0 wniosek `gdpr_request`; nie DPIA |
