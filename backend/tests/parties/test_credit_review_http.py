@@ -68,6 +68,19 @@ class StubPartyService:
         self.rows.append(row)
         return row
 
+    async def get_review(self, review_id: UUID) -> CreditReview:
+        for row in self.rows:
+            if row.id == review_id:
+                return row
+        raise UnknownCreditReview(f"nieznana recenzja kredytowa: {review_id}")
+
+    async def attach_bureau(self, review_id: UUID, bureau_attachment_ref: object) -> CreditReview:
+        from app.domain.credit_review import normalize_bureau_attachment_ref
+
+        row = await self.get_review(review_id)
+        row.bureau_attachment_ref = normalize_bureau_attachment_ref(bureau_attachment_ref)
+        return row
+
 
 @pytest.fixture
 def catalog_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
@@ -149,6 +162,76 @@ def test_http_create_unknown_party_is_rejected(catalog_client: TestClient) -> No
     )
     assert response.status_code == 400
     assert "nieznany kontrahent" in response.json()["detail"]
+
+
+def test_http_attach_bureau_keeps_source_ref_and_has_no_score(catalog_client: TestClient) -> None:
+    org_id = uuid4()
+    headers = bearer_auth_headers(organization_id=org_id)
+    created = catalog_client.post(
+        "/api/v1/credit-reviews",
+        headers=headers,
+        json={
+            "party_id": str(uuid4()),
+            "review_date": "2026-09-01",
+            "decision": "ok",
+        },
+    )
+    assert created.status_code == 201
+    review_id = created.json()["id"]
+    pointer = "file://wywiad/raport-1"
+    attached = catalog_client.patch(
+        f"/api/v1/credit-reviews/{review_id}/attach-bureau",
+        headers=headers,
+        json={"bureau_attachment_ref": pointer},
+    )
+    assert attached.status_code == 200
+    body = attached.json()
+    assert body["bureau_attachment_ref"] == pointer
+    assert body["source_ref"] == "tenant:manual"
+    assert body["decision"] == "ok"
+    assert "risk_score" not in body
+    assert "score" not in body
+    assert "credit_limit" not in body
+
+
+def test_http_attach_bureau_empty_ref_is_rejected(catalog_client: TestClient) -> None:
+    headers = bearer_auth_headers()
+    created = catalog_client.post(
+        "/api/v1/credit-reviews",
+        headers=headers,
+        json={
+            "party_id": str(uuid4()),
+            "review_date": "2026-09-01",
+            "decision": "hold",
+        },
+    )
+    response = catalog_client.patch(
+        f"/api/v1/credit-reviews/{created.json()['id']}/attach-bureau",
+        headers=headers,
+        json={"bureau_attachment_ref": "   "},
+    )
+    assert response.status_code == 400
+    assert "wskazanie raportu" in response.json()["detail"]
+
+
+def test_http_attach_bureau_too_long_ref_is_rejected(catalog_client: TestClient) -> None:
+    headers = bearer_auth_headers()
+    created = catalog_client.post(
+        "/api/v1/credit-reviews",
+        headers=headers,
+        json={
+            "party_id": str(uuid4()),
+            "review_date": "2026-09-01",
+            "decision": "refuse",
+        },
+    )
+    response = catalog_client.patch(
+        f"/api/v1/credit-reviews/{created.json()['id']}/attach-bureau",
+        headers=headers,
+        json={"bureau_attachment_ref": "x" * 257},
+    )
+    assert response.status_code == 400
+    assert "za długie" in response.json()["detail"]
 
 
 def test_http_create_rejects_client_source_ref(catalog_client: TestClient) -> None:

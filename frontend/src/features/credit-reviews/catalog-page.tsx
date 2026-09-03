@@ -6,7 +6,9 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { BUSINESS_LISTS } from "@/lib/business-lists"
 import {
+  attachCreditReviewBureau,
   createCreditReview,
+  creditReviewAttachBureauBody,
   creditReviewCreateBody,
   fetchCreditReviews,
   resolveCreditReview,
@@ -42,6 +44,11 @@ const columns = [
     header: "Pochodzenie",
     cell: (info) => info.getValue(),
   }),
+  helper.accessor("bureau_attachment_ref", {
+    id: "bureau_attachment_ref",
+    header: "Raport",
+    cell: (info) => info.getValue() ?? "—",
+  }),
 ]
 
 const COLUMN_LABELS = {
@@ -50,6 +57,53 @@ const COLUMN_LABELS = {
   decision: "ok / hold / refuse",
   note: "Notatka operatora",
   source_ref: "source_ref",
+  bureau_attachment_ref: "wskazanie raportu",
+}
+
+function BureauAttachForm(args: { organizationId: string | null }) {
+  const client = useQueryClient()
+  const [reviewId, setReviewId] = useState("")
+  const [bureauRef, setBureauRef] = useState("")
+  const attachMutation = useMutation({
+    mutationFn: () =>
+      attachCreditReviewBureau(
+        reviewId.trim(),
+        creditReviewAttachBureauBody({ bureauAttachmentRef: bureauRef }),
+      ),
+    onSuccess: () => {
+      setReviewId("")
+      setBureauRef("")
+      void client.invalidateQueries({ queryKey: ["credit-reviews", args.organizationId] })
+    },
+  })
+  return (
+    <form
+      className="flex flex-wrap items-end gap-2 rounded-md border border-border bg-card p-3"
+      onSubmit={(event) => {
+        event.preventDefault()
+        attachMutation.mutate()
+      }}
+    >
+      <Input
+        aria-label="Recenzja do raportu"
+        placeholder="credit_review.id"
+        value={reviewId}
+        onChange={(event) => setReviewId(event.target.value)}
+        required
+      />
+      <Input
+        aria-label="Wskazanie raportu wywiadowni"
+        placeholder="bureau_attachment_ref"
+        value={bureauRef}
+        onChange={(event) => setBureauRef(event.target.value)}
+        required
+      />
+      <Button type="submit" disabled={attachMutation.isPending || !args.organizationId}>
+        Dołącz raport
+      </Button>
+      {attachMutation.isError ? <Catalog.CatalogError error={attachMutation.error} /> : null}
+    </form>
+  )
 }
 
 export function CreditReviewCatalogPage() {
@@ -171,6 +225,8 @@ export function CreditReviewCatalogPage() {
       </fieldset>
 
       {resolveMutation.isError ? <Catalog.CatalogError error={resolveMutation.error} /> : null}
+
+      <BureauAttachForm organizationId={ctx.organizationId} />
 
       <Catalog.CatalogLoadedTable
         tableKey={BUSINESS_LISTS.creditReviews.tableKey}

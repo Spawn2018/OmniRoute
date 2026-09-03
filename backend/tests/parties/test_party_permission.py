@@ -84,6 +84,12 @@ _ENDPOINTS = (
             "decision": "ok",
         },
     ),
+    (
+        "PATCH",
+        "/api/v1/credit-reviews/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa/attach-bureau",
+        None,
+        {"bureau_attachment_ref": "file://wywiad/raport-1"},
+    ),
 )
 
 

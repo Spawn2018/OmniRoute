@@ -4097,6 +4097,64 @@
         }
       }
     },
+    "/api/v1/credit-reviews/{review_id}/attach-bureau": {
+      "patch": {
+        "tags": [
+          "credit-reviews"
+        ],
+        "summary": "Attach Credit Review Bureau",
+        "operationId": "attach_credit_review_bureau_api_v1_credit_reviews__review_id__attach_bureau_patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "review_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Review Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreditReviewAttachBureau"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreditReviewResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/customer-sops": {
       "get": {
         "tags": [
@@ -6068,6 +6126,20 @@
         ],
         "title": "ContactResponse"
       },
+      "CreditReviewAttachBureau": {
+        "properties": {
+          "bureau_attachment_ref": {
+            "type": "string",
+            "title": "Bureau Attachment Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "bureau_attachment_ref"
+        ],
+        "title": "CreditReviewAttachBureau"
+      },
       "CreditReviewCreate": {
         "properties": {
           "party_id": {
@@ -6148,6 +6220,17 @@
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
+          },
+          "bureau_attachment_ref": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Bureau Attachment Ref"
           }
         },
         "type": "object",
@@ -6158,7 +6241,8 @@
           "review_date",
           "decision",
           "note",
-          "source_ref"
+          "source_ref",
+          "bureau_attachment_ref"
         ],
         "title": "CreditReviewResponse"
       },

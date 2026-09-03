@@ -34,6 +34,7 @@ class CreditReviewResponse(BaseModel):
     decision: str
     note: str | None
     source_ref: str
+    bureau_attachment_ref: str | None
 
     @classmethod
     def from_row(cls, row: CreditReview) -> "CreditReviewResponse":
@@ -45,7 +46,14 @@ class CreditReviewResponse(BaseModel):
             decision=row.decision,
             note=row.note,
             source_ref=row.source_ref,
+            bureau_attachment_ref=row.bureau_attachment_ref,
         )
+
+
+class CreditReviewAttachBureau(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    bureau_attachment_ref: str
 
 
 @router.get("", response_model=list[CreditReviewResponse])
@@ -86,5 +94,18 @@ async def create_credit_review(
         decision=body.decision,
         note=body.note,
     )
+    await session.commit()
+    return CreditReviewResponse.from_row(row)
+
+
+@router.patch("/{review_id}/attach-bureau", response_model=CreditReviewResponse)
+async def attach_credit_review_bureau(
+    review_id: UUID,
+    body: CreditReviewAttachBureau,
+    _authz: None = Depends(_PARTIES),
+    session: AsyncSession = Depends(require_tenant_session),
+) -> CreditReviewResponse:
+    service = PartyService(session)
+    row = await service.attach_bureau(review_id, body.bureau_attachment_ref)
     await session.commit()
     return CreditReviewResponse.from_row(row)

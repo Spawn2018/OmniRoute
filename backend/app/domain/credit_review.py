@@ -15,6 +15,20 @@ def normalize_review_decision(raw: object) -> str:
     return token
 
 
+_BUREAU_REF_MAX = 256
+
+
+def normalize_bureau_attachment_ref(raw: object) -> str:
+    if type(raw) is not str:
+        raise InvalidCreditReview("wskazanie raportu musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        raise InvalidCreditReview("wskazanie raportu jest obowiązkowe")
+    if len(token) > _BUREAU_REF_MAX:
+        raise InvalidCreditReview("wskazanie raportu za długie")
+    return token
+
+
 def normalize_review_note(raw: object) -> str | None:
     if raw is None:
         return None

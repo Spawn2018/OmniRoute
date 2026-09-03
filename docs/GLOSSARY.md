@@ -106,7 +106,7 @@
 | kod sieci | network code | snake 2–32; `resolve` po kodzie albo aliasie |
 | członek sieci | network_member | 82.0 ręczny agent w `network` tenanta; nie portal; nie FK party |
 | karta wyników kontrahenta | party_scorecard | M-13; snapshot wskaźników per `party`; nie scoring osoby; nie silnik RFQ |
-| recenzja kredytowa | credit_review | M-14; decyzja operatora per `party`+dzień; nie auto-scoring; nie `credit_limit` |
+| recenzja kredytowa | credit_review | M-14; decyzja operatora per `party`+dzień; 88.0 `bureau_attachment_ref`; nie auto-scoring; nie `credit_limit` |
 | decyzja operatora | operator_decision | 74.0 szyna pending/accept/reject; 77.0 `lock_version`; nie HITL extract; nie send |
 | tablica finansowa | finance_board | M-15; odczyt istniejących faktów (`charge.margin`, NBP, limit, recenzja); LLM nie liczy |
 | wskaźnik odpowiedzi | response_rate | 0–1 Numeric na karcie; NULL = nieznany |

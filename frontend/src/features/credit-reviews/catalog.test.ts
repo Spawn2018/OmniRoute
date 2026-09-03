@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 import { describe, expect, it } from "vitest"
-import { creditReviewCreateBody } from "@/lib/credit-reviews-api"
+import { creditReviewAttachBureauBody, creditReviewCreateBody } from "@/lib/credit-reviews-api"
 
 const srcRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..")
 
@@ -52,5 +52,34 @@ describe("credit-reviews catalog surface for 14.0", () => {
     expect(page).not.toContain("charge.margin")
     expect(page).not.toContain("BIK")
     expect(page).not.toContain("<Money")
+  })
+
+  it("ships attach-bureau job without scoring or auto-limit", () => {
+    const page = readFileSync(
+      path.join(srcRoot, "features/credit-reviews/catalog-page.tsx"),
+      "utf8",
+    )
+    const api = readFileSync(path.join(srcRoot, "lib/credit-reviews-api.ts"), "utf8")
+    const ops = readFileSync(path.join(srcRoot, "features/ops/ops-index.ts"), "utf8")
+    expect(page).toContain("Dołącz raport")
+    expect(page).toContain("attachCreditReviewBureau")
+    expect(page).toContain("bureau_attachment_ref")
+    expect(page).not.toContain("risk_score")
+    expect(page).not.toContain("credit_limit")
+    expect(api).toContain("/attach-bureau")
+    expect(api).not.toContain("http://")
+    expect(ops).toContain('"88.0": "/credit-reviews"')
+  })
+})
+
+describe("creditReviewAttachBureauBody", () => {
+  it("trims the bureau pointer and does not send source_ref", () => {
+    expect(
+      creditReviewAttachBureauBody({
+        bureauAttachmentRef: "  file://wywiad/raport-1  ",
+      }),
+    ).toEqual({
+      bureau_attachment_ref: "file://wywiad/raport-1",
+    })
   })
 })

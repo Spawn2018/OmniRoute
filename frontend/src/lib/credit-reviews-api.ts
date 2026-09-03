@@ -9,6 +9,7 @@ export type CreditReview = {
   decision: string
   note: string | null
   source_ref: string
+  bureau_attachment_ref: string | null
 }
 
 export function creditReviewCreateBody(input: {
@@ -29,6 +30,12 @@ export function creditReviewCreateBody(input: {
     decision: input.decision.trim().toLowerCase(),
     note: note === "" ? null : note,
   }
+}
+
+export function creditReviewAttachBureauBody(input: {
+  bureauAttachmentRef: string
+}): { bureau_attachment_ref: string } {
+  return { bureau_attachment_ref: input.bureauAttachmentRef.trim() }
 }
 
 async function readCreditReview(response: Response, fallback: string): Promise<CreditReview> {
@@ -72,4 +79,16 @@ export async function resolveCreditReview(
     headers: requireAuthHeaders(),
   })
   return readCreditReview(response, "Brak recenzji kredytowej")
+}
+
+export async function attachCreditReviewBureau(
+  reviewId: string,
+  body: { bureau_attachment_ref: string },
+): Promise<CreditReview> {
+  const response = await fetch(`/api/v1/credit-reviews/${reviewId}/attach-bureau`, {
+    method: "PATCH",
+    headers: { ...requireAuthHeaders(), "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  })
+  return readCreditReview(response, "Błąd dołączenia raportu")
 }

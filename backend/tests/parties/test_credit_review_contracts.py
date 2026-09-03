@@ -56,3 +56,45 @@ def test_generated_api_types_include_credit_review() -> None:
     source = (_ROOT / "frontend" / "src" / "api" / "types.gen.ts").read_text(encoding="utf-8")
     assert "CreditReviewResponse" in source
     assert "CreditReviewCreate" in source
+
+
+def test_migration_047_adds_bureau_attachment_ref_without_score_or_limit() -> None:
+    path = _ROOT / "backend" / "alembic" / "versions" / "047_review_bureau_ref.py"
+    assert path.is_file()
+    source = path.read_text(encoding="utf-8")
+    assert 'revision: str = "047_review_bureau_ref"' in source
+    assert 'down_revision: str | None = "046_quote_noted_review"' in source
+    assert "bureau_attachment_ref" in source
+    assert "credit_review" in source
+    assert "add_column" in source
+    lowered = source.lower()
+    assert "score" not in lowered
+    assert "credit_limit" not in lowered
+    assert "numeric" not in lowered
+    assert "def downgrade" in source
+    assert "drop_column" in source.split("def downgrade")[1]
+
+
+def test_model_has_bureau_attachment_ref_without_score() -> None:
+    source = _MODEL.read_text(encoding="utf-8")
+    assert "bureau_attachment_ref" in source
+    lowered = source.lower()
+    assert "score" not in lowered
+    assert "rating" not in lowered
+    assert "credit_limit" not in source
+
+
+def test_credit_reviews_api_has_attach_bureau_and_no_bureau_http() -> None:
+    api = (_ROOT / "backend" / "app" / "api" / "credit_reviews.py").read_text(encoding="utf-8")
+    assert "attach-bureau" in api
+    assert "bureau_attachment_ref" in api
+    assert "httpx" not in api
+    assert "requests" not in api
+    assert "risk_score" not in api
+    assert "can_manage_parties" in api
+
+
+def test_generated_api_types_include_bureau_attachment() -> None:
+    source = (_ROOT / "frontend" / "src" / "api" / "types.gen.ts").read_text(encoding="utf-8")
+    assert "bureau_attachment_ref" in source
+    assert "CreditReviewAttachBureau" in source

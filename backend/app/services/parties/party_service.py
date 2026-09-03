@@ -7,6 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.charge_code import normalize_charge_code
 from app.domain.credit_review import (
+    normalize_bureau_attachment_ref,
     normalize_review_date,
     normalize_review_decision,
     normalize_review_note,
@@ -504,6 +505,17 @@ class PartyService:
             return await self._parties.add_review(row)
         except IntegrityError as exc:
             raise CreditReviewConflict(f"recenzja na {day.isoformat()} już istnieje") from exc
+
+    async def attach_bureau(
+        self,
+        review_id: UUID,
+        bureau_attachment_ref: object,
+    ) -> CreditReview:
+        row = await self.get_review(review_id)
+        row.bureau_attachment_ref = normalize_bureau_attachment_ref(
+            bureau_attachment_ref,
+        )
+        return row
 
     async def party_blocks_auto(self, party_id: UUID) -> bool:
         await self._require_known_party(party_id)

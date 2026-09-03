@@ -543,6 +543,16 @@ export type ContactResponse = {
 };
 
 /**
+ * CreditReviewAttachBureau
+ */
+export type CreditReviewAttachBureau = {
+    /**
+     * Bureau Attachment Ref
+     */
+    bureau_attachment_ref: string;
+};
+
+/**
  * CreditReviewCreate
  */
 export type CreditReviewCreate = {
@@ -596,6 +606,10 @@ export type CreditReviewResponse = {
      * Source Ref
      */
     source_ref: string;
+    /**
+     * Bureau Attachment Ref
+     */
+    bureau_attachment_ref: string | null;
 };
 
 /**
@@ -4877,6 +4891,36 @@ export type ResolveCreditReviewApiV1CreditReviewsResolveGetResponses = {
 };
 
 export type ResolveCreditReviewApiV1CreditReviewsResolveGetResponse = ResolveCreditReviewApiV1CreditReviewsResolveGetResponses[keyof ResolveCreditReviewApiV1CreditReviewsResolveGetResponses];
+
+export type AttachCreditReviewBureauApiV1CreditReviewsReviewIdAttachBureauPatchData = {
+    body: CreditReviewAttachBureau;
+    path: {
+        /**
+         * Review Id
+         */
+        review_id: string;
+    };
+    query?: never;
+    url: '/api/v1/credit-reviews/{review_id}/attach-bureau';
+};
+
+export type AttachCreditReviewBureauApiV1CreditReviewsReviewIdAttachBureauPatchErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type AttachCreditReviewBureauApiV1CreditReviewsReviewIdAttachBureauPatchError = AttachCreditReviewBureauApiV1CreditReviewsReviewIdAttachBureauPatchErrors[keyof AttachCreditReviewBureauApiV1CreditReviewsReviewIdAttachBureauPatchErrors];
+
+export type AttachCreditReviewBureauApiV1CreditReviewsReviewIdAttachBureauPatchResponses = {
+    /**
+     * Successful Response
+     */
+    200: CreditReviewResponse;
+};
+
+export type AttachCreditReviewBureauApiV1CreditReviewsReviewIdAttachBureauPatchResponse = AttachCreditReviewBureauApiV1CreditReviewsReviewIdAttachBureauPatchResponses[keyof AttachCreditReviewBureauApiV1CreditReviewsReviewIdAttachBureauPatchResponses];
 
 export type ListCustomerSopsApiV1CustomerSopsGetData = {
     body?: never;

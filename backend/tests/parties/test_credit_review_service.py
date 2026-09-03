@@ -129,6 +129,27 @@ async def test_resolve_review_unknown() -> None:
 
 
 @pytest.mark.asyncio
+async def test_attach_bureau_keeps_source_ref_and_does_not_touch_limit() -> None:
+    service = _service()
+    row = _row(party_id=uuid4(), review_date=date(2026, 9, 1))
+    origin = row.source_ref
+    service._parties.get_review = AsyncMock(return_value=row)
+    stored = await service.attach_bureau(row.id, "  file://wywiad/raport-2  ")
+    assert stored.bureau_attachment_ref == "file://wywiad/raport-2"
+    assert stored.source_ref == origin
+    assert stored.decision == "ok"
+    assert not hasattr(stored, "credit_limit")
+
+
+@pytest.mark.asyncio
+async def test_attach_bureau_unknown_review() -> None:
+    service = _service()
+    service._parties.get_review = AsyncMock(return_value=None)
+    with pytest.raises(UnknownCreditReview, match="nieznana recenzja"):
+        await service.attach_bureau(uuid4(), "file://wywiad/raport-3")
+
+
+@pytest.mark.asyncio
 async def test_list_reviews_returns_repository_rows() -> None:
     service = _service()
     row = _row(party_id=uuid4(), review_date=date(2026, 9, 1))

@@ -7,6 +7,7 @@ from sqlalchemy import (
     ForeignKey,
     ForeignKeyConstraint,
     String,
+    Text,
     UniqueConstraint,
 )
 from sqlalchemy.orm import Mapped, mapped_column
@@ -42,3 +43,5 @@ class CreditReview(Base, TimestampMixin):
     decision: Mapped[str] = mapped_column(String(8))
     note: Mapped[str | None] = mapped_column(String(512), nullable=True)
     source_ref: Mapped[str] = mapped_column(String(256))
+    # URI raportu, który operator już ma — nie blob i nie auto-limit.
+    bureau_attachment_ref: Mapped[str | None] = mapped_column(Text, nullable=True)

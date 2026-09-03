@@ -57,3 +57,39 @@ def test_normalize_review_date_accepts_date() -> None:
 def test_normalize_review_decision_is_idempotent(token: str) -> None:
     assert normalize_review_decision(token) == token
     assert normalize_review_decision(f" {token.upper()} ") == token
+
+
+@given(raw=st.sampled_from(["", " ", "\t", "  \n"]))
+def test_empty_bureau_attachment_ref_is_rejected(raw: str) -> None:
+    from app.domain.credit_review import normalize_bureau_attachment_ref
+
+    with pytest.raises(InvalidCreditReview, match="wskazanie raportu"):
+        normalize_bureau_attachment_ref(raw)
+
+
+@given(n=st.integers(min_value=257, max_value=512))
+def test_bureau_attachment_ref_longer_than_256_is_rejected(n: int) -> None:
+    from app.domain.credit_review import normalize_bureau_attachment_ref
+
+    with pytest.raises(InvalidCreditReview, match="za długie"):
+        normalize_bureau_attachment_ref("x" * n)
+
+
+@given(
+    token=st.text(min_size=1, max_size=256).filter(
+        lambda value: value.strip() != "" and len(value.strip()) <= 256
+    ),
+)
+def test_bureau_attachment_ref_strips_and_stays_within_256(token: str) -> None:
+    from app.domain.credit_review import normalize_bureau_attachment_ref
+
+    stored = normalize_bureau_attachment_ref(f" {token} ")
+    assert stored == token.strip()
+    assert len(stored) <= 256
+
+
+def test_bureau_attachment_ref_rejects_non_text() -> None:
+    from app.domain.credit_review import normalize_bureau_attachment_ref
+
+    with pytest.raises(InvalidCreditReview, match="tekstem"):
+        normalize_bureau_attachment_ref(1)

@@ -245,3 +245,4 @@
 | 2026-09-03 | Plan 87.0 | M-24 | S25: `noted_credit_review_id` na wycenie. Delta zaakceptowana (`/noc`). Nie scoring. Następny: `/plaster` 87.0. |
 | 2026-09-03 | 87.0 | M-24 | Wskazanie recenzji na wycenie. Nie scoring. Następny: S26 Plan. |
 | 2026-09-03 | Plan 88.0 | M-14 | S26: `bureau_attachment_ref` na recenzji. Delta zaakceptowana (`/noc`). Nie auto-limit. Następny: `/plaster` 88.0. |
+| 2026-09-03 | 88.0 | M-14 | Wskazanie raportu wywiadowni na recenzji. Nie auto-limit. Nie HTTP do biura. Następny: S27 Plan. |
