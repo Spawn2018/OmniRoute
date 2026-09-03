@@ -229,6 +229,11 @@ export const OPS_JOBS = [
     job: "snapshot party_scorecard",
   },
   {
+    route: BUSINESS_LISTS.partyScorecards.route,
+    label: "Karty — decyzje oferty",
+    job: "odczyt przyjętych i odrzuconych wycen",
+  },
+  {
     route: BUSINESS_LISTS.customerSops.route,
     label: "Procedury klienta",
     job: "katalog customer_sop + zatwierdzenie",
@@ -353,6 +358,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "116.0": "/watchtower",
   "117.0": "/finance",
   "118.0": "/ai",
+  "120.0": "/party-scorecards",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

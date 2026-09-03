@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** `/plaster` **120.0** — S27b karta z decyzji oferty (M-13). Nie scoring osoby. Nie F9.1.
+**Następny (zablokowany):** `/plan-modul` leftover S11 **`changed`** na `operator_decision`. Nie accept extractu. Nie F9.1.
 <!-- os-status:end -->
 
 ```mermaid
@@ -387,7 +387,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E2** | Testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy) | 61.0 | zamknięty (`docs/deltas/archived/61.0-alembic-quote-budget.md`) |
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | 62.0 | zamknięty (`docs/deltas/archived/62.0-operator-howto-c4.md`) |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | 63.0 | zamknięty (`docs/deltas/archived/63.0-threat-model-codeql.md`) |
-| po Q-E4 | **Fala S**, S1–S59 + leftover **S27b** plan 120.0 | Plan → plaster | **następny** |
+| po Q-E4 | **Fala S**, leftover S11 `changed` po 120.0 | Plan | **następny** |
 
 ### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
 
@@ -434,7 +434,7 @@ Reguły kolejności (żeby `/noc` nie złożył awarii):
 | S25 | Żywe **M-24** fakty ryzyka | 87.0 | zamknięty (`docs/deltas/archived/87.0-offer-risk-fact.md`) | Wskazanie recenzji. Nie scoring osoby |
 | S26 | Żywe **M-14** recenzja + załącznik wywiadowni | 88.0 | zamknięty (`docs/deltas/archived/88.0-credit-review-bureau.md`) | Nie auto-limit |
 | **S27** | Żywe **M-53** sankcje HTTP na `party` | 89.0 | zamknięty (`docs/deltas/archived/89.0-party-sanctions-screen.md`) | Przed bookingiem. S27b: M-13 snapshot z won/lost |
-| **S27b** | Żywe **M-13** karta z decyzji oferty | 120.0 | plan (`docs/deltas/open/120.0-scorecard-offer-outcomes.md`) | Przyjęte/odrzucone S11. Nie scoring osoby. Nie zapis KPI |
+| **S27b** | Żywe **M-13** karta z decyzji oferty | 120.0 | zamknięty (`docs/deltas/archived/120.0-scorecard-offer-outcomes.md`) | Przyjęte/odrzucone S11. Nie scoring osoby. Nie zapis KPI |
 | **S28** | Żywe **M-35** tabela `shipment` (= M-89 default) | 90.0 | zamknięty (`docs/deltas/archived/90.0-shipment-table.md`) | Tablica wycen ≠ zlecenie |
 | **S29** | Żywe **M-36** zdarzenia trackingu | 91.0 | zamknięty (`docs/deltas/archived/91.0-tracking-event.md`) | Nie mapa w paczce JS |
 | **S30** | Żywe **M-38** + arch. M-205 dokumenty | 92.0 | zamknięty (`docs/deltas/archived/92.0-shipment-document.md`) | Skan = M-20 |
