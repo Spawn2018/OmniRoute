@@ -40,6 +40,7 @@ const NAV_ACTIONS = [
   { id: "nav-shipments", label: "Idź do zleceń", to: "/shipments" },
   { id: "nav-tracking", label: "Idź do trackingu", to: "/tracking" },
   { id: "nav-exceptions", label: "Idź do wyjątków", to: "/exceptions" },
+  { id: "nav-claims", label: "Idź do reklamacji", to: "/claims" },
   { id: "nav-watchtower", label: "Idź do wieży", to: "/watchtower" },
   { id: "nav-shipment-documents", label: "Idź do dokumentów zlecenia", to: "/shipment-documents" },
   { id: "nav-edi", label: "Idź do EDI", to: "/edi" },

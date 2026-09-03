@@ -50,6 +50,7 @@ def _organization_ops_relations() -> dict[str, Userset]:
         "can_manage_tracking": _member(),
         "can_manage_shipment_documents": _member(),
         "can_manage_exceptions": _member(),
+        "can_manage_cargo_claims": _member(),
         "can_manage_edi_messages": _member(),
         "can_manage_sales_invoices": _member(),
         "can_manage_quote_invoice_settlements": _member(),

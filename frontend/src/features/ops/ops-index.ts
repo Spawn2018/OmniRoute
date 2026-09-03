@@ -129,6 +129,11 @@ export const OPS_JOBS = [
     job: "wyceny z party bez pełnego POL/POD",
   },
   {
+    route: BUSINESS_LISTS.cargoClaim.route,
+    label: "Reklamacje ładunku",
+    job: "zapis reklamacji na zleceniu",
+  },
+  {
     route: BUSINESS_LISTS.watchtower.route,
     label: "Wieża",
     job: "wyjątki i pending S11 plus leniwy panel mapy",
@@ -323,6 +328,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "109.0": "/rail",
   "110.0": "/china-rail",
   "111.0": "/lcl",
+  "113.0": "/claims",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

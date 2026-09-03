@@ -42,6 +42,7 @@ modules =
     app.services.tracking_events
     app.services.shipment_documents
     app.services.operational_exceptions
+    app.services.cargo_claims
     app.services.edi_messages
     app.services.sales_invoices
     app.services.quote_invoice_settlements
@@ -143,6 +144,9 @@ forbidden_modules =
     app.services.operational_exceptions
     app.repositories.operational_exceptions
     app.models.operational_exception
+    app.services.cargo_claims
+    app.repositories.cargo_claims
+    app.models.cargo_claim
     app.services.edi_messages
     app.repositories.edi_messages
     app.models.edi_message

@@ -28,6 +28,7 @@ def test_authorization_model_includes_table_view_permission() -> None:
     assert "can_manage_tracking" in org.relations
     assert "can_manage_shipment_documents" in org.relations
     assert "can_manage_exceptions" in org.relations
+    assert "can_manage_cargo_claims" in org.relations
     assert "can_manage_edi_messages" in org.relations
     assert "can_manage_sales_invoices" in org.relations
     assert "can_manage_quote_invoice_settlements" in org.relations
@@ -94,6 +95,9 @@ def test_authorization_model_includes_table_view_permission() -> None:
     exceptions = org.relations["can_manage_exceptions"]
     assert exceptions.computed_userset is not None
     assert exceptions.computed_userset.relation == "member"
+    cargo_claims = org.relations["can_manage_cargo_claims"]
+    assert cargo_claims.computed_userset is not None
+    assert cargo_claims.computed_userset.relation == "member"
     edi_messages = org.relations["can_manage_edi_messages"]
     assert edi_messages.computed_userset is not None
     assert edi_messages.computed_userset.relation == "member"

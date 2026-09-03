@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** `/plaster` **113.0** — S51 reklamacja ładunku (M-55). Nie F9.1.
+**Następny (zablokowany):** `/plan-modul` **S52** — kat. M-54 oszustwo. Nie scoring osoby. Nie F9.1.
 <!-- os-status:end -->
 
 ```mermaid
@@ -387,7 +387,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E2** | Testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy) | 61.0 | zamknięty (`docs/deltas/archived/61.0-alembic-quote-budget.md`) |
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | 62.0 | zamknięty (`docs/deltas/archived/62.0-operator-howto-c4.md`) |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | 63.0 | zamknięty (`docs/deltas/archived/63.0-threat-model-codeql.md`) |
-| po Q-E4 | **Fala S**, S1–S49 zamknięte (S21 parked, S50 park floty); S51 plan 113.0 | Plan → plaster | **następny** |
+| po Q-E4 | **Fala S**, S1–S51 zamknięte (S21 parked, S50 park floty); S52 plan oszustwo | Plan | **następny** |
 
 ### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
 
@@ -454,7 +454,7 @@ Reguły kolejności (żeby `/noc` nie złożył awarii):
 | S45 | Żywe **M-56** wniosek/usuwanie RODO | 107.0 | zamknięty (`docs/deltas/archived/107.0-gdpr-request.md`) | Wniosek na `/gdpr`. Nie DPIA. Nie kasowanie innych BC |
 | S46–S49 | M-48…M-51 obiekt nogi | 108.0 · 109.0 · 110.0 · 111.0 | zamknięte | Nie druga mapa. S50 leftover |
 | S50 | Arch. M-111 flota | 112.0 park | named park (`docs/deltas/archived/112.0-fleet-named-park.md`) | Brak jobu „własne auto”. Nie TMS |
-| S51 | Żywe **M-55** reklamacja | 113.0 | plan (`docs/deltas/open/113.0-cargo-claim.md`) | Reklamacja na zleceniu. Nie kwota. Nie scoring |
+| S51 | Żywe **M-55** reklamacja | 113.0 | zamknięty (`docs/deltas/archived/113.0-cargo-claim.md`) | Reklamacja na zleceniu. Nie kwota. Nie scoring |
 | S52 | Kat. M-54 oszustwo | Plan → plaster | po płatnościach S37 | Nie scoring osoby |
 | **S53** | M-04 / Auth0 | Plan → plaster | po S52 | Tu odblokowanie Auth0. Przed portalami |
 | S54 | Arch. M-76 status klienta | Plan → plaster | po S29+S53 | Osobno od wieży operatora |
@@ -542,7 +542,7 @@ Nie implementuj z tej tabeli „na zapas”. To mapa, żeby nic nie zginęło. S
 | M-35–M-39 | Zlecenie / EDI | DONE fundament (28.0–32.0) |
 | M-40–M-47 | Finanse | DONE fundament (33.0–40.0); pogłębienie **S34–S42** |
 | M-48–M-51 | Modały | Fala 7 (M-48–M-51 DONE fundament 41.0–44.0) |
-| M-52–M-56 | Compliance | Fala 8 (M-52 7.0 + M-53/M-56 DONE 45.0–46.0; M-54/M-55 bez nazwy w PLAN) |
+| M-52–M-56 | Compliance | Fala 8 (M-52 7.0 + M-53/M-56 DONE 45.0–46.0; M-55 113.0; M-54 bez nazwy w PLAN) |
 | M-57–M-60 | AI / copilot | Fala 9 (M-57 DONE fundament 47.0) |
 | M-61–M-67 | Rynek / portal | Fala 10 |
 | M-68–M-70 | Ops / wdrożenie | Fala 11 (M-70 DONE fundament 50.0) |

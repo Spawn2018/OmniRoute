@@ -167,6 +167,50 @@ export type BookkeepingResponse = {
 };
 
 /**
+ * CargoClaimCreate
+ */
+export type CargoClaimCreate = {
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Claim Kind
+     */
+    claim_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CargoClaimResponse
+ */
+export type CargoClaimResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Claim Kind
+     */
+    claim_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * CarrierInquiryCreate
  */
 export type CarrierInquiryCreate = {
@@ -5178,6 +5222,49 @@ export type CreateOperationalExceptionApiV1OperationalExceptionsPostResponses = 
 };
 
 export type CreateOperationalExceptionApiV1OperationalExceptionsPostResponse = CreateOperationalExceptionApiV1OperationalExceptionsPostResponses[keyof CreateOperationalExceptionApiV1OperationalExceptionsPostResponses];
+
+export type ListCargoClaimsApiV1CargoClaimsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/cargo-claims';
+};
+
+export type ListCargoClaimsApiV1CargoClaimsGetResponses = {
+    /**
+     * Response List Cargo Claims Api V1 Cargo Claims Get
+     *
+     * Successful Response
+     */
+    200: Array<CargoClaimResponse>;
+};
+
+export type ListCargoClaimsApiV1CargoClaimsGetResponse = ListCargoClaimsApiV1CargoClaimsGetResponses[keyof ListCargoClaimsApiV1CargoClaimsGetResponses];
+
+export type CreateCargoClaimApiV1CargoClaimsPostData = {
+    body: CargoClaimCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/cargo-claims';
+};
+
+export type CreateCargoClaimApiV1CargoClaimsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCargoClaimApiV1CargoClaimsPostError = CreateCargoClaimApiV1CargoClaimsPostErrors[keyof CreateCargoClaimApiV1CargoClaimsPostErrors];
+
+export type CreateCargoClaimApiV1CargoClaimsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CargoClaimResponse;
+};
+
+export type CreateCargoClaimApiV1CargoClaimsPostResponse = CreateCargoClaimApiV1CargoClaimsPostResponses[keyof CreateCargoClaimApiV1CargoClaimsPostResponses];
 
 export type ListEdiMessagesApiV1EdiMessagesGetData = {
     body?: never;

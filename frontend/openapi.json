@@ -3245,6 +3245,80 @@
         ]
       }
     },
+    "/api/v1/cargo-claims": {
+      "get": {
+        "tags": [
+          "cargo-claims"
+        ],
+        "summary": "List Cargo Claims",
+        "operationId": "list_cargo_claims_api_v1_cargo_claims_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CargoClaimResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Cargo Claims Api V1 Cargo Claims Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "cargo-claims"
+        ],
+        "summary": "Create Cargo Claim",
+        "operationId": "create_cargo_claim_api_v1_cargo_claims_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CargoClaimCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CargoClaimResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/edi-messages": {
       "get": {
         "tags": [
@@ -6819,6 +6893,67 @@
           "source_ref"
         ],
         "title": "BookkeepingResponse"
+      },
+      "CargoClaimCreate": {
+        "properties": {
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "claim_kind": {
+            "type": "string",
+            "title": "Claim Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "shipment_id",
+          "claim_kind",
+          "source_ref"
+        ],
+        "title": "CargoClaimCreate"
+      },
+      "CargoClaimResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "claim_kind": {
+            "type": "string",
+            "title": "Claim Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "shipment_id",
+          "claim_kind",
+          "source_ref"
+        ],
+        "title": "CargoClaimResponse"
       },
       "CarrierInquiryCreate": {
         "properties": {

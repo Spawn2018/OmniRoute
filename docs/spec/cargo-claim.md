@@ -1,10 +1,10 @@
 # M-55 reklamacja ładunku — tabela `cargo_claim`
 
 **Moduł żywy:** M-55 (token `cargo_claim`)  
-**Plaster:** **113.0** (S51 plan)  
+**Plaster:** **113.0** (zamknięty)  
 **Status:** operator zapisuje reklamację na zleceniu. Nie kwota. Nie scoring.
 
-Delta: [docs/deltas/open/113.0-cargo-claim.md](../deltas/open/113.0-cargo-claim.md).
+Delta 113.0: [docs/deltas/archived/113.0-cargo-claim.md](../deltas/archived/113.0-cargo-claim.md).
 
 ## 113.0 zapis na `/claims`
 
