@@ -250,3 +250,4 @@
 | 2026-09-03 | 89.0 | M-53 | Sprawdzenie listy na `party`. Nie auto-match. Nie live lista. Następny: S28 Plan. |
 | 2026-09-03 | Plan 90.0 | M-35 | S28: tabela `shipment` z wyceny. Delta zaakceptowana (`/noc`). Nie tracking. Następny: `/plaster` 90.0. |
 | 2026-09-03 | 90.0 | M-35 | Tabela `shipment` z wyceny. Nie tracking. Nie numer. Następny: S29 Plan. |
+| 2026-09-03 | Plan 91.0 | M-36 | S29: `tracking_event` na zleceniu. Delta zaakceptowana (`/noc`). Nie mapa. Następny: `/plaster` 91.0. |
