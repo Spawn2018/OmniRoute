@@ -21,8 +21,12 @@ def test_require_subject_kind_accepts_inbound_message() -> None:
     assert require_subject_kind(" inbound_message ") == "inbound_message"
 
 
+def test_require_subject_kind_accepts_mail_draft() -> None:
+    assert require_subject_kind("mail_draft") == "mail_draft"
+
+
 def test_require_subject_kind_rejects_other() -> None:
-    with pytest.raises(InvalidOperatorDecision, match="inbound_message"):
+    with pytest.raises(InvalidOperatorDecision, match="mail_draft"):
         require_subject_kind("quotation")
 
 

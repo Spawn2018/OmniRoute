@@ -14,6 +14,7 @@ Ekrany, które **zapisują** (INSERT/upsert), nie tablice-odczyty:
 - poczta `/mail` — `inbound_message` z `fixture://` albo `synth://`; status `draft`; nie IMAP
 - decyzje `/decisions` — pending na `subject_id` (na start wiadomość); Akceptuj albo Odrzuć. Nie accept extractu. Nie send.
 - powiadomienia `/notifications` — zapisany inbox `unread`/`read` z `source_ref`. Tablica pending HITL/wycen zostaje odczytem. Nie send.
+- szkic maila `/ai` — `mail_draft` obok extractu, status `draft`. Werdykt na `/decisions`. Nie czat. Nie send. Nie accept extractu.
 
 Czego tu nie ma: 70 osobnych instrukcji na pulpity odczytu (zlecenie, tracking, FV). Ścieżka extract → stawka → opłata → wycena jest w [ścieżka-pieniędzy.md](ścieżka-pieniędzy.md). Kontrahent: [kontrahent.md](kontrahent.md).
 

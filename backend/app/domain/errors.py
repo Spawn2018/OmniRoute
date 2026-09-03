@@ -324,3 +324,7 @@ class OperatorDecisionConflict(DomainError):
 
 class InvalidOperatorNotice(DomainError):
     """Powiadomienie: kind, treść albo source_ref — nie filtr wycen."""
+
+
+class InvalidMailDraft(DomainError):
+    """Szkic maila: kind, treść albo source_ref — nie czat, nie send."""

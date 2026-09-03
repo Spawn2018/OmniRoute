@@ -1027,6 +1027,58 @@ export type LocationResponse = {
 };
 
 /**
+ * MailDraftCreate
+ */
+export type MailDraftCreate = {
+    /**
+     * Subject Id
+     */
+    subject_id: string;
+    /**
+     * Body
+     */
+    body: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * MailDraftResponse
+ */
+export type MailDraftResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Subject Kind
+     */
+    subject_kind: string;
+    /**
+     * Subject Id
+     */
+    subject_id: string;
+    /**
+     * Body
+     */
+    body: string;
+    /**
+     * Status
+     */
+    status: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * NbpRateCreate
  */
 export type NbpRateCreate = {
@@ -3153,6 +3205,49 @@ export type ReadOperatorNoticeApiV1OperatorNoticesNoticeIdReadPostResponses = {
 };
 
 export type ReadOperatorNoticeApiV1OperatorNoticesNoticeIdReadPostResponse = ReadOperatorNoticeApiV1OperatorNoticesNoticeIdReadPostResponses[keyof ReadOperatorNoticeApiV1OperatorNoticesNoticeIdReadPostResponses];
+
+export type ListMailDraftsApiV1MailDraftsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/mail-drafts';
+};
+
+export type ListMailDraftsApiV1MailDraftsGetResponses = {
+    /**
+     * Response List Mail Drafts Api V1 Mail Drafts Get
+     *
+     * Successful Response
+     */
+    200: Array<MailDraftResponse>;
+};
+
+export type ListMailDraftsApiV1MailDraftsGetResponse = ListMailDraftsApiV1MailDraftsGetResponses[keyof ListMailDraftsApiV1MailDraftsGetResponses];
+
+export type CreateMailDraftApiV1MailDraftsPostData = {
+    body: MailDraftCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/mail-drafts';
+};
+
+export type CreateMailDraftApiV1MailDraftsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateMailDraftApiV1MailDraftsPostError = CreateMailDraftApiV1MailDraftsPostErrors[keyof CreateMailDraftApiV1MailDraftsPostErrors];
+
+export type CreateMailDraftApiV1MailDraftsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: MailDraftResponse;
+};
+
+export type CreateMailDraftApiV1MailDraftsPostResponse = CreateMailDraftApiV1MailDraftsPostResponses[keyof CreateMailDraftApiV1MailDraftsPostResponses];
 
 export type ListNbpRatesApiV1NbpRatesGetData = {
     body?: never;

@@ -4,7 +4,7 @@ from app.domain.errors import InvalidOperatorDecision
 from app.domain.rate_line import require_source_ref
 
 _PENDING = "pending"
-_INBOUND = "inbound_message"
+_SUBJECTS = frozenset({"inbound_message", "mail_draft"})
 _DECIDE = frozenset({"accepted", "rejected"})
 
 
@@ -20,8 +20,8 @@ def require_subject_kind(raw: object) -> str:
     if type(raw) is not str:
         raise InvalidOperatorDecision("subject_kind musi być tekstem")
     token = raw.strip()
-    if token != _INBOUND:
-        raise InvalidOperatorDecision("subject_kind: tylko inbound_message")
+    if token not in _SUBJECTS:
+        raise InvalidOperatorDecision("subject_kind: inbound_message albo mail_draft")
     return token
 
 

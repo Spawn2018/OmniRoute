@@ -12,6 +12,7 @@ from app.api import (
     extractions,
     inbound_messages,
     locations,
+    mail_drafts,
     nbp_rates,
     networks,
     operator_decisions,
@@ -43,6 +44,7 @@ api_router.include_router(inbound_messages.router)
 api_router.include_router(customer_rfqs.router)
 api_router.include_router(operator_decisions.router)
 api_router.include_router(operator_notices.router)
+api_router.include_router(mail_drafts.router)
 api_router.include_router(nbp_rates.router)
 api_router.include_router(charges.router)
 api_router.include_router(rate_lines.router)

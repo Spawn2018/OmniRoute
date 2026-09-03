@@ -5,14 +5,14 @@
 
 ## Zakres
 
-- Tabela `operator_decision` per tenant: `subject_kind` (start: `inbound_message`), `subject_id` UUID bez FK, `status`, `decided_at`, `source_ref`
+- Tabela `operator_decision` per tenant: `subject_kind` (`inbound_message` albo `mail_draft`), `subject_id` UUID bez FK, `status`, `decided_at`, `source_ref`
 - Create = `pending`. POST decide: `accepted` albo `rejected`. Unikat pending na `(organization_id, subject_kind, subject_id)`
 - OpenFGA `can_manage_operator_decisions` = member
 - UI `/decisions`: lista + pending + Akceptuj / Odrzuć
 
 ## Poza zakresem
 
-`changed` w zapisie · FK do `inbound_message` · draft maila (S13) · lock (S14) · send (S18) · accept HITL 1.3 · F9.1
+`changed` w zapisie · FK do `inbound_message` · lock (S14) · send (S18) · accept HITL 1.3 · F9.1
 
 ## HC
 

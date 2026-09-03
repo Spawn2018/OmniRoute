@@ -53,9 +53,11 @@ export async function fetchOperatorDecisions(): Promise<OperatorDecision[]> {
   return (await response.json()) as OperatorDecision[]
 }
 
-export async function createOperatorDecision(
-  body: ReturnType<typeof operatorDecisionCreateBody>,
-): Promise<OperatorDecision> {
+export async function createOperatorDecision(body: {
+  subject_kind: string
+  subject_id: string
+  source_ref: string
+}): Promise<OperatorDecision> {
   const response = await fetch("/api/v1/operator-decisions", {
     method: "POST",
     headers: { ...requireAuthHeaders(), "Content-Type": "application/json" },

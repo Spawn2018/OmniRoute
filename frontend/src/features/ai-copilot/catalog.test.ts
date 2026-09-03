@@ -31,4 +31,16 @@ describe("ai copilot surface for 47.0", () => {
     expect(page).not.toContain("CatalogCreateForm")
     expect(page).not.toContain("acceptExtraction")
   })
+
+  it("ships stored mail_draft beside extract on the same /ai screen", () => {
+    const page = src("features/ai-copilot/catalog-page.tsx")
+    const api = src("lib/mail-drafts-api.ts")
+    expect(api).toContain("/api/v1/mail-drafts")
+    expect(api).toContain('subject_kind: "mail_draft"')
+    expect(page).toContain("createMailDraft")
+    expect(page).toContain("Zgłoś do decyzji")
+    expect(page).toContain("/decisions")
+    expect(page).not.toContain("amount +")
+    expect(page).not.toContain("acceptExtraction")
+  })
 })

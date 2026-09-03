@@ -60,7 +60,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-51 | Drobnica morska | 44.0 `ocean_lcl` | **ukończony (fundament)** · tablica portów `is_seaport`; nie tabela LCL; nie CFS |
 | M-53 | Sankcje | 45.0 `sanctions` | **ukończony (fundament)** · tablica aktywnych party tax_id/kraj; nie OFAC; nie HTTP |
 | M-56 | RODO | 46.0 `gdpr` | **ukończony (fundament)** · tablica emaili `app_user`; nie wniosek; nie usuwanie |
-| M-57 | Copilot AI | 47.0 `ai_copilot` | **ukończony (fundament)** · tablica extraction pending; nie czat; nie accept |
+| M-57 | Copilot AI | 47.0 `ai_copilot` · 76.0 `mail_draft` | **ukończony (fundament)** · pending extract + szkic maila; nie czat; nie send |
 | M-68 | Obserwowalność | 48.0 `observability` | **ukończony (fundament)** · tablica `fetchHealth`; nie OTel; nie k6 |
 | M-69 | Jakość | 49.0 `extraction_quality` | **ukończony (fundament)** · tablica `unparsed_regions`; nie scoring; nie tabela QA |
 | M-70 | Wdrożenie | 50.0 `tenant_rollout` | **ukończony (fundament)** · tablica `default_currency`; nie tabela rollout; nie upsert |
@@ -78,4 +78,4 @@ Nie dopisuj tu 70 pustych wierszy M-xx. Katalog + **kolejka Q1… / Q-E / Fala S
 ## Specyfikacje
 
 Każdy moduł w kodzie: `docs/spec/<nazwa>.md` (max 400 linii).  
-Dziś: `tenancy.md`, `extraction.md`, `charge-code.md`, `rate-line.md`, `charge.md`, `quotation.md`, `organization-setting.md`, `geography.md` (4.0–4.2 w kodzie), `parties.md` (5.0 + 8.0 matcher maila w kodzie), `commodity-code.md` (5.2 w kodzie), `nbp-rate.md` (6.0 w kodzie), `dangerous-good.md` (7.0 w kodzie), `network.md` (9.0 w kodzie), `party-scorecard.md` (10.0 w kodzie), `customer-sop.md` (11.0 w kodzie), `port-surcharge.md` (12.0 w kodzie), `channel-quote.md` (13.0 w kodzie), `credit-review.md` (14.0 w kodzie), `finance-board.md` (15.0 w kodzie), `operator-decision.md` (74.0 w kodzie), `operator-notice.md` (27.0 + 75.0 w kodzie). Szkielety uzupełniane przy plastrze — nie kompiluj całego archiwum.
+Dziś: `tenancy.md`, `extraction.md`, `charge-code.md`, `rate-line.md`, `charge.md`, `quotation.md`, `organization-setting.md`, `geography.md` (4.0–4.2 w kodzie), `parties.md` (5.0 + 8.0 matcher maila w kodzie), `commodity-code.md` (5.2 w kodzie), `nbp-rate.md` (6.0 w kodzie), `dangerous-good.md` (7.0 w kodzie), `network.md` (9.0 w kodzie), `party-scorecard.md` (10.0 w kodzie), `customer-sop.md` (11.0 w kodzie), `port-surcharge.md` (12.0 w kodzie), `channel-quote.md` (13.0 w kodzie), `credit-review.md` (14.0 w kodzie), `finance-board.md` (15.0 w kodzie), `operator-decision.md` (74.0 w kodzie), `operator-notice.md` (27.0 + 75.0 w kodzie), `ai-copilot.md` (47.0 + 76.0 w kodzie). Szkielety uzupełniane przy plastrze — nie kompiluj całego archiwum.

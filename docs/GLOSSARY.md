@@ -36,7 +36,8 @@
 | drobnica morska | ocean_lcl | 44.0 tablica `port` z `is_seaport`; nie tabela LCL; nie CFS |
 | sankcje | sanctions | 45.0 tablica aktywnych `party` (`tax_id`, `country_code`); nie OFAC; nie HTTP |
 | RODO | gdpr | 46.0 tablica `app_user` email; nie wniosek; nie usuwanie |
-| copilot AI | ai_copilot | 47.0 tablica `extraction_draft` pending; nie czat; nie accept |
+| copilot AI | ai_copilot | 47.0 tablica `extraction_draft` pending; 76.0 `mail_draft` obok extract; nie czat; nie send |
+| szkic maila | mail_draft | 76.0 tabela wychodzącego szkicu; accept przez S11; nie inbound; nie send |
 | obserwowalność | observability | 48.0 tablica `fetchHealth`; nie OTel; nie k6 |
 | jakość ekstrakcji | extraction_quality | 49.0 tablica `unparsed_regions`; nie scoring; nie tabela QA |
 | wdrożenie tenanta | tenant_rollout | 50.0 tablica `default_currency`; nie tabela rollout; nie upsert |

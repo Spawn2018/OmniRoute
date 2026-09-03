@@ -1584,6 +1584,80 @@
         }
       }
     },
+    "/api/v1/mail-drafts": {
+      "get": {
+        "tags": [
+          "mail-drafts"
+        ],
+        "summary": "List Mail Drafts",
+        "operationId": "list_mail_drafts_api_v1_mail_drafts_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/MailDraftResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Mail Drafts Api V1 Mail Drafts Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "mail-drafts"
+        ],
+        "summary": "Create Mail Draft",
+        "operationId": "create_mail_draft_api_v1_mail_drafts_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MailDraftCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MailDraftResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/nbp-rates": {
       "get": {
         "tags": [
@@ -6291,6 +6365,77 @@
           "source_ref"
         ],
         "title": "LocationResponse"
+      },
+      "MailDraftCreate": {
+        "properties": {
+          "subject_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Subject Id"
+          },
+          "body": {
+            "type": "string",
+            "title": "Body"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "subject_id",
+          "body",
+          "source_ref"
+        ],
+        "title": "MailDraftCreate"
+      },
+      "MailDraftResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "subject_kind": {
+            "type": "string",
+            "title": "Subject Kind"
+          },
+          "subject_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Subject Id"
+          },
+          "body": {
+            "type": "string",
+            "title": "Body"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "subject_kind",
+          "subject_id",
+          "body",
+          "status",
+          "source_ref"
+        ],
+        "title": "MailDraftResponse"
       },
       "NbpRateCreate": {
         "properties": {
