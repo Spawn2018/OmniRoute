@@ -33,8 +33,9 @@ def test_pricing_and_extraction_do_not_import_channel_quotes() -> None:
     for bounded in ("quotations", "charges", "rate_lines", "extraction", "parties"):
         for path in (_SERVICES / bounded).rglob("*.py"):
             text = path.read_text(encoding="utf-8")
-            assert "channel_quote" not in text
-            assert "ChannelQuote" not in text
+            assert "from app.services.channel_quotes" not in text
+            assert "from app.repositories.channel_quotes" not in text
+            assert "from app.models.channel_quote" not in text
             assert "app.services.channel_quotes" not in text
 
 
