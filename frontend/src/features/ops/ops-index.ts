@@ -16,7 +16,7 @@ export const OPS_JOBS = [
   {
     route: BUSINESS_LISTS.salesInvoice.route,
     label: "Faktury",
-    job: "zapis faktury na zleceniu",
+    job: "zapis faktury i numeru sesji",
   },
   {
     route: BUSINESS_LISTS.quoteInvoiceSettlement.route,
@@ -308,6 +308,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "94.0": "/watchtower",
   "95.0": "/edi",
   "96.0": "/invoices",
+  "97.0": "/invoices",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

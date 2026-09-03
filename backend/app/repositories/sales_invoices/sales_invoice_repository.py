@@ -1,3 +1,5 @@
+from uuid import UUID
+
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -18,3 +20,6 @@ class SalesInvoiceRepository:
         self._session.add(row)
         await self._session.flush()
         return row
+
+    async def get(self, invoice_id: UUID) -> SalesInvoice | None:
+        return await self._session.get(SalesInvoice, invoice_id)

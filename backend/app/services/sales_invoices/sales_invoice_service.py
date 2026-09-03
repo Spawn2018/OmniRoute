@@ -1,12 +1,15 @@
+from datetime import UTC, datetime
 from uuid import UUID, uuid4
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.domain.errors import ResourceNotFound
 from app.domain.sales_invoice import (
     require_invoice_kind,
     require_invoice_ref,
     require_invoice_shipment_id,
     require_invoice_source_ref,
+    require_ksef_ref,
 )
 from app.models.sales_invoice import SalesInvoice
 from app.repositories.sales_invoices.sales_invoice_repository import SalesInvoiceRepository
@@ -39,3 +42,11 @@ class SalesInvoiceService:
             created_by=user_id,
         )
         return await self._invoices.add(row)
+
+    async def note_ksef(self, invoice_id: UUID, ksef_ref: object) -> SalesInvoice:
+        row = await self._invoices.get(invoice_id)
+        if row is None:
+            raise ResourceNotFound("nieznana faktura")
+        row.ksef_ref = require_ksef_ref(ksef_ref)
+        row.ksef_noted_at = datetime.now(UTC)
+        return row

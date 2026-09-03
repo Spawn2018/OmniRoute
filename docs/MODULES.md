@@ -46,7 +46,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-37 | Wyjątki | 93.0 `operational_exception` | **ukończony (S31)** · tabela na zleceniu; nie AIS; nie mapa |
 | M-38 | Dokumenty zlecenia | 92.0 `shipment_document` | **ukończony (S30)** · wskazanie na zleceniu; nie bajty; nie PDF |
 | M-39 | EDI | 95.0 `edi_message` | **ukończony (S33)** · tabela na zleceniu; nie parser; nie live HTTP |
-| M-40 | Fakturowanie i KSeF | 33.0 tablica · 96.0 `sales_invoice` | **ukończony (S34)** · tabela na zleceniu; nie KSeF; nie druga marża |
+| M-40 | Fakturowanie i KSeF | 33.0 tablica · 96.0 `sales_invoice` · 97.0 `ksef_ref` | **ukończony (S35)** · numer sesji na fakturze; nie live HTTP; nie druga marża |
 | M-41 | Rozliczenie wyceny z fakturą | 34.0 `quote_invoice_settlement` | **ukończony (fundament)** · tablica wycena + `sell` po `rate_line_id`; nie tabela; nie odejmowanie |
 | M-42 | Bank i płatności | 35.0 `bank_payment` | **ukończony (fundament)** · tablica IBAN + `sell` z `charge`; nie tabela płatności; nie SEPA |
 | M-43 | Koszt pieniądza | 36.0 `money_cost` | **ukończony (fundament)** · tablica NBP + `buy` z `charge`; nie tabela odsetek; nie mnożenie |

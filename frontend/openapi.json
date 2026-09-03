@@ -3393,6 +3393,64 @@
         ]
       }
     },
+    "/api/v1/sales-invoices/{invoice_id}/note-ksef": {
+      "post": {
+        "tags": [
+          "sales-invoices"
+        ],
+        "summary": "Note Sales Invoice Ksef",
+        "operationId": "note_sales_invoice_ksef_api_v1_sales_invoices__invoice_id__note_ksef_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "invoice_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Invoice Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SalesInvoiceKsefNote"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SalesInvoiceResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/organization-settings": {
       "get": {
         "tags": [
@@ -9560,6 +9618,20 @@
         ],
         "title": "SalesInvoiceCreate"
       },
+      "SalesInvoiceKsefNote": {
+        "properties": {
+          "ksef_ref": {
+            "type": "string",
+            "title": "Ksef Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "ksef_ref"
+        ],
+        "title": "SalesInvoiceKsefNote"
+      },
       "SalesInvoiceResponse": {
         "properties": {
           "id": {
@@ -9588,6 +9660,29 @@
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
+          },
+          "ksef_ref": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ksef Ref"
+          },
+          "ksef_noted_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ksef Noted At"
           }
         },
         "type": "object",
@@ -9597,7 +9692,9 @@
           "shipment_id",
           "invoice_kind",
           "invoice_ref",
-          "source_ref"
+          "source_ref",
+          "ksef_ref",
+          "ksef_noted_at"
         ],
         "title": "SalesInvoiceResponse"
       },

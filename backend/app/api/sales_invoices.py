@@ -1,3 +1,4 @@
+from datetime import datetime
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, status
@@ -30,6 +31,8 @@ class SalesInvoiceResponse(BaseModel):
     invoice_kind: str
     invoice_ref: str
     source_ref: str
+    ksef_ref: str | None
+    ksef_noted_at: datetime | None
 
 
 @router.get("", response_model=list[SalesInvoiceResponse])
@@ -61,5 +64,23 @@ async def create_sales_invoice(
         invoice_ref=body.invoice_ref,
         source_ref=body.source_ref,
     )
+    await session.commit()
+    return SalesInvoiceResponse.model_validate(row)
+
+
+class SalesInvoiceKsefNote(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    ksef_ref: str
+
+
+@router.post("/{invoice_id}/note-ksef", response_model=SalesInvoiceResponse)
+async def note_sales_invoice_ksef(
+    invoice_id: UUID,
+    body: SalesInvoiceKsefNote,
+    _authz: None = Depends(require_permission("can_manage_sales_invoices", "organization")),
+    session: AsyncSession = Depends(require_tenant_session),
+) -> SalesInvoiceResponse:
+    row = await SalesInvoiceService(session).note_ksef(invoice_id, body.ksef_ref)
     await session.commit()
     return SalesInvoiceResponse.model_validate(row)

@@ -126,6 +126,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **33.0 leftover — KSeF / numer FV (dlaczego nie w tym plasterze):** tabela **DONE w 96.0**. KSeF = S35. Licznik leftover S8. U-print leftover. M-41 rozliczenie **DONE w 34.0**.
 - **96.0 DONE:** `/invoices` zapis `sales_invoice` na zleceniu. RLS. Nie KSeF. Nie kwota na wierszu.
 - **96.0 leftover — KSeF / licznik numeru (dlaczego nie w tym plasterze):** S35 = sieć prawna. Licznik leftover S8. Rozliczenie M-41 zostaje tablicą.
+- **97.0 DONE:** `/invoices` zapis `ksef_ref` na `sales_invoice`. Nie live HTTP. Nie XML.
+- **97.0 leftover — live HTTP MF / XML / FA(3) (dlaczego nie w tym plasterze):** brak umowy i kasy klucza tenanta. Licznik leftover S8. M-41 rozliczenie = S36.
 - **34.0 DONE:** `/quote-invoices` odczyt wyceny i `sell` z `charge` po `rate_line_id`. Nie nowa tabela. JS nie odejmuje.
 - **34.0 leftover — tabela rozliczenia / FK / match_rate (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. `quotation_id` na `charge` = zgadywanie. SQL-refresh `quote_invoice_match_rate` leftover 10.0. M-42 bank **DONE w 35.0**.
 - **35.0 DONE:** `/payments` odczyt IBAN kontrahenta i `sell` z `charge`. Nie nowa tabela. Nie N+1. JS nie odejmuje.

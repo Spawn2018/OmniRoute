@@ -2269,6 +2269,16 @@ export type SalesInvoiceCreate = {
 };
 
 /**
+ * SalesInvoiceKsefNote
+ */
+export type SalesInvoiceKsefNote = {
+    /**
+     * Ksef Ref
+     */
+    ksef_ref: string;
+};
+
+/**
  * SalesInvoiceResponse
  */
 export type SalesInvoiceResponse = {
@@ -2296,6 +2306,14 @@ export type SalesInvoiceResponse = {
      * Source Ref
      */
     source_ref: string;
+    /**
+     * Ksef Ref
+     */
+    ksef_ref: string | null;
+    /**
+     * Ksef Noted At
+     */
+    ksef_noted_at: string | null;
 };
 
 /**
@@ -4786,6 +4804,36 @@ export type CreateSalesInvoiceApiV1SalesInvoicesPostResponses = {
 };
 
 export type CreateSalesInvoiceApiV1SalesInvoicesPostResponse = CreateSalesInvoiceApiV1SalesInvoicesPostResponses[keyof CreateSalesInvoiceApiV1SalesInvoicesPostResponses];
+
+export type NoteSalesInvoiceKsefApiV1SalesInvoicesInvoiceIdNoteKsefPostData = {
+    body: SalesInvoiceKsefNote;
+    path: {
+        /**
+         * Invoice Id
+         */
+        invoice_id: string;
+    };
+    query?: never;
+    url: '/api/v1/sales-invoices/{invoice_id}/note-ksef';
+};
+
+export type NoteSalesInvoiceKsefApiV1SalesInvoicesInvoiceIdNoteKsefPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type NoteSalesInvoiceKsefApiV1SalesInvoicesInvoiceIdNoteKsefPostError = NoteSalesInvoiceKsefApiV1SalesInvoicesInvoiceIdNoteKsefPostErrors[keyof NoteSalesInvoiceKsefApiV1SalesInvoicesInvoiceIdNoteKsefPostErrors];
+
+export type NoteSalesInvoiceKsefApiV1SalesInvoicesInvoiceIdNoteKsefPostResponses = {
+    /**
+     * Successful Response
+     */
+    200: SalesInvoiceResponse;
+};
+
+export type NoteSalesInvoiceKsefApiV1SalesInvoicesInvoiceIdNoteKsefPostResponse = NoteSalesInvoiceKsefApiV1SalesInvoicesInvoiceIdNoteKsefPostResponses[keyof NoteSalesInvoiceKsefApiV1SalesInvoicesInvoiceIdNoteKsefPostResponses];
 
 export type ListOrganizationSettingsApiV1OrganizationSettingsGetData = {
     body?: never;

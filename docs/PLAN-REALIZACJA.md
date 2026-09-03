@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** `/plaster` **97.0** — S35 numer sesji KSeF na fakturze (M-40). Nie F9.1.
+**Następny (zablokowany):** `/plan-modul` **S36** — rozliczenie wyceny z fakturą (M-41). Nie F9.1.
 <!-- os-status:end -->
 
 ```mermaid
@@ -386,7 +386,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E2** | Testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy) | 61.0 | zamknięty (`docs/deltas/archived/61.0-alembic-quote-budget.md`) |
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | 62.0 | zamknięty (`docs/deltas/archived/62.0-operator-howto-c4.md`) |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | 63.0 | zamknięty (`docs/deltas/archived/63.0-threat-model-codeql.md`) |
-| po Q-E4 | **Fala S**, S1–S34 zamknięte (S21 parked); S35 plan 97.0 | Plan → plaster | **następny** |
+| po Q-E4 | **Fala S**, S1–S35 zamknięte (S21 parked); S36 plan M-41 | Plan → plaster | **następny** |
 
 ### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
 
@@ -440,7 +440,7 @@ Reguły kolejności (żeby `/noc` nie złożył awarii):
 | **S32** | Watchtower UI (lista + S11 + lazy mapa) | 94.0 | **DONE** | Nie leaflet. Kafelki leftover |
 | **S33** | Żywe **M-39** EDI gdy partner | 95.0 | zamknięty (`docs/deltas/archived/95.0-edi-message.md`) | Nie parser. Nie live HTTP |
 | **S34** | Żywe **M-40** faktura | 96.0 | zamknięty (`docs/deltas/archived/96.0-sales-invoice.md`) | Fakturujesz zlecenie. Nie KSeF |
-| **S35** | KSeF (osobny plaster) | 97.0 | plan (`docs/deltas/open/97.0-ksef-ref.md`) | Numer sesji, nie live HTTP |
+| **S35** | KSeF (osobny plaster) | 97.0 | zamknięty (`docs/deltas/archived/97.0-ksef-ref.md`) | Numer sesji, nie live HTTP |
 | S36–S42 | M-41…M-47 kolejno Fali 6 | Plan → plaster | po S35 | Każdy ID = osobny plaster. Decimal. LLM nie liczy |
 | S43 | Arch. M-91 zbiorcze FV | Plan → plaster | po S42 | Gdy ktoś płaci paczką |
 | S44 | Żywe **M-15** tablica faktów (teraz z FV) | Plan → plaster | po S43 | Narracja NL = S57, nie silnik limitu |

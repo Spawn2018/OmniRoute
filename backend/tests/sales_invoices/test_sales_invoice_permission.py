@@ -23,6 +23,12 @@ _ENDPOINTS = (
             "source_ref": "fixture://sales-invoice/1",
         },
     ),
+    (
+        "POST",
+        f"/api/v1/sales-invoices/{uuid4()}/note-ksef",
+        None,
+        {"ksef_ref": "fixture://ksef/1"},
+    ),
 )
 
 

@@ -8,7 +8,7 @@ import {
 } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { createSalesInvoice, fetchSalesInvoices } from "@/lib/sales-invoices-api"
+import { createSalesInvoice, fetchSalesInvoices, noteKsef } from "@/lib/sales-invoices-api"
 import { getTenantContext } from "@/lib/tenant"
 
 const EMPTY_DRAFT = {
@@ -57,6 +57,46 @@ function InvoiceDraftFields(args: {
   )
 }
 
+function InvoiceKsefForm(args: { organizationId: string | null }) {
+  const client = useQueryClient()
+  const [invoiceId, setInvoiceId] = useState("")
+  const [ksefRef, setKsefRef] = useState("fixture://ksef/")
+  const save = useMutation({
+    mutationFn: () => noteKsef(invoiceId.trim(), ksefRef.trim()),
+    onSuccess: () => {
+      setInvoiceId("")
+      setKsefRef("fixture://ksef/")
+      void client.invalidateQueries({ queryKey: ["sales-invoices", args.organizationId] })
+    },
+  })
+  function submitNote(event: FormEvent) {
+    event.preventDefault()
+    if (args.organizationId) save.mutate()
+  }
+  return (
+    <form className="flex max-w-md flex-col gap-2" onSubmit={submitNote}>
+      <Input
+        aria-label="Identyfikator faktury"
+        placeholder="invoice_id"
+        value={invoiceId}
+        onChange={(event) => setInvoiceId(event.target.value)}
+        required
+      />
+      <Input
+        aria-label="Numer sesji KSeF"
+        placeholder="ksef_ref"
+        value={ksefRef}
+        onChange={(event) => setKsefRef(event.target.value)}
+        required
+      />
+      <Button type="submit" disabled={save.isPending || !args.organizationId}>
+        Zapisz numer sesji
+      </Button>
+      {save.isError ? <CatalogError error={save.error} /> : null}
+    </form>
+  )
+}
+
 function InvoiceRecordForm(args: { organizationId: string | null }) {
   const client = useQueryClient()
   const [draft, setDraft] = useState(EMPTY_DRAFT)
@@ -102,14 +142,16 @@ export function SalesInvoicePage() {
     <div className="flex flex-col gap-4" data-sales-invoice="board">
       <CatalogHeading
         title="Faktury"
-        subtitle="sales_invoice M-40 · tabela na zleceniu · nie KSeF · nie druga marża"
+        subtitle="sales_invoice M-40 · numer sesji KSeF · nie live HTTP · nie druga marża"
       />
       {!ready ? <TenantSessionNotice /> : null}
       {invoices.isError ? <CatalogError error={invoices.error} /> : null}
       <InvoiceRecordForm organizationId={ctx.organizationId} />
+      <InvoiceKsefForm organizationId={ctx.organizationId} />
       {(invoices.data ?? []).map((row) => (
         <p key={row.id} className="font-mono text-xs">
           {row.invoice_kind} · {row.invoice_ref} · {row.source_ref}{" "}
+          {row.ksef_ref ?? "—"}{" "}
           <Link className="underline" to="/shipments">
             zlecenie
           </Link>{" "}

@@ -10,6 +10,7 @@ from app.domain.sales_invoice import (
     require_invoice_ref,
     require_invoice_shipment_id,
     require_invoice_source_ref,
+    require_ksef_ref,
 )
 
 
@@ -55,3 +56,14 @@ def test_require_invoice_shipment_id_rejects_text() -> None:
 def test_require_invoice_shipment_id_keeps_uuid() -> None:
     token = uuid4()
     assert require_invoice_shipment_id(token) == token
+
+
+def test_require_ksef_ref_accepts_allowlist() -> None:
+    assert require_ksef_ref(" fixture://ksef/1 ") == "fixture://ksef/1"
+    assert require_ksef_ref("ksef://sesja") == "ksef://sesja"
+
+
+@given(st.sampled_from(["", "   ", "https://example.test/ksef"]))
+def test_require_ksef_ref_rejects_blank_and_http(raw: str) -> None:
+    with pytest.raises(InvalidSalesInvoice, match="sesji"):
+        require_ksef_ref(raw)

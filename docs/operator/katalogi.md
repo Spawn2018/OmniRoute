@@ -19,7 +19,7 @@ Ekrany, które **zapisują** (INSERT/upsert), nie tablice-odczyty:
 - dokumenty `/shipment-documents` — zapis `shipment_document` na zleceniu. How-to: [dokument-zlecenia.md](dokument-zlecenia.md). Nie bajty. Nie wydruk. Skan zostaje na ekstrakcji.
 - wyjątki `/exceptions` — zapis `operational_exception` na zleceniu. How-to: [wyjatek.md](wyjatek.md). Nie mapa. Nie filtr wycen bez POL/POD.
 - EDI `/edi` — zapis `edi_message` na zleceniu. How-to: [edi.md](edi.md). Nie parser. Nie live HTTP. Oferta kanału zostaje na `/channel-quotes`.
-- faktury `/invoices` — zapis `sales_invoice` na zleceniu. How-to: [faktura.md](faktura.md). Nie KSeF. Nie kwota na tym wierszu. Sprzedaż zostaje na `/charges`.
+- faktury `/invoices` — zapis `sales_invoice` na zleceniu i numer sesji (`ksef_ref`). How-to: [faktura.md](faktura.md). Nie live HTTP. Nie kwota na tym wierszu. Sprzedaż zostaje na `/charges`.
 - wieża `/watchtower` — lista wyjątków + pending S11 (Akceptuj/Odrzuć). How-to: [wieza.md](wieza.md). HITL na `/ai`. Leniwy panel mapy, nie kafelki.
 - decyzje `/decisions` — pending na `subject_id`; Akceptuj albo Odrzuć z `lock_version`. Dwa okna, dwa Akceptuj: drugi dostaje konflikt. Nie accept extractu. Nie send.
 - powiadomienia `/notifications` — zapisany inbox `unread`/`read` z `source_ref`. Tablica pending HITL/wycen zostaje odczytem. Nie send.

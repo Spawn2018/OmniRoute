@@ -1,11 +1,14 @@
 import uuid
+from datetime import datetime
 
 from sqlalchemy import (
     CheckConstraint,
+    DateTime,
     ForeignKey,
     ForeignKeyConstraint,
     Index,
     String,
+    Text,
 )
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
@@ -38,3 +41,5 @@ class SalesInvoice(Base, TimestampMixin):
     invoice_kind: Mapped[str] = mapped_column(String(16), nullable=False)
     invoice_ref: Mapped[str] = mapped_column(String(64), nullable=False)
     source_ref: Mapped[str] = mapped_column(String(256), nullable=False)
+    ksef_ref: Mapped[str | None] = mapped_column(Text, nullable=True)
+    ksef_noted_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)

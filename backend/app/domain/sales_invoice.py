@@ -7,6 +7,7 @@ _MAX_REF = 256
 _MAX_INVOICE_REF = 64
 _FIXTURE = "fixture://sales-invoice/"
 _MANUAL = "tenant:manual"
+_KSEF_PREFIXES = ("fixture://ksef/", "ksef://")
 
 
 def require_invoice_shipment_id(raw: object) -> UUID:
@@ -45,4 +46,17 @@ def require_invoice_source_ref(raw: object) -> str:
         raise InvalidSalesInvoice("wskazanie zapisu faktury za długie")
     if token != _MANUAL and not token.startswith(_FIXTURE):
         raise InvalidSalesInvoice("obce wskazanie zapisu faktury")
+    return token
+
+
+def require_ksef_ref(raw: object) -> str:
+    if type(raw) is not str:
+        raise InvalidSalesInvoice("numer sesji musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        raise InvalidSalesInvoice("numer sesji")
+    if len(token) > _MAX_REF:
+        raise InvalidSalesInvoice("numer sesji za długi")
+    if not token.startswith(_KSEF_PREFIXES):
+        raise InvalidSalesInvoice("numer sesji: fixture://ksef/ albo ksef://")
     return token

@@ -1,3 +1,4 @@
+from datetime import UTC, datetime
 from unittest.mock import AsyncMock
 from uuid import UUID, uuid4
 
@@ -10,6 +11,7 @@ from app.domain.sales_invoice import (
     require_invoice_kind,
     require_invoice_ref,
     require_invoice_source_ref,
+    require_ksef_ref,
 )
 from app.main import app
 from app.models.sales_invoice import SalesInvoice
@@ -69,6 +71,14 @@ class StubSalesInvoiceService:
         )
         self.rows.append(row)
         return row
+
+    async def note_ksef(self, invoice_id: UUID, ksef_ref: object) -> SalesInvoice:
+        found = next((row for row in self.rows if row.id == invoice_id), None)
+        if found is None:
+            raise ResourceNotFound("nieznana faktura")
+        found.ksef_ref = require_ksef_ref(ksef_ref)
+        found.ksef_noted_at = datetime.now(UTC)
+        return found
 
 
 def _shipment() -> Shipment:
@@ -205,3 +215,88 @@ def test_http_create_sales_invoice_empty_source_ref_is_400(catalog_client: objec
     )
     assert response.status_code == 400
     assert "wskazanie" in response.json()["detail"]
+
+
+def test_http_note_ksef_on_sales_invoice(catalog_client: object) -> None:
+    client, ships, _invoices = catalog_client
+    assert ships.row is not None
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/sales-invoices",
+        headers=headers,
+        json={
+            "shipment_id": str(ships.row.id),
+            "invoice_kind": "issued",
+            "invoice_ref": "FV/2026/1",
+            "source_ref": "fixture://sales-invoice/1",
+        },
+    )
+    assert created.status_code == 201
+    noted = client.post(
+        f"/api/v1/sales-invoices/{created.json()['id']}/note-ksef",
+        headers=headers,
+        json={"ksef_ref": "fixture://ksef/1"},
+    )
+    assert noted.status_code == 200
+    body = noted.json()
+    assert body["ksef_ref"] == "fixture://ksef/1"
+    assert body["ksef_noted_at"] is not None
+    assert "xml" not in body
+    assert "fa3" not in body
+    assert "amount" not in body
+
+
+def test_http_note_ksef_unknown_invoice_is_404(catalog_client: object) -> None:
+    client, _ships, _invoices = catalog_client
+    response = client.post(
+        f"/api/v1/sales-invoices/{uuid4()}/note-ksef",
+        headers=bearer_auth_headers(),
+        json={"ksef_ref": "fixture://ksef/1"},
+    )
+    assert response.status_code == 404
+
+
+def test_http_note_ksef_empty_ref_is_400(catalog_client: object) -> None:
+    client, ships, _invoices = catalog_client
+    assert ships.row is not None
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/sales-invoices",
+        headers=headers,
+        json={
+            "shipment_id": str(ships.row.id),
+            "invoice_kind": "issued",
+            "invoice_ref": "FV/2026/1",
+            "source_ref": "fixture://sales-invoice/1",
+        },
+    )
+    response = client.post(
+        f"/api/v1/sales-invoices/{created.json()['id']}/note-ksef",
+        headers=headers,
+        json={"ksef_ref": "   "},
+    )
+    assert response.status_code == 400
+    assert "sesji" in response.json()["detail"]
+
+
+def test_http_note_ksef_live_http_ref_is_400(catalog_client: object) -> None:
+    client, ships, _invoices = catalog_client
+    assert ships.row is not None
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/sales-invoices",
+        headers=headers,
+        json={
+            "shipment_id": str(ships.row.id),
+            "invoice_kind": "issued",
+            "invoice_ref": "FV/2026/1",
+            "source_ref": "fixture://sales-invoice/1",
+        },
+    )
+    response = client.post(
+        f"/api/v1/sales-invoices/{created.json()['id']}/note-ksef",
+        headers=headers,
+        json={"ksef_ref": "https://example.test/ksef"},
+    )
+    assert response.status_code == 400
+    assert "sesji" in response.json()["detail"]
