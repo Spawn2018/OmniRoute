@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
-import { useState } from "react"
 import { Link } from "@tanstack/react-router"
+import { useState } from "react"
 import {
   CatalogError,
   CatalogHeading,
@@ -11,36 +11,56 @@ import { Input } from "@/components/ui/input"
 import { createEdiMessage, fetchEdiMessages } from "@/lib/edi-messages-api"
 import { getTenantContext } from "@/lib/tenant"
 
+const EMPTY_DRAFT = {
+  shipmentId: "",
+  messageKind: "noted",
+  sourceRef: "fixture://edi-message/",
+}
+
 function MessageRecordForm(args: { organizationId: string | null }) {
   const client = useQueryClient()
-  const [shipmentId, setShipmentId] = useState("")
-  const [messageKind, setMessageKind] = useState("noted")
-  const [sourceRef, setSourceRef] = useState("fixture://edi-message/")
+  const [draft, setDraft] = useState(EMPTY_DRAFT)
   const save = useMutation({
     mutationFn: () =>
       createEdiMessage({
-        shipment_id: shipmentId.trim(),
-        message_kind: messageKind.trim(),
-        source_ref: sourceRef.trim(),
+        shipment_id: draft.shipmentId.trim(),
+        message_kind: draft.messageKind.trim(),
+        source_ref: draft.sourceRef.trim(),
       }),
     onSuccess: () => {
-      setShipmentId("")
-      void client.invalidateQueries({
-        queryKey: ["edi-messages", args.organizationId],
-      })
+      setDraft({ ...EMPTY_DRAFT })
+      void client.invalidateQueries({ queryKey: ["edi-messages", args.organizationId] })
     },
   })
   return (
     <form
-      className="flex flex-wrap items-end gap-2 rounded-md border border-border bg-card p-3"
+      className="grid gap-2 rounded-md border border-border bg-card p-3 lg:grid-cols-4"
       onSubmit={(event) => {
         event.preventDefault()
-        save.mutate()
+        if (args.organizationId) save.mutate()
       }}
     >
-      <Input aria-label="Identyfikator zlecenia" placeholder="shipment_id" value={shipmentId} onChange={(event) => setShipmentId(event.target.value)} required />
-      <Input aria-label="Rodzaj komunikatu" placeholder="noted" value={messageKind} onChange={(event) => setMessageKind(event.target.value)} required />
-      <Input aria-label="Pochodzenie zapisu" placeholder="source_ref" value={sourceRef} onChange={(event) => setSourceRef(event.target.value)} required />
+      <Input
+        aria-label="Identyfikator zlecenia"
+        placeholder="shipment_id"
+        value={draft.shipmentId}
+        onChange={(event) => setDraft({ ...draft, shipmentId: event.target.value })}
+        required
+      />
+      <Input
+        aria-label="Rodzaj komunikatu"
+        placeholder="noted"
+        value={draft.messageKind}
+        onChange={(event) => setDraft({ ...draft, messageKind: event.target.value })}
+        required
+      />
+      <Input
+        aria-label="Pochodzenie zapisu"
+        placeholder="source_ref"
+        value={draft.sourceRef}
+        onChange={(event) => setDraft({ ...draft, sourceRef: event.target.value })}
+        required
+      />
       <Button type="submit" disabled={save.isPending || !args.organizationId}>
         Zapisz komunikat
       </Button>
@@ -69,8 +89,8 @@ export function EdiMessagePage() {
       {messages.isError ? <CatalogError error={messages.error} /> : null}
       <MessageRecordForm organizationId={ctx.organizationId} />
       {(messages.data ?? []).map((row) => (
-        <p key={row.id} className="text-xs">
-          {row.message_kind} {row.source_ref}{" "}
+        <p key={row.id} className="font-mono text-xs">
+          {row.message_kind} · {row.source_ref}{" "}
           <Link className="underline" to="/shipments">
             zlecenie
           </Link>

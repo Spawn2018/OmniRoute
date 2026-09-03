@@ -1,19 +1,17 @@
 import { readFileSync } from "node:fs"
-import { dirname, join } from "node:path"
+import path from "node:path"
 import { fileURLToPath } from "node:url"
 import { describe, expect, it } from "vitest"
 
-function frontendFile(rel: string): string {
-  return readFileSync(join(dirname(fileURLToPath(import.meta.url)), "../..", rel), "utf8")
-}
+const srcRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..")
 
 describe("edi message surface for 32.0 and 95.0", () => {
-  it("ships /edi as matching channel quotes without a parser", () => {
-    const page = frontendFile("features/edi-message/catalog-page.tsx")
-    expect(frontendFile("routes/edi.tsx")).toContain("/edi")
-    expect(frontendFile("components/layout/sidebar.tsx")).toContain("/edi")
-    expect(frontendFile("lib/business-lists.ts")).toContain("ediMessage")
-    expect(frontendFile("features/ops/ops-index.ts")).toContain("/edi")
+  it("ships /edi without a parser", () => {
+    const page = readFileSync(path.join(srcRoot, "features/edi-message/catalog-page.tsx"), "utf8")
+    expect(readFileSync(path.join(srcRoot, "routes/edi.tsx"), "utf8")).toContain("/edi")
+    expect(readFileSync(path.join(srcRoot, "components/layout/sidebar.tsx"), "utf8")).toContain("/edi")
+    expect(readFileSync(path.join(srcRoot, "lib/business-lists.ts"), "utf8")).toContain("ediMessage")
+    expect(readFileSync(path.join(srcRoot, "features/ops/ops-index.ts"), "utf8")).toContain("/edi")
     expect(page).toContain('data-edi-message="board"')
     expect(page).not.toContain("x12")
     expect(page).not.toContain("edifact")
@@ -22,9 +20,9 @@ describe("edi message surface for 32.0 and 95.0", () => {
   })
 
   it("records 95.0 as live edi messages on /edi", () => {
-    const page = frontendFile("features/edi-message/catalog-page.tsx")
-    const api = frontendFile("lib/edi-messages-api.ts")
-    const ops = frontendFile("features/ops/ops-index.ts")
+    const page = readFileSync(path.join(srcRoot, "features/edi-message/catalog-page.tsx"), "utf8")
+    const api = readFileSync(path.join(srcRoot, "lib/edi-messages-api.ts"), "utf8")
+    const ops = readFileSync(path.join(srcRoot, "features/ops/ops-index.ts"), "utf8")
     expect(ops).toContain('"95.0": "/edi"')
     expect(api).toContain("createEdiMessage")
     expect(page).toContain("fetchEdiMessages")
