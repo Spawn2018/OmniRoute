@@ -258,3 +258,4 @@
 | 2026-09-03 | 93.0 | M-37 | Tabela wyjątków na zleceniu. Nie mapa. Nie filtr wycen. Następny: S32 Plan. |
 | 2026-09-03 | Plan 94.0 | UI | S32: Watchtower lista + S11 + lazy mapa. Delta zaakceptowana (`/noc`). Nie leaflet. Następny: `/plaster` 94.0. |
 | 2026-09-03 | 94.0 | UI | Wieża: wyjątki + pending S11 + leniwy panel mapy. Nie leaflet. Następny: S33 Plan. |
+| 2026-09-03 | Plan 95.0 | M-39 | S33: `edi_message` na zleceniu. Delta zaakceptowana (`/noc`). Nie parser. Następny: `/plaster` 95.0. |
