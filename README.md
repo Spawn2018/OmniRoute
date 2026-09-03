@@ -88,7 +88,7 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 <!-- os-status:start -->
 - **Ostatni plaster:** **71.0** S8 prefiks i szablon w organization_setting
 - **Etap:** Plan
-- **Następny:** S9 `/plan-modul` — dokument oferty (M-26). Print 57.0 jest. Nie send. Nie F9.1.
+- **Następny:** `/plaster` **72.0** — numer na dokumencie oferty. Print 57.0 jest. Nie send. Nie F9.1.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

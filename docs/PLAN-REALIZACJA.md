@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** S9 `/plan-modul` — dokument oferty (M-26). Print 57.0 jest. Nie send. Nie F9.1.
+**Następny (zablokowany):** `/plaster` **72.0** — numer na dokumencie oferty. Print 57.0 jest. Nie send. Nie F9.1.
 <!-- os-status:end -->
 
 ```mermaid
@@ -385,7 +385,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E2** | Testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy) | 61.0 | zamknięty (`docs/deltas/archived/61.0-alembic-quote-budget.md`) |
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | 62.0 | zamknięty (`docs/deltas/archived/62.0-operator-howto-c4.md`) |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | 63.0 | zamknięty (`docs/deltas/archived/63.0-threat-model-codeql.md`) |
-| po Q-E4 | **Fala S**, S1–S8 zamknięte; S9 Plan | Plan | **następny** |
+| po Q-E4 | **Fala S**, S1–S8 zamknięte; S9 plan 72.0 | Plan → plaster | **następny** |
 
 ### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
 
@@ -413,7 +413,7 @@ Reguły kolejności (żeby `/noc` nie złożył awarii):
 | S6 | Żywe **M-18** ewaluacja `applies_when` w SQL | 69.0 | zamknięty (`docs/deltas/archived/69.0-port-surcharge-when.md`) | Nie zapis marży do `charge` |
 | S7 | Żywe **M-09** HS/CN na RFQ/wycenie | 70.0 | zamknięty (`docs/deltas/archived/70.0-hs-cn-on-rfq.md`) | Katalog jest. UN→M-52 leftover (nie LLM) |
 | S8 | Żywe **M-03** reszta + arch. M-84 (scalać) | 71.0 | zamknięty (`docs/deltas/archived/71.0-org-number-template.md`) | Prefiks i token szablonu. Nie licznik. Nie PDF |
-| S9 | Żywe **M-26** dokument oferty | Plan → plaster | **następny** | Print 57.0 jest. Nie send |
+| S9 | Żywe **M-26** dokument oferty | 72.0 | **następny** | Numer na ofercie + print 57.0. Nie send |
 | S10 | Żywe **M-16** SOP „kiedy nie wolno auto” | Plan → plaster | po S9 | Przed Graph send |
 | **S11** | Arch. **M-179** szyna Akceptuj/Zmień/Odrzuć | Plan → plaster | po S10 | **Nowy żywy ID.** Nie numerować jako M-57 |
 | S12 | Żywe **M-34** tabela powiadomień | Plan → plaster | po S11 | Nie filtr pending z wycen |

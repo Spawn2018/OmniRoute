@@ -5,11 +5,11 @@
 
 **Ostatni plaster:** **71.0** S8 prefiks i szablon w organization_setting  
 **Etap:** Plan  
-**Noc:** `/noc <godzina>` (np. `/noc 7` = pętla do 7:00 czasu polskiego). Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md). Przed startem: `scripts/noc-preflight.ps1`. Etap Plan → `/plan-modul`, nie `/plaster`.  
-**Następny:** S9 `/plan-modul` — dokument oferty (M-26). Print 57.0 jest. Nie send. Nie F9.1.  
+**Noc:** `/noc <godzina>` (np. `/noc 7` = pętla do 7:00 czasu polskiego). Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md). Przed startem: `scripts/noc-preflight.ps1`. Delta S9 zaakceptowana (`/noc`) — wolno `/plaster`.  
+**Następny:** `/plaster` **72.0** — numer na dokumencie oferty. Print 57.0 jest. Nie send. Nie F9.1.  
 M-02 **parked** (odblokowanie S16). Auth0 **odroczone** (S53). Portale **parked** (S55). Exit Wave FE **nie** claim.
 
-**Spec (jedna na sesję):** brak delty S9. Nie otwieraj [print-sheet.md](../spec/print-sheet.md).
+**Spec (jedna na sesję):** [docs/deltas/open/72.0-offer-document-number.md](../deltas/open/72.0-offer-document-number.md). Nie otwieraj [print-sheet.md](../spec/print-sheet.md).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Cel jakości + § Kolejka realizacji.
 
@@ -17,4 +17,4 @@ M-02 **parked** (odblokowanie S16). Auth0 **odroczone** (S53). Portale **parked*
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` są w PATH. Przed pracą podnieś dwie rzeczy: `pg_ctl -D tools\pgdata -o "-p 5432" start` oraz `tools\openfga\openfga.exe run`. Potem `just gate` i `just test` działają bez ustawiania zmiennych. PG 16 to klaster przenośny w `tools\pg16` — instalator EDB przez winget nie przechodzi (exit 1).
 
-**2026-09-03:** 71.0 zamknięty. Następny produkt: `/plan-modul` S9. Nie F9.1.
+**2026-09-03:** plan 72.0 zaakceptowany (`/noc`). Następny produkt: `/plaster` 72.0. Nie F9.1.
