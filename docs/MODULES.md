@@ -52,7 +52,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-43 | Koszt pieniądza | 36.0 tablica · 100.0 `money_cost` | **ukończony (S38)** · para płatność+kurs NBP; nie odsetki |
 | M-44 | Różnice kursowe | 37.0 tablica · 101.0 `fx_difference` | **ukończony (S39)** · para wycena+kurs NBP; nie przeliczenie |
 | M-45 | Przepływy | 38.0 tablica · 102.0 `cash_flow` | **ukończony (S40)** · para wycena+płatność; nie odejmowanie |
-| M-46 | Koszt obsługi klienta | 39.0 `cost_to_serve` | **ukończony (fundament)** · tablica SOP + wyceny kontrahenta; nie tabela ABC; nie suma |
+| M-46 | Koszt obsługi klienta | 39.0 tablica · 103.0 `cost_to_serve` | **ukończony (S41)** · para SOP+wycena; nie suma |
 | M-47 | Księgowość (integracja) | 40.0 `bookkeeping` | **ukończony (fundament)** · tablica `charge` + nazwa kodu; nie JPK; nie ERP |
 | M-48 | Transport drogowy | 41.0 `road_transport` | **ukończony (fundament)** · tablica `postal_zone`/`address`; nie TMS; nie GPS |
 | M-49 | Kolej intermodalna | 42.0 `intermodal_rail` | **ukończony (fundament)** · tablica portów z flagą `rail`; nie wagon; nie CIM |

@@ -27,6 +27,7 @@ class CustomerSop(Base, TimestampMixin):
             "code",
             name="uq_customer_sop_org_party_code",
         ),
+        UniqueConstraint("organization_id", "id", name="uq_customer_sop_org_id"),
         ForeignKeyConstraint(
             ["organization_id", "party_id"],
             ["party.organization_id", "party.id"],

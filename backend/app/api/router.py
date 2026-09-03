@@ -8,6 +8,7 @@ from app.api import (
     charge_codes,
     charges,
     commodity_codes,
+    cost_to_serve,
     credit_reviews,
     customer_rfqs,
     customer_sops,
@@ -76,6 +77,7 @@ api_router.include_router(bank_payments.router)
 api_router.include_router(money_costs.router)
 api_router.include_router(fx_differences.router)
 api_router.include_router(cash_flows.router)
+api_router.include_router(cost_to_serve.router)
 api_router.include_router(organization_settings.router)
 api_router.include_router(parties.router)
 api_router.include_router(party_scorecards.router)

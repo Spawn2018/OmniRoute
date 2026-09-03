@@ -49,6 +49,7 @@ modules =
     app.services.money_costs
     app.services.fx_differences
     app.services.cash_flows
+    app.services.cost_to_serve
 
 [importlinter:contract:integracje]
 name = Integracje nie znają serwisów
@@ -159,3 +160,6 @@ forbidden_modules =
     app.services.cash_flows
     app.repositories.cash_flows
     app.models.cash_flow
+    app.services.cost_to_serve
+    app.repositories.cost_to_serve
+    app.models.cost_to_serve

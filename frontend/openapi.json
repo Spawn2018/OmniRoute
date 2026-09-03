@@ -3821,6 +3821,80 @@
         ]
       }
     },
+    "/api/v1/cost-to-serves": {
+      "get": {
+        "tags": [
+          "cost-to-serves"
+        ],
+        "summary": "List Cost To Serve",
+        "operationId": "list_cost_to_serve_api_v1_cost_to_serves_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CostToServeResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Cost To Serve Api V1 Cost To Serves Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "cost-to-serves"
+        ],
+        "summary": "Create Cost To Serve",
+        "operationId": "create_cost_to_serve_api_v1_cost_to_serves_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CostToServeCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CostToServeResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/organization-settings": {
       "get": {
         "tags": [
@@ -7181,6 +7255,69 @@
           "is_primary"
         ],
         "title": "ContactResponse"
+      },
+      "CostToServeCreate": {
+        "properties": {
+          "customer_sop_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Customer Sop Id"
+          },
+          "quotation_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Quotation Id"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "customer_sop_id",
+          "quotation_id",
+          "source_ref"
+        ],
+        "title": "CostToServeCreate"
+      },
+      "CostToServeResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "customer_sop_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Customer Sop Id"
+          },
+          "quotation_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Quotation Id"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "customer_sop_id",
+          "quotation_id",
+          "source_ref"
+        ],
+        "title": "CostToServeResponse"
       },
       "CreditReviewAttachBureau": {
         "properties": {

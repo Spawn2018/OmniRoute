@@ -38,3 +38,4 @@ type organization
     define can_manage_money_costs: member
     define can_manage_fx_differences: member
     define can_manage_cash_flows: member
+    define can_manage_cost_to_serve: member

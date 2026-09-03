@@ -29,7 +29,7 @@
 | koszt pieniądza | money_cost | 100.0 tabela pary płatność+kurs NBP; nie kwota; nie odsetki |
 | różnica kursowa | fx_difference | 101.0 tabela pary wycena+kurs NBP; nie kwota; nie przeliczenie |
 | przepływ | cash_flow | 102.0 tabela pary wycena+płatność; nie kwota; nie odejmowanie |
-| koszt obsługi klienta | cost_to_serve | 39.0 tablica SOP + wyceny kontrahenta; nie tabela ABC; nie suma |
+| koszt obsługi klienta | cost_to_serve | 103.0 tabela pary SOP+wycena; nie kwota; nie suma |
 | księgowość | bookkeeping | 40.0 tablica `charge` + `charge_code.name`; nie JPK; nie ERP |
 | transport drogowy | road_transport | 41.0 tablica `location` `postal_zone`/`address`; nie TMS; nie GPS |
 | kolej intermodalna | intermodal_rail | 42.0 tablica `port` z flagą `rail`; nie wagon; nie CIM |

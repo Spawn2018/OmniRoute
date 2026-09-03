@@ -429,6 +429,12 @@ class PartyService:
     async def list_sops(self) -> list[CustomerSop]:
         return await self._parties.list_sops()
 
+    async def get_sop(self, sop_id: UUID) -> CustomerSop:
+        found = await self._parties.get_sop(sop_id)
+        if found is None:
+            raise ResourceNotFound("nieznana procedura")
+        return found
+
     async def resolve_sop(self, party_id: UUID, code: object) -> CustomerSop:
         token = normalize_sop_code(code)
         await self._require_known_party(party_id)

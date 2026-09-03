@@ -46,7 +46,7 @@ export const OPS_JOBS = [
   {
     route: BUSINESS_LISTS.costToServe.route,
     label: "Koszt obsługi klienta",
-    job: "SOP i wyceny wybranego kontrahenta",
+    job: "zapis kosztu obsługi przy SOP",
   },
   {
     route: BUSINESS_LISTS.bookkeeping.route,
@@ -314,6 +314,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "100.0": "/money-cost",
   "101.0": "/fx-differences",
   "102.0": "/cashflows",
+  "103.0": "/cost-to-serve",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

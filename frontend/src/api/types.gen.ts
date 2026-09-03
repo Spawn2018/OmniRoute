@@ -631,6 +631,50 @@ export type ContactResponse = {
 };
 
 /**
+ * CostToServeCreate
+ */
+export type CostToServeCreate = {
+    /**
+     * Customer Sop Id
+     */
+    customer_sop_id: string;
+    /**
+     * Quotation Id
+     */
+    quotation_id: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CostToServeResponse
+ */
+export type CostToServeResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Customer Sop Id
+     */
+    customer_sop_id: string;
+    /**
+     * Quotation Id
+     */
+    quotation_id: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * CreditReviewAttachBureau
  */
 export type CreditReviewAttachBureau = {
@@ -5269,6 +5313,49 @@ export type CreateCashFlowApiV1CashFlowsPostResponses = {
 };
 
 export type CreateCashFlowApiV1CashFlowsPostResponse = CreateCashFlowApiV1CashFlowsPostResponses[keyof CreateCashFlowApiV1CashFlowsPostResponses];
+
+export type ListCostToServeApiV1CostToServesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/cost-to-serves';
+};
+
+export type ListCostToServeApiV1CostToServesGetResponses = {
+    /**
+     * Response List Cost To Serve Api V1 Cost To Serves Get
+     *
+     * Successful Response
+     */
+    200: Array<CostToServeResponse>;
+};
+
+export type ListCostToServeApiV1CostToServesGetResponse = ListCostToServeApiV1CostToServesGetResponses[keyof ListCostToServeApiV1CostToServesGetResponses];
+
+export type CreateCostToServeApiV1CostToServesPostData = {
+    body: CostToServeCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/cost-to-serves';
+};
+
+export type CreateCostToServeApiV1CostToServesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCostToServeApiV1CostToServesPostError = CreateCostToServeApiV1CostToServesPostErrors[keyof CreateCostToServeApiV1CostToServesPostErrors];
+
+export type CreateCostToServeApiV1CostToServesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CostToServeResponse;
+};
+
+export type CreateCostToServeApiV1CostToServesPostResponse = CreateCostToServeApiV1CostToServesPostResponses[keyof CreateCostToServeApiV1CostToServesPostResponses];
 
 export type ListOrganizationSettingsApiV1OrganizationSettingsGetData = {
     body?: never;

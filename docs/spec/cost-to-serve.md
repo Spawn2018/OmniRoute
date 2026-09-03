@@ -1,26 +1,27 @@
-# M-46 koszt obsługi klienta — tablica `customer_sop` i wycen kontrahenta
+# M-46 koszt obsługi klienta — para SOP i wyceny
 
-**Moduł żywy:** M-46 (token UI `cost_to_serve`, nie tabela) + M-16 `customer_sop` + M-21 `quotation`  
-**Plaster:** **39.0** (zamknięty)  
-**Status:** operator **widzi** procedury i wyceny wybranego kontrahenta. Nie tabela ABC. Nie suma kwot.
+**Moduł żywy:** M-46 (tabela `cost_to_serve`)  
+**Plaster:** **103.0** (S41)  
+**Status:** operator **zapisuje**, że ta wycena szła pod tą procedurą klienta. Kwoty zostają na `quotation` / `charge`. Nie suma.
 
-Delta: [docs/deltas/archived/39.0-cost-to-serve.md](../deltas/archived/39.0-cost-to-serve.md).
+Delta: [docs/deltas/archived/103.0-cost-to-serve.md](../deltas/archived/103.0-cost-to-serve.md).
 
-## 39.0 tablica odczytu na `/cost-to-serve`
+## 103.0 tabela `cost_to_serve`
 
 ### Zakres
 
-- Ekran `/cost-to-serve`: jeden `party`; `customerSopsForParty`; wyceny z `fetchQuotations` po `party_id`
-- Link do `/customer-sops` i `/quotations`
-- Zero nowej tabeli. Zero sumy kwot
+- Tabela `cost_to_serve`: `customer_sop_id` + `quotation_id` + `source_ref`
+- `GET/POST /cost-to-serves`, OpenFGA `can_manage_cost_to_serve`
+- Ekran `/cost-to-serve`: lista wierszy + „Zapisz koszt obsługi”
+- Zero kwoty na wierszu. Zero sumy wycen
 
-### Poza 39.0
+### Poza 103.0
 
-Tabela ABC · stawka godziny · suma wycen · `party_id` na `charge`
+ABC · stawka godziny · suma wycen · `party_id` na `charge`
 
 ### HC
 
-- Marża zostaje w `charge`. Tablica nie sumuje wycen.
+- Marża zostaje w `charge`. Wiersz nie sumuje wycen.
 - LLM nie liczy kosztu obsługi.
 - HITL zostaje na ekstrakcji.
-- ExtractionService nie importuje parties / quotations
+- ExtractionService nie importuje cost_to_serve / parties / quotations
