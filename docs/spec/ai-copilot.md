@@ -1,10 +1,10 @@
 # M-57 AI — tablica extract pending + szkic maila
 
 **Moduł żywy:** M-57 (token UI `ai_copilot` + tabela `mail_draft`) + M-20 `extraction_draft`  
-**Plaster:** **47.0** tablica · **76.0** `mail_draft` · **81.0** świadomy mailto  
-**Status:** operator widzi pending extract, zapisuje szkic, po Akceptuj otwiera klient poczty. Nie czat. Nie Graph HTTP.
+**Plaster:** **47.0** tablica · **76.0** `mail_draft` · **81.0** świadomy mailto · **116.0** (S56 plan)  
+**Status:** operator widzi pending extract, zapisuje szkic, po Akceptuj otwiera klient poczty; wieża czyta szkice. Nie czat. Nie Graph HTTP.
 
-Delta: [47.0](../deltas/archived/47.0-ai-copilot.md) · [76.0](../deltas/archived/76.0-mail-draft.md).
+Delta: [47.0](../deltas/archived/47.0-ai-copilot.md) · [76.0](../deltas/archived/76.0-mail-draft.md) · [116.0](../deltas/open/116.0-copilot-watchtower.md).
 
 ## 47.0 tablica odczytu na `/ai`
 
@@ -32,7 +32,18 @@ Tabela czatu · accept z tej trasy · scoring osoby
 
 Czat · Graph HTTP · outbox · `changed` · lock S14 · accept extractu 1.3 · F9.1
 
-## HC
+## 116.0 szkice na `/watchtower`
+
+### Zakres
+
+- Wieża listuje `mail_draft` (GET)
+- Zapis zostaje na `/ai`
+- Zero nowej tabeli
+
+### Poza 116.0
+
+Czat · MCP · Graph HTTP
+
 
 - Marża zostaje w `charge`.
 - LLM nie liczy i nie składa treści.
