@@ -88,7 +88,7 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 <!-- os-status:start -->
 - **Ostatni plaster:** **97.0** S35 numer sesji KSeF na fakturze (M-40)
 - **Etap:** Plan
-- **Następny:** `/plan-modul` **S36** — rozliczenie wyceny z fakturą (M-41). Nie F9.1.
+- **Następny:** `/plaster` **98.0** — S36 rozliczenie wyceny z fakturą (M-41). Nie F9.1.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
