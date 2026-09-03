@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** `/plan-modul` **S26** — recenzja + załącznik wywiadowni (M-14). Nie auto-limit. Nie F9.1.
+**Następny (zablokowany):** `/plaster` **88.0** — S26 załącznik wywiadowni (M-14). Nie auto-limit. Nie F9.1.
 <!-- os-status:end -->
 
 ```mermaid
@@ -386,7 +386,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E2** | Testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy) | 61.0 | zamknięty (`docs/deltas/archived/61.0-alembic-quote-budget.md`) |
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | 62.0 | zamknięty (`docs/deltas/archived/62.0-operator-howto-c4.md`) |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | 63.0 | zamknięty (`docs/deltas/archived/63.0-threat-model-codeql.md`) |
-| po Q-E4 | **Fala S**, S1–S25 zamknięte (S21 parked); S26 Plan | Plan → plaster | **następny** |
+| po Q-E4 | **Fala S**, S1–S25 zamknięte (S21 parked); S26 plan 88.0 | Plan → plaster | **następny** |
 
 ### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
 
@@ -431,7 +431,7 @@ Reguły kolejności (żeby `/noc` nie złożył awarii):
 | S23 | Żywe **M-25** wynik negocjacji | 85.0 | zamknięty (`docs/deltas/archived/85.0-offer-negotiation-result.md`) | Wskazanie kanału. Nie zamiast `margin()` |
 | S24 | Żywe **M-29** won/lost; accept oferty przez S11 | 86.0 | zamknięty (`docs/deltas/archived/86.0-offer-acceptance-decision.md`) | Decyzja S11 na `quotation`. Nie accept extractu |
 | S25 | Żywe **M-24** fakty ryzyka | 87.0 | zamknięty (`docs/deltas/archived/87.0-offer-risk-fact.md`) | Wskazanie recenzji. Nie scoring osoby |
-| S26 | Żywe **M-14** recenzja + załącznik wywiadowni | Plan → plaster | **następny** | Nie auto-limit |
+| S26 | Żywe **M-14** recenzja + załącznik wywiadowni | 88.0 | plan (`docs/deltas/open/88.0-credit-review-bureau.md`) | Nie auto-limit |
 | **S27** | Żywe **M-53** sankcje HTTP na `party` | Plan → plaster | po S26 | Przed bookingiem. S27b: M-13 snapshot z won/lost |
 | **S28** | Żywe **M-35** tabela `shipment` (= M-89 default) | Plan → plaster | po S27 | Tablica wycen ≠ zlecenie |
 | S29 | Żywe **M-36** zdarzenia trackingu | Plan → plaster | po S28 | Nie mapa w paczce JS |
