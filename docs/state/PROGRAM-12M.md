@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **81.0** S18 świadomy `mailto:` po S11+S10 (M-33) **Następny:** `/plan-modul` **S19** — `network_member` (M-12). Nie scraping. Nie F9.1.
+**Stan (z CURRENT.md):** **81.0** S18 świadomy `mailto:` po S11+S10 (M-33) **Następny:** `/plaster` **82.0** — `network_member` (M-12). Ręczny katalog w sieci. Nie scraping. Nie F9.1.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.
