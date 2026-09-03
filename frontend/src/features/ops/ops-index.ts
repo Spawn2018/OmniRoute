@@ -321,6 +321,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "107.0": "/gdpr",
   "108.0": "/road",
   "109.0": "/rail",
+  "110.0": "/china-rail",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

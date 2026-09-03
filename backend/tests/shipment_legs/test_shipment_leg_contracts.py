@@ -61,3 +61,15 @@ def test_migration_066_widens_leg_kind_to_rail() -> None:
     assert "drop_constraint" in source
     assert "create_table" not in source
     assert "httpx" not in source
+
+
+def test_migration_067_widens_leg_kind_to_china_rail() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "067_shipment_leg_china_rail_kind.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "067_shipment_leg_china_rail_kind"' in source
+    assert 'down_revision: str | None = "066_shipment_leg_rail_kind"' in source
+    assert "leg_kind IN ('road', 'rail', 'china_rail')" in source
+    assert "drop_constraint" in source
+    assert "create_table" not in source
+    assert "httpx" not in source

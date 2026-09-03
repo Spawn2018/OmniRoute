@@ -7,6 +7,7 @@ import {
 } from "@/components/catalog/catalog-parts"
 import { chinaRailPorts, fetchPorts } from "@/lib/ports-api"
 import { getTenantContext } from "@/lib/tenant"
+import { ChinaRailLegBoard } from "./china-rail-leg-board"
 
 export function ChinaRailPage() {
   const ctx = getTenantContext()
@@ -23,7 +24,7 @@ export function ChinaRailPage() {
     <section className="flex flex-col gap-3" data-china-rail="board">
       <CatalogHeading
         title="Kolej z Chin"
-        subtitle="china_rail M-50 · CN + rail · nie korytarz · nie HTTP"
+        subtitle="china_rail M-50 · odcinek shipment_leg china_rail · nie korytarz · nie HTTP"
       />
       {!ready ? <TenantSessionNotice /> : null}
       {ports.isError ? <CatalogError error={ports.error} /> : null}
@@ -40,6 +41,7 @@ export function ChinaRailPage() {
           </li>
         ))}
       </ul>
+      {ready ? <ChinaRailLegBoard organizationId={ctx.organizationId} /> : null}
     </section>
   )
 }

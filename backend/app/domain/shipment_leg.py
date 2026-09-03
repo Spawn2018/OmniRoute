@@ -8,7 +8,9 @@ _FIXTURE = "fixture://shipment-leg/"
 _MANUAL = "tenant:manual"
 _ROAD = "road"
 _RAIL = "rail"
-_KINDS = frozenset({_ROAD, _RAIL})
+_CHINA = "china_rail"
+_KINDS = frozenset({_ROAD, _RAIL, _CHINA})
+_CN = "CN"
 _LAND = frozenset({LocationKind.POSTAL_ZONE.value, LocationKind.ADDRESS.value})
 _RAIL_FLAG = "rail"
 
@@ -49,7 +51,7 @@ def require_leg_kind(raw: object) -> str:
     if token == "":
         return _ROAD
     if token not in _KINDS:
-        raise InvalidShipmentLeg("leg_kind spoza zbioru: road, rail")
+        raise InvalidShipmentLeg("leg_kind spoza zbioru: road, rail, china_rail")
     return token
 
 
@@ -70,6 +72,13 @@ def require_rail_port_flag(flags: object) -> None:
         raise InvalidShipmentLeg("flagi portu muszą być listą")
     if _RAIL_FLAG not in flags:
         raise InvalidShipmentLeg("port bez flagi rail nie jest odcinkiem kolejowym")
+
+
+def require_china_rail_country(code: object) -> None:
+    if type(code) is not str:
+        raise InvalidShipmentLeg("kod kraju portu musi być tekstem")
+    if code != _CN:
+        raise InvalidShipmentLeg("port poza Chinami nie jest odcinkiem kolej z Chin")
 
 
 def require_leg_source_ref(raw: object) -> str:

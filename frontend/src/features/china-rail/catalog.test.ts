@@ -30,3 +30,20 @@ describe("china rail surface for 43.0", () => {
     expect(page).not.toContain("CatalogCreateForm")
   })
 })
+
+describe("china rail surface for 110.0", () => {
+  it("records a china_rail shipment_leg on /china-rail", () => {
+    const page = src("features/china-rail/catalog-page.tsx")
+    const board = src("features/china-rail/china-rail-leg-board.tsx")
+    expect(page).toContain("ChinaRailLegBoard")
+    expect(board).toContain("listShipmentLegs")
+    expect(board).toContain("saveShipmentLeg")
+    expect(board).toContain('data-china-rail="leg-form"')
+    expect(board).toContain("Zapisz odcinek kolej z Chin")
+    expect(board).toContain('leg_kind: "china_rail"')
+    expect(board).not.toContain("parseFloat")
+    expect(board).not.toContain("leaflet")
+    expect(board).not.toContain("CatalogCreateForm")
+    expect(src("features/ops/ops-index.ts")).toContain('"110.0": "/china-rail"')
+  })
+})

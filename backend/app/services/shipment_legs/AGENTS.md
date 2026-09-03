@@ -1,7 +1,7 @@
-# BC shipment_leg (M-48 / M-49)
+# BC shipment_leg (M-48 / M-49 / M-50)
 
-Odcinek na zleceniu per tenant. 108.0 `road`, 109.0 `rail`.
-Nie mapa, nie GPS, nie TMS, nie kwota.
+Odcinek na zleceniu per tenant. 108.0 `road`, 109.0 `rail`, 110.0 `china_rail`.
+Nie mapa, nie GPS, nie TMS, nie kwota, nie korytarz.
 
 ## Dozwolone zależności
 - `app.models.shipment_leg`

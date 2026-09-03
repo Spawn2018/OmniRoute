@@ -35,7 +35,10 @@ class ShipmentLeg(Base, TimestampMixin):
             name="fk_shipment_leg_destination",
             ondelete="RESTRICT",
         ),
-        CheckConstraint("leg_kind IN ('road', 'rail')", name="ck_shipment_leg_kind"),
+        CheckConstraint(
+            "leg_kind IN ('road', 'rail', 'china_rail')",
+            name="ck_shipment_leg_kind",
+        ),
         CheckConstraint(
             "origin_location_id <> destination_location_id",
             name="ck_shipment_leg_distinct_ends",

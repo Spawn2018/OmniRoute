@@ -8,6 +8,7 @@ from app.api.deps import get_current_identity, require_permission, require_tenan
 from app.core.session_token import SessionIdentity
 from app.domain.errors import InvalidShipmentLeg
 from app.domain.shipment_leg import (
+    require_china_rail_country,
     require_distinct_ends,
     require_leg_kind,
     require_rail_location_kind,
@@ -15,6 +16,7 @@ from app.domain.shipment_leg import (
     require_road_location_kind,
 )
 from app.models.location import Location
+from app.models.port import Port
 from app.services.geography.location_service import LocationService
 from app.services.geography.port_service import PortService
 from app.services.shipment_legs.shipment_leg_service import ShipmentLegService
@@ -85,6 +87,8 @@ async def _ends_for_kind(
     origin_id: UUID,
     destination_id: UUID,
 ) -> tuple[Location, Location]:
+    if kind == "china_rail":
+        return await _china_rail_ends(session, origin_id, destination_id)
     if kind == "rail":
         return await _rail_ends(session, origin_id, destination_id)
     return await _land_ends(session, origin_id, destination_id)
@@ -104,7 +108,7 @@ async def _land_ends(
     return origin, destination
 
 
-async def _rail_ends(
+async def _unlocode_ends(
     session: AsyncSession,
     origin_id: UUID,
     destination_id: UUID,
@@ -114,8 +118,29 @@ async def _rail_ends(
     destination = await catalog.get_location(destination_id)
     require_rail_location_kind(origin.kind)
     require_rail_location_kind(destination.kind)
-    await _require_rail_ports(session, origin, destination)
     require_distinct_ends(origin.id, destination.id)
+    return origin, destination
+
+
+async def _rail_ends(
+    session: AsyncSession,
+    origin_id: UUID,
+    destination_id: UUID,
+) -> tuple[Location, Location]:
+    origin, destination = await _unlocode_ends(session, origin_id, destination_id)
+    await _require_rail_ports(session, origin, destination)
+    return origin, destination
+
+
+async def _china_rail_ends(
+    session: AsyncSession,
+    origin_id: UUID,
+    destination_id: UUID,
+) -> tuple[Location, Location]:
+    origin, destination = await _unlocode_ends(session, origin_id, destination_id)
+    start, end = await _require_rail_ports(session, origin, destination)
+    require_china_rail_country(start.country_code)
+    require_china_rail_country(end.country_code)
     return origin, destination
 
 
@@ -123,7 +148,7 @@ async def _require_rail_ports(
     session: AsyncSession,
     origin: Location,
     destination: Location,
-) -> None:
+) -> tuple[Port, Port]:
     if origin.port_id is None or destination.port_id is None:
         raise InvalidShipmentLeg("lokalizacja UN/LOCODE bez portu")
     ports = PortService(session)
@@ -131,3 +156,4 @@ async def _require_rail_ports(
     end = await ports.get_port(destination.port_id)
     require_rail_port_flag(start.function_flags)
     require_rail_port_flag(end.function_flags)
+    return start, end

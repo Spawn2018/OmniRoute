@@ -158,9 +158,11 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **42.0 DONE:** `/rail` odczyt portów z flagą `rail`. Nie nowa tabela. Nie wagon. Nie CIM.
 - **42.0 leftover — wagon / CIM / GPS (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Odcinek kolejowy = 109.0. Wagon i CIM zostają poza S47.
 - **109.0 DONE:** `shipment_leg.leg_kind=rail` na `/rail`. Nie wagon. Nie mapa.
-- **109.0 leftover — S48–S49 kind / wagon / mapa (dlaczego nie w tym plasterze):** CHECK jest `road|rail`. Kolej z Chin i drobnica to osobne Q.
+- **109.0 leftover — S49 kind / wagon / mapa (dlaczego nie w tym plasterze):** CHECK po 109.0 jest `road|rail`. Kolej z Chin **DONE w 110.0**. Drobnica to S49.
 - **43.0 DONE:** `/china-rail` odczyt portów CN z flagą `rail`. Nie nowa tabela. Nie korytarz. Nie HTTP.
-- **43.0 leftover — korytarz / HTTP CR (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. M-51 drobnica **DONE w 44.0**.
+- **43.0 leftover — korytarz / HTTP CR (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Odcinek `china_rail` = 110.0. Korytarz i HTTP zostają poza S48.
+- **110.0 DONE:** `shipment_leg.leg_kind=china_rail` na `/china-rail`. Nie korytarz. Nie HTTP.
+- **110.0 leftover — S49 kind / korytarz / mapa (dlaczego nie w tym plasterze):** CHECK jest `road|rail|china_rail`. Drobnica to osobne Q.
 - **44.0 DONE:** `/lcl` odczyt portów z `is_seaport`. Nie nowa tabela. Nie CFS. Nie LCL vs FCL.
 - **44.0 leftover — CFS / LCL vs FCL / HTTP konsolidatora (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Fala 8 M-53 sankcje **DONE w 45.0**.
 - **45.0 DONE:** `/sanctions` odczyt aktywnych `party` (`tax_id`, `country_code`). Nie nowa tabela. Nie OFAC. Nie auto-match.

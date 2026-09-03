@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **109.0** S47 odcinek kolejowy (M-49) **Następny:** `/plaster` **110.0** — S48 odcinek kolej z Chin (M-50). Nie F9.1.
+**Stan (z CURRENT.md):** **110.0** S48 odcinek kolej z Chin (M-50) **Następny:** `/plan-modul` **S49** — odcinek drobnicy morskiej na `shipment_leg` (M-51). Nie F9.1.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

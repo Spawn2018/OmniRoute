@@ -37,9 +37,12 @@ class _Loc:
 
 
 class _Port:
-    def __init__(self, row_id: UUID, flags: list[str]) -> None:
+    def __init__(
+        self, row_id: UUID, flags: list[str], country_code: str = "PL",
+    ) -> None:
         self.id = row_id
         self.function_flags = flags
+        self.country_code = country_code
 
 
 class StubShipmentService:
@@ -123,9 +126,13 @@ def catalog_client(monkeypatch: pytest.MonkeyPatch) -> object:
     sea = _Port(uuid4(), ["port"])
     rail_a = _Port(uuid4(), ["port", "rail"])
     rail_b = _Port(uuid4(), ["rail"])
+    cn_a = _Port(uuid4(), ["rail"], "CN")
+    cn_b = _Port(uuid4(), ["port", "rail"], "CN")
     port_loc = _Loc(uuid4(), "unlocode", sea.id)
     rail_origin = _Loc(uuid4(), "unlocode", rail_a.id)
     rail_dest = _Loc(uuid4(), "unlocode", rail_b.id)
+    cn_origin = _Loc(uuid4(), "unlocode", cn_a.id)
+    cn_dest = _Loc(uuid4(), "unlocode", cn_b.id)
     ships.by_id = {ship.id: ship}
     places.by_id = {
         origin.id: origin,
@@ -133,8 +140,16 @@ def catalog_client(monkeypatch: pytest.MonkeyPatch) -> object:
         port_loc.id: port_loc,
         rail_origin.id: rail_origin,
         rail_dest.id: rail_dest,
+        cn_origin.id: cn_origin,
+        cn_dest.id: cn_dest,
     }
-    ports.by_id = {sea.id: sea, rail_a.id: rail_a, rail_b.id: rail_b}
+    ports.by_id = {
+        sea.id: sea,
+        rail_a.id: rail_a,
+        rail_b.id: rail_b,
+        cn_a.id: cn_a,
+        cn_b.id: cn_b,
+    }
 
     def _ships(_session: object) -> StubShipmentService:
         return ships
@@ -159,13 +174,13 @@ def catalog_client(monkeypatch: pytest.MonkeyPatch) -> object:
     monkeypatch.setattr("app.api.shipment_legs.ShipmentLegService", _rows)
     set_authz_checker(AllowAllAuthz())
     app.dependency_overrides[require_tenant_session] = _fake_tenant_session
-    yield TestClient(app), ship, origin, dest, port_loc, rail_origin, rail_dest
+    yield TestClient(app), ship, origin, dest, port_loc, rail_origin, rail_dest, cn_origin, cn_dest
     app.dependency_overrides.clear()
     set_authz_checker(None)
 
 
 def test_http_create_and_list_shipment_leg(catalog_client: object) -> None:
-    client, ship, origin, dest, _port_loc, _rail_origin, _rail_dest = catalog_client
+    client, ship, origin, dest, _port_loc, _rail_origin, _rail_dest, _cn_o, _cn_d = catalog_client
     org_id = uuid4()
     headers = bearer_auth_headers(organization_id=org_id)
     created = client.post(
@@ -193,7 +208,7 @@ def test_http_create_and_list_shipment_leg(catalog_client: object) -> None:
 
 
 def test_http_create_unknown_shipment_is_404(catalog_client: object) -> None:
-    client, _ship, origin, dest, _port_loc, _rail_origin, _rail_dest = catalog_client
+    client, _ship, origin, dest, _port_loc, _rail_origin, _rail_dest, _cn_o, _cn_d = catalog_client
     response = client.post(
         "/api/v1/shipment-legs",
         headers=bearer_auth_headers(),
@@ -208,7 +223,7 @@ def test_http_create_unknown_shipment_is_404(catalog_client: object) -> None:
 
 
 def test_http_create_unknown_location_is_404(catalog_client: object) -> None:
-    client, ship, origin, _dest, _port_loc, _rail_origin, _rail_dest = catalog_client
+    client, ship, origin, _dest, _port_loc, _rail_origin, _rail_dest, _cn_o, _cn_d = catalog_client
     response = client.post(
         "/api/v1/shipment-legs",
         headers=bearer_auth_headers(),
@@ -223,7 +238,7 @@ def test_http_create_unknown_location_is_404(catalog_client: object) -> None:
 
 
 def test_http_create_unlocode_is_400(catalog_client: object) -> None:
-    client, ship, origin, _dest, port_loc, _rail_origin, _rail_dest = catalog_client
+    client, ship, origin, _dest, port_loc, _rail_origin, _rail_dest, _cn_o, _cn_d = catalog_client
     response = client.post(
         "/api/v1/shipment-legs",
         headers=bearer_auth_headers(),
@@ -239,7 +254,7 @@ def test_http_create_unlocode_is_400(catalog_client: object) -> None:
 
 
 def test_http_create_same_ends_is_400(catalog_client: object) -> None:
-    client, ship, origin, _dest, _port_loc, _rail_origin, _rail_dest = catalog_client
+    client, ship, origin, _dest, _port_loc, _rail_origin, _rail_dest, _cn_o, _cn_d = catalog_client
     response = client.post(
         "/api/v1/shipment-legs",
         headers=bearer_auth_headers(),
@@ -255,7 +270,7 @@ def test_http_create_same_ends_is_400(catalog_client: object) -> None:
 
 
 def test_http_create_empty_source_ref_is_400(catalog_client: object) -> None:
-    client, ship, origin, dest, _port_loc, _rail_origin, _rail_dest = catalog_client
+    client, ship, origin, dest, _port_loc, _rail_origin, _rail_dest, _cn_o, _cn_d = catalog_client
     response = client.post(
         "/api/v1/shipment-legs",
         headers=bearer_auth_headers(),
@@ -271,7 +286,7 @@ def test_http_create_empty_source_ref_is_400(catalog_client: object) -> None:
 
 
 def test_http_create_rail_leg(catalog_client: object) -> None:
-    client, ship, _origin, _dest, _port_loc, rail_origin, rail_dest = catalog_client
+    client, ship, _origin, _dest, _port_loc, rail_origin, rail_dest, _cn_o, _cn_d = catalog_client
     created = client.post(
         "/api/v1/shipment-legs",
         headers=bearer_auth_headers(),
@@ -289,7 +304,7 @@ def test_http_create_rail_leg(catalog_client: object) -> None:
 
 
 def test_http_create_rail_without_flag_is_400(catalog_client: object) -> None:
-    client, ship, _origin, _dest, port_loc, rail_origin, _rail_dest = catalog_client
+    client, ship, _origin, _dest, port_loc, rail_origin, _rail_dest, _cn_o, _cn_d = catalog_client
     response = client.post(
         "/api/v1/shipment-legs",
         headers=bearer_auth_headers(),
@@ -306,7 +321,7 @@ def test_http_create_rail_without_flag_is_400(catalog_client: object) -> None:
 
 
 def test_http_create_rail_from_zone_is_400(catalog_client: object) -> None:
-    client, ship, origin, dest, _port_loc, _rail_origin, _rail_dest = catalog_client
+    client, ship, origin, dest, _port_loc, _rail_origin, _rail_dest, _cn_o, _cn_d = catalog_client
     response = client.post(
         "/api/v1/shipment-legs",
         headers=bearer_auth_headers(),
@@ -316,6 +331,58 @@ def test_http_create_rail_from_zone_is_400(catalog_client: object) -> None:
             "destination_location_id": str(dest.id),
             "source_ref": "fixture://shipment-leg/rail",
             "leg_kind": "rail",
+        },
+    )
+    assert response.status_code == 400
+    assert "UN/LOCODE" in response.json()["detail"]
+
+
+def test_http_create_china_rail_leg(catalog_client: object) -> None:
+    client, ship, _origin, _dest, _port_loc, _rail_o, _rail_d, cn_origin, cn_dest = catalog_client
+    created = client.post(
+        "/api/v1/shipment-legs",
+        headers=bearer_auth_headers(),
+        json={
+            "shipment_id": str(ship.id),
+            "origin_location_id": str(cn_origin.id),
+            "destination_location_id": str(cn_dest.id),
+            "source_ref": "fixture://shipment-leg/cn",
+            "leg_kind": "china_rail",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["leg_kind"] == "china_rail"
+    assert "amount" not in created.json()
+
+
+def test_http_create_china_rail_without_cn_is_400(catalog_client: object) -> None:
+    client, ship, _origin, _dest, _port_loc, rail_origin, _rail_d, cn_origin, _cn_d = catalog_client
+    response = client.post(
+        "/api/v1/shipment-legs",
+        headers=bearer_auth_headers(),
+        json={
+            "shipment_id": str(ship.id),
+            "origin_location_id": str(cn_origin.id),
+            "destination_location_id": str(rail_origin.id),
+            "source_ref": "fixture://shipment-leg/cn",
+            "leg_kind": "china_rail",
+        },
+    )
+    assert response.status_code == 400
+    assert "Chinami" in response.json()["detail"]
+
+
+def test_http_create_china_rail_from_zone_is_400(catalog_client: object) -> None:
+    client, ship, origin, dest, _port_loc, _rail_o, _rail_d, _cn_o, _cn_d = catalog_client
+    response = client.post(
+        "/api/v1/shipment-legs",
+        headers=bearer_auth_headers(),
+        json={
+            "shipment_id": str(ship.id),
+            "origin_location_id": str(origin.id),
+            "destination_location_id": str(dest.id),
+            "source_ref": "fixture://shipment-leg/cn",
+            "leg_kind": "china_rail",
         },
     )
     assert response.status_code == 400
