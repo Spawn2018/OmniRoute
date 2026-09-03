@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **78.0** S15 ingest Graph na `inbound_message` (M-32). **Etap:** Plan. **Następny:** `/plan-modul` **S16** — outbox M-02, pierwsze zdarzenie „wiadomość zapisana”. Nie live HTTP. Nie send. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **78.0** S15 ingest Graph na `inbound_message` (M-32). **Etap:** Plan. **Następny:** `/plaster` **79.0** — outbox M-02, zdarzenie `inbound_message_saved`. Nie Temporal. Nie send. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
