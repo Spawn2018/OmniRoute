@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **118.0** S58 drafty po SOP (M-57)
+- **Ostatni plaster:** **119.0** S59 OTel/QA/rollout named park (M-68…M-70)
 - **Etap:** Plan
-- **Następny:** `/plan-modul` S59 — M-68 OTel, M-69 QA, M-70 rollout (po S16/S29). Nie billing SaaS. Nie F9.1.
+- **Następny:** katalog 71–212 bez żywej nazwy — nie zgaduj. Auth0 i portale parked.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

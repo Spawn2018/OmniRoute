@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **118.0** S58 drafty po SOP (M-57). **Etap:** Plan. **Następny:** `/plan-modul` S59 — M-68 OTel, M-69 QA, M-70 rollout (po S16/S29). Nie billing SaaS. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **119.0** S59 OTel/QA/rollout named park (M-68…M-70). **Etap:** Plan. **Następny:** katalog 71–212 bez żywej nazwy — nie zgaduj. Auth0 i portale parked. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

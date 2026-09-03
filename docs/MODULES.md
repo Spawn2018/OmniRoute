@@ -64,7 +64,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-55 | Reklamacja ładunku | 113.0 `cargo_claim` | **ukończony (S51)** · reklamacja na zleceniu; nie kwota; nie scoring |
 | M-56 | RODO | 46.0 `gdpr` · 107.0 `gdpr_request` | **ukończony (fundament)** · wniosek access/erasure + tombstone konta; nie DPIA; nie DELETE `app_user` |
 | M-57 | Copilot AI | 47.0 `ai_copilot` · 76.0 `mail_draft` · 116.0 wieża · 118.0 SOP | **ukończony (S58)** · szkice po SOP `blocks_auto`; nie auto-send; nie czat |
-| M-68 | Obserwowalność | 48.0 `observability` | **ukończony (fundament)** · tablica `fetchHealth`; nie OTel; nie k6 |
+| M-68 | Obserwowalność | 48.0 `observability` · 119.0 park | **ukończony (fundament)** · tablica `fetchHealth`; S59 named park; nie OTel; nie k6 |
 | M-69 | Jakość | 49.0 `extraction_quality` | **ukończony (fundament)** · tablica `unparsed_regions`; nie scoring; nie tabela QA |
 | M-70 | Wdrożenie | 50.0 `tenant_rollout` | **ukończony (fundament)** · tablica `default_currency`; nie tabela rollout; nie upsert |
 | M-71 | Szyna decyzji operatora | 74.0 `operator_decision` · 77.0 lock | **ukończony (fundament)** · pending → accept/reject + `lock_version`; nie extract 1.3; nie send |
