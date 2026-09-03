@@ -1,26 +1,26 @@
-# M-38 dokumenty zlecenia — tablica `source_ref` wyceny
+# M-38 dokumenty zlecenia — wskazanie na zleceniu
 
-**Moduł żywy:** M-38 (token UI `shipment_document`, nie tabela) + ekran M-21 `quotation`  
-**Plaster:** **31.0** (zamknięty)  
-**Status:** operator **widzi** `source_ref` wycen z kontrahentem jako dokument. Nie PDF. Nie HBL. Nie nowa tabela.
+**Moduł żywy:** M-38 (token UI `shipment_document`, tabela `shipment_document`)  
+**Plaster:** **92.0** (S30; 31.0 był tablicą `source_ref` wyceny)  
+**Status:** operator **zapisuje** wskazanie dokumentu na `shipment`. Nie bajty. Nie PDF. Nie HBL.
 
-Delta: [docs/deltas/archived/31.0-shipment-document.md](../deltas/archived/31.0-shipment-document.md).
+Delta: [docs/deltas/archived/92.0-shipment-document.md](../deltas/archived/92.0-shipment-document.md).
 
-## 31.0 tablica odczytu na `/shipment-documents`
+## 92.0 tabela na `/shipment-documents`
 
 ### Zakres
 
-- Ekran `/shipment-documents`: lista wycen z `party_id` (ten sam filtr co 28.0)
-- Pokazuje `source_ref` i kwotę przez `<Money/>`. Link do `/shipments` i `/quotations`
-- Zero nowej tabeli. Zero PDF. Zero HBL
+- Tabela `shipment_document`: RLS FORCE, FK tenanta do `shipment`
+- `GET/POST /shipment-documents`, OpenFGA `can_manage_shipment_documents`
+- Ekran `/shipment-documents`: lista wierszy + „Zapisz dokument”. `data-shipment-document="board"`
 
-### Poza 31.0
+### Poza 92.0
 
-Tabela dokumentów · HBL / B/L · U-print · EDI (M-39) · letterhead
+HBL / B/L · bajty / upload · U-print · skan M-20 · wyjątki (M-37) · EDI
 
 ### HC
 
-- Marża zostaje w `charge`. Tablica nie odejmuje kwot.
+- Marża zostaje w `charge`. Dokument nie niesie kwoty.
 - LLM nie pisze treści dokumentu.
 - HITL zostaje na ekstrakcji.
-- ExtractionService nie importuje quotations
+- ExtractionService nie importuje dokumentów zlecenia ani quotations

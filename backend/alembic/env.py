@@ -45,6 +45,7 @@ from app.models.mail_draft import MailDraft  # noqa: F401
 from app.models.outbox_event import OutboxEvent  # noqa: F401
 from app.models.shipment import Shipment  # noqa: F401
 from app.models.tracking_event import TrackingEvent  # noqa: F401
+from app.models.shipment_document import ShipmentDocument  # noqa: F401
 
 config = context.config
 # Testy nadpisują URL na omniroute_test. Domyślnie owner z settings — nie runtime omniroute_app.

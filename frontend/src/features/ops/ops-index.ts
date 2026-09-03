@@ -298,6 +298,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "89.0": "/sanctions",
   "90.0": "/shipments",
   "91.0": "/tracking",
+  "92.0": "/shipment-documents",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

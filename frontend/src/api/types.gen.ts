@@ -2317,6 +2317,50 @@ export type ShipmentCreate = {
 };
 
 /**
+ * ShipmentDocumentCreate
+ */
+export type ShipmentDocumentCreate = {
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Document Kind
+     */
+    document_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ShipmentDocumentResponse
+ */
+export type ShipmentDocumentResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Document Kind
+     */
+    document_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * ShipmentResponse
  */
 export type ShipmentResponse = {
@@ -4430,6 +4474,49 @@ export type CreateTrackingEventApiV1TrackingEventsPostResponses = {
 };
 
 export type CreateTrackingEventApiV1TrackingEventsPostResponse = CreateTrackingEventApiV1TrackingEventsPostResponses[keyof CreateTrackingEventApiV1TrackingEventsPostResponses];
+
+export type ListShipmentDocumentsApiV1ShipmentDocumentsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/shipment-documents';
+};
+
+export type ListShipmentDocumentsApiV1ShipmentDocumentsGetResponses = {
+    /**
+     * Response List Shipment Documents Api V1 Shipment Documents Get
+     *
+     * Successful Response
+     */
+    200: Array<ShipmentDocumentResponse>;
+};
+
+export type ListShipmentDocumentsApiV1ShipmentDocumentsGetResponse = ListShipmentDocumentsApiV1ShipmentDocumentsGetResponses[keyof ListShipmentDocumentsApiV1ShipmentDocumentsGetResponses];
+
+export type CreateShipmentDocumentApiV1ShipmentDocumentsPostData = {
+    body: ShipmentDocumentCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/shipment-documents';
+};
+
+export type CreateShipmentDocumentApiV1ShipmentDocumentsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateShipmentDocumentApiV1ShipmentDocumentsPostError = CreateShipmentDocumentApiV1ShipmentDocumentsPostErrors[keyof CreateShipmentDocumentApiV1ShipmentDocumentsPostErrors];
+
+export type CreateShipmentDocumentApiV1ShipmentDocumentsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ShipmentDocumentResponse;
+};
+
+export type CreateShipmentDocumentApiV1ShipmentDocumentsPostResponse = CreateShipmentDocumentApiV1ShipmentDocumentsPostResponses[keyof CreateShipmentDocumentApiV1ShipmentDocumentsPostResponses];
 
 export type ListOrganizationSettingsApiV1OrganizationSettingsGetData = {
     body?: never;

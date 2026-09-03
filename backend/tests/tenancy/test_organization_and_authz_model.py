@@ -26,6 +26,7 @@ def test_authorization_model_includes_table_view_permission() -> None:
     assert "can_manage_mail_drafts" in org.relations
     assert "can_manage_shipments" in org.relations
     assert "can_manage_tracking" in org.relations
+    assert "can_manage_shipment_documents" in org.relations
     assert "can_manage_rate_lines" in org.relations
     assert "can_manage_charges" in org.relations
     assert "can_manage_quotations" in org.relations
@@ -74,6 +75,9 @@ def test_authorization_model_includes_table_view_permission() -> None:
     tracking = org.relations["can_manage_tracking"]
     assert tracking.computed_userset is not None
     assert tracking.computed_userset.relation == "member"
+    documents = org.relations["can_manage_shipment_documents"]
+    assert documents.computed_userset is not None
+    assert documents.computed_userset.relation == "member"
     rates = org.relations["can_manage_rate_lines"]
     assert rates.computed_userset is not None
     assert rates.computed_userset.relation == "member"

@@ -3097,6 +3097,80 @@
         ]
       }
     },
+    "/api/v1/shipment-documents": {
+      "get": {
+        "tags": [
+          "shipment-documents"
+        ],
+        "summary": "List Shipment Documents",
+        "operationId": "list_shipment_documents_api_v1_shipment_documents_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ShipmentDocumentResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Shipment Documents Api V1 Shipment Documents Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "shipment-documents"
+        ],
+        "summary": "Create Shipment Document",
+        "operationId": "create_shipment_document_api_v1_shipment_documents_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipmentDocumentCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShipmentDocumentResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/organization-settings": {
       "get": {
         "tags": [
@@ -9390,6 +9464,67 @@
           "source_ref"
         ],
         "title": "ShipmentCreate"
+      },
+      "ShipmentDocumentCreate": {
+        "properties": {
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "document_kind": {
+            "type": "string",
+            "title": "Document Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "shipment_id",
+          "document_kind",
+          "source_ref"
+        ],
+        "title": "ShipmentDocumentCreate"
+      },
+      "ShipmentDocumentResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "document_kind": {
+            "type": "string",
+            "title": "Document Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "shipment_id",
+          "document_kind",
+          "source_ref"
+        ],
+        "title": "ShipmentDocumentResponse"
       },
       "ShipmentResponse": {
         "properties": {

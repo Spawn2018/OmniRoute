@@ -20,7 +20,7 @@
 | zlecenie | shipment | 90.0 tabela z wyceny z `party_id`; nie tracking |
 | śledzenie | tracking | 91.0 `tracking_event` na zleceniu; nie AIS; nie mapa |
 | wyjątek operacyjny | operational_exception | 30.0 tablica wycen z party bez pełnego POL/POD; nie tabela; nie AIS; nie `party_charge_override` |
-| dokument zlecenia | shipment_document | 31.0 tablica `source_ref` wycen z party; nie tabela; nie PDF; nie HBL |
+| dokument zlecenia | shipment_document | 92.0 tabela na zleceniu; nie bajty; nie PDF; nie HBL |
 | komunikat EDI | edi_message | 32.0 tablica `channel_quote` na lane wyceny; nie tabela; nie X12; nie live HTTP |
 | faktura sprzedaży | sales_invoice | 33.0 tablica `sell` z `charge`; nie tabela; nie KSeF; nie druga marża |
 | rozliczenie wyceny z fakturą | quote_invoice_settlement | 34.0 tablica wycena + `sell` z `charge` po `rate_line_id`; nie tabela; nie odejmowanie |
