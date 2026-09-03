@@ -278,3 +278,4 @@
 | 2026-09-03 | 103.0 | M-46 | Tabela kosztu obsługi: SOP przy wycenie. Nie suma. Następny: S42 Plan. |
 | 2026-09-03 | Plan 104.0 | M-47 | S42: `bookkeeping` wiąże opłatę z fakturą. Delta zaakceptowana (`/noc`). Nie JPK. Następny: `/plaster` 104.0. |
 | 2026-09-03 | 104.0 | M-47 | Tabela dekretu: opłata na fakturę. Nie JPK. Nie odejmowanie. Następny: S43 Plan. |
+| 2026-09-03 | Plan 105.0 | M-91 | S43: `collective_invoice` wiąże fakturę z dodatkowym zleceniem. Delta zaakceptowana (`/noc`). Nie płatność paczką. Następny: `/plaster` 105.0. |

@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** `/plan-modul` **S43** — arch. M-91 zbiorcze FV. Nie F9.1.
+**Następny (zablokowany):** `/plaster` **105.0** — S43 zbiorcza faktura (M-91). Nie F9.1.
 <!-- os-status:end -->
 
 ```mermaid
@@ -318,6 +318,7 @@ Po Fali 11 i leftover FE: **Fala E (Q-E1…E4)**, potem **Fala S** (S1…). Nie 
 | M-52 ślad węglowy (katalog) | żywe **M-52** = `dangerous_good` | ślad = nowy żywy ID przy CBAM (Fala S faza 10); nie nadpisuj DG |
 | M-57 serwer MCP (katalog) | żywe **M-57** = tablica extract | MCP później; nie nadpisuj. Kat. M-58 = pogłębienie M-57 (**S56**) |
 | Arch. M-179 szyna decyzji | **kolizja M-57** | S11 żywy ID **M-71** `operator_decision` |
+| Arch. M-91 zbiorcze FV | brak kolizji z żywym M-40 | S43 żywy ID **M-91** `collective_invoice`; nie nadpisuj `sales_invoice` |
 | M-35 vs arch. M-89 booking | default: **jedna** tabela `shipment` | dwa obiekty tylko gdy Plan **S28** udowodni dwa joby |
 
 ### Fala 0 — już w kodzie (nie wracaj)
@@ -386,7 +387,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E2** | Testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy) | 61.0 | zamknięty (`docs/deltas/archived/61.0-alembic-quote-budget.md`) |
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | 62.0 | zamknięty (`docs/deltas/archived/62.0-operator-howto-c4.md`) |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | 63.0 | zamknięty (`docs/deltas/archived/63.0-threat-model-codeql.md`) |
-| po Q-E4 | **Fala S**, S1–S42 zamknięte (S21 parked); S43 Plan | Plan → plaster | **następny** |
+| po Q-E4 | **Fala S**, S1–S42 zamknięte (S21 parked); S43 plan 105.0 | Plan → plaster | **następny** |
 
 ### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
 
@@ -448,7 +449,7 @@ Reguły kolejności (żeby `/noc` nie złożył awarii):
 | **S40** | Żywe **M-45** przepływy | 102.0 | zamknięty (`docs/deltas/archived/102.0-cash-flow.md`) | Wycena przy płatności. Nie księga kwot. Nie odejmowanie |
 | **S41** | Żywe **M-46** koszt obsługi | 103.0 | zamknięty (`docs/deltas/archived/103.0-cost-to-serve.md`) | SOP przy wycenie. Nie ABC. Nie suma |
 | **S42** | Żywe **M-47** księgowość | 104.0 | zamknięty (`docs/deltas/archived/104.0-bookkeeping.md`) | Opłata na fakturę. Nie JPK. Nie odejmowanie |
-| S43 | Arch. M-91 zbiorcze FV | Plan → plaster | po S42 | Gdy ktoś płaci paczką |
+| S43 | Arch. M-91 zbiorcze FV | 105.0 | plan (`docs/deltas/open/105.0-collective-invoice.md`) | Dodatkowe zlecenie na FV. Nie płatność paczką. Nie JPK |
 | S44 | Żywe **M-15** tablica faktów (teraz z FV) | Plan → plaster | po S43 | Narracja NL = S57, nie silnik limitu |
 | S45 | Żywe **M-56** wniosek/usuwanie RODO | Plan → plaster | po S44 | PII od S1; przed portalem |
 | S46–S49 | M-48…M-51 obiekt nogi | Plan → plaster | po S45 | Nie druga mapa |

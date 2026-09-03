@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **104.0** S42 księgowość (M-47). **Etap:** Plan. **Następny:** `/plan-modul` **S43** — arch. M-91 zbiorcze FV. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **104.0** S42 księgowość (M-47). **Etap:** Plan. **Następny:** `/plaster` **105.0** — S43 zbiorcza faktura (M-91). Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
