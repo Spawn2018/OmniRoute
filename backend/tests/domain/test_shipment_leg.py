@@ -12,6 +12,7 @@ from app.domain.shipment_leg import (
     require_leg_location_id,
     require_leg_shipment_id,
     require_leg_source_ref,
+    require_ocean_seaport,
     require_rail_location_kind,
     require_rail_port_flag,
     require_road_leg_kind,
@@ -61,11 +62,12 @@ def test_require_road_leg_kind_is_road() -> None:
     assert require_leg_kind(None) == "road"
     assert require_leg_kind(" rail ") == "rail"
     assert require_leg_kind("china_rail") == "china_rail"
+    assert require_leg_kind("ocean_lcl") == "ocean_lcl"
 
 
 def test_require_leg_kind_rejects_unknown() -> None:
     with pytest.raises(InvalidShipmentLeg, match="spoza zbioru"):
-        require_leg_kind("ocean_lcl")
+        require_leg_kind("air_parcel")
 
 
 def test_require_rail_location_kind_rejects_zone() -> None:
@@ -84,3 +86,9 @@ def test_require_china_rail_country_rejects_other() -> None:
     with pytest.raises(InvalidShipmentLeg, match="Chinami"):
         require_china_rail_country("PL")
     require_china_rail_country("CN")
+
+
+def test_require_ocean_seaport_rejects_inland() -> None:
+    with pytest.raises(InvalidShipmentLeg, match="śródlądowy"):
+        require_ocean_seaport(False)
+    require_ocean_seaport(True)

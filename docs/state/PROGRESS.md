@@ -291,3 +291,4 @@
 | 2026-09-03 | Plan 110.0 | M-50 | S48: `shipment_leg` `china_rail` na zleceniu. Delta zaakceptowana (`/noc`). Nie korytarz. Następny: `/plaster` 110.0. |
 | 2026-09-03 | 110.0 | M-50 | Odcinek kolej z Chin na tej samej tabeli nogi. Nie korytarz. Nie HTTP. Następny: S49 Plan. |
 | 2026-09-04 | Plan 111.0 | M-51 | S49: `shipment_leg` `ocean_lcl` na zleceniu. Delta zaakceptowana (`/noc`). Nie CFS. Następny: `/plaster` 111.0. |
+| 2026-09-04 | 111.0 | M-51 | Odcinek drobnicy na tej samej tabeli nogi. Nie CFS. Nie CBM. Następny: S50 Plan (park floty). |

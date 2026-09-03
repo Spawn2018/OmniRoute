@@ -11,6 +11,7 @@ from app.domain.shipment_leg import (
     require_china_rail_country,
     require_distinct_ends,
     require_leg_kind,
+    require_ocean_seaport,
     require_rail_location_kind,
     require_rail_port_flag,
     require_road_location_kind,
@@ -87,6 +88,8 @@ async def _ends_for_kind(
     origin_id: UUID,
     destination_id: UUID,
 ) -> tuple[Location, Location]:
+    if kind == "ocean_lcl":
+        return await _ocean_lcl_ends(session, origin_id, destination_id)
     if kind == "china_rail":
         return await _china_rail_ends(session, origin_id, destination_id)
     if kind == "rail":
@@ -144,7 +147,19 @@ async def _china_rail_ends(
     return origin, destination
 
 
-async def _require_rail_ports(
+async def _ocean_lcl_ends(
+    session: AsyncSession,
+    origin_id: UUID,
+    destination_id: UUID,
+) -> tuple[Location, Location]:
+    origin, destination = await _unlocode_ends(session, origin_id, destination_id)
+    start, end = await _end_ports(session, origin, destination)
+    require_ocean_seaport(start.is_seaport)
+    require_ocean_seaport(end.is_seaport)
+    return origin, destination
+
+
+async def _end_ports(
     session: AsyncSession,
     origin: Location,
     destination: Location,
@@ -154,6 +169,15 @@ async def _require_rail_ports(
     ports = PortService(session)
     start = await ports.get_port(origin.port_id)
     end = await ports.get_port(destination.port_id)
+    return start, end
+
+
+async def _require_rail_ports(
+    session: AsyncSession,
+    origin: Location,
+    destination: Location,
+) -> tuple[Port, Port]:
+    start, end = await _end_ports(session, origin, destination)
     require_rail_port_flag(start.function_flags)
     require_rail_port_flag(end.function_flags)
     return start, end

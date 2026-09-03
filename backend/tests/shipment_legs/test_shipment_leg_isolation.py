@@ -188,7 +188,7 @@ async def test_shipment_leg_rejects_unknown_kind(session, two_tenants) -> None:
             shipment_id=ship.id,
             origin_location_id=origin.id,
             destination_location_id=dest.id,
-            leg_kind="ocean_lcl",
+            leg_kind="air_parcel",
             source_ref="fixture://shipment-leg/kind",
             created_by=user_a.id,
         )

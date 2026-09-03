@@ -162,9 +162,11 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **43.0 DONE:** `/china-rail` odczyt portów CN z flagą `rail`. Nie nowa tabela. Nie korytarz. Nie HTTP.
 - **43.0 leftover — korytarz / HTTP CR (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Odcinek `china_rail` = 110.0. Korytarz i HTTP zostają poza S48.
 - **110.0 DONE:** `shipment_leg.leg_kind=china_rail` na `/china-rail`. Nie korytarz. Nie HTTP.
-- **110.0 leftover — S49 kind / korytarz / mapa (dlaczego nie w tym plasterze):** CHECK jest `road|rail|china_rail`. Drobnica to osobne Q.
+- **110.0 leftover — S50 flota / korytarz / mapa (dlaczego nie w tym plasterze):** CHECK po 110.0 jest `road|rail|china_rail`. Drobnica **DONE w 111.0**. Flota to S50.
 - **44.0 DONE:** `/lcl` odczyt portów z `is_seaport`. Nie nowa tabela. Nie CFS. Nie LCL vs FCL.
-- **44.0 leftover — CFS / LCL vs FCL / HTTP konsolidatora (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Fala 8 M-53 sankcje **DONE w 45.0**.
+- **44.0 leftover — CFS / LCL vs FCL / HTTP konsolidatora (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Odcinek `ocean_lcl` = 111.0. CFS zostaje poza S49.
+- **111.0 DONE:** `shipment_leg.leg_kind=ocean_lcl` na `/lcl`. Nie CFS. Nie CBM.
+- **111.0 leftover — CFS / LCL vs FCL / flota S50 (dlaczego nie w tym plasterze):** CHECK jest `road|rail|china_rail|ocean_lcl`. Flota named park.
 - **45.0 DONE:** `/sanctions` odczyt aktywnych `party` (`tax_id`, `country_code`). Nie nowa tabela. Nie OFAC. Nie auto-match.
 - **45.0 leftover — HTTP OFAC/EU / tabela hitów (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. M-56 RODO **DONE w 46.0** (M-54/M-55 bez nazwy w PLAN).
 - **46.0 DONE:** `/gdpr` odczyt `app_user.email` / `display_name`. Nie nowa tabela. Nie wniosek. Nie usuwanie.

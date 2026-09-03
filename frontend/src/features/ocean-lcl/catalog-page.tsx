@@ -7,6 +7,7 @@ import {
 } from "@/components/catalog/catalog-parts"
 import { fetchPorts, oceanLclPorts } from "@/lib/ports-api"
 import { getTenantContext } from "@/lib/tenant"
+import { OceanLclLegBoard } from "./ocean-lcl-leg-board"
 
 export function OceanLclPage() {
   const ctx = getTenantContext()
@@ -23,7 +24,7 @@ export function OceanLclPage() {
     <section className="flex flex-col gap-3" data-ocean-lcl="board">
       <CatalogHeading
         title="Drobnica morska"
-        subtitle="ocean_lcl M-51 · port.is_seaport · nie tabela LCL · nie CFS"
+        subtitle="ocean_lcl M-51 · odcinek shipment_leg ocean_lcl · nie tabela LCL · nie CFS"
       />
       {!ready ? <TenantSessionNotice /> : null}
       {ports.isError ? <CatalogError error={ports.error} /> : null}
@@ -37,6 +38,7 @@ export function OceanLclPage() {
           </li>
         ))}
       </ul>
+      {ready ? <OceanLclLegBoard organizationId={ctx.organizationId} /> : null}
     </section>
   )
 }

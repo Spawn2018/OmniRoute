@@ -36,7 +36,7 @@ class ShipmentLeg(Base, TimestampMixin):
             ondelete="RESTRICT",
         ),
         CheckConstraint(
-            "leg_kind IN ('road', 'rail', 'china_rail')",
+            "leg_kind IN ('road', 'rail', 'china_rail', 'ocean_lcl')",
             name="ck_shipment_leg_kind",
         ),
         CheckConstraint(

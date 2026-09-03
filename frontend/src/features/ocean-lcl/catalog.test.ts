@@ -29,3 +29,20 @@ describe("ocean lcl surface for 44.0", () => {
     expect(page).not.toContain("CatalogCreateForm")
   })
 })
+
+describe("ocean lcl surface for 111.0", () => {
+  it("records an ocean_lcl shipment_leg on /lcl", () => {
+    const page = src("features/ocean-lcl/catalog-page.tsx")
+    const board = src("features/ocean-lcl/ocean-lcl-leg-board.tsx")
+    expect(page).toContain("OceanLclLegBoard")
+    expect(board).toContain("listShipmentLegs")
+    expect(board).toContain("saveShipmentLeg")
+    expect(board).toContain('data-ocean-lcl="leg-form"')
+    expect(board).toContain("Zapisz odcinek drobnicy")
+    expect(board).toContain('leg_kind: "ocean_lcl"')
+    expect(board).not.toContain("parseFloat")
+    expect(board).not.toContain("leaflet")
+    expect(board).not.toContain("CatalogCreateForm")
+    expect(src("features/ops/ops-index.ts")).toContain('"111.0": "/lcl"')
+  })
+})
