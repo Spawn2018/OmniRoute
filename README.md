@@ -88,7 +88,7 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 <!-- os-status:start -->
 - **Ostatni plaster:** **80.0** S17 ingest IMAP na `inbound_message` (M-32)
 - **Etap:** Plan
-- **Następny:** `/plan-modul` **S18** — wysyłka po S11+S10 (M-33). Graph send albo świadomy `mailto:`. Auto-send zakazane. Nie F9.1.
+- **Następny:** `/plaster` **81.0** — świadomy `mailto:` po S11+S10 (M-33). Auto-send zakazane. Nie Graph HTTP. Nie F9.1.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
