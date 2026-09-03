@@ -32,6 +32,10 @@ class OperatorDecisionService:
             raise ResourceNotFound(f"nieznana decyzja operatora: {decision_id}")
         return found
 
+    async def has_accepted(self, subject_kind: str, subject_id: UUID) -> bool:
+        found = await self._rows.get_accepted(subject_kind, subject_id)
+        return found is not None
+
     async def create_decision(
         self,
         *,

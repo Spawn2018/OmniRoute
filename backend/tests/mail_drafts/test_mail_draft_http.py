@@ -5,7 +5,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app.api.deps import require_tenant_session, set_authz_checker
-from app.domain.errors import ResourceNotFound
+from app.domain.errors import InvalidMailDraft, ResourceNotFound
 from app.main import app
 from app.models.mail_draft import MailDraft
 from tests.http_auth import bearer_auth_headers
@@ -59,10 +59,41 @@ class StubMailDraftService:
         self.rows.append(row)
         return row
 
+    async def mark_sent(self, draft_id: UUID, to_address: str) -> MailDraft:
+        row = await self.get_draft(draft_id)
+        if row.status == "sent":
+            raise InvalidMailDraft("szkic już wysłany")
+        row.to_address = to_address
+        row.status = "sent"
+        return row
+
+
+class StubOperatorDecisionService:
+    accepted: set[UUID] = set()
+
+    def __init__(self, session: object) -> None:
+        self._session = session
+
+    async def has_accepted(self, subject_kind: str, subject_id: UUID) -> bool:
+        _ = subject_kind
+        return subject_id in StubOperatorDecisionService.accepted
+
+
+class StubPartyService:
+    blocked: set[UUID] = set()
+
+    def __init__(self, session: object) -> None:
+        self._session = session
+
+    async def party_blocks_auto(self, party_id: UUID) -> bool:
+        return party_id in StubPartyService.blocked
+
 
 @pytest.fixture
 def catalog_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
     drafts = StubMailDraftService(object())
+    StubOperatorDecisionService.accepted = set()
+    StubPartyService.blocked = set()
 
     async def _fake_tenant_session() -> object:
         session = AsyncMock()
@@ -72,6 +103,14 @@ def catalog_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
     monkeypatch.setattr(
         "app.api.mail_drafts.MailDraftService",
         lambda _session: drafts,
+    )
+    monkeypatch.setattr(
+        "app.api.mail_drafts.OperatorDecisionService",
+        StubOperatorDecisionService,
+    )
+    monkeypatch.setattr(
+        "app.api.mail_drafts.PartyService",
+        StubPartyService,
     )
     set_authz_checker(AllowAllAuthz())
     app.dependency_overrides[require_tenant_session] = _fake_tenant_session
@@ -105,3 +144,89 @@ def test_http_create_and_list_mail_draft(catalog_client: object) -> None:
     listed = client.get("/api/v1/mail-drafts", headers=headers)
     assert listed.status_code == 200
     assert listed.json()[0]["id"] == body["id"]
+    assert listed.json()[0]["to_address"] is None
+
+
+def test_http_dispatch_mailto_requires_accepted_decision(catalog_client: object) -> None:
+    client, _drafts = catalog_client
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/mail-drafts",
+        headers=headers,
+        json={
+            "subject_id": str(uuid4()),
+            "body": "odpowiedź do klienta",
+            "source_ref": "fixture://mail-draft/1",
+        },
+    )
+    draft_id = created.json()["id"]
+    denied = client.post(
+        f"/api/v1/mail-drafts/{draft_id}/dispatch-mailto",
+        headers=headers,
+        json={"to_address": "ops@carrier.example"},
+    )
+    assert denied.status_code == 400
+    assert "akceptacji" in denied.json()["detail"]
+
+
+def test_http_dispatch_mailto_is_idempotent_reject_on_second(
+    catalog_client: object,
+) -> None:
+    client, _drafts = catalog_client
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/mail-drafts",
+        headers=headers,
+        json={
+            "subject_id": str(uuid4()),
+            "body": "RFQ Gdynia",
+            "source_ref": "fixture://mail-draft/1",
+        },
+    )
+    draft_id = UUID(created.json()["id"])
+    StubOperatorDecisionService.accepted.add(draft_id)
+    first = client.post(
+        f"/api/v1/mail-drafts/{draft_id}/dispatch-mailto",
+        headers=headers,
+        json={"to_address": "ops@carrier.example"},
+    )
+    assert first.status_code == 200
+    assert first.json()["status"] == "sent"
+    assert first.json()["to_address"] == "ops@carrier.example"
+    assert first.json()["mailto"].startswith("mailto:ops@carrier.example")
+    assert first.json()["blocks_auto"] is None
+    second = client.post(
+        f"/api/v1/mail-drafts/{draft_id}/dispatch-mailto",
+        headers=headers,
+        json={"to_address": "ops@carrier.example"},
+    )
+    assert second.status_code == 400
+    assert "wysłany" in second.json()["detail"]
+
+
+def test_http_dispatch_mailto_keeps_going_when_sop_blocks_auto(
+    catalog_client: object,
+) -> None:
+    client, _drafts = catalog_client
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/mail-drafts",
+        headers=headers,
+        json={
+            "subject_id": str(uuid4()),
+            "body": "RFQ",
+            "source_ref": "fixture://mail-draft/1",
+        },
+    )
+    draft_id = UUID(created.json()["id"])
+    party_id = uuid4()
+    StubOperatorDecisionService.accepted.add(draft_id)
+    StubPartyService.blocked.add(party_id)
+    sent = client.post(
+        f"/api/v1/mail-drafts/{draft_id}/dispatch-mailto",
+        headers=headers,
+        json={"to_address": "ops@carrier.example", "party_id": str(party_id)},
+    )
+    assert sent.status_code == 200
+    assert sent.json()["blocks_auto"] is True
+    assert sent.json()["mailto"].startswith("mailto:")

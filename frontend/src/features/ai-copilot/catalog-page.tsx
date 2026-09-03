@@ -12,9 +12,11 @@ import { aiProposals, fetchExtractionDrafts } from "@/lib/extractions-api"
 import {
   EMPTY_MAIL_DRAFT,
   createMailDraft,
+  dispatchMailtoMailDraft,
   fetchMailDrafts,
   mailDraftCreateBody,
   mailDraftDecisionBody,
+  type MailDraftDispatch,
   type MailDraftForm,
   type StoredMailDraft,
 } from "@/lib/mail-drafts-api"
@@ -108,21 +110,53 @@ function MailDraftCreateForm({
 function StoredMailDraftList({
   rows,
   onSubmitDecision,
+  onDispatch,
+  dispatchHref,
+  toAddress,
+  onToAddress,
 }: {
   rows: StoredMailDraft[]
   onSubmitDecision: (id: string) => void
+  onDispatch: (id: string) => void
+  dispatchHref: string
+  toAddress: string
+  onToAddress: (value: string) => void
 }) {
   return (
     <ul className="space-y-1">
       {rows.map((row) => (
-        <li key={row.id} className="flex items-center gap-2 text-xs">
+        <li key={row.id} className="flex flex-wrap items-center gap-2 text-xs">
           <span className="font-mono">{row.status}</span>
           <span>{row.body}</span>
           <Button type="button" onClick={() => onSubmitDecision(row.id)}>
             Zgłoś do decyzji
           </Button>
+          <form
+            className="flex flex-wrap items-center gap-2"
+            data-mail-client="dispatch-mailto"
+            onSubmit={(event) => {
+              event.preventDefault()
+              onDispatch(row.id)
+            }}
+          >
+            <Input
+              aria-label={`Adres wysyłki ${row.id}`}
+              placeholder="ops@carrier.example"
+              value={toAddress}
+              onChange={(event) => onToAddress(event.target.value)}
+              required
+            />
+            <Button type="submit">Wyślij w kliencie</Button>
+          </form>
         </li>
       ))}
+      {dispatchHref === "" ? null : (
+        <li>
+          <a className="underline" href={dispatchHref}>
+            Otwórz klienta
+          </a>
+        </li>
+      )}
     </ul>
   )
 }
@@ -131,6 +165,8 @@ function useMailDraftInbox() {
   const ctx = getTenantContext()
   const queryClient = useQueryClient()
   const [draft, setDraft] = useState(EMPTY_MAIL_DRAFT)
+  const [toAddress, setToAddress] = useState("")
+  const [dispatchHref, setDispatchHref] = useState("")
   const sessionReady = Boolean(ctx.organizationId && ctx.userId)
   const listKey = ["mail-drafts", ctx.organizationId] as const
   const query = useQuery({
@@ -149,7 +185,25 @@ function useMailDraftInbox() {
   const decideMutation = useMutation({
     mutationFn: (id: string) => createOperatorDecision(mailDraftDecisionBody(id)),
   })
-  return { draft, setDraft, sessionReady, query, createMutation, decideMutation }
+  const dispatchMutation = useMutation({
+    mutationFn: (id: string) => dispatchMailtoMailDraft(id, toAddress),
+    onSuccess: (sent: MailDraftDispatch) => {
+      setDispatchHref(sent.mailto)
+      void queryClient.invalidateQueries({ queryKey: listKey })
+    },
+  })
+  return {
+    draft,
+    setDraft,
+    toAddress,
+    setToAddress,
+    dispatchHref,
+    sessionReady,
+    query,
+    createMutation,
+    decideMutation,
+    dispatchMutation,
+  }
 }
 
 export function AiCopilotPage() {
@@ -173,9 +227,16 @@ export function AiCopilotPage() {
       />
       {inbox.createMutation.isError ? <CatalogError error={inbox.createMutation.error} /> : null}
       {inbox.decideMutation.isError ? <CatalogError error={inbox.decideMutation.error} /> : null}
+      {inbox.dispatchMutation.isError ? (
+        <CatalogError error={inbox.dispatchMutation.error} />
+      ) : null}
       <StoredMailDraftList
         rows={inbox.query.data ?? []}
         onSubmitDecision={(id) => inbox.decideMutation.mutate(id)}
+        onDispatch={(id) => inbox.dispatchMutation.mutate(id)}
+        dispatchHref={inbox.dispatchHref}
+        toAddress={inbox.toAddress}
+        onToAddress={inbox.setToAddress}
       />
       <p className="text-xs text-muted-foreground">
         Werdykt szkicu jest na <Link className="underline" to="/decisions">/decisions</Link>

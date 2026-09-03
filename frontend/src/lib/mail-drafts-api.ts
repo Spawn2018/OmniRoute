@@ -7,8 +7,17 @@ export type StoredMailDraft = {
   subject_kind: string
   subject_id: string
   body: string
-  status: "draft"
+  status: "draft" | "sent"
+  to_address: string | null
   source_ref: string
+}
+
+export type MailDraftDispatch = {
+  id: string
+  status: "sent"
+  to_address: string
+  mailto: string
+  blocks_auto: boolean | null
 }
 
 export type MailDraftForm = {
@@ -73,4 +82,22 @@ export async function createMailDraft(
     body: JSON.stringify(body),
   })
   return readDraft(response, "Błąd zapisu szkicu maila")
+}
+
+export async function dispatchMailtoMailDraft(
+  draftId: string,
+  toAddress: string,
+): Promise<MailDraftDispatch> {
+  const response = await fetch(`/api/v1/mail-drafts/${draftId}/dispatch-mailto`, {
+    method: "POST",
+    headers: { ...requireAuthHeaders(), "Content-Type": "application/json" },
+    body: JSON.stringify({ to_address: toAddress.trim() }),
+  })
+  if (!response.ok) {
+    throw new ApiError(
+      await readApiDetail(response, "Błąd wysyłki mailto"),
+      httpErrorStatus(response),
+    )
+  }
+  return (await response.json()) as MailDraftDispatch
 }

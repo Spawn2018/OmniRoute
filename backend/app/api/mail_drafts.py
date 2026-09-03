@@ -1,12 +1,16 @@
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, status
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import get_current_identity, require_permission, require_tenant_session
 from app.core.session_token import SessionIdentity
+from app.domain.errors import InvalidMailDraft
+from app.domain.mail_draft import mail_draft_mailto_href
 from app.services.mail_drafts.mail_draft_service import MailDraftService
+from app.services.operator_decisions.operator_decision_service import OperatorDecisionService
+from app.services.parties.party_service import PartyService
 
 router = APIRouter(prefix="/mail-drafts", tags=["mail-drafts"])
 
@@ -21,6 +25,13 @@ class MailDraftCreate(BaseModel):
     source_ref: str
 
 
+class MailDraftDispatch(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    to_address: str = Field(min_length=1, max_length=320)
+    party_id: UUID | None = None
+
+
 class MailDraftResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
@@ -30,7 +41,16 @@ class MailDraftResponse(BaseModel):
     subject_id: UUID
     body: str
     status: str
+    to_address: str | None
     source_ref: str
+
+
+class MailDraftDispatchResponse(BaseModel):
+    id: UUID
+    status: str
+    to_address: str
+    mailto: str
+    blocks_auto: bool | None
 
 
 @router.get("", response_model=list[MailDraftResponse])
@@ -58,3 +78,32 @@ async def create_mail_draft(
     )
     await session.commit()
     return MailDraftResponse.model_validate(row)
+
+
+@router.post("/{draft_id}/dispatch-mailto", response_model=MailDraftDispatchResponse)
+async def dispatch_mail_draft_mailto(
+    draft_id: UUID,
+    body: MailDraftDispatch,
+    _authz: None = Depends(_AUTHZ),
+    session: AsyncSession = Depends(require_tenant_session),
+) -> MailDraftDispatchResponse:
+    drafts = MailDraftService(session)
+    row = await drafts.get_draft(draft_id)
+    accepted = await OperatorDecisionService(session).has_accepted("mail_draft", row.id)
+    if not accepted:
+        raise InvalidMailDraft("szkic bez akceptacji")
+    blocks_auto: bool | None = None
+    if body.party_id is not None:
+        blocks_auto = await PartyService(session).party_blocks_auto(body.party_id)
+    sent = await drafts.mark_sent(row.id, body.to_address)
+    await session.commit()
+    address = sent.to_address
+    if address is None:
+        raise InvalidMailDraft("adres jest obowiązkowy")
+    return MailDraftDispatchResponse(
+        id=sent.id,
+        status=sent.status,
+        to_address=address,
+        mailto=mail_draft_mailto_href(address, sent.body),
+        blocks_auto=blocks_auto,
+    )

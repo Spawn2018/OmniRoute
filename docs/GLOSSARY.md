@@ -36,8 +36,8 @@
 | drobnica morska | ocean_lcl | 44.0 tablica `port` z `is_seaport`; nie tabela LCL; nie CFS |
 | sankcje | sanctions | 45.0 tablica aktywnych `party` (`tax_id`, `country_code`); nie OFAC; nie HTTP |
 | RODO | gdpr | 46.0 tablica `app_user` email; nie wniosek; nie usuwanie |
-| copilot AI | ai_copilot | 47.0 tablica `extraction_draft` pending; 76.0 `mail_draft` obok extract; nie czat; nie send |
-| szkic maila | mail_draft | 76.0 tabela wychodzącego szkicu; accept przez S11; nie inbound; nie send |
+| copilot AI | ai_copilot | 47.0 tablica `extraction_draft` pending; 76.0 `mail_draft` obok extract; 81.0 świadomy mailto; nie czat |
+| szkic maila | mail_draft | 76.0 tabela wychodzącego szkicu; accept przez S11; 81.0 status `sent` + `to_address`; nie inbound |
 | obserwowalność | observability | 48.0 tablica `fetchHealth`; nie OTel; nie k6 |
 | jakość ekstrakcji | extraction_quality | 49.0 tablica `unparsed_regions`; nie scoring; nie tabela QA |
 | wdrożenie tenanta | tenant_rollout | 50.0 tablica `default_currency`; nie tabela rollout; nie upsert |
@@ -74,7 +74,7 @@
 | integracja pocztowa | mail_integration | 25.0 tablica znanych adresów na `/mail`; 64.0 dopina `inbound_message`; nie IMAP |
 | wiadomość przychodząca | inbound_message | 64.0 tabela per tenant; 66.0 treść → extract HITL; 78.0/80.0 ingest `graph://` / `imap://` + `external_id`; 79.0 zdarzenie outbox; nie live skrzynka; nie send; nie blob |
 | zdarzenie outbox | outbox_event | 79.0 tabela per tenant; kind `inbound_message_saved`; nie Temporal; nie konsument |
-| klient poczty | mail_client | 26.0 `mailto:` z `party_contact.email`; nie dodatek Office; nie Graph |
+| klient poczty | mail_client | 26.0 `mailto:` z `party_contact.email`; 81.0 dispatch zaakceptowanego szkicu; nie dodatek Office; nie Graph HTTP |
 | powiadomienie operatora | operator_notice | 27.0 tablica pending; 75.0 tabela inbox; nie filtr wycen; nie wysyłka |
 | narzut | markup | kaskada — Python mały zbiór (DECISIONS) |
 | pieniądze | money | para `amount` + `currency`; nigdy float |

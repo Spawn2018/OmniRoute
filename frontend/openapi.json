@@ -1750,6 +1750,64 @@
         ]
       }
     },
+    "/api/v1/mail-drafts/{draft_id}/dispatch-mailto": {
+      "post": {
+        "tags": [
+          "mail-drafts"
+        ],
+        "summary": "Dispatch Mail Draft Mailto",
+        "operationId": "dispatch_mail_draft_mailto_api_v1_mail_drafts__draft_id__dispatch_mailto_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "draft_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Draft Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MailDraftDispatch"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MailDraftDispatchResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/outbox-events": {
       "get": {
         "tags": [
@@ -6657,6 +6715,75 @@
         ],
         "title": "MailDraftCreate"
       },
+      "MailDraftDispatch": {
+        "properties": {
+          "to_address": {
+            "type": "string",
+            "maxLength": 320,
+            "minLength": 1,
+            "title": "To Address"
+          },
+          "party_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Party Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "to_address"
+        ],
+        "title": "MailDraftDispatch"
+      },
+      "MailDraftDispatchResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "to_address": {
+            "type": "string",
+            "title": "To Address"
+          },
+          "mailto": {
+            "type": "string",
+            "title": "Mailto"
+          },
+          "blocks_auto": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Blocks Auto"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "status",
+          "to_address",
+          "mailto",
+          "blocks_auto"
+        ],
+        "title": "MailDraftDispatchResponse"
+      },
       "MailDraftResponse": {
         "properties": {
           "id": {
@@ -6686,6 +6813,17 @@
             "type": "string",
             "title": "Status"
           },
+          "to_address": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "To Address"
+          },
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
@@ -6699,6 +6837,7 @@
           "subject_id",
           "body",
           "status",
+          "to_address",
           "source_ref"
         ],
         "title": "MailDraftResponse"

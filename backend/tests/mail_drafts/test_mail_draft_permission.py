@@ -22,6 +22,12 @@ _ENDPOINTS = (
             "source_ref": "fixture://mail-draft/1",
         },
     ),
+    (
+        "POST",
+        f"/api/v1/mail-drafts/{uuid4()}/dispatch-mailto",
+        None,
+        {"to_address": "ops@carrier.example"},
+    ),
 )
 
 

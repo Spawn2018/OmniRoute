@@ -5,16 +5,20 @@ import pytest
 from app.domain.errors import InvalidMailDraft, InvalidSourceRef
 from app.domain.mail_draft import (
     mail_draft_extract_kind,
+    mail_draft_mailto_href,
+    mail_draft_sent_status,
     mail_draft_status,
     require_mail_draft_body,
     require_mail_draft_source_ref,
     require_mail_draft_subject_id,
     require_mail_draft_subject_kind,
+    require_mail_draft_to_address,
 )
 
 
 def test_draft_and_extract_constants() -> None:
     assert mail_draft_status() == "draft"
+    assert mail_draft_sent_status() == "sent"
     assert mail_draft_extract_kind() == "extraction_draft"
 
 
@@ -41,3 +45,18 @@ def test_require_body_rejects_blank() -> None:
 def test_require_source_ref_rejects_blank() -> None:
     with pytest.raises(InvalidSourceRef):
         require_mail_draft_source_ref("")
+
+
+def test_require_to_address_normalizes() -> None:
+    assert require_mail_draft_to_address("  Ops@Carrier.Example ") == "ops@carrier.example"
+
+
+def test_require_to_address_rejects_blank() -> None:
+    with pytest.raises(InvalidMailDraft, match="obowiązkowy"):
+        require_mail_draft_to_address("  ")
+
+
+def test_mailto_href_encodes_body() -> None:
+    href = mail_draft_mailto_href("ops@carrier.example", "RFQ Gdynia")
+    assert href.startswith("mailto:ops@carrier.example?body=")
+    assert "RFQ" in href

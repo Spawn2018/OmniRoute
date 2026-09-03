@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** `/plaster` **81.0** — świadomy `mailto:` po S11+S10 (M-33). Auto-send zakazane. Nie Graph HTTP. Nie F9.1.
+**Następny (zablokowany):** `/plan-modul` **S19** — `network_member` (M-12). Nie scraping. Nie F9.1.
 <!-- os-status:end -->
 
 ```mermaid
@@ -386,7 +386,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E2** | Testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy) | 61.0 | zamknięty (`docs/deltas/archived/61.0-alembic-quote-budget.md`) |
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | 62.0 | zamknięty (`docs/deltas/archived/62.0-operator-howto-c4.md`) |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | 63.0 | zamknięty (`docs/deltas/archived/63.0-threat-model-codeql.md`) |
-| po Q-E4 | **Fala S**, S1–S17 zamknięte; S18 plaster 81.0 | Plan → plaster | **następny** |
+| po Q-E4 | **Fala S**, S1–S18 zamknięte; S19 `network_member` | Plan → plaster | **następny** |
 
 ### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
 
@@ -423,8 +423,8 @@ Reguły kolejności (żeby `/noc` nie złożył awarii):
 | **S15** | Żywe **M-32** tylko ingest Graph | 78.0 | zamknięty (`docs/deltas/archived/78.0-graph-ingest.md`) | `graph://` + `external_id`. Live HTTP leftover. Nie send |
 | **S16** | Żywe **M-02** outbox | 79.0 | zamknięty (`docs/deltas/archived/79.0-outbox.md`) | `inbound_message_saved`. Konsument leftover. Nie Temporal |
 | S17 | Żywe **M-32** ingest IMAP / EmailEngine | 80.0 | zamknięty (`docs/deltas/archived/80.0-imap-ingest.md`) | `imap://` + `external_id`. Live leftover. Nie send |
-| **S18** | Żywe **M-33** wysyłka po S11+S10 | 81.0 | **następny** | Świadomy `mailto:` po accept. Nie Graph HTTP. Auto-send zakazane |
-| S19 | Żywe **M-12** `network_member` | Plan → plaster | po S18 | Nie scraping |
+| **S18** | Żywe **M-33** wysyłka po S11+S10 | 81.0 | zamknięty (`docs/deltas/archived/81.0-mail-send.md`) | Świadomy `mailto:` po accept. Graph HTTP leftover. Auto-send zakazane |
+| S19 | Żywe **M-12** `network_member` | Plan → plaster | **następny** | Nie scraping |
 | S20 | Żywe **M-30** zapytanie do agenta | Plan → plaster | po S19 | Buy side |
 | S21 | Żywe **M-19** live HTTP kanału **przy umowie** | Plan → plaster | po S20 | Bez umowy = park, nie teatr HTTP |
 | S22 | Żywe **M-31** porównanie | Plan → plaster | po S21 | Spread w `charge` |

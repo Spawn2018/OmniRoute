@@ -39,7 +39,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-30 | Zapytania do agentów/armatorów | 23.0 `carrier_inquiry` | **ukończony (fundament)** · ślad `channel_quote` przy lane; nie RFQ; nie live HTTP |
 | M-31 | Porównanie odpowiedzi | 24.0 `response_comparison` | **ukończony (fundament)** · zestawienie kwot na POL/POD; nie tabela; nie spread |
 | M-32 | Integracja pocztowa | 64.0 `inbound_message` · 66.0 extract HITL · 78.0 ingest `graph://` · 80.0 ingest `imap://` | **ukończony (fundament)** · tabela wiadomości draft+fixture albo ingest Graph/skrzynka po `external_id` na `/mail`; treść → szkic HITL; nie live skrzynka; nie send; nie blob |
-| M-33 | Dodatek do Outlooka | 26.0 `mail_client` | **ukończony (fundament)** · `mailto:` na `/mail`; nie Office.js; nie Graph |
+| M-33 | Dodatek do Outlooka | 26.0 `mail_client` · 81.0 dispatch `mailto:` | **ukończony (fundament)** · `mailto:` kontaktu na `/mail` + świadoma wysyłka zaakceptowanego szkicu na `/ai`; nie Office.js; nie Graph HTTP |
 | M-34 | Powiadomienia | 27.0 tablica · 75.0 tabela `operator_notice` | **ukończony (fundament)** · inbox zapisany + leftover filtr pending; nie send |
 | M-35 | Zlecenie | 28.0 `shipment` | **ukończony (fundament)** · tablica wycen z `party_id`; nie tabela; nie tracking |
 | M-36 | Tracking | 29.0 `tracking` | **ukończony (fundament)** · tablica lane POL/POD; nie tabela; nie mapa |
@@ -60,7 +60,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-51 | Drobnica morska | 44.0 `ocean_lcl` | **ukończony (fundament)** · tablica portów `is_seaport`; nie tabela LCL; nie CFS |
 | M-53 | Sankcje | 45.0 `sanctions` | **ukończony (fundament)** · tablica aktywnych party tax_id/kraj; nie OFAC; nie HTTP |
 | M-56 | RODO | 46.0 `gdpr` | **ukończony (fundament)** · tablica emaili `app_user`; nie wniosek; nie usuwanie |
-| M-57 | Copilot AI | 47.0 `ai_copilot` · 76.0 `mail_draft` | **ukończony (fundament)** · pending extract + szkic maila; nie czat; nie send |
+| M-57 | Copilot AI | 47.0 `ai_copilot` · 76.0 `mail_draft` | **ukończony (fundament)** · pending extract + szkic maila; 81.0 send na M-33; nie czat |
 | M-68 | Obserwowalność | 48.0 `observability` | **ukończony (fundament)** · tablica `fetchHealth`; nie OTel; nie k6 |
 | M-69 | Jakość | 49.0 `extraction_quality` | **ukończony (fundament)** · tablica `unparsed_regions`; nie scoring; nie tabela QA |
 | M-70 | Wdrożenie | 50.0 `tenant_rollout` | **ukończony (fundament)** · tablica `default_currency`; nie tabela rollout; nie upsert |

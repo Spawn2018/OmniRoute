@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **80.0** S17 ingest IMAP na `inbound_message` (M-32). **Etap:** Plan. **Następny:** `/plaster` **81.0** — świadomy `mailto:` po S11+S10 (M-33). Auto-send zakazane. Nie Graph HTTP. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **81.0** S18 świadomy `mailto:` po S11+S10 (M-33). **Etap:** Plan. **Następny:** `/plan-modul` **S19** — `network_member` (M-12). Nie scraping. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

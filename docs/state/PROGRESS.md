@@ -230,3 +230,4 @@
 | 2026-09-03 | Plan 80.0 | M-32 | S17: ingest IMAP (`imap://`, `external_id`). Delta zaakceptowana (`/noc`). Nie live skrzynka. Następny: `/plaster` 80.0. |
 | 2026-09-03 | 80.0 | M-32 | Ingest `imap://` + `external_id` na `inbound_message`. Ten sam id = ten sam wiersz. Nie live skrzynka. Następny: S18 Plan. |
 | 2026-09-03 | Plan 81.0 | M-33 | S18: świadomy `mailto:` po akceptacji szkicu. Delta zaakceptowana (`/noc`). Nie Graph HTTP. Następny: `/plaster` 81.0. |
+| 2026-09-03 | 81.0 | M-33 | Świadomy `mailto:` po accept szkicu. `blocks_auto` nie blokuje kliknięcia. Nie Graph HTTP. Następny: S19 Plan. |

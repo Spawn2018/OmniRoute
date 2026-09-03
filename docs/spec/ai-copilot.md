@@ -1,8 +1,8 @@
 # M-57 AI — tablica extract pending + szkic maila
 
 **Moduł żywy:** M-57 (token UI `ai_copilot` + tabela `mail_draft`) + M-20 `extraction_draft`  
-**Plaster:** **47.0** tablica · **76.0** `mail_draft`  
-**Status:** operator widzi pending extract i zapisuje wychodzący szkic. Werdykt przez S11. Nie czat. Nie send.
+**Plaster:** **47.0** tablica · **76.0** `mail_draft` · **81.0** świadomy mailto  
+**Status:** operator widzi pending extract, zapisuje szkic, po Akceptuj otwiera klient poczty. Nie czat. Nie Graph HTTP.
 
 Delta: [47.0](../deltas/archived/47.0-ai-copilot.md) · [76.0](../deltas/archived/76.0-mail-draft.md).
 
@@ -30,7 +30,7 @@ Tabela czatu · accept z tej trasy · scoring osoby
 
 ### Poza 76.0
 
-Czat · send · outbox · `changed` · lock S14 · accept extractu 1.3 · F9.1
+Czat · Graph HTTP · outbox · `changed` · lock S14 · accept extractu 1.3 · F9.1
 
 ## HC
 

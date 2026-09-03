@@ -14,7 +14,7 @@ class MailDraft(Base, TimestampMixin):
             "subject_kind = 'extraction_draft'",
             name="ck_mail_draft_subject_kind",
         ),
-        CheckConstraint("status = 'draft'", name="ck_mail_draft_status"),
+        CheckConstraint("status IN ('draft', 'sent')", name="ck_mail_draft_status"),
         Index("ix_mail_draft_org_created", "organization_id", "created_at"),
     )
 
@@ -29,4 +29,5 @@ class MailDraft(Base, TimestampMixin):
     subject_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), nullable=False)
     body: Mapped[str] = mapped_column(String(2048), nullable=False)
     status: Mapped[str] = mapped_column(String(8), nullable=False)
+    to_address: Mapped[str | None] = mapped_column(String(320), nullable=True)
     source_ref: Mapped[str] = mapped_column(String(512), nullable=False)

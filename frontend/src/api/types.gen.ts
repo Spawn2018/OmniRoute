@@ -1101,6 +1101,46 @@ export type MailDraftCreate = {
 };
 
 /**
+ * MailDraftDispatch
+ */
+export type MailDraftDispatch = {
+    /**
+     * To Address
+     */
+    to_address: string;
+    /**
+     * Party Id
+     */
+    party_id?: string | null;
+};
+
+/**
+ * MailDraftDispatchResponse
+ */
+export type MailDraftDispatchResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Status
+     */
+    status: string;
+    /**
+     * To Address
+     */
+    to_address: string;
+    /**
+     * Mailto
+     */
+    mailto: string;
+    /**
+     * Blocks Auto
+     */
+    blocks_auto: boolean | null;
+};
+
+/**
  * MailDraftResponse
  */
 export type MailDraftResponse = {
@@ -1128,6 +1168,10 @@ export type MailDraftResponse = {
      * Status
      */
     status: string;
+    /**
+     * To Address
+     */
+    to_address: string | null;
     /**
      * Source Ref
      */
@@ -3406,6 +3450,36 @@ export type CreateMailDraftApiV1MailDraftsPostResponses = {
 };
 
 export type CreateMailDraftApiV1MailDraftsPostResponse = CreateMailDraftApiV1MailDraftsPostResponses[keyof CreateMailDraftApiV1MailDraftsPostResponses];
+
+export type DispatchMailDraftMailtoApiV1MailDraftsDraftIdDispatchMailtoPostData = {
+    body: MailDraftDispatch;
+    path: {
+        /**
+         * Draft Id
+         */
+        draft_id: string;
+    };
+    query?: never;
+    url: '/api/v1/mail-drafts/{draft_id}/dispatch-mailto';
+};
+
+export type DispatchMailDraftMailtoApiV1MailDraftsDraftIdDispatchMailtoPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type DispatchMailDraftMailtoApiV1MailDraftsDraftIdDispatchMailtoPostError = DispatchMailDraftMailtoApiV1MailDraftsDraftIdDispatchMailtoPostErrors[keyof DispatchMailDraftMailtoApiV1MailDraftsDraftIdDispatchMailtoPostErrors];
+
+export type DispatchMailDraftMailtoApiV1MailDraftsDraftIdDispatchMailtoPostResponses = {
+    /**
+     * Successful Response
+     */
+    200: MailDraftDispatchResponse;
+};
+
+export type DispatchMailDraftMailtoApiV1MailDraftsDraftIdDispatchMailtoPostResponse = DispatchMailDraftMailtoApiV1MailDraftsDraftIdDispatchMailtoPostResponses[keyof DispatchMailDraftMailtoApiV1MailDraftsDraftIdDispatchMailtoPostResponses];
 
 export type ListOutboxEventsApiV1OutboxEventsGetData = {
     body?: never;

@@ -2,13 +2,15 @@ from uuid import UUID, uuid4
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.domain.errors import ResourceNotFound
+from app.domain.errors import InvalidMailDraft, ResourceNotFound
 from app.domain.mail_draft import (
     mail_draft_extract_kind,
+    mail_draft_sent_status,
     mail_draft_status,
     require_mail_draft_body,
     require_mail_draft_source_ref,
     require_mail_draft_subject_id,
+    require_mail_draft_to_address,
 )
 from app.models.mail_draft import MailDraft
 from app.repositories.mail_drafts.mail_draft_repository import MailDraftRepository
@@ -46,4 +48,12 @@ class MailDraftService:
             source_ref=require_mail_draft_source_ref(source_ref),
             created_by=user_id,
         )
+        return await self._rows.add(row)
+
+    async def mark_sent(self, draft_id: UUID, to_address: str) -> MailDraft:
+        row = await self.get_draft(draft_id)
+        if row.status == mail_draft_sent_status():
+            raise InvalidMailDraft("szkic już wysłany")
+        row.to_address = require_mail_draft_to_address(to_address)
+        row.status = mail_draft_sent_status()
         return await self._rows.add(row)

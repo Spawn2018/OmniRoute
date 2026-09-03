@@ -21,6 +21,20 @@ class OperatorDecisionRepository:
         found = await self._session.get(OperatorDecision, decision_id)
         return found if isinstance(found, OperatorDecision) else None
 
+    async def get_accepted(
+        self,
+        subject_kind: str,
+        subject_id: UUID,
+    ) -> OperatorDecision | None:
+        found = await self._session.scalar(
+            select(OperatorDecision).where(
+                OperatorDecision.subject_kind == subject_kind,
+                OperatorDecision.subject_id == subject_id,
+                OperatorDecision.status == "accepted",
+            ),
+        )
+        return found if isinstance(found, OperatorDecision) else None
+
     async def add(self, row: OperatorDecision) -> OperatorDecision:
         self._session.add(row)
         await self._session.flush()

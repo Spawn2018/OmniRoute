@@ -18,16 +18,31 @@ def test_migration_036_creates_mail_draft_and_forces_rls() -> None:
     assert "drop_table" in source.split("def downgrade")[1]
 
 
+def test_migration_041_allows_sent_status() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "041_mail_draft_sent.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "041_mail_draft_sent"' in source
+    assert 'down_revision: str | None = "040_inbound_imap_ingest"' in source
+    assert "to_address" in source
+    assert "sent" in source
+
+
 def test_mail_draft_service_does_not_import_extract_or_inbound() -> None:
     service = (_SERVICES / "mail_drafts" / "mail_draft_service.py").read_text(
         encoding="utf-8",
     )
+    lowered = service.lower()
     assert "app.services.extraction" not in service
     assert "app.services.inbound_messages" not in service
     assert "app.services.quotations" not in service
     assert "app.services.operator_decisions" not in service
+    assert "app.services.parties" not in service
     assert "rate_line" not in service
     assert "amount" not in service
+    assert "smtp" not in lowered
+    assert "graph.microsoft" not in lowered
+    assert "httpx" not in lowered
 
 
 def test_importlinter_lists_mail_drafts_as_independent() -> None:

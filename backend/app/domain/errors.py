@@ -327,7 +327,7 @@ class InvalidOperatorNotice(DomainError):
 
 
 class InvalidMailDraft(DomainError):
-    """Szkic maila: kind, treść albo source_ref — nie czat, nie send."""
+    """Szkic maila: kind, treść, adres albo status — nie czat, nie Graph HTTP."""
 
 
 class InvalidOutboxEvent(DomainError):

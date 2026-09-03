@@ -1,6 +1,6 @@
 # BC mail_draft (M-57)
 
-Szkic wychodzącego maila obok extractu. Nie czat, nie send, nie drugi rate_line.
+Szkic wychodzącego maila obok extractu. Status `sent` po świadomym mailto. Nie czat, nie Graph HTTP, nie drugi rate_line.
 
 ## Dozwolone zależności
 - `app.models.mail_draft`
