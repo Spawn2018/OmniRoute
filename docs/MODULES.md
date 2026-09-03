@@ -12,7 +12,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-01 | Wielodostępność / tenancy | 0.3 RLS + 0.4 OpenFGA + 0.12 JWT + 0.15 hasła | **ukończony (fundament)** · Auth0 I1/I2 **odroczone** (brak tenanta); sesja email+hasło+JWT ≠ IdP |
 | M-20 | Ekstrakcja dokumentów | 0.7–0.14 HITL + T0 + 0.18 live HTTP PG + 1.3 accept→rate_line + U-art50 + U-pdf-spans + 2.1–2.2 · 66.0 z `inbound_message` | **ukończony (fundament)** · HTTP = live PG; ExtractionService nie importuje rates ani inbound |
 | M-02 | Outbox / idempotencja | nie 0.4 | planowany · parked aż **S16** (po Graph ingest); nie startuj przy Q-E |
-| M-03 | Konfiguracja jako dane | 3.0 `organization_setting` · 71.0 prefiks/szablon | **ukończony (fundament)** · allowlista; nie sekrety; nie licznik |
+| M-03 | Konfiguracja jako dane | 3.0 `organization_setting` · 71.0 prefiks/szablon | **ukończony (fundament)** · allowlista; nie sekrety; numer oferty w 72.0 |
 | M-06 | charge_code + aliasy | 1.0 katalog | **ukończony (fundament)** · aliasy na wierszu; nie `rate_line` / `charge` |
 | M-07 | rate_line (stawka kupna) | 1.1 immutable + source_ref | **ukończony (fundament)** · nie `charge` / marża |
 | M-08 | charge (buy+sell, marża) | 1.2 jeden wiersz | **ukończony (fundament)** · nie accept HITL (1.3) |
@@ -32,7 +32,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-15 | Wirtualny Dyrektor Finansowy | 15.0 `finance_board` | **ukończony (fundament)** · tablica odczytu `/finance`; nie silnik AI; LLM nie liczy |
 | M-24 | Ryzyko oferty | 17.0 `offer_risk` | **ukończony (fundament)** · odczyt recenzji i karty przy `/quotations`; nie scoring; nie nowa tabela |
 | M-25 | Negocjacja i wynik | 18.0 `offer_negotiation` | **ukończony (fundament)** · odczyt `channel_quote` przy `/quotations`; nie wynik won/lost; nie spread |
-| M-26 | Dokument oferty | 19.0 `offer_document` | **ukończony (fundament)** · podgląd faktów `quotation`; nie PDF; nie U-print |
+| M-26 | Dokument oferty | 19.0 `offer_document` · 72.0 `document_number` | **ukończony (fundament)** · numer z prefiksu; druk 57.0; nie PDF; nie send |
 | M-27 | Wycena wsadowa | 20.0 `quotation_batch` | **ukończony (fundament)** · wiele kodów na lane; nie CSV; nie nowa tabela |
 | M-28 | Zapytania od klientów | 21.0 `customer_inquiry` · 67.0 `customer_rfq` | **ukończony (fundament)** · ślad wycen + obiekt RFQ; silnik = M-21 68.0; nie IMAP |
 | M-29 | Wykrywanie akceptacji | 22.0 `offer_acceptance` | **ukończony (fundament)** · pending z wycen; nie tabela wyniku; nie HITL accept |

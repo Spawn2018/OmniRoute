@@ -158,6 +158,14 @@ class InvalidQuotationBatch(DomainError):
     """Wycena wsadowa: 1–20 kodów, bez pustego wsadu."""
 
 
+class MissingQuotationPrefix(DomainError):
+    """Nadanie numeru oferty wymaga prefiksu w organization_setting."""
+
+
+class InvalidQuotationDocumentNumber(DomainError):
+    """Prefiks albo numer oferty poza formatem — nie licznik w ustawieniach."""
+
+
 class InvalidOrganizationSetting(DomainError):
     """Ustawienie tenanta poza allowlistą, sekret albo zła wartość."""
 

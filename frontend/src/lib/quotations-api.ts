@@ -14,6 +14,12 @@ export type Quotation = {
   party_id: string | null
   customer_rfq_id: string | null
   commodity_code_id: string | null
+  document_number: string | null
+}
+
+export type QuotationDocumentLayout = {
+  prefix: string | null
+  print_template: string
 }
 
 export type QuotationCreateBody = {
@@ -375,4 +381,25 @@ export async function createQuotationBatch(body: QuotationBatchBody): Promise<Qu
     throw new ApiError(await readApiDetail(response, "Błąd wyceny wsadowej"), httpErrorStatus(response))
   }
   return (await response.json()) as Quotation[]
+}
+
+export async function fetchQuotationDocumentLayout(): Promise<QuotationDocumentLayout> {
+  const response = await fetch("/api/v1/quotations/document-layout", {
+    headers: requireAuthHeaders(),
+  })
+  if (!response.ok) {
+    throw new ApiError(
+      await readApiDetail(response, "Błąd szablonu dokumentu oferty"),
+      httpErrorStatus(response),
+    )
+  }
+  return (await response.json()) as QuotationDocumentLayout
+}
+
+export async function issueQuotationDocumentNumber(quotationId: string): Promise<Quotation> {
+  const response = await fetch(`/api/v1/quotations/${quotationId}/document-number`, {
+    method: "POST",
+    headers: requireAuthHeaders(),
+  })
+  return readQuotation(response, "Błąd nadania numeru oferty")
 }

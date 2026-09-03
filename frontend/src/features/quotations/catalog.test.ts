@@ -34,6 +34,7 @@ function quotationWithCurrency(currency: string): Quotation {
     party_id: null,
     customer_rfq_id: null,
     commodity_code_id: null,
+    document_number: null,
   }
 }
 
@@ -315,6 +316,12 @@ describe("quotation catalog screen", () => {
     expect(page).toContain("Kody wsadowe")
     expect(page).not.toContain(".csv")
     expect(page).toContain('data-offer-document="preview"')
+    expect(page).toContain("data-print-template")
+    expect(page).toContain("Nadaj numer")
+    expect(page).toContain("Drukuj")
+    expect(page).toContain("issueQuotationDocumentNumber")
+    expect(page).toContain("fetchQuotationDocumentLayout")
+    expect(page).toContain("window.print")
     expect(page).toContain('data-customer-inquiry="trail"')
     expect(page).toContain("quotationInquiryTrails")
     expect(page).toContain('data-offer-acceptance="pending"')
@@ -333,7 +340,6 @@ describe("quotation catalog screen", () => {
     expect(page).not.toContain("parseFloat")
     expect(page).not.toContain("risk_score")
     expect(page).not.toContain("won")
-    expect(page).not.toContain("window.print")
     expect(page).not.toContain("jspdf")
     expect(page).not.toContain("html2canvas")
   })

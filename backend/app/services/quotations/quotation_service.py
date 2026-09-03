@@ -8,13 +8,19 @@ from app.domain.errors import (
     DomainError,
     IncompleteQuotationSnapshot,
     InvalidCustomerRfq,
+    InvalidQuotationDocumentNumber,
     QuotationGap,
+    ResourceNotFound,
     UnknownChargeCode,
     UnknownCommodityCode,
     UnknownParty,
     UnknownPort,
 )
-from app.domain.quotation import require_batch_charge_codes, require_lane_party_snapshot
+from app.domain.quotation import (
+    require_batch_charge_codes,
+    require_document_number_prefix,
+    require_lane_party_snapshot,
+)
 from app.models.charge_code import ChargeCode
 from app.models.quotation import Quotation
 from app.repositories.charge_codes.charge_code_repository import ChargeCodeRepository
@@ -33,6 +39,8 @@ def _snapshot_integrity_error(exc: IntegrityError) -> DomainError | None:
         return InvalidCustomerRfq("nieznane zapytanie ofertowe wyceny")
     if "fk_quotation_commodity_code" in detail:
         return UnknownCommodityCode("nieznany kod towarowy wyceny")
+    if "uq_quotation_org_document_number" in detail:
+        return InvalidQuotationDocumentNumber("numer oferty już zajęty")
     return None
 
 
@@ -123,6 +131,43 @@ class QuotationService:
                 )
             )
         return quoted
+
+    async def issue_document_number(
+        self,
+        *,
+        quotation_id: UUID,
+        prefix: str | None,
+    ) -> Quotation:
+        token = require_document_number_prefix(prefix)
+        current = await self._quotations.get(quotation_id)
+        if current is None:
+            raise ResourceNotFound("nieznana wycena")
+        if current.document_number is not None:
+            return current
+        return await self._assign_document_number(quotation_id, token)
+
+    async def _assign_document_number(self, quotation_id: UUID, prefix: str) -> Quotation:
+        try:
+            issued = await self._quotations.issue_document_number(
+                quotation_id=quotation_id,
+                prefix=prefix,
+            )
+        except IntegrityError as exc:
+            mapped = _snapshot_integrity_error(exc)
+            if mapped is not None:
+                raise mapped from exc
+            return await self._reload_issued(quotation_id)
+        if issued is None:
+            return await self._reload_issued(quotation_id)
+        return issued
+
+    async def _reload_issued(self, quotation_id: UUID) -> Quotation:
+        again = await self._quotations.get(quotation_id)
+        if again is None:
+            raise ResourceNotFound("nieznana wycena")
+        if again.document_number is not None:
+            return again
+        raise InvalidQuotationDocumentNumber("nie udało się nadać numeru oferty")
 
     async def _require_catalog(self, charge_code: str) -> ChargeCode:
         token = normalize_charge_code(charge_code)

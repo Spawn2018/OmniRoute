@@ -16,6 +16,10 @@ class OrganizationSettingService:
     async def list_settings(self) -> list[OrganizationSetting]:
         return await self._settings.list_all()
 
+    async def get_setting(self, setting_key: str) -> OrganizationSetting | None:
+        token = normalize_setting_key(setting_key)
+        return await self._settings.find_by_key(token)
+
     async def upsert_setting(
         self,
         *,

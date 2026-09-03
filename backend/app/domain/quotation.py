@@ -1,7 +1,12 @@
 from uuid import UUID
 
 from app.domain.charge_code import normalize_aliases
-from app.domain.errors import IncompleteQuotationSnapshot, InvalidQuotationBatch
+from app.domain.errors import (
+    IncompleteQuotationSnapshot,
+    InvalidQuotationBatch,
+    InvalidQuotationDocumentNumber,
+    MissingQuotationPrefix,
+)
 
 _BATCH_CHARGE_CODE_LIMIT = 20
 
@@ -27,4 +32,23 @@ def require_batch_charge_codes(raw: list[str]) -> list[str]:
     if len(tokens) > _BATCH_CHARGE_CODE_LIMIT:
         raise InvalidQuotationBatch("wycena wsadowa: max 20 kodów")
     return tokens
+
+
+def require_document_number_prefix(raw: str | None) -> str:
+    if raw is None:
+        raise MissingQuotationPrefix("nadanie numeru wymaga prefiksu w ustawieniach")
+    token = raw.strip()
+    if token == "":
+        raise MissingQuotationPrefix("nadanie numeru wymaga prefiksu w ustawieniach")
+    return token
+
+
+def format_quotation_document_number(prefix: str, sequence: int) -> str:
+    token = require_document_number_prefix(prefix)
+    if sequence < 1:
+        raise InvalidQuotationDocumentNumber("numer oferty liczy Postgres od 1")
+    rendered = f"{token}{sequence:04d}"
+    if len(rendered) > 32:
+        raise InvalidQuotationDocumentNumber("numer oferty: max 32 znaki")
+    return rendered
 

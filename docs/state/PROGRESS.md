@@ -212,3 +212,4 @@
 | 2026-09-03 | Plan 71.0 | M-03 | S8: prefiks numeru i token szablonu w `organization_setting`. Delta zaakceptowana (`/noc`). Następny: `/plaster` 71.0. |
 | 2026-09-03 | 71.0 | M-03 | Prefiks i token szablonu w allowliście. Nie licznik. Nie PDF. Następny: S9 Plan. |
 | 2026-09-03 | Plan 72.0 | M-26 | S9: numer na dokumencie oferty + print 57.0. Delta zaakceptowana (`/noc`). Nie send. Następny: `/plaster` 72.0. |
+| 2026-09-03 | 72.0 | M-26 | `document_number` z prefiksu w SQL. Druk 57.0. Nie send. Nie PDF. Następny: S10 Plan. |

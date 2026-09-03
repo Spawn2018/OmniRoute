@@ -35,7 +35,32 @@ LIMIT 1
 RETURNING id, organization_id, charge_code, rate_line_id,
           amount, currency, source_ref, created_by,
           origin_port_id, destination_port_id, party_id, customer_rfq_id,
-          commodity_code_id
+          commodity_code_id, document_number
+"""
+
+ISSUE_DOCUMENT_NUMBER_SQL = """
+UPDATE quotation AS target
+SET document_number = :prefix || LPAD(nxt.seq::text, 4, '0')
+FROM (
+    SELECT COALESCE(
+        MAX(
+            CAST(
+                SUBSTRING(document_number FROM (LENGTH(:prefix) + 1)) AS INTEGER
+            )
+        ),
+        0
+    ) + 1 AS seq
+    FROM quotation
+    WHERE document_number IS NOT NULL
+      AND LENGTH(document_number) = LENGTH(:prefix) + 4
+      AND document_number LIKE :prefix || '%'
+) AS nxt
+WHERE target.id = :qid
+  AND target.document_number IS NULL
+RETURNING target.id, target.organization_id, target.charge_code, target.rate_line_id,
+          target.amount, target.currency, target.source_ref, target.created_by,
+          target.origin_port_id, target.destination_port_id, target.party_id,
+          target.customer_rfq_id, target.commodity_code_id, target.document_number
 """
 
 
@@ -54,6 +79,7 @@ def quotation_from_insert_row(row: RowMapping) -> Quotation:
         party_id=row["party_id"],
         customer_rfq_id=row.get("customer_rfq_id"),
         commodity_code_id=row.get("commodity_code_id"),
+        document_number=row.get("document_number"),
     )
 
 
@@ -112,3 +138,26 @@ class QuotationRepository:
         if row is None:
             return None
         return quotation_from_insert_row(row)
+
+    async def get(self, quotation_id: UUID) -> Quotation | None:
+        found = await self._session.get(Quotation, quotation_id, populate_existing=True)
+        return found if isinstance(found, Quotation) else None
+
+    async def issue_document_number(
+        self,
+        *,
+        quotation_id: UUID,
+        prefix: str,
+    ) -> Quotation | None:
+        result = await self._session.execute(
+            text(ISSUE_DOCUMENT_NUMBER_SQL),
+            {"qid": quotation_id, "prefix": prefix},
+        )
+        row = result.mappings().first()
+        if row is None:
+            return None
+        cached = await self._session.get(Quotation, quotation_id)
+        if cached is None:
+            return quotation_from_insert_row(row)
+        cached.document_number = row["document_number"]
+        return cached

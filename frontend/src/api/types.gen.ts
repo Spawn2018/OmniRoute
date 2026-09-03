@@ -1537,6 +1537,20 @@ export type QuotationCreate = {
 };
 
 /**
+ * QuotationDocumentLayout
+ */
+export type QuotationDocumentLayout = {
+    /**
+     * Prefix
+     */
+    prefix: string | null;
+    /**
+     * Print Template
+     */
+    print_template: string;
+};
+
+/**
  * QuotationResponse
  */
 export type QuotationResponse = {
@@ -1588,6 +1602,10 @@ export type QuotationResponse = {
      * Commodity Code Id
      */
     commodity_code_id: string | null;
+    /**
+     * Document Number
+     */
+    document_number: string | null;
 };
 
 /**
@@ -3231,6 +3249,52 @@ export type CreateQuotationBatchApiV1QuotationsBatchPostResponses = {
 };
 
 export type CreateQuotationBatchApiV1QuotationsBatchPostResponse = CreateQuotationBatchApiV1QuotationsBatchPostResponses[keyof CreateQuotationBatchApiV1QuotationsBatchPostResponses];
+
+export type QuotationDocumentLayoutApiV1QuotationsDocumentLayoutGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/quotations/document-layout';
+};
+
+export type QuotationDocumentLayoutApiV1QuotationsDocumentLayoutGetResponses = {
+    /**
+     * Successful Response
+     */
+    200: QuotationDocumentLayout;
+};
+
+export type QuotationDocumentLayoutApiV1QuotationsDocumentLayoutGetResponse = QuotationDocumentLayoutApiV1QuotationsDocumentLayoutGetResponses[keyof QuotationDocumentLayoutApiV1QuotationsDocumentLayoutGetResponses];
+
+export type IssueQuotationDocumentNumberApiV1QuotationsQuotationIdDocumentNumberPostData = {
+    body?: never;
+    path: {
+        /**
+         * Quotation Id
+         */
+        quotation_id: string;
+    };
+    query?: never;
+    url: '/api/v1/quotations/{quotation_id}/document-number';
+};
+
+export type IssueQuotationDocumentNumberApiV1QuotationsQuotationIdDocumentNumberPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type IssueQuotationDocumentNumberApiV1QuotationsQuotationIdDocumentNumberPostError = IssueQuotationDocumentNumberApiV1QuotationsQuotationIdDocumentNumberPostErrors[keyof IssueQuotationDocumentNumberApiV1QuotationsQuotationIdDocumentNumberPostErrors];
+
+export type IssueQuotationDocumentNumberApiV1QuotationsQuotationIdDocumentNumberPostResponses = {
+    /**
+     * Successful Response
+     */
+    200: QuotationResponse;
+};
+
+export type IssueQuotationDocumentNumberApiV1QuotationsQuotationIdDocumentNumberPostResponse = IssueQuotationDocumentNumberApiV1QuotationsQuotationIdDocumentNumberPostResponses[keyof IssueQuotationDocumentNumberApiV1QuotationsQuotationIdDocumentNumberPostResponses];
 
 export type ListOrganizationSettingsApiV1OrganizationSettingsGetData = {
     body?: never;

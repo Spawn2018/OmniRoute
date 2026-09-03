@@ -23,6 +23,7 @@ function quotation(partyId: string | null): Quotation {
     party_id: partyId,
     customer_rfq_id: null,
     commodity_code_id: null,
+    document_number: null,
   }
 }
 

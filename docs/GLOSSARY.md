@@ -63,7 +63,7 @@
 | kurs NBP | nbp_rate | D-1 roboczy; 16.0 odczyt przy wycenie; nie drugi katalog; nie mnożenie kwoty |
 | ryzyko oferty | offer_risk | 17.0 odczyt recenzji i karty przy wycenie; nie tabela; nie scoring |
 | negocjacja oferty | offer_negotiation | 18.0 odczyt `channel_quote` przy wycenie; nie tabela wyniku; nie spread w JS |
-| dokument oferty | offer_document | 19.0 podgląd faktów `quotation`; nie PDF; nie U-print |
+| dokument oferty | offer_document | 19.0 podgląd; 72.0 `document_number` + druk 57.0; nie PDF; nie send |
 | wycena wsadowa | quotation_batch | 20.0 wiele kodów na jednej lane; nie CSV; nie nowa tabela |
 | zapytanie od klienta | customer_inquiry | 21.0 ślad wycen per party; nie tabela RFQ; nie IMAP |
 | zapytanie ofertowe | customer_rfq | 67.0 obiekt; 68.0 wycena; 70.0 `commodity_code_id`; nie kwota na RFQ |

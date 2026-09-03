@@ -19,7 +19,9 @@ import { fetchPorts } from "@/lib/ports-api"
 import {
   createQuotation,
   createQuotationBatch,
+  fetchQuotationDocumentLayout,
   fetchQuotations,
+  issueQuotationDocumentNumber,
   quotationBatchBody,
   quotationCreateBody,
   quotationCurrencies,
@@ -347,14 +349,100 @@ function OfferNegotiationPanel(args: { lanes: QuotationLane[]; signedIn: boolean
   )
 }
 
+function printOfferDocument() {
+  window.print()
+}
+
+function OfferDocumentFacts(args: { selected: Quotation }) {
+  const selected = args.selected
+  return (
+    <dl className="grid gap-1 text-xs">
+      <div>
+        <dt className="text-muted-foreground">Numer oferty</dt>
+        <dd className="font-mono">{selected.document_number ?? "—"}</dd>
+      </div>
+      <div>
+        <dt className="text-muted-foreground">Kod opłaty</dt>
+        <dd>{selected.charge_code}</dd>
+      </div>
+      <div>
+        <dt className="text-muted-foreground">Kwota ze stawki</dt>
+        <dd>
+          <Money amount={selected.amount} currency={selected.currency} />
+        </dd>
+      </div>
+      <div>
+        <dt className="text-muted-foreground">party_id</dt>
+        <dd className="font-mono">{selected.party_id ?? "—"}</dd>
+      </div>
+      <div>
+        <dt className="text-muted-foreground">origin_port_id</dt>
+        <dd className="font-mono">{selected.origin_port_id ?? "—"}</dd>
+      </div>
+      <div>
+        <dt className="text-muted-foreground">destination_port_id</dt>
+        <dd className="font-mono">{selected.destination_port_id ?? "—"}</dd>
+      </div>
+      <div>
+        <dt className="text-muted-foreground">source_ref</dt>
+        <dd>{selected.source_ref}</dd>
+      </div>
+    </dl>
+  )
+}
+
+function OfferDocumentActions(args: {
+  quoteId: string
+  numbered: string | null
+  pending: boolean
+  error: string | null
+  onIssue: () => void
+}) {
+  return (
+    <div className="flex flex-wrap gap-2">
+      <Button
+        type="button"
+        size="sm"
+        disabled={args.quoteId === "" || args.numbered !== null || args.pending}
+        onClick={args.onIssue}
+      >
+        Nadaj numer
+      </Button>
+      <Button type="button" size="sm" variant="outline" onClick={printOfferDocument}>
+        Drukuj
+      </Button>
+      {args.error ? <p className="text-sm text-destructive">{args.error}</p> : null}
+    </div>
+  )
+}
+
 function OfferDocumentPanel(args: { rows: Quotation[] }) {
+  const ctx = getTenantContext()
+  const queryClient = useQueryClient()
   const [quoteId, setQuoteId] = useState("")
   const selected = args.rows.find((row) => row.id === quoteId)
-
+  const layout = useQuery({
+    queryKey: ["quotation-document-layout", ctx.organizationId],
+    queryFn: fetchQuotationDocumentLayout,
+    enabled: Boolean(ctx.organizationId),
+  })
+  const issue = useMutation({
+    mutationFn: issueQuotationDocumentNumber,
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: ["quotations", ctx.organizationId] })
+    },
+  })
+  const printTemplate = layout.data?.print_template ?? "plain"
   return (
-    <article className="space-y-2 p-3 outline outline-1 outline-border" data-offer-document="preview">
+    <article
+      className="space-y-2 p-3 outline outline-1 outline-border"
+      data-offer-document="preview"
+      data-print-template={printTemplate}
+    >
       <h3 className="text-sm font-medium">Dokument oferty</h3>
-      <p className="text-xs text-muted-foreground">fakty z quotation · nie PDF · nie szablon FV</p>
+      <p className="text-xs text-muted-foreground">
+        fakty z quotation · numer z prefiksu · druk 57.0 · nie PDF
+      </p>
       {args.rows.length === 0 ? (
         <p className="text-sm text-muted-foreground">Najpierw wycena — dokument z wiersza.</p>
       ) : (
@@ -369,42 +457,20 @@ function OfferDocumentPanel(args: { rows: Quotation[] }) {
             <option value="">Wybierz wycenę</option>
             {args.rows.map((row) => (
               <option key={row.id} value={row.id}>
-                {row.charge_code} {row.id}
+                {row.document_number ?? row.charge_code} {row.id}
               </option>
             ))}
           </select>
         </label>
       )}
-      {selected ? (
-        <dl className="grid gap-1 text-xs">
-          <div>
-            <dt className="text-muted-foreground">Kod opłaty</dt>
-            <dd>{selected.charge_code}</dd>
-          </div>
-          <div>
-            <dt className="text-muted-foreground">Kwota ze stawki</dt>
-            <dd>
-              <Money amount={selected.amount} currency={selected.currency} />
-            </dd>
-          </div>
-          <div>
-            <dt className="text-muted-foreground">party_id</dt>
-            <dd className="font-mono">{selected.party_id ?? "—"}</dd>
-          </div>
-          <div>
-            <dt className="text-muted-foreground">origin_port_id</dt>
-            <dd className="font-mono">{selected.origin_port_id ?? "—"}</dd>
-          </div>
-          <div>
-            <dt className="text-muted-foreground">destination_port_id</dt>
-            <dd className="font-mono">{selected.destination_port_id ?? "—"}</dd>
-          </div>
-          <div>
-            <dt className="text-muted-foreground">source_ref</dt>
-            <dd>{selected.source_ref}</dd>
-          </div>
-        </dl>
-      ) : null}
+      {selected ? <OfferDocumentFacts selected={selected} /> : null}
+      <OfferDocumentActions
+        quoteId={quoteId}
+        numbered={selected?.document_number ?? null}
+        pending={issue.isPending}
+        error={issue.isError ? (issue.error as Error).message : null}
+        onIssue={() => issue.mutate(quoteId)}
+      />
     </article>
   )
 }

@@ -12,6 +12,9 @@ from app.models.customer_rfq import CustomerRfq
 from app.models.quotation import Quotation
 from app.services.commodity_codes.commodity_code_service import CommodityCodeService
 from app.services.customer_rfqs.customer_rfq_service import CustomerRfqService
+from app.services.organization_settings.organization_setting_service import (
+    OrganizationSettingService,
+)
 from app.services.quotations.quotation_service import QuotationService
 
 router = APIRouter(prefix="/quotations", tags=["quotations"])
@@ -52,6 +55,7 @@ class QuotationResponse(BaseModel):
     party_id: UUID | None
     customer_rfq_id: UUID | None
     commodity_code_id: UUID | None
+    document_number: str | None
 
     @classmethod
     def from_row(cls, row: Quotation) -> "QuotationResponse":
@@ -70,7 +74,13 @@ class QuotationResponse(BaseModel):
             party_id=row.party_id,
             customer_rfq_id=row.customer_rfq_id,
             commodity_code_id=row.commodity_code_id,
+            document_number=row.document_number,
         )
+
+
+class QuotationDocumentLayout(BaseModel):
+    prefix: str | None
+    print_template: str
 
 
 async def _loaded_quote_rfq(
@@ -165,3 +175,42 @@ async def create_quotation_batch(
     )
     await session.commit()
     return [QuotationResponse.from_row(row) for row in rows]
+
+
+async def _quotation_prefix(session: AsyncSession) -> str | None:
+    row = await OrganizationSettingService(session).get_setting("quotation_number_prefix")
+    if row is None:
+        return None
+    return row.setting_value
+
+
+async def _quotation_print_template(session: AsyncSession) -> str:
+    row = await OrganizationSettingService(session).get_setting("quotation_print_template")
+    if row is None:
+        return "plain"
+    return row.setting_value
+
+
+@router.get("/document-layout", response_model=QuotationDocumentLayout)
+async def quotation_document_layout(
+    _authz: None = Depends(require_permission("can_manage_quotations", "organization")),
+    session: AsyncSession = Depends(require_tenant_session),
+) -> QuotationDocumentLayout:
+    return QuotationDocumentLayout(
+        prefix=await _quotation_prefix(session),
+        print_template=await _quotation_print_template(session),
+    )
+
+
+@router.post("/{quotation_id}/document-number", response_model=QuotationResponse)
+async def issue_quotation_document_number(
+    quotation_id: UUID,
+    _authz: None = Depends(require_permission("can_manage_quotations", "organization")),
+    session: AsyncSession = Depends(require_tenant_session),
+) -> QuotationResponse:
+    row = await QuotationService(session).issue_document_number(
+        quotation_id=quotation_id,
+        prefix=await _quotation_prefix(session),
+    )
+    await session.commit()
+    return QuotationResponse.from_row(row)

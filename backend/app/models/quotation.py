@@ -9,6 +9,7 @@ from sqlalchemy import (
     Index,
     Numeric,
     String,
+    text,
 )
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
@@ -60,6 +61,13 @@ class Quotation(Base, TimestampMixin):
         Index("ix_quotation_org_commodity_code_id", "organization_id", "commodity_code_id"),
         Index("ix_quotation_org_origin_port_id", "organization_id", "origin_port_id"),
         Index("ix_quotation_org_destination_port_id", "organization_id", "destination_port_id"),
+        Index(
+            "uq_quotation_org_document_number",
+            "organization_id",
+            "document_number",
+            unique=True,
+            postgresql_where=text("document_number IS NOT NULL"),
+        ),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
@@ -86,3 +94,4 @@ class Quotation(Base, TimestampMixin):
         UUID(as_uuid=True),
         nullable=True,
     )
+    document_number: Mapped[str | None] = mapped_column(String(32), nullable=True)

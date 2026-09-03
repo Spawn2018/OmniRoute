@@ -134,6 +134,14 @@ async def test_upsert_stores_prefix_and_template() -> None:
     assert template.setting_value == "plain"
 
 
+@pytest.mark.asyncio
+async def test_get_setting_returns_none_when_missing() -> None:
+    session = AsyncMock()
+    session.scalar = AsyncMock(return_value=None)
+    found = await OrganizationSettingService(session).get_setting("quotation_number_prefix")
+    assert found is None
+
+
 def test_settings_and_quote_services_stay_apart() -> None:
     root = Path(__file__).resolve().parents[2]
     settings = (
