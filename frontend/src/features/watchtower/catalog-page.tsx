@@ -7,6 +7,7 @@ import {
   TenantSessionNotice,
 } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
+import { fetchMailDrafts, type StoredMailDraft } from "@/lib/mail-drafts-api"
 import {
   fetchOperationalExceptions,
   type OperationalException,
@@ -77,6 +78,21 @@ function ExceptionSection(args: { rows: OperationalException[] | undefined }) {
   )
 }
 
+function DraftSection(args: { rows: StoredMailDraft[] | undefined }) {
+  return (
+    <section className="rounded-md border border-border bg-card p-3" data-watchtower="drafts">
+      <h2 className="mb-2 text-sm font-medium">Szkice maila</h2>
+      <ol className="list-decimal pl-5 text-xs">
+        {(args.rows ?? []).map((row) => (
+          <li key={row.id}>
+            {row.status} · {row.subject_kind} · {row.source_ref}
+          </li>
+        ))}
+      </ol>
+    </section>
+  )
+}
+
 function PendingSection(args: {
   rows: OperatorDecision[] | undefined
   onDecide: (id: string, status: "accepted" | "rejected", lockVersion: number) => void
@@ -107,6 +123,12 @@ function useWatchtowerQueries() {
     enabled: ready,
     retry: false,
   })
+  const drafts = useQuery({
+    queryKey: ["mail-drafts", ctx.organizationId],
+    queryFn: fetchMailDrafts,
+    enabled: ready,
+    retry: false,
+  })
   const decide = useMutation({
     mutationFn: (input: { id: string; status: "accepted" | "rejected"; lockVersion: number }) =>
       decideOperatorDecision(input.id, input.status, input.lockVersion),
@@ -114,7 +136,7 @@ function useWatchtowerQueries() {
       void client.invalidateQueries({ queryKey: ["operator-decisions", ctx.organizationId] })
     },
   })
-  return { ready, exceptions, decisions, decide }
+  return { ready, exceptions, decisions, drafts, decide }
 }
 
 export function WatchtowerPage() {
@@ -123,11 +145,12 @@ export function WatchtowerPage() {
     <div className="flex flex-col gap-4" data-watchtower="board">
       <CatalogHeading
         title="Wieża"
-        subtitle="watchtower · wyjątki i pending S11 · leniwy panel mapy · nie kafelki"
+        subtitle="watchtower · wyjątki, pending S11 i szkice mail_draft · leniwy panel mapy · nie czat"
       />
       {!queries.ready ? <TenantSessionNotice /> : null}
       {queries.exceptions.isError ? <CatalogError error={queries.exceptions.error} /> : null}
       {queries.decisions.isError ? <CatalogError error={queries.decisions.error} /> : null}
+      {queries.drafts.isError ? <CatalogError error={queries.drafts.error} /> : null}
       {queries.decide.isError ? <CatalogError error={queries.decide.error} /> : null}
       <p className="text-sm">
         HITL extract zostaje na{" "}
@@ -142,6 +165,7 @@ export function WatchtowerPage() {
           queries.decide.mutate({ id, status, lockVersion })
         }
       />
+      <DraftSection rows={queries.drafts.data} />
       <MapGate />
     </div>
   )

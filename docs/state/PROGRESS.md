@@ -299,3 +299,4 @@
 | 2026-09-04 | 114.0 | M-54 | Tabela flagi oszustwa na kontrahencie. Nie scoring osoby. Nie kwota. Następny: S54 Plan (S53 Auth0 parked). |
 | 2026-09-04 | Plan 115.0 | M-76 | S54 status klienta named park — brak Auth0 S53. Zero kodu. Następny: S56 Plan. |
 | 2026-09-04 | Plan 116.0 | M-57 | S56: szkice `mail_draft` na wieży. Delta zaakceptowana (`/noc`). Nie czat. Następny: `/plaster` 116.0. |
+| 2026-09-04 | 116.0 | M-57 | Wieża czyta `mail_draft`. Zapis zostaje na `/ai`. Nie czat. Następny: S57 Plan. |

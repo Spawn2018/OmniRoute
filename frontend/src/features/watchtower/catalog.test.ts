@@ -45,4 +45,17 @@ describe("watchtower surface for 94.0", () => {
     expect(panel).not.toContain("leaflet")
     expect(panel).not.toContain("mapbox")
   })
+
+  it("lists mail drafts from GET without a write path or map library", () => {
+    const page = readSource("features/watchtower/catalog-page.tsx")
+    const ops = readSource("features/ops/ops-index.ts")
+    expect(ops).toContain('"116.0": "/watchtower"')
+    expect(page).toContain('data-watchtower="drafts"')
+    expect(page).toContain("fetchMailDrafts")
+    expect(page).toContain('to="/ai"')
+    expect(page).not.toContain("createMailDraft")
+    expect(page).not.toContain("prompt_log")
+    expect(page).not.toContain("leaflet")
+    expect(page).not.toContain("mapbox")
+  })
 })

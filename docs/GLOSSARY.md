@@ -20,7 +20,7 @@
 | zlecenie | shipment | 90.0 tabela z wyceny z `party_id`; nie tracking |
 | śledzenie | tracking | 91.0 `tracking_event` na zleceniu; nie AIS; nie mapa |
 | wyjątek operacyjny | operational_exception | 93.0 tabela na zleceniu; nie AIS; nie mapa; nie `party_charge_override` |
-| wieża | watchtower | 94.0 tablica wyjątków + pending S11 + leniwy panel mapy; nie leaflet; nie AIS; nie nowy M-xx |
+| wieża | watchtower | 94.0 wyjątki + pending S11 + leniwy panel mapy; 116.0 odczyt `mail_draft`; nie leaflet; nie czat |
 | dokument zlecenia | shipment_document | 92.0 tabela na zleceniu; nie bajty; nie PDF; nie HBL |
 | komunikat EDI | edi_message | 95.0 tabela na zleceniu; 32.0 leftover tablica kanału; nie parser; nie live HTTP |
 | faktura sprzedaży | sales_invoice | 96.0 tabela na zleceniu; 97.0 `ksef_ref` wpisany; nie live HTTP; nie druga marża |
@@ -42,7 +42,7 @@
 | sankcje | sanctions | 45.0 tablica aktywnych `party`; 89.0 sprawdzenie `sanctions_list_ref` na karcie; nie auto-match; nie live lista |
 | RODO | gdpr | 46.0 tablica `app_user` email; 107.0 wniosek `gdpr_request`; nie DPIA |
 | wniosek RODO | gdpr_request | 107.0 tabela access/erasure; erasure = tombstone konta; nie DELETE `app_user` |
-| copilot AI | ai_copilot | 47.0 tablica `extraction_draft` pending; 76.0 `mail_draft` obok extract; 81.0 świadomy mailto; nie czat |
+| copilot AI | ai_copilot | 47.0 tablica `extraction_draft` pending; 76.0 `mail_draft` obok extract; 81.0 świadomy mailto; 116.0 wieża czyta szkice; nie czat |
 | szkic maila | mail_draft | 76.0 tabela wychodzącego szkicu; accept przez S11; 81.0 status `sent` + `to_address`; nie inbound |
 | obserwowalność | observability | 48.0 tablica `fetchHealth`; nie OTel; nie k6 |
 | jakość ekstrakcji | extraction_quality | 49.0 tablica `unparsed_regions`; nie scoring; nie tabela QA |
