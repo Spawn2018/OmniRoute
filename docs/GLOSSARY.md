@@ -32,7 +32,8 @@
 | koszt obsługi klienta | cost_to_serve | 103.0 tabela pary SOP+wycena; nie kwota; nie suma |
 | księgowość | bookkeeping | 104.0 tabela pary opłata+faktura; nie kwota; nie JPK |
 | zbiorcza faktura | collective_invoice | 105.0 tabela pary faktura+dodatkowe zlecenie; nie kwota; nie płatność paczką |
-| transport drogowy | road_transport | 41.0 tablica `location` `postal_zone`/`address`; nie TMS; nie GPS |
+| transport drogowy | road_transport | 41.0 tablica `location` lądowa; 108.0 odcinek `shipment_leg` road; nie TMS; nie GPS |
+| odcinek | shipment_leg | 108.0 tabela nogi na zleceniu (`leg_kind=road`); nie mapa; nie ETA |
 | kolej intermodalna | intermodal_rail | 42.0 tablica `port` z flagą `rail`; nie wagon; nie CIM |
 | kolej z Chin | china_rail | 43.0 tablica `port` CN z flagą `rail`; nie korytarz; nie HTTP |
 | drobnica morska | ocean_lcl | 44.0 tablica `port` z `is_seaport`; nie tabela LCL; nie CFS |
@@ -50,7 +51,6 @@
 | komunikat UI | ui_message | 55.0 klucz i18n w katalogu `pl`; nie drugi język |
 | ścieżka E2E axe | e2e_axe_route | 56.0 Playwright + axe na trasie; nie live accept |
 | arkusz druku | print_sheet | 57.0 `@media print` chowa chrome; nie PDF |
-| odcinek | shipment_leg | operacyjne; nie w 29.0 |
 | tenant | organization | organization_id wszędzie |
 | ustawienie tenanta | organization_setting | 3.0 waluta; 71.0 prefiks i token szablonu; nie sekret; nie licznik |
 | token sesji | session token | JWT HS256; claims `sub` + `org` |
