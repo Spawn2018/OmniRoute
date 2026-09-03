@@ -30,6 +30,7 @@ const NAV = [
   { to: "/shipments", label: "Zlecenia" },
   { to: "/tracking", label: "Tracking" },
   { to: "/exceptions", label: "Wyjątki" },
+  { to: "/watchtower", label: "Wieża" },
   { to: "/shipment-documents", label: "Dokumenty zlecenia" },
   { to: "/edi", label: "EDI" },
   { to: "/charge-codes", label: "Kody opłat" },

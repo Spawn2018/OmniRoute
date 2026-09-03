@@ -129,6 +129,11 @@ export const OPS_JOBS = [
     job: "wyceny z party bez pełnego POL/POD",
   },
   {
+    route: BUSINESS_LISTS.watchtower.route,
+    label: "Wieża",
+    job: "wyjątki i pending S11 plus leniwy panel mapy",
+  },
+  {
     route: BUSINESS_LISTS.shipmentDocument.route,
     label: "Dokumenty zlecenia",
     job: "source_ref wycen z party_id",
@@ -300,6 +305,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "91.0": "/tracking",
   "92.0": "/shipment-documents",
   "93.0": "/exceptions",
+  "94.0": "/watchtower",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

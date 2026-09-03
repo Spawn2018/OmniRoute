@@ -1,0 +1,12 @@
+# Wieża
+
+Wieża składa dwa już istniejące joby na jednym ekranie `/watchtower`. Nie ma nowej tabeli.
+
+1. Lista wyjątków to te same wiersze co na `/exceptions`. Zapisu wyjątku tu nie ma — idź na wyjątki.
+2. Pending S11 to decyzje ze statusem `pending`. Akceptuj albo Odrzuć woła to samo API co `/decisions`, z `lock_version`. Dwa okna, dwa kliknięcia: drugi dostaje konflikt.
+3. HITL extract zostaje na `/ai`. Wieża tylko linkuje, nie robi drugiego extractu.
+4. Panel mapy ładuje się dopiero po kliknięciu. W paczce początkowej go nie ma. Nie ma kafelków ani AIS.
+
+Czego tu nie ma: nowy moduł, leaflet, czas przybycia liczony, live AIS, drugi silnik decyzji.
+
+Nazwy w kodzie: `watchtower` · `operational_exception` · `operator_decision`.

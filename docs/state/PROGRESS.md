@@ -257,3 +257,4 @@
 | 2026-09-03 | Plan 93.0 | M-37 | S31: `operational_exception` na zleceniu. Delta zaakceptowana (`/noc`). Nie mapa. Następny: `/plaster` 93.0. |
 | 2026-09-03 | 93.0 | M-37 | Tabela wyjątków na zleceniu. Nie mapa. Nie filtr wycen. Następny: S32 Plan. |
 | 2026-09-03 | Plan 94.0 | UI | S32: Watchtower lista + S11 + lazy mapa. Delta zaakceptowana (`/noc`). Nie leaflet. Następny: `/plaster` 94.0. |
+| 2026-09-03 | 94.0 | UI | Wieża: wyjątki + pending S11 + leniwy panel mapy. Nie leaflet. Następny: S33 Plan. |
