@@ -1215,6 +1215,54 @@ export type FxDifferenceResponse = {
 };
 
 /**
+ * GdprRequestCreate
+ */
+export type GdprRequestCreate = {
+    /**
+     * App User Id
+     */
+    app_user_id: string;
+    /**
+     * Request Kind
+     */
+    request_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * GdprRequestResponse
+ */
+export type GdprRequestResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * App User Id
+     */
+    app_user_id: string;
+    /**
+     * Request Kind
+     */
+    request_kind: string;
+    /**
+     * Status
+     */
+    status: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * HTTPValidationError
  */
 export type HttpValidationError = {
@@ -5530,6 +5578,79 @@ export type CreateCollectiveInvoiceApiV1CollectiveInvoicesPostResponses = {
 };
 
 export type CreateCollectiveInvoiceApiV1CollectiveInvoicesPostResponse = CreateCollectiveInvoiceApiV1CollectiveInvoicesPostResponses[keyof CreateCollectiveInvoiceApiV1CollectiveInvoicesPostResponses];
+
+export type ListGdprRequestsApiV1GdprRequestsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/gdpr-requests';
+};
+
+export type ListGdprRequestsApiV1GdprRequestsGetResponses = {
+    /**
+     * Response List Gdpr Requests Api V1 Gdpr Requests Get
+     *
+     * Successful Response
+     */
+    200: Array<GdprRequestResponse>;
+};
+
+export type ListGdprRequestsApiV1GdprRequestsGetResponse = ListGdprRequestsApiV1GdprRequestsGetResponses[keyof ListGdprRequestsApiV1GdprRequestsGetResponses];
+
+export type CreateGdprRequestApiV1GdprRequestsPostData = {
+    body: GdprRequestCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/gdpr-requests';
+};
+
+export type CreateGdprRequestApiV1GdprRequestsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateGdprRequestApiV1GdprRequestsPostError = CreateGdprRequestApiV1GdprRequestsPostErrors[keyof CreateGdprRequestApiV1GdprRequestsPostErrors];
+
+export type CreateGdprRequestApiV1GdprRequestsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: GdprRequestResponse;
+};
+
+export type CreateGdprRequestApiV1GdprRequestsPostResponse = CreateGdprRequestApiV1GdprRequestsPostResponses[keyof CreateGdprRequestApiV1GdprRequestsPostResponses];
+
+export type FulfillGdprRequestApiV1GdprRequestsRequestIdFulfillPostData = {
+    body?: never;
+    path: {
+        /**
+         * Request Id
+         */
+        request_id: string;
+    };
+    query?: never;
+    url: '/api/v1/gdpr-requests/{request_id}/fulfill';
+};
+
+export type FulfillGdprRequestApiV1GdprRequestsRequestIdFulfillPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type FulfillGdprRequestApiV1GdprRequestsRequestIdFulfillPostError = FulfillGdprRequestApiV1GdprRequestsRequestIdFulfillPostErrors[keyof FulfillGdprRequestApiV1GdprRequestsRequestIdFulfillPostErrors];
+
+export type FulfillGdprRequestApiV1GdprRequestsRequestIdFulfillPostResponses = {
+    /**
+     * Successful Response
+     */
+    200: GdprRequestResponse;
+};
+
+export type FulfillGdprRequestApiV1GdprRequestsRequestIdFulfillPostResponse = FulfillGdprRequestApiV1GdprRequestsRequestIdFulfillPostResponses[keyof FulfillGdprRequestApiV1GdprRequestsRequestIdFulfillPostResponses];
 
 export type ListOrganizationSettingsApiV1OrganizationSettingsGetData = {
     body?: never;

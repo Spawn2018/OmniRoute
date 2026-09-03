@@ -149,6 +149,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **105.0 leftover — płatność paczką / JPK (dlaczego nie w tym plasterze):** `bank_payment` zostaje 1:1. S43 to zbiorcze FV, nie wpłata wielu faktur.
 - **106.0 DONE:** `/finance` czyta `sales_invoice`. Nie suma. Nie narracja.
 - **106.0 leftover — suma FV / narracja / silnik limitu (dlaczego nie w tym plasterze):** tablica odczytuje wiersze. S57 narracja. Limit zostaje na `party`. Zbiorcze zostaje na `/invoices`.
+- **107.0 DONE:** tabela `gdpr_request` access/erasure + tombstone konta na `/gdpr`. Nie DPIA. Nie DELETE `app_user`.
+- **107.0 leftover — DPIA / kasowanie inbound/party / portal osoby / JWT (dlaczego nie w tym plasterze):** S45 to katalog konta, nie mapa PII w innych BC. Unieważnienie sesji leftover.
 - **41.0 DONE:** `/road` odczyt `location` `postal_zone`/`address`. Nie nowa tabela. Nie TMS. Nie GPS.
 - **41.0 leftover — TMS / GPS (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. M-49 kolej **DONE w 42.0**.
 - **42.0 DONE:** `/rail` odczyt portów z flagą `rail`. Nie nowa tabela. Nie wagon. Nie CIM.
@@ -160,7 +162,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **45.0 DONE:** `/sanctions` odczyt aktywnych `party` (`tax_id`, `country_code`). Nie nowa tabela. Nie OFAC. Nie auto-match.
 - **45.0 leftover — HTTP OFAC/EU / tabela hitów (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. M-56 RODO **DONE w 46.0** (M-54/M-55 bez nazwy w PLAN).
 - **46.0 DONE:** `/gdpr` odczyt `app_user.email` / `display_name`. Nie nowa tabela. Nie wniosek. Nie usuwanie.
-- **46.0 leftover — wnioski / usuwanie / DPIA / M-54 nazwa (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Fala 9 M-57 **DONE w 47.0**.
+- **46.0 leftover — DPIA / M-54 nazwa (dlaczego nie w tym plasterze):** wniosek/usuwanie katalogu **DONE w 107.0**. DPIA i M-54 bez nazwy w PLAN.
 - **47.0 DONE:** `/ai` odczyt `extraction_draft` pending (`source_ref`). Nie nowa tabela. Nie czat. Nie accept.
 - **47.0 leftover — czat / prompt log / M-58 nazwa (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. M-68 obserwowalność **DONE w 48.0** (M-58–M-60 bez nazwy; Fala 10 parked).
 - **48.0 DONE:** `/health` odczyt `fetchHealth`. Nie nowa tabela. Nie OTel. Nie k6.

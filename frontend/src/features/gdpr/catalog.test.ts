@@ -16,7 +16,7 @@ describe("gdprSubjects", () => {
 })
 
 describe("gdpr surface for 46.0", () => {
-  it("ships /gdpr as tenant emails without an erasure table", () => {
+  it("ships /gdpr as tenant emails", () => {
     const page = src("features/gdpr/catalog-page.tsx")
     expect(src("routes/gdpr.tsx")).toContain("/gdpr")
     expect(src("components/layout/sidebar.tsx")).toContain("/gdpr")
@@ -30,5 +30,21 @@ describe("gdpr surface for 46.0", () => {
     expect(page).not.toContain("password_hash")
     expect(page).not.toContain("parseFloat")
     expect(page).not.toContain("CatalogCreateForm")
+  })
+})
+
+describe("gdpr surface for 107.0", () => {
+  it("records access and erasure requests on /gdpr", () => {
+    const page = src("features/gdpr/catalog-page.tsx")
+    expect(page).toContain("fetchGdprRequests")
+    expect(page).toContain("recordGdprRequest")
+    expect(page).toContain("fulfillGdprRequest")
+    expect(page).toContain('data-gdpr="request-form"')
+    expect(page).toContain("Wypełnij")
+    expect(page).not.toContain("password_hash")
+    expect(page).not.toContain("parseFloat")
+    expect(page).not.toContain("CatalogCreateForm")
+    expect(src("features/ops/ops-index.ts")).toContain('"107.0": "/gdpr"')
+    expect(src("lib/gdpr-requests-api.ts")).not.toContain("password_hash")
   })
 })

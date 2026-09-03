@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **106.0** S44 tablica faktów z FV (M-15)
+- **Ostatni plaster:** **107.0** S45 wniosek/usuwanie RODO (M-56)
 - **Etap:** Plan
-- **Następny:** `/plaster` **107.0** — S45 wniosek/usuwanie RODO (M-56). Nie F9.1.
+- **Następny:** `/plan-modul` **S46** — obiekt nogi (M-48). Nie F9.1.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

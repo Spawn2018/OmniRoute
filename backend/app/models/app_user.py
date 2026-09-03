@@ -9,7 +9,10 @@ from app.models.base import Base, TimestampMixin
 
 class AppUser(Base, TimestampMixin):
     __tablename__ = "app_user"
-    __table_args__ = (UniqueConstraint("organization_id", "email", name="uq_app_user_org_email"),)
+    __table_args__ = (
+        UniqueConstraint("organization_id", "email", name="uq_app_user_org_email"),
+        UniqueConstraint("organization_id", "id", name="uq_app_user_org_id"),
+    )
 
     id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True),

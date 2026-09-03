@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** `/plaster` **107.0** — S45 wniosek/usuwanie RODO (M-56). Nie F9.1.
+**Następny (zablokowany):** `/plan-modul` **S46** — obiekt nogi (M-48). Nie F9.1.
 <!-- os-status:end -->
 
 ```mermaid
@@ -387,7 +387,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E2** | Testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy) | 61.0 | zamknięty (`docs/deltas/archived/61.0-alembic-quote-budget.md`) |
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | 62.0 | zamknięty (`docs/deltas/archived/62.0-operator-howto-c4.md`) |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | 63.0 | zamknięty (`docs/deltas/archived/63.0-threat-model-codeql.md`) |
-| po Q-E4 | **Fala S**, S1–S44 zamknięte (S21 parked); S45 plan 107.0 | Plan → plaster | **następny** |
+| po Q-E4 | **Fala S**, S1–S45 zamknięte (S21 parked); S46 plan | Plan → plaster | **następny** |
 
 ### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
 
@@ -451,7 +451,7 @@ Reguły kolejności (żeby `/noc` nie złożył awarii):
 | **S42** | Żywe **M-47** księgowość | 104.0 | zamknięty (`docs/deltas/archived/104.0-bookkeeping.md`) | Opłata na fakturę. Nie JPK. Nie odejmowanie |
 | S43 | Arch. M-91 zbiorcze FV | 105.0 | zamknięty (`docs/deltas/archived/105.0-collective-invoice.md`) | Dodatkowe zlecenie na FV. Nie płatność paczką. Nie JPK |
 | S44 | Żywe **M-15** tablica faktów (teraz z FV) | 106.0 | zamknięty (`docs/deltas/archived/106.0-finance-board-invoices.md`) | FV na `/finance`. Nie narracja. Nie silnik limitu |
-| S45 | Żywe **M-56** wniosek/usuwanie RODO | 107.0 | plan (`docs/deltas/open/107.0-gdpr-request.md`) | Wniosek na `/gdpr`. Nie DPIA. Nie kasowanie innych BC |
+| S45 | Żywe **M-56** wniosek/usuwanie RODO | 107.0 | zamknięty (`docs/deltas/archived/107.0-gdpr-request.md`) | Wniosek na `/gdpr`. Nie DPIA. Nie kasowanie innych BC |
 | S46–S49 | M-48…M-51 obiekt nogi | Plan → plaster | po S45 | Nie druga mapa |
 | S50 | Arch. M-111 flota | Plan → plaster | po S46 | Tylko gdy job „własne auto” |
 | S51 | Kat. M-55 reklamacje | Plan → plaster | po S30+S45 | Żywa nazwa w Plan tego wiersza |

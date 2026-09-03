@@ -283,3 +283,4 @@
 | 2026-09-03 | Plan 106.0 | M-15 | S44: `/finance` czyta faktury. Delta zaakceptowana (`/noc`). Nie narracja. Następny: `/plaster` 106.0. |
 | 2026-09-03 | 106.0 | M-15 | Tablica `/finance` czyta faktury sprzedaży. Nie suma. Nie narracja. Następny: S45 Plan. |
 | 2026-09-03 | Plan 107.0 | M-56 | S45: `gdpr_request` access/erasure + tombstone konta. Delta zaakceptowana (`/noc`). Nie DPIA. Następny: `/plaster` 107.0. |
+| 2026-09-03 | 107.0 | M-56 | Tabela wniosku RODO + tombstone konta. Nie DPIA. Nie DELETE `app_user`. Następny: S46 Plan. |

@@ -81,7 +81,7 @@ export const OPS_JOBS = [
   {
     route: BUSINESS_LISTS.gdpr.route,
     label: "RODO",
-    job: "emaile kont tenanta",
+    job: "wniosek i usunięcie katalogu",
   },
   {
     route: BUSINESS_LISTS.aiCopilot.route,
@@ -318,6 +318,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "104.0": "/bookkeeping",
   "105.0": "/invoices",
   "106.0": "/finance",
+  "107.0": "/gdpr",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

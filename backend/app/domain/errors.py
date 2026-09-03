@@ -318,6 +318,10 @@ class InvalidCollectiveInvoice(DomainError):
     """Zbiorcza FV: faktura+dodatkowe zlecenie i source_ref — nie kwota, nie paczka."""
 
 
+class InvalidGdprRequest(DomainError):
+    """Wniosek RODO: konto+rodzaj i source_ref — nie kasowanie wiersza, nie DPIA."""
+
+
 class InvalidPartyScorecard(DomainError):
     """Wskaźnik karty poza zakresem albo nie jest Decimal — nie float, nie scoring osoby."""
 

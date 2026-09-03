@@ -4043,6 +4043,128 @@
         ]
       }
     },
+    "/api/v1/gdpr-requests": {
+      "get": {
+        "tags": [
+          "gdpr-requests"
+        ],
+        "summary": "List Gdpr Requests",
+        "operationId": "list_gdpr_requests_api_v1_gdpr_requests_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/GdprRequestResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Gdpr Requests Api V1 Gdpr Requests Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "gdpr-requests"
+        ],
+        "summary": "Create Gdpr Request",
+        "operationId": "create_gdpr_request_api_v1_gdpr_requests_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GdprRequestCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GdprRequestResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/gdpr-requests/{request_id}/fulfill": {
+      "post": {
+        "tags": [
+          "gdpr-requests"
+        ],
+        "summary": "Fulfill Gdpr Request",
+        "operationId": "fulfill_gdpr_request_api_v1_gdpr_requests__request_id__fulfill_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "request_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Request Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GdprRequestResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/organization-settings": {
       "get": {
         "tags": [
@@ -8314,6 +8436,72 @@
           "source_ref"
         ],
         "title": "FxDifferenceResponse"
+      },
+      "GdprRequestCreate": {
+        "properties": {
+          "app_user_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "App User Id"
+          },
+          "request_kind": {
+            "type": "string",
+            "title": "Request Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "app_user_id",
+          "request_kind",
+          "source_ref"
+        ],
+        "title": "GdprRequestCreate"
+      },
+      "GdprRequestResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "app_user_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "App User Id"
+          },
+          "request_kind": {
+            "type": "string",
+            "title": "Request Kind"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "app_user_id",
+          "request_kind",
+          "status",
+          "source_ref"
+        ],
+        "title": "GdprRequestResponse"
       },
       "HTTPValidationError": {
         "properties": {
