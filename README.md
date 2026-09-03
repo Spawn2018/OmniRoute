@@ -88,7 +88,7 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 <!-- os-status:start -->
 - **Ostatni plaster:** **75.0** S12 tabela `operator_notice` (M-34)
 - **Etap:** Plan
-- **Następny:** `/plan-modul` **S13** — draft maila obok extract (M-57). Accept przez S11. Nie czat. Nie F9.1.
+- **Następny:** `/plaster` **76.0** — draft `mail_draft` obok extract (M-57). Accept przez S11. Nie czat. Nie F9.1.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

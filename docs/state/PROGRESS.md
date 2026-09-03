@@ -219,3 +219,4 @@
 | 2026-09-03 | 74.0 | M-71 | Szyna `operator_decision` pending/accept/reject. Nie M-57. Nie send. Następny: S12 Plan. |
 | 2026-09-03 | Plan 75.0 | M-34 | S12: tabela `operator_notice`. Delta zaakceptowana (`/noc`). Nie filtr wycen. Następny: `/plaster` 75.0. |
 | 2026-09-03 | 75.0 | M-34 | Tabela `operator_notice` unread/read. Nie filtr wycen. Nie send. Następny: S13 Plan. |
+| 2026-09-03 | Plan 76.0 | M-57 | S13: tabela `mail_draft` obok extract. Delta zaakceptowana (`/noc`). Accept przez S11. Następny: `/plaster` 76.0. |
