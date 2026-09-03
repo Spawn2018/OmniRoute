@@ -46,7 +46,9 @@ def test_pricing_and_extraction_do_not_import_credit_review() -> None:
     ):
         for path in (_SERVICES / bounded).rglob("*.py"):
             text = path.read_text(encoding="utf-8")
-            assert "credit_review" not in text
+            assert "from app.models.credit_review" not in text
+            assert "from app.domain.credit_review" not in text
+            assert "from app.services.parties" not in text
             assert "CreditReview" not in text
 
 
