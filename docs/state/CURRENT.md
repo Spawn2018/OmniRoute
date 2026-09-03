@@ -6,10 +6,10 @@
 **Ostatni plaster:** **84.0** S22 porównanie → `charge` (M-31)  
 **Etap:** Plan  
 **Noc:** `/noc <godzina>` (np. `/noc 7` = pętla do 7:00 czasu polskiego). Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md). Przed startem: `scripts/noc-preflight.ps1`.  
-**Następny:** `/plan-modul` **S23** — wynik negocjacji (M-25). Nie zamiast `margin()`. Nie F9.1.  
+**Następny:** `/plaster` **85.0** — wynik negocjacji (M-25). Wskazanie `channel_quote`, nie nowa kwota. Nie zamiast `margin()`. Nie F9.1.  
 M-02 **fundament 79.0**. Auth0 **odroczone** (S53). Portale **parked** (S55). S21 live HTTP **parked**. Exit Wave FE **nie** claim.
 
-**Spec (jedna na sesję):** następna delta po `/plan-modul` S23. Zamknięte: [84.0-response-comparison-charge.md](../deltas/archived/84.0-response-comparison-charge.md). Nie otwieraj [print-sheet.md](../spec/print-sheet.md).
+**Spec (jedna na sesję):** [docs/deltas/open/85.0-offer-negotiation-result.md](../deltas/open/85.0-offer-negotiation-result.md). Nie otwieraj [print-sheet.md](../spec/print-sheet.md).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Cel jakości + § Kolejka realizacji.
 
@@ -17,4 +17,4 @@ M-02 **fundament 79.0**. Auth0 **odroczone** (S53). Portale **parked** (S55). S2
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` są w PATH. Przed pracą podnieś dwie rzeczy: `pg_ctl -D tools\pgdata -o "-p 5432" start` oraz `tools\openfga\openfga.exe run`. Potem `just gate` i `just test` działają bez ustawiania zmiennych. PG 16 to klaster przenośny w `tools\pg16` — instalator EDB przez winget nie przechodzi (exit 1).
 
-**2026-09-03:** 84.0 zamknięty (`/noc`). Następny S23 `/plan-modul`. Nie F9.1.
+**2026-09-03:** plan 85.0 zaakceptowany (`/noc`). Wolno `/plaster`. Nie F9.1.

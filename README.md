@@ -88,7 +88,7 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 <!-- os-status:start -->
 - **Ostatni plaster:** **84.0** S22 porównanie → `charge` (M-31)
 - **Etap:** Plan
-- **Następny:** `/plan-modul` **S23** — wynik negocjacji (M-25). Nie zamiast `margin()`. Nie F9.1.
+- **Następny:** `/plaster` **85.0** — wynik negocjacji (M-25). Wskazanie `channel_quote`, nie nowa kwota. Nie zamiast `margin()`. Nie F9.1.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

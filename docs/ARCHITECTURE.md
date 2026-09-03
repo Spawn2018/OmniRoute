@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **84.0** S22 porównanie → `charge` (M-31). **Etap:** Plan. **Następny:** `/plan-modul` **S23** — wynik negocjacji (M-25). Nie zamiast `margin()`. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **84.0** S22 porównanie → `charge` (M-31). **Etap:** Plan. **Następny:** `/plaster` **85.0** — wynik negocjacji (M-25). Wskazanie `channel_quote`, nie nowa kwota. Nie zamiast `margin()`. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
