@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** `/plan-modul` **S32** — Watchtower (lista + S11 + lazy mapa). Nie F9.1.
+**Następny (zablokowany):** `/plaster` **94.0** — S32 Watchtower (lista + S11 + lazy mapa). Nie F9.1.
 <!-- os-status:end -->
 
 ```mermaid
@@ -386,7 +386,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E2** | Testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy) | 61.0 | zamknięty (`docs/deltas/archived/61.0-alembic-quote-budget.md`) |
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | 62.0 | zamknięty (`docs/deltas/archived/62.0-operator-howto-c4.md`) |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | 63.0 | zamknięty (`docs/deltas/archived/63.0-threat-model-codeql.md`) |
-| po Q-E4 | **Fala S**, S1–S31 zamknięte (S21 parked); S32 Plan | Plan → plaster | **następny** |
+| po Q-E4 | **Fala S**, S1–S31 zamknięte (S21 parked); S32 plan 94.0 | Plan → plaster | **następny** |
 
 ### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
 
@@ -437,7 +437,7 @@ Reguły kolejności (żeby `/noc` nie złożył awarii):
 | **S29** | Żywe **M-36** zdarzenia trackingu | 91.0 | zamknięty (`docs/deltas/archived/91.0-tracking-event.md`) | Nie mapa w paczce JS |
 | **S30** | Żywe **M-38** + arch. M-205 dokumenty | 92.0 | zamknięty (`docs/deltas/archived/92.0-shipment-document.md`) | Skan = M-20 |
 | **S31** | Żywe **M-37** tabela wyjątków | 93.0 | zamknięty (`docs/deltas/archived/93.0-operational-exception.md`) | Nie filtr wycen bez POL/POD |
-| **S32** | Watchtower UI (lista + S11 + lazy mapa) | Plan → plaster | po S31 | Nie nowy M-xx. Canvas 06 dokleja HITL |
+| **S32** | Watchtower UI (lista + S11 + lazy mapa) | 94.0 | plan (`docs/deltas/open/94.0-watchtower.md`) | Nie nowy M-xx. Canvas 06 dokleja HITL |
 | S33 | Żywe **M-39** EDI gdy partner | Plan → plaster | po S32 | Nie warunek wieży |
 | S34 | Żywe **M-40** faktura | Plan → plaster | po S33 | Fakturujesz zlecenie |
 | S35 | KSeF (osobny plaster) | Plan → plaster | po S34 | Sieć prawna |

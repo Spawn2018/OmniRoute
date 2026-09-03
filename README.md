@@ -88,7 +88,7 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 <!-- os-status:start -->
 - **Ostatni plaster:** **93.0** S31 tabela wyjątków (M-37)
 - **Etap:** Plan
-- **Następny:** `/plan-modul` **S32** — Watchtower (lista + S11 + lazy mapa). Nie F9.1.
+- **Następny:** `/plaster` **94.0** — S32 Watchtower (lista + S11 + lazy mapa). Nie F9.1.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
