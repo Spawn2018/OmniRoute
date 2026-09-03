@@ -1,11 +1,11 @@
 # M-15 finance_board — Wirtualny Dyrektor Finansowy (tablica faktów)
 
 **Moduł żywy:** M-15  
-**Plaster:** **15.0** (zamknięty) · **106.0** (S44 plan)  
+**Plaster:** **15.0** (zamknięty) · **106.0** (zamknięty)  
 **Status:** tablica odczytu `/finance`, w tym faktury. Nie silnik AI. LLM nie liczy.
 
 Delta 15.0: [docs/deltas/archived/15.0-finance-board.md](../deltas/archived/15.0-finance-board.md).  
-Delta 106.0: [docs/deltas/open/106.0-finance-board-invoices.md](../deltas/open/106.0-finance-board-invoices.md).
+Delta 106.0: [docs/deltas/archived/106.0-finance-board-invoices.md](../deltas/archived/106.0-finance-board-invoices.md).
 
 ## 15.0 tablica faktów
 

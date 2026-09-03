@@ -147,6 +147,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **104.0 DONE:** tabela `bookkeeping` para opłata+faktura. Nie JPK. Nie odejmowanie. JS nie liczy.
 - **105.0 DONE:** tabela `collective_invoice` para faktura+dodatkowe zlecenie. Nie płatność paczką. Nie JPK.
 - **105.0 leftover — płatność paczką / JPK (dlaczego nie w tym plasterze):** `bank_payment` zostaje 1:1. S43 to zbiorcze FV, nie wpłata wielu faktur.
+- **106.0 DONE:** `/finance` czyta `sales_invoice`. Nie suma. Nie narracja.
+- **106.0 leftover — suma FV / narracja / silnik limitu (dlaczego nie w tym plasterze):** tablica odczytuje wiersze. S57 narracja. Limit zostaje na `party`. Zbiorcze zostaje na `/invoices`.
 - **41.0 DONE:** `/road` odczyt `location` `postal_zone`/`address`. Nie nowa tabela. Nie TMS. Nie GPS.
 - **41.0 leftover — TMS / GPS (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. M-49 kolej **DONE w 42.0**.
 - **42.0 DONE:** `/rail` odczyt portów z flagą `rail`. Nie nowa tabela. Nie wagon. Nie CIM.

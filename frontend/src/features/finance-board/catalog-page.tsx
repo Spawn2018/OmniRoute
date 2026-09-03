@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
+import { Link } from "@tanstack/react-router"
 import { createColumnHelper } from "@tanstack/react-table"
 import {
   CatalogError,
@@ -12,6 +13,7 @@ import { fetchCharges, type Charge } from "@/lib/charges-api"
 import { fetchCreditReviews } from "@/lib/credit-reviews-api"
 import { fetchNbpRates } from "@/lib/nbp-rates-api"
 import { fetchParties } from "@/lib/parties-api"
+import { fetchSalesInvoices } from "@/lib/sales-invoices-api"
 import { getTenantContext } from "@/lib/tenant"
 
 const chargeCols = createColumnHelper<Charge>()
@@ -57,6 +59,12 @@ export function FinanceBoardPage() {
     enabled: ready,
     retry: false,
   })
+  const invoices = useQuery({
+    queryKey: ["finance-board-invoices", ctx.organizationId],
+    queryFn: fetchSalesInvoices,
+    enabled: ready,
+    retry: false,
+  })
 
   return (
     <div className="flex flex-col gap-4">
@@ -69,6 +77,7 @@ export function FinanceBoardPage() {
       {rates.isError ? <CatalogError error={rates.error} /> : null}
       {parties.isError ? <CatalogError error={parties.error} /> : null}
       {reviews.isError ? <CatalogError error={reviews.error} /> : null}
+      {invoices.isError ? <CatalogError error={invoices.error} /> : null}
 
       <CatalogLoadedTable
         tableKey={BUSINESS_LISTS.financeBoard.tableKey}
@@ -116,6 +125,26 @@ export function FinanceBoardPage() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section className="rounded-md border border-border p-3">
+        <h2 className="mb-2 text-sm font-medium">Faktury</h2>
+        <p className="mb-3 text-xs">
+          <Link className="underline" to="/invoices">
+            Zapis faktury zostaje na /invoices
+          </Link>
+        </p>
+        <dl className="grid gap-3 text-sm" data-finance-invoices="facts">
+          {(invoices.data ?? []).map((row) => (
+            <div key={row.id} className="grid grid-cols-[minmax(0,auto)_1fr] gap-x-4">
+              <dt className="font-mono text-xs">{row.invoice_ref}</dt>
+              <dd className="text-xs text-muted-foreground">
+                {row.invoice_kind}
+                {row.ksef_ref !== null ? ` · ${row.ksef_ref}` : " · bez numeru sesji"}
+              </dd>
+            </div>
+          ))}
+        </dl>
       </section>
     </div>
   )
