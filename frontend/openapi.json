@@ -3245,6 +3245,80 @@
         ]
       }
     },
+    "/api/v1/edi-messages": {
+      "get": {
+        "tags": [
+          "edi-messages"
+        ],
+        "summary": "List Edi Messages",
+        "operationId": "list_edi_messages_api_v1_edi_messages_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/EdiMessageResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Edi Messages Api V1 Edi Messages Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "edi-messages"
+        ],
+        "summary": "Create Edi Message",
+        "operationId": "create_edi_message_api_v1_edi_messages_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EdiMessageCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EdiMessageResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/organization-settings": {
       "get": {
         "tags": [
@@ -6905,6 +6979,67 @@
           "source_ref"
         ],
         "title": "DangerousGoodResponse"
+      },
+      "EdiMessageCreate": {
+        "properties": {
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "message_kind": {
+            "type": "string",
+            "title": "Message Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "shipment_id",
+          "message_kind",
+          "source_ref"
+        ],
+        "title": "EdiMessageCreate"
+      },
+      "EdiMessageResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "message_kind": {
+            "type": "string",
+            "title": "Message Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "shipment_id",
+          "message_kind",
+          "source_ref"
+        ],
+        "title": "EdiMessageResponse"
       },
       "EmailDomainCreate": {
         "properties": {

@@ -809,6 +809,50 @@ export type DangerousGoodResponse = {
 };
 
 /**
+ * EdiMessageCreate
+ */
+export type EdiMessageCreate = {
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Message Kind
+     */
+    message_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * EdiMessageResponse
+ */
+export type EdiMessageResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Message Kind
+     */
+    message_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * EmailDomainCreate
  */
 export type EmailDomainCreate = {
@@ -4604,6 +4648,49 @@ export type CreateOperationalExceptionApiV1OperationalExceptionsPostResponses = 
 };
 
 export type CreateOperationalExceptionApiV1OperationalExceptionsPostResponse = CreateOperationalExceptionApiV1OperationalExceptionsPostResponses[keyof CreateOperationalExceptionApiV1OperationalExceptionsPostResponses];
+
+export type ListEdiMessagesApiV1EdiMessagesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/edi-messages';
+};
+
+export type ListEdiMessagesApiV1EdiMessagesGetResponses = {
+    /**
+     * Response List Edi Messages Api V1 Edi Messages Get
+     *
+     * Successful Response
+     */
+    200: Array<EdiMessageResponse>;
+};
+
+export type ListEdiMessagesApiV1EdiMessagesGetResponse = ListEdiMessagesApiV1EdiMessagesGetResponses[keyof ListEdiMessagesApiV1EdiMessagesGetResponses];
+
+export type CreateEdiMessageApiV1EdiMessagesPostData = {
+    body: EdiMessageCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/edi-messages';
+};
+
+export type CreateEdiMessageApiV1EdiMessagesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateEdiMessageApiV1EdiMessagesPostError = CreateEdiMessageApiV1EdiMessagesPostErrors[keyof CreateEdiMessageApiV1EdiMessagesPostErrors];
+
+export type CreateEdiMessageApiV1EdiMessagesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: EdiMessageResponse;
+};
+
+export type CreateEdiMessageApiV1EdiMessagesPostResponse = CreateEdiMessageApiV1EdiMessagesPostResponses[keyof CreateEdiMessageApiV1EdiMessagesPostResponses];
 
 export type ListOrganizationSettingsApiV1OrganizationSettingsGetData = {
     body?: never;

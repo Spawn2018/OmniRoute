@@ -22,7 +22,7 @@
 | wyjątek operacyjny | operational_exception | 93.0 tabela na zleceniu; nie AIS; nie mapa; nie `party_charge_override` |
 | wieża | watchtower | 94.0 tablica wyjątków + pending S11 + leniwy panel mapy; nie leaflet; nie AIS; nie nowy M-xx |
 | dokument zlecenia | shipment_document | 92.0 tabela na zleceniu; nie bajty; nie PDF; nie HBL |
-| komunikat EDI | edi_message | 32.0 tablica `channel_quote` na lane wyceny; nie tabela; nie X12; nie live HTTP |
+| komunikat EDI | edi_message | 95.0 tabela na zleceniu; 32.0 leftover tablica kanału; nie parser; nie live HTTP |
 | faktura sprzedaży | sales_invoice | 33.0 tablica `sell` z `charge`; nie tabela; nie KSeF; nie druga marża |
 | rozliczenie wyceny z fakturą | quote_invoice_settlement | 34.0 tablica wycena + `sell` z `charge` po `rate_line_id`; nie tabela; nie odejmowanie |
 | bank i płatności | bank_payment | 35.0 tablica IBAN + `sell` z `charge`; nie tabela płatności; nie SEPA |

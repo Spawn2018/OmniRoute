@@ -18,11 +18,12 @@ Ekrany, które **zapisują** (INSERT/upsert), nie tablice-odczyty:
 - tracking `/tracking` — zapis `tracking_event` na zleceniu. How-to: [tracking.md](tracking.md). Nie mapa. Nie AIS. Czas podaje operator.
 - dokumenty `/shipment-documents` — zapis `shipment_document` na zleceniu. How-to: [dokument-zlecenia.md](dokument-zlecenia.md). Nie bajty. Nie wydruk. Skan zostaje na ekstrakcji.
 - wyjątki `/exceptions` — zapis `operational_exception` na zleceniu. How-to: [wyjatek.md](wyjatek.md). Nie mapa. Nie filtr wycen bez POL/POD.
+- EDI `/edi` — zapis `edi_message` na zleceniu. How-to: [edi.md](edi.md). Nie parser. Nie live HTTP. Oferta kanału zostaje na `/channel-quotes`.
 - wieża `/watchtower` — lista wyjątków + pending S11 (Akceptuj/Odrzuć). How-to: [wieza.md](wieza.md). HITL na `/ai`. Leniwy panel mapy, nie kafelki.
 - decyzje `/decisions` — pending na `subject_id`; Akceptuj albo Odrzuć z `lock_version`. Dwa okna, dwa Akceptuj: drugi dostaje konflikt. Nie accept extractu. Nie send.
 - powiadomienia `/notifications` — zapisany inbox `unread`/`read` z `source_ref`. Tablica pending HITL/wycen zostaje odczytem. Nie send.
 - szkic maila `/ai` — `mail_draft` obok extractu. Werdykt na `/decisions`. Po Akceptuj: „Wyślij w kliencie” zapisuje `sent` i daje `mailto:`. SOP `blocks_auto` nie blokuje tego kliknięcia. Nie czat. Nie Graph HTTP. Nie accept extractu.
 
-Czego tu nie ma: 70 osobnych instrukcji na pulpity odczytu (FV). Zlecenie: [zlecenie.md](zlecenie.md). Tracking: [tracking.md](tracking.md). Dokument: [dokument-zlecenia.md](dokument-zlecenia.md). Wyjątek: [wyjatek.md](wyjatek.md). Wieża: [wieza.md](wieza.md). Ścieżka extract → stawka → opłata → wycena jest w [ścieżka-pieniędzy.md](ścieżka-pieniędzy.md). Kontrahent: [kontrahent.md](kontrahent.md).
+Czego tu nie ma: 70 osobnych instrukcji na pulpity odczytu (FV). Zlecenie: [zlecenie.md](zlecenie.md). Tracking: [tracking.md](tracking.md). Dokument: [dokument-zlecenia.md](dokument-zlecenia.md). Wyjątek: [wyjatek.md](wyjatek.md). Wieża: [wieza.md](wieza.md). EDI: [edi.md](edi.md). Ścieżka extract → stawka → opłata → wycena jest w [ścieżka-pieniędzy.md](ścieżka-pieniędzy.md). Kontrahent: [kontrahent.md](kontrahent.md).
 
 Nie licz w przeglądarce. Nie wklejaj kursu NBP w kwotę oferty.

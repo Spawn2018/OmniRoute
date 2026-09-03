@@ -278,6 +278,10 @@ class InvalidOperationalException(DomainError):
     """Wyjatek operacyjny: kind z allowlisty i source_ref zapisu — nie czas przybycia, nie kwota."""
 
 
+class InvalidEdiMessage(DomainError):
+    """Komunikat EDI: kind z allowlisty i source_ref zapisu — nie parser, nie kwota."""
+
+
 class InvalidPartyScorecard(DomainError):
     """Wskaźnik karty poza zakresem albo nie jest Decimal — nie float, nie scoring osoby."""
 

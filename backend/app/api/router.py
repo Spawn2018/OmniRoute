@@ -10,6 +10,7 @@ from app.api import (
     customer_rfqs,
     customer_sops,
     dangerous_goods,
+    edi_messages,
     extractions,
     inbound_messages,
     locations,
@@ -62,6 +63,7 @@ api_router.include_router(shipments.router)
 api_router.include_router(tracking_events.router)
 api_router.include_router(shipment_documents.router)
 api_router.include_router(operational_exceptions.router)
+api_router.include_router(edi_messages.router)
 api_router.include_router(organization_settings.router)
 api_router.include_router(parties.router)
 api_router.include_router(party_scorecards.router)

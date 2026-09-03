@@ -141,7 +141,7 @@ export const OPS_JOBS = [
   {
     route: BUSINESS_LISTS.ediMessage.route,
     label: "EDI",
-    job: "channel_quote na lane wyceny",
+    job: "zapis edi_message na zleceniu",
   },
   { route: BUSINESS_LISTS.chargeCodes.route, label: "Kody opłat", job: "katalog charge_code" },
   {
@@ -306,6 +306,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "92.0": "/shipment-documents",
   "93.0": "/exceptions",
   "94.0": "/watchtower",
+  "95.0": "/edi",
 } as const
 
 export const ROUTES_BREADTH_STANDING =
