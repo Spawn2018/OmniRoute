@@ -217,3 +217,4 @@
 | 2026-09-03 | 73.0 | M-16 | `blocks_auto` na SOP. Draft nie blokuje. Nie send. Następny: S11 Plan. |
 | 2026-09-03 | Plan 74.0 | M-71 | S11: szyna `operator_decision`. Delta zaakceptowana (`/noc`). Nie M-57. Następny: `/plaster` 74.0. |
 | 2026-09-03 | 74.0 | M-71 | Szyna `operator_decision` pending/accept/reject. Nie M-57. Nie send. Następny: S12 Plan. |
+| 2026-09-03 | Plan 75.0 | M-34 | S12: tabela `operator_notice`. Delta zaakceptowana (`/noc`). Nie filtr wycen. Następny: `/plaster` 75.0. |
