@@ -282,6 +282,10 @@ class InvalidEdiMessage(DomainError):
     """Komunikat EDI: kind z allowlisty i source_ref zapisu — nie parser, nie kwota."""
 
 
+class InvalidSalesInvoice(DomainError):
+    """Faktura: kind z allowlisty i source_ref zapisu — nie KSeF, nie kwota."""
+
+
 class InvalidPartyScorecard(DomainError):
     """Wskaźnik karty poza zakresem albo nie jest Decimal — nie float, nie scoring osoby."""
 

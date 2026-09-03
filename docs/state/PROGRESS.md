@@ -261,3 +261,4 @@
 | 2026-09-03 | Plan 95.0 | M-39 | S33: `edi_message` na zleceniu. Delta zaakceptowana (`/noc`). Nie parser. Następny: `/plaster` 95.0. |
 | 2026-09-03 | 95.0 | M-39 | Tabela komunikatu EDI na zleceniu. Nie parser. Nie live HTTP. Następny: S34 Plan. |
 | 2026-09-03 | Plan 96.0 | M-40 | S34: `sales_invoice` na zleceniu. Delta zaakceptowana (`/noc`). Nie KSeF. Następny: `/plaster` 96.0. |
+| 2026-09-03 | 96.0 | M-40 | Tabela faktury sprzedaży na zleceniu. Nie KSeF. Nie druga marża. Następny: S35 Plan. |

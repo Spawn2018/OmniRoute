@@ -123,7 +123,9 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **32.0 DONE:** `/edi` odczyt `channel_quote` na lane wyceny. Nie nowa tabela. Nie X12. Nie live HTTP.
 - **32.0 leftover — parser EDI / live HTTP (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. X12/EDIFACT = zgadywanie. Outbox = M-02 parked. M-40 fakturowanie **DONE w 33.0**.
 - **33.0 DONE:** `/invoices` odczyt `sell` z `charge`. Nie nowa tabela. Nie KSeF. JS nie odejmuje.
-- **33.0 leftover — KSeF / numer FV (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. U-print leftover. M-41 rozliczenie **DONE w 34.0**.
+- **33.0 leftover — KSeF / numer FV (dlaczego nie w tym plasterze):** tabela **DONE w 96.0**. KSeF = S35. Licznik leftover S8. U-print leftover. M-41 rozliczenie **DONE w 34.0**.
+- **96.0 DONE:** `/invoices` zapis `sales_invoice` na zleceniu. RLS. Nie KSeF. Nie kwota na wierszu.
+- **96.0 leftover — KSeF / licznik numeru (dlaczego nie w tym plasterze):** S35 = sieć prawna. Licznik leftover S8. Rozliczenie M-41 zostaje tablicą.
 - **34.0 DONE:** `/quote-invoices` odczyt wyceny i `sell` z `charge` po `rate_line_id`. Nie nowa tabela. JS nie odejmuje.
 - **34.0 leftover — tabela rozliczenia / FK / match_rate (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. `quotation_id` na `charge` = zgadywanie. SQL-refresh `quote_invoice_match_rate` leftover 10.0. M-42 bank **DONE w 35.0**.
 - **35.0 DONE:** `/payments` odczyt IBAN kontrahenta i `sell` z `charge`. Nie nowa tabela. Nie N+1. JS nie odejmuje.

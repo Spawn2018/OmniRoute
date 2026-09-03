@@ -23,7 +23,7 @@
 | wieża | watchtower | 94.0 tablica wyjątków + pending S11 + leniwy panel mapy; nie leaflet; nie AIS; nie nowy M-xx |
 | dokument zlecenia | shipment_document | 92.0 tabela na zleceniu; nie bajty; nie PDF; nie HBL |
 | komunikat EDI | edi_message | 95.0 tabela na zleceniu; 32.0 leftover tablica kanału; nie parser; nie live HTTP |
-| faktura sprzedaży | sales_invoice | 33.0 tablica `sell` z `charge`; nie tabela; nie KSeF; nie druga marża |
+| faktura sprzedaży | sales_invoice | 96.0 tabela na zleceniu; `invoice_ref` wpisany; nie KSeF; nie druga marża |
 | rozliczenie wyceny z fakturą | quote_invoice_settlement | 34.0 tablica wycena + `sell` z `charge` po `rate_line_id`; nie tabela; nie odejmowanie |
 | bank i płatności | bank_payment | 35.0 tablica IBAN + `sell` z `charge`; nie tabela płatności; nie SEPA |
 | koszt pieniądza | money_cost | 36.0 tablica NBP + `buy` z `charge`; nie tabela odsetek; nie mnożenie |

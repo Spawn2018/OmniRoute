@@ -3319,6 +3319,80 @@
         ]
       }
     },
+    "/api/v1/sales-invoices": {
+      "get": {
+        "tags": [
+          "sales-invoices"
+        ],
+        "summary": "List Sales Invoices",
+        "operationId": "list_sales_invoices_api_v1_sales_invoices_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SalesInvoiceResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Sales Invoices Api V1 Sales Invoices Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "sales-invoices"
+        ],
+        "summary": "Create Sales Invoice",
+        "operationId": "create_sales_invoice_api_v1_sales_invoices_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SalesInvoiceCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SalesInvoiceResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/organization-settings": {
       "get": {
         "tags": [
@@ -9455,6 +9529,77 @@
           "source_ref"
         ],
         "title": "RateLineSupersede"
+      },
+      "SalesInvoiceCreate": {
+        "properties": {
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "invoice_kind": {
+            "type": "string",
+            "title": "Invoice Kind"
+          },
+          "invoice_ref": {
+            "type": "string",
+            "title": "Invoice Ref"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "shipment_id",
+          "invoice_kind",
+          "invoice_ref",
+          "source_ref"
+        ],
+        "title": "SalesInvoiceCreate"
+      },
+      "SalesInvoiceResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "invoice_kind": {
+            "type": "string",
+            "title": "Invoice Kind"
+          },
+          "invoice_ref": {
+            "type": "string",
+            "title": "Invoice Ref"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "shipment_id",
+          "invoice_kind",
+          "invoice_ref",
+          "source_ref"
+        ],
+        "title": "SalesInvoiceResponse"
       },
       "ScorecardResponse": {
         "properties": {

@@ -2247,6 +2247,58 @@ export type RateLineSupersede = {
 };
 
 /**
+ * SalesInvoiceCreate
+ */
+export type SalesInvoiceCreate = {
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Invoice Kind
+     */
+    invoice_kind: string;
+    /**
+     * Invoice Ref
+     */
+    invoice_ref: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * SalesInvoiceResponse
+ */
+export type SalesInvoiceResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Invoice Kind
+     */
+    invoice_kind: string;
+    /**
+     * Invoice Ref
+     */
+    invoice_ref: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * ScorecardResponse
  */
 export type ScorecardResponse = {
@@ -4691,6 +4743,49 @@ export type CreateEdiMessageApiV1EdiMessagesPostResponses = {
 };
 
 export type CreateEdiMessageApiV1EdiMessagesPostResponse = CreateEdiMessageApiV1EdiMessagesPostResponses[keyof CreateEdiMessageApiV1EdiMessagesPostResponses];
+
+export type ListSalesInvoicesApiV1SalesInvoicesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/sales-invoices';
+};
+
+export type ListSalesInvoicesApiV1SalesInvoicesGetResponses = {
+    /**
+     * Response List Sales Invoices Api V1 Sales Invoices Get
+     *
+     * Successful Response
+     */
+    200: Array<SalesInvoiceResponse>;
+};
+
+export type ListSalesInvoicesApiV1SalesInvoicesGetResponse = ListSalesInvoicesApiV1SalesInvoicesGetResponses[keyof ListSalesInvoicesApiV1SalesInvoicesGetResponses];
+
+export type CreateSalesInvoiceApiV1SalesInvoicesPostData = {
+    body: SalesInvoiceCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/sales-invoices';
+};
+
+export type CreateSalesInvoiceApiV1SalesInvoicesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateSalesInvoiceApiV1SalesInvoicesPostError = CreateSalesInvoiceApiV1SalesInvoicesPostErrors[keyof CreateSalesInvoiceApiV1SalesInvoicesPostErrors];
+
+export type CreateSalesInvoiceApiV1SalesInvoicesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: SalesInvoiceResponse;
+};
+
+export type CreateSalesInvoiceApiV1SalesInvoicesPostResponse = CreateSalesInvoiceApiV1SalesInvoicesPostResponses[keyof CreateSalesInvoiceApiV1SalesInvoicesPostResponses];
 
 export type ListOrganizationSettingsApiV1OrganizationSettingsGetData = {
     body?: never;

@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **95.0** S33 tabela komunikatu EDI (M-39)
+- **Ostatni plaster:** **96.0** S34 tabela faktury sprzedaży (M-40)
 - **Etap:** Plan
-- **Następny:** `/plaster` **96.0** — S34 tabela faktury sprzedaży (M-40). Nie F9.1.
+- **Następny:** `/plan-modul` **S35** — KSeF. Nie F9.1.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

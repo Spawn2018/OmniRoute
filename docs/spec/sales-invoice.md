@@ -1,25 +1,30 @@
-# M-40 fakturowanie — tablica sprzedaży z `charge`
+# M-40 fakturowanie — tabela na zleceniu
 
-**Moduł żywy:** M-40 (token UI `sales_invoice`, nie tabela) + ekran M-08 `charge`  
-**Plaster:** **33.0** (zamknięty)  
-**Status:** operator **widzi** `sell_amount` z `charge`. Nie KSeF. Nie nowa tabela.
+**Moduł żywy:** M-40 (tabela `sales_invoice`) + ekran M-08 `charge`  
+**Plaster:** **96.0** (S34) po fundamencie **33.0**  
+**Status:** operator **zapisuje** fakturę na `shipment`. Kwoty zostają na `charge`. Nie KSeF.
 
-Delta: [docs/deltas/archived/33.0-sales-invoice.md](../deltas/archived/33.0-sales-invoice.md).
+Delta: [docs/deltas/archived/96.0-sales-invoice.md](../deltas/archived/96.0-sales-invoice.md). Fundament: [docs/deltas/archived/33.0-sales-invoice.md](../deltas/archived/33.0-sales-invoice.md).
 
 ## 33.0 tablica odczytu na `/invoices`
 
+Zastąpiona w 96.0. Historycznie: lista `sell_amount` z `charge` bez tabeli.
+
+## 96.0 tabela na `/invoices`
+
 ### Zakres
 
-- Ekran `/invoices`: lista `charge` z kwotą sprzedaży przez `<Money/>`
-- Link do `/charges` i `/finance`. Zero nowej tabeli. Zero KSeF. Zero odejmowania w JS
+- Tabela `sales_invoice` per tenant, FK do `shipment`, RLS FORCE
+- Ekran `/invoices`: lista wierszy + „Zapisz fakturę”. Link do `/charges`, `/finance` i `/shipments`
+- `invoice_kind` `issued` | `noted` | `other`. `invoice_ref` wpisany przez operatora. `source_ref` obowiązkowy
 
-### Poza 33.0
+### Poza 96.0
 
-Tabela faktur · KSeF · U-print · rozliczenie z wyceną (M-41) · numer FV
+KSeF · licznik numeru · kwota / marża na wierszu · M-41 rozliczenie · PDF · F9.1
 
 ### HC
 
-- Marża zostaje w `charge`. Tablica nie odejmuje buy/sell.
+- Marża zostaje w `charge`. Wiersz faktury nie niesie kwoty.
 - LLM nie pisze treści faktury.
 - HITL zostaje na ekstrakcji.
-- ExtractionService nie importuje charges
+- ExtractionService nie importuje faktur

@@ -32,3 +32,4 @@ type organization
     define can_manage_shipment_documents: member
     define can_manage_exceptions: member
     define can_manage_edi_messages: member
+    define can_manage_sales_invoices: member
