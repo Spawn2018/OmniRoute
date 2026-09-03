@@ -1,9 +1,8 @@
+from datetime import UTC, datetime
 from uuid import uuid4
 
 import pytest
 from sqlalchemy import select
-
-from datetime import UTC, datetime
 
 from app.core.database import bind_tenant
 from app.domain.errors import UnknownParty
