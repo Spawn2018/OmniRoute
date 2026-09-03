@@ -307,3 +307,4 @@
 | 2026-09-04 | Plan 119.0 | M-68 | S59 OTel/QA/rollout named park — brak konsumenta outboxa i jobu SaaS. Zero kodu. Następny: nie zgaduj 71–212. |
 | 2026-09-04 | Plan 120.0 | M-13 | S27b: decyzje oferty na karcie. Delta zaakceptowana (`/noc`). Nie scoring osoby. Następny: `/plaster` 120.0. |
 | 2026-09-04 | 120.0 | M-13 | S27b: karta czyta przyjęte/odrzucone wyceny. Nie scoring osoby. Następny: leftover S11 `changed`. |
+| 2026-09-04 | Plan 121.0 | M-71 | Leftover S11 `changed`. Delta zaakceptowana (`/noc`). Nie extract. Następny: `/plaster` 121.0. |

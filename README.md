@@ -88,7 +88,7 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 <!-- os-status:start -->
 - **Ostatni plaster:** **120.0** S27b karta z decyzji oferty (M-13)
 - **Etap:** Plan
-- **Następny:** `/plan-modul` leftover S11 **`changed`** na `operator_decision`. Nie accept extractu. Nie F9.1.
+- **Następny:** `/plaster` **121.0** — leftover S11 `changed` na `operator_decision`. Nie accept extractu. Nie F9.1.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

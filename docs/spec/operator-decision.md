@@ -1,9 +1,9 @@
 # M-71 operator_decision — szyna Akceptuj/Odrzuć
 
-**Plaster:** **74.0** fundament · **77.0** `lock_version`  
-**Status:** ukończony (fundament) — pending + accept/reject + lock. Nie M-57. Nie accept extractu.
+**Plaster:** **74.0** fundament · **77.0** `lock_version` · **121.0** (S11 leftover `changed`, plan)  
+**Status:** pending + accept/reject/changed + lock. Nie M-57. Nie accept extractu.
 
-Delta: [74.0](../deltas/archived/74.0-operator-decision.md) · [77.0](../deltas/archived/77.0-decision-lock.md).
+Delta: [74.0](../deltas/archived/74.0-operator-decision.md) · [77.0](../deltas/archived/77.0-decision-lock.md) · [121.0](../deltas/open/121.0-decision-changed.md).
 
 ## Zakres
 
@@ -15,7 +15,18 @@ Delta: [74.0](../deltas/archived/74.0-operator-decision.md) · [77.0](../deltas/
 
 ## Poza zakresem
 
-`changed` w zapisie · FK do `inbound_message` · send (S18) · accept HITL 1.3 · F9.1
+FK do `inbound_message` · send (S18) · accept HITL 1.3 · F9.1
+
+## 121.0 werdykt `changed`
+
+### Zakres
+
+- POST decide: `accepted` | `changed` | `rejected` + `lock_version`
+- Przycisk Zmień na `/decisions`
+
+### Poza 121.0
+
+Nadpisanie po zapisie · LLM · send
 
 ## HC
 
