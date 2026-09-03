@@ -30,18 +30,28 @@ describe("cashFlowLegs", () => {
   })
 })
 
-describe("cash flow surface for 38.0", () => {
-  it("ships /cashflows as labeled buy and sell without subtracting", () => {
+describe("cash flow surface for 38.0 and 102.0", () => {
+  it("ships /cashflows without subtracting amounts", () => {
     const page = src("features/cash-flow/catalog-page.tsx")
     expect(src("routes/cashflows.tsx")).toContain("/cashflows")
     expect(src("components/layout/sidebar.tsx")).toContain("/cashflows")
     expect(src("lib/business-lists.ts")).toContain("cashFlow")
     expect(src("features/ops/ops-index.ts")).toContain("/cashflows")
     expect(page).toContain('data-cash-flow="board"')
-    expect(page).toContain("cashFlowLegs")
-    expect(page).toContain("<Money")
     expect(page).not.toContain("parseFloat")
     expect(page).not.toContain("CatalogCreateForm")
     expect(page).not.toContain("margin_amount")
+  })
+
+  it("records 102.0 as live cash-flow rows on /cashflows", () => {
+    const page = src("features/cash-flow/catalog-page.tsx")
+    const api = src("lib/cash-flows-api.ts")
+    const ops = src("features/ops/ops-index.ts")
+    expect(ops).toContain('"102.0": "/cashflows"')
+    expect(api).toContain("recordCashFlow")
+    expect(page).toContain("fetchCashFlows")
+    expect(page).toContain("Zapisz przepływ")
+    expect(page).not.toContain("fetchCharges")
+    expect(page).not.toContain("cashFlowLegs")
   })
 })

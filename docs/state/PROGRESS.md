@@ -273,3 +273,4 @@
 | 2026-09-03 | Plan 101.0 | M-44 | S39: `fx_difference` wiąże wycenę z kursem NBP. Delta zaakceptowana (`/noc`). Nie przeliczenie. Następny: `/plaster` 101.0. |
 | 2026-09-03 | 101.0 | M-44 | Tabela różnicy kursowej: wycena przy kursie NBP. Nie przeliczenie. Następny: S40 Plan. |
 | 2026-09-03 | Plan 102.0 | M-45 | S40: `cash_flow` wiąże wycenę z płatnością. Delta zaakceptowana (`/noc`). Nie odejmowanie. Następny: `/plaster` 102.0. |
+| 2026-09-03 | 102.0 | M-45 | Tabela przepływu: wycena przy płatności. Nie odejmowanie. Następny: S41 Plan. |

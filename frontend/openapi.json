@@ -3747,6 +3747,80 @@
         ]
       }
     },
+    "/api/v1/cash-flows": {
+      "get": {
+        "tags": [
+          "cash-flows"
+        ],
+        "summary": "List Cash Flows",
+        "operationId": "list_cash_flows_api_v1_cash_flows_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CashFlowResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Cash Flows Api V1 Cash Flows Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "cash-flows"
+        ],
+        "summary": "Create Cash Flow",
+        "operationId": "create_cash_flow_api_v1_cash_flows_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CashFlowCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CashFlowResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/organization-settings": {
       "get": {
         "tags": [
@@ -6430,6 +6504,69 @@
         },
         "type": "object",
         "title": "CarrierProfileUpsert"
+      },
+      "CashFlowCreate": {
+        "properties": {
+          "quotation_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Quotation Id"
+          },
+          "bank_payment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Bank Payment Id"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "quotation_id",
+          "bank_payment_id",
+          "source_ref"
+        ],
+        "title": "CashFlowCreate"
+      },
+      "CashFlowResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "quotation_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Quotation Id"
+          },
+          "bank_payment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Bank Payment Id"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "quotation_id",
+          "bank_payment_id",
+          "source_ref"
+        ],
+        "title": "CashFlowResponse"
       },
       "ChannelQuoteCreate": {
         "properties": {

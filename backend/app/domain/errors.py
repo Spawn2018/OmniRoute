@@ -302,6 +302,10 @@ class InvalidFxDifference(DomainError):
     """Różnica kursowa: para wycena+kurs i source_ref — nie kwota, nie przeliczenie."""
 
 
+class InvalidCashFlow(DomainError):
+    """Przepływ: para wycena+płatność i source_ref — nie kwota, nie odejmowanie."""
+
+
 class InvalidPartyScorecard(DomainError):
     """Wskaźnik karty poza zakresem albo nie jest Decimal — nie float, nie scoring osoby."""
 

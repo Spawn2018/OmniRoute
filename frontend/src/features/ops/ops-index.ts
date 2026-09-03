@@ -41,7 +41,7 @@ export const OPS_JOBS = [
   {
     route: BUSINESS_LISTS.cashFlow.route,
     label: "Przepływy",
-    job: "wypływ buy i wpływ sell z charge",
+    job: "zapis przepływu wyceny przy płatności",
   },
   {
     route: BUSINESS_LISTS.costToServe.route,
@@ -313,6 +313,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "99.0": "/payments",
   "100.0": "/money-cost",
   "101.0": "/fx-differences",
+  "102.0": "/cashflows",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

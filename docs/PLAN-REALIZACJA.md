@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** `/plaster` **102.0** — S40 przepływy (M-45). Nie F9.1.
+**Następny (zablokowany):** `/plan-modul` **S41** — żywe M-46 koszt obsługi. Nie F9.1.
 <!-- os-status:end -->
 
 ```mermaid
@@ -386,7 +386,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E2** | Testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy) | 61.0 | zamknięty (`docs/deltas/archived/61.0-alembic-quote-budget.md`) |
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | 62.0 | zamknięty (`docs/deltas/archived/62.0-operator-howto-c4.md`) |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | 63.0 | zamknięty (`docs/deltas/archived/63.0-threat-model-codeql.md`) |
-| po Q-E4 | **Fala S**, S1–S39 zamknięte (S21 parked); S40 plan 102.0 | Plan → plaster | **następny** |
+| po Q-E4 | **Fala S**, S1–S40 zamknięte (S21 parked); S41 plan | Plan → plaster | **następny** |
 
 ### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
 
@@ -445,7 +445,7 @@ Reguły kolejności (żeby `/noc` nie złożył awarii):
 | **S37** | Żywe **M-42** bank | 99.0 | zamknięty (`docs/deltas/archived/99.0-bank-payment.md`) | Faktura na rachunek. Nie SEPA. Nie druga marża |
 | **S38** | Żywe **M-43** koszt pieniądza | 100.0 | zamknięty (`docs/deltas/archived/100.0-money-cost.md`) | Płatność przy kursie NBP. Nie odsetki. Nie mnożenie |
 | **S39** | Żywe **M-44** różnice kursowe | 101.0 | zamknięty (`docs/deltas/archived/101.0-fx-difference.md`) | Wycena przy kursie NBP. Nie przeliczenie |
-| **S40** | Żywe **M-45** przepływy | 102.0 | plan (`docs/deltas/open/102.0-cash-flow.md`) | Wycena przy płatności. Nie księga kwot. Nie odejmowanie |
+| **S40** | Żywe **M-45** przepływy | 102.0 | zamknięty (`docs/deltas/archived/102.0-cash-flow.md`) | Wycena przy płatności. Nie księga kwot. Nie odejmowanie |
 | S41–S42 | M-46…M-47 kolejno Fali 6 | Plan → plaster | po S40 | Każdy ID = osobny plaster. Decimal. LLM nie liczy |
 | S43 | Arch. M-91 zbiorcze FV | Plan → plaster | po S42 | Gdy ktoś płaci paczką |
 | S44 | Żywe **M-15** tablica faktów (teraz z FV) | Plan → plaster | po S43 | Narracja NL = S57, nie silnik limitu |

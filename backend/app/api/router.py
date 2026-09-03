@@ -3,6 +3,7 @@ from fastapi import APIRouter
 from app.api import (
     bank_payments,
     carrier_inquiries,
+    cash_flows,
     channel_quotes,
     charge_codes,
     charges,
@@ -74,6 +75,7 @@ api_router.include_router(quote_invoice_settlements.router)
 api_router.include_router(bank_payments.router)
 api_router.include_router(money_costs.router)
 api_router.include_router(fx_differences.router)
+api_router.include_router(cash_flows.router)
 api_router.include_router(organization_settings.router)
 api_router.include_router(parties.router)
 api_router.include_router(party_scorecards.router)

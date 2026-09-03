@@ -51,6 +51,7 @@ from app.models.edi_message import EdiMessage  # noqa: F401
 from app.models.sales_invoice import SalesInvoice  # noqa: F401
 from app.models.bank_payment import BankPayment  # noqa: F401
 from app.models.fx_difference import FxDifference  # noqa: F401
+from app.models.cash_flow import CashFlow  # noqa: F401
 from app.models.money_cost import MoneyCost  # noqa: F401
 from app.models.quote_invoice_settlement import QuoteInvoiceSettlement  # noqa: F401
 

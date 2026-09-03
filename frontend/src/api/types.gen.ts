@@ -219,6 +219,50 @@ export type CarrierProfileUpsert = {
 };
 
 /**
+ * CashFlowCreate
+ */
+export type CashFlowCreate = {
+    /**
+     * Quotation Id
+     */
+    quotation_id: string;
+    /**
+     * Bank Payment Id
+     */
+    bank_payment_id: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CashFlowResponse
+ */
+export type CashFlowResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Quotation Id
+     */
+    quotation_id: string;
+    /**
+     * Bank Payment Id
+     */
+    bank_payment_id: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * ChannelQuoteCreate
  */
 export type ChannelQuoteCreate = {
@@ -5182,6 +5226,49 @@ export type CreateFxDifferenceApiV1FxDifferencesPostResponses = {
 };
 
 export type CreateFxDifferenceApiV1FxDifferencesPostResponse = CreateFxDifferenceApiV1FxDifferencesPostResponses[keyof CreateFxDifferenceApiV1FxDifferencesPostResponses];
+
+export type ListCashFlowsApiV1CashFlowsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/cash-flows';
+};
+
+export type ListCashFlowsApiV1CashFlowsGetResponses = {
+    /**
+     * Response List Cash Flows Api V1 Cash Flows Get
+     *
+     * Successful Response
+     */
+    200: Array<CashFlowResponse>;
+};
+
+export type ListCashFlowsApiV1CashFlowsGetResponse = ListCashFlowsApiV1CashFlowsGetResponses[keyof ListCashFlowsApiV1CashFlowsGetResponses];
+
+export type CreateCashFlowApiV1CashFlowsPostData = {
+    body: CashFlowCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/cash-flows';
+};
+
+export type CreateCashFlowApiV1CashFlowsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCashFlowApiV1CashFlowsPostError = CreateCashFlowApiV1CashFlowsPostErrors[keyof CreateCashFlowApiV1CashFlowsPostErrors];
+
+export type CreateCashFlowApiV1CashFlowsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CashFlowResponse;
+};
+
+export type CreateCashFlowApiV1CashFlowsPostResponse = CreateCashFlowApiV1CashFlowsPostResponses[keyof CreateCashFlowApiV1CashFlowsPostResponses];
 
 export type ListOrganizationSettingsApiV1OrganizationSettingsGetData = {
     body?: never;

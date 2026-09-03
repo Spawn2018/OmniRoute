@@ -1,26 +1,27 @@
-# M-45 przepływy — tablica `buy` i `sell` z `charge`
+# M-45 przepływy — para wyceny i płatności
 
-**Moduł żywy:** M-45 (token UI `cash_flow`, nie tabela) + M-08 `charge`  
-**Plaster:** **38.0** (zamknięty)  
-**Status:** operator **widzi** wypływ (`buy`) i wpływ (`sell`) z istniejącej opłaty. Nie tabela księgi. Nie odejmowanie.
+**Moduł żywy:** M-45 (tabela `cash_flow`)  
+**Plaster:** **102.0** (S40)  
+**Status:** operator **zapisuje**, że ta wycena ma ruch pieniądza w tej płatności. Kwoty zostają na `charge`. Nie odejmowanie.
 
-Delta: [docs/deltas/archived/38.0-cash-flow.md](../deltas/archived/38.0-cash-flow.md).
+Delta: [docs/deltas/archived/102.0-cash-flow.md](../deltas/archived/102.0-cash-flow.md).
 
-## 38.0 tablica odczytu na `/cashflows`
+## 102.0 tabela `cash_flow`
 
 ### Zakres
 
-- Ekran `/cashflows`: `cashFlowLegs` mapuje `charge` na wypływ (`buy`) i wpływ (`sell`)
-- Link do `/charges`
-- Zero nowej tabeli. Zero `sell − buy` w JS
+- Tabela `cash_flow`: `quotation_id` + `bank_payment_id` + `source_ref`
+- `GET/POST /cash-flows`, OpenFGA `can_manage_cash_flows`
+- Ekran `/cashflows`: lista wierszy + „Zapisz przepływ”
+- Zero kwoty na wierszu. Zero `sell − buy`
 
-### Poza 38.0
+### Poza 102.0
 
-Tabela księgi · DSO · dopasowanie wyciągu · druga marża
+DSO · dopasowanie wyciągu · para `charge`+płatność · druga marża
 
 ### HC
 
-- Marża zostaje w `charge`. Tablica nie odejmuje nóg.
+- Marża zostaje w `charge`. Wiersz nie odejmuje nóg.
 - LLM nie liczy przepływu.
 - HITL zostaje na ekstrakcji.
-- ExtractionService nie importuje charges
+- ExtractionService nie importuje cash_flows / quotations / charges
