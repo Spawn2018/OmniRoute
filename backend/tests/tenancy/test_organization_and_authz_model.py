@@ -36,6 +36,7 @@ def test_authorization_model_includes_table_view_permission() -> None:
     assert "can_manage_fx_differences" in org.relations
     assert "can_manage_cash_flows" in org.relations
     assert "can_manage_cost_to_serve" in org.relations
+    assert "can_manage_bookkeeping" in org.relations
     assert "can_manage_rate_lines" in org.relations
     assert "can_manage_charges" in org.relations
     assert "can_manage_quotations" in org.relations
@@ -114,6 +115,9 @@ def test_authorization_model_includes_table_view_permission() -> None:
     cost_to_serve = org.relations["can_manage_cost_to_serve"]
     assert cost_to_serve.computed_userset is not None
     assert cost_to_serve.computed_userset.relation == "member"
+    bookkeeping = org.relations["can_manage_bookkeeping"]
+    assert bookkeeping.computed_userset is not None
+    assert bookkeeping.computed_userset.relation == "member"
     rates = org.relations["can_manage_rate_lines"]
     assert rates.computed_userset is not None
     assert rates.computed_userset.relation == "member"

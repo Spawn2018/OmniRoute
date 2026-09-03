@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** `/plaster` **104.0** — S42 księgowość (M-47). Nie F9.1.
+**Następny (zablokowany):** `/plan-modul` **S43** — arch. M-91 zbiorcze FV. Nie F9.1.
 <!-- os-status:end -->
 
 ```mermaid
@@ -386,7 +386,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E2** | Testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy) | 61.0 | zamknięty (`docs/deltas/archived/61.0-alembic-quote-budget.md`) |
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | 62.0 | zamknięty (`docs/deltas/archived/62.0-operator-howto-c4.md`) |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | 63.0 | zamknięty (`docs/deltas/archived/63.0-threat-model-codeql.md`) |
-| po Q-E4 | **Fala S**, S1–S41 zamknięte (S21 parked); S42 plan 104.0 | Plan → plaster | **następny** |
+| po Q-E4 | **Fala S**, S1–S42 zamknięte (S21 parked); S43 Plan | Plan → plaster | **następny** |
 
 ### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
 
@@ -447,7 +447,7 @@ Reguły kolejności (żeby `/noc` nie złożył awarii):
 | **S39** | Żywe **M-44** różnice kursowe | 101.0 | zamknięty (`docs/deltas/archived/101.0-fx-difference.md`) | Wycena przy kursie NBP. Nie przeliczenie |
 | **S40** | Żywe **M-45** przepływy | 102.0 | zamknięty (`docs/deltas/archived/102.0-cash-flow.md`) | Wycena przy płatności. Nie księga kwot. Nie odejmowanie |
 | **S41** | Żywe **M-46** koszt obsługi | 103.0 | zamknięty (`docs/deltas/archived/103.0-cost-to-serve.md`) | SOP przy wycenie. Nie ABC. Nie suma |
-| **S42** | Żywe **M-47** księgowość | 104.0 | plan (`docs/deltas/open/104.0-bookkeeping.md`) | Opłata na fakturę. Nie JPK. Nie odejmowanie |
+| **S42** | Żywe **M-47** księgowość | 104.0 | zamknięty (`docs/deltas/archived/104.0-bookkeeping.md`) | Opłata na fakturę. Nie JPK. Nie odejmowanie |
 | S43 | Arch. M-91 zbiorcze FV | Plan → plaster | po S42 | Gdy ktoś płaci paczką |
 | S44 | Żywe **M-15** tablica faktów (teraz z FV) | Plan → plaster | po S43 | Narracja NL = S57, nie silnik limitu |
 | S45 | Żywe **M-56** wniosek/usuwanie RODO | Plan → plaster | po S44 | PII od S1; przed portalem |
@@ -539,7 +539,7 @@ Nie implementuj z tej tabeli „na zapas”. To mapa, żeby nic nie zginęło. S
 | M-23–M-31 | Ofertowanie | Fala 3 |
 | M-32–M-34 | Komunikacja | DONE fundament (25.0–27.0, 64.0, 66.0, 78.0 ingest `graph://`); pogłębienie **S4–S18** |
 | M-35–M-39 | Zlecenie / EDI | DONE fundament (28.0–32.0) |
-| M-40–M-47 | Finanse | DONE fundament (33.0–40.0) |
+| M-40–M-47 | Finanse | DONE fundament (33.0–40.0); pogłębienie **S34–S42** |
 | M-48–M-51 | Modały | Fala 7 (M-48–M-51 DONE fundament 41.0–44.0) |
 | M-52–M-56 | Compliance | Fala 8 (M-52 7.0 + M-53/M-56 DONE 45.0–46.0; M-54/M-55 bez nazwy w PLAN) |
 | M-57–M-60 | AI / copilot | Fala 9 (M-57 DONE fundament 47.0) |

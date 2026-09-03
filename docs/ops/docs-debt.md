@@ -143,7 +143,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **39.0 DONE:** `/cost-to-serve` odczyt SOP i wycen wybranego kontrahenta. Nie nowa tabela. JS nie sumuje.
 - **39.0 leftover — ABC / suma wycen / party_id na charge (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. M-47 księgowość **DONE w 40.0**.
 - **40.0 DONE:** `/bookkeeping` odczyt `charge` z nazwą z `charge_code`. Nie nowa tabela. Nie JPK. JS nie odejmuje.
-- **40.0 leftover — JPK / ERP HTTP / tabela dekretów (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Fala 7 M-48 transport drogowy **DONE w 41.0**.
+- **40.0 leftover — JPK / ERP HTTP (dlaczego nie w tym plasterze):** tabela dekretów = 104.0. JPK i ERP zostają poza S42. Fala 7 M-48 transport drogowy **DONE w 41.0**.
+- **104.0 DONE:** tabela `bookkeeping` para opłata+faktura. Nie JPK. Nie odejmowanie. JS nie liczy.
 - **41.0 DONE:** `/road` odczyt `location` `postal_zone`/`address`. Nie nowa tabela. Nie TMS. Nie GPS.
 - **41.0 leftover — TMS / GPS (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. M-49 kolej **DONE w 42.0**.
 - **42.0 DONE:** `/rail` odczyt portów z flagą `rail`. Nie nowa tabela. Nie wagon. Nie CIM.

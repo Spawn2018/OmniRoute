@@ -3895,6 +3895,80 @@
         ]
       }
     },
+    "/api/v1/bookkeepings": {
+      "get": {
+        "tags": [
+          "bookkeepings"
+        ],
+        "summary": "List Bookkeeping",
+        "operationId": "list_bookkeeping_api_v1_bookkeepings_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/BookkeepingResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Bookkeeping Api V1 Bookkeepings Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "bookkeepings"
+        ],
+        "summary": "Create Bookkeeping",
+        "operationId": "create_bookkeeping_api_v1_bookkeepings_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BookkeepingCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookkeepingResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/organization-settings": {
       "get": {
         "tags": [
@@ -6412,6 +6486,69 @@
           "source_ref"
         ],
         "title": "BankPaymentResponse"
+      },
+      "BookkeepingCreate": {
+        "properties": {
+          "charge_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Charge Id"
+          },
+          "sales_invoice_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Sales Invoice Id"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "charge_id",
+          "sales_invoice_id",
+          "source_ref"
+        ],
+        "title": "BookkeepingCreate"
+      },
+      "BookkeepingResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "charge_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Charge Id"
+          },
+          "sales_invoice_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Sales Invoice Id"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "charge_id",
+          "sales_invoice_id",
+          "source_ref"
+        ],
+        "title": "BookkeepingResponse"
       },
       "CarrierInquiryCreate": {
         "properties": {

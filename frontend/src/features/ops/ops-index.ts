@@ -51,7 +51,7 @@ export const OPS_JOBS = [
   {
     route: BUSINESS_LISTS.bookkeeping.route,
     label: "Księgowość",
-    job: "nazwa charge_code oraz buy/sell",
+    job: "zapis dekretu opłaty na fakturę",
   },
   {
     route: BUSINESS_LISTS.roadTransport.route,
@@ -315,6 +315,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "101.0": "/fx-differences",
   "102.0": "/cashflows",
   "103.0": "/cost-to-serve",
+  "104.0": "/bookkeeping",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

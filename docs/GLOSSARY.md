@@ -30,7 +30,7 @@
 | różnica kursowa | fx_difference | 101.0 tabela pary wycena+kurs NBP; nie kwota; nie przeliczenie |
 | przepływ | cash_flow | 102.0 tabela pary wycena+płatność; nie kwota; nie odejmowanie |
 | koszt obsługi klienta | cost_to_serve | 103.0 tabela pary SOP+wycena; nie kwota; nie suma |
-| księgowość | bookkeeping | 40.0 tablica `charge` + `charge_code.name`; nie JPK; nie ERP |
+| księgowość | bookkeeping | 104.0 tabela pary opłata+faktura; nie kwota; nie JPK |
 | transport drogowy | road_transport | 41.0 tablica `location` `postal_zone`/`address`; nie TMS; nie GPS |
 | kolej intermodalna | intermodal_rail | 42.0 tablica `port` z flagą `rail`; nie wagon; nie CIM |
 | kolej z Chin | china_rail | 43.0 tablica `port` CN z flagą `rail`; nie korytarz; nie HTTP |

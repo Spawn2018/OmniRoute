@@ -310,6 +310,10 @@ class InvalidCostToServe(DomainError):
     """Koszt obsługi: para SOP+wycena i source_ref — nie kwota, nie suma."""
 
 
+class InvalidBookkeeping(DomainError):
+    """Księgowość: para opłata+faktura i source_ref — nie kwota, nie JPK."""
+
+
 class InvalidPartyScorecard(DomainError):
     """Wskaźnik karty poza zakresem albo nie jest Decimal — nie float, nie scoring osoby."""
 

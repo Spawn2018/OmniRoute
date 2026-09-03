@@ -53,6 +53,22 @@ def _charge() -> Charge:
 
 
 @pytest.mark.asyncio
+async def test_get_charge_returns_row() -> None:
+    service = ChargeService(AsyncMock())
+    row = _charge()
+    service._charges.get = AsyncMock(return_value=row)
+    assert await service.get_charge(row.id) is row
+
+
+@pytest.mark.asyncio
+async def test_get_charge_unknown_is_not_found() -> None:
+    service = ChargeService(AsyncMock())
+    service._charges.get = AsyncMock(return_value=None)
+    with pytest.raises(ResourceNotFound, match="nieznana opłata"):
+        await service.get_charge(uuid4())
+
+
+@pytest.mark.asyncio
 async def test_create_stores_buy_sell_on_one_row() -> None:
     session = AsyncMock()
     session.add = MagicMock()

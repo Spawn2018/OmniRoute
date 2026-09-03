@@ -123,6 +123,50 @@ export type BankPaymentResponse = {
 };
 
 /**
+ * BookkeepingCreate
+ */
+export type BookkeepingCreate = {
+    /**
+     * Charge Id
+     */
+    charge_id: string;
+    /**
+     * Sales Invoice Id
+     */
+    sales_invoice_id: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * BookkeepingResponse
+ */
+export type BookkeepingResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Charge Id
+     */
+    charge_id: string;
+    /**
+     * Sales Invoice Id
+     */
+    sales_invoice_id: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * CarrierInquiryCreate
  */
 export type CarrierInquiryCreate = {
@@ -5356,6 +5400,49 @@ export type CreateCostToServeApiV1CostToServesPostResponses = {
 };
 
 export type CreateCostToServeApiV1CostToServesPostResponse = CreateCostToServeApiV1CostToServesPostResponses[keyof CreateCostToServeApiV1CostToServesPostResponses];
+
+export type ListBookkeepingApiV1BookkeepingsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/bookkeepings';
+};
+
+export type ListBookkeepingApiV1BookkeepingsGetResponses = {
+    /**
+     * Response List Bookkeeping Api V1 Bookkeepings Get
+     *
+     * Successful Response
+     */
+    200: Array<BookkeepingResponse>;
+};
+
+export type ListBookkeepingApiV1BookkeepingsGetResponse = ListBookkeepingApiV1BookkeepingsGetResponses[keyof ListBookkeepingApiV1BookkeepingsGetResponses];
+
+export type CreateBookkeepingApiV1BookkeepingsPostData = {
+    body: BookkeepingCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/bookkeepings';
+};
+
+export type CreateBookkeepingApiV1BookkeepingsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateBookkeepingApiV1BookkeepingsPostError = CreateBookkeepingApiV1BookkeepingsPostErrors[keyof CreateBookkeepingApiV1BookkeepingsPostErrors];
+
+export type CreateBookkeepingApiV1BookkeepingsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: BookkeepingResponse;
+};
+
+export type CreateBookkeepingApiV1BookkeepingsPostResponse = CreateBookkeepingApiV1BookkeepingsPostResponses[keyof CreateBookkeepingApiV1BookkeepingsPostResponses];
 
 export type ListOrganizationSettingsApiV1OrganizationSettingsGetData = {
     body?: never;

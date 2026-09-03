@@ -22,6 +22,12 @@ class ChargeService:
     async def list_charges(self) -> list[Charge]:
         return await self._charges.list_all()
 
+    async def get_charge(self, charge_id: UUID) -> Charge:
+        found = await self._charges.get(charge_id)
+        if found is None:
+            raise ResourceNotFound("nieznana opłata")
+        return found
+
     async def create_charge(
         self,
         *,

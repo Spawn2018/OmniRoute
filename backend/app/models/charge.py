@@ -1,7 +1,7 @@
 import uuid
 from decimal import Decimal
 
-from sqlalchemy import CHAR, CheckConstraint, ForeignKey, Numeric, String
+from sqlalchemy import CHAR, CheckConstraint, ForeignKey, Numeric, String, UniqueConstraint
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -10,7 +10,10 @@ from app.models.base import Base, TimestampMixin
 
 class Charge(Base, TimestampMixin):
     __tablename__ = "charge"
-    __table_args__ = (CheckConstraint("buy_currency = sell_currency", name="charge_same_currency"),)
+    __table_args__ = (
+        CheckConstraint("buy_currency = sell_currency", name="charge_same_currency"),
+        UniqueConstraint("organization_id", "id", name="uq_charge_org_id"),
+    )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     organization_id: Mapped[uuid.UUID] = mapped_column(

@@ -1,26 +1,27 @@
-# M-47 księgowość — tablica `charge` z nazwą z `charge_code`
+# M-47 księgowość — para opłaty i faktury
 
-**Moduł żywy:** M-47 (token UI `bookkeeping`, nie tabela) + M-06 `charge_code` + M-08 `charge`  
-**Plaster:** **40.0** (zamknięty)  
-**Status:** operator **widzi** kod, nazwę katalogu oraz kupno/sprzedaż. Nie JPK. Nie ERP.
+**Moduł żywy:** M-47 (tabela `bookkeeping`)  
+**Plaster:** **104.0** (S42)  
+**Status:** operator **zapisuje**, że ta opłata idzie na tę fakturę. Kwoty zostają na `charge`. Nie JPK.
 
-Delta: [docs/deltas/archived/40.0-bookkeeping.md](../deltas/archived/40.0-bookkeeping.md).
+Delta: [docs/deltas/archived/104.0-bookkeeping.md](../deltas/archived/104.0-bookkeeping.md).
 
-## 40.0 tablica odczytu na `/bookkeeping`
+## 104.0 tabela `bookkeeping`
 
 ### Zakres
 
-- Ekran `/bookkeeping`: `bookkeepingLines` łączy `charge` z `charge_code.name`
-- Link do `/charge-codes` i `/charges`
-- Zero nowej tabeli. Zero pliku. Zero `sell − buy` w JS
+- Tabela `bookkeeping`: `charge_id` + `sales_invoice_id` + `source_ref`
+- `GET/POST /bookkeepings`, OpenFGA `can_manage_bookkeeping`
+- Ekran `/bookkeeping`: lista wierszy + „Zapisz dekret”
+- Zero kwoty na wierszu. Zero `sell − buy`
 
-### Poza 40.0
+### Poza 104.0
 
-JPK · HTTP do ERP · tabela dekretów · druga marża
+JPK · HTTP do ERP · plan kont · druga marża
 
 ### HC
 
-- Marża zostaje w `charge`. Tablica nie odejmuje.
+- Marża zostaje w `charge`. Wiersz nie odejmuje nóg.
 - LLM nie liczy dekretu.
 - HITL zostaje na ekstrakcji.
-- ExtractionService nie importuje charges
+- ExtractionService nie importuje bookkeeping / charges

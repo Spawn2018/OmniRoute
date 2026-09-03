@@ -277,3 +277,4 @@
 | 2026-09-03 | Plan 103.0 | M-46 | S41: `cost_to_serve` wiąże SOP z wyceną. Delta zaakceptowana (`/noc`). Nie suma. Następny: `/plaster` 103.0. |
 | 2026-09-03 | 103.0 | M-46 | Tabela kosztu obsługi: SOP przy wycenie. Nie suma. Następny: S42 Plan. |
 | 2026-09-03 | Plan 104.0 | M-47 | S42: `bookkeeping` wiąże opłatę z fakturą. Delta zaakceptowana (`/noc`). Nie JPK. Następny: `/plaster` 104.0. |
+| 2026-09-03 | 104.0 | M-47 | Tabela dekretu: opłata na fakturę. Nie JPK. Nie odejmowanie. Następny: S43 Plan. |

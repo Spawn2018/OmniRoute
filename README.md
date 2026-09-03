@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **103.0** S41 koszt obsługi (M-46)
+- **Ostatni plaster:** **104.0** S42 księgowość (M-47)
 - **Etap:** Plan
-- **Następny:** `/plaster` **104.0** — S42 księgowość (M-47). Nie F9.1.
+- **Następny:** `/plan-modul` **S43** — arch. M-91 zbiorcze FV. Nie F9.1.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
