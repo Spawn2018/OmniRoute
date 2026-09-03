@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** `/plan-modul` leftover S12 filtr 27.0 na `operator_notice`. Nie send. Nie F9.1.
+**Następny (zablokowany):** `/plaster` **123.0** — leftover S12 filtr kind na tablicy 27.0. Nie auto-INSERT. Nie F9.1.
 <!-- os-status:end -->
 
 ```mermaid
@@ -387,7 +387,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E2** | Testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy) | 61.0 | zamknięty (`docs/deltas/archived/61.0-alembic-quote-budget.md`) |
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | 62.0 | zamknięty (`docs/deltas/archived/62.0-operator-howto-c4.md`) |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | 63.0 | zamknięty (`docs/deltas/archived/63.0-threat-model-codeql.md`) |
-| po Q-E4 | **Fala S**, leftover S12 filtr 27.0 | Plan | **następny** |
+| po Q-E4 | **Fala S**, leftover S12 filtr 27.0 plan 123.0 | Plan → plaster | **następny** |
 
 ### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
 
@@ -420,7 +420,8 @@ Reguły kolejności (żeby `/noc` nie złożył awarii):
 | S10 | Żywe **M-16** SOP „kiedy nie wolno auto” | 73.0 | zamknięty (`docs/deltas/archived/73.0-sop-blocks-auto.md`) | `blocks_auto`. Nie send |
 | **S11** | Arch. **M-179** szyna Akceptuj/Zmień/Odrzuć | 74.0 | zamknięty (`docs/deltas/archived/74.0-operator-decision.md`) | Żywy **M-71**. Nie M-57. `changed` = 121.0 |
 | **S11b** | Leftover **`changed`** na `operator_decision` | 121.0 | zamknięty (`docs/deltas/archived/121.0-decision-changed.md`) | Trzeci werdykt + lock. Nie extract. Nie send |
-| S12 | Żywe **M-34** tabela powiadomień | 75.0 | zamknięty (`docs/deltas/archived/75.0-operator-notice-table.md`) | Tabela. Filtr 27.0 leftover. Nie send |
+| S12 | Żywe **M-34** tabela powiadomień | 75.0 | zamknięty (`docs/deltas/archived/75.0-operator-notice-table.md`) | Tabela. Filtr 27.0 = 123.0. Nie send |
+| **S12b** | Leftover **filtr 27.0** na tablicy pending | 123.0 | plan (`docs/deltas/open/123.0-notice-pending-filter.md`) | Filtr kind. Nie auto-INSERT. Nie send |
 | S13 | Żywe **M-57** draft maila obok extract | 76.0 | zamknięty (`docs/deltas/archived/76.0-mail-draft.md`) | Tabela. Accept przez S11. Nie send |
 | S14 | Arch. **M-187** lock optymistyczny na decyzji | 77.0 | zamknięty (`docs/deltas/archived/77.0-decision-lock.md`) | `lock_version`. Nie nowa tabela |
 | **S15** | Żywe **M-32** tylko ingest Graph | 78.0 | zamknięty (`docs/deltas/archived/78.0-graph-ingest.md`) | `graph://` + `external_id`. Live HTTP leftover. Nie send |

@@ -80,7 +80,7 @@
 | wiadomość przychodząca | inbound_message | 64.0 tabela per tenant; 66.0 treść → extract HITL; 78.0/80.0 ingest `graph://` / `imap://` + `external_id`; 79.0 zdarzenie outbox; nie live skrzynka; nie send; nie blob |
 | zdarzenie outbox | outbox_event | 79.0 tabela per tenant; kind `inbound_message_saved`; nie Temporal; nie konsument |
 | klient poczty | mail_client | 26.0 `mailto:` z `party_contact.email`; 81.0 dispatch zaakceptowanego szkicu; nie dodatek Office; nie Graph HTTP |
-| powiadomienie operatora | operator_notice | 27.0 tablica pending; 75.0 tabela inbox; nie filtr wycen; nie wysyłka |
+| powiadomienie operatora | operator_notice | 27.0 tablica pending; 75.0 inbox; 123.0 filtr kind; nie auto-INSERT; nie wysyłka |
 | narzut | markup | kaskada — Python mały zbiór (DECISIONS) |
 | pieniądze | money | para `amount` + `currency`; nigdy float |
 | kwota | amount | `Decimal` / tekst dziesiętny, skala Numeric(14,4) |

@@ -1,10 +1,10 @@
 # M-34 powiadomienia — inbox + tablica istniejącej pracy
 
 **Moduł żywy:** M-34 (`operator_notice` tabela + ekran `/notifications`)  
-**Plaster:** **27.0** tablica odczytu · **75.0** tabela  
-**Status:** operator zapisuje unread i oznacza read. Tablica HITL/wycen pending zostaje leftover. Nie send.
+**Plaster:** **27.0** tablica odczytu · **75.0** tabela · **123.0** filtr 27.0 (plan)  
+**Status:** operator zapisuje unread i oznacza read. Tablica HITL/wycen pending ma filtr rodzaju. Nie send.
 
-Delta: [27.0](../deltas/archived/27.0-operator-notice.md) · [75.0](../deltas/archived/75.0-operator-notice-table.md).
+Delta: [27.0](../deltas/archived/27.0-operator-notice.md) · [75.0](../deltas/archived/75.0-operator-notice-table.md) · [123.0](../deltas/open/123.0-notice-pending-filter.md).
 
 ## 27.0 tablica odczytu na `/notifications`
 
@@ -30,6 +30,17 @@ Tabela (75.0) · outbox · Temporal · mail transakcyjny · LLM
 ### Poza 75.0
 
 Auto-INSERT z HITL/wyceny · send · outbox · S13 draft maila
+
+## 123.0 filtr tablicy 27.0
+
+### Zakres
+
+- Filtr rodzaju na tablicy pending: wszystkie / HITL / wyceny
+- Tabela inbox nie jest źródłem tych wierszy
+
+### Poza 123.0
+
+Auto-INSERT · send
 
 ## HC
 

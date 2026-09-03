@@ -40,7 +40,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-31 | Porównanie odpowiedzi | 24.0 ślad · 84.0 `charge` | **ukończony (fundament)** · zestawienie na POL/POD + zapis marży w `charge`; nie odejmuj w JS; nie won/lost |
 | M-32 | Integracja pocztowa | 64.0 `inbound_message` · 66.0 extract HITL · 78.0 ingest `graph://` · 80.0 ingest `imap://` | **ukończony (fundament)** · tabela wiadomości draft+fixture albo ingest Graph/skrzynka po `external_id` na `/mail`; treść → szkic HITL; nie live skrzynka; nie send; nie blob |
 | M-33 | Dodatek do Outlooka | 26.0 `mail_client` · 81.0 dispatch `mailto:` | **ukończony (fundament)** · `mailto:` kontaktu na `/mail` + świadoma wysyłka zaakceptowanego szkicu na `/ai`; nie Office.js; nie Graph HTTP |
-| M-34 | Powiadomienia | 27.0 tablica · 75.0 tabela `operator_notice` | **ukończony (fundament)** · inbox zapisany + leftover filtr pending; nie send |
+| M-34 | Powiadomienia | 27.0 tablica · 75.0 tabela · 123.0 filtr pending | **plan (S12 leftover)** · filtr kind na tablicy; nie auto-INSERT; nie send |
 | M-35 | Zlecenie | 90.0 `shipment` | **ukończony (S28)** · tabela z wyceny; nie tracking |
 | M-36 | Tracking | 91.0 `tracking_event` | **ukończony (S29)** · zdarzenia na zleceniu; nie mapa |
 | M-37 | Wyjątki | 93.0 `operational_exception` | **ukończony (S31)** · tabela na zleceniu; nie AIS; nie mapa |
