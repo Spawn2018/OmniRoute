@@ -567,6 +567,50 @@ export type ChargeResponse = {
 };
 
 /**
+ * CollectiveInvoiceCreate
+ */
+export type CollectiveInvoiceCreate = {
+    /**
+     * Sales Invoice Id
+     */
+    sales_invoice_id: string;
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CollectiveInvoiceResponse
+ */
+export type CollectiveInvoiceResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Sales Invoice Id
+     */
+    sales_invoice_id: string;
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * CommodityCodeCreate
  */
 export type CommodityCodeCreate = {
@@ -5443,6 +5487,49 @@ export type CreateBookkeepingApiV1BookkeepingsPostResponses = {
 };
 
 export type CreateBookkeepingApiV1BookkeepingsPostResponse = CreateBookkeepingApiV1BookkeepingsPostResponses[keyof CreateBookkeepingApiV1BookkeepingsPostResponses];
+
+export type ListCollectiveInvoicesApiV1CollectiveInvoicesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/collective-invoices';
+};
+
+export type ListCollectiveInvoicesApiV1CollectiveInvoicesGetResponses = {
+    /**
+     * Response List Collective Invoices Api V1 Collective Invoices Get
+     *
+     * Successful Response
+     */
+    200: Array<CollectiveInvoiceResponse>;
+};
+
+export type ListCollectiveInvoicesApiV1CollectiveInvoicesGetResponse = ListCollectiveInvoicesApiV1CollectiveInvoicesGetResponses[keyof ListCollectiveInvoicesApiV1CollectiveInvoicesGetResponses];
+
+export type CreateCollectiveInvoiceApiV1CollectiveInvoicesPostData = {
+    body: CollectiveInvoiceCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/collective-invoices';
+};
+
+export type CreateCollectiveInvoiceApiV1CollectiveInvoicesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCollectiveInvoiceApiV1CollectiveInvoicesPostError = CreateCollectiveInvoiceApiV1CollectiveInvoicesPostErrors[keyof CreateCollectiveInvoiceApiV1CollectiveInvoicesPostErrors];
+
+export type CreateCollectiveInvoiceApiV1CollectiveInvoicesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CollectiveInvoiceResponse;
+};
+
+export type CreateCollectiveInvoiceApiV1CollectiveInvoicesPostResponse = CreateCollectiveInvoiceApiV1CollectiveInvoicesPostResponses[keyof CreateCollectiveInvoiceApiV1CollectiveInvoicesPostResponses];
 
 export type ListOrganizationSettingsApiV1OrganizationSettingsGetData = {
     body?: never;

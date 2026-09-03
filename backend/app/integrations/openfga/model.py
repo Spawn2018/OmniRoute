@@ -54,6 +54,7 @@ def _organization_relations() -> dict[str, Userset]:
         "can_manage_cash_flows": _member(),
         "can_manage_cost_to_serve": _member(),
         "can_manage_bookkeeping": _member(),
+        "can_manage_collective_invoices": _member(),
     }
 
 

@@ -4,7 +4,7 @@
 **Plaster:** **105.0** (S43)  
 **Status:** operator **zapisuje**, że ta faktura obejmuje jeszcze to zlecenie. Kotwica zostaje na `sales_invoice.shipment_id`. Kwoty zostają na `charge`. Nie JPK.
 
-Delta: [docs/deltas/open/105.0-collective-invoice.md](../deltas/open/105.0-collective-invoice.md).
+Delta: [docs/deltas/archived/105.0-collective-invoice.md](../deltas/archived/105.0-collective-invoice.md).
 
 ## 105.0 tabela `collective_invoice`
 

@@ -8,6 +8,7 @@ import {
 } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { fetchCollectiveInvoices, recordCollectiveInvoice } from "@/lib/collective-invoices-api"
 import { createSalesInvoice, fetchSalesInvoices, noteKsef } from "@/lib/sales-invoices-api"
 import { getTenantContext } from "@/lib/tenant"
 
@@ -128,12 +129,93 @@ function InvoiceRecordForm(args: { organizationId: string | null }) {
   )
 }
 
+type ExtraDraft = {
+  invoiceId: string
+  shipmentId: string
+  sourceRef: string
+}
+
+const FRESH_EXTRA: ExtraDraft = {
+  invoiceId: "",
+  shipmentId: "",
+  sourceRef: "fixture://collective-invoice/",
+}
+
+function ExtraShipmentFields(args: { draft: ExtraDraft; patch: (next: ExtraDraft) => void }) {
+  const draft = args.draft
+  return (
+    <div className="inline-flex flex-wrap items-baseline gap-x-3">
+      <Input
+        name="sales_invoice_id"
+        placeholder="sales_invoice_id"
+        className="w-52"
+        value={draft.invoiceId}
+        onChange={(event) => args.patch({ ...draft, invoiceId: event.target.value })}
+        required
+      />
+      <Input
+        name="shipment_id"
+        placeholder="shipment_id dodatkowego zlecenia"
+        className="w-52"
+        value={draft.shipmentId}
+        onChange={(event) => args.patch({ ...draft, shipmentId: event.target.value })}
+        required
+      />
+      <Input
+        name="source_ref"
+        placeholder="source_ref"
+        className="w-64"
+        value={draft.sourceRef}
+        onChange={(event) => args.patch({ ...draft, sourceRef: event.target.value })}
+        required
+      />
+    </div>
+  )
+}
+
+function CollectiveMemberForm(args: { organizationId: string | null }) {
+  const client = useQueryClient()
+  const [draft, setDraft] = useState(FRESH_EXTRA)
+  const save = useMutation({
+    mutationFn: () =>
+      recordCollectiveInvoice({
+        sales_invoice_id: draft.invoiceId.trim(),
+        shipment_id: draft.shipmentId.trim(),
+        source_ref: draft.sourceRef.trim(),
+      }),
+    onSuccess: () => {
+      setDraft({ ...FRESH_EXTRA })
+      void client.invalidateQueries({ queryKey: ["collective-invoices", args.organizationId] })
+    },
+  })
+  return (
+    <form
+      onSubmit={(event: FormEvent) => {
+        event.preventDefault()
+        if (args.organizationId) save.mutate()
+      }}
+    >
+      <ExtraShipmentFields draft={draft} patch={setDraft} />
+      <Button type="submit" disabled={save.isPending || !args.organizationId}>
+        Zapisz zbiorczą
+      </Button>
+      {save.isError ? <CatalogError error={save.error} /> : null}
+    </form>
+  )
+}
+
 export function SalesInvoicePage() {
   const ctx = getTenantContext()
   const ready = Boolean(ctx.organizationId && ctx.userId)
   const invoices = useQuery({
     queryKey: ["sales-invoices", ctx.organizationId],
     queryFn: fetchSalesInvoices,
+    enabled: ready,
+    retry: false,
+  })
+  const members = useQuery({
+    queryKey: ["collective-invoices", ctx.organizationId],
+    queryFn: fetchCollectiveInvoices,
     enabled: ready,
     retry: false,
   })
@@ -146,8 +228,10 @@ export function SalesInvoicePage() {
       />
       {!ready ? <TenantSessionNotice /> : null}
       {invoices.isError ? <CatalogError error={invoices.error} /> : null}
+      {members.isError ? <CatalogError error={members.error} /> : null}
       <InvoiceRecordForm organizationId={ctx.organizationId} />
       <InvoiceKsefForm organizationId={ctx.organizationId} />
+      <CollectiveMemberForm organizationId={ctx.organizationId} />
       {(invoices.data ?? []).map((row) => (
         <p key={row.id} className="font-mono text-xs">
           {row.invoice_kind} · {row.invoice_ref} · {row.source_ref}{" "}
@@ -163,6 +247,13 @@ export function SalesInvoicePage() {
           </Link>
         </p>
       ))}
+      <ul className="text-xs" data-collective-invoice="members">
+        {(members.data ?? []).map((row) => (
+          <li key={row.id} className="font-mono">
+            {row.sales_invoice_id} · {row.shipment_id} · {row.source_ref}
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }

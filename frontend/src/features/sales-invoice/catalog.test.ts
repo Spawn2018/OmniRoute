@@ -7,7 +7,7 @@ function readFrontend(rel: string): string {
   return readFileSync(join(dirname(fileURLToPath(import.meta.url)), "../..", rel), "utf8")
 }
 
-describe("sales invoice surface for 33.0, 96.0 and 97.0", () => {
+describe("sales invoice surface for 33.0, 96.0, 97.0 and 105.0", () => {
   it("ships /invoices without subtracting buy from sell", () => {
     const page = readFrontend("features/sales-invoice/catalog-page.tsx")
     expect(readFrontend("routes/invoices.tsx")).toContain("/invoices")
@@ -43,6 +43,19 @@ describe("sales invoice surface for 33.0, 96.0 and 97.0", () => {
     expect(page).toContain("Zapisz numer sesji")
     expect(page).not.toContain("xml")
     expect(page).not.toContain("fa3")
+    expect(page).not.toContain("CatalogCreateForm")
+  })
+
+  it("records 105.0 collective extra shipments on /invoices", () => {
+    const page = readFrontend("features/sales-invoice/catalog-page.tsx")
+    const api = readFrontend("lib/collective-invoices-api.ts")
+    const ops = readFrontend("features/ops/ops-index.ts")
+    expect(ops).toContain('"105.0": "/invoices"')
+    expect(api).toContain("recordCollectiveInvoice")
+    expect(page).toContain("fetchCollectiveInvoices")
+    expect(page).toContain("Zapisz zbiorczą")
+    expect(page).toContain("Zapisz fakturę")
+    expect(page).not.toContain("fetchCharges")
     expect(page).not.toContain("CatalogCreateForm")
   })
 })

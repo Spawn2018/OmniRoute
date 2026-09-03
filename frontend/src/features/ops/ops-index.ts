@@ -316,6 +316,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "102.0": "/cashflows",
   "103.0": "/cost-to-serve",
   "104.0": "/bookkeeping",
+  "105.0": "/invoices",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

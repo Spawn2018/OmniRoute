@@ -54,6 +54,7 @@ from app.models.fx_difference import FxDifference  # noqa: F401
 from app.models.cash_flow import CashFlow  # noqa: F401
 from app.models.cost_to_serve import CostToServe  # noqa: F401
 from app.models.bookkeeping import Bookkeeping  # noqa: F401
+from app.models.collective_invoice import CollectiveInvoice  # noqa: F401
 from app.models.money_cost import MoneyCost  # noqa: F401
 from app.models.quote_invoice_settlement import QuoteInvoiceSettlement  # noqa: F401
 

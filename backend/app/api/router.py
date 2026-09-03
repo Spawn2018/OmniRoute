@@ -8,6 +8,7 @@ from app.api import (
     channel_quotes,
     charge_codes,
     charges,
+    collective_invoices,
     commodity_codes,
     cost_to_serve,
     credit_reviews,
@@ -80,6 +81,7 @@ api_router.include_router(fx_differences.router)
 api_router.include_router(cash_flows.router)
 api_router.include_router(cost_to_serve.router)
 api_router.include_router(bookkeeping.router)
+api_router.include_router(collective_invoices.router)
 api_router.include_router(organization_settings.router)
 api_router.include_router(parties.router)
 api_router.include_router(party_scorecards.router)

@@ -314,6 +314,10 @@ class InvalidBookkeeping(DomainError):
     """Księgowość: para opłata+faktura i source_ref — nie kwota, nie JPK."""
 
 
+class InvalidCollectiveInvoice(DomainError):
+    """Zbiorcza FV: faktura+dodatkowe zlecenie i source_ref — nie kwota, nie paczka."""
+
+
 class InvalidPartyScorecard(DomainError):
     """Wskaźnik karty poza zakresem albo nie jest Decimal — nie float, nie scoring osoby."""
 

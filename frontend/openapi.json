@@ -3969,6 +3969,80 @@
         ]
       }
     },
+    "/api/v1/collective-invoices": {
+      "get": {
+        "tags": [
+          "collective-invoices"
+        ],
+        "summary": "List Collective Invoices",
+        "operationId": "list_collective_invoices_api_v1_collective_invoices_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CollectiveInvoiceResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Collective Invoices Api V1 Collective Invoices Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "collective-invoices"
+        ],
+        "summary": "Create Collective Invoice",
+        "operationId": "create_collective_invoice_api_v1_collective_invoices_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CollectiveInvoiceCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CollectiveInvoiceResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/organization-settings": {
       "get": {
         "tags": [
@@ -7200,6 +7274,69 @@
           "rate_line_id"
         ],
         "title": "ChargeResponse"
+      },
+      "CollectiveInvoiceCreate": {
+        "properties": {
+          "sales_invoice_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Sales Invoice Id"
+          },
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "sales_invoice_id",
+          "shipment_id",
+          "source_ref"
+        ],
+        "title": "CollectiveInvoiceCreate"
+      },
+      "CollectiveInvoiceResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "sales_invoice_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Sales Invoice Id"
+          },
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "sales_invoice_id",
+          "shipment_id",
+          "source_ref"
+        ],
+        "title": "CollectiveInvoiceResponse"
       },
       "CommodityCodeCreate": {
         "properties": {
