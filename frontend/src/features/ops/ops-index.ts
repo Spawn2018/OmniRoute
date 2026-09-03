@@ -14,6 +14,11 @@ export const OPS_JOBS = [
     job: "odczyt marży / NBP / limitu / recenzji",
   },
   {
+    route: BUSINESS_LISTS.financeBoard.route,
+    label: "Tablica — narracja",
+    job: "zdania z pól SQL bez sumy",
+  },
+  {
     route: BUSINESS_LISTS.salesInvoice.route,
     label: "Faktury",
     job: "zapis faktury i numeru sesji",
@@ -341,6 +346,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "113.0": "/claims",
   "114.0": "/fraud",
   "116.0": "/watchtower",
+  "117.0": "/finance",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

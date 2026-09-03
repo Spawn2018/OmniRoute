@@ -148,7 +148,9 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **105.0 DONE:** tabela `collective_invoice` para faktura+dodatkowe zlecenie. Nie płatność paczką. Nie JPK.
 - **105.0 leftover — płatność paczką / JPK (dlaczego nie w tym plasterze):** `bank_payment` zostaje 1:1. S43 to zbiorcze FV, nie wpłata wielu faktur.
 - **106.0 DONE:** `/finance` czyta `sales_invoice`. Nie suma. Nie narracja.
-- **106.0 leftover — suma FV / narracja / silnik limitu (dlaczego nie w tym plasterze):** tablica odczytuje wiersze. S57 narracja. Limit zostaje na `party`. Zbiorcze zostaje na `/invoices`.
+- **106.0 leftover — suma FV / silnik limitu (dlaczego nie w 106.0):** tablica odczytuje wiersze. Narracja = 117.0. Limit zostaje na `party`. Zbiorcze zostaje na `/invoices`.
+- **117.0 DONE:** `/finance` składa narrację po SQL. Nie suma. Nie LLM.
+- **117.0 leftover — suma FV / silnik limitu / asystent LLM (dlaczego nie w tym plasterze):** zdania z pól GET. Suma i limit nie wchodzą. Komentarz modelu nie liczy.
 - **107.0 DONE:** tabela `gdpr_request` access/erasure + tombstone konta na `/gdpr`. Nie DPIA. Nie DELETE `app_user`.
 - **107.0 leftover — DPIA / kasowanie inbound/party / portal osoby / JWT (dlaczego nie w tym plasterze):** S45 to katalog konta, nie mapa PII w innych BC. Unieważnienie sesji leftover.
 - **41.0 DONE:** `/road` odczyt `location` `postal_zone`/`address`. Nie nowa tabela. Nie TMS. Nie GPS.
