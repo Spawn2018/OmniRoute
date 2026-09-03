@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **116.0** S56 copilot na wieży (M-57). **Etap:** Plan. **Następny:** `/plan-modul` S57 — kat. M-59 narracja po SQL (po S44). LLM nie liczy. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **116.0** S56 copilot na wieży (M-57). **Etap:** Plan. **Następny:** `/plaster` **117.0** — S57 narracja po SQL (M-15). LLM nie liczy. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

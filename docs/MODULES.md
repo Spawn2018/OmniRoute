@@ -29,7 +29,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-18 | Opłaty portowe warunkowe | 12.0 `port_surcharge` · 69.0 matching `applies_when` | **ukończony (fundament)** · katalog extra + SQL równość warunku; nie zapis do `charge`; nie parser AST |
 | M-19 | Stawki live i kanały | 13.0 `channel_quote` | **ukończony (fundament)** · katalog oferty; nie live HTTP; nie zapis do `rate_line` / `charge` |
 | M-14 | Ocena kredytowa | 14.0 `credit_review` · 88.0 `bureau_attachment_ref` | **ukończony (fundament)** · katalog recenzji + wskazanie raportu; nie auto-scoring; nie zapis `credit_limit` |
-| M-15 | Wirtualny Dyrektor Finansowy | 15.0 `finance_board` · 106.0 FV | **ukończony (S44)** · tablica odczytu `/finance` + faktury; nie silnik; LLM nie liczy |
+| M-15 | Wirtualny Dyrektor Finansowy | 15.0 `finance_board` · 106.0 FV · 117.0 narracja | **plan (S57)** · narracja po SQL na `/finance`; nie silnik; LLM nie liczy |
 | M-24 | Ryzyko oferty | 17.0 `offer_risk` · 87.0 wskazanie | **ukończony (fundament)** · odczyt + `noted_credit_review_id`; nie scoring; nie auto-limit |
 | M-25 | Negocjacja i wynik | 18.0 `offer_negotiation` · 85.0 wskazanie | **ukończony (fundament)** · odczyt + `negotiated_channel_quote_id`; nie won/lost; nie spread |
 | M-26 | Dokument oferty | 19.0 `offer_document` · 72.0 `document_number` | **ukończony (fundament)** · numer z prefiksu; druk 57.0; nie PDF; nie send |

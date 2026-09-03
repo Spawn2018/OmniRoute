@@ -300,3 +300,4 @@
 | 2026-09-04 | Plan 115.0 | M-76 | S54 status klienta named park — brak Auth0 S53. Zero kodu. Następny: S56 Plan. |
 | 2026-09-04 | Plan 116.0 | M-57 | S56: szkice `mail_draft` na wieży. Delta zaakceptowana (`/noc`). Nie czat. Następny: `/plaster` 116.0. |
 | 2026-09-04 | 116.0 | M-57 | Wieża czyta `mail_draft`. Zapis zostaje na `/ai`. Nie czat. Następny: S57 Plan. |
+| 2026-09-04 | Plan 117.0 | M-15 | S57: narracja po SQL na `/finance`. Delta zaakceptowana (`/noc`). LLM nie liczy. Następny: `/plaster` 117.0. |

@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** `/plan-modul` S57 — kat. M-59 narracja po SQL (po S44). LLM nie liczy. Nie F9.1.
+**Następny (zablokowany):** `/plaster` **117.0** — S57 narracja po SQL (M-15). LLM nie liczy. Nie F9.1.
 <!-- os-status:end -->
 
 ```mermaid
@@ -387,7 +387,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E2** | Testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy) | 61.0 | zamknięty (`docs/deltas/archived/61.0-alembic-quote-budget.md`) |
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | 62.0 | zamknięty (`docs/deltas/archived/62.0-operator-howto-c4.md`) |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | 63.0 | zamknięty (`docs/deltas/archived/63.0-threat-model-codeql.md`) |
-| po Q-E4 | **Fala S**, S1–S56 zamknięte (S21 parked, S50/S54 named park, S53 Auth0 parked, S55 portale parked); S57 plan | Plan → plaster | **następny** |
+| po Q-E4 | **Fala S**, S1–S56 zamknięte (S21 parked, S50/S54 named park, S53 Auth0 parked, S55 portale parked); S57 plan 117.0 | Plan → plaster | **następny** |
 
 ### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
 
@@ -460,7 +460,7 @@ Reguły kolejności (żeby `/noc` nie złożył awarii):
 | S54 | Arch. M-76 status klienta | 115.0 park | named park (`docs/deltas/archived/115.0-client-status-named-park.md`) | Aż Auth0 S53. Nie wieża operatora |
 | **S55** | F10 M-61…M-67, M-73, M-199 | Plan → plaster | po S53 | Giełda live tylko przy umowie i prawie do danych |
 | **S56** | Pogłębienie M-57 (kat. M-58) | 116.0 | zamknięty (`docs/deltas/archived/116.0-copilot-watchtower.md`) | Szkice na wieży. Nie nowy czat |
-| S57 | Kat. M-59 narracja po SQL | Plan → plaster | po S44 | LLM nie liczy |
+| S57 | Kat. M-59 narracja po SQL | 117.0 | plan (`docs/deltas/open/117.0-finance-narrative.md`) | Zdania z pól SQL. LLM nie liczy |
 | S58 | Kat. M-60 drafty po SOP | Plan → plaster | po S10+S11 | Nigdy auto-przelew / auto-send / auto-booking |
 | S59 | M-68 OTel, M-69 QA, M-70 rollout | Plan → plaster | po S16/S29 | Rollout ≠ billing SaaS (M-67 w S55) |
 

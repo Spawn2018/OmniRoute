@@ -113,7 +113,7 @@
 | karta wyników kontrahenta | party_scorecard | M-13; snapshot wskaźników per `party`; nie scoring osoby; nie silnik RFQ |
 | recenzja kredytowa | credit_review | M-14; decyzja operatora per `party`+dzień; 88.0 `bureau_attachment_ref`; nie auto-scoring; nie `credit_limit` |
 | decyzja operatora | operator_decision | 74.0 szyna pending/accept/reject; 77.0 `lock_version`; nie HITL extract; nie send |
-| tablica finansowa | finance_board | M-15; 15.0 odczyt marży/NBP/limitu/recenzji; 106.0 też FV; LLM nie liczy |
+| tablica finansowa | finance_board | M-15; 15.0 odczyt marży/NBP/limitu/recenzji; 106.0 też FV; 117.0 narracja po SQL; LLM nie liczy |
 | wskaźnik odpowiedzi | response_rate | 0–1 Numeric na karcie; NULL = nieznany |
 | mediana czasu odpowiedzi | median_response_hours | godziny Numeric na karcie |
 | pozycja cenowa | price_position | 0–1 Numeric na karcie partii w 10.0; per lane = leftover |
