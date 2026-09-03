@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **77.0** S14 `lock_version` na `operator_decision` (M-71) **Następny:** `/plan-modul` **S15** — ingest Graph na `inbound_message` (M-32). Sekret tenanta, idempotencja. Zakaz send. Nie F9.1.
+**Stan (z CURRENT.md):** **77.0** S14 `lock_version` na `operator_decision` (M-71) **Następny:** `/plaster` **78.0** — ingest Graph na `inbound_message` (M-32). `graph://` + `external_id`. Nie live HTTP. Nie send. Nie F9.1.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.
