@@ -1,15 +1,15 @@
 ﻿# Bieżący focus
 
-**Faza:** Fala S — pogłębienie wydmuszek (po Fali E)  
+**Faza:** Fala S — leftover S27b (po S59 park)  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
 
 **Ostatni plaster:** **119.0** S59 OTel/QA/rollout named park (M-68…M-70)  
 **Etap:** Plan  
 **Noc:** `/noc <godzina>` (np. `/noc 7` = pętla do 7:00 czasu polskiego). Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md). Przed startem: `scripts/noc-preflight.ps1`.  
-**Następny:** katalog 71–212 bez żywej nazwy — nie zgaduj. Auth0 i portale parked.  
+**Następny:** `/plaster` **120.0** — S27b karta z decyzji oferty (M-13). Nie scoring osoby. Nie F9.1.  
 M-02 **fundament 79.0**. Auth0 **odroczone** (S53). Portale **parked** (S55). S21 live HTTP **parked**. S50 flota **named park**. S54 status klienta **named park**. S59 OTel/QA/rollout **named park**. Exit Wave FE **nie** claim.
 
-**Spec (jedna na sesję):** brak — nie otwieraj [ai-copilot.md](../spec/ai-copilot.md). Nie zgaduj M-71.
+**Spec (jedna na sesję):** [docs/deltas/open/120.0-scorecard-offer-outcomes.md](../deltas/open/120.0-scorecard-offer-outcomes.md). Nie otwieraj [ai-copilot.md](../spec/ai-copilot.md).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Cel jakości + § Kolejka realizacji.
 
@@ -17,4 +17,4 @@ M-02 **fundament 79.0**. Auth0 **odroczone** (S53). Portale **parked** (S55). S2
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` są w PATH. Przed pracą podnieś dwie rzeczy: `pg_ctl -D tools\pgdata -o "-p 5432" start` oraz `tools\openfga\openfga.exe run`. Potem `just gate` i `just test` działają bez ustawiania zmiennych. PG 16 to klaster przenośny w `tools\pg16` — instalator EDB przez winget nie przechodzi (exit 1).
 
-**2026-09-04:** plan 119.0 named park (`/noc`). Brak kolejnej nazwanej pozycji Fali S.
+**2026-09-04:** plan 120.0 zaakceptowany (`/noc`). Wolno `/plaster`. Nie zgaduj 71–212.

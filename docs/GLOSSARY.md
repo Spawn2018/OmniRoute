@@ -110,7 +110,7 @@
 | sieć spedycyjna | network | katalog M-12; token kodu (`wca`, `fiata`, …); kopia per tenant; nie portal |
 | kod sieci | network code | snake 2–32; `resolve` po kodzie albo aliasie |
 | członek sieci | network_member | 82.0 ręczny agent w `network` tenanta; nie portal; nie FK party |
-| karta wyników kontrahenta | party_scorecard | M-13; snapshot wskaźników per `party`; nie scoring osoby; nie silnik RFQ |
+| karta wyników kontrahenta | party_scorecard | M-13; 10.0 snapshot; 120.0 odczyt decyzji oferty; nie scoring osoby; nie silnik RFQ |
 | recenzja kredytowa | credit_review | M-14; decyzja operatora per `party`+dzień; 88.0 `bureau_attachment_ref`; nie auto-scoring; nie `credit_limit` |
 | decyzja operatora | operator_decision | 74.0 szyna pending/accept/reject; 77.0 `lock_version`; nie HITL extract; nie send |
 | tablica finansowa | finance_board | M-15; 15.0 odczyt marży/NBP/limitu/recenzji; 106.0 też FV; 117.0 narracja po SQL; LLM nie liczy |

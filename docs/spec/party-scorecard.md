@@ -1,10 +1,10 @@
 # M-13 party_scorecard — karta wyników kontrahenta
 
 **Moduł żywy:** M-13 (archiwum M-13; nie koliduje z żywym M-10 `party` / M-08 `charge` / M-14)  
-**Plaster:** **10.0** (w kodzie)  
-**Status:** ukończony (fundament) — snapshot karty per tenant. Nie silnik RFQ. Nie scoring osoby.
+**Plaster:** **10.0** (zamknięty) · **120.0** (S27b plan)  
+**Status:** snapshot karty per tenant + odczyt decyzji oferty. Nie silnik RFQ. Nie scoring osoby.
 
-Delta: [docs/deltas/archived/10.0-party-scorecard.md](../deltas/archived/10.0-party-scorecard.md).
+Delta: [docs/deltas/archived/10.0-party-scorecard.md](../deltas/archived/10.0-party-scorecard.md) · [docs/deltas/open/120.0-scorecard-offer-outcomes.md](../deltas/open/120.0-scorecard-offer-outcomes.md).
 
 ## 10.0 snapshot karty
 
@@ -26,3 +26,14 @@ SQL-refresh z `quotation`/`charge` · karta per lane · M-14 `natural_person` / 
 - Wskaźniki = `Numeric`, nie float; LLM nie liczy
 - Marża zostaje w `charge.margin()`
 - ExtractionService nie importuje `parties`
+
+## 120.0 decyzje oferty na karcie
+
+### Zakres
+
+- `/party-scorecards` czyta decyzje S11 na wycenie (przyjęta / odrzucona)
+- Zero zapisu KPI. Zero nowej tabeli.
+
+### Poza 120.0
+
+SQL-refresh zapisujący wskaźniki · scoring osoby · `won`/`lost` na wycenie

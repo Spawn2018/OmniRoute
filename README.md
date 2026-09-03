@@ -88,7 +88,7 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 <!-- os-status:start -->
 - **Ostatni plaster:** **119.0** S59 OTel/QA/rollout named park (M-68…M-70)
 - **Etap:** Plan
-- **Następny:** katalog 71–212 bez żywej nazwy — nie zgaduj. Auth0 i portale parked.
+- **Następny:** `/plaster` **120.0** — S27b karta z decyzji oferty (M-13). Nie scoring osoby. Nie F9.1.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

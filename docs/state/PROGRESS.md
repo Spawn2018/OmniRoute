@@ -305,3 +305,4 @@
 | 2026-09-04 | Plan 118.0 | M-57 | S58: SOP `blocks_auto` obok szkiców na `/ai`. Delta zaakceptowana (`/noc`). Nie auto-send. Następny: `/plaster` 118.0. |
 | 2026-09-04 | 118.0 | M-57 | SOP `blocks_auto` na `/ai` obok szkiców. Nie auto-send. Następny: S59 Plan. |
 | 2026-09-04 | Plan 119.0 | M-68 | S59 OTel/QA/rollout named park — brak konsumenta outboxa i jobu SaaS. Zero kodu. Następny: nie zgaduj 71–212. |
+| 2026-09-04 | Plan 120.0 | M-13 | S27b: decyzje oferty na karcie. Delta zaakceptowana (`/noc`). Nie scoring osoby. Następny: `/plaster` 120.0. |
