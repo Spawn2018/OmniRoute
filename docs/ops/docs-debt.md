@@ -166,7 +166,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **44.0 DONE:** `/lcl` odczyt portów z `is_seaport`. Nie nowa tabela. Nie CFS. Nie LCL vs FCL.
 - **44.0 leftover — CFS / LCL vs FCL / HTTP konsolidatora (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Odcinek `ocean_lcl` = 111.0. CFS zostaje poza S49.
 - **111.0 DONE:** `shipment_leg.leg_kind=ocean_lcl` na `/lcl`. Nie CFS. Nie CBM.
-- **111.0 leftover — CFS / LCL vs FCL / flota S50 (dlaczego nie w tym plasterze):** CHECK jest `road|rail|china_rail|ocean_lcl`. Flota named park.
+- **111.0 leftover — CFS / LCL vs FCL / flota S50 (dlaczego nie w tym plasterze):** CHECK jest `road|rail|china_rail|ocean_lcl`. Flota named park **DONE w 112.0**.
+- **112.0 DONE (park):** S50 flota bez tabeli i bez `/fleet`. Brak jobu „własne auto”.
 - **45.0 DONE:** `/sanctions` odczyt aktywnych `party` (`tax_id`, `country_code`). Nie nowa tabela. Nie OFAC. Nie auto-match.
 - **45.0 leftover — HTTP OFAC/EU / tabela hitów (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. M-56 RODO **DONE w 46.0** (M-54/M-55 bez nazwy w PLAN).
 - **46.0 DONE:** `/gdpr` odczyt `app_user.email` / `display_name`. Nie nowa tabela. Nie wniosek. Nie usuwanie.
