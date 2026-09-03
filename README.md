@@ -88,7 +88,7 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 <!-- os-status:start -->
 - **Ostatni plaster:** **85.0** S23 wynik negocjacji (M-25)
 - **Etap:** Plan
-- **Następny:** `/plan-modul` **S24** — won/lost (M-29). Nie accept extractu. Nie F9.1.
+- **Następny:** `/plaster` **86.0** — S24 accept oferty przez S11 (M-29). Nie accept extractu. Nie F9.1.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

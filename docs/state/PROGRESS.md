@@ -240,3 +240,4 @@
 | 2026-09-03 | 84.0 | M-31 | Porównanie zapisuje `charge`; marża z `margin()`. Nie odejmuj w JS. Następny: S23 Plan. |
 | 2026-09-03 | Plan 85.0 | M-25 | S23: `negotiated_channel_quote_id` na wycenie. Delta zaakceptowana (`/noc`). Nie nowa kwota. Następny: `/plaster` 85.0. |
 | 2026-09-03 | 85.0 | M-25 | Wskazanie `channel_quote` na wycenie. Nie nowa kwota. Nie zamiast `margin()`. Następny: S24 Plan. |
+| 2026-09-03 | Plan 86.0 | M-29 | S24: accept oferty = `operator_decision` na `quotation`. Delta zaakceptowana (`/noc`). Nie HITL extract. Następny: `/plaster` 86.0. |
