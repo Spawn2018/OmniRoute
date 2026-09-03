@@ -266,3 +266,4 @@
 | 2026-09-03 | 97.0 | M-40 | Numer sesji KSeF na fakturze. Nie live HTTP. Nie XML. Następny: S36 Plan. |
 | 2026-09-03 | Plan 98.0 | M-41 | S36: `quote_invoice_settlement` wiąże wycenę z fakturą. Delta zaakceptowana (`/noc`). Nie druga marża. Następny: `/plaster` 98.0. |
 | 2026-09-03 | 98.0 | M-41 | Tabela rozliczenia wyceny z fakturą. Nie druga marża. Nie odejmowanie. Następny: S37 Plan. |
+| 2026-09-03 | Plan 99.0 | M-42 | S37: `bank_payment` wiąże fakturę z rachunkiem. Delta zaakceptowana (`/noc`). Nie SEPA. Następny: `/plaster` 99.0. |
