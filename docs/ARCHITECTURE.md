@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **74.0** S11 szyna `operator_decision` (M-71). **Etap:** Plan. **Następny:** `/plaster` **75.0** — tabela `operator_notice` (M-34). Nie filtr pending z wycen. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **75.0** S12 tabela `operator_notice` (M-34). **Etap:** Plan. **Następny:** `/plan-modul` **S13** — draft maila obok extract (M-57). Accept przez S11. Nie czat. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
@@ -50,7 +50,7 @@ frontend/                 React 19 + Compiler, Vite, TanStack, shadcn, PostHog
   src/components/data-table/  DataTableShell (Golden Standard)
 backend/app/
   api/             routery, DTO, require_permission — bez logiki
-  services/        channel_quotes · charge_codes · charges · commodity_codes · customer_rfqs · dangerous_goods · extraction · geography · inbound_messages · nbp_rates · networks · operator_decisions · organization_settings · parties · port_surcharges · quotations · rate_lines · tenancy
+  services/        channel_quotes · charge_codes · charges · commodity_codes · customer_rfqs · dangerous_goods · extraction · geography · inbound_messages · nbp_rates · networks · operator_decisions · operator_notices · organization_settings · parties · port_surcharges · quotations · rate_lines · tenancy
   repositories/    dostęp SQL
   models/          SQLAlchemy
   domain/          typy, wyjątki, Money

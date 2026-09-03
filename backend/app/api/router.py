@@ -15,6 +15,7 @@ from app.api import (
     nbp_rates,
     networks,
     operator_decisions,
+    operator_notices,
     organization_settings,
     parties,
     party_scorecards,
@@ -41,6 +42,7 @@ api_router.include_router(networks.router)
 api_router.include_router(inbound_messages.router)
 api_router.include_router(customer_rfqs.router)
 api_router.include_router(operator_decisions.router)
+api_router.include_router(operator_notices.router)
 api_router.include_router(nbp_rates.router)
 api_router.include_router(charges.router)
 api_router.include_router(rate_lines.router)

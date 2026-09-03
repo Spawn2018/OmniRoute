@@ -1,0 +1,71 @@
+import { ApiError, httpErrorStatus, readApiDetail } from "@/lib/api"
+import { requireAuthHeaders } from "@/lib/tenant"
+
+export type StoredOperatorNotice = {
+  id: string
+  organization_id: string
+  kind: string
+  body: string
+  status: "unread" | "read"
+  read_at: string | null
+  source_ref: string
+}
+
+export type NoticeDraft = {
+  body: string
+  sourceRef: string
+}
+
+export const EMPTY_NOTICE_DRAFT: NoticeDraft = {
+  body: "",
+  sourceRef: "fixture://operator-notice/1",
+}
+
+export function operatorNoticeCreateBody(draft: NoticeDraft): {
+  body: string
+  source_ref: string
+} {
+  return {
+    body: draft.body.trim(),
+    source_ref: draft.sourceRef.trim(),
+  }
+}
+
+async function readNotice(response: Response, fallback: string): Promise<StoredOperatorNotice> {
+  if (!response.ok) {
+    throw new ApiError(await readApiDetail(response, fallback), httpErrorStatus(response))
+  }
+  return (await response.json()) as StoredOperatorNotice
+}
+
+export async function fetchOperatorNotices(): Promise<StoredOperatorNotice[]> {
+  const response = await fetch("/api/v1/operator-notices", {
+    headers: requireAuthHeaders(),
+  })
+  if (!response.ok) {
+    throw new ApiError(
+      await readApiDetail(response, "Błąd listy powiadomień"),
+      httpErrorStatus(response),
+    )
+  }
+  return (await response.json()) as StoredOperatorNotice[]
+}
+
+export async function createOperatorNotice(
+  body: ReturnType<typeof operatorNoticeCreateBody>,
+): Promise<StoredOperatorNotice> {
+  const response = await fetch("/api/v1/operator-notices", {
+    method: "POST",
+    headers: { ...requireAuthHeaders(), "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  })
+  return readNotice(response, "Błąd zapisu powiadomienia")
+}
+
+export async function readOperatorNotice(noticeId: string): Promise<StoredOperatorNotice> {
+  const response = await fetch(`/api/v1/operator-notices/${noticeId}/read`, {
+    method: "POST",
+    headers: requireAuthHeaders(),
+  })
+  return readNotice(response, "Błąd odczytu powiadomienia")
+}

@@ -1462,6 +1462,128 @@
         }
       }
     },
+    "/api/v1/operator-notices": {
+      "get": {
+        "tags": [
+          "operator-notices"
+        ],
+        "summary": "List Operator Notices",
+        "operationId": "list_operator_notices_api_v1_operator_notices_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/OperatorNoticeResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Operator Notices Api V1 Operator Notices Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "operator-notices"
+        ],
+        "summary": "Create Operator Notice",
+        "operationId": "create_operator_notice_api_v1_operator_notices_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OperatorNoticeCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperatorNoticeResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/operator-notices/{notice_id}/read": {
+      "post": {
+        "tags": [
+          "operator-notices"
+        ],
+        "summary": "Read Operator Notice",
+        "operationId": "read_operator_notice_api_v1_operator_notices__notice_id__read_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "notice_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Notice Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperatorNoticeResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/nbp-rates": {
       "get": {
         "tags": [
@@ -6463,6 +6585,78 @@
           "source_ref"
         ],
         "title": "OperatorDecisionResponse"
+      },
+      "OperatorNoticeCreate": {
+        "properties": {
+          "body": {
+            "type": "string",
+            "title": "Body"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "body",
+          "source_ref"
+        ],
+        "title": "OperatorNoticeCreate"
+      },
+      "OperatorNoticeResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "kind": {
+            "type": "string",
+            "title": "Kind"
+          },
+          "body": {
+            "type": "string",
+            "title": "Body"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "read_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Read At"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "kind",
+          "body",
+          "status",
+          "read_at",
+          "source_ref"
+        ],
+        "title": "OperatorNoticeResponse"
       },
       "OrganizationSettingResponse": {
         "properties": {

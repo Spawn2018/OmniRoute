@@ -81,4 +81,16 @@ describe("operator-notice surface for 27.0", () => {
     expect(page).not.toContain("smtp")
     expect(page).not.toContain("CatalogCreateForm")
   })
+
+  it("ships stored operator_notice inbox on the same /notifications screen", () => {
+    const page = readFileSync(path.join(srcRoot, "features/operator-notice/catalog-page.tsx"), "utf8")
+    const api = readFileSync(path.join(srcRoot, "lib/operator-notices-api.ts"), "utf8")
+    expect(api).toContain("/api/v1/operator-notices")
+    expect(page).toContain("createOperatorNotice")
+    expect(page).toContain("readOperatorNotice")
+    expect(page).toContain("Zapisz unread")
+    expect(page).not.toContain("amount +")
+    expect(page).not.toContain("imap")
+  })
 })
+

@@ -73,7 +73,7 @@
 | integracja pocztowa | mail_integration | 25.0 tablica znanych adresów na `/mail`; 64.0 dopina `inbound_message`; nie IMAP |
 | wiadomość przychodząca | inbound_message | 64.0 tabela per tenant; 66.0 treść → extract HITL; nie Graph; nie IMAP; nie send; nie blob |
 | klient poczty | mail_client | 26.0 `mailto:` z `party_contact.email`; nie dodatek Office; nie Graph |
-| powiadomienie operatora | operator_notice | 27.0 tablica HITL pending i wycen pending; nie tabela; nie wysyłka |
+| powiadomienie operatora | operator_notice | 27.0 tablica pending; 75.0 tabela inbox; nie filtr wycen; nie wysyłka |
 | narzut | markup | kaskada — Python mały zbiór (DECISIONS) |
 | pieniądze | money | para `amount` + `currency`; nigdy float |
 | kwota | amount | `Decimal` / tekst dziesiętny, skala Numeric(14,4) |

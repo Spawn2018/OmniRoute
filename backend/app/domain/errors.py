@@ -320,3 +320,7 @@ class InvalidOperatorDecision(DomainError):
 
 class OperatorDecisionConflict(DomainError):
     """Pending na ten subject już istnieje w tenancie."""
+
+
+class InvalidOperatorNotice(DomainError):
+    """Powiadomienie: kind, treść albo source_ref — nie filtr wycen."""

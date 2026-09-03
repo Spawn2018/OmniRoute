@@ -3,13 +3,13 @@
 **Faza:** Fala S — pogłębienie wydmuszek (po Fali E)  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
 
-**Ostatni plaster:** **74.0** S11 szyna `operator_decision` (M-71)  
+**Ostatni plaster:** **75.0** S12 tabela `operator_notice` (M-34)  
 **Etap:** Plan  
-**Noc:** `/noc <godzina>` (np. `/noc 7` = pętla do 7:00 czasu polskiego). Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md). Przed startem: `scripts/noc-preflight.ps1`. Delta S12 zaakceptowana (`/noc`) — wolno `/plaster`.  
-**Następny:** `/plaster` **75.0** — tabela `operator_notice` (M-34). Nie filtr pending z wycen. Nie F9.1.  
+**Noc:** `/noc <godzina>` (np. `/noc 7` = pętla do 7:00 czasu polskiego). Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md). Przed startem: `scripts/noc-preflight.ps1`.  
+**Następny:** `/plan-modul` **S13** — draft maila obok extract (M-57). Accept przez S11. Nie czat. Nie F9.1.  
 M-02 **parked** (odblokowanie S16). Auth0 **odroczone** (S53). Portale **parked** (S55). Exit Wave FE **nie** claim.
 
-**Spec (jedna na sesję):** [docs/deltas/open/75.0-operator-notice-table.md](../deltas/open/75.0-operator-notice-table.md). Nie otwieraj [print-sheet.md](../spec/print-sheet.md).
+**Spec (jedna na sesję):** brak do planu S13 — [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Kolejka S13. Nie otwieraj [print-sheet.md](../spec/print-sheet.md).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Cel jakości + § Kolejka realizacji.
 
@@ -17,4 +17,4 @@ M-02 **parked** (odblokowanie S16). Auth0 **odroczone** (S53). Portale **parked*
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` są w PATH. Przed pracą podnieś dwie rzeczy: `pg_ctl -D tools\pgdata -o "-p 5432" start` oraz `tools\openfga\openfga.exe run`. Potem `just gate` i `just test` działają bez ustawiania zmiennych. PG 16 to klaster przenośny w `tools\pg16` — instalator EDB przez winget nie przechodzi (exit 1).
 
-**2026-09-03:** plan 75.0 zaakceptowany (`/noc`). Następny produkt: `/plaster` 75.0. Nie F9.1.
+**2026-09-03:** plaster 75.0 zamknięty. Następny: plan S13. Nie F9.1.

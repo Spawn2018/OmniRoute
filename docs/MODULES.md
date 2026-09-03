@@ -40,7 +40,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-31 | Porównanie odpowiedzi | 24.0 `response_comparison` | **ukończony (fundament)** · zestawienie kwot na POL/POD; nie tabela; nie spread |
 | M-32 | Integracja pocztowa | 64.0 `inbound_message` · 66.0 extract HITL | **ukończony (fundament)** · tabela wiadomości draft+fixture na `/mail`; treść → szkic HITL; nie IMAP; nie Graph; nie send; nie blob |
 | M-33 | Dodatek do Outlooka | 26.0 `mail_client` | **ukończony (fundament)** · `mailto:` na `/mail`; nie Office.js; nie Graph |
-| M-34 | Powiadomienia | 27.0 `operator_notice` | **ukończony (fundament)** · tablica HITL i wycen pending; nie tabela; nie wysyłka |
+| M-34 | Powiadomienia | 27.0 tablica · 75.0 tabela `operator_notice` | **ukończony (fundament)** · inbox zapisany + leftover filtr pending; nie send |
 | M-35 | Zlecenie | 28.0 `shipment` | **ukończony (fundament)** · tablica wycen z `party_id`; nie tabela; nie tracking |
 | M-36 | Tracking | 29.0 `tracking` | **ukończony (fundament)** · tablica lane POL/POD; nie tabela; nie mapa |
 | M-37 | Wyjątki | 30.0 `operational_exception` | **ukończony (fundament)** · tablica wycen z party bez pełnego POL/POD; nie tabela; nie AIS |
@@ -78,4 +78,4 @@ Nie dopisuj tu 70 pustych wierszy M-xx. Katalog + **kolejka Q1… / Q-E / Fala S
 ## Specyfikacje
 
 Każdy moduł w kodzie: `docs/spec/<nazwa>.md` (max 400 linii).  
-Dziś: `tenancy.md`, `extraction.md`, `charge-code.md`, `rate-line.md`, `charge.md`, `quotation.md`, `organization-setting.md`, `geography.md` (4.0–4.2 w kodzie), `parties.md` (5.0 + 8.0 matcher maila w kodzie), `commodity-code.md` (5.2 w kodzie), `nbp-rate.md` (6.0 w kodzie), `dangerous-good.md` (7.0 w kodzie), `network.md` (9.0 w kodzie), `party-scorecard.md` (10.0 w kodzie), `customer-sop.md` (11.0 w kodzie), `port-surcharge.md` (12.0 w kodzie), `channel-quote.md` (13.0 w kodzie), `credit-review.md` (14.0 w kodzie), `finance-board.md` (15.0 w kodzie), `operator-decision.md` (74.0 w kodzie). Szkielety uzupełniane przy plastrze — nie kompiluj całego archiwum.
+Dziś: `tenancy.md`, `extraction.md`, `charge-code.md`, `rate-line.md`, `charge.md`, `quotation.md`, `organization-setting.md`, `geography.md` (4.0–4.2 w kodzie), `parties.md` (5.0 + 8.0 matcher maila w kodzie), `commodity-code.md` (5.2 w kodzie), `nbp-rate.md` (6.0 w kodzie), `dangerous-good.md` (7.0 w kodzie), `network.md` (9.0 w kodzie), `party-scorecard.md` (10.0 w kodzie), `customer-sop.md` (11.0 w kodzie), `port-surcharge.md` (12.0 w kodzie), `channel-quote.md` (13.0 w kodzie), `credit-review.md` (14.0 w kodzie), `finance-board.md` (15.0 w kodzie), `operator-decision.md` (74.0 w kodzie), `operator-notice.md` (27.0 + 75.0 w kodzie). Szkielety uzupełniane przy plastrze — nie kompiluj całego archiwum.

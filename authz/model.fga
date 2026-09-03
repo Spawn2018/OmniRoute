@@ -24,3 +24,4 @@ type organization
     define can_manage_inbound_messages: member
     define can_manage_customer_rfqs: member
     define can_manage_operator_decisions: member
+    define can_manage_operator_notices: member

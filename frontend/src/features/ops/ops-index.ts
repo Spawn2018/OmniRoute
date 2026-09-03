@@ -276,6 +276,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "49.0": "/quality",
   "50.0": "/rollout",
   "74.0": "/decisions",
+  "75.0": "/notifications",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

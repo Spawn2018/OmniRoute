@@ -1209,6 +1209,54 @@ export type OperatorDecisionResponse = {
 };
 
 /**
+ * OperatorNoticeCreate
+ */
+export type OperatorNoticeCreate = {
+    /**
+     * Body
+     */
+    body: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * OperatorNoticeResponse
+ */
+export type OperatorNoticeResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Kind
+     */
+    kind: string;
+    /**
+     * Body
+     */
+    body: string;
+    /**
+     * Status
+     */
+    status: string;
+    /**
+     * Read At
+     */
+    read_at: string | null;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * OrganizationSettingResponse
  */
 export type OrganizationSettingResponse = {
@@ -3032,6 +3080,79 @@ export type DecideOperatorDecisionApiV1OperatorDecisionsDecisionIdDecidePostResp
 };
 
 export type DecideOperatorDecisionApiV1OperatorDecisionsDecisionIdDecidePostResponse = DecideOperatorDecisionApiV1OperatorDecisionsDecisionIdDecidePostResponses[keyof DecideOperatorDecisionApiV1OperatorDecisionsDecisionIdDecidePostResponses];
+
+export type ListOperatorNoticesApiV1OperatorNoticesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/operator-notices';
+};
+
+export type ListOperatorNoticesApiV1OperatorNoticesGetResponses = {
+    /**
+     * Response List Operator Notices Api V1 Operator Notices Get
+     *
+     * Successful Response
+     */
+    200: Array<OperatorNoticeResponse>;
+};
+
+export type ListOperatorNoticesApiV1OperatorNoticesGetResponse = ListOperatorNoticesApiV1OperatorNoticesGetResponses[keyof ListOperatorNoticesApiV1OperatorNoticesGetResponses];
+
+export type CreateOperatorNoticeApiV1OperatorNoticesPostData = {
+    body: OperatorNoticeCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/operator-notices';
+};
+
+export type CreateOperatorNoticeApiV1OperatorNoticesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateOperatorNoticeApiV1OperatorNoticesPostError = CreateOperatorNoticeApiV1OperatorNoticesPostErrors[keyof CreateOperatorNoticeApiV1OperatorNoticesPostErrors];
+
+export type CreateOperatorNoticeApiV1OperatorNoticesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: OperatorNoticeResponse;
+};
+
+export type CreateOperatorNoticeApiV1OperatorNoticesPostResponse = CreateOperatorNoticeApiV1OperatorNoticesPostResponses[keyof CreateOperatorNoticeApiV1OperatorNoticesPostResponses];
+
+export type ReadOperatorNoticeApiV1OperatorNoticesNoticeIdReadPostData = {
+    body?: never;
+    path: {
+        /**
+         * Notice Id
+         */
+        notice_id: string;
+    };
+    query?: never;
+    url: '/api/v1/operator-notices/{notice_id}/read';
+};
+
+export type ReadOperatorNoticeApiV1OperatorNoticesNoticeIdReadPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ReadOperatorNoticeApiV1OperatorNoticesNoticeIdReadPostError = ReadOperatorNoticeApiV1OperatorNoticesNoticeIdReadPostErrors[keyof ReadOperatorNoticeApiV1OperatorNoticesNoticeIdReadPostErrors];
+
+export type ReadOperatorNoticeApiV1OperatorNoticesNoticeIdReadPostResponses = {
+    /**
+     * Successful Response
+     */
+    200: OperatorNoticeResponse;
+};
+
+export type ReadOperatorNoticeApiV1OperatorNoticesNoticeIdReadPostResponse = ReadOperatorNoticeApiV1OperatorNoticesNoticeIdReadPostResponses[keyof ReadOperatorNoticeApiV1OperatorNoticesNoticeIdReadPostResponses];
 
 export type ListNbpRatesApiV1NbpRatesGetData = {
     body?: never;
