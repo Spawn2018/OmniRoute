@@ -295,3 +295,4 @@
 | 2026-09-04 | Plan 112.0 | M-111 | S50 flota named park — brak jobu „własne auto”. Zero kodu. Następny: S51 Plan. |
 | 2026-09-04 | Plan 113.0 | M-55 | S51: `cargo_claim` na zleceniu. Delta zaakceptowana (`/noc`). Nie kwota. Następny: `/plaster` 113.0. |
 | 2026-09-04 | 113.0 | M-55 | Tabela reklamacji ładunku na zleceniu. Nie kwota. Nie scoring. Następny: S52 Plan. |
+| 2026-09-04 | Plan 114.0 | M-54 | S52: `fraud_flag` na kontrahencie. Delta zaakceptowana (`/noc`). Nie scoring osoby. Następny: `/plaster` 114.0. |

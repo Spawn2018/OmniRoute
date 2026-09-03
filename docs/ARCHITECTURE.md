@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **113.0** S51 reklamacja ładunku (M-55). **Etap:** Plan. **Następny:** `/plan-modul` **S52** — kat. M-54 oszustwo. Nie scoring osoby. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **113.0** S51 reklamacja ładunku (M-55). **Etap:** Plan. **Następny:** `/plaster` **114.0** — S52 oszustwo (M-54). Nie scoring osoby. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
