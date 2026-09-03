@@ -909,6 +909,32 @@ export type InboundExtractResponse = {
 };
 
 /**
+ * InboundGraphIngest
+ */
+export type InboundGraphIngest = {
+    /**
+     * External Id
+     */
+    external_id: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+    /**
+     * From Address
+     */
+    from_address: string;
+    /**
+     * Subject
+     */
+    subject: string;
+    /**
+     * Body Text
+     */
+    body_text: string;
+};
+
+/**
  * InboundMessageCreate
  */
 export type InboundMessageCreate = {
@@ -966,6 +992,10 @@ export type InboundMessageResponse = {
      * Party Id
      */
     party_id: string | null;
+    /**
+     * External Id
+     */
+    external_id: string | null;
 };
 
 /**
@@ -2934,6 +2964,31 @@ export type CreateInboundMessageApiV1InboundMessagesPostResponses = {
 };
 
 export type CreateInboundMessageApiV1InboundMessagesPostResponse = CreateInboundMessageApiV1InboundMessagesPostResponses[keyof CreateInboundMessageApiV1InboundMessagesPostResponses];
+
+export type IngestGraphInboundMessageApiV1InboundMessagesIngestGraphPostData = {
+    body: InboundGraphIngest;
+    path?: never;
+    query?: never;
+    url: '/api/v1/inbound-messages/ingest-graph';
+};
+
+export type IngestGraphInboundMessageApiV1InboundMessagesIngestGraphPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type IngestGraphInboundMessageApiV1InboundMessagesIngestGraphPostError = IngestGraphInboundMessageApiV1InboundMessagesIngestGraphPostErrors[keyof IngestGraphInboundMessageApiV1InboundMessagesIngestGraphPostErrors];
+
+export type IngestGraphInboundMessageApiV1InboundMessagesIngestGraphPostResponses = {
+    /**
+     * Successful Response
+     */
+    200: InboundMessageResponse;
+};
+
+export type IngestGraphInboundMessageApiV1InboundMessagesIngestGraphPostResponse = IngestGraphInboundMessageApiV1InboundMessagesIngestGraphPostResponses[keyof IngestGraphInboundMessageApiV1InboundMessagesIngestGraphPostResponses];
 
 export type ResolveInboundMessageEmailApiV1InboundMessagesMessageIdResolveEmailPostData = {
     body?: never;

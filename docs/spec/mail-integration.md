@@ -1,10 +1,10 @@
 # M-32 integracja pocztowa — tablica znanych adresów + inbound_message
 
 **Moduł żywy:** M-32  
-**Plaster:** **66.0** (zamknięty) · 65.0 resolve · 64.0 tabela · 25.0 tablica adresów  
-**Status:** operator zapisuje fixture, dopina nadawcę, wysyła treść na HITL. Nie IMAP. Nie Graph. Nie send. Nie blob.
+**Plaster:** **78.0** (zamknięty) · 66.0 extract · 65.0 resolve · 64.0 tabela · 25.0 tablica adresów  
+**Status:** operator zapisuje fixture albo ingest `graph://` + `external_id`, dopina nadawcę, wysyła treść na HITL. Nie live HTTP. Nie IMAP. Nie send. Nie blob.
 
-Delta: [66.0](../deltas/archived/66.0-inbound-extract.md) · [65.0](../deltas/archived/65.0-inbound-resolve-email.md) · [64.0](../deltas/archived/64.0-inbound-message.md) · [25.0](../deltas/archived/25.0-mail-integration.md).
+Delta: [78.0](../deltas/archived/78.0-graph-ingest.md) · [66.0](../deltas/archived/66.0-inbound-extract.md) · [65.0](../deltas/archived/65.0-inbound-resolve-email.md) · [64.0](../deltas/archived/64.0-inbound-message.md) · [25.0](../deltas/archived/25.0-mail-integration.md).
 
 ## 25.0 tablica odczytu na `/mail`
 
@@ -64,3 +64,17 @@ załącznik blob · IMAP · Graph · auto-extract przy INSERT · RFQ (S4)
 - LLM nie czyta skrzynki i nie liczy.
 - `charge` zostaje prawdą o marży.
 - ExtractionService nie importuje inbound_messages
+
+## 78.0 ingest Graph
+
+### Zakres
+
+- `inbound_message.external_id` nullable; unikat `(organization_id, external_id)` gdy niepuste
+- CHECK `source_ref` dopuszcza `graph://` obok `fixture://` / `synth://`
+- `POST /inbound-messages/ingest-graph` — ten sam `external_id` = ten sam wiersz
+- `/mail`: formularz ingest (nie `CatalogCreateForm`). Zwykły POST zostaje `fixture://` | `synth://`
+- Serwis nie woła Microsoft Graph i nie trzyma tokenu
+
+### Poza 78.0
+
+live HTTP Graph · sekret tenanta · IMAP (S17) · send (S18) · outbox (S16) · blob

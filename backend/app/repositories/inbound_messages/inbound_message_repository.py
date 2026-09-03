@@ -24,3 +24,9 @@ class InboundMessageRepository:
         self._session.add(row)
         await self._session.flush()
         return row
+
+    async def get_by_external_id(self, external_id: str) -> InboundMessage | None:
+        found = await self._session.scalar(
+            select(InboundMessage).where(InboundMessage.external_id == external_id),
+        )
+        return found if isinstance(found, InboundMessage) else None

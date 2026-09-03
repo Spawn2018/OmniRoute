@@ -8,6 +8,8 @@ from app.domain.inbound_message import (
     inbound_extract_text,
     require_body_text,
     require_from_address,
+    require_external_id,
+    require_graph_source_ref,
     require_inbound_source_ref,
     require_subject,
 )
@@ -23,6 +25,20 @@ def test_require_inbound_source_ref_accepts_fixture() -> None:
 
 def test_require_inbound_source_ref_accepts_synth() -> None:
     assert require_inbound_source_ref("synth://mail/demo") == "synth://mail/demo"
+
+
+def test_require_graph_source_ref_accepts_graph() -> None:
+    assert require_graph_source_ref(" graph://inbox/1 ") == "graph://inbox/1"
+
+
+def test_require_graph_source_ref_rejects_fixture() -> None:
+    with pytest.raises(InvalidInboundMessage, match="graph://"):
+        require_graph_source_ref("fixture://inbound-mail/1")
+
+
+def test_require_external_id_rejects_blank() -> None:
+    with pytest.raises(InvalidInboundMessage, match="obowiązkowy"):
+        require_external_id("  ")
 
 
 def test_require_inbound_source_ref_rejects_imap() -> None:

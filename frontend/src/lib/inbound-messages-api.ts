@@ -10,6 +10,7 @@ export type InboundMessage = {
   body_text: string
   status: string
   party_id: string | null
+  external_id: string | null
 }
 
 export function inboundMessageCreateBody(input: {
@@ -84,6 +85,21 @@ export async function extractInboundMessage(messageId: string): Promise<{
     )
   }
   return (await response.json()) as { id: string; status: string; source_ref: string }
+}
+
+export async function ingestGraphInboundMessage(body: {
+  external_id: string
+  source_ref: string
+  from_address: string
+  subject: string
+  body_text: string
+}): Promise<InboundMessage> {
+  const response = await fetch("/api/v1/inbound-messages/ingest-graph", {
+    method: "POST",
+    headers: { ...requireAuthHeaders(), "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  })
+  return readInboundMessage(response, "Błąd ingestu Graph")
 }
 
 export async function resolveInboundMessageEmail(

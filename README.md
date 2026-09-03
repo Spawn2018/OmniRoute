@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **77.0** S14 `lock_version` na `operator_decision` (M-71)
+- **Ostatni plaster:** **78.0** S15 ingest Graph na `inbound_message` (M-32)
 - **Etap:** Plan
-- **Następny:** `/plaster` **78.0** — ingest Graph na `inbound_message` (M-32). `graph://` + `external_id`. Nie live HTTP. Nie send. Nie F9.1.
+- **Następny:** `/plan-modul` **S16** — outbox M-02, pierwsze zdarzenie „wiadomość zapisana”. Nie live HTTP. Nie send. Nie F9.1.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

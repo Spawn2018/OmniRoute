@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** `/plaster` **78.0** — ingest Graph na `inbound_message` (M-32). `graph://` + `external_id`. Nie live HTTP. Nie send. Nie F9.1.
+**Następny (zablokowany):** `/plan-modul` **S16** — outbox M-02, pierwsze zdarzenie „wiadomość zapisana”. Nie live HTTP. Nie send. Nie F9.1.
 <!-- os-status:end -->
 
 ```mermaid
@@ -386,7 +386,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E2** | Testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy) | 61.0 | zamknięty (`docs/deltas/archived/61.0-alembic-quote-budget.md`) |
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | 62.0 | zamknięty (`docs/deltas/archived/62.0-operator-howto-c4.md`) |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | 63.0 | zamknięty (`docs/deltas/archived/63.0-threat-model-codeql.md`) |
-| po Q-E4 | **Fala S**, S1–S14 zamknięte; S15 plaster 78.0 | Plan → plaster | **następny** |
+| po Q-E4 | **Fala S**, S1–S15 zamknięte; S16 outbox | Plan → plaster | **następny** |
 
 ### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
 
@@ -420,8 +420,8 @@ Reguły kolejności (żeby `/noc` nie złożył awarii):
 | S12 | Żywe **M-34** tabela powiadomień | 75.0 | zamknięty (`docs/deltas/archived/75.0-operator-notice-table.md`) | Tabela. Filtr 27.0 leftover. Nie send |
 | S13 | Żywe **M-57** draft maila obok extract | 76.0 | zamknięty (`docs/deltas/archived/76.0-mail-draft.md`) | Tabela. Accept przez S11. Nie send |
 | S14 | Arch. **M-187** lock optymistyczny na decyzji | 77.0 | zamknięty (`docs/deltas/archived/77.0-decision-lock.md`) | `lock_version`. Nie nowa tabela |
-| **S15** | Żywe **M-32** tylko ingest Graph | 78.0 | **następny** | `graph://` + `external_id`. Nie live HTTP. Nie send |
-| **S16** | Żywe **M-02** outbox | Plan → plaster | po S15 | Pierwsze zdarzenie „wiadomość zapisana”. Tu odblokowanie parked M-02 |
+| **S15** | Żywe **M-32** tylko ingest Graph | 78.0 | zamknięty (`docs/deltas/archived/78.0-graph-ingest.md`) | `graph://` + `external_id`. Live HTTP leftover. Nie send |
+| **S16** | Żywe **M-02** outbox | Plan → plaster | **następny** | Pierwsze zdarzenie „wiadomość zapisana”. Tu odblokowanie parked M-02 |
 | S17 | Żywe **M-32** ingest IMAP / EmailEngine | Plan → plaster | po S16 | Ta sama tabela. Nie Graph+IMAP w jednym commicie |
 | **S18** | Żywe **M-33** wysyłka po S11+S10 | Plan → plaster | po S17 | Graph send albo świadomy `mailto:`. Auto-send zakazane |
 | S19 | Żywe **M-12** `network_member` | Plan → plaster | po S18 | Nie scraping |
@@ -531,7 +531,7 @@ Nie implementuj z tej tabeli „na zapas”. To mapa, żeby nic nie zginęło. S
 | M-21 | Silnik wyceny | DONE 2.0 + 5.1 POL/POD/`party_id` |
 | M-22 | Narzuty i marża | COVERED (`charge`) |
 | M-23–M-31 | Ofertowanie | Fala 3 |
-| M-32–M-34 | Komunikacja | DONE fundament (25.0–27.0, 64.0, 66.0); pogłębienie **S4–S18** |
+| M-32–M-34 | Komunikacja | DONE fundament (25.0–27.0, 64.0, 66.0, 78.0 ingest `graph://`); pogłębienie **S4–S18** |
 | M-35–M-39 | Zlecenie / EDI | DONE fundament (28.0–32.0) |
 | M-40–M-47 | Finanse | DONE fundament (33.0–40.0) |
 | M-48–M-51 | Modały | Fala 7 (M-48–M-51 DONE fundament 41.0–44.0) |

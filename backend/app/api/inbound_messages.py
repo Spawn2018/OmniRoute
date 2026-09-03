@@ -23,6 +23,16 @@ class InboundMessageCreate(BaseModel):
     body_text: str = Field(min_length=1, max_length=65536)
 
 
+class InboundGraphIngest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    external_id: str = Field(min_length=1, max_length=256)
+    source_ref: str = Field(min_length=1, max_length=512)
+    from_address: str = Field(min_length=1, max_length=320)
+    subject: str = Field(min_length=1, max_length=512)
+    body_text: str = Field(min_length=1, max_length=65536)
+
+
 class InboundMessageResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
@@ -34,6 +44,7 @@ class InboundMessageResponse(BaseModel):
     body_text: str
     status: str
     party_id: UUID | None
+    external_id: str | None
 
 
 class InboundExtractResponse(BaseModel):
@@ -65,6 +76,26 @@ async def create_inbound_message(
     row = await service.create_message(
         organization_id=identity.organization_id,
         user_id=identity.user_id,
+        source_ref=body.source_ref,
+        from_address=body.from_address,
+        subject=body.subject,
+        body_text=body.body_text,
+    )
+    await session.commit()
+    return InboundMessageResponse.model_validate(row)
+
+
+@router.post("/ingest-graph", response_model=InboundMessageResponse)
+async def ingest_graph_inbound_message(
+    body: InboundGraphIngest,
+    _authz: None = Depends(require_permission("can_manage_inbound_messages", "organization")),
+    session: AsyncSession = Depends(require_tenant_session),
+    identity: SessionIdentity = Depends(get_current_identity),
+) -> InboundMessageResponse:
+    row = await InboundMessageService(session).ingest_graph(
+        organization_id=identity.organization_id,
+        user_id=identity.user_id,
+        external_id=body.external_id,
         source_ref=body.source_ref,
         from_address=body.from_address,
         subject=body.subject,

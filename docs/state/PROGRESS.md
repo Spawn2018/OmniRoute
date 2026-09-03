@@ -224,3 +224,4 @@
 | 2026-09-03 | Plan 77.0 | M-71 | S14: `lock_version` na decyzji. Delta zaakceptowana (`/noc`). Dwa Akceptuj = jeden konflikt. Następny: `/plaster` 77.0. |
 | 2026-09-03 | 77.0 | M-71 | `lock_version` na decide. Dwa Akceptuj = jeden konflikt. Nie send. Następny: S15 Plan. |
 | 2026-09-03 | Plan 78.0 | M-32 | S15: ingest Graph (`graph://`, `external_id`). Delta zaakceptowana (`/noc`). Nie live HTTP. Następny: `/plaster` 78.0. |
+| 2026-09-03 | 78.0 | M-32 | Ingest `graph://` + `external_id` na `inbound_message`. Ten sam id = ten sam wiersz. Nie live HTTP. Nie send. Następny: S16 Plan. |

@@ -42,6 +42,9 @@ def test_inbound_service_does_not_import_parties_or_extraction() -> None:
     assert "app.models.party" not in service
     assert "app.services.extraction" not in service
     assert "app.models.extraction_draft" not in service
+    assert "app.services.quotations" not in service
+    assert "app.services.mail_drafts" not in service
+    assert "app.services.operator_decisions" not in service
 
 
 def test_importlinter_lists_inbound_messages_as_independent() -> None:
@@ -90,6 +93,15 @@ def test_service_has_no_graph_or_imap() -> None:
     assert "graph.microsoft" not in lowered
     assert "imap" not in lowered
     assert "httpx" not in lowered
+
+
+def test_migration_038_adds_graph_external_id() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "038_inbound_graph_ingest.py"
+    ).read_text(encoding="utf-8")
+    assert "external_id" in source
+    assert "graph" in source
+    assert "037_operator_decision_lock" in source
 
 
 def test_inbound_extract_api_does_not_accept_rates() -> None:

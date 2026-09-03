@@ -20,6 +20,7 @@ import {
   extractInboundMessage,
   fetchInboundMessages,
   inboundMessageCreateBody,
+  ingestGraphInboundMessage,
   resolveInboundMessageEmail,
   type InboundMessage,
 } from "@/lib/inbound-messages-api"
@@ -45,6 +46,10 @@ const columns = [
     cell: (info) => info.getValue() ?? "—",
   }),
   helper.accessor("source_ref", { header: "Źródło" }),
+  helper.accessor("external_id", {
+    header: "external_id",
+    cell: (info) => info.getValue() ?? "—",
+  }),
 ]
 const COLUMN_LABELS = {
   from_address: "Nadawca",
@@ -52,6 +57,7 @@ const COLUMN_LABELS = {
   status: "Status",
   party_id: "party_id",
   source_ref: "Źródło",
+  external_id: "external_id",
 }
 
 const EMPTY_DRAFT = {
@@ -69,6 +75,13 @@ export function MailIntegrationPage() {
   const [email, setEmail] = useState("")
   const [resolved, setResolved] = useState<Party | null>(null)
   const [draft, setDraft] = useState(EMPTY_DRAFT)
+  const [graphDraft, setGraphDraft] = useState({
+    external_id: "",
+    source_ref: "graph://inbox/",
+    from_address: "",
+    subject: "",
+    body_text: "",
+  })
   const [hsCodeId, setHsCodeId] = useState("")
 
   const parties = useQuery({
@@ -121,6 +134,21 @@ export function MailIntegrationPage() {
     mutationFn: () => createInboundMessage(inboundMessageCreateBody(draft)),
     onSuccess: () => {
       setDraft(EMPTY_DRAFT)
+      void queryClient.invalidateQueries({
+        queryKey: ["inbound-messages", ctx.organizationId],
+      })
+    },
+  })
+  const ingestGraph = useMutation({
+    mutationFn: () => ingestGraphInboundMessage(graphDraft),
+    onSuccess: () => {
+      setGraphDraft({
+        external_id: "",
+        source_ref: "graph://inbox/",
+        from_address: "",
+        subject: "",
+        body_text: "",
+      })
       void queryClient.invalidateQueries({
         queryKey: ["inbound-messages", ctx.organizationId],
       })
@@ -213,6 +241,63 @@ export function MailIntegrationPage() {
           />
           <Button type="submit" disabled={!ready || createMutation.isPending}>
             Zapisz fixture
+          </Button>
+        </form>
+        <form
+          className="grid gap-2 rounded-md border border-border bg-card p-3"
+          data-inbound-message="graph-ingest"
+          onSubmit={(event) => {
+            event.preventDefault()
+            if (ready) ingestGraph.mutate()
+          }}
+        >
+          <Input
+            aria-label="Identyfikator Graph"
+            placeholder="external_id"
+            value={graphDraft.external_id}
+            onChange={(event) =>
+              setGraphDraft({ ...graphDraft, external_id: event.target.value })
+            }
+            required
+          />
+          <Input
+            aria-label="Źródło Graph"
+            placeholder="graph://inbox/1"
+            value={graphDraft.source_ref}
+            onChange={(event) =>
+              setGraphDraft({ ...graphDraft, source_ref: event.target.value })
+            }
+            required
+          />
+          <Input
+            aria-label="Nadawca Graph"
+            placeholder="ops@carrier.example"
+            value={graphDraft.from_address}
+            onChange={(event) =>
+              setGraphDraft({ ...graphDraft, from_address: event.target.value })
+            }
+            required
+          />
+          <Input
+            aria-label="Temat Graph"
+            placeholder="RFQ"
+            value={graphDraft.subject}
+            onChange={(event) =>
+              setGraphDraft({ ...graphDraft, subject: event.target.value })
+            }
+            required
+          />
+          <textarea
+            aria-label="Treść Graph"
+            className="min-h-24 rounded-md border border-border bg-background px-2 py-1 text-sm"
+            value={graphDraft.body_text}
+            onChange={(event) =>
+              setGraphDraft({ ...graphDraft, body_text: event.target.value })
+            }
+            required
+          />
+          <Button type="submit" disabled={!ready || ingestGraph.isPending}>
+            Ingest Graph
           </Button>
         </form>
         <CatalogLoadedTable

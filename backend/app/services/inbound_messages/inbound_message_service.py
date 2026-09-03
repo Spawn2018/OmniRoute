@@ -6,7 +6,9 @@ from app.domain.errors import ResourceNotFound
 from app.domain.inbound_message import (
     inbound_draft_status,
     require_body_text,
+    require_external_id,
     require_from_address,
+    require_graph_source_ref,
     require_inbound_source_ref,
     require_subject,
 )
@@ -56,3 +58,31 @@ class InboundMessageService:
         row.party_id = party_id
         await self._messages.add(row)
         return row
+
+    async def ingest_graph(
+        self,
+        *,
+        organization_id: UUID,
+        user_id: UUID,
+        external_id: str,
+        source_ref: str,
+        from_address: str,
+        subject: str,
+        body_text: str,
+    ) -> InboundMessage:
+        token = require_external_id(external_id)
+        found = await self._messages.get_by_external_id(token)
+        if found is not None:
+            return found
+        row = InboundMessage(
+            id=uuid4(),
+            organization_id=organization_id,
+            source_ref=require_graph_source_ref(source_ref),
+            from_address=require_from_address(from_address),
+            subject=require_subject(subject),
+            body_text=require_body_text(body_text),
+            status=inbound_draft_status(),
+            external_id=token,
+            created_by=user_id,
+        )
+        return await self._messages.add(row)

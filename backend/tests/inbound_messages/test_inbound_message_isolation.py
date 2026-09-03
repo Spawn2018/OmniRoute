@@ -91,3 +91,43 @@ async def test_inbound_message_rejects_foreign_party_id(session, two_tenants) ->
     mail_a.party_id = party_b.id
     with pytest.raises(IntegrityError):
         await session.flush()
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_inbound_graph_external_id_unique_per_tenant(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    org_b = two_tenants["org_b"]
+    user_a = two_tenants["user_a"]
+    user_b = two_tenants["user_b"]
+    shared = "AAMk-shared"
+    row_a = _message(organization_id=org_a.id, user_id=user_a.id, suffix="ga")
+    row_a.source_ref = "graph://inbox/a"
+    row_a.external_id = shared
+    row_b = _message(organization_id=org_b.id, user_id=user_b.id, suffix="gb")
+    row_b.source_ref = "graph://inbox/b"
+    row_b.external_id = shared
+
+    await bind_tenant(session, org_a.id)
+    session.add(row_a)
+    await session.flush()
+    await bind_tenant(session, org_b.id)
+    session.add(row_b)
+    await session.flush()
+
+    session.expunge_all()
+    await bind_tenant(session, org_a.id)
+    visible_a = list((await session.scalars(select(InboundMessage))).all())
+    assert {row.id for row in visible_a} == {row_a.id}
+    session.expunge_all()
+    await bind_tenant(session, org_b.id)
+    visible_b = list((await session.scalars(select(InboundMessage))).all())
+    assert {row.id for row in visible_b} == {row_b.id}
+
+    dup = _message(organization_id=org_a.id, user_id=user_a.id, suffix="gd")
+    dup.source_ref = "graph://inbox/dup"
+    dup.external_id = shared
+    await bind_tenant(session, org_a.id)
+    session.add(dup)
+    with pytest.raises(IntegrityError):
+        await session.flush()

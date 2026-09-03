@@ -1102,6 +1102,52 @@
         ]
       }
     },
+    "/api/v1/inbound-messages/ingest-graph": {
+      "post": {
+        "tags": [
+          "inbound-messages"
+        ],
+        "summary": "Ingest Graph Inbound Message",
+        "operationId": "ingest_graph_inbound_message_api_v1_inbound_messages_ingest_graph_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InboundGraphIngest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InboundMessageResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/inbound-messages/{message_id}/resolve-email": {
       "post": {
         "tags": [
@@ -6137,6 +6183,50 @@
         ],
         "title": "InboundExtractResponse"
       },
+      "InboundGraphIngest": {
+        "properties": {
+          "external_id": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "External Id"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 512,
+            "minLength": 1,
+            "title": "Source Ref"
+          },
+          "from_address": {
+            "type": "string",
+            "maxLength": 320,
+            "minLength": 1,
+            "title": "From Address"
+          },
+          "subject": {
+            "type": "string",
+            "maxLength": 512,
+            "minLength": 1,
+            "title": "Subject"
+          },
+          "body_text": {
+            "type": "string",
+            "maxLength": 65536,
+            "minLength": 1,
+            "title": "Body Text"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "external_id",
+          "source_ref",
+          "from_address",
+          "subject",
+          "body_text"
+        ],
+        "title": "InboundGraphIngest"
+      },
       "InboundMessageCreate": {
         "properties": {
           "source_ref": {
@@ -6217,6 +6307,17 @@
               }
             ],
             "title": "Party Id"
+          },
+          "external_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "External Id"
           }
         },
         "type": "object",
@@ -6228,7 +6329,8 @@
           "subject",
           "body_text",
           "status",
-          "party_id"
+          "party_id",
+          "external_id"
         ],
         "title": "InboundMessageResponse"
       },

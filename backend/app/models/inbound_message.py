@@ -4,9 +4,11 @@ from sqlalchemy import (
     CheckConstraint,
     ForeignKey,
     ForeignKeyConstraint,
+    Index,
     String,
     Text,
     UniqueConstraint,
+    text,
 )
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
@@ -20,8 +22,15 @@ class InboundMessage(Base, TimestampMixin):
         UniqueConstraint("organization_id", "id", name="uq_inbound_message_org_id"),
         CheckConstraint("status = 'draft'", name="ck_inbound_message_status_draft"),
         CheckConstraint(
-            "source_ref ~ '^(fixture|synth)://'",
+            "source_ref ~ '^(fixture|synth|graph)://'",
             name="ck_inbound_message_source_fixture",
+        ),
+        Index(
+            "uq_inbound_message_org_external",
+            "organization_id",
+            "external_id",
+            unique=True,
+            postgresql_where=text("external_id IS NOT NULL"),
         ),
         ForeignKeyConstraint(
             ["organization_id", "party_id"],
@@ -44,3 +53,4 @@ class InboundMessage(Base, TimestampMixin):
     body_text: Mapped[str] = mapped_column(Text(), nullable=False)
     status: Mapped[str] = mapped_column(String(8), nullable=False)
     party_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
+    external_id: Mapped[str | None] = mapped_column(String(256), nullable=True)

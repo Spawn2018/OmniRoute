@@ -1,6 +1,6 @@
 # BC inbound_message (M-32)
 
-Wiadomość przychodząca per tenant: fixture, status `draft`. Nie IMAP, nie Graph, nie send.
+Wiadomość przychodząca per tenant: fixture albo ingest `graph://` + `external_id`. Nie IMAP, nie live HTTP, nie send.
 
 ## Dozwolone zależności
 - `app.models.inbound_message`
