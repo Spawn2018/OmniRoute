@@ -3451,6 +3451,80 @@
         }
       }
     },
+    "/api/v1/quote-invoice-settlements": {
+      "get": {
+        "tags": [
+          "quote-invoice-settlements"
+        ],
+        "summary": "List Quote Invoice Settlements",
+        "operationId": "list_quote_invoice_settlements_api_v1_quote_invoice_settlements_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/QuoteInvoiceSettlementResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Quote Invoice Settlements Api V1 Quote Invoice Settlements Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "quote-invoice-settlements"
+        ],
+        "summary": "Create Quote Invoice Settlement",
+        "operationId": "create_quote_invoice_settlement_api_v1_quote_invoice_settlements_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuoteInvoiceSettlementCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuoteInvoiceSettlementResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/organization-settings": {
       "get": {
         "tags": [
@@ -9469,6 +9543,69 @@
           "noted_credit_review_id"
         ],
         "title": "QuotationResponse"
+      },
+      "QuoteInvoiceSettlementCreate": {
+        "properties": {
+          "quotation_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Quotation Id"
+          },
+          "sales_invoice_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Sales Invoice Id"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "quotation_id",
+          "sales_invoice_id",
+          "source_ref"
+        ],
+        "title": "QuoteInvoiceSettlementCreate"
+      },
+      "QuoteInvoiceSettlementResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "quotation_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Quotation Id"
+          },
+          "sales_invoice_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Sales Invoice Id"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "quotation_id",
+          "sales_invoice_id",
+          "source_ref"
+        ],
+        "title": "QuoteInvoiceSettlementResponse"
       },
       "RateLineCreate": {
         "properties": {

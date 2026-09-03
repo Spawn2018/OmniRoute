@@ -43,10 +43,14 @@ class SalesInvoiceService:
         )
         return await self._invoices.add(row)
 
-    async def note_ksef(self, invoice_id: UUID, ksef_ref: object) -> SalesInvoice:
-        row = await self._invoices.get(invoice_id)
-        if row is None:
+    async def get_invoice(self, invoice_id: UUID) -> SalesInvoice:
+        found = await self._invoices.get(invoice_id)
+        if found is None:
             raise ResourceNotFound("nieznana faktura")
+        return found
+
+    async def note_ksef(self, invoice_id: UUID, ksef_ref: object) -> SalesInvoice:
+        row = await self.get_invoice(invoice_id)
         row.ksef_ref = require_ksef_ref(ksef_ref)
         row.ksef_noted_at = datetime.now(UTC)
         return row

@@ -2173,6 +2173,50 @@ export type QuotationResponse = {
 };
 
 /**
+ * QuoteInvoiceSettlementCreate
+ */
+export type QuoteInvoiceSettlementCreate = {
+    /**
+     * Quotation Id
+     */
+    quotation_id: string;
+    /**
+     * Sales Invoice Id
+     */
+    sales_invoice_id: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * QuoteInvoiceSettlementResponse
+ */
+export type QuoteInvoiceSettlementResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Quotation Id
+     */
+    quotation_id: string;
+    /**
+     * Sales Invoice Id
+     */
+    sales_invoice_id: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * RateLineCreate
  */
 export type RateLineCreate = {
@@ -4834,6 +4878,49 @@ export type NoteSalesInvoiceKsefApiV1SalesInvoicesInvoiceIdNoteKsefPostResponses
 };
 
 export type NoteSalesInvoiceKsefApiV1SalesInvoicesInvoiceIdNoteKsefPostResponse = NoteSalesInvoiceKsefApiV1SalesInvoicesInvoiceIdNoteKsefPostResponses[keyof NoteSalesInvoiceKsefApiV1SalesInvoicesInvoiceIdNoteKsefPostResponses];
+
+export type ListQuoteInvoiceSettlementsApiV1QuoteInvoiceSettlementsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/quote-invoice-settlements';
+};
+
+export type ListQuoteInvoiceSettlementsApiV1QuoteInvoiceSettlementsGetResponses = {
+    /**
+     * Response List Quote Invoice Settlements Api V1 Quote Invoice Settlements Get
+     *
+     * Successful Response
+     */
+    200: Array<QuoteInvoiceSettlementResponse>;
+};
+
+export type ListQuoteInvoiceSettlementsApiV1QuoteInvoiceSettlementsGetResponse = ListQuoteInvoiceSettlementsApiV1QuoteInvoiceSettlementsGetResponses[keyof ListQuoteInvoiceSettlementsApiV1QuoteInvoiceSettlementsGetResponses];
+
+export type CreateQuoteInvoiceSettlementApiV1QuoteInvoiceSettlementsPostData = {
+    body: QuoteInvoiceSettlementCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/quote-invoice-settlements';
+};
+
+export type CreateQuoteInvoiceSettlementApiV1QuoteInvoiceSettlementsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateQuoteInvoiceSettlementApiV1QuoteInvoiceSettlementsPostError = CreateQuoteInvoiceSettlementApiV1QuoteInvoiceSettlementsPostErrors[keyof CreateQuoteInvoiceSettlementApiV1QuoteInvoiceSettlementsPostErrors];
+
+export type CreateQuoteInvoiceSettlementApiV1QuoteInvoiceSettlementsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: QuoteInvoiceSettlementResponse;
+};
+
+export type CreateQuoteInvoiceSettlementApiV1QuoteInvoiceSettlementsPostResponse = CreateQuoteInvoiceSettlementApiV1QuoteInvoiceSettlementsPostResponses[keyof CreateQuoteInvoiceSettlementApiV1QuoteInvoiceSettlementsPostResponses];
 
 export type ListOrganizationSettingsApiV1OrganizationSettingsGetData = {
     body?: never;

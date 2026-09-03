@@ -49,6 +49,7 @@ from app.models.shipment_document import ShipmentDocument  # noqa: F401
 from app.models.operational_exception import OperationalException  # noqa: F401
 from app.models.edi_message import EdiMessage  # noqa: F401
 from app.models.sales_invoice import SalesInvoice  # noqa: F401
+from app.models.quote_invoice_settlement import QuoteInvoiceSettlement  # noqa: F401
 
 config = context.config
 # Testy nadpisują URL na omniroute_test. Domyślnie owner z settings — nie runtime omniroute_app.

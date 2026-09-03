@@ -129,7 +129,9 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **97.0 DONE:** `/invoices` zapis `ksef_ref` na `sales_invoice`. Nie live HTTP. Nie XML.
 - **97.0 leftover — live HTTP MF / XML / FA(3) (dlaczego nie w tym plasterze):** brak umowy i kasy klucza tenanta. Licznik leftover S8. M-41 rozliczenie = S36.
 - **34.0 DONE:** `/quote-invoices` odczyt wyceny i `sell` z `charge` po `rate_line_id`. Nie nowa tabela. JS nie odejmuje.
-- **34.0 leftover — tabela rozliczenia / FK / match_rate (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. `quotation_id` na `charge` = zgadywanie. SQL-refresh `quote_invoice_match_rate` leftover 10.0. M-42 bank **DONE w 35.0**.
+- **34.0 leftover — tabela rozliczenia / FK / match_rate (dlaczego nie w tym plasterze):** tabela **DONE w 98.0**. `quotation_id` na `charge` leftover. SQL-refresh `quote_invoice_match_rate` leftover 10.0. M-42 bank **DONE w 35.0**.
+- **98.0 DONE:** `/quote-invoices` zapis pary wycena+faktura. RLS. Nie kwota. Nie odejmowanie.
+- **98.0 leftover — match `shipment.quotation_id` / `quote_invoice_match_rate` (dlaczego nie w tym plasterze):** operator podaje dwa istniejące ID. SQL-refresh leftover 10.0. S37 bank.
 - **35.0 DONE:** `/payments` odczyt IBAN kontrahenta i `sell` z `charge`. Nie nowa tabela. Nie N+1. JS nie odejmuje.
 - **35.0 leftover — SEPA / wyciąg / tabela płatności (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. PSD2 leftover. M-43 koszt pieniądza **DONE w 36.0**.
 - **36.0 DONE:** `/money-cost` odczyt NBP i `buy` z `charge`. Nie nowa tabela. JS nie mnoży kursem.

@@ -21,7 +21,7 @@ export const OPS_JOBS = [
   {
     route: BUSINESS_LISTS.quoteInvoiceSettlement.route,
     label: "Rozliczenie wyceny",
-    job: "wycena i sell po rate_line_id",
+    job: "zapis rozliczenia wyceny z fakturą",
   },
   {
     route: BUSINESS_LISTS.bankPayment.route,
@@ -309,6 +309,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "95.0": "/edi",
   "96.0": "/invoices",
   "97.0": "/invoices",
+  "98.0": "/quote-invoices",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

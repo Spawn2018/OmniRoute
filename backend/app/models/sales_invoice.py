@@ -9,6 +9,7 @@ from sqlalchemy import (
     Index,
     String,
     Text,
+    UniqueConstraint,
 )
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
@@ -28,6 +29,7 @@ class SalesInvoice(Base, TimestampMixin):
             name="fk_sales_invoice_shipment",
             ondelete="RESTRICT",
         ),
+        UniqueConstraint("organization_id", "id", name="uq_sales_invoice_org_id"),
         Index("ix_sales_invoice_org_shipment", "organization_id", "shipment_id"),
     )
 

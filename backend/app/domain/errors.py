@@ -286,6 +286,10 @@ class InvalidSalesInvoice(DomainError):
     """Faktura: kind z allowlisty i source_ref zapisu — nie KSeF, nie kwota."""
 
 
+class InvalidQuoteInvoiceSettlement(DomainError):
+    """Rozliczenie: para wycena+faktura i source_ref — nie kwota, nie druga marża."""
+
+
 class InvalidPartyScorecard(DomainError):
     """Wskaźnik karty poza zakresem albo nie jest Decimal — nie float, nie scoring osoby."""
 

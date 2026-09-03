@@ -44,6 +44,7 @@ modules =
     app.services.operational_exceptions
     app.services.edi_messages
     app.services.sales_invoices
+    app.services.quote_invoice_settlements
 
 [importlinter:contract:integracje]
 name = Integracje nie znają serwisów
@@ -139,3 +140,6 @@ forbidden_modules =
     app.services.sales_invoices
     app.repositories.sales_invoices
     app.models.sales_invoice
+    app.services.quote_invoice_settlements
+    app.repositories.quote_invoice_settlements
+    app.models.quote_invoice_settlement

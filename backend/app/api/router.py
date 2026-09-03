@@ -27,6 +27,7 @@ from app.api import (
     port_surcharges,
     ports,
     quotations,
+    quote_invoice_settlements,
     rate_lines,
     sales_invoices,
     session,
@@ -66,6 +67,7 @@ api_router.include_router(shipment_documents.router)
 api_router.include_router(operational_exceptions.router)
 api_router.include_router(edi_messages.router)
 api_router.include_router(sales_invoices.router)
+api_router.include_router(quote_invoice_settlements.router)
 api_router.include_router(organization_settings.router)
 api_router.include_router(parties.router)
 api_router.include_router(party_scorecards.router)

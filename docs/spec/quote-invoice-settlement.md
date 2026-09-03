@@ -1,26 +1,30 @@
-# M-41 rozliczenie wyceny z fakturą — tablica `quotation` + `sell` z `charge`
+# M-41 rozliczenie wyceny z fakturą — tabela pary
 
-**Moduł żywy:** M-41 (token UI `quote_invoice_settlement`, nie tabela) + ekrany M-21 `quotation` i M-40 `sales_invoice`  
-**Plaster:** **34.0** (zamknięty)  
-**Status:** operator **widzi** wycenę i sprzedaż z `charge` przy wspólnym `rate_line_id`. Nie tabela. Nie odejmowanie.
+**Moduł żywy:** M-41 (tabela `quote_invoice_settlement`) + ekrany M-21 `quotation` i M-40 `sales_invoice`  
+**Plaster:** **98.0** (S36) po fundamencie **34.0**  
+**Status:** operator **zapisuje** parę wycena + faktura. Kwoty zostają na `charge`. Nie odejmowanie.
 
-Delta: [docs/deltas/archived/34.0-quote-invoice-settlement.md](../deltas/archived/34.0-quote-invoice-settlement.md).
+Delta: [docs/deltas/archived/98.0-quote-invoice-settlement.md](../deltas/archived/98.0-quote-invoice-settlement.md). Fundament: [docs/deltas/archived/34.0-quote-invoice-settlement.md](../deltas/archived/34.0-quote-invoice-settlement.md).
 
 ## 34.0 tablica odczytu na `/quote-invoices`
 
+Zastąpiona w 98.0. Historycznie: lista wyceny i `sell_amount` z `charge` po `rate_line_id` bez tabeli.
+
+## 98.0 tabela na `/quote-invoices`
+
 ### Zakres
 
-- Ekran `/quote-invoices`: `quotationInvoiceSettlements(quotations, charges)` po `rate_line_id`
-- Kwota wyceny i `sell_amount` przez `<Money/>`. Link do `/quotations` i `/invoices`
-- Zero nowej tabeli. Zero FK. Zero odejmowania w JS
+- Tabela `quote_invoice_settlement` per tenant, FK do `quotation` i `sales_invoice`, RLS FORCE
+- Ekran `/quote-invoices`: lista wierszy + „Zapisz rozliczenie”. Link do `/quotations` i `/invoices`
+- `source_ref` obowiązkowy. Unikat pary wycena+faktura w tenancie
 
-### Poza 34.0
+### Poza 98.0
 
-Tabela rozliczenia · `quotation_id` na `charge` · KSeF · numer FV · SQL-refresh `quote_invoice_match_rate`
+Kwota / marża na wierszu · `quotation_id` na `charge` · match do `shipment.quotation_id` · `quote_invoice_match_rate` · S37 bank · F9.1
 
 ### HC
 
-- Marża zostaje w `charge`. Tablica nie odejmuje kwot.
+- Marża zostaje w `charge`. Wiersz rozliczenia nie niesie kwoty.
 - LLM nie liczy różnicy wycena vs FV.
 - HITL zostaje na ekstrakcji.
-- ExtractionService nie importuje quotations / charges
+- ExtractionService nie importuje rozliczeń ani quotations
