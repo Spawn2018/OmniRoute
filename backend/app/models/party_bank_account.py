@@ -8,6 +8,7 @@ from sqlalchemy import (
     ForeignKey,
     ForeignKeyConstraint,
     String,
+    UniqueConstraint,
 )
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
@@ -28,6 +29,7 @@ class PartyBankAccount(Base, TimestampMixin):
             "whitelist_status IN ('pending','listed','not_listed','unavailable')",
             name="ck_party_bank_whitelist",
         ),
+        UniqueConstraint("organization_id", "id", name="uq_party_bank_account_org_id"),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)

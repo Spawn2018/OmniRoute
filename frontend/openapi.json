@@ -3525,6 +3525,80 @@
         ]
       }
     },
+    "/api/v1/bank-payments": {
+      "get": {
+        "tags": [
+          "bank-payments"
+        ],
+        "summary": "List Bank Payments",
+        "operationId": "list_bank_payments_api_v1_bank_payments_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/BankPaymentResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Bank Payments Api V1 Bank Payments Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "bank-payments"
+        ],
+        "summary": "Create Bank Payment",
+        "operationId": "create_bank_payment_api_v1_bank_payments_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BankPaymentCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BankPaymentResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/organization-settings": {
       "get": {
         "tags": [
@@ -5979,6 +6053,69 @@
           "whitelist_status"
         ],
         "title": "BankAccountResponse"
+      },
+      "BankPaymentCreate": {
+        "properties": {
+          "sales_invoice_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Sales Invoice Id"
+          },
+          "party_bank_account_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Party Bank Account Id"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "sales_invoice_id",
+          "party_bank_account_id",
+          "source_ref"
+        ],
+        "title": "BankPaymentCreate"
+      },
+      "BankPaymentResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "sales_invoice_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Sales Invoice Id"
+          },
+          "party_bank_account_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Party Bank Account Id"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "sales_invoice_id",
+          "party_bank_account_id",
+          "source_ref"
+        ],
+        "title": "BankPaymentResponse"
       },
       "CarrierInquiryCreate": {
         "properties": {

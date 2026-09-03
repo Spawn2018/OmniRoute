@@ -49,6 +49,9 @@ class PartyRepository:
         await self._session.flush()
         return row
 
+    async def get_bank_account(self, account_id: UUID) -> PartyBankAccount | None:
+        return await self._session.get(PartyBankAccount, account_id)
+
     async def list_bank_accounts(self, party_id: UUID) -> list[PartyBankAccount]:
         result = await self._session.scalars(
             select(PartyBankAccount).where(PartyBankAccount.party_id == party_id),

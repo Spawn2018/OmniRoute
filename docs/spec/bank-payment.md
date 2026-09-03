@@ -1,26 +1,27 @@
-# M-42 bank i płatności — tablica IBAN + `sell` z `charge`
+# M-42 bank i płatności — tabela faktura + rachunek
 
-**Moduł żywy:** M-42 (token UI `bank_payment`, nie tabela) + katalog M-10 `party_bank_account` + M-08 `charge`  
-**Plaster:** **35.0** (zamknięty)  
-**Status:** operator **widzi** rachunek kontrahenta i sprzedaż z `charge`. Nie tabela płatności. Nie odejmowanie.
+**Moduł żywy:** M-42 (tabela `bank_payment`) + katalog M-10 `party_bank_account` + M-40 `sales_invoice`  
+**Plaster:** **99.0** (zamknięty) · fundament tablicy **35.0**  
+**Status:** operator **zapisuje** parę faktura + rachunek. Kwoty zostają na `charge`. Nie SEPA. Nie odejmowanie.
 
-Delta: [docs/deltas/archived/35.0-bank-payment.md](../deltas/archived/35.0-bank-payment.md).
+Delta: [docs/deltas/archived/99.0-bank-payment.md](../deltas/archived/99.0-bank-payment.md). How-to: [platnosc.md](../operator/platnosc.md).
 
-## 35.0 tablica odczytu na `/payments`
+## 99.0 zapis na `/payments`
 
 ### Zakres
 
-- Ekran `/payments`: wybór `party` + lista `party_bank_account` + `iban-lookup` + `sell_amount` z `charge`
-- Kwota przez `<Money/>`. Link do `/parties` i `/invoices`
-- Zero nowej tabeli. Zero N+1. Zero odejmowania w JS
+- Tabela `bank_payment` per tenant: `sales_invoice_id` + `party_bank_account_id` + `source_ref`
+- `GET/POST /bank-payments`. Nieznana faktura albo rachunek → 404. Pusty `source_ref` → 400
+- Ekran `/payments`: lista wierszy + „Zapisz płatność”. Link do `/parties` i `/invoices`
+- API składa odczyt faktury i rachunku. Serwis płatności nie importuje innych BC
 
-### Poza 35.0
+### Poza 99.0
 
-Tabela płatności · SEPA · wyciąg · PSD2 · zapis IBAN z tego ekranu
+SEPA · wyciąg · PSD2 · kwota na wierszu · zapis IBAN z tego ekranu · S38 koszt pieniądza
 
 ### HC
 
-- Marża zostaje w `charge`. Tablica nie odejmuje kwot.
+- Marża zostaje w `charge`. Wiersz nie kopiuje `sell`.
 - LLM nie liczy salda.
 - HITL zostaje na ekstrakcji.
-- ExtractionService nie importuje parties / charges
+- ExtractionService nie importuje płatności / invoices / parties

@@ -45,6 +45,7 @@ modules =
     app.services.edi_messages
     app.services.sales_invoices
     app.services.quote_invoice_settlements
+    app.services.bank_payments
 
 [importlinter:contract:integracje]
 name = Integracje nie znają serwisów
@@ -143,3 +144,6 @@ forbidden_modules =
     app.services.quote_invoice_settlements
     app.repositories.quote_invoice_settlements
     app.models.quote_invoice_settlement
+    app.services.bank_payments
+    app.repositories.bank_payments
+    app.models.bank_payment

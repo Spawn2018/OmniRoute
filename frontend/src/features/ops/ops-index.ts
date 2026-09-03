@@ -26,7 +26,7 @@ export const OPS_JOBS = [
   {
     route: BUSINESS_LISTS.bankPayment.route,
     label: "Bank i płatności",
-    job: "IBAN kontrahenta i sell z charge",
+    job: "zapis płatności na rachunek",
   },
   {
     route: BUSINESS_LISTS.moneyCost.route,
@@ -310,6 +310,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "96.0": "/invoices",
   "97.0": "/invoices",
   "98.0": "/quote-invoices",
+  "99.0": "/payments",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

@@ -25,7 +25,7 @@
 | komunikat EDI | edi_message | 95.0 tabela na zleceniu; 32.0 leftover tablica kanału; nie parser; nie live HTTP |
 | faktura sprzedaży | sales_invoice | 96.0 tabela na zleceniu; 97.0 `ksef_ref` wpisany; nie live HTTP; nie druga marża |
 | rozliczenie wyceny z fakturą | quote_invoice_settlement | 98.0 tabela pary wycena+faktura; nie kwota; nie druga marża |
-| bank i płatności | bank_payment | 35.0 tablica IBAN + `sell` z `charge`; nie tabela płatności; nie SEPA |
+| bank i płatności | bank_payment | 99.0 tabela pary faktura+rachunek; nie kwota; nie SEPA |
 | koszt pieniądza | money_cost | 36.0 tablica NBP + `buy` z `charge`; nie tabela odsetek; nie mnożenie |
 | różnica kursowa | fx_difference | 37.0 tablica NBP walut z `charge`/`quotation`; nie tabela; nie przeliczenie |
 | przepływ | cash_flow | 38.0 tablica `buy`/`sell` z `charge` jako wypływ/wpływ; nie tabela księgi; nie odejmowanie |

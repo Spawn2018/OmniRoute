@@ -49,6 +49,7 @@ from app.models.shipment_document import ShipmentDocument  # noqa: F401
 from app.models.operational_exception import OperationalException  # noqa: F401
 from app.models.edi_message import EdiMessage  # noqa: F401
 from app.models.sales_invoice import SalesInvoice  # noqa: F401
+from app.models.bank_payment import BankPayment  # noqa: F401
 from app.models.quote_invoice_settlement import QuoteInvoiceSettlement  # noqa: F401
 
 config = context.config

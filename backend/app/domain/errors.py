@@ -290,6 +290,10 @@ class InvalidQuoteInvoiceSettlement(DomainError):
     """Rozliczenie: para wycena+faktura i source_ref — nie kwota, nie druga marża."""
 
 
+class InvalidBankPayment(DomainError):
+    """Płatność: para faktura+rachunek i source_ref — nie kwota, nie SEPA."""
+
+
 class InvalidPartyScorecard(DomainError):
     """Wskaźnik karty poza zakresem albo nie jest Decimal — nie float, nie scoring osoby."""
 

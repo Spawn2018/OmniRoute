@@ -79,6 +79,50 @@ export type BankAccountResponse = {
 };
 
 /**
+ * BankPaymentCreate
+ */
+export type BankPaymentCreate = {
+    /**
+     * Sales Invoice Id
+     */
+    sales_invoice_id: string;
+    /**
+     * Party Bank Account Id
+     */
+    party_bank_account_id: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * BankPaymentResponse
+ */
+export type BankPaymentResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Sales Invoice Id
+     */
+    sales_invoice_id: string;
+    /**
+     * Party Bank Account Id
+     */
+    party_bank_account_id: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * CarrierInquiryCreate
  */
 export type CarrierInquiryCreate = {
@@ -4921,6 +4965,49 @@ export type CreateQuoteInvoiceSettlementApiV1QuoteInvoiceSettlementsPostResponse
 };
 
 export type CreateQuoteInvoiceSettlementApiV1QuoteInvoiceSettlementsPostResponse = CreateQuoteInvoiceSettlementApiV1QuoteInvoiceSettlementsPostResponses[keyof CreateQuoteInvoiceSettlementApiV1QuoteInvoiceSettlementsPostResponses];
+
+export type ListBankPaymentsApiV1BankPaymentsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/bank-payments';
+};
+
+export type ListBankPaymentsApiV1BankPaymentsGetResponses = {
+    /**
+     * Response List Bank Payments Api V1 Bank Payments Get
+     *
+     * Successful Response
+     */
+    200: Array<BankPaymentResponse>;
+};
+
+export type ListBankPaymentsApiV1BankPaymentsGetResponse = ListBankPaymentsApiV1BankPaymentsGetResponses[keyof ListBankPaymentsApiV1BankPaymentsGetResponses];
+
+export type CreateBankPaymentApiV1BankPaymentsPostData = {
+    body: BankPaymentCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/bank-payments';
+};
+
+export type CreateBankPaymentApiV1BankPaymentsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateBankPaymentApiV1BankPaymentsPostError = CreateBankPaymentApiV1BankPaymentsPostErrors[keyof CreateBankPaymentApiV1BankPaymentsPostErrors];
+
+export type CreateBankPaymentApiV1BankPaymentsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: BankPaymentResponse;
+};
+
+export type CreateBankPaymentApiV1BankPaymentsPostResponse = CreateBankPaymentApiV1BankPaymentsPostResponses[keyof CreateBankPaymentApiV1BankPaymentsPostResponses];
 
 export type ListOrganizationSettingsApiV1OrganizationSettingsGetData = {
     body?: never;

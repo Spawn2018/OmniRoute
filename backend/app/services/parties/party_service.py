@@ -207,6 +207,12 @@ class PartyService:
         )
         return await self._parties.add_contact(row)
 
+    async def get_bank_account(self, account_id: UUID) -> PartyBankAccount:
+        found = await self._parties.get_bank_account(account_id)
+        if found is None:
+            raise ResourceNotFound("nieznany rachunek")
+        return found
+
     async def list_bank_accounts(self, party_id: UUID) -> list[PartyBankAccount]:
         await self.get_party(party_id)
         return await self._parties.list_bank_accounts(party_id)
