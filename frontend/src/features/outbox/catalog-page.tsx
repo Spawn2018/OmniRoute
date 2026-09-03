@@ -57,7 +57,7 @@ export function OutboxCatalogPage() {
   })
   return (
     <section className="space-y-4" data-outbox="board">
-      <CatalogHeading title="Outbox" />
+      <CatalogHeading title="Outbox" subtitle="Zdarzenie po zapisie wiadomości. Nie dispatch." />
       <TenantSessionNotice />
       {query.isError ? <CatalogError error={query.error} /> : null}
       {createMutation.isError ? <CatalogError error={createMutation.error} /> : null}
