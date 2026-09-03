@@ -64,6 +64,12 @@ class QuotationService:
             customer_rfq_id=customer_rfq_id,
         )
 
+    async def get_quotation(self, quotation_id: UUID) -> Quotation:
+        found = await self._quotations.get(quotation_id)
+        if found is None:
+            raise ResourceNotFound("nieznana wycena")
+        return found
+
     async def quote_from_current_rate(
         self,
         *,

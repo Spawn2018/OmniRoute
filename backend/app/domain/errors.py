@@ -258,6 +258,14 @@ class InvalidCustomerRfq(DomainError):
     """Zapytanie ofertowe: fixture source_ref i wiadomość tenanta — nie kwota."""
 
 
+class ShipmentConflict(DomainError):
+    """Ta wycena już ma zlecenie w tenancie."""
+
+
+class InvalidShipment(DomainError):
+    """Zlecenie: source_ref zapisu i wycena z kontrahentem — nie kwota."""
+
+
 class InvalidPartyScorecard(DomainError):
     """Wskaźnik karty poza zakresem albo nie jest Decimal — nie float, nie scoring osoby."""
 

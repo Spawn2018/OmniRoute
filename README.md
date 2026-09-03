@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **89.0** S27 sankcje HTTP na `party` (M-53)
+- **Ostatni plaster:** **90.0** S28 tabela `shipment` (M-35)
 - **Etap:** Plan
-- **Następny:** `/plaster` **90.0** — S28 tabela `shipment` (M-35). Tablica wycen ≠ zlecenie. Nie F9.1.
+- **Następny:** `/plan-modul` **S29** — zdarzenia trackingu (M-36). Nie mapa w paczce JS. Nie F9.1.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

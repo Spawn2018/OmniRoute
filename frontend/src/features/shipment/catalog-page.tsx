@@ -1,41 +1,74 @@
-import { useQuery } from "@tanstack/react-query"
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
+import { useState } from "react"
 import { Link } from "@tanstack/react-router"
 import {
   CatalogError,
   CatalogHeading,
   TenantSessionNotice,
 } from "@/components/catalog/catalog-parts"
-import { Money } from "@/components/money"
-import { fetchQuotations, quotationAcceptancePending } from "@/lib/quotations-api"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { createShipment, fetchShipments } from "@/lib/shipments-api"
 import { getTenantContext } from "@/lib/tenant"
 
-const EMPTY_QUOTE_FILTERS = { partyId: "", originPortId: "", destinationPortId: "" }
+function ShipmentCreateForm(args: { organizationId: string | null }) {
+  const client = useQueryClient()
+  const [quotationId, setQuotationId] = useState("")
+  const [sourceRef, setSourceRef] = useState("fixture://shipment/")
+  const save = useMutation({
+    mutationFn: () =>
+      createShipment({
+        quotation_id: quotationId.trim(),
+        source_ref: sourceRef.trim(),
+      }),
+    onSuccess: () => {
+      setQuotationId("")
+      void client.invalidateQueries({ queryKey: ["shipments", args.organizationId] })
+    },
+  })
+  return (
+    <form
+      className="flex flex-wrap items-end gap-2 rounded-md border border-border bg-card p-3"
+      onSubmit={(event) => {
+        event.preventDefault()
+        save.mutate()
+      }}
+    >
+      <Input aria-label="Identyfikator wyceny" placeholder="quotation_id" value={quotationId} onChange={(event) => setQuotationId(event.target.value)} required />
+      <Input aria-label="Pochodzenie zapisu zlecenia" placeholder="source_ref" value={sourceRef} onChange={(event) => setSourceRef(event.target.value)} required />
+      <Button type="submit" disabled={save.isPending || !args.organizationId}>
+        Zapisz zlecenie
+      </Button>
+      {save.isError ? <CatalogError error={save.error} /> : null}
+    </form>
+  )
+}
 
 export function ShipmentPage() {
   const ctx = getTenantContext()
   const ready = Boolean(ctx.organizationId && ctx.userId)
-  const quotations = useQuery({
-    queryKey: ["shipment-quotations", ctx.organizationId],
-    queryFn: () => fetchQuotations(EMPTY_QUOTE_FILTERS),
+  const shipments = useQuery({
+    queryKey: ["shipments", ctx.organizationId],
+    queryFn: fetchShipments,
     enabled: ready,
     retry: false,
   })
-  const rows = quotationAcceptancePending(quotations.data ?? [])
 
   return (
     <div className="flex flex-col gap-4" data-shipment="board">
       <CatalogHeading
         title="Zlecenia"
-        subtitle="shipment M-35 · wyceny z party_id · nie tabela · nie tracking"
+        subtitle="shipment M-35 · tabela z wyceny · nie tracking"
       />
       {!ready ? <TenantSessionNotice /> : null}
-      {quotations.isError ? <CatalogError error={quotations.error} /> : null}
-      {rows.map((row) => (
+      {shipments.isError ? <CatalogError error={shipments.error} /> : null}
+      <ShipmentCreateForm organizationId={ctx.organizationId} />
+      {(shipments.data ?? []).map((row) => (
         <p key={row.id} className="text-xs">
+          {row.status} {row.source_ref}{" "}
           <Link className="underline" to="/quotations">
-            {row.charge_code}
-          </Link>{" "}
-          <Money amount={row.amount} currency={row.currency} />
+            wycena
+          </Link>
         </p>
       ))}
     </div>

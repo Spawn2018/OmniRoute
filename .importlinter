@@ -38,6 +38,7 @@ modules =
     app.services.outbox_events
     app.services.port_surcharges
     app.services.channel_quotes
+    app.services.shipments
 
 [importlinter:contract:integracje]
 name = Integracje nie znają serwisów
@@ -115,3 +116,6 @@ forbidden_modules =
     app.services.channel_quotes
     app.repositories.channel_quotes
     app.models.channel_quote
+    app.services.shipments
+    app.repositories.shipments
+    app.models.shipment

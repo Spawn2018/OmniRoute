@@ -17,7 +17,7 @@
 | luka wyceny | quotation_gap | brakująca dopłata |
 | port załadunku | origin_port_id | POL na `quotation`; FK do `port` |
 | port wyładunku | destination_port_id | POD na `quotation`; FK do `port` |
-| zlecenie | shipment | 28.0 tablica wycen z `party_id`; nie tabela; nie tracking |
+| zlecenie | shipment | 90.0 tabela z wyceny z `party_id`; nie tracking |
 | śledzenie | tracking | 29.0 tablica lane POL/POD z wyceny; nie AIS; nie mapa |
 | wyjątek operacyjny | operational_exception | 30.0 tablica wycen z party bez pełnego POL/POD; nie tabela; nie AIS; nie `party_charge_override` |
 | dokument zlecenia | shipment_document | 31.0 tablica `source_ref` wycen z party; nie tabela; nie PDF; nie HBL |

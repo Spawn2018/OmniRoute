@@ -1,26 +1,26 @@
-# M-35 zlecenie — tablica wycen z kontrahentem
+# M-35 zlecenie — tabela `shipment` z wyceny
 
-**Moduł żywy:** M-35 (token UI `shipment`, nie tabela) + ekran M-21 `quotation`  
-**Plaster:** **28.0** (zamknięty)  
-**Status:** operator **widzi** wyceny z `party_id` jako pracę handlową do zlecenia. Nie nowa tabela. Nie tracking.
+**Moduł żywy:** M-35 (token `shipment`)  
+**Plaster:** **90.0** (S28; 28.0 był tablicą wycen)  
+**Status:** operator **zapisuje** zlecenie z wyceny z `party_id`. Nie tracking. Nie kwota na wierszu.
 
-Delta: [docs/deltas/archived/28.0-shipment.md](../deltas/archived/28.0-shipment.md).
+Delta: [docs/deltas/archived/90.0-shipment-table.md](../deltas/archived/90.0-shipment-table.md).
 
-## 28.0 tablica odczytu na `/shipments`
+## 90.0 tabela na `/shipments`
 
 ### Zakres
 
-- Ekran `/shipments`: lista wycen z `party_id` (ten sam filtr co 22.0)
-- Kwota przez `<Money/>`. Link do `/quotations`
-- Zero nowej tabeli. Zero `shipment_leg`. Zero HBL / kontenerów
+- Tabela `shipment`: RLS FORCE, FK tenanta do `quotation` i `party`, jeden wiersz na wycenę
+- `GET/POST /shipments`, OpenFGA `can_manage_shipments`
+- Ekran `/shipments`: lista tabeli + „Zapisz zlecenie”. `data-shipment="board"`
 
-### Poza 28.0
+### Poza 90.0
 
-Tabela `shipment` · odcinki · tracking (M-36) · wyjątki (M-37) · dokumenty zlecenia (M-38) · EDI · druga marża
+Odcinki · tracking (M-36) · wyjątki (M-37) · dokumenty (M-38) · EDI · numer zlecenia · auto z S11 · bramka sankcji · druga marża
 
 ### HC
 
-- Marża zostaje w `charge`. Tablica nie odejmuje kwot.
+- Marża zostaje w `charge`. Zlecenie nie niesie kwoty.
 - LLM nie liczy i nie nadaje numeru zlecenia.
 - HITL zostaje na ekstrakcji.
-- ExtractionService nie importuje quotations
+- ExtractionService nie importuje `shipment` ani quotations

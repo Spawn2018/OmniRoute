@@ -2303,6 +2303,50 @@ export type SessionTokenResponse = {
 };
 
 /**
+ * ShipmentCreate
+ */
+export type ShipmentCreate = {
+    /**
+     * Quotation Id
+     */
+    quotation_id: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ShipmentResponse
+ */
+export type ShipmentResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Quotation Id
+     */
+    quotation_id: string;
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+    /**
+     * Status
+     */
+    status: string;
+};
+
+/**
  * TableViewConfig
  */
 export type TableViewConfig = {
@@ -4248,6 +4292,49 @@ export type IssueQuotationDocumentNumberApiV1QuotationsQuotationIdDocumentNumber
 };
 
 export type IssueQuotationDocumentNumberApiV1QuotationsQuotationIdDocumentNumberPostResponse = IssueQuotationDocumentNumberApiV1QuotationsQuotationIdDocumentNumberPostResponses[keyof IssueQuotationDocumentNumberApiV1QuotationsQuotationIdDocumentNumberPostResponses];
+
+export type ListShipmentsApiV1ShipmentsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/shipments';
+};
+
+export type ListShipmentsApiV1ShipmentsGetResponses = {
+    /**
+     * Response List Shipments Api V1 Shipments Get
+     *
+     * Successful Response
+     */
+    200: Array<ShipmentResponse>;
+};
+
+export type ListShipmentsApiV1ShipmentsGetResponse = ListShipmentsApiV1ShipmentsGetResponses[keyof ListShipmentsApiV1ShipmentsGetResponses];
+
+export type CreateShipmentApiV1ShipmentsPostData = {
+    body: ShipmentCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/shipments';
+};
+
+export type CreateShipmentApiV1ShipmentsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateShipmentApiV1ShipmentsPostError = CreateShipmentApiV1ShipmentsPostErrors[keyof CreateShipmentApiV1ShipmentsPostErrors];
+
+export type CreateShipmentApiV1ShipmentsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ShipmentResponse;
+};
+
+export type CreateShipmentApiV1ShipmentsPostResponse = CreateShipmentApiV1ShipmentsPostResponses[keyof CreateShipmentApiV1ShipmentsPostResponses];
 
 export type ListOrganizationSettingsApiV1OrganizationSettingsGetData = {
     body?: never;

@@ -14,10 +14,11 @@ Ekrany, które **zapisują** (INSERT/upsert), nie tablice-odczyty:
 - SOP klienta — treść + akceptacja procedury. Checkbox „Blokuj auto” zabrania automatu; świadomy `mailto:` i tak wymaga kliknięcia. Nie generator zadań.
 - poczta `/mail` — `inbound_message` z `fixture://` / `synth://` albo ingest `graph://` / `imap://` + `external_id` (ten sam id = ten sam wiersz). Nie live skrzynka. Nie send.
 - outbox `/outbox` — zdarzenie `inbound_message_saved` po zapisie wiadomości. Ten sam subject = ten sam wiersz. Nie Temporal. Nie dispatch.
+- zlecenie `/shipments` — zapis `shipment` z wyceny z kontrahentem. How-to: [zlecenie.md](zlecenie.md). Nie tracking. Nie kwota na tym wierszu.
 - decyzje `/decisions` — pending na `subject_id`; Akceptuj albo Odrzuć z `lock_version`. Dwa okna, dwa Akceptuj: drugi dostaje konflikt. Nie accept extractu. Nie send.
 - powiadomienia `/notifications` — zapisany inbox `unread`/`read` z `source_ref`. Tablica pending HITL/wycen zostaje odczytem. Nie send.
 - szkic maila `/ai` — `mail_draft` obok extractu. Werdykt na `/decisions`. Po Akceptuj: „Wyślij w kliencie” zapisuje `sent` i daje `mailto:`. SOP `blocks_auto` nie blokuje tego kliknięcia. Nie czat. Nie Graph HTTP. Nie accept extractu.
 
-Czego tu nie ma: 70 osobnych instrukcji na pulpity odczytu (zlecenie, tracking, FV). Ścieżka extract → stawka → opłata → wycena jest w [ścieżka-pieniędzy.md](ścieżka-pieniędzy.md). Kontrahent: [kontrahent.md](kontrahent.md).
+Czego tu nie ma: 70 osobnych instrukcji na pulpity odczytu (tracking, FV). Zlecenie zapisu: [zlecenie.md](zlecenie.md). Ścieżka extract → stawka → opłata → wycena jest w [ścieżka-pieniędzy.md](ścieżka-pieniędzy.md). Kontrahent: [kontrahent.md](kontrahent.md).
 
 Nie licz w przeglądarce. Nie wklejaj kursu NBP w kwotę oferty.

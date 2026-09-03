@@ -112,7 +112,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **27.0 DONE:** `/notifications` odczyt HITL pending + wyceny pending. Nie nowa tabela. Nie wysyłka.
 - **27.0 leftover — tabela zdarzeń / push / SMTP (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Outbox = M-02 parked. Fala 5 zlecenie **DONE w 28.0** (tablica odczytu). `just dup` 2,67%.
 - **28.0 DONE:** `/shipments` odczyt wycen z `party_id`. Nie nowa tabela. Nie tracking.
-- **28.0 leftover — tabela `shipment` / odcinki / tracking (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. HBL, kontenery, dwie marże = makieta, nie kod. M-36 tracking **DONE w 29.0**. `just dup` 2,71%.
+- **28.0 leftover — tabela `shipment`:** spłacone w **90.0**. Odcinki / tracking / numer = S29+.
+- **90.0 leftover — odcinki / tracking / numer / auto z S11 (dlaczego nie w tym plasterze):** S28 = jeden wiersz z wyceny. M-36 to S29. `just dup` na diffie.
 - **29.0 DONE:** `/tracking` odczyt lane POL/POD + UN/LOCODE. Nie nowa tabela. Nie AIS. Nie mapa.
 - **29.0 leftover — tabela zdarzeń / AIS / mapa (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Watchtower parked. M-37 wyjątki **DONE w 30.0**. `just dup` 2,73%.
 - **30.0 DONE:** `/exceptions` odczyt wycen z `party_id` bez pełnego POL/POD. Nie nowa tabela. Nie AIS. Nie mapa.

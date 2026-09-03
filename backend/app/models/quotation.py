@@ -9,6 +9,7 @@ from sqlalchemy import (
     Index,
     Numeric,
     String,
+    UniqueConstraint,
     text,
 )
 from sqlalchemy.dialects.postgresql import UUID
@@ -61,6 +62,7 @@ class Quotation(Base, TimestampMixin):
         Index("ix_quotation_org_commodity_code_id", "organization_id", "commodity_code_id"),
         Index("ix_quotation_org_origin_port_id", "organization_id", "origin_port_id"),
         Index("ix_quotation_org_destination_port_id", "organization_id", "destination_port_id"),
+        UniqueConstraint("organization_id", "id", name="uq_quotation_org_id"),
         Index(
             "uq_quotation_org_document_number",
             "organization_id",

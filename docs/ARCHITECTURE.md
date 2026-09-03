@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **89.0** S27 sankcje HTTP na `party` (M-53). **Etap:** Plan. **Następny:** `/plaster` **90.0** — S28 tabela `shipment` (M-35). Tablica wycen ≠ zlecenie. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **90.0** S28 tabela `shipment` (M-35). **Etap:** Plan. **Następny:** `/plan-modul` **S29** — zdarzenia trackingu (M-36). Nie mapa w paczce JS. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
@@ -50,7 +50,7 @@ frontend/                 React 19 + Compiler, Vite, TanStack, shadcn, PostHog
   src/components/data-table/  DataTableShell (Golden Standard)
 backend/app/
   api/             routery, DTO, require_permission — bez logiki
-  services/        carrier_inquiries · channel_quotes · charge_codes · charges · commodity_codes · customer_rfqs · dangerous_goods · extraction · geography · inbound_messages · mail_drafts · nbp_rates · networks · operator_decisions · operator_notices · organization_settings · outbox_events · parties · port_surcharges · quotations · rate_lines · tenancy
+  services/        carrier_inquiries · channel_quotes · charge_codes · charges · commodity_codes · customer_rfqs · dangerous_goods · extraction · geography · inbound_messages · mail_drafts · nbp_rates · networks · operator_decisions · operator_notices · organization_settings · outbox_events · parties · port_surcharges · quotations · rate_lines · shipments · tenancy
   repositories/    dostęp SQL
   models/          SQLAlchemy
   domain/          typy, wyjątki, Money
