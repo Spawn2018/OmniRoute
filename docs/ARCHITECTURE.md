@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **73.0** S10 SOP `blocks_auto`. **Etap:** Plan. **Następny:** S11 `/plan-modul` — szyna Akceptuj/Zmień/Odrzuć (nowy żywy ID, nie M-57). Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **73.0** S10 SOP `blocks_auto`. **Etap:** Plan. **Następny:** `/plaster` **74.0** — szyna `operator_decision` (M-71). Nie M-57. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

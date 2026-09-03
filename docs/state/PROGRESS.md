@@ -215,3 +215,4 @@
 | 2026-09-03 | 72.0 | M-26 | `document_number` z prefiksu w SQL. Druk 57.0. Nie send. Nie PDF. Następny: S10 Plan. |
 | 2026-09-03 | Plan 73.0 | M-16 | S10: `blocks_auto` na `customer_sop`. Delta zaakceptowana (`/noc`). Nie send. Następny: `/plaster` 73.0. |
 | 2026-09-03 | 73.0 | M-16 | `blocks_auto` na SOP. Draft nie blokuje. Nie send. Następny: S11 Plan. |
+| 2026-09-03 | Plan 74.0 | M-71 | S11: szyna `operator_decision`. Delta zaakceptowana (`/noc`). Nie M-57. Następny: `/plaster` 74.0. |
