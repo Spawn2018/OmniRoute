@@ -1028,6 +1028,114 @@
         }
       }
     },
+    "/api/v1/networks/{network_id}/members": {
+      "get": {
+        "tags": [
+          "networks"
+        ],
+        "summary": "List Network Members",
+        "operationId": "list_network_members_api_v1_networks__network_id__members_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "network_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Network Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NetworkMemberResponse"
+                  },
+                  "title": "Response List Network Members Api V1 Networks  Network Id  Members Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "networks"
+        ],
+        "summary": "Create Network Member",
+        "operationId": "create_network_member_api_v1_networks__network_id__members_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "network_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Network Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NetworkMemberCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NetworkMemberResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/inbound-messages": {
       "get": {
         "tags": [
@@ -6970,6 +7078,70 @@
           "name"
         ],
         "title": "NetworkCreate"
+      },
+      "NetworkMemberCreate": {
+        "properties": {
+          "member_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 1,
+            "title": "Member Code"
+          },
+          "legal_name": {
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 1,
+            "title": "Legal Name"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "member_code",
+          "legal_name"
+        ],
+        "title": "NetworkMemberCreate"
+      },
+      "NetworkMemberResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "network_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Network Id"
+          },
+          "member_code": {
+            "type": "string",
+            "title": "Member Code"
+          },
+          "legal_name": {
+            "type": "string",
+            "title": "Legal Name"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "network_id",
+          "member_code",
+          "legal_name",
+          "source_ref"
+        ],
+        "title": "NetworkMemberResponse"
       },
       "NetworkResponse": {
         "properties": {

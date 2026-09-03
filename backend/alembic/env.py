@@ -18,6 +18,7 @@ from app.models.dangerous_good import DangerousGood  # noqa: F401
 from app.models.inbound_message import InboundMessage  # noqa: F401
 from app.models.customer_rfq import CustomerRfq  # noqa: F401
 from app.models.network import Network  # noqa: F401
+from app.models.network_member import NetworkMember  # noqa: F401
 from app.models.nbp_rate import NbpRate  # noqa: F401
 from app.models.rate_line import RateLine  # noqa: F401
 from app.models.charge import Charge  # noqa: F401

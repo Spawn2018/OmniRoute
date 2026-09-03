@@ -23,6 +23,17 @@ def normalize_network_aliases(raw: list[str]) -> list[str]:
     return unique
 
 
+def require_network_member_name(raw: object) -> str:
+    if type(raw) is not str:
+        raise InvalidNetworkCode("nazwa członka musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        raise InvalidNetworkCode("nazwa członka jest wymagana")
+    if len(token) > 128:
+        raise InvalidNetworkCode("nazwa członka za długa")
+    return token
+
+
 def optional_network_text(raw: str | None, *, limit: int, field: str) -> str | None:
     if raw is None:
         return None

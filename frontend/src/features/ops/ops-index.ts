@@ -288,6 +288,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "79.0": "/outbox",
   "80.0": "/mail",
   "81.0": "/ai",
+  "82.0": "/networks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

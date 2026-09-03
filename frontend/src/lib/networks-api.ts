@@ -75,6 +75,46 @@ export async function createNetwork(body: {
   return readNetwork(response, "Błąd zapisu sieci")
 }
 
+export type NetworkMember = {
+  id: string
+  organization_id: string
+  network_id: string
+  member_code: string
+  legal_name: string
+  source_ref: string
+}
+
+export async function fetchNetworkMembers(networkId: string): Promise<NetworkMember[]> {
+  const response = await fetch(`/api/v1/networks/${networkId}/members`, {
+    headers: requireAuthHeaders(),
+  })
+  if (!response.ok) {
+    throw new ApiError(
+      await readApiDetail(response, "Błąd listy członków sieci"),
+      httpErrorStatus(response),
+    )
+  }
+  return (await response.json()) as NetworkMember[]
+}
+
+export async function createNetworkMember(
+  networkId: string,
+  body: { member_code: string; legal_name: string },
+): Promise<NetworkMember> {
+  const response = await fetch(`/api/v1/networks/${networkId}/members`, {
+    method: "POST",
+    headers: { ...requireAuthHeaders(), "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  })
+  if (!response.ok) {
+    throw new ApiError(
+      await readApiDetail(response, "Błąd zapisu członka sieci"),
+      httpErrorStatus(response),
+    )
+  }
+  return (await response.json()) as NetworkMember
+}
+
 export async function resolveNetwork(token: string): Promise<FreightNetwork> {
   const params = new URLSearchParams({ token })
   const response = await fetch(`/api/v1/networks/resolve?${params.toString()}`, {

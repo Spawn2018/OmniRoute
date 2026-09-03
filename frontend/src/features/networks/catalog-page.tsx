@@ -6,6 +6,8 @@ import { Input } from "@/components/ui/input"
 import { BUSINESS_LISTS } from "@/lib/business-lists"
 import {
   createNetwork,
+  createNetworkMember,
+  fetchNetworkMembers,
   fetchNetworks,
   networkCreateBody,
   resolveNetwork,
@@ -64,6 +66,9 @@ export function NetworkCatalogPage() {
   const queryClient = useQueryClient()
   const [draft, setDraft] = useState(EMPTY_DRAFT)
   const [resolved, setResolved] = useState<FreightNetwork | null>(null)
+  const [networkId, setNetworkId] = useState("")
+  const [memberCode, setMemberCode] = useState("")
+  const [memberName, setMemberName] = useState("")
   const sessionReady = Boolean(ctx.organizationId && ctx.userId)
 
   const query = useQuery({
@@ -86,12 +91,32 @@ export function NetworkCatalogPage() {
     onSuccess: setResolved,
     onError: () => setResolved(null),
   })
+  const members = useQuery({
+    queryKey: ["network-members", ctx.organizationId, networkId],
+    queryFn: () => fetchNetworkMembers(networkId),
+    enabled: sessionReady && networkId !== "",
+    retry: false,
+  })
+  const createMember = useMutation({
+    mutationFn: () =>
+      createNetworkMember(networkId, {
+        member_code: memberCode,
+        legal_name: memberName,
+      }),
+    onSuccess: () => {
+      setMemberCode("")
+      setMemberName("")
+      void queryClient.invalidateQueries({
+        queryKey: ["network-members", ctx.organizationId, networkId],
+      })
+    },
+  })
 
   return (
     <div className="space-y-3">
       <CatalogHeading
         title="Katalog sieci i stowarzyszeń"
-        subtitle="network M-12 · kopia per tenant · nie katalog agentów"
+        subtitle="network M-12 · kopia per tenant · ręczny członek · nie portal"
       />
       {sessionReady ? null : <TenantSessionNotice />}
       <form
@@ -164,6 +189,60 @@ export function NetworkCatalogPage() {
         error={query.error}
         globalFilterPlaceholder="Szukaj kodu sieci…"
       />
+      <section className="space-y-2" data-network-member="catalog">
+        <h2 className="text-sm font-medium">Członkowie sieci</h2>
+        <label className="flex flex-col gap-1 text-xs">
+          sieć
+          <select
+            aria-label="Sieć dla członka"
+            className="h-8 rounded-md border border-border bg-card px-2 text-sm"
+            value={networkId}
+            onChange={(event) => setNetworkId(event.target.value)}
+          >
+            <option value="">Wybierz sieć</option>
+            {(query.data ?? []).map((row) => (
+              <option key={row.id} value={row.id}>
+                {row.code} {row.name}
+              </option>
+            ))}
+          </select>
+        </label>
+        <form
+          className="flex flex-col gap-2 rounded-md border border-border bg-card p-3 lg:grid lg:grid-cols-3"
+          onSubmit={(event) => {
+            event.preventDefault()
+            if (sessionReady && networkId !== "") createMember.mutate()
+          }}
+        >
+          <Input
+            aria-label="Kod członka sieci"
+            placeholder="agent_a"
+            maxLength={32}
+            value={memberCode}
+            onChange={(event) => setMemberCode(event.target.value)}
+            required
+          />
+          <Input
+            aria-label="Nazwa członka sieci"
+            placeholder="Agent Alpha"
+            value={memberName}
+            onChange={(event) => setMemberName(event.target.value)}
+            required
+          />
+          <Button type="submit" disabled={createMember.isPending || !sessionReady || networkId === ""}>
+            Dodaj członka
+          </Button>
+        </form>
+        {createMember.isError ? <CatalogError error={createMember.error} /> : null}
+        {members.isError ? <CatalogError error={members.error} /> : null}
+        <ul className="text-xs">
+          {(members.data ?? []).map((row) => (
+            <li key={row.id}>
+              {row.member_code} · {row.legal_name}
+            </li>
+          ))}
+        </ul>
+      </section>
     </div>
   )
 }

@@ -8,8 +8,11 @@ from app.domain.network import (
     normalize_network_aliases,
     normalize_network_code,
     optional_network_text,
+    require_network_member_name,
 )
 from app.models.network import Network
+from app.models.network_member import NetworkMember
+from app.repositories.networks.network_member_repository import NetworkMemberRepository
 from app.repositories.networks.network_repository import NetworkRepository
 
 _MANUAL = "tenant:manual"
@@ -18,6 +21,7 @@ _MANUAL = "tenant:manual"
 class NetworkService:
     def __init__(self, session: AsyncSession) -> None:
         self._networks = NetworkRepository(session)
+        self._members = NetworkMemberRepository(session)
 
     async def list_networks(self) -> list[Network]:
         return await self._networks.list_all()
@@ -65,6 +69,41 @@ class NetworkService:
         if found is None:
             raise UnknownNetwork(f"nieznana sieć: {token}")
         return found
+
+    async def get_network(self, network_id: UUID) -> Network:
+        found = await self._networks.get(network_id)
+        if found is None:
+            raise UnknownNetwork(f"nieznana sieć: {network_id}")
+        return found
+
+    async def list_members(self, network_id: UUID) -> list[NetworkMember]:
+        await self.get_network(network_id)
+        return await self._members.list_for_network(network_id)
+
+    async def create_member(
+        self,
+        *,
+        organization_id: UUID,
+        user_id: UUID,
+        network_id: UUID,
+        member_code: str,
+        legal_name: str,
+    ) -> NetworkMember:
+        network = await self.get_network(network_id)
+        token = normalize_network_code(member_code)
+        row = NetworkMember(
+            id=uuid4(),
+            organization_id=organization_id,
+            network_id=network.id,
+            member_code=token,
+            legal_name=require_network_member_name(legal_name),
+            source_ref=_MANUAL,
+            created_by=user_id,
+        )
+        try:
+            return await self._members.add(row)
+        except IntegrityError as exc:
+            raise NetworkConflict(f"członek {token} już istnieje w sieci") from exc
 
     async def _reject_taken(self, tokens: list[str]) -> None:
         for token in tokens:

@@ -3,7 +3,11 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from app.domain.errors import InvalidNetworkCode
-from app.domain.network import normalize_network_aliases, normalize_network_code
+from app.domain.network import (
+    normalize_network_aliases,
+    normalize_network_code,
+    require_network_member_name,
+)
 
 _TOKEN = st.from_regex(r"[a-z][a-z0-9_]{1,31}", fullmatch=True)
 
@@ -24,6 +28,15 @@ def test_normalize_network_code_rejects_spaces_in_token() -> None:
 def test_normalize_network_code_rejects_non_text() -> None:
     with pytest.raises(InvalidNetworkCode, match="tekstem"):
         normalize_network_code(12)  # type: ignore[arg-type]
+
+
+def test_require_network_member_name_strips() -> None:
+    assert require_network_member_name("  Agent A  ") == "Agent A"
+
+
+def test_require_network_member_name_rejects_blank() -> None:
+    with pytest.raises(InvalidNetworkCode, match="wymagana"):
+        require_network_member_name("  ")
 
 
 def test_normalize_network_aliases_dedupes() -> None:

@@ -1,5 +1,5 @@
 from pathlib import Path
-from uuid import UUID
+from uuid import UUID, uuid4
 
 import pytest
 from fastapi.testclient import TestClient
@@ -19,6 +19,13 @@ _ENDPOINTS = (
         "/api/v1/networks",
         None,
         {"code": "wca", "name": "WCA", "aliases": [], "is_global": True},
+    ),
+    ("GET", f"/api/v1/networks/{uuid4()}/members", None, None),
+    (
+        "POST",
+        f"/api/v1/networks/{uuid4()}/members",
+        None,
+        {"member_code": "agent_a", "legal_name": "Agent A"},
     ),
 )
 

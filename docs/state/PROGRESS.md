@@ -232,3 +232,4 @@
 | 2026-09-03 | Plan 81.0 | M-33 | S18: świadomy `mailto:` po akceptacji szkicu. Delta zaakceptowana (`/noc`). Nie Graph HTTP. Następny: `/plaster` 81.0. |
 | 2026-09-03 | 81.0 | M-33 | Świadomy `mailto:` po accept szkicu. `blocks_auto` nie blokuje kliknięcia. Nie Graph HTTP. Następny: S19 Plan. |
 | 2026-09-03 | Plan 82.0 | M-12 | S19: tabela `network_member`. Delta zaakceptowana (`/noc`). Nie scraping. Następny: `/plaster` 82.0. |
+| 2026-09-03 | 82.0 | M-12 | Tabela `network_member` RLS. Ręczny agent w sieci. Nie portal. Następny: S20 Plan. |

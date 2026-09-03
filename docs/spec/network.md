@@ -1,7 +1,7 @@
 # M-12 network — katalog sieci i stowarzyszeń
 
-**Plaster:** **9.0** (delta `docs/deltas/archived/9.0-network.md`)  
-**Status:** ukończony (fundament) — katalog sieci per tenant. Nie katalog agentów. Nie scraping.
+**Plaster:** **9.0** · **82.0** (`docs/deltas/archived/82.0-network-member.md`)  
+**Status:** ukończony (fundament) — katalog sieci + ręczni członkowie per tenant. Nie portal WCA.
 
 ## Zakres
 
@@ -11,9 +11,15 @@
 - OpenFGA `can_manage_networks` = member
 - UI `/networks`: lista DataTableShell + dodanie + rozwiązanie tokenu
 
+## 82.0 `network_member`
+
+- Tabela per tenant: `network_id` FK, `member_code`, `legal_name`, `source_ref`
+- RLS FORCE. `GET/POST /networks/{id}/members`. Ten sam `/networks`
+- Zero portalu / RapidFuzz / FK `party`
+
 ## Poza zakresem
 
-`network_membership` · `network_member` · kontakty · `network_member_link` · import Excel/PDF · RapidFuzz / dedupe · ranking M-13 · zapytanie do agenta (M-30) · scraping portali WCA/Globalia · wspólny katalog SaaS · FK do `party` · ExtractionService
+`network_membership` · kontakty · `network_member_link` · import Excel/PDF · RapidFuzz / dedupe · ranking M-13 · zapytanie do agenta (M-30) · portal WCA/Globalia · wspólny katalog SaaS · FK do `party` · ExtractionService
 
 ## HC
 

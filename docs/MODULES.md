@@ -23,7 +23,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-23 | Kurs NBP | 6.0 `nbp_rate` · 16.0 odczyt przy `quotation` | **ukończony (fundament)** · nie przeliczenie kwoty; nie żywe M-07 `rate_line` |
 | M-52 | Towary niebezpieczne | 7.0 `dangerous_good` | **ukończony (fundament)** · nie podpięcie do wyceny; nie żywe M-08 `charge` |
 | M-11 | Automatyczne kontakty | 8.0 `resolve_email` | **ukończony (fundament)** · matcher domeny z 5.0; nie IMAP; nie portal |
-| M-12 | Sieci i stowarzyszenia | 9.0 `network` | **ukończony (fundament)** · katalog sieci; nie `network_member`; nie scraping |
+| M-12 | Sieci i stowarzyszenia | 9.0 `network` · 82.0 `network_member` | **ukończony (fundament)** · katalog sieci + ręczni członkowie; nie portal WCA |
 | M-13 | Karta wyników kontrahenta | 10.0 `party_scorecard` | **ukończony (fundament)** · snapshot karty; nie SQL-refresh; nie scoring osoby |
 | M-16 | Procedury operacyjne klienta | 11.0 `customer_sop` · 73.0 `blocks_auto` | **ukończony (fundament)** · zatwierdzona SOP może blokować auto; nie send; nie S11 |
 | M-18 | Opłaty portowe warunkowe | 12.0 `port_surcharge` · 69.0 matching `applies_when` | **ukończony (fundament)** · katalog extra + SQL równość warunku; nie zapis do `charge`; nie parser AST |

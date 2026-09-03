@@ -45,6 +45,26 @@ def test_pricing_and_extraction_do_not_import_networks() -> None:
             assert "app.models.network" not in text
 
 
+def test_migration_042_creates_network_member_and_forces_rls() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "042_network_member_rls.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "042_network_member_rls"' in source
+    assert 'down_revision: str | None = "041_mail_draft_sent"' in source
+    assert '"network_member"' in source
+    assert "FORCE ROW LEVEL SECURITY" in source
+    assert "network_member_tenant_isolation" in source
+
+
+def test_network_service_has_no_scrape() -> None:
+    service = (_SERVICES / "networks" / "network_service.py").read_text(encoding="utf-8")
+    lowered = service.lower()
+    assert "httpx" not in lowered
+    assert "requests" not in lowered
+    assert "scrap" not in lowered
+    assert "app.services.parties" not in service
+
+
 def test_generated_api_types_include_network() -> None:
     source = (_ROOT / "frontend" / "src" / "api" / "types.gen.ts").read_text(encoding="utf-8")
     assert "NetworkResponse" in source or "NetworkCreate" in source

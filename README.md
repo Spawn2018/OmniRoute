@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **81.0** S18 świadomy `mailto:` po S11+S10 (M-33)
+- **Ostatni plaster:** **82.0** S19 `network_member` (M-12)
 - **Etap:** Plan
-- **Następny:** `/plaster` **82.0** — `network_member` (M-12). Ręczny katalog w sieci. Nie scraping. Nie F9.1.
+- **Następny:** `/plan-modul` **S20** — zapytanie do agenta (M-30). Buy side. Nie F9.1.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

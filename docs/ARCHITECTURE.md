@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **81.0** S18 świadomy `mailto:` po S11+S10 (M-33). **Etap:** Plan. **Następny:** `/plaster` **82.0** — `network_member` (M-12). Ręczny katalog w sieci. Nie scraping. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **82.0** S19 `network_member` (M-12). **Etap:** Plan. **Następny:** `/plan-modul` **S20** — zapytanie do agenta (M-30). Buy side. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

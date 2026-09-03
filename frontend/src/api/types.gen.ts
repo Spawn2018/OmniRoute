@@ -1257,6 +1257,50 @@ export type NetworkCreate = {
 };
 
 /**
+ * NetworkMemberCreate
+ */
+export type NetworkMemberCreate = {
+    /**
+     * Member Code
+     */
+    member_code: string;
+    /**
+     * Legal Name
+     */
+    legal_name: string;
+};
+
+/**
+ * NetworkMemberResponse
+ */
+export type NetworkMemberResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Network Id
+     */
+    network_id: string;
+    /**
+     * Member Code
+     */
+    member_code: string;
+    /**
+     * Legal Name
+     */
+    legal_name: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * NetworkResponse
  */
 export type NetworkResponse = {
@@ -3035,6 +3079,68 @@ export type ResolveNetworkApiV1NetworksResolveGetResponses = {
 };
 
 export type ResolveNetworkApiV1NetworksResolveGetResponse = ResolveNetworkApiV1NetworksResolveGetResponses[keyof ResolveNetworkApiV1NetworksResolveGetResponses];
+
+export type ListNetworkMembersApiV1NetworksNetworkIdMembersGetData = {
+    body?: never;
+    path: {
+        /**
+         * Network Id
+         */
+        network_id: string;
+    };
+    query?: never;
+    url: '/api/v1/networks/{network_id}/members';
+};
+
+export type ListNetworkMembersApiV1NetworksNetworkIdMembersGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ListNetworkMembersApiV1NetworksNetworkIdMembersGetError = ListNetworkMembersApiV1NetworksNetworkIdMembersGetErrors[keyof ListNetworkMembersApiV1NetworksNetworkIdMembersGetErrors];
+
+export type ListNetworkMembersApiV1NetworksNetworkIdMembersGetResponses = {
+    /**
+     * Response List Network Members Api V1 Networks  Network Id  Members Get
+     *
+     * Successful Response
+     */
+    200: Array<NetworkMemberResponse>;
+};
+
+export type ListNetworkMembersApiV1NetworksNetworkIdMembersGetResponse = ListNetworkMembersApiV1NetworksNetworkIdMembersGetResponses[keyof ListNetworkMembersApiV1NetworksNetworkIdMembersGetResponses];
+
+export type CreateNetworkMemberApiV1NetworksNetworkIdMembersPostData = {
+    body: NetworkMemberCreate;
+    path: {
+        /**
+         * Network Id
+         */
+        network_id: string;
+    };
+    query?: never;
+    url: '/api/v1/networks/{network_id}/members';
+};
+
+export type CreateNetworkMemberApiV1NetworksNetworkIdMembersPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateNetworkMemberApiV1NetworksNetworkIdMembersPostError = CreateNetworkMemberApiV1NetworksNetworkIdMembersPostErrors[keyof CreateNetworkMemberApiV1NetworksNetworkIdMembersPostErrors];
+
+export type CreateNetworkMemberApiV1NetworksNetworkIdMembersPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: NetworkMemberResponse;
+};
+
+export type CreateNetworkMemberApiV1NetworksNetworkIdMembersPostResponse = CreateNetworkMemberApiV1NetworksNetworkIdMembersPostResponses[keyof CreateNetworkMemberApiV1NetworksNetworkIdMembersPostResponses];
 
 export type ListInboundMessagesApiV1InboundMessagesGetData = {
     body?: never;

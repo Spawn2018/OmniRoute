@@ -1,3 +1,5 @@
+from uuid import UUID
+
 from sqlalchemy import or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -7,6 +9,10 @@ from app.models.network import Network
 class NetworkRepository:
     def __init__(self, session: AsyncSession) -> None:
         self._session = session
+
+    async def get(self, network_id: UUID) -> Network | None:
+        found = await self._session.get(Network, network_id)
+        return found if isinstance(found, Network) else None
 
     async def list_all(self) -> list[Network]:
         result = await self._session.scalars(select(Network).order_by(Network.code))
