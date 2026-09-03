@@ -94,6 +94,11 @@ export const OPS_JOBS = [
     job: "szkice HITL pending",
   },
   {
+    route: BUSINESS_LISTS.aiCopilot.route,
+    label: "Szkice po SOP",
+    job: "odczyt blocks_auto przy mail_draft",
+  },
+  {
     route: BUSINESS_LISTS.observability.route,
     label: "Obserwowalność",
     job: "status API fetchHealth",
@@ -347,6 +352,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "114.0": "/fraud",
   "116.0": "/watchtower",
   "117.0": "/finance",
+  "118.0": "/ai",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

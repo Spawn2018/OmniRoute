@@ -49,4 +49,17 @@ describe("ai copilot surface for 47.0", () => {
     expect(page).not.toContain("graph.microsoft")
     expect(api).toContain("/dispatch-mailto")
   })
+
+  it("lists SOP blocks_auto beside drafts without auto-send", () => {
+    const page = src("features/ai-copilot/catalog-page.tsx")
+    const ops = src("features/ops/ops-index.ts")
+    expect(ops).toContain('"118.0": "/ai"')
+    expect(page).toContain('data-ai-copilot="sop"')
+    expect(page).toContain("fetchCustomerSops")
+    expect(page).toContain("blocks_auto")
+    expect(page).toContain("/customer-sops")
+    expect(page).not.toContain("smtp")
+    expect(page).not.toContain("graph.microsoft")
+    expect(page).not.toContain("acceptExtraction")
+  })
 })

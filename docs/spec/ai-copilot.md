@@ -1,10 +1,10 @@
 # M-57 AI — tablica extract pending + szkic maila
 
 **Moduł żywy:** M-57 (token UI `ai_copilot` + tabela `mail_draft`) + M-20 `extraction_draft`  
-**Plaster:** **47.0** tablica · **76.0** `mail_draft` · **81.0** świadomy mailto · **116.0** szkice na wieży · **118.0** (S58 plan)  
+**Plaster:** **47.0** tablica · **76.0** `mail_draft` · **81.0** świadomy mailto · **116.0** szkice na wieży · **118.0** SOP przy szkicu  
 **Status:** operator widzi pending extract, zapisuje szkic, po Akceptuj otwiera klient poczty; wieża czyta szkice; `/ai` pokazuje SOP `blocks_auto`. Nie czat. Nie Graph HTTP. Nie auto-send.
 
-Delta: [47.0](../deltas/archived/47.0-ai-copilot.md) · [76.0](../deltas/archived/76.0-mail-draft.md) · [116.0](../deltas/archived/116.0-copilot-watchtower.md) · [118.0](../deltas/open/118.0-sop-drafts.md).
+Delta: [47.0](../deltas/archived/47.0-ai-copilot.md) · [76.0](../deltas/archived/76.0-mail-draft.md) · [116.0](../deltas/archived/116.0-copilot-watchtower.md) · [118.0](../deltas/archived/118.0-sop-drafts.md).
 
 ## 47.0 tablica odczytu na `/ai`
 

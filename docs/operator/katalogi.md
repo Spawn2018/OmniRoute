@@ -11,7 +11,7 @@ Ekrany, które **zapisują** (INSERT/upsert), nie tablice-odczyty:
 - porty, strefy taryfowe, terminale — UN/LOCODE / zakres pocztowy / ISPS
 - sieci `/networks` — katalog sieci oraz ręczny członek (`member_code` + nazwa) w wybranej sieci. „Zapisz zapytanie” dopisuje `carrier_inquiry` do wybranego członka (status `draft`, bez kwoty). Nie portal. Nie live HTTP. Nie dopasowanie do kontrahenta.
 - ustawienie `default_currency`, `quotation_number_prefix`, `quotation_print_template` — allowlista, nie sekret, nie licznik oferty
-- SOP klienta — treść + akceptacja procedury. Checkbox „Blokuj auto” zabrania automatu; świadomy `mailto:` i tak wymaga kliknięcia. Nie generator zadań.
+- SOP klienta — treść + akceptacja procedury. Checkbox „Blokuj auto” zabrania automatu; świadomy `mailto:` i tak wymaga kliknięcia. Flaga widać przy szkicu na `/ai`. Nie generator zadań.
 - poczta `/mail` — `inbound_message` z `fixture://` / `synth://` albo ingest `graph://` / `imap://` + `external_id` (ten sam id = ten sam wiersz). Nie live skrzynka. Nie send.
 - outbox `/outbox` — zdarzenie `inbound_message_saved` po zapisie wiadomości. Ten sam subject = ten sam wiersz. Nie Temporal. Nie dispatch.
 - zlecenie `/shipments` — zapis `shipment` z wyceny z kontrahentem. How-to: [zlecenie.md](zlecenie.md). Nie tracking. Nie kwota na tym wierszu.

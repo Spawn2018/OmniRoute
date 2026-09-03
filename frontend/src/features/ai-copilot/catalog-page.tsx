@@ -8,6 +8,7 @@ import {
 } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { fetchCustomerSops, type CustomerSop } from "@/lib/customer-sops-api"
 import { aiProposals, fetchExtractionDrafts } from "@/lib/extractions-api"
 import {
   EMPTY_MAIL_DRAFT,
@@ -22,6 +23,44 @@ import {
 } from "@/lib/mail-drafts-api"
 import { createOperatorDecision } from "@/lib/operator-decisions-api"
 import { getTenantContext } from "@/lib/tenant"
+
+function sopAutoLabel(blocksAuto: boolean): string {
+  if (blocksAuto) {
+    return "blokuje auto"
+  }
+  return "auto nieblokowane"
+}
+
+function SopAutoFacts() {
+  const ctx = getTenantContext()
+  const ready = Boolean(ctx.organizationId && ctx.userId)
+  const sops = useQuery({
+    queryKey: ["customer-sops", ctx.organizationId],
+    queryFn: fetchCustomerSops,
+    enabled: ready,
+    retry: false,
+  })
+  return (
+    <section className="rounded-md border border-border bg-card p-3" data-ai-copilot="sop">
+      <h2 className="mb-2 text-sm font-medium">SOP przy szkicu</h2>
+      <p className="mb-2 text-xs">
+        Zapis procedury zostaje na{" "}
+        <Link className="underline" to="/customer-sops">
+          /customer-sops
+        </Link>
+        . Flaga nie wysyła maila sama.
+      </p>
+      {sops.isError ? <CatalogError error={sops.error} /> : null}
+      <ol className="list-decimal pl-5 text-xs">
+        {(sops.data ?? []).map((row: CustomerSop) => (
+          <li key={row.id}>
+            {row.code} · {row.status} · {sopAutoLabel(row.blocks_auto)}
+          </li>
+        ))}
+      </ol>
+    </section>
+  )
+}
 
 function PendingAiBoard() {
   const ctx = getTenantContext()
@@ -214,10 +253,11 @@ export function AiCopilotPage() {
     <section className="flex flex-col gap-4" data-ai-copilot="board">
       <CatalogHeading
         title="Propozycje AI"
-        subtitle="ai_copilot M-57 · mail_draft obok extract · Art. 50 · nie czat · nie accept extractu"
+        subtitle="ai_copilot M-57 · mail_draft obok extract i SOP · Art. 50 · nie czat · nie auto-send"
       />
       {!ready ? <TenantSessionNotice /> : null}
       <PendingAiBoard />
+      <SopAutoFacts />
       <MailDraftCreateForm
         draft={inbox.draft}
         onDraft={inbox.setDraft}
