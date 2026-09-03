@@ -68,6 +68,11 @@ class Quotation(Base, TimestampMixin):
             unique=True,
             postgresql_where=text("document_number IS NOT NULL"),
         ),
+        Index(
+            "ix_quotation_org_negotiated_channel",
+            "organization_id",
+            "negotiated_channel_quote_id",
+        ),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
@@ -95,3 +100,7 @@ class Quotation(Base, TimestampMixin):
         nullable=True,
     )
     document_number: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    negotiated_channel_quote_id: Mapped[uuid.UUID | None] = mapped_column(
+        UUID(as_uuid=True),
+        nullable=True,
+    )

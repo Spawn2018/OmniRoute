@@ -215,6 +215,19 @@ async def test_quote_batch_gap_on_second_code_stops() -> None:
     assert session.execute.await_count == 2
 
 
+@pytest.mark.asyncio
+async def test_set_negotiated_channel_quote_stores_id() -> None:
+    session = AsyncMock()
+    row = _quoted()
+    service = QuotationService(session)
+    service._quotations.get = AsyncMock(return_value=row)
+    service._quotations.save = AsyncMock(side_effect=lambda saved: saved)
+    channel_id = uuid4()
+    saved = await service.set_negotiated_channel_quote(row.id, channel_id)
+    assert saved.negotiated_channel_quote_id == channel_id
+    assert saved.amount == row.amount
+
+
 def test_extraction_service_does_not_import_quotations() -> None:
     source = Path(extraction_module.__file__).read_text(encoding="utf-8")
     assert "from app.services.quotations" not in source

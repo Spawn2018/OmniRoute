@@ -175,6 +175,28 @@ async def test_resolve_returns_row() -> None:
 
 
 @pytest.mark.asyncio
+async def test_get_quote_returns_row() -> None:
+    service = _service()
+    row = _row(
+        party_id=uuid4(),
+        origin_port_id=uuid4(),
+        destination_port_id=uuid4(),
+        quote_date=date(2026, 9, 1),
+    )
+    service._quotes.get = AsyncMock(return_value=row)
+    found = await service.get_quote(row.id)
+    assert found.id == row.id
+
+
+@pytest.mark.asyncio
+async def test_get_quote_unknown() -> None:
+    service = _service()
+    service._quotes.get = AsyncMock(return_value=None)
+    with pytest.raises(UnknownChannelQuote, match="nieznana oferta kanału"):
+        await service.get_quote(uuid4())
+
+
+@pytest.mark.asyncio
 async def test_resolve_unknown() -> None:
     service = _service()
     service._quotes.get_carrier_profile = AsyncMock(return_value=SimpleNamespace(id=uuid4()))

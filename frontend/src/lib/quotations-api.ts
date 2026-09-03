@@ -15,6 +15,7 @@ export type Quotation = {
   customer_rfq_id: string | null
   commodity_code_id: string | null
   document_number: string | null
+  negotiated_channel_quote_id: string | null
 }
 
 export type QuotationDocumentLayout = {
@@ -402,4 +403,16 @@ export async function issueQuotationDocumentNumber(quotationId: string): Promise
     headers: requireAuthHeaders(),
   })
   return readQuotation(response, "Błąd nadania numeru oferty")
+}
+
+export async function negotiateQuotation(
+  quotationId: string,
+  channelQuoteId: string,
+): Promise<Quotation> {
+  const response = await fetch(`/api/v1/quotations/${quotationId}/negotiate`, {
+    method: "PATCH",
+    headers: { ...requireAuthHeaders(), "Content-Type": "application/json" },
+    body: JSON.stringify({ channel_quote_id: channelQuoteId }),
+  })
+  return readQuotation(response, "Błąd zapisu wyniku negocjacji")
 }

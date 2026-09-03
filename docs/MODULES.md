@@ -31,7 +31,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-14 | Ocena kredytowa | 14.0 `credit_review` | **ukończony (fundament)** · katalog recenzji; nie auto-scoring; nie zapis `credit_limit` |
 | M-15 | Wirtualny Dyrektor Finansowy | 15.0 `finance_board` | **ukończony (fundament)** · tablica odczytu `/finance`; nie silnik AI; LLM nie liczy |
 | M-24 | Ryzyko oferty | 17.0 `offer_risk` | **ukończony (fundament)** · odczyt recenzji i karty przy `/quotations`; nie scoring; nie nowa tabela |
-| M-25 | Negocjacja i wynik | 18.0 `offer_negotiation` | **ukończony (fundament)** · odczyt `channel_quote` przy `/quotations`; nie wynik won/lost; nie spread |
+| M-25 | Negocjacja i wynik | 18.0 `offer_negotiation` · 85.0 wskazanie | **ukończony (fundament)** · odczyt + `negotiated_channel_quote_id`; nie won/lost; nie spread |
 | M-26 | Dokument oferty | 19.0 `offer_document` · 72.0 `document_number` | **ukończony (fundament)** · numer z prefiksu; druk 57.0; nie PDF; nie send |
 | M-27 | Wycena wsadowa | 20.0 `quotation_batch` | **ukończony (fundament)** · wiele kodów na lane; nie CSV; nie nowa tabela |
 | M-28 | Zapytania od klientów | 21.0 `customer_inquiry` · 67.0 `customer_rfq` | **ukończony (fundament)** · ślad wycen + obiekt RFQ; silnik = M-21 68.0; nie IMAP |

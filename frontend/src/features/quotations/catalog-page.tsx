@@ -23,6 +23,7 @@ import {
   fetchQuotationDocumentLayout,
   fetchQuotations,
   issueQuotationDocumentNumber,
+  negotiateQuotation,
   quotationBatchBody,
   quotationCreateBody,
   quotationCurrencies,
@@ -263,9 +264,12 @@ function OfferRiskPanel(args: { partyIds: string[]; signedIn: boolean }) {
 }
 
 function OfferNegotiationPanel(args: { lanes: QuotationLane[]; signedIn: boolean }) {
+  const queryClient = useQueryClient()
+  const ctx = getTenantContext()
   const [quoteId, setQuoteId] = useState("")
   const [onDate, setOnDate] = useState("")
   const [channel, setChannel] = useState<ChannelQuote | null>(null)
+  const [savedId, setSavedId] = useState<string | null>(null)
   const selected = args.lanes.find((lane) => lane.id === quoteId)
 
   const lookup = useMutation({
@@ -288,11 +292,24 @@ function OfferNegotiationPanel(args: { lanes: QuotationLane[]; signedIn: boolean
     },
   })
 
+  const saveResult = useMutation({
+    mutationFn: () => {
+      if (selected === undefined || channel === null) {
+        throw new Error("Najpierw pokaż ofertę kanału")
+      }
+      return negotiateQuotation(selected.id, channel.id)
+    },
+    onSuccess: (row) => {
+      setSavedId(row.negotiated_channel_quote_id)
+      void queryClient.invalidateQueries({ queryKey: ["quotations", ctx.organizationId] })
+    },
+  })
+
   return (
-    <div className="space-y-2 bg-card p-3 ring-1 ring-border">
+    <div className="space-y-2 bg-card p-3 ring-1 ring-border" data-offer-negotiation="result">
       <h3 className="text-sm font-medium">Oferta kanału przy wycenie</h3>
       <p className="text-xs text-muted-foreground">
-        channel_quote 13.0 na tej samej lane · nie odejmuj kwot · nie zapis wyniku
+        channel_quote 13.0 na tej samej lane · wskazanie oferty · nie odejmuj kwot
       </p>
       {args.lanes.length === 0 ? (
         <p className="text-sm text-muted-foreground">Najpierw wycena z party_id, POL i POD.</p>
@@ -345,6 +362,21 @@ function OfferNegotiationPanel(args: { lanes: QuotationLane[]; signedIn: boolean
         <p className="text-xs">
           kanał <Money amount={channel.amount} currency={channel.currency} /> {channel.source_ref}
         </p>
+      ) : null}
+      {channel !== null && selected !== undefined ? (
+        <Button
+          type="button"
+          disabled={saveResult.isPending || !args.signedIn}
+          onClick={() => saveResult.mutate()}
+        >
+          Zapisz wynik
+        </Button>
+      ) : null}
+      {saveResult.isError ? (
+        <p className="text-sm text-destructive">{(saveResult.error as Error).message}</p>
+      ) : null}
+      {savedId !== null ? (
+        <p className="text-xs font-mono">wskazanie {savedId}</p>
       ) : null}
     </div>
   )

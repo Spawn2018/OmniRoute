@@ -2785,6 +2785,64 @@
         ]
       }
     },
+    "/api/v1/quotations/{quotation_id}/negotiate": {
+      "patch": {
+        "tags": [
+          "quotations"
+        ],
+        "summary": "Negotiate Quotation",
+        "operationId": "negotiate_quotation_api_v1_quotations__quotation_id__negotiate_patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "quotation_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Quotation Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuotationNegotiate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuotationResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/quotations/{quotation_id}/document-number": {
       "post": {
         "tags": [
@@ -8370,6 +8428,21 @@
         ],
         "title": "QuotationDocumentLayout"
       },
+      "QuotationNegotiate": {
+        "properties": {
+          "channel_quote_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Channel Quote Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "channel_quote_id"
+        ],
+        "title": "QuotationNegotiate"
+      },
       "QuotationResponse": {
         "properties": {
           "id": {
@@ -8473,6 +8546,18 @@
               }
             ],
             "title": "Document Number"
+          },
+          "negotiated_channel_quote_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Negotiated Channel Quote Id"
           }
         },
         "type": "object",
@@ -8489,7 +8574,8 @@
           "party_id",
           "customer_rfq_id",
           "commodity_code_id",
-          "document_number"
+          "document_number",
+          "negotiated_channel_quote_id"
         ],
         "title": "QuotationResponse"
       },

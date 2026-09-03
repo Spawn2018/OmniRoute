@@ -35,6 +35,7 @@ function quotationWithCurrency(currency: string): Quotation {
     customer_rfq_id: null,
     commodity_code_id: null,
     document_number: null,
+    negotiated_channel_quote_id: null,
   }
 }
 
@@ -311,6 +312,9 @@ describe("quotation catalog screen", () => {
     expect(page).toContain("resolveCreditReview")
     expect(page).toContain("fetchPartyScorecard")
     expect(page).toContain("resolveChannelQuote")
+    expect(page).toContain("negotiateQuotation")
+    expect(page).toContain("Zapisz wynik")
+    expect(page).toContain('data-offer-negotiation="result"')
     expect(page).toContain("createQuotationBatch")
     expect(page).toContain("quotationBatchBody")
     expect(page).toContain("Kody wsadowe")

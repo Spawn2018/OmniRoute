@@ -24,6 +24,7 @@ function quotation(partyId: string | null): Quotation {
     customer_rfq_id: null,
     commodity_code_id: null,
     document_number: null,
+    negotiated_channel_quote_id: null,
   }
 }
 

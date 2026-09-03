@@ -10,6 +10,7 @@ from app.domain.customer_rfq import inherit_rfq_commodity_code_id, require_rfq_p
 from app.domain.money import Money
 from app.models.customer_rfq import CustomerRfq
 from app.models.quotation import Quotation
+from app.services.channel_quotes.channel_quote_service import ChannelQuoteService
 from app.services.commodity_codes.commodity_code_service import CommodityCodeService
 from app.services.customer_rfqs.customer_rfq_service import CustomerRfqService
 from app.services.organization_settings.organization_setting_service import (
@@ -56,6 +57,7 @@ class QuotationResponse(BaseModel):
     customer_rfq_id: UUID | None
     commodity_code_id: UUID | None
     document_number: str | None
+    negotiated_channel_quote_id: UUID | None
 
     @classmethod
     def from_row(cls, row: Quotation) -> "QuotationResponse":
@@ -75,7 +77,14 @@ class QuotationResponse(BaseModel):
             customer_rfq_id=row.customer_rfq_id,
             commodity_code_id=row.commodity_code_id,
             document_number=row.document_number,
+            negotiated_channel_quote_id=row.negotiated_channel_quote_id,
         )
+
+
+class QuotationNegotiate(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    channel_quote_id: UUID
 
 
 class QuotationDocumentLayout(BaseModel):
@@ -200,6 +209,22 @@ async def quotation_document_layout(
         prefix=await _quotation_prefix(session),
         print_template=await _quotation_print_template(session),
     )
+
+
+@router.patch("/{quotation_id}/negotiate", response_model=QuotationResponse)
+async def negotiate_quotation(
+    quotation_id: UUID,
+    body: QuotationNegotiate,
+    _authz: None = Depends(require_permission("can_manage_quotations", "organization")),
+    session: AsyncSession = Depends(require_tenant_session),
+) -> QuotationResponse:
+    await ChannelQuoteService(session).get_quote(body.channel_quote_id)
+    row = await QuotationService(session).set_negotiated_channel_quote(
+        quotation_id,
+        body.channel_quote_id,
+    )
+    await session.commit()
+    return QuotationResponse.from_row(row)
 
 
 @router.post("/{quotation_id}/document-number", response_model=QuotationResponse)

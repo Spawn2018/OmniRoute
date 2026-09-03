@@ -6,7 +6,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app.api.deps import require_tenant_session, set_authz_checker
-from app.domain.errors import QuotationGap, UnknownChargeCode
+from app.domain.errors import QuotationGap, ResourceNotFound, UnknownChannelQuote, UnknownChargeCode
 from app.main import app
 from app.models.quotation import Quotation
 from tests.http_auth import bearer_auth_headers
@@ -88,6 +88,17 @@ class StubQuotationService:
         self.rows.append(row)
         return row
 
+    async def set_negotiated_channel_quote(
+        self,
+        quotation_id: UUID,
+        channel_quote_id: UUID,
+    ) -> Quotation:
+        for row in self.rows:
+            if row.id == quotation_id:
+                row.negotiated_channel_quote_id = channel_quote_id
+                return row
+        raise ResourceNotFound("nieznana wycena")
+
     async def quote_batch_from_current_rates(
         self,
         *,
@@ -117,12 +128,28 @@ class StubQuotationService:
         return quoted
 
 
+class StubChannelQuoteService:
+    fail_get = False
+
+    def __init__(self, session: object) -> None:
+        self._session = session
+
+    async def get_quote(self, quote_id: UUID) -> object:
+        if type(self).fail_get:
+            raise UnknownChannelQuote(f"nieznana oferta kanału: {quote_id}")
+        return object()
+
+
 @pytest.fixture
 def quotations_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
     stub = StubQuotationService(object())
+    StubChannelQuoteService.fail_get = False
 
     def _factory(session: object) -> StubQuotationService:
         return stub
+
+    def _channel_factory(session: object) -> StubChannelQuoteService:
+        return StubChannelQuoteService(session)
 
     async def _fake_tenant_session() -> object:
         session = AsyncMock()
@@ -130,11 +157,13 @@ def quotations_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
         return session
 
     monkeypatch.setattr("app.api.quotations.QuotationService", _factory)
+    monkeypatch.setattr("app.api.quotations.ChannelQuoteService", _channel_factory)
     set_authz_checker(AllowAllAuthz())
     app.dependency_overrides[require_tenant_session] = _fake_tenant_session
     yield TestClient(app)
     app.dependency_overrides.clear()
     set_authz_checker(None)
+    StubChannelQuoteService.fail_get = False
 
 
 def test_http_quote_and_list(quotations_client: TestClient) -> None:
@@ -180,6 +209,62 @@ def test_http_quotation_gap(quotations_client: TestClient) -> None:
     )
     assert response.status_code == 400
     assert "quotation_gap" in response.json()["detail"]
+
+
+def test_http_negotiate_saves_pointer(quotations_client: TestClient) -> None:
+    headers = bearer_auth_headers()
+    created = quotations_client.post(
+        "/api/v1/quotations",
+        headers=headers,
+        json=_lane_body("THC"),
+    )
+    assert created.status_code == 201
+    quote_id = uuid4()
+    response = quotations_client.patch(
+        f"/api/v1/quotations/{created.json()['id']}/negotiate",
+        headers=headers,
+        json={"channel_quote_id": str(quote_id)},
+    )
+    assert response.status_code == 200
+    body = response.json()
+    assert body["negotiated_channel_quote_id"] == str(quote_id)
+    assert body["amount"] == "10.5000"
+    assert body["currency"] == "EUR"
+
+
+def test_http_negotiate_unknown_channel(quotations_client: TestClient) -> None:
+    headers = bearer_auth_headers()
+    created = quotations_client.post(
+        "/api/v1/quotations",
+        headers=headers,
+        json=_lane_body("THC"),
+    )
+    StubChannelQuoteService.fail_get = True
+    response = quotations_client.patch(
+        f"/api/v1/quotations/{created.json()['id']}/negotiate",
+        headers=headers,
+        json={"channel_quote_id": str(uuid4())},
+    )
+    assert response.status_code == 400
+    assert "nieznana oferta" in response.json()["detail"]
+
+
+def test_http_negotiate_unknown_quotation(quotations_client: TestClient) -> None:
+    response = quotations_client.patch(
+        f"/api/v1/quotations/{uuid4()}/negotiate",
+        headers=bearer_auth_headers(),
+        json={"channel_quote_id": str(uuid4())},
+    )
+    assert response.status_code == 404
+
+
+def test_http_negotiate_rejects_amount(quotations_client: TestClient) -> None:
+    response = quotations_client.patch(
+        f"/api/v1/quotations/{uuid4()}/negotiate",
+        headers=bearer_auth_headers(),
+        json={"channel_quote_id": str(uuid4()), "amount": "99.0000"},
+    )
+    assert response.status_code == 422
 
 
 def test_http_rejects_amount_in_body(quotations_client: TestClient) -> None:

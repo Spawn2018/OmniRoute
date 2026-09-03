@@ -27,6 +27,12 @@ class ChannelQuoteService:
     async def list_quotes(self) -> list[ChannelQuote]:
         return await self._quotes.list_all()
 
+    async def get_quote(self, quote_id: UUID) -> ChannelQuote:
+        found = await self._quotes.get(quote_id)
+        if found is None:
+            raise UnknownChannelQuote(f"nieznana oferta kanału: {quote_id}")
+        return found
+
     async def resolve(
         self,
         *,

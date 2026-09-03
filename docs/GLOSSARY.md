@@ -63,7 +63,7 @@
 | delta A/B parsera | ab_delta_chars | różnica długości tekstu A vs B (0.9) |
 | kurs NBP | nbp_rate | D-1 roboczy; 16.0 odczyt przy wycenie; nie drugi katalog; nie mnożenie kwoty |
 | ryzyko oferty | offer_risk | 17.0 odczyt recenzji i karty przy wycenie; nie tabela; nie scoring |
-| negocjacja oferty | offer_negotiation | 18.0 odczyt `channel_quote` przy wycenie; nie tabela wyniku; nie spread w JS |
+| negocjacja oferty | offer_negotiation | 18.0 odczyt; 85.0 wskazanie `channel_quote` na wycenie; nie nowa kwota; nie spread w JS |
 | dokument oferty | offer_document | 19.0 podgląd; 72.0 `document_number` + druk 57.0; nie PDF; nie send |
 | wycena wsadowa | quotation_batch | 20.0 wiele kodów na jednej lane; nie CSV; nie nowa tabela |
 | zapytanie od klienta | customer_inquiry | 21.0 ślad wycen per party; nie tabela RFQ; nie IMAP |

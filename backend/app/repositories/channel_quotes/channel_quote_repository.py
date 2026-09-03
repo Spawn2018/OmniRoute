@@ -19,6 +19,10 @@ class ChannelQuoteRepository:
         )
         return list(result.all())
 
+    async def get(self, quote_id: UUID) -> ChannelQuote | None:
+        found = await self._session.get(ChannelQuote, quote_id)
+        return found if isinstance(found, ChannelQuote) else None
+
     async def get_carrier_profile(self, party_id: UUID) -> CarrierProfile | None:
         stmt = select(CarrierProfile).where(CarrierProfile.party_id == party_id).limit(1)
         row = await self._session.scalar(stmt)

@@ -80,6 +80,7 @@ def quotation_from_insert_row(row: RowMapping) -> Quotation:
         customer_rfq_id=row.get("customer_rfq_id"),
         commodity_code_id=row.get("commodity_code_id"),
         document_number=row.get("document_number"),
+        negotiated_channel_quote_id=row.get("negotiated_channel_quote_id"),
     )
 
 
@@ -142,6 +143,10 @@ class QuotationRepository:
     async def get(self, quotation_id: UUID) -> Quotation | None:
         found = await self._session.get(Quotation, quotation_id, populate_existing=True)
         return found if isinstance(found, Quotation) else None
+
+    async def save(self, row: Quotation) -> Quotation:
+        await self._session.flush()
+        return row
 
     async def issue_document_number(
         self,

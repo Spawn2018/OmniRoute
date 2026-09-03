@@ -1967,6 +1967,16 @@ export type QuotationDocumentLayout = {
 };
 
 /**
+ * QuotationNegotiate
+ */
+export type QuotationNegotiate = {
+    /**
+     * Channel Quote Id
+     */
+    channel_quote_id: string;
+};
+
+/**
  * QuotationResponse
  */
 export type QuotationResponse = {
@@ -2022,6 +2032,10 @@ export type QuotationResponse = {
      * Document Number
      */
     document_number: string | null;
+    /**
+     * Negotiated Channel Quote Id
+     */
+    negotiated_channel_quote_id: string | null;
 };
 
 /**
@@ -4098,6 +4112,36 @@ export type QuotationDocumentLayoutApiV1QuotationsDocumentLayoutGetResponses = {
 };
 
 export type QuotationDocumentLayoutApiV1QuotationsDocumentLayoutGetResponse = QuotationDocumentLayoutApiV1QuotationsDocumentLayoutGetResponses[keyof QuotationDocumentLayoutApiV1QuotationsDocumentLayoutGetResponses];
+
+export type NegotiateQuotationApiV1QuotationsQuotationIdNegotiatePatchData = {
+    body: QuotationNegotiate;
+    path: {
+        /**
+         * Quotation Id
+         */
+        quotation_id: string;
+    };
+    query?: never;
+    url: '/api/v1/quotations/{quotation_id}/negotiate';
+};
+
+export type NegotiateQuotationApiV1QuotationsQuotationIdNegotiatePatchErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type NegotiateQuotationApiV1QuotationsQuotationIdNegotiatePatchError = NegotiateQuotationApiV1QuotationsQuotationIdNegotiatePatchErrors[keyof NegotiateQuotationApiV1QuotationsQuotationIdNegotiatePatchErrors];
+
+export type NegotiateQuotationApiV1QuotationsQuotationIdNegotiatePatchResponses = {
+    /**
+     * Successful Response
+     */
+    200: QuotationResponse;
+};
+
+export type NegotiateQuotationApiV1QuotationsQuotationIdNegotiatePatchResponse = NegotiateQuotationApiV1QuotationsQuotationIdNegotiatePatchResponses[keyof NegotiateQuotationApiV1QuotationsQuotationIdNegotiatePatchResponses];
 
 export type IssueQuotationDocumentNumberApiV1QuotationsQuotationIdDocumentNumberPostData = {
     body?: never;
