@@ -1317,6 +1317,50 @@ export type MailDraftResponse = {
 };
 
 /**
+ * MoneyCostCreate
+ */
+export type MoneyCostCreate = {
+    /**
+     * Bank Payment Id
+     */
+    bank_payment_id: string;
+    /**
+     * Nbp Rate Id
+     */
+    nbp_rate_id: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * MoneyCostResponse
+ */
+export type MoneyCostResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Bank Payment Id
+     */
+    bank_payment_id: string;
+    /**
+     * Nbp Rate Id
+     */
+    nbp_rate_id: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * NbpRateCreate
  */
 export type NbpRateCreate = {
@@ -5008,6 +5052,49 @@ export type CreateBankPaymentApiV1BankPaymentsPostResponses = {
 };
 
 export type CreateBankPaymentApiV1BankPaymentsPostResponse = CreateBankPaymentApiV1BankPaymentsPostResponses[keyof CreateBankPaymentApiV1BankPaymentsPostResponses];
+
+export type ListMoneyCostsApiV1MoneyCostsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/money-costs';
+};
+
+export type ListMoneyCostsApiV1MoneyCostsGetResponses = {
+    /**
+     * Response List Money Costs Api V1 Money Costs Get
+     *
+     * Successful Response
+     */
+    200: Array<MoneyCostResponse>;
+};
+
+export type ListMoneyCostsApiV1MoneyCostsGetResponse = ListMoneyCostsApiV1MoneyCostsGetResponses[keyof ListMoneyCostsApiV1MoneyCostsGetResponses];
+
+export type CreateMoneyCostApiV1MoneyCostsPostData = {
+    body: MoneyCostCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/money-costs';
+};
+
+export type CreateMoneyCostApiV1MoneyCostsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateMoneyCostApiV1MoneyCostsPostError = CreateMoneyCostApiV1MoneyCostsPostErrors[keyof CreateMoneyCostApiV1MoneyCostsPostErrors];
+
+export type CreateMoneyCostApiV1MoneyCostsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: MoneyCostResponse;
+};
+
+export type CreateMoneyCostApiV1MoneyCostsPostResponse = CreateMoneyCostApiV1MoneyCostsPostResponses[keyof CreateMoneyCostApiV1MoneyCostsPostResponses];
 
 export type ListOrganizationSettingsApiV1OrganizationSettingsGetData = {
     body?: never;

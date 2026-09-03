@@ -3599,6 +3599,80 @@
         ]
       }
     },
+    "/api/v1/money-costs": {
+      "get": {
+        "tags": [
+          "money-costs"
+        ],
+        "summary": "List Money Costs",
+        "operationId": "list_money_costs_api_v1_money_costs_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/MoneyCostResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Money Costs Api V1 Money Costs Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "money-costs"
+        ],
+        "summary": "Create Money Cost",
+        "operationId": "create_money_cost_api_v1_money_costs_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MoneyCostCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MoneyCostResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/organization-settings": {
       "get": {
         "tags": [
@@ -8106,6 +8180,69 @@
           "source_ref"
         ],
         "title": "MailDraftResponse"
+      },
+      "MoneyCostCreate": {
+        "properties": {
+          "bank_payment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Bank Payment Id"
+          },
+          "nbp_rate_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Nbp Rate Id"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "bank_payment_id",
+          "nbp_rate_id",
+          "source_ref"
+        ],
+        "title": "MoneyCostCreate"
+      },
+      "MoneyCostResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "bank_payment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Bank Payment Id"
+          },
+          "nbp_rate_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Nbp Rate Id"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "bank_payment_id",
+          "nbp_rate_id",
+          "source_ref"
+        ],
+        "title": "MoneyCostResponse"
       },
       "NbpRateCreate": {
         "properties": {

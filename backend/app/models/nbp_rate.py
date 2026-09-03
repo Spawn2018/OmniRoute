@@ -18,6 +18,7 @@ class NbpRate(Base, TimestampMixin):
             "rate_date",
             name="uq_nbp_rate_org_currency_date",
         ),
+        UniqueConstraint("organization_id", "id", name="uq_nbp_rate_org_id"),
         CheckConstraint(
             "currency ~ '^[A-Z]{3}$' AND currency <> 'PLN'",
             name="ck_nbp_rate_currency_iso",

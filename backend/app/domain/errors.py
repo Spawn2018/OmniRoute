@@ -294,6 +294,10 @@ class InvalidBankPayment(DomainError):
     """Płatność: para faktura+rachunek i source_ref — nie kwota, nie SEPA."""
 
 
+class InvalidMoneyCost(DomainError):
+    """Koszt pieniądza: para płatność+kurs i source_ref — nie kwota, nie odsetki."""
+
+
 class InvalidPartyScorecard(DomainError):
     """Wskaźnik karty poza zakresem albo nie jest Decimal — nie float, nie scoring osoby."""
 

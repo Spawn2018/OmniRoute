@@ -269,3 +269,4 @@
 | 2026-09-03 | Plan 99.0 | M-42 | S37: `bank_payment` wiąże fakturę z rachunkiem. Delta zaakceptowana (`/noc`). Nie SEPA. Następny: `/plaster` 99.0. |
 | 2026-09-03 | 99.0 | M-42 | Tabela płatności faktury na rachunek. Nie SEPA. Nie druga marża. Następny: S38 Plan. |
 | 2026-09-03 | Plan 100.0 | M-43 | S38: `money_cost` wiąże płatność z kursem NBP. Delta zaakceptowana (`/noc`). Nie odsetki. Następny: `/plaster` 100.0. |
+| 2026-09-03 | 100.0 | M-43 | Tabela kosztu pieniądza: płatność przy kursie NBP. Nie odsetki. Nie mnożenie. Następny: S39 Plan. |

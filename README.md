@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **99.0** S37 bank i płatności (M-42)
+- **Ostatni plaster:** **100.0** S38 koszt pieniądza (M-43)
 - **Etap:** Plan
-- **Następny:** `/plaster` **100.0** — S38 koszt pieniądza (M-43). Nie F9.1.
+- **Następny:** `/plan-modul` **S39** — żywe M-44 różnice kursowe. Nie F9.1.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

@@ -4,7 +4,7 @@ from uuid import UUID, uuid4
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.domain.errors import NbpRateConflict, UnknownNbpRate
+from app.domain.errors import NbpRateConflict, ResourceNotFound, UnknownNbpRate
 from app.domain.nbp_rate import normalize_currency, normalize_nbp_mid, normalize_rate_date
 from app.models.nbp_rate import NbpRate
 from app.repositories.nbp_rates.nbp_rate_repository import NbpRateRepository
@@ -18,6 +18,12 @@ class NbpRateService:
 
     async def list_rates(self) -> list[NbpRate]:
         return await self._rates.list_all()
+
+    async def get_rate(self, rate_id: UUID) -> NbpRate:
+        found = await self._rates.get(rate_id)
+        if found is None:
+            raise ResourceNotFound("nieznany kurs")
+        return found
 
     async def create_rate(
         self,

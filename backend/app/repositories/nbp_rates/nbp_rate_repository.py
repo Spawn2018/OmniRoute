@@ -1,4 +1,5 @@
 from datetime import date
+from uuid import UUID
 
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -9,6 +10,9 @@ from app.models.nbp_rate import NbpRate
 class NbpRateRepository:
     def __init__(self, session: AsyncSession) -> None:
         self._session = session
+
+    async def get(self, rate_id: UUID) -> NbpRate | None:
+        return await self._session.get(NbpRate, rate_id)
 
     async def list_all(self) -> list[NbpRate]:
         result = await self._session.scalars(

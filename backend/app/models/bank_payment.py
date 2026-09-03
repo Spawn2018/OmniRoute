@@ -28,6 +28,7 @@ class BankPayment(Base, TimestampMixin):
             "party_bank_account_id",
             name="uq_bank_payment_pair",
         ),
+        UniqueConstraint("organization_id", "id", name="uq_bank_payment_org_id"),
         Index("ix_bank_payment_org_invoice", "organization_id", "sales_invoice_id"),
     )
 

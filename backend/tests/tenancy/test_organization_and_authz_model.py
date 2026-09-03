@@ -32,6 +32,7 @@ def test_authorization_model_includes_table_view_permission() -> None:
     assert "can_manage_sales_invoices" in org.relations
     assert "can_manage_quote_invoice_settlements" in org.relations
     assert "can_manage_bank_payments" in org.relations
+    assert "can_manage_money_costs" in org.relations
     assert "can_manage_rate_lines" in org.relations
     assert "can_manage_charges" in org.relations
     assert "can_manage_quotations" in org.relations
@@ -98,6 +99,9 @@ def test_authorization_model_includes_table_view_permission() -> None:
     payments = org.relations["can_manage_bank_payments"]
     assert payments.computed_userset is not None
     assert payments.computed_userset.relation == "member"
+    money_costs = org.relations["can_manage_money_costs"]
+    assert money_costs.computed_userset is not None
+    assert money_costs.computed_userset.relation == "member"
     rates = org.relations["can_manage_rate_lines"]
     assert rates.computed_userset is not None
     assert rates.computed_userset.relation == "member"

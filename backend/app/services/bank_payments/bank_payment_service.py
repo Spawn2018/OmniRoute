@@ -8,7 +8,7 @@ from app.domain.bank_payment import (
     require_payment_invoice_id,
     require_payment_source_ref,
 )
-from app.domain.errors import InvalidBankPayment
+from app.domain.errors import InvalidBankPayment, ResourceNotFound
 from app.models.bank_payment import BankPayment
 from app.repositories.bank_payments.bank_payment_repository import BankPaymentRepository
 
@@ -16,6 +16,12 @@ from app.repositories.bank_payments.bank_payment_repository import BankPaymentRe
 class BankPaymentService:
     def __init__(self, session: AsyncSession) -> None:
         self._rows = BankPaymentRepository(session)
+
+    async def get_payment(self, payment_id: UUID) -> BankPayment:
+        found = await self._rows.get(payment_id)
+        if found is None:
+            raise ResourceNotFound("nieznana płatność")
+        return found
 
     async def list_payments(self) -> list[BankPayment]:
         return await self._rows.list_all()

@@ -31,7 +31,7 @@ export const OPS_JOBS = [
   {
     route: BUSINESS_LISTS.moneyCost.route,
     label: "Koszt pieniądza",
-    job: "NBP i buy z charge",
+    job: "zapis kosztu pieniądza przy płatności",
   },
   {
     route: BUSINESS_LISTS.fxDifference.route,
@@ -311,6 +311,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "97.0": "/invoices",
   "98.0": "/quote-invoices",
   "99.0": "/payments",
+  "100.0": "/money-cost",
 } as const
 
 export const ROUTES_BREADTH_STANDING =
