@@ -60,7 +60,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-50 | Kolej z Chin | 43.0 `china_rail` | **ukończony (fundament)** · tablica portów CN z flagą `rail`; nie korytarz; nie HTTP |
 | M-51 | Drobnica morska | 44.0 `ocean_lcl` | **ukończony (fundament)** · tablica portów `is_seaport`; nie tabela LCL; nie CFS |
 | M-53 | Sankcje | 45.0 `sanctions` · 89.0 `sanctions_list_ref` | **ukończony (fundament)** · tablica + sprawdzenie na `party`; nie auto-match; nie live lista |
-| M-56 | RODO | 46.0 `gdpr` | **ukończony (fundament)** · tablica emaili `app_user`; nie wniosek; nie usuwanie |
+| M-56 | RODO | 46.0 `gdpr` · 107.0 `gdpr_request` | **plan (S45)** · wniosek access/erasure + tombstone konta; nie DPIA; nie DELETE `app_user` |
 | M-57 | Copilot AI | 47.0 `ai_copilot` · 76.0 `mail_draft` | **ukończony (fundament)** · pending extract + szkic maila; 81.0 send na M-33; nie czat |
 | M-68 | Obserwowalność | 48.0 `observability` | **ukończony (fundament)** · tablica `fetchHealth`; nie OTel; nie k6 |
 | M-69 | Jakość | 49.0 `extraction_quality` | **ukończony (fundament)** · tablica `unparsed_regions`; nie scoring; nie tabela QA |
