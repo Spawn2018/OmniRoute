@@ -9,6 +9,7 @@ export type CustomerRfq = {
   status: string
   party_id: string | null
   commodity_code_id: string | null
+  dangerous_good_id: string | null
 }
 
 async function readCustomerRfq(response: Response, fallback: string): Promise<CustomerRfq> {
@@ -50,4 +51,18 @@ export async function patchCustomerRfqCommodity(
     body: JSON.stringify({ commodity_code_id: commodityCodeId }),
   })
   return readCustomerRfq(response, "Błąd podpięcia kodu towarowego")
+}
+
+export async function patchCustomerRfqDangerous(
+  rfqId: string,
+  dangerousGoodId: string,
+): Promise<CustomerRfq> {
+  return readCustomerRfq(
+    await fetch(`/api/v1/customer-rfqs/${rfqId}`, {
+      method: "PATCH",
+      headers: { ...requireAuthHeaders(), "Content-Type": "application/json" },
+      body: JSON.stringify({ dangerous_good_id: dangerousGoodId }),
+    }),
+    "Błąd podpięcia numeru UN",
+  )
 }

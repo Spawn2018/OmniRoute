@@ -26,6 +26,12 @@ class DangerousGoodService:
     async def list_goods(self) -> list[DangerousGood]:
         return await self._goods.list_all()
 
+    async def get(self, good_id: UUID) -> DangerousGood:
+        found = await self._goods.get(good_id)
+        if found is None:
+            raise UnknownDangerousGood(f"nieznany towar niebezpieczny: {good_id}")
+        return found
+
     async def create_good(
         self,
         *,

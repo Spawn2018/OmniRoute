@@ -35,3 +35,12 @@ def inherit_rfq_commodity_code_id(
     if selected is not None:
         return selected
     return rfq_commodity_code_id
+
+
+def inherit_rfq_dangerous_good_id(
+    selected: UUID | None,
+    rfq_dangerous_good_id: UUID | None,
+) -> UUID | None:
+    if selected is not None:
+        return selected
+    return rfq_dangerous_good_id

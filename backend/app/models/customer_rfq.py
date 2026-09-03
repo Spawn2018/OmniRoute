@@ -50,7 +50,14 @@ class CustomerRfq(Base, TimestampMixin):
             name="fk_customer_rfq_commodity_code",
             ondelete="RESTRICT",
         ),
+        ForeignKeyConstraint(
+            ["organization_id", "dangerous_good_id"],
+            ["dangerous_good.organization_id", "dangerous_good.id"],
+            name="fk_customer_rfq_dangerous_good",
+            ondelete="RESTRICT",
+        ),
         Index("ix_customer_rfq_org_commodity_code_id", "organization_id", "commodity_code_id"),
+        Index("ix_customer_rfq_org_dangerous_good_id", "organization_id", "dangerous_good_id"),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
@@ -65,6 +72,10 @@ class CustomerRfq(Base, TimestampMixin):
     status: Mapped[str] = mapped_column(String(8), nullable=False)
     party_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
     commodity_code_id: Mapped[uuid.UUID | None] = mapped_column(
+        UUID(as_uuid=True),
+        nullable=True,
+    )
+    dangerous_good_id: Mapped[uuid.UUID | None] = mapped_column(
         UUID(as_uuid=True),
         nullable=True,
     )

@@ -12,6 +12,7 @@ import { comparisonChargeBody, createCharge, type Charge } from "@/lib/charges-a
 import { fetchChannelQuotes, resolveChannelQuote, type ChannelQuote } from "@/lib/channel-quotes-api"
 import { fetchCommodityCodes } from "@/lib/commodity-codes-api"
 import { fetchCustomerRfqs, type CustomerRfq } from "@/lib/customer-rfqs-api"
+import { fetchDangerousGoods } from "@/lib/dangerous-goods-api"
 import { resolveCreditReview, type CreditReview } from "@/lib/credit-reviews-api"
 import { resolveNbpRate, type NbpRate } from "@/lib/nbp-rates-api"
 import { fetchParties, type Party } from "@/lib/parties-api"
@@ -68,6 +69,12 @@ const columns = [
       <span className="font-mono text-xs">{row.original.commodity_code_id ?? "—"}</span>
     ),
   }),
+  helper.accessor("dangerous_good_id", {
+    header: "UN",
+    cell: ({ row }) => (
+      <span className="font-mono text-xs">{row.original.dangerous_good_id ?? "—"}</span>
+    ),
+  }),
   helper.accessor("party_id", {
     header: "Kontrahent",
     cell: ({ row }) => <span className="font-mono text-xs">{row.original.party_id ?? "—"}</span>,
@@ -91,6 +98,7 @@ const COLUMN_LABELS = {
   amount: "Kwota ze stawki",
   customer_rfq_id: "RFQ",
   commodity_code_id: "HS/CN",
+  dangerous_good_id: "UN",
   party_id: "Kontrahent",
   origin_port_id: "POL",
   destination_port_id: "POD",
@@ -772,6 +780,11 @@ function rfqCommodityCodeId(rows: readonly CustomerRfq[], rfqId: string): string
   return found?.commodity_code_id ?? ""
 }
 
+function rfqDangerousGoodId(rows: readonly CustomerRfq[], rfqId: string): string {
+  const found = rows.find((row) => row.id === rfqId)
+  return found?.dangerous_good_id ?? ""
+}
+
 export function QuotationCatalogPage() {
   const ctx = getTenantContext()
   const queryClient = useQueryClient()
@@ -779,6 +792,7 @@ export function QuotationCatalogPage() {
   const [partyId, setPartyId] = useState("")
   const [rfqId, setRfqId] = useState(initialSearchRfq)
   const [commodityCodeId, setCommodityCodeId] = useState("")
+  const [dangerousGoodId, setDangerousGoodId] = useState("")
   const [originPortId, setOriginPortId] = useState("")
   const [destinationPortId, setDestinationPortId] = useState("")
   const [filterPartyId, setFilterPartyId] = useState("")
@@ -816,6 +830,13 @@ export function QuotationCatalogPage() {
     retry: false,
   })
 
+  const dangerousGoodsQuery = useQuery({
+    queryKey: ["dangerous-goods", ctx.organizationId],
+    queryFn: fetchDangerousGoods,
+    enabled: signedIn,
+    retry: false,
+  })
+
   useEffect(() => {
     if (rfqId === "") {
       return
@@ -827,6 +848,10 @@ export function QuotationCatalogPage() {
     const hsFromRfq = rfqCommodityCodeId(rfqsQuery.data ?? [], rfqId)
     if (hsFromRfq !== "") {
       setCommodityCodeId(hsFromRfq)
+    }
+    const unFromRfq = rfqDangerousGoodId(rfqsQuery.data ?? [], rfqId)
+    if (unFromRfq !== "") {
+      setDangerousGoodId(unFromRfq)
     }
   }, [rfqId, rfqsQuery.data])
 
@@ -874,6 +899,7 @@ export function QuotationCatalogPage() {
           partyId,
           customerRfqId: rfqId,
           commodityCodeId,
+          dangerousGoodId,
         }),
       ),
     onSuccess: () => {
@@ -892,6 +918,7 @@ export function QuotationCatalogPage() {
           partyId,
           customerRfqId: rfqId,
           commodityCodeId,
+          dangerousGoodId,
         }),
       ),
     onSuccess: () => {
@@ -904,6 +931,7 @@ export function QuotationCatalogPage() {
   const ports = portsQuery.data ?? []
   const rfqs = rfqsQuery.data ?? []
   const commodityCodes = commodityCodesQuery.data ?? []
+  const dangerousGoods = dangerousGoodsQuery.data ?? []
   const selectedRfqParty = rfqPartyId(rfqs, rfqId)
   const rfqMissingParty = rfqId !== "" && selectedRfqParty === ""
 
@@ -973,6 +1001,22 @@ export function QuotationCatalogPage() {
             ))}
           </select>
         </label>
+        <fieldset data-quote-un="picker" className="flex flex-col gap-1 text-xs">
+          <legend>dangerous_good_id</legend>
+          <select
+            aria-label="Towar niebezpieczny"
+            className="h-8 rounded-md border border-border bg-card px-2 text-sm"
+            value={dangerousGoodId}
+            onChange={(event) => setDangerousGoodId(event.target.value)}
+          >
+            <option value="">Bez UN</option>
+            {dangerousGoods.map((row) => (
+              <option key={row.id} value={row.id}>
+                {row.un_number} {row.name}
+              </option>
+            ))}
+          </select>
+        </fieldset>
         <label className="flex flex-col gap-1 text-xs">
           party_id
           <select

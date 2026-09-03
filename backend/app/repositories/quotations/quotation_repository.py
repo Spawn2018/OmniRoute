@@ -11,7 +11,7 @@ INSERT INTO quotation (
     id, organization_id, charge_code, rate_line_id,
     amount, currency, source_ref, created_by,
     origin_port_id, destination_port_id, party_id, customer_rfq_id,
-    commodity_code_id
+    commodity_code_id, dangerous_good_id
 )
 SELECT
     :qid,
@@ -26,7 +26,8 @@ SELECT
     :destination_port_id,
     :party_id,
     :customer_rfq_id,
-    :commodity_code_id
+    :commodity_code_id,
+    :dangerous_good_id
 FROM rate_line AS rl
 WHERE rl.charge_code = :charge_code
   AND rl.superseded_by IS NULL
@@ -35,7 +36,7 @@ LIMIT 1
 RETURNING id, organization_id, charge_code, rate_line_id,
           amount, currency, source_ref, created_by,
           origin_port_id, destination_port_id, party_id, customer_rfq_id,
-          commodity_code_id, document_number
+          commodity_code_id, dangerous_good_id, document_number
 """
 
 ISSUE_DOCUMENT_NUMBER_SQL = """
@@ -60,7 +61,8 @@ WHERE target.id = :qid
 RETURNING target.id, target.organization_id, target.charge_code, target.rate_line_id,
           target.amount, target.currency, target.source_ref, target.created_by,
           target.origin_port_id, target.destination_port_id, target.party_id,
-          target.customer_rfq_id, target.commodity_code_id, target.document_number
+          target.customer_rfq_id, target.commodity_code_id, target.dangerous_good_id,
+          target.document_number
 """
 
 
@@ -79,6 +81,7 @@ def quotation_from_insert_row(row: RowMapping) -> Quotation:
         party_id=row["party_id"],
         customer_rfq_id=row.get("customer_rfq_id"),
         commodity_code_id=row.get("commodity_code_id"),
+        dangerous_good_id=row.get("dangerous_good_id"),
         document_number=row.get("document_number"),
         negotiated_channel_quote_id=row.get("negotiated_channel_quote_id"),
         noted_credit_review_id=row.get("noted_credit_review_id"),
@@ -121,6 +124,7 @@ class QuotationRepository:
         party_id: UUID,
         customer_rfq_id: UUID | None = None,
         commodity_code_id: UUID | None = None,
+        dangerous_good_id: UUID | None = None,
     ) -> Quotation | None:
         result = await self._session.execute(
             text(QUOTE_FROM_CURRENT_SQL),
@@ -134,6 +138,7 @@ class QuotationRepository:
                 "party_id": party_id,
                 "customer_rfq_id": customer_rfq_id,
                 "commodity_code_id": commodity_code_id,
+                "dangerous_good_id": dangerous_good_id,
             },
         )
         row = result.mappings().first()

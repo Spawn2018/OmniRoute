@@ -1,9 +1,9 @@
 # M-52 dangerous_good — katalog towarów niebezpiecznych
 
-**Plaster:** 7.0 (katalog) · **122.0** (S7 leftover UN na RFQ, plan)  
+**Plaster:** 7.0 (katalog) · **122.0** (S7 leftover UN na RFQ)  
 **Status:** katalog numeru UN + klasy IMDG per tenant. 122.0 podpina `dangerous_good_id` do RFQ i wyceny. Nie żywe M-08 `charge`.
 
-Delta: [7.0](../deltas/archived/7.0-dangerous-good.md) · [122.0](../deltas/open/122.0-un-on-rfq.md).
+Delta: [7.0](../deltas/archived/7.0-dangerous-good.md) · [122.0](../deltas/archived/122.0-un-on-rfq.md).
 
 ## Zakres
 

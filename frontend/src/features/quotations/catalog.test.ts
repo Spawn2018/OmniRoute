@@ -34,6 +34,7 @@ function quotationWithCurrency(currency: string): Quotation {
     party_id: null,
     customer_rfq_id: null,
     commodity_code_id: null,
+    dangerous_good_id: null,
     document_number: null,
     negotiated_channel_quote_id: null,
     noted_credit_review_id: null,
@@ -58,6 +59,7 @@ describe("quotationCreateBody", () => {
     expect(body).not.toHaveProperty("currency")
     expect(body).not.toHaveProperty("customer_rfq_id")
     expect(body).not.toHaveProperty("commodity_code_id")
+    expect(body).not.toHaveProperty("dangerous_good_id")
   })
 
   it("sends customer_rfq_id only when selected", () => {
@@ -83,6 +85,19 @@ describe("quotationCreateBody", () => {
       commodityCodeId: hsId,
     })
     expect(body.commodity_code_id).toBe(hsId)
+    expect(body).not.toHaveProperty("amount")
+  })
+
+  it("sends dangerous_good_id only when selected", () => {
+    const unId = "66666666-6666-4666-8666-666666666666"
+    const body = quotationCreateBody({
+      chargeCode: "THC",
+      originPortId: ORIGIN,
+      destinationPortId: DESTINATION,
+      partyId: PARTY,
+      dangerousGoodId: unId,
+    })
+    expect(body.dangerous_good_id).toBe(unId)
     expect(body).not.toHaveProperty("amount")
   })
 })
@@ -312,8 +327,11 @@ describe("quotation catalog screen", () => {
     expect(page).toContain("party_id")
     expect(page).toContain("customer_rfq_id")
     expect(page).toContain("commodity_code_id")
+    expect(page).toContain("dangerous_good_id")
     expect(page).toContain("fetchCustomerRfqs")
     expect(page).toContain("fetchCommodityCodes")
+    expect(page).toContain("fetchDangerousGoods")
+    expect(page).toContain('data-quote-un="picker"')
     expect(page).toContain("origin_port_id")
     expect(page).toContain("destination_port_id")
     expect(page).toContain("fetchParties")

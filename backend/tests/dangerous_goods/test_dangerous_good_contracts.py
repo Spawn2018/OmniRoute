@@ -39,8 +39,10 @@ def test_pricing_and_extraction_do_not_import_dangerous_goods() -> None:
     ):
         for path in (_SERVICES / bounded).rglob("*.py"):
             text = path.read_text(encoding="utf-8")
-            assert "dangerous_good" not in text
             assert "app.services.dangerous_goods" not in text
+    for path in (_SERVICES / "extraction").rglob("*.py"):
+        text = path.read_text(encoding="utf-8")
+        assert "dangerous_good" not in text
 
 
 def test_generated_api_types_include_dangerous_good() -> None:

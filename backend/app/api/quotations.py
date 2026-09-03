@@ -6,13 +6,18 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import get_current_identity, require_permission, require_tenant_session
 from app.core.session_token import SessionIdentity
-from app.domain.customer_rfq import inherit_rfq_commodity_code_id, require_rfq_party
+from app.domain.customer_rfq import (
+    inherit_rfq_commodity_code_id,
+    inherit_rfq_dangerous_good_id,
+    require_rfq_party,
+)
 from app.domain.money import Money
 from app.models.customer_rfq import CustomerRfq
 from app.models.quotation import Quotation
 from app.services.channel_quotes.channel_quote_service import ChannelQuoteService
 from app.services.commodity_codes.commodity_code_service import CommodityCodeService
 from app.services.customer_rfqs.customer_rfq_service import CustomerRfqService
+from app.services.dangerous_goods.dangerous_good_service import DangerousGoodService
 from app.services.organization_settings.organization_setting_service import (
     OrganizationSettingService,
 )
@@ -31,6 +36,7 @@ class QuotationCreate(BaseModel):
     party_id: UUID
     customer_rfq_id: UUID | None = None
     commodity_code_id: UUID | None = None
+    dangerous_good_id: UUID | None = None
 
 
 class QuotationBatchCreate(BaseModel):
@@ -42,6 +48,7 @@ class QuotationBatchCreate(BaseModel):
     party_id: UUID
     customer_rfq_id: UUID | None = None
     commodity_code_id: UUID | None = None
+    dangerous_good_id: UUID | None = None
 
 
 class QuotationResponse(BaseModel):
@@ -57,6 +64,7 @@ class QuotationResponse(BaseModel):
     party_id: UUID | None
     customer_rfq_id: UUID | None
     commodity_code_id: UUID | None
+    dangerous_good_id: UUID | None
     document_number: str | None
     negotiated_channel_quote_id: UUID | None
     noted_credit_review_id: UUID | None
@@ -78,6 +86,7 @@ class QuotationResponse(BaseModel):
             party_id=row.party_id,
             customer_rfq_id=row.customer_rfq_id,
             commodity_code_id=row.commodity_code_id,
+            dangerous_good_id=row.dangerous_good_id,
             document_number=row.document_number,
             negotiated_channel_quote_id=row.negotiated_channel_quote_id,
             noted_credit_review_id=row.noted_credit_review_id,
@@ -128,6 +137,21 @@ async def _quote_commodity_code_id(
     return found.id
 
 
+async def _quote_dangerous_good_id(
+    session: AsyncSession,
+    selected: UUID | None,
+    rfq: CustomerRfq | None,
+) -> UUID | None:
+    inherited = inherit_rfq_dangerous_good_id(
+        selected,
+        None if rfq is None else rfq.dangerous_good_id,
+    )
+    if inherited is None:
+        return None
+    found = await DangerousGoodService(session).get(inherited)
+    return found.id
+
+
 @router.get("", response_model=list[QuotationResponse])
 async def list_quotations(
     _authz: None = Depends(require_permission("can_manage_quotations", "organization")),
@@ -157,6 +181,7 @@ async def create_quotation(
     service = QuotationService(session)
     rfq = await _loaded_quote_rfq(session, body.customer_rfq_id, body.party_id)
     linked_hs = await _quote_commodity_code_id(session, body.commodity_code_id, rfq)
+    linked_un = await _quote_dangerous_good_id(session, body.dangerous_good_id, rfq)
     row = await service.quote_from_current_rate(
         organization_id=identity.organization_id,
         user_id=identity.user_id,
@@ -166,6 +191,7 @@ async def create_quotation(
         party_id=body.party_id,
         customer_rfq_id=None if rfq is None else rfq.id,
         commodity_code_id=linked_hs,
+        dangerous_good_id=linked_un,
     )
     await session.commit()
     return QuotationResponse.from_row(row)
@@ -181,6 +207,7 @@ async def create_quotation_batch(
     service = QuotationService(session)
     rfq = await _loaded_quote_rfq(session, body.customer_rfq_id, body.party_id)
     linked_hs = await _quote_commodity_code_id(session, body.commodity_code_id, rfq)
+    linked_un = await _quote_dangerous_good_id(session, body.dangerous_good_id, rfq)
     rows = await service.quote_batch_from_current_rates(
         organization_id=identity.organization_id,
         user_id=identity.user_id,
@@ -190,6 +217,7 @@ async def create_quotation_batch(
         party_id=body.party_id,
         customer_rfq_id=None if rfq is None else rfq.id,
         commodity_code_id=linked_hs,
+        dangerous_good_id=linked_un,
     )
     await session.commit()
     return [QuotationResponse.from_row(row) for row in rows]

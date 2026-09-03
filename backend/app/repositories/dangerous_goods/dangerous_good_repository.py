@@ -1,3 +1,5 @@
+from uuid import UUID
+
 from sqlalchemy import or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -13,6 +15,10 @@ class DangerousGoodRepository:
             select(DangerousGood).order_by(DangerousGood.un_number),
         )
         return list(result.all())
+
+    async def get(self, good_id: UUID) -> DangerousGood | None:
+        found = await self._session.get(DangerousGood, good_id)
+        return found if isinstance(found, DangerousGood) else None
 
     async def find_by_token(self, token: str) -> DangerousGood | None:
         stmt = select(DangerousGood).where(

@@ -70,6 +70,7 @@ class StubQuotationService:
         party_id: UUID | None,
         customer_rfq_id: UUID | None = None,
         commodity_code_id: UUID | None = None,
+        dangerous_good_id: UUID | None = None,
     ) -> Quotation:
         token = charge_code.strip().upper()
         if token == "LOOSE":
@@ -90,6 +91,7 @@ class StubQuotationService:
             party_id=party_id,
             customer_rfq_id=customer_rfq_id,
             commodity_code_id=commodity_code_id,
+            dangerous_good_id=dangerous_good_id,
         )
         self.rows.append(row)
         return row
@@ -127,6 +129,7 @@ class StubQuotationService:
         party_id: UUID | None,
         customer_rfq_id: UUID | None = None,
         commodity_code_id: UUID | None = None,
+        dangerous_good_id: UUID | None = None,
     ) -> list[Quotation]:
         quoted: list[Quotation] = []
         for code in charge_codes:
@@ -140,6 +143,7 @@ class StubQuotationService:
                     party_id=party_id,
                     customer_rfq_id=customer_rfq_id,
                     commodity_code_id=commodity_code_id,
+                    dangerous_good_id=dangerous_good_id,
                 )
             )
         return quoted

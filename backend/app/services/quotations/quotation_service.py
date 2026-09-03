@@ -13,6 +13,7 @@ from app.domain.errors import (
     ResourceNotFound,
     UnknownChargeCode,
     UnknownCommodityCode,
+    UnknownDangerousGood,
     UnknownParty,
     UnknownPort,
 )
@@ -39,6 +40,8 @@ def _snapshot_integrity_error(exc: IntegrityError) -> DomainError | None:
         return InvalidCustomerRfq("nieznane zapytanie ofertowe wyceny")
     if "fk_quotation_commodity_code" in detail:
         return UnknownCommodityCode("nieznany kod towarowy wyceny")
+    if "fk_quotation_dangerous_good" in detail:
+        return UnknownDangerousGood("nieznany towar niebezpieczny wyceny")
     if "uq_quotation_org_document_number" in detail:
         return InvalidQuotationDocumentNumber("numer oferty już zajęty")
     return None
@@ -81,6 +84,7 @@ class QuotationService:
         party_id: UUID | None,
         customer_rfq_id: UUID | None = None,
         commodity_code_id: UUID | None = None,
+        dangerous_good_id: UUID | None = None,
     ) -> Quotation:
         catalog = await self._require_catalog(charge_code)
         origin, destination, party = require_lane_party_snapshot(
@@ -98,6 +102,7 @@ class QuotationService:
                 party_id=party,
                 customer_rfq_id=customer_rfq_id,
                 commodity_code_id=commodity_code_id,
+                dangerous_good_id=dangerous_good_id,
             )
         except IntegrityError as exc:
             mapped = _snapshot_integrity_error(exc)
@@ -119,6 +124,7 @@ class QuotationService:
         party_id: UUID | None,
         customer_rfq_id: UUID | None = None,
         commodity_code_id: UUID | None = None,
+        dangerous_good_id: UUID | None = None,
     ) -> list[Quotation]:
         # Pętla woła istniejący INSERT…SELECT; wsad set-based = leftover 20.0.
         codes = require_batch_charge_codes(charge_codes)
@@ -134,6 +140,7 @@ class QuotationService:
                     party_id=party_id,
                     customer_rfq_id=customer_rfq_id,
                     commodity_code_id=commodity_code_id,
+                    dangerous_good_id=dangerous_good_id,
                 )
             )
         return quoted

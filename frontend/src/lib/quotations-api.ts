@@ -14,6 +14,7 @@ export type Quotation = {
   party_id: string | null
   customer_rfq_id: string | null
   commodity_code_id: string | null
+  dangerous_good_id: string | null
   document_number: string | null
   negotiated_channel_quote_id: string | null
   noted_credit_review_id: string | null
@@ -31,6 +32,7 @@ export type QuotationCreateBody = {
   party_id: string
   customer_rfq_id?: string
   commodity_code_id?: string
+  dangerous_good_id?: string
 }
 
 export type QuotationListFilters = {
@@ -47,6 +49,7 @@ export function quotationCreateBody(args: {
   partyId: string
   customerRfqId?: string
   commodityCodeId?: string
+  dangerousGoodId?: string
 }): QuotationCreateBody {
   const body: QuotationCreateBody = {
     charge_code: args.chargeCode.trim(),
@@ -62,6 +65,10 @@ export function quotationCreateBody(args: {
   if (hsId) {
     body.commodity_code_id = hsId
   }
+  const unId = args.dangerousGoodId?.trim()
+  if (unId) {
+    body.dangerous_good_id = unId
+  }
   return body
 }
 
@@ -72,6 +79,7 @@ export type QuotationBatchBody = {
   party_id: string
   customer_rfq_id?: string
   commodity_code_id?: string
+  dangerous_good_id?: string
 }
 
 export function quotationBatchBody(args: {
@@ -81,6 +89,7 @@ export function quotationBatchBody(args: {
   partyId: string
   customerRfqId?: string
   commodityCodeId?: string
+  dangerousGoodId?: string
 }): QuotationBatchBody {
   const charge_codes = args.chargeCodesText
     .split(/\r?\n/)
@@ -99,6 +108,10 @@ export function quotationBatchBody(args: {
   const hsId = args.commodityCodeId?.trim()
   if (hsId) {
     body.commodity_code_id = hsId
+  }
+  const unId = args.dangerousGoodId?.trim()
+  if (unId) {
+    body.dangerous_good_id = unId
   }
   return body
 }

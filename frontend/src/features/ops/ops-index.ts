@@ -119,6 +119,11 @@ export const OPS_JOBS = [
     job: "znane adresy i inbound_message fixture",
   },
   {
+    route: BUSINESS_LISTS.mailIntegration.route,
+    label: "Poczta — UN",
+    job: "Podpnij UN na zapytaniu",
+  },
+  {
     route: BUSINESS_LISTS.operatorNotice.route,
     label: "Powiadomienia",
     job: "HITL pending i wyceny pending",
@@ -365,6 +370,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "118.0": "/ai",
   "120.0": "/party-scorecards",
   "121.0": "/decisions",
+  "122.0": "/mail",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

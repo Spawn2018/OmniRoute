@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** `/plaster` **122.0** — leftover S7 UN z M-52 na RFQ/wycenie. Nie LLM. Nie F9.1.
+**Następny (zablokowany):** `/plan-modul` leftover S12 filtr 27.0 na `operator_notice`. Nie send. Nie F9.1.
 <!-- os-status:end -->
 
 ```mermaid
@@ -387,7 +387,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E2** | Testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy) | 61.0 | zamknięty (`docs/deltas/archived/61.0-alembic-quote-budget.md`) |
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | 62.0 | zamknięty (`docs/deltas/archived/62.0-operator-howto-c4.md`) |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | 63.0 | zamknięty (`docs/deltas/archived/63.0-threat-model-codeql.md`) |
-| po Q-E4 | **Fala S**, leftover S7 UN na RFQ plan 122.0 | Plan → plaster | **następny** |
+| po Q-E4 | **Fala S**, leftover S12 filtr 27.0 | Plan | **następny** |
 
 ### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
 
@@ -414,7 +414,7 @@ Reguły kolejności (żeby `/noc` nie złożył awarii):
 | S5 | Żywe **M-21** istniejący silnik na tym RFQ | 68.0 | zamknięty (`docs/deltas/archived/68.0-quotation-on-rfq.md`) | Nie nowy silnik. LLM nie liczy |
 | S6 | Żywe **M-18** ewaluacja `applies_when` w SQL | 69.0 | zamknięty (`docs/deltas/archived/69.0-port-surcharge-when.md`) | Nie zapis marży do `charge` |
 | S7 | Żywe **M-09** HS/CN na RFQ/wycenie | 70.0 | zamknięty (`docs/deltas/archived/70.0-hs-cn-on-rfq.md`) | Katalog jest. S7b: UN→M-52 |
-| **S7b** | Leftover **UN z M-52** na RFQ/wycenie | 122.0 | plan (`docs/deltas/open/122.0-un-on-rfq.md`) | Etykieta ładunku. Nie LLM. Nie filtr stawki |
+| **S7b** | Leftover **UN z M-52** na RFQ/wycenie | 122.0 | zamknięty (`docs/deltas/archived/122.0-un-on-rfq.md`) | Etykieta ładunku. Nie LLM. Nie filtr stawki |
 | S8 | Żywe **M-03** reszta + arch. M-84 (scalać) | 71.0 | zamknięty (`docs/deltas/archived/71.0-org-number-template.md`) | Prefiks i token szablonu. Nie licznik. Nie PDF |
 | S9 | Żywe **M-26** dokument oferty | 72.0 | zamknięty (`docs/deltas/archived/72.0-offer-document-number.md`) | Numer na ofercie + print 57.0. Nie send |
 | S10 | Żywe **M-16** SOP „kiedy nie wolno auto” | 73.0 | zamknięty (`docs/deltas/archived/73.0-sop-blocks-auto.md`) | `blocks_auto`. Nie send |

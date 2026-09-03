@@ -1,6 +1,6 @@
 # BC dangerous_good (M-52)
 
-Katalog numeru UN + klasy IMDG — nie `charge`, nie podpięcie do wyceny.
+Katalog numeru UN + klasy IMDG — nie `charge`. FK na RFQ/wycenie składa API.
 
 ## Dozwolone zależności
 - `app.models.dangerous_good`
@@ -9,5 +9,5 @@ Katalog numeru UN + klasy IMDG — nie `charge`, nie podpięcie do wyceny.
 
 ## Zakaz
 - import innych BC services
-- zapis `quotation` / `commodity_code` / `charge`
+- zapis `quotation` / `customer_rfq` / `commodity_code` / `charge`
 - nadawanie klasy przez LLM

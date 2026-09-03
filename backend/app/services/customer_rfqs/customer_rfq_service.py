@@ -8,7 +8,12 @@ from app.domain.customer_rfq import (
     require_inbound_message_id,
     require_rfq_source_ref,
 )
-from app.domain.errors import CustomerRfqConflict, ResourceNotFound, UnknownCommodityCode
+from app.domain.errors import (
+    CustomerRfqConflict,
+    ResourceNotFound,
+    UnknownCommodityCode,
+    UnknownDangerousGood,
+)
 from app.models.customer_rfq import CustomerRfq
 from app.repositories.customer_rfqs.customer_rfq_repository import CustomerRfqRepository
 
@@ -67,4 +72,19 @@ class CustomerRfqService:
             detail = str(orig.orig) if orig.orig is not None else str(orig)
             if "fk_customer_rfq_commodity_code" in detail:
                 raise UnknownCommodityCode("nieznany kod towarowy zapytania") from orig
+            raise
+
+    async def set_dangerous_good(
+        self,
+        rfq_id: UUID,
+        dangerous_good_id: UUID,
+    ) -> CustomerRfq:
+        row = await self.get_rfq(rfq_id)
+        row.dangerous_good_id = dangerous_good_id
+        try:
+            return await self._rfqs.save(row)
+        except IntegrityError as orig:
+            detail = str(orig.orig) if orig.orig is not None else str(orig)
+            if "fk_customer_rfq_dangerous_good" in detail:
+                raise UnknownDangerousGood("nieznany towar niebezpieczny zapytania") from orig
             raise

@@ -1,13 +1,14 @@
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, status
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, model_validator
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import get_current_identity, require_permission, require_tenant_session
 from app.core.session_token import SessionIdentity
 from app.services.commodity_codes.commodity_code_service import CommodityCodeService
 from app.services.customer_rfqs.customer_rfq_service import CustomerRfqService
+from app.services.dangerous_goods.dangerous_good_service import DangerousGoodService
 from app.services.inbound_messages.inbound_message_service import InboundMessageService
 
 router = APIRouter(prefix="/customer-rfqs", tags=["customer-rfqs"])
@@ -29,12 +30,20 @@ class CustomerRfqResponse(BaseModel):
     status: str
     party_id: UUID | None
     commodity_code_id: UUID | None
+    dangerous_good_id: UUID | None
 
 
 class CustomerRfqPatch(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    commodity_code_id: UUID
+    commodity_code_id: UUID | None = None
+    dangerous_good_id: UUID | None = None
+
+    @model_validator(mode="after")
+    def require_catalog_id(self) -> "CustomerRfqPatch":
+        if self.commodity_code_id is None and self.dangerous_good_id is None:
+            raise ValueError("podaj kod towarowy albo numer UN")
+        return self
 
 
 @router.get("", response_model=list[CustomerRfqResponse])
@@ -72,7 +81,13 @@ async def patch_customer_rfq(
     _authz: None = Depends(require_permission("can_manage_customer_rfqs", "organization")),
     session: AsyncSession = Depends(require_tenant_session),
 ) -> CustomerRfqResponse:
-    catalog = await CommodityCodeService(session).get_code(body.commodity_code_id)
-    row = await CustomerRfqService(session).set_commodity_code(rfq_id, catalog.id)
+    service = CustomerRfqService(session)
+    if body.commodity_code_id is not None:
+        catalog = await CommodityCodeService(session).get_code(body.commodity_code_id)
+        await service.set_commodity_code(rfq_id, catalog.id)
+    if body.dangerous_good_id is not None:
+        good = await DangerousGoodService(session).get(body.dangerous_good_id)
+        await service.set_dangerous_good(rfq_id, good.id)
+    row = await service.get_rfq(rfq_id)
     await session.commit()
     return CustomerRfqResponse.model_validate(row)

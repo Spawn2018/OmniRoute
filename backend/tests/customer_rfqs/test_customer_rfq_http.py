@@ -5,7 +5,12 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app.api.deps import require_tenant_session, set_authz_checker
-from app.domain.errors import CustomerRfqConflict, ResourceNotFound, UnknownCommodityCode
+from app.domain.errors import (
+    CustomerRfqConflict,
+    ResourceNotFound,
+    UnknownCommodityCode,
+    UnknownDangerousGood,
+)
 from app.main import app
 from app.models.customer_rfq import CustomerRfq
 from app.models.inbound_message import InboundMessage
@@ -33,6 +38,17 @@ class StubCommodityCodeService:
         if self.known_id is None or self.known_id != code_id:
             raise UnknownCommodityCode(f"nieznany kod towarowy: {code_id}")
         return type("Catalog", (), {"id": code_id})()
+
+
+class StubDangerousGoodService:
+    def __init__(self, session: object) -> None:
+        self._session = session
+        self.known_id: UUID | None = None
+
+    async def get(self, good_id: UUID):
+        if self.known_id is None or self.known_id != good_id:
+            raise UnknownDangerousGood(f"nieznany towar niebezpieczny: {good_id}")
+        return type("Catalog", (), {"id": good_id})()
 
 
 class StubInboundMessageService:
@@ -69,6 +85,15 @@ class StubCustomerRfqService:
         row.commodity_code_id = commodity_code_id
         return row
 
+    async def set_dangerous_good(
+        self,
+        rfq_id: UUID,
+        dangerous_good_id: UUID,
+    ) -> CustomerRfq:
+        row = await self.get_rfq(rfq_id)
+        row.dangerous_good_id = dangerous_good_id
+        return row
+
     async def create_rfq(
         self,
         *,
@@ -98,6 +123,7 @@ def catalog_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
     messages = StubInboundMessageService(object())
     rfqs = StubCustomerRfqService(object())
     codes = StubCommodityCodeService(object())
+    goods = StubDangerousGoodService(object())
 
     def _messages(_session: object) -> StubInboundMessageService:
         return messages
@@ -108,6 +134,9 @@ def catalog_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
     def _codes(_session: object) -> StubCommodityCodeService:
         return codes
 
+    def _goods(_session: object) -> StubDangerousGoodService:
+        return goods
+
     async def _fake_tenant_session() -> object:
         session = AsyncMock()
         session.commit = AsyncMock()
@@ -116,6 +145,7 @@ def catalog_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
     monkeypatch.setattr("app.api.customer_rfqs.InboundMessageService", _messages)
     monkeypatch.setattr("app.api.customer_rfqs.CustomerRfqService", _rfqs)
     monkeypatch.setattr("app.api.customer_rfqs.CommodityCodeService", _codes)
+    monkeypatch.setattr("app.api.customer_rfqs.DangerousGoodService", _goods)
     messages.row = InboundMessage(
         id=uuid4(),
         organization_id=uuid4(),
@@ -127,13 +157,13 @@ def catalog_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
     )
     set_authz_checker(AllowAllAuthz())
     app.dependency_overrides[require_tenant_session] = _fake_tenant_session
-    yield TestClient(app), messages, rfqs, codes
+    yield TestClient(app), messages, rfqs, codes, goods
     app.dependency_overrides.clear()
     set_authz_checker(None)
 
 
 def test_http_create_and_list_customer_rfq(catalog_client: object) -> None:
-    client, messages, _rfqs, _codes = catalog_client
+    client, messages, _rfqs, _codes, _goods = catalog_client
     assert messages.row is not None
     org_id = uuid4()
     headers = bearer_auth_headers(organization_id=org_id)
@@ -149,6 +179,7 @@ def test_http_create_and_list_customer_rfq(catalog_client: object) -> None:
     assert body["source_ref"] == "fixture://inbound-mail/1"
     assert body["status"] == "draft"
     assert body["commodity_code_id"] is None
+    assert body["dangerous_good_id"] is None
     assert "amount" not in body
     assert "rate_line" not in body
 
@@ -160,7 +191,7 @@ def test_http_create_and_list_customer_rfq(catalog_client: object) -> None:
 
 
 def test_http_create_rfq_unknown_message_is_404(catalog_client: object) -> None:
-    client, _messages, _rfqs, _codes = catalog_client
+    client, _messages, _rfqs, _codes, _goods = catalog_client
     response = client.post(
         "/api/v1/customer-rfqs",
         headers=bearer_auth_headers(),
@@ -170,7 +201,7 @@ def test_http_create_rfq_unknown_message_is_404(catalog_client: object) -> None:
 
 
 def test_http_duplicate_rfq_for_message_is_conflict(catalog_client: object) -> None:
-    client, messages, _rfqs, _codes = catalog_client
+    client, messages, _rfqs, _codes, _goods = catalog_client
     assert messages.row is not None
     headers = bearer_auth_headers()
     payload = {"inbound_message_id": str(messages.row.id)}
@@ -182,7 +213,7 @@ def test_http_duplicate_rfq_for_message_is_conflict(catalog_client: object) -> N
 
 
 def test_http_patch_rfq_sets_commodity_code(catalog_client: object) -> None:
-    client, messages, _rfqs, codes = catalog_client
+    client, messages, _rfqs, codes, _goods = catalog_client
     assert messages.row is not None
     headers = bearer_auth_headers()
     created = client.post(
@@ -203,7 +234,7 @@ def test_http_patch_rfq_sets_commodity_code(catalog_client: object) -> None:
 
 
 def test_http_patch_rfq_unknown_commodity_is_400(catalog_client: object) -> None:
-    client, messages, _rfqs, _codes = catalog_client
+    client, messages, _rfqs, _codes, _goods = catalog_client
     assert messages.row is not None
     headers = bearer_auth_headers()
     created = client.post(
@@ -219,3 +250,62 @@ def test_http_patch_rfq_unknown_commodity_is_400(catalog_client: object) -> None
     )
     assert response.status_code == 400
     assert "kod towarowy" in response.json()["detail"]
+
+
+def test_http_patch_rfq_sets_dangerous_good(catalog_client: object) -> None:
+    client, messages, _rfqs, _codes, goods = catalog_client
+    assert messages.row is not None
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/customer-rfqs",
+        headers=headers,
+        json={"inbound_message_id": str(messages.row.id)},
+    )
+    assert created.status_code == 201
+    good_id = uuid4()
+    goods.known_id = good_id
+    patched = client.patch(
+        f"/api/v1/customer-rfqs/{created.json()['id']}",
+        headers=headers,
+        json={"dangerous_good_id": str(good_id)},
+    )
+    assert patched.status_code == 200
+    assert patched.json()["dangerous_good_id"] == str(good_id)
+    assert patched.json()["commodity_code_id"] is None
+
+
+def test_http_patch_rfq_unknown_dangerous_good_is_400(catalog_client: object) -> None:
+    client, messages, _rfqs, _codes, _goods = catalog_client
+    assert messages.row is not None
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/customer-rfqs",
+        headers=headers,
+        json={"inbound_message_id": str(messages.row.id)},
+    )
+    assert created.status_code == 201
+    response = client.patch(
+        f"/api/v1/customer-rfqs/{created.json()['id']}",
+        headers=headers,
+        json={"dangerous_good_id": str(uuid4())},
+    )
+    assert response.status_code == 400
+    assert "towar niebezpieczny" in response.json()["detail"]
+
+
+def test_http_patch_rfq_empty_body_is_422(catalog_client: object) -> None:
+    client, messages, _rfqs, _codes, _goods = catalog_client
+    assert messages.row is not None
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/customer-rfqs",
+        headers=headers,
+        json={"inbound_message_id": str(messages.row.id)},
+    )
+    assert created.status_code == 201
+    response = client.patch(
+        f"/api/v1/customer-rfqs/{created.json()['id']}",
+        headers=headers,
+        json={},
+    )
+    assert response.status_code == 422

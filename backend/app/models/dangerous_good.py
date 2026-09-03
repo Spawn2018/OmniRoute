@@ -17,6 +17,7 @@ class DangerousGood(Base, TimestampMixin):
     __tablename__ = "dangerous_good"
     __table_args__ = (
         UniqueConstraint("organization_id", "un_number", name="uq_dangerous_good_org_un"),
+        UniqueConstraint("organization_id", "id", name="uq_dangerous_good_org_id"),
         CheckConstraint("un_number ~ '^[0-9]{4}$'", name="ck_dangerous_good_un_digits"),
         CheckConstraint(f"imdg_class IN ({_IMDG})", name="ck_dangerous_good_imdg_class"),
     )

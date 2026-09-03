@@ -91,6 +91,7 @@ function quoteRow(id: string, partyId: string | null): Quotation {
     party_id: partyId,
     customer_rfq_id: null,
     commodity_code_id: null,
+    dangerous_good_id: null,
     document_number: null,
     negotiated_channel_quote_id: null,
     noted_credit_review_id: null,

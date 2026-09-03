@@ -56,10 +56,17 @@ class Quotation(Base, TimestampMixin):
             name="fk_quotation_commodity_code",
             ondelete="RESTRICT",
         ),
+        ForeignKeyConstraint(
+            ["organization_id", "dangerous_good_id"],
+            ["dangerous_good.organization_id", "dangerous_good.id"],
+            name="fk_quotation_dangerous_good",
+            ondelete="RESTRICT",
+        ),
         CheckConstraint(_LANE_PARTY_SQL, name="ck_quotation_lane_party_complete"),
         Index("ix_quotation_org_party_id", "organization_id", "party_id"),
         Index("ix_quotation_org_customer_rfq_id", "organization_id", "customer_rfq_id"),
         Index("ix_quotation_org_commodity_code_id", "organization_id", "commodity_code_id"),
+        Index("ix_quotation_org_dangerous_good_id", "organization_id", "dangerous_good_id"),
         Index("ix_quotation_org_origin_port_id", "organization_id", "origin_port_id"),
         Index("ix_quotation_org_destination_port_id", "organization_id", "destination_port_id"),
         UniqueConstraint("organization_id", "id", name="uq_quotation_org_id"),
@@ -103,6 +110,10 @@ class Quotation(Base, TimestampMixin):
     party_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
     customer_rfq_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
     commodity_code_id: Mapped[uuid.UUID | None] = mapped_column(
+        UUID(as_uuid=True),
+        nullable=True,
+    )
+    dangerous_good_id: Mapped[uuid.UUID | None] = mapped_column(
         UUID(as_uuid=True),
         nullable=True,
     )

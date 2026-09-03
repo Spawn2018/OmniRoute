@@ -893,7 +893,11 @@ export type CustomerRfqPatch = {
     /**
      * Commodity Code Id
      */
-    commodity_code_id: string;
+    commodity_code_id?: string | null;
+    /**
+     * Dangerous Good Id
+     */
+    dangerous_good_id?: string | null;
 };
 
 /**
@@ -928,6 +932,10 @@ export type CustomerRfqResponse = {
      * Commodity Code Id
      */
     commodity_code_id: string | null;
+    /**
+     * Dangerous Good Id
+     */
+    dangerous_good_id: string | null;
 };
 
 /**
@@ -2484,6 +2492,10 @@ export type QuotationBatchCreate = {
      * Commodity Code Id
      */
     commodity_code_id?: string | null;
+    /**
+     * Dangerous Good Id
+     */
+    dangerous_good_id?: string | null;
 };
 
 /**
@@ -2514,6 +2526,10 @@ export type QuotationCreate = {
      * Commodity Code Id
      */
     commodity_code_id?: string | null;
+    /**
+     * Dangerous Good Id
+     */
+    dangerous_good_id?: string | null;
 };
 
 /**
@@ -2602,6 +2618,10 @@ export type QuotationResponse = {
      * Commodity Code Id
      */
     commodity_code_id: string | null;
+    /**
+     * Dangerous Good Id
+     */
+    dangerous_good_id: string | null;
     /**
      * Document Number
      */

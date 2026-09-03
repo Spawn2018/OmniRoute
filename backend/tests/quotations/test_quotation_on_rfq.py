@@ -192,6 +192,7 @@ class _StubQuote:
         party_id,
         customer_rfq_id=None,
         commodity_code_id=None,
+        dangerous_good_id=None,
     ) -> Quotation:
         if charge_code == "LOOSE":
             raise UnknownChargeCode("nieznany kod opłaty: LOOSE")
@@ -209,6 +210,7 @@ class _StubQuote:
             party_id=party_id,
             customer_rfq_id=customer_rfq_id,
             commodity_code_id=commodity_code_id,
+            dangerous_good_id=dangerous_good_id,
         )
         self.rows.append(row)
         return row

@@ -7,6 +7,7 @@ from sqlalchemy.exc import IntegrityError
 from app.core.database import bind_tenant
 from app.models.commodity_code import CommodityCode
 from app.models.customer_rfq import CustomerRfq
+from app.models.dangerous_good import DangerousGood
 from app.models.inbound_message import InboundMessage
 from app.models.party import Party
 from app.models.port import Port
@@ -168,4 +169,61 @@ async def test_quotation_may_not_point_hs_at_another_tenant(session, two_tenants
         )
     )
     with pytest.raises(IntegrityError, match="fk_quotation_commodity_code"):
+        await session.flush()
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_quotation_may_not_point_un_at_another_tenant(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    org_b = two_tenants["org_b"]
+    user_a = two_tenants["user_a"]
+    user_b = two_tenants["user_b"]
+
+    await bind_tenant(session, org_b.id)
+    good_b = DangerousGood(
+        id=uuid4(),
+        organization_id=org_b.id,
+        un_number="1263",
+        imdg_class="3",
+        name="Paint B",
+        aliases=[],
+        source_ref="tenant:manual",
+        created_by=user_b.id,
+    )
+    session.add(good_b)
+    await session.flush()
+
+    await bind_tenant(session, org_a.id)
+    origin = _port(organization_id=org_a.id, unlocode="PLGDN")
+    destination = _port(organization_id=org_a.id, unlocode="NLRTM")
+    party = _party(organization_id=org_a.id, created_by=user_a.id, legal_name="ACME UN")
+    rate = RateLine(
+        id=uuid4(),
+        organization_id=org_a.id,
+        charge_code="BAF",
+        amount=Decimal("11.0000"),
+        currency="USD",
+        source_ref="tariff://un",
+        created_by=user_a.id,
+    )
+    session.add_all([origin, destination, party, rate])
+    await session.flush()
+    session.add(
+        Quotation(
+            id=uuid4(),
+            organization_id=org_a.id,
+            charge_code="BAF",
+            rate_line_id=rate.id,
+            amount=Decimal("11.0000"),
+            currency="USD",
+            source_ref="tariff://un",
+            created_by=user_a.id,
+            origin_port_id=origin.id,
+            destination_port_id=destination.id,
+            party_id=party.id,
+            dangerous_good_id=good_b.id,
+        )
+    )
+    with pytest.raises(IntegrityError, match="fk_quotation_dangerous_good"):
         await session.flush()

@@ -14,7 +14,9 @@ import {
   createCustomerRfq,
   fetchCustomerRfqs,
   patchCustomerRfqCommodity,
+  patchCustomerRfqDangerous,
 } from "@/lib/customer-rfqs-api"
+import { fetchDangerousGoods } from "@/lib/dangerous-goods-api"
 import {
   createInboundMessage,
   extractInboundMessage,
@@ -91,6 +93,7 @@ export function MailIntegrationPage() {
     body_text: "",
   })
   const [hsCodeId, setHsCodeId] = useState("")
+  const [unCodeId, setUnCodeId] = useState("")
 
   const parties = useQuery({
     queryKey: ["mail-parties", ctx.organizationId],
@@ -125,6 +128,12 @@ export function MailIntegrationPage() {
   const commodityCodes = useQuery({
     queryKey: ["commodity-codes", ctx.organizationId],
     queryFn: fetchCommodityCodes,
+    enabled: ready,
+    retry: false,
+  })
+  const dangerousGoods = useQuery({
+    queryKey: ["dangerous-goods", ctx.organizationId],
+    queryFn: fetchDangerousGoods,
     enabled: ready,
     retry: false,
   })
@@ -204,6 +213,14 @@ export function MailIntegrationPage() {
       })
     },
   })
+  const attachUn = useMutation({
+    mutationFn: (rfqId: string) => patchCustomerRfqDangerous(rfqId, unCodeId),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({
+        queryKey: ["customer-rfqs", ctx.organizationId],
+      })
+    },
+  })
 
   return (
     <div className="flex flex-col gap-4" data-mail-integration="board">
@@ -223,7 +240,9 @@ export function MailIntegrationPage() {
       {rfqs.isError ? <CatalogError error={rfqs.error} /> : null}
       {createRfq.isError ? <CatalogError error={createRfq.error} /> : null}
       {commodityCodes.isError ? <CatalogError error={commodityCodes.error} /> : null}
+      {dangerousGoods.isError ? <CatalogError error={dangerousGoods.error} /> : null}
       {attachHs.isError ? <CatalogError error={attachHs.error} /> : null}
+      {attachUn.isError ? <CatalogError error={attachUn.error} /> : null}
 
       <section className="space-y-2" data-inbound-message="fixture">
         <h2 className="text-sm font-medium">Wiadomości przychodzące</h2>
@@ -445,11 +464,27 @@ export function MailIntegrationPage() {
             ))}
           </select>
         </label>
+        <fieldset data-customer-rfq="un" className="flex flex-col gap-1 text-xs">
+          <legend>numer UN</legend>
+          <select
+            aria-label="Towar niebezpieczny RFQ"
+            className="h-8 rounded-md border border-border bg-card px-2 text-sm"
+            value={unCodeId}
+            onChange={(event) => setUnCodeId(event.target.value)}
+          >
+            <option value="">Bez UN</option>
+            {(dangerousGoods.data ?? []).map((row) => (
+              <option key={row.id} value={row.id}>
+                {row.un_number} {row.name}
+              </option>
+            ))}
+          </select>
+        </fieldset>
         <ul data-customer-rfq="list" className="text-xs">
           {(rfqs.data ?? []).map((row) => (
             <li key={row.id}>
               RFQ {row.id} · wiadomość {row.inbound_message_id} · HS{" "}
-              {row.commodity_code_id ?? "—"}{" "}
+              {row.commodity_code_id ?? "—"} · UN {row.dangerous_good_id ?? "—"}{" "}
               <Button
                 type="button"
                 variant="outline"
@@ -457,6 +492,14 @@ export function MailIntegrationPage() {
                 onClick={() => attachHs.mutate(row.id)}
               >
                 Podpnij HS
+              </Button>{" "}
+              <Button
+                type="button"
+                variant="outline"
+                disabled={!ready || unCodeId === "" || attachUn.isPending}
+                onClick={() => attachUn.mutate(row.id)}
+              >
+                Podpnij UN
               </Button>{" "}
               <a className="underline" href={`/quotations?rfq=${row.id}`}>
                 Wycena
