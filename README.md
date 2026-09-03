@@ -88,7 +88,7 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 <!-- os-status:start -->
 - **Ostatni plaster:** **91.0** S29 zdarzenia trackingu (M-36)
 - **Etap:** Plan
-- **Następny:** `/plan-modul` **S30** — dokumenty na zleceniu (M-38). Nie F9.1.
+- **Następny:** `/plaster` **92.0** — S30 dokumenty na zleceniu (M-38). Nie PDF. Nie F9.1.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

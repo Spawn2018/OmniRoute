@@ -252,3 +252,4 @@
 | 2026-09-03 | 90.0 | M-35 | Tabela `shipment` z wyceny. Nie tracking. Nie numer. Następny: S29 Plan. |
 | 2026-09-03 | Plan 91.0 | M-36 | S29: `tracking_event` na zleceniu. Delta zaakceptowana (`/noc`). Nie mapa. Następny: `/plaster` 91.0. |
 | 2026-09-03 | 91.0 | M-36 | Zdarzenia trackingu na zleceniu. Nie mapa. Nie AIS. Następny: S30 Plan. |
+| 2026-09-03 | Plan 92.0 | M-38 | S30: `shipment_document` na zleceniu. Delta zaakceptowana (`/noc`). Nie PDF. Następny: `/plaster` 92.0. |
