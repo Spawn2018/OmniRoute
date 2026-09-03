@@ -11416,6 +11416,11 @@
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
+          },
+          "leg_kind": {
+            "type": "string",
+            "title": "Leg Kind",
+            "default": "road"
           }
         },
         "additionalProperties": false,

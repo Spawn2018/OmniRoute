@@ -7,6 +7,7 @@ import {
 } from "@/components/catalog/catalog-parts"
 import { fetchPorts, railPorts } from "@/lib/ports-api"
 import { getTenantContext } from "@/lib/tenant"
+import { RailLegBoard } from "./rail-leg-board"
 
 export function IntermodalRailPage() {
   const ctx = getTenantContext()
@@ -23,7 +24,7 @@ export function IntermodalRailPage() {
     <section className="flex flex-col gap-3" data-intermodal-rail="board">
       <CatalogHeading
         title="Kolej intermodalna"
-        subtitle="intermodal_rail M-49 · port.function_flags rail · nie wagon · nie CIM"
+        subtitle="intermodal_rail M-49 · odcinek shipment_leg rail · nie wagon · nie CIM"
       />
       {!ready ? <TenantSessionNotice /> : null}
       {ports.isError ? <CatalogError error={ports.error} /> : null}
@@ -37,6 +38,7 @@ export function IntermodalRailPage() {
           </li>
         ))}
       </ul>
+      {ready ? <RailLegBoard organizationId={ctx.organizationId} /> : null}
     </section>
   )
 }

@@ -27,6 +27,7 @@ export async function saveShipmentLeg(payload: {
   origin_location_id: string
   destination_location_id: string
   source_ref: string
+  leg_kind?: string
 }): Promise<ShipmentLegRow> {
   const auth = requireAuthHeaders()
   const reply = await fetch(LEGS_PATH, {

@@ -130,7 +130,9 @@ function LegRows(args: { organizationId: string | null }) {
     <>
       {rows.isError ? <CatalogError error={rows.error} /> : null}
       <ul data-road-transport="legs">
-        {(rows.data ?? []).map((row) => (
+        {(rows.data ?? [])
+          .filter((row) => row.leg_kind === "road")
+          .map((row) => (
           <li key={row.id} className="font-mono text-xs">
             {row.leg_kind} {row.shipment_id} {row.origin_location_id} → {row.destination_location_id}{" "}
             {row.source_ref}{" "}

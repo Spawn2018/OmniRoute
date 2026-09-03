@@ -1,6 +1,6 @@
-# BC shipment_leg (M-48)
+# BC shipment_leg (M-48 / M-49)
 
-Odcinek na zleceniu per tenant. 108.0 tylko `leg_kind = road`.
+Odcinek na zleceniu per tenant. 108.0 `road`, 109.0 `rail`.
 Nie mapa, nie GPS, nie TMS, nie kwota.
 
 ## Dozwolone zależności
@@ -10,6 +10,6 @@ Nie mapa, nie GPS, nie TMS, nie kwota.
 
 ## Zakaz
 - import innych BC services (shipments, geography, charges)
-- zapis `shipment` / `location` / `charge`
+- zapis `shipment` / `location` / `port` / `charge`
 - kwoty / marża / float / ETA
 - HTTP / leaflet

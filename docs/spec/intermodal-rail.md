@@ -1,11 +1,11 @@
 # M-49 kolej intermodalna — tablica `port` z flagą `rail`
 
 **Moduł żywy:** M-49 (token UI `intermodal_rail`, nie tabela) + M-05 `port`  
-**Plaster:** **42.0** (zamknięty) · **109.0** (S47 plan)  
+**Plaster:** **42.0** (zamknięty) · **109.0** (zamknięty)  
 **Status:** operator widzi porty z flagą `rail` i zapisuje odcinek kolejowy na zleceniu. Nie wagon. Nie CIM. Nie mapa.
 
 Delta 42.0: [docs/deltas/archived/42.0-intermodal-rail.md](../deltas/archived/42.0-intermodal-rail.md).  
-Delta 109.0: [docs/deltas/open/109.0-shipment-leg-rail.md](../deltas/open/109.0-shipment-leg-rail.md).
+Delta 109.0: [docs/deltas/archived/109.0-shipment-leg-rail.md](../deltas/archived/109.0-shipment-leg-rail.md).
 
 ## 42.0 tablica odczytu na `/rail`
 

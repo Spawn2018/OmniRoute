@@ -1,4 +1,5 @@
 from decimal import Decimal
+from uuid import UUID
 
 from sqlalchemy import func, or_, select
 from sqlalchemy.dialects.postgresql import insert
@@ -24,6 +25,10 @@ class PortRepository:
             )
         result = await self._session.scalars(stmt)
         return list(result.all())
+
+    async def get(self, port_id: UUID) -> Port | None:
+        found = await self._session.get(Port, port_id)
+        return found if isinstance(found, Port) else None
 
     async def find_by_token(self, *, unlocode: str, alias: str) -> list[Port]:
         stmt = select(Port).where(

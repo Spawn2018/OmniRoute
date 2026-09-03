@@ -156,7 +156,9 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **108.0 DONE:** tabela `shipment_leg` `leg_kind=road` na `/road`. Nie mapa. Nie TMS. Nie GPS.
 - **108.0 leftover — S47–S49 kind / mapa / TMS (dlaczego nie w tym plasterze):** CHECK jest `road`. Kolej i drobnica to osobne Q. Mapa zakazana w PLAN.
 - **42.0 DONE:** `/rail` odczyt portów z flagą `rail`. Nie nowa tabela. Nie wagon. Nie CIM.
-- **42.0 leftover — wagon / CIM / GPS (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. M-50 kolej z Chin **DONE w 43.0**.
+- **42.0 leftover — wagon / CIM / GPS (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Odcinek kolejowy = 109.0. Wagon i CIM zostają poza S47.
+- **109.0 DONE:** `shipment_leg.leg_kind=rail` na `/rail`. Nie wagon. Nie mapa.
+- **109.0 leftover — S48–S49 kind / wagon / mapa (dlaczego nie w tym plasterze):** CHECK jest `road|rail`. Kolej z Chin i drobnica to osobne Q.
 - **43.0 DONE:** `/china-rail` odczyt portów CN z flagą `rail`. Nie nowa tabela. Nie korytarz. Nie HTTP.
 - **43.0 leftover — korytarz / HTTP CR (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. M-51 drobnica **DONE w 44.0**.
 - **44.0 DONE:** `/lcl` odczyt portów z `is_seaport`. Nie nowa tabela. Nie CFS. Nie LCL vs FCL.

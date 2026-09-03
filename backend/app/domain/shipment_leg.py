@@ -7,7 +7,10 @@ _MAX_REF = 256
 _FIXTURE = "fixture://shipment-leg/"
 _MANUAL = "tenant:manual"
 _ROAD = "road"
+_RAIL = "rail"
+_KINDS = frozenset({_ROAD, _RAIL})
 _LAND = frozenset({LocationKind.POSTAL_ZONE.value, LocationKind.ADDRESS.value})
+_RAIL_FLAG = "rail"
 
 
 def require_leg_shipment_id(raw: object) -> UUID:
@@ -37,8 +40,36 @@ def require_road_location_kind(kind: object) -> str:
     return kind
 
 
+def require_leg_kind(raw: object) -> str:
+    if raw is None:
+        return _ROAD
+    if type(raw) is not str:
+        raise InvalidShipmentLeg("leg_kind musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return _ROAD
+    if token not in _KINDS:
+        raise InvalidShipmentLeg("leg_kind spoza zbioru: road, rail")
+    return token
+
+
 def require_road_leg_kind() -> str:
     return _ROAD
+
+
+def require_rail_location_kind(kind: object) -> str:
+    if type(kind) is not str:
+        raise InvalidShipmentLeg("rodzaj lokalizacji musi być tekstem")
+    if kind != LocationKind.UNLOCODE.value:
+        raise InvalidShipmentLeg("odcinek kolejowy wymaga lokalizacji UN/LOCODE")
+    return kind
+
+
+def require_rail_port_flag(flags: object) -> None:
+    if type(flags) is not list:
+        raise InvalidShipmentLeg("flagi portu muszą być listą")
+    if _RAIL_FLAG not in flags:
+        raise InvalidShipmentLeg("port bez flagi rail nie jest odcinkiem kolejowym")
 
 
 def require_leg_source_ref(raw: object) -> str:

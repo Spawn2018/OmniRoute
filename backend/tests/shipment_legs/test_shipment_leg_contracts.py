@@ -49,3 +49,15 @@ def test_generated_api_types_include_shipment_leg() -> None:
     source = (_ROOT / "frontend" / "src" / "api" / "types.gen.ts").read_text(encoding="utf-8")
     assert "ShipmentLegResponse" in source
     assert "ShipmentLegCreate" in source
+
+
+def test_migration_066_widens_leg_kind_to_rail() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "066_shipment_leg_rail_kind.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "066_shipment_leg_rail_kind"' in source
+    assert 'down_revision: str | None = "065_shipment_leg_rls"' in source
+    assert "leg_kind IN ('road', 'rail')" in source
+    assert "drop_constraint" in source
+    assert "create_table" not in source
+    assert "httpx" not in source

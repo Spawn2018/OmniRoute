@@ -168,3 +168,30 @@ async def test_shipment_leg_one_road_per_shipment(session, two_tenants) -> None:
     )
     with pytest.raises(IntegrityError):
         await session.flush()
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_shipment_leg_rejects_unknown_kind(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    user_a = two_tenants["user_a"]
+    await bind_tenant(session, org_a.id)
+    ship = await _booked(session, organization_id=org_a.id, user_id=user_a.id, suffix="lk")
+    origin = _zone(organization_id=org_a.id, created_by=user_a.id, code="K_ORIG", name="K start")
+    dest = _zone(organization_id=org_a.id, created_by=user_a.id, code="K_DEST", name="K koniec")
+    session.add_all([origin, dest])
+    await session.flush()
+    session.add(
+        ShipmentLeg(
+            id=uuid4(),
+            organization_id=org_a.id,
+            shipment_id=ship.id,
+            origin_location_id=origin.id,
+            destination_location_id=dest.id,
+            leg_kind="ocean_lcl",
+            source_ref="fixture://shipment-leg/kind",
+            created_by=user_a.id,
+        )
+    )
+    with pytest.raises(IntegrityError):
+        await session.flush()

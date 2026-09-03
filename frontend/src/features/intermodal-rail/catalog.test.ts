@@ -30,3 +30,20 @@ describe("intermodal rail surface for 42.0", () => {
     expect(page).not.toContain("CatalogCreateForm")
   })
 })
+
+describe("intermodal rail surface for 109.0", () => {
+  it("records a rail shipment_leg on /rail", () => {
+    const page = src("features/intermodal-rail/catalog-page.tsx")
+    const board = src("features/intermodal-rail/rail-leg-board.tsx")
+    expect(page).toContain("RailLegBoard")
+    expect(board).toContain("listShipmentLegs")
+    expect(board).toContain("saveShipmentLeg")
+    expect(board).toContain('data-intermodal-rail="leg-form"')
+    expect(board).toContain("Zapisz odcinek kolejowy")
+    expect(board).toContain('leg_kind: "rail"')
+    expect(board).not.toContain("parseFloat")
+    expect(board).not.toContain("leaflet")
+    expect(board).not.toContain("CatalogCreateForm")
+    expect(src("features/ops/ops-index.ts")).toContain('"109.0": "/rail"')
+  })
+})

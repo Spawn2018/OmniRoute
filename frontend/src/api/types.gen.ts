@@ -2938,6 +2938,10 @@ export type ShipmentLegCreate = {
      * Source Ref
      */
     source_ref: string;
+    /**
+     * Leg Kind
+     */
+    leg_kind?: string;
 };
 
 /**

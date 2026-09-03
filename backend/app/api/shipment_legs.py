@@ -6,9 +6,17 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import get_current_identity, require_permission, require_tenant_session
 from app.core.session_token import SessionIdentity
-from app.domain.shipment_leg import require_distinct_ends, require_road_location_kind
+from app.domain.errors import InvalidShipmentLeg
+from app.domain.shipment_leg import (
+    require_distinct_ends,
+    require_leg_kind,
+    require_rail_location_kind,
+    require_rail_port_flag,
+    require_road_location_kind,
+)
 from app.models.location import Location
 from app.services.geography.location_service import LocationService
+from app.services.geography.port_service import PortService
 from app.services.shipment_legs.shipment_leg_service import ShipmentLegService
 from app.services.shipments.shipment_service import ShipmentService
 
@@ -22,6 +30,7 @@ class ShipmentLegCreate(BaseModel):
     origin_location_id: UUID
     destination_location_id: UUID
     source_ref: str
+    leg_kind: str = "road"
 
 
 class ShipmentLegResponse(BaseModel):
@@ -52,9 +61,10 @@ async def create_shipment_leg(
     session: AsyncSession = Depends(require_tenant_session),
     identity: SessionIdentity = Depends(get_current_identity),
 ) -> ShipmentLegResponse:
+    kind = require_leg_kind(body.leg_kind)
     shipment = await ShipmentService(session).get_shipment(body.shipment_id)
-    origin, destination = await _land_ends(
-        session, body.origin_location_id, body.destination_location_id,
+    origin, destination = await _ends_for_kind(
+        session, kind, body.origin_location_id, body.destination_location_id,
     )
     row = await ShipmentLegService(session).record_leg(
         organization_id=identity.organization_id,
@@ -63,9 +73,21 @@ async def create_shipment_leg(
         origin_location_id=origin.id,
         destination_location_id=destination.id,
         source_ref=body.source_ref,
+        leg_kind=kind,
     )
     await session.commit()
     return ShipmentLegResponse.model_validate(row)
+
+
+async def _ends_for_kind(
+    session: AsyncSession,
+    kind: str,
+    origin_id: UUID,
+    destination_id: UUID,
+) -> tuple[Location, Location]:
+    if kind == "rail":
+        return await _rail_ends(session, origin_id, destination_id)
+    return await _land_ends(session, origin_id, destination_id)
 
 
 async def _land_ends(
@@ -80,3 +102,32 @@ async def _land_ends(
     require_road_location_kind(destination.kind)
     require_distinct_ends(origin.id, destination.id)
     return origin, destination
+
+
+async def _rail_ends(
+    session: AsyncSession,
+    origin_id: UUID,
+    destination_id: UUID,
+) -> tuple[Location, Location]:
+    catalog = LocationService(session)
+    origin = await catalog.get_location(origin_id)
+    destination = await catalog.get_location(destination_id)
+    require_rail_location_kind(origin.kind)
+    require_rail_location_kind(destination.kind)
+    await _require_rail_ports(session, origin, destination)
+    require_distinct_ends(origin.id, destination.id)
+    return origin, destination
+
+
+async def _require_rail_ports(
+    session: AsyncSession,
+    origin: Location,
+    destination: Location,
+) -> None:
+    if origin.port_id is None or destination.port_id is None:
+        raise InvalidShipmentLeg("lokalizacja UN/LOCODE bez portu")
+    ports = PortService(session)
+    start = await ports.get_port(origin.port_id)
+    end = await ports.get_port(destination.port_id)
+    require_rail_port_flag(start.function_flags)
+    require_rail_port_flag(end.function_flags)

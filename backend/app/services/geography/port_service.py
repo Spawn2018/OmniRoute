@@ -4,7 +4,7 @@ from uuid import UUID, uuid4
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.domain.errors import InvalidPortData, PortConflict
+from app.domain.errors import InvalidPortData, PortConflict, ResourceNotFound
 from app.domain.port import (
     normalize_country_code,
     normalize_port_aliases,
@@ -24,6 +24,12 @@ class PortService:
 
     async def list_ports(self, search: str | None = None) -> list[Port]:
         return await self._ports.list_all(search)
+
+    async def get_port(self, port_id: UUID) -> Port:
+        found = await self._ports.get(port_id)
+        if found is None:
+            raise ResourceNotFound("nieznany port")
+        return found
 
     async def resolve(self, raw: str) -> Port:
         token = normalize_port_token(raw)
