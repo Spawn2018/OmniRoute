@@ -16,6 +16,7 @@ from app.api import (
     mail_drafts,
     nbp_rates,
     networks,
+    operational_exceptions,
     operator_decisions,
     operator_notices,
     organization_settings,
@@ -60,6 +61,7 @@ api_router.include_router(quotations.router)
 api_router.include_router(shipments.router)
 api_router.include_router(tracking_events.router)
 api_router.include_router(shipment_documents.router)
+api_router.include_router(operational_exceptions.router)
 api_router.include_router(organization_settings.router)
 api_router.include_router(parties.router)
 api_router.include_router(party_scorecards.router)

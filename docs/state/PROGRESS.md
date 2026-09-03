@@ -255,3 +255,4 @@
 | 2026-09-03 | Plan 92.0 | M-38 | S30: `shipment_document` na zleceniu. Delta zaakceptowana (`/noc`). Nie PDF. Następny: `/plaster` 92.0. |
 | 2026-09-03 | 92.0 | M-38 | Dokumenty na zleceniu. Nie bajty. Nie PDF. Następny: S31 Plan. |
 | 2026-09-03 | Plan 93.0 | M-37 | S31: `operational_exception` na zleceniu. Delta zaakceptowana (`/noc`). Nie mapa. Następny: `/plaster` 93.0. |
+| 2026-09-03 | 93.0 | M-37 | Tabela wyjątków na zleceniu. Nie mapa. Nie filtr wycen. Następny: S32 Plan. |

@@ -274,6 +274,10 @@ class InvalidShipmentDocument(DomainError):
     """Dokument zlecenia: kind z allowlisty i source_ref zapisu — nie bajty, nie kwota."""
 
 
+class InvalidOperationalException(DomainError):
+    """Wyjatek operacyjny: kind z allowlisty i source_ref zapisu — nie czas przybycia, nie kwota."""
+
+
 class InvalidPartyScorecard(DomainError):
     """Wskaźnik karty poza zakresem albo nie jest Decimal — nie float, nie scoring osoby."""
 

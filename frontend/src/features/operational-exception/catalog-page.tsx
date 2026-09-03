@@ -1,55 +1,81 @@
-import { useQuery } from "@tanstack/react-query"
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
+import { useState } from "react"
 import { Link } from "@tanstack/react-router"
 import {
   CatalogError,
   CatalogHeading,
   TenantSessionNotice,
 } from "@/components/catalog/catalog-parts"
-import { fetchQuotations, quotationOperationalExceptions } from "@/lib/quotations-api"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import {
+  createOperationalException,
+  fetchOperationalExceptions,
+} from "@/lib/operational-exceptions-api"
 import { getTenantContext } from "@/lib/tenant"
 
-const EMPTY_QUOTE_FILTERS = { partyId: "", originPortId: "", destinationPortId: "" }
-
-function missingLaneLabel(originPortId: string | null, destinationPortId: string | null): string {
-  if (originPortId === null && destinationPortId === null) {
-    return "brak POL i POD"
-  }
-  if (originPortId === null) {
-    return "brak POL"
-  }
-  return "brak POD"
+function ExceptionRecordForm(args: { organizationId: string | null }) {
+  const client = useQueryClient()
+  const [shipmentId, setShipmentId] = useState("")
+  const [exceptionKind, setExceptionKind] = useState("noted")
+  const [sourceRef, setSourceRef] = useState("fixture://operational-exception/")
+  const save = useMutation({
+    mutationFn: () =>
+      createOperationalException({
+        shipment_id: shipmentId.trim(),
+        exception_kind: exceptionKind.trim(),
+        source_ref: sourceRef.trim(),
+      }),
+    onSuccess: () => {
+      setShipmentId("")
+      void client.invalidateQueries({
+        queryKey: ["operational-exceptions", args.organizationId],
+      })
+    },
+  })
+  return (
+    <form
+      className="flex flex-wrap items-end gap-2 rounded-md border border-border bg-card p-3"
+      onSubmit={(event) => {
+        event.preventDefault()
+        save.mutate()
+      }}
+    >
+      <Input aria-label="Identyfikator zlecenia" placeholder="shipment_id" value={shipmentId} onChange={(event) => setShipmentId(event.target.value)} required />
+      <Input aria-label="Rodzaj wyjątku" placeholder="noted" value={exceptionKind} onChange={(event) => setExceptionKind(event.target.value)} required />
+      <Input aria-label="Pochodzenie zapisu" placeholder="source_ref" value={sourceRef} onChange={(event) => setSourceRef(event.target.value)} required />
+      <Button type="submit" disabled={save.isPending || !args.organizationId}>
+        Zapisz wyjątek
+      </Button>
+      {save.isError ? <CatalogError error={save.error} /> : null}
+    </form>
+  )
 }
 
 export function OperationalExceptionPage() {
   const ctx = getTenantContext()
   const ready = Boolean(ctx.organizationId && ctx.userId)
-  const quotations = useQuery({
-    queryKey: ["operational-exception-quotations", ctx.organizationId],
-    queryFn: () => fetchQuotations(EMPTY_QUOTE_FILTERS),
+  const exceptions = useQuery({
+    queryKey: ["operational-exceptions", ctx.organizationId],
+    queryFn: fetchOperationalExceptions,
     enabled: ready,
     retry: false,
   })
-  const rows = quotationOperationalExceptions(quotations.data ?? [])
 
   return (
     <div className="flex flex-col gap-4" data-operational-exception="board">
       <CatalogHeading
         title="Wyjątki"
-        subtitle="operational_exception M-37 · party bez pełnego POL/POD · nie AIS · nie mapa"
+        subtitle="operational_exception M-37 · tabela na zleceniu · nie AIS · nie mapa"
       />
       {!ready ? <TenantSessionNotice /> : null}
-      {quotations.isError ? <CatalogError error={quotations.error} /> : null}
-      {rows.map((row) => (
+      {exceptions.isError ? <CatalogError error={exceptions.error} /> : null}
+      <ExceptionRecordForm organizationId={ctx.organizationId} />
+      {(exceptions.data ?? []).map((row) => (
         <p key={row.id} className="text-xs">
+          {row.exception_kind} {row.source_ref}{" "}
           <Link className="underline" to="/shipments">
-            {row.charge_code}
-          </Link>{" "}
-          {missingLaneLabel(row.origin_port_id, row.destination_port_id)}{" "}
-          <Link className="underline" to="/tracking">
-            tracking
-          </Link>{" "}
-          <Link className="underline" to="/quotations">
-            quotation
+            zlecenie
           </Link>
         </p>
       ))}

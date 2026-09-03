@@ -43,7 +43,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-34 | Powiadomienia | 27.0 tablica · 75.0 tabela `operator_notice` | **ukończony (fundament)** · inbox zapisany + leftover filtr pending; nie send |
 | M-35 | Zlecenie | 90.0 `shipment` | **ukończony (S28)** · tabela z wyceny; nie tracking |
 | M-36 | Tracking | 91.0 `tracking_event` | **ukończony (S29)** · zdarzenia na zleceniu; nie mapa |
-| M-37 | Wyjątki | 30.0 `operational_exception` | **ukończony (fundament)** · tablica wycen z party bez pełnego POL/POD; nie tabela; nie AIS |
+| M-37 | Wyjątki | 93.0 `operational_exception` | **ukończony (S31)** · tabela na zleceniu; nie AIS; nie mapa |
 | M-38 | Dokumenty zlecenia | 92.0 `shipment_document` | **ukończony (S30)** · wskazanie na zleceniu; nie bajty; nie PDF |
 | M-39 | EDI | 32.0 `edi_message` | **ukończony (fundament)** · tablica `channel_quote` na lane wyceny; nie tabela; nie X12 |
 | M-40 | Fakturowanie i KSeF | 33.0 `sales_invoice` | **ukończony (fundament)** · tablica `sell` z `charge`; nie tabela; nie KSeF |

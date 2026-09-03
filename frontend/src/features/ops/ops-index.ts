@@ -299,6 +299,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "90.0": "/shipments",
   "91.0": "/tracking",
   "92.0": "/shipment-documents",
+  "93.0": "/exceptions",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

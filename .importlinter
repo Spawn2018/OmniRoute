@@ -41,6 +41,7 @@ modules =
     app.services.shipments
     app.services.tracking_events
     app.services.shipment_documents
+    app.services.operational_exceptions
 
 [importlinter:contract:integracje]
 name = Integracje nie znają serwisów
@@ -127,3 +128,6 @@ forbidden_modules =
     app.services.shipment_documents
     app.repositories.shipment_documents
     app.models.shipment_document
+    app.services.operational_exceptions
+    app.repositories.operational_exceptions
+    app.models.operational_exception

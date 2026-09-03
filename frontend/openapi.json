@@ -3171,6 +3171,80 @@
         ]
       }
     },
+    "/api/v1/operational-exceptions": {
+      "get": {
+        "tags": [
+          "operational-exceptions"
+        ],
+        "summary": "List Operational Exceptions",
+        "operationId": "list_operational_exceptions_api_v1_operational_exceptions_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/OperationalExceptionResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Operational Exceptions Api V1 Operational Exceptions Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "operational-exceptions"
+        ],
+        "summary": "Create Operational Exception",
+        "operationId": "create_operational_exception_api_v1_operational_exceptions_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OperationalExceptionCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationalExceptionResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/organization-settings": {
       "get": {
         "tags": [
@@ -7819,6 +7893,67 @@
           "source_ref"
         ],
         "title": "NetworkResponse"
+      },
+      "OperationalExceptionCreate": {
+        "properties": {
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "exception_kind": {
+            "type": "string",
+            "title": "Exception Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "shipment_id",
+          "exception_kind",
+          "source_ref"
+        ],
+        "title": "OperationalExceptionCreate"
+      },
+      "OperationalExceptionResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "exception_kind": {
+            "type": "string",
+            "title": "Exception Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "shipment_id",
+          "exception_kind",
+          "source_ref"
+        ],
+        "title": "OperationalExceptionResponse"
       },
       "OperatorDecisionCreate": {
         "properties": {

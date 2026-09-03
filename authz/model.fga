@@ -30,3 +30,4 @@ type organization
     define can_manage_shipments: member
     define can_manage_tracking: member
     define can_manage_shipment_documents: member
+    define can_manage_exceptions: member

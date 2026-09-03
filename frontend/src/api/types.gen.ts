@@ -1393,6 +1393,50 @@ export type NetworkResponse = {
 };
 
 /**
+ * OperationalExceptionCreate
+ */
+export type OperationalExceptionCreate = {
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Exception Kind
+     */
+    exception_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * OperationalExceptionResponse
+ */
+export type OperationalExceptionResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Exception Kind
+     */
+    exception_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * OperatorDecisionCreate
  */
 export type OperatorDecisionCreate = {
@@ -4517,6 +4561,49 @@ export type CreateShipmentDocumentApiV1ShipmentDocumentsPostResponses = {
 };
 
 export type CreateShipmentDocumentApiV1ShipmentDocumentsPostResponse = CreateShipmentDocumentApiV1ShipmentDocumentsPostResponses[keyof CreateShipmentDocumentApiV1ShipmentDocumentsPostResponses];
+
+export type ListOperationalExceptionsApiV1OperationalExceptionsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/operational-exceptions';
+};
+
+export type ListOperationalExceptionsApiV1OperationalExceptionsGetResponses = {
+    /**
+     * Response List Operational Exceptions Api V1 Operational Exceptions Get
+     *
+     * Successful Response
+     */
+    200: Array<OperationalExceptionResponse>;
+};
+
+export type ListOperationalExceptionsApiV1OperationalExceptionsGetResponse = ListOperationalExceptionsApiV1OperationalExceptionsGetResponses[keyof ListOperationalExceptionsApiV1OperationalExceptionsGetResponses];
+
+export type CreateOperationalExceptionApiV1OperationalExceptionsPostData = {
+    body: OperationalExceptionCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/operational-exceptions';
+};
+
+export type CreateOperationalExceptionApiV1OperationalExceptionsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateOperationalExceptionApiV1OperationalExceptionsPostError = CreateOperationalExceptionApiV1OperationalExceptionsPostErrors[keyof CreateOperationalExceptionApiV1OperationalExceptionsPostErrors];
+
+export type CreateOperationalExceptionApiV1OperationalExceptionsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: OperationalExceptionResponse;
+};
+
+export type CreateOperationalExceptionApiV1OperationalExceptionsPostResponse = CreateOperationalExceptionApiV1OperationalExceptionsPostResponses[keyof CreateOperationalExceptionApiV1OperationalExceptionsPostResponses];
 
 export type ListOrganizationSettingsApiV1OrganizationSettingsGetData = {
     body?: never;
