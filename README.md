@@ -88,7 +88,7 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 <!-- os-status:start -->
 - **Ostatni plaster:** **72.0** S9 numer na dokumencie oferty
 - **Etap:** Plan
-- **Następny:** S10 `/plan-modul` — SOP „kiedy nie wolno auto” (M-16). Przed Graph send. Nie F9.1.
+- **Następny:** `/plaster` **73.0** — SOP `blocks_auto`. Przed Graph send. Nie F9.1.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
