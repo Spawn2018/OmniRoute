@@ -1,10 +1,10 @@
 # M-32 integracja pocztowa — tablica znanych adresów + inbound_message
 
 **Moduł żywy:** M-32  
-**Plaster:** **78.0** (zamknięty) · 66.0 extract · 65.0 resolve · 64.0 tabela · 25.0 tablica adresów  
-**Status:** operator zapisuje fixture albo ingest `graph://` + `external_id`, dopina nadawcę, wysyła treść na HITL. Nie live HTTP. Nie IMAP. Nie send. Nie blob.
+**Plaster:** **80.0** (zamknięty) · 78.0 Graph · 66.0 extract · 65.0 resolve · 64.0 tabela · 25.0 tablica adresów  
+**Status:** operator zapisuje fixture albo ingest `graph://` / `imap://` + `external_id`, dopina nadawcę, wysyła treść na HITL. Nie live skrzynka. Nie send. Nie blob.
 
-Delta: [78.0](../deltas/archived/78.0-graph-ingest.md) · [66.0](../deltas/archived/66.0-inbound-extract.md) · [65.0](../deltas/archived/65.0-inbound-resolve-email.md) · [64.0](../deltas/archived/64.0-inbound-message.md) · [25.0](../deltas/archived/25.0-mail-integration.md).
+Delta: [80.0](../deltas/archived/80.0-imap-ingest.md) · [78.0](../deltas/archived/78.0-graph-ingest.md) · [66.0](../deltas/archived/66.0-inbound-extract.md) · [65.0](../deltas/archived/65.0-inbound-resolve-email.md) · [64.0](../deltas/archived/64.0-inbound-message.md) · [25.0](../deltas/archived/25.0-mail-integration.md).
 
 ## 25.0 tablica odczytu na `/mail`
 
@@ -78,3 +78,16 @@ załącznik blob · IMAP · Graph · auto-extract przy INSERT · RFQ (S4)
 ### Poza 78.0
 
 live HTTP Graph · sekret tenanta · IMAP (S17) · send (S18) · outbox (S16) · blob
+
+## 80.0 ingest skrzynki
+
+### Zakres
+
+- CHECK `source_ref` dopuszcza `imap://`
+- `POST /inbound-messages/ingest-imap` — ten sam `external_id` = ten sam wiersz
+- `/mail`: formularz ingest skrzynki. API składa outbox jak przy Graph
+- Serwis nie zawiera słowa `imap` i nie woła skrzynki
+
+### Poza 80.0
+
+live IMAP · EmailEngine · sekret · send (S18)

@@ -11,6 +11,7 @@ from app.domain.inbound_message import (
     require_from_address,
     require_graph_source_ref,
     require_inbound_source_ref,
+    require_mailbox_source_ref,
     require_subject,
 )
 
@@ -34,6 +35,15 @@ def test_require_graph_source_ref_accepts_graph() -> None:
 def test_require_graph_source_ref_rejects_fixture() -> None:
     with pytest.raises(InvalidInboundMessage, match="graph://"):
         require_graph_source_ref("fixture://inbound-mail/1")
+
+
+def test_require_mailbox_source_ref_accepts_prefix() -> None:
+    assert require_mailbox_source_ref(" imap://inbox/1 ") == "imap://inbox/1"
+
+
+def test_require_mailbox_source_ref_rejects_graph() -> None:
+    with pytest.raises(InvalidInboundMessage, match="imap"):
+        require_mailbox_source_ref("graph://inbox/1")
 
 
 def test_require_external_id_rejects_blank() -> None:

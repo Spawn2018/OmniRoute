@@ -94,6 +94,27 @@ class StubInboundMessageService:
         self.rows.append(row)
         return row
 
+    async def ingest_mailbox(
+        self,
+        *,
+        organization_id: UUID,
+        user_id: UUID,
+        external_id: str,
+        source_ref: str,
+        from_address: str,
+        subject: str,
+        body_text: str,
+    ) -> InboundMessage:
+        return await self.ingest_graph(
+            organization_id=organization_id,
+            user_id=user_id,
+            external_id=external_id,
+            source_ref=source_ref,
+            from_address=from_address,
+            subject=subject,
+            body_text=body_text,
+        )
+
 
 class StubPartyService:
     last_id = uuid4()
@@ -301,6 +322,31 @@ def test_http_ingest_graph_is_idempotent_on_external_id(catalog_client: TestClie
     assert first.json()["source_ref"] == "graph://inbox/1"
     second = catalog_client.post(
         "/api/v1/inbound-messages/ingest-graph",
+        headers=headers,
+        json=payload,
+    )
+    assert second.status_code == 200
+    assert second.json()["id"] == first.json()["id"]
+
+
+def test_http_ingest_mailbox_is_idempotent_on_external_id(catalog_client: TestClient) -> None:
+    headers = bearer_auth_headers()
+    payload = {
+        "external_id": "uid-demo-1",
+        "source_ref": "imap://inbox/1",
+        "from_address": "ops@carrier.example",
+        "subject": "RFQ mailbox",
+        "body_text": "1x40HC",
+    }
+    first = catalog_client.post(
+        "/api/v1/inbound-messages/ingest-imap",
+        headers=headers,
+        json=payload,
+    )
+    assert first.status_code == 200
+    assert first.json()["external_id"] == "uid-demo-1"
+    second = catalog_client.post(
+        "/api/v1/inbound-messages/ingest-imap",
         headers=headers,
         json=payload,
     )

@@ -95,6 +95,14 @@ def test_service_has_no_graph_or_imap() -> None:
     assert "httpx" not in lowered
 
 
+def test_migration_040_adds_mailbox_prefix() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "040_inbound_imap_ingest.py"
+    ).read_text(encoding="utf-8")
+    assert "imap" in source
+    assert "039_outbox_event_rls" in source
+
+
 def test_migration_038_adds_graph_external_id() -> None:
     source = (
         _ROOT / "backend" / "alembic" / "versions" / "038_inbound_graph_ingest.py"

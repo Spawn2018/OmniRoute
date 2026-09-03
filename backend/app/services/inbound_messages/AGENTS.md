@@ -1,6 +1,6 @@
 # BC inbound_message (M-32)
 
-Wiadomość przychodząca per tenant: fixture albo ingest `graph://` + `external_id`. Nie IMAP, nie live HTTP, nie send.
+Wiadomość przychodząca per tenant: fixture albo ingest `graph://` / skrzynka + `external_id`. Nie live skrzynka, nie send.
 
 ## Dozwolone zależności
 - `app.models.inbound_message`

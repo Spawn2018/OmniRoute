@@ -1148,6 +1148,52 @@
         ]
       }
     },
+    "/api/v1/inbound-messages/ingest-imap": {
+      "post": {
+        "tags": [
+          "inbound-messages"
+        ],
+        "summary": "Ingest Mailbox Inbound Message",
+        "operationId": "ingest_mailbox_inbound_message_api_v1_inbound_messages_ingest_imap_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InboundMailboxIngest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InboundMessageResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/inbound-messages/{message_id}/resolve-email": {
       "post": {
         "tags": [
@@ -6300,6 +6346,50 @@
           "body_text"
         ],
         "title": "InboundGraphIngest"
+      },
+      "InboundMailboxIngest": {
+        "properties": {
+          "external_id": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "External Id"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 512,
+            "minLength": 1,
+            "title": "Source Ref"
+          },
+          "from_address": {
+            "type": "string",
+            "maxLength": 320,
+            "minLength": 1,
+            "title": "From Address"
+          },
+          "subject": {
+            "type": "string",
+            "maxLength": 512,
+            "minLength": 1,
+            "title": "Subject"
+          },
+          "body_text": {
+            "type": "string",
+            "maxLength": 65536,
+            "minLength": 1,
+            "title": "Body Text"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "external_id",
+          "source_ref",
+          "from_address",
+          "subject",
+          "body_text"
+        ],
+        "title": "InboundMailboxIngest"
       },
       "InboundMessageCreate": {
         "properties": {

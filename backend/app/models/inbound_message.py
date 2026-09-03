@@ -22,7 +22,7 @@ class InboundMessage(Base, TimestampMixin):
         UniqueConstraint("organization_id", "id", name="uq_inbound_message_org_id"),
         CheckConstraint("status = 'draft'", name="ck_inbound_message_status_draft"),
         CheckConstraint(
-            "source_ref ~ '^(fixture|synth|graph)://'",
+            "source_ref ~ '^(fixture|synth|graph|imap)://'",
             name="ck_inbound_message_source_fixture",
         ),
         Index(

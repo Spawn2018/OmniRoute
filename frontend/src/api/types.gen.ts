@@ -935,6 +935,32 @@ export type InboundGraphIngest = {
 };
 
 /**
+ * InboundMailboxIngest
+ */
+export type InboundMailboxIngest = {
+    /**
+     * External Id
+     */
+    external_id: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+    /**
+     * From Address
+     */
+    from_address: string;
+    /**
+     * Subject
+     */
+    subject: string;
+    /**
+     * Body Text
+     */
+    body_text: string;
+};
+
+/**
  * InboundMessageCreate
  */
 export type InboundMessageCreate = {
@@ -3033,6 +3059,31 @@ export type IngestGraphInboundMessageApiV1InboundMessagesIngestGraphPostResponse
 };
 
 export type IngestGraphInboundMessageApiV1InboundMessagesIngestGraphPostResponse = IngestGraphInboundMessageApiV1InboundMessagesIngestGraphPostResponses[keyof IngestGraphInboundMessageApiV1InboundMessagesIngestGraphPostResponses];
+
+export type IngestMailboxInboundMessageApiV1InboundMessagesIngestImapPostData = {
+    body: InboundMailboxIngest;
+    path?: never;
+    query?: never;
+    url: '/api/v1/inbound-messages/ingest-imap';
+};
+
+export type IngestMailboxInboundMessageApiV1InboundMessagesIngestImapPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type IngestMailboxInboundMessageApiV1InboundMessagesIngestImapPostError = IngestMailboxInboundMessageApiV1InboundMessagesIngestImapPostErrors[keyof IngestMailboxInboundMessageApiV1InboundMessagesIngestImapPostErrors];
+
+export type IngestMailboxInboundMessageApiV1InboundMessagesIngestImapPostResponses = {
+    /**
+     * Successful Response
+     */
+    200: InboundMessageResponse;
+};
+
+export type IngestMailboxInboundMessageApiV1InboundMessagesIngestImapPostResponse = IngestMailboxInboundMessageApiV1InboundMessagesIngestImapPostResponses[keyof IngestMailboxInboundMessageApiV1InboundMessagesIngestImapPostResponses];
 
 export type ResolveInboundMessageEmailApiV1InboundMessagesMessageIdResolveEmailPostData = {
     body?: never;

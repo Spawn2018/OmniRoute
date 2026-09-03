@@ -21,6 +21,7 @@ import {
   fetchInboundMessages,
   inboundMessageCreateBody,
   ingestGraphInboundMessage,
+  ingestMailboxInboundMessage,
   resolveInboundMessageEmail,
   type InboundMessage,
 } from "@/lib/inbound-messages-api"
@@ -78,6 +79,13 @@ export function MailIntegrationPage() {
   const [graphDraft, setGraphDraft] = useState({
     external_id: "",
     source_ref: "graph://inbox/",
+    from_address: "",
+    subject: "",
+    body_text: "",
+  })
+  const [mailboxDraft, setMailboxDraft] = useState({
+    external_id: "",
+    source_ref: "imap://inbox/",
     from_address: "",
     subject: "",
     body_text: "",
@@ -145,6 +153,21 @@ export function MailIntegrationPage() {
       setGraphDraft({
         external_id: "",
         source_ref: "graph://inbox/",
+        from_address: "",
+        subject: "",
+        body_text: "",
+      })
+      void queryClient.invalidateQueries({
+        queryKey: ["inbound-messages", ctx.organizationId],
+      })
+    },
+  })
+  const ingestMailbox = useMutation({
+    mutationFn: () => ingestMailboxInboundMessage(mailboxDraft),
+    onSuccess: () => {
+      setMailboxDraft({
+        external_id: "",
+        source_ref: "imap://inbox/",
         from_address: "",
         subject: "",
         body_text: "",
@@ -298,6 +321,63 @@ export function MailIntegrationPage() {
           />
           <Button type="submit" disabled={!ready || ingestGraph.isPending}>
             Ingest Graph
+          </Button>
+        </form>
+        <form
+          className="grid gap-2 rounded-md border border-border bg-card p-3"
+          data-inbound-message="mailbox-ingest"
+          onSubmit={(event) => {
+            event.preventDefault()
+            if (ready) ingestMailbox.mutate()
+          }}
+        >
+          <Input
+            aria-label="Identyfikator skrzynki"
+            placeholder="external_id"
+            value={mailboxDraft.external_id}
+            onChange={(event) =>
+              setMailboxDraft({ ...mailboxDraft, external_id: event.target.value })
+            }
+            required
+          />
+          <Input
+            aria-label="Źródło skrzynki"
+            placeholder="imap://inbox/1"
+            value={mailboxDraft.source_ref}
+            onChange={(event) =>
+              setMailboxDraft({ ...mailboxDraft, source_ref: event.target.value })
+            }
+            required
+          />
+          <Input
+            aria-label="Nadawca skrzynki"
+            placeholder="ops@carrier.example"
+            value={mailboxDraft.from_address}
+            onChange={(event) =>
+              setMailboxDraft({ ...mailboxDraft, from_address: event.target.value })
+            }
+            required
+          />
+          <Input
+            aria-label="Temat skrzynki"
+            placeholder="RFQ"
+            value={mailboxDraft.subject}
+            onChange={(event) =>
+              setMailboxDraft({ ...mailboxDraft, subject: event.target.value })
+            }
+            required
+          />
+          <textarea
+            aria-label="Treść skrzynki"
+            className="min-h-24 rounded-md border border-border bg-background px-2 py-1 text-sm"
+            value={mailboxDraft.body_text}
+            onChange={(event) =>
+              setMailboxDraft({ ...mailboxDraft, body_text: event.target.value })
+            }
+            required
+          />
+          <Button type="submit" disabled={!ready || ingestMailbox.isPending}>
+            Ingest skrzynka
           </Button>
         </form>
         <CatalogLoadedTable

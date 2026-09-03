@@ -38,6 +38,18 @@ _ENDPOINTS = (
     ),
     (
         "POST",
+        "/api/v1/inbound-messages/ingest-imap",
+        None,
+        {
+            "external_id": "uid-1",
+            "source_ref": "imap://inbox/1",
+            "from_address": "ops@carrier.example",
+            "subject": "RFQ",
+            "body_text": "treść",
+        },
+    ),
+    (
+        "POST",
         f"/api/v1/inbound-messages/{uuid4()}/resolve-email",
         None,
         None,

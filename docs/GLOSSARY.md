@@ -72,7 +72,7 @@
 | zapytanie do armatora | carrier_inquiry | 23.0 ślad `channel_quote` przy lane wyceny; nie tabela RFQ; nie live HTTP |
 | porównanie odpowiedzi | response_comparison | 24.0 zestawienie kwot wyceny i `channel_quote` na POL/POD; nie tabela; nie spread w JS |
 | integracja pocztowa | mail_integration | 25.0 tablica znanych adresów na `/mail`; 64.0 dopina `inbound_message`; nie IMAP |
-| wiadomość przychodząca | inbound_message | 64.0 tabela per tenant; 66.0 treść → extract HITL; 78.0 ingest `graph://` + `external_id`; 79.0 zdarzenie outbox; nie live HTTP; nie IMAP; nie send; nie blob |
+| wiadomość przychodząca | inbound_message | 64.0 tabela per tenant; 66.0 treść → extract HITL; 78.0/80.0 ingest `graph://` / `imap://` + `external_id`; 79.0 zdarzenie outbox; nie live skrzynka; nie send; nie blob |
 | zdarzenie outbox | outbox_event | 79.0 tabela per tenant; kind `inbound_message_saved`; nie Temporal; nie konsument |
 | klient poczty | mail_client | 26.0 `mailto:` z `party_contact.email`; nie dodatek Office; nie Graph |
 | powiadomienie operatora | operator_notice | 27.0 tablica pending; 75.0 tabela inbox; nie filtr wycen; nie wysyłka |
