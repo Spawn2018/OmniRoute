@@ -201,6 +201,16 @@ describe("quotation NBP lookup", () => {
     ).toEqual([withParty])
   })
 
+  it("hides quotations that already have an accepted decision", () => {
+    const withParty = { ...quotationWithCurrency("EUR"), party_id: PARTY }
+    expect(
+      quotationAcceptancePending(
+        [withParty],
+        [{ subject_kind: "quotation", subject_id: withParty.id, status: "accepted" }],
+      ),
+    ).toEqual([])
+  })
+
   it("matches channel quotes to quotation lanes without subtracting amounts", () => {
     const lane = {
       id: "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
@@ -330,6 +340,10 @@ describe("quotation catalog screen", () => {
     expect(page).toContain("quotationInquiryTrails")
     expect(page).toContain('data-offer-acceptance="pending"')
     expect(page).toContain("quotationAcceptancePending")
+    expect(page).toContain("createOperatorDecision")
+    expect(page).toContain("decideOperatorDecision")
+    expect(page).toContain("Przyjmij")
+    expect(page).toContain("Odrzuć")
     expect(page).toContain("fetchChannelQuotes")
     expect(page).toContain("quotationCarrierInquiries")
     expect(page).toContain('data-carrier-inquiry="trail"')

@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **85.0** S23 wynik negocjacji (M-25). **Etap:** Plan. **Następny:** `/plaster` **86.0** — S24 accept oferty przez S11 (M-29). Nie accept extractu. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **86.0** S24 accept oferty przez S11 (M-29). **Etap:** Plan. **Następny:** `/plan-modul` **S25** — fakty ryzyka (M-24). Nie scoring osoby. Nie F9.1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

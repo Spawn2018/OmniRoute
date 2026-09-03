@@ -182,6 +182,24 @@ def test_http_second_decide_is_error(catalog_client: object) -> None:
     assert "nieaktualna" in second.json()["detail"]
 
 
+def test_http_create_quotation_subject(catalog_client: object) -> None:
+    client, _decisions = catalog_client
+    quote_id = uuid4()
+    created = client.post(
+        "/api/v1/operator-decisions",
+        headers=bearer_auth_headers(),
+        json={
+            "subject_kind": "quotation",
+            "subject_id": str(quote_id),
+            "source_ref": "tenant:manual",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["subject_kind"] == "quotation"
+    assert created.json()["subject_id"] == str(quote_id)
+    assert created.json()["status"] == "pending"
+
+
 def test_http_unknown_decision_is_404(catalog_client: object) -> None:
     client, _decisions = catalog_client
     response = client.post(

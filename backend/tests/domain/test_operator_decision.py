@@ -27,9 +27,13 @@ def test_require_subject_kind_accepts_mail_draft() -> None:
     assert require_subject_kind("mail_draft") == "mail_draft"
 
 
+def test_require_subject_kind_accepts_quotation() -> None:
+    assert require_subject_kind("quotation") == "quotation"
+
+
 def test_require_subject_kind_rejects_other() -> None:
-    with pytest.raises(InvalidOperatorDecision, match="mail_draft"):
-        require_subject_kind("quotation")
+    with pytest.raises(InvalidOperatorDecision, match="quotation"):
+        require_subject_kind("extraction_draft")
 
 
 def test_require_subject_id_rejects_non_uuid() -> None:

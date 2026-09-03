@@ -16,6 +16,12 @@ import { resolveCreditReview, type CreditReview } from "@/lib/credit-reviews-api
 import { resolveNbpRate, type NbpRate } from "@/lib/nbp-rates-api"
 import { fetchParties, type Party } from "@/lib/parties-api"
 import { fetchPartyScorecard, type PartyScorecard } from "@/lib/party-scorecards-api"
+import {
+  createOperatorDecision,
+  decideOperatorDecision,
+  fetchOperatorDecisions,
+  type OperatorDecision,
+} from "@/lib/operator-decisions-api"
 import { fetchPorts } from "@/lib/ports-api"
 import {
   createQuotation,
@@ -535,23 +541,67 @@ function OfferInquiryPanel(args: { rows: Quotation[]; parties: Party[] }) {
   )
 }
 
-function OfferAcceptancePanel(args: { rows: Quotation[] }) {
-  const pending = quotationAcceptancePending(args.rows)
+function OfferAcceptancePanel(args: {
+  rows: Quotation[]
+  decisions: OperatorDecision[]
+  signedIn: boolean
+}) {
+  const queryClient = useQueryClient()
+  const ctx = getTenantContext()
+  const pending = quotationAcceptancePending(args.rows, args.decisions)
+  const decideOffer = useMutation({
+    mutationFn: async (input: { quotationId: string; status: "accepted" | "rejected" }) => {
+      const open = args.decisions.find(
+        (row) =>
+          row.subject_kind === "quotation" &&
+          row.subject_id === input.quotationId &&
+          row.status === "pending",
+      )
+      const created =
+        open ??
+        (await createOperatorDecision({
+          subject_kind: "quotation",
+          subject_id: input.quotationId,
+          source_ref: "tenant:manual",
+        }))
+      return decideOperatorDecision(created.id, input.status, created.lock_version)
+    },
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: ["operator-decisions", ctx.organizationId] })
+    },
+  })
   if (pending.length === 0) {
     return null
   }
   return (
     <article className="space-y-2 p-3 outline outline-1 outline-border" data-offer-acceptance="pending">
       <h3 className="text-sm font-medium">Akceptacja oferty</h3>
-      <p className="text-xs text-muted-foreground">brak zapisu w bazie · nie HITL extract · nie skrzynka</p>
+      <p className="text-xs text-muted-foreground">decyzja S11 · nie HITL extract · nie skrzynka</p>
       <ul className="space-y-1 text-xs">
         {pending.map((row) => (
-          <li key={row.id}>
+          <li key={row.id} className="flex flex-wrap items-center gap-2">
             {row.charge_code}{" "}
             <Money amount={row.amount} currency={row.currency} />
+            <Button
+              type="button"
+              disabled={decideOffer.isPending || !args.signedIn}
+              onClick={() => decideOffer.mutate({ quotationId: row.id, status: "accepted" })}
+            >
+              Przyjmij
+            </Button>
+            <Button
+              type="button"
+              disabled={decideOffer.isPending || !args.signedIn}
+              onClick={() => decideOffer.mutate({ quotationId: row.id, status: "rejected" })}
+            >
+              Odrzuć
+            </Button>
           </li>
         ))}
       </ul>
+      {decideOffer.isError ? (
+        <p className="text-sm text-destructive">{(decideOffer.error as Error).message}</p>
+      ) : null}
     </article>
   )
 }
@@ -742,6 +792,13 @@ export function QuotationCatalogPage() {
   const channelQuotesQuery = useQuery({
     queryKey: ["channel-quotes", ctx.organizationId],
     queryFn: fetchChannelQuotes,
+    enabled: signedIn,
+    retry: false,
+  })
+
+  const decisionsQuery = useQuery({
+    queryKey: ["operator-decisions", ctx.organizationId],
+    queryFn: fetchOperatorDecisions,
     enabled: signedIn,
     retry: false,
   })
@@ -1027,7 +1084,11 @@ export function QuotationCatalogPage() {
           <OfferNegotiationPanel lanes={quotationLanes(query.data)} signedIn={signedIn} />
           <OfferDocumentPanel rows={query.data} />
           <OfferInquiryPanel rows={query.data} parties={parties} />
-          <OfferAcceptancePanel rows={query.data} />
+          <OfferAcceptancePanel
+            rows={query.data}
+            decisions={decisionsQuery.data ?? []}
+            signedIn={signedIn}
+          />
           <OfferCarrierInquiryPanel
             lanes={quotationLanes(query.data)}
             quotes={channelQuotesQuery.data ?? []}

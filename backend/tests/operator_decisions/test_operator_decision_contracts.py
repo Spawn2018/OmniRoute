@@ -45,6 +45,17 @@ def test_generated_api_types_include_operator_decision() -> None:
     assert "OperatorDecisionResponse" in source or "OperatorDecisionCreate" in source
 
 
+def test_migration_045_allows_quotation_subject() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "045_operator_decision_quotation.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "045_operator_decision_quotation"' in source
+    assert "044_quotation_negotiated_channel" in source
+    assert "quotation" in source
+    assert "won" not in source
+    assert "amount" not in source
+
+
 def test_migration_037_adds_lock_version() -> None:
     source = (
         _ROOT / "backend" / "alembic" / "versions" / "037_operator_decision_lock.py"

@@ -186,10 +186,19 @@ export function quotationInquiryTrails(rows: readonly Quotation[]): CustomerInqu
     .map(([partyId, quotations]) => ({ partyId, quotations }))
 }
 
-export function quotationAcceptancePending(rows: readonly Quotation[]): Quotation[] {
+export function quotationAcceptancePending<
+  Decision extends { subject_kind: string; subject_id: string; status: string },
+>(rows: readonly Quotation[], decisions: readonly Decision[] = []): Quotation[] {
+  const accepted = new Set<string>()
+  for (const decision of decisions) {
+    if (decision.subject_kind !== "quotation" || decision.status !== "accepted") {
+      continue
+    }
+    accepted.add(decision.subject_id)
+  }
   const pending: Quotation[] = []
   for (const row of rows) {
-    if (row.party_id === null) {
+    if (row.party_id === null || accepted.has(row.id)) {
       continue
     }
     pending.push(row)
