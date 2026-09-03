@@ -88,7 +88,7 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 <!-- os-status:start -->
 - **Ostatni plaster:** **79.0** S16 outbox `inbound_message_saved` (M-02)
 - **Etap:** Plan
-- **Następny:** `/plan-modul` **S17** — ingest IMAP / EmailEngine na `inbound_message` (M-32). Ta sama tabela. Nie Graph+IMAP w jednym commicie. Nie F9.1.
+- **Następny:** `/plaster` **80.0** — ingest IMAP na `inbound_message` (M-32). `imap://` + `external_id`. Nie live skrzynka. Nie send. Nie F9.1.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

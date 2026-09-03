@@ -227,3 +227,4 @@
 | 2026-09-03 | 78.0 | M-32 | Ingest `graph://` + `external_id` na `inbound_message`. Ten sam id = ten sam wiersz. Nie live HTTP. Nie send. Następny: S16 Plan. |
 | 2026-09-03 | Plan 79.0 | M-02 | S16: outbox `inbound_message_saved`. Delta zaakceptowana (`/noc`). Nie Temporal. Następny: `/plaster` 79.0. |
 | 2026-09-03 | 79.0 | M-02 | Tabela `outbox_event`, zdarzenie po zapisie wiadomości. Ten sam subject = ten sam wiersz. Nie Temporal. Następny: S17 Plan. |
+| 2026-09-03 | Plan 80.0 | M-32 | S17: ingest IMAP (`imap://`, `external_id`). Delta zaakceptowana (`/noc`). Nie live skrzynka. Następny: `/plaster` 80.0. |

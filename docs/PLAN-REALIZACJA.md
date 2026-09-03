@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** `/plan-modul` **S17** — ingest IMAP / EmailEngine na `inbound_message` (M-32). Ta sama tabela. Nie Graph+IMAP w jednym commicie. Nie F9.1.
+**Następny (zablokowany):** `/plaster` **80.0** — ingest IMAP na `inbound_message` (M-32). `imap://` + `external_id`. Nie live skrzynka. Nie send. Nie F9.1.
 <!-- os-status:end -->
 
 ```mermaid
@@ -386,7 +386,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E2** | Testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy) | 61.0 | zamknięty (`docs/deltas/archived/61.0-alembic-quote-budget.md`) |
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | 62.0 | zamknięty (`docs/deltas/archived/62.0-operator-howto-c4.md`) |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | 63.0 | zamknięty (`docs/deltas/archived/63.0-threat-model-codeql.md`) |
-| po Q-E4 | **Fala S**, S1–S16 zamknięte; S17 IMAP | Plan → plaster | **następny** |
+| po Q-E4 | **Fala S**, S1–S16 zamknięte; S17 plaster 80.0 | Plan → plaster | **następny** |
 
 ### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
 
@@ -422,7 +422,7 @@ Reguły kolejności (żeby `/noc` nie złożył awarii):
 | S14 | Arch. **M-187** lock optymistyczny na decyzji | 77.0 | zamknięty (`docs/deltas/archived/77.0-decision-lock.md`) | `lock_version`. Nie nowa tabela |
 | **S15** | Żywe **M-32** tylko ingest Graph | 78.0 | zamknięty (`docs/deltas/archived/78.0-graph-ingest.md`) | `graph://` + `external_id`. Live HTTP leftover. Nie send |
 | **S16** | Żywe **M-02** outbox | 79.0 | zamknięty (`docs/deltas/archived/79.0-outbox.md`) | `inbound_message_saved`. Konsument leftover. Nie Temporal |
-| S17 | Żywe **M-32** ingest IMAP / EmailEngine | Plan → plaster | **następny** | Ta sama tabela. Nie Graph+IMAP w jednym commicie |
+| S17 | Żywe **M-32** ingest IMAP / EmailEngine | 80.0 | **następny** | `imap://` + `external_id`. Nie live skrzynka. Nie send |
 | **S18** | Żywe **M-33** wysyłka po S11+S10 | Plan → plaster | po S17 | Graph send albo świadomy `mailto:`. Auto-send zakazane |
 | S19 | Żywe **M-12** `network_member` | Plan → plaster | po S18 | Nie scraping |
 | S20 | Żywe **M-30** zapytanie do agenta | Plan → plaster | po S19 | Buy side |

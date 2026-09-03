@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **79.0** S16 outbox `inbound_message_saved` (M-02) **Następny:** `/plan-modul` **S17** — ingest IMAP / EmailEngine na `inbound_message` (M-32). Ta sama tabela. Nie Graph+IMAP w jednym commicie. Nie F9.1.
+**Stan (z CURRENT.md):** **79.0** S16 outbox `inbound_message_saved` (M-02) **Następny:** `/plaster` **80.0** — ingest IMAP na `inbound_message` (M-32). `imap://` + `external_id`. Nie live skrzynka. Nie send. Nie F9.1.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.
