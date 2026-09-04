@@ -86,10 +86,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **125.0** `/refaktor` trzy metody `PartyService` ≤40 linii
-- **Etap:** Refaktor
-- **Następny:** `/refaktor` — `create_quote` (ostatnia funkcja >40). Nie mixin 40 modeli. Nie Auth0. Nie AIS. Nie 71–212.
-- **Komenda teraz:** `/refaktor` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **126.0** `/refaktor` `create_quote` ≤40 linii
+- **Etap:** Plan
+- **Następny:** named parks (Auth0 S53, portale S55, AIS wieży). `/noc` pomija. Nie zgaduj 71–212.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

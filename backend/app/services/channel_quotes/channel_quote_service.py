@@ -1,3 +1,5 @@
+from datetime import date
+from decimal import Decimal
 from uuid import UUID, uuid4
 
 from sqlalchemy.exc import IntegrityError
@@ -18,6 +20,31 @@ from app.models.channel_quote import ChannelQuote
 from app.repositories.channel_quotes.channel_quote_repository import ChannelQuoteRepository
 
 _MANUAL = "tenant:manual"
+
+
+def _new_channel_quote(
+    *,
+    organization_id: UUID,
+    user_id: UUID,
+    party_id: UUID,
+    origin_port_id: UUID,
+    destination_port_id: UUID,
+    quote_date: date,
+    amount: Decimal,
+    currency: str,
+) -> ChannelQuote:
+    return ChannelQuote(
+        id=uuid4(),
+        organization_id=organization_id,
+        amount=amount,
+        currency=currency,
+        party_id=party_id,
+        origin_port_id=origin_port_id,
+        destination_port_id=destination_port_id,
+        quote_date=quote_date,
+        source_ref=_MANUAL,
+        created_by=user_id,
+    )
 
 
 class ChannelQuoteService:
@@ -42,18 +69,32 @@ class ChannelQuoteService:
         on_date: object,
     ) -> ChannelQuote:
         day = normalize_quote_date(on_date)
+        found = await self._lane_quote(
+            party_id,
+            origin_port_id,
+            destination_port_id,
+            day,
+        )
+        if found is None:
+            raise UnknownChannelQuote(f"brak oferty kanału na {day.isoformat()}")
+        return found
+
+    async def _lane_quote(
+        self,
+        party_id: UUID,
+        origin_port_id: UUID,
+        destination_port_id: UUID,
+        day: date,
+    ) -> ChannelQuote | None:
         await self._require_carrier(party_id)
         await self._require_port(origin_port_id)
         await self._require_port(destination_port_id)
-        found = await self._quotes.find_as_of(
+        return await self._quotes.find_as_of(
             party_id=party_id,
             origin_port_id=origin_port_id,
             destination_port_id=destination_port_id,
             on_date=day,
         )
-        if found is None:
-            raise UnknownChannelQuote(f"brak oferty kanału na {day.isoformat()}")
-        return found
 
     async def create_quote(
         self,
@@ -70,31 +111,27 @@ class ChannelQuoteService:
         day = normalize_quote_date(quote_date)
         stored_amount = normalize_quote_amount(amount)
         iso = normalize_quote_currency(currency)
-        await self._require_carrier(party_id)
-        await self._require_port(origin_port_id)
-        await self._require_port(destination_port_id)
-        existing = await self._quotes.find_as_of(
-            party_id=party_id,
-            origin_port_id=origin_port_id,
-            destination_port_id=destination_port_id,
-            on_date=day,
+        existing = await self._lane_quote(
+            party_id,
+            origin_port_id,
+            destination_port_id,
+            day,
         )
         if existing is not None and existing.quote_date == day:
             raise ChannelQuoteConflict(f"oferta na {day.isoformat()} już istnieje")
-        row = ChannelQuote(
-            id=uuid4(),
-            organization_id=organization_id,
-            amount=stored_amount,
-            currency=iso,
-            party_id=party_id,
-            origin_port_id=origin_port_id,
-            destination_port_id=destination_port_id,
-            quote_date=day,
-            source_ref=_MANUAL,
-            created_by=user_id,
-        )
         try:
-            return await self._quotes.add(row)
+            return await self._quotes.add(
+                _new_channel_quote(
+                    organization_id=organization_id,
+                    user_id=user_id,
+                    party_id=party_id,
+                    origin_port_id=origin_port_id,
+                    destination_port_id=destination_port_id,
+                    quote_date=day,
+                    amount=stored_amount,
+                    currency=iso,
+                )
+            )
         except IntegrityError as exc:
             raise ChannelQuoteConflict(f"oferta na {day.isoformat()} już istnieje") from exc
 

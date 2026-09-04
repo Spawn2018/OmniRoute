@@ -316,3 +316,4 @@
 | 2026-09-04 | Plan 124.0 | UI | S32: liczniki na `/watchtower`. Delta zaakceptowana (`/noc`). Nie leaflet. Następny: `/plaster` 124.0. |
 | 2026-09-04 | 124.0 | UI | S32: liczniki wyjątków, pending i szkiców na wieży. Nie leaflet. Nie AIS. Następny: `/refaktor` mixin modeli. |
 | 2026-09-04 | 125.0 | M-10 | `/refaktor`: trzy metody PartyService ≤40 linii. Nie mixin. Następny: `/refaktor` `create_quote`. |
+| 2026-09-04 | 126.0 | M-19 | `/refaktor`: `create_quote` ≤40. Sufit funkcji 0. Następny: named parks. |
