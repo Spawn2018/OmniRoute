@@ -1,5 +1,6 @@
 from datetime import UTC, datetime
 from decimal import Decimal
+from typing import NamedTuple
 from uuid import UUID, uuid4
 
 from sqlalchemy.exc import IntegrityError
@@ -69,6 +70,129 @@ from app.services.parties.lookup import (
 
 _ADAPTERS = frozenset({"none", "maersk", "hapag", "cma", "msc"})
 _WHITELIST = frozenset({"pending", "listed", "not_listed", "unavailable"})
+
+
+def _blank_to_none(raw: str | None, *, upper: bool = False) -> str | None:
+    if raw is None:
+        return None
+    text = raw.strip()
+    if text == "":
+        return None
+    return text.upper() if upper else text
+
+
+def _party_source_ref(lookup_source: str | None, source_ref: str | None) -> str:
+    if lookup_source is not None:
+        return lookup_source_ref(lookup_source)
+    if source_ref is not None:
+        return source_ref
+    return manual_source_ref()
+
+
+def _new_party(
+    *,
+    organization_id: UUID,
+    user_id: UUID,
+    legal_name: str,
+    country_code: str,
+    roles: list[str],
+    stored_tax: str | None,
+    short_name: str | None,
+    credit_limit: Decimal | None,
+    credit_currency: str | None,
+    origin: str,
+) -> Party:
+    return Party(
+        id=uuid4(),
+        organization_id=organization_id,
+        legal_name=normalize_legal_name(legal_name),
+        short_name=_blank_to_none(short_name),
+        country_code=country_code,
+        tax_id=stored_tax,
+        roles=normalize_roles(roles),
+        credit_limit=credit_limit,
+        credit_currency=credit_currency,
+        source_ref=origin,
+        is_active=True,
+        created_by=user_id,
+    )
+
+
+class _ScorecardStored(NamedTuple):
+    response_rate: Decimal | None
+    median_response_hours: Decimal | None
+    price_position: Decimal | None
+    quote_invoice_match_rate: Decimal | None
+    rollover_count: int | None
+    sample_size: int
+    window_days: int
+
+
+def _scorecard_stored(
+    response_rate: object | None,
+    median_response_hours: object | None,
+    price_position: object | None,
+    quote_invoice_match_rate: object | None,
+    rollover_count: object | None,
+    sample_size: object | None,
+    window_days: object | None,
+) -> _ScorecardStored:
+    return _ScorecardStored(
+        response_rate=optional_unit_interval(response_rate, "response_rate"),
+        median_response_hours=optional_non_negative_hours(median_response_hours),
+        price_position=optional_unit_interval(price_position, "price_position"),
+        quote_invoice_match_rate=optional_unit_interval(
+            quote_invoice_match_rate,
+            "quote_invoice_match_rate",
+        ),
+        rollover_count=optional_non_negative_int(rollover_count, "rollover_count"),
+        sample_size=required_sample_size(sample_size),
+        window_days=required_window_days(window_days),
+    )
+
+
+def _fill_scorecard(
+    row: PartyScorecard,
+    stored: _ScorecardStored,
+    *,
+    now: datetime,
+    origin: str,
+) -> None:
+    row.response_rate = stored.response_rate
+    row.median_response_hours = stored.median_response_hours
+    row.price_position = stored.price_position
+    row.quote_invoice_match_rate = stored.quote_invoice_match_rate
+    row.rollover_count = stored.rollover_count
+    row.sample_size = stored.sample_size
+    row.window_days = stored.window_days
+    row.computed_at = now
+    row.source_ref = origin
+
+
+def _new_scorecard(
+    *,
+    organization_id: UUID,
+    user_id: UUID,
+    party_id: UUID,
+    stored: _ScorecardStored,
+    now: datetime,
+    origin: str,
+) -> PartyScorecard:
+    return PartyScorecard(
+        id=uuid4(),
+        organization_id=organization_id,
+        party_id=party_id,
+        window_days=stored.window_days,
+        sample_size=stored.sample_size,
+        response_rate=stored.response_rate,
+        median_response_hours=stored.median_response_hours,
+        price_position=stored.price_position,
+        quote_invoice_match_rate=stored.quote_invoice_match_rate,
+        rollover_count=stored.rollover_count,
+        computed_at=now,
+        source_ref=origin,
+        created_by=user_id,
+    )
 
 
 def _resolve_tax_token(raw: str) -> str:
@@ -150,27 +274,22 @@ class PartyService:
         if tax_id is not None and tax_id.strip() != "":
             stored_tax = normalize_tax_id(country, tax_id)
         limit, currency = normalize_credit_pair(credit_limit, credit_currency)
-        origin = (
-            lookup_source_ref(lookup_source)
-            if lookup_source is not None
-            else (source_ref if source_ref is not None else manual_source_ref())
-        )
-        row = Party(
-            id=uuid4(),
-            organization_id=organization_id,
-            legal_name=normalize_legal_name(legal_name),
-            short_name=None if short_name is None else short_name.strip() or None,
-            country_code=country,
-            tax_id=stored_tax,
-            roles=normalize_roles(roles),
-            credit_limit=limit,
-            credit_currency=currency,
-            source_ref=origin,
-            is_active=True,
-            created_by=user_id,
-        )
+        origin = _party_source_ref(lookup_source, source_ref)
         try:
-            return await self._parties.add(row)
+            return await self._parties.add(
+                _new_party(
+                    organization_id=organization_id,
+                    user_id=user_id,
+                    legal_name=legal_name,
+                    country_code=country,
+                    roles=roles,
+                    stored_tax=stored_tax,
+                    short_name=short_name,
+                    credit_limit=limit,
+                    credit_currency=currency,
+                    origin=origin,
+                )
+            )
         except IntegrityError as exc:
             raise InvalidPartyData("kontrahent z tym tax_id już istnieje") from exc
 
@@ -331,31 +450,26 @@ class PartyService:
         adapter = api_adapter.strip().lower()
         if adapter not in _ADAPTERS:
             raise InvalidPartyData("api_adapter spoza słownika")
+        scac = _blank_to_none(scac_code, upper=True)
+        email = _blank_to_none(rate_source_email)
+        dcsa = _blank_to_none(dcsa_tnt_version)
         existing = await self._parties.get_carrier_profile(party_id)
         if existing is not None:
-            existing.scac_code = None if scac_code is None else scac_code.strip().upper() or None
+            existing.scac_code = scac
             existing.is_nvocc = is_nvocc
-            existing.rate_source_email = (
-                None if rate_source_email is None else rate_source_email.strip() or None
-            )
+            existing.rate_source_email = email
             existing.api_adapter = adapter
-            existing.dcsa_tnt_version = (
-                None if dcsa_tnt_version is None else dcsa_tnt_version.strip() or None
-            )
+            existing.dcsa_tnt_version = dcsa
             return existing
         row = CarrierProfile(
             id=uuid4(),
             organization_id=organization_id,
             party_id=party_id,
-            scac_code=None if scac_code is None else scac_code.strip().upper() or None,
+            scac_code=scac,
             is_nvocc=is_nvocc,
-            rate_source_email=(
-                None if rate_source_email is None else rate_source_email.strip() or None
-            ),
+            rate_source_email=email,
             api_adapter=adapter,
-            dcsa_tnt_version=(
-                None if dcsa_tnt_version is None else dcsa_tnt_version.strip() or None
-            ),
+            dcsa_tnt_version=dcsa,
             created_by=user_id,
         )
         return await self._parties.add_carrier_profile(row)
@@ -386,45 +500,30 @@ class PartyService:
     ) -> PartyScorecard:
         await self.get_party(party_id)
         now = datetime.now(UTC)
-        stored_response = optional_unit_interval(response_rate, "response_rate")
-        stored_hours = optional_non_negative_hours(median_response_hours)
-        stored_price = optional_unit_interval(price_position, "price_position")
-        stored_match = optional_unit_interval(
+        stored = _scorecard_stored(
+            response_rate,
+            median_response_hours,
+            price_position,
             quote_invoice_match_rate,
-            "quote_invoice_match_rate",
+            rollover_count,
+            sample_size,
+            window_days,
         )
-        stored_rollover = optional_non_negative_int(rollover_count, "rollover_count")
-        stored_sample = required_sample_size(sample_size)
-        stored_window = required_window_days(window_days)
         origin = manual_source_ref()
         existing = await self._parties.get_scorecard(party_id)
         if existing is not None:
-            existing.response_rate = stored_response
-            existing.median_response_hours = stored_hours
-            existing.price_position = stored_price
-            existing.quote_invoice_match_rate = stored_match
-            existing.rollover_count = stored_rollover
-            existing.sample_size = stored_sample
-            existing.window_days = stored_window
-            existing.computed_at = now
-            existing.source_ref = origin
+            _fill_scorecard(existing, stored, now=now, origin=origin)
             return existing
-        row = PartyScorecard(
-            id=uuid4(),
-            organization_id=organization_id,
-            party_id=party_id,
-            window_days=stored_window,
-            sample_size=stored_sample,
-            response_rate=stored_response,
-            median_response_hours=stored_hours,
-            price_position=stored_price,
-            quote_invoice_match_rate=stored_match,
-            rollover_count=stored_rollover,
-            computed_at=now,
-            source_ref=origin,
-            created_by=user_id,
+        return await self._parties.add_scorecard(
+            _new_scorecard(
+                organization_id=organization_id,
+                user_id=user_id,
+                party_id=party_id,
+                stored=stored,
+                now=now,
+                origin=origin,
+            )
         )
-        return await self._parties.add_scorecard(row)
 
     async def list_sops(self) -> list[CustomerSop]:
         return await self._parties.list_sops()

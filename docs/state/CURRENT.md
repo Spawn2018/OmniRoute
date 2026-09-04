@@ -1,15 +1,15 @@
 ﻿# Bieżący focus
 
-**Faza:** Fala S — named parks po leftover S32  
+**Faza:** Fala S — `/refaktor` po leftover S32  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
 
-**Ostatni plaster:** **124.0** leftover S32 liczniki na `/watchtower`  
+**Ostatni plaster:** **125.0** `/refaktor` trzy metody `PartyService` ≤40 linii  
 **Etap:** Refaktor  
 **Noc:** `/noc <godzina>` (np. `/noc 7` = pętla do 7:00 czasu polskiego). Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md). Przed startem: `scripts/noc-preflight.ps1`.  
-**Następny:** `/refaktor` — trzecie powtórzenie nagłówków modeli (docs-debt). Nie Auth0. Nie AIS. Nie 71–212.  
+**Następny:** `/refaktor` — `create_quote` (ostatnia funkcja >40). Nie mixin 40 modeli. Nie Auth0. Nie AIS. Nie 71–212.  
 M-02 **fundament 79.0** (konsument leftover — parked). Auth0 **odroczone** (S53). Portale **parked** (S55). S21 live HTTP **parked**. S50 flota **named park**. S54 status klienta **named park**. S59 OTel/QA/rollout **named park**. AIS wieży **leftover**. Exit Wave FE **nie** claim.
 
-**Spec (jedna na sesję):** [docs/ops/docs-debt.md](../ops/docs-debt.md) po delcie. Nie otwieraj [operator-notice.md](../spec/operator-notice.md).
+**Spec (jedna na sesję):** [docs/deltas/archived/125.0-refactor-party-long-fns.md](../deltas/archived/125.0-refactor-party-long-fns.md). Nie otwieraj [operator-notice.md](../spec/operator-notice.md).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Cel jakości + § Kolejka realizacji.
 
@@ -17,4 +17,4 @@ M-02 **fundament 79.0** (konsument leftover — parked). Auth0 **odroczone** (S5
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` są w PATH. Przed pracą podnieś dwie rzeczy: `pg_ctl -D tools\pgdata -o "-p 5432" start` oraz `tools\openfga\openfga.exe run`. Potem `just gate` i `just test` działają bez ustawiania zmiennych. PG 16 to klaster przenośny w `tools\pg16` — instalator EDB przez winget nie przechodzi (exit 1).
 
-**2026-09-04:** 124.0 na main. Następny `/refaktor` mixin modeli. Nie zgaduj 71–212.
+**2026-09-04:** 125.0 na main. Następny `/refaktor` `create_quote`. Nie zgaduj 71–212.

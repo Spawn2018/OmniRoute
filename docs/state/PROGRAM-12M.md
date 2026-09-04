@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **124.0** leftover S32 liczniki na `/watchtower` **Następny:** `/refaktor` — trzecie powtórzenie nagłówków modeli (docs-debt). Nie Auth0. Nie AIS. Nie 71–212.
+**Stan (z CURRENT.md):** **125.0** `/refaktor` trzy metody `PartyService` ≤40 linii **Następny:** `/refaktor` — `create_quote` (ostatnia funkcja >40). Nie mixin 40 modeli. Nie Auth0. Nie AIS. Nie 71–212.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

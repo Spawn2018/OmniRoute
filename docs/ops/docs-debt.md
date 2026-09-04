@@ -51,6 +51,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **74.0 leftover — `changed` / FK inbound / send (dlaczego nie w tym plasterze):** S11 = pending + accept/reject. Zapis `changed` i lock = S13/S14. Skład z `inbound_message` = leftover S13. Graph send = S18.
 - **123.0 DONE:** filtr kind na tablicy 27.0. Tabela inbox nie jest źródłem pending. Nie auto-INSERT.
 - **124.0 DONE:** liczniki na `/watchtower` z list już pobranych. AIS / leaflet leftover.
+- **125.0 DONE:** trzy metody `PartyService` ≤40 linii. `create_quote` leftover >40. Nie mixin modeli.
 - **75.0 leftover — filtr 27.0 i send:** filtr **DONE w 123.0**. Auto-INSERT i Graph send = S18.
 - **76.0 leftover — send / `changed` (dlaczego nie w tym plasterze):** S13 = szkic `draft` + pending na S11. Lock = 77.0. Zapis `changed` leftover. Graph send = S18. Czat = S56.
 - **77.0 leftover — `changed` / send (dlaczego nie w tym plasterze):** S14 = atomowy UPDATE po wersji. `changed` nie jest werdyktem. Graph send = S18. Ingest Graph = S15.

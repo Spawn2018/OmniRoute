@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **124.0** leftover S32 liczniki na `/watchtower`. **Etap:** Refaktor. **Następny:** `/refaktor` — trzecie powtórzenie nagłówków modeli (docs-debt). Nie Auth0. Nie AIS. Nie 71–212. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **125.0** `/refaktor` trzy metody `PartyService` ≤40 linii. **Etap:** Refaktor. **Następny:** `/refaktor` — `create_quote` (ostatnia funkcja >40). Nie mixin 40 modeli. Nie Auth0. Nie AIS. Nie 71–212. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
