@@ -86,10 +86,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **123.0** leftover S12 filtr kind na tablicy 27.0 (M-34)
-- **Etap:** Plaster (delta 124.0 zaakceptowana `/noc`)
-- **Następny:** `/plaster` leftover S32 kafelki liczników na `/watchtower`. Nie leaflet. Nie AIS. Nie F9.1.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **124.0** leftover S32 liczniki na `/watchtower`
+- **Etap:** Refaktor
+- **Następny:** `/refaktor` — trzecie powtórzenie nagłówków modeli (docs-debt). Nie Auth0. Nie AIS. Nie 71–212.
+- **Komenda teraz:** `/refaktor` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

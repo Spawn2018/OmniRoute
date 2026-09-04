@@ -72,6 +72,33 @@ function ExceptionSection(args: { rows: OperationalException[] | undefined }) {
   )
 }
 
+function WatchtowerTile(args: {
+  kind: "exceptions" | "pending" | "drafts"
+  title: string
+  count: number
+}) {
+  return (
+    <article className="rounded-md border border-border bg-card p-3" data-watchtower-tile={args.kind}>
+      <h2 className="text-sm font-medium">{args.title}</h2>
+      <p className="text-xs">{args.count}</p>
+    </article>
+  )
+}
+
+function WatchtowerTiles(args: {
+  exceptionCount: number
+  pendingCount: number
+  draftCount: number
+}) {
+  return (
+    <section className="grid grid-cols-3 gap-2" data-watchtower="tiles">
+      <WatchtowerTile kind="exceptions" title="Wyjątki" count={args.exceptionCount} />
+      <WatchtowerTile kind="pending" title="Pending S11" count={args.pendingCount} />
+      <WatchtowerTile kind="drafts" title="Szkice maila" count={args.draftCount} />
+    </section>
+  )
+}
+
 function DraftSection(args: { rows: StoredMailDraft[] | undefined }) {
   return (
     <section className="rounded-md border border-border bg-card p-3" data-watchtower="drafts">
@@ -152,6 +179,11 @@ export function WatchtowerPage() {
           /ai
         </Link>
       </p>
+      <WatchtowerTiles
+        exceptionCount={(queries.exceptions.data ?? []).length}
+        pendingCount={pendingRows(queries.decisions.data).length}
+        draftCount={(queries.drafts.data ?? []).length}
+      />
       <ExceptionSection rows={queries.exceptions.data} />
       <PendingSection
         rows={queries.decisions.data}

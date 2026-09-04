@@ -169,6 +169,11 @@ export const OPS_JOBS = [
     job: "odczyt mail_draft na wieży",
   },
   {
+    route: BUSINESS_LISTS.watchtower.route,
+    label: "Wieża — liczniki",
+    job: "podsumowanie wyjątków, pending i szkiców",
+  },
+  {
     route: BUSINESS_LISTS.shipmentDocument.route,
     label: "Dokumenty zlecenia",
     job: "source_ref wycen z party_id",
@@ -377,6 +382,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "121.0": "/decisions",
   "122.0": "/mail",
   "123.0": "/notifications",
+  "124.0": "/watchtower",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

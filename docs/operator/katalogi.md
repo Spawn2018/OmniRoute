@@ -30,7 +30,7 @@ Ekrany, które **zapisują** (INSERT/upsert), nie tablice-odczyty:
 - RODO `/gdpr` — wniosek `access`/`erasure` na koncie tenanta. How-to: [rodo.md](rodo.md). Wypełnienie erasure to tombstone emailu, nie `DELETE` wiersza. Nie DPIA.
 - droga `/road` — zapis odcinka `shipment_leg` (`leg_kind=road`) na zleceniu. How-to: [odcinek.md](odcinek.md). Start i koniec to strefa albo adres, nie port. Nie TMS. Nie mapa.
 - kolej `/rail`, `/china-rail`, `/lcl` — `rail` / `china_rail` / `ocean_lcl`. How-to: [kolej.md](kolej.md), [kolej-chiny.md](kolej-chiny.md), [drobnica.md](drobnica.md). UN/LOCODE; CN; `is_seaport`. Nie wagon. Nie CFS.
-- wieża `/watchtower` — wyjątki + pending S11 + odczyt `mail_draft`. How-to: [wieza.md](wieza.md). Zapis szkicu na `/ai`. Leniwy panel mapy, nie kafelki.
+- wieża `/watchtower` — wyjątki + pending S11 + odczyt `mail_draft`. How-to: [wieza.md](wieza.md). Zapis szkicu na `/ai`. Liczniki tablicy + leniwy panel mapy, nie leaflet.
 - decyzje `/decisions` — pending na `subject_id`; Akceptuj, Zmień albo Odrzuć z `lock_version`. Dwa okna, dwa Akceptuj: drugi dostaje konflikt. Nie accept extractu. Nie send.
 - powiadomienia `/notifications` — zapisany inbox `unread`/`read` z `source_ref`. Tablica pending HITL/wycen zostaje odczytem (filtr: wszystkie / HITL / wyceny). Nie send.
 - szkic maila `/ai` — `mail_draft` obok extractu. Werdykt na `/decisions`. Po Akceptuj: „Wyślij w kliencie” zapisuje `sent` i daje `mailto:`. SOP `blocks_auto` nie blokuje tego kliknięcia. Nie czat. Nie Graph HTTP. Nie accept extractu.

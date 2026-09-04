@@ -9,7 +9,7 @@
 **HEAD:** `8fb8c93` plaster **3.0** M-03 `organization_setting`. Gate green.
 
 <!-- os-status:start -->
-**Następny (zablokowany):** `/plaster` leftover S32 kafelki liczników na `/watchtower`. Nie leaflet. Nie AIS. Nie F9.1.
+**Następny (zablokowany):** `/refaktor` — trzecie powtórzenie nagłówków modeli (docs-debt). Nie Auth0. Nie AIS. Nie 71–212.
 <!-- os-status:end -->
 
 ```mermaid
@@ -387,7 +387,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E2** | Testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy) | 61.0 | zamknięty (`docs/deltas/archived/61.0-alembic-quote-budget.md`) |
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | 62.0 | zamknięty (`docs/deltas/archived/62.0-operator-howto-c4.md`) |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | 63.0 | zamknięty (`docs/deltas/archived/63.0-threat-model-codeql.md`) |
-| po Q-E4 | **Fala S**, leftover S32 kafelki wieży | Plaster 124.0 | **następny** |
+| po Q-E4 | **Fala S**, `/refaktor` mixin modeli | — | **następny** |
 
 ### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
 
@@ -442,7 +442,7 @@ Reguły kolejności (żeby `/noc` nie złożył awarii):
 | **S29** | Żywe **M-36** zdarzenia trackingu | 91.0 | zamknięty (`docs/deltas/archived/91.0-tracking-event.md`) | Nie mapa w paczce JS |
 | **S30** | Żywe **M-38** + arch. M-205 dokumenty | 92.0 | zamknięty (`docs/deltas/archived/92.0-shipment-document.md`) | Skan = M-20 |
 | **S31** | Żywe **M-37** tabela wyjątków | 93.0 | zamknięty (`docs/deltas/archived/93.0-operational-exception.md`) | Nie filtr wycen bez POL/POD |
-| **S32** | Watchtower UI (lista + S11 + lazy mapa) | 94.0 | **DONE** | Nie leaflet. Kafelki leftover |
+| **S32** | Watchtower UI (lista + S11 + lazy mapa) | 94.0 · 124.0 | zamknięty (`docs/deltas/archived/124.0-watchtower-tiles.md`) | Nie leaflet. AIS leftover |
 | **S33** | Żywe **M-39** EDI gdy partner | 95.0 | zamknięty (`docs/deltas/archived/95.0-edi-message.md`) | Nie parser. Nie live HTTP |
 | **S34** | Żywe **M-40** faktura | 96.0 | zamknięty (`docs/deltas/archived/96.0-sales-invoice.md`) | Fakturujesz zlecenie. Nie KSeF |
 | **S35** | KSeF (osobny plaster) | 97.0 | zamknięty (`docs/deltas/archived/97.0-ksef-ref.md`) | Numer sesji, nie live HTTP |
@@ -502,7 +502,7 @@ M-48…M-51 modały · M-52…M-56 compliance (M-53 sankcje, M-56 RODO) · M-57�
 |---|---|---|
 | **M-02** outbox | **DONE 79.0** (`inbound_message_saved`). Konsument leftover | S17+ |
 | **Auth0 I1/I2** | Brak tenanta / nie bieżące Q | **S53**. JWT hello zostaje do tego wiersza |
-| **Watchtower / mapa** | **DONE 94.0** lista + S11 + lazy placeholder | kafelki / AIS leftover, nie F9.1 |
+| **Watchtower / mapa** | **DONE 94.0 + 124.0** lista + liczniki + lazy placeholder | AIS leftover, nie F9.1 |
 | **Portale F10** | Brak IdP | **S55** po **S53** |
 | **M-04 SSO** | OpenFGA hello ≠ IdP | Razem z Auth0 **S53** |
 | **M-03 reszta** | Żyje `default_currency` | **S8** (numeracja/szablon), nie zamiast Q-E |
@@ -580,13 +580,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/refaktor` (Etap z CURRENT.md).
 
 ```
-/plaster
+/refaktor
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->
