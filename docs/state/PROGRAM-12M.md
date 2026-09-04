@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **123.0** leftover S12 filtr kind na tablicy 27.0 (M-34) **Następny:** `/plan-modul` leftover S32 kafelki na `/watchtower`. Nie leaflet. Nie F9.1.
+**Stan (z CURRENT.md):** **123.0** leftover S12 filtr kind na tablicy 27.0 (M-34) **Następny:** `/plaster` leftover S32 kafelki liczników na `/watchtower`. Nie leaflet. Nie AIS. Nie F9.1.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.
