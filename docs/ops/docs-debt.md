@@ -6,7 +6,9 @@ Aktualizuj **po każdym plasterze** (pętla `docs/ops/post-plaster.md`). Nie dum
 
 Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftoverów.
 
-**Zrobione w syncu (nie wracać):** nagłówek PLAN nie mówi „0.5 lokalnie”; `just test` pada przy failu unita (bez `|| true`).
+**Zrobione w syncu (nie wracać):** nagłówek PLAN nie mówi „0.5 lokalnie”; `just test` pada przy failu unita (bez `|| true`). Ręczny SHA HEAD w PLAN (`8fb8c93` / 3.0) zdjęty w 128.0 — SoT = CURRENT.
+
+- **128.0 leftover context rot DONE:** PLAN wiersz HEAD → CURRENT. `AGENTS.md` M-71: szyna z `changed` i lockiem; zakaz extract/send zostaje. Nie konsument outboxa. Nie Auth0.
 
 - **OS-4 (fabryka, poza osią Q/S):** [delta](../deltas/open/OS-4-fabryka-styl-rzemiosla.md). `just craft-style` + sufit `long_functions` / `long_function_overflow`. Nie merytoryka spedycji. Nie S4.
 

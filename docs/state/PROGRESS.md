@@ -318,3 +318,4 @@
 | 2026-09-04 | 125.0 | M-10 | `/refaktor`: trzy metody PartyService ≤40 linii. Nie mixin. Następny: `/refaktor` `create_quote`. |
 | 2026-09-04 | 126.0 | M-19 | `/refaktor`: `create_quote` ≤40. Sufit funkcji 0. Następny: leftover DNA `--ink`. |
 | 2026-09-04 | 127.0 | UI/M-10 | leftover DNA `--ink` + `/refaktor` `_blank_to_none`. Nie mixin. Następny: named parks. |
+| 2026-09-04 | 128.0 | OS | leftover context rot: PLAN bez ręcznego SHA; AGENTS M-71 z `changed`+lock. Nie konsument. Następny: named parks. |

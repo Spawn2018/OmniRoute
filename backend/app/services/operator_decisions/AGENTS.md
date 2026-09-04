@@ -1,6 +1,6 @@
 # BC operator_decision (M-71)
 
-Szyna Akceptuj/Odrzuć per tenant. Nie accept extractu 1.3, nie send, nie lock.
+Szyna Akceptuj/Zmień/Odrzuć per tenant. Lock po `lock_version`. Nie accept extractu 1.3, nie send.
 
 ## Dozwolone zależności
 - `app.models.operator_decision`
@@ -10,5 +10,4 @@ Szyna Akceptuj/Odrzuć per tenant. Nie accept extractu 1.3, nie send, nie lock.
 ## Zakaz
 - import innych BC services (w tym inbound, quotations, extraction)
 - zapis `rate_line` / `charge` / `quotation` / `inbound_message`
-- status `changed` w tym plasterze
 - liczenie kwot / marży / float

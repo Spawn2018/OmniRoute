@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **127.0** leftover DNA `--ink` + `/refaktor` `_blank_to_none` **Następny:** named parks (Auth0 S53, portale S55, AIS wieży). `/noc` pomija. Nie zgaduj 71–212.
+**Stan (z CURRENT.md):** **128.0** leftover context rot kanonu (PLAN HEAD + M-71 AGENTS) **Następny:** named parks (Auth0 S53, portale S55, AIS wieży). `/noc` pomija. Nie zgaduj 71–212.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.
