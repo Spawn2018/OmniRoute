@@ -19,7 +19,7 @@ import {
   type NoticeDraft,
   type StoredOperatorNotice,
 } from "@/lib/operator-notices-api"
-import { operatorNotices } from "@/lib/operator-notices"
+import { operatorNotices, operatorNoticesFiltered, readNoticeKindFilter, type NoticeKindFilter } from "@/lib/operator-notices"
 import { fetchQuotations } from "@/lib/quotations-api"
 import { getTenantContext } from "@/lib/tenant"
 
@@ -28,6 +28,7 @@ const EMPTY_QUOTE_FILTERS = { partyId: "", originPortId: "", destinationPortId: 
 function PendingWorkBoard() {
   const ctx = getTenantContext()
   const ready = Boolean(ctx.organizationId && ctx.userId)
+  const [kindFilter, setKindFilter] = useState<NoticeKindFilter>("all")
   const drafts = useQuery({
     queryKey: ["notice-drafts", ctx.organizationId],
     queryFn: () => fetchExtractionDrafts("pending"),
@@ -40,12 +41,28 @@ function PendingWorkBoard() {
     enabled: ready,
     retry: false,
   })
-  const notices = operatorNotices(drafts.data ?? [], quotations.data ?? [])
+  const notices = operatorNoticesFiltered(
+    operatorNotices(drafts.data ?? [], quotations.data ?? []),
+    kindFilter,
+  )
   const hasAiDraft = notices.some((row) => row.kind === "extraction_draft")
   return (
     <div data-operator-notice="board">
       {drafts.isError ? <CatalogError error={drafts.error} /> : null}
       {quotations.isError ? <CatalogError error={quotations.error} /> : null}
+      <fieldset data-operator-notice="kind-filter" className="flex flex-col gap-1 text-xs">
+        <legend>rodzaj pending</legend>
+        <select
+          aria-label="Filtr pending"
+          className="h-8 rounded-md border border-border bg-card px-2 text-sm"
+          value={kindFilter}
+          onChange={(event) => setKindFilter(readNoticeKindFilter(event.target.value))}
+        >
+          <option value="all">Wszystkie</option>
+          <option value="extraction_draft">Szkice HITL</option>
+          <option value="offer_acceptance">Wyceny pending</option>
+        </select>
+      </fieldset>
       {hasAiDraft ? (
         <p className="text-xs text-muted-foreground">system AI · recenzja człowieka (Art. 50)</p>
       ) : null}

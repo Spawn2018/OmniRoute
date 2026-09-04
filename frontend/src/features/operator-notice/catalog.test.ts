@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 import { describe, expect, it } from "vitest"
-import { operatorNotices } from "@/lib/operator-notices"
+import { operatorNotices, operatorNoticesFiltered, readNoticeKindFilter } from "@/lib/operator-notices"
 import type { Quotation } from "@/lib/quotations-api"
 
 const srcRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..")
@@ -59,6 +59,18 @@ describe("operator notices", () => {
       },
     ])
   })
+
+  it("filters the 27.0 board by kind without dropping the compose-read", () => {
+    const mixed = operatorNotices(
+      [{ id: "draft-pending", status: "pending", source_ref: "tariff://a" }],
+      [quotation(PARTY)],
+    )
+    expect(operatorNoticesFiltered(mixed, "all")).toHaveLength(2)
+    expect(operatorNoticesFiltered(mixed, "extraction_draft")).toEqual([mixed[0]])
+    expect(operatorNoticesFiltered(mixed, "offer_acceptance")).toEqual([mixed[1]])
+    expect(readNoticeKindFilter("offer_acceptance")).toBe("offer_acceptance")
+    expect(readNoticeKindFilter("loose")).toBe("all")
+  })
 })
 
 describe("operator-notice surface for 27.0", () => {
@@ -74,6 +86,9 @@ describe("operator-notice surface for 27.0", () => {
     expect(lists).toContain("operatorNotice")
     expect(ops).toContain("/notifications")
     expect(page).toContain('data-operator-notice="board"')
+    expect(page).toContain('data-operator-notice="kind-filter"')
+    expect(page).toContain("operatorNoticesFiltered")
+    expect(page).toContain("Filtr pending")
     expect(page).toContain("fetchExtractionDrafts")
     expect(page).toContain("operatorNotices")
     expect(helper).toContain("quotationAcceptancePending")

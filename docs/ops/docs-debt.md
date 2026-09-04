@@ -49,7 +49,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **72.0 leftover — letterhead / send (dlaczego nie w tym plasterze):** S9 = numer + istniejący `@media print`. Blob papieru firmowego i wysyłka maila = S18, nie F9.1.
 - **73.0 leftover — send czyta `blocks_auto` (dlaczego nie w tym plasterze):** S10 = flaga i odczyt. Graph send = S18 po S11.
 - **74.0 leftover — `changed` / FK inbound / send (dlaczego nie w tym plasterze):** S11 = pending + accept/reject. Zapis `changed` i lock = S13/S14. Skład z `inbound_message` = leftover S13. Graph send = S18.
-- **75.0 leftover — filtr 27.0 i send (dlaczego nie w tym plasterze):** S12 = tabela inbox. Tablica HITL/wycen pending zostaje odczytem, nie źródłem wierszy. Auto-INSERT i Graph send = S18.
+- **123.0 DONE:** filtr kind na tablicy 27.0. Tabela inbox nie jest źródłem pending. Nie auto-INSERT.
+- **75.0 leftover — filtr 27.0 i send:** filtr **DONE w 123.0**. Auto-INSERT i Graph send = S18.
 - **76.0 leftover — send / `changed` (dlaczego nie w tym plasterze):** S13 = szkic `draft` + pending na S11. Lock = 77.0. Zapis `changed` leftover. Graph send = S18. Czat = S56.
 - **77.0 leftover — `changed` / send (dlaczego nie w tym plasterze):** S14 = atomowy UPDATE po wersji. `changed` nie jest werdyktem. Graph send = S18. Ingest Graph = S15.
 - **78.0 leftover — live Graph HTTP / sekret tenanta (dlaczego nie w tym plasterze):** S15 = payload już pobrany, `graph://` + `external_id`. Live `httpx` do Graph = teatr bez umowy. Token w bazie/kodzie zakazany (HC: sekret tylko szyfrowany kluczem tenanta; kasa kryptograficzna nie istnieje). IMAP = S17. Send = S18. Outbox = S16.

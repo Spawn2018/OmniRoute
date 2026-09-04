@@ -39,3 +39,22 @@ export function operatorNotices(
   }
   return notices
 }
+
+export type NoticeKindFilter = "all" | OperatorNotice["kind"]
+
+export function readNoticeKindFilter(raw: string): NoticeKindFilter {
+  if (raw === "extraction_draft" || raw === "offer_acceptance") {
+    return raw
+  }
+  return "all"
+}
+
+export function operatorNoticesFiltered(
+  notices: readonly OperatorNotice[],
+  kindFilter: NoticeKindFilter,
+): OperatorNotice[] {
+  if (kindFilter === "all") {
+    return [...notices]
+  }
+  return notices.filter((row) => row.kind === kindFilter)
+}
