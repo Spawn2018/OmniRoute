@@ -318,9 +318,9 @@ class PartyService:
             organization_id=organization_id,
             party_id=party_id,
             name=label,
-            email=None if email is None else email.strip() or None,
-            phone=None if phone is None else phone.strip() or None,
-            position=None if position is None else position.strip() or None,
+            email=_blank_to_none(email),
+            phone=_blank_to_none(phone),
+            position=_blank_to_none(position),
             is_primary=is_primary,
             created_by=user_id,
         )
@@ -361,7 +361,7 @@ class PartyService:
             party_id=party_id,
             iban=token,
             currency=money.currency.code,
-            bank_name=None if bank_name is None else bank_name.strip() or None,
+            bank_name=_blank_to_none(bank_name),
             whitelist_status=status,
             created_by=user_id,
         )
@@ -420,8 +420,8 @@ class PartyService:
             charge_code=normalize_charge_code(charge_code),
             amount=money.amount,
             currency=money.currency.code,
-            lane_pattern=None if lane_pattern is None else lane_pattern.strip() or None,
-            basis=None if basis is None else basis.strip() or None,
+            lane_pattern=_blank_to_none(lane_pattern),
+            basis=_blank_to_none(basis),
             source_ref=source_ref if source_ref is not None else manual_source_ref(),
             created_by=user_id,
         )

@@ -3,13 +3,13 @@
 **Faza:** Fala S — named parks  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
 
-**Ostatni plaster:** **126.0** `/refaktor` `create_quote` ≤40 linii  
+**Ostatni plaster:** **127.0** leftover DNA `--ink` + `/refaktor` `_blank_to_none`  
 **Etap:** Plan  
 **Noc:** `/noc <godzina>` (np. `/noc 7` = pętla do 7:00 czasu polskiego). Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md). Przed startem: `scripts/noc-preflight.ps1`.  
 **Następny:** named parks (Auth0 S53, portale S55, AIS wieży). `/noc` pomija. Nie zgaduj 71–212.  
 M-02 **fundament 79.0** (konsument leftover — parked). Auth0 **odroczone** (S53). Portale **parked** (S55). S21 live HTTP **parked**. S50 flota **named park**. S54 status klienta **named park**. S59 OTel/QA/rollout **named park**. AIS wieży **leftover**. Exit Wave FE **nie** claim.
 
-**Spec (jedna na sesję):** [docs/deltas/archived/126.0-refactor-create-quote.md](../deltas/archived/126.0-refactor-create-quote.md). Nie otwieraj [operator-notice.md](../spec/operator-notice.md).
+**Spec (jedna na sesję):** [docs/deltas/archived/127.0-omniroute-ui-dna.md](../deltas/archived/127.0-omniroute-ui-dna.md). Nie otwieraj [operator-notice.md](../spec/operator-notice.md).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Cel jakości + § Kolejka realizacji.
 
@@ -17,4 +17,4 @@ M-02 **fundament 79.0** (konsument leftover — parked). Auth0 **odroczone** (S5
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` są w PATH. Przed pracą podnieś dwie rzeczy: `pg_ctl -D tools\pgdata -o "-p 5432" start` oraz `tools\openfga\openfga.exe run`. Potem `just gate` i `just test` działają bez ustawiania zmiennych. PG 16 to klaster przenośny w `tools\pg16` — instalator EDB przez winget nie przechodzi (exit 1).
 
-**2026-09-04:** 126.0 na main. Named parks. Nie zgaduj 71–212.
+**2026-09-04:** 127.0 na main. Named parks. Nie zgaduj 71–212.

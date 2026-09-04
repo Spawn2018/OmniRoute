@@ -22,8 +22,11 @@
   --primary-foreground: oklch(0.97 0.01 165);
   --accent: oklch(0.42 0.11 165);
   --accent-foreground: oklch(0.97 0.01 165);
-  --sidebar: oklch(0.2 0.04 165);
-  --sidebar-foreground: oklch(0.97 0.01 165);
+  /* Mock #v-quote / #v-ship nazywa rail --ink; sidebar to ten sam kolor, nie druga paleta. */
+  --ink: oklch(0.2 0.04 165);
+  --on-ink: oklch(0.97 0.01 165);
+  --sidebar: var(--ink);
+  --sidebar-foreground: var(--on-ink);
   /* Pasek .banner z #v-quote / #v-ship — 120deg, ciemniejszy ink → jaśniejszy emerald. */
   --banner-from: oklch(0.32 0.06 165);
   --banner-to: oklch(0.42 0.1 165);
@@ -51,8 +54,10 @@
   --primary-foreground: oklch(0.95 0.015 165);
   --accent: oklch(0.78 0.11 165);
   --accent-foreground: oklch(0.16 0.03 165);
-  --sidebar: oklch(0.16 0.03 165);
-  --sidebar-foreground: oklch(0.95 0.015 165);
+  --ink: oklch(0.16 0.03 165);
+  --on-ink: oklch(0.95 0.015 165);
+  --sidebar: var(--ink);
+  --sidebar-foreground: var(--on-ink);
   --destructive: oklch(0.7 0.16 25);
   color-scheme: dark;
 }

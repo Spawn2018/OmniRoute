@@ -13,6 +13,6 @@ To **nie** jest tożsamość z kodem pisanym przez człowieka. Test nie ocenia m
 | Slop produktu | TODO, `except Exception`, `float()`, echo-komentarz, baner, emoji, `as any`, klasa `*Factory`/`*Manager`, `HTTPException` w `services/` | uzasadniony komentarz *dlaczego*; `frontend/src/lib/utils.ts` (shadcn `cn`) |
 | Sufit funkcji | `long_functions` albo `long_function_overflow` rośnie | liczba funkcji >40 linii i suma nadmiaru tylko spada albo stoi |
 
-Pięć istniejących funkcji >40 linii zostaje — ratchet, nie wielki refaktor w tym commicie.
+Sufit `long_functions` = 0 (126.0). Ratchet nie pozwala rosnąć.
 
 Nie Auto-AGENTS. Nie GROUNDING. Nie kod produktu S4.

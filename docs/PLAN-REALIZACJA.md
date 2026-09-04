@@ -199,6 +199,7 @@ ADR-0003 + makiety [docs/design/](design/README.md). **Nie** konsumują slotu Q1
 | **U-i18n-structure** | klucze + locale format; jeden język (pl) w paczce | hardcoded string w **nowym** ekranie | nowe trasy · 55.0 zamknięty |
 | **U-playwright-axe** | 3 ścieżki E2E + axe na trasie | brak Playwright w gate; axe poza CI | po U-oklch-dark · 56.0 zamknięty |
 | **U-print** | arkusz druku B/L / FV / list | `@media print` chaos albo PDF-teatr | Fala 5/6 · 57.0 zamknięty |
+| **U-omniroute-ui-dna** | rail `--ink` / `--on-ink` z `#v-quote` / `#v-ship` | druga paleta albo brak nazwy `--ink` | `index.css` · 127.0 zamknięty |
 
 **Wizja (canvas 06) — parked aż będą dane:**
 

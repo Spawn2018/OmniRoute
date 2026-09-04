@@ -86,7 +86,7 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **126.0** `/refaktor` `create_quote` ≤40 linii
+- **Ostatni plaster:** **127.0** leftover DNA `--ink` + `/refaktor` `_blank_to_none`
 - **Etap:** Plan
 - **Następny:** named parks (Auth0 S53, portale S55, AIS wieży). `/noc` pomija. Nie zgaduj 71–212.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)

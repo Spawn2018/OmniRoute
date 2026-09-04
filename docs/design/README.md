@@ -12,7 +12,8 @@ dopracowane ekrany **Wyceny** i **Zlecenia** w [omniroute-ui.html](omniroute-ui.
 Żywy kod tych dwóch obiektów: `frontend/src/features/quotations/catalog-page.tsx`
 i `frontend/src/features/shipment/catalog-page.tsx`. Tokeny w `frontend/src/index.css`
 mapują z tych widoków: OKLCH hue **165**, `--s1`…`--s6` (4–24px), `--radius` 12px /
-`--radius-sm` 8px, IBM Plex Sans / Mono, pasek `.banner` z przejściem
+`--radius-sm` 8px, IBM Plex Sans / Mono, rail `--ink` / `--on-ink` (sidebar aliasuje te
+tokeny), pasek `.banner` z przejściem
 `linear-gradient(120deg, oklch(.32 .06 165), oklch(.42 .1 165))`. Condensed tylko przy
 gęstości katalogu `rate_line`.
 Nowy ekran używa zmiennych, nie wpisuje OKLCH z palca. Kwoty: `<Money/>`, zero `sum()` w JS.
