@@ -248,29 +248,71 @@ table.lines, table.grid { width: 100%; border-collapse: collapse; min-width: 36r
 .mval.down { color: var(--stop); }
 .mval.down .f { color: color-mix(in oklch, var(--stop) 65%, var(--text-2)); }
 .fact-warn { color: var(--alert-line); font-weight: 500; }
+.fact-ok { color: var(--ok); font-weight: 500; }
+.fact-stop { color: var(--stop); font-weight: 500; }
 .ship-banner-top { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--s4); }
 .ship-banner-top .btn {
   flex-shrink: 0; background: color-mix(in oklch, var(--on-ink) 10%, transparent);
   border-color: color-mix(in oklch, var(--on-ink) 22%, transparent); color: inherit;
 }
+.ship-kpi-tools {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: var(--s3); padding: var(--s3) var(--s4); border-bottom: 1px solid var(--rule); background: var(--surface-2);
+}
+.ship-kpi-tools .note { margin: 0; }
 .ship-kpis-board { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .ship-kpis {
-  display: grid; grid-template-columns: repeat(9, minmax(6.5rem, 1fr));
-  grid-template-rows: auto auto; margin: 0; min-width: 58rem;
+  display: grid; margin: 0; min-width: 0;
 }
 .ship-kpis .fact {
   text-align: center; padding: var(--s3) var(--s2); border-right: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule); display: flex; flex-direction: column; justify-content: center;
-  min-height: 4.5rem;
+  min-height: 4.5rem; min-width: 6.5rem;
 }
-.ship-kpis .fact:nth-child(9n), .ship-kpis .fact:last-child { border-right: 0; }
-.ship-kpis .fact:nth-child(n + 10) { border-bottom: 0; }
+.ship-kpis .fact.row-end { border-right: 0; }
+.ship-kpis .fact.last-row { border-bottom: 0; }
 .ship-kpis .fact.fin { min-height: 6.75rem; }
 .ship-kpis .fact dd { display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1; margin: 0; gap: 1px; }
 .ship-kpis .fact dd small { display: block; font-weight: 400; color: var(--text-2); font-size: var(--fs-xs); margin-top: 1px; }
 .ship-kpis .fact dt { text-align: center; margin-bottom: var(--s1); flex-shrink: 0; }
 .ship-kpis .val.mono { font-family: var(--mono); letter-spacing: -.01em; }
 .ship-kpis .val { font-weight: 600; font-size: var(--fs-sm); line-height: 1.25; }
+.view-modal {
+  width: min(28rem, 94vw); background: var(--surface); border-radius: var(--r);
+  box-shadow: var(--lift); overflow: clip; border: 1px solid var(--rule);
+}
+.view-modal .vm-head { padding: var(--s4) var(--s5); border-bottom: 1px solid var(--rule); }
+.view-modal .vm-head h2 { margin: 0 0 var(--s1); font-size: var(--fs-md); font-weight: 600; }
+.view-modal .vm-body { padding: var(--s4) var(--s5); max-height: min(52vh, 28rem); overflow: auto; }
+.view-modal .vm-foot {
+  display: flex; flex-wrap: wrap; gap: var(--s2); justify-content: flex-end;
+  padding: var(--s3) var(--s5); border-top: 1px solid var(--rule); background: var(--surface-2);
+}
+.view-modal .vm-legend {
+  margin: 0 0 var(--s4); padding: var(--s3); border-radius: var(--r-sm);
+  background: var(--surface-2); border: 1px solid var(--rule); font-size: var(--fs-xs); color: var(--text-2);
+}
+.view-modal .vm-legend b { color: var(--text); font-weight: 500; }
+.vm-row {
+  display: flex; align-items: center; gap: var(--s2); padding: var(--s2) var(--s3);
+  border: 1px solid var(--rule); border-radius: var(--r-sm); background: var(--surface);
+  margin-bottom: var(--s2); cursor: grab; user-select: none;
+}
+.vm-row:last-child { margin-bottom: 0; }
+.vm-row.dragging { opacity: .55; }
+.vm-row.drag-over { outline: 2px solid var(--accent); outline-offset: 1px; }
+.vm-grip { color: var(--text-3); font-size: 14px; letter-spacing: -.05em; line-height: 1; padding: 0 2px; }
+.vm-row label { display: flex; flex: 1; align-items: center; gap: var(--s2); font-size: var(--fs-sm); cursor: pointer; }
+.vm-row input { accent-color: var(--accent); }
+.docs-list { display: grid; gap: var(--s2); }
+.docs-row {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: var(--s3);
+  align-items: center; padding: var(--s3); border: 1px solid var(--rule);
+  border-radius: var(--r-sm); background: var(--surface); font-size: var(--fs-sm);
+}
+.docs-row.missing { background: var(--surface-2); }
+.docs-row b { font-weight: 500; }
+.docs-row .note { margin: 2px 0 0; }
 .mstack { display: flex; flex-direction: column; align-items: stretch; gap: 0; width: 100%; }
 .mstack .mval { font-size: 10px; justify-self: center; margin-inline: auto; line-height: 1.35; }
 .mstack-total {
@@ -354,9 +396,17 @@ table.lines, table.grid { width: 100%; border-collapse: collapse; min-width: 36r
   background: var(--surface); border: 1px solid var(--rule); border-radius: var(--r);
   padding: var(--s4); margin-bottom: var(--s3); box-shadow: var(--lift);
 }
-.leg-head { display: grid; grid-template-columns: auto 1fr auto; gap: var(--s3); align-items: center; margin-bottom: var(--s3); }
+.leg-head { display: grid; grid-template-columns: auto 1fr; gap: var(--s3); align-items: center; margin-bottom: var(--s3); }
 .leg-route { font-weight: 600; font-size: var(--fs); letter-spacing: -.01em; }
-.leg-car { font-size: var(--fs-xs); color: var(--text-2); text-align: right; white-space: nowrap; }
+.leg-parties { display: grid; gap: var(--s2); margin-bottom: var(--s3); }
+.leg-party { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr) auto; gap: var(--s3); align-items: baseline; font-size: var(--fs-sm); }
+.leg-party dt { margin: 0; font-size: 10.5px; text-transform: uppercase; letter-spacing: .05em; color: var(--text-3); }
+.leg-party dd { margin: 0; font-weight: 500; min-width: 0; }
+.leg-party .chip { justify-self: end; }
+.chip.role-agent { background: var(--alert-tint); color: var(--alert); }
+.chip.role-carrier { background: color-mix(in oklch, var(--accent-2) 14%, var(--surface)); color: var(--accent); }
+.chip.role-hauler { background: var(--surface-3); color: var(--text-2); }
+.chip.role-rail { background: var(--ok-soft); color: var(--ok); }
 .chip.mode-road { background: var(--surface-3); color: var(--text-2); }
 .chip.mode-sea { background: color-mix(in oklch, var(--accent-2) 14%, var(--surface)); color: var(--accent); }
 .chip.mode-rail { background: var(--ok-soft); color: var(--ok); }
@@ -415,6 +465,7 @@ table.lines, table.grid { width: 100%; border-collapse: collapse; min-width: 36r
 .risk { display: grid; grid-template-columns: 8px 1fr; gap: var(--s3); margin-bottom: var(--s3); }
 .risk:last-child { margin-bottom: 0; }
 .sev { width: 7px; height: 7px; border-radius: 50%; margin-top: 6px; background: var(--text-3); flex-shrink: 0; }
+.sev.ok { background: var(--ok); }
 .sev.alert { background: var(--alert-line); }
 .sev.stop { background: var(--stop); }
 .rsec { border-bottom: 1px solid var(--rule); padding: var(--s4); }
@@ -471,7 +522,8 @@ table.mini { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); }
   .cand { grid-template-columns: 1fr; gap: var(--s2); }
   .pages { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .leg-head { grid-template-columns: 1fr; gap: var(--s2); }
-  .leg-car { text-align: left; white-space: normal; }
+  .leg-party { grid-template-columns: 1fr auto; gap: var(--s2); }
+  .leg-party dt { grid-column: 1 / -1; }
   .leg-grid { grid-template-columns: 1fr; }
 @media (max-width: 28rem) {
   .pages { grid-template-columns: 1fr; }
@@ -546,6 +598,9 @@ table.mini { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); }
     <div id="palRes"></div>
   </div>
 </div>
+<div class="scrim" id="viewScrim" aria-hidden="true">
+  <div class="view-modal" role="dialog" aria-modal="true" aria-labelledby="vmTitle" id="viewModal"></div>
+</div>
 <div class="toast" id="toast" role="status"></div>
 <script src="omniroute-ui-catalog.js"></script>
 <script>
@@ -594,8 +649,8 @@ const SHIP_META = {
   customerPo: "PO/MEX/2026-08847",
   roadPodjecie: "TR/POZ/2026-0193",
   roadOdwóz: "TR/LIM/2026-0144",
-  storageLeft: "upływa za 4 dni",
-  detentionLeft: "upływa za 14 dni",
+  storageDays: 4,
+  detentionDays: 14,
   hbl: "OMR2609441",
   hs: "9403.60.00",
   hsDesc: "Meble drewniane, pozostałe",
@@ -614,24 +669,6 @@ const SHIP_META = {
     updatedAt: "28.08 09:40",
   },
 };
-function shipInspHtml() {
-  const pa = SHIP_META.portArrival;
-  return `<div class="rsec"><h3>Wyjątki <span class="cnt">3</span></h3>
-    <div class="risk"><span class="sev alert"></span><div><b>Przypłynięcie do ${pa.port} opóźnione o ${pa.delayDays} dni</b><p>Prognoza ATD/ATA w porcie zmieniła się z ${pa.planned} na ${pa.current} (akt. ${pa.updatedAt}). Klient nie został powiadomiony.</p><button class="fix linkish" type="button" data-act="notify">Wyślij powiadomienie</button></div></div>
-    <div class="risk"><span class="sev stop"></span><div><b>Storage upływa 02.10</b><p>Po tej dacie naliczany storage 85 USD/dzień/kontener. Odwóz nie jest jeszcze zaplanowany.</p><button class="fix linkish" type="button" data-act="haul">Zleć odwóz</button></div></div>
-    <div class="risk"><span class="sev alert"></span><div><b>Detention upływa 18.10</b><p>Po tej dacie naliczane detention 165 USD/dzień/kontener.</p><button class="fix linkish" type="button" data-act="haul-det">Potwierdź odwóz</button></div></div>
-  </div>
-  <div class="rsec"><h3>Rozliczenie</h3>
-    <table class="mini">
-      <tr><td>Przychód</td><td>24 800,00</td></tr>
-      <tr><td>Koszty zafakturowane</td><td>18 420,00</td></tr>
-      <tr><td>Koszty bez faktury</td><td>3 480,00</td></tr>
-      <tr><td>Odchylenie od planu</td><td class="gap">−310,00</td></tr>
-      <tr class="total"><td>Wynik prognozowany</td><td>2 590,00</td></tr>
-    </table>
-    <p class="note" style="margin-top:var(--s3)">Wartości z serwera (M-24). UI nie liczy marży ani kosztu pieniądza.</p>
-  </div>`;
-}
 const SHIP_FIN = {
   revenue: {
     rows: [{ amount: "8 442,00", currency: "USD" }, { amount: "290,00", currency: "EUR" }, { amount: "1 240,00", currency: "PLN" }],
@@ -650,6 +687,280 @@ const SHIP_FIN = {
     totalPln: "2 590,00",
   },
 };
+
+/** Progi free-time (makieta): >7 ok · 3–7 żółty · ≤2 czerwony. Serwer poda dni; UI nie liczy kwot. */
+const FREE_TIME_THRESHOLDS = { okAbove: 7, stopAt: 2 };
+function freeTimeTone(days) {
+  if (typeof days !== "number" || Number.isNaN(days)) return { tone: "warn", cls: "fact-warn", label: "—" };
+  if (days < 0) return { tone: "stop", cls: "fact-stop", label: `przeterminowane ${Math.abs(days)} d` };
+  if (days <= FREE_TIME_THRESHOLDS.stopAt) return { tone: "stop", cls: "fact-stop", label: days === 0 ? "upływa dziś" : `upływa za ${days} dni` };
+  if (days <= FREE_TIME_THRESHOLDS.okAbove) return { tone: "warn", cls: "fact-warn", label: `upływa za ${days} dni` };
+  return { tone: "ok", cls: "fact-ok", label: `upływa za ${days} dni` };
+}
+function freeTimeSev(days) {
+  const t = freeTimeTone(days).tone;
+  if (t === "stop") return "stop";
+  if (t === "ok") return "ok";
+  return "alert";
+}
+const SHIP_VIEW_USER = { id: "anna", name: "Anna Nowak", initials: "AN" };
+const SHIP_VIEW_KEY = `omniroute.mock.table_view.ship_header.${SHIP_VIEW_USER.id}`;
+const SHIP_HEADER_DEFAULT = [
+  "status", "incoterm", "ref", "customerPo", "roadPodjecie", "roadOdwóz", "hbl", "hs", "equipment",
+  "containers", "weight", "payment", "storage", "detention", "revenue", "cost", "marginPlan", "marginForecast"
+];
+const SHIP_HEADER_LABELS = {
+  status: "Aktualny status",
+  incoterm: "Incoterms",
+  ref: "Numer zlecenia",
+  customerPo: "Nr zamówienia klienta",
+  roadPodjecie: "Numer zlecenia podjęcia",
+  roadOdwóz: "Numer zlecenia odwozu",
+  hbl: "HBL",
+  hs: "Kod HS",
+  equipment: "Rozmiary kontenerów",
+  containers: "Numery kontenerów",
+  weight: "Waga",
+  payment: "Termin płatności",
+  storage: "Storage",
+  detention: "Detention",
+  revenue: "Przychód",
+  cost: "Koszt",
+  marginPlan: "Marża planowana",
+  marginForecast: "Marża prognozowana",
+};
+function defaultShipHeaderView() {
+  return {
+    order: SHIP_HEADER_DEFAULT.slice(),
+    visibility: Object.fromEntries(SHIP_HEADER_DEFAULT.map((id) => [id, true])),
+  };
+}
+function loadShipHeaderView() {
+  const base = defaultShipHeaderView();
+  try {
+    const raw = localStorage.getItem(SHIP_VIEW_KEY);
+    if (!raw) return base;
+    const parsed = JSON.parse(raw);
+    const order = Array.isArray(parsed.order)
+      ? parsed.order.filter((id) => SHIP_HEADER_LABELS[id]).concat(SHIP_HEADER_DEFAULT.filter((id) => !(parsed.order || []).includes(id)))
+      : base.order;
+    const visibility = { ...base.visibility };
+    if (parsed.visibility && typeof parsed.visibility === "object") {
+      for (const id of order) {
+        if (typeof parsed.visibility[id] === "boolean") visibility[id] = parsed.visibility[id];
+      }
+    }
+    return { order, visibility };
+  } catch {
+    return base;
+  }
+}
+function saveShipHeaderView(view) {
+  localStorage.setItem(SHIP_VIEW_KEY, JSON.stringify({
+    table_key: "ship_header",
+    user_id: SHIP_VIEW_USER.id,
+    order: view.order,
+    visibility: view.visibility,
+    saved_at: new Date().toISOString(),
+  }));
+}
+let shipHeaderView = loadShipHeaderView();
+let shipHeaderDraft = null;
+let shipDragId = null;
+function shipHeaderFactHtml(id) {
+  const pa = SHIP_META.portArrival;
+  const st = freeTimeTone(SHIP_META.storageDays);
+  const dt = freeTimeTone(SHIP_META.detentionDays);
+  const map = {
+    status: `<div class="fact"><dt>${SHIP_HEADER_LABELS.status}</dt><dd><span class="val">Morze · Algeciras</span><small>${pa.port} ETA ${pa.current} · akt. ${pa.updatedAt}</small></dd></div>`,
+    incoterm: `<div class="fact"><dt>${SHIP_HEADER_LABELS.incoterm}</dt><dd><span class="val">${SHIP_ROUTE.incoterm}</span></dd></div>`,
+    ref: `<div class="fact"><dt>${SHIP_HEADER_LABELS.ref}</dt><dd><span class="val mono">${SHIP_META.ref}</span></dd></div>`,
+    customerPo: `<div class="fact"><dt>${SHIP_HEADER_LABELS.customerPo}</dt><dd><span class="val mono">${SHIP_META.customerPo}</span></dd></div>`,
+    roadPodjecie: `<div class="fact"><dt>${SHIP_HEADER_LABELS.roadPodjecie}</dt><dd><span class="val mono">${SHIP_META.roadPodjecie}</span></dd></div>`,
+    roadOdwóz: `<div class="fact"><dt>${SHIP_HEADER_LABELS.roadOdwóz}</dt><dd><span class="val mono">${SHIP_META.roadOdwóz}</span></dd></div>`,
+    hbl: `<div class="fact"><dt>${SHIP_HEADER_LABELS.hbl}</dt><dd><span class="val mono">${SHIP_META.hbl}</span></dd></div>`,
+    hs: `<div class="fact"><dt>${SHIP_HEADER_LABELS.hs}</dt><dd><span class="val mono">${SHIP_META.hs}</span><small>${SHIP_META.hsDesc}</small></dd></div>`,
+    equipment: `<div class="fact"><dt>${SHIP_HEADER_LABELS.equipment}</dt><dd><span class="val">${SHIP_META.equipment}</span></dd></div>`,
+    containers: `<div class="fact"><dt>${SHIP_HEADER_LABELS.containers}</dt><dd>${SHIP_META.containers.map((c) => `<span class="val mono">${c.no}</span>`).join("")}</dd></div>`,
+    weight: `<div class="fact"><dt>${SHIP_HEADER_LABELS.weight}</dt><dd>${SHIP_META.containers.map((c) => `<span class="val">${c.grossKg} kg</span>`).join("")}</dd></div>`,
+    payment: `<div class="fact"><dt>${SHIP_HEADER_LABELS.payment}</dt><dd><span class="val">${SHIP_META.paymentTerm}</span><small>${SHIP_META.paymentTermNote}</small></dd></div>`,
+    storage: `<div class="fact"><dt>${SHIP_HEADER_LABELS.storage}</dt><dd class="${st.cls} val">${st.label}</dd></div>`,
+    detention: `<div class="fact"><dt>${SHIP_HEADER_LABELS.detention}</dt><dd class="${dt.cls} val">${dt.label}</dd></div>`,
+    revenue: `<div class="fact fin"><dt>${SHIP_HEADER_LABELS.revenue}</dt><dd>${moneyStack(SHIP_FIN.revenue.rows, SHIP_FIN.revenue.totalPln)}</dd></div>`,
+    cost: `<div class="fact fin"><dt>${SHIP_HEADER_LABELS.cost}</dt><dd>${moneyStack(SHIP_FIN.cost.rows, SHIP_FIN.cost.totalPln)}</dd></div>`,
+    marginPlan: `<div class="fact fin"><dt>${SHIP_HEADER_LABELS.marginPlan}</dt><dd>${moneyStack(SHIP_FIN.marginPlan.rows, SHIP_FIN.marginPlan.totalPln)}</dd></div>`,
+    marginForecast: `<div class="fact fin"><dt>${SHIP_HEADER_LABELS.marginForecast}</dt><dd>${moneyStack(SHIP_FIN.marginForecast.rows, SHIP_FIN.marginForecast.totalPln, "down")}</dd></div>`,
+  };
+  return map[id] || "";
+}
+function renderShipKpisHtml() {
+  const visible = shipHeaderView.order.filter((id) => shipHeaderView.visibility[id] !== false);
+  const cols = Math.min(Math.max(visible.length, 1), 9);
+  const rowCount = Math.ceil(visible.length / cols) || 1;
+  const cells = visible.map((id, idx) => {
+    let html = shipHeaderFactHtml(id);
+    const classes = [];
+    if ((idx + 1) % cols === 0) classes.push("row-end");
+    if (idx >= cols * (rowCount - 1)) classes.push("last-row");
+    if (classes.length) html = html.replace(/class="fact([^"]*)"/, (_, rest) => `class="fact${rest} ${classes.join(" ")}"`);
+    return html;
+  }).join("");
+  return `<div class="card ship-kpis-board" style="box-shadow:var(--lift);padding:0">
+    <div class="ship-kpi-tools">
+      <p class="note">Widok <b>${SHIP_VIEW_USER.initials}</b> · zapis lokalny (makieta <code>table_view</code>)</p>
+      <button class="btn" type="button" data-act="edit-ship-header">Edytuj widok</button>
+    </div>
+    <dl class="facts ship-kpis" style="grid-template-columns:repeat(${cols},minmax(6.5rem,1fr));min-width:${Math.min(cols, 9) * 6.5}rem">${cells}</dl>
+  </div>`;
+}
+function paintShipHeaderEditor() {
+  const draft = shipHeaderDraft || shipHeaderView;
+  const rows = draft.order.map((id) => {
+    const checked = draft.visibility[id] !== false ? "checked" : "";
+    return `<div class="vm-row" draggable="true" data-id="${id}">
+      <span class="vm-grip" aria-hidden="true">::</span>
+      <label><input type="checkbox" data-vis="${id}" ${checked}><span>${SHIP_HEADER_LABELS[id]}</span></label>
+    </div>`;
+  }).join("");
+  $("#viewModal").innerHTML = `<div class="vm-head">
+      <h2 id="vmTitle">Widok nagłówka zlecenia</h2>
+      <p class="note" style="margin:0">Per użytkownik · ${SHIP_VIEW_USER.name} · wzorzec ColumnEditor / table_view (0.6)</p>
+    </div>
+    <div class="vm-body">
+      <p class="vm-legend"><b>Progi Storage / Detention:</b>
+        <span class="fact-ok">zielony &gt; 7 dni</span> ·
+        <span class="fact-warn">żółty 3–7 dni</span> ·
+        <span class="fact-stop">czerwony ≤ 2 dni</span>.
+        Kwoty free-time zostają na serwerze — tu tylko semafor dni.</p>
+      <p class="note" style="margin:0 0 var(--s3)">Zaznacz pola i przeciągnij wiersze (kolejność).</p>
+      <div id="vmList">${rows}</div>
+    </div>
+    <div class="vm-foot">
+      <button class="btn" type="button" data-act="ship-view-reset" style="margin-right:auto">Przywróć domyślne</button>
+      <button class="btn" type="button" data-act="ship-view-cancel">Anuluj</button>
+      <button class="btn btn-p" type="button" data-act="ship-view-save">Zapisz widok</button>
+    </div>`;
+  bindShipHeaderEditorDnD();
+}
+function bindShipHeaderEditorDnD() {
+  const list = $("#vmList");
+  if (!list) return;
+  list.querySelectorAll(".vm-row").forEach((row) => {
+    row.addEventListener("dragstart", (e) => {
+      shipDragId = row.dataset.id;
+      row.classList.add("dragging");
+      e.dataTransfer.effectAllowed = "move";
+      e.dataTransfer.setData("text/plain", shipDragId);
+    });
+    row.addEventListener("dragend", () => {
+      row.classList.remove("dragging");
+      list.querySelectorAll(".vm-row").forEach((r) => r.classList.remove("drag-over"));
+      shipDragId = null;
+    });
+    row.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      row.classList.add("drag-over");
+    });
+    row.addEventListener("dragleave", () => row.classList.remove("drag-over"));
+    row.addEventListener("drop", (e) => {
+      e.preventDefault();
+      row.classList.remove("drag-over");
+      const from = shipDragId || e.dataTransfer.getData("text/plain");
+      const to = row.dataset.id;
+      if (!from || !to || from === to || !shipHeaderDraft) return;
+      const order = shipHeaderDraft.order.slice();
+      const fi = order.indexOf(from);
+      const ti = order.indexOf(to);
+      if (fi < 0 || ti < 0) return;
+      order.splice(fi, 1);
+      order.splice(ti, 0, from);
+      shipHeaderDraft.order = order;
+      paintShipHeaderEditor();
+    });
+  });
+  list.querySelectorAll("input[data-vis]").forEach((inp) => {
+    inp.addEventListener("change", () => {
+      if (!shipHeaderDraft) return;
+      shipHeaderDraft.visibility[inp.getAttribute("data-vis")] = inp.checked;
+    });
+  });
+}
+function openShipHeaderEditor() {
+  shipHeaderDraft = {
+    order: shipHeaderView.order.slice(),
+    visibility: { ...shipHeaderView.visibility },
+  };
+  paintShipHeaderEditor();
+  const scrim = $("#viewScrim");
+  scrim.classList.add("on");
+  scrim.setAttribute("aria-hidden", "false");
+}
+function closeShipHeaderEditor() {
+  shipHeaderDraft = null;
+  const scrim = $("#viewScrim");
+  scrim.classList.remove("on");
+  scrim.setAttribute("aria-hidden", "true");
+  $("#viewModal").innerHTML = "";
+}
+const SHIP_DOCS = [
+  { id: "hbl", name: "HBL", ref: "OMR2609441", status: "gotowy", kind: "house bill" },
+  { id: "mbl", name: "MBL", ref: "HLCUGDY2609441", status: "gotowy", kind: "master bill" },
+  { id: "packing", name: "Packing list", ref: "PL-MEX-08847", status: "gotowy", kind: "lista pakowania" },
+  { id: "ci", name: "Faktura handlowa", ref: "CI-MEX-08847", status: "gotowy", kind: "commercial invoice" },
+  { id: "vgm", name: "VGM", ref: "VGM-2×40HC", status: "gotowy", kind: "waga zweryfikowana" },
+  { id: "booking", name: "Booking confirmation", ref: "BK-HL-884120", status: "gotowy", kind: "potwierdzenie bookingu" },
+  { id: "an", name: "Arrival notice", ref: "AN-PECLL-094", status: "gotowy", kind: "zawiadomienie o przybyciu" },
+  { id: "pod", name: "POD", ref: "—", status: "brak", kind: "potwierdzenie dostawy" },
+  { id: "ins", name: "Certyfikat ubezpieczenia", ref: "—", status: "brak", kind: "cargo insurance" },
+];
+function openShipDocs() {
+  shipHeaderDraft = null;
+  const ready = SHIP_DOCS.filter((d) => d.status === "gotowy").length;
+  const rows = SHIP_DOCS.map((d) => {
+    const chip = d.status === "gotowy" ? '<span class="chip ok">gotowy</span>' : '<span class="chip stop">brak</span>';
+    const action = d.status === "gotowy"
+      ? `<button class="linkish" type="button" data-act="doc-open" data-doc="${d.id}">Otwórz</button>`
+      : `<button class="linkish" type="button" data-act="doc-request" data-doc="${d.id}">Poproś</button>`;
+    return `<div class="docs-row${d.status === "brak" ? " missing" : ""}">
+      <div><b>${d.name}</b><p class="note">${d.kind} · ${d.ref}</p></div>
+      ${chip}
+      ${action}
+    </div>`;
+  }).join("");
+  $("#viewModal").innerHTML = `<div class="vm-head">
+      <h2 id="vmTitle">Dokumenty zlecenia</h2>
+      <p class="note" style="margin:0">${SHIP_META.ref} · ${ready}/${SHIP_DOCS.length} · wskazania M-38 (nie bajty pliku w makiecie)</p>
+    </div>
+    <div class="vm-body"><div class="docs-list">${rows}</div></div>
+    <div class="vm-foot">
+      <button class="btn" type="button" data-act="ship-docs-close" style="margin-right:auto">Zamknij</button>
+      <button class="btn btn-p" type="button" data-act="doc-request-missing">Poproś o brakujące</button>
+    </div>`;
+  const scrim = $("#viewScrim");
+  scrim.classList.add("on");
+  scrim.setAttribute("aria-hidden", "false");
+}
+function shipInspHtml() {
+  const pa = SHIP_META.portArrival;
+  const st = freeTimeTone(SHIP_META.storageDays);
+  const dt = freeTimeTone(SHIP_META.detentionDays);
+  return `<div class="rsec"><h3>Wyjątki <span class="cnt">3</span></h3>
+    <div class="risk"><span class="sev alert"></span><div><b>Przypłynięcie do ${pa.port} opóźnione o ${pa.delayDays} dni</b><p>Prognoza ATD/ATA w porcie zmieniła się z ${pa.planned} na ${pa.current} (akt. ${pa.updatedAt}). Klient nie został powiadomiony.</p><button class="form linkish" type="button" data-act="notify">Wyślij powiadomienie</button></div></div>
+    <div class="risk"><span class="sev ${freeTimeSev(SHIP_META.storageDays)}"></span><div><b>Storage — ${st.label}</b><p>Po 02.10 naliczany storage 85 USD/dzień/kontener. Odwóz nie jest jeszcze zaplanowany.</p><button class="form linkish" type="button" data-act="haul">Zleć odwóz</button></div></div>
+    <div class="risk"><span class="sev ${freeTimeSev(SHIP_META.detentionDays)}"></span><div><b>Detention — ${dt.label}</b><p>Po 18.10 naliczane detention 165 USD/dzień/kontener.</p><button class="form linkish" type="button" data-act="haul-det">Potwierdź odwóz</button></div></div>
+  </div>
+  <div class="rsec"><h3>Rozliczenie</h3>
+    <table class="mini">
+      <tr><td>Przychód</td><td>24 800,00</td></tr>
+      <tr><td>Koszty zafakturowane</td><td>18 420,00</td></tr>
+      <tr><td>Koszty bez faktury</td><td>3 480,00</td></tr>
+      <tr><td>Odchylenie od planu</td><td class="gap">−310,00</td></tr>
+      <tr class="total"><td>Wynik prognozowany</td><td>2 590,00</td></tr>
+    </table>
+    <p class="note" style="margin-top:var(--s3)">Wartości z serwera. UI nie liczy marży ani kosztu pieniądza.</p>
+  </div>`;
+}
+
 function toast(m) {
   const t = $("#toast");
   t.textContent = m;
@@ -778,7 +1089,7 @@ function paintHome() {
       <button class="btn" type="button" data-go="parties">Kontrahenci</button>
       <span class="chip">tenant z paska · RLS</span>
     </div>
-    ${screenBanner("Dzień operatora · org z paska", "Joby do zamknięcia", "Kwoty i statusy z serwera — makieta nic nie liczy")}
+    ${screenBanner("Dzień operatora · mniej telefonów, więcej decyzji", "Joby do zamknięcia dziś", "HITL → wycena SQL → zlecenie z marżą z charge. Kwoty z serwera — makieta nic nie liczy.")}
     ${screenFacts([
       { t: "Oferty otwarte", v: "14", s: "3 bez HS" },
       { t: "Szkice HITL", v: "6", s: "2 powyżej 24 h", chip: "alert" },
@@ -807,7 +1118,7 @@ function paintQuote() {
       <button class="btn" type="button" id="sendQuote" aria-disabled="true">Wyślij ofertę — brak HS</button>
       <button class="btn" type="button" data-act="spot" id="spot">Pokaż wariant spot</button>
     </div>
-    ${screenBanner("ZAP/2026/00318 · 28.08 · Anna Nowak · org z paska", 'Gdynia <span class="loc">PLGDY</span> → Callao <span class="loc">PECLL</span>', "Meblexport Sp. z o.o. · limit z karty M-13, nie scoring LLM")}
+    ${screenBanner("ZAP/2026/00318 · wycena w minutach, nie w mailach", 'Gdynia <span class="loc">PLGDY</span> → Callao <span class="loc">PECLL</span>', "Meblexport · porównaj agentów i spot · marża z charge.margin() · limit z karty M-13")}
     ${screenFacts([
       { t: "Ładunek", v: "2 × 40HC", s: "meble drewniane" },
       { t: "Kod HS", v: "brak", chip: "alert" },
@@ -1048,25 +1359,34 @@ function paintShip() {
   const pa = SHIP_META.portArrival;
   const legs = [
     {
-      mode: "droga", modeCls: "mode-road", route: "Poznań → Gdynia", car: "Trans-Pol Sp. z o.o.", st: "done",
+      mode: "droga", modeCls: "mode-road", route: "Poznań → Gdynia", st: "done",
+      parties: [{ role: "Przewoźnik", name: "Trans-Pol Sp. z o.o.", kind: "drogowy", kindCls: "role-hauler" }],
       depLbl: "Wyjazd", dep: "12.09 06:20", arrLbl: "Przyjazd", arr: "12.09 14:05",
       cost: money("1 240,00", "PLN"), ev: "12.09 14:05 · przyjęcie na terminalu BCT, CMR podpisany", lineDone: true
     },
     {
-      mode: "morze", modeCls: "mode-sea", route: "Gdynia → Callao", car: "Hapag-Lloyd · Cape Pioneer 2639W", st: "now",
+      mode: "morze", modeCls: "mode-sea", route: "Gdynia → Callao", st: "now",
+      parties: [
+        { role: "Kupno od", name: "Andes Cargo SAC", kind: "agent", kindCls: "role-agent" },
+        { role: "Armator", name: "Hapag-Lloyd", kind: "armator", kindCls: "role-carrier" },
+        { role: "Statek", name: "Cape Pioneer 2639W", kind: "", kindCls: "" }
+      ],
       depLbl: "Wypłynięcie", dep: "01.10", arrLbl: "Przypłynięcie", arr: `${pa.current} prognoza`, arrNote: `${pa.port} · akt. ${pa.updatedAt}`,
       cost: money("18 420,00", "USD"), ev: `01.10 22:14 · przeładunek Algeciras · ETA ${pa.port} przesunięta z ${pa.planned} na ${pa.current}`, lineDone: false
     },
     {
-      mode: "kolej", modeCls: "mode-rail", route: "Callao → Lima", car: "Ferrovías Perú", st: "next",
+      mode: "kolej", modeCls: "mode-rail", route: "Callao → Lima", st: "next",
+      parties: [{ role: "Przewoźnik", name: "Ferrovías Perú", kind: "kolejowy", kindCls: "role-rail" }],
       depLbl: "Wyjazd", dep: "—", arrLbl: "Przyjazd", arr: "po odprawie",
       cost: money("", "USD"), ev: "oczekuje na przypłynięcie do portu", lineDone: false, last: true
     }
   ];
+  const partyHtml = (parties) => `<dl class="leg-parties">${parties.map((p) => `<div class="leg-party"><dt>${p.role}</dt><dd>${p.name}</dd>${p.kind ? `<span class="chip ${p.kindCls}">${p.kind}</span>` : "<span></span>"}</div>`).join("")}</dl>`;
   const legHtml = legs.map((l) => `<div class="leg">
     <div class="spine"><span class="node ${l.st}"></span>${l.last ? "" : `<span class="line ${l.lineDone ? "done" : ""}"></span>`}</div>
     <div class="legc">
-      <div class="leg-head"><span class="chip ${l.modeCls}">${l.mode}</span><span class="leg-route">${l.route}</span><span class="leg-car">${l.car}</span></div>
+      <div class="leg-head"><span class="chip ${l.modeCls}">${l.mode}</span><span class="leg-route">${l.route}</span></div>
+      ${partyHtml(l.parties)}
       <div class="leg-grid">
         <div class="leg-stat"><dt>${l.depLbl}</dt><dd>${l.dep}</dd></div>
         <div class="leg-stat"><dt>${l.arrLbl}</dt><dd>${l.arr}${l.arrNote ? `<small>${l.arrNote}</small>` : ""}</dd></div>
@@ -1086,28 +1406,7 @@ function paintShip() {
     </div>
   </div>
   <div class="pad" style="padding-top:var(--s4)">
-    <div class="card ship-kpis-board" style="box-shadow:var(--lift);padding:0">
-      <dl class="facts ship-kpis">
-        <div class="fact"><dt>Aktualny status</dt><dd><span class="val">Morze · Algeciras</span><small>${pa.port} ETA ${pa.current} · akt. ${pa.updatedAt}</small></dd></div>
-        <div class="fact"><dt>Incoterms</dt><dd><span class="val">${SHIP_ROUTE.incoterm}</span></dd></div>
-        <div class="fact"><dt>Numer zlecenia</dt><dd><span class="val mono">${SHIP_META.ref}</span></dd></div>
-        <div class="fact"><dt>Nr zamówienia klienta</dt><dd><span class="val mono">${SHIP_META.customerPo}</span></dd></div>
-        <div class="fact"><dt>Numer zlecenia podjęcia</dt><dd><span class="val mono">${SHIP_META.roadPodjecie}</span></dd></div>
-        <div class="fact"><dt>Numer zlecenia odwozu</dt><dd><span class="val mono">${SHIP_META.roadOdwóz}</span></dd></div>
-        <div class="fact"><dt>HBL</dt><dd><span class="val mono">${SHIP_META.hbl}</span></dd></div>
-        <div class="fact"><dt>Kod HS</dt><dd><span class="val mono">${SHIP_META.hs}</span><small>${SHIP_META.hsDesc}</small></dd></div>
-        <div class="fact"><dt>Rozmiary kontenerów</dt><dd><span class="val">${SHIP_META.equipment}</span></dd></div>
-        <div class="fact"><dt>Numery kontenerów</dt><dd>${SHIP_META.containers.map((c) => `<span class="val mono">${c.no}</span>`).join("")}</dd></div>
-        <div class="fact"><dt>Waga</dt><dd>${SHIP_META.containers.map((c) => `<span class="val">${c.grossKg} kg</span>`).join("")}</dd></div>
-        <div class="fact"><dt>Termin płatności</dt><dd><span class="val">${SHIP_META.paymentTerm}</span><small>${SHIP_META.paymentTermNote}</small></dd></div>
-        <div class="fact"><dt>Storage</dt><dd class="fact-warn val">${SHIP_META.storageLeft}</dd></div>
-        <div class="fact"><dt>Detention</dt><dd class="fact-warn val">${SHIP_META.detentionLeft}</dd></div>
-        <div class="fact fin"><dt>Przychód</dt><dd>${moneyStack(SHIP_FIN.revenue.rows, SHIP_FIN.revenue.totalPln)}</dd></div>
-        <div class="fact fin"><dt>Koszt</dt><dd>${moneyStack(SHIP_FIN.cost.rows, SHIP_FIN.cost.totalPln)}</dd></div>
-        <div class="fact fin"><dt>Marża planowana</dt><dd>${moneyStack(SHIP_FIN.marginPlan.rows, SHIP_FIN.marginPlan.totalPln)}</dd></div>
-        <div class="fact fin"><dt>Marża prognozowana</dt><dd>${moneyStack(SHIP_FIN.marginForecast.rows, SHIP_FIN.marginForecast.totalPln, "down")}</dd></div>
-      </dl>
-    </div>
+    ${renderShipKpisHtml()}
     <div class="legs">${legHtml}</div>
     <div class="card ship-map-wrap">
       <div class="ship-map-head">
@@ -1563,13 +1862,37 @@ document.addEventListener("click", (e) => {
   const act = e.target.closest("[data-act]");
   if (!act) return;
   const a = act.dataset.act;
+
+  if (a === "edit-ship-header") { openShipHeaderEditor(); return; }
+  if (a === "ship-view-cancel") { closeShipHeaderEditor(); return; }
+  if (a === "ship-view-reset") {
+    shipHeaderDraft = defaultShipHeaderView();
+    paintShipHeaderEditor();
+    return;
+  }
+  if (a === "ship-view-save") {
+    if (!shipHeaderDraft) return;
+    const anyOn = shipHeaderDraft.order.some((id) => shipHeaderDraft.visibility[id] !== false);
+    if (!anyOn) { toast("Zostaw przynajmniej jedno pole widoczne."); return; }
+    shipHeaderView = { order: shipHeaderDraft.order.slice(), visibility: { ...shipHeaderDraft.visibility } };
+    saveShipHeaderView(shipHeaderView);
+    closeShipHeaderEditor();
+    if (current === "ship") paintShip();
+    toast(`Widok zapisany dla ${SHIP_VIEW_USER.name}.`);
+    return;
+  }
+
   if (a === "ask" || a === "ask-hs") { mailOn = true; if (current === "quote") paintQuote(); $$(".tabs [data-tab]").forEach((o) => o.setAttribute("aria-selected", String(o.dataset.tab === "mail"))); $$(".pane").forEach((p) => p.classList.toggle("on", p.id === "p-mail")); toast("Zapytanie do agentów — podgląd wiadomości przed wysłaniem."); }
   if (a === "send-rfq") toast("Wysłano (idempotentny klucz). Odpowiedzi wpadną do HITL.");
   if (a === "spot") { spotOn = true; paintQuote(); toast("Hapag-Lloyd dodany z payloadu API. Marża przyszła w JSON, nie z JS."); }
   if (a === "save") toast("Zapis szkicu wyceny. Kwoty nietknięte.");
   if (a === "src") toast("source_ref otwiera dokument. Stawka niemutowalna.");
+  if (a === "docs") { openShipDocs(); return; }
+  if (a === "ship-docs-close") { closeShipHeaderEditor(); return; }
+  if (a === "doc-open") { toast(`Podgląd ${act.dataset.doc?.toUpperCase() || "dokumentu"} — w produkcji lazy PDF, tu wskazanie.`); return; }
+  if (a === "doc-request") { toast(`Wysłano prośbę o ${act.dataset.doc || "dokument"} (mailto / mail_draft).`); return; }
+  if (a === "doc-request-missing") { toast("Prośba o POD i certyfikat ubezpieczenia — szkic wychodzący."); return; }
   if (a === "pdf") toast("PDF w nowej warstwie (leniwy renderer).");
-  if (a === "docs") toast("7 z 9 dokumentów. Brak POD — M-205.");
   if (a === "edit-user") toast("Edycja roli w OpenFGA. Brak relacji = ukryj akcję.");
   if (a === "sync") toast("Odśwież " + act.dataset.who + " — idempotentne. Makieta bez sieci.");
   if (a === "connect") toast("Połączenie " + act.dataset.who + " — sekret tenanta, nie w logu.");
@@ -1614,11 +1937,12 @@ $("#th").addEventListener("click", () => {
 $("#dsearch").addEventListener("input", (e) => paintDrawer(e.target.value));
 $("#palIn").addEventListener("input", (e) => drawPal(e.target.value));
 $("#scrim").addEventListener("click", (e) => { if (e.target === $("#scrim")) pal(false); });
+$("#viewScrim").addEventListener("click", (e) => { if (e.target === $("#viewScrim")) closeShipHeaderEditor(); });
 $("#navBack").addEventListener("click", goBack);
 addEventListener("keydown", (e) => {
   if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") { e.preventDefault(); pal(true); }
   if (e.altKey && e.key === "ArrowLeft") { e.preventDefault(); goBack(); }
-  if (e.key === "Escape") { pal(false); setDrawer(false); }
+  if (e.key === "Escape") { pal(false); setDrawer(false);  closeShipHeaderEditor(); }
 });
 paintDrawer("");
 applyView("home");

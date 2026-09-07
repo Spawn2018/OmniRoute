@@ -14,14 +14,14 @@ Rekomendacja „przebudowy" była kalibrowana do statycznego mockupu HTML. Stan 
 ## Decyzja
 
 1. **Stos zostaje.** Zakaz przepisania na Django / GraphQL / Apollo / Zustand / Ant Design / Linaria — dopisane do anti-celów. Stack Qargo to ich historia rekrutacyjna (~2019), nie lepsza architektura; OpenAPI + openapi-ts + TanStack Query pokrywa te same potrzeby bez kosztu rewrite'u. Wniosek wzmacnia SPEED: siła = funkcje domenowe, słabość = technologia (Delphi desktop, cenniki jako ręczne procedury T-SQL, brak publicznego API); web-TMS interLAN (iSPEED) wystartował dopiero XI 2025.
-2. **Benchmark zasila kolejkę, nie zastępuje jej.** Unia funkcjonalności trzech źródeł jest zmapowana w matrycy (`docs/analysis/benchmark-tms-2026.md`) na status w kodzie i fale docelowe. Wpięcie fal do `PLAN-REALIZACJA` § Kolejka = osobna decyzja operatora; do tego czasu kanon kolejki bez zmian (`docs/analysis/kolejka-propozycja.md` = propozycja).
+2. **Benchmark zasila kolejkę.** Unia funkcjonalności trzech źródeł jest zmapowana w matrycy (`docs/analysis/benchmark-tms-2026.md`). **2026-09-08:** operator wpiął P0 + Falę O + T/D/P/X/F/C/V do `PLAN-REALIZACJA` § Kolejka; CURRENT = P0. Named parks zostają parked. `/noc` pomija parks.
 3. **Karty pól standardem wejścia do Planu modułu.** Każdy nowy moduł operacyjny dostaje przed `/plan-modul` kartę pól (pole → typ → słownik → wartość domyślna → trwałość) — wzorzec: `docs/analysis/karty-pol-fala-t.md`. Zasada „wpisz raz, zapisz na stałe": słowniki per tenant, szablony, wartości domyślne (M-03), saved views (`table_view`).
 4. **Gwiazda północna bez zmian:** Logistics Operating System z master-contextu (Super TMS + WMS + celny + finanse/CFO + telematyka + prediction framework + Watchtower/4PL). Statusy prawdy (`CONFIRMED/TO_VERIFY/PROPOSAL`) obowiązują — żadnych zmyślonych API, przepisów, możliwości urządzeń.
 5. **Mechanizmy odrzucone świadomie** (funkcja ≠ mechanizm): konfiguracja cenników przez ręczne procedury T-SQL (u nas konfiguracja jako dane + silnik SQL), polskie nazwy kolumn w bazie, branding/kod/assety obu systemów, drugi grid engine.
 
 ## Konsekwencje
 
-- Warstwa wykonawcza (stop → trip → resource → task → planning board → kontener → podzlecenia) staje się pierwszą proponowaną falą po named parks — definiuje job, na którym parkował S50 (flota).
+- Warstwa wykonawcza (stop → trip → resource → …) zostaje w kanonie jako **Fala T po Fali O**. S50 nadal named park (brak jobu „własne auto”); job zasobu = T2. Biurko ocean (Fala O) jest wcześniej, bo nie wymaga Auth0 ani `trip`.
 - KSeF live rośnie w priorytecie (mandat PL już w mocy 2026); kalendarz regulacyjny (Peppol, CTC FR, eCMR/eFTI 2027, NIS2, CSRD) wchodzi do planowania fal F/C.
 - Wieża korporacyjna z łańcuchem skutków (stock → produkcja → sprzedaż → EBITDA) potwierdzona jako wolna pozycja rynkowa — Qargo nie adresuje załadowców (przegląd 59 artykułów), SPEED nie ma warstwy predykcyjnej.
 - HC bez zmian: Decimal, LLM nie liczy, HITL, `charge` = jedyna prawda o marży, RLS wszędzie, stawka bez `source_ref` nie wchodzi.

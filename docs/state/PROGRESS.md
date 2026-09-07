@@ -320,3 +320,23 @@
 | 2026-09-04 | 127.0 | UI/M-10 | leftover DNA `--ink` + `/refaktor` `_blank_to_none`. Nie mixin. Następny: named parks. |
 | 2026-09-04 | 128.0 | OS | leftover context rot: PLAN bez ręcznego SHA; AGENTS M-71 z `changed`+lock. Nie konsument. Następny: named parks. |
 | 2026-09-07 | Plan benchmark | OS | Benchmark Qargo+SPEED+PDF: ADR-0004, matryca `docs/analysis/`, karty pól Fali T, kolejka-propozycja, karty `_knowledge/market/`, digesty `docs/_source/benchmark/`. Kanon kolejki bez zmian. Następny: named parks (bez zmian). |
+| 2026-09-07 | Plan §13g | OS | Hub telematyczny: zero własnego HW (Teltonika+Queclink), BYO API + płyta, okno `trip`+N dni, widoczność giełd, zakaz scrapingu czatów. Karta `006-telematics-hub`. Kanon kolejki bez zmian. |
+| 2026-09-07 | Plan §13h | OS | Pogoda pan-EU, BDO+DIWASS, blokada zlecenia po polisie/licencji, snapshot Trans.eu, katalog SENT-europa, myto EU/EFTA. Karta `007-compliance-eu`. Kanon kolejki bez zmian. |
+| 2026-09-07 | Plan §13i | OS | Lejek oferty: sent/open/PDF/reply/conversion, czasy SQL, hostowany token, piksel tylko po zgodzie. Karta `008-quote-engagement`. Kanon kolejki bez zmian. |
+| 2026-09-07 | Plan inwentarz | OS | Korekta §13e: nagłówki ≠ pełny PDF. Audyt `inwentarz-mc-pdf.md` + luki §13j + odrzucenia (dwa produkty, blueprint, HERE, auto-zapis). Kanon kolejki bez zmian. |
+| 2026-09-07 | Plan §13k | OS | Podkłady map: darmowe on/off u użytkownika; płatne BYO u admina tenanta; instrukcja `podklady-map-admin.md`. Zakaz tile.openstreetmap.org. Kanon kolejki bez zmian. |
+| 2026-09-07 | Plan §13l | OS | Adapter ERP/FK P0: Comarch Optima+XL, Symfonia WebAPI, Subiekt nexo+GT. Jeden KSeF. Zakaz SQL do bazy klienta. `erp-fk-adapter.md`. Kanon kolejki bez zmian. |
+| 2026-09-07 | Plan §13l | OS | Doprecyzowanie: Omni wystawia FV; do FK idą przychodowe (`sales_invoice`) i kosztowe (`purchase_invoice`). KSeF tylko Omni. |
+| 2026-09-07 | Plan §13m | OS | FV kosztowe z maila/KSeF/skanu: draft HITL, ranking zleceń SQL, shipment_ref na wychodzących, zakaz auto-link. F10. |
+| 2026-09-07 | Plan §13n | OS | Wydruki sieci drobnicowych (CMR/groupage/etykieta) + skan zwrotny: QR Omni = podpięcie, bez kodu = HITL. D9. |
+| 2026-09-07 | Plan §13o | OS | Słabe zdjęcia: gate + OpenCV (kadr/deskew/CLAHE/Lanczos), nie GAN. Split HITL z ramkami, pewnością i edycją. X9. |
+| 2026-09-07 | Plan §13o | OS | Cel wyglądu: skaner płaski (~300 DPI, biel, bez cienia). ML Kit/VisionKit przy spuście; FV bez wymazywania plam. |
+| 2026-09-07 | Plan §13p | OS | Książka nadawcza PP: EN + śledzenie REST + EPO (kto odebrał). F11. Zakaz scrapingu; imię tylko z EPO lub skanu ZPO. |
+| 2026-09-07 | Plan §13p | OS | FV papierowa = kanał `paper_post` (Poczta Polska). Nie wyłącza KSeF. Bez nadania nie ma statusu wysłana. |
+| 2026-09-07 | Audyt V5/C9 | OS | Spójność matryca↔kolejka: P0 GBOX/IKOL/Flotis/Wialon w V5 (nie HZ); Tronik/Logisat po umowie; C9 bez obietnicy opinii słownych ([ ] TO_VERIFY `api@trans.eu`). Kanon kolejki bez zmian. |
+| 2026-09-07 | Plan §13q | OS | 42 nazwy z PDF: matryca §13q + rejestr odrzuceń (Driver Score, własny Video/FOTA, OSS/IOSS, JPK-moduł, Selenium, gwarancja slotu, benchmarki cross-tenant). Kanon kolejki bez zmian. |
+| 2026-09-07 | Audyt §10 | OS | Akapit faktów po tabeli AI w `benchmark-tms-2026.md` §10: DocILE HITL vs Goddard RR + Skitka commission; PAL GSM-HARD; zakaz GAN SR; ETA=ML+MAE; Qargo −75% slogan; Copilot lab ≠ METR +19%. Kanon kolejki bez zmian. |
+| 2026-09-07 | Analiza | OS | Luka HC-05: `charge` (009 + model) bez `source_ref`. P0 leftover w `kolejka-propozycja`; zdanie w benchmark §13h. Kanon PLAN/CURRENT bez zmian. |
+| 2026-09-08 | Pin kolejki | OS | Operator: P0 `charge.source_ref` + Fala O (biurko ocean) + T/D/P/X/F/C/V w PLAN/CURRENT. Named parks parked. Karty `karty-pol-fala-o.md` … `v.md`. `/noc` nie startuje w tej sesji. |
+| 2026-09-08 | Pin Fala I + O7/O8 + V5 dwa reżimy | OS | Incoterms/booking/odprawa (I1–I4), kraj na liście agentów, buy-desk group-by, slot = capability (T8), GPS `omni_telematic` vs 3 dni robocze, scoring = HITL+DPA. Audyt `incoterms-booking-customs-ux.md`. `/noc` nie startuje. |
+| 2026-09-08 | Pin 2026-09-08c Luki i ulepszenia | OS | Cała oś U/N/A/G/G2/W/WA/Plat/Demo-1/CT/CI/EXP/K0 w PLAN. Karty u/n/a/w/g/g2/ci/ct/plat/exp. GLOSSARY + pola-wizja EXP1. Nic nie wyłączone. `/noc` bez godziny nie startuje. Pierwszy kod = P0. |

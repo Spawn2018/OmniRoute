@@ -74,7 +74,7 @@
 | zapytanie od klienta | customer_inquiry | 21.0 ślad wycen per party; nie tabela RFQ; nie IMAP |
 | zapytanie ofertowe | customer_rfq | 67.0 obiekt; 68.0 wycena; 70.0 `commodity_code_id`; nie kwota na RFQ |
 | wykrywanie akceptacji | offer_acceptance | 22.0 pending; 86.0 decyzja S11 na `quotation`; nie HITL accept; nie IMAP |
-| zapytanie do armatora | carrier_inquiry | 83.0 obiekt buy do `network_member`; 23.0 ślad `channel_quote` przy lane; nie RFQ; nie live HTTP |
+| zapytanie do armatora | carrier_inquiry | 83.0 obiekt buy do `network_member`; Fala O: batch, statusy `queued`/`sent`/`answered`, lane; 23.0 ślad `channel_quote`; nie RFQ; nie live HTTP |
 | porównanie odpowiedzi | response_comparison | 84.0 zapis `charge` (buy kanał, sell wycena); 24.0 zestawienie na POL/POD; nie odejmuj w JS |
 | integracja pocztowa | mail_integration | 25.0 tablica znanych adresów na `/mail`; 64.0 dopina `inbound_message`; nie IMAP |
 | wiadomość przychodząca | inbound_message | 64.0 tabela per tenant; 66.0 treść → extract HITL; 78.0/80.0 ingest `graph://` / `imap://` + `external_id`; 79.0 zdarzenie outbox; nie live skrzynka; nie send; nie blob |
@@ -93,7 +93,12 @@
 | terminal | terminal | 4.2; osobna tabela, nie `location.kind` |
 | kod ISPS | isps_code | identyfikator obiektu portowego; unikat per tenant gdy nie NULL |
 | opłata portowa warunkowa | port_surcharge | M-18; katalog extra; 69.0 matching `applies_when` w SQL; nie `charge.margin` |
-| oferta z kanału | channel_quote | M-19; katalog oferty armatora per POL/POD; nie live HTTP; nie `rate_line` |
+| oferta z kanału | channel_quote | M-19; katalog oferty armatora per POL/POD; O1 `transit_days`; nie live HTTP; nie `rate_line` |
+| czas tranzytu | transit_days | dni kalendarzowe na ofercie kanału; znaczek najszybszy TT liczy SQL; nie float |
+| karta lane | party_lane_scorecard | M-13 per POL/POD; SQL-refresh; podpowiedź z pól; nie scoring osoby; nie LLM |
+| zdarzenie obiektu | entity_event | B0a append-only (`inquiry_sent` / `quote_recorded`); nie Temporal |
+| przypisanie roli | party_role_assignment | M10-2; wiele ról na jednym `party`; nie osobny kontrahent na rolę |
+| ledger predykcji | prediction_ledger | B0b/V1; metryka po fakcie; zakaz „AI przewiduje” bez MAE |
 | operator terminalu | operator_name / operator_party_id | tekst zostaje; FK nullable do `party` od 5.0 |
 | kontrahent | party | katalog M-10; jeden podmiot, wiele ról |
 | identyfikator podatkowy | tax_id | NIP / VAT krajowy; `resolve` po tokenie |
@@ -109,14 +114,14 @@
 | profil armatora | carrier_profile | 1:1 z `party`; adapter tylko jako dane |
 | sieć spedycyjna | network | katalog M-12; token kodu (`wca`, `fiata`, …); kopia per tenant; nie portal |
 | kod sieci | network code | snake 2–32; `resolve` po kodzie albo aliasie |
-| członek sieci | network_member | 82.0 ręczny agent w `network` tenanta; nie portal; nie FK party |
-| karta wyników kontrahenta | party_scorecard | M-13; 10.0 snapshot; 120.0 odczyt decyzji oferty; nie scoring osoby; nie silnik RFQ |
-| recenzja kredytowa | credit_review | M-14; decyzja operatora per `party`+dzień; 88.0 `bureau_attachment_ref`; nie auto-scoring; nie `credit_limit` |
+| członek sieci | network_member | 82.0 ręczny agent w `network` tenanta; O0 `party_id` FK tenanta; nie portal |
+| karta wyników kontrahenta | party_scorecard | M-13; 10.0 snapshot globalny; 120.0 odczyt decyzji oferty; lane = `party_lane_scorecard` (O5); nie scoring osoby; nie silnik RFQ |
+| recenzja kredytowa | credit_review | M-14; decyzja operatora per `party`+dzień; 88.0 `bureau_attachment_ref`; M14b szkic sugestii; zapis limitu tylko S11; LLM nie liczy limitu |
 | decyzja operatora | operator_decision | 74.0 szyna pending/accept/reject; 77.0 `lock_version`; 121.0 `changed`; nie HITL extract; nie send |
 | tablica finansowa | finance_board | M-15; 15.0 odczyt marży/NBP/limitu/recenzji; 106.0 też FV; 117.0 narracja po SQL; LLM nie liczy |
 | wskaźnik odpowiedzi | response_rate | 0–1 Numeric na karcie; NULL = nieznany |
 | mediana czasu odpowiedzi | median_response_hours | godziny Numeric na karcie |
-| pozycja cenowa | price_position | 0–1 Numeric na karcie partii w 10.0; per lane = leftover |
+| pozycja cenowa | price_position | 0–1 Numeric na karcie partii w 10.0; per lane = `party_lane_scorecard` (O5) |
 | procedura operacyjna klienta | customer_sop | M-16; 11.0 katalog; 73.0 `blocks_auto`; nie send; nie generator zadań |
 | numer WPI | wpi_number | World Port Index (NGA Pub 150) na `port` |
 | wielkość portu | harbor_size | WPI: Very Small / Small / Medium / Large |
@@ -124,6 +129,39 @@
 | schronienie | shelter | WPI: Excellent / Good / Fair / Poor / None |
 | głębokość toru | channel_depth_m | WPI, metry, Numeric |
 | głębokość nabrzeża | cargo_pier_depth_m | WPI, metry, Numeric |
+| Incoterms | incoterm | 11 reguł ICC 2020 jako enum danych; nie cytat oficjalnego tekstu ICC |
+| macierz obowiązków | incoterm_responsibility | I1; 11 × import/export; seed ops Omni; override tenanta = nowy wiersz |
+| strona handlu | trade_side | `import` = klient Omni jest kupującym; `export` = sprzedawcą |
+| strona zlecenia | shipment_stakeholder | I2; rola + `party_id`; 409 na wysyłkę bez party |
+| wysyłka dokumentów odprawy | document_dispatch | I3; N× `mail_draft` + `shipment_document`; send po S11; nie auto-send |
+| instrukcja bookingu | booking_instruction | I4; scope + target z macierzy; `suggested` → accept człowieka |
+| wymiana kontaktów | contact_exchange | zakres I4; DAP import: origin_agent + klient; nie booking ocean |
+| rodzaj obserwacji GPS | observation_kind | V5; `omni_telematic` = flota w umowie pakietu; `external_api` = 3 dni robocze bez trip |
+| konektor slotu | terminal_slot_connector | T8; mode `api`/`email_hitl`/`portal_task`/`unsupported` per terminal; nie gwarancja |
+| awizacja terminalu | terminal_appointment | T8; requested/confirmed/rejected; `source_ref` |
+| kalendarz organizacji | organization_calendar | U4; dni robocze; grace GPS |
+| przeniesienie pól | field_carry_forward | U1; oferta→zlecenie; nie cichy overwrite |
+| przesyłka | consignment | N1; obok shipment |
+| podłoga marży | margin_floor | N6; Decimal; 409 albo S11 |
+| ETA fizyczne | eta_physical | GPS/korek; nie jedyny znacznik |
+| ETA prawne | eta_legal | zakaz jazdy, tacho, cutoff |
+| umowa klienta | customer_contract | CI; ciphertext; nie super-admin |
+| klauzula SLA | sla_clause | CI; wpis ręczny; kara SQL |
+| prognoza spóźnienia | delay_forecast | CI4; przed actual late |
+| wynik interwencji | intervention_outcome | CI6–CI7; saved = SQL |
+| przetarg | tender | G2; sell i buy; nie P6 samo |
+| kółko | lane_circle | G2.20–G2.21; nakładanie dat |
+| KREPTD | kreptd | G2.23; GITD/ITD; oficjalne API |
+| licencja transportowa | transport_licence | party_document; KREPTD |
+| sold-to | sold_to_party_id | EXP1; korpo |
+| bill-to | bill_to_party_id | EXP1 |
+| ship-to | ship_to_party_id | EXP1 |
+| haulier faktyczny | actual_haulier_party_id | ≠ booked; double-broker |
+| miejsce nazwane | named_place | Incoterms; 409 bez DAP/DDP |
+| fabryka demo | demo_sim | Demo-1; nie GBOX klienta |
+| zakłócenie demo | demo_disruption | korki/wypadki fixture |
+| zużycie platformy | platform_usage_daily | Admin-P; agregat; nie cross-tenant SELECT |
+| tenant demo | demo_tenant | izolacja RLS; wipe USUN |
 
 Pełny słownik archiwalny: `Informacje z claude/OmniRoute-dokumentacja/docs/` — **nie dumpować**; uzupełniaj ten plik przy plastrze.
 

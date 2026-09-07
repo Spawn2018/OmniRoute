@@ -24,10 +24,10 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-23 | Kurs NBP | 6.0 `nbp_rate` · 16.0 odczyt przy `quotation` | **ukończony (fundament)** · nie przeliczenie kwoty; nie żywe M-07 `rate_line` |
 | M-11 | Automatyczne kontakty | 8.0 `resolve_email` | **ukończony (fundament)** · matcher domeny z 5.0; nie IMAP; nie portal |
 | M-12 | Sieci i stowarzyszenia | 9.0 `network` · 82.0 `network_member` | **ukończony (fundament)** · katalog sieci + ręczni członkowie; nie portal WCA |
-| M-13 | Karta wyników kontrahenta | 10.0 `party_scorecard` · 120.0 decyzje oferty | **ukończony (leftover S27b)** · odczyt przyjętych/odrzuconych wycen; nie scoring osoby; nie SQL-refresh KPI |
+| M-13 | Karta wyników kontrahenta | 10.0 `party_scorecard` · 120.0 decyzje oferty | **ukończony (leftover S27b)** · odczyt przyjętych/odrzuconych wycen; nie scoring osoby; SQL-refresh lane = kolejka **O5** |
 | M-16 | Procedury operacyjne klienta | 11.0 `customer_sop` · 73.0 `blocks_auto` | **ukończony (fundament)** · zatwierdzona SOP może blokować auto; nie send; nie S11 |
 | M-18 | Opłaty portowe warunkowe | 12.0 `port_surcharge` · 69.0 matching `applies_when` | **ukończony (fundament)** · katalog extra + SQL równość warunku; nie zapis do `charge`; nie parser AST |
-| M-19 | Stawki live i kanały | 13.0 `channel_quote` | **ukończony (fundament)** · katalog oferty; nie live HTTP; nie zapis do `rate_line` / `charge` |
+| M-19 | Stawki live i kanały | 13.0 `channel_quote` | **ukończony (fundament)** · katalog oferty; nie live HTTP; TT + ręczny wpis z wyceny = kolejka **O1/O2** |
 | M-14 | Ocena kredytowa | 14.0 `credit_review` · 88.0 `bureau_attachment_ref` | **ukończony (fundament)** · katalog recenzji + wskazanie raportu; nie auto-scoring; nie zapis `credit_limit` |
 | M-15 | Wirtualny Dyrektor Finansowy | 15.0 `finance_board` · 106.0 FV · 117.0 narracja | **ukończony (S57)** · narracja po SQL na `/finance`; nie silnik; LLM nie liczy |
 | M-24 | Ryzyko oferty | 17.0 `offer_risk` · 87.0 wskazanie | **ukończony (fundament)** · odczyt + `noted_credit_review_id`; nie scoring; nie auto-limit |
@@ -36,7 +36,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-27 | Wycena wsadowa | 20.0 `quotation_batch` | **ukończony (fundament)** · wiele kodów na lane; nie CSV; nie nowa tabela |
 | M-28 | Zapytania od klientów | 21.0 `customer_inquiry` · 67.0 `customer_rfq` | **ukończony (fundament)** · ślad wycen + obiekt RFQ; silnik = M-21 68.0; nie IMAP |
 | M-29 | Wykrywanie akceptacji | 22.0 `offer_acceptance` · 86.0 S11 | **ukończony (fundament)** · pending + decyzja na `quotation`; nie HITL accept; nie CSV |
-| M-30 | Zapytania do agentów/armatorów | 23.0 ślad · 83.0 `carrier_inquiry` | **ukończony (fundament)** · obiekt buy do `network_member`; ślad `channel_quote` przy lane; nie RFQ; nie live HTTP |
+| M-30 | Zapytania do agentów/armatorów | 23.0 ślad · 83.0 `carrier_inquiry` | **ukończony (fundament)** · jeden `draft` do `network_member`; batch + statusy + lane = kolejka **O3/O4** |
 | M-31 | Porównanie odpowiedzi | 24.0 ślad · 84.0 `charge` | **ukończony (fundament)** · zestawienie na POL/POD + zapis marży w `charge`; nie odejmuj w JS; nie won/lost |
 | M-32 | Integracja pocztowa | 64.0 `inbound_message` · 66.0 extract HITL · 78.0 ingest `graph://` · 80.0 ingest `imap://` | **ukończony (fundament)** · tabela wiadomości draft+fixture albo ingest Graph/skrzynka po `external_id` na `/mail`; treść → szkic HITL; nie live skrzynka; nie send; nie blob |
 | M-33 | Dodatek do Outlooka | 26.0 `mail_client` · 81.0 dispatch `mailto:` | **ukończony (fundament)** · `mailto:` kontaktu na `/mail` + świadoma wysyłka zaakceptowanego szkicu na `/ai`; nie Office.js; nie Graph HTTP |

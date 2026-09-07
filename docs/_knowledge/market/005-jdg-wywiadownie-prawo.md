@@ -32,6 +32,6 @@ do recenzji M-14) · własna historia płatnicza tenanta (bank M-42).
 1. **Nigdy B2C** — kontrahent bez identyfikatora biznesowego nie istnieje
    w systemie (walidacja przy zapisie; plaster M10-1).
 2. Raport wywiadowni = fakt do wglądu, nie automatyczna decyzja.
-3. Decyzję kredytową podejmuje człowiek; system podaje fakty i historię.
+3. Decyzję kredytową podejmuje człowiek (S11). System podaje fakty, historię i **szkic sugestii** (AI/SQL). Sugestia nie zapisuje `credit_limit`. Automat wyłącznie = art. 22 — zakaz. Umowy RODO / DPA tenanta przy scoringu kierowcy i BYO kamerze (2026-09-08).
 4. Retencja raportów wg polityki tenanta; sekrety dostępowe wywiadowni
    szyfrowane per tenant (HC-05).

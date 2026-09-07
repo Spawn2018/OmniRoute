@@ -125,6 +125,17 @@ Wzorzec: SPEED Fracht („Tabela kursów wg: daty załadunku, −1 dzień, NBP-A
 
 Domyślna polityka per tenant w M-03; nadpisanie per zlecenie/opłata. Przeliczenie wykonuje SQL przy fakturowaniu — LLM i JS nie liczą (HC-02).
 
+## T8 — slot na każdym terminalu (capability, nie gwarancja)
+
+| Pole (szkic) | Typ | Uwagi |
+|---|---|---|
+| `terminal_id` | FK → `terminal` | każdy terminal M-05 ma wiersz |
+| `mode` | enum | `api` / `email_hitl` / `portal_task` / `unsupported` |
+| `appointment.window` | timestamptz range | `requested` / `confirmed` / `rejected` |
+| `source_ref` | text | umowa API albo `email:` / `portal:` |
+
+P0 API = umowa (Baltic Hub TO_VERIFY). Brak API ≠ Selenium. Semafor UI: zielony/żółty/szary. Audyt [incoterms-booking-customs-ux.md](incoterms-booking-customs-ux.md).
+
 ## Poza Falą T (zapowiedź kart)
 
 Planning board (T6) to widoki na `stop`/`trip` — pola pochodne, osobna karta UI przy Planie. Fale D/P/X/F/C/V dostaną karty pól analogicznie przed swoim `/plan-modul` (drobnica: przesyłka/paczka/linia/awizacja; pricing: rate card/charge template; finanse: skonto/rezerwa/delegacja).
