@@ -11,6 +11,7 @@ Korpus rzemiosła: `docs/_bench/cases/`.
 - `tools/` — integracje, CLI, mapa `just gate` (`006-just-gate-mapa.md`), skąd schemat (`008-schemat-bazy-skad.md`)
 - `prompts/` — wzorce promptów ekstrakcji, nie logika biznesowa
 - `memory-patterns/` — RAG, pgvector, kiedy tak/nie; `machine-*` z orakulum RLS/izolacja
+- `market/` — benchmark konkurencji (Qargo/SPEED), kalendarz regulacyjny, oczekiwania klientów; kuracja z `docs/_source/benchmark/`
 - `rules-catalog/` — **puste** — nie dumpuj tu 500 reguł
 - `skills-catalog/` — **puste** — nie dumpuj tu procedur
 

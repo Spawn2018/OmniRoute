@@ -319,3 +319,4 @@
 | 2026-09-04 | 126.0 | M-19 | `/refaktor`: `create_quote` ≤40. Sufit funkcji 0. Następny: leftover DNA `--ink`. |
 | 2026-09-04 | 127.0 | UI/M-10 | leftover DNA `--ink` + `/refaktor` `_blank_to_none`. Nie mixin. Następny: named parks. |
 | 2026-09-04 | 128.0 | OS | leftover context rot: PLAN bez ręcznego SHA; AGENTS M-71 z `changed`+lock. Nie konsument. Następny: named parks. |
+| 2026-09-07 | Plan benchmark | OS | Benchmark Qargo+SPEED+PDF: ADR-0004, matryca `docs/analysis/`, karty pól Fali T, kolejka-propozycja, karty `_knowledge/market/`, digesty `docs/_source/benchmark/`. Kanon kolejki bez zmian. Następny: named parks (bez zmian). |
