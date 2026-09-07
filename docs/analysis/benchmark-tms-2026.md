@@ -195,6 +195,36 @@ Fala: **0** (w kodzie) · **T** wykonawcza · **D** drobnica · **P** pricing ·
 | Audit trail decyzji (Decision Ledger) | MC | CZĘŚĆ (M-71 + HITL) | ULEPSZ | V |
 | Obserwowalność / OTel | MC | PARK S59 | — | park |
 
+## 12. Silniki enterprise / C-level (komplet z PDF rozmowy — nic nie ginie)
+
+| Funkcja | Źródło | Status | Werdykt | Fala |
+|---|---|---|---|---|
+| Digital twin „do wszystkiego" (pojazd, kierowca, kontener, terminal, statek, magazyn, proces) | MC | BRAK jako warstwa; dane cząstkowe już w modułach | KOPIUJ stopniowo — twin = stan + historia + predykcja NA istniejących tabelach, nie osobny silos | V/HZ |
+| Omni Network Digital Twin (replika całej sieci: dostawcy → klienci) | MC | BRAK | KOPIUJ | HZ |
+| Business Impact Graph (shipment → inventory → SKU → linia produkcyjna → zamówienie → revenue → margin → cash) | MC | BRAK | KOPIUJ — rdzeń wieży (V6) | V |
+| Revenue at Risk + Working Capital Engine (DSO, cash flow ryzyka) | MC | BRAK | KOPIUJ | V/HZ |
+| What-if / Scenario Engine (paliwo, zamknięcie portu, bankructwo przewoźnika) | MC | BRAK | KOPIUJ | V |
+| Disruption War Room (7–10 kroków reakcji) | MC | BRAK | KOPIUJ | HZ |
+| Procurement Autopilot (potrzeba → RFQ → negocjacje → award z akceptacją człowieka) | MC | CZĘŚĆ (M-30/M-31 ślad zapytań i porównań) | ULEPSZ | HZ |
+| Contract Intelligence (FV przewoźnika vs umowa — wykrycie rozbieżności; kary/terminy jako reguły operacyjne) | MC | BRAK | KOPIUJ | HZ |
+| Regulatory Radar (monitor zmian przepisów UE/krajowych) | MC | BRAK | KOPIUJ | C/HZ |
+| Counterparty Risk Engine (bankructwo, opóźnienia płatnicze, compliance — podmiot, nigdy osoba fizyczna) | MC | CZĘŚĆ (M-13 karta, M-14 kredyt, M-54 fraud flag) | ULEPSZ | V/HZ |
+| Fraud & Anomaly Engine (anomalia ≠ dowód — zawsze flaga do recenzji) | MC | CZĘŚĆ (M-54) | ULEPSZ | HZ |
+| Multi-Objective Optimizer (koszt × czas × ryzyko × CO2 × zgodność wg preferencji klienta) | MC | BRAK | KOPIUJ | HZ |
+| Autonomous Negotiation Engine (negocjacje w zadanych limitach ceny/marży) | MC | BRAK | KOPIUJ ostrożnie — zawsze limity + HITL | HZ |
+| Memory Graph (encje + zdarzenia + decyzje; „co zadziałało w podobnej sytuacji") | MC | BRAK | KOPIUJ | HZ |
+| Decision Ledger (rekomendacja → dowody → decyzja → człowiek → wynik; metryki trafności AI) | MC | CZĘŚĆ (M-71 szyna decyzji + HITL) | ULEPSZ | V |
+| Executive AI / early warning dla zarządu (pytania o straty, nierentowne trasy, ryzyko) | MC | BRAK | KOPIUJ | HZ |
+| Energy Intelligence (flota EV, energia magazynów) | MC | BRAK | POMIŃ teraz | HZ |
+| Customer Chat (status/ETA/dokumenty/reklamacje) — wg ustaleń MC §63: status widać w portalu OD RĘKI, chat nie jest do tego | MC/Q | BRAK | KOPIUJ z podziałem ról | X/HZ |
+| IT Support Agent (ticket → analiza → propozycja naprawy → człowiek zatwierdza) | MC | BRAK | KOPIUJ | HZ |
+| Email Digital Twin spedytora (czyta pocztę → draft → akceptacja → wysyłka z jego skrzynki) | MC | CZĘŚĆ (M-57 `mail_draft` + S18 świadoma wysyłka) | ULEPSZ | X |
+| Slot Intelligence + Secure Chain + Port Identity (predykcja slotu, custody kontenera, sejf poświadczeń portowych) | MC | BRAK | KOPIUJ | HZ (po konektorach terminali) |
+| Omni Market Intelligence (produkt danych: stawki, capacity, prognozy, benchmarki) | MC | BRAK | KOPIUJ — osobna linia produktowa | HZ |
+| Telematyka jako biznes (5 modeli finansowania GPS, Connected Carrier program, hardware SaaS) | MC | BRAK | decyzja biznesowa | HZ |
+| Generator raportów (KPI, rentowność, predykcje) — LLM pisze narrację po SQL, nigdy nie liczy | MC | CZĘŚĆ (M-15 narracja `/finance`) | ULEPSZ | F/V |
+| Widoki per rola: spedytor FTL (A→B) ≠ dyspozytor drobnicy (sieć/linie/wypełnienie) ≠ morze (kontenery/cut-offy) | S/Q | CZĘŚĆ (saved views + DataTableShell) | ULEPSZ — osobne boardy na wspólnym modelu stop/trip/resource | T6/D |
+
 ## Przewaga nad Qargo i SPEED (cel: lider)
 
 1. **Wieża z łańcuchem skutków** — visibility → prediction → impact → decision → execution; klient korporacyjny widzi, co się stanie z magazynem/produkcją/sprzedażą/EBITDA, **jeśli nie zareaguje**. Potwierdzone jako wolna pozycja (Qargo road-first bez shipperów; SPEED bez predykcji).

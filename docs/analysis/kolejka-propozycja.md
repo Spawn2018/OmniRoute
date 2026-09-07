@@ -89,4 +89,6 @@ Reguły przejęte z kanonu: każda pozycja = `/plan-modul` (delta + karta pól) 
 
 ## Horyzont (HZ) — decyzje biznesowe przed kodem
 
-Booking armatorski per carrier · terminal connectors (Baltic Hub pierwszy — oficjalne API OAuth2; BCT/GCT = B2B) · promy API · giełdy market data (umowy) · chłodnie zdalne sterowanie (per urządzenie) · faktoring partner · WhatsApp · digital twins pełne · war room · autonomous negotiation (zawsze z limitami i HITL).
+Booking armatorski per carrier · terminal connectors (Baltic Hub pierwszy — oficjalne API OAuth2; BCT/GCT = B2B) · promy API · giełdy market data (umowy) · chłodnie zdalne sterowanie (per urządzenie) · faktoring partner · WhatsApp · digital twins pełne (Network Twin) · war room · autonomous negotiation (zawsze z limitami i HITL) · procurement autopilot · contract intelligence · regulatory radar · multi-objective optimizer · memory graph · executive AI · IT support agent · slot intelligence/secure chain/port identity · Omni Market Intelligence (osobny produkt) · telematyka jako biznes (finansowanie GPS) · energy intelligence.
+
+Pełna tabela silników enterprise z PDF: [benchmark-tms-2026.md](benchmark-tms-2026.md) § 12.
