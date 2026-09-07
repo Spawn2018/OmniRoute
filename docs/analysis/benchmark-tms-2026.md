@@ -287,6 +287,55 @@ Fala: **0** (w kodzie) · **T** wykonawcza · **D** drobnica · **P** pricing ·
 | **Zakazy jazdy** (niedziele, święta, wakacje, upały — kraj po kraju): **Nakordoni Truck Bans API** (38 krajów, typy General/Local/Sunday/Holiday/Seasonal, okna active/next w strefie kraju, wagi minimalne; darmowy feed JSON + API dev — TO_VERIFY licencja/atrybucja) + **Holiday Calendar API** (Nager.Date / OpenHolidaysAPI, darmowe) + własny katalog `driving_ban_rule` jako dane wersjonowane per jurysdykcja (MC §84); etransport.pl / trans.info = źródła redakcyjne do kuracji, nie API | operator | BRAK | KOPIUJ | V — ale katalog + odczyt feedu to czysta tabela, może wejść wcześnie |
 | SENT przy planowaniu: flaga zlecenia SENT + GEO lokalizator widoczne na boardzie; zgłoszenia PUESC = C1 | S/MC | BRAK | KOPIUJ | T6 (flaga) + C1 (zgłoszenia) |
 
+### 13e. Trzeci przegląd źródeł (2026-09-07, 21:20) — domknięcie inwentarza
+
+Metoda: 103 sekcje master-contextu odhaczone 1:1 + digesty PDF 1–3 + dossier SPEED + 59 newsów + 44 case'y. Każda pozycja źródeł ma odtąd wiersz w § 1–13 **albo** wpis w Rejestrze odrzuceń niżej.
+
+| Funkcja | Źródło | Status | Werdykt | Fala |
+|---|---|---|---|---|
+| Compliance / Legal Engine — reguły prawne wersjonowane per jurysdykcja (`effective_from/to`, źródło, wyjątki); pierwszy przypadek użycia: `driving_ban_rule` | MC §18/§84 | BRAK | KOPIUJ — fundament pod C/V; reguła = dane | C/V (katalog wcześnie) |
+| Agenci doradczy AI: Transport / ADR / Customs / Legal Advisor — odpowiedź zawsze z podstawą prawną, jurysdykcją i wersją reguły; LLM cytuje, nie orzeka | MC §15/§17/§53 | BRAK | KOPIUJ | HZ (po Compliance Engine) |
+| Wirtualne biuro rozliczeń czasu pracy kierowcy (naruszenia, dokumentacja kontrolna, zestawienia dla kadr) | MC §16 | BRAK | KOPIUJ | V7 → HZ (usługa) |
+| Remuneration engine: płaca minimalna per kraj, delegowanie (2020/1057), dodatki, diety | MC §19 / S | BRAK | KOPIUJ | F5/HZ (prawo per kraj TO_VERIFY) |
+| Network / resource costing: koszt pustych km, koszt niewykorzystania zasobu, wpływ zlecenia na następne zlecenia | MC §20 | BRAK | KOPIUJ | P/V (po T2) |
+| Fleet cost model (financial driver costing): leasing, amortyzacja, opony, ubezpieczenia, serwis → pełny koszt km własnego taboru; karta drogowa, zaliczki | MC §78 / S (FTL) | BRAK | KOPIUJ | F/V (po T2) |
+| Loading optimizer (bin packing: wymiary, piętrowanie, naciski osi, DMC) + VRP 1000+ dostaw | MC §21–22 | BRAK | KOPIUJ — silnik OR, nie LLM | V/HZ |
+| Rejestr polis (własne + przewoźników: OCS/OCP/komunikacyjne — numer, suma, ważność; nadzór przy planowaniu i na kontrahencie) | S | BRAK | KOPIUJ | M-10/T2 pogłębienie |
+| Ubezpieczenie cargo per zlecenie (polisa, suma, waluta; flaga na zleceniu jak SPEED) | S / MC | BRAK | KOPIUJ | F/HZ |
+| Gospodarka oponami / serwis / przeglądy (fleet maintenance; łączy się z diagnostyką §13c) | S / MC §6 | BRAK | KOPIUJ | HZ (po telematyce) |
+| Import / migracja danych: klienci archiwalni, kursy historyczne, schematy importu per tenant (wzorzec SID ze SPEED) | MC §68 / S | BRAK | KOPIUJ | przy onboardingu tenanta (po S53) |
+| Kanały powiadomień SMS / e-mail (kierowca, klient, partner; bramki SMS) | S / MC | CZĘŚĆ (operator_notice M-34 = inbox wewnętrzny) | ULEPSZ | X |
+| Dock scheduler — okna czasowe doków magazynu (awizacje D3 + sloty doków) | PDF (groupage) | BRAK | KOPIUJ | D3 |
+| Sandbox / środowisko demo per tenant (standard wdrożeń z case'ów Qargo; kontra na „łzy" wdrożeń SPEED) | Q cases | BRAK | KOPIUJ | X/HZ (onboarding) |
+| Widok brakujących kosztów per linia (wzorzec „Trips to Bill: Charge View") | Q | BRAK | KOPIUJ | F (rentowność tripa) |
+| Fiscal risk scoring podmiotu (biała lista, status VAT, anomalie KSeF — podmiot, nigdy osoba) | PDF | CZĘŚĆ (C3 lookupy) | ULEPSZ | C/F |
+| Claims deadline engine: terminy reklamacyjne, podstawa prawna, odpowiedzialność, timeline dowodów (CMR, GPS, temperatura) | PDF / MC §62 | CZĘŚĆ (M-55 tabela) | ULEPSZ | F/V |
+| Auto-wystawienie kontenera/ładunku na giełdę (potrzeba → publikacja → zbiór ofert → propozycja) | MC §70 | BRAK | KOPIUJ | HZ (giełdy po umowach) |
+| Integration Hub — abstrakcja protokołów (REST / SOAP / EDI / SFTP / AS2 / portal-fallback) pod konektory portów/armatorów/sieci | MC §95A / PDF | BRAK | KOPIUJ | HZ (z pierwszym konektorem) |
+| Certyfikacja ISO 27001 / postawa NIS2 (argument sprzedażowy Qargo) | Q news | — | decyzja biznesowa | HZ (ops) |
+| Prognozy cen frachtów/paliwa z czynnikami geopolitycznymi (korelacja ≠ przyczynowość) | MC §43 | BRAK | KOPIUJ | V/HZ (część Market Intelligence) |
+
+## Rejestr odrzuceń — co świadomie NIE wchodzi i dlaczego (do decyzji operatora)
+
+| Pozycja | Powód odrzucenia / odroczenia | Status |
+|---|---|---|
+| Przepisanie stosu na Django/GraphQL/Apollo/Zustand/Ant/Linaria | Zero zysku domenowego; utrata 128 przetestowanych plastrów; [ADR-0004](../adr/0004-benchmark-qargo-speed-2026.md) | ODRZUCONE na stałe |
+| Konfiguracja cenników przez ręczne procedury T-SQL (mechanizm SPEED) | Każde wdrożenie = nieutrzymywalny dialekt; ostrzega własna instrukcja producenta; funkcja zostaje (cenniki warunkowe jako dane, Fala P) | ODRZUCONY mechanizm, funkcja wchodzi |
+| Kopiowanie kodu, brandingu, grafik, tekstów dokumentacji Qargo/SPEED | Prawo autorskie + budujemy własną tożsamość; odtwarzamy funkcjonalność i wzorce UX | ODRZUCONE na stałe |
+| Auto-scoring kredytowy JDG / osób fizycznych | AI Act (wysokie ryzyko) + art. 22 RODO; fakty + raport wywiadowni + decyzja człowieka (HITL) | ODRZUCONE na stałe (prawo) |
+| Współpraca z osobami prywatnymi (B2C) | Decyzja operatora 2026-09-07; egzekwowana technicznie: rekord bez identyfikatora biznesowego nie powstanie (M10-1) | ODRZUCONE na stałe (biznes) |
+| BIK / systemy bankowe do weryfikacji | Decyzja operatora 2026-09-07; zostają: KRD (formalnie BIG), Coface, D&B, CreditSafe, rejestry jawne | ODRZUCONE (decyzja) |
+| WhatsApp / komunikatory | Mały zysk vs koszt integracji Meta dziś; luka rynku wg case'ów — wraca przy portalach | ODROCZONE → HZ |
+| Energy Intelligence (floty EV, energia magazynów) | Brak popytu u docelowych klientów dziś | ODROCZONE → HZ |
+| Mikroserwisy; osobne warstwy time-series / search / analytics | Przedwczesne przy obecnej skali; modular monolith + Postgres (CP-03); wraca przy realnych wolumenach | ODROCZONE (skala) |
+| Temporal / Hatchet / workery | Standing rule repo: dopiero przy realnym konsumencie zdarzeń między BC (da go X4) | ODROCZONE (warunek) |
+| Landing page www / cennik marketingowy („oferta w 8 minut", kalkulator wartości z §2 MC) | To osobny artefakt marketingowy (np. Astro), nie moduł aplikacji; nie blokuje produktu | POZA REPO produktu |
+| Wyceny spółki, modele GMV/ARR/EBITDA z PDF | Materiał biznesowy, nie funkcjonalność; zostaje w `docs/_source/benchmark/` jako referencja | POZA MATRYCĄ |
+| Scraping portali WCA / giełd / terminali bez umów | ToS + prawo; tylko oficjalne API po umowach (HZ) | ODRZUCONE na stałe |
+| RAG/pgvector na logice wyceny, VAT, schemacie DB | HC-08: RAG wolno tylko na SOP/regulacjach/mailach/dokumentacji | ODRZUCONE na stałe (HC) |
+| Deklarowanie „100% zgodności prawnej" / auto-reprezentacja celna bez upoważnienia | MC §18/§53: architektura pod zgodność ≠ gwarancja prawna; przedstawiciel celny wymaga umocowania | ODRZUCONE na stałe |
+| „AI przewiduje przyszłość" jako obietnica marketingowa | MC §9/§99: komunikujemy zmierzoną skuteczność (Prediction Ledger), nie magię | ODRZUCONE na stałe |
+
 ## Przewaga nad Qargo i SPEED (cel: lider)
 
 1. **Wieża z łańcuchem skutków** — visibility → prediction → impact → decision → execution; klient korporacyjny widzi, co się stanie z magazynem/produkcją/sprzedażą/EBITDA, **jeśli nie zareaguje**. Potwierdzone jako wolna pozycja (Qargo road-first bez shipperów; SPEED bez predykcji).
