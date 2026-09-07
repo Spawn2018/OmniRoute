@@ -4,6 +4,14 @@
 
 Reguły przejęte z kanonu: każda pozycja = `/plan-modul` (delta + karta pól) → `/plaster`; WIP=1; tabela+RLS przed HTTP; Auth0 (S53) przed portalami; kolizje ID żywe vs archiwum sprawdzane przy Planie pozycji (mapa kolizji w PLAN); HC bez zmian. Pozycje `TO_VERIFY` nie wchodzą do kodu bez potwierdzenia źródła (API/umowa/prawo).
 
+## Natychmiastowe małe plastry (przed / równolegle z Falą T — nie czekają na wpięcie fal)
+
+| ID | Co | Uwagi |
+|---|---|---|
+| M10-1 | **Dedup kontrahenta**: znormalizowany NIP / VAT-EU / EORI / DUNS unikatowy w tenancie (constraint DB + 409 z linkiem do istniejącego) + **wymóg identyfikatora biznesowego** (zakaz osób prywatnych — brak numeru = odmowa zapisu) | pogłębienie M-10; jeden plaster |
+| M10-2 | Role kontrahenta jako dane (`party_role`, wiele ról na podmiocie) + forma prawna + flaga JDG + `parent_party_id` (grupy/oddziały/inny płatnik) | pogłębienie M-10; JDG → HITL w kredycie (anti-cel auto-scoringu bez zmian) |
+| **B0** | Fundament bliźniaka: `prediction_ledger` + `entity_event` (append-only rama zdarzeń per obiekt) + katalog indeksów rynkowych (paliwo obok `nbp_rate`) | **od startu** — bez logu z dnia 1 nie ma pomiaru skuteczności ani pytań kontrfaktycznych; silnik what-if przyjdzie później (V) i policzy na tych danych |
+
 ## Fala T — warstwa wykonawcza (proponowana pierwsza po named parks)
 
 | ID | Co | Zależności | Uwagi / poza zakresem |

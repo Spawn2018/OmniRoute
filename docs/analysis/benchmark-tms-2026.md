@@ -199,7 +199,7 @@ Fala: **0** (w kodzie) · **T** wykonawcza · **D** drobnica · **P** pricing ·
 
 | Funkcja | Źródło | Status | Werdykt | Fala |
 |---|---|---|---|---|
-| Digital twin „do wszystkiego" (pojazd, kierowca, kontener, terminal, statek, magazyn, proces) | MC | BRAK jako warstwa; dane cząstkowe już w modułach | KOPIUJ stopniowo — twin = stan + historia + predykcja NA istniejących tabelach, nie osobny silos | V/HZ |
+| Digital twin „do wszystkiego" (pojazd, kierowca, kontener, terminal, statek, magazyn, proces, pracownik, klient) | MC | BRAK jako warstwa; dane cząstkowe już w modułach | KOPIUJ dwuetapowo: **B0 od startu** = rejestr zdarzeń + prediction_ledger + indeksy rynkowe (bez logu z dnia 1 nie ma czego symulować); pełne twiny i symulacje = warstwa na zebranych danych | **B0 → V/HZ** |
 | Omni Network Digital Twin (replika całej sieci: dostawcy → klienci) | MC | BRAK | KOPIUJ | HZ |
 | Business Impact Graph (shipment → inventory → SKU → linia produkcyjna → zamówienie → revenue → margin → cash) | MC | BRAK | KOPIUJ — rdzeń wieży (V6) | V |
 | Revenue at Risk + Working Capital Engine (DSO, cash flow ryzyka) | MC | BRAK | KOPIUJ | V/HZ |
@@ -224,6 +224,54 @@ Fala: **0** (w kodzie) · **T** wykonawcza · **D** drobnica · **P** pricing ·
 | Telematyka jako biznes (5 modeli finansowania GPS, Connected Carrier program, hardware SaaS) | MC | BRAK | decyzja biznesowa | HZ |
 | Generator raportów (KPI, rentowność, predykcje) — LLM pisze narrację po SQL, nigdy nie liczy | MC | CZĘŚĆ (M-15 narracja `/finance`) | ULEPSZ | F/V |
 | Widoki per rola: spedytor FTL (A→B) ≠ dyspozytor drobnicy (sieć/linie/wypełnienie) ≠ morze (kontenery/cut-offy) | S/Q | CZĘŚĆ (saved views + DataTableShell) | ULEPSZ — osobne boardy na wspólnym modelu stop/trip/resource | T6/D |
+
+## 13. Uzupełnienie po ponownym przeglądzie katalogu §92 + wymagania operatora (2026-09-07 wieczór)
+
+### 13a. Kontrahent (pogłębienie M-10 — wymagania operatora)
+
+| Funkcja | Źródło | Status | Werdykt | Fala |
+|---|---|---|---|---|
+| **Dedup kontrahenta**: unikat w tenancie po znormalizowanym NIP / VAT-EU / EORI / DUNS; przy próbie duplikatu 409 + link do istniejącego | operator | BRAK (jest `resolve` po tax_id, brak constraintu) | KOPIUJ | **natychmiastowy mały plaster** |
+| **Zakaz osób prywatnych**: rekord kontrahenta wymaga identyfikatora biznesowego (NIP/VAT-EU/EORI/nr rejestrowy kraju) — brak = odmowa zapisu | operator | BRAK | KOPIUJ | ten sam plaster co dedup |
+| **Role kontrahenta** (wiele na jednym podmiocie, wzór Qargo „Company = customer i subcontractor"): zleceniodawca · przewoźnik drogowy · armator · agent morski · coloader · spedytor partnerski (sieć) · terminal/port · magazyn/skład celny · agencja celna · ubezpieczyciel · faktor · dostawca paliwa/kart · wywiadownia · dostawca telematyki | operator/Q/S | CZĘŚĆ (`party` + `carrier_profile`) | ULEPSZ — role jako dane (tabela `party_role`), nie enum na sztywno | M-10 pogłębienie |
+| **Forma prawna + flaga JDG** (osoba fizyczna prowadząca działalność — inny reżim RODO/AI Act) | operator/prawo | BRAK | KOPIUJ | M-10 pogłębienie |
+| Grupy kapitałowe / oddziały / „inny płatnik" (`parent_party_id`) | S | BRAK | KOPIUJ | M-10 pogłębienie |
+| Segmentacja handlowa (klasa A/B/C wg obrotu/marży — licz SQL, nie ręcznie; branża; kierunki) | propozycja | BRAK | KOPIUJ | F/V |
+| Wywiadownie gospodarcze (KRD / Coface / D&B / CreditSafe) — konektory; raport jako załącznik recenzji kredytowej; **JDG tylko HITL, nigdy auto-scoring** | operator/MC | CZĘŚĆ (M-14 88.0 `bureau_attachment_ref` — wskazanie raportu już jest) | ULEPSZ | F6 + HZ (umowy z wywiadowniami) · prawo: karta `_knowledge/market/005` |
+
+### 13b. Fundament cyfrowego bliźniaka — OD STARTU (wymaganie operatora)
+
+| Funkcja | Źródło | Status | Werdykt | Fala |
+|---|---|---|---|---|
+| `prediction_ledger` — każda predykcja zapisana z wejściem/pewnością/wersją modelu → potem actual + błąd | MC | BRAK | KOPIUJ | **B0 (przed/równolegle z Falą T)** |
+| `entity_event` — append-only rejestr zachowań per obiekt (pracownik, klient, przewoźnik, agent, armator): kto/co/kiedy/kontekst | MC | CZĘŚĆ (tracking M-36, decyzje M-71, outbox M-02 — brak wspólnej ramy) | ULEPSZ — jedna rama zdarzeń | **B0** |
+| Katalog indeksów rynkowych (paliwo, frachty — obok `nbp_rate`): data + wartość + źródło | MC | CZĘŚĆ (M-23 kursy) | KOPIUJ — bez historii indeksów nie ma pytań „co by było gdyby paliwo nie podrożało" | **B0** |
+| Kontrfaktyczne „what-if" na zebranych danych (marża klienta X przy innym paliwie/kursie) | MC | BRAK | KOPIUJ — silnik przychodzi później (V), ale liczy na danych logowanych od B0 | V |
+
+### 13c. Reszta katalogu §92 (domknięcie inwentarza)
+
+| Funkcja | Źródło | Status | Werdykt | Fala |
+|---|---|---|---|---|
+| CRM (lead → szansa → oferta; aktywności handlowe) | MC | BRAK (`party` to katalog, nie lejek) | KOPIUJ | X/HZ |
+| Spedycja lotnicza (AIR OS: HAWB/MAWB, pule numerów master, e-rates) | MC/S | BRAK | KOPIUJ | HZ (osobna fala wzorem nóg morskich) |
+| Floating trailers (naczepa bez ciągnika na promie; kierowcy A/B) | MC | BRAK | KOPIUJ — model `resource` z naczepą jako osobnym zasobem to umożliwia | T2 (scenariusz w Planie) |
+| Multi-manning (dwóch kierowców; art. 8–9 rozp. 561/2006, prom ≠ zwykły postój) | MC | BRAK | KOPIUJ | V7 |
+| Diagnostyka pojazdu (kody błędów, predictive maintenance) | MC | BRAK | KOPIUJ | HZ (telematyka L1+) |
+| Huckepack / wagony kieszeniowe | MC | CZĘŚĆ (M-49 nogi rail) | ULEPSZ | D |
+| Magazyn celny + miejsce uznane | MC | BRAK | KOPIUJ | C |
+| WMS pełny (inventory, przyjęcia/wydania, lokacje) | MC | BRAK | KOPIUJ | HZ (katalog 71–212 „WMS") |
+| Traffic live + historyczny (profil dnia/godziny/sezonu) jako dane ETA | MC | BRAK | KOPIUJ | V |
+| Restrykcje drogowe / green zones / LEZ / toll engine (dane map + naliczenia) | MC/Q/S | BRAK | KOPIUJ | V/HZ (źródła danych do wyboru: darmowe → płatne po rachunku kosztów) |
+| Karty paliwowe + zbiorniki paliwa (tankowania, wydania, anomalie) | MC/S | BRAK | KOPIUJ | F/HZ |
+| Klasyfikacja stawek spot vs contract + historia rynkowa | MC | CZĘŚĆ (`rate_line` ma źródło i czas) | ULEPSZ | P |
+| Tender management / Tender AI (analiza dokumentacji przetargowej, matryca odpowiedzi, rentowność; reprezentacja klienta korporacyjnego = 4PL) | MC | BRAK | KOPIUJ | HZ |
+| Contract management (umowy, SLA → łączy się z Contract Intelligence §12) | MC | BRAK | KOPIUJ | HZ |
+| Financial controlling (budżety, rezerwy okresowe — ponad tablicę M-15) | MC | CZĘŚĆ | ULEPSZ | F |
+| Workflow engine / custom workloads admina (procesy definiowane przez użytkownika) | MC | CZĘŚĆ (task engine T5 = fundament) | ULEPSZ | T5 → HZ |
+| Incident management (awarie operacyjne ≠ wyjątki zleceń M-37) | MC | CZĘŚĆ (M-37) | ULEPSZ | V |
+| Import zleceń obcych spedycji (OCR druku obcego → zlecenie + analiza warunków/ryzyk) | MC | CZĘŚĆ (M-20 ekstrakcja HITL) | ULEPSZ | X |
+| Pogoda / profil wysokości / spalanie — potwierdzenie: już w § 9 (V) | MC | — | — | V |
+| Palety saldo — potwierdzenie: już w § 3 (D7) | MC | — | — | D |
 
 ## Przewaga nad Qargo i SPEED (cel: lider)
 
