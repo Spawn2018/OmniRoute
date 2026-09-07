@@ -10,7 +10,7 @@ Reguły przejęte z kanonu: każda pozycja = `/plan-modul` (delta + karta pól) 
 |---|---|---|
 | M10-1 | **Dedup kontrahenta**: znormalizowany NIP / VAT-EU / EORI / DUNS unikatowy w tenancie (constraint DB + 409 z linkiem do istniejącego) + **wymóg identyfikatora biznesowego** (zakaz osób prywatnych — brak numeru = odmowa zapisu) | pogłębienie M-10; jeden plaster |
 | M10-2 | Role kontrahenta jako dane (`party_role`, wiele ról na podmiocie) + forma prawna + flaga JDG + `parent_party_id` (grupy/oddziały/inny płatnik) | pogłębienie M-10; JDG → HITL w kredycie (anti-cel auto-scoringu bez zmian) |
-| **B0** | Fundament bliźniaka: `prediction_ledger` + `entity_event` (append-only rama zdarzeń per obiekt) + katalog indeksów rynkowych (paliwo obok `nbp_rate`) | **od startu** — bez logu z dnia 1 nie ma pomiaru skuteczności ani pytań kontrfaktycznych; silnik what-if przyjdzie później (V) i policzy na tych danych |
+| **B0** | Fundament bliźniaka: `prediction_ledger` + `entity_event` (append-only rama zdarzeń per obiekt) + katalog indeksów rynkowych (paliwo obok `nbp_rate`) + **`plan_snapshot`** (wersje planu: zlecenie→trip→zasób, autor, czas) + **własne TT** (rzeczywiste czasy przejazdu z actuals stopów) | **od startu** — bez logu z dnia 1 nie ma pomiaru skuteczności, pytań kontrfaktycznych ani przeplanowań „co by było gdyby"; silnik what-if przyjdzie później (V) i policzy na tych danych |
 
 ## Fala T — warstwa wykonawcza (proponowana pierwsza po named parks)
 

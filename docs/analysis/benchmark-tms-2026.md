@@ -273,6 +273,20 @@ Fala: **0** (w kodzie) · **T** wykonawcza · **D** drobnica · **P** pricing ·
 | Pogoda / profil wysokości / spalanie — potwierdzenie: już w § 9 (V) | MC | — | — | V |
 | Palety saldo — potwierdzenie: już w § 3 (D7) | MC | — | — | D |
 
+### 13d. Planowanie — bliźniak planu i dane drogowe (wymagania operatora 2026-09-07)
+
+| Funkcja | Źródło | Status | Werdykt | Fala |
+|---|---|---|---|---|
+| **Bliźniak planowania**: `plan_snapshot` — każda wersja planu (przypisania zlecenie→trip→zasób; autor człowiek/auto; czas) zapisywana od pierwszego dnia planowania | operator | BRAK | KOPIUJ — wchodzi do **B0** (bez snapshotów nie ma „co by było gdyby") | B0 |
+| **Kontrfaktyczne przeplanowanie**: „linie drobnicowe do NO/DE/SE zaplanowane inaczej (wg zapytania), reszta bez zmian → jak marża i czy plan wykonalny przy ówczesnym traficu/warunkach" | operator | BRAK | KOPIUJ — silnik na `plan_snapshot` + warunkach historycznych + optymalizatorze klasy OptiPlaner; marżę liczy SQL na `charge` | V (dane od B0) |
+| **Własne historyczne TT**: każdy wykonany stop/trip = punkt danych (relacja, dzień tygodnia, godzina, sezon, rzeczywisty czas przejazdu) — własna baza czasów przejazdu rośnie od dnia 1, bez licencji | MC | BRAK | KOPIUJ — z actuals stopów (T1) przez `entity_event` (B0) | B0→V |
+| Traffic zewnętrzny live + historyczny (HERE / TomTom / PTV) do ETA i TT | MC | BRAK | KOPIUJ | V/HZ (płatne — rachunek kosztów przed zakupem) |
+| Pogoda: Open-Meteo (darmowe), IMGW (PL) — czynnik ETA/spalania/ryzyka | MC | BRAK | KOPIUJ | V |
+| Restrykcje drogowe (wymiary, waga, naciski osi, ADR, tunele): **NAPSPAN** (agregator krajowych NAP + OSM; 15 jurysdykcji VIII 2026, rośnie) · OSM · krajowe NAP/DATEX II (darmowe) → upgrade płatny HERE/PTV truck attributes | MC | BRAK | KOPIUJ | V/HZ |
+| Dokładne opłaty drogowe (klasa, osie, emisja, odcinek; e-TOLL PL stawki publiczne; wzorzec SPEED: myto z mapy prosto w koszty zlecenia) | MC/S | BRAK | KOPIUJ | V/HZ |
+| **Zakazy jazdy** (niedziele, święta, wakacje, upały — kraj po kraju): **Nakordoni Truck Bans API** (38 krajów, typy General/Local/Sunday/Holiday/Seasonal, okna active/next w strefie kraju, wagi minimalne; darmowy feed JSON + API dev — TO_VERIFY licencja/atrybucja) + **Holiday Calendar API** (Nager.Date / OpenHolidaysAPI, darmowe) + własny katalog `driving_ban_rule` jako dane wersjonowane per jurysdykcja (MC §84); etransport.pl / trans.info = źródła redakcyjne do kuracji, nie API | operator | BRAK | KOPIUJ | V — ale katalog + odczyt feedu to czysta tabela, może wejść wcześnie |
+| SENT przy planowaniu: flaga zlecenia SENT + GEO lokalizator widoczne na boardzie; zgłoszenia PUESC = C1 | S/MC | BRAK | KOPIUJ | T6 (flaga) + C1 (zgłoszenia) |
+
 ## Przewaga nad Qargo i SPEED (cel: lider)
 
 1. **Wieża z łańcuchem skutków** — visibility → prediction → impact → decision → execution; klient korporacyjny widzi, co się stanie z magazynem/produkcją/sprzedażą/EBITDA, **jeśli nie zareaguje**. Potwierdzone jako wolna pozycja (Qargo road-first bez shipperów; SPEED bez predykcji).
