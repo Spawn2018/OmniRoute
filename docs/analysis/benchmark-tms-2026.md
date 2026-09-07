@@ -315,6 +315,30 @@ Metoda: 103 sekcje master-contextu odhaczone 1:1 + digesty PDF 1–3 + dossier S
 | Certyfikacja ISO 27001 / postawa NIS2 (argument sprzedażowy Qargo) | Q news | — | decyzja biznesowa | HZ (ops) |
 | Prognozy cen frachtów/paliwa z czynnikami geopolitycznymi (korelacja ≠ przyczynowość) | MC §43 | BRAK | KOPIUJ | V/HZ (część Market Intelligence) |
 
+### 13f. Silnik przetargowy głębiej + metrologia UX/UI (wymagania operatora 2026-09-07, 21:24)
+
+Przetargi (rozwinięcie wiersza „Tender management" z 13c — pięć funkcji):
+
+| Funkcja | Źródło | Status | Werdykt | Fala |
+|---|---|---|---|---|
+| Analiza dokumentacji przetargowej (RFP/SIWZ → wymagania, terminy, kryteria oceny, ryzyka, matryca zgodności) | MC §45 | BRAK | KOPIUJ — ekstrakcja wzorem M-20 (HITL), nie auto-odpowiedź | HZ (Tender) |
+| **Playbook przetargowy**: strategia, argumenty, sugerowane ceny, analiza konkurencji („kto z kim współpracuje") — generowany dokument z provenance każdego twierdzenia | MC §45 / operator | BRAK | KOPIUJ — szkic zatwierdza człowiek | HZ (Tender) |
+| **Prospecting**: lista firm do kontaktu z danymi z internetu (nazwa, mail, telefon, dlaczego warto, co to da, możliwe minusy) | operator | BRAK | KOPIUJ — research AI z podanym źródłem KAŻDEJ informacji; wynik = szkic kontaktu do CRM (HITL, dedup po NIP z M10-1); cold-outreach wg prawa PL (PKE/UŚUDE — zgody na kontakt elektroniczny, TO_VERIFY prawnik); **nigdy auto-send** | HZ (z CRM) |
+| **Auto-wypełnianie matrycy przetargowej klienta** (Excel/portal) własnymi cenami albo cenami podwykonawców — „bez błędów" | operator | BRAK | KOPIUJ — determinizm: liczby WYŁĄCZNIE z pricing engine / cen wgranych (LLM mapuje format kolumn, nigdy nie liczy); walidacja schematu → diff-podgląd komórka po komórce → akceptacja człowieka; każda komórka z provenance (skąd cena); licznik błędów per przetarg = metryka (cel 0) | HZ (po Fali P) |
+| **Bid/no-bid — wpisanie tras z matrycy w obecną sieć**: wykorzystanie zasobów, puste km, kolizje z obecnymi klientami → korzyści, zagrożenia, **wpływ na rentowność obecnego biznesu** | operator | BRAK | KOPIUJ — network costing (13e) + what-if na `plan_snapshot` (B0); marżę liczy SQL na `charge` | V (dane zbierane od B0) |
+| Pomiar skuteczności przetargów: predykcja rentowności vs rzeczywistość po wygraniu; won/lost vs cena; kalibracja | operator | BRAK | KOPIUJ — wiersze w `prediction_ledger` | B0 → V |
+
+Metrologia UX/UI (naukowa i techniczna):
+
+| Funkcja | Źródło | Status | Werdykt | Fala |
+|---|---|---|---|---|
+| Telemetria produktowa PostHog (zdarzenia, adopcja widoków/filtrów) | ADR-0002 | **DONE od plastra 0.5** | JEST | 0 |
+| **Pomiar czasu jobu operatora** (wycena, accept HITL, zlecenie — od wejścia do zamknięcia; cel jakości PLAN: „job w czasie, który da się zmierzyć") | PLAN / MC | CZĘŚĆ (PostHog jest; brak nazwanych metryk jobów) | ULEPSZ — nazwane joby + funnel + czas + liczba błędów; każdy nowy ekran definiuje swój job-metric | T6/X (standard przy każdym nowym UI) |
+| Budżety techniczne: initial JS < 250 kB (egzekwowane w CI) · p95 API < 150 ms · LCP < 1,5 s | AGENTS | CZĘŚĆ (size-limit działa; k6 stub; LCP bez RUM) | ULEPSZ — RUM Web Vitals przez PostHog + realny pomiar p95 na żywym ruchu | V/ops |
+| A/B testy zmian UI (feature flags PostHog) — zmiana interfejsu = hipoteza + pomiar przed/po (czas jobu, błędy) | propozycja | BRAK | KOPIUJ | X/HZ |
+| Dostępność: axe + Playwright w gate | ADR-0002 | CZĘŚĆ (3 ścieżki e2e; U-playwright-axe ID otwarte) | ULEPSZ wg U-* | Wave FE |
+| Testy zadaniowe z pilotami (czas, błędy, SUS po sesji) przy onboardingu tenantów | propozycja | BRAK | KOPIUJ | X (piloty) |
+
 ## Rejestr odrzuceń — co świadomie NIE wchodzi i dlaczego (do decyzji operatora)
 
 | Pozycja | Powód odrzucenia / odroczenia | Status |
