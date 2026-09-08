@@ -57,7 +57,16 @@ def test_tariff_amount_rejects_zero() -> None:
         require_tariff_amount("0")
 
 
-@given(st.decimals(min_value="0.0001", max_value="9999", places=4, allow_nan=False, allow_infinity=False))
+_POSITIVE = st.decimals(
+    min_value="0.0001",
+    max_value="9999",
+    places=4,
+    allow_nan=False,
+    allow_infinity=False,
+)
+
+
+@given(_POSITIVE)
 def test_positive_decimals_quantize(units: Decimal) -> None:
     assert require_chargeable_weight(units) == units
     assert require_tariff_amount(str(units)) == units
