@@ -123,6 +123,8 @@ export function PartyCatalogPage() {
   const [vatEu, setVatEu] = useState("")
   const [eori, setEori] = useState("")
   const [duns, setDuns] = useState("")
+  const [isSoleTrader, setIsSoleTrader] = useState(false)
+  const [parentPartyId, setParentPartyId] = useState("")
   const [rolesText, setRolesText] = useState("customer")
   const [resolved, setResolved] = useState<Party | null>(null)
   const [resolvedEmail, setResolvedEmail] = useState<Party | null>(null)
@@ -195,13 +197,27 @@ export function PartyCatalogPage() {
 
   const createMutation = useMutation({
     mutationFn: () =>
-      createParty(partyCreateBody({ legalName, countryCode, taxId, rolesText, vatEu, eori, duns })),
+      createParty(
+        partyCreateBody({
+          legalName,
+          countryCode,
+          taxId,
+          rolesText,
+          vatEu,
+          eori,
+          duns,
+          isSoleTrader,
+          parentPartyId,
+        }),
+      ),
     onSuccess: (row) => {
       setLegalName("")
       setTaxId("")
       setVatEu("")
       setEori("")
       setDuns("")
+      setIsSoleTrader(false)
+      setParentPartyId("")
       setSelectedId(row.id)
       void queryClient.invalidateQueries({ queryKey: ["parties", ctx.organizationId] })
     },
@@ -292,6 +308,21 @@ export function PartyCatalogPage() {
           placeholder="DUNS"
           value={duns}
           onChange={(event) => setDuns(event.target.value)}
+        />
+        <label className="flex items-center gap-2 text-sm">
+          <input
+            type="checkbox"
+            aria-label="JDG"
+            checked={isSoleTrader}
+            onChange={(event) => setIsSoleTrader(event.target.checked)}
+          />
+          JDG
+        </label>
+        <Input
+          aria-label="Kontrahent nadrzędny"
+          placeholder="parent_party_id"
+          value={parentPartyId}
+          onChange={(event) => setParentPartyId(event.target.value)}
         />
         <Input
           aria-label="Role kontrahenta"

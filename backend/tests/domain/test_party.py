@@ -14,6 +14,7 @@ _ALLOWED_ROLES = (
     "shipper",
     "consignee",
     "notify",
+    "subcontractor",
 )
 _NIP_WEIGHTS = (6, 5, 7, 2, 3, 4, 5, 6, 7)
 _NINE_DIGITS = st.from_regex(r"[0-9]{9}", fullmatch=True)
@@ -127,6 +128,24 @@ def test_business_id_required_and_customer_needs_tax_id() -> None:
         domain.require_customer_tax_id(["customer"], None)
     domain.require_customer_tax_id(["vendor"], None)
     domain.require_customer_tax_id(["customer"], "1234563218")
+
+
+def test_jdg_cannot_take_credit_on_insert_and_parent_cannot_be_self() -> None:
+    from uuid import uuid4
+
+    domain = _party_domain()
+    with pytest.raises(_invalid(), match="JDG"):
+        domain.require_no_jdg_auto_credit(True, "100")
+    domain.require_no_jdg_auto_credit(False, "100")
+    domain.require_no_jdg_auto_credit(True, None)
+    party_id = uuid4()
+    with pytest.raises(_invalid(), match="parent"):
+        domain.require_parent_not_self(party_id, party_id)
+    domain.require_parent_not_self(party_id, uuid4())
+
+
+def test_subcontractor_is_an_allowed_role() -> None:
+    assert _party_domain().normalize_roles(["subcontractor"]) == ["subcontractor"]
 
 
 def test_allowed_roles_are_kept_in_order_without_duplicates() -> None:

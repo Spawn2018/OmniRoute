@@ -18,6 +18,10 @@ def _party_cls():
     return load_attr("app.models.party", "Party")
 
 
+def _assignment_cls():
+    return load_attr("app.models.party_role_assignment", "PartyRoleAssignment")
+
+
 def _contact_cls():
     return load_attr("app.models.party_contact", "PartyContact")
 
@@ -391,6 +395,39 @@ async def test_tax_id_is_unique_inside_one_tenant_country(session, two_tenants) 
     )
     with pytest.raises(IntegrityError, match="uq_party_org_country_tax_id"):
         await session.flush()
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_role_assignment_rls_isolates_tenants(session, two_tenants) -> None:
+    Assignment = _assignment_cls()
+    party_a = await _flush_party(
+        session, two_tenants, "org_a", legal_name="ACME A", roles=["vendor"],
+    )
+    party_b = await _flush_party(
+        session, two_tenants, "org_b", legal_name="ACME B", roles=["vendor"],
+    )
+    await bind_tenant(session, two_tenants["org_a"].id)
+    row_a = Assignment(
+        id=uuid4(),
+        organization_id=two_tenants["org_a"].id,
+        party_id=party_a.id,
+        role="vendor",
+        source_ref=_MANUAL,
+    )
+    session.add(row_a)
+    await session.flush()
+    await bind_tenant(session, two_tenants["org_b"].id)
+    row_b = Assignment(
+        id=uuid4(),
+        organization_id=two_tenants["org_b"].id,
+        party_id=party_b.id,
+        role="vendor",
+        source_ref=_MANUAL,
+    )
+    session.add(row_b)
+    await session.flush()
+    await _assert_isolated(session, two_tenants, Assignment, row_a, row_b)
 
 
 @pytest.mark.integration

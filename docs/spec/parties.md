@@ -32,6 +32,13 @@ Delta: [docs/deltas/archived/5.0-party.md](../deltas/archived/5.0-party.md).
 - Duplikat → `PartyConflict` HTTP 409 z `existing_party_id` i `href` `/parties/{id}`
 - Stare wiersze mogą nie mieć numeru. Nie M10-2 (role table / JDG / parent)
 
+## 132.0 role, JDG, parent (M10-2)
+
+- `party_role_assignment` per tenant; te same tokeny co `party.roles` + `subcontractor`
+- `is_sole_trader` — JDG nie dostaje `credit_limit` na INSERT (HITL = `credit_review`)
+- `parent_party_id` FK tenanta, nie sam siebie
+- Nie trzy tabele agent/armator/podwykonawca
+
 ## 8.0 matcher maila (M-11)
 
 ### Zakres

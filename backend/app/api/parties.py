@@ -33,6 +33,8 @@ class PartyCreate(BaseModel):
     credit_limit: str | None = None
     credit_currency: str | None = Field(default=None, min_length=3, max_length=3)
     lookup_source: str | None = None
+    is_sole_trader: bool = False
+    parent_party_id: UUID | None = None
 
 
 class PartyResponse(BaseModel):
@@ -50,6 +52,8 @@ class PartyResponse(BaseModel):
     roles: list[str]
     credit_limit: str | None
     credit_currency: str | None
+    is_sole_trader: bool
+    parent_party_id: UUID | None
     is_active: bool
     source_ref: str
     sanctions_list_ref: str | None
@@ -69,6 +73,8 @@ class PartyResponse(BaseModel):
             duns=row.duns,
             country_code=row.country_code.strip(),
             roles=list(row.roles),
+            is_sole_trader=row.is_sole_trader,
+            parent_party_id=row.parent_party_id,
             credit_limit=limit,
             credit_currency=row.credit_currency,
             is_active=row.is_active,
@@ -308,6 +314,8 @@ async def create_party(
         credit_limit=body.credit_limit,
         credit_currency=body.credit_currency,
         lookup_source=body.lookup_source,
+        is_sole_trader=body.is_sole_trader,
+        parent_party_id=body.parent_party_id,
     )
     await session.commit()
     return PartyResponse.from_row(row)

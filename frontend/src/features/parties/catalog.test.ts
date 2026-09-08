@@ -64,6 +64,8 @@ describe("parties catalog surface for 5.0", () => {
     expect(page).toContain("VAT UE")
     expect(page).toContain("EORI")
     expect(page).toContain("DUNS")
+    expect(page).toContain("JDG")
+    expect(page).toContain("parent_party_id")
     expect(page).toContain("createParty")
     expect(page).toContain("resolveParty")
     expect(page).toContain("resolvePartyEmail")

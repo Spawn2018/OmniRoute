@@ -8,6 +8,7 @@ from sqlalchemy import (
     CheckConstraint,
     DateTime,
     ForeignKey,
+    ForeignKeyConstraint,
     Index,
     Integer,
     Numeric,
@@ -23,7 +24,7 @@ from app.models.base import Base, TimestampMixin
 
 _ROLES_SQL = (
     "roles <@ ARRAY['customer','vendor','agent','carrier',"
-    "'shipper','consignee','notify']::text[] AND cardinality(roles) >= 1"
+    "'shipper','consignee','notify','subcontractor']::text[] AND cardinality(roles) >= 1"
 )
 _CREDIT_SQL = (
     "(credit_limit IS NULL AND credit_currency IS NULL) OR "
@@ -35,8 +36,18 @@ class Party(Base, TimestampMixin):
     __tablename__ = "party"
     __table_args__ = (
         UniqueConstraint("organization_id", "id", name="uq_party_org_id"),
+        ForeignKeyConstraint(
+            ["organization_id", "parent_party_id"],
+            ["party.organization_id", "party.id"],
+            name="fk_party_parent_party",
+            ondelete="RESTRICT",
+        ),
         CheckConstraint(_ROLES_SQL, name="ck_party_roles"),
         CheckConstraint(_CREDIT_SQL, name="ck_party_credit_pair"),
+        CheckConstraint(
+            "parent_party_id IS NULL OR parent_party_id <> id",
+            name="ck_party_parent_not_self",
+        ),
         Index(
             "uq_party_org_country_tax_id",
             "organization_id",
@@ -94,6 +105,8 @@ class Party(Base, TimestampMixin):
     language: Mapped[str | None] = mapped_column(String(16), nullable=True)
     gus_synced_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     vies_checked_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    is_sole_trader: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    parent_party_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
     is_active: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
     source_ref: Mapped[str] = mapped_column(String(256), nullable=False)
     # URI listy, którą operator już ma — nie live HTTP i nie auto-match.

@@ -12,6 +12,8 @@ export type Party = {
   duns: string | null
   country_code: string
   roles: string[]
+  is_sole_trader: boolean
+  parent_party_id: string | null
   credit_limit: string | null
   credit_currency: string | null
   is_active: boolean
@@ -82,6 +84,8 @@ export type PartyCreatePayload = {
   vat_eu?: string
   eori?: string
   duns?: string
+  is_sole_trader?: boolean
+  parent_party_id?: string
 }
 
 export function partyCreateBody(args: {
@@ -92,6 +96,8 @@ export function partyCreateBody(args: {
   vatEu?: string
   eori?: string
   duns?: string
+  isSoleTrader?: boolean
+  parentPartyId?: string
 }): PartyCreatePayload {
   const roles = args.rolesText
     .split(",")
@@ -108,6 +114,10 @@ export function partyCreateBody(args: {
     ...(vatEu === "" ? {} : { vat_eu: vatEu }),
     ...(eori === "" ? {} : { eori }),
     ...(duns === "" ? {} : { duns }),
+    ...(args.isSoleTrader === true ? { is_sole_trader: true } : {}),
+    ...(args.parentPartyId && args.parentPartyId.trim() !== ""
+      ? { parent_party_id: args.parentPartyId.trim() }
+      : {}),
   }
 }
 
@@ -154,6 +164,8 @@ export async function createParty(body: PartyCreatePayload): Promise<Party> {
       vat_eu: body.vat_eu ?? null,
       eori: body.eori ?? null,
       duns: body.duns ?? null,
+      is_sole_trader: body.is_sole_trader ?? false,
+      parent_party_id: body.parent_party_id ?? null,
     }),
   })
   if (response.status === 409) {

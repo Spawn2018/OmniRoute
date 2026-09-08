@@ -82,6 +82,7 @@ async def test_service_create_party_normalizes_and_adds() -> None:
     service._parties.find_by_vat_eu = AsyncMock(return_value=None)
     service._parties.find_by_eori = AsyncMock(return_value=None)
     service._parties.find_by_duns = AsyncMock(return_value=None)
+    service._parties.add_role_assignment = AsyncMock(side_effect=lambda row: row)
     created = await service.create_party(
         organization_id=uuid4(),
         user_id=uuid4(),
@@ -98,6 +99,45 @@ async def test_service_create_party_normalizes_and_adds() -> None:
     assert created.vat_eu is None
     assert created.eori is None
     assert created.duns is None
+    assert created.is_sole_trader is False
+    service._parties.add_role_assignment.assert_awaited()
+
+
+@pytest.mark.asyncio
+async def test_service_create_jdg_with_credit_is_rejected() -> None:
+    service = _service()
+    with pytest.raises(InvalidPartyData, match="JDG"):
+        await service.create_party(
+            organization_id=uuid4(),
+            user_id=uuid4(),
+            legal_name="ACME",
+            country_code="PL",
+            roles=["customer"],
+            tax_id="1234563218",
+            is_sole_trader=True,
+            credit_limit="100.0000",
+            credit_currency="PLN",
+        )
+
+
+@pytest.mark.asyncio
+async def test_service_create_unknown_parent_is_not_found() -> None:
+    service = _service()
+    service._parties.find_by_tax_id = AsyncMock(return_value=None)
+    service._parties.find_by_vat_eu = AsyncMock(return_value=None)
+    service._parties.find_by_eori = AsyncMock(return_value=None)
+    service._parties.find_by_duns = AsyncMock(return_value=None)
+    service._parties.get = AsyncMock(return_value=None)
+    with pytest.raises(ResourceNotFound, match="kontrahent"):
+        await service.create_party(
+            organization_id=uuid4(),
+            user_id=uuid4(),
+            legal_name="ACME",
+            country_code="DE",
+            roles=["vendor"],
+            eori="DE1234567",
+            parent_party_id=uuid4(),
+        )
 
 
 @pytest.mark.asyncio
@@ -215,6 +255,8 @@ def test_party_response_formats_credit_and_strips_country() -> None:
         roles=["customer"],
         credit_limit=Decimal("10.0000"),
         credit_currency="PLN",
+        is_sole_trader=False,
+        parent_party_id=None,
         is_active=True,
         source_ref="tenant:manual",
         sanctions_list_ref=None,

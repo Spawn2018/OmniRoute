@@ -347,3 +347,4 @@
 | 2026-09-08 | Plan 131.0 | M-10 | M10-1: ID biznesowe + unikat + 409 z linkiem. Delta zaakceptowana (`/noc`). Nie M10-2. Następny: kod 131.0. |
 | 2026-09-08 | 131.0 | M-10 | M10-1: NIP/VAT-EU/EORI/DUNS unikat; nowy zapis wymaga ID; customer bez NIP = 400; 409 z linkiem. Nie M10-2. Następny: M10-2 Plan. |
 | 2026-09-08 | Plan 132.0 | M-10 | M10-2: assignment + JDG + parent. Delta zaakceptowana (`/noc`). Nie trzy tabele. Następny: kod 132.0. |
+| 2026-09-08 | 132.0 | M-10 | M10-2: role assignment + JDG + parent. Limit na JDG tylko HITL. Nie trzy tabele. Następny: B0a Plan. |

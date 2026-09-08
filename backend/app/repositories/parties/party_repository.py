@@ -12,6 +12,7 @@ from app.models.party_bank_account import PartyBankAccount
 from app.models.party_charge_override import PartyChargeOverride
 from app.models.party_contact import PartyContact
 from app.models.party_email_domain import PartyEmailDomain
+from app.models.party_role_assignment import PartyRoleAssignment
 from app.models.party_scorecard import PartyScorecard
 
 
@@ -47,6 +48,19 @@ class PartyRepository:
         self._session.add(row)
         await self._session.flush()
         return row
+
+    async def add_role_assignment(self, row: PartyRoleAssignment) -> PartyRoleAssignment:
+        self._session.add(row)
+        await self._session.flush()
+        return row
+
+    async def list_role_assignments(self, party_id: UUID) -> list[PartyRoleAssignment]:
+        result = await self._session.scalars(
+            select(PartyRoleAssignment)
+            .where(PartyRoleAssignment.party_id == party_id)
+            .order_by(PartyRoleAssignment.role),
+        )
+        return list(result.all())
 
     async def list_contacts(self, party_id: UUID) -> list[PartyContact]:
         result = await self._session.scalars(

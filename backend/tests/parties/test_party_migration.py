@@ -50,6 +50,21 @@ def test_generated_api_types_include_party_and_operator_party_id() -> None:
     assert "PartyScreenSanctions" in source
     assert "eori" in source
     assert "duns" in source
+    assert "is_sole_trader" in source
+
+
+def test_migration_075_adds_jdg_parent_and_role_assignment() -> None:
+    path = _ROOT / "backend" / "alembic" / "versions" / "075_party_roles_jdg.py"
+    assert path.is_file()
+    source = path.read_text(encoding="utf-8")
+    assert 'revision: str = "075_party_roles_jdg"' in source
+    assert 'down_revision: str | None = "074_party_business_ids"' in source
+    assert "is_sole_trader" in source
+    assert "parent_party_id" in source
+    assert "party_role_assignment" in source
+    assert "FORCE ROW LEVEL SECURITY" in source
+    assert "subcontractor" in source
+    assert "def downgrade" in source
 
 
 def test_migration_074_adds_eori_duns_and_unique_tokens() -> None:

@@ -11,6 +11,7 @@ ALLOWED_ROLES: tuple[str, ...] = (
     "shipper",
     "consignee",
     "notify",
+    "subcontractor",
 )
 _NIP_WEIGHTS = (6, 5, 7, 2, 3, 4, 5, 6, 7)
 _MANUAL_SOURCE = "tenant:manual"
@@ -74,6 +75,16 @@ def require_business_id(
 def require_customer_tax_id(roles: list[str], tax_id: str | None) -> None:
     if "customer" in roles and tax_id is None:
         raise InvalidPartyData("customer wymaga tax_id")
+
+
+def require_no_jdg_auto_credit(is_sole_trader: bool, credit_limit: object | None) -> None:
+    if is_sole_trader and credit_limit is not None:
+        raise InvalidPartyData("JDG: kredyt tylko po recenzji")
+
+
+def require_parent_not_self(party_id: object, parent_party_id: object | None) -> None:
+    if parent_party_id is not None and parent_party_id == party_id:
+        raise InvalidPartyData("parent_party_id nie może wskazywać siebie")
 
 
 def normalize_tax_id(country_code: str, tax_id: str) -> str:

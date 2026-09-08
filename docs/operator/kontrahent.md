@@ -13,4 +13,6 @@ Lookup po NIP albo VIES **nie zapisuje** karty. Dostajesz szkic. Zapis `party` j
 
 Czego tu nie ma: live GUS w CI, tuple OpenFGA na wiersz, auto-limit kredytowy, live lista sankcji, auto-match.
 
+JDG zaznaczasz na karcie — wtedy limitu kredytu nie wpisujesz przy zapisie; recenzja zostaje osobnym HITL. Oddział wskazuje `parent_party_id`. Rola `subcontractor` to ta sama lista ról, nie osobna szafa.
+
 Nazwy w kodzie: `party` · `resolve(tax_id)` · `lookup` = szkic.

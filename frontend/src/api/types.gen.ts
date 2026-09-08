@@ -2194,6 +2194,14 @@ export type PartyCreate = {
      * Lookup Source
      */
     lookup_source?: string | null;
+    /**
+     * Is Sole Trader
+     */
+    is_sole_trader?: boolean;
+    /**
+     * Parent Party Id
+     */
+    parent_party_id?: string | null;
 };
 
 /**
@@ -2284,6 +2292,14 @@ export type PartyResponse = {
      * Credit Currency
      */
     credit_currency: string | null;
+    /**
+     * Is Sole Trader
+     */
+    is_sole_trader: boolean;
+    /**
+     * Parent Party Id
+     */
+    parent_party_id: string | null;
     /**
      * Is Active
      */

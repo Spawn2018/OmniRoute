@@ -41,6 +41,9 @@ from app.models.party_charge_override import (  # noqa: F401 — rejestr metadan
 )
 from app.models.party_contact import PartyContact  # noqa: F401 — rejestr metadanych RLS
 from app.models.party_email_domain import PartyEmailDomain  # noqa: F401 — rejestr metadanych RLS
+from app.models.party_role_assignment import (  # noqa: F401 — rejestr metadanych RLS
+    PartyRoleAssignment,
+)
 from app.models.party_scorecard import PartyScorecard  # noqa: F401 — rejestr metadanych RLS
 from app.models.port import Port  # noqa: F401 — rejestr metadanych RLS
 from app.models.port_surcharge import PortSurcharge  # noqa: F401 — rejestr metadanych RLS

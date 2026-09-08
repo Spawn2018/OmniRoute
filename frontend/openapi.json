@@ -10258,6 +10258,23 @@
               }
             ],
             "title": "Lookup Source"
+          },
+          "is_sole_trader": {
+            "type": "boolean",
+            "title": "Is Sole Trader",
+            "default": false
+          },
+          "parent_party_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Parent Party Id"
           }
         },
         "type": "object",
@@ -10429,6 +10446,22 @@
             ],
             "title": "Credit Currency"
           },
+          "is_sole_trader": {
+            "type": "boolean",
+            "title": "Is Sole Trader"
+          },
+          "parent_party_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Parent Party Id"
+          },
           "is_active": {
             "type": "boolean",
             "title": "Is Active"
@@ -10475,6 +10508,8 @@
           "roles",
           "credit_limit",
           "credit_currency",
+          "is_sole_trader",
+          "parent_party_id",
           "is_active",
           "source_ref",
           "sanctions_list_ref",

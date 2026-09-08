@@ -50,6 +50,8 @@ from app.domain.party import (
     normalize_vat_eu,
     require_business_id,
     require_customer_tax_id,
+    require_no_jdg_auto_credit,
+    require_parent_not_self,
 )
 from app.domain.party_scorecard import (
     optional_non_negative_hours,
@@ -66,6 +68,7 @@ from app.models.party_bank_account import PartyBankAccount
 from app.models.party_charge_override import PartyChargeOverride
 from app.models.party_contact import PartyContact
 from app.models.party_email_domain import PartyEmailDomain
+from app.models.party_role_assignment import PartyRoleAssignment
 from app.models.party_scorecard import PartyScorecard
 from app.repositories.parties.party_repository import PartyRepository
 from app.services.parties.lookup import (
@@ -111,6 +114,8 @@ def _new_party(
     credit_limit: Decimal | None,
     credit_currency: str | None,
     origin: str,
+    is_sole_trader: bool,
+    parent_party_id: UUID | None,
 ) -> Party:
     return Party(
         id=uuid4(),
@@ -126,6 +131,8 @@ def _new_party(
         credit_limit=credit_limit,
         credit_currency=credit_currency,
         source_ref=origin,
+        is_sole_trader=is_sole_trader,
+        parent_party_id=parent_party_id,
         is_active=True,
         created_by=user_id,
     )
@@ -201,6 +208,8 @@ def _party_from_ids(
     credit_limit: Decimal | None,
     credit_currency: str | None,
     origin: str,
+    is_sole_trader: bool,
+    parent_party_id: UUID | None,
 ) -> Party:
     return _new_party(
         organization_id=organization_id,
@@ -216,7 +225,78 @@ def _party_from_ids(
         credit_limit=credit_limit,
         credit_currency=credit_currency,
         origin=origin,
+        is_sole_trader=is_sole_trader,
+        parent_party_id=parent_party_id,
     )
+
+
+async def _resolve_parent(repo: PartyRepository, parent_party_id: UUID | None) -> UUID | None:
+    if parent_party_id is None:
+        return None
+    found = await repo.get(parent_party_id)
+    if found is None:
+        raise ResourceNotFound(f"nieznany kontrahent: {parent_party_id}")
+    return parent_party_id
+
+
+async def _write_role_assignments(repo: PartyRepository, row: Party) -> None:
+    for role in row.roles:
+        await repo.add_role_assignment(
+            PartyRoleAssignment(
+                id=uuid4(),
+                organization_id=row.organization_id,
+                party_id=row.id,
+                role=role,
+                source_ref=row.source_ref,
+                created_by=row.created_by,
+            )
+        )
+
+
+async def _insert_checked_party(
+    repo: PartyRepository,
+    row: Party,
+    ids: tuple[str | None, str | None, str | None, str | None],
+) -> Party:
+    hit = await _collision_on_tokens(repo, ids)
+    if hit is not None:
+        raise hit
+    return await _add_party_or_conflict(repo, row, ids)
+
+
+async def _finish_create(
+    repo: PartyRepository,
+    organization_id: UUID,
+    user_id: UUID,
+    legal_name: str,
+    country: str,
+    roles: list[str],
+    ids: tuple[str | None, str | None, str | None, str | None],
+    short_name: str | None,
+    credit_limit: Decimal | None,
+    credit_currency: str | None,
+    origin: str,
+    is_sole_trader: bool,
+    parent: UUID | None,
+) -> Party:
+    draft = _party_from_ids(
+        organization_id=organization_id,
+        user_id=user_id,
+        legal_name=legal_name,
+        country=country,
+        roles=roles,
+        ids=ids,
+        short_name=short_name,
+        credit_limit=credit_limit,
+        credit_currency=credit_currency,
+        origin=origin,
+        is_sole_trader=is_sole_trader,
+        parent_party_id=parent,
+    )
+    require_parent_not_self(draft.id, parent)
+    stored = await _insert_checked_party(repo, draft, ids)
+    await _write_role_assignments(repo, stored)
+    return stored
 
 
 async def _persist_new_party(
@@ -235,29 +315,29 @@ async def _persist_new_party(
     credit_currency: str | None,
     source_ref: str | None,
     lookup_source: str | None,
+    is_sole_trader: bool,
+    parent_party_id: UUID | None,
 ) -> Party:
+    require_no_jdg_auto_credit(is_sole_trader, credit_limit)
     country = normalize_country_code(country_code)
     ids = _stored_business_ids(country, tax_id, vat_eu, eori, duns)
     require_customer_tax_id(normalize_roles(roles), ids[0])
-    hit = await _collision_on_tokens(repo, ids)
-    if hit is not None:
-        raise hit
+    parent = await _resolve_parent(repo, parent_party_id)
     limit, currency = normalize_credit_pair(credit_limit, credit_currency)
-    return await _add_party_or_conflict(
+    return await _finish_create(
         repo,
-        _party_from_ids(
-            organization_id=organization_id,
-            user_id=user_id,
-            legal_name=legal_name,
-            country=country,
-            roles=roles,
-            ids=ids,
-            short_name=short_name,
-            credit_limit=limit,
-            credit_currency=currency,
-            origin=_party_source_ref(lookup_source, source_ref),
-        ),
+        organization_id,
+        user_id,
+        legal_name,
+        country,
+        roles,
         ids,
+        short_name,
+        limit,
+        currency,
+        _party_source_ref(lookup_source, source_ref),
+        is_sole_trader,
+        parent,
     )
 
 
@@ -414,6 +494,8 @@ class PartyService:
         credit_currency: str | None = None,
         source_ref: str | None = None,
         lookup_source: str | None = None,
+        is_sole_trader: bool = False,
+        parent_party_id: UUID | None = None,
     ) -> Party:
         return await _persist_new_party(
             self._parties,
@@ -431,6 +513,8 @@ class PartyService:
             credit_currency,
             source_ref,
             lookup_source,
+            is_sole_trader,
+            parent_party_id,
         )
 
     async def list_contacts(self, party_id: UUID) -> list[PartyContact]:
