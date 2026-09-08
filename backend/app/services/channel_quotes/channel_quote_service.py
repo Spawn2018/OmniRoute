@@ -9,6 +9,7 @@ from app.domain.channel_quote import (
     normalize_quote_amount,
     normalize_quote_currency,
     normalize_quote_date,
+    normalize_transit_days,
 )
 from app.domain.errors import (
     ChannelQuoteConflict,
@@ -17,7 +18,10 @@ from app.domain.errors import (
     UnknownPort,
 )
 from app.models.channel_quote import ChannelQuote
-from app.repositories.channel_quotes.channel_quote_repository import ChannelQuoteRepository
+from app.repositories.channel_quotes.channel_quote_repository import (
+    ChannelQuoteCard,
+    ChannelQuoteRepository,
+)
 
 _MANUAL = "tenant:manual"
 
@@ -32,6 +36,7 @@ def _new_channel_quote(
     quote_date: date,
     amount: Decimal,
     currency: str,
+    transit_days: int | None,
 ) -> ChannelQuote:
     return ChannelQuote(
         id=uuid4(),
@@ -42,6 +47,7 @@ def _new_channel_quote(
         origin_port_id=origin_port_id,
         destination_port_id=destination_port_id,
         quote_date=quote_date,
+        transit_days=transit_days,
         source_ref=_MANUAL,
         created_by=user_id,
     )
@@ -53,6 +59,9 @@ class ChannelQuoteService:
 
     async def list_quotes(self) -> list[ChannelQuote]:
         return await self._quotes.list_all()
+
+    async def list_quote_cards(self) -> list[ChannelQuoteCard]:
+        return await self._quotes.list_with_badges()
 
     async def get_quote(self, quote_id: UUID) -> ChannelQuote:
         found = await self._quotes.get(quote_id)
@@ -107,10 +116,12 @@ class ChannelQuoteService:
         quote_date: object,
         amount: object,
         currency: object,
+        transit_days: object = None,
     ) -> ChannelQuote:
         day = normalize_quote_date(quote_date)
         stored_amount = normalize_quote_amount(amount)
         iso = normalize_quote_currency(currency)
+        days = normalize_transit_days(transit_days)
         existing = await self._lane_quote(
             party_id,
             origin_port_id,
@@ -119,6 +130,31 @@ class ChannelQuoteService:
         )
         if existing is not None and existing.quote_date == day:
             raise ChannelQuoteConflict(f"oferta na {day.isoformat()} już istnieje")
+        return await self._insert_quote(
+            organization_id=organization_id,
+            user_id=user_id,
+            party_id=party_id,
+            origin_port_id=origin_port_id,
+            destination_port_id=destination_port_id,
+            quote_date=day,
+            amount=stored_amount,
+            currency=iso,
+            transit_days=days,
+        )
+
+    async def _insert_quote(
+        self,
+        *,
+        organization_id: UUID,
+        user_id: UUID,
+        party_id: UUID,
+        origin_port_id: UUID,
+        destination_port_id: UUID,
+        quote_date: date,
+        amount: Decimal,
+        currency: str,
+        transit_days: int | None,
+    ) -> ChannelQuote:
         try:
             return await self._quotes.add(
                 _new_channel_quote(
@@ -127,13 +163,14 @@ class ChannelQuoteService:
                     party_id=party_id,
                     origin_port_id=origin_port_id,
                     destination_port_id=destination_port_id,
-                    quote_date=day,
-                    amount=stored_amount,
-                    currency=iso,
+                    quote_date=quote_date,
+                    amount=amount,
+                    currency=currency,
+                    transit_days=transit_days,
                 )
             )
         except IntegrityError as exc:
-            raise ChannelQuoteConflict(f"oferta na {day.isoformat()} już istnieje") from exc
+            raise ChannelQuoteConflict(f"oferta na {quote_date.isoformat()} już istnieje") from exc
 
     async def _require_carrier(self, party_id: UUID) -> None:
         found = await self._quotes.get_carrier_profile(party_id)

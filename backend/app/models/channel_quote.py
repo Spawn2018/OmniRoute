@@ -8,6 +8,7 @@ from sqlalchemy import (
     Date,
     ForeignKey,
     ForeignKeyConstraint,
+    Integer,
     Numeric,
     String,
     UniqueConstraint,
@@ -48,6 +49,10 @@ class ChannelQuote(Base, TimestampMixin):
             ondelete="RESTRICT",
         ),
         CheckConstraint("currency ~ '^[A-Z]{3}$' AND amount > 0", name="ck_channel_quote_money"),
+        CheckConstraint(
+            "transit_days IS NULL OR transit_days >= 1",
+            name="ck_channel_quote_transit_days",
+        ),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
@@ -63,4 +68,5 @@ class ChannelQuote(Base, TimestampMixin):
     quote_date: Mapped[date] = mapped_column(Date, nullable=False)
     amount: Mapped[Decimal] = mapped_column(Numeric(14, 4), nullable=False)
     currency: Mapped[str] = mapped_column(CHAR(3), nullable=False)
+    transit_days: Mapped[int | None] = mapped_column(Integer, nullable=True)
     source_ref: Mapped[str] = mapped_column(String(256), nullable=False)

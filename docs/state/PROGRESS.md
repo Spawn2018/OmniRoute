@@ -351,3 +351,4 @@
 | 2026-09-08 | Plan 133.0 | B0a | `entity_event` append-only. Delta zaakceptowana (`/noc`). Nie B0b. Następny: kod 133.0. |
 | 2026-09-08 | 133.0 | B0a | `entity_event` append-only. Kind inquiry/quote. Nie outbox. Nie B0b. Następny: O1 Plan. |
 | 2026-09-08 | Plan 134.0 | M-19 | O1: `transit_days` + znaczki SQL. Delta zaakceptowana (`/noc`). Nie T7. Następny: kod 134.0. |
+| 2026-09-08 | 134.0 | M-19 | O1: `transit_days` + znaczki SQL (ta sama waluta). Nie NBP. Następny: O2 Plan. |

@@ -7,9 +7,11 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app.api.deps import require_tenant_session, set_authz_checker
+from app.domain.channel_quote import normalize_transit_days
 from app.domain.errors import UnknownCarrierProfile, UnknownChannelQuote
 from app.main import app
 from app.models.channel_quote import ChannelQuote
+from app.repositories.channel_quotes.channel_quote_repository import ChannelQuoteCard
 from tests.http_auth import bearer_auth_headers
 
 _MISSING_CARRIER = UUID("00000000-0000-0000-0000-000000000000")
@@ -34,6 +36,12 @@ class StubChannelQuoteService:
 
     async def list_quotes(self) -> list[ChannelQuote]:
         return list(self.rows)
+
+    async def list_quote_cards(self) -> list[ChannelQuoteCard]:
+        return [
+            ChannelQuoteCard(quote=row, is_cheapest=False, is_fastest_tt=False)
+            for row in self.rows
+        ]
 
     async def resolve(
         self,
@@ -66,6 +74,7 @@ class StubChannelQuoteService:
         quote_date: date,
         amount: object,
         currency: object,
+        transit_days: object = None,
     ) -> ChannelQuote:
         if party_id == _MISSING_CARRIER:
             raise UnknownCarrierProfile(f"brak profilu armatora: {party_id}")
@@ -78,6 +87,7 @@ class StubChannelQuoteService:
             origin_port_id=origin_port_id,
             destination_port_id=destination_port_id,
             quote_date=quote_date,
+            transit_days=normalize_transit_days(transit_days),
             source_ref="tenant:manual",
             created_by=user_id,
         )
@@ -150,6 +160,27 @@ def test_http_create_list_and_resolve(catalog_client: TestClient) -> None:
     )
     assert resolved.status_code == 200
     assert resolved.json()["id"] == body["id"]
+    assert body["transit_days"] is None
+    assert body["is_cheapest"] is False
+    assert body["is_fastest_tt"] is False
+
+
+def test_http_create_rejects_zero_transit_days(catalog_client: TestClient) -> None:
+    response = catalog_client.post(
+        "/api/v1/channel-quotes",
+        headers=bearer_auth_headers(),
+        json={
+            "party_id": str(uuid4()),
+            "origin_port_id": str(uuid4()),
+            "destination_port_id": str(uuid4()),
+            "quote_date": "2026-09-01",
+            "amount": "10.0000",
+            "currency": "USD",
+            "transit_days": 0,
+        },
+    )
+    assert response.status_code == 400
+    assert "czas tranzytu" in response.json()["detail"]
 
 
 def test_http_resolve_unknown_is_rejected(catalog_client: TestClient) -> None:

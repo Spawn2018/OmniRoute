@@ -7365,6 +7365,17 @@
             "maxLength": 3,
             "minLength": 3,
             "title": "Currency"
+          },
+          "transit_days": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Transit Days"
           }
         },
         "additionalProperties": false,
@@ -7419,9 +7430,28 @@
             "type": "string",
             "title": "Currency"
           },
+          "transit_days": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Transit Days"
+          },
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
+          },
+          "is_cheapest": {
+            "type": "boolean",
+            "title": "Is Cheapest"
+          },
+          "is_fastest_tt": {
+            "type": "boolean",
+            "title": "Is Fastest Tt"
           }
         },
         "type": "object",
@@ -7434,7 +7464,10 @@
           "quote_date",
           "amount",
           "currency",
-          "source_ref"
+          "transit_days",
+          "source_ref",
+          "is_cheapest",
+          "is_fastest_tt"
         ],
         "title": "ChannelQuoteResponse"
       },

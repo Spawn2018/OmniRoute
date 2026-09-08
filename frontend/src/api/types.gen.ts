@@ -378,6 +378,10 @@ export type ChannelQuoteCreate = {
      * Currency
      */
     currency: string;
+    /**
+     * Transit Days
+     */
+    transit_days?: number | null;
 };
 
 /**
@@ -417,9 +421,21 @@ export type ChannelQuoteResponse = {
      */
     currency: string;
     /**
+     * Transit Days
+     */
+    transit_days: number | null;
+    /**
      * Source Ref
      */
     source_ref: string;
+    /**
+     * Is Cheapest
+     */
+    is_cheapest: boolean;
+    /**
+     * Is Fastest Tt
+     */
+    is_fastest_tt: boolean;
 };
 
 /**

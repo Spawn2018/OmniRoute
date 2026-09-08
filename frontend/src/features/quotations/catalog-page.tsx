@@ -712,6 +712,9 @@ function OfferResponseComparisonPanel(args: { lanes: QuotationLane[]; quotes: Ch
             <p key={quote.id} className="text-xs">
               kanał {quote.quote_date} {quote.source_ref}{" "}
               <Money amount={quote.amount} currency={quote.currency} />
+              {quote.transit_days === null ? null : ` · ${String(quote.transit_days)} dni`}
+              {quote.is_cheapest ? " · najtańsza" : ""}
+              {quote.is_fastest_tt ? " · najszybszy TT" : ""}
             </p>
           ))}
         </div>

@@ -1,7 +1,7 @@
 # M-19 channel_quote — stawka z kanału armatora
 
 **Moduł żywy:** M-19 (archiwum M-19; nie koliduje z żywym M-07 `rate_line` / M-08 `charge`)  
-**Plaster:** **13.0** (zamknięty)  
+**Plaster:** **13.0** (zamknięty) · **134.0** O1 `transit_days`  
 **Status:** katalog oferty z kanału per `party`+POL/POD. Nie live HTTP. Nie zapis do `rate_line` / `charge`.
 
 Delta: [docs/deltas/archived/13.0-channel-quote.md](../deltas/archived/13.0-channel-quote.md).
@@ -20,6 +20,10 @@ Delta: [docs/deltas/archived/13.0-channel-quote.md](../deltas/archived/13.0-chan
 ### Poza 13.0
 
 HTTP do Maersk/Hapag/CMA/MSC · sekrety API · IMAP `rate_source_email` · INSERT `rate_line` / `charge` · DCSA live · M-32 poczta · ExtractionService · LLM liczący kwotę
+
+## 134.0 czas tranzytu i znaczki
+
+Kolumna `transit_days` (int ≥ 1, NULL na starych). `is_cheapest` / `is_fastest_tt` liczy SQL w grupie lane+dzień+waluta. Nie kolumny. Nie NBP.
 
 ### HC
 

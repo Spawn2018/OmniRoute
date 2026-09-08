@@ -10,7 +10,10 @@ export type ChannelQuote = {
   quote_date: string
   amount: string
   currency: string
+  transit_days: number | null
   source_ref: string
+  is_cheapest: boolean
+  is_fastest_tt: boolean
 }
 
 export type ChannelQuoteDraft = {
@@ -20,6 +23,7 @@ export type ChannelQuoteDraft = {
   quoteDate: string
   amount: string
   currency: string
+  transitDays?: string
 }
 
 export const EMPTY_QUOTE_DRAFT: ChannelQuoteDraft = {
@@ -38,8 +42,18 @@ export function channelQuoteCreateBody(draft: ChannelQuoteDraft): {
   quote_date: string
   amount: string
   currency: string
+  transit_days?: number
 } {
-  return {
+  const days = draft.transitDays?.trim() ?? ""
+  const body: {
+    party_id: string
+    origin_port_id: string
+    destination_port_id: string
+    quote_date: string
+    amount: string
+    currency: string
+    transit_days?: number
+  } = {
     party_id: draft.partyId.trim(),
     origin_port_id: draft.originPortId.trim(),
     destination_port_id: draft.destinationPortId.trim(),
@@ -47,6 +61,10 @@ export function channelQuoteCreateBody(draft: ChannelQuoteDraft): {
     amount: draft.amount.trim(),
     currency: draft.currency.trim().toUpperCase(),
   }
+  if (days !== "") {
+    body.transit_days = Number(days)
+  }
+  return body
 }
 
 async function readQuote(response: Response, fallback: string): Promise<ChannelQuote> {

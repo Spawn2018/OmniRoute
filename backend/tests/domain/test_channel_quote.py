@@ -9,6 +9,7 @@ from app.domain.channel_quote import (
     normalize_quote_amount,
     normalize_quote_currency,
     normalize_quote_date,
+    normalize_transit_days,
 )
 from app.domain.errors import InvalidChannelQuote
 
@@ -37,6 +38,13 @@ def test_normalize_quote_amount_rejects_zero() -> None:
 def test_normalize_quote_date_rejects_string() -> None:
     with pytest.raises(InvalidChannelQuote, match="dniem"):
         normalize_quote_date("2026-09-01")
+
+
+def test_normalize_transit_days_rejects_zero() -> None:
+    with pytest.raises(InvalidChannelQuote, match="1 dzień"):
+        normalize_transit_days(0)
+    assert normalize_transit_days(None) is None
+    assert normalize_transit_days(12) == 12
 
 
 def test_normalize_quote_date_accepts_date() -> None:

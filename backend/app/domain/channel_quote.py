@@ -35,3 +35,21 @@ def normalize_quote_date(raw: object) -> date:
     if type(raw) is date:
         return raw
     raise InvalidChannelQuote("data oferty musi być dniem")
+
+
+def normalize_transit_days(raw: object) -> int | None:
+    if raw is None:
+        return None
+    if type(raw) is bool or isinstance(raw, float):
+        raise InvalidChannelQuote("czas tranzytu musi być liczbą całkowitą dni")
+    if type(raw) is int:
+        days = raw
+    elif type(raw) is str and raw.strip() == "":
+        return None
+    elif type(raw) is str and raw.strip().isdigit():
+        days = int(raw.strip())
+    else:
+        raise InvalidChannelQuote("czas tranzytu musi być liczbą całkowitą dni")
+    if days < 1:
+        raise InvalidChannelQuote("czas tranzytu: co najmniej 1 dzień")
+    return days

@@ -43,6 +43,11 @@ const columns = [
     header: "Dzień oferty",
     cell: (info) => <span className="font-mono text-xs">{info.getValue()}</span>,
   }),
+  columnHelper.accessor("transit_days", {
+    id: "transit_days",
+    header: "TT",
+    cell: (info) => info.getValue() ?? "—",
+  }),
   columnHelper.display({
     id: "amount",
     header: "Oferta",
@@ -63,6 +68,7 @@ const COLUMN_LABELS = {
   origin_port_id: "POL",
   destination_port_id: "POD",
   quote_date: "Dzień oferty",
+  transit_days: "TT",
   amount: "Oferta",
   source_ref: "source_ref",
 }
@@ -76,6 +82,7 @@ export function ChannelQuoteCatalogPage() {
   const [quoteDate, setQuoteDate] = useState("")
   const [amount, setAmount] = useState("")
   const [currency, setCurrency] = useState("")
+  const [transitDays, setTransitDays] = useState("")
   const [lookupPartyId, setLookupPartyId] = useState("")
   const [lookupOrigin, setLookupOrigin] = useState("")
   const [lookupDestination, setLookupDestination] = useState("")
@@ -100,6 +107,7 @@ export function ChannelQuoteCatalogPage() {
           quoteDate,
           amount,
           currency,
+          transitDays,
         }),
       ),
     onSuccess: () => {
@@ -109,6 +117,7 @@ export function ChannelQuoteCatalogPage() {
       setQuoteDate("")
       setAmount("")
       setCurrency("")
+      setTransitDays("")
       void queryClient.invalidateQueries({ queryKey: ["channel-quotes", ctx.organizationId] })
     },
   })
@@ -182,6 +191,13 @@ export function ChannelQuoteCatalogPage() {
           value={currency}
           onChange={(event) => setCurrency(event.target.value)}
           required
+        />
+        <Input
+          aria-label="Czas tranzytu w dniach"
+          placeholder="dni kalendarzowe"
+          inputMode="numeric"
+          value={transitDays}
+          onChange={(event) => setTransitDays(event.target.value)}
         />
         <Button type="submit" disabled={createMutation.isPending || !canWrite}>
           Dodaj ofertę

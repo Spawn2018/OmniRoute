@@ -371,6 +371,8 @@ describe("quotation catalog screen", () => {
     expect(page).toContain('data-carrier-inquiry="trail"')
     expect(page).toContain("quotationResponseComparisons")
     expect(page).toContain('data-response-comparison="lanes"')
+    expect(page).toContain("najtańsza")
+    expect(page).toContain("najszybszy TT")
     expect(page).toContain("comparisonChargeBody")
     expect(page).toContain("createCharge")
     expect(page).toContain("Zapisz marżę")
