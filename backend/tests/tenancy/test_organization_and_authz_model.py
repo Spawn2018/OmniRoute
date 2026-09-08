@@ -45,6 +45,7 @@ def test_authorization_model_includes_table_view_permission() -> None:
     assert "can_manage_groupage_lines" in org.relations
     assert "can_manage_shipment_packages" in org.relations
     assert "can_manage_dock_appointments" in org.relations
+    assert "can_manage_cod_instructions" in org.relations
     assert "can_manage_rate_lines" in org.relations
     assert "can_manage_charges" in org.relations
     assert "can_manage_quotations" in org.relations
@@ -150,6 +151,9 @@ def test_authorization_model_includes_table_view_permission() -> None:
     dock_appointments = org.relations["can_manage_dock_appointments"]
     assert dock_appointments.computed_userset is not None
     assert dock_appointments.computed_userset.relation == "member"
+    cod_instructions = org.relations["can_manage_cod_instructions"]
+    assert cod_instructions.computed_userset is not None
+    assert cod_instructions.computed_userset.relation == "member"
     rates = org.relations["can_manage_rate_lines"]
     assert rates.computed_userset is not None
     assert rates.computed_userset.relation == "member"

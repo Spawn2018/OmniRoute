@@ -396,3 +396,4 @@
 | 2026-09-08 | Plan 157.0 | D3 | dock_appointment okno na stop magazynu, nie WMS. Delta zaakceptowana (`/noc`). Nie D4. Nastepny: kod 157.0. |
 | 2026-09-08 | 157.0 | D3 | dock_appointment okno TIME na stop magazynu. Nie WMS. Nastepny: D4 Plan. |
 | 2026-09-08 | Plan 158.0 | D4 | cod_instruction znacznik pobrania bez kwoty, nie F. Delta zaakceptowana (`/noc`). Nie D5. Nastepny: kod 158.0. |
+| 2026-09-08 | 158.0 | D4 | cod_instruction znacznik pobrania bez kwoty. Nie F. Nastepny: D5 Plan. |

@@ -833,6 +833,58 @@ export type ChargeResponse = {
 };
 
 /**
+ * CodInstructionCreate
+ */
+export type CodInstructionCreate = {
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Instruction Code
+     */
+    instruction_code: string;
+    /**
+     * Collection Status
+     */
+    collection_status: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CodInstructionResponse
+ */
+export type CodInstructionResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Instruction Code
+     */
+    instruction_code: string;
+    /**
+     * Collection Status
+     */
+    collection_status: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * CollectiveInvoiceCreate
  */
 export type CollectiveInvoiceCreate = {
@@ -7611,6 +7663,49 @@ export type CreateCargoClaimApiV1CargoClaimsPostResponses = {
 };
 
 export type CreateCargoClaimApiV1CargoClaimsPostResponse = CreateCargoClaimApiV1CargoClaimsPostResponses[keyof CreateCargoClaimApiV1CargoClaimsPostResponses];
+
+export type ListCodInstructionsApiV1CodInstructionsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/cod-instructions';
+};
+
+export type ListCodInstructionsApiV1CodInstructionsGetResponses = {
+    /**
+     * Response List Cod Instructions Api V1 Cod Instructions Get
+     *
+     * Successful Response
+     */
+    200: Array<CodInstructionResponse>;
+};
+
+export type ListCodInstructionsApiV1CodInstructionsGetResponse = ListCodInstructionsApiV1CodInstructionsGetResponses[keyof ListCodInstructionsApiV1CodInstructionsGetResponses];
+
+export type CreateCodInstructionApiV1CodInstructionsPostData = {
+    body: CodInstructionCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/cod-instructions';
+};
+
+export type CreateCodInstructionApiV1CodInstructionsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCodInstructionApiV1CodInstructionsPostError = CreateCodInstructionApiV1CodInstructionsPostErrors[keyof CreateCodInstructionApiV1CodInstructionsPostErrors];
+
+export type CreateCodInstructionApiV1CodInstructionsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CodInstructionResponse;
+};
+
+export type CreateCodInstructionApiV1CodInstructionsPostResponse = CreateCodInstructionApiV1CodInstructionsPostResponses[keyof CreateCodInstructionApiV1CodInstructionsPostResponses];
 
 export type ListFraudFlagsApiV1FraudFlagsGetData = {
     body?: never;

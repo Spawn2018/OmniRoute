@@ -10,6 +10,7 @@ from app.api import (
     channel_quotes,
     charge_codes,
     charges,
+    cod_instructions,
     collective_invoices,
     commodity_codes,
     containers,
@@ -106,6 +107,7 @@ api_router.include_router(shipment_packages.router)
 api_router.include_router(dock_appointments.router)
 api_router.include_router(operational_exceptions.router)
 api_router.include_router(cargo_claims.router)
+api_router.include_router(cod_instructions.router)
 api_router.include_router(fraud_flags.router)
 api_router.include_router(edi_messages.router)
 api_router.include_router(sales_invoices.router)

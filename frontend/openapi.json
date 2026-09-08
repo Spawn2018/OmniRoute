@@ -4818,6 +4818,80 @@
         ]
       }
     },
+    "/api/v1/cod-instructions": {
+      "get": {
+        "tags": [
+          "cod-instructions"
+        ],
+        "summary": "List Cod Instructions",
+        "operationId": "list_cod_instructions_api_v1_cod_instructions_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CodInstructionResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Cod Instructions Api V1 Cod Instructions Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "cod-instructions"
+        ],
+        "summary": "Create Cod Instruction",
+        "operationId": "create_cod_instruction_api_v1_cod_instructions_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CodInstructionCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodInstructionResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/fraud-flags": {
       "get": {
         "tags": [
@@ -9949,6 +10023,77 @@
           "source_ref"
         ],
         "title": "ChargeResponse"
+      },
+      "CodInstructionCreate": {
+        "properties": {
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "instruction_code": {
+            "type": "string",
+            "title": "Instruction Code"
+          },
+          "collection_status": {
+            "type": "string",
+            "title": "Collection Status"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "shipment_id",
+          "instruction_code",
+          "collection_status",
+          "source_ref"
+        ],
+        "title": "CodInstructionCreate"
+      },
+      "CodInstructionResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "instruction_code": {
+            "type": "string",
+            "title": "Instruction Code"
+          },
+          "collection_status": {
+            "type": "string",
+            "title": "Collection Status"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "shipment_id",
+          "instruction_code",
+          "collection_status",
+          "source_ref"
+        ],
+        "title": "CodInstructionResponse"
       },
       "CollectiveInvoiceCreate": {
         "properties": {

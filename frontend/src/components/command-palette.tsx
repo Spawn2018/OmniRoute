@@ -32,6 +32,7 @@ const NAV_ACTIONS = [
   { id: "nav-groupage", label: "Idź do linii drobnicy", to: "/groupage" },
   { id: "nav-parcels", label: "Idź do paczek na zleceniu", to: "/shipment-packages" },
   { id: "nav-docks", label: "Idź do awizacji doku", to: "/dock-appointments" },
+  { id: "nav-cod", label: "Idź do pobrania COD", to: "/cod" },
   { id: "nav-sanctions", label: "Idź do sankcji", to: "/sanctions" },
   { id: "nav-fraud", label: "Idź do oszustwa", to: "/fraud" },
   { id: "nav-gdpr", label: "Idź do RODO", to: "/gdpr" },

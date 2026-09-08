@@ -504,3 +504,7 @@ class InvalidShipmentPackage(DomainError):
 
 class InvalidDockAppointment(DomainError):
     """Awizacja doku: okno TIME na stop magazynu — nie WMS."""
+
+
+class InvalidCodInstruction(DomainError):
+    """Znacznik pobrania COD na zleceniu — nie kwota, nie Fala F."""

@@ -99,6 +99,11 @@ export const OPS_JOBS = [
     job: "okno dock_appointment na stop magazynu",
   },
   {
+    route: BUSINESS_LISTS.codInstruction.route,
+    label: "Pobranie COD",
+    job: "znacznik cod_instruction bez kwoty",
+  },
+  {
     route: BUSINESS_LISTS.sanctions.route,
     label: "Sankcje",
     job: "aktywni kontrahenci tax_id i kraj",
@@ -437,6 +442,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "155.0": "/groupage",
   "156.0": "/shipment-packages",
   "157.0": "/dock-appointments",
+  "158.0": "/cod",
 } as const
 
 export const ROUTES_BREADTH_STANDING =
