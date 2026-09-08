@@ -36,6 +36,7 @@
 | punkt operacyjny | stop | T1; ZA/WY na zleceniu; miejsce ze słownika; nie mapa |
 | zasób floty | resource | T2; pojazd / kierowca / naczepa; nie trip |
 | przejazd | trip | T2; status + opcjonalny zasób; nie km |
+| kontener | container | T3; ISO 6346 + iso_size_type; nie VGM |
 | odcinek | shipment_leg | 108.0 `road` · 109.0 `rail` · 110.0 `china_rail` · 111.0 `ocean_lcl` na zleceniu; nie mapa; nie ETA |
 | kolej intermodalna | intermodal_rail | 42.0 tablica `port` z flagą `rail`; 109.0 odcinek `shipment_leg` rail; nie wagon; nie CIM |
 | kolej z Chin | china_rail | 43.0 tablica `port` CN z flagą `rail`; 110.0 odcinek `shipment_leg` china_rail; nie korytarz; nie HTTP |

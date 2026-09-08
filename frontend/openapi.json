@@ -4272,6 +4272,108 @@
         }
       }
     },
+    "/api/v1/containers": {
+      "get": {
+        "tags": [
+          "containers"
+        ],
+        "summary": "List Containers",
+        "operationId": "list_containers_api_v1_containers_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "iso_size_type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Iso Size Type"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ContainerResponse"
+                  },
+                  "title": "Response List Containers Api V1 Containers Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "containers"
+        ],
+        "summary": "Create Container",
+        "operationId": "create_container_api_v1_containers_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContainerCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContainerResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/tracking-events": {
       "get": {
         "tags": [
@@ -9880,6 +9982,103 @@
           "is_primary"
         ],
         "title": "ContactResponse"
+      },
+      "ContainerCreate": {
+        "properties": {
+          "container_no": {
+            "type": "string",
+            "title": "Container No"
+          },
+          "iso_size_type": {
+            "type": "string",
+            "title": "Iso Size Type"
+          },
+          "shipment_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Shipment Id"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "container_no",
+          "iso_size_type",
+          "source_ref"
+        ],
+        "title": "ContainerCreate"
+      },
+      "ContainerResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "container_no": {
+            "type": "string",
+            "title": "Container No"
+          },
+          "iso_size_type": {
+            "type": "string",
+            "title": "Iso Size Type"
+          },
+          "shipment_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Shipment Id"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          },
+          "superseded_by": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Superseded By"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "container_no",
+          "iso_size_type",
+          "shipment_id",
+          "source_ref",
+          "superseded_by"
+        ],
+        "title": "ContainerResponse"
       },
       "CostToServeCreate": {
         "properties": {

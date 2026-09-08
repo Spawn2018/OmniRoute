@@ -488,3 +488,7 @@ class InvalidResource(DomainError):
 
 class InvalidTrip(DomainError):
     """Przejazd: numer + status + opcjonalna flota — nie km."""
+
+
+class InvalidContainer(DomainError):
+    """Kontener ISO 6346 — nie VGM."""

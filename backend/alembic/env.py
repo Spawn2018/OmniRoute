@@ -34,6 +34,7 @@ from app.models.organization_calendar import OrganizationCalendar  # noqa: F401
 from app.models.stop import Stop  # noqa: F401
 from app.models.resource import Resource  # noqa: F401
 from app.models.trip import Trip  # noqa: F401
+from app.models.container import Container  # noqa: F401
 from app.models.organization_setting import OrganizationSetting  # noqa: F401
 from app.models.extraction_draft import ExtractionDraft  # noqa: F401
 from app.models.table_view import TableView  # noqa: F401

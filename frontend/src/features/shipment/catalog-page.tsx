@@ -12,6 +12,7 @@ import { createShipment, fetchShipments } from "@/lib/shipments-api"
 import { getTenantContext } from "@/lib/tenant"
 import { BookingInstructionPanel } from "@/features/shipment/booking-instruction-panel"
 import { FleetResourcePanel } from "@/features/shipment/fleet-resource-panel"
+import { IsoContainerPanel } from "@/features/shipment/iso-container-panel"
 import { TripRunPanel } from "@/features/shipment/trip-run-panel"
 import { StopPointPanel } from "@/features/shipment/stop-panel"
 import { ShipmentStakeholderPanel } from "@/features/shipment/shipment-stakeholder-panel"
@@ -73,6 +74,7 @@ export function ShipmentPage() {
       {ready ? <StopPointPanel canWrite={ready} /> : null}
       {ready ? <FleetResourcePanel signedIn={ready} /> : null}
       {ready ? <TripRunPanel signedIn={ready} /> : null}
+      {ready ? <IsoContainerPanel signedIn={ready} /> : null}
       {(shipments.data ?? []).map((row) => (
         <p key={row.id} className="text-xs">
           {row.status} {row.source_ref}{" "}

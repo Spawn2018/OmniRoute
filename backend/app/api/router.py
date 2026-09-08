@@ -12,6 +12,7 @@ from app.api import (
     charges,
     collective_invoices,
     commodity_codes,
+    containers,
     cost_to_serve,
     credit_reviews,
     customer_rfqs,
@@ -95,6 +96,7 @@ api_router.include_router(shipment_stakeholders.router)
 api_router.include_router(stops.router)
 api_router.include_router(resources.router)
 api_router.include_router(trips.router)
+api_router.include_router(containers.router)
 api_router.include_router(tracking_events.router)
 api_router.include_router(shipment_documents.router)
 api_router.include_router(operational_exceptions.router)

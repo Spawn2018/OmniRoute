@@ -985,6 +985,62 @@ export type ContactResponse = {
 };
 
 /**
+ * ContainerCreate
+ */
+export type ContainerCreate = {
+    /**
+     * Container No
+     */
+    container_no: string;
+    /**
+     * Iso Size Type
+     */
+    iso_size_type: string;
+    /**
+     * Shipment Id
+     */
+    shipment_id?: string | null;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ContainerResponse
+ */
+export type ContainerResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Container No
+     */
+    container_no: string;
+    /**
+     * Iso Size Type
+     */
+    iso_size_type: string;
+    /**
+     * Shipment Id
+     */
+    shipment_id: string | null;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+    /**
+     * Superseded By
+     */
+    superseded_by: string | null;
+};
+
+/**
  * CostToServeCreate
  */
 export type CostToServeCreate = {
@@ -7008,6 +7064,63 @@ export type CreateTripApiV1TripsPostResponses = {
 };
 
 export type CreateTripApiV1TripsPostResponse = CreateTripApiV1TripsPostResponses[keyof CreateTripApiV1TripsPostResponses];
+
+export type ListContainersApiV1ContainersGetData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Iso Size Type
+         */
+        iso_size_type?: string | null;
+    };
+    url: '/api/v1/containers';
+};
+
+export type ListContainersApiV1ContainersGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ListContainersApiV1ContainersGetError = ListContainersApiV1ContainersGetErrors[keyof ListContainersApiV1ContainersGetErrors];
+
+export type ListContainersApiV1ContainersGetResponses = {
+    /**
+     * Response List Containers Api V1 Containers Get
+     *
+     * Successful Response
+     */
+    200: Array<ContainerResponse>;
+};
+
+export type ListContainersApiV1ContainersGetResponse = ListContainersApiV1ContainersGetResponses[keyof ListContainersApiV1ContainersGetResponses];
+
+export type CreateContainerApiV1ContainersPostData = {
+    body: ContainerCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/containers';
+};
+
+export type CreateContainerApiV1ContainersPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateContainerApiV1ContainersPostError = CreateContainerApiV1ContainersPostErrors[keyof CreateContainerApiV1ContainersPostErrors];
+
+export type CreateContainerApiV1ContainersPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ContainerResponse;
+};
+
+export type CreateContainerApiV1ContainersPostResponse = CreateContainerApiV1ContainersPostResponses[keyof CreateContainerApiV1ContainersPostResponses];
 
 export type ListTrackingEventsApiV1TrackingEventsGetData = {
     body?: never;

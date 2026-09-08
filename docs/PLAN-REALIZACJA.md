@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny (zablokowany):** **153.0** T3 `container` → U3 → D → P → G2.0–G2.23 → F → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
+**Następny (zablokowany):** **154.0** U3 `air` HAWB/MAWB → D → P → G2.0–G2.23 → F → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
 <!-- os-status:end -->
 
 ```mermaid
@@ -540,7 +540,7 @@ Przy `/plan-modul`: karta T + [EXP1](analysis/karty-pol-fala-exp.md) (stop/konte
 | T1 | `stop` + `stop_group` + timezone + `eta_physical`/`eta_legal` + EXP1 (awizacja, plomba, waga, waiting, POD quality) | zamknięty (`docs/deltas/archived/150.0-stop.md`) | po U4 | nie mapa |
 | **N1** | `consignment` obok `shipment` | Plan → plaster | po T1, przed D2 | FTL=1; LTL/LCL=N |
 | T2 | `trip` + `resource`; floating trailer; multi-manning | zamknięty (`resource` [151.0](deltas/archived/151.0-resource.md); `trip` [152.0](deltas/archived/152.0-trip.md); leftover T2c) | po T1 | nie własne HW; job S50 |
-| T3 | `container` ISO + EXP1 (VGM, free time, BL kind, cutoffy CY/CFS/VGM/SI/AMS) | Plan → plaster | po T1 | nie booking armatorski |
+| T3 | `container` ISO + EXP1 (VGM, free time, BL kind, cutoffy CY/CFS/VGM/SI/AMS) | zamknięty ([153.0](deltas/archived/153.0-container.md); leftover EXP1 VGM/cutoffy) | po T1 | nie booking armatorski |
 | T4 | `parent_shipment_id`; rentowność SQL na `charge` | Plan → plaster | po T1 | |
 | T5 | task engine (warunki = dane) | Plan → plaster | po T2 | async po konsumencie outboxa (leftover M-02) |
 | T6 | planning board 4 widoki + mapa lazy + klawiatura N10 | Plan → plaster | po T2 | mapa poza 250 kB |

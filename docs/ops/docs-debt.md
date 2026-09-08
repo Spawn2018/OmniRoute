@@ -14,6 +14,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **147.0 leftover:** tabela `document_dispatch` (batch mail + send S18). Tu tylko katalog adresata. Nie auto-send.
 - **150.0 leftover:** `stop_group`; `eta_physical`/`eta_legal` (V2); waga/plomba/awizacja (EXP1). Tu tylko punkt + location + strefa IANA. Nie mapa. `resource` = 151.0. `trip` = 152.0.
 - **151.0 leftover:** `trip` DONE 152.0. Zostaje T2c: multi-manning / floating trailer; pojemności / Decimal km; `party_id`; `/fleet` / HW. Tu tylko katalog pojazd/kierowca/naczepa.
+- **153.0 leftover:** VGM/TARA Decimal; free_time; cutoffy CY/CFS/VGM/SI/AMS; `bl_kind`; plomby/PIN; reefer; party/terminal; TEU; `shipment_leg_id`. Tu tylko ISO 6346 + `iso_size_type` + opcjonalne zlecenie. Nie booking.
 - **152.0 leftover:** `driver2_id` / multi-manning; Decimal km / freeze kosztu; `stop_group`; `party_id`; `/fleet` / HW. Tu tylko status + opcjonalny slot floty. Nie km.
 - **149.0 leftover:** V5 hub GPS / `observation_ends_at` / 3 dni robocze trip. Tu tylko katalog + SQL `is_working_day`. Nie NBP.
 - **143.0 leftover:** auto-INSERT notice z inquiry (zakaz M-34); cron/Graph send. Data ciszy to pole, nie wyliczenie. Kalendarz U4 jest (149.0); N5 nie woła `is_working_day`.
