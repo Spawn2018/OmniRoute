@@ -73,7 +73,8 @@ class PartyResponse(BaseModel):
             duns=row.duns,
             country_code=row.country_code.strip(),
             roles=list(row.roles),
-            is_sole_trader=row.is_sole_trader,
+            # Instancja bez INSERT zostawia default SQLAlchemy jako None.
+            is_sole_trader=bool(row.is_sole_trader),
             parent_party_id=row.parent_party_id,
             credit_limit=limit,
             credit_currency=row.credit_currency,
