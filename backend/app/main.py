@@ -6,6 +6,7 @@ from app.core.database import probe_database
 from app.core.request_id import RequestIdMiddleware
 from app.domain.errors import (
     DomainError,
+    PartyConflict,
     PermissionDenied,
     ResourceNotFound,
     TenantContextMissing,
@@ -40,6 +41,19 @@ async def permission_denied_handler(_request: Request, exc: PermissionDenied) ->
 @app.exception_handler(ResourceNotFound)
 async def resource_not_found_handler(_request: Request, exc: ResourceNotFound) -> JSONResponse:
     return JSONResponse(status_code=404, content={"detail": str(exc)})
+
+
+@app.exception_handler(PartyConflict)
+async def party_conflict_handler(_request: Request, exc: PartyConflict) -> JSONResponse:
+    existing = exc.existing_party_id
+    return JSONResponse(
+        status_code=409,
+        content={
+            "detail": str(exc),
+            "existing_party_id": str(existing),
+            "href": f"/parties/{existing}",
+        },
+    )
 
 
 @app.exception_handler(TenantContextMissing)

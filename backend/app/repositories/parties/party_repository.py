@@ -31,6 +31,18 @@ class PartyRepository:
         found = await self._session.scalar(select(Party).where(Party.tax_id == tax_id))
         return found if isinstance(found, Party) else None
 
+    async def find_by_vat_eu(self, vat_eu: str) -> Party | None:
+        found = await self._session.scalar(select(Party).where(Party.vat_eu == vat_eu))
+        return found if isinstance(found, Party) else None
+
+    async def find_by_eori(self, eori: str) -> Party | None:
+        found = await self._session.scalar(select(Party).where(Party.eori == eori))
+        return found if isinstance(found, Party) else None
+
+    async def find_by_duns(self, duns: str) -> Party | None:
+        found = await self._session.scalar(select(Party).where(Party.duns == duns))
+        return found if isinstance(found, Party) else None
+
     async def add(self, row: Party) -> Party:
         self._session.add(row)
         await self._session.flush()

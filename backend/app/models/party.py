@@ -45,6 +45,27 @@ class Party(Base, TimestampMixin):
             unique=True,
             postgresql_where=text("tax_id IS NOT NULL"),
         ),
+        Index(
+            "uq_party_org_vat_eu",
+            "organization_id",
+            "vat_eu",
+            unique=True,
+            postgresql_where=text("vat_eu IS NOT NULL"),
+        ),
+        Index(
+            "uq_party_org_eori",
+            "organization_id",
+            "eori",
+            unique=True,
+            postgresql_where=text("eori IS NOT NULL"),
+        ),
+        Index(
+            "uq_party_org_duns",
+            "organization_id",
+            "duns",
+            unique=True,
+            postgresql_where=text("duns IS NOT NULL"),
+        ),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
@@ -57,6 +78,8 @@ class Party(Base, TimestampMixin):
     short_name: Mapped[str | None] = mapped_column(String(64), nullable=True)
     tax_id: Mapped[str | None] = mapped_column(String(32), nullable=True)
     vat_eu: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    eori: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    duns: Mapped[str | None] = mapped_column(String(16), nullable=True)
     regon: Mapped[str | None] = mapped_column(String(14), nullable=True)
     krs: Mapped[str | None] = mapped_column(String(10), nullable=True)
     country_code: Mapped[str] = mapped_column(CHAR(2), nullable=False)

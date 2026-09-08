@@ -7,6 +7,9 @@ export type Party = {
   legal_name: string
   short_name: string | null
   tax_id: string | null
+  vat_eu: string | null
+  eori: string | null
+  duns: string | null
   country_code: string
   roles: string[]
   credit_limit: string | null
@@ -71,22 +74,52 @@ export type CarrierProfile = {
   dcsa_tnt_version: string | null
 }
 
+export type PartyCreatePayload = {
+  legal_name: string
+  country_code: string
+  tax_id: string
+  roles: string[]
+  vat_eu?: string
+  eori?: string
+  duns?: string
+}
+
 export function partyCreateBody(args: {
   legalName: string
   countryCode: string
   taxId: string
   rolesText: string
-}): { legal_name: string; country_code: string; tax_id: string; roles: string[] } {
+  vatEu?: string
+  eori?: string
+  duns?: string
+}): PartyCreatePayload {
   const roles = args.rolesText
     .split(",")
     .map((part) => part.trim())
     .filter((part) => part.length > 0)
+  const vatEu = (args.vatEu ?? "").replace(/[\s-]/g, "").toUpperCase()
+  const eori = (args.eori ?? "").replace(/[\s-]/g, "").toUpperCase()
+  const duns = (args.duns ?? "").replace(/\D/g, "")
   return {
     legal_name: args.legalName.trim(),
     country_code: args.countryCode.trim().toUpperCase(),
     tax_id: args.taxId.replace(/[\s-]/g, ""),
     roles,
+    ...(vatEu === "" ? {} : { vat_eu: vatEu }),
+    ...(eori === "" ? {} : { eori }),
+    ...(duns === "" ? {} : { duns }),
   }
+}
+
+export function partyConflictHref(payload: unknown): string | null {
+  if (typeof payload !== "object" || payload === null || !("href" in payload)) {
+    return null
+  }
+  const href = (payload as { href: unknown }).href
+  if (typeof href !== "string" || !href.startsWith("/parties/")) {
+    return null
+  }
+  return href
 }
 
 async function parseBody<T>(response: Response, fallback: string): Promise<T> {
@@ -108,12 +141,7 @@ export function sanctionsParties<Row extends { is_active: boolean }>(
   return parties.filter((row) => row.is_active)
 }
 
-export async function createParty(body: {
-  legal_name: string
-  country_code: string
-  tax_id: string
-  roles: string[]
-}): Promise<Party> {
+export async function createParty(body: PartyCreatePayload): Promise<Party> {
   const taxId = body.tax_id.trim()
   const response = await fetch("/api/v1/parties", {
     method: "POST",
@@ -123,8 +151,20 @@ export async function createParty(body: {
       country_code: body.country_code,
       roles: body.roles,
       tax_id: taxId === "" ? null : taxId,
+      vat_eu: body.vat_eu ?? null,
+      eori: body.eori ?? null,
+      duns: body.duns ?? null,
     }),
   })
+  if (response.status === 409) {
+    const payload: unknown = await response.json().catch(() => null)
+    const href = partyConflictHref(payload)
+    const detail =
+      typeof payload === "object" && payload !== null && "detail" in payload
+        ? String((payload as { detail: unknown }).detail)
+        : "Kontrahent już istnieje"
+    throw new ApiError(href === null ? detail : `${detail} ${href}`, 409)
+  }
   return parseBody<Party>(response, "Błąd zapisu kontrahenta")
 }
 

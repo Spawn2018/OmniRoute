@@ -6,7 +6,13 @@ from uuid import uuid4
 import pytest
 
 from app.api.parties import ChargeOverrideResponse, PartyResponse
-from app.domain.errors import InvalidPartyData, ResourceNotFound, UnknownEmailDomain, UnknownParty
+from app.domain.errors import (
+    InvalidPartyData,
+    PartyConflict,
+    ResourceNotFound,
+    UnknownEmailDomain,
+    UnknownParty,
+)
 from app.models.party import Party
 from app.services.parties.lookup import lookup_iban_draft, lookup_party_draft
 from app.services.parties.party_service import PartyService
@@ -72,6 +78,10 @@ async def test_service_create_party_normalizes_and_adds() -> None:
         return row
 
     service._parties.add = add
+    service._parties.find_by_tax_id = AsyncMock(return_value=None)
+    service._parties.find_by_vat_eu = AsyncMock(return_value=None)
+    service._parties.find_by_eori = AsyncMock(return_value=None)
+    service._parties.find_by_duns = AsyncMock(return_value=None)
     created = await service.create_party(
         organization_id=uuid4(),
         user_id=uuid4(),
@@ -85,6 +95,58 @@ async def test_service_create_party_normalizes_and_adds() -> None:
     assert created.roles == ["customer"]
     assert created.source_ref == "tenant:manual"
     assert created.tax_id == "1234563218"
+    assert created.vat_eu is None
+    assert created.eori is None
+    assert created.duns is None
+
+
+@pytest.mark.asyncio
+async def test_service_create_party_rejects_missing_business_id() -> None:
+    service = _service()
+    with pytest.raises(InvalidPartyData, match="identyfikator biznesowy"):
+        await service.create_party(
+            organization_id=uuid4(),
+            user_id=uuid4(),
+            legal_name="ACME",
+            country_code="DE",
+            roles=["vendor"],
+        )
+
+
+@pytest.mark.asyncio
+async def test_service_create_customer_without_tax_id_is_rejected() -> None:
+    service = _service()
+    with pytest.raises(InvalidPartyData, match="customer"):
+        await service.create_party(
+            organization_id=uuid4(),
+            user_id=uuid4(),
+            legal_name="ACME",
+            country_code="DE",
+            roles=["customer"],
+            eori="DE1234567",
+        )
+
+
+@pytest.mark.asyncio
+async def test_service_create_party_duplicate_eori_is_conflict() -> None:
+    service = _service()
+    existing_id = uuid4()
+    service._parties.find_by_tax_id = AsyncMock(return_value=None)
+    service._parties.find_by_vat_eu = AsyncMock(return_value=None)
+    service._parties.find_by_eori = AsyncMock(
+        return_value=SimpleNamespace(id=existing_id),
+    )
+    service._parties.find_by_duns = AsyncMock(return_value=None)
+    with pytest.raises(PartyConflict) as caught:
+        await service.create_party(
+            organization_id=uuid4(),
+            user_id=uuid4(),
+            legal_name="ACME",
+            country_code="DE",
+            roles=["vendor"],
+            eori="DE1234567",
+        )
+    assert caught.value.existing_party_id == existing_id
 
 
 @pytest.mark.asyncio
@@ -146,6 +208,9 @@ def test_party_response_formats_credit_and_strips_country() -> None:
         legal_name="ACME",
         short_name=None,
         tax_id="1234563218",
+        vat_eu=None,
+        eori=None,
+        duns=None,
         country_code="PL",
         roles=["customer"],
         credit_limit=Decimal("10.0000"),

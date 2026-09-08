@@ -47,6 +47,9 @@ def _party(
     organization_id: UUID,
     legal_name: str,
     tax_id: str | None = None,
+    vat_eu: str | None = None,
+    eori: str | None = None,
+    duns: str | None = None,
     country_code: str = "PL",
     created_by: UUID | None = None,
     credit_limit: Decimal | None = None,
@@ -59,6 +62,9 @@ def _party(
         legal_name=legal_name,
         country_code=country_code,
         tax_id=tax_id,
+        vat_eu=vat_eu,
+        eori=eori,
+        duns=duns,
         roles=roles or ["customer"],
         credit_limit=credit_limit,
         credit_currency=credit_currency,
@@ -385,6 +391,50 @@ async def test_tax_id_is_unique_inside_one_tenant_country(session, two_tenants) 
     )
     with pytest.raises(IntegrityError, match="uq_party_org_country_tax_id"):
         await session.flush()
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_eori_is_unique_inside_one_tenant(session, two_tenants) -> None:
+    await _flush_party(
+        session,
+        two_tenants,
+        "org_a",
+        legal_name="ACME 1",
+        eori="PL1234563218000",
+        roles=["vendor"],
+    )
+    session.add(
+        _party(
+            organization_id=two_tenants["org_a"].id,
+            legal_name="ACME 2",
+            eori="PL1234563218000",
+            roles=["vendor"],
+        )
+    )
+    with pytest.raises(IntegrityError, match="uq_party_org_eori"):
+        await session.flush()
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_two_tenants_may_hold_the_same_eori(session, two_tenants) -> None:
+    await _flush_party(
+        session,
+        two_tenants,
+        "org_a",
+        legal_name="ACME A",
+        eori="PL1234563218000",
+        roles=["vendor"],
+    )
+    await _flush_party(
+        session,
+        two_tenants,
+        "org_b",
+        legal_name="ACME B",
+        eori="PL1234563218000",
+        roles=["vendor"],
+    )
 
 
 @pytest.mark.integration

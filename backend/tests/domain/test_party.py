@@ -50,6 +50,16 @@ def test_invalid_party_data_is_a_domain_error() -> None:
     assert issubclass(errors.InvalidPartyData, errors.DomainError)
 
 
+def test_party_conflict_is_a_domain_error_with_existing_id() -> None:
+    from uuid import uuid4
+
+    errors = load_module("app.domain.errors")
+    existing = uuid4()
+    exc = errors.PartyConflict("zajęty", existing_party_id=existing)
+    assert isinstance(exc, errors.DomainError)
+    assert exc.existing_party_id == existing
+
+
 def test_polish_nip_with_valid_checksum_is_accepted() -> None:
     normalize_tax_id = _party_domain().normalize_tax_id
     assert normalize_tax_id("PL", " 123-456-32-18 ") == "1234563218"
@@ -93,6 +103,30 @@ def test_foreign_tax_id_is_casefold_and_idempotent(token: str) -> None:
 def test_foreign_tax_id_rejects_a_blank_token() -> None:
     with pytest.raises(_invalid(), match="tax_id"):
         _party_domain().normalize_tax_id("DE", "   ")
+
+
+def test_vat_eu_eori_duns_normalize_and_reject_blank() -> None:
+    domain = _party_domain()
+    assert domain.normalize_vat_eu(" pl 1234563218 ") == "PL1234563218"
+    assert domain.normalize_eori(" pl 1234563218000 ") == "PL1234563218000"
+    assert domain.normalize_duns("12-345-6789") == "123456789"
+    with pytest.raises(_invalid(), match="vat_eu"):
+        domain.normalize_vat_eu("  ")
+    with pytest.raises(_invalid(), match="eori"):
+        domain.normalize_eori("ab")
+    with pytest.raises(_invalid(), match="DUNS"):
+        domain.normalize_duns("12345678")
+
+
+def test_business_id_required_and_customer_needs_tax_id() -> None:
+    domain = _party_domain()
+    with pytest.raises(_invalid(), match="identyfikator biznesowy"):
+        domain.require_business_id(None, None, None, None)
+    domain.require_business_id(None, "PL1234563218", None, None)
+    with pytest.raises(_invalid(), match="customer"):
+        domain.require_customer_tax_id(["customer"], None)
+    domain.require_customer_tax_id(["vendor"], None)
+    domain.require_customer_tax_id(["customer"], "1234563218")
 
 
 def test_allowed_roles_are_kept_in_order_without_duplicates() -> None:

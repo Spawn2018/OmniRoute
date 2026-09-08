@@ -109,6 +109,7 @@ async def test_create_party_stores_manual_source_ref(session, two_tenants) -> No
         legal_name="  ACME  ",
         country_code="pl",
         roles=[" Customer "],
+        tax_id="1234563218",
     )
     assert created.legal_name == "ACME"
     assert created.country_code == "PL"

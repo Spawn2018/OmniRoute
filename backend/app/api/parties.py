@@ -26,6 +26,9 @@ class PartyCreate(BaseModel):
     country_code: str = Field(min_length=2, max_length=2)
     roles: list[str] = Field(min_length=1)
     tax_id: str | None = Field(default=None, max_length=32)
+    vat_eu: str | None = Field(default=None, max_length=32)
+    eori: str | None = Field(default=None, max_length=32)
+    duns: str | None = Field(default=None, max_length=16)
     short_name: str | None = Field(default=None, max_length=64)
     credit_limit: str | None = None
     credit_currency: str | None = Field(default=None, min_length=3, max_length=3)
@@ -40,6 +43,9 @@ class PartyResponse(BaseModel):
     legal_name: str
     short_name: str | None
     tax_id: str | None
+    vat_eu: str | None
+    eori: str | None
+    duns: str | None
     country_code: str
     roles: list[str]
     credit_limit: str | None
@@ -58,6 +64,9 @@ class PartyResponse(BaseModel):
             legal_name=row.legal_name,
             short_name=row.short_name,
             tax_id=row.tax_id,
+            vat_eu=row.vat_eu,
+            eori=row.eori,
+            duns=row.duns,
             country_code=row.country_code.strip(),
             roles=list(row.roles),
             credit_limit=limit,
@@ -292,6 +301,9 @@ async def create_party(
         country_code=body.country_code,
         roles=body.roles,
         tax_id=body.tax_id,
+        vat_eu=body.vat_eu,
+        eori=body.eori,
+        duns=body.duns,
         short_name=body.short_name,
         credit_limit=body.credit_limit,
         credit_currency=body.credit_currency,

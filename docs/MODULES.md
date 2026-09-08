@@ -18,7 +18,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-08 | charge (buy+sell, marża) | 1.2 jeden wiersz · 129.0 `source_ref` | **ukończony (fundament + P0)** · nie accept HITL (1.3) |
 | M-21 | Silnik wyceny (SQL) | 2.0 INSERT…SELECT z `rate_line` · 5.1 POL/POD + `party_id` · 16.0 odczyt `nbp_rate` · 20.0 wsad kodów · 68.0 `customer_rfq_id` | **ukończony (fundament)** · nie marża; nie k6; nie override; nie nowy silnik |
 | M-05 | Geografia | 4.0 `port` + 4.1 `location`/strefy + 4.2 `terminal`/WPI | **ukończony (fundament)** · `operator_party_id` od 5.0; `operator_name` zostaje |
-| M-10 | Kontrahenci | 5.0 `party` + katalog zależny | **ukończony (fundament)** · lookup = szkic/fixture; override nie karmić wyceny |
+| M-10 | Kontrahenci | 5.0 `party` + katalog zależny · 131.0 ID biznesowe | **ukończony (fundament + M10-1)** · lookup = szkic/fixture; override nie karmić wyceny |
 | M-09 | Kody towarowe | 5.2 `commodity_code` · 70.0 FK na RFQ/wycenie | **ukończony (fundament)** · nie IMDG |
 | M-52 | Towary niebezpieczne | 7.0 `dangerous_good` · 122.0 FK na RFQ/wycenie | **ukończony (leftover S7b)** · UN na zapytaniu; nie LLM; nie żywe M-08 `charge` |
 | M-23 | Kurs NBP | 6.0 `nbp_rate` · 16.0 odczyt przy `quotation` | **ukończony (fundament)** · nie przeliczenie kwoty; nie żywe M-07 `rate_line` |

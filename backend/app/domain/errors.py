@@ -182,6 +182,14 @@ class InvalidPartyData(DomainError):
     """Pole kontrahenta puste, NIP bez sumy, rola spoza allowlisty albo para kredytu rozjechana."""
 
 
+class PartyConflict(DomainError):
+    """Ten sam identyfikator biznesowy już stoi w katalogu tenanta."""
+
+    def __init__(self, message: str, *, existing_party_id: object) -> None:
+        super().__init__(message)
+        self.existing_party_id = existing_party_id
+
+
 class InvalidCommodityCode(DomainError):
     """Kod towarowy: 4–10 cyfr HS/CN — nie luźna nazwa."""
 

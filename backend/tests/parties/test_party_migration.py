@@ -48,6 +48,25 @@ def test_generated_api_types_include_party_and_operator_party_id() -> None:
     assert "operator_party_id" in source
     assert "sanctions_list_ref" in source
     assert "PartyScreenSanctions" in source
+    assert "eori" in source
+    assert "duns" in source
+
+
+def test_migration_074_adds_eori_duns_and_unique_tokens() -> None:
+    path = _ROOT / "backend" / "alembic" / "versions" / "074_party_business_ids.py"
+    assert path.is_file()
+    source = path.read_text(encoding="utf-8")
+    assert 'revision: str = "074_party_business_ids"' in source
+    assert 'down_revision: str | None = "073_network_member_party"' in source
+    assert "eori" in source
+    assert "duns" in source
+    assert "uq_party_org_vat_eu" in source
+    assert "uq_party_org_eori" in source
+    assert "uq_party_org_duns" in source
+    assert "def downgrade" in source
+    downgrade = source.split("def downgrade")[1]
+    assert "drop_column" in downgrade
+    assert "uq_party_org_eori" in downgrade
 
 
 def test_parties_api_has_screen_sanctions_and_no_list_http() -> None:

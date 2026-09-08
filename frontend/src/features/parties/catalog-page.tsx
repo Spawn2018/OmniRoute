@@ -64,6 +64,21 @@ const columns = [
     header: "Tax ID",
     cell: (info) => <span className="font-mono text-xs">{info.getValue() ?? "—"}</span>,
   }),
+  columnHelper.accessor("vat_eu", {
+    id: "vat_eu",
+    header: "VAT UE",
+    cell: (info) => <span className="font-mono text-xs">{info.getValue() ?? "—"}</span>,
+  }),
+  columnHelper.accessor("eori", {
+    id: "eori",
+    header: "EORI",
+    cell: (info) => <span className="font-mono text-xs">{info.getValue() ?? "—"}</span>,
+  }),
+  columnHelper.accessor("duns", {
+    id: "duns",
+    header: "DUNS",
+    cell: (info) => <span className="font-mono text-xs">{info.getValue() ?? "—"}</span>,
+  }),
   columnHelper.accessor("country_code", {
     id: "country_code",
     header: "Kraj",
@@ -91,6 +106,9 @@ const columns = [
 const COLUMN_LABELS = {
   legal_name: "Nazwa",
   tax_id: "Tax ID",
+  vat_eu: "VAT UE",
+  eori: "EORI",
+  duns: "DUNS",
   country_code: "Kraj",
   roles: "Role",
   credit_limit: "Limit",
@@ -102,6 +120,9 @@ export function PartyCatalogPage() {
   const [legalName, setLegalName] = useState("")
   const [countryCode, setCountryCode] = useState("PL")
   const [taxId, setTaxId] = useState("")
+  const [vatEu, setVatEu] = useState("")
+  const [eori, setEori] = useState("")
+  const [duns, setDuns] = useState("")
   const [rolesText, setRolesText] = useState("customer")
   const [resolved, setResolved] = useState<Party | null>(null)
   const [resolvedEmail, setResolvedEmail] = useState<Party | null>(null)
@@ -174,10 +195,13 @@ export function PartyCatalogPage() {
 
   const createMutation = useMutation({
     mutationFn: () =>
-      createParty(partyCreateBody({ legalName, countryCode, taxId, rolesText })),
+      createParty(partyCreateBody({ legalName, countryCode, taxId, rolesText, vatEu, eori, duns })),
     onSuccess: (row) => {
       setLegalName("")
       setTaxId("")
+      setVatEu("")
+      setEori("")
+      setDuns("")
       setSelectedId(row.id)
       void queryClient.invalidateQueries({ queryKey: ["parties", ctx.organizationId] })
     },
@@ -219,13 +243,13 @@ export function PartyCatalogPage() {
     <div className="space-y-3">
       <CatalogHeading
         title="Katalog kontrahentów"
-        subtitle="party M-10 · tax_id i mail domeny, nie luźna nazwa; lookup to szkic"
+        subtitle="party M-10 · NIP / VAT UE / EORI / DUNS; klient bez NIP = odmowa; lookup to szkic"
       />
 
       {!ctx.organizationId || !ctx.userId ? <TenantSessionNotice /> : null}
 
       <form
-        className="grid gap-2 rounded-md border border-border bg-card p-3 md:grid-cols-2 xl:grid-cols-5"
+        className="grid gap-2 rounded-md border border-border bg-card p-3 md:grid-cols-2 xl:grid-cols-4"
         onSubmit={(event) => {
           event.preventDefault()
           createMutation.mutate()
@@ -250,6 +274,24 @@ export function PartyCatalogPage() {
           placeholder="NIP"
           value={taxId}
           onChange={(event) => setTaxId(event.target.value)}
+        />
+        <Input
+          aria-label="VAT UE"
+          placeholder="VAT UE"
+          value={vatEu}
+          onChange={(event) => setVatEu(event.target.value)}
+        />
+        <Input
+          aria-label="EORI"
+          placeholder="EORI"
+          value={eori}
+          onChange={(event) => setEori(event.target.value)}
+        />
+        <Input
+          aria-label="DUNS"
+          placeholder="DUNS"
+          value={duns}
+          onChange={(event) => setDuns(event.target.value)}
         />
         <Input
           aria-label="Role kontrahenta"

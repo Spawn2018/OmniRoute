@@ -1,8 +1,8 @@
 # M-10 Kontrahenci — `party` i katalog zależny
 
 **Moduł żywy:** M-10 (archiwum M-10; nie koliduje z żywym M-07 `rate_line` / M-08 `charge`)  
-**Plaster:** **5.0** (w kodzie)  
-**Status:** fundament katalogu (5.0) + matcher maila (8.0). Nie M-12–M-14. Nie M-19.
+**Plaster:** **5.0** (w kodzie) · **131.0** M10-1  
+**Status:** fundament katalogu (5.0) + matcher maila (8.0) + ID biznesowe (131.0). Nie M-12–M-14. Nie M-19.
 
 Delta: [docs/deltas/archived/5.0-party.md](../deltas/archived/5.0-party.md).
 
@@ -23,6 +23,14 @@ Delta: [docs/deltas/archived/5.0-party.md](../deltas/archived/5.0-party.md).
 - OpenFGA `can_manage_parties` = member
 - UI `/parties`: DataTableShell + dodanie + resolve + lookup + panele zależne
 - ALTER `terminal.operator_party_id` (nullable, FK złożone); `operator_name` zostaje. Picker na `/terminals` woła API `/parties`. Serwis geografii nie importuje `app.services.parties`
+
+## 131.0 identyfikatory biznesowe (M10-1)
+
+- Nowy INSERT wymaga co najmniej jednego z: `tax_id`, `vat_eu`, `eori`, `duns`
+- Rola `customer` wymaga `tax_id` (zakaz B2C bez NIP)
+- Unikat częściowy `(organization_id, token)` dla `vat_eu` / `eori` / `duns`; `tax_id` zostaje `(org, country, tax_id)`
+- Duplikat → `PartyConflict` HTTP 409 z `existing_party_id` i `href` `/parties/{id}`
+- Stare wiersze mogą nie mieć numeru. Nie M10-2 (role table / JDG / parent)
 
 ## 8.0 matcher maila (M-11)
 

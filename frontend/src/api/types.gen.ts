@@ -2167,6 +2167,18 @@ export type PartyCreate = {
      */
     tax_id?: string | null;
     /**
+     * Vat Eu
+     */
+    vat_eu?: string | null;
+    /**
+     * Eori
+     */
+    eori?: string | null;
+    /**
+     * Duns
+     */
+    duns?: string | null;
+    /**
      * Short Name
      */
     short_name?: string | null;
@@ -2244,6 +2256,18 @@ export type PartyResponse = {
      * Tax Id
      */
     tax_id: string | null;
+    /**
+     * Vat Eu
+     */
+    vat_eu: string | null;
+    /**
+     * Eori
+     */
+    eori: string | null;
+    /**
+     * Duns
+     */
+    duns: string | null;
     /**
      * Country Code
      */

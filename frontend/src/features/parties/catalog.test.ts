@@ -22,6 +22,31 @@ describe("partyCreateBody", () => {
       roles: ["customer", "vendor"],
     })
   })
+
+  it("folds VAT UE, EORI and DUNS when present", async () => {
+    const { partyCreateBody, partyConflictHref } = await import("@/lib/parties-api")
+    expect(
+      partyCreateBody({
+        legalName: "ACME",
+        countryCode: "DE",
+        taxId: "",
+        rolesText: "vendor",
+        vatEu: " de 123 ",
+        eori: " de 1234567 ",
+        duns: "12-345-6789",
+      }),
+    ).toEqual({
+      legal_name: "ACME",
+      country_code: "DE",
+      tax_id: "",
+      roles: ["vendor"],
+      vat_eu: "DE123",
+      eori: "DE1234567",
+      duns: "123456789",
+    })
+    expect(partyConflictHref({ href: "/parties/abc" })).toBe("/parties/abc")
+    expect(partyConflictHref({ href: "https://evil.test" })).toBeNull()
+  })
 })
 
 describe("parties catalog surface for 5.0", () => {
@@ -36,6 +61,9 @@ describe("parties catalog surface for 5.0", () => {
     expect(lists).toContain("parties")
     expect(ops).toContain("/parties")
     expect(page).toContain("DataTableShell")
+    expect(page).toContain("VAT UE")
+    expect(page).toContain("EORI")
+    expect(page).toContain("DUNS")
     expect(page).toContain("createParty")
     expect(page).toContain("resolveParty")
     expect(page).toContain("resolvePartyEmail")

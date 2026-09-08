@@ -1,7 +1,7 @@
 # BC party (M-10)
 
 Katalog kontrahenta per tenant: `party` i tabele zależne.
-`resolve` po `tax_id` albo `resolve_email` po adresie — nie luźna nazwa. Lookup GUS/VIES/whitelist zwraca szkic.
+`resolve` po `tax_id` albo `resolve_email` po adresie — nie luźna nazwa. Nowy INSERT wymaga tax_id / vat_eu / eori / duns; `customer` wymaga tax_id. Lookup GUS/VIES/whitelist zwraca szkic.
 Matcher maila (M-11) nie zapisuje `party_contact`.
 Karta wyników (M-13) to snapshot — nie silnik RFQ i nie scoring osoby.
 

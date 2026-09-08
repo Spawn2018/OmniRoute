@@ -102,7 +102,9 @@
 | operator terminalu | operator_name / operator_party_id | tekst zostaje; FK nullable do `party` od 5.0 |
 | kontrahent | party | katalog M-10; jeden podmiot, wiele ról |
 | identyfikator podatkowy | tax_id | NIP / VAT krajowy; `resolve` po tokenie |
-| numer VAT UE | vat_eu | opcjonalny; lookup VIES nie zapisuje sam |
+| numer VAT UE | vat_eu | unikat per tenant; lookup VIES nie zapisuje sam |
+| numer EORI | eori | unikat per tenant; 131.0; nie live celny |
+| numer DUNS | duns | unikat per tenant; 9 cyfr; 131.0 |
 | REGON | regon | opcjonalny |
 | KRS | krs | opcjonalny |
 | role kontrahenta | party roles | `customer` `vendor` `agent` `carrier` `shipper` `consignee` `notify` |

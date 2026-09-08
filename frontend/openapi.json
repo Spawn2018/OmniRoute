@@ -10176,6 +10176,42 @@
             ],
             "title": "Tax Id"
           },
+          "vat_eu": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 32
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Vat Eu"
+          },
+          "eori": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 32
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Eori"
+          },
+          "duns": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 16
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Duns"
+          },
           "short_name": {
             "anyOf": [
               {
@@ -10327,6 +10363,39 @@
             ],
             "title": "Tax Id"
           },
+          "vat_eu": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Vat Eu"
+          },
+          "eori": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Eori"
+          },
+          "duns": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Duns"
+          },
           "country_code": {
             "type": "string",
             "title": "Country Code"
@@ -10399,6 +10468,9 @@
           "legal_name",
           "short_name",
           "tax_id",
+          "vat_eu",
+          "eori",
+          "duns",
           "country_code",
           "roles",
           "credit_limit",

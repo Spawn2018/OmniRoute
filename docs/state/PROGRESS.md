@@ -345,3 +345,4 @@
 | 2026-09-08 | Plan 130.0 | M-12 | O0: `network_member.party_id`. Delta zaakceptowana (`/noc`). Nie ranking. Następny: `/plaster` 130.0. |
 | 2026-09-08 | 130.0 | M-12 | O0: `network_member.party_id` FK tenanta. Stare NULL; nowy członek wymaga kontrahenta. Nie ranking. Następny: M10-1 Plan. |
 | 2026-09-08 | Plan 131.0 | M-10 | M10-1: ID biznesowe + unikat + 409 z linkiem. Delta zaakceptowana (`/noc`). Nie M10-2. Następny: kod 131.0. |
+| 2026-09-08 | 131.0 | M-10 | M10-1: NIP/VAT-EU/EORI/DUNS unikat; nowy zapis wymaga ID; customer bez NIP = 400; 409 z linkiem. Nie M10-2. Następny: M10-2 Plan. |

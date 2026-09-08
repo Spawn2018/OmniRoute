@@ -34,6 +34,48 @@ def normalize_legal_name(raw: str) -> str:
     return label
 
 
+def normalize_vat_eu(raw: str) -> str:
+    if type(raw) is not str:
+        raise InvalidPartyData("vat_eu musi być tekstem")
+    token = "".join(raw.split()).upper()
+    if len(token) < 4 or len(token) > 16 or not token.isalnum():
+        raise InvalidPartyData("vat_eu: 4–16 znaków A–Z 0–9")
+    return token
+
+
+def normalize_eori(raw: str) -> str:
+    if type(raw) is not str:
+        raise InvalidPartyData("eori musi być tekstem")
+    token = "".join(raw.split()).upper()
+    if len(token) < 3 or len(token) > 17 or not token.isalnum():
+        raise InvalidPartyData("eori: 3–17 znaków A–Z 0–9")
+    return token
+
+
+def normalize_duns(raw: str) -> str:
+    if type(raw) is not str:
+        raise InvalidPartyData("duns musi być tekstem")
+    digits = "".join(ch for ch in raw if ch.isdigit())
+    if len(digits) != 9:
+        raise InvalidPartyData("DUNS: 9 cyfr")
+    return digits
+
+
+def require_business_id(
+    tax_id: str | None,
+    vat_eu: str | None,
+    eori: str | None,
+    duns: str | None,
+) -> None:
+    if tax_id is None and vat_eu is None and eori is None and duns is None:
+        raise InvalidPartyData("wymagany identyfikator biznesowy")
+
+
+def require_customer_tax_id(roles: list[str], tax_id: str | None) -> None:
+    if "customer" in roles and tax_id is None:
+        raise InvalidPartyData("customer wymaga tax_id")
+
+
 def normalize_tax_id(country_code: str, tax_id: str) -> str:
     country = normalize_country_code(country_code)
     if type(tax_id) is not str:

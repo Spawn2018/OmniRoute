@@ -1,3 +1,4 @@
+from collections.abc import Callable
 from datetime import UTC, datetime
 from decimal import Decimal
 from typing import NamedTuple
@@ -24,6 +25,7 @@ from app.domain.errors import (
     CustomerSopAlreadyApproved,
     CustomerSopConflict,
     InvalidPartyData,
+    PartyConflict,
     ResourceNotFound,
     UnknownCreditReview,
     UnknownCustomerSop,
@@ -38,11 +40,16 @@ from app.domain.party import (
     manual_source_ref,
     normalize_country_code,
     normalize_credit_pair,
+    normalize_duns,
     normalize_email_domain,
+    normalize_eori,
     normalize_legal_name,
     normalize_roles,
     normalize_sanctions_list_ref,
     normalize_tax_id,
+    normalize_vat_eu,
+    require_business_id,
+    require_customer_tax_id,
 )
 from app.domain.party_scorecard import (
     optional_non_negative_hours,
@@ -97,6 +104,9 @@ def _new_party(
     country_code: str,
     roles: list[str],
     stored_tax: str | None,
+    stored_vat: str | None,
+    stored_eori: str | None,
+    stored_duns: str | None,
     short_name: str | None,
     credit_limit: Decimal | None,
     credit_currency: str | None,
@@ -109,12 +119,145 @@ def _new_party(
         short_name=_blank_to_none(short_name),
         country_code=country_code,
         tax_id=stored_tax,
+        vat_eu=stored_vat,
+        eori=stored_eori,
+        duns=stored_duns,
         roles=normalize_roles(roles),
         credit_limit=credit_limit,
         credit_currency=credit_currency,
         source_ref=origin,
         is_active=True,
         created_by=user_id,
+    )
+
+
+def _optional_token(raw: str | None, normalize: Callable[[str], str]) -> str | None:
+    if raw is None or raw.strip() == "":
+        return None
+    return normalize(raw)
+
+
+def _stored_business_ids(
+    country: str,
+    tax_id: str | None,
+    vat_eu: str | None,
+    eori: str | None,
+    duns: str | None,
+) -> tuple[str | None, str | None, str | None, str | None]:
+    stored_tax = _optional_token(tax_id, lambda raw: normalize_tax_id(country, raw))
+    stored_vat = _optional_token(vat_eu, normalize_vat_eu)
+    stored_eori = _optional_token(eori, normalize_eori)
+    stored_duns = _optional_token(duns, normalize_duns)
+    require_business_id(stored_tax, stored_vat, stored_eori, stored_duns)
+    return stored_tax, stored_vat, stored_eori, stored_duns
+
+
+async def _collision_on_tokens(
+    repo: PartyRepository,
+    ids: tuple[str | None, str | None, str | None, str | None],
+) -> PartyConflict | None:
+    stored_tax, stored_vat, stored_eori, stored_duns = ids
+    checks = (
+        ("tax_id", stored_tax, repo.find_by_tax_id),
+        ("vat_eu", stored_vat, repo.find_by_vat_eu),
+        ("eori", stored_eori, repo.find_by_eori),
+        ("duns", stored_duns, repo.find_by_duns),
+    )
+    for label, token, finder in checks:
+        if token is None:
+            continue
+        found = await finder(token)
+        if found is not None:
+            return PartyConflict(
+                f"kontrahent z tym {label} już istnieje",
+                existing_party_id=found.id,
+            )
+    return None
+
+
+async def _add_party_or_conflict(
+    repo: PartyRepository,
+    row: Party,
+    ids: tuple[str | None, str | None, str | None, str | None],
+) -> Party:
+    try:
+        return await repo.add(row)
+    except IntegrityError as exc:
+        again = await _collision_on_tokens(repo, ids)
+        if again is not None:
+            raise again from exc
+        raise InvalidPartyData("kontrahent z tym identyfikatorem już istnieje") from exc
+
+
+def _party_from_ids(
+    *,
+    organization_id: UUID,
+    user_id: UUID,
+    legal_name: str,
+    country: str,
+    roles: list[str],
+    ids: tuple[str | None, str | None, str | None, str | None],
+    short_name: str | None,
+    credit_limit: Decimal | None,
+    credit_currency: str | None,
+    origin: str,
+) -> Party:
+    return _new_party(
+        organization_id=organization_id,
+        user_id=user_id,
+        legal_name=legal_name,
+        country_code=country,
+        roles=roles,
+        stored_tax=ids[0],
+        stored_vat=ids[1],
+        stored_eori=ids[2],
+        stored_duns=ids[3],
+        short_name=short_name,
+        credit_limit=credit_limit,
+        credit_currency=credit_currency,
+        origin=origin,
+    )
+
+
+async def _persist_new_party(
+    repo: PartyRepository,
+    organization_id: UUID,
+    user_id: UUID,
+    legal_name: str,
+    country_code: str,
+    roles: list[str],
+    tax_id: str | None,
+    vat_eu: str | None,
+    eori: str | None,
+    duns: str | None,
+    short_name: str | None,
+    credit_limit: object | None,
+    credit_currency: str | None,
+    source_ref: str | None,
+    lookup_source: str | None,
+) -> Party:
+    country = normalize_country_code(country_code)
+    ids = _stored_business_ids(country, tax_id, vat_eu, eori, duns)
+    require_customer_tax_id(normalize_roles(roles), ids[0])
+    hit = await _collision_on_tokens(repo, ids)
+    if hit is not None:
+        raise hit
+    limit, currency = normalize_credit_pair(credit_limit, credit_currency)
+    return await _add_party_or_conflict(
+        repo,
+        _party_from_ids(
+            organization_id=organization_id,
+            user_id=user_id,
+            legal_name=legal_name,
+            country=country,
+            roles=roles,
+            ids=ids,
+            short_name=short_name,
+            credit_limit=limit,
+            credit_currency=currency,
+            origin=_party_source_ref(lookup_source, source_ref),
+        ),
+        ids,
     )
 
 
@@ -263,35 +406,32 @@ class PartyService:
         country_code: str,
         roles: list[str],
         tax_id: str | None = None,
+        vat_eu: str | None = None,
+        eori: str | None = None,
+        duns: str | None = None,
         short_name: str | None = None,
         credit_limit: object | None = None,
         credit_currency: str | None = None,
         source_ref: str | None = None,
         lookup_source: str | None = None,
     ) -> Party:
-        country = normalize_country_code(country_code)
-        stored_tax: str | None = None
-        if tax_id is not None and tax_id.strip() != "":
-            stored_tax = normalize_tax_id(country, tax_id)
-        limit, currency = normalize_credit_pair(credit_limit, credit_currency)
-        origin = _party_source_ref(lookup_source, source_ref)
-        try:
-            return await self._parties.add(
-                _new_party(
-                    organization_id=organization_id,
-                    user_id=user_id,
-                    legal_name=legal_name,
-                    country_code=country,
-                    roles=roles,
-                    stored_tax=stored_tax,
-                    short_name=short_name,
-                    credit_limit=limit,
-                    credit_currency=currency,
-                    origin=origin,
-                )
-            )
-        except IntegrityError as exc:
-            raise InvalidPartyData("kontrahent z tym tax_id już istnieje") from exc
+        return await _persist_new_party(
+            self._parties,
+            organization_id,
+            user_id,
+            legal_name,
+            country_code,
+            roles,
+            tax_id,
+            vat_eu,
+            eori,
+            duns,
+            short_name,
+            credit_limit,
+            credit_currency,
+            source_ref,
+            lookup_source,
+        )
 
     async def list_contacts(self, party_id: UUID) -> list[PartyContact]:
         await self.get_party(party_id)
