@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny (zablokowany):** **173.0** G2.4 `tender_data_room` → G2.5–G2.23 → F → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. D8 parked. D9 leftover D9b–f. P1 leftover P1b–d. P2 leftover P2c. P3 leftover P3b–d. P4 leftover P4b–c. P5 leftover P5b–c. P6 leftover P6c. G2 leftover G2.4–G2.18. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
+**Następny (zablokowany):** **173.0** G2.4 `tender_data_room` → G2.5–G2.23 → F → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. D8 parked. D9 leftover D9b–f. P1 leftover P1b–d. P2 leftover P2c. P3 leftover P3b–d. P4 leftover P4b–c. P5 leftover P5b–c. P6 leftover P6c. G2 leftover G2.5–G2.18. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
 <!-- os-status:end -->
 
 ```mermaid
@@ -580,7 +580,8 @@ Karta: [karty-pol-g2-tender.md](analysis/karty-pol-g2-tender.md). P6 = oferty od
 | G2.1 | partia `tender_lot` | zamknięty ([170.0](deltas/archived/170.0-tender-lot.md); leftover G2.3–G2.18) | po G2.0; nie lane; nie kwota |
 | G2.2 | korytarz `tender_lane` | zamknięty ([171.0](deltas/archived/171.0-tender-lane.md); leftover G2.4–G2.18) | po G2.1; nie runda; nie kwota |
 | G2.3 | runda `tender_round` | zamknięty ([172.0](deltas/archived/172.0-tender-round.md); leftover G2.4–G2.18) | po G2.2; nie data room; nie kwota |
-| G2.4–G2.18 | data room+NDA, extract RFP HITL, matryca Excel (LLM mapuje kolumny, kwoty z P), playbook, prospecting HITL, bid/no-bid, award four-eyes, win/loss, TED capability, CO₂, consortium | po G2.3 | auto-award; scrape kontaktów |
+| G2.4 | pokój `tender_data_room` (NDA jako dane) | delta [173.0](deltas/open/173.0-tender-data-room.md) | po G2.3; nie extract; nie bajty; nie kwota |
+| G2.5–G2.18 | extract RFP HITL, matryca Excel (LLM mapuje kolumny, kwoty z P), playbook, prospecting HITL, bid/no-bid, award four-eyes, win/loss, TED capability, CO₂, consortium | po G2.4 | auto-award; scrape kontaktów |
 | G2.19–G2.22 | `lane_pattern`, `circle_sim` ≥500k w Postgres, km ładowny/pusty/dolot, lista przewoźników | po G2.18 | LLM-VRP; copy „natychmiast” bez p95 stage |
 | **G2.23** | KREPTD/GITD (ITD): P0 link+HITL; P1 Citizen API po certyfikacie; lead + C8 licencja | ops wniosek równolegle | scrape HTML kreptd; scoring osoby |
 
@@ -838,13 +839,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->
