@@ -12,6 +12,7 @@ from app.models.party_bank_account import PartyBankAccount
 from app.models.party_charge_override import PartyChargeOverride
 from app.models.party_contact import PartyContact
 from app.models.party_email_domain import PartyEmailDomain
+from app.models.party_lane_scorecard import PartyLaneScorecard
 from app.models.party_role_assignment import PartyRoleAssignment
 from app.models.party_scorecard import PartyScorecard
 
@@ -146,6 +147,37 @@ class PartyRepository:
         return list(result.all())
 
     async def add_scorecard(self, row: PartyScorecard) -> PartyScorecard:
+        self._session.add(row)
+        await self._session.flush()
+        return row
+
+    async def get_lane_scorecard(
+        self,
+        party_id: UUID,
+        origin_port_id: UUID,
+        destination_port_id: UUID,
+        window_days: int,
+    ) -> PartyLaneScorecard | None:
+        found = await self._session.scalar(
+            select(PartyLaneScorecard).where(
+                PartyLaneScorecard.party_id == party_id,
+                PartyLaneScorecard.origin_port_id == origin_port_id,
+                PartyLaneScorecard.destination_port_id == destination_port_id,
+                PartyLaneScorecard.window_days == window_days,
+            ),
+        )
+        return found if isinstance(found, PartyLaneScorecard) else None
+
+    async def list_lane_scorecards(self) -> list[PartyLaneScorecard]:
+        result = await self._session.scalars(
+            select(PartyLaneScorecard).order_by(
+                PartyLaneScorecard.computed_at.desc(),
+                PartyLaneScorecard.id,
+            ),
+        )
+        return list(result.all())
+
+    async def add_lane_scorecard(self, row: PartyLaneScorecard) -> PartyLaneScorecard:
         self._session.add(row)
         await self._session.flush()
         return row

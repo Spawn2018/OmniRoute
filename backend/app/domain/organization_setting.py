@@ -7,6 +7,7 @@ ALLOWED_SETTING_KEYS = frozenset(
         "quotation_number_prefix",
         "quotation_print_template",
         "inquiry_default_n",
+        "lane_scorecard_window_days",
     },
 )
 ALLOWED_PRINT_TEMPLATES = frozenset({"plain", "letter"})
@@ -55,6 +56,8 @@ def normalize_setting_value(setting_key: str, raw: object) -> str:
         return normalize_quotation_print_template(raw)
     if setting_key == "inquiry_default_n":
         return normalize_inquiry_default_n(raw)
+    if setting_key == "lane_scorecard_window_days":
+        return normalize_lane_scorecard_window_days(raw)
     raise InvalidOrganizationSetting("klucz poza allowlistą")
 
 
@@ -65,4 +68,14 @@ def normalize_inquiry_default_n(raw: str) -> str:
     value = int(token)
     if value < 1 or value > 20:
         raise InvalidOrganizationSetting("inquiry_default_n: liczba 1–20")
+    return token
+
+
+def normalize_lane_scorecard_window_days(raw: str) -> str:
+    token = raw.strip()
+    if not token.isdigit():
+        raise InvalidOrganizationSetting("lane_scorecard_window_days: liczba 1–365")
+    value = int(token)
+    if value < 1 or value > 365:
+        raise InvalidOrganizationSetting("lane_scorecard_window_days: liczba 1–365")
     return token

@@ -5665,6 +5665,80 @@
         }
       }
     },
+    "/api/v1/party-lane-scorecards": {
+      "get": {
+        "tags": [
+          "party-lane-scorecards"
+        ],
+        "summary": "List Lane Scorecards",
+        "operationId": "list_lane_scorecards_api_v1_party_lane_scorecards_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/LaneScorecardResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Lane Scorecards Api V1 Party Lane Scorecards Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "party-lane-scorecards"
+        ],
+        "summary": "Upsert Lane Scorecard",
+        "operationId": "upsert_lane_scorecard_api_v1_party_lane_scorecards_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LaneScorecardUpsert"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LaneScorecardResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/credit-reviews": {
       "get": {
         "tags": [
@@ -9720,6 +9794,166 @@
           "answered_count"
         ],
         "title": "InquiryMemberRankResponse"
+      },
+      "LaneScorecardResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "party_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Party Id"
+          },
+          "origin_port_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Origin Port Id"
+          },
+          "destination_port_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Destination Port Id"
+          },
+          "window_days": {
+            "type": "integer",
+            "title": "Window Days"
+          },
+          "sample_size": {
+            "type": "integer",
+            "title": "Sample Size"
+          },
+          "answered_inquiry_count": {
+            "type": "integer",
+            "title": "Answered Inquiry Count"
+          },
+          "shipment_count": {
+            "type": "integer",
+            "title": "Shipment Count"
+          },
+          "cheapest_count": {
+            "type": "integer",
+            "title": "Cheapest Count"
+          },
+          "median_response_hours": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Median Response Hours"
+          },
+          "computed_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Computed At"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          },
+          "hint": {
+            "type": "string",
+            "title": "Hint"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "party_id",
+          "origin_port_id",
+          "destination_port_id",
+          "window_days",
+          "sample_size",
+          "answered_inquiry_count",
+          "shipment_count",
+          "cheapest_count",
+          "median_response_hours",
+          "computed_at",
+          "source_ref",
+          "hint"
+        ],
+        "title": "LaneScorecardResponse"
+      },
+      "LaneScorecardUpsert": {
+        "properties": {
+          "party_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Party Id"
+          },
+          "origin_port_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Origin Port Id"
+          },
+          "destination_port_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Destination Port Id"
+          },
+          "window_days": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Window Days"
+          },
+          "sample_size": {
+            "type": "integer",
+            "title": "Sample Size",
+            "default": 0
+          },
+          "answered_inquiry_count": {
+            "type": "integer",
+            "title": "Answered Inquiry Count",
+            "default": 0
+          },
+          "shipment_count": {
+            "type": "integer",
+            "title": "Shipment Count",
+            "default": 0
+          },
+          "cheapest_count": {
+            "type": "integer",
+            "title": "Cheapest Count",
+            "default": 0
+          },
+          "median_response_hours": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Median Response Hours"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "party_id",
+          "origin_port_id",
+          "destination_port_id"
+        ],
+        "title": "LaneScorecardUpsert"
       },
       "LocationResponse": {
         "properties": {

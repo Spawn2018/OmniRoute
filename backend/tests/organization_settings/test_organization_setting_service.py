@@ -111,6 +111,18 @@ async def test_list_returns_repository_rows() -> None:
 
 
 @pytest.mark.asyncio
+async def test_upsert_rejects_zero_lane_window() -> None:
+    service = OrganizationSettingService(AsyncMock())
+    with pytest.raises(InvalidOrganizationSetting, match="1–365"):
+        await service.upsert_setting(
+            organization_id=uuid4(),
+            user_id=uuid4(),
+            setting_key="lane_scorecard_window_days",
+            setting_value="0",
+        )
+
+
+@pytest.mark.asyncio
 async def test_upsert_rejects_zero_inquiry_default_n() -> None:
     service = OrganizationSettingService(AsyncMock())
     with pytest.raises(InvalidOrganizationSetting, match="1–20"):

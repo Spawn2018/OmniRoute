@@ -32,6 +32,7 @@ from app.domain.errors import (
     UnknownEmailDomain,
     UnknownParty,
     UnknownPartyScorecard,
+    UnknownPort,
 )
 from app.domain.money import Money
 from app.domain.party import (
@@ -53,6 +54,11 @@ from app.domain.party import (
     require_no_jdg_auto_credit,
     require_parent_not_self,
 )
+from app.domain.party_lane_scorecard import (
+    require_lane_port_id,
+    require_lane_window_days,
+    required_lane_count,
+)
 from app.domain.party_scorecard import (
     optional_non_negative_hours,
     optional_non_negative_int,
@@ -68,6 +74,7 @@ from app.models.party_bank_account import PartyBankAccount
 from app.models.party_charge_override import PartyChargeOverride
 from app.models.party_contact import PartyContact
 from app.models.party_email_domain import PartyEmailDomain
+from app.models.party_lane_scorecard import PartyLaneScorecard
 from app.models.party_role_assignment import PartyRoleAssignment
 from app.models.party_scorecard import PartyScorecard
 from app.repositories.parties.party_repository import PartyRepository
@@ -390,6 +397,89 @@ def _fill_scorecard(
     row.window_days = stored.window_days
     row.computed_at = now
     row.source_ref = origin
+
+
+class _LaneStored(NamedTuple):
+    origin_port_id: UUID
+    destination_port_id: UUID
+    window_days: int
+    sample_size: int
+    answered_inquiry_count: int
+    shipment_count: int
+    cheapest_count: int
+    median_response_hours: Decimal | None
+
+
+def _lane_stored(
+    origin_port_id: UUID,
+    destination_port_id: UUID,
+    window_days: object | None,
+    sample_size: object | None,
+    answered_inquiry_count: object | None,
+    shipment_count: object | None,
+    cheapest_count: object | None,
+    median_response_hours: object | None,
+) -> _LaneStored:
+    return _LaneStored(
+        origin_port_id=require_lane_port_id(origin_port_id, "origin_port_id"),
+        destination_port_id=require_lane_port_id(destination_port_id, "destination_port_id"),
+        window_days=require_lane_window_days(window_days),
+        sample_size=required_sample_size(sample_size),
+        answered_inquiry_count=required_lane_count(
+            answered_inquiry_count,
+            "answered_inquiry_count",
+        ),
+        shipment_count=required_lane_count(shipment_count, "shipment_count"),
+        cheapest_count=required_lane_count(cheapest_count, "cheapest_count"),
+        median_response_hours=optional_non_negative_hours(median_response_hours),
+    )
+
+
+def _fill_lane(row: PartyLaneScorecard, stored: _LaneStored, *, now: datetime, origin: str) -> None:
+    row.window_days = stored.window_days
+    row.sample_size = stored.sample_size
+    row.answered_inquiry_count = stored.answered_inquiry_count
+    row.shipment_count = stored.shipment_count
+    row.cheapest_count = stored.cheapest_count
+    row.median_response_hours = stored.median_response_hours
+    row.computed_at = now
+    row.source_ref = origin
+
+
+def _lane_write_error(orig: IntegrityError) -> Exception:
+    detail = str(orig.orig) if orig.orig is not None else str(orig)
+    if "fk_party_lane_scorecard_party" in detail:
+        return UnknownParty("nieznany kontrahent")
+    if "origin_port" in detail or "destination_port" in detail:
+        return UnknownPort("nieznany port")
+    return orig
+
+
+def _new_lane(
+    *,
+    organization_id: UUID,
+    user_id: UUID,
+    party_id: UUID,
+    stored: _LaneStored,
+    now: datetime,
+    origin: str,
+) -> PartyLaneScorecard:
+    return PartyLaneScorecard(
+        id=uuid4(),
+        organization_id=organization_id,
+        party_id=party_id,
+        origin_port_id=stored.origin_port_id,
+        destination_port_id=stored.destination_port_id,
+        window_days=stored.window_days,
+        sample_size=stored.sample_size,
+        answered_inquiry_count=stored.answered_inquiry_count,
+        shipment_count=stored.shipment_count,
+        cheapest_count=stored.cheapest_count,
+        median_response_hours=stored.median_response_hours,
+        computed_at=now,
+        source_ref=origin,
+        created_by=user_id,
+    )
 
 
 def _new_scorecard(
@@ -748,6 +838,75 @@ class PartyService:
                 origin=origin,
             )
         )
+
+    async def list_lane_scorecards(self) -> list[PartyLaneScorecard]:
+        return await self._parties.list_lane_scorecards()
+
+    async def upsert_lane_scorecard(
+        self,
+        *,
+        organization_id: UUID,
+        user_id: UUID,
+        party_id: UUID,
+        origin_port_id: UUID,
+        destination_port_id: UUID,
+        window_days: object | None = None,
+        sample_size: object | None = None,
+        answered_inquiry_count: object | None = None,
+        shipment_count: object | None = None,
+        cheapest_count: object | None = None,
+        median_response_hours: object | None = None,
+    ) -> PartyLaneScorecard:
+        await self.get_party(party_id)
+        stored = _lane_stored(
+            origin_port_id,
+            destination_port_id,
+            window_days,
+            sample_size,
+            answered_inquiry_count,
+            shipment_count,
+            cheapest_count,
+            median_response_hours,
+        )
+        return await self._write_lane(
+            organization_id=organization_id,
+            user_id=user_id,
+            party_id=party_id,
+            stored=stored,
+        )
+
+    async def _write_lane(
+        self,
+        *,
+        organization_id: UUID,
+        user_id: UUID,
+        party_id: UUID,
+        stored: _LaneStored,
+    ) -> PartyLaneScorecard:
+        now = datetime.now(UTC)
+        origin = manual_source_ref()
+        existing = await self._parties.get_lane_scorecard(
+            party_id,
+            stored.origin_port_id,
+            stored.destination_port_id,
+            stored.window_days,
+        )
+        if existing is not None:
+            _fill_lane(existing, stored, now=now, origin=origin)
+            return existing
+        try:
+            return await self._parties.add_lane_scorecard(
+                _new_lane(
+                    organization_id=organization_id,
+                    user_id=user_id,
+                    party_id=party_id,
+                    stored=stored,
+                    now=now,
+                    origin=origin,
+                ),
+            )
+        except IntegrityError as orig:
+            raise _lane_write_error(orig) from orig
 
     async def list_sops(self) -> list[CustomerSop]:
         return await self._parties.list_sops()

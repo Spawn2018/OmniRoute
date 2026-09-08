@@ -10,7 +10,7 @@ Ekrany, które **zapisują** (INSERT/upsert), nie tablice-odczyty:
 - kurs NBP, extra portowe, oferty kanału — katalog, nie live HTTP. Na extra portowych „Dopasuj warunek” pokazuje wiersze, których `applies_when` jest dokładnie taki jak wpisałeś. To nie dopisuje opłaty ani marży.
 - porty, strefy taryfowe, terminale — UN/LOCODE / zakres pocztowy / ISPS
 - sieci `/networks` — katalog sieci oraz ręczny członek (`member_code` + nazwa + `party_id` kontrahenta) w wybranej sieci. Stary członek może nie mieć kontrahenta. „Zapisz zapytanie” dopisuje `carrier_inquiry` (`draft`). „Zapisz paczkę” — 1/wielu/wszyscy, status `queued`, opcjonalna trasa. Kwota tylko przy odpowiedzi. Top N z rankingu `answered` + „Zapisz szkice” (`mail_draft` / `carrier_inquiry`). Nie portal. Nie live HTTP.
-- ustawienie `default_currency`, `quotation_number_prefix`, `quotation_print_template`, `inquiry_default_n` (1–20) — allowlista, nie sekret, nie licznik oferty
+- ustawienie `default_currency`, `quotation_number_prefix`, `quotation_print_template`, `inquiry_default_n` (1–20), `lane_scorecard_window_days` (1–365) — allowlista. Karta lane na `/party-scorecards`. Nie sekret.
 - SOP klienta — treść + akceptacja procedury. Checkbox „Blokuj auto” zabrania automatu; świadomy `mailto:` i tak wymaga kliknięcia. Flaga widać przy szkicu na `/ai`. Nie generator zadań.
 - poczta `/mail` — `inbound_message` z `fixture://` / `synth://` albo ingest `graph://` / `imap://` + `external_id` (ten sam id = ten sam wiersz). Nie live skrzynka. Nie send.
 - outbox `/outbox` — zdarzenie `inbound_message_saved` po zapisie wiadomości. Ten sam subject = ten sam wiersz. Nie Temporal. Nie dispatch.

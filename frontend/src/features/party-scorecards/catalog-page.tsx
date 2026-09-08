@@ -1,12 +1,19 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { createColumnHelper } from "@tanstack/react-table"
 import { Link } from "@tanstack/react-router"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { BUSINESS_LISTS } from "@/lib/business-lists"
 import { quotationOfferOutcomes } from "@/features/party-scorecards/offer-outcomes"
 import { fetchOperatorDecisions } from "@/lib/operator-decisions-api"
+import {
+  EMPTY_LANE_DRAFT,
+  fetchPartyLaneScorecards,
+  laneScorecardUpsertBody,
+  upsertPartyLaneScorecard,
+  type LaneScorecardDraft,
+} from "@/lib/party-lane-scorecards-api"
 import {
   EMPTY_SCORECARD_DRAFT,
   fetchPartyScorecards,
@@ -15,6 +22,7 @@ import {
   type PartyScorecard,
   type ScorecardDraft,
 } from "@/lib/party-scorecards-api"
+import { fetchOrganizationSettings, laneScorecardWindowDays } from "@/lib/organization-settings-api"
 import { fetchQuotations } from "@/lib/quotations-api"
 import { getTenantContext } from "@/lib/tenant"
 import {
@@ -172,15 +180,99 @@ function SnapshotFields(args: {
   )
 }
 
+function LaneFields(args: {
+  draft: LaneScorecardDraft
+  onDraft: (next: LaneScorecardDraft) => void
+}) {
+  return (
+    <>
+      <Input
+        aria-label="Kontrahent karty lane"
+        placeholder="party_id"
+        value={args.draft.partyId}
+        onChange={(event) => args.onDraft({ ...args.draft, partyId: event.target.value })}
+        required
+      />
+      <Input
+        aria-label="POL karty lane"
+        placeholder="origin_port_id"
+        value={args.draft.originPortId}
+        onChange={(event) => args.onDraft({ ...args.draft, originPortId: event.target.value })}
+        required
+      />
+      <Input
+        aria-label="POD karty lane"
+        placeholder="destination_port_id"
+        value={args.draft.destinationPortId}
+        onChange={(event) => args.onDraft({ ...args.draft, destinationPortId: event.target.value })}
+        required
+      />
+      <Input
+        aria-label="Okno dni karty lane"
+        placeholder="lane_scorecard_window_days"
+        value={args.draft.windowDays}
+        onChange={(event) => args.onDraft({ ...args.draft, windowDays: event.target.value })}
+        required
+      />
+      <Input
+        aria-label="Próba karty lane"
+        placeholder="sample_size"
+        value={args.draft.sampleSize}
+        onChange={(event) => args.onDraft({ ...args.draft, sampleSize: event.target.value })}
+        required
+      />
+      <Input
+        aria-label="Odpowiedzi na zapytania"
+        placeholder="answered_inquiry_count"
+        value={args.draft.answeredInquiryCount}
+        onChange={(event) =>
+          args.onDraft({ ...args.draft, answeredInquiryCount: event.target.value })
+        }
+      />
+      <Input
+        aria-label="Liczba zleceń na lane"
+        placeholder="shipment_count"
+        value={args.draft.shipmentCount}
+        onChange={(event) => args.onDraft({ ...args.draft, shipmentCount: event.target.value })}
+      />
+      <Input
+        aria-label="Ile razy najtańszy"
+        placeholder="cheapest_count"
+        value={args.draft.cheapestCount}
+        onChange={(event) => args.onDraft({ ...args.draft, cheapestCount: event.target.value })}
+      />
+      <Input
+        aria-label="Mediana godzin odpowiedzi lane"
+        placeholder="median_response_hours"
+        value={args.draft.medianHours}
+        onChange={(event) => args.onDraft({ ...args.draft, medianHours: event.target.value })}
+      />
+    </>
+  )
+}
+
 export function PartyScorecardCatalogPage() {
   const ctx = getTenantContext()
   const queryClient = useQueryClient()
   const [draft, setDraft] = useState(EMPTY_SCORECARD_DRAFT)
+  const [laneDraft, setLaneDraft] = useState(EMPTY_LANE_DRAFT)
   const sessionReady = Boolean(ctx.organizationId && ctx.userId)
 
   const query = useQuery({
     queryKey: ["party-scorecards", ctx.organizationId],
     queryFn: fetchPartyScorecards,
+    enabled: sessionReady,
+    retry: false,
+  })
+  const settings = useQuery({
+    queryKey: ["organization-settings", ctx.organizationId],
+    queryFn: fetchOrganizationSettings,
+    enabled: sessionReady,
+    retry: false,
+  })
+  const lanes = useQuery({
+    queryKey: ["party-lane-scorecards", ctx.organizationId],
+    queryFn: fetchPartyLaneScorecards,
     enabled: sessionReady,
     retry: false,
   })
@@ -192,6 +284,25 @@ export function PartyScorecardCatalogPage() {
       void queryClient.invalidateQueries({ queryKey: ["party-scorecards", ctx.organizationId] })
     },
   })
+  const saveLane = useMutation({
+    mutationFn: () => upsertPartyLaneScorecard(laneScorecardUpsertBody(laneDraft)),
+    onSuccess: () => {
+      const windowDays = String(laneScorecardWindowDays(settings.data ?? []))
+      setLaneDraft({ ...EMPTY_LANE_DRAFT, windowDays })
+      void queryClient.invalidateQueries({ queryKey: ["party-lane-scorecards", ctx.organizationId] })
+    },
+  })
+
+  useEffect(() => {
+    if (settings.data === undefined) {
+      return
+    }
+    setLaneDraft((current) =>
+      current.partyId === ""
+        ? { ...current, windowDays: String(laneScorecardWindowDays(settings.data ?? [])) }
+        : current,
+    )
+  }, [settings.data])
 
   return (
     <div className="space-y-3">
@@ -214,6 +325,32 @@ export function PartyScorecardCatalogPage() {
         </Button>
       </form>
       {saveMutation.isError ? <CatalogError error={saveMutation.error} /> : null}
+      <form
+        className="grid gap-2 rounded-md border border-border bg-card p-3 lg:grid-cols-4"
+        data-scorecard="lane"
+        onSubmit={(event) => {
+          event.preventDefault()
+          if (sessionReady) saveLane.mutate()
+        }}
+      >
+        <p className="text-xs text-muted-foreground lg:col-span-4">
+          Karta lane: snapshot per POL/POD. `sample_size=0` zapisuje wiersz i tekst o braku historii.
+          Nie scoring osoby.
+        </p>
+        <LaneFields draft={laneDraft} onDraft={setLaneDraft} />
+        <Button type="submit" disabled={saveLane.isPending || !sessionReady}>
+          Zapisz kartę lane
+        </Button>
+      </form>
+      {saveLane.isError ? <CatalogError error={saveLane.error} /> : null}
+      {lanes.isError ? <CatalogError error={lanes.error} /> : null}
+      <ul className="text-xs" data-scorecard="lane-hints">
+        {(lanes.data ?? []).map((row) => (
+          <li key={row.id}>
+            {row.hint} · {row.party_id}
+          </li>
+        ))}
+      </ul>
       <CatalogLoadedTable
         tableKey={BUSINESS_LISTS.partyScorecards.tableKey}
         columns={columns}

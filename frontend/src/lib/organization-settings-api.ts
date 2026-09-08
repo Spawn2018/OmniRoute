@@ -37,6 +37,18 @@ export function rolloutSettings<Row extends { setting_key: string }>(rows: reado
   return rows.filter((row) => row.setting_key === "default_currency")
 }
 
+export function laneScorecardWindowDays(rows: readonly OrganizationSetting[]): number {
+  const found = rows.find((row) => row.setting_key === "lane_scorecard_window_days")
+  if (found === undefined) {
+    return 90
+  }
+  const parsed = Number.parseInt(found.setting_value, 10)
+  if (!Number.isInteger(parsed) || parsed < 1 || parsed > 365) {
+    return 90
+  }
+  return parsed
+}
+
 export function inquiryDefaultN(rows: readonly OrganizationSetting[]): number {
   const found = rows.find((row) => row.setting_key === "inquiry_default_n")
   if (found === undefined) {

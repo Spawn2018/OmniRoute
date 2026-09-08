@@ -3,6 +3,8 @@ import path from "node:path"
 import { fileURLToPath } from "node:url"
 import { describe, expect, it } from "vitest"
 import { quotationOfferOutcomes } from "@/features/party-scorecards/offer-outcomes"
+import { laneScorecardUpsertBody } from "@/lib/party-lane-scorecards-api"
+import { laneScorecardWindowDays } from "@/lib/organization-settings-api"
 import { scorecardUpsertBody } from "@/lib/party-scorecards-api"
 import type { OperatorDecision } from "@/lib/operator-decisions-api"
 import type { Quotation } from "@/lib/quotations-api"
@@ -54,6 +56,10 @@ describe("party-scorecards catalog surface for 10.0", () => {
     expect(page).not.toContain("amount")
     expect(page).not.toContain("natural_person")
     expect(page).not.toContain("charge.margin")
+    expect(page).toContain("upsertPartyLaneScorecard")
+    expect(page).toContain("lane_scorecard_window_days")
+    expect(page).toContain('data-scorecard="lane"')
+    expect(page).toContain("Zapisz kartę lane")
   })
 
   it("lists quotation S11 verdicts without writing KPI or scoring a person", () => {
@@ -118,6 +124,45 @@ function decisionRow(
     source_ref: "fixture://decision/1",
   }
 }
+
+describe("O5 lane snapshot helpers", () => {
+  it("reads window days and builds a lane body without inventing money", () => {
+    expect(
+      laneScorecardWindowDays([
+        {
+          id: "1",
+          organization_id: "o",
+          setting_key: "lane_scorecard_window_days",
+          setting_value: "30",
+        },
+      ]),
+    ).toBe(30)
+    expect(laneScorecardWindowDays([])).toBe(90)
+    expect(
+      laneScorecardUpsertBody({
+        partyId: " p ",
+        originPortId: " a ",
+        destinationPortId: " b ",
+        windowDays: "30",
+        sampleSize: "0",
+        answeredInquiryCount: "0",
+        shipmentCount: "1",
+        cheapestCount: "0",
+        medianHours: "  ",
+      }),
+    ).toEqual({
+      party_id: "p",
+      origin_port_id: "a",
+      destination_port_id: "b",
+      window_days: 30,
+      sample_size: 0,
+      answered_inquiry_count: 0,
+      shipment_count: 1,
+      cheapest_count: 0,
+      median_response_hours: null,
+    })
+  })
+})
 
 describe("quotationOfferOutcomes", () => {
   it("keeps accepted and rejected quotation verdicts with a party", () => {

@@ -1703,6 +1703,110 @@ export type InquiryMemberRankResponse = {
 };
 
 /**
+ * LaneScorecardResponse
+ */
+export type LaneScorecardResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Origin Port Id
+     */
+    origin_port_id: string;
+    /**
+     * Destination Port Id
+     */
+    destination_port_id: string;
+    /**
+     * Window Days
+     */
+    window_days: number;
+    /**
+     * Sample Size
+     */
+    sample_size: number;
+    /**
+     * Answered Inquiry Count
+     */
+    answered_inquiry_count: number;
+    /**
+     * Shipment Count
+     */
+    shipment_count: number;
+    /**
+     * Cheapest Count
+     */
+    cheapest_count: number;
+    /**
+     * Median Response Hours
+     */
+    median_response_hours: string | null;
+    /**
+     * Computed At
+     */
+    computed_at: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+    /**
+     * Hint
+     */
+    hint: string;
+};
+
+/**
+ * LaneScorecardUpsert
+ */
+export type LaneScorecardUpsert = {
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Origin Port Id
+     */
+    origin_port_id: string;
+    /**
+     * Destination Port Id
+     */
+    destination_port_id: string;
+    /**
+     * Window Days
+     */
+    window_days?: number | null;
+    /**
+     * Sample Size
+     */
+    sample_size?: number;
+    /**
+     * Answered Inquiry Count
+     */
+    answered_inquiry_count?: number;
+    /**
+     * Shipment Count
+     */
+    shipment_count?: number;
+    /**
+     * Cheapest Count
+     */
+    cheapest_count?: number;
+    /**
+     * Median Response Hours
+     */
+    median_response_hours?: string | null;
+};
+
+/**
  * LocationResponse
  */
 export type LocationResponse = {
@@ -6975,6 +7079,49 @@ export type UpsertScorecardApiV1PartyScorecardsPartyIdPostResponses = {
 };
 
 export type UpsertScorecardApiV1PartyScorecardsPartyIdPostResponse = UpsertScorecardApiV1PartyScorecardsPartyIdPostResponses[keyof UpsertScorecardApiV1PartyScorecardsPartyIdPostResponses];
+
+export type ListLaneScorecardsApiV1PartyLaneScorecardsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/party-lane-scorecards';
+};
+
+export type ListLaneScorecardsApiV1PartyLaneScorecardsGetResponses = {
+    /**
+     * Response List Lane Scorecards Api V1 Party Lane Scorecards Get
+     *
+     * Successful Response
+     */
+    200: Array<LaneScorecardResponse>;
+};
+
+export type ListLaneScorecardsApiV1PartyLaneScorecardsGetResponse = ListLaneScorecardsApiV1PartyLaneScorecardsGetResponses[keyof ListLaneScorecardsApiV1PartyLaneScorecardsGetResponses];
+
+export type UpsertLaneScorecardApiV1PartyLaneScorecardsPostData = {
+    body: LaneScorecardUpsert;
+    path?: never;
+    query?: never;
+    url: '/api/v1/party-lane-scorecards';
+};
+
+export type UpsertLaneScorecardApiV1PartyLaneScorecardsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type UpsertLaneScorecardApiV1PartyLaneScorecardsPostError = UpsertLaneScorecardApiV1PartyLaneScorecardsPostErrors[keyof UpsertLaneScorecardApiV1PartyLaneScorecardsPostErrors];
+
+export type UpsertLaneScorecardApiV1PartyLaneScorecardsPostResponses = {
+    /**
+     * Successful Response
+     */
+    200: LaneScorecardResponse;
+};
+
+export type UpsertLaneScorecardApiV1PartyLaneScorecardsPostResponse = UpsertLaneScorecardApiV1PartyLaneScorecardsPostResponses[keyof UpsertLaneScorecardApiV1PartyLaneScorecardsPostResponses];
 
 export type ListCreditReviewsApiV1CreditReviewsGetData = {
     body?: never;

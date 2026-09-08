@@ -88,6 +88,8 @@ Batch POST: lista `network_member_id` (z `party_id`). „Wszyscy” = filtr M-03
 
 ## O5 — `party_lane_scorecard`
 
+**139.0 zamknięty `/noc`:** tabela `party_lane_scorecard` + hint + `lane_scorecard_window_days`. Nie O6.
+
 Nowa tabela. Pogłębienie M-13, nie scoring osoby, nie karta globalna zamiast lane.
 
 | Pole | Typ | Uwagi |

@@ -37,6 +37,7 @@ export function OrganizationSettingCatalogPage() {
   const [prefix, setPrefix] = useState("OR-Q")
   const [template, setTemplate] = useState("plain")
   const [defaultN, setDefaultN] = useState("3")
+  const [laneWindow, setLaneWindow] = useState("90")
   const signedIn = Boolean(ctx.organizationId && ctx.userId)
 
   const query = useQuery({
@@ -82,6 +83,20 @@ export function OrganizationSettingCatalogPage() {
         organizationSettingUpsertBody({
           settingKey: "inquiry_default_n",
           settingValue: defaultN,
+        }),
+      ),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({
+        queryKey: ["organization-settings", ctx.organizationId],
+      })
+    },
+  })
+  const saveLaneWindow = useMutation({
+    mutationFn: () =>
+      upsertOrganizationSetting(
+        organizationSettingUpsertBody({
+          settingKey: "lane_scorecard_window_days",
+          settingValue: laneWindow,
         }),
       ),
     onSuccess: () => {
@@ -195,10 +210,30 @@ export function OrganizationSettingCatalogPage() {
         </Button>
       </form>
 
+      <form
+        className="flex flex-col gap-2 rounded-md border border-border bg-card p-3 md:flex-row md:flex-wrap"
+        onSubmit={(event) => {
+          event.preventDefault()
+          saveLaneWindow.mutate()
+        }}
+      >
+        <Input
+          aria-label="Okno dni karty lane"
+          placeholder="90"
+          value={laneWindow}
+          onChange={(event) => setLaneWindow(event.target.value)}
+          required
+        />
+        <Button type="submit" disabled={saveLaneWindow.isPending || !signedIn}>
+          Zapisz lane_scorecard_window_days
+        </Button>
+      </form>
+
       {saveMutation.isError ? <CatalogError error={saveMutation.error} /> : null}
       {savePrefix.isError ? <CatalogError error={savePrefix.error} /> : null}
       {saveTemplate.isError ? <CatalogError error={saveTemplate.error} /> : null}
       {saveDefaultN.isError ? <CatalogError error={saveDefaultN.error} /> : null}
+      {saveLaneWindow.isError ? <CatalogError error={saveLaneWindow.error} /> : null}
 
       <CatalogLoadedTable
         loading={query.isLoading}

@@ -13,6 +13,7 @@ Karta wyników (M-13) to snapshot — nie silnik RFQ i nie scoring osoby.
 - `app.models.party_charge_override`
 - `app.models.carrier_profile`
 - `app.models.party_scorecard`
+- `app.models.party_lane_scorecard`
 - `app.models.credit_review`
 - `app.models.customer_sop`
 - `app.repositories.parties`

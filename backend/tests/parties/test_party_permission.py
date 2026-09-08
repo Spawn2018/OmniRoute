@@ -40,6 +40,18 @@ _ENDPOINTS = (
         None,
         {"sample_size": 0, "window_days": 90},
     ),
+    ("GET", "/api/v1/party-lane-scorecards", None, None),
+    (
+        "POST",
+        "/api/v1/party-lane-scorecards",
+        None,
+        {
+            "party_id": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+            "origin_port_id": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+            "destination_port_id": "cccccccc-cccc-cccc-cccc-cccccccccccc",
+            "sample_size": 0,
+        },
+    ),
     ("GET", "/api/v1/customer-sops", None, None),
     (
         "GET",

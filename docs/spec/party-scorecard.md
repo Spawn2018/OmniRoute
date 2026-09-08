@@ -1,7 +1,7 @@
 # M-13 party_scorecard — karta wyników kontrahenta
 
 **Moduł żywy:** M-13 (archiwum M-13; nie koliduje z żywym M-10 `party` / M-08 `charge` / M-14)  
-**Plaster:** **10.0** (zamknięty) · **120.0** (zamknięty)  
+**Plaster:** **10.0** (zamknięty) · **120.0** (zamknięty) · **139.0** (zamknięty)  
 **Status:** snapshot karty per tenant + odczyt decyzji oferty. Nie silnik RFQ. Nie scoring osoby.
 
 Delta: [docs/deltas/archived/10.0-party-scorecard.md](../deltas/archived/10.0-party-scorecard.md) · [docs/deltas/archived/120.0-scorecard-offer-outcomes.md](../deltas/archived/120.0-scorecard-offer-outcomes.md).
@@ -37,3 +37,10 @@ SQL-refresh z `quotation`/`charge` · karta per lane · M-14 `natural_person` / 
 ### Poza 120.0
 
 SQL-refresh zapisujący wskaźniki · scoring osoby · `won`/`lost` na wycenie
+
+## 139.0 karta lane
+
+Tabela `party_lane_scorecard` per tenant: party + POL/POD + `window_days`. Snapshot ręczny, hint z szablonu. `sample_size=0` zostaje wierszem. Refresh SQL z innych BC leftover. Nie scoring osoby.
+
+Delta: [docs/deltas/archived/139.0-party-lane-scorecard.md](../deltas/archived/139.0-party-lane-scorecard.md).
+

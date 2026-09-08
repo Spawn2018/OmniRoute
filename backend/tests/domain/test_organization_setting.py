@@ -47,3 +47,13 @@ def test_normalize_inquiry_default_n_accepts_range() -> None:
 def test_normalize_inquiry_default_n_rejects_zero() -> None:
     with pytest.raises(InvalidOrganizationSetting, match="1–20"):
         normalize_setting_value("inquiry_default_n", "0")
+
+
+def test_normalize_lane_window_accepts_range() -> None:
+    assert normalize_setting_key(" Lane_Scorecard_Window_Days ") == "lane_scorecard_window_days"
+    assert normalize_setting_value("lane_scorecard_window_days", " 90 ") == "90"
+
+
+def test_normalize_lane_window_rejects_zero() -> None:
+    with pytest.raises(InvalidOrganizationSetting, match="1–365"):
+        normalize_setting_value("lane_scorecard_window_days", "0")
