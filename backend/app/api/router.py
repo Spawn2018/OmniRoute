@@ -2,6 +2,7 @@ from fastapi import APIRouter
 
 from app.api import (
     bank_payments,
+    booking_instructions,
     bookkeeping,
     cargo_claims,
     carrier_inquiries,
@@ -68,6 +69,7 @@ api_router.include_router(commodity_codes.router)
 api_router.include_router(dangerous_goods.router)
 api_router.include_router(document_checklist_rules.router)
 api_router.include_router(document_dispatch_rules.router)
+api_router.include_router(booking_instructions.router)
 api_router.include_router(field_carry_forwards.router)
 api_router.include_router(networks.router)
 api_router.include_router(carrier_inquiries.router)

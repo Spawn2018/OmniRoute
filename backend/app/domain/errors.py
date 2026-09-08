@@ -468,3 +468,7 @@ class InvalidShipmentStakeholder(DomainError):
 
 class InvalidDocumentDispatchRule(DomainError):
     """Reguła adresata: trójka incoterm×strona×rodzaj → rola I2 — nie send."""
+
+
+class InvalidBookingInstruction(DomainError):
+    """Instrukcja bookingu: scope + rola I2 + status — nie HTTP armatora."""

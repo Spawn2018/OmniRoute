@@ -123,6 +123,70 @@ export type BankPaymentResponse = {
 };
 
 /**
+ * BookingInstructionCreate
+ */
+export type BookingInstructionCreate = {
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Booking Scope
+     */
+    booking_scope: string;
+    /**
+     * Target Role
+     */
+    target_role: string;
+    /**
+     * Status
+     */
+    status: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * BookingInstructionResponse
+ */
+export type BookingInstructionResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Booking Scope
+     */
+    booking_scope: string;
+    /**
+     * Target Role
+     */
+    target_role: string;
+    /**
+     * Status
+     */
+    status: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+    /**
+     * Superseded By
+     */
+    superseded_by: string | null;
+};
+
+/**
  * BookkeepingCreate
  */
 export type BookkeepingCreate = {
@@ -4891,6 +4955,63 @@ export type CreateDocumentDispatchRuleApiV1DocumentDispatchRulesPostResponses = 
 };
 
 export type CreateDocumentDispatchRuleApiV1DocumentDispatchRulesPostResponse = CreateDocumentDispatchRuleApiV1DocumentDispatchRulesPostResponses[keyof CreateDocumentDispatchRuleApiV1DocumentDispatchRulesPostResponses];
+
+export type ListBookingInstructionsApiV1BookingInstructionsGetData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Shipment Id
+         */
+        shipment_id: string;
+    };
+    url: '/api/v1/booking-instructions';
+};
+
+export type ListBookingInstructionsApiV1BookingInstructionsGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ListBookingInstructionsApiV1BookingInstructionsGetError = ListBookingInstructionsApiV1BookingInstructionsGetErrors[keyof ListBookingInstructionsApiV1BookingInstructionsGetErrors];
+
+export type ListBookingInstructionsApiV1BookingInstructionsGetResponses = {
+    /**
+     * Response List Booking Instructions Api V1 Booking Instructions Get
+     *
+     * Successful Response
+     */
+    200: Array<BookingInstructionResponse>;
+};
+
+export type ListBookingInstructionsApiV1BookingInstructionsGetResponse = ListBookingInstructionsApiV1BookingInstructionsGetResponses[keyof ListBookingInstructionsApiV1BookingInstructionsGetResponses];
+
+export type CreateBookingInstructionApiV1BookingInstructionsPostData = {
+    body: BookingInstructionCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/booking-instructions';
+};
+
+export type CreateBookingInstructionApiV1BookingInstructionsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateBookingInstructionApiV1BookingInstructionsPostError = CreateBookingInstructionApiV1BookingInstructionsPostErrors[keyof CreateBookingInstructionApiV1BookingInstructionsPostErrors];
+
+export type CreateBookingInstructionApiV1BookingInstructionsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: BookingInstructionResponse;
+};
+
+export type CreateBookingInstructionApiV1BookingInstructionsPostResponse = CreateBookingInstructionApiV1BookingInstructionsPostResponses[keyof CreateBookingInstructionApiV1BookingInstructionsPostResponses];
 
 export type ListFieldCarryForwardsApiV1FieldCarryForwardsGetData = {
     body?: never;

@@ -30,6 +30,7 @@ modules =
     app.services.dangerous_goods
     app.services.document_checklist_rules
     app.services.document_dispatch_rules
+    app.services.booking_instructions
     app.services.field_carry_forwards
     app.services.networks
     app.services.carrier_inquiries
@@ -118,6 +119,9 @@ forbidden_modules =
     app.services.document_dispatch_rules
     app.repositories.document_dispatch_rules
     app.models.document_dispatch_rule
+    app.services.booking_instructions
+    app.repositories.booking_instructions
+    app.models.booking_instruction
     app.services.field_carry_forwards
     app.repositories.field_carry_forwards
     app.models.field_carry_forward

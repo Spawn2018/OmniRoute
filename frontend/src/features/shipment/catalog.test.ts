@@ -31,6 +31,7 @@ describe("shipment surface for 28.0 and 90.0", () => {
     expect(page).toContain("fetchShipments")
     expect(page).toContain("Zapisz zlecenie")
     expect(page).toContain("ShipmentStakeholderPanel")
+    expect(page).toContain("BookingInstructionPanel")
     expect(page).not.toContain("fetchQuotations")
     expect(page).not.toContain("quotationAcceptancePending")
     const panel = readFileSync(path.join(srcRoot, "features/shipment/shipment-stakeholder-panel.tsx"), "utf8")
@@ -39,5 +40,15 @@ describe("shipment surface for 28.0 and 90.0", () => {
     expect(panel).toContain("shipmentStakeholderBody")
     expect(panel).not.toContain("sold_to")
     expect(panel).not.toContain("parseFloat")
+    const instruction = readFileSync(
+      path.join(srcRoot, "features/shipment/booking-instruction-panel.tsx"),
+      "utf8",
+    )
+    expect(ops).toContain('"148.0": "/shipments"')
+    expect(instruction).toContain('data-booking-instruction="job"')
+    expect(instruction).toContain("Zapisz instrukcję")
+    expect(instruction).toContain("bookingInstructionBody")
+    expect(instruction).not.toContain("sold_to")
+    expect(instruction).not.toContain("parseFloat")
   })
 })

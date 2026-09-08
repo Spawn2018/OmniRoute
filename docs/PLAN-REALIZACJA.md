@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny (zablokowany):** **148.0** I4 `booking_instruction` → U4 → T → U3 → D → P → G2.0–G2.23 → F → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
+**Następny (zablokowany):** **U4** `organization_calendar` → T → U3 → D → P → G2.0–G2.23 → F → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
 <!-- os-status:end -->
 
 ```mermaid
@@ -529,7 +529,7 @@ Macierz = **dane**. LLM nie wybiera adresata. Send jak O4. Audyt: [incoterms-boo
 | **I1** | `incoterm_responsibility` (11 reguł × import/export) | zamknięty (`docs/deltas/archived/145.0-incoterm-responsibility.md`) | po U1+M10-2 | nie cytat ICC; seed ops Omni |
 | **I2** | `shipment_stakeholder` + EXP1: sold_to / bill_to / ship_to / notify | zamknięty (`docs/deltas/archived/146.0-shipment-stakeholder.md`) | po I1 | 409 dispatch bez party |
 | **I3** | `document_dispatch_rule` + batch mail dokumentów odprawy | zamknięty (`docs/deltas/archived/147.0-document-dispatch-rule.md`) | po I2+O4 | nie auto-send; nie Selenium celny |
-| **I4** | `booking_instruction` (scope + target z macierzy; DAP = contact_exchange) | delta `docs/deltas/open/148.0-booking-instruction.md` (`/noc`) | po I2 | nie live HTTP S21; accept człowieka |
+| **I4** | `booking_instruction` (scope + target z macierzy; DAP = contact_exchange) | zamknięty (`docs/deltas/archived/148.0-booking-instruction.md`) | po I2 | nie live HTTP S21; accept człowieka |
 
 ### Fala T — warstwa wykonawcza (pełna, nie szkic)
 
@@ -834,13 +834,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

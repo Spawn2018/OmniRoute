@@ -378,3 +378,4 @@
 | 2026-09-08 | Plan 147.0 | I3 | document_dispatch_rule (adresat, nie send). Delta zaakceptowana (`/noc`). Nie I4. Następny: kod 147.0. |
 | 2026-09-08 | 147.0 | I3 | document_dispatch_rule katalog adresata. Nie send. Nie I4. Nastepny: I4 Plan. |
 | 2026-09-08 | Plan 148.0 | I4 | booking_instruction (scope+rola, nie S21). Delta zaakceptowana (`/noc`). Nie U4. Nastepny: kod 148.0. |
+| 2026-09-08 | 148.0 | I4 | booking_instruction na zleceniu. Nie S21. Nastepny: U4 Plan. |

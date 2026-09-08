@@ -10,6 +10,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 
 - **128.0 leftover context rot DONE:** PLAN wiersz HEAD → CURRENT. `AGENTS.md` M-71: szyna z `changed` i lockiem; zakaz extract/send zostaje. Nie konsument outboxa. Nie Auth0.
 
+- **148.0 leftover:** dwa `mail_draft` przy DAP `contact_exchange`; live HTTP S21. Tu tylko status na wierszu. Nie send.
 - **147.0 leftover:** tabela `document_dispatch` (batch mail + send S18). Tu tylko katalog adresata. Nie auto-send.
 - **143.0 leftover:** auto-INSERT notice z inquiry (zakaz M-34); U4 `is_working_day`; cron/Graph send. Data ciszy to pole, nie wyliczenie.
 - **OS-4 (fabryka, poza osią Q/S):** [delta](../deltas/open/OS-4-fabryka-styl-rzemiosla.md). `just craft-style` + sufit `long_functions` / `long_function_overflow`. Nie merytoryka spedycji. Nie S4.

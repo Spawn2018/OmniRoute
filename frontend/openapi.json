@@ -1138,6 +1138,102 @@
         }
       }
     },
+    "/api/v1/booking-instructions": {
+      "get": {
+        "tags": [
+          "booking-instructions"
+        ],
+        "summary": "List Booking Instructions",
+        "operationId": "list_booking_instructions_api_v1_booking_instructions_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "shipment_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Shipment Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BookingInstructionResponse"
+                  },
+                  "title": "Response List Booking Instructions Api V1 Booking Instructions Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "booking-instructions"
+        ],
+        "summary": "Create Booking Instruction",
+        "operationId": "create_booking_instruction_api_v1_booking_instructions_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BookingInstructionCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookingInstructionResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/field-carry-forwards": {
       "get": {
         "tags": [
@@ -7831,6 +7927,100 @@
           "source_ref"
         ],
         "title": "BankPaymentResponse"
+      },
+      "BookingInstructionCreate": {
+        "properties": {
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "booking_scope": {
+            "type": "string",
+            "title": "Booking Scope"
+          },
+          "target_role": {
+            "type": "string",
+            "title": "Target Role"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "shipment_id",
+          "booking_scope",
+          "target_role",
+          "status",
+          "source_ref"
+        ],
+        "title": "BookingInstructionCreate"
+      },
+      "BookingInstructionResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "booking_scope": {
+            "type": "string",
+            "title": "Booking Scope"
+          },
+          "target_role": {
+            "type": "string",
+            "title": "Target Role"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          },
+          "superseded_by": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Superseded By"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "shipment_id",
+          "booking_scope",
+          "target_role",
+          "status",
+          "source_ref",
+          "superseded_by"
+        ],
+        "title": "BookingInstructionResponse"
       },
       "BookkeepingCreate": {
         "properties": {
