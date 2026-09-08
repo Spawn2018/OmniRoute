@@ -5484,6 +5484,80 @@
         ]
       }
     },
+    "/api/v1/tender-lots": {
+      "get": {
+        "tags": [
+          "tender-lots"
+        ],
+        "summary": "List Tender Lots",
+        "operationId": "list_tender_lots_api_v1_tender_lots_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TenderLotResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Tender Lots Api V1 Tender Lots Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "tender-lots"
+        ],
+        "summary": "Create Tender Lot",
+        "operationId": "create_tender_lot_api_v1_tender_lots_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TenderLotCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TenderLotResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/tenders": {
       "get": {
         "tags": [
@@ -17629,6 +17703,67 @@
           "source_ref"
         ],
         "title": "TenderCreate"
+      },
+      "TenderLotCreate": {
+        "properties": {
+          "tender_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Tender Id"
+          },
+          "lot_code": {
+            "type": "string",
+            "title": "Lot Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "tender_id",
+          "lot_code",
+          "source_ref"
+        ],
+        "title": "TenderLotCreate"
+      },
+      "TenderLotResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "tender_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Tender Id"
+          },
+          "lot_code": {
+            "type": "string",
+            "title": "Lot Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "tender_id",
+          "lot_code",
+          "source_ref"
+        ],
+        "title": "TenderLotResponse"
       },
       "TenderQuoteCreate": {
         "properties": {

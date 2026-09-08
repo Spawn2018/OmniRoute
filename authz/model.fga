@@ -60,3 +60,4 @@ type organization
     define can_manage_local_charges: member
     define can_manage_tender_quotes: member
     define can_manage_tenders: member
+    define can_manage_tender_lots: member

@@ -2,6 +2,7 @@ from uuid import UUID, uuid4
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.domain.errors import ResourceNotFound
 from app.domain.tender import (
     require_board_source_ref,
     require_buyer_id,
@@ -23,6 +24,12 @@ class TenderService:
 
     async def list_boards(self) -> list[Tender]:
         return await self._rows.list_all()
+
+    async def get_board(self, tender_id: UUID) -> Tender:
+        found = await self._rows.get(tender_id)
+        if found is None:
+            raise ResourceNotFound("nieznany przetarg")
+        return found
 
     async def record_board(
         self,

@@ -79,6 +79,7 @@ def _organization_ops_relations() -> dict[str, Userset]:
         "can_manage_local_charges": _member(),
         "can_manage_tender_quotes": _member(),
         "can_manage_tenders": _member(),
+        "can_manage_tender_lots": _member(),
     }
 
 

@@ -114,6 +114,11 @@ export const OPS_JOBS = [
     job: "katalog local_charge THC/ISPS bez warning",
   },
   {
+    route: BUSINESS_LISTS.tenderLot.route,
+    label: "Partie przetargu",
+    job: "kod partii na tender bez korytarza",
+  },
+  {
     route: BUSINESS_LISTS.tenderQuote.route,
     label: "Oferty przetargowe",
     job: "ważność i limit orderów bez auto-award",
@@ -504,6 +509,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "167.0": "/shipments",
   "168.0": "/tender-quotes",
   "169.0": "/tenders",
+  "170.0": "/tender-lots",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

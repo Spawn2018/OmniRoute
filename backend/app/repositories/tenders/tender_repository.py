@@ -1,3 +1,5 @@
+from uuid import UUID
+
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -13,6 +15,9 @@ class TenderRepository:
             select(Tender).order_by(Tender.created_at.desc(), Tender.id),
         )
         return list(result.all())
+
+    async def get(self, tender_id: UUID) -> Tender | None:
+        return await self._session.get(Tender, tender_id)
 
     async def add(self, row: Tender) -> Tender:
         self._session.add(row)

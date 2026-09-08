@@ -548,3 +548,7 @@ class InvalidTenderQuote(DomainError):
 
 class InvalidTender(DomainError):
     """Nagłówek przetargu G2.0: strona/rodzaj/status jako dane — nie auto-award."""
+
+
+class InvalidTenderLot(DomainError):
+    """Partia przetargu G2.1: kod na nagłówku — nie korytarz i nie kwota."""

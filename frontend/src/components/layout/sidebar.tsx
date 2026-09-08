@@ -58,6 +58,7 @@ const NAV = [
   { to: "/ports", label: "Porty" },
   { to: "/port-surcharges", label: "Opłaty portowe" },
   { to: "/local-charges", label: "Dopłaty lokalne" },
+  { to: "/tender-lots", label: "Partie przetargu" },
   { to: "/tender-quotes", label: "Oferty przetargowe" },
   { to: "/tenders", label: "Przetargi" },
   { to: "/locations", label: "Lokalizacje" },

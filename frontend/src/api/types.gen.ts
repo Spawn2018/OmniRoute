@@ -5094,6 +5094,50 @@ export type TenderCreate = {
 };
 
 /**
+ * TenderLotCreate
+ */
+export type TenderLotCreate = {
+    /**
+     * Tender Id
+     */
+    tender_id: string;
+    /**
+     * Lot Code
+     */
+    lot_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TenderLotResponse
+ */
+export type TenderLotResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Tender Id
+     */
+    tender_id: string;
+    /**
+     * Lot Code
+     */
+    lot_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * TenderQuoteCreate
  */
 export type TenderQuoteCreate = {
@@ -8666,6 +8710,49 @@ export type CreateTenderQuoteApiV1TenderQuotesPostResponses = {
 };
 
 export type CreateTenderQuoteApiV1TenderQuotesPostResponse = CreateTenderQuoteApiV1TenderQuotesPostResponses[keyof CreateTenderQuoteApiV1TenderQuotesPostResponses];
+
+export type ListTenderLotsApiV1TenderLotsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tender-lots';
+};
+
+export type ListTenderLotsApiV1TenderLotsGetResponses = {
+    /**
+     * Response List Tender Lots Api V1 Tender Lots Get
+     *
+     * Successful Response
+     */
+    200: Array<TenderLotResponse>;
+};
+
+export type ListTenderLotsApiV1TenderLotsGetResponse = ListTenderLotsApiV1TenderLotsGetResponses[keyof ListTenderLotsApiV1TenderLotsGetResponses];
+
+export type CreateTenderLotApiV1TenderLotsPostData = {
+    body: TenderLotCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tender-lots';
+};
+
+export type CreateTenderLotApiV1TenderLotsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTenderLotApiV1TenderLotsPostError = CreateTenderLotApiV1TenderLotsPostErrors[keyof CreateTenderLotApiV1TenderLotsPostErrors];
+
+export type CreateTenderLotApiV1TenderLotsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TenderLotResponse;
+};
+
+export type CreateTenderLotApiV1TenderLotsPostResponse = CreateTenderLotApiV1TenderLotsPostResponses[keyof CreateTenderLotApiV1TenderLotsPostResponses];
 
 export type ListTendersApiV1TendersGetData = {
     body?: never;
