@@ -85,19 +85,22 @@ function CellSave(args: { organizationId: string | null }) {
           required
         />
       </label>
-      <div className="flex flex-col gap-1">
-        <span className="text-xs">Pochodzenie zapisu komórki matrycy</span>
+      <aside className="space-y-1">
+        <p className="text-xs font-medium">Pochodzenie komórki matrycy</p>
         <input
           aria-label="Pochodzenie zapisu komórki matrycy"
           autoComplete="off"
-          className="h-9 rounded-md border bg-background px-2 font-mono text-[13px]"
-          name="cell-source-ref"
+          className="h-9 w-full rounded-md border bg-background px-2 font-mono text-[13px]"
+          name="matrix-cell-origin"
           spellCheck={false}
           value={draft.originStamp}
-          onChange={(change) => setDraft({ ...draft, originStamp: change.target.value })}
+          onChange={(event) => {
+            const originStamp = event.target.value
+            setDraft((current) => ({ ...current, originStamp }))
+          }}
           required
         />
-      </div>
+      </aside>
       <Button type="submit" disabled={persist.isPending || !args.organizationId}>
         Zapisz komórkę
       </Button>

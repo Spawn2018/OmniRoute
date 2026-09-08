@@ -7,7 +7,7 @@ from sqlalchemy import (
     ForeignKey,
     ForeignKeyConstraint,
     Index,
-    Numeric,
+    Numeric,  # kwota z P — nie float
     String,
     UniqueConstraint,
 )
@@ -44,9 +44,10 @@ class TenderMatrixCell(Base, TimestampMixin):
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
+    # RLS: komórka i nagłówek jednego tenanta — CHECK kwoty nie zastępuje polityki.
     organization_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True),
         ForeignKey("organization.id", ondelete="RESTRICT"),
-        type_=UUID(as_uuid=True),
         nullable=False,
     )
     tender_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), nullable=False)
