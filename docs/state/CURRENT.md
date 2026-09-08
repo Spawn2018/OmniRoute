@@ -3,13 +3,13 @@
 **Faza:** P0 leftover + pełna oś pinu 2026-09-08c (Luki i ulepszenia)  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
 
-**Ostatni plaster:** **167.0** P5 `expected_buy` na `trip`  
-**Etap:** Kod  
+**Ostatni plaster:** **168.0** P6 `tender_quote`  
+**Etap:** Plan  
 **Noc:** `/noc 7` do 2026-09-09T07:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md). Billing GitHub zablokowany — ta sesja nie czeka na zielone CI.  
-**Następny:** **168.0** P6 `tender_quote` → G2.0–G2.23 → F → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. D8 parked. D9 leftover D9b–f. P1 leftover P1b–d. P2 leftover P2c. P3 leftover P3b–d. P4 leftover P4b–c. P5 leftover P5b–c. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.  
+**Następny:** **G2.0** `tender` → G2.1–G2.23 → F → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. D8 parked. D9 leftover D9b–f. P1 leftover P1b–d. P2 leftover P2c. P3 leftover P3b–d. P4 leftover P4b–c. P5 leftover P5b–c. P6 leftover P6b–c. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.  
 M-02 **fundament 79.0** (konsument leftover — parked aż T5/X4). Auth0 **odroczone** (S53 w osi po W). Portale **po S53**. S21 live HTTP **parked**. S50 = T2 (`resource` 151.0, `trip` 152.0; leftover T2c). S54 / S59 / AIS leftover parked. Exit Wave FE **nie** claim.
 
-**Spec (jedna na sesję):** [docs/deltas/open/168.0-tender-quote.md](../deltas/open/168.0-tender-quote.md). Oś: karty `karty-pol-fala-*.md`. Nie otwieraj spec C8.
+**Spec (jedna na sesję):** [docs/analysis/karty-pol-g2-tender.md](../analysis/karty-pol-g2-tender.md) § G2.0. Oś: karty `karty-pol-fala-*.md`. Nie otwieraj spec C8.
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
@@ -17,4 +17,4 @@ M-02 **fundament 79.0** (konsument leftover — parked aż T5/X4). Auth0 **odroc
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` są w PATH. Przed pracą: `pg_ctl -D tools\pgdata -o "-p 5432" start` oraz `tools\openfga\openfga.exe run`. Potem `just gate` i `just test`. PG 16: `tools\pg16`.
 
-**2026-09-08c:** pin całości rozmowy Luki i ulepszenia. Delta **168.0** zaakceptowana (`/noc`). Wolno `/plaster`. Nie auto-award. Nie T-SQL.
+**2026-09-08c:** pin całości rozmowy Luki i ulepszenia. **168.0** zamknięty. Następny Plan G2.0. Nie auto-award. Nie T-SQL.

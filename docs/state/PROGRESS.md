@@ -416,3 +416,4 @@
 | 2026-09-08 | Plan 167.0 | P5 | expected_buy snapshot na trip przy in_transit, nie wariancja. Delta zaakceptowana (`/noc`). Nie P6. Nastepny: kod 167.0. |
 | 2026-09-08 | 167.0 | P5 | expected_buy freeze Decimal na trip przy in_transit. Nie wariancja. Nastepny: P6 Plan. |
 | 2026-09-08 | Plan 168.0 | P6 | tender_quote ważność + limit orderów, nie auto-award. Delta zaakceptowana (`/noc`). Nie G2. Nastepny: kod 168.0. |
+| 2026-09-08 | 168.0 | P6 | tender_quote ważność + limit orderów integer. Nie auto-award. Nastepny: G2.0 Plan. |

@@ -5410,6 +5410,80 @@
         ]
       }
     },
+    "/api/v1/tender-quotes": {
+      "get": {
+        "tags": [
+          "tender-quotes"
+        ],
+        "summary": "List Tender Quotes",
+        "operationId": "list_tender_quotes_api_v1_tender_quotes_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TenderQuoteResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Tender Quotes Api V1 Tender Quotes Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "tender-quotes"
+        ],
+        "summary": "Create Tender Quote",
+        "operationId": "create_tender_quote_api_v1_tender_quotes_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TenderQuoteCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TenderQuoteResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/fraud-flags": {
       "get": {
         "tags": [
@@ -17426,6 +17500,77 @@
         },
         "type": "object",
         "title": "TableViewUpdate"
+      },
+      "TenderQuoteCreate": {
+        "properties": {
+          "quotation_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Quotation Id"
+          },
+          "valid_until": {
+            "type": "string",
+            "title": "Valid Until"
+          },
+          "order_limit": {
+            "type": "integer",
+            "title": "Order Limit"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "quotation_id",
+          "valid_until",
+          "order_limit",
+          "source_ref"
+        ],
+        "title": "TenderQuoteCreate"
+      },
+      "TenderQuoteResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "quotation_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Quotation Id"
+          },
+          "valid_until": {
+            "type": "string",
+            "title": "Valid Until"
+          },
+          "order_limit": {
+            "type": "integer",
+            "title": "Order Limit"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "quotation_id",
+          "valid_until",
+          "order_limit",
+          "source_ref"
+        ],
+        "title": "TenderQuoteResponse"
       },
       "TerminalCreate": {
         "properties": {

@@ -5052,6 +5052,58 @@ export type TableViewUpdate = {
 };
 
 /**
+ * TenderQuoteCreate
+ */
+export type TenderQuoteCreate = {
+    /**
+     * Quotation Id
+     */
+    quotation_id: string;
+    /**
+     * Valid Until
+     */
+    valid_until: string;
+    /**
+     * Order Limit
+     */
+    order_limit: number;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TenderQuoteResponse
+ */
+export type TenderQuoteResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Quotation Id
+     */
+    quotation_id: string;
+    /**
+     * Valid Until
+     */
+    valid_until: string;
+    /**
+     * Order Limit
+     */
+    order_limit: number;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * TerminalCreate
  */
 export type TerminalCreate = {
@@ -8479,6 +8531,49 @@ export type CreateLocalChargeApiV1LocalChargesPostResponses = {
 };
 
 export type CreateLocalChargeApiV1LocalChargesPostResponse = CreateLocalChargeApiV1LocalChargesPostResponses[keyof CreateLocalChargeApiV1LocalChargesPostResponses];
+
+export type ListTenderQuotesApiV1TenderQuotesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tender-quotes';
+};
+
+export type ListTenderQuotesApiV1TenderQuotesGetResponses = {
+    /**
+     * Response List Tender Quotes Api V1 Tender Quotes Get
+     *
+     * Successful Response
+     */
+    200: Array<TenderQuoteResponse>;
+};
+
+export type ListTenderQuotesApiV1TenderQuotesGetResponse = ListTenderQuotesApiV1TenderQuotesGetResponses[keyof ListTenderQuotesApiV1TenderQuotesGetResponses];
+
+export type CreateTenderQuoteApiV1TenderQuotesPostData = {
+    body: TenderQuoteCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tender-quotes';
+};
+
+export type CreateTenderQuoteApiV1TenderQuotesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTenderQuoteApiV1TenderQuotesPostError = CreateTenderQuoteApiV1TenderQuotesPostErrors[keyof CreateTenderQuoteApiV1TenderQuotesPostErrors];
+
+export type CreateTenderQuoteApiV1TenderQuotesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TenderQuoteResponse;
+};
+
+export type CreateTenderQuoteApiV1TenderQuotesPostResponse = CreateTenderQuoteApiV1TenderQuotesPostResponses[keyof CreateTenderQuoteApiV1TenderQuotesPostResponses];
 
 export type ListFraudFlagsApiV1FraudFlagsGetData = {
     body?: never;

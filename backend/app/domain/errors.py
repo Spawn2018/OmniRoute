@@ -540,3 +540,7 @@ class InvalidFuelIndex(DomainError):
 
 class InvalidLocalCharge(DomainError):
     """Dopłata lokalna THC/ISPS jako dane + Decimal — nie warning braków."""
+
+
+class InvalidTenderQuote(DomainError):
+    """Oferta przetargowa kupna: ważność + limit orderów — nie auto-award."""
