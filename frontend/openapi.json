@@ -5632,6 +5632,80 @@
         ]
       }
     },
+    "/api/v1/tender-rounds": {
+      "get": {
+        "tags": [
+          "tender-rounds"
+        ],
+        "summary": "List Tender Rounds",
+        "operationId": "list_tender_rounds_api_v1_tender_rounds_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TenderRoundResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Tender Rounds Api V1 Tender Rounds Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "tender-rounds"
+        ],
+        "summary": "Create Tender Round",
+        "operationId": "create_tender_round_api_v1_tender_rounds_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TenderRoundCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TenderRoundResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/tenders": {
       "get": {
         "tags": [
@@ -18046,6 +18120,67 @@
           "source_ref"
         ],
         "title": "TenderResponse"
+      },
+      "TenderRoundCreate": {
+        "properties": {
+          "tender_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Tender Id"
+          },
+          "round_no": {
+            "type": "integer",
+            "title": "Round No"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "tender_id",
+          "round_no",
+          "source_ref"
+        ],
+        "title": "TenderRoundCreate"
+      },
+      "TenderRoundResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "tender_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Tender Id"
+          },
+          "round_no": {
+            "type": "integer",
+            "title": "Round No"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "tender_id",
+          "round_no",
+          "source_ref"
+        ],
+        "title": "TenderRoundResponse"
       },
       "TerminalCreate": {
         "properties": {

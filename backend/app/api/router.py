@@ -73,6 +73,7 @@ from app.api import (
     tender_lanes,
     tender_lots,
     tender_quotes,
+    tender_rounds,
     tenders,
     terminals,
     tracking_events,
@@ -130,6 +131,7 @@ api_router.include_router(local_charges.router)
 api_router.include_router(tender_quotes.router)
 api_router.include_router(tender_lanes.router)
 api_router.include_router(tender_lots.router)
+api_router.include_router(tender_rounds.router)
 api_router.include_router(tenders.router)
 api_router.include_router(fraud_flags.router)
 api_router.include_router(edi_messages.router)

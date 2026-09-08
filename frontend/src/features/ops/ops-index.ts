@@ -124,6 +124,11 @@ export const OPS_JOBS = [
     job: "kod partii na tender bez korytarza",
   },
   {
+    route: BUSINESS_LISTS.tenderRound.route,
+    label: "Rundy przetargu",
+    job: "numer rundy na tender bez data room",
+  },
+  {
     route: BUSINESS_LISTS.tenderQuote.route,
     label: "Oferty przetargowe",
     job: "ważność i limit orderów bez auto-award",
@@ -516,6 +521,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "169.0": "/tenders",
   "170.0": "/tender-lots",
   "171.0": "/tender-lanes",
+  "172.0": "/tender-rounds",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

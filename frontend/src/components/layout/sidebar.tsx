@@ -60,6 +60,7 @@ const NAV = [
   { to: "/local-charges", label: "Dopłaty lokalne" },
   { to: "/tender-lanes", label: "Korytarze przetargu" },
   { to: "/tender-lots", label: "Partie przetargu" },
+  { to: "/tender-rounds", label: "Rundy przetargu" },
   { to: "/tender-quotes", label: "Oferty przetargowe" },
   { to: "/tenders", label: "Przetargi" },
   { to: "/locations", label: "Lokalizacje" },

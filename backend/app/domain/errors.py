@@ -556,3 +556,7 @@ class InvalidTenderLot(DomainError):
 
 class InvalidTenderLane(DomainError):
     """Korytarz przetargu G2.2: para UN/LOCODE na partii — nie runda i nie kwota."""
+
+
+class InvalidTenderRound(DomainError):
+    """Runda przetargu G2.3: numer na nagłówku — nie data room i nie kwota."""

@@ -5292,6 +5292,50 @@ export type TenderResponse = {
 };
 
 /**
+ * TenderRoundCreate
+ */
+export type TenderRoundCreate = {
+    /**
+     * Tender Id
+     */
+    tender_id: string;
+    /**
+     * Round No
+     */
+    round_no: number;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TenderRoundResponse
+ */
+export type TenderRoundResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Tender Id
+     */
+    tender_id: string;
+    /**
+     * Round No
+     */
+    round_no: number;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * TerminalCreate
  */
 export type TerminalCreate = {
@@ -8848,6 +8892,49 @@ export type CreateTenderLotApiV1TenderLotsPostResponses = {
 };
 
 export type CreateTenderLotApiV1TenderLotsPostResponse = CreateTenderLotApiV1TenderLotsPostResponses[keyof CreateTenderLotApiV1TenderLotsPostResponses];
+
+export type ListTenderRoundsApiV1TenderRoundsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tender-rounds';
+};
+
+export type ListTenderRoundsApiV1TenderRoundsGetResponses = {
+    /**
+     * Response List Tender Rounds Api V1 Tender Rounds Get
+     *
+     * Successful Response
+     */
+    200: Array<TenderRoundResponse>;
+};
+
+export type ListTenderRoundsApiV1TenderRoundsGetResponse = ListTenderRoundsApiV1TenderRoundsGetResponses[keyof ListTenderRoundsApiV1TenderRoundsGetResponses];
+
+export type CreateTenderRoundApiV1TenderRoundsPostData = {
+    body: TenderRoundCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tender-rounds';
+};
+
+export type CreateTenderRoundApiV1TenderRoundsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTenderRoundApiV1TenderRoundsPostError = CreateTenderRoundApiV1TenderRoundsPostErrors[keyof CreateTenderRoundApiV1TenderRoundsPostErrors];
+
+export type CreateTenderRoundApiV1TenderRoundsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TenderRoundResponse;
+};
+
+export type CreateTenderRoundApiV1TenderRoundsPostResponse = CreateTenderRoundApiV1TenderRoundsPostResponses[keyof CreateTenderRoundApiV1TenderRoundsPostResponses];
 
 export type ListTendersApiV1TendersGetData = {
     body?: never;

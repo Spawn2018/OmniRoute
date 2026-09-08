@@ -62,3 +62,4 @@ type organization
     define can_manage_tenders: member
     define can_manage_tender_lots: member
     define can_manage_tender_lanes: member
+    define can_manage_tender_rounds: member

@@ -424,3 +424,4 @@
 | 2026-09-09 | Plan 171.0 | G2.2 | tender_lane para UN/LOCODE na tender_lot, nie runda. Delta zaakceptowana (`/noc`). Nie auto-award. Nastepny: kod 171.0. |
 | 2026-09-09 | 171.0 | G2.2 | tender_lane para UN/LOCODE na tender_lot. Nie runda. Nie auto-award. Nastepny: G2.3 Plan. |
 | 2026-09-09 | Plan 172.0 | G2.3 | tender_round numer rundy na tender, nie data room. Delta zaakceptowana (`/noc`). Nie auto-award. Nastepny: kod 172.0. |
+| 2026-09-09 | 172.0 | G2.3 | tender_round numer rundy na tender. Nie data room. Nie auto-award. Nastepny: G2.4 Plan. |
