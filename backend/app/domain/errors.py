@@ -158,6 +158,14 @@ class InvalidQuotationBatch(DomainError):
     """Wycena wsadowa: 1–20 kodów, bez pustego wsadu."""
 
 
+class InvalidQuotationIncoterm(DomainError):
+    """Incoterm / wersja / strona poza allowlistą — nie cytat ICC."""
+
+
+class QuotationNamedPlaceRequired(DomainError):
+    """DAP/DDP bez named_place — konflikt, nie luźna miejscowość."""
+
+
 class MissingQuotationPrefix(DomainError):
     """Nadanie numeru oferty wymaga prefiksu w organization_setting."""
 

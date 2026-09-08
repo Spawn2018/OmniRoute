@@ -9,6 +9,7 @@ from app.domain.errors import (
     DomainError,
     PartyConflict,
     PermissionDenied,
+    QuotationNamedPlaceRequired,
     ResourceNotFound,
     TenantContextMissing,
     Unauthenticated,
@@ -48,6 +49,14 @@ async def resource_not_found_handler(_request: Request, exc: ResourceNotFound) -
 async def channel_quote_conflict_handler(
     _request: Request,
     exc: ChannelQuoteConflict,
+) -> JSONResponse:
+    return JSONResponse(status_code=409, content={"detail": str(exc)})
+
+
+@app.exception_handler(QuotationNamedPlaceRequired)
+async def quotation_named_place_handler(
+    _request: Request,
+    exc: QuotationNamedPlaceRequired,
 ) -> JSONResponse:
     return JSONResponse(status_code=409, content={"detail": str(exc)})
 

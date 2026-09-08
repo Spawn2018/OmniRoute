@@ -11,7 +11,8 @@ INSERT INTO quotation (
     id, organization_id, charge_code, rate_line_id,
     amount, currency, source_ref, created_by,
     origin_port_id, destination_port_id, party_id, customer_rfq_id,
-    commodity_code_id, dangerous_good_id
+    commodity_code_id, dangerous_good_id,
+    incoterm, incoterms_version, trade_side, named_place
 )
 SELECT
     :qid,
@@ -27,7 +28,11 @@ SELECT
     :party_id,
     :customer_rfq_id,
     :commodity_code_id,
-    :dangerous_good_id
+    :dangerous_good_id,
+    :incoterm,
+    :incoterms_version,
+    :trade_side,
+    :named_place
 FROM rate_line AS rl
 WHERE rl.charge_code = :charge_code
   AND rl.superseded_by IS NULL
@@ -36,7 +41,8 @@ LIMIT 1
 RETURNING id, organization_id, charge_code, rate_line_id,
           amount, currency, source_ref, created_by,
           origin_port_id, destination_port_id, party_id, customer_rfq_id,
-          commodity_code_id, dangerous_good_id, document_number
+          commodity_code_id, dangerous_good_id, document_number,
+          incoterm, incoterms_version, trade_side, named_place
 """
 
 ISSUE_DOCUMENT_NUMBER_SQL = """
@@ -66,6 +72,40 @@ RETURNING target.id, target.organization_id, target.charge_code, target.rate_lin
 """
 
 
+def _quote_insert_binds(
+    *,
+    organization_id: UUID,
+    created_by: UUID,
+    charge_code: str,
+    origin_port_id: UUID,
+    destination_port_id: UUID,
+    party_id: UUID,
+    customer_rfq_id: UUID | None,
+    commodity_code_id: UUID | None,
+    dangerous_good_id: UUID | None,
+    incoterm: str | None,
+    incoterms_version: str | None,
+    trade_side: str | None,
+    named_place: str | None,
+) -> dict[str, object]:
+    return {
+        "qid": uuid4(),
+        "org": organization_id,
+        "created_by": created_by,
+        "charge_code": charge_code,
+        "origin_port_id": origin_port_id,
+        "destination_port_id": destination_port_id,
+        "party_id": party_id,
+        "customer_rfq_id": customer_rfq_id,
+        "commodity_code_id": commodity_code_id,
+        "dangerous_good_id": dangerous_good_id,
+        "incoterm": incoterm,
+        "incoterms_version": incoterms_version,
+        "trade_side": trade_side,
+        "named_place": named_place,
+    }
+
+
 def quotation_from_insert_row(row: RowMapping) -> Quotation:
     return Quotation(
         id=row["id"],
@@ -85,6 +125,10 @@ def quotation_from_insert_row(row: RowMapping) -> Quotation:
         document_number=row.get("document_number"),
         negotiated_channel_quote_id=row.get("negotiated_channel_quote_id"),
         noted_credit_review_id=row.get("noted_credit_review_id"),
+        incoterm=row.get("incoterm"),
+        incoterms_version=row.get("incoterms_version"),
+        trade_side=row.get("trade_side"),
+        named_place=row.get("named_place"),
     )
 
 
@@ -125,21 +169,28 @@ class QuotationRepository:
         customer_rfq_id: UUID | None = None,
         commodity_code_id: UUID | None = None,
         dangerous_good_id: UUID | None = None,
+        incoterm: str | None = None,
+        incoterms_version: str | None = None,
+        trade_side: str | None = None,
+        named_place: str | None = None,
     ) -> Quotation | None:
         result = await self._session.execute(
             text(QUOTE_FROM_CURRENT_SQL),
-            {
-                "qid": uuid4(),
-                "org": organization_id,
-                "created_by": created_by,
-                "charge_code": charge_code,
-                "origin_port_id": origin_port_id,
-                "destination_port_id": destination_port_id,
-                "party_id": party_id,
-                "customer_rfq_id": customer_rfq_id,
-                "commodity_code_id": commodity_code_id,
-                "dangerous_good_id": dangerous_good_id,
-            },
+            _quote_insert_binds(
+                organization_id=organization_id,
+                created_by=created_by,
+                charge_code=charge_code,
+                origin_port_id=origin_port_id,
+                destination_port_id=destination_port_id,
+                party_id=party_id,
+                customer_rfq_id=customer_rfq_id,
+                commodity_code_id=commodity_code_id,
+                dangerous_good_id=dangerous_good_id,
+                incoterm=incoterm,
+                incoterms_version=incoterms_version,
+                trade_side=trade_side,
+                named_place=named_place,
+            ),
         )
         row = result.mappings().first()
         if row is None:

@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny (zablokowany):** **137.0** I0/U2 `quotation.incoterm` (delta [137.0-quotation-incoterm.md](../deltas/open/137.0-quotation-incoterm.md) zaakceptowana `/noc`) → O4–O8 → N5 → U1+U5 → I1–I4 → U4 → T → U3 → D → P → G2.0–G2.23 → F → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
+**Następny (zablokowany):** **O4** checkboxy + `mail_draft` + ranking SQL → O5–O8 → N5 → U1+U5 → I1–I4 → U4 → T → U3 → D → P → G2.0–G2.23 → F → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
 <!-- os-status:end -->
 
 ```mermaid
@@ -392,7 +392,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | 62.0 | zamknięty (`docs/deltas/archived/62.0-operator-howto-c4.md`) |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | 63.0 | zamknięty (`docs/deltas/archived/63.0-threat-model-codeql.md`) |
 | po Q-E4 | **Fala S**, named parks (Auth0 / portale / AIS) | — | parked (`/noc` pomija) |
-| po parks | **P0** → pełna oś pinu **2026-09-08c** (O/I/U/T/D/P/G2/F/C/V/W/X/Plat/CT/CI/G/EXP) | Plan → plaster | **O3 136.0 zamknięty; I0/U2 137.0 następny** |
+| po parks | **P0** → pełna oś pinu **2026-09-08c** (O/I/U/T/D/P/G2/F/C/V/W/X/Plat/CT/CI/G/EXP) | Plan → plaster | **I0/U2 137.0 zamknięty; O4 następny** |
 
 ### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
 
@@ -500,7 +500,7 @@ Pogłębienie żywych M-07/M-08 (`source_ref`), M-10, M-12, M-13, M-19, M-20, M-
 | **O1** | `channel_quote.transit_days` + znaczki najtańsza / najszybszy TT (SQL, ta sama waluta) | Plan → plaster | zamknięty (`docs/deltas/archived/134.0-channel-quote-transit.md`) | Nie mnożenie NBP (T7). UI `/quotations` |
 | **O2** | Ręczny POST `channel_quote` z wyceny (`source_ref=tenant:manual:`) | Plan → plaster | zamknięty (`docs/deltas/archived/135.0-channel-quote-from-quote.md`) | Nie mutacja stawki. Nie 1.3 `rate_line` w tym wierszu |
 | **O3** | `carrier_inquiry` batch; statusy `queued`/`sent`/`answered`/`declined`; lane POL/POD | Plan → plaster | zamknięty (`docs/deltas/archived/136.0-carrier-inquiry-batch.md`) | Wskazanie wyceny w API, nie import serwisu. 1 / wielu / wszyscy |
-| **O4** | Checkboxy + default N z M-03; N× `mail_draft`; ranking SQL | Plan → plaster | po O3+B0a | Send = S18 po S11. Zakaz auto-send. Graph HTTP leftover |
+| **O4** | Checkboxy + default N z M-03; N× `mail_draft`; ranking SQL | Plan → plaster | **następny po I0/U2** | Send = S18 po S11. Zakaz auto-send. Graph HTTP leftover |
 | **O5** | `party_lane_scorecard` + szablon podpowiedzi z SQL | Plan → plaster | po O3 | `sample_size=0` i tak ma tekst. Nie LLM. Nie scoring osoby |
 | **O6** | `extraction_draft.draft_kind=carrier_quote` → HITL → `channel_quote` + `answered` | Plan → plaster | po O2 | ExtractionService nie zapisuje stawek |
 | **O7** | Kraj ISO na liście agentów (`party.country_code` już jest) + filtr | Plan → plaster | z O4 | Holandia na SHA→RTM. Nie druga kolumna kraju |
@@ -513,7 +513,7 @@ Karta: [karty-pol-fala-u.md](analysis/karty-pol-fala-u.md). **U6** + **M-72** = 
 
 | ID | Co | Tryb | Status | Poza |
 |---|---|---|---|---|
-| **I0 / U2** | `quotation.incoterm` + `trade_side` + `named_place` + wersja 2020/2010 | Plan → plaster | **delta 137.0 zaakceptowana** | DAP bez miejsca = 409; nie cytat ICC |
+| **I0 / U2** | `quotation.incoterm` + `trade_side` + `named_place` + wersja 2020/2010 | Plan → plaster | zamknięty (`docs/deltas/archived/137.0-quotation-incoterm.md`) | DAP bez miejsca = 409; nie cytat ICC |
 | **U1** | `field_carry_forward` oferta→zlecenie→booking→FV; diff przy POST | Plan → plaster | po O8, przed I1 | mutacja = nowy wiersz / `superseded_by` |
 | **U5** | `document_checklist_rule` (incoterm×side×mode) + `blocks_dispatch` | Plan → plaster | z U1 | ≠ C8 polisa podwykonawcy |
 | **U4** | `organization_calendar` + `is_working_day`; grace V5 = 3 dni **robocze** | Plan → plaster | po I4, przed T1 | nie `+3` kalendarzowe |
@@ -834,13 +834,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

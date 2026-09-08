@@ -11409,6 +11409,50 @@
               }
             ],
             "title": "Dangerous Good Id"
+          },
+          "incoterm": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Incoterm"
+          },
+          "incoterms_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Incoterms Version"
+          },
+          "trade_side": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Trade Side"
+          },
+          "named_place": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Named Place"
           }
         },
         "additionalProperties": false,
@@ -11479,6 +11523,50 @@
               }
             ],
             "title": "Dangerous Good Id"
+          },
+          "incoterm": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Incoterm"
+          },
+          "incoterms_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Incoterms Version"
+          },
+          "trade_side": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Trade Side"
+          },
+          "named_place": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Named Place"
           }
         },
         "additionalProperties": false,
@@ -11685,6 +11773,50 @@
               }
             ],
             "title": "Noted Credit Review Id"
+          },
+          "incoterm": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Incoterm"
+          },
+          "incoterms_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Incoterms Version"
+          },
+          "trade_side": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Trade Side"
+          },
+          "named_place": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Named Place"
           }
         },
         "type": "object",
@@ -11704,7 +11836,11 @@
           "dangerous_good_id",
           "document_number",
           "negotiated_channel_quote_id",
-          "noted_credit_review_id"
+          "noted_credit_review_id",
+          "incoterm",
+          "incoterms_version",
+          "trade_side",
+          "named_place"
         ],
         "title": "QuotationResponse"
       },

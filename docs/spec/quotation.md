@@ -1,6 +1,6 @@
 # M-21 quotation — silnik wyceny SQL
 
-**Plaster:** 2.0 fundament · **5.1** POL/POD + `party_id` · **68.0** `customer_rfq_id` · **70.0** `commodity_code_id`  
+**Plaster:** 2.0 fundament · **5.1** POL/POD + `party_id` · **68.0** `customer_rfq_id` · **70.0** `commodity_code_id` · **137.0** I0/U2 Incoterms  
 **Status:** fundament + snapshot portu i kontrahenta + powiązanie z RFQ. Kwota ze stawki. Nie marża. Nie k6. Nie `party_charge_override`. Nie nowy silnik.
 
 ## Zakres
@@ -15,6 +15,10 @@
 - OpenFGA `can_manage_quotations` = member
 - UI `/quotations`: lista DataTableShell + wycena po kodzie opłaty, kontrahencie, parze portów i opcjonalnym RFQ
 - `POST /quotations` z `customer_rfq_id`: API ładuje RFQ, `party_id` musi być na RFQ i zgadzać się z body; kwota nadal z INSERT…SELECT
+
+## 137.0 Incoterms na wycenie
+
+Kolumny nullable na starych wierszach: `incoterm`, `incoterms_version`, `trade_side`, `named_place`. DAP/DDP bez miejsca → 409. Kwota nadal z INSERT…SELECT stawki. Nie cytat ICC. Nie I1.
 
 ## 68.0 silnik na RFQ
 

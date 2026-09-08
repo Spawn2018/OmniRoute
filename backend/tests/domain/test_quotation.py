@@ -4,8 +4,17 @@ import pytest
 from hypothesis import assume, given
 from hypothesis import strategies as st
 
-from app.domain.errors import IncompleteQuotationSnapshot, InvalidQuotationBatch
-from app.domain.quotation import require_batch_charge_codes, require_lane_party_snapshot
+from app.domain.errors import (
+    IncompleteQuotationSnapshot,
+    InvalidQuotationBatch,
+    InvalidQuotationIncoterm,
+    QuotationNamedPlaceRequired,
+)
+from app.domain.quotation import (
+    require_batch_charge_codes,
+    require_lane_party_snapshot,
+    require_quotation_incoterm,
+)
 
 _UUIDS = st.uuids()
 _OPTIONAL = st.one_of(st.none(), _UUIDS)
@@ -66,4 +75,24 @@ def test_batch_codes_dedupe_and_reject_empty_or_too_many() -> None:
         require_batch_charge_codes([])
     with pytest.raises(InvalidQuotationBatch, match="max 20"):
         require_batch_charge_codes([f"C{index:02d}" for index in range(21)])
+
+
+def test_quotation_incoterm_blank_is_none() -> None:
+    assert require_quotation_incoterm() == (None, None, None, None)
+
+
+def test_quotation_incoterm_rejects_unknown() -> None:
+    with pytest.raises(InvalidQuotationIncoterm, match="allowlisty"):
+        require_quotation_incoterm("FOOBAR", "2020", "import", None)
+
+
+def test_quotation_dap_requires_named_place() -> None:
+    with pytest.raises(QuotationNamedPlaceRequired, match="named_place"):
+        require_quotation_incoterm("DAP", "2020", "import", None)
+    assert require_quotation_incoterm("DAP", "2020", "import", " Gdynia ") == (
+        "DAP",
+        "2020",
+        "import",
+        "Gdynia",
+    )
 

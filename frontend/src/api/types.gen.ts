@@ -2706,6 +2706,22 @@ export type QuotationBatchCreate = {
      * Dangerous Good Id
      */
     dangerous_good_id?: string | null;
+    /**
+     * Incoterm
+     */
+    incoterm?: string | null;
+    /**
+     * Incoterms Version
+     */
+    incoterms_version?: string | null;
+    /**
+     * Trade Side
+     */
+    trade_side?: string | null;
+    /**
+     * Named Place
+     */
+    named_place?: string | null;
 };
 
 /**
@@ -2740,6 +2756,22 @@ export type QuotationCreate = {
      * Dangerous Good Id
      */
     dangerous_good_id?: string | null;
+    /**
+     * Incoterm
+     */
+    incoterm?: string | null;
+    /**
+     * Incoterms Version
+     */
+    incoterms_version?: string | null;
+    /**
+     * Trade Side
+     */
+    trade_side?: string | null;
+    /**
+     * Named Place
+     */
+    named_place?: string | null;
 };
 
 /**
@@ -2844,6 +2876,22 @@ export type QuotationResponse = {
      * Noted Credit Review Id
      */
     noted_credit_review_id: string | null;
+    /**
+     * Incoterm
+     */
+    incoterm: string | null;
+    /**
+     * Incoterms Version
+     */
+    incoterms_version: string | null;
+    /**
+     * Trade Side
+     */
+    trade_side: string | null;
+    /**
+     * Named Place
+     */
+    named_place: string | null;
 };
 
 /**

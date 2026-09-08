@@ -191,6 +191,7 @@ class _StubQuote:
         customer_rfq_id=None,
         commodity_code_id=None,
         dangerous_good_id=None,
+        **_unused: object,
     ) -> Quotation:
         if charge_code == "LOOSE":
             raise UnknownChargeCode("nieznany kod opłaty: LOOSE")

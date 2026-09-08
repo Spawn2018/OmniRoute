@@ -912,6 +912,10 @@ export function QuotationCatalogPage() {
   const [filterDestinationPortId, setFilterDestinationPortId] = useState("")
   const [filterRfqId, setFilterRfqId] = useState("")
   const [batchCodes, setBatchCodes] = useState("")
+  const [incoterm, setIncoterm] = useState("")
+  const [incotermsVersion, setIncotermsVersion] = useState("")
+  const [tradeSide, setTradeSide] = useState("")
+  const [namedPlace, setNamedPlace] = useState("")
   const signedIn = Boolean(ctx.organizationId && ctx.userId)
 
   const partiesQuery = useQuery({
@@ -1012,6 +1016,10 @@ export function QuotationCatalogPage() {
           customerRfqId: rfqId,
           commodityCodeId,
           dangerousGoodId,
+          incoterm,
+          incotermsVersion,
+          tradeSide,
+          namedPlace,
         }),
       ),
     onSuccess: () => {
@@ -1031,6 +1039,10 @@ export function QuotationCatalogPage() {
           customerRfqId: rfqId,
           commodityCodeId,
           dangerousGoodId,
+          incoterm,
+          incotermsVersion,
+          tradeSide,
+          namedPlace,
         }),
       ),
     onSuccess: () => {
@@ -1181,6 +1193,56 @@ export function QuotationCatalogPage() {
             ))}
           </select>
         </label>
+        <label className="flex flex-col gap-1 text-xs" data-quote-incoterm="picker">
+          incoterm
+          <select
+            aria-label="Incoterm"
+            className="h-8 rounded-md border border-border bg-card px-2 text-sm"
+            value={incoterm}
+            onChange={(event) => setIncoterm(event.target.value)}
+          >
+            <option value="">Bez Incoterms</option>
+            {["EXW", "FCA", "CPT", "CIP", "DAP", "DPU", "DDP", "FAS", "FOB", "CFR", "CIF"].map(
+              (code) => (
+                <option key={code} value={code}>
+                  {code}
+                </option>
+              ),
+            )}
+          </select>
+        </label>
+        <label className="flex flex-col gap-1 text-xs">
+          incoterms_version
+          <select
+            aria-label="Wersja Incoterms"
+            className="h-8 rounded-md border border-border bg-card px-2 text-sm"
+            value={incotermsVersion}
+            onChange={(event) => setIncotermsVersion(event.target.value)}
+          >
+            <option value="">Wersja</option>
+            <option value="2020">2020</option>
+            <option value="2010">2010</option>
+          </select>
+        </label>
+        <label className="flex flex-col gap-1 text-xs">
+          trade_side
+          <select
+            aria-label="Strona handlu"
+            className="h-8 rounded-md border border-border bg-card px-2 text-sm"
+            value={tradeSide}
+            onChange={(event) => setTradeSide(event.target.value)}
+          >
+            <option value="">Strona</option>
+            <option value="import">import</option>
+            <option value="export">export</option>
+          </select>
+        </label>
+        <Input
+          aria-label="Miejsce nazwane"
+          placeholder="named_place"
+          value={namedPlace}
+          onChange={(event) => setNamedPlace(event.target.value)}
+        />
         <Button type="submit" disabled={quoteMutation.isPending || !signedIn || rfqMissingParty}>
           Wycen z bieżącej stawki
         </Button>

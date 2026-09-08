@@ -37,6 +37,10 @@ class QuotationCreate(BaseModel):
     customer_rfq_id: UUID | None = None
     commodity_code_id: UUID | None = None
     dangerous_good_id: UUID | None = None
+    incoterm: str | None = None
+    incoterms_version: str | None = None
+    trade_side: str | None = None
+    named_place: str | None = None
 
 
 class QuotationBatchCreate(BaseModel):
@@ -49,6 +53,10 @@ class QuotationBatchCreate(BaseModel):
     customer_rfq_id: UUID | None = None
     commodity_code_id: UUID | None = None
     dangerous_good_id: UUID | None = None
+    incoterm: str | None = None
+    incoterms_version: str | None = None
+    trade_side: str | None = None
+    named_place: str | None = None
 
 
 class QuotationResponse(BaseModel):
@@ -68,6 +76,10 @@ class QuotationResponse(BaseModel):
     document_number: str | None
     negotiated_channel_quote_id: UUID | None
     noted_credit_review_id: UUID | None
+    incoterm: str | None
+    incoterms_version: str | None
+    trade_side: str | None
+    named_place: str | None
 
     @classmethod
     def from_row(cls, row: Quotation) -> "QuotationResponse":
@@ -90,6 +102,10 @@ class QuotationResponse(BaseModel):
             document_number=row.document_number,
             negotiated_channel_quote_id=row.negotiated_channel_quote_id,
             noted_credit_review_id=row.noted_credit_review_id,
+            incoterm=row.incoterm,
+            incoterms_version=row.incoterms_version,
+            trade_side=row.trade_side,
+            named_place=row.named_place,
         )
 
 
@@ -192,6 +208,10 @@ async def create_quotation(
         customer_rfq_id=None if rfq is None else rfq.id,
         commodity_code_id=linked_hs,
         dangerous_good_id=linked_un,
+        incoterm=body.incoterm,
+        incoterms_version=body.incoterms_version,
+        trade_side=body.trade_side,
+        named_place=body.named_place,
     )
     await session.commit()
     return QuotationResponse.from_row(row)
@@ -218,6 +238,10 @@ async def create_quotation_batch(
         customer_rfq_id=None if rfq is None else rfq.id,
         commodity_code_id=linked_hs,
         dangerous_good_id=linked_un,
+        incoterm=body.incoterm,
+        incoterms_version=body.incoterms_version,
+        trade_side=body.trade_side,
+        named_place=body.named_place,
     )
     await session.commit()
     return [QuotationResponse.from_row(row) for row in rows]

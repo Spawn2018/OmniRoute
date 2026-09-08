@@ -18,6 +18,10 @@ export type Quotation = {
   document_number: string | null
   negotiated_channel_quote_id: string | null
   noted_credit_review_id: string | null
+  incoterm: string | null
+  incoterms_version: string | null
+  trade_side: string | null
+  named_place: string | null
 }
 
 export type QuotationDocumentLayout = {
@@ -33,6 +37,10 @@ export type QuotationCreateBody = {
   customer_rfq_id?: string
   commodity_code_id?: string
   dangerous_good_id?: string
+  incoterm?: string
+  incoterms_version?: string
+  trade_side?: string
+  named_place?: string
 }
 
 export type QuotationListFilters = {
@@ -40,6 +48,37 @@ export type QuotationListFilters = {
   originPortId: string
   destinationPortId: string
   customerRfqId?: string
+}
+
+type QuoteOptionalIds = {
+  customerRfqId?: string
+  commodityCodeId?: string
+  dangerousGoodId?: string
+  incoterm?: string
+  incotermsVersion?: string
+  tradeSide?: string
+  namedPlace?: string
+}
+
+function applyQuoteOptionalIds<T extends QuotationCreateBody | QuotationBatchBody>(
+  body: T,
+  args: QuoteOptionalIds,
+): T {
+  const rfqId = args.customerRfqId?.trim()
+  const hsId = args.commodityCodeId?.trim()
+  const unId = args.dangerousGoodId?.trim()
+  const rule = args.incoterm?.trim()
+  const version = args.incotermsVersion?.trim()
+  const side = args.tradeSide?.trim()
+  const place = args.namedPlace?.trim()
+  if (rfqId) body.customer_rfq_id = rfqId
+  if (hsId) body.commodity_code_id = hsId
+  if (unId) body.dangerous_good_id = unId
+  if (rule) body.incoterm = rule
+  if (version) body.incoterms_version = version
+  if (side) body.trade_side = side
+  if (place) body.named_place = place
+  return body
 }
 
 export function quotationCreateBody(args: {
@@ -50,26 +89,20 @@ export function quotationCreateBody(args: {
   customerRfqId?: string
   commodityCodeId?: string
   dangerousGoodId?: string
+  incoterm?: string
+  incotermsVersion?: string
+  tradeSide?: string
+  namedPlace?: string
 }): QuotationCreateBody {
-  const body: QuotationCreateBody = {
-    charge_code: args.chargeCode.trim(),
-    origin_port_id: args.originPortId,
-    destination_port_id: args.destinationPortId,
-    party_id: args.partyId,
-  }
-  const rfqId = args.customerRfqId?.trim()
-  if (rfqId) {
-    body.customer_rfq_id = rfqId
-  }
-  const hsId = args.commodityCodeId?.trim()
-  if (hsId) {
-    body.commodity_code_id = hsId
-  }
-  const unId = args.dangerousGoodId?.trim()
-  if (unId) {
-    body.dangerous_good_id = unId
-  }
-  return body
+  return applyQuoteOptionalIds(
+    {
+      charge_code: args.chargeCode.trim(),
+      origin_port_id: args.originPortId,
+      destination_port_id: args.destinationPortId,
+      party_id: args.partyId,
+    },
+    args,
+  )
 }
 
 export type QuotationBatchBody = {
@@ -80,6 +113,10 @@ export type QuotationBatchBody = {
   customer_rfq_id?: string
   commodity_code_id?: string
   dangerous_good_id?: string
+  incoterm?: string
+  incoterms_version?: string
+  trade_side?: string
+  named_place?: string
 }
 
 export function quotationBatchBody(args: {
@@ -90,30 +127,24 @@ export function quotationBatchBody(args: {
   customerRfqId?: string
   commodityCodeId?: string
   dangerousGoodId?: string
+  incoterm?: string
+  incotermsVersion?: string
+  tradeSide?: string
+  namedPlace?: string
 }): QuotationBatchBody {
   const charge_codes = args.chargeCodesText
     .split(/\r?\n/)
     .map((line) => line.trim())
     .filter((line) => line !== "")
-  const body: QuotationBatchBody = {
-    charge_codes,
-    origin_port_id: args.originPortId,
-    destination_port_id: args.destinationPortId,
-    party_id: args.partyId,
-  }
-  const rfqId = args.customerRfqId?.trim()
-  if (rfqId) {
-    body.customer_rfq_id = rfqId
-  }
-  const hsId = args.commodityCodeId?.trim()
-  if (hsId) {
-    body.commodity_code_id = hsId
-  }
-  const unId = args.dangerousGoodId?.trim()
-  if (unId) {
-    body.dangerous_good_id = unId
-  }
-  return body
+  return applyQuoteOptionalIds(
+    {
+      charge_codes,
+      origin_port_id: args.originPortId,
+      destination_port_id: args.destinationPortId,
+      party_id: args.partyId,
+    },
+    args,
+  )
 }
 
 export function quotationCurrencies(rows: readonly Quotation[]): string[] {

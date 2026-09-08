@@ -27,6 +27,10 @@ function quotation(partyId: string | null): Quotation {
     document_number: null,
     negotiated_channel_quote_id: null,
     noted_credit_review_id: null,
+    incoterm: null,
+    incoterms_version: null,
+    trade_side: null,
+    named_place: null,
   }
 }
 

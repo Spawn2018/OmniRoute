@@ -13,6 +13,7 @@ from app.domain.errors import (
     UnknownChargeCode,
     UnknownCreditReview,
 )
+from app.domain.quotation import require_quotation_incoterm
 from app.main import app
 from app.models.quotation import Quotation
 from tests.http_auth import bearer_auth_headers
@@ -71,12 +72,19 @@ class StubQuotationService:
         customer_rfq_id: UUID | None = None,
         commodity_code_id: UUID | None = None,
         dangerous_good_id: UUID | None = None,
+        incoterm: object = None,
+        incoterms_version: object = None,
+        trade_side: object = None,
+        named_place: object = None,
     ) -> Quotation:
         token = charge_code.strip().upper()
         if token == "LOOSE":
             raise UnknownChargeCode("nieznany kod opłaty: LOOSE")
         if token == "GAP":
             raise QuotationGap("quotation_gap: brak bieżącej stawki dla GAP")
+        rule, version, side, place = require_quotation_incoterm(
+            incoterm, incoterms_version, trade_side, named_place,
+        )
         row = Quotation(
             id=uuid4(),
             organization_id=organization_id,
@@ -92,6 +100,10 @@ class StubQuotationService:
             customer_rfq_id=customer_rfq_id,
             commodity_code_id=commodity_code_id,
             dangerous_good_id=dangerous_good_id,
+            incoterm=rule,
+            incoterms_version=version,
+            trade_side=side,
+            named_place=place,
         )
         self.rows.append(row)
         return row
@@ -130,6 +142,10 @@ class StubQuotationService:
         customer_rfq_id: UUID | None = None,
         commodity_code_id: UUID | None = None,
         dangerous_good_id: UUID | None = None,
+        incoterm: object = None,
+        incoterms_version: object = None,
+        trade_side: object = None,
+        named_place: object = None,
     ) -> list[Quotation]:
         quoted: list[Quotation] = []
         for code in charge_codes:
@@ -144,6 +160,10 @@ class StubQuotationService:
                     customer_rfq_id=customer_rfq_id,
                     commodity_code_id=commodity_code_id,
                     dangerous_good_id=dangerous_good_id,
+                    incoterm=incoterm,
+                    incoterms_version=incoterms_version,
+                    trade_side=trade_side,
+                    named_place=named_place,
                 )
             )
         return quoted
@@ -453,3 +473,52 @@ def test_http_quote_batch_gap_returns_400(quotations_client: TestClient) -> None
         },
     )
     assert response.status_code == 400
+
+
+def test_http_unknown_incoterm_is_400(quotations_client: TestClient) -> None:
+    response = quotations_client.post(
+        "/api/v1/quotations",
+        headers=bearer_auth_headers(),
+        json={
+            **_lane_body(),
+            "incoterm": "FOOBAR",
+            "incoterms_version": "2020",
+            "trade_side": "import",
+        },
+    )
+    assert response.status_code == 400
+    assert "incoterm" in response.json()["detail"]
+
+
+def test_http_dap_without_named_place_is_409(quotations_client: TestClient) -> None:
+    response = quotations_client.post(
+        "/api/v1/quotations",
+        headers=bearer_auth_headers(),
+        json={
+            **_lane_body(),
+            "incoterm": "DAP",
+            "incoterms_version": "2020",
+            "trade_side": "import",
+        },
+    )
+    assert response.status_code == 409
+    assert "named_place" in response.json()["detail"]
+
+
+def test_http_quote_keeps_amount_from_stub_not_incoterm(
+    quotations_client: TestClient,
+) -> None:
+    created = quotations_client.post(
+        "/api/v1/quotations",
+        headers=bearer_auth_headers(),
+        json={
+            **_lane_body(),
+            "incoterm": "FOB",
+            "incoterms_version": "2020",
+            "trade_side": "export",
+        },
+    )
+    assert created.status_code == 201
+    body = created.json()
+    assert body["incoterm"] == "FOB"
+    assert body["amount"] == "10.5000"

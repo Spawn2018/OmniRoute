@@ -63,6 +63,16 @@ class Quotation(Base, TimestampMixin):
             ondelete="RESTRICT",
         ),
         CheckConstraint(_LANE_PARTY_SQL, name="ck_quotation_lane_party_complete"),
+        CheckConstraint(
+            "(incoterm IS NULL AND incoterms_version IS NULL AND trade_side IS NULL "
+            "AND named_place IS NULL) OR "
+            "(incoterm IN ('EXW','FCA','CPT','CIP','DAP','DPU','DDP','FAS','FOB','CFR','CIF') "
+            "AND incoterms_version IN ('2020','2010') "
+            "AND trade_side IN ('import','export') "
+            "AND (incoterm NOT IN ('DAP','DDP') OR "
+            "(named_place IS NOT NULL AND btrim(named_place) <> '')))",
+            name="ck_quotation_incoterm",
+        ),
         Index("ix_quotation_org_party_id", "organization_id", "party_id"),
         Index("ix_quotation_org_customer_rfq_id", "organization_id", "customer_rfq_id"),
         Index("ix_quotation_org_commodity_code_id", "organization_id", "commodity_code_id"),
@@ -126,3 +136,7 @@ class Quotation(Base, TimestampMixin):
         UUID(as_uuid=True),
         nullable=True,
     )
+    incoterm: Mapped[str | None] = mapped_column(CHAR(3), nullable=True)
+    incoterms_version: Mapped[str | None] = mapped_column(CHAR(4), nullable=True)
+    trade_side: Mapped[str | None] = mapped_column(String(6), nullable=True)
+    named_place: Mapped[str | None] = mapped_column(String(128), nullable=True)

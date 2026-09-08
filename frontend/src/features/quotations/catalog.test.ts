@@ -38,6 +38,10 @@ function quotationWithCurrency(currency: string): Quotation {
     document_number: null,
     negotiated_channel_quote_id: null,
     noted_credit_review_id: null,
+    incoterm: null,
+    incoterms_version: null,
+    trade_side: null,
+    named_place: null,
   }
 }
 
@@ -98,6 +102,22 @@ describe("quotationCreateBody", () => {
       dangerousGoodId: unId,
     })
     expect(body.dangerous_good_id).toBe(unId)
+    expect(body).not.toHaveProperty("amount")
+  })
+
+  it("sends incoterm fields only when selected, never an amount", () => {
+    const body = quotationCreateBody({
+      chargeCode: "THC",
+      originPortId: ORIGIN,
+      destinationPortId: DESTINATION,
+      partyId: PARTY,
+      incoterm: "DAP",
+      incotermsVersion: "2020",
+      tradeSide: "import",
+      namedPlace: " Gdynia ",
+    })
+    expect(body.incoterm).toBe("DAP")
+    expect(body.named_place).toBe("Gdynia")
     expect(body).not.toHaveProperty("amount")
   })
 })
@@ -332,6 +352,7 @@ describe("quotation catalog screen", () => {
     expect(page).toContain("fetchCommodityCodes")
     expect(page).toContain("fetchDangerousGoods")
     expect(page).toContain('data-quote-un="picker"')
+    expect(page).toContain('data-quote-incoterm="picker"')
     expect(page).toContain("origin_port_id")
     expect(page).toContain("destination_port_id")
     expect(page).toContain("fetchParties")

@@ -21,6 +21,7 @@ from app.domain.quotation import (
     require_batch_charge_codes,
     require_document_number_prefix,
     require_lane_party_snapshot,
+    require_quotation_incoterm,
 )
 from app.models.charge_code import ChargeCode
 from app.models.quotation import Quotation
@@ -44,6 +45,8 @@ def _snapshot_integrity_error(exc: IntegrityError) -> DomainError | None:
         return UnknownDangerousGood("nieznany towar niebezpieczny wyceny")
     if "uq_quotation_org_document_number" in detail:
         return InvalidQuotationDocumentNumber("numer oferty już zajęty")
+    if "ck_quotation_incoterm" in detail:
+        return IncompleteQuotationSnapshot("incoterm wyceny poza allowlistą")
     return None
 
 
@@ -85,33 +88,30 @@ class QuotationService:
         customer_rfq_id: UUID | None = None,
         commodity_code_id: UUID | None = None,
         dangerous_good_id: UUID | None = None,
+        incoterm: object = None,
+        incoterms_version: object = None,
+        trade_side: object = None,
+        named_place: object = None,
     ) -> Quotation:
         catalog = await self._require_catalog(charge_code)
         origin, destination, party = require_lane_party_snapshot(
-            origin_port_id,
-            destination_port_id,
-            party_id,
+            origin_port_id, destination_port_id, party_id,
         )
-        try:
-            quoted = await self._quotations.insert_from_current_rate(
-                organization_id=organization_id,
-                created_by=user_id,
-                charge_code=catalog.code,
-                origin_port_id=origin,
-                destination_port_id=destination,
-                party_id=party,
-                customer_rfq_id=customer_rfq_id,
-                commodity_code_id=commodity_code_id,
-                dangerous_good_id=dangerous_good_id,
-            )
-        except IntegrityError as exc:
-            mapped = _snapshot_integrity_error(exc)
-            if mapped is None:
-                raise
-            raise mapped from exc
-        if quoted is None:
-            raise QuotationGap(f"quotation_gap: brak bieżącej stawki dla {catalog.code}")
-        return quoted
+        terms = require_quotation_incoterm(
+            incoterm, incoterms_version, trade_side, named_place,
+        )
+        return await self._insert_from_rate(
+            organization_id=organization_id,
+            user_id=user_id,
+            charge_code=catalog.code,
+            origin_port_id=origin,
+            destination_port_id=destination,
+            party_id=party,
+            customer_rfq_id=customer_rfq_id,
+            commodity_code_id=commodity_code_id,
+            dangerous_good_id=dangerous_good_id,
+            terms=terms,
+        )
 
     async def quote_batch_from_current_rates(
         self,
@@ -125,6 +125,10 @@ class QuotationService:
         customer_rfq_id: UUID | None = None,
         commodity_code_id: UUID | None = None,
         dangerous_good_id: UUID | None = None,
+        incoterm: object = None,
+        incoterms_version: object = None,
+        trade_side: object = None,
+        named_place: object = None,
     ) -> list[Quotation]:
         # Pętla woła istniejący INSERT…SELECT; wsad set-based = leftover 20.0.
         codes = require_batch_charge_codes(charge_codes)
@@ -141,8 +145,51 @@ class QuotationService:
                     customer_rfq_id=customer_rfq_id,
                     commodity_code_id=commodity_code_id,
                     dangerous_good_id=dangerous_good_id,
+                    incoterm=incoterm,
+                    incoterms_version=incoterms_version,
+                    trade_side=trade_side,
+                    named_place=named_place,
                 )
             )
+        return quoted
+
+    async def _insert_from_rate(
+        self,
+        *,
+        organization_id: UUID,
+        user_id: UUID,
+        charge_code: str,
+        origin_port_id: UUID,
+        destination_port_id: UUID,
+        party_id: UUID,
+        customer_rfq_id: UUID | None,
+        commodity_code_id: UUID | None,
+        dangerous_good_id: UUID | None,
+        terms: tuple[str | None, str | None, str | None, str | None],
+    ) -> Quotation:
+        try:
+            quoted = await self._quotations.insert_from_current_rate(
+                organization_id=organization_id,
+                created_by=user_id,
+                charge_code=charge_code,
+                origin_port_id=origin_port_id,
+                destination_port_id=destination_port_id,
+                party_id=party_id,
+                customer_rfq_id=customer_rfq_id,
+                commodity_code_id=commodity_code_id,
+                dangerous_good_id=dangerous_good_id,
+                incoterm=terms[0],
+                incoterms_version=terms[1],
+                trade_side=terms[2],
+                named_place=terms[3],
+            )
+        except IntegrityError as exc:
+            mapped = _snapshot_integrity_error(exc)
+            if mapped is None:
+                raise
+            raise mapped from exc
+        if quoted is None:
+            raise QuotationGap(f"quotation_gap: brak bieżącej stawki dla {charge_code}")
         return quoted
 
     async def set_noted_credit_review(
