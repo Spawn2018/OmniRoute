@@ -35,6 +35,7 @@ import { Route as ExceptionsRouteImport } from './routes/exceptions'
 import { Route as ExtractionsRouteImport } from './routes/extractions'
 import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as FraudRouteImport } from './routes/fraud'
+import { Route as FuelIndexesRouteImport } from './routes/fuel-indexes'
 import { Route as FxDifferencesRouteImport } from './routes/fx-differences'
 import { Route as GdprRouteImport } from './routes/gdpr'
 import { Route as GroupageRouteImport } from './routes/groupage'
@@ -203,6 +204,11 @@ const FinanceRoute = FinanceRouteImport.update({
 const FraudRoute = FraudRouteImport.update({
   id: '/fraud',
   path: '/fraud',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FuelIndexesRoute = FuelIndexesRouteImport.update({
+  id: '/fuel-indexes',
+  path: '/fuel-indexes',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FxDifferencesRoute = FxDifferencesRouteImport.update({
@@ -428,6 +434,7 @@ export interface FileRoutesByFullPath {
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
   '/fraud': typeof FraudRoute
+  '/fuel-indexes': typeof FuelIndexesRoute
   '/fx-differences': typeof FxDifferencesRoute
   '/gdpr': typeof GdprRoute
   '/groupage': typeof GroupageRoute
@@ -495,6 +502,7 @@ export interface FileRoutesByTo {
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
   '/fraud': typeof FraudRoute
+  '/fuel-indexes': typeof FuelIndexesRoute
   '/fx-differences': typeof FxDifferencesRoute
   '/gdpr': typeof GdprRoute
   '/groupage': typeof GroupageRoute
@@ -563,6 +571,7 @@ export interface FileRoutesById {
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
   '/fraud': typeof FraudRoute
+  '/fuel-indexes': typeof FuelIndexesRoute
   '/fx-differences': typeof FxDifferencesRoute
   '/gdpr': typeof GdprRoute
   '/groupage': typeof GroupageRoute
@@ -632,6 +641,7 @@ export interface FileRouteTypes {
     | '/extractions'
     | '/finance'
     | '/fraud'
+    | '/fuel-indexes'
     | '/fx-differences'
     | '/gdpr'
     | '/groupage'
@@ -699,6 +709,7 @@ export interface FileRouteTypes {
     | '/extractions'
     | '/finance'
     | '/fraud'
+    | '/fuel-indexes'
     | '/fx-differences'
     | '/gdpr'
     | '/groupage'
@@ -766,6 +777,7 @@ export interface FileRouteTypes {
     | '/extractions'
     | '/finance'
     | '/fraud'
+    | '/fuel-indexes'
     | '/fx-differences'
     | '/gdpr'
     | '/groupage'
@@ -834,6 +846,7 @@ export interface RootRouteChildren {
   ExtractionsRoute: typeof ExtractionsRoute
   FinanceRoute: typeof FinanceRoute
   FraudRoute: typeof FraudRoute
+  FuelIndexesRoute: typeof FuelIndexesRoute
   FxDifferencesRoute: typeof FxDifferencesRoute
   GdprRoute: typeof GdprRoute
   GroupageRoute: typeof GroupageRoute
@@ -1057,6 +1070,13 @@ declare module '@tanstack/react-router' {
       path: '/fraud'
       fullPath: '/fraud'
       preLoaderRoute: typeof FraudRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fuel-indexes': {
+      id: '/fuel-indexes'
+      path: '/fuel-indexes'
+      fullPath: '/fuel-indexes'
+      preLoaderRoute: typeof FuelIndexesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/fx-differences': {
@@ -1362,6 +1382,7 @@ const rootRouteChildren: RootRouteChildren = {
   ExtractionsRoute: ExtractionsRoute,
   FinanceRoute: FinanceRoute,
   FraudRoute: FraudRoute,
+  FuelIndexesRoute: FuelIndexesRoute,
   FxDifferencesRoute: FxDifferencesRoute,
   GdprRoute: GdprRoute,
   GroupageRoute: GroupageRoute,

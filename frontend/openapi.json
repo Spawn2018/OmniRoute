@@ -5262,6 +5262,80 @@
         ]
       }
     },
+    "/api/v1/fuel-indexes": {
+      "get": {
+        "tags": [
+          "fuel-indexes"
+        ],
+        "summary": "List Fuel Indexes",
+        "operationId": "list_fuel_indexes_api_v1_fuel_indexes_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/FuelIndexResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Fuel Indexes Api V1 Fuel Indexes Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "fuel-indexes"
+        ],
+        "summary": "Create Fuel Index",
+        "operationId": "create_fuel_index_api_v1_fuel_indexes_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FuelIndexCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FuelIndexResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/fraud-flags": {
       "get": {
         "tags": [
@@ -12357,6 +12431,75 @@
           "source_ref"
         ],
         "title": "FraudFlagResponse"
+      },
+      "FuelIndexCreate": {
+        "properties": {
+          "index_kind": {
+            "type": "string",
+            "title": "Index Kind"
+          },
+          "published_on": {
+            "type": "string",
+            "title": "Published On"
+          },
+          "index_value": {
+            "type": "string",
+            "title": "Index Value"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "index_kind",
+          "published_on",
+          "index_value",
+          "source_ref"
+        ],
+        "title": "FuelIndexCreate"
+      },
+      "FuelIndexResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "index_kind": {
+            "type": "string",
+            "title": "Index Kind"
+          },
+          "published_on": {
+            "type": "string",
+            "title": "Published On"
+          },
+          "index_value": {
+            "type": "string",
+            "title": "Index Value"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "index_kind",
+          "published_on",
+          "index_value",
+          "source_ref"
+        ],
+        "title": "FuelIndexResponse"
       },
       "FxDifferenceCreate": {
         "properties": {

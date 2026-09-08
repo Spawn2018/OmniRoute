@@ -49,6 +49,7 @@ const NAV = [
   { to: "/dangerous-goods", label: "Towary niebezpieczne" },
   { to: "/networks", label: "Sieci" },
   { to: "/nbp-rates", label: "Kursy NBP" },
+  { to: "/fuel-indexes", label: "Indeksy paliwowe" },
   { to: "/charges", label: "Opłaty" },
   { to: "/channel-quotes", label: "Oferty kanału" },
   { to: "/rate-lines", label: "Stawki" },

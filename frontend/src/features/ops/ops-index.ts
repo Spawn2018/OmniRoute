@@ -104,6 +104,11 @@ export const OPS_JOBS = [
     job: "katalog charge_template kodów bez exclusion",
   },
   {
+    route: BUSINESS_LISTS.fuelIndex.route,
+    label: "Indeksy paliwowe",
+    job: "katalog fuel_index FSC/BAF/CAF bez mnożenia",
+  },
+  {
     route: BUSINESS_LISTS.airFreight.route,
     label: "Lotniczy",
     job: "lotniska z flagą airport",
@@ -479,6 +484,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "162.0": "/document-templates",
   "163.0": "/rate-cards",
   "164.0": "/charge-templates",
+  "165.0": "/fuel-indexes",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

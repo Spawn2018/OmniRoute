@@ -80,6 +80,7 @@ from app.models.pallet_balance import PalletBalance  # noqa: F401
 from app.models.document_template import DocumentTemplate  # noqa: F401
 from app.models.rate_card import RateCard  # noqa: F401
 from app.models.charge_template import ChargeTemplate  # noqa: F401
+from app.models.fuel_index import FuelIndex  # noqa: F401
 from app.models.shipment_leg import ShipmentLeg  # noqa: F401
 from app.models.money_cost import MoneyCost  # noqa: F401
 from app.models.quote_invoice_settlement import QuoteInvoiceSettlement  # noqa: F401

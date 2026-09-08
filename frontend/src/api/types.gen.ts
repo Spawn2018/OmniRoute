@@ -2052,6 +2052,58 @@ export type FraudFlagResponse = {
 };
 
 /**
+ * FuelIndexCreate
+ */
+export type FuelIndexCreate = {
+    /**
+     * Index Kind
+     */
+    index_kind: string;
+    /**
+     * Published On
+     */
+    published_on: string;
+    /**
+     * Index Value
+     */
+    index_value: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * FuelIndexResponse
+ */
+export type FuelIndexResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Index Kind
+     */
+    index_kind: string;
+    /**
+     * Published On
+     */
+    published_on: string;
+    /**
+     * Index Value
+     */
+    index_value: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * FxDifferenceCreate
  */
 export type FxDifferenceCreate = {
@@ -8273,6 +8325,49 @@ export type CreateChargeTemplateApiV1ChargeTemplatesPostResponses = {
 };
 
 export type CreateChargeTemplateApiV1ChargeTemplatesPostResponse = CreateChargeTemplateApiV1ChargeTemplatesPostResponses[keyof CreateChargeTemplateApiV1ChargeTemplatesPostResponses];
+
+export type ListFuelIndexesApiV1FuelIndexesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/fuel-indexes';
+};
+
+export type ListFuelIndexesApiV1FuelIndexesGetResponses = {
+    /**
+     * Response List Fuel Indexes Api V1 Fuel Indexes Get
+     *
+     * Successful Response
+     */
+    200: Array<FuelIndexResponse>;
+};
+
+export type ListFuelIndexesApiV1FuelIndexesGetResponse = ListFuelIndexesApiV1FuelIndexesGetResponses[keyof ListFuelIndexesApiV1FuelIndexesGetResponses];
+
+export type CreateFuelIndexApiV1FuelIndexesPostData = {
+    body: FuelIndexCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/fuel-indexes';
+};
+
+export type CreateFuelIndexApiV1FuelIndexesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateFuelIndexApiV1FuelIndexesPostError = CreateFuelIndexApiV1FuelIndexesPostErrors[keyof CreateFuelIndexApiV1FuelIndexesPostErrors];
+
+export type CreateFuelIndexApiV1FuelIndexesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: FuelIndexResponse;
+};
+
+export type CreateFuelIndexApiV1FuelIndexesPostResponse = CreateFuelIndexApiV1FuelIndexesPostResponses[keyof CreateFuelIndexApiV1FuelIndexesPostResponses];
 
 export type ListFraudFlagsApiV1FraudFlagsGetData = {
     body?: never;

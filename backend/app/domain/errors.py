@@ -532,3 +532,7 @@ class InvalidRateCard(DomainError):
 
 class InvalidChargeTemplate(DomainError):
     """Szablon opłat: kolekcja kodów + daty jako dane — nie exclusion."""
+
+
+class InvalidFuelIndex(DomainError):
+    """Indeks FSC/BAF/CAF jako dane obok nbp_rate — nie mnożenie na charge."""
