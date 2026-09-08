@@ -15,7 +15,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **150.0 leftover:** `stop_group`; `eta_physical`/`eta_legal` (V2); waga/plomba/awizacja (EXP1). Tu tylko punkt + location + strefa IANA. Nie mapa. `resource` = 151.0. `trip` = 152.0.
 - **151.0 leftover:** `trip` DONE 152.0. Zostaje T2c: multi-manning / floating trailer; pojemności / Decimal km; `party_id`; `/fleet` / HW. Tu tylko katalog pojazd/kierowca/naczepa.
 - **153.0 leftover:** VGM/TARA Decimal; free_time; cutoffy CY/CFS/VGM/SI/AMS; `bl_kind`; plomby/PIN; reefer; party/terminal; TEU; `shipment_leg_id`. Tu tylko ISO 6346 + `iso_size_type` + opcjonalne zlecenie. Nie booking.
-- **172.0 leftover:** data room+NDA; extract RFP HITL; matryca; playbook; four-eyes; TED (G2.4–G2.18). Tu tylko `tender_round` numer rundy. Nie kwota. Nie auto-award.
+- **173.0 leftover:** extract RFP HITL; matryca; playbook; four-eyes; TED (G2.5–G2.18). ACL per plik leftover. Tu tylko `tender_data_room` NDA signed. Nie bajty. Nie kwota. Nie auto-award.
+- **172.0 leftover:** `tender_data_room` DONE 173.0. Zostaje extract RFP HITL; matryca; playbook; four-eyes; TED (G2.5–G2.18). Tu tylko `tender_round` numer rundy. Nie kwota. Nie auto-award.
 - **171.0 leftover:** `tender_round` DONE 172.0. Zostaje data room; matryca; playbook; four-eyes; TED (G2.4–G2.18). Resolve `port` leftover. Tu tylko `tender_lane` para UN/LOCODE. Nie kwota. Nie auto-award.
 - **170.0 leftover:** `tender_lane` DONE 171.0. Zostaje `tender_round` (G2.3+); data room; matryca; playbook; four-eyes; TED (G2.3–G2.18). Tu tylko `tender_lot` kod partii. Nie kwota. Nie auto-award.
 - **169.0 leftover:** `tender_lot` DONE 170.0. Zostaje lane/round (G2.2+); data room+NDA; extract RFP HITL; matryca; playbook; four-eyes; win/loss; TED; CO₂; consortium (G2.2–G2.18); U4 `is_working_day` na `deadline_at`. Tu tylko nagłówek `tender`. Nie auto-award. Nie kwota.

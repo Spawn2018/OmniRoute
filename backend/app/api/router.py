@@ -70,6 +70,7 @@ from app.api import (
     stops,
     table_views,
     tenancy,
+    tender_data_rooms,
     tender_lanes,
     tender_lots,
     tender_quotes,
@@ -129,6 +130,7 @@ api_router.include_router(charge_templates.router)
 api_router.include_router(fuel_indexes.router)
 api_router.include_router(local_charges.router)
 api_router.include_router(tender_quotes.router)
+api_router.include_router(tender_data_rooms.router)
 api_router.include_router(tender_lanes.router)
 api_router.include_router(tender_lots.router)
 api_router.include_router(tender_rounds.router)

@@ -5094,6 +5094,50 @@ export type TenderCreate = {
 };
 
 /**
+ * TenderDataRoomCreate
+ */
+export type TenderDataRoomCreate = {
+    /**
+     * Tender Id
+     */
+    tender_id: string;
+    /**
+     * Nda Mark
+     */
+    nda_mark: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TenderDataRoomResponse
+ */
+export type TenderDataRoomResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Tender Id
+     */
+    tender_id: string;
+    /**
+     * Nda Mark
+     */
+    nda_mark: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * TenderLaneCreate
  */
 export type TenderLaneCreate = {
@@ -8806,6 +8850,49 @@ export type CreateTenderQuoteApiV1TenderQuotesPostResponses = {
 };
 
 export type CreateTenderQuoteApiV1TenderQuotesPostResponse = CreateTenderQuoteApiV1TenderQuotesPostResponses[keyof CreateTenderQuoteApiV1TenderQuotesPostResponses];
+
+export type ListTenderDataRoomsApiV1TenderDataRoomsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tender-data-rooms';
+};
+
+export type ListTenderDataRoomsApiV1TenderDataRoomsGetResponses = {
+    /**
+     * Response List Tender Data Rooms Api V1 Tender Data Rooms Get
+     *
+     * Successful Response
+     */
+    200: Array<TenderDataRoomResponse>;
+};
+
+export type ListTenderDataRoomsApiV1TenderDataRoomsGetResponse = ListTenderDataRoomsApiV1TenderDataRoomsGetResponses[keyof ListTenderDataRoomsApiV1TenderDataRoomsGetResponses];
+
+export type CreateTenderDataRoomApiV1TenderDataRoomsPostData = {
+    body: TenderDataRoomCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tender-data-rooms';
+};
+
+export type CreateTenderDataRoomApiV1TenderDataRoomsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTenderDataRoomApiV1TenderDataRoomsPostError = CreateTenderDataRoomApiV1TenderDataRoomsPostErrors[keyof CreateTenderDataRoomApiV1TenderDataRoomsPostErrors];
+
+export type CreateTenderDataRoomApiV1TenderDataRoomsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TenderDataRoomResponse;
+};
+
+export type CreateTenderDataRoomApiV1TenderDataRoomsPostResponse = CreateTenderDataRoomApiV1TenderDataRoomsPostResponses[keyof CreateTenderDataRoomApiV1TenderDataRoomsPostResponses];
 
 export type ListTenderLanesApiV1TenderLanesGetData = {
     body?: never;

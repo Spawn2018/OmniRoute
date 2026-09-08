@@ -72,10 +72,11 @@ import { Route as SessionRouteImport } from './routes/session'
 import { Route as ShipmentDocumentsRouteImport } from './routes/shipment-documents'
 import { Route as ShipmentPackagesRouteImport } from './routes/shipment-packages'
 import { Route as ShipmentsRouteImport } from './routes/shipments'
+import { Route as TenderDataRoomsRouteImport } from './routes/tender-data-rooms'
 import { Route as TenderLanesRouteImport } from './routes/tender-lanes'
 import { Route as TenderLotsRouteImport } from './routes/tender-lots'
-import { Route as TenderRoundsRouteImport } from './routes/tender-rounds'
 import { Route as TenderQuotesRouteImport } from './routes/tender-quotes'
+import { Route as TenderRoundsRouteImport } from './routes/tender-rounds'
 import { Route as TendersRouteImport } from './routes/tenders'
 import { Route as TerminalsRouteImport } from './routes/terminals'
 import { Route as TrackingRouteImport } from './routes/tracking'
@@ -397,6 +398,11 @@ const ShipmentsRoute = ShipmentsRouteImport.update({
   path: '/shipments',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TenderDataRoomsRoute = TenderDataRoomsRouteImport.update({
+  id: '/tender-data-rooms',
+  path: '/tender-data-rooms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TenderLanesRoute = TenderLanesRouteImport.update({
   id: '/tender-lanes',
   path: '/tender-lanes',
@@ -407,14 +413,14 @@ const TenderLotsRoute = TenderLotsRouteImport.update({
   path: '/tender-lots',
   getParentRoute: () => rootRouteImport,
 } as any)
-const TenderRoundsRoute = TenderRoundsRouteImport.update({
-  id: '/tender-rounds',
-  path: '/tender-rounds',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const TenderQuotesRoute = TenderQuotesRouteImport.update({
   id: '/tender-quotes',
   path: '/tender-quotes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TenderRoundsRoute = TenderRoundsRouteImport.update({
+  id: '/tender-rounds',
+  path: '/tender-rounds',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TendersRoute = TendersRouteImport.update({
@@ -507,10 +513,11 @@ export interface FileRoutesByFullPath {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/tender-data-rooms': typeof TenderDataRoomsRoute
   '/tender-lanes': typeof TenderLanesRoute
   '/tender-lots': typeof TenderLotsRoute
-  '/tender-rounds': typeof TenderRoundsRoute
   '/tender-quotes': typeof TenderQuotesRoute
+  '/tender-rounds': typeof TenderRoundsRoute
   '/tenders': typeof TendersRoute
   '/terminals': typeof TerminalsRoute
   '/tracking': typeof TrackingRoute
@@ -581,10 +588,11 @@ export interface FileRoutesByTo {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/tender-data-rooms': typeof TenderDataRoomsRoute
   '/tender-lanes': typeof TenderLanesRoute
   '/tender-lots': typeof TenderLotsRoute
-  '/tender-rounds': typeof TenderRoundsRoute
   '/tender-quotes': typeof TenderQuotesRoute
+  '/tender-rounds': typeof TenderRoundsRoute
   '/tenders': typeof TendersRoute
   '/terminals': typeof TerminalsRoute
   '/tracking': typeof TrackingRoute
@@ -656,10 +664,11 @@ export interface FileRoutesById {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/tender-data-rooms': typeof TenderDataRoomsRoute
   '/tender-lanes': typeof TenderLanesRoute
   '/tender-lots': typeof TenderLotsRoute
-  '/tender-rounds': typeof TenderRoundsRoute
   '/tender-quotes': typeof TenderQuotesRoute
+  '/tender-rounds': typeof TenderRoundsRoute
   '/tenders': typeof TendersRoute
   '/terminals': typeof TerminalsRoute
   '/tracking': typeof TrackingRoute
@@ -732,10 +741,11 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/tender-data-rooms'
     | '/tender-lanes'
     | '/tender-lots'
-    | '/tender-rounds'
     | '/tender-quotes'
+    | '/tender-rounds'
     | '/tenders'
     | '/terminals'
     | '/tracking'
@@ -806,10 +816,11 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/tender-data-rooms'
     | '/tender-lanes'
     | '/tender-lots'
-    | '/tender-rounds'
     | '/tender-quotes'
+    | '/tender-rounds'
     | '/tenders'
     | '/terminals'
     | '/tracking'
@@ -880,10 +891,11 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/tender-data-rooms'
     | '/tender-lanes'
     | '/tender-lots'
-    | '/tender-rounds'
     | '/tender-quotes'
+    | '/tender-rounds'
     | '/tenders'
     | '/terminals'
     | '/tracking'
@@ -957,8 +969,8 @@ export interface RootRouteChildren {
   ShipmentsRoute: typeof ShipmentsRoute
   TenderLanesRoute: typeof TenderLanesRoute
   TenderLotsRoute: typeof TenderLotsRoute
-  TenderRoundsRoute: typeof TenderRoundsRoute
   TenderQuotesRoute: typeof TenderQuotesRoute
+  TenderRoundsRoute: typeof TenderRoundsRoute
   TendersRoute: typeof TendersRoute
   TerminalsRoute: typeof TerminalsRoute
   TrackingRoute: typeof TrackingRoute
@@ -1409,6 +1421,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShipmentsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tender-data-rooms': {
+      id: '/tender-data-rooms'
+      path: '/tender-data-rooms'
+      fullPath: '/tender-data-rooms'
+      preLoaderRoute: typeof TenderDataRoomsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tender-lanes': {
       id: '/tender-lanes'
       path: '/tender-lanes'
@@ -1423,18 +1442,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TenderLotsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/tender-rounds': {
-      id: '/tender-rounds'
-      path: '/tender-rounds'
-      fullPath: '/tender-rounds'
-      preLoaderRoute: typeof TenderRoundsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/tender-quotes': {
       id: '/tender-quotes'
       path: '/tender-quotes'
       fullPath: '/tender-quotes'
       preLoaderRoute: typeof TenderQuotesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tender-rounds': {
+      id: '/tender-rounds'
+      path: '/tender-rounds'
+      fullPath: '/tender-rounds'
+      preLoaderRoute: typeof TenderRoundsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tenders': {
@@ -1539,10 +1558,11 @@ const rootRouteChildren: RootRouteChildren = {
   ShipmentDocumentsRoute: ShipmentDocumentsRoute,
   ShipmentPackagesRoute: ShipmentPackagesRoute,
   ShipmentsRoute: ShipmentsRoute,
+  TenderDataRoomsRoute: TenderDataRoomsRoute,
   TenderLanesRoute: TenderLanesRoute,
   TenderLotsRoute: TenderLotsRoute,
-  TenderRoundsRoute: TenderRoundsRoute,
   TenderQuotesRoute: TenderQuotesRoute,
+  TenderRoundsRoute: TenderRoundsRoute,
   TendersRoute: TendersRoute,
   TerminalsRoute: TerminalsRoute,
   TrackingRoute: TrackingRoute,

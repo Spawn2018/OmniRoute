@@ -85,6 +85,7 @@ modules =
     app.services.tender_lots
     app.services.tender_lanes
     app.services.tender_rounds
+    app.services.tender_data_rooms
 
 [importlinter:contract:integracje]
 name = Integracje nie znają serwisów
@@ -303,3 +304,6 @@ forbidden_modules =
     app.services.tender_rounds
     app.repositories.tender_rounds
     app.models.tender_round
+    app.services.tender_data_rooms
+    app.repositories.tender_data_rooms
+    app.models.tender_data_room

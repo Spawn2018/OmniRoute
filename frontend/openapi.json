@@ -5484,6 +5484,80 @@
         ]
       }
     },
+    "/api/v1/tender-data-rooms": {
+      "get": {
+        "tags": [
+          "tender-data-rooms"
+        ],
+        "summary": "List Tender Data Rooms",
+        "operationId": "list_tender_data_rooms_api_v1_tender_data_rooms_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TenderDataRoomResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Tender Data Rooms Api V1 Tender Data Rooms Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "tender-data-rooms"
+        ],
+        "summary": "Create Tender Data Room",
+        "operationId": "create_tender_data_room_api_v1_tender_data_rooms_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TenderDataRoomCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TenderDataRoomResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/tender-lanes": {
       "get": {
         "tags": [
@@ -17851,6 +17925,67 @@
           "source_ref"
         ],
         "title": "TenderCreate"
+      },
+      "TenderDataRoomCreate": {
+        "properties": {
+          "tender_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Tender Id"
+          },
+          "nda_mark": {
+            "type": "string",
+            "title": "Nda Mark"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "tender_id",
+          "nda_mark",
+          "source_ref"
+        ],
+        "title": "TenderDataRoomCreate"
+      },
+      "TenderDataRoomResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "tender_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Tender Id"
+          },
+          "nda_mark": {
+            "type": "string",
+            "title": "Nda Mark"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "tender_id",
+          "nda_mark",
+          "source_ref"
+        ],
+        "title": "TenderDataRoomResponse"
       },
       "TenderLaneCreate": {
         "properties": {

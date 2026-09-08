@@ -560,3 +560,7 @@ class InvalidTenderLane(DomainError):
 
 class InvalidTenderRound(DomainError):
     """Runda przetargu G2.3: numer na nagłówku — nie data room i nie kwota."""
+
+
+class InvalidTenderDataRoom(DomainError):
+    """Pokój danych G2.4: NDA na nagłówku — nie extract i nie kwota."""
