@@ -36,6 +36,7 @@ export function OrganizationSettingCatalogPage() {
   const [currency, setCurrency] = useState("EUR")
   const [prefix, setPrefix] = useState("OR-Q")
   const [template, setTemplate] = useState("plain")
+  const [defaultN, setDefaultN] = useState("3")
   const signedIn = Boolean(ctx.organizationId && ctx.userId)
 
   const query = useQuery({
@@ -75,6 +76,20 @@ export function OrganizationSettingCatalogPage() {
     },
   })
 
+  const saveDefaultN = useMutation({
+    mutationFn: () =>
+      upsertOrganizationSetting(
+        organizationSettingUpsertBody({
+          settingKey: "inquiry_default_n",
+          settingValue: defaultN,
+        }),
+      ),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({
+        queryKey: ["organization-settings", ctx.organizationId],
+      })
+    },
+  })
   const saveTemplate = useMutation({
     mutationFn: () =>
       upsertOrganizationSetting(
@@ -161,9 +176,29 @@ export function OrganizationSettingCatalogPage() {
         </Button>
       </form>
 
+      <form
+        className="flex flex-col gap-2 rounded-md border border-border bg-card p-3 md:flex-row md:flex-wrap"
+        onSubmit={(event) => {
+          event.preventDefault()
+          saveDefaultN.mutate()
+        }}
+      >
+        <Input
+          aria-label="Domyślna liczba zapytań"
+          placeholder="3"
+          value={defaultN}
+          onChange={(event) => setDefaultN(event.target.value)}
+          required
+        />
+        <Button type="submit" disabled={saveDefaultN.isPending || !signedIn}>
+          Zapisz inquiry_default_n
+        </Button>
+      </form>
+
       {saveMutation.isError ? <CatalogError error={saveMutation.error} /> : null}
       {savePrefix.isError ? <CatalogError error={savePrefix.error} /> : null}
       {saveTemplate.isError ? <CatalogError error={saveTemplate.error} /> : null}
+      {saveDefaultN.isError ? <CatalogError error={saveDefaultN.error} /> : null}
 
       <CatalogLoadedTable
         loading={query.isLoading}

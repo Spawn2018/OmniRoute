@@ -34,6 +34,16 @@ def test_inquiry_service_stays_inside_own_bc() -> None:
     assert "078_carrier_inquiry_batch" in (
         _ROOT / "backend" / "alembic" / "versions" / "078_carrier_inquiry_batch.py"
     ).read_text(encoding="utf-8")
+    ranking = (
+        _ROOT
+        / "backend"
+        / "app"
+        / "repositories"
+        / "carrier_inquiries"
+        / "carrier_inquiry_repository.py"
+    ).read_text(encoding="utf-8")
+    assert "func.count().filter" in ranking
+    assert "answered" in ranking
 
 
 def test_importlinter_lists_carrier_inquiries_as_independent() -> None:

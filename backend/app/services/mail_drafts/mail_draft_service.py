@@ -10,6 +10,8 @@ from app.domain.mail_draft import (
     require_mail_draft_body,
     require_mail_draft_source_ref,
     require_mail_draft_subject_id,
+    require_mail_draft_subject_ids,
+    require_mail_draft_subject_kind,
     require_mail_draft_to_address,
 )
 from app.models.mail_draft import MailDraft
@@ -37,11 +39,13 @@ class MailDraftService:
         subject_id: UUID,
         body: str,
         source_ref: str,
+        subject_kind: object = None,
     ) -> MailDraft:
+        kind = mail_draft_extract_kind() if subject_kind is None else subject_kind
         row = MailDraft(
             id=uuid4(),
             organization_id=organization_id,
-            subject_kind=mail_draft_extract_kind(),
+            subject_kind=require_mail_draft_subject_kind(kind),
             subject_id=require_mail_draft_subject_id(subject_id),
             body=require_mail_draft_body(body),
             status=mail_draft_status(),
@@ -49,6 +53,34 @@ class MailDraftService:
             created_by=user_id,
         )
         return await self._rows.add(row)
+
+    async def create_batch(
+        self,
+        *,
+        organization_id: UUID,
+        user_id: UUID,
+        subject_ids: object,
+        body: str,
+        source_ref: str,
+        subject_kind: object,
+    ) -> list[MailDraft]:
+        kind = require_mail_draft_subject_kind(subject_kind)
+        token_body = require_mail_draft_body(body)
+        token_ref = require_mail_draft_source_ref(source_ref)
+        rows = [
+            MailDraft(
+                id=uuid4(),
+                organization_id=organization_id,
+                subject_kind=kind,
+                subject_id=subject_id,
+                body=token_body,
+                status=mail_draft_status(),
+                source_ref=token_ref,
+                created_by=user_id,
+            )
+            for subject_id in require_mail_draft_subject_ids(subject_ids)
+        ]
+        return await self._rows.add_many(rows)
 
     async def mark_sent(self, draft_id: UUID, to_address: str) -> MailDraft:
         row = await self.get_draft(draft_id)

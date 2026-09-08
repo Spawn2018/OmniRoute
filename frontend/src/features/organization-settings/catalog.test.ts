@@ -39,6 +39,7 @@ describe("organization settings catalog screen", () => {
     const page = readFileSync(new URL("./catalog-page.tsx", import.meta.url), "utf8")
     expect(page).toContain("quotation_number_prefix")
     expect(page).toContain("quotation_print_template")
+    expect(page).toContain("inquiry_default_n")
     expect(page).toContain("Prefiks numeru oferty")
     expect(page).toContain("Szablon oferty")
     expect(page).not.toContain("document_number")

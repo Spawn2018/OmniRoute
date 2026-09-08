@@ -37,6 +37,18 @@ export function rolloutSettings<Row extends { setting_key: string }>(rows: reado
   return rows.filter((row) => row.setting_key === "default_currency")
 }
 
+export function inquiryDefaultN(rows: readonly OrganizationSetting[]): number {
+  const found = rows.find((row) => row.setting_key === "inquiry_default_n")
+  if (found === undefined) {
+    return 3
+  }
+  const parsed = Number.parseInt(found.setting_value, 10)
+  if (!Number.isInteger(parsed) || parsed < 1 || parsed > 20) {
+    return 3
+  }
+  return parsed
+}
+
 export async function upsertOrganizationSetting(body: {
   setting_key: string
   setting_value: string

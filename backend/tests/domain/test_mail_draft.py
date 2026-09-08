@@ -5,12 +5,14 @@ import pytest
 from app.domain.errors import InvalidMailDraft, InvalidSourceRef
 from app.domain.mail_draft import (
     mail_draft_extract_kind,
+    mail_draft_inquiry_kind,
     mail_draft_mailto_href,
     mail_draft_sent_status,
     mail_draft_status,
     require_mail_draft_body,
     require_mail_draft_source_ref,
     require_mail_draft_subject_id,
+    require_mail_draft_subject_ids,
     require_mail_draft_subject_kind,
     require_mail_draft_to_address,
 )
@@ -20,11 +22,21 @@ def test_draft_and_extract_constants() -> None:
     assert mail_draft_status() == "draft"
     assert mail_draft_sent_status() == "sent"
     assert mail_draft_extract_kind() == "extraction_draft"
+    assert mail_draft_inquiry_kind() == "carrier_inquiry"
 
 
 def test_require_subject_kind_rejects_inbound() -> None:
-    with pytest.raises(InvalidMailDraft, match="extraction_draft"):
+    with pytest.raises(InvalidMailDraft, match="allowlist"):
         require_mail_draft_subject_kind("inbound_message")
+
+
+def test_require_subject_kind_accepts_inquiry() -> None:
+    assert require_mail_draft_subject_kind("carrier_inquiry") == "carrier_inquiry"
+
+
+def test_require_subject_ids_rejects_empty() -> None:
+    with pytest.raises(InvalidMailDraft, match="batch"):
+        require_mail_draft_subject_ids([])
 
 
 def test_require_subject_id_rejects_non_uuid() -> None:

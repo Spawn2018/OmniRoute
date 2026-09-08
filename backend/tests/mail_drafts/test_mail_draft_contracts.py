@@ -28,6 +28,16 @@ def test_migration_041_allows_sent_status() -> None:
     assert "sent" in source
 
 
+def test_migration_080_allows_inquiry_subject_kind() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "080_mail_draft_inquiry.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "080_mail_draft_inquiry"' in source
+    assert 'down_revision: str | None = "079_quotation_incoterm"' in source
+    assert "carrier_inquiry" in source
+    assert "extraction_draft" in source
+
+
 def test_mail_draft_service_does_not_import_extract_or_inbound() -> None:
     service = (_SERVICES / "mail_drafts" / "mail_draft_service.py").read_text(
         encoding="utf-8",

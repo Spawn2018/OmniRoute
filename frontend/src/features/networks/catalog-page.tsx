@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { createColumnHelper } from "@tanstack/react-table"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { BUSINESS_LISTS } from "@/lib/business-lists"
@@ -9,7 +9,12 @@ import {
   createCarrierInquiry,
   createCarrierInquiryBatch,
   fetchCarrierInquiries,
+  fetchCarrierInquiryRanking,
+  inquiryIdsForMembers,
+  topRankedMemberIds,
 } from "@/lib/carrier-inquiries-api"
+import { createMailDraftBatch, fetchMailDrafts, mailDraftBatchBody } from "@/lib/mail-drafts-api"
+import { fetchOrganizationSettings, inquiryDefaultN } from "@/lib/organization-settings-api"
 import {
   createNetwork,
   createNetworkMember,
@@ -80,6 +85,9 @@ export function NetworkCatalogPage() {
   const [batchMemberIds, setBatchMemberIds] = useState<string[]>([])
   const [batchOrigin, setBatchOrigin] = useState("")
   const [batchDestination, setBatchDestination] = useState("")
+  const [draftInquiryIds, setDraftInquiryIds] = useState<string[]>([])
+  const [draftBody, setDraftBody] = useState("prośba o stawkę")
+  const [topApplied, setTopApplied] = useState(false)
   const sessionReady = Boolean(ctx.organizationId && ctx.userId)
 
   const query = useQuery({
@@ -114,6 +122,25 @@ export function NetworkCatalogPage() {
     enabled: sessionReady,
     retry: false,
   })
+  const ranking = useQuery({
+    queryKey: ["carrier-inquiry-ranking", ctx.organizationId],
+    queryFn: fetchCarrierInquiryRanking,
+    enabled: sessionReady,
+    retry: false,
+  })
+  const settings = useQuery({
+    queryKey: ["organization-settings", ctx.organizationId],
+    queryFn: fetchOrganizationSettings,
+    enabled: sessionReady,
+    retry: false,
+  })
+  const drafts = useQuery({
+    queryKey: ["mail-drafts", ctx.organizationId],
+    queryFn: fetchMailDrafts,
+    enabled: sessionReady,
+    retry: false,
+  })
+  const defaultN = inquiryDefaultN(settings.data ?? [])
   const askMember = useMutation({
     mutationFn: () => createCarrierInquiry(askedMemberId),
     onSuccess: () => {
@@ -142,6 +169,21 @@ export function NetworkCatalogPage() {
       })
     },
   })
+  const saveDrafts = useMutation({
+    mutationFn: () =>
+      createMailDraftBatch(
+        mailDraftBatchBody({
+          subjectIds: draftInquiryIds,
+          body: draftBody,
+          sourceRef: "tenant:manual:inquiry-draft",
+          subjectKind: "carrier_inquiry",
+        }),
+      ),
+    onSuccess: () => {
+      setDraftInquiryIds([])
+      void queryClient.invalidateQueries({ queryKey: ["mail-drafts", ctx.organizationId] })
+    },
+  })
   const createMember = useMutation({
     mutationFn: () =>
       createNetworkMember(networkId, {
@@ -158,6 +200,16 @@ export function NetworkCatalogPage() {
       })
     },
   })
+
+  useEffect(() => {
+    if (topApplied || ranking.data === undefined || settings.isLoading) {
+      return
+    }
+    const members = topRankedMemberIds(ranking.data, defaultN)
+    setBatchMemberIds(members)
+    setDraftInquiryIds(inquiryIdsForMembers(inquiries.data ?? [], members))
+    setTopApplied(true)
+  }, [topApplied, ranking.data, settings.isLoading, defaultN, inquiries.data])
 
   return (
     <div className="space-y-3">
@@ -359,6 +411,12 @@ export function NetworkCatalogPage() {
           >
             Wszyscy członkowie
           </Button>
+          <Button
+            type="button"
+            onClick={() => setBatchMemberIds(topRankedMemberIds(ranking.data ?? [], defaultN))}
+          >
+            Zaznacz top N
+          </Button>
           <Input
             aria-label="POL paczki zapytań"
             placeholder="origin_port_id"
@@ -376,13 +434,65 @@ export function NetworkCatalogPage() {
           </Button>
         </form>
         {askBatch.isError ? <CatalogError error={askBatch.error} /> : null}
+        {ranking.isError ? <CatalogError error={ranking.error} /> : null}
         {inquiries.isError ? <CatalogError error={inquiries.error} /> : null}
+        <form
+          className="grid gap-2 rounded-md border border-border bg-card p-3"
+          data-mail-draft="batch"
+          onSubmit={(event) => {
+            event.preventDefault()
+            if (sessionReady && draftInquiryIds.length > 0) saveDrafts.mutate()
+          }}
+        >
+          <p className="text-xs text-muted-foreground">
+            Szkice zapytań: top {defaultN} z rankingu answered (`inquiry_default_n`). Nie wysyłka.
+          </p>
+          <div className="flex flex-wrap gap-2 text-xs">
+            {(inquiries.data ?? []).map((row) => (
+              <label key={row.id} className="flex items-center gap-1">
+                <input
+                  type="checkbox"
+                  checked={draftInquiryIds.includes(row.id)}
+                  onChange={(event) => {
+                    if (event.target.checked) {
+                      setDraftInquiryIds([...draftInquiryIds, row.id])
+                      return
+                    }
+                    setDraftInquiryIds(draftInquiryIds.filter((item) => item !== row.id))
+                  }}
+                />
+                {row.status} · {row.network_member_id}
+              </label>
+            ))}
+          </div>
+          <Button
+            type="button"
+            onClick={() =>
+              setDraftInquiryIds(
+                inquiryIdsForMembers(inquiries.data ?? [], topRankedMemberIds(ranking.data ?? [], defaultN)),
+              )
+            }
+          >
+            Top N z rankingu
+          </Button>
+          <Input
+            aria-label="Treść szkiców zapytań"
+            value={draftBody}
+            onChange={(event) => setDraftBody(event.target.value)}
+          />
+          <Button type="submit" disabled={saveDrafts.isPending || !sessionReady || draftInquiryIds.length === 0}>
+            Zapisz szkice
+          </Button>
+        </form>
+        {saveDrafts.isError ? <CatalogError error={saveDrafts.error} /> : null}
         <ul className="text-xs">
-          {(inquiries.data ?? []).map((row) => (
-            <li key={row.id}>
-              {row.status} · {row.network_member_id}
-            </li>
-          ))}
+          {(drafts.data ?? [])
+            .filter((row) => row.subject_kind === "carrier_inquiry")
+            .map((row) => (
+              <li key={row.id}>
+                {row.status} · {row.subject_id}
+              </li>
+            ))}
         </ul>
       </section>
     </div>

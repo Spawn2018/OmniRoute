@@ -1,10 +1,10 @@
 # M-57 AI — tablica extract pending + szkic maila
 
 **Moduł żywy:** M-57 (token UI `ai_copilot` + tabela `mail_draft`) + M-20 `extraction_draft`  
-**Plaster:** **47.0** tablica · **76.0** `mail_draft` · **81.0** świadomy mailto · **116.0** szkice na wieży · **118.0** SOP przy szkicu  
-**Status:** operator widzi pending extract, zapisuje szkic, po Akceptuj otwiera klient poczty; wieża czyta szkice; `/ai` pokazuje SOP `blocks_auto`. Nie czat. Nie Graph HTTP. Nie auto-send.
+**Plaster:** **47.0** tablica · **76.0** `mail_draft` · **81.0** świadomy mailto · **116.0** szkice na wieży · **118.0** SOP przy szkicu · **138.0** szkic zapytania  
+**Status:** operator widzi pending extract, zapisuje szkic, po Akceptuj otwiera klient poczty; wieża czyta szkice; `/ai` pokazuje SOP `blocks_auto`; `/networks` zapisuje N szkiców `carrier_inquiry`. Nie czat. Nie Graph HTTP. Nie auto-send.
 
-Delta: [47.0](../deltas/archived/47.0-ai-copilot.md) · [76.0](../deltas/archived/76.0-mail-draft.md) · [116.0](../deltas/archived/116.0-copilot-watchtower.md) · [118.0](../deltas/archived/118.0-sop-drafts.md).
+Delta: [47.0](../deltas/archived/47.0-ai-copilot.md) · [76.0](../deltas/archived/76.0-mail-draft.md) · [116.0](../deltas/archived/116.0-copilot-watchtower.md) · [118.0](../deltas/archived/118.0-sop-drafts.md) · [138.0](../deltas/archived/138.0-inquiry-mail-draft-batch.md).
 
 ## 47.0 tablica odczytu na `/ai`
 
@@ -55,6 +55,20 @@ Czat · MCP · Graph HTTP
 ### Poza 118.0
 
 Graph HTTP · auto-send · czat
+
+## 138.0 szkic zapytania
+
+### Zakres
+
+- CHECK `subject_kind`: `extraction_draft` \| `carrier_inquiry`
+- `POST /mail-drafts/batch` — N wierszy, `subject_id` = `carrier_inquiry.id`, treść z requestu
+- `GET /carrier-inquiries/ranking` — `COUNT(*) FILTER (status=answered)` per członek
+- `inquiry_default_n` (1–20) w M-03; UI `/networks` zaznacza top N i „Zapisz szkice”
+- Send zostaje 81.0 `mailto:`
+
+### Poza 138.0
+
+O5 scorecard · Graph HTTP · auto-send · treść z LLM
 
 ## HC
 

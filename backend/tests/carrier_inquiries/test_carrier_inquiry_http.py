@@ -6,6 +6,7 @@ from fastapi.testclient import TestClient
 
 from app.api.deps import require_tenant_session, set_authz_checker
 from app.domain.carrier_inquiry import (
+    InquiryMemberRank,
     carrier_inquiry_draft_status,
     require_answered_quote,
     require_inquiry_status,
@@ -36,6 +37,17 @@ class StubInquiryService:
 
     async def list_inquiries(self) -> list[CarrierInquiry]:
         return list(self.rows)
+
+    async def list_member_ranks(self) -> list[InquiryMemberRank]:
+        tallies: dict[UUID, int] = {}
+        for row in self.rows:
+            tallies[row.network_member_id] = tallies.get(row.network_member_id, 0)
+            if row.status == "answered":
+                tallies[row.network_member_id] += 1
+        return sorted(
+            (InquiryMemberRank(member_id, count) for member_id, count in tallies.items()),
+            key=lambda rank: (-rank.answered_count, rank.network_member_id),
+        )
 
     async def record_inquiry(
         self,
@@ -185,6 +197,43 @@ def test_http_quoted_money_on_draft_is_400(inquiry_client: object) -> None:
     )
     assert response.status_code == 400
     assert "answered" in response.json()["detail"]
+
+
+def test_http_ranking_orders_answered_then_zero(inquiry_client: object) -> None:
+    client, stub = inquiry_client
+    org_id = uuid4()
+    user_id = uuid4()
+    high = uuid4()
+    mid = uuid4()
+    zero = uuid4()
+    headers = bearer_auth_headers(organization_id=org_id, user_id=user_id)
+    for member_id, status, money in (
+        (high, "answered", "10.0000"),
+        (high, "answered", "12.0000"),
+        (mid, "answered", "8.0000"),
+        (zero, "draft", None),
+    ):
+        created = client.post(
+            "/api/v1/carrier-inquiries",
+            headers=headers,
+            json=(
+                {
+                    "network_member_id": str(member_id),
+                    "status": status,
+                    "quoted_amount": money,
+                    "quoted_currency": "USD",
+                }
+                if money is not None
+                else {"network_member_id": str(member_id), "status": status}
+            ),
+        )
+        assert created.status_code == 201
+    _ = stub
+    ranked = client.get("/api/v1/carrier-inquiries/ranking", headers=headers)
+    assert ranked.status_code == 200
+    body = ranked.json()
+    assert [row["network_member_id"] for row in body] == [str(high), str(mid), str(zero)]
+    assert [row["answered_count"] for row in body] == [2, 1, 0]
 
 
 def test_http_batch_records_three_members(inquiry_client: object) -> None:

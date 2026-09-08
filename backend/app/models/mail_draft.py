@@ -11,7 +11,7 @@ class MailDraft(Base, TimestampMixin):
     __tablename__ = "mail_draft"
     __table_args__ = (
         CheckConstraint(
-            "subject_kind = 'extraction_draft'",
+            "subject_kind IN ('extraction_draft','carrier_inquiry')",
             name="ck_mail_draft_subject_kind",
         ),
         CheckConstraint("status IN ('draft', 'sent')", name="ck_mail_draft_status"),

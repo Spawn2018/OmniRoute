@@ -24,6 +24,7 @@ export type MailDraftForm = {
   subjectId: string
   body: string
   sourceRef: string
+  subjectKind?: string
 }
 
 export const EMPTY_MAIL_DRAFT: MailDraftForm = {
@@ -36,11 +37,41 @@ export function mailDraftCreateBody(draft: MailDraftForm): {
   subject_id: string
   body: string
   source_ref: string
+  subject_kind?: string
 } {
-  return {
+  const body: {
+    subject_id: string
+    body: string
+    source_ref: string
+    subject_kind?: string
+  } = {
     subject_id: draft.subjectId.trim(),
     body: draft.body.trim(),
     source_ref: draft.sourceRef.trim(),
+  }
+  const kind = draft.subjectKind?.trim()
+  if (kind !== undefined && kind !== "") {
+    body.subject_kind = kind
+  }
+  return body
+}
+
+export function mailDraftBatchBody(input: {
+  subjectIds: readonly string[]
+  body: string
+  sourceRef: string
+  subjectKind: string
+}): {
+  subject_ids: string[]
+  body: string
+  source_ref: string
+  subject_kind: string
+} {
+  return {
+    subject_ids: input.subjectIds.map((item) => item.trim()).filter((item) => item !== ""),
+    body: input.body.trim(),
+    source_ref: input.sourceRef.trim(),
+    subject_kind: input.subjectKind.trim(),
   }
 }
 
@@ -82,6 +113,20 @@ export async function createMailDraft(
     body: JSON.stringify(body),
   })
   return readDraft(response, "Błąd zapisu szkicu maila")
+}
+
+export async function createMailDraftBatch(
+  body: ReturnType<typeof mailDraftBatchBody>,
+): Promise<StoredMailDraft[]> {
+  const response = await fetch("/api/v1/mail-drafts/batch", {
+    method: "POST",
+    headers: { ...requireAuthHeaders(), "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  })
+  if (!response.ok) {
+    throw new ApiError(await readApiDetail(response, "Błąd zapisu paczki szkiców"), httpErrorStatus(response))
+  }
+  return (await response.json()) as StoredMailDraft[]
 }
 
 export async function dispatchMailtoMailDraft(

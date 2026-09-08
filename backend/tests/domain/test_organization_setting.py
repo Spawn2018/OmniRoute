@@ -37,3 +37,13 @@ def test_normalize_prefix_rejects_spaces_and_long_token() -> None:
 def test_normalize_template_rejects_unknown_token() -> None:
     with pytest.raises(InvalidOrganizationSetting, match="szablon"):
         normalize_setting_value("quotation_print_template", "fancy")
+
+
+def test_normalize_inquiry_default_n_accepts_range() -> None:
+    assert normalize_setting_key(" Inquiry_Default_N ") == "inquiry_default_n"
+    assert normalize_setting_value("inquiry_default_n", " 3 ") == "3"
+
+
+def test_normalize_inquiry_default_n_rejects_zero() -> None:
+    with pytest.raises(InvalidOrganizationSetting, match="1–20"):
+        normalize_setting_value("inquiry_default_n", "0")

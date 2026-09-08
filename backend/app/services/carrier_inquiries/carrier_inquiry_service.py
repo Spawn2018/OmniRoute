@@ -5,6 +5,7 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.carrier_inquiry import (
+    InquiryMemberRank,
     carrier_inquiry_draft_status,
     carrier_inquiry_manual_source,
     require_answered_quote,
@@ -26,6 +27,9 @@ class CarrierInquiryService:
 
     async def list_inquiries(self) -> list[CarrierInquiry]:
         return await self._inquiries.list_recent()
+
+    async def list_member_ranks(self) -> list[InquiryMemberRank]:
+        return await self._inquiries.list_member_ranks()
 
     async def record_inquiry(
         self,

@@ -1,6 +1,11 @@
 import { ApiError, httpErrorStatus, readApiDetail } from "@/lib/api"
 import { requireAuthHeaders } from "@/lib/tenant"
 
+export type InquiryMemberRank = {
+  network_member_id: string
+  answered_count: number
+}
+
 export type CarrierInquiry = {
   id: string
   organization_id: string
@@ -50,6 +55,34 @@ async function readInquiry(response: Response, fallback: string): Promise<Carrie
     throw new ApiError(await readApiDetail(response, fallback), httpErrorStatus(response))
   }
   return (await response.json()) as CarrierInquiry
+}
+
+export function topRankedMemberIds(
+  ranks: readonly InquiryMemberRank[],
+  limit: number,
+): string[] {
+  return ranks.slice(0, limit).map((row) => row.network_member_id)
+}
+
+export function inquiryIdsForMembers(
+  inquiries: readonly CarrierInquiry[],
+  memberIds: readonly string[],
+): string[] {
+  const allowed = new Set(memberIds)
+  return inquiries.filter((row) => allowed.has(row.network_member_id)).map((row) => row.id)
+}
+
+export async function fetchCarrierInquiryRanking(): Promise<InquiryMemberRank[]> {
+  const response = await fetch("/api/v1/carrier-inquiries/ranking", {
+    headers: requireAuthHeaders(),
+  })
+  if (!response.ok) {
+    throw new ApiError(
+      await readApiDetail(response, "Błąd rankingu zapytań"),
+      httpErrorStatus(response),
+    )
+  }
+  return (await response.json()) as InquiryMemberRank[]
 }
 
 export async function fetchCarrierInquiries(): Promise<CarrierInquiry[]> {

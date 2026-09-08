@@ -1,3 +1,4 @@
+from decimal import Decimal
 from uuid import uuid4
 
 import pytest
@@ -8,6 +9,7 @@ from app.core.database import bind_tenant
 from app.models.carrier_inquiry import CarrierInquiry
 from app.models.network import Network
 from app.models.network_member import NetworkMember
+from app.services.carrier_inquiries.carrier_inquiry_service import CarrierInquiryService
 
 
 def _network(*, organization_id, user_id, suffix: str) -> Network:
@@ -41,6 +43,19 @@ def _inquiry(*, organization_id, user_id, member: NetworkMember) -> CarrierInqui
         network_member_id=member.id,
         source_ref="tenant:manual",
         status="draft",
+        created_by=user_id,
+    )
+
+
+def _answered(*, organization_id, user_id, member: NetworkMember) -> CarrierInquiry:
+    return CarrierInquiry(
+        id=uuid4(),
+        organization_id=organization_id,
+        network_member_id=member.id,
+        source_ref="tenant:manual",
+        status="answered",
+        quoted_amount=Decimal("10.0000"),
+        quoted_currency="USD",
         created_by=user_id,
     )
 
@@ -119,3 +134,46 @@ async def test_carrier_inquiry_rejects_foreign_network_member(session, two_tenan
     )
     with pytest.raises(IntegrityError, match="fk_carrier_inquiry_network_member"):
         await session.flush()
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_carrier_inquiry_ranking_orders_answered_then_zero(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    org_b = two_tenants["org_b"]
+    user_a = two_tenants["user_a"]
+    user_b = two_tenants["user_b"]
+    net_a = _network(organization_id=org_a.id, user_id=user_a.id, suffix="r")
+    net_b = _network(organization_id=org_b.id, user_id=user_b.id, suffix="s")
+    high = _member(organization_id=org_a.id, user_id=user_a.id, network=net_a, suffix="h")
+    mid = _member(organization_id=org_a.id, user_id=user_a.id, network=net_a, suffix="m")
+    zero = _member(organization_id=org_a.id, user_id=user_a.id, network=net_a, suffix="z")
+    foreign = _member(organization_id=org_b.id, user_id=user_b.id, network=net_b, suffix="f")
+
+    await bind_tenant(session, org_a.id)
+    session.add(net_a)
+    await session.flush()
+    session.add_all([high, mid, zero])
+    await session.flush()
+    session.add_all(
+        [
+            _answered(organization_id=org_a.id, user_id=user_a.id, member=high),
+            _answered(organization_id=org_a.id, user_id=user_a.id, member=high),
+            _answered(organization_id=org_a.id, user_id=user_a.id, member=mid),
+            _inquiry(organization_id=org_a.id, user_id=user_a.id, member=zero),
+        ],
+    )
+    await session.flush()
+
+    await bind_tenant(session, org_b.id)
+    session.add(net_b)
+    await session.flush()
+    session.add(foreign)
+    await session.flush()
+    session.add(_answered(organization_id=org_b.id, user_id=user_b.id, member=foreign))
+    await session.flush()
+
+    await bind_tenant(session, org_a.id)
+    ranks = await CarrierInquiryService(session).list_member_ranks()
+    assert [row.network_member_id for row in ranks] == [high.id, mid.id, zero.id]
+    assert [row.answered_count for row in ranks] == [2, 1, 0]

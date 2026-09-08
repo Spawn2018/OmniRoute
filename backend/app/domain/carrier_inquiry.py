@@ -1,4 +1,5 @@
 from decimal import Decimal
+from typing import NamedTuple
 from uuid import UUID
 
 from app.domain.channel_quote import (
@@ -19,6 +20,11 @@ def carrier_inquiry_draft_status() -> str:
 
 def carrier_inquiry_manual_source() -> str:
     return _MANUAL
+
+
+class InquiryMemberRank(NamedTuple):
+    network_member_id: UUID
+    answered_count: int
 
 
 def require_network_member_id(raw: object) -> UUID:

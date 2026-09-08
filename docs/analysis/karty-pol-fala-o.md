@@ -77,6 +77,8 @@ Batch POST: lista `network_member_id` (z `party_id`). „Wszyscy” = filtr M-03
 
 ## O4 — zaznaczenie i szkice
 
+**138.0 zamknięty `/noc`:** ta sama `mail_draft` + `inquiry_default_n` + ranking SQL `answered`. Nie O5.
+
 | Pole / zachowanie | Typ | Uwagi |
 |---|---|---|
 | checkboxy | UI | nic / jeden / wielu / wszyscy |

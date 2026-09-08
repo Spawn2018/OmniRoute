@@ -6,6 +6,11 @@ from fastapi.testclient import TestClient
 
 from app.api.deps import require_tenant_session, set_authz_checker
 from app.domain.errors import InvalidMailDraft, ResourceNotFound
+from app.domain.mail_draft import (
+    mail_draft_extract_kind,
+    require_mail_draft_subject_ids,
+    require_mail_draft_subject_kind,
+)
 from app.main import app
 from app.models.mail_draft import MailDraft
 from tests.http_auth import bearer_auth_headers
@@ -45,11 +50,13 @@ class StubMailDraftService:
         subject_id: UUID,
         body: str,
         source_ref: str,
+        subject_kind: object = None,
     ) -> MailDraft:
+        kind = mail_draft_extract_kind() if subject_kind is None else subject_kind
         row = MailDraft(
             id=uuid4(),
             organization_id=organization_id,
-            subject_kind="extraction_draft",
+            subject_kind=require_mail_draft_subject_kind(kind),
             subject_id=subject_id,
             body=body,
             status="draft",
@@ -58,6 +65,30 @@ class StubMailDraftService:
         )
         self.rows.append(row)
         return row
+
+    async def create_batch(
+        self,
+        *,
+        organization_id: UUID,
+        user_id: UUID,
+        subject_ids: object,
+        body: str,
+        source_ref: str,
+        subject_kind: object,
+    ) -> list[MailDraft]:
+        rows: list[MailDraft] = []
+        for subject_id in require_mail_draft_subject_ids(subject_ids):
+            rows.append(
+                await self.create_draft(
+                    organization_id=organization_id,
+                    user_id=user_id,
+                    subject_id=subject_id,
+                    body=body,
+                    source_ref=source_ref,
+                    subject_kind=subject_kind,
+                ),
+            )
+        return rows
 
     async def mark_sent(self, draft_id: UUID, to_address: str) -> MailDraft:
         row = await self.get_draft(draft_id)
@@ -145,6 +176,43 @@ def test_http_create_and_list_mail_draft(catalog_client: object) -> None:
     assert listed.status_code == 200
     assert listed.json()[0]["id"] == body["id"]
     assert listed.json()[0]["to_address"] is None
+
+
+def test_http_rejects_party_subject_kind(catalog_client: object) -> None:
+    client, _drafts = catalog_client
+    response = client.post(
+        "/api/v1/mail-drafts",
+        headers=bearer_auth_headers(),
+        json={
+            "subject_id": str(uuid4()),
+            "body": "RFQ",
+            "source_ref": "fixture://mail-draft/1",
+            "subject_kind": "party",
+        },
+    )
+    assert response.status_code == 400
+    assert "allowlist" in response.json()["detail"]
+
+
+def test_http_batch_creates_three_inquiry_drafts(catalog_client: object) -> None:
+    client, _drafts = catalog_client
+    subjects = [str(uuid4()), str(uuid4()), str(uuid4())]
+    response = client.post(
+        "/api/v1/mail-drafts/batch",
+        headers=bearer_auth_headers(),
+        json={
+            "subject_ids": subjects,
+            "body": "prośba o stawkę",
+            "source_ref": "fixture://mail-draft/batch",
+            "subject_kind": "carrier_inquiry",
+        },
+    )
+    assert response.status_code == 201
+    body = response.json()
+    assert len(body) == 3
+    assert {row["subject_id"] for row in body} == set(subjects)
+    assert all(row["subject_kind"] == "carrier_inquiry" for row in body)
+    assert all(row["status"] == "draft" for row in body)
 
 
 def test_http_dispatch_mailto_requires_accepted_decision(catalog_client: object) -> None:

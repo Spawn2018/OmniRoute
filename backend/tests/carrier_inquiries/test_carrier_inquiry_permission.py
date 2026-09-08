@@ -16,6 +16,7 @@ _PATHS = (
         "/api/v1/carrier-inquiries/batch",
         {"network_member_ids": [str(uuid4())]},
     ),
+    ("GET", "/api/v1/carrier-inquiries/ranking", None),
 )
 
 

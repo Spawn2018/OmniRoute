@@ -28,6 +28,17 @@ _ENDPOINTS = (
         None,
         {"to_address": "ops@carrier.example"},
     ),
+    (
+        "POST",
+        "/api/v1/mail-drafts/batch",
+        None,
+        {
+            "subject_ids": [str(uuid4())],
+            "body": "prośba o stawkę",
+            "source_ref": "fixture://mail-draft/batch",
+            "subject_kind": "carrier_inquiry",
+        },
+    ),
 )
 
 

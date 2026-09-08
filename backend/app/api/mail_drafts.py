@@ -23,6 +23,16 @@ class MailDraftCreate(BaseModel):
     subject_id: UUID
     body: str
     source_ref: str
+    subject_kind: str | None = None
+
+
+class MailDraftBatchCreate(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    subject_ids: list[UUID]
+    body: str
+    source_ref: str
+    subject_kind: str
 
 
 class MailDraftDispatch(BaseModel):
@@ -75,9 +85,33 @@ async def create_mail_draft(
         subject_id=body.subject_id,
         body=body.body,
         source_ref=body.source_ref,
+        subject_kind=body.subject_kind,
     )
     await session.commit()
     return MailDraftResponse.model_validate(row)
+
+
+@router.post(
+    "/batch",
+    response_model=list[MailDraftResponse],
+    status_code=status.HTTP_201_CREATED,
+)
+async def create_mail_draft_batch(
+    body: MailDraftBatchCreate,
+    _authz: None = Depends(_AUTHZ),
+    session: AsyncSession = Depends(require_tenant_session),
+    identity: SessionIdentity = Depends(get_current_identity),
+) -> list[MailDraftResponse]:
+    rows = await MailDraftService(session).create_batch(
+        organization_id=identity.organization_id,
+        user_id=identity.user_id,
+        subject_ids=body.subject_ids,
+        body=body.body,
+        source_ref=body.source_ref,
+        subject_kind=body.subject_kind,
+    )
+    await session.commit()
+    return [MailDraftResponse.model_validate(row) for row in rows]
 
 
 @router.post("/{draft_id}/dispatch-mailto", response_model=MailDraftDispatchResponse)

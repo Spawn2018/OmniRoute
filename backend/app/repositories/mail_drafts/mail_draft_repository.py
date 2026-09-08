@@ -24,3 +24,9 @@ class MailDraftRepository:
         self._session.add(row)
         await self._session.flush()
         return row
+
+    async def add_many(self, rows: list[MailDraft]) -> list[MailDraft]:
+        for row in rows:
+            self._session.add(row)
+        await self._session.flush()
+        return rows

@@ -1210,6 +1210,36 @@
         ]
       }
     },
+    "/api/v1/carrier-inquiries/ranking": {
+      "get": {
+        "tags": [
+          "carrier-inquiries"
+        ],
+        "summary": "List Carrier Inquiry Ranking",
+        "operationId": "list_carrier_inquiry_ranking_api_v1_carrier_inquiries_ranking_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/InquiryMemberRankResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Carrier Inquiry Ranking Api V1 Carrier Inquiries Ranking Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/carrier-inquiries/batch": {
       "post": {
         "tags": [
@@ -1960,6 +1990,56 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/MailDraftResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/mail-drafts/batch": {
+      "post": {
+        "tags": [
+          "mail-drafts"
+        ],
+        "summary": "Create Mail Draft Batch",
+        "operationId": "create_mail_draft_batch_api_v1_mail_drafts_batch_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MailDraftBatchCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/MailDraftResponse"
+                  },
+                  "type": "array",
+                  "title": "Response Create Mail Draft Batch Api V1 Mail Drafts Batch Post"
                 }
               }
             }
@@ -9622,6 +9702,25 @@
         ],
         "title": "InboundMessageResponse"
       },
+      "InquiryMemberRankResponse": {
+        "properties": {
+          "network_member_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Network Member Id"
+          },
+          "answered_count": {
+            "type": "integer",
+            "title": "Answered Count"
+          }
+        },
+        "type": "object",
+        "required": [
+          "network_member_id",
+          "answered_count"
+        ],
+        "title": "InquiryMemberRankResponse"
+      },
       "LocationResponse": {
         "properties": {
           "id": {
@@ -9756,6 +9855,39 @@
         ],
         "title": "LocationResponse"
       },
+      "MailDraftBatchCreate": {
+        "properties": {
+          "subject_ids": {
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "type": "array",
+            "title": "Subject Ids"
+          },
+          "body": {
+            "type": "string",
+            "title": "Body"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          },
+          "subject_kind": {
+            "type": "string",
+            "title": "Subject Kind"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "subject_ids",
+          "body",
+          "source_ref",
+          "subject_kind"
+        ],
+        "title": "MailDraftBatchCreate"
+      },
       "MailDraftCreate": {
         "properties": {
           "subject_id": {
@@ -9770,6 +9902,17 @@
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
+          },
+          "subject_kind": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Subject Kind"
           }
         },
         "additionalProperties": false,

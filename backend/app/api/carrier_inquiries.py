@@ -7,6 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import get_current_identity, require_permission, require_tenant_session
 from app.core.session_token import SessionIdentity
+from app.domain.carrier_inquiry import InquiryMemberRank
 from app.models.carrier_inquiry import CarrierInquiry
 from app.services.carrier_inquiries.carrier_inquiry_service import CarrierInquiryService
 
@@ -37,6 +38,18 @@ class CarrierInquiryBatchCreate(BaseModel):
     quoted_amount: str | None = None
     quoted_currency: str | None = None
     quoted_transit_days: int | None = None
+
+
+class InquiryMemberRankResponse(BaseModel):
+    network_member_id: UUID
+    answered_count: int
+
+    @classmethod
+    def from_row(cls, row: InquiryMemberRank) -> "InquiryMemberRankResponse":
+        return cls(
+            network_member_id=row.network_member_id,
+            answered_count=row.answered_count,
+        )
 
 
 class CarrierInquiryResponse(BaseModel):
@@ -77,6 +90,15 @@ async def list_carrier_inquiries(
 ) -> list[CarrierInquiryResponse]:
     rows = await CarrierInquiryService(session).list_inquiries()
     return [CarrierInquiryResponse.from_row(row) for row in rows]
+
+
+@router.get("/ranking", response_model=list[InquiryMemberRankResponse])
+async def list_carrier_inquiry_ranking(
+    _authz: None = Depends(_AUTHZ),
+    session: AsyncSession = Depends(require_tenant_session),
+) -> list[InquiryMemberRankResponse]:
+    rows = await CarrierInquiryService(session).list_member_ranks()
+    return [InquiryMemberRankResponse.from_row(row) for row in rows]
 
 
 @router.post("", response_model=CarrierInquiryResponse, status_code=status.HTTP_201_CREATED)

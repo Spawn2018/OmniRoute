@@ -6,6 +6,7 @@ ALLOWED_SETTING_KEYS = frozenset(
         "default_currency",
         "quotation_number_prefix",
         "quotation_print_template",
+        "inquiry_default_n",
     },
 )
 ALLOWED_PRINT_TEMPLATES = frozenset({"plain", "letter"})
@@ -52,4 +53,16 @@ def normalize_setting_value(setting_key: str, raw: object) -> str:
         return normalize_quotation_number_prefix(raw)
     if setting_key == "quotation_print_template":
         return normalize_quotation_print_template(raw)
+    if setting_key == "inquiry_default_n":
+        return normalize_inquiry_default_n(raw)
     raise InvalidOrganizationSetting("klucz poza allowlistą")
+
+
+def normalize_inquiry_default_n(raw: str) -> str:
+    token = raw.strip()
+    if not token.isdigit():
+        raise InvalidOrganizationSetting("inquiry_default_n: liczba 1–20")
+    value = int(token)
+    if value < 1 or value > 20:
+        raise InvalidOrganizationSetting("inquiry_default_n: liczba 1–20")
+    return token

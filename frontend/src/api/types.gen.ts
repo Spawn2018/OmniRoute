@@ -1689,6 +1689,20 @@ export type InboundMessageResponse = {
 };
 
 /**
+ * InquiryMemberRankResponse
+ */
+export type InquiryMemberRankResponse = {
+    /**
+     * Network Member Id
+     */
+    network_member_id: string;
+    /**
+     * Answered Count
+     */
+    answered_count: number;
+};
+
+/**
  * LocationResponse
  */
 export type LocationResponse = {
@@ -1747,6 +1761,28 @@ export type LocationResponse = {
 };
 
 /**
+ * MailDraftBatchCreate
+ */
+export type MailDraftBatchCreate = {
+    /**
+     * Subject Ids
+     */
+    subject_ids: Array<string>;
+    /**
+     * Body
+     */
+    body: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+    /**
+     * Subject Kind
+     */
+    subject_kind: string;
+};
+
+/**
  * MailDraftCreate
  */
 export type MailDraftCreate = {
@@ -1762,6 +1798,10 @@ export type MailDraftCreate = {
      * Source Ref
      */
     source_ref: string;
+    /**
+     * Subject Kind
+     */
+    subject_kind?: string | null;
 };
 
 /**
@@ -4405,6 +4445,24 @@ export type CreateCarrierInquiryApiV1CarrierInquiriesPostResponses = {
 
 export type CreateCarrierInquiryApiV1CarrierInquiriesPostResponse = CreateCarrierInquiryApiV1CarrierInquiriesPostResponses[keyof CreateCarrierInquiryApiV1CarrierInquiriesPostResponses];
 
+export type ListCarrierInquiryRankingApiV1CarrierInquiriesRankingGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/carrier-inquiries/ranking';
+};
+
+export type ListCarrierInquiryRankingApiV1CarrierInquiriesRankingGetResponses = {
+    /**
+     * Response List Carrier Inquiry Ranking Api V1 Carrier Inquiries Ranking Get
+     *
+     * Successful Response
+     */
+    200: Array<InquiryMemberRankResponse>;
+};
+
+export type ListCarrierInquiryRankingApiV1CarrierInquiriesRankingGetResponse = ListCarrierInquiryRankingApiV1CarrierInquiriesRankingGetResponses[keyof ListCarrierInquiryRankingApiV1CarrierInquiriesRankingGetResponses];
+
 export type CreateCarrierInquiryBatchApiV1CarrierInquiriesBatchPostData = {
     body: CarrierInquiryBatchCreate;
     path?: never;
@@ -4846,6 +4904,33 @@ export type CreateMailDraftApiV1MailDraftsPostResponses = {
 };
 
 export type CreateMailDraftApiV1MailDraftsPostResponse = CreateMailDraftApiV1MailDraftsPostResponses[keyof CreateMailDraftApiV1MailDraftsPostResponses];
+
+export type CreateMailDraftBatchApiV1MailDraftsBatchPostData = {
+    body: MailDraftBatchCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/mail-drafts/batch';
+};
+
+export type CreateMailDraftBatchApiV1MailDraftsBatchPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateMailDraftBatchApiV1MailDraftsBatchPostError = CreateMailDraftBatchApiV1MailDraftsBatchPostErrors[keyof CreateMailDraftBatchApiV1MailDraftsBatchPostErrors];
+
+export type CreateMailDraftBatchApiV1MailDraftsBatchPostResponses = {
+    /**
+     * Response Create Mail Draft Batch Api V1 Mail Drafts Batch Post
+     *
+     * Successful Response
+     */
+    201: Array<MailDraftResponse>;
+};
+
+export type CreateMailDraftBatchApiV1MailDraftsBatchPostResponse = CreateMailDraftBatchApiV1MailDraftsBatchPostResponses[keyof CreateMailDraftBatchApiV1MailDraftsBatchPostResponses];
 
 export type DispatchMailDraftMailtoApiV1MailDraftsDraftIdDispatchMailtoPostData = {
     body: MailDraftDispatch;
