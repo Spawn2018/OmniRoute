@@ -36,6 +36,7 @@ import { Route as FraudRouteImport } from './routes/fraud'
 import { Route as FxDifferencesRouteImport } from './routes/fx-differences'
 import { Route as GdprRouteImport } from './routes/gdpr'
 import { Route as GroupageRouteImport } from './routes/groupage'
+import { Route as GroupageTariffsRouteImport } from './routes/groupage-tariffs'
 import { Route as HealthRouteImport } from './routes/health'
 import { Route as InvoicesRouteImport } from './routes/invoices'
 import { Route as LclRouteImport } from './routes/lcl'
@@ -202,6 +203,11 @@ const GdprRoute = GdprRouteImport.update({
 const GroupageRoute = GroupageRouteImport.update({
   id: '/groupage',
   path: '/groupage',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GroupageTariffsRoute = GroupageTariffsRouteImport.update({
+  id: '/groupage-tariffs',
+  path: '/groupage-tariffs',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HealthRoute = HealthRouteImport.update({
@@ -393,6 +399,7 @@ export interface FileRoutesByFullPath {
   '/fx-differences': typeof FxDifferencesRoute
   '/gdpr': typeof GdprRoute
   '/groupage': typeof GroupageRoute
+  '/groupage-tariffs': typeof GroupageTariffsRoute
   '/health': typeof HealthRoute
   '/invoices': typeof InvoicesRoute
   '/lcl': typeof LclRoute
@@ -454,6 +461,7 @@ export interface FileRoutesByTo {
   '/fx-differences': typeof FxDifferencesRoute
   '/gdpr': typeof GdprRoute
   '/groupage': typeof GroupageRoute
+  '/groupage-tariffs': typeof GroupageTariffsRoute
   '/health': typeof HealthRoute
   '/invoices': typeof InvoicesRoute
   '/lcl': typeof LclRoute
@@ -516,6 +524,7 @@ export interface FileRoutesById {
   '/fx-differences': typeof FxDifferencesRoute
   '/gdpr': typeof GdprRoute
   '/groupage': typeof GroupageRoute
+  '/groupage-tariffs': typeof GroupageTariffsRoute
   '/health': typeof HealthRoute
   '/invoices': typeof InvoicesRoute
   '/lcl': typeof LclRoute
@@ -579,6 +588,7 @@ export interface FileRouteTypes {
     | '/fx-differences'
     | '/gdpr'
     | '/groupage'
+    | '/groupage-tariffs'
     | '/health'
     | '/invoices'
     | '/lcl'
@@ -640,6 +650,7 @@ export interface FileRouteTypes {
     | '/fx-differences'
     | '/gdpr'
     | '/groupage'
+    | '/groupage-tariffs'
     | '/health'
     | '/invoices'
     | '/lcl'
@@ -701,6 +712,7 @@ export interface FileRouteTypes {
     | '/fx-differences'
     | '/gdpr'
     | '/groupage'
+    | '/groupage-tariffs'
     | '/health'
     | '/invoices'
     | '/lcl'
@@ -763,6 +775,7 @@ export interface RootRouteChildren {
   FxDifferencesRoute: typeof FxDifferencesRoute
   GdprRoute: typeof GdprRoute
   GroupageRoute: typeof GroupageRoute
+  GroupageTariffsRoute: typeof GroupageTariffsRoute
   HealthRoute: typeof HealthRoute
   InvoicesRoute: typeof InvoicesRoute
   LclRoute: typeof LclRoute
@@ -986,6 +999,13 @@ declare module '@tanstack/react-router' {
       path: '/groupage'
       fullPath: '/groupage'
       preLoaderRoute: typeof GroupageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/groupage-tariffs': {
+      id: '/groupage-tariffs'
+      path: '/groupage-tariffs'
+      fullPath: '/groupage-tariffs'
+      preLoaderRoute: typeof GroupageTariffsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/health': {
@@ -1243,6 +1263,7 @@ const rootRouteChildren: RootRouteChildren = {
   FxDifferencesRoute: FxDifferencesRoute,
   GdprRoute: GdprRoute,
   GroupageRoute: GroupageRoute,
+  GroupageTariffsRoute: GroupageTariffsRoute,
   HealthRoute: HealthRoute,
   InvoicesRoute: InvoicesRoute,
   LclRoute: LclRoute,

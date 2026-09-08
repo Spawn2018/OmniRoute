@@ -30,6 +30,7 @@ from app.api import (
     fx_differences,
     gdpr_requests,
     groupage_lines,
+    groupage_tariffs,
     inbound_messages,
     incoterm_responsibilities,
     locations,
@@ -121,6 +122,7 @@ api_router.include_router(bookkeeping.router)
 api_router.include_router(collective_invoices.router)
 api_router.include_router(gdpr_requests.router)
 api_router.include_router(groupage_lines.router)
+api_router.include_router(groupage_tariffs.router)
 api_router.include_router(shipment_legs.router)
 api_router.include_router(organization_calendars.router)
 api_router.include_router(organization_settings.router)

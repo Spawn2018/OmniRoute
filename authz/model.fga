@@ -50,3 +50,4 @@ type organization
     define can_manage_shipment_packages: member
     define can_manage_dock_appointments: member
     define can_manage_cod_instructions: member
+    define can_manage_groupage_tariffs: member

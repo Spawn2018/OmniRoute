@@ -508,3 +508,7 @@ class InvalidDockAppointment(DomainError):
 
 class InvalidCodInstruction(DomainError):
     """Znacznik pobrania COD na zleceniu — nie kwota, nie Fala F."""
+
+
+class InvalidGroupageTariff(DomainError):
+    """Cennik drobnicy: próg wagi na strefie — nie silnik P1."""

@@ -2104,6 +2104,74 @@ export type GroupageLineResponse = {
 };
 
 /**
+ * GroupageTariffCreate
+ */
+export type GroupageTariffCreate = {
+    /**
+     * Location Id
+     */
+    location_id: string;
+    /**
+     * Tariff Code
+     */
+    tariff_code: string;
+    /**
+     * Chargeable Weight
+     */
+    chargeable_weight: string;
+    /**
+     * Amount
+     */
+    amount: string;
+    /**
+     * Currency
+     */
+    currency: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * GroupageTariffResponse
+ */
+export type GroupageTariffResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Location Id
+     */
+    location_id: string;
+    /**
+     * Tariff Code
+     */
+    tariff_code: string;
+    /**
+     * Chargeable Weight
+     */
+    chargeable_weight: string;
+    /**
+     * Amount
+     */
+    amount: string;
+    /**
+     * Currency
+     */
+    currency: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * HTTPValidationError
  */
 export type HttpValidationError = {
@@ -8325,6 +8393,49 @@ export type CreateGroupageLineApiV1GroupageLinesPostResponses = {
 };
 
 export type CreateGroupageLineApiV1GroupageLinesPostResponse = CreateGroupageLineApiV1GroupageLinesPostResponses[keyof CreateGroupageLineApiV1GroupageLinesPostResponses];
+
+export type ListGroupageTariffsApiV1GroupageTariffsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/groupage-tariffs';
+};
+
+export type ListGroupageTariffsApiV1GroupageTariffsGetResponses = {
+    /**
+     * Response List Groupage Tariffs Api V1 Groupage Tariffs Get
+     *
+     * Successful Response
+     */
+    200: Array<GroupageTariffResponse>;
+};
+
+export type ListGroupageTariffsApiV1GroupageTariffsGetResponse = ListGroupageTariffsApiV1GroupageTariffsGetResponses[keyof ListGroupageTariffsApiV1GroupageTariffsGetResponses];
+
+export type CreateGroupageTariffApiV1GroupageTariffsPostData = {
+    body: GroupageTariffCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/groupage-tariffs';
+};
+
+export type CreateGroupageTariffApiV1GroupageTariffsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateGroupageTariffApiV1GroupageTariffsPostError = CreateGroupageTariffApiV1GroupageTariffsPostErrors[keyof CreateGroupageTariffApiV1GroupageTariffsPostErrors];
+
+export type CreateGroupageTariffApiV1GroupageTariffsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: GroupageTariffResponse;
+};
+
+export type CreateGroupageTariffApiV1GroupageTariffsPostResponse = CreateGroupageTariffApiV1GroupageTariffsPostResponses[keyof CreateGroupageTariffApiV1GroupageTariffsPostResponses];
 
 export type ListShipmentLegsApiV1ShipmentLegsGetData = {
     body?: never;

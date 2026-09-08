@@ -89,6 +89,11 @@ export const OPS_JOBS = [
     job: "katalog groupage_line cutoff i ISODOW",
   },
   {
+    route: BUSINESS_LISTS.groupageTariff.route,
+    label: "Cennik drobnicy",
+    job: "próg groupage_tariff na strefie bez silnika",
+  },
+  {
     route: BUSINESS_LISTS.shipmentPackage.route,
     label: "Paczki",
     job: "skan shipment_package QR Omni i stop",
@@ -443,6 +448,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "156.0": "/shipment-packages",
   "157.0": "/dock-appointments",
   "158.0": "/cod",
+  "159.0": "/groupage-tariffs",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

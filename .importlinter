@@ -72,6 +72,7 @@ modules =
     app.services.shipment_packages
     app.services.dock_appointments
     app.services.cod_instructions
+    app.services.groupage_tariffs
 
 [importlinter:contract:integracje]
 name = Integracje nie znają serwisów
@@ -251,3 +252,6 @@ forbidden_modules =
     app.services.cod_instructions
     app.repositories.cod_instructions
     app.models.cod_instruction
+    app.services.groupage_tariffs
+    app.repositories.groupage_tariffs
+    app.models.groupage_tariff

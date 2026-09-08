@@ -20,6 +20,7 @@ const NAV = [
   { to: "/lcl", label: "Drobnica morska" },
   { to: "/air", label: "Lotniczy" },
   { to: "/groupage", label: "Linie drobnicy" },
+  { to: "/groupage-tariffs", label: "Cennik drobnicy" },
   { to: "/shipment-packages", label: "Paczki" },
   { to: "/dock-appointments", label: "Awizacje doku" },
   { to: "/cod", label: "Pobranie COD" },

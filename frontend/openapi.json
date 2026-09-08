@@ -5960,6 +5960,80 @@
         ]
       }
     },
+    "/api/v1/groupage-tariffs": {
+      "get": {
+        "tags": [
+          "groupage-tariffs"
+        ],
+        "summary": "List Groupage Tariffs",
+        "operationId": "list_groupage_tariffs_api_v1_groupage_tariffs_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/GroupageTariffResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Groupage Tariffs Api V1 Groupage Tariffs Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "groupage-tariffs"
+        ],
+        "summary": "Create Groupage Tariff",
+        "operationId": "create_groupage_tariff_api_v1_groupage_tariffs_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GroupageTariffCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupageTariffResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/shipment-legs": {
       "get": {
         "tags": [
@@ -12008,6 +12082,97 @@
           "superseded_by"
         ],
         "title": "GroupageLineResponse"
+      },
+      "GroupageTariffCreate": {
+        "properties": {
+          "location_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Location Id"
+          },
+          "tariff_code": {
+            "type": "string",
+            "title": "Tariff Code"
+          },
+          "chargeable_weight": {
+            "type": "string",
+            "title": "Chargeable Weight"
+          },
+          "amount": {
+            "type": "string",
+            "title": "Amount"
+          },
+          "currency": {
+            "type": "string",
+            "title": "Currency"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "location_id",
+          "tariff_code",
+          "chargeable_weight",
+          "amount",
+          "currency",
+          "source_ref"
+        ],
+        "title": "GroupageTariffCreate"
+      },
+      "GroupageTariffResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "location_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Location Id"
+          },
+          "tariff_code": {
+            "type": "string",
+            "title": "Tariff Code"
+          },
+          "chargeable_weight": {
+            "type": "string",
+            "title": "Chargeable Weight"
+          },
+          "amount": {
+            "type": "string",
+            "title": "Amount"
+          },
+          "currency": {
+            "type": "string",
+            "title": "Currency"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "location_id",
+          "tariff_code",
+          "chargeable_weight",
+          "amount",
+          "currency",
+          "source_ref"
+        ],
+        "title": "GroupageTariffResponse"
       },
       "HTTPValidationError": {
         "properties": {
