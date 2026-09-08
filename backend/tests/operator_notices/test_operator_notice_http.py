@@ -7,6 +7,10 @@ from fastapi.testclient import TestClient
 
 from app.api.deps import require_tenant_session, set_authz_checker
 from app.domain.errors import ResourceNotFound
+from app.domain.operator_notice import (
+    operator_notice_manual_kind,
+    require_notice_kind,
+)
 from app.main import app
 from app.models.operator_notice import OperatorNotice
 from tests.http_auth import bearer_auth_headers
@@ -45,11 +49,15 @@ class StubOperatorNoticeService:
         user_id: UUID,
         body: str,
         source_ref: str,
+        kind: object = None,
     ) -> OperatorNotice:
+        token = (
+            operator_notice_manual_kind() if kind is None else require_notice_kind(kind)
+        )
         row = OperatorNotice(
             id=uuid4(),
             organization_id=organization_id,
-            kind="manual",
+            kind=token,
             body=body,
             status="unread",
             source_ref=source_ref,
@@ -114,6 +122,32 @@ def test_http_create_list_and_read_operator_notice(catalog_client: object) -> No
     again = client.post(f"/api/v1/operator-notices/{body['id']}/read", headers=headers)
     assert again.status_code == 200
     assert again.json()["status"] == "read"
+
+
+def test_http_creates_no_reply_notice_unread(catalog_client: object) -> None:
+    client, _notices = catalog_client
+    created = client.post(
+        "/api/v1/operator-notices",
+        headers=bearer_auth_headers(),
+        json={
+            "body": "cisza agenta",
+            "source_ref": "tenant:manual:inquiry:1",
+            "kind": "no_reply",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["kind"] == "no_reply"
+    assert created.json()["status"] == "unread"
+    rejected = client.post(
+        "/api/v1/operator-notices",
+        headers=bearer_auth_headers(),
+        json={
+            "body": "filtr wycen",
+            "source_ref": "tenant:manual:quote",
+            "kind": "offer_acceptance",
+        },
+    )
+    assert rejected.status_code == 400
 
 
 def test_http_unknown_notice_is_404(catalog_client: object) -> None:

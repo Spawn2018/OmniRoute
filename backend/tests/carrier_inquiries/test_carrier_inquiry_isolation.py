@@ -1,3 +1,4 @@
+from datetime import date, timedelta
 from decimal import Decimal
 from uuid import uuid4
 
@@ -177,3 +178,26 @@ async def test_carrier_inquiry_ranking_orders_answered_then_zero(session, two_te
     ranks = await CarrierInquiryService(session).list_member_ranks()
     assert [row.network_member_id for row in ranks] == [high.id, mid.id, zero.id]
     assert [row.answered_count for row in ranks] == [2, 1, 0]
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_carrier_inquiry_overdue_is_sql_current_date(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    user_a = two_tenants["user_a"]
+    net_a = _network(organization_id=org_a.id, user_id=user_a.id, suffix="d")
+    member_a = _member(organization_id=org_a.id, user_id=user_a.id, network=net_a, suffix="d")
+    past = _inquiry(organization_id=org_a.id, user_id=user_a.id, member=member_a)
+    past.no_reply_after = date.today() - timedelta(days=1)
+    blank = _inquiry(organization_id=org_a.id, user_id=user_a.id, member=member_a)
+
+    await bind_tenant(session, org_a.id)
+    session.add(net_a)
+    await session.flush()
+    session.add(member_a)
+    await session.flush()
+    session.add_all([past, blank])
+    await session.flush()
+
+    rows = await CarrierInquiryService(session).list_inquiries(silent="overdue")
+    assert [row.id for row in rows] == [past.id]

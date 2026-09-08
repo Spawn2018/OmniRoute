@@ -9,6 +9,7 @@ from app.domain.operator_notice import (
     operator_notice_manual_kind,
     operator_notice_unread_status,
     require_notice_body,
+    require_notice_kind,
     require_notice_source_ref,
 )
 from app.models.operator_notice import OperatorNotice
@@ -37,11 +38,15 @@ class OperatorNoticeService:
         user_id: UUID,
         body: str,
         source_ref: str,
+        kind: object = None,
     ) -> OperatorNotice:
+        token = (
+            operator_notice_manual_kind() if kind is None else require_notice_kind(kind)
+        )
         row = OperatorNotice(
             id=uuid4(),
             organization_id=organization_id,
-            kind=operator_notice_manual_kind(),
+            kind=token,
             body=require_notice_body(body),
             status=operator_notice_unread_status(),
             source_ref=require_notice_source_ref(source_ref),

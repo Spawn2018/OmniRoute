@@ -1,3 +1,4 @@
+from datetime import date
 from decimal import Decimal
 from typing import NamedTuple
 from uuid import UUID
@@ -48,6 +49,35 @@ def require_inquiry_port_id(raw: object, *, field: str) -> UUID | None:
     if type(raw) is not UUID:
         raise InvalidCarrierInquiry(f"{field} musi być UUID")
     return raw
+
+
+def require_no_reply_after(raw: object) -> date | None:
+    if raw is None:
+        return None
+    if type(raw) is date:
+        return raw
+    if type(raw) is not str:
+        raise InvalidCarrierInquiry("no_reply_after: data kalendarzowa")
+    token = raw.strip()
+    if token == "":
+        return None
+    try:
+        return date.fromisoformat(token)
+    except ValueError as exc:
+        raise InvalidCarrierInquiry("no_reply_after: data kalendarzowa") from exc
+
+
+def require_silent_filter(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidCarrierInquiry("silent: overdue albo pusto")
+    token = raw.strip()
+    if token == "":
+        return None
+    if token != "overdue":
+        raise InvalidCarrierInquiry("silent: overdue albo pusto")
+    return token
 
 
 def require_member_batch(raw: object) -> list[UUID]:

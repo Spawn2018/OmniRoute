@@ -1,9 +1,11 @@
 import uuid
+from datetime import date
 from decimal import Decimal
 
 from sqlalchemy import (
     CHAR,
     CheckConstraint,
+    Date,
     ForeignKey,
     ForeignKeyConstraint,
     Index,
@@ -72,3 +74,4 @@ class CarrierInquiry(Base, TimestampMixin):
     quoted_amount: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
     quoted_currency: Mapped[str | None] = mapped_column(CHAR(3), nullable=True)
     quoted_transit_days: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    no_reply_after: Mapped[date | None] = mapped_column(Date, nullable=True)

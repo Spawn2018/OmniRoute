@@ -11,7 +11,7 @@ from app.models.base import Base, TimestampMixin
 class OperatorNotice(Base, TimestampMixin):
     __tablename__ = "operator_notice"
     __table_args__ = (
-        CheckConstraint("kind = 'manual'", name="ck_operator_notice_kind"),
+        CheckConstraint("kind IN ('manual','no_reply')", name="ck_operator_notice_kind"),
         CheckConstraint("status IN ('unread', 'read')", name="ck_operator_notice_status"),
         CheckConstraint(
             "(status = 'unread' AND read_at IS NULL) OR "

@@ -1,7 +1,8 @@
+from datetime import date
 from decimal import Decimal
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, status
+from fastapi import APIRouter, Depends, Query, status
 from pydantic import BaseModel, ConfigDict
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -26,6 +27,7 @@ class CarrierInquiryCreate(BaseModel):
     quoted_amount: str | None = None
     quoted_currency: str | None = None
     quoted_transit_days: int | None = None
+    no_reply_after: date | None = None
 
 
 class CarrierInquiryBatchCreate(BaseModel):
@@ -38,6 +40,13 @@ class CarrierInquiryBatchCreate(BaseModel):
     quoted_amount: str | None = None
     quoted_currency: str | None = None
     quoted_transit_days: int | None = None
+    no_reply_after: date | None = None
+
+
+class CarrierInquiryDatePatch(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    no_reply_after: date | None = None
 
 
 class InquiryMemberRankResponse(BaseModel):
@@ -65,6 +74,7 @@ class CarrierInquiryResponse(BaseModel):
     quoted_amount: str | None
     quoted_currency: str | None
     quoted_transit_days: int | None
+    no_reply_after: date | None
 
     @classmethod
     def from_row(cls, row: CarrierInquiry) -> "CarrierInquiryResponse":
@@ -80,15 +90,17 @@ class CarrierInquiryResponse(BaseModel):
             quoted_amount=format(money, "f") if isinstance(money, Decimal) else None,
             quoted_currency=row.quoted_currency,
             quoted_transit_days=row.quoted_transit_days,
+            no_reply_after=row.no_reply_after,
         )
 
 
 @router.get("", response_model=list[CarrierInquiryResponse])
 async def list_carrier_inquiries(
+    silent: str | None = Query(default=None),
     _authz: None = Depends(_AUTHZ),
     session: AsyncSession = Depends(require_tenant_session),
 ) -> list[CarrierInquiryResponse]:
-    rows = await CarrierInquiryService(session).list_inquiries()
+    rows = await CarrierInquiryService(session).list_inquiries(silent=silent)
     return [CarrierInquiryResponse.from_row(row) for row in rows]
 
 
@@ -118,6 +130,22 @@ async def create_carrier_inquiry(
         quoted_amount=body.quoted_amount,
         quoted_currency=body.quoted_currency,
         quoted_transit_days=body.quoted_transit_days,
+        no_reply_after=body.no_reply_after,
+    )
+    await session.commit()
+    return CarrierInquiryResponse.from_row(row)
+
+
+@router.patch("/{inquiry_id}", response_model=CarrierInquiryResponse)
+async def patch_carrier_inquiry_silence(
+    inquiry_id: UUID,
+    body: CarrierInquiryDatePatch,
+    _authz: None = Depends(_AUTHZ),
+    session: AsyncSession = Depends(require_tenant_session),
+) -> CarrierInquiryResponse:
+    row = await CarrierInquiryService(session).set_no_reply_after(
+        inquiry_id,
+        body.no_reply_after,
     )
     await session.commit()
     return CarrierInquiryResponse.from_row(row)
@@ -144,6 +172,7 @@ async def create_carrier_inquiry_batch(
         quoted_amount=body.quoted_amount,
         quoted_currency=body.quoted_currency,
         quoted_transit_days=body.quoted_transit_days,
+        no_reply_after=body.no_reply_after,
     )
     await session.commit()
     return [CarrierInquiryResponse.from_row(row) for row in rows]

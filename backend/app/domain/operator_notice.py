@@ -4,6 +4,8 @@ from app.domain.rate_line import require_source_ref
 _UNREAD = "unread"
 _READ = "read"
 _MANUAL = "manual"
+_NO_REPLY = "no_reply"
+_KINDS = frozenset({_MANUAL, _NO_REPLY})
 _BODY_MAX = 512
 
 
@@ -15,6 +17,10 @@ def operator_notice_manual_kind() -> str:
     return _MANUAL
 
 
+def operator_notice_no_reply_kind() -> str:
+    return _NO_REPLY
+
+
 def require_notice_source_ref(raw: object) -> str:
     return require_source_ref(raw)
 
@@ -23,8 +29,8 @@ def require_notice_kind(raw: object) -> str:
     if type(raw) is not str:
         raise InvalidOperatorNotice("kind musi być tekstem")
     token = raw.strip()
-    if token != _MANUAL:
-        raise InvalidOperatorNotice("kind: tylko manual")
+    if token not in _KINDS:
+        raise InvalidOperatorNotice("kind spoza allowlisty")
     return token
 
 

@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny (zablokowany):** **143.0** N5 `no_reply_after` (delta [143.0-inquiry-no-reply.md](../deltas/open/143.0-inquiry-no-reply.md) zaakceptowana `/noc`) → U1+U5 → I1–I4 → U4 → T → U3 → D → P → G2.0–G2.23 → F → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
+**Następny (zablokowany):** **U1+U5** carry-forward + `document_checklist_rule` (karta [karty-pol-fala-u.md](../analysis/karty-pol-fala-u.md) § U1 i U5) → I1–I4 → U4 → T → U3 → D → P → G2.0–G2.23 → F → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
 <!-- os-status:end -->
 
 ```mermaid
@@ -505,7 +505,7 @@ Pogłębienie żywych M-07/M-08 (`source_ref`), M-10, M-12, M-13, M-19, M-20, M-
 | **O6** | `extraction_draft.draft_kind=carrier_quote` → HITL → `channel_quote` + `answered` | Plan → plaster | po O2 | ExtractionService nie zapisuje stawek |
 | **O7** | Kraj ISO na liście agentów (`party.country_code` już jest) + filtr | Plan → plaster | z O4 | Holandia na SHA→RTM. Nie druga kolumna kraju |
 | **O8** | Buy-desk: group-by edytowalny (party/kraj/wątek/status) + saved view | Plan → plaster | po O4 | Nie nowy czat. Audyt [incoterms-booking-customs-ux.md](analysis/incoterms-booking-customs-ux.md) |
-| **N5** | Cisza agenta: SLA `no_reply_after` (U4 dni robocze) → notice | Plan → plaster | po O8 | nie auto-send ponaglenia |
+| **N5** | Cisza agenta: SLA `no_reply_after` (U4 dni robocze) → notice | Plan → plaster | zamknięty (`docs/deltas/archived/143.0-inquiry-no-reply.md`) | nie auto-send ponaglenia |
 
 ### Fala U — klej oferty i UI (w osi, nie leftover)
 
@@ -834,13 +834,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

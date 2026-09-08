@@ -1,3 +1,4 @@
+from datetime import date
 from decimal import Decimal
 from uuid import UUID, uuid4
 
@@ -13,8 +14,10 @@ from app.domain.carrier_inquiry import (
     require_inquiry_status,
     require_member_batch,
     require_network_member_id,
+    require_no_reply_after,
+    require_silent_filter,
 )
-from app.domain.errors import UnknownNetworkMember, UnknownPort
+from app.domain.errors import ResourceNotFound, UnknownNetworkMember, UnknownPort
 from app.models.carrier_inquiry import CarrierInquiry
 from app.repositories.carrier_inquiries.carrier_inquiry_repository import (
     CarrierInquiryRepository,
@@ -25,8 +28,21 @@ class CarrierInquiryService:
     def __init__(self, session: AsyncSession) -> None:
         self._inquiries = CarrierInquiryRepository(session)
 
-    async def list_inquiries(self) -> list[CarrierInquiry]:
+    async def list_inquiries(self, silent: object = None) -> list[CarrierInquiry]:
+        if require_silent_filter(silent) == "overdue":
+            return await self._inquiries.list_overdue()
         return await self._inquiries.list_recent()
+
+    async def set_no_reply_after(
+        self,
+        inquiry_id: UUID,
+        no_reply_after: object,
+    ) -> CarrierInquiry:
+        found = await self._inquiries.get(inquiry_id)
+        if found is None:
+            raise ResourceNotFound(f"nieznane zapytanie: {inquiry_id}")
+        found.no_reply_after = require_no_reply_after(no_reply_after)
+        return await self._inquiries.save(found)
 
     async def list_member_ranks(self) -> list[InquiryMemberRank]:
         return await self._inquiries.list_member_ranks()
@@ -43,6 +59,7 @@ class CarrierInquiryService:
         quoted_amount: object = None,
         quoted_currency: object = None,
         quoted_transit_days: object = None,
+        no_reply_after: object = None,
     ) -> CarrierInquiry:
         token = require_inquiry_status(
             carrier_inquiry_draft_status() if status is None else status,
@@ -66,6 +83,7 @@ class CarrierInquiryService:
             quoted_amount=money,
             quoted_currency=iso,
             quoted_transit_days=days,
+            no_reply_after=require_no_reply_after(no_reply_after),
         )
         return await self._insert(row)
 
@@ -81,6 +99,7 @@ class CarrierInquiryService:
         quoted_amount: object = None,
         quoted_currency: object = None,
         quoted_transit_days: object = None,
+        no_reply_after: object = None,
     ) -> list[CarrierInquiry]:
         rows: list[CarrierInquiry] = []
         for member_id in require_member_batch(network_member_ids):
@@ -95,6 +114,7 @@ class CarrierInquiryService:
                     quoted_amount=quoted_amount,
                     quoted_currency=quoted_currency,
                     quoted_transit_days=quoted_transit_days,
+                    no_reply_after=no_reply_after,
                 ),
             )
         return rows
@@ -124,6 +144,7 @@ def _new_inquiry(
     quoted_amount: Decimal | None,
     quoted_currency: str | None,
     quoted_transit_days: int | None,
+    no_reply_after: date | None,
 ) -> CarrierInquiry:
     return CarrierInquiry(
         id=uuid4(),
@@ -136,5 +157,6 @@ def _new_inquiry(
         quoted_amount=quoted_amount,
         quoted_currency=quoted_currency,
         quoted_transit_days=quoted_transit_days,
+        no_reply_after=no_reply_after,
         created_by=user_id,
     )

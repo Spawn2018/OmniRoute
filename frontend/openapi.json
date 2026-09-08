@@ -1143,27 +1143,55 @@
         ],
         "summary": "List Carrier Inquiries",
         "operationId": "list_carrier_inquiries_api_v1_carrier_inquiries_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "silent",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Silent"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful Response",
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/CarrierInquiryResponse"
                   },
-                  "type": "array",
                   "title": "Response List Carrier Inquiries Api V1 Carrier Inquiries Get"
                 }
               }
             }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
           }
-        },
-        "security": [
-          {
-            "HTTPBearer": []
-          }
-        ]
+        }
       },
       "post": {
         "tags": [
@@ -1171,15 +1199,20 @@
         ],
         "summary": "Create Carrier Inquiry",
         "operationId": "create_carrier_inquiry_api_v1_carrier_inquiries_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/CarrierInquiryCreate"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "201": {
@@ -1202,12 +1235,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "HTTPBearer": []
-          }
-        ]
+        }
       }
     },
     "/api/v1/carrier-inquiries/ranking": {
@@ -1238,6 +1266,64 @@
             "HTTPBearer": []
           }
         ]
+      }
+    },
+    "/api/v1/carrier-inquiries/{inquiry_id}": {
+      "patch": {
+        "tags": [
+          "carrier-inquiries"
+        ],
+        "summary": "Patch Carrier Inquiry Silence",
+        "operationId": "patch_carrier_inquiry_silence_api_v1_carrier_inquiries__inquiry_id__patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "inquiry_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Inquiry Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CarrierInquiryDatePatch"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarrierInquiryResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/api/v1/carrier-inquiries/batch": {
@@ -7384,6 +7470,18 @@
               }
             ],
             "title": "Quoted Transit Days"
+          },
+          "no_reply_after": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "No Reply After"
           }
         },
         "additionalProperties": false,
@@ -7467,6 +7565,18 @@
               }
             ],
             "title": "Quoted Transit Days"
+          },
+          "no_reply_after": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "No Reply After"
           }
         },
         "additionalProperties": false,
@@ -7475,6 +7585,25 @@
           "network_member_id"
         ],
         "title": "CarrierInquiryCreate"
+      },
+      "CarrierInquiryDatePatch": {
+        "properties": {
+          "no_reply_after": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "No Reply After"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "CarrierInquiryDatePatch"
       },
       "CarrierInquiryResponse": {
         "properties": {
@@ -7557,6 +7686,18 @@
               }
             ],
             "title": "Quoted Transit Days"
+          },
+          "no_reply_after": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "No Reply After"
           }
         },
         "type": "object",
@@ -7570,7 +7711,8 @@
           "destination_port_id",
           "quoted_amount",
           "quoted_currency",
-          "quoted_transit_days"
+          "quoted_transit_days",
+          "no_reply_after"
         ],
         "title": "CarrierInquiryResponse"
       },
@@ -10892,6 +11034,17 @@
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
+          },
+          "kind": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Kind"
           }
         },
         "additionalProperties": false,

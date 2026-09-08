@@ -8,6 +8,7 @@ import {
   topRankedMemberIds,
 } from "@/lib/carrier-inquiries-api"
 import { mailDraftBatchBody } from "@/lib/mail-drafts-api"
+import { noReplyNoticeCreateBody } from "@/lib/operator-notices-api"
 import { inquiryDefaultN } from "@/lib/organization-settings-api"
 import { membersForCountry, networkCreateBody, partyCountryMap } from "@/lib/networks-api"
 
@@ -64,6 +65,10 @@ describe("networks catalog surface for 9.0", () => {
     expect(page).toContain('data-carrier-inquiry="batch"')
     expect(page).toContain('data-mail-draft="batch"')
     expect(page).toContain('data-network-member="country-filter"')
+    expect(page).toContain('data-carrier-inquiry="silence"')
+    expect(page).toContain('data-carrier-inquiry="overdue"')
+    expect(page).toContain("noReplyNoticeCreateBody")
+    expect(page).toContain("patchInquirySilence")
     expect(page).toContain("membersForCountry")
     expect(page).toContain("fetchParties")
     expect(page).not.toContain("cheerio")
@@ -114,6 +119,7 @@ describe("O4 ranking and draft batch helpers", () => {
             quoted_amount: "10.0000",
             quoted_currency: "USD",
             quoted_transit_days: null,
+            no_reply_after: null,
           },
           {
             id: "i2",
@@ -126,6 +132,7 @@ describe("O4 ranking and draft batch helpers", () => {
             quoted_amount: null,
             quoted_currency: null,
             quoted_transit_days: null,
+            no_reply_after: null,
           },
         ],
         ["a"],
@@ -168,5 +175,15 @@ describe("O7 country filter helpers", () => {
     ]
     expect(membersForCountry(members, mapped, "nl").map((row) => row.id)).toEqual(["m1"])
     expect(membersForCountry(members, mapped, "").map((row) => row.id)).toEqual(["m1", "m2", "m3"])
+  })
+})
+
+describe("N5 no_reply notice helper", () => {
+  it("builds a no_reply notice from inquiry id", () => {
+    expect(noReplyNoticeCreateBody("  i1  ")).toEqual({
+      body: "brak odpowiedzi: i1",
+      source_ref: "tenant:manual:inquiry:i1",
+      kind: "no_reply",
+    })
   })
 })

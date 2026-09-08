@@ -19,6 +19,7 @@ class OperatorNoticeCreate(BaseModel):
 
     body: str
     source_ref: str
+    kind: str | None = None
 
 
 class OperatorNoticeResponse(BaseModel):
@@ -54,6 +55,7 @@ async def create_operator_notice(
         user_id=identity.user_id,
         body=body.body,
         source_ref=body.source_ref,
+        kind=body.kind,
     )
     await session.commit()
     return OperatorNoticeResponse.model_validate(row)

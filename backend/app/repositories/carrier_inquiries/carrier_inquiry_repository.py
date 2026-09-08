@@ -1,3 +1,5 @@
+from uuid import UUID
+
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -18,6 +20,23 @@ class CarrierInquiryRepository:
         )
         return list(rows.all())
 
+    async def list_overdue(self) -> list[CarrierInquiry]:
+        rows = await self._session.scalars(
+            select(CarrierInquiry)
+            .where(CarrierInquiry.no_reply_after < func.current_date())
+            .order_by(
+                CarrierInquiry.no_reply_after.asc(),
+                CarrierInquiry.id,
+            ),
+        )
+        return list(rows.all())
+
+    async def get(self, inquiry_id: UUID) -> CarrierInquiry | None:
+        found = await self._session.scalar(
+            select(CarrierInquiry).where(CarrierInquiry.id == inquiry_id),
+        )
+        return found if isinstance(found, CarrierInquiry) else None
+
     async def list_member_ranks(self) -> list[InquiryMemberRank]:
         answered = func.count().filter(CarrierInquiry.status == "answered")
         rows = await self._session.execute(
@@ -35,5 +54,9 @@ class CarrierInquiryRepository:
 
     async def add(self, row: CarrierInquiry) -> CarrierInquiry:
         self._session.add(row)
+        await self._session.flush()
+        return row
+
+    async def save(self, row: CarrierInquiry) -> CarrierInquiry:
         await self._session.flush()
         return row

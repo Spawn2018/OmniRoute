@@ -14,6 +14,7 @@ export type StoredOperatorNotice = {
 export type NoticeDraft = {
   body: string
   sourceRef: string
+  kind?: string
 }
 
 export const EMPTY_NOTICE_DRAFT: NoticeDraft = {
@@ -24,10 +25,29 @@ export const EMPTY_NOTICE_DRAFT: NoticeDraft = {
 export function operatorNoticeCreateBody(draft: NoticeDraft): {
   body: string
   source_ref: string
+  kind?: string
 } {
-  return {
+  const payload: { body: string; source_ref: string; kind?: string } = {
     body: draft.body.trim(),
     source_ref: draft.sourceRef.trim(),
+  }
+  const kind = draft.kind?.trim()
+  if (kind !== undefined && kind !== "") {
+    payload.kind = kind
+  }
+  return payload
+}
+
+export function noReplyNoticeCreateBody(inquiryId: string): {
+  body: string
+  source_ref: string
+  kind: "no_reply"
+} {
+  const token = inquiryId.trim()
+  return {
+    body: `brak odpowiedzi: ${token}`,
+    source_ref: `tenant:manual:inquiry:${token}`,
+    kind: "no_reply",
   }
 }
 

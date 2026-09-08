@@ -31,6 +31,11 @@ def test_inquiry_service_stays_inside_own_bc() -> None:
     assert "requests" not in source
     assert "scrap" not in source
     assert "rate_line" not in source
+    assert "app.services.operator_notices" not in source
+    assert "weekday" not in source
+    assert "083_inquiry_no_reply" in (
+        _ROOT / "backend" / "alembic" / "versions" / "083_inquiry_no_reply.py"
+    ).read_text(encoding="utf-8")
     assert "078_carrier_inquiry_batch" in (
         _ROOT / "backend" / "alembic" / "versions" / "078_carrier_inquiry_batch.py"
     ).read_text(encoding="utf-8")

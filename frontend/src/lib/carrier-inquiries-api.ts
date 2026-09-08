@@ -17,6 +17,7 @@ export type CarrierInquiry = {
   quoted_amount: string | null
   quoted_currency: string | null
   quoted_transit_days: number | null
+  no_reply_after: string | null
 }
 
 export function carrierInquiryBatchBody(input: {
@@ -85,8 +86,9 @@ export async function fetchCarrierInquiryRanking(): Promise<InquiryMemberRank[]>
   return (await response.json()) as InquiryMemberRank[]
 }
 
-export async function fetchCarrierInquiries(): Promise<CarrierInquiry[]> {
-  const response = await fetch("/api/v1/carrier-inquiries", {
+export async function fetchCarrierInquiries(silent?: "overdue"): Promise<CarrierInquiry[]> {
+  const suffix = silent === "overdue" ? "?silent=overdue" : ""
+  const response = await fetch(`/api/v1/carrier-inquiries${suffix}`, {
     headers: requireAuthHeaders(),
   })
   if (!response.ok) {
@@ -98,13 +100,36 @@ export async function fetchCarrierInquiries(): Promise<CarrierInquiry[]> {
   return (await response.json()) as CarrierInquiry[]
 }
 
-export async function createCarrierInquiry(networkMemberId: string): Promise<CarrierInquiry> {
+export async function createCarrierInquiry(
+  networkMemberId: string,
+  noReplyAfter = "",
+): Promise<CarrierInquiry> {
+  const body: { network_member_id: string; no_reply_after?: string } = {
+    network_member_id: networkMemberId,
+  }
+  const silence = noReplyAfter.trim()
+  if (silence !== "") {
+    body.no_reply_after = silence
+  }
   const response = await fetch("/api/v1/carrier-inquiries", {
     method: "POST",
     headers: { ...requireAuthHeaders(), "Content-Type": "application/json" },
-    body: JSON.stringify({ network_member_id: networkMemberId }),
+    body: JSON.stringify(body),
   })
   return readInquiry(response, "Błąd zapisu zapytania do agenta")
+}
+
+export async function patchInquirySilence(
+  inquiryId: string,
+  noReplyAfter: string,
+): Promise<CarrierInquiry> {
+  const token = noReplyAfter.trim()
+  const response = await fetch(`/api/v1/carrier-inquiries/${inquiryId}`, {
+    method: "PATCH",
+    headers: { ...requireAuthHeaders(), "Content-Type": "application/json" },
+    body: JSON.stringify({ no_reply_after: token === "" ? null : token }),
+  })
+  return readInquiry(response, "Błąd daty ciszy")
 }
 
 export async function createCarrierInquiryBatch(

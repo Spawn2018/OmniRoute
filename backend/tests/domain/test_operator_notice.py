@@ -4,6 +4,7 @@ from app.domain.errors import InvalidOperatorNotice, InvalidSourceRef
 from app.domain.operator_notice import (
     notice_after_read,
     operator_notice_manual_kind,
+    operator_notice_no_reply_kind,
     operator_notice_unread_status,
     require_notice_body,
     require_notice_kind,
@@ -14,11 +15,13 @@ from app.domain.operator_notice import (
 def test_unread_and_manual_constants() -> None:
     assert operator_notice_unread_status() == "unread"
     assert operator_notice_manual_kind() == "manual"
+    assert operator_notice_no_reply_kind() == "no_reply"
 
 
 def test_require_notice_kind_rejects_quote_filter() -> None:
-    with pytest.raises(InvalidOperatorNotice, match="manual"):
+    with pytest.raises(InvalidOperatorNotice, match="allowlisty"):
         require_notice_kind("offer_acceptance")
+    assert require_notice_kind("no_reply") == "no_reply"
 
 
 def test_require_notice_body_rejects_blank() -> None:

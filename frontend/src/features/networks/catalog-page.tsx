@@ -11,8 +11,10 @@ import {
   fetchCarrierInquiries,
   fetchCarrierInquiryRanking,
   inquiryIdsForMembers,
+  patchInquirySilence,
   topRankedMemberIds,
 } from "@/lib/carrier-inquiries-api"
+import { createOperatorNotice, noReplyNoticeCreateBody } from "@/lib/operator-notices-api"
 import { createMailDraftBatch, fetchMailDrafts, mailDraftBatchBody } from "@/lib/mail-drafts-api"
 import { fetchOrganizationSettings, inquiryDefaultN } from "@/lib/organization-settings-api"
 import {
@@ -92,6 +94,9 @@ export function NetworkCatalogPage() {
   const [draftInquiryIds, setDraftInquiryIds] = useState<string[]>([])
   const [draftBody, setDraftBody] = useState("prośba o stawkę")
   const [topApplied, setTopApplied] = useState(false)
+  const [askedSilence, setAskedSilence] = useState("")
+  const [silenceInquiryId, setSilenceInquiryId] = useState("")
+  const [silenceDate, setSilenceDate] = useState("")
   const sessionReady = Boolean(ctx.organizationId && ctx.userId)
 
   const query = useQuery({
@@ -130,7 +135,13 @@ export function NetworkCatalogPage() {
   const visibleMembers = membersForCountry(members.data ?? [], countryByPartyId, countryFilter)
   const inquiries = useQuery({
     queryKey: ["carrier-inquiries", ctx.organizationId],
-    queryFn: fetchCarrierInquiries,
+    queryFn: () => fetchCarrierInquiries(),
+    enabled: sessionReady,
+    retry: false,
+  })
+  const overdue = useQuery({
+    queryKey: ["carrier-inquiries-overdue", ctx.organizationId],
+    queryFn: () => fetchCarrierInquiries("overdue"),
     enabled: sessionReady,
     retry: false,
   })
@@ -154,13 +165,33 @@ export function NetworkCatalogPage() {
   })
   const defaultN = inquiryDefaultN(settings.data ?? [])
   const askMember = useMutation({
-    mutationFn: () => createCarrierInquiry(askedMemberId),
+    mutationFn: () => createCarrierInquiry(askedMemberId, askedSilence),
     onSuccess: () => {
       setAskedMemberId("")
+      setAskedSilence("")
       void queryClient.invalidateQueries({
         queryKey: ["carrier-inquiries", ctx.organizationId],
       })
+      void queryClient.invalidateQueries({
+        queryKey: ["carrier-inquiries-overdue", ctx.organizationId],
+      })
     },
+  })
+  const saveSilence = useMutation({
+    mutationFn: () => patchInquirySilence(silenceInquiryId, silenceDate),
+    onSuccess: () => {
+      setSilenceInquiryId("")
+      setSilenceDate("")
+      void queryClient.invalidateQueries({
+        queryKey: ["carrier-inquiries", ctx.organizationId],
+      })
+      void queryClient.invalidateQueries({
+        queryKey: ["carrier-inquiries-overdue", ctx.organizationId],
+      })
+    },
+  })
+  const saveNoReply = useMutation({
+    mutationFn: (inquiryId: string) => createOperatorNotice(noReplyNoticeCreateBody(inquiryId)),
   })
   const askBatch = useMutation({
     mutationFn: () =>
@@ -389,6 +420,12 @@ export function NetworkCatalogPage() {
               </option>
             ))}
           </select>
+          <Input
+            aria-label="Data ciszy zapytania"
+            type="date"
+            value={askedSilence}
+            onChange={(event) => setAskedSilence(event.target.value)}
+          />
           <Button type="submit" disabled={askMember.isPending || !sessionReady || askedMemberId === ""}>
             Zapisz zapytanie
           </Button>
@@ -503,6 +540,57 @@ export function NetworkCatalogPage() {
           </Button>
         </form>
         {saveDrafts.isError ? <CatalogError error={saveDrafts.error} /> : null}
+        <form
+          className="grid gap-2 rounded-md border border-border bg-card p-3"
+          data-carrier-inquiry="silence"
+          onSubmit={(event) => {
+            event.preventDefault()
+            if (sessionReady && silenceInquiryId !== "") saveSilence.mutate()
+          }}
+        >
+          <p className="text-xs text-muted-foreground">
+            Data ciszy (`no_reply_after`). Nie dni robocze. Notice `no_reply` tylko ręcznie.
+          </p>
+          <select
+            aria-label="Zapytanie do daty ciszy"
+            className="h-8 rounded-md border border-border bg-card px-2 text-sm"
+            value={silenceInquiryId}
+            onChange={(event) => setSilenceInquiryId(event.target.value)}
+          >
+            <option value="">Wybierz zapytanie</option>
+            {(inquiries.data ?? []).map((row) => (
+              <option key={row.id} value={row.id}>
+                {row.status} · {row.no_reply_after ?? "bez daty"}
+              </option>
+            ))}
+          </select>
+          <Input
+            aria-label="Nowa data ciszy"
+            type="date"
+            value={silenceDate}
+            onChange={(event) => setSilenceDate(event.target.value)}
+          />
+          <Button type="submit" disabled={saveSilence.isPending || !sessionReady || silenceInquiryId === ""}>
+            Zapisz datę ciszy
+          </Button>
+        </form>
+        {saveSilence.isError ? <CatalogError error={saveSilence.error} /> : null}
+        {overdue.isError ? <CatalogError error={overdue.error} /> : null}
+        <ul className="text-xs" data-carrier-inquiry="overdue">
+          {(overdue.data ?? []).map((row) => (
+            <li key={row.id}>
+              {row.no_reply_after} · {row.network_member_id}
+              <Button
+                type="button"
+                disabled={saveNoReply.isPending || !sessionReady}
+                onClick={() => saveNoReply.mutate(row.id)}
+              >
+                Zapisz notice ciszy
+              </Button>
+            </li>
+          ))}
+        </ul>
+        {saveNoReply.isError ? <CatalogError error={saveNoReply.error} /> : null}
         <ul className="text-xs">
           {(drafts.data ?? [])
             .filter((row) => row.subject_kind === "carrier_inquiry")

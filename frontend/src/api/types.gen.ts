@@ -242,6 +242,10 @@ export type CarrierInquiryBatchCreate = {
      * Quoted Transit Days
      */
     quoted_transit_days?: number | null;
+    /**
+     * No Reply After
+     */
+    no_reply_after?: string | null;
 };
 
 /**
@@ -276,6 +280,20 @@ export type CarrierInquiryCreate = {
      * Quoted Transit Days
      */
     quoted_transit_days?: number | null;
+    /**
+     * No Reply After
+     */
+    no_reply_after?: string | null;
+};
+
+/**
+ * CarrierInquiryDatePatch
+ */
+export type CarrierInquiryDatePatch = {
+    /**
+     * No Reply After
+     */
+    no_reply_after?: string | null;
 };
 
 /**
@@ -322,6 +340,10 @@ export type CarrierInquiryResponse = {
      * Quoted Transit Days
      */
     quoted_transit_days: number | null;
+    /**
+     * No Reply After
+     */
+    no_reply_after: string | null;
 };
 
 /**
@@ -2375,6 +2397,10 @@ export type OperatorNoticeCreate = {
      * Source Ref
      */
     source_ref: string;
+    /**
+     * Kind
+     */
+    kind?: string | null;
 };
 
 /**
@@ -4560,9 +4586,23 @@ export type CreateNetworkMemberApiV1NetworksNetworkIdMembersPostResponse = Creat
 export type ListCarrierInquiriesApiV1CarrierInquiriesGetData = {
     body?: never;
     path?: never;
-    query?: never;
+    query?: {
+        /**
+         * Silent
+         */
+        silent?: string | null;
+    };
     url: '/api/v1/carrier-inquiries';
 };
+
+export type ListCarrierInquiriesApiV1CarrierInquiriesGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ListCarrierInquiriesApiV1CarrierInquiriesGetError = ListCarrierInquiriesApiV1CarrierInquiriesGetErrors[keyof ListCarrierInquiriesApiV1CarrierInquiriesGetErrors];
 
 export type ListCarrierInquiriesApiV1CarrierInquiriesGetResponses = {
     /**
@@ -4617,6 +4657,36 @@ export type ListCarrierInquiryRankingApiV1CarrierInquiriesRankingGetResponses = 
 };
 
 export type ListCarrierInquiryRankingApiV1CarrierInquiriesRankingGetResponse = ListCarrierInquiryRankingApiV1CarrierInquiriesRankingGetResponses[keyof ListCarrierInquiryRankingApiV1CarrierInquiriesRankingGetResponses];
+
+export type PatchCarrierInquirySilenceApiV1CarrierInquiriesInquiryIdPatchData = {
+    body: CarrierInquiryDatePatch;
+    path: {
+        /**
+         * Inquiry Id
+         */
+        inquiry_id: string;
+    };
+    query?: never;
+    url: '/api/v1/carrier-inquiries/{inquiry_id}';
+};
+
+export type PatchCarrierInquirySilenceApiV1CarrierInquiriesInquiryIdPatchErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type PatchCarrierInquirySilenceApiV1CarrierInquiriesInquiryIdPatchError = PatchCarrierInquirySilenceApiV1CarrierInquiriesInquiryIdPatchErrors[keyof PatchCarrierInquirySilenceApiV1CarrierInquiriesInquiryIdPatchErrors];
+
+export type PatchCarrierInquirySilenceApiV1CarrierInquiriesInquiryIdPatchResponses = {
+    /**
+     * Successful Response
+     */
+    200: CarrierInquiryResponse;
+};
+
+export type PatchCarrierInquirySilenceApiV1CarrierInquiriesInquiryIdPatchResponse = PatchCarrierInquirySilenceApiV1CarrierInquiriesInquiryIdPatchResponses[keyof PatchCarrierInquirySilenceApiV1CarrierInquiriesInquiryIdPatchResponses];
 
 export type CreateCarrierInquiryBatchApiV1CarrierInquiriesBatchPostData = {
     body: CarrierInquiryBatchCreate;
