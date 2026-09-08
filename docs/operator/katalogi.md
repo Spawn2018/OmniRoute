@@ -8,7 +8,6 @@ Ekrany, które **zapisują** (INSERT/upsert), nie tablice-odczyty:
 - stawki kupna — niemutowalne, `source_ref`; zmiana = nowy wiersz
 - opłaty — kupno i sprzedaż na jednym wierszu; marża z pary, nie z arkusza. Przy zapisie podajesz pochodzenie (`source_ref`: `tenant:manual`, `fixture://charge/…`). Stare wiersze mogą nie mieć pochodzenia. Porównanie na wycenie zapisuje `tenant:manual:comparison`.
 - kurs NBP, extra portowe, oferty kanału — katalog, nie live HTTP. Na extra portowych „Dopasuj warunek” pokazuje wiersze, których `applies_when` jest dokładnie taki jak wpisałeś. To nie dopisuje opłaty ani marży.
-- kontrahenci `/parties` — nowy zapis wymaga NIP albo VAT UE albo EORI albo DUNS. Klient (`customer`) bez NIP = odmowa. Ten sam token w firmie = konflikt z linkiem do istniejącego wiersza. Stare karty mogą nie mieć numeru.
 - porty, strefy taryfowe, terminale — UN/LOCODE / zakres pocztowy / ISPS
 - sieci `/networks` — katalog sieci oraz ręczny członek (`member_code` + nazwa + `party_id` kontrahenta) w wybranej sieci. Stary członek może nie mieć kontrahenta. „Zapisz zapytanie” dopisuje `carrier_inquiry` do wybranego członka (status `draft`, bez kwoty). Nie portal. Nie live HTTP.
 - ustawienie `default_currency`, `quotation_number_prefix`, `quotation_print_template` — allowlista, nie sekret, nie licznik oferty
