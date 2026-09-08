@@ -52,6 +52,10 @@ window.OR_KERNEL = (function () {
     if (f.type === "textarea") {
       return `<label class="kf"><span>${esc(f.label)}${f.required ? " *" : ""}</span><textarea name="${esc(f.id)}" rows="4"${req}>${esc(val)}</textarea></label>`;
     }
+    if (f.type === "checkbox") {
+      const on = val === "1" || val === "true" || f.checked === true;
+      return `<label class="kf" style="flex-direction:row;align-items:center;gap:var(--s2)"><input name="${esc(f.id)}" type="checkbox"${on ? " checked" : ""}><span>${esc(f.label)}</span></label>`;
+    }
     return `<label class="kf"><span>${esc(f.label)}${f.required ? " *" : ""}</span><input name="${esc(f.id)}" type="${f.type || "text"}" value="${esc(val)}"${req} placeholder="${esc(f.placeholder || "")}"></label>`;
   }
 
@@ -66,7 +70,7 @@ window.OR_KERNEL = (function () {
   function collect(form) {
     const data = {};
     form.querySelectorAll("[name]").forEach((el) => {
-      data[el.name] = el.value.trim();
+      data[el.name] = el.type === "checkbox" ? (el.checked ? "1" : "") : el.value.trim();
     });
     return data;
   }
@@ -190,6 +194,16 @@ window.OR_KERNEL = (function () {
         err.textContent = "Bez source_ref rekord nie wchodzi.";
       }
       return;
+    }
+    if (typeof payload.validate === "function") {
+      const msg = payload.validate(data);
+      if (msg) {
+        if (err) {
+          err.hidden = false;
+          err.textContent = msg;
+        }
+        return;
+      }
     }
     const done = payload.onSave;
     close();

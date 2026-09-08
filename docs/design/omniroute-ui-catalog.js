@@ -10,7 +10,7 @@ window.OR_CATALOG = (function () {
     [7, "Stawki kupna (rate_line)", "rates"],
     [8, "Opłaty (charge)", "charges"],
     [9, "Kody towarowe", "catalog"],
-    [10, "Kontrahenci", "catalog"],
+    [10, "Kontrahenci", "party"],
     [11, "Automatyczne kontakty", "catalog"],
     [12, "Sieci i stowarzyszenia", "catalog"],
     [13, "Karta wyników kontrahenta", "catalog"],

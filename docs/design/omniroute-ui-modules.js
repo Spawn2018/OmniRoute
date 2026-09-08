@@ -36,7 +36,8 @@ window.OR_MOD = (function () {
     ],
     party: [
       { k: "ref", t: "Ref" }, { k: "party", t: "Nazwa" }, { k: "tax", t: "Tax ID" },
-      { k: "role", t: "Rola" }, { k: "status", t: "Status" }, { k: "src", t: "source_ref" }
+      { k: "vat", t: "VAT UE" }, { k: "eori", t: "EORI" }, { k: "duns", t: "DUNS" },
+      { k: "role", t: "Role" }, { k: "status", t: "Status" }, { k: "src", t: "source_ref" }
     ],
     finance: [
       { k: "ref", t: "Ref" }, { k: "party", t: "Strona" }, { k: "ksef", t: "ksef_ref" },
@@ -51,8 +52,9 @@ window.OR_MOD = (function () {
       { k: "status", t: "Status" }, { k: "src", t: "source_ref" }
     ],
     channels: [
-      { k: "ref", t: "Ref" }, { k: "party", t: "Kanał" }, { k: "lane", t: "Relacja" },
-      { k: "status", t: "Status" }, { k: "amt", t: "Kwota", money: true }, { k: "src", t: "source_ref" }
+      { k: "ref", t: "Ref" }, { k: "party", t: "Armator" }, { k: "lane", t: "POL/POD" },
+      { k: "tt", t: "TT" }, { k: "status", t: "Status" }, { k: "amt", t: "Kwota", money: true },
+      { k: "src", t: "source_ref" }
     ],
     compliance: [
       { k: "ref", t: "Ref" }, { k: "title", t: "Sprawa" }, { k: "party", t: "Strona" },
@@ -138,7 +140,12 @@ window.OR_MOD = (function () {
         ksef: i % 2 ? "—" : `KSEF-2026-${410 + i}`,
         docs: `${4 + (i % 3)}/9`,
         recipient: ["omni_customs", "client_customs", "dest_agent", "armator"][i % 4],
-        age: `${2 + i * 3} h`
+        age: `${2 + i * 3} h`,
+        vat: i % 2 ? "—" : `PL${5270000000 + i}`,
+        eori: i % 3 ? "—" : `PL${5270000000 + i}000`,
+        duns: i % 4 ? "—" : String(422074590 + i),
+        tt: String(29 + (i % 6)),
+        named_place: incos[i % incos.length] === "DAP" || incos[i % incos.length] === "DDP" ? "Lima" : ""
       };
       if (fam === "platform" || fam === "settings") row.src = `idem-${mod.n}-${i}`;
       if (mod.layer === "c" || PARK.has(fam)) row.status = i % 2 ? "named park" : "horyzont";
@@ -179,7 +186,8 @@ window.OR_MOD = (function () {
       hitl: "Accept/reject. ExtractionService nie zapisuje rate_line.",
       rates: "Niemutowalna. Zastąp = nowy wiersz + superseded_by.",
       charges: "Jedyny wiersz buy+sell. UI nie liczy marży.",
-      party: "Lookup = szkic. INSERT po potwierdzeniu.",
+      party: "Lookup = szkic. NIP/VAT UE/EORI/DUNS unikalne · 409 z linkiem. Klient bez NIP = 400.",
+      channels: "channel_quote: TT + najtańsza / najszybszy TT z SQL. Nie marża.",
       finance: "Kwota para z walutą. ksef_ref to pole, nie live HTTP.",
       customs: "Checklista × odbiorca × Incoterms. Brak komplet = brak wysyłki.",
       platform: "Zdarzenie / klucz. Brak kolumny kwoty.",
@@ -258,13 +266,54 @@ window.OR_MOD = (function () {
     if (fam === "finance") base.push({ id: "ksef", label: "ksef_ref", value: row?.ksef || "" });
     if (fam === "customs" || fam === "quote" || fam === "ship") {
       base.push({
-        id: "incoterm", label: "Incoterm", type: "select",
-        options: ["EXW", "FCA", "FOB", "CFR", "CIF", "DAP", "DDP"],
+        id: "incoterm", label: "incoterm", type: "select",
+        options: ["EXW", "FCA", "CPT", "CIP", "DAP", "DPU", "DDP", "FAS", "FOB", "CFR", "CIF"],
         value: row?.incoterm || "DAP"
       });
+      base.push({
+        id: "incoterms_version", label: "incoterms_version", type: "select",
+        options: ["2020", "2010"],
+        value: row?.incoterms_version || "2020"
+      });
+      base.push({
+        id: "trade_side", label: "trade_side", type: "select",
+        options: ["import", "export"],
+        value: row?.trade_side || "export"
+      });
+      base.push({ id: "named_place", label: "named_place", value: row?.named_place || "Lima", placeholder: "named_place" });
     }
-    if (fam === "party") base.push({ id: "tax", label: "Tax ID", required: true, value: row?.tax || "" });
+    if (fam === "channels") {
+      base.push({ id: "tt", label: "transit_days", value: row?.tt || "32" });
+    }
+    if (fam === "party") {
+      base.push({ id: "tax", label: "Tax ID / NIP", value: row?.tax || "" });
+      base.push({ id: "vat", label: "VAT UE", value: row?.vat || "" });
+      base.push({ id: "eori", label: "EORI", value: row?.eori || "" });
+      base.push({ id: "duns", label: "DUNS", value: row?.duns || "" });
+      base.push({ id: "role", label: "Role", value: row?.role || "customer", placeholder: "customer, vendor" });
+      base.push({ id: "jdg", label: "JDG", type: "checkbox", value: row?.jdg === "1" ? "1" : "" });
+    }
     return base;
+  }
+
+  function formValidate(mod, data, existingId) {
+    const fam = familyOf(mod);
+    if ((fam === "quote" || fam === "ship" || fam === "customs") && (data.incoterm === "DAP" || data.incoterm === "DDP") && !data.named_place) {
+      return "409 · DAP/DDP wymaga named_place.";
+    }
+    if (fam === "party") {
+      if ((data.role || "").includes("customer") && !data.tax) {
+        return "400 · klient bez NIP.";
+      }
+      const list = store[mod.id] || [];
+      const taxHit = data.tax ? list.find((r) => r.id !== existingId && r.tax === data.tax) : null;
+      if (taxHit) return `409 · tax_id zajęty — otwórz ${taxHit.party} (${taxHit.ref}).`;
+      const vatHit = data.vat && data.vat !== "—"
+        ? list.find((r) => r.id !== existingId && r.vat === data.vat)
+        : null;
+      if (vatHit) return `409 · VAT UE zajęty — otwórz ${vatHit.party} (${vatHit.ref}).`;
+    }
+    return "";
   }
 
   function upsert(mod, data, existingId) {
@@ -275,7 +324,12 @@ window.OR_MOD = (function () {
       Object.assign(row, {
         ref: data.ref, party: data.party, status: data.status, lane: data.lane || row.lane,
         src: data.source_ref || row.src, amt: data.amt || row.amt, cur: data.cur || row.cur,
-        ksef: data.ksef || row.ksef, incoterm: data.incoterm || row.incoterm, tax: data.tax || row.tax
+        ksef: data.ksef || row.ksef, incoterm: data.incoterm || row.incoterm, tax: data.tax || row.tax,
+        vat: data.vat || row.vat, eori: data.eori || row.eori, duns: data.duns || row.duns,
+        role: data.role || row.role, tt: data.tt || row.tt,
+        named_place: data.named_place != null ? data.named_place : row.named_place,
+        trade_side: data.trade_side || row.trade_side,
+        incoterms_version: data.incoterms_version || row.incoterms_version
       });
       return;
     }
@@ -296,7 +350,14 @@ window.OR_MOD = (function () {
       hs: "brak",
       incoterm: data.incoterm || "DAP",
       tax: data.tax || "—",
-      role: "klient",
+      vat: data.vat || "—",
+      eori: data.eori || "—",
+      duns: data.duns || "—",
+      role: data.role || "klient",
+      tt: data.tt || "—",
+      named_place: data.named_place || "",
+      trade_side: data.trade_side || "export",
+      incoterms_version: data.incoterms_version || "2020",
       ksef: data.ksef || "—",
       docs: "0/9",
       recipient: "omni_customs",
@@ -402,6 +463,7 @@ window.OR_MOD = (function () {
         fields: fieldsFor(mod, null),
         hitl: HITL.has(fam),
         requireSource: SOURCE.has(fam),
+        validate: (d) => formValidate(mod, d),
         onSave: (d) => {
           upsert(mod, d);
           paint(mod);
@@ -428,6 +490,7 @@ window.OR_MOD = (function () {
         fields: fieldsFor(mod, row),
         hitl: HITL.has(fam),
         requireSource: SOURCE.has(fam),
+        validate: (d) => formValidate(mod, d, row.id),
         onSave: (d) => {
           if (fam === "rates") {
             row.status = "superseded";

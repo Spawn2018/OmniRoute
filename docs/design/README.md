@@ -52,5 +52,12 @@ Klatki leftoverów ADR-0003 zostają źródłem układu dla **U-oklch-dark** (el
 | [ui-05-quotation.canvas.tsx](ui-05-quotation.canvas.tsx) | Warianty oferty i wiersz `charge` |
 | [ui-06-vision.canvas.tsx](ui-06-vision.canvas.tsx) | Watchtower / oś / portale — **bez backendu** |
 
+**2026-09-08:** makieta złota ścieżka dogania nocne joby FE (129–143):
+Incoterms + `named_place` (409 bez miejsca na DAP/DDP), odznaki SQL najtańsza / najszybszy TT,
+zapis `channel_quote` z wyceny (409 duplikat), HITL `draft_kind=carrier_quote` → oferta kanału,
+sieci z `party_id` + filtr kraju + paczka zapytań + szkice top N + `no_reply_after`,
+kontrahent: NIP/VAT UE/EORI/DUNS, JDG/parent/role, 409 z linkiem, karta lane;
+poczta `group_by` party/country/status. Nadal nie kod produktu.
+
 Implementacja w `frontend/` tylko przez leftover **U-oklch-dark** … **U-print** w [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Nie Q1.
 **2026-09-02:** makieta ujednolicona pod język Wyceny/Zlecenia; ekrany FE: Stawki, Opłaty, Ekstrakcje, Kontrahenci, Porty, Lokalizacje, Oferty kanału, Użytkownicy. Nie kod produktu.

@@ -558,6 +558,7 @@ table.mini { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); }
   .leg-party { grid-template-columns: 1fr auto; gap: var(--s2); }
   .leg-party dt { grid-column: 1 / -1; }
   .leg-grid { grid-template-columns: 1fr; }
+}
 @media (max-width: 28rem) {
   .pages { grid-template-columns: 1fr; }
   .kpis { grid-template-columns: 1fr; }
@@ -583,6 +584,7 @@ table.mini { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); }
     <button type="button" data-go="parties" title="Kontrahenci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span class="lbl">Kontrahenci</span></button>
     <button type="button" data-go="ports" title="Porty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span class="lbl">Porty</span></button>
     <button type="button" data-go="channels" title="Oferty kanału"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg><span class="lbl">Kanały</span></button>
+    <button type="button" data-go="networks" title="Sieci i zapytania"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v4M12 11 6 17M12 11l6 6"/></svg><span class="lbl">Sieci</span></button>
     <button type="button" id="openCat" title="Wszystkie moduły"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span class="lbl">Wszystkie</span></button>
     <div class="sp"></div>
     <p class="rail-grp">Finanse / compliance</p>
@@ -619,6 +621,7 @@ table.mini { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); }
         <section class="view" id="v-locations"></section>
         <section class="view" id="v-users"></section>
         <section class="view" id="v-channels"></section>
+        <section class="view" id="v-networks"></section>
         <section class="view" id="v-mod"></section>
       </main>
       <aside class="insp" id="insp" hidden></aside>
@@ -640,9 +643,9 @@ table.mini { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); }
   <div class="view-modal" role="dialog" aria-modal="true" aria-labelledby="vmTitle" id="viewModal"></div>
 </div>
 <div class="toast" id="toast" role="status"></div>
-<script src="omniroute-ui-catalog.js?v=20260908c"></script>
-<script src="omniroute-ui-actions.js?v=20260908c"></script>
-<script src="omniroute-ui-modules.js?v=20260908c"></script>
+<script src="omniroute-ui-catalog.js?v=20260908d"></script>
+<script src="omniroute-ui-actions.js?v=20260908d"></script>
+<script src="omniroute-ui-modules.js?v=20260908d"></script>
 <script>
 const $ = (s, c = document) => c.querySelector(s);
 const $$ = (s, c = document) => [...c.querySelectorAll(s)];
@@ -1065,6 +1068,13 @@ const LAYER = { kanon: "kanon", uzup: "uzup.", a: "luka A", b: "linia B", c: "od
 let mailOn = false;
 let quoteHs = "";
 let quoteFiles = [];
+let quoteTerms = { incoterm: "DAP", version: "2020", tradeSide: "export", namedPlace: "Lima" };
+let quoteOpenMail = false;
+let channelQuoteSaved = false;
+let mailGroupBy = "party";
+let hitlDraftKind = "rate_line";
+let netCountry = "";
+let inquiryDefaultN = 3;
 let shipCustomsMode = "omni_customs";
 let spotOn = false;
 let hitlId = "c2";
@@ -1074,25 +1084,25 @@ let current = "home";
 let currentMod = null;
 
 const VARIANTS = [
-  { id: "andes", src: "db", name: "Andes Cargo SAC", via: "agent · Lima", age: "cennik sprzed 4 dni", transit: "32 dni", etd: "ETD 18.09", best: true, gapLabel: "1 brak", sell: "8 442,00", buy: "7 318,00", margin: "1 124,00", pct: "13,3%", share: "66%", currency: "USD", why: "source_ref Andes Cargo FCL EXPORT · marża z charge.margin() na serwerze",
+  { id: "andes", src: "db", name: "Andes Cargo SAC", via: "agent · Lima", age: "cennik sprzed 4 dni", transit: "32 dni", etd: "ETD 18.09", best: true, cheapest: false, fastest: false, gapLabel: "1 brak", sell: "8 442,00", buy: "7 318,00", margin: "1 124,00", pct: "13,3%", share: "66%", currency: "USD", why: "source_ref Andes Cargo FCL EXPORT · marża z charge.margin() na serwerze",
     lines: [
       { c: "OFR", d: "Fracht morski 40HC × 2", b: "per kontener", buy: "4 680,00", sell: "5 150,00", margin: "470,00", currency: "USD", gap: false },
       { c: "BAF", d: "Dopłata paliwowa", b: "per kontener", buy: "420,00", sell: "462,00", margin: "42,00", currency: "USD", gap: false },
       { c: "DTHC", d: "THC Callao", b: "per kontener", buy: "620,00", sell: "775,00", margin: "155,00", currency: "USD", gap: false },
       { c: "ISPS-D", d: "Ochrona portu Callao — brak w źródle", b: "per kontener", buy: "", sell: "", margin: "", currency: "USD", gap: true }
     ]},
-  { id: "pacific", src: "db", name: "Pacific Forwarding Peru", via: "agent · Callao", age: "cennik sprzed 19 dni", transit: "34 dni", etd: "ETD 20.09", best: false, gapLabel: "2 braki", sell: "8 436,00", buy: "7 313,00", margin: "1 123,00", pct: "13,3%", share: "66%", currency: "USD", why: "stawka wygasa 15.09 — przed cut-off 18–24.09",
+  { id: "pacific", src: "db", name: "Pacific Forwarding Peru", via: "agent · Callao", age: "cennik sprzed 19 dni", transit: "34 dni", etd: "ETD 20.09", best: false, cheapest: true, fastest: false, gapLabel: "2 braki", sell: "8 436,00", buy: "7 313,00", margin: "1 123,00", pct: "13,3%", share: "66%", currency: "USD", why: "stawka wygasa 15.09 — przed cut-off 18–24.09",
     lines: [
       { c: "OFR", d: "Fracht morski 40HC × 2", b: "per kontener", buy: "4 820,00", sell: "5 300,00", margin: "480,00", currency: "USD", gap: false },
       { c: "ISPS-D", d: "Ochrona portu Callao — brak w źródle", b: "per kontener", buy: "", sell: "", margin: "", currency: "USD", gap: true }
     ]},
-  { id: "trans", src: "mail", name: "TransAndina Logistics", via: "odpowiedź mailem · 27.08", age: "z zapytania ZAP/00318", transit: "35 dni", etd: "ETD 21.09", best: false, gapLabel: "5 braków", sell: "7 860,00", buy: "6 800,00", margin: "1 060,00", pct: "13,5%", share: "68%", currency: "USD", why: "ekstrakcja maila · HITL zaakceptowany",
+  { id: "trans", src: "mail", name: "TransAndina Logistics", via: "odpowiedź mailem · 27.08", age: "z zapytania ZAP/00318", transit: "35 dni", etd: "ETD 21.09", best: false, cheapest: false, fastest: false, gapLabel: "5 braków", sell: "7 860,00", buy: "6 800,00", margin: "1 060,00", pct: "13,5%", share: "68%", currency: "USD", why: "ekstrakcja maila · HITL zaakceptowany",
     lines: [
       { c: "OFR", d: "Ocean freight 40HC × 2", b: "per kontener", buy: "4 390,00", sell: "4 830,00", margin: "440,00", currency: "USD", gap: false },
       { c: "ETS", d: "EU ETS — brak w źródle", b: "per kontener", buy: "", sell: "", margin: "", currency: "USD", gap: true }
     ]}
 ];
-const SPOT = { id: "hapag", src: "api", name: "Hapag-Lloyd", via: "Quick Quotes · QQ-8841203", age: "pobrano z API", transit: "29 dni", etd: "ETD 19.09", best: false, gapLabel: "2 braki", sell: "8 768,00", buy: "7 882,00", margin: "886,00", pct: "10,1%", share: "50%", currency: "USD", why: "kanał live · source_ref QQ-8841203",
+const SPOT = { id: "hapag", src: "api", name: "Hapag-Lloyd", via: "Quick Quotes · QQ-8841203", age: "pobrano z API", transit: "29 dni", etd: "ETD 19.09", best: false, cheapest: false, fastest: true, gapLabel: "2 braki", sell: "8 768,00", buy: "7 882,00", margin: "886,00", pct: "10,1%", share: "50%", currency: "USD", why: "kanał live · source_ref QQ-8841203",
   lines: [
     { c: "OFR", d: "Fracht morski 40HC × 2", b: "per kontener", buy: "5 240,00", sell: "5 764,00", margin: "524,00", currency: "USD", gap: false },
     { c: "CUST-IMP", d: "Odprawa Peru — brak w API", b: "per zlecenie", buy: "", sell: "", margin: "", currency: "USD", gap: true }
@@ -1112,7 +1122,7 @@ const CANDS = [
 ];
 const CARRIERS = [
   { n: "Maersk", st: "done", last: "dziś 09:12", note: "spot QQ zmapowany na charge" },
-  { n: "Hapag-Lloyd", st: "done", last: "dziś 08:40", note: "Quick Quotes" },
+  { n: "Hapag-Lloyd", st: "done", last: "dziś 08:40", note: "Quick Quotes · TT 29" },
   { n: "MSC", st: "", last: "wczoraj", note: "credentials tenanta zaszyfrowane" },
   { n: "CMA CGM", st: "err", last: "błąd 14:02", note: "ponów z M-191" },
   { n: "ONE", st: "", last: "niesprawdzone", note: "kanał w konfiguracji" },
@@ -1120,14 +1130,35 @@ const CARRIERS = [
   { n: "Yang Ming", st: "", last: "niesprawdzone", note: "kanał w konfiguracji" },
   { n: "INTTRA / DCSA", st: "done", last: "dziś", note: "booking stub" }
 ];
-
+const CHANNEL_QUOTES = [
+  { id: "cq1", party: "Pacific Forwarding Peru", partyId: "p-pac", pol: "PLGDY", pod: "PECLL", date: "2026-08-07", tt: "34", amt: "7 313,00", cur: "USD", src: "PAC-PE-0826", cheapest: true, fastest: false },
+  { id: "cq2", party: "Andes Cargo SAC", partyId: "p2", pol: "PLGDY", pod: "PECLL", date: "2026-08-26", tt: "32", amt: "7 318,00", cur: "USD", src: "ANDES-FCL-0826", cheapest: false, fastest: false },
+  { id: "cq3", party: "Hapag-Lloyd AG", partyId: "p4", pol: "PLGDY", pod: "PECLL", date: "2026-09-08", tt: "29", amt: "7 882,00", cur: "USD", src: "QQ-8841203", cheapest: false, fastest: true }
+];
+const NETWORK_MEMBERS = [
+  { id: "nm1", code: "agent_a", name: "Andes Cargo SAC", partyId: "p2", country: "PE" },
+  { id: "nm2", code: "agent_p", name: "Pacific Forwarding Peru", partyId: "p-pac", country: "PE" },
+  { id: "nm3", code: "agent_nl", name: "Rotterdam Hub BV", partyId: "p-nl", country: "NL" }
+];
+const INQUIRIES = [
+  { id: "iq1", member: "agent_a", party: "Andes Cargo SAC", status: "answered", silence: "—", lane: "PLGDY→PECLL", rank: "1" },
+  { id: "iq2", member: "agent_p", party: "Pacific Forwarding Peru", status: "queued", silence: "2026-09-12", lane: "PLGDY→PECLL", rank: "2" },
+  { id: "iq3", member: "agent_nl", party: "Rotterdam Hub BV", status: "no_reply", silence: "2026-09-05", lane: "PLGDY→PECLL", rank: "3" }
+];
+const INBOUND_MAIL = [
+  { party: "Andes Cargo SAC", country: "PE", status: "answered", src: "fixture://inbound-mail/1" },
+  { party: "Pacific Forwarding Peru", country: "PE", status: "queued", src: "fixture://inbound-mail/2" },
+  { party: "TransAndina Logistics", country: "PE", status: "no_reply", src: "fixture://inbound-mail/3" },
+  { party: "Hapag-Lloyd AG", country: "DE", status: "answered", src: "fixture://inbound-mail/4" }
+];
 
 let partyId = "p1";
 const PARTIES = [
-  { id: "p1", name: "Meblexport Sp. z o.o.", tax: "PL5272651849", kind: "customer", limit: "120 000,00", cur: "PLN", status: "aktywny", contact: "anna@meblexport.pl", bank: "PL61 1090 1014 0000 0712 1981 2874", domain: "meblexport.pl", score: "B+" },
-  { id: "p2", name: "Andes Cargo SAC", tax: "PE20123456789", kind: "agent", limit: "—", cur: "USD", status: "aktywny", contact: "ops@andescargo.pe", bank: "—", domain: "andescargo.pe", score: "A-" },
-  { id: "p3", name: "Nordwood AB", tax: "SE556677889901", kind: "customer", limit: "80 000,00", cur: "EUR", status: "aktywny", contact: "logistics@nordwood.se", bank: "SE45 5000 0000 0583 9825 7466", domain: "nordwood.se", score: "A" },
-  { id: "p4", name: "Hapag-Lloyd AG", tax: "DE118797042", kind: "carrier", limit: "—", cur: "EUR", status: "aktywny", contact: "api@hlag.com", bank: "—", domain: "hapag-lloyd.com", score: "—" }
+  { id: "p1", name: "Meblexport Sp. z o.o.", tax: "PL5272651849", vat: "PL5272651849", eori: "PL5272651849000", duns: "422074590", country: "PL", roles: "customer", jdg: false, parent: "—", kind: "customer", limit: "120 000,00", cur: "PLN", status: "aktywny", contact: "anna@meblexport.pl", bank: "PL61 1090 1014 0000 0712 1981 2874", domain: "meblexport.pl", score: "B+", laneHint: "snapshot 0,67 · lane://PLGDY-PECLL" },
+  { id: "p2", name: "Andes Cargo SAC", tax: "PE20123456789", vat: "—", eori: "PE20123456789000", duns: "—", country: "PE", roles: "agent, vendor", jdg: false, parent: "—", kind: "agent", limit: "—", cur: "USD", status: "aktywny", contact: "ops@andescargo.pe", bank: "—", domain: "andescargo.pe", score: "A-", laneHint: "snapshot 0,81 · lane://PLGDY-PECLL" },
+  { id: "p3", name: "Nordwood AB", tax: "SE556677889901", vat: "SE556677889901", eori: "SE556677889901000", duns: "351234567", country: "SE", roles: "customer", jdg: false, parent: "—", kind: "customer", limit: "80 000,00", cur: "EUR", status: "aktywny", contact: "logistics@nordwood.se", bank: "SE45 5000 0000 0583 9825 7466", domain: "nordwood.se", score: "A", laneHint: "snapshot 0,54 · lane://PLGDY-SEGOT" },
+  { id: "p4", name: "Hapag-Lloyd AG", tax: "DE118797042", vat: "DE118797042", eori: "DE118797042000", duns: "315013805", country: "DE", roles: "carrier", jdg: false, parent: "—", kind: "carrier", limit: "—", cur: "EUR", status: "aktywny", contact: "api@hlag.com", bank: "—", domain: "hapag-lloyd.com", score: "—", laneHint: "—" },
+  { id: "p5", name: "Jan Kowalski", tax: "PL8512345678", vat: "—", eori: "—", duns: "—", country: "PL", roles: "customer", jdg: true, parent: "p1", kind: "customer", limit: "—", cur: "PLN", status: "aktywny", contact: "jan@meblexport.pl", bank: "—", domain: "meblexport.pl", score: "—", laneHint: "JDG · limit tylko po HITL" }
 ];
 const CHARGES = [
   { ref: "ch-1044", code: "OFR", party: "Andes Cargo SAC", buy: "7 318,00", sell: "8 442,00", margin: "1 124,00", cur: "USD", src: "rl-1044", quote: "ZAP/2026/00318" },
@@ -1154,12 +1185,12 @@ function renderVariant(v) {
   const tag = { db: "z cennika", api: "live spot", mail: "z maila" }[v.src];
   const lines = v.lines.map((l) => `<tr class="${l.gap ? "gap" : ""}"><td>${l.c}</td><td>${l.d}</td><td>${l.b}</td><td class="r">${money(l.buy, l.currency)}</td><td class="r">${money(l.sell, l.currency)}</td><td class="r">${money(l.margin, l.currency)}</td></tr>`).join("");
   return `<article class="v${v.best ? " best" : ""}${picked === v.id ? " picked" : ""}" data-id="${v.id}">
-    <button class="vh" type="button" data-open="${v.id}"><div><div class="vname">${v.name} <span class="chip">${tag}</span> ${v.best ? '<span class="chip ok">najlepsza marża</span>' : ""} <span class="chip alert">${v.gapLabel}</span></div><div class="note">${v.via} · ${v.age}</div></div>
+    <button class="vh" type="button" data-open="${v.id}"><div><div class="vname">${v.name} <span class="chip">${tag}</span> ${v.best ? '<span class="chip ok">najlepsza marża</span>' : ""} ${v.cheapest ? '<span class="chip ok">najtańsza</span>' : ""} ${v.fastest ? '<span class="chip ok">najszybszy TT</span>' : ""} <span class="chip alert">${v.gapLabel}</span></div><div class="note">${v.via} · ${v.age}</div></div>
     <div class="note">${v.transit}<br>${v.etd}</div>
     <div>${money(v.sell, v.currency, "lg")}<div class="note">marża ${v.pct} · ${v.margin} ${v.currency}</div><div class="bar"><i style="width:${v.share}"></i></div></div></button>
     <div class="vb"><table class="lines"><thead><tr><th>Kod</th><th>Opłata</th><th>Podstawa</th><th class="r">Zakup</th><th class="r">Sprzedaż</th><th class="r">Marża</th></tr></thead><tbody>${lines}</tbody>
     <tfoot><tr><td colspan="3">Razem (z serwera)</td><td class="r">${money(v.buy, v.currency)}</td><td class="r">${money(v.sell, v.currency)}</td><td class="r">${money(v.margin, v.currency)}</td></tr></tfoot></table>
-    <div class="cmd"><span class="note">${v.why}</span><button class="btn" type="button" data-gap="${v.id}">Dopisz charge</button><button class="btn btn-p" type="button" data-pick="${v.id}">Wybierz wariant</button></div></div></article>`;
+    <div class="cmd"><span class="note">${v.why}</span><button class="btn" type="button" data-gap="${v.id}">Dopisz charge</button><button class="btn" type="button" data-act="save-cq" data-who="${v.name}">Zapisz ofertę kanału</button><button class="btn btn-p" type="button" data-pick="${v.id}">Wybierz wariant</button></div></div></article>`;
 }
 
 function screenBanner(idLine, routeLine, subLine) {
@@ -1184,6 +1215,7 @@ function paintHome() {
       <button class="btn" type="button" data-go="quote">Wyceny</button>
       <button class="btn" type="button" data-go="ship">Zlecenia</button>
       <button class="btn" type="button" data-go="parties">Kontrahenci</button>
+      <button class="btn" type="button" data-go="networks">Sieci</button>
       <span class="chip">tenant z paska · RLS</span>
     </div>
     ${screenBanner("Dzień operatora · mniej telefonów, więcej decyzji", "Joby do zamknięcia dziś", "HITL → wycena SQL → zlecenie z marżą z charge. Kwoty z serwera — makieta nic nie liczy.")}
@@ -1201,49 +1233,80 @@ function paintHome() {
         <div class="todo"><div><b>Akceptuj stawki Maersk SHA → GDY</b><div class="meta"><span>source_ref MAERSK-SHA-0926.pdf</span><span>4 wiersze · 09:14</span></div></div><div><button class="linkish" type="button" data-go="hitl">Akceptuj</button> · <button class="linkish stop" type="button" data-act="reject-home">Odrzuć</button></div></div>
         <div class="todo"><div><b>Brak HS na ZAP/2026/00318</b><div class="meta"><span>Meblexport · PLGDY → PECLL</span><span>blokuje ofertę</span></div></div><button class="linkish" type="button" data-go="quote">Uzupełnij HS</button></div>
         <div class="todo"><div><b>ISPS Callao w żadnym wariancie</b><div class="meta"><span>zwykle 45,00 USD / kontener</span><span>wymaga source_ref</span></div></div><button class="linkish" type="button" data-go="quote">Dopisz charge</button></div>
+        <div class="todo"><div><b>Akceptuj ofertę kanału Hapag QQ-8841203</b><div class="meta"><span>draft_kind carrier_quote</span><span>Accept → channel_quote, nie rate_line</span></div></div><button class="linkish" type="button" data-go="hitl">Otwórz HITL</button></div>
+        <div class="todo"><div><b>Cisza zapytania · Rotterdam Hub</b><div class="meta"><span>no_reply_after 2026-09-05</span><span>notice ręczny</span></div></div><button class="linkish" type="button" data-go="networks">Sieci / zapytania</button></div>
         <div class="todo"><div><b>Lookup tax_id Meblexport</b><div class="meta"><span>GUS/VIES → szkic</span><span>zapis tylko po potwierdzeniu</span></div></div><button class="linkish" type="button" data-go="parties">Otwórz kontrahenta</button></div>
       </div>
     </div>`;
 }
+function groupInbound(by) {
+  const map = {};
+  INBOUND_MAIL.forEach((m) => {
+    const key = by === "country" ? m.country : by === "status" ? m.status : m.party;
+    (map[key] = map[key] || []).push(m);
+  });
+  return Object.keys(map).map((k) => ({ key: k, n: map[k].length }));
+}
 function paintQuote() {
-  const mail = mailOn
-    ? `<div class="card"><b>Do: Andes Cargo, Pacific, TransAndina</b><p class="note">ZAP/2026/00318 · PLGDY→PECLL · 2×40HC · podgląd przed wysłaniem. Idempotencja na wysyłce.</p><button class="btn btn-p" type="button" data-act="send-rfq">Wyślij zapytanie</button></div>`
-    : `<div class="empty"><b>Brak korespondencji</b><p>Wiadomości pojawią się po zapytaniu do agentów.</p><button class="btn" type="button" data-act="ask">Zapytaj agentów</button></div>`;
+  const groups = groupInbound(mailGroupBy).map((g) => `<li>${g.key} · ${g.n}</li>`).join("");
+  const mail = `<div class="card" data-mail="groups">
+      <label class="kf"><span>group_by</span>
+        <select id="mailGroupBy" aria-label="Grupowanie wiadomości">
+          <option value="party"${mailGroupBy === "party" ? " selected" : ""}>party</option>
+          <option value="country"${mailGroupBy === "country" ? " selected" : ""}>country</option>
+          <option value="status"${mailGroupBy === "status" ? " selected" : ""}>status</option>
+        </select>
+      </label>
+      <ul class="note" style="margin:var(--s3) 0;padding-left:1.1rem">${groups}</ul>
+      ${mailOn
+        ? `<b>Do: Andes Cargo, Pacific, TransAndina</b><p class="note">ZAP/2026/00318 · PLGDY→PECLL · 2×40HC · podgląd przed wysłaniem. Idempotencja na wysyłce.</p><button class="btn btn-p" type="button" data-act="send-rfq">Wyślij zapytanie</button>`
+        : `<div class="empty" style="padding:var(--s4)"><b>Brak wychodzących</b><p>Wiadomości pojawią się po zapytaniu do agentów.</p><button class="btn" type="button" data-act="ask">Zapytaj agentów</button></div>`}
+    </div>`;
   const zal = quoteFiles.length
     ? `<div class="card"><ul class="kfiles">${quoteFiles.map((f) => `<li>${f.name} <span class="note">wskazanie · HITL przed SoR</span></li>`).join("")}</ul></div>`
     : `<div class="empty"><b>Brak załączników</b><p>Pliki po ekstrakcji i akceptacji recenzenta.</p><button class="btn" type="button" data-act="quote-file">Dodaj wskazanie</button></div>`;
   const sendBtn = quoteHs
     ? `<button class="btn btn-p" type="button" data-act="send-offer">Wyślij ofertę</button>`
     : `<button class="btn" type="button" id="sendQuote" aria-disabled="true">Wyślij ofertę — brak HS</button>`;
+  const cqRows = CHANNEL_QUOTES.map((q) => `<p class="note">kanał ${q.date} ${q.src} ${money(q.amt, q.cur)} · ${q.tt} dni${q.cheapest ? " · najtańsza" : ""}${q.fastest ? " · najszybszy TT" : ""}</p>`).join("");
   $("#v-quote").innerHTML = `<div class="cmd">
       <button class="btn" type="button" data-act="save">Zapisz</button>
+      <button class="btn" type="button" data-act="quote-incoterm">Incoterms</button>
       <button class="btn" type="button" data-act="ask">Zapytaj agentów</button>
       <button class="btn" type="button" data-act="fill-hs">Uzupełnij HS</button>
       ${sendBtn}
+      <button class="btn" type="button" data-act="save-cq">Zapisz ofertę kanału</button>
       <button class="btn" type="button" data-act="spot" id="spot">Pokaż wariant spot</button>
     </div>
     ${screenBanner("ZAP/2026/00318 · wycena w minutach, nie w mailach", 'Gdynia <span class="loc">PLGDY</span> → Lima <span class="loc">PELIM</span>', "Meblexport · DAP po negocjacji FOB → DAP · marża z charge.margin() · limit z karty M-13")}
     ${screenFacts([
       { t: "Ładunek", v: "2 × 40HC", s: "meble drewniane" },
       { t: "Kod HS", v: quoteHs || "brak", chip: quoteHs ? "ok" : "alert", s: quoteHs ? "commodity_code" : "blokuje send" },
-      { t: "Incoterm", v: "DAP", s: "Lima · superseded FOB" },
+      { t: "Incoterm", v: quoteTerms.incoterm, s: `${quoteTerms.namedPlace || "brak named_place"} · ${quoteTerms.tradeSide} · ${quoteTerms.version}`, chip: (quoteTerms.incoterm === "DAP" || quoteTerms.incoterm === "DDP") && !quoteTerms.namedPlace ? "alert" : "" },
       { t: "Gotowość do podjęcia", v: "10–20.09", s: "połowa września" },
       { t: "Cut-off bramowy", v: "18–24.09", s: "+ 2 dni dowozu" },
       { t: "Ważność oferty", v: "14 dni", s: "sugerowane" },
       { t: "Termin płatności", v: "52 dni netto", s: "karta M-13" }
     ], "n7")}
     <div class="tabs" role="tablist">
-      <button type="button" data-tab="warianty" aria-selected="true">Warianty</button>
-      <button type="button" data-tab="mail" aria-selected="false">Korespondencja</button>
+      <button type="button" data-tab="warianty" aria-selected="${quoteOpenMail ? "false" : "true"}">Warianty</button>
+      <button type="button" data-tab="mail" aria-selected="${quoteOpenMail ? "true" : "false"}">Korespondencja</button>
       <button type="button" data-tab="zal" aria-selected="false">Załączniki</button>
     </div>
-    <div class="pane on" id="p-warianty">
+    <div class="pane${quoteOpenMail ? "" : " on"}" id="p-warianty">
       <p><span class="chan done"><i class="dot"></i>Baza stawek</span><span class="chan"><i class="dot"></i>Hapag-Lloyd</span><span class="chan"><i class="dot"></i>Maersk</span><span class="chan ${spotOn ? "done" : ""}"><i class="dot"></i>spot API</span></p>
       <div id="vlist">${variants().map(renderVariant).join("")}</div>
+      <div class="card" style="margin-top:var(--s4)" data-response-comparison="lanes">
+        <h3 class="h-id">Porównanie odpowiedzi</h3>
+        <p class="note">wycena i channel_quote na POL/POD · marża w charge · nie odejmuj. Odznaki z SQL.</p>
+        ${cqRows}
+        <button class="btn" type="button" data-act="save-cq" style="margin-top:var(--s3)">Zapisz ofertę kanału</button>
+      </div>
       <p class="note">Kwoty i pasek z serwera. Ta makieta niczego nie liczy. Marża wyłącznie na charge.</p>
     </div>
-    <div class="pane" id="p-mail">${mail}</div>
+    <div class="pane${quoteOpenMail ? " on" : ""}" id="p-mail">${mail}</div>
     <div class="pane" id="p-zal">${zal}</div>`;
+  quoteOpenMail = false;
 }
 function paintRates() {
   document.documentElement.dataset.grid = gridDense ? "condensed" : "";
@@ -1275,23 +1338,32 @@ function hitlExportSpan(id, text) {
 }
 function paintHitl() {
   const queue = [
-    { id: "q1", src: "MAERSK-SHA-0926.pdf", lane: "CNSHA→PLGDY", n: "4", age: "2 h", st: "w recenzji" },
-    { id: "q2", src: "ANDES-FCL-0826.pdf", lane: "PLGDY→PECLL", n: "6", age: "26 h", st: "powyżej 24 h" },
-    { id: "q3", src: "PAC-PE-0826.pdf", lane: "PLGDY→PECLL", n: "3", age: "5 h", st: "oczekuje" }
+    { id: "q1", src: "MAERSK-SHA-0926.pdf", kind: "rate_line", lane: "CNSHA→PLGDY", n: "4", age: "2 h", st: "w recenzji" },
+    { id: "q2", src: "ANDES-FCL-0826.pdf", kind: "rate_line", lane: "PLGDY→PECLL", n: "6", age: "26 h", st: "powyżej 24 h" },
+    { id: "q3", src: "QQ-8841203.pdf", kind: "carrier_quote", lane: "PLGDY→PECLL", n: "1", age: "1 h", st: "oferta kanału" }
   ];
-  const qRows = queue.map((q) => `<tr><td><button class="linkish" type="button" data-act="pdf">${q.src}</button></td><td>${q.lane}</td><td>${q.n}</td><td>${q.age}</td><td><span class="chip ${q.st.includes("24") ? "alert" : "ok"}">${q.st}</span></td></tr>`).join("");
+  const qRows = queue.map((q) => `<tr><td><button class="linkish" type="button" data-act="pdf">${q.src}</button></td><td>${q.kind}</td><td>${q.lane}</td><td>${q.n}</td><td>${q.age}</td><td><span class="chip ${q.st.includes("24") ? "alert" : "ok"}">${q.st}</span></td></tr>`).join("");
+  const acceptHint = hitlDraftKind === "carrier_quote"
+    ? "Accept → channel_quote. Nie rate_line."
+    : "Accept → rate_line. Bez optymistycznego UI.";
   $("#v-hitl").innerHTML = `<div class="cmd">
+      <label class="kf" style="margin:0"><span>draft_kind</span>
+        <select id="hitlKind" aria-label="Rodzaj szkicu">
+          <option value="rate_line"${hitlDraftKind === "rate_line" ? " selected" : ""}>rate_line</option>
+          <option value="carrier_quote"${hitlDraftKind === "carrier_quote" ? " selected" : ""}>carrier_quote</option>
+        </select>
+      </label>
       <button class="btn btn-p" type="button" id="acceptHitl">Akceptuj zaznaczone</button>
       <button class="btn" type="button" id="rejectHitl">Odrzuć szkic</button>
       <button class="btn" type="button" data-act="pdf">Otwórz PDF</button>
-      <span class="chip">HITL · art. 50 · bez zapisu do rate_line przed Accept</span>
+      <span class="chip">HITL · art. 50 · zapis dopiero po Accept</span>
     </div>
-    ${screenBanner("M-20 · pipeline ekstrakcji", "MAERSK-SHA-0926 · szkic", "ExtractionService nie importuje rate_lines. Accept → jedna transakcja.")}
+    ${screenBanner("M-20 · pipeline ekstrakcji", hitlDraftKind === "carrier_quote" ? "QQ-8841203 · carrier_quote" : "MAERSK-SHA-0926 · szkic", "Parser A/B · MockExtractor · akceptacja zapisuje stawkę albo ofertę kanału (draft_kind)")}
     ${screenFacts([
       { t: "Szkice w kolejce", v: "6", s: "2 powyżej 24 h" },
-      { t: "source_ref", v: "MAERSK-SHA-0926", s: "PDF" },
+      { t: "draft_kind", v: hitlDraftKind, s: hitlDraftKind === "carrier_quote" ? "→ channel_quote" : "→ rate_line" },
+      { t: "source_ref", v: hitlDraftKind === "carrier_quote" ? "QQ-8841203" : "MAERSK-SHA-0926", s: "PDF" },
       { t: "Kandydaci", v: String(CANDS.length), s: "OFR · BAF · THC" },
-      { t: "Zaznaczone", v: CANDS.find((c) => c.id === hitlId)?.code || "—", s: "eksport do rate_line" },
       { t: "Guard", v: "regex", s: "llm-guard = cel HC" }
     ], "n5")}
     <div class="tabs" role="tablist">
@@ -1301,19 +1373,20 @@ function paintHitl() {
     <div class="pane on" id="p-recenzja">
       <div class="hitl-body card" style="padding:0;overflow:hidden">
         <div class="pad"><h3 class="h-id">Podgląd źródła</h3>
-          <button class="linkish" type="button" data-act="pdf">MAERSK-SHA-0926.pdf</button>
-          <div class="sheet" style="margin-top:var(--s3)"><div>MAERSK LINE · SPOT RATE SHEET</div><div>SHANGHAI (CNSHA) — GDYNIA (PLGDY)</div><div>${hitlExportSpan("c1", "OCEAN FREIGHT USD 1,850 / 40HC")}</div><div>${hitlExportSpan("c2", "BAF USD 120 subject to change")}</div><div>${hitlExportSpan("c3", "THC origin EUR 145")}</div><div>Validity 01–30 Sep 2026</div></div>
+          <button class="linkish" type="button" data-act="pdf">${hitlDraftKind === "carrier_quote" ? "QQ-8841203.pdf" : "MAERSK-SHA-0926.pdf"}</button>
+          <div class="sheet" style="margin-top:var(--s3)"><div>${hitlDraftKind === "carrier_quote" ? "HAPAG-LLOYD · QUICK QUOTE" : "MAERSK LINE · SPOT RATE SHEET"}</div><div>SHANGHAI (CNSHA) — GDYNIA (PLGDY)</div><div>${hitlExportSpan("c1", "OCEAN FREIGHT USD 1,850 / 40HC")}</div><div>${hitlExportSpan("c2", "BAF USD 120 subject to change")}</div><div>${hitlExportSpan("c3", "THC origin EUR 145")}</div><div>Validity 01–30 Sep 2026</div></div>
           <p class="note">Znacznik = pole eksportowane (jasny: czerwony · ciemny: amber).</p>
         </div>
         <div class="pad"><h3 class="h-id">Recenzja · art. 50</h3>
           ${CANDS.map((c) => `<button type="button" class="cand" data-hitl="${c.id}" aria-selected="${hitlId === c.id}"><span><b>${c.code}</b> ${c.amt} ${c.cur}</span><span class="chip ${c.state === "potwierdzone" ? "ok" : "alert"}">${c.state} ${c.pct}</span></button>`).join("")}
-          <p class="note" style="margin-top:var(--s3)">Accept → rate_line. Bez optymistycznego UI.</p>
+          ${hitlDraftKind === "carrier_quote" ? `<p class="note" style="margin-top:var(--s3)">party_id · origin_port_id · destination_port_id · quote_date · amount · currency — pola oferty kanału, nie stawki kupna.</p>` : ""}
+          <p class="note" style="margin-top:var(--s3)">${acceptHint}</p>
         </div>
       </div>
     </div>
     <div class="pane" id="p-kolejka">
       <div class="pad" style="padding-top:0"><div class="card xscroll" style="padding:0">
-        <table class="grid"><thead><tr><th>Źródło</th><th>Relacja</th><th>Wiersze</th><th>Wiek</th><th>Status</th></tr></thead><tbody>${qRows}</tbody></table>
+        <table class="grid"><thead><tr><th>Źródło</th><th>draft_kind</th><th>Relacja</th><th>Wiersze</th><th>Wiek</th><th>Status</th></tr></thead><tbody>${qRows}</tbody></table>
       </div></div>
     </div>`;
 }
@@ -1324,7 +1397,7 @@ function paintCharges() {
       <span class="chip">charge · jedyna prawda o marży</span>
       <span class="chip">buy + sell na jednym rekordzie</span>
     </div>
-    ${screenBanner("M-08 · charge", "Kupno + sprzedaż + marża", "Marża = margin(buy, sell) w domenie. UI nie liczy. ExtractionService nie zapisuje charge.")}
+    ${screenBanner("M-08 · charge", "Kupno + sprzedaż + marża", "Marża = margin(buy, sell) w domenie. UI nie liczy. source_ref obowiązkowy na INSERT — 409 bez pochodzenia.")}
     ${screenFacts([
       { t: "Wiersze", v: String(CHARGES.length), s: "w makiecie" },
       { t: "Źródło kupna", v: "rate_line", s: "odczyt, nie zapis" },
@@ -1338,37 +1411,42 @@ function paintCharges() {
 }
 function paintParties() {
   const p = PARTIES.find((x) => x.id === partyId) || PARTIES[0];
-  const rows = PARTIES.map((x) => `<tr class="${x.id === p.id ? "picked-row" : ""}"><td><button class="linkish" type="button" data-party="${x.id}">${x.name}</button></td><td class="mono">${x.tax}</td><td>${x.kind}</td><td class="r">${x.limit === "—" ? "—" : money(x.limit, x.cur)}</td><td><span class="chip">${x.status}</span></td></tr>`).join("");
+  const parent = PARTIES.find((x) => x.id === p.parent);
+  const rows = PARTIES.map((x) => `<tr class="${x.id === p.id ? "picked-row" : ""}"><td><button class="linkish" type="button" data-party="${x.id}">${x.name}</button></td><td class="mono">${x.tax}</td><td class="mono">${x.vat}</td><td class="mono">${x.eori}</td><td class="mono">${x.duns}</td><td>${x.country}</td><td>${x.roles}</td><td>${x.jdg ? '<span class="chip alert">JDG</span>' : "—"}</td><td class="r">${x.limit === "—" ? "—" : money(x.limit, x.cur)}</td></tr>`).join("");
   $("#v-parties").innerHTML = `<div class="cmd">
       <button class="btn btn-p" type="button" data-act="new-party">Nowy kontrahent</button>
       <button class="btn" type="button" data-act="lookup-party">Lookup tax_id</button>
       <button class="btn" type="button" data-act="resolve-party">Rozwiąż</button>
-      <span class="chip">M-10 · resolve po tax_id · lookup = szkic</span>
+      <span class="chip">M-10 · NIP / VAT UE / EORI / DUNS · klient bez NIP = 400</span>
     </div>
     ${screenBanner("M-10 · kontrahenci", p.name, `Tax ID <span class="loc">${p.tax}</span> · org z paska · RLS`)}
     ${screenFacts([
-      { t: "Typ", v: p.kind },
-      { t: "Limit", v: p.limit === "—" ? "—" : p.limit + " " + p.cur, s: "karta M-13" },
-      { t: "Scorecard", v: p.score, s: "snapshot, nie scoring LLM" },
-      { t: "Status", v: p.status },
-      { t: "Domena mail", v: p.domain }
+      { t: "Role", v: p.roles },
+      { t: "Kraj", v: p.country },
+      { t: "Limit", v: p.limit === "—" ? "—" : p.limit + " " + p.cur, s: p.jdg ? "JDG · tylko HITL" : "karta M-13" },
+      { t: "Scorecard", v: p.score, s: p.laneHint },
+      { t: "Status", v: p.status }
     ], "n5")}
     <div class="pad" style="padding-top:0">
       <div class="party-split">
         <div class="card xscroll" style="padding:0">
-          <table class="grid"><thead><tr><th>Nazwa</th><th>Tax ID</th><th>Rola</th><th class="r">Limit</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>
+          <table class="grid"><thead><tr><th>Nazwa</th><th>Tax ID</th><th>VAT UE</th><th>EORI</th><th>DUNS</th><th>Kraj</th><th>Role</th><th>JDG</th><th class="r">Limit</th></tr></thead><tbody>${rows}</tbody></table>
         </div>
         <div class="card party-panel">
           <h3>Panel wybranego · ${p.name}</h3>
           <div class="row"><span>Tax ID</span><span class="mono">${p.tax}</span></div>
+          <div class="row"><span>VAT UE</span><span class="mono">${p.vat}</span></div>
+          <div class="row"><span>EORI</span><span class="mono">${p.eori}</span></div>
+          <div class="row"><span>DUNS</span><span class="mono">${p.duns}</span></div>
           <div class="row"><span>Kontakt</span><span>${p.contact}</span></div>
           <div class="row"><span>Domena</span><span>${p.domain}</span></div>
-          <div class="row"><span>Rachunek</span><span class="mono">${p.bank}</span></div>
+          <div class="row"><span>Nadrzędny</span><span>${parent ? parent.name : "—"}</span></div>
           <div class="row"><span>Limit</span><span>${p.limit === "—" ? "—" : money(p.limit, p.cur)}</span></div>
-          <div class="row"><span>Karta</span><span>${p.score} · bez auto-scoringu JDG</span></div>
-          <p class="note" style="margin-top:var(--s3)">Lookup GUS/VIES zwraca szkic. INSERT tylko po potwierdzeniu operatora.</p>
+          <div class="row"><span>Karta lane</span><span>${p.laneHint}</span></div>
+          <p class="note" style="margin-top:var(--s3)">Lookup GUS/VIES zwraca szkic. INSERT tylko po potwierdzeniu. Duplikat NIP/VAT/EORI/DUNS = 409 z linkiem do istniejącego.</p>
           <div class="cmd" style="border:0;padding:var(--s3) 0 0;margin:0">
             <button class="btn" type="button" data-act="edit-party">Edytuj</button>
+            ${p.jdg ? `<button class="btn" type="button" data-act="jdg-limit">Limit JDG (HITL)</button>` : ""}
             <button class="btn" type="button" data-mod="M-13">Karta wyników</button>
             <button class="btn" type="button" data-mod="M-16">SOP klienta</button>
           </div>
@@ -1434,27 +1512,71 @@ function paintUsers() {
     </div></div>`;
 }
 function paintChannels() {
+  const rows = CHANNEL_QUOTES.map((q) => `<tr><td>${q.party}</td><td class="mono">${q.pol}</td><td class="mono">${q.pod}</td><td>${q.date}</td><td>${q.tt}</td><td class="r">${money(q.amt, q.cur)}</td><td>${q.cheapest ? '<span class="chip ok">najtańsza</span>' : ""}${q.fastest ? '<span class="chip ok">najszybszy TT</span>' : "—"}</td><td><button class="linkish" type="button" data-act="src">${q.src}</button></td></tr>`).join("");
   $("#v-channels").innerHTML = `<div class="cmd">
       <button class="btn btn-p" type="button" data-act="sync" data-who="wszystkie">Odśwież kanały</button>
       <button class="btn" type="button" data-act="new-cq">Dodaj ofertę kanału</button>
-      <span class="chip">M-19 · channel_quote · bez live HTTP w makiecie</span>
+      <span class="chip">M-19 · channel_quote · TT z SQL · bez live HTTP</span>
     </div>
-    ${screenBanner("M-19 · oferty kanału i armatorzy", "payload z API → stringi", "Poświadczenia tenanta szyfrowane. Wywołania idempotentne. Makieta nie woła sieci.")}
+    ${screenBanner("M-19 · oferty kanału i armatorzy", "payload z API → stringi", "Odznaki najtańsza / najszybszy TT liczy Postgres. Poświadczenia tenanta szyfrowane. Makieta nie woła sieci.")}
     ${screenFacts([
-      { t: "Armatorzy", v: String(CARRIERS.length) },
-      { t: "Gotowe dziś", v: String(CARRIERS.filter((c) => c.st === "done").length) },
-      { t: "Błędy", v: String(CARRIERS.filter((c) => c.st === "err").length), s: "M-190 kolejka" },
+      { t: "Oferty na lane", v: String(CHANNEL_QUOTES.length), s: "PLGDY→PECLL" },
+      { t: "Najtańsza", v: "Pacific", s: "7 313,00 USD" },
+      { t: "Najszybszy TT", v: "Hapag-Lloyd", s: "29 dni" },
       { t: "Kwoty", v: "Decimal", s: "nie marża" }
     ], "n4")}
     <div class="pad" style="padding-top:0">
-      <div class="integ">${CARRIERS.map((c) => `<article class="card"><b>${c.n}</b><p><span class="chan ${c.st}"><i class="dot"></i>${c.last}</span></p><p class="note">${c.note}</p>
+      <div class="card xscroll" style="padding:0">
+        <table class="grid"><thead><tr><th>Armator</th><th>POL</th><th>POD</th><th>Dzień oferty</th><th>TT</th><th class="r">Kwota</th><th>Odznaka</th><th>source_ref</th></tr></thead><tbody>${rows}</tbody></table>
+      </div>
+      <div class="integ" style="margin-top:var(--s4)">${CARRIERS.map((c) => `<article class="card"><b>${c.n}</b><p><span class="chan ${c.st}"><i class="dot"></i>${c.last}</span></p><p class="note">${c.note}</p>
         <button class="btn" type="button" data-act="sync" data-who="${c.n}">Odśwież</button>
         <button class="btn" type="button" data-act="connect" data-who="${c.n}">Połącz</button></article>`).join("")}</div>
       <div class="integ" style="margin-top:var(--s4)">
-        <article class="card"><b>Poczta M-32</b><p class="note">wątki RFQ</p><button class="btn" type="button" data-act="ask">Otwórz skrzynkę</button></article>
+        <article class="card"><b>Poczta M-32</b><p class="note">group_by party / country / status</p><button class="btn" type="button" data-act="open-mail">Otwórz skrzynkę</button></article>
         <article class="card"><b>EDI M-39</b><p class="note">IFTMIN stub</p><button class="btn" type="button" data-mod="M-39">Kolejka</button></article>
         <article class="card"><b>NBP D-1</b><p class="note">kurs z tabeli</p><button class="btn" type="button" data-mod="M-23">Tabela</button></article>
         <article class="card"><b>Hub M-201</b><p class="note">błędy M-190</p><button class="btn" type="button" data-mod="M-201">Otwórz</button></article>
+      </div>
+    </div>`;
+}
+function paintNetworks() {
+  const iso = netCountry.trim().toUpperCase();
+  const members = NETWORK_MEMBERS.filter((m) => !iso || m.country === iso);
+  const mRows = members.map((m) => `<tr><td class="mono">${m.code}</td><td>${m.name}</td><td class="mono">${m.partyId}</td><td>${m.country}</td></tr>`).join("");
+  const iRows = INQUIRIES.map((i) => `<tr><td class="mono">${i.member}</td><td>${i.party}</td><td>${i.lane}</td><td><span class="chip ${i.status === "no_reply" ? "alert" : i.status === "answered" ? "ok" : ""}">${i.status}</span></td><td>${i.silence}</td><td>${i.rank}</td></tr>`).join("");
+  const top = INQUIRIES.slice(0, inquiryDefaultN);
+  $("#v-networks").innerHTML = `<div class="cmd">
+      <button class="btn btn-p" type="button" data-act="new-member">Dodaj członka</button>
+      <button class="btn" type="button" data-act="ask-batch">Zapisz paczkę zapytań</button>
+      <button class="btn" type="button" data-act="inquiry-drafts">Szkice maila top N</button>
+      <button class="btn" type="button" data-act="no-reply">Notice ciszy</button>
+      <span class="chip">M-12 · party_id obowiązkowy · filtr kraju</span>
+    </div>
+    ${screenBanner("M-12 / M-30 · sieci i zapytania", "WCA · kopia per tenant", "Członek związany z party. Paczka queued, nie wysyłka. Ranking SQL · inquiry_default_n.")}
+    ${screenFacts([
+      { t: "Członkowie", v: String(members.length), s: iso ? `filtr ${iso}` : "wszyscy" },
+      { t: "Zapytania", v: String(INQUIRIES.length), s: "answered / queued / no_reply" },
+      { t: "inquiry_default_n", v: String(inquiryDefaultN), s: "top z rankingu" },
+      { t: "Cisza", v: "2026-09-05", s: "no_reply_after" }
+    ], "n4")}
+    <div class="pad" style="padding-top:0">
+      <div class="card" style="margin-bottom:var(--s4)">
+        <h3 class="h-id">Członkowie</h3>
+        <label class="kf"><span>Filtr kraju członka</span>
+          <input id="netCountry" value="${iso}" placeholder="ISO kraju, np. NL" aria-label="Filtr kraju członka">
+        </label>
+        <div class="xscroll" style="margin-top:var(--s3)">
+          <table class="grid"><thead><tr><th>Kod</th><th>Nazwa</th><th>party_id</th><th>Kraj</th></tr></thead><tbody>${mRows || `<tr><td colspan="4">Brak członków dla ${iso}.</td></tr>`}</tbody></table>
+        </div>
+      </div>
+      <div class="card" data-carrier-inquiry="catalog">
+        <h3 class="h-id">Zapytania do agentów</h3>
+        <p class="note">Kwota tylko gdy answered. Paczka queued: jeden, wielu albo wszyscy. Nie HTTP.</p>
+        <div class="xscroll">
+          <table class="grid"><thead><tr><th>Członek</th><th>Kontrahent</th><th>Lane</th><th>Status</th><th>no_reply_after</th><th>Rank</th></tr></thead><tbody>${iRows}</tbody></table>
+        </div>
+        <p class="note" style="margin-top:var(--s3)">Szkice zapytań: top ${inquiryDefaultN} z rankingu answered (${top.map((t) => t.member).join(", ")}). Nie wysyłka.</p>
       </div>
     </div>`;
 }
@@ -1713,6 +1835,9 @@ function quoteInspHtml() {
     : `<div class="risk"><span class="sev alert"></span><div><b>Brak kodu HS</b><p>Wymagany przy odprawie importowej w Peru i kontroli eksportowej.</p><button class="fix" type="button" data-act="fill-hs">Uzupełnij HS</button> · <button class="fix" type="button" data-act="ask-hs">Pytanie do klienta</button></div></div>`;
   return `<div class="rsec"><h3>Luki i ostrzeżenia <span class="cnt">${quoteHs ? "3" : "4"}</span></h3>
     ${hsBlock}
+    ${(quoteTerms.incoterm === "DAP" || quoteTerms.incoterm === "DDP") && !quoteTerms.namedPlace
+      ? `<div class="risk"><span class="sev stop"></span><div><b>409 · ${quoteTerms.incoterm} bez named_place</b><p>Zapis wyceny odrzucony. Wskaż miejsce nazwane.</p><button class="fix" type="button" data-act="quote-incoterm">Uzupełnij Incoterms</button></div></div>`
+      : ""}
     <div class="risk"><span class="sev alert"></span><div><b>ISPS Callao w żadnym wariancie</b><p>W 7 z 8 ostatnich zleceń — zwykle 45,00 USD / kontener.</p><button class="fix" type="button" data-gap="isps">Dopisz pozycję ręcznie</button></div></div>
     <div class="risk"><span class="sev stop"></span><div><b>Pacific wygasa 15.09</b><p>Cut-off bramowy 18–24.09 — stawka nie pokryje wypłynięcia.</p></div></div>
     <div class="risk"><span class="sev"></span><div><b>GRI ogłoszone na 01.10</b><p>Hapag-Lloyd · +800 USD/FEU · poza zakresem przy ważności 14 dni.</p></div></div>
@@ -1737,12 +1862,13 @@ const INSP = {
   quote: "",
   rates: `<h3 class="h-id">rate_line</h3><p class="note">Niemutowalna. Zastąp = nowy wiersz. source_ref obowiązkowy. Peru: pokryte. Kolumbia: biała plama.</p>`,
   charges: `<h3 class="h-id">charge</h3><p class="note">Jedyny wiersz buy+sell. Marża z domeny. Nie druga tabela.</p>`,
-  hitl: `<h3 class="h-id">Szkic</h3><p class="note">source_ref MAERSK-SHA-0926. Zapis rate_line tylko po Accept. ExtractionService nie importuje rates.</p>`,
-  parties: `<h3 class="h-id">party</h3><p class="note">Resolve po tax_id. Lookup = szkic. Zero zapisu z sieci w CI (fixture).</p>`,
+  hitl: `<h3 class="h-id">Szkic</h3><p class="note">draft_kind = rate_line albo carrier_quote. Accept zapisuje stawkę albo ofertę kanału. ExtractionService nie importuje rates.</p>`,
+  parties: `<h3 class="h-id">party</h3><p class="note">NIP / VAT UE / EORI / DUNS unikalne. Klient bez NIP = 400. JDG limit tylko HITL. Lookup = szkic.</p>`,
   ports: `<h3 class="h-id">port</h3><p class="note">UN/LOCODE. Nieznany token = odrzut. WPI poza HTTP.</p>`,
   locations: `<h3 class="h-id">location</h3><p class="note">postal_zone z exclusion constraint w Postgres.</p>`,
   users: `<h3 class="h-id">OpenFGA</h3><p class="note">Brak relacji — ukryj. Read-only — wyszarz z powodem.</p>`,
-  channels: `<h3 class="h-id">channel_quote</h3><p class="note">Sekrety tenanta nie w logach. Idempotencja. M-190 kolejka błędów.</p>`,
+  channels: `<h3 class="h-id">channel_quote</h3><p class="note">TT + najtańsza / najszybszy TT z SQL. 409 przy duplikacie na lane. Nie marża.</p>`,
+  networks: `<h3 class="h-id">network / inquiry</h3><p class="note">Członek z party_id. Filtr kraju. Paczka queued. Szkice top N. no_reply_after → notice.</p>`,
   mod: `<h3 class="h-id">Inspector</h3><p class="note">Kwoty string. LLM nie liczy. HITL przed zapisem do bazy.</p>`
 };
 const META = {
@@ -1756,7 +1882,8 @@ const META = {
   ports: ["Porty", "UN/LOCODE"],
   locations: ["Lokalizacje", "Strefy i adresy"],
   users: ["Organizacja", "Użytkownicy"],
-  channels: ["Oferty kanału", "Armatorzy i łączniki"]
+  channels: ["Oferty kanału", "Armatorzy i TT"],
+  networks: ["Sieci", "Członkowie i zapytania"]
 };
 
 function setInsp(html, on) {
@@ -1805,6 +1932,7 @@ function applyView(v) {
   if (v === "locations") paintLocations();
   if (v === "users") paintUsers();
   if (v === "channels") paintChannels();
+  if (v === "networks") paintNetworks();
 }
 function go(v) {
   if (!navSilent && navKey(navCurrent()) !== `view:${v}`) navPast.push(navCurrent());
@@ -1831,9 +1959,11 @@ function goMod(id) {
   if (found.n === 8) { go("charges"); return; }
   if (found.tpl === "hitl" && found.n === 20) { go("hitl"); return; }
   if (found.tpl === "ship" && found.n === 35) { go("ship"); return; }
-  if (found.n === 10) { go("parties"); return; }
+  if (found.n === 10 || found.n === 13) { go("parties"); return; }
   if (found.n === 5) { go("ports"); return; }
-  if (found.tpl === "channels" && (found.n === 19 || found.n === 30)) { go("channels"); return; }
+  if (found.n === 12 || found.n === 30) { go("networks"); return; }
+  if (found.n === 19) { go("channels"); return; }
+  if (found.n === 32) { quoteOpenMail = true; go("quote"); return; }
   if (found.tpl === "home") { go("home"); return; }
   if (!navSilent && navKey(navCurrent()) !== `mod:${found.id}`) navPast.push(navCurrent());
   applyMod(found);
@@ -1900,6 +2030,7 @@ function drawPal(q) {
     { g: "Nawigacja", i: "Porty", a: () => go("ports") },
     { g: "Nawigacja", i: "Lokalizacje", a: () => go("locations") },
     { g: "Nawigacja", i: "Oferty kanału", a: () => go("channels") },
+    { g: "Nawigacja", i: "Sieci i zapytania", a: () => go("networks") },
     { g: "Nawigacja", i: "Użytkownicy", a: () => go("users") },
     { g: "Akcje", i: "Akceptuj szkic HITL", a: () => { go("hitl"); toast("Fokus na Accept — potwierdzenie recenzenta."); } },
     { g: "Rekordy", i: "ZAP/2026/00318", a: () => go("quote") }
@@ -2140,14 +2271,31 @@ document.addEventListener("click", (e) => {
   if (a === "new-party") {
     OR_KERNEL.form({
       title: "Nowy kontrahent",
-      note: "INSERT po potwierdzeniu. Lookup tylko szkic.",
+      note: "NIP / VAT UE / EORI / DUNS unikalne. Klient bez NIP = 400. INSERT po potwierdzeniu.",
       hitl: true,
       fields: [
-        { id: "party", label: "Nazwa", required: true },
-        { id: "tax", label: "Tax ID", required: true },
-        { id: "role", label: "Rola", type: "select", options: ["klient", "agent", "armator", "przewoźnik"], value: "klient" }
+        { id: "party", label: "Nazwa prawna", required: true },
+        { id: "country", label: "Kod kraju", required: true, value: "PL" },
+        { id: "tax", label: "NIP / Tax ID" },
+        { id: "vat", label: "VAT UE" },
+        { id: "eori", label: "EORI" },
+        { id: "duns", label: "DUNS" },
+        { id: "role", label: "Role", required: true, value: "customer", placeholder: "customer, vendor" },
+        { id: "parent", label: "parent_party_id" },
+        { id: "jdg", label: "JDG", type: "checkbox" }
       ],
-      onSave: () => toast("Party potwierdzony w sesji.")
+      validate: (d) => {
+        if ((d.role || "").includes("customer") && !d.tax) return "400 · klient bez NIP.";
+        const hit = PARTIES.find((p) => d.tax && p.tax === d.tax);
+        if (hit) return `409 · tax_id zajęty — otwórz ${hit.name}.`;
+        const vatHit = PARTIES.find((p) => d.vat && d.vat !== "—" && p.vat === d.vat);
+        if (vatHit) return `409 · VAT UE zajęty — otwórz ${vatHit.name}.`;
+        return "";
+      },
+      onSave: (d) => {
+        if (d.jdg === "1") toast("Party JDG w sesji. Limit kredytowy tylko przez HITL.");
+        else toast("Party potwierdzony w sesji.");
+      }
     });
     return;
   }
@@ -2166,12 +2314,26 @@ document.addEventListener("click", (e) => {
     const p = PARTIES.find((x) => x.id === partyId) || PARTIES[0];
     OR_KERNEL.form({
       title: "Edycja · " + p.name,
-      note: "RLS · jeden tenant z paska.",
+      note: "RLS · jeden tenant z paska. Role i parent na wierszu.",
       fields: [
         { id: "contact", label: "Kontakt", required: true, value: p.contact },
-        { id: "domain", label: "Domena", required: true, value: p.domain }
+        { id: "domain", label: "Domena", required: true, value: p.domain },
+        { id: "role", label: "Role", required: true, value: p.roles },
+        { id: "parent", label: "parent_party_id", value: p.parent === "—" ? "" : p.parent },
+        { id: "eori", label: "EORI", value: p.eori === "—" ? "" : p.eori },
+        { id: "duns", label: "DUNS", value: p.duns === "—" ? "" : p.duns }
       ],
       onSave: () => toast("Kontrahent zaktualizowany w sesji.")
+    });
+    return;
+  }
+  if (a === "jdg-limit") {
+    OR_KERNEL.confirm({
+      title: "Limit JDG",
+      note: "AI Act · zakaz auto-scoringu osoby. Limit tylko po HITL.",
+      text: "Ustawić limit kredytowy dla Jana Kowalskiego (JDG) z karty wywiadowni? Bez tego pole zostaje puste.",
+      acceptLabel: "Potwierdź limit",
+      onAccept: () => toast("Limit JDG w sesji po HITL. Nie auto-scoring.")
     });
     return;
   }
@@ -2200,17 +2362,101 @@ document.addEventListener("click", (e) => {
     });
     return;
   }
-  if (a === "new-cq") {
+  if (a === "new-cq" || a === "save-cq") {
+    if (a === "save-cq" && channelQuoteSaved) {
+      OR_KERNEL.blocked("409 · channel_quote już istnieje na tej lane i source_ref. Wskazanie oferty, nie drugi wiersz.");
+      return;
+    }
+    const who = act.dataset.who || "Hapag-Lloyd AG";
     OR_KERNEL.form({
-      title: "Oferta kanału",
-      note: "Kwota Decimal string. Nie marża. Nie live HTTP.",
+      title: "Wpis oferty kanału",
+      note: "POST channel_quote z lane wyceny · nie mutuj kwoty · nie rate_line",
       requireSource: true,
       fields: [
-        { id: "party", label: "Kanał", required: true, value: "Hapag-Lloyd" },
-        { id: "amt", label: "Kwota", required: true, value: "1 790,00" },
-        { id: "source_ref", label: "source_ref", required: true }
+        { id: "party", label: "Armator / party_id", required: true, value: who },
+        { id: "origin_port_id", label: "POL", required: true, value: "PLGDY" },
+        { id: "destination_port_id", label: "POD", required: true, value: "PECLL" },
+        { id: "quote_date", label: "Dzień oferty", type: "date", required: true, value: "2026-09-08" },
+        { id: "amt", label: "Kwota kupna (string)", required: true, value: "7 882,00" },
+        { id: "cur", label: "Waluta", required: true, value: "USD" },
+        { id: "tt", label: "transit_days", value: "29" },
+        { id: "source_ref", label: "source_ref", required: true, value: "QQ-8841203" }
       ],
-      onSave: () => toast("channel_quote w sesji.")
+      onSave: () => {
+        channelQuoteSaved = true;
+        toast("channel_quote w sesji. Nie odejmuj kwot. Odznaki TT z SQL.");
+      }
+    });
+    return;
+  }
+  if (a === "quote-incoterm") {
+    OR_KERNEL.form({
+      title: "Incoterms",
+      note: "DAP/DDP bez named_place = 409. trade_side na wycenie.",
+      fields: [
+        { id: "incoterm", label: "incoterm", type: "select", required: true, options: ["EXW", "FCA", "CPT", "CIP", "DAP", "DPU", "DDP", "FAS", "FOB", "CFR", "CIF"], value: quoteTerms.incoterm },
+        { id: "incoterms_version", label: "incoterms_version", type: "select", options: ["2020", "2010"], value: quoteTerms.version },
+        { id: "trade_side", label: "trade_side", type: "select", options: ["import", "export"], value: quoteTerms.tradeSide },
+        { id: "named_place", label: "named_place", value: quoteTerms.namedPlace, placeholder: "Lima" }
+      ],
+      validate: (d) => {
+        if ((d.incoterm === "DAP" || d.incoterm === "DDP") && !d.named_place) return "409 · DAP/DDP wymaga named_place.";
+        return "";
+      },
+      onSave: (d) => {
+        quoteTerms = { incoterm: d.incoterm, version: d.incoterms_version || "2020", tradeSide: d.trade_side || "export", namedPlace: d.named_place };
+        if (current === "quote") { paintQuote(); setInsp(quoteInspHtml(), true); }
+        toast("Incoterms zapisane w sesji. FOB superseded gdy DAP.");
+      }
+    });
+    return;
+  }
+  if (a === "open-mail") {
+    quoteOpenMail = true;
+    if (current === "quote") paintQuote();
+    else go("quote");
+    return;
+  }
+  if (a === "new-member") {
+    OR_KERNEL.form({
+      title: "Dodaj członka",
+      note: "network_member.party_id obowiązkowy. Kopia per tenant, nie scraping.",
+      fields: [
+        { id: "code", label: "Kod członka", required: true, value: "agent_a", placeholder: "agent_a" },
+        { id: "name", label: "Nazwa", required: true, placeholder: "Agent Alpha" },
+        { id: "party_id", label: "Kontrahent członka", required: true, placeholder: "party_id" }
+      ],
+      onSave: () => toast("Członek w sesji. Bez party_id rekord nie wchodzi.")
+    });
+    return;
+  }
+  if (a === "ask-batch") {
+    OR_KERNEL.confirm({
+      title: "Paczka zapytań",
+      note: "queued: jeden, wielu albo wszyscy. Nie wysyłka.",
+      text: `Zaznacz top N (${inquiryDefaultN}): ${INQUIRIES.slice(0, inquiryDefaultN).map((i) => i.member).join(", ")} · POL PLGDY · POD PECLL.`,
+      acceptLabel: "Zapisz paczkę zapytań",
+      onAccept: () => toast("Paczka queued w sesji. Statusy: queued. Kwota tylko po answered.")
+    });
+    return;
+  }
+  if (a === "inquiry-drafts") {
+    OR_KERNEL.mail({
+      title: "Szkice zapytań · top N",
+      to: "desk@andescargo.pe, desk@pacific-fw.com",
+      subject: `RFQ lane PLGDY→PECLL · ${inquiryDefaultN} szkiców`,
+      body: `Szkice zapytań: top ${inquiryDefaultN} z rankingu answered (inquiry_default_n). Nie wysyłka automatyczna.`,
+      onSend: () => toast("N × mail_draft w sesji. Ranking z SQL.")
+    });
+    return;
+  }
+  if (a === "no-reply") {
+    OR_KERNEL.confirm({
+      title: "Notice ciszy",
+      note: "no_reply_after minął. Operator wystawia notice ręcznie.",
+      text: "Rotterdam Hub BV · no_reply_after 2026-09-05 · status no_reply. Zapisać operator_notice?",
+      acceptLabel: "Zapisz notice",
+      onAccept: () => toast("Notice ciszy w sesji. Nie auto-send.")
     });
     return;
   }
@@ -2239,11 +2485,16 @@ document.addEventListener("click", (e) => {
   }
   if (e.target.closest("#sendQuote")) { OR_KERNEL.blocked("Wysyłka zablokowana: brak kodu HS. Nie omijamy walidacji ani HITL."); return; }
   if (e.target.closest("#acceptHitl")) {
+    const cq = hitlDraftKind === "carrier_quote";
     OR_KERNEL.confirm({
-      title: "Accept szkicu",
-      note: "Jedna transakcja. ExtractionService nie importuje rates.",
-      text: "Zaznaczone kandydaty wejdą do rate_line. PDF zostaje jako source_ref.",
-      onAccept: () => toast("Accept → rate_line w sesji. Nie produkcja.")
+      title: cq ? "Accept · carrier_quote" : "Accept szkicu",
+      note: cq
+        ? "Jedna transakcja. ExtractionService nie importuje channel_quotes z serwisu — zapis po Accept w warstwie API."
+        : "Jedna transakcja. ExtractionService nie importuje rates.",
+      text: cq
+        ? "Zaznaczone pola wejdą do channel_quote (party, POL/POD, dzień, kwota). Nie rate_line."
+        : "Zaznaczone kandydaty wejdą do rate_line. PDF zostaje jako source_ref.",
+      onAccept: () => toast(cq ? "Accept → channel_quote w sesji. Nie rate_line." : "Accept → rate_line w sesji. Nie produkcja.")
     });
     return;
   }
@@ -2264,6 +2515,21 @@ document.addEventListener("change", (e) => {
     shipCustomsMode = e.target.value;
     if (current === "ship") setInsp(shipInspHtml(), true);
     toast(shipCustomsMode === "none" ? "Nie składamy pakietu celnego." : `Odbiorca pakietu: ${shipCustomsMode}.`);
+  }
+  if (e.target.id === "mailGroupBy") {
+    mailGroupBy = e.target.value;
+    if (current === "quote") {
+      quoteOpenMail = true;
+      paintQuote();
+    }
+  }
+  if (e.target.id === "hitlKind") {
+    hitlDraftKind = e.target.value;
+    if (current === "hitl") paintHitl();
+  }
+  if (e.target.id === "netCountry") {
+    netCountry = e.target.value;
+    if (current === "networks") paintNetworks();
   }
 });
 $("#tenant").addEventListener("change", (e) => {
