@@ -17,6 +17,7 @@ from app.api import (
     customer_sops,
     dangerous_goods,
     edi_messages,
+    entity_events,
     extractions,
     fraud_flags,
     fx_differences,
@@ -67,6 +68,7 @@ api_router.include_router(operator_decisions.router)
 api_router.include_router(operator_notices.router)
 api_router.include_router(mail_drafts.router)
 api_router.include_router(outbox_events.router)
+api_router.include_router(entity_events.router)
 api_router.include_router(nbp_rates.router)
 api_router.include_router(charges.router)
 api_router.include_router(rate_lines.router)

@@ -21,6 +21,7 @@ from app.models.commodity_code import CommodityCode  # noqa: F401 — rejestr me
 from app.models.credit_review import CreditReview  # noqa: F401 — rejestr metadanych RLS
 from app.models.customer_sop import CustomerSop  # noqa: F401 — rejestr metadanych RLS
 from app.models.dangerous_good import DangerousGood  # noqa: F401 — rejestr metadanych RLS
+from app.models.entity_event import EntityEvent  # noqa: F401 — rejestr metadanych RLS
 from app.models.extraction_draft import ExtractionDraft  # noqa: F401 — rejestr metadanych RLS
 from app.models.inbound_message import InboundMessage  # noqa: F401 — rejestr metadanych RLS
 from app.models.location import (  # noqa: F401 — rejestr metadanych RLS

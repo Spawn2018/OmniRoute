@@ -1169,6 +1169,66 @@ export type EmailDomainResponse = {
 };
 
 /**
+ * EntityEventCreate
+ */
+export type EntityEventCreate = {
+    /**
+     * Subject Kind
+     */
+    subject_kind: string;
+    /**
+     * Subject Id
+     */
+    subject_id: string;
+    /**
+     * Event Kind
+     */
+    event_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+    /**
+     * Occurred At
+     */
+    occurred_at?: string | null;
+};
+
+/**
+ * EntityEventResponse
+ */
+export type EntityEventResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Subject Kind
+     */
+    subject_kind: string;
+    /**
+     * Subject Id
+     */
+    subject_id: string;
+    /**
+     * Event Kind
+     */
+    event_kind: string;
+    /**
+     * Occurred At
+     */
+    occurred_at: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * ExtractRequest
  */
 export type ExtractRequest = {
@@ -4690,6 +4750,49 @@ export type CreateOutboxEventApiV1OutboxEventsPostResponses = {
 };
 
 export type CreateOutboxEventApiV1OutboxEventsPostResponse = CreateOutboxEventApiV1OutboxEventsPostResponses[keyof CreateOutboxEventApiV1OutboxEventsPostResponses];
+
+export type ListEntityEventsApiV1EntityEventsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/entity-events';
+};
+
+export type ListEntityEventsApiV1EntityEventsGetResponses = {
+    /**
+     * Response List Entity Events Api V1 Entity Events Get
+     *
+     * Successful Response
+     */
+    200: Array<EntityEventResponse>;
+};
+
+export type ListEntityEventsApiV1EntityEventsGetResponse = ListEntityEventsApiV1EntityEventsGetResponses[keyof ListEntityEventsApiV1EntityEventsGetResponses];
+
+export type CreateEntityEventApiV1EntityEventsPostData = {
+    body: EntityEventCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/entity-events';
+};
+
+export type CreateEntityEventApiV1EntityEventsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateEntityEventApiV1EntityEventsPostError = CreateEntityEventApiV1EntityEventsPostErrors[keyof CreateEntityEventApiV1EntityEventsPostErrors];
+
+export type CreateEntityEventApiV1EntityEventsPostResponses = {
+    /**
+     * Successful Response
+     */
+    200: EntityEventResponse;
+};
+
+export type CreateEntityEventApiV1EntityEventsPostResponse = CreateEntityEventApiV1EntityEventsPostResponses[keyof CreateEntityEventApiV1EntityEventsPostResponses];
 
 export type ListNbpRatesApiV1NbpRatesGetData = {
     body?: never;

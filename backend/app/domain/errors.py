@@ -422,5 +422,9 @@ class InvalidMailDraft(DomainError):
     """Szkic maila: kind, treść, adres albo status — nie czat, nie Graph HTTP."""
 
 
+class InvalidEntityEvent(DomainError):
+    """Zdarzenie podmiotu: kind, subject albo source_ref — nie ledger predykcji."""
+
+
 class InvalidOutboxEvent(DomainError):
     """Outbox: kind albo source_ref — nie Temporal, nie konsument."""

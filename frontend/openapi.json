@@ -2064,6 +2064,80 @@
         ]
       }
     },
+    "/api/v1/entity-events": {
+      "get": {
+        "tags": [
+          "entity-events"
+        ],
+        "summary": "List Entity Events",
+        "operationId": "list_entity_events_api_v1_entity_events_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/EntityEventResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Entity Events Api V1 Entity Events Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "entity-events"
+        ],
+        "summary": "Create Entity Event",
+        "operationId": "create_entity_event_api_v1_entity_events_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EntityEventCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityEventResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/nbp-rates": {
       "get": {
         "tags": [
@@ -8588,6 +8662,95 @@
           "source_ref"
         ],
         "title": "EmailDomainResponse"
+      },
+      "EntityEventCreate": {
+        "properties": {
+          "subject_kind": {
+            "type": "string",
+            "title": "Subject Kind"
+          },
+          "subject_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Subject Id"
+          },
+          "event_kind": {
+            "type": "string",
+            "title": "Event Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          },
+          "occurred_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Occurred At"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "subject_kind",
+          "subject_id",
+          "event_kind",
+          "source_ref"
+        ],
+        "title": "EntityEventCreate"
+      },
+      "EntityEventResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "subject_kind": {
+            "type": "string",
+            "title": "Subject Kind"
+          },
+          "subject_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Subject Id"
+          },
+          "event_kind": {
+            "type": "string",
+            "title": "Event Kind"
+          },
+          "occurred_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Occurred At"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "subject_kind",
+          "subject_id",
+          "event_kind",
+          "occurred_at",
+          "source_ref"
+        ],
+        "title": "EntityEventResponse"
       },
       "ExtractRequest": {
         "properties": {

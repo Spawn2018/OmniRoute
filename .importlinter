@@ -36,6 +36,7 @@ modules =
     app.services.operator_notices
     app.services.mail_drafts
     app.services.outbox_events
+    app.services.entity_events
     app.services.port_surcharges
     app.services.channel_quotes
     app.services.shipments
@@ -127,6 +128,9 @@ forbidden_modules =
     app.services.outbox_events
     app.repositories.outbox_events
     app.models.outbox_event
+    app.services.entity_events
+    app.repositories.entity_events
+    app.models.entity_event
     app.services.port_surcharges
     app.repositories.port_surcharges
     app.models.port_surcharge
