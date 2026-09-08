@@ -428,3 +428,4 @@
 | 2026-09-09 | Plan 173.0 | G2.4 | tender_data_room NDA na tender, nie extract. Delta zaakceptowana (`/noc`). Nie auto-award. Nastepny: kod 173.0. |
 | 2026-09-09 | 173.0 | G2.4 | tender_data_room NDA na tender. Nie extract. Nie auto-award. Nastepny: G2.5 Plan. |
 | 2026-09-09 | Plan 174.0 | G2.5 | tender_matrix_cell kwota Decimal z P, nie LLM. Delta zaakceptowana (`/noc`). Nie auto-award. Nastepny: kod 174.0. |
+| 2026-09-09 | 174.0 | G2.5 | tender_matrix_cell kwota Decimal z P na tender. Nie LLM. Nie druga marża. Nastepny: G2.6 Plan. |

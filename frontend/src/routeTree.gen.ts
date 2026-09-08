@@ -75,6 +75,7 @@ import { Route as ShipmentsRouteImport } from './routes/shipments'
 import { Route as TenderDataRoomsRouteImport } from './routes/tender-data-rooms'
 import { Route as TenderLanesRouteImport } from './routes/tender-lanes'
 import { Route as TenderLotsRouteImport } from './routes/tender-lots'
+import { Route as TenderMatrixCellsRouteImport } from './routes/tender-matrix-cells'
 import { Route as TenderQuotesRouteImport } from './routes/tender-quotes'
 import { Route as TenderRoundsRouteImport } from './routes/tender-rounds'
 import { Route as TendersRouteImport } from './routes/tenders'
@@ -413,6 +414,11 @@ const TenderLotsRoute = TenderLotsRouteImport.update({
   path: '/tender-lots',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TenderMatrixCellsRoute = TenderMatrixCellsRouteImport.update({
+  id: '/tender-matrix-cells',
+  path: '/tender-matrix-cells',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TenderQuotesRoute = TenderQuotesRouteImport.update({
   id: '/tender-quotes',
   path: '/tender-quotes',
@@ -516,6 +522,7 @@ export interface FileRoutesByFullPath {
   '/tender-data-rooms': typeof TenderDataRoomsRoute
   '/tender-lanes': typeof TenderLanesRoute
   '/tender-lots': typeof TenderLotsRoute
+  '/tender-matrix-cells': typeof TenderMatrixCellsRoute
   '/tender-quotes': typeof TenderQuotesRoute
   '/tender-rounds': typeof TenderRoundsRoute
   '/tenders': typeof TendersRoute
@@ -591,6 +598,7 @@ export interface FileRoutesByTo {
   '/tender-data-rooms': typeof TenderDataRoomsRoute
   '/tender-lanes': typeof TenderLanesRoute
   '/tender-lots': typeof TenderLotsRoute
+  '/tender-matrix-cells': typeof TenderMatrixCellsRoute
   '/tender-quotes': typeof TenderQuotesRoute
   '/tender-rounds': typeof TenderRoundsRoute
   '/tenders': typeof TendersRoute
@@ -667,6 +675,7 @@ export interface FileRoutesById {
   '/tender-data-rooms': typeof TenderDataRoomsRoute
   '/tender-lanes': typeof TenderLanesRoute
   '/tender-lots': typeof TenderLotsRoute
+  '/tender-matrix-cells': typeof TenderMatrixCellsRoute
   '/tender-quotes': typeof TenderQuotesRoute
   '/tender-rounds': typeof TenderRoundsRoute
   '/tenders': typeof TendersRoute
@@ -744,6 +753,7 @@ export interface FileRouteTypes {
     | '/tender-data-rooms'
     | '/tender-lanes'
     | '/tender-lots'
+    | '/tender-matrix-cells'
     | '/tender-quotes'
     | '/tender-rounds'
     | '/tenders'
@@ -819,6 +829,7 @@ export interface FileRouteTypes {
     | '/tender-data-rooms'
     | '/tender-lanes'
     | '/tender-lots'
+    | '/tender-matrix-cells'
     | '/tender-quotes'
     | '/tender-rounds'
     | '/tenders'
@@ -894,6 +905,7 @@ export interface FileRouteTypes {
     | '/tender-data-rooms'
     | '/tender-lanes'
     | '/tender-lots'
+    | '/tender-matrix-cells'
     | '/tender-quotes'
     | '/tender-rounds'
     | '/tenders'
@@ -967,8 +979,10 @@ export interface RootRouteChildren {
   ShipmentDocumentsRoute: typeof ShipmentDocumentsRoute
   ShipmentPackagesRoute: typeof ShipmentPackagesRoute
   ShipmentsRoute: typeof ShipmentsRoute
+  TenderDataRoomsRoute: typeof TenderDataRoomsRoute
   TenderLanesRoute: typeof TenderLanesRoute
   TenderLotsRoute: typeof TenderLotsRoute
+  TenderMatrixCellsRoute: typeof TenderMatrixCellsRoute
   TenderQuotesRoute: typeof TenderQuotesRoute
   TenderRoundsRoute: typeof TenderRoundsRoute
   TendersRoute: typeof TendersRoute
@@ -1442,6 +1456,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TenderLotsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tender-matrix-cells': {
+      id: '/tender-matrix-cells'
+      path: '/tender-matrix-cells'
+      fullPath: '/tender-matrix-cells'
+      preLoaderRoute: typeof TenderMatrixCellsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tender-quotes': {
       id: '/tender-quotes'
       path: '/tender-quotes'
@@ -1561,6 +1582,7 @@ const rootRouteChildren: RootRouteChildren = {
   TenderDataRoomsRoute: TenderDataRoomsRoute,
   TenderLanesRoute: TenderLanesRoute,
   TenderLotsRoute: TenderLotsRoute,
+  TenderMatrixCellsRoute: TenderMatrixCellsRoute,
   TenderQuotesRoute: TenderQuotesRoute,
   TenderRoundsRoute: TenderRoundsRoute,
   TendersRoute: TendersRoute,

@@ -5234,6 +5234,66 @@ export type TenderLotResponse = {
 };
 
 /**
+ * TenderMatrixCellCreate
+ */
+export type TenderMatrixCellCreate = {
+    /**
+     * Tender Id
+     */
+    tender_id: string;
+    /**
+     * Cell Code
+     */
+    cell_code: string;
+    /**
+     * Amount
+     */
+    amount: string;
+    /**
+     * Currency
+     */
+    currency: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TenderMatrixCellResponse
+ */
+export type TenderMatrixCellResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Tender Id
+     */
+    tender_id: string;
+    /**
+     * Cell Code
+     */
+    cell_code: string;
+    /**
+     * Amount
+     */
+    amount: string;
+    /**
+     * Currency
+     */
+    currency: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * TenderQuoteCreate
  */
 export type TenderQuoteCreate = {
@@ -8979,6 +9039,49 @@ export type CreateTenderLotApiV1TenderLotsPostResponses = {
 };
 
 export type CreateTenderLotApiV1TenderLotsPostResponse = CreateTenderLotApiV1TenderLotsPostResponses[keyof CreateTenderLotApiV1TenderLotsPostResponses];
+
+export type ListTenderMatrixCellsApiV1TenderMatrixCellsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tender-matrix-cells';
+};
+
+export type ListTenderMatrixCellsApiV1TenderMatrixCellsGetResponses = {
+    /**
+     * Response List Tender Matrix Cells Api V1 Tender Matrix Cells Get
+     *
+     * Successful Response
+     */
+    200: Array<TenderMatrixCellResponse>;
+};
+
+export type ListTenderMatrixCellsApiV1TenderMatrixCellsGetResponse = ListTenderMatrixCellsApiV1TenderMatrixCellsGetResponses[keyof ListTenderMatrixCellsApiV1TenderMatrixCellsGetResponses];
+
+export type CreateTenderMatrixCellApiV1TenderMatrixCellsPostData = {
+    body: TenderMatrixCellCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tender-matrix-cells';
+};
+
+export type CreateTenderMatrixCellApiV1TenderMatrixCellsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTenderMatrixCellApiV1TenderMatrixCellsPostError = CreateTenderMatrixCellApiV1TenderMatrixCellsPostErrors[keyof CreateTenderMatrixCellApiV1TenderMatrixCellsPostErrors];
+
+export type CreateTenderMatrixCellApiV1TenderMatrixCellsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TenderMatrixCellResponse;
+};
+
+export type CreateTenderMatrixCellApiV1TenderMatrixCellsPostResponse = CreateTenderMatrixCellApiV1TenderMatrixCellsPostResponses[keyof CreateTenderMatrixCellApiV1TenderMatrixCellsPostResponses];
 
 export type ListTenderRoundsApiV1TenderRoundsGetData = {
     body?: never;

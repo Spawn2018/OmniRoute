@@ -64,3 +64,4 @@ type organization
     define can_manage_tender_lanes: member
     define can_manage_tender_rounds: member
     define can_manage_tender_data_rooms: member
+    define can_manage_tender_matrix_cells: member

@@ -83,6 +83,7 @@ def _organization_ops_relations() -> dict[str, Userset]:
         "can_manage_tender_lanes": _member(),
         "can_manage_tender_rounds": _member(),
         "can_manage_tender_data_rooms": _member(),
+        "can_manage_tender_matrix_cells": _member(),
     }
 
 

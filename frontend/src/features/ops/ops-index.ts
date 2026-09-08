@@ -119,6 +119,11 @@ export const OPS_JOBS = [
     job: "NDA na tender bez extractu",
   },
   {
+    route: BUSINESS_LISTS.tenderMatrixCell.route,
+    label: "Komórki matrycy",
+    job: "kwota Decimal z P bez LLM",
+  },
+  {
     route: BUSINESS_LISTS.tenderLane.route,
     label: "Korytarze przetargu",
     job: "para UN/LOCODE na partii bez rundy",
@@ -528,6 +533,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "171.0": "/tender-lanes",
   "172.0": "/tender-rounds",
   "173.0": "/tender-data-rooms",
+  "174.0": "/tender-matrix-cells",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

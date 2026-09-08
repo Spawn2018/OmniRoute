@@ -564,3 +564,7 @@ class InvalidTenderRound(DomainError):
 
 class InvalidTenderDataRoom(DomainError):
     """Pokój danych G2.4: NDA na nagłówku — nie extract i nie kwota."""
+
+
+class InvalidTenderMatrixCell(DomainError):
+    """Komórka matrycy G2.5: kwota Decimal z P — nie LLM i nie druga marża."""

@@ -65,6 +65,7 @@ const NAV_ACTIONS = [
   { id: "nav-port-surcharges", label: "Idź do katalogu extra portowych", to: "/port-surcharges" },
   { id: "nav-local-charges", label: "Idź do dopłat lokalnych", to: "/local-charges" },
   { id: "nav-tender-data-rooms", label: "Idź do pokoi danych przetargu", to: "/tender-data-rooms" },
+  { id: "nav-tender-matrix-cells", label: "Idź do komórek matrycy przetargu", to: "/tender-matrix-cells" },
   { id: "nav-tender-lanes", label: "Idź do korytarzy przetargu", to: "/tender-lanes" },
   { id: "nav-tender-lots", label: "Idź do partii przetargu", to: "/tender-lots" },
   { id: "nav-tender-rounds", label: "Idź do rund przetargu", to: "/tender-rounds" },

@@ -88,6 +88,7 @@ from app.models.tender_lot import TenderLot  # noqa: F401
 from app.models.tender_lane import TenderLane  # noqa: F401
 from app.models.tender_round import TenderRound  # noqa: F401
 from app.models.tender_data_room import TenderDataRoom  # noqa: F401
+from app.models.tender_matrix_cell import TenderMatrixCell  # noqa: F401
 from app.models.shipment_leg import ShipmentLeg  # noqa: F401
 from app.models.money_cost import MoneyCost  # noqa: F401
 from app.models.quote_invoice_settlement import QuoteInvoiceSettlement  # noqa: F401
