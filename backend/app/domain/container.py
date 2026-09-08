@@ -17,8 +17,12 @@ def _iso6346_value(mark: str) -> int:
 
 
 def _iso6346_check_digit(prefix: str) -> int:
-    total = sum(_iso6346_value(mark) * (2**index) for index, mark in enumerate(prefix))
-    return total % 11 % 10
+    total = 0
+    weight = 1
+    for mark in prefix:
+        total += _iso6346_value(mark) * weight
+        weight *= 2
+    return (total % 11) % 10
 
 
 def require_container_no(raw: object) -> str:
