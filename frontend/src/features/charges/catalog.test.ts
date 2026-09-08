@@ -10,6 +10,7 @@ describe("chargeCreateBody", () => {
         sellAmount: " 14 ",
         currency: "eur",
         rateLineId: "  ",
+        sourceRef: " tenant:manual ",
       }),
     ).toEqual({
       charge_code: "thc",
@@ -18,6 +19,7 @@ describe("chargeCreateBody", () => {
       sell_amount: "14",
       sell_currency: "EUR",
       rate_line_id: null,
+      source_ref: "tenant:manual",
     })
   })
 
@@ -29,6 +31,7 @@ describe("chargeCreateBody", () => {
         sellAmount: "14",
         currency: "EUR",
         rateLineId: " 11111111-1111-1111-1111-111111111111 ",
+        sourceRef: "tariff://a",
       }).rate_line_id,
     ).toBe("11111111-1111-1111-1111-111111111111")
   })
@@ -48,6 +51,7 @@ describe("comparisonChargeBody", () => {
       sell_amount: "1200",
       sell_currency: "USD",
       rate_line_id: null,
+      source_ref: "tenant:manual:comparison",
     })
   })
 })

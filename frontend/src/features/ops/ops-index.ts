@@ -383,6 +383,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "122.0": "/mail",
   "123.0": "/notifications",
   "124.0": "/watchtower",
+  "129.0": "/charges",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

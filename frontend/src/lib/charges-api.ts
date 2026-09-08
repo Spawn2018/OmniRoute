@@ -12,6 +12,7 @@ export type Charge = {
   margin_amount: string
   margin_currency: string
   rate_line_id: string | null
+  source_ref: string | null
 }
 
 export type CashFlowLeg = {
@@ -86,6 +87,7 @@ export function comparisonChargeBody(
   sell_amount: string
   sell_currency: string
   rate_line_id: null
+  source_ref: string
 } {
   return {
     charge_code: lane.chargeCode.trim(),
@@ -94,6 +96,7 @@ export function comparisonChargeBody(
     sell_amount: lane.amount.trim(),
     sell_currency: lane.currency.trim().toUpperCase(),
     rate_line_id: null,
+    source_ref: "tenant:manual:comparison",
   }
 }
 
@@ -103,6 +106,7 @@ export function chargeCreateBody(args: {
   sellAmount: string
   currency: string
   rateLineId: string
+  sourceRef: string
 }): {
   charge_code: string
   buy_amount: string
@@ -110,6 +114,7 @@ export function chargeCreateBody(args: {
   sell_amount: string
   sell_currency: string
   rate_line_id: string | null
+  source_ref: string
 } {
   const currency = args.currency.trim().toUpperCase()
   const linked = args.rateLineId.trim()
@@ -120,6 +125,7 @@ export function chargeCreateBody(args: {
     sell_amount: args.sellAmount.trim(),
     sell_currency: currency,
     rate_line_id: linked === "" ? null : linked,
+    source_ref: args.sourceRef.trim(),
   }
 }
 
@@ -145,6 +151,7 @@ export async function createCharge(body: {
   sell_amount: string
   sell_currency: string
   rate_line_id: string | null
+  source_ref: string
 }): Promise<Charge> {
   const response = await fetch("/api/v1/charges", {
     method: "POST",

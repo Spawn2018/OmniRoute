@@ -8,6 +8,7 @@ import pytest
 from app.domain.errors import (
     ChargeRateMismatch,
     InvalidMoney,
+    InvalidSourceRef,
     MixedCurrencyCharge,
     ResourceNotFound,
     UnknownChargeCode,
@@ -85,6 +86,7 @@ async def test_create_stores_buy_sell_on_one_row() -> None:
         sell_amount="14",
         sell_currency="EUR",
         rate_line_id=None,
+        source_ref=" tenant:manual ",
     )
 
     assert created.charge_code == "THC"
@@ -93,6 +95,7 @@ async def test_create_stores_buy_sell_on_one_row() -> None:
     assert created.buy_currency == "EUR"
     assert created.sell_currency == "EUR"
     assert created.rate_line_id is None
+    assert created.source_ref == "tenant:manual"
     session.add.assert_called_once()
 
 
@@ -109,6 +112,7 @@ async def test_create_rejects_float_buy() -> None:
             sell_amount="14",
             sell_currency="EUR",
             rate_line_id=None,
+            source_ref="tenant:manual",
         )
 
 
@@ -127,6 +131,7 @@ async def test_create_rejects_mixed_currency() -> None:
             sell_amount="14",
             sell_currency="USD",
             rate_line_id=None,
+            source_ref="tenant:manual",
         )
 
 
@@ -145,6 +150,7 @@ async def test_create_rejects_unknown_charge_code() -> None:
             sell_amount="14",
             sell_currency="EUR",
             rate_line_id=None,
+            source_ref="tenant:manual",
         )
 
 
@@ -167,6 +173,7 @@ async def test_create_links_existing_rate_line() -> None:
         sell_amount="14",
         sell_currency="EUR",
         rate_line_id=rate.id,
+        source_ref="tariff://a",
     )
 
     assert created.rate_line_id == rate.id
@@ -188,6 +195,7 @@ async def test_create_rejects_missing_rate_line() -> None:
             sell_amount="14",
             sell_currency="EUR",
             rate_line_id=uuid4(),
+            source_ref="tenant:manual",
         )
 
 
@@ -207,6 +215,7 @@ async def test_create_rejects_rate_line_with_other_charge_code() -> None:
             sell_amount="14",
             sell_currency="EUR",
             rate_line_id=uuid4(),
+            source_ref="tenant:manual",
         )
 
 
@@ -221,6 +230,30 @@ async def test_list_returns_repository_rows() -> None:
 
     listed = await service.list_charges()
     assert listed == [row]
+
+
+@pytest.mark.asyncio
+async def test_create_rejects_blank_source_ref() -> None:
+    service = ChargeService(AsyncMock())
+    with pytest.raises(InvalidSourceRef, match="obowiązkowy"):
+        await service.create_charge(
+            organization_id=uuid4(),
+            user_id=uuid4(),
+            charge_code="THC",
+            buy_amount="10",
+            buy_currency="EUR",
+            sell_amount="14",
+            sell_currency="EUR",
+            rate_line_id=None,
+            source_ref="   ",
+        )
+
+
+def test_charge_service_reuses_rate_line_source_ref_validator() -> None:
+    source = Path(__file__).parents[2] / "app" / "services" / "charges" / "charge_service.py"
+    text = source.read_text(encoding="utf-8")
+    assert "from app.domain.rate_line import require_source_ref" in text
+    assert "def require_charge_source_ref" not in text
 
 
 def test_extraction_service_does_not_import_rates_or_charges() -> None:

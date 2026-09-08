@@ -494,6 +494,10 @@ export type ChargeCreate = {
      * Rate Line Id
      */
     rate_line_id?: string | null;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
 };
 
 /**
@@ -608,6 +612,10 @@ export type ChargeResponse = {
      * Rate Line Id
      */
     rate_line_id: string | null;
+    /**
+     * Source Ref
+     */
+    source_ref: string | null;
 };
 
 /**

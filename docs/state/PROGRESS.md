@@ -340,3 +340,5 @@
 | 2026-09-08 | Pin kolejki | OS | Operator: P0 `charge.source_ref` + Fala O (biurko ocean) + T/D/P/X/F/C/V w PLAN/CURRENT. Named parks parked. Karty `karty-pol-fala-o.md` … `v.md`. `/noc` nie startuje w tej sesji. |
 | 2026-09-08 | Pin Fala I + O7/O8 + V5 dwa reżimy | OS | Incoterms/booking/odprawa (I1–I4), kraj na liście agentów, buy-desk group-by, slot = capability (T8), GPS `omni_telematic` vs 3 dni robocze, scoring = HITL+DPA. Audyt `incoterms-booking-customs-ux.md`. `/noc` nie startuje. |
 | 2026-09-08 | Pin 2026-09-08c Luki i ulepszenia | OS | Cała oś U/N/A/G/G2/W/WA/Plat/Demo-1/CT/CI/EXP/K0 w PLAN. Karty u/n/a/w/g/g2/ci/ct/plat/exp. GLOSSARY + pola-wizja EXP1. Nic nie wyłączone. `/noc` bez godziny nie startuje. Pierwszy kod = P0. |
+| 2026-09-08 | Plan 129.0 | M-08 | P0: `charge.source_ref` nullable stare / obowiązkowe na INSERT. Delta zaakceptowana (`/noc`). Nie myto. Następny: `/plaster` 129.0. |
+| 2026-09-08 | 129.0 | M-08 | P0: `charge.source_ref`. Stare NULL; nowy INSERT wymaga pochodzenia. Nie myto. Nie F11. Następny: O0 Plan. |

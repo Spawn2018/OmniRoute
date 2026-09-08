@@ -6,7 +6,7 @@ Ekrany, które **zapisują** (INSERT/upsert), nie tablice-odczyty:
 
 - kody opłat, kody HS/CN, numery UN, sieci — kod / nazwa / aliasy
 - stawki kupna — niemutowalne, `source_ref`; zmiana = nowy wiersz
-- opłaty — kupno i sprzedaż na jednym wierszu; marża z pary, nie z arkusza
+- opłaty — kupno i sprzedaż na jednym wierszu; marża z pary, nie z arkusza. Przy zapisie podajesz pochodzenie (`source_ref`: `tenant:manual`, `fixture://charge/…`). Stare wiersze mogą nie mieć pochodzenia. Porównanie na wycenie zapisuje `tenant:manual:comparison`.
 - kurs NBP, extra portowe, oferty kanału — katalog, nie live HTTP. Na extra portowych „Dopasuj warunek” pokazuje wiersze, których `applies_when` jest dokładnie taki jak wpisałeś. To nie dopisuje opłaty ani marży.
 - porty, strefy taryfowe, terminale — UN/LOCODE / zakres pocztowy / ISPS
 - sieci `/networks` — katalog sieci oraz ręczny członek (`member_code` + nazwa) w wybranej sieci. „Zapisz zapytanie” dopisuje `carrier_inquiry` do wybranego członka (status `draft`, bez kwoty). Nie portal. Nie live HTTP. Nie dopasowanie do kontrahenta.

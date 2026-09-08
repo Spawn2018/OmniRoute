@@ -38,6 +38,10 @@ const columns = [
     header: "Stawka kupna",
     cell: ({ getValue }) => getValue() ?? "—",
   }),
+  helper.accessor("source_ref", {
+    header: "Pochodzenie",
+    cell: ({ getValue }) => getValue() ?? "—",
+  }),
 ]
 
 const COLUMN_LABELS = {
@@ -46,6 +50,7 @@ const COLUMN_LABELS = {
   sell_amount: "Sprzedaż",
   margin_amount: "Marża",
   rate_line_id: "Stawka kupna",
+  source_ref: "Pochodzenie",
 }
 
 type Draft = {
@@ -54,6 +59,7 @@ type Draft = {
   sellAmount: string
   currency: string
   rateLineId: string
+  sourceRef: string
 }
 
 const EMPTY_DRAFT: Draft = {
@@ -62,6 +68,7 @@ const EMPTY_DRAFT: Draft = {
   sellAmount: "",
   currency: "EUR",
   rateLineId: "",
+  sourceRef: "",
 }
 
 export function ChargeCatalogPage() {
@@ -110,6 +117,7 @@ export function ChargeCatalogPage() {
         <Input aria-label="Kwota sprzedaży" placeholder="14.0000" value={draft.sellAmount} onChange={setField("sellAmount")} required />
         <Input aria-label="Waluta ISO" placeholder="EUR" value={draft.currency} onChange={setField("currency")} required />
         <Input aria-label="Identyfikator stawki kupna" placeholder="rate_line (opcjonalnie)" value={draft.rateLineId} onChange={setField("rateLineId")} />
+        <Input aria-label="Pochodzenie" placeholder="tenant:manual albo fixture://charge/…" value={draft.sourceRef} onChange={setField("sourceRef")} required />
         <Button type="submit" disabled={createMutation.isPending || !signedIn}>
           Dodaj opłatę
         </Button>

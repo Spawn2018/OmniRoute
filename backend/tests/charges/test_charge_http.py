@@ -6,7 +6,7 @@ from fastapi.testclient import TestClient
 
 from app.api.deps import require_tenant_session, set_authz_checker
 from app.domain.charge import margin
-from app.domain.errors import MixedCurrencyCharge, UnknownChargeCode
+from app.domain.errors import InvalidSourceRef, MixedCurrencyCharge, UnknownChargeCode
 from app.domain.money import Money
 from app.main import app
 from app.models.charge import Charge
@@ -44,9 +44,12 @@ class StubChargeService:
         sell_amount: object,
         sell_currency: object,
         rate_line_id: UUID | None,
+        source_ref: object,
     ) -> Charge:
         if isinstance(buy_amount, float) or isinstance(sell_amount, float):
             raise MixedCurrencyCharge("kwota nie może być float")
+        if type(source_ref) is not str or source_ref.strip() == "":
+            raise InvalidSourceRef("source_ref jest obowiązkowy")
         buy = Money.of(buy_amount, buy_currency)
         sell = Money.of(sell_amount, sell_currency)
         margin(buy, sell)
@@ -61,6 +64,7 @@ class StubChargeService:
             sell_amount=sell.amount,
             sell_currency=sell.currency.code,
             rate_line_id=rate_line_id,
+            source_ref=source_ref.strip(),
             created_by=user_id,
         )
         self.rows.append(row)
@@ -99,6 +103,7 @@ def test_http_create_and_list_charges(charges_client: TestClient) -> None:
             "buy_currency": "EUR",
             "sell_amount": "14",
             "sell_currency": "EUR",
+            "source_ref": "tenant:manual",
         },
     )
     assert created.status_code == 201
@@ -111,6 +116,7 @@ def test_http_create_and_list_charges(charges_client: TestClient) -> None:
     assert body["buy_currency"] == "EUR"
     assert body["organization_id"] == str(org_id)
     assert body["rate_line_id"] is None
+    assert body["source_ref"] == "tenant:manual"
     assert isinstance(body["margin_amount"], str)
 
     listed = charges_client.get("/api/v1/charges", headers=headers)
@@ -131,6 +137,7 @@ def test_http_rejects_mixed_currency(charges_client: TestClient) -> None:
             "buy_currency": "EUR",
             "sell_amount": "14",
             "sell_currency": "USD",
+            "source_ref": "tenant:manual",
         },
     )
     assert response.status_code == 400
@@ -147,6 +154,7 @@ def test_http_rejects_numeric_buy_amount(charges_client: TestClient) -> None:
             "buy_currency": "EUR",
             "sell_amount": "14",
             "sell_currency": "EUR",
+            "source_ref": "tenant:manual",
         },
     )
     assert response.status_code == 422
@@ -162,7 +170,25 @@ def test_http_rejects_unknown_charge_code(charges_client: TestClient) -> None:
             "buy_currency": "EUR",
             "sell_amount": "14",
             "sell_currency": "EUR",
+            "source_ref": "tenant:manual",
         },
     )
     assert response.status_code == 400
     assert "LOOSE" in response.json()["detail"]
+
+
+def test_http_rejects_blank_source_ref(charges_client: TestClient) -> None:
+    response = charges_client.post(
+        "/api/v1/charges",
+        headers=bearer_auth_headers(),
+        json={
+            "charge_code": "THC",
+            "buy_amount": "10",
+            "buy_currency": "EUR",
+            "sell_amount": "14",
+            "sell_currency": "EUR",
+            "source_ref": "   ",
+        },
+    )
+    assert response.status_code == 400
+    assert "source_ref" in response.json()["detail"]

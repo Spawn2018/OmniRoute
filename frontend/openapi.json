@@ -7474,6 +7474,12 @@
               }
             ],
             "title": "Rate Line Id"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 512,
+            "minLength": 1,
+            "title": "Source Ref"
           }
         },
         "type": "object",
@@ -7482,7 +7488,8 @@
           "buy_amount",
           "buy_currency",
           "sell_amount",
-          "sell_currency"
+          "sell_currency",
+          "source_ref"
         ],
         "title": "ChargeCreate"
       },
@@ -7663,6 +7670,17 @@
               }
             ],
             "title": "Rate Line Id"
+          },
+          "source_ref": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Ref"
           }
         },
         "type": "object",
@@ -7676,7 +7694,8 @@
           "sell_currency",
           "margin_amount",
           "margin_currency",
-          "rate_line_id"
+          "rate_line_id",
+          "source_ref"
         ],
         "title": "ChargeResponse"
       },

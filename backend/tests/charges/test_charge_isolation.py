@@ -46,6 +46,7 @@ async def test_charge_rls_isolates_tenants(session, two_tenants) -> None:
     await bind_tenant(session, org_a.id)
     visible_a = list((await session.scalars(select(Charge))).all())
     assert {row.id for row in visible_a} == {charge_a.id}
+    assert visible_a[0].source_ref is None
     foreign_b = await session.scalar(select(Charge).where(Charge.id == charge_b.id))
     assert foreign_b is None
 

@@ -28,3 +28,4 @@ class Charge(Base, TimestampMixin):
     rate_line_id: Mapped[uuid.UUID | None] = mapped_column(
         UUID(as_uuid=True), ForeignKey("rate_line.id", ondelete="RESTRICT"), nullable=True
     )
+    source_ref: Mapped[str | None] = mapped_column(String(512), nullable=True)

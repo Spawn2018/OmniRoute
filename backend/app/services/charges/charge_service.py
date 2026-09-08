@@ -6,6 +6,7 @@ from app.domain.charge import margin
 from app.domain.charge_code import normalize_charge_code
 from app.domain.errors import ChargeRateMismatch, ResourceNotFound, UnknownChargeCode
 from app.domain.money import Money
+from app.domain.rate_line import require_source_ref
 from app.models.charge import Charge
 from app.models.charge_code import ChargeCode
 from app.repositories.charge_codes.charge_code_repository import ChargeCodeRepository
@@ -39,7 +40,9 @@ class ChargeService:
         sell_amount: object,
         sell_currency: object,
         rate_line_id: UUID | None,
+        source_ref: object,
     ) -> Charge:
+        origin = require_source_ref(source_ref)
         buy = Money.of(buy_amount, buy_currency)
         sell = Money.of(sell_amount, sell_currency)
         margin(buy, sell)
@@ -54,6 +57,7 @@ class ChargeService:
             sell_amount=sell.amount,
             sell_currency=sell.currency.code,
             rate_line_id=linked,
+            source_ref=origin,
             created_by=user_id,
         )
         return await self._charges.add(row)
