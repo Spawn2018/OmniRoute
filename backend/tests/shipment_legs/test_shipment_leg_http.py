@@ -28,6 +28,8 @@ class _Ship:
     def __init__(self, row_id: UUID) -> None:
         self.id = row_id
         self.sea_dest_id = row_id
+        self.air_origin_id = row_id
+        self.air_dest_id = row_id
 
 
 class _Loc:
@@ -135,13 +137,19 @@ def catalog_client(monkeypatch: pytest.MonkeyPatch) -> object:
     cn_a = _Port(uuid4(), ["rail"], "CN")
     cn_b = _Port(uuid4(), ["port", "rail"], "CN")
     sea_b = _Port(uuid4(), ["port"], is_seaport=True)
+    air_a = _Port(uuid4(), ["airport"])
+    air_b = _Port(uuid4(), ["port", "airport"])
     port_loc = _Loc(uuid4(), "unlocode", sea.id)
     rail_origin = _Loc(uuid4(), "unlocode", rail_a.id)
     rail_dest = _Loc(uuid4(), "unlocode", rail_b.id)
     cn_origin = _Loc(uuid4(), "unlocode", cn_a.id)
     cn_dest = _Loc(uuid4(), "unlocode", cn_b.id)
     sea_dest = _Loc(uuid4(), "unlocode", sea_b.id)
+    air_origin = _Loc(uuid4(), "unlocode", air_a.id)
+    air_dest = _Loc(uuid4(), "unlocode", air_b.id)
     ship.sea_dest_id = sea_dest.id
+    ship.air_origin_id = air_origin.id
+    ship.air_dest_id = air_dest.id
     ships.by_id = {ship.id: ship}
     places.by_id = {
         origin.id: origin,
@@ -152,6 +160,8 @@ def catalog_client(monkeypatch: pytest.MonkeyPatch) -> object:
         cn_origin.id: cn_origin,
         cn_dest.id: cn_dest,
         sea_dest.id: sea_dest,
+        air_origin.id: air_origin,
+        air_dest.id: air_dest,
     }
     ports.by_id = {
         sea.id: sea,
@@ -160,6 +170,8 @@ def catalog_client(monkeypatch: pytest.MonkeyPatch) -> object:
         cn_a.id: cn_a,
         cn_b.id: cn_b,
         sea_b.id: sea_b,
+        air_a.id: air_a,
+        air_b.id: air_b,
     }
 
     def _ships(_session: object) -> StubShipmentService:
@@ -446,6 +458,59 @@ def test_http_create_ocean_lcl_from_zone_is_400(catalog_client: object) -> None:
             "destination_location_id": str(dest.id),
             "source_ref": "fixture://shipment-leg/lcl",
             "leg_kind": "ocean_lcl",
+        },
+    )
+    assert response.status_code == 400
+    assert "UN/LOCODE" in response.json()["detail"]
+
+
+def test_http_create_air_leg(catalog_client: object) -> None:
+    client, ship, _origin, _dest, _port_loc, _rail_o, _rail_d, _cn_o, _cn_d = catalog_client
+    created = client.post(
+        "/api/v1/shipment-legs",
+        headers=bearer_auth_headers(),
+        json={
+            "shipment_id": str(ship.id),
+            "origin_location_id": str(ship.air_origin_id),
+            "destination_location_id": str(ship.air_dest_id),
+            "source_ref": "fixture://shipment-leg/air",
+            "leg_kind": "air",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["leg_kind"] == "air"
+    assert "amount" not in created.json()
+    assert "hawb" not in created.json()
+
+
+def test_http_create_air_without_airport_flag_is_400(catalog_client: object) -> None:
+    client, ship, _origin, _dest, port_loc, _rail_o, _rail_d, _cn_o, _cn_d = catalog_client
+    response = client.post(
+        "/api/v1/shipment-legs",
+        headers=bearer_auth_headers(),
+        json={
+            "shipment_id": str(ship.id),
+            "origin_location_id": str(port_loc.id),
+            "destination_location_id": str(ship.air_dest_id),
+            "source_ref": "fixture://shipment-leg/air",
+            "leg_kind": "air",
+        },
+    )
+    assert response.status_code == 400
+    assert "airport" in response.json()["detail"]
+
+
+def test_http_create_air_from_zone_is_400(catalog_client: object) -> None:
+    client, ship, origin, dest, _port_loc, _rail_o, _rail_d, _cn_o, _cn_d = catalog_client
+    response = client.post(
+        "/api/v1/shipment-legs",
+        headers=bearer_auth_headers(),
+        json={
+            "shipment_id": str(ship.id),
+            "origin_location_id": str(origin.id),
+            "destination_location_id": str(dest.id),
+            "source_ref": "fixture://shipment-leg/air",
+            "leg_kind": "air",
         },
     )
     assert response.status_code == 400

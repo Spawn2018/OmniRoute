@@ -85,3 +85,20 @@ def test_migration_068_widens_leg_kind_to_ocean_lcl() -> None:
     assert "drop_constraint" in source
     assert "create_table" not in source
     assert "httpx" not in source
+
+
+def test_migration_094_widens_leg_kind_to_air() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "094_shipment_leg_air_kind.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "094_shipment_leg_air_kind"' in source
+    assert 'down_revision: str | None = "093_container"' in source
+    assert "leg_kind IN ('road', 'rail', 'china_rail', 'ocean_lcl', 'air')" in source
+    assert "drop_constraint" in source
+    assert "create_table" not in source
+    assert "httpx" not in source
+    assert "hawb" not in source.lower()
+    model = (_ROOT / "backend" / "app" / "models" / "shipment_leg.py").read_text(
+        encoding="utf-8",
+    )
+    assert "ocean_lcl', 'air')" in model

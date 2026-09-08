@@ -6,6 +6,7 @@ from hypothesis import strategies as st
 
 from app.domain.errors import InvalidShipmentLeg
 from app.domain.shipment_leg import (
+    require_air_port_flag,
     require_china_rail_country,
     require_distinct_ends,
     require_leg_kind,
@@ -63,6 +64,7 @@ def test_require_road_leg_kind_is_road() -> None:
     assert require_leg_kind(" rail ") == "rail"
     assert require_leg_kind("china_rail") == "china_rail"
     assert require_leg_kind("ocean_lcl") == "ocean_lcl"
+    assert require_leg_kind("air") == "air"
 
 
 def test_require_leg_kind_rejects_unknown() -> None:
@@ -92,3 +94,9 @@ def test_require_ocean_seaport_rejects_inland() -> None:
     with pytest.raises(InvalidShipmentLeg, match="śródlądowy"):
         require_ocean_seaport(False)
     require_ocean_seaport(True)
+
+
+def test_require_air_port_flag_rejects_sea_only() -> None:
+    with pytest.raises(InvalidShipmentLeg, match="flagi airport"):
+        require_air_port_flag(["port"])
+    require_air_port_flag(["port", "airport"])

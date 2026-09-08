@@ -8,6 +8,7 @@ from app.api.deps import get_current_identity, require_permission, require_tenan
 from app.core.session_token import SessionIdentity
 from app.domain.errors import InvalidShipmentLeg
 from app.domain.shipment_leg import (
+    require_air_port_flag,
     require_china_rail_country,
     require_distinct_ends,
     require_leg_kind,
@@ -90,6 +91,8 @@ async def _ends_for_kind(
 ) -> tuple[Location, Location]:
     if kind == "ocean_lcl":
         return await _ocean_lcl_ends(session, origin_id, destination_id)
+    if kind == "air":
+        return await _air_ends(session, origin_id, destination_id)
     if kind == "china_rail":
         return await _china_rail_ends(session, origin_id, destination_id)
     if kind == "rail":
@@ -156,6 +159,18 @@ async def _ocean_lcl_ends(
     start, end = await _end_ports(session, origin, destination)
     require_ocean_seaport(start.is_seaport)
     require_ocean_seaport(end.is_seaport)
+    return origin, destination
+
+
+async def _air_ends(
+    session: AsyncSession,
+    origin_id: UUID,
+    destination_id: UUID,
+) -> tuple[Location, Location]:
+    origin, destination = await _unlocode_ends(session, origin_id, destination_id)
+    start, end = await _end_ports(session, origin, destination)
+    require_air_port_flag(start.function_flags)
+    require_air_port_flag(end.function_flags)
     return origin, destination
 
 

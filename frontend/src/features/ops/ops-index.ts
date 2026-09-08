@@ -79,6 +79,11 @@ export const OPS_JOBS = [
     job: "porty z is_seaport",
   },
   {
+    route: BUSINESS_LISTS.airFreight.route,
+    label: "Lotniczy",
+    job: "lotniska z flagą airport",
+  },
+  {
     route: BUSINESS_LISTS.sanctions.route,
     label: "Sankcje",
     job: "aktywni kontrahenci tax_id i kraj",
@@ -413,6 +418,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "151.0": "/shipments",
   "152.0": "/shipments",
   "153.0": "/shipments",
+  "154.0": "/air",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

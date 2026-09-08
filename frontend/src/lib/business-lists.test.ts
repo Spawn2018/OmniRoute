@@ -76,6 +76,7 @@ describe("business list density", () => {
     expect(BUSINESS_LISTS.intermodalRail.tableKey).toBe("intermodal_rail")
     expect(BUSINESS_LISTS.chinaRail.tableKey).toBe("china_rail")
     expect(BUSINESS_LISTS.oceanLcl.tableKey).toBe("ocean_lcl")
+    expect(BUSINESS_LISTS.airFreight.tableKey).toBe("air_freight")
     expect(BUSINESS_LISTS.sanctions.tableKey).toBe("sanctions")
     expect(BUSINESS_LISTS.fraudFlag.tableKey).toBe("fraud_flag")
     expect(BUSINESS_LISTS.gdpr.tableKey).toBe("gdpr")

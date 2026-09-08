@@ -10,10 +10,12 @@ _ROAD = "road"
 _RAIL = "rail"
 _CHINA = "china_rail"
 _OCEAN = "ocean_lcl"
-_KINDS = frozenset({_ROAD, _RAIL, _CHINA, _OCEAN})
+_AIR = "air"
+_KINDS = frozenset({_ROAD, _RAIL, _CHINA, _OCEAN, _AIR})
 _CN = "CN"
 _LAND = frozenset({LocationKind.POSTAL_ZONE.value, LocationKind.ADDRESS.value})
 _RAIL_FLAG = "rail"
+_AIR_FLAG = "airport"
 
 
 def require_leg_shipment_id(raw: object) -> UUID:
@@ -52,7 +54,9 @@ def require_leg_kind(raw: object) -> str:
     if token == "":
         return _ROAD
     if token not in _KINDS:
-        raise InvalidShipmentLeg("leg_kind spoza zbioru: road, rail, china_rail, ocean_lcl")
+        raise InvalidShipmentLeg(
+            "leg_kind spoza zbioru: road, rail, china_rail, ocean_lcl, air",
+        )
     return token
 
 
@@ -87,6 +91,13 @@ def require_ocean_seaport(flag: object) -> None:
         raise InvalidShipmentLeg("is_seaport musi być logiczne")
     if not flag:
         raise InvalidShipmentLeg("port śródlądowy nie jest odcinkiem drobnicy")
+
+
+def require_air_port_flag(flags: object) -> None:
+    if type(flags) is not list:
+        raise InvalidShipmentLeg("flagi portu muszą być listą")
+    if _AIR_FLAG not in flags:
+        raise InvalidShipmentLeg("port bez flagi airport nie jest odcinkiem lotniczym")
 
 
 def require_leg_source_ref(raw: object) -> str:

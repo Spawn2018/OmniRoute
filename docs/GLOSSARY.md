@@ -37,10 +37,11 @@
 | zasób floty | resource | T2; pojazd / kierowca / naczepa; nie trip |
 | przejazd | trip | T2; status + opcjonalny zasób; nie km |
 | kontener | container | T3; ISO 6346 + iso_size_type; nie VGM |
-| odcinek | shipment_leg | 108.0 `road` · 109.0 `rail` · 110.0 `china_rail` · 111.0 `ocean_lcl` na zleceniu; nie mapa; nie ETA |
+| odcinek | shipment_leg | 108.0 `road` · 109.0 `rail` · 110.0 `china_rail` · 111.0 `ocean_lcl` · 154.0 `air` na zleceniu; nie mapa; nie ETA |
 | kolej intermodalna | intermodal_rail | 42.0 tablica `port` z flagą `rail`; 109.0 odcinek `shipment_leg` rail; nie wagon; nie CIM |
 | kolej z Chin | china_rail | 43.0 tablica `port` CN z flagą `rail`; 110.0 odcinek `shipment_leg` china_rail; nie korytarz; nie HTTP |
 | drobnica morska | ocean_lcl | 44.0 tablica `port` z `is_seaport`; 111.0 odcinek `shipment_leg` ocean_lcl; nie tabela LCL; nie CFS |
+| lotniczy | air | 154.0 odcinek `shipment_leg` air; lotnisko = `port` z `airport` w `function_flags`; nie HAWB; nie IATA |
 | reklamacja ładunku | cargo_claim | 113.0 tabela na zleceniu; nie kwota; nie scoring |
 | oszustwo | fraud_flag | 114.0 tabela na kontrahencie; nie scoring osoby; nie kwota |
 | sankcje | sanctions | 45.0 tablica aktywnych `party`; 89.0 sprawdzenie `sanctions_list_ref` na karcie; nie auto-match; nie live lista |

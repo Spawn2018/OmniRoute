@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AiRouteImport } from './routes/ai'
+import { Route as AirRouteImport } from './routes/air'
 import { Route as BookkeepingRouteImport } from './routes/bookkeeping'
 import { Route as CashflowsRouteImport } from './routes/cashflows'
 import { Route as ChannelQuotesRouteImport } from './routes/channel-quotes'
@@ -72,6 +73,11 @@ const IndexRoute = IndexRouteImport.update({
 const AiRoute = AiRouteImport.update({
   id: '/ai',
   path: '/ai',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AirRoute = AirRouteImport.update({
+  id: '/air',
+  path: '/air',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BookkeepingRoute = BookkeepingRouteImport.update({
@@ -338,6 +344,7 @@ const TenancyUsersRoute = TenancyUsersRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/ai': typeof AiRoute
+  '/air': typeof AirRoute
   '/bookkeeping': typeof BookkeepingRoute
   '/cashflows': typeof CashflowsRoute
   '/channel-quotes': typeof ChannelQuotesRoute
@@ -394,6 +401,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/ai': typeof AiRoute
+  '/air': typeof AirRoute
   '/bookkeeping': typeof BookkeepingRoute
   '/cashflows': typeof CashflowsRoute
   '/channel-quotes': typeof ChannelQuotesRoute
@@ -451,6 +459,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/ai': typeof AiRoute
+  '/air': typeof AirRoute
   '/bookkeeping': typeof BookkeepingRoute
   '/cashflows': typeof CashflowsRoute
   '/channel-quotes': typeof ChannelQuotesRoute
@@ -509,6 +518,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/ai'
+    | '/air'
     | '/bookkeeping'
     | '/cashflows'
     | '/channel-quotes'
@@ -565,6 +575,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/ai'
+    | '/air'
     | '/bookkeeping'
     | '/cashflows'
     | '/channel-quotes'
@@ -621,6 +632,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/ai'
+    | '/air'
     | '/bookkeeping'
     | '/cashflows'
     | '/channel-quotes'
@@ -678,6 +690,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AiRoute: typeof AiRoute
+  AirRoute: typeof AirRoute
   BookkeepingRoute: typeof BookkeepingRoute
   CashflowsRoute: typeof CashflowsRoute
   ChannelQuotesRoute: typeof ChannelQuotesRoute
@@ -746,6 +759,13 @@ declare module '@tanstack/react-router' {
       path: '/ai'
       fullPath: '/ai'
       preLoaderRoute: typeof AiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/air': {
+      id: '/air'
+      path: '/air'
+      fullPath: '/air'
+      preLoaderRoute: typeof AirRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/bookkeeping': {
@@ -1118,6 +1138,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AiRoute: AiRoute,
+  AirRoute: AirRoute,
   BookkeepingRoute: BookkeepingRoute,
   CashflowsRoute: CashflowsRoute,
   ChannelQuotesRoute: ChannelQuotesRoute,

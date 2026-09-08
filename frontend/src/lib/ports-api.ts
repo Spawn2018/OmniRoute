@@ -41,6 +41,12 @@ export function oceanLclPorts<Row extends { is_seaport: boolean }>(
   return ports.filter((row) => row.is_seaport)
 }
 
+export function airPorts<Row extends { function_flags: readonly string[] }>(
+  ports: readonly Row[],
+): Row[] {
+  return ports.filter((row) => row.function_flags.includes("airport"))
+}
+
 export type PortCreateBody = {
   unlocode: string
   name: string

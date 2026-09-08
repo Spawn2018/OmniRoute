@@ -52,6 +52,9 @@ tools/openfga/*.tgz
 tools/openfga/*.tar.gz
 tools/openfga/assets/
 
+# Lokalny TEMP gdy C: nie ma miejsca — nie commitować
+.tmp/
+
 # jscpd / coverage reports
 report/
 htmlcov/
