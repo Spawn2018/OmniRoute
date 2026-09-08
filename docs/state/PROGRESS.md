@@ -356,3 +356,4 @@
 | 2026-09-08 | 135.0 | M-19 | O2: `source_ref` z user + 409 + formularz na wycenie. Nie 1.3. Następny: O3 Plan. |
 | 2026-09-08 | Plan 136.0 | M-30 | O3: batch + statusy + lane. Delta zaakceptowana (`/noc`). Nie send. Następny: kod 136.0. |
 | 2026-09-08 | 136.0 | M-30 | O3: batch + statusy + lane. Kwota tylko przy answered. Nie send. Następny: I0/U2 Plan. |
+| 2026-09-08 | Plan 137.0 | M-21 | I0/U2: Incoterms na `quotation`. Delta zaakceptowana (`/noc`). Nie I1. Następny: kod 137.0. |
