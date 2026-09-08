@@ -376,3 +376,4 @@
 | 2026-09-08 | Plan 146.0 | I2 | shipment_stakeholder (7 rol z karty I2, party_id wymagane). Delta zaakceptowana (/noc). Nie EXP1. Nastepny: kod 146.0. |
 | 2026-09-08 | 146.0 | I2 | shipment_stakeholder 7 rol, party_id wymagane. Nie EXP1. Nie I3. Nastepny: I3 Plan. |
 | 2026-09-08 | Plan 147.0 | I3 | document_dispatch_rule (adresat, nie send). Delta zaakceptowana (`/noc`). Nie I4. Następny: kod 147.0. |
+| 2026-09-08 | 147.0 | I3 | document_dispatch_rule katalog adresata. Nie send. Nie I4. Nastepny: I4 Plan. |

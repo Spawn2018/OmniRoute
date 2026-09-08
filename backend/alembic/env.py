@@ -16,6 +16,7 @@ from app.models.commodity_code import CommodityCode  # noqa: F401
 from app.models.credit_review import CreditReview  # noqa: F401
 from app.models.dangerous_good import DangerousGood  # noqa: F401
 from app.models.document_checklist_rule import DocumentChecklistRule  # noqa: F401
+from app.models.document_dispatch_rule import DocumentDispatchRule  # noqa: F401
 from app.models.field_carry_forward import FieldCarryForward  # noqa: F401
 from app.models.inbound_message import InboundMessage  # noqa: F401
 from app.models.incoterm_responsibility import IncotermResponsibility  # noqa: F401

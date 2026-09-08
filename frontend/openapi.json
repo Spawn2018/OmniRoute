@@ -1018,6 +1018,126 @@
         }
       }
     },
+    "/api/v1/document-dispatch-rules": {
+      "get": {
+        "tags": [
+          "document-dispatch-rules"
+        ],
+        "summary": "List Document Dispatch Rules",
+        "operationId": "list_document_dispatch_rules_api_v1_document_dispatch_rules_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "incoterm",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Incoterm"
+            }
+          },
+          {
+            "name": "trade_side",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Trade Side"
+            }
+          },
+          {
+            "name": "document_kind",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Document Kind"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DocumentDispatchRuleResponse"
+                  },
+                  "title": "Response List Document Dispatch Rules Api V1 Document Dispatch Rules Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "document-dispatch-rules"
+        ],
+        "summary": "Create Document Dispatch Rule",
+        "operationId": "create_document_dispatch_rule_api_v1_document_dispatch_rules_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DocumentDispatchRuleCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentDispatchRuleResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/field-carry-forwards": {
       "get": {
         "tags": [
@@ -9715,6 +9835,98 @@
           "blocks_dispatch"
         ],
         "title": "DocumentChecklistRuleResponse"
+      },
+      "DocumentDispatchRuleCreate": {
+        "properties": {
+          "incoterm": {
+            "type": "string",
+            "title": "Incoterm"
+          },
+          "trade_side": {
+            "type": "string",
+            "title": "Trade Side"
+          },
+          "document_kind": {
+            "type": "string",
+            "title": "Document Kind"
+          },
+          "recipient_role": {
+            "type": "string",
+            "title": "Recipient Role"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "incoterm",
+          "trade_side",
+          "document_kind",
+          "recipient_role",
+          "source_ref"
+        ],
+        "title": "DocumentDispatchRuleCreate"
+      },
+      "DocumentDispatchRuleResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "incoterm": {
+            "type": "string",
+            "title": "Incoterm"
+          },
+          "trade_side": {
+            "type": "string",
+            "title": "Trade Side"
+          },
+          "document_kind": {
+            "type": "string",
+            "title": "Document Kind"
+          },
+          "recipient_role": {
+            "type": "string",
+            "title": "Recipient Role"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          },
+          "superseded_by": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Superseded By"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "incoterm",
+          "trade_side",
+          "document_kind",
+          "recipient_role",
+          "source_ref",
+          "superseded_by"
+        ],
+        "title": "DocumentDispatchRuleResponse"
       },
       "EdiMessageCreate": {
         "properties": {

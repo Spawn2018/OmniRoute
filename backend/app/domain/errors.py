@@ -464,3 +464,7 @@ class InvalidIncotermResponsibility(DomainError):
 
 class InvalidShipmentStakeholder(DomainError):
     """Strona zlecenia: rola z allowlisty i party_id — nie dispatch, nie EXP1."""
+
+
+class InvalidDocumentDispatchRule(DomainError):
+    """Reguła adresata: trójka incoterm×strona×rodzaj → rola I2 — nie send."""

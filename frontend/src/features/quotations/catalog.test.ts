@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs"
 import { describe, expect, it } from "vitest"
 import { documentChecklistRuleBody } from "@/lib/document-checklist-rules-api"
+import { documentDispatchRuleBody } from "@/lib/document-dispatch-rules-api"
 import { fieldCarryForwardBody } from "@/lib/field-carry-forwards-api"
 import { incotermResponsibilityBody } from "@/lib/incoterm-responsibilities-api"
 import {
@@ -165,6 +166,18 @@ describe("field carry-forward and checklist bodies", () => {
       blocksDispatch: true,
     })
     expect(body.blocks_dispatch).toBe(true)
+    expect(body).not.toHaveProperty("amount")
+  })
+
+  it("sends dispatch recipient role without an amount", () => {
+    const body = documentDispatchRuleBody({
+      incoterm: " DAP ",
+      tradeSide: "import",
+      documentKind: "commercial_invoice",
+      recipientRole: "omni_customs",
+    })
+    expect(body.recipient_role).toBe("omni_customs")
+    expect(body.source_ref).toBe("tenant:manual")
     expect(body).not.toHaveProperty("amount")
   })
 
@@ -445,9 +458,11 @@ describe("quotation catalog screen", () => {
     expect(page).toContain("CarryForwardPanel")
     expect(page).toContain("ChecklistRulePanel")
     expect(page).toContain("IncotermResponsibilityPanel")
+    expect(page).toContain("DispatchRulePanel")
     const carry = readFileSync(new URL("./carry-forward-panel.tsx", import.meta.url), "utf8")
     const checklist = readFileSync(new URL("./checklist-rule-panel.tsx", import.meta.url), "utf8")
     const matrix = readFileSync(new URL("./incoterm-responsibility-panel.tsx", import.meta.url), "utf8")
+    const dispatch = readFileSync(new URL("./dispatch-rule-panel.tsx", import.meta.url), "utf8")
     expect(carry).toContain('data-carry-forward="job"')
     expect(carry).toContain("Przenieś pola")
     expect(carry).toContain("fieldCarryForwardBody")
@@ -461,6 +476,11 @@ describe("quotation catalog screen", () => {
     expect(matrix).toContain("incotermResponsibilityBody")
     expect(matrix).not.toContain("ICC")
     expect(matrix).not.toContain("parseFloat")
+    expect(dispatch).toContain('data-dispatch-rule="catalog"')
+    expect(dispatch).toContain("Zapisz adresata")
+    expect(dispatch).toContain("documentDispatchRuleBody")
+    expect(dispatch).not.toContain("sold_to")
+    expect(dispatch).not.toContain("parseFloat")
     expect(page).not.toContain("acceptExtractionDraft")
     expect(page).not.toContain("imap")
     expect(page).not.toMatch(/reduce\s*\(/)

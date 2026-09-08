@@ -1299,6 +1299,70 @@ export type DocumentChecklistRuleResponse = {
 };
 
 /**
+ * DocumentDispatchRuleCreate
+ */
+export type DocumentDispatchRuleCreate = {
+    /**
+     * Incoterm
+     */
+    incoterm: string;
+    /**
+     * Trade Side
+     */
+    trade_side: string;
+    /**
+     * Document Kind
+     */
+    document_kind: string;
+    /**
+     * Recipient Role
+     */
+    recipient_role: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * DocumentDispatchRuleResponse
+ */
+export type DocumentDispatchRuleResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Incoterm
+     */
+    incoterm: string;
+    /**
+     * Trade Side
+     */
+    trade_side: string;
+    /**
+     * Document Kind
+     */
+    document_kind: string;
+    /**
+     * Recipient Role
+     */
+    recipient_role: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+    /**
+     * Superseded By
+     */
+    superseded_by: string | null;
+};
+
+/**
  * EdiMessageCreate
  */
 export type EdiMessageCreate = {
@@ -4762,6 +4826,71 @@ export type CreateDocumentChecklistRuleApiV1DocumentChecklistRulesPostResponses 
 };
 
 export type CreateDocumentChecklistRuleApiV1DocumentChecklistRulesPostResponse = CreateDocumentChecklistRuleApiV1DocumentChecklistRulesPostResponses[keyof CreateDocumentChecklistRuleApiV1DocumentChecklistRulesPostResponses];
+
+export type ListDocumentDispatchRulesApiV1DocumentDispatchRulesGetData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Incoterm
+         */
+        incoterm: string;
+        /**
+         * Trade Side
+         */
+        trade_side: string;
+        /**
+         * Document Kind
+         */
+        document_kind?: string | null;
+    };
+    url: '/api/v1/document-dispatch-rules';
+};
+
+export type ListDocumentDispatchRulesApiV1DocumentDispatchRulesGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ListDocumentDispatchRulesApiV1DocumentDispatchRulesGetError = ListDocumentDispatchRulesApiV1DocumentDispatchRulesGetErrors[keyof ListDocumentDispatchRulesApiV1DocumentDispatchRulesGetErrors];
+
+export type ListDocumentDispatchRulesApiV1DocumentDispatchRulesGetResponses = {
+    /**
+     * Response List Document Dispatch Rules Api V1 Document Dispatch Rules Get
+     *
+     * Successful Response
+     */
+    200: Array<DocumentDispatchRuleResponse>;
+};
+
+export type ListDocumentDispatchRulesApiV1DocumentDispatchRulesGetResponse = ListDocumentDispatchRulesApiV1DocumentDispatchRulesGetResponses[keyof ListDocumentDispatchRulesApiV1DocumentDispatchRulesGetResponses];
+
+export type CreateDocumentDispatchRuleApiV1DocumentDispatchRulesPostData = {
+    body: DocumentDispatchRuleCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/document-dispatch-rules';
+};
+
+export type CreateDocumentDispatchRuleApiV1DocumentDispatchRulesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateDocumentDispatchRuleApiV1DocumentDispatchRulesPostError = CreateDocumentDispatchRuleApiV1DocumentDispatchRulesPostErrors[keyof CreateDocumentDispatchRuleApiV1DocumentDispatchRulesPostErrors];
+
+export type CreateDocumentDispatchRuleApiV1DocumentDispatchRulesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: DocumentDispatchRuleResponse;
+};
+
+export type CreateDocumentDispatchRuleApiV1DocumentDispatchRulesPostResponse = CreateDocumentDispatchRuleApiV1DocumentDispatchRulesPostResponses[keyof CreateDocumentDispatchRuleApiV1DocumentDispatchRulesPostResponses];
 
 export type ListFieldCarryForwardsApiV1FieldCarryForwardsGetData = {
     body?: never;
