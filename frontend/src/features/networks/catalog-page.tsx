@@ -73,6 +73,7 @@ export function NetworkCatalogPage() {
   const [networkId, setNetworkId] = useState("")
   const [memberCode, setMemberCode] = useState("")
   const [memberName, setMemberName] = useState("")
+  const [memberPartyId, setMemberPartyId] = useState("")
   const [askedMemberId, setAskedMemberId] = useState("")
   const sessionReady = Boolean(ctx.organizationId && ctx.userId)
 
@@ -122,10 +123,12 @@ export function NetworkCatalogPage() {
       createNetworkMember(networkId, {
         member_code: memberCode,
         legal_name: memberName,
+        party_id: memberPartyId,
       }),
     onSuccess: () => {
       setMemberCode("")
       setMemberName("")
+      setMemberPartyId("")
       void queryClient.invalidateQueries({
         queryKey: ["network-members", ctx.organizationId, networkId],
       })
@@ -249,6 +252,13 @@ export function NetworkCatalogPage() {
             onChange={(event) => setMemberName(event.target.value)}
             required
           />
+          <Input
+            aria-label="Kontrahent członka"
+            placeholder="party_id"
+            value={memberPartyId}
+            onChange={(event) => setMemberPartyId(event.target.value)}
+            required
+          />
           <Button type="submit" disabled={createMember.isPending || !sessionReady || networkId === ""}>
             Dodaj członka
           </Button>
@@ -258,7 +268,7 @@ export function NetworkCatalogPage() {
         <ul className="text-xs">
           {(members.data ?? []).map((row) => (
             <li key={row.id}>
-              {row.member_code} · {row.legal_name}
+              {row.member_code} · {row.legal_name} · {row.party_id ?? "—"}
             </li>
           ))}
         </ul>

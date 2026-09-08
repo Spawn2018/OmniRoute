@@ -8,6 +8,7 @@ from app.api.deps import get_current_identity, require_permission, require_tenan
 from app.core.session_token import SessionIdentity
 from app.models.network_member import NetworkMember
 from app.services.networks.network_service import NetworkService
+from app.services.parties.party_service import PartyService
 
 router = APIRouter(prefix="/networks", tags=["networks"])
 
@@ -28,6 +29,7 @@ class NetworkMemberCreate(BaseModel):
 
     member_code: str = Field(min_length=1, max_length=32)
     legal_name: str = Field(min_length=1, max_length=128)
+    party_id: UUID
 
 
 class NetworkMemberResponse(BaseModel):
@@ -38,6 +40,7 @@ class NetworkMemberResponse(BaseModel):
     network_id: UUID
     member_code: str
     legal_name: str
+    party_id: UUID | None
     source_ref: str
 
     @classmethod
@@ -124,12 +127,14 @@ async def create_network_member(
     session: AsyncSession = Depends(require_tenant_session),
     identity: SessionIdentity = Depends(get_current_identity),
 ) -> NetworkMemberResponse:
+    party = await PartyService(session).get_party(body.party_id)
     row = await NetworkService(session).create_member(
         organization_id=identity.organization_id,
         user_id=identity.user_id,
         network_id=network_id,
         member_code=body.member_code,
         legal_name=body.legal_name,
+        party_id=party.id,
     )
     await session.commit()
     return NetworkMemberResponse.from_row(row)

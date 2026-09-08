@@ -1822,6 +1822,10 @@ export type NetworkMemberCreate = {
      * Legal Name
      */
     legal_name: string;
+    /**
+     * Party Id
+     */
+    party_id: string;
 };
 
 /**
@@ -1848,6 +1852,10 @@ export type NetworkMemberResponse = {
      * Legal Name
      */
     legal_name: string;
+    /**
+     * Party Id
+     */
+    party_id: string | null;
     /**
      * Source Ref
      */

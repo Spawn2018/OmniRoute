@@ -65,6 +65,15 @@ def test_network_service_has_no_scrape() -> None:
     assert "app.services.parties" not in service
 
 
+def test_migration_073_adds_party_id_without_new_table() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "073_network_member_party.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "073_network_member_party"' in source
+    assert "fk_network_member_party" in source
+    assert "create_table" not in source.split("def upgrade")[1].split("def downgrade")[0]
+
+
 def test_generated_api_types_include_network() -> None:
     source = (_ROOT / "frontend" / "src" / "api" / "types.gen.ts").read_text(encoding="utf-8")
     assert "NetworkResponse" in source or "NetworkCreate" in source

@@ -25,7 +25,7 @@ _ENDPOINTS = (
         "POST",
         f"/api/v1/networks/{uuid4()}/members",
         None,
-        {"member_code": "agent_a", "legal_name": "Agent A"},
+        {"member_code": "agent_a", "legal_name": "Agent A", "party_id": str(uuid4())},
     ),
 )
 

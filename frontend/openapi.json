@@ -9651,13 +9651,19 @@
             "maxLength": 128,
             "minLength": 1,
             "title": "Legal Name"
+          },
+          "party_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Party Id"
           }
         },
         "additionalProperties": false,
         "type": "object",
         "required": [
           "member_code",
-          "legal_name"
+          "legal_name",
+          "party_id"
         ],
         "title": "NetworkMemberCreate"
       },
@@ -9686,6 +9692,18 @@
             "type": "string",
             "title": "Legal Name"
           },
+          "party_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Party Id"
+          },
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
@@ -9698,6 +9716,7 @@
           "network_id",
           "member_code",
           "legal_name",
+          "party_id",
           "source_ref"
         ],
         "title": "NetworkMemberResponse"

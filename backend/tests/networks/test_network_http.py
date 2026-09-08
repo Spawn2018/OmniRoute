@@ -5,10 +5,11 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app.api.deps import require_tenant_session, set_authz_checker
-from app.domain.errors import NetworkConflict, UnknownNetwork
+from app.domain.errors import NetworkConflict, ResourceNotFound, UnknownNetwork
 from app.main import app
 from app.models.network import Network
 from app.models.network_member import NetworkMember
+from app.models.party import Party
 from tests.http_auth import bearer_auth_headers
 
 
@@ -22,6 +23,29 @@ class AllowAllAuthz:
         object_id: UUID,
     ) -> bool:
         return True
+
+
+class StubPartyService:
+    def __init__(self, session: object) -> None:
+        self._session = session
+        self.row: Party | None = None
+
+    async def get_party(self, party_id: UUID) -> Party:
+        if self.row is None or self.row.id != party_id:
+            raise ResourceNotFound("nieznany kontrahent")
+        return self.row
+
+
+def _party() -> Party:
+    return Party(
+        id=uuid4(),
+        organization_id=uuid4(),
+        legal_name="Agent",
+        country_code="PL",
+        roles=["agent"],
+        source_ref="tenant:manual",
+        is_active=True,
+    )
 
 
 class StubNetworkService:
@@ -85,6 +109,7 @@ class StubNetworkService:
         network_id: UUID,
         member_code: str,
         legal_name: str,
+        party_id: UUID,
     ) -> NetworkMember:
         await self.get_network(network_id)
         token = member_code.strip().lower()
@@ -97,6 +122,7 @@ class StubNetworkService:
             network_id=network_id,
             member_code=token,
             legal_name=legal_name.strip(),
+            party_id=party_id,
             source_ref="tenant:manual",
             created_by=user_id,
         )
@@ -107,9 +133,14 @@ class StubNetworkService:
 @pytest.fixture
 def catalog_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
     stub = StubNetworkService(object())
+    parties = StubPartyService(object())
+    parties.row = _party()
 
     def _factory(session: object) -> StubNetworkService:
         return stub
+
+    def _parties(_session: object) -> StubPartyService:
+        return parties
 
     async def _fake_tenant_session() -> object:
         session = AsyncMock()
@@ -117,14 +148,16 @@ def catalog_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
         return session
 
     monkeypatch.setattr("app.api.networks.NetworkService", _factory)
+    monkeypatch.setattr("app.api.networks.PartyService", _parties)
     set_authz_checker(AllowAllAuthz())
     app.dependency_overrides[require_tenant_session] = _fake_tenant_session
-    yield TestClient(app)
+    yield TestClient(app), parties
     app.dependency_overrides.clear()
     set_authz_checker(None)
 
 
-def test_http_create_and_list_networks(catalog_client: TestClient) -> None:
+def test_http_create_and_list_networks(catalog_client: object) -> None:
+    catalog_client, _parties = catalog_client
     org_id = uuid4()
     headers = bearer_auth_headers(organization_id=org_id)
     created = catalog_client.post(
@@ -154,7 +187,8 @@ def test_http_create_and_list_networks(catalog_client: TestClient) -> None:
     assert rows[0]["id"] == body["id"]
 
 
-def test_http_resolve_unknown_token_is_rejected(catalog_client: TestClient) -> None:
+def test_http_resolve_unknown_token_is_rejected(catalog_client: object) -> None:
+    catalog_client, _parties = catalog_client
     response = catalog_client.get(
         "/api/v1/networks/resolve",
         headers=bearer_auth_headers(),
@@ -164,7 +198,8 @@ def test_http_resolve_unknown_token_is_rejected(catalog_client: TestClient) -> N
     assert "nieznana sieć" in response.json()["detail"]
 
 
-def test_http_create_rejects_client_source_ref(catalog_client: TestClient) -> None:
+def test_http_create_rejects_client_source_ref(catalog_client: object) -> None:
+    catalog_client, _parties = catalog_client
     response = catalog_client.post(
         "/api/v1/networks",
         headers=bearer_auth_headers(),
@@ -178,7 +213,8 @@ def test_http_create_rejects_client_source_ref(catalog_client: TestClient) -> No
     assert response.status_code == 422
 
 
-def test_http_resolve_returns_catalog_row(catalog_client: TestClient) -> None:
+def test_http_resolve_returns_catalog_row(catalog_client: object) -> None:
+    catalog_client, _parties = catalog_client
     headers = bearer_auth_headers()
     catalog_client.post(
         "/api/v1/networks",
@@ -194,7 +230,9 @@ def test_http_resolve_returns_catalog_row(catalog_client: TestClient) -> None:
     assert resolved.json()["code"] == "wca"
 
 
-def test_http_create_and_list_network_members(catalog_client: TestClient) -> None:
+def test_http_create_and_list_network_members(catalog_client: object) -> None:
+    catalog_client, parties = catalog_client
+    assert parties.row is not None
     headers = bearer_auth_headers()
     created = catalog_client.post(
         "/api/v1/networks",
@@ -205,24 +243,70 @@ def test_http_create_and_list_network_members(catalog_client: TestClient) -> Non
     member = catalog_client.post(
         f"/api/v1/networks/{network_id}/members",
         headers=headers,
-        json={"member_code": "Agent_A", "legal_name": "Agent Alpha"},
+        json={
+            "member_code": "Agent_A",
+            "legal_name": "Agent Alpha",
+            "party_id": str(parties.row.id),
+        },
     )
     assert member.status_code == 201
     assert member.json()["member_code"] == "agent_a"
     assert member.json()["legal_name"] == "Agent Alpha"
     assert member.json()["network_id"] == network_id
+    assert member.json()["party_id"] == str(parties.row.id)
     listed = catalog_client.get(f"/api/v1/networks/{network_id}/members", headers=headers)
     assert listed.status_code == 200
     assert listed.json()[0]["id"] == member.json()["id"]
     again = catalog_client.post(
         f"/api/v1/networks/{network_id}/members",
         headers=headers,
-        json={"member_code": "agent_a", "legal_name": "Agent Alpha"},
+        json={
+            "member_code": "agent_a",
+            "legal_name": "Agent Alpha",
+            "party_id": str(parties.row.id),
+        },
     )
     assert again.status_code == 400
 
 
-def test_http_members_unknown_network_is_rejected(catalog_client: TestClient) -> None:
+def test_http_member_without_party_id_is_rejected(catalog_client: object) -> None:
+    catalog_client, _parties = catalog_client
+    headers = bearer_auth_headers()
+    created = catalog_client.post(
+        "/api/v1/networks",
+        headers=headers,
+        json={"code": "wca", "name": "WCA", "aliases": [], "is_global": True},
+    )
+    response = catalog_client.post(
+        f"/api/v1/networks/{created.json()['id']}/members",
+        headers=headers,
+        json={"member_code": "agent_a", "legal_name": "Agent Alpha"},
+    )
+    assert response.status_code == 422
+
+
+def test_http_member_unknown_party_is_404(catalog_client: object) -> None:
+    catalog_client, _parties = catalog_client
+    headers = bearer_auth_headers()
+    created = catalog_client.post(
+        "/api/v1/networks",
+        headers=headers,
+        json={"code": "wca", "name": "WCA", "aliases": [], "is_global": True},
+    )
+    response = catalog_client.post(
+        f"/api/v1/networks/{created.json()['id']}/members",
+        headers=headers,
+        json={
+            "member_code": "agent_a",
+            "legal_name": "Agent Alpha",
+            "party_id": str(uuid4()),
+        },
+    )
+    assert response.status_code == 404
+
+
+def test_http_members_unknown_network_is_rejected(catalog_client: object) -> None:
+    catalog_client, _parties = catalog_client
     response = catalog_client.get(
         f"/api/v1/networks/{uuid4()}/members",
         headers=bearer_auth_headers(),

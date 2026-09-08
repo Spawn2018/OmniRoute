@@ -1,6 +1,6 @@
 import uuid
 
-from sqlalchemy import CheckConstraint, ForeignKey, Index, String, UniqueConstraint
+from sqlalchemy import CheckConstraint, ForeignKey, ForeignKeyConstraint, Index, String, UniqueConstraint
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -26,6 +26,13 @@ class NetworkMember(Base, TimestampMixin):
             name="ck_network_member_code_snake",
         ),
         Index("ix_network_member_org_network", "organization_id", "network_id"),
+        ForeignKeyConstraint(
+            ["organization_id", "party_id"],
+            ["party.organization_id", "party.id"],
+            name="fk_network_member_party",
+            ondelete="RESTRICT",
+        ),
+        Index("ix_network_member_org_party_id", "organization_id", "party_id"),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
@@ -42,4 +49,5 @@ class NetworkMember(Base, TimestampMixin):
     )
     member_code: Mapped[str] = mapped_column(String(32), nullable=False)
     legal_name: Mapped[str] = mapped_column(String(128), nullable=False)
+    party_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
     source_ref: Mapped[str] = mapped_column(String(256), nullable=False)

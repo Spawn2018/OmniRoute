@@ -81,6 +81,7 @@ export type NetworkMember = {
   network_id: string
   member_code: string
   legal_name: string
+  party_id: string | null
   source_ref: string
 }
 
@@ -99,7 +100,7 @@ export async function fetchNetworkMembers(networkId: string): Promise<NetworkMem
 
 export async function createNetworkMember(
   networkId: string,
-  body: { member_code: string; legal_name: string },
+  body: { member_code: string; legal_name: string; party_id: string },
 ): Promise<NetworkMember> {
   const response = await fetch(`/api/v1/networks/${networkId}/members`, {
     method: "POST",

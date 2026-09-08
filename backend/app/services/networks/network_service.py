@@ -88,6 +88,7 @@ class NetworkService:
         network_id: UUID,
         member_code: str,
         legal_name: str,
+        party_id: UUID,
     ) -> NetworkMember:
         network = await self.get_network(network_id)
         token = normalize_network_code(member_code)
@@ -97,6 +98,7 @@ class NetworkService:
             network_id=network.id,
             member_code=token,
             legal_name=require_network_member_name(legal_name),
+            party_id=party_id,
             source_ref=_MANUAL,
             created_by=user_id,
         )
