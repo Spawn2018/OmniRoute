@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **156.0** D2 `shipment_package`
-- **Etap:** Plan
-- **Następny:** **157.0** D3 cross-dock → D4–D9 → P → G2.0–G2.23 → F → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Etap:** Kod
+- **Następny:** **157.0** D3 `dock_appointment` → D4–D9 → P → G2.0–G2.23 → F → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 
