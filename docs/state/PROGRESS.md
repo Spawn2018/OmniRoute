@@ -403,3 +403,4 @@
 | 2026-09-08 | 160.0 | D6 | ocean_bill znacznik HBL/MBL na zleceniu. Nie booking. Nastepny: D7 Plan. |
 | 2026-09-08 | Plan 161.0 | D7 | pallet_balance saldo Chep/LPR na party, nie giełda. Delta zaakceptowana (`/noc`). Nie D8. Nastepny: kod 161.0. |
 | 2026-09-08 | 161.0 | D7 | pallet_balance saldo Chep/LPR integer na party. Nie giełda. Nastepny: D9 Plan (D8 parked). |
+| 2026-09-08 | Plan 162.0 | D9 | document_template layout jako dane, nie PDF. Delta zaakceptowana (`/noc`). Nie D8. Nastepny: kod 162.0. |
