@@ -98,8 +98,19 @@ def missing_product_delta(
     ]
 
 
+_BINARY_SUFFIX = frozenset({
+    ".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico",
+    ".pptx", ".pdf", ".zip", ".woff", ".woff2",
+})
+
+
 def read_if_exists(rel: str) -> str:
     path = ROOT / rel
     if not path.is_file():
         return ""
-    return path.read_text(encoding="utf-8")
+    if path.suffix.lower() in _BINARY_SUFFIX:
+        return ""
+    try:
+        return path.read_text(encoding="utf-8")
+    except UnicodeDecodeError:
+        return ""
