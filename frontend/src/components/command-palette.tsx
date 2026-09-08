@@ -28,6 +28,7 @@ const NAV_ACTIONS = [
   { id: "nav-rail", label: "Idź do kolei intermodalnej", to: "/rail" },
   { id: "nav-china-rail", label: "Idź do kolei z Chin", to: "/china-rail" },
   { id: "nav-lcl", label: "Idź do drobnicy morskiej", to: "/lcl" },
+  { id: "nav-ocean-bills", label: "Idź do konosamentu LCL", to: "/ocean-bills" },
   { id: "nav-air", label: "Idź do lotniczego", to: "/air" },
   { id: "nav-groupage", label: "Idź do linii drobnicy", to: "/groupage" },
   { id: "nav-groupage-tariffs", label: "Idź do cennika drobnicy", to: "/groupage-tariffs" },

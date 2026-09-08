@@ -46,6 +46,7 @@ import { Route as MoneyCostRouteImport } from './routes/money-cost'
 import { Route as NbpRatesRouteImport } from './routes/nbp-rates'
 import { Route as NetworksRouteImport } from './routes/networks'
 import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as OceanBillsRouteImport } from './routes/ocean-bills'
 import { Route as OrganizationSettingsRouteImport } from './routes/organization-settings'
 import { Route as OutboxRouteImport } from './routes/outbox'
 import { Route as PartiesRouteImport } from './routes/parties'
@@ -255,6 +256,11 @@ const NotificationsRoute = NotificationsRouteImport.update({
   path: '/notifications',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OceanBillsRoute = OceanBillsRouteImport.update({
+  id: '/ocean-bills',
+  path: '/ocean-bills',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OrganizationSettingsRoute = OrganizationSettingsRouteImport.update({
   id: '/organization-settings',
   path: '/organization-settings',
@@ -409,6 +415,7 @@ export interface FileRoutesByFullPath {
   '/nbp-rates': typeof NbpRatesRoute
   '/networks': typeof NetworksRoute
   '/notifications': typeof NotificationsRoute
+  '/ocean-bills': typeof OceanBillsRoute
   '/organization-settings': typeof OrganizationSettingsRoute
   '/outbox': typeof OutboxRoute
   '/parties': typeof PartiesRoute
@@ -471,6 +478,7 @@ export interface FileRoutesByTo {
   '/nbp-rates': typeof NbpRatesRoute
   '/networks': typeof NetworksRoute
   '/notifications': typeof NotificationsRoute
+  '/ocean-bills': typeof OceanBillsRoute
   '/organization-settings': typeof OrganizationSettingsRoute
   '/outbox': typeof OutboxRoute
   '/parties': typeof PartiesRoute
@@ -534,6 +542,7 @@ export interface FileRoutesById {
   '/nbp-rates': typeof NbpRatesRoute
   '/networks': typeof NetworksRoute
   '/notifications': typeof NotificationsRoute
+  '/ocean-bills': typeof OceanBillsRoute
   '/organization-settings': typeof OrganizationSettingsRoute
   '/outbox': typeof OutboxRoute
   '/parties': typeof PartiesRoute
@@ -598,6 +607,7 @@ export interface FileRouteTypes {
     | '/nbp-rates'
     | '/networks'
     | '/notifications'
+    | '/ocean-bills'
     | '/organization-settings'
     | '/outbox'
     | '/parties'
@@ -660,6 +670,7 @@ export interface FileRouteTypes {
     | '/nbp-rates'
     | '/networks'
     | '/notifications'
+    | '/ocean-bills'
     | '/organization-settings'
     | '/outbox'
     | '/parties'
@@ -722,6 +733,7 @@ export interface FileRouteTypes {
     | '/nbp-rates'
     | '/networks'
     | '/notifications'
+    | '/ocean-bills'
     | '/organization-settings'
     | '/outbox'
     | '/parties'
@@ -785,6 +797,7 @@ export interface RootRouteChildren {
   NbpRatesRoute: typeof NbpRatesRoute
   NetworksRoute: typeof NetworksRoute
   NotificationsRoute: typeof NotificationsRoute
+  OceanBillsRoute: typeof OceanBillsRoute
   OrganizationSettingsRoute: typeof OrganizationSettingsRoute
   OutboxRoute: typeof OutboxRoute
   PartiesRoute: typeof PartiesRoute
@@ -1071,6 +1084,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NotificationsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ocean-bills': {
+      id: '/ocean-bills'
+      path: '/ocean-bills'
+      fullPath: '/ocean-bills'
+      preLoaderRoute: typeof OceanBillsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/organization-settings': {
       id: '/organization-settings'
       path: '/organization-settings'
@@ -1273,6 +1293,7 @@ const rootRouteChildren: RootRouteChildren = {
   NbpRatesRoute: NbpRatesRoute,
   NetworksRoute: NetworksRoute,
   NotificationsRoute: NotificationsRoute,
+  OceanBillsRoute: OceanBillsRoute,
   OrganizationSettingsRoute: OrganizationSettingsRoute,
   OutboxRoute: OutboxRoute,
   PartiesRoute: PartiesRoute,

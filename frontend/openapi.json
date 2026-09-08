@@ -4892,6 +4892,80 @@
         ]
       }
     },
+    "/api/v1/ocean-bills": {
+      "get": {
+        "tags": [
+          "ocean-bills"
+        ],
+        "summary": "List Ocean Bills",
+        "operationId": "list_ocean_bills_api_v1_ocean_bills_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/OceanBillResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Ocean Bills Api V1 Ocean Bills Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "ocean-bills"
+        ],
+        "summary": "Create Ocean Bill",
+        "operationId": "create_ocean_bill_api_v1_ocean_bills_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OceanBillCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OceanBillResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/fraud-flags": {
       "get": {
         "tags": [
@@ -13412,6 +13486,77 @@
           "source_ref"
         ],
         "title": "NetworkResponse"
+      },
+      "OceanBillCreate": {
+        "properties": {
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "bill_no": {
+            "type": "string",
+            "title": "Bill No"
+          },
+          "bill_kind": {
+            "type": "string",
+            "title": "Bill Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "shipment_id",
+          "bill_no",
+          "bill_kind",
+          "source_ref"
+        ],
+        "title": "OceanBillCreate"
+      },
+      "OceanBillResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "bill_no": {
+            "type": "string",
+            "title": "Bill No"
+          },
+          "bill_kind": {
+            "type": "string",
+            "title": "Bill Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "shipment_id",
+          "bill_no",
+          "bill_kind",
+          "source_ref"
+        ],
+        "title": "OceanBillResponse"
       },
       "OperationalExceptionCreate": {
         "properties": {

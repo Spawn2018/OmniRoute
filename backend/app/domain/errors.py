@@ -512,3 +512,7 @@ class InvalidCodInstruction(DomainError):
 
 class InvalidGroupageTariff(DomainError):
     """Cennik drobnicy: próg wagi na strefie — nie silnik P1."""
+
+
+class InvalidOceanBill(DomainError):
+    """Konosament LCL: HBL/MBL na zleceniu — nie PDF, nie booking."""

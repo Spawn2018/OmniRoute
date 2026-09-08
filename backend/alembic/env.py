@@ -75,6 +75,7 @@ from app.models.shipment_package import ShipmentPackage  # noqa: F401
 from app.models.dock_appointment import DockAppointment  # noqa: F401
 from app.models.cod_instruction import CodInstruction  # noqa: F401
 from app.models.groupage_tariff import GroupageTariff  # noqa: F401
+from app.models.ocean_bill import OceanBill  # noqa: F401
 from app.models.shipment_leg import ShipmentLeg  # noqa: F401
 from app.models.money_cost import MoneyCost  # noqa: F401
 from app.models.quote_invoice_settlement import QuoteInvoiceSettlement  # noqa: F401

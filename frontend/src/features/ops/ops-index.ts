@@ -79,6 +79,11 @@ export const OPS_JOBS = [
     job: "porty z is_seaport",
   },
   {
+    route: BUSINESS_LISTS.oceanBill.route,
+    label: "Konosament LCL",
+    job: "znacznik ocean_bill HBL/MBL bez PDF",
+  },
+  {
     route: BUSINESS_LISTS.airFreight.route,
     label: "Lotniczy",
     job: "lotniska z flagą airport",
@@ -449,6 +454,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "157.0": "/dock-appointments",
   "158.0": "/cod",
   "159.0": "/groupage-tariffs",
+  "160.0": "/ocean-bills",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

@@ -38,6 +38,7 @@ from app.api import (
     money_costs,
     nbp_rates,
     networks,
+    ocean_bills,
     operational_exceptions,
     operator_decisions,
     operator_notices,
@@ -109,6 +110,7 @@ api_router.include_router(dock_appointments.router)
 api_router.include_router(operational_exceptions.router)
 api_router.include_router(cargo_claims.router)
 api_router.include_router(cod_instructions.router)
+api_router.include_router(ocean_bills.router)
 api_router.include_router(fraud_flags.router)
 api_router.include_router(edi_messages.router)
 api_router.include_router(sales_invoices.router)

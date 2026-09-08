@@ -2934,6 +2934,58 @@ export type NetworkResponse = {
 };
 
 /**
+ * OceanBillCreate
+ */
+export type OceanBillCreate = {
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Bill No
+     */
+    bill_no: string;
+    /**
+     * Bill Kind
+     */
+    bill_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * OceanBillResponse
+ */
+export type OceanBillResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Bill No
+     */
+    bill_no: string;
+    /**
+     * Bill Kind
+     */
+    bill_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * OperationalExceptionCreate
  */
 export type OperationalExceptionCreate = {
@@ -7774,6 +7826,49 @@ export type CreateCodInstructionApiV1CodInstructionsPostResponses = {
 };
 
 export type CreateCodInstructionApiV1CodInstructionsPostResponse = CreateCodInstructionApiV1CodInstructionsPostResponses[keyof CreateCodInstructionApiV1CodInstructionsPostResponses];
+
+export type ListOceanBillsApiV1OceanBillsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/ocean-bills';
+};
+
+export type ListOceanBillsApiV1OceanBillsGetResponses = {
+    /**
+     * Response List Ocean Bills Api V1 Ocean Bills Get
+     *
+     * Successful Response
+     */
+    200: Array<OceanBillResponse>;
+};
+
+export type ListOceanBillsApiV1OceanBillsGetResponse = ListOceanBillsApiV1OceanBillsGetResponses[keyof ListOceanBillsApiV1OceanBillsGetResponses];
+
+export type CreateOceanBillApiV1OceanBillsPostData = {
+    body: OceanBillCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/ocean-bills';
+};
+
+export type CreateOceanBillApiV1OceanBillsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateOceanBillApiV1OceanBillsPostError = CreateOceanBillApiV1OceanBillsPostErrors[keyof CreateOceanBillApiV1OceanBillsPostErrors];
+
+export type CreateOceanBillApiV1OceanBillsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: OceanBillResponse;
+};
+
+export type CreateOceanBillApiV1OceanBillsPostResponse = CreateOceanBillApiV1OceanBillsPostResponses[keyof CreateOceanBillApiV1OceanBillsPostResponses];
 
 export type ListFraudFlagsApiV1FraudFlagsGetData = {
     body?: never;

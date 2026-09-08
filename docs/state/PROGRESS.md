@@ -400,3 +400,4 @@
 | 2026-09-08 | Plan 159.0 | D5 | groupage_tariff próg wagi na strefie, nie silnik P1. Delta zaakceptowana (`/noc`). Nie D6. Nastepny: kod 159.0. |
 | 2026-09-08 | 159.0 | D5 | groupage_tariff próg wagi na strefie Decimal. Nie silnik P1. Nastepny: D6 Plan. |
 | 2026-09-08 | Plan 160.0 | D6 | ocean_bill znacznik HBL/MBL na zleceniu, nie booking. Delta zaakceptowana (`/noc`). Nie D7. Nastepny: kod 160.0. |
+| 2026-09-08 | 160.0 | D6 | ocean_bill znacznik HBL/MBL na zleceniu. Nie booking. Nastepny: D7 Plan. |

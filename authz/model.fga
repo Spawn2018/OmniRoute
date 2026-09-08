@@ -51,3 +51,4 @@ type organization
     define can_manage_dock_appointments: member
     define can_manage_cod_instructions: member
     define can_manage_groupage_tariffs: member
+    define can_manage_ocean_bills: member
