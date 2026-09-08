@@ -421,3 +421,4 @@
 | 2026-09-08 | 169.0 | G2.0 | tender nagłówek sell/buy jako dane. Nie loty. Nie auto-award. Nastepny: G2.1 Plan. |
 | 2026-09-08 | Plan 170.0 | G2.1 | tender_lot kod partii na tender, nie korytarz. Delta zaakceptowana (`/noc`). Nie auto-award. Nastepny: kod 170.0. |
 | 2026-09-08 | 170.0 | G2.1 | tender_lot kod partii na tender. Nie korytarz. Nie auto-award. Nastepny: G2.2 Plan. |
+| 2026-09-09 | Plan 171.0 | G2.2 | tender_lane para UN/LOCODE na tender_lot, nie runda. Delta zaakceptowana (`/noc`). Nie auto-award. Nastepny: kod 171.0. |
