@@ -77,6 +77,11 @@ def _organization_ops_relations() -> dict[str, Userset]:
         "can_manage_charge_templates": _member(),
         "can_manage_fuel_indexes": _member(),
         "can_manage_local_charges": _member(),
+    }
+
+
+def _organization_tender_relations() -> dict[str, Userset]:
+    return {
         "can_manage_tender_quotes": _member(),
         "can_manage_tenders": _member(),
         "can_manage_tender_lots": _member(),
@@ -84,11 +89,16 @@ def _organization_ops_relations() -> dict[str, Userset]:
         "can_manage_tender_rounds": _member(),
         "can_manage_tender_data_rooms": _member(),
         "can_manage_tender_matrix_cells": _member(),
+        "can_manage_tender_playbooks": _member(),
     }
 
 
 def _organization_relations() -> dict[str, Userset]:
-    return {**_organization_core_relations(), **_organization_ops_relations()}
+    return {
+        **_organization_core_relations(),
+        **_organization_ops_relations(),
+        **_organization_tender_relations(),
+    }
 
 
 def _organization_relation_metadata() -> dict[str, RelationMetadata]:

@@ -5294,6 +5294,58 @@ export type TenderMatrixCellResponse = {
 };
 
 /**
+ * TenderPlaybookCreate
+ */
+export type TenderPlaybookCreate = {
+    /**
+     * Tender Id
+     */
+    tender_id: string;
+    /**
+     * Claim Code
+     */
+    claim_code: string;
+    /**
+     * Claim Text
+     */
+    claim_text: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TenderPlaybookResponse
+ */
+export type TenderPlaybookResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Tender Id
+     */
+    tender_id: string;
+    /**
+     * Claim Code
+     */
+    claim_code: string;
+    /**
+     * Claim Text
+     */
+    claim_text: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * TenderQuoteCreate
  */
 export type TenderQuoteCreate = {
@@ -9082,6 +9134,49 @@ export type CreateTenderMatrixCellApiV1TenderMatrixCellsPostResponses = {
 };
 
 export type CreateTenderMatrixCellApiV1TenderMatrixCellsPostResponse = CreateTenderMatrixCellApiV1TenderMatrixCellsPostResponses[keyof CreateTenderMatrixCellApiV1TenderMatrixCellsPostResponses];
+
+export type ListTenderPlaybooksApiV1TenderPlaybooksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tender-playbooks';
+};
+
+export type ListTenderPlaybooksApiV1TenderPlaybooksGetResponses = {
+    /**
+     * Response List Tender Playbooks Api V1 Tender Playbooks Get
+     *
+     * Successful Response
+     */
+    200: Array<TenderPlaybookResponse>;
+};
+
+export type ListTenderPlaybooksApiV1TenderPlaybooksGetResponse = ListTenderPlaybooksApiV1TenderPlaybooksGetResponses[keyof ListTenderPlaybooksApiV1TenderPlaybooksGetResponses];
+
+export type CreateTenderPlaybookApiV1TenderPlaybooksPostData = {
+    body: TenderPlaybookCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tender-playbooks';
+};
+
+export type CreateTenderPlaybookApiV1TenderPlaybooksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTenderPlaybookApiV1TenderPlaybooksPostError = CreateTenderPlaybookApiV1TenderPlaybooksPostErrors[keyof CreateTenderPlaybookApiV1TenderPlaybooksPostErrors];
+
+export type CreateTenderPlaybookApiV1TenderPlaybooksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TenderPlaybookResponse;
+};
+
+export type CreateTenderPlaybookApiV1TenderPlaybooksPostResponse = CreateTenderPlaybookApiV1TenderPlaybooksPostResponses[keyof CreateTenderPlaybookApiV1TenderPlaybooksPostResponses];
 
 export type ListTenderRoundsApiV1TenderRoundsGetData = {
     body?: never;

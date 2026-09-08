@@ -568,3 +568,7 @@ class InvalidTenderDataRoom(DomainError):
 
 class InvalidTenderMatrixCell(DomainError):
     """Komórka matrycy G2.5: kwota Decimal z P — nie LLM i nie druga marża."""
+
+
+class InvalidTenderPlaybook(DomainError):
+    """Playbook G2.6: twierdzenie z source_ref — nie extract RFP i nie kwota."""

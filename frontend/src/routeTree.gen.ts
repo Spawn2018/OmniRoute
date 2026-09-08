@@ -76,6 +76,7 @@ import { Route as TenderDataRoomsRouteImport } from './routes/tender-data-rooms'
 import { Route as TenderLanesRouteImport } from './routes/tender-lanes'
 import { Route as TenderLotsRouteImport } from './routes/tender-lots'
 import { Route as TenderMatrixCellsRouteImport } from './routes/tender-matrix-cells'
+import { Route as TenderPlaybooksRouteImport } from './routes/tender-playbooks'
 import { Route as TenderQuotesRouteImport } from './routes/tender-quotes'
 import { Route as TenderRoundsRouteImport } from './routes/tender-rounds'
 import { Route as TendersRouteImport } from './routes/tenders'
@@ -419,6 +420,11 @@ const TenderMatrixCellsRoute = TenderMatrixCellsRouteImport.update({
   path: '/tender-matrix-cells',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TenderPlaybooksRoute = TenderPlaybooksRouteImport.update({
+  id: '/tender-playbooks',
+  path: '/tender-playbooks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TenderQuotesRoute = TenderQuotesRouteImport.update({
   id: '/tender-quotes',
   path: '/tender-quotes',
@@ -523,6 +529,7 @@ export interface FileRoutesByFullPath {
   '/tender-lanes': typeof TenderLanesRoute
   '/tender-lots': typeof TenderLotsRoute
   '/tender-matrix-cells': typeof TenderMatrixCellsRoute
+  '/tender-playbooks': typeof TenderPlaybooksRoute
   '/tender-quotes': typeof TenderQuotesRoute
   '/tender-rounds': typeof TenderRoundsRoute
   '/tenders': typeof TendersRoute
@@ -599,6 +606,7 @@ export interface FileRoutesByTo {
   '/tender-lanes': typeof TenderLanesRoute
   '/tender-lots': typeof TenderLotsRoute
   '/tender-matrix-cells': typeof TenderMatrixCellsRoute
+  '/tender-playbooks': typeof TenderPlaybooksRoute
   '/tender-quotes': typeof TenderQuotesRoute
   '/tender-rounds': typeof TenderRoundsRoute
   '/tenders': typeof TendersRoute
@@ -676,6 +684,7 @@ export interface FileRoutesById {
   '/tender-lanes': typeof TenderLanesRoute
   '/tender-lots': typeof TenderLotsRoute
   '/tender-matrix-cells': typeof TenderMatrixCellsRoute
+  '/tender-playbooks': typeof TenderPlaybooksRoute
   '/tender-quotes': typeof TenderQuotesRoute
   '/tender-rounds': typeof TenderRoundsRoute
   '/tenders': typeof TendersRoute
@@ -754,6 +763,7 @@ export interface FileRouteTypes {
     | '/tender-lanes'
     | '/tender-lots'
     | '/tender-matrix-cells'
+    | '/tender-playbooks'
     | '/tender-quotes'
     | '/tender-rounds'
     | '/tenders'
@@ -830,6 +840,7 @@ export interface FileRouteTypes {
     | '/tender-lanes'
     | '/tender-lots'
     | '/tender-matrix-cells'
+    | '/tender-playbooks'
     | '/tender-quotes'
     | '/tender-rounds'
     | '/tenders'
@@ -906,6 +917,7 @@ export interface FileRouteTypes {
     | '/tender-lanes'
     | '/tender-lots'
     | '/tender-matrix-cells'
+    | '/tender-playbooks'
     | '/tender-quotes'
     | '/tender-rounds'
     | '/tenders'
@@ -983,6 +995,7 @@ export interface RootRouteChildren {
   TenderLanesRoute: typeof TenderLanesRoute
   TenderLotsRoute: typeof TenderLotsRoute
   TenderMatrixCellsRoute: typeof TenderMatrixCellsRoute
+  TenderPlaybooksRoute: typeof TenderPlaybooksRoute
   TenderQuotesRoute: typeof TenderQuotesRoute
   TenderRoundsRoute: typeof TenderRoundsRoute
   TendersRoute: typeof TendersRoute
@@ -1463,6 +1476,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TenderMatrixCellsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tender-playbooks': {
+      id: '/tender-playbooks'
+      path: '/tender-playbooks'
+      fullPath: '/tender-playbooks'
+      preLoaderRoute: typeof TenderPlaybooksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tender-quotes': {
       id: '/tender-quotes'
       path: '/tender-quotes'
@@ -1583,6 +1603,7 @@ const rootRouteChildren: RootRouteChildren = {
   TenderLanesRoute: TenderLanesRoute,
   TenderLotsRoute: TenderLotsRoute,
   TenderMatrixCellsRoute: TenderMatrixCellsRoute,
+  TenderPlaybooksRoute: TenderPlaybooksRoute,
   TenderQuotesRoute: TenderQuotesRoute,
   TenderRoundsRoute: TenderRoundsRoute,
   TendersRoute: TendersRoute,

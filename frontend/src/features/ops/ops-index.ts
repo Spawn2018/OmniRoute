@@ -124,6 +124,11 @@ export const OPS_JOBS = [
     job: "kwota Decimal z P bez LLM",
   },
   {
+    route: BUSINESS_LISTS.tenderPlaybook.route,
+    label: "Playbook przetargu",
+    job: "twierdzenie na tender bez extractu",
+  },
+  {
     route: BUSINESS_LISTS.tenderLane.route,
     label: "Korytarze przetargu",
     job: "para UN/LOCODE na partii bez rundy",
@@ -534,6 +539,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "172.0": "/tender-rounds",
   "173.0": "/tender-data-rooms",
   "174.0": "/tender-matrix-cells",
+  "175.0": "/tender-playbooks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

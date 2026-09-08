@@ -5780,6 +5780,80 @@
         ]
       }
     },
+    "/api/v1/tender-playbooks": {
+      "get": {
+        "tags": [
+          "tender-playbooks"
+        ],
+        "summary": "List Tender Playbooks",
+        "operationId": "list_tender_playbooks_api_v1_tender_playbooks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TenderPlaybookResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Tender Playbooks Api V1 Tender Playbooks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "tender-playbooks"
+        ],
+        "summary": "Create Tender Playbook",
+        "operationId": "create_tender_playbook_api_v1_tender_playbooks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TenderPlaybookCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TenderPlaybookResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/tender-rounds": {
       "get": {
         "tags": [
@@ -18273,6 +18347,77 @@
           "source_ref"
         ],
         "title": "TenderMatrixCellResponse"
+      },
+      "TenderPlaybookCreate": {
+        "properties": {
+          "tender_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Tender Id"
+          },
+          "claim_code": {
+            "type": "string",
+            "title": "Claim Code"
+          },
+          "claim_text": {
+            "type": "string",
+            "title": "Claim Text"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "tender_id",
+          "claim_code",
+          "claim_text",
+          "source_ref"
+        ],
+        "title": "TenderPlaybookCreate"
+      },
+      "TenderPlaybookResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "tender_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Tender Id"
+          },
+          "claim_code": {
+            "type": "string",
+            "title": "Claim Code"
+          },
+          "claim_text": {
+            "type": "string",
+            "title": "Claim Text"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "tender_id",
+          "claim_code",
+          "claim_text",
+          "source_ref"
+        ],
+        "title": "TenderPlaybookResponse"
       },
       "TenderQuoteCreate": {
         "properties": {
