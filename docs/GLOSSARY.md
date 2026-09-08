@@ -176,6 +176,7 @@
 | przetarg | tender | G2.0 nagłówek sell/buy; nie P6 `tender_quote`; nie loty |
 | partia przetargu | tender_lot | G2.1 kod partii na `tender`; nie korytarz; nie kwota |
 | korytarz przetargu | tender_lane | G2.2 para UN/LOCODE na `tender_lot`; nie runda; nie kwota |
+| runda przetargu | tender_round | G2.3 numer rundy na `tender`; nie data room; nie kwota |
 | oferta przetargowa kupna | tender_quote | P6 ważność + limit orderów; nie auto-award; nie obiekt `tender` |
 | kółko | lane_circle | G2.20–G2.21; nakładanie dat |
 | KREPTD | kreptd | G2.23; GITD/ITD; oficjalne API |
