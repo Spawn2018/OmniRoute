@@ -456,3 +456,7 @@ class InvalidFieldCarryForward(DomainError):
 
 class InvalidDocumentChecklistRule(DomainError):
     """Reguła checklisty: trójka incoterm×strona×mode i rodzaj dokumentu — nie dispatch."""
+
+
+class InvalidIncotermResponsibility(DomainError):
+    """Macierz obowiązków: para incoterm×strona i role z allowlisty — nie cytat ICC."""

@@ -33,6 +33,7 @@ modules =
     app.services.networks
     app.services.carrier_inquiries
     app.services.inbound_messages
+    app.services.incoterm_responsibilities
     app.services.customer_rfqs
     app.services.operator_decisions
     app.services.operator_notices
@@ -121,6 +122,9 @@ forbidden_modules =
     app.services.inbound_messages
     app.repositories.inbound_messages
     app.models.inbound_message
+    app.services.incoterm_responsibilities
+    app.repositories.incoterm_responsibilities
+    app.models.incoterm_responsibility
     app.services.customer_rfqs
     app.repositories.customer_rfqs
     app.models.customer_rfq

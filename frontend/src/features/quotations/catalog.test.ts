@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs"
 import { describe, expect, it } from "vitest"
 import { documentChecklistRuleBody } from "@/lib/document-checklist-rules-api"
 import { fieldCarryForwardBody } from "@/lib/field-carry-forwards-api"
+import { incotermResponsibilityBody } from "@/lib/incoterm-responsibilities-api"
 import {
   quotationBatchBody,
   quotationCreateBody,
@@ -164,6 +165,20 @@ describe("field carry-forward and checklist bodies", () => {
       blocksDispatch: true,
     })
     expect(body.blocks_dispatch).toBe(true)
+    expect(body).not.toHaveProperty("amount")
+  })
+
+  it("sends incoterm responsibility pair without an amount", () => {
+    const body = incotermResponsibilityBody({
+      incoterm: " DDP ",
+      tradeSide: "import",
+      exportClearanceRole: "seller",
+      importClearanceRole: "seller",
+      mainCarriageBooker: "seller",
+      bookingScope: ["ocean", "oncarriage"],
+    })
+    expect(body.import_clearance_role).toBe("seller")
+    expect(body.source_ref).toBe("tenant:manual")
     expect(body).not.toHaveProperty("amount")
   })
 })
@@ -429,8 +444,10 @@ describe("quotation catalog screen", () => {
     expect(page).toContain("createCharge")
     expect(page).toContain("CarryForwardPanel")
     expect(page).toContain("ChecklistRulePanel")
+    expect(page).toContain("IncotermResponsibilityPanel")
     const carry = readFileSync(new URL("./carry-forward-panel.tsx", import.meta.url), "utf8")
     const checklist = readFileSync(new URL("./checklist-rule-panel.tsx", import.meta.url), "utf8")
+    const matrix = readFileSync(new URL("./incoterm-responsibility-panel.tsx", import.meta.url), "utf8")
     expect(carry).toContain('data-carry-forward="job"')
     expect(carry).toContain("Przenieś pola")
     expect(carry).toContain("fieldCarryForwardBody")
@@ -439,6 +456,11 @@ describe("quotation catalog screen", () => {
     expect(checklist).toContain("Zapisz regułę")
     expect(checklist).toContain("blocks_dispatch")
     expect(checklist).toContain("documentChecklistRuleBody")
+    expect(matrix).toContain('data-incoterm-responsibility="job"')
+    expect(matrix).toContain("Seed Omni 11×2")
+    expect(matrix).toContain("incotermResponsibilityBody")
+    expect(matrix).not.toContain("ICC")
+    expect(matrix).not.toContain("parseFloat")
     expect(page).not.toContain("acceptExtractionDraft")
     expect(page).not.toContain("imap")
     expect(page).not.toMatch(/reduce\s*\(/)

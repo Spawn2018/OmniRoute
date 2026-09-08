@@ -33,6 +33,7 @@ import {
 import { DecideStatusButtons } from "@/features/operator-decisions/decide-status-buttons"
 import { CarryForwardPanel } from "@/features/quotations/carry-forward-panel"
 import { ChecklistRulePanel } from "@/features/quotations/checklist-rule-panel"
+import { IncotermResponsibilityPanel } from "@/features/quotations/incoterm-responsibility-panel"
 import { fetchPorts } from "@/lib/ports-api"
 import {
   createQuotation,
@@ -1364,6 +1365,7 @@ export function QuotationCatalogPage() {
           />
           <CarryForwardPanel rows={query.data} signedIn={signedIn} />
           <ChecklistRulePanel signedIn={signedIn} />
+          <IncotermResponsibilityPanel signedIn={signedIn} />
         </>
       ) : null}
 

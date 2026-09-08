@@ -1872,6 +1872,86 @@ export type InboundMessageResponse = {
 };
 
 /**
+ * IncotermResponsibilityCreate
+ */
+export type IncotermResponsibilityCreate = {
+    /**
+     * Incoterm
+     */
+    incoterm: string;
+    /**
+     * Trade Side
+     */
+    trade_side: string;
+    /**
+     * Export Clearance Role
+     */
+    export_clearance_role: string;
+    /**
+     * Import Clearance Role
+     */
+    import_clearance_role: string;
+    /**
+     * Main Carriage Booker
+     */
+    main_carriage_booker: string;
+    /**
+     * Booking Scope
+     */
+    booking_scope: Array<string>;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * IncotermResponsibilityResponse
+ */
+export type IncotermResponsibilityResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Incoterm
+     */
+    incoterm: string;
+    /**
+     * Trade Side
+     */
+    trade_side: string;
+    /**
+     * Export Clearance Role
+     */
+    export_clearance_role: string;
+    /**
+     * Import Clearance Role
+     */
+    import_clearance_role: string;
+    /**
+     * Main Carriage Booker
+     */
+    main_carriage_booker: string;
+    /**
+     * Booking Scope
+     */
+    booking_scope: Array<string>;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+    /**
+     * Superseded By
+     */
+    superseded_by: string | null;
+};
+
+/**
  * InquiryMemberRankResponse
  */
 export type InquiryMemberRankResponse = {
@@ -5105,6 +5185,85 @@ export type ExtractInboundMessageApiV1InboundMessagesMessageIdExtractPostRespons
 };
 
 export type ExtractInboundMessageApiV1InboundMessagesMessageIdExtractPostResponse = ExtractInboundMessageApiV1InboundMessagesMessageIdExtractPostResponses[keyof ExtractInboundMessageApiV1InboundMessagesMessageIdExtractPostResponses];
+
+export type ListIncotermResponsibilitiesApiV1IncotermResponsibilitiesGetData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Incoterm
+         */
+        incoterm: string;
+        /**
+         * Trade Side
+         */
+        trade_side: string;
+    };
+    url: '/api/v1/incoterm-responsibilities';
+};
+
+export type ListIncotermResponsibilitiesApiV1IncotermResponsibilitiesGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ListIncotermResponsibilitiesApiV1IncotermResponsibilitiesGetError = ListIncotermResponsibilitiesApiV1IncotermResponsibilitiesGetErrors[keyof ListIncotermResponsibilitiesApiV1IncotermResponsibilitiesGetErrors];
+
+export type ListIncotermResponsibilitiesApiV1IncotermResponsibilitiesGetResponses = {
+    /**
+     * Response List Incoterm Responsibilities Api V1 Incoterm Responsibilities Get
+     *
+     * Successful Response
+     */
+    200: Array<IncotermResponsibilityResponse>;
+};
+
+export type ListIncotermResponsibilitiesApiV1IncotermResponsibilitiesGetResponse = ListIncotermResponsibilitiesApiV1IncotermResponsibilitiesGetResponses[keyof ListIncotermResponsibilitiesApiV1IncotermResponsibilitiesGetResponses];
+
+export type CreateIncotermResponsibilityApiV1IncotermResponsibilitiesPostData = {
+    body: IncotermResponsibilityCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/incoterm-responsibilities';
+};
+
+export type CreateIncotermResponsibilityApiV1IncotermResponsibilitiesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateIncotermResponsibilityApiV1IncotermResponsibilitiesPostError = CreateIncotermResponsibilityApiV1IncotermResponsibilitiesPostErrors[keyof CreateIncotermResponsibilityApiV1IncotermResponsibilitiesPostErrors];
+
+export type CreateIncotermResponsibilityApiV1IncotermResponsibilitiesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: IncotermResponsibilityResponse;
+};
+
+export type CreateIncotermResponsibilityApiV1IncotermResponsibilitiesPostResponse = CreateIncotermResponsibilityApiV1IncotermResponsibilitiesPostResponses[keyof CreateIncotermResponsibilityApiV1IncotermResponsibilitiesPostResponses];
+
+export type SeedIncotermResponsibilitiesApiV1IncotermResponsibilitiesSeedPostData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/incoterm-responsibilities/seed';
+};
+
+export type SeedIncotermResponsibilitiesApiV1IncotermResponsibilitiesSeedPostResponses = {
+    /**
+     * Response Seed Incoterm Responsibilities Api V1 Incoterm Responsibilities Seed Post
+     *
+     * Successful Response
+     */
+    201: Array<IncotermResponsibilityResponse>;
+};
+
+export type SeedIncotermResponsibilitiesApiV1IncotermResponsibilitiesSeedPostResponse = SeedIncotermResponsibilitiesApiV1IncotermResponsibilitiesSeedPostResponses[keyof SeedIncotermResponsibilitiesApiV1IncotermResponsibilitiesSeedPostResponses];
 
 export type ListCustomerRfqsApiV1CustomerRfqsGetData = {
     body?: never;

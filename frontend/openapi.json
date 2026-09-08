@@ -1851,6 +1851,140 @@
         }
       }
     },
+    "/api/v1/incoterm-responsibilities": {
+      "get": {
+        "tags": [
+          "incoterm-responsibilities"
+        ],
+        "summary": "List Incoterm Responsibilities",
+        "operationId": "list_incoterm_responsibilities_api_v1_incoterm_responsibilities_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "incoterm",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Incoterm"
+            }
+          },
+          {
+            "name": "trade_side",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Trade Side"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IncotermResponsibilityResponse"
+                  },
+                  "title": "Response List Incoterm Responsibilities Api V1 Incoterm Responsibilities Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "incoterm-responsibilities"
+        ],
+        "summary": "Create Incoterm Responsibility",
+        "operationId": "create_incoterm_responsibility_api_v1_incoterm_responsibilities_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IncotermResponsibilityCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IncotermResponsibilityResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/incoterm-responsibilities/seed": {
+      "post": {
+        "tags": [
+          "incoterm-responsibilities"
+        ],
+        "summary": "Seed Incoterm Responsibilities",
+        "operationId": "seed_incoterm_responsibilities_api_v1_incoterm_responsibilities_seed_post",
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/IncotermResponsibilityResponse"
+                  },
+                  "type": "array",
+                  "title": "Response Seed Incoterm Responsibilities Api V1 Incoterm Responsibilities Seed Post"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/customer-rfqs": {
       "get": {
         "tags": [
@@ -10380,6 +10514,124 @@
           "external_id"
         ],
         "title": "InboundMessageResponse"
+      },
+      "IncotermResponsibilityCreate": {
+        "properties": {
+          "incoterm": {
+            "type": "string",
+            "title": "Incoterm"
+          },
+          "trade_side": {
+            "type": "string",
+            "title": "Trade Side"
+          },
+          "export_clearance_role": {
+            "type": "string",
+            "title": "Export Clearance Role"
+          },
+          "import_clearance_role": {
+            "type": "string",
+            "title": "Import Clearance Role"
+          },
+          "main_carriage_booker": {
+            "type": "string",
+            "title": "Main Carriage Booker"
+          },
+          "booking_scope": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Booking Scope"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "incoterm",
+          "trade_side",
+          "export_clearance_role",
+          "import_clearance_role",
+          "main_carriage_booker",
+          "booking_scope",
+          "source_ref"
+        ],
+        "title": "IncotermResponsibilityCreate"
+      },
+      "IncotermResponsibilityResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "incoterm": {
+            "type": "string",
+            "title": "Incoterm"
+          },
+          "trade_side": {
+            "type": "string",
+            "title": "Trade Side"
+          },
+          "export_clearance_role": {
+            "type": "string",
+            "title": "Export Clearance Role"
+          },
+          "import_clearance_role": {
+            "type": "string",
+            "title": "Import Clearance Role"
+          },
+          "main_carriage_booker": {
+            "type": "string",
+            "title": "Main Carriage Booker"
+          },
+          "booking_scope": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Booking Scope"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          },
+          "superseded_by": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Superseded By"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "incoterm",
+          "trade_side",
+          "export_clearance_role",
+          "import_clearance_role",
+          "main_carriage_booker",
+          "booking_scope",
+          "source_ref",
+          "superseded_by"
+        ],
+        "title": "IncotermResponsibilityResponse"
       },
       "InquiryMemberRankResponse": {
         "properties": {

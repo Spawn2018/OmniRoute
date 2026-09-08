@@ -25,6 +25,7 @@ from app.api import (
     fx_differences,
     gdpr_requests,
     inbound_messages,
+    incoterm_responsibilities,
     locations,
     mail_drafts,
     money_costs,
@@ -68,6 +69,7 @@ api_router.include_router(field_carry_forwards.router)
 api_router.include_router(networks.router)
 api_router.include_router(carrier_inquiries.router)
 api_router.include_router(inbound_messages.router)
+api_router.include_router(incoterm_responsibilities.router)
 api_router.include_router(customer_rfqs.router)
 api_router.include_router(operator_decisions.router)
 api_router.include_router(operator_notices.router)
