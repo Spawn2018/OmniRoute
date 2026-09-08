@@ -367,3 +367,4 @@
 | 2026-09-08 | 141.0 | M-12 | O7: filtr country_code na /networks z party. Nie O8. Nastepny: O8 Plan. |
 | 2026-09-08 | Plan 142.0 | M-32 | O8: group_by party/country/status na /mail w table_view.config. Delta zaakceptowana (/noc). Nie watek. Nastepny: kod 142.0. |
 | 2026-09-08 | 142.0 | M-32 | O8: group_by party/country/status na /mail w table_view.config. Nie watek. Nastepny: N5 Plan. |
+| 2026-09-08 | Plan 143.0 | M-30 | N5: no_reply_after na carrier_inquiry + reczny notice no_reply. Delta zaakceptowana (/noc). Nie U4. Nastepny: kod 143.0. |
