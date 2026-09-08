@@ -353,3 +353,4 @@
 | 2026-09-08 | Plan 134.0 | M-19 | O1: `transit_days` + znaczki SQL. Delta zaakceptowana (`/noc`). Nie T7. Następny: kod 134.0. |
 | 2026-09-08 | 134.0 | M-19 | O1: `transit_days` + znaczki SQL (ta sama waluta). Nie NBP. Następny: O2 Plan. |
 | 2026-09-08 | Plan 135.0 | M-19 | O2: zapis oferty z `/quotations`. Delta zaakceptowana (`/noc`). Nie 1.3. Następny: kod 135.0. |
+| 2026-09-08 | 135.0 | M-19 | O2: `source_ref` z user + 409 + formularz na wycenie. Nie 1.3. Następny: O3 Plan. |

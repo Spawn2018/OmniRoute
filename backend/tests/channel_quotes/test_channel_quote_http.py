@@ -7,8 +7,8 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app.api.deps import require_tenant_session, set_authz_checker
-from app.domain.channel_quote import normalize_transit_days
-from app.domain.errors import UnknownCarrierProfile, UnknownChannelQuote
+from app.domain.channel_quote import manual_channel_source_ref, normalize_transit_days
+from app.domain.errors import ChannelQuoteConflict, UnknownCarrierProfile, UnknownChannelQuote
 from app.main import app
 from app.models.channel_quote import ChannelQuote
 from app.repositories.channel_quotes.channel_quote_repository import ChannelQuoteCard
@@ -78,6 +78,14 @@ class StubChannelQuoteService:
     ) -> ChannelQuote:
         if party_id == _MISSING_CARRIER:
             raise UnknownCarrierProfile(f"brak profilu armatora: {party_id}")
+        for found in self.rows:
+            if (
+                found.party_id == party_id
+                and found.origin_port_id == origin_port_id
+                and found.destination_port_id == destination_port_id
+                and found.quote_date == quote_date
+            ):
+                raise ChannelQuoteConflict(f"oferta na {quote_date.isoformat()} już istnieje")
         row = ChannelQuote(
             id=uuid4(),
             organization_id=organization_id,
@@ -88,7 +96,7 @@ class StubChannelQuoteService:
             destination_port_id=destination_port_id,
             quote_date=quote_date,
             transit_days=normalize_transit_days(transit_days),
-            source_ref="tenant:manual",
+            source_ref=manual_channel_source_ref(user_id),
             created_by=user_id,
         )
         self.rows.append(row)
@@ -117,10 +125,11 @@ def catalog_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
 
 def test_http_create_list_and_resolve(catalog_client: TestClient) -> None:
     org_id = uuid4()
+    user_id = uuid4()
     party_id = uuid4()
     origin_id = uuid4()
     dest_id = uuid4()
-    headers = bearer_auth_headers(organization_id=org_id)
+    headers = bearer_auth_headers(organization_id=org_id, user_id=user_id)
     created = catalog_client.post(
         "/api/v1/channel-quotes",
         headers=headers,
@@ -140,7 +149,7 @@ def test_http_create_list_and_resolve(catalog_client: TestClient) -> None:
     assert body["amount"] == "1200.0000"
     assert isinstance(body["amount"], str)
     assert body["currency"] == "USD"
-    assert body["source_ref"] == "tenant:manual"
+    assert body["source_ref"] == f"tenant:manual:{user_id}"
     assert "buy_amount" not in body
     assert "margin" not in body
 
@@ -163,6 +172,17 @@ def test_http_create_list_and_resolve(catalog_client: TestClient) -> None:
     assert body["transit_days"] is None
     assert body["is_cheapest"] is False
     assert body["is_fastest_tt"] is False
+    payload = {
+        "party_id": str(party_id),
+        "origin_port_id": str(origin_id),
+        "destination_port_id": str(dest_id),
+        "quote_date": "2026-09-01",
+        "amount": "1200.0000",
+        "currency": "USD",
+    }
+    conflict = catalog_client.post("/api/v1/channel-quotes", headers=headers, json=payload)
+    assert conflict.status_code == 409
+    assert "już istnieje" in conflict.json()["detail"]
 
 
 def test_http_create_rejects_zero_transit_days(catalog_client: TestClient) -> None:

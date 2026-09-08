@@ -5,6 +5,7 @@ from app.api.router import api_router
 from app.core.database import probe_database
 from app.core.request_id import RequestIdMiddleware
 from app.domain.errors import (
+    ChannelQuoteConflict,
     DomainError,
     PartyConflict,
     PermissionDenied,
@@ -41,6 +42,14 @@ async def permission_denied_handler(_request: Request, exc: PermissionDenied) ->
 @app.exception_handler(ResourceNotFound)
 async def resource_not_found_handler(_request: Request, exc: ResourceNotFound) -> JSONResponse:
     return JSONResponse(status_code=404, content={"detail": str(exc)})
+
+
+@app.exception_handler(ChannelQuoteConflict)
+async def channel_quote_conflict_handler(
+    _request: Request,
+    exc: ChannelQuoteConflict,
+) -> JSONResponse:
+    return JSONResponse(status_code=409, content={"detail": str(exc)})
 
 
 @app.exception_handler(PartyConflict)

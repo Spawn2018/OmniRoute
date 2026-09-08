@@ -99,7 +99,7 @@ async def test_create_quote_normalizes_and_keeps_manual_origin() -> None:
     )
     assert stored.amount == Decimal("1200.5000")
     assert stored.currency == "USD"
-    assert stored.source_ref == "tenant:manual"
+    assert stored.source_ref.startswith("tenant:manual:")
     assert stored.organization_id == org_id
     assert stored.party_id == party_id
 

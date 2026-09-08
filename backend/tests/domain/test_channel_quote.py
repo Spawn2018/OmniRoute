@@ -1,11 +1,13 @@
 from datetime import date
 from decimal import Decimal
+from uuid import uuid4
 
 import pytest
 from hypothesis import given
 from hypothesis import strategies as st
 
 from app.domain.channel_quote import (
+    manual_channel_source_ref,
     normalize_quote_amount,
     normalize_quote_currency,
     normalize_quote_date,
@@ -38,6 +40,11 @@ def test_normalize_quote_amount_rejects_zero() -> None:
 def test_normalize_quote_date_rejects_string() -> None:
     with pytest.raises(InvalidChannelQuote, match="dniem"):
         normalize_quote_date("2026-09-01")
+
+
+def test_manual_channel_source_ref_includes_user() -> None:
+    user_id = uuid4()
+    assert manual_channel_source_ref(user_id) == f"tenant:manual:{user_id}"
 
 
 def test_normalize_transit_days_rejects_zero() -> None:

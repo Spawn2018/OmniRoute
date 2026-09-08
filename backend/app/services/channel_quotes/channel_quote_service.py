@@ -6,6 +6,7 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.channel_quote import (
+    manual_channel_source_ref,
     normalize_quote_amount,
     normalize_quote_currency,
     normalize_quote_date,
@@ -22,8 +23,6 @@ from app.repositories.channel_quotes.channel_quote_repository import (
     ChannelQuoteCard,
     ChannelQuoteRepository,
 )
-
-_MANUAL = "tenant:manual"
 
 
 def _new_channel_quote(
@@ -48,7 +47,7 @@ def _new_channel_quote(
         destination_port_id=destination_port_id,
         quote_date=quote_date,
         transit_days=transit_days,
-        source_ref=_MANUAL,
+        source_ref=manual_channel_source_ref(user_id),
         created_by=user_id,
     )
 

@@ -1,6 +1,7 @@
 import re
 from datetime import date
 from decimal import Decimal, InvalidOperation
+from uuid import UUID
 
 from app.domain.errors import InvalidChannelQuote
 
@@ -35,6 +36,10 @@ def normalize_quote_date(raw: object) -> date:
     if type(raw) is date:
         return raw
     raise InvalidChannelQuote("data oferty musi być dniem")
+
+
+def manual_channel_source_ref(user_id: UUID) -> str:
+    return f"tenant:manual:{user_id}"
 
 
 def normalize_transit_days(raw: object) -> int | None:

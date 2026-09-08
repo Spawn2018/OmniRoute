@@ -9,7 +9,13 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { BUSINESS_LISTS } from "@/lib/business-lists"
 import { comparisonChargeBody, createCharge, type Charge } from "@/lib/charges-api"
-import { fetchChannelQuotes, resolveChannelQuote, type ChannelQuote } from "@/lib/channel-quotes-api"
+import {
+  channelQuoteCreateBody,
+  createChannelQuote,
+  fetchChannelQuotes,
+  resolveChannelQuote,
+  type ChannelQuote,
+} from "@/lib/channel-quotes-api"
 import { fetchCommodityCodes } from "@/lib/commodity-codes-api"
 import { fetchCustomerRfqs, type CustomerRfq } from "@/lib/customer-rfqs-api"
 import { fetchDangerousGoods } from "@/lib/dangerous-goods-api"
@@ -676,6 +682,109 @@ function OfferCarrierInquiryPanel(args: { lanes: QuotationLane[]; quotes: Channe
   )
 }
 
+function OfferManualChannelQuotePanel(args: { lanes: QuotationLane[]; signedIn: boolean }) {
+  const queryClient = useQueryClient()
+  const first = args.lanes[0]
+  const [partyId, setPartyId] = useState("")
+  const [originPortId, setOriginPortId] = useState(first?.originPortId ?? "")
+  const [destinationPortId, setDestinationPortId] = useState(first?.destinationPortId ?? "")
+  const [quoteDate, setQuoteDate] = useState("")
+  const [amount, setAmount] = useState("")
+  const [currency, setCurrency] = useState("")
+  const [transitDays, setTransitDays] = useState("")
+  const createQuote = useMutation({
+    mutationFn: () =>
+      createChannelQuote(
+        channelQuoteCreateBody({
+          partyId,
+          originPortId,
+          destinationPortId,
+          quoteDate,
+          amount,
+          currency,
+          transitDays,
+        }),
+      ),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: ["channel-quotes"] })
+    },
+  })
+  if (args.lanes.length === 0 || !args.signedIn) {
+    return null
+  }
+  return (
+    <article className="space-y-2 p-3 outline outline-1 outline-border" data-channel-quote="from-quote">
+      <h3 className="text-sm font-medium">Wpis oferty kanału</h3>
+      <p className="text-xs text-muted-foreground">
+        POST channel_quote z lane wyceny · nie mutuj kwoty · nie rate_line
+      </p>
+      <form
+        className="grid gap-2 md:grid-cols-2"
+        onSubmit={(event) => {
+          event.preventDefault()
+          createQuote.mutate()
+        }}
+      >
+        <Input
+          aria-label="Armator oferty z wyceny"
+          placeholder="party_id"
+          value={partyId}
+          onChange={(event) => setPartyId(event.target.value)}
+          required
+        />
+        <Input
+          aria-label="POL oferty z wyceny"
+          placeholder="origin_port_id"
+          value={originPortId}
+          onChange={(event) => setOriginPortId(event.target.value)}
+          required
+        />
+        <Input
+          aria-label="POD oferty z wyceny"
+          placeholder="destination_port_id"
+          value={destinationPortId}
+          onChange={(event) => setDestinationPortId(event.target.value)}
+          required
+        />
+        <Input
+          aria-label="Dzień oferty z wyceny"
+          type="date"
+          value={quoteDate}
+          onChange={(event) => setQuoteDate(event.target.value)}
+          required
+        />
+        <Input
+          aria-label="Kwota oferty z wyceny"
+          placeholder="kwota kupna"
+          inputMode="decimal"
+          value={amount}
+          onChange={(event) => setAmount(event.target.value)}
+          required
+        />
+        <Input
+          aria-label="Waluta oferty z wyceny"
+          placeholder="USD"
+          maxLength={3}
+          value={currency}
+          onChange={(event) => setCurrency(event.target.value)}
+          required
+        />
+        <Input
+          aria-label="TT oferty z wyceny"
+          placeholder="dni"
+          inputMode="numeric"
+          value={transitDays}
+          onChange={(event) => setTransitDays(event.target.value)}
+        />
+        <Button type="submit" disabled={createQuote.isPending}>
+          Zapisz ofertę kanału
+        </Button>
+      </form>
+      {createQuote.isError ? <p className="text-xs text-destructive">{String(createQuote.error)}</p> : null}
+    </article>
+  )
+}
+
 function OfferResponseComparisonPanel(args: { lanes: QuotationLane[]; quotes: ChannelQuote[] }) {
   const rows = quotationResponseComparisons(args.lanes, args.quotes)
   const [laneId, setLaneId] = useState("")
@@ -1180,6 +1289,10 @@ export function QuotationCatalogPage() {
           <OfferCarrierInquiryPanel
             lanes={quotationLanes(query.data)}
             quotes={channelQuotesQuery.data ?? []}
+          />
+          <OfferManualChannelQuotePanel
+            lanes={quotationLanes(query.data)}
+            signedIn={signedIn}
           />
           <OfferResponseComparisonPanel
             lanes={quotationLanes(query.data)}
