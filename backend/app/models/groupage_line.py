@@ -54,7 +54,10 @@ class GroupageLine(Base, TimestampMixin):
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
     # RLS: linia i oba location muszą być tego samego tenanta — FK złożone tego nie zastępują.
     organization_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), ForeignKey("organization.id", ondelete="RESTRICT"), nullable=False, index=True,
+        UUID(as_uuid=True),
+        ForeignKey("organization.id", ondelete="RESTRICT"),
+        nullable=False,
+        index=True,
     )
     line_code: Mapped[str] = mapped_column(String(32), nullable=False)
     origin_location_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), nullable=False)
