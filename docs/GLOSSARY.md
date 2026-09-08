@@ -173,7 +173,7 @@
 | klauzula SLA | sla_clause | CI; wpis ręczny; kara SQL |
 | prognoza spóźnienia | delay_forecast | CI4; przed actual late |
 | wynik interwencji | intervention_outcome | CI6–CI7; saved = SQL |
-| przetarg | tender | G2; sell i buy; nie P6 samo |
+| przetarg | tender | G2.0 nagłówek sell/buy; nie P6 `tender_quote`; nie loty |
 | oferta przetargowa kupna | tender_quote | P6 ważność + limit orderów; nie auto-award; nie obiekt `tender` |
 | kółko | lane_circle | G2.20–G2.21; nakładanie dat |
 | KREPTD | kreptd | G2.23; GITD/ITD; oficjalne API |
