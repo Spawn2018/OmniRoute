@@ -5,7 +5,9 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { BUSINESS_LISTS } from "@/lib/business-lists"
 import {
+  carrierInquiryBatchBody,
   createCarrierInquiry,
+  createCarrierInquiryBatch,
   fetchCarrierInquiries,
 } from "@/lib/carrier-inquiries-api"
 import {
@@ -75,6 +77,9 @@ export function NetworkCatalogPage() {
   const [memberName, setMemberName] = useState("")
   const [memberPartyId, setMemberPartyId] = useState("")
   const [askedMemberId, setAskedMemberId] = useState("")
+  const [batchMemberIds, setBatchMemberIds] = useState<string[]>([])
+  const [batchOrigin, setBatchOrigin] = useState("")
+  const [batchDestination, setBatchDestination] = useState("")
   const sessionReady = Boolean(ctx.organizationId && ctx.userId)
 
   const query = useQuery({
@@ -113,6 +118,25 @@ export function NetworkCatalogPage() {
     mutationFn: () => createCarrierInquiry(askedMemberId),
     onSuccess: () => {
       setAskedMemberId("")
+      void queryClient.invalidateQueries({
+        queryKey: ["carrier-inquiries", ctx.organizationId],
+      })
+    },
+  })
+  const askBatch = useMutation({
+    mutationFn: () =>
+      createCarrierInquiryBatch(
+        carrierInquiryBatchBody({
+          memberIds: batchMemberIds,
+          status: "queued",
+          originPortId: batchOrigin,
+          destinationPortId: batchDestination,
+        }),
+      ),
+    onSuccess: () => {
+      setBatchMemberIds([])
+      setBatchOrigin("")
+      setBatchDestination("")
       void queryClient.invalidateQueries({
         queryKey: ["carrier-inquiries", ctx.organizationId],
       })
@@ -300,6 +324,58 @@ export function NetworkCatalogPage() {
           </Button>
         </form>
         {askMember.isError ? <CatalogError error={askMember.error} /> : null}
+        <form
+          className="grid gap-2 rounded-md border border-border bg-card p-3"
+          data-carrier-inquiry="batch"
+          onSubmit={(event) => {
+            event.preventDefault()
+            if (sessionReady && batchMemberIds.length > 0) askBatch.mutate()
+          }}
+        >
+          <p className="text-xs text-muted-foreground">
+            Paczka queued: jeden, wielu albo wszyscy. Nie wysyłka.
+          </p>
+          <div className="flex flex-wrap gap-2 text-xs">
+            {(members.data ?? []).map((row) => (
+              <label key={row.id} className="flex items-center gap-1">
+                <input
+                  type="checkbox"
+                  checked={batchMemberIds.includes(row.id)}
+                  onChange={(event) => {
+                    if (event.target.checked) {
+                      setBatchMemberIds([...batchMemberIds, row.id])
+                      return
+                    }
+                    setBatchMemberIds(batchMemberIds.filter((item) => item !== row.id))
+                  }}
+                />
+                {row.member_code}
+              </label>
+            ))}
+          </div>
+          <Button
+            type="button"
+            onClick={() => setBatchMemberIds((members.data ?? []).map((row) => row.id))}
+          >
+            Wszyscy członkowie
+          </Button>
+          <Input
+            aria-label="POL paczki zapytań"
+            placeholder="origin_port_id"
+            value={batchOrigin}
+            onChange={(event) => setBatchOrigin(event.target.value)}
+          />
+          <Input
+            aria-label="POD paczki zapytań"
+            placeholder="destination_port_id"
+            value={batchDestination}
+            onChange={(event) => setBatchDestination(event.target.value)}
+          />
+          <Button type="submit" disabled={askBatch.isPending || !sessionReady || batchMemberIds.length === 0}>
+            Zapisz paczkę zapytań
+          </Button>
+        </form>
+        {askBatch.isError ? <CatalogError error={askBatch.error} /> : null}
         {inquiries.isError ? <CatalogError error={inquiries.error} /> : null}
         <ul className="text-xs">
           {(inquiries.data ?? []).map((row) => (

@@ -9,7 +9,7 @@ Ekrany, które **zapisują** (INSERT/upsert), nie tablice-odczyty:
 - opłaty — kupno i sprzedaż na jednym wierszu; marża z pary, nie z arkusza. Przy zapisie podajesz pochodzenie (`source_ref`: `tenant:manual`, `fixture://charge/…`). Stare wiersze mogą nie mieć pochodzenia. Porównanie na wycenie zapisuje `tenant:manual:comparison`.
 - kurs NBP, extra portowe, oferty kanału — katalog, nie live HTTP. Na extra portowych „Dopasuj warunek” pokazuje wiersze, których `applies_when` jest dokładnie taki jak wpisałeś. To nie dopisuje opłaty ani marży.
 - porty, strefy taryfowe, terminale — UN/LOCODE / zakres pocztowy / ISPS
-- sieci `/networks` — katalog sieci oraz ręczny członek (`member_code` + nazwa + `party_id` kontrahenta) w wybranej sieci. Stary członek może nie mieć kontrahenta. „Zapisz zapytanie” dopisuje `carrier_inquiry` do wybranego członka (status `draft`, bez kwoty). Nie portal. Nie live HTTP.
+- sieci `/networks` — katalog sieci oraz ręczny członek (`member_code` + nazwa + `party_id` kontrahenta) w wybranej sieci. Stary członek może nie mieć kontrahenta. „Zapisz zapytanie” dopisuje `carrier_inquiry` (`draft`). „Zapisz paczkę” — 1/wielu/wszyscy, status `queued`, opcjonalna trasa. Kwota tylko przy odpowiedzi. Nie portal. Nie live HTTP.
 - ustawienie `default_currency`, `quotation_number_prefix`, `quotation_print_template` — allowlista, nie sekret, nie licznik oferty
 - SOP klienta — treść + akceptacja procedury. Checkbox „Blokuj auto” zabrania automatu; świadomy `mailto:` i tak wymaga kliknięcia. Flaga widać przy szkicu na `/ai`. Nie generator zadań.
 - poczta `/mail` — `inbound_message` z `fixture://` / `synth://` albo ingest `graph://` / `imap://` + `external_id` (ten sam id = ten sam wiersz). Nie live skrzynka. Nie send.

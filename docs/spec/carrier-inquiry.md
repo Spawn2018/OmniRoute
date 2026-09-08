@@ -1,7 +1,7 @@
 # M-30 zapytania do agentów — obiekt `carrier_inquiry`
 
 **Moduł żywy:** M-30 `carrier_inquiry` + ekran M-12 `/networks` + ślad 23.0 na M-21 `/quotations`  
-**Plaster:** **83.0** (zamknięty) · 23.0 ślad (zamknięty)  
+**Plaster:** **83.0** (zamknięty) · 23.0 ślad (zamknięty) · **136.0** O3 batch  
 **Status:** operator **zapisuje** zapytanie do członka sieci. Panel 23.0 nadal pokazuje oferty kanału przy lane. Nie wysyłka HTTP.
 
 Delta: [docs/deltas/archived/83.0-carrier-inquiry.md](../deltas/archived/83.0-carrier-inquiry.md).
@@ -25,6 +25,10 @@ Live HTTP / S21 · porównanie M-31 · `customer_rfq` · FK quotation/party · s
 - Nieznany członek = FK → 400
 - LLM nie liczy. `charge` zostaje prawdą o marży
 - 23.0 panel na `/quotations` zostaje śladem `channel_quote`
+
+## 136.0 batch i statusy
+
+CHECK: `draft` / `queued` / `sent` / `answered` / `declined`. Lane POL/POD. Kwota Decimal tylko przy `answered`. POST `/carrier-inquiries/batch`. Serwis nie importuje quotations.
 
 ## 23.0 ślad z katalogu kanału
 

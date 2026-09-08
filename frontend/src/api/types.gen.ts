@@ -211,6 +211,40 @@ export type CargoClaimResponse = {
 };
 
 /**
+ * CarrierInquiryBatchCreate
+ */
+export type CarrierInquiryBatchCreate = {
+    /**
+     * Network Member Ids
+     */
+    network_member_ids: Array<string>;
+    /**
+     * Status
+     */
+    status?: string | null;
+    /**
+     * Origin Port Id
+     */
+    origin_port_id?: string | null;
+    /**
+     * Destination Port Id
+     */
+    destination_port_id?: string | null;
+    /**
+     * Quoted Amount
+     */
+    quoted_amount?: string | null;
+    /**
+     * Quoted Currency
+     */
+    quoted_currency?: string | null;
+    /**
+     * Quoted Transit Days
+     */
+    quoted_transit_days?: number | null;
+};
+
+/**
  * CarrierInquiryCreate
  */
 export type CarrierInquiryCreate = {
@@ -218,6 +252,30 @@ export type CarrierInquiryCreate = {
      * Network Member Id
      */
     network_member_id: string;
+    /**
+     * Status
+     */
+    status?: string | null;
+    /**
+     * Origin Port Id
+     */
+    origin_port_id?: string | null;
+    /**
+     * Destination Port Id
+     */
+    destination_port_id?: string | null;
+    /**
+     * Quoted Amount
+     */
+    quoted_amount?: string | null;
+    /**
+     * Quoted Currency
+     */
+    quoted_currency?: string | null;
+    /**
+     * Quoted Transit Days
+     */
+    quoted_transit_days?: number | null;
 };
 
 /**
@@ -244,6 +302,26 @@ export type CarrierInquiryResponse = {
      * Status
      */
     status: string;
+    /**
+     * Origin Port Id
+     */
+    origin_port_id: string | null;
+    /**
+     * Destination Port Id
+     */
+    destination_port_id: string | null;
+    /**
+     * Quoted Amount
+     */
+    quoted_amount: string | null;
+    /**
+     * Quoted Currency
+     */
+    quoted_currency: string | null;
+    /**
+     * Quoted Transit Days
+     */
+    quoted_transit_days: number | null;
 };
 
 /**
@@ -4278,6 +4356,33 @@ export type CreateCarrierInquiryApiV1CarrierInquiriesPostResponses = {
 };
 
 export type CreateCarrierInquiryApiV1CarrierInquiriesPostResponse = CreateCarrierInquiryApiV1CarrierInquiriesPostResponses[keyof CreateCarrierInquiryApiV1CarrierInquiriesPostResponses];
+
+export type CreateCarrierInquiryBatchApiV1CarrierInquiriesBatchPostData = {
+    body: CarrierInquiryBatchCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/carrier-inquiries/batch';
+};
+
+export type CreateCarrierInquiryBatchApiV1CarrierInquiriesBatchPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCarrierInquiryBatchApiV1CarrierInquiriesBatchPostError = CreateCarrierInquiryBatchApiV1CarrierInquiriesBatchPostErrors[keyof CreateCarrierInquiryBatchApiV1CarrierInquiriesBatchPostErrors];
+
+export type CreateCarrierInquiryBatchApiV1CarrierInquiriesBatchPostResponses = {
+    /**
+     * Response Create Carrier Inquiry Batch Api V1 Carrier Inquiries Batch Post
+     *
+     * Successful Response
+     */
+    201: Array<CarrierInquiryResponse>;
+};
+
+export type CreateCarrierInquiryBatchApiV1CarrierInquiriesBatchPostResponse = CreateCarrierInquiryBatchApiV1CarrierInquiriesBatchPostResponses[keyof CreateCarrierInquiryBatchApiV1CarrierInquiriesBatchPostResponses];
 
 export type ListInboundMessagesApiV1InboundMessagesGetData = {
     body?: never;

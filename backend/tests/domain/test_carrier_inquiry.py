@@ -5,6 +5,9 @@ import pytest
 from app.domain.carrier_inquiry import (
     carrier_inquiry_draft_status,
     carrier_inquiry_manual_source,
+    require_answered_quote,
+    require_inquiry_status,
+    require_member_batch,
     require_network_member_id,
 )
 from app.domain.errors import InvalidCarrierInquiry
@@ -26,3 +29,26 @@ def test_require_network_member_id_rejects_text() -> None:
 def test_require_network_member_id_keeps_uuid() -> None:
     token = uuid4()
     assert require_network_member_id(token) == token
+
+
+def test_inquiry_status_rejects_unknown() -> None:
+    with pytest.raises(InvalidCarrierInquiry, match="allowlisty"):
+        require_inquiry_status("flying")
+    assert require_inquiry_status("queued") == "queued"
+
+
+def test_answered_quote_rejected_on_draft() -> None:
+    with pytest.raises(InvalidCarrierInquiry, match="answered"):
+        require_answered_quote(
+            status="draft",
+            quoted_amount="10",
+            quoted_currency="USD",
+            quoted_transit_days=None,
+        )
+
+
+def test_member_batch_rejects_empty() -> None:
+    with pytest.raises(InvalidCarrierInquiry, match="listy"):
+        require_member_batch([])
+    token = uuid4()
+    assert require_member_batch([token]) == [token]

@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 import { describe, expect, it } from "vitest"
+import { carrierInquiryBatchBody } from "@/lib/carrier-inquiries-api"
 import { networkCreateBody } from "@/lib/networks-api"
 
 const srcRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..")
@@ -43,12 +44,32 @@ describe("networks catalog surface for 9.0", () => {
     expect(page).toContain("createNetwork")
     expect(page).toContain("resolveNetwork")
     expect(page).toContain("source_ref")
-    expect(page).not.toContain("amount")
+    expect(page).not.toContain("parseFloat")
+    expect(page).not.toContain("rate_line")
     expect(page).toContain("createNetworkMember")
     expect(page).toContain('data-network-member="catalog"')
     expect(page).toContain("createCarrierInquiry")
+    expect(page).toContain("createCarrierInquiryBatch")
     expect(page).toContain('data-carrier-inquiry="catalog"')
+    expect(page).toContain('data-carrier-inquiry="batch"')
     expect(page).not.toContain("cheerio")
     expect(page).not.toContain("httpx")
+  })
+})
+
+describe("carrierInquiryBatchBody", () => {
+  it("drops blank ports and empty member ids", () => {
+    expect(
+      carrierInquiryBatchBody({
+        memberIds: [" a ", "", "b"],
+        status: " queued ",
+        originPortId: "  ",
+        destinationPortId: " dest ",
+      }),
+    ).toEqual({
+      network_member_ids: ["a", "b"],
+      status: "queued",
+      destination_port_id: "dest",
+    })
   })
 })

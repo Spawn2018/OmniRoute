@@ -395,6 +395,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "133.0": "/entity-events",
   "134.0": "/quotations",
   "135.0": "/quotations",
+  "136.0": "/networks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

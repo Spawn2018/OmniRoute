@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **135.0** O2 ręczny `channel_quote` z wyceny **Następny:** **136.0** O3 `carrier_inquiry` batch (delta [136.0-carrier-inquiry-batch.md](../deltas/open/136.0-carrier-inquiry-batch.md) zaakceptowana `/noc`) → I0/U2 → O4–O8 → N5 → U1+U5 → I1–I4 → U4 → T → U3 → D → P → G2.0–G2.23 → F → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
+**Stan (z CURRENT.md):** **136.0** O3 `carrier_inquiry` batch **Następny:** **I0/U2** `quotation.incoterm` + `trade_side` + `named_place` → O4–O8 → N5 → U1+U5 → I1–I4 → U4 → T → U3 → D → P → G2.0–G2.23 → F → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

@@ -30,8 +30,10 @@ def test_inquiry_service_stays_inside_own_bc() -> None:
     assert "httpx" not in source
     assert "requests" not in source
     assert "scrap" not in source
-    assert "amount" not in source
     assert "rate_line" not in source
+    assert "078_carrier_inquiry_batch" in (
+        _ROOT / "backend" / "alembic" / "versions" / "078_carrier_inquiry_batch.py"
+    ).read_text(encoding="utf-8")
 
 
 def test_importlinter_lists_carrier_inquiries_as_independent() -> None:

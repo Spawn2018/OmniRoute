@@ -1210,6 +1210,56 @@
         ]
       }
     },
+    "/api/v1/carrier-inquiries/batch": {
+      "post": {
+        "tags": [
+          "carrier-inquiries"
+        ],
+        "summary": "Create Carrier Inquiry Batch",
+        "operationId": "create_carrier_inquiry_batch_api_v1_carrier_inquiries_batch_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CarrierInquiryBatchCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CarrierInquiryResponse"
+                  },
+                  "type": "array",
+                  "title": "Response Create Carrier Inquiry Batch Api V1 Carrier Inquiries Batch Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/inbound-messages": {
       "get": {
         "tags": [
@@ -7103,12 +7153,166 @@
         ],
         "title": "CargoClaimResponse"
       },
+      "CarrierInquiryBatchCreate": {
+        "properties": {
+          "network_member_ids": {
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "type": "array",
+            "title": "Network Member Ids"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status"
+          },
+          "origin_port_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin Port Id"
+          },
+          "destination_port_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Destination Port Id"
+          },
+          "quoted_amount": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quoted Amount"
+          },
+          "quoted_currency": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quoted Currency"
+          },
+          "quoted_transit_days": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quoted Transit Days"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "network_member_ids"
+        ],
+        "title": "CarrierInquiryBatchCreate"
+      },
       "CarrierInquiryCreate": {
         "properties": {
           "network_member_id": {
             "type": "string",
             "format": "uuid",
             "title": "Network Member Id"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status"
+          },
+          "origin_port_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin Port Id"
+          },
+          "destination_port_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Destination Port Id"
+          },
+          "quoted_amount": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quoted Amount"
+          },
+          "quoted_currency": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quoted Currency"
+          },
+          "quoted_transit_days": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quoted Transit Days"
           }
         },
         "additionalProperties": false,
@@ -7142,6 +7346,63 @@
           "status": {
             "type": "string",
             "title": "Status"
+          },
+          "origin_port_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin Port Id"
+          },
+          "destination_port_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Destination Port Id"
+          },
+          "quoted_amount": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quoted Amount"
+          },
+          "quoted_currency": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quoted Currency"
+          },
+          "quoted_transit_days": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quoted Transit Days"
           }
         },
         "type": "object",
@@ -7150,7 +7411,12 @@
           "organization_id",
           "network_member_id",
           "source_ref",
-          "status"
+          "status",
+          "origin_port_id",
+          "destination_port_id",
+          "quoted_amount",
+          "quoted_currency",
+          "quoted_transit_days"
         ],
         "title": "CarrierInquiryResponse"
       },

@@ -11,6 +11,11 @@ _DENIED = "Brak uprawnienia can_manage_networks na organization"
 _PATHS = (
     ("GET", "/api/v1/carrier-inquiries", None),
     ("POST", "/api/v1/carrier-inquiries", {"network_member_id": str(uuid4())}),
+    (
+        "POST",
+        "/api/v1/carrier-inquiries/batch",
+        {"network_member_ids": [str(uuid4())]},
+    ),
 )
 
 
@@ -37,7 +42,7 @@ def _reset_authz() -> object:
 def test_carrier_inquiry_endpoints_need_networks_permission(
     method: str,
     path: str,
-    payload: dict[str, str] | None,
+    payload: dict[str, object] | None,
 ) -> None:
     set_authz_checker(DenyAllAuthz())
     response = TestClient(app).request(
