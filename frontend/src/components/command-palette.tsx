@@ -65,6 +65,7 @@ const NAV_ACTIONS = [
   { id: "nav-port-surcharges", label: "Idź do katalogu extra portowych", to: "/port-surcharges" },
   { id: "nav-local-charges", label: "Idź do dopłat lokalnych", to: "/local-charges" },
   { id: "nav-tender-quotes", label: "Idź do ofert przetargowych kupna", to: "/tender-quotes" },
+  { id: "nav-tenders", label: "Idź do przetargów", to: "/tenders" },
   { id: "nav-nbp-rates", label: "Idź do katalogu kursów NBP", to: "/nbp-rates" },
   { id: "nav-fuel-indexes", label: "Idź do indeksów paliwowych", to: "/fuel-indexes" },
   { id: "nav-charges", label: "Idź do opłat", to: "/charges" },

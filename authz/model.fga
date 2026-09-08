@@ -59,3 +59,4 @@ type organization
     define can_manage_fuel_indexes: member
     define can_manage_local_charges: member
     define can_manage_tender_quotes: member
+    define can_manage_tenders: member

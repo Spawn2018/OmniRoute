@@ -544,3 +544,7 @@ class InvalidLocalCharge(DomainError):
 
 class InvalidTenderQuote(DomainError):
     """Oferta przetargowa kupna: ważność + limit orderów — nie auto-award."""
+
+
+class InvalidTender(DomainError):
+    """Nagłówek przetargu G2.0: strona/rodzaj/status jako dane — nie auto-award."""

@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny (zablokowany):** **169.0** G2.0 `tender` → G2.1–G2.23 → F → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. D8 parked. D9 leftover D9b–f. P1 leftover P1b–d. P2 leftover P2c. P3 leftover P3b–d. P4 leftover P4b–c. P5 leftover P5b–c. P6 leftover P6b–c. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
+**Następny (zablokowany):** **G2.1** `tender_lot` → G2.2–G2.23 → F → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. D8 parked. D9 leftover D9b–f. P1 leftover P1b–d. P2 leftover P2c. P3 leftover P3b–d. P4 leftover P4b–c. P5 leftover P5b–c. P6 leftover P6c. G2 leftover G2.1–G2.18. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
 <!-- os-status:end -->
 
 ```mermaid
@@ -576,7 +576,7 @@ Karta: [karty-pol-g2-tender.md](analysis/karty-pol-g2-tender.md). P6 = oferty od
 
 | ID | Co | Status | Poza |
 |---|---|---|---|
-| G2.0 | obiekt `tender` (nagłówek sell+buy) | delta [169.0](deltas/open/169.0-tender.md) | po P6; nie loty; nie auto-award |
+| G2.0 | obiekt `tender` (nagłówek sell+buy) | zamknięty ([169.0](deltas/archived/169.0-tender.md); leftover G2.1–G2.18) | po P6; nie loty; nie auto-award |
 | G2.1–G2.18 | loty, rundy, data room+NDA, extract RFP HITL, matryca Excel (LLM mapuje kolumny, kwoty z P), playbook, prospecting HITL, bid/no-bid, award four-eyes, win/loss, TED capability, CO₂, consortium | po G2.0 | auto-award; scrape kontaktów |
 | G2.19–G2.22 | `lane_pattern`, `circle_sim` ≥500k w Postgres, km ładowny/pusty/dolot, lista przewoźników | po G2.18 | LLM-VRP; copy „natychmiast” bez p95 stage |
 | **G2.23** | KREPTD/GITD (ITD): P0 link+HITL; P1 Citizen API po certyfikacie; lead + C8 licencja | ops wniosek równolegle | scrape HTML kreptd; scoring osoby |
@@ -835,13 +835,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

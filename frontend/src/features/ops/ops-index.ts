@@ -119,6 +119,11 @@ export const OPS_JOBS = [
     job: "ważność i limit orderów bez auto-award",
   },
   {
+    route: BUSINESS_LISTS.tender.route,
+    label: "Przetargi",
+    job: "nagłówek tender sell/buy bez auto-award",
+  },
+  {
     route: BUSINESS_LISTS.airFreight.route,
     label: "Lotniczy",
     job: "lotniska z flagą airport",
@@ -498,6 +503,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "166.0": "/local-charges",
   "167.0": "/shipments",
   "168.0": "/tender-quotes",
+  "169.0": "/tenders",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

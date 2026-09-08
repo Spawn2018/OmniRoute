@@ -5052,6 +5052,48 @@ export type TableViewUpdate = {
 };
 
 /**
+ * TenderCreate
+ */
+export type TenderCreate = {
+    /**
+     * Side
+     */
+    side: string;
+    /**
+     * Kind
+     */
+    kind: string;
+    /**
+     * Status
+     */
+    status: string;
+    /**
+     * Buyer Party Id
+     */
+    buyer_party_id: string;
+    /**
+     * Deadline At
+     */
+    deadline_at: string;
+    /**
+     * Incoterm
+     */
+    incoterm: string;
+    /**
+     * Trade Side
+     */
+    trade_side: string;
+    /**
+     * Named Place
+     */
+    named_place: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * TenderQuoteCreate
  */
 export type TenderQuoteCreate = {
@@ -5097,6 +5139,56 @@ export type TenderQuoteResponse = {
      * Order Limit
      */
     order_limit: number;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TenderResponse
+ */
+export type TenderResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Side
+     */
+    side: string;
+    /**
+     * Kind
+     */
+    kind: string;
+    /**
+     * Status
+     */
+    status: string;
+    /**
+     * Buyer Party Id
+     */
+    buyer_party_id: string;
+    /**
+     * Deadline At
+     */
+    deadline_at: string;
+    /**
+     * Incoterm
+     */
+    incoterm: string;
+    /**
+     * Trade Side
+     */
+    trade_side: string;
+    /**
+     * Named Place
+     */
+    named_place: string;
     /**
      * Source Ref
      */
@@ -8574,6 +8666,49 @@ export type CreateTenderQuoteApiV1TenderQuotesPostResponses = {
 };
 
 export type CreateTenderQuoteApiV1TenderQuotesPostResponse = CreateTenderQuoteApiV1TenderQuotesPostResponses[keyof CreateTenderQuoteApiV1TenderQuotesPostResponses];
+
+export type ListTendersApiV1TendersGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tenders';
+};
+
+export type ListTendersApiV1TendersGetResponses = {
+    /**
+     * Response List Tenders Api V1 Tenders Get
+     *
+     * Successful Response
+     */
+    200: Array<TenderResponse>;
+};
+
+export type ListTendersApiV1TendersGetResponse = ListTendersApiV1TendersGetResponses[keyof ListTendersApiV1TendersGetResponses];
+
+export type CreateTenderApiV1TendersPostData = {
+    body: TenderCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tenders';
+};
+
+export type CreateTenderApiV1TendersPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTenderApiV1TendersPostError = CreateTenderApiV1TendersPostErrors[keyof CreateTenderApiV1TendersPostErrors];
+
+export type CreateTenderApiV1TendersPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TenderResponse;
+};
+
+export type CreateTenderApiV1TendersPostResponse = CreateTenderApiV1TendersPostResponses[keyof CreateTenderApiV1TendersPostResponses];
 
 export type ListFraudFlagsApiV1FraudFlagsGetData = {
     body?: never;

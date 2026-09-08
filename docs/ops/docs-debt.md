@@ -15,7 +15,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **150.0 leftover:** `stop_group`; `eta_physical`/`eta_legal` (V2); waga/plomba/awizacja (EXP1). Tu tylko punkt + location + strefa IANA. Nie mapa. `resource` = 151.0. `trip` = 152.0.
 - **151.0 leftover:** `trip` DONE 152.0. Zostaje T2c: multi-manning / floating trailer; pojemności / Decimal km; `party_id`; `/fleet` / HW. Tu tylko katalog pojazd/kierowca/naczepa.
 - **153.0 leftover:** VGM/TARA Decimal; free_time; cutoffy CY/CFS/VGM/SI/AMS; `bl_kind`; plomby/PIN; reefer; party/terminal; TEU; `shipment_leg_id`. Tu tylko ISO 6346 + `iso_size_type` + opcjonalne zlecenie. Nie booking.
-- **168.0 leftover:** obiekt `tender` / loty / rundy (P6b = G2); auto-award (P6c). Tu tylko `tender_quote` ważność + `order_limit` integer. Nie kwota. Nie G2.
+- **169.0 leftover:** `tender_lot` / lane / round (G2.1+); data room+NDA; extract RFP HITL; matryca; playbook; four-eyes; win/loss; TED; CO₂; consortium (G2.1–G2.18); U4 `is_working_day` na `deadline_at`. Tu tylko nagłówek `tender`. Nie auto-award. Nie kwota.
+- **168.0 leftover:** obiekt `tender` DONE 169.0. Zostaje auto-award (P6c). Tu tylko `tender_quote` ważność + `order_limit` integer. Nie kwota.
 - **155.0 leftover:** OR wielu hubów na jednym końcu (D1b). Tu tylko `groupage_line` cutoff+TT+ISODOW + dwa `location`. Nie optymalizator.
 - **167.0 leftover:** wariancja SQL na `charge` (P5b); actual z `charge` (P5c). Tu tylko freeze `expected_buy` na `trip` przy `in_transit`. Nie druga marża. Nie km.
 - **166.0 leftover:** macierz armator×port×serwis×kontener / FK (P4b); warning braku dopłaty ≠ fakt (P4c). Tu tylko katalog THC/ISPS/seal/amendment + Decimal. Nie `port_surcharge`. Nie marża.

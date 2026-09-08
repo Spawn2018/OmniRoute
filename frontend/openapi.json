@@ -5484,6 +5484,80 @@
         ]
       }
     },
+    "/api/v1/tenders": {
+      "get": {
+        "tags": [
+          "tenders"
+        ],
+        "summary": "List Tenders",
+        "operationId": "list_tenders_api_v1_tenders_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TenderResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Tenders Api V1 Tenders Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "tenders"
+        ],
+        "summary": "Create Tender",
+        "operationId": "create_tender_api_v1_tenders_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TenderCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TenderResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/fraud-flags": {
       "get": {
         "tags": [
@@ -17501,6 +17575,61 @@
         "type": "object",
         "title": "TableViewUpdate"
       },
+      "TenderCreate": {
+        "properties": {
+          "side": {
+            "type": "string",
+            "title": "Side"
+          },
+          "kind": {
+            "type": "string",
+            "title": "Kind"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "buyer_party_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Buyer Party Id"
+          },
+          "deadline_at": {
+            "type": "string",
+            "title": "Deadline At"
+          },
+          "incoterm": {
+            "type": "string",
+            "title": "Incoterm"
+          },
+          "trade_side": {
+            "type": "string",
+            "title": "Trade Side"
+          },
+          "named_place": {
+            "type": "string",
+            "title": "Named Place"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "side",
+          "kind",
+          "status",
+          "buyer_party_id",
+          "deadline_at",
+          "incoterm",
+          "trade_side",
+          "named_place",
+          "source_ref"
+        ],
+        "title": "TenderCreate"
+      },
       "TenderQuoteCreate": {
         "properties": {
           "quotation_id": {
@@ -17571,6 +17700,72 @@
           "source_ref"
         ],
         "title": "TenderQuoteResponse"
+      },
+      "TenderResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "side": {
+            "type": "string",
+            "title": "Side"
+          },
+          "kind": {
+            "type": "string",
+            "title": "Kind"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "buyer_party_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Buyer Party Id"
+          },
+          "deadline_at": {
+            "type": "string",
+            "title": "Deadline At"
+          },
+          "incoterm": {
+            "type": "string",
+            "title": "Incoterm"
+          },
+          "trade_side": {
+            "type": "string",
+            "title": "Trade Side"
+          },
+          "named_place": {
+            "type": "string",
+            "title": "Named Place"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "side",
+          "kind",
+          "status",
+          "buyer_party_id",
+          "deadline_at",
+          "incoterm",
+          "trade_side",
+          "named_place",
+          "source_ref"
+        ],
+        "title": "TenderResponse"
       },
       "TerminalCreate": {
         "properties": {

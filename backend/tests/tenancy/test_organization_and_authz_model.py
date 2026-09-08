@@ -55,6 +55,7 @@ def test_authorization_model_includes_table_view_permission() -> None:
     assert "can_manage_fuel_indexes" in org.relations
     assert "can_manage_local_charges" in org.relations
     assert "can_manage_tender_quotes" in org.relations
+    assert "can_manage_tenders" in org.relations
     assert "can_manage_rate_lines" in org.relations
     assert "can_manage_charges" in org.relations
     assert "can_manage_quotations" in org.relations
@@ -190,6 +191,9 @@ def test_authorization_model_includes_table_view_permission() -> None:
     tender_quotes = org.relations["can_manage_tender_quotes"]
     assert tender_quotes.computed_userset is not None
     assert tender_quotes.computed_userset.relation == "member"
+    tenders = org.relations["can_manage_tenders"]
+    assert tenders.computed_userset is not None
+    assert tenders.computed_userset.relation == "member"
     rates = org.relations["can_manage_rate_lines"]
     assert rates.computed_userset is not None
     assert rates.computed_userset.relation == "member"

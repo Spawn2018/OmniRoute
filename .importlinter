@@ -81,6 +81,7 @@ modules =
     app.services.fuel_indexes
     app.services.local_charges
     app.services.tender_quotes
+    app.services.tenders
 
 [importlinter:contract:integracje]
 name = Integracje nie znają serwisów
@@ -287,3 +288,6 @@ forbidden_modules =
     app.services.tender_quotes
     app.repositories.tender_quotes
     app.models.tender_quote
+    app.services.tenders
+    app.repositories.tenders
+    app.models.tender
