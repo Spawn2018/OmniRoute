@@ -382,3 +382,4 @@
 | 2026-09-08 | Plan 149.0 | U4 | organization_calendar + is_working_day SQL. Delta zaakceptowana (`/noc`). Nie V5. Nastepny: kod 149.0. |
 | 2026-09-08 | 149.0 | U4 | organization_calendar + is_working_day SQL. Nie V5. Nastepny: T1 Plan. |
 | 2026-09-08 | Plan 150.0 | T1 | stop na zleceniu (location+strefa, nie mapa). Delta zaakceptowana (`/noc`). Nie T2. Nastepny: kod 150.0. |
+| 2026-09-08 | 150.0 | T1 | stop na zleceniu (location+strefa). Nie mapa. Nastepny: T2 Plan. |

@@ -23,6 +23,7 @@ modules =
     app.services.charges
     app.services.quotations
     app.services.organization_calendars
+    app.services.stops
     app.services.organization_settings
     app.services.geography
     app.services.parties
@@ -101,6 +102,9 @@ forbidden_modules =
     app.services.organization_calendars
     app.repositories.organization_calendars
     app.models.organization_calendar
+    app.services.stops
+    app.repositories.stops
+    app.models.stop
     app.models.organization_setting
     app.services.parties
     app.repositories.parties

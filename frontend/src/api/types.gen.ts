@@ -4026,6 +4026,86 @@ export type ShipmentStakeholderResponse = {
 };
 
 /**
+ * StopCreate
+ */
+export type StopCreate = {
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Location Id
+     */
+    location_id: string;
+    /**
+     * Stop Kind
+     */
+    stop_kind: string;
+    /**
+     * Sequence No
+     */
+    sequence_no: number;
+    /**
+     * Time Zone
+     */
+    time_zone: string;
+    /**
+     * Status
+     */
+    status: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * StopResponse
+ */
+export type StopResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Location Id
+     */
+    location_id: string;
+    /**
+     * Stop Kind
+     */
+    stop_kind: string;
+    /**
+     * Sequence No
+     */
+    sequence_no: number;
+    /**
+     * Time Zone
+     */
+    time_zone: string;
+    /**
+     * Status
+     */
+    status: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+    /**
+     * Superseded By
+     */
+    superseded_by: string | null;
+};
+
+/**
  * TableViewConfig
  */
 export type TableViewConfig = {
@@ -6629,6 +6709,63 @@ export type CreateShipmentStakeholderApiV1ShipmentStakeholdersPostResponses = {
 };
 
 export type CreateShipmentStakeholderApiV1ShipmentStakeholdersPostResponse = CreateShipmentStakeholderApiV1ShipmentStakeholdersPostResponses[keyof CreateShipmentStakeholderApiV1ShipmentStakeholdersPostResponses];
+
+export type ListStopsApiV1StopsGetData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Shipment Id
+         */
+        shipment_id: string;
+    };
+    url: '/api/v1/stops';
+};
+
+export type ListStopsApiV1StopsGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ListStopsApiV1StopsGetError = ListStopsApiV1StopsGetErrors[keyof ListStopsApiV1StopsGetErrors];
+
+export type ListStopsApiV1StopsGetResponses = {
+    /**
+     * Response List Stops Api V1 Stops Get
+     *
+     * Successful Response
+     */
+    200: Array<StopResponse>;
+};
+
+export type ListStopsApiV1StopsGetResponse = ListStopsApiV1StopsGetResponses[keyof ListStopsApiV1StopsGetResponses];
+
+export type CreateStopApiV1StopsPostData = {
+    body: StopCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/stops';
+};
+
+export type CreateStopApiV1StopsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateStopApiV1StopsPostError = CreateStopApiV1StopsPostErrors[keyof CreateStopApiV1StopsPostErrors];
+
+export type CreateStopApiV1StopsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: StopResponse;
+};
+
+export type CreateStopApiV1StopsPostResponse = CreateStopApiV1StopsPostResponses[keyof CreateStopApiV1StopsPostResponses];
 
 export type ListTrackingEventsApiV1TrackingEventsGetData = {
     body?: never;

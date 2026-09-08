@@ -476,3 +476,7 @@ class InvalidBookingInstruction(DomainError):
 
 class InvalidOrganizationCalendar(DomainError):
     """Dzien kalendarza tenanta: kraj ISO + dzien + holiday/working — nie +3 kalendarzowe."""
+
+
+class InvalidStop(DomainError):
+    """Punkt na zleceniu: kind + miejsce + strefa IANA — nie mapa."""

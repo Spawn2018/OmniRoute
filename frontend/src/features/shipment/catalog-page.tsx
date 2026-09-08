@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input"
 import { createShipment, fetchShipments } from "@/lib/shipments-api"
 import { getTenantContext } from "@/lib/tenant"
 import { BookingInstructionPanel } from "@/features/shipment/booking-instruction-panel"
+import { StopPointPanel } from "@/features/shipment/stop-panel"
 import { ShipmentStakeholderPanel } from "@/features/shipment/shipment-stakeholder-panel"
 
 function ShipmentCreateForm(args: { organizationId: string | null }) {
@@ -67,6 +68,7 @@ export function ShipmentPage() {
       <ShipmentCreateForm organizationId={ctx.organizationId} />
       {ready ? <ShipmentStakeholderPanel rows={shipments.data ?? []} signedIn={ready} /> : null}
       {ready ? <BookingInstructionPanel signedIn={ready} /> : null}
+      {ready ? <StopPointPanel canWrite={ready} /> : null}
       {(shipments.data ?? []).map((row) => (
         <p key={row.id} className="text-xs">
           {row.status} {row.source_ref}{" "}

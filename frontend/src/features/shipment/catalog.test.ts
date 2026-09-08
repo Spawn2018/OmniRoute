@@ -32,6 +32,7 @@ describe("shipment surface for 28.0 and 90.0", () => {
     expect(page).toContain("Zapisz zlecenie")
     expect(page).toContain("ShipmentStakeholderPanel")
     expect(page).toContain("BookingInstructionPanel")
+    expect(page).toContain("StopPointPanel")
     expect(page).not.toContain("fetchQuotations")
     expect(page).not.toContain("quotationAcceptancePending")
     const panel = readFileSync(path.join(srcRoot, "features/shipment/shipment-stakeholder-panel.tsx"), "utf8")
