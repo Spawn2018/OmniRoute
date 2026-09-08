@@ -344,3 +344,4 @@
 | 2026-09-08 | 129.0 | M-08 | P0: `charge.source_ref`. Stare NULL; nowy INSERT wymaga pochodzenia. Nie myto. Nie F11. Następny: O0 Plan. |
 | 2026-09-08 | Plan 130.0 | M-12 | O0: `network_member.party_id`. Delta zaakceptowana (`/noc`). Nie ranking. Następny: `/plaster` 130.0. |
 | 2026-09-08 | 130.0 | M-12 | O0: `network_member.party_id` FK tenanta. Stare NULL; nowy członek wymaga kontrahenta. Nie ranking. Następny: M10-1 Plan. |
+| 2026-09-08 | Plan 131.0 | M-10 | M10-1: ID biznesowe + unikat + 409 z linkiem. Delta zaakceptowana (`/noc`). Nie M10-2. Następny: kod 131.0. |
