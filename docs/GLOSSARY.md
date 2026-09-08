@@ -137,7 +137,8 @@
 | macierz obowiązków | incoterm_responsibility | I1; 11 × import/export; seed ops Omni; override tenanta = nowy wiersz |
 | strona handlu | trade_side | `import` = klient Omni jest kupującym; `export` = sprzedawcą |
 | strona zlecenia | shipment_stakeholder | I2; rola + `party_id`; 409 na wysyłkę bez party |
-| wysyłka dokumentów odprawy | document_dispatch | I3; N× `mail_draft` + `shipment_document`; send po S11; nie auto-send |
+| reguła adresata dokumentów | document_dispatch_rule | I3; trade_side×incoterm×document_kind → recipient_role; nie send |
+| wysyłka dokumentów odprawy | document_dispatch | I3 leftover; N× `mail_draft` + `shipment_document`; send po S11; nie auto-send |
 | instrukcja bookingu | booking_instruction | I4; scope + target z macierzy; `suggested` → accept człowieka |
 | wymiana kontaktów | contact_exchange | zakres I4; DAP import: origin_agent + klient; nie booking ocean |
 | rodzaj obserwacji GPS | observation_kind | V5; `omni_telematic` = flota w umowie pakietu; `external_api` = 3 dni robocze bez trip |

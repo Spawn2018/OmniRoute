@@ -528,7 +528,7 @@ Macierz = **dane**. LLM nie wybiera adresata. Send jak O4. Audyt: [incoterms-boo
 |---|---|---|---|---|
 | **I1** | `incoterm_responsibility` (11 reguł × import/export) | zamknięty (`docs/deltas/archived/145.0-incoterm-responsibility.md`) | po U1+M10-2 | nie cytat ICC; seed ops Omni |
 | **I2** | `shipment_stakeholder` + EXP1: sold_to / bill_to / ship_to / notify | zamknięty (`docs/deltas/archived/146.0-shipment-stakeholder.md`) | po I1 | 409 dispatch bez party |
-| **I3** | `document_dispatch_rule` + batch mail dokumentów odprawy | Plan → plaster | po I2+O4 | nie auto-send; nie Selenium celny |
+| **I3** | `document_dispatch_rule` + batch mail dokumentów odprawy | delta `docs/deltas/open/147.0-document-dispatch-rule.md` (`/noc`) | po I2+O4 | nie auto-send; nie Selenium celny |
 | **I4** | `booking_instruction` (scope + target z macierzy; DAP = contact_exchange) | Plan → plaster | po I2 | nie live HTTP S21; accept człowieka |
 
 ### Fala T — warstwa wykonawcza (pełna, nie szkic)
@@ -834,13 +834,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->
