@@ -7689,6 +7689,59 @@
         "type": "object",
         "title": "CarrierProfileUpsert"
       },
+      "CarrierQuoteExtract": {
+        "properties": {
+          "party_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Party Id"
+          },
+          "origin_port_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Origin Port Id"
+          },
+          "destination_port_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Destination Port Id"
+          },
+          "quote_date": {
+            "type": "string",
+            "title": "Quote Date"
+          },
+          "amount": {
+            "type": "string",
+            "title": "Amount"
+          },
+          "currency": {
+            "type": "string",
+            "title": "Currency"
+          },
+          "transit_days": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Transit Days"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "party_id",
+          "origin_port_id",
+          "destination_port_id",
+          "quote_date",
+          "amount",
+          "currency"
+        ],
+        "title": "CarrierQuoteExtract"
+      },
       "CashFlowCreate": {
         "properties": {
           "quotation_id": {
@@ -9238,6 +9291,27 @@
               }
             ],
             "title": "Document Base64"
+          },
+          "draft_kind": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Draft Kind"
+          },
+          "quote": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CarrierQuoteExtract"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "type": "object",
@@ -9261,6 +9335,11 @@
           "status": {
             "type": "string",
             "title": "Status"
+          },
+          "draft_kind": {
+            "type": "string",
+            "title": "Draft Kind",
+            "default": "rate_line"
           },
           "source_ref": {
             "type": "string",
@@ -9306,6 +9385,14 @@
             },
             "type": "array",
             "title": "Rate Line Ids"
+          },
+          "channel_quote_ids": {
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "type": "array",
+            "title": "Channel Quote Ids"
           }
         },
         "type": "object",

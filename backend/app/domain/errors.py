@@ -146,6 +146,14 @@ class AcceptRequiresRateLine(DomainError):
     """Accept HITL bez poprawnej stawki kupna — cała transakcja wraca (1.3)."""
 
 
+class InvalidExtractionDraft(DomainError):
+    """draft_kind spoza rate_line / carrier_quote — nie F10."""
+
+
+class AcceptRequiresChannelQuote(DomainError):
+    """Accept szkicu oferty bez party, lane, dnia albo kwoty."""
+
+
 class QuotationGap(DomainError):
     """Brak bieżącej stawki do wyceny — luka, nie liczona w Pythonie."""
 

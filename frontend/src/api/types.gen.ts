@@ -385,6 +385,40 @@ export type CarrierProfileUpsert = {
 };
 
 /**
+ * CarrierQuoteExtract
+ */
+export type CarrierQuoteExtract = {
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Origin Port Id
+     */
+    origin_port_id: string;
+    /**
+     * Destination Port Id
+     */
+    destination_port_id: string;
+    /**
+     * Quote Date
+     */
+    quote_date: string;
+    /**
+     * Amount
+     */
+    amount: string;
+    /**
+     * Currency
+     */
+    currency: string;
+    /**
+     * Transit Days
+     */
+    transit_days?: number | null;
+};
+
+/**
  * CashFlowCreate
  */
 export type CashFlowCreate = {
@@ -1338,6 +1372,11 @@ export type ExtractRequest = {
      * Document Base64
      */
     document_base64?: string | null;
+    /**
+     * Draft Kind
+     */
+    draft_kind?: string | null;
+    quote?: CarrierQuoteExtract | null;
 };
 
 /**
@@ -1356,6 +1395,10 @@ export type ExtractionDraftResponse = {
      * Status
      */
     status: string;
+    /**
+     * Draft Kind
+     */
+    draft_kind?: string;
     /**
      * Source Ref
      */
@@ -1382,6 +1425,10 @@ export type ExtractionDraftResponse = {
      * Rate Line Ids
      */
     rate_line_ids?: Array<string>;
+    /**
+     * Channel Quote Ids
+     */
+    channel_quote_ids?: Array<string>;
 };
 
 /**

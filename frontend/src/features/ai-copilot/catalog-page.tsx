@@ -78,7 +78,7 @@ function PendingAiBoard() {
       <ul>
         {rows.map((row) => (
           <li key={row.id} className="text-xs">
-            {row.source_ref} {row.status}{" "}
+            {row.source_ref} {row.status} {row.draft_kind}{" "}
             <Link className="underline" to="/extractions">
               HITL
             </Link>

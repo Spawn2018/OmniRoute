@@ -14,6 +14,7 @@ function sampleDraft(): ExtractionDraft {
     id: "11111111-1111-1111-1111-111111111111",
     organization_id: "22222222-2222-2222-2222-222222222222",
     status: "pending",
+    draft_kind: "rate_line",
     source_ref: "doc://tariff",
     input_text: "THC 100 EUR\nnote weekend",
     payload: {

@@ -25,6 +25,8 @@ _FORBIDDEN_IMPORTS = (
     "app.repositories.charges",
     "app.models.rate_line",
     "app.models.charge",
+    "app.services.channel_quotes",
+    "app.models.channel_quote",
 )
 
 
@@ -108,14 +110,15 @@ async def test_accept_writes_rate_line_without_committing() -> None:
     created = _rate(draft)
     rates.create_buy_rate = AsyncMock(return_value=created)
 
-    accepted, written = await AcceptExtractionToRates(
+    outcome = await AcceptExtractionToRates(
         session,
         extraction=extraction,
         rates=rates,
     ).accept(draft_id=draft.id, user_id=uuid4())
 
-    assert accepted is draft
-    assert written == [created]
+    assert outcome.draft is draft
+    assert outcome.rate_lines == [created]
+    assert outcome.channel_quotes == []
     rates.create_buy_rate.assert_awaited_once()
     kwargs = rates.create_buy_rate.await_args.kwargs
     assert kwargs["charge_code"] == "THC"
@@ -272,3 +275,54 @@ async def test_extraction_service_accept_still_only_marks_status() -> None:
     assert accepted.status == "accepted"
     session.commit.assert_not_called()
     session.add.assert_not_called()
+
+
+@pytest.mark.asyncio
+async def test_accept_carrier_quote_writes_quote_not_rate() -> None:
+    session = AsyncMock()
+    session.commit = AsyncMock()
+    party_id = uuid4()
+    origin = uuid4()
+    dest = uuid4()
+    draft = ExtractionDraft(
+        id=uuid4(),
+        organization_id=uuid4(),
+        status="accepted",
+        draft_kind="carrier_quote",
+        source_ref="fixture://quote/1",
+        input_text="oferta SHA-RTM",
+        payload={
+            "party_id": str(party_id),
+            "origin_port_id": str(origin),
+            "destination_port_id": str(dest),
+            "quote_date": "2026-09-08",
+            "amount": "10.0000",
+            "currency": "USD",
+            "source_ref": "fixture://quote/1",
+            "unparsed_regions": [],
+            "candidates": [],
+        },
+    )
+    extraction = AsyncMock()
+    extraction.accept = AsyncMock(return_value=draft)
+    rates = AsyncMock()
+    quotes = AsyncMock()
+    created = AsyncMock()
+    created.id = uuid4()
+    quotes.create_quote = AsyncMock(return_value=created)
+
+    outcome = await AcceptExtractionToRates(
+        session,
+        extraction=extraction,
+        rates=rates,
+        quotes=quotes,
+    ).accept(draft_id=draft.id, user_id=uuid4())
+
+    assert outcome.rate_lines == []
+    assert outcome.channel_quotes == [created]
+    rates.create_buy_rate.assert_not_called()
+    quotes.create_quote.assert_awaited_once()
+    kwargs = quotes.create_quote.await_args.kwargs
+    assert kwargs["party_id"] == party_id
+    assert kwargs["source_ref"] == "fixture://quote/1"
+    session.commit.assert_not_called()

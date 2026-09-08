@@ -24,6 +24,7 @@ const columnHelper = createColumnHelper<ExtractionDraft>()
 const COLUMN_LABELS = {
   source_ref: "Źródło",
   status: "Status",
+  draft_kind: "Rodzaj",
   parser: "Parser",
   candidates: "Kandydaci",
   unparsed: "Nierozpoznane",
@@ -38,6 +39,13 @@ export function ExtractionQueuePage() {
   const [documentBase64, setDocumentBase64] = useState<string | null>(null)
   const [fileName, setFileName] = useState<string | null>(null)
   const [selectedDraftId, setSelectedDraftId] = useState<string | null>(null)
+  const [draftKind, setDraftKind] = useState("rate_line")
+  const [quotePartyId, setQuotePartyId] = useState("")
+  const [quoteOrigin, setQuoteOrigin] = useState("")
+  const [quoteDest, setQuoteDest] = useState("")
+  const [quoteDate, setQuoteDate] = useState("2026-09-08")
+  const [quoteAmount, setQuoteAmount] = useState("")
+  const [quoteCurrency, setQuoteCurrency] = useState("USD")
 
   const query = useQuery({
     queryKey: ["extractions", "pending", ctx.organizationId],
@@ -56,6 +64,18 @@ export function ExtractionQueuePage() {
           sourceRef,
           inputText,
           documentBase64,
+          draftKind,
+          quote:
+            draftKind === "carrier_quote"
+              ? {
+                  party_id: quotePartyId.trim(),
+                  origin_port_id: quoteOrigin.trim(),
+                  destination_port_id: quoteDest.trim(),
+                  quote_date: quoteDate.trim(),
+                  amount: quoteAmount.trim(),
+                  currency: quoteCurrency.trim(),
+                }
+              : undefined,
         }),
       ),
     onSuccess: () => {
@@ -109,6 +129,11 @@ export function ExtractionQueuePage() {
     columnHelper.accessor("status", {
       id: "status",
       header: "Status",
+      cell: (info) => info.getValue(),
+    }),
+    columnHelper.accessor("draft_kind", {
+      id: "draft_kind",
+      header: "Rodzaj",
       cell: (info) => info.getValue(),
     }),
     columnHelper.display({
@@ -167,7 +192,7 @@ export function ExtractionQueuePage() {
       <div>
         <h2 className="text-base font-semibold">Kolejka ekstrakcji (HITL)</h2>
         <p className="text-xs text-muted-foreground">
-          Parser A/B · MockExtractor · akceptacja zapisuje stawki kupna w tej samej transakcji
+          Parser A/B · MockExtractor · akceptacja zapisuje stawkę albo ofertę kanału (`draft_kind`)
         </p>
       </div>
 
@@ -182,6 +207,28 @@ export function ExtractionQueuePage() {
       ) : null}
 
       <div className="space-y-2 rounded-md border border-border bg-card p-3">
+        <label className="block text-xs text-muted-foreground">
+          draft_kind
+          <select
+            aria-label="Rodzaj szkicu"
+            className="mt-1 h-8 w-full rounded-md border border-input bg-background px-2 text-sm"
+            value={draftKind}
+            onChange={(event) => setDraftKind(event.target.value)}
+          >
+            <option value="rate_line">rate_line</option>
+            <option value="carrier_quote">carrier_quote</option>
+          </select>
+        </label>
+        {draftKind === "carrier_quote" ? (
+          <div className="grid gap-2 lg:grid-cols-2">
+            <Input aria-label="Kontrahent oferty" placeholder="party_id" value={quotePartyId} onChange={(e) => setQuotePartyId(e.target.value)} />
+            <Input aria-label="POL oferty" placeholder="origin_port_id" value={quoteOrigin} onChange={(e) => setQuoteOrigin(e.target.value)} />
+            <Input aria-label="POD oferty" placeholder="destination_port_id" value={quoteDest} onChange={(e) => setQuoteDest(e.target.value)} />
+            <Input aria-label="Dzień oferty" placeholder="quote_date" value={quoteDate} onChange={(e) => setQuoteDate(e.target.value)} />
+            <Input aria-label="Kwota oferty" placeholder="amount" value={quoteAmount} onChange={(e) => setQuoteAmount(e.target.value)} />
+            <Input aria-label="Waluta oferty" placeholder="currency" value={quoteCurrency} onChange={(e) => setQuoteCurrency(e.target.value)} />
+          </div>
+        ) : null}
         <label className="block text-xs text-muted-foreground">
           source_ref
           <Input

@@ -7,6 +7,11 @@ from app.ai_transforms.extraction.input_guard import ExtractionInputGuard
 from app.ai_transforms.extraction.protocol import DocumentExtractor
 from app.ai_transforms.extraction.provider import default_extractor
 from app.domain.errors import DraftNotPending, ResourceNotFound, UnparseableDocument
+from app.domain.extraction_draft import (
+    extraction_carrier_quote_kind,
+    require_carrier_quote_payload,
+    require_extraction_draft_kind,
+)
 from app.integrations.docling.parser import DocumentParser
 from app.integrations.docling.provider import default_parser
 from app.integrations.langfuse.tracer import LangfuseTracer, build_langfuse_tracer
@@ -47,8 +52,42 @@ class ExtractionService:
         parser_name: str = "plain",
         parser_challenger: str | None = None,
         ab_delta_chars: int | None = None,
+        draft_kind: object = None,
+        quote_payload: object = None,
     ) -> ExtractionDraft:
+        kind = require_extraction_draft_kind(draft_kind)
         self._guard.scan(input_text)
+        if kind == extraction_carrier_quote_kind():
+            dumped = _quote_payload(source_ref, quote_payload)
+        else:
+            dumped = self._rate_payload(
+                source_ref,
+                input_text,
+                parser_name,
+                parser_challenger,
+                ab_delta_chars,
+            )
+        stored_ref = dumped.get("source_ref")
+        draft = ExtractionDraft(
+            id=uuid4(),
+            organization_id=organization_id,
+            status="pending",
+            draft_kind=kind,
+            source_ref=stored_ref if type(stored_ref) is str else source_ref,
+            input_text=input_text,
+            payload=dumped,
+            created_by=user_id,
+        )
+        return await self._drafts.add(draft)
+
+    def _rate_payload(
+        self,
+        source_ref: str,
+        input_text: str,
+        parser_name: str,
+        parser_challenger: str | None,
+        ab_delta_chars: int | None,
+    ) -> dict[str, object]:
         trace = self._tracer.start_trace("extract")
         payload = self._extractor.extract(source_ref=source_ref, input_text=input_text)
         payload = payload.model_copy(
@@ -65,16 +104,7 @@ class ExtractionService:
             unparsed_count=len(payload.unparsed_regions),
         )
         self._tracer.finish(trace)
-        draft = ExtractionDraft(
-            id=uuid4(),
-            organization_id=organization_id,
-            status="pending",
-            source_ref=payload.source_ref,
-            input_text=input_text,
-            payload=payload.model_dump(),
-            created_by=user_id,
-        )
-        return await self._drafts.add(draft)
+        return payload.model_dump()
 
     async def extract_from_document(
         self,
@@ -83,6 +113,8 @@ class ExtractionService:
         user_id: UUID,
         source_ref: str,
         raw_bytes: bytes,
+        draft_kind: object = None,
+        quote_payload: object = None,
     ) -> ExtractionDraft:
         if len(raw_bytes) > _MAX_DOCUMENT_BYTES:
             raise UnparseableDocument("Dokument przekracza 2 MB")
@@ -95,6 +127,8 @@ class ExtractionService:
             parser_name=parsed.parser_name,
             parser_challenger=parsed.parser_challenger,
             ab_delta_chars=parsed.ab_delta_chars,
+            draft_kind=draft_kind,
+            quote_payload=quote_payload,
         )
 
     async def accept(self, *, draft_id: UUID, user_id: UUID) -> ExtractionDraft:
@@ -120,3 +154,19 @@ class ExtractionService:
         if draft.status != "pending":
             raise DraftNotPending("Szkic nie jest w statusie pending")
         return draft
+
+
+def _quote_payload(source_ref: str, raw: object) -> dict[str, object]:
+    stored = require_carrier_quote_payload(raw)
+    return {
+        "source_ref": source_ref,
+        "unparsed_regions": [],
+        "candidates": [],
+        "party_id": str(stored.party_id),
+        "origin_port_id": str(stored.origin_port_id),
+        "destination_port_id": str(stored.destination_port_id),
+        "quote_date": stored.quote_date,
+        "amount": stored.amount,
+        "currency": stored.currency,
+        "transit_days": stored.transit_days,
+    }

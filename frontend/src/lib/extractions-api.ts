@@ -27,6 +27,7 @@ export type ExtractionDraft = {
   id: string
   organization_id: string
   status: string
+  draft_kind: string
   source_ref: string
   input_text: string
   payload: ExtractionPayload
@@ -38,11 +39,40 @@ export function extractionCreateBody(args: {
   sourceRef: string
   inputText: string
   documentBase64: string | null
-}): { source_ref: string; input_text?: string; document_base64?: string } {
-  if (args.documentBase64 !== null && args.documentBase64.length > 0) {
-    return { source_ref: args.sourceRef, document_base64: args.documentBase64 }
+  draftKind?: string
+  quote?: {
+    party_id: string
+    origin_port_id: string
+    destination_port_id: string
+    quote_date: string
+    amount: string
+    currency: string
+    transit_days?: number
   }
-  return { source_ref: args.sourceRef, input_text: args.inputText }
+}): {
+  source_ref: string
+  input_text?: string
+  document_base64?: string
+  draft_kind?: string
+  quote?: (typeof args)["quote"]
+} {
+  const body: {
+    source_ref: string
+    input_text?: string
+    document_base64?: string
+    draft_kind?: string
+    quote?: (typeof args)["quote"]
+  } =
+    args.documentBase64 !== null && args.documentBase64.length > 0
+      ? { source_ref: args.sourceRef, document_base64: args.documentBase64 }
+      : { source_ref: args.sourceRef, input_text: args.inputText }
+  if (args.draftKind !== undefined && args.draftKind !== "") {
+    body.draft_kind = args.draftKind
+  }
+  if (args.quote !== undefined) {
+    body.quote = args.quote
+  }
+  return body
 }
 
 function asPayload(raw: { [key: string]: unknown }): ExtractionPayload {
@@ -83,6 +113,7 @@ function toDraft(row: ExtractionDraftResponse): ExtractionDraft {
     id: row.id,
     organization_id: row.organization_id,
     status: row.status,
+    draft_kind: typeof row.draft_kind === "string" ? row.draft_kind : "rate_line",
     source_ref: row.source_ref,
     input_text: row.input_text,
     payload: asPayload(row.payload),

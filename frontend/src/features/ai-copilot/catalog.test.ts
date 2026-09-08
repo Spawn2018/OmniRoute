@@ -26,6 +26,7 @@ describe("ai copilot surface for 47.0", () => {
     expect(page).toContain("aiProposals")
     expect(page).toContain("fetchExtractionDrafts")
     expect(page).toContain("source_ref")
+    expect(page).toContain("draft_kind")
     expect(page).not.toContain("input_text")
     expect(page).not.toContain("parseFloat")
     expect(page).not.toContain("CatalogCreateForm")

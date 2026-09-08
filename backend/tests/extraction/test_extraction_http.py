@@ -5,7 +5,9 @@ from uuid import UUID, uuid4
 import pytest
 from fastapi.testclient import TestClient
 
+from app.api.accept_extraction import ExtractionAcceptResult
 from app.api.deps import require_tenant_session, set_authz_checker
+from app.domain.extraction_draft import require_extraction_draft_kind
 from app.domain.errors import UnknownChargeCode
 from app.main import app
 from app.models.extraction_draft import ExtractionDraft
@@ -42,11 +44,14 @@ class StubExtractionService:
         parser_name: str = "plain",
         parser_challenger: str | None = None,
         ab_delta_chars: int | None = None,
+        **_unused: object,
     ) -> ExtractionDraft:
+        kind = require_extraction_draft_kind(_unused.get("draft_kind"))
         self.draft = ExtractionDraft(
             id=uuid4(),
             organization_id=organization_id,
             status="pending",
+            draft_kind=kind,
             source_ref=source_ref,
             input_text=input_text,
             payload={
@@ -70,6 +75,7 @@ class StubExtractionService:
         user_id: UUID,
         source_ref: str,
         raw_bytes: bytes,
+        **_unused: object,
     ) -> ExtractionDraft:
         return await self.extract_to_draft(
             organization_id=organization_id,
@@ -110,7 +116,7 @@ class StubAcceptToRates:
         *,
         draft_id: UUID,
         user_id: UUID,
-    ) -> tuple[ExtractionDraft, list[RateLine]]:
+    ) -> ExtractionAcceptResult:
         draft = await self._stub.accept(draft_id=draft_id, user_id=user_id)
         rate = RateLine(
             id=uuid4(),
@@ -120,7 +126,7 @@ class StubAcceptToRates:
             currency="EUR",
             source_ref=draft.source_ref,
         )
-        return draft, [rate]
+        return ExtractionAcceptResult(draft, [rate], [])
 
 
 @pytest.fixture
@@ -264,3 +270,17 @@ def test_http_extract_rejects_invalid_base64(happy_client: TestClient) -> None:
         json={"source_ref": "doc://x", "document_base64": "%%%"},
     )
     assert response.status_code == 400
+
+
+def test_http_rejects_unknown_draft_kind(happy_client: TestClient) -> None:
+    response = happy_client.post(
+        "/api/v1/extractions",
+        headers=bearer_auth_headers(),
+        json={
+            "source_ref": "doc://x",
+            "input_text": "oferta",
+            "draft_kind": "purchase_invoice",
+        },
+    )
+    assert response.status_code == 400
+    assert "allowlist" in response.json()["detail"]

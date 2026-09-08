@@ -18,6 +18,7 @@ from app.domain.errors import (
     UnknownChannelQuote,
     UnknownPort,
 )
+from app.domain.rate_line import require_source_ref
 from app.models.channel_quote import ChannelQuote
 from app.repositories.channel_quotes.channel_quote_repository import (
     ChannelQuoteCard,
@@ -36,6 +37,7 @@ def _new_channel_quote(
     amount: Decimal,
     currency: str,
     transit_days: int | None,
+    source_ref: str,
 ) -> ChannelQuote:
     return ChannelQuote(
         id=uuid4(),
@@ -47,7 +49,7 @@ def _new_channel_quote(
         destination_port_id=destination_port_id,
         quote_date=quote_date,
         transit_days=transit_days,
-        source_ref=manual_channel_source_ref(user_id),
+        source_ref=source_ref,
         created_by=user_id,
     )
 
@@ -116,19 +118,16 @@ class ChannelQuoteService:
         amount: object,
         currency: object,
         transit_days: object = None,
+        source_ref: object = None,
     ) -> ChannelQuote:
         day = normalize_quote_date(quote_date)
         stored_amount = normalize_quote_amount(amount)
         iso = normalize_quote_currency(currency)
         days = normalize_transit_days(transit_days)
-        existing = await self._lane_quote(
-            party_id,
-            origin_port_id,
-            destination_port_id,
-            day,
+        origin = self._quote_source_ref(user_id, source_ref)
+        await self._reject_same_day_lane(
+            party_id, origin_port_id, destination_port_id, day
         )
-        if existing is not None and existing.quote_date == day:
-            raise ChannelQuoteConflict(f"oferta na {day.isoformat()} już istnieje")
         return await self._insert_quote(
             organization_id=organization_id,
             user_id=user_id,
@@ -139,7 +138,30 @@ class ChannelQuoteService:
             amount=stored_amount,
             currency=iso,
             transit_days=days,
+            source_ref=origin,
         )
+
+    @staticmethod
+    def _quote_source_ref(user_id: UUID, source_ref: object) -> str:
+        if source_ref is None:
+            return manual_channel_source_ref(user_id)
+        return require_source_ref(source_ref)
+
+    async def _reject_same_day_lane(
+        self,
+        party_id: UUID,
+        origin_port_id: UUID,
+        destination_port_id: UUID,
+        day: date,
+    ) -> None:
+        existing = await self._lane_quote(
+            party_id,
+            origin_port_id,
+            destination_port_id,
+            day,
+        )
+        if existing is not None and existing.quote_date == day:
+            raise ChannelQuoteConflict(f"oferta na {day.isoformat()} już istnieje")
 
     async def _insert_quote(
         self,
@@ -153,6 +175,7 @@ class ChannelQuoteService:
         amount: Decimal,
         currency: str,
         transit_days: int | None,
+        source_ref: str,
     ) -> ChannelQuote:
         try:
             return await self._quotes.add(
@@ -166,6 +189,7 @@ class ChannelQuoteService:
                     amount=amount,
                     currency=currency,
                     transit_days=transit_days,
+                    source_ref=source_ref,
                 )
             )
         except IntegrityError as exc:

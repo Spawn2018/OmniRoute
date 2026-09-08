@@ -134,6 +134,7 @@ class StubExtractionService:
         parser_name: str = "plain",
         parser_challenger: str | None = None,
         ab_delta_chars: int | None = None,
+        **_unused: object,
     ) -> ExtractionDraft:
         _ = parser_name, parser_challenger, ab_delta_chars
         StubExtractionService.last_text = input_text
