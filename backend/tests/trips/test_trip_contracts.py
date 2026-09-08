@@ -2,6 +2,7 @@ from pathlib import Path
 
 _ROOT = Path(__file__).resolve().parents[3]
 _MIGRATION = _ROOT / "backend" / "alembic" / "versions" / "092_trip.py"
+_FREEZE = _ROOT / "backend" / "alembic" / "versions" / "107_trip_expected_buy.py"
 _SERVICES = _ROOT / "backend" / "app" / "services"
 
 
@@ -19,6 +20,19 @@ def test_migration_092_creates_table_and_forces_rls() -> None:
     assert "planned_distance" not in source
     assert "def downgrade" in source
     assert "drop_table" in source.split("def downgrade")[1]
+
+
+def test_migration_107_adds_expected_buy_without_variance() -> None:
+    source = _FREEZE.read_text(encoding="utf-8")
+    assert 'revision: str = "107_trip_expected_buy"' in source
+    assert 'down_revision: str | None = "106_local_charge"' in source
+    assert "expected_buy_amount" in source
+    assert "expected_buy_currency" in source
+    assert "ck_trip_expected_buy_freeze" in source
+    assert "app.services.charges" not in source
+    assert "variance" not in source
+    assert "planned_distance" not in source
+    assert "def downgrade" in source
 
 
 def test_service_does_not_import_fleet_or_charges() -> None:

@@ -16,6 +16,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **151.0 leftover:** `trip` DONE 152.0. Zostaje T2c: multi-manning / floating trailer; pojemności / Decimal km; `party_id`; `/fleet` / HW. Tu tylko katalog pojazd/kierowca/naczepa.
 - **153.0 leftover:** VGM/TARA Decimal; free_time; cutoffy CY/CFS/VGM/SI/AMS; `bl_kind`; plomby/PIN; reefer; party/terminal; TEU; `shipment_leg_id`. Tu tylko ISO 6346 + `iso_size_type` + opcjonalne zlecenie. Nie booking.
 - **155.0 leftover:** OR wielu hubów na jednym końcu (D1b). Tu tylko `groupage_line` cutoff+TT+ISODOW + dwa `location`. Nie optymalizator.
+- **167.0 leftover:** wariancja SQL na `charge` (P5b); actual z `charge` (P5c). Tu tylko freeze `expected_buy` na `trip` przy `in_transit`. Nie druga marża. Nie km.
 - **166.0 leftover:** macierz armator×port×serwis×kontener / FK (P4b); warning braku dopłaty ≠ fakt (P4c). Tu tylko katalog THC/ISPS/seal/amendment + Decimal. Nie `port_surcharge`. Nie marża.
 - **165.0 leftover:** przeliczenie SQL indeksu na `charge` (P3b); live HTTP NBP/BAF (P3c); A11 nowy wiersz (P3d). Tu tylko katalog FSC/BAF/CAF + Decimal. Nie `nbp_rate`. Nie marża.
 - **164.0 leftover:** exclusion / CHECK nakładania daterange jak strefy pocztowe (P2c). Tu tylko kolekcja `charge_code` + daty jako dane. Nie `charge`. Nie FSC.

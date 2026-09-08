@@ -1,6 +1,16 @@
 import uuid
+from decimal import Decimal
 
-from sqlalchemy import CheckConstraint, ForeignKey, ForeignKeyConstraint, Index, String, Text
+from sqlalchemy import (
+    CHAR,
+    CheckConstraint,
+    ForeignKey,
+    ForeignKeyConstraint,
+    Index,
+    Numeric,
+    String,
+    Text,
+)
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -13,6 +23,17 @@ class Trip(Base, TimestampMixin):
         CheckConstraint(
             "status IN ('draft', 'planned', 'in_transit', 'completed', 'cancelled')",
             name="ck_trip_status",
+        ),
+        CheckConstraint(
+            "("
+            "(status IN ('in_transit', 'completed') "
+            "AND expected_buy_amount IS NOT NULL AND expected_buy_amount > 0 "
+            "AND expected_buy_currency ~ '^[A-Z]{3}$') "
+            "OR "
+            "(status IN ('draft', 'planned', 'cancelled') "
+            "AND expected_buy_amount IS NULL AND expected_buy_currency IS NULL)"
+            ")",
+            name="ck_trip_expected_buy_freeze",
         ),
         ForeignKeyConstraint(
             ["organization_id", "vehicle_id"],
@@ -48,6 +69,8 @@ class Trip(Base, TimestampMixin):
     trailer_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
     driver_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
     source_ref: Mapped[str] = mapped_column(Text, nullable=False)
+    expected_buy_amount: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
+    expected_buy_currency: Mapped[str | None] = mapped_column(CHAR(length=3), nullable=True)
     superseded_by: Mapped[uuid.UUID | None] = mapped_column(
         UUID(as_uuid=True),
         ForeignKey("trip.id", ondelete="RESTRICT"),

@@ -1,13 +1,18 @@
+import re
+from decimal import Decimal, InvalidOperation
 from uuid import UUID
 
 from app.domain.errors import InvalidTrip
 
 _STATUSES = frozenset({"draft", "planned", "in_transit", "completed", "cancelled"})
+_FREEZE = frozenset({"in_transit", "completed"})
 _SLOTS = frozenset({"vehicle", "trailer", "driver"})
 _MAX_NO = 64
 _MAX_REF = 256
 _FIXTURE = "fixture://trip/"
 _MANUAL = "tenant:manual"
+_CURRENCY_PATTERN = re.compile(r"^[A-Z]{3}$")
+_FOUR = Decimal("0.0001")
 
 
 def require_trip_no(raw: object) -> str:
@@ -56,3 +61,40 @@ def require_trip_source_ref(raw: object) -> str:
     if token != _MANUAL and not token.startswith(_FIXTURE):
         raise InvalidTrip("obce wskazanie zapisu przejazdu")
     return token
+
+
+def _require_buy_amount(raw: object) -> Decimal:
+    if isinstance(raw, float) or isinstance(raw, bool):
+        raise InvalidTrip("kwota nie może być float")
+    if not isinstance(raw, Decimal | str | int):
+        raise InvalidTrip("kwota snapshotu musi być liczbą dziesiętną")
+    try:
+        parsed = raw if isinstance(raw, Decimal) else Decimal(str(raw))
+    except InvalidOperation as exc:
+        raise InvalidTrip("kwota snapshotu musi być liczbą dziesiętną") from exc
+    if parsed <= 0:
+        raise InvalidTrip("kwota snapshotu musi być dodatnia")
+    return parsed.quantize(_FOUR)
+
+
+def _require_buy_currency(raw: object) -> str:
+    if type(raw) is not str:
+        raise InvalidTrip("waluta snapshotu musi być tekstem")
+    token = raw.strip().upper()
+    if _CURRENCY_PATTERN.fullmatch(token) is None:
+        raise InvalidTrip("waluta snapshotu: ISO 4217, trzy litery")
+    return token
+
+
+def require_expected_buy(
+    status: str,
+    amount: object,
+    currency: object,
+) -> tuple[Decimal | None, str | None]:
+    if status in _FREEZE:
+        if amount is None or (type(amount) is str and amount.strip() == ""):
+            raise InvalidTrip("kwota snapshotu wymagana w drodze")
+        return _require_buy_amount(amount), _require_buy_currency(currency)
+    if amount is not None or currency is not None:
+        raise InvalidTrip("snapshot kosztu tylko przy w drodze")
+    return None, None

@@ -10,6 +10,8 @@ export type TripRow = {
   trailer_id: string | null
   driver_id: string | null
   source_ref: string
+  expected_buy_amount: string | null
+  expected_buy_currency: string | null
   superseded_by: string | null
 }
 
@@ -20,6 +22,8 @@ export type TripWrite = {
   trailer_id: string | null
   driver_id: string | null
   source_ref: string
+  expected_buy_amount: string | null
+  expected_buy_currency: string | null
 }
 
 const PATH = "/api/v1/trips"
@@ -35,7 +39,10 @@ export function tripWrite(args: {
   vehicle: string
   trailer: string
   driver: string
+  buyAmount: string
+  buyCurrency: string
 }): TripWrite {
+  const freeze = args.state === "in_transit" || args.state === "completed"
   return {
     trip_no: args.number.trim(),
     status: args.state.trim(),
@@ -43,6 +50,8 @@ export function tripWrite(args: {
     trailer_id: optionalId(args.trailer),
     driver_id: optionalId(args.driver),
     source_ref: "tenant:manual",
+    expected_buy_amount: freeze ? args.buyAmount.trim() : null,
+    expected_buy_currency: freeze ? args.buyCurrency.trim() : null,
   }
 }
 

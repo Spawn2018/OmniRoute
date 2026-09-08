@@ -25,6 +25,8 @@ class TripCreate(BaseModel):
     trailer_id: UUID | None = None
     driver_id: UUID | None = None
     source_ref: str
+    expected_buy_amount: str | None = None
+    expected_buy_currency: str | None = None
 
 
 class TripResponse(BaseModel):
@@ -38,11 +40,27 @@ class TripResponse(BaseModel):
     trailer_id: UUID | None
     driver_id: UUID | None
     source_ref: str
+    expected_buy_amount: str | None
+    expected_buy_currency: str | None
     superseded_by: UUID | None
 
 
 def _as_response(row: Trip) -> TripResponse:
-    return TripResponse.model_validate(row)
+    amount = None if row.expected_buy_amount is None else format(row.expected_buy_amount, "f")
+    currency = None if row.expected_buy_currency is None else str(row.expected_buy_currency).strip()
+    return TripResponse(
+        id=row.id,
+        organization_id=row.organization_id,
+        trip_no=row.trip_no,
+        status=row.status,
+        vehicle_id=row.vehicle_id,
+        trailer_id=row.trailer_id,
+        driver_id=row.driver_id,
+        source_ref=row.source_ref,
+        expected_buy_amount=amount,
+        expected_buy_currency=currency,
+        superseded_by=row.superseded_by,
+    )
 
 
 async def _assigned(
@@ -87,6 +105,8 @@ async def create_trip(
         trailer_id=trailer_id,
         driver_id=driver_id,
         source_ref=body.source_ref,
+        expected_buy_amount=body.expected_buy_amount,
+        expected_buy_currency=body.expected_buy_currency,
     )
     await session.commit()
     return _as_response(row)

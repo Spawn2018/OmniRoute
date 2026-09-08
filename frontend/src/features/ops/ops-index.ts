@@ -491,6 +491,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "164.0": "/charge-templates",
   "165.0": "/fuel-indexes",
   "166.0": "/local-charges",
+  "167.0": "/shipments",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

@@ -7,6 +7,7 @@ from fastapi.testclient import TestClient
 from app.api.deps import require_tenant_session, set_authz_checker
 from app.domain.errors import ResourceNotFound
 from app.domain.trip import (
+    require_expected_buy,
     require_trip_no,
     require_trip_resource_id,
     require_trip_source_ref,
@@ -66,6 +67,8 @@ class StubTripService:
         trailer_id: object,
         driver_id: object,
         source_ref: object,
+        expected_buy_amount: object = None,
+        expected_buy_currency: object = None,
     ) -> Trip:
         number = require_trip_no(trip_no)
         state = require_trip_status(status)
@@ -73,6 +76,11 @@ class StubTripService:
         trailer = require_trip_resource_id(trailer_id)
         driver = require_trip_resource_id(driver_id)
         origin = require_trip_source_ref(source_ref)
+        buy_amount, buy_currency = require_expected_buy(
+            state,
+            expected_buy_amount,
+            expected_buy_currency,
+        )
         current = next(
             (row for row in self.rows if row.trip_no == number and row.superseded_by is None),
             None,
@@ -84,6 +92,8 @@ class StubTripService:
             and current.trailer_id == trailer
             and current.driver_id == driver
             and current.source_ref == origin
+            and current.expected_buy_amount == buy_amount
+            and current.expected_buy_currency == buy_currency
         ):
             return current
         successor = Trip(
@@ -95,6 +105,8 @@ class StubTripService:
             trailer_id=trailer,
             driver_id=driver,
             source_ref=origin,
+            expected_buy_amount=buy_amount,
+            expected_buy_currency=buy_currency,
             created_by=user_id,
         )
         if current is not None:
@@ -154,6 +166,48 @@ def test_http_create_list_supersede_and_reject_queued(run_client: object) -> Non
     )
     assert queued.status_code == 400
     assert "status" in queued.json()["detail"]
+
+
+def test_http_freezes_expected_buy_on_in_transit(run_client: object) -> None:
+    client, _trips, _fleet = run_client
+    headers = bearer_auth_headers(organization_id=uuid4())
+    missing = client.post(
+        "/api/v1/trips",
+        headers=headers,
+        json={"trip_no": "TR-3", "status": "in_transit", "source_ref": "tenant:manual"},
+    )
+    assert missing.status_code == 400
+    assert "kwota" in missing.json()["detail"]
+    early = client.post(
+        "/api/v1/trips",
+        headers=headers,
+        json={
+            "trip_no": "TR-3",
+            "status": "planned",
+            "expected_buy_amount": "10.0000",
+            "expected_buy_currency": "EUR",
+            "source_ref": "tenant:manual",
+        },
+    )
+    assert early.status_code == 400
+    assert "snapshot" in early.json()["detail"]
+    frozen = client.post(
+        "/api/v1/trips",
+        headers=headers,
+        json={
+            "trip_no": "TR-3",
+            "status": "in_transit",
+            "expected_buy_amount": "1250.5000",
+            "expected_buy_currency": "EUR",
+            "source_ref": "tenant:manual",
+        },
+    )
+    assert frozen.status_code == 201
+    body = frozen.json()
+    assert body["expected_buy_amount"] == "1250.5000"
+    assert body["expected_buy_currency"] == "EUR"
+    listed = client.get("/api/v1/trips", headers=headers, params={"status": "in_transit"})
+    assert listed.json()[0]["expected_buy_amount"] == "1250.5000"
 
 
 def test_http_rejects_driver_on_vehicle_slot(run_client: object) -> None:

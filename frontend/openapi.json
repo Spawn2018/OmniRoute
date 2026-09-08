@@ -17735,6 +17735,28 @@
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
+          },
+          "expected_buy_amount": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Expected Buy Amount"
+          },
+          "expected_buy_currency": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Expected Buy Currency"
           }
         },
         "additionalProperties": false,
@@ -17806,6 +17828,28 @@
             "type": "string",
             "title": "Source Ref"
           },
+          "expected_buy_amount": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Expected Buy Amount"
+          },
+          "expected_buy_currency": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Expected Buy Currency"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -17829,6 +17873,8 @@
           "trailer_id",
           "driver_id",
           "source_ref",
+          "expected_buy_amount",
+          "expected_buy_currency",
           "superseded_by"
         ],
         "title": "TripResponse"

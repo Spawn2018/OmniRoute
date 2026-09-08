@@ -152,6 +152,7 @@ describe("U-routes-breadth standing", () => {
       "164.0": "/charge-templates",
       "165.0": "/fuel-indexes",
       "166.0": "/local-charges",
+      "167.0": "/shipments",
     })
     expect(OPS_JOBS.map((job) => job.route)).toEqual(
       expect.arrayContaining(Object.values(SHIPPED_CHARGE_ROUTES)),

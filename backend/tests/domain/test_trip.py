@@ -4,6 +4,7 @@ from hypothesis import strategies as st
 
 from app.domain.errors import InvalidTrip
 from app.domain.trip import (
+    require_expected_buy,
     require_trip_no,
     require_trip_slot,
     require_trip_source_ref,
@@ -28,6 +29,21 @@ def test_trip_rejects_queued_and_driver_on_vehicle_slot() -> None:
         require_trip_slot("vehicle", "driver")
     with pytest.raises(InvalidTrip, match="obce"):
         require_trip_source_ref("https://evil.example/trip")
+
+
+def test_trip_freezes_expected_buy_only_in_transit() -> None:
+    amount, currency = require_expected_buy("in_transit", "1250.5000", "eur")
+    assert str(amount) == "1250.5000"
+    assert currency == "EUR"
+    idle_amount, idle_currency = require_expected_buy("planned", None, None)
+    assert idle_amount is None
+    assert idle_currency is None
+    with pytest.raises(InvalidTrip, match="kwota"):
+        require_expected_buy("in_transit", None, None)
+    with pytest.raises(InvalidTrip, match="snapshot"):
+        require_expected_buy("planned", "10.0000", "EUR")
+    with pytest.raises(InvalidTrip, match="kwota"):
+        require_expected_buy("in_transit", 0.5, "EUR")
 
 
 @given(st.sampled_from(["queued", "running", "open"]))

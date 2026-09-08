@@ -5211,6 +5211,14 @@ export type TripCreate = {
      * Source Ref
      */
     source_ref: string;
+    /**
+     * Expected Buy Amount
+     */
+    expected_buy_amount?: string | null;
+    /**
+     * Expected Buy Currency
+     */
+    expected_buy_currency?: string | null;
 };
 
 /**
@@ -5249,6 +5257,14 @@ export type TripResponse = {
      * Source Ref
      */
     source_ref: string;
+    /**
+     * Expected Buy Amount
+     */
+    expected_buy_amount: string | null;
+    /**
+     * Expected Buy Currency
+     */
+    expected_buy_currency: string | null;
     /**
      * Superseded By
      */

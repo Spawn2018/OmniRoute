@@ -1,5 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { useState } from "react"
+import { Money } from "@/components/money"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { fetchTrips, saveTrip, tripWrite } from "@/lib/trips-api"
@@ -13,6 +14,10 @@ const STATES = [
   { token: "cancelled", label: "anulowany" },
 ] as const
 
+function needsFreeze(state: string): boolean {
+  return state === "in_transit" || state === "completed"
+}
+
 export function TripRunPanel(args: { signedIn: boolean }) {
   const ctx = getTenantContext()
   const cache = useQueryClient()
@@ -21,6 +26,8 @@ export function TripRunPanel(args: { signedIn: boolean }) {
   const [vehicle, setVehicle] = useState("")
   const [trailer, setTrailer] = useState("")
   const [driver, setDriver] = useState("")
+  const [buyAmount, setBuyAmount] = useState("")
+  const [buyCurrency, setBuyCurrency] = useState("EUR")
   const listed = useQuery({
     queryKey: ["trips", ctx.organizationId, state],
     queryFn: () => fetchTrips(state),
@@ -29,7 +36,17 @@ export function TripRunPanel(args: { signedIn: boolean }) {
   })
   const persist = useMutation({
     mutationFn: () =>
-      saveTrip(tripWrite({ number, state, vehicle, trailer, driver })),
+      saveTrip(
+        tripWrite({
+          number,
+          state,
+          vehicle,
+          trailer,
+          driver,
+          buyAmount,
+          buyCurrency,
+        }),
+      ),
     onSuccess: () => {
       void cache.invalidateQueries({ queryKey: ["trips", ctx.organizationId, state] })
     },
@@ -38,7 +55,7 @@ export function TripRunPanel(args: { signedIn: boolean }) {
     <section className="grid gap-2 rounded-md border border-border p-3" data-trip="run">
       <h2 className="text-sm font-medium">Przejazd</h2>
       <p className="text-xs text-muted-foreground">
-        Numer i status. Flota opcjonalna. Nie km. Nie mapa.
+        Numer i status. Snapshot kupna przy w drodze. Flota opcjonalna. Nie km. Nie wariancja.
       </p>
       <label className="flex flex-col gap-1 text-xs">
         Numer przejazdu
@@ -64,6 +81,28 @@ export function TripRunPanel(args: { signedIn: boolean }) {
           <option value={STATES[4].token}>{STATES[4].label}</option>
         </select>
       </label>
+      {needsFreeze(state) ? (
+        <>
+          <label className="flex flex-col gap-1 text-xs">
+            Snapshot kosztu kupna
+            <Input
+              aria-label="Snapshot kosztu kupna"
+              placeholder="expected_buy_amount"
+              value={buyAmount}
+              onChange={(event) => setBuyAmount(event.target.value)}
+            />
+          </label>
+          <label className="flex flex-col gap-1 text-xs">
+            Waluta snapshotu
+            <Input
+              aria-label="Waluta snapshotu"
+              placeholder="EUR"
+              value={buyCurrency}
+              onChange={(event) => setBuyCurrency(event.target.value)}
+            />
+          </label>
+        </>
+      ) : null}
       <label className="flex flex-col gap-1 text-xs">
         Pojazd (opcjonalnie)
         <Input
@@ -105,6 +144,12 @@ export function TripRunPanel(args: { signedIn: boolean }) {
         {(listed.data ?? []).map((row) => (
           <li key={row.id} className="font-mono text-xs">
             {row.trip_no} · {row.status}
+            {row.expected_buy_amount !== null && row.expected_buy_currency !== null ? (
+              <>
+                {" · "}
+                <Money amount={row.expected_buy_amount} currency={row.expected_buy_currency} />
+              </>
+            ) : null}
           </li>
         ))}
       </ul>

@@ -414,3 +414,4 @@
 | 2026-09-08 | Plan 166.0 | P4 | local_charge THC/ISPS jako dane + Decimal, nie warning braków. Delta zaakceptowana (`/noc`). Nie P5. Nastepny: kod 166.0. |
 | 2026-09-08 | 166.0 | P4 | local_charge katalog THC/ISPS Decimal. Nie warning braków. Nastepny: P5 Plan. |
 | 2026-09-08 | Plan 167.0 | P5 | expected_buy snapshot na trip przy in_transit, nie wariancja. Delta zaakceptowana (`/noc`). Nie P6. Nastepny: kod 167.0. |
+| 2026-09-08 | 167.0 | P5 | expected_buy freeze Decimal na trip przy in_transit. Nie wariancja. Nastepny: P6 Plan. |
