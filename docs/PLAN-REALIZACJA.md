@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny (zablokowany):** **O5** `party_lane_scorecard` (`/plan-modul`, węższe z [karty-pol-fala-o.md](../analysis/karty-pol-fala-o.md) § O5) → O6–O8 → N5 → U1+U5 → I1–I4 → U4 → T → U3 → D → P → G2.0–G2.23 → F → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
+**Następny (zablokowany):** **139.0** O5 `party_lane_scorecard` (delta [139.0-party-lane-scorecard.md](../deltas/open/139.0-party-lane-scorecard.md) zaakceptowana `/noc`) → O6–O8 → N5 → U1+U5 → I1–I4 → U4 → T → U3 → D → P → G2.0–G2.23 → F → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
 <!-- os-status:end -->
 
 ```mermaid
@@ -392,7 +392,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | 62.0 | zamknięty (`docs/deltas/archived/62.0-operator-howto-c4.md`) |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | 63.0 | zamknięty (`docs/deltas/archived/63.0-threat-model-codeql.md`) |
 | po Q-E4 | **Fala S**, named parks (Auth0 / portale / AIS) | — | parked (`/noc` pomija) |
-| po parks | **P0** → pełna oś pinu **2026-09-08c** (O/I/U/T/D/P/G2/F/C/V/W/X/Plat/CT/CI/G/EXP) | Plan → plaster | **O4 138.0 zamknięty; O5 następny** |
+| po parks | **P0** → pełna oś pinu **2026-09-08c** (O/I/U/T/D/P/G2/F/C/V/W/X/Plat/CT/CI/G/EXP) | Plan → plaster | **O4 138.0 zamknięty; O5 139.0 następny** |
 
 ### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
 
@@ -501,7 +501,7 @@ Pogłębienie żywych M-07/M-08 (`source_ref`), M-10, M-12, M-13, M-19, M-20, M-
 | **O2** | Ręczny POST `channel_quote` z wyceny (`source_ref=tenant:manual:`) | Plan → plaster | zamknięty (`docs/deltas/archived/135.0-channel-quote-from-quote.md`) | Nie mutacja stawki. Nie 1.3 `rate_line` w tym wierszu |
 | **O3** | `carrier_inquiry` batch; statusy `queued`/`sent`/`answered`/`declined`; lane POL/POD | Plan → plaster | zamknięty (`docs/deltas/archived/136.0-carrier-inquiry-batch.md`) | Wskazanie wyceny w API, nie import serwisu. 1 / wielu / wszyscy |
 | **O4** | Checkboxy + default N z M-03; N× `mail_draft`; ranking SQL | Plan → plaster | zamknięty (`docs/deltas/archived/138.0-inquiry-mail-draft-batch.md`) | Send = S18 po S11. Zakaz auto-send. Graph HTTP leftover |
-| **O5** | `party_lane_scorecard` + szablon podpowiedzi z SQL | Plan → plaster | po O4 | `sample_size=0` i tak ma tekst. Nie LLM. Nie scoring osoby |
+| **O5** | `party_lane_scorecard` + szablon podpowiedzi z SQL | Plan → plaster | **delta 139.0 zaakceptowana** | `sample_size=0` i tak ma tekst. Nie LLM. Nie scoring osoby |
 | **O6** | `extraction_draft.draft_kind=carrier_quote` → HITL → `channel_quote` + `answered` | Plan → plaster | po O2 | ExtractionService nie zapisuje stawek |
 | **O7** | Kraj ISO na liście agentów (`party.country_code` już jest) + filtr | Plan → plaster | z O4 | Holandia na SHA→RTM. Nie druga kolumna kraju |
 | **O8** | Buy-desk: group-by edytowalny (party/kraj/wątek/status) + saved view | Plan → plaster | po O4 | Nie nowy czat. Audyt [incoterms-booking-customs-ux.md](analysis/incoterms-booking-customs-ux.md) |
@@ -834,13 +834,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->
