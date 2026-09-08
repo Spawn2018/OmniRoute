@@ -70,6 +70,7 @@ modules =
     app.services.shipment_legs
     app.services.groupage_lines
     app.services.shipment_packages
+    app.services.dock_appointments
 
 [importlinter:contract:integracje]
 name = Integracje nie znają serwisów
@@ -243,3 +244,6 @@ forbidden_modules =
     app.services.shipment_packages
     app.repositories.shipment_packages
     app.models.shipment_package
+    app.services.dock_appointments
+    app.repositories.dock_appointments
+    app.models.dock_appointment

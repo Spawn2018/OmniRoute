@@ -21,6 +21,7 @@ const NAV = [
   { to: "/air", label: "Lotniczy" },
   { to: "/groupage", label: "Linie drobnicy" },
   { to: "/shipment-packages", label: "Paczki" },
+  { to: "/dock-appointments", label: "Awizacje doku" },
   { to: "/sanctions", label: "Sankcje" },
   { to: "/fraud", label: "Oszustwo" },
   { to: "/gdpr", label: "RODO" },

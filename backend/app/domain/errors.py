@@ -500,3 +500,7 @@ class InvalidGroupageLine(DomainError):
 
 class InvalidShipmentPackage(DomainError):
     """Paczka na zleceniu: skan QR Omni + stop trasy — nie WMS."""
+
+
+class InvalidDockAppointment(DomainError):
+    """Awizacja doku: okno TIME na stop magazynu — nie WMS."""

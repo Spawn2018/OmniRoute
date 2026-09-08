@@ -4596,6 +4596,80 @@
         ]
       }
     },
+    "/api/v1/dock-appointments": {
+      "get": {
+        "tags": [
+          "dock-appointments"
+        ],
+        "summary": "List Dock Appointments",
+        "operationId": "list_dock_appointments_api_v1_dock_appointments_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/DockAppointmentResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Dock Appointments Api V1 Dock Appointments Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "dock-appointments"
+        ],
+        "summary": "Create Dock Appointment",
+        "operationId": "create_dock_appointment_api_v1_dock_appointments_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DockAppointmentCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DockAppointmentResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/operational-exceptions": {
       "get": {
         "tags": [
@@ -10745,6 +10819,125 @@
           "source_ref"
         ],
         "title": "DangerousGoodResponse"
+      },
+      "DockAppointmentCreate": {
+        "properties": {
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "stop_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Stop Id"
+          },
+          "appointment_code": {
+            "type": "string",
+            "title": "Appointment Code"
+          },
+          "appointment_status": {
+            "type": "string",
+            "title": "Appointment Status"
+          },
+          "window_date": {
+            "type": "string",
+            "format": "date",
+            "title": "Window Date"
+          },
+          "window_start_local": {
+            "type": "string",
+            "format": "time",
+            "title": "Window Start Local"
+          },
+          "window_end_local": {
+            "type": "string",
+            "format": "time",
+            "title": "Window End Local"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "shipment_id",
+          "stop_id",
+          "appointment_code",
+          "appointment_status",
+          "window_date",
+          "window_start_local",
+          "window_end_local",
+          "source_ref"
+        ],
+        "title": "DockAppointmentCreate"
+      },
+      "DockAppointmentResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "stop_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Stop Id"
+          },
+          "appointment_code": {
+            "type": "string",
+            "title": "Appointment Code"
+          },
+          "appointment_status": {
+            "type": "string",
+            "title": "Appointment Status"
+          },
+          "window_date": {
+            "type": "string",
+            "format": "date",
+            "title": "Window Date"
+          },
+          "window_start_local": {
+            "type": "string",
+            "format": "time",
+            "title": "Window Start Local"
+          },
+          "window_end_local": {
+            "type": "string",
+            "format": "time",
+            "title": "Window End Local"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "shipment_id",
+          "stop_id",
+          "appointment_code",
+          "appointment_status",
+          "window_date",
+          "window_start_local",
+          "window_end_local",
+          "source_ref"
+        ],
+        "title": "DockAppointmentResponse"
       },
       "DocumentChecklistRuleCreate": {
         "properties": {

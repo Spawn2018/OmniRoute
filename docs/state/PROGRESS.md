@@ -394,3 +394,4 @@
 | 2026-09-08 | Plan 156.0 | D2 | shipment_package + skan QR Omni + stop trasy, nie WMS. Delta zaakceptowana (`/noc`). Nie D3. Nastepny: kod 156.0. |
 | 2026-09-08 | 156.0 | D2 | shipment_package + skan QR Omni + stop trasy. Nie WMS. Nastepny: D3 Plan. |
 | 2026-09-08 | Plan 157.0 | D3 | dock_appointment okno na stop magazynu, nie WMS. Delta zaakceptowana (`/noc`). Nie D4. Nastepny: kod 157.0. |
+| 2026-09-08 | 157.0 | D3 | dock_appointment okno TIME na stop magazynu. Nie WMS. Nastepny: D4 Plan. |

@@ -18,6 +18,7 @@ from app.api import (
     customer_rfqs,
     customer_sops,
     dangerous_goods,
+    dock_appointments,
     document_checklist_rules,
     document_dispatch_rules,
     edi_messages,
@@ -102,6 +103,7 @@ api_router.include_router(containers.router)
 api_router.include_router(tracking_events.router)
 api_router.include_router(shipment_documents.router)
 api_router.include_router(shipment_packages.router)
+api_router.include_router(dock_appointments.router)
 api_router.include_router(operational_exceptions.router)
 api_router.include_router(cargo_claims.router)
 api_router.include_router(fraud_flags.router)

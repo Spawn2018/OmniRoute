@@ -1359,6 +1359,90 @@ export type DangerousGoodResponse = {
 };
 
 /**
+ * DockAppointmentCreate
+ */
+export type DockAppointmentCreate = {
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Stop Id
+     */
+    stop_id: string;
+    /**
+     * Appointment Code
+     */
+    appointment_code: string;
+    /**
+     * Appointment Status
+     */
+    appointment_status: string;
+    /**
+     * Window Date
+     */
+    window_date: string;
+    /**
+     * Window Start Local
+     */
+    window_start_local: string;
+    /**
+     * Window End Local
+     */
+    window_end_local: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * DockAppointmentResponse
+ */
+export type DockAppointmentResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Stop Id
+     */
+    stop_id: string;
+    /**
+     * Appointment Code
+     */
+    appointment_code: string;
+    /**
+     * Appointment Status
+     */
+    appointment_status: string;
+    /**
+     * Window Date
+     */
+    window_date: string;
+    /**
+     * Window Start Local
+     */
+    window_start_local: string;
+    /**
+     * Window End Local
+     */
+    window_end_local: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * DocumentChecklistRuleCreate
  */
 export type DocumentChecklistRuleCreate = {
@@ -7398,6 +7482,49 @@ export type CreateShipmentPackageApiV1ShipmentPackagesPostResponses = {
 };
 
 export type CreateShipmentPackageApiV1ShipmentPackagesPostResponse = CreateShipmentPackageApiV1ShipmentPackagesPostResponses[keyof CreateShipmentPackageApiV1ShipmentPackagesPostResponses];
+
+export type ListDockAppointmentsApiV1DockAppointmentsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/dock-appointments';
+};
+
+export type ListDockAppointmentsApiV1DockAppointmentsGetResponses = {
+    /**
+     * Response List Dock Appointments Api V1 Dock Appointments Get
+     *
+     * Successful Response
+     */
+    200: Array<DockAppointmentResponse>;
+};
+
+export type ListDockAppointmentsApiV1DockAppointmentsGetResponse = ListDockAppointmentsApiV1DockAppointmentsGetResponses[keyof ListDockAppointmentsApiV1DockAppointmentsGetResponses];
+
+export type CreateDockAppointmentApiV1DockAppointmentsPostData = {
+    body: DockAppointmentCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/dock-appointments';
+};
+
+export type CreateDockAppointmentApiV1DockAppointmentsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateDockAppointmentApiV1DockAppointmentsPostError = CreateDockAppointmentApiV1DockAppointmentsPostErrors[keyof CreateDockAppointmentApiV1DockAppointmentsPostErrors];
+
+export type CreateDockAppointmentApiV1DockAppointmentsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: DockAppointmentResponse;
+};
+
+export type CreateDockAppointmentApiV1DockAppointmentsPostResponse = CreateDockAppointmentApiV1DockAppointmentsPostResponses[keyof CreateDockAppointmentApiV1DockAppointmentsPostResponses];
 
 export type ListOperationalExceptionsApiV1OperationalExceptionsGetData = {
     body?: never;

@@ -94,6 +94,11 @@ export const OPS_JOBS = [
     job: "skan shipment_package QR Omni i stop",
   },
   {
+    route: BUSINESS_LISTS.dockAppointment.route,
+    label: "Awizacje doku",
+    job: "okno dock_appointment na stop magazynu",
+  },
+  {
     route: BUSINESS_LISTS.sanctions.route,
     label: "Sankcje",
     job: "aktywni kontrahenci tax_id i kraj",
@@ -431,6 +436,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "154.0": "/air",
   "155.0": "/groupage",
   "156.0": "/shipment-packages",
+  "157.0": "/dock-appointments",
 } as const
 
 export const ROUTES_BREADTH_STANDING =
