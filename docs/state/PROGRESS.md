@@ -358,3 +358,4 @@
 | 2026-09-08 | 136.0 | M-30 | O3: batch + statusy + lane. Kwota tylko przy answered. Nie send. Następny: I0/U2 Plan. |
 | 2026-09-08 | Plan 137.0 | M-21 | I0/U2: Incoterms na `quotation`. Delta zaakceptowana (`/noc`). Nie I1. Następny: kod 137.0. |
 | 2026-09-08 | 137.0 | M-21 | I0/U2: Incoterms na wycenie. DAP/DDP bez miejsca = 409. Nie I1. Następny: O4 Plan. |
+| 2026-09-08 | Plan 138.0 | O4 | N× `mail_draft` + ranking SQL + default N. Delta zaakceptowana (`/noc`). Nie O5. Następny: kod 138.0. |
