@@ -57,11 +57,11 @@ export function TripRunPanel(args: { signedIn: boolean }) {
           value={state}
           onChange={(event) => setState(event.target.value)}
         >
-          {STATES.map((entry) => (
-            <option key={entry.token} value={entry.token}>
-              {entry.label}
-            </option>
-          ))}
+          <option value={STATES[0].token}>{STATES[0].label}</option>
+          <option value={STATES[1].token}>{STATES[1].label}</option>
+          <option value={STATES[2].token}>{STATES[2].label}</option>
+          <option value={STATES[3].token}>{STATES[3].label}</option>
+          <option value={STATES[4].token}>{STATES[4].label}</option>
         </select>
       </label>
       <label className="flex flex-col gap-1 text-xs">

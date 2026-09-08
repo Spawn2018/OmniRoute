@@ -47,32 +47,22 @@ export function tripWrite(args: {
 }
 
 export async function fetchTrips(state: string): Promise<TripRow[]> {
-  const query = new URLSearchParams()
-  if (state !== "") {
-    query.set("status", state)
-  }
-  const suffix = query.size === 0 ? "" : `?${query}`
+  const suffix = state === "" ? "" : `?status=${encodeURIComponent(state)}`
   const reply = await fetch(`${PATH}${suffix}`, { headers: requireAuthHeaders() })
-  if (reply.status >= 400) {
+  if (!reply.ok) {
     throw new ApiError(await readApiDetail(reply, "Błąd listy przejazdów"), httpErrorStatus(reply))
   }
-  const payload: unknown = await reply.json()
-  return payload as TripRow[]
+  return (await reply.json()) as TripRow[]
 }
 
 export async function saveTrip(payload: TripWrite): Promise<TripRow> {
-  const auth = requireAuthHeaders()
   const reply = await fetch(PATH, {
     method: "POST",
-    headers: {
-      Authorization: auth.Authorization,
-      "Content-Type": "application/json",
-    },
+    headers: { ...requireAuthHeaders(), "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   })
-  if (reply.status >= 400) {
+  if (!reply.ok) {
     throw new ApiError(await readApiDetail(reply, "Błąd zapisu przejazdu"), httpErrorStatus(reply))
   }
-  const saved: unknown = await reply.json()
-  return saved as TripRow
+  return (await reply.json()) as TripRow
 }
