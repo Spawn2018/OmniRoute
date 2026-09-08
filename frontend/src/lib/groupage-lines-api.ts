@@ -57,11 +57,11 @@ export async function fetchGroupageLines(): Promise<GroupageLineRow[]> {
 }
 
 export async function saveGroupageLine(payload: GroupageLineWrite): Promise<GroupageLineRow> {
-  const auth = requireAuthHeaders()
   const reply = await fetch(PATH, {
     method: "POST",
     headers: {
-      Authorization: auth.Authorization,
+      ...requireAuthHeaders(),
+      Accept: "application/json",
       "Content-Type": "application/json",
     },
     body: JSON.stringify(payload),

@@ -7,22 +7,22 @@ import { fetchGroupageLines, groupageLineWrite, saveGroupageLine } from "@/lib/g
 
 type LineDraft = {
   code: string
-  originId: string
-  destId: string
+  startPlace: string
+  endPlace: string
   cutoff: string
   days: string
   dows: number[]
-  sourceRef: string
+  originRef: string
 }
 
 const EMPTY: LineDraft = {
   code: "",
-  originId: "",
-  destId: "",
+  startPlace: "",
+  endPlace: "",
   cutoff: "16:00",
   days: "2",
   dows: [1, 2, 3, 4, 5],
-  sourceRef: "fixture://groupage-line/",
+  originRef: "fixture://groupage-line/",
 }
 
 const DOW_MARKS = [
@@ -42,88 +42,78 @@ function toggleDow(current: number[], dow: number): number[] {
   return [...current, dow].sort((left, right) => left - right)
 }
 
+function LineSlot(args: {
+  caption: string
+  hint: string
+  value: string
+  onValue: (next: string) => void
+  clock?: boolean
+}) {
+  return (
+    <p className="text-xs">
+      <span className="block">{args.caption}</span>
+      <input
+        aria-label={args.hint}
+        className="mt-1 h-9 w-full border px-1.5 font-mono text-[11px]"
+        type={args.clock ? "time" : "text"}
+        value={args.value}
+        onChange={(ev) => args.onValue(ev.target.value)}
+        required
+      />
+    </p>
+  )
+}
+
 function LineFields(args: { draft: LineDraft; patch: (next: LineDraft) => void }) {
+  const row = args.draft
   return (
     <fieldset className="grid grid-cols-2 gap-2">
       <legend className="col-span-2 text-xs">Linia drobnicy</legend>
-      <label className="text-xs">
-        Kod linii
-        <input
-          aria-label="Kod linii drobnicy"
-          className="border-input mt-1 h-8 w-full rounded-md border px-2 font-mono text-xs"
-          name="line_code"
-          value={args.draft.code}
-          onChange={(event) => args.patch({ ...args.draft, code: event.currentTarget.value })}
-          required
-        />
-      </label>
-      <label className="text-xs">
-        Cutoff lokalny
-        <input
-          aria-label="Godzina odcięcia linii"
-          className="border-input mt-1 h-8 w-full rounded-md border px-2 font-mono text-xs"
-          name="cutoff_local"
-          type="time"
-          value={args.draft.cutoff}
-          onChange={(event) => args.patch({ ...args.draft, cutoff: event.currentTarget.value })}
-          required
-        />
-      </label>
-      <label className="text-xs">
-        Start (strefa lub adres)
-        <input
-          aria-label="Identyfikator startu linii"
-          className="border-input mt-1 h-8 w-full rounded-md border px-2 font-mono text-xs"
-          name="origin_location_id"
-          value={args.draft.originId}
-          onChange={(event) => args.patch({ ...args.draft, originId: event.currentTarget.value })}
-          required
-        />
-      </label>
-      <label className="text-xs">
-        Koniec (strefa lub adres)
-        <input
-          aria-label="Identyfikator końca linii"
-          className="border-input mt-1 h-8 w-full rounded-md border px-2 font-mono text-xs"
-          name="destination_location_id"
-          value={args.draft.destId}
-          onChange={(event) => args.patch({ ...args.draft, destId: event.currentTarget.value })}
-          required
-        />
-      </label>
-      <label className="text-xs">
-        Dni tranzytu
-        <input
-          aria-label="Liczba dni tranzytu linii"
-          className="border-input mt-1 h-8 w-full rounded-md border px-2 font-mono text-xs"
-          name="transit_days"
-          inputMode="numeric"
-          value={args.draft.days}
-          onChange={(event) => args.patch({ ...args.draft, days: event.currentTarget.value })}
-          required
-        />
-      </label>
-      <label className="text-xs">
-        Źródło zapisu
-        <input
-          aria-label="Źródło zapisu linii drobnicy"
-          className="border-input mt-1 h-8 w-full rounded-md border px-2 font-mono text-xs"
-          name="source_ref"
-          value={args.draft.sourceRef}
-          onChange={(event) =>
-            args.patch({ ...args.draft, sourceRef: event.currentTarget.value })
-          }
-          required
-        />
-      </label>
+      <LineSlot
+        caption="Kod linii"
+        hint="Kod linii drobnicy"
+        value={row.code}
+        onValue={(code) => args.patch({ ...row, code })}
+      />
+      <LineSlot
+        caption="Cutoff lokalny"
+        hint="Godzina odcięcia linii"
+        clock
+        value={row.cutoff}
+        onValue={(cutoff) => args.patch({ ...row, cutoff })}
+      />
+      <LineSlot
+        caption="Start (strefa lub adres)"
+        hint="Identyfikator startu linii"
+        value={row.startPlace}
+        onValue={(startPlace) => args.patch({ ...row, startPlace })}
+      />
+      <LineSlot
+        caption="Koniec (strefa lub adres)"
+        hint="Identyfikator końca linii"
+        value={row.endPlace}
+        onValue={(endPlace) => args.patch({ ...row, endPlace })}
+      />
+      <LineSlot
+        caption="Dni tranzytu"
+        hint="Liczba dni tranzytu linii"
+        value={row.days}
+        onValue={(days) => args.patch({ ...row, days })}
+      />
+      <LineSlot
+        caption="Źródło zapisu"
+        hint="Źródło zapisu linii drobnicy"
+        value={row.originRef}
+        onValue={(originRef) => args.patch({ ...row, originRef })}
+      />
       <div className="col-span-2 flex flex-wrap gap-1">
         {DOW_MARKS.map((item) => (
           <button
             key={item.dow}
             type="button"
-            aria-pressed={args.draft.dows.includes(item.dow)}
+            aria-pressed={row.dows.includes(item.dow)}
             className="border-input h-7 rounded-md border px-2 text-xs"
-            onClick={() => args.patch({ ...args.draft, dows: toggleDow(args.draft.dows, item.dow) })}
+            onClick={() => args.patch({ ...row, dows: toggleDow(row.dows, item.dow) })}
           >
             {item.mark}
           </button>
@@ -137,7 +127,18 @@ function LineSaveForm(args: { organizationId: string | null }) {
   const cache = useQueryClient()
   const [draft, setDraft] = useState(EMPTY)
   const persist = useMutation({
-    mutationFn: () => saveGroupageLine(groupageLineWrite(draft)),
+    mutationFn: () =>
+      saveGroupageLine(
+        groupageLineWrite({
+          code: draft.code,
+          originId: draft.startPlace,
+          destId: draft.endPlace,
+          cutoff: draft.cutoff,
+          days: draft.days,
+          dows: draft.dows,
+          sourceRef: draft.originRef,
+        }),
+      ),
     onSuccess: () => {
       setDraft({ ...EMPTY })
       void cache.invalidateQueries({ queryKey: ["groupage-lines", args.organizationId] })
