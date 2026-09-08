@@ -4038,6 +4038,66 @@ export type QuoteInvoiceSettlementResponse = {
 };
 
 /**
+ * RateCardCreate
+ */
+export type RateCardCreate = {
+    /**
+     * Card Code
+     */
+    card_code: string;
+    /**
+     * Applies When
+     */
+    applies_when: string;
+    /**
+     * Amount
+     */
+    amount: string;
+    /**
+     * Currency
+     */
+    currency: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * RateCardResponse
+ */
+export type RateCardResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Card Code
+     */
+    card_code: string;
+    /**
+     * Applies When
+     */
+    applies_when: string;
+    /**
+     * Amount
+     */
+    amount: string;
+    /**
+     * Currency
+     */
+    currency: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * RateLineCreate
  */
 export type RateLineCreate = {
@@ -8067,6 +8127,49 @@ export type CreateDocumentTemplateApiV1DocumentTemplatesPostResponses = {
 };
 
 export type CreateDocumentTemplateApiV1DocumentTemplatesPostResponse = CreateDocumentTemplateApiV1DocumentTemplatesPostResponses[keyof CreateDocumentTemplateApiV1DocumentTemplatesPostResponses];
+
+export type ListRateCardsApiV1RateCardsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/rate-cards';
+};
+
+export type ListRateCardsApiV1RateCardsGetResponses = {
+    /**
+     * Response List Rate Cards Api V1 Rate Cards Get
+     *
+     * Successful Response
+     */
+    200: Array<RateCardResponse>;
+};
+
+export type ListRateCardsApiV1RateCardsGetResponse = ListRateCardsApiV1RateCardsGetResponses[keyof ListRateCardsApiV1RateCardsGetResponses];
+
+export type CreateRateCardApiV1RateCardsPostData = {
+    body: RateCardCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/rate-cards';
+};
+
+export type CreateRateCardApiV1RateCardsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateRateCardApiV1RateCardsPostError = CreateRateCardApiV1RateCardsPostErrors[keyof CreateRateCardApiV1RateCardsPostErrors];
+
+export type CreateRateCardApiV1RateCardsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: RateCardResponse;
+};
+
+export type CreateRateCardApiV1RateCardsPostResponse = CreateRateCardApiV1RateCardsPostResponses[keyof CreateRateCardApiV1RateCardsPostResponses];
 
 export type ListFraudFlagsApiV1FraudFlagsGetData = {
     body?: never;

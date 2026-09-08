@@ -94,6 +94,11 @@ export const OPS_JOBS = [
     job: "katalog document_template layout bez PDF",
   },
   {
+    route: BUSINESS_LISTS.rateCard.route,
+    label: "Karty stawek",
+    job: "katalog rate_card applies_when bez matching",
+  },
+  {
     route: BUSINESS_LISTS.airFreight.route,
     label: "Lotniczy",
     job: "lotniska z flagą airport",
@@ -467,6 +472,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "160.0": "/ocean-bills",
   "161.0": "/pallet-balances",
   "162.0": "/document-templates",
+  "163.0": "/rate-cards",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

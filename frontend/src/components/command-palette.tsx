@@ -67,6 +67,7 @@ const NAV_ACTIONS = [
   { id: "nav-charges", label: "Idź do opłat", to: "/charges" },
   { id: "nav-channel-quotes", label: "Idź do katalogu ofert z kanału", to: "/channel-quotes" },
   { id: "nav-rate-lines", label: "Idź do stawek kupna", to: "/rate-lines" },
+  { id: "nav-rate-cards", label: "Idź do kart stawek", to: "/rate-cards" },
   { id: "nav-quotations", label: "Idź do wycen", to: "/quotations" },
   { id: "nav-organization-settings", label: "Idź do ustawień tenanta", to: "/organization-settings" },
   { id: "nav-session", label: "Ustawienia sesji (tenant)", to: "/session" },

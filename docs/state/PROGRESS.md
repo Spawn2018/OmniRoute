@@ -406,3 +406,4 @@
 | 2026-09-08 | Plan 162.0 | D9 | document_template layout jako dane, nie PDF. Delta zaakceptowana (`/noc`). Nie D8. Nastepny: kod 162.0. |
 | 2026-09-08 | 162.0 | D9 | document_template layout jako dane. Nie PDF. Nastepny: P1 Plan (D9 leftover D9b–f). |
 | 2026-09-08 | Plan 163.0 | P1 | rate_card warunek jako dane + Decimal, nie silnik WHEN. Delta zaakceptowana (`/noc`). Nie P2. Nastepny: kod 163.0. |
+| 2026-09-08 | 163.0 | P1 | rate_card applies_when jako dane + Decimal. Nie silnik WHEN. Nastepny: P2 Plan. |

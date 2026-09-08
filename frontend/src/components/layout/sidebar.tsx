@@ -51,6 +51,7 @@ const NAV = [
   { to: "/charges", label: "Opłaty" },
   { to: "/channel-quotes", label: "Oferty kanału" },
   { to: "/rate-lines", label: "Stawki" },
+  { to: "/rate-cards", label: "Karty stawek" },
   { to: "/quotations", label: "Wyceny" },
   { to: "/ports", label: "Porty" },
   { to: "/port-surcharges", label: "Opłaty portowe" },

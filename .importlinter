@@ -76,6 +76,7 @@ modules =
     app.services.ocean_bills
     app.services.pallet_balances
     app.services.document_templates
+    app.services.rate_cards
 
 [importlinter:contract:integracje]
 name = Integracje nie znają serwisów
@@ -267,3 +268,6 @@ forbidden_modules =
     app.services.document_templates
     app.repositories.document_templates
     app.models.document_template
+    app.services.rate_cards
+    app.repositories.rate_cards
+    app.models.rate_card

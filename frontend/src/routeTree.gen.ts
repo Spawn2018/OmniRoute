@@ -60,6 +60,7 @@ import { Route as QualityRouteImport } from './routes/quality'
 import { Route as QuotationsRouteImport } from './routes/quotations'
 import { Route as QuoteInvoicesRouteImport } from './routes/quote-invoices'
 import { Route as RailRouteImport } from './routes/rail'
+import { Route as RateCardsRouteImport } from './routes/rate-cards'
 import { Route as RateLinesRouteImport } from './routes/rate-lines'
 import { Route as RoadRouteImport } from './routes/road'
 import { Route as RolloutRouteImport } from './routes/rollout'
@@ -328,6 +329,11 @@ const RailRoute = RailRouteImport.update({
   path: '/rail',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RateCardsRoute = RateCardsRouteImport.update({
+  id: '/rate-cards',
+  path: '/rate-cards',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RateLinesRoute = RateLinesRouteImport.update({
   id: '/rate-lines',
   path: '/rate-lines',
@@ -441,6 +447,7 @@ export interface FileRoutesByFullPath {
   '/quotations': typeof QuotationsRoute
   '/quote-invoices': typeof QuoteInvoicesRoute
   '/rail': typeof RailRoute
+  '/rate-cards': typeof RateCardsRoute
   '/rate-lines': typeof RateLinesRoute
   '/road': typeof RoadRoute
   '/rollout': typeof RolloutRoute
@@ -506,6 +513,7 @@ export interface FileRoutesByTo {
   '/quotations': typeof QuotationsRoute
   '/quote-invoices': typeof QuoteInvoicesRoute
   '/rail': typeof RailRoute
+  '/rate-cards': typeof RateCardsRoute
   '/rate-lines': typeof RateLinesRoute
   '/road': typeof RoadRoute
   '/rollout': typeof RolloutRoute
@@ -572,6 +580,7 @@ export interface FileRoutesById {
   '/quotations': typeof QuotationsRoute
   '/quote-invoices': typeof QuoteInvoicesRoute
   '/rail': typeof RailRoute
+  '/rate-cards': typeof RateCardsRoute
   '/rate-lines': typeof RateLinesRoute
   '/road': typeof RoadRoute
   '/rollout': typeof RolloutRoute
@@ -639,6 +648,7 @@ export interface FileRouteTypes {
     | '/quotations'
     | '/quote-invoices'
     | '/rail'
+    | '/rate-cards'
     | '/rate-lines'
     | '/road'
     | '/rollout'
@@ -704,6 +714,7 @@ export interface FileRouteTypes {
     | '/quotations'
     | '/quote-invoices'
     | '/rail'
+    | '/rate-cards'
     | '/rate-lines'
     | '/road'
     | '/rollout'
@@ -769,6 +780,7 @@ export interface FileRouteTypes {
     | '/quotations'
     | '/quote-invoices'
     | '/rail'
+    | '/rate-cards'
     | '/rate-lines'
     | '/road'
     | '/rollout'
@@ -835,6 +847,7 @@ export interface RootRouteChildren {
   QuotationsRoute: typeof QuotationsRoute
   QuoteInvoicesRoute: typeof QuoteInvoicesRoute
   RailRoute: typeof RailRoute
+  RateCardsRoute: typeof RateCardsRoute
   RateLinesRoute: typeof RateLinesRoute
   RoadRoute: typeof RoadRoute
   RolloutRoute: typeof RolloutRoute
@@ -1208,6 +1221,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RailRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/rate-cards': {
+      id: '/rate-cards'
+      path: '/rate-cards'
+      fullPath: '/rate-cards'
+      preLoaderRoute: typeof RateCardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/rate-lines': {
       id: '/rate-lines'
       path: '/rate-lines'
@@ -1347,6 +1367,7 @@ const rootRouteChildren: RootRouteChildren = {
   QuotationsRoute: QuotationsRoute,
   QuoteInvoicesRoute: QuoteInvoicesRoute,
   RailRoute: RailRoute,
+  RateCardsRoute: RateCardsRoute,
   RateLinesRoute: RateLinesRoute,
   RoadRoute: RoadRoute,
   RolloutRoute: RolloutRoute,

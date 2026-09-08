@@ -524,3 +524,7 @@ class InvalidPalletBalance(DomainError):
 
 class InvalidDocumentTemplate(DomainError):
     """Szablon wydruku jako dane — nie PDF, nie etykieta sieci."""
+
+
+class InvalidRateCard(DomainError):
+    """Karta stawek: applies_when jako dane + Decimal — nie silnik WHEN."""

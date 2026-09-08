@@ -5114,6 +5114,80 @@
         ]
       }
     },
+    "/api/v1/rate-cards": {
+      "get": {
+        "tags": [
+          "rate-cards"
+        ],
+        "summary": "List Rate Cards",
+        "operationId": "list_rate_cards_api_v1_rate_cards_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/RateCardResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Rate Cards Api V1 Rate Cards Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "rate-cards"
+        ],
+        "summary": "Create Rate Card",
+        "operationId": "create_rate_card_api_v1_rate_cards_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RateCardCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RateCardResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/fraud-flags": {
       "get": {
         "tags": [
@@ -15602,6 +15676,85 @@
           "source_ref"
         ],
         "title": "QuoteInvoiceSettlementResponse"
+      },
+      "RateCardCreate": {
+        "properties": {
+          "card_code": {
+            "type": "string",
+            "title": "Card Code"
+          },
+          "applies_when": {
+            "type": "string",
+            "title": "Applies When"
+          },
+          "amount": {
+            "type": "string",
+            "title": "Amount"
+          },
+          "currency": {
+            "type": "string",
+            "title": "Currency"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "card_code",
+          "applies_when",
+          "amount",
+          "currency",
+          "source_ref"
+        ],
+        "title": "RateCardCreate"
+      },
+      "RateCardResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "card_code": {
+            "type": "string",
+            "title": "Card Code"
+          },
+          "applies_when": {
+            "type": "string",
+            "title": "Applies When"
+          },
+          "amount": {
+            "type": "string",
+            "title": "Amount"
+          },
+          "currency": {
+            "type": "string",
+            "title": "Currency"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "card_code",
+          "applies_when",
+          "amount",
+          "currency",
+          "source_ref"
+        ],
+        "title": "RateCardResponse"
       },
       "RateLineCreate": {
         "properties": {
