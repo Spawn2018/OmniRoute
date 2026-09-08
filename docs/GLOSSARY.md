@@ -35,7 +35,8 @@
 | transport drogowy | road_transport | 41.0 tablica `location` lądowa; 108.0 odcinek `shipment_leg` road; nie TMS; nie GPS |
 | punkt operacyjny | stop | T1; ZA/WY na zleceniu; miejsce ze słownika; nie mapa |
 | zasób floty | resource | T2; pojazd / kierowca / naczepa; nie trip |
-| przejazd | trip | T2; status + opcjonalny zasób; nie km |
+| przejazd | trip | T2; status + opcjonalny zasób; 167.0 snapshot `expected_buy`; nie km; nie wariancja |
+| snapshot kosztu kupna | expected_buy | P5 freeze Decimal na `trip` przy `in_transit`/`completed`; nie marża; nie SQL na `charge` |
 | kontener | container | T3; ISO 6346 + iso_size_type; nie VGM |
 | odcinek | shipment_leg | 108.0 `road` · 109.0 `rail` · 110.0 `china_rail` · 111.0 `ocean_lcl` · 154.0 `air` na zleceniu; nie mapa; nie ETA |
 | kolej intermodalna | intermodal_rail | 42.0 tablica `port` z flagą `rail`; 109.0 odcinek `shipment_leg` rail; nie wagon; nie CIM |
