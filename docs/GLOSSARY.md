@@ -178,6 +178,7 @@
 | korytarz przetargu | tender_lane | G2.2 para UN/LOCODE na `tender_lot`; nie runda; nie kwota |
 | runda przetargu | tender_round | G2.3 numer rundy na `tender`; nie data room; nie kwota |
 | pokój danych | tender_data_room | G2.4 NDA na `tender`; nie extract; nie bajty; nie kwota |
+| komórka matrycy | tender_matrix_cell | G2.5 kwota Decimal z P na `tender`; nie LLM; nie druga marża |
 | oferta przetargowa kupna | tender_quote | P6 ważność + limit orderów; nie auto-award; nie obiekt `tender` |
 | kółko | lane_circle | G2.20–G2.21; nakładanie dat |
 | KREPTD | kreptd | G2.23; GITD/ITD; oficjalne API |
