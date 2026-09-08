@@ -1,0 +1,66 @@
+import { ApiError, httpErrorStatus, readApiDetail } from "@/lib/api"
+import { requireAuthHeaders } from "@/lib/tenant"
+
+export type ResourceRow = {
+  id: string
+  organization_id: string
+  resource_kind: string
+  display_name: string
+  registration_no: string | null
+  source_ref: string
+  superseded_by: string | null
+}
+
+export type ResourceWrite = {
+  resource_kind: string
+  display_name: string
+  registration_no: string | null
+  source_ref: string
+}
+
+const PATH = "/api/v1/resources"
+
+export function resourceWrite(args: {
+  kind: string
+  label: string
+  plate: string
+}): ResourceWrite {
+  const plate = args.plate.trim()
+  return {
+    resource_kind: args.kind.trim(),
+    display_name: args.label.trim(),
+    registration_no: plate === "" ? null : plate,
+    source_ref: "tenant:manual",
+  }
+}
+
+export async function fetchResources(kind: string): Promise<ResourceRow[]> {
+  const query = new URLSearchParams()
+  if (kind !== "") {
+    query.set("resource_kind", kind)
+  }
+  const suffix = query.size === 0 ? "" : `?${query}`
+  const reply = await fetch(`${PATH}${suffix}`, { headers: requireAuthHeaders() })
+  if (reply.status >= 400) {
+    throw new ApiError(await readApiDetail(reply, "Błąd listy floty"), httpErrorStatus(reply))
+  }
+  const payload: unknown = await reply.json()
+  return payload as ResourceRow[]
+}
+
+export async function saveResource(payload: ResourceWrite): Promise<ResourceRow> {
+  const auth = requireAuthHeaders()
+  const reply = await fetch(PATH, {
+    method: "POST",
+    headers: {
+      Authorization: auth.Authorization,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  })
+  if (reply.status >= 400) {
+    throw new ApiError(await readApiDetail(reply, "Błąd zapisu zasobu"), httpErrorStatus(reply))
+  }
+  const saved: unknown = await reply.json()
+  return saved as ResourceRow
+}

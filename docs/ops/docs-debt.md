@@ -12,7 +12,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 
 - **148.0 leftover:** dwa `mail_draft` przy DAP `contact_exchange`; live HTTP S21. Tu tylko status na wierszu. Nie send.
 - **147.0 leftover:** tabela `document_dispatch` (batch mail + send S18). Tu tylko katalog adresata. Nie auto-send.
-- **150.0 leftover:** `stop_group` / trip / resource (T2); `eta_physical`/`eta_legal` (V2); waga/plomba/awizacja (EXP1). Tu tylko punkt + location + strefa IANA. Nie mapa.
+- **150.0 leftover:** `stop_group`; `eta_physical`/`eta_legal` (V2); waga/plomba/awizacja (EXP1). Tu tylko punkt + location + strefa IANA. Nie mapa. `resource` = 151.0.
+- **151.0 leftover:** `trip` / multi-manning / floating trailer (T2b); pojemności / Decimal km; `party_id`; `/fleet` / HW. Tu tylko katalog pojazd/kierowca/naczepa. Nie trip.
 - **149.0 leftover:** V5 hub GPS / `observation_ends_at` / 3 dni robocze trip. Tu tylko katalog + SQL `is_working_day`. Nie NBP.
 - **143.0 leftover:** auto-INSERT notice z inquiry (zakaz M-34); cron/Graph send. Data ciszy to pole, nie wyliczenie. Kalendarz U4 jest (149.0); N5 nie woła `is_working_day`.
 - **OS-4 (fabryka, poza osią Q/S):** [delta](../deltas/open/OS-4-fabryka-styl-rzemiosla.md). `just craft-style` + sufit `long_functions` / `long_function_overflow`. Nie merytoryka spedycji. Nie S4.

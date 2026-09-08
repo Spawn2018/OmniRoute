@@ -383,3 +383,4 @@
 | 2026-09-08 | 149.0 | U4 | organization_calendar + is_working_day SQL. Nie V5. Nastepny: T1 Plan. |
 | 2026-09-08 | Plan 150.0 | T1 | stop na zleceniu (location+strefa, nie mapa). Delta zaakceptowana (`/noc`). Nie T2. Nastepny: kod 150.0. |
 | 2026-09-08 | 150.0 | T1 | stop na zleceniu (location+strefa). Nie mapa. Nastepny: T2 Plan. |
+| 2026-09-08 | 151.0 | T2 | resource katalog floty (pojazd/kierowca/naczepa). Nie trip. Nastepny: T2 trip Plan. |

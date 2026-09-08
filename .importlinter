@@ -24,6 +24,7 @@ modules =
     app.services.quotations
     app.services.organization_calendars
     app.services.stops
+    app.services.resources
     app.services.organization_settings
     app.services.geography
     app.services.parties
@@ -105,6 +106,9 @@ forbidden_modules =
     app.services.stops
     app.repositories.stops
     app.models.stop
+    app.services.resources
+    app.repositories.resources
+    app.models.resource
     app.models.organization_setting
     app.services.parties
     app.repositories.parties

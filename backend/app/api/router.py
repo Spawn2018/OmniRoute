@@ -47,6 +47,7 @@ from app.api import (
     quotations,
     quote_invoice_settlements,
     rate_lines,
+    resources,
     sales_invoices,
     session,
     shipment_documents,
@@ -91,6 +92,7 @@ api_router.include_router(quotations.router)
 api_router.include_router(shipments.router)
 api_router.include_router(shipment_stakeholders.router)
 api_router.include_router(stops.router)
+api_router.include_router(resources.router)
 api_router.include_router(tracking_events.router)
 api_router.include_router(shipment_documents.router)
 api_router.include_router(operational_exceptions.router)

@@ -3608,6 +3608,62 @@ export type RateLineSupersede = {
 };
 
 /**
+ * ResourceCreate
+ */
+export type ResourceCreate = {
+    /**
+     * Resource Kind
+     */
+    resource_kind: string;
+    /**
+     * Display Name
+     */
+    display_name: string;
+    /**
+     * Registration No
+     */
+    registration_no?: string | null;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ResourceResponse
+ */
+export type ResourceResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Resource Kind
+     */
+    resource_kind: string;
+    /**
+     * Display Name
+     */
+    display_name: string;
+    /**
+     * Registration No
+     */
+    registration_no: string | null;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+    /**
+     * Superseded By
+     */
+    superseded_by: string | null;
+};
+
+/**
  * SalesInvoiceCreate
  */
 export type SalesInvoiceCreate = {
@@ -6766,6 +6822,63 @@ export type CreateStopApiV1StopsPostResponses = {
 };
 
 export type CreateStopApiV1StopsPostResponse = CreateStopApiV1StopsPostResponses[keyof CreateStopApiV1StopsPostResponses];
+
+export type ListResourcesApiV1ResourcesGetData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Resource Kind
+         */
+        resource_kind?: string | null;
+    };
+    url: '/api/v1/resources';
+};
+
+export type ListResourcesApiV1ResourcesGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ListResourcesApiV1ResourcesGetError = ListResourcesApiV1ResourcesGetErrors[keyof ListResourcesApiV1ResourcesGetErrors];
+
+export type ListResourcesApiV1ResourcesGetResponses = {
+    /**
+     * Response List Resources Api V1 Resources Get
+     *
+     * Successful Response
+     */
+    200: Array<ResourceResponse>;
+};
+
+export type ListResourcesApiV1ResourcesGetResponse = ListResourcesApiV1ResourcesGetResponses[keyof ListResourcesApiV1ResourcesGetResponses];
+
+export type CreateResourceApiV1ResourcesPostData = {
+    body: ResourceCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/resources';
+};
+
+export type CreateResourceApiV1ResourcesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateResourceApiV1ResourcesPostError = CreateResourceApiV1ResourcesPostErrors[keyof CreateResourceApiV1ResourcesPostErrors];
+
+export type CreateResourceApiV1ResourcesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ResourceResponse;
+};
+
+export type CreateResourceApiV1ResourcesPostResponse = CreateResourceApiV1ResourcesPostResponses[keyof CreateResourceApiV1ResourcesPostResponses];
 
 export type ListTrackingEventsApiV1TrackingEventsGetData = {
     body?: never;
