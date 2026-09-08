@@ -362,3 +362,4 @@
 | 2026-09-08 | 138.0 | M-57 | O4: N× mail_draft (carrier_inquiry) + ranking SQL + inquiry_default_n. Nie O5. Następny: O5 Plan. |
 | 2026-09-08 | Plan 139.0 | M-13 | O5: party_lane_scorecard snapshot per lane. Delta zaakceptowana (/noc). Nie O6. Następny: kod 139.0. |
 | 2026-09-08 | 139.0 | M-13 | O5: party_lane_scorecard snapshot per lane. Hint z szablonu. Nie O6. Następny: O6 Plan. |
+| 2026-09-08 | Plan 140.0 | M-20 | O6: draft_kind carrier_quote + accept → channel_quote. Delta zaakceptowana (`/noc`). Nie F10. Następny: kod 140.0. |
