@@ -52,6 +52,14 @@ Klatki leftoverów ADR-0003 zostają źródłem układu dla **U-oklch-dark** (el
 | [ui-05-quotation.canvas.tsx](ui-05-quotation.canvas.tsx) | Warianty oferty i wiersz `charge` |
 | [ui-06-vision.canvas.tsx](ui-06-vision.canvas.tsx) | Watchtower / oś / portale — **bez backendu** |
 
+**2026-09-08n:** makieta dogania plastry **144.0–156.0** (po commicie `2aa6ad2` / 129–143):
+carry-forward 3 pól Incoterms + `document_checklist_rule`, macierz `incoterm_responsibility` (seed Omni, nie cytat ICC),
+`shipment_stakeholder` (7 ról, `party_id` wymagane), `document_dispatch_rule` (adresat, nie send),
+`booking_instruction` suggested→accept (nie S21), `organization_calendar` + `is_working_day` w SQL,
+`stop` (location + IANA), flota `resource` + `trip` (nie km), kontener ISO 6346 (nie VGM),
+odcinek `air` + flaga `airport`, `groupage_line` (cutoff/TT/ISODOW), `shipment_package` + skan QR Omni (nie WMS).
+Nadal nie kod produktu. Nie D3 cross-dock, nie S21 live HTTP, nie Auth0.
+
 **2026-09-08:** makieta złota ścieżka dogania nocne joby FE (129–143):
 Incoterms + `named_place` (409 bez miejsca na DAP/DDP), odznaki SQL najtańsza / najszybszy TT,
 zapis `channel_quote` z wyceny (409 duplikat), HITL `draft_kind=carrier_quote` → oferta kanału,

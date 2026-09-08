@@ -93,8 +93,43 @@ window.OR_MOD = (function () {
     ]
   };
 
+  const SPEC_COLS = {
+    89: [
+      { k: "ref", t: "Ref" }, { k: "code", t: "booking_scope" }, { k: "role", t: "target_role" },
+      { k: "status", t: "Status" }, { k: "src", t: "source_ref" }
+    ],
+    99: [
+      { k: "incoterm", t: "Incoterm" }, { k: "role", t: "trade_side" }, { k: "code", t: "document_kind" },
+      { k: "recipient", t: "recipient_role" }, { k: "src", t: "source_ref" }
+    ],
+    106: [
+      { k: "ref", t: "container_no" }, { k: "code", t: "iso_size_type" }, { k: "lane", t: "Zlecenie" },
+      { k: "status", t: "Status" }, { k: "src", t: "source_ref" }
+    ],
+    108: [
+      { k: "ref", t: "Kraj" }, { k: "title", t: "calendar_day" }, { k: "code", t: "day_kind" },
+      { k: "status", t: "is_working_day" }, { k: "src", t: "source_ref" }
+    ],
+    111: [
+      { k: "ref", t: "Ref" }, { k: "code", t: "resource_kind" }, { k: "title", t: "display_name" },
+      { k: "lane", t: "registration_no" }, { k: "status", t: "Status" }, { k: "src", t: "source_ref" }
+    ],
+    116: [
+      { k: "ref", t: "Ref" }, { k: "lane", t: "Odcinek" }, { k: "code", t: "leg_kind" },
+      { k: "party", t: "Zlecenie" }, { k: "status", t: "Status" }, { k: "src", t: "source_ref" }
+    ],
+    205: [
+      { k: "incoterm", t: "Incoterm" }, { k: "role", t: "trade_side" }, { k: "lane", t: "mode" },
+      { k: "code", t: "document_kind" }, { k: "status", t: "blocks_dispatch" }, { k: "src", t: "source_ref" }
+    ]
+  };
+
   function familyOf(mod) {
     return COLS[mod.tpl] ? mod.tpl : "catalog";
+  }
+
+  function colsFor(mod) {
+    return SPEC_COLS[mod.n] || COLS[familyOf(mod)];
   }
 
   function hasMoney(mod) {
@@ -105,7 +140,99 @@ window.OR_MOD = (function () {
     return ["Meblexport", "Nordwood", "Baltic Parts", "Andes Cargo", "Hapag-Lloyd"];
   }
 
+  function seedSpec(mod) {
+    const src = (i) => `${mod.id}-SRC-${1000 + i}`;
+    if (mod.n === 89) {
+      const scopes = ["ocean", "oncarriage", "contact_exchange", "precarriage", "none", "ocean"];
+      const roles = ["ocean_carrier", "dest_agent", "origin_agent", "shipper", "consignee", "omni_customs"];
+      const st = ["suggested", "accepted", "suggested", "confirmed", "rejected", "sent"];
+      return scopes.map((scope, i) => ({
+        id: `${mod.id}-${i + 1}`, ref: `BI/${2026}/${String(12 + i).padStart(4, "0")}`,
+        title: scope, party: parties()[i % 5], lane: "GD/2026/00412", status: st[i],
+        amt: "0,00", cur: "USD", src: src(i), code: scope, role: roles[i],
+        incoterm: "DAP", named_place: "Lima", trade_side: "export"
+      }));
+    }
+    if (mod.n === 99) {
+      const kinds = ["commercial_invoice", "packing_list", "bill_of_lading", "export_declaration", "commercial_invoice", "packing_list"];
+      const rec = ["omni_customs", "omni_customs", "dest_agent", "omni_customs", "client_customs", "shipper"];
+      return kinds.map((kind, i) => ({
+        id: `${mod.id}-${i + 1}`, ref: `DDR/${2026}/${String(20 + i).padStart(4, "0")}`,
+        title: kind, party: rec[i], lane: "DAP × export", status: "aktywna",
+        amt: "0,00", cur: "USD", src: `fixture://document-dispatch-rule/${i + 1}`,
+        code: kind, role: i % 2 ? "import" : "export", recipient: rec[i],
+        incoterm: i < 4 ? "DAP" : "FOB", named_place: i < 4 ? "Lima" : "", trade_side: i % 2 ? "import" : "export"
+      }));
+    }
+    if (mod.n === 106) {
+      const nos = ["MSKU7823410", "MSKU7823528", "TCLU5566771", "HLBU1234567", "CMAU9988770", "MSCU1100228"];
+      return nos.map((no, i) => ({
+        id: `${mod.id}-${i + 1}`, ref: no, title: no, party: "Hapag-Lloyd AG",
+        lane: i < 2 ? "GD/2026/00412" : "—", status: i < 2 ? "na zleceniu" : "wolny",
+        amt: "0,00", cur: "USD", src: `fixture://container/${i + 1}`,
+        code: i % 2 ? "45G1" : "22G1", incoterm: "DAP"
+      }));
+    }
+    if (mod.n === 108) {
+      const days = [
+        ["PL", "2026-09-08", "working", "tak"],
+        ["PL", "2026-11-11", "holiday", "nie"],
+        ["PE", "2026-09-08", "working", "tak"],
+        ["PE", "2026-07-28", "holiday", "nie"],
+        ["NL", "2026-09-08", "working", "tak"],
+        ["DE", "2026-10-03", "holiday", "nie"]
+      ];
+      return days.map((d, i) => ({
+        id: `${mod.id}-${i + 1}`, ref: d[0], title: d[1], party: "tenant",
+        lane: d[0], status: d[3], amt: "0,00", cur: "USD",
+        src: `fixture://organization-calendar/${i + 1}`, code: d[2]
+      }));
+    }
+    if (mod.n === 111) {
+      const rows = [
+        ["vehicle", "Volvo FH 500", "GD 4821L", "aktywny"],
+        ["driver", "Piotr Zieliński", "—", "aktywny"],
+        ["trailer", "Krone 40HC", "GD 9012N", "aktywny"],
+        ["vehicle", "MAN TGX", "PO 2201K", "aktywny"],
+        ["driver", "Anna Lis", "—", "aktywny"],
+        ["trailer", "Schmitz Cargobull", "GD 3310M", "superseded"]
+      ];
+      return rows.map((r, i) => ({
+        id: `${mod.id}-${i + 1}`, ref: `RES/${2026}/${String(40 + i).padStart(4, "0")}`,
+        title: r[1], party: r[1], lane: r[2], status: r[3], amt: "0,00", cur: "USD",
+        src: `fixture://resource/${i + 1}`, code: r[0]
+      }));
+    }
+    if (mod.n === 116) {
+      return [
+        ["PLWAW→PELIM", "air", "GD/2026/00418", "noted"],
+        ["PLWAW→DEHAM", "air", "GD/2026/00419", "noted"],
+        ["FRAA→PLWAW", "air", "GD/2026/00420", "superseded"],
+        ["PLWAW→USNYC", "air", "GD/2026/00421", "noted"],
+        ["PELIM→PLWAW", "air", "GD/2026/00422", "noted"],
+        ["PLGDY→PECLL", "air", "—", "odrzucony"]
+      ].map((r, i) => ({
+        id: `${mod.id}-${i + 1}`, ref: `LEG-AIR/${2026}/${String(80 + i).padStart(4, "0")}`,
+        title: r[0], party: r[2], lane: r[0], status: r[3], amt: "0,00", cur: "USD",
+        src: `fixture://shipment-leg/${i + 1}`, code: r[1]
+      }));
+    }
+    if (mod.n === 205) {
+      const kinds = ["commercial_invoice", "packing_list", "bill_of_lading", "export_declaration", "commercial_invoice", "packing_list"];
+      const modes = ["ocean", "ocean", "ocean", "ocean", "air", "road"];
+      return kinds.map((kind, i) => ({
+        id: `${mod.id}-${i + 1}`, ref: `CHK/${2026}/${String(30 + i).padStart(4, "0")}`,
+        title: kind, party: "export", lane: modes[i], status: i === 2 ? "nie" : "tak",
+        amt: "0,00", cur: "USD", src: `fixture://document-checklist-rule/${i + 1}`,
+        code: kind, role: "export", incoterm: "DAP", named_place: "Lima", trade_side: "export"
+      }));
+    }
+    return null;
+  }
+
   function seed(mod) {
+    const spec = seedSpec(mod);
+    if (spec) return spec;
     const fam = familyOf(mod);
     const p = parties();
     const lanes = ["PLGDY→PECLL", "CNSHA→PLGDY", "DEHAM→USNYC", "PLGDY→SGSIN", "PLPOZ→PELIM"];
@@ -182,21 +309,30 @@ window.OR_MOD = (function () {
     const fam = familyOf(mod);
     const notes = {
       quote: "Warianty i luki. Send zablokowany bez HS. Marża na charge.",
-      ship: "Legi i dokumenty. Mapa AIS tylko na zleceniu oceanicznym.",
+      ship: "Strony, booking, stopy, paczki QR Omni, kontener ISO. Mapa AIS tylko na zleceniu oceanicznym.",
       hitl: "Accept/reject. ExtractionService nie zapisuje rate_line.",
       rates: "Niemutowalna. Zastąp = nowy wiersz + superseded_by.",
       charges: "Jedyny wiersz buy+sell. UI nie liczy marży.",
       party: "Lookup = szkic. NIP/VAT UE/EORI/DUNS unikalne · 409 z linkiem. Klient bez NIP = 400.",
       channels: "channel_quote: TT + najtańsza / najszybszy TT z SQL. Nie marża.",
       finance: "Kwota para z walutą. ksef_ref to pole, nie live HTTP.",
-      customs: "Checklista × odbiorca × Incoterms. Brak komplet = brak wysyłki.",
+      customs: "document_dispatch_rule: adresat, nie send. Checklista U5 osobno (blocks_dispatch).",
       platform: "Zdarzenie / klucz. Brak kolumny kwoty.",
       compliance: "Werdykt, nie scoring osoby i nie kwota.",
       portal: "Chip horyzont / named park. Pełny flow makiety.",
-      settings: "Konfiguracja jako dane. Sekrety nie tutaj."
+      settings: "Kalendarz dni roboczych. is_working_day liczy SQL, nie JS."
+    };
+    const extra = {
+      89: "booking_instruction: suggested → accept człowieka. Nie S21 / nie HTTP armatora.",
+      99: "Adresat z reguły. Send leftover po S11. Nie auto-send.",
+      106: "container_no ISO 6346 + iso_size_type. Nie VGM. Cyfrę kontrolną liczy serwer.",
+      108: "organization_calendar. Święto = day_kind holiday. Nie V5 GPS.",
+      111: "resource: vehicle / driver / trailer. trip ma opcjonalny slot — nie km.",
+      116: "shipment_leg air. Lotnisko = port z airport w function_flags. Nie HAWB.",
+      205: "document_checklist_rule. blocks_dispatch to dana, nie C8."
     };
     return `<div class="rsec"><h3>${mod.id}</h3>
-      <p class="note">${notes[fam] || "Pełny job makiety. Seed w sesji. RLS z paska."}</p>
+      <p class="note">${extra[mod.n] || notes[fam] || "Pełny job makiety. Seed w sesji. RLS z paska."}</p>
       <p class="note">Warstwa: ${LAYER[mod.layer] || mod.layer}. Szablon: ${fam}.</p>
       <button class="fix" type="button" data-act="mod-new">Nowy rekord</button>
     </div>`;
@@ -204,12 +340,18 @@ window.OR_MOD = (function () {
 
   function paint(mod) {
     const fam = familyOf(mod);
-    const cols = COLS[fam].filter((c) => !c.money || hasMoney(mod));
+    const cols = colsFor(mod).filter((c) => !c.money || hasMoney(mod));
     const list = rowsOf(mod);
     const q = filters[mod.id] || "";
     const warn = mod.n === 14
       ? `<p class="note">Zakaz auto-scoringu natural_person / JDG (AI Act). Ocena tylko z karty i wywiadowni po HITL.</p>`
-      : "";
+      : mod.n === 51
+        ? `<p class="note">Odcinek ocean_lcl na zleceniu. Katalog linii LTL (groupage_line: cutoff_local, transit_days, ISODOW) jest na Lokalizacjach. Nie WMS.</p>`
+        : mod.n === 56
+          ? `<p class="note">Wniosek RODO access/erasure. Brak kolumny kwoty. Nie DPIA. Nie DELETE app_user.</p>`
+          : mod.n === 111
+            ? `<p class="note">Katalog floty. Przejazd (trip) ze statusem i opcjonalnym resource — nie km, nie mapa. Slot T2 na Zleceniu.</p>`
+            : "";
     const park = (mod.layer === "c" || PARK.has(fam))
       ? `<span class="chip alert">horyzont / named park</span>`
       : "";
@@ -229,7 +371,7 @@ window.OR_MOD = (function () {
       <span class="chip">${mod.id} · RLS</span>
       ${park}
     </div>
-    ${window.screenBanner(`${mod.id} · org z paska · makieta`, mod.name, "Lista, detal, zapis do seedu sesji. Puste pole = komunikat. LLM nie liczy.")}
+    ${window.screenBanner(`${mod.id} · org z paska · makieta`, mod.name, extraBanner(mod))}
     ${window.screenFacts([
       { t: "Moduł", v: mod.id },
       { t: "Warstwa", v: LAYER[mod.layer] || mod.layer },
@@ -241,10 +383,112 @@ window.OR_MOD = (function () {
       ${q ? `<p class="note">Filtr: <b>${q}</b> · <button class="linkish" type="button" data-act="mod-filter-clear">wyczyść</button></p>` : ""}
       <div class="card xscroll" style="padding:0"><table class="grid"><thead><tr>${head}</tr></thead><tbody>${body || `<tr><td colspan="${cols.length + 1}">Brak wierszy po filtrze.</td></tr>`}</tbody></table></div>
       <p class="note" style="margin-top:var(--s3)">Załączniki sesji: ${attach ? `<ul class="kfiles">${attach}</ul>` : "brak — wskazanie, nie bajty."}</p>
+      ${extraPanel(mod)}
     </div>`;
   }
 
+  function extraBanner(mod) {
+    if (mod.n === 89) return "Instrukcja bookingu na zleceniu. Status dane, nie S21.";
+    if (mod.n === 99) return "Reguła adresata. Nie send.";
+    if (mod.n === 106) return "Kontener ISO 6346. Nie VGM.";
+    if (mod.n === 108) return "Dni robocze per kraj. is_working_day w SQL.";
+    if (mod.n === 111) return "Pojazd / kierowca / naczepa. Nie trip w tym wierszu.";
+    if (mod.n === 116) return "Odcinek air. Port bez flagi airport = odrzut.";
+    if (mod.n === 205) return "Checklista dokumentów. blocks_dispatch = dana.";
+    return "Lista, detal, zapis do seedu sesji. Puste pole = komunikat. LLM nie liczy.";
+  }
+
+  function extraPanel(mod) {
+    if (mod.n === 111) {
+      return `<div class="card" style="margin-top:var(--s4)">
+      <h3 class="h-id">trip · T2</h3>
+      <p class="note">Status + opcjonalny resource. Nie km. Nie mapa.</p>
+      <table class="grid"><thead><tr><th>trip_no</th><th>status</th><th>vehicle</th><th>driver</th><th>trailer</th><th>source_ref</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">TR/POZ/2026-0193</td><td><span class="chip ok">completed</span></td><td>Volvo FH 500</td><td>Piotr Zieliński</td><td>Krone 40HC</td><td>fixture://trip/1</td></tr>
+        <tr><td class="mono">TR/LIM/2026-0144</td><td><span class="chip">planned</span></td><td>—</td><td>—</td><td>—</td><td>fixture://trip/2</td></tr>
+      </tbody></table>
+    </div>`;
+    }
+    if (mod.n === 108) {
+      return `<div class="card" style="margin-top:var(--s4)">
+      <h3 class="h-id">is_working_day</h3>
+      <p class="note">Wynik z SQL na seedzie sesji. UI nie dodaje trzech dni.</p>
+      <button class="btn" type="button" data-act="cal-working">Sprawdź PL 2026-11-11</button>
+    </div>`;
+    }
+    return "";
+  }
+
+  function specFields(mod, row) {
+    const src = { id: "source_ref", label: "source_ref", required: true, value: row?.src || "" };
+    if (mod.n === 89) {
+      return [
+        { id: "ref", label: "Ref", required: true, value: row?.ref || "BI/2026/0013" },
+        { id: "code", label: "booking_scope", type: "select", required: true, options: ["precarriage", "ocean", "oncarriage", "contact_exchange", "none"], value: row?.code || "ocean" },
+        { id: "role", label: "target_role", type: "select", required: true, options: ["shipper", "consignee", "origin_agent", "dest_agent", "ocean_carrier", "omni_customs", "client_customs"], value: row?.role || "ocean_carrier" },
+        { id: "status", label: "status", type: "select", required: true, options: ["suggested", "accepted", "sent", "confirmed", "rejected"], value: row?.status || "suggested" },
+        src
+      ];
+    }
+    if (mod.n === 99) {
+      return [
+        { id: "incoterm", label: "incoterm", type: "select", required: true, options: ["EXW", "FCA", "CPT", "CIP", "DAP", "DPU", "DDP", "FAS", "FOB", "CFR", "CIF"], value: row?.incoterm || "DAP" },
+        { id: "trade_side", label: "trade_side", type: "select", required: true, options: ["import", "export"], value: row?.trade_side || "export" },
+        { id: "code", label: "document_kind", type: "select", required: true, options: ["commercial_invoice", "packing_list", "bill_of_lading", "export_declaration"], value: row?.code || "commercial_invoice" },
+        { id: "recipient", label: "recipient_role", type: "select", required: true, options: ["shipper", "consignee", "origin_agent", "dest_agent", "ocean_carrier", "omni_customs", "client_customs"], value: row?.recipient || "omni_customs" },
+        src
+      ];
+    }
+    if (mod.n === 106) {
+      return [
+        { id: "ref", label: "container_no", required: true, value: row?.ref || "MSKU7823410", placeholder: "11 znaków ISO 6346" },
+        { id: "code", label: "iso_size_type", required: true, value: row?.code || "45G1" },
+        { id: "lane", label: "shipment (opcjonalnie)", value: row?.lane === "—" ? "" : (row?.lane || "") },
+        src
+      ];
+    }
+    if (mod.n === 108) {
+      return [
+        { id: "ref", label: "country_code", required: true, value: row?.ref || "PL" },
+        { id: "title", label: "calendar_day", required: true, value: row?.title || "2026-09-08", placeholder: "RRRR-MM-DD" },
+        { id: "code", label: "day_kind", type: "select", required: true, options: ["working", "holiday"], value: row?.code || "working" },
+        src
+      ];
+    }
+    if (mod.n === 111) {
+      return [
+        { id: "ref", label: "Ref", required: true, value: row?.ref || "RES/2026/0046" },
+        { id: "code", label: "resource_kind", type: "select", required: true, options: ["vehicle", "driver", "trailer"], value: row?.code || "vehicle" },
+        { id: "title", label: "display_name", required: true, value: row?.title || "" },
+        { id: "lane", label: "registration_no", value: row?.lane === "—" ? "" : (row?.lane || "") },
+        src
+      ];
+    }
+    if (mod.n === 116) {
+      return [
+        { id: "ref", label: "Ref", required: true, value: row?.ref || "LEG-AIR/2026/0086" },
+        { id: "lane", label: "origin→destination", required: true, value: row?.lane || "PLWAW→PELIM", placeholder: "PLWAW→PELIM" },
+        { id: "party", label: "shipment_id", required: true, value: row?.party || "GD/2026/00418" },
+        src
+      ];
+    }
+    if (mod.n === 205) {
+      return [
+        { id: "incoterm", label: "incoterm", type: "select", required: true, options: ["EXW", "FCA", "CPT", "CIP", "DAP", "DPU", "DDP", "FAS", "FOB", "CFR", "CIF"], value: row?.incoterm || "DAP" },
+        { id: "trade_side", label: "trade_side", type: "select", required: true, options: ["import", "export"], value: row?.trade_side || "export" },
+        { id: "lane", label: "mode", type: "select", required: true, options: ["ocean", "road", "rail", "air"], value: row?.lane || "ocean" },
+        { id: "code", label: "document_kind", type: "select", required: true, options: ["commercial_invoice", "packing_list", "bill_of_lading", "export_declaration"], value: row?.code || "commercial_invoice" },
+        { id: "status", label: "blocks_dispatch", type: "select", required: true, options: ["tak", "nie"], value: row?.status || "tak" },
+        src
+      ];
+    }
+    return null;
+  }
+
   function fieldsFor(mod, row) {
+    const spec = specFields(mod, row);
+    if (spec) return spec;
     const fam = familyOf(mod);
     const base = [
       { id: "ref", label: "Ref", required: true, value: row?.ref || `${mod.id}/${2026}/00` },
@@ -301,6 +545,24 @@ window.OR_MOD = (function () {
     if ((fam === "quote" || fam === "ship" || fam === "customs") && (data.incoterm === "DAP" || data.incoterm === "DDP") && !data.named_place) {
       return "409 · DAP/DDP wymaga named_place.";
     }
+    if (mod.n === 106) {
+      const no = (data.ref || "").replace(/\s/g, "").toUpperCase();
+      if (no.length !== 11) return "409 · container_no musi mieć 11 znaków ISO 6346. Cyfrę kontrolną liczy serwer.";
+    }
+    if (mod.n === 108) {
+      if (!/^[A-Z]{2}$/.test((data.ref || "").toUpperCase())) return "409 · country_code to ISO 2 liter.";
+    }
+    if (mod.n === 116) {
+      const lane = (data.lane || "").toUpperCase();
+      const air = ["PLWAW", "PELIM", "DEHAM", "USNYC"];
+      const parts = lane.split("→").map((s) => s.trim());
+      if (parts.length !== 2) return "409 · odcinek air: origin→destination.";
+      if (!air.includes(parts[0]) || !air.includes(parts[1])) {
+        return "409 · port bez flagi airport w function_flags. Nie HAWB.";
+      }
+      if (parts[0] === parts[1]) return "409 · start i koniec muszą być różne.";
+    }
+    if (mod.n === 111 && data.code === "trip") return "409 · trip to osobna tabela, nie resource_kind.";
     if (fam === "party") {
       if ((data.role || "").includes("customer") && !data.tax) {
         return "400 · klient bez NIP.";
@@ -322,15 +584,17 @@ window.OR_MOD = (function () {
       const row = list.find((r) => r.id === existingId);
       if (!row) return;
       Object.assign(row, {
-        ref: data.ref, party: data.party, status: data.status, lane: data.lane || row.lane,
-        src: data.source_ref || row.src, amt: data.amt || row.amt, cur: data.cur || row.cur,
+        ref: data.ref, party: data.party || data.title || row.party, status: data.status || row.status,
+        lane: data.lane || row.lane, src: data.source_ref || row.src, amt: data.amt || row.amt, cur: data.cur || row.cur,
         ksef: data.ksef || row.ksef, incoterm: data.incoterm || row.incoterm, tax: data.tax || row.tax,
         vat: data.vat || row.vat, eori: data.eori || row.eori, duns: data.duns || row.duns,
-        role: data.role || row.role, tt: data.tt || row.tt,
+        role: data.role || row.role, tt: data.tt || row.tt, title: data.title || row.title,
+        code: data.code || row.code, recipient: data.recipient || row.recipient,
         named_place: data.named_place != null ? data.named_place : row.named_place,
         trade_side: data.trade_side || row.trade_side,
         incoterms_version: data.incoterms_version || row.incoterms_version
       });
+      applySpec(mod, row, data);
       return;
     }
     list.unshift({
@@ -346,7 +610,7 @@ window.OR_MOD = (function () {
       margin: "—",
       cur: data.cur || "USD",
       src: data.source_ref || `${mod.id}-SRC-NEW`,
-      code: "OFR",
+      code: data.code || "OFR",
       hs: "brak",
       incoterm: data.incoterm || "DAP",
       tax: data.tax || "—",
@@ -360,9 +624,48 @@ window.OR_MOD = (function () {
       incoterms_version: data.incoterms_version || "2020",
       ksef: data.ksef || "—",
       docs: "0/9",
-      recipient: "omni_customs",
+      recipient: data.recipient || "omni_customs",
       age: "0 h"
     });
+    applySpec(mod, list[0], data);
+  }
+
+  function applySpec(mod, row, data) {
+    if (mod.n === 89) {
+      row.code = data.code || row.code;
+      row.role = data.role || row.role;
+    }
+    if (mod.n === 99) {
+      row.recipient = data.recipient || row.recipient;
+      row.code = data.code || row.code;
+      row.role = data.trade_side || row.role;
+    }
+    if (mod.n === 106) {
+      row.ref = (data.ref || row.ref).replace(/\s/g, "").toUpperCase();
+      row.title = row.ref;
+    }
+    if (mod.n === 108) {
+      row.ref = (data.ref || row.ref).toUpperCase();
+      row.title = data.title || row.title;
+      row.code = data.code || row.code;
+      row.status = row.code === "working" ? "tak" : "nie";
+    }
+    if (mod.n === 111) {
+      row.title = data.title || row.title;
+      row.party = row.title;
+      row.code = data.code || row.code;
+      row.lane = data.lane || row.lane || "—";
+    }
+    if (mod.n === 116) {
+      row.code = "air";
+      row.lane = (data.lane || row.lane).toUpperCase();
+    }
+    if (mod.n === 205) {
+      row.code = data.code || row.code;
+      row.lane = data.lane || row.lane;
+      row.role = data.trade_side || row.role;
+      row.status = data.status || row.status;
+    }
   }
 
   function openRow(mod, id) {
@@ -379,6 +682,18 @@ window.OR_MOD = (function () {
     if (hasMoney(mod)) rows.push({ k: "Kwota", v: `${row.amt} ${row.cur}` });
     if (row.ksef) rows.push({ k: "ksef_ref", v: row.ksef });
     if (row.incoterm) rows.push({ k: "Incoterm", v: row.incoterm });
+    if (row.named_place) rows.push({ k: "named_place", v: row.named_place });
+    if (row.trade_side) rows.push({ k: "trade_side", v: row.trade_side });
+    if (mod.n === 89) {
+      rows.push({ k: "booking_scope", v: row.code });
+      rows.push({ k: "target_role", v: row.role });
+    }
+    if (mod.n === 99) rows.push({ k: "recipient_role", v: row.recipient });
+    if (mod.n === 106) rows.push({ k: "iso_size_type", v: row.code });
+    if (mod.n === 108) rows.push({ k: "is_working_day (SQL)", v: row.status });
+    if (mod.n === 111) rows.push({ k: "resource_kind", v: row.code });
+    if (mod.n === 116) rows.push({ k: "leg_kind", v: "air" });
+    if (mod.n === 205) rows.push({ k: "blocks_dispatch", v: row.status });
     K.detail({
       title: row.ref,
       note: `${mod.id} · ${mod.name} · tenant z paska`,
@@ -393,6 +708,10 @@ window.OR_MOD = (function () {
   function handle(act, el, mod) {
     if (!mod || !window.OR_KERNEL) return false;
     const K = window.OR_KERNEL;
+    if (act === "cal-working") {
+      K.blocked("is_working_day = false · PL 2026-11-11 · day_kind holiday. Wynik z SQL, nie z JS.");
+      return true;
+    }
     if (act === "mod-filter-clear") {
       filters[mod.id] = "";
       paint(mod);
@@ -410,7 +729,7 @@ window.OR_MOD = (function () {
     }
     if (act === "mod-export") {
       const fam = familyOf(mod);
-      const cols = COLS[fam].filter((c) => !c.money || hasMoney(mod));
+      const cols = colsFor(mod).filter((c) => !c.money || hasMoney(mod));
       K.exportCsv(
         `${mod.id}-podglad.csv`,
         cols.map((c) => c.t),

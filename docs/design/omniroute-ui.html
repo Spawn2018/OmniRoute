@@ -219,7 +219,8 @@ table.lines, table.grid { width: 100%; border-collapse: collapse; min-width: 36r
 .facts.n4 { grid-template-columns: repeat(4, minmax(7.5rem, 1fr)); }
 .facts.n5 { grid-template-columns: repeat(5, minmax(7.5rem, 1fr)); }
 .facts.n6 { grid-template-columns: repeat(6, minmax(7.5rem, 1fr)); }
-.facts.n7 { grid-template-columns: repeat(7, minmax(7.5rem, 1fr)); }
+  .facts.n7 { grid-template-columns: repeat(7, minmax(7.5rem, 1fr)); }
+  .facts.n8 { grid-template-columns: repeat(8, minmax(7rem, 1fr)); }
 .party-split { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(16rem, .9fr); gap: var(--s4); align-items: start; }
 .party-panel { padding: var(--s4); }
 .party-panel h3 { margin: 0 0 var(--s3); font-size: var(--fs-sm); }
@@ -643,9 +644,9 @@ table.mini { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); }
   <div class="view-modal" role="dialog" aria-modal="true" aria-labelledby="vmTitle" id="viewModal"></div>
 </div>
 <div class="toast" id="toast" role="status"></div>
-<script src="omniroute-ui-catalog.js?v=20260908d"></script>
-<script src="omniroute-ui-actions.js?v=20260908d"></script>
-<script src="omniroute-ui-modules.js?v=20260908d"></script>
+<script src="omniroute-ui-catalog.js?v=20260908n"></script>
+<script src="omniroute-ui-actions.js?v=20260908n"></script>
+<script src="omniroute-ui-modules.js?v=20260908n"></script>
 <script>
 const $ = (s, c = document) => c.querySelector(s);
 const $$ = (s, c = document) => [...c.querySelectorAll(s)];
@@ -700,8 +701,8 @@ const SHIP_META = {
   hsDesc: "Meble drewniane, pozostałe",
   equipment: "2 × 40HC",
   containers: [
-    { no: "MSKU7823410", grossKg: "24 500" },
-    { no: "MSKU7823528", grossKg: "24 120" },
+    { no: "MSKU7823410", iso: "45G1", grossKg: "24 500" },
+    { no: "MSKU7823528", iso: "45G1", grossKg: "24 120" },
   ],
   paymentTerm: "52 dni netto",
   paymentTermNote: "karta M-13",
@@ -825,7 +826,7 @@ function shipHeaderFactHtml(id) {
     hbl: `<div class="fact"><dt>${SHIP_HEADER_LABELS.hbl}</dt><dd><span class="val mono">${SHIP_META.hbl}</span></dd></div>`,
     hs: `<div class="fact"><dt>${SHIP_HEADER_LABELS.hs}</dt><dd><span class="val mono">${SHIP_META.hs}</span><small>${SHIP_META.hsDesc}</small></dd></div>`,
     equipment: `<div class="fact"><dt>${SHIP_HEADER_LABELS.equipment}</dt><dd><span class="val">${SHIP_META.equipment}</span></dd></div>`,
-    containers: `<div class="fact"><dt>${SHIP_HEADER_LABELS.containers}</dt><dd>${SHIP_META.containers.map((c) => `<span class="val mono">${c.no}</span>`).join("")}</dd></div>`,
+    containers: `<div class="fact"><dt>${SHIP_HEADER_LABELS.containers}</dt><dd>${SHIP_META.containers.map((c) => `<span class="val mono">${c.no}</span><small>iso_size_type ${c.iso}</small>`).join("")}</dd></div>`,
     weight: `<div class="fact"><dt>${SHIP_HEADER_LABELS.weight}</dt><dd>${SHIP_META.containers.map((c) => `<span class="val">${c.grossKg} kg</span>`).join("")}</dd></div>`,
     payment: `<div class="fact"><dt>${SHIP_HEADER_LABELS.payment}</dt><dd><span class="val">${SHIP_META.paymentTerm}</span><small>${SHIP_META.paymentTermNote}</small></dd></div>`,
     storage: `<div class="fact"><dt>${SHIP_HEADER_LABELS.storage}</dt><dd class="${st.cls} val">${st.label}</dd></div>`,
@@ -1043,6 +1044,12 @@ function shipInspHtml() {
     </label>
     <button class="btn" type="button" data-act="customs-pack" style="margin-top:var(--s3)">Pakiet celny</button>
   </div>
+  <div class="rsec"><h3>Strony i booking</h3>
+    <p class="note">7 ról I2 · party_id wymagane. client_customs nieprzypisany = 409 przy zapisie.</p>
+    <button class="btn" type="button" data-act="ship-stakeholders">Strony</button>
+    <button class="btn" type="button" data-act="ship-booking" style="margin-top:var(--s2)">Booking ocean (${bookingOceanStatus})</button>
+    <button class="btn" type="button" data-act="scan-pkg" style="margin-top:var(--s2)">Skan QR paczki</button>
+  </div>
   <div class="rsec"><h3>Rozliczenie</h3>
     <table class="mini">
       <tr><td>Przychód</td><td>24 800,00</td></tr>
@@ -1070,7 +1077,14 @@ let quoteHs = "";
 let quoteFiles = [];
 let quoteTerms = { incoterm: "DAP", version: "2020", tradeSide: "export", namedPlace: "Lima" };
 let quoteOpenMail = false;
+let quoteOpenRules = false;
 let channelQuoteSaved = false;
+let bookingOceanStatus = "suggested";
+let carryActive = [
+  { field_key: "incoterm", field_value: "DAP" },
+  { field_key: "trade_side", field_value: "export" },
+  { field_key: "named_place", field_value: "Lima" }
+];
 let mailGroupBy = "party";
 let hitlDraftKind = "rate_line";
 let netCountry = "";
@@ -1167,11 +1181,68 @@ const CHARGES = [
   { ref: "ch-1102", code: "OFR", party: "Maersk", buy: "1 850,00", sell: "2 040,00", margin: "190,00", cur: "USD", src: "rl-1061", quote: "ZAP/2026/00291" }
 ];
 const PORTS = [
-  { code: "PLGDY", name: "Gdynia", country: "PL", kind: "sea", rail: true },
-  { code: "PECLL", name: "Callao", country: "PE", kind: "sea", rail: true },
-  { code: "CNSHA", name: "Shanghai", country: "CN", kind: "sea", rail: true },
-  { code: "DEHAM", name: "Hamburg", country: "DE", kind: "sea", rail: true },
-  { code: "USNYC", name: "New York", country: "US", kind: "sea", rail: false }
+  { code: "PLGDY", name: "Gdynia", country: "PL", kind: "sea", rail: true, airport: false },
+  { code: "PECLL", name: "Callao", country: "PE", kind: "sea", rail: true, airport: false },
+  { code: "CNSHA", name: "Shanghai", country: "CN", kind: "sea", rail: true, airport: false },
+  { code: "DEHAM", name: "Hamburg", country: "DE", kind: "sea", rail: true, airport: false },
+  { code: "USNYC", name: "New York", country: "US", kind: "sea", rail: false, airport: false },
+  { code: "PLWAW", name: "Warsaw Chopin", country: "PL", kind: "air", rail: false, airport: true },
+  { code: "PELIM", name: "Lima Jorge Chávez", country: "PE", kind: "air", rail: false, airport: true }
+];
+const STAKEHOLDERS = [
+  { role: "shipper", party: "Meblexport Sp. z o.o.", party_id: "p1" },
+  { role: "consignee", party: "Andes Import SAC", party_id: "p-cons" },
+  { role: "origin_agent", party: "Sped Bałtyk", party_id: "p-sb" },
+  { role: "dest_agent", party: "Andes Cargo SAC", party_id: "p2" },
+  { role: "ocean_carrier", party: "Hapag-Lloyd AG", party_id: "p4" },
+  { role: "omni_customs", party: "Omni agencja PE", party_id: "p-omni" }
+];
+const BOOKING_ROWS = [
+  { booking_scope: "ocean", target_role: "ocean_carrier", key: "ocean" },
+  { booking_scope: "oncarriage", target_role: "dest_agent", key: "on" },
+  { booking_scope: "contact_exchange", target_role: "origin_agent", key: "cx" }
+];
+function bookingStatusOf(row) {
+  if (row.key === "ocean") return bookingOceanStatus;
+  if (row.key === "on") return "accepted";
+  return "suggested";
+}
+const STOPS = [
+  { sequence_no: 1, stop_kind: "loading", location: "Poznań · magazyn Meblexport", time_zone: "Europe/Warsaw", status: "completed" },
+  { sequence_no: 2, stop_kind: "terminal", location: "Gdynia BCT", time_zone: "Europe/Warsaw", status: "completed" },
+  { sequence_no: 3, stop_kind: "terminal", location: "Callao", time_zone: "America/Lima", status: "pending" },
+  { sequence_no: 4, stop_kind: "unloading", location: "Lima · named place DAP", time_zone: "America/Lima", status: "pending" }
+];
+const PACKAGES = [
+  { package_code: "pkg_mex_001", package_status: "in_transit", scan_token: "omni://shipment-package/pkg_mex_001", stop: "2 · terminal Gdynia" },
+  { package_code: "pkg_mex_002", package_status: "at_stop", scan_token: "fixture://omni-qr/pkg_mex_002", stop: "2 · terminal Gdynia" }
+];
+const GROUPAGE_LINES = [
+  { line_code: "poz_waw_ltl", origin: "Poznań · magazyn", dest: "Warszawa · strefa", cutoff_local: "16:00", transit_days: "1", operating_dows: "1,2,3,4,5" },
+  { line_code: "waw_gda_ltl", origin: "Warszawa · strefa", dest: "Gdynia BCT", cutoff_local: "14:00", transit_days: "1", operating_dows: "1,3,5" }
+];
+const CALENDAR_DAYS = [
+  { country_code: "PL", calendar_day: "2026-09-08", day_kind: "working" },
+  { country_code: "PL", calendar_day: "2026-11-11", day_kind: "holiday" },
+  { country_code: "PE", calendar_day: "2026-09-08", day_kind: "working" }
+];
+const CHECKLIST_RULES = [
+  { document_kind: "commercial_invoice", mode: "ocean", blocks_dispatch: true },
+  { document_kind: "packing_list", mode: "ocean", blocks_dispatch: true },
+  { document_kind: "bill_of_lading", mode: "ocean", blocks_dispatch: false },
+  { document_kind: "export_declaration", mode: "ocean", blocks_dispatch: true }
+];
+const DISPATCH_RULES = [
+  { document_kind: "commercial_invoice", recipient_role: "omni_customs" },
+  { document_kind: "packing_list", recipient_role: "omni_customs" },
+  { document_kind: "bill_of_lading", recipient_role: "dest_agent" },
+  { document_kind: "export_declaration", recipient_role: "omni_customs" }
+];
+const RESP_MATRIX = [
+  { incoterm: "EXW", export_clearance_role: "buyer", import_clearance_role: "buyer", main_carriage_booker: "buyer", booking_scope: "none" },
+  { incoterm: "FOB", export_clearance_role: "seller", import_clearance_role: "buyer", main_carriage_booker: "buyer", booking_scope: "ocean" },
+  { incoterm: "DAP", export_clearance_role: "seller", import_clearance_role: "buyer", main_carriage_booker: "seller", booking_scope: "ocean, oncarriage" },
+  { incoterm: "DDP", export_clearance_role: "seller", import_clearance_role: "seller", main_carriage_booker: "seller", booking_scope: "ocean, oncarriage" }
 ];
 const LOCATIONS = [
   { code: "POZ-WH1", name: "Poznań · magazyn Meblexport", kind: "address", zone: "—", postal: "61-131" },
@@ -1236,6 +1307,10 @@ function paintHome() {
         <div class="todo"><div><b>Akceptuj ofertę kanału Hapag QQ-8841203</b><div class="meta"><span>draft_kind carrier_quote</span><span>Accept → channel_quote, nie rate_line</span></div></div><button class="linkish" type="button" data-go="hitl">Otwórz HITL</button></div>
         <div class="todo"><div><b>Cisza zapytania · Rotterdam Hub</b><div class="meta"><span>no_reply_after 2026-09-05</span><span>notice ręczny</span></div></div><button class="linkish" type="button" data-go="networks">Sieci / zapytania</button></div>
         <div class="todo"><div><b>Lookup tax_id Meblexport</b><div class="meta"><span>GUS/VIES → szkic</span><span>zapis tylko po potwierdzeniu</span></div></div><button class="linkish" type="button" data-go="parties">Otwórz kontrahenta</button></div>
+        <div class="todo"><div><b>Skan QR Omni · pkg_mex_001</b><div class="meta"><span>omni://shipment-package/pkg_mex_001</span><span>stop z trasy · nie WMS</span></div></div><button class="linkish" type="button" data-act="scan-pkg">Skanuj paczkę</button></div>
+        <div class="todo"><div><b>Booking ocean · suggested</b><div class="meta"><span>target_role ocean_carrier</span><span>accept człowieka, nie S21</span></div></div><button class="linkish" type="button" data-act="ship-booking">Otwórz instrukcję</button></div>
+        <div class="todo"><div><b>Checklista DAP export · ocean</b><div class="meta"><span>export_declaration blocks_dispatch</span><span>nie C8</span></div></div><button class="linkish" type="button" data-act="quote-rules">Reguły Incoterms</button></div>
+        <div class="todo"><div><b>is_working_day · PL 11.11</b><div class="meta"><span>day_kind holiday</span><span>wynik SQL, nie +3 w JS</span></div></div><button class="linkish" type="button" data-act="cal-working-home">Sprawdź dzień</button></div>
       </div>
     </div>`;
 }
@@ -1272,6 +1347,7 @@ function paintQuote() {
   $("#v-quote").innerHTML = `<div class="cmd">
       <button class="btn" type="button" data-act="save">Zapisz</button>
       <button class="btn" type="button" data-act="quote-incoterm">Incoterms</button>
+      <button class="btn" type="button" data-act="quote-rules">Reguły I1–I3 / U1+U5</button>
       <button class="btn" type="button" data-act="ask">Zapytaj agentów</button>
       <button class="btn" type="button" data-act="fill-hs">Uzupełnij HS</button>
       ${sendBtn}
@@ -1283,17 +1359,19 @@ function paintQuote() {
       { t: "Ładunek", v: "2 × 40HC", s: "meble drewniane" },
       { t: "Kod HS", v: quoteHs || "brak", chip: quoteHs ? "ok" : "alert", s: quoteHs ? "commodity_code" : "blokuje send" },
       { t: "Incoterm", v: quoteTerms.incoterm, s: `${quoteTerms.namedPlace || "brak named_place"} · ${quoteTerms.tradeSide} · ${quoteTerms.version}`, chip: (quoteTerms.incoterm === "DAP" || quoteTerms.incoterm === "DDP") && !quoteTerms.namedPlace ? "alert" : "" },
+      { t: "Carry-forward", v: carryActive.map((c) => c.field_value).join(" · "), s: "incoterm / trade_side / named_place" },
       { t: "Gotowość do podjęcia", v: "10–20.09", s: "połowa września" },
       { t: "Cut-off bramowy", v: "18–24.09", s: "+ 2 dni dowozu" },
       { t: "Ważność oferty", v: "14 dni", s: "sugerowane" },
       { t: "Termin płatności", v: "52 dni netto", s: "karta M-13" }
-    ], "n7")}
+    ], "n8")}
     <div class="tabs" role="tablist">
-      <button type="button" data-tab="warianty" aria-selected="${quoteOpenMail ? "false" : "true"}">Warianty</button>
+      <button type="button" data-tab="warianty" aria-selected="${!quoteOpenMail && !quoteOpenRules ? "true" : "false"}">Warianty</button>
       <button type="button" data-tab="mail" aria-selected="${quoteOpenMail ? "true" : "false"}">Korespondencja</button>
       <button type="button" data-tab="zal" aria-selected="false">Załączniki</button>
+      <button type="button" data-tab="rules" aria-selected="${quoteOpenRules ? "true" : "false"}">Reguły Incoterms</button>
     </div>
-    <div class="pane${quoteOpenMail ? "" : " on"}" id="p-warianty">
+    <div class="pane${quoteOpenMail || quoteOpenRules ? "" : " on"}" id="p-warianty">
       <p><span class="chan done"><i class="dot"></i>Baza stawek</span><span class="chan"><i class="dot"></i>Hapag-Lloyd</span><span class="chan"><i class="dot"></i>Maersk</span><span class="chan ${spotOn ? "done" : ""}"><i class="dot"></i>spot API</span></p>
       <div id="vlist">${variants().map(renderVariant).join("")}</div>
       <div class="card" style="margin-top:var(--s4)" data-response-comparison="lanes">
@@ -1305,8 +1383,39 @@ function paintQuote() {
       <p class="note">Kwoty i pasek z serwera. Ta makieta niczego nie liczy. Marża wyłącznie na charge.</p>
     </div>
     <div class="pane${quoteOpenMail ? " on" : ""}" id="p-mail">${mail}</div>
-    <div class="pane" id="p-zal">${zal}</div>`;
+    <div class="pane" id="p-zal">${zal}</div>
+    <div class="pane${quoteOpenRules ? " on" : ""}" id="p-rules">${quoteRulesHtml()}</div>`;
   quoteOpenMail = false;
+  quoteOpenRules = false;
+}
+function quoteRulesHtml() {
+  const carry = carryActive.map((c) => `<tr><td class="mono">${c.field_key}</td><td>${c.field_value}</td><td><span class="chip ok">aktywny</span></td></tr>`).join("");
+  const chk = CHECKLIST_RULES.map((r) => `<tr><td class="mono">${r.document_kind}</td><td>${r.mode}</td><td>${r.blocks_dispatch ? '<span class="chip alert">blocks_dispatch</span>' : "nie"}</td></tr>`).join("");
+  const disp = DISPATCH_RULES.map((r) => `<tr><td class="mono">${r.document_kind}</td><td>${r.recipient_role}</td></tr>`).join("");
+  const mx = RESP_MATRIX.map((r) => `<tr><td>${r.incoterm}</td><td>${r.export_clearance_role}</td><td>${r.import_clearance_role}</td><td>${r.main_carriage_booker}</td><td>${r.booking_scope}</td></tr>`).join("");
+  return `<div class="pad" style="padding-top:0">
+    <div class="card" style="margin-bottom:var(--s4)">
+      <h3 class="h-id">field_carry_forward · U1</h3>
+      <p class="note">Snapshot oferty na zlecenie. Zmiana = nowy wiersz + superseded_by. Nie cichy overwrite.</p>
+      <div class="xscroll"><table class="grid"><thead><tr><th>field_key</th><th>field_value</th><th>Wersja</th></tr></thead><tbody>${carry}</tbody></table></div>
+      <button class="btn" type="button" data-act="carry-apply" style="margin-top:var(--s3)">Przenieś na zlecenie</button>
+    </div>
+    <div class="card" style="margin-bottom:var(--s4)">
+      <h3 class="h-id">document_checklist_rule · U5</h3>
+      <p class="note">DAP × export × ocean. blocks_dispatch to dana, nie C8.</p>
+      <div class="xscroll"><table class="grid"><thead><tr><th>document_kind</th><th>mode</th><th>blocks_dispatch</th></tr></thead><tbody>${chk}</tbody></table></div>
+    </div>
+    <div class="card" style="margin-bottom:var(--s4)">
+      <h3 class="h-id">incoterm_responsibility · I1</h3>
+      <p class="note">Seed Omni ops, nie cytat ICC. Override tenanta = nowy wiersz. source_ref omni:incoterms2020:ops</p>
+      <div class="xscroll"><table class="grid"><thead><tr><th>incoterm</th><th>export_clearance</th><th>import_clearance</th><th>booker</th><th>booking_scope</th></tr></thead><tbody>${mx}</tbody></table></div>
+    </div>
+    <div class="card">
+      <h3 class="h-id">document_dispatch_rule · I3</h3>
+      <p class="note">Adresat, nie send. Send leftover po S11.</p>
+      <div class="xscroll"><table class="grid"><thead><tr><th>document_kind</th><th>recipient_role</th></tr></thead><tbody>${disp}</tbody></table></div>
+    </div>
+  </div>`;
 }
 function paintRates() {
   document.documentElement.dataset.grid = gridDense ? "condensed" : "";
@@ -1455,21 +1564,22 @@ function paintParties() {
     </div>`;
 }
 function paintPorts() {
-  const rows = PORTS.map((x) => `<tr><td class="mono">${x.code}</td><td>${x.name}</td><td>${x.country}</td><td>${x.kind}</td><td>${x.rail ? '<span class="chip ok">kolej</span>' : "—"}</td><td><button class="btn" type="button" data-act="resolve-port">Rozwiąż</button></td></tr>`).join("");
+  const rows = PORTS.map((x) => `<tr><td class="mono">${x.code}</td><td>${x.name}</td><td>${x.country}</td><td>${x.kind}</td><td>${x.rail ? '<span class="chip ok">kolej</span>' : "—"}</td><td>${x.airport ? '<span class="chip ok">airport</span>' : "—"}</td><td><button class="btn" type="button" data-act="resolve-port">Rozwiąż</button></td></tr>`).join("");
   $("#v-ports").innerHTML = `<div class="cmd">
       <button class="btn btn-p" type="button" data-act="new-port">Dodaj port</button>
       <button class="btn" type="button" data-act="resolve-port">Rozwiąż UN/LOCODE</button>
+      <button class="btn" type="button" data-act="ship-air">Odcinek air</button>
       <span class="chip">M-05 · geography · nieznany token = odrzut</span>
     </div>
-    ${screenBanner("M-05 · porty", "UN/LOCODE per tenant", "Aliasy na wierszu. World Port Index = kolumny na port, ingest poza HTTP.")}
+    ${screenBanner("M-05 · porty", "UN/LOCODE per tenant", "Aliasy na wierszu. Lotnisko = airport w function_flags. World Port Index = kolumny, ingest poza HTTP.")}
     ${screenFacts([
       { t: "Porty", v: String(PORTS.length), s: "w makiecie" },
       { t: "Z flagą rail", v: String(PORTS.filter((x) => x.rail).length), s: "→ kolej intermodalna" },
-      { t: "Resolve", v: "token", s: "nie luźna nazwa" },
-      { t: "Współrzędne", v: "Decimal", s: "nie float" }
+      { t: "Z flagą airport", v: String(PORTS.filter((x) => x.airport).length), s: "→ odcinek air" },
+      { t: "Resolve", v: "token", s: "nie luźna nazwa" }
     ], "n4")}
     <div class="pad" style="padding-top:0"><div class="card xscroll" style="padding:0">
-      <table class="grid"><thead><tr><th>UN/LOCODE</th><th>Nazwa</th><th>Kraj</th><th>Typ</th><th>Kolej</th><th></th></tr></thead><tbody>${rows}</tbody></table>
+      <table class="grid"><thead><tr><th>UN/LOCODE</th><th>Nazwa</th><th>Kraj</th><th>Typ</th><th>Kolej</th><th>Airport</th><th></th></tr></thead><tbody>${rows}</tbody></table>
     </div></div>`;
 }
 function paintLocations() {
@@ -1478,30 +1588,38 @@ function paintLocations() {
       <button class="btn btn-p" type="button" data-act="new-loc">Dodaj lokalizację</button>
       <button class="btn" type="button" data-go="ports">Porty</button>
       <button class="btn" type="button" data-mod="M-48">Transport drogowy</button>
+      <button class="btn" type="button" data-act="new-groupage">Nowa linia drobnicy</button>
       <span class="chip">location · unlocode | postal_zone | address</span>
     </div>
-    ${screenBanner("M-05 · lokalizacje i strefy", "zakresy pocztowe w Postgres", "Nakładanie blokuje exclusion constraint — nie walidujemy w Pythonie.")}
+    ${screenBanner("M-05 · lokalizacje i strefy", "zakresy pocztowe w Postgres", "Nakładanie blokuje exclusion constraint. groupage_line: cutoff + TT + ISODOW — nie WMS.")}
     ${screenFacts([
       { t: "Lokalizacje", v: String(LOCATIONS.length) },
       { t: "postal_zone", v: String(LOCATIONS.filter((x) => x.kind === "postal_zone").length), s: "collation C" },
       { t: "address", v: String(LOCATIONS.filter((x) => x.kind === "address").length) },
-      { t: "Droga", v: "M-48", s: "strefy → /locations" }
+      { t: "groupage_line", v: String(GROUPAGE_LINES.length), s: "cutoff lokalny" }
     ], "n4")}
     <div class="pad" style="padding-top:0"><div class="card xscroll" style="padding:0">
       <table class="grid"><thead><tr><th>Kod</th><th>Nazwa</th><th>Typ</th><th>Strefa / zakres</th><th>Poczta</th></tr></thead><tbody>${rows}</tbody></table>
+    </div>
+    <div class="card" style="margin-top:var(--s4)">
+      <h3 class="h-id">groupage_line · D1</h3>
+      <p class="note">Dwa location. cutoff_local dana, nie liczona. operating_dows ISODOW (1 = poniedziałek). Nie OR hubów.</p>
+      <div class="xscroll"><table class="grid"><thead><tr><th>line_code</th><th>origin</th><th>destination</th><th>cutoff_local</th><th>transit_days</th><th>operating_dows</th></tr></thead>
+      <tbody>${GROUPAGE_LINES.map((g) => `<tr><td class="mono">${g.line_code}</td><td>${g.origin}</td><td>${g.dest}</td><td>${g.cutoff_local}</td><td>${g.transit_days}</td><td>${g.operating_dows}</td></tr>`).join("")}</tbody></table></div>
     </div></div>`;
 }
 function paintUsers() {
   $("#v-users").innerHTML = `<div class="cmd">
       <button class="btn btn-p" type="button" data-act="edit-user">Edytuj rolę FGA</button>
+      <button class="btn" type="button" data-act="cal-working-home">is_working_day</button>
       <span class="chip">OpenFGA · brak relacji = ukryj akcję</span>
     </div>
-    ${screenBanner("M-01 / M-04 · użytkownicy", "Organizacje i tożsamość", "Tenant z paska. Endpoint bez jawnej relacji OpenFGA = odmowa.")}
+    ${screenBanner("M-01 / M-04 · użytkownicy", "Organizacje i tożsamość", "Tenant z paska. Kalendarz U4: dni robocze per kraj, nie GPS.")}
     ${screenFacts([
       { t: "Aktywni", v: "2", s: "w makiecie" },
       { t: "Role", v: "reviewer · member" },
       { t: "Accept HITL", v: "can_review", s: "brak = przycisk nie istnieje" },
-      { t: "Sesja", v: "JWT hello", s: "≠ IdP produkcyjny" }
+      { t: "Kalendarz", v: String(CALENDAR_DAYS.length), s: "PL · PE" }
     ], "n4")}
     <div class="pad" style="padding-top:0"><div class="card xscroll" style="padding:0">
       <table class="grid"><thead><tr><th>Email</th><th>Nazwa</th><th>Rola FGA</th><th>Status</th><th>Akcje</th></tr></thead>
@@ -1509,6 +1627,12 @@ function paintUsers() {
         <tr><td>anna@spedbaltyk.pl</td><td>Anna Nowak</td><td>reviewer</td><td><span class="chip ok">aktywny</span></td><td><button class="linkish" type="button" data-act="edit-user">edytuj</button></td></tr>
         <tr><td>marek@spedbaltyk.pl</td><td>Marek Kowalski</td><td>member</td><td><span class="chip ok">aktywny</span></td><td><span class="chip">tylko odczyt</span></td></tr>
       </tbody></table>
+    </div>
+    <div class="card" style="margin-top:var(--s4)">
+      <h3 class="h-id">organization_calendar · U4</h3>
+      <p class="note">is_working_day liczy SQL. Nie kalendarz +3 w JS. Nie V5.</p>
+      <div class="xscroll"><table class="grid"><thead><tr><th>country_code</th><th>calendar_day</th><th>day_kind</th></tr></thead>
+      <tbody>${CALENDAR_DAYS.map((d) => `<tr><td>${d.country_code}</td><td>${d.calendar_day}</td><td><span class="chip ${d.day_kind === "holiday" ? "alert" : "ok"}">${d.day_kind}</span></td></tr>`).join("")}</tbody></table></div>
     </div></div>`;
 }
 function paintChannels() {
@@ -1621,7 +1745,17 @@ function paintShip() {
       <div class="leg-foot">${l.ev}</div>
     </div>
   </div>`).join("");
-  $("#v-ship").innerHTML = `<div class="banner">
+  $("#v-ship").innerHTML = `<div class="cmd">
+      <button class="btn" type="button" data-act="ship-stakeholders">Strony I2</button>
+      <button class="btn" type="button" data-act="ship-booking">Booking I4</button>
+      <button class="btn" type="button" data-act="ship-stops">Stopy T1</button>
+      <button class="btn btn-p" type="button" data-act="scan-pkg">Skan QR paczki</button>
+      <button class="btn" type="button" data-act="ship-containers">Kontenery T3</button>
+      <button class="btn" type="button" data-act="ship-air">Odcinek air</button>
+      <button class="btn" type="button" data-act="docs">Dokumenty 7/9</button>
+      <button class="btn" type="button" data-act="customs-pack">Pakiet celny</button>
+    </div>
+  <div class="banner">
     <div class="ship-banner-top">
       <div>
         <p class="h-id" style="color:inherit;opacity:.85">GD/2026/00412 · HBL <span class="loc">OMR2609441</span></p>
@@ -1634,6 +1768,7 @@ function paintShip() {
   </div>
   <div class="pad" style="padding-top:var(--s4)">
     ${renderShipKpisHtml()}
+    ${shipOpsHtml()}
     <div class="legs">${legHtml}</div>
     <div class="card ship-map-wrap">
       <div class="ship-map-head">
@@ -1668,6 +1803,31 @@ function paintShip() {
     </div>
   </div>`;
   bindShipMap(SHIP_ROUTE);
+}
+function shipOpsHtml() {
+  const stRows = STAKEHOLDERS.map((s) => `<tr><td class="mono">${s.role}</td><td>${s.party}</td><td class="mono">${s.party_id}</td></tr>`).join("");
+  const bkRows = BOOKING_ROWS.map((b) => {
+    const st = bookingStatusOf(b);
+    return `<tr><td>${b.booking_scope}</td><td>${b.target_role}</td><td><span class="chip ${st === "suggested" ? "alert" : "ok"}">${st}</span></td></tr>`;
+  }).join("");
+  const stopRows = STOPS.map((s) => `<tr><td>${s.sequence_no}</td><td>${s.stop_kind}</td><td>${s.location}</td><td class="mono">${s.time_zone}</td><td>${s.status}</td></tr>`).join("");
+  const pkgRows = PACKAGES.map((p) => `<tr><td class="mono">${p.package_code}</td><td>${p.package_status}</td><td class="mono">${p.scan_token}</td><td>${p.stop}</td></tr>`).join("");
+  return `<div class="card" style="margin-bottom:var(--s4)">
+      <h3 class="h-id">Operacja nocy · 144–156</h3>
+      <p class="note">Carry ${carryActive.map((c) => c.field_value).join(" · ")} · ISO 6346 na nagłówku · QR Omni, nie EAN. Nie WMS, nie VGM, nie HAWB, nie S21.</p>
+      <div class="xscroll" style="margin-top:var(--s3)">
+        <table class="grid"><thead><tr><th>shipment_stakeholder</th><th>party</th><th>party_id</th></tr></thead><tbody>${stRows}</tbody></table>
+      </div>
+      <div class="xscroll" style="margin-top:var(--s3)">
+        <table class="grid"><thead><tr><th>booking_scope</th><th>target_role</th><th>status</th></tr></thead><tbody>${bkRows}</tbody></table>
+      </div>
+      <div class="xscroll" style="margin-top:var(--s3)">
+        <table class="grid"><thead><tr><th>#</th><th>stop_kind</th><th>location</th><th>time_zone</th><th>status</th></tr></thead><tbody>${stopRows}</tbody></table>
+      </div>
+      <div class="xscroll" style="margin-top:var(--s3)">
+        <table class="grid"><thead><tr><th>package_code</th><th>package_status</th><th>scan_token</th><th>stop</th></tr></thead><tbody>${pkgRows}</tbody></table>
+      </div>
+    </div>`;
 }
 let shipMapState = null;
 function destroyShipMap() {
@@ -1841,6 +2001,8 @@ function quoteInspHtml() {
     <div class="risk"><span class="sev alert"></span><div><b>ISPS Callao w żadnym wariancie</b><p>W 7 z 8 ostatnich zleceń — zwykle 45,00 USD / kontener.</p><button class="fix" type="button" data-gap="isps">Dopisz pozycję ręcznie</button></div></div>
     <div class="risk"><span class="sev stop"></span><div><b>Pacific wygasa 15.09</b><p>Cut-off bramowy 18–24.09 — stawka nie pokryje wypłynięcia.</p></div></div>
     <div class="risk"><span class="sev"></span><div><b>GRI ogłoszone na 01.10</b><p>Hapag-Lloyd · +800 USD/FEU · poza zakresem przy ważności 14 dni.</p></div></div>
+    <div class="risk"><span class="sev"></span><div><b>Carry-forward U1</b><p>Snapshot na zleceniu: ${carryActive.map((c) => `${c.field_key}=${c.field_value}`).join(" · ")}. Zmiana oferty = nowy wiersz, nie overwrite.</p><button class="fix" type="button" data-act="carry-apply">Przenieś na zlecenie</button></div></div>
+    <div class="risk"><span class="sev alert"></span><div><b>Checklista U5 · export_declaration</b><p>blocks_dispatch = tak na DAP export ocean. Dana, nie C8.</p><button class="fix" type="button" data-act="quote-rules">Otwórz reguły</button></div></div>
   </div>
   <div class="rsec"><h3>Ryzyko oferty</h3>
     <p class="score">54 <small>/ 100 — podwyższone</small></p>
@@ -1864,9 +2026,9 @@ const INSP = {
   charges: `<h3 class="h-id">charge</h3><p class="note">Jedyny wiersz buy+sell. Marża z domeny. Nie druga tabela.</p>`,
   hitl: `<h3 class="h-id">Szkic</h3><p class="note">draft_kind = rate_line albo carrier_quote. Accept zapisuje stawkę albo ofertę kanału. ExtractionService nie importuje rates.</p>`,
   parties: `<h3 class="h-id">party</h3><p class="note">NIP / VAT UE / EORI / DUNS unikalne. Klient bez NIP = 400. JDG limit tylko HITL. Lookup = szkic.</p>`,
-  ports: `<h3 class="h-id">port</h3><p class="note">UN/LOCODE. Nieznany token = odrzut. WPI poza HTTP.</p>`,
-  locations: `<h3 class="h-id">location</h3><p class="note">postal_zone z exclusion constraint w Postgres.</p>`,
-  users: `<h3 class="h-id">OpenFGA</h3><p class="note">Brak relacji — ukryj. Read-only — wyszarz z powodem.</p>`,
+  ports: `<h3 class="h-id">port</h3><p class="note">UN/LOCODE. Lotnisko = airport w function_flags. Nieznany token = odrzut. WPI poza HTTP.</p>`,
+  locations: `<h3 class="h-id">location</h3><p class="note">postal_zone z exclusion constraint. groupage_line: cutoff + TT + ISODOW, nie WMS.</p>`,
+  users: `<h3 class="h-id">OpenFGA / kalendarz</h3><p class="note">Brak relacji — ukryj. organization_calendar: is_working_day w SQL.</p>`,
   channels: `<h3 class="h-id">channel_quote</h3><p class="note">TT + najtańsza / najszybszy TT z SQL. 409 przy duplikacie na lane. Nie marża.</p>`,
   networks: `<h3 class="h-id">network / inquiry</h3><p class="note">Członek z party_id. Filtr kraju. Paczka queued. Szkice top N. no_reply_after → notice.</p>`,
   mod: `<h3 class="h-id">Inspector</h3><p class="note">Kwoty string. LLM nie liczy. HITL przed zapisem do bazy.</p>`
@@ -2032,6 +2194,7 @@ function drawPal(q) {
     { g: "Nawigacja", i: "Oferty kanału", a: () => go("channels") },
     { g: "Nawigacja", i: "Sieci i zapytania", a: () => go("networks") },
     { g: "Nawigacja", i: "Użytkownicy", a: () => go("users") },
+    { g: "Akcje", i: "Skan QR paczki", a: () => { go("ship"); setTimeout(() => document.querySelector("[data-act='scan-pkg']")?.click(), 0); } },
     { g: "Akcje", i: "Akceptuj szkic HITL", a: () => { go("hitl"); toast("Fokus na Accept — potwierdzenie recenzenta."); } },
     { g: "Rekordy", i: "ZAP/2026/00318", a: () => go("quote") }
   ];
@@ -2392,7 +2555,7 @@ document.addEventListener("click", (e) => {
   if (a === "quote-incoterm") {
     OR_KERNEL.form({
       title: "Incoterms",
-      note: "DAP/DDP bez named_place = 409. trade_side na wycenie.",
+      note: "DAP/DDP bez named_place = 409. trade_side na wycenie. Carry-forward to osobny snapshot.",
       fields: [
         { id: "incoterm", label: "incoterm", type: "select", required: true, options: ["EXW", "FCA", "CPT", "CIP", "DAP", "DPU", "DDP", "FAS", "FOB", "CFR", "CIF"], value: quoteTerms.incoterm },
         { id: "incoterms_version", label: "incoterms_version", type: "select", options: ["2020", "2010"], value: quoteTerms.version },
@@ -2406,9 +2569,224 @@ document.addEventListener("click", (e) => {
       onSave: (d) => {
         quoteTerms = { incoterm: d.incoterm, version: d.incoterms_version || "2020", tradeSide: d.trade_side || "export", namedPlace: d.named_place };
         if (current === "quote") { paintQuote(); setInsp(quoteInspHtml(), true); }
-        toast("Incoterms zapisane w sesji. FOB superseded gdy DAP.");
+        toast("Incoterms oferty w sesji. Snapshot na zleceniu zmienia tylko Przenieś (nowy wiersz).");
       }
     });
+    return;
+  }
+  if (a === "quote-rules") {
+    quoteOpenRules = true;
+    if (current === "quote") paintQuote();
+    else go("quote");
+    return;
+  }
+  if (a === "carry-apply") {
+    OR_KERNEL.confirm({
+      title: "field_carry_forward",
+      note: "Zmiana = nowy wiersz + superseded_by. Nie cichy overwrite.",
+      text: `Przenieść ${quoteTerms.incoterm} / ${quoteTerms.tradeSide} / ${quoteTerms.namedPlace || "—"} na GD/2026/00412?`,
+      acceptLabel: "Zapisz snapshot",
+      onAccept: () => {
+        carryActive = [
+          { field_key: "incoterm", field_value: quoteTerms.incoterm },
+          { field_key: "trade_side", field_value: quoteTerms.tradeSide },
+          { field_key: "named_place", field_value: quoteTerms.namedPlace || "" }
+        ];
+        SHIP_ROUTE.incoterm = quoteTerms.incoterm;
+        SHIP_ROUTE.namedPlace = quoteTerms.namedPlace || SHIP_ROUTE.namedPlace;
+        if (current === "quote") { quoteOpenRules = true; paintQuote(); setInsp(quoteInspHtml(), true); }
+        if (current === "ship") { paintShip(); setInsp(shipInspHtml(), true); }
+        toast("Nowy snapshot carry-forward. Stary wiersz superseded_by.");
+      }
+    });
+    return;
+  }
+  if (a === "ship-stakeholders") {
+    const rows = STAKEHOLDERS.map((s) => ({ k: s.role, v: `${s.party} · ${s.party_id}` }));
+    rows.push({ k: "client_customs", v: "brak party_id" });
+    OR_KERNEL.detail({
+      title: "shipment_stakeholder · I2",
+      note: "7 ról z karty I2. party_id wymagane. Nie EXP1.",
+      rows,
+      actions: [
+        { act: "stake-add", label: "Dodaj client_customs" },
+        { act: "stake-mail", label: "Szkic maila" }
+      ]
+    });
+    return;
+  }
+  if (a === "stake-add") {
+    OR_KERNEL.form({
+      title: "Strona zlecenia",
+      note: "409 gdy party_id puste. 7 ról: shipper, consignee, origin_agent, dest_agent, ocean_carrier, omni_customs, client_customs.",
+      requireSource: true,
+      fields: [
+        { id: "role", label: "role", type: "select", required: true, options: ["shipper", "consignee", "origin_agent", "dest_agent", "ocean_carrier", "omni_customs", "client_customs"], value: "client_customs" },
+        { id: "party_id", label: "party_id", required: true, placeholder: "kontrahent" },
+        { id: "source_ref", label: "source_ref", required: true, value: "fixture://shipment-stakeholder/7" }
+      ],
+      validate: (d) => d.party_id ? "" : "409 · party_id wymagane.",
+      onSave: () => toast("Strona zapisana w sesji. Nie EXP1.")
+    });
+    return;
+  }
+  if (a === "stake-mail") {
+    OR_KERNEL.mail({
+      to: "ops@andescargo.pe",
+      subject: `${SHIP_META.ref} · strony zlecenia`,
+      body: "Proszę o party_id dla client_customs. Bez niego wiersz nie wchodzi."
+    });
+    return;
+  }
+  if (a === "ship-booking") {
+    const rows = BOOKING_ROWS.map((b) => ({ k: b.booking_scope, v: `${b.target_role} · ${bookingStatusOf(b)}` }));
+    OR_KERNEL.detail({
+      title: "booking_instruction · I4",
+      note: "suggested → accept człowieka. Nie S21, nie HTTP armatora.",
+      rows,
+      actions: [
+        { act: "booking-accept", label: "Accept ocean" },
+        { act: "booking-mail", label: "Szkic maila" }
+      ]
+    });
+    return;
+  }
+  if (a === "booking-accept") {
+    OR_KERNEL.confirm({
+      title: "Accept booking_instruction",
+      note: "HITL. Status dane, nie wysyłka do armatora.",
+      text: "ocean → ocean_carrier · suggested. Zaakceptować instrukcję?",
+      acceptLabel: "Accept",
+      onAccept: () => {
+        bookingOceanStatus = "accepted";
+        if (current === "ship") { paintShip(); setInsp(shipInspHtml(), true); }
+        toast("Booking ocean = accepted. Nie S21.");
+      }
+    });
+    return;
+  }
+  if (a === "booking-mail") {
+    OR_KERNEL.mail({
+      to: "api@hlag.com",
+      subject: `${SHIP_META.ref} · booking ocean (szkic)`,
+      body: "Instrukcja accepted w Omni. Ten mail nie jest S21."
+    });
+    return;
+  }
+  if (a === "ship-stops") {
+    OR_KERNEL.detail({
+      title: "stop · T1",
+      note: "location ze słownika + strefa IANA. Nie mapa.",
+      rows: STOPS.map((s) => ({ k: `#${s.sequence_no} ${s.stop_kind}`, v: `${s.location} · ${s.time_zone} · ${s.status}` })),
+      actions: [{ act: "stop-add", label: "Dodaj stop" }]
+    });
+    return;
+  }
+  if (a === "stop-add") {
+    OR_KERNEL.form({
+      title: "Nowy stop",
+      note: "Miejsce ze słownika. time_zone IANA. Nie mapa.",
+      requireSource: true,
+      fields: [
+        { id: "stop_kind", label: "stop_kind", type: "select", required: true, options: ["loading", "unloading", "customs", "ferry", "terminal", "depot", "other"], value: "depot" },
+        { id: "location", label: "location", required: true, value: "Gdynia BCT" },
+        { id: "time_zone", label: "time_zone", required: true, value: "Europe/Warsaw" },
+        { id: "sequence_no", label: "sequence_no", required: true, value: "5" },
+        { id: "source_ref", label: "source_ref", required: true, value: "fixture://stop/5" }
+      ],
+      onSave: () => toast("Stop w sesji. Nie mapa.")
+    });
+    return;
+  }
+  if (a === "scan-pkg") {
+    if (current !== "ship") go("ship");
+    OR_KERNEL.form({
+      title: "Skan QR Omni · shipment_package",
+      note: "Token omni://shipment-package/{kod} albo fixture://omni-qr/{kod}. Inny kod = odrzut. Stop z tej trasy.",
+      requireSource: true,
+      fields: [
+        { id: "package_code", label: "package_code", required: true, value: "pkg_mex_001" },
+        { id: "scan_token", label: "scan_token", required: true, value: "omni://shipment-package/pkg_mex_001" },
+        { id: "stop", label: "stop z trasy", type: "select", required: true, options: STOPS.map((s) => `${s.sequence_no} · ${s.stop_kind} · ${s.location}`), value: "2 · terminal · Gdynia BCT" },
+        { id: "package_status", label: "package_status", type: "select", required: true, options: ["noted", "at_stop", "in_transit", "delivered"], value: "in_transit" },
+        { id: "source_ref", label: "source_ref", required: true, value: "fixture://shipment-package/1" }
+      ],
+      validate: (d) => {
+        const code = (d.package_code || "").trim();
+        const tok = (d.scan_token || "").trim();
+        if (tok === `omni://shipment-package/${code}` || tok === `fixture://omni-qr/${code}`) return "";
+        return "409 · skan wymaga QR Omni. EAN / obcy kod nie podpina zlecenia.";
+      },
+      onSave: () => toast("Skan QR Omni w sesji. Stop z trasy. Nie WMS.")
+    });
+    return;
+  }
+  if (a === "ship-containers") {
+    OR_KERNEL.detail({
+      title: "container · T3",
+      note: "ISO 6346 + iso_size_type. Cyfrę kontrolną liczy serwer. Nie VGM.",
+      rows: SHIP_META.containers.map((c) => ({ k: c.no, v: `iso_size_type ${c.iso}` })),
+      actions: [{ act: "container-add", label: "Dodaj kontener" }]
+    });
+    return;
+  }
+  if (a === "container-add") {
+    OR_KERNEL.form({
+      title: "Kontener ISO 6346",
+      note: "11 znaków. Cyfrę kontrolną liczy serwer, nie UI.",
+      requireSource: true,
+      fields: [
+        { id: "container_no", label: "container_no", required: true, value: "MSKU7823410" },
+        { id: "iso_size_type", label: "iso_size_type", required: true, value: "45G1" },
+        { id: "source_ref", label: "source_ref", required: true, value: "fixture://container/3" }
+      ],
+      validate: (d) => (d.container_no || "").replace(/\s/g, "").length === 11 ? "" : "409 · container_no musi mieć 11 znaków ISO 6346.",
+      onSave: () => toast("Kontener w sesji. Nie VGM.")
+    });
+    return;
+  }
+  if (a === "ship-air") {
+    OR_KERNEL.form({
+      title: "Odcinek air · U3",
+      note: "leg_kind=air. Port bez airport w function_flags = odrzut. Nie HAWB.",
+      requireSource: true,
+      fields: [
+        { id: "origin", label: "origin UN/LOCODE", required: true, value: "PLWAW" },
+        { id: "destination", label: "destination UN/LOCODE", required: true, value: "PELIM" },
+        { id: "source_ref", label: "source_ref", required: true, value: "fixture://shipment-leg/air-1" }
+      ],
+      validate: (d) => {
+        const o = PORTS.find((p) => p.code === (d.origin || "").toUpperCase());
+        const t = PORTS.find((p) => p.code === (d.destination || "").toUpperCase());
+        if (!o || !o.airport) return "409 · origin bez flagi airport.";
+        if (!t || !t.airport) return "409 · destination bez flagi airport.";
+        return "";
+      },
+      onSave: () => toast("Odcinek air w sesji. Nie HAWB.")
+    });
+    return;
+  }
+  if (a === "new-groupage") {
+    OR_KERNEL.form({
+      title: "groupage_line · D1",
+      note: "Dwa location. cutoff_local dana. transit_days ≥ 1. ISODOW 1=poniedziałek. Nie WMS.",
+      requireSource: true,
+      fields: [
+        { id: "line_code", label: "line_code", required: true, value: "poz_waw_ltl" },
+        { id: "origin", label: "origin location", required: true, value: "Poznań · magazyn" },
+        { id: "dest", label: "destination location", required: true, value: "Warszawa · strefa" },
+        { id: "cutoff_local", label: "cutoff_local", required: true, value: "16:00" },
+        { id: "transit_days", label: "transit_days", required: true, value: "1" },
+        { id: "operating_dows", label: "operating_dows", required: true, value: "1,2,3,4,5" },
+        { id: "source_ref", label: "source_ref", required: true, value: "fixture://groupage-line/1" }
+      ],
+      validate: (d) => d.origin === d.dest ? "409 · origin i destination muszą być różne." : "",
+      onSave: () => toast("Linia drobnicy w sesji. Nie WMS.")
+    });
+    return;
+  }
+  if (a === "cal-working-home") {
+    OR_KERNEL.blocked("is_working_day = false · PL 2026-11-11 · day_kind holiday. Wynik z SQL, nie z JS. Nie V5.");
     return;
   }
   if (a === "open-mail") {
