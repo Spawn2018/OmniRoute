@@ -472,3 +472,7 @@ class InvalidDocumentDispatchRule(DomainError):
 
 class InvalidBookingInstruction(DomainError):
     """Instrukcja bookingu: scope + rola I2 + status — nie HTTP armatora."""
+
+
+class InvalidOrganizationCalendar(DomainError):
+    """Dzien kalendarza tenanta: kraj ISO + dzien + holiday/working — nie +3 kalendarzowe."""

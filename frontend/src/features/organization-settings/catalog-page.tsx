@@ -9,6 +9,7 @@ import {
 } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { CalendarOverridePanel } from "@/features/organization-settings/calendar-panel"
 import { BUSINESS_LISTS } from "@/lib/business-lists"
 import {
   fetchOrganizationSettings,
@@ -234,6 +235,8 @@ export function OrganizationSettingCatalogPage() {
       {saveTemplate.isError ? <CatalogError error={saveTemplate.error} /> : null}
       {saveDefaultN.isError ? <CatalogError error={saveDefaultN.error} /> : null}
       {saveLaneWindow.isError ? <CatalogError error={saveLaneWindow.error} /> : null}
+
+      <CalendarOverridePanel canWrite={signedIn} />
 
       <CatalogLoadedTable
         loading={query.isLoading}

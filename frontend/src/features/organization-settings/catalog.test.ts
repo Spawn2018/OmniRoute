@@ -44,5 +44,16 @@ describe("organization settings catalog screen", () => {
     expect(page).toContain("Prefiks numeru oferty")
     expect(page).toContain("Szablon oferty")
     expect(page).not.toContain("document_number")
+    expect(page).toContain("CalendarOverridePanel")
   })
 })
+
+describe("organization calendar panel", () => {
+  it("records holiday or working day without counting grace in JS", () => {
+    const panel = readFileSync(new URL("./calendar-panel.tsx", import.meta.url), "utf8")
+    expect(panel).toContain('data-organization-calendar="days"')
+    expect(panel).toContain("is_working_day")
+    expect(panel).not.toContain("observation_ends_at")
+  })
+})
+

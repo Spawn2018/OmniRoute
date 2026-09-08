@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny (zablokowany):** **U4** `organization_calendar` → T → U3 → D → P → G2.0–G2.23 → F → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
+**Następny (zablokowany):** **T1** `stop` + `stop_group` + timezone + `eta_physical`/`eta_legal` + EXP1 → T → U3 → D → P → G2.0–G2.23 → F → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
 <!-- os-status:end -->
 
 ```mermaid
@@ -516,7 +516,7 @@ Karta: [karty-pol-fala-u.md](analysis/karty-pol-fala-u.md). **U6** + **M-72** = 
 | **I0 / U2** | `quotation.incoterm` + `trade_side` + `named_place` + wersja 2020/2010 | Plan → plaster | zamknięty (`docs/deltas/archived/137.0-quotation-incoterm.md`) | DAP bez miejsca = 409; nie cytat ICC |
 | **U1** | `field_carry_forward` oferta→zlecenie→booking→FV; diff przy POST | zamknięty (`docs/deltas/archived/144.0-u1-u5-carry-checklist.md`) | po O8, przed I1 | mutacja = nowy wiersz / `superseded_by` |
 | **U5** | `document_checklist_rule` (incoterm×side×mode) + `blocks_dispatch` | zamknięty (z U1, 144.0) | z U1 | ≠ C8 polisa podwykonawcy |
-| **U4** | `organization_calendar` + `is_working_day`; grace V5 = 3 dni **robocze** | Plan → plaster | po I4, przed T1 | nie `+3` kalendarzowe |
+| **U4** | `organization_calendar` + `is_working_day`; grace V5 = 3 dni **robocze** | zamknięty (`docs/deltas/archived/149.0-organization-calendar.md`) | po I4, przed T1 | nie `+3` kalendarzowe |
 | **U3** | `shipment_leg.kind=air` HAWB/MAWB + pule; lotnisko = `port` air | Plan → plaster | po T, przed D | nie live IATA bez umowy |
 | **N9** | F2 + klon ostatniego podobnego zlecenia | Plan → plaster | z U1 | nie drugi SoR |
 

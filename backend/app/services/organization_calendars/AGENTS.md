@@ -1,0 +1,15 @@
+# BC organization_calendar (U4)
+
+Katalog dni roboczych i świąt per tenant. `is_working_day` liczy Postgres.
+Nie GPS. Nie V5. Nie +3 kalendarzowe.
+
+## Dozwolone zależności
+- `app.models.organization_calendar`
+- `app.repositories.organization_calendars`
+- `app.domain`
+
+## Zakaz
+- import innych BC services (parties, shipments, charges, nbp_rates)
+- zapis `party` / `shipment` / `charge` / `nbp_rate`
+- kwoty / marża / float / weekday() w Pythonie
+- HTTP / seed świąt PL w kodzie

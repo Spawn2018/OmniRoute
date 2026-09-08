@@ -2760,6 +2760,62 @@ export type OperatorNoticeResponse = {
 };
 
 /**
+ * OrganizationCalendarCreate
+ */
+export type OrganizationCalendarCreate = {
+    /**
+     * Country Code
+     */
+    country_code: string;
+    /**
+     * Calendar Day
+     */
+    calendar_day: string;
+    /**
+     * Day Kind
+     */
+    day_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * OrganizationCalendarResponse
+ */
+export type OrganizationCalendarResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Country Code
+     */
+    country_code: string;
+    /**
+     * Calendar Day
+     */
+    calendar_day: string;
+    /**
+     * Day Kind
+     */
+    day_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+    /**
+     * Superseded By
+     */
+    superseded_by: string | null;
+};
+
+/**
  * OrganizationSettingResponse
  */
 export type OrganizationSettingResponse = {
@@ -4221,6 +4277,24 @@ export type ValidationError = {
     ctx?: {
         [key: string]: unknown;
     };
+};
+
+/**
+ * WorkingDayResponse
+ */
+export type WorkingDayResponse = {
+    /**
+     * Country Code
+     */
+    country_code: string;
+    /**
+     * Calendar Day
+     */
+    calendar_day: string;
+    /**
+     * Is Working Day
+     */
+    is_working_day: boolean;
 };
 
 /**
@@ -7346,6 +7420,97 @@ export type CreateShipmentLegApiV1ShipmentLegsPostResponses = {
 };
 
 export type CreateShipmentLegApiV1ShipmentLegsPostResponse = CreateShipmentLegApiV1ShipmentLegsPostResponses[keyof CreateShipmentLegApiV1ShipmentLegsPostResponses];
+
+export type ListOrganizationCalendarsApiV1OrganizationCalendarsGetData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Country Code
+         */
+        country_code: string;
+    };
+    url: '/api/v1/organization-calendars';
+};
+
+export type ListOrganizationCalendarsApiV1OrganizationCalendarsGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ListOrganizationCalendarsApiV1OrganizationCalendarsGetError = ListOrganizationCalendarsApiV1OrganizationCalendarsGetErrors[keyof ListOrganizationCalendarsApiV1OrganizationCalendarsGetErrors];
+
+export type ListOrganizationCalendarsApiV1OrganizationCalendarsGetResponses = {
+    /**
+     * Response List Organization Calendars Api V1 Organization Calendars Get
+     *
+     * Successful Response
+     */
+    200: Array<OrganizationCalendarResponse>;
+};
+
+export type ListOrganizationCalendarsApiV1OrganizationCalendarsGetResponse = ListOrganizationCalendarsApiV1OrganizationCalendarsGetResponses[keyof ListOrganizationCalendarsApiV1OrganizationCalendarsGetResponses];
+
+export type CreateOrganizationCalendarApiV1OrganizationCalendarsPostData = {
+    body: OrganizationCalendarCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/organization-calendars';
+};
+
+export type CreateOrganizationCalendarApiV1OrganizationCalendarsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateOrganizationCalendarApiV1OrganizationCalendarsPostError = CreateOrganizationCalendarApiV1OrganizationCalendarsPostErrors[keyof CreateOrganizationCalendarApiV1OrganizationCalendarsPostErrors];
+
+export type CreateOrganizationCalendarApiV1OrganizationCalendarsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: OrganizationCalendarResponse;
+};
+
+export type CreateOrganizationCalendarApiV1OrganizationCalendarsPostResponse = CreateOrganizationCalendarApiV1OrganizationCalendarsPostResponses[keyof CreateOrganizationCalendarApiV1OrganizationCalendarsPostResponses];
+
+export type GetWorkingDayApiV1OrganizationCalendarsWorkingDayGetData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Country Code
+         */
+        country_code: string;
+        /**
+         * Calendar Day
+         */
+        calendar_day: string;
+    };
+    url: '/api/v1/organization-calendars/working-day';
+};
+
+export type GetWorkingDayApiV1OrganizationCalendarsWorkingDayGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type GetWorkingDayApiV1OrganizationCalendarsWorkingDayGetError = GetWorkingDayApiV1OrganizationCalendarsWorkingDayGetErrors[keyof GetWorkingDayApiV1OrganizationCalendarsWorkingDayGetErrors];
+
+export type GetWorkingDayApiV1OrganizationCalendarsWorkingDayGetResponses = {
+    /**
+     * Successful Response
+     */
+    200: WorkingDayResponse;
+};
+
+export type GetWorkingDayApiV1OrganizationCalendarsWorkingDayGetResponse = GetWorkingDayApiV1OrganizationCalendarsWorkingDayGetResponses[keyof GetWorkingDayApiV1OrganizationCalendarsWorkingDayGetResponses];
 
 export type ListOrganizationSettingsApiV1OrganizationSettingsGetData = {
     body?: never;

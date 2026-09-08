@@ -30,6 +30,7 @@ from app.models.nbp_rate import NbpRate  # noqa: F401
 from app.models.rate_line import RateLine  # noqa: F401
 from app.models.charge import Charge  # noqa: F401
 from app.models.quotation import Quotation  # noqa: F401
+from app.models.organization_calendar import OrganizationCalendar  # noqa: F401
 from app.models.organization_setting import OrganizationSetting  # noqa: F401
 from app.models.extraction_draft import ExtractionDraft  # noqa: F401
 from app.models.table_view import TableView  # noqa: F401

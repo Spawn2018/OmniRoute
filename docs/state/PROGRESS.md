@@ -379,3 +379,5 @@
 | 2026-09-08 | 147.0 | I3 | document_dispatch_rule katalog adresata. Nie send. Nie I4. Nastepny: I4 Plan. |
 | 2026-09-08 | Plan 148.0 | I4 | booking_instruction (scope+rola, nie S21). Delta zaakceptowana (`/noc`). Nie U4. Nastepny: kod 148.0. |
 | 2026-09-08 | 148.0 | I4 | booking_instruction na zleceniu. Nie S21. Nastepny: U4 Plan. |
+| 2026-09-08 | Plan 149.0 | U4 | organization_calendar + is_working_day SQL. Delta zaakceptowana (`/noc`). Nie V5. Nastepny: kod 149.0. |
+| 2026-09-08 | 149.0 | U4 | organization_calendar + is_working_day SQL. Nie V5. Nastepny: T1 Plan. |

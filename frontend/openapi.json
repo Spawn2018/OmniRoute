@@ -5336,6 +5336,158 @@
         ]
       }
     },
+    "/api/v1/organization-calendars": {
+      "get": {
+        "tags": [
+          "organization-calendars"
+        ],
+        "summary": "List Organization Calendars",
+        "operationId": "list_organization_calendars_api_v1_organization_calendars_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "country_code",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Country Code"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrganizationCalendarResponse"
+                  },
+                  "title": "Response List Organization Calendars Api V1 Organization Calendars Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "organization-calendars"
+        ],
+        "summary": "Create Organization Calendar",
+        "operationId": "create_organization_calendar_api_v1_organization_calendars_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationCalendarCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationCalendarResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/organization-calendars/working-day": {
+      "get": {
+        "tags": [
+          "organization-calendars"
+        ],
+        "summary": "Get Working Day",
+        "operationId": "get_working_day_api_v1_organization_calendars_working_day_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "country_code",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Country Code"
+            }
+          },
+          {
+            "name": "calendar_day",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "title": "Calendar Day"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkingDayResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/organization-settings": {
       "get": {
         "tags": [
@@ -12234,6 +12386,90 @@
         ],
         "title": "OperatorNoticeResponse"
       },
+      "OrganizationCalendarCreate": {
+        "properties": {
+          "country_code": {
+            "type": "string",
+            "title": "Country Code"
+          },
+          "calendar_day": {
+            "type": "string",
+            "format": "date",
+            "title": "Calendar Day"
+          },
+          "day_kind": {
+            "type": "string",
+            "title": "Day Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "country_code",
+          "calendar_day",
+          "day_kind",
+          "source_ref"
+        ],
+        "title": "OrganizationCalendarCreate"
+      },
+      "OrganizationCalendarResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "country_code": {
+            "type": "string",
+            "title": "Country Code"
+          },
+          "calendar_day": {
+            "type": "string",
+            "format": "date",
+            "title": "Calendar Day"
+          },
+          "day_kind": {
+            "type": "string",
+            "title": "Day Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          },
+          "superseded_by": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Superseded By"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "country_code",
+          "calendar_day",
+          "day_kind",
+          "source_ref",
+          "superseded_by"
+        ],
+        "title": "OrganizationCalendarResponse"
+      },
       "OrganizationSettingResponse": {
         "properties": {
           "id": {
@@ -14876,6 +15112,30 @@
           "type"
         ],
         "title": "ValidationError"
+      },
+      "WorkingDayResponse": {
+        "properties": {
+          "country_code": {
+            "type": "string",
+            "title": "Country Code"
+          },
+          "calendar_day": {
+            "type": "string",
+            "format": "date",
+            "title": "Calendar Day"
+          },
+          "is_working_day": {
+            "type": "boolean",
+            "title": "Is Working Day"
+          }
+        },
+        "type": "object",
+        "required": [
+          "country_code",
+          "calendar_day",
+          "is_working_day"
+        ],
+        "title": "WorkingDayResponse"
       },
       "ZoneCreate": {
         "properties": {
