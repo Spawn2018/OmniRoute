@@ -28,6 +28,8 @@ ADR-0003 (układ rail + szyna), nie DNA koloru.
 
 **Reszta [omniroute-ui.html](omniroute-ui.html)** (M-01…M-212, Stawki, HITL, Watchtower):
 podgląd sprzedażowy, nie plaster kolejki, nie drugi kanon. Katalog: [omniroute-ui-catalog.js](omniroute-ui-catalog.js).
+Kernel akcji: [omniroute-ui-actions.js](omniroute-ui-actions.js). Job per M-xx: [omniroute-ui-modules.js](omniroute-ui-modules.js).
+Deck spotkania: [sales/omniroute-spotkanie.pptx](sales/omniroute-spotkanie.pptx) · zrzuty `screens/demo-*.png`.
 
 **Kanon leftoverów ADR-0003:** [app-preview.html](app-preview.html) — układ rail + powierzchnia + prawa szyna, tokeny OKLCH (zieleń hue 165), tenant w topbarze, HITL, kwoty jako string z „serwera” (zero `sum()` w JS). Otwórz w przeglądarce, nie w Canvas IDE. Nie jest paletą produktu.
 

@@ -14,7 +14,7 @@
   --r: 12px; --r-sm: 8px; --r-pill: 999px;
   --fs-xs: 11px; --fs-sm: 12.5px; --fs: 14px; --fs-md: 16px; --fs-lg: 22px; --fs-xl: 28px;
   --row-h: 32px; --pad-y: 6px;
-  --rail: 3.35rem; --insp: 19.5rem; --top: 3rem;
+  --rail: 3.35rem; --rail-open: 13.75rem; --insp: 19.5rem; --top: 3rem;
   --sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, monospace;
   --cond: "IBM Plex Sans Condensed", "IBM Plex Sans", sans-serif;
@@ -93,15 +93,33 @@ svg { display: block; }
   background: var(--ink); color: var(--on-ink); display: flex; flex-direction: column;
   align-items: center; gap: var(--s2); padding: var(--s3) 0 env(safe-area-inset-bottom);
   position: fixed; left: 0; top: 0; bottom: 0; width: var(--rail); height: 100dvh; z-index: 30;
+  overflow-x: hidden; overflow-y: auto; transition: width 160ms ease;
 }
+.app.rail-open { --rail: var(--rail-open); }
+.app.rail-open .rail { align-items: stretch; padding: var(--s3) var(--s2) env(safe-area-inset-bottom); }
+.rail-grp {
+  display: none; font-size: 9px; letter-spacing: .08em; text-transform: uppercase;
+  color: color-mix(in oklch, var(--on-ink) 42%, transparent); padding: var(--s3) var(--s3) 0; margin: 0;
+}
+.app.rail-open .rail-grp { display: block; }
+.rail .lbl { display: none; font-size: 12px; font-weight: 500; white-space: nowrap; text-align: left; }
+.app.rail-open .rail .lbl { display: block; }
 .mark {
   width: 2rem; height: 2rem; margin: var(--s2) 0 var(--s3); border-radius: var(--r-sm);
   background: oklch(.72 .12 165); color: oklch(.16 .04 165);
   display: grid; place-items: center; font-weight: 600;
 }
+.rail button.mark {
+  width: 2rem; height: 2rem; color: oklch(.16 .04 165);
+}
+.app.rail-open .rail button.mark { width: 2rem; height: 2rem; margin-inline: auto; grid-template-columns: none; }
 .rail button, .rail a {
   width: 2.35rem; height: 2.35rem; display: grid; place-items: center; border-radius: var(--r-sm);
-  color: color-mix(in oklch, var(--on-ink) 72%, transparent); position: relative;
+  color: color-mix(in oklch, var(--on-ink) 72%, transparent); position: relative; flex-shrink: 0;
+}
+.app.rail-open .rail button, .app.rail-open .rail a {
+  width: 100%; height: 2.2rem; grid-template-columns: 1.4rem 1fr; justify-items: start;
+  align-items: center; gap: var(--s2); padding: 0 var(--s3);
 }
 .rail button[aria-current="page"] { background: color-mix(in oklch, var(--on-ink) 14%, transparent); color: var(--on-ink); }
 .rail svg { width: 1.15rem; height: 1.15rem; }
@@ -304,6 +322,20 @@ table.lines, table.grid { width: 100%; border-collapse: collapse; min-width: 36r
 .vm-grip { color: var(--text-3); font-size: 14px; letter-spacing: -.05em; line-height: 1; padding: 0 2px; }
 .vm-row label { display: flex; flex: 1; align-items: center; gap: var(--s2); font-size: var(--fs-sm); cursor: pointer; }
 .vm-row input { accent-color: var(--accent); }
+.kform { display: grid; gap: var(--s3); }
+.kf { display: grid; gap: 3px; font-size: var(--fs-sm); }
+.kf span { font-size: 10.5px; text-transform: uppercase; letter-spacing: .05em; color: var(--text-3); }
+.kf input, .kf select, .kf textarea {
+  min-height: 2rem; border: 1px solid var(--rule-2); border-radius: var(--r-sm);
+  background: var(--surface-2); padding: var(--s2) var(--s3); width: 100%;
+}
+.kf textarea { min-height: 6rem; resize: vertical; }
+.kerr { color: var(--stop); font-size: var(--fs-sm); margin: 0; }
+.kdetail { display: grid; gap: var(--s2); margin: 0; }
+.krow { display: grid; grid-template-columns: 8rem 1fr; gap: var(--s3); font-size: var(--fs-sm); }
+.krow dt { margin: 0; color: var(--text-3); font-size: 10.5px; text-transform: uppercase; letter-spacing: .05em; }
+.krow dd { margin: 0; font-weight: 500; }
+.kfiles { margin: var(--s2) 0 0; padding-left: 1.1rem; }
 .docs-list { display: grid; gap: var(--s2); }
 .docs-row {
   display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: var(--s3);
@@ -503,7 +535,8 @@ table.mini { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); }
     flex-direction: row; justify-content: space-around; align-items: center;
     padding: var(--s2) var(--s3) calc(var(--s2) + env(safe-area-inset-bottom));
   }
-  .rail .sp, .rail .who, .rail .mark { display: none; }
+  .rail .sp, .rail .who, .rail .mark, .rail-grp, .rail .lbl { display: none; }
+  .app.rail-open { --rail: 3.35rem; }
   .work { padding-bottom: calc(3.25rem + env(safe-area-inset-bottom)); }
   .top { padding: var(--s3); row-gap: var(--s2); }
   .top select { max-width: none; flex: 1 1 8rem; min-width: 0; }
@@ -536,20 +569,25 @@ table.mini { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); }
 <body>
 <div class="app">
   <nav class="rail" aria-label="Moduły">
-    <span class="mark">O</span>
-    <button type="button" data-go="home" aria-current="page" title="Dzień"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></button>
-    <button type="button" data-go="quote" title="Wyceny"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg></button>
-    <button type="button" data-go="rates" title="Stawki"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 19V5M4 19h16M8 16V9m4 7V7m4 9v-5"/></svg></button>
-    <button type="button" data-go="charges" title="Opłaty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></button>
-    <button type="button" data-go="hitl" title="Ekstrakcje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2M7 8h8M7 12h10M7 16h6"/></svg></button>
-    <button type="button" data-go="ship" title="Zlecenia"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M19.4 20A11.6 11.6 0 0 0 21 14l-9-4-9 4c0 2.9.9 5.3 2.8 7.8"/></svg></button>
-    <button type="button" data-go="parties" title="Kontrahenci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></button>
-    <button type="button" data-go="ports" title="Porty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></button>
-    <button type="button" data-go="channels" title="Oferty kanału"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></button>
-    <button type="button" id="openCat" title="Wszystkie moduły"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    <button type="button" class="mark" id="railToggle" title="Rozwiń menu" aria-expanded="false">O</button>
+    <p class="rail-grp">Dzień</p>
+    <button type="button" data-go="home" aria-current="page" title="Dzień"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span class="lbl">Dzień</span></button>
+    <p class="rail-grp">Wycena</p>
+    <button type="button" data-go="quote" title="Wyceny"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg><span class="lbl">Wyceny</span></button>
+    <button type="button" data-go="rates" title="Stawki"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 19V5M4 19h16M8 16V9m4 7V7m4 9v-5"/></svg><span class="lbl">Stawki</span></button>
+    <button type="button" data-go="charges" title="Opłaty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span class="lbl">Opłaty</span></button>
+    <button type="button" data-go="hitl" title="Ekstrakcje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2M7 8h8M7 12h10M7 16h6"/></svg><span class="lbl">HITL</span></button>
+    <p class="rail-grp">Zlecenie</p>
+    <button type="button" data-go="ship" title="Zlecenia"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M19.4 20A11.6 11.6 0 0 0 21 14l-9-4-9 4c0 2.9.9 5.3 2.8 7.8"/></svg><span class="lbl">Zlecenia</span></button>
+    <p class="rail-grp">Katalog</p>
+    <button type="button" data-go="parties" title="Kontrahenci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span class="lbl">Kontrahenci</span></button>
+    <button type="button" data-go="ports" title="Porty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span class="lbl">Porty</span></button>
+    <button type="button" data-go="channels" title="Oferty kanału"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg><span class="lbl">Kanały</span></button>
+    <button type="button" id="openCat" title="Wszystkie moduły"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span class="lbl">Wszystkie</span></button>
     <div class="sp"></div>
-    <button type="button" data-go="locations" title="Lokalizacje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></button>
-    <button type="button" data-go="users" title="Użytkownicy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></button>
+    <p class="rail-grp">Finanse / compliance</p>
+    <button type="button" data-go="locations" title="Lokalizacje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="lbl">Lokalizacje</span></button>
+    <button type="button" data-go="users" title="Użytkownicy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><span class="lbl">Użytkownicy</span></button>
     <div class="who" id="tenantInitials">SB</div>
   </nav>
   <div class="shell">
@@ -602,10 +640,13 @@ table.mini { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); }
   <div class="view-modal" role="dialog" aria-modal="true" aria-labelledby="vmTitle" id="viewModal"></div>
 </div>
 <div class="toast" id="toast" role="status"></div>
-<script src="omniroute-ui-catalog.js"></script>
+<script src="omniroute-ui-catalog.js?v=20260908c"></script>
+<script src="omniroute-ui-actions.js?v=20260908c"></script>
+<script src="omniroute-ui-modules.js?v=20260908c"></script>
 <script>
 const $ = (s, c = document) => c.querySelector(s);
 const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+window.money = money;
 function money(amount, currency, cls) {
   if (typeof amount !== "string" || typeof currency !== "string") throw new Error("kwota tylko jako string");
   if (amount === "") return `<span class="mval hole ${cls || ""}"><b>brak</b></span>`;
@@ -913,6 +954,45 @@ const SHIP_DOCS = [
   { id: "pod", name: "POD", ref: "—", status: "brak", kind: "potwierdzenie dostawy" },
   { id: "ins", name: "Certyfikat ubezpieczenia", ref: "—", status: "brak", kind: "cargo insurance" },
 ];
+function customsRecipients() {
+  if (shipCustomsMode === "none") return [];
+  const customs = shipCustomsMode === "client_customs" ? "client_customs" : "omni_customs";
+  return [
+    { id: "hbl", name: "HBL", dest: "dest_agent", ready: true, note: "Andes Cargo · agent dest" },
+    { id: "ci", name: "Faktura handlowa", dest: customs, ready: true, note: "odprawa import · nie armator" },
+    { id: "pl", name: "Packing list", dest: customs, ready: true, note: "odprawa import" },
+    { id: "orig", name: "Świadectwo pochodzenia", dest: customs, ready: false, note: "brak — blokuje pakiet" },
+    { id: "vgm", name: "VGM", dest: "armator", ready: true, note: "Hapag-Lloyd · nie pełny pakiet celny" }
+  ];
+}
+function openCustomsPack() {
+  if (shipCustomsMode === "none") {
+    OR_KERNEL.blocked("Flaga „brak” — nie składamy pakietu celnego. Zmień agencję na zleceniu.");
+    return;
+  }
+  const items = customsRecipients();
+  const missing = items.filter((d) => !d.ready);
+  const rows = items.map((d) => `<div class="docs-row${d.ready ? "" : " missing"}">
+    <div><b>${d.name}</b><p class="note">${d.dest} · ${d.note}</p></div>
+    <span class="chip ${d.ready ? "ok" : "stop"}">${d.ready ? "gotowy" : "brak"}</span>
+    ${d.ready
+      ? `<button class="linkish" type="button" data-act="doc-open" data-doc="${d.id}">Otwórz</button>`
+      : `<button class="linkish" type="button" data-act="doc-request" data-doc="${d.id}">Poproś</button>`}
+  </div>`).join("");
+  $("#viewModal").innerHTML = `<div class="vm-head">
+      <h2 id="vmTitle">Pakiet celny</h2>
+      <p class="note" style="margin:0">DAP Lima · ${shipCustomsMode} · macierz trade_side × Incoterms. Armator ≠ pełny pakiet.</p>
+    </div>
+    <div class="vm-body"><div class="docs-list">${rows}</div></div>
+    <div class="vm-foot">
+      <button class="btn" type="button" data-act="k-cancel" style="margin-right:auto">Zamknij</button>
+      <button class="btn" type="button" data-act="customs-mail">Szkic maila</button>
+      <button class="btn btn-p" type="button" data-act="customs-send"${missing.length ? " aria-disabled=\"true\"" : ""}>Wyślij pakiet</button>
+    </div>`;
+  const scrim = $("#viewScrim");
+  scrim.classList.add("on");
+  scrim.setAttribute("aria-hidden", "false");
+}
 function openShipDocs() {
   shipHeaderDraft = null;
   const ready = SHIP_DOCS.filter((d) => d.status === "gotowy").length;
@@ -945,9 +1025,20 @@ function shipInspHtml() {
   const st = freeTimeTone(SHIP_META.storageDays);
   const dt = freeTimeTone(SHIP_META.detentionDays);
   return `<div class="rsec"><h3>Wyjątki <span class="cnt">3</span></h3>
-    <div class="risk"><span class="sev alert"></span><div><b>Przypłynięcie do ${pa.port} opóźnione o ${pa.delayDays} dni</b><p>Prognoza ATD/ATA w porcie zmieniła się z ${pa.planned} na ${pa.current} (akt. ${pa.updatedAt}). Klient nie został powiadomiony.</p><button class="form linkish" type="button" data-act="notify">Wyślij powiadomienie</button></div></div>
-    <div class="risk"><span class="sev ${freeTimeSev(SHIP_META.storageDays)}"></span><div><b>Storage — ${st.label}</b><p>Po 02.10 naliczany storage 85 USD/dzień/kontener. Odwóz nie jest jeszcze zaplanowany.</p><button class="form linkish" type="button" data-act="haul">Zleć odwóz</button></div></div>
-    <div class="risk"><span class="sev ${freeTimeSev(SHIP_META.detentionDays)}"></span><div><b>Detention — ${dt.label}</b><p>Po 18.10 naliczane detention 165 USD/dzień/kontener.</p><button class="form linkish" type="button" data-act="haul-det">Potwierdź odwóz</button></div></div>
+    <div class="risk"><span class="sev alert"></span><div><b>Przypłynięcie do ${pa.port} opóźnione o ${pa.delayDays} dni</b><p>Prognoza ATD/ATA w porcie zmieniła się z ${pa.planned} na ${pa.current} (akt. ${pa.updatedAt}). Klient nie został powiadomiony.</p><button class="fix" type="button" data-act="notify">Wyślij powiadomienie</button></div></div>
+    <div class="risk"><span class="sev ${freeTimeSev(SHIP_META.storageDays)}"></span><div><b>Storage — ${st.label}</b><p>Po 02.10 naliczany storage 85 USD/dzień/kontener. Odwóz nie jest jeszcze zaplanowany.</p><button class="fix" type="button" data-act="haul">Zleć odwóz</button></div></div>
+    <div class="risk"><span class="sev ${freeTimeSev(SHIP_META.detentionDays)}"></span><div><b>Detention — ${dt.label}</b><p>Po 18.10 naliczane detention 165 USD/dzień/kontener.</p><button class="fix" type="button" data-act="haul-det">Potwierdź odwóz</button></div></div>
+  </div>
+  <div class="rsec"><h3>Odprawa import</h3>
+    <p class="note" style="margin:0 0 var(--s2)">DAP Lima · trade_side export · odbiorca z flagi na zleceniu.</p>
+    <label class="kf"><span>Agencja</span>
+      <select id="shipCustoms" data-act="customs-mode">
+        <option value="omni_customs"${shipCustomsMode === "omni_customs" ? " selected" : ""}>nasza agencja (omni_customs)</option>
+        <option value="client_customs"${shipCustomsMode === "client_customs" ? " selected" : ""}>agencja klienta (client_customs)</option>
+        <option value="none"${shipCustomsMode === "none" ? " selected" : ""}>brak — nie składamy pakietu</option>
+      </select>
+    </label>
+    <button class="btn" type="button" data-act="customs-pack" style="margin-top:var(--s3)">Pakiet celny</button>
   </div>
   <div class="rsec"><h3>Rozliczenie</h3>
     <table class="mini">
@@ -968,9 +1059,13 @@ function toast(m) {
   clearTimeout(toast._id);
   toast._id = setTimeout(() => t.classList.remove("on"), 3200);
 }
+window.toast = toast;
 const SPARK = '<svg class="spark" viewBox="0 0 120 28" aria-hidden="true"><path d="M2 22 C18 20 22 8 40 12 S70 26 90 10 118 6 118 6"/></svg>';
 const LAYER = { kanon: "kanon", uzup: "uzup.", a: "luka A", b: "linia B", c: "odroczone", plat: "platforma", ops: "ops" };
 let mailOn = false;
+let quoteHs = "";
+let quoteFiles = [];
+let shipCustomsMode = "omni_customs";
 let spotOn = false;
 let hitlId = "c2";
 let picked = "andes";
@@ -1080,6 +1175,8 @@ function screenFacts(items, nClass) {
   }).join("");
   return `<div class="pad" style="padding-top:var(--s4)"><div class="card facts-wrap xscroll"><dl class="facts ${nClass || ""}">${cells}</dl></div></div>`;
 }
+window.screenBanner = screenBanner;
+window.screenFacts = screenFacts;
 
 function paintHome() {
   $("#v-home").innerHTML = `<div class="cmd">
@@ -1112,17 +1209,24 @@ function paintQuote() {
   const mail = mailOn
     ? `<div class="card"><b>Do: Andes Cargo, Pacific, TransAndina</b><p class="note">ZAP/2026/00318 · PLGDY→PECLL · 2×40HC · podgląd przed wysłaniem. Idempotencja na wysyłce.</p><button class="btn btn-p" type="button" data-act="send-rfq">Wyślij zapytanie</button></div>`
     : `<div class="empty"><b>Brak korespondencji</b><p>Wiadomości pojawią się po zapytaniu do agentów.</p><button class="btn" type="button" data-act="ask">Zapytaj agentów</button></div>`;
+  const zal = quoteFiles.length
+    ? `<div class="card"><ul class="kfiles">${quoteFiles.map((f) => `<li>${f.name} <span class="note">wskazanie · HITL przed SoR</span></li>`).join("")}</ul></div>`
+    : `<div class="empty"><b>Brak załączników</b><p>Pliki po ekstrakcji i akceptacji recenzenta.</p><button class="btn" type="button" data-act="quote-file">Dodaj wskazanie</button></div>`;
+  const sendBtn = quoteHs
+    ? `<button class="btn btn-p" type="button" data-act="send-offer">Wyślij ofertę</button>`
+    : `<button class="btn" type="button" id="sendQuote" aria-disabled="true">Wyślij ofertę — brak HS</button>`;
   $("#v-quote").innerHTML = `<div class="cmd">
       <button class="btn" type="button" data-act="save">Zapisz</button>
       <button class="btn" type="button" data-act="ask">Zapytaj agentów</button>
-      <button class="btn" type="button" id="sendQuote" aria-disabled="true">Wyślij ofertę — brak HS</button>
+      <button class="btn" type="button" data-act="fill-hs">Uzupełnij HS</button>
+      ${sendBtn}
       <button class="btn" type="button" data-act="spot" id="spot">Pokaż wariant spot</button>
     </div>
-    ${screenBanner("ZAP/2026/00318 · wycena w minutach, nie w mailach", 'Gdynia <span class="loc">PLGDY</span> → Callao <span class="loc">PECLL</span>', "Meblexport · porównaj agentów i spot · marża z charge.margin() · limit z karty M-13")}
+    ${screenBanner("ZAP/2026/00318 · wycena w minutach, nie w mailach", 'Gdynia <span class="loc">PLGDY</span> → Lima <span class="loc">PELIM</span>', "Meblexport · DAP po negocjacji FOB → DAP · marża z charge.margin() · limit z karty M-13")}
     ${screenFacts([
       { t: "Ładunek", v: "2 × 40HC", s: "meble drewniane" },
-      { t: "Kod HS", v: "brak", chip: "alert" },
-      { t: "Incoterm", v: "FOB", s: "Gdynia" },
+      { t: "Kod HS", v: quoteHs || "brak", chip: quoteHs ? "ok" : "alert", s: quoteHs ? "commodity_code" : "blokuje send" },
+      { t: "Incoterm", v: "DAP", s: "Lima · superseded FOB" },
       { t: "Gotowość do podjęcia", v: "10–20.09", s: "połowa września" },
       { t: "Cut-off bramowy", v: "18–24.09", s: "+ 2 dni dowozu" },
       { t: "Ważność oferty", v: "14 dni", s: "sugerowane" },
@@ -1139,7 +1243,7 @@ function paintQuote() {
       <p class="note">Kwoty i pasek z serwera. Ta makieta niczego nie liczy. Marża wyłącznie na charge.</p>
     </div>
     <div class="pane" id="p-mail">${mail}</div>
-    <div class="pane" id="p-zal"><div class="empty"><b>Brak załączników</b><p>Pliki po ekstrakcji i akceptacji recenzenta.</p></div></div>`;
+    <div class="pane" id="p-zal">${zal}</div>`;
 }
 function paintRates() {
   document.documentElement.dataset.grid = gridDense ? "condensed" : "";
@@ -1403,6 +1507,7 @@ function paintShip() {
         <p style="margin:0;opacity:.9;font-size:var(--fs-sm)">Meblexport Sp. z o.o.</p>
       </div>
       <button class="btn" type="button" data-act="docs">Dokumenty 7/9</button>
+      <button class="btn" type="button" data-act="customs-pack">Pakiet celny</button>
     </div>
   </div>
   <div class="pad" style="padding-top:var(--s4)">
@@ -1599,43 +1704,23 @@ function seedRows(mod) {
   }));
 }
 function paintMod(mod) {
-  currentMod = mod;
-  const warn = mod.n === 14 ? `<p class="note">Zakaz auto-scoringu natural_person / JDG (AI Act). Ocena tylko z karty i wywiadowni po HITL.</p>` : "";
-  const def = mod.layer === "c" ? `<p class="note">Warstwa C — w rejestrze dla kompletności modelu, nie w roadmapie 12 m.</p>` : "";
-  const rows = seedRows(mod).map((r) => `<tr><td><button class="linkish" type="button" data-act="open-row">${r.ref}</button></td><td>${r.title}</td><td>${r.party}</td><td>${r.lane}</td><td class="r">${money(r.amt, r.cur)}</td><td><button class="linkish" type="button" data-act="src">${r.src}</button></td><td><span class="chip">${r.status}</span></td><td><button class="btn" type="button" data-act="row-act">Otwórz</button></td></tr>`).join("");
-  $("#v-mod").innerHTML = `<div class="cmd">
-      <button class="btn btn-p" type="button" data-act="new">Nowy</button>
-      <button class="btn" type="button" data-act="filter">Filtr</button>
-      <button class="btn" type="button" data-act="export">Eksport podglądu</button>
-      <span class="chip">${LAYER[mod.layer] || mod.layer}</span>
-      <span class="chip">${mod.tpl}</span>
-      <span class="chip">${mod.id} · RLS</span>
-    </div>
-    ${screenBanner(`${mod.id} · org z paska · makieta`, mod.name, "Szablon jak Wyceny/Zlecenia. Kwoty string. LLM nie liczy. HITL przed zapisem tam, gdzie ekstrakcja.")}
-    ${screenFacts([
-      { t: "Moduł", v: mod.id },
-      { t: "Warstwa", v: LAYER[mod.layer] || mod.layer },
-      { t: "Szablon", v: mod.tpl },
-      { t: "Rekordy", v: "8", s: "seed makiety" },
-      { t: "Tenant", v: "z paska", s: "zero cross-tenant" }
-    ], "n5")}
-    <div class="pad" style="padding-top:0">${warn}${def}
-      <div class="card xscroll" style="padding:0"><table class="grid"><thead><tr><th>Ref</th><th>Opis</th><th>Strona</th><th>Relacja</th><th class="r">Kwota</th><th>Pochodzenie</th><th>Status</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>
-    </div>`;
+  if (window.OR_MOD) { OR_MOD.paint(mod); return; }
 }
 
-const INSP = {
-  home: `<h3 class="h-id">Dzień</h3><p class="note">Tenant z paska. Jobu otwierają ekrany zgodne z FE.</p>`,
-  quote: `<div class="rsec"><h3>Luki i ostrzeżenia <span class="cnt">4</span></h3>
-    <div class="risk"><span class="sev alert"></span><div><b>Brak kodu HS</b><p>Wymagany przy odprawie importowej w Peru i kontroli eksportowej.</p><button class="fix linkish" type="button" data-act="ask-hs">Wyślij pytanie do klienta</button></div></div>
-    <div class="risk"><span class="sev alert"></span><div><b>ISPS Callao w żadnym wariancie</b><p>W 7 z 8 ostatnich zleceń — zwykle 45,00 USD / kontener.</p><button class="form linkish" type="button" data-gap="isps">Dopisz pozycję ręcznie</button></div></div>
+function quoteInspHtml() {
+  const hsBlock = quoteHs
+    ? `<div class="risk"><span class="sev ok"></span><div><b>HS ${quoteHs}</b><p>commodity_code potwierdzony. Send odblokowany.</p></div></div>`
+    : `<div class="risk"><span class="sev alert"></span><div><b>Brak kodu HS</b><p>Wymagany przy odprawie importowej w Peru i kontroli eksportowej.</p><button class="fix" type="button" data-act="fill-hs">Uzupełnij HS</button> · <button class="fix" type="button" data-act="ask-hs">Pytanie do klienta</button></div></div>`;
+  return `<div class="rsec"><h3>Luki i ostrzeżenia <span class="cnt">${quoteHs ? "3" : "4"}</span></h3>
+    ${hsBlock}
+    <div class="risk"><span class="sev alert"></span><div><b>ISPS Callao w żadnym wariancie</b><p>W 7 z 8 ostatnich zleceń — zwykle 45,00 USD / kontener.</p><button class="fix" type="button" data-gap="isps">Dopisz pozycję ręcznie</button></div></div>
     <div class="risk"><span class="sev stop"></span><div><b>Pacific wygasa 15.09</b><p>Cut-off bramowy 18–24.09 — stawka nie pokryje wypłynięcia.</p></div></div>
     <div class="risk"><span class="sev"></span><div><b>GRI ogłoszone na 01.10</b><p>Hapag-Lloyd · +800 USD/FEU · poza zakresem przy ważności 14 dni.</p></div></div>
   </div>
   <div class="rsec"><h3>Ryzyko oferty</h3>
     <p class="score">54 <small>/ 100 — podwyższone</small></p>
     <div class="scorebar" aria-hidden="true"><i></i></div>
-    <p class="note">Wartości z serwera (M-24). UI nie liczy marży ani kosztu pieniądza.</p>
+    <p class="note">Wartości z serwera (M-24). Nie ryzyko zlecenia. UI nie liczy.</p>
   </div>
   <div class="rsec"><h3>Marża po kosztach</h3>
     <table class="mini">
@@ -1644,7 +1729,12 @@ const INSP = {
       <tr><td>Ekspozycja walutowa</td><td>−0,8 pkt</td></tr>
       <tr class="total"><td>Po kosztach</td><td>11,0%</td></tr>
     </table>
-  </div>`,
+    <p class="note" style="margin-top:var(--s3)">Szacunek z serwera / leftover odsetek (M-43). UI nie liczy WACC.</p>
+  </div>`;
+}
+const INSP = {
+  home: `<h3 class="h-id">Dzień</h3><p class="note">Tenant z paska. Jobu otwierają ekrany zgodne z FE.</p>`,
+  quote: "",
   rates: `<h3 class="h-id">rate_line</h3><p class="note">Niemutowalna. Zastąp = nowy wiersz. source_ref obowiązkowy. Peru: pokryte. Kolumbia: biała plama.</p>`,
   charges: `<h3 class="h-id">charge</h3><p class="note">Jedyny wiersz buy+sell. Marża z domeny. Nie druga tabela.</p>`,
   hitl: `<h3 class="h-id">Szkic</h3><p class="note">source_ref MAERSK-SHA-0926. Zapis rate_line tylko po Accept. ExtractionService nie importuje rates.</p>`,
@@ -1703,7 +1793,7 @@ function applyView(v) {
   const m = META[v] || ["Moduł", v];
   $("#mod").textContent = m[0];
   $("#crumb").textContent = m[1];
-  setInsp(v === "ship" ? shipInspHtml() : (INSP[v] || INSP.mod), v !== "home");
+  setInsp(v === "ship" ? shipInspHtml() : (v === "quote" ? quoteInspHtml() : (INSP[v] || INSP.mod)), v !== "home");
   if (v === "home") paintHome();
   if (v === "quote") paintQuote();
   if (v === "rates") paintRates();
@@ -1728,15 +1818,17 @@ function applyMod(found) {
   $$(".rail button[data-go]").forEach((b) => b.removeAttribute("aria-current"));
   $("#mod").textContent = found.id;
   $("#crumb").textContent = found.name;
-  setInsp(INSP.mod, true);
-  paintMod(found);
+  setInsp((window.OR_MOD && OR_MOD.insp(found)) || INSP.mod, true);
+  if (window.OR_MOD) OR_MOD.paint(found);
+  else paintMod(found);
   setDrawer(false);
 }
 function goMod(id) {
   const found = (window.OR_CATALOG || []).find((m) => m.id === id || m.n === Number(String(id).replace(/\D/g, "")));
   if (!found) { toast("Brak modułu " + id); return; }
-  if (found.tpl === "quote" && found.n <= 31) { go("quote"); return; }
-  if (found.tpl === "rates" && found.n === 17) { go("rates"); return; }
+  if (found.tpl === "quote" && found.n === 21) { go("quote"); return; }
+  if (found.n === 7 || (found.tpl === "rates" && found.n === 17)) { go("rates"); return; }
+  if (found.n === 8) { go("charges"); return; }
   if (found.tpl === "hitl" && found.n === 20) { go("hitl"); return; }
   if (found.tpl === "ship" && found.n === 35) { go("ship"); return; }
   if (found.n === 10) { go("parties"); return; }
@@ -1862,6 +1954,8 @@ document.addEventListener("click", (e) => {
   const act = e.target.closest("[data-act]");
   if (!act) return;
   const a = act.dataset.act;
+  if (window.OR_KERNEL && OR_KERNEL.dispatch(a, act)) return;
+  if (window.OR_MOD && currentMod && OR_MOD.handle(a, act, currentMod)) return;
 
   if (a === "edit-ship-header") { openShipHeaderEditor(); return; }
   if (a === "ship-view-cancel") { closeShipHeaderEditor(); return; }
@@ -1882,7 +1976,20 @@ document.addEventListener("click", (e) => {
     return;
   }
 
-  if (a === "ask" || a === "ask-hs") { mailOn = true; if (current === "quote") paintQuote(); $$(".tabs [data-tab]").forEach((o) => o.setAttribute("aria-selected", String(o.dataset.tab === "mail"))); $$(".pane").forEach((p) => p.classList.toggle("on", p.id === "p-mail")); toast("Zapytanie do agentów — podgląd wiadomości przed wysłaniem."); }
+  if (a === "ask" || a === "ask-hs") {
+    mailOn = true;
+    if (current === "quote") paintQuote();
+    $$(".tabs [data-tab]").forEach((o) => o.setAttribute("aria-selected", String(o.dataset.tab === "mail")));
+    $$(".pane").forEach((p) => p.classList.toggle("on", p.id === "p-mail"));
+    OR_KERNEL.mail({
+      to: a === "ask-hs" ? "zakupy@meblexport.pl" : "desk@andescargo.pe, desk@pacific-fw.com",
+      subject: a === "ask-hs" ? "ZAP/2026/00318 · prośba o kod HS" : "RFQ ZAP/2026/00318 · PLGDY→PELIM · 2×40HC",
+      body: a === "ask-hs"
+        ? "Proszę o kod HS/CN dla mebli drewnianych. Bez HS oferta nie wychodzi."
+        : "Zapytanie do agentów. Podgląd przed wysłaniem. Idempotencja na wysyłce."
+    });
+    return;
+  }
   if (a === "send-rfq") toast("Wysłano (idempotentny klucz). Odpowiedzi wpadną do HITL.");
   if (a === "spot") { spotOn = true; paintQuote(); toast("Hapag-Lloyd dodany z payloadu API. Marża przyszła w JSON, nie z JS."); }
   if (a === "save") toast("Zapis szkicu wyceny. Kwoty nietknięte.");
@@ -1892,35 +1999,272 @@ document.addEventListener("click", (e) => {
   if (a === "doc-open") { toast(`Podgląd ${act.dataset.doc?.toUpperCase() || "dokumentu"} — w produkcji lazy PDF, tu wskazanie.`); return; }
   if (a === "doc-request") { toast(`Wysłano prośbę o ${act.dataset.doc || "dokument"} (mailto / mail_draft).`); return; }
   if (a === "doc-request-missing") { toast("Prośba o POD i certyfikat ubezpieczenia — szkic wychodzący."); return; }
+  if (a === "fill-hs") {
+    OR_KERNEL.form({
+      title: "Kod HS",
+      note: "commodity_code z katalogu M-09. Nie luźna nazwa towaru.",
+      fields: [{ id: "hs", label: "HS / CN", required: true, value: quoteHs || "9403.60.00", placeholder: "9403.60.00" }],
+      hitl: true,
+      saveLabel: "Potwierdź HS",
+      onSave: (d) => {
+        quoteHs = d.hs;
+        if (current === "quote") { paintQuote(); setInsp(quoteInspHtml(), true); }
+        toast("HS zapisany w sesji. Send odblokowany.");
+      }
+    });
+    return;
+  }
+  if (a === "send-offer") {
+    if (!quoteHs) { OR_KERNEL.blocked("Wysyłka zablokowana: brak kodu HS."); return; }
+    OR_KERNEL.mail({
+      title: "Wyślij ofertę · HITL",
+      to: "zakupy@meblexport.pl",
+      subject: "Oferta ZAP/2026/00318 · DAP Lima",
+      body: `ZAP/2026/00318 · PLGDY→PELIM · DAP Lima · HS ${quoteHs} · 2×40HC.\nMarża na charge — nie w tym mailu.`,
+      onSend: () => toast("Oferta wysłana (idempotentny klucz). Szkic mail_draft = sent.")
+    });
+    return;
+  }
+  if (a === "quote-file") {
+    OR_KERNEL.pickFile((f) => {
+      quoteFiles.push(f);
+      if (current === "quote") paintQuote();
+      toast(`Załączono ${f.name} — wskazanie, nie bajty.`);
+    });
+    return;
+  }
+  if (a === "notify") {
+    OR_KERNEL.mail({
+      to: "zakupy@meblexport.pl",
+      subject: `${SHIP_META.ref} · opóźnienie Callao`,
+      body: `Prognoza przypłynięcia do Callao przesunięta. Klient nie był powiadomiony — szkic do zatwierdzenia.`
+    });
+    return;
+  }
+  if (a === "haul" || a === "haul-det") {
+    OR_KERNEL.form({
+      title: a === "haul" ? "Zleć odwóz" : "Potwierdź odwóz",
+      note: "Nowy odcinek drogowy. Kwota z serwera, nie z UI.",
+      fields: [
+        { id: "party", label: "Przewoźnik drogowy", required: true, value: "Trans-Pol Sp. z o.o." },
+        { id: "when", label: "Okno", required: true, value: "po odprawie" },
+        { id: "source_ref", label: "source_ref", required: true, value: "MAIL-HAUL-00412" }
+      ],
+      requireSource: true,
+      onSave: () => toast("Odwóz zapisany w sesji. Semafor storage/detention z dni serwera.")
+    });
+    return;
+  }
+  if (a === "customs-pack") { openCustomsPack(); return; }
+  if (a === "customs-send") {
+    const missing = customsRecipients().filter((d) => !d.ready);
+    if (missing.length) {
+      OR_KERNEL.blocked("Brak dokumentu: " + missing.map((d) => d.name).join(", ") + ". Pakiet nie wychodzi.");
+      return;
+    }
+    OR_KERNEL.confirm({
+      title: "Wyślij pakiet celny",
+      note: "HITL send · mail_draft, nie auto-send na portal celny.",
+      text: `Odbiorca: ${shipCustomsMode}. Incoterm DAP Lima. Armator dostał tylko VGM — nie pełny pakiet.`,
+      onAccept: () => toast("Pakiet wysłany (idempotentny klucz).")
+    });
+    return;
+  }
+  if (a === "customs-mail") {
+    const dest = shipCustomsMode === "client_customs" ? "cło@meblexport.pl" : "odprawa@omnigency.pe";
+    OR_KERNEL.mail({
+      to: dest,
+      subject: `${SHIP_META.ref} · pakiet celny DAP Lima`,
+      body: "Checklista dokumentów do odprawy import. Brakujące pozycje w załączniku prośby."
+    });
+    return;
+  }
   if (a === "pdf") toast("PDF w nowej warstwie (leniwy renderer).");
   if (a === "edit-user") toast("Edycja roli w OpenFGA. Brak relacji = ukryj akcję.");
   if (a === "sync") toast("Odśwież " + act.dataset.who + " — idempotentne. Makieta bez sieci.");
   if (a === "connect") toast("Połączenie " + act.dataset.who + " — sekret tenanta, nie w logu.");
   if (a === "outlook") toast("Dodatek Outlook to makieta. Brak instalacji.");
-  if (a === "new" || a === "row-act" || a === "open-row") toast("Otworzono rekord. Zapis do bazy tylko po HITL tam, gdzie ekstrakcja.");
-  if (a === "filter") toast("Filtr w ramach jednego tenanta.");
-  if (a === "export") toast("Eksport podglądu. Nie produkcja.");
+  if (a === "new" || a === "row-act" || a === "open-row") {
+    if (currentMod && window.OR_MOD) { OR_MOD.handle("mod-open", act, currentMod); return; }
+    toast("Otworzono rekord. Zapis do bazy tylko po HITL tam, gdzie ekstrakcja.");
+  }
+  if (a === "filter") {
+    if (currentMod && window.OR_MOD) { OR_MOD.handle("mod-filter", act, currentMod); return; }
+    toast("Filtr w ramach jednego tenanta.");
+  }
+  if (a === "export") {
+    if (currentMod && window.OR_MOD) { OR_MOD.handle("mod-export", act, currentMod); return; }
+    toast("Eksport podglądu. Nie produkcja.");
+  }
   if (a === "reject-home") toast("Szkic odrzucony z powodem. PDF zostaje.");
 
-  if (a === "supersede") toast("Zastąp = nowy rate_line + superseded_by. Stary niemutowalny.");
-  if (a === "new-rate") toast("Dodaj stawkę — wymaga source_ref. Bez pochodzenia rekord nie wchodzi.");
+  if (a === "supersede") {
+    OR_KERNEL.confirm({
+      title: "Zastąp stawkę",
+      text: "Nowy rate_line + superseded_by. Stary niemutowalny. source_ref obowiązkowy.",
+      onAccept: () => toast("Wersja zastąpiona w sesji. Stary wiersz zostaje.")
+    });
+    return;
+  }
+  if (a === "new-rate") {
+    OR_KERNEL.form({
+      title: "Nowa stawka",
+      note: "Bez source_ref rekord nie wchodzi.",
+      requireSource: true,
+      fields: [
+        { id: "lane", label: "Relacja", required: true, value: "PLGDY→PECLL" },
+        { id: "amt", label: "Kwota kupna (string)", required: true, value: "1 850,00" },
+        { id: "cur", label: "Waluta", required: true, value: "USD" },
+        { id: "source_ref", label: "source_ref", required: true, value: "" }
+      ],
+      onSave: () => toast("Stawka w sesji. Niemutowalna.")
+    });
+    return;
+  }
   if (a === "resolve-rate") toast("Rozwiąż token relacji / kodu w ramach jednego tenanta.");
-  if (a === "new-charge") toast("Dodaj charge — marża z domeny, nie z UI.");
-  if (a === "new-party") toast("Nowy party — INSERT po potwierdzeniu. Lookup tylko szkic.");
-  if (a === "lookup-party") toast("Lookup GUS/VIES → szkic. Sieć wyłączona w CI (fixture).");
+  if (a === "new-charge") {
+    OR_KERNEL.form({
+      title: "Nowa opłata",
+      note: "Marża = margin(buy, sell) w domenie. UI nie liczy.",
+      requireSource: true,
+      fields: [
+        { id: "code", label: "Kod opłaty", required: true, value: "OFR" },
+        { id: "buy", label: "Kupno (string)", required: true, value: "1 850,00" },
+        { id: "sell", label: "Sprzedaż (string)", required: true, value: "2 140,00" },
+        { id: "source_ref", label: "source_ref", required: true }
+      ],
+      onSave: () => toast("charge zapisany w sesji. Marża z serwera.")
+    });
+    return;
+  }
+  if (a === "new-party") {
+    OR_KERNEL.form({
+      title: "Nowy kontrahent",
+      note: "INSERT po potwierdzeniu. Lookup tylko szkic.",
+      hitl: true,
+      fields: [
+        { id: "party", label: "Nazwa", required: true },
+        { id: "tax", label: "Tax ID", required: true },
+        { id: "role", label: "Rola", type: "select", options: ["klient", "agent", "armator", "przewoźnik"], value: "klient" }
+      ],
+      onSave: () => toast("Party potwierdzony w sesji.")
+    });
+    return;
+  }
+  if (a === "lookup-party") {
+    OR_KERNEL.confirm({
+      title: "Lookup tax_id",
+      note: "GUS/VIES → szkic. Sieć wyłączona w CI (fixture).",
+      text: "Meblexport Sp. z o.o. · 5272859987 · szkic z fixture. Zapis tylko po potwierdzeniu.",
+      acceptLabel: "Przyjmij szkic",
+      onAccept: () => toast("Szkic przyjęty. INSERT nie poszedł z lookupu.")
+    });
+    return;
+  }
   if (a === "resolve-party") toast("Resolve po tax_id albo resolve_email — nie po luźnej nazwie.");
-  if (a === "edit-party") toast("Edycja kontrahenta w tenantcie. RLS.");
-  if (a === "new-port") toast("Dodaj port UN/LOCODE. Ingest poza HTTP.");
+  if (a === "edit-party") {
+    const p = PARTIES.find((x) => x.id === partyId) || PARTIES[0];
+    OR_KERNEL.form({
+      title: "Edycja · " + p.name,
+      note: "RLS · jeden tenant z paska.",
+      fields: [
+        { id: "contact", label: "Kontakt", required: true, value: p.contact },
+        { id: "domain", label: "Domena", required: true, value: p.domain }
+      ],
+      onSave: () => toast("Kontrahent zaktualizowany w sesji.")
+    });
+    return;
+  }
+  if (a === "new-port") {
+    OR_KERNEL.form({
+      title: "Dodaj port",
+      note: "UN/LOCODE. Ingest poza HTTP.",
+      fields: [
+        { id: "code", label: "UN/LOCODE", required: true, placeholder: "PECLL" },
+        { id: "name", label: "Nazwa", required: true }
+      ],
+      onSave: () => toast("Port w sesji. Nieznany token = odrzut.")
+    });
+    return;
+  }
   if (a === "resolve-port") toast("Resolve tokenu UN/LOCODE. Nieznany = odrzut.");
-  if (a === "new-loc") toast("Dodaj location. Nakładanie zakresów blokuje baza.");
-  if (a === "new-cq") toast("Dodaj channel_quote — kwota Decimal, nie marża.");
+  if (a === "new-loc") {
+    OR_KERNEL.form({
+      title: "Dodaj lokalizację",
+      note: "Nakładanie zakresów blokuje baza.",
+      fields: [
+        { id: "code", label: "Kod", required: true },
+        { id: "kind", label: "Typ", type: "select", options: ["unlocode", "postal_zone", "address"], value: "address" }
+      ],
+      onSave: () => toast("Lokalizacja w sesji.")
+    });
+    return;
+  }
+  if (a === "new-cq") {
+    OR_KERNEL.form({
+      title: "Oferta kanału",
+      note: "Kwota Decimal string. Nie marża. Nie live HTTP.",
+      requireSource: true,
+      fields: [
+        { id: "party", label: "Kanał", required: true, value: "Hapag-Lloyd" },
+        { id: "amt", label: "Kwota", required: true, value: "1 790,00" },
+        { id: "source_ref", label: "source_ref", required: true }
+      ],
+      onSave: () => toast("channel_quote w sesji.")
+    });
+    return;
+  }
+  if (a === "edit-user") {
+    OR_KERNEL.form({
+      title: "Rola OpenFGA",
+      note: "Brak relacji = ukryj akcję. Nie zgadujemy uprawnień.",
+      fields: [
+        { id: "email", label: "Email", required: true, value: "anna@spedbaltyk.pl" },
+        { id: "role", label: "Rola", type: "select", options: ["reviewer", "member", "admin"], value: "reviewer" }
+      ],
+      onSave: () => toast("Relacja FGA w sesji makiety.")
+    });
+    return;
+  }
 
 });
 document.addEventListener("click", (e) => {
-  if (e.target.closest("#sendQuote")) toast("Wysyłka zablokowana: brak kodu HS. Nie omijamy walidacji ani HITL.");
-  if (e.target.closest("#acceptHitl")) toast("Accept → rate_line w jednej transakcji. ExtractionService nie importuje rates.");
-  if (e.target.closest("#rejectHitl")) toast("Szkic odrzucony z powodem. PDF zostaje, rate_line nie powstaje.");
+  if (e.target.closest("#railToggle")) {
+    const on = !document.querySelector(".app").classList.contains("rail-open");
+    document.querySelector(".app").classList.toggle("rail-open", on);
+    $("#railToggle").setAttribute("aria-expanded", String(on));
+    $("#railToggle").title = on ? "Zwiń menu" : "Rozwiń menu";
+    try { localStorage.setItem("or-rail-open", on ? "1" : "0"); } catch (_e) { /* makieta */ }
+    return;
+  }
+  if (e.target.closest("#sendQuote")) { OR_KERNEL.blocked("Wysyłka zablokowana: brak kodu HS. Nie omijamy walidacji ani HITL."); return; }
+  if (e.target.closest("#acceptHitl")) {
+    OR_KERNEL.confirm({
+      title: "Accept szkicu",
+      note: "Jedna transakcja. ExtractionService nie importuje rates.",
+      text: "Zaznaczone kandydaty wejdą do rate_line. PDF zostaje jako source_ref.",
+      onAccept: () => toast("Accept → rate_line w sesji. Nie produkcja.")
+    });
+    return;
+  }
+  if (e.target.closest("#rejectHitl")) {
+    OR_KERNEL.form({
+      title: "Odrzuć szkic",
+      note: "PDF zostaje. rate_line nie powstaje.",
+      fields: [{ id: "reason", label: "Powód", required: true, type: "textarea" }],
+      saveLabel: "Odrzuć",
+      onSave: () => toast("Szkic odrzucony z powodem.")
+    });
+    return;
+  }
   if (e.target.closest("#gk")) { gridDense = !gridDense; paintRates(); }
+});
+document.addEventListener("change", (e) => {
+  if (e.target.id === "shipCustoms") {
+    shipCustomsMode = e.target.value;
+    if (current === "ship") setInsp(shipInspHtml(), true);
+    toast(shipCustomsMode === "none" ? "Nie składamy pakietu celnego." : `Odbiorca pakietu: ${shipCustomsMode}.`);
+  }
 });
 $("#tenant").addEventListener("change", (e) => {
   $("#tenantInitials").textContent = e.target.value.split(" ").map((w) => w[0]).join("").slice(0, 2).toUpperCase();
@@ -1937,13 +2281,19 @@ $("#th").addEventListener("click", () => {
 $("#dsearch").addEventListener("input", (e) => paintDrawer(e.target.value));
 $("#palIn").addEventListener("input", (e) => drawPal(e.target.value));
 $("#scrim").addEventListener("click", (e) => { if (e.target === $("#scrim")) pal(false); });
-$("#viewScrim").addEventListener("click", (e) => { if (e.target === $("#viewScrim")) closeShipHeaderEditor(); });
+$("#viewScrim").addEventListener("click", (e) => { if (e.target === $("#viewScrim")) { if (window.OR_KERNEL) OR_KERNEL.close(); else closeShipHeaderEditor(); } });
 $("#navBack").addEventListener("click", goBack);
 addEventListener("keydown", (e) => {
   if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") { e.preventDefault(); pal(true); }
   if (e.altKey && e.key === "ArrowLeft") { e.preventDefault(); goBack(); }
-  if (e.key === "Escape") { pal(false); setDrawer(false);  closeShipHeaderEditor(); }
+  if (e.key === "Escape") { pal(false); setDrawer(false); if (window.OR_KERNEL) OR_KERNEL.close(); else closeShipHeaderEditor(); }
 });
+try {
+  if (localStorage.getItem("or-rail-open") === "1") {
+    document.querySelector(".app").classList.add("rail-open");
+    $("#railToggle")?.setAttribute("aria-expanded", "true");
+  }
+} catch (_e) { /* makieta */ }
 paintDrawer("");
 applyView("home");
 syncBackBtn();
