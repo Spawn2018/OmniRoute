@@ -48,6 +48,7 @@ from app.api import (
     session,
     shipment_documents,
     shipment_legs,
+    shipment_stakeholders,
     shipments,
     table_views,
     tenancy,
@@ -82,6 +83,7 @@ api_router.include_router(rate_lines.router)
 api_router.include_router(channel_quotes.router)
 api_router.include_router(quotations.router)
 api_router.include_router(shipments.router)
+api_router.include_router(shipment_stakeholders.router)
 api_router.include_router(tracking_events.router)
 api_router.include_router(shipment_documents.router)
 api_router.include_router(operational_exceptions.router)

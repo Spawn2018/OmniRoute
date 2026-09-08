@@ -460,3 +460,7 @@ class InvalidDocumentChecklistRule(DomainError):
 
 class InvalidIncotermResponsibility(DomainError):
     """Macierz obowiązków: para incoterm×strona i role z allowlisty — nie cytat ICC."""
+
+
+class InvalidShipmentStakeholder(DomainError):
+    """Strona zlecenia: rola z allowlisty i party_id — nie dispatch, nie EXP1."""

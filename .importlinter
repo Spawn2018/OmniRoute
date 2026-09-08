@@ -43,6 +43,7 @@ modules =
     app.services.port_surcharges
     app.services.channel_quotes
     app.services.shipments
+    app.services.shipment_stakeholders
     app.services.tracking_events
     app.services.shipment_documents
     app.services.operational_exceptions
@@ -152,6 +153,9 @@ forbidden_modules =
     app.services.shipments
     app.repositories.shipments
     app.models.shipment
+    app.services.shipment_stakeholders
+    app.repositories.shipment_stakeholders
+    app.models.shipment_stakeholder
     app.services.tracking_events
     app.repositories.tracking_events
     app.models.tracking_event

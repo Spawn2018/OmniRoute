@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { createShipment, fetchShipments } from "@/lib/shipments-api"
 import { getTenantContext } from "@/lib/tenant"
+import { ShipmentStakeholderPanel } from "@/features/shipment/shipment-stakeholder-panel"
 
 function ShipmentCreateForm(args: { organizationId: string | null }) {
   const client = useQueryClient()
@@ -63,6 +64,7 @@ export function ShipmentPage() {
       {!ready ? <TenantSessionNotice /> : null}
       {shipments.isError ? <CatalogError error={shipments.error} /> : null}
       <ShipmentCreateForm organizationId={ctx.organizationId} />
+      {ready ? <ShipmentStakeholderPanel rows={shipments.data ?? []} signedIn={ready} /> : null}
       {(shipments.data ?? []).map((row) => (
         <p key={row.id} className="text-xs">
           {row.status} {row.source_ref}{" "}

@@ -3,13 +3,13 @@
 **Faza:** P0 leftover + pełna oś pinu 2026-09-08c (Luki i ulepszenia)  
 **Repo:** https://github.com/Spawn2018/OmniRoute  
 
-**Ostatni plaster:** **145.0** I1 incoterm_responsibility  
-**Etap:** Kod  
+**Ostatni plaster:** **146.0** I2 shipment_stakeholder  
+**Etap:** Plan  
 **Noc:** `/noc 17` do 2026-09-08T17:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md). Billing GitHub zablokowany — ta sesja nie czeka na zielone CI.  
-**Następny:** **146.0** I2 `shipment_stakeholder` (delta [146.0-shipment-stakeholder.md](../deltas/open/146.0-shipment-stakeholder.md) zaakceptowana `/noc`) → I3–I4 → U4 → T → U3 → D → P → G2.0–G2.23 → F → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.  
+**Następny:** **147.0** I3 `document_dispatch_rule` → I4 → U4 → T → U3 → D → P → G2.0–G2.23 → F → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.  
 M-02 **fundament 79.0** (konsument leftover — parked aż T5/X4). Auth0 **odroczone** (S53 w osi po W). Portale **po S53**. S21 live HTTP **parked**. S50 = T2. S54 / S59 / AIS leftover parked. Exit Wave FE **nie** claim.
 
-**Spec (jedna na sesję):** [docs/analysis/karty-pol-fala-i.md](../analysis/karty-pol-fala-i.md) § I2. Delta: [146.0-shipment-stakeholder.md](../deltas/open/146.0-shipment-stakeholder.md). Oś: karty `karty-pol-fala-*.md`. Nie otwieraj spec C8.
+**Spec (jedna na sesję):** [docs/analysis/karty-pol-fala-i.md](../analysis/karty-pol-fala-i.md) § I3. Oś: karty `karty-pol-fala-*.md`. Nie otwieraj spec C8.
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
@@ -17,4 +17,4 @@ M-02 **fundament 79.0** (konsument leftover — parked aż T5/X4). Auth0 **odroc
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` są w PATH. Przed pracą: `pg_ctl -D tools\pgdata -o "-p 5432" start` oraz `tools\openfga\openfga.exe run`. Potem `just gate` i `just test`. PG 16: `tools\pg16`.
 
-**2026-09-08c:** pin całości rozmowy Luki i ulepszenia. **145.0** zamknięty. Delta **146.0** I2 zaakceptowana `/noc` — wolno kod.
+**2026-09-08c:** pin całości rozmowy Luki i ulepszenia. **146.0** zamknięty. Następny **147.0** I3 — `/plan-modul`.

@@ -374,3 +374,4 @@
 | 2026-09-08 | Plan 145.0 | I1 | incoterm_responsibility (11x2 Omni ops, nie cytat ICC). Delta zaakceptowana (/noc). Nie I2. Nastepny: kod 145.0. |
 | 2026-09-08 | 145.0 | I1 | incoterm_responsibility 11x2 Omni ops, nie cytat ICC. Nie I2. Nastepny: I2 Plan. |
 | 2026-09-08 | Plan 146.0 | I2 | shipment_stakeholder (7 rol z karty I2, party_id wymagane). Delta zaakceptowana (/noc). Nie EXP1. Nastepny: kod 146.0. |
+| 2026-09-08 | 146.0 | I2 | shipment_stakeholder 7 rol, party_id wymagane. Nie EXP1. Nie I3. Nastepny: I3 Plan. |

@@ -19,6 +19,7 @@ from app.models.document_checklist_rule import DocumentChecklistRule  # noqa: F4
 from app.models.field_carry_forward import FieldCarryForward  # noqa: F401
 from app.models.inbound_message import InboundMessage  # noqa: F401
 from app.models.incoterm_responsibility import IncotermResponsibility  # noqa: F401
+from app.models.shipment_stakeholder import ShipmentStakeholder  # noqa: F401
 from app.models.customer_rfq import CustomerRfq  # noqa: F401
 from app.models.network import Network  # noqa: F401
 from app.models.network_member import NetworkMember  # noqa: F401

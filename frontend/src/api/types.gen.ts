@@ -3786,6 +3786,62 @@ export type ShipmentResponse = {
 };
 
 /**
+ * ShipmentStakeholderCreate
+ */
+export type ShipmentStakeholderCreate = {
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Role
+     */
+    role: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ShipmentStakeholderResponse
+ */
+export type ShipmentStakeholderResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Role
+     */
+    role: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+    /**
+     * Superseded By
+     */
+    superseded_by: string | null;
+};
+
+/**
  * TableViewConfig
  */
 export type TableViewConfig = {
@@ -6192,6 +6248,63 @@ export type CreateShipmentApiV1ShipmentsPostResponses = {
 };
 
 export type CreateShipmentApiV1ShipmentsPostResponse = CreateShipmentApiV1ShipmentsPostResponses[keyof CreateShipmentApiV1ShipmentsPostResponses];
+
+export type ListShipmentStakeholdersApiV1ShipmentStakeholdersGetData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Shipment Id
+         */
+        shipment_id: string;
+    };
+    url: '/api/v1/shipment-stakeholders';
+};
+
+export type ListShipmentStakeholdersApiV1ShipmentStakeholdersGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ListShipmentStakeholdersApiV1ShipmentStakeholdersGetError = ListShipmentStakeholdersApiV1ShipmentStakeholdersGetErrors[keyof ListShipmentStakeholdersApiV1ShipmentStakeholdersGetErrors];
+
+export type ListShipmentStakeholdersApiV1ShipmentStakeholdersGetResponses = {
+    /**
+     * Response List Shipment Stakeholders Api V1 Shipment Stakeholders Get
+     *
+     * Successful Response
+     */
+    200: Array<ShipmentStakeholderResponse>;
+};
+
+export type ListShipmentStakeholdersApiV1ShipmentStakeholdersGetResponse = ListShipmentStakeholdersApiV1ShipmentStakeholdersGetResponses[keyof ListShipmentStakeholdersApiV1ShipmentStakeholdersGetResponses];
+
+export type CreateShipmentStakeholderApiV1ShipmentStakeholdersPostData = {
+    body: ShipmentStakeholderCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/shipment-stakeholders';
+};
+
+export type CreateShipmentStakeholderApiV1ShipmentStakeholdersPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateShipmentStakeholderApiV1ShipmentStakeholdersPostError = CreateShipmentStakeholderApiV1ShipmentStakeholdersPostErrors[keyof CreateShipmentStakeholderApiV1ShipmentStakeholdersPostErrors];
+
+export type CreateShipmentStakeholderApiV1ShipmentStakeholdersPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ShipmentStakeholderResponse;
+};
+
+export type CreateShipmentStakeholderApiV1ShipmentStakeholdersPostResponse = CreateShipmentStakeholderApiV1ShipmentStakeholdersPostResponses[keyof CreateShipmentStakeholderApiV1ShipmentStakeholdersPostResponses];
 
 export type ListTrackingEventsApiV1TrackingEventsGetData = {
     body?: never;
