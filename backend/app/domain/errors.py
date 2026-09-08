@@ -434,6 +434,10 @@ class InvalidOperatorNotice(DomainError):
     """Powiadomienie: kind, treść albo source_ref — nie filtr wycen."""
 
 
+class InvalidTableView(DomainError):
+    """Widok tabeli: group_by spoza allowlisty — nie nowa kolumna, nie wątek."""
+
+
 class InvalidMailDraft(DomainError):
     """Szkic maila: kind, treść, adres albo status — nie czat, nie Graph HTTP."""
 

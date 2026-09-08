@@ -3595,6 +3595,10 @@ export type TableViewConfig = {
      * Density
      */
     density?: string;
+    /**
+     * Group By
+     */
+    group_by?: string | null;
 };
 
 /**

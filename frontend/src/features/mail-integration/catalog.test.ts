@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 import { describe, expect, it } from "vitest"
+import { groupInboundMessages } from "@/lib/mail-groups"
 
 const srcRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..")
 
@@ -68,5 +69,44 @@ describe("mail-integration surface for 25.0", () => {
     const rfqApi = readFileSync(path.join(srcRoot, "lib/customer-rfqs-api.ts"), "utf8")
     expect(rfqApi).toContain("/api/v1/customer-rfqs")
     expect(rfqApi).not.toContain("amount")
+  })
+})
+
+describe("O8 mail group_by", () => {
+  it("groups by party country and defaults to party", () => {
+    const page = readFileSync(path.join(srcRoot, "features/mail-integration/catalog-page.tsx"), "utf8")
+    expect(page).toContain('data-mail="groups"')
+    expect(page).toContain("groupInboundMessages")
+    expect(page).toContain("Grupowanie wiadomości")
+    const rows = [
+      {
+        id: "m1",
+        organization_id: "o",
+        source_ref: "fixture://1",
+        from_address: "a@x.test",
+        subject: "A",
+        body_text: "x",
+        status: "stored",
+        party_id: "p-nl",
+        external_id: null,
+      },
+      {
+        id: "m2",
+        organization_id: "o",
+        source_ref: "fixture://2",
+        from_address: "b@x.test",
+        subject: "B",
+        body_text: "y",
+        status: "stored",
+        party_id: "p-pl",
+        external_id: null,
+      },
+    ]
+    const parties = [
+      { id: "p-nl", country_code: "NL" },
+      { id: "p-pl", country_code: "PL" },
+    ]
+    expect(groupInboundMessages(rows, parties, "country").map((row) => row.key)).toEqual(["NL", "PL"])
+    expect(groupInboundMessages(rows, parties, "party").map((row) => row.key)).toEqual(["p-nl", "p-pl"])
   })
 })

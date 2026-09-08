@@ -34,6 +34,12 @@ import {
   resolvePartyEmail,
   type Party,
 } from "@/lib/parties-api"
+import {
+  DEFAULT_MAIL_GROUP_BY,
+  groupInboundMessages,
+  mailGroupByOrDefault,
+  type MailGroupBy,
+} from "@/lib/mail-groups"
 import { getTenantContext } from "@/lib/tenant"
 
 const helper = createColumnHelper<InboundMessage>()
@@ -94,6 +100,7 @@ export function MailIntegrationPage() {
   })
   const [hsCodeId, setHsCodeId] = useState("")
   const [unCodeId, setUnCodeId] = useState("")
+  const [groupBy, setGroupBy] = useState<MailGroupBy>(DEFAULT_MAIL_GROUP_BY)
 
   const parties = useQuery({
     queryKey: ["mail-parties", ctx.organizationId],
@@ -246,6 +253,26 @@ export function MailIntegrationPage() {
 
       <section className="space-y-2" data-inbound-message="fixture">
         <h2 className="text-sm font-medium">Wiadomości przychodzące</h2>
+        <label className="flex flex-col gap-1 text-xs">
+          group_by
+          <select
+            aria-label="Grupowanie wiadomości"
+            className="h-8 rounded-md border border-border bg-card px-2 text-sm"
+            value={groupBy}
+            onChange={(event) => setGroupBy(mailGroupByOrDefault(event.target.value))}
+          >
+            <option value="party">party</option>
+            <option value="country">country</option>
+            <option value="status">status</option>
+          </select>
+        </label>
+        <ul className="text-xs" data-mail="groups">
+          {groupInboundMessages(inbound.data ?? [], parties.data ?? [], groupBy).map((group) => (
+            <li key={group.key}>
+              {group.key} · {group.rows.length}
+            </li>
+          ))}
+        </ul>
         <form
           className="flex flex-col gap-2 rounded-md border border-border bg-card p-3"
           onSubmit={(event) => {

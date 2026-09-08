@@ -18,6 +18,7 @@ class TableViewConfig(BaseModel):
     filters: dict[str, Any] = Field(default_factory=dict)
     sorting: list[dict[str, str]] = Field(default_factory=list)
     density: str = "compact"
+    group_by: str | None = None
 
 
 class TableViewCreate(BaseModel):

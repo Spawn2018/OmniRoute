@@ -13101,6 +13101,17 @@
             "type": "string",
             "title": "Density",
             "default": "compact"
+          },
+          "group_by": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Group By"
           }
         },
         "type": "object",

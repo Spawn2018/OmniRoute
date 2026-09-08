@@ -4,6 +4,7 @@ from uuid import UUID, uuid4
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.errors import ResourceNotFound
+from app.domain.table_view import normalize_table_view_config
 from app.models.table_view import TableView
 from app.repositories.tenancy.table_view_repository import TableViewRepository
 
@@ -31,7 +32,7 @@ class TableViewService:
             user_id=user_id,
             table_key=table_key,
             name=name.strip(),
-            config=config,
+            config=normalize_table_view_config(config),
             created_by=user_id,
         )
         return await self._views.add(view)
@@ -48,7 +49,7 @@ class TableViewService:
         if name is not None:
             view.name = name.strip()
         if config is not None:
-            view.config = config
+            view.config = normalize_table_view_config(config)
         await self._session.flush()
         return view
 
