@@ -27,6 +27,7 @@ from app.api import (
     fraud_flags,
     fx_differences,
     gdpr_requests,
+    groupage_lines,
     inbound_messages,
     incoterm_responsibilities,
     locations,
@@ -113,6 +114,7 @@ api_router.include_router(cost_to_serve.router)
 api_router.include_router(bookkeeping.router)
 api_router.include_router(collective_invoices.router)
 api_router.include_router(gdpr_requests.router)
+api_router.include_router(groupage_lines.router)
 api_router.include_router(shipment_legs.router)
 api_router.include_router(organization_calendars.router)
 api_router.include_router(organization_settings.router)

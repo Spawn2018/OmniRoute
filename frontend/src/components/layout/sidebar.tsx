@@ -19,6 +19,7 @@ const NAV = [
   { to: "/china-rail", label: "Kolej z Chin" },
   { to: "/lcl", label: "Drobnica morska" },
   { to: "/air", label: "Lotniczy" },
+  { to: "/groupage", label: "Linie drobnicy" },
   { to: "/sanctions", label: "Sankcje" },
   { to: "/fraud", label: "Oszustwo" },
   { to: "/gdpr", label: "RODO" },

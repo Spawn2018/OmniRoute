@@ -1888,6 +1888,86 @@ export type GdprRequestResponse = {
 };
 
 /**
+ * GroupageLineCreate
+ */
+export type GroupageLineCreate = {
+    /**
+     * Line Code
+     */
+    line_code: string;
+    /**
+     * Origin Location Id
+     */
+    origin_location_id: string;
+    /**
+     * Destination Location Id
+     */
+    destination_location_id: string;
+    /**
+     * Cutoff Local
+     */
+    cutoff_local: string;
+    /**
+     * Transit Days
+     */
+    transit_days: number;
+    /**
+     * Operating Dows
+     */
+    operating_dows: Array<number>;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * GroupageLineResponse
+ */
+export type GroupageLineResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Line Code
+     */
+    line_code: string;
+    /**
+     * Origin Location Id
+     */
+    origin_location_id: string;
+    /**
+     * Destination Location Id
+     */
+    destination_location_id: string;
+    /**
+     * Cutoff Local
+     */
+    cutoff_local: string;
+    /**
+     * Transit Days
+     */
+    transit_days: number;
+    /**
+     * Operating Dows
+     */
+    operating_dows: Array<number>;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+    /**
+     * Superseded By
+     */
+    superseded_by: string | null;
+};
+
+/**
  * HTTPValidationError
  */
 export type HttpValidationError = {
@@ -7869,6 +7949,49 @@ export type FulfillGdprRequestApiV1GdprRequestsRequestIdFulfillPostResponses = {
 };
 
 export type FulfillGdprRequestApiV1GdprRequestsRequestIdFulfillPostResponse = FulfillGdprRequestApiV1GdprRequestsRequestIdFulfillPostResponses[keyof FulfillGdprRequestApiV1GdprRequestsRequestIdFulfillPostResponses];
+
+export type ListGroupageLinesApiV1GroupageLinesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/groupage-lines';
+};
+
+export type ListGroupageLinesApiV1GroupageLinesGetResponses = {
+    /**
+     * Response List Groupage Lines Api V1 Groupage Lines Get
+     *
+     * Successful Response
+     */
+    200: Array<GroupageLineResponse>;
+};
+
+export type ListGroupageLinesApiV1GroupageLinesGetResponse = ListGroupageLinesApiV1GroupageLinesGetResponses[keyof ListGroupageLinesApiV1GroupageLinesGetResponses];
+
+export type CreateGroupageLineApiV1GroupageLinesPostData = {
+    body: GroupageLineCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/groupage-lines';
+};
+
+export type CreateGroupageLineApiV1GroupageLinesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateGroupageLineApiV1GroupageLinesPostError = CreateGroupageLineApiV1GroupageLinesPostErrors[keyof CreateGroupageLineApiV1GroupageLinesPostErrors];
+
+export type CreateGroupageLineApiV1GroupageLinesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: GroupageLineResponse;
+};
+
+export type CreateGroupageLineApiV1GroupageLinesPostResponse = CreateGroupageLineApiV1GroupageLinesPostResponses[keyof CreateGroupageLineApiV1GroupageLinesPostResponses];
 
 export type ListShipmentLegsApiV1ShipmentLegsGetData = {
     body?: never;

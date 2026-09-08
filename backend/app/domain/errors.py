@@ -492,3 +492,7 @@ class InvalidTrip(DomainError):
 
 class InvalidContainer(DomainError):
     """Kontener ISO 6346 — nie VGM."""
+
+
+class InvalidGroupageLine(DomainError):
+    """Linia drobnicy: kod + dwa location + cutoff + TT + ISODOW — nie WMS."""

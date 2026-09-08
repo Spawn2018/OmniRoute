@@ -5664,6 +5664,80 @@
         }
       }
     },
+    "/api/v1/groupage-lines": {
+      "get": {
+        "tags": [
+          "groupage-lines"
+        ],
+        "summary": "List Groupage Lines",
+        "operationId": "list_groupage_lines_api_v1_groupage_lines_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/GroupageLineResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Groupage Lines Api V1 Groupage Lines Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "groupage-lines"
+        ],
+        "summary": "Create Groupage Line",
+        "operationId": "create_groupage_line_api_v1_groupage_lines_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GroupageLineCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupageLineResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/shipment-legs": {
       "get": {
         "tags": [
@@ -11398,6 +11472,130 @@
           "source_ref"
         ],
         "title": "GdprRequestResponse"
+      },
+      "GroupageLineCreate": {
+        "properties": {
+          "line_code": {
+            "type": "string",
+            "title": "Line Code"
+          },
+          "origin_location_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Origin Location Id"
+          },
+          "destination_location_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Destination Location Id"
+          },
+          "cutoff_local": {
+            "type": "string",
+            "format": "time",
+            "title": "Cutoff Local"
+          },
+          "transit_days": {
+            "type": "integer",
+            "title": "Transit Days"
+          },
+          "operating_dows": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "title": "Operating Dows"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "line_code",
+          "origin_location_id",
+          "destination_location_id",
+          "cutoff_local",
+          "transit_days",
+          "operating_dows",
+          "source_ref"
+        ],
+        "title": "GroupageLineCreate"
+      },
+      "GroupageLineResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "line_code": {
+            "type": "string",
+            "title": "Line Code"
+          },
+          "origin_location_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Origin Location Id"
+          },
+          "destination_location_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Destination Location Id"
+          },
+          "cutoff_local": {
+            "type": "string",
+            "format": "time",
+            "title": "Cutoff Local"
+          },
+          "transit_days": {
+            "type": "integer",
+            "title": "Transit Days"
+          },
+          "operating_dows": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "title": "Operating Dows"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          },
+          "superseded_by": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Superseded By"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "line_code",
+          "origin_location_id",
+          "destination_location_id",
+          "cutoff_local",
+          "transit_days",
+          "operating_dows",
+          "source_ref",
+          "superseded_by"
+        ],
+        "title": "GroupageLineResponse"
       },
       "HTTPValidationError": {
         "properties": {

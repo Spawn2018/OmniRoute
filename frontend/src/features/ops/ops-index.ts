@@ -84,6 +84,11 @@ export const OPS_JOBS = [
     job: "lotniska z flagą airport",
   },
   {
+    route: BUSINESS_LISTS.groupageLines.route,
+    label: "Linie drobnicy",
+    job: "katalog groupage_line cutoff i ISODOW",
+  },
+  {
     route: BUSINESS_LISTS.sanctions.route,
     label: "Sankcje",
     job: "aktywni kontrahenci tax_id i kraj",
@@ -419,6 +424,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "152.0": "/shipments",
   "153.0": "/shipments",
   "154.0": "/air",
+  "155.0": "/groupage",
 } as const
 
 export const ROUTES_BREADTH_STANDING =
