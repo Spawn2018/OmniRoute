@@ -60,6 +60,7 @@ import { Route as RolloutRouteImport } from './routes/rollout'
 import { Route as SanctionsRouteImport } from './routes/sanctions'
 import { Route as SessionRouteImport } from './routes/session'
 import { Route as ShipmentDocumentsRouteImport } from './routes/shipment-documents'
+import { Route as ShipmentPackagesRouteImport } from './routes/shipment-packages'
 import { Route as ShipmentsRouteImport } from './routes/shipments'
 import { Route as TerminalsRouteImport } from './routes/terminals'
 import { Route as TrackingRouteImport } from './routes/tracking'
@@ -321,6 +322,11 @@ const ShipmentDocumentsRoute = ShipmentDocumentsRouteImport.update({
   path: '/shipment-documents',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShipmentPackagesRoute = ShipmentPackagesRouteImport.update({
+  id: '/shipment-packages',
+  path: '/shipment-packages',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShipmentsRoute = ShipmentsRouteImport.update({
   id: '/shipments',
   path: '/shipments',
@@ -399,6 +405,7 @@ export interface FileRoutesByFullPath {
   '/sanctions': typeof SanctionsRoute
   '/session': typeof SessionRoute
   '/shipment-documents': typeof ShipmentDocumentsRoute
+  '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
   '/terminals': typeof TerminalsRoute
   '/tracking': typeof TrackingRoute
@@ -457,6 +464,7 @@ export interface FileRoutesByTo {
   '/sanctions': typeof SanctionsRoute
   '/session': typeof SessionRoute
   '/shipment-documents': typeof ShipmentDocumentsRoute
+  '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
   '/terminals': typeof TerminalsRoute
   '/tracking': typeof TrackingRoute
@@ -516,6 +524,7 @@ export interface FileRoutesById {
   '/sanctions': typeof SanctionsRoute
   '/session': typeof SessionRoute
   '/shipment-documents': typeof ShipmentDocumentsRoute
+  '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
   '/terminals': typeof TerminalsRoute
   '/tracking': typeof TrackingRoute
@@ -576,6 +585,7 @@ export interface FileRouteTypes {
     | '/sanctions'
     | '/session'
     | '/shipment-documents'
+    | '/shipment-packages'
     | '/shipments'
     | '/terminals'
     | '/tracking'
@@ -634,6 +644,7 @@ export interface FileRouteTypes {
     | '/sanctions'
     | '/session'
     | '/shipment-documents'
+    | '/shipment-packages'
     | '/shipments'
     | '/terminals'
     | '/tracking'
@@ -692,6 +703,7 @@ export interface FileRouteTypes {
     | '/sanctions'
     | '/session'
     | '/shipment-documents'
+    | '/shipment-packages'
     | '/shipments'
     | '/terminals'
     | '/tracking'
@@ -751,6 +763,7 @@ export interface RootRouteChildren {
   SanctionsRoute: typeof SanctionsRoute
   SessionRoute: typeof SessionRoute
   ShipmentDocumentsRoute: typeof ShipmentDocumentsRoute
+  ShipmentPackagesRoute: typeof ShipmentPackagesRoute
   ShipmentsRoute: typeof ShipmentsRoute
   TerminalsRoute: typeof TerminalsRoute
   TrackingRoute: typeof TrackingRoute
@@ -1117,6 +1130,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShipmentDocumentsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/shipment-packages': {
+      id: '/shipment-packages'
+      path: '/shipment-packages'
+      fullPath: '/shipment-packages'
+      preLoaderRoute: typeof ShipmentPackagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shipments': {
       id: '/shipments'
       path: '/shipments'
@@ -1207,6 +1227,7 @@ const rootRouteChildren: RootRouteChildren = {
   SanctionsRoute: SanctionsRoute,
   SessionRoute: SessionRoute,
   ShipmentDocumentsRoute: ShipmentDocumentsRoute,
+  ShipmentPackagesRoute: ShipmentPackagesRoute,
   ShipmentsRoute: ShipmentsRoute,
   TerminalsRoute: TerminalsRoute,
   TrackingRoute: TrackingRoute,

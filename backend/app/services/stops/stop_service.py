@@ -2,6 +2,7 @@ from uuid import UUID, uuid4
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.domain.errors import ResourceNotFound
 from app.domain.stop import (
     require_sequence_no,
     require_stop_kind,
@@ -36,6 +37,12 @@ def _same_point(
 class StopService:
     def __init__(self, session: AsyncSession) -> None:
         self._rows = StopRepository(session)
+
+    async def get_stop(self, stop_id: UUID) -> Stop:
+        found = await self._rows.get(stop_id)
+        if found is None:
+            raise ResourceNotFound("nieznany punkt operacyjny")
+        return found
 
     async def list_for_shipment(self, shipment_id: object) -> list[Stop]:
         return await self._rows.list_current_for_shipment(require_stop_shipment_id(shipment_id))

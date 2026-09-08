@@ -66,6 +66,7 @@ def _organization_ops_relations() -> dict[str, Userset]:
         "can_manage_gdpr_requests": _member(),
         "can_manage_shipment_legs": _member(),
         "can_manage_groupage_lines": _member(),
+        "can_manage_shipment_packages": _member(),
     }
 
 

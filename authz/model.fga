@@ -47,3 +47,4 @@ type organization
     define can_manage_gdpr_requests: member
     define can_manage_shipment_legs: member
     define can_manage_groupage_lines: member
+    define can_manage_shipment_packages: member

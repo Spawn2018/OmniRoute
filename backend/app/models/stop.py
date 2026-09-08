@@ -8,6 +8,7 @@ from sqlalchemy import (
     Integer,
     String,
     Text,
+    UniqueConstraint,
 )
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
@@ -44,6 +45,12 @@ class Stop(Base, TimestampMixin):
             ondelete="RESTRICT",
         ),
         Index("ix_stop_org_shipment", "organization_id", "shipment_id"),
+        UniqueConstraint(
+            "organization_id",
+            "shipment_id",
+            "id",
+            name="uq_stop_org_shipment_id",
+        ),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)

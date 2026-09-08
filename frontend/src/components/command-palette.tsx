@@ -30,6 +30,7 @@ const NAV_ACTIONS = [
   { id: "nav-lcl", label: "Idź do drobnicy morskiej", to: "/lcl" },
   { id: "nav-air", label: "Idź do lotniczego", to: "/air" },
   { id: "nav-groupage", label: "Idź do linii drobnicy", to: "/groupage" },
+  { id: "nav-parcels", label: "Idź do paczek na zleceniu", to: "/shipment-packages" },
   { id: "nav-sanctions", label: "Idź do sankcji", to: "/sanctions" },
   { id: "nav-fraud", label: "Idź do oszustwa", to: "/fraud" },
   { id: "nav-gdpr", label: "Idź do RODO", to: "/gdpr" },

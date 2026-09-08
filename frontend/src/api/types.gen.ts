@@ -4132,6 +4132,74 @@ export type ShipmentLegResponse = {
 };
 
 /**
+ * ShipmentPackageCreate
+ */
+export type ShipmentPackageCreate = {
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Stop Id
+     */
+    stop_id: string;
+    /**
+     * Package Code
+     */
+    package_code: string;
+    /**
+     * Package Status
+     */
+    package_status: string;
+    /**
+     * Scan Token
+     */
+    scan_token: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ShipmentPackageResponse
+ */
+export type ShipmentPackageResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Stop Id
+     */
+    stop_id: string;
+    /**
+     * Package Code
+     */
+    package_code: string;
+    /**
+     * Package Status
+     */
+    package_status: string;
+    /**
+     * Scan Token
+     */
+    scan_token: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * ShipmentResponse
  */
 export type ShipmentResponse = {
@@ -7287,6 +7355,49 @@ export type CreateShipmentDocumentApiV1ShipmentDocumentsPostResponses = {
 };
 
 export type CreateShipmentDocumentApiV1ShipmentDocumentsPostResponse = CreateShipmentDocumentApiV1ShipmentDocumentsPostResponses[keyof CreateShipmentDocumentApiV1ShipmentDocumentsPostResponses];
+
+export type ListShipmentPackagesApiV1ShipmentPackagesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/shipment-packages';
+};
+
+export type ListShipmentPackagesApiV1ShipmentPackagesGetResponses = {
+    /**
+     * Response List Shipment Packages Api V1 Shipment Packages Get
+     *
+     * Successful Response
+     */
+    200: Array<ShipmentPackageResponse>;
+};
+
+export type ListShipmentPackagesApiV1ShipmentPackagesGetResponse = ListShipmentPackagesApiV1ShipmentPackagesGetResponses[keyof ListShipmentPackagesApiV1ShipmentPackagesGetResponses];
+
+export type CreateShipmentPackageApiV1ShipmentPackagesPostData = {
+    body: ShipmentPackageCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/shipment-packages';
+};
+
+export type CreateShipmentPackageApiV1ShipmentPackagesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateShipmentPackageApiV1ShipmentPackagesPostError = CreateShipmentPackageApiV1ShipmentPackagesPostErrors[keyof CreateShipmentPackageApiV1ShipmentPackagesPostErrors];
+
+export type CreateShipmentPackageApiV1ShipmentPackagesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ShipmentPackageResponse;
+};
+
+export type CreateShipmentPackageApiV1ShipmentPackagesPostResponse = CreateShipmentPackageApiV1ShipmentPackagesPostResponses[keyof CreateShipmentPackageApiV1ShipmentPackagesPostResponses];
 
 export type ListOperationalExceptionsApiV1OperationalExceptionsGetData = {
     body?: never;

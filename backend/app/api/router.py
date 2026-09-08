@@ -54,6 +54,7 @@ from app.api import (
     session,
     shipment_documents,
     shipment_legs,
+    shipment_packages,
     shipment_stakeholders,
     shipments,
     stops,
@@ -100,6 +101,7 @@ api_router.include_router(trips.router)
 api_router.include_router(containers.router)
 api_router.include_router(tracking_events.router)
 api_router.include_router(shipment_documents.router)
+api_router.include_router(shipment_packages.router)
 api_router.include_router(operational_exceptions.router)
 api_router.include_router(cargo_claims.router)
 api_router.include_router(fraud_flags.router)

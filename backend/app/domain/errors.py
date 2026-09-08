@@ -496,3 +496,7 @@ class InvalidContainer(DomainError):
 
 class InvalidGroupageLine(DomainError):
     """Linia drobnicy: kod + dwa location + cutoff + TT + ISODOW — nie WMS."""
+
+
+class InvalidShipmentPackage(DomainError):
+    """Paczka na zleceniu: skan QR Omni + stop trasy — nie WMS."""

@@ -4522,6 +4522,80 @@
         ]
       }
     },
+    "/api/v1/shipment-packages": {
+      "get": {
+        "tags": [
+          "shipment-packages"
+        ],
+        "summary": "List Shipment Packages",
+        "operationId": "list_shipment_packages_api_v1_shipment_packages_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ShipmentPackageResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Shipment Packages Api V1 Shipment Packages Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "shipment-packages"
+        ],
+        "summary": "Create Shipment Package",
+        "operationId": "create_shipment_package_api_v1_shipment_packages_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipmentPackageCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShipmentPackageResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/operational-exceptions": {
       "get": {
         "tags": [
@@ -15330,6 +15404,99 @@
           "source_ref"
         ],
         "title": "ShipmentLegResponse"
+      },
+      "ShipmentPackageCreate": {
+        "properties": {
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "stop_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Stop Id"
+          },
+          "package_code": {
+            "type": "string",
+            "title": "Package Code"
+          },
+          "package_status": {
+            "type": "string",
+            "title": "Package Status"
+          },
+          "scan_token": {
+            "type": "string",
+            "title": "Scan Token"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "shipment_id",
+          "stop_id",
+          "package_code",
+          "package_status",
+          "scan_token",
+          "source_ref"
+        ],
+        "title": "ShipmentPackageCreate"
+      },
+      "ShipmentPackageResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "stop_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Stop Id"
+          },
+          "package_code": {
+            "type": "string",
+            "title": "Package Code"
+          },
+          "package_status": {
+            "type": "string",
+            "title": "Package Status"
+          },
+          "scan_token": {
+            "type": "string",
+            "title": "Scan Token"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "shipment_id",
+          "stop_id",
+          "package_code",
+          "package_status",
+          "scan_token",
+          "source_ref"
+        ],
+        "title": "ShipmentPackageResponse"
       },
       "ShipmentResponse": {
         "properties": {

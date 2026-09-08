@@ -10,6 +10,10 @@ class StopRepository:
     def __init__(self, session: AsyncSession) -> None:
         self._session = session
 
+    async def get(self, stop_id: UUID) -> Stop | None:
+        found = await self._session.get(Stop, stop_id)
+        return found if isinstance(found, Stop) else None
+
     async def list_current_for_shipment(self, shipment_id: UUID) -> list[Stop]:
         result = await self._session.scalars(
             select(Stop)
