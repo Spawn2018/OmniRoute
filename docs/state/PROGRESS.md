@@ -397,3 +397,4 @@
 | 2026-09-08 | 157.0 | D3 | dock_appointment okno TIME na stop magazynu. Nie WMS. Nastepny: D4 Plan. |
 | 2026-09-08 | Plan 158.0 | D4 | cod_instruction znacznik pobrania bez kwoty, nie F. Delta zaakceptowana (`/noc`). Nie D5. Nastepny: kod 158.0. |
 | 2026-09-08 | 158.0 | D4 | cod_instruction znacznik pobrania bez kwoty. Nie F. Nastepny: D5 Plan. |
+| 2026-09-08 | Plan 159.0 | D5 | groupage_tariff próg wagi na strefie, nie silnik P1. Delta zaakceptowana (`/noc`). Nie D6. Nastepny: kod 159.0. |

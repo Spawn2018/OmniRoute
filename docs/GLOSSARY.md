@@ -45,6 +45,7 @@
 | paczka na zleceniu | shipment_package | 156.0 sztuka na `shipment`: `package_status`, skan QR Omni, `stop` z trasy; nie WMS; nie auto-link |
 | awizacja doku | dock_appointment | 157.0 okno TIME na `stop` w magazynie (`postal_zone`/`address`); nie WMS; nie T8 |
 | pobranie COD | cod_instruction | 158.0 znacznik na `shipment` bez kwoty; nie rozliczenie F; nie POD portu |
+| cennik drobnicy | groupage_tariff | 159.0 próg `chargeable_weight` na strefie; Decimal; nie silnik P1; nie FSC |
 | lotniczy | air | 154.0 odcinek `shipment_leg` air; lotnisko = `port` z `airport` w `function_flags`; nie HAWB; nie IATA |
 | reklamacja ładunku | cargo_claim | 113.0 tabela na zleceniu; nie kwota; nie scoring |
 | oszustwo | fraud_flag | 114.0 tabela na kontrahencie; nie scoring osoby; nie kwota |
