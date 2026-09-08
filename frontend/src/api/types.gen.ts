@@ -5094,6 +5094,58 @@ export type TenderCreate = {
 };
 
 /**
+ * TenderLaneCreate
+ */
+export type TenderLaneCreate = {
+    /**
+     * Tender Lot Id
+     */
+    tender_lot_id: string;
+    /**
+     * Origin Unlocode
+     */
+    origin_unlocode: string;
+    /**
+     * Destination Unlocode
+     */
+    destination_unlocode: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TenderLaneResponse
+ */
+export type TenderLaneResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Tender Lot Id
+     */
+    tender_lot_id: string;
+    /**
+     * Origin Unlocode
+     */
+    origin_unlocode: string;
+    /**
+     * Destination Unlocode
+     */
+    destination_unlocode: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * TenderLotCreate
  */
 export type TenderLotCreate = {
@@ -8710,6 +8762,49 @@ export type CreateTenderQuoteApiV1TenderQuotesPostResponses = {
 };
 
 export type CreateTenderQuoteApiV1TenderQuotesPostResponse = CreateTenderQuoteApiV1TenderQuotesPostResponses[keyof CreateTenderQuoteApiV1TenderQuotesPostResponses];
+
+export type ListTenderLanesApiV1TenderLanesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tender-lanes';
+};
+
+export type ListTenderLanesApiV1TenderLanesGetResponses = {
+    /**
+     * Response List Tender Lanes Api V1 Tender Lanes Get
+     *
+     * Successful Response
+     */
+    200: Array<TenderLaneResponse>;
+};
+
+export type ListTenderLanesApiV1TenderLanesGetResponse = ListTenderLanesApiV1TenderLanesGetResponses[keyof ListTenderLanesApiV1TenderLanesGetResponses];
+
+export type CreateTenderLaneApiV1TenderLanesPostData = {
+    body: TenderLaneCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tender-lanes';
+};
+
+export type CreateTenderLaneApiV1TenderLanesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTenderLaneApiV1TenderLanesPostError = CreateTenderLaneApiV1TenderLanesPostErrors[keyof CreateTenderLaneApiV1TenderLanesPostErrors];
+
+export type CreateTenderLaneApiV1TenderLanesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TenderLaneResponse;
+};
+
+export type CreateTenderLaneApiV1TenderLanesPostResponse = CreateTenderLaneApiV1TenderLanesPostResponses[keyof CreateTenderLaneApiV1TenderLanesPostResponses];
 
 export type ListTenderLotsApiV1TenderLotsGetData = {
     body?: never;

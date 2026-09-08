@@ -85,6 +85,7 @@ from app.models.local_charge import LocalCharge  # noqa: F401
 from app.models.tender_quote import TenderQuote  # noqa: F401
 from app.models.tender import Tender  # noqa: F401
 from app.models.tender_lot import TenderLot  # noqa: F401
+from app.models.tender_lane import TenderLane  # noqa: F401
 from app.models.shipment_leg import ShipmentLeg  # noqa: F401
 from app.models.money_cost import MoneyCost  # noqa: F401
 from app.models.quote_invoice_settlement import QuoteInvoiceSettlement  # noqa: F401

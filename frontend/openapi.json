@@ -5484,6 +5484,80 @@
         ]
       }
     },
+    "/api/v1/tender-lanes": {
+      "get": {
+        "tags": [
+          "tender-lanes"
+        ],
+        "summary": "List Tender Lanes",
+        "operationId": "list_tender_lanes_api_v1_tender_lanes_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TenderLaneResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Tender Lanes Api V1 Tender Lanes Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "tender-lanes"
+        ],
+        "summary": "Create Tender Lane",
+        "operationId": "create_tender_lane_api_v1_tender_lanes_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TenderLaneCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TenderLaneResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/tender-lots": {
       "get": {
         "tags": [
@@ -17703,6 +17777,77 @@
           "source_ref"
         ],
         "title": "TenderCreate"
+      },
+      "TenderLaneCreate": {
+        "properties": {
+          "tender_lot_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Tender Lot Id"
+          },
+          "origin_unlocode": {
+            "type": "string",
+            "title": "Origin Unlocode"
+          },
+          "destination_unlocode": {
+            "type": "string",
+            "title": "Destination Unlocode"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "tender_lot_id",
+          "origin_unlocode",
+          "destination_unlocode",
+          "source_ref"
+        ],
+        "title": "TenderLaneCreate"
+      },
+      "TenderLaneResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "tender_lot_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Tender Lot Id"
+          },
+          "origin_unlocode": {
+            "type": "string",
+            "title": "Origin Unlocode"
+          },
+          "destination_unlocode": {
+            "type": "string",
+            "title": "Destination Unlocode"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "tender_lot_id",
+          "origin_unlocode",
+          "destination_unlocode",
+          "source_ref"
+        ],
+        "title": "TenderLaneResponse"
       },
       "TenderLotCreate": {
         "properties": {

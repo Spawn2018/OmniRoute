@@ -15,7 +15,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **150.0 leftover:** `stop_group`; `eta_physical`/`eta_legal` (V2); waga/plomba/awizacja (EXP1). Tu tylko punkt + location + strefa IANA. Nie mapa. `resource` = 151.0. `trip` = 152.0.
 - **151.0 leftover:** `trip` DONE 152.0. Zostaje T2c: multi-manning / floating trailer; pojemności / Decimal km; `party_id`; `/fleet` / HW. Tu tylko katalog pojazd/kierowca/naczepa.
 - **153.0 leftover:** VGM/TARA Decimal; free_time; cutoffy CY/CFS/VGM/SI/AMS; `bl_kind`; plomby/PIN; reefer; party/terminal; TEU; `shipment_leg_id`. Tu tylko ISO 6346 + `iso_size_type` + opcjonalne zlecenie. Nie booking.
-- **170.0 leftover:** `tender_lane` / `tender_round` (G2.2+); data room; matryca; playbook; four-eyes; TED (G2.2–G2.18). Tu tylko `tender_lot` kod partii. Nie kwota. Nie auto-award.
+- **171.0 leftover:** `tender_round` (G2.3+); data room; matryca; playbook; four-eyes; TED (G2.3–G2.18). Resolve `port` leftover. Tu tylko `tender_lane` para UN/LOCODE. Nie kwota. Nie auto-award.
+- **170.0 leftover:** `tender_lane` DONE 171.0. Zostaje `tender_round` (G2.3+); data room; matryca; playbook; four-eyes; TED (G2.3–G2.18). Tu tylko `tender_lot` kod partii. Nie kwota. Nie auto-award.
 - **169.0 leftover:** `tender_lot` DONE 170.0. Zostaje lane/round (G2.2+); data room+NDA; extract RFP HITL; matryca; playbook; four-eyes; win/loss; TED; CO₂; consortium (G2.2–G2.18); U4 `is_working_day` na `deadline_at`. Tu tylko nagłówek `tender`. Nie auto-award. Nie kwota.
 - **168.0 leftover:** obiekt `tender` DONE 169.0. Zostaje auto-award (P6c). Tu tylko `tender_quote` ważność + `order_limit` integer. Nie kwota.
 - **155.0 leftover:** OR wielu hubów na jednym końcu (D1b). Tu tylko `groupage_line` cutoff+TT+ISODOW + dwa `location`. Nie optymalizator.
