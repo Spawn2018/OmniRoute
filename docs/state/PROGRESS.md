@@ -369,3 +369,4 @@
 | 2026-09-08 | 142.0 | M-32 | O8: group_by party/country/status na /mail w table_view.config. Nie watek. Nastepny: N5 Plan. |
 | 2026-09-08 | Plan 143.0 | M-30 | N5: no_reply_after na carrier_inquiry + reczny notice no_reply. Delta zaakceptowana (/noc). Nie U4. Nastepny: kod 143.0. |
 | 2026-09-08 | 143.0 | M-30 | N5: no_reply_after + reczny notice no_reply. Nie U4. Nastepny: U1+U5 Plan. |
+| 2026-09-08 | Plan 144.0 | U1+U5 | carry-forward (3 pola Incoterms) + document_checklist_rule. Delta zaakceptowana (/noc). Nie I1. Nastepny: kod 144.0. |
