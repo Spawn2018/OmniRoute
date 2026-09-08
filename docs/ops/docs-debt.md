@@ -16,6 +16,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **151.0 leftover:** `trip` DONE 152.0. Zostaje T2c: multi-manning / floating trailer; pojemności / Decimal km; `party_id`; `/fleet` / HW. Tu tylko katalog pojazd/kierowca/naczepa.
 - **153.0 leftover:** VGM/TARA Decimal; free_time; cutoffy CY/CFS/VGM/SI/AMS; `bl_kind`; plomby/PIN; reefer; party/terminal; TEU; `shipment_leg_id`. Tu tylko ISO 6346 + `iso_size_type` + opcjonalne zlecenie. Nie booking.
 - **155.0 leftover:** OR wielu hubów na jednym końcu (D1b). Tu tylko `groupage_line` cutoff+TT+ISODOW + dwa `location`. Nie optymalizator.
+- **162.0 leftover:** `shipment_ref` na `shipment` (D9b; przed QR/F10); `network_print_requirement` / 409 (D9c; nie C8); PDF/ZPL/QR bitmap (D9d); skan HITL bez kodu Omni (D9e); `branding_ref` / `pdf`/`zpl` (D9f). Tu tylko katalog `own_label`/`cmr` + `html_print`. Nie D8.
 - **161.0 leftover:** giełda/HTTP Chep/LPR (D7b); ledger ujemny (D7c); euro/EPAL (D7d). Tu tylko integer sztuk `chep`/`lpr` na `party`. Nie depozyt.
 - **160.0 leftover:** konsolidacja wielu house pod jeden MBL (D6b); pula numerów M-03 (D6c); unikat `bill_no`. Tu tylko znacznik HBL/MBL na `shipment`. Nie PDF. Nie booking.
 - **159.0 leftover:** objętość / paleta / FSC (D5b, P3); silnik dopasowania WHEN/IF (P1). Tu tylko próg `chargeable_weight` na `postal_zone` + Decimal. Nie T-SQL.

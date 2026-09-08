@@ -27,6 +27,7 @@ import { Route as CustomerSopsRouteImport } from './routes/customer-sops'
 import { Route as DangerousGoodsRouteImport } from './routes/dangerous-goods'
 import { Route as DecisionsRouteImport } from './routes/decisions'
 import { Route as DockAppointmentsRouteImport } from './routes/dock-appointments'
+import { Route as DocumentTemplatesRouteImport } from './routes/document-templates'
 import { Route as EdiRouteImport } from './routes/edi'
 import { Route as EntityEventsRouteImport } from './routes/entity-events'
 import { Route as ExceptionsRouteImport } from './routes/exceptions'
@@ -160,6 +161,11 @@ const DecisionsRoute = DecisionsRouteImport.update({
 const DockAppointmentsRoute = DockAppointmentsRouteImport.update({
   id: '/dock-appointments',
   path: '/dock-appointments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocumentTemplatesRoute = DocumentTemplatesRouteImport.update({
+  id: '/document-templates',
+  path: '/document-templates',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EdiRoute = EdiRouteImport.update({
@@ -402,6 +408,7 @@ export interface FileRoutesByFullPath {
   '/dangerous-goods': typeof DangerousGoodsRoute
   '/decisions': typeof DecisionsRoute
   '/dock-appointments': typeof DockAppointmentsRoute
+  '/document-templates': typeof DocumentTemplatesRoute
   '/edi': typeof EdiRoute
   '/entity-events': typeof EntityEventsRoute
   '/exceptions': typeof ExceptionsRoute
@@ -466,6 +473,7 @@ export interface FileRoutesByTo {
   '/dangerous-goods': typeof DangerousGoodsRoute
   '/decisions': typeof DecisionsRoute
   '/dock-appointments': typeof DockAppointmentsRoute
+  '/document-templates': typeof DocumentTemplatesRoute
   '/edi': typeof EdiRoute
   '/entity-events': typeof EntityEventsRoute
   '/exceptions': typeof ExceptionsRoute
@@ -531,6 +539,7 @@ export interface FileRoutesById {
   '/dangerous-goods': typeof DangerousGoodsRoute
   '/decisions': typeof DecisionsRoute
   '/dock-appointments': typeof DockAppointmentsRoute
+  '/document-templates': typeof DocumentTemplatesRoute
   '/edi': typeof EdiRoute
   '/entity-events': typeof EntityEventsRoute
   '/exceptions': typeof ExceptionsRoute
@@ -597,6 +606,7 @@ export interface FileRouteTypes {
     | '/dangerous-goods'
     | '/decisions'
     | '/dock-appointments'
+    | '/document-templates'
     | '/edi'
     | '/entity-events'
     | '/exceptions'
@@ -661,6 +671,7 @@ export interface FileRouteTypes {
     | '/dangerous-goods'
     | '/decisions'
     | '/dock-appointments'
+    | '/document-templates'
     | '/edi'
     | '/entity-events'
     | '/exceptions'
@@ -725,6 +736,7 @@ export interface FileRouteTypes {
     | '/dangerous-goods'
     | '/decisions'
     | '/dock-appointments'
+    | '/document-templates'
     | '/edi'
     | '/entity-events'
     | '/exceptions'
@@ -790,6 +802,7 @@ export interface RootRouteChildren {
   DangerousGoodsRoute: typeof DangerousGoodsRoute
   DecisionsRoute: typeof DecisionsRoute
   DockAppointmentsRoute: typeof DockAppointmentsRoute
+  DocumentTemplatesRoute: typeof DocumentTemplatesRoute
   EdiRoute: typeof EdiRoute
   EntityEventsRoute: typeof EntityEventsRoute
   ExceptionsRoute: typeof ExceptionsRoute
@@ -962,6 +975,13 @@ declare module '@tanstack/react-router' {
       path: '/dock-appointments'
       fullPath: '/dock-appointments'
       preLoaderRoute: typeof DockAppointmentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/document-templates': {
+      id: '/document-templates'
+      path: '/document-templates'
+      fullPath: '/document-templates'
+      preLoaderRoute: typeof DocumentTemplatesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/edi': {
@@ -1294,6 +1314,7 @@ const rootRouteChildren: RootRouteChildren = {
   DangerousGoodsRoute: DangerousGoodsRoute,
   DecisionsRoute: DecisionsRoute,
   DockAppointmentsRoute: DockAppointmentsRoute,
+  DocumentTemplatesRoute: DocumentTemplatesRoute,
   EdiRoute: EdiRoute,
   EntityEventsRoute: EntityEventsRoute,
   ExceptionsRoute: ExceptionsRoute,

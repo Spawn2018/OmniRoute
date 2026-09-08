@@ -53,3 +53,4 @@ type organization
     define can_manage_groupage_tariffs: member
     define can_manage_ocean_bills: member
     define can_manage_pallet_balances: member
+    define can_manage_document_templates: member

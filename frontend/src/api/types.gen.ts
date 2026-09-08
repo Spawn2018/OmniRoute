@@ -1619,6 +1619,66 @@ export type DocumentDispatchRuleResponse = {
 };
 
 /**
+ * DocumentTemplateCreate
+ */
+export type DocumentTemplateCreate = {
+    /**
+     * Template Kind
+     */
+    template_kind: string;
+    /**
+     * Language
+     */
+    language: string;
+    /**
+     * Layout Ref
+     */
+    layout_ref: string;
+    /**
+     * Output Kind
+     */
+    output_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * DocumentTemplateResponse
+ */
+export type DocumentTemplateResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Template Kind
+     */
+    template_kind: string;
+    /**
+     * Language
+     */
+    language: string;
+    /**
+     * Layout Ref
+     */
+    layout_ref: string;
+    /**
+     * Output Kind
+     */
+    output_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * EdiMessageCreate
  */
 export type EdiMessageCreate = {
@@ -7964,6 +8024,49 @@ export type CreatePalletBalanceApiV1PalletBalancesPostResponses = {
 };
 
 export type CreatePalletBalanceApiV1PalletBalancesPostResponse = CreatePalletBalanceApiV1PalletBalancesPostResponses[keyof CreatePalletBalanceApiV1PalletBalancesPostResponses];
+
+export type ListDocumentTemplatesApiV1DocumentTemplatesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/document-templates';
+};
+
+export type ListDocumentTemplatesApiV1DocumentTemplatesGetResponses = {
+    /**
+     * Response List Document Templates Api V1 Document Templates Get
+     *
+     * Successful Response
+     */
+    200: Array<DocumentTemplateResponse>;
+};
+
+export type ListDocumentTemplatesApiV1DocumentTemplatesGetResponse = ListDocumentTemplatesApiV1DocumentTemplatesGetResponses[keyof ListDocumentTemplatesApiV1DocumentTemplatesGetResponses];
+
+export type CreateDocumentTemplateApiV1DocumentTemplatesPostData = {
+    body: DocumentTemplateCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/document-templates';
+};
+
+export type CreateDocumentTemplateApiV1DocumentTemplatesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateDocumentTemplateApiV1DocumentTemplatesPostError = CreateDocumentTemplateApiV1DocumentTemplatesPostErrors[keyof CreateDocumentTemplateApiV1DocumentTemplatesPostErrors];
+
+export type CreateDocumentTemplateApiV1DocumentTemplatesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: DocumentTemplateResponse;
+};
+
+export type CreateDocumentTemplateApiV1DocumentTemplatesPostResponse = CreateDocumentTemplateApiV1DocumentTemplatesPostResponses[keyof CreateDocumentTemplateApiV1DocumentTemplatesPostResponses];
 
 export type ListFraudFlagsApiV1FraudFlagsGetData = {
     body?: never;

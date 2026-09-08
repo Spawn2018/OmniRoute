@@ -58,6 +58,7 @@ const NAV = [
   { to: "/terminals", label: "Terminale" },
   { to: "/parties", label: "Kontrahenci" },
   { to: "/pallet-balances", label: "Saldo palet" },
+  { to: "/document-templates", label: "Szablony wydruku" },
   { to: "/party-scorecards", label: "Karty wyników" },
   { to: "/customer-sops", label: "Procedury klienta" },
   { to: "/credit-reviews", label: "Recenzje kredytowe" },

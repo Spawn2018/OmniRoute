@@ -520,3 +520,7 @@ class InvalidOceanBill(DomainError):
 
 class InvalidPalletBalance(DomainError):
     """Saldo palet Chep/LPR na kontrahencie — nie giełda, nie depozyt."""
+
+
+class InvalidDocumentTemplate(DomainError):
+    """Szablon wydruku jako dane — nie PDF, nie etykieta sieci."""

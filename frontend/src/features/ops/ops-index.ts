@@ -89,6 +89,11 @@ export const OPS_JOBS = [
     job: "saldo pallet_balance Chep/LPR bez giełdy",
   },
   {
+    route: BUSINESS_LISTS.documentTemplate.route,
+    label: "Szablony wydruku",
+    job: "katalog document_template layout bez PDF",
+  },
+  {
     route: BUSINESS_LISTS.airFreight.route,
     label: "Lotniczy",
     job: "lotniska z flagą airport",
@@ -461,6 +466,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "159.0": "/groupage-tariffs",
   "160.0": "/ocean-bills",
   "161.0": "/pallet-balances",
+  "162.0": "/document-templates",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

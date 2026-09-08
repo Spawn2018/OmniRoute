@@ -5040,6 +5040,80 @@
         ]
       }
     },
+    "/api/v1/document-templates": {
+      "get": {
+        "tags": [
+          "document-templates"
+        ],
+        "summary": "List Document Templates",
+        "operationId": "list_document_templates_api_v1_document_templates_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/DocumentTemplateResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Document Templates Api V1 Document Templates Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "document-templates"
+        ],
+        "summary": "Create Document Template",
+        "operationId": "create_document_template_api_v1_document_templates_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DocumentTemplateCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentTemplateResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/fraud-flags": {
       "get": {
         "tags": [
@@ -11476,6 +11550,85 @@
           "superseded_by"
         ],
         "title": "DocumentDispatchRuleResponse"
+      },
+      "DocumentTemplateCreate": {
+        "properties": {
+          "template_kind": {
+            "type": "string",
+            "title": "Template Kind"
+          },
+          "language": {
+            "type": "string",
+            "title": "Language"
+          },
+          "layout_ref": {
+            "type": "string",
+            "title": "Layout Ref"
+          },
+          "output_kind": {
+            "type": "string",
+            "title": "Output Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "template_kind",
+          "language",
+          "layout_ref",
+          "output_kind",
+          "source_ref"
+        ],
+        "title": "DocumentTemplateCreate"
+      },
+      "DocumentTemplateResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "template_kind": {
+            "type": "string",
+            "title": "Template Kind"
+          },
+          "language": {
+            "type": "string",
+            "title": "Language"
+          },
+          "layout_ref": {
+            "type": "string",
+            "title": "Layout Ref"
+          },
+          "output_kind": {
+            "type": "string",
+            "title": "Output Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "template_kind",
+          "language",
+          "layout_ref",
+          "output_kind",
+          "source_ref"
+        ],
+        "title": "DocumentTemplateResponse"
       },
       "EdiMessageCreate": {
         "properties": {
