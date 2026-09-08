@@ -36,6 +36,7 @@ from app.api import (
     groupage_tariffs,
     inbound_messages,
     incoterm_responsibilities,
+    local_charges,
     locations,
     mail_drafts,
     money_costs,
@@ -121,6 +122,7 @@ api_router.include_router(document_templates.router)
 api_router.include_router(rate_cards.router)
 api_router.include_router(charge_templates.router)
 api_router.include_router(fuel_indexes.router)
+api_router.include_router(local_charges.router)
 api_router.include_router(fraud_flags.router)
 api_router.include_router(edi_messages.router)
 api_router.include_router(sales_invoices.router)

@@ -536,3 +536,7 @@ class InvalidChargeTemplate(DomainError):
 
 class InvalidFuelIndex(DomainError):
     """Indeks FSC/BAF/CAF jako dane obok nbp_rate — nie mnożenie na charge."""
+
+
+class InvalidLocalCharge(DomainError):
+    """Dopłata lokalna THC/ISPS jako dane + Decimal — nie warning braków."""

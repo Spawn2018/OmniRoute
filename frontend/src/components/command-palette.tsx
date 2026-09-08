@@ -63,6 +63,7 @@ const NAV_ACTIONS = [
   { id: "nav-credit-reviews", label: "Idź do katalogu recenzji kredytowych", to: "/credit-reviews" },
   { id: "nav-decisions", label: "Idź do szyny decyzji operatora", to: "/decisions" },
   { id: "nav-port-surcharges", label: "Idź do katalogu extra portowych", to: "/port-surcharges" },
+  { id: "nav-local-charges", label: "Idź do dopłat lokalnych", to: "/local-charges" },
   { id: "nav-nbp-rates", label: "Idź do katalogu kursów NBP", to: "/nbp-rates" },
   { id: "nav-fuel-indexes", label: "Idź do indeksów paliwowych", to: "/fuel-indexes" },
   { id: "nav-charges", label: "Idź do opłat", to: "/charges" },

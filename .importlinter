@@ -79,6 +79,7 @@ modules =
     app.services.rate_cards
     app.services.charge_templates
     app.services.fuel_indexes
+    app.services.local_charges
 
 [importlinter:contract:integracje]
 name = Integracje nie znają serwisów
@@ -279,3 +280,6 @@ forbidden_modules =
     app.services.fuel_indexes
     app.repositories.fuel_indexes
     app.models.fuel_index
+    app.services.local_charges
+    app.repositories.local_charges
+    app.models.local_charge

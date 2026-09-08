@@ -43,6 +43,7 @@ import { Route as GroupageTariffsRouteImport } from './routes/groupage-tariffs'
 import { Route as HealthRouteImport } from './routes/health'
 import { Route as InvoicesRouteImport } from './routes/invoices'
 import { Route as LclRouteImport } from './routes/lcl'
+import { Route as LocalChargesRouteImport } from './routes/local-charges'
 import { Route as LocationsRouteImport } from './routes/locations'
 import { Route as MailRouteImport } from './routes/mail'
 import { Route as MoneyCostRouteImport } from './routes/money-cost'
@@ -246,6 +247,11 @@ const LclRoute = LclRouteImport.update({
   path: '/lcl',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LocalChargesRoute = LocalChargesRouteImport.update({
+  id: '/local-charges',
+  path: '/local-charges',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LocationsRoute = LocationsRouteImport.update({
   id: '/locations',
   path: '/locations',
@@ -442,6 +448,7 @@ export interface FileRoutesByFullPath {
   '/health': typeof HealthRoute
   '/invoices': typeof InvoicesRoute
   '/lcl': typeof LclRoute
+  '/local-charges': typeof LocalChargesRoute
   '/locations': typeof LocationsRoute
   '/mail': typeof MailRoute
   '/money-cost': typeof MoneyCostRoute
@@ -510,6 +517,7 @@ export interface FileRoutesByTo {
   '/health': typeof HealthRoute
   '/invoices': typeof InvoicesRoute
   '/lcl': typeof LclRoute
+  '/local-charges': typeof LocalChargesRoute
   '/locations': typeof LocationsRoute
   '/mail': typeof MailRoute
   '/money-cost': typeof MoneyCostRoute
@@ -579,6 +587,7 @@ export interface FileRoutesById {
   '/health': typeof HealthRoute
   '/invoices': typeof InvoicesRoute
   '/lcl': typeof LclRoute
+  '/local-charges': typeof LocalChargesRoute
   '/locations': typeof LocationsRoute
   '/mail': typeof MailRoute
   '/money-cost': typeof MoneyCostRoute
@@ -649,6 +658,7 @@ export interface FileRouteTypes {
     | '/health'
     | '/invoices'
     | '/lcl'
+    | '/local-charges'
     | '/locations'
     | '/mail'
     | '/money-cost'
@@ -717,6 +727,7 @@ export interface FileRouteTypes {
     | '/health'
     | '/invoices'
     | '/lcl'
+    | '/local-charges'
     | '/locations'
     | '/mail'
     | '/money-cost'
@@ -785,6 +796,7 @@ export interface FileRouteTypes {
     | '/health'
     | '/invoices'
     | '/lcl'
+    | '/local-charges'
     | '/locations'
     | '/mail'
     | '/money-cost'
@@ -854,6 +866,7 @@ export interface RootRouteChildren {
   HealthRoute: typeof HealthRoute
   InvoicesRoute: typeof InvoicesRoute
   LclRoute: typeof LclRoute
+  LocalChargesRoute: typeof LocalChargesRoute
   LocationsRoute: typeof LocationsRoute
   MailRoute: typeof MailRoute
   MoneyCostRoute: typeof MoneyCostRoute
@@ -1128,6 +1141,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LclRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/local-charges': {
+      id: '/local-charges'
+      path: '/local-charges'
+      fullPath: '/local-charges'
+      preLoaderRoute: typeof LocalChargesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/locations': {
       id: '/locations'
       path: '/locations'
@@ -1390,6 +1410,7 @@ const rootRouteChildren: RootRouteChildren = {
   HealthRoute: HealthRoute,
   InvoicesRoute: InvoicesRoute,
   LclRoute: LclRoute,
+  LocalChargesRoute: LocalChargesRoute,
   LocationsRoute: LocationsRoute,
   MailRoute: MailRoute,
   MoneyCostRoute: MoneyCostRoute,

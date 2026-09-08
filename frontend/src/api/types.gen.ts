@@ -2710,6 +2710,58 @@ export type LaneScorecardUpsert = {
 };
 
 /**
+ * LocalChargeCreate
+ */
+export type LocalChargeCreate = {
+    /**
+     * Charge Kind
+     */
+    charge_kind: string;
+    /**
+     * Amount
+     */
+    amount: string;
+    /**
+     * Currency
+     */
+    currency: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * LocalChargeResponse
+ */
+export type LocalChargeResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Charge Kind
+     */
+    charge_kind: string;
+    /**
+     * Amount
+     */
+    amount: string;
+    /**
+     * Currency
+     */
+    currency: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * LocationResponse
  */
 export type LocationResponse = {
@@ -8368,6 +8420,49 @@ export type CreateFuelIndexApiV1FuelIndexesPostResponses = {
 };
 
 export type CreateFuelIndexApiV1FuelIndexesPostResponse = CreateFuelIndexApiV1FuelIndexesPostResponses[keyof CreateFuelIndexApiV1FuelIndexesPostResponses];
+
+export type ListLocalChargesApiV1LocalChargesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/local-charges';
+};
+
+export type ListLocalChargesApiV1LocalChargesGetResponses = {
+    /**
+     * Response List Local Charges Api V1 Local Charges Get
+     *
+     * Successful Response
+     */
+    200: Array<LocalChargeResponse>;
+};
+
+export type ListLocalChargesApiV1LocalChargesGetResponse = ListLocalChargesApiV1LocalChargesGetResponses[keyof ListLocalChargesApiV1LocalChargesGetResponses];
+
+export type CreateLocalChargeApiV1LocalChargesPostData = {
+    body: LocalChargeCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/local-charges';
+};
+
+export type CreateLocalChargeApiV1LocalChargesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateLocalChargeApiV1LocalChargesPostError = CreateLocalChargeApiV1LocalChargesPostErrors[keyof CreateLocalChargeApiV1LocalChargesPostErrors];
+
+export type CreateLocalChargeApiV1LocalChargesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: LocalChargeResponse;
+};
+
+export type CreateLocalChargeApiV1LocalChargesPostResponse = CreateLocalChargeApiV1LocalChargesPostResponses[keyof CreateLocalChargeApiV1LocalChargesPostResponses];
 
 export type ListFraudFlagsApiV1FraudFlagsGetData = {
     body?: never;

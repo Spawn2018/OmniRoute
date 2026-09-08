@@ -5336,6 +5336,80 @@
         ]
       }
     },
+    "/api/v1/local-charges": {
+      "get": {
+        "tags": [
+          "local-charges"
+        ],
+        "summary": "List Local Charges",
+        "operationId": "list_local_charges_api_v1_local_charges_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/LocalChargeResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Local Charges Api V1 Local Charges Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "local-charges"
+        ],
+        "summary": "Create Local Charge",
+        "operationId": "create_local_charge_api_v1_local_charges_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocalChargeCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocalChargeResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/fraud-flags": {
       "get": {
         "tags": [
@@ -13406,6 +13480,75 @@
           "destination_port_id"
         ],
         "title": "LaneScorecardUpsert"
+      },
+      "LocalChargeCreate": {
+        "properties": {
+          "charge_kind": {
+            "type": "string",
+            "title": "Charge Kind"
+          },
+          "amount": {
+            "type": "string",
+            "title": "Amount"
+          },
+          "currency": {
+            "type": "string",
+            "title": "Currency"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "charge_kind",
+          "amount",
+          "currency",
+          "source_ref"
+        ],
+        "title": "LocalChargeCreate"
+      },
+      "LocalChargeResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "charge_kind": {
+            "type": "string",
+            "title": "Charge Kind"
+          },
+          "amount": {
+            "type": "string",
+            "title": "Amount"
+          },
+          "currency": {
+            "type": "string",
+            "title": "Currency"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "charge_kind",
+          "amount",
+          "currency",
+          "source_ref"
+        ],
+        "title": "LocalChargeResponse"
       },
       "LocationResponse": {
         "properties": {
