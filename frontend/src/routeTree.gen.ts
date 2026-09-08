@@ -49,6 +49,7 @@ import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as OceanBillsRouteImport } from './routes/ocean-bills'
 import { Route as OrganizationSettingsRouteImport } from './routes/organization-settings'
 import { Route as OutboxRouteImport } from './routes/outbox'
+import { Route as PalletBalancesRouteImport } from './routes/pallet-balances'
 import { Route as PartiesRouteImport } from './routes/parties'
 import { Route as PartyScorecardsRouteImport } from './routes/party-scorecards'
 import { Route as PaymentsRouteImport } from './routes/payments'
@@ -271,6 +272,11 @@ const OutboxRoute = OutboxRouteImport.update({
   path: '/outbox',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PalletBalancesRoute = PalletBalancesRouteImport.update({
+  id: '/pallet-balances',
+  path: '/pallet-balances',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PartiesRoute = PartiesRouteImport.update({
   id: '/parties',
   path: '/parties',
@@ -418,6 +424,7 @@ export interface FileRoutesByFullPath {
   '/ocean-bills': typeof OceanBillsRoute
   '/organization-settings': typeof OrganizationSettingsRoute
   '/outbox': typeof OutboxRoute
+  '/pallet-balances': typeof PalletBalancesRoute
   '/parties': typeof PartiesRoute
   '/party-scorecards': typeof PartyScorecardsRoute
   '/payments': typeof PaymentsRoute
@@ -481,6 +488,7 @@ export interface FileRoutesByTo {
   '/ocean-bills': typeof OceanBillsRoute
   '/organization-settings': typeof OrganizationSettingsRoute
   '/outbox': typeof OutboxRoute
+  '/pallet-balances': typeof PalletBalancesRoute
   '/parties': typeof PartiesRoute
   '/party-scorecards': typeof PartyScorecardsRoute
   '/payments': typeof PaymentsRoute
@@ -545,6 +553,7 @@ export interface FileRoutesById {
   '/ocean-bills': typeof OceanBillsRoute
   '/organization-settings': typeof OrganizationSettingsRoute
   '/outbox': typeof OutboxRoute
+  '/pallet-balances': typeof PalletBalancesRoute
   '/parties': typeof PartiesRoute
   '/party-scorecards': typeof PartyScorecardsRoute
   '/payments': typeof PaymentsRoute
@@ -610,6 +619,7 @@ export interface FileRouteTypes {
     | '/ocean-bills'
     | '/organization-settings'
     | '/outbox'
+    | '/pallet-balances'
     | '/parties'
     | '/party-scorecards'
     | '/payments'
@@ -673,6 +683,7 @@ export interface FileRouteTypes {
     | '/ocean-bills'
     | '/organization-settings'
     | '/outbox'
+    | '/pallet-balances'
     | '/parties'
     | '/party-scorecards'
     | '/payments'
@@ -736,6 +747,7 @@ export interface FileRouteTypes {
     | '/ocean-bills'
     | '/organization-settings'
     | '/outbox'
+    | '/pallet-balances'
     | '/parties'
     | '/party-scorecards'
     | '/payments'
@@ -800,6 +812,7 @@ export interface RootRouteChildren {
   OceanBillsRoute: typeof OceanBillsRoute
   OrganizationSettingsRoute: typeof OrganizationSettingsRoute
   OutboxRoute: typeof OutboxRoute
+  PalletBalancesRoute: typeof PalletBalancesRoute
   PartiesRoute: typeof PartiesRoute
   PartyScorecardsRoute: typeof PartyScorecardsRoute
   PaymentsRoute: typeof PaymentsRoute
@@ -1105,6 +1118,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OutboxRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pallet-balances': {
+      id: '/pallet-balances'
+      path: '/pallet-balances'
+      fullPath: '/pallet-balances'
+      preLoaderRoute: typeof PalletBalancesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/parties': {
       id: '/parties'
       path: '/parties'
@@ -1296,6 +1316,7 @@ const rootRouteChildren: RootRouteChildren = {
   OceanBillsRoute: OceanBillsRoute,
   OrganizationSettingsRoute: OrganizationSettingsRoute,
   OutboxRoute: OutboxRoute,
+  PalletBalancesRoute: PalletBalancesRoute,
   PartiesRoute: PartiesRoute,
   PartyScorecardsRoute: PartyScorecardsRoute,
   PaymentsRoute: PaymentsRoute,

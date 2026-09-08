@@ -3288,6 +3288,58 @@ export type OutboxEventResponse = {
 };
 
 /**
+ * PalletBalanceCreate
+ */
+export type PalletBalanceCreate = {
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Pallet Kind
+     */
+    pallet_kind: string;
+    /**
+     * Unit Count
+     */
+    unit_count: number;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * PalletBalanceResponse
+ */
+export type PalletBalanceResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Pallet Kind
+     */
+    pallet_kind: string;
+    /**
+     * Unit Count
+     */
+    unit_count: number;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * PartyCreate
  */
 export type PartyCreate = {
@@ -7869,6 +7921,49 @@ export type CreateOceanBillApiV1OceanBillsPostResponses = {
 };
 
 export type CreateOceanBillApiV1OceanBillsPostResponse = CreateOceanBillApiV1OceanBillsPostResponses[keyof CreateOceanBillApiV1OceanBillsPostResponses];
+
+export type ListPalletBalancesApiV1PalletBalancesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/pallet-balances';
+};
+
+export type ListPalletBalancesApiV1PalletBalancesGetResponses = {
+    /**
+     * Response List Pallet Balances Api V1 Pallet Balances Get
+     *
+     * Successful Response
+     */
+    200: Array<PalletBalanceResponse>;
+};
+
+export type ListPalletBalancesApiV1PalletBalancesGetResponse = ListPalletBalancesApiV1PalletBalancesGetResponses[keyof ListPalletBalancesApiV1PalletBalancesGetResponses];
+
+export type CreatePalletBalanceApiV1PalletBalancesPostData = {
+    body: PalletBalanceCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/pallet-balances';
+};
+
+export type CreatePalletBalanceApiV1PalletBalancesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreatePalletBalanceApiV1PalletBalancesPostError = CreatePalletBalanceApiV1PalletBalancesPostErrors[keyof CreatePalletBalanceApiV1PalletBalancesPostErrors];
+
+export type CreatePalletBalanceApiV1PalletBalancesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: PalletBalanceResponse;
+};
+
+export type CreatePalletBalanceApiV1PalletBalancesPostResponse = CreatePalletBalanceApiV1PalletBalancesPostResponses[keyof CreatePalletBalanceApiV1PalletBalancesPostResponses];
 
 export type ListFraudFlagsApiV1FraudFlagsGetData = {
     body?: never;

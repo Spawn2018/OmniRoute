@@ -516,3 +516,7 @@ class InvalidGroupageTariff(DomainError):
 
 class InvalidOceanBill(DomainError):
     """Konosament LCL: HBL/MBL na zleceniu — nie PDF, nie booking."""
+
+
+class InvalidPalletBalance(DomainError):
+    """Saldo palet Chep/LPR na kontrahencie — nie giełda, nie depozyt."""

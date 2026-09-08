@@ -84,6 +84,11 @@ export const OPS_JOBS = [
     job: "znacznik ocean_bill HBL/MBL bez PDF",
   },
   {
+    route: BUSINESS_LISTS.palletBalance.route,
+    label: "Saldo palet",
+    job: "saldo pallet_balance Chep/LPR bez giełdy",
+  },
+  {
     route: BUSINESS_LISTS.airFreight.route,
     label: "Lotniczy",
     job: "lotniska z flagą airport",
@@ -455,6 +460,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "158.0": "/cod",
   "159.0": "/groupage-tariffs",
   "160.0": "/ocean-bills",
+  "161.0": "/pallet-balances",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

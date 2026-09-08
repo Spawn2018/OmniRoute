@@ -48,6 +48,7 @@ def test_authorization_model_includes_table_view_permission() -> None:
     assert "can_manage_cod_instructions" in org.relations
     assert "can_manage_groupage_tariffs" in org.relations
     assert "can_manage_ocean_bills" in org.relations
+    assert "can_manage_pallet_balances" in org.relations
     assert "can_manage_rate_lines" in org.relations
     assert "can_manage_charges" in org.relations
     assert "can_manage_quotations" in org.relations
@@ -162,6 +163,9 @@ def test_authorization_model_includes_table_view_permission() -> None:
     ocean_bills = org.relations["can_manage_ocean_bills"]
     assert ocean_bills.computed_userset is not None
     assert ocean_bills.computed_userset.relation == "member"
+    pallet_balances = org.relations["can_manage_pallet_balances"]
+    assert pallet_balances.computed_userset is not None
+    assert pallet_balances.computed_userset.relation == "member"
     rates = org.relations["can_manage_rate_lines"]
     assert rates.computed_userset is not None
     assert rates.computed_userset.relation == "member"
