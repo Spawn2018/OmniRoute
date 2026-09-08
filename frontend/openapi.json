@@ -905,6 +905,219 @@
         }
       }
     },
+    "/api/v1/document-checklist-rules": {
+      "get": {
+        "tags": [
+          "document-checklist-rules"
+        ],
+        "summary": "List Document Checklist Rules",
+        "operationId": "list_document_checklist_rules_api_v1_document_checklist_rules_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "incoterm",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Incoterm"
+            }
+          },
+          {
+            "name": "trade_side",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Trade Side"
+            }
+          },
+          {
+            "name": "mode",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Mode"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DocumentChecklistRuleResponse"
+                  },
+                  "title": "Response List Document Checklist Rules Api V1 Document Checklist Rules Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "document-checklist-rules"
+        ],
+        "summary": "Create Document Checklist Rule",
+        "operationId": "create_document_checklist_rule_api_v1_document_checklist_rules_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DocumentChecklistRuleCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentChecklistRuleResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/field-carry-forwards": {
+      "get": {
+        "tags": [
+          "field-carry-forwards"
+        ],
+        "summary": "List Field Carry Forwards",
+        "operationId": "list_field_carry_forwards_api_v1_field_carry_forwards_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "shipment_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Shipment Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FieldCarryForwardResponse"
+                  },
+                  "title": "Response List Field Carry Forwards Api V1 Field Carry Forwards Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "field-carry-forwards"
+        ],
+        "summary": "Create Field Carry Forwards",
+        "operationId": "create_field_carry_forwards_api_v1_field_carry_forwards_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FieldCarryForwardCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FieldCarryForwardResponse"
+                  },
+                  "title": "Response Create Field Carry Forwards Api V1 Field Carry Forwards Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/networks": {
       "get": {
         "tags": [
@@ -9194,6 +9407,85 @@
         ],
         "title": "DangerousGoodResponse"
       },
+      "DocumentChecklistRuleCreate": {
+        "properties": {
+          "incoterm": {
+            "type": "string",
+            "title": "Incoterm"
+          },
+          "trade_side": {
+            "type": "string",
+            "title": "Trade Side"
+          },
+          "mode": {
+            "type": "string",
+            "title": "Mode"
+          },
+          "document_kind": {
+            "type": "string",
+            "title": "Document Kind"
+          },
+          "blocks_dispatch": {
+            "type": "boolean",
+            "title": "Blocks Dispatch"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "incoterm",
+          "trade_side",
+          "mode",
+          "document_kind",
+          "blocks_dispatch"
+        ],
+        "title": "DocumentChecklistRuleCreate"
+      },
+      "DocumentChecklistRuleResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "incoterm": {
+            "type": "string",
+            "title": "Incoterm"
+          },
+          "trade_side": {
+            "type": "string",
+            "title": "Trade Side"
+          },
+          "mode": {
+            "type": "string",
+            "title": "Mode"
+          },
+          "document_kind": {
+            "type": "string",
+            "title": "Document Kind"
+          },
+          "blocks_dispatch": {
+            "type": "boolean",
+            "title": "Blocks Dispatch"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "incoterm",
+          "trade_side",
+          "mode",
+          "document_kind",
+          "blocks_dispatch"
+        ],
+        "title": "DocumentChecklistRuleResponse"
+      },
       "EdiMessageCreate": {
         "properties": {
           "shipment_id": {
@@ -9549,6 +9841,90 @@
           "reviewed_at"
         ],
         "title": "ExtractionDraftResponse"
+      },
+      "FieldCarryForwardCreate": {
+        "properties": {
+          "quotation_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Quotation Id"
+          },
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "fields": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Fields"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "quotation_id",
+          "shipment_id",
+          "fields"
+        ],
+        "title": "FieldCarryForwardCreate"
+      },
+      "FieldCarryForwardResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "quotation_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Quotation Id"
+          },
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "field_key": {
+            "type": "string",
+            "title": "Field Key"
+          },
+          "field_value": {
+            "type": "string",
+            "title": "Field Value"
+          },
+          "superseded_by": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Superseded By"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "quotation_id",
+          "shipment_id",
+          "field_key",
+          "field_value",
+          "superseded_by"
+        ],
+        "title": "FieldCarryForwardResponse"
       },
       "FraudFlagCreate": {
         "properties": {

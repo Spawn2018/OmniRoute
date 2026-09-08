@@ -16,9 +16,11 @@ from app.api import (
     customer_rfqs,
     customer_sops,
     dangerous_goods,
+    document_checklist_rules,
     edi_messages,
     entity_events,
     extractions,
+    field_carry_forwards,
     fraud_flags,
     fx_differences,
     gdpr_requests,
@@ -61,6 +63,8 @@ api_router.include_router(extractions.router)
 api_router.include_router(charge_codes.router)
 api_router.include_router(commodity_codes.router)
 api_router.include_router(dangerous_goods.router)
+api_router.include_router(document_checklist_rules.router)
+api_router.include_router(field_carry_forwards.router)
 api_router.include_router(networks.router)
 api_router.include_router(carrier_inquiries.router)
 api_router.include_router(inbound_messages.router)

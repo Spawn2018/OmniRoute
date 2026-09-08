@@ -448,3 +448,11 @@ class InvalidEntityEvent(DomainError):
 
 class InvalidOutboxEvent(DomainError):
     """Outbox: kind albo source_ref — nie Temporal, nie konsument."""
+
+
+class InvalidFieldCarryForward(DomainError):
+    """Przeniesienie pola: klucz z allowlisty i tekst — nie kwota, nie overwrite."""
+
+
+class InvalidDocumentChecklistRule(DomainError):
+    """Reguła checklisty: trójka incoterm×strona×mode i rodzaj dokumentu — nie dispatch."""

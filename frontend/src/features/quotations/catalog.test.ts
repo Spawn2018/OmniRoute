@@ -1,5 +1,7 @@
 import { readFileSync } from "node:fs"
 import { describe, expect, it } from "vitest"
+import { documentChecklistRuleBody } from "@/lib/document-checklist-rules-api"
+import { fieldCarryForwardBody } from "@/lib/field-carry-forwards-api"
 import {
   quotationBatchBody,
   quotationCreateBody,
@@ -136,6 +138,32 @@ describe("quotationBatchBody", () => {
       destination_port_id: DESTINATION,
       party_id: PARTY,
     })
+    expect(body).not.toHaveProperty("amount")
+  })
+})
+
+describe("field carry-forward and checklist bodies", () => {
+  it("sends allowlisted snapshot fields and never an amount", () => {
+    const body = fieldCarryForwardBody({
+      quotationId: "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      shipmentId: "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+      incoterm: " FOB ",
+      tradeSide: "export",
+      namedPlace: null,
+    })
+    expect(body.fields).toEqual({ incoterm: "FOB", trade_side: "export" })
+    expect(body).not.toHaveProperty("amount")
+  })
+
+  it("sends checklist triple with blocks_dispatch flag, never an amount", () => {
+    const body = documentChecklistRuleBody({
+      incoterm: "FOB",
+      tradeSide: "export",
+      mode: "ocean",
+      documentKind: "bill_of_lading",
+      blocksDispatch: true,
+    })
+    expect(body.blocks_dispatch).toBe(true)
     expect(body).not.toHaveProperty("amount")
   })
 })
@@ -399,7 +427,18 @@ describe("quotation catalog screen", () => {
     expect(page).toContain("najszybszy TT")
     expect(page).toContain("comparisonChargeBody")
     expect(page).toContain("createCharge")
-    expect(page).toContain("Zapisz marżę")
+    expect(page).toContain("CarryForwardPanel")
+    expect(page).toContain("ChecklistRulePanel")
+    const carry = readFileSync(new URL("./carry-forward-panel.tsx", import.meta.url), "utf8")
+    const checklist = readFileSync(new URL("./checklist-rule-panel.tsx", import.meta.url), "utf8")
+    expect(carry).toContain('data-carry-forward="job"')
+    expect(carry).toContain("Przenieś pola")
+    expect(carry).toContain("fieldCarryForwardBody")
+    expect(carry).not.toContain("parseFloat")
+    expect(checklist).toContain('data-checklist-rule="job"')
+    expect(checklist).toContain("Zapisz regułę")
+    expect(checklist).toContain("blocks_dispatch")
+    expect(checklist).toContain("documentChecklistRuleBody")
     expect(page).not.toContain("acceptExtractionDraft")
     expect(page).not.toContain("imap")
     expect(page).not.toMatch(/reduce\s*\(/)

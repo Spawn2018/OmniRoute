@@ -1239,6 +1239,66 @@ export type DangerousGoodResponse = {
 };
 
 /**
+ * DocumentChecklistRuleCreate
+ */
+export type DocumentChecklistRuleCreate = {
+    /**
+     * Incoterm
+     */
+    incoterm: string;
+    /**
+     * Trade Side
+     */
+    trade_side: string;
+    /**
+     * Mode
+     */
+    mode: string;
+    /**
+     * Document Kind
+     */
+    document_kind: string;
+    /**
+     * Blocks Dispatch
+     */
+    blocks_dispatch: boolean;
+};
+
+/**
+ * DocumentChecklistRuleResponse
+ */
+export type DocumentChecklistRuleResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Incoterm
+     */
+    incoterm: string;
+    /**
+     * Trade Side
+     */
+    trade_side: string;
+    /**
+     * Mode
+     */
+    mode: string;
+    /**
+     * Document Kind
+     */
+    document_kind: string;
+    /**
+     * Blocks Dispatch
+     */
+    blocks_dispatch: boolean;
+};
+
+/**
  * EdiMessageCreate
  */
 export type EdiMessageCreate = {
@@ -1451,6 +1511,60 @@ export type ExtractionDraftResponse = {
      * Channel Quote Ids
      */
     channel_quote_ids?: Array<string>;
+};
+
+/**
+ * FieldCarryForwardCreate
+ */
+export type FieldCarryForwardCreate = {
+    /**
+     * Quotation Id
+     */
+    quotation_id: string;
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Fields
+     */
+    fields: {
+        [key: string]: string;
+    };
+};
+
+/**
+ * FieldCarryForwardResponse
+ */
+export type FieldCarryForwardResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Quotation Id
+     */
+    quotation_id: string;
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Field Key
+     */
+    field_key: string;
+    /**
+     * Field Value
+     */
+    field_value: string;
+    /**
+     * Superseded By
+     */
+    superseded_by: string | null;
 };
 
 /**
@@ -4447,6 +4561,130 @@ export type ResolveDangerousGoodApiV1DangerousGoodsResolveGetResponses = {
 };
 
 export type ResolveDangerousGoodApiV1DangerousGoodsResolveGetResponse = ResolveDangerousGoodApiV1DangerousGoodsResolveGetResponses[keyof ResolveDangerousGoodApiV1DangerousGoodsResolveGetResponses];
+
+export type ListDocumentChecklistRulesApiV1DocumentChecklistRulesGetData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Incoterm
+         */
+        incoterm: string;
+        /**
+         * Trade Side
+         */
+        trade_side: string;
+        /**
+         * Mode
+         */
+        mode: string;
+    };
+    url: '/api/v1/document-checklist-rules';
+};
+
+export type ListDocumentChecklistRulesApiV1DocumentChecklistRulesGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ListDocumentChecklistRulesApiV1DocumentChecklistRulesGetError = ListDocumentChecklistRulesApiV1DocumentChecklistRulesGetErrors[keyof ListDocumentChecklistRulesApiV1DocumentChecklistRulesGetErrors];
+
+export type ListDocumentChecklistRulesApiV1DocumentChecklistRulesGetResponses = {
+    /**
+     * Response List Document Checklist Rules Api V1 Document Checklist Rules Get
+     *
+     * Successful Response
+     */
+    200: Array<DocumentChecklistRuleResponse>;
+};
+
+export type ListDocumentChecklistRulesApiV1DocumentChecklistRulesGetResponse = ListDocumentChecklistRulesApiV1DocumentChecklistRulesGetResponses[keyof ListDocumentChecklistRulesApiV1DocumentChecklistRulesGetResponses];
+
+export type CreateDocumentChecklistRuleApiV1DocumentChecklistRulesPostData = {
+    body: DocumentChecklistRuleCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/document-checklist-rules';
+};
+
+export type CreateDocumentChecklistRuleApiV1DocumentChecklistRulesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateDocumentChecklistRuleApiV1DocumentChecklistRulesPostError = CreateDocumentChecklistRuleApiV1DocumentChecklistRulesPostErrors[keyof CreateDocumentChecklistRuleApiV1DocumentChecklistRulesPostErrors];
+
+export type CreateDocumentChecklistRuleApiV1DocumentChecklistRulesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: DocumentChecklistRuleResponse;
+};
+
+export type CreateDocumentChecklistRuleApiV1DocumentChecklistRulesPostResponse = CreateDocumentChecklistRuleApiV1DocumentChecklistRulesPostResponses[keyof CreateDocumentChecklistRuleApiV1DocumentChecklistRulesPostResponses];
+
+export type ListFieldCarryForwardsApiV1FieldCarryForwardsGetData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Shipment Id
+         */
+        shipment_id: string;
+    };
+    url: '/api/v1/field-carry-forwards';
+};
+
+export type ListFieldCarryForwardsApiV1FieldCarryForwardsGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ListFieldCarryForwardsApiV1FieldCarryForwardsGetError = ListFieldCarryForwardsApiV1FieldCarryForwardsGetErrors[keyof ListFieldCarryForwardsApiV1FieldCarryForwardsGetErrors];
+
+export type ListFieldCarryForwardsApiV1FieldCarryForwardsGetResponses = {
+    /**
+     * Response List Field Carry Forwards Api V1 Field Carry Forwards Get
+     *
+     * Successful Response
+     */
+    200: Array<FieldCarryForwardResponse>;
+};
+
+export type ListFieldCarryForwardsApiV1FieldCarryForwardsGetResponse = ListFieldCarryForwardsApiV1FieldCarryForwardsGetResponses[keyof ListFieldCarryForwardsApiV1FieldCarryForwardsGetResponses];
+
+export type CreateFieldCarryForwardsApiV1FieldCarryForwardsPostData = {
+    body: FieldCarryForwardCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/field-carry-forwards';
+};
+
+export type CreateFieldCarryForwardsApiV1FieldCarryForwardsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateFieldCarryForwardsApiV1FieldCarryForwardsPostError = CreateFieldCarryForwardsApiV1FieldCarryForwardsPostErrors[keyof CreateFieldCarryForwardsApiV1FieldCarryForwardsPostErrors];
+
+export type CreateFieldCarryForwardsApiV1FieldCarryForwardsPostResponses = {
+    /**
+     * Response Create Field Carry Forwards Api V1 Field Carry Forwards Post
+     *
+     * Successful Response
+     */
+    201: Array<FieldCarryForwardResponse>;
+};
+
+export type CreateFieldCarryForwardsApiV1FieldCarryForwardsPostResponse = CreateFieldCarryForwardsApiV1FieldCarryForwardsPostResponses[keyof CreateFieldCarryForwardsApiV1FieldCarryForwardsPostResponses];
 
 export type ListNetworksApiV1NetworksGetData = {
     body?: never;

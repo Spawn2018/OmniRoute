@@ -145,6 +145,7 @@
 | awizacja terminalu | terminal_appointment | T8; requested/confirmed/rejected; `source_ref` |
 | kalendarz organizacji | organization_calendar | U4; dni robocze; grace GPS |
 | przeniesienie pól | field_carry_forward | U1; oferta→zlecenie; nie cichy overwrite |
+| reguła checklisty dokumentów | document_checklist_rule | U5; incoterm×strona×mode → rodzaj + blocks_dispatch |
 | przesyłka | consignment | N1; obok shipment |
 | podłoga marży | margin_floor | N6; Decimal; 409 albo S11 |
 | ETA fizyczne | eta_physical | GPS/korek; nie jedyny znacznik |

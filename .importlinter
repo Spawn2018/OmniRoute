@@ -28,6 +28,8 @@ modules =
     app.services.commodity_codes
     app.services.nbp_rates
     app.services.dangerous_goods
+    app.services.document_checklist_rules
+    app.services.field_carry_forwards
     app.services.networks
     app.services.carrier_inquiries
     app.services.inbound_messages
@@ -107,6 +109,12 @@ forbidden_modules =
     app.services.dangerous_goods
     app.repositories.dangerous_goods
     app.models.dangerous_good
+    app.services.document_checklist_rules
+    app.repositories.document_checklist_rules
+    app.models.document_checklist_rule
+    app.services.field_carry_forwards
+    app.repositories.field_carry_forwards
+    app.models.field_carry_forward
     app.services.networks
     app.repositories.networks
     app.models.network

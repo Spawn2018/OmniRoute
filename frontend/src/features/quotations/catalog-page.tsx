@@ -31,6 +31,8 @@ import {
   type OperatorDecision,
 } from "@/lib/operator-decisions-api"
 import { DecideStatusButtons } from "@/features/operator-decisions/decide-status-buttons"
+import { CarryForwardPanel } from "@/features/quotations/carry-forward-panel"
+import { ChecklistRulePanel } from "@/features/quotations/checklist-rule-panel"
 import { fetchPorts } from "@/lib/ports-api"
 import {
   createQuotation,
@@ -1360,6 +1362,8 @@ export function QuotationCatalogPage() {
             lanes={quotationLanes(query.data)}
             quotes={channelQuotesQuery.data ?? []}
           />
+          <CarryForwardPanel rows={query.data} signedIn={signedIn} />
+          <ChecklistRulePanel signedIn={signedIn} />
         </>
       ) : null}
 
