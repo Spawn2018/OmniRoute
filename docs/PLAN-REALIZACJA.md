@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny (zablokowany):** M10-2 `party_role_assignment` + JDG + `parent_party_id` → B0a → O1–O3 → I0/U2 → O4–O8 → N5 → U1+U5 → I1–I4 → U4 → T → U3 → D → P → G2.0–G2.23 → F → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
+**Następny (zablokowany):** **132.0** M10-2 role / JDG / parent (delta [132.0-party-roles-jdg.md](../deltas/open/132.0-party-roles-jdg.md) zaakceptowana `/noc`) → B0a → O1–O3 → I0/U2 → O4–O8 → N5 → U1+U5 → I1–I4 → U4 → T → U3 → D → P → G2.0–G2.23 → F → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
 <!-- os-status:end -->
 
 ```mermaid
@@ -392,7 +392,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | 62.0 | zamknięty (`docs/deltas/archived/62.0-operator-howto-c4.md`) |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | 63.0 | zamknięty (`docs/deltas/archived/63.0-threat-model-codeql.md`) |
 | po Q-E4 | **Fala S**, named parks (Auth0 / portale / AIS) | — | parked (`/noc` pomija) |
-| po parks | **P0** → pełna oś pinu **2026-09-08c** (O/I/U/T/D/P/G2/F/C/V/W/X/Plat/CT/CI/G/EXP) | Plan → plaster | **M10-1 zamknięty; M10-2 następny** |
+| po parks | **P0** → pełna oś pinu **2026-09-08c** (O/I/U/T/D/P/G2/F/C/V/W/X/Plat/CT/CI/G/EXP) | Plan → plaster | **M10-1 zamknięty; M10-2 delta 132.0** |
 
 ### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
 
@@ -495,7 +495,7 @@ Pogłębienie żywych M-07/M-08 (`source_ref`), M-10, M-12, M-13, M-19, M-20, M-
 | **P0** | `charge.source_ref` (nullable stare fixture; obowiązkowe na nowym INSERT) | Plan → plaster | zamknięty (`docs/deltas/archived/129.0-charge-source-ref.md`) | HC-05. Migracja 072. Nie backfill |
 | **O0** | `network_member.party_id` FK tenanta | Plan → plaster | zamknięty (`docs/deltas/archived/130.0-network-member-party.md`) | FK tenanta. 409 rankingu = O3 |
 | **M10-1** | Dedup NIP/VAT-EU/EORI/DUNS + wymóg ID biznesowego | Plan → plaster | zamknięty (`docs/deltas/archived/131.0-party-business-ids.md`) | 409 z linkiem. Zakaz B2C bez NIP |
-| **M10-2** | `party_role_assignment` + JDG + `parent_party_id` | Plan → plaster | **następny** | JDG → kredyt HITL. Agent/armator/podwykonawca = role, nie trzy tabele |
+| **M10-2** | `party_role_assignment` + JDG + `parent_party_id` | Plan → plaster | **delta 132.0 zaakceptowana** | JDG → kredyt HITL. Agent/armator/podwykonawca = role, nie trzy tabele |
 | **B0a** | `entity_event` append-only | Plan → plaster | przed O3 | Kind: `inquiry_queued` / `inquiry_sent` / `quote_recorded`. Ledger/what-if = B0b po T2 |
 | **O1** | `channel_quote.transit_days` + znaczki najtańsza / najszybszy TT (SQL, ta sama waluta) | Plan → plaster | po B0a | Nie mnożenie NBP (T7). UI `/quotations` |
 | **O2** | Ręczny POST `channel_quote` z wyceny (`source_ref=tenant:manual:`) | Plan → plaster | po O1 | Nie mutacja stawki. Nie 1.3 `rate_line` w tym wierszu |
@@ -834,13 +834,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->
