@@ -371,3 +371,4 @@
 | 2026-09-08 | 143.0 | M-30 | N5: no_reply_after + reczny notice no_reply. Nie U4. Nastepny: U1+U5 Plan. |
 | 2026-09-08 | Plan 144.0 | U1+U5 | carry-forward (3 pola Incoterms) + document_checklist_rule. Delta zaakceptowana (/noc). Nie I1. Nastepny: kod 144.0. |
 | 2026-09-08 | 144.0 | U1+U5 | field_carry_forward + document_checklist_rule. Nie C8. Nastepny: I1 Plan. |
+| 2026-09-08 | Plan 145.0 | I1 | incoterm_responsibility (11x2 Omni ops, nie cytat ICC). Delta zaakceptowana (/noc). Nie I2. Nastepny: kod 145.0. |
