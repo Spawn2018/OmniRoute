@@ -484,3 +484,7 @@ class InvalidStop(DomainError):
 
 class InvalidResource(DomainError):
     """Katalog floty: pojazd / kierowca / naczepa — nie trip."""
+
+
+class InvalidTrip(DomainError):
+    """Przejazd: numer + status + opcjonalna flota — nie km."""

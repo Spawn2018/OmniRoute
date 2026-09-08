@@ -59,6 +59,7 @@ from app.api import (
     tenancy,
     terminals,
     tracking_events,
+    trips,
 )
 from app.domain.errors import PermissionDenied
 
@@ -93,6 +94,7 @@ api_router.include_router(shipments.router)
 api_router.include_router(shipment_stakeholders.router)
 api_router.include_router(stops.router)
 api_router.include_router(resources.router)
+api_router.include_router(trips.router)
 api_router.include_router(tracking_events.router)
 api_router.include_router(shipment_documents.router)
 api_router.include_router(operational_exceptions.router)

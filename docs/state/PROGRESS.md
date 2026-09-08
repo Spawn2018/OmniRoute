@@ -384,3 +384,5 @@
 | 2026-09-08 | Plan 150.0 | T1 | stop na zleceniu (location+strefa, nie mapa). Delta zaakceptowana (`/noc`). Nie T2. Nastepny: kod 150.0. |
 | 2026-09-08 | 150.0 | T1 | stop na zleceniu (location+strefa). Nie mapa. Nastepny: T2 Plan. |
 | 2026-09-08 | 151.0 | T2 | resource katalog floty (pojazd/kierowca/naczepa). Nie trip. Nastepny: T2 trip Plan. |
+| 2026-09-08 | Plan 152.0 | T2 | trip (status+opcjonalny resource, nie km). Delta zaakceptowana (`/noc`). Nie T3. Nastepny: kod 152.0. |
+| 2026-09-08 | 152.0 | T2 | trip status+opcjonalny resource. Nie km. Nastepny: T3 Plan. |

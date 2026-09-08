@@ -1,6 +1,6 @@
 import uuid
 
-from sqlalchemy import CheckConstraint, ForeignKey, Index, String, Text
+from sqlalchemy import CheckConstraint, ForeignKey, Index, String, Text, UniqueConstraint
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -14,6 +14,7 @@ class Resource(Base, TimestampMixin):
             "resource_kind IN ('vehicle', 'driver', 'trailer')",
             name="ck_resource_kind",
         ),
+        UniqueConstraint("organization_id", "id", name="uq_resource_org_id"),
         Index("ix_resource_org_kind", "organization_id", "resource_kind"),
     )
 

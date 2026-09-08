@@ -10,6 +10,9 @@ class ResourceRepository:
     def __init__(self, session: AsyncSession) -> None:
         self._session = session
 
+    async def get(self, resource_id: UUID) -> Resource | None:
+        return await self._session.get(Resource, resource_id)
+
     async def list_current(self, resource_kind: str | None) -> list[Resource]:
         stmt = select(Resource).where(Resource.superseded_by.is_(None))
         if resource_kind is not None:

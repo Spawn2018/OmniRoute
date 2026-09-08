@@ -1,0 +1,184 @@
+from unittest.mock import AsyncMock
+from uuid import UUID, uuid4
+
+import pytest
+from fastapi.testclient import TestClient
+
+from app.api.deps import require_tenant_session, set_authz_checker
+from app.domain.errors import ResourceNotFound
+from app.domain.trip import (
+    require_trip_no,
+    require_trip_resource_id,
+    require_trip_source_ref,
+    require_trip_status,
+)
+from app.main import app
+from app.models.resource import Resource
+from app.models.trip import Trip
+from tests.http_auth import bearer_auth_headers
+
+
+class AllowAllAuthz:
+    async def check(
+        self,
+        *,
+        user_id: UUID,
+        relation: str,
+        object_type: str,
+        object_id: UUID,
+    ) -> bool:
+        return True
+
+
+class StubResourceService:
+    def __init__(self, session: object) -> None:
+        self._session = session
+        self.rows: list[Resource] = []
+
+    async def get_resource(self, resource_id: UUID) -> Resource:
+        for row in self.rows:
+            if row.id == resource_id:
+                return row
+        raise ResourceNotFound("nieznany zasób")
+
+
+class StubTripService:
+    def __init__(self, session: object) -> None:
+        self._session = session
+        self.rows: list[Trip] = []
+
+    async def list_trips(self, *, status: object | None = None) -> list[Trip]:
+        state = None if status is None else require_trip_status(status)
+        return [
+            row
+            for row in self.rows
+            if row.superseded_by is None and (state is None or row.status == state)
+        ]
+
+    async def record_trip(
+        self,
+        *,
+        organization_id: UUID,
+        user_id: UUID,
+        trip_no: object,
+        status: object,
+        vehicle_id: object,
+        trailer_id: object,
+        driver_id: object,
+        source_ref: object,
+    ) -> Trip:
+        number = require_trip_no(trip_no)
+        state = require_trip_status(status)
+        vehicle = require_trip_resource_id(vehicle_id)
+        trailer = require_trip_resource_id(trailer_id)
+        driver = require_trip_resource_id(driver_id)
+        origin = require_trip_source_ref(source_ref)
+        current = next(
+            (row for row in self.rows if row.trip_no == number and row.superseded_by is None),
+            None,
+        )
+        if (
+            current is not None
+            and current.status == state
+            and current.vehicle_id == vehicle
+            and current.trailer_id == trailer
+            and current.driver_id == driver
+            and current.source_ref == origin
+        ):
+            return current
+        successor = Trip(
+            id=uuid4(),
+            organization_id=organization_id,
+            trip_no=number,
+            status=state,
+            vehicle_id=vehicle,
+            trailer_id=trailer,
+            driver_id=driver,
+            source_ref=origin,
+            created_by=user_id,
+        )
+        if current is not None:
+            current.superseded_by = successor.id
+        self.rows.append(successor)
+        return successor
+
+
+@pytest.fixture
+def run_client(monkeypatch: pytest.MonkeyPatch) -> object:
+    trips = StubTripService(object())
+    fleet = StubResourceService(object())
+
+    async def _fake_tenant_session() -> object:
+        session = AsyncMock()
+        session.commit = AsyncMock()
+        return session
+
+    monkeypatch.setattr("app.api.trips.TripService", lambda _s: trips)
+    monkeypatch.setattr("app.api.trips.ResourceService", lambda _s: fleet)
+    set_authz_checker(AllowAllAuthz())
+    app.dependency_overrides[require_tenant_session] = _fake_tenant_session
+    yield TestClient(app), trips, fleet
+    app.dependency_overrides.clear()
+    set_authz_checker(None)
+
+
+def test_http_create_list_supersede_and_reject_queued(run_client: object) -> None:
+    client, _trips, _fleet = run_client
+    org_id = uuid4()
+    headers = bearer_auth_headers(organization_id=org_id)
+    payload = {
+        "trip_no": "TR-1",
+        "status": "draft",
+        "source_ref": "tenant:manual",
+    }
+    first = client.post("/api/v1/trips", headers=headers, json=payload)
+    assert first.status_code == 201
+    assert first.json()["organization_id"] == str(org_id)
+    assert "amount" not in first.json()
+    second = client.post(
+        "/api/v1/trips",
+        headers=headers,
+        json={**payload, "status": "planned"},
+    )
+    assert second.status_code == 201
+    assert second.json()["id"] != first.json()["id"]
+    listed = client.get("/api/v1/trips", headers=headers)
+    assert listed.status_code == 200
+    assert listed.json()[0]["id"] == second.json()["id"]
+    drafts = client.get("/api/v1/trips", headers=headers, params={"status": "draft"})
+    assert drafts.json() == []
+    queued = client.post(
+        "/api/v1/trips",
+        headers=headers,
+        json={**payload, "status": "queued"},
+    )
+    assert queued.status_code == 400
+    assert "status" in queued.json()["detail"]
+
+
+def test_http_rejects_driver_on_vehicle_slot(run_client: object) -> None:
+    client, _trips, fleet = run_client
+    org_id = uuid4()
+    headers = bearer_auth_headers(organization_id=org_id)
+    driver = Resource(
+        id=uuid4(),
+        organization_id=org_id,
+        resource_kind="driver",
+        display_name="Kowalski",
+        registration_no=None,
+        source_ref="fixture://resource/d",
+        created_by=uuid4(),
+    )
+    fleet.rows.append(driver)
+    reply = client.post(
+        "/api/v1/trips",
+        headers=headers,
+        json={
+            "trip_no": "TR-2",
+            "status": "draft",
+            "vehicle_id": str(driver.id),
+            "source_ref": "tenant:manual",
+        },
+    )
+    assert reply.status_code == 400
+    assert "rodzaj" in reply.json()["detail"]

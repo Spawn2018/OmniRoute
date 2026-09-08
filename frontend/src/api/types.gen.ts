@@ -4388,6 +4388,78 @@ export type TrackingEventResponse = {
 };
 
 /**
+ * TripCreate
+ */
+export type TripCreate = {
+    /**
+     * Trip No
+     */
+    trip_no: string;
+    /**
+     * Status
+     */
+    status: string;
+    /**
+     * Vehicle Id
+     */
+    vehicle_id?: string | null;
+    /**
+     * Trailer Id
+     */
+    trailer_id?: string | null;
+    /**
+     * Driver Id
+     */
+    driver_id?: string | null;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TripResponse
+ */
+export type TripResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Trip No
+     */
+    trip_no: string;
+    /**
+     * Status
+     */
+    status: string;
+    /**
+     * Vehicle Id
+     */
+    vehicle_id: string | null;
+    /**
+     * Trailer Id
+     */
+    trailer_id: string | null;
+    /**
+     * Driver Id
+     */
+    driver_id: string | null;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+    /**
+     * Superseded By
+     */
+    superseded_by: string | null;
+};
+
+/**
  * ValidationError
  */
 export type ValidationError = {
@@ -6879,6 +6951,63 @@ export type CreateResourceApiV1ResourcesPostResponses = {
 };
 
 export type CreateResourceApiV1ResourcesPostResponse = CreateResourceApiV1ResourcesPostResponses[keyof CreateResourceApiV1ResourcesPostResponses];
+
+export type ListTripsApiV1TripsGetData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Status
+         */
+        status?: string | null;
+    };
+    url: '/api/v1/trips';
+};
+
+export type ListTripsApiV1TripsGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ListTripsApiV1TripsGetError = ListTripsApiV1TripsGetErrors[keyof ListTripsApiV1TripsGetErrors];
+
+export type ListTripsApiV1TripsGetResponses = {
+    /**
+     * Response List Trips Api V1 Trips Get
+     *
+     * Successful Response
+     */
+    200: Array<TripResponse>;
+};
+
+export type ListTripsApiV1TripsGetResponse = ListTripsApiV1TripsGetResponses[keyof ListTripsApiV1TripsGetResponses];
+
+export type CreateTripApiV1TripsPostData = {
+    body: TripCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/trips';
+};
+
+export type CreateTripApiV1TripsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTripApiV1TripsPostError = CreateTripApiV1TripsPostErrors[keyof CreateTripApiV1TripsPostErrors];
+
+export type CreateTripApiV1TripsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TripResponse;
+};
+
+export type CreateTripApiV1TripsPostResponse = CreateTripApiV1TripsPostResponses[keyof CreateTripApiV1TripsPostResponses];
 
 export type ListTrackingEventsApiV1TrackingEventsGetData = {
     body?: never;

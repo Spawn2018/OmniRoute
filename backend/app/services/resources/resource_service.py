@@ -3,6 +3,7 @@ from uuid import UUID, uuid4
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.domain.errors import ResourceNotFound
 from app.domain.resource import (
     require_display_name,
     require_registration_no,
@@ -45,6 +46,12 @@ class ResourceService:
     async def list_resources(self, *, resource_kind: object | None = None) -> list[Resource]:
         kind = None if resource_kind is None else require_resource_kind(resource_kind)
         return await self._rows.list_current(kind)
+
+    async def get_resource(self, resource_id: UUID) -> Resource:
+        found = await self._rows.get(resource_id)
+        if found is None:
+            raise ResourceNotFound("nieznany zasób")
+        return found
 
     async def record_resource(
         self,
