@@ -20,10 +20,13 @@ import {
   createNetworkMember,
   fetchNetworkMembers,
   fetchNetworks,
+  membersForCountry,
   networkCreateBody,
+  partyCountryMap,
   resolveNetwork,
   type FreightNetwork,
 } from "@/lib/networks-api"
+import { fetchParties } from "@/lib/parties-api"
 import { getTenantContext } from "@/lib/tenant"
 import {
   CatalogError,
@@ -85,6 +88,7 @@ export function NetworkCatalogPage() {
   const [batchMemberIds, setBatchMemberIds] = useState<string[]>([])
   const [batchOrigin, setBatchOrigin] = useState("")
   const [batchDestination, setBatchDestination] = useState("")
+  const [countryFilter, setCountryFilter] = useState("")
   const [draftInquiryIds, setDraftInquiryIds] = useState<string[]>([])
   const [draftBody, setDraftBody] = useState("prośba o stawkę")
   const [topApplied, setTopApplied] = useState(false)
@@ -116,6 +120,14 @@ export function NetworkCatalogPage() {
     enabled: sessionReady && networkId !== "",
     retry: false,
   })
+  const parties = useQuery({
+    queryKey: ["parties", ctx.organizationId],
+    queryFn: fetchParties,
+    enabled: sessionReady,
+    retry: false,
+  })
+  const countryByPartyId = partyCountryMap(parties.data ?? [])
+  const visibleMembers = membersForCountry(members.data ?? [], countryByPartyId, countryFilter)
   const inquiries = useQuery({
     queryKey: ["carrier-inquiries", ctx.organizationId],
     queryFn: fetchCarrierInquiries,
@@ -341,10 +353,16 @@ export function NetworkCatalogPage() {
         </form>
         {createMember.isError ? <CatalogError error={createMember.error} /> : null}
         {members.isError ? <CatalogError error={members.error} /> : null}
-        <ul className="text-xs">
-          {(members.data ?? []).map((row) => (
+        <Input
+          aria-label="Filtr kraju członka"
+          placeholder="ISO kraju, np. NL"
+          value={countryFilter}
+          onChange={(event) => setCountryFilter(event.target.value)}
+        />
+        <ul className="text-xs" data-network-member="country-filter">
+          {visibleMembers.map((row) => (
             <li key={row.id}>
-              {row.member_code} · {row.legal_name} · {row.party_id ?? "—"}
+              {row.member_code} · {row.legal_name} · {row.party_id ?? "—"} · {row.party_id ? (countryByPartyId[row.party_id] ?? "—") : "—"}
             </li>
           ))}
         </ul>
@@ -365,7 +383,7 @@ export function NetworkCatalogPage() {
             onChange={(event) => setAskedMemberId(event.target.value)}
           >
             <option value="">Wybierz członka</option>
-            {(members.data ?? []).map((row) => (
+            {visibleMembers.map((row) => (
               <option key={row.id} value={row.id}>
                 {row.member_code} {row.legal_name}
               </option>
@@ -388,7 +406,7 @@ export function NetworkCatalogPage() {
             Paczka queued: jeden, wielu albo wszyscy. Nie wysyłka.
           </p>
           <div className="flex flex-wrap gap-2 text-xs">
-            {(members.data ?? []).map((row) => (
+            {visibleMembers.map((row) => (
               <label key={row.id} className="flex items-center gap-1">
                 <input
                   type="checkbox"
@@ -407,7 +425,7 @@ export function NetworkCatalogPage() {
           </div>
           <Button
             type="button"
-            onClick={() => setBatchMemberIds((members.data ?? []).map((row) => row.id))}
+            onClick={() => setBatchMemberIds(visibleMembers.map((row) => row.id))}
           >
             Wszyscy członkowie
           </Button>

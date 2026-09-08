@@ -9,7 +9,7 @@ import {
 } from "@/lib/carrier-inquiries-api"
 import { mailDraftBatchBody } from "@/lib/mail-drafts-api"
 import { inquiryDefaultN } from "@/lib/organization-settings-api"
-import { networkCreateBody } from "@/lib/networks-api"
+import { membersForCountry, networkCreateBody, partyCountryMap } from "@/lib/networks-api"
 
 const srcRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..")
 
@@ -63,6 +63,9 @@ describe("networks catalog surface for 9.0", () => {
     expect(page).toContain('data-carrier-inquiry="catalog"')
     expect(page).toContain('data-carrier-inquiry="batch"')
     expect(page).toContain('data-mail-draft="batch"')
+    expect(page).toContain('data-network-member="country-filter"')
+    expect(page).toContain("membersForCountry")
+    expect(page).toContain("fetchParties")
     expect(page).not.toContain("cheerio")
     expect(page).not.toContain("httpx")
   })
@@ -148,5 +151,22 @@ describe("O4 ranking and draft batch helpers", () => {
       source_ref: "tenant:manual",
       subject_kind: "carrier_inquiry",
     })
+  })
+})
+
+
+describe("O7 country filter helpers", () => {
+  it("keeps NL parties and drops members without a party", () => {
+    const mapped = partyCountryMap([
+      { id: "p-nl", country_code: "NL" },
+      { id: "p-pl", country_code: "PL" },
+    ])
+    const members = [
+      { id: "m1", organization_id: "o", network_id: "n", member_code: "nl", legal_name: "Rotterdam", party_id: "p-nl", source_ref: "tenant:manual" },
+      { id: "m2", organization_id: "o", network_id: "n", member_code: "pl", legal_name: "Gdynia", party_id: "p-pl", source_ref: "tenant:manual" },
+      { id: "m3", organization_id: "o", network_id: "n", member_code: "x", legal_name: "Brak", party_id: null, source_ref: "tenant:manual" },
+    ]
+    expect(membersForCountry(members, mapped, "nl").map((row) => row.id)).toEqual(["m1"])
+    expect(membersForCountry(members, mapped, "").map((row) => row.id)).toEqual(["m1", "m2", "m3"])
   })
 })

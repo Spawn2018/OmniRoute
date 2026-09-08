@@ -116,6 +116,28 @@ export async function createNetworkMember(
   return (await response.json()) as NetworkMember
 }
 
+export function partyCountryMap(
+  parties: readonly { id: string; country_code: string }[],
+): Record<string, string> {
+  const mapped: Record<string, string> = {}
+  for (const row of parties) {
+    mapped[row.id] = row.country_code
+  }
+  return mapped
+}
+
+export function membersForCountry(
+  members: readonly NetworkMember[],
+  countryByPartyId: Readonly<Record<string, string>>,
+  country: string,
+): NetworkMember[] {
+  const token = country.trim().toUpperCase()
+  if (token === "") {
+    return [...members]
+  }
+  return members.filter((row) => row.party_id !== null && countryByPartyId[row.party_id] === token)
+}
+
 export async function resolveNetwork(token: string): Promise<FreightNetwork> {
   const params = new URLSearchParams({ token })
   const response = await fetch(`/api/v1/networks/resolve?${params.toString()}`, {
