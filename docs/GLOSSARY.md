@@ -52,6 +52,7 @@
 | karta stawek | rate_card | 163.0 `applies_when` jako dane + Decimal; nie silnik WHEN/IF; nie `rate_line` |
 | szablon opłat | charge_template | 164.0 kolekcja `charge_code` + daty jako dane; nie exclusion; nie `charge` |
 | indeks paliwowy | fuel_index | 165.0 katalog FSC/BAF/CAF obok `nbp_rate`; nie przeliczenie na `charge` |
+| dopłata lokalna | local_charge | 166.0 THC/ISPS/seal/amendment jako dane + Decimal; nie warning; nie `port_surcharge` |
 | lotniczy | air | 154.0 odcinek `shipment_leg` air; lotnisko = `port` z `airport` w `function_flags`; nie HAWB; nie IATA |
 | reklamacja ładunku | cargo_claim | 113.0 tabela na zleceniu; nie kwota; nie scoring |
 | oszustwo | fraud_flag | 114.0 tabela na kontrahencie; nie scoring osoby; nie kwota |

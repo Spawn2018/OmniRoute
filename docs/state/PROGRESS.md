@@ -411,3 +411,4 @@
 | 2026-09-08 | 164.0 | P2 | charge_template kolekcja kodów + daty jako dane. Nie exclusion. Nastepny: P3 Plan. |
 | 2026-09-08 | Plan 165.0 | P3 | fuel_index katalog FSC/BAF/CAF obok nbp_rate, nie mnożenie na charge. Delta zaakceptowana (`/noc`). Nie P4. Nastepny: kod 165.0. |
 | 2026-09-08 | 165.0 | P3 | fuel_index katalog FSC/BAF/CAF Decimal obok nbp_rate. Nie mnożenie na charge. Nastepny: P4 Plan. |
+| 2026-09-08 | Plan 166.0 | P4 | local_charge THC/ISPS jako dane + Decimal, nie warning braków. Delta zaakceptowana (`/noc`). Nie P5. Nastepny: kod 166.0. |
