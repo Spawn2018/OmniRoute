@@ -38,7 +38,7 @@ class TenderLot(Base, TimestampMixin):
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
     organization_id: Mapped[uuid.UUID] = mapped_column(
         ForeignKey("organization.id", ondelete="RESTRICT"),
-        UUID(as_uuid=True),
+        type_=UUID(as_uuid=True),
         nullable=False,
     )
     tender_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), nullable=False)
