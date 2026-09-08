@@ -391,3 +391,4 @@
 | 2026-09-08 | 154.0 | U3 | air shipment_leg + airport flag. Nie HAWB. Nastepny: D1 Plan. |
 | 2026-09-08 | Plan 155.0 | D1 | groupage_line cutoff+TT+ISODOW, nie WMS. Delta zaakceptowana (`/noc`). Nie D2. Nastepny: kod 155.0. |
 | 2026-09-08 | 155.0 | D1 | groupage_line cutoff+TT+ISODOW. Nie WMS. Nastepny: D2 Plan. |
+| 2026-09-08 | Plan 156.0 | D2 | shipment_package + skan QR Omni + stop trasy, nie WMS. Delta zaakceptowana (`/noc`). Nie D3. Nastepny: kod 156.0. |

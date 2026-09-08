@@ -42,6 +42,7 @@
 | kolej z Chin | china_rail | 43.0 tablica `port` CN z flagą `rail`; 110.0 odcinek `shipment_leg` china_rail; nie korytarz; nie HTTP |
 | drobnica morska | ocean_lcl | 44.0 tablica `port` z `is_seaport`; 111.0 odcinek `shipment_leg` ocean_lcl; nie tabela LCL; nie CFS |
 | linia drobnicy | groupage_line | 155.0 katalog linii LTL: `cutoff_local`, `transit_days`, `operating_dows`, dwa `location`; nie OR hubów; nie WMS |
+| paczka na zleceniu | shipment_package | 156.0 sztuka na `shipment`: `package_status`, skan QR Omni, `stop` z trasy; nie WMS; nie auto-link |
 | lotniczy | air | 154.0 odcinek `shipment_leg` air; lotnisko = `port` z `airport` w `function_flags`; nie HAWB; nie IATA |
 | reklamacja ładunku | cargo_claim | 113.0 tabela na zleceniu; nie kwota; nie scoring |
 | oszustwo | fraud_flag | 114.0 tabela na kontrahencie; nie scoring osoby; nie kwota |
