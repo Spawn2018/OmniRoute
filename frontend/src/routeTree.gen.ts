@@ -16,6 +16,7 @@ import { Route as BookkeepingRouteImport } from './routes/bookkeeping'
 import { Route as CashflowsRouteImport } from './routes/cashflows'
 import { Route as ChannelQuotesRouteImport } from './routes/channel-quotes'
 import { Route as ChargeCodesRouteImport } from './routes/charge-codes'
+import { Route as ChargeTemplatesRouteImport } from './routes/charge-templates'
 import { Route as ChargesRouteImport } from './routes/charges'
 import { Route as ChinaRailRouteImport } from './routes/china-rail'
 import { Route as ClaimsRouteImport } from './routes/claims'
@@ -107,6 +108,11 @@ const ChannelQuotesRoute = ChannelQuotesRouteImport.update({
 const ChargeCodesRoute = ChargeCodesRouteImport.update({
   id: '/charge-codes',
   path: '/charge-codes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChargeTemplatesRoute = ChargeTemplatesRouteImport.update({
+  id: '/charge-templates',
+  path: '/charge-templates',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ChargesRoute = ChargesRouteImport.update({
@@ -403,6 +409,7 @@ export interface FileRoutesByFullPath {
   '/cashflows': typeof CashflowsRoute
   '/channel-quotes': typeof ChannelQuotesRoute
   '/charge-codes': typeof ChargeCodesRoute
+  '/charge-templates': typeof ChargeTemplatesRoute
   '/charges': typeof ChargesRoute
   '/china-rail': typeof ChinaRailRoute
   '/claims': typeof ClaimsRoute
@@ -469,6 +476,7 @@ export interface FileRoutesByTo {
   '/cashflows': typeof CashflowsRoute
   '/channel-quotes': typeof ChannelQuotesRoute
   '/charge-codes': typeof ChargeCodesRoute
+  '/charge-templates': typeof ChargeTemplatesRoute
   '/charges': typeof ChargesRoute
   '/china-rail': typeof ChinaRailRoute
   '/claims': typeof ClaimsRoute
@@ -536,6 +544,7 @@ export interface FileRoutesById {
   '/cashflows': typeof CashflowsRoute
   '/channel-quotes': typeof ChannelQuotesRoute
   '/charge-codes': typeof ChargeCodesRoute
+  '/charge-templates': typeof ChargeTemplatesRoute
   '/charges': typeof ChargesRoute
   '/china-rail': typeof ChinaRailRoute
   '/claims': typeof ClaimsRoute
@@ -604,6 +613,7 @@ export interface FileRouteTypes {
     | '/cashflows'
     | '/channel-quotes'
     | '/charge-codes'
+    | '/charge-templates'
     | '/charges'
     | '/china-rail'
     | '/claims'
@@ -670,6 +680,7 @@ export interface FileRouteTypes {
     | '/cashflows'
     | '/channel-quotes'
     | '/charge-codes'
+    | '/charge-templates'
     | '/charges'
     | '/china-rail'
     | '/claims'
@@ -736,6 +747,7 @@ export interface FileRouteTypes {
     | '/cashflows'
     | '/channel-quotes'
     | '/charge-codes'
+    | '/charge-templates'
     | '/charges'
     | '/china-rail'
     | '/claims'
@@ -803,6 +815,7 @@ export interface RootRouteChildren {
   CashflowsRoute: typeof CashflowsRoute
   ChannelQuotesRoute: typeof ChannelQuotesRoute
   ChargeCodesRoute: typeof ChargeCodesRoute
+  ChargeTemplatesRoute: typeof ChargeTemplatesRoute
   ChargesRoute: typeof ChargesRoute
   ChinaRailRoute: typeof ChinaRailRoute
   ClaimsRoute: typeof ClaimsRoute
@@ -911,6 +924,13 @@ declare module '@tanstack/react-router' {
       path: '/charge-codes'
       fullPath: '/charge-codes'
       preLoaderRoute: typeof ChargeCodesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/charge-templates': {
+      id: '/charge-templates'
+      path: '/charge-templates'
+      fullPath: '/charge-templates'
+      preLoaderRoute: typeof ChargeTemplatesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/charges': {
@@ -1323,6 +1343,7 @@ const rootRouteChildren: RootRouteChildren = {
   CashflowsRoute: CashflowsRoute,
   ChannelQuotesRoute: ChannelQuotesRoute,
   ChargeCodesRoute: ChargeCodesRoute,
+  ChargeTemplatesRoute: ChargeTemplatesRoute,
   ChargesRoute: ChargesRoute,
   ChinaRailRoute: ChinaRailRoute,
   ClaimsRoute: ClaimsRoute,

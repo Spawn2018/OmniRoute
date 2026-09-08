@@ -528,3 +528,7 @@ class InvalidDocumentTemplate(DomainError):
 
 class InvalidRateCard(DomainError):
     """Karta stawek: applies_when jako dane + Decimal — nie silnik WHEN."""
+
+
+class InvalidChargeTemplate(DomainError):
+    """Szablon opłat: kolekcja kodów + daty jako dane — nie exclusion."""

@@ -5188,6 +5188,80 @@
         ]
       }
     },
+    "/api/v1/charge-templates": {
+      "get": {
+        "tags": [
+          "charge-templates"
+        ],
+        "summary": "List Charge Templates",
+        "operationId": "list_charge_templates_api_v1_charge_templates_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ChargeTemplateResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Charge Templates Api V1 Charge Templates Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "charge-templates"
+        ],
+        "summary": "Create Charge Template",
+        "operationId": "create_charge_template_api_v1_charge_templates_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChargeTemplateCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChargeTemplateResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/fraud-flags": {
       "get": {
         "tags": [
@@ -10393,6 +10467,85 @@
           "source_ref"
         ],
         "title": "ChargeResponse"
+      },
+      "ChargeTemplateCreate": {
+        "properties": {
+          "template_code": {
+            "type": "string",
+            "title": "Template Code"
+          },
+          "charge_code": {
+            "type": "string",
+            "title": "Charge Code"
+          },
+          "valid_from": {
+            "type": "string",
+            "title": "Valid From"
+          },
+          "valid_until": {
+            "type": "string",
+            "title": "Valid Until"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "template_code",
+          "charge_code",
+          "valid_from",
+          "valid_until",
+          "source_ref"
+        ],
+        "title": "ChargeTemplateCreate"
+      },
+      "ChargeTemplateResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "template_code": {
+            "type": "string",
+            "title": "Template Code"
+          },
+          "charge_code": {
+            "type": "string",
+            "title": "Charge Code"
+          },
+          "valid_from": {
+            "type": "string",
+            "title": "Valid From"
+          },
+          "valid_until": {
+            "type": "string",
+            "title": "Valid Until"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "template_code",
+          "charge_code",
+          "valid_from",
+          "valid_until",
+          "source_ref"
+        ],
+        "title": "ChargeTemplateResponse"
       },
       "CodInstructionCreate": {
         "properties": {

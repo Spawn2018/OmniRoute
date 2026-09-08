@@ -408,3 +408,4 @@
 | 2026-09-08 | Plan 163.0 | P1 | rate_card warunek jako dane + Decimal, nie silnik WHEN. Delta zaakceptowana (`/noc`). Nie P2. Nastepny: kod 163.0. |
 | 2026-09-08 | 163.0 | P1 | rate_card applies_when jako dane + Decimal. Nie silnik WHEN. Nastepny: P2 Plan. |
 | 2026-09-08 | Plan 164.0 | P2 | charge_template kolekcja kodów + daty jako dane, nie exclusion. Delta zaakceptowana (`/noc`). Nie P3. Nastepny: kod 164.0. |
+| 2026-09-08 | 164.0 | P2 | charge_template kolekcja kodów + daty jako dane. Nie exclusion. Nastepny: P3 Plan. |

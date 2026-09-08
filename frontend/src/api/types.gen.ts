@@ -833,6 +833,66 @@ export type ChargeResponse = {
 };
 
 /**
+ * ChargeTemplateCreate
+ */
+export type ChargeTemplateCreate = {
+    /**
+     * Template Code
+     */
+    template_code: string;
+    /**
+     * Charge Code
+     */
+    charge_code: string;
+    /**
+     * Valid From
+     */
+    valid_from: string;
+    /**
+     * Valid Until
+     */
+    valid_until: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ChargeTemplateResponse
+ */
+export type ChargeTemplateResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Template Code
+     */
+    template_code: string;
+    /**
+     * Charge Code
+     */
+    charge_code: string;
+    /**
+     * Valid From
+     */
+    valid_from: string;
+    /**
+     * Valid Until
+     */
+    valid_until: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * CodInstructionCreate
  */
 export type CodInstructionCreate = {
@@ -8170,6 +8230,49 @@ export type CreateRateCardApiV1RateCardsPostResponses = {
 };
 
 export type CreateRateCardApiV1RateCardsPostResponse = CreateRateCardApiV1RateCardsPostResponses[keyof CreateRateCardApiV1RateCardsPostResponses];
+
+export type ListChargeTemplatesApiV1ChargeTemplatesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/charge-templates';
+};
+
+export type ListChargeTemplatesApiV1ChargeTemplatesGetResponses = {
+    /**
+     * Response List Charge Templates Api V1 Charge Templates Get
+     *
+     * Successful Response
+     */
+    200: Array<ChargeTemplateResponse>;
+};
+
+export type ListChargeTemplatesApiV1ChargeTemplatesGetResponse = ListChargeTemplatesApiV1ChargeTemplatesGetResponses[keyof ListChargeTemplatesApiV1ChargeTemplatesGetResponses];
+
+export type CreateChargeTemplateApiV1ChargeTemplatesPostData = {
+    body: ChargeTemplateCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/charge-templates';
+};
+
+export type CreateChargeTemplateApiV1ChargeTemplatesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateChargeTemplateApiV1ChargeTemplatesPostError = CreateChargeTemplateApiV1ChargeTemplatesPostErrors[keyof CreateChargeTemplateApiV1ChargeTemplatesPostErrors];
+
+export type CreateChargeTemplateApiV1ChargeTemplatesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ChargeTemplateResponse;
+};
+
+export type CreateChargeTemplateApiV1ChargeTemplatesPostResponse = CreateChargeTemplateApiV1ChargeTemplatesPostResponses[keyof CreateChargeTemplateApiV1ChargeTemplatesPostResponses];
 
 export type ListFraudFlagsApiV1FraudFlagsGetData = {
     body?: never;

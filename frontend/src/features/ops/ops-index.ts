@@ -99,6 +99,11 @@ export const OPS_JOBS = [
     job: "katalog rate_card applies_when bez matching",
   },
   {
+    route: BUSINESS_LISTS.chargeTemplate.route,
+    label: "Szablony opłat",
+    job: "katalog charge_template kodów bez exclusion",
+  },
+  {
     route: BUSINESS_LISTS.airFreight.route,
     label: "Lotniczy",
     job: "lotniska z flagą airport",
@@ -473,6 +478,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "161.0": "/pallet-balances",
   "162.0": "/document-templates",
   "163.0": "/rate-cards",
+  "164.0": "/charge-templates",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

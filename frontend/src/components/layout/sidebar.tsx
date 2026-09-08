@@ -44,6 +44,7 @@ const NAV = [
   { to: "/shipment-documents", label: "Dokumenty zlecenia" },
   { to: "/edi", label: "EDI" },
   { to: "/charge-codes", label: "Kody opłat" },
+  { to: "/charge-templates", label: "Szablony opłat" },
   { to: "/commodity-codes", label: "Kody towarowe" },
   { to: "/dangerous-goods", label: "Towary niebezpieczne" },
   { to: "/networks", label: "Sieci" },

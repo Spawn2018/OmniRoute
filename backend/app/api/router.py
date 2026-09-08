@@ -9,6 +9,7 @@ from app.api import (
     cash_flows,
     channel_quotes,
     charge_codes,
+    charge_templates,
     charges,
     cod_instructions,
     collective_invoices,
@@ -117,6 +118,7 @@ api_router.include_router(ocean_bills.router)
 api_router.include_router(pallet_balances.router)
 api_router.include_router(document_templates.router)
 api_router.include_router(rate_cards.router)
+api_router.include_router(charge_templates.router)
 api_router.include_router(fraud_flags.router)
 api_router.include_router(edi_messages.router)
 api_router.include_router(sales_invoices.router)
