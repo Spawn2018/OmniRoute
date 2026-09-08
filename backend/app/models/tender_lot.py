@@ -32,14 +32,14 @@ class TenderLot(Base, TimestampMixin):
             ondelete="RESTRICT",
         ),
         Index("ix_tender_lot_org_tender", "organization_id", "tender_id"),
+        Index("ix_tender_lot_organization_id", "organization_id"),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
     organization_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True),
         ForeignKey("organization.id", ondelete="RESTRICT"),
+        UUID(as_uuid=True),
         nullable=False,
-        index=True,
     )
     tender_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), nullable=False)
     lot_code: Mapped[str] = mapped_column(String(32), nullable=False)

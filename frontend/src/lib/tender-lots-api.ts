@@ -38,13 +38,16 @@ export async function listLotMarks(): Promise<LotMark[]> {
 }
 
 export async function persistLotMark(payload: LotMarkWrite): Promise<LotMark> {
-  const reply = await fetch(PATH, {
+  const posted = await fetch(PATH, {
     method: "POST",
     headers: { ...requireAuthHeaders(), "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   })
-  if (!reply.ok) {
-    throw new ApiError(await readApiDetail(reply, "Błąd zapisu partii przetargu"), httpErrorStatus(reply))
+  if (posted.ok) {
+    return (await posted.json()) as LotMark
   }
-  return (await reply.json()) as LotMark
+  throw new ApiError(
+    await readApiDetail(posted, "Błąd zapisu partii przetargu"),
+    httpErrorStatus(posted),
+  )
 }

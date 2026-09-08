@@ -58,16 +58,18 @@ function LotSave(args: { organizationId: string | null }) {
           required
         />
       </label>
-      <label className="flex flex-col gap-1 text-xs">
-        Pochodzenie zapisu partii
+      <div className="flex flex-col gap-1 text-xs">
+        <span>Pochodzenie zapisu partii</span>
         <input
           aria-label="Pochodzenie zapisu partii przetargu"
+          autoComplete="off"
           className="h-9 rounded-md border bg-background px-2 font-mono"
+          spellCheck={false}
           value={draft.originStamp}
           onChange={(change) => setDraft({ ...draft, originStamp: change.target.value })}
           required
         />
-      </label>
+      </div>
       <Button type="submit" disabled={persist.isPending || !args.organizationId}>
         Zapisz partię
       </Button>
