@@ -387,3 +387,4 @@
 | 2026-09-08 | Plan 152.0 | T2 | trip (status+opcjonalny resource, nie km). Delta zaakceptowana (`/noc`). Nie T3. Nastepny: kod 152.0. |
 | 2026-09-08 | 152.0 | T2 | trip status+opcjonalny resource. Nie km. Nastepny: T3 Plan. |
 | 2026-09-08 | Plan 153.0 | T3 | container ISO 6346 + iso_size_type, nie VGM. Delta zaakceptowana (`/noc`). Nie T4. Nastepny: kod 153.0. |
+| 2026-09-08 | Plan 154.0 | U3 | air shipment_leg + airport flag, nie HAWB. Delta zaakceptowana (`/noc`). Nie D. Nastepny: kod 154.0. |
