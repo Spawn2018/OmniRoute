@@ -409,3 +409,4 @@
 | 2026-09-08 | 163.0 | P1 | rate_card applies_when jako dane + Decimal. Nie silnik WHEN. Nastepny: P2 Plan. |
 | 2026-09-08 | Plan 164.0 | P2 | charge_template kolekcja kodów + daty jako dane, nie exclusion. Delta zaakceptowana (`/noc`). Nie P3. Nastepny: kod 164.0. |
 | 2026-09-08 | 164.0 | P2 | charge_template kolekcja kodów + daty jako dane. Nie exclusion. Nastepny: P3 Plan. |
+| 2026-09-08 | Plan 165.0 | P3 | fuel_index katalog FSC/BAF/CAF obok nbp_rate, nie mnożenie na charge. Delta zaakceptowana (`/noc`). Nie P4. Nastepny: kod 165.0. |
