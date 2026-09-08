@@ -1,8 +1,8 @@
+from unittest.mock import AsyncMock
 from uuid import UUID, uuid4
 
 import pytest
 from fastapi.testclient import TestClient
-from unittest.mock import AsyncMock
 
 from app.api.deps import require_tenant_session, set_authz_checker
 from app.domain.errors import ResourceNotFound
