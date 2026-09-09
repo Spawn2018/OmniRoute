@@ -196,6 +196,7 @@
 | licencja KREPTD | kreptd_licence | G2.23 HITL numer licencji na `party`; nie scrape; nie Citizen API |
 | schemat monitoringu | monitoring_scheme | C7 HITL katalog per tenant; nie zgłoszenie SENT; nie wymyślony klon |
 | dokument kontrahenta | party_document | C8 HITL rodzaj na `party`; nie 409; nie extract |
+| metodologia CO₂ | carbon_method | C5 HITL GLEC/GHG + wersja; nie kg; nie kalkulator |
 | skonto | cash_discount | F2 HITL kind na `sales_invoice`; nie kwota; nie CAMT |
 | licencja transportowa | transport_licence | party_document; KREPTD |
 | sold-to | sold_to_party_id | EXP1; korpo |

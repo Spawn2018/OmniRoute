@@ -459,3 +459,4 @@
 | 2026-09-09 | 188.0 | C8 | party_document HITL kind + source_ref na party. Nie 409. Nie extract. Nastepny: leftover G2.20–G2.22 Plan. |
 | 2026-09-09 | Plan 189.0 | F2 | cash_discount HITL kind na fakturze, nie kwota. Delta zaakceptowana (`/noc`). Nie CAMT. Nastepny: kod 189.0. |
 | 2026-09-09 | 189.0 | F2 | cash_discount HITL kind + source_ref na fakturze. Nie kwota. Nie CAMT. Nastepny: leftover F2b Plan. |
+| 2026-09-09 | Plan 190.0 | C5 | carbon_method HITL GLEC/GHG + wersja, nie kalkulator kg. Delta zaakceptowana (`/noc`). Nie live HTTP. Nastepny: kod 190.0. |
