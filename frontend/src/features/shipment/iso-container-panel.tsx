@@ -19,6 +19,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
   const [note, setNote] = useState("")
   const [goods, setGoods] = useState("")
   const [pack, setPack] = useState("")
+  const [mark, setMark] = useState("")
   const listed = useQuery({
     queryKey: ["containers", ctx.organizationId, sizeType],
     queryFn: () => fetchContainers(sizeType),
@@ -40,6 +41,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
           note,
           goods,
           pack,
+          mark,
         }),
       ),
     onSuccess: () => {
@@ -51,7 +53,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
     <section className="grid gap-2 rounded-md border border-border p-3" data-container="iso">
       <h2 className="text-sm font-medium">Kontener ISO</h2>
       <p className="text-xs text-muted-foreground">
-        Numer z cyfrą kontrolną i typ 4 znaków. Opcjonalne plomby, statek, rejs, uwaga, ładunek i opakowanie. Nie VGM. Nie PIN. Nie booking.
+        Numer z cyfrą kontrolną i typ 4 znaków. Opcjonalne plomby, statek, rejs, uwaga, ładunek, opakowanie i referencja. Nie VGM. Nie PIN. Nie booking.
       </p>
       <label className="flex flex-col gap-1 text-xs">
         Numer ISO 6346
@@ -152,6 +154,15 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
           onChange={(event) => setPack(event.target.value)}
         />
       </label>
+      <label className="flex flex-col gap-1 text-xs">
+        Referencja (opcjonalnie)
+        <Input
+          aria-label="Referencja kontenera"
+          placeholder="ref_1"
+          value={mark}
+          onChange={(event) => setMark(event.target.value)}
+        />
+      </label>
       <Button type="button" disabled={blocked} onClick={() => persist.mutate()}>
         Zapisz kontener
       </Button>
@@ -170,6 +181,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
             {row.remarks !== null ? ` · ${row.remarks}` : ""}
             {row.cargo_description !== null ? ` · ${row.cargo_description}` : ""}
             {row.packaging_code !== null ? ` · ${row.packaging_code}` : ""}
+            {row.ref_1 !== null ? ` · ${row.ref_1}` : ""}
           </li>
         ))}
       </ul>

@@ -6,6 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.domain.container import (
     require_cargo_description,
     require_container_no,
+    require_container_ref_1,
     require_container_remarks,
     require_container_shipment_id,
     require_container_source_ref,
@@ -34,6 +35,7 @@ class _BoxDraft(NamedTuple):
     note: str | None
     goods: str | None
     pack: str | None
+    mark: str | None
 
 
 def _box_draft(
@@ -49,6 +51,7 @@ def _box_draft(
     remarks: object,
     cargo_description: object,
     packaging_code: object,
+    ref_1: object,
 ) -> _BoxDraft:
     return _BoxDraft(
         require_container_no(container_no),
@@ -63,6 +66,7 @@ def _box_draft(
         require_container_remarks(remarks),
         require_cargo_description(cargo_description),
         require_packaging_code(packaging_code),
+        require_container_ref_1(ref_1),
     )
 
 
@@ -79,6 +83,7 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.remarks == draft.note
         and current.cargo_description == draft.goods
         and current.packaging_code == draft.pack
+        and current.ref_1 == draft.mark
     )
 
 
@@ -98,6 +103,7 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         remarks=draft.note,
         cargo_description=draft.goods,
         packaging_code=draft.pack,
+        ref_1=draft.mark,
         created_by=user_id,
     )
 
@@ -109,6 +115,20 @@ class ContainerService:
     async def list_containers(self, *, iso_size_type: object | None = None) -> list[Container]:
         size_type = None if iso_size_type is None else require_iso_size_type(iso_size_type)
         return await self._rows.list_current(size_type)
+
+    async def _persist_box(
+        self,
+        organization_id: UUID,
+        user_id: UUID,
+        draft: _BoxDraft,
+    ) -> Container:
+        current = await self._rows.find_current(draft.number)
+        if current is not None and _box_unchanged(current, draft):
+            return current
+        saved = await self._rows.add(_container_row(organization_id, user_id, draft))
+        if current is not None:
+            await self._rows.mark_superseded(current, saved.id)
+        return saved
 
     async def record_container(
         self,
@@ -127,6 +147,7 @@ class ContainerService:
         remarks: object = None,
         cargo_description: object = None,
         packaging_code: object = None,
+        ref_1: object = None,
     ) -> Container:
         draft = _box_draft(
             container_no,
@@ -141,11 +162,6 @@ class ContainerService:
             remarks,
             cargo_description,
             packaging_code,
+            ref_1,
         )
-        current = await self._rows.find_current(draft.number)
-        if current is not None and _box_unchanged(current, draft):
-            return current
-        saved = await self._rows.add(_container_row(organization_id, user_id, draft))
-        if current is not None:
-            await self._rows.mark_superseded(current, saved.id)
-        return saved
+        return await self._persist_box(organization_id, user_id, draft)

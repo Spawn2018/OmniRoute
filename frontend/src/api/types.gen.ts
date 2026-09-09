@@ -1268,6 +1268,10 @@ export type ContainerCreate = {
      * Packaging Code
      */
     packaging_code?: string | null;
+    /**
+     * Ref 1
+     */
+    ref_1?: string | null;
 };
 
 /**
@@ -1330,6 +1334,10 @@ export type ContainerResponse = {
      * Packaging Code
      */
     packaging_code: string | null;
+    /**
+     * Ref 1
+     */
+    ref_1: string | null;
     /**
      * Superseded By
      */

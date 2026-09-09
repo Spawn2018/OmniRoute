@@ -9,6 +9,7 @@ _ISO_LEN = 11
 _TYPE_LEN = 4
 _MAX_SEAL = 32
 _MAX_VESSEL = 128
+_MAX_MARK = 64
 
 
 def _iso6346_value(mark: str) -> int:
@@ -157,4 +158,17 @@ def require_packaging_code(raw: object) -> str | None:
         return None
     if len(token) > _MAX_SEAL:
         raise InvalidContainer("opakowanie kontenera za długie")
+    return token
+
+
+def require_container_ref_1(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidContainer("referencja kontenera musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    if len(token) > _MAX_MARK:
+        raise InvalidContainer("referencja kontenera za długa")
     return token
