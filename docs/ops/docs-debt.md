@@ -15,7 +15,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **150.0 leftover:** `stop_group`; `eta_physical`/`eta_legal` (V2); waga/plomba/awizacja (EXP1). Tu tylko punkt + location + strefa IANA. Nie mapa. `resource` = 151.0. `trip` = 152.0.
 - **151.0 leftover:** `trip` DONE 152.0. Zostaje T2c: multi-manning / floating trailer; pojemności / Decimal km; `party_id`; `/fleet` / HW. Tu tylko katalog pojazd/kierowca/naczepa.
 - **153.0 leftover:** VGM/TARA Decimal; free_time; cutoffy CY/CFS/VGM/SI/AMS; `bl_kind`; plomby/PIN; reefer; party/terminal; TEU; `shipment_leg_id`. Tu tylko ISO 6346 + `iso_size_type` + opcjonalne zlecenie. Nie booking.
-- **185.0 leftover:** `circle_sim` / km ładowny/pusty/dolot / P z actuals (G2.20–G2.22). Tu tylko `lane_pattern` HITL para UN/LOCODE + `source_ref`. Nie km. Nie silnik 500k. Nie kwota. Nie auto-award.
+- **186.0 leftover:** Citizen API / certyfikat / scrape kreptd.gitd.gov.pl; C8 `party_document` + 409 na `POST shipment`. Tu tylko `kreptd_licence` HITL numer + `source_ref` na `party`. Nie kolumny na `party`. Nie kwota. Nie scoring osoby.
+- **185.0 leftover:** `circle_sim` / km ładowny/pusty/dolot / P z actuals (G2.20–G2.22). `kreptd_licence` DONE 186.0. Tu tylko `lane_pattern` HITL para UN/LOCODE + `source_ref`. Nie km. Nie silnik 500k. Nie kwota. Nie auto-award.
 - **184.0 leftover:** kg / tCO₂e / CBAM (G2.15–G2.18). `lane_pattern` DONE 185.0. Tu tylko `tender_carbon_mark` HITL declared/exempt + `source_ref`. Nie kalkulator. Nie kwota. Nie auto-award.
 - **183.0 leftover:** CO₂ HITL DONE 184.0. Zostaje kg/CBAM (G2.15–G2.18). Tu tylko `tender_ted_notice` HITL numer TED + `source_ref`. Nie scrape. Nie live HTTP. Nie kwota. Nie auto-award.
 - **182.0 leftover:** TED DONE 183.0. CO₂ HITL DONE 184.0. Zostaje kg/CBAM (G2.15–G2.18). Tu tylko `tender_award_review` HITL countersign/challenge + `source_ref`. Nie mutacja `tender.status`. Nie win/loss. Nie dwa user_id. Nie kwota. Nie auto-award.

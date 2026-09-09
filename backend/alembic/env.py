@@ -95,6 +95,7 @@ from app.models.tender_award_review import TenderAwardReview  # noqa: F401
 from app.models.tender_bid_stance import TenderBidStance  # noqa: F401
 from app.models.tender_carbon_mark import TenderCarbonMark  # noqa: F401
 from app.models.lane_pattern import LanePattern  # noqa: F401
+from app.models.kreptd_licence import KreptdLicence  # noqa: F401
 from app.models.tender_ted_notice import TenderTedNotice  # noqa: F401
 from app.models.tender_prospect import TenderProspect  # noqa: F401
 from app.models.tender_rfp_intake import TenderRfpIntake  # noqa: F401

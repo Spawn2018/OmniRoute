@@ -5336,6 +5336,80 @@
         ]
       }
     },
+    "/api/v1/kreptd-licences": {
+      "get": {
+        "tags": [
+          "kreptd-licences"
+        ],
+        "summary": "List Kreptd Licences",
+        "operationId": "list_kreptd_licences_api_v1_kreptd_licences_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/KreptdLicenceResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Kreptd Licences Api V1 Kreptd Licences Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "kreptd-licences"
+        ],
+        "summary": "Create Kreptd Licence",
+        "operationId": "create_kreptd_licence_api_v1_kreptd_licences_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/KreptdLicenceCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KreptdLicenceResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/lane-patterns": {
       "get": {
         "tags": [
@@ -14588,6 +14662,67 @@
           "answered_count"
         ],
         "title": "InquiryMemberRankResponse"
+      },
+      "KreptdLicenceCreate": {
+        "properties": {
+          "party_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Party Id"
+          },
+          "licence_no": {
+            "type": "string",
+            "title": "Licence No"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "party_id",
+          "licence_no",
+          "source_ref"
+        ],
+        "title": "KreptdLicenceCreate"
+      },
+      "KreptdLicenceResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "party_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Party Id"
+          },
+          "licence_no": {
+            "type": "string",
+            "title": "Licence No"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "party_id",
+          "licence_no",
+          "source_ref"
+        ],
+        "title": "KreptdLicenceResponse"
       },
       "LanePatternCreate": {
         "properties": {

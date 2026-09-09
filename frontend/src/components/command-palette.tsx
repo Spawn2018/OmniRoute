@@ -99,6 +99,11 @@ const NAV_ACTIONS = [
     to: "/lane-patterns",
   },
   {
+    id: "nav-kreptd-licences",
+    label: "Idź do licencji KREPTD",
+    to: "/kreptd-licences",
+  },
+  {
     id: "nav-tender-award-reviews",
     label: "Idź do czterech oczu nagrody",
     to: "/tender-award-reviews",

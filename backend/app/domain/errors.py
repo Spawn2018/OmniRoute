@@ -608,3 +608,7 @@ class InvalidTenderCarbonMark(DomainError):
 
 class InvalidLanePattern(DomainError):
     """Wzorzec G2.19: HITL para UN/LOCODE z source_ref — nie km i nie circle_sim."""
+
+
+class InvalidKreptdLicence(DomainError):
+    """Licencja G2.23: HITL numer KREPTD z source_ref — nie scrape i nie Citizen API."""

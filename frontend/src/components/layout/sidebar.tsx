@@ -68,6 +68,7 @@ const NAV = [
   { to: "/tender-bid-stances", label: "Udział w przetargu" },
   { to: "/tender-carbon-marks", label: "Ślad węglowy przetargu" },
   { to: "/lane-patterns", label: "Wzorzec korytarza" },
+  { to: "/kreptd-licences", label: "Licencja KREPTD" },
   { to: "/tender-award-reviews", label: "Cztery oczy nagrody" },
   { to: "/tender-ted-notices", label: "Ogłoszenie TED" },
   { to: "/tender-lanes", label: "Korytarze przetargu" },

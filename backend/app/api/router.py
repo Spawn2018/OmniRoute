@@ -36,6 +36,7 @@ from app.api import (
     groupage_tariffs,
     inbound_messages,
     incoterm_responsibilities,
+    kreptd_licences,
     lane_patterns,
     local_charges,
     locations,
@@ -139,6 +140,7 @@ api_router.include_router(document_templates.router)
 api_router.include_router(rate_cards.router)
 api_router.include_router(charge_templates.router)
 api_router.include_router(fuel_indexes.router)
+api_router.include_router(kreptd_licences.router)
 api_router.include_router(lane_patterns.router)
 api_router.include_router(local_charges.router)
 api_router.include_router(tender_quotes.router)

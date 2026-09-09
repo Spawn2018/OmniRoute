@@ -164,6 +164,11 @@ export const OPS_JOBS = [
     job: "HITL para UN/LOCODE bez circle_sim",
   },
   {
+    route: BUSINESS_LISTS.kreptdLicence.route,
+    label: "Licencja KREPTD",
+    job: "HITL numer licencji bez scrape",
+  },
+  {
     route: BUSINESS_LISTS.tenderAwardReview.route,
     label: "Cztery oczy nagrody",
     job: "HITL przegląd nagrody bez auto-award",
@@ -595,6 +600,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "183.0": "/tender-ted-notices",
   "184.0": "/tender-carbon-marks",
   "185.0": "/lane-patterns",
+  "186.0": "/kreptd-licences",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

@@ -2607,6 +2607,50 @@ export type InquiryMemberRankResponse = {
 };
 
 /**
+ * KreptdLicenceCreate
+ */
+export type KreptdLicenceCreate = {
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Licence No
+     */
+    licence_no: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * KreptdLicenceResponse
+ */
+export type KreptdLicenceResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Licence No
+     */
+    licence_no: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * LanePatternCreate
  */
 export type LanePatternCreate = {
@@ -9311,6 +9355,49 @@ export type CreateFuelIndexApiV1FuelIndexesPostResponses = {
 };
 
 export type CreateFuelIndexApiV1FuelIndexesPostResponse = CreateFuelIndexApiV1FuelIndexesPostResponses[keyof CreateFuelIndexApiV1FuelIndexesPostResponses];
+
+export type ListKreptdLicencesApiV1KreptdLicencesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/kreptd-licences';
+};
+
+export type ListKreptdLicencesApiV1KreptdLicencesGetResponses = {
+    /**
+     * Response List Kreptd Licences Api V1 Kreptd Licences Get
+     *
+     * Successful Response
+     */
+    200: Array<KreptdLicenceResponse>;
+};
+
+export type ListKreptdLicencesApiV1KreptdLicencesGetResponse = ListKreptdLicencesApiV1KreptdLicencesGetResponses[keyof ListKreptdLicencesApiV1KreptdLicencesGetResponses];
+
+export type CreateKreptdLicenceApiV1KreptdLicencesPostData = {
+    body: KreptdLicenceCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/kreptd-licences';
+};
+
+export type CreateKreptdLicenceApiV1KreptdLicencesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateKreptdLicenceApiV1KreptdLicencesPostError = CreateKreptdLicenceApiV1KreptdLicencesPostErrors[keyof CreateKreptdLicenceApiV1KreptdLicencesPostErrors];
+
+export type CreateKreptdLicenceApiV1KreptdLicencesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: KreptdLicenceResponse;
+};
+
+export type CreateKreptdLicenceApiV1KreptdLicencesPostResponse = CreateKreptdLicenceApiV1KreptdLicencesPostResponses[keyof CreateKreptdLicenceApiV1KreptdLicencesPostResponses];
 
 export type ListLanePatternsApiV1LanePatternsGetData = {
     body?: never;

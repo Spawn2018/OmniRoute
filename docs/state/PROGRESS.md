@@ -452,3 +452,4 @@
 | 2026-09-09 | Plan 185.0 | G2.19 | lane_pattern HITL para UN/LOCODE, nie circle_sim. Delta zaakceptowana (`/noc`). Nie kalkulator kg. Nastepny: kod 185.0. |
 | 2026-09-09 | 185.0 | G2.19 | lane_pattern HITL para UN/LOCODE + source_ref. Nie circle_sim. Nie km. Nastepny: leftover G2.20–G2.22 Plan. |
 | 2026-09-09 | Plan 186.0 | G2.23 | kreptd_licence HITL numer licencji, nie scrape. Delta zaakceptowana (`/noc`). Nie Citizen API. Nastepny: kod 186.0. |
+| 2026-09-09 | 186.0 | G2.23 | kreptd_licence HITL numer licencji + source_ref na party. Nie scrape. Nie Citizen API. Nastepny: leftover G2.20–G2.22 Plan. |
