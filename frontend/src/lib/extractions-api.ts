@@ -49,12 +49,17 @@ export function extractionCreateBody(args: {
     currency: string
     transit_days?: number
   }
+  rfp?: {
+    tender_id: string
+    intake_code: string
+  }
 }): {
   source_ref: string
   input_text?: string
   document_base64?: string
   draft_kind?: string
   quote?: (typeof args)["quote"]
+  rfp?: (typeof args)["rfp"]
 } {
   const body: {
     source_ref: string
@@ -62,6 +67,7 @@ export function extractionCreateBody(args: {
     document_base64?: string
     draft_kind?: string
     quote?: (typeof args)["quote"]
+    rfp?: (typeof args)["rfp"]
   } =
     args.documentBase64 !== null && args.documentBase64.length > 0
       ? { source_ref: args.sourceRef, document_base64: args.documentBase64 }
@@ -71,6 +77,9 @@ export function extractionCreateBody(args: {
   }
   if (args.quote !== undefined) {
     body.quote = args.quote
+  }
+  if (args.rfp !== undefined) {
+    body.rfp = args.rfp
   }
   return body
 }

@@ -13079,6 +13079,16 @@
                 "type": "null"
               }
             ]
+          },
+          "rfp": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TenderRfpExtract"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "type": "object",
@@ -18850,6 +18860,26 @@
           "source_ref"
         ],
         "title": "TenderResponse"
+      },
+      "TenderRfpExtract": {
+        "properties": {
+          "tender_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Tender Id"
+          },
+          "intake_code": {
+            "type": "string",
+            "title": "Intake Code"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "tender_id",
+          "intake_code"
+        ],
+        "title": "TenderRfpExtract"
       },
       "TenderRfpIntakeCreate": {
         "properties": {

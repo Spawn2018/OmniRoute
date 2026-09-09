@@ -21,4 +21,27 @@ describe("extractionCreateBody", () => {
       }),
     ).toEqual({ source_ref: "doc://x", input_text: "THC 1 EUR" })
   })
+
+  it("sends tender_rfp HITL fields without money math", () => {
+    expect(
+      extractionCreateBody({
+        sourceRef: "doc://rfp",
+        inputText: "RFP",
+        documentBase64: null,
+        draftKind: "tender_rfp",
+        rfp: {
+          tender_id: "11111111-1111-1111-1111-111111111111",
+          intake_code: "scope",
+        },
+      }),
+    ).toEqual({
+      source_ref: "doc://rfp",
+      input_text: "RFP",
+      draft_kind: "tender_rfp",
+      rfp: {
+        tender_id: "11111111-1111-1111-1111-111111111111",
+        intake_code: "scope",
+      },
+    })
+  })
 })

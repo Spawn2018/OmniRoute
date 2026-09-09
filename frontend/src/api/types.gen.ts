@@ -1899,6 +1899,7 @@ export type ExtractRequest = {
      */
     draft_kind?: string | null;
     quote?: CarrierQuoteExtract | null;
+    rfp?: TenderRfpExtract | null;
 };
 
 /**
@@ -5497,6 +5498,20 @@ export type TenderResponse = {
      * Source Ref
      */
     source_ref: string;
+};
+
+/**
+ * TenderRfpExtract
+ */
+export type TenderRfpExtract = {
+    /**
+     * Tender Id
+     */
+    tender_id: string;
+    /**
+     * Intake Code
+     */
+    intake_code: string;
 };
 
 /**

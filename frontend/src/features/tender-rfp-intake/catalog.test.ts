@@ -36,5 +36,8 @@ describe("tender_rfp_intake surface for 178.0", () => {
     expect(panel).not.toContain("leaflet")
     expect(panel).not.toContain("CatalogCreateForm")
     expect(src("features/ops/ops-index.ts")).toContain('"178.0": "/tender-rfp-intakes"')
+    expect(src("features/ops/ops-index.ts")).toContain('"179.0": "/ai"')
+    expect(src("features/extraction/queue-page.tsx")).toContain("tender_rfp")
+    expect(src("features/extraction/queue-page.tsx")).not.toContain("parseFloat")
   })
 })

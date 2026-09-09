@@ -147,7 +147,7 @@ class AcceptRequiresRateLine(DomainError):
 
 
 class InvalidExtractionDraft(DomainError):
-    """draft_kind spoza rate_line / carrier_quote — nie F10."""
+    """draft_kind spoza rate_line / carrier_quote / tender_rfp — nie F10."""
 
 
 class AcceptRequiresChannelQuote(DomainError):

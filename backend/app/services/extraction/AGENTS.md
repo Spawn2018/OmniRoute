@@ -9,7 +9,7 @@
 - `app.domain`
 
 ## Zakaz
-- zapis `rate_line` / `charge` z tego serwisu (HC-04; 1.3 = warstwa API)
-- import `rate_lines` / `charges` / `inbound_messages` / innych BC services
+- zapis `rate_line` / `charge` / `tender_rfp_intake` z tego serwisu (HC-04; 1.3 / G2.9b = warstwa API)
+- import `rate_lines` / `charges` / `tender_rfp_intakes` / `tenders` / `inbound_messages` / innych BC services
 - wywołanie LLM bez `ExtractionInputGuard`
 - logowanie `OPENAI_API_KEY` / treści sekretów z guarda

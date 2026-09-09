@@ -46,6 +46,8 @@ export function ExtractionQueuePage() {
   const [quoteDate, setQuoteDate] = useState("2026-09-08")
   const [quoteAmount, setQuoteAmount] = useState("")
   const [quoteCurrency, setQuoteCurrency] = useState("USD")
+  const [rfpTenderId, setRfpTenderId] = useState("")
+  const [rfpIntakeCode, setRfpIntakeCode] = useState("scope")
 
   const query = useQuery({
     queryKey: ["extractions", "pending", ctx.organizationId],
@@ -74,6 +76,13 @@ export function ExtractionQueuePage() {
                   quote_date: quoteDate.trim(),
                   amount: quoteAmount.trim(),
                   currency: quoteCurrency.trim(),
+                }
+              : undefined,
+          rfp:
+            draftKind === "tender_rfp"
+              ? {
+                  tender_id: rfpTenderId.trim(),
+                  intake_code: rfpIntakeCode.trim(),
                 }
               : undefined,
         }),
@@ -192,7 +201,7 @@ export function ExtractionQueuePage() {
       <div>
         <h2 className="text-base font-semibold">Kolejka ekstrakcji (HITL)</h2>
         <p className="text-xs text-muted-foreground">
-          Parser A/B · MockExtractor · akceptacja zapisuje stawkę albo ofertę kanału (`draft_kind`)
+          Parser A/B · MockExtractor · akceptacja zapisuje stawkę, ofertę kanału albo przyjęcie RFP (`draft_kind`)
         </p>
       </div>
 
@@ -217,6 +226,7 @@ export function ExtractionQueuePage() {
           >
             <option value="rate_line">rate_line</option>
             <option value="carrier_quote">carrier_quote</option>
+            <option value="tender_rfp">tender_rfp</option>
           </select>
         </label>
         {draftKind === "carrier_quote" ? (
@@ -227,6 +237,12 @@ export function ExtractionQueuePage() {
             <Input aria-label="Dzień oferty" placeholder="quote_date" value={quoteDate} onChange={(e) => setQuoteDate(e.target.value)} />
             <Input aria-label="Kwota oferty" placeholder="amount" value={quoteAmount} onChange={(e) => setQuoteAmount(e.target.value)} />
             <Input aria-label="Waluta oferty" placeholder="currency" value={quoteCurrency} onChange={(e) => setQuoteCurrency(e.target.value)} />
+          </div>
+        ) : null}
+        {draftKind === "tender_rfp" ? (
+          <div className="grid gap-2 lg:grid-cols-2">
+            <Input aria-label="Przetarg przyjęcia RFP" placeholder="tender_id" value={rfpTenderId} onChange={(e) => setRfpTenderId(e.target.value)} />
+            <Input aria-label="Kod przyjęcia RFP" placeholder="intake_code" value={rfpIntakeCode} onChange={(e) => setRfpIntakeCode(e.target.value)} />
           </div>
         ) : null}
         <label className="block text-xs text-muted-foreground">

@@ -284,3 +284,21 @@ def test_http_rejects_unknown_draft_kind(happy_client: TestClient) -> None:
     )
     assert response.status_code == 400
     assert "allowlist" in response.json()["detail"]
+
+
+def test_http_accepts_tender_rfp_draft_kind(happy_client: TestClient) -> None:
+    response = happy_client.post(
+        "/api/v1/extractions",
+        headers=bearer_auth_headers(),
+        json={
+            "source_ref": "doc://rfp",
+            "input_text": "RFP",
+            "draft_kind": "tender_rfp",
+            "rfp": {
+                "tender_id": str(uuid4()),
+                "intake_code": "scope",
+            },
+        },
+    )
+    assert response.status_code == 201
+    assert response.json()["draft_kind"] == "tender_rfp"

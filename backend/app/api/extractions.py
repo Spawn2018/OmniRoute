@@ -34,6 +34,13 @@ class CarrierQuoteExtract(BaseModel):
     transit_days: int | None = None
 
 
+class TenderRfpExtract(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    tender_id: UUID
+    intake_code: str
+
+
 class ExtractRequest(BaseModel):
     source_ref: str = Field(min_length=1, max_length=512)
     input_text: str | None = Field(default=None, min_length=1, max_length=50_000)
@@ -42,6 +49,7 @@ class ExtractRequest(BaseModel):
     )
     draft_kind: str | None = None
     quote: CarrierQuoteExtract | None = None
+    rfp: TenderRfpExtract | None = None
 
     @model_validator(mode="after")
     def require_one_source(self) -> Self:
@@ -99,6 +107,7 @@ async def create_extraction_draft(
             raw_bytes=raw_bytes,
             draft_kind=body.draft_kind,
             quote_payload=None if body.quote is None else body.quote.model_dump(),
+            rfp_payload=None if body.rfp is None else body.rfp.model_dump(),
         )
     else:
         if body.input_text is None:
@@ -110,6 +119,7 @@ async def create_extraction_draft(
             input_text=body.input_text,
             draft_kind=body.draft_kind,
             quote_payload=None if body.quote is None else body.quote.model_dump(),
+            rfp_payload=None if body.rfp is None else body.rfp.model_dump(),
         )
     await session.commit()
     return _draft_response(draft)

@@ -13,7 +13,7 @@ class ExtractionDraft(Base, TimestampMixin):
     __tablename__ = "extraction_draft"
     __table_args__ = (
         CheckConstraint(
-            "draft_kind IN ('rate_line','carrier_quote')",
+            "draft_kind IN ('rate_line','carrier_quote','tender_rfp')",
             name="ck_extraction_draft_kind",
         ),
     )

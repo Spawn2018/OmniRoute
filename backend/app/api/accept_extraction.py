@@ -8,8 +8,10 @@ from app.ai_transforms.extraction.schemas import ExtractionPayload
 from app.domain.errors import AcceptRequiresRateLine
 from app.domain.extraction_draft import (
     extraction_carrier_quote_kind,
+    extraction_tender_rfp_kind,
     require_carrier_quote_payload,
     require_extraction_draft_kind,
+    require_tender_rfp_payload,
 )
 from app.domain.rate_line import require_source_ref
 from app.models.channel_quote import ChannelQuote
@@ -18,6 +20,8 @@ from app.models.rate_line import RateLine
 from app.services.channel_quotes.channel_quote_service import ChannelQuoteService
 from app.services.extraction.extraction_service import ExtractionService
 from app.services.rate_lines.rate_line_service import RateLineService
+from app.services.tender_rfp_intakes.tender_rfp_intake_service import TenderRfpIntakeService
+from app.services.tenders.tender_service import TenderService
 
 
 class ExtractionAcceptResult(NamedTuple):
@@ -35,10 +39,14 @@ class AcceptExtractionToRates:
         extraction: ExtractionService | None = None,
         rates: RateLineService | None = None,
         quotes: ChannelQuoteService | None = None,
+        intakes: TenderRfpIntakeService | None = None,
+        boards: TenderService | None = None,
     ) -> None:
         self._extraction = extraction or ExtractionService(session)
         self._rates = rates or RateLineService(session)
         self._quotes = quotes or ChannelQuoteService(session)
+        self._intakes = intakes or TenderRfpIntakeService(session)
+        self._boards = boards or TenderService(session)
 
     async def accept(
         self,
@@ -48,6 +56,9 @@ class AcceptExtractionToRates:
     ) -> ExtractionAcceptResult:
         draft = await self._extraction.accept(draft_id=draft_id, user_id=user_id)
         kind = require_extraction_draft_kind(getattr(draft, "draft_kind", None))
+        if kind == extraction_tender_rfp_kind():
+            await self._write_intake(draft, user_id)
+            return ExtractionAcceptResult(draft, [], [])
         if kind == extraction_carrier_quote_kind():
             quote = await self._write_channel_quote(draft, user_id)
             return ExtractionAcceptResult(draft, [], [quote])
@@ -83,6 +94,17 @@ class AcceptExtractionToRates:
             currency=stored.currency,
             transit_days=stored.transit_days,
             source_ref=draft.source_ref,
+        )
+
+    async def _write_intake(self, draft: ExtractionDraft, user_id: UUID) -> None:
+        stored = require_tender_rfp_payload(draft.payload)
+        board = await self._boards.get_board(stored.tender_id)
+        await self._intakes.persist_intake(
+            organization_id=draft.organization_id,
+            user_id=user_id,
+            tender_id=board.id,
+            intake_code=stored.intake_code,
+            source_ref=f"fixture://tender-rfp-intake/{draft.id}",
         )
 
 

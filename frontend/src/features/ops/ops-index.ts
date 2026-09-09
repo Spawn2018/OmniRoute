@@ -558,6 +558,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "176.0": "/tender-win-losses",
   "177.0": "/tender-consortium-members",
   "178.0": "/tender-rfp-intakes",
+  "179.0": "/ai",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

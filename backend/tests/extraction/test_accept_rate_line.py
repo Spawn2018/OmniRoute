@@ -27,6 +27,10 @@ _FORBIDDEN_IMPORTS = (
     "app.models.charge",
     "app.services.channel_quotes",
     "app.models.channel_quote",
+    "app.services.tender_rfp_intakes",
+    "app.services.tenders",
+    "app.models.tender_rfp_intake",
+    "app.models.tender",
 )
 
 
@@ -325,4 +329,58 @@ async def test_accept_carrier_quote_writes_quote_not_rate() -> None:
     kwargs = quotes.create_quote.await_args.kwargs
     assert kwargs["party_id"] == party_id
     assert kwargs["source_ref"] == "fixture://quote/1"
+    session.commit.assert_not_called()
+
+
+@pytest.mark.asyncio
+async def test_accept_tender_rfp_writes_intake_not_rate() -> None:
+    session = AsyncMock()
+    session.commit = AsyncMock()
+    board_id = uuid4()
+    draft = ExtractionDraft(
+        id=uuid4(),
+        organization_id=uuid4(),
+        status="accepted",
+        draft_kind="tender_rfp",
+        source_ref="doc://rfp",
+        input_text="RFP scope",
+        payload={
+            "tender_id": str(board_id),
+            "intake_code": "scope",
+            "source_ref": "doc://rfp",
+            "unparsed_regions": [],
+            "candidates": [],
+        },
+    )
+    extraction = AsyncMock()
+    extraction.accept = AsyncMock(return_value=draft)
+    rates = AsyncMock()
+    quotes = AsyncMock()
+    intakes = AsyncMock()
+    boards = AsyncMock()
+    board = AsyncMock()
+    board.id = board_id
+    boards.get_board = AsyncMock(return_value=board)
+    created = AsyncMock()
+    created.id = uuid4()
+    intakes.persist_intake = AsyncMock(return_value=created)
+
+    outcome = await AcceptExtractionToRates(
+        session,
+        extraction=extraction,
+        rates=rates,
+        quotes=quotes,
+        intakes=intakes,
+        boards=boards,
+    ).accept(draft_id=draft.id, user_id=uuid4())
+
+    assert outcome.rate_lines == []
+    assert outcome.channel_quotes == []
+    rates.create_buy_rate.assert_not_called()
+    quotes.create_quote.assert_not_called()
+    intakes.persist_intake.assert_awaited_once()
+    kwargs = intakes.persist_intake.await_args.kwargs
+    assert kwargs["tender_id"] == board_id
+    assert kwargs["intake_code"] == "scope"
+    assert kwargs["source_ref"] == f"fixture://tender-rfp-intake/{draft.id}"
     session.commit.assert_not_called()

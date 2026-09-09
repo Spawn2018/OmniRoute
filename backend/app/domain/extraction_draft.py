@@ -1,11 +1,17 @@
 from typing import NamedTuple
 from uuid import UUID
 
-from app.domain.errors import AcceptRequiresChannelQuote, InvalidExtractionDraft
+from app.domain.errors import (
+    AcceptRequiresChannelQuote,
+    InvalidExtractionDraft,
+    InvalidTenderRfpIntake,
+)
+from app.domain.tender_rfp_intake import require_board_id, require_intake_code
 
 _RATE = "rate_line"
 _QUOTE = "carrier_quote"
-_KINDS = frozenset({_RATE, _QUOTE})
+_RFP = "tender_rfp"
+_KINDS = frozenset({_RATE, _QUOTE, _RFP})
 
 
 def extraction_rate_kind() -> str:
@@ -14,6 +20,10 @@ def extraction_rate_kind() -> str:
 
 def extraction_carrier_quote_kind() -> str:
     return _QUOTE
+
+
+def extraction_tender_rfp_kind() -> str:
+    return _RFP
 
 
 def require_extraction_draft_kind(raw: object) -> str:
@@ -68,4 +78,24 @@ def require_carrier_quote_payload(raw: object) -> CarrierQuoteDraft:
         amount=_as_text(raw.get("amount"), "amount"),
         currency=_as_text(raw.get("currency"), "currency"),
         transit_days=days,
+    )
+
+
+class TenderRfpDraft(NamedTuple):
+    tender_id: UUID
+    intake_code: str
+
+
+def require_tender_rfp_payload(raw: object) -> TenderRfpDraft:
+    if type(raw) is not dict:
+        raise InvalidTenderRfpIntake("przyjęcie: payload obowiązkowy")
+    board = raw.get("tender_id")
+    if type(board) is str:
+        try:
+            board = UUID(board.strip())
+        except ValueError as exc:
+            raise InvalidTenderRfpIntake("tender_id musi być UUID") from exc
+    return TenderRfpDraft(
+        tender_id=require_board_id(board),
+        intake_code=require_intake_code(raw.get("intake_code")),
     )

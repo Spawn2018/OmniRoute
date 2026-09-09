@@ -9,8 +9,10 @@ from app.ai_transforms.extraction.provider import default_extractor
 from app.domain.errors import DraftNotPending, ResourceNotFound, UnparseableDocument
 from app.domain.extraction_draft import (
     extraction_carrier_quote_kind,
+    extraction_tender_rfp_kind,
     require_carrier_quote_payload,
     require_extraction_draft_kind,
+    require_tender_rfp_payload,
 )
 from app.integrations.docling.parser import DocumentParser
 from app.integrations.docling.provider import default_parser
@@ -54,11 +56,14 @@ class ExtractionService:
         ab_delta_chars: int | None = None,
         draft_kind: object = None,
         quote_payload: object = None,
+        rfp_payload: object = None,
     ) -> ExtractionDraft:
         kind = require_extraction_draft_kind(draft_kind)
         self._guard.scan(input_text)
         if kind == extraction_carrier_quote_kind():
             dumped = _quote_payload(source_ref, quote_payload)
+        elif kind == extraction_tender_rfp_kind():
+            dumped = _rfp_payload(source_ref, rfp_payload)
         else:
             dumped = self._rate_payload(
                 source_ref,
@@ -115,6 +120,7 @@ class ExtractionService:
         raw_bytes: bytes,
         draft_kind: object = None,
         quote_payload: object = None,
+        rfp_payload: object = None,
     ) -> ExtractionDraft:
         if len(raw_bytes) > _MAX_DOCUMENT_BYTES:
             raise UnparseableDocument("Dokument przekracza 2 MB")
@@ -129,6 +135,7 @@ class ExtractionService:
             ab_delta_chars=parsed.ab_delta_chars,
             draft_kind=draft_kind,
             quote_payload=quote_payload,
+            rfp_payload=rfp_payload,
         )
 
     async def accept(self, *, draft_id: UUID, user_id: UUID) -> ExtractionDraft:
@@ -169,4 +176,15 @@ def _quote_payload(source_ref: str, raw: object) -> dict[str, object]:
         "amount": stored.amount,
         "currency": stored.currency,
         "transit_days": stored.transit_days,
+    }
+
+
+def _rfp_payload(source_ref: str, raw: object) -> dict[str, object]:
+    stored = require_tender_rfp_payload(raw)
+    return {
+        "source_ref": source_ref,
+        "unparsed_regions": [],
+        "candidates": [],
+        "tender_id": str(stored.tender_id),
+        "intake_code": stored.intake_code,
     }
