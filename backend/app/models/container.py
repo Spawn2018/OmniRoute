@@ -42,6 +42,7 @@ class Container(Base, TimestampMixin):
     ref_2: Mapped[str | None] = mapped_column(String(64), nullable=True)
     ref_3: Mapped[str | None] = mapped_column(String(64), nullable=True)
     ref_4: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    ref_5: Mapped[str | None] = mapped_column(String(64), nullable=True)
     superseded_by: Mapped[uuid.UUID | None] = mapped_column(
         UUID(as_uuid=True),
         ForeignKey("container.id", ondelete="RESTRICT"),

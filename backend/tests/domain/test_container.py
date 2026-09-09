@@ -9,6 +9,7 @@ from app.domain.container import (
     require_container_ref_2,
     require_container_ref_3,
     require_container_ref_4,
+    require_container_ref_5,
     require_container_remarks,
     require_container_source_ref,
     require_iso_size_type,
@@ -126,6 +127,12 @@ def test_container_ref_4_reuses_same_referencja_rule() -> None:
     assert require_container_ref_4("  BK012 ") == "BK012"
     with pytest.raises(InvalidContainer, match="referencja"):
         require_container_ref_4("x" * 65)
+
+
+def test_container_ref_5_reuses_same_referencja_rule() -> None:
+    assert require_container_ref_5("  SI345 ") == "SI345"
+    with pytest.raises(InvalidContainer, match="referencja"):
+        require_container_ref_5("x" * 65)
 
 
 @given(st.sampled_from(["CSQU3054384", "MSCU1234567", "ABCD"]))
