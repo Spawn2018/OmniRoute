@@ -469,3 +469,4 @@
 | 2026-09-09 | 193.0 | B0b/V1 | prediction_ledger HITL przedział + CRPS/MAE. Nie silnik. Nie scoring osoby. Nastepny: leftover C3 Plan. |
 | 2026-09-09 | Plan 194.0 | V2 | stop HITL eta_physical/eta_legal, nie GPS i nie pogoda. Delta zaakceptowana (`/noc`). Nastepny: kod 194.0. |
 | 2026-09-09 | 194.0 | V2 | stop HITL dwa ETA (fizyczne/prawne). Nie GPS. Nie pogoda. Nastepny: leftover V2 pogoda Plan. |
+| 2026-09-09 | Plan 195.0 | V2 | weather_observation HITL warunek + UN/LOCODE, nie Open-Meteo. Delta zaakceptowana (`/noc`). Nastepny: kod 195.0. |

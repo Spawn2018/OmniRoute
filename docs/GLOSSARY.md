@@ -170,6 +170,7 @@
 | podłoga marży | margin_floor | N6; Decimal; 409 albo S11 |
 | ETA fizyczne | eta_physical | V2 HITL 194.0 na `stop`; GPS/korek leftover; nie jedyny znacznik |
 | ETA prawne | eta_legal | V2 HITL 194.0 na `stop`; zakaz jazdy/tacho leftover |
+| obserwacja pogody | weather_observation | V2 HITL 195.0; Open-Meteo/geometria leftover; nie ETA |
 | umowa klienta | customer_contract | CI; ciphertext; nie super-admin |
 | klauzula SLA | sla_clause | CI; wpis ręczny; kara SQL |
 | prognoza spóźnienia | delay_forecast | CI4; przed actual late |
