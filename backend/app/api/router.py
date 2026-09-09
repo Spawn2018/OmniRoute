@@ -44,6 +44,7 @@ from app.api import (
     local_charges,
     locations,
     mail_drafts,
+    memory_edges,
     money_costs,
     monitoring_schemes,
     nbp_rates,
@@ -125,6 +126,7 @@ api_router.include_router(customer_rfqs.router)
 api_router.include_router(operator_decisions.router)
 api_router.include_router(operator_notices.router)
 api_router.include_router(mail_drafts.router)
+api_router.include_router(memory_edges.router)
 api_router.include_router(outbox_events.router)
 api_router.include_router(entity_events.router)
 api_router.include_router(nbp_rates.router)

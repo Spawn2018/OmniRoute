@@ -3211,6 +3211,42 @@ export type MailDraftResponse = {
 };
 
 /**
+ * MemoryEdgeCreate
+ */
+export type MemoryEdgeCreate = {
+    /**
+     * Edge Kind
+     */
+    edge_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * MemoryEdgeResponse
+ */
+export type MemoryEdgeResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Edge Kind
+     */
+    edge_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * MoneyCostCreate
  */
 export type MoneyCostCreate = {
@@ -8486,6 +8522,49 @@ export type DispatchMailDraftMailtoApiV1MailDraftsDraftIdDispatchMailtoPostRespo
 };
 
 export type DispatchMailDraftMailtoApiV1MailDraftsDraftIdDispatchMailtoPostResponse = DispatchMailDraftMailtoApiV1MailDraftsDraftIdDispatchMailtoPostResponses[keyof DispatchMailDraftMailtoApiV1MailDraftsDraftIdDispatchMailtoPostResponses];
+
+export type ListMemoryEdgesApiV1MemoryEdgesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/memory-edges';
+};
+
+export type ListMemoryEdgesApiV1MemoryEdgesGetResponses = {
+    /**
+     * Response List Memory Edges Api V1 Memory Edges Get
+     *
+     * Successful Response
+     */
+    200: Array<MemoryEdgeResponse>;
+};
+
+export type ListMemoryEdgesApiV1MemoryEdgesGetResponse = ListMemoryEdgesApiV1MemoryEdgesGetResponses[keyof ListMemoryEdgesApiV1MemoryEdgesGetResponses];
+
+export type CreateMemoryEdgeApiV1MemoryEdgesPostData = {
+    body: MemoryEdgeCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/memory-edges';
+};
+
+export type CreateMemoryEdgeApiV1MemoryEdgesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateMemoryEdgeApiV1MemoryEdgesPostError = CreateMemoryEdgeApiV1MemoryEdgesPostErrors[keyof CreateMemoryEdgeApiV1MemoryEdgesPostErrors];
+
+export type CreateMemoryEdgeApiV1MemoryEdgesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: MemoryEdgeResponse;
+};
+
+export type CreateMemoryEdgeApiV1MemoryEdgesPostResponse = CreateMemoryEdgeApiV1MemoryEdgesPostResponses[keyof CreateMemoryEdgeApiV1MemoryEdgesPostResponses];
 
 export type ListOutboxEventsApiV1OutboxEventsGetData = {
     body?: never;

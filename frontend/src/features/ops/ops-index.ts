@@ -224,6 +224,11 @@ export const OPS_JOBS = [
     job: "HITL incydent bez scalania alertów",
   },
   {
+    route: BUSINESS_LISTS.memoryEdge.route,
+    label: "Krawędź pamięci",
+    job: "HITL rodzaj krawędzi bez wyszukiwania stawek",
+  },
+  {
     route: BUSINESS_LISTS.tenderAwardReview.route,
     label: "Cztery oczy nagrody",
     job: "HITL przegląd nagrody bez auto-award",
@@ -670,6 +675,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "198.0": "/tower-impacts",
   "199.0": "/twin-marks",
   "200.0": "/war-room-marks",
+  "201.0": "/memory-edges",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

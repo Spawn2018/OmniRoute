@@ -80,6 +80,7 @@ const NAV = [
   { to: "/tower-impacts", label: "Skutek wieży" },
   { to: "/twin-marks", label: "Bliźniak" },
   { to: "/war-room-marks", label: "Sala kryzysowa" },
+  { to: "/memory-edges", label: "Krawędź pamięci" },
   { to: "/tender-award-reviews", label: "Cztery oczy nagrody" },
   { to: "/tender-ted-notices", label: "Ogłoszenie TED" },
   { to: "/tender-lanes", label: "Korytarze przetargu" },

@@ -46,6 +46,7 @@ def _organization_core_relations() -> dict[str, Userset]:
         "can_manage_tower_impacts": _member(),
         "can_manage_twin_marks": _member(),
         "can_manage_war_room_marks": _member(),
+        "can_manage_memory_edges": _member(),
     }
 
 

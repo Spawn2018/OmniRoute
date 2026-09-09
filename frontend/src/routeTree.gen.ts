@@ -51,6 +51,7 @@ import { Route as LclRouteImport } from './routes/lcl'
 import { Route as LocalChargesRouteImport } from './routes/local-charges'
 import { Route as LocationsRouteImport } from './routes/locations'
 import { Route as MailRouteImport } from './routes/mail'
+import { Route as MemoryEdgesRouteImport } from './routes/memory-edges'
 import { Route as MoneyCostRouteImport } from './routes/money-cost'
 import { Route as MonitoringSchemesRouteImport } from './routes/monitoring-schemes'
 import { Route as NbpRatesRouteImport } from './routes/nbp-rates'
@@ -314,6 +315,11 @@ const LocationsRoute = LocationsRouteImport.update({
 const MailRoute = MailRouteImport.update({
   id: '/mail',
   path: '/mail',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MemoryEdgesRoute = MemoryEdgesRouteImport.update({
+  id: '/memory-edges',
+  path: '/memory-edges',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MoneyCostRoute = MoneyCostRouteImport.update({
@@ -630,6 +636,7 @@ export interface FileRoutesByFullPath {
   '/local-charges': typeof LocalChargesRoute
   '/locations': typeof LocationsRoute
   '/mail': typeof MailRoute
+  '/memory-edges': typeof MemoryEdgesRoute
   '/money-cost': typeof MoneyCostRoute
   '/monitoring-schemes': typeof MonitoringSchemesRoute
   '/nbp-rates': typeof NbpRatesRoute
@@ -728,6 +735,7 @@ export interface FileRoutesByTo {
   '/local-charges': typeof LocalChargesRoute
   '/locations': typeof LocationsRoute
   '/mail': typeof MailRoute
+  '/memory-edges': typeof MemoryEdgesRoute
   '/money-cost': typeof MoneyCostRoute
   '/monitoring-schemes': typeof MonitoringSchemesRoute
   '/nbp-rates': typeof NbpRatesRoute
@@ -827,6 +835,7 @@ export interface FileRoutesById {
   '/local-charges': typeof LocalChargesRoute
   '/locations': typeof LocationsRoute
   '/mail': typeof MailRoute
+  '/memory-edges': typeof MemoryEdgesRoute
   '/money-cost': typeof MoneyCostRoute
   '/monitoring-schemes': typeof MonitoringSchemesRoute
   '/nbp-rates': typeof NbpRatesRoute
@@ -927,6 +936,7 @@ export interface FileRouteTypes {
     | '/local-charges'
     | '/locations'
     | '/mail'
+    | '/memory-edges'
     | '/money-cost'
     | '/monitoring-schemes'
     | '/nbp-rates'
@@ -1025,6 +1035,7 @@ export interface FileRouteTypes {
     | '/local-charges'
     | '/locations'
     | '/mail'
+    | '/memory-edges'
     | '/money-cost'
     | '/monitoring-schemes'
     | '/nbp-rates'
@@ -1123,6 +1134,7 @@ export interface FileRouteTypes {
     | '/local-charges'
     | '/locations'
     | '/mail'
+    | '/memory-edges'
     | '/money-cost'
     | '/monitoring-schemes'
     | '/nbp-rates'
@@ -1222,6 +1234,7 @@ export interface RootRouteChildren {
   LocalChargesRoute: typeof LocalChargesRoute
   LocationsRoute: typeof LocationsRoute
   MailRoute: typeof MailRoute
+  MemoryEdgesRoute: typeof MemoryEdgesRoute
   MoneyCostRoute: typeof MoneyCostRoute
   MonitoringSchemesRoute: typeof MonitoringSchemesRoute
   NbpRatesRoute: typeof NbpRatesRoute
@@ -1572,6 +1585,13 @@ declare module '@tanstack/react-router' {
       path: '/mail'
       fullPath: '/mail'
       preLoaderRoute: typeof MailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/memory-edges': {
+      id: '/memory-edges'
+      path: '/memory-edges'
+      fullPath: '/memory-edges'
+      preLoaderRoute: typeof MemoryEdgesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/money-cost': {
@@ -1998,6 +2018,7 @@ const rootRouteChildren: RootRouteChildren = {
   LocalChargesRoute: LocalChargesRoute,
   LocationsRoute: LocationsRoute,
   MailRoute: MailRoute,
+  MemoryEdgesRoute: MemoryEdgesRoute,
   MoneyCostRoute: MoneyCostRoute,
   MonitoringSchemesRoute: MonitoringSchemesRoute,
   NbpRatesRoute: NbpRatesRoute,

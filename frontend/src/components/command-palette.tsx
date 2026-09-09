@@ -159,6 +159,11 @@ const NAV_ACTIONS = [
     to: "/war-room-marks",
   },
   {
+    id: "nav-memory-edges",
+    label: "Idź do krawędzi pamięci",
+    to: "/memory-edges",
+  },
+  {
     id: "nav-tender-award-reviews",
     label: "Idź do czterech oczu nagrody",
     to: "/tender-award-reviews",

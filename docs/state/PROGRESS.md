@@ -482,3 +482,4 @@
 | 2026-09-09 | Plan 200.0 | W2 | war_room_mark HITL rodzaj incydentu, nie N8, nie drugi czat. Delta zaakceptowana (`/noc`). Nastepny: kod 200.0. |
 | 2026-09-09 | 200.0 | W2 | war_room_mark HITL rodzaj incydentu. Nie N8. Nie drugi czat. Nastepny: W3 memory graph Plan. |
 | 2026-09-09 | Plan 201.0 | W3 | memory_edge HITL rodzaj krawędzi, nie RAG. Delta zaakceptowana (`/noc`). Nastepny: kod 201.0. |
+| 2026-09-09 | 201.0 | W3 | memory_edge HITL rodzaj krawędzi. Nie RAG. Nie graf na entity_event. Nastepny: W4 Executive AI Plan. |

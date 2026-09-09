@@ -2769,6 +2769,80 @@
         }
       }
     },
+    "/api/v1/memory-edges": {
+      "get": {
+        "tags": [
+          "memory-edges"
+        ],
+        "summary": "List Memory Edges",
+        "operationId": "list_memory_edges_api_v1_memory_edges_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/MemoryEdgeResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Memory Edges Api V1 Memory Edges Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "memory-edges"
+        ],
+        "summary": "Create Memory Edge",
+        "operationId": "create_memory_edge_api_v1_memory_edges_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MemoryEdgeCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MemoryEdgeResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/outbox-events": {
       "get": {
         "tags": [
@@ -16398,6 +16472,55 @@
           "source_ref"
         ],
         "title": "MailDraftResponse"
+      },
+      "MemoryEdgeCreate": {
+        "properties": {
+          "edge_kind": {
+            "type": "string",
+            "title": "Edge Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "edge_kind",
+          "source_ref"
+        ],
+        "title": "MemoryEdgeCreate"
+      },
+      "MemoryEdgeResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "edge_kind": {
+            "type": "string",
+            "title": "Edge Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "edge_kind",
+          "source_ref"
+        ],
+        "title": "MemoryEdgeResponse"
       },
       "MoneyCostCreate": {
         "properties": {

@@ -656,3 +656,7 @@ class InvalidTwinMark(DomainError):
 
 class InvalidWarRoomMark(DomainError):
     """Sala W2: HITL rodzaj incydentu — nie koalescencja i nie drugi czat."""
+
+
+class InvalidMemoryEdge(DomainError):
+    """Pamięć W3: HITL rodzaj krawędzi — nie wyszukiwanie i nie graf zdarzeń."""
