@@ -475,3 +475,4 @@
 | 2026-09-09 | 196.0 | V3 | free_time_clock HITL rodzaj + dni wolne. Nie countdown. Nie charge. Nastepny: V5 GPS HITL Plan. |
 | 2026-09-09 | Plan 197.0 | V5 | telematics_connector HITL reżim + dostawca, nie live GPS. Delta zaakceptowana (`/noc`). Nastepny: kod 197.0. |
 | 2026-09-09 | 197.0 | V5 | telematics_connector HITL reżim + dostawca. Nie live GPS. Nie sekrety. Nastepny: V6 wieża Plan. |
+| 2026-09-09 | Plan 198.0 | V6 | tower_impact HITL etap łańcucha + status umowy, nie EBITDA. Delta zaakceptowana (`/noc`). Nastepny: kod 198.0. |
