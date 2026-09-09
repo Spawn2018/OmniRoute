@@ -493,3 +493,4 @@
 | 2026-09-09 | 205.0 | P1b | rate_card matching GET równość SQL. Nie parser WHEN/IF. Nastepny: leftover P2c Plan. |
 | 2026-09-09 | Plan 206.0 | P2c | charge_template exclusion daterange jak 4.1, nie Python. Delta zaakceptowana (`/noc`). Nastepny: kod 206.0. |
 | 2026-09-09 | 206.0 | P2c | charge_template exclusion daterange. Nie overlap w Pythonie. Nastepny: leftover P3b–d Plan. |
+| 2026-09-09 | Plan 207.0 | P4b | local_charge port_unlocode HITL, nie FK geography. Delta zaakceptowana (`/noc`). Nastepny: kod 207.0. |
