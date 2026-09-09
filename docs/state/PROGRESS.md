@@ -537,3 +537,4 @@
 | 2026-09-09 | 227.0 | T3 | ref_4 HITL na container. Nie waga. Nie PIN. Nastepny: leftover T3 ref_5 Plan. |
 | 2026-09-09 | Plan 228.0 | T3 | ref_5 HITL na container, nie waga i nie PIN. Delta zaakceptowana (`/noc`). Nastepny: kod 228.0. |
 | 2026-09-09 | 228.0 | T3 | ref_5 HITL na container. Nie waga. Nie PIN. Nastepny: leftover T3 reefer Plan. |
+| 2026-09-09 | Plan 229.0 | T3 | reefer HITL na container, nie temperatura i nie PIN. Delta zaakceptowana (`/noc`). Nastepny: kod 229.0. |
