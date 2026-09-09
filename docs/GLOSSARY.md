@@ -185,6 +185,7 @@
 | członek konsorcjum | tender_consortium_member | G2.8 fotel na `tender` + `party`; nie extract RFP; nie TED |
 | przyjęcie RFP | tender_rfp_intake | G2.9 HITL na `tender`; nie auto-award; nie zapis z LLM |
 | prospekt przetargu | tender_prospect | G2.10 HITL outreach na `tender` + `party`; nie scrape; nie bid/no-bid |
+| postawa udziału | tender_bid_stance | G2.11 HITL bid/no-bid na `tender`; nie win/loss; nie auto-award |
 | oferta przetargowa kupna | tender_quote | P6 ważność + limit orderów; nie auto-award; nie obiekt `tender` |
 | kółko | lane_circle | G2.20–G2.21; nakładanie dat |
 | KREPTD | kreptd | G2.23; GITD/ITD; oficjalne API |
