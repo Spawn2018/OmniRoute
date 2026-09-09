@@ -449,3 +449,4 @@
 | 2026-09-09 | 183.0 | G2.13 | tender_ted_notice HITL numer ogłoszenia TED + source_ref na tender. Nie scrape. Nie live HTTP. Nastepny: G2.14 Plan. |
 | 2026-09-09 | Plan 184.0 | G2.14 | tender_carbon_mark HITL declared/exempt, nie kalkulator kg. Delta zaakceptowana (`/noc`). Nie auto-award. Nastepny: kod 184.0. |
 | 2026-09-09 | 184.0 | G2.14 | tender_carbon_mark HITL declared/exempt + source_ref na tender. Nie kalkulator kg. Nie CBAM. Nastepny: leftover G2.15–G2.18 Plan. |
+| 2026-09-09 | Plan 185.0 | G2.19 | lane_pattern HITL para UN/LOCODE, nie circle_sim. Delta zaakceptowana (`/noc`). Nie kalkulator kg. Nastepny: kod 185.0. |

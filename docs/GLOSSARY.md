@@ -189,6 +189,7 @@
 | przegląd nagrody | tender_award_review | G2.12 HITL cztery oczy na `tender`; nie auto-award; nie szyna A/Z/O |
 | ogłoszenie TED | tender_ted_notice | G2.13 HITL numer TED na `tender`; nie scrape; nie live HTTP |
 | znacznik śladu | tender_carbon_mark | G2.14 HITL declared/exempt na `tender`; nie kg; nie kalkulator |
+| wzorzec korytarza | lane_pattern | G2.19 HITL para UN/LOCODE; nie km; nie circle_sim; nie `tender_lane` |
 | oferta przetargowa kupna | tender_quote | P6 ważność + limit orderów; nie auto-award; nie obiekt `tender` |
 | kółko | lane_circle | G2.20–G2.21; nakładanie dat |
 | KREPTD | kreptd | G2.23; GITD/ITD; oficjalne API |
