@@ -504,3 +504,4 @@
 | 2026-09-09 | Plan 211.0 | T7 | fx_rate_basis HITL w organization_setting, nie mnozenie. Delta zaakceptowana (`/noc`). Nie charge. Nastepny: kod 211.0. |
 | 2026-09-09 | 211.0 | T7 | fx_rate_basis HITL w organization_setting. Nie mnozenie. Nie charge. Nastepny: leftover T7b parked. |
 | 2026-09-09 | Plan 212.0 | T2c | driver2_id HITL na trip, nie km i nie fleet. Delta zaakceptowana (`/noc`). Nastepny: kod 212.0. |
+| 2026-09-09 | 212.0 | T2c | driver2_id HITL na trip. Nie km. Nie fleet. Nastepny: leftover T1 stop_group Plan. |

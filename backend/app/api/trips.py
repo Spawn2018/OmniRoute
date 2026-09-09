@@ -24,6 +24,7 @@ class TripCreate(BaseModel):
     vehicle_id: UUID | None = None
     trailer_id: UUID | None = None
     driver_id: UUID | None = None
+    driver2_id: UUID | None = None
     source_ref: str
     expected_buy_amount: str | None = None
     expected_buy_currency: str | None = None
@@ -39,6 +40,7 @@ class TripResponse(BaseModel):
     vehicle_id: UUID | None
     trailer_id: UUID | None
     driver_id: UUID | None
+    driver2_id: UUID | None
     source_ref: str
     expected_buy_amount: str | None
     expected_buy_currency: str | None
@@ -56,6 +58,7 @@ def _as_response(row: Trip) -> TripResponse:
         vehicle_id=row.vehicle_id,
         trailer_id=row.trailer_id,
         driver_id=row.driver_id,
+        driver2_id=row.driver2_id,
         source_ref=row.source_ref,
         expected_buy_amount=amount,
         expected_buy_currency=currency,
@@ -96,6 +99,7 @@ async def create_trip(
     vehicle_id = await _assigned(session, body.vehicle_id, "vehicle")
     trailer_id = await _assigned(session, body.trailer_id, "trailer")
     driver_id = await _assigned(session, body.driver_id, "driver")
+    driver2_id = await _assigned(session, body.driver2_id, "driver")
     row = await TripService(session).record_trip(
         organization_id=identity.organization_id,
         user_id=identity.user_id,
@@ -104,6 +108,7 @@ async def create_trip(
         vehicle_id=vehicle_id,
         trailer_id=trailer_id,
         driver_id=driver_id,
+        driver2_id=driver2_id,
         source_ref=body.source_ref,
         expected_buy_amount=body.expected_buy_amount,
         expected_buy_currency=body.expected_buy_currency,

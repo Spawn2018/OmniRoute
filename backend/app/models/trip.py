@@ -53,6 +53,16 @@ class Trip(Base, TimestampMixin):
             name="fk_trip_driver",
             ondelete="RESTRICT",
         ),
+        ForeignKeyConstraint(
+            ["organization_id", "driver2_id"],
+            ["resource.organization_id", "resource.id"],
+            name="fk_trip_driver2",
+            ondelete="RESTRICT",
+        ),
+        CheckConstraint(
+            "driver2_id IS NULL OR driver_id IS NULL OR driver2_id <> driver_id",
+            name="ck_trip_driver2_distinct",
+        ),
         Index("ix_trip_org_status", "organization_id", "status"),
     )
 
@@ -68,6 +78,7 @@ class Trip(Base, TimestampMixin):
     vehicle_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
     trailer_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
     driver_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
+    driver2_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
     source_ref: Mapped[str] = mapped_column(Text, nullable=False)
     expected_buy_amount: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
     expected_buy_currency: Mapped[str | None] = mapped_column(CHAR(length=3), nullable=True)

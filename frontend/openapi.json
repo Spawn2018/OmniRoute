@@ -22352,6 +22352,18 @@
             ],
             "title": "Driver Id"
           },
+          "driver2_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Driver2 Id"
+          },
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
@@ -22444,6 +22456,18 @@
             ],
             "title": "Driver Id"
           },
+          "driver2_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Driver2 Id"
+          },
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
@@ -22492,6 +22516,7 @@
           "vehicle_id",
           "trailer_id",
           "driver_id",
+          "driver2_id",
           "source_ref",
           "expected_buy_amount",
           "expected_buy_currency",

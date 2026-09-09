@@ -50,6 +50,13 @@ def require_trip_slot(slot: object, resource_kind: object) -> None:
         raise InvalidTrip("rodzaj zasobu nie pasuje")
 
 
+def require_distinct_drivers(driver_id: UUID | None, driver2_id: UUID | None) -> None:
+    if driver2_id is None:
+        return
+    if driver_id == driver2_id:
+        raise InvalidTrip("ten sam kierowca na obu fotelach")
+
+
 def require_trip_source_ref(raw: object) -> str:
     if type(raw) is not str:
         raise InvalidTrip("source_ref musi być tekstem")

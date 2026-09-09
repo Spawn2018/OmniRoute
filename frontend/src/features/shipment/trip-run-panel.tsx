@@ -26,6 +26,7 @@ export function TripRunPanel(args: { signedIn: boolean }) {
   const [vehicle, setVehicle] = useState("")
   const [trailer, setTrailer] = useState("")
   const [driver, setDriver] = useState("")
+  const [driver2, setDriver2] = useState("")
   const [buyAmount, setBuyAmount] = useState("")
   const [buyCurrency, setBuyCurrency] = useState("EUR")
   const listed = useQuery({
@@ -43,6 +44,7 @@ export function TripRunPanel(args: { signedIn: boolean }) {
           vehicle,
           trailer,
           driver,
+          driver2,
           buyAmount,
           buyCurrency,
         }),
@@ -55,7 +57,8 @@ export function TripRunPanel(args: { signedIn: boolean }) {
     <section className="grid gap-2 rounded-md border border-border p-3" data-trip="run">
       <h2 className="text-sm font-medium">Przejazd</h2>
       <p className="text-xs text-muted-foreground">
-        Numer i status. Snapshot kupna przy w drodze. Flota opcjonalna. Nie km. Nie wariancja.
+        Numer i status. Snapshot kupna przy w drodze. Flota opcjonalna, w tym drugi kierowca.
+        Nie km. Nie wariancja.
       </p>
       <label className="flex flex-col gap-1 text-xs">
         Numer przejazdu
@@ -128,6 +131,15 @@ export function TripRunPanel(args: { signedIn: boolean }) {
           placeholder="driver_id"
           value={driver}
           onChange={(event) => setDriver(event.target.value)}
+        />
+      </label>
+      <label className="flex flex-col gap-1 text-xs">
+        Drugi kierowca (opcjonalnie)
+        <Input
+          aria-label="Identyfikator drugiego kierowcy przejazdu"
+          placeholder="driver2_id"
+          value={driver2}
+          onChange={(event) => setDriver2(event.target.value)}
         />
       </label>
       <Button

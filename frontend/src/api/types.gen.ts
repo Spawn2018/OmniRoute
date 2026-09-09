@@ -6743,6 +6743,10 @@ export type TripCreate = {
      */
     driver_id?: string | null;
     /**
+     * Driver2 Id
+     */
+    driver2_id?: string | null;
+    /**
      * Source Ref
      */
     source_ref: string;
@@ -6788,6 +6792,10 @@ export type TripResponse = {
      * Driver Id
      */
     driver_id: string | null;
+    /**
+     * Driver2 Id
+     */
+    driver2_id: string | null;
     /**
      * Source Ref
      */

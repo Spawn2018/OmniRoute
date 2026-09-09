@@ -1,9 +1,12 @@
+from uuid import uuid4
+
 import pytest
 from hypothesis import given
 from hypothesis import strategies as st
 
 from app.domain.errors import InvalidTrip
 from app.domain.trip import (
+    require_distinct_drivers,
     require_expected_buy,
     require_trip_no,
     require_trip_slot,
@@ -50,3 +53,17 @@ def test_trip_freezes_expected_buy_only_in_transit() -> None:
 def test_trip_status_is_not_loose_workflow_word(raw: str) -> None:
     with pytest.raises(InvalidTrip, match="status"):
         require_trip_status(raw)
+
+
+def test_distinct_drivers_allows_second_seat_or_blank() -> None:
+    first = uuid4()
+    second = uuid4()
+    require_distinct_drivers(first, second)
+    require_distinct_drivers(first, None)
+    require_distinct_drivers(None, second)
+
+
+def test_distinct_drivers_rejects_same_uuid() -> None:
+    token = uuid4()
+    with pytest.raises(InvalidTrip, match="kierowca"):
+        require_distinct_drivers(token, token)

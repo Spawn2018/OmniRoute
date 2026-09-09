@@ -3,6 +3,7 @@ from pathlib import Path
 _ROOT = Path(__file__).resolve().parents[3]
 _MIGRATION = _ROOT / "backend" / "alembic" / "versions" / "092_trip.py"
 _FREEZE = _ROOT / "backend" / "alembic" / "versions" / "107_trip_expected_buy.py"
+_DRIVER2 = _ROOT / "backend" / "alembic" / "versions" / "151_trip_driver2.py"
 _SERVICES = _ROOT / "backend" / "app" / "services"
 
 
@@ -59,3 +60,17 @@ def test_generated_api_types_include_trip() -> None:
     source = (_ROOT / "frontend" / "src" / "api" / "types.gen.ts").read_text(encoding="utf-8")
     assert "TripResponse" in source
     assert "TripCreate" in source
+    assert "driver2_id" in source
+
+
+def test_migration_151_adds_driver2_without_km() -> None:
+    source = _DRIVER2.read_text(encoding="utf-8")
+    assert 'revision: str = "151_trip_driver2"' in source
+    assert 'down_revision: str | None = "150_shipment_parent"' in source
+    assert "driver2_id" in source
+    assert "fk_trip_driver2" in source
+    assert "ck_trip_driver2_distinct" in source
+    assert "planned_distance" not in source
+    assert "app.services.charges" not in source
+    assert "def downgrade" in source
+    assert "driver2_id" in source.split("def downgrade")[1]

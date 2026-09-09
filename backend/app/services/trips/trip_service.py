@@ -5,6 +5,7 @@ from uuid import UUID, uuid4
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.trip import (
+    require_distinct_drivers,
     require_expected_buy,
     require_trip_no,
     require_trip_resource_id,
@@ -21,6 +22,7 @@ class _RunDraft(NamedTuple):
     vehicle_id: UUID | None
     trailer_id: UUID | None
     driver_id: UUID | None
+    driver2_id: UUID | None
     origin: str
     buy_amount: Decimal | None
     buy_currency: str | None
@@ -32,6 +34,7 @@ def _run_draft(
     vehicle_id: object,
     trailer_id: object,
     driver_id: object,
+    driver2_id: object,
     source_ref: object,
     expected_buy_amount: object,
     expected_buy_currency: object,
@@ -42,12 +45,16 @@ def _run_draft(
         expected_buy_amount,
         expected_buy_currency,
     )
+    first = require_trip_resource_id(driver_id)
+    second = require_trip_resource_id(driver2_id)
+    require_distinct_drivers(first, second)
     return _RunDraft(
         require_trip_no(trip_no),
         state,
         require_trip_resource_id(vehicle_id),
         require_trip_resource_id(trailer_id),
-        require_trip_resource_id(driver_id),
+        first,
+        second,
         require_trip_source_ref(source_ref),
         buy_amount,
         buy_currency,
@@ -60,6 +67,7 @@ def _run_unchanged(current: Trip, draft: _RunDraft) -> bool:
         and current.vehicle_id == draft.vehicle_id
         and current.trailer_id == draft.trailer_id
         and current.driver_id == draft.driver_id
+        and current.driver2_id == draft.driver2_id
         and current.source_ref == draft.origin
         and current.expected_buy_amount == draft.buy_amount
         and (
@@ -96,6 +104,7 @@ class TripService:
                 vehicle_id=draft.vehicle_id,
                 trailer_id=draft.trailer_id,
                 driver_id=draft.driver_id,
+                driver2_id=draft.driver2_id,
                 source_ref=draft.origin,
                 expected_buy_amount=draft.buy_amount,
                 expected_buy_currency=draft.buy_currency,
@@ -119,6 +128,7 @@ class TripService:
         source_ref: object,
         expected_buy_amount: object = None,
         expected_buy_currency: object = None,
+        driver2_id: object = None,
     ) -> Trip:
         draft = _run_draft(
             trip_no,
@@ -126,6 +136,7 @@ class TripService:
             vehicle_id,
             trailer_id,
             driver_id,
+            driver2_id,
             source_ref,
             expected_buy_amount,
             expected_buy_currency,

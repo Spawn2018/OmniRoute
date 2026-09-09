@@ -7,6 +7,7 @@ from fastapi.testclient import TestClient
 from app.api.deps import require_tenant_session, set_authz_checker
 from app.domain.errors import ResourceNotFound
 from app.domain.trip import (
+    require_distinct_drivers,
     require_expected_buy,
     require_trip_no,
     require_trip_resource_id,
@@ -69,12 +70,15 @@ class StubTripService:
         source_ref: object,
         expected_buy_amount: object = None,
         expected_buy_currency: object = None,
+        driver2_id: object = None,
     ) -> Trip:
         number = require_trip_no(trip_no)
         state = require_trip_status(status)
         vehicle = require_trip_resource_id(vehicle_id)
         trailer = require_trip_resource_id(trailer_id)
         driver = require_trip_resource_id(driver_id)
+        driver2 = require_trip_resource_id(driver2_id)
+        require_distinct_drivers(driver, driver2)
         origin = require_trip_source_ref(source_ref)
         buy_amount, buy_currency = require_expected_buy(
             state,
@@ -91,6 +95,7 @@ class StubTripService:
             and current.vehicle_id == vehicle
             and current.trailer_id == trailer
             and current.driver_id == driver
+            and current.driver2_id == driver2
             and current.source_ref == origin
             and current.expected_buy_amount == buy_amount
             and current.expected_buy_currency == buy_currency
@@ -104,6 +109,7 @@ class StubTripService:
             vehicle_id=vehicle,
             trailer_id=trailer,
             driver_id=driver,
+            driver2_id=driver2,
             source_ref=origin,
             expected_buy_amount=buy_amount,
             expected_buy_currency=buy_currency,
@@ -146,6 +152,7 @@ def test_http_create_list_supersede_and_reject_queued(run_client: object) -> Non
     first = client.post("/api/v1/trips", headers=headers, json=payload)
     assert first.status_code == 201
     assert first.json()["organization_id"] == str(org_id)
+    assert first.json()["driver2_id"] is None
     assert "amount" not in first.json()
     second = client.post(
         "/api/v1/trips",
@@ -231,6 +238,105 @@ def test_http_rejects_driver_on_vehicle_slot(run_client: object) -> None:
             "trip_no": "TR-2",
             "status": "draft",
             "vehicle_id": str(driver.id),
+            "source_ref": "tenant:manual",
+        },
+    )
+    assert reply.status_code == 400
+    assert "rodzaj" in reply.json()["detail"]
+
+
+def test_http_create_trip_with_second_driver(run_client: object) -> None:
+    client, _trips, fleet = run_client
+    org_id = uuid4()
+    headers = bearer_auth_headers(organization_id=org_id)
+    first = Resource(
+        id=uuid4(),
+        organization_id=org_id,
+        resource_kind="driver",
+        display_name="Kowalski",
+        registration_no=None,
+        source_ref="fixture://resource/d1",
+        created_by=uuid4(),
+    )
+    second = Resource(
+        id=uuid4(),
+        organization_id=org_id,
+        resource_kind="driver",
+        display_name="Nowak",
+        registration_no=None,
+        source_ref="fixture://resource/d2",
+        created_by=uuid4(),
+    )
+    fleet.rows.extend([first, second])
+    reply = client.post(
+        "/api/v1/trips",
+        headers=headers,
+        json={
+            "trip_no": "TR-4",
+            "status": "draft",
+            "driver_id": str(first.id),
+            "driver2_id": str(second.id),
+            "source_ref": "tenant:manual",
+        },
+    )
+    assert reply.status_code == 201
+    body = reply.json()
+    assert body["driver_id"] == str(first.id)
+    assert body["driver2_id"] == str(second.id)
+    assert "km" not in body
+    assert "margin" not in body
+
+
+def test_http_rejects_same_uuid_on_both_driver_seats(run_client: object) -> None:
+    client, _trips, fleet = run_client
+    org_id = uuid4()
+    headers = bearer_auth_headers(organization_id=org_id)
+    driver = Resource(
+        id=uuid4(),
+        organization_id=org_id,
+        resource_kind="driver",
+        display_name="Kowalski",
+        registration_no=None,
+        source_ref="fixture://resource/d",
+        created_by=uuid4(),
+    )
+    fleet.rows.append(driver)
+    reply = client.post(
+        "/api/v1/trips",
+        headers=headers,
+        json={
+            "trip_no": "TR-5",
+            "status": "draft",
+            "driver_id": str(driver.id),
+            "driver2_id": str(driver.id),
+            "source_ref": "tenant:manual",
+        },
+    )
+    assert reply.status_code == 400
+    assert "kierowca" in reply.json()["detail"]
+
+
+def test_http_rejects_vehicle_on_driver2_slot(run_client: object) -> None:
+    client, _trips, fleet = run_client
+    org_id = uuid4()
+    headers = bearer_auth_headers(organization_id=org_id)
+    truck = Resource(
+        id=uuid4(),
+        organization_id=org_id,
+        resource_kind="vehicle",
+        display_name="MAN",
+        registration_no=None,
+        source_ref="fixture://resource/v",
+        created_by=uuid4(),
+    )
+    fleet.rows.append(truck)
+    reply = client.post(
+        "/api/v1/trips",
+        headers=headers,
+        json={
+            "trip_no": "TR-6",
+            "status": "draft",
+            "driver2_id": str(truck.id),
             "source_ref": "tenant:manual",
         },
     )
