@@ -470,3 +470,4 @@
 | 2026-09-09 | Plan 194.0 | V2 | stop HITL eta_physical/eta_legal, nie GPS i nie pogoda. Delta zaakceptowana (`/noc`). Nastepny: kod 194.0. |
 | 2026-09-09 | 194.0 | V2 | stop HITL dwa ETA (fizyczne/prawne). Nie GPS. Nie pogoda. Nastepny: leftover V2 pogoda Plan. |
 | 2026-09-09 | Plan 195.0 | V2 | weather_observation HITL warunek + UN/LOCODE, nie Open-Meteo. Delta zaakceptowana (`/noc`). Nastepny: kod 195.0. |
+| 2026-09-09 | 195.0 | V2 | weather_observation HITL warunek + stacja + czas. Nie Open-Meteo. Nie ETA. Nastepny: V3 D&D Plan. |

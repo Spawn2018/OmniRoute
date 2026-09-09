@@ -194,6 +194,11 @@ export const OPS_JOBS = [
     job: "HITL przedział + CRPS bez silnika",
   },
   {
+    route: BUSINESS_LISTS.weatherObservation.route,
+    label: "Pogoda",
+    job: "HITL warunek + UN/LOCODE bez Open-Meteo",
+  },
+  {
     route: BUSINESS_LISTS.tenderAwardReview.route,
     label: "Cztery oczy nagrody",
     job: "HITL przegląd nagrody bez auto-award",
@@ -634,6 +639,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "192.0": "/dangerous-goods",
   "193.0": "/prediction-ledgers",
   "194.0": "/shipments",
+  "195.0": "/weather-observations",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

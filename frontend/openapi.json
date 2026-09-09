@@ -7540,6 +7540,80 @@
         ]
       }
     },
+    "/api/v1/weather-observations": {
+      "get": {
+        "tags": [
+          "weather-observations"
+        ],
+        "summary": "List Weather Observations",
+        "operationId": "list_weather_observations_api_v1_weather_observations_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherObservationResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Weather Observations Api V1 Weather Observations Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "weather-observations"
+        ],
+        "summary": "Create Weather Observation",
+        "operationId": "create_weather_observation_api_v1_weather_observations_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WeatherObservationCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WeatherObservationResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/cash-discounts": {
       "get": {
         "tags": [
@@ -21315,6 +21389,86 @@
           "type"
         ],
         "title": "ValidationError"
+      },
+      "WeatherObservationCreate": {
+        "properties": {
+          "condition_code": {
+            "type": "string",
+            "title": "Condition Code"
+          },
+          "station_unlocode": {
+            "type": "string",
+            "title": "Station Unlocode"
+          },
+          "observed_at": {
+            "type": "string",
+            "title": "Observed At"
+          },
+          "provider_code": {
+            "type": "string",
+            "title": "Provider Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "condition_code",
+          "station_unlocode",
+          "observed_at",
+          "provider_code",
+          "source_ref"
+        ],
+        "title": "WeatherObservationCreate"
+      },
+      "WeatherObservationResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "condition_code": {
+            "type": "string",
+            "title": "Condition Code"
+          },
+          "station_unlocode": {
+            "type": "string",
+            "title": "Station Unlocode"
+          },
+          "observed_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Observed At"
+          },
+          "provider_code": {
+            "type": "string",
+            "title": "Provider Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "condition_code",
+          "station_unlocode",
+          "observed_at",
+          "provider_code",
+          "source_ref"
+        ],
+        "title": "WeatherObservationResponse"
       },
       "WorkingDayResponse": {
         "properties": {

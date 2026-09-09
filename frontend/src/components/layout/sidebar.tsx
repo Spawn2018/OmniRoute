@@ -74,6 +74,7 @@ const NAV = [
   { to: "/cash-discounts", label: "Skonto" },
   { to: "/carbon-methods", label: "Metodyka CO₂" },
   { to: "/prediction-ledgers", label: "Ledger predykcji" },
+  { to: "/weather-observations", label: "Pogoda" },
   { to: "/tender-award-reviews", label: "Cztery oczy nagrody" },
   { to: "/tender-ted-notices", label: "Ogłoszenie TED" },
   { to: "/tender-lanes", label: "Korytarze przetargu" },

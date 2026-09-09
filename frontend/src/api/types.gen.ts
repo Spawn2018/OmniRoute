@@ -6535,6 +6535,66 @@ export type ValidationError = {
 };
 
 /**
+ * WeatherObservationCreate
+ */
+export type WeatherObservationCreate = {
+    /**
+     * Condition Code
+     */
+    condition_code: string;
+    /**
+     * Station Unlocode
+     */
+    station_unlocode: string;
+    /**
+     * Observed At
+     */
+    observed_at: string;
+    /**
+     * Provider Code
+     */
+    provider_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * WeatherObservationResponse
+ */
+export type WeatherObservationResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Condition Code
+     */
+    condition_code: string;
+    /**
+     * Station Unlocode
+     */
+    station_unlocode: string;
+    /**
+     * Observed At
+     */
+    observed_at: string;
+    /**
+     * Provider Code
+     */
+    provider_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * WorkingDayResponse
  */
 export type WorkingDayResponse = {
@@ -10948,6 +11008,49 @@ export type CreatePredictionLedgerApiV1PredictionLedgersPostResponses = {
 };
 
 export type CreatePredictionLedgerApiV1PredictionLedgersPostResponse = CreatePredictionLedgerApiV1PredictionLedgersPostResponses[keyof CreatePredictionLedgerApiV1PredictionLedgersPostResponses];
+
+export type ListWeatherObservationsApiV1WeatherObservationsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/weather-observations';
+};
+
+export type ListWeatherObservationsApiV1WeatherObservationsGetResponses = {
+    /**
+     * Response List Weather Observations Api V1 Weather Observations Get
+     *
+     * Successful Response
+     */
+    200: Array<WeatherObservationResponse>;
+};
+
+export type ListWeatherObservationsApiV1WeatherObservationsGetResponse = ListWeatherObservationsApiV1WeatherObservationsGetResponses[keyof ListWeatherObservationsApiV1WeatherObservationsGetResponses];
+
+export type CreateWeatherObservationApiV1WeatherObservationsPostData = {
+    body: WeatherObservationCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/weather-observations';
+};
+
+export type CreateWeatherObservationApiV1WeatherObservationsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateWeatherObservationApiV1WeatherObservationsPostError = CreateWeatherObservationApiV1WeatherObservationsPostErrors[keyof CreateWeatherObservationApiV1WeatherObservationsPostErrors];
+
+export type CreateWeatherObservationApiV1WeatherObservationsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: WeatherObservationResponse;
+};
+
+export type CreateWeatherObservationApiV1WeatherObservationsPostResponse = CreateWeatherObservationApiV1WeatherObservationsPostResponses[keyof CreateWeatherObservationApiV1WeatherObservationsPostResponses];
 
 export type ListCashDiscountsApiV1CashDiscountsGetData = {
     body?: never;

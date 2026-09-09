@@ -632,3 +632,7 @@ class InvalidCarbonMethod(DomainError):
 
 class InvalidPredictionLedger(DomainError):
     """Ledger B0b/V1: HITL przedział + CRPS/MAE jako dane — nie silnik i nie scoring osoby."""
+
+
+class InvalidWeatherObservation(DomainError):
+    """Pogoda V2: HITL warunek + UN/LOCODE + czas — nie Open-Meteo i nie ETA."""

@@ -98,6 +98,7 @@ import { Route as TendersRouteImport } from './routes/tenders'
 import { Route as TerminalsRouteImport } from './routes/terminals'
 import { Route as TrackingRouteImport } from './routes/tracking'
 import { Route as WatchtowerRouteImport } from './routes/watchtower'
+import { Route as WeatherObservationsRouteImport } from './routes/weather-observations'
 import { Route as TenancyUsersRouteImport } from './routes/tenancy.users'
 
 const IndexRoute = IndexRouteImport.update({
@@ -545,6 +546,11 @@ const WatchtowerRoute = WatchtowerRouteImport.update({
   path: '/watchtower',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WeatherObservationsRoute = WeatherObservationsRouteImport.update({
+  id: '/weather-observations',
+  path: '/weather-observations',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TenancyUsersRoute = TenancyUsersRouteImport.update({
   id: '/tenancy/users',
   path: '/tenancy/users',
@@ -641,6 +647,7 @@ export interface FileRoutesByFullPath {
   '/terminals': typeof TerminalsRoute
   '/tracking': typeof TrackingRoute
   '/watchtower': typeof WatchtowerRoute
+  '/weather-observations': typeof WeatherObservationsRoute
   '/tenancy/users': typeof TenancyUsersRoute
 }
 export interface FileRoutesByTo {
@@ -733,6 +740,7 @@ export interface FileRoutesByTo {
   '/terminals': typeof TerminalsRoute
   '/tracking': typeof TrackingRoute
   '/watchtower': typeof WatchtowerRoute
+  '/weather-observations': typeof WeatherObservationsRoute
   '/tenancy/users': typeof TenancyUsersRoute
 }
 export interface FileRoutesById {
@@ -826,6 +834,7 @@ export interface FileRoutesById {
   '/terminals': typeof TerminalsRoute
   '/tracking': typeof TrackingRoute
   '/watchtower': typeof WatchtowerRoute
+  '/weather-observations': typeof WeatherObservationsRoute
   '/tenancy/users': typeof TenancyUsersRoute
 }
 export interface FileRouteTypes {
@@ -920,6 +929,7 @@ export interface FileRouteTypes {
     | '/terminals'
     | '/tracking'
     | '/watchtower'
+    | '/weather-observations'
     | '/tenancy/users'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -1012,6 +1022,7 @@ export interface FileRouteTypes {
     | '/terminals'
     | '/tracking'
     | '/watchtower'
+    | '/weather-observations'
     | '/tenancy/users'
   id:
     | '__root__'
@@ -1104,6 +1115,7 @@ export interface FileRouteTypes {
     | '/terminals'
     | '/tracking'
     | '/watchtower'
+    | '/weather-observations'
     | '/tenancy/users'
   fileRoutesById: FileRoutesById
 }
@@ -1197,6 +1209,7 @@ export interface RootRouteChildren {
   TerminalsRoute: typeof TerminalsRoute
   TrackingRoute: typeof TrackingRoute
   WatchtowerRoute: typeof WatchtowerRoute
+  WeatherObservationsRoute: typeof WeatherObservationsRoute
   TenancyUsersRoute: typeof TenancyUsersRoute
 }
 
@@ -1825,6 +1838,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WatchtowerRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/weather-observations': {
+      id: '/weather-observations'
+      path: '/weather-observations'
+      fullPath: '/weather-observations'
+      preLoaderRoute: typeof WeatherObservationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tenancy/users': {
       id: '/tenancy/users'
       path: '/tenancy/users'
@@ -1925,6 +1945,7 @@ const rootRouteChildren: RootRouteChildren = {
   TerminalsRoute: TerminalsRoute,
   TrackingRoute: TrackingRoute,
   WatchtowerRoute: WatchtowerRoute,
+  WeatherObservationsRoute: WeatherObservationsRoute,
   TenancyUsersRoute: TenancyUsersRoute,
 }
 export const routeTree = rootRouteImport

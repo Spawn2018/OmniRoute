@@ -82,6 +82,7 @@ def _organization_ops_relations() -> dict[str, Userset]:
         "can_manage_cash_discounts": _member(),
         "can_manage_carbon_methods": _member(),
         "can_manage_prediction_ledgers": _member(),
+        "can_manage_weather_observations": _member(),
     }
 
 

@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny (zablokowany):** **195.0** V2 `weather_observation` HITL → leftover V2b myto→`charge` parked → leftover C3 live VIES/GUS → leftover C4 eCMR → leftover C9 Trans.eu → leftover C2 AIS/PUESC → leftover C6 BDO → leftover F2b Decimal/rezerwy → leftover F3 noty/period lock → leftover F4 CAMT → leftover G2.20–G2.22 circle_sim/km/P → leftover G2.15–G2.18 kg/CBAM → leftover F1 live FA(3) → leftover C1 filing XML → leftover C8 409/`relation_document_requirement` → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. D8 parked. D9 leftover D9b–f. P1 leftover P1b–d. P2 leftover P2c. P3 leftover P3b–d. P4 leftover P4b–c. P5 leftover P5b–c. P6 leftover P6c. G2 leftover G2.15–G2.18 + G2.20–G2.22 + G2.23 Citizen API. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
+**Następny (zablokowany):** **196.0** V3 D&D/rollover HITL → leftover V2b myto→`charge` parked → leftover C3 live VIES/GUS → leftover C4 eCMR → leftover C9 Trans.eu → leftover C2 AIS/PUESC → leftover C6 BDO → leftover F2b Decimal/rezerwy → leftover F3 noty/period lock → leftover F4 CAMT → leftover G2.20–G2.22 circle_sim/km/P → leftover G2.15–G2.18 kg/CBAM → leftover F1 live FA(3) → leftover C1 filing XML → leftover C8 409/`relation_document_requirement` → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. D8 parked. D9 leftover D9b–f. P1 leftover P1b–d. P2 leftover P2c. P3 leftover P3b–d. P4 leftover P4b–c. P5 leftover P5b–c. P6 leftover P6c. G2 leftover G2.15–G2.18 + G2.20–G2.22 + G2.23 Citizen API. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
 <!-- os-status:end -->
 
 ```mermaid
@@ -621,7 +621,7 @@ Karta: [karty-pol-g2-tender.md](analysis/karty-pol-g2-tender.md). P6 = oferty od
 | ID | Co | Status | Uwagi |
 |---|---|---|---|
 | V1 | Prediction Ledger + N7 przedział/kalibracja | zamknięty HITL CRPS/MAE ([193.0](deltas/archived/193.0-prediction-ledger.md)); leftover champion/challenger / drift | punkt bez CRPS = zakaz |
-| V2 / V2b | ETA **dwa czasy** `eta_physical`/`eta_legal` + pogoda; myto → `charge`+`source_ref` | ETA HITL zamknięte ([194.0](deltas/archived/194.0-stop-eta.md)); delta [195.0](deltas/open/195.0-weather-observation.md) HITL pogoda bez HTTP; leftover Open-Meteo / myto | brak taryfy = warning |
+| V2 / V2b | ETA **dwa czasy** `eta_physical`/`eta_legal` + pogoda; myto → `charge`+`source_ref` | ETA HITL zamknięte ([194.0](deltas/archived/194.0-stop-eta.md)); pogoda HITL zamknięta ([195.0](deltas/archived/195.0-weather-observation.md)); leftover Open-Meteo / geometria / myto | brak taryfy = warning |
 | V3 | D&D / rollover + zegar N3 + blank sailing EXP2.7 | po T3 | |
 | V4 | AIS wieży | leftover S32 | nie V5 |
 | V5 / V5b | hub GPS; `omni_telematic` vs `external_api` 3 dni **robocze** (U4) | po T2; umowy TO_VERIFY | zero własnego HW |
@@ -843,13 +843,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

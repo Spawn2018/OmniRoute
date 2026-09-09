@@ -129,6 +129,11 @@ const NAV_ACTIONS = [
     to: "/prediction-ledgers",
   },
   {
+    id: "nav-weather-observations",
+    label: "Idź do pogody",
+    to: "/weather-observations",
+  },
+  {
     id: "nav-tender-award-reviews",
     label: "Idź do czterech oczu nagrody",
     to: "/tender-award-reviews",

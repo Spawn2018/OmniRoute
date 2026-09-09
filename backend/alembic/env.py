@@ -100,6 +100,7 @@ from app.models.monitoring_scheme import MonitoringScheme  # noqa: F401
 from app.models.party_document import PartyDocument  # noqa: F401
 from app.models.carbon_method import CarbonMethod  # noqa: F401
 from app.models.prediction_ledger import PredictionLedger  # noqa: F401
+from app.models.weather_observation import WeatherObservation  # noqa: F401
 from app.models.cash_discount import CashDiscount  # noqa: F401
 from app.models.tender_ted_notice import TenderTedNotice  # noqa: F401
 from app.models.tender_prospect import TenderProspect  # noqa: F401

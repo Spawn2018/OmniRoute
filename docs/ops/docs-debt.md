@@ -13,7 +13,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **148.0 leftover:** dwa `mail_draft` przy DAP `contact_exchange`; live HTTP S21. Tu tylko status na wierszu. Nie send.
 - **147.0 leftover:** tabela `document_dispatch` (batch mail + send S18). Tu tylko katalog adresata. Nie auto-send.
 - **150.0 leftover:** `stop_group`; waga/plomba/awizacja (EXP1). ETA HITL DONE 194.0. Tu tylko punkt + location + strefa IANA + dwa ETA HITL. Nie mapa. `resource` = 151.0. `trip` = 152.0.
-- **194.0 leftover:** Open-Meteo / `weather_observation`; myto → `charge` (V2b); GPS/tacho / silnik ETA; `stop_group`. Tu tylko `eta_physical` + `eta_legal` HITL na `stop`. Nie GPS. Nie pogoda.
+- **194.0 leftover:** Open-Meteo live HTTP / geometria trip DONE HITL 195.0 (`weather_observation`). Zostaje feed Open-Meteo / lat/lng; myto → `charge` (V2b); GPS/tacho / silnik ETA; `stop_group`. Tu tylko `eta_physical` + `eta_legal` HITL na `stop`. Nie GPS.
+- **195.0 leftover:** Open-Meteo / IMGW / DWD live HTTP; `trip_id` / geometria / lat/lng / WMO; myto → `charge` (V2b). Tu tylko `weather_observation` HITL warunek + UN/LOCODE + czas + `source_ref`. Nie feed. Nie ETA.
 - **151.0 leftover:** `trip` DONE 152.0. Zostaje T2c: multi-manning / floating trailer; pojemności / Decimal km; `party_id`; `/fleet` / HW. Tu tylko katalog pojazd/kierowca/naczepa.
 - **153.0 leftover:** VGM/TARA Decimal; free_time; cutoffy CY/CFS/VGM/SI/AMS; `bl_kind`; plomby/PIN; reefer; party/terminal; TEU; `shipment_leg_id`. Tu tylko ISO 6346 + `iso_size_type` + opcjonalne zlecenie. Nie booking.
 - **193.0 leftover:** `plan_snapshot` / TT z actuals; champion/challenger / drift; GPS / AIS wieży. Tu tylko `prediction_ledger` HITL przedział + CRPS/MAE + `source_ref`. Nie silnik. Nie scoring osoby.
