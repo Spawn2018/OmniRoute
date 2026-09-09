@@ -11,6 +11,7 @@ from app.domain.container import (
     require_seal_no_1,
     require_seal_no_2,
     require_seal_no_3,
+    require_vessel_name,
 )
 from app.models.container import Container
 from app.repositories.containers.container_repository import ContainerRepository
@@ -24,6 +25,7 @@ class _BoxDraft(NamedTuple):
     seal: str | None
     seal2: str | None
     seal3: str | None
+    vessel: str | None
 
 
 def _box_draft(
@@ -34,6 +36,7 @@ def _box_draft(
     seal_no_1: object,
     seal_no_2: object,
     seal_no_3: object,
+    vessel_name: object,
 ) -> _BoxDraft:
     return _BoxDraft(
         require_container_no(container_no),
@@ -43,6 +46,7 @@ def _box_draft(
         require_seal_no_1(seal_no_1),
         require_seal_no_2(seal_no_2),
         require_seal_no_3(seal_no_3),
+        require_vessel_name(vessel_name),
     )
 
 
@@ -54,6 +58,7 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.seal_no_1 == draft.seal
         and current.seal_no_2 == draft.seal2
         and current.seal_no_3 == draft.seal3
+        and current.vessel_name == draft.vessel
     )
 
 
@@ -68,6 +73,7 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         seal_no_1=draft.seal,
         seal_no_2=draft.seal2,
         seal_no_3=draft.seal3,
+        vessel_name=draft.vessel,
         created_by=user_id,
     )
 
@@ -92,6 +98,7 @@ class ContainerService:
         seal_no_1: object = None,
         seal_no_2: object = None,
         seal_no_3: object = None,
+        vessel_name: object = None,
     ) -> Container:
         draft = _box_draft(
             container_no,
@@ -101,6 +108,7 @@ class ContainerService:
             seal_no_1,
             seal_no_2,
             seal_no_3,
+            vessel_name,
         )
         current = await self._rows.find_current(draft.number)
         if current is not None and _box_unchanged(current, draft):

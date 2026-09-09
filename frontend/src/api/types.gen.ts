@@ -1248,6 +1248,10 @@ export type ContainerCreate = {
      * Seal No 3
      */
     seal_no_3?: string | null;
+    /**
+     * Vessel Name
+     */
+    vessel_name?: string | null;
 };
 
 /**
@@ -1290,6 +1294,10 @@ export type ContainerResponse = {
      * Seal No 3
      */
     seal_no_3: string | null;
+    /**
+     * Vessel Name
+     */
+    vessel_name: string | null;
     /**
      * Superseded By
      */

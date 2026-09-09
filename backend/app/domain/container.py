@@ -8,6 +8,7 @@ _MANUAL = "tenant:manual"
 _ISO_LEN = 11
 _TYPE_LEN = 4
 _MAX_SEAL = 32
+_MAX_VESSEL = 128
 
 
 def _iso6346_value(mark: str) -> int:
@@ -92,3 +93,16 @@ def require_seal_no_2(raw: object) -> str | None:
 
 def require_seal_no_3(raw: object) -> str | None:
     return require_seal_no_1(raw)
+
+
+def require_vessel_name(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidContainer("statek musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    if len(token) > _MAX_VESSEL:
+        raise InvalidContainer("statek za długi")
+    return token

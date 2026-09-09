@@ -14,6 +14,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
   const [seal, setSeal] = useState("")
   const [seal2, setSeal2] = useState("")
   const [seal3, setSeal3] = useState("")
+  const [vessel, setVessel] = useState("")
   const listed = useQuery({
     queryKey: ["containers", ctx.organizationId, sizeType],
     queryFn: () => fetchContainers(sizeType),
@@ -21,7 +22,8 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
     retry: false,
   })
   const persist = useMutation({
-    mutationFn: () => saveContainer(containerWrite({ number, sizeType, shipment, seal, seal2, seal3 })),
+    mutationFn: () =>
+      saveContainer(containerWrite({ number, sizeType, shipment, seal, seal2, seal3, vessel })),
     onSuccess: () => {
       void cache.invalidateQueries({ queryKey: ["containers", ctx.organizationId, sizeType] })
     },
@@ -31,7 +33,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
     <section className="grid gap-2 rounded-md border border-border p-3" data-container="iso">
       <h2 className="text-sm font-medium">Kontener ISO</h2>
       <p className="text-xs text-muted-foreground">
-        Numer z cyfrą kontrolną i typ 4 znaków. Opcjonalne plomby. Nie VGM. Nie PIN. Nie booking.
+        Numer z cyfrą kontrolną i typ 4 znaków. Opcjonalne plomby i nazwa statku. Nie VGM. Nie PIN. Nie booking.
       </p>
       <label className="flex flex-col gap-1 text-xs">
         Numer ISO 6346
@@ -87,6 +89,15 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
           onChange={(event) => setSeal3(event.target.value)}
         />
       </label>
+      <label className="flex flex-col gap-1 text-xs">
+        Statek (opcjonalnie)
+        <Input
+          aria-label="Nazwa statku kontenera"
+          placeholder="vessel_name"
+          value={vessel}
+          onChange={(event) => setVessel(event.target.value)}
+        />
+      </label>
       <Button type="button" disabled={blocked} onClick={() => persist.mutate()}>
         Zapisz kontener
       </Button>
@@ -100,6 +111,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
             {row.seal_no_1 !== null ? ` · ${row.seal_no_1}` : ""}
             {row.seal_no_2 !== null ? ` · ${row.seal_no_2}` : ""}
             {row.seal_no_3 !== null ? ` · ${row.seal_no_3}` : ""}
+            {row.vessel_name !== null ? ` · ${row.vessel_name}` : ""}
           </li>
         ))}
       </ul>

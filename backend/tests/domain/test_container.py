@@ -9,6 +9,7 @@ from app.domain.container import (
     require_seal_no_1,
     require_seal_no_2,
     require_seal_no_3,
+    require_vessel_name,
 )
 from app.domain.errors import InvalidContainer
 
@@ -51,6 +52,14 @@ def test_seal_no_3_reuses_same_plomba_rule() -> None:
     assert require_seal_no_3("  XY1 ") == "XY1"
     with pytest.raises(InvalidContainer, match="plomba"):
         require_seal_no_3("x" * 33)
+
+
+def test_vessel_name_omits_blank_and_keeps_token() -> None:
+    assert require_vessel_name(None) is None
+    assert require_vessel_name("  ") is None
+    assert require_vessel_name(" MSC GULSUN ") == "MSC GULSUN"
+    with pytest.raises(InvalidContainer, match="statek"):
+        require_vessel_name("x" * 129)
 
 
 @given(st.sampled_from(["CSQU3054384", "MSCU1234567", "ABCD"]))

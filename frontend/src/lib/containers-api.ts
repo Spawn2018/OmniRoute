@@ -11,6 +11,7 @@ export type ContainerRow = {
   seal_no_1: string | null
   seal_no_2: string | null
   seal_no_3: string | null
+  vessel_name: string | null
   superseded_by: string | null
 }
 
@@ -22,6 +23,7 @@ export type ContainerWrite = {
   seal_no_1: string | null
   seal_no_2: string | null
   seal_no_3: string | null
+  vessel_name: string | null
 }
 
 const PATH = "/api/v1/containers"
@@ -38,10 +40,12 @@ export function containerWrite(args: {
   seal: string
   seal2: string
   seal3: string
+  vessel: string
 }): ContainerWrite {
   const seal = args.seal.trim()
   const seal2 = args.seal2.trim()
   const seal3 = args.seal3.trim()
+  const vessel = args.vessel.trim()
   return {
     container_no: args.number.trim(),
     iso_size_type: args.sizeType.trim(),
@@ -50,6 +54,7 @@ export function containerWrite(args: {
     seal_no_1: seal === "" ? null : seal,
     seal_no_2: seal2 === "" ? null : seal2,
     seal_no_3: seal3 === "" ? null : seal3,
+    vessel_name: vessel === "" ? null : vessel,
   }
 }
 

@@ -13665,6 +13665,17 @@
               }
             ],
             "title": "Seal No 3"
+          },
+          "vessel_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Vessel Name"
           }
         },
         "additionalProperties": false,
@@ -13745,6 +13756,17 @@
             ],
             "title": "Seal No 3"
           },
+          "vessel_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Vessel Name"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -13769,6 +13791,7 @@
           "seal_no_1",
           "seal_no_2",
           "seal_no_3",
+          "vessel_name",
           "superseded_by"
         ],
         "title": "ContainerResponse"

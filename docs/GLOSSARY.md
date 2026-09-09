@@ -45,7 +45,7 @@
 | zasób floty | resource | T2; pojazd / kierowca / naczepa; nie trip |
 | przejazd | trip | T2; status + opcjonalny zasób; 212.0 opcjonalny `driver2_id`; 214.0 opcjonalny `route_label`; 167.0 snapshot `expected_buy`; nie km; nie wariancja |
 | snapshot kosztu kupna | expected_buy | P5 freeze Decimal na `trip` przy `in_transit`/`completed`; nie marża; nie SQL na `charge` |
-| kontener | container | T3; ISO 6346 + iso_size_type; 216.0 opcjonalny `seal_no_1`; 217.0 opcjonalny `seal_no_2`; 218.0 opcjonalny `seal_no_3`; nie VGM; nie PIN |
+| kontener | container | T3; ISO 6346 + iso_size_type; 216.0–218.0 trzy plomby; 219.0 opcjonalny `vessel_name`; nie `voyage_no`; nie VGM; nie PIN |
 | odcinek | shipment_leg | 108.0 `road` · 109.0 `rail` · 110.0 `china_rail` · 111.0 `ocean_lcl` · 154.0 `air` na zleceniu; nie mapa; nie ETA |
 | kolej intermodalna | intermodal_rail | 42.0 tablica `port` z flagą `rail`; 109.0 odcinek `shipment_leg` rail; nie wagon; nie CIM |
 | kolej z Chin | china_rail | 43.0 tablica `port` CN z flagą `rail`; 110.0 odcinek `shipment_leg` china_rail; nie korytarz; nie HTTP |
