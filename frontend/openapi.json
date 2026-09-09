@@ -13654,6 +13654,17 @@
               }
             ],
             "title": "Seal No 2"
+          },
+          "seal_no_3": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Seal No 3"
           }
         },
         "additionalProperties": false,
@@ -13723,6 +13734,17 @@
             ],
             "title": "Seal No 2"
           },
+          "seal_no_3": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Seal No 3"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -13746,6 +13768,7 @@
           "source_ref",
           "seal_no_1",
           "seal_no_2",
+          "seal_no_3",
           "superseded_by"
         ],
         "title": "ContainerResponse"

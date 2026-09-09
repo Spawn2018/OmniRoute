@@ -8,6 +8,7 @@ from app.domain.container import (
     require_iso_size_type,
     require_seal_no_1,
     require_seal_no_2,
+    require_seal_no_3,
 )
 from app.domain.errors import InvalidContainer
 
@@ -44,6 +45,12 @@ def test_seal_no_2_reuses_same_plomba_rule() -> None:
     assert require_seal_no_2("  HL987 ") == "HL987"
     with pytest.raises(InvalidContainer, match="plomba"):
         require_seal_no_2("x" * 33)
+
+
+def test_seal_no_3_reuses_same_plomba_rule() -> None:
+    assert require_seal_no_3("  XY1 ") == "XY1"
+    with pytest.raises(InvalidContainer, match="plomba"):
+        require_seal_no_3("x" * 33)
 
 
 @given(st.sampled_from(["CSQU3054384", "MSCU1234567", "ABCD"]))

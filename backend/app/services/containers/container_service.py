@@ -10,6 +10,7 @@ from app.domain.container import (
     require_iso_size_type,
     require_seal_no_1,
     require_seal_no_2,
+    require_seal_no_3,
 )
 from app.models.container import Container
 from app.repositories.containers.container_repository import ContainerRepository
@@ -22,6 +23,7 @@ class _BoxDraft(NamedTuple):
     origin: str
     seal: str | None
     seal2: str | None
+    seal3: str | None
 
 
 def _box_draft(
@@ -31,6 +33,7 @@ def _box_draft(
     source_ref: object,
     seal_no_1: object,
     seal_no_2: object,
+    seal_no_3: object,
 ) -> _BoxDraft:
     return _BoxDraft(
         require_container_no(container_no),
@@ -39,6 +42,7 @@ def _box_draft(
         require_container_source_ref(source_ref),
         require_seal_no_1(seal_no_1),
         require_seal_no_2(seal_no_2),
+        require_seal_no_3(seal_no_3),
     )
 
 
@@ -49,6 +53,22 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.source_ref == draft.origin
         and current.seal_no_1 == draft.seal
         and current.seal_no_2 == draft.seal2
+        and current.seal_no_3 == draft.seal3
+    )
+
+
+def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Container:
+    return Container(
+        id=uuid4(),
+        organization_id=organization_id,
+        container_no=draft.number,
+        iso_size_type=draft.size_type,
+        shipment_id=draft.shipment_id,
+        source_ref=draft.origin,
+        seal_no_1=draft.seal,
+        seal_no_2=draft.seal2,
+        seal_no_3=draft.seal3,
+        created_by=user_id,
     )
 
 
@@ -71,6 +91,7 @@ class ContainerService:
         source_ref: object,
         seal_no_1: object = None,
         seal_no_2: object = None,
+        seal_no_3: object = None,
     ) -> Container:
         draft = _box_draft(
             container_no,
@@ -79,23 +100,12 @@ class ContainerService:
             source_ref,
             seal_no_1,
             seal_no_2,
+            seal_no_3,
         )
         current = await self._rows.find_current(draft.number)
         if current is not None and _box_unchanged(current, draft):
             return current
-        saved = await self._rows.add(
-            Container(
-                id=uuid4(),
-                organization_id=organization_id,
-                container_no=draft.number,
-                iso_size_type=draft.size_type,
-                shipment_id=draft.shipment_id,
-                source_ref=draft.origin,
-                seal_no_1=draft.seal,
-                seal_no_2=draft.seal2,
-                created_by=user_id,
-            ),
-        )
+        saved = await self._rows.add(_container_row(organization_id, user_id, draft))
         if current is not None:
             await self._rows.mark_superseded(current, saved.id)
         return saved

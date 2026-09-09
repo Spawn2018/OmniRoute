@@ -13,6 +13,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
   const [shipment, setShipment] = useState("")
   const [seal, setSeal] = useState("")
   const [seal2, setSeal2] = useState("")
+  const [seal3, setSeal3] = useState("")
   const listed = useQuery({
     queryKey: ["containers", ctx.organizationId, sizeType],
     queryFn: () => fetchContainers(sizeType),
@@ -20,7 +21,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
     retry: false,
   })
   const persist = useMutation({
-    mutationFn: () => saveContainer(containerWrite({ number, sizeType, shipment, seal, seal2 })),
+    mutationFn: () => saveContainer(containerWrite({ number, sizeType, shipment, seal, seal2, seal3 })),
     onSuccess: () => {
       void cache.invalidateQueries({ queryKey: ["containers", ctx.organizationId, sizeType] })
     },
@@ -77,6 +78,15 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
           onChange={(event) => setSeal2(event.target.value)}
         />
       </label>
+      <label className="flex flex-col gap-1 text-xs">
+        Trzecia plomba (opcjonalnie)
+        <Input
+          aria-label="Trzecia plomba kontenera"
+          placeholder="seal_no_3"
+          value={seal3}
+          onChange={(event) => setSeal3(event.target.value)}
+        />
+      </label>
       <Button type="button" disabled={blocked} onClick={() => persist.mutate()}>
         Zapisz kontener
       </Button>
@@ -89,6 +99,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
             {row.container_no} · {row.iso_size_type}
             {row.seal_no_1 !== null ? ` · ${row.seal_no_1}` : ""}
             {row.seal_no_2 !== null ? ` · ${row.seal_no_2}` : ""}
+            {row.seal_no_3 !== null ? ` · ${row.seal_no_3}` : ""}
           </li>
         ))}
       </ul>
