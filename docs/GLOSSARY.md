@@ -23,6 +23,7 @@
 | wieża | watchtower | 94.0 wyjątki + pending S11 + leniwy panel mapy; 116.0 odczyt `mail_draft`; 124.0 liczniki tablicy; nie leaflet; nie AIS; nie czat; nie łańcuch V6 |
 | impact wieży | tower_impact | V6 HITL 198.0 etap łańcucha + status umowy; bez sla_clause = „brak danych umowy”; nie scoring osoby; nie EBITDA |
 | bliźniak | twin_mark | W1 HITL 199.0 rodzaj 8; nie fizyka; nie plan_snapshot |
+| sala kryzysowa | war_room_mark | W2 HITL 200.0 rodzaj incydentu; nie N8; nie drugi czat; nie T8 API |
 | dokument zlecenia | shipment_document | 92.0 tabela na zleceniu; nie bajty; nie PDF; nie HBL |
 | komunikat EDI | edi_message | 95.0 tabela na zleceniu; 32.0 leftover tablica kanału; nie parser; nie live HTTP |
 | faktura sprzedaży | sales_invoice | 96.0 tabela na zleceniu; 97.0 `ksef_ref` wpisany; nie live HTTP; nie druga marża |

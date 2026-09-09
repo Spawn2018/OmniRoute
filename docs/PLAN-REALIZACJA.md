@@ -636,7 +636,7 @@ Karta: [karty-pol-fala-w.md](analysis/karty-pol-fala-w.md).
 | ID | Co | Status | Poza |
 |---|---|---|---|
 | W1 | 8 twinów (pojazd, kierowca, kontener, zlecenie, sieć, plan, urząd, ładunek) | zamknięty HITL katalog ([199.0](deltas/archived/199.0-twin-mark.md)); leftover `plan_snapshot` / 8 silników | twin ≠ fizyka; kółka = G2.20 |
-| W2 | war room + koalescencja N8 | po V6+T8 | drugi czat |
+| W2 | war room + koalescencja N8 | delta [200.0](deltas/open/200.0-war-room-mark.md) HITL `war_room_mark` bez drugiego czatu; leftover N8 / T8 live API / widok sklejony | drugi czat |
 | W3 | memory graph na `entity_event` | | RAG na stawkach / umowach CI |
 | W4 | Executive AI = narracja po SQL | | LLM sumuje |
 | W5 | procurement ranking + szkic maila | | auto-award |
@@ -843,13 +843,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->
