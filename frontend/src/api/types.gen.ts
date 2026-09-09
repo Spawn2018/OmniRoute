@@ -10099,6 +10099,38 @@ export type CreateRateCardApiV1RateCardsPostResponses = {
 
 export type CreateRateCardApiV1RateCardsPostResponse = CreateRateCardApiV1RateCardsPostResponses[keyof CreateRateCardApiV1RateCardsPostResponses];
 
+export type EqualWhenRateCardsApiV1RateCardsMatchingGetData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Applies When
+         */
+        applies_when?: string | null;
+    };
+    url: '/api/v1/rate-cards/matching';
+};
+
+export type EqualWhenRateCardsApiV1RateCardsMatchingGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type EqualWhenRateCardsApiV1RateCardsMatchingGetError = EqualWhenRateCardsApiV1RateCardsMatchingGetErrors[keyof EqualWhenRateCardsApiV1RateCardsMatchingGetErrors];
+
+export type EqualWhenRateCardsApiV1RateCardsMatchingGetResponses = {
+    /**
+     * Response Equal When Rate Cards Api V1 Rate Cards Matching Get
+     *
+     * Successful Response
+     */
+    200: Array<RateCardResponse>;
+};
+
+export type EqualWhenRateCardsApiV1RateCardsMatchingGetResponse = EqualWhenRateCardsApiV1RateCardsMatchingGetResponses[keyof EqualWhenRateCardsApiV1RateCardsMatchingGetResponses];
+
 export type ListChargeTemplatesApiV1ChargeTemplatesGetData = {
     body?: never;
     path?: never;

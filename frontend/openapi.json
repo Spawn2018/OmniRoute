@@ -5410,6 +5410,64 @@
         ]
       }
     },
+    "/api/v1/rate-cards/matching": {
+      "get": {
+        "tags": [
+          "rate-cards"
+        ],
+        "summary": "Equal When Rate Cards",
+        "operationId": "equal_when_rate_cards_api_v1_rate_cards_matching_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "applies_when",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Applies When"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RateCardResponse"
+                  },
+                  "title": "Response Equal When Rate Cards Api V1 Rate Cards Matching Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/charge-templates": {
       "get": {
         "tags": [

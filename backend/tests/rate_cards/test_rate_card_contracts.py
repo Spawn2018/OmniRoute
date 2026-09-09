@@ -49,3 +49,15 @@ def test_generated_api_types_include_rate_card() -> None:
     )
     assert "RateCardResponse" in source
     assert "RateCardCreate" in source
+
+
+def test_migration_145_indexes_applies_when_equality() -> None:
+    source = (_ROOT / "backend" / "alembic" / "versions" / "145_rate_card_match.py").read_text(
+        encoding="utf-8",
+    )
+    assert 'revision: str = "145_rate_card_match"' in source
+    assert 'down_revision: str | None = "144_shipment_ref"' in source
+    assert "ix_rate_card_org_when" in source
+    assert "httpx" not in source
+    assert "ast" not in source
+    assert "def downgrade" in source

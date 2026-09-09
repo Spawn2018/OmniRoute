@@ -20,6 +20,10 @@ class RateCardService:
     async def list_cards(self) -> list[RateCard]:
         return await self._rows.list_all()
 
+    async def cards_for_when(self, applies_when: object) -> list[RateCard]:
+        token = require_applies_when(applies_when)
+        return await self._rows.fetch_equal_when(token)
+
     async def record_card(
         self,
         *,

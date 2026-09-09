@@ -12,6 +12,7 @@ from tests.http_auth import bearer_auth_headers
 _ROOT_DENIED = "Brak uprawnienia can_manage_rate_cards na organization"
 _ENDPOINTS = (
     ("GET", "/api/v1/rate-cards", None, None),
+    ("GET", "/api/v1/rate-cards/matching", {"applies_when": "sobota"}, None),
     (
         "POST",
         "/api/v1/rate-cards",

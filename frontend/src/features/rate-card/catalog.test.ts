@@ -25,7 +25,7 @@ describe("whenWrite", () => {
 })
 
 describe("rate_card surface for 163.0", () => {
-  it("records an applies_when token on /rate-cards without matching engine", () => {
+    it("records an applies_when token on /rate-cards and matches equality in SQL", () => {
     const page = src("features/rate-card/catalog-page.tsx")
     const panel = src("features/rate-card/when-form.tsx")
     expect(src("routes/rate-cards.tsx")).toContain("/rate-cards")
@@ -40,5 +40,10 @@ describe("rate_card surface for 163.0", () => {
     expect(panel).not.toContain("leaflet")
     expect(panel).not.toContain("CatalogCreateForm")
     expect(src("features/ops/ops-index.ts")).toContain('"163.0": "/rate-cards"')
+    expect(src("features/ops/ops-index.ts")).toContain('"205.0": "/rate-cards"')
+    expect(page).toContain("WhenEqualStrip")
+    expect(src("features/rate-card/when-equal.tsx")).toContain("Dopasuj warunek")
+    expect(src("features/rate-card/when-equal.tsx")).not.toContain("parseFloat")
+    expect(src("features/rate-card/when-equal.tsx")).not.toContain("<Money")
   })
 })

@@ -62,3 +62,14 @@ export async function persistWhenMark(payload: WhenMarkWrite): Promise<WhenMark>
   const saved: unknown = await reply.json()
   return saved as WhenMark
 }
+
+export async function fetchEqualWhen(appliesWhen: string): Promise<WhenMark[]> {
+  const query = new URLSearchParams({ applies_when: appliesWhen })
+  const reply = await fetch(`${PATH}/matching?${query.toString()}`, {
+    headers: requireAuthHeaders(),
+  })
+  if (reply.status === 200) {
+    return (await reply.json()) as WhenMark[]
+  }
+  throw new ApiError(await readApiDetail(reply, "Błąd równości warunku karty"), httpErrorStatus(reply))
+}

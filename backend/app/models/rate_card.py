@@ -17,6 +17,7 @@ class RateCard(Base, TimestampMixin):
         CheckConstraint("char_length(applies_when) >= 1", name="ck_rate_card_when_len"),
         CheckConstraint("card_code ~ '^[a-z][a-z0-9_]{1,31}$'", name="ck_rate_card_code_snake"),
         Index("ix_rate_card_org_code", "organization_id", "card_code"),
+        Index("ix_rate_card_org_when", "organization_id", "applies_when"),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)

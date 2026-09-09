@@ -14,6 +14,14 @@ class RateCardRepository:
         )
         return list(result.all())
 
+    async def fetch_equal_when(self, applies_when: str) -> list[RateCard]:
+        result = await self._session.scalars(
+            select(RateCard)
+            .where(RateCard.applies_when == applies_when)
+            .order_by(RateCard.card_code, RateCard.id),
+        )
+        return list(result.all())
+
     async def add(self, row: RateCard) -> RateCard:
         self._session.add(row)
         await self._session.flush()

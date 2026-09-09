@@ -57,7 +57,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **166.0 leftover:** macierz armator×port×serwis×kontener / FK (P4b); warning braku dopłaty ≠ fakt (P4c). Tu tylko katalog THC/ISPS/seal/amendment + Decimal. Nie `port_surcharge`. Nie marża.
 - **165.0 leftover:** przeliczenie SQL indeksu na `charge` (P3b); live HTTP NBP/BAF (P3c); A11 nowy wiersz (P3d). Tu tylko katalog FSC/BAF/CAF + Decimal. Nie `nbp_rate`. Nie marża.
 - **164.0 leftover:** exclusion / CHECK nakładania daterange jak strefy pocztowe (P2c). Tu tylko kolekcja `charge_code` + daty jako dane. Nie `charge`. Nie FSC.
-- **163.0 leftover:** matching GET jak 69.0 (P1b); parser WHEN/IF/CALC (P1c); daty ważności (P1d). Tu tylko `applies_when` tekst + Decimal. Nie `rate_line`. Nie `charge`.
+- **163.0 leftover:** P1b matching GET DONE 205.0. Zostaje parser WHEN/IF/CALC (P1c); daty ważności (P1d). Tu `applies_when` tekst + Decimal + równość SQL. Nie `rate_line`. Nie `charge`.
 - **162.0 leftover:** D9b `shipment_ref` HITL DONE 204.0. Zostaje: `network_print_requirement` / 409 (D9c; nie C8); PDF/ZPL/QR bitmap (D9d); skan HITL bez kodu Omni (D9e); `branding_ref` / `pdf`/`zpl` (D9f). Tu katalog `own_label`/`cmr` + `html_print` + numer HITL. Nie D8.
 - **161.0 leftover:** giełda/HTTP Chep/LPR (D7b); ledger ujemny (D7c); euro/EPAL (D7d). Tu tylko integer sztuk `chep`/`lpr` na `party`. Nie depozyt.
 - **160.0 leftover:** konsolidacja wielu house pod jeden MBL (D6b); pula numerów M-03 (D6c); unikat `bill_no`. Tu tylko znacznik HBL/MBL na `shipment`. Nie PDF. Nie booking.

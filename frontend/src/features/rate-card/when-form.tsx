@@ -41,7 +41,7 @@ function WhenSave(args: { organizationId: string | null }) {
       }}
     >
       <p className="text-xs text-muted-foreground">
-        Warunek `applies_when` jako dana i kwota Decimal. Matching WHEN/IF zostaje leftover.
+        Warunek `applies_when` jako dana i kwota Decimal. Matching WHEN/IF parser zostaje leftover P1c.
         Marża zostaje na `/charges`.
       </p>
       <label className="flex flex-col gap-1 text-xs">

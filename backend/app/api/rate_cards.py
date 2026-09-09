@@ -1,6 +1,6 @@
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, status
+from fastapi import APIRouter, Depends, Query, status
 from pydantic import BaseModel, ConfigDict
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -54,6 +54,16 @@ async def list_rate_cards(
     session: AsyncSession = Depends(require_tenant_session),
 ) -> list[RateCardResponse]:
     rows = await RateCardService(session).list_cards()
+    return [_as_row(row) for row in rows]
+
+
+@router.get("/matching", response_model=list[RateCardResponse])
+async def equal_when_rate_cards(
+    applies_when: str | None = Query(default=None),
+    _authz: None = Depends(require_permission(_PERM, "organization")),
+    session: AsyncSession = Depends(require_tenant_session),
+) -> list[RateCardResponse]:
+    rows = await RateCardService(session).cards_for_when(applies_when)
     return [_as_row(row) for row in rows]
 
 

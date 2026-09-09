@@ -38,6 +38,10 @@ class StubRateCardService:
     async def list_cards(self) -> list[RateCard]:
         return list(self.rows)
 
+    async def cards_for_when(self, applies_when: object) -> list[RateCard]:
+        token = require_applies_when(applies_when)
+        return [row for row in self.rows if row.applies_when == token]
+
     async def record_card(
         self,
         *,
@@ -153,3 +157,47 @@ def test_http_create_card_foreign_source_ref_is_400(catalog_client: object) -> N
     )
     assert response.status_code == 400
     assert "obce" in response.json()["detail"]
+
+
+def test_http_equal_when_filters_rate_cards(catalog_client: object) -> None:
+    client, _rows = catalog_client
+    headers = bearer_auth_headers()
+    first = client.post("/api/v1/rate-cards", headers=headers, json=_payload())
+    assert first.status_code == 201
+    other = client.post(
+        "/api/v1/rate-cards",
+        headers=headers,
+        json=_payload(card_code="weekday", applies_when="poniedzialek", source_ref="fixture://rate-card/2"),
+    )
+    assert other.status_code == 201
+    matched = client.get(
+        "/api/v1/rate-cards/matching",
+        headers=headers,
+        params={"applies_when": "sobota"},
+    )
+    assert matched.status_code == 200
+    body = matched.json()
+    assert len(body) == 1
+    assert body[0]["applies_when"] == "sobota"
+    assert body[0]["id"] == first.json()["id"]
+
+
+def test_http_equal_when_blank_is_400(catalog_client: object) -> None:
+    client, _rows = catalog_client
+    response = client.get(
+        "/api/v1/rate-cards/matching",
+        headers=bearer_auth_headers(),
+        params={"applies_when": "  "},
+    )
+    assert response.status_code == 400
+    assert "warunek" in response.json()["detail"]
+
+
+def test_http_equal_when_missing_query_is_400(catalog_client: object) -> None:
+    client, _rows = catalog_client
+    response = client.get(
+        "/api/v1/rate-cards/matching",
+        headers=bearer_auth_headers(),
+    )
+    assert response.status_code == 400
+    assert "warunek" in response.json()["detail"]
