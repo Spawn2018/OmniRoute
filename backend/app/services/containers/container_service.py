@@ -6,6 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.domain.container import (
     require_cargo_description,
     require_container_no,
+    require_container_reefer,
     require_container_ref_1,
     require_container_ref_2,
     require_container_ref_3,
@@ -44,6 +45,7 @@ class _WriteBox(NamedTuple):
     mark3: object
     mark4: object
     mark5: object
+    cold: object
 
 
 class _BoxDraft(NamedTuple):
@@ -64,6 +66,7 @@ class _BoxDraft(NamedTuple):
     mark3: str | None
     mark4: str | None
     mark5: str | None
+    cold: bool
 
 
 def _box_draft(write: _WriteBox) -> _BoxDraft:
@@ -85,6 +88,7 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_container_ref_3(write.mark3),
         require_container_ref_4(write.mark4),
         require_container_ref_5(write.mark5),
+        require_container_reefer(write.cold),
     )
 
 
@@ -106,6 +110,7 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.ref_3 == draft.mark3
         and current.ref_4 == draft.mark4
         and current.ref_5 == draft.mark5
+        and current.reefer == draft.cold
     )
 
 
@@ -130,6 +135,7 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         ref_3=draft.mark3,
         ref_4=draft.mark4,
         ref_5=draft.mark5,
+        reefer=draft.cold,
         created_by=user_id,
     )
 

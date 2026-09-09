@@ -1,6 +1,6 @@
 import uuid
 
-from sqlalchemy import ForeignKey, ForeignKeyConstraint, Index, String, Text
+from sqlalchemy import Boolean, ForeignKey, ForeignKeyConstraint, Index, String, Text, text
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -43,6 +43,12 @@ class Container(Base, TimestampMixin):
     ref_3: Mapped[str | None] = mapped_column(String(64), nullable=True)
     ref_4: Mapped[str | None] = mapped_column(String(64), nullable=True)
     ref_5: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    reefer: Mapped[bool] = mapped_column(
+        Boolean(),
+        nullable=False,
+        server_default=text("false"),
+        default=False,
+    )
     superseded_by: Mapped[uuid.UUID | None] = mapped_column(
         UUID(as_uuid=True),
         ForeignKey("container.id", ondelete="RESTRICT"),

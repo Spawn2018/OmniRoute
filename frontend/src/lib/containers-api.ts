@@ -21,6 +21,7 @@ export type ContainerRow = {
   ref_3: string | null
   ref_4: string | null
   ref_5: string | null
+  reefer: boolean
   superseded_by: string | null
 }
 
@@ -42,6 +43,7 @@ export type ContainerWrite = {
   ref_3: string | null
   ref_4: string | null
   ref_5: string | null
+  reefer: boolean
 }
 
 const PATH = "/api/v1/containers"
@@ -68,6 +70,7 @@ export function containerWrite(args: {
   mark3: string
   mark4: string
   mark5: string
+  cold: boolean
 }): ContainerWrite {
   return {
     container_no: args.number.trim(),
@@ -87,6 +90,7 @@ export function containerWrite(args: {
     ref_3: optionalToken(args.mark3),
     ref_4: optionalToken(args.mark4),
     ref_5: optionalToken(args.mark5),
+    reefer: args.cold,
   }
 }
 

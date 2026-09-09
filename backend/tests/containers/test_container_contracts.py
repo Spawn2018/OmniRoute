@@ -237,6 +237,22 @@ def test_migration_167_adds_ref_5_without_weight() -> None:
     assert "ref_5" in source.split("def downgrade")[1]
 
 
+def test_migration_168_adds_reefer_without_temperature() -> None:
+    source = (_ROOT / "backend" / "alembic" / "versions" / "168_container_reefer.py").read_text(
+        encoding="utf-8"
+    )
+    assert 'revision: str = "168_container_reefer"' in source
+    assert 'down_revision: str | None = "167_container_ref5"' in source
+    assert "reefer" in source
+    assert "temp_min" not in source
+    assert "temp_max" not in source
+    assert "pin_code" not in source
+    assert "vgm" not in source.casefold()
+    assert "create_table" not in source
+    assert "def downgrade" in source
+    assert "reefer" in source.split("def downgrade")[1]
+
+
 def test_generated_api_types_include_container() -> None:
     source = (_ROOT / "frontend" / "src" / "api" / "types.gen.ts").read_text(encoding="utf-8")
     assert "ContainerResponse" in source
@@ -250,3 +266,4 @@ def test_generated_api_types_include_container() -> None:
     assert "ref_3" in source
     assert "ref_4" in source
     assert "ref_5" in source
+    assert "reefer" in source

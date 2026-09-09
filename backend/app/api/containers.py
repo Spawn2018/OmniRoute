@@ -35,6 +35,7 @@ class ContainerCreate(BaseModel):
     ref_3: str | None = None
     ref_4: str | None = None
     ref_5: str | None = None
+    reefer: object = False
 
 
 class ContainerResponse(BaseModel):
@@ -59,6 +60,7 @@ class ContainerResponse(BaseModel):
     ref_3: str | None
     ref_4: str | None
     ref_5: str | None
+    reefer: bool
     superseded_by: UUID | None
 
 
@@ -85,6 +87,7 @@ def _write_from_body(body: ContainerCreate, shipment_id: UUID | None) -> _WriteB
         body.ref_3,
         body.ref_4,
         body.ref_5,
+        body.reefer,
     )
 
 

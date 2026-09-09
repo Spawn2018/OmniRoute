@@ -24,6 +24,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
   const [mark3, setMark3] = useState("")
   const [mark4, setMark4] = useState("")
   const [mark5, setMark5] = useState("")
+  const [cold, setCold] = useState(false)
   const listed = useQuery({
     queryKey: ["containers", ctx.organizationId, sizeType],
     queryFn: () => fetchContainers(sizeType),
@@ -50,6 +51,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
           mark3,
           mark4,
           mark5,
+          cold,
         }),
       ),
     onSuccess: () => {
@@ -61,7 +63,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
     <section className="grid gap-2 rounded-md border border-border p-3" data-container="iso">
       <h2 className="text-sm font-medium">Kontener ISO</h2>
       <p className="text-xs text-muted-foreground">
-        Numer z cyfrą kontrolną i typ 4 znaków. Opcjonalne plomby, statek, rejs, uwaga, ładunek, opakowanie i referencje. Nie VGM. Nie PIN. Nie booking.
+        Numer z cyfrą kontrolną i typ 4 znaków. Opcjonalne plomby, statek, rejs, uwaga, ładunek, opakowanie, referencje i flaga chłodniczego. Nie temperatura. Nie VGM. Nie PIN. Nie booking.
       </p>
       <label className="flex flex-col gap-1 text-xs">
         Numer ISO 6346
@@ -207,6 +209,15 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
           onChange={(event) => setMark5(event.target.value)}
         />
       </label>
+      <label className="flex items-center gap-2 text-xs">
+        <input
+          type="checkbox"
+          aria-label="Chłodniczy kontener"
+          checked={cold}
+          onChange={(event) => setCold(event.target.checked)}
+        />
+        Chłodniczy (reefer)
+      </label>
       <Button type="button" disabled={blocked} onClick={() => persist.mutate()}>
         Zapisz kontener
       </Button>
@@ -230,6 +241,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
             {row.ref_3 !== null ? ` · ${row.ref_3}` : ""}
             {row.ref_4 !== null ? ` · ${row.ref_4}` : ""}
             {row.ref_5 !== null ? ` · ${row.ref_5}` : ""}
+            {row.reefer ? " · chłodniczy" : ""}
           </li>
         ))}
       </ul>

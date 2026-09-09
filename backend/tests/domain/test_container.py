@@ -5,6 +5,7 @@ from hypothesis import strategies as st
 from app.domain.container import (
     require_cargo_description,
     require_container_no,
+    require_container_reefer,
     require_container_ref_1,
     require_container_ref_2,
     require_container_ref_3,
@@ -133,6 +134,13 @@ def test_container_ref_5_reuses_same_referencja_rule() -> None:
     assert require_container_ref_5("  SI345 ") == "SI345"
     with pytest.raises(InvalidContainer, match="referencja"):
         require_container_ref_5("x" * 65)
+
+
+def test_container_reefer_keeps_flag_and_rejects_token() -> None:
+    assert require_container_reefer(True) is True
+    assert require_container_reefer(False) is False
+    with pytest.raises(InvalidContainer, match="chłodniczy"):
+        require_container_reefer("true")  # type: ignore[arg-type]
 
 
 @given(st.sampled_from(["CSQU3054384", "MSCU1234567", "ABCD"]))

@@ -13775,6 +13775,10 @@
               }
             ],
             "title": "Ref 5"
+          },
+          "reefer": {
+            "title": "Reefer",
+            "default": false
           }
         },
         "additionalProperties": false,
@@ -13965,6 +13969,10 @@
             ],
             "title": "Ref 5"
           },
+          "reefer": {
+            "type": "boolean",
+            "title": "Reefer"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -13999,6 +14007,7 @@
           "ref_3",
           "ref_4",
           "ref_5",
+          "reefer",
           "superseded_by"
         ],
         "title": "ContainerResponse"

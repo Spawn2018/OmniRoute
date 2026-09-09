@@ -188,3 +188,9 @@ def require_container_ref_4(raw: object) -> str | None:
 
 def require_container_ref_5(raw: object) -> str | None:
     return require_container_ref_1(raw)
+
+
+def require_container_reefer(raw: object) -> bool:
+    if type(raw) is not bool:
+        raise InvalidContainer("chłodniczy kontenera musi być flagą")
+    return raw
