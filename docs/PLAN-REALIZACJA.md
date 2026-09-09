@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny (zablokowany):** leftover V7 tacho TO_VERIFY parked → leftover V8 what-if parked → leftover V6 silnik EBITDA / `sla_clause` CI5 parked → leftover V5 `position_event` / ciphertext / 3 dni U4 parked → leftover V5b `exchange_message` parked → leftover V4 AIS wieży (S32) parked → leftover V2b myto→`charge` parked → leftover C3 live VIES/GUS → leftover C4 eCMR → leftover C9 Trans.eu → leftover C2 AIS/PUESC → leftover C6 BDO → leftover F2b Decimal/rezerwy → leftover F3 noty/period lock → leftover F4 CAMT → leftover G2.20–G2.22 circle_sim/km/P → leftover G2.15–G2.18 kg/CBAM → leftover F1 live FA(3) → leftover C1 filing XML → leftover C8 409/`relation_document_requirement` → leftover N3 countdown D&D / szkic `charge` parked → **202.0** W4 Executive AI HITL narracja po SQL bez sumowania LLM → leftover W5 ranking parked aż CURRENT → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. D8 parked. D9 leftover D9b–f. P1 leftover P1b–d. P2 leftover P2c. P3 leftover P3b–d. P4 leftover P4b–c. P5 leftover P5b–c. P6 leftover P6c. G2 leftover G2.15–G2.18 + G2.20–G2.22 + G2.23 Citizen API. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
+**Następny (zablokowany):** **202.0** W4 HITL `executive_mark` bez sumowania LLM → leftover W5 ranking parked → leftover V7 tacho TO_VERIFY parked → leftover V8 what-if parked → leftover V6 silnik EBITDA / `sla_clause` CI5 parked → leftover V5 `position_event` / ciphertext / 3 dni U4 parked → leftover V5b `exchange_message` parked → leftover V4 AIS wieży (S32) parked → leftover V2b myto→`charge` parked → leftover C3 live VIES/GUS → leftover C4 eCMR → leftover C9 Trans.eu → leftover C2 AIS/PUESC → leftover C6 BDO → leftover F2b Decimal/rezerwy → leftover F3 noty/period lock → leftover F4 CAMT → leftover G2.20–G2.22 circle_sim/km/P → leftover G2.15–G2.18 kg/CBAM → leftover F1 live FA(3) → leftover C1 filing XML → leftover C8 409/`relation_document_requirement` → leftover N3 countdown D&D / szkic `charge` parked → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. D8 parked. D9 leftover D9b–f. P1 leftover P1b–d. P2 leftover P2c. P3 leftover P3b–d. P4 leftover P4b–c. P5 leftover P5b–c. P6 leftover P6c. G2 leftover G2.15–G2.18 + G2.20–G2.22 + G2.23 Citizen API. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
 <!-- os-status:end -->
 
 ```mermaid
@@ -638,7 +638,7 @@ Karta: [karty-pol-fala-w.md](analysis/karty-pol-fala-w.md).
 | W1 | 8 twinów (pojazd, kierowca, kontener, zlecenie, sieć, plan, urząd, ładunek) | zamknięty HITL katalog ([199.0](deltas/archived/199.0-twin-mark.md)); leftover `plan_snapshot` / 8 silników | twin ≠ fizyka; kółka = G2.20 |
 | W2 | war room + koalescencja N8 | zamknięty HITL katalog ([200.0](deltas/archived/200.0-war-room-mark.md)); leftover N8 / T8 live API / widok sklejony | drugi czat |
 | W3 | memory graph na `entity_event` | 201.0 HITL `memory_edge` [delta](deltas/archived/201.0-memory-edge.md); leftover graf / pgvector / FK zdarzeń | RAG na stawkach / umowach CI |
-| W4 | Executive AI = narracja po SQL | | LLM sumuje |
+| W4 | Executive AI = narracja po SQL | delta [202.0](deltas/open/202.0-executive-mark.md) HITL `executive_mark` bez sumy LLM; leftover zdania SQL / 117.0 | LLM sumuje |
 | W5 | procurement ranking + szkic maila | | auto-award |
 
 ### Fala X — portale / mobile (po **S53**)
@@ -843,13 +843,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->
