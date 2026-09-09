@@ -27,6 +27,11 @@ class Shipment(Base, TimestampMixin):
             "quotation_id",
             name="uq_shipment_org_quotation",
         ),
+        UniqueConstraint(
+            "organization_id",
+            "shipment_ref",
+            name="uq_shipment_org_shipment_ref",
+        ),
         CheckConstraint("status = 'draft'", name="ck_shipment_status_draft"),
         ForeignKeyConstraint(
             ["organization_id", "quotation_id"],
@@ -54,4 +59,6 @@ class Shipment(Base, TimestampMixin):
     quotation_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), nullable=False)
     party_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), nullable=False)
     source_ref: Mapped[str] = mapped_column(String(256), nullable=False)
+    # HITL twardy numer wydruku — nie QR i nie generator GD/2026.
+    shipment_ref: Mapped[str | None] = mapped_column(String(256), nullable=True)
     status: Mapped[str] = mapped_column(String(8), nullable=False)

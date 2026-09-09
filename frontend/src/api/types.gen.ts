@@ -5158,6 +5158,10 @@ export type ShipmentCreate = {
      * Source Ref
      */
     source_ref: string;
+    /**
+     * Shipment Ref
+     */
+    shipment_ref?: string | null;
 };
 
 /**
@@ -5356,6 +5360,10 @@ export type ShipmentResponse = {
      * Source Ref
      */
     source_ref: string;
+    /**
+     * Shipment Ref
+     */
+    shipment_ref: string | null;
     /**
      * Status
      */

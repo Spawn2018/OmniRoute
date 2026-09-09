@@ -8,6 +8,7 @@ from app.domain.errors import InvalidShipment
 from app.domain.shipment import (
     require_party_on_quotation,
     require_quotation_id,
+    require_shipment_ref,
     require_shipment_source_ref,
     shipment_draft_status,
 )
@@ -56,3 +57,25 @@ def test_require_party_on_quotation_rejects_missing() -> None:
 def test_require_party_on_quotation_keeps_uuid() -> None:
     token = uuid4()
     assert require_party_on_quotation(token) == token
+
+
+def test_require_shipment_ref_omits_blank() -> None:
+    assert require_shipment_ref(None) is None
+    assert require_shipment_ref("") is None
+    assert require_shipment_ref("  ") is None
+
+
+@given(st.sampled_from(["fixture://shipment-ref/1", "omni://shipment/ab1"]))
+def test_require_shipment_ref_allowlist(raw: str) -> None:
+    assert require_shipment_ref(raw) == raw
+
+
+@given(st.sampled_from(["omni://shipment/", "omni://shipment/A", "GD/2026"]))
+def test_require_shipment_ref_rejects_bad_number(raw: str) -> None:
+    with pytest.raises(InvalidShipment, match="numer|obce"):
+        require_shipment_ref(raw)
+
+
+def test_require_shipment_ref_rejects_foreign() -> None:
+    with pytest.raises(InvalidShipment, match="obce"):
+        require_shipment_ref("http://print.example/x")

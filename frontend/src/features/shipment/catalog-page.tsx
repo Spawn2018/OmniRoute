@@ -21,14 +21,17 @@ function ShipmentCreateForm(args: { organizationId: string | null }) {
   const client = useQueryClient()
   const [quotationId, setQuotationId] = useState("")
   const [sourceRef, setSourceRef] = useState("fixture://shipment/")
+  const [hardNumber, setHardNumber] = useState("")
   const save = useMutation({
     mutationFn: () =>
       createShipment({
         quotation_id: quotationId.trim(),
         source_ref: sourceRef.trim(),
+        shipment_ref: hardNumber.trim() === "" ? null : hardNumber.trim(),
       }),
     onSuccess: () => {
       setQuotationId("")
+      setHardNumber("")
       void client.invalidateQueries({ queryKey: ["shipments", args.organizationId] })
     },
   })
@@ -42,6 +45,12 @@ function ShipmentCreateForm(args: { organizationId: string | null }) {
     >
       <Input aria-label="Identyfikator wyceny" placeholder="quotation_id" value={quotationId} onChange={(event) => setQuotationId(event.target.value)} required />
       <Input aria-label="Pochodzenie zapisu zlecenia" placeholder="source_ref" value={sourceRef} onChange={(event) => setSourceRef(event.target.value)} required />
+      <Input
+        aria-label="Numer zlecenia shipment_ref"
+        placeholder="omni://shipment/… albo puste"
+        value={hardNumber}
+        onChange={(event) => setHardNumber(event.target.value)}
+      />
       <Button type="submit" disabled={save.isPending || !args.organizationId}>
         Zapisz zlecenie
       </Button>
@@ -77,7 +86,7 @@ export function ShipmentPage() {
       {ready ? <IsoContainerPanel signedIn={ready} /> : null}
       {(shipments.data ?? []).map((row) => (
         <p key={row.id} className="text-xs">
-          {row.status} {row.source_ref}{" "}
+          {row.status} {row.source_ref} {row.shipment_ref ?? "bez numeru"}{" "}
           <Link className="underline" to="/quotations">
             wycena
           </Link>

@@ -6,6 +6,7 @@ from fastapi.testclient import TestClient
 
 from app.api.deps import require_tenant_session, set_authz_checker
 from app.domain.errors import InvalidShipment, ResourceNotFound, ShipmentConflict
+from app.domain.shipment import require_shipment_ref
 from app.main import app
 from app.models.quotation import Quotation
 from app.models.shipment import Shipment
@@ -51,6 +52,7 @@ class StubShipmentService:
         quotation_id: UUID,
         party_id: UUID,
         source_ref: str,
+        shipment_ref: object = None,
     ) -> Shipment:
         if any(row.quotation_id == quotation_id for row in self.rows):
             raise ShipmentConflict("to zlecenie już istnieje dla tej wyceny")
@@ -62,6 +64,7 @@ class StubShipmentService:
             quotation_id=quotation_id,
             party_id=party_id,
             source_ref=source_ref,
+            shipment_ref=require_shipment_ref(shipment_ref),
             status="draft",
             created_by=user_id,
         )
@@ -129,6 +132,7 @@ def test_http_create_and_list_shipment(catalog_client: object) -> None:
     assert body["quotation_id"] == str(quotes.row.id)
     assert body["party_id"] == str(quotes.row.party_id)
     assert body["source_ref"] == "fixture://shipment/1"
+    assert body["shipment_ref"] is None
     assert body["status"] == "draft"
     assert "amount" not in body
     assert "margin" not in body
@@ -181,3 +185,47 @@ def test_http_duplicate_shipment_for_quotation_is_conflict(catalog_client: objec
     second = client.post("/api/v1/shipments", headers=headers, json=payload)
     assert second.status_code == 400
     assert "już istnieje" in second.json()["detail"]
+
+
+def test_http_create_shipment_with_ref(catalog_client: object) -> None:
+    client, quotes, _shipments = catalog_client
+    assert quotes.row is not None
+    created = client.post(
+        "/api/v1/shipments",
+        headers=bearer_auth_headers(),
+        json={
+            "quotation_id": str(quotes.row.id),
+            "source_ref": "fixture://shipment/1",
+            "shipment_ref": "omni://shipment/ab1",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["shipment_ref"] == "omni://shipment/ab1"
+    assert "qr" not in created.json()
+
+
+def test_http_create_shipment_bad_ref_is_400(catalog_client: object) -> None:
+    client, quotes, _shipments = catalog_client
+    assert quotes.row is not None
+    numbered = client.post(
+        "/api/v1/shipments",
+        headers=bearer_auth_headers(),
+        json={
+            "quotation_id": str(quotes.row.id),
+            "source_ref": "fixture://shipment/1",
+            "shipment_ref": "omni://shipment/",
+        },
+    )
+    assert numbered.status_code == 400
+    assert "numer" in numbered.json()["detail"]
+    foreign = client.post(
+        "/api/v1/shipments",
+        headers=bearer_auth_headers(),
+        json={
+            "quotation_id": str(quotes.row.id),
+            "source_ref": "fixture://shipment/1",
+            "shipment_ref": "http://print.example/x",
+        },
+    )
+    assert foreign.status_code == 400
+    assert "obce" in foreign.json()["detail"]

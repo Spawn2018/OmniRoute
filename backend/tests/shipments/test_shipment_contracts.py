@@ -26,6 +26,7 @@ def test_shipment_service_does_not_import_quotations_or_charges() -> None:
     service = (_SERVICES / "shipments" / "shipment_service.py").read_text(encoding="utf-8")
     assert "app.services.quotations" not in service
     assert "app.models.quotation" not in service
+    assert "app.services.document_templates" not in service
     assert "app.services.charges" not in service
     assert "app.services.operator_decisions" not in service
     assert "rate_line" not in service
@@ -50,3 +51,18 @@ def test_generated_api_types_include_shipment() -> None:
     source = (_ROOT / "frontend" / "src" / "api" / "types.gen.ts").read_text(encoding="utf-8")
     assert "ShipmentResponse" in source
     assert "ShipmentCreate" in source
+
+
+def test_migration_144_adds_shipment_ref_without_qr() -> None:
+    source = (_ROOT / "backend" / "alembic" / "versions" / "144_shipment_ref.py").read_text(
+        encoding="utf-8",
+    )
+    assert 'revision: str = "144_shipment_ref"' in source
+    assert 'down_revision: str | None = "143_rank_mark"' in source
+    assert "shipment_ref" in source
+    assert "uq_shipment_org_shipment_ref" in source
+    assert "qr" not in source.casefold()
+    assert "pdf" not in source.casefold()
+    assert "Numeric" not in source
+    assert "httpx" not in source
+    assert "def downgrade" in source

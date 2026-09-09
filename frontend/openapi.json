@@ -19894,6 +19894,17 @@
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
+          },
+          "shipment_ref": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Shipment Ref"
           }
         },
         "additionalProperties": false,
@@ -20169,6 +20180,17 @@
             "type": "string",
             "title": "Source Ref"
           },
+          "shipment_ref": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Shipment Ref"
+          },
           "status": {
             "type": "string",
             "title": "Status"
@@ -20181,6 +20203,7 @@
           "quotation_id",
           "party_id",
           "source_ref",
+          "shipment_ref",
           "status"
         ],
         "title": "ShipmentResponse"

@@ -7,6 +7,7 @@ from app.domain.errors import ResourceNotFound, ShipmentConflict
 from app.domain.shipment import (
     require_party_on_quotation,
     require_quotation_id,
+    require_shipment_ref,
     require_shipment_source_ref,
     shipment_draft_status,
 )
@@ -35,6 +36,7 @@ class ShipmentService:
         quotation_id: UUID,
         party_id: UUID,
         source_ref: str,
+        shipment_ref: object = None,
     ) -> Shipment:
         row = Shipment(
             id=uuid4(),
@@ -42,6 +44,7 @@ class ShipmentService:
             quotation_id=require_quotation_id(quotation_id),
             party_id=require_party_on_quotation(party_id),
             source_ref=require_shipment_source_ref(source_ref),
+            shipment_ref=require_shipment_ref(shipment_ref),
             status=shipment_draft_status(),
             created_by=user_id,
         )
@@ -53,4 +56,6 @@ class ShipmentService:
                 raise ShipmentConflict(
                     "to zlecenie już istnieje dla tej wyceny",
                 ) from orig
+            if "uq_shipment_org_shipment_ref" in detail:
+                raise ShipmentConflict("ten numer zlecenia już istnieje") from orig
             raise

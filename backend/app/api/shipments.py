@@ -18,6 +18,7 @@ class ShipmentCreate(BaseModel):
 
     quotation_id: UUID
     source_ref: str
+    shipment_ref: str | None = None
 
 
 class ShipmentResponse(BaseModel):
@@ -28,6 +29,7 @@ class ShipmentResponse(BaseModel):
     quotation_id: UUID
     party_id: UUID
     source_ref: str
+    shipment_ref: str | None
     status: str
 
 
@@ -54,6 +56,7 @@ async def create_shipment(
         quotation_id=quote.id,
         party_id=require_party_on_quotation(quote.party_id),
         source_ref=body.source_ref,
+        shipment_ref=body.shipment_ref,
     )
     await session.commit()
     return ShipmentResponse.model_validate(row)

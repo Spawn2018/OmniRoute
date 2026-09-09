@@ -52,13 +52,21 @@ def _party(*, organization_id, legal_name: str, created_by) -> Party:
     )
 
 
-def _shipment(*, organization_id, user_id, quotation: Quotation, party: Party) -> Shipment:
+def _shipment(
+    *,
+    organization_id,
+    user_id,
+    quotation: Quotation,
+    party: Party,
+    shipment_ref: str | None = None,
+) -> Shipment:
     return Shipment(
         id=uuid4(),
         organization_id=organization_id,
         quotation_id=quotation.id,
         party_id=party.id,
         source_ref="fixture://shipment/iso",
+        shipment_ref=shipment_ref,
         status="draft",
         created_by=user_id,
     )
@@ -209,3 +217,112 @@ async def test_shipment_rejects_second_row_for_same_quotation(session, two_tenan
     )
     with pytest.raises(IntegrityError):
         await session.flush()
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_shipment_ref_unique_per_tenant(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    user_a = two_tenants["user_a"]
+    await bind_tenant(session, org_a.id)
+    rate_a = _buy_rate(organization_id=org_a.id, created_by=user_a.id, source_ref="tariff://a")
+    party_a = _party(organization_id=org_a.id, legal_name="Klient A", created_by=user_a.id)
+    session.add_all([rate_a, party_a])
+    await session.flush()
+    quote_one = _quote(
+        organization_id=org_a.id,
+        created_by=user_a.id,
+        rate_line_id=rate_a.id,
+        source_ref="tariff://a1",
+    )
+    quote_two = _quote(
+        organization_id=org_a.id,
+        created_by=user_a.id,
+        rate_line_id=rate_a.id,
+        source_ref="tariff://a2",
+    )
+    session.add_all([quote_one, quote_two])
+    await session.flush()
+    session.add(
+        _shipment(
+            organization_id=org_a.id,
+            user_id=user_a.id,
+            quotation=quote_one,
+            party=party_a,
+            shipment_ref="omni://shipment/ab1",
+        )
+    )
+    await session.flush()
+    session.add(
+        _shipment(
+            organization_id=org_a.id,
+            user_id=user_a.id,
+            quotation=quote_two,
+            party=party_a,
+            shipment_ref="omni://shipment/ab1",
+        )
+    )
+    with pytest.raises(IntegrityError):
+        await session.flush()
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_shipment_ref_same_token_two_tenants(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    org_b = two_tenants["org_b"]
+    user_a = two_tenants["user_a"]
+    user_b = two_tenants["user_b"]
+    token = "fixture://shipment-ref/shared"
+    await bind_tenant(session, org_a.id)
+    rate_a = _buy_rate(organization_id=org_a.id, created_by=user_a.id, source_ref="tariff://a")
+    party_a = _party(organization_id=org_a.id, legal_name="Klient A", created_by=user_a.id)
+    session.add_all([rate_a, party_a])
+    await session.flush()
+    quote_a = _quote(
+        organization_id=org_a.id,
+        created_by=user_a.id,
+        rate_line_id=rate_a.id,
+        source_ref="tariff://a",
+    )
+    session.add(quote_a)
+    await session.flush()
+    session.add(
+        _shipment(
+            organization_id=org_a.id,
+            user_id=user_a.id,
+            quotation=quote_a,
+            party=party_a,
+            shipment_ref=token,
+        )
+    )
+    await session.flush()
+
+    await bind_tenant(session, org_b.id)
+    rate_b = _buy_rate(organization_id=org_b.id, created_by=user_b.id, source_ref="tariff://b")
+    party_b = _party(organization_id=org_b.id, legal_name="Klient B", created_by=user_b.id)
+    session.add_all([rate_b, party_b])
+    await session.flush()
+    quote_b = _quote(
+        organization_id=org_b.id,
+        created_by=user_b.id,
+        rate_line_id=rate_b.id,
+        source_ref="tariff://b",
+    )
+    session.add(quote_b)
+    await session.flush()
+    session.add(
+        _shipment(
+            organization_id=org_b.id,
+            user_id=user_b.id,
+            quotation=quote_b,
+            party=party_b,
+            shipment_ref=token,
+        )
+    )
+    await session.flush()
+    session.expunge_all()
+    await bind_tenant(session, org_a.id)
+    visible = list((await session.scalars(select(Shipment))).all())
+    assert len(visible) == 1
+    assert visible[0].shipment_ref == token
