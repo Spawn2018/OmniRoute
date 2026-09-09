@@ -168,8 +168,8 @@
 | reguła checklisty dokumentów | document_checklist_rule | U5; incoterm×strona×mode → rodzaj + blocks_dispatch |
 | przesyłka | consignment | N1; obok shipment |
 | podłoga marży | margin_floor | N6; Decimal; 409 albo S11 |
-| ETA fizyczne | eta_physical | GPS/korek; nie jedyny znacznik |
-| ETA prawne | eta_legal | zakaz jazdy, tacho, cutoff |
+| ETA fizyczne | eta_physical | V2 HITL 194.0 na `stop`; GPS/korek leftover; nie jedyny znacznik |
+| ETA prawne | eta_legal | V2 HITL 194.0 na `stop`; zakaz jazdy/tacho leftover |
 | umowa klienta | customer_contract | CI; ciphertext; nie super-admin |
 | klauzula SLA | sla_clause | CI; wpis ręczny; kara SQL |
 | prognoza spóźnienia | delay_forecast | CI4; przed actual late |

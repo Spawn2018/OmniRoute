@@ -467,3 +467,4 @@
 | 2026-09-09 | 192.0 | EXP0.9 | dangerous_good HITL tunel ADR + grupa SG. Nie klasa z LLM. Nie live IMO. Nastepny: leftover C3 Plan. |
 | 2026-09-09 | Plan 193.0 | B0b/V1 | prediction_ledger HITL przedział + CRPS/MAE, nie silnik. Delta zaakceptowana (`/noc`). Nastepny: kod 193.0. |
 | 2026-09-09 | 193.0 | B0b/V1 | prediction_ledger HITL przedział + CRPS/MAE. Nie silnik. Nie scoring osoby. Nastepny: leftover C3 Plan. |
+| 2026-09-09 | Plan 194.0 | V2 | stop HITL eta_physical/eta_legal, nie GPS i nie pogoda. Delta zaakceptowana (`/noc`). Nastepny: kod 194.0. |
