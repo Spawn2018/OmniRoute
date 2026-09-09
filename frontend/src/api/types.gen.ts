@@ -4243,6 +4243,90 @@ export type PortSurchargeResponse = {
 };
 
 /**
+ * PredictionLedgerCreate
+ */
+export type PredictionLedgerCreate = {
+    /**
+     * Prediction Kind
+     */
+    prediction_kind: string;
+    /**
+     * Horizon Code
+     */
+    horizon_code: string;
+    /**
+     * Interval Low
+     */
+    interval_low: string;
+    /**
+     * Interval High
+     */
+    interval_high: string;
+    /**
+     * Crps
+     */
+    crps: string;
+    /**
+     * Mae
+     */
+    mae: string;
+    /**
+     * Model Code
+     */
+    model_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * PredictionLedgerResponse
+ */
+export type PredictionLedgerResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Prediction Kind
+     */
+    prediction_kind: string;
+    /**
+     * Horizon Code
+     */
+    horizon_code: string;
+    /**
+     * Interval Low
+     */
+    interval_low: string;
+    /**
+     * Interval High
+     */
+    interval_high: string;
+    /**
+     * Crps
+     */
+    crps: string;
+    /**
+     * Mae
+     */
+    mae: string;
+    /**
+     * Model Code
+     */
+    model_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * QuotationBatchCreate
  */
 export type QuotationBatchCreate = {
@@ -10805,6 +10889,49 @@ export type CreateCarbonMethodApiV1CarbonMethodsPostResponses = {
 };
 
 export type CreateCarbonMethodApiV1CarbonMethodsPostResponse = CreateCarbonMethodApiV1CarbonMethodsPostResponses[keyof CreateCarbonMethodApiV1CarbonMethodsPostResponses];
+
+export type ListPredictionLedgersApiV1PredictionLedgersGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/prediction-ledgers';
+};
+
+export type ListPredictionLedgersApiV1PredictionLedgersGetResponses = {
+    /**
+     * Response List Prediction Ledgers Api V1 Prediction Ledgers Get
+     *
+     * Successful Response
+     */
+    200: Array<PredictionLedgerResponse>;
+};
+
+export type ListPredictionLedgersApiV1PredictionLedgersGetResponse = ListPredictionLedgersApiV1PredictionLedgersGetResponses[keyof ListPredictionLedgersApiV1PredictionLedgersGetResponses];
+
+export type CreatePredictionLedgerApiV1PredictionLedgersPostData = {
+    body: PredictionLedgerCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/prediction-ledgers';
+};
+
+export type CreatePredictionLedgerApiV1PredictionLedgersPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreatePredictionLedgerApiV1PredictionLedgersPostError = CreatePredictionLedgerApiV1PredictionLedgersPostErrors[keyof CreatePredictionLedgerApiV1PredictionLedgersPostErrors];
+
+export type CreatePredictionLedgerApiV1PredictionLedgersPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: PredictionLedgerResponse;
+};
+
+export type CreatePredictionLedgerApiV1PredictionLedgersPostResponse = CreatePredictionLedgerApiV1PredictionLedgersPostResponses[keyof CreatePredictionLedgerApiV1PredictionLedgersPostResponses];
 
 export type ListCashDiscountsApiV1CashDiscountsGetData = {
     body?: never;

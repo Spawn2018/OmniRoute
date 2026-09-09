@@ -628,3 +628,7 @@ class InvalidCashDiscount(DomainError):
 
 class InvalidCarbonMethod(DomainError):
     """Metodyka C5: HITL GLEC/GHG + wersja z source_ref — nie kg i nie kalkulator."""
+
+
+class InvalidPredictionLedger(DomainError):
+    """Ledger B0b/V1: HITL przedział + CRPS/MAE jako dane — nie silnik i nie scoring osoby."""

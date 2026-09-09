@@ -124,6 +124,11 @@ const NAV_ACTIONS = [
     to: "/carbon-methods",
   },
   {
+    id: "nav-prediction-ledgers",
+    label: "Idź do ledgeru predykcji",
+    to: "/prediction-ledgers",
+  },
+  {
     id: "nav-tender-award-reviews",
     label: "Idź do czterech oczu nagrody",
     to: "/tender-award-reviews",

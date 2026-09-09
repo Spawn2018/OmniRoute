@@ -189,6 +189,11 @@ export const OPS_JOBS = [
     job: "HITL GLEC/GHG bez kalkulatora kg",
   },
   {
+    route: BUSINESS_LISTS.predictionLedger.route,
+    label: "Ledger predykcji",
+    job: "HITL przedział + CRPS bez silnika",
+  },
+  {
     route: BUSINESS_LISTS.tenderAwardReview.route,
     label: "Cztery oczy nagrody",
     job: "HITL przegląd nagrody bez auto-award",
@@ -627,6 +632,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "190.0": "/carbon-methods",
   "191.0": "/claims",
   "192.0": "/dangerous-goods",
+  "193.0": "/prediction-ledgers",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

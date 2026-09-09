@@ -7466,6 +7466,80 @@
         ]
       }
     },
+    "/api/v1/prediction-ledgers": {
+      "get": {
+        "tags": [
+          "prediction-ledgers"
+        ],
+        "summary": "List Prediction Ledgers",
+        "operationId": "list_prediction_ledgers_api_v1_prediction_ledgers_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PredictionLedgerResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Prediction Ledgers Api V1 Prediction Ledgers Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "prediction-ledgers"
+        ],
+        "summary": "Create Prediction Ledger",
+        "operationId": "create_prediction_ledger_api_v1_prediction_ledgers_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PredictionLedgerCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PredictionLedgerResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/cash-discounts": {
       "get": {
         "tags": [
@@ -17608,6 +17682,115 @@
           "source_ref"
         ],
         "title": "PortSurchargeResponse"
+      },
+      "PredictionLedgerCreate": {
+        "properties": {
+          "prediction_kind": {
+            "type": "string",
+            "title": "Prediction Kind"
+          },
+          "horizon_code": {
+            "type": "string",
+            "title": "Horizon Code"
+          },
+          "interval_low": {
+            "type": "string",
+            "title": "Interval Low"
+          },
+          "interval_high": {
+            "type": "string",
+            "title": "Interval High"
+          },
+          "crps": {
+            "type": "string",
+            "title": "Crps"
+          },
+          "mae": {
+            "type": "string",
+            "title": "Mae"
+          },
+          "model_code": {
+            "type": "string",
+            "title": "Model Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "prediction_kind",
+          "horizon_code",
+          "interval_low",
+          "interval_high",
+          "crps",
+          "mae",
+          "model_code",
+          "source_ref"
+        ],
+        "title": "PredictionLedgerCreate"
+      },
+      "PredictionLedgerResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "prediction_kind": {
+            "type": "string",
+            "title": "Prediction Kind"
+          },
+          "horizon_code": {
+            "type": "string",
+            "title": "Horizon Code"
+          },
+          "interval_low": {
+            "type": "string",
+            "title": "Interval Low"
+          },
+          "interval_high": {
+            "type": "string",
+            "title": "Interval High"
+          },
+          "crps": {
+            "type": "string",
+            "title": "Crps"
+          },
+          "mae": {
+            "type": "string",
+            "title": "Mae"
+          },
+          "model_code": {
+            "type": "string",
+            "title": "Model Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "prediction_kind",
+          "horizon_code",
+          "interval_low",
+          "interval_high",
+          "crps",
+          "mae",
+          "model_code",
+          "source_ref"
+        ],
+        "title": "PredictionLedgerResponse"
       },
       "QuotationBatchCreate": {
         "properties": {

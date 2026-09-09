@@ -73,6 +73,7 @@ def test_authorization_model_includes_table_view_permission() -> None:
     assert "can_manage_party_documents" in org.relations
     assert "can_manage_cash_discounts" in org.relations
     assert "can_manage_carbon_methods" in org.relations
+    assert "can_manage_prediction_ledgers" in org.relations
     assert "can_manage_tender_award_reviews" in org.relations
     assert "can_manage_tender_ted_notices" in org.relations
     assert "can_manage_tender_rfp_intakes" in org.relations
@@ -265,6 +266,9 @@ def test_authorization_model_includes_table_view_permission() -> None:
     carbon_methods = org.relations["can_manage_carbon_methods"]
     assert carbon_methods.computed_userset is not None
     assert carbon_methods.computed_userset.relation == "member"
+    prediction_ledgers = org.relations["can_manage_prediction_ledgers"]
+    assert prediction_ledgers.computed_userset is not None
+    assert prediction_ledgers.computed_userset.relation == "member"
     tender_award_reviews = org.relations["can_manage_tender_award_reviews"]
     assert tender_award_reviews.computed_userset is not None
     assert tender_award_reviews.computed_userset.relation == "member"
