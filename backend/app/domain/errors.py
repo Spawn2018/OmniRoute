@@ -664,3 +664,7 @@ class InvalidMemoryEdge(DomainError):
 
 class InvalidExecutiveMark(DomainError):
     """Zarząd W4: HITL rodzaj pytania — nie suma LLM i nie zdania z agregatów."""
+
+
+class InvalidRankMark(DomainError):
+    """Ranking W5: HITL oś zakupu — nie auto-award i nie paczka szkiców."""

@@ -169,6 +169,11 @@ const NAV_ACTIONS = [
     to: "/executive-marks",
   },
   {
+    id: "nav-rank-marks",
+    label: "Idź do osi rankingu",
+    to: "/rank-marks",
+  },
+  {
     id: "nav-tender-award-reviews",
     label: "Idź do czterech oczu nagrody",
     to: "/tender-award-reviews",

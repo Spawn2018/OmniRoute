@@ -73,6 +73,7 @@ import { Route as QualityRouteImport } from './routes/quality'
 import { Route as QuotationsRouteImport } from './routes/quotations'
 import { Route as QuoteInvoicesRouteImport } from './routes/quote-invoices'
 import { Route as RailRouteImport } from './routes/rail'
+import { Route as RankMarksRouteImport } from './routes/rank-marks'
 import { Route as RateCardsRouteImport } from './routes/rate-cards'
 import { Route as RateLinesRouteImport } from './routes/rate-lines'
 import { Route as RoadRouteImport } from './routes/road'
@@ -428,6 +429,11 @@ const RailRoute = RailRouteImport.update({
   path: '/rail',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RankMarksRoute = RankMarksRouteImport.update({
+  id: '/rank-marks',
+  path: '/rank-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RateCardsRoute = RateCardsRouteImport.update({
   id: '/rate-cards',
   path: '/rate-cards',
@@ -664,6 +670,7 @@ export interface FileRoutesByFullPath {
   '/quotations': typeof QuotationsRoute
   '/quote-invoices': typeof QuoteInvoicesRoute
   '/rail': typeof RailRoute
+  '/rank-marks': typeof RankMarksRoute
   '/rate-cards': typeof RateCardsRoute
   '/rate-lines': typeof RateLinesRoute
   '/road': typeof RoadRoute
@@ -764,6 +771,7 @@ export interface FileRoutesByTo {
   '/quotations': typeof QuotationsRoute
   '/quote-invoices': typeof QuoteInvoicesRoute
   '/rail': typeof RailRoute
+  '/rank-marks': typeof RankMarksRoute
   '/rate-cards': typeof RateCardsRoute
   '/rate-lines': typeof RateLinesRoute
   '/road': typeof RoadRoute
@@ -865,6 +873,7 @@ export interface FileRoutesById {
   '/quotations': typeof QuotationsRoute
   '/quote-invoices': typeof QuoteInvoicesRoute
   '/rail': typeof RailRoute
+  '/rank-marks': typeof RankMarksRoute
   '/rate-cards': typeof RateCardsRoute
   '/rate-lines': typeof RateLinesRoute
   '/road': typeof RoadRoute
@@ -967,6 +976,7 @@ export interface FileRouteTypes {
     | '/quotations'
     | '/quote-invoices'
     | '/rail'
+    | '/rank-marks'
     | '/rate-cards'
     | '/rate-lines'
     | '/road'
@@ -1067,6 +1077,7 @@ export interface FileRouteTypes {
     | '/quotations'
     | '/quote-invoices'
     | '/rail'
+    | '/rank-marks'
     | '/rate-cards'
     | '/rate-lines'
     | '/road'
@@ -1167,6 +1178,7 @@ export interface FileRouteTypes {
     | '/quotations'
     | '/quote-invoices'
     | '/rail'
+    | '/rank-marks'
     | '/rate-cards'
     | '/rate-lines'
     | '/road'
@@ -1268,6 +1280,7 @@ export interface RootRouteChildren {
   QuotationsRoute: typeof QuotationsRoute
   QuoteInvoicesRoute: typeof QuoteInvoicesRoute
   RailRoute: typeof RailRoute
+  RankMarksRoute: typeof RankMarksRoute
   RateCardsRoute: typeof RateCardsRoute
   RateLinesRoute: typeof RateLinesRoute
   RoadRoute: typeof RoadRoute
@@ -1754,6 +1767,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RailRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/rank-marks': {
+      id: '/rank-marks'
+      path: '/rank-marks'
+      fullPath: '/rank-marks'
+      preLoaderRoute: typeof RankMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/rate-cards': {
       id: '/rate-cards'
       path: '/rate-cards'
@@ -2060,6 +2080,7 @@ const rootRouteChildren: RootRouteChildren = {
   QuotationsRoute: QuotationsRoute,
   QuoteInvoicesRoute: QuoteInvoicesRoute,
   RailRoute: RailRoute,
+  RankMarksRoute: RankMarksRoute,
   RateCardsRoute: RateCardsRoute,
   RateLinesRoute: RateLinesRoute,
   RoadRoute: RoadRoute,

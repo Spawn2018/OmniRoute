@@ -82,6 +82,7 @@ const NAV = [
   { to: "/war-room-marks", label: "Sala kryzysowa" },
   { to: "/memory-edges", label: "Krawędź pamięci" },
   { to: "/executive-marks", label: "Pytanie zarządu" },
+  { to: "/rank-marks", label: "Oś rankingu" },
   { to: "/tender-award-reviews", label: "Cztery oczy nagrody" },
   { to: "/tender-ted-notices", label: "Ogłoszenie TED" },
   { to: "/tender-lanes", label: "Korytarze przetargu" },

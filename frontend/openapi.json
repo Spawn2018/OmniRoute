@@ -2917,6 +2917,80 @@
         ]
       }
     },
+    "/api/v1/rank-marks": {
+      "get": {
+        "tags": [
+          "rank-marks"
+        ],
+        "summary": "List Rank Marks",
+        "operationId": "list_rank_marks_api_v1_rank_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/RankMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Rank Marks Api V1 Rank Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "rank-marks"
+        ],
+        "summary": "Create Rank Mark",
+        "operationId": "create_rank_mark_api_v1_rank_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RankMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RankMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/outbox-events": {
       "get": {
         "tags": [
@@ -19099,6 +19173,55 @@
           "source_ref"
         ],
         "title": "QuoteInvoiceSettlementResponse"
+      },
+      "RankMarkCreate": {
+        "properties": {
+          "rank_kind": {
+            "type": "string",
+            "title": "Rank Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "rank_kind",
+          "source_ref"
+        ],
+        "title": "RankMarkCreate"
+      },
+      "RankMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "rank_kind": {
+            "type": "string",
+            "title": "Rank Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "rank_kind",
+          "source_ref"
+        ],
+        "title": "RankMarkResponse"
       },
       "RateCardCreate": {
         "properties": {

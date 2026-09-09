@@ -486,3 +486,4 @@
 | 2026-09-09 | Plan 202.0 | W4 | executive_mark HITL rodzaj pytania zarządu, nie suma LLM. Delta zaakceptowana (`/noc`). Nastepny: kod 202.0. |
 | 2026-09-09 | 202.0 | W4 | executive_mark HITL rodzaj pytania zarządu. Nie suma LLM. Nie narracja SQL. Nastepny: W5 ranking Plan. |
 | 2026-09-09 | Plan 203.0 | W5 | rank_mark HITL oś rankingu, nie auto-award. Delta zaakceptowana (`/noc`). Nastepny: kod 203.0. |
+| 2026-09-09 | 203.0 | W5 | rank_mark HITL oś rankingu zakupu. Nie auto-award. Nie N szkiców. Nastepny: leftover D9b Plan. |

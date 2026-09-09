@@ -86,6 +86,7 @@ type organization
     define can_manage_war_room_marks: member
     define can_manage_memory_edges: member
     define can_manage_executive_marks: member
+    define can_manage_rank_marks: member
     define can_manage_tender_award_reviews: member
     define can_manage_tender_ted_notices: member
     define can_manage_tender_rfp_intakes: member

@@ -4707,6 +4707,42 @@ export type QuoteInvoiceSettlementResponse = {
 };
 
 /**
+ * RankMarkCreate
+ */
+export type RankMarkCreate = {
+    /**
+     * Rank Kind
+     */
+    rank_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * RankMarkResponse
+ */
+export type RankMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Rank Kind
+     */
+    rank_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * RateCardCreate
  */
 export type RateCardCreate = {
@@ -8644,6 +8680,49 @@ export type CreateExecutiveMarkApiV1ExecutiveMarksPostResponses = {
 };
 
 export type CreateExecutiveMarkApiV1ExecutiveMarksPostResponse = CreateExecutiveMarkApiV1ExecutiveMarksPostResponses[keyof CreateExecutiveMarkApiV1ExecutiveMarksPostResponses];
+
+export type ListRankMarksApiV1RankMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/rank-marks';
+};
+
+export type ListRankMarksApiV1RankMarksGetResponses = {
+    /**
+     * Response List Rank Marks Api V1 Rank Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<RankMarkResponse>;
+};
+
+export type ListRankMarksApiV1RankMarksGetResponse = ListRankMarksApiV1RankMarksGetResponses[keyof ListRankMarksApiV1RankMarksGetResponses];
+
+export type CreateRankMarkApiV1RankMarksPostData = {
+    body: RankMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/rank-marks';
+};
+
+export type CreateRankMarkApiV1RankMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateRankMarkApiV1RankMarksPostError = CreateRankMarkApiV1RankMarksPostErrors[keyof CreateRankMarkApiV1RankMarksPostErrors];
+
+export type CreateRankMarkApiV1RankMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: RankMarkResponse;
+};
+
+export type CreateRankMarkApiV1RankMarksPostResponse = CreateRankMarkApiV1RankMarksPostResponses[keyof CreateRankMarkApiV1RankMarksPostResponses];
 
 export type ListOutboxEventsApiV1OutboxEventsGetData = {
     body?: never;
