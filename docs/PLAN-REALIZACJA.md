@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny (zablokowany):** leftover U3c pule M-03 parked → leftover P4c warning parked → leftover P1c WHEN/IF/CALC parked → leftover P1d exclusion parked → leftover D9c–f PDF/ZPL/409 sieci parked → leftover V7 tacho TO_VERIFY parked → leftover V8 what-if parked → leftover V6 silnik EBITDA / `sla_clause` CI5 parked → leftover V5 `position_event` / ciphertext / 3 dni U4 parked → leftover V5b `exchange_message` parked → leftover V4 AIS wieży (S32) parked → leftover V2b myto→`charge` parked → leftover C3 live VIES/GUS parked → leftover C4 eCMR parked → leftover C9 Trans.eu parked → leftover C2 AIS/PUESC parked → leftover C6 BDO parked → leftover F2b Decimal/rezerwy parked → leftover F3 noty/period lock parked → leftover F4 CAMT parked → leftover G2.20–G2.22 circle_sim/km/P parked → leftover G2.15–G2.18 kg/CBAM parked → leftover F1 live FA(3) parked → leftover C1 filing XML parked → leftover C8 409/`relation_document_requirement` parked → leftover N3 countdown D&D / szkic `charge` parked → leftover P3b SQL na `charge` parked → leftover P3c live HTTP parked → leftover P3d A11 parked → leftover P5b–c parked → leftover P6c auto-award parked → leftover G2.23 Citizen API parked → leftover P4b armator/serwis parked → leftover T4 `parent_shipment_id` → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. D8 parked. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
+**Następny (zablokowany):** **210.0** leftover T4 `parent_shipment_id` → leftover T4b rentowność SQL parked → leftover U3c pule M-03 parked → leftover P4c warning parked → leftover P1c WHEN/IF/CALC parked → leftover P1d exclusion parked → leftover D9c–f PDF/ZPL/409 sieci parked → leftover V7 tacho TO_VERIFY parked → leftover V8 what-if parked → leftover V6 silnik EBITDA / `sla_clause` CI5 parked → leftover V5 `position_event` / ciphertext / 3 dni U4 parked → leftover V5b `exchange_message` parked → leftover V4 AIS wieży (S32) parked → leftover V2b myto→`charge` parked → leftover C3 live VIES/GUS parked → leftover C4 eCMR parked → leftover C9 Trans.eu parked → leftover C2 AIS/PUESC parked → leftover C6 BDO parked → leftover F2b Decimal/rezerwy parked → leftover F3 noty/period lock parked → leftover F4 CAMT parked → leftover G2.20–G2.22 circle_sim/km/P parked → leftover G2.15–G2.18 kg/CBAM parked → leftover F1 live FA(3) parked → leftover C1 filing XML parked → leftover C8 409/`relation_document_requirement` parked → leftover N3 countdown D&D / szkic `charge` parked → leftover P3b SQL na `charge` parked → leftover P3c live HTTP parked → leftover P3d A11 parked → leftover P5b–c parked → leftover P6c auto-award parked → leftover G2.23 Citizen API parked → leftover P4b armator/serwis parked → leftover N1 `consignment` parked → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. D8 parked. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
 <!-- os-status:end -->
 
 ```mermaid
@@ -541,7 +541,7 @@ Przy `/plan-modul`: karta T + [EXP1](analysis/karty-pol-fala-exp.md) (stop/konte
 | **N1** | `consignment` obok `shipment` | Plan → plaster | po T1, przed D2 | FTL=1; LTL/LCL=N |
 | T2 | `trip` + `resource`; floating trailer; multi-manning | zamknięty (`resource` [151.0](deltas/archived/151.0-resource.md); `trip` [152.0](deltas/archived/152.0-trip.md); leftover T2c) | po T1 | nie własne HW; job S50 |
 | T3 | `container` ISO + EXP1 (VGM, free time, BL kind, cutoffy CY/CFS/VGM/SI/AMS) | zamknięty ([153.0](deltas/archived/153.0-container.md); leftover EXP1 VGM/cutoffy) | po T1 | nie booking armatorski |
-| T4 | `parent_shipment_id`; rentowność SQL na `charge` | Plan → plaster | po T1 | |
+| T4 | `parent_shipment_id`; rentowność SQL na `charge` | Plan → plaster (delta [210.0](deltas/open/210.0-shipment-parent.md); leftover T4b SQL na `charge`) | po T1 | nie druga marża |
 | T5 | task engine (warunki = dane) | Plan → plaster | po T2 | async po konsumencie outboxa (leftover M-02) |
 | T6 | planning board 4 widoki + mapa lazy + klawiatura N10 | Plan → plaster | po T2 | mapa poza 250 kB |
 | **N11** | handover SBAR zmiany | Plan → plaster | po T6 | |
@@ -843,13 +843,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

@@ -499,3 +499,4 @@
 | 2026-09-09 | 208.0 | P4b | local_charge iso_size_type HITL. Nie FK container. Nastepny: leftover P4c parked. |
 | 2026-09-09 | Plan 209.0 | U3b | hawb_no/mawb_no HITL na shipment_leg air, nie pula IATA. Delta zaakceptowana (`/noc`). Nie ocean_bill. Nastepny: kod 209.0. |
 | 2026-09-09 | 209.0 | U3b | hawb_no/mawb_no HITL na shipment_leg air. Nie pula IATA. Nie ocean_bill. Nastepny: leftover T4 parent_shipment_id Plan. |
+| 2026-09-09 | Plan 210.0 | T4 | parent_shipment_id HITL FK na shipment, nie SQL na charge. Delta zaakceptowana (`/noc`). Nie N1. Nastepny: kod 210.0. |
