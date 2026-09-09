@@ -7836,6 +7836,80 @@
         ]
       }
     },
+    "/api/v1/twin-marks": {
+      "get": {
+        "tags": [
+          "twin-marks"
+        ],
+        "summary": "List Twin Marks",
+        "operationId": "list_twin_marks_api_v1_twin_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TwinMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Twin Marks Api V1 Twin Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "twin-marks"
+        ],
+        "summary": "Create Twin Mark",
+        "operationId": "create_twin_mark_api_v1_twin_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TwinMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TwinMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/cash-discounts": {
       "get": {
         "tags": [
@@ -21760,6 +21834,55 @@
           "superseded_by"
         ],
         "title": "TripResponse"
+      },
+      "TwinMarkCreate": {
+        "properties": {
+          "twin_kind": {
+            "type": "string",
+            "title": "Twin Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "twin_kind",
+          "source_ref"
+        ],
+        "title": "TwinMarkCreate"
+      },
+      "TwinMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "twin_kind": {
+            "type": "string",
+            "title": "Twin Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "twin_kind",
+          "source_ref"
+        ],
+        "title": "TwinMarkResponse"
       },
       "ValidationError": {
         "properties": {

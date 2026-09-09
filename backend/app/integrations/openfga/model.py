@@ -44,6 +44,7 @@ def _organization_core_relations() -> dict[str, Userset]:
         "can_manage_entity_events": _member(),
         "can_manage_telematics_connectors": _member(),
         "can_manage_tower_impacts": _member(),
+        "can_manage_twin_marks": _member(),
     }
 
 

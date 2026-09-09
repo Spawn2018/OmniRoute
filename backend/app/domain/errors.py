@@ -648,3 +648,7 @@ class InvalidTelematicsConnector(DomainError):
 
 class InvalidTowerImpact(DomainError):
     """Impact V6: HITL etap łańcucha + status umowy — nie scoring osoby i nie EBITDA."""
+
+
+class InvalidTwinMark(DomainError):
+    """Bliźniak W1: HITL rodzaj 8 — nie fizyka i nie plan_snapshot."""

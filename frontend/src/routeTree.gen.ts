@@ -100,6 +100,7 @@ import { Route as TendersRouteImport } from './routes/tenders'
 import { Route as TerminalsRouteImport } from './routes/terminals'
 import { Route as TowerImpactsRouteImport } from './routes/tower-impacts'
 import { Route as TrackingRouteImport } from './routes/tracking'
+import { Route as TwinMarksRouteImport } from './routes/twin-marks'
 import { Route as WatchtowerRouteImport } from './routes/watchtower'
 import { Route as WeatherObservationsRouteImport } from './routes/weather-observations'
 import { Route as TenancyUsersRouteImport } from './routes/tenancy.users'
@@ -559,6 +560,11 @@ const TrackingRoute = TrackingRouteImport.update({
   path: '/tracking',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TwinMarksRoute = TwinMarksRouteImport.update({
+  id: '/twin-marks',
+  path: '/twin-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WatchtowerRoute = WatchtowerRouteImport.update({
   id: '/watchtower',
   path: '/watchtower',
@@ -667,6 +673,7 @@ export interface FileRoutesByFullPath {
   '/terminals': typeof TerminalsRoute
   '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
+  '/twin-marks': typeof TwinMarksRoute
   '/watchtower': typeof WatchtowerRoute
   '/weather-observations': typeof WeatherObservationsRoute
   '/tenancy/users': typeof TenancyUsersRoute
@@ -763,6 +770,7 @@ export interface FileRoutesByTo {
   '/terminals': typeof TerminalsRoute
   '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
+  '/twin-marks': typeof TwinMarksRoute
   '/watchtower': typeof WatchtowerRoute
   '/weather-observations': typeof WeatherObservationsRoute
   '/tenancy/users': typeof TenancyUsersRoute
@@ -860,6 +868,7 @@ export interface FileRoutesById {
   '/terminals': typeof TerminalsRoute
   '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
+  '/twin-marks': typeof TwinMarksRoute
   '/watchtower': typeof WatchtowerRoute
   '/weather-observations': typeof WeatherObservationsRoute
   '/tenancy/users': typeof TenancyUsersRoute
@@ -958,6 +967,7 @@ export interface FileRouteTypes {
     | '/terminals'
     | '/tower-impacts'
     | '/tracking'
+    | '/twin-marks'
     | '/watchtower'
     | '/weather-observations'
     | '/tenancy/users'
@@ -1054,6 +1064,7 @@ export interface FileRouteTypes {
     | '/terminals'
     | '/tower-impacts'
     | '/tracking'
+    | '/twin-marks'
     | '/watchtower'
     | '/weather-observations'
     | '/tenancy/users'
@@ -1150,6 +1161,7 @@ export interface FileRouteTypes {
     | '/terminals'
     | '/tower-impacts'
     | '/tracking'
+    | '/twin-marks'
     | '/watchtower'
     | '/weather-observations'
     | '/tenancy/users'
@@ -1247,6 +1259,7 @@ export interface RootRouteChildren {
   TerminalsRoute: typeof TerminalsRoute
   TowerImpactsRoute: typeof TowerImpactsRoute
   TrackingRoute: typeof TrackingRoute
+  TwinMarksRoute: typeof TwinMarksRoute
   WatchtowerRoute: typeof WatchtowerRoute
   WeatherObservationsRoute: typeof WeatherObservationsRoute
   TenancyUsersRoute: typeof TenancyUsersRoute
@@ -1891,6 +1904,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TrackingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/twin-marks': {
+      id: '/twin-marks'
+      path: '/twin-marks'
+      fullPath: '/twin-marks'
+      preLoaderRoute: typeof TwinMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/watchtower': {
       id: '/watchtower'
       path: '/watchtower'
@@ -2007,6 +2027,7 @@ const rootRouteChildren: RootRouteChildren = {
   TerminalsRoute: TerminalsRoute,
   TowerImpactsRoute: TowerImpactsRoute,
   TrackingRoute: TrackingRoute,
+  TwinMarksRoute: TwinMarksRoute,
   WatchtowerRoute: WatchtowerRoute,
   WeatherObservationsRoute: WeatherObservationsRoute,
   TenancyUsersRoute: TenancyUsersRoute,

@@ -149,6 +149,11 @@ const NAV_ACTIONS = [
     to: "/tower-impacts",
   },
   {
+    id: "nav-twin-marks",
+    label: "Idź do bliźniaka",
+    to: "/twin-marks",
+  },
+  {
     id: "nav-tender-award-reviews",
     label: "Idź do czterech oczu nagrody",
     to: "/tender-award-reviews",

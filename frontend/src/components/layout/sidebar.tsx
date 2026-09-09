@@ -78,6 +78,7 @@ const NAV = [
   { to: "/free-time-clocks", label: "Zegar DD" },
   { to: "/telematics-connectors", label: "Konektor GPS" },
   { to: "/tower-impacts", label: "Skutek wieży" },
+  { to: "/twin-marks", label: "Bliźniak" },
   { to: "/tender-award-reviews", label: "Cztery oczy nagrody" },
   { to: "/tender-ted-notices", label: "Ogłoszenie TED" },
   { to: "/tender-lanes", label: "Korytarze przetargu" },

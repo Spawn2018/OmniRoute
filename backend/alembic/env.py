@@ -104,6 +104,7 @@ from app.models.weather_observation import WeatherObservation  # noqa: F401
 from app.models.free_time_clock import FreeTimeClock  # noqa: F401
 from app.models.telematics_connector import TelematicsConnector  # noqa: F401
 from app.models.tower_impact import TowerImpact  # noqa: F401
+from app.models.twin_mark import TwinMark  # noqa: F401
 from app.models.cash_discount import CashDiscount  # noqa: F401
 from app.models.tender_ted_notice import TenderTedNotice  # noqa: F401
 from app.models.tender_prospect import TenderProspect  # noqa: F401

@@ -104,6 +104,7 @@ modules =
     app.services.free_time_clocks
     app.services.telematics_connectors
     app.services.tower_impacts
+    app.services.twin_marks
     app.services.tender_award_reviews
     app.services.tender_ted_notices
     app.services.tender_rfp_intakes
@@ -382,6 +383,9 @@ forbidden_modules =
     app.services.tower_impacts
     app.repositories.tower_impacts
     app.models.tower_impact
+    app.services.twin_marks
+    app.repositories.twin_marks
+    app.models.twin_mark
     app.services.tender_award_reviews
     app.repositories.tender_award_reviews
     app.models.tender_award_review

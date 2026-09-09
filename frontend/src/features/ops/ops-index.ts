@@ -214,6 +214,11 @@ export const OPS_JOBS = [
     job: "HITL etap łańcucha bez scoringu",
   },
   {
+    route: BUSINESS_LISTS.twinMark.route,
+    label: "Bliźniak",
+    job: "HITL 8 rodzajów bez fizyki",
+  },
+  {
     route: BUSINESS_LISTS.tenderAwardReview.route,
     label: "Cztery oczy nagrody",
     job: "HITL przegląd nagrody bez auto-award",
@@ -658,6 +663,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "196.0": "/free-time-clocks",
   "197.0": "/telematics-connectors",
   "198.0": "/tower-impacts",
+  "199.0": "/twin-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =
