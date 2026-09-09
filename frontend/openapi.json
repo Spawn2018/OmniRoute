@@ -22412,6 +22412,17 @@
               }
             ],
             "title": "Expected Buy Currency"
+          },
+          "route_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Route Label"
           }
         },
         "additionalProperties": false,
@@ -22517,6 +22528,17 @@
             ],
             "title": "Expected Buy Currency"
           },
+          "route_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Route Label"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -22543,6 +22565,7 @@
           "source_ref",
           "expected_buy_amount",
           "expected_buy_currency",
+          "route_label",
           "superseded_by"
         ],
         "title": "TripResponse"

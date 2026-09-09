@@ -8,6 +8,7 @@ from app.domain.errors import InvalidTrip
 from app.domain.trip import (
     require_distinct_drivers,
     require_expected_buy,
+    require_route_label,
     require_trip_no,
     require_trip_slot,
     require_trip_source_ref,
@@ -67,3 +68,14 @@ def test_distinct_drivers_rejects_same_uuid() -> None:
     token = uuid4()
     with pytest.raises(InvalidTrip, match="kierowca"):
         require_distinct_drivers(token, token)
+
+
+def test_route_label_omits_blank_and_keeps_token() -> None:
+    assert require_route_label(None) is None
+    assert require_route_label("  ") is None
+    assert require_route_label(" GDYNIA (PL) - BLONIE (PL) ") == "GDYNIA (PL) - BLONIE (PL)"
+
+
+def test_route_label_rejects_too_long() -> None:
+    with pytest.raises(InvalidTrip, match="trasa"):
+        require_route_label("x" * 129)

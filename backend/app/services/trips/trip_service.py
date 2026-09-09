@@ -7,6 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.domain.trip import (
     require_distinct_drivers,
     require_expected_buy,
+    require_route_label,
     require_trip_no,
     require_trip_resource_id,
     require_trip_source_ref,
@@ -24,6 +25,7 @@ class _RunDraft(NamedTuple):
     driver_id: UUID | None
     driver2_id: UUID | None
     origin: str
+    route_label: str | None
     buy_amount: Decimal | None
     buy_currency: str | None
 
@@ -38,6 +40,7 @@ def _run_draft(
     source_ref: object,
     expected_buy_amount: object,
     expected_buy_currency: object,
+    route_label: object,
 ) -> _RunDraft:
     state = require_trip_status(status)
     buy_amount, buy_currency = require_expected_buy(
@@ -56,6 +59,7 @@ def _run_draft(
         first,
         second,
         require_trip_source_ref(source_ref),
+        require_route_label(route_label),
         buy_amount,
         buy_currency,
     )
@@ -69,6 +73,7 @@ def _run_unchanged(current: Trip, draft: _RunDraft) -> bool:
         and current.driver_id == draft.driver_id
         and current.driver2_id == draft.driver2_id
         and current.source_ref == draft.origin
+        and current.route_label == draft.route_label
         and current.expected_buy_amount == draft.buy_amount
         and (
             None
@@ -106,6 +111,7 @@ class TripService:
                 driver_id=draft.driver_id,
                 driver2_id=draft.driver2_id,
                 source_ref=draft.origin,
+                route_label=draft.route_label,
                 expected_buy_amount=draft.buy_amount,
                 expected_buy_currency=draft.buy_currency,
                 created_by=user_id,
@@ -129,6 +135,7 @@ class TripService:
         expected_buy_amount: object = None,
         expected_buy_currency: object = None,
         driver2_id: object = None,
+        route_label: object = None,
     ) -> Trip:
         draft = _run_draft(
             trip_no,
@@ -140,6 +147,7 @@ class TripService:
             source_ref,
             expected_buy_amount,
             expected_buy_currency,
+            route_label,
         )
         current = await self._rows.find_current(draft.number)
         if current is not None and _run_unchanged(current, draft):

@@ -28,6 +28,7 @@ class TripCreate(BaseModel):
     source_ref: str
     expected_buy_amount: str | None = None
     expected_buy_currency: str | None = None
+    route_label: str | None = None
 
 
 class TripResponse(BaseModel):
@@ -44,6 +45,7 @@ class TripResponse(BaseModel):
     source_ref: str
     expected_buy_amount: str | None
     expected_buy_currency: str | None
+    route_label: str | None
     superseded_by: UUID | None
 
 
@@ -62,6 +64,7 @@ def _as_response(row: Trip) -> TripResponse:
         source_ref=row.source_ref,
         expected_buy_amount=amount,
         expected_buy_currency=currency,
+        route_label=row.route_label,
         superseded_by=row.superseded_by,
     )
 
@@ -112,6 +115,7 @@ async def create_trip(
         source_ref=body.source_ref,
         expected_buy_amount=body.expected_buy_amount,
         expected_buy_currency=body.expected_buy_currency,
+        route_label=body.route_label,
     )
     await session.commit()
     return _as_response(row)

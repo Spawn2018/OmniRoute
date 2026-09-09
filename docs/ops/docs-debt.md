@@ -12,8 +12,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 
 - **148.0 leftover:** dwa `mail_draft` przy DAP `contact_exchange`; live HTTP S21. Tu tylko status na wierszu. Nie send.
 - **147.0 leftover:** tabela `document_dispatch` (batch mail + send S18). Tu tylko katalog adresata. Nie auto-send.
-- **150.0 leftover:** `stop_group`; waga/plomba/awizacja (EXP1). ETA HITL DONE 194.0. Tu tylko punkt + location + strefa IANA + dwa ETA HITL. Nie mapa. `resource` = 151.0. `trip` = 152.0.
-- **194.0 leftover:** Open-Meteo live HTTP / geometria trip DONE HITL 195.0 (`weather_observation`). Zostaje feed Open-Meteo / lat/lng; myto → `charge` (V2b); GPS/tacho / silnik ETA; `stop_group`. Tu tylko `eta_physical` + `eta_legal` HITL na `stop`. Nie GPS.
+- **150.0 leftover:** `stop_group` kolumna DONE 213.0. Zostaje T1b tabela; EXP1 waga/plomba/awizacja; `notes_for_driver`. ETA HITL DONE 194.0. Tu tylko punkt + location + strefa IANA + dwa ETA HITL + grupa. Nie mapa. `resource` = 151.0. `trip` = 152.0.
+- **194.0 leftover:** Open-Meteo live HTTP / geometria trip DONE HITL 195.0 (`weather_observation`). `stop_group` kolumna DONE 213.0. Zostaje feed Open-Meteo / lat/lng; myto → `charge` (V2b); GPS/tacho / silnik ETA; T1b tabela. Tu tylko `eta_physical` + `eta_legal` HITL na `stop`. Nie GPS.
 - **197.0 leftover:** `position_event` lat/lng / poll; `credential_ciphertext`; `resource_telematics_link` + 3 dni robocze U4; V5b `exchange_message`. Tu tylko `telematics_connector` HITL `observation_kind` + `provider_code` + `source_ref`. Nie track. Nie sekrety.
 - **203.0 leftover:** ranking SQL / Top N; N szkiców `mail_draft`; auto-award. Tu tylko `rank_mark` HITL `rank_kind` + `source_ref`. Nie sortowanie. Nie award.
 - **202.0 leftover:** zdania z agregatów SQL (117.0 / M-15); suma LLM / EBITDA; ranking W5 + auto-award. Tu tylko `executive_mark` HITL `question_kind` + `source_ref`. Nie suma. Nie narracja.
@@ -23,7 +23,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **198.0 leftover:** silnik stock→produkcja→sprzedaż→EBITDA; `sla_clause` / kara CI5; what-if V8; scoring osoby; klejenie CT2. Tu tylko `tower_impact` HITL `chain_stage` + `contract_data_status` + `source_ref`. Nie silnik. Nie kara.
 - **196.0 leftover:** N3 countdown remaining + szkic `charge`; `demurrage_free_days` na `container`; blank sailing / congestion / Gate OS; live HTTP armatora. Tu tylko `free_time_clock` HITL `clock_kind` + `free_days` + `source_ref`. Nie odliczanie. Nie marża.
 - **195.0 leftover:** Open-Meteo / IMGW / DWD live HTTP; `trip_id` / geometria / lat/lng / WMO; myto → `charge` (V2b). Tu tylko `weather_observation` HITL warunek + UN/LOCODE + czas + `source_ref`. Nie feed. Nie ETA.
-- **151.0 leftover:** `trip` DONE 152.0. Zostaje T2c: multi-manning / floating trailer; pojemności / Decimal km; `party_id`; `/fleet` / HW. Tu tylko katalog pojazd/kierowca/naczepa.
+- **151.0 leftover:** `trip` DONE 152.0. `driver2` DONE 212.0. `route_label` DONE 214.0. Zostaje T2c: floating trailer; pojemności / Decimal km; `party_id`; `/fleet` / HW. Tu tylko katalog pojazd/kierowca/naczepa.
 - **153.0 leftover:** VGM/TARA Decimal; free_time; cutoffy CY/CFS/VGM/SI/AMS; `bl_kind`; plomby/PIN; reefer; party/terminal; TEU; `shipment_leg_id`. Tu tylko ISO 6346 + `iso_size_type` + opcjonalne zlecenie. Nie booking.
 - **193.0 leftover:** `plan_snapshot` / TT z actuals; champion/challenger / drift; GPS / AIS wieży. Tu tylko `prediction_ledger` HITL przedział + CRPS/MAE + `source_ref`. Nie silnik. Nie scoring osoby.
 - **192.0 leftover:** packing group / grupy zgodności 1.xA / live IMO. Tu tylko `adr_tunnel_code` + `segregation_group` HITL na `dangerous_good`. LLM nie nadaje klasy.
@@ -70,7 +70,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **210.0 leftover:** rentowność SQL główne+podzlecenia na `charge` (T4b). Tu tylko `parent_shipment_id` + `relation_kind` HITL. Nie N1. Nie suma.
 
 - **154.0 leftover:** pule M-03; e-rates IATA; live IATA. HAWB/MAWB = 209.0 token na `air`. Tu `leg_kind=air` + `airport` w flags.
-- **152.0 leftover:** `driver2_id` / multi-manning; Decimal km / freeze kosztu; `stop_group`; `party_id`; `/fleet` / HW. Tu tylko status + opcjonalny slot floty. Nie km.
+- **214.0 leftover:** leftover T2c km/`party`/`/fleet`. Tu tylko `route_label` HITL. Nie km. Nie mapa.
+- **152.0 leftover:** `driver2_id` DONE 212.0; `route_label` DONE 214.0; `stop_group` kolumna DONE 213.0. Zostaje Decimal km / freeze kosztu; `party_id`; `/fleet` / HW. Tu tylko status + opcjonalny slot floty + etykieta. Nie km.
 - **149.0 leftover:** V5 hub GPS / `observation_ends_at` / 3 dni robocze trip. Tu tylko katalog + SQL `is_working_day`. Nie NBP.
 - **143.0 leftover:** auto-INSERT notice z inquiry (zakaz M-34); cron/Graph send. Data ciszy to pole, nie wyliczenie. Kalendarz U4 jest (149.0); N5 nie woła `is_working_day`.
 - **OS-4 (fabryka, poza osią Q/S):** [delta](../deltas/open/OS-4-fabryka-styl-rzemiosla.md). `just craft-style` + sufit `long_functions` / `long_function_overflow`. Nie merytoryka spedycji. Nie S4.

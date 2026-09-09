@@ -218,3 +218,27 @@ async def test_trip_list_uses_org_status_index(session, two_tenants) -> None:
     )
     joined = " ".join(str(row[0]) for row in plan)
     assert "ix_trip_org_status" in joined
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_trip_route_label_same_tenant(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    user_a = two_tenants["user_a"]
+    await bind_tenant(session, org_a.id)
+    row = Trip(
+        id=uuid4(),
+        organization_id=org_a.id,
+        trip_no="TR-L",
+        status="draft",
+        source_ref="fixture://trip/l",
+        route_label="GDYNIA (PL) - BLONIE (PL)",
+        created_by=user_a.id,
+    )
+    session.add(row)
+    await session.flush()
+    session.expunge_all()
+    await bind_tenant(session, org_a.id)
+    loaded = await session.scalar(select(Trip).where(Trip.id == row.id))
+    assert loaded is not None
+    assert loaded.route_label == "GDYNIA (PL) - BLONIE (PL)"

@@ -9,6 +9,7 @@ _FREEZE = frozenset({"in_transit", "completed"})
 _SLOTS = frozenset({"vehicle", "trailer", "driver"})
 _MAX_NO = 64
 _MAX_REF = 256
+_MAX_ROUTE = 128
 _FIXTURE = "fixture://trip/"
 _MANUAL = "tenant:manual"
 _CURRENCY_PATTERN = re.compile(r"^[A-Z]{3}$")
@@ -67,6 +68,19 @@ def require_trip_source_ref(raw: object) -> str:
         raise InvalidTrip("wskazanie zapisu przejazdu za długie")
     if token != _MANUAL and not token.startswith(_FIXTURE):
         raise InvalidTrip("obce wskazanie zapisu przejazdu")
+    return token
+
+
+def require_route_label(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidTrip("trasa przejazdu musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    if len(token) > _MAX_ROUTE:
+        raise InvalidTrip("trasa przejazdu za długa")
     return token
 
 

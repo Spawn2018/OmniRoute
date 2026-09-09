@@ -80,6 +80,7 @@ class Trip(Base, TimestampMixin):
     driver_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
     driver2_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
     source_ref: Mapped[str] = mapped_column(Text, nullable=False)
+    route_label: Mapped[str | None] = mapped_column(String(128), nullable=True)
     expected_buy_amount: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
     expected_buy_currency: Mapped[str | None] = mapped_column(CHAR(length=3), nullable=True)
     superseded_by: Mapped[uuid.UUID | None] = mapped_column(

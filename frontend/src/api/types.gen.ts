@@ -6766,6 +6766,10 @@ export type TripCreate = {
      * Expected Buy Currency
      */
     expected_buy_currency?: string | null;
+    /**
+     * Route Label
+     */
+    route_label?: string | null;
 };
 
 /**
@@ -6816,6 +6820,10 @@ export type TripResponse = {
      * Expected Buy Currency
      */
     expected_buy_currency: string | null;
+    /**
+     * Route Label
+     */
+    route_label: string | null;
     /**
      * Superseded By
      */

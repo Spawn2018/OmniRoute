@@ -61,6 +61,20 @@ def test_generated_api_types_include_trip() -> None:
     assert "TripResponse" in source
     assert "TripCreate" in source
     assert "driver2_id" in source
+    assert "route_label" in source
+
+
+def test_migration_153_adds_route_label_without_km() -> None:
+    source = (_ROOT / "backend" / "alembic" / "versions" / "153_trip_route_label.py").read_text(
+        encoding="utf-8"
+    )
+    assert 'revision: str = "153_trip_route_label"' in source
+    assert 'down_revision: str | None = "152_stop_group"' in source
+    assert "route_label" in source
+    assert "planned_distance" not in source
+    assert "app.services.charges" not in source
+    assert "def downgrade" in source
+    assert "route_label" in source.split("def downgrade")[1]
 
 
 def test_migration_151_adds_driver2_without_km() -> None:

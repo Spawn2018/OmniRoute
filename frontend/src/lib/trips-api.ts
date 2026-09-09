@@ -13,6 +13,7 @@ export type TripRow = {
   source_ref: string
   expected_buy_amount: string | null
   expected_buy_currency: string | null
+  route_label: string | null
   superseded_by: string | null
 }
 
@@ -26,6 +27,7 @@ export type TripWrite = {
   source_ref: string
   expected_buy_amount: string | null
   expected_buy_currency: string | null
+  route_label: string | null
 }
 
 const PATH = "/api/v1/trips"
@@ -42,6 +44,7 @@ export function tripWrite(args: {
   trailer: string
   driver: string
   driver2: string
+  routeLabel: string
   buyAmount: string
   buyCurrency: string
 }): TripWrite {
@@ -56,6 +59,7 @@ export function tripWrite(args: {
     source_ref: "tenant:manual",
     expected_buy_amount: freeze ? args.buyAmount.trim() : null,
     expected_buy_currency: freeze ? args.buyCurrency.trim() : null,
+    route_label: optionalId(args.routeLabel),
   }
 }
 
