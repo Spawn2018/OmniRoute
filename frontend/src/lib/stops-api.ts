@@ -11,6 +11,8 @@ export type StopRow = {
   time_zone: string
   status: string
   source_ref: string
+  eta_physical: string
+  eta_legal: string
   superseded_by: string | null
 }
 
@@ -22,6 +24,8 @@ export type StopWrite = {
   time_zone: string
   status: string
   source_ref: string
+  eta_physical: string
+  eta_legal: string
 }
 
 const PATH = "/api/v1/stops"
@@ -33,6 +37,8 @@ export function stopWrite(args: {
   sequenceNo: number
   timeZone: string
   status: string
+  etaPhysical: string
+  etaLegal: string
 }): StopWrite {
   return {
     shipment_id: args.shipmentId.trim(),
@@ -41,6 +47,8 @@ export function stopWrite(args: {
     sequence_no: args.sequenceNo,
     time_zone: args.timeZone.trim(),
     status: args.status.trim(),
+    eta_physical: args.etaPhysical.trim(),
+    eta_legal: args.etaLegal.trim(),
     source_ref: "tenant:manual",
   }
 }

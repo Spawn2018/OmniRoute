@@ -19430,6 +19430,14 @@
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
+          },
+          "eta_physical": {
+            "type": "string",
+            "title": "Eta Physical"
+          },
+          "eta_legal": {
+            "type": "string",
+            "title": "Eta Legal"
           }
         },
         "additionalProperties": false,
@@ -19441,7 +19449,9 @@
           "sequence_no",
           "time_zone",
           "status",
-          "source_ref"
+          "source_ref",
+          "eta_physical",
+          "eta_legal"
         ],
         "title": "StopCreate"
       },
@@ -19487,6 +19497,16 @@
             "type": "string",
             "title": "Source Ref"
           },
+          "eta_physical": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Eta Physical"
+          },
+          "eta_legal": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Eta Legal"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -19511,6 +19531,8 @@
           "time_zone",
           "status",
           "source_ref",
+          "eta_physical",
+          "eta_legal",
           "superseded_by"
         ],
         "title": "StopResponse"

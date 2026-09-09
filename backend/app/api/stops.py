@@ -1,3 +1,4 @@
+from datetime import datetime
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, Query, status
@@ -26,6 +27,8 @@ class StopCreate(BaseModel):
     time_zone: str
     status: str
     source_ref: str
+    eta_physical: str
+    eta_legal: str
 
 
 class StopResponse(BaseModel):
@@ -40,6 +43,8 @@ class StopResponse(BaseModel):
     time_zone: str
     status: str
     source_ref: str
+    eta_physical: datetime
+    eta_legal: datetime
     superseded_by: UUID | None
 
 
@@ -77,6 +82,8 @@ async def create_stop(
         time_zone=body.time_zone,
         status=body.status,
         source_ref=body.source_ref,
+        eta_physical=body.eta_physical,
+        eta_legal=body.eta_legal,
     )
     await session.commit()
     return _as_response(row)

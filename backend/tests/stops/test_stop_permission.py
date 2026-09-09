@@ -22,6 +22,8 @@ _ENDPOINTS = (
             "time_zone": "Europe/Warsaw",
             "status": "pending",
             "source_ref": "tenant:manual",
+            "eta_physical": "2026-09-09T12:00:00+00:00",
+            "eta_legal": "2026-09-09T12:00:00+00:00",
         },
     ),
 )

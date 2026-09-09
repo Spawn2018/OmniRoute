@@ -5298,6 +5298,14 @@ export type StopCreate = {
      * Source Ref
      */
     source_ref: string;
+    /**
+     * Eta Physical
+     */
+    eta_physical: string;
+    /**
+     * Eta Legal
+     */
+    eta_legal: string;
 };
 
 /**
@@ -5340,6 +5348,14 @@ export type StopResponse = {
      * Source Ref
      */
     source_ref: string;
+    /**
+     * Eta Physical
+     */
+    eta_physical: string;
+    /**
+     * Eta Legal
+     */
+    eta_legal: string;
     /**
      * Superseded By
      */

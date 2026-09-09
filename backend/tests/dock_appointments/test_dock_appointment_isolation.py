@@ -1,4 +1,4 @@
-from datetime import date, time
+from datetime import UTC, date, datetime, time
 from uuid import uuid4
 
 import pytest
@@ -35,6 +35,8 @@ def _halt(*, organization_id, created_by, shipment_id, location_id) -> Stop:
         time_zone="Europe/Warsaw",
         status="pending",
         source_ref="fixture://stop/dock",
+        eta_physical=datetime(2026, 9, 9, 12, 0, tzinfo=UTC),
+        eta_legal=datetime(2026, 9, 9, 12, 0, tzinfo=UTC),
         created_by=created_by,
     )
 

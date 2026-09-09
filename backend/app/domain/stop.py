@@ -1,4 +1,5 @@
 import re
+from datetime import datetime
 from uuid import UUID
 
 from app.domain.errors import InvalidStop
@@ -71,3 +72,26 @@ def require_stop_source_ref(raw: object) -> str:
     if token != _MANUAL and not token.startswith(_FIXTURE):
         raise InvalidStop("obce wskazanie zapisu punktu")
     return token
+
+
+def _require_eta_clock(raw: object, label: str) -> datetime:
+    if type(raw) is not str:
+        raise InvalidStop(f"{label} musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        raise InvalidStop(f"{label}: brak ETA")
+    try:
+        parsed = datetime.fromisoformat(token.replace("Z", "+00:00"))
+    except ValueError as exc:
+        raise InvalidStop(f"{label}: ISO-8601") from exc
+    if parsed.tzinfo is None:
+        raise InvalidStop(f"{label}: brak strefy")
+    return parsed
+
+
+def require_eta_physical(raw: object) -> datetime:
+    return _require_eta_clock(raw, "fizyczny")
+
+
+def require_eta_legal(raw: object) -> datetime:
+    return _require_eta_clock(raw, "prawny")

@@ -27,6 +27,24 @@ def test_service_does_not_import_parents_or_map() -> None:
     assert "app.services.charges" not in service
     assert "httpx" not in service
     assert "leaflet" not in service
+    assert "open-meteo" not in service.casefold()
+    assert "gps" not in service.casefold()
+
+
+def test_migration_134_adds_eta_clocks() -> None:
+    source = (_ROOT / "backend" / "alembic" / "versions" / "134_stop_eta.py").read_text(
+        encoding="utf-8"
+    )
+    assert 'revision: str = "134_stop_eta"' in source
+    assert 'down_revision: str | None = "133_prediction_ledger"' in source
+    assert "eta_physical" in source
+    assert "eta_legal" in source
+    assert "DateTime(timezone=True)" in source
+    assert "created_at" in source
+    assert "leaflet" not in source
+    assert "open-meteo" not in source.casefold()
+    assert "def downgrade" in source
+    assert "drop_column" in source.split("def downgrade")[1]
 
 
 def test_importlinter_lists_stops_as_independent() -> None:

@@ -1,7 +1,9 @@
 import uuid
+from datetime import datetime
 
 from sqlalchemy import (
     CheckConstraint,
+    DateTime,
     ForeignKey,
     ForeignKeyConstraint,
     Index,
@@ -67,6 +69,8 @@ class Stop(Base, TimestampMixin):
     time_zone: Mapped[str] = mapped_column(String(64), nullable=False)
     status: Mapped[str] = mapped_column(String(12), nullable=False)
     source_ref: Mapped[str] = mapped_column(Text, nullable=False)
+    eta_physical: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    eta_legal: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
     superseded_by: Mapped[uuid.UUID | None] = mapped_column(
         UUID(as_uuid=True),
         ForeignKey("stop.id", ondelete="RESTRICT"),

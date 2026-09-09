@@ -1,6 +1,6 @@
 # BC stop (T1)
 
-Punkt operacyjny na zleceniu per tenant. Miejsce ze słownika. Nie mapa, nie trip.
+Punkt operacyjny na zleceniu per tenant. Miejsce ze słownika. Dwa ETA HITL. Nie mapa, nie trip.
 
 ## Dozwolone zależności
 - `app.models.stop`
@@ -10,5 +10,5 @@ Punkt operacyjny na zleceniu per tenant. Miejsce ze słownika. Nie mapa, nie tri
 ## Zakaz
 - import innych BC services (shipments, geography, charges)
 - zapis `shipment` / `location` / `charge`
-- kwoty / marża / float / ETA
+- kwoty / marża / float / ETA liczona z GPS lub pogody
 - HTTP / leaflet

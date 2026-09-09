@@ -14,6 +14,8 @@ export function StopPointPanel(args: { canWrite: boolean }) {
   const [timeZone, setTimeZone] = useState("Europe/Warsaw")
   const [stopKind, setStopKind] = useState("loading")
   const [status, setStatus] = useState("pending")
+  const [etaPhysical, setEtaPhysical] = useState("2026-09-09T12:00:00+00:00")
+  const [etaLegal, setEtaLegal] = useState("2026-09-09T12:00:00+00:00")
   const listQuery = useQuery({
     queryKey: ["stops", ctx.organizationId, shipmentId],
     queryFn: () => fetchStops(shipmentId),
@@ -30,6 +32,8 @@ export function StopPointPanel(args: { canWrite: boolean }) {
           sequenceNo: Number.parseInt(sequenceNo, 10),
           timeZone,
           status,
+          etaPhysical,
+          etaLegal,
         }),
       ),
     onSuccess: () => {
@@ -43,7 +47,7 @@ export function StopPointPanel(args: { canWrite: boolean }) {
     <aside className="space-y-2 rounded-md border border-border bg-card p-3" data-stop="point">
       <p className="text-sm font-medium">Punkt załadunku i wyładunku</p>
       <p className="text-xs text-muted-foreground">
-        Miejsce ze słownika lokalizacji. Strefa IANA. Nie mapa. Nie ETA.
+        Miejsce ze słownika lokalizacji. Strefa IANA. Dwa ETA HITL. Nie mapa. Nie GPS. Nie pogoda.
       </p>
       <Input
         aria-label="Identyfikator zlecenia punktu"
@@ -68,6 +72,18 @@ export function StopPointPanel(args: { canWrite: boolean }) {
         placeholder="Europe/Warsaw"
         value={timeZone}
         onChange={(event) => setTimeZone(event.target.value)}
+      />
+      <Input
+        aria-label="ETA fizyczne ISO"
+        placeholder="2026-09-09T12:00:00+00:00"
+        value={etaPhysical}
+        onChange={(event) => setEtaPhysical(event.target.value)}
+      />
+      <Input
+        aria-label="ETA prawne ISO"
+        placeholder="2026-09-09T12:00:00+00:00"
+        value={etaLegal}
+        onChange={(event) => setEtaLegal(event.target.value)}
       />
       <fieldset className="space-y-1 text-xs">
         <legend>Rodzaj punktu</legend>
@@ -112,7 +128,7 @@ export function StopPointPanel(args: { canWrite: boolean }) {
       <ul className="space-y-1">
         {rows.map((row) => (
           <li key={row.id} className="font-mono text-xs">
-            {row.sequence_no} {row.stop_kind} {row.status}
+            {row.sequence_no} {row.stop_kind} {row.status} {row.eta_physical} {row.eta_legal}
           </li>
         ))}
       </ul>

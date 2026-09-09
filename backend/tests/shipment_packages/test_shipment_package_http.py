@@ -1,3 +1,4 @@
+from datetime import UTC, datetime
 from unittest.mock import AsyncMock
 from uuid import UUID, uuid4
 
@@ -111,6 +112,8 @@ def _halt(shipment_id: UUID) -> Stop:
         time_zone="Europe/Warsaw",
         status="pending",
         source_ref="fixture://stop/1",
+        eta_physical=datetime(2026, 9, 9, 12, 0, tzinfo=UTC),
+        eta_legal=datetime(2026, 9, 9, 12, 0, tzinfo=UTC),
     )
 
 

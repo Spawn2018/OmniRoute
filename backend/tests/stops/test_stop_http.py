@@ -7,6 +7,8 @@ from fastapi.testclient import TestClient
 from app.api.deps import require_tenant_session, set_authz_checker
 from app.domain.errors import ResourceNotFound
 from app.domain.stop import (
+    require_eta_legal,
+    require_eta_physical,
     require_sequence_no,
     require_stop_kind,
     require_stop_source_ref,
@@ -18,6 +20,8 @@ from app.models.location import Location
 from app.models.shipment import Shipment
 from app.models.stop import Stop
 from tests.http_auth import bearer_auth_headers
+
+_HITL_ISO = "2026-09-09T12:00:00+00:00"
 
 
 class AllowAllAuthz:
@@ -79,12 +83,16 @@ class StubStopService:
         time_zone: object,
         status: object,
         source_ref: object,
+        eta_physical: object,
+        eta_legal: object,
     ) -> Stop:
         kind = require_stop_kind(stop_kind)
         seq = require_sequence_no(sequence_no)
         zone = require_time_zone(time_zone)
         state = require_stop_status(status)
         origin = require_stop_source_ref(source_ref)
+        physical = require_eta_physical(eta_physical)
+        legal = require_eta_legal(eta_legal)
         order_id = shipment_id if type(shipment_id) is UUID else uuid4()
         place_id = location_id if type(location_id) is UUID else uuid4()
         current = next(
@@ -104,6 +112,8 @@ class StubStopService:
             and current.time_zone == zone
             and current.status == state
             and current.source_ref == origin
+            and current.eta_physical == physical
+            and current.eta_legal == legal
         ):
             return current
         successor = Stop(
@@ -116,6 +126,8 @@ class StubStopService:
             time_zone=zone,
             status=state,
             source_ref=origin,
+            eta_physical=physical,
+            eta_legal=legal,
             created_by=user_id,
         )
         if current is not None:
@@ -182,10 +194,14 @@ def test_http_create_list_supersede_and_reject_pickup(catalog_client: object) ->
         "time_zone": "Europe/Warsaw",
         "status": "pending",
         "source_ref": "tenant:manual",
+        "eta_physical": _HITL_ISO,
+        "eta_legal": _HITL_ISO,
     }
     first = client.post("/api/v1/stops", headers=headers, json=payload)
     assert first.status_code == 201
     assert "amount" not in first.json()
+    assert first.json()["eta_physical"].startswith("2026-09-09T12:00:00")
+    assert first.json()["eta_legal"].startswith("2026-09-09T12:00:00")
     second = client.post(
         "/api/v1/stops",
         headers=headers,
@@ -200,7 +216,25 @@ def test_http_create_list_supersede_and_reject_pickup(catalog_client: object) ->
     )
     assert listed.status_code == 200
     assert listed.json()[0]["id"] == second.json()["id"]
+    assert listed.json()[0]["eta_physical"].startswith("2026-09-09T12:00:00")
     pickup = client.post("/api/v1/stops", headers=headers, json={**payload, "stop_kind": "pickup"})
     assert pickup.status_code == 400
     queued = client.post("/api/v1/stops", headers=headers, json={**payload, "status": "queued"})
     assert queued.status_code == 400
+    blank = client.post("/api/v1/stops", headers=headers, json={**payload, "eta_physical": ""})
+    assert blank.status_code == 400
+    assert "fizyczny" in blank.json()["detail"]
+    naive = client.post(
+        "/api/v1/stops",
+        headers=headers,
+        json={**payload, "eta_physical": "2026-09-09T12:00:00"},
+    )
+    assert naive.status_code == 400
+    assert "fizyczny" in naive.json()["detail"]
+    bad_legal = client.post(
+        "/api/v1/stops",
+        headers=headers,
+        json={**payload, "eta_legal": "nie-czas"},
+    )
+    assert bad_legal.status_code == 400
+    assert "prawny" in bad_legal.json()["detail"]
