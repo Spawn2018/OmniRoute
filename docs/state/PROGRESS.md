@@ -433,3 +433,4 @@
 | 2026-09-09 | 175.0 | G2.6 | tender_playbook twierdzenie + source_ref na tender. Nie extract RFP. Nie kwota. Nastepny: G2.7 Plan. |
 | 2026-09-09 | Plan 176.0 | G2.7 | tender_win_loss wynik + source_ref, nie extract RFP. Delta zaakceptowana (`/noc`). Nie auto-award. Nastepny: kod 176.0. |
 | 2026-09-09 | 176.0 | G2.7 | tender_win_loss wynik + source_ref na tender. Nie extract RFP. Nie four-eyes. Nastepny: G2.8 Plan. |
+| 2026-09-09 | Plan 177.0 | G2.8 | tender_consortium_member fotel + source_ref, nie extract RFP. Delta zaakceptowana (`/noc`). Nie auto-award. Nastepny: kod 177.0. |
