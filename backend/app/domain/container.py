@@ -84,3 +84,7 @@ def require_seal_no_1(raw: object) -> str | None:
     if len(token) > _MAX_SEAL:
         raise InvalidContainer("plomba kontenera za długa")
     return token
+
+
+def require_seal_no_2(raw: object) -> str | None:
+    return require_seal_no_1(raw)

@@ -24,7 +24,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **196.0 leftover:** N3 countdown remaining + szkic `charge`; `demurrage_free_days` na `container`; blank sailing / congestion / Gate OS; live HTTP armatora. Tu tylko `free_time_clock` HITL `clock_kind` + `free_days` + `source_ref`. Nie odliczanie. Nie marża.
 - **195.0 leftover:** Open-Meteo / IMGW / DWD live HTTP; `trip_id` / geometria / lat/lng / WMO; myto → `charge` (V2b). Tu tylko `weather_observation` HITL warunek + UN/LOCODE + czas + `source_ref`. Nie feed. Nie ETA.
 - **151.0 leftover:** `trip` DONE 152.0. `driver2` DONE 212.0. `route_label` DONE 214.0. Zostaje T2c: floating trailer; pojemności / Decimal km; `party_id`; `/fleet` / HW. Tu tylko katalog pojazd/kierowca/naczepa.
-- **153.0 leftover:** `seal_no_1` DONE 216.0. Zostaje VGM/TARA Decimal; free_time; cutoffy CY/CFS/VGM/SI/AMS; `bl_kind`; `seal_no_2`/`seal_no_3`/PIN; reefer; party/terminal; TEU; `shipment_leg_id`. Tu tylko ISO 6346 + `iso_size_type` + opcjonalne zlecenie + pierwsza plomba. Nie booking.
+- **153.0 leftover:** `seal_no_1` DONE 216.0. `seal_no_2` DONE 217.0. Zostaje VGM/TARA Decimal; free_time; cutoffy CY/CFS/VGM/SI/AMS; `bl_kind`; `seal_no_3`/PIN; reefer; party/terminal; TEU; `shipment_leg_id`. Tu tylko ISO 6346 + `iso_size_type` + opcjonalne zlecenie + dwie plomby. Nie booking.
 - **193.0 leftover:** `plan_snapshot` / TT z actuals; champion/challenger / drift; GPS / AIS wieży. Tu tylko `prediction_ledger` HITL przedział + CRPS/MAE + `source_ref`. Nie silnik. Nie scoring osoby.
 - **192.0 leftover:** packing group / grupy zgodności 1.xA / live IMO. Tu tylko `adr_tunnel_code` + `segregation_group` HITL na `dangerous_good`. LLM nie nadaje klasy.
 
@@ -70,7 +70,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **210.0 leftover:** rentowność SQL główne+podzlecenia na `charge` (T4b). Tu tylko `parent_shipment_id` + `relation_kind` HITL. Nie N1. Nie suma.
 
 - **154.0 leftover:** pule M-03; e-rates IATA; live IATA. HAWB/MAWB = 209.0 token na `air`. Tu `leg_kind=air` + `airport` w flags.
-- **216.0 leftover:** leftover T3 `seal_no_2`/`seal_no_3`; PIN; VGM/cutoffy. Tu tylko `seal_no_1` HITL. Nie sekret. Nie waga.
+- **216.0 leftover:** `seal_no_2` DONE 217.0. Zostaje leftover T3 `seal_no_3`; PIN; VGM/cutoffy. Tu tylko `seal_no_1` HITL. Nie sekret. Nie waga.
+- **217.0 leftover:** leftover T3 `seal_no_3`; PIN; VGM/cutoffy. Tu tylko `seal_no_2` HITL. Nie sekret. Nie waga.
 - **215.0 leftover:** leftover T1b tabela `stop_group`; EXP1 waga/plomba/awizacja. Tu tylko `notes_for_driver` HITL. Nie waga. Nie mapa.
 - **214.0 leftover:** leftover T2c km/`party`/`/fleet`. Tu tylko `route_label` HITL. Nie km. Nie mapa.
 - **152.0 leftover:** `driver2_id` DONE 212.0; `route_label` DONE 214.0; `stop_group` kolumna DONE 213.0. Zostaje Decimal km / freeze kosztu; `party_id`; `/fleet` / HW. Tu tylko status + opcjonalny slot floty + etykieta. Nie km.

@@ -31,6 +31,7 @@ class Container(Base, TimestampMixin):
     shipment_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
     source_ref: Mapped[str] = mapped_column(Text, nullable=False)
     seal_no_1: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    seal_no_2: Mapped[str | None] = mapped_column(String(32), nullable=True)
     superseded_by: Mapped[uuid.UUID | None] = mapped_column(
         UUID(as_uuid=True),
         ForeignKey("container.id", ondelete="RESTRICT"),

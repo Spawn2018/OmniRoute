@@ -118,3 +118,27 @@ async def test_container_seal_no_1_same_tenant(session, two_tenants) -> None:
     await bind_tenant(session, org_a.id)
     loaded = list((await session.scalars(select(Container))).all())
     assert loaded[0].seal_no_1 == "MSC1234567"
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_container_seal_no_2_same_tenant(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    user_a = two_tenants["user_a"]
+    await bind_tenant(session, org_a.id)
+    session.add(
+        Container(
+            id=uuid4(),
+            organization_id=org_a.id,
+            container_no="CSQU3054383",
+            iso_size_type="22G1",
+            source_ref="fixture://container/s2",
+            seal_no_2="HL987",
+            created_by=user_a.id,
+        ),
+    )
+    await session.flush()
+    session.expunge_all()
+    await bind_tenant(session, org_a.id)
+    loaded = list((await session.scalars(select(Container))).all())
+    assert loaded[0].seal_no_2 == "HL987"

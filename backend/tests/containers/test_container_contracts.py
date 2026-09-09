@@ -54,8 +54,23 @@ def test_migration_155_adds_seal_without_pin() -> None:
     assert "seal_no_1" in source.split("def downgrade")[1]
 
 
+def test_migration_156_adds_second_seal_without_pin() -> None:
+    source = (_ROOT / "backend" / "alembic" / "versions" / "156_container_seal2.py").read_text(
+        encoding="utf-8"
+    )
+    assert 'revision: str = "156_container_seal2"' in source
+    assert 'down_revision: str | None = "155_container_seal"' in source
+    assert "seal_no_2" in source
+    assert "pin_code" not in source
+    assert "vgm" not in source.casefold()
+    assert "create_table" not in source
+    assert "def downgrade" in source
+    assert "seal_no_2" in source.split("def downgrade")[1]
+
+
 def test_generated_api_types_include_container() -> None:
     source = (_ROOT / "frontend" / "src" / "api" / "types.gen.ts").read_text(encoding="utf-8")
     assert "ContainerResponse" in source
     assert "ContainerCreate" in source
     assert "seal_no_1" in source
+    assert "seal_no_2" in source

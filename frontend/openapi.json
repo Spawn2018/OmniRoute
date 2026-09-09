@@ -13643,6 +13643,17 @@
               }
             ],
             "title": "Seal No 1"
+          },
+          "seal_no_2": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Seal No 2"
           }
         },
         "additionalProperties": false,
@@ -13701,6 +13712,17 @@
             ],
             "title": "Seal No 1"
           },
+          "seal_no_2": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Seal No 2"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -13723,6 +13745,7 @@
           "shipment_id",
           "source_ref",
           "seal_no_1",
+          "seal_no_2",
           "superseded_by"
         ],
         "title": "ContainerResponse"

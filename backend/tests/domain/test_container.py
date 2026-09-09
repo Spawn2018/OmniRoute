@@ -7,6 +7,7 @@ from app.domain.container import (
     require_container_source_ref,
     require_iso_size_type,
     require_seal_no_1,
+    require_seal_no_2,
 )
 from app.domain.errors import InvalidContainer
 
@@ -37,6 +38,12 @@ def test_seal_no_1_omits_blank_and_keeps_token() -> None:
 def test_seal_no_1_rejects_too_long() -> None:
     with pytest.raises(InvalidContainer, match="plomba"):
         require_seal_no_1("x" * 33)
+
+
+def test_seal_no_2_reuses_same_plomba_rule() -> None:
+    assert require_seal_no_2("  HL987 ") == "HL987"
+    with pytest.raises(InvalidContainer, match="plomba"):
+        require_seal_no_2("x" * 33)
 
 
 @given(st.sampled_from(["CSQU3054384", "MSCU1234567", "ABCD"]))
