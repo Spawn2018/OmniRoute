@@ -20,6 +20,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
   const [goods, setGoods] = useState("")
   const [pack, setPack] = useState("")
   const [mark, setMark] = useState("")
+  const [mark2, setMark2] = useState("")
   const listed = useQuery({
     queryKey: ["containers", ctx.organizationId, sizeType],
     queryFn: () => fetchContainers(sizeType),
@@ -42,6 +43,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
           goods,
           pack,
           mark,
+          mark2,
         }),
       ),
     onSuccess: () => {
@@ -53,7 +55,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
     <section className="grid gap-2 rounded-md border border-border p-3" data-container="iso">
       <h2 className="text-sm font-medium">Kontener ISO</h2>
       <p className="text-xs text-muted-foreground">
-        Numer z cyfrą kontrolną i typ 4 znaków. Opcjonalne plomby, statek, rejs, uwaga, ładunek, opakowanie i referencja. Nie VGM. Nie PIN. Nie booking.
+        Numer z cyfrą kontrolną i typ 4 znaków. Opcjonalne plomby, statek, rejs, uwaga, ładunek, opakowanie i referencje. Nie VGM. Nie PIN. Nie booking.
       </p>
       <label className="flex flex-col gap-1 text-xs">
         Numer ISO 6346
@@ -155,12 +157,21 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
         />
       </label>
       <label className="flex flex-col gap-1 text-xs">
-        Referencja (opcjonalnie)
+        Referencja 1 (opcjonalnie)
         <Input
-          aria-label="Referencja kontenera"
+          aria-label="Referencja 1 kontenera"
           placeholder="ref_1"
           value={mark}
           onChange={(event) => setMark(event.target.value)}
+        />
+      </label>
+      <label className="flex flex-col gap-1 text-xs">
+        Referencja 2 (opcjonalnie)
+        <Input
+          aria-label="Referencja 2 kontenera"
+          placeholder="ref_2"
+          value={mark2}
+          onChange={(event) => setMark2(event.target.value)}
         />
       </label>
       <Button type="button" disabled={blocked} onClick={() => persist.mutate()}>
@@ -182,6 +193,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
             {row.cargo_description !== null ? ` · ${row.cargo_description}` : ""}
             {row.packaging_code !== null ? ` · ${row.packaging_code}` : ""}
             {row.ref_1 !== null ? ` · ${row.ref_1}` : ""}
+            {row.ref_2 !== null ? ` · ${row.ref_2}` : ""}
           </li>
         ))}
       </ul>

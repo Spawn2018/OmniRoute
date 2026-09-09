@@ -172,3 +172,7 @@ def require_container_ref_1(raw: object) -> str | None:
     if len(token) > _MAX_MARK:
         raise InvalidContainer("referencja kontenera za długa")
     return token
+
+
+def require_container_ref_2(raw: object) -> str | None:
+    return require_container_ref_1(raw)

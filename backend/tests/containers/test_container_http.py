@@ -9,6 +9,7 @@ from app.domain.container import (
     require_cargo_description,
     require_container_no,
     require_container_ref_1,
+    require_container_ref_2,
     require_container_remarks,
     require_container_shipment_id,
     require_container_source_ref,
@@ -84,6 +85,7 @@ class StubContainerService:
         cargo_description: object = None,
         packaging_code: object = None,
         ref_1: object = None,
+        ref_2: object = None,
     ) -> Container:
         number = require_container_no(container_no)
         size_type = require_iso_size_type(iso_size_type)
@@ -98,6 +100,7 @@ class StubContainerService:
         goods = require_cargo_description(cargo_description)
         pack = require_packaging_code(packaging_code)
         mark = require_container_ref_1(ref_1)
+        mark2 = require_container_ref_2(ref_2)
         current = next(
             (row for row in self.rows if row.container_no == number and row.superseded_by is None),
             None,
@@ -116,6 +119,7 @@ class StubContainerService:
             and current.cargo_description == goods
             and current.packaging_code == pack
             and current.ref_1 == mark
+            and current.ref_2 == mark2
         ):
             return current
         successor = Container(
@@ -134,6 +138,7 @@ class StubContainerService:
             cargo_description=goods,
             packaging_code=pack,
             ref_1=mark,
+            ref_2=mark2,
             created_by=user_id,
         )
         if current is not None:
@@ -182,6 +187,7 @@ def test_http_create_list_supersede_and_reject_check_digit(box_client: object) -
     assert first.json()["cargo_description"] is None
     assert first.json()["packaging_code"] is None
     assert first.json()["ref_1"] is None
+    assert first.json()["ref_2"] is None
     assert "amount" not in first.json()
     assert "vgm" not in first.json()
     second = client.post(
@@ -548,6 +554,43 @@ def test_http_rejects_too_long_ref_1(box_client: object) -> None:
             "iso_size_type": "22G1",
             "source_ref": "tenant:manual",
             "ref_1": "x" * 65,
+        },
+    )
+    assert reply.status_code == 400
+    assert "referencja" in reply.json()["detail"]
+
+
+def test_http_create_container_with_ref_2(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "ref_2": " BL456 ",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["ref_2"] == "BL456"
+    assert created.json()["ref_1"] is None
+    assert "pin" not in created.json()
+    assert "vgm" not in created.json()
+
+
+def test_http_rejects_too_long_ref_2(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "ref_2": "x" * 65,
         },
     )
     assert reply.status_code == 400

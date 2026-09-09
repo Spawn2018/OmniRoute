@@ -13731,6 +13731,17 @@
               }
             ],
             "title": "Ref 1"
+          },
+          "ref_2": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ref 2"
           }
         },
         "additionalProperties": false,
@@ -13877,6 +13888,17 @@
             ],
             "title": "Ref 1"
           },
+          "ref_2": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ref 2"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -13907,6 +13929,7 @@
           "cargo_description",
           "packaging_code",
           "ref_1",
+          "ref_2",
           "superseded_by"
         ],
         "title": "ContainerResponse"

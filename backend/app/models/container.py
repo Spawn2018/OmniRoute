@@ -39,6 +39,7 @@ class Container(Base, TimestampMixin):
     cargo_description: Mapped[str | None] = mapped_column(String(256), nullable=True)
     packaging_code: Mapped[str | None] = mapped_column(String(32), nullable=True)
     ref_1: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    ref_2: Mapped[str | None] = mapped_column(String(64), nullable=True)
     superseded_by: Mapped[uuid.UUID | None] = mapped_column(
         UUID(as_uuid=True),
         ForeignKey("container.id", ondelete="RESTRICT"),

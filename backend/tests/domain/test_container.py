@@ -6,6 +6,7 @@ from app.domain.container import (
     require_cargo_description,
     require_container_no,
     require_container_ref_1,
+    require_container_ref_2,
     require_container_remarks,
     require_container_source_ref,
     require_iso_size_type,
@@ -105,6 +106,12 @@ def test_container_ref_1_omits_blank_and_keeps_token() -> None:
     assert require_container_ref_1(" PO123 ") == "PO123"
     with pytest.raises(InvalidContainer, match="referencja"):
         require_container_ref_1("x" * 65)
+
+
+def test_container_ref_2_reuses_same_referencja_rule() -> None:
+    assert require_container_ref_2("  BL456 ") == "BL456"
+    with pytest.raises(InvalidContainer, match="referencja"):
+        require_container_ref_2("x" * 65)
 
 
 @given(st.sampled_from(["CSQU3054384", "MSCU1234567", "ABCD"]))

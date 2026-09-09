@@ -173,6 +173,22 @@ def test_migration_163_adds_ref_1_without_weight() -> None:
     assert "ref_1" in source.split("def downgrade")[1]
 
 
+def test_migration_164_adds_ref_2_without_weight() -> None:
+    source = (_ROOT / "backend" / "alembic" / "versions" / "164_container_ref2.py").read_text(
+        encoding="utf-8"
+    )
+    assert 'revision: str = "164_container_ref2"' in source
+    assert 'down_revision: str | None = "163_container_ref1"' in source
+    assert "ref_2" in source
+    assert "booking_no" not in source
+    assert "weight_kg" not in source
+    assert "pin_code" not in source
+    assert "vgm" not in source.casefold()
+    assert "create_table" not in source
+    assert "def downgrade" in source
+    assert "ref_2" in source.split("def downgrade")[1]
+
+
 def test_generated_api_types_include_container() -> None:
     source = (_ROOT / "frontend" / "src" / "api" / "types.gen.ts").read_text(encoding="utf-8")
     assert "ContainerResponse" in source
@@ -182,3 +198,4 @@ def test_generated_api_types_include_container() -> None:
     assert "cargo_description" in source
     assert "packaging_code" in source
     assert "ref_1" in source
+    assert "ref_2" in source
