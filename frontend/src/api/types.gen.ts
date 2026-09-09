@@ -5492,6 +5492,58 @@ export type TenderRoundResponse = {
 };
 
 /**
+ * TenderWinLossCreate
+ */
+export type TenderWinLossCreate = {
+    /**
+     * Tender Id
+     */
+    tender_id: string;
+    /**
+     * Outcome
+     */
+    outcome: string;
+    /**
+     * Reason Code
+     */
+    reason_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TenderWinLossResponse
+ */
+export type TenderWinLossResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Tender Id
+     */
+    tender_id: string;
+    /**
+     * Outcome
+     */
+    outcome: string;
+    /**
+     * Reason Code
+     */
+    reason_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * TerminalCreate
  */
 export type TerminalCreate = {
@@ -9177,6 +9229,49 @@ export type CreateTenderPlaybookApiV1TenderPlaybooksPostResponses = {
 };
 
 export type CreateTenderPlaybookApiV1TenderPlaybooksPostResponse = CreateTenderPlaybookApiV1TenderPlaybooksPostResponses[keyof CreateTenderPlaybookApiV1TenderPlaybooksPostResponses];
+
+export type ListTenderWinLossesApiV1TenderWinLossesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tender-win-losses';
+};
+
+export type ListTenderWinLossesApiV1TenderWinLossesGetResponses = {
+    /**
+     * Response List Tender Win Losses Api V1 Tender Win Losses Get
+     *
+     * Successful Response
+     */
+    200: Array<TenderWinLossResponse>;
+};
+
+export type ListTenderWinLossesApiV1TenderWinLossesGetResponse = ListTenderWinLossesApiV1TenderWinLossesGetResponses[keyof ListTenderWinLossesApiV1TenderWinLossesGetResponses];
+
+export type CreateTenderWinLossApiV1TenderWinLossesPostData = {
+    body: TenderWinLossCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tender-win-losses';
+};
+
+export type CreateTenderWinLossApiV1TenderWinLossesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTenderWinLossApiV1TenderWinLossesPostError = CreateTenderWinLossApiV1TenderWinLossesPostErrors[keyof CreateTenderWinLossApiV1TenderWinLossesPostErrors];
+
+export type CreateTenderWinLossApiV1TenderWinLossesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TenderWinLossResponse;
+};
+
+export type CreateTenderWinLossApiV1TenderWinLossesPostResponse = CreateTenderWinLossApiV1TenderWinLossesPostResponses[keyof CreateTenderWinLossApiV1TenderWinLossesPostResponses];
 
 export type ListTenderRoundsApiV1TenderRoundsGetData = {
     body?: never;

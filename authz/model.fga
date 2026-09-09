@@ -66,3 +66,4 @@ type organization
     define can_manage_tender_data_rooms: member
     define can_manage_tender_matrix_cells: member
     define can_manage_tender_playbooks: member
+    define can_manage_tender_win_losses: member

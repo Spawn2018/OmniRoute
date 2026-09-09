@@ -88,6 +88,7 @@ modules =
     app.services.tender_data_rooms
     app.services.tender_matrix_cells
     app.services.tender_playbooks
+    app.services.tender_win_losses
 
 [importlinter:contract:integracje]
 name = Integracje nie znają serwisów
@@ -315,3 +316,6 @@ forbidden_modules =
     app.services.tender_playbooks
     app.repositories.tender_playbooks
     app.models.tender_playbook
+    app.services.tender_win_losses
+    app.repositories.tender_win_losses
+    app.models.tender_win_loss

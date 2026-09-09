@@ -572,3 +572,7 @@ class InvalidTenderMatrixCell(DomainError):
 
 class InvalidTenderPlaybook(DomainError):
     """Playbook G2.6: twierdzenie z source_ref — nie extract RFP i nie kwota."""
+
+
+class InvalidTenderWinLoss(DomainError):
+    """Win/loss G2.7: wynik z source_ref — nie extract RFP i nie four-eyes."""

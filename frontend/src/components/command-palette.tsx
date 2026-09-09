@@ -67,6 +67,7 @@ const NAV_ACTIONS = [
   { id: "nav-tender-data-rooms", label: "Idź do pokoi danych przetargu", to: "/tender-data-rooms" },
   { id: "nav-tender-matrix-cells", label: "Idź do komórek matrycy przetargu", to: "/tender-matrix-cells" },
   { id: "nav-tender-playbooks", label: "Idź do playbooka przetargu", to: "/tender-playbooks" },
+  { id: "nav-tender-win-losses", label: "Idź do wyniku przetargu", to: "/tender-win-losses" },
   { id: "nav-tender-lanes", label: "Idź do korytarzy przetargu", to: "/tender-lanes" },
   { id: "nav-tender-lots", label: "Idź do partii przetargu", to: "/tender-lots" },
   { id: "nav-tender-rounds", label: "Idź do rund przetargu", to: "/tender-rounds" },

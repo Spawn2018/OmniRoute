@@ -129,6 +129,11 @@ export const OPS_JOBS = [
     job: "twierdzenie na tender bez extractu",
   },
   {
+    route: BUSINESS_LISTS.tenderWinLoss.route,
+    label: "Wynik przetargu",
+    job: "werdykt win/loss bez extractu",
+  },
+  {
     route: BUSINESS_LISTS.tenderLane.route,
     label: "Korytarze przetargu",
     job: "para UN/LOCODE na partii bez rundy",
@@ -540,6 +545,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "173.0": "/tender-data-rooms",
   "174.0": "/tender-matrix-cells",
   "175.0": "/tender-playbooks",
+  "176.0": "/tender-win-losses",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

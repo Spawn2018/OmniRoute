@@ -5854,6 +5854,80 @@
         ]
       }
     },
+    "/api/v1/tender-win-losses": {
+      "get": {
+        "tags": [
+          "tender-win-losses"
+        ],
+        "summary": "List Tender Win Losses",
+        "operationId": "list_tender_win_losses_api_v1_tender_win_losses_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TenderWinLossResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Tender Win Losses Api V1 Tender Win Losses Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "tender-win-losses"
+        ],
+        "summary": "Create Tender Win Loss",
+        "operationId": "create_tender_win_loss_api_v1_tender_win_losses_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TenderWinLossCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TenderWinLossResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/tender-rounds": {
       "get": {
         "tags": [
@@ -18616,6 +18690,77 @@
           "source_ref"
         ],
         "title": "TenderRoundResponse"
+      },
+      "TenderWinLossCreate": {
+        "properties": {
+          "tender_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Tender Id"
+          },
+          "outcome": {
+            "type": "string",
+            "title": "Outcome"
+          },
+          "reason_code": {
+            "type": "string",
+            "title": "Reason Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "tender_id",
+          "outcome",
+          "reason_code",
+          "source_ref"
+        ],
+        "title": "TenderWinLossCreate"
+      },
+      "TenderWinLossResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "tender_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Tender Id"
+          },
+          "outcome": {
+            "type": "string",
+            "title": "Outcome"
+          },
+          "reason_code": {
+            "type": "string",
+            "title": "Reason Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "tender_id",
+          "outcome",
+          "reason_code",
+          "source_ref"
+        ],
+        "title": "TenderWinLossResponse"
       },
       "TerminalCreate": {
         "properties": {

@@ -79,6 +79,7 @@ import { Route as TenderMatrixCellsRouteImport } from './routes/tender-matrix-ce
 import { Route as TenderPlaybooksRouteImport } from './routes/tender-playbooks'
 import { Route as TenderQuotesRouteImport } from './routes/tender-quotes'
 import { Route as TenderRoundsRouteImport } from './routes/tender-rounds'
+import { Route as TenderWinLossesRouteImport } from './routes/tender-win-losses'
 import { Route as TendersRouteImport } from './routes/tenders'
 import { Route as TerminalsRouteImport } from './routes/terminals'
 import { Route as TrackingRouteImport } from './routes/tracking'
@@ -435,6 +436,11 @@ const TenderRoundsRoute = TenderRoundsRouteImport.update({
   path: '/tender-rounds',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TenderWinLossesRoute = TenderWinLossesRouteImport.update({
+  id: '/tender-win-losses',
+  path: '/tender-win-losses',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TendersRoute = TendersRouteImport.update({
   id: '/tenders',
   path: '/tenders',
@@ -532,6 +538,7 @@ export interface FileRoutesByFullPath {
   '/tender-playbooks': typeof TenderPlaybooksRoute
   '/tender-quotes': typeof TenderQuotesRoute
   '/tender-rounds': typeof TenderRoundsRoute
+  '/tender-win-losses': typeof TenderWinLossesRoute
   '/tenders': typeof TendersRoute
   '/terminals': typeof TerminalsRoute
   '/tracking': typeof TrackingRoute
@@ -609,6 +616,7 @@ export interface FileRoutesByTo {
   '/tender-playbooks': typeof TenderPlaybooksRoute
   '/tender-quotes': typeof TenderQuotesRoute
   '/tender-rounds': typeof TenderRoundsRoute
+  '/tender-win-losses': typeof TenderWinLossesRoute
   '/tenders': typeof TendersRoute
   '/terminals': typeof TerminalsRoute
   '/tracking': typeof TrackingRoute
@@ -687,6 +695,7 @@ export interface FileRoutesById {
   '/tender-playbooks': typeof TenderPlaybooksRoute
   '/tender-quotes': typeof TenderQuotesRoute
   '/tender-rounds': typeof TenderRoundsRoute
+  '/tender-win-losses': typeof TenderWinLossesRoute
   '/tenders': typeof TendersRoute
   '/terminals': typeof TerminalsRoute
   '/tracking': typeof TrackingRoute
@@ -766,6 +775,7 @@ export interface FileRouteTypes {
     | '/tender-playbooks'
     | '/tender-quotes'
     | '/tender-rounds'
+    | '/tender-win-losses'
     | '/tenders'
     | '/terminals'
     | '/tracking'
@@ -843,6 +853,7 @@ export interface FileRouteTypes {
     | '/tender-playbooks'
     | '/tender-quotes'
     | '/tender-rounds'
+    | '/tender-win-losses'
     | '/tenders'
     | '/terminals'
     | '/tracking'
@@ -920,6 +931,7 @@ export interface FileRouteTypes {
     | '/tender-playbooks'
     | '/tender-quotes'
     | '/tender-rounds'
+    | '/tender-win-losses'
     | '/tenders'
     | '/terminals'
     | '/tracking'
@@ -998,6 +1010,7 @@ export interface RootRouteChildren {
   TenderPlaybooksRoute: typeof TenderPlaybooksRoute
   TenderQuotesRoute: typeof TenderQuotesRoute
   TenderRoundsRoute: typeof TenderRoundsRoute
+  TenderWinLossesRoute: typeof TenderWinLossesRoute
   TendersRoute: typeof TendersRoute
   TerminalsRoute: typeof TerminalsRoute
   TrackingRoute: typeof TrackingRoute
@@ -1497,6 +1510,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TenderRoundsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tender-win-losses': {
+      id: '/tender-win-losses'
+      path: '/tender-win-losses'
+      fullPath: '/tender-win-losses'
+      preLoaderRoute: typeof TenderWinLossesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tenders': {
       id: '/tenders'
       path: '/tenders'
@@ -1606,6 +1626,7 @@ const rootRouteChildren: RootRouteChildren = {
   TenderPlaybooksRoute: TenderPlaybooksRoute,
   TenderQuotesRoute: TenderQuotesRoute,
   TenderRoundsRoute: TenderRoundsRoute,
+  TenderWinLossesRoute: TenderWinLossesRoute,
   TendersRoute: TendersRoute,
   TerminalsRoute: TerminalsRoute,
   TrackingRoute: TrackingRoute,
