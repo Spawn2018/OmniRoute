@@ -489,3 +489,4 @@
 | 2026-09-09 | 203.0 | W5 | rank_mark HITL oś rankingu zakupu. Nie auto-award. Nie N szkiców. Nastepny: leftover D9b Plan. |
 | 2026-09-09 | Plan 204.0 | D9b | shipment_ref HITL numer zlecenia, nie QR/PDF. Delta zaakceptowana (`/noc`). Nastepny: kod 204.0. |
 | 2026-09-09 | 204.0 | D9b | shipment_ref HITL twardy numer na zleceniu. Nie QR. Nie PDF. Nastepny: leftover P1b Plan. |
+| 2026-09-09 | Plan 205.0 | P1b | rate_card matching GET równość SQL jak 69.0, nie parser. Delta zaakceptowana (`/noc`). Nastepny: kod 205.0. |
