@@ -473,3 +473,4 @@
 | 2026-09-09 | 195.0 | V2 | weather_observation HITL warunek + stacja + czas. Nie Open-Meteo. Nie ETA. Nastepny: V3 D&D Plan. |
 | 2026-09-09 | Plan 196.0 | V3 | free_time_clock HITL rodzaj + free_days, nie countdown. Delta zaakceptowana (`/noc`). Nastepny: kod 196.0. |
 | 2026-09-09 | 196.0 | V3 | free_time_clock HITL rodzaj + dni wolne. Nie countdown. Nie charge. Nastepny: V5 GPS HITL Plan. |
+| 2026-09-09 | Plan 197.0 | V5 | telematics_connector HITL reżim + dostawca, nie live GPS. Delta zaakceptowana (`/noc`). Nastepny: kod 197.0. |
