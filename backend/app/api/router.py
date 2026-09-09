@@ -96,6 +96,7 @@ from app.api import (
     tender_win_losses,
     tenders,
     terminals,
+    tower_impacts,
     tracking_events,
     trips,
     weather_observations,
@@ -180,6 +181,7 @@ api_router.include_router(prediction_ledgers.router)
 api_router.include_router(weather_observations.router)
 api_router.include_router(free_time_clocks.router)
 api_router.include_router(telematics_connectors.router)
+api_router.include_router(tower_impacts.router)
 api_router.include_router(cash_discounts.router)
 api_router.include_router(cash_flows.router)
 api_router.include_router(cost_to_serve.router)

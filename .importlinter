@@ -103,6 +103,7 @@ modules =
     app.services.weather_observations
     app.services.free_time_clocks
     app.services.telematics_connectors
+    app.services.tower_impacts
     app.services.tender_award_reviews
     app.services.tender_ted_notices
     app.services.tender_rfp_intakes
@@ -378,6 +379,9 @@ forbidden_modules =
     app.services.telematics_connectors
     app.repositories.telematics_connectors
     app.models.telematics_connector
+    app.services.tower_impacts
+    app.repositories.tower_impacts
+    app.models.tower_impact
     app.services.tender_award_reviews
     app.repositories.tender_award_reviews
     app.models.tender_award_review

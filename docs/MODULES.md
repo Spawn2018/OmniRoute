@@ -72,6 +72,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | V2 | Pogoda HITL | 194.0 `stop` ETA · 195.0 `weather_observation` | **ukończony (HITL)** · dwa ETA + warunek/stacja; leftover Open-Meteo / myto |
 | V3 | Zegar D&D HITL | 196.0 `free_time_clock` | **ukończony (HITL)** · rodzaj + dni wolne; leftover countdown / charge / blank sailing |
 | V5 | Konektor GPS HITL | 197.0 `telematics_connector` | **ukończony (HITL)** · reżim + dostawca; leftover position_event / ciphertext / 3 dni U4 |
+| V6 | Impact wieży HITL | 198.0 `tower_impact` | **ukończony (HITL)** · etap łańcucha + status umowy; leftover silnik EBITDA / sla_clause / scoring |
 
 Nie dopisuj tu 70 pustych wierszy M-xx. Katalog + **kolejka Q1… / Q-E / Fala S** (co budować jedno po drugim, tryb Plan potem plaster): `docs/PLAN-REALIZACJA.md` § Kolejka. Archiwum Claude zostaje magazynem specyfikacji, nie SoT kolejności.
 

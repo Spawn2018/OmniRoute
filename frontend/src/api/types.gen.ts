@@ -6455,6 +6455,54 @@ export type TerminalResponse = {
 };
 
 /**
+ * TowerImpactCreate
+ */
+export type TowerImpactCreate = {
+    /**
+     * Chain Stage
+     */
+    chain_stage: string;
+    /**
+     * Contract Data Status
+     */
+    contract_data_status: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TowerImpactResponse
+ */
+export type TowerImpactResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Chain Stage
+     */
+    chain_stage: string;
+    /**
+     * Contract Data Status
+     */
+    contract_data_status: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+    /**
+     * Contract Gap Label
+     */
+    contract_gap_label: string | null;
+};
+
+/**
  * TrackingEventCreate
  */
 export type TrackingEventCreate = {
@@ -11225,6 +11273,49 @@ export type CreateTelematicsConnectorApiV1TelematicsConnectorsPostResponses = {
 };
 
 export type CreateTelematicsConnectorApiV1TelematicsConnectorsPostResponse = CreateTelematicsConnectorApiV1TelematicsConnectorsPostResponses[keyof CreateTelematicsConnectorApiV1TelematicsConnectorsPostResponses];
+
+export type ListTowerImpactsApiV1TowerImpactsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tower-impacts';
+};
+
+export type ListTowerImpactsApiV1TowerImpactsGetResponses = {
+    /**
+     * Response List Tower Impacts Api V1 Tower Impacts Get
+     *
+     * Successful Response
+     */
+    200: Array<TowerImpactResponse>;
+};
+
+export type ListTowerImpactsApiV1TowerImpactsGetResponse = ListTowerImpactsApiV1TowerImpactsGetResponses[keyof ListTowerImpactsApiV1TowerImpactsGetResponses];
+
+export type CreateTowerImpactApiV1TowerImpactsPostData = {
+    body: TowerImpactCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tower-impacts';
+};
+
+export type CreateTowerImpactApiV1TowerImpactsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTowerImpactApiV1TowerImpactsPostError = CreateTowerImpactApiV1TowerImpactsPostErrors[keyof CreateTowerImpactApiV1TowerImpactsPostErrors];
+
+export type CreateTowerImpactApiV1TowerImpactsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TowerImpactResponse;
+};
+
+export type CreateTowerImpactApiV1TowerImpactsPostResponse = CreateTowerImpactApiV1TowerImpactsPostResponses[keyof CreateTowerImpactApiV1TowerImpactsPostResponses];
 
 export type ListCashDiscountsApiV1CashDiscountsGetData = {
     body?: never;

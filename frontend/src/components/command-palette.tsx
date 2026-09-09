@@ -144,6 +144,11 @@ const NAV_ACTIONS = [
     to: "/telematics-connectors",
   },
   {
+    id: "nav-tower-impacts",
+    label: "Idź do skutku wieży",
+    to: "/tower-impacts",
+  },
+  {
     id: "nav-tender-award-reviews",
     label: "Idź do czterech oczu nagrody",
     to: "/tender-award-reviews",

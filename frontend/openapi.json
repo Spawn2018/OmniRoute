@@ -7762,6 +7762,80 @@
         ]
       }
     },
+    "/api/v1/tower-impacts": {
+      "get": {
+        "tags": [
+          "tower-impacts"
+        ],
+        "summary": "List Tower Impacts",
+        "operationId": "list_tower_impacts_api_v1_tower_impacts_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TowerImpactResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Tower Impacts Api V1 Tower Impacts Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "tower-impacts"
+        ],
+        "summary": "Create Tower Impact",
+        "operationId": "create_tower_impact_api_v1_tower_impacts_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TowerImpactCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TowerImpactResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/cash-discounts": {
       "get": {
         "tags": [
@@ -21349,6 +21423,77 @@
           "source_ref"
         ],
         "title": "TerminalResponse"
+      },
+      "TowerImpactCreate": {
+        "properties": {
+          "chain_stage": {
+            "type": "string",
+            "title": "Chain Stage"
+          },
+          "contract_data_status": {
+            "type": "string",
+            "title": "Contract Data Status"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "chain_stage",
+          "contract_data_status",
+          "source_ref"
+        ],
+        "title": "TowerImpactCreate"
+      },
+      "TowerImpactResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "chain_stage": {
+            "type": "string",
+            "title": "Chain Stage"
+          },
+          "contract_data_status": {
+            "type": "string",
+            "title": "Contract Data Status"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          },
+          "contract_gap_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Contract Gap Label"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "chain_stage",
+          "contract_data_status",
+          "source_ref",
+          "contract_gap_label"
+        ],
+        "title": "TowerImpactResponse"
       },
       "TrackingEventCreate": {
         "properties": {

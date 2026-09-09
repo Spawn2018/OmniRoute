@@ -644,3 +644,7 @@ class InvalidFreeTimeClock(DomainError):
 
 class InvalidTelematicsConnector(DomainError):
     """Konektor V5: HITL reżim + dostawca — nie live GPS i nie sekrety."""
+
+
+class InvalidTowerImpact(DomainError):
+    """Impact V6: HITL etap łańcucha + status umowy — nie scoring osoby i nie EBITDA."""

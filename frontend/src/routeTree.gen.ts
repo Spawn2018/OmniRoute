@@ -98,6 +98,7 @@ import { Route as TenderTedNoticesRouteImport } from './routes/tender-ted-notice
 import { Route as TenderWinLossesRouteImport } from './routes/tender-win-losses'
 import { Route as TendersRouteImport } from './routes/tenders'
 import { Route as TerminalsRouteImport } from './routes/terminals'
+import { Route as TowerImpactsRouteImport } from './routes/tower-impacts'
 import { Route as TrackingRouteImport } from './routes/tracking'
 import { Route as WatchtowerRouteImport } from './routes/watchtower'
 import { Route as WeatherObservationsRouteImport } from './routes/weather-observations'
@@ -548,6 +549,11 @@ const TerminalsRoute = TerminalsRouteImport.update({
   path: '/terminals',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TowerImpactsRoute = TowerImpactsRouteImport.update({
+  id: '/tower-impacts',
+  path: '/tower-impacts',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TrackingRoute = TrackingRouteImport.update({
   id: '/tracking',
   path: '/tracking',
@@ -659,6 +665,7 @@ export interface FileRoutesByFullPath {
   '/tender-win-losses': typeof TenderWinLossesRoute
   '/tenders': typeof TendersRoute
   '/terminals': typeof TerminalsRoute
+  '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
   '/watchtower': typeof WatchtowerRoute
   '/weather-observations': typeof WeatherObservationsRoute
@@ -754,6 +761,7 @@ export interface FileRoutesByTo {
   '/tender-win-losses': typeof TenderWinLossesRoute
   '/tenders': typeof TendersRoute
   '/terminals': typeof TerminalsRoute
+  '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
   '/watchtower': typeof WatchtowerRoute
   '/weather-observations': typeof WeatherObservationsRoute
@@ -850,6 +858,7 @@ export interface FileRoutesById {
   '/tender-win-losses': typeof TenderWinLossesRoute
   '/tenders': typeof TendersRoute
   '/terminals': typeof TerminalsRoute
+  '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
   '/watchtower': typeof WatchtowerRoute
   '/weather-observations': typeof WeatherObservationsRoute
@@ -947,6 +956,7 @@ export interface FileRouteTypes {
     | '/tender-win-losses'
     | '/tenders'
     | '/terminals'
+    | '/tower-impacts'
     | '/tracking'
     | '/watchtower'
     | '/weather-observations'
@@ -1042,6 +1052,7 @@ export interface FileRouteTypes {
     | '/tender-win-losses'
     | '/tenders'
     | '/terminals'
+    | '/tower-impacts'
     | '/tracking'
     | '/watchtower'
     | '/weather-observations'
@@ -1137,6 +1148,7 @@ export interface FileRouteTypes {
     | '/tender-win-losses'
     | '/tenders'
     | '/terminals'
+    | '/tower-impacts'
     | '/tracking'
     | '/watchtower'
     | '/weather-observations'
@@ -1233,6 +1245,7 @@ export interface RootRouteChildren {
   TenderWinLossesRoute: typeof TenderWinLossesRoute
   TendersRoute: typeof TendersRoute
   TerminalsRoute: typeof TerminalsRoute
+  TowerImpactsRoute: typeof TowerImpactsRoute
   TrackingRoute: typeof TrackingRoute
   WatchtowerRoute: typeof WatchtowerRoute
   WeatherObservationsRoute: typeof WeatherObservationsRoute
@@ -1864,6 +1877,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TerminalsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tower-impacts': {
+      id: '/tower-impacts'
+      path: '/tower-impacts'
+      fullPath: '/tower-impacts'
+      preLoaderRoute: typeof TowerImpactsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tracking': {
       id: '/tracking'
       path: '/tracking'
@@ -1985,6 +2005,7 @@ const rootRouteChildren: RootRouteChildren = {
   TenderWinLossesRoute: TenderWinLossesRoute,
   TendersRoute: TendersRoute,
   TerminalsRoute: TerminalsRoute,
+  TowerImpactsRoute: TowerImpactsRoute,
   TrackingRoute: TrackingRoute,
   WatchtowerRoute: WatchtowerRoute,
   WeatherObservationsRoute: WeatherObservationsRoute,
