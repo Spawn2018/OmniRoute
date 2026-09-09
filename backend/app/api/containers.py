@@ -22,6 +22,7 @@ class ContainerCreate(BaseModel):
     iso_size_type: str
     shipment_id: UUID | None = None
     source_ref: str
+    seal_no_1: str | None = None
 
 
 class ContainerResponse(BaseModel):
@@ -33,6 +34,7 @@ class ContainerResponse(BaseModel):
     iso_size_type: str
     shipment_id: UUID | None
     source_ref: str
+    seal_no_1: str | None
     superseded_by: UUID | None
 
 
@@ -73,6 +75,7 @@ async def create_container(
         iso_size_type=body.iso_size_type,
         shipment_id=shipment_id,
         source_ref=body.source_ref,
+        seal_no_1=body.seal_no_1,
     )
     await session.commit()
     return _as_response(row)

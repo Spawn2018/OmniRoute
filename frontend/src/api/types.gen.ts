@@ -1236,6 +1236,10 @@ export type ContainerCreate = {
      * Source Ref
      */
     source_ref: string;
+    /**
+     * Seal No 1
+     */
+    seal_no_1?: string | null;
 };
 
 /**
@@ -1266,6 +1270,10 @@ export type ContainerResponse = {
      * Source Ref
      */
     source_ref: string;
+    /**
+     * Seal No 1
+     */
+    seal_no_1: string | null;
     /**
      * Superseded By
      */

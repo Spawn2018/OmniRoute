@@ -8,6 +8,7 @@ export type ContainerRow = {
   iso_size_type: string
   shipment_id: string | null
   source_ref: string
+  seal_no_1: string | null
   superseded_by: string | null
 }
 
@@ -16,6 +17,7 @@ export type ContainerWrite = {
   iso_size_type: string
   shipment_id: string | null
   source_ref: string
+  seal_no_1: string | null
 }
 
 const PATH = "/api/v1/containers"
@@ -29,12 +31,15 @@ export function containerWrite(args: {
   number: string
   sizeType: string
   shipment: string
+  seal: string
 }): ContainerWrite {
+  const seal = args.seal.trim()
   return {
     container_no: args.number.trim(),
     iso_size_type: args.sizeType.trim(),
     shipment_id: optionalId(args.shipment),
     source_ref: "tenant:manual",
+    seal_no_1: seal === "" ? null : seal,
   }
 }
 

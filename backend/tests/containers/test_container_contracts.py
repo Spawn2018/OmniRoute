@@ -40,7 +40,22 @@ def test_importlinter_lists_containers_as_independent() -> None:
     assert "app.models.container" in forbidden
 
 
+def test_migration_155_adds_seal_without_pin() -> None:
+    source = (_ROOT / "backend" / "alembic" / "versions" / "155_container_seal.py").read_text(
+        encoding="utf-8"
+    )
+    assert 'revision: str = "155_container_seal"' in source
+    assert 'down_revision: str | None = "154_stop_notes"' in source
+    assert "seal_no_1" in source
+    assert "pin_code" not in source
+    assert "vgm" not in source.casefold()
+    assert "create_table" not in source
+    assert "def downgrade" in source
+    assert "seal_no_1" in source.split("def downgrade")[1]
+
+
 def test_generated_api_types_include_container() -> None:
     source = (_ROOT / "frontend" / "src" / "api" / "types.gen.ts").read_text(encoding="utf-8")
     assert "ContainerResponse" in source
     assert "ContainerCreate" in source
+    assert "seal_no_1" in source

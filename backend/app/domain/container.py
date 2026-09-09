@@ -7,6 +7,7 @@ _FIXTURE = "fixture://container/"
 _MANUAL = "tenant:manual"
 _ISO_LEN = 11
 _TYPE_LEN = 4
+_MAX_SEAL = 32
 
 
 def _iso6346_value(mark: str) -> int:
@@ -69,4 +70,17 @@ def require_container_source_ref(raw: object) -> str:
         raise InvalidContainer("wskazanie zapisu kontenera za długie")
     if token != _MANUAL and not token.startswith(_FIXTURE):
         raise InvalidContainer("obce wskazanie zapisu kontenera")
+    return token
+
+
+def require_seal_no_1(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidContainer("plomba kontenera musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    if len(token) > _MAX_SEAL:
+        raise InvalidContainer("plomba kontenera za długa")
     return token

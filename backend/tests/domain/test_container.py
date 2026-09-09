@@ -6,6 +6,7 @@ from app.domain.container import (
     require_container_no,
     require_container_source_ref,
     require_iso_size_type,
+    require_seal_no_1,
 )
 from app.domain.errors import InvalidContainer
 
@@ -25,6 +26,17 @@ def test_container_rejects_bad_check_digit_and_type() -> None:
         require_iso_size_type("HC40")
     with pytest.raises(InvalidContainer, match="obce"):
         require_container_source_ref("https://evil.example/box")
+
+
+def test_seal_no_1_omits_blank_and_keeps_token() -> None:
+    assert require_seal_no_1(None) is None
+    assert require_seal_no_1("  ") is None
+    assert require_seal_no_1(" MSC1234567 ") == "MSC1234567"
+
+
+def test_seal_no_1_rejects_too_long() -> None:
+    with pytest.raises(InvalidContainer, match="plomba"):
+        require_seal_no_1("x" * 33)
 
 
 @given(st.sampled_from(["CSQU3054384", "MSCU1234567", "ABCD"]))

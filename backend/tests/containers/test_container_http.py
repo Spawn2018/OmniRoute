@@ -10,6 +10,7 @@ from app.domain.container import (
     require_container_shipment_id,
     require_container_source_ref,
     require_iso_size_type,
+    require_seal_no_1,
 )
 from app.domain.errors import ResourceNotFound
 from app.main import app
@@ -66,11 +67,13 @@ class StubContainerService:
         iso_size_type: object,
         shipment_id: object,
         source_ref: object,
+        seal_no_1: object = None,
     ) -> Container:
         number = require_container_no(container_no)
         size_type = require_iso_size_type(iso_size_type)
         bound = require_container_shipment_id(shipment_id)
         origin = require_container_source_ref(source_ref)
+        seal = require_seal_no_1(seal_no_1)
         current = next(
             (row for row in self.rows if row.container_no == number and row.superseded_by is None),
             None,
@@ -80,6 +83,7 @@ class StubContainerService:
             and current.iso_size_type == size_type
             and current.shipment_id == bound
             and current.source_ref == origin
+            and current.seal_no_1 == seal
         ):
             return current
         successor = Container(
@@ -89,6 +93,7 @@ class StubContainerService:
             iso_size_type=size_type,
             shipment_id=bound,
             source_ref=origin,
+            seal_no_1=seal,
             created_by=user_id,
         )
         if current is not None:
@@ -128,6 +133,7 @@ def test_http_create_list_supersede_and_reject_check_digit(box_client: object) -
     first = client.post("/api/v1/containers", headers=headers, json=payload)
     assert first.status_code == 201
     assert first.json()["organization_id"] == str(org_id)
+    assert first.json()["seal_no_1"] is None
     assert "amount" not in first.json()
     assert "vgm" not in first.json()
     second = client.post(
@@ -166,3 +172,39 @@ def test_http_rejects_unknown_shipment(box_client: object) -> None:
     )
     assert reply.status_code == 404
     assert "zlecenie" in reply.json()["detail"]
+
+
+def test_http_create_container_with_seal_no_1(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "seal_no_1": " MSC1234567 ",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["seal_no_1"] == "MSC1234567"
+    assert "pin" not in created.json()
+    assert "vgm" not in created.json()
+
+
+def test_http_rejects_too_long_seal_no_1(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "seal_no_1": "x" * 33,
+        },
+    )
+    assert reply.status_code == 400
+    assert "plomba" in reply.json()["detail"]

@@ -13632,6 +13632,17 @@
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
+          },
+          "seal_no_1": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Seal No 1"
           }
         },
         "additionalProperties": false,
@@ -13679,6 +13690,17 @@
             "type": "string",
             "title": "Source Ref"
           },
+          "seal_no_1": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Seal No 1"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -13700,6 +13722,7 @@
           "iso_size_type",
           "shipment_id",
           "source_ref",
+          "seal_no_1",
           "superseded_by"
         ],
         "title": "ContainerResponse"
