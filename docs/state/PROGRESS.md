@@ -445,3 +445,4 @@
 | 2026-09-09 | 181.0 | G2.11 | tender_bid_stance HITL bid/no-bid + source_ref na tender. Nie win/loss. Nie auto-award. Nastepny: G2.12 Plan. |
 | 2026-09-09 | Plan 182.0 | G2.12 | tender_award_review HITL cztery oczy, nie auto-award. Delta zaakceptowana (`/noc`). Nie TED scrape. Nastepny: kod 182.0. |
 | 2026-09-09 | 182.0 | G2.12 | tender_award_review HITL countersign/challenge + source_ref na tender. Nie auto-award. Nie win/loss. Nastepny: G2.13 Plan. |
+| 2026-09-09 | Plan 183.0 | G2.13 | tender_ted_notice HITL numer TED, nie scrape. Delta zaakceptowana (`/noc`). Nie auto-award. Nastepny: kod 183.0. |
