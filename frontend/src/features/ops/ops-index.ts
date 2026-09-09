@@ -184,6 +184,11 @@ export const OPS_JOBS = [
     job: "HITL rodzaj skonta bez kwoty",
   },
   {
+    route: BUSINESS_LISTS.carbonMethod.route,
+    label: "Metodyka CO₂",
+    job: "HITL GLEC/GHG bez kalkulatora kg",
+  },
+  {
     route: BUSINESS_LISTS.tenderAwardReview.route,
     label: "Cztery oczy nagrody",
     job: "HITL przegląd nagrody bez auto-award",
@@ -619,6 +624,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "187.0": "/monitoring-schemes",
   "188.0": "/party-documents",
   "189.0": "/cash-discounts",
+  "190.0": "/carbon-methods",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

@@ -231,6 +231,50 @@ export type BookkeepingResponse = {
 };
 
 /**
+ * CarbonMethodCreate
+ */
+export type CarbonMethodCreate = {
+    /**
+     * Method Code
+     */
+    method_code: string;
+    /**
+     * Method Version
+     */
+    method_version: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CarbonMethodResponse
+ */
+export type CarbonMethodResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Method Code
+     */
+    method_code: string;
+    /**
+     * Method Version
+     */
+    method_version: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * CargoClaimCreate
  */
 export type CargoClaimCreate = {
@@ -10670,6 +10714,49 @@ export type CreateFxDifferenceApiV1FxDifferencesPostResponses = {
 };
 
 export type CreateFxDifferenceApiV1FxDifferencesPostResponse = CreateFxDifferenceApiV1FxDifferencesPostResponses[keyof CreateFxDifferenceApiV1FxDifferencesPostResponses];
+
+export type ListCarbonMethodsApiV1CarbonMethodsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/carbon-methods';
+};
+
+export type ListCarbonMethodsApiV1CarbonMethodsGetResponses = {
+    /**
+     * Response List Carbon Methods Api V1 Carbon Methods Get
+     *
+     * Successful Response
+     */
+    200: Array<CarbonMethodResponse>;
+};
+
+export type ListCarbonMethodsApiV1CarbonMethodsGetResponse = ListCarbonMethodsApiV1CarbonMethodsGetResponses[keyof ListCarbonMethodsApiV1CarbonMethodsGetResponses];
+
+export type CreateCarbonMethodApiV1CarbonMethodsPostData = {
+    body: CarbonMethodCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/carbon-methods';
+};
+
+export type CreateCarbonMethodApiV1CarbonMethodsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCarbonMethodApiV1CarbonMethodsPostError = CreateCarbonMethodApiV1CarbonMethodsPostErrors[keyof CreateCarbonMethodApiV1CarbonMethodsPostErrors];
+
+export type CreateCarbonMethodApiV1CarbonMethodsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CarbonMethodResponse;
+};
+
+export type CreateCarbonMethodApiV1CarbonMethodsPostResponse = CreateCarbonMethodApiV1CarbonMethodsPostResponses[keyof CreateCarbonMethodApiV1CarbonMethodsPostResponses];
 
 export type ListCashDiscountsApiV1CashDiscountsGetData = {
     body?: never;

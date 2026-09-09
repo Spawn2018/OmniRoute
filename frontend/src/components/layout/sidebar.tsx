@@ -72,6 +72,7 @@ const NAV = [
   { to: "/monitoring-schemes", label: "Schemat monitoringu" },
   { to: "/party-documents", label: "Dokument kontrahenta" },
   { to: "/cash-discounts", label: "Skonto" },
+  { to: "/carbon-methods", label: "Metodyka CO₂" },
   { to: "/tender-award-reviews", label: "Cztery oczy nagrody" },
   { to: "/tender-ted-notices", label: "Ogłoszenie TED" },
   { to: "/tender-lanes", label: "Korytarze przetargu" },

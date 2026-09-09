@@ -624,3 +624,7 @@ class InvalidPartyDocument(DomainError):
 
 class InvalidCashDiscount(DomainError):
     """Skonto F2: HITL kind na fakturze z source_ref — nie kwota i nie CAMT."""
+
+
+class InvalidCarbonMethod(DomainError):
+    """Metodyka C5: HITL GLEC/GHG + wersja z source_ref — nie kg i nie kalkulator."""

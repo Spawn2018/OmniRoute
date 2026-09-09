@@ -98,6 +98,7 @@ modules =
     app.services.monitoring_schemes
     app.services.party_documents
     app.services.cash_discounts
+    app.services.carbon_methods
     app.services.tender_award_reviews
     app.services.tender_ted_notices
     app.services.tender_rfp_intakes
@@ -356,8 +357,11 @@ forbidden_modules =
     app.repositories.party_documents
     app.models.party_document
     app.services.cash_discounts
+    app.services.carbon_methods
     app.repositories.cash_discounts
     app.models.cash_discount
+    app.repositories.carbon_methods
+    app.models.carbon_method
     app.services.tender_award_reviews
     app.repositories.tender_award_reviews
     app.models.tender_award_review

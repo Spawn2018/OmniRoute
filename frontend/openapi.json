@@ -7392,6 +7392,80 @@
         ]
       }
     },
+    "/api/v1/carbon-methods": {
+      "get": {
+        "tags": [
+          "carbon-methods"
+        ],
+        "summary": "List Carbon Methods",
+        "operationId": "list_carbon_methods_api_v1_carbon_methods_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CarbonMethodResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Carbon Methods Api V1 Carbon Methods Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "carbon-methods"
+        ],
+        "summary": "Create Carbon Method",
+        "operationId": "create_carbon_method_api_v1_carbon_methods_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CarbonMethodCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarbonMethodResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/cash-discounts": {
       "get": {
         "tags": [
@@ -11080,6 +11154,65 @@
           "source_ref"
         ],
         "title": "BookkeepingResponse"
+      },
+      "CarbonMethodCreate": {
+        "properties": {
+          "method_code": {
+            "type": "string",
+            "title": "Method Code"
+          },
+          "method_version": {
+            "type": "string",
+            "title": "Method Version"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "method_code",
+          "method_version",
+          "source_ref"
+        ],
+        "title": "CarbonMethodCreate"
+      },
+      "CarbonMethodResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "method_code": {
+            "type": "string",
+            "title": "Method Code"
+          },
+          "method_version": {
+            "type": "string",
+            "title": "Method Version"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "method_code",
+          "method_version",
+          "source_ref"
+        ],
+        "title": "CarbonMethodResponse"
       },
       "CargoClaimCreate": {
         "properties": {

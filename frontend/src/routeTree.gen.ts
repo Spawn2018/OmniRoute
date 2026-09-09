@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AiRouteImport } from './routes/ai'
 import { Route as AirRouteImport } from './routes/air'
 import { Route as BookkeepingRouteImport } from './routes/bookkeeping'
+import { Route as CarbonMethodsRouteImport } from './routes/carbon-methods'
 import { Route as CashDiscountsRouteImport } from './routes/cash-discounts'
 import { Route as CashflowsRouteImport } from './routes/cashflows'
 import { Route as ChannelQuotesRouteImport } from './routes/channel-quotes'
@@ -116,6 +117,11 @@ const AirRoute = AirRouteImport.update({
 const BookkeepingRoute = BookkeepingRouteImport.update({
   id: '/bookkeeping',
   path: '/bookkeeping',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CarbonMethodsRoute = CarbonMethodsRouteImport.update({
+  id: '/carbon-methods',
+  path: '/carbon-methods',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CashDiscountsRoute = CashDiscountsRouteImport.update({
@@ -544,6 +550,7 @@ export interface FileRoutesByFullPath {
   '/ai': typeof AiRoute
   '/air': typeof AirRoute
   '/bookkeeping': typeof BookkeepingRoute
+  '/carbon-methods': typeof CarbonMethodsRoute
   '/cash-discounts': typeof CashDiscountsRoute
   '/cashflows': typeof CashflowsRoute
   '/channel-quotes': typeof ChannelQuotesRoute
@@ -634,6 +641,7 @@ export interface FileRoutesByTo {
   '/ai': typeof AiRoute
   '/air': typeof AirRoute
   '/bookkeeping': typeof BookkeepingRoute
+  '/carbon-methods': typeof CarbonMethodsRoute
   '/cash-discounts': typeof CashDiscountsRoute
   '/cashflows': typeof CashflowsRoute
   '/channel-quotes': typeof ChannelQuotesRoute
@@ -725,6 +733,7 @@ export interface FileRoutesById {
   '/ai': typeof AiRoute
   '/air': typeof AirRoute
   '/bookkeeping': typeof BookkeepingRoute
+  '/carbon-methods': typeof CarbonMethodsRoute
   '/cash-discounts': typeof CashDiscountsRoute
   '/cashflows': typeof CashflowsRoute
   '/channel-quotes': typeof ChannelQuotesRoute
@@ -817,6 +826,7 @@ export interface FileRouteTypes {
     | '/ai'
     | '/air'
     | '/bookkeeping'
+    | '/carbon-methods'
     | '/cash-discounts'
     | '/cashflows'
     | '/channel-quotes'
@@ -907,6 +917,7 @@ export interface FileRouteTypes {
     | '/ai'
     | '/air'
     | '/bookkeeping'
+    | '/carbon-methods'
     | '/cash-discounts'
     | '/cashflows'
     | '/channel-quotes'
@@ -997,6 +1008,7 @@ export interface FileRouteTypes {
     | '/ai'
     | '/air'
     | '/bookkeeping'
+    | '/carbon-methods'
     | '/cash-discounts'
     | '/cashflows'
     | '/channel-quotes'
@@ -1088,6 +1100,7 @@ export interface RootRouteChildren {
   AiRoute: typeof AiRoute
   AirRoute: typeof AirRoute
   BookkeepingRoute: typeof BookkeepingRoute
+  CarbonMethodsRoute: typeof CarbonMethodsRoute
   CashDiscountsRoute: typeof CashDiscountsRoute
   CashflowsRoute: typeof CashflowsRoute
   ChannelQuotesRoute: typeof ChannelQuotesRoute
@@ -1202,6 +1215,13 @@ declare module '@tanstack/react-router' {
       path: '/bookkeeping'
       fullPath: '/bookkeeping'
       preLoaderRoute: typeof BookkeepingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/carbon-methods': {
+      id: '/carbon-methods'
+      path: '/carbon-methods'
+      fullPath: '/carbon-methods'
+      preLoaderRoute: typeof CarbonMethodsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cash-discounts': {
@@ -1800,6 +1820,7 @@ const rootRouteChildren: RootRouteChildren = {
   AiRoute: AiRoute,
   AirRoute: AirRoute,
   BookkeepingRoute: BookkeepingRoute,
+  CarbonMethodsRoute: CarbonMethodsRoute,
   CashDiscountsRoute: CashDiscountsRoute,
   CashflowsRoute: CashflowsRoute,
   ChannelQuotesRoute: ChannelQuotesRoute,

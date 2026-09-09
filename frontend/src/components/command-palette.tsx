@@ -119,6 +119,11 @@ const NAV_ACTIONS = [
     to: "/cash-discounts",
   },
   {
+    id: "nav-carbon-methods",
+    label: "Idź do metodyki CO₂",
+    to: "/carbon-methods",
+  },
+  {
     id: "nav-tender-award-reviews",
     label: "Idź do czterech oczu nagrody",
     to: "/tender-award-reviews",
