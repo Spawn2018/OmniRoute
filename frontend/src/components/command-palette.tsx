@@ -109,6 +109,11 @@ const NAV_ACTIONS = [
     to: "/monitoring-schemes",
   },
   {
+    id: "nav-party-documents",
+    label: "Idź do dokumentu kontrahenta",
+    to: "/party-documents",
+  },
+  {
     id: "nav-tender-award-reviews",
     label: "Idź do czterech oczu nagrody",
     to: "/tender-award-reviews",

@@ -54,6 +54,7 @@ from app.api import (
     outbox_events,
     pallet_balances,
     parties,
+    party_documents,
     party_lane_scorecards,
     party_scorecards,
     port_surcharges,
@@ -179,6 +180,7 @@ api_router.include_router(shipment_legs.router)
 api_router.include_router(organization_calendars.router)
 api_router.include_router(organization_settings.router)
 api_router.include_router(parties.router)
+api_router.include_router(party_documents.router)
 api_router.include_router(party_scorecards.router)
 api_router.include_router(party_lane_scorecards.router)
 api_router.include_router(credit_reviews.router)

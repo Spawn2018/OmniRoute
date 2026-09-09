@@ -58,6 +58,7 @@ import { Route as OrganizationSettingsRouteImport } from './routes/organization-
 import { Route as OutboxRouteImport } from './routes/outbox'
 import { Route as PalletBalancesRouteImport } from './routes/pallet-balances'
 import { Route as PartiesRouteImport } from './routes/parties'
+import { Route as PartyDocumentsRouteImport } from './routes/party-documents'
 import { Route as PartyScorecardsRouteImport } from './routes/party-scorecards'
 import { Route as PaymentsRouteImport } from './routes/payments'
 import { Route as PortSurchargesRouteImport } from './routes/port-surcharges'
@@ -341,6 +342,11 @@ const PartiesRoute = PartiesRouteImport.update({
   path: '/parties',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PartyDocumentsRoute = PartyDocumentsRouteImport.update({
+  id: '/party-documents',
+  path: '/party-documents',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PartyScorecardsRoute = PartyScorecardsRouteImport.update({
   id: '/party-scorecards',
   path: '/party-scorecards',
@@ -577,6 +583,7 @@ export interface FileRoutesByFullPath {
   '/outbox': typeof OutboxRoute
   '/pallet-balances': typeof PalletBalancesRoute
   '/parties': typeof PartiesRoute
+  '/party-documents': typeof PartyDocumentsRoute
   '/party-scorecards': typeof PartyScorecardsRoute
   '/payments': typeof PaymentsRoute
   '/port-surcharges': typeof PortSurchargesRoute
@@ -665,6 +672,7 @@ export interface FileRoutesByTo {
   '/outbox': typeof OutboxRoute
   '/pallet-balances': typeof PalletBalancesRoute
   '/parties': typeof PartiesRoute
+  '/party-documents': typeof PartyDocumentsRoute
   '/party-scorecards': typeof PartyScorecardsRoute
   '/payments': typeof PaymentsRoute
   '/port-surcharges': typeof PortSurchargesRoute
@@ -754,6 +762,7 @@ export interface FileRoutesById {
   '/outbox': typeof OutboxRoute
   '/pallet-balances': typeof PalletBalancesRoute
   '/parties': typeof PartiesRoute
+  '/party-documents': typeof PartyDocumentsRoute
   '/party-scorecards': typeof PartyScorecardsRoute
   '/payments': typeof PaymentsRoute
   '/port-surcharges': typeof PortSurchargesRoute
@@ -844,6 +853,7 @@ export interface FileRouteTypes {
     | '/outbox'
     | '/pallet-balances'
     | '/parties'
+    | '/party-documents'
     | '/party-scorecards'
     | '/payments'
     | '/port-surcharges'
@@ -932,6 +942,7 @@ export interface FileRouteTypes {
     | '/outbox'
     | '/pallet-balances'
     | '/parties'
+    | '/party-documents'
     | '/party-scorecards'
     | '/payments'
     | '/port-surcharges'
@@ -1020,6 +1031,7 @@ export interface FileRouteTypes {
     | '/outbox'
     | '/pallet-balances'
     | '/parties'
+    | '/party-documents'
     | '/party-scorecards'
     | '/payments'
     | '/port-surcharges'
@@ -1109,6 +1121,7 @@ export interface RootRouteChildren {
   OutboxRoute: typeof OutboxRoute
   PalletBalancesRoute: typeof PalletBalancesRoute
   PartiesRoute: typeof PartiesRoute
+  PartyDocumentsRoute: typeof PartyDocumentsRoute
   PartyScorecardsRoute: typeof PartyScorecardsRoute
   PaymentsRoute: typeof PaymentsRoute
   PortSurchargesRoute: typeof PortSurchargesRoute
@@ -1493,6 +1506,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PartiesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/party-documents': {
+      id: '/party-documents'
+      path: '/party-documents'
+      fullPath: '/party-documents'
+      preLoaderRoute: typeof PartyDocumentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/party-scorecards': {
       id: '/party-scorecards'
       path: '/party-scorecards'
@@ -1805,6 +1825,7 @@ const rootRouteChildren: RootRouteChildren = {
   OutboxRoute: OutboxRoute,
   PalletBalancesRoute: PalletBalancesRoute,
   PartiesRoute: PartiesRoute,
+  PartyDocumentsRoute: PartyDocumentsRoute,
   PartyScorecardsRoute: PartyScorecardsRoute,
   PaymentsRoute: PaymentsRoute,
   PortSurchargesRoute: PortSurchargesRoute,

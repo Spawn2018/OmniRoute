@@ -174,6 +174,11 @@ export const OPS_JOBS = [
     job: "HITL katalog schematu bez SENT XML",
   },
   {
+    route: BUSINESS_LISTS.partyDocument.route,
+    label: "Dokument kontrahenta",
+    job: "HITL rodzaj dokumentu bez 409 na zleceniu",
+  },
+  {
     route: BUSINESS_LISTS.tenderAwardReview.route,
     label: "Cztery oczy nagrody",
     job: "HITL przegląd nagrody bez auto-award",
@@ -607,6 +612,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "185.0": "/lane-patterns",
   "186.0": "/kreptd-licences",
   "187.0": "/monitoring-schemes",
+  "188.0": "/party-documents",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

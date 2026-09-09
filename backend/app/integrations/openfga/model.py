@@ -78,6 +78,7 @@ def _organization_ops_relations() -> dict[str, Userset]:
         "can_manage_fuel_indexes": _member(),
         "can_manage_local_charges": _member(),
         "can_manage_monitoring_schemes": _member(),
+        "can_manage_party_documents": _member(),
     }
 
 

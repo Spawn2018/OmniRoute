@@ -456,3 +456,4 @@
 | 2026-09-09 | Plan 187.0 | C7 | monitoring_scheme HITL katalog, nie SENT XML. Delta zaakceptowana (`/noc`). Nie live PUESC. Nastepny: kod 187.0. |
 | 2026-09-09 | 187.0 | C7 | monitoring_scheme HITL kod schematu + source_ref. Nie SENT XML. Nie live PUESC. Nastepny: leftover G2.20–G2.22 Plan. |
 | 2026-09-09 | Plan 188.0 | C8 | party_document HITL rodzaj dokumentu na party, nie 409. Delta zaakceptowana (`/noc`). Nie extract. Nastepny: kod 188.0. |
+| 2026-09-09 | 188.0 | C8 | party_document HITL kind + source_ref na party. Nie 409. Nie extract. Nastepny: leftover G2.20–G2.22 Plan. |

@@ -70,6 +70,7 @@ def test_authorization_model_includes_table_view_permission() -> None:
     assert "can_manage_lane_patterns" in org.relations
     assert "can_manage_kreptd_licences" in org.relations
     assert "can_manage_monitoring_schemes" in org.relations
+    assert "can_manage_party_documents" in org.relations
     assert "can_manage_tender_award_reviews" in org.relations
     assert "can_manage_tender_ted_notices" in org.relations
     assert "can_manage_tender_rfp_intakes" in org.relations
@@ -253,6 +254,9 @@ def test_authorization_model_includes_table_view_permission() -> None:
     monitoring_schemes = org.relations["can_manage_monitoring_schemes"]
     assert monitoring_schemes.computed_userset is not None
     assert monitoring_schemes.computed_userset.relation == "member"
+    party_documents = org.relations["can_manage_party_documents"]
+    assert party_documents.computed_userset is not None
+    assert party_documents.computed_userset.relation == "member"
     tender_award_reviews = org.relations["can_manage_tender_award_reviews"]
     assert tender_award_reviews.computed_userset is not None
     assert tender_award_reviews.computed_userset.relation == "member"

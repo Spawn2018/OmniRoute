@@ -616,3 +616,7 @@ class InvalidKreptdLicence(DomainError):
 
 class InvalidMonitoringScheme(DomainError):
     """Schemat C7: HITL kod monitoringu z source_ref — nie SENT XML i nie PUESC."""
+
+
+class InvalidPartyDocument(DomainError):
+    """Dokument C8: HITL kind na party z source_ref — nie 409 i nie extract."""

@@ -70,6 +70,7 @@ const NAV = [
   { to: "/lane-patterns", label: "Wzorzec korytarza" },
   { to: "/kreptd-licences", label: "Licencja KREPTD" },
   { to: "/monitoring-schemes", label: "Schemat monitoringu" },
+  { to: "/party-documents", label: "Dokument kontrahenta" },
   { to: "/tender-award-reviews", label: "Cztery oczy nagrody" },
   { to: "/tender-ted-notices", label: "Ogłoszenie TED" },
   { to: "/tender-lanes", label: "Korytarze przetargu" },

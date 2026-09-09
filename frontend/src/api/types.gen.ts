@@ -3747,6 +3747,50 @@ export type PartyCreate = {
 };
 
 /**
+ * PartyDocumentCreate
+ */
+export type PartyDocumentCreate = {
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Document Kind
+     */
+    document_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * PartyDocumentResponse
+ */
+export type PartyDocumentResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Document Kind
+     */
+    document_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * PartyDraftResponse
  */
 export type PartyDraftResponse = {
@@ -11583,6 +11627,49 @@ export type ScreenPartySanctionsApiV1PartiesPartyIdScreenSanctionsPostResponses 
 };
 
 export type ScreenPartySanctionsApiV1PartiesPartyIdScreenSanctionsPostResponse = ScreenPartySanctionsApiV1PartiesPartyIdScreenSanctionsPostResponses[keyof ScreenPartySanctionsApiV1PartiesPartyIdScreenSanctionsPostResponses];
+
+export type ListPartyDocumentsApiV1PartyDocumentsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/party-documents';
+};
+
+export type ListPartyDocumentsApiV1PartyDocumentsGetResponses = {
+    /**
+     * Response List Party Documents Api V1 Party Documents Get
+     *
+     * Successful Response
+     */
+    200: Array<PartyDocumentResponse>;
+};
+
+export type ListPartyDocumentsApiV1PartyDocumentsGetResponse = ListPartyDocumentsApiV1PartyDocumentsGetResponses[keyof ListPartyDocumentsApiV1PartyDocumentsGetResponses];
+
+export type CreatePartyDocumentApiV1PartyDocumentsPostData = {
+    body: PartyDocumentCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/party-documents';
+};
+
+export type CreatePartyDocumentApiV1PartyDocumentsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreatePartyDocumentApiV1PartyDocumentsPostError = CreatePartyDocumentApiV1PartyDocumentsPostErrors[keyof CreatePartyDocumentApiV1PartyDocumentsPostErrors];
+
+export type CreatePartyDocumentApiV1PartyDocumentsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: PartyDocumentResponse;
+};
+
+export type CreatePartyDocumentApiV1PartyDocumentsPostResponse = CreatePartyDocumentApiV1PartyDocumentsPostResponses[keyof CreatePartyDocumentApiV1PartyDocumentsPostResponses];
 
 export type ListScorecardsApiV1PartyScorecardsGetData = {
     body?: never;

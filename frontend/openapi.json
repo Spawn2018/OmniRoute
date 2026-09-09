@@ -9124,6 +9124,80 @@
         }
       }
     },
+    "/api/v1/party-documents": {
+      "get": {
+        "tags": [
+          "party-documents"
+        ],
+        "summary": "List Party Documents",
+        "operationId": "list_party_documents_api_v1_party_documents_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PartyDocumentResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Party Documents Api V1 Party Documents Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "party-documents"
+        ],
+        "summary": "Create Party Document",
+        "operationId": "create_party_document_api_v1_party_documents_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PartyDocumentCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PartyDocumentResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/party-scorecards": {
       "get": {
         "tags": [
@@ -16540,6 +16614,67 @@
           "roles"
         ],
         "title": "PartyCreate"
+      },
+      "PartyDocumentCreate": {
+        "properties": {
+          "party_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Party Id"
+          },
+          "document_kind": {
+            "type": "string",
+            "title": "Document Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "party_id",
+          "document_kind",
+          "source_ref"
+        ],
+        "title": "PartyDocumentCreate"
+      },
+      "PartyDocumentResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "party_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Party Id"
+          },
+          "document_kind": {
+            "type": "string",
+            "title": "Document Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "party_id",
+          "document_kind",
+          "source_ref"
+        ],
+        "title": "PartyDocumentResponse"
       },
       "PartyDraftResponse": {
         "properties": {
