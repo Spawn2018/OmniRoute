@@ -541,3 +541,4 @@
 | 2026-09-09 | 229.0 | T3 | reefer HITL na container. Nie temperatura. Nie PIN. Nastepny: leftover T3 party/terminal Plan. |
 | 2026-09-10 | Plan 230.0 | T3 | pickup_terminal HITL na container, nie FK i nie PIN. Delta zaakceptowana (`/noc`). Nastepny: kod 230.0. |
 | 2026-09-10 | 230.0 | T3 | pickup_terminal HITL na container. Nie FK. Nie PIN. Nastepny: leftover T3 return_terminal Plan. |
+| 2026-09-10 | Plan 231.0 | T3 | return_terminal HITL na container, nie FK i nie PIN. Delta zaakceptowana (`/noc`). Nastepny: kod 231.0. |
