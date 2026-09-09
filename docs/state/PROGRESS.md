@@ -497,3 +497,4 @@
 | 2026-09-09 | 207.0 | P4b | local_charge port_unlocode HITL. Nie FK geography. Nastepny: leftover P4b rest Plan. |
 | 2026-09-09 | Plan 208.0 | P4b | local_charge iso_size_type HITL, nie FK container. Delta zaakceptowana (`/noc`). Nastepny: kod 208.0. |
 | 2026-09-09 | 208.0 | P4b | local_charge iso_size_type HITL. Nie FK container. Nastepny: leftover P4c parked. |
+| 2026-09-09 | Plan 209.0 | U3b | hawb_no/mawb_no HITL na shipment_leg air, nie pula IATA. Delta zaakceptowana (`/noc`). Nie ocean_bill. Nastepny: kod 209.0. |

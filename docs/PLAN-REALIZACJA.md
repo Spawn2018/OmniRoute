@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny (zablokowany):** leftover P4c warning parked → leftover P1c WHEN/IF/CALC parked → leftover P1d exclusion parked → leftover D9c–f PDF/ZPL/409 sieci parked → leftover V7 tacho TO_VERIFY parked → leftover V8 what-if parked → leftover V6 silnik EBITDA / `sla_clause` CI5 parked → leftover V5 `position_event` / ciphertext / 3 dni U4 parked → leftover V5b `exchange_message` parked → leftover V4 AIS wieży (S32) parked → leftover V2b myto→`charge` parked → leftover C3 live VIES/GUS parked → leftover C4 eCMR parked → leftover C9 Trans.eu parked → leftover C2 AIS/PUESC parked → leftover C6 BDO parked → leftover F2b Decimal/rezerwy parked → leftover F3 noty/period lock parked → leftover F4 CAMT parked → leftover G2.20–G2.22 circle_sim/km/P parked → leftover G2.15–G2.18 kg/CBAM parked → leftover F1 live FA(3) parked → leftover C1 filing XML parked → leftover C8 409/`relation_document_requirement` parked → leftover N3 countdown D&D / szkic `charge` parked → leftover P3b SQL na `charge` parked → leftover P3c live HTTP parked → leftover P3d A11 parked → leftover P5b–c parked → leftover P6c auto-award parked → leftover G2.23 Citizen API parked → leftover P4b armator/serwis parked → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. D8 parked. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
+**Następny (zablokowany):** **209.0** leftover U3b `hawb_no`/`mawb_no` na `shipment_leg` air → leftover U3c pule M-03 parked → leftover P4c warning parked → leftover P1c WHEN/IF/CALC parked → leftover P1d exclusion parked → leftover D9c–f PDF/ZPL/409 sieci parked → leftover V7 tacho TO_VERIFY parked → leftover V8 what-if parked → leftover V6 silnik EBITDA / `sla_clause` CI5 parked → leftover V5 `position_event` / ciphertext / 3 dni U4 parked → leftover V5b `exchange_message` parked → leftover V4 AIS wieży (S32) parked → leftover V2b myto→`charge` parked → leftover C3 live VIES/GUS parked → leftover C4 eCMR parked → leftover C9 Trans.eu parked → leftover C2 AIS/PUESC parked → leftover C6 BDO parked → leftover F2b Decimal/rezerwy parked → leftover F3 noty/period lock parked → leftover F4 CAMT parked → leftover G2.20–G2.22 circle_sim/km/P parked → leftover G2.15–G2.18 kg/CBAM parked → leftover F1 live FA(3) parked → leftover C1 filing XML parked → leftover C8 409/`relation_document_requirement` parked → leftover N3 countdown D&D / szkic `charge` parked → leftover P3b SQL na `charge` parked → leftover P3c live HTTP parked → leftover P3d A11 parked → leftover P5b–c parked → leftover P6c auto-award parked → leftover G2.23 Citizen API parked → leftover P4b armator/serwis parked → leftover T4 `parent_shipment_id` → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. D8 parked. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
 <!-- os-status:end -->
 
 ```mermaid
@@ -517,7 +517,7 @@ Karta: [karty-pol-fala-u.md](analysis/karty-pol-fala-u.md). **U6** + **M-72** = 
 | **U1** | `field_carry_forward` oferta→zlecenie→booking→FV; diff przy POST | zamknięty (`docs/deltas/archived/144.0-u1-u5-carry-checklist.md`) | po O8, przed I1 | mutacja = nowy wiersz / `superseded_by` |
 | **U5** | `document_checklist_rule` (incoterm×side×mode) + `blocks_dispatch` | zamknięty (z U1, 144.0) | z U1 | ≠ C8 polisa podwykonawcy |
 | **U4** | `organization_calendar` + `is_working_day`; grace V5 = 3 dni **robocze** | zamknięty (`docs/deltas/archived/149.0-organization-calendar.md`) | po I4, przed T1 | nie `+3` kalendarzowe |
-| **U3** | `shipment_leg.kind=air` HAWB/MAWB + pule; lotnisko = `port` air | zamknięty ([154.0](deltas/archived/154.0-air.md); leftover HAWB/MAWB) | po T, przed D | nie live IATA bez umowy |
+| **U3** | `shipment_leg.kind=air` HAWB/MAWB + pule; lotnisko = `port` air | zamknięty ([154.0](deltas/archived/154.0-air.md); leftover U3b HAWB/MAWB delta [209.0](deltas/open/209.0-air-hawb.md); leftover U3c pule) | po T, przed D | nie live IATA bez umowy |
 | **N9** | F2 + klon ostatniego podobnego zlecenia | Plan → plaster | z U1 | nie drugi SoR |
 
 ### Fala I — Incoterms, booking, odprawa (po U1; zlecenie już jest)
@@ -843,13 +843,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->
