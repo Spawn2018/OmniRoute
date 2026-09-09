@@ -7244,6 +7244,80 @@
         ]
       }
     },
+    "/api/v1/monitoring-schemes": {
+      "get": {
+        "tags": [
+          "monitoring-schemes"
+        ],
+        "summary": "List Monitoring Schemes",
+        "operationId": "list_monitoring_schemes_api_v1_monitoring_schemes_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/MonitoringSchemeResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Monitoring Schemes Api V1 Monitoring Schemes Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "monitoring-schemes"
+        ],
+        "summary": "Create Monitoring Scheme",
+        "operationId": "create_monitoring_scheme_api_v1_monitoring_schemes_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MonitoringSchemeCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MonitoringSchemeResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/fx-differences": {
       "get": {
         "tags": [
@@ -15404,6 +15478,55 @@
           "source_ref"
         ],
         "title": "MoneyCostResponse"
+      },
+      "MonitoringSchemeCreate": {
+        "properties": {
+          "scheme_code": {
+            "type": "string",
+            "title": "Scheme Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "scheme_code",
+          "source_ref"
+        ],
+        "title": "MonitoringSchemeCreate"
+      },
+      "MonitoringSchemeResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "scheme_code": {
+            "type": "string",
+            "title": "Scheme Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "scheme_code",
+          "source_ref"
+        ],
+        "title": "MonitoringSchemeResponse"
       },
       "NbpRateCreate": {
         "properties": {

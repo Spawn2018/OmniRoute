@@ -3075,6 +3075,42 @@ export type MoneyCostResponse = {
 };
 
 /**
+ * MonitoringSchemeCreate
+ */
+export type MonitoringSchemeCreate = {
+    /**
+     * Scheme Code
+     */
+    scheme_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * MonitoringSchemeResponse
+ */
+export type MonitoringSchemeResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Scheme Code
+     */
+    scheme_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * NbpRateCreate
  */
 export type NbpRateCreate = {
@@ -10460,6 +10496,49 @@ export type CreateMoneyCostApiV1MoneyCostsPostResponses = {
 };
 
 export type CreateMoneyCostApiV1MoneyCostsPostResponse = CreateMoneyCostApiV1MoneyCostsPostResponses[keyof CreateMoneyCostApiV1MoneyCostsPostResponses];
+
+export type ListMonitoringSchemesApiV1MonitoringSchemesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/monitoring-schemes';
+};
+
+export type ListMonitoringSchemesApiV1MonitoringSchemesGetResponses = {
+    /**
+     * Response List Monitoring Schemes Api V1 Monitoring Schemes Get
+     *
+     * Successful Response
+     */
+    200: Array<MonitoringSchemeResponse>;
+};
+
+export type ListMonitoringSchemesApiV1MonitoringSchemesGetResponse = ListMonitoringSchemesApiV1MonitoringSchemesGetResponses[keyof ListMonitoringSchemesApiV1MonitoringSchemesGetResponses];
+
+export type CreateMonitoringSchemeApiV1MonitoringSchemesPostData = {
+    body: MonitoringSchemeCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/monitoring-schemes';
+};
+
+export type CreateMonitoringSchemeApiV1MonitoringSchemesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateMonitoringSchemeApiV1MonitoringSchemesPostError = CreateMonitoringSchemeApiV1MonitoringSchemesPostErrors[keyof CreateMonitoringSchemeApiV1MonitoringSchemesPostErrors];
+
+export type CreateMonitoringSchemeApiV1MonitoringSchemesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: MonitoringSchemeResponse;
+};
+
+export type CreateMonitoringSchemeApiV1MonitoringSchemesPostResponse = CreateMonitoringSchemeApiV1MonitoringSchemesPostResponses[keyof CreateMonitoringSchemeApiV1MonitoringSchemesPostResponses];
 
 export type ListFxDifferencesApiV1FxDifferencesGetData = {
     body?: never;

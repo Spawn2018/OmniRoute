@@ -104,6 +104,11 @@ const NAV_ACTIONS = [
     to: "/kreptd-licences",
   },
   {
+    id: "nav-monitoring-schemes",
+    label: "Idź do schematu monitoringu",
+    to: "/monitoring-schemes",
+  },
+  {
     id: "nav-tender-award-reviews",
     label: "Idź do czterech oczu nagrody",
     to: "/tender-award-reviews",

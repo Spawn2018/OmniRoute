@@ -95,6 +95,7 @@ modules =
     app.services.tender_carbon_marks
     app.services.lane_patterns
     app.services.kreptd_licences
+    app.services.monitoring_schemes
     app.services.tender_award_reviews
     app.services.tender_ted_notices
     app.services.tender_rfp_intakes
@@ -346,6 +347,9 @@ forbidden_modules =
     app.services.kreptd_licences
     app.repositories.kreptd_licences
     app.models.kreptd_licence
+    app.services.monitoring_schemes
+    app.repositories.monitoring_schemes
+    app.models.monitoring_scheme
     app.services.tender_award_reviews
     app.repositories.tender_award_reviews
     app.models.tender_award_review

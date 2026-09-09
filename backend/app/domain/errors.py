@@ -612,3 +612,7 @@ class InvalidLanePattern(DomainError):
 
 class InvalidKreptdLicence(DomainError):
     """Licencja G2.23: HITL numer KREPTD z source_ref — nie scrape i nie Citizen API."""
+
+
+class InvalidMonitoringScheme(DomainError):
+    """Schemat C7: HITL kod monitoringu z source_ref — nie SENT XML i nie PUESC."""

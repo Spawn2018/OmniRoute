@@ -42,6 +42,7 @@ from app.api import (
     locations,
     mail_drafts,
     money_costs,
+    monitoring_schemes,
     nbp_rates,
     networks,
     ocean_bills,
@@ -165,6 +166,7 @@ api_router.include_router(sales_invoices.router)
 api_router.include_router(quote_invoice_settlements.router)
 api_router.include_router(bank_payments.router)
 api_router.include_router(money_costs.router)
+api_router.include_router(monitoring_schemes.router)
 api_router.include_router(fx_differences.router)
 api_router.include_router(cash_flows.router)
 api_router.include_router(cost_to_serve.router)
