@@ -6076,6 +6076,80 @@
         ]
       }
     },
+    "/api/v1/tender-carbon-marks": {
+      "get": {
+        "tags": [
+          "tender-carbon-marks"
+        ],
+        "summary": "List Tender Carbon Marks",
+        "operationId": "list_tender_carbon_marks_api_v1_tender_carbon_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TenderCarbonMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Tender Carbon Marks Api V1 Tender Carbon Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "tender-carbon-marks"
+        ],
+        "summary": "Create Tender Carbon Mark",
+        "operationId": "create_tender_carbon_mark_api_v1_tender_carbon_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TenderCarbonMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TenderCarbonMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/tender-consortium-members": {
       "get": {
         "tags": [
@@ -18668,6 +18742,67 @@
           "source_ref"
         ],
         "title": "TenderBidStanceResponse"
+      },
+      "TenderCarbonMarkCreate": {
+        "properties": {
+          "tender_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Tender Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "tender_id",
+          "mark_code",
+          "source_ref"
+        ],
+        "title": "TenderCarbonMarkCreate"
+      },
+      "TenderCarbonMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "tender_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Tender Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "tender_id",
+          "mark_code",
+          "source_ref"
+        ],
+        "title": "TenderCarbonMarkResponse"
       },
       "TenderConsortiumMemberCreate": {
         "properties": {

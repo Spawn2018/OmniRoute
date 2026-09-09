@@ -600,3 +600,7 @@ class InvalidTenderAwardReview(DomainError):
 
 class InvalidTenderTedNotice(DomainError):
     """Ogłoszenie G2.13: HITL numer TED z source_ref — nie scrape i nie live HTTP."""
+
+
+class InvalidTenderCarbonMark(DomainError):
+    """Ślad G2.14: HITL declared/exempt z source_ref — nie kg i nie kalkulator."""

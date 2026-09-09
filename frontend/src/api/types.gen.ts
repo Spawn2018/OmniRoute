@@ -5141,6 +5141,50 @@ export type TenderBidStanceResponse = {
 };
 
 /**
+ * TenderCarbonMarkCreate
+ */
+export type TenderCarbonMarkCreate = {
+    /**
+     * Tender Id
+     */
+    tender_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TenderCarbonMarkResponse
+ */
+export type TenderCarbonMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Tender Id
+     */
+    tender_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * TenderConsortiumMemberCreate
  */
 export type TenderConsortiumMemberCreate = {
@@ -9653,6 +9697,49 @@ export type CreateTenderBidStanceApiV1TenderBidStancesPostResponses = {
 };
 
 export type CreateTenderBidStanceApiV1TenderBidStancesPostResponse = CreateTenderBidStanceApiV1TenderBidStancesPostResponses[keyof CreateTenderBidStanceApiV1TenderBidStancesPostResponses];
+
+export type ListTenderCarbonMarksApiV1TenderCarbonMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tender-carbon-marks';
+};
+
+export type ListTenderCarbonMarksApiV1TenderCarbonMarksGetResponses = {
+    /**
+     * Response List Tender Carbon Marks Api V1 Tender Carbon Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<TenderCarbonMarkResponse>;
+};
+
+export type ListTenderCarbonMarksApiV1TenderCarbonMarksGetResponse = ListTenderCarbonMarksApiV1TenderCarbonMarksGetResponses[keyof ListTenderCarbonMarksApiV1TenderCarbonMarksGetResponses];
+
+export type CreateTenderCarbonMarkApiV1TenderCarbonMarksPostData = {
+    body: TenderCarbonMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tender-carbon-marks';
+};
+
+export type CreateTenderCarbonMarkApiV1TenderCarbonMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTenderCarbonMarkApiV1TenderCarbonMarksPostError = CreateTenderCarbonMarkApiV1TenderCarbonMarksPostErrors[keyof CreateTenderCarbonMarkApiV1TenderCarbonMarksPostErrors];
+
+export type CreateTenderCarbonMarkApiV1TenderCarbonMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TenderCarbonMarkResponse;
+};
+
+export type CreateTenderCarbonMarkApiV1TenderCarbonMarksPostResponse = CreateTenderCarbonMarkApiV1TenderCarbonMarksPostResponses[keyof CreateTenderCarbonMarkApiV1TenderCarbonMarksPostResponses];
 
 export type ListTenderConsortiumMembersApiV1TenderConsortiumMembersGetData = {
     body?: never;

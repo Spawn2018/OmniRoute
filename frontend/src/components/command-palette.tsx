@@ -89,6 +89,11 @@ const NAV_ACTIONS = [
     to: "/tender-bid-stances",
   },
   {
+    id: "nav-tender-carbon-marks",
+    label: "Idź do śladu węglowego przetargu",
+    to: "/tender-carbon-marks",
+  },
+  {
     id: "nav-tender-award-reviews",
     label: "Idź do czterech oczu nagrody",
     to: "/tender-award-reviews",

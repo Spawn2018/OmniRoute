@@ -66,6 +66,7 @@ const NAV = [
   { to: "/tender-rfp-intakes", label: "Przyjęcie RFP" },
   { to: "/tender-prospects", label: "Prospekt przetargu" },
   { to: "/tender-bid-stances", label: "Udział w przetargu" },
+  { to: "/tender-carbon-marks", label: "Ślad węglowy przetargu" },
   { to: "/tender-award-reviews", label: "Cztery oczy nagrody" },
   { to: "/tender-ted-notices", label: "Ogłoszenie TED" },
   { to: "/tender-lanes", label: "Korytarze przetargu" },

@@ -74,6 +74,7 @@ import { Route as ShipmentPackagesRouteImport } from './routes/shipment-packages
 import { Route as ShipmentsRouteImport } from './routes/shipments'
 import { Route as TenderAwardReviewsRouteImport } from './routes/tender-award-reviews'
 import { Route as TenderBidStancesRouteImport } from './routes/tender-bid-stances'
+import { Route as TenderCarbonMarksRouteImport } from './routes/tender-carbon-marks'
 import { Route as TenderConsortiumMembersRouteImport } from './routes/tender-consortium-members'
 import { Route as TenderDataRoomsRouteImport } from './routes/tender-data-rooms'
 import { Route as TenderLanesRouteImport } from './routes/tender-lanes'
@@ -417,6 +418,11 @@ const TenderBidStancesRoute = TenderBidStancesRouteImport.update({
   path: '/tender-bid-stances',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TenderCarbonMarksRoute = TenderCarbonMarksRouteImport.update({
+  id: '/tender-carbon-marks',
+  path: '/tender-carbon-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TenderConsortiumMembersRoute = TenderConsortiumMembersRouteImport.update({
   id: '/tender-consortium-members',
   path: '/tender-consortium-members',
@@ -569,6 +575,7 @@ export interface FileRoutesByFullPath {
   '/shipments': typeof ShipmentsRoute
   '/tender-award-reviews': typeof TenderAwardReviewsRoute
   '/tender-bid-stances': typeof TenderBidStancesRoute
+  '/tender-carbon-marks': typeof TenderCarbonMarksRoute
   '/tender-consortium-members': typeof TenderConsortiumMembersRoute
   '/tender-data-rooms': typeof TenderDataRoomsRoute
   '/tender-lanes': typeof TenderLanesRoute
@@ -653,6 +660,7 @@ export interface FileRoutesByTo {
   '/shipments': typeof ShipmentsRoute
   '/tender-award-reviews': typeof TenderAwardReviewsRoute
   '/tender-bid-stances': typeof TenderBidStancesRoute
+  '/tender-carbon-marks': typeof TenderCarbonMarksRoute
   '/tender-consortium-members': typeof TenderConsortiumMembersRoute
   '/tender-data-rooms': typeof TenderDataRoomsRoute
   '/tender-lanes': typeof TenderLanesRoute
@@ -738,6 +746,7 @@ export interface FileRoutesById {
   '/shipments': typeof ShipmentsRoute
   '/tender-award-reviews': typeof TenderAwardReviewsRoute
   '/tender-bid-stances': typeof TenderBidStancesRoute
+  '/tender-carbon-marks': typeof TenderCarbonMarksRoute
   '/tender-consortium-members': typeof TenderConsortiumMembersRoute
   '/tender-data-rooms': typeof TenderDataRoomsRoute
   '/tender-lanes': typeof TenderLanesRoute
@@ -824,6 +833,7 @@ export interface FileRouteTypes {
     | '/shipments'
     | '/tender-award-reviews'
     | '/tender-bid-stances'
+    | '/tender-carbon-marks'
     | '/tender-consortium-members'
     | '/tender-data-rooms'
     | '/tender-lanes'
@@ -908,6 +918,7 @@ export interface FileRouteTypes {
     | '/shipments'
     | '/tender-award-reviews'
     | '/tender-bid-stances'
+    | '/tender-carbon-marks'
     | '/tender-consortium-members'
     | '/tender-data-rooms'
     | '/tender-lanes'
@@ -992,6 +1003,7 @@ export interface FileRouteTypes {
     | '/shipments'
     | '/tender-award-reviews'
     | '/tender-bid-stances'
+    | '/tender-carbon-marks'
     | '/tender-consortium-members'
     | '/tender-data-rooms'
     | '/tender-lanes'
@@ -1077,6 +1089,7 @@ export interface RootRouteChildren {
   ShipmentsRoute: typeof ShipmentsRoute
   TenderAwardReviewsRoute: typeof TenderAwardReviewsRoute
   TenderBidStancesRoute: typeof TenderBidStancesRoute
+  TenderCarbonMarksRoute: typeof TenderCarbonMarksRoute
   TenderConsortiumMembersRoute: typeof TenderConsortiumMembersRoute
   TenderDataRoomsRoute: typeof TenderDataRoomsRoute
   TenderLanesRoute: typeof TenderLanesRoute
@@ -1553,6 +1566,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TenderBidStancesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tender-carbon-marks': {
+      id: '/tender-carbon-marks'
+      path: '/tender-carbon-marks'
+      fullPath: '/tender-carbon-marks'
+      preLoaderRoute: typeof TenderCarbonMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tender-consortium-members': {
       id: '/tender-consortium-members'
       path: '/tender-consortium-members'
@@ -1741,6 +1761,7 @@ const rootRouteChildren: RootRouteChildren = {
   ShipmentsRoute: ShipmentsRoute,
   TenderAwardReviewsRoute: TenderAwardReviewsRoute,
   TenderBidStancesRoute: TenderBidStancesRoute,
+  TenderCarbonMarksRoute: TenderCarbonMarksRoute,
   TenderConsortiumMembersRoute: TenderConsortiumMembersRoute,
   TenderDataRoomsRoute: TenderDataRoomsRoute,
   TenderLanesRoute: TenderLanesRoute,

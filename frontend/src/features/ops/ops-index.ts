@@ -154,6 +154,11 @@ export const OPS_JOBS = [
     job: "HITL bid/no-bid bez auto-award",
   },
   {
+    route: BUSINESS_LISTS.tenderCarbonMark.route,
+    label: "Ślad węglowy przetargu",
+    job: "HITL declared/exempt bez kalkulatora kg",
+  },
+  {
     route: BUSINESS_LISTS.tenderAwardReview.route,
     label: "Cztery oczy nagrody",
     job: "HITL przegląd nagrody bez auto-award",
@@ -583,6 +588,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "181.0": "/tender-bid-stances",
   "182.0": "/tender-award-reviews",
   "183.0": "/tender-ted-notices",
+  "184.0": "/tender-carbon-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =
