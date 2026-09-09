@@ -20,6 +20,9 @@ import {
 } from "@/lib/dangerous-goods-api"
 import { getTenantContext } from "@/lib/tenant"
 
+const TUNNELS = ["A", "B", "C", "D", "E"] as const
+const GROUPS = ["none", ...Array.from({ length: 18 }, (_, index) => `sg${index + 1}`)]
+
 const helper = createColumnHelper<DangerousGood>()
 
 const columns = [
@@ -31,6 +34,8 @@ const columns = [
     header: "Klasa IMDG",
     cell: (info) => info.getValue(),
   }),
+  helper.accessor("adr_tunnel_code", { header: "Tunel ADR" }),
+  helper.accessor("segregation_group", { header: "Grupa SG" }),
   helper.accessor("name", { header: "Nazwa ładunku" }),
   helper.accessor("aliases", {
     header: "Aliasy UN",
@@ -42,6 +47,8 @@ const columns = [
 const COLUMN_LABELS = {
   un_number: "Numer UN",
   imdg_class: "Klasa IMDG",
+  adr_tunnel_code: "Tunel ADR",
+  segregation_group: "Grupa SG",
   name: "Nazwa ładunku",
   aliases: "Aliasy UN",
   source_ref: "Źródło",
@@ -54,6 +61,8 @@ export function DangerousGoodCatalogPage() {
   const [imdgClass, setImdgClass] = useState("")
   const [name, setName] = useState("")
   const [aliasesText, setAliasesText] = useState("")
+  const [tunnelCode, setTunnelCode] = useState("D")
+  const [segregationGroup, setSegregationGroup] = useState("none")
   const [resolved, setResolved] = useState<DangerousGood | null>(null)
   const sessionReady = Boolean(ctx.organizationId && ctx.userId)
 
@@ -66,12 +75,23 @@ export function DangerousGoodCatalogPage() {
 
   const createMutation = useMutation({
     mutationFn: () =>
-      createDangerousGood(dangerousGoodCreateBody({ unNumber, imdgClass, name, aliasesText })),
+      createDangerousGood(
+        dangerousGoodCreateBody({
+          unNumber,
+          imdgClass,
+          name,
+          aliasesText,
+          tunnelCode,
+          segregationGroup,
+        }),
+      ),
     onSuccess: () => {
       setUnNumber("")
       setImdgClass("")
       setName("")
       setAliasesText("")
+      setTunnelCode("D")
+      setSegregationGroup("none")
       void queryClient.invalidateQueries({ queryKey: ["dangerous-goods", ctx.organizationId] })
     },
   })
@@ -86,13 +106,13 @@ export function DangerousGoodCatalogPage() {
     <div className="space-y-3">
       <CatalogHeading
         title="Katalog towarów niebezpiecznych"
-        subtitle="dangerous_good M-52 · numer UN i klasa IMDG · nie podpina wyceny"
+        subtitle="dangerous_good M-52 · UN + IMDG + tunel ADR + SG · nie klasa z modelu"
       />
 
       {sessionReady ? null : <TenantSessionNotice />}
 
       <form
-        className="flex flex-col gap-2 rounded-md border border-border bg-card p-3 lg:grid lg:grid-cols-5"
+        className="flex flex-col gap-2 rounded-md border border-border bg-card p-3 lg:grid lg:grid-cols-7"
         onSubmit={(event) => {
           event.preventDefault()
           if (!sessionReady) return
@@ -115,6 +135,30 @@ export function DangerousGoodCatalogPage() {
           onChange={(event) => setImdgClass(event.target.value)}
           required
         />
+        <select
+          aria-label="Tunel ADR"
+          className="h-8 rounded-md border border-input bg-background px-2 text-xs"
+          value={tunnelCode}
+          onChange={(event) => setTunnelCode(event.target.value)}
+        >
+          {TUNNELS.map((code) => (
+            <option key={code} value={code}>
+              {code}
+            </option>
+          ))}
+        </select>
+        <select
+          aria-label="Grupa SG"
+          className="h-8 rounded-md border border-input bg-background px-2 text-xs"
+          value={segregationGroup}
+          onChange={(event) => setSegregationGroup(event.target.value)}
+        >
+          {GROUPS.map((group) => (
+            <option key={group} value={group}>
+              {group}
+            </option>
+          ))}
+        </select>
         <Input
           aria-label="Nazwa ładunku"
           placeholder="Benzyna"
@@ -142,7 +186,7 @@ export function DangerousGoodCatalogPage() {
         resolved={
           resolved === null
             ? null
-            : `UN${resolved.un_number} · klasa ${resolved.imdg_class} · ${resolved.name}`
+            : `UN${resolved.un_number} · klasa ${resolved.imdg_class} · tunel ${resolved.adr_tunnel_code} · ${resolved.name}`
         }
         onResolve={(token) => resolveMutation.mutate(token)}
       />

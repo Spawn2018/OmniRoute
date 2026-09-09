@@ -13353,6 +13353,18 @@
             "minLength": 1,
             "title": "Imdg Class"
           },
+          "adr_tunnel_code": {
+            "type": "string",
+            "maxLength": 1,
+            "minLength": 1,
+            "title": "Adr Tunnel Code"
+          },
+          "segregation_group": {
+            "type": "string",
+            "maxLength": 8,
+            "minLength": 1,
+            "title": "Segregation Group"
+          },
           "name": {
             "type": "string",
             "maxLength": 128,
@@ -13372,6 +13384,8 @@
         "required": [
           "un_number",
           "imdg_class",
+          "adr_tunnel_code",
+          "segregation_group",
           "name"
         ],
         "title": "DangerousGoodCreate"
@@ -13396,6 +13410,14 @@
             "type": "string",
             "title": "Imdg Class"
           },
+          "adr_tunnel_code": {
+            "type": "string",
+            "title": "Adr Tunnel Code"
+          },
+          "segregation_group": {
+            "type": "string",
+            "title": "Segregation Group"
+          },
           "name": {
             "type": "string",
             "title": "Name"
@@ -13418,6 +13440,8 @@
           "organization_id",
           "un_number",
           "imdg_class",
+          "adr_tunnel_code",
+          "segregation_group",
           "name",
           "aliases",
           "source_ref"

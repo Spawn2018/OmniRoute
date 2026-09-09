@@ -3,7 +3,9 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from app.domain.dangerous_good import (
+    normalize_adr_tunnel_code,
     normalize_imdg_class,
+    normalize_segregation_group,
     normalize_un_aliases,
     normalize_un_number,
 )
@@ -43,3 +45,22 @@ def test_normalize_un_aliases_dedupes() -> None:
 def test_normalize_un_number_is_idempotent(token: str) -> None:
     assert normalize_un_number(token) == token
     assert normalize_un_number(f" UN{token} ") == token
+
+
+def test_normalize_adr_tunnel_accepts_letter() -> None:
+    assert normalize_adr_tunnel_code(" d ") == "D"
+
+
+def test_normalize_adr_tunnel_rejects_unknown() -> None:
+    with pytest.raises(InvalidDangerousGood, match="tunel"):
+        normalize_adr_tunnel_code("F")
+
+
+def test_normalize_segregation_group_accepts_sg() -> None:
+    assert normalize_segregation_group(" SG1 ") == "sg1"
+    assert normalize_segregation_group("none") == "none"
+
+
+def test_normalize_segregation_group_rejects_unknown() -> None:
+    with pytest.raises(InvalidDangerousGood, match="segregacja"):
+        normalize_segregation_group("sg99")

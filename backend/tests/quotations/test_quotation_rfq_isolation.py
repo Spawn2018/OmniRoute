@@ -186,6 +186,8 @@ async def test_quotation_may_not_point_un_at_another_tenant(session, two_tenants
         organization_id=org_b.id,
         un_number="1263",
         imdg_class="3",
+        adr_tunnel_code="D",
+        segregation_group="none",
         name="Paint B",
         aliases=[],
         source_ref="tenant:manual",

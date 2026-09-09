@@ -18,7 +18,14 @@ _ENDPOINTS = (
         "POST",
         "/api/v1/dangerous-goods",
         None,
-        {"un_number": "1203", "imdg_class": "3", "name": "Petrol", "aliases": []},
+        {
+            "un_number": "1203",
+            "imdg_class": "3",
+            "name": "Petrol",
+            "aliases": [],
+            "adr_tunnel_code": "D",
+            "segregation_group": "none",
+        },
     ),
 )
 

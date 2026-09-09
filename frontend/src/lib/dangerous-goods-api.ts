@@ -6,6 +6,8 @@ export type DangerousGood = {
   organization_id: string
   un_number: string
   imdg_class: string
+  adr_tunnel_code: string
+  segregation_group: string
   name: string
   aliases: string[]
   source_ref: string
@@ -16,7 +18,16 @@ export function dangerousGoodCreateBody(input: {
   imdgClass: string
   name: string
   aliasesText: string
-}): { un_number: string; imdg_class: string; name: string; aliases: string[] } {
+  tunnelCode: string
+  segregationGroup: string
+}): {
+  un_number: string
+  imdg_class: string
+  name: string
+  aliases: string[]
+  adr_tunnel_code: string
+  segregation_group: string
+} {
   const aliases = input.aliasesText
     .split(",")
     .map((part) => part.trim())
@@ -26,6 +37,8 @@ export function dangerousGoodCreateBody(input: {
     imdg_class: input.imdgClass.trim(),
     name: input.name.trim(),
     aliases,
+    adr_tunnel_code: input.tunnelCode.trim(),
+    segregation_group: input.segregationGroup.trim(),
   }
 }
 
@@ -52,6 +65,8 @@ export async function createDangerousGood(body: {
   imdg_class: string
   name: string
   aliases: string[]
+  adr_tunnel_code: string
+  segregation_group: string
 }): Promise<DangerousGood> {
   const response = await fetch("/api/v1/dangerous-goods", {
     method: "POST",

@@ -1547,6 +1547,14 @@ export type DangerousGoodCreate = {
      */
     imdg_class: string;
     /**
+     * Adr Tunnel Code
+     */
+    adr_tunnel_code: string;
+    /**
+     * Segregation Group
+     */
+    segregation_group: string;
+    /**
      * Name
      */
     name: string;
@@ -1576,6 +1584,14 @@ export type DangerousGoodResponse = {
      * Imdg Class
      */
     imdg_class: string;
+    /**
+     * Adr Tunnel Code
+     */
+    adr_tunnel_code: string;
+    /**
+     * Segregation Group
+     */
+    segregation_group: string;
     /**
      * Name
      */

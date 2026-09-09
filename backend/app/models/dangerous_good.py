@@ -20,6 +20,16 @@ class DangerousGood(Base, TimestampMixin):
         UniqueConstraint("organization_id", "id", name="uq_dangerous_good_org_id"),
         CheckConstraint("un_number ~ '^[0-9]{4}$'", name="ck_dangerous_good_un_digits"),
         CheckConstraint(f"imdg_class IN ({_IMDG})", name="ck_dangerous_good_imdg_class"),
+        CheckConstraint(
+            "adr_tunnel_code IN ('A', 'B', 'C', 'D', 'E')",
+            name="ck_dangerous_good_adr_tunnel",
+        ),
+        CheckConstraint(
+            "segregation_group IN ('none','sg1','sg2','sg3','sg4','sg5','sg6',"
+            "'sg7','sg8','sg9','sg10','sg11','sg12','sg13','sg14','sg15',"
+            "'sg16','sg17','sg18')",
+            name="ck_dangerous_good_segregation_group",
+        ),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
@@ -28,6 +38,8 @@ class DangerousGood(Base, TimestampMixin):
         nullable=False, index=True)
     un_number: Mapped[str] = mapped_column(String(4), nullable=False)
     imdg_class: Mapped[str] = mapped_column(String(3), nullable=False)
+    adr_tunnel_code: Mapped[str] = mapped_column(String(1), nullable=False)
+    segregation_group: Mapped[str] = mapped_column(String(8), nullable=False)
     name: Mapped[str] = mapped_column(String(128), nullable=False)
     aliases: Mapped[list[str]] = mapped_column(
         ARRAY(Text()), nullable=False, server_default=text("'{}'"))

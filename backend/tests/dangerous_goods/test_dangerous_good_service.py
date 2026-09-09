@@ -19,6 +19,8 @@ def _row(*, un_number: str, aliases: list[str] | None = None) -> DangerousGood:
         organization_id=uuid4(),
         un_number=un_number,
         imdg_class="3",
+        adr_tunnel_code="D",
+        segregation_group="none",
         name=un_number,
         aliases=aliases or [],
         source_ref="tenant:manual",
@@ -40,10 +42,14 @@ async def test_create_normalizes_un_number_and_class() -> None:
         imdg_class="3",
         name=" Petrol ",
         aliases=[" 1213 "],
+        adr_tunnel_code="D",
+        segregation_group="sg1",
     )
 
     assert created.un_number == "1203"
     assert created.imdg_class == "3"
+    assert created.adr_tunnel_code == "D"
+    assert created.segregation_group == "sg1"
     assert created.name == "Petrol"
     assert created.aliases == ["1213"]
     assert created.source_ref == "tenant:manual"
@@ -63,6 +69,8 @@ async def test_create_rejects_blank_name() -> None:
             imdg_class="3",
             name="   ",
             aliases=[],
+            adr_tunnel_code="D",
+            segregation_group="none",
         )
 
 
@@ -77,6 +85,8 @@ async def test_create_rejects_unknown_imdg_class() -> None:
             imdg_class="3.9",
             name="Petrol",
             aliases=[],
+            adr_tunnel_code="D",
+            segregation_group="none",
         )
 
 
@@ -91,6 +101,8 @@ async def test_create_rejects_alias_equal_to_un_number() -> None:
             imdg_class="3",
             name="Petrol",
             aliases=["1203"],
+            adr_tunnel_code="D",
+            segregation_group="none",
         )
 
 
@@ -107,6 +119,8 @@ async def test_create_rejects_token_already_in_catalog() -> None:
             imdg_class="3",
             name="Paint",
             aliases=["1203"],
+            adr_tunnel_code="D",
+            segregation_group="none",
         )
 
 

@@ -28,6 +28,8 @@ _IMDG_CLASSES = frozenset(
         "9",
     },
 )
+_TUNNELS = frozenset({"A", "B", "C", "D", "E"})
+_GROUPS = frozenset({"none", *(f"sg{n}" for n in range(1, 19))})
 
 
 def normalize_un_number(raw: object) -> str:
@@ -57,3 +59,21 @@ def normalize_un_aliases(raw: list[str]) -> list[str]:
         if token not in unique:
             unique.append(token)
     return unique
+
+
+def normalize_adr_tunnel_code(raw: object) -> str:
+    if type(raw) is not str:
+        raise InvalidDangerousGood("tunel musi być tekstem")
+    token = raw.strip().upper()
+    if token not in _TUNNELS:
+        raise InvalidDangerousGood("nieznany kod tunelu ADR")
+    return token
+
+
+def normalize_segregation_group(raw: object) -> str:
+    if type(raw) is not str:
+        raise InvalidDangerousGood("segregacja musi być tekstem")
+    token = raw.strip().lower()
+    if token not in _GROUPS:
+        raise InvalidDangerousGood("segregacja: nieznana grupa")
+    return token

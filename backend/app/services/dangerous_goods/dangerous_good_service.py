@@ -4,7 +4,9 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.dangerous_good import (
+    normalize_adr_tunnel_code,
     normalize_imdg_class,
+    normalize_segregation_group,
     normalize_un_aliases,
     normalize_un_number,
 )
@@ -41,9 +43,13 @@ class DangerousGoodService:
         imdg_class: str,
         name: str,
         aliases: list[str],
+        adr_tunnel_code: str,
+        segregation_group: str,
     ) -> DangerousGood:
         token = normalize_un_number(un_number)
         klass = normalize_imdg_class(imdg_class)
+        tunnel = normalize_adr_tunnel_code(adr_tunnel_code)
+        group = normalize_segregation_group(segregation_group)
         alias_tokens = normalize_un_aliases(aliases)
         if token in alias_tokens:
             raise InvalidDangerousGood("alias nie może powielać numeru UN")
@@ -56,6 +62,8 @@ class DangerousGoodService:
             organization_id=organization_id,
             un_number=token,
             imdg_class=klass,
+            adr_tunnel_code=tunnel,
+            segregation_group=group,
             name=label,
             aliases=alias_tokens,
             source_ref=_MANUAL,

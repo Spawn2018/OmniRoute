@@ -154,6 +154,8 @@ async def test_customer_rfq_rejects_foreign_dangerous_good(session, two_tenants)
         organization_id=org_b.id,
         un_number="1203",
         imdg_class="3",
+        adr_tunnel_code="D",
+        segregation_group="none",
         name="Petrol B",
         aliases=[],
         source_ref="tenant:manual",

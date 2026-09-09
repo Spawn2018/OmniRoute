@@ -11,3 +11,4 @@ Katalog numeru UN + klasy IMDG — nie `charge`. FK na RFQ/wycenie składa API.
 - import innych BC services
 - zapis `quotation` / `customer_rfq` / `commodity_code` / `charge`
 - nadawanie klasy przez LLM
+- live IMO / packing group

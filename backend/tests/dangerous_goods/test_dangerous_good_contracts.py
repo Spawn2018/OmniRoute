@@ -48,3 +48,18 @@ def test_pricing_and_extraction_do_not_import_dangerous_goods() -> None:
 def test_generated_api_types_include_dangerous_good() -> None:
     source = (_ROOT / "frontend" / "src" / "api" / "types.gen.ts").read_text(encoding="utf-8")
     assert "DangerousGoodResponse" in source or "DangerousGoodCreate" in source
+    assert "adr_tunnel_code" in source
+    assert "segregation_group" in source
+
+
+def test_migration_132_adds_adr_without_live_imo() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "132_dangerous_good_adr.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "132_dangerous_good_adr"' in source
+    assert 'down_revision: str | None = "131_cargo_claim_cmr"' in source
+    assert "adr_tunnel_code" in source
+    assert "segregation_group" in source
+    assert "httpx" not in source
+    assert "buy_amount" not in source
+    assert "def downgrade" in source

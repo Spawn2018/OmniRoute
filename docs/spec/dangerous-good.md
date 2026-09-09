@@ -1,9 +1,9 @@
 # M-52 dangerous_good — katalog towarów niebezpiecznych
 
-**Plaster:** 7.0 (katalog) · **122.0** (S7 leftover UN na RFQ)  
-**Status:** katalog numeru UN + klasy IMDG per tenant. 122.0 podpina `dangerous_good_id` do RFQ i wyceny. Nie żywe M-08 `charge`.
+**Plaster:** 7.0 (katalog) · **122.0** (UN na RFQ) · **192.0** (tunel ADR + SG)  
+**Status:** katalog numeru UN + klasy IMDG + tunel ADR + grupa SG per tenant. Nie żywe M-08 `charge`. LLM nie nadaje klasy.
 
-Delta: [7.0](../deltas/archived/7.0-dangerous-good.md) · [122.0](../deltas/archived/122.0-un-on-rfq.md).
+Delta: [7.0](../deltas/archived/7.0-dangerous-good.md) · [122.0](../deltas/archived/122.0-un-on-rfq.md) · [192.0](../deltas/archived/192.0-dangerous-good-adr.md).
 
 ## Zakres
 
@@ -26,7 +26,19 @@ Delta: [7.0](../deltas/archived/7.0-dangerous-good.md) · [122.0](../deltas/arch
 
 ### Poza 122.0
 
-Live IMO · LLM nadaje UN · filtr `rate_line` po UN
+Live IMO · LLM nadaje UN · filtr `rate_line` po UN · packing group · grupy 1.xA
+
+## 192.0 tunel ADR + grupa SG
+
+### Zakres
+
+- `adr_tunnel_code`: `A` | `B` | `C` | `D` | `E`
+- `segregation_group`: `none` | `sg1`…`sg18`
+- Operator wpisuje kody; serwis nie zmienia `imdg_class`
+
+### Poza 192.0
+
+packing group · live IMO · LLM klasa
 
 ## HC
 

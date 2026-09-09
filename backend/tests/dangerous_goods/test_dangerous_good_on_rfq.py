@@ -171,6 +171,8 @@ class _StubUnCatalog:
             organization_id=uuid4(),
             un_number="1203",
             imdg_class="3",
+            adr_tunnel_code="D",
+            segregation_group="none",
             name="Petrol",
             aliases=[],
             source_ref="tenant:manual",

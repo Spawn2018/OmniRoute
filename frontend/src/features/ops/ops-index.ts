@@ -626,6 +626,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "189.0": "/cash-discounts",
   "190.0": "/carbon-methods",
   "191.0": "/claims",
+  "192.0": "/dangerous-goods",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

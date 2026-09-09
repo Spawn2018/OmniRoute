@@ -5,6 +5,11 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app.api.deps import require_tenant_session, set_authz_checker
+from app.domain.dangerous_good import (
+    normalize_adr_tunnel_code,
+    normalize_imdg_class,
+    normalize_segregation_group,
+)
 from app.domain.errors import UnknownDangerousGood
 from app.main import app
 from app.models.dangerous_good import DangerousGood
@@ -40,12 +45,16 @@ class StubDangerousGoodService:
         imdg_class: str,
         name: str,
         aliases: list[str],
+        adr_tunnel_code: str,
+        segregation_group: str,
     ) -> DangerousGood:
         row = DangerousGood(
             id=uuid4(),
             organization_id=organization_id,
             un_number=un_number.strip(),
-            imdg_class=imdg_class.strip(),
+            imdg_class=normalize_imdg_class(imdg_class),
+            adr_tunnel_code=normalize_adr_tunnel_code(adr_tunnel_code),
+            segregation_group=normalize_segregation_group(segregation_group),
             name=name.strip(),
             aliases=[alias.strip() for alias in aliases],
             source_ref="tenant:manual",
@@ -90,12 +99,21 @@ def test_http_create_and_list_dangerous_goods(catalog_client: TestClient) -> Non
     created = catalog_client.post(
         "/api/v1/dangerous-goods",
         headers=headers,
-        json={"un_number": "1203", "imdg_class": "3", "name": "Petrol", "aliases": ["1213"]},
+        json={
+            "un_number": "1203",
+            "imdg_class": "3",
+            "name": "Petrol",
+            "aliases": ["1213"],
+            "adr_tunnel_code": "D",
+            "segregation_group": "sg1",
+        },
     )
     assert created.status_code == 201
     body = created.json()
     assert body["un_number"] == "1203"
     assert body["imdg_class"] == "3"
+    assert body["adr_tunnel_code"] == "D"
+    assert body["segregation_group"] == "sg1"
     assert body["organization_id"] == str(org_id)
     assert body["aliases"] == ["1213"]
     assert body["source_ref"] == "tenant:manual"
@@ -127,6 +145,8 @@ def test_http_create_rejects_client_source_ref(catalog_client: TestClient) -> No
             "imdg_class": "3",
             "name": "Petrol",
             "aliases": [],
+            "adr_tunnel_code": "D",
+            "segregation_group": "none",
             "source_ref": "forged:origin",
         },
     )
@@ -138,7 +158,14 @@ def test_http_resolve_returns_catalog_row(catalog_client: TestClient) -> None:
     catalog_client.post(
         "/api/v1/dangerous-goods",
         headers=headers,
-        json={"un_number": "1203", "imdg_class": "3", "name": "Petrol", "aliases": ["1213"]},
+        json={
+            "un_number": "1203",
+            "imdg_class": "3",
+            "name": "Petrol",
+            "aliases": ["1213"],
+            "adr_tunnel_code": "D",
+            "segregation_group": "sg1",
+        },
     )
     resolved = catalog_client.get(
         "/api/v1/dangerous-goods/resolve",
@@ -147,3 +174,37 @@ def test_http_resolve_returns_catalog_row(catalog_client: TestClient) -> None:
     )
     assert resolved.status_code == 200
     assert resolved.json()["un_number"] == "1203"
+
+
+def test_http_create_unknown_tunnel_is_400(catalog_client: TestClient) -> None:
+    response = catalog_client.post(
+        "/api/v1/dangerous-goods",
+        headers=bearer_auth_headers(),
+        json={
+            "un_number": "1203",
+            "imdg_class": "3",
+            "name": "Petrol",
+            "aliases": [],
+            "adr_tunnel_code": "F",
+            "segregation_group": "none",
+        },
+    )
+    assert response.status_code == 400
+    assert "tunel" in response.json()["detail"]
+
+
+def test_http_create_unknown_segregation_is_400(catalog_client: TestClient) -> None:
+    response = catalog_client.post(
+        "/api/v1/dangerous-goods",
+        headers=bearer_auth_headers(),
+        json={
+            "un_number": "1203",
+            "imdg_class": "3",
+            "name": "Petrol",
+            "aliases": [],
+            "adr_tunnel_code": "D",
+            "segregation_group": "sg99",
+        },
+    )
+    assert response.status_code == 400
+    assert "segregacja" in response.json()["detail"]
