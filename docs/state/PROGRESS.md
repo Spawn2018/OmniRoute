@@ -463,3 +463,4 @@
 | 2026-09-09 | 190.0 | C5 | carbon_method HITL kod + wersja + source_ref. Nie kg. Nie kalkulator. Nastepny: leftover C3 Plan. |
 | 2026-09-09 | Plan 191.0 | EXP0.8 | cargo_claim HITL OS&D + terminy CMR, nie silnik 7/21/365. Delta zaakceptowana (`/noc`). Nie kwota. Nastepny: kod 191.0. |
 | 2026-09-09 | 191.0 | EXP0.8 | cargo_claim HITL OS&D + notice/suit DATE. Nie silnik 7/21/365. Nie kwota. Nastepny: leftover C3 Plan. |
+| 2026-09-09 | Plan 192.0 | EXP0.9 | dangerous_good HITL tunel ADR + SG, nie klasa z LLM. Delta zaakceptowana (`/noc`). Nastepny: kod 192.0. |

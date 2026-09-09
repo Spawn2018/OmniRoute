@@ -10,7 +10,7 @@
 | kod opłaty | charge_code | katalog M-06; typowany token, nie luźny string |
 | alias kodu opłaty | charge_code alias | synonim w katalogu tenanta |
 | kod towarowy | commodity_code | katalog M-09; 70.0 FK na RFQ/wycenie; nie luźna nazwa |
-| towar niebezpieczny | dangerous_good | katalog M-52; 122.0 FK na RFQ/wycenie; token UN czterema cyframi; nie LLM |
+| towar niebezpieczny | dangerous_good | katalog M-52; 122.0 FK na RFQ/wycenie; 192.0 HITL tunel ADR + SG; nie LLM |
 | numer UN | un_number | 4 cyfry na `dangerous_good`; prefiks UN zbędny |
 | klasa IMDG | imdg_class | allowlista 1–9 z podziałem (2.1, 4.1, …); nie packing group |
 | wycena | quotation | |
