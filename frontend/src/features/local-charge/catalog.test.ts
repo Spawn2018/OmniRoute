@@ -13,6 +13,7 @@ describe("levyWrite", () => {
         ccyMark: "eur",
         originStamp: "tenant:manual",
         portToken: " plgdy ",
+        isoToken: " 22g1 ",
       }),
     ).toEqual({
       charge_kind: "thc",
@@ -20,6 +21,7 @@ describe("levyWrite", () => {
       currency: "EUR",
       source_ref: "tenant:manual",
       port_unlocode: "PLGDY",
+      iso_size_type: "22G1",
     })
   })
 })
@@ -41,6 +43,7 @@ describe("local_charge surface for 166.0", () => {
     expect(panel).not.toContain("CatalogCreateForm")
     expect(src("features/ops/ops-index.ts")).toContain('"166.0": "/local-charges"')
     expect(src("features/ops/ops-index.ts")).toContain('"207.0": "/local-charges"')
-    expect(panel).toContain("Port UN/LOCODE")
+    expect(src("features/ops/ops-index.ts")).toContain('"208.0": "/local-charges"')
+    expect(panel).toContain("Typ ISO kontenera")
   })
 })

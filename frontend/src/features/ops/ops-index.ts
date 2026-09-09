@@ -692,6 +692,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "205.0": "/rate-cards",
   "206.0": "/charge-templates",
   "207.0": "/local-charges",
+  "208.0": "/local-charges",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

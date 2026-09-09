@@ -34,7 +34,12 @@ class LocalCharge(Base, TimestampMixin):
             "organization_id",
             "charge_kind",
             "port_unlocode",
-            name="uq_local_charge_org_kind_port",
+            "iso_size_type",
+            name="uq_local_charge_org_kind_port_type",
+        ),
+        CheckConstraint(
+            "iso_size_type IS NULL OR iso_size_type ~ '^[0-9]{2}[A-Z][A-Z0-9]$'",
+            name="ck_local_charge_iso_size_type",
         ),
         Index("ix_local_charge_org_kind", "organization_id", "charge_kind"),
     )
@@ -51,4 +56,5 @@ class LocalCharge(Base, TimestampMixin):
     amount: Mapped[Decimal] = mapped_column(Numeric(14, 4), nullable=False)
     currency: Mapped[str] = mapped_column(CHAR(3), nullable=False)
     port_unlocode: Mapped[str | None] = mapped_column(String(5), nullable=True)
+    iso_size_type: Mapped[str | None] = mapped_column(String(4), nullable=True)
     source_ref: Mapped[str] = mapped_column(String(256), nullable=False)

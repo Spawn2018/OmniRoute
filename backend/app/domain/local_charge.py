@@ -1,7 +1,8 @@
 import re
 from decimal import Decimal, InvalidOperation
 
-from app.domain.errors import InvalidLocalCharge, InvalidUnlocode
+from app.domain.container import require_iso_size_type
+from app.domain.errors import InvalidContainer, InvalidLocalCharge, InvalidUnlocode
 from app.domain.port import normalize_unlocode
 
 _KINDS = frozenset({"thc", "isps", "seal", "amendment"})
@@ -69,3 +70,17 @@ def require_levy_port(raw: object) -> str | None:
         return normalize_unlocode(token)
     except InvalidUnlocode as exc:
         raise InvalidLocalCharge("port: UN/LOCODE 5 znaków") from exc
+
+
+def require_levy_iso(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidLocalCharge("typ musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    try:
+        return require_iso_size_type(token)
+    except InvalidContainer as exc:
+        raise InvalidLocalCharge("typ: ISO size/type 4 znaki") from exc

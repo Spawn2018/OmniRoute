@@ -60,7 +60,7 @@
 | karta stawek | rate_card | 163.0 `applies_when` jako dane + Decimal; 205.0 równość GET matching; nie silnik WHEN/IF; nie `rate_line` |
 | szablon opłat | charge_template | 164.0 kolekcja `charge_code` + daty; 206.0 exclusion daterange; nie `charge` |
 | indeks paliwowy | fuel_index | 165.0 katalog FSC/BAF/CAF obok `nbp_rate`; nie przeliczenie na `charge` |
-| dopłata lokalna | local_charge | 166.0 THC/ISPS/seal/amendment + Decimal; 207.0 opcjonalny `port_unlocode`; nie warning; nie `port_surcharge` |
+| dopłata lokalna | local_charge | 166.0 THC/ISPS/seal/amendment + Decimal; 207.0 opcjonalny `port_unlocode`; 208.0 opcjonalny `iso_size_type`; nie warning; nie `port_surcharge` |
 | lotniczy | air | 154.0 odcinek `shipment_leg` air; lotnisko = `port` z `airport` w `function_flags`; nie HAWB; nie IATA |
 | reklamacja ładunku | cargo_claim | 113.0 tabela na zleceniu; 191.0 HITL OS&D + terminy CMR; nie kwota; nie silnik 7/21/365 |
 | oszustwo | fraud_flag | 114.0 tabela na kontrahencie; nie scoring osoby; nie kwota |

@@ -3038,6 +3038,10 @@ export type LocalChargeCreate = {
      * Port Unlocode
      */
     port_unlocode?: string | null;
+    /**
+     * Iso Size Type
+     */
+    iso_size_type?: string | null;
 };
 
 /**
@@ -3068,6 +3072,10 @@ export type LocalChargeResponse = {
      * Port Unlocode
      */
     port_unlocode: string | null;
+    /**
+     * Iso Size Type
+     */
+    iso_size_type: string | null;
     /**
      * Source Ref
      */

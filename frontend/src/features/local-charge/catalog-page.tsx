@@ -10,7 +10,7 @@ export function LocalDesk() {
     <section className="flex flex-col gap-4" data-local-charge="desk">
       <CatalogHeading
         title="Dopłaty lokalne"
-        subtitle="P4 local_charge · THC/ISPS + opcjonalny UN/LOCODE · nie warning braków"
+        subtitle="P4 local_charge · THC/ISPS + port + typ ISO · nie warning braków"
       />
       {!ready ? <TenantSessionNotice /> : null}
       {ready ? <LevyKindPanel organizationId={ctx.organizationId} /> : null}

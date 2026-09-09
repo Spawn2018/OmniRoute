@@ -16,6 +16,7 @@ def _row(
     kind: str,
     amount: str,
     port: str | None = None,
+    iso: str | None = None,
 ) -> LocalCharge:
     return LocalCharge(
         id=uuid4(),
@@ -24,6 +25,7 @@ def _row(
         amount=Decimal(amount),
         currency="EUR",
         port_unlocode=port,
+        iso_size_type=iso,
         source_ref="tenant:manual",
         created_by=created_by,
     )
@@ -74,7 +76,7 @@ async def test_local_charge_list_uses_org_kind_index(session, two_tenants) -> No
     joined = " ".join(str(row[0]) for row in plan)
     assert (
         "ix_local_charge_org_kind" in joined
-        or "uq_local_charge_org_kind_port" in joined
+        or "uq_local_charge_org_kind_port_type" in joined
         or "Index Scan" in joined
     )
 
@@ -126,6 +128,7 @@ async def test_local_charge_duplicate_kind_port_is_refused(session, two_tenants)
             kind="thc",
             amount="80.0000",
             port="PLGDY",
+            iso="22G1",
         )
     )
     await session.flush()
@@ -136,7 +139,8 @@ async def test_local_charge_duplicate_kind_port_is_refused(session, two_tenants)
             kind="thc",
             amount="81.0000",
             port="PLGDY",
+            iso="22G1",
         )
     )
-    with pytest.raises(IntegrityError, match="uq_local_charge_org_kind_port"):
+    with pytest.raises(IntegrityError, match="uq_local_charge_org_kind_port_type"):
         await session.flush()

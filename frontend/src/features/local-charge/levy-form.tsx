@@ -11,6 +11,7 @@ type LevyDraft = {
   ccyMark: string
   originStamp: string
   portToken: string
+  isoToken: string
 }
 
 const EMPTY_LEVY: LevyDraft = {
@@ -19,6 +20,7 @@ const EMPTY_LEVY: LevyDraft = {
   ccyMark: "EUR",
   originStamp: "fixture://local-charge/",
   portToken: "",
+  isoToken: "",
 }
 
 function LevySave(args: { organizationId: string | null }) {
@@ -41,7 +43,7 @@ function LevySave(args: { organizationId: string | null }) {
       }}
     >
       <p className="text-xs text-muted-foreground">
-        Dopłata THC/ISPS/seal/amendment jako dana Decimal. Opcjonalny UN/LOCODE portu,
+        Dopłata THC/ISPS/seal/amendment jako dana Decimal. Opcjonalny UN/LOCODE i typ ISO,
         nie FK katalogu. Warning braków zostaje leftover. Marża zostaje na `/charges`.
       </p>
       <label className="flex flex-col gap-1 text-xs">
@@ -88,6 +90,15 @@ function LevySave(args: { organizationId: string | null }) {
         />
       </label>
       <label className="flex flex-col gap-1 text-xs">
+        Typ ISO kontenera (opcjonalnie)
+        <input
+          aria-label="Typ ISO kontenera dopłaty"
+          className="h-9 rounded-md border bg-background px-2 font-mono"
+          value={draft.isoToken}
+          onChange={(change) => setDraft({ ...draft, isoToken: change.target.value })}
+        />
+      </label>
+      <label className="flex flex-col gap-1 text-xs">
         Pochodzenie zapisu dopłaty lokalnej
         <input
           aria-label="Pochodzenie zapisu dopłaty lokalnej"
@@ -120,6 +131,7 @@ function LevyRows(args: { organizationId: string | null }) {
           <li key={row.id} className="flex flex-wrap items-baseline gap-2 font-mono">
             <span>{row.charge_kind}</span>
             {row.port_unlocode ? <span>{row.port_unlocode}</span> : null}
+            {row.iso_size_type ? <span>{row.iso_size_type}</span> : null}
             <Money amount={row.amount} currency={row.currency} />
           </li>
         ))}

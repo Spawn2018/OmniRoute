@@ -16357,6 +16357,17 @@
               }
             ],
             "title": "Port Unlocode"
+          },
+          "iso_size_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Iso Size Type"
           }
         },
         "additionalProperties": false,
@@ -16404,6 +16415,17 @@
             ],
             "title": "Port Unlocode"
           },
+          "iso_size_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Iso Size Type"
+          },
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
@@ -16417,6 +16439,7 @@
           "amount",
           "currency",
           "port_unlocode",
+          "iso_size_type",
           "source_ref"
         ],
         "title": "LocalChargeResponse"

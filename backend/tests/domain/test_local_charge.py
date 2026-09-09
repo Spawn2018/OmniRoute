@@ -8,6 +8,7 @@ from app.domain.errors import InvalidLocalCharge
 from app.domain.local_charge import (
     require_levy_amount,
     require_levy_currency,
+    require_levy_iso,
     require_levy_kind,
     require_levy_port,
     require_levy_source_ref,
@@ -66,6 +67,17 @@ def test_levy_port_normalizes_unlocode() -> None:
 def test_levy_port_rejects_short_token() -> None:
     with pytest.raises(InvalidLocalCharge, match="port"):
         require_levy_port("XX")
+
+
+def test_levy_iso_normalizes_size_type() -> None:
+    assert require_levy_iso(" 22g1 ") == "22G1"
+    assert require_levy_iso(None) is None
+    assert require_levy_iso("") is None
+
+
+def test_levy_iso_rejects_box_token() -> None:
+    with pytest.raises(InvalidLocalCharge, match="typ"):
+        require_levy_iso("BOX")
 
 
 @given(st.sampled_from(["", "   ", "http://hold.example/x"]))

@@ -8,7 +8,7 @@ Dopłata lokalna THC/ISPS/seal/amendment per tenant. Decimal. Nie warning brakó
 - `app.domain`
 
 ## Zakaz
-- import innych BC services (port_surcharges, channel_quotes, charges, quotations, geography)
-- zapis `charge` / `port_surcharge` / `channel_quote`
+- import innych BC services (port_surcharges, channel_quotes, charges, quotations, geography, containers)
+- zapis `charge` / `port_surcharge` / `channel_quote` / `container`
 - warning braku dopłaty jako fakt
 - float / T-SQL / live HTTP

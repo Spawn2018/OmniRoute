@@ -496,3 +496,4 @@
 | 2026-09-09 | Plan 207.0 | P4b | local_charge port_unlocode HITL, nie FK geography. Delta zaakceptowana (`/noc`). Nastepny: kod 207.0. |
 | 2026-09-09 | 207.0 | P4b | local_charge port_unlocode HITL. Nie FK geography. Nastepny: leftover P4b rest Plan. |
 | 2026-09-09 | Plan 208.0 | P4b | local_charge iso_size_type HITL, nie FK container. Delta zaakceptowana (`/noc`). Nastepny: kod 208.0. |
+| 2026-09-09 | 208.0 | P4b | local_charge iso_size_type HITL. Nie FK container. Nastepny: leftover P4c parked. |
