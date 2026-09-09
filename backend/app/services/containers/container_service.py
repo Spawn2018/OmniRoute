@@ -9,6 +9,7 @@ from app.domain.container import (
     require_container_ref_1,
     require_container_ref_2,
     require_container_ref_3,
+    require_container_ref_4,
     require_container_remarks,
     require_container_shipment_id,
     require_container_source_ref,
@@ -22,6 +23,25 @@ from app.domain.container import (
 )
 from app.models.container import Container
 from app.repositories.containers.container_repository import ContainerRepository
+
+
+class _WriteBox(NamedTuple):
+    number: object
+    size_type: object
+    shipment_id: object
+    origin: object
+    seal: object
+    seal2: object
+    seal3: object
+    vessel: object
+    voyage: object
+    note: object
+    goods: object
+    pack: object
+    mark: object
+    mark2: object
+    mark3: object
+    mark4: object
 
 
 class _BoxDraft(NamedTuple):
@@ -40,41 +60,27 @@ class _BoxDraft(NamedTuple):
     mark: str | None
     mark2: str | None
     mark3: str | None
+    mark4: str | None
 
 
-def _box_draft(
-    container_no: object,
-    iso_size_type: object,
-    shipment_id: object,
-    source_ref: object,
-    seal_no_1: object,
-    seal_no_2: object,
-    seal_no_3: object,
-    vessel_name: object,
-    voyage_no: object,
-    remarks: object,
-    cargo_description: object,
-    packaging_code: object,
-    ref_1: object,
-    ref_2: object,
-    ref_3: object,
-) -> _BoxDraft:
+def _box_draft(write: _WriteBox) -> _BoxDraft:
     return _BoxDraft(
-        require_container_no(container_no),
-        require_iso_size_type(iso_size_type),
-        require_container_shipment_id(shipment_id),
-        require_container_source_ref(source_ref),
-        require_seal_no_1(seal_no_1),
-        require_seal_no_2(seal_no_2),
-        require_seal_no_3(seal_no_3),
-        require_vessel_name(vessel_name),
-        require_voyage_no(voyage_no),
-        require_container_remarks(remarks),
-        require_cargo_description(cargo_description),
-        require_packaging_code(packaging_code),
-        require_container_ref_1(ref_1),
-        require_container_ref_2(ref_2),
-        require_container_ref_3(ref_3),
+        require_container_no(write.number),
+        require_iso_size_type(write.size_type),
+        require_container_shipment_id(write.shipment_id),
+        require_container_source_ref(write.origin),
+        require_seal_no_1(write.seal),
+        require_seal_no_2(write.seal2),
+        require_seal_no_3(write.seal3),
+        require_vessel_name(write.vessel),
+        require_voyage_no(write.voyage),
+        require_container_remarks(write.note),
+        require_cargo_description(write.goods),
+        require_packaging_code(write.pack),
+        require_container_ref_1(write.mark),
+        require_container_ref_2(write.mark2),
+        require_container_ref_3(write.mark3),
+        require_container_ref_4(write.mark4),
     )
 
 
@@ -94,6 +100,7 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.ref_1 == draft.mark
         and current.ref_2 == draft.mark2
         and current.ref_3 == draft.mark3
+        and current.ref_4 == draft.mark4
     )
 
 
@@ -116,6 +123,7 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         ref_1=draft.mark,
         ref_2=draft.mark2,
         ref_3=draft.mark3,
+        ref_4=draft.mark4,
         created_by=user_id,
     )
 
@@ -147,37 +155,6 @@ class ContainerService:
         *,
         organization_id: UUID,
         user_id: UUID,
-        container_no: object,
-        iso_size_type: object,
-        shipment_id: object,
-        source_ref: object,
-        seal_no_1: object = None,
-        seal_no_2: object = None,
-        seal_no_3: object = None,
-        vessel_name: object = None,
-        voyage_no: object = None,
-        remarks: object = None,
-        cargo_description: object = None,
-        packaging_code: object = None,
-        ref_1: object = None,
-        ref_2: object = None,
-        ref_3: object = None,
+        write: _WriteBox,
     ) -> Container:
-        draft = _box_draft(
-            container_no,
-            iso_size_type,
-            shipment_id,
-            source_ref,
-            seal_no_1,
-            seal_no_2,
-            seal_no_3,
-            vessel_name,
-            voyage_no,
-            remarks,
-            cargo_description,
-            packaging_code,
-            ref_1,
-            ref_2,
-            ref_3,
-        )
-        return await self._persist_box(organization_id, user_id, draft)
+        return await self._persist_box(organization_id, user_id, _box_draft(write))

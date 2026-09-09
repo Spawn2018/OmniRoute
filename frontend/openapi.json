@@ -13753,6 +13753,17 @@
               }
             ],
             "title": "Ref 3"
+          },
+          "ref_4": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ref 4"
           }
         },
         "additionalProperties": false,
@@ -13921,6 +13932,17 @@
             ],
             "title": "Ref 3"
           },
+          "ref_4": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ref 4"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -13953,6 +13975,7 @@
           "ref_1",
           "ref_2",
           "ref_3",
+          "ref_4",
           "superseded_by"
         ],
         "title": "ContainerResponse"

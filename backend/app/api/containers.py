@@ -7,7 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.api.deps import get_current_identity, require_permission, require_tenant_session
 from app.core.session_token import SessionIdentity
 from app.models.container import Container
-from app.services.containers.container_service import ContainerService
+from app.services.containers.container_service import ContainerService, _WriteBox
 from app.services.shipments.shipment_service import ShipmentService
 
 router = APIRouter(prefix="/containers", tags=["containers"])
@@ -33,6 +33,7 @@ class ContainerCreate(BaseModel):
     ref_1: str | None = None
     ref_2: str | None = None
     ref_3: str | None = None
+    ref_4: str | None = None
 
 
 class ContainerResponse(BaseModel):
@@ -55,11 +56,33 @@ class ContainerResponse(BaseModel):
     ref_1: str | None
     ref_2: str | None
     ref_3: str | None
+    ref_4: str | None
     superseded_by: UUID | None
 
 
 def _as_response(row: Container) -> ContainerResponse:
     return ContainerResponse.model_validate(row)
+
+
+def _write_from_body(body: ContainerCreate, shipment_id: UUID | None) -> _WriteBox:
+    return _WriteBox(
+        body.container_no,
+        body.iso_size_type,
+        shipment_id,
+        body.source_ref,
+        body.seal_no_1,
+        body.seal_no_2,
+        body.seal_no_3,
+        body.vessel_name,
+        body.voyage_no,
+        body.remarks,
+        body.cargo_description,
+        body.packaging_code,
+        body.ref_1,
+        body.ref_2,
+        body.ref_3,
+        body.ref_4,
+    )
 
 
 async def _bound_shipment(session: AsyncSession, shipment_id: UUID | None) -> UUID | None:
@@ -91,21 +114,7 @@ async def create_container(
     row = await ContainerService(session).record_container(
         organization_id=identity.organization_id,
         user_id=identity.user_id,
-        container_no=body.container_no,
-        iso_size_type=body.iso_size_type,
-        shipment_id=shipment_id,
-        source_ref=body.source_ref,
-        seal_no_1=body.seal_no_1,
-        seal_no_2=body.seal_no_2,
-        seal_no_3=body.seal_no_3,
-        vessel_name=body.vessel_name,
-        voyage_no=body.voyage_no,
-        remarks=body.remarks,
-        cargo_description=body.cargo_description,
-        packaging_code=body.packaging_code,
-        ref_1=body.ref_1,
-        ref_2=body.ref_2,
-        ref_3=body.ref_3,
+        write=_write_from_body(body, shipment_id),
     )
     await session.commit()
     return _as_response(row)
