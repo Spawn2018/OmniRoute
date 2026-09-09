@@ -14,6 +14,7 @@ from app.domain.container import (
     require_container_ref_5,
     require_container_remarks,
     require_container_source_ref,
+    require_free_time_dest_h,
     require_free_time_origin_h,
     require_iso_size_type,
     require_packaging_code,
@@ -177,6 +178,12 @@ def test_free_time_origin_h_keeps_hours_and_rejects_float() -> None:
         require_free_time_origin_h(-1)
     with pytest.raises(InvalidContainer, match="godziny"):
         require_free_time_origin_h(1.5)  # type: ignore[arg-type]
+
+
+def test_free_time_dest_h_reuses_same_hours_rule() -> None:
+    assert require_free_time_dest_h(24) == 24
+    with pytest.raises(InvalidContainer, match="godziny"):
+        require_free_time_dest_h(-1)
 
 
 @given(st.sampled_from(["CSQU3054384", "MSCU1234567", "ABCD"]))

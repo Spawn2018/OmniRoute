@@ -13821,6 +13821,15 @@
               }
             ],
             "title": "Free Time Origin H"
+          },
+          "free_time_dest_h": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Free Time Dest H"
           }
         },
         "additionalProperties": false,
@@ -14059,6 +14068,17 @@
             ],
             "title": "Free Time Origin H"
           },
+          "free_time_dest_h": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Free Time Dest H"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -14098,6 +14118,7 @@
           "return_terminal",
           "bl_kind",
           "free_time_origin_h",
+          "free_time_dest_h",
           "superseded_by"
         ],
         "title": "ContainerResponse"

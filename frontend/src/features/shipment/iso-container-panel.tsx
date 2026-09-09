@@ -29,6 +29,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
   const [yard, setYard] = useState("")
   const [bill, setBill] = useState("")
   const [idle, setIdle] = useState("")
+  const [dwell, setDwell] = useState("")
   const listed = useQuery({
     queryKey: ["containers", ctx.organizationId, sizeType],
     queryFn: () => fetchContainers(sizeType),
@@ -61,6 +62,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
         return_terminal: optionalToken(yard),
         bl_kind: optionalToken(bill),
         free_time_origin_h: optionalHours(idle),
+        free_time_dest_h: optionalHours(dwell),
       }),
     onSuccess: () => {
       void cache.invalidateQueries({ queryKey: ["containers", ctx.organizationId, sizeType] })
@@ -71,7 +73,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
     <section className="grid gap-2 rounded-md border border-border p-3" data-container="iso">
       <h2 className="text-sm font-medium">Kontener ISO</h2>
       <p className="text-xs text-muted-foreground">
-        Numer z cyfrą kontrolną i typ 4 znaków. Opcjonalne plomby, statek, rejs, uwaga, ładunek, opakowanie, referencje, flaga chłodniczego, terminale pobrania oraz zwrotu, rodzaj listu i godziny wolnego czasu na origin. Nie odliczanie. Nie HBL. Nie temperatura. Nie VGM. Nie PIN. Nie booking.
+        Numer z cyfrą kontrolną i typ 4 znaków. Opcjonalne plomby, statek, rejs, uwaga, ładunek, opakowanie, referencje, flaga chłodniczego, terminale pobrania oraz zwrotu, rodzaj listu i godziny wolnego czasu na origin oraz destination. Nie odliczanie. Nie HBL. Nie temperatura. Nie VGM. Nie PIN. Nie booking.
       </p>
       <label className="flex flex-col gap-1 text-xs">
         Numer ISO 6346
@@ -262,6 +264,15 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
           onChange={(event) => setIdle(event.target.value)}
         />
       </label>
+      <label className="flex flex-col gap-1 text-xs">
+        Godziny wolnego czasu destination (opcjonalnie)
+        <Input
+          aria-label="Godziny wolnego czasu destination kontenera"
+          placeholder="free_time_dest_h"
+          value={dwell}
+          onChange={(event) => setDwell(event.target.value)}
+        />
+      </label>
       <Button type="button" disabled={blocked} onClick={() => persist.mutate()}>
         Zapisz kontener
       </Button>
@@ -290,6 +301,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
             {row.return_terminal !== null ? ` · ${row.return_terminal}` : ""}
             {row.bl_kind !== null ? ` · ${row.bl_kind}` : ""}
             {row.free_time_origin_h !== null ? ` · ${String(row.free_time_origin_h)}h` : ""}
+            {row.free_time_dest_h !== null ? ` · ${String(row.free_time_dest_h)}h dest` : ""}
           </li>
         ))}
       </ul>

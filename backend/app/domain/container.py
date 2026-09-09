@@ -205,6 +205,10 @@ def require_free_time_origin_h(raw: object) -> int | None:
     return raw
 
 
+def require_free_time_dest_h(raw: object) -> int | None:
+    return require_free_time_origin_h(raw)
+
+
 def require_container_ref_1(raw: object) -> str | None:
     if raw is None:
         return None

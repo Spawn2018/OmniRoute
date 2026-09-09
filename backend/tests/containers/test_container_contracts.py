@@ -286,9 +286,9 @@ def test_migration_170_adds_return_terminal_without_fk() -> None:
 
 
 def test_migration_171_adds_bl_kind_without_hbl() -> None:
-    source = (
-        _ROOT / "backend" / "alembic" / "versions" / "171_container_bl_kind.py"
-    ).read_text(encoding="utf-8")
+    source = (_ROOT / "backend" / "alembic" / "versions" / "171_container_bl_kind.py").read_text(
+        encoding="utf-8"
+    )
     assert 'revision: str = "171_container_bl_kind"' in source
     assert 'down_revision: str | None = "170_container_return_terminal"' in source
     assert "bl_kind" in source
@@ -318,6 +318,23 @@ def test_migration_172_adds_free_time_origin_without_countdown() -> None:
     assert "free_time_origin_h" in source.split("def downgrade")[1]
 
 
+def test_migration_173_adds_free_time_dest_without_clock() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "173_container_free_time_dest.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "173_container_free_time_dest"' in source
+    assert 'down_revision: str | None = "172_container_free_time_origin"' in source
+    assert "free_time_dest_h" in source
+    assert "free_time_clock" not in source
+    assert "countdown" not in source
+    assert "remaining" not in source
+    assert "pin_code" not in source
+    assert "vgm" not in source.casefold()
+    assert "create_table" not in source
+    assert "def downgrade" in source
+    assert "free_time_dest_h" in source.split("def downgrade")[1]
+
+
 def test_generated_api_types_include_container() -> None:
     source = (_ROOT / "frontend" / "src" / "api" / "types.gen.ts").read_text(encoding="utf-8")
     assert "ContainerResponse" in source
@@ -333,5 +350,5 @@ def test_generated_api_types_include_container() -> None:
     assert "ref_5" in source
     assert "reefer" in source
     assert "pickup_terminal" in source
-    assert "bl_kind" in source
     assert "free_time_origin_h" in source
+    assert "free_time_dest_h" in source

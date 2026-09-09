@@ -1308,6 +1308,10 @@ export type ContainerCreate = {
      * Free Time Origin H
      */
     free_time_origin_h?: unknown | null;
+    /**
+     * Free Time Dest H
+     */
+    free_time_dest_h?: unknown | null;
 };
 
 /**
@@ -1410,6 +1414,10 @@ export type ContainerResponse = {
      * Free Time Origin H
      */
     free_time_origin_h: number | null;
+    /**
+     * Free Time Dest H
+     */
+    free_time_dest_h: number | null;
     /**
      * Superseded By
      */
