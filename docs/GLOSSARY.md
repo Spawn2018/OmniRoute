@@ -194,6 +194,7 @@
 | kółko | lane_circle | G2.20–G2.21; nakładanie dat |
 | KREPTD | kreptd | G2.23; GITD/ITD; oficjalne API |
 | licencja KREPTD | kreptd_licence | G2.23 HITL numer licencji na `party`; nie scrape; nie Citizen API |
+| schemat monitoringu | monitoring_scheme | C7 HITL katalog per tenant; nie zgłoszenie SENT; nie wymyślony klon |
 | licencja transportowa | transport_licence | party_document; KREPTD |
 | sold-to | sold_to_party_id | EXP1; korpo |
 | bill-to | bill_to_party_id | EXP1 |
