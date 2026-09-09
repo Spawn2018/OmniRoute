@@ -1,6 +1,7 @@
 # BC shipment (M-35)
 
-Zlecenie per tenant, FK do `quotation` z `party_id`. Nie tracking, nie marża.
+Zlecenie per tenant, FK do `quotation` z `party_id`. 210.0 opcjonalny rodzic.
+Nie tracking, nie marża, nie widok SQL na `charge`.
 
 ## Dozwolone zależności
 - `app.models.shipment`

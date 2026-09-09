@@ -45,8 +45,26 @@ class Shipment(Base, TimestampMixin):
             name="fk_shipment_party",
             ondelete="RESTRICT",
         ),
+        ForeignKeyConstraint(
+            ["organization_id", "parent_shipment_id"],
+            ["shipment.organization_id", "shipment.id"],
+            name="fk_shipment_parent",
+            ondelete="RESTRICT",
+        ),
+        CheckConstraint(
+            "(parent_shipment_id IS NULL AND relation_kind IS NULL) OR "
+            "(parent_shipment_id IS NOT NULL AND relation_kind IS NOT NULL AND "
+            "relation_kind IN "
+            "('drayage', 'oncarriage', 'leg_subcontract', 'other'))",
+            name="ck_shipment_parent_pair",
+        ),
+        CheckConstraint(
+            "parent_shipment_id IS NULL OR parent_shipment_id <> id",
+            name="ck_shipment_parent_not_self",
+        ),
         Index("ix_shipment_org_party", "organization_id", "party_id"),
         Index("ix_shipment_org_created", "organization_id", "created_at"),
+        Index("ix_shipment_org_parent", "organization_id", "parent_shipment_id"),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
@@ -61,4 +79,10 @@ class Shipment(Base, TimestampMixin):
     source_ref: Mapped[str] = mapped_column(String(256), nullable=False)
     # HITL twardy numer wydruku — nie QR i nie generator GD/2026.
     shipment_ref: Mapped[str | None] = mapped_column(String(256), nullable=True)
+    # HITL rodzic tego samego tenanta — nie widok marży na charge.
+    parent_shipment_id: Mapped[uuid.UUID | None] = mapped_column(
+        UUID(as_uuid=True),
+        nullable=True,
+    )
+    relation_kind: Mapped[str | None] = mapped_column(String(32), nullable=True)
     status: Mapped[str] = mapped_column(String(8), nullable=False)

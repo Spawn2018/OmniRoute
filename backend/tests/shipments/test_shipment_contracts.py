@@ -66,3 +66,22 @@ def test_migration_144_adds_shipment_ref_without_qr() -> None:
     assert "Numeric" not in source
     assert "httpx" not in source
     assert "def downgrade" in source
+
+
+def test_migration_150_adds_parent_without_charge() -> None:
+    source = (_ROOT / "backend" / "alembic" / "versions" / "150_shipment_parent.py").read_text(
+        encoding="utf-8",
+    )
+    assert 'revision: str = "150_shipment_parent"' in source
+    assert 'down_revision: str | None = "149_shipment_leg_air_waybill"' in source
+    assert "parent_shipment_id" in source
+    assert "relation_kind" in source
+    assert "fk_shipment_parent" in source
+    assert "ck_shipment_parent_pair" in source
+    assert "ck_shipment_parent_not_self" in source
+    assert "drayage" in source
+    assert "charge" not in source.casefold()
+    assert "margin" not in source.casefold()
+    assert "Numeric" not in source
+    assert "httpx" not in source
+    assert "def downgrade" in source

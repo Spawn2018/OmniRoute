@@ -5178,6 +5178,14 @@ export type ShipmentCreate = {
      * Shipment Ref
      */
     shipment_ref?: string | null;
+    /**
+     * Parent Shipment Id
+     */
+    parent_shipment_id?: string | null;
+    /**
+     * Relation Kind
+     */
+    relation_kind?: string | null;
 };
 
 /**
@@ -5396,6 +5404,14 @@ export type ShipmentResponse = {
      * Shipment Ref
      */
     shipment_ref: string | null;
+    /**
+     * Parent Shipment Id
+     */
+    parent_shipment_id: string | null;
+    /**
+     * Relation Kind
+     */
+    relation_kind: string | null;
     /**
      * Status
      */

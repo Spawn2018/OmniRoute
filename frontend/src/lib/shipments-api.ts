@@ -8,6 +8,8 @@ export type Shipment = {
   party_id: string
   source_ref: string
   shipment_ref: string | null
+  parent_shipment_id: string | null
+  relation_kind: string | null
   status: string
 }
 
@@ -28,6 +30,8 @@ export async function createShipment(input: {
   quotation_id: string
   source_ref: string
   shipment_ref?: string | null
+  parent_shipment_id?: string | null
+  relation_kind?: string | null
 }): Promise<Shipment> {
   const response = await fetch("/api/v1/shipments", {
     method: "POST",

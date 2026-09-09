@@ -6,8 +6,11 @@ from hypothesis import strategies as st
 
 from app.domain.errors import InvalidShipment
 from app.domain.shipment import (
+    require_parent_pair,
+    require_parent_shipment_id,
     require_party_on_quotation,
     require_quotation_id,
+    require_relation_kind,
     require_shipment_ref,
     require_shipment_source_ref,
     shipment_draft_status,
@@ -79,3 +82,54 @@ def test_require_shipment_ref_rejects_bad_number(raw: str) -> None:
 def test_require_shipment_ref_rejects_foreign() -> None:
     with pytest.raises(InvalidShipment, match="obce"):
         require_shipment_ref("http://print.example/x")
+
+
+def test_require_parent_shipment_id_omits_blank() -> None:
+    assert require_parent_shipment_id(None) is None
+
+
+def test_require_parent_shipment_id_keeps_uuid() -> None:
+    token = uuid4()
+    assert require_parent_shipment_id(token) == token
+
+
+def test_require_parent_shipment_id_rejects_text() -> None:
+    with pytest.raises(InvalidShipment, match="główne"):
+        require_parent_shipment_id("parent")  # type: ignore[arg-type]
+
+
+def test_require_relation_kind_omits_blank() -> None:
+    assert require_relation_kind(None) is None
+    assert require_relation_kind("") is None
+    assert require_relation_kind("  ") is None
+
+
+@given(st.sampled_from(["drayage", "oncarriage", "leg_subcontract", "other"]))
+def test_require_relation_kind_allowlist(raw: str) -> None:
+    assert require_relation_kind(raw) == raw
+
+
+@given(st.sampled_from(["margin", "sql", "consignment"]))
+def test_require_relation_kind_rejects_unknown(raw: str) -> None:
+    with pytest.raises(InvalidShipment, match="rodzaj"):
+        require_relation_kind(raw)
+
+
+def test_require_parent_pair_allows_both_empty() -> None:
+    require_parent_pair(None, None, child_id=uuid4())
+
+
+def test_require_parent_pair_rejects_kind_without_parent() -> None:
+    with pytest.raises(InvalidShipment, match="główne"):
+        require_parent_pair(None, "drayage", child_id=uuid4())
+
+
+def test_require_parent_pair_rejects_parent_without_kind() -> None:
+    with pytest.raises(InvalidShipment, match="rodzaj"):
+        require_parent_pair(uuid4(), None, child_id=uuid4())
+
+
+def test_require_parent_pair_rejects_self() -> None:
+    token = uuid4()
+    with pytest.raises(InvalidShipment, match="główne"):
+        require_parent_pair(token, "drayage", child_id=token)

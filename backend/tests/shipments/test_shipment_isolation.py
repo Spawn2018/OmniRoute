@@ -59,6 +59,8 @@ def _shipment(
     quotation: Quotation,
     party: Party,
     shipment_ref: str | None = None,
+    parent_shipment_id=None,
+    relation_kind: str | None = None,
 ) -> Shipment:
     return Shipment(
         id=uuid4(),
@@ -67,6 +69,8 @@ def _shipment(
         party_id=party.id,
         source_ref="fixture://shipment/iso",
         shipment_ref=shipment_ref,
+        parent_shipment_id=parent_shipment_id,
+        relation_kind=relation_kind,
         status="draft",
         created_by=user_id,
     )
@@ -326,3 +330,189 @@ async def test_shipment_ref_same_token_two_tenants(session, two_tenants) -> None
     visible = list((await session.scalars(select(Shipment))).all())
     assert len(visible) == 1
     assert visible[0].shipment_ref == token
+
+
+async def _two_quotes(session, *, org, user, rate_id):
+    quote_one = _quote(
+        organization_id=org.id,
+        created_by=user.id,
+        rate_line_id=rate_id,
+        source_ref="tariff://p1",
+    )
+    quote_two = _quote(
+        organization_id=org.id,
+        created_by=user.id,
+        rate_line_id=rate_id,
+        source_ref="tariff://p2",
+    )
+    session.add_all([quote_one, quote_two])
+    await session.flush()
+    return quote_one, quote_two
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_shipment_parent_fk_same_tenant(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    user_a = two_tenants["user_a"]
+    await bind_tenant(session, org_a.id)
+    rate_a = _buy_rate(organization_id=org_a.id, created_by=user_a.id, source_ref="tariff://a")
+    party_a = _party(organization_id=org_a.id, legal_name="Klient A", created_by=user_a.id)
+    session.add_all([rate_a, party_a])
+    await session.flush()
+    quote_one, quote_two = await _two_quotes(
+        session, org=org_a, user=user_a, rate_id=rate_a.id,
+    )
+    parent = _shipment(
+        organization_id=org_a.id,
+        user_id=user_a.id,
+        quotation=quote_one,
+        party=party_a,
+    )
+    session.add(parent)
+    await session.flush()
+    child = _shipment(
+        organization_id=org_a.id,
+        user_id=user_a.id,
+        quotation=quote_two,
+        party=party_a,
+        parent_shipment_id=parent.id,
+        relation_kind="drayage",
+    )
+    session.add(child)
+    await session.flush()
+    session.expunge_all()
+    await bind_tenant(session, org_a.id)
+    loaded = await session.scalar(select(Shipment).where(Shipment.id == child.id))
+    assert loaded is not None
+    assert loaded.parent_shipment_id == parent.id
+    assert loaded.relation_kind == "drayage"
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_shipment_rejects_foreign_parent(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    org_b = two_tenants["org_b"]
+    user_a = two_tenants["user_a"]
+    user_b = two_tenants["user_b"]
+    await bind_tenant(session, org_b.id)
+    rate_b = _buy_rate(organization_id=org_b.id, created_by=user_b.id, source_ref="tariff://b")
+    party_b = _party(organization_id=org_b.id, legal_name="Klient B", created_by=user_b.id)
+    session.add_all([rate_b, party_b])
+    await session.flush()
+    quote_b = _quote(
+        organization_id=org_b.id,
+        created_by=user_b.id,
+        rate_line_id=rate_b.id,
+        source_ref="tariff://b",
+    )
+    session.add(quote_b)
+    await session.flush()
+    parent_b = _shipment(
+        organization_id=org_b.id,
+        user_id=user_b.id,
+        quotation=quote_b,
+        party=party_b,
+    )
+    session.add(parent_b)
+    await session.flush()
+
+    await bind_tenant(session, org_a.id)
+    rate_a = _buy_rate(organization_id=org_a.id, created_by=user_a.id, source_ref="tariff://a")
+    party_a = _party(organization_id=org_a.id, legal_name="Klient A", created_by=user_a.id)
+    session.add_all([rate_a, party_a])
+    await session.flush()
+    quote_a = _quote(
+        organization_id=org_a.id,
+        created_by=user_a.id,
+        rate_line_id=rate_a.id,
+        source_ref="tariff://a",
+    )
+    session.add(quote_a)
+    await session.flush()
+    session.add(
+        _shipment(
+            organization_id=org_a.id,
+            user_id=user_a.id,
+            quotation=quote_a,
+            party=party_a,
+            parent_shipment_id=parent_b.id,
+            relation_kind="oncarriage",
+        )
+    )
+    with pytest.raises(IntegrityError) as caught:
+        await session.flush()
+    assert "fk_shipment_parent" in str(caught.value)
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_shipment_parent_not_self(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    user_a = two_tenants["user_a"]
+    await bind_tenant(session, org_a.id)
+    rate_a = _buy_rate(organization_id=org_a.id, created_by=user_a.id, source_ref="tariff://a")
+    party_a = _party(organization_id=org_a.id, legal_name="Klient A", created_by=user_a.id)
+    session.add_all([rate_a, party_a])
+    await session.flush()
+    quote_a = _quote(
+        organization_id=org_a.id,
+        created_by=user_a.id,
+        rate_line_id=rate_a.id,
+        source_ref="tariff://a",
+    )
+    session.add(quote_a)
+    await session.flush()
+    row_id = uuid4()
+    session.add(
+        Shipment(
+            id=row_id,
+            organization_id=org_a.id,
+            quotation_id=quote_a.id,
+            party_id=party_a.id,
+            source_ref="fixture://shipment/self",
+            parent_shipment_id=row_id,
+            relation_kind="other",
+            status="draft",
+            created_by=user_a.id,
+        )
+    )
+    with pytest.raises(IntegrityError) as caught:
+        await session.flush()
+    assert "ck_shipment_parent_not_self" in str(caught.value)
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_shipment_parent_requires_kind(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    user_a = two_tenants["user_a"]
+    await bind_tenant(session, org_a.id)
+    rate_a = _buy_rate(organization_id=org_a.id, created_by=user_a.id, source_ref="tariff://a")
+    party_a = _party(organization_id=org_a.id, legal_name="Klient A", created_by=user_a.id)
+    session.add_all([rate_a, party_a])
+    await session.flush()
+    quote_one, quote_two = await _two_quotes(
+        session, org=org_a, user=user_a, rate_id=rate_a.id,
+    )
+    parent = _shipment(
+        organization_id=org_a.id,
+        user_id=user_a.id,
+        quotation=quote_one,
+        party=party_a,
+    )
+    session.add(parent)
+    await session.flush()
+    session.add(
+        _shipment(
+            organization_id=org_a.id,
+            user_id=user_a.id,
+            quotation=quote_two,
+            party=party_a,
+            parent_shipment_id=parent.id,
+        )
+    )
+    with pytest.raises(IntegrityError) as caught:
+        await session.flush()
+    assert "ck_shipment_parent_pair" in str(caught.value)

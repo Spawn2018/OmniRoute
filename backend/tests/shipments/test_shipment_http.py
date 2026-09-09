@@ -6,7 +6,12 @@ from fastapi.testclient import TestClient
 
 from app.api.deps import require_tenant_session, set_authz_checker
 from app.domain.errors import InvalidShipment, ResourceNotFound, ShipmentConflict
-from app.domain.shipment import require_shipment_ref
+from app.domain.shipment import (
+    require_parent_pair,
+    require_parent_shipment_id,
+    require_relation_kind,
+    require_shipment_ref,
+)
 from app.main import app
 from app.models.quotation import Quotation
 from app.models.shipment import Shipment
@@ -53,18 +58,26 @@ class StubShipmentService:
         party_id: UUID,
         source_ref: str,
         shipment_ref: object = None,
+        parent_shipment_id: object = None,
+        relation_kind: object = None,
     ) -> Shipment:
         if any(row.quotation_id == quotation_id for row in self.rows):
             raise ShipmentConflict("to zlecenie już istnieje dla tej wyceny")
         if source_ref.strip() == "":
             raise InvalidShipment("wskazanie zapisu zlecenia")
+        row_id = uuid4()
+        parent = require_parent_shipment_id(parent_shipment_id)
+        kind = require_relation_kind(relation_kind)
+        require_parent_pair(parent, kind, child_id=row_id)
         row = Shipment(
-            id=uuid4(),
+            id=row_id,
             organization_id=organization_id,
             quotation_id=quotation_id,
             party_id=party_id,
             source_ref=source_ref,
             shipment_ref=require_shipment_ref(shipment_ref),
+            parent_shipment_id=parent,
+            relation_kind=kind,
             status="draft",
             created_by=user_id,
         )
@@ -133,6 +146,8 @@ def test_http_create_and_list_shipment(catalog_client: object) -> None:
     assert body["party_id"] == str(quotes.row.party_id)
     assert body["source_ref"] == "fixture://shipment/1"
     assert body["shipment_ref"] is None
+    assert body["parent_shipment_id"] is None
+    assert body["relation_kind"] is None
     assert body["status"] == "draft"
     assert "amount" not in body
     assert "margin" not in body
@@ -229,3 +244,74 @@ def test_http_create_shipment_bad_ref_is_400(catalog_client: object) -> None:
     )
     assert foreign.status_code == 400
     assert "obce" in foreign.json()["detail"]
+
+
+def test_http_create_shipment_with_parent(catalog_client: object) -> None:
+    client, quotes, _shipments = catalog_client
+    assert quotes.row is not None
+    parent_id = uuid4()
+    created = client.post(
+        "/api/v1/shipments",
+        headers=bearer_auth_headers(),
+        json={
+            "quotation_id": str(quotes.row.id),
+            "source_ref": "fixture://shipment/1",
+            "parent_shipment_id": str(parent_id),
+            "relation_kind": "drayage",
+        },
+    )
+    assert created.status_code == 201
+    body = created.json()
+    assert body["parent_shipment_id"] == str(parent_id)
+    assert body["relation_kind"] == "drayage"
+    assert "margin" not in body
+    assert "charge" not in body
+
+
+def test_http_create_shipment_parent_without_kind_is_400(catalog_client: object) -> None:
+    client, quotes, _shipments = catalog_client
+    assert quotes.row is not None
+    response = client.post(
+        "/api/v1/shipments",
+        headers=bearer_auth_headers(),
+        json={
+            "quotation_id": str(quotes.row.id),
+            "source_ref": "fixture://shipment/1",
+            "parent_shipment_id": str(uuid4()),
+        },
+    )
+    assert response.status_code == 400
+    assert "rodzaj" in response.json()["detail"]
+
+
+def test_http_create_shipment_kind_without_parent_is_400(catalog_client: object) -> None:
+    client, quotes, _shipments = catalog_client
+    assert quotes.row is not None
+    response = client.post(
+        "/api/v1/shipments",
+        headers=bearer_auth_headers(),
+        json={
+            "quotation_id": str(quotes.row.id),
+            "source_ref": "fixture://shipment/1",
+            "relation_kind": "drayage",
+        },
+    )
+    assert response.status_code == 400
+    assert "główne" in response.json()["detail"]
+
+
+def test_http_create_shipment_bad_kind_is_400(catalog_client: object) -> None:
+    client, quotes, _shipments = catalog_client
+    assert quotes.row is not None
+    response = client.post(
+        "/api/v1/shipments",
+        headers=bearer_auth_headers(),
+        json={
+            "quotation_id": str(quotes.row.id),
+            "source_ref": "fixture://shipment/1",
+            "parent_shipment_id": str(uuid4()),
+            "relation_kind": "margin",
+        },
+    )
+    assert response.status_code == 400
+    assert "rodzaj" in response.json()["detail"]

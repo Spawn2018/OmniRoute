@@ -62,3 +62,43 @@ def require_shipment_ref(raw: object) -> str | None:
             raise InvalidShipment("numer: allowlista HITL")
         return token
     raise InvalidShipment("obce wskazanie numeru zlecenia")
+
+
+_PARENT_KINDS = frozenset({"drayage", "oncarriage", "leg_subcontract", "other"})
+
+
+def require_parent_shipment_id(raw: object) -> UUID | None:
+    if raw is None:
+        return None
+    if type(raw) is not UUID:
+        raise InvalidShipment("główne zlecenie musi być UUID")
+    return raw
+
+
+def require_relation_kind(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidShipment("rodzaj musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    if token not in _PARENT_KINDS:
+        raise InvalidShipment("rodzaj relacji spoza zbioru")
+    return token
+
+
+def require_parent_pair(
+    parent_id: UUID | None,
+    relation_kind: str | None,
+    *,
+    child_id: UUID,
+) -> None:
+    if parent_id is None and relation_kind is None:
+        return
+    if parent_id is None:
+        raise InvalidShipment("główne zlecenie wymagane przy rodzaju relacji")
+    if relation_kind is None:
+        raise InvalidShipment("rodzaj relacji wymagany przy zleceniu głównym")
+    if parent_id == child_id:
+        raise InvalidShipment("główne zlecenie nie może być tym samym wierszem")

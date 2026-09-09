@@ -20009,6 +20009,29 @@
               }
             ],
             "title": "Shipment Ref"
+          },
+          "parent_shipment_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Parent Shipment Id"
+          },
+          "relation_kind": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Relation Kind"
           }
         },
         "additionalProperties": false,
@@ -20341,6 +20364,29 @@
             ],
             "title": "Shipment Ref"
           },
+          "parent_shipment_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Parent Shipment Id"
+          },
+          "relation_kind": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Relation Kind"
+          },
           "status": {
             "type": "string",
             "title": "Status"
@@ -20354,6 +20400,8 @@
           "party_id",
           "source_ref",
           "shipment_ref",
+          "parent_shipment_id",
+          "relation_kind",
           "status"
         ],
         "title": "ShipmentResponse"
