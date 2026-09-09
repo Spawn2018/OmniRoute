@@ -6707,6 +6707,42 @@ export type ValidationError = {
 };
 
 /**
+ * WarRoomMarkCreate
+ */
+export type WarRoomMarkCreate = {
+    /**
+     * Incident Kind
+     */
+    incident_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * WarRoomMarkResponse
+ */
+export type WarRoomMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Incident Kind
+     */
+    incident_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * WeatherObservationCreate
  */
 export type WeatherObservationCreate = {
@@ -11395,6 +11431,49 @@ export type CreateTwinMarkApiV1TwinMarksPostResponses = {
 };
 
 export type CreateTwinMarkApiV1TwinMarksPostResponse = CreateTwinMarkApiV1TwinMarksPostResponses[keyof CreateTwinMarkApiV1TwinMarksPostResponses];
+
+export type ListWarRoomMarksApiV1WarRoomMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/war-room-marks';
+};
+
+export type ListWarRoomMarksApiV1WarRoomMarksGetResponses = {
+    /**
+     * Response List War Room Marks Api V1 War Room Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<WarRoomMarkResponse>;
+};
+
+export type ListWarRoomMarksApiV1WarRoomMarksGetResponse = ListWarRoomMarksApiV1WarRoomMarksGetResponses[keyof ListWarRoomMarksApiV1WarRoomMarksGetResponses];
+
+export type CreateWarRoomMarkApiV1WarRoomMarksPostData = {
+    body: WarRoomMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/war-room-marks';
+};
+
+export type CreateWarRoomMarkApiV1WarRoomMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateWarRoomMarkApiV1WarRoomMarksPostError = CreateWarRoomMarkApiV1WarRoomMarksPostErrors[keyof CreateWarRoomMarkApiV1WarRoomMarksPostErrors];
+
+export type CreateWarRoomMarkApiV1WarRoomMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: WarRoomMarkResponse;
+};
+
+export type CreateWarRoomMarkApiV1WarRoomMarksPostResponse = CreateWarRoomMarkApiV1WarRoomMarksPostResponses[keyof CreateWarRoomMarkApiV1WarRoomMarksPostResponses];
 
 export type ListCashDiscountsApiV1CashDiscountsGetData = {
     body?: never;

@@ -652,3 +652,7 @@ class InvalidTowerImpact(DomainError):
 
 class InvalidTwinMark(DomainError):
     """Bliźniak W1: HITL rodzaj 8 — nie fizyka i nie plan_snapshot."""
+
+
+class InvalidWarRoomMark(DomainError):
+    """Sala W2: HITL rodzaj incydentu — nie koalescencja i nie drugi czat."""

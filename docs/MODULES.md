@@ -74,6 +74,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | V5 | Konektor GPS HITL | 197.0 `telematics_connector` | **ukończony (HITL)** · reżim + dostawca; leftover position_event / ciphertext / 3 dni U4 |
 | V6 | Impact wieży HITL | 198.0 `tower_impact` | **ukończony (HITL)** · etap łańcucha + status umowy; leftover silnik EBITDA / sla_clause / scoring |
 | W1 | Bliźniak HITL | 199.0 `twin_mark` | **ukończony (HITL)** · 8 rodzajów; leftover `plan_snapshot` / 8 silników fizyki |
+| W2 | Sala kryzysowa HITL | 200.0 `war_room_mark` | **ukończony (HITL)** · rodzaj incydentu; leftover N8 / T8 live API / widok sklejony |
 
 Nie dopisuj tu 70 pustych wierszy M-xx. Katalog + **kolejka Q1… / Q-E / Fala S** (co budować jedno po drugim, tryb Plan potem plaster): `docs/PLAN-REALIZACJA.md` § Kolejka. Archiwum Claude zostaje magazynem specyfikacji, nie SoT kolejności.
 

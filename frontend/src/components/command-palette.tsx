@@ -154,6 +154,11 @@ const NAV_ACTIONS = [
     to: "/twin-marks",
   },
   {
+    id: "nav-war-room-marks",
+    label: "Idź do sali kryzysowej",
+    to: "/war-room-marks",
+  },
+  {
     id: "nav-tender-award-reviews",
     label: "Idź do czterech oczu nagrody",
     to: "/tender-award-reviews",

@@ -7910,6 +7910,80 @@
         ]
       }
     },
+    "/api/v1/war-room-marks": {
+      "get": {
+        "tags": [
+          "war-room-marks"
+        ],
+        "summary": "List War Room Marks",
+        "operationId": "list_war_room_marks_api_v1_war_room_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/WarRoomMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List War Room Marks Api V1 War Room Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "war-room-marks"
+        ],
+        "summary": "Create War Room Mark",
+        "operationId": "create_war_room_mark_api_v1_war_room_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WarRoomMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WarRoomMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/cash-discounts": {
       "get": {
         "tags": [
@@ -21923,6 +21997,55 @@
           "type"
         ],
         "title": "ValidationError"
+      },
+      "WarRoomMarkCreate": {
+        "properties": {
+          "incident_kind": {
+            "type": "string",
+            "title": "Incident Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "incident_kind",
+          "source_ref"
+        ],
+        "title": "WarRoomMarkCreate"
+      },
+      "WarRoomMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "incident_kind": {
+            "type": "string",
+            "title": "Incident Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "incident_kind",
+          "source_ref"
+        ],
+        "title": "WarRoomMarkResponse"
       },
       "WeatherObservationCreate": {
         "properties": {

@@ -79,6 +79,7 @@ def test_authorization_model_includes_table_view_permission() -> None:
     assert "can_manage_telematics_connectors" in org.relations
     assert "can_manage_tower_impacts" in org.relations
     assert "can_manage_twin_marks" in org.relations
+    assert "can_manage_war_room_marks" in org.relations
     assert "can_manage_tender_award_reviews" in org.relations
     assert "can_manage_tender_ted_notices" in org.relations
     assert "can_manage_tender_rfp_intakes" in org.relations
@@ -289,6 +290,9 @@ def test_authorization_model_includes_table_view_permission() -> None:
     twin_marks = org.relations["can_manage_twin_marks"]
     assert twin_marks.computed_userset is not None
     assert twin_marks.computed_userset.relation == "member"
+    war_room_marks = org.relations["can_manage_war_room_marks"]
+    assert war_room_marks.computed_userset is not None
+    assert war_room_marks.computed_userset.relation == "member"
     tender_award_reviews = org.relations["can_manage_tender_award_reviews"]
     assert tender_award_reviews.computed_userset is not None
     assert tender_award_reviews.computed_userset.relation == "member"
