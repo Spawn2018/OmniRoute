@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny (zablokowany):** leftover **G2.20–G2.22** circle_sim/km/P → leftover G2.15–G2.18 kg/CBAM → G2.23 → F → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. D8 parked. D9 leftover D9b–f. P1 leftover P1b–d. P2 leftover P2c. P3 leftover P3b–d. P4 leftover P4b–c. P5 leftover P5b–c. P6 leftover P6c. G2 leftover G2.15–G2.18 + G2.20–G2.22. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
+**Następny (zablokowany):** **186.0** G2.23 `kreptd_licence` → leftover G2.20–G2.22 circle_sim/km/P → leftover G2.15–G2.18 kg/CBAM → F → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. D8 parked. D9 leftover D9b–f. P1 leftover P1b–d. P2 leftover P2c. P3 leftover P3b–d. P4 leftover P4b–c. P5 leftover P5b–c. P6 leftover P6c. G2 leftover G2.15–G2.18 + G2.20–G2.22. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
 <!-- os-status:end -->
 
 ```mermaid
@@ -587,7 +587,7 @@ Karta: [karty-pol-g2-tender.md](analysis/karty-pol-g2-tender.md). P6 = oferty od
 | G2.8 | konsorcjum `tender_consortium_member` (fotel + source_ref) | zamknięty ([177.0](deltas/archived/177.0-tender-consortium-member.md); leftover G2.9–G2.18) | po G2.7; nie extract RFP; nie TED |
 | G2.9–G2.18 | extract RFP HITL, prospecting HITL, bid/no-bid, award four-eyes, TED capability, CO₂ | zamknięty intake ([178.0](deltas/archived/178.0-tender-rfp-intake.md)); zamknięty kind/accept ([179.0](deltas/archived/179.0-tender-rfp-draft-kind.md)); zamknięty prospect ([180.0](deltas/archived/180.0-tender-prospect.md)); zamknięty bid/no-bid ([181.0](deltas/archived/181.0-tender-bid-stance.md)); zamknięty four-eyes ([182.0](deltas/archived/182.0-tender-award-review.md)); zamknięty TED HITL ([183.0](deltas/archived/183.0-tender-ted-notice.md)); zamknięty CO₂ HITL ([184.0](deltas/archived/184.0-tender-carbon-mark.md)); leftover G2.15–G2.18 kg/CBAM | auto-award; scrape kontaktów |
 | G2.19–G2.22 | `lane_pattern`, `circle_sim` ≥500k w Postgres, km ładowny/pusty/dolot, lista przewoźników | zamknięty HITL para UN/LOCODE ([185.0](deltas/archived/185.0-lane-pattern.md)); leftover G2.20–G2.22 circle_sim/km/P | LLM-VRP; copy „natychmiast” bez p95 stage |
-| **G2.23** | KREPTD/GITD (ITD): P0 link+HITL; P1 Citizen API po certyfikacie; lead + C8 licencja | ops wniosek równolegle | scrape HTML kreptd; scoring osoby |
+| **G2.23** | KREPTD/GITD (ITD): P0 link+HITL; P1 Citizen API po certyfikacie; lead + C8 licencja | delta [186.0](deltas/open/186.0-kreptd-licence.md) HITL numer licencji; leftover Citizen API / C8 `party_document` | scrape HTML kreptd; scoring osoby |
 
 ### Fala F — finanse głębiej (ID **F1–F11** bez kropki)
 
@@ -843,13 +843,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->
