@@ -596,3 +596,7 @@ class InvalidTenderBidStance(DomainError):
 
 class InvalidTenderAwardReview(DomainError):
     """Przegląd G2.12: HITL cztery oczy z source_ref — nie auto-award i nie szyna A/Z/O."""
+
+
+class InvalidTenderTedNotice(DomainError):
+    """Ogłoszenie G2.13: HITL numer TED z source_ref — nie scrape i nie live HTTP."""

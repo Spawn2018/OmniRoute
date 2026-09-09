@@ -82,6 +82,7 @@ from app.api import (
     tender_quotes,
     tender_rfp_intakes,
     tender_rounds,
+    tender_ted_notices,
     tender_win_losses,
     tenders,
     terminals,
@@ -150,6 +151,7 @@ api_router.include_router(tender_consortium_members.router)
 api_router.include_router(tender_prospects.router)
 api_router.include_router(tender_rfp_intakes.router)
 api_router.include_router(tender_rounds.router)
+api_router.include_router(tender_ted_notices.router)
 api_router.include_router(tenders.router)
 api_router.include_router(fraud_flags.router)
 api_router.include_router(edi_messages.router)

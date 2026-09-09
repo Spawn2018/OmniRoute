@@ -159,6 +159,11 @@ export const OPS_JOBS = [
     job: "HITL przegląd nagrody bez auto-award",
   },
   {
+    route: BUSINESS_LISTS.tenderTedNotice.route,
+    label: "Ogłoszenie TED",
+    job: "HITL numer TED bez scrape",
+  },
+  {
     route: BUSINESS_LISTS.tenderLane.route,
     label: "Korytarze przetargu",
     job: "para UN/LOCODE na partii bez rundy",
@@ -577,6 +582,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "180.0": "/tender-prospects",
   "181.0": "/tender-bid-stances",
   "182.0": "/tender-award-reviews",
+  "183.0": "/tender-ted-notices",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

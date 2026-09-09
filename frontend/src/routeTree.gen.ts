@@ -84,6 +84,7 @@ import { Route as TenderProspectsRouteImport } from './routes/tender-prospects'
 import { Route as TenderQuotesRouteImport } from './routes/tender-quotes'
 import { Route as TenderRfpIntakesRouteImport } from './routes/tender-rfp-intakes'
 import { Route as TenderRoundsRouteImport } from './routes/tender-rounds'
+import { Route as TenderTedNoticesRouteImport } from './routes/tender-ted-notices'
 import { Route as TenderWinLossesRouteImport } from './routes/tender-win-losses'
 import { Route as TendersRouteImport } from './routes/tenders'
 import { Route as TerminalsRouteImport } from './routes/terminals'
@@ -466,6 +467,11 @@ const TenderRoundsRoute = TenderRoundsRouteImport.update({
   path: '/tender-rounds',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TenderTedNoticesRoute = TenderTedNoticesRouteImport.update({
+  id: '/tender-ted-notices',
+  path: '/tender-ted-notices',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TenderWinLossesRoute = TenderWinLossesRouteImport.update({
   id: '/tender-win-losses',
   path: '/tender-win-losses',
@@ -573,6 +579,7 @@ export interface FileRoutesByFullPath {
   '/tender-quotes': typeof TenderQuotesRoute
   '/tender-rfp-intakes': typeof TenderRfpIntakesRoute
   '/tender-rounds': typeof TenderRoundsRoute
+  '/tender-ted-notices': typeof TenderTedNoticesRoute
   '/tender-win-losses': typeof TenderWinLossesRoute
   '/tenders': typeof TendersRoute
   '/terminals': typeof TerminalsRoute
@@ -656,6 +663,7 @@ export interface FileRoutesByTo {
   '/tender-quotes': typeof TenderQuotesRoute
   '/tender-rfp-intakes': typeof TenderRfpIntakesRoute
   '/tender-rounds': typeof TenderRoundsRoute
+  '/tender-ted-notices': typeof TenderTedNoticesRoute
   '/tender-win-losses': typeof TenderWinLossesRoute
   '/tenders': typeof TendersRoute
   '/terminals': typeof TerminalsRoute
@@ -740,6 +748,7 @@ export interface FileRoutesById {
   '/tender-quotes': typeof TenderQuotesRoute
   '/tender-rfp-intakes': typeof TenderRfpIntakesRoute
   '/tender-rounds': typeof TenderRoundsRoute
+  '/tender-ted-notices': typeof TenderTedNoticesRoute
   '/tender-win-losses': typeof TenderWinLossesRoute
   '/tenders': typeof TendersRoute
   '/terminals': typeof TerminalsRoute
@@ -825,6 +834,7 @@ export interface FileRouteTypes {
     | '/tender-quotes'
     | '/tender-rfp-intakes'
     | '/tender-rounds'
+    | '/tender-ted-notices'
     | '/tender-win-losses'
     | '/tenders'
     | '/terminals'
@@ -908,6 +918,7 @@ export interface FileRouteTypes {
     | '/tender-quotes'
     | '/tender-rfp-intakes'
     | '/tender-rounds'
+    | '/tender-ted-notices'
     | '/tender-win-losses'
     | '/tenders'
     | '/terminals'
@@ -991,6 +1002,7 @@ export interface FileRouteTypes {
     | '/tender-quotes'
     | '/tender-rfp-intakes'
     | '/tender-rounds'
+    | '/tender-ted-notices'
     | '/tender-win-losses'
     | '/tenders'
     | '/terminals'
@@ -1075,6 +1087,7 @@ export interface RootRouteChildren {
   TenderQuotesRoute: typeof TenderQuotesRoute
   TenderRfpIntakesRoute: typeof TenderRfpIntakesRoute
   TenderRoundsRoute: typeof TenderRoundsRoute
+  TenderTedNoticesRoute: typeof TenderTedNoticesRoute
   TenderWinLossesRoute: typeof TenderWinLossesRoute
   TendersRoute: typeof TendersRoute
   TerminalsRoute: typeof TerminalsRoute
@@ -1610,6 +1623,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TenderRoundsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tender-ted-notices': {
+      id: '/tender-ted-notices'
+      path: '/tender-ted-notices'
+      fullPath: '/tender-ted-notices'
+      preLoaderRoute: typeof TenderTedNoticesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tender-win-losses': {
       id: '/tender-win-losses'
       path: '/tender-win-losses'
@@ -1731,6 +1751,7 @@ const rootRouteChildren: RootRouteChildren = {
   TenderQuotesRoute: TenderQuotesRoute,
   TenderRfpIntakesRoute: TenderRfpIntakesRoute,
   TenderRoundsRoute: TenderRoundsRoute,
+  TenderTedNoticesRoute: TenderTedNoticesRoute,
   TenderWinLossesRoute: TenderWinLossesRoute,
   TendersRoute: TendersRoute,
   TerminalsRoute: TerminalsRoute,

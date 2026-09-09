@@ -93,6 +93,7 @@ modules =
     app.services.tender_prospects
     app.services.tender_bid_stances
     app.services.tender_award_reviews
+    app.services.tender_ted_notices
     app.services.tender_rfp_intakes
 
 [importlinter:contract:integracje]
@@ -336,6 +337,9 @@ forbidden_modules =
     app.services.tender_award_reviews
     app.repositories.tender_award_reviews
     app.models.tender_award_review
+    app.services.tender_ted_notices
+    app.repositories.tender_ted_notices
+    app.models.tender_ted_notice
     app.services.tender_rfp_intakes
     app.repositories.tender_rfp_intakes
     app.models.tender_rfp_intake

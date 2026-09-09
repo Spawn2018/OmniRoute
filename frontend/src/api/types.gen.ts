@@ -5743,6 +5743,50 @@ export type TenderRoundResponse = {
 };
 
 /**
+ * TenderTedNoticeCreate
+ */
+export type TenderTedNoticeCreate = {
+    /**
+     * Tender Id
+     */
+    tender_id: string;
+    /**
+     * Notice Number
+     */
+    notice_number: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TenderTedNoticeResponse
+ */
+export type TenderTedNoticeResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Tender Id
+     */
+    tender_id: string;
+    /**
+     * Notice Number
+     */
+    notice_number: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * TenderWinLossCreate
  */
 export type TenderWinLossCreate = {
@@ -9781,6 +9825,49 @@ export type CreateTenderRoundApiV1TenderRoundsPostResponses = {
 };
 
 export type CreateTenderRoundApiV1TenderRoundsPostResponse = CreateTenderRoundApiV1TenderRoundsPostResponses[keyof CreateTenderRoundApiV1TenderRoundsPostResponses];
+
+export type ListTenderTedNoticesApiV1TenderTedNoticesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tender-ted-notices';
+};
+
+export type ListTenderTedNoticesApiV1TenderTedNoticesGetResponses = {
+    /**
+     * Response List Tender Ted Notices Api V1 Tender Ted Notices Get
+     *
+     * Successful Response
+     */
+    200: Array<TenderTedNoticeResponse>;
+};
+
+export type ListTenderTedNoticesApiV1TenderTedNoticesGetResponse = ListTenderTedNoticesApiV1TenderTedNoticesGetResponses[keyof ListTenderTedNoticesApiV1TenderTedNoticesGetResponses];
+
+export type CreateTenderTedNoticeApiV1TenderTedNoticesPostData = {
+    body: TenderTedNoticeCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tender-ted-notices';
+};
+
+export type CreateTenderTedNoticeApiV1TenderTedNoticesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTenderTedNoticeApiV1TenderTedNoticesPostError = CreateTenderTedNoticeApiV1TenderTedNoticesPostErrors[keyof CreateTenderTedNoticeApiV1TenderTedNoticesPostErrors];
+
+export type CreateTenderTedNoticeApiV1TenderTedNoticesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TenderTedNoticeResponse;
+};
+
+export type CreateTenderTedNoticeApiV1TenderTedNoticesPostResponse = CreateTenderTedNoticeApiV1TenderTedNoticesPostResponses[keyof CreateTenderTedNoticeApiV1TenderTedNoticesPostResponses];
 
 export type ListTendersApiV1TendersGetData = {
     body?: never;

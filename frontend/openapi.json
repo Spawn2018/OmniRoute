@@ -6372,6 +6372,80 @@
         ]
       }
     },
+    "/api/v1/tender-ted-notices": {
+      "get": {
+        "tags": [
+          "tender-ted-notices"
+        ],
+        "summary": "List Tender Ted Notices",
+        "operationId": "list_tender_ted_notices_api_v1_tender_ted_notices_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TenderTedNoticeResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Tender Ted Notices Api V1 Tender Ted Notices Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "tender-ted-notices"
+        ],
+        "summary": "Create Tender Ted Notice",
+        "operationId": "create_tender_ted_notice_api_v1_tender_ted_notices_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TenderTedNoticeCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TenderTedNoticeResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/tenders": {
       "get": {
         "tags": [
@@ -19419,6 +19493,67 @@
           "source_ref"
         ],
         "title": "TenderRoundResponse"
+      },
+      "TenderTedNoticeCreate": {
+        "properties": {
+          "tender_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Tender Id"
+          },
+          "notice_number": {
+            "type": "string",
+            "title": "Notice Number"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "tender_id",
+          "notice_number",
+          "source_ref"
+        ],
+        "title": "TenderTedNoticeCreate"
+      },
+      "TenderTedNoticeResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "tender_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Tender Id"
+          },
+          "notice_number": {
+            "type": "string",
+            "title": "Notice Number"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "tender_id",
+          "notice_number",
+          "source_ref"
+        ],
+        "title": "TenderTedNoticeResponse"
       },
       "TenderWinLossCreate": {
         "properties": {
