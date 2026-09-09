@@ -1304,6 +1304,10 @@ export type ContainerCreate = {
      * Bl Kind
      */
     bl_kind?: string | null;
+    /**
+     * Free Time Origin H
+     */
+    free_time_origin_h?: unknown | null;
 };
 
 /**
@@ -1402,6 +1406,10 @@ export type ContainerResponse = {
      * Bl Kind
      */
     bl_kind: string | null;
+    /**
+     * Free Time Origin H
+     */
+    free_time_origin_h: number | null;
     /**
      * Superseded By
      */

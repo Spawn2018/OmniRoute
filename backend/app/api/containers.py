@@ -39,6 +39,7 @@ class ContainerCreate(BaseModel):
     pickup_terminal: str | None = None
     return_terminal: str | None = None
     bl_kind: str | None = None
+    free_time_origin_h: object | None = None
 
 
 class ContainerResponse(BaseModel):
@@ -67,6 +68,7 @@ class ContainerResponse(BaseModel):
     pickup_terminal: str | None
     return_terminal: str | None
     bl_kind: str | None
+    free_time_origin_h: int | None
     superseded_by: UUID | None
 
 
@@ -97,6 +99,7 @@ def _write_from_body(body: ContainerCreate, shipment_id: UUID | None) -> _WriteB
         body.pickup_terminal,
         body.return_terminal,
         body.bl_kind,
+        body.free_time_origin_h,
     )
 
 

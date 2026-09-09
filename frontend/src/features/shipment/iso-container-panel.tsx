@@ -2,7 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { containerWrite, fetchContainers, optionalToken, saveContainer } from "@/lib/containers-api"
+import { containerWrite, fetchContainers, optionalHours, optionalToken, saveContainer } from "@/lib/containers-api"
 import { getTenantContext } from "@/lib/tenant"
 
 export function IsoContainerPanel(args: { signedIn: boolean }) {
@@ -28,6 +28,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
   const [dock, setDock] = useState("")
   const [yard, setYard] = useState("")
   const [bill, setBill] = useState("")
+  const [idle, setIdle] = useState("")
   const listed = useQuery({
     queryKey: ["containers", ctx.organizationId, sizeType],
     queryFn: () => fetchContainers(sizeType),
@@ -59,6 +60,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
         pickup_terminal: optionalToken(dock),
         return_terminal: optionalToken(yard),
         bl_kind: optionalToken(bill),
+        free_time_origin_h: optionalHours(idle),
       }),
     onSuccess: () => {
       void cache.invalidateQueries({ queryKey: ["containers", ctx.organizationId, sizeType] })
@@ -69,7 +71,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
     <section className="grid gap-2 rounded-md border border-border p-3" data-container="iso">
       <h2 className="text-sm font-medium">Kontener ISO</h2>
       <p className="text-xs text-muted-foreground">
-        Numer z cyfrą kontrolną i typ 4 znaków. Opcjonalne plomby, statek, rejs, uwaga, ładunek, opakowanie, referencje, flaga chłodniczego, terminale pobrania oraz zwrotu i rodzaj listu (original/seawaybill/telex/express). Nie HBL. Nie temperatura. Nie VGM. Nie PIN. Nie booking.
+        Numer z cyfrą kontrolną i typ 4 znaków. Opcjonalne plomby, statek, rejs, uwaga, ładunek, opakowanie, referencje, flaga chłodniczego, terminale pobrania oraz zwrotu, rodzaj listu i godziny wolnego czasu na origin. Nie odliczanie. Nie HBL. Nie temperatura. Nie VGM. Nie PIN. Nie booking.
       </p>
       <label className="flex flex-col gap-1 text-xs">
         Numer ISO 6346
@@ -251,6 +253,15 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
           onChange={(event) => setBill(event.target.value)}
         />
       </label>
+      <label className="flex flex-col gap-1 text-xs">
+        Godziny wolnego czasu origin (opcjonalnie)
+        <Input
+          aria-label="Godziny wolnego czasu origin kontenera"
+          placeholder="free_time_origin_h"
+          value={idle}
+          onChange={(event) => setIdle(event.target.value)}
+        />
+      </label>
       <Button type="button" disabled={blocked} onClick={() => persist.mutate()}>
         Zapisz kontener
       </Button>
@@ -278,6 +289,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
             {row.pickup_terminal !== null ? ` · ${row.pickup_terminal}` : ""}
             {row.return_terminal !== null ? ` · ${row.return_terminal}` : ""}
             {row.bl_kind !== null ? ` · ${row.bl_kind}` : ""}
+            {row.free_time_origin_h !== null ? ` · ${String(row.free_time_origin_h)}h` : ""}
           </li>
         ))}
       </ul>

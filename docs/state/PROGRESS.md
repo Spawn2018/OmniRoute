@@ -546,3 +546,4 @@
 | 2026-09-10 | Plan 232.0 | T3 | bl_kind HITL na container, nie HBL/MBL i nie PIN. Delta zaakceptowana (`/noc`). Nastepny: kod 232.0. |
 | 2026-09-10 | 232.0 | T3 | bl_kind HITL na container. Nie HBL. Nie PIN. Nastepny: leftover T3 free_time_origin_h Plan. |
 | 2026-09-10 | Plan 233.0 | T3 | free_time_origin_h HITL na container, nie countdown i nie PIN. Delta zaakceptowana (`/noc`). Nastepny: kod 233.0. |
+| 2026-09-10 | 233.0 | T3 | free_time_origin_h HITL na container. Nie countdown. Nie PIN. Nastepny: leftover T3 free_time_dest_h Plan. |

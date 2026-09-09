@@ -14,6 +14,7 @@ from app.domain.container import (
     require_container_ref_5,
     require_container_remarks,
     require_container_source_ref,
+    require_free_time_origin_h,
     require_iso_size_type,
     require_packaging_code,
     require_pickup_terminal,
@@ -167,6 +168,15 @@ def test_container_bl_kind_keeps_allowlist_and_rejects_hbl() -> None:
     assert require_container_bl_kind("seawaybill") == "seawaybill"
     with pytest.raises(InvalidContainer, match="list"):
         require_container_bl_kind("hbl")
+
+
+def test_free_time_origin_h_keeps_hours_and_rejects_float() -> None:
+    assert require_free_time_origin_h(None) is None
+    assert require_free_time_origin_h(48) == 48
+    with pytest.raises(InvalidContainer, match="godziny"):
+        require_free_time_origin_h(-1)
+    with pytest.raises(InvalidContainer, match="godziny"):
+        require_free_time_origin_h(1.5)  # type: ignore[arg-type]
 
 
 @given(st.sampled_from(["CSQU3054384", "MSCU1234567", "ABCD"]))

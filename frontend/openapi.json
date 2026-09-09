@@ -13812,6 +13812,15 @@
               }
             ],
             "title": "Bl Kind"
+          },
+          "free_time_origin_h": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Free Time Origin H"
           }
         },
         "additionalProperties": false,
@@ -14039,6 +14048,17 @@
             ],
             "title": "Bl Kind"
           },
+          "free_time_origin_h": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Free Time Origin H"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -14077,6 +14097,7 @@
           "pickup_terminal",
           "return_terminal",
           "bl_kind",
+          "free_time_origin_h",
           "superseded_by"
         ],
         "title": "ContainerResponse"

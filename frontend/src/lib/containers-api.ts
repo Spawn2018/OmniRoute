@@ -25,6 +25,7 @@ export type ContainerRow = {
   pickup_terminal: string | null
   return_terminal: string | null
   bl_kind: string | null
+  free_time_origin_h: number | null
   superseded_by: string | null
 }
 
@@ -50,6 +51,7 @@ export type ContainerWrite = {
   pickup_terminal?: string | null
   return_terminal?: string | null
   bl_kind?: string | null
+  free_time_origin_h?: number | null
 }
 
 const PATH = "/api/v1/containers"
@@ -57,6 +59,14 @@ const PATH = "/api/v1/containers"
 export function optionalToken(raw: string): string | null {
   const token = raw.trim()
   return token === "" ? null : token
+}
+
+export function optionalHours(raw: string): number | null {
+  const token = raw.trim()
+  if (token === "") {
+    return null
+  }
+  return Number.parseInt(token, 10)
 }
 
 export function containerWrite(args: {

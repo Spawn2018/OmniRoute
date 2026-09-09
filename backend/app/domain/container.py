@@ -11,6 +11,7 @@ _MAX_SEAL = 32
 _MAX_VESSEL = 128
 _MAX_MARK = 64
 _BL_KINDS = frozenset({"original", "seawaybill", "telex", "express"})
+_MAX_ORIGIN_H = 8760
 
 
 def _iso6346_value(mark: str) -> int:
@@ -190,6 +191,18 @@ def require_container_bl_kind(raw: object) -> str | None:
     if token not in _BL_KINDS:
         raise InvalidContainer("rodzaj listu kontenera nieznany")
     return token
+
+
+def require_free_time_origin_h(raw: object) -> int | None:
+    if raw is None:
+        return None
+    if type(raw) is bool or type(raw) is not int:
+        raise InvalidContainer("godziny wolnego czasu muszą być liczbą całkowitą")
+    if raw < 0:
+        raise InvalidContainer("godziny wolnego czasu: nieujemne")
+    if raw > _MAX_ORIGIN_H:
+        raise InvalidContainer("godziny wolnego czasu: za dużo")
+    return raw
 
 
 def require_container_ref_1(raw: object) -> str | None:

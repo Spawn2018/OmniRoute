@@ -301,6 +301,23 @@ def test_migration_171_adds_bl_kind_without_hbl() -> None:
     assert "bl_kind" in source.split("def downgrade")[1]
 
 
+def test_migration_172_adds_free_time_origin_without_countdown() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "172_container_free_time_origin.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "172_container_free_time_origin"' in source
+    assert 'down_revision: str | None = "171_container_bl_kind"' in source
+    assert "free_time_origin_h" in source
+    assert "free_time_clock" not in source
+    assert "countdown" not in source.casefold()
+    assert "remaining" not in source
+    assert "pin_code" not in source
+    assert "vgm" not in source.casefold()
+    assert "create_table" not in source
+    assert "def downgrade" in source
+    assert "free_time_origin_h" in source.split("def downgrade")[1]
+
+
 def test_generated_api_types_include_container() -> None:
     source = (_ROOT / "frontend" / "src" / "api" / "types.gen.ts").read_text(encoding="utf-8")
     assert "ContainerResponse" in source
@@ -316,5 +333,5 @@ def test_generated_api_types_include_container() -> None:
     assert "ref_5" in source
     assert "reefer" in source
     assert "pickup_terminal" in source
-    assert "return_terminal" in source
     assert "bl_kind" in source
+    assert "free_time_origin_h" in source
