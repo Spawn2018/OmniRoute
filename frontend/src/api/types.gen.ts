@@ -1264,6 +1264,10 @@ export type ContainerCreate = {
      * Cargo Description
      */
     cargo_description?: string | null;
+    /**
+     * Packaging Code
+     */
+    packaging_code?: string | null;
 };
 
 /**
@@ -1322,6 +1326,10 @@ export type ContainerResponse = {
      * Cargo Description
      */
     cargo_description: string | null;
+    /**
+     * Packaging Code
+     */
+    packaging_code: string | null;
     /**
      * Superseded By
      */

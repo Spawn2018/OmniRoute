@@ -10,6 +10,7 @@ from app.domain.container import (
     require_container_shipment_id,
     require_container_source_ref,
     require_iso_size_type,
+    require_packaging_code,
     require_seal_no_1,
     require_seal_no_2,
     require_seal_no_3,
@@ -32,6 +33,7 @@ class _BoxDraft(NamedTuple):
     voyage: str | None
     note: str | None
     goods: str | None
+    pack: str | None
 
 
 def _box_draft(
@@ -46,6 +48,7 @@ def _box_draft(
     voyage_no: object,
     remarks: object,
     cargo_description: object,
+    packaging_code: object,
 ) -> _BoxDraft:
     return _BoxDraft(
         require_container_no(container_no),
@@ -59,6 +62,7 @@ def _box_draft(
         require_voyage_no(voyage_no),
         require_container_remarks(remarks),
         require_cargo_description(cargo_description),
+        require_packaging_code(packaging_code),
     )
 
 
@@ -74,6 +78,7 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.voyage_no == draft.voyage
         and current.remarks == draft.note
         and current.cargo_description == draft.goods
+        and current.packaging_code == draft.pack
     )
 
 
@@ -92,6 +97,7 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         voyage_no=draft.voyage,
         remarks=draft.note,
         cargo_description=draft.goods,
+        packaging_code=draft.pack,
         created_by=user_id,
     )
 
@@ -120,6 +126,7 @@ class ContainerService:
         voyage_no: object = None,
         remarks: object = None,
         cargo_description: object = None,
+        packaging_code: object = None,
     ) -> Container:
         draft = _box_draft(
             container_no,
@@ -133,6 +140,7 @@ class ContainerService:
             voyage_no,
             remarks,
             cargo_description,
+            packaging_code,
         )
         current = await self._rows.find_current(draft.number)
         if current is not None and _box_unchanged(current, draft):

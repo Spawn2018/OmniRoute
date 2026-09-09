@@ -13709,6 +13709,17 @@
               }
             ],
             "title": "Cargo Description"
+          },
+          "packaging_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Packaging Code"
           }
         },
         "additionalProperties": false,
@@ -13833,6 +13844,17 @@
             ],
             "title": "Cargo Description"
           },
+          "packaging_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Packaging Code"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -13861,6 +13883,7 @@
           "voyage_no",
           "remarks",
           "cargo_description",
+          "packaging_code",
           "superseded_by"
         ],
         "title": "ContainerResponse"

@@ -8,6 +8,7 @@ from app.domain.container import (
     require_container_remarks,
     require_container_source_ref,
     require_iso_size_type,
+    require_packaging_code,
     require_seal_no_1,
     require_seal_no_2,
     require_seal_no_3,
@@ -87,6 +88,14 @@ def test_cargo_description_omits_blank_and_keeps_token() -> None:
     assert require_cargo_description(" steel coils ") == "steel coils"
     with pytest.raises(InvalidContainer, match="ładunek"):
         require_cargo_description("x" * 257)
+
+
+def test_packaging_code_omits_blank_and_keeps_token() -> None:
+    assert require_packaging_code(None) is None
+    assert require_packaging_code("  ") is None
+    assert require_packaging_code(" CT ") == "CT"
+    with pytest.raises(InvalidContainer, match="opakowanie"):
+        require_packaging_code("x" * 33)
 
 
 @given(st.sampled_from(["CSQU3054384", "MSCU1234567", "ABCD"]))

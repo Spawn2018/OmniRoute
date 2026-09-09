@@ -29,6 +29,7 @@ class ContainerCreate(BaseModel):
     voyage_no: str | None = None
     remarks: str | None = None
     cargo_description: str | None = None
+    packaging_code: str | None = None
 
 
 class ContainerResponse(BaseModel):
@@ -47,6 +48,7 @@ class ContainerResponse(BaseModel):
     voyage_no: str | None
     remarks: str | None
     cargo_description: str | None
+    packaging_code: str | None
     superseded_by: UUID | None
 
 
@@ -94,6 +96,7 @@ async def create_container(
         voyage_no=body.voyage_no,
         remarks=body.remarks,
         cargo_description=body.cargo_description,
+        packaging_code=body.packaging_code,
     )
     await session.commit()
     return _as_response(row)
