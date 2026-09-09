@@ -4,6 +4,7 @@ from uuid import UUID, uuid4
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.container import (
+    require_cargo_description,
     require_container_no,
     require_container_remarks,
     require_container_shipment_id,
@@ -30,6 +31,7 @@ class _BoxDraft(NamedTuple):
     vessel: str | None
     voyage: str | None
     note: str | None
+    goods: str | None
 
 
 def _box_draft(
@@ -43,6 +45,7 @@ def _box_draft(
     vessel_name: object,
     voyage_no: object,
     remarks: object,
+    cargo_description: object,
 ) -> _BoxDraft:
     return _BoxDraft(
         require_container_no(container_no),
@@ -55,6 +58,7 @@ def _box_draft(
         require_vessel_name(vessel_name),
         require_voyage_no(voyage_no),
         require_container_remarks(remarks),
+        require_cargo_description(cargo_description),
     )
 
 
@@ -69,6 +73,7 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.vessel_name == draft.vessel
         and current.voyage_no == draft.voyage
         and current.remarks == draft.note
+        and current.cargo_description == draft.goods
     )
 
 
@@ -86,6 +91,7 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         vessel_name=draft.vessel,
         voyage_no=draft.voyage,
         remarks=draft.note,
+        cargo_description=draft.goods,
         created_by=user_id,
     )
 
@@ -113,6 +119,7 @@ class ContainerService:
         vessel_name: object = None,
         voyage_no: object = None,
         remarks: object = None,
+        cargo_description: object = None,
     ) -> Container:
         draft = _box_draft(
             container_no,
@@ -125,6 +132,7 @@ class ContainerService:
             vessel_name,
             voyage_no,
             remarks,
+            cargo_description,
         )
         current = await self._rows.find_current(draft.number)
         if current is not None and _box_unchanged(current, draft):

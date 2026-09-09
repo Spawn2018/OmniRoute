@@ -3,6 +3,7 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from app.domain.container import (
+    require_cargo_description,
     require_container_no,
     require_container_remarks,
     require_container_source_ref,
@@ -78,6 +79,14 @@ def test_container_remarks_omits_blank_and_keeps_token() -> None:
     assert require_container_remarks(" keep dry ") == "keep dry"
     with pytest.raises(InvalidContainer, match="uwaga"):
         require_container_remarks("x" * 257)
+
+
+def test_cargo_description_omits_blank_and_keeps_token() -> None:
+    assert require_cargo_description(None) is None
+    assert require_cargo_description("  ") is None
+    assert require_cargo_description(" steel coils ") == "steel coils"
+    with pytest.raises(InvalidContainer, match="ładunek"):
+        require_cargo_description("x" * 257)
 
 
 @given(st.sampled_from(["CSQU3054384", "MSCU1234567", "ABCD"]))

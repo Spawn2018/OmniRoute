@@ -24,7 +24,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **196.0 leftover:** N3 countdown remaining + szkic `charge`; `demurrage_free_days` na `container`; blank sailing / congestion / Gate OS; live HTTP armatora. Tu tylko `free_time_clock` HITL `clock_kind` + `free_days` + `source_ref`. Nie odliczanie. Nie marża.
 - **195.0 leftover:** Open-Meteo / IMGW / DWD live HTTP; `trip_id` / geometria / lat/lng / WMO; myto → `charge` (V2b). Tu tylko `weather_observation` HITL warunek + UN/LOCODE + czas + `source_ref`. Nie feed. Nie ETA.
 - **151.0 leftover:** `trip` DONE 152.0. `driver2` DONE 212.0. `route_label` DONE 214.0. Zostaje T2c: floating trailer; pojemności / Decimal km; `party_id`; `/fleet` / HW. Tu tylko katalog pojazd/kierowca/naczepa.
-- **153.0 leftover:** `seal_no_1` DONE 216.0. `seal_no_2` DONE 217.0. `seal_no_3` DONE 218.0. `vessel_name` DONE 219.0. `voyage_no` DONE 220.0. `remarks` DONE 221.0. Zostaje VGM/TARA Decimal; free_time; cutoffy; `bl_kind`; PIN; `cargo_description`; reefer; party/terminal; TEU; `shipment_leg_id`; `booking_no`. Tu tylko ISO 6346 + typ + zlecenie + trzy plomby + statek + rejs + uwaga. Nie booking.
+- **153.0 leftover:** `seal_no_1` DONE 216.0. `seal_no_2` DONE 217.0. `seal_no_3` DONE 218.0. `vessel_name` DONE 219.0. `voyage_no` DONE 220.0. `remarks` DONE 221.0. `cargo_description` DONE 222.0. Zostaje VGM/TARA Decimal; free_time; cutoffy; `bl_kind`; PIN; `packaging_code`; reefer; party/terminal; TEU; `shipment_leg_id`; `booking_no`. Tu tylko ISO 6346 + typ + zlecenie + trzy plomby + statek + rejs + uwaga + ładunek. Nie booking.
 - **193.0 leftover:** `plan_snapshot` / TT z actuals; champion/challenger / drift; GPS / AIS wieży. Tu tylko `prediction_ledger` HITL przedział + CRPS/MAE + `source_ref`. Nie silnik. Nie scoring osoby.
 - **192.0 leftover:** packing group / grupy zgodności 1.xA / live IMO. Tu tylko `adr_tunnel_code` + `segregation_group` HITL na `dangerous_good`. LLM nie nadaje klasy.
 
@@ -75,7 +75,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **218.0 leftover:** `vessel_name` DONE 219.0. Zostaje leftover T3 `voyage_no`; PIN; VGM/cutoffy. Tu tylko `seal_no_3` HITL. Nie sekret. Nie waga.
 - **219.0 leftover:** `voyage_no` DONE 220.0. Zostaje leftover T3 `remarks`; PIN; VGM/cutoffy; booking. Tu tylko `vessel_name` HITL. Nie rejs. Nie sekret.
 - **220.0 leftover:** `remarks` DONE 221.0. Zostaje leftover T3 `cargo_description`; PIN; VGM/cutoffy; booking. Tu tylko `voyage_no` HITL. Nie PIN. Nie booking.
-- **221.0 leftover:** leftover T3 `cargo_description`; PIN; VGM/cutoffy; booking. Tu tylko `remarks` HITL. Nie waga. Nie PIN.
+- **221.0 leftover:** `cargo_description` DONE 222.0. Zostaje leftover T3 `packaging_code`; PIN; VGM/cutoffy; booking. Tu tylko `remarks` HITL. Nie waga. Nie PIN.
+- **222.0 leftover:** leftover T3 `packaging_code`; PIN; VGM/cutoffy; booking. Tu tylko `cargo_description` HITL. Nie waga. Nie PIN.
 - **215.0 leftover:** leftover T1b tabela `stop_group`; EXP1 waga/plomba/awizacja. Tu tylko `notes_for_driver` HITL. Nie waga. Nie mapa.
 - **214.0 leftover:** leftover T2c km/`party`/`/fleet`. Tu tylko `route_label` HITL. Nie km. Nie mapa.
 - **152.0 leftover:** `driver2_id` DONE 212.0; `route_label` DONE 214.0; `stop_group` kolumna DONE 213.0. Zostaje Decimal km / freeze kosztu; `party_id`; `/fleet` / HW. Tu tylko status + opcjonalny slot floty + etykieta. Nie km.

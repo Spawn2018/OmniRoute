@@ -1260,6 +1260,10 @@ export type ContainerCreate = {
      * Remarks
      */
     remarks?: string | null;
+    /**
+     * Cargo Description
+     */
+    cargo_description?: string | null;
 };
 
 /**
@@ -1314,6 +1318,10 @@ export type ContainerResponse = {
      * Remarks
      */
     remarks: string | null;
+    /**
+     * Cargo Description
+     */
+    cargo_description: string | null;
     /**
      * Superseded By
      */

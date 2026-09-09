@@ -14,6 +14,7 @@ export type ContainerRow = {
   vessel_name: string | null
   voyage_no: string | null
   remarks: string | null
+  cargo_description: string | null
   superseded_by: string | null
 }
 
@@ -28,6 +29,7 @@ export type ContainerWrite = {
   vessel_name: string | null
   voyage_no: string | null
   remarks: string | null
+  cargo_description: string | null
 }
 
 const PATH = "/api/v1/containers"
@@ -47,6 +49,7 @@ export function containerWrite(args: {
   vessel: string
   voyage: string
   note: string
+  goods: string
 }): ContainerWrite {
   const seal = args.seal.trim()
   const seal2 = args.seal2.trim()
@@ -54,6 +57,7 @@ export function containerWrite(args: {
   const vessel = args.vessel.trim()
   const voyage = args.voyage.trim()
   const note = args.note.trim()
+  const goods = args.goods.trim()
   return {
     container_no: args.number.trim(),
     iso_size_type: args.sizeType.trim(),
@@ -65,6 +69,7 @@ export function containerWrite(args: {
     vessel_name: vessel === "" ? null : vessel,
     voyage_no: voyage === "" ? null : voyage,
     remarks: note === "" ? null : note,
+    cargo_description: goods === "" ? null : goods,
   }
 }
 

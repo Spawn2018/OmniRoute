@@ -13698,6 +13698,17 @@
               }
             ],
             "title": "Remarks"
+          },
+          "cargo_description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cargo Description"
           }
         },
         "additionalProperties": false,
@@ -13811,6 +13822,17 @@
             ],
             "title": "Remarks"
           },
+          "cargo_description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cargo Description"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -13838,6 +13860,7 @@
           "vessel_name",
           "voyage_no",
           "remarks",
+          "cargo_description",
           "superseded_by"
         ],
         "title": "ContainerResponse"

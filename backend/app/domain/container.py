@@ -132,3 +132,16 @@ def require_container_remarks(raw: object) -> str | None:
     if len(token) > _MAX_REF:
         raise InvalidContainer("uwaga kontenera za długa")
     return token
+
+
+def require_cargo_description(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidContainer("ładunek kontenera musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    if len(token) > _MAX_REF:
+        raise InvalidContainer("ładunek kontenera za długi")
+    return token
