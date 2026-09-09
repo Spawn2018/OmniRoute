@@ -584,3 +584,7 @@ class InvalidTenderConsortiumMember(DomainError):
 
 class InvalidTenderRfpIntake(DomainError):
     """Przyjęcie RFP G2.9: HITL z source_ref — nie zapis z LLM i nie auto-award."""
+
+
+class InvalidTenderProspect(DomainError):
+    """Prospekt G2.10: HITL outreach z source_ref — nie scrape i nie bid/no-bid."""

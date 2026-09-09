@@ -90,6 +90,7 @@ modules =
     app.services.tender_playbooks
     app.services.tender_win_losses
     app.services.tender_consortium_members
+    app.services.tender_prospects
     app.services.tender_rfp_intakes
 
 [importlinter:contract:integracje]
@@ -324,6 +325,9 @@ forbidden_modules =
     app.services.tender_consortium_members
     app.repositories.tender_consortium_members
     app.models.tender_consortium_member
+    app.services.tender_prospects
+    app.repositories.tender_prospects
+    app.models.tender_prospect
     app.services.tender_rfp_intakes
     app.repositories.tender_rfp_intakes
     app.models.tender_rfp_intake

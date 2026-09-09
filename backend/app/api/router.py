@@ -76,6 +76,7 @@ from app.api import (
     tender_lots,
     tender_matrix_cells,
     tender_playbooks,
+    tender_prospects,
     tender_quotes,
     tender_rfp_intakes,
     tender_rounds,
@@ -142,6 +143,7 @@ api_router.include_router(tender_matrix_cells.router)
 api_router.include_router(tender_playbooks.router)
 api_router.include_router(tender_win_losses.router)
 api_router.include_router(tender_consortium_members.router)
+api_router.include_router(tender_prospects.router)
 api_router.include_router(tender_rfp_intakes.router)
 api_router.include_router(tender_rounds.router)
 api_router.include_router(tenders.router)

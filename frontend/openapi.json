@@ -6002,6 +6002,80 @@
         ]
       }
     },
+    "/api/v1/tender-prospects": {
+      "get": {
+        "tags": [
+          "tender-prospects"
+        ],
+        "summary": "List Tender Prospects",
+        "operationId": "list_tender_prospects_api_v1_tender_prospects_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TenderProspectResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Tender Prospects Api V1 Tender Prospects Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "tender-prospects"
+        ],
+        "summary": "Create Tender Prospect",
+        "operationId": "create_tender_prospect_api_v1_tender_prospects_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TenderProspectCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TenderProspectResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/tender-rfp-intakes": {
       "get": {
         "tags": [
@@ -18723,6 +18797,79 @@
           "source_ref"
         ],
         "title": "TenderPlaybookResponse"
+      },
+      "TenderProspectCreate": {
+        "properties": {
+          "tender_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Tender Id"
+          },
+          "party_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Party Id"
+          },
+          "outreach_code": {
+            "type": "string",
+            "title": "Outreach Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "tender_id",
+          "party_id",
+          "outreach_code",
+          "source_ref"
+        ],
+        "title": "TenderProspectCreate"
+      },
+      "TenderProspectResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "tender_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Tender Id"
+          },
+          "party_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Party Id"
+          },
+          "outreach_code": {
+            "type": "string",
+            "title": "Outreach Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "tender_id",
+          "party_id",
+          "outreach_code",
+          "source_ref"
+        ],
+        "title": "TenderProspectResponse"
       },
       "TenderQuoteCreate": {
         "properties": {

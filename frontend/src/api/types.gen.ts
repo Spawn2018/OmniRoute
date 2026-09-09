@@ -5399,6 +5399,58 @@ export type TenderPlaybookResponse = {
 };
 
 /**
+ * TenderProspectCreate
+ */
+export type TenderProspectCreate = {
+    /**
+     * Tender Id
+     */
+    tender_id: string;
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Outreach Code
+     */
+    outreach_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TenderProspectResponse
+ */
+export type TenderProspectResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Tender Id
+     */
+    tender_id: string;
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Outreach Code
+     */
+    outreach_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * TenderQuoteCreate
  */
 export type TenderQuoteCreate = {
@@ -9426,6 +9478,49 @@ export type CreateTenderConsortiumMemberApiV1TenderConsortiumMembersPostResponse
 };
 
 export type CreateTenderConsortiumMemberApiV1TenderConsortiumMembersPostResponse = CreateTenderConsortiumMemberApiV1TenderConsortiumMembersPostResponses[keyof CreateTenderConsortiumMemberApiV1TenderConsortiumMembersPostResponses];
+
+export type ListTenderProspectsApiV1TenderProspectsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tender-prospects';
+};
+
+export type ListTenderProspectsApiV1TenderProspectsGetResponses = {
+    /**
+     * Response List Tender Prospects Api V1 Tender Prospects Get
+     *
+     * Successful Response
+     */
+    200: Array<TenderProspectResponse>;
+};
+
+export type ListTenderProspectsApiV1TenderProspectsGetResponse = ListTenderProspectsApiV1TenderProspectsGetResponses[keyof ListTenderProspectsApiV1TenderProspectsGetResponses];
+
+export type CreateTenderProspectApiV1TenderProspectsPostData = {
+    body: TenderProspectCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tender-prospects';
+};
+
+export type CreateTenderProspectApiV1TenderProspectsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTenderProspectApiV1TenderProspectsPostError = CreateTenderProspectApiV1TenderProspectsPostErrors[keyof CreateTenderProspectApiV1TenderProspectsPostErrors];
+
+export type CreateTenderProspectApiV1TenderProspectsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TenderProspectResponse;
+};
+
+export type CreateTenderProspectApiV1TenderProspectsPostResponse = CreateTenderProspectApiV1TenderProspectsPostResponses[keyof CreateTenderProspectApiV1TenderProspectsPostResponses];
 
 export type ListTenderRfpIntakesApiV1TenderRfpIntakesGetData = {
     body?: never;

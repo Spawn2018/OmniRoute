@@ -64,6 +64,7 @@ const NAV = [
   { to: "/tender-win-losses", label: "Wynik przetargu" },
   { to: "/tender-consortium-members", label: "Konsorcjum przetargu" },
   { to: "/tender-rfp-intakes", label: "Przyjęcie RFP" },
+  { to: "/tender-prospects", label: "Prospekt przetargu" },
   { to: "/tender-lanes", label: "Korytarze przetargu" },
   { to: "/tender-lots", label: "Partie przetargu" },
   { to: "/tender-rounds", label: "Rundy przetargu" },

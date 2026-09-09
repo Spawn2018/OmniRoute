@@ -78,6 +78,7 @@ import { Route as TenderLanesRouteImport } from './routes/tender-lanes'
 import { Route as TenderLotsRouteImport } from './routes/tender-lots'
 import { Route as TenderMatrixCellsRouteImport } from './routes/tender-matrix-cells'
 import { Route as TenderPlaybooksRouteImport } from './routes/tender-playbooks'
+import { Route as TenderProspectsRouteImport } from './routes/tender-prospects'
 import { Route as TenderQuotesRouteImport } from './routes/tender-quotes'
 import { Route as TenderRfpIntakesRouteImport } from './routes/tender-rfp-intakes'
 import { Route as TenderRoundsRouteImport } from './routes/tender-rounds'
@@ -433,6 +434,11 @@ const TenderPlaybooksRoute = TenderPlaybooksRouteImport.update({
   path: '/tender-playbooks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TenderProspectsRoute = TenderProspectsRouteImport.update({
+  id: '/tender-prospects',
+  path: '/tender-prospects',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TenderQuotesRoute = TenderQuotesRouteImport.update({
   id: '/tender-quotes',
   path: '/tender-quotes',
@@ -549,6 +555,7 @@ export interface FileRoutesByFullPath {
   '/tender-lots': typeof TenderLotsRoute
   '/tender-matrix-cells': typeof TenderMatrixCellsRoute
   '/tender-playbooks': typeof TenderPlaybooksRoute
+  '/tender-prospects': typeof TenderProspectsRoute
   '/tender-quotes': typeof TenderQuotesRoute
   '/tender-rfp-intakes': typeof TenderRfpIntakesRoute
   '/tender-rounds': typeof TenderRoundsRoute
@@ -629,6 +636,7 @@ export interface FileRoutesByTo {
   '/tender-lots': typeof TenderLotsRoute
   '/tender-matrix-cells': typeof TenderMatrixCellsRoute
   '/tender-playbooks': typeof TenderPlaybooksRoute
+  '/tender-prospects': typeof TenderProspectsRoute
   '/tender-quotes': typeof TenderQuotesRoute
   '/tender-rfp-intakes': typeof TenderRfpIntakesRoute
   '/tender-rounds': typeof TenderRoundsRoute
@@ -710,6 +718,7 @@ export interface FileRoutesById {
   '/tender-lots': typeof TenderLotsRoute
   '/tender-matrix-cells': typeof TenderMatrixCellsRoute
   '/tender-playbooks': typeof TenderPlaybooksRoute
+  '/tender-prospects': typeof TenderProspectsRoute
   '/tender-quotes': typeof TenderQuotesRoute
   '/tender-rfp-intakes': typeof TenderRfpIntakesRoute
   '/tender-rounds': typeof TenderRoundsRoute
@@ -792,6 +801,7 @@ export interface FileRouteTypes {
     | '/tender-lots'
     | '/tender-matrix-cells'
     | '/tender-playbooks'
+    | '/tender-prospects'
     | '/tender-quotes'
     | '/tender-rfp-intakes'
     | '/tender-rounds'
@@ -872,6 +882,7 @@ export interface FileRouteTypes {
     | '/tender-lots'
     | '/tender-matrix-cells'
     | '/tender-playbooks'
+    | '/tender-prospects'
     | '/tender-quotes'
     | '/tender-rfp-intakes'
     | '/tender-rounds'
@@ -952,6 +963,7 @@ export interface FileRouteTypes {
     | '/tender-lots'
     | '/tender-matrix-cells'
     | '/tender-playbooks'
+    | '/tender-prospects'
     | '/tender-quotes'
     | '/tender-rfp-intakes'
     | '/tender-rounds'
@@ -1033,6 +1045,7 @@ export interface RootRouteChildren {
   TenderLotsRoute: typeof TenderLotsRoute
   TenderMatrixCellsRoute: typeof TenderMatrixCellsRoute
   TenderPlaybooksRoute: typeof TenderPlaybooksRoute
+  TenderProspectsRoute: typeof TenderProspectsRoute
   TenderQuotesRoute: typeof TenderQuotesRoute
   TenderRfpIntakesRoute: typeof TenderRfpIntakesRoute
   TenderRoundsRoute: typeof TenderRoundsRoute
@@ -1529,6 +1542,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TenderPlaybooksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tender-prospects': {
+      id: '/tender-prospects'
+      path: '/tender-prospects'
+      fullPath: '/tender-prospects'
+      preLoaderRoute: typeof TenderProspectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tender-quotes': {
       id: '/tender-quotes'
       path: '/tender-quotes'
@@ -1665,6 +1685,7 @@ const rootRouteChildren: RootRouteChildren = {
   TenderLotsRoute: TenderLotsRoute,
   TenderMatrixCellsRoute: TenderMatrixCellsRoute,
   TenderPlaybooksRoute: TenderPlaybooksRoute,
+  TenderProspectsRoute: TenderProspectsRoute,
   TenderQuotesRoute: TenderQuotesRoute,
   TenderRfpIntakesRoute: TenderRfpIntakesRoute,
   TenderRoundsRoute: TenderRoundsRoute,
