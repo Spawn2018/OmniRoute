@@ -620,3 +620,7 @@ class InvalidMonitoringScheme(DomainError):
 
 class InvalidPartyDocument(DomainError):
     """Dokument C8: HITL kind na party z source_ref — nie 409 i nie extract."""
+
+
+class InvalidCashDiscount(DomainError):
+    """Skonto F2: HITL kind na fakturze z source_ref — nie kwota i nie CAMT."""

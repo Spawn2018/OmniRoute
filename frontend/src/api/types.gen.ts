@@ -505,6 +505,50 @@ export type CarrierQuoteExtract = {
 };
 
 /**
+ * CashDiscountCreate
+ */
+export type CashDiscountCreate = {
+    /**
+     * Sales Invoice Id
+     */
+    sales_invoice_id: string;
+    /**
+     * Discount Kind
+     */
+    discount_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CashDiscountResponse
+ */
+export type CashDiscountResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Sales Invoice Id
+     */
+    sales_invoice_id: string;
+    /**
+     * Discount Kind
+     */
+    discount_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * CashFlowCreate
  */
 export type CashFlowCreate = {
@@ -10626,6 +10670,49 @@ export type CreateFxDifferenceApiV1FxDifferencesPostResponses = {
 };
 
 export type CreateFxDifferenceApiV1FxDifferencesPostResponse = CreateFxDifferenceApiV1FxDifferencesPostResponses[keyof CreateFxDifferenceApiV1FxDifferencesPostResponses];
+
+export type ListCashDiscountsApiV1CashDiscountsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/cash-discounts';
+};
+
+export type ListCashDiscountsApiV1CashDiscountsGetResponses = {
+    /**
+     * Response List Cash Discounts Api V1 Cash Discounts Get
+     *
+     * Successful Response
+     */
+    200: Array<CashDiscountResponse>;
+};
+
+export type ListCashDiscountsApiV1CashDiscountsGetResponse = ListCashDiscountsApiV1CashDiscountsGetResponses[keyof ListCashDiscountsApiV1CashDiscountsGetResponses];
+
+export type CreateCashDiscountApiV1CashDiscountsPostData = {
+    body: CashDiscountCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/cash-discounts';
+};
+
+export type CreateCashDiscountApiV1CashDiscountsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCashDiscountApiV1CashDiscountsPostError = CreateCashDiscountApiV1CashDiscountsPostErrors[keyof CreateCashDiscountApiV1CashDiscountsPostErrors];
+
+export type CreateCashDiscountApiV1CashDiscountsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CashDiscountResponse;
+};
+
+export type CreateCashDiscountApiV1CashDiscountsPostResponse = CreateCashDiscountApiV1CashDiscountsPostResponses[keyof CreateCashDiscountApiV1CashDiscountsPostResponses];
 
 export type ListCashFlowsApiV1CashFlowsGetData = {
     body?: never;

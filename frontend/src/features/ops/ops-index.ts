@@ -179,6 +179,11 @@ export const OPS_JOBS = [
     job: "HITL rodzaj dokumentu bez 409 na zleceniu",
   },
   {
+    route: BUSINESS_LISTS.cashDiscount.route,
+    label: "Skonto",
+    job: "HITL rodzaj skonta bez kwoty",
+  },
+  {
     route: BUSINESS_LISTS.tenderAwardReview.route,
     label: "Cztery oczy nagrody",
     job: "HITL przegląd nagrody bez auto-award",
@@ -613,6 +618,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "186.0": "/kreptd-licences",
   "187.0": "/monitoring-schemes",
   "188.0": "/party-documents",
+  "189.0": "/cash-discounts",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

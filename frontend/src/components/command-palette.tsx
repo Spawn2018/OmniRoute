@@ -114,6 +114,11 @@ const NAV_ACTIONS = [
     to: "/party-documents",
   },
   {
+    id: "nav-cash-discounts",
+    label: "Idź do skonta",
+    to: "/cash-discounts",
+  },
+  {
     id: "nav-tender-award-reviews",
     label: "Idź do czterech oczu nagrody",
     to: "/tender-award-reviews",

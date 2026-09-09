@@ -7392,6 +7392,80 @@
         ]
       }
     },
+    "/api/v1/cash-discounts": {
+      "get": {
+        "tags": [
+          "cash-discounts"
+        ],
+        "summary": "List Cash Discounts",
+        "operationId": "list_cash_discounts_api_v1_cash_discounts_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CashDiscountResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Cash Discounts Api V1 Cash Discounts Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "cash-discounts"
+        ],
+        "summary": "Create Cash Discount",
+        "operationId": "create_cash_discount_api_v1_cash_discounts_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CashDiscountCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CashDiscountResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/cash-flows": {
       "get": {
         "tags": [
@@ -11558,6 +11632,67 @@
           "currency"
         ],
         "title": "CarrierQuoteExtract"
+      },
+      "CashDiscountCreate": {
+        "properties": {
+          "sales_invoice_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Sales Invoice Id"
+          },
+          "discount_kind": {
+            "type": "string",
+            "title": "Discount Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "sales_invoice_id",
+          "discount_kind",
+          "source_ref"
+        ],
+        "title": "CashDiscountCreate"
+      },
+      "CashDiscountResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "sales_invoice_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Sales Invoice Id"
+          },
+          "discount_kind": {
+            "type": "string",
+            "title": "Discount Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "sales_invoice_id",
+          "discount_kind",
+          "source_ref"
+        ],
+        "title": "CashDiscountResponse"
       },
       "CashFlowCreate": {
         "properties": {

@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny (zablokowany):** **189.0** F2 `cash_discount` → leftover F2b Decimal/rezerwy → leftover F3 noty/period lock → leftover F4 CAMT → leftover G2.20–G2.22 circle_sim/km/P → leftover G2.15–G2.18 kg/CBAM → leftover F1 live FA(3) → leftover C1 filing XML → leftover C8 409/`relation_document_requirement` → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. D8 parked. D9 leftover D9b–f. P1 leftover P1b–d. P2 leftover P2c. P3 leftover P3b–d. P4 leftover P4b–c. P5 leftover P5b–c. P6 leftover P6c. G2 leftover G2.15–G2.18 + G2.20–G2.22 + G2.23 Citizen API. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
+**Następny (zablokowany):** leftover F2b Decimal/rezerwy → leftover F3 noty/period lock → leftover F4 CAMT → leftover G2.20–G2.22 circle_sim/km/P → leftover G2.15–G2.18 kg/CBAM → leftover F1 live FA(3) → leftover C1 filing XML → leftover C8 409/`relation_document_requirement` → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. D8 parked. D9 leftover D9b–f. P1 leftover P1b–d. P2 leftover P2c. P3 leftover P3b–d. P4 leftover P4b–c. P5 leftover P5b–c. P6 leftover P6c. G2 leftover G2.15–G2.18 + G2.20–G2.22 + G2.23 Citizen API. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
 <!-- os-status:end -->
 
 ```mermaid
@@ -594,7 +594,7 @@ Karta: [karty-pol-g2-tender.md](analysis/karty-pol-g2-tender.md). P6 = oferty od
 | ID | Co | Status | Uwagi |
 |---|---|---|---|
 | F1 | KSeF live FA(3) + VAT matrix N12 | po S35 | mandat 2026; nie LLM VAT |
-| F2–F4 | skonto, noty, CAMT+HITL + period lock N13 | delta [189.0](deltas/open/189.0-cash-discount.md) HITL F2 `cash_discount`; leftover Decimal / F3 noty / F4 CAMT | karta [karty-pol-fala-f.md](analysis/karty-pol-fala-f.md) |
+| F2–F4 | skonto, noty, CAMT+HITL + period lock N13 | zamknięty HITL F2 katalog ([189.0](deltas/archived/189.0-cash-discount.md)); leftover Decimal / F3 noty / F4 CAMT | karta [karty-pol-fala-f.md](analysis/karty-pol-fala-f.md) |
 | **N2** | `trips_to_bill` | po T2+F1 | |
 | F5 / F7 | diety / faktoring | TO_VERIFY | nie LLM diet |
 | F6 | windykacja + blokada zlecenia | po T2 | S11; zakaz auto art. 22 |
@@ -843,13 +843,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

@@ -6,6 +6,7 @@ from app.api import (
     bookkeeping,
     cargo_claims,
     carrier_inquiries,
+    cash_discounts,
     cash_flows,
     channel_quotes,
     charge_codes,
@@ -169,6 +170,7 @@ api_router.include_router(bank_payments.router)
 api_router.include_router(money_costs.router)
 api_router.include_router(monitoring_schemes.router)
 api_router.include_router(fx_differences.router)
+api_router.include_router(cash_discounts.router)
 api_router.include_router(cash_flows.router)
 api_router.include_router(cost_to_serve.router)
 api_router.include_router(bookkeeping.router)
