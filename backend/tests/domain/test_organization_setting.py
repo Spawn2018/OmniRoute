@@ -57,3 +57,19 @@ def test_normalize_lane_window_accepts_range() -> None:
 def test_normalize_lane_window_rejects_zero() -> None:
     with pytest.raises(InvalidOrganizationSetting, match="1–365"):
         normalize_setting_value("lane_scorecard_window_days", "0")
+
+
+def test_normalize_fx_rate_keys() -> None:
+    assert normalize_setting_key(" Fx_Rate_Basis ") == "fx_rate_basis"
+    assert normalize_setting_value("fx_rate_basis", " ETD ") == "etd"
+    assert normalize_setting_value("fx_rate_offset_days", " -1 ") == "-1"
+    assert normalize_setting_value("fx_rate_table", " NBP_A ") == "nbp_a"
+
+
+def test_normalize_fx_rate_rejects_unknown() -> None:
+    with pytest.raises(InvalidOrganizationSetting, match="kurs"):
+        normalize_setting_value("fx_rate_basis", "margin")
+    with pytest.raises(InvalidOrganizationSetting, match="dni"):
+        normalize_setting_value("fx_rate_offset_days", "2")
+    with pytest.raises(InvalidOrganizationSetting, match="kurs"):
+        normalize_setting_value("fx_rate_table", "nbp_c")

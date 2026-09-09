@@ -8,9 +8,15 @@ ALLOWED_SETTING_KEYS = frozenset(
         "quotation_print_template",
         "inquiry_default_n",
         "lane_scorecard_window_days",
+        "fx_rate_basis",
+        "fx_rate_offset_days",
+        "fx_rate_table",
     },
 )
 ALLOWED_PRINT_TEMPLATES = frozenset({"plain", "letter"})
+_FX_BASIS = frozenset({"etd", "loading_date", "unloading_date", "invoice_date"})
+_FX_OFFSET = frozenset({"0", "-1"})
+_FX_TABLE = frozenset({"nbp_a", "nbp_b"})
 _PREFIX_CHARS = frozenset("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789._-")
 _SECRET_MARKERS = ("secret", "password", "token", "api_key")
 
@@ -42,23 +48,11 @@ def normalize_quotation_print_template(raw: str) -> str:
     return token
 
 
-def normalize_setting_value(setting_key: str, raw: object) -> str:
-    if type(raw) is not str:
-        raise InvalidOrganizationSetting("wartość ustawienia musi być tekstem")
-    if setting_key == "default_currency":
-        try:
-            return Currency(raw.strip().upper()).code
-        except InvalidMoney as exc:
-            raise InvalidOrganizationSetting("waluta ISO 4217 — CHAR(3)") from exc
-    if setting_key == "quotation_number_prefix":
-        return normalize_quotation_number_prefix(raw)
-    if setting_key == "quotation_print_template":
-        return normalize_quotation_print_template(raw)
-    if setting_key == "inquiry_default_n":
-        return normalize_inquiry_default_n(raw)
-    if setting_key == "lane_scorecard_window_days":
-        return normalize_lane_scorecard_window_days(raw)
-    raise InvalidOrganizationSetting("klucz poza allowlistą")
+def normalize_default_currency(raw: str) -> str:
+    try:
+        return Currency(raw.strip().upper()).code
+    except InvalidMoney as exc:
+        raise InvalidOrganizationSetting("waluta ISO 4217 — CHAR(3)") from exc
 
 
 def normalize_inquiry_default_n(raw: str) -> str:
@@ -79,3 +73,45 @@ def normalize_lane_scorecard_window_days(raw: str) -> str:
     if value < 1 or value > 365:
         raise InvalidOrganizationSetting("lane_scorecard_window_days: liczba 1–365")
     return token
+
+
+def normalize_fx_rate_basis(raw: str) -> str:
+    token = raw.strip().lower()
+    if token not in _FX_BASIS:
+        raise InvalidOrganizationSetting("kurs: data spoza zbioru")
+    return token
+
+
+def normalize_fx_rate_offset_days(raw: str) -> str:
+    token = raw.strip()
+    if token not in _FX_OFFSET:
+        raise InvalidOrganizationSetting("dni: tylko 0 albo -1")
+    return token
+
+
+def normalize_fx_rate_table(raw: str) -> str:
+    token = raw.strip().lower()
+    if token not in _FX_TABLE:
+        raise InvalidOrganizationSetting("kurs: tabela spoza zbioru")
+    return token
+
+
+_VALUE_PARSERS = {
+    "default_currency": normalize_default_currency,
+    "quotation_number_prefix": normalize_quotation_number_prefix,
+    "quotation_print_template": normalize_quotation_print_template,
+    "inquiry_default_n": normalize_inquiry_default_n,
+    "lane_scorecard_window_days": normalize_lane_scorecard_window_days,
+    "fx_rate_basis": normalize_fx_rate_basis,
+    "fx_rate_offset_days": normalize_fx_rate_offset_days,
+    "fx_rate_table": normalize_fx_rate_table,
+}
+
+
+def normalize_setting_value(setting_key: str, raw: object) -> str:
+    if type(raw) is not str:
+        raise InvalidOrganizationSetting("wartość ustawienia musi być tekstem")
+    parser = _VALUE_PARSERS.get(setting_key)
+    if parser is None:
+        raise InvalidOrganizationSetting("klucz poza allowlistą")
+    return parser(raw)

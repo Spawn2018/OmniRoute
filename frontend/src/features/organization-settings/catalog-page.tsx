@@ -39,6 +39,9 @@ export function OrganizationSettingCatalogPage() {
   const [template, setTemplate] = useState("plain")
   const [defaultN, setDefaultN] = useState("3")
   const [laneWindow, setLaneWindow] = useState("90")
+  const [fxBasis, setFxBasis] = useState("etd")
+  const [fxOffset, setFxOffset] = useState("-1")
+  const [fxTable, setFxTable] = useState("nbp_a")
   const signedIn = Boolean(ctx.organizationId && ctx.userId)
 
   const query = useQuery({
@@ -98,6 +101,48 @@ export function OrganizationSettingCatalogPage() {
         organizationSettingUpsertBody({
           settingKey: "lane_scorecard_window_days",
           settingValue: laneWindow,
+        }),
+      ),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({
+        queryKey: ["organization-settings", ctx.organizationId],
+      })
+    },
+  })
+  const saveFxBasis = useMutation({
+    mutationFn: () =>
+      upsertOrganizationSetting(
+        organizationSettingUpsertBody({
+          settingKey: "fx_rate_basis",
+          settingValue: fxBasis,
+        }),
+      ),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({
+        queryKey: ["organization-settings", ctx.organizationId],
+      })
+    },
+  })
+  const saveFxOffset = useMutation({
+    mutationFn: () =>
+      upsertOrganizationSetting(
+        organizationSettingUpsertBody({
+          settingKey: "fx_rate_offset_days",
+          settingValue: fxOffset,
+        }),
+      ),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({
+        queryKey: ["organization-settings", ctx.organizationId],
+      })
+    },
+  })
+  const saveFxTable = useMutation({
+    mutationFn: () =>
+      upsertOrganizationSetting(
+        organizationSettingUpsertBody({
+          settingKey: "fx_rate_table",
+          settingValue: fxTable,
         }),
       ),
     onSuccess: () => {
@@ -230,11 +275,83 @@ export function OrganizationSettingCatalogPage() {
         </Button>
       </form>
 
+      <form
+        className="flex flex-col gap-2 rounded-md border border-border bg-card p-3 md:flex-row md:flex-wrap"
+        onSubmit={(event) => {
+          event.preventDefault()
+          saveFxBasis.mutate()
+        }}
+      >
+        <label className="flex flex-col gap-1 text-xs">
+          fx_rate_basis
+          <select
+            aria-label="Polityka kursu fx_rate_basis"
+            className="h-8 rounded-md border border-border bg-card px-2 text-sm"
+            value={fxBasis}
+            onChange={(event) => setFxBasis(event.target.value)}
+          >
+            <option value="etd">etd</option>
+            <option value="loading_date">loading_date</option>
+            <option value="unloading_date">unloading_date</option>
+            <option value="invoice_date">invoice_date</option>
+          </select>
+        </label>
+        <Button type="submit" disabled={saveFxBasis.isPending || !signedIn}>
+          Zapisz fx_rate_basis
+        </Button>
+      </form>
+
+      <form
+        className="flex flex-col gap-2 rounded-md border border-border bg-card p-3 md:flex-row md:flex-wrap"
+        onSubmit={(event) => {
+          event.preventDefault()
+          saveFxOffset.mutate()
+        }}
+      >
+        <Input
+          aria-label="Offset dni fx_rate_offset_days"
+          placeholder="-1"
+          value={fxOffset}
+          onChange={(event) => setFxOffset(event.target.value)}
+          required
+        />
+        <Button type="submit" disabled={saveFxOffset.isPending || !signedIn}>
+          Zapisz fx_rate_offset_days
+        </Button>
+      </form>
+
+      <form
+        className="flex flex-col gap-2 rounded-md border border-border bg-card p-3 md:flex-row md:flex-wrap"
+        onSubmit={(event) => {
+          event.preventDefault()
+          saveFxTable.mutate()
+        }}
+      >
+        <label className="flex flex-col gap-1 text-xs">
+          fx_rate_table
+          <select
+            aria-label="Tabela kursu fx_rate_table"
+            className="h-8 rounded-md border border-border bg-card px-2 text-sm"
+            value={fxTable}
+            onChange={(event) => setFxTable(event.target.value)}
+          >
+            <option value="nbp_a">nbp_a</option>
+            <option value="nbp_b">nbp_b</option>
+          </select>
+        </label>
+        <Button type="submit" disabled={saveFxTable.isPending || !signedIn}>
+          Zapisz fx_rate_table
+        </Button>
+      </form>
+
       {saveMutation.isError ? <CatalogError error={saveMutation.error} /> : null}
       {savePrefix.isError ? <CatalogError error={savePrefix.error} /> : null}
       {saveTemplate.isError ? <CatalogError error={saveTemplate.error} /> : null}
       {saveDefaultN.isError ? <CatalogError error={saveDefaultN.error} /> : null}
       {saveLaneWindow.isError ? <CatalogError error={saveLaneWindow.error} /> : null}
+      {saveFxBasis.isError ? <CatalogError error={saveFxBasis.error} /> : null}
+      {saveFxOffset.isError ? <CatalogError error={saveFxOffset.error} /> : null}
+      {saveFxTable.isError ? <CatalogError error={saveFxTable.error} /> : null}
 
       <CalendarOverridePanel canWrite={signedIn} />
 

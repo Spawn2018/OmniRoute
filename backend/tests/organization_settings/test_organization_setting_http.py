@@ -5,7 +5,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app.api.deps import require_tenant_session, set_authz_checker
-from app.domain.errors import InvalidOrganizationSetting
+from app.domain.organization_setting import normalize_setting_key, normalize_setting_value
 from app.main import app
 from app.models.organization_setting import OrganizationSetting
 from tests.http_auth import bearer_auth_headers
@@ -44,17 +44,16 @@ class StubOrganizationSettingService:
         setting_key: str,
         setting_value: str,
     ) -> OrganizationSetting:
-        token = setting_key.strip()
-        if token == "loose_flag":
-            raise InvalidOrganizationSetting("klucz poza allowlistą")
+        token = normalize_setting_key(setting_key)
+        stored = normalize_setting_value(token, setting_value)
         row = OrganizationSetting(
             id=uuid4(),
             organization_id=organization_id,
             setting_key=token,
-            setting_value=setting_value.strip().upper(),
+            setting_value=stored,
             created_by=user_id,
         )
-        self.rows = [stored for stored in self.rows if stored.setting_key != token]
+        self.rows = [kept for kept in self.rows if kept.setting_key != token]
         self.rows.append(row)
         return row
 
@@ -111,6 +110,36 @@ def test_http_rejects_unknown_key(settings_client: TestClient) -> None:
     )
     assert response.status_code == 400
     assert "allowlist" in response.json()["detail"]
+
+
+def test_http_upsert_fx_rate_basis(settings_client: TestClient) -> None:
+    created = settings_client.put(
+        "/api/v1/organization-settings",
+        headers=bearer_auth_headers(),
+        json={"setting_key": "fx_rate_basis", "setting_value": "etd"},
+    )
+    assert created.status_code == 200
+    assert created.json()["setting_key"] == "fx_rate_basis"
+    assert created.json()["setting_value"] == "etd"
+    assert "margin" not in created.json()
+    assert "amount" not in created.json()
+
+
+def test_http_upsert_fx_rate_bad_value_is_400(settings_client: TestClient) -> None:
+    basis = settings_client.put(
+        "/api/v1/organization-settings",
+        headers=bearer_auth_headers(),
+        json={"setting_key": "fx_rate_basis", "setting_value": "margin"},
+    )
+    assert basis.status_code == 400
+    assert "kurs" in basis.json()["detail"]
+    offset = settings_client.put(
+        "/api/v1/organization-settings",
+        headers=bearer_auth_headers(),
+        json={"setting_key": "fx_rate_offset_days", "setting_value": "2"},
+    )
+    assert offset.status_code == 400
+    assert "dni" in offset.json()["detail"]
 
 
 def test_list_settings_forbidden_without_permission() -> None:

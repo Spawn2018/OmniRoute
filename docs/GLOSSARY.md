@@ -94,6 +94,7 @@
 | odcisk układu | layout_fingerprint | pdf vs text przed parserem |
 | delta A/B parsera | ab_delta_chars | różnica długości tekstu A vs B (0.9) |
 | kurs NBP | nbp_rate | D-1 roboczy; 16.0 odczyt przy wycenie; nie drugi katalog; nie mnożenie kwoty |
+| polityka kursu | fx_rate_basis | T7 HITL 211.0 w `organization_setting`; offset 0/−1; tabela nbp_a/nbp_b; nie mnożenie |
 | ryzyko oferty | offer_risk | 17.0 odczyt; 87.0 wskazanie recenzji na wycenie; nie scoring |
 | negocjacja oferty | offer_negotiation | 18.0 odczyt; 85.0 wskazanie `channel_quote` na wycenie; nie nowa kwota; nie spread w JS |
 | dokument oferty | offer_document | 19.0 podgląd; 72.0 `document_number` + druk 57.0; nie PDF; nie send |
