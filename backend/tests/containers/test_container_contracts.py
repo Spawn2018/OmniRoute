@@ -269,6 +269,22 @@ def test_migration_169_adds_pickup_terminal_without_fk() -> None:
     assert "pickup_terminal" in source.split("def downgrade")[1]
 
 
+def test_migration_170_adds_return_terminal_without_fk() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "170_container_return_terminal.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "170_container_return_terminal"' in source
+    assert 'down_revision: str | None = "169_container_pickup_terminal"' in source
+    assert "return_terminal" in source
+    assert "return_terminal_id" not in source
+    assert "carrier_party" not in source
+    assert "pin_code" not in source
+    assert "vgm" not in source.casefold()
+    assert "create_table" not in source
+    assert "def downgrade" in source
+    assert "return_terminal" in source.split("def downgrade")[1]
+
+
 def test_generated_api_types_include_container() -> None:
     source = (_ROOT / "frontend" / "src" / "api" / "types.gen.ts").read_text(encoding="utf-8")
     assert "ContainerResponse" in source
@@ -281,5 +297,7 @@ def test_generated_api_types_include_container() -> None:
     assert "ref_2" in source
     assert "ref_3" in source
     assert "ref_4" in source
+    assert "ref_5" in source
     assert "reefer" in source
     assert "pickup_terminal" in source
+    assert "return_terminal" in source

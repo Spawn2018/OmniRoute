@@ -1296,6 +1296,10 @@ export type ContainerCreate = {
      * Pickup Terminal
      */
     pickup_terminal?: string | null;
+    /**
+     * Return Terminal
+     */
+    return_terminal?: string | null;
 };
 
 /**
@@ -1386,6 +1390,10 @@ export type ContainerResponse = {
      * Pickup Terminal
      */
     pickup_terminal: string | null;
+    /**
+     * Return Terminal
+     */
+    return_terminal: string | null;
     /**
      * Superseded By
      */

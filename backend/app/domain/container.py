@@ -174,6 +174,10 @@ def require_pickup_terminal(raw: object) -> str | None:
     return token
 
 
+def require_return_terminal(raw: object) -> str | None:
+    return require_pickup_terminal(raw)
+
+
 def require_container_ref_1(raw: object) -> str | None:
     if raw is None:
         return None

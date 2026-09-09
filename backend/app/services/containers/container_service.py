@@ -18,6 +18,7 @@ from app.domain.container import (
     require_iso_size_type,
     require_packaging_code,
     require_pickup_terminal,
+    require_return_terminal,
     require_seal_no_1,
     require_seal_no_2,
     require_seal_no_3,
@@ -48,6 +49,7 @@ class _WriteBox(NamedTuple):
     mark5: object
     cold: object
     dock: object
+    yard: object
 
 
 class _BoxDraft(NamedTuple):
@@ -70,6 +72,7 @@ class _BoxDraft(NamedTuple):
     mark5: str | None
     cold: bool
     dock: str | None
+    yard: str | None
 
 
 def _box_draft(write: _WriteBox) -> _BoxDraft:
@@ -93,6 +96,7 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_container_ref_5(write.mark5),
         require_container_reefer(write.cold),
         require_pickup_terminal(write.dock),
+        require_return_terminal(write.yard),
     )
 
 
@@ -116,6 +120,7 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.ref_5 == draft.mark5
         and current.reefer == draft.cold
         and current.pickup_terminal == draft.dock
+        and current.return_terminal == draft.yard
     )
 
 
@@ -142,6 +147,7 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         ref_5=draft.mark5,
         reefer=draft.cold,
         pickup_terminal=draft.dock,
+        return_terminal=draft.yard,
         created_by=user_id,
     )
 

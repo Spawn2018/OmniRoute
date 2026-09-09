@@ -16,6 +16,7 @@ from app.domain.container import (
     require_iso_size_type,
     require_packaging_code,
     require_pickup_terminal,
+    require_return_terminal,
     require_seal_no_1,
     require_seal_no_2,
     require_seal_no_3,
@@ -150,6 +151,12 @@ def test_pickup_terminal_omits_blank_and_keeps_token() -> None:
     assert require_pickup_terminal(" GCT ") == "GCT"
     with pytest.raises(InvalidContainer, match="terminal"):
         require_pickup_terminal("x" * 33)
+
+
+def test_return_terminal_reuses_same_terminal_rule() -> None:
+    assert require_return_terminal("  ECT ") == "ECT"
+    with pytest.raises(InvalidContainer, match="terminal"):
+        require_return_terminal("x" * 33)
 
 
 @given(st.sampled_from(["CSQU3054384", "MSCU1234567", "ABCD"]))

@@ -13790,6 +13790,17 @@
               }
             ],
             "title": "Pickup Terminal"
+          },
+          "return_terminal": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Return Terminal"
           }
         },
         "additionalProperties": false,
@@ -13995,6 +14006,17 @@
             ],
             "title": "Pickup Terminal"
           },
+          "return_terminal": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Return Terminal"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -14031,6 +14053,7 @@
           "ref_5",
           "reefer",
           "pickup_terminal",
+          "return_terminal",
           "superseded_by"
         ],
         "title": "ContainerResponse"

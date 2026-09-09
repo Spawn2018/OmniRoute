@@ -129,6 +129,7 @@ def test_http_create_list_supersede_and_reject_check_digit(box_client: object) -
     assert first.json()["ref_5"] is None
     assert first.json()["reefer"] is False
     assert first.json()["pickup_terminal"] is None
+    assert first.json()["return_terminal"] is None
     assert "amount" not in first.json()
     assert "vgm" not in first.json()
     second = client.post(
@@ -721,6 +722,43 @@ def test_http_rejects_too_long_pickup_terminal(box_client: object) -> None:
             "iso_size_type": "22G1",
             "source_ref": "tenant:manual",
             "pickup_terminal": "x" * 33,
+        },
+    )
+    assert reply.status_code == 400
+    assert "terminal" in reply.json()["detail"]
+
+
+def test_http_create_container_with_return_terminal(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "return_terminal": " ECT ",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["return_terminal"] == "ECT"
+    assert created.json()["pickup_terminal"] is None
+    assert "pin" not in created.json()
+    assert "vgm" not in created.json()
+
+
+def test_http_rejects_too_long_return_terminal(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "return_terminal": "x" * 33,
         },
     )
     assert reply.status_code == 400
