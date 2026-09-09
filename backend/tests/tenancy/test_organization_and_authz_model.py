@@ -81,6 +81,7 @@ def test_authorization_model_includes_table_view_permission() -> None:
     assert "can_manage_twin_marks" in org.relations
     assert "can_manage_war_room_marks" in org.relations
     assert "can_manage_memory_edges" in org.relations
+    assert "can_manage_executive_marks" in org.relations
     assert "can_manage_tender_award_reviews" in org.relations
     assert "can_manage_tender_ted_notices" in org.relations
     assert "can_manage_tender_rfp_intakes" in org.relations
@@ -297,6 +298,9 @@ def test_authorization_model_includes_table_view_permission() -> None:
     memory_edges = org.relations["can_manage_memory_edges"]
     assert memory_edges.computed_userset is not None
     assert memory_edges.computed_userset.relation == "member"
+    executive_marks = org.relations["can_manage_executive_marks"]
+    assert executive_marks.computed_userset is not None
+    assert executive_marks.computed_userset.relation == "member"
     tender_award_reviews = org.relations["can_manage_tender_award_reviews"]
     assert tender_award_reviews.computed_userset is not None
     assert tender_award_reviews.computed_userset.relation == "member"

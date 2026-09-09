@@ -34,6 +34,7 @@ import { Route as DocumentTemplatesRouteImport } from './routes/document-templat
 import { Route as EdiRouteImport } from './routes/edi'
 import { Route as EntityEventsRouteImport } from './routes/entity-events'
 import { Route as ExceptionsRouteImport } from './routes/exceptions'
+import { Route as ExecutiveMarksRouteImport } from './routes/executive-marks'
 import { Route as ExtractionsRouteImport } from './routes/extractions'
 import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as FraudRouteImport } from './routes/fraud'
@@ -230,6 +231,11 @@ const EntityEventsRoute = EntityEventsRouteImport.update({
 const ExceptionsRoute = ExceptionsRouteImport.update({
   id: '/exceptions',
   path: '/exceptions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExecutiveMarksRoute = ExecutiveMarksRouteImport.update({
+  id: '/executive-marks',
+  path: '/executive-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ExtractionsRoute = ExtractionsRouteImport.update({
@@ -619,6 +625,7 @@ export interface FileRoutesByFullPath {
   '/edi': typeof EdiRoute
   '/entity-events': typeof EntityEventsRoute
   '/exceptions': typeof ExceptionsRoute
+  '/executive-marks': typeof ExecutiveMarksRoute
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
   '/fraud': typeof FraudRoute
@@ -718,6 +725,7 @@ export interface FileRoutesByTo {
   '/edi': typeof EdiRoute
   '/entity-events': typeof EntityEventsRoute
   '/exceptions': typeof ExceptionsRoute
+  '/executive-marks': typeof ExecutiveMarksRoute
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
   '/fraud': typeof FraudRoute
@@ -818,6 +826,7 @@ export interface FileRoutesById {
   '/edi': typeof EdiRoute
   '/entity-events': typeof EntityEventsRoute
   '/exceptions': typeof ExceptionsRoute
+  '/executive-marks': typeof ExecutiveMarksRoute
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
   '/fraud': typeof FraudRoute
@@ -919,6 +928,7 @@ export interface FileRouteTypes {
     | '/edi'
     | '/entity-events'
     | '/exceptions'
+    | '/executive-marks'
     | '/extractions'
     | '/finance'
     | '/fraud'
@@ -1018,6 +1028,7 @@ export interface FileRouteTypes {
     | '/edi'
     | '/entity-events'
     | '/exceptions'
+    | '/executive-marks'
     | '/extractions'
     | '/finance'
     | '/fraud'
@@ -1117,6 +1128,7 @@ export interface FileRouteTypes {
     | '/edi'
     | '/entity-events'
     | '/exceptions'
+    | '/executive-marks'
     | '/extractions'
     | '/finance'
     | '/fraud'
@@ -1217,6 +1229,7 @@ export interface RootRouteChildren {
   EdiRoute: typeof EdiRoute
   EntityEventsRoute: typeof EntityEventsRoute
   ExceptionsRoute: typeof ExceptionsRoute
+  ExecutiveMarksRoute: typeof ExecutiveMarksRoute
   ExtractionsRoute: typeof ExtractionsRoute
   FinanceRoute: typeof FinanceRoute
   FraudRoute: typeof FraudRoute
@@ -1466,6 +1479,13 @@ declare module '@tanstack/react-router' {
       path: '/exceptions'
       fullPath: '/exceptions'
       preLoaderRoute: typeof ExceptionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/executive-marks': {
+      id: '/executive-marks'
+      path: '/executive-marks'
+      fullPath: '/executive-marks'
+      preLoaderRoute: typeof ExecutiveMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/extractions': {
@@ -2001,6 +2021,7 @@ const rootRouteChildren: RootRouteChildren = {
   EdiRoute: EdiRoute,
   EntityEventsRoute: EntityEventsRoute,
   ExceptionsRoute: ExceptionsRoute,
+  ExecutiveMarksRoute: ExecutiveMarksRoute,
   ExtractionsRoute: ExtractionsRoute,
   FinanceRoute: FinanceRoute,
   FraudRoute: FraudRoute,

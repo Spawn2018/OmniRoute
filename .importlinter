@@ -107,6 +107,7 @@ modules =
     app.services.twin_marks
     app.services.war_room_marks
     app.services.memory_edges
+    app.services.executive_marks
     app.services.tender_award_reviews
     app.services.tender_ted_notices
     app.services.tender_rfp_intakes
@@ -394,6 +395,9 @@ forbidden_modules =
     app.services.memory_edges
     app.repositories.memory_edges
     app.models.memory_edge
+    app.services.executive_marks
+    app.repositories.executive_marks
+    app.models.executive_mark
     app.services.tender_award_reviews
     app.repositories.tender_award_reviews
     app.models.tender_award_review

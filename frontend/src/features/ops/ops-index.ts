@@ -229,6 +229,11 @@ export const OPS_JOBS = [
     job: "HITL rodzaj krawędzi bez wyszukiwania stawek",
   },
   {
+    route: BUSINESS_LISTS.executiveMark.route,
+    label: "Pytanie zarządu",
+    job: "HITL rodzaj pytania bez sumy z modelu",
+  },
+  {
     route: BUSINESS_LISTS.tenderAwardReview.route,
     label: "Cztery oczy nagrody",
     job: "HITL przegląd nagrody bez auto-award",
@@ -676,6 +681,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "199.0": "/twin-marks",
   "200.0": "/war-room-marks",
   "201.0": "/memory-edges",
+  "202.0": "/executive-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

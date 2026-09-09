@@ -660,3 +660,7 @@ class InvalidWarRoomMark(DomainError):
 
 class InvalidMemoryEdge(DomainError):
     """Pamięć W3: HITL rodzaj krawędzi — nie wyszukiwanie i nie graf zdarzeń."""
+
+
+class InvalidExecutiveMark(DomainError):
+    """Zarząd W4: HITL rodzaj pytania — nie suma LLM i nie zdania z agregatów."""

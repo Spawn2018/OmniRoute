@@ -164,6 +164,11 @@ const NAV_ACTIONS = [
     to: "/memory-edges",
   },
   {
+    id: "nav-executive-marks",
+    label: "Idź do pytania zarządu",
+    to: "/executive-marks",
+  },
+  {
     id: "nav-tender-award-reviews",
     label: "Idź do czterech oczu nagrody",
     to: "/tender-award-reviews",

@@ -28,6 +28,7 @@ from app.api import (
     document_templates,
     edi_messages,
     entity_events,
+    executive_marks,
     extractions,
     field_carry_forwards,
     fraud_flags,
@@ -127,6 +128,7 @@ api_router.include_router(operator_decisions.router)
 api_router.include_router(operator_notices.router)
 api_router.include_router(mail_drafts.router)
 api_router.include_router(memory_edges.router)
+api_router.include_router(executive_marks.router)
 api_router.include_router(outbox_events.router)
 api_router.include_router(entity_events.router)
 api_router.include_router(nbp_rates.router)

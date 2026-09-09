@@ -2015,6 +2015,42 @@ export type EntityEventResponse = {
 };
 
 /**
+ * ExecutiveMarkCreate
+ */
+export type ExecutiveMarkCreate = {
+    /**
+     * Question Kind
+     */
+    question_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ExecutiveMarkResponse
+ */
+export type ExecutiveMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Question Kind
+     */
+    question_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * ExtractRequest
  */
 export type ExtractRequest = {
@@ -8565,6 +8601,49 @@ export type CreateMemoryEdgeApiV1MemoryEdgesPostResponses = {
 };
 
 export type CreateMemoryEdgeApiV1MemoryEdgesPostResponse = CreateMemoryEdgeApiV1MemoryEdgesPostResponses[keyof CreateMemoryEdgeApiV1MemoryEdgesPostResponses];
+
+export type ListExecutiveMarksApiV1ExecutiveMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/executive-marks';
+};
+
+export type ListExecutiveMarksApiV1ExecutiveMarksGetResponses = {
+    /**
+     * Response List Executive Marks Api V1 Executive Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<ExecutiveMarkResponse>;
+};
+
+export type ListExecutiveMarksApiV1ExecutiveMarksGetResponse = ListExecutiveMarksApiV1ExecutiveMarksGetResponses[keyof ListExecutiveMarksApiV1ExecutiveMarksGetResponses];
+
+export type CreateExecutiveMarkApiV1ExecutiveMarksPostData = {
+    body: ExecutiveMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/executive-marks';
+};
+
+export type CreateExecutiveMarkApiV1ExecutiveMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateExecutiveMarkApiV1ExecutiveMarksPostError = CreateExecutiveMarkApiV1ExecutiveMarksPostErrors[keyof CreateExecutiveMarkApiV1ExecutiveMarksPostErrors];
+
+export type CreateExecutiveMarkApiV1ExecutiveMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ExecutiveMarkResponse;
+};
+
+export type CreateExecutiveMarkApiV1ExecutiveMarksPostResponse = CreateExecutiveMarkApiV1ExecutiveMarksPostResponses[keyof CreateExecutiveMarkApiV1ExecutiveMarksPostResponses];
 
 export type ListOutboxEventsApiV1OutboxEventsGetData = {
     body?: never;

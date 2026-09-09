@@ -107,6 +107,7 @@ from app.models.tower_impact import TowerImpact  # noqa: F401
 from app.models.twin_mark import TwinMark  # noqa: F401
 from app.models.war_room_mark import WarRoomMark  # noqa: F401
 from app.models.memory_edge import MemoryEdge  # noqa: F401
+from app.models.executive_mark import ExecutiveMark  # noqa: F401
 from app.models.cash_discount import CashDiscount  # noqa: F401
 from app.models.tender_ted_notice import TenderTedNotice  # noqa: F401
 from app.models.tender_prospect import TenderProspect  # noqa: F401

@@ -484,3 +484,4 @@
 | 2026-09-09 | Plan 201.0 | W3 | memory_edge HITL rodzaj krawędzi, nie RAG. Delta zaakceptowana (`/noc`). Nastepny: kod 201.0. |
 | 2026-09-09 | 201.0 | W3 | memory_edge HITL rodzaj krawędzi. Nie RAG. Nie graf na entity_event. Nastepny: W4 Executive AI Plan. |
 | 2026-09-09 | Plan 202.0 | W4 | executive_mark HITL rodzaj pytania zarządu, nie suma LLM. Delta zaakceptowana (`/noc`). Nastepny: kod 202.0. |
+| 2026-09-09 | 202.0 | W4 | executive_mark HITL rodzaj pytania zarządu. Nie suma LLM. Nie narracja SQL. Nastepny: W5 ranking Plan. |

@@ -2843,6 +2843,80 @@
         ]
       }
     },
+    "/api/v1/executive-marks": {
+      "get": {
+        "tags": [
+          "executive-marks"
+        ],
+        "summary": "List Executive Marks",
+        "operationId": "list_executive_marks_api_v1_executive_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ExecutiveMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Executive Marks Api V1 Executive Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "executive-marks"
+        ],
+        "summary": "Create Executive Mark",
+        "operationId": "create_executive_mark_api_v1_executive_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExecutiveMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExecutiveMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/outbox-events": {
       "get": {
         "tags": [
@@ -14614,6 +14688,55 @@
           "source_ref"
         ],
         "title": "EntityEventResponse"
+      },
+      "ExecutiveMarkCreate": {
+        "properties": {
+          "question_kind": {
+            "type": "string",
+            "title": "Question Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "question_kind",
+          "source_ref"
+        ],
+        "title": "ExecutiveMarkCreate"
+      },
+      "ExecutiveMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "question_kind": {
+            "type": "string",
+            "title": "Question Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "question_kind",
+          "source_ref"
+        ],
+        "title": "ExecutiveMarkResponse"
       },
       "ExtractRequest": {
         "properties": {
