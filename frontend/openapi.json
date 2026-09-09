@@ -16346,6 +16346,17 @@
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
+          },
+          "port_unlocode": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Port Unlocode"
           }
         },
         "additionalProperties": false,
@@ -16382,6 +16393,17 @@
             "type": "string",
             "title": "Currency"
           },
+          "port_unlocode": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Port Unlocode"
+          },
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
@@ -16394,6 +16416,7 @@
           "charge_kind",
           "amount",
           "currency",
+          "port_unlocode",
           "source_ref"
         ],
         "title": "LocalChargeResponse"

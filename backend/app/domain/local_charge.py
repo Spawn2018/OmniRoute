@@ -1,7 +1,8 @@
 import re
 from decimal import Decimal, InvalidOperation
 
-from app.domain.errors import InvalidLocalCharge
+from app.domain.errors import InvalidLocalCharge, InvalidUnlocode
+from app.domain.port import normalize_unlocode
 
 _KINDS = frozenset({"thc", "isps", "seal", "amendment"})
 _CURRENCY_PATTERN = re.compile(r"^[A-Z]{3}$")
@@ -54,3 +55,17 @@ def require_levy_source_ref(raw: object) -> str:
     if token != _MANUAL and not token.startswith(_FIXTURE):
         raise InvalidLocalCharge("obce wskazanie zapisu dopłaty lokalnej")
     return token
+
+
+def require_levy_port(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidLocalCharge("port musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    try:
+        return normalize_unlocode(token)
+    except InvalidUnlocode as exc:
+        raise InvalidLocalCharge("port: UN/LOCODE 5 znaków") from exc

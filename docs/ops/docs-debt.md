@@ -54,7 +54,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **168.0 leftover:** obiekt `tender` DONE 169.0. Zostaje auto-award (P6c). Tu tylko `tender_quote` ważność + `order_limit` integer. Nie kwota.
 - **155.0 leftover:** OR wielu hubów na jednym końcu (D1b). Tu tylko `groupage_line` cutoff+TT+ISODOW + dwa `location`. Nie optymalizator.
 - **167.0 leftover:** wariancja SQL na `charge` (P5b); actual z `charge` (P5c). Tu tylko freeze `expected_buy` na `trip` przy `in_transit`. Nie druga marża. Nie km.
-- **166.0 leftover:** macierz armator×port×serwis×kontener / FK (P4b); warning braku dopłaty ≠ fakt (P4c). Tu tylko katalog THC/ISPS/seal/amendment + Decimal. Nie `port_surcharge`. Nie marża.
+- **166.0 leftover:** P4b `port_unlocode` DONE 207.0. Zostaje macierz armator/serwis/kontener oraz warning braku dopłaty ≠ fakt (P4c). Tu rodzaj + Decimal + opcjonalny UN/LOCODE. Nie `port_surcharge`. Nie marża.
 - **165.0 leftover:** przeliczenie SQL indeksu na `charge` (P3b); live HTTP NBP/BAF (P3c); A11 nowy wiersz (P3d). Tu tylko katalog FSC/BAF/CAF + Decimal. Nie `nbp_rate`. Nie marża.
 - **164.0 leftover:** P2c exclusion daterange DONE 206.0. Tu kolekcja `charge_code` + daty + GiST. Nie `charge`. Nie FSC.
 - **163.0 leftover:** P1b matching GET DONE 205.0. Zostaje parser WHEN/IF/CALC (P1c); daty ważności (P1d). Tu `applies_when` tekst + Decimal + równość SQL. Nie `rate_line`. Nie `charge`.

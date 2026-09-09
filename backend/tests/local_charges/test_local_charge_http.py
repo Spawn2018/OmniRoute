@@ -9,6 +9,7 @@ from app.domain.local_charge import (
     require_levy_amount,
     require_levy_currency,
     require_levy_kind,
+    require_levy_port,
     require_levy_source_ref,
 )
 from app.main import app
@@ -45,6 +46,7 @@ class StubLocalChargeService:
         amount: str,
         currency: str,
         source_ref: str,
+        port_unlocode: str | None = None,
     ) -> LocalCharge:
         row = LocalCharge(
             id=uuid4(),
@@ -52,6 +54,7 @@ class StubLocalChargeService:
             charge_kind=require_levy_kind(charge_kind),
             amount=require_levy_amount(amount),
             currency=require_levy_currency(currency),
+            port_unlocode=require_levy_port(port_unlocode),
             source_ref=require_levy_source_ref(source_ref),
             created_by=user_id,
         )
@@ -104,6 +107,29 @@ def test_http_create_and_list_local_charge(catalog_client: object) -> None:
     listed = client.get("/api/v1/local-charges", headers=headers)
     assert listed.status_code == 200
     assert listed.json()[0]["id"] == body["id"]
+    assert body["port_unlocode"] is None
+
+
+def test_http_create_levy_with_port_unlocode(catalog_client: object) -> None:
+    client, _rows = catalog_client
+    created = client.post(
+        "/api/v1/local-charges",
+        headers=bearer_auth_headers(),
+        json=_payload(port_unlocode="plgdy"),
+    )
+    assert created.status_code == 201
+    assert created.json()["port_unlocode"] == "PLGDY"
+
+
+def test_http_create_levy_bad_port_is_400(catalog_client: object) -> None:
+    client, _rows = catalog_client
+    response = client.post(
+        "/api/v1/local-charges",
+        headers=bearer_auth_headers(),
+        json=_payload(port_unlocode="XX"),
+    )
+    assert response.status_code == 400
+    assert "port" in response.json()["detail"]
 
 
 def test_http_create_levy_bad_kind_is_400(catalog_client: object) -> None:

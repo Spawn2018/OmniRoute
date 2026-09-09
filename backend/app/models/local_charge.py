@@ -26,6 +26,16 @@ class LocalCharge(Base, TimestampMixin):
         ),
         CheckConstraint("amount > 0", name="ck_local_charge_amount_positive"),
         CheckConstraint("currency ~ '^[A-Z]{3}$'", name="ck_local_charge_currency_iso"),
+        CheckConstraint(
+            "port_unlocode IS NULL OR port_unlocode ~ '^[A-Z]{2}[A-Z0-9]{3}$'",
+            name="ck_local_charge_port_unlocode",
+        ),
+        UniqueConstraint(
+            "organization_id",
+            "charge_kind",
+            "port_unlocode",
+            name="uq_local_charge_org_kind_port",
+        ),
         Index("ix_local_charge_org_kind", "organization_id", "charge_kind"),
     )
 
@@ -40,4 +50,5 @@ class LocalCharge(Base, TimestampMixin):
     charge_kind: Mapped[str] = mapped_column(String(16), nullable=False)
     amount: Mapped[Decimal] = mapped_column(Numeric(14, 4), nullable=False)
     currency: Mapped[str] = mapped_column(CHAR(3), nullable=False)
+    port_unlocode: Mapped[str | None] = mapped_column(String(5), nullable=True)
     source_ref: Mapped[str] = mapped_column(String(256), nullable=False)

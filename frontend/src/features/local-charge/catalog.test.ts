@@ -12,12 +12,14 @@ describe("levyWrite", () => {
         cashMark: "80.0000",
         ccyMark: "eur",
         originStamp: "tenant:manual",
+        portToken: " plgdy ",
       }),
     ).toEqual({
       charge_kind: "thc",
       amount: "80.0000",
       currency: "EUR",
       source_ref: "tenant:manual",
+      port_unlocode: "PLGDY",
     })
   })
 })
@@ -38,5 +40,7 @@ describe("local_charge surface for 166.0", () => {
     expect(panel).not.toContain("leaflet")
     expect(panel).not.toContain("CatalogCreateForm")
     expect(src("features/ops/ops-index.ts")).toContain('"166.0": "/local-charges"')
+    expect(src("features/ops/ops-index.ts")).toContain('"207.0": "/local-charges"')
+    expect(panel).toContain("Port UN/LOCODE")
   })
 })

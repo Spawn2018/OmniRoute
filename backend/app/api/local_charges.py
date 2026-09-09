@@ -21,6 +21,7 @@ class LocalChargeCreate(BaseModel):
     amount: str
     currency: str
     source_ref: str
+    port_unlocode: str | None = None
 
 
 class LocalChargeResponse(BaseModel):
@@ -31,6 +32,7 @@ class LocalChargeResponse(BaseModel):
     charge_kind: str
     amount: str
     currency: str
+    port_unlocode: str | None
     source_ref: str
 
 
@@ -41,6 +43,7 @@ def _as_row(row: LocalCharge) -> LocalChargeResponse:
         charge_kind=row.charge_kind,
         amount=format(row.amount, "f"),
         currency=str(row.currency).strip(),
+        port_unlocode=row.port_unlocode,
         source_ref=row.source_ref,
     )
 
@@ -68,6 +71,7 @@ async def create_local_charge(
         amount=body.amount,
         currency=body.currency,
         source_ref=body.source_ref,
+        port_unlocode=body.port_unlocode,
     )
     await session.commit()
     return _as_row(row)

@@ -3034,6 +3034,10 @@ export type LocalChargeCreate = {
      * Source Ref
      */
     source_ref: string;
+    /**
+     * Port Unlocode
+     */
+    port_unlocode?: string | null;
 };
 
 /**
@@ -3060,6 +3064,10 @@ export type LocalChargeResponse = {
      * Currency
      */
     currency: string;
+    /**
+     * Port Unlocode
+     */
+    port_unlocode: string | null;
     /**
      * Source Ref
      */

@@ -10,6 +10,7 @@ type LevyDraft = {
   cashMark: string
   ccyMark: string
   originStamp: string
+  portToken: string
 }
 
 const EMPTY_LEVY: LevyDraft = {
@@ -17,6 +18,7 @@ const EMPTY_LEVY: LevyDraft = {
   cashMark: "80.0000",
   ccyMark: "EUR",
   originStamp: "fixture://local-charge/",
+  portToken: "",
 }
 
 function LevySave(args: { organizationId: string | null }) {
@@ -39,8 +41,8 @@ function LevySave(args: { organizationId: string | null }) {
       }}
     >
       <p className="text-xs text-muted-foreground">
-        Dopłata THC/ISPS/seal/amendment jako dana Decimal. Warning braków i macierz armator×port
-        zostają leftover. Marża zostaje na `/charges`.
+        Dopłata THC/ISPS/seal/amendment jako dana Decimal. Opcjonalny UN/LOCODE portu,
+        nie FK katalogu. Warning braków zostaje leftover. Marża zostaje na `/charges`.
       </p>
       <label className="flex flex-col gap-1 text-xs">
         Rodzaj dopłaty lokalnej
@@ -77,6 +79,15 @@ function LevySave(args: { organizationId: string | null }) {
         />
       </label>
       <label className="flex flex-col gap-1 text-xs">
+        Port UN/LOCODE (opcjonalnie)
+        <input
+          aria-label="Port UN/LOCODE dopłaty"
+          className="h-9 rounded-md border bg-background px-2 font-mono"
+          value={draft.portToken}
+          onChange={(change) => setDraft({ ...draft, portToken: change.target.value })}
+        />
+      </label>
+      <label className="flex flex-col gap-1 text-xs">
         Pochodzenie zapisu dopłaty lokalnej
         <input
           aria-label="Pochodzenie zapisu dopłaty lokalnej"
@@ -108,6 +119,7 @@ function LevyRows(args: { organizationId: string | null }) {
         {(listed.data ?? []).map((row) => (
           <li key={row.id} className="flex flex-wrap items-baseline gap-2 font-mono">
             <span>{row.charge_kind}</span>
+            {row.port_unlocode ? <span>{row.port_unlocode}</span> : null}
             <Money amount={row.amount} currency={row.currency} />
           </li>
         ))}

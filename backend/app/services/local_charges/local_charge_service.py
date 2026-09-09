@@ -6,6 +6,7 @@ from app.domain.local_charge import (
     require_levy_amount,
     require_levy_currency,
     require_levy_kind,
+    require_levy_port,
     require_levy_source_ref,
 )
 from app.models.local_charge import LocalCharge
@@ -28,6 +29,7 @@ class LocalChargeService:
         amount: object,
         currency: object,
         source_ref: object,
+        port_unlocode: object = None,
     ) -> LocalCharge:
         row = LocalCharge(
             id=uuid4(),
@@ -35,6 +37,7 @@ class LocalChargeService:
             charge_kind=require_levy_kind(charge_kind),
             amount=require_levy_amount(amount),
             currency=require_levy_currency(currency),
+            port_unlocode=require_levy_port(port_unlocode),
             source_ref=require_levy_source_ref(source_ref),
             created_by=user_id,
         )

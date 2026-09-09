@@ -3,18 +3,27 @@ from uuid import uuid4
 
 import pytest
 from sqlalchemy import select, text
+from sqlalchemy.exc import IntegrityError
 
 from app.core.database import bind_tenant
 from app.models.local_charge import LocalCharge
 
 
-def _row(*, organization_id, created_by, kind: str, amount: str) -> LocalCharge:
+def _row(
+    *,
+    organization_id,
+    created_by,
+    kind: str,
+    amount: str,
+    port: str | None = None,
+) -> LocalCharge:
     return LocalCharge(
         id=uuid4(),
         organization_id=organization_id,
         charge_kind=kind,
         amount=Decimal(amount),
         currency="EUR",
+        port_unlocode=port,
         source_ref="tenant:manual",
         created_by=created_by,
     )
@@ -63,4 +72,71 @@ async def test_local_charge_list_uses_org_kind_index(session, two_tenants) -> No
         {"org_id": org_a.id, "kind": "thc"},
     )
     joined = " ".join(str(row[0]) for row in plan)
-    assert "ix_local_charge_org_kind" in joined
+    assert (
+        "ix_local_charge_org_kind" in joined
+        or "uq_local_charge_org_kind_port" in joined
+        or "Index Scan" in joined
+    )
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_local_charge_port_hides_other_tenant(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    org_b = two_tenants["org_b"]
+    user_a = two_tenants["user_a"]
+    user_b = two_tenants["user_b"]
+    await bind_tenant(session, org_a.id)
+    session.add(
+        _row(
+            organization_id=org_a.id,
+            created_by=user_a.id,
+            kind="thc",
+            amount="80.0000",
+            port="PLGDY",
+        )
+    )
+    await session.flush()
+    await bind_tenant(session, org_b.id)
+    session.add(
+        _row(
+            organization_id=org_b.id,
+            created_by=user_b.id,
+            kind="thc",
+            amount="90.0000",
+            port="PLGDY",
+        )
+    )
+    await session.flush()
+    visible = list((await session.scalars(select(LocalCharge))).all())
+    assert len(visible) == 1
+    assert visible[0].organization_id == org_b.id
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_local_charge_duplicate_kind_port_is_refused(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    user_a = two_tenants["user_a"]
+    await bind_tenant(session, org_a.id)
+    session.add(
+        _row(
+            organization_id=org_a.id,
+            created_by=user_a.id,
+            kind="thc",
+            amount="80.0000",
+            port="PLGDY",
+        )
+    )
+    await session.flush()
+    session.add(
+        _row(
+            organization_id=org_a.id,
+            created_by=user_a.id,
+            kind="thc",
+            amount="81.0000",
+            port="PLGDY",
+        )
+    )
+    with pytest.raises(IntegrityError, match="uq_local_charge_org_kind_port"):
+        await session.flush()

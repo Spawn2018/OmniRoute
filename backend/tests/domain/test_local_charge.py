@@ -9,6 +9,7 @@ from app.domain.local_charge import (
     require_levy_amount,
     require_levy_currency,
     require_levy_kind,
+    require_levy_port,
     require_levy_source_ref,
 )
 
@@ -54,6 +55,17 @@ def test_levy_currency_iso() -> None:
 
 def test_levy_source_ref_accepts_fixture() -> None:
     assert require_levy_source_ref(" fixture://local-charge/1 ") == "fixture://local-charge/1"
+
+
+def test_levy_port_normalizes_unlocode() -> None:
+    assert require_levy_port(" plgdy ") == "PLGDY"
+    assert require_levy_port(None) is None
+    assert require_levy_port("") is None
+
+
+def test_levy_port_rejects_short_token() -> None:
+    with pytest.raises(InvalidLocalCharge, match="port"):
+        require_levy_port("XX")
 
 
 @given(st.sampled_from(["", "   ", "http://hold.example/x"]))

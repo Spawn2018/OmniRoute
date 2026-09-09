@@ -9,6 +9,7 @@ export type LevyMark = {
   charge_kind: string
   amount: string
   currency: string
+  port_unlocode: string | null
   source_ref: string
 }
 
@@ -17,6 +18,7 @@ export type LevyMarkWrite = {
   amount: string
   currency: string
   source_ref: string
+  port_unlocode?: string
 }
 
 export function levyWrite(args: {
@@ -24,13 +26,19 @@ export function levyWrite(args: {
   cashMark: string
   ccyMark: string
   originStamp: string
+  portToken: string
 }): LevyMarkWrite {
-  return {
+  const port = args.portToken.trim().toUpperCase()
+  const body: LevyMarkWrite = {
     charge_kind: args.kindToken.trim().toLowerCase(),
     amount: args.cashMark.trim(),
     currency: args.ccyMark.trim().toUpperCase(),
     source_ref: args.originStamp.trim(),
   }
+  if (port !== "") {
+    body.port_unlocode = port
+  }
+  return body
 }
 
 export async function listLevyMarks(): Promise<LevyMark[]> {
