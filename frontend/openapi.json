@@ -13687,6 +13687,17 @@
               }
             ],
             "title": "Voyage No"
+          },
+          "remarks": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Remarks"
           }
         },
         "additionalProperties": false,
@@ -13789,6 +13800,17 @@
             ],
             "title": "Voyage No"
           },
+          "remarks": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Remarks"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -13815,6 +13837,7 @@
           "seal_no_3",
           "vessel_name",
           "voyage_no",
+          "remarks",
           "superseded_by"
         ],
         "title": "ContainerResponse"

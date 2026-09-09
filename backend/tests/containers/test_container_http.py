@@ -7,6 +7,7 @@ from fastapi.testclient import TestClient
 from app.api.deps import require_tenant_session, set_authz_checker
 from app.domain.container import (
     require_container_no,
+    require_container_remarks,
     require_container_shipment_id,
     require_container_source_ref,
     require_iso_size_type,
@@ -76,6 +77,7 @@ class StubContainerService:
         seal_no_3: object = None,
         vessel_name: object = None,
         voyage_no: object = None,
+        remarks: object = None,
     ) -> Container:
         number = require_container_no(container_no)
         size_type = require_iso_size_type(iso_size_type)
@@ -86,6 +88,7 @@ class StubContainerService:
         seal3 = require_seal_no_3(seal_no_3)
         vessel = require_vessel_name(vessel_name)
         voyage = require_voyage_no(voyage_no)
+        note = require_container_remarks(remarks)
         current = next(
             (row for row in self.rows if row.container_no == number and row.superseded_by is None),
             None,
@@ -100,6 +103,7 @@ class StubContainerService:
             and current.seal_no_3 == seal3
             and current.vessel_name == vessel
             and current.voyage_no == voyage
+            and current.remarks == note
         ):
             return current
         successor = Container(
@@ -114,6 +118,7 @@ class StubContainerService:
             seal_no_3=seal3,
             vessel_name=vessel,
             voyage_no=voyage,
+            remarks=note,
             created_by=user_id,
         )
         if current is not None:
@@ -158,6 +163,7 @@ def test_http_create_list_supersede_and_reject_check_digit(box_client: object) -
     assert first.json()["seal_no_3"] is None
     assert first.json()["vessel_name"] is None
     assert first.json()["voyage_no"] is None
+    assert first.json()["remarks"] is None
     assert "amount" not in first.json()
     assert "vgm" not in first.json()
     second = client.post(
@@ -378,3 +384,39 @@ def test_http_rejects_too_long_voyage_no(box_client: object) -> None:
     )
     assert reply.status_code == 400
     assert "rejs" in reply.json()["detail"]
+
+
+def test_http_create_container_with_remarks(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "remarks": " keep dry ",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["remarks"] == "keep dry"
+    assert "pin" not in created.json()
+    assert "vgm" not in created.json()
+
+
+def test_http_rejects_too_long_remarks(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "remarks": "x" * 257,
+        },
+    )
+    assert reply.status_code == 400
+    assert "uwaga" in reply.json()["detail"]

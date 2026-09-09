@@ -4,6 +4,7 @@ from hypothesis import strategies as st
 
 from app.domain.container import (
     require_container_no,
+    require_container_remarks,
     require_container_source_ref,
     require_iso_size_type,
     require_seal_no_1,
@@ -69,6 +70,14 @@ def test_voyage_no_omits_blank_and_keeps_token() -> None:
     assert require_voyage_no(" 049W ") == "049W"
     with pytest.raises(InvalidContainer, match="rejs"):
         require_voyage_no("x" * 33)
+
+
+def test_container_remarks_omits_blank_and_keeps_token() -> None:
+    assert require_container_remarks(None) is None
+    assert require_container_remarks("  ") is None
+    assert require_container_remarks(" keep dry ") == "keep dry"
+    with pytest.raises(InvalidContainer, match="uwaga"):
+        require_container_remarks("x" * 257)
 
 
 @given(st.sampled_from(["CSQU3054384", "MSCU1234567", "ABCD"]))

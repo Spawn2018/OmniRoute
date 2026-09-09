@@ -119,3 +119,16 @@ def require_voyage_no(raw: object) -> str | None:
     if len(token) > _MAX_SEAL:
         raise InvalidContainer("rejs za długi")
     return token
+
+
+def require_container_remarks(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidContainer("uwaga kontenera musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    if len(token) > _MAX_REF:
+        raise InvalidContainer("uwaga kontenera za długa")
+    return token

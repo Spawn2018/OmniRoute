@@ -1256,6 +1256,10 @@ export type ContainerCreate = {
      * Voyage No
      */
     voyage_no?: string | null;
+    /**
+     * Remarks
+     */
+    remarks?: string | null;
 };
 
 /**
@@ -1306,6 +1310,10 @@ export type ContainerResponse = {
      * Voyage No
      */
     voyage_no: string | null;
+    /**
+     * Remarks
+     */
+    remarks: string | null;
     /**
      * Superseded By
      */

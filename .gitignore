@@ -29,6 +29,9 @@ frontend/.tanstack/
 # Nocna zmiana — bicie serca strażnika, nie commitować
 docs/state/NOC-LIVE.md
 
+# Lokalny brief do ChatGPT — nie kanon, nie plaster
+docs/briefing/
+
 # Sygnały lokalne — nie magazyn w git (pre-commit brudzi drzewo)
 docs/_signals/*.jsonl
 docs/_knowledge/_drafts/

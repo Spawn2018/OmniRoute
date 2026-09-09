@@ -522,3 +522,4 @@
 | 2026-09-09 | Plan 220.0 | T3 | voyage_no HITL na container, nie booking i nie PIN. Delta zaakceptowana (`/noc`). Nastepny: kod 220.0. |
 | 2026-09-09 | 220.0 | T3 | voyage_no HITL na container. Nie booking. Nie PIN. Nastepny: leftover T3 remarks Plan. |
 | 2026-09-09 | Plan 221.0 | T3 | remarks HITL na container, nie waga i nie PIN. Delta zaakceptowana (`/noc`). Nastepny: kod 221.0. |
+| 2026-09-09 | 221.0 | T3 | remarks HITL na container. Nie waga. Nie PIN. Nastepny: leftover T3 cargo_description Plan. |

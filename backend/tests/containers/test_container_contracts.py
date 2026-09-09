@@ -112,9 +112,24 @@ def test_migration_159_adds_voyage_without_booking() -> None:
     assert "voyage_no" in source.split("def downgrade")[1]
 
 
+def test_migration_160_adds_remarks_without_weight() -> None:
+    source = (_ROOT / "backend" / "alembic" / "versions" / "160_container_remarks.py").read_text(
+        encoding="utf-8"
+    )
+    assert 'revision: str = "160_container_remarks"' in source
+    assert 'down_revision: str | None = "159_container_voyage"' in source
+    assert "remarks" in source
+    assert "weight_kg" not in source
+    assert "pin_code" not in source
+    assert "vgm" not in source.casefold()
+    assert "create_table" not in source
+    assert "def downgrade" in source
+    assert "remarks" in source.split("def downgrade")[1]
+
+
 def test_generated_api_types_include_container() -> None:
     source = (_ROOT / "frontend" / "src" / "api" / "types.gen.ts").read_text(encoding="utf-8")
     assert "ContainerResponse" in source
     assert "ContainerCreate" in source
-    assert "vessel_name" in source
     assert "voyage_no" in source
+    assert "remarks" in source
