@@ -72,6 +72,7 @@ import { Route as SessionRouteImport } from './routes/session'
 import { Route as ShipmentDocumentsRouteImport } from './routes/shipment-documents'
 import { Route as ShipmentPackagesRouteImport } from './routes/shipment-packages'
 import { Route as ShipmentsRouteImport } from './routes/shipments'
+import { Route as TenderConsortiumMembersRouteImport } from './routes/tender-consortium-members'
 import { Route as TenderDataRoomsRouteImport } from './routes/tender-data-rooms'
 import { Route as TenderLanesRouteImport } from './routes/tender-lanes'
 import { Route as TenderLotsRouteImport } from './routes/tender-lots'
@@ -401,6 +402,11 @@ const ShipmentsRoute = ShipmentsRouteImport.update({
   path: '/shipments',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TenderConsortiumMembersRoute = TenderConsortiumMembersRouteImport.update({
+  id: '/tender-consortium-members',
+  path: '/tender-consortium-members',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TenderDataRoomsRoute = TenderDataRoomsRouteImport.update({
   id: '/tender-data-rooms',
   path: '/tender-data-rooms',
@@ -531,6 +537,7 @@ export interface FileRoutesByFullPath {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/tender-consortium-members': typeof TenderConsortiumMembersRoute
   '/tender-data-rooms': typeof TenderDataRoomsRoute
   '/tender-lanes': typeof TenderLanesRoute
   '/tender-lots': typeof TenderLotsRoute
@@ -609,6 +616,7 @@ export interface FileRoutesByTo {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/tender-consortium-members': typeof TenderConsortiumMembersRoute
   '/tender-data-rooms': typeof TenderDataRoomsRoute
   '/tender-lanes': typeof TenderLanesRoute
   '/tender-lots': typeof TenderLotsRoute
@@ -688,6 +696,7 @@ export interface FileRoutesById {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/tender-consortium-members': typeof TenderConsortiumMembersRoute
   '/tender-data-rooms': typeof TenderDataRoomsRoute
   '/tender-lanes': typeof TenderLanesRoute
   '/tender-lots': typeof TenderLotsRoute
@@ -768,6 +777,7 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/tender-consortium-members'
     | '/tender-data-rooms'
     | '/tender-lanes'
     | '/tender-lots'
@@ -846,6 +856,7 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/tender-consortium-members'
     | '/tender-data-rooms'
     | '/tender-lanes'
     | '/tender-lots'
@@ -924,6 +935,7 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/tender-consortium-members'
     | '/tender-data-rooms'
     | '/tender-lanes'
     | '/tender-lots'
@@ -1003,6 +1015,7 @@ export interface RootRouteChildren {
   ShipmentDocumentsRoute: typeof ShipmentDocumentsRoute
   ShipmentPackagesRoute: typeof ShipmentPackagesRoute
   ShipmentsRoute: typeof ShipmentsRoute
+  TenderConsortiumMembersRoute: typeof TenderConsortiumMembersRoute
   TenderDataRoomsRoute: typeof TenderDataRoomsRoute
   TenderLanesRoute: typeof TenderLanesRoute
   TenderLotsRoute: typeof TenderLotsRoute
@@ -1461,6 +1474,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShipmentsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tender-consortium-members': {
+      id: '/tender-consortium-members'
+      path: '/tender-consortium-members'
+      fullPath: '/tender-consortium-members'
+      preLoaderRoute: typeof TenderConsortiumMembersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tender-data-rooms': {
       id: '/tender-data-rooms'
       path: '/tender-data-rooms'
@@ -1619,6 +1639,7 @@ const rootRouteChildren: RootRouteChildren = {
   ShipmentDocumentsRoute: ShipmentDocumentsRoute,
   ShipmentPackagesRoute: ShipmentPackagesRoute,
   ShipmentsRoute: ShipmentsRoute,
+  TenderConsortiumMembersRoute: TenderConsortiumMembersRoute,
   TenderDataRoomsRoute: TenderDataRoomsRoute,
   TenderLanesRoute: TenderLanesRoute,
   TenderLotsRoute: TenderLotsRoute,

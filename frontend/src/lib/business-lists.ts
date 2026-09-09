@@ -35,6 +35,10 @@ export const BUSINESS_LISTS = {
   tenderMatrixCell: { route: "/tender-matrix-cells", tableKey: "tender_matrix_cell" },
   tenderPlaybook: { route: "/tender-playbooks", tableKey: "tender_playbook" },
   tenderWinLoss: { route: "/tender-win-losses", tableKey: "tender_win_loss" },
+  tenderConsortiumMember: {
+    route: "/tender-consortium-members",
+    tableKey: "tender_consortium_member",
+  },
   tenderLane: { route: "/tender-lanes", tableKey: "tender_lane" },
   tenderLot: { route: "/tender-lots", tableKey: "tender_lot" },
   tenderRound: { route: "/tender-rounds", tableKey: "tender_round" },
@@ -112,6 +116,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/tender-matrix-cells",
   "/tender-playbooks",
   "/tender-win-losses",
+  "/tender-consortium-members",
   "/tender-lanes",
   "/tender-lots",
   "/tender-rounds",

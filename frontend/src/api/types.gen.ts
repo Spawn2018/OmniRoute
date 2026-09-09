@@ -5052,6 +5052,58 @@ export type TableViewUpdate = {
 };
 
 /**
+ * TenderConsortiumMemberCreate
+ */
+export type TenderConsortiumMemberCreate = {
+    /**
+     * Tender Id
+     */
+    tender_id: string;
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Seat Code
+     */
+    seat_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TenderConsortiumMemberResponse
+ */
+export type TenderConsortiumMemberResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Tender Id
+     */
+    tender_id: string;
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Seat Code
+     */
+    seat_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * TenderCreate
  */
 export type TenderCreate = {
@@ -9272,6 +9324,49 @@ export type CreateTenderWinLossApiV1TenderWinLossesPostResponses = {
 };
 
 export type CreateTenderWinLossApiV1TenderWinLossesPostResponse = CreateTenderWinLossApiV1TenderWinLossesPostResponses[keyof CreateTenderWinLossApiV1TenderWinLossesPostResponses];
+
+export type ListTenderConsortiumMembersApiV1TenderConsortiumMembersGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tender-consortium-members';
+};
+
+export type ListTenderConsortiumMembersApiV1TenderConsortiumMembersGetResponses = {
+    /**
+     * Response List Tender Consortium Members Api V1 Tender Consortium Members Get
+     *
+     * Successful Response
+     */
+    200: Array<TenderConsortiumMemberResponse>;
+};
+
+export type ListTenderConsortiumMembersApiV1TenderConsortiumMembersGetResponse = ListTenderConsortiumMembersApiV1TenderConsortiumMembersGetResponses[keyof ListTenderConsortiumMembersApiV1TenderConsortiumMembersGetResponses];
+
+export type CreateTenderConsortiumMemberApiV1TenderConsortiumMembersPostData = {
+    body: TenderConsortiumMemberCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tender-consortium-members';
+};
+
+export type CreateTenderConsortiumMemberApiV1TenderConsortiumMembersPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTenderConsortiumMemberApiV1TenderConsortiumMembersPostError = CreateTenderConsortiumMemberApiV1TenderConsortiumMembersPostErrors[keyof CreateTenderConsortiumMemberApiV1TenderConsortiumMembersPostErrors];
+
+export type CreateTenderConsortiumMemberApiV1TenderConsortiumMembersPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TenderConsortiumMemberResponse;
+};
+
+export type CreateTenderConsortiumMemberApiV1TenderConsortiumMembersPostResponse = CreateTenderConsortiumMemberApiV1TenderConsortiumMembersPostResponses[keyof CreateTenderConsortiumMemberApiV1TenderConsortiumMembersPostResponses];
 
 export type ListTenderRoundsApiV1TenderRoundsGetData = {
     body?: never;

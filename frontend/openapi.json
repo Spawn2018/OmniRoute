@@ -5928,6 +5928,80 @@
         ]
       }
     },
+    "/api/v1/tender-consortium-members": {
+      "get": {
+        "tags": [
+          "tender-consortium-members"
+        ],
+        "summary": "List Tender Consortium Members",
+        "operationId": "list_tender_consortium_members_api_v1_tender_consortium_members_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TenderConsortiumMemberResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Tender Consortium Members Api V1 Tender Consortium Members Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "tender-consortium-members"
+        ],
+        "summary": "Create Tender Consortium Member",
+        "operationId": "create_tender_consortium_member_api_v1_tender_consortium_members_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TenderConsortiumMemberCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TenderConsortiumMemberResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/tender-rounds": {
       "get": {
         "tags": [
@@ -18092,6 +18166,79 @@
         },
         "type": "object",
         "title": "TableViewUpdate"
+      },
+      "TenderConsortiumMemberCreate": {
+        "properties": {
+          "tender_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Tender Id"
+          },
+          "party_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Party Id"
+          },
+          "seat_code": {
+            "type": "string",
+            "title": "Seat Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "tender_id",
+          "party_id",
+          "seat_code",
+          "source_ref"
+        ],
+        "title": "TenderConsortiumMemberCreate"
+      },
+      "TenderConsortiumMemberResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "tender_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Tender Id"
+          },
+          "party_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Party Id"
+          },
+          "seat_code": {
+            "type": "string",
+            "title": "Seat Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "tender_id",
+          "party_id",
+          "seat_code",
+          "source_ref"
+        ],
+        "title": "TenderConsortiumMemberResponse"
       },
       "TenderCreate": {
         "properties": {

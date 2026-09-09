@@ -63,6 +63,7 @@ def test_authorization_model_includes_table_view_permission() -> None:
     assert "can_manage_tender_matrix_cells" in org.relations
     assert "can_manage_tender_playbooks" in org.relations
     assert "can_manage_tender_win_losses" in org.relations
+    assert "can_manage_tender_consortium_members" in org.relations
     assert "can_manage_rate_lines" in org.relations
     assert "can_manage_charges" in org.relations
     assert "can_manage_quotations" in org.relations
@@ -222,6 +223,9 @@ def test_authorization_model_includes_table_view_permission() -> None:
     tender_win_losses = org.relations["can_manage_tender_win_losses"]
     assert tender_win_losses.computed_userset is not None
     assert tender_win_losses.computed_userset.relation == "member"
+    tender_consortium_members = org.relations["can_manage_tender_consortium_members"]
+    assert tender_consortium_members.computed_userset is not None
+    assert tender_consortium_members.computed_userset.relation == "member"
     rates = org.relations["can_manage_rate_lines"]
     assert rates.computed_userset is not None
     assert rates.computed_userset.relation == "member"

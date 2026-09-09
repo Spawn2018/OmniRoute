@@ -576,3 +576,7 @@ class InvalidTenderPlaybook(DomainError):
 
 class InvalidTenderWinLoss(DomainError):
     """Win/loss G2.7: wynik z source_ref — nie extract RFP i nie four-eyes."""
+
+
+class InvalidTenderConsortiumMember(DomainError):
+    """Konsorcjum G2.8: fotel z source_ref — nie extract RFP i nie TED."""
