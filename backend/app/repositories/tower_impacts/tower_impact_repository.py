@@ -9,13 +9,9 @@ class TowerImpactRepository:
         self._session = session
 
     async def fetch_marks(self) -> list[TowerImpact]:
-        packed = await self._session.scalars(
-            select(TowerImpact).order_by(
-                TowerImpact.created_at.desc(),
-                TowerImpact.id,
-            ),
-        )
-        return list(packed.all())
+        stmt = select(TowerImpact).order_by(TowerImpact.id.desc())
+        executed = await self._session.execute(stmt)
+        return list(executed.scalars())
 
     async def add(self, row: TowerImpact) -> TowerImpact:
         self._session.add(row)

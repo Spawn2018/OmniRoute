@@ -30,26 +30,22 @@ export function impactWrite(draft: {
   }
 }
 
-async function parseImpact<T>(res: Response, fallback: string, ok: number): Promise<T> {
-  if (res.status !== ok) {
-    throw new ApiError(await readApiDetail(res, fallback), httpErrorStatus(res))
-  }
-  return (await res.json()) as T
-}
-
 export async function listImpactMarks(): Promise<ImpactMark[]> {
-  return parseImpact(
-    await fetch(PATH, { headers: requireAuthHeaders() }),
-    "Błąd listy skutków wieży",
-    200,
-  )
+  const listed = await fetch(PATH, { headers: requireAuthHeaders() })
+  if (listed.status === 200) {
+    return (await listed.json()) as ImpactMark[]
+  }
+  throw new ApiError(await readApiDetail(listed, "Błąd listy skutków wieży"), httpErrorStatus(listed))
 }
 
 export async function persistImpactMark(payload: ImpactMarkWrite): Promise<ImpactMark> {
-  const headers = { ...requireAuthHeaders(), Accept: "application/json", "Content-Type": "application/json" }
-  return parseImpact(
-    await fetch(PATH, { method: "POST", headers, body: JSON.stringify(payload) }),
-    "Błąd zapisu skutku wieży",
-    201,
-  )
+  const posted = await fetch(PATH, {
+    method: "POST",
+    headers: { ...requireAuthHeaders(), Accept: "application/json", "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  })
+  if (posted.status === 201) {
+    return (await posted.json()) as ImpactMark
+  }
+  throw new ApiError(await readApiDetail(posted, "Błąd zapisu skutku wieży"), httpErrorStatus(posted))
 }

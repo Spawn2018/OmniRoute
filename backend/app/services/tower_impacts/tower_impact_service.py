@@ -15,10 +15,10 @@ from app.repositories.tower_impacts.tower_impact_repository import (
 
 class TowerImpactService:
     def __init__(self, session: AsyncSession) -> None:
-        self._marks = TowerImpactRepository(session)
+        self._repo = TowerImpactRepository(session)
 
     async def list_marks(self) -> list[TowerImpact]:
-        return await self._marks.fetch_marks()
+        return await self._repo.fetch_marks()
 
     async def persist_mark(
         self,
@@ -29,12 +29,15 @@ class TowerImpactService:
         contract_data_status: object,
         source_ref: object,
     ) -> TowerImpact:
-        row = TowerImpact(
+        stage = require_chain_stage(chain_stage)
+        pact = require_contract_data_status(contract_data_status)
+        origin = require_impact_source_ref(source_ref)
+        packed = TowerImpact(
             id=uuid4(),
             organization_id=organization_id,
-            chain_stage=require_chain_stage(chain_stage),
-            contract_data_status=require_contract_data_status(contract_data_status),
-            source_ref=require_impact_source_ref(source_ref),
+            chain_stage=stage,
+            contract_data_status=pact,
+            source_ref=origin,
             created_by=user_id,
         )
-        return await self._marks.add(row)
+        return await self._repo.add(packed)

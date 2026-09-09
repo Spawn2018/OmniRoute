@@ -39,49 +39,49 @@ function ImpactSave(args: { organizationId: string | null }) {
       }}
     >
       <p className="text-xs text-muted-foreground">
-        Etap łańcucha (`stock` / `production` / `sales` / `ebitda`) plus status danych umowy. Status
-        `missing` pokazuje stały tekst „brak danych umowy”. Nie ma kary, scoringu ani silnika. Marża
-        zostaje na `/charges`.
+        Etap łańcucha plus status danych umowy. Status `missing` pokazuje stały tekst
+        „brak danych umowy”. Nie ma kary, scoringu ani silnika. Marża zostaje na `/charges`.
       </p>
+      <fieldset className="grid gap-1 text-xs">
+        <legend>Etap łańcucha (allowlista)</legend>
+        {STAGES.map((token) => (
+          <label key={token} className="flex items-center gap-2 font-mono">
+            <input
+              type="radio"
+              name="chain-stage"
+              aria-label={`Etap ${token}`}
+              checked={draft.stageStamp === token}
+              onChange={() => setDraft({ ...draft, stageStamp: token })}
+              value={token}
+            />
+            {token}
+          </label>
+        ))}
+      </fieldset>
+      <fieldset className="grid gap-1 text-xs">
+        <legend>Dane umowy (nie klauzula SLA)</legend>
+        {PACTS.map((token) => (
+          <label key={token} className="flex items-center gap-2 font-mono">
+            <input
+              type="radio"
+              name="contract-pact"
+              aria-label={`Umowa ${token}`}
+              checked={draft.pactStamp === token}
+              onChange={() => setDraft({ ...draft, pactStamp: token })}
+              value={token}
+            />
+            {token}
+          </label>
+        ))}
+      </fieldset>
       <label className="flex flex-col gap-1 text-xs">
-        Etap łańcucha (allowlista)
-        <select
-          aria-label="Etap łańcucha wieży"
-          className="h-9 rounded-md border bg-background px-2 font-mono"
-          value={draft.stageStamp}
-          onChange={(change) => setDraft({ ...draft, stageStamp: change.target.value })}
-          required
-        >
-          {STAGES.map((token) => (
-            <option key={token} value={token}>
-              {token}
-            </option>
-          ))}
-        </select>
-      </label>
-      <label className="flex flex-col gap-1 text-xs">
-        Dane umowy (nie klauzula SLA)
-        <select
-          aria-label="Status danych umowy"
-          className="h-9 rounded-md border bg-background px-2 font-mono"
-          value={draft.pactStamp}
-          onChange={(change) => setDraft({ ...draft, pactStamp: change.target.value })}
-          required
-        >
-          {PACTS.map((token) => (
-            <option key={token} value={token}>
-              {token}
-            </option>
-          ))}
-        </select>
-      </label>
-      <label className="flex flex-col gap-1 text-xs">
-        source_ref (tenant:manual albo fixture://tower-impact/…)
+        Pochodzenie zapisu
         <input
           aria-label="source_ref skutku wieży"
           className="h-9 rounded-md border bg-background px-2 font-mono"
           value={draft.originStamp}
           onChange={(change) => setDraft({ ...draft, originStamp: change.target.value })}
+          placeholder="tenant:manual albo fixture://tower-impact/…"
           required
         />
       </label>
@@ -100,16 +100,20 @@ function ImpactRows(args: { organizationId: string | null }) {
     enabled: Boolean(args.organizationId),
     retry: false,
   })
+  const rows = listed.data ?? []
   return (
     <>
       {listed.isError ? <CatalogError error={listed.error} /> : null}
       <ul data-tower-impact="rows" className="flex flex-col gap-1 text-xs">
-        {(listed.data ?? []).map((row) => (
-          <li key={row.id} className="font-mono">
-            {row.chain_stage} {row.contract_data_status}
-            {row.contract_gap_label ? ` · ${row.contract_gap_label}` : ""}
-          </li>
-        ))}
+        {rows.map((row) => {
+          const gap = row.contract_gap_label ? ` · ${row.contract_gap_label}` : ""
+          return (
+            <li key={row.id} className="font-mono">
+              {row.chain_stage} {row.contract_data_status}
+              {gap}
+            </li>
+          )
+        })}
       </ul>
     </>
   )
@@ -117,7 +121,7 @@ function ImpactRows(args: { organizationId: string | null }) {
 
 export function ImpactPanel(args: { organizationId: string | null }) {
   return (
-    <div className="grid gap-6 lg:grid-cols-2">
+    <div className="flex flex-col gap-8 md:flex-row">
       <ImpactSave organizationId={args.organizationId} />
       <ImpactRows organizationId={args.organizationId} />
     </div>
