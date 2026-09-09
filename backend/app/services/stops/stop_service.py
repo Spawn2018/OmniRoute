@@ -9,6 +9,7 @@ from app.domain.stop import (
     require_eta_legal,
     require_eta_physical,
     require_sequence_no,
+    require_stop_group_code,
     require_stop_kind,
     require_stop_location_id,
     require_stop_shipment_id,
@@ -29,6 +30,7 @@ class _PackedPoint:
     zone: str
     state: str
     origin: str
+    group_code: str | None
     physical: datetime
     legal: datetime
 
@@ -44,6 +46,7 @@ def _pack_point(
     source_ref: object,
     eta_physical: object,
     eta_legal: object,
+    stop_group_code: object,
 ) -> _PackedPoint:
     return _PackedPoint(
         order_id=require_stop_shipment_id(shipment_id),
@@ -53,6 +56,7 @@ def _pack_point(
         zone=require_time_zone(time_zone),
         state=require_stop_status(status),
         origin=require_stop_source_ref(source_ref),
+        group_code=require_stop_group_code(stop_group_code),
         physical=require_eta_physical(eta_physical),
         legal=require_eta_legal(eta_legal),
     )
@@ -65,6 +69,7 @@ def _same_point(current: Stop, packed: _PackedPoint) -> bool:
         and current.time_zone == packed.zone
         and current.status == packed.state
         and current.source_ref == packed.origin
+        and current.stop_group_code == packed.group_code
         and current.eta_physical == packed.physical
         and current.eta_legal == packed.legal
     )
@@ -97,6 +102,7 @@ class StopService:
         source_ref: object,
         eta_physical: object,
         eta_legal: object,
+        stop_group_code: object = None,
     ) -> Stop:
         packed = _pack_point(
             shipment_id=shipment_id,
@@ -108,6 +114,7 @@ class StopService:
             source_ref=source_ref,
             eta_physical=eta_physical,
             eta_legal=eta_legal,
+            stop_group_code=stop_group_code,
         )
         current = await self._rows.find_current(packed.order_id, packed.seq)
         if current is not None and _same_point(current, packed):
@@ -129,6 +136,7 @@ class StopService:
                 time_zone=packed.zone,
                 status=packed.state,
                 source_ref=packed.origin,
+                stop_group_code=packed.group_code,
                 eta_physical=packed.physical,
                 eta_legal=packed.legal,
                 created_by=user_id,

@@ -20531,6 +20531,17 @@
           "eta_legal": {
             "type": "string",
             "title": "Eta Legal"
+          },
+          "stop_group_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stop Group Code"
           }
         },
         "additionalProperties": false,
@@ -20600,6 +20611,17 @@
             "format": "date-time",
             "title": "Eta Legal"
           },
+          "stop_group_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stop Group Code"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -20626,6 +20648,7 @@
           "source_ref",
           "eta_physical",
           "eta_legal",
+          "stop_group_code",
           "superseded_by"
         ],
         "title": "StopResponse"

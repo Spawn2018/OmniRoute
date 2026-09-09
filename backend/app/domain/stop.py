@@ -9,6 +9,7 @@ _KINDS = frozenset(
 )
 _STATUSES = frozenset({"pending", "at_stop", "completed", "failed"})
 _ZONE = re.compile(r"^[A-Za-z_]+/[A-Za-z0-9_+-]+(?:/[A-Za-z0-9_+-]+)?$")
+_GROUP = re.compile(r"^[A-Za-z0-9_-]{2,32}$")
 _MAX_REF = 256
 _FIXTURE = "fixture://stop/"
 _MANUAL = "tenant:manual"
@@ -71,6 +72,19 @@ def require_stop_source_ref(raw: object) -> str:
         raise InvalidStop("wskazanie zapisu punktu za długie")
     if token != _MANUAL and not token.startswith(_FIXTURE):
         raise InvalidStop("obce wskazanie zapisu punktu")
+    return token
+
+
+def require_stop_group_code(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidStop("grupa punktów musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    if _GROUP.fullmatch(token) is None:
+        raise InvalidStop("nieznana grupa punktów")
     return token
 
 

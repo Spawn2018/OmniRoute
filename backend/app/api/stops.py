@@ -29,6 +29,7 @@ class StopCreate(BaseModel):
     source_ref: str
     eta_physical: str
     eta_legal: str
+    stop_group_code: str | None = None
 
 
 class StopResponse(BaseModel):
@@ -45,6 +46,7 @@ class StopResponse(BaseModel):
     source_ref: str
     eta_physical: datetime
     eta_legal: datetime
+    stop_group_code: str | None
     superseded_by: UUID | None
 
 
@@ -84,6 +86,7 @@ async def create_stop(
         source_ref=body.source_ref,
         eta_physical=body.eta_physical,
         eta_legal=body.eta_legal,
+        stop_group_code=body.stop_group_code,
     )
     await session.commit()
     return _as_response(row)

@@ -13,6 +13,7 @@ export type StopRow = {
   source_ref: string
   eta_physical: string
   eta_legal: string
+  stop_group_code: string | null
   superseded_by: string | null
 }
 
@@ -26,6 +27,7 @@ export type StopWrite = {
   source_ref: string
   eta_physical: string
   eta_legal: string
+  stop_group_code: string | null
 }
 
 const PATH = "/api/v1/stops"
@@ -39,7 +41,9 @@ export function stopWrite(args: {
   status: string
   etaPhysical: string
   etaLegal: string
+  groupCode: string
 }): StopWrite {
+  const group = args.groupCode.trim()
   return {
     shipment_id: args.shipmentId.trim(),
     location_id: args.locationId.trim(),
@@ -49,6 +53,7 @@ export function stopWrite(args: {
     status: args.status.trim(),
     eta_physical: args.etaPhysical.trim(),
     eta_legal: args.etaLegal.trim(),
+    stop_group_code: group === "" ? null : group,
     source_ref: "tenant:manual",
   }
 }

@@ -10,6 +10,7 @@ from app.domain.stop import (
     require_eta_legal,
     require_eta_physical,
     require_sequence_no,
+    require_stop_group_code,
     require_stop_kind,
     require_stop_source_ref,
     require_stop_status,
@@ -85,12 +86,14 @@ class StubStopService:
         source_ref: object,
         eta_physical: object,
         eta_legal: object,
+        stop_group_code: object = None,
     ) -> Stop:
         kind = require_stop_kind(stop_kind)
         seq = require_sequence_no(sequence_no)
         zone = require_time_zone(time_zone)
         state = require_stop_status(status)
         origin = require_stop_source_ref(source_ref)
+        group = require_stop_group_code(stop_group_code)
         physical = require_eta_physical(eta_physical)
         legal = require_eta_legal(eta_legal)
         order_id = shipment_id if type(shipment_id) is UUID else uuid4()
@@ -114,6 +117,7 @@ class StubStopService:
             and current.source_ref == origin
             and current.eta_physical == physical
             and current.eta_legal == legal
+            and current.stop_group_code == group
         ):
             return current
         successor = Stop(
@@ -126,6 +130,7 @@ class StubStopService:
             time_zone=zone,
             status=state,
             source_ref=origin,
+            stop_group_code=group,
             eta_physical=physical,
             eta_legal=legal,
             created_by=user_id,
@@ -199,6 +204,7 @@ def test_http_create_list_supersede_and_reject_pickup(catalog_client: object) ->
     }
     first = client.post("/api/v1/stops", headers=headers, json=payload)
     assert first.status_code == 201
+    assert first.json()["stop_group_code"] is None
     assert "amount" not in first.json()
     assert first.json()["eta_physical"].startswith("2026-09-09T12:00:00")
     assert first.json()["eta_legal"].startswith("2026-09-09T12:00:00")
@@ -238,3 +244,59 @@ def test_http_create_list_supersede_and_reject_pickup(catalog_client: object) ->
     )
     assert bad_legal.status_code == 400
     assert "prawny" in bad_legal.json()["detail"]
+
+
+def test_http_create_stop_with_group_code(catalog_client: object) -> None:
+    client, ships, places, _rows = catalog_client
+    assert ships.row is not None
+    assert places.row is not None
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/stops",
+        headers=headers,
+        json={
+            "shipment_id": str(ships.row.id),
+            "location_id": str(places.row.id),
+            "stop_kind": "loading",
+            "sequence_no": 2,
+            "time_zone": "Europe/Warsaw",
+            "status": "pending",
+            "source_ref": "tenant:manual",
+            "eta_physical": _HITL_ISO,
+            "eta_legal": _HITL_ISO,
+            "stop_group_code": "ZA-WY-1",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["stop_group_code"] == "ZA-WY-1"
+    assert "weight" not in created.json()
+    assert "margin" not in created.json()
+
+
+def test_http_rejects_loose_stop_group_code(catalog_client: object) -> None:
+    client, ships, places, _rows = catalog_client
+    assert ships.row is not None
+    assert places.row is not None
+    headers = bearer_auth_headers()
+    payload = {
+        "shipment_id": str(ships.row.id),
+        "location_id": str(places.row.id),
+        "stop_kind": "loading",
+        "sequence_no": 3,
+        "time_zone": "Europe/Warsaw",
+        "status": "pending",
+        "source_ref": "tenant:manual",
+        "eta_physical": _HITL_ISO,
+        "eta_legal": _HITL_ISO,
+        "stop_group_code": "x",
+    }
+    short = client.post("/api/v1/stops", headers=headers, json=payload)
+    assert short.status_code == 400
+    assert "grupa" in short.json()["detail"]
+    spaced = client.post(
+        "/api/v1/stops",
+        headers=headers,
+        json={**payload, "stop_group_code": "has space"},
+    )
+    assert spaced.status_code == 400
+    assert "grupa" in spaced.json()["detail"]

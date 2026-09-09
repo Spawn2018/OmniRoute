@@ -5514,6 +5514,10 @@ export type StopCreate = {
      * Eta Legal
      */
     eta_legal: string;
+    /**
+     * Stop Group Code
+     */
+    stop_group_code?: string | null;
 };
 
 /**
@@ -5564,6 +5568,10 @@ export type StopResponse = {
      * Eta Legal
      */
     eta_legal: string;
+    /**
+     * Stop Group Code
+     */
+    stop_group_code: string | null;
     /**
      * Superseded By
      */

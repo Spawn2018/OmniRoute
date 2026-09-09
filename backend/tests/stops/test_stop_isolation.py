@@ -182,3 +182,82 @@ async def test_stop_rejects_foreign_location(session, two_tenants) -> None:
     )
     with pytest.raises(IntegrityError):
         await session.flush()
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_stop_group_code_same_tenant(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    user_a = two_tenants["user_a"]
+    await bind_tenant(session, org_a.id)
+    ship_a = await _booked(session, organization_id=org_a.id, user_id=user_a.id, suffix="sg")
+    loc_a = _zone(organization_id=org_a.id, created_by=user_a.id, code="PL-G", name="Strefa G")
+    session.add(loc_a)
+    await session.flush()
+    first = Stop(
+        id=uuid4(),
+        organization_id=org_a.id,
+        shipment_id=ship_a.id,
+        location_id=loc_a.id,
+        stop_kind="loading",
+        sequence_no=1,
+        time_zone="Europe/Warsaw",
+        status="pending",
+        source_ref="fixture://stop/g1",
+        stop_group_code="ZA-WY-1",
+        eta_physical=_CLOCK,
+        eta_legal=_CLOCK,
+        created_by=user_a.id,
+    )
+    second = Stop(
+        id=uuid4(),
+        organization_id=org_a.id,
+        shipment_id=ship_a.id,
+        location_id=loc_a.id,
+        stop_kind="unloading",
+        sequence_no=2,
+        time_zone="Europe/Warsaw",
+        status="pending",
+        source_ref="fixture://stop/g2",
+        stop_group_code="ZA-WY-1",
+        eta_physical=_CLOCK,
+        eta_legal=_CLOCK,
+        created_by=user_a.id,
+    )
+    session.add_all([first, second])
+    await session.flush()
+    session.expunge_all()
+    await bind_tenant(session, org_a.id)
+    loaded = list((await session.scalars(select(Stop))).all())
+    assert {row.stop_group_code for row in loaded} == {"ZA-WY-1"}
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_stop_rejects_loose_group_code(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    user_a = two_tenants["user_a"]
+    await bind_tenant(session, org_a.id)
+    ship_a = await _booked(session, organization_id=org_a.id, user_id=user_a.id, suffix="sbad")
+    loc_a = _zone(organization_id=org_a.id, created_by=user_a.id, code="PL-Q", name="Strefa Q")
+    session.add(loc_a)
+    await session.flush()
+    session.add(
+        Stop(
+            id=uuid4(),
+            organization_id=org_a.id,
+            shipment_id=ship_a.id,
+            location_id=loc_a.id,
+            stop_kind="loading",
+            sequence_no=1,
+            time_zone="Europe/Warsaw",
+            status="pending",
+            source_ref="fixture://stop/bad",
+            stop_group_code="x",
+            eta_physical=_CLOCK,
+            eta_legal=_CLOCK,
+            created_by=user_a.id,
+        ),
+    )
+    with pytest.raises(IntegrityError):
+        await session.flush()

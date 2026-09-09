@@ -9,6 +9,7 @@ from app.domain.stop import (
     require_eta_legal,
     require_eta_physical,
     require_sequence_no,
+    require_stop_group_code,
     require_stop_kind,
     require_stop_status,
     require_time_zone,
@@ -49,3 +50,16 @@ def test_eta_clocks_require_timezone() -> None:
         require_eta_physical("2026-09-09T12:00:00")
     with pytest.raises(InvalidStop, match="prawny"):
         require_eta_legal("nie-czas")
+
+
+def test_stop_group_code_omits_blank_and_keeps_token() -> None:
+    assert require_stop_group_code(None) is None
+    assert require_stop_group_code("  ") is None
+    assert require_stop_group_code(" ZA-WY-1 ") == "ZA-WY-1"
+
+
+def test_stop_group_code_rejects_loose_token() -> None:
+    with pytest.raises(InvalidStop, match="grupa"):
+        require_stop_group_code("x")
+    with pytest.raises(InvalidStop, match="grupa"):
+        require_stop_group_code("has space")

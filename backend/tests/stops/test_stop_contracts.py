@@ -63,3 +63,19 @@ def test_generated_api_types_include_stop() -> None:
     source = (_ROOT / "frontend" / "src" / "api" / "types.gen.ts").read_text(encoding="utf-8")
     assert "StopResponse" in source
     assert "StopCreate" in source
+    assert "stop_group_code" in source
+
+
+def test_migration_152_adds_group_code_without_table() -> None:
+    source = (_ROOT / "backend" / "alembic" / "versions" / "152_stop_group.py").read_text(
+        encoding="utf-8"
+    )
+    assert 'revision: str = "152_stop_group"' in source
+    assert 'down_revision: str | None = "151_trip_driver2"' in source
+    assert "stop_group_code" in source
+    assert "ck_stop_group_code" in source
+    assert "create_table" not in source
+    assert "planned_distance" not in source
+    assert "leaflet" not in source
+    assert "def downgrade" in source
+    assert "stop_group_code" in source.split("def downgrade")[1]

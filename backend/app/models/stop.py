@@ -34,6 +34,10 @@ class Stop(Base, TimestampMixin):
             "time_zone ~ '^[A-Za-z_]+/[A-Za-z0-9_+-]+(/[A-Za-z0-9_+-]+)?$'",
             name="ck_stop_time_zone",
         ),
+        CheckConstraint(
+            "stop_group_code IS NULL OR stop_group_code ~ '^[A-Za-z0-9_-]{2,32}$'",
+            name="ck_stop_group_code",
+        ),
         ForeignKeyConstraint(
             ["organization_id", "shipment_id"],
             ["shipment.organization_id", "shipment.id"],
@@ -69,6 +73,7 @@ class Stop(Base, TimestampMixin):
     time_zone: Mapped[str] = mapped_column(String(64), nullable=False)
     status: Mapped[str] = mapped_column(String(12), nullable=False)
     source_ref: Mapped[str] = mapped_column(Text, nullable=False)
+    stop_group_code: Mapped[str | None] = mapped_column(String(32), nullable=True)
     eta_physical: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
     eta_legal: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
     superseded_by: Mapped[uuid.UUID | None] = mapped_column(
