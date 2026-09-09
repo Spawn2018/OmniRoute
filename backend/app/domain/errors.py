@@ -580,3 +580,7 @@ class InvalidTenderWinLoss(DomainError):
 
 class InvalidTenderConsortiumMember(DomainError):
     """Konsorcjum G2.8: fotel z source_ref — nie extract RFP i nie TED."""
+
+
+class InvalidTenderRfpIntake(DomainError):
+    """Przyjęcie RFP G2.9: HITL z source_ref — nie zapis z LLM i nie auto-award."""

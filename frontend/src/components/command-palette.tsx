@@ -73,6 +73,11 @@ const NAV_ACTIONS = [
     label: "Idź do konsorcjum przetargu",
     to: "/tender-consortium-members",
   },
+  {
+    id: "nav-tender-rfp-intakes",
+    label: "Idź do przyjęcia RFP",
+    to: "/tender-rfp-intakes",
+  },
   { id: "nav-tender-lanes", label: "Idź do korytarzy przetargu", to: "/tender-lanes" },
   { id: "nav-tender-lots", label: "Idź do partii przetargu", to: "/tender-lots" },
   { id: "nav-tender-rounds", label: "Idź do rund przetargu", to: "/tender-rounds" },

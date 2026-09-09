@@ -15,6 +15,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **150.0 leftover:** `stop_group`; `eta_physical`/`eta_legal` (V2); waga/plomba/awizacja (EXP1). Tu tylko punkt + location + strefa IANA. Nie mapa. `resource` = 151.0. `trip` = 152.0.
 - **151.0 leftover:** `trip` DONE 152.0. Zostaje T2c: multi-manning / floating trailer; pojemności / Decimal km; `party_id`; `/fleet` / HW. Tu tylko katalog pojazd/kierowca/naczepa.
 - **153.0 leftover:** VGM/TARA Decimal; free_time; cutoffy CY/CFS/VGM/SI/AMS; `bl_kind`; plomby/PIN; reefer; party/terminal; TEU; `shipment_leg_id`. Tu tylko ISO 6346 + `iso_size_type` + opcjonalne zlecenie. Nie booking.
+- **178.0 leftover:** `draft_kind=tender_rfp` + gałąź accept (G2.9b); prospecting / four-eyes / TED / CO₂ (G2.10–G2.18). Tu tylko `tender_rfp_intake` HITL + `source_ref`. Nie zapis z LLM. Nie kwota. Nie auto-award.
 - **176.0 leftover:** extract RFP HITL; four-eyes; TED / CO₂ / consortium (G2.8–G2.18). Tu tylko `tender_win_loss` wynik + `source_ref`. Nie mutacja `tender.status`. Nie LLM. Nie kwota. Nie auto-award.
 - **175.0 leftover:** win/loss DONE 176.0. Zostaje extract RFP HITL; four-eyes; TED / CO₂ / consortium (G2.8–G2.18). Tu tylko `tender_playbook` twierdzenie + `source_ref`. Nie LLM. Nie kwota. Nie auto-award.
 - **174.0 leftover:** playbook DONE 175.0. Zostaje extract RFP HITL; win/loss; four-eyes; TED (G2.7–G2.18). FK `charge` leftover. Tu tylko `tender_matrix_cell` Decimal z P. Nie LLM kolumny. Nie druga marża. Nie auto-award.

@@ -139,6 +139,11 @@ export const OPS_JOBS = [
     job: "fotel lead/member bez extractu",
   },
   {
+    route: BUSINESS_LISTS.tenderRfpIntake.route,
+    label: "Przyjęcie RFP",
+    job: "HITL przyjęcie RFP bez zapisu z LLM",
+  },
+  {
     route: BUSINESS_LISTS.tenderLane.route,
     label: "Korytarze przetargu",
     job: "para UN/LOCODE na partii bez rundy",
@@ -552,6 +557,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "175.0": "/tender-playbooks",
   "176.0": "/tender-win-losses",
   "177.0": "/tender-consortium-members",
+  "178.0": "/tender-rfp-intakes",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

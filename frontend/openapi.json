@@ -6002,6 +6002,80 @@
         ]
       }
     },
+    "/api/v1/tender-rfp-intakes": {
+      "get": {
+        "tags": [
+          "tender-rfp-intakes"
+        ],
+        "summary": "List Tender Rfp Intakes",
+        "operationId": "list_tender_rfp_intakes_api_v1_tender_rfp_intakes_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TenderRfpIntakeResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Tender Rfp Intakes Api V1 Tender Rfp Intakes Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "tender-rfp-intakes"
+        ],
+        "summary": "Create Tender Rfp Intake",
+        "operationId": "create_tender_rfp_intake_api_v1_tender_rfp_intakes_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TenderRfpIntakeCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TenderRfpIntakeResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/tender-rounds": {
       "get": {
         "tags": [
@@ -18776,6 +18850,67 @@
           "source_ref"
         ],
         "title": "TenderResponse"
+      },
+      "TenderRfpIntakeCreate": {
+        "properties": {
+          "tender_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Tender Id"
+          },
+          "intake_code": {
+            "type": "string",
+            "title": "Intake Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "tender_id",
+          "intake_code",
+          "source_ref"
+        ],
+        "title": "TenderRfpIntakeCreate"
+      },
+      "TenderRfpIntakeResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "tender_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Tender Id"
+          },
+          "intake_code": {
+            "type": "string",
+            "title": "Intake Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "tender_id",
+          "intake_code",
+          "source_ref"
+        ],
+        "title": "TenderRfpIntakeResponse"
       },
       "TenderRoundCreate": {
         "properties": {

@@ -436,3 +436,4 @@
 | 2026-09-09 | Plan 177.0 | G2.8 | tender_consortium_member fotel + source_ref, nie extract RFP. Delta zaakceptowana (`/noc`). Nie auto-award. Nastepny: kod 177.0. |
 | 2026-09-09 | 177.0 | G2.8 | tender_consortium_member fotel + source_ref na tender. Nie extract RFP. Nie TED. Nastepny: G2.9 Plan. |
 | 2026-09-09 | Plan 178.0 | G2.9 | tender_rfp_intake HITL + source_ref, nie zapis z LLM. Delta zaakceptowana (`/noc`). Nie auto-award. Nastepny: kod 178.0. |
+| 2026-09-09 | 178.0 | G2.9 | tender_rfp_intake HITL + source_ref na tender. Nie zapis z LLM. Nie auto-award. Nastepny: G2.9b Plan. |

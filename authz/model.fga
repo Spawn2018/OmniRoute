@@ -68,3 +68,4 @@ type organization
     define can_manage_tender_playbooks: member
     define can_manage_tender_win_losses: member
     define can_manage_tender_consortium_members: member
+    define can_manage_tender_rfp_intakes: member

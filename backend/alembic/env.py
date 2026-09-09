@@ -91,6 +91,7 @@ from app.models.tender_data_room import TenderDataRoom  # noqa: F401
 from app.models.tender_matrix_cell import TenderMatrixCell  # noqa: F401
 from app.models.tender_playbook import TenderPlaybook  # noqa: F401
 from app.models.tender_consortium_member import TenderConsortiumMember  # noqa: F401
+from app.models.tender_rfp_intake import TenderRfpIntake  # noqa: F401
 from app.models.tender_win_loss import TenderWinLoss  # noqa: F401
 from app.models.shipment_leg import ShipmentLeg  # noqa: F401
 from app.models.money_cost import MoneyCost  # noqa: F401

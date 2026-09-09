@@ -5500,6 +5500,50 @@ export type TenderResponse = {
 };
 
 /**
+ * TenderRfpIntakeCreate
+ */
+export type TenderRfpIntakeCreate = {
+    /**
+     * Tender Id
+     */
+    tender_id: string;
+    /**
+     * Intake Code
+     */
+    intake_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TenderRfpIntakeResponse
+ */
+export type TenderRfpIntakeResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Tender Id
+     */
+    tender_id: string;
+    /**
+     * Intake Code
+     */
+    intake_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * TenderRoundCreate
  */
 export type TenderRoundCreate = {
@@ -9367,6 +9411,49 @@ export type CreateTenderConsortiumMemberApiV1TenderConsortiumMembersPostResponse
 };
 
 export type CreateTenderConsortiumMemberApiV1TenderConsortiumMembersPostResponse = CreateTenderConsortiumMemberApiV1TenderConsortiumMembersPostResponses[keyof CreateTenderConsortiumMemberApiV1TenderConsortiumMembersPostResponses];
+
+export type ListTenderRfpIntakesApiV1TenderRfpIntakesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tender-rfp-intakes';
+};
+
+export type ListTenderRfpIntakesApiV1TenderRfpIntakesGetResponses = {
+    /**
+     * Response List Tender Rfp Intakes Api V1 Tender Rfp Intakes Get
+     *
+     * Successful Response
+     */
+    200: Array<TenderRfpIntakeResponse>;
+};
+
+export type ListTenderRfpIntakesApiV1TenderRfpIntakesGetResponse = ListTenderRfpIntakesApiV1TenderRfpIntakesGetResponses[keyof ListTenderRfpIntakesApiV1TenderRfpIntakesGetResponses];
+
+export type CreateTenderRfpIntakeApiV1TenderRfpIntakesPostData = {
+    body: TenderRfpIntakeCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tender-rfp-intakes';
+};
+
+export type CreateTenderRfpIntakeApiV1TenderRfpIntakesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTenderRfpIntakeApiV1TenderRfpIntakesPostError = CreateTenderRfpIntakeApiV1TenderRfpIntakesPostErrors[keyof CreateTenderRfpIntakeApiV1TenderRfpIntakesPostErrors];
+
+export type CreateTenderRfpIntakeApiV1TenderRfpIntakesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TenderRfpIntakeResponse;
+};
+
+export type CreateTenderRfpIntakeApiV1TenderRfpIntakesPostResponse = CreateTenderRfpIntakeApiV1TenderRfpIntakesPostResponses[keyof CreateTenderRfpIntakeApiV1TenderRfpIntakesPostResponses];
 
 export type ListTenderRoundsApiV1TenderRoundsGetData = {
     body?: never;
