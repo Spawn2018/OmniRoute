@@ -18,6 +18,7 @@
 | port załadunku | origin_port_id | POL na `quotation`; FK do `port` |
 | port wyładunku | destination_port_id | POD na `quotation`; FK do `port` |
 | zlecenie | shipment | 90.0 tabela z wyceny z `party_id`; nie tracking |
+| numer zlecenia | shipment_ref | D9b HITL 204.0 twardy numer na zleceniu; nie QR; nie PDF; nie generator GD |
 | śledzenie | tracking | 91.0 `tracking_event` na zleceniu; nie AIS; nie mapa |
 | wyjątek operacyjny | operational_exception | 93.0 tabela na zleceniu; nie AIS; nie mapa; nie `party_charge_override` |
 | wieża | watchtower | 94.0 wyjątki + pending S11 + leniwy panel mapy; 116.0 odczyt `mail_draft`; 124.0 liczniki tablicy; nie leaflet; nie AIS; nie czat; nie łańcuch V6 |

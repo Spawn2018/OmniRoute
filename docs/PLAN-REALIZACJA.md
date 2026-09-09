@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny (zablokowany):** leftover V7 tacho TO_VERIFY parked → leftover V8 what-if parked → leftover V6 silnik EBITDA / `sla_clause` CI5 parked → leftover V5 `position_event` / ciphertext / 3 dni U4 parked → leftover V5b `exchange_message` parked → leftover V4 AIS wieży (S32) parked → leftover V2b myto→`charge` parked → leftover C3 live VIES/GUS parked → leftover C4 eCMR parked → leftover C9 Trans.eu parked → leftover C2 AIS/PUESC parked → leftover C6 BDO parked → leftover F2b Decimal/rezerwy parked → leftover F3 noty/period lock parked → leftover F4 CAMT parked → leftover G2.20–G2.22 circle_sim/km/P parked → leftover G2.15–G2.18 kg/CBAM parked → leftover F1 live FA(3) parked → leftover C1 filing XML parked → leftover C8 409/`relation_document_requirement` parked → leftover N3 countdown D&D / szkic `charge` parked → **204.0** leftover D9b `shipment_ref` HITL bez QR/PDF → leftover D9c–f PDF/ZPL/409 sieci parked → leftover P1b–d → leftover P2c → leftover P3b–d → leftover P4b–c → leftover P5b–c → leftover P6c → leftover G2.23 Citizen API parked → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. D8 parked. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
+**Następny (zablokowany):** **204.0** leftover D9b `shipment_ref` HITL bez QR/PDF → leftover D9c–f PDF/ZPL/409 sieci parked → leftover V7 tacho TO_VERIFY parked → leftover V8 what-if parked → leftover V6 silnik EBITDA / `sla_clause` CI5 parked → leftover V5 `position_event` / ciphertext / 3 dni U4 parked → leftover V5b `exchange_message` parked → leftover V4 AIS wieży (S32) parked → leftover V2b myto→`charge` parked → leftover C3 live VIES/GUS parked → leftover C4 eCMR parked → leftover C9 Trans.eu parked → leftover C2 AIS/PUESC parked → leftover C6 BDO parked → leftover F2b Decimal/rezerwy parked → leftover F3 noty/period lock parked → leftover F4 CAMT parked → leftover G2.20–G2.22 circle_sim/km/P parked → leftover G2.15–G2.18 kg/CBAM parked → leftover F1 live FA(3) parked → leftover C1 filing XML parked → leftover C8 409/`relation_document_requirement` parked → leftover N3 countdown D&D / szkic `charge` parked → leftover P1b–d → leftover P2c → leftover P3b–d → leftover P4b–c → leftover P5b–c → leftover P6c → leftover G2.23 Citizen API parked → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. D8 parked. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
 <!-- os-status:end -->
 
 ```mermaid
@@ -558,7 +558,7 @@ Przy `/plan-modul`: karta T + [EXP1](analysis/karty-pol-fala-exp.md) (stop/konte
 |---|---|---|---|
 | D1–D7 | linie, paczka, cross-dock, COD, cennik LTL, LCL/HBL, palety Chep/LPR (EXP2.17) | D1 zamknięty ([155.0](deltas/archived/155.0-groupage-line.md); leftover OR hubów); D2 zamknięty ([156.0](deltas/archived/156.0-shipment-package.md); leftover kamera/WMS/SSCC); D3 zamknięty ([157.0](deltas/archived/157.0-dock-appointment.md); leftover D3b/G15/T8); D4 zamknięty ([158.0](deltas/archived/158.0-cod-instruction.md); leftover D4b POD/ROD); D5 zamknięty ([159.0](deltas/archived/159.0-groupage-tariff.md); leftover D5b/P1); D6 zamknięty ([160.0](deltas/archived/160.0-ocean-bill.md); leftover D6b/D6c); D7 zamknięty ([161.0](deltas/archived/161.0-pallet-balance.md); leftover D7b–d) | po U3+T2; nie WMS; karta [karty-pol-fala-d.md](analysis/karty-pol-fala-d.md) |
 | D8 | etykieta sieci po oficjalnym API | parked aż TO_VERIFY API | zakaz generatora Palletforce |
-| D9 | silnik wydruków + QR `shipment_ref` | zamknięty ([162.0](deltas/archived/162.0-document-template.md); leftover D9b–f) | 409 bez etykiety sieci = D9c; D8 parked |
+| D9 | silnik wydruków + QR `shipment_ref` | zamknięty ([162.0](deltas/archived/162.0-document-template.md); leftover D9b delta [204.0](deltas/open/204.0-shipment-ref.md) HITL numer bez QR; leftover D9c–f) | 409 bez etykiety sieci = D9c; D8 parked |
 
 ### Fala P — pricing (P1–P6; P0 wyżej)
 
@@ -843,13 +843,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->
