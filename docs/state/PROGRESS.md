@@ -439,3 +439,4 @@
 | 2026-09-09 | 178.0 | G2.9 | tender_rfp_intake HITL + source_ref na tender. Nie zapis z LLM. Nie auto-award. Nastepny: G2.9b Plan. |
 | 2026-09-09 | Plan 179.0 | G2.9b | draft_kind=tender_rfp + accept HITL do intake. Delta zaakceptowana (`/noc`). Nie auto-award. Nastepny: kod 179.0. |
 | 2026-09-09 | 179.0 | G2.9b | draft_kind=tender_rfp + accept HITL do tender_rfp_intake. Nie zapis z LLM. Nie auto-award. Nastepny: G2.10 Plan. |
+| 2026-09-09 | Plan 180.0 | G2.10 | tender_prospect HITL + source_ref, nie scrape. Delta zaakceptowana (`/noc`). Nie auto-award. Nastepny: kod 180.0. |
