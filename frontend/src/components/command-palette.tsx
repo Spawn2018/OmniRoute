@@ -83,6 +83,11 @@ const NAV_ACTIONS = [
     label: "Idź do prospektu przetargu",
     to: "/tender-prospects",
   },
+  {
+    id: "nav-tender-bid-stances",
+    label: "Idź do udziału w przetargu",
+    to: "/tender-bid-stances",
+  },
   { id: "nav-tender-lanes", label: "Idź do korytarzy przetargu", to: "/tender-lanes" },
   { id: "nav-tender-lots", label: "Idź do partii przetargu", to: "/tender-lots" },
   { id: "nav-tender-rounds", label: "Idź do rund przetargu", to: "/tender-rounds" },

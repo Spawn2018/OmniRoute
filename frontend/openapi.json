@@ -5928,6 +5928,80 @@
         ]
       }
     },
+    "/api/v1/tender-bid-stances": {
+      "get": {
+        "tags": [
+          "tender-bid-stances"
+        ],
+        "summary": "List Tender Bid Stances",
+        "operationId": "list_tender_bid_stances_api_v1_tender_bid_stances_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TenderBidStanceResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Tender Bid Stances Api V1 Tender Bid Stances Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "tender-bid-stances"
+        ],
+        "summary": "Create Tender Bid Stance",
+        "operationId": "create_tender_bid_stance_api_v1_tender_bid_stances_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TenderBidStanceCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TenderBidStanceResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/tender-consortium-members": {
       "get": {
         "tags": [
@@ -18324,6 +18398,67 @@
         },
         "type": "object",
         "title": "TableViewUpdate"
+      },
+      "TenderBidStanceCreate": {
+        "properties": {
+          "tender_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Tender Id"
+          },
+          "stance_code": {
+            "type": "string",
+            "title": "Stance Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "tender_id",
+          "stance_code",
+          "source_ref"
+        ],
+        "title": "TenderBidStanceCreate"
+      },
+      "TenderBidStanceResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "tender_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Tender Id"
+          },
+          "stance_code": {
+            "type": "string",
+            "title": "Stance Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "tender_id",
+          "stance_code",
+          "source_ref"
+        ],
+        "title": "TenderBidStanceResponse"
       },
       "TenderConsortiumMemberCreate": {
         "properties": {

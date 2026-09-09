@@ -588,3 +588,7 @@ class InvalidTenderRfpIntake(DomainError):
 
 class InvalidTenderProspect(DomainError):
     """Prospekt G2.10: HITL outreach z source_ref — nie scrape i nie bid/no-bid."""
+
+
+class InvalidTenderBidStance(DomainError):
+    """Postawa G2.11: HITL bid/no-bid z source_ref — nie win/loss i nie auto-award."""

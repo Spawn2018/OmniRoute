@@ -5053,6 +5053,50 @@ export type TableViewUpdate = {
 };
 
 /**
+ * TenderBidStanceCreate
+ */
+export type TenderBidStanceCreate = {
+    /**
+     * Tender Id
+     */
+    tender_id: string;
+    /**
+     * Stance Code
+     */
+    stance_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TenderBidStanceResponse
+ */
+export type TenderBidStanceResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Tender Id
+     */
+    tender_id: string;
+    /**
+     * Stance Code
+     */
+    stance_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * TenderConsortiumMemberCreate
  */
 export type TenderConsortiumMemberCreate = {
@@ -9435,6 +9479,49 @@ export type CreateTenderWinLossApiV1TenderWinLossesPostResponses = {
 };
 
 export type CreateTenderWinLossApiV1TenderWinLossesPostResponse = CreateTenderWinLossApiV1TenderWinLossesPostResponses[keyof CreateTenderWinLossApiV1TenderWinLossesPostResponses];
+
+export type ListTenderBidStancesApiV1TenderBidStancesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tender-bid-stances';
+};
+
+export type ListTenderBidStancesApiV1TenderBidStancesGetResponses = {
+    /**
+     * Response List Tender Bid Stances Api V1 Tender Bid Stances Get
+     *
+     * Successful Response
+     */
+    200: Array<TenderBidStanceResponse>;
+};
+
+export type ListTenderBidStancesApiV1TenderBidStancesGetResponse = ListTenderBidStancesApiV1TenderBidStancesGetResponses[keyof ListTenderBidStancesApiV1TenderBidStancesGetResponses];
+
+export type CreateTenderBidStanceApiV1TenderBidStancesPostData = {
+    body: TenderBidStanceCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tender-bid-stances';
+};
+
+export type CreateTenderBidStanceApiV1TenderBidStancesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTenderBidStanceApiV1TenderBidStancesPostError = CreateTenderBidStanceApiV1TenderBidStancesPostErrors[keyof CreateTenderBidStanceApiV1TenderBidStancesPostErrors];
+
+export type CreateTenderBidStanceApiV1TenderBidStancesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TenderBidStanceResponse;
+};
+
+export type CreateTenderBidStanceApiV1TenderBidStancesPostResponse = CreateTenderBidStanceApiV1TenderBidStancesPostResponses[keyof CreateTenderBidStanceApiV1TenderBidStancesPostResponses];
 
 export type ListTenderConsortiumMembersApiV1TenderConsortiumMembersGetData = {
     body?: never;
