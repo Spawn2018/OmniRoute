@@ -537,7 +537,7 @@ Przy `/plan-modul`: karta T + [EXP1](analysis/karty-pol-fala-exp.md) (stop/konte
 
 | ID | Co | Tryb | Status | Poza |
 |---|---|---|---|---|
-| T1 | `stop` + `stop_group` + timezone + `eta_physical`/`eta_legal` + EXP1 (awizacja, plomba, waga, waiting, POD quality) | zamknięty punkt ([150.0](deltas/archived/150.0-stop.md)); ETA HITL ([194.0](deltas/archived/194.0-stop-eta.md)); leftover `stop_group` kolumna [213.0](deltas/archived/213.0-stop-group.md); leftover T1 `notes_for_driver`; leftover T1b tabela; leftover EXP1 | po U4 | nie mapa |
+| T1 | `stop` + `stop_group` + timezone + `eta_physical`/`eta_legal` + EXP1 (awizacja, plomba, waga, waiting, POD quality) | zamknięty punkt ([150.0](deltas/archived/150.0-stop.md)); ETA HITL ([194.0](deltas/archived/194.0-stop-eta.md)); leftover `stop_group` kolumna [213.0](deltas/archived/213.0-stop-group.md); leftover T1 `notes_for_driver` delta [215.0](deltas/open/215.0-stop-notes-for-driver.md); leftover T1b tabela; leftover EXP1 | po U4 | nie mapa |
 | **N1** | `consignment` obok `shipment` | Plan → plaster | po T1, przed D2 | FTL=1; LTL/LCL=N |
 | T2 | `trip` + `resource`; floating trailer; multi-manning | zamknięty (`resource` [151.0](deltas/archived/151.0-resource.md); `trip` [152.0](deltas/archived/152.0-trip.md); leftover T2c `driver2` [212.0](deltas/archived/212.0-trip-driver2.md); leftover T2 `route_label` [214.0](deltas/archived/214.0-trip-route-label.md); leftover T2c km/`party`/`/fleet`) | po T1 | nie własne HW; job S50 |
 | T3 | `container` ISO + EXP1 (VGM, free time, BL kind, cutoffy CY/CFS/VGM/SI/AMS) | zamknięty ([153.0](deltas/archived/153.0-container.md); leftover EXP1 VGM/cutoffy) | po T1 | nie booking armatorski |
@@ -843,13 +843,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->
