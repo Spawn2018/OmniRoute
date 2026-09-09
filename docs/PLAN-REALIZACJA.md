@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny (zablokowany):** **199.0** W1 HITL twin katalog bez fizyki → leftover V7 tacho TO_VERIFY parked → leftover V8 what-if parked → leftover V6 silnik EBITDA / `sla_clause` CI5 parked → leftover V5 `position_event` / ciphertext / 3 dni U4 parked → leftover V5b `exchange_message` parked → leftover V4 AIS wieży (S32) parked → leftover V2b myto→`charge` parked → leftover C3 live VIES/GUS → leftover C4 eCMR → leftover C9 Trans.eu → leftover C2 AIS/PUESC → leftover C6 BDO → leftover F2b Decimal/rezerwy → leftover F3 noty/period lock → leftover F4 CAMT → leftover G2.20–G2.22 circle_sim/km/P → leftover G2.15–G2.18 kg/CBAM → leftover F1 live FA(3) → leftover C1 filing XML → leftover C8 409/`relation_document_requirement` → leftover N3 countdown D&D / szkic `charge` parked → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. D8 parked. D9 leftover D9b–f. P1 leftover P1b–d. P2 leftover P2c. P3 leftover P3b–d. P4 leftover P4b–c. P5 leftover P5b–c. P6 leftover P6c. G2 leftover G2.15–G2.18 + G2.20–G2.22 + G2.23 Citizen API. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
+**Następny (zablokowany):** **199.0** W1 HITL `twin_mark` bez fizyki → leftover V7 tacho TO_VERIFY parked → leftover V8 what-if parked → leftover V6 silnik EBITDA / `sla_clause` CI5 parked → leftover V5 `position_event` / ciphertext / 3 dni U4 parked → leftover V5b `exchange_message` parked → leftover V4 AIS wieży (S32) parked → leftover V2b myto→`charge` parked → leftover C3 live VIES/GUS → leftover C4 eCMR → leftover C9 Trans.eu → leftover C2 AIS/PUESC → leftover C6 BDO → leftover F2b Decimal/rezerwy → leftover F3 noty/period lock → leftover F4 CAMT → leftover G2.20–G2.22 circle_sim/km/P → leftover G2.15–G2.18 kg/CBAM → leftover F1 live FA(3) → leftover C1 filing XML → leftover C8 409/`relation_document_requirement` → leftover N3 countdown D&D / szkic `charge` parked → C → V → W → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. D8 parked. D9 leftover D9b–f. P1 leftover P1b–d. P2 leftover P2c. P3 leftover P3b–d. P4 leftover P4b–c. P5 leftover P5b–c. P6 leftover P6c. G2 leftover G2.15–G2.18 + G2.20–G2.22 + G2.23 Citizen API. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–212.
 <!-- os-status:end -->
 
 ```mermaid
@@ -635,7 +635,7 @@ Karta: [karty-pol-fala-w.md](analysis/karty-pol-fala-w.md).
 
 | ID | Co | Status | Poza |
 |---|---|---|---|
-| W1 | 8 twinów (pojazd, kierowca, kontener, zlecenie, sieć, plan, urząd, ładunek) | po V | twin ≠ fizyka; kółka = G2.20 |
+| W1 | 8 twinów (pojazd, kierowca, kontener, zlecenie, sieć, plan, urząd, ładunek) | delta [199.0](deltas/open/199.0-twin-mark.md) HITL `twin_mark` bez fizyki; leftover `plan_snapshot` / 8 silników | twin ≠ fizyka; kółka = G2.20 |
 | W2 | war room + koalescencja N8 | po V6+T8 | drugi czat |
 | W3 | memory graph na `entity_event` | | RAG na stawkach / umowach CI |
 | W4 | Executive AI = narracja po SQL | | LLM sumuje |
@@ -843,13 +843,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->
