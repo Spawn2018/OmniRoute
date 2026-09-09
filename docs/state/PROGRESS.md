@@ -510,3 +510,4 @@
 | 2026-09-09 | Plan 214.0 | T2 | route_label HITL na trip, nie km. Delta zaakceptowana (`/noc`). Nastepny: kod 214.0. |
 | 2026-09-09 | 214.0 | T2 | route_label HITL na trip. Nie km. Nie fleet. Nastepny: leftover T1 notes_for_driver Plan. |
 | 2026-09-09 | Plan 215.0 | T1 | notes_for_driver HITL na stop, nie waga. Delta zaakceptowana (`/noc`). Nastepny: kod 215.0. |
+| 2026-09-09 | 215.0 | T1 | notes_for_driver HITL na stop. Nie waga. Nie mapa. Nastepny: leftover T3 seal_no_1 Plan. |

@@ -64,6 +64,7 @@ def test_generated_api_types_include_stop() -> None:
     assert "StopResponse" in source
     assert "StopCreate" in source
     assert "stop_group_code" in source
+    assert "notes_for_driver" in source
 
 
 def test_migration_152_adds_group_code_without_table() -> None:
@@ -79,3 +80,17 @@ def test_migration_152_adds_group_code_without_table() -> None:
     assert "leaflet" not in source
     assert "def downgrade" in source
     assert "stop_group_code" in source.split("def downgrade")[1]
+
+
+def test_migration_154_adds_notes_without_weight() -> None:
+    source = (_ROOT / "backend" / "alembic" / "versions" / "154_stop_notes.py").read_text(
+        encoding="utf-8"
+    )
+    assert 'revision: str = "154_stop_notes"' in source
+    assert 'down_revision: str | None = "153_trip_route_label"' in source
+    assert "notes_for_driver" in source
+    assert "weight" not in source
+    assert "create_table" not in source
+    assert "leaflet" not in source
+    assert "def downgrade" in source
+    assert "notes_for_driver" in source.split("def downgrade")[1]

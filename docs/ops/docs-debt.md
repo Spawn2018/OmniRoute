@@ -12,7 +12,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 
 - **148.0 leftover:** dwa `mail_draft` przy DAP `contact_exchange`; live HTTP S21. Tu tylko status na wierszu. Nie send.
 - **147.0 leftover:** tabela `document_dispatch` (batch mail + send S18). Tu tylko katalog adresata. Nie auto-send.
-- **150.0 leftover:** `stop_group` kolumna DONE 213.0. Zostaje T1b tabela; EXP1 waga/plomba/awizacja; `notes_for_driver`. ETA HITL DONE 194.0. Tu tylko punkt + location + strefa IANA + dwa ETA HITL + grupa. Nie mapa. `resource` = 151.0. `trip` = 152.0.
+- **150.0 leftover:** `stop_group` kolumna DONE 213.0. `notes_for_driver` DONE 215.0. Zostaje T1b tabela; EXP1 waga/plomba/awizacja. ETA HITL DONE 194.0. Tu tylko punkt + location + strefa IANA + dwa ETA HITL + grupa + notatka. Nie mapa. `resource` = 151.0. `trip` = 152.0.
 - **194.0 leftover:** Open-Meteo live HTTP / geometria trip DONE HITL 195.0 (`weather_observation`). `stop_group` kolumna DONE 213.0. Zostaje feed Open-Meteo / lat/lng; myto → `charge` (V2b); GPS/tacho / silnik ETA; T1b tabela. Tu tylko `eta_physical` + `eta_legal` HITL na `stop`. Nie GPS.
 - **197.0 leftover:** `position_event` lat/lng / poll; `credential_ciphertext`; `resource_telematics_link` + 3 dni robocze U4; V5b `exchange_message`. Tu tylko `telematics_connector` HITL `observation_kind` + `provider_code` + `source_ref`. Nie track. Nie sekrety.
 - **203.0 leftover:** ranking SQL / Top N; N szkiców `mail_draft`; auto-award. Tu tylko `rank_mark` HITL `rank_kind` + `source_ref`. Nie sortowanie. Nie award.
@@ -70,6 +70,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **210.0 leftover:** rentowność SQL główne+podzlecenia na `charge` (T4b). Tu tylko `parent_shipment_id` + `relation_kind` HITL. Nie N1. Nie suma.
 
 - **154.0 leftover:** pule M-03; e-rates IATA; live IATA. HAWB/MAWB = 209.0 token na `air`. Tu `leg_kind=air` + `airport` w flags.
+- **215.0 leftover:** leftover T1b tabela `stop_group`; EXP1 waga/plomba/awizacja. Tu tylko `notes_for_driver` HITL. Nie waga. Nie mapa.
 - **214.0 leftover:** leftover T2c km/`party`/`/fleet`. Tu tylko `route_label` HITL. Nie km. Nie mapa.
 - **152.0 leftover:** `driver2_id` DONE 212.0; `route_label` DONE 214.0; `stop_group` kolumna DONE 213.0. Zostaje Decimal km / freeze kosztu; `party_id`; `/fleet` / HW. Tu tylko status + opcjonalny slot floty + etykieta. Nie km.
 - **149.0 leftover:** V5 hub GPS / `observation_ends_at` / 3 dni robocze trip. Tu tylko katalog + SQL `is_working_day`. Nie NBP.

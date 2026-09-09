@@ -74,6 +74,7 @@ class Stop(Base, TimestampMixin):
     status: Mapped[str] = mapped_column(String(12), nullable=False)
     source_ref: Mapped[str] = mapped_column(Text, nullable=False)
     stop_group_code: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    notes_for_driver: Mapped[str | None] = mapped_column(String(256), nullable=True)
     eta_physical: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
     eta_legal: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
     superseded_by: Mapped[uuid.UUID | None] = mapped_column(

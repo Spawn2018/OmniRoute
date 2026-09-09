@@ -5518,6 +5518,10 @@ export type StopCreate = {
      * Stop Group Code
      */
     stop_group_code?: string | null;
+    /**
+     * Notes For Driver
+     */
+    notes_for_driver?: string | null;
 };
 
 /**
@@ -5572,6 +5576,10 @@ export type StopResponse = {
      * Stop Group Code
      */
     stop_group_code: string | null;
+    /**
+     * Notes For Driver
+     */
+    notes_for_driver: string | null;
     /**
      * Superseded By
      */

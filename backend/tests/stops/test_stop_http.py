@@ -9,6 +9,7 @@ from app.domain.errors import ResourceNotFound
 from app.domain.stop import (
     require_eta_legal,
     require_eta_physical,
+    require_notes_for_driver,
     require_sequence_no,
     require_stop_group_code,
     require_stop_kind,
@@ -87,6 +88,7 @@ class StubStopService:
         eta_physical: object,
         eta_legal: object,
         stop_group_code: object = None,
+        notes_for_driver: object = None,
     ) -> Stop:
         kind = require_stop_kind(stop_kind)
         seq = require_sequence_no(sequence_no)
@@ -94,6 +96,7 @@ class StubStopService:
         state = require_stop_status(status)
         origin = require_stop_source_ref(source_ref)
         group = require_stop_group_code(stop_group_code)
+        notes = require_notes_for_driver(notes_for_driver)
         physical = require_eta_physical(eta_physical)
         legal = require_eta_legal(eta_legal)
         order_id = shipment_id if type(shipment_id) is UUID else uuid4()
@@ -118,6 +121,7 @@ class StubStopService:
             and current.eta_physical == physical
             and current.eta_legal == legal
             and current.stop_group_code == group
+            and current.notes_for_driver == notes
         ):
             return current
         successor = Stop(
@@ -131,6 +135,7 @@ class StubStopService:
             status=state,
             source_ref=origin,
             stop_group_code=group,
+            notes_for_driver=notes,
             eta_physical=physical,
             eta_legal=legal,
             created_by=user_id,
@@ -205,6 +210,7 @@ def test_http_create_list_supersede_and_reject_pickup(catalog_client: object) ->
     first = client.post("/api/v1/stops", headers=headers, json=payload)
     assert first.status_code == 201
     assert first.json()["stop_group_code"] is None
+    assert first.json()["notes_for_driver"] is None
     assert "amount" not in first.json()
     assert first.json()["eta_physical"].startswith("2026-09-09T12:00:00")
     assert first.json()["eta_legal"].startswith("2026-09-09T12:00:00")
@@ -300,3 +306,55 @@ def test_http_rejects_loose_stop_group_code(catalog_client: object) -> None:
     )
     assert spaced.status_code == 400
     assert "grupa" in spaced.json()["detail"]
+
+
+def test_http_create_stop_with_notes_for_driver(catalog_client: object) -> None:
+    client, ships, places, _rows = catalog_client
+    assert ships.row is not None
+    assert places.row is not None
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/stops",
+        headers=headers,
+        json={
+            "shipment_id": str(ships.row.id),
+            "location_id": str(places.row.id),
+            "stop_kind": "loading",
+            "sequence_no": 4,
+            "time_zone": "Europe/Warsaw",
+            "status": "pending",
+            "source_ref": "tenant:manual",
+            "eta_physical": _HITL_ISO,
+            "eta_legal": _HITL_ISO,
+            "notes_for_driver": " brama B, dzwonek 2 ",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["notes_for_driver"] == "brama B, dzwonek 2"
+    assert "weight" not in created.json()
+    assert "margin" not in created.json()
+
+
+def test_http_rejects_too_long_notes_for_driver(catalog_client: object) -> None:
+    client, ships, places, _rows = catalog_client
+    assert ships.row is not None
+    assert places.row is not None
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/stops",
+        headers=headers,
+        json={
+            "shipment_id": str(ships.row.id),
+            "location_id": str(places.row.id),
+            "stop_kind": "loading",
+            "sequence_no": 5,
+            "time_zone": "Europe/Warsaw",
+            "status": "pending",
+            "source_ref": "tenant:manual",
+            "eta_physical": _HITL_ISO,
+            "eta_legal": _HITL_ISO,
+            "notes_for_driver": "x" * 257,
+        },
+    )
+    assert reply.status_code == 400
+    assert "notatka" in reply.json()["detail"]

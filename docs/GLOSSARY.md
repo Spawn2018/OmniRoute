@@ -41,7 +41,7 @@
 | księgowość | bookkeeping | 104.0 tabela pary opłata+faktura; nie kwota; nie JPK |
 | zbiorcza faktura | collective_invoice | 105.0 tabela pary faktura+dodatkowe zlecenie; nie kwota; nie płatność paczką |
 | transport drogowy | road_transport | 41.0 tablica `location` lądowa; 108.0 odcinek `shipment_leg` road; nie TMS; nie GPS |
-| punkt operacyjny | stop | T1; ZA/WY na zleceniu; miejsce ze słownika; 213.0 opcjonalny `stop_group_code`; nie mapa |
+| punkt operacyjny | stop | T1; ZA/WY na zleceniu; miejsce ze słownika; 213.0 opcjonalny `stop_group_code`; 215.0 opcjonalny `notes_for_driver`; nie mapa |
 | zasób floty | resource | T2; pojazd / kierowca / naczepa; nie trip |
 | przejazd | trip | T2; status + opcjonalny zasób; 212.0 opcjonalny `driver2_id`; 214.0 opcjonalny `route_label`; 167.0 snapshot `expected_buy`; nie km; nie wariancja |
 | snapshot kosztu kupna | expected_buy | P5 freeze Decimal na `trip` przy `in_transit`/`completed`; nie marża; nie SQL na `charge` |

@@ -11,6 +11,7 @@ _STATUSES = frozenset({"pending", "at_stop", "completed", "failed"})
 _ZONE = re.compile(r"^[A-Za-z_]+/[A-Za-z0-9_+-]+(?:/[A-Za-z0-9_+-]+)?$")
 _GROUP = re.compile(r"^[A-Za-z0-9_-]{2,32}$")
 _MAX_REF = 256
+_MAX_NOTES = 256
 _FIXTURE = "fixture://stop/"
 _MANUAL = "tenant:manual"
 
@@ -85,6 +86,19 @@ def require_stop_group_code(raw: object) -> str | None:
         return None
     if _GROUP.fullmatch(token) is None:
         raise InvalidStop("nieznana grupa punktów")
+    return token
+
+
+def require_notes_for_driver(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidStop("notatka dla kierowcy musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    if len(token) > _MAX_NOTES:
+        raise InvalidStop("notatka dla kierowcy za długa")
     return token
 
 

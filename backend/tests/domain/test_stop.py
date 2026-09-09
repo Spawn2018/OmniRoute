@@ -8,6 +8,7 @@ from app.domain.errors import InvalidStop
 from app.domain.stop import (
     require_eta_legal,
     require_eta_physical,
+    require_notes_for_driver,
     require_sequence_no,
     require_stop_group_code,
     require_stop_kind,
@@ -63,3 +64,14 @@ def test_stop_group_code_rejects_loose_token() -> None:
         require_stop_group_code("x")
     with pytest.raises(InvalidStop, match="grupa"):
         require_stop_group_code("has space")
+
+
+def test_notes_for_driver_omits_blank_and_keeps_token() -> None:
+    assert require_notes_for_driver(None) is None
+    assert require_notes_for_driver("  ") is None
+    assert require_notes_for_driver(" brama B ") == "brama B"
+
+
+def test_notes_for_driver_rejects_too_long() -> None:
+    with pytest.raises(InvalidStop, match="notatka"):
+        require_notes_for_driver("x" * 257)

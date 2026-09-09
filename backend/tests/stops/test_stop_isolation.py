@@ -261,3 +261,37 @@ async def test_stop_rejects_loose_group_code(session, two_tenants) -> None:
     )
     with pytest.raises(IntegrityError):
         await session.flush()
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_stop_notes_for_driver_same_tenant(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    user_a = two_tenants["user_a"]
+    await bind_tenant(session, org_a.id)
+    ship_a = await _booked(session, organization_id=org_a.id, user_id=user_a.id, suffix="nt")
+    loc_a = _zone(organization_id=org_a.id, created_by=user_a.id, code="PL-N", name="Strefa N")
+    session.add(loc_a)
+    await session.flush()
+    session.add(
+        Stop(
+            id=uuid4(),
+            organization_id=org_a.id,
+            shipment_id=ship_a.id,
+            location_id=loc_a.id,
+            stop_kind="loading",
+            sequence_no=1,
+            time_zone="Europe/Warsaw",
+            status="pending",
+            source_ref="fixture://stop/n1",
+            notes_for_driver="brama B, dzwonek 2",
+            eta_physical=_CLOCK,
+            eta_legal=_CLOCK,
+            created_by=user_a.id,
+        ),
+    )
+    await session.flush()
+    session.expunge_all()
+    await bind_tenant(session, org_a.id)
+    loaded = list((await session.scalars(select(Stop))).all())
+    assert loaded[0].notes_for_driver == "brama B, dzwonek 2"

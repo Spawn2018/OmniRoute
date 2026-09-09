@@ -20542,6 +20542,17 @@
               }
             ],
             "title": "Stop Group Code"
+          },
+          "notes_for_driver": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notes For Driver"
           }
         },
         "additionalProperties": false,
@@ -20622,6 +20633,17 @@
             ],
             "title": "Stop Group Code"
           },
+          "notes_for_driver": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notes For Driver"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -20649,6 +20671,7 @@
           "eta_physical",
           "eta_legal",
           "stop_group_code",
+          "notes_for_driver",
           "superseded_by"
         ],
         "title": "StopResponse"

@@ -8,6 +8,7 @@ from app.domain.errors import ResourceNotFound
 from app.domain.stop import (
     require_eta_legal,
     require_eta_physical,
+    require_notes_for_driver,
     require_sequence_no,
     require_stop_group_code,
     require_stop_kind,
@@ -31,6 +32,7 @@ class _PackedPoint:
     state: str
     origin: str
     group_code: str | None
+    driver_notes: str | None
     physical: datetime
     legal: datetime
 
@@ -47,6 +49,7 @@ def _pack_point(
     eta_physical: object,
     eta_legal: object,
     stop_group_code: object,
+    notes_for_driver: object,
 ) -> _PackedPoint:
     return _PackedPoint(
         order_id=require_stop_shipment_id(shipment_id),
@@ -57,6 +60,7 @@ def _pack_point(
         state=require_stop_status(status),
         origin=require_stop_source_ref(source_ref),
         group_code=require_stop_group_code(stop_group_code),
+        driver_notes=require_notes_for_driver(notes_for_driver),
         physical=require_eta_physical(eta_physical),
         legal=require_eta_legal(eta_legal),
     )
@@ -70,6 +74,7 @@ def _same_point(current: Stop, packed: _PackedPoint) -> bool:
         and current.status == packed.state
         and current.source_ref == packed.origin
         and current.stop_group_code == packed.group_code
+        and current.notes_for_driver == packed.driver_notes
         and current.eta_physical == packed.physical
         and current.eta_legal == packed.legal
     )
@@ -103,6 +108,7 @@ class StopService:
         eta_physical: object,
         eta_legal: object,
         stop_group_code: object = None,
+        notes_for_driver: object = None,
     ) -> Stop:
         packed = _pack_point(
             shipment_id=shipment_id,
@@ -115,6 +121,7 @@ class StopService:
             eta_physical=eta_physical,
             eta_legal=eta_legal,
             stop_group_code=stop_group_code,
+            notes_for_driver=notes_for_driver,
         )
         current = await self._rows.find_current(packed.order_id, packed.seq)
         if current is not None and _same_point(current, packed):
@@ -137,6 +144,7 @@ class StopService:
                 status=packed.state,
                 source_ref=packed.origin,
                 stop_group_code=packed.group_code,
+                notes_for_driver=packed.driver_notes,
                 eta_physical=packed.physical,
                 eta_legal=packed.legal,
                 created_by=user_id,
