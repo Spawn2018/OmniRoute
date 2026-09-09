@@ -35,6 +35,8 @@ class ShipmentLegCreate(BaseModel):
     destination_location_id: UUID
     source_ref: str
     leg_kind: str = "road"
+    hawb_no: str | None = None
+    mawb_no: str | None = None
 
 
 class ShipmentLegResponse(BaseModel):
@@ -46,6 +48,8 @@ class ShipmentLegResponse(BaseModel):
     origin_location_id: UUID
     destination_location_id: UUID
     leg_kind: str
+    hawb_no: str | None
+    mawb_no: str | None
     source_ref: str
 
 
@@ -78,6 +82,8 @@ async def create_shipment_leg(
         destination_location_id=destination.id,
         source_ref=body.source_ref,
         leg_kind=kind,
+        hawb_no=body.hawb_no,
+        mawb_no=body.mawb_no,
     )
     await session.commit()
     return ShipmentLegResponse.model_validate(row)

@@ -49,6 +49,28 @@ class ShipmentLeg(Base, TimestampMixin):
             "leg_kind",
             name="uq_shipment_leg_org_kind",
         ),
+        CheckConstraint(
+            "hawb_no IS NULL OR hawb_no ~ '^[A-Za-z0-9-]{2,32}$'",
+            name="ck_shipment_leg_hawb_no",
+        ),
+        CheckConstraint(
+            "mawb_no IS NULL OR mawb_no ~ '^[A-Za-z0-9-]{2,32}$'",
+            name="ck_shipment_leg_mawb_no",
+        ),
+        CheckConstraint(
+            "(hawb_no IS NULL AND mawb_no IS NULL) OR leg_kind = 'air'",
+            name="ck_shipment_leg_air_waybill",
+        ),
+        UniqueConstraint(
+            "organization_id",
+            "hawb_no",
+            name="uq_shipment_leg_org_hawb",
+        ),
+        UniqueConstraint(
+            "organization_id",
+            "mawb_no",
+            name="uq_shipment_leg_org_mawb",
+        ),
         Index("ix_shipment_leg_org_shipment", "organization_id", "shipment_id"),
     )
 
@@ -61,4 +83,6 @@ class ShipmentLeg(Base, TimestampMixin):
     origin_location_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), nullable=False)
     destination_location_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), nullable=False)
     leg_kind: Mapped[str] = mapped_column(String(16), nullable=False)
+    hawb_no: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    mawb_no: Mapped[str | None] = mapped_column(String(32), nullable=True)
     source_ref: Mapped[str] = mapped_column(String(256), nullable=False)

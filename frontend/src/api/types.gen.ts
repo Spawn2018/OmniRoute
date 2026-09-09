@@ -5248,6 +5248,14 @@ export type ShipmentLegCreate = {
      * Leg Kind
      */
     leg_kind?: string;
+    /**
+     * Hawb No
+     */
+    hawb_no?: string | null;
+    /**
+     * Mawb No
+     */
+    mawb_no?: string | null;
 };
 
 /**
@@ -5278,6 +5286,14 @@ export type ShipmentLegResponse = {
      * Leg Kind
      */
     leg_kind: string;
+    /**
+     * Hawb No
+     */
+    hawb_no: string | null;
+    /**
+     * Mawb No
+     */
+    mawb_no: string | null;
     /**
      * Source Ref
      */

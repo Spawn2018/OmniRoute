@@ -20105,6 +20105,28 @@
             "type": "string",
             "title": "Leg Kind",
             "default": "road"
+          },
+          "hawb_no": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hawb No"
+          },
+          "mawb_no": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mawb No"
           }
         },
         "additionalProperties": false,
@@ -20148,6 +20170,28 @@
             "type": "string",
             "title": "Leg Kind"
           },
+          "hawb_no": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hawb No"
+          },
+          "mawb_no": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mawb No"
+          },
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
@@ -20161,6 +20205,8 @@
           "origin_location_id",
           "destination_location_id",
           "leg_kind",
+          "hawb_no",
+          "mawb_no",
           "source_ref"
         ],
         "title": "ShipmentLegResponse"

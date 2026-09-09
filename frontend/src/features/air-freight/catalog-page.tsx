@@ -24,7 +24,7 @@ export function AirPage() {
     <section className="flex flex-col gap-3" data-air="run">
       <CatalogHeading
         title="Lotniczy"
-        subtitle="air U3 · odcinek shipment_leg air · lotnisko = port z airport · nie HAWB"
+        subtitle="air U3 · odcinek shipment_leg air · opcjonalny HAWB/MAWB · nie pula IATA"
       />
       {!ready ? <TenantSessionNotice /> : null}
       {listed.isError ? <CatalogError error={listed.error} /> : null}

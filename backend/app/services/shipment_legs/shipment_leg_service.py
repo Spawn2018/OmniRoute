@@ -5,6 +5,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.errors import InvalidShipmentLeg
 from app.domain.shipment_leg import (
+    require_air_waybill_kind,
+    require_air_waybill_no,
     require_leg_kind,
     require_leg_location_id,
     require_leg_shipment_id,
@@ -31,7 +33,13 @@ class ShipmentLegService:
         destination_location_id: UUID,
         source_ref: str,
         leg_kind: str = "road",
+        hawb_no: object = None,
+        mawb_no: object = None,
     ) -> ShipmentLeg:
+        kind = require_leg_kind(leg_kind)
+        house = require_air_waybill_no(hawb_no)
+        master = require_air_waybill_no(mawb_no)
+        require_air_waybill_kind(kind, house, master)
         row = ShipmentLeg(
             id=uuid4(),
             organization_id=organization_id,
@@ -42,7 +50,9 @@ class ShipmentLegService:
             destination_location_id=require_leg_location_id(
                 destination_location_id, field="destination_location_id",
             ),
-            leg_kind=require_leg_kind(leg_kind),
+            leg_kind=kind,
+            hawb_no=house,
+            mawb_no=master,
             source_ref=require_leg_source_ref(source_ref),
             created_by=user_id,
         )

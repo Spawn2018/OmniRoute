@@ -61,7 +61,7 @@
 | szablon opłat | charge_template | 164.0 kolekcja `charge_code` + daty; 206.0 exclusion daterange; nie `charge` |
 | indeks paliwowy | fuel_index | 165.0 katalog FSC/BAF/CAF obok `nbp_rate`; nie przeliczenie na `charge` |
 | dopłata lokalna | local_charge | 166.0 THC/ISPS/seal/amendment + Decimal; 207.0 opcjonalny `port_unlocode`; 208.0 opcjonalny `iso_size_type`; nie warning; nie `port_surcharge` |
-| lotniczy | air | 154.0 odcinek `shipment_leg` air; lotnisko = `port` z `airport` w `function_flags`; nie HAWB; nie IATA |
+| lotniczy | air | 154.0 odcinek `shipment_leg` air; 209.0 opcjonalny `hawb_no`/`mawb_no`; lotnisko = `port` z `airport`; nie pula IATA |
 | reklamacja ładunku | cargo_claim | 113.0 tabela na zleceniu; 191.0 HITL OS&D + terminy CMR; nie kwota; nie silnik 7/21/365 |
 | oszustwo | fraud_flag | 114.0 tabela na kontrahencie; nie scoring osoby; nie kwota |
 | sankcje | sanctions | 45.0 tablica aktywnych `party`; 89.0 sprawdzenie `sanctions_list_ref` na karcie; nie auto-match; nie live lista |

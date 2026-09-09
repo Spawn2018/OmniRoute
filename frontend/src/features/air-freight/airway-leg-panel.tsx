@@ -10,6 +10,8 @@ type AirDraft = {
   originId: string
   destId: string
   sourceRef: string
+  hawbNo: string
+  mawbNo: string
 }
 
 const EMPTY_AIR: AirDraft = {
@@ -17,15 +19,21 @@ const EMPTY_AIR: AirDraft = {
   originId: "",
   destId: "",
   sourceRef: "fixture://shipment-leg/",
+  hawbNo: "",
+  mawbNo: "",
 }
 
 function persistAir(draft: AirDraft) {
+  const hawb = draft.hawbNo.trim()
+  const mawb = draft.mawbNo.trim()
   return saveShipmentLeg({
     leg_kind: "air",
     shipment_id: draft.shipmentId.trim(),
     origin_location_id: draft.originId.trim(),
     destination_location_id: draft.destId.trim(),
     source_ref: draft.sourceRef.trim(),
+    ...(hawb !== "" ? { hawb_no: hawb } : {}),
+    ...(mawb !== "" ? { mawb_no: mawb } : {}),
   })
 }
 
@@ -85,6 +93,30 @@ function AirwayFields(args: { draft: AirDraft; patch: (next: AirDraft) => void }
           required
         />
       </label>
+      <label className="text-xs">
+        HAWB
+        <input
+          aria-label="Numer HAWB"
+          className="border-input mt-1 h-8 w-full rounded-md border px-2 font-mono text-xs"
+          name="hawb_no"
+          value={args.draft.hawbNo}
+          onChange={(event) =>
+            args.patch({ ...args.draft, hawbNo: event.currentTarget.value })
+          }
+        />
+      </label>
+      <label className="text-xs">
+        MAWB
+        <input
+          aria-label="Numer MAWB"
+          className="border-input mt-1 h-8 w-full rounded-md border px-2 font-mono text-xs"
+          name="mawb_no"
+          value={args.draft.mawbNo}
+          onChange={(event) =>
+            args.patch({ ...args.draft, mawbNo: event.currentTarget.value })
+          }
+        />
+      </label>
     </fieldset>
   )
 }
@@ -109,7 +141,7 @@ function AirwaySaveForm(args: { organizationId: string | null }) {
       }}
     >
       <p className="text-xs text-muted-foreground">
-        Dwa lotniska z flagą airport. Nie HAWB. Nie IATA.
+        Dwa lotniska z flagą airport. Opcjonalny HAWB/MAWB. Nie pula. Nie IATA.
       </p>
       <AirwayFields draft={draft} patch={setDraft} />
       <Button type="submit" disabled={persist.isPending || !args.organizationId}>
@@ -134,7 +166,9 @@ function AirwayLegRows(args: { organizationId: string | null }) {
       <ul data-air="legs">
         {air.map((row) => (
           <li key={row.id} className="font-mono text-xs">
-            {row.shipment_id} · {row.origin_location_id} → {row.destination_location_id}{" "}
+            {row.shipment_id} · {row.origin_location_id} → {row.destination_location_id}
+            {row.hawb_no ? ` · HAWB ${row.hawb_no}` : ""}
+            {row.mawb_no ? ` · MAWB ${row.mawb_no}` : ""}{" "}
             <Link className="underline" to="/shipments">
               zlecenie
             </Link>

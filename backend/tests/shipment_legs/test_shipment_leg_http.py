@@ -6,7 +6,11 @@ from fastapi.testclient import TestClient
 
 from app.api.deps import require_tenant_session, set_authz_checker
 from app.domain.errors import ResourceNotFound
-from app.domain.shipment_leg import require_leg_source_ref
+from app.domain.shipment_leg import (
+    require_air_waybill_kind,
+    require_air_waybill_no,
+    require_leg_source_ref,
+)
 from app.main import app
 from app.models.shipment_leg import ShipmentLeg
 from tests.http_auth import bearer_auth_headers
@@ -107,6 +111,8 @@ class StubShipmentLegService:
         destination_location_id: UUID,
         source_ref: str,
         leg_kind: str = "road",
+        hawb_no: object = None,
+        mawb_no: object = None,
     ) -> ShipmentLeg:
         row = ShipmentLeg(
             id=uuid4(),
@@ -115,9 +121,12 @@ class StubShipmentLegService:
             origin_location_id=origin_location_id,
             destination_location_id=destination_location_id,
             leg_kind=leg_kind,
+            hawb_no=require_air_waybill_no(hawb_no),
+            mawb_no=require_air_waybill_no(mawb_no),
             source_ref=require_leg_source_ref(source_ref),
             created_by=user_id,
         )
+        require_air_waybill_kind(leg_kind, row.hawb_no, row.mawb_no)
         self.rows.append(row)
         return row
 
@@ -480,7 +489,64 @@ def test_http_create_air_leg(catalog_client: object) -> None:
     assert created.status_code == 201
     assert created.json()["leg_kind"] == "air"
     assert "amount" not in created.json()
-    assert "hawb" not in created.json()
+    assert created.json()["hawb_no"] is None
+    assert created.json()["mawb_no"] is None
+
+
+def test_http_create_air_with_waybill_tokens(catalog_client: object) -> None:
+    client, ship, _origin, _dest, _port_loc, _rail_o, _rail_d, _cn_o, _cn_d = catalog_client
+    created = client.post(
+        "/api/v1/shipment-legs",
+        headers=bearer_auth_headers(),
+        json={
+            "shipment_id": str(ship.id),
+            "origin_location_id": str(ship.air_origin_id),
+            "destination_location_id": str(ship.air_dest_id),
+            "source_ref": "fixture://shipment-leg/air",
+            "leg_kind": "air",
+            "hawb_no": "HAWB-1",
+            "mawb_no": "020-12345675",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["hawb_no"] == "HAWB-1"
+    assert created.json()["mawb_no"] == "020-12345675"
+
+
+def test_http_create_air_bad_waybill_is_400(catalog_client: object) -> None:
+    client, ship, _origin, _dest, _port_loc, _rail_o, _rail_d, _cn_o, _cn_d = catalog_client
+    response = client.post(
+        "/api/v1/shipment-legs",
+        headers=bearer_auth_headers(),
+        json={
+            "shipment_id": str(ship.id),
+            "origin_location_id": str(ship.air_origin_id),
+            "destination_location_id": str(ship.air_dest_id),
+            "source_ref": "fixture://shipment-leg/air",
+            "leg_kind": "air",
+            "hawb_no": "HAWB 1",
+        },
+    )
+    assert response.status_code == 400
+    assert "numer" in response.json()["detail"]
+
+
+def test_http_create_road_with_hawb_is_400(catalog_client: object) -> None:
+    client, ship, origin, dest, _port_loc, _rail_o, _rail_d, _cn_o, _cn_d = catalog_client
+    response = client.post(
+        "/api/v1/shipment-legs",
+        headers=bearer_auth_headers(),
+        json={
+            "shipment_id": str(ship.id),
+            "origin_location_id": str(origin.id),
+            "destination_location_id": str(dest.id),
+            "source_ref": "fixture://shipment-leg/road-hawb",
+            "leg_kind": "road",
+            "hawb_no": "HAWB-1",
+        },
+    )
+    assert response.status_code == 400
+    assert "list" in response.json()["detail"]
 
 
 def test_http_create_air_without_airport_flag_is_400(catalog_client: object) -> None:

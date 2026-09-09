@@ -65,7 +65,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **158.0 leftover:** POD/ROD jako `shipment_document` (D4b; `pod` koliduje z portem wyładunku); Decimal / rozliczenie pobrań = Fala F. Tu tylko znacznik `collection_status` bez kwoty.
 - **157.0 leftover:** sloty/drzwi doków / overnight (D3b); yard/EIR (G15); T8 `terminal_appointment`. Tu tylko okno TIME na `stop` magazynu (`postal_zone`/`address`). Nie WMS.
 - **156.0 leftover:** kamera / WMS / SSCC / `shipment_ref` (D9); auto-link bez QR Omni. Tu tylko skan Omni + `stop` trasy.
-- **154.0 leftover:** HAWB/MAWB / pule M-03; e-rates IATA; live IATA. Tu tylko `leg_kind=air` + `airport` w flags. Nie list.
+- **154.0 leftover:** pule M-03; e-rates IATA; live IATA. HAWB/MAWB = 209.0 token na `air`. Tu `leg_kind=air` + `airport` w flags.
 - **152.0 leftover:** `driver2_id` / multi-manning; Decimal km / freeze kosztu; `stop_group`; `party_id`; `/fleet` / HW. Tu tylko status + opcjonalny slot floty. Nie km.
 - **149.0 leftover:** V5 hub GPS / `observation_ends_at` / 3 dni robocze trip. Tu tylko katalog + SQL `is_working_day`. Nie NBP.
 - **143.0 leftover:** auto-INSERT notice z inquiry (zakaz M-34); cron/Graph send. Data ciszy to pole, nie wyliczenie. Kalendarz U4 jest (149.0); N5 nie woła `is_working_day`.

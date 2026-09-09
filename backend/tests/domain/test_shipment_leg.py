@@ -7,6 +7,8 @@ from hypothesis import strategies as st
 from app.domain.errors import InvalidShipmentLeg
 from app.domain.shipment_leg import (
     require_air_port_flag,
+    require_air_waybill_kind,
+    require_air_waybill_no,
     require_china_rail_country,
     require_distinct_ends,
     require_leg_kind,
@@ -100,3 +102,23 @@ def test_require_air_port_flag_rejects_sea_only() -> None:
     with pytest.raises(InvalidShipmentLeg, match="flagi airport"):
         require_air_port_flag(["port"])
     require_air_port_flag(["port", "airport"])
+
+
+@given(st.sampled_from(["020-12345675", "HAWB-1", "awb9"]))
+def test_air_waybill_keeps_carrier_token(raw: str) -> None:
+    assert require_air_waybill_no(raw) == raw
+    assert require_air_waybill_no(None) is None
+    assert require_air_waybill_no("") is None
+
+
+@given(st.sampled_from(["X", "HAWB 1", "a" * 33, "hawb_west"]))
+def test_air_waybill_rejects_non_carrier_token(raw: str) -> None:
+    with pytest.raises(InvalidShipmentLeg, match="numer"):
+        require_air_waybill_no(raw)
+
+
+def test_air_waybill_rejects_non_air_kind() -> None:
+    with pytest.raises(InvalidShipmentLeg, match="list"):
+        require_air_waybill_kind("road", "HAWB-1", None)
+    require_air_waybill_kind("air", "HAWB-1", "020-12345675")
+    require_air_waybill_kind("road", None, None)

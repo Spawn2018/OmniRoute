@@ -8,6 +8,8 @@ export type ShipmentLegRow = {
   origin_location_id: string
   destination_location_id: string
   leg_kind: string
+  hawb_no: string | null
+  mawb_no: string | null
   source_ref: string
 }
 
@@ -28,6 +30,8 @@ export async function saveShipmentLeg(payload: {
   destination_location_id: string
   source_ref: string
   leg_kind?: string
+  hawb_no?: string
+  mawb_no?: string
 }): Promise<ShipmentLegRow> {
   const auth = requireAuthHeaders()
   const reply = await fetch(LEGS_PATH, {

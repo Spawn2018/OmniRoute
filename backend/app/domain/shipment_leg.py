@@ -1,3 +1,4 @@
+import re
 from uuid import UUID
 
 from app.domain.errors import InvalidShipmentLeg
@@ -16,6 +17,7 @@ _CN = "CN"
 _LAND = frozenset({LocationKind.POSTAL_ZONE.value, LocationKind.ADDRESS.value})
 _RAIL_FLAG = "rail"
 _AIR_FLAG = "airport"
+_WAYBILL = re.compile(r"^[A-Za-z0-9-]{2,32}$")
 
 
 def require_leg_shipment_id(raw: object) -> UUID:
@@ -98,6 +100,30 @@ def require_air_port_flag(flags: object) -> None:
         raise InvalidShipmentLeg("flagi portu muszą być listą")
     if _AIR_FLAG not in flags:
         raise InvalidShipmentLeg("port bez flagi airport nie jest odcinkiem lotniczym")
+
+
+def require_air_waybill_no(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidShipmentLeg("numer musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    if _WAYBILL.fullmatch(token) is None:
+        raise InvalidShipmentLeg("numer listu lotniczego: 2–32 litery cyfry myślnik")
+    return token
+
+
+def require_air_waybill_kind(
+    leg_kind: str,
+    hawb_no: str | None,
+    mawb_no: str | None,
+) -> None:
+    if hawb_no is None and mawb_no is None:
+        return
+    if leg_kind != _AIR:
+        raise InvalidShipmentLeg("list lotniczy tylko na odcinku air")
 
 
 def require_leg_source_ref(raw: object) -> str:

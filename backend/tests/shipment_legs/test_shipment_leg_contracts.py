@@ -102,3 +102,19 @@ def test_migration_094_widens_leg_kind_to_air() -> None:
         encoding="utf-8",
     )
     assert "ocean_lcl', 'air')" in model
+
+
+def test_migration_149_adds_optional_air_waybill() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "149_shipment_leg_air_waybill.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "149_shipment_leg_air_waybill"' in source
+    assert 'down_revision: str | None = "148_local_charge_iso"' in source
+    assert "hawb_no" in source
+    assert "mawb_no" in source
+    assert "ck_shipment_leg_air_waybill" in source
+    assert "uq_shipment_leg_org_hawb" in source
+    assert "uq_shipment_leg_org_mawb" in source
+    assert "create_table" not in source
+    assert "httpx" not in source
+    assert "ocean_bill" not in source
