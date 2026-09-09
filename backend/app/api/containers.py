@@ -38,6 +38,7 @@ class ContainerCreate(BaseModel):
     reefer: object = False
     pickup_terminal: str | None = None
     return_terminal: str | None = None
+    bl_kind: str | None = None
 
 
 class ContainerResponse(BaseModel):
@@ -65,6 +66,7 @@ class ContainerResponse(BaseModel):
     reefer: bool
     pickup_terminal: str | None
     return_terminal: str | None
+    bl_kind: str | None
     superseded_by: UUID | None
 
 
@@ -94,6 +96,7 @@ def _write_from_body(body: ContainerCreate, shipment_id: UUID | None) -> _WriteB
         body.reefer,
         body.pickup_terminal,
         body.return_terminal,
+        body.bl_kind,
     )
 
 

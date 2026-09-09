@@ -10,6 +10,7 @@ _TYPE_LEN = 4
 _MAX_SEAL = 32
 _MAX_VESSEL = 128
 _MAX_MARK = 64
+_BL_KINDS = frozenset({"original", "seawaybill", "telex", "express"})
 
 
 def _iso6346_value(mark: str) -> int:
@@ -176,6 +177,19 @@ def require_pickup_terminal(raw: object) -> str | None:
 
 def require_return_terminal(raw: object) -> str | None:
     return require_pickup_terminal(raw)
+
+
+def require_container_bl_kind(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidContainer("rodzaj listu kontenera musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    if token not in _BL_KINDS:
+        raise InvalidContainer("rodzaj listu kontenera nieznany")
+    return token
 
 
 def require_container_ref_1(raw: object) -> str | None:

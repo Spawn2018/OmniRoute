@@ -13801,6 +13801,17 @@
               }
             ],
             "title": "Return Terminal"
+          },
+          "bl_kind": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Bl Kind"
           }
         },
         "additionalProperties": false,
@@ -14017,6 +14028,17 @@
             ],
             "title": "Return Terminal"
           },
+          "bl_kind": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Bl Kind"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -14054,6 +14076,7 @@
           "reefer",
           "pickup_terminal",
           "return_terminal",
+          "bl_kind",
           "superseded_by"
         ],
         "title": "ContainerResponse"

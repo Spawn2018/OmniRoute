@@ -1300,6 +1300,10 @@ export type ContainerCreate = {
      * Return Terminal
      */
     return_terminal?: string | null;
+    /**
+     * Bl Kind
+     */
+    bl_kind?: string | null;
 };
 
 /**
@@ -1394,6 +1398,10 @@ export type ContainerResponse = {
      * Return Terminal
      */
     return_terminal: string | null;
+    /**
+     * Bl Kind
+     */
+    bl_kind: string | null;
     /**
      * Superseded By
      */

@@ -45,7 +45,7 @@
 | zasób floty | resource | T2; pojazd / kierowca / naczepa; nie trip |
 | przejazd | trip | T2; status + opcjonalny zasób; 212.0 opcjonalny `driver2_id`; 214.0 opcjonalny `route_label`; 167.0 snapshot `expected_buy`; nie km; nie wariancja |
 | snapshot kosztu kupna | expected_buy | P5 freeze Decimal na `trip` przy `in_transit`/`completed`; nie marża; nie SQL na `charge` |
-| kontener | container | T3; ISO 6346 + iso_size_type; 216.0–218.0 trzy plomby; 219.0 `vessel_name`; 220.0 `voyage_no`; 221.0 `remarks`; 222.0 `cargo_description`; 223.0 `packaging_code`; 224.0 `ref_1`; 225.0 `ref_2`; 226.0 `ref_3`; 227.0 `ref_4`; 228.0 `ref_5`; 229.0 `reefer`; 230.0 `pickup_terminal`; 231.0 `return_terminal`; nie temperatura; nie FK terminalu; nie VGM; nie PIN; nie booking |
+| kontener | container | T3; ISO 6346 + iso_size_type; 216.0–218.0 trzy plomby; 219.0 `vessel_name`; 220.0 `voyage_no`; 221.0 `remarks`; 222.0 `cargo_description`; 223.0 `packaging_code`; 224.0 `ref_1`; 225.0 `ref_2`; 226.0 `ref_3`; 227.0 `ref_4`; 228.0 `ref_5`; 229.0 `reefer`; 230.0 `pickup_terminal`; 231.0 `return_terminal`; 232.0 `bl_kind` (nie HBL); nie temperatura; nie FK terminalu; nie VGM; nie PIN; nie booking |
 | odcinek | shipment_leg | 108.0 `road` · 109.0 `rail` · 110.0 `china_rail` · 111.0 `ocean_lcl` · 154.0 `air` na zleceniu; nie mapa; nie ETA |
 | kolej intermodalna | intermodal_rail | 42.0 tablica `port` z flagą `rail`; 109.0 odcinek `shipment_leg` rail; nie wagon; nie CIM |
 | kolej z Chin | china_rail | 43.0 tablica `port` CN z flagą `rail`; 110.0 odcinek `shipment_leg` china_rail; nie korytarz; nie HTTP |

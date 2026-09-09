@@ -285,6 +285,22 @@ def test_migration_170_adds_return_terminal_without_fk() -> None:
     assert "return_terminal" in source.split("def downgrade")[1]
 
 
+def test_migration_171_adds_bl_kind_without_hbl() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "171_container_bl_kind.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "171_container_bl_kind"' in source
+    assert 'down_revision: str | None = "170_container_return_terminal"' in source
+    assert "bl_kind" in source
+    assert "ocean_bill" not in source
+    assert "hbl" not in source.casefold()
+    assert "pin_code" not in source
+    assert "vgm" not in source.casefold()
+    assert "create_table" not in source
+    assert "def downgrade" in source
+    assert "bl_kind" in source.split("def downgrade")[1]
+
+
 def test_generated_api_types_include_container() -> None:
     source = (_ROOT / "frontend" / "src" / "api" / "types.gen.ts").read_text(encoding="utf-8")
     assert "ContainerResponse" in source
@@ -301,3 +317,4 @@ def test_generated_api_types_include_container() -> None:
     assert "reefer" in source
     assert "pickup_terminal" in source
     assert "return_terminal" in source
+    assert "bl_kind" in source

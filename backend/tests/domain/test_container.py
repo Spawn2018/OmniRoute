@@ -4,6 +4,7 @@ from hypothesis import strategies as st
 
 from app.domain.container import (
     require_cargo_description,
+    require_container_bl_kind,
     require_container_no,
     require_container_reefer,
     require_container_ref_1,
@@ -157,6 +158,15 @@ def test_return_terminal_reuses_same_terminal_rule() -> None:
     assert require_return_terminal("  ECT ") == "ECT"
     with pytest.raises(InvalidContainer, match="terminal"):
         require_return_terminal("x" * 33)
+
+
+def test_container_bl_kind_keeps_allowlist_and_rejects_hbl() -> None:
+    assert require_container_bl_kind(None) is None
+    assert require_container_bl_kind("  ") is None
+    assert require_container_bl_kind(" original ") == "original"
+    assert require_container_bl_kind("seawaybill") == "seawaybill"
+    with pytest.raises(InvalidContainer, match="list"):
+        require_container_bl_kind("hbl")
 
 
 @given(st.sampled_from(["CSQU3054384", "MSCU1234567", "ABCD"]))

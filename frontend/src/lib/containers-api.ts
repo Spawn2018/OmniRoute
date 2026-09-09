@@ -24,6 +24,7 @@ export type ContainerRow = {
   reefer: boolean
   pickup_terminal: string | null
   return_terminal: string | null
+  bl_kind: string | null
   superseded_by: string | null
 }
 
@@ -48,6 +49,7 @@ export type ContainerWrite = {
   reefer: boolean
   pickup_terminal?: string | null
   return_terminal?: string | null
+  bl_kind?: string | null
 }
 
 const PATH = "/api/v1/containers"

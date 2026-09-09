@@ -51,6 +51,7 @@ class Container(Base, TimestampMixin):
     )
     pickup_terminal: Mapped[str | None] = mapped_column(String(32), nullable=True)
     return_terminal: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    bl_kind: Mapped[str | None] = mapped_column(String(16), nullable=True)
     superseded_by: Mapped[uuid.UUID | None] = mapped_column(
         UUID(as_uuid=True),
         ForeignKey("container.id", ondelete="RESTRICT"),
