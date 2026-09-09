@@ -430,3 +430,27 @@ async def test_container_reefer_same_tenant(session, two_tenants) -> None:
     await bind_tenant(session, org_a.id)
     loaded = list((await session.scalars(select(Container))).all())
     assert loaded[0].reefer is True
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_container_pickup_terminal_same_tenant(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    user_a = two_tenants["user_a"]
+    await bind_tenant(session, org_a.id)
+    session.add(
+        Container(
+            id=uuid4(),
+            organization_id=org_a.id,
+            container_no="CSQU3054383",
+            iso_size_type="22G1",
+            source_ref="fixture://container/dock",
+            pickup_terminal="GCT",
+            created_by=user_a.id,
+        ),
+    )
+    await session.flush()
+    session.expunge_all()
+    await bind_tenant(session, org_a.id)
+    loaded = list((await session.scalars(select(Container))).all())
+    assert loaded[0].pickup_terminal == "GCT"

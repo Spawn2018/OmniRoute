@@ -1292,6 +1292,10 @@ export type ContainerCreate = {
      * Reefer
      */
     reefer?: unknown;
+    /**
+     * Pickup Terminal
+     */
+    pickup_terminal?: string | null;
 };
 
 /**
@@ -1378,6 +1382,10 @@ export type ContainerResponse = {
      * Reefer
      */
     reefer: boolean;
+    /**
+     * Pickup Terminal
+     */
+    pickup_terminal: string | null;
     /**
      * Superseded By
      */

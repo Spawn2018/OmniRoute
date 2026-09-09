@@ -22,6 +22,7 @@ export type ContainerRow = {
   ref_4: string | null
   ref_5: string | null
   reefer: boolean
+  pickup_terminal: string | null
   superseded_by: string | null
 }
 
@@ -44,11 +45,12 @@ export type ContainerWrite = {
   ref_4: string | null
   ref_5: string | null
   reefer: boolean
+  pickup_terminal?: string | null
 }
 
 const PATH = "/api/v1/containers"
 
-function optionalToken(raw: string): string | null {
+export function optionalToken(raw: string): string | null {
   const token = raw.trim()
   return token === "" ? null : token
 }

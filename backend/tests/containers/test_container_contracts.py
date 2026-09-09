@@ -253,6 +253,22 @@ def test_migration_168_adds_reefer_without_temperature() -> None:
     assert "reefer" in source.split("def downgrade")[1]
 
 
+def test_migration_169_adds_pickup_terminal_without_fk() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "169_container_pickup_terminal.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "169_container_pickup_terminal"' in source
+    assert 'down_revision: str | None = "168_container_reefer"' in source
+    assert "pickup_terminal" in source
+    assert "pickup_terminal_id" not in source
+    assert "carrier_party" not in source
+    assert "pin_code" not in source
+    assert "vgm" not in source.casefold()
+    assert "create_table" not in source
+    assert "def downgrade" in source
+    assert "pickup_terminal" in source.split("def downgrade")[1]
+
+
 def test_generated_api_types_include_container() -> None:
     source = (_ROOT / "frontend" / "src" / "api" / "types.gen.ts").read_text(encoding="utf-8")
     assert "ContainerResponse" in source
@@ -265,5 +281,5 @@ def test_generated_api_types_include_container() -> None:
     assert "ref_2" in source
     assert "ref_3" in source
     assert "ref_4" in source
-    assert "ref_5" in source
     assert "reefer" in source
+    assert "pickup_terminal" in source

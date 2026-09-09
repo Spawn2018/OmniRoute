@@ -13779,6 +13779,17 @@
           "reefer": {
             "title": "Reefer",
             "default": false
+          },
+          "pickup_terminal": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pickup Terminal"
           }
         },
         "additionalProperties": false,
@@ -13973,6 +13984,17 @@
             "type": "boolean",
             "title": "Reefer"
           },
+          "pickup_terminal": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pickup Terminal"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -14008,6 +14030,7 @@
           "ref_4",
           "ref_5",
           "reefer",
+          "pickup_terminal",
           "superseded_by"
         ],
         "title": "ContainerResponse"

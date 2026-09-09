@@ -2,7 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { containerWrite, fetchContainers, saveContainer } from "@/lib/containers-api"
+import { containerWrite, fetchContainers, optionalToken, saveContainer } from "@/lib/containers-api"
 import { getTenantContext } from "@/lib/tenant"
 
 export function IsoContainerPanel(args: { signedIn: boolean }) {
@@ -25,6 +25,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
   const [mark4, setMark4] = useState("")
   const [mark5, setMark5] = useState("")
   const [cold, setCold] = useState(false)
+  const [dock, setDock] = useState("")
   const listed = useQuery({
     queryKey: ["containers", ctx.organizationId, sizeType],
     queryFn: () => fetchContainers(sizeType),
@@ -33,8 +34,8 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
   })
   const persist = useMutation({
     mutationFn: () =>
-      saveContainer(
-        containerWrite({
+      saveContainer({
+        ...containerWrite({
           number,
           sizeType,
           shipment,
@@ -53,7 +54,8 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
           mark5,
           cold,
         }),
-      ),
+        pickup_terminal: optionalToken(dock),
+      }),
     onSuccess: () => {
       void cache.invalidateQueries({ queryKey: ["containers", ctx.organizationId, sizeType] })
     },
@@ -63,7 +65,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
     <section className="grid gap-2 rounded-md border border-border p-3" data-container="iso">
       <h2 className="text-sm font-medium">Kontener ISO</h2>
       <p className="text-xs text-muted-foreground">
-        Numer z cyfrą kontrolną i typ 4 znaków. Opcjonalne plomby, statek, rejs, uwaga, ładunek, opakowanie, referencje i flaga chłodniczego. Nie temperatura. Nie VGM. Nie PIN. Nie booking.
+        Numer z cyfrą kontrolną i typ 4 znaków. Opcjonalne plomby, statek, rejs, uwaga, ładunek, opakowanie, referencje, flaga chłodniczego i terminal pobrania. Nie temperatura. Nie VGM. Nie PIN. Nie booking.
       </p>
       <label className="flex flex-col gap-1 text-xs">
         Numer ISO 6346
@@ -218,6 +220,15 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
         />
         Chłodniczy (reefer)
       </label>
+      <label className="flex flex-col gap-1 text-xs">
+        Terminal pobrania (opcjonalnie)
+        <Input
+          aria-label="Terminal pobrania kontenera"
+          placeholder="pickup_terminal"
+          value={dock}
+          onChange={(event) => setDock(event.target.value)}
+        />
+      </label>
       <Button type="button" disabled={blocked} onClick={() => persist.mutate()}>
         Zapisz kontener
       </Button>
@@ -242,6 +253,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
             {row.ref_4 !== null ? ` · ${row.ref_4}` : ""}
             {row.ref_5 !== null ? ` · ${row.ref_5}` : ""}
             {row.reefer ? " · chłodniczy" : ""}
+            {row.pickup_terminal !== null ? ` · ${row.pickup_terminal}` : ""}
           </li>
         ))}
       </ul>

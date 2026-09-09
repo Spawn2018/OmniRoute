@@ -15,6 +15,7 @@ from app.domain.container import (
     require_container_source_ref,
     require_iso_size_type,
     require_packaging_code,
+    require_pickup_terminal,
     require_seal_no_1,
     require_seal_no_2,
     require_seal_no_3,
@@ -141,6 +142,14 @@ def test_container_reefer_keeps_flag_and_rejects_token() -> None:
     assert require_container_reefer(False) is False
     with pytest.raises(InvalidContainer, match="chłodniczy"):
         require_container_reefer("true")  # type: ignore[arg-type]
+
+
+def test_pickup_terminal_omits_blank_and_keeps_token() -> None:
+    assert require_pickup_terminal(None) is None
+    assert require_pickup_terminal("  ") is None
+    assert require_pickup_terminal(" GCT ") == "GCT"
+    with pytest.raises(InvalidContainer, match="terminal"):
+        require_pickup_terminal("x" * 33)
 
 
 @given(st.sampled_from(["CSQU3054384", "MSCU1234567", "ABCD"]))
