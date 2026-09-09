@@ -21,6 +21,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
   const [pack, setPack] = useState("")
   const [mark, setMark] = useState("")
   const [mark2, setMark2] = useState("")
+  const [mark3, setMark3] = useState("")
   const listed = useQuery({
     queryKey: ["containers", ctx.organizationId, sizeType],
     queryFn: () => fetchContainers(sizeType),
@@ -44,6 +45,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
           pack,
           mark,
           mark2,
+          mark3,
         }),
       ),
     onSuccess: () => {
@@ -174,6 +176,15 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
           onChange={(event) => setMark2(event.target.value)}
         />
       </label>
+      <label className="flex flex-col gap-1 text-xs">
+        Referencja 3 (opcjonalnie)
+        <Input
+          aria-label="Referencja 3 kontenera"
+          placeholder="ref_3"
+          value={mark3}
+          onChange={(event) => setMark3(event.target.value)}
+        />
+      </label>
       <Button type="button" disabled={blocked} onClick={() => persist.mutate()}>
         Zapisz kontener
       </Button>
@@ -194,6 +205,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
             {row.packaging_code !== null ? ` · ${row.packaging_code}` : ""}
             {row.ref_1 !== null ? ` · ${row.ref_1}` : ""}
             {row.ref_2 !== null ? ` · ${row.ref_2}` : ""}
+            {row.ref_3 !== null ? ` · ${row.ref_3}` : ""}
           </li>
         ))}
       </ul>

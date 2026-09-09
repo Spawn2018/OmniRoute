@@ -1276,6 +1276,10 @@ export type ContainerCreate = {
      * Ref 2
      */
     ref_2?: string | null;
+    /**
+     * Ref 3
+     */
+    ref_3?: string | null;
 };
 
 /**
@@ -1346,6 +1350,10 @@ export type ContainerResponse = {
      * Ref 2
      */
     ref_2: string | null;
+    /**
+     * Ref 3
+     */
+    ref_3: string | null;
     /**
      * Superseded By
      */

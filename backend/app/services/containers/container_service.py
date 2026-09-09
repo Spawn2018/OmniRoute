@@ -8,6 +8,7 @@ from app.domain.container import (
     require_container_no,
     require_container_ref_1,
     require_container_ref_2,
+    require_container_ref_3,
     require_container_remarks,
     require_container_shipment_id,
     require_container_source_ref,
@@ -38,6 +39,7 @@ class _BoxDraft(NamedTuple):
     pack: str | None
     mark: str | None
     mark2: str | None
+    mark3: str | None
 
 
 def _box_draft(
@@ -55,6 +57,7 @@ def _box_draft(
     packaging_code: object,
     ref_1: object,
     ref_2: object,
+    ref_3: object,
 ) -> _BoxDraft:
     return _BoxDraft(
         require_container_no(container_no),
@@ -71,6 +74,7 @@ def _box_draft(
         require_packaging_code(packaging_code),
         require_container_ref_1(ref_1),
         require_container_ref_2(ref_2),
+        require_container_ref_3(ref_3),
     )
 
 
@@ -89,6 +93,7 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.packaging_code == draft.pack
         and current.ref_1 == draft.mark
         and current.ref_2 == draft.mark2
+        and current.ref_3 == draft.mark3
     )
 
 
@@ -110,6 +115,7 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         packaging_code=draft.pack,
         ref_1=draft.mark,
         ref_2=draft.mark2,
+        ref_3=draft.mark3,
         created_by=user_id,
     )
 
@@ -155,6 +161,7 @@ class ContainerService:
         packaging_code: object = None,
         ref_1: object = None,
         ref_2: object = None,
+        ref_3: object = None,
     ) -> Container:
         draft = _box_draft(
             container_no,
@@ -171,5 +178,6 @@ class ContainerService:
             packaging_code,
             ref_1,
             ref_2,
+            ref_3,
         )
         return await self._persist_box(organization_id, user_id, draft)

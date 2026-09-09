@@ -13742,6 +13742,17 @@
               }
             ],
             "title": "Ref 2"
+          },
+          "ref_3": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ref 3"
           }
         },
         "additionalProperties": false,
@@ -13899,6 +13910,17 @@
             ],
             "title": "Ref 2"
           },
+          "ref_3": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ref 3"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -13930,6 +13952,7 @@
           "packaging_code",
           "ref_1",
           "ref_2",
+          "ref_3",
           "superseded_by"
         ],
         "title": "ContainerResponse"

@@ -18,6 +18,7 @@ export type ContainerRow = {
   packaging_code: string | null
   ref_1: string | null
   ref_2: string | null
+  ref_3: string | null
   superseded_by: string | null
 }
 
@@ -36,11 +37,12 @@ export type ContainerWrite = {
   packaging_code: string | null
   ref_1: string | null
   ref_2: string | null
+  ref_3: string | null
 }
 
 const PATH = "/api/v1/containers"
 
-function optionalId(raw: string): string | null {
+function optionalToken(raw: string): string | null {
   const token = raw.trim()
   return token === "" ? null : token
 }
@@ -59,32 +61,24 @@ export function containerWrite(args: {
   pack: string
   mark: string
   mark2: string
+  mark3: string
 }): ContainerWrite {
-  const seal = args.seal.trim()
-  const seal2 = args.seal2.trim()
-  const seal3 = args.seal3.trim()
-  const vessel = args.vessel.trim()
-  const voyage = args.voyage.trim()
-  const note = args.note.trim()
-  const goods = args.goods.trim()
-  const pack = args.pack.trim()
-  const mark = args.mark.trim()
-  const mark2 = args.mark2.trim()
   return {
     container_no: args.number.trim(),
     iso_size_type: args.sizeType.trim(),
-    shipment_id: optionalId(args.shipment),
+    shipment_id: optionalToken(args.shipment),
     source_ref: "tenant:manual",
-    seal_no_1: seal === "" ? null : seal,
-    seal_no_2: seal2 === "" ? null : seal2,
-    seal_no_3: seal3 === "" ? null : seal3,
-    vessel_name: vessel === "" ? null : vessel,
-    voyage_no: voyage === "" ? null : voyage,
-    remarks: note === "" ? null : note,
-    cargo_description: goods === "" ? null : goods,
-    packaging_code: pack === "" ? null : pack,
-    ref_1: mark === "" ? null : mark,
-    ref_2: mark2 === "" ? null : mark2,
+    seal_no_1: optionalToken(args.seal),
+    seal_no_2: optionalToken(args.seal2),
+    seal_no_3: optionalToken(args.seal3),
+    vessel_name: optionalToken(args.vessel),
+    voyage_no: optionalToken(args.voyage),
+    remarks: optionalToken(args.note),
+    cargo_description: optionalToken(args.goods),
+    packaging_code: optionalToken(args.pack),
+    ref_1: optionalToken(args.mark),
+    ref_2: optionalToken(args.mark2),
+    ref_3: optionalToken(args.mark3),
   }
 }
 

@@ -32,6 +32,7 @@ class ContainerCreate(BaseModel):
     packaging_code: str | None = None
     ref_1: str | None = None
     ref_2: str | None = None
+    ref_3: str | None = None
 
 
 class ContainerResponse(BaseModel):
@@ -53,6 +54,7 @@ class ContainerResponse(BaseModel):
     packaging_code: str | None
     ref_1: str | None
     ref_2: str | None
+    ref_3: str | None
     superseded_by: UUID | None
 
 
@@ -103,6 +105,7 @@ async def create_container(
         packaging_code=body.packaging_code,
         ref_1=body.ref_1,
         ref_2=body.ref_2,
+        ref_3=body.ref_3,
     )
     await session.commit()
     return _as_response(row)

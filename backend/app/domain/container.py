@@ -176,3 +176,7 @@ def require_container_ref_1(raw: object) -> str | None:
 
 def require_container_ref_2(raw: object) -> str | None:
     return require_container_ref_1(raw)
+
+
+def require_container_ref_3(raw: object) -> str | None:
+    return require_container_ref_1(raw)
