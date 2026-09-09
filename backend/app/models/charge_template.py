@@ -17,15 +17,15 @@ from app.models.base import Base, TimestampMixin
 
 
 class ChargeTemplate(Base, TimestampMixin):
+    """Kolekcja kodów opłat z oknem dat.
+
+    Kolumna `validity_span` i wykluczanie nakładek żyją wyłącznie w bazie
+    (migracja 146): daterange z exclusion GiST, nie pętla w Pythonie.
+    """
+
     __tablename__ = "charge_template"
     __table_args__ = (
         UniqueConstraint("organization_id", "id", name="uq_charge_template_org_id"),
-        UniqueConstraint(
-            "organization_id",
-            "template_code",
-            "charge_code",
-            name="uq_charge_template_org_code_member",
-        ),
         ForeignKeyConstraint(
             ["organization_id", "charge_code"],
             ["charge_code.organization_id", "charge_code.code"],

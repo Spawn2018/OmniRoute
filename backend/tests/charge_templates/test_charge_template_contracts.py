@@ -53,3 +53,16 @@ def test_generated_api_types_include_charge_template() -> None:
     )
     assert "ChargeTemplateResponse" in source
     assert "ChargeTemplateCreate" in source
+
+
+def test_migration_146_excludes_overlapping_validity_span() -> None:
+    source = (_ROOT / "backend" / "alembic" / "versions" / "146_charge_template_span.py").read_text(
+        encoding="utf-8",
+    )
+    assert 'revision: str = "146_charge_template_span"' in source
+    assert 'down_revision: str | None = "145_rate_card_match"' in source
+    assert "validity_span" in source
+    assert "ex_charge_template_no_overlap" in source
+    assert "CREATE EXTENSION" not in source
+    assert "httpx" not in source
+    assert "def downgrade" in source

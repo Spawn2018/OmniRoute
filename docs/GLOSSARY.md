@@ -58,7 +58,7 @@
 | saldo palet | pallet_balance | 161.0 Chep/LPR na `party`; integer sztuk; nie giełda; nie depozyt |
 | szablon wydruku | document_template | 162.0 layout jako dane; nie `quotation_print_template`; nie PDF |
 | karta stawek | rate_card | 163.0 `applies_when` jako dane + Decimal; 205.0 równość GET matching; nie silnik WHEN/IF; nie `rate_line` |
-| szablon opłat | charge_template | 164.0 kolekcja `charge_code` + daty jako dane; nie exclusion; nie `charge` |
+| szablon opłat | charge_template | 164.0 kolekcja `charge_code` + daty; 206.0 exclusion daterange; nie `charge` |
 | indeks paliwowy | fuel_index | 165.0 katalog FSC/BAF/CAF obok `nbp_rate`; nie przeliczenie na `charge` |
 | dopłata lokalna | local_charge | 166.0 THC/ISPS/seal/amendment jako dane + Decimal; nie warning; nie `port_surcharge` |
 | lotniczy | air | 154.0 odcinek `shipment_leg` air; lotnisko = `port` z `airport` w `function_flags`; nie HAWB; nie IATA |

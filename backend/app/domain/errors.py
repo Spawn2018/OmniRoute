@@ -531,7 +531,7 @@ class InvalidRateCard(DomainError):
 
 
 class InvalidChargeTemplate(DomainError):
-    """Szablon opłat: kolekcja kodów + daty jako dane — nie exclusion."""
+    """Szablon opłat: kolekcja kodów + daty; nakładanie liczy baza."""
 
 
 class InvalidFuelIndex(DomainError):

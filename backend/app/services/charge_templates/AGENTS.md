@@ -1,6 +1,7 @@
 # BC charge_template (P2)
 
-Szablon opłat per tenant: kolekcja `charge_code` + daty jako dane. Nie exclusion, nie marża.
+Szablon opłat per tenant: kolekcja `charge_code` + daty jako dane.
+Nakładanie okien liczy Postgres (exclusion). Nie marża.
 
 ## Dozwolone zależności
 - `app.models.charge_template`
@@ -9,7 +10,7 @@ Szablon opłat per tenant: kolekcja `charge_code` + daty jako dane. Nie exclusio
 - `app.domain`
 
 ## Zakaz
-- import innych BC services (charges, rate_cards, rate_lines, quotations, charge_codes)
+- import innych BC services (charges, rate_cards, rate_lines, quotations, charge_codes, geography)
 - zapis `charge` / `rate_card` / `rate_line` / `charge_code`
-- exclusion GiST / nakładanie daterange
+- porównywanie okien dat w Pythonie
 - kwoty / marża / float / T-SQL / HTTP

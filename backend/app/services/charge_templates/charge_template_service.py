@@ -1,5 +1,6 @@
 from uuid import UUID, uuid4
 
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.charge_template import (
@@ -12,6 +13,8 @@ from app.domain.errors import InvalidChargeTemplate
 from app.models.charge_template import ChargeTemplate
 from app.repositories.charge_codes.charge_code_repository import ChargeCodeRepository
 from app.repositories.charge_templates.charge_template_repository import ChargeTemplateRepository
+
+_SPAN_CONSTRAINT = "ex_charge_template_no_overlap"
 
 
 class ChargeTemplateService:
@@ -48,4 +51,10 @@ class ChargeTemplateService:
             source_ref=require_template_source_ref(source_ref),
             created_by=user_id,
         )
-        return await self._rows.add(row)
+        try:
+            return await self._rows.add(row)
+        except IntegrityError as exc:
+            blob = f"{exc} {exc.orig}"
+            if _SPAN_CONSTRAINT in blob:
+                raise InvalidChargeTemplate("nakładanie okna ważności szablonu") from exc
+            raise

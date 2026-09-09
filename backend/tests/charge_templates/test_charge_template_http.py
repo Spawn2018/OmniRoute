@@ -54,10 +54,15 @@ class StubChargeTemplateService:
         if token not in _KNOWN:
             raise InvalidChargeTemplate("nieznany kod opłaty")
         start, end = require_validity_window(valid_from, valid_until)
+        pack = require_template_code(template_code)
+        for existing in self.rows:
+            same_member = existing.template_code == pack and existing.charge_code == token
+            if same_member and existing.valid_from <= end and start <= existing.valid_until:
+                raise InvalidChargeTemplate("nakładanie okna ważności szablonu")
         row = ChargeTemplate(
             id=uuid4(),
             organization_id=organization_id,
-            template_code=require_template_code(template_code),
+            template_code=pack,
             charge_code=token,
             valid_from=start,
             valid_until=end,
@@ -160,3 +165,45 @@ def test_http_create_template_foreign_source_ref_is_400(catalog_client: object) 
     )
     assert response.status_code == 400
     assert "obce" in response.json()["detail"]
+
+
+def test_http_sequential_windows_list_two_rows(catalog_client: object) -> None:
+    client, _rows = catalog_client
+    headers = bearer_auth_headers()
+    first = client.post(
+        "/api/v1/charge-templates",
+        headers=headers,
+        json=_payload(),
+    )
+    assert first.status_code == 201
+    second = client.post(
+        "/api/v1/charge-templates",
+        headers=headers,
+        json=_payload(
+            valid_from="2027-01-01",
+            valid_until="2027-12-31",
+            source_ref="fixture://charge-template/2",
+        ),
+    )
+    assert second.status_code == 201
+    listed = client.get("/api/v1/charge-templates", headers=headers)
+    assert listed.status_code == 200
+    assert len(listed.json()) == 2
+
+
+def test_http_overlapping_window_is_400(catalog_client: object) -> None:
+    client, _rows = catalog_client
+    headers = bearer_auth_headers()
+    first = client.post("/api/v1/charge-templates", headers=headers, json=_payload())
+    assert first.status_code == 201
+    clash = client.post(
+        "/api/v1/charge-templates",
+        headers=headers,
+        json=_payload(
+            valid_from="2026-06-01",
+            valid_until="2026-08-31",
+            source_ref="fixture://charge-template/2",
+        ),
+    )
+    assert clash.status_code == 400
+    assert "nakładanie" in clash.json()["detail"]

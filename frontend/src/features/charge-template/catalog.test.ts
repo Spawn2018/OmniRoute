@@ -25,7 +25,7 @@ describe("bundleWrite", () => {
 })
 
 describe("charge_template surface for 164.0", () => {
-  it("records a charge_code collection on /charge-templates without overlap engine", () => {
+    it("records a charge_code collection on /charge-templates with SQL overlap exclusion", () => {
     const page = src("features/charge-template/catalog-page.tsx")
     const panel = src("features/charge-template/bundle-form.tsx")
     expect(src("routes/charge-templates.tsx")).toContain("/charge-templates")
@@ -40,5 +40,7 @@ describe("charge_template surface for 164.0", () => {
     expect(panel).not.toContain("leaflet")
     expect(panel).not.toContain("CatalogCreateForm")
     expect(src("features/ops/ops-index.ts")).toContain('"164.0": "/charge-templates"')
+    expect(src("features/ops/ops-index.ts")).toContain('"206.0": "/charge-templates"')
+    expect(page).toContain("exclusion w SQL")
   })
 })
