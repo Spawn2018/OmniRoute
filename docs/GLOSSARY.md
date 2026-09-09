@@ -119,7 +119,7 @@
 | przypisanie roli | party_role_assignment | 132.0; wiele ról na jednym `party`; nie osobny kontrahent na rolę |
 | JDG | is_sole_trader | 132.0; kredyt tylko HITL recenzją |
 | kontrahent nadrzędny | parent_party_id | 132.0; grupa / oddział; FK tenanta |
-| ledger predykcji | prediction_ledger | B0b/V1; metryka po fakcie; zakaz „AI przewiduje” bez MAE |
+| ledger predykcji | prediction_ledger | B0b/V1; 193.0 HITL przedział + CRPS/MAE jako dane; zakaz „AI przewiduje” bez CRPS |
 | operator terminalu | operator_name / operator_party_id | tekst zostaje; FK nullable do `party` od 5.0 |
 | kontrahent | party | katalog M-10; jeden podmiot, wiele ról |
 | identyfikator podatkowy | tax_id | NIP / VAT krajowy; `resolve` po tokenie |
