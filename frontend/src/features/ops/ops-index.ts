@@ -199,6 +199,11 @@ export const OPS_JOBS = [
     job: "HITL warunek + UN/LOCODE bez Open-Meteo",
   },
   {
+    route: BUSINESS_LISTS.freeTimeClock.route,
+    label: "Zegar DD",
+    job: "HITL rodzaj + dni wolne bez countdown",
+  },
+  {
     route: BUSINESS_LISTS.tenderAwardReview.route,
     label: "Cztery oczy nagrody",
     job: "HITL przegląd nagrody bez auto-award",
@@ -640,6 +645,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "193.0": "/prediction-ledgers",
   "194.0": "/shipments",
   "195.0": "/weather-observations",
+  "196.0": "/free-time-clocks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

@@ -2189,6 +2189,50 @@ export type FraudFlagResponse = {
 };
 
 /**
+ * FreeTimeClockCreate
+ */
+export type FreeTimeClockCreate = {
+    /**
+     * Clock Kind
+     */
+    clock_kind: string;
+    /**
+     * Free Days
+     */
+    free_days: number;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * FreeTimeClockResponse
+ */
+export type FreeTimeClockResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Clock Kind
+     */
+    clock_kind: string;
+    /**
+     * Free Days
+     */
+    free_days: number;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * FuelIndexCreate
  */
 export type FuelIndexCreate = {
@@ -11051,6 +11095,49 @@ export type CreateWeatherObservationApiV1WeatherObservationsPostResponses = {
 };
 
 export type CreateWeatherObservationApiV1WeatherObservationsPostResponse = CreateWeatherObservationApiV1WeatherObservationsPostResponses[keyof CreateWeatherObservationApiV1WeatherObservationsPostResponses];
+
+export type ListFreeTimeClocksApiV1FreeTimeClocksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/free-time-clocks';
+};
+
+export type ListFreeTimeClocksApiV1FreeTimeClocksGetResponses = {
+    /**
+     * Response List Free Time Clocks Api V1 Free Time Clocks Get
+     *
+     * Successful Response
+     */
+    200: Array<FreeTimeClockResponse>;
+};
+
+export type ListFreeTimeClocksApiV1FreeTimeClocksGetResponse = ListFreeTimeClocksApiV1FreeTimeClocksGetResponses[keyof ListFreeTimeClocksApiV1FreeTimeClocksGetResponses];
+
+export type CreateFreeTimeClockApiV1FreeTimeClocksPostData = {
+    body: FreeTimeClockCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/free-time-clocks';
+};
+
+export type CreateFreeTimeClockApiV1FreeTimeClocksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateFreeTimeClockApiV1FreeTimeClocksPostError = CreateFreeTimeClockApiV1FreeTimeClocksPostErrors[keyof CreateFreeTimeClockApiV1FreeTimeClocksPostErrors];
+
+export type CreateFreeTimeClockApiV1FreeTimeClocksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: FreeTimeClockResponse;
+};
+
+export type CreateFreeTimeClockApiV1FreeTimeClocksPostResponse = CreateFreeTimeClockApiV1FreeTimeClocksPostResponses[keyof CreateFreeTimeClockApiV1FreeTimeClocksPostResponses];
 
 export type ListCashDiscountsApiV1CashDiscountsGetData = {
     body?: never;

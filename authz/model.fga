@@ -79,6 +79,7 @@ type organization
     define can_manage_carbon_methods: member
     define can_manage_prediction_ledgers: member
     define can_manage_weather_observations: member
+    define can_manage_free_time_clocks: member
     define can_manage_tender_award_reviews: member
     define can_manage_tender_ted_notices: member
     define can_manage_tender_rfp_intakes: member

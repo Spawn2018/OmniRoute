@@ -31,6 +31,7 @@ from app.api import (
     extractions,
     field_carry_forwards,
     fraud_flags,
+    free_time_clocks,
     fuel_indexes,
     fx_differences,
     gdpr_requests,
@@ -176,6 +177,7 @@ api_router.include_router(fx_differences.router)
 api_router.include_router(carbon_methods.router)
 api_router.include_router(prediction_ledgers.router)
 api_router.include_router(weather_observations.router)
+api_router.include_router(free_time_clocks.router)
 api_router.include_router(cash_discounts.router)
 api_router.include_router(cash_flows.router)
 api_router.include_router(cost_to_serve.router)

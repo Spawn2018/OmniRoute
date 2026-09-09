@@ -134,6 +134,11 @@ const NAV_ACTIONS = [
     to: "/weather-observations",
   },
   {
+    id: "nav-free-time-clocks",
+    label: "Idź do zegara DD",
+    to: "/free-time-clocks",
+  },
+  {
     id: "nav-tender-award-reviews",
     label: "Idź do czterech oczu nagrody",
     to: "/tender-award-reviews",

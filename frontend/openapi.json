@@ -7614,6 +7614,80 @@
         ]
       }
     },
+    "/api/v1/free-time-clocks": {
+      "get": {
+        "tags": [
+          "free-time-clocks"
+        ],
+        "summary": "List Free Time Clocks",
+        "operationId": "list_free_time_clocks_api_v1_free_time_clocks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/FreeTimeClockResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Free Time Clocks Api V1 Free Time Clocks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "free-time-clocks"
+        ],
+        "summary": "Create Free Time Clock",
+        "operationId": "create_free_time_clock_api_v1_free_time_clocks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FreeTimeClockCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FreeTimeClockResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/cash-discounts": {
       "get": {
         "tags": [
@@ -14475,6 +14549,65 @@
           "source_ref"
         ],
         "title": "FraudFlagResponse"
+      },
+      "FreeTimeClockCreate": {
+        "properties": {
+          "clock_kind": {
+            "type": "string",
+            "title": "Clock Kind"
+          },
+          "free_days": {
+            "type": "integer",
+            "title": "Free Days"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "clock_kind",
+          "free_days",
+          "source_ref"
+        ],
+        "title": "FreeTimeClockCreate"
+      },
+      "FreeTimeClockResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "clock_kind": {
+            "type": "string",
+            "title": "Clock Kind"
+          },
+          "free_days": {
+            "type": "integer",
+            "title": "Free Days"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "clock_kind",
+          "free_days",
+          "source_ref"
+        ],
+        "title": "FreeTimeClockResponse"
       },
       "FuelIndexCreate": {
         "properties": {

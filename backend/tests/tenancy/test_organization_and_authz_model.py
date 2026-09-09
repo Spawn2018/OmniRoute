@@ -75,6 +75,7 @@ def test_authorization_model_includes_table_view_permission() -> None:
     assert "can_manage_carbon_methods" in org.relations
     assert "can_manage_prediction_ledgers" in org.relations
     assert "can_manage_weather_observations" in org.relations
+    assert "can_manage_free_time_clocks" in org.relations
     assert "can_manage_tender_award_reviews" in org.relations
     assert "can_manage_tender_ted_notices" in org.relations
     assert "can_manage_tender_rfp_intakes" in org.relations
@@ -273,6 +274,9 @@ def test_authorization_model_includes_table_view_permission() -> None:
     weather_observations = org.relations["can_manage_weather_observations"]
     assert weather_observations.computed_userset is not None
     assert weather_observations.computed_userset.relation == "member"
+    free_time_clocks = org.relations["can_manage_free_time_clocks"]
+    assert free_time_clocks.computed_userset is not None
+    assert free_time_clocks.computed_userset.relation == "member"
     tender_award_reviews = org.relations["can_manage_tender_award_reviews"]
     assert tender_award_reviews.computed_userset is not None
     assert tender_award_reviews.computed_userset.relation == "member"

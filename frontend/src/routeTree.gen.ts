@@ -37,6 +37,7 @@ import { Route as ExceptionsRouteImport } from './routes/exceptions'
 import { Route as ExtractionsRouteImport } from './routes/extractions'
 import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as FraudRouteImport } from './routes/fraud'
+import { Route as FreeTimeClocksRouteImport } from './routes/free-time-clocks'
 import { Route as FuelIndexesRouteImport } from './routes/fuel-indexes'
 import { Route as FxDifferencesRouteImport } from './routes/fx-differences'
 import { Route as GdprRouteImport } from './routes/gdpr'
@@ -239,6 +240,11 @@ const FinanceRoute = FinanceRouteImport.update({
 const FraudRoute = FraudRouteImport.update({
   id: '/fraud',
   path: '/fraud',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FreeTimeClocksRoute = FreeTimeClocksRouteImport.update({
+  id: '/free-time-clocks',
+  path: '/free-time-clocks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FuelIndexesRoute = FuelIndexesRouteImport.update({
@@ -586,6 +592,7 @@ export interface FileRoutesByFullPath {
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
   '/fraud': typeof FraudRoute
+  '/free-time-clocks': typeof FreeTimeClocksRoute
   '/fuel-indexes': typeof FuelIndexesRoute
   '/fx-differences': typeof FxDifferencesRoute
   '/gdpr': typeof GdprRoute
@@ -679,6 +686,7 @@ export interface FileRoutesByTo {
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
   '/fraud': typeof FraudRoute
+  '/free-time-clocks': typeof FreeTimeClocksRoute
   '/fuel-indexes': typeof FuelIndexesRoute
   '/fx-differences': typeof FxDifferencesRoute
   '/gdpr': typeof GdprRoute
@@ -773,6 +781,7 @@ export interface FileRoutesById {
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
   '/fraud': typeof FraudRoute
+  '/free-time-clocks': typeof FreeTimeClocksRoute
   '/fuel-indexes': typeof FuelIndexesRoute
   '/fx-differences': typeof FxDifferencesRoute
   '/gdpr': typeof GdprRoute
@@ -868,6 +877,7 @@ export interface FileRouteTypes {
     | '/extractions'
     | '/finance'
     | '/fraud'
+    | '/free-time-clocks'
     | '/fuel-indexes'
     | '/fx-differences'
     | '/gdpr'
@@ -961,6 +971,7 @@ export interface FileRouteTypes {
     | '/extractions'
     | '/finance'
     | '/fraud'
+    | '/free-time-clocks'
     | '/fuel-indexes'
     | '/fx-differences'
     | '/gdpr'
@@ -1054,6 +1065,7 @@ export interface FileRouteTypes {
     | '/extractions'
     | '/finance'
     | '/fraud'
+    | '/free-time-clocks'
     | '/fuel-indexes'
     | '/fx-differences'
     | '/gdpr'
@@ -1148,6 +1160,7 @@ export interface RootRouteChildren {
   ExtractionsRoute: typeof ExtractionsRoute
   FinanceRoute: typeof FinanceRoute
   FraudRoute: typeof FraudRoute
+  FreeTimeClocksRoute: typeof FreeTimeClocksRoute
   FuelIndexesRoute: typeof FuelIndexesRoute
   FxDifferencesRoute: typeof FxDifferencesRoute
   GdprRoute: typeof GdprRoute
@@ -1409,6 +1422,13 @@ declare module '@tanstack/react-router' {
       path: '/fraud'
       fullPath: '/fraud'
       preLoaderRoute: typeof FraudRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/free-time-clocks': {
+      id: '/free-time-clocks'
+      path: '/free-time-clocks'
+      fullPath: '/free-time-clocks'
+      preLoaderRoute: typeof FreeTimeClocksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/fuel-indexes': {
@@ -1884,6 +1904,7 @@ const rootRouteChildren: RootRouteChildren = {
   ExtractionsRoute: ExtractionsRoute,
   FinanceRoute: FinanceRoute,
   FraudRoute: FraudRoute,
+  FreeTimeClocksRoute: FreeTimeClocksRoute,
   FuelIndexesRoute: FuelIndexesRoute,
   FxDifferencesRoute: FxDifferencesRoute,
   GdprRoute: GdprRoute,

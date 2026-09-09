@@ -101,6 +101,7 @@ modules =
     app.services.carbon_methods
     app.services.prediction_ledgers
     app.services.weather_observations
+    app.services.free_time_clocks
     app.services.tender_award_reviews
     app.services.tender_ted_notices
     app.services.tender_rfp_intakes
@@ -370,6 +371,9 @@ forbidden_modules =
     app.services.weather_observations
     app.repositories.weather_observations
     app.models.weather_observation
+    app.services.free_time_clocks
+    app.repositories.free_time_clocks
+    app.models.free_time_clock
     app.services.tender_award_reviews
     app.repositories.tender_award_reviews
     app.models.tender_award_review

@@ -636,3 +636,7 @@ class InvalidPredictionLedger(DomainError):
 
 class InvalidWeatherObservation(DomainError):
     """Pogoda V2: HITL warunek + UN/LOCODE + czas — nie Open-Meteo i nie ETA."""
+
+
+class InvalidFreeTimeClock(DomainError):
+    """Zegar V3: HITL rodzaj + free_days — nie countdown i nie charge."""
