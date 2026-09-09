@@ -7688,6 +7688,80 @@
         ]
       }
     },
+    "/api/v1/telematics-connectors": {
+      "get": {
+        "tags": [
+          "telematics-connectors"
+        ],
+        "summary": "List Telematics Connectors",
+        "operationId": "list_telematics_connectors_api_v1_telematics_connectors_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TelematicsConnectorResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Telematics Connectors Api V1 Telematics Connectors Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "telematics-connectors"
+        ],
+        "summary": "Create Telematics Connector",
+        "operationId": "create_telematics_connector_api_v1_telematics_connectors_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TelematicsConnectorCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TelematicsConnectorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/cash-discounts": {
       "get": {
         "tags": [
@@ -19890,6 +19964,65 @@
         },
         "type": "object",
         "title": "TableViewUpdate"
+      },
+      "TelematicsConnectorCreate": {
+        "properties": {
+          "observation_kind": {
+            "type": "string",
+            "title": "Observation Kind"
+          },
+          "provider_code": {
+            "type": "string",
+            "title": "Provider Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "observation_kind",
+          "provider_code",
+          "source_ref"
+        ],
+        "title": "TelematicsConnectorCreate"
+      },
+      "TelematicsConnectorResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "observation_kind": {
+            "type": "string",
+            "title": "Observation Kind"
+          },
+          "provider_code": {
+            "type": "string",
+            "title": "Provider Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "observation_kind",
+          "provider_code",
+          "source_ref"
+        ],
+        "title": "TelematicsConnectorResponse"
       },
       "TenderAwardReviewCreate": {
         "properties": {

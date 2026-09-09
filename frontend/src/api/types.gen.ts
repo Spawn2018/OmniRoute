@@ -5501,6 +5501,50 @@ export type TableViewUpdate = {
 };
 
 /**
+ * TelematicsConnectorCreate
+ */
+export type TelematicsConnectorCreate = {
+    /**
+     * Observation Kind
+     */
+    observation_kind: string;
+    /**
+     * Provider Code
+     */
+    provider_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TelematicsConnectorResponse
+ */
+export type TelematicsConnectorResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Observation Kind
+     */
+    observation_kind: string;
+    /**
+     * Provider Code
+     */
+    provider_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * TenderAwardReviewCreate
  */
 export type TenderAwardReviewCreate = {
@@ -11138,6 +11182,49 @@ export type CreateFreeTimeClockApiV1FreeTimeClocksPostResponses = {
 };
 
 export type CreateFreeTimeClockApiV1FreeTimeClocksPostResponse = CreateFreeTimeClockApiV1FreeTimeClocksPostResponses[keyof CreateFreeTimeClockApiV1FreeTimeClocksPostResponses];
+
+export type ListTelematicsConnectorsApiV1TelematicsConnectorsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/telematics-connectors';
+};
+
+export type ListTelematicsConnectorsApiV1TelematicsConnectorsGetResponses = {
+    /**
+     * Response List Telematics Connectors Api V1 Telematics Connectors Get
+     *
+     * Successful Response
+     */
+    200: Array<TelematicsConnectorResponse>;
+};
+
+export type ListTelematicsConnectorsApiV1TelematicsConnectorsGetResponse = ListTelematicsConnectorsApiV1TelematicsConnectorsGetResponses[keyof ListTelematicsConnectorsApiV1TelematicsConnectorsGetResponses];
+
+export type CreateTelematicsConnectorApiV1TelematicsConnectorsPostData = {
+    body: TelematicsConnectorCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/telematics-connectors';
+};
+
+export type CreateTelematicsConnectorApiV1TelematicsConnectorsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTelematicsConnectorApiV1TelematicsConnectorsPostError = CreateTelematicsConnectorApiV1TelematicsConnectorsPostErrors[keyof CreateTelematicsConnectorApiV1TelematicsConnectorsPostErrors];
+
+export type CreateTelematicsConnectorApiV1TelematicsConnectorsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TelematicsConnectorResponse;
+};
+
+export type CreateTelematicsConnectorApiV1TelematicsConnectorsPostResponse = CreateTelematicsConnectorApiV1TelematicsConnectorsPostResponses[keyof CreateTelematicsConnectorApiV1TelematicsConnectorsPostResponses];
 
 export type ListCashDiscountsApiV1CashDiscountsGetData = {
     body?: never;

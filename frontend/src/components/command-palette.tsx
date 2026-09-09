@@ -139,6 +139,11 @@ const NAV_ACTIONS = [
     to: "/free-time-clocks",
   },
   {
+    id: "nav-telematics-connectors",
+    label: "Idź do konektora GPS",
+    to: "/telematics-connectors",
+  },
+  {
     id: "nav-tender-award-reviews",
     label: "Idź do czterech oczu nagrody",
     to: "/tender-award-reviews",

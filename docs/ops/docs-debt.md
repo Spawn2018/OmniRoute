@@ -14,6 +14,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **147.0 leftover:** tabela `document_dispatch` (batch mail + send S18). Tu tylko katalog adresata. Nie auto-send.
 - **150.0 leftover:** `stop_group`; waga/plomba/awizacja (EXP1). ETA HITL DONE 194.0. Tu tylko punkt + location + strefa IANA + dwa ETA HITL. Nie mapa. `resource` = 151.0. `trip` = 152.0.
 - **194.0 leftover:** Open-Meteo live HTTP / geometria trip DONE HITL 195.0 (`weather_observation`). Zostaje feed Open-Meteo / lat/lng; myto → `charge` (V2b); GPS/tacho / silnik ETA; `stop_group`. Tu tylko `eta_physical` + `eta_legal` HITL na `stop`. Nie GPS.
+- **197.0 leftover:** `position_event` lat/lng / poll; `credential_ciphertext`; `resource_telematics_link` + 3 dni robocze U4; V5b `exchange_message`. Tu tylko `telematics_connector` HITL `observation_kind` + `provider_code` + `source_ref`. Nie track. Nie sekrety.
 - **196.0 leftover:** N3 countdown remaining + szkic `charge`; `demurrage_free_days` na `container`; blank sailing / congestion / Gate OS; live HTTP armatora. Tu tylko `free_time_clock` HITL `clock_kind` + `free_days` + `source_ref`. Nie odliczanie. Nie marża.
 - **195.0 leftover:** Open-Meteo / IMGW / DWD live HTTP; `trip_id` / geometria / lat/lng / WMO; myto → `charge` (V2b). Tu tylko `weather_observation` HITL warunek + UN/LOCODE + czas + `source_ref`. Nie feed. Nie ETA.
 - **151.0 leftover:** `trip` DONE 152.0. Zostaje T2c: multi-manning / floating trailer; pojemności / Decimal km; `party_id`; `/fleet` / HW. Tu tylko katalog pojazd/kierowca/naczepa.

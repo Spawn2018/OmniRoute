@@ -80,6 +80,7 @@ import { Route as SessionRouteImport } from './routes/session'
 import { Route as ShipmentDocumentsRouteImport } from './routes/shipment-documents'
 import { Route as ShipmentPackagesRouteImport } from './routes/shipment-packages'
 import { Route as ShipmentsRouteImport } from './routes/shipments'
+import { Route as TelematicsConnectorsRouteImport } from './routes/telematics-connectors'
 import { Route as TenderAwardReviewsRouteImport } from './routes/tender-award-reviews'
 import { Route as TenderBidStancesRouteImport } from './routes/tender-bid-stances'
 import { Route as TenderCarbonMarksRouteImport } from './routes/tender-carbon-marks'
@@ -457,6 +458,11 @@ const ShipmentsRoute = ShipmentsRouteImport.update({
   path: '/shipments',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TelematicsConnectorsRoute = TelematicsConnectorsRouteImport.update({
+  id: '/telematics-connectors',
+  path: '/telematics-connectors',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TenderAwardReviewsRoute = TenderAwardReviewsRouteImport.update({
   id: '/tender-award-reviews',
   path: '/tender-award-reviews',
@@ -635,6 +641,7 @@ export interface FileRoutesByFullPath {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/telematics-connectors': typeof TelematicsConnectorsRoute
   '/tender-award-reviews': typeof TenderAwardReviewsRoute
   '/tender-bid-stances': typeof TenderBidStancesRoute
   '/tender-carbon-marks': typeof TenderCarbonMarksRoute
@@ -729,6 +736,7 @@ export interface FileRoutesByTo {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/telematics-connectors': typeof TelematicsConnectorsRoute
   '/tender-award-reviews': typeof TenderAwardReviewsRoute
   '/tender-bid-stances': typeof TenderBidStancesRoute
   '/tender-carbon-marks': typeof TenderCarbonMarksRoute
@@ -824,6 +832,7 @@ export interface FileRoutesById {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/telematics-connectors': typeof TelematicsConnectorsRoute
   '/tender-award-reviews': typeof TenderAwardReviewsRoute
   '/tender-bid-stances': typeof TenderBidStancesRoute
   '/tender-carbon-marks': typeof TenderCarbonMarksRoute
@@ -920,6 +929,7 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/telematics-connectors'
     | '/tender-award-reviews'
     | '/tender-bid-stances'
     | '/tender-carbon-marks'
@@ -1014,6 +1024,7 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/telematics-connectors'
     | '/tender-award-reviews'
     | '/tender-bid-stances'
     | '/tender-carbon-marks'
@@ -1108,6 +1119,7 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/telematics-connectors'
     | '/tender-award-reviews'
     | '/tender-bid-stances'
     | '/tender-carbon-marks'
@@ -1203,6 +1215,7 @@ export interface RootRouteChildren {
   ShipmentDocumentsRoute: typeof ShipmentDocumentsRoute
   ShipmentPackagesRoute: typeof ShipmentPackagesRoute
   ShipmentsRoute: typeof ShipmentsRoute
+  TelematicsConnectorsRoute: typeof TelematicsConnectorsRoute
   TenderAwardReviewsRoute: typeof TenderAwardReviewsRoute
   TenderBidStancesRoute: typeof TenderBidStancesRoute
   TenderCarbonMarksRoute: typeof TenderCarbonMarksRoute
@@ -1725,6 +1738,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShipmentsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/telematics-connectors': {
+      id: '/telematics-connectors'
+      path: '/telematics-connectors'
+      fullPath: '/telematics-connectors'
+      preLoaderRoute: typeof TelematicsConnectorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tender-award-reviews': {
       id: '/tender-award-reviews'
       path: '/tender-award-reviews'
@@ -1947,6 +1967,7 @@ const rootRouteChildren: RootRouteChildren = {
   ShipmentDocumentsRoute: ShipmentDocumentsRoute,
   ShipmentPackagesRoute: ShipmentPackagesRoute,
   ShipmentsRoute: ShipmentsRoute,
+  TelematicsConnectorsRoute: TelematicsConnectorsRoute,
   TenderAwardReviewsRoute: TenderAwardReviewsRoute,
   TenderBidStancesRoute: TenderBidStancesRoute,
   TenderCarbonMarksRoute: TenderCarbonMarksRoute,

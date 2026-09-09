@@ -640,3 +640,7 @@ class InvalidWeatherObservation(DomainError):
 
 class InvalidFreeTimeClock(DomainError):
     """Zegar V3: HITL rodzaj + free_days — nie countdown i nie charge."""
+
+
+class InvalidTelematicsConnector(DomainError):
+    """Konektor V5: HITL reżim + dostawca — nie live GPS i nie sekrety."""

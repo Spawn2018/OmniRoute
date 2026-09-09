@@ -204,6 +204,11 @@ export const OPS_JOBS = [
     job: "HITL rodzaj + dni wolne bez countdown",
   },
   {
+    route: BUSINESS_LISTS.telematicsConnector.route,
+    label: "Konektor GPS",
+    job: "HITL reżim + dostawca bez live poll",
+  },
+  {
     route: BUSINESS_LISTS.tenderAwardReview.route,
     label: "Cztery oczy nagrody",
     job: "HITL przegląd nagrody bez auto-award",
@@ -646,6 +651,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "194.0": "/shipments",
   "195.0": "/weather-observations",
   "196.0": "/free-time-clocks",
+  "197.0": "/telematics-connectors",
 } as const
 
 export const ROUTES_BREADTH_STANDING =
