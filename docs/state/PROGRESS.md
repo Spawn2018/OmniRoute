@@ -529,3 +529,4 @@
 | 2026-09-09 | 223.0 | T3 | packaging_code HITL na container. Nie waga. Nie PIN. Nastepny: leftover T3 ref_1 Plan. |
 | 2026-09-09 | Plan 224.0 | T3 | ref_1 HITL na container, nie waga i nie PIN. Delta zaakceptowana (`/noc`). Nastepny: kod 224.0. |
 | 2026-09-09 | 224.0 | T3 | ref_1 HITL na container. Nie waga. Nie PIN. Nastepny: leftover T3 ref_2 Plan. |
+| 2026-09-09 | Plan 225.0 | T3 | ref_2 HITL na container, nie waga i nie PIN. Delta zaakceptowana (`/noc`). Nastepny: kod 225.0. |
