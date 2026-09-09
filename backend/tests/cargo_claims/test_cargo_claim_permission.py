@@ -19,6 +19,10 @@ _ENDPOINTS = (
         {
             "shipment_id": str(uuid4()),
             "claim_kind": "damage",
+            "damage_code": "damage",
+            "cmr_notice_window": "notice_7",
+            "notice_due_at": "2026-01-10",
+            "suit_due_at": "2026-12-31",
             "source_ref": "fixture://cargo-claim/1",
         },
     ),

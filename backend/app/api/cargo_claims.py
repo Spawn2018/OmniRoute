@@ -6,6 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import get_current_identity, require_permission, require_tenant_session
 from app.core.session_token import SessionIdentity
+from app.models.cargo_claim import CargoClaim
 from app.services.cargo_claims.cargo_claim_service import CargoClaimService
 from app.services.shipments.shipment_service import ShipmentService
 
@@ -17,6 +18,10 @@ class CargoClaimCreate(BaseModel):
 
     shipment_id: UUID
     claim_kind: str
+    damage_code: str
+    cmr_notice_window: str
+    notice_due_at: str
+    suit_due_at: str
     source_ref: str
 
 
@@ -27,7 +32,25 @@ class CargoClaimResponse(BaseModel):
     organization_id: UUID
     shipment_id: UUID
     claim_kind: str
+    damage_code: str
+    cmr_notice_window: str
+    notice_due_at: str
+    suit_due_at: str
     source_ref: str
+
+
+def _as_row(row: CargoClaim) -> CargoClaimResponse:
+    return CargoClaimResponse(
+        id=row.id,
+        organization_id=row.organization_id,
+        shipment_id=row.shipment_id,
+        claim_kind=row.claim_kind,
+        damage_code=row.damage_code,
+        cmr_notice_window=row.cmr_notice_window,
+        notice_due_at=row.notice_due_at.isoformat(),
+        suit_due_at=row.suit_due_at.isoformat(),
+        source_ref=row.source_ref,
+    )
 
 
 @router.get("", response_model=list[CargoClaimResponse])
@@ -36,7 +59,7 @@ async def list_cargo_claims(
     session: AsyncSession = Depends(require_tenant_session),
 ) -> list[CargoClaimResponse]:
     rows = await CargoClaimService(session).list_claims()
-    return [CargoClaimResponse.model_validate(row) for row in rows]
+    return [_as_row(row) for row in rows]
 
 
 @router.post("", response_model=CargoClaimResponse, status_code=status.HTTP_201_CREATED)
@@ -52,7 +75,11 @@ async def create_cargo_claim(
         user_id=identity.user_id,
         shipment_id=shipment.id,
         claim_kind=body.claim_kind,
+        damage_code=body.damage_code,
+        cmr_notice_window=body.cmr_notice_window,
+        notice_due_at=body.notice_due_at,
+        suit_due_at=body.suit_due_at,
         source_ref=body.source_ref,
     )
     await session.commit()
-    return CargoClaimResponse.model_validate(row)
+    return _as_row(row)

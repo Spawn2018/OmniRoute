@@ -6,6 +6,10 @@ export type CargoClaimRow = {
   organization_id: string
   shipment_id: string
   claim_kind: string
+  damage_code: string
+  cmr_notice_window: string
+  notice_due_at: string
+  suit_due_at: string
   source_ref: string
 }
 
@@ -23,6 +27,10 @@ export async function listCargoClaims(): Promise<CargoClaimRow[]> {
 export async function saveCargoClaim(payload: {
   shipment_id: string
   claim_kind: string
+  damage_code: string
+  cmr_notice_window: string
+  notice_due_at: string
+  suit_due_at: string
   source_ref: string
 }): Promise<CargoClaimRow> {
   const auth = requireAuthHeaders()

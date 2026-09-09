@@ -61,7 +61,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-51 | Drobnica morska | 44.0 `ocean_lcl` · 111.0 `shipment_leg` ocean_lcl | **ukończony (S49)** · odcinek drobnicy na zleceniu; nie tabela LCL; nie CFS |
 | M-53 | Sankcje | 45.0 `sanctions` · 89.0 `sanctions_list_ref` | **ukończony (fundament)** · tablica + sprawdzenie na `party`; nie auto-match; nie live lista |
 | M-54 | Oszustwo | 114.0 `fraud_flag` | **ukończony (S52)** · flaga na kontrahencie; nie scoring osoby; nie kwota |
-| M-55 | Reklamacja ładunku | 113.0 `cargo_claim` | **ukończony (S51)** · reklamacja na zleceniu; nie kwota; nie scoring |
+| M-55 | Reklamacja ładunku | 191.0 `cargo_claim` | **ukończony (S51 + EXP0.8 HITL)** · OS&D + terminy CMR; nie kwota; nie silnik 7/21/365 |
 | M-56 | RODO | 46.0 `gdpr` · 107.0 `gdpr_request` | **ukończony (fundament)** · wniosek access/erasure + tombstone konta; nie DPIA; nie DELETE `app_user` |
 | M-57 | Copilot AI | 47.0 `ai_copilot` · 76.0 `mail_draft` · 116.0 wieża · 118.0 SOP | **ukończony (S58)** · szkice po SOP `blocks_auto`; nie auto-send; nie czat |
 | M-68 | Obserwowalność | 48.0 `observability` · 119.0 park | **ukończony (fundament)** · tablica `fetchHealth`; S59 named park; nie OTel; nie k6 |

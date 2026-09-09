@@ -15,6 +15,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **150.0 leftover:** `stop_group`; `eta_physical`/`eta_legal` (V2); waga/plomba/awizacja (EXP1). Tu tylko punkt + location + strefa IANA. Nie mapa. `resource` = 151.0. `trip` = 152.0.
 - **151.0 leftover:** `trip` DONE 152.0. Zostaje T2c: multi-manning / floating trailer; pojemności / Decimal km; `party_id`; `/fleet` / HW. Tu tylko katalog pojazd/kierowca/naczepa.
 - **153.0 leftover:** VGM/TARA Decimal; free_time; cutoffy CY/CFS/VGM/SI/AMS; `bl_kind`; plomby/PIN; reefer; party/terminal; TEU; `shipment_leg_id`. Tu tylko ISO 6346 + `iso_size_type` + opcjonalne zlecenie. Nie booking.
+- **191.0 leftover:** Deadline Engine (`timedelta` 7/21/365 od dostawy); evidence GPS/temp/photo; `liable_party_id` (S11). Tu tylko `damage_code` + `cmr_notice_window` + dwa dni HITL na `cargo_claim`. Nie kwota. Nie silnik.
+
 - **190.0 leftover:** live VIES/GUS (C3); eCMR/eFTI (C4); Trans.eu snapshot (C9); AIS/PUESC (C2); BDO/MOS (C6); kg/CBAM. Tu tylko `carbon_method` HITL `method_code` + `method_version` + `source_ref`. Nie kg. Nie kalkulator.
 - **189.0 leftover:** Decimal / waluta / mnożenie skonta (F2b); noty korygujące + period lock N13 (F3); CAMT/MT940 + HITL rekoncyliacja + biała lista (F4). Tu tylko `cash_discount` HITL `discount_kind` + `source_ref` na `sales_invoice`. Nie kwota. Nie CAMT.
 - **188.0 leftover:** `relation_document_requirement` + 409 na `POST shipment`; daty ważności / `premium_status`; HITL extract bajtów. Tu tylko `party_document` HITL `document_kind` + `source_ref` na `party`. Nie blokada zlecenia. Nie kwota.

@@ -1,3 +1,4 @@
+from datetime import date
 from uuid import uuid4
 
 import pytest
@@ -24,6 +25,10 @@ async def test_cargo_claim_rls_isolates_tenants(session, two_tenants) -> None:
         organization_id=org_a.id,
         shipment_id=ship_a.id,
         claim_kind="damage",
+        damage_code="damage",
+        cmr_notice_window="notice_7",
+        notice_due_at=date(2026, 1, 10),
+        suit_due_at=date(2026, 12, 31),
         source_ref="fixture://cargo-claim/a",
         created_by=user_a.id,
     )
@@ -37,6 +42,10 @@ async def test_cargo_claim_rls_isolates_tenants(session, two_tenants) -> None:
         organization_id=org_b.id,
         shipment_id=ship_b.id,
         claim_kind="shortage",
+        damage_code="shortage",
+        cmr_notice_window="notice_21",
+        notice_due_at=date(2026, 2, 1),
+        suit_due_at=date(2026, 12, 1),
         source_ref="fixture://cargo-claim/b",
         created_by=user_b.id,
     )
@@ -73,6 +82,10 @@ async def test_cargo_claim_rejects_foreign_shipment(session, two_tenants) -> Non
             organization_id=org_a.id,
             shipment_id=ship_b.id,
             claim_kind="other",
+            damage_code="loss",
+            cmr_notice_window="notice_7",
+            notice_due_at=date(2026, 3, 1),
+            suit_due_at=date(2026, 12, 15),
             source_ref="fixture://cargo-claim/stolen",
             created_by=user_a.id,
         )

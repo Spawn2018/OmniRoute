@@ -1,7 +1,9 @@
 import uuid
+from datetime import date
 
 from sqlalchemy import (
     CheckConstraint,
+    Date,
     ForeignKey,
     ForeignKeyConstraint,
     Index,
@@ -19,6 +21,18 @@ class CargoClaim(Base, TimestampMixin):
         CheckConstraint(
             "claim_kind IN ('damage', 'shortage', 'other')",
             name="ck_cargo_claim_kind",
+        ),
+        CheckConstraint(
+            "damage_code IN ('overage', 'shortage', 'damage', 'loss')",
+            name="ck_cargo_claim_damage_code",
+        ),
+        CheckConstraint(
+            "cmr_notice_window IN ('notice_7', 'notice_21')",
+            name="ck_cargo_claim_cmr_notice_window",
+        ),
+        CheckConstraint(
+            "suit_due_at >= notice_due_at",
+            name="ck_cargo_claim_cmr_order",
         ),
         ForeignKeyConstraint(
             ["organization_id", "shipment_id"],
@@ -39,4 +53,8 @@ class CargoClaim(Base, TimestampMixin):
     )
     shipment_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), nullable=False)
     claim_kind: Mapped[str] = mapped_column(String(16), nullable=False)
+    damage_code: Mapped[str] = mapped_column(String(16), nullable=False)
+    cmr_notice_window: Mapped[str] = mapped_column(String(16), nullable=False)
+    notice_due_at: Mapped[date] = mapped_column(Date, nullable=False)
+    suit_due_at: Mapped[date] = mapped_column(Date, nullable=False)
     source_ref: Mapped[str] = mapped_column(String(256), nullable=False)

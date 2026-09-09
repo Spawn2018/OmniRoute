@@ -287,6 +287,22 @@ export type CargoClaimCreate = {
      */
     claim_kind: string;
     /**
+     * Damage Code
+     */
+    damage_code: string;
+    /**
+     * Cmr Notice Window
+     */
+    cmr_notice_window: string;
+    /**
+     * Notice Due At
+     */
+    notice_due_at: string;
+    /**
+     * Suit Due At
+     */
+    suit_due_at: string;
+    /**
      * Source Ref
      */
     source_ref: string;
@@ -312,6 +328,22 @@ export type CargoClaimResponse = {
      * Claim Kind
      */
     claim_kind: string;
+    /**
+     * Damage Code
+     */
+    damage_code: string;
+    /**
+     * Cmr Notice Window
+     */
+    cmr_notice_window: string;
+    /**
+     * Notice Due At
+     */
+    notice_due_at: string;
+    /**
+     * Suit Due At
+     */
+    suit_due_at: string;
     /**
      * Source Ref
      */

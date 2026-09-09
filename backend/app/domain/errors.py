@@ -303,7 +303,7 @@ class InvalidOperationalException(DomainError):
 
 
 class InvalidCargoClaim(DomainError):
-    """Reklamacja ładunku: kind z allowlisty i source_ref zapisu — nie kwota, nie scoring."""
+    """Reklamacja ładunku: OS&D i terminy CMR — nie kwota, nie scoring, nie silnik dni."""
 
 
 class InvalidFraudFlag(DomainError):

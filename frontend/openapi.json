@@ -11225,6 +11225,22 @@
             "type": "string",
             "title": "Claim Kind"
           },
+          "damage_code": {
+            "type": "string",
+            "title": "Damage Code"
+          },
+          "cmr_notice_window": {
+            "type": "string",
+            "title": "Cmr Notice Window"
+          },
+          "notice_due_at": {
+            "type": "string",
+            "title": "Notice Due At"
+          },
+          "suit_due_at": {
+            "type": "string",
+            "title": "Suit Due At"
+          },
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
@@ -11235,6 +11251,10 @@
         "required": [
           "shipment_id",
           "claim_kind",
+          "damage_code",
+          "cmr_notice_window",
+          "notice_due_at",
+          "suit_due_at",
           "source_ref"
         ],
         "title": "CargoClaimCreate"
@@ -11260,6 +11280,22 @@
             "type": "string",
             "title": "Claim Kind"
           },
+          "damage_code": {
+            "type": "string",
+            "title": "Damage Code"
+          },
+          "cmr_notice_window": {
+            "type": "string",
+            "title": "Cmr Notice Window"
+          },
+          "notice_due_at": {
+            "type": "string",
+            "title": "Notice Due At"
+          },
+          "suit_due_at": {
+            "type": "string",
+            "title": "Suit Due At"
+          },
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
@@ -11271,6 +11307,10 @@
           "organization_id",
           "shipment_id",
           "claim_kind",
+          "damage_code",
+          "cmr_notice_window",
+          "notice_due_at",
+          "suit_due_at",
           "source_ref"
         ],
         "title": "CargoClaimResponse"
