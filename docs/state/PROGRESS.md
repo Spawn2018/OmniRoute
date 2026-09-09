@@ -507,3 +507,4 @@
 | 2026-09-09 | 212.0 | T2c | driver2_id HITL na trip. Nie km. Nie fleet. Nastepny: leftover T1 stop_group Plan. |
 | 2026-09-09 | Plan 213.0 | T1 | stop_group_code HITL na stop, nie nowa tabela. Delta zaakceptowana (`/noc`). Nastepny: kod 213.0. |
 | 2026-09-09 | 213.0 | T1 | stop_group_code HITL na stop. Nie nowa tabela. Nie mapa. Nastepny: leftover T1b parked. |
+| 2026-09-09 | Plan 214.0 | T2 | route_label HITL na trip, nie km. Delta zaakceptowana (`/noc`). Nastepny: kod 214.0. |
