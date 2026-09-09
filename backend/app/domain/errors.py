@@ -604,3 +604,7 @@ class InvalidTenderTedNotice(DomainError):
 
 class InvalidTenderCarbonMark(DomainError):
     """Ślad G2.14: HITL declared/exempt z source_ref — nie kg i nie kalkulator."""
+
+
+class InvalidLanePattern(DomainError):
+    """Wzorzec G2.19: HITL para UN/LOCODE z source_ref — nie km i nie circle_sim."""

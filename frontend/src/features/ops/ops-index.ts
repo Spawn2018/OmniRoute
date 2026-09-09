@@ -159,6 +159,11 @@ export const OPS_JOBS = [
     job: "HITL declared/exempt bez kalkulatora kg",
   },
   {
+    route: BUSINESS_LISTS.lanePattern.route,
+    label: "Wzorzec korytarza",
+    job: "HITL para UN/LOCODE bez circle_sim",
+  },
+  {
     route: BUSINESS_LISTS.tenderAwardReview.route,
     label: "Cztery oczy nagrody",
     job: "HITL przegląd nagrody bez auto-award",
@@ -589,6 +594,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "182.0": "/tender-award-reviews",
   "183.0": "/tender-ted-notices",
   "184.0": "/tender-carbon-marks",
+  "185.0": "/lane-patterns",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

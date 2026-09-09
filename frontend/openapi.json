@@ -5336,6 +5336,80 @@
         ]
       }
     },
+    "/api/v1/lane-patterns": {
+      "get": {
+        "tags": [
+          "lane-patterns"
+        ],
+        "summary": "List Lane Patterns",
+        "operationId": "list_lane_patterns_api_v1_lane_patterns_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/LanePatternResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Lane Patterns Api V1 Lane Patterns Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "lane-patterns"
+        ],
+        "summary": "Create Lane Pattern",
+        "operationId": "create_lane_pattern_api_v1_lane_patterns_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LanePatternCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LanePatternResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/local-charges": {
       "get": {
         "tags": [
@@ -14514,6 +14588,65 @@
           "answered_count"
         ],
         "title": "InquiryMemberRankResponse"
+      },
+      "LanePatternCreate": {
+        "properties": {
+          "origin_unlocode": {
+            "type": "string",
+            "title": "Origin Unlocode"
+          },
+          "destination_unlocode": {
+            "type": "string",
+            "title": "Destination Unlocode"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "origin_unlocode",
+          "destination_unlocode",
+          "source_ref"
+        ],
+        "title": "LanePatternCreate"
+      },
+      "LanePatternResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "origin_unlocode": {
+            "type": "string",
+            "title": "Origin Unlocode"
+          },
+          "destination_unlocode": {
+            "type": "string",
+            "title": "Destination Unlocode"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "origin_unlocode",
+          "destination_unlocode",
+          "source_ref"
+        ],
+        "title": "LanePatternResponse"
       },
       "LaneScorecardResponse": {
         "properties": {

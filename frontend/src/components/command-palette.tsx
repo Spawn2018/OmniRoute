@@ -94,6 +94,11 @@ const NAV_ACTIONS = [
     to: "/tender-carbon-marks",
   },
   {
+    id: "nav-lane-patterns",
+    label: "Idź do wzorca korytarza",
+    to: "/lane-patterns",
+  },
+  {
     id: "nav-tender-award-reviews",
     label: "Idź do czterech oczu nagrody",
     to: "/tender-award-reviews",

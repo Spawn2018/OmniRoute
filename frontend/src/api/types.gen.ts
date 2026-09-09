@@ -2607,6 +2607,50 @@ export type InquiryMemberRankResponse = {
 };
 
 /**
+ * LanePatternCreate
+ */
+export type LanePatternCreate = {
+    /**
+     * Origin Unlocode
+     */
+    origin_unlocode: string;
+    /**
+     * Destination Unlocode
+     */
+    destination_unlocode: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * LanePatternResponse
+ */
+export type LanePatternResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Origin Unlocode
+     */
+    origin_unlocode: string;
+    /**
+     * Destination Unlocode
+     */
+    destination_unlocode: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * LaneScorecardResponse
  */
 export type LaneScorecardResponse = {
@@ -9267,6 +9311,49 @@ export type CreateFuelIndexApiV1FuelIndexesPostResponses = {
 };
 
 export type CreateFuelIndexApiV1FuelIndexesPostResponse = CreateFuelIndexApiV1FuelIndexesPostResponses[keyof CreateFuelIndexApiV1FuelIndexesPostResponses];
+
+export type ListLanePatternsApiV1LanePatternsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/lane-patterns';
+};
+
+export type ListLanePatternsApiV1LanePatternsGetResponses = {
+    /**
+     * Response List Lane Patterns Api V1 Lane Patterns Get
+     *
+     * Successful Response
+     */
+    200: Array<LanePatternResponse>;
+};
+
+export type ListLanePatternsApiV1LanePatternsGetResponse = ListLanePatternsApiV1LanePatternsGetResponses[keyof ListLanePatternsApiV1LanePatternsGetResponses];
+
+export type CreateLanePatternApiV1LanePatternsPostData = {
+    body: LanePatternCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/lane-patterns';
+};
+
+export type CreateLanePatternApiV1LanePatternsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateLanePatternApiV1LanePatternsPostError = CreateLanePatternApiV1LanePatternsPostErrors[keyof CreateLanePatternApiV1LanePatternsPostErrors];
+
+export type CreateLanePatternApiV1LanePatternsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: LanePatternResponse;
+};
+
+export type CreateLanePatternApiV1LanePatternsPostResponse = CreateLanePatternApiV1LanePatternsPostResponses[keyof CreateLanePatternApiV1LanePatternsPostResponses];
 
 export type ListLocalChargesApiV1LocalChargesGetData = {
     body?: never;

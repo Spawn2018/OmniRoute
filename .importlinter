@@ -93,6 +93,7 @@ modules =
     app.services.tender_prospects
     app.services.tender_bid_stances
     app.services.tender_carbon_marks
+    app.services.lane_patterns
     app.services.tender_award_reviews
     app.services.tender_ted_notices
     app.services.tender_rfp_intakes
@@ -338,6 +339,9 @@ forbidden_modules =
     app.services.tender_carbon_marks
     app.repositories.tender_carbon_marks
     app.models.tender_carbon_mark
+    app.services.lane_patterns
+    app.repositories.lane_patterns
+    app.models.lane_pattern
     app.services.tender_award_reviews
     app.repositories.tender_award_reviews
     app.models.tender_award_review
