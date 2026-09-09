@@ -5053,6 +5053,50 @@ export type TableViewUpdate = {
 };
 
 /**
+ * TenderAwardReviewCreate
+ */
+export type TenderAwardReviewCreate = {
+    /**
+     * Tender Id
+     */
+    tender_id: string;
+    /**
+     * Review Code
+     */
+    review_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TenderAwardReviewResponse
+ */
+export type TenderAwardReviewResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Tender Id
+     */
+    tender_id: string;
+    /**
+     * Review Code
+     */
+    review_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * TenderBidStanceCreate
  */
 export type TenderBidStanceCreate = {
@@ -9479,6 +9523,49 @@ export type CreateTenderWinLossApiV1TenderWinLossesPostResponses = {
 };
 
 export type CreateTenderWinLossApiV1TenderWinLossesPostResponse = CreateTenderWinLossApiV1TenderWinLossesPostResponses[keyof CreateTenderWinLossApiV1TenderWinLossesPostResponses];
+
+export type ListTenderAwardReviewsApiV1TenderAwardReviewsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tender-award-reviews';
+};
+
+export type ListTenderAwardReviewsApiV1TenderAwardReviewsGetResponses = {
+    /**
+     * Response List Tender Award Reviews Api V1 Tender Award Reviews Get
+     *
+     * Successful Response
+     */
+    200: Array<TenderAwardReviewResponse>;
+};
+
+export type ListTenderAwardReviewsApiV1TenderAwardReviewsGetResponse = ListTenderAwardReviewsApiV1TenderAwardReviewsGetResponses[keyof ListTenderAwardReviewsApiV1TenderAwardReviewsGetResponses];
+
+export type CreateTenderAwardReviewApiV1TenderAwardReviewsPostData = {
+    body: TenderAwardReviewCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tender-award-reviews';
+};
+
+export type CreateTenderAwardReviewApiV1TenderAwardReviewsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTenderAwardReviewApiV1TenderAwardReviewsPostError = CreateTenderAwardReviewApiV1TenderAwardReviewsPostErrors[keyof CreateTenderAwardReviewApiV1TenderAwardReviewsPostErrors];
+
+export type CreateTenderAwardReviewApiV1TenderAwardReviewsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TenderAwardReviewResponse;
+};
+
+export type CreateTenderAwardReviewApiV1TenderAwardReviewsPostResponse = CreateTenderAwardReviewApiV1TenderAwardReviewsPostResponses[keyof CreateTenderAwardReviewApiV1TenderAwardReviewsPostResponses];
 
 export type ListTenderBidStancesApiV1TenderBidStancesGetData = {
     body?: never;

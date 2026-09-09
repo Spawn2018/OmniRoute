@@ -72,6 +72,7 @@ import { Route as SessionRouteImport } from './routes/session'
 import { Route as ShipmentDocumentsRouteImport } from './routes/shipment-documents'
 import { Route as ShipmentPackagesRouteImport } from './routes/shipment-packages'
 import { Route as ShipmentsRouteImport } from './routes/shipments'
+import { Route as TenderAwardReviewsRouteImport } from './routes/tender-award-reviews'
 import { Route as TenderBidStancesRouteImport } from './routes/tender-bid-stances'
 import { Route as TenderConsortiumMembersRouteImport } from './routes/tender-consortium-members'
 import { Route as TenderDataRoomsRouteImport } from './routes/tender-data-rooms'
@@ -405,6 +406,11 @@ const ShipmentsRoute = ShipmentsRouteImport.update({
   path: '/shipments',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TenderAwardReviewsRoute = TenderAwardReviewsRouteImport.update({
+  id: '/tender-award-reviews',
+  path: '/tender-award-reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TenderBidStancesRoute = TenderBidStancesRouteImport.update({
   id: '/tender-bid-stances',
   path: '/tender-bid-stances',
@@ -555,6 +561,7 @@ export interface FileRoutesByFullPath {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/tender-award-reviews': typeof TenderAwardReviewsRoute
   '/tender-bid-stances': typeof TenderBidStancesRoute
   '/tender-consortium-members': typeof TenderConsortiumMembersRoute
   '/tender-data-rooms': typeof TenderDataRoomsRoute
@@ -637,6 +644,7 @@ export interface FileRoutesByTo {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/tender-award-reviews': typeof TenderAwardReviewsRoute
   '/tender-bid-stances': typeof TenderBidStancesRoute
   '/tender-consortium-members': typeof TenderConsortiumMembersRoute
   '/tender-data-rooms': typeof TenderDataRoomsRoute
@@ -720,6 +728,7 @@ export interface FileRoutesById {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/tender-award-reviews': typeof TenderAwardReviewsRoute
   '/tender-bid-stances': typeof TenderBidStancesRoute
   '/tender-consortium-members': typeof TenderConsortiumMembersRoute
   '/tender-data-rooms': typeof TenderDataRoomsRoute
@@ -804,6 +813,7 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/tender-award-reviews'
     | '/tender-bid-stances'
     | '/tender-consortium-members'
     | '/tender-data-rooms'
@@ -886,6 +896,7 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/tender-award-reviews'
     | '/tender-bid-stances'
     | '/tender-consortium-members'
     | '/tender-data-rooms'
@@ -968,6 +979,7 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/tender-award-reviews'
     | '/tender-bid-stances'
     | '/tender-consortium-members'
     | '/tender-data-rooms'
@@ -1051,6 +1063,7 @@ export interface RootRouteChildren {
   ShipmentDocumentsRoute: typeof ShipmentDocumentsRoute
   ShipmentPackagesRoute: typeof ShipmentPackagesRoute
   ShipmentsRoute: typeof ShipmentsRoute
+  TenderAwardReviewsRoute: typeof TenderAwardReviewsRoute
   TenderBidStancesRoute: typeof TenderBidStancesRoute
   TenderConsortiumMembersRoute: typeof TenderConsortiumMembersRoute
   TenderDataRoomsRoute: typeof TenderDataRoomsRoute
@@ -1513,6 +1526,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShipmentsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tender-award-reviews': {
+      id: '/tender-award-reviews'
+      path: '/tender-award-reviews'
+      fullPath: '/tender-award-reviews'
+      preLoaderRoute: typeof TenderAwardReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tender-bid-stances': {
       id: '/tender-bid-stances'
       path: '/tender-bid-stances'
@@ -1699,6 +1719,7 @@ const rootRouteChildren: RootRouteChildren = {
   ShipmentDocumentsRoute: ShipmentDocumentsRoute,
   ShipmentPackagesRoute: ShipmentPackagesRoute,
   ShipmentsRoute: ShipmentsRoute,
+  TenderAwardReviewsRoute: TenderAwardReviewsRoute,
   TenderBidStancesRoute: TenderBidStancesRoute,
   TenderConsortiumMembersRoute: TenderConsortiumMembersRoute,
   TenderDataRoomsRoute: TenderDataRoomsRoute,

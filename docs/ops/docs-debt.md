@@ -15,9 +15,10 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **150.0 leftover:** `stop_group`; `eta_physical`/`eta_legal` (V2); waga/plomba/awizacja (EXP1). Tu tylko punkt + location + strefa IANA. Nie mapa. `resource` = 151.0. `trip` = 152.0.
 - **151.0 leftover:** `trip` DONE 152.0. Zostaje T2c: multi-manning / floating trailer; pojemności / Decimal km; `party_id`; `/fleet` / HW. Tu tylko katalog pojazd/kierowca/naczepa.
 - **153.0 leftover:** VGM/TARA Decimal; free_time; cutoffy CY/CFS/VGM/SI/AMS; `bl_kind`; plomby/PIN; reefer; party/terminal; TEU; `shipment_leg_id`. Tu tylko ISO 6346 + `iso_size_type` + opcjonalne zlecenie. Nie booking.
-- **181.0 leftover:** four-eyes / TED / CO₂ (G2.12–G2.18). Tu tylko `tender_bid_stance` HITL bid/no-bid + `source_ref`. Nie mutacja `tender.status`. Nie win/loss. Nie kwota. Nie auto-award.
-- **180.0 leftover:** bid/no-bid DONE 181.0. Zostaje four-eyes / TED / CO₂ (G2.12–G2.18). Tu tylko `tender_prospect` HITL + `source_ref`. Nie scrape. Nie kwota. Nie auto-award.
-- **179.0 leftover:** prospecting HITL DONE 180.0. Bid/no-bid DONE 181.0. Zostaje four-eyes / TED / CO₂ (G2.12–G2.18). Tu tylko `draft_kind=tender_rfp` + accept → `tender_rfp_intake`. Nie zapis z LLM. Nie kwota. Nie auto-award.
+- **182.0 leftover:** TED / CO₂ (G2.13–G2.18). Tu tylko `tender_award_review` HITL countersign/challenge + `source_ref`. Nie mutacja `tender.status`. Nie win/loss. Nie dwa user_id. Nie kwota. Nie auto-award.
+- **181.0 leftover:** four-eyes DONE 182.0. Zostaje TED / CO₂ (G2.13–G2.18). Tu tylko `tender_bid_stance` HITL bid/no-bid + `source_ref`. Nie mutacja `tender.status`. Nie win/loss. Nie kwota. Nie auto-award.
+- **180.0 leftover:** bid/no-bid DONE 181.0. Four-eyes DONE 182.0. Zostaje TED / CO₂ (G2.13–G2.18). Tu tylko `tender_prospect` HITL + `source_ref`. Nie scrape. Nie kwota. Nie auto-award.
+- **179.0 leftover:** prospecting HITL DONE 180.0. Bid/no-bid DONE 181.0. Four-eyes DONE 182.0. Zostaje TED / CO₂ (G2.13–G2.18). Tu tylko `draft_kind=tender_rfp` + accept → `tender_rfp_intake`. Nie zapis z LLM. Nie kwota. Nie auto-award.
 - **178.0 leftover:** `draft_kind=tender_rfp` DONE 179.0. Zostaje prospecting / four-eyes / TED / CO₂ (G2.10–G2.18). Tu tylko `tender_rfp_intake` HITL + `source_ref`. Nie zapis z LLM. Nie kwota. Nie auto-award.
 - **176.0 leftover:** extract RFP HITL; four-eyes; TED / CO₂ / consortium (G2.8–G2.18). Tu tylko `tender_win_loss` wynik + `source_ref`. Nie mutacja `tender.status`. Nie LLM. Nie kwota. Nie auto-award.
 - **175.0 leftover:** win/loss DONE 176.0. Zostaje extract RFP HITL; four-eyes; TED / CO₂ / consortium (G2.8–G2.18). Tu tylko `tender_playbook` twierdzenie + `source_ref`. Nie LLM. Nie kwota. Nie auto-award.

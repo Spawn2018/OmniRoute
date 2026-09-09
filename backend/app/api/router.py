@@ -70,6 +70,7 @@ from app.api import (
     stops,
     table_views,
     tenancy,
+    tender_award_reviews,
     tender_bid_stances,
     tender_consortium_members,
     tender_data_rooms,
@@ -143,6 +144,7 @@ api_router.include_router(tender_lots.router)
 api_router.include_router(tender_matrix_cells.router)
 api_router.include_router(tender_playbooks.router)
 api_router.include_router(tender_win_losses.router)
+api_router.include_router(tender_award_reviews.router)
 api_router.include_router(tender_bid_stances.router)
 api_router.include_router(tender_consortium_members.router)
 api_router.include_router(tender_prospects.router)

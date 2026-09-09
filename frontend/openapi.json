@@ -5928,6 +5928,80 @@
         ]
       }
     },
+    "/api/v1/tender-award-reviews": {
+      "get": {
+        "tags": [
+          "tender-award-reviews"
+        ],
+        "summary": "List Tender Award Reviews",
+        "operationId": "list_tender_award_reviews_api_v1_tender_award_reviews_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TenderAwardReviewResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Tender Award Reviews Api V1 Tender Award Reviews Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "tender-award-reviews"
+        ],
+        "summary": "Create Tender Award Review",
+        "operationId": "create_tender_award_review_api_v1_tender_award_reviews_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TenderAwardReviewCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TenderAwardReviewResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/tender-bid-stances": {
       "get": {
         "tags": [
@@ -18398,6 +18472,67 @@
         },
         "type": "object",
         "title": "TableViewUpdate"
+      },
+      "TenderAwardReviewCreate": {
+        "properties": {
+          "tender_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Tender Id"
+          },
+          "review_code": {
+            "type": "string",
+            "title": "Review Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "tender_id",
+          "review_code",
+          "source_ref"
+        ],
+        "title": "TenderAwardReviewCreate"
+      },
+      "TenderAwardReviewResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "tender_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Tender Id"
+          },
+          "review_code": {
+            "type": "string",
+            "title": "Review Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "tender_id",
+          "review_code",
+          "source_ref"
+        ],
+        "title": "TenderAwardReviewResponse"
       },
       "TenderBidStanceCreate": {
         "properties": {

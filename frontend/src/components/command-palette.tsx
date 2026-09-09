@@ -88,6 +88,11 @@ const NAV_ACTIONS = [
     label: "Idź do udziału w przetargu",
     to: "/tender-bid-stances",
   },
+  {
+    id: "nav-tender-award-reviews",
+    label: "Idź do czterech oczu nagrody",
+    to: "/tender-award-reviews",
+  },
   { id: "nav-tender-lanes", label: "Idź do korytarzy przetargu", to: "/tender-lanes" },
   { id: "nav-tender-lots", label: "Idź do partii przetargu", to: "/tender-lots" },
   { id: "nav-tender-rounds", label: "Idź do rund przetargu", to: "/tender-rounds" },

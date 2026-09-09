@@ -91,6 +91,7 @@ from app.models.tender_data_room import TenderDataRoom  # noqa: F401
 from app.models.tender_matrix_cell import TenderMatrixCell  # noqa: F401
 from app.models.tender_playbook import TenderPlaybook  # noqa: F401
 from app.models.tender_consortium_member import TenderConsortiumMember  # noqa: F401
+from app.models.tender_award_review import TenderAwardReview  # noqa: F401
 from app.models.tender_bid_stance import TenderBidStance  # noqa: F401
 from app.models.tender_prospect import TenderProspect  # noqa: F401
 from app.models.tender_rfp_intake import TenderRfpIntake  # noqa: F401

@@ -592,3 +592,7 @@ class InvalidTenderProspect(DomainError):
 
 class InvalidTenderBidStance(DomainError):
     """Postawa G2.11: HITL bid/no-bid z source_ref — nie win/loss i nie auto-award."""
+
+
+class InvalidTenderAwardReview(DomainError):
+    """Przegląd G2.12: HITL cztery oczy z source_ref — nie auto-award i nie szyna A/Z/O."""

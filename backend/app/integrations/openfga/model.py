@@ -94,6 +94,7 @@ def _organization_tender_relations() -> dict[str, Userset]:
         "can_manage_tender_consortium_members": _member(),
         "can_manage_tender_prospects": _member(),
         "can_manage_tender_bid_stances": _member(),
+        "can_manage_tender_award_reviews": _member(),
         "can_manage_tender_rfp_intakes": _member(),
     }
 
