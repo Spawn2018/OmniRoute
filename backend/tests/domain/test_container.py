@@ -10,6 +10,7 @@ from app.domain.container import (
     require_seal_no_2,
     require_seal_no_3,
     require_vessel_name,
+    require_voyage_no,
 )
 from app.domain.errors import InvalidContainer
 
@@ -60,6 +61,14 @@ def test_vessel_name_omits_blank_and_keeps_token() -> None:
     assert require_vessel_name(" MSC GULSUN ") == "MSC GULSUN"
     with pytest.raises(InvalidContainer, match="statek"):
         require_vessel_name("x" * 129)
+
+
+def test_voyage_no_omits_blank_and_keeps_token() -> None:
+    assert require_voyage_no(None) is None
+    assert require_voyage_no("  ") is None
+    assert require_voyage_no(" 049W ") == "049W"
+    with pytest.raises(InvalidContainer, match="rejs"):
+        require_voyage_no("x" * 33)
 
 
 @given(st.sampled_from(["CSQU3054384", "MSCU1234567", "ABCD"]))

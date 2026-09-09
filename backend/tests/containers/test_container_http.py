@@ -14,6 +14,7 @@ from app.domain.container import (
     require_seal_no_2,
     require_seal_no_3,
     require_vessel_name,
+    require_voyage_no,
 )
 from app.domain.errors import ResourceNotFound
 from app.main import app
@@ -74,6 +75,7 @@ class StubContainerService:
         seal_no_2: object = None,
         seal_no_3: object = None,
         vessel_name: object = None,
+        voyage_no: object = None,
     ) -> Container:
         number = require_container_no(container_no)
         size_type = require_iso_size_type(iso_size_type)
@@ -83,6 +85,7 @@ class StubContainerService:
         seal2 = require_seal_no_2(seal_no_2)
         seal3 = require_seal_no_3(seal_no_3)
         vessel = require_vessel_name(vessel_name)
+        voyage = require_voyage_no(voyage_no)
         current = next(
             (row for row in self.rows if row.container_no == number and row.superseded_by is None),
             None,
@@ -96,6 +99,7 @@ class StubContainerService:
             and current.seal_no_2 == seal2
             and current.seal_no_3 == seal3
             and current.vessel_name == vessel
+            and current.voyage_no == voyage
         ):
             return current
         successor = Container(
@@ -109,6 +113,7 @@ class StubContainerService:
             seal_no_2=seal2,
             seal_no_3=seal3,
             vessel_name=vessel,
+            voyage_no=voyage,
             created_by=user_id,
         )
         if current is not None:
@@ -152,6 +157,7 @@ def test_http_create_list_supersede_and_reject_check_digit(box_client: object) -
     assert first.json()["seal_no_2"] is None
     assert first.json()["seal_no_3"] is None
     assert first.json()["vessel_name"] is None
+    assert first.json()["voyage_no"] is None
     assert "amount" not in first.json()
     assert "vgm" not in first.json()
     second = client.post(
@@ -316,7 +322,7 @@ def test_http_create_container_with_vessel_name(box_client: object) -> None:
     )
     assert created.status_code == 201
     assert created.json()["vessel_name"] == "MSC GULSUN"
-    assert "voyage" not in created.json()
+    assert created.json()["voyage_no"] is None
     assert "pin" not in created.json()
 
 
@@ -335,3 +341,40 @@ def test_http_rejects_too_long_vessel_name(box_client: object) -> None:
     )
     assert reply.status_code == 400
     assert "statek" in reply.json()["detail"]
+
+
+def test_http_create_container_with_voyage_no(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "voyage_no": " 049W ",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["voyage_no"] == "049W"
+    assert created.json()["vessel_name"] is None
+    assert "pin" not in created.json()
+    assert "booking" not in created.json()
+
+
+def test_http_rejects_too_long_voyage_no(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "voyage_no": "x" * 33,
+        },
+    )
+    assert reply.status_code == 400
+    assert "rejs" in reply.json()["detail"]

@@ -13676,6 +13676,17 @@
               }
             ],
             "title": "Vessel Name"
+          },
+          "voyage_no": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Voyage No"
           }
         },
         "additionalProperties": false,
@@ -13767,6 +13778,17 @@
             ],
             "title": "Vessel Name"
           },
+          "voyage_no": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Voyage No"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -13792,6 +13814,7 @@
           "seal_no_2",
           "seal_no_3",
           "vessel_name",
+          "voyage_no",
           "superseded_by"
         ],
         "title": "ContainerResponse"

@@ -520,3 +520,4 @@
 | 2026-09-09 | Plan 219.0 | T3 | vessel_name HITL na container, nie rejs i nie PIN. Delta zaakceptowana (`/noc`). Nastepny: kod 219.0. |
 | 2026-09-09 | 219.0 | T3 | vessel_name HITL na container. Nie rejs. Nie PIN. Nastepny: leftover T3 voyage_no Plan. |
 | 2026-09-09 | Plan 220.0 | T3 | voyage_no HITL na container, nie booking i nie PIN. Delta zaakceptowana (`/noc`). Nastepny: kod 220.0. |
+| 2026-09-09 | 220.0 | T3 | voyage_no HITL na container. Nie booking. Nie PIN. Nastepny: leftover T3 remarks Plan. |

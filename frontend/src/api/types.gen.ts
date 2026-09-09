@@ -1252,6 +1252,10 @@ export type ContainerCreate = {
      * Vessel Name
      */
     vessel_name?: string | null;
+    /**
+     * Voyage No
+     */
+    voyage_no?: string | null;
 };
 
 /**
@@ -1298,6 +1302,10 @@ export type ContainerResponse = {
      * Vessel Name
      */
     vessel_name: string | null;
+    /**
+     * Voyage No
+     */
+    voyage_no: string | null;
     /**
      * Superseded By
      */
