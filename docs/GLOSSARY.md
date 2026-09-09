@@ -195,6 +195,7 @@
 | KREPTD | kreptd | G2.23; GITD/ITD; oficjalne API |
 | licencja KREPTD | kreptd_licence | G2.23 HITL numer licencji na `party`; nie scrape; nie Citizen API |
 | schemat monitoringu | monitoring_scheme | C7 HITL katalog per tenant; nie zgłoszenie SENT; nie wymyślony klon |
+| dokument kontrahenta | party_document | C8 HITL rodzaj na `party`; nie 409; nie extract |
 | licencja transportowa | transport_licence | party_document; KREPTD |
 | sold-to | sold_to_party_id | EXP1; korpo |
 | bill-to | bill_to_party_id | EXP1 |
