@@ -517,3 +517,4 @@
 | 2026-09-09 | 217.0 | T3 | seal_no_2 HITL na container. Nie PIN. Nie VGM. Nastepny: leftover T3 seal_no_3 Plan. |
 | 2026-09-09 | Plan 218.0 | T3 | seal_no_3 HITL na container, nie PIN. Delta zaakceptowana (`/noc`). Nastepny: kod 218.0. |
 | 2026-09-09 | 218.0 | T3 | seal_no_3 HITL na container. Nie PIN. Nie VGM. Nastepny: leftover T3 vessel_name Plan. |
+| 2026-09-09 | Plan 219.0 | T3 | vessel_name HITL na container, nie rejs i nie PIN. Delta zaakceptowana (`/noc`). Nastepny: kod 219.0. |
