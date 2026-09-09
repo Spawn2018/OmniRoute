@@ -549,3 +549,4 @@
 | 2026-09-10 | 233.0 | T3 | free_time_origin_h HITL na container. Nie countdown. Nie PIN. Nastepny: leftover T3 free_time_dest_h Plan. |
 | 2026-09-10 | Plan 234.0 | T3 | free_time_dest_h HITL na container, nie countdown i nie PIN. Delta zaakceptowana (`/noc`). Nastepny: kod 234.0. |
 | 2026-09-10 | 234.0 | T3 | free_time_dest_h HITL na container. Nie countdown. Nie PIN. Nastepny: leftover T3 si_cutoff_at Plan. |
+| 2026-09-10 | Plan 235.0 | T3 | si_cutoff_at HITL na container, nie live HTTP i nie PIN. Delta zaakceptowana (`/noc`). Nastepny: kod 235.0. |
