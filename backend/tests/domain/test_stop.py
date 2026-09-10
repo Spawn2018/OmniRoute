@@ -13,6 +13,7 @@ from app.domain.stop import (
     require_sequence_no,
     require_stop_group_code,
     require_stop_kind,
+    require_stop_quantity,
     require_stop_status,
     require_stop_weight_kg,
     require_time_zone,
@@ -91,3 +92,20 @@ def test_stop_weight_kg_rejects_float_and_negative() -> None:
         require_stop_weight_kg(12.5)
     with pytest.raises(InvalidStop, match="waga"):
         require_stop_weight_kg("-1")
+
+
+def test_stop_quantity_omits_blank_and_keeps_int() -> None:
+    assert require_stop_quantity(None) is None
+    assert require_stop_quantity("  ") is None
+    assert require_stop_quantity(0) == 0
+    assert require_stop_quantity(12) == 12
+    assert require_stop_quantity("3") == 3
+
+
+def test_stop_quantity_rejects_float_bool_and_negative() -> None:
+    with pytest.raises(InvalidStop, match="ilość"):
+        require_stop_quantity(1.5)
+    with pytest.raises(InvalidStop, match="ilość"):
+        require_stop_quantity(True)
+    with pytest.raises(InvalidStop, match="ilość"):
+        require_stop_quantity(-1)

@@ -16,6 +16,7 @@ export type StopRow = {
   stop_group_code: string | null
   notes_for_driver: string | null
   weight_kg: string | null
+  quantity: number | null
   superseded_by: string | null
 }
 
@@ -32,6 +33,7 @@ export type StopWrite = {
   stop_group_code: string | null
   notes_for_driver: string | null
   weight_kg: string | null
+  quantity: number | string | null
 }
 
 const PATH = "/api/v1/stops"
@@ -48,6 +50,7 @@ export function stopWrite(args: {
   groupCode: string
   driverNotes: string
   weightKg: string
+  quantityHitl: string
 }): StopWrite {
   const group = args.groupCode.trim()
   const notes = args.driverNotes.trim()
@@ -64,8 +67,20 @@ export function stopWrite(args: {
     stop_group_code: group === "" ? null : group,
     notes_for_driver: notes === "" ? null : notes,
     weight_kg: mass === "" ? null : mass,
+    quantity: optionalStopQuantity(args.quantityHitl),
     source_ref: "tenant:manual",
   }
+}
+
+function optionalStopQuantity(raw: string): number | string | null {
+  const token = raw.trim()
+  if (token === "") {
+    return null
+  }
+  if (/^-?\d+$/.test(token)) {
+    return Number.parseInt(token, 10)
+  }
+  return token
 }
 
 export async function fetchStops(shipmentId: string): Promise<StopRow[]> {

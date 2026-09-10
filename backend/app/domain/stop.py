@@ -122,6 +122,26 @@ def require_stop_weight_kg(raw: object) -> Decimal | None:
     return parsed.quantize(_FOUR)
 
 
+def require_stop_quantity(raw: object) -> int | None:
+    if raw is None:
+        return None
+    if type(raw) is str:
+        token = raw.strip()
+        if token == "":
+            return None
+        try:
+            raw = int(token)
+        except ValueError as exc:
+            raise InvalidStop("ilość musi być liczbą całkowitą") from exc
+    if isinstance(raw, float) or isinstance(raw, bool):
+        raise InvalidStop("ilość nie może być float")
+    if type(raw) is not int:
+        raise InvalidStop("ilość musi być liczbą całkowitą")
+    if raw < 0:
+        raise InvalidStop("ilość nie może być ujemna")
+    return raw
+
+
 def _require_eta_clock(raw: object, label: str) -> datetime:
     if type(raw) is not str:
         raise InvalidStop(f"{label} musi być tekstem")

@@ -21228,6 +21228,26 @@
               }
             ],
             "title": "Weight Kg"
+          },
+          "quantity": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quantity"
           }
         },
         "additionalProperties": false,
@@ -21330,6 +21350,17 @@
             ],
             "title": "Weight Kg"
           },
+          "quantity": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quantity"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -21359,6 +21390,7 @@
           "stop_group_code",
           "notes_for_driver",
           "weight_kg",
+          "quantity",
           "superseded_by"
         ],
         "title": "StopResponse"

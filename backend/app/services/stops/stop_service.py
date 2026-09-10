@@ -14,6 +14,7 @@ from app.domain.stop import (
     require_stop_group_code,
     require_stop_kind,
     require_stop_location_id,
+    require_stop_quantity,
     require_stop_shipment_id,
     require_stop_source_ref,
     require_stop_status,
@@ -36,6 +37,7 @@ class _PackedPoint:
     group_code: str | None
     driver_notes: str | None
     mass: Decimal | None
+    count: int | None
     physical: datetime
     legal: datetime
 
@@ -54,6 +56,7 @@ def _pack_point(
     stop_group_code: object,
     notes_for_driver: object,
     weight_kg: object,
+    quantity: object,
 ) -> _PackedPoint:
     return _PackedPoint(
         order_id=require_stop_shipment_id(shipment_id),
@@ -66,6 +69,7 @@ def _pack_point(
         group_code=require_stop_group_code(stop_group_code),
         driver_notes=require_notes_for_driver(notes_for_driver),
         mass=require_stop_weight_kg(weight_kg),
+        count=require_stop_quantity(quantity),
         physical=require_eta_physical(eta_physical),
         legal=require_eta_legal(eta_legal),
     )
@@ -81,6 +85,7 @@ def _same_point(current: Stop, packed: _PackedPoint) -> bool:
         and current.stop_group_code == packed.group_code
         and current.notes_for_driver == packed.driver_notes
         and current.weight_kg == packed.mass
+        and current.quantity == packed.count
         and current.eta_physical == packed.physical
         and current.eta_legal == packed.legal
     )
@@ -116,6 +121,7 @@ class StopService:
         stop_group_code: object = None,
         notes_for_driver: object = None,
         weight_kg: object = None,
+        quantity: object = None,
     ) -> Stop:
         packed = _pack_point(
             shipment_id=shipment_id,
@@ -130,7 +136,16 @@ class StopService:
             stop_group_code=stop_group_code,
             notes_for_driver=notes_for_driver,
             weight_kg=weight_kg,
+            quantity=quantity,
         )
+        return await self._persist(organization_id, user_id, packed)
+
+    async def _persist(
+        self,
+        organization_id: UUID,
+        user_id: UUID,
+        packed: _PackedPoint,
+    ) -> Stop:
         current = await self._rows.find_current(packed.order_id, packed.seq)
         if current is not None and _same_point(current, packed):
             return current
@@ -154,6 +169,7 @@ class StopService:
                 stop_group_code=packed.group_code,
                 notes_for_driver=packed.driver_notes,
                 weight_kg=packed.mass,
+                quantity=packed.count,
                 eta_physical=packed.physical,
                 eta_legal=packed.legal,
                 created_by=user_id,

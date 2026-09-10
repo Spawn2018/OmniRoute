@@ -65,6 +65,7 @@ def test_generated_api_types_include_stop() -> None:
     assert "StopResponse" in source
     assert "notes_for_driver" in source
     assert "weight_kg" in source
+    assert "quantity" in source
 
 
 def test_migration_152_adds_group_code_without_table() -> None:
@@ -108,3 +109,17 @@ def test_migration_183_adds_weight_without_vgm() -> None:
     assert "leaflet" not in source
     assert "def downgrade" in source
     assert "weight_kg" in source.split("def downgrade")[1]
+
+
+def test_migration_184_adds_quantity_without_packaging() -> None:
+    source = (_ROOT / "backend" / "alembic" / "versions" / "184_stop_quantity.py").read_text(
+        encoding="utf-8"
+    )
+    assert 'revision: str = "184_stop_quantity"' in source
+    assert 'down_revision: str | None = "183_stop_weight"' in source
+    assert "quantity" in source
+    assert "packaging" not in source
+    assert "create_table" not in source
+    assert "leaflet" not in source
+    assert "def downgrade" in source
+    assert "quantity" in source.split("def downgrade")[1]

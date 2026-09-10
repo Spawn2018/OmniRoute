@@ -102,6 +102,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **245.0 leftover:** leftover `quote_recorded` / batch / `channel_quote`. Tu tylko 2b `inquiry_sent` z API. Nie import BC. Nie live HTTP. Nie Temporal.
 - **246.0 leftover:** leftover POST `channel_quote` / batch / PATCH. leftover T1b tabela `stop_group`; EXP1. Tu tylko `quote_recorded` z API przy POST `answered`. Nie import BC. Nie live HTTP. Nie Temporal.
 - **247.0 leftover:** leftover T1 EXP1 ilość/opakowanie/plomba/awizacja/waiting/POD; leftover T1b tabela. Tu tylko `weight_kg` HITL. Nie VGM. Nie mapa. Nie live HTTP.
+- **248.0 leftover:** leftover T1 EXP1 opakowanie/plomba/awizacja/waiting/POD; leftover T1b tabela. Tu tylko `quantity` HITL. Nie opakowanie. Nie mapa. Nie live HTTP.
 - **215.0 leftover:** leftover T1b tabela `stop_group`; EXP1 waga/plomba/awizacja. Tu tylko `notes_for_driver` HITL. Nie waga. Nie mapa.
 - **214.0 leftover:** leftover T2c km/`party`/`/fleet`. Tu tylko `route_label` HITL. Nie km. Nie mapa.
 - **152.0 leftover:** `driver2_id` DONE 212.0; `route_label` DONE 214.0; `stop_group` kolumna DONE 213.0. Zostaje Decimal km / freeze kosztu; `party_id`; `/fleet` / HW. Tu tylko status + opcjonalny slot floty + etykieta. Nie km.
