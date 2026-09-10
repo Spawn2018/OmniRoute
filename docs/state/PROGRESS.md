@@ -596,3 +596,4 @@
 | 2026-09-10 | 256.0 | T2 | planned_distance_km HITL na trip. Nie GPS. Nie mapa. Nastepny: leftover T2c actual_distance_km Plan. |
 | 2026-09-10 | Plan 257.0 | T2 | actual_distance_km HITL na trip, nie GPS i nie fleet. Delta zaakceptowana (`/noc`). Nastepny: kod 257.0. |
 | 2026-09-10 | 257.0 | T2 | actual_distance_km HITL na trip. Nie GPS. Nie mapa. Nastepny: leftover T2c subcontractor_party_id Plan. |
+| 2026-09-10 | Plan 258.0 | T2 | subcontractor_party_id HITL na trip, nie fleet i nie C8. Delta zaakceptowana (`/noc`). Nastepny: kod 258.0. |
