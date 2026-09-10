@@ -606,3 +606,4 @@
 | 2026-09-10 | 261.0 | T6 | /planning leniwy overlay trip. Nie GPS. Nie 4 widoki. Nastepny: leftover T4b SQL charge Plan. |
 | 2026-09-10 | Plan 262.0 | T4 | marża listy charge z SQL, nie kolumna i nie rollup drzewa. Delta zaakceptowana (`/noc`). Nastepny: kod 262.0. |
 | 2026-09-10 | 262.0 | T4 | GET listy charge: marża sell−buy w SQL. Nie kolumna. Nie rollup. Nastepny: leftover lookup/KSeF TE Plan. |
+| 2026-09-10 | Plan 263.0 | T5 | task_template HITL kod + applies_when, nie instancja i nie outbox. Delta zaakceptowana (`/noc`). Nastepny: kod 263.0. |
