@@ -1,3 +1,5 @@
+from datetime import UTC, datetime
+
 import pytest
 from hypothesis import given
 from hypothesis import strategies as st
@@ -23,6 +25,7 @@ from app.domain.container import (
     require_seal_no_1,
     require_seal_no_2,
     require_seal_no_3,
+    require_si_cutoff_at,
     require_vessel_name,
     require_voyage_no,
 )
@@ -184,6 +187,17 @@ def test_free_time_dest_h_reuses_same_hours_rule() -> None:
     assert require_free_time_dest_h(24) == 24
     with pytest.raises(InvalidContainer, match="godziny"):
         require_free_time_dest_h(-1)
+
+
+def test_si_cutoff_at_keeps_aware_clock_and_rejects_naive() -> None:
+    clock = datetime(2026, 9, 10, 12, 0, tzinfo=UTC)
+    assert require_si_cutoff_at(None) is None
+    assert require_si_cutoff_at("  ") is None
+    assert require_si_cutoff_at("2026-09-10T12:00:00+00:00") == clock
+    with pytest.raises(InvalidContainer, match="si"):
+        require_si_cutoff_at("2026-09-10T12:00:00")
+    with pytest.raises(InvalidContainer, match="si"):
+        require_si_cutoff_at("not-iso")
 
 
 @given(st.sampled_from(["CSQU3054384", "MSCU1234567", "ABCD"]))

@@ -1312,6 +1312,10 @@ export type ContainerCreate = {
      * Free Time Dest H
      */
     free_time_dest_h?: unknown | null;
+    /**
+     * Si Cutoff At
+     */
+    si_cutoff_at?: unknown | null;
 };
 
 /**
@@ -1418,6 +1422,10 @@ export type ContainerResponse = {
      * Free Time Dest H
      */
     free_time_dest_h: number | null;
+    /**
+     * Si Cutoff At
+     */
+    si_cutoff_at: string | null;
     /**
      * Superseded By
      */

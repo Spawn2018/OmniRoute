@@ -1,3 +1,4 @@
+from datetime import datetime
 from uuid import UUID
 
 from app.domain.errors import InvalidContainer
@@ -207,6 +208,23 @@ def require_free_time_origin_h(raw: object) -> int | None:
 
 def require_free_time_dest_h(raw: object) -> int | None:
     return require_free_time_origin_h(raw)
+
+
+def require_si_cutoff_at(raw: object) -> datetime | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidContainer("si musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    try:
+        parsed = datetime.fromisoformat(token.replace("Z", "+00:00"))
+    except ValueError as exc:
+        raise InvalidContainer("si: ISO-8601") from exc
+    if parsed.tzinfo is None:
+        raise InvalidContainer("si: brak strefy")
+    return parsed
 
 
 def require_container_ref_1(raw: object) -> str | None:

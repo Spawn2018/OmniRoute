@@ -1,3 +1,4 @@
+from datetime import UTC, datetime
 from uuid import uuid4
 
 import pytest
@@ -550,3 +551,28 @@ async def test_container_free_time_dest_h_same_tenant(session, two_tenants) -> N
     await bind_tenant(session, org_a.id)
     loaded = list((await session.scalars(select(Container))).all())
     assert loaded[0].free_time_dest_h == 24
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_container_si_cutoff_at_same_tenant(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    user_a = two_tenants["user_a"]
+    await bind_tenant(session, org_a.id)
+    clock = datetime(2026, 9, 10, 12, 0, tzinfo=UTC)
+    session.add(
+        Container(
+            id=uuid4(),
+            organization_id=org_a.id,
+            container_no="CSQU3054383",
+            iso_size_type="22G1",
+            source_ref="fixture://container/si",
+            si_cutoff_at=clock,
+            created_by=user_a.id,
+        ),
+    )
+    await session.flush()
+    session.expunge_all()
+    await bind_tenant(session, org_a.id)
+    loaded = list((await session.scalars(select(Container))).all())
+    assert loaded[0].si_cutoff_at == clock

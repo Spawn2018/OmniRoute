@@ -27,6 +27,7 @@ export type ContainerRow = {
   bl_kind: string | null
   free_time_origin_h: number | null
   free_time_dest_h: number | null
+  si_cutoff_at: string | null
   superseded_by: string | null
 }
 
@@ -54,6 +55,7 @@ export type ContainerWrite = {
   bl_kind?: string | null
   free_time_origin_h?: number | null
   free_time_dest_h?: number | null
+  si_cutoff_at?: string | null
 }
 
 const PATH = "/api/v1/containers"

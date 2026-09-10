@@ -13830,6 +13830,15 @@
               }
             ],
             "title": "Free Time Dest H"
+          },
+          "si_cutoff_at": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Si Cutoff At"
           }
         },
         "additionalProperties": false,
@@ -14079,6 +14088,18 @@
             ],
             "title": "Free Time Dest H"
           },
+          "si_cutoff_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Si Cutoff At"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -14119,6 +14140,7 @@
           "bl_kind",
           "free_time_origin_h",
           "free_time_dest_h",
+          "si_cutoff_at",
           "superseded_by"
         ],
         "title": "ContainerResponse"

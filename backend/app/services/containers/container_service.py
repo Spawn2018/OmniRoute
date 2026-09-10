@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import NamedTuple
 from uuid import UUID, uuid4
 
@@ -25,6 +26,7 @@ from app.domain.container import (
     require_seal_no_1,
     require_seal_no_2,
     require_seal_no_3,
+    require_si_cutoff_at,
     require_vessel_name,
     require_voyage_no,
 )
@@ -56,6 +58,7 @@ class _WriteBox(NamedTuple):
     bill: object
     idle: object
     dwell: object
+    cut: object
 
 
 class _BoxDraft(NamedTuple):
@@ -82,6 +85,7 @@ class _BoxDraft(NamedTuple):
     bill: str | None
     idle: int | None
     dwell: int | None
+    cut: datetime | None
 
 
 def _box_draft(write: _WriteBox) -> _BoxDraft:
@@ -109,6 +113,7 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_container_bl_kind(write.bill),
         require_free_time_origin_h(write.idle),
         require_free_time_dest_h(write.dwell),
+        require_si_cutoff_at(write.cut),
     )
 
 
@@ -136,6 +141,7 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.bl_kind == draft.bill
         and current.free_time_origin_h == draft.idle
         and current.free_time_dest_h == draft.dwell
+        and current.si_cutoff_at == draft.cut
     )
 
 
@@ -166,6 +172,7 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         bl_kind=draft.bill,
         free_time_origin_h=draft.idle,
         free_time_dest_h=draft.dwell,
+        si_cutoff_at=draft.cut,
         created_by=user_id,
     )
 

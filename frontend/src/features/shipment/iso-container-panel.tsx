@@ -30,6 +30,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
   const [bill, setBill] = useState("")
   const [idle, setIdle] = useState("")
   const [dwell, setDwell] = useState("")
+  const [cut, setCut] = useState("")
   const listed = useQuery({
     queryKey: ["containers", ctx.organizationId, sizeType],
     queryFn: () => fetchContainers(sizeType),
@@ -63,6 +64,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
         bl_kind: optionalToken(bill),
         free_time_origin_h: optionalHours(idle),
         free_time_dest_h: optionalHours(dwell),
+        si_cutoff_at: optionalToken(cut),
       }),
     onSuccess: () => {
       void cache.invalidateQueries({ queryKey: ["containers", ctx.organizationId, sizeType] })
@@ -73,7 +75,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
     <section className="grid gap-2 rounded-md border border-border p-3" data-container="iso">
       <h2 className="text-sm font-medium">Kontener ISO</h2>
       <p className="text-xs text-muted-foreground">
-        Numer z cyfrą kontrolną i typ 4 znaków. Opcjonalne plomby, statek, rejs, uwaga, ładunek, opakowanie, referencje, flaga chłodniczego, terminale pobrania oraz zwrotu, rodzaj listu i godziny wolnego czasu na origin oraz destination. Nie odliczanie. Nie HBL. Nie temperatura. Nie VGM. Nie PIN. Nie booking.
+        Numer z cyfrą kontrolną i typ 4 znaków. Opcjonalne plomby, statek, rejs, uwaga, ładunek, opakowanie, referencje, flaga chłodniczego, terminale pobrania oraz zwrotu, rodzaj listu, godziny wolnego czasu na origin oraz destination i cutoff SI. Nie odliczanie. Nie HBL. Nie temperatura. Nie VGM. Nie PIN. Nie booking. Nie live HTTP.
       </p>
       <label className="flex flex-col gap-1 text-xs">
         Numer ISO 6346
@@ -273,6 +275,15 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
           onChange={(event) => setDwell(event.target.value)}
         />
       </label>
+      <label className="flex flex-col gap-1 text-xs">
+        Cutoff SI (opcjonalnie)
+        <Input
+          aria-label="Cutoff SI kontenera"
+          placeholder="si_cutoff_at"
+          value={cut}
+          onChange={(event) => setCut(event.target.value)}
+        />
+      </label>
       <Button type="button" disabled={blocked} onClick={() => persist.mutate()}>
         Zapisz kontener
       </Button>
@@ -302,6 +313,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
             {row.bl_kind !== null ? ` · ${row.bl_kind}` : ""}
             {row.free_time_origin_h !== null ? ` · ${String(row.free_time_origin_h)}h` : ""}
             {row.free_time_dest_h !== null ? ` · ${String(row.free_time_dest_h)}h dest` : ""}
+            {row.si_cutoff_at !== null ? ` · SI ${row.si_cutoff_at}` : ""}
           </li>
         ))}
       </ul>

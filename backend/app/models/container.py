@@ -1,6 +1,17 @@
 import uuid
+from datetime import datetime
 
-from sqlalchemy import Boolean, ForeignKey, ForeignKeyConstraint, Index, Integer, String, Text, text
+from sqlalchemy import (
+    Boolean,
+    DateTime,
+    ForeignKey,
+    ForeignKeyConstraint,
+    Index,
+    Integer,
+    String,
+    Text,
+    text,
+)
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -54,6 +65,7 @@ class Container(Base, TimestampMixin):
     bl_kind: Mapped[str | None] = mapped_column(String(16), nullable=True)
     free_time_origin_h: Mapped[int | None] = mapped_column(Integer(), nullable=True)
     free_time_dest_h: Mapped[int | None] = mapped_column(Integer(), nullable=True)
+    si_cutoff_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     superseded_by: Mapped[uuid.UUID | None] = mapped_column(
         UUID(as_uuid=True),
         ForeignKey("container.id", ondelete="RESTRICT"),
