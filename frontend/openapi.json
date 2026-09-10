@@ -13866,6 +13866,33 @@
               }
             ],
             "title": "Cfs Cutoff At"
+          },
+          "vgm_kg": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Vgm Kg"
+          },
+          "vgm_method": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Vgm Method"
+          },
+          "vgm_cutoff_at": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Vgm Cutoff At"
           }
         },
         "additionalProperties": false,
@@ -14163,6 +14190,40 @@
             ],
             "title": "Cfs Cutoff At"
           },
+          "vgm_kg": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Vgm Kg"
+          },
+          "vgm_method": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Vgm Method"
+          },
+          "vgm_cutoff_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Vgm Cutoff At"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -14207,6 +14268,9 @@
           "ams_cutoff_at",
           "cy_cutoff_at",
           "cfs_cutoff_at",
+          "vgm_kg",
+          "vgm_method",
+          "vgm_cutoff_at",
           "superseded_by"
         ],
         "title": "ContainerResponse"

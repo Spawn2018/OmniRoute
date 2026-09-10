@@ -1328,6 +1328,18 @@ export type ContainerCreate = {
      * Cfs Cutoff At
      */
     cfs_cutoff_at?: unknown | null;
+    /**
+     * Vgm Kg
+     */
+    vgm_kg?: unknown | null;
+    /**
+     * Vgm Method
+     */
+    vgm_method?: unknown | null;
+    /**
+     * Vgm Cutoff At
+     */
+    vgm_cutoff_at?: unknown | null;
 };
 
 /**
@@ -1450,6 +1462,18 @@ export type ContainerResponse = {
      * Cfs Cutoff At
      */
     cfs_cutoff_at: string | null;
+    /**
+     * Vgm Kg
+     */
+    vgm_kg: string | null;
+    /**
+     * Vgm Method
+     */
+    vgm_method: string | null;
+    /**
+     * Vgm Cutoff At
+     */
+    vgm_cutoff_at: string | null;
     /**
      * Superseded By
      */

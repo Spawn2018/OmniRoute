@@ -1,4 +1,5 @@
 from datetime import datetime
+from decimal import Decimal, InvalidOperation
 from uuid import UUID
 
 from app.domain.errors import InvalidContainer
@@ -12,7 +13,9 @@ _MAX_SEAL = 32
 _MAX_VESSEL = 128
 _MAX_MARK = 64
 _BL_KINDS = frozenset({"original", "seawaybill", "telex", "express"})
+_VGM_METHODS = frozenset({"method1", "method2"})
 _MAX_ORIGIN_H = 8760
+_FOUR = Decimal("0.0001")
 
 
 def _iso6346_value(mark: str) -> int:
@@ -246,6 +249,44 @@ def require_cfs_cutoff_at(raw: object) -> datetime | None:
         return require_si_cutoff_at(raw)
     except InvalidContainer as exc:
         raise InvalidContainer(str(exc).replace("si", "cfs", 1)) from exc
+
+
+def require_vgm_cutoff_at(raw: object) -> datetime | None:
+    try:
+        return require_si_cutoff_at(raw)
+    except InvalidContainer as exc:
+        raise InvalidContainer(str(exc).replace("si", "vgm", 1)) from exc
+
+
+def require_vgm_kg(raw: object) -> Decimal | None:
+    if raw is None:
+        return None
+    if type(raw) is str and raw.strip() == "":
+        return None
+    if isinstance(raw, float) or isinstance(raw, bool):
+        raise InvalidContainer("vgm nie może być float")
+    if not isinstance(raw, Decimal | str | int):
+        raise InvalidContainer("vgm musi być liczbą dziesiętną")
+    try:
+        parsed = raw if isinstance(raw, Decimal) else Decimal(str(raw))
+    except InvalidOperation as exc:
+        raise InvalidContainer("vgm musi być liczbą dziesiętną") from exc
+    if parsed <= 0:
+        raise InvalidContainer("vgm musi być dodatnia")
+    return parsed.quantize(_FOUR)
+
+
+def require_vgm_method(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidContainer("vgm musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    if token not in _VGM_METHODS:
+        raise InvalidContainer("vgm nieznany")
+    return token
 
 
 def require_container_ref_1(raw: object) -> str | None:

@@ -491,7 +491,7 @@ class InvalidTrip(DomainError):
 
 
 class InvalidContainer(DomainError):
-    """Kontener ISO 6346 — nie VGM."""
+    """Kontener ISO 6346 — VGM HITL, nie kalkulator."""
 
 
 class InvalidGroupageLine(DomainError):

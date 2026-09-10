@@ -1,4 +1,5 @@
 from datetime import UTC, datetime
+from decimal import Decimal
 
 import pytest
 from hypothesis import given
@@ -30,6 +31,9 @@ from app.domain.container import (
     require_seal_no_3,
     require_si_cutoff_at,
     require_vessel_name,
+    require_vgm_cutoff_at,
+    require_vgm_kg,
+    require_vgm_method,
     require_voyage_no,
 )
 from app.domain.errors import InvalidContainer
@@ -234,6 +238,23 @@ def test_cfs_cutoff_at_reuses_aware_clock_and_rejects_naive() -> None:
         require_cfs_cutoff_at("2026-09-10T12:00:00")
     with pytest.raises(InvalidContainer, match="cfs"):
         require_cfs_cutoff_at("not-iso")
+
+
+def test_vgm_bundle_accepts_decimal_solas_and_aware_clock() -> None:
+    clock = datetime(2026, 9, 10, 12, 0, tzinfo=UTC)
+    assert require_vgm_kg(None) is None
+    assert require_vgm_kg("  ") is None
+    assert require_vgm_kg("12345.5") == Decimal("12345.5000")
+    assert require_vgm_method(None) is None
+    assert require_vgm_method("method1") == "method1"
+    assert require_vgm_method("method2") == "method2"
+    assert require_vgm_cutoff_at("2026-09-10T12:00:00+00:00") == clock
+    with pytest.raises(InvalidContainer, match="vgm"):
+        require_vgm_kg(12.5)
+    with pytest.raises(InvalidContainer, match="vgm"):
+        require_vgm_method("weighed")
+    with pytest.raises(InvalidContainer, match="vgm"):
+        require_vgm_cutoff_at("2026-09-10T12:00:00")
 
 
 @given(st.sampled_from(["CSQU3054384", "MSCU1234567", "ABCD"]))

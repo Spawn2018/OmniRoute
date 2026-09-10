@@ -46,6 +46,9 @@ class ContainerCreate(BaseModel):
     ams_cutoff_at: object | None = None
     cy_cutoff_at: object | None = None
     cfs_cutoff_at: object | None = None
+    vgm_kg: object | None = None
+    vgm_method: object | None = None
+    vgm_cutoff_at: object | None = None
 
 
 class ContainerResponse(BaseModel):
@@ -80,11 +83,16 @@ class ContainerResponse(BaseModel):
     ams_cutoff_at: datetime | None
     cy_cutoff_at: datetime | None
     cfs_cutoff_at: datetime | None
+    vgm_kg: str | None
+    vgm_method: str | None
+    vgm_cutoff_at: datetime | None
     superseded_by: UUID | None
 
 
 def _as_response(row: Container) -> ContainerResponse:
-    return ContainerResponse.model_validate(row)
+    dumped = {name: getattr(row, name) for name in ContainerResponse.model_fields}
+    dumped["vgm_kg"] = None if row.vgm_kg is None else format(row.vgm_kg, "f")
+    return ContainerResponse.model_validate(dumped)
 
 
 def _write_from_body(body: ContainerCreate, shipment_id: UUID | None) -> _WriteBox:
@@ -116,6 +124,9 @@ def _write_from_body(body: ContainerCreate, shipment_id: UUID | None) -> _WriteB
         body.ams_cutoff_at,
         body.cy_cutoff_at,
         body.cfs_cutoff_at,
+        body.vgm_kg,
+        body.vgm_method,
+        body.vgm_cutoff_at,
     )
 
 

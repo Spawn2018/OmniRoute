@@ -1,4 +1,5 @@
 from datetime import datetime
+from decimal import Decimal
 from typing import NamedTuple
 from uuid import UUID, uuid4
 
@@ -31,6 +32,9 @@ from app.domain.container import (
     require_seal_no_3,
     require_si_cutoff_at,
     require_vessel_name,
+    require_vgm_cutoff_at,
+    require_vgm_kg,
+    require_vgm_method,
     require_voyage_no,
 )
 from app.models.container import Container
@@ -65,6 +69,9 @@ class _WriteBox(NamedTuple):
     ams: object
     cy: object
     cfs: object
+    mass: object
+    weigh: object
+    vgm: object
 
 
 class _BoxDraft(NamedTuple):
@@ -95,6 +102,9 @@ class _BoxDraft(NamedTuple):
     ams: datetime | None
     cy: datetime | None
     cfs: datetime | None
+    mass: Decimal | None
+    weigh: str | None
+    vgm: datetime | None
 
 
 def _box_draft(write: _WriteBox) -> _BoxDraft:
@@ -126,6 +136,9 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_ams_cutoff_at(write.ams),
         require_cy_cutoff_at(write.cy),
         require_cfs_cutoff_at(write.cfs),
+        require_vgm_kg(write.mass),
+        require_vgm_method(write.weigh),
+        require_vgm_cutoff_at(write.vgm),
     )
 
 
@@ -157,6 +170,9 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.ams_cutoff_at == draft.ams
         and current.cy_cutoff_at == draft.cy
         and current.cfs_cutoff_at == draft.cfs
+        and current.vgm_kg == draft.mass
+        and current.vgm_method == draft.weigh
+        and current.vgm_cutoff_at == draft.vgm
     )
 
 
@@ -191,6 +207,9 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         ams_cutoff_at=draft.ams,
         cy_cutoff_at=draft.cy,
         cfs_cutoff_at=draft.cfs,
+        vgm_kg=draft.mass,
+        vgm_method=draft.weigh,
+        vgm_cutoff_at=draft.vgm,
         created_by=user_id,
     )
 

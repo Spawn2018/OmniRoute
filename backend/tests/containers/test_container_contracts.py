@@ -401,6 +401,23 @@ def test_migration_177_adds_cfs_cutoff_without_live_http() -> None:
     assert "cfs_cutoff_at" in source.split("def downgrade")[1]
 
 
+def test_migration_178_adds_vgm_bundle_without_live_http() -> None:
+    source = (_ROOT / "backend" / "alembic" / "versions" / "178_container_vgm.py").read_text(
+        encoding="utf-8"
+    )
+    assert 'revision: str = "178_container_vgm"' in source
+    assert 'down_revision: str | None = "177_container_cfs_cutoff"' in source
+    assert "vgm_kg" in source
+    assert "vgm_method" in source
+    assert "vgm_cutoff_at" in source
+    assert "Numeric(14, 4)" in source
+    assert "pin_code" not in source
+    assert "httpx" not in source
+    assert "create_table" not in source
+    assert "def downgrade" in source
+    assert "vgm_kg" in source.split("def downgrade")[1]
+
+
 def test_generated_api_types_include_container() -> None:
     source = (_ROOT / "frontend" / "src" / "api" / "types.gen.ts").read_text(encoding="utf-8")
     assert "ContainerResponse" in source
@@ -422,3 +439,6 @@ def test_generated_api_types_include_container() -> None:
     assert "ams_cutoff_at" in source
     assert "cy_cutoff_at" in source
     assert "cfs_cutoff_at" in source
+    assert "vgm_kg" in source
+    assert "vgm_method" in source
+    assert "vgm_cutoff_at" in source

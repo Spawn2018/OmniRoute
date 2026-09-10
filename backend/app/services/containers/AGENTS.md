@@ -1,6 +1,6 @@
 # BC container (T3)
 
-Kontener ISO 6346 per tenant. Opcjonalne `shipment_id`. Nie VGM. Nie booking.
+Kontener ISO 6346 per tenant. Opcjonalne `shipment_id`. HITL VGM (`vgm_kg` / `vgm_method` / `vgm_cutoff_at`). Nie booking.
 
 ## Dozwolone zależności
 - `app.models.container`
@@ -10,5 +10,5 @@ Kontener ISO 6346 per tenant. Opcjonalne `shipment_id`. Nie VGM. Nie booking.
 ## Zakaz
 - import innych BC services (shipments, charges, geography, trips)
 - zapis `shipment` / `charge` / `terminal` / `party`
-- kwoty / marża / float / VGM / TEU
-- HTTP / PIN / mapa
+- kwoty / marża / float / TEU
+- HTTP / PIN / mapa / kalkulator VGM

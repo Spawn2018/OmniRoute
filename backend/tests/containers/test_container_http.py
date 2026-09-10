@@ -137,6 +137,9 @@ def test_http_create_list_supersede_and_reject_check_digit(box_client: object) -
     assert first.json()["ams_cutoff_at"] is None
     assert first.json()["cy_cutoff_at"] is None
     assert first.json()["cfs_cutoff_at"] is None
+    assert first.json()["vgm_kg"] is None
+    assert first.json()["vgm_method"] is None
+    assert first.json()["vgm_cutoff_at"] is None
     assert "amount" not in first.json()
     assert "vgm" not in first.json()
     second = client.post(
@@ -1029,3 +1032,77 @@ def test_http_rejects_naive_cfs_cutoff_at(box_client: object) -> None:
     )
     assert reply.status_code == 400
     assert "cfs" in reply.json()["detail"]
+
+
+def test_http_create_container_with_vgm_bundle(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "vgm_kg": "12345.5000",
+            "vgm_method": "method1",
+            "vgm_cutoff_at": "2026-09-10T12:00:00+00:00",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["vgm_kg"] == "12345.5000"
+    assert created.json()["vgm_method"] == "method1"
+    assert created.json()["vgm_cutoff_at"].startswith("2026-09-10T12:00:00")
+    assert "pin" not in created.json()
+    assert "amount" not in created.json()
+
+
+def test_http_rejects_float_vgm_kg(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "vgm_kg": 12.5,
+        },
+    )
+    assert reply.status_code == 400
+    assert "vgm" in reply.json()["detail"]
+
+
+def test_http_rejects_unknown_vgm_method(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "vgm_method": "weighed",
+        },
+    )
+    assert reply.status_code == 400
+    assert "vgm" in reply.json()["detail"]
+
+
+def test_http_rejects_naive_vgm_cutoff_at(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "vgm_cutoff_at": "2026-09-10T12:00:00",
+        },
+    )
+    assert reply.status_code == 400
+    assert "vgm" in reply.json()["detail"]
