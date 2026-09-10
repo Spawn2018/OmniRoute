@@ -29,6 +29,7 @@ export function TripRunPanel(args: { signedIn: boolean }) {
   const [driver2, setDriver2] = useState("")
   const [routeLabel, setRouteLabel] = useState("")
   const [plannedDistance, setPlannedDistance] = useState("")
+  const [actualDistance, setActualDistance] = useState("")
   const [buyAmount, setBuyAmount] = useState("")
   const [buyCurrency, setBuyCurrency] = useState("EUR")
   const listed = useQuery({
@@ -49,6 +50,7 @@ export function TripRunPanel(args: { signedIn: boolean }) {
           driver2,
           routeLabel,
           plannedDistance,
+          actualDistance,
           buyAmount,
           buyCurrency,
         }),
@@ -62,7 +64,7 @@ export function TripRunPanel(args: { signedIn: boolean }) {
       <h2 className="text-sm font-medium">Przejazd</h2>
       <p className="text-xs text-muted-foreground">
         Numer i status. Snapshot kupna przy w drodze. Flota opcjonalna, w tym drugi kierowca.
-        Etykieta trasy opcjonalna. Opcjonalna odległość planowana HITL. Nie liczenie km. Nie
+        Etykieta trasy opcjonalna. Opcjonalna odległość planowana i wykonana HITL. Nie liczenie km. Nie
         wariancja.
       </p>
       <label className="flex flex-col gap-1 text-xs">
@@ -165,6 +167,15 @@ export function TripRunPanel(args: { signedIn: boolean }) {
           onChange={(event) => setPlannedDistance(event.target.value)}
         />
       </label>
+      <label className="flex flex-col gap-1 text-xs">
+        Odległość wykonana (opcjonalnie)
+        <Input
+          aria-label="Odległość wykonana w kilometrach"
+          placeholder="actual_distance_km"
+          value={actualDistance}
+          onChange={(event) => setActualDistance(event.target.value)}
+        />
+      </label>
       <Button
         type="button"
         disabled={!args.signedIn || number.trim() === "" || persist.isPending}
@@ -181,6 +192,7 @@ export function TripRunPanel(args: { signedIn: boolean }) {
             {row.trip_no} · {row.status}
             {row.route_label !== null ? ` · ${row.route_label}` : ""}
             {row.planned_distance_km !== null ? ` · ${row.planned_distance_km}` : ""}
+            {row.actual_distance_km !== null ? ` · ${row.actual_distance_km}` : ""}
             {row.expected_buy_amount !== null && row.expected_buy_currency !== null ? (
               <>
                 {" · "}

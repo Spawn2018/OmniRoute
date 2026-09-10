@@ -67,6 +67,10 @@ class Trip(Base, TimestampMixin):
             "planned_distance_km IS NULL OR planned_distance_km >= 0",
             name="ck_trip_planned_distance",
         ),
+        CheckConstraint(
+            "actual_distance_km IS NULL OR actual_distance_km >= 0",
+            name="ck_trip_actual_distance",
+        ),
         Index("ix_trip_org_status", "organization_id", "status"),
     )
 
@@ -86,6 +90,7 @@ class Trip(Base, TimestampMixin):
     source_ref: Mapped[str] = mapped_column(Text, nullable=False)
     route_label: Mapped[str | None] = mapped_column(String(128), nullable=True)
     planned_distance_km: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
+    actual_distance_km: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
     expected_buy_amount: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
     expected_buy_currency: Mapped[str | None] = mapped_column(CHAR(length=3), nullable=True)
     superseded_by: Mapped[uuid.UUID | None] = mapped_column(

@@ -7094,6 +7094,10 @@ export type TripCreate = {
      * Planned Distance Km
      */
     planned_distance_km?: string | number | number | boolean | null;
+    /**
+     * Actual Distance Km
+     */
+    actual_distance_km?: string | number | number | boolean | null;
 };
 
 /**
@@ -7152,6 +7156,10 @@ export type TripResponse = {
      * Planned Distance Km
      */
     planned_distance_km: string | null;
+    /**
+     * Actual Distance Km
+     */
+    actual_distance_km: string | null;
     /**
      * Superseded By
      */

@@ -10,6 +10,7 @@ from app.domain.trip import (
     require_distinct_drivers,
     require_expected_buy,
     require_route_label,
+    require_trip_actual_distance_km,
     require_trip_no,
     require_trip_planned_distance_km,
     require_trip_resource_id,
@@ -75,6 +76,7 @@ class StubTripService:
         driver2_id: object = None,
         route_label: object = None,
         planned_distance_km: object = None,
+        actual_distance_km: object = None,
     ) -> Trip:
         number = require_trip_no(trip_no)
         state = require_trip_status(status)
@@ -86,6 +88,7 @@ class StubTripService:
         origin = require_trip_source_ref(source_ref)
         label = require_route_label(route_label)
         planned = require_trip_planned_distance_km(planned_distance_km)
+        actual = require_trip_actual_distance_km(actual_distance_km)
         buy_amount, buy_currency = require_expected_buy(
             state,
             expected_buy_amount,
@@ -105,6 +108,7 @@ class StubTripService:
             and current.source_ref == origin
             and current.route_label == label
             and current.planned_distance_km == planned
+            and current.actual_distance_km == actual
             and current.expected_buy_amount == buy_amount
             and current.expected_buy_currency == buy_currency
         ):
@@ -121,6 +125,7 @@ class StubTripService:
             source_ref=origin,
             route_label=label,
             planned_distance_km=planned,
+            actual_distance_km=actual,
             expected_buy_amount=buy_amount,
             expected_buy_currency=buy_currency,
             created_by=user_id,
@@ -165,6 +170,7 @@ def test_http_create_list_supersede_and_reject_queued(run_client: object) -> Non
     assert first.json()["driver2_id"] is None
     assert first.json()["route_label"] is None
     assert first.json()["planned_distance_km"] is None
+    assert first.json()["actual_distance_km"] is None
     assert "amount" not in first.json()
     second = client.post(
         "/api/v1/trips",
@@ -422,6 +428,42 @@ def test_http_rejects_float_planned_distance(run_client: object) -> None:
             "status": "draft",
             "source_ref": "tenant:manual",
             "planned_distance_km": 1.5,
+        },
+    )
+    assert reply.status_code == 400
+    assert "km" in reply.json()["detail"]
+
+
+def test_http_create_trip_with_actual_distance(run_client: object) -> None:
+    client, _trips, _fleet = run_client
+    headers = bearer_auth_headers(organization_id=uuid4())
+    reply = client.post(
+        "/api/v1/trips",
+        headers=headers,
+        json={
+            "trip_no": "TR-11",
+            "status": "draft",
+            "source_ref": "tenant:manual",
+            "actual_distance_km": "8.25",
+        },
+    )
+    assert reply.status_code == 201
+    assert reply.json()["actual_distance_km"] == "8.2500"
+    assert reply.json()["planned_distance_km"] is None
+    assert "margin" not in reply.json()
+
+
+def test_http_rejects_float_actual_distance(run_client: object) -> None:
+    client, _trips, _fleet = run_client
+    headers = bearer_auth_headers(organization_id=uuid4())
+    reply = client.post(
+        "/api/v1/trips",
+        headers=headers,
+        json={
+            "trip_no": "TR-12",
+            "status": "draft",
+            "source_ref": "tenant:manual",
+            "actual_distance_km": 1.5,
         },
     )
     assert reply.status_code == 400

@@ -15,6 +15,7 @@ export type TripRow = {
   expected_buy_currency: string | null
   route_label: string | null
   planned_distance_km: string | null
+  actual_distance_km: string | null
   superseded_by: string | null
 }
 
@@ -30,6 +31,7 @@ export type TripWrite = {
   expected_buy_currency: string | null
   route_label: string | null
   planned_distance_km: string | null
+  actual_distance_km: string | null
 }
 
 const PATH = "/api/v1/trips"
@@ -48,11 +50,13 @@ export function tripWrite(args: {
   driver2: string
   routeLabel: string
   plannedDistance: string
+  actualDistance: string
   buyAmount: string
   buyCurrency: string
 }): TripWrite {
   const freeze = args.state === "in_transit" || args.state === "completed"
   const planned = args.plannedDistance.trim()
+  const actual = args.actualDistance.trim()
   return {
     trip_no: args.number.trim(),
     status: args.state.trim(),
@@ -65,6 +69,7 @@ export function tripWrite(args: {
     expected_buy_currency: freeze ? args.buyCurrency.trim() : null,
     route_label: optionalId(args.routeLabel),
     planned_distance_km: planned === "" ? null : planned,
+    actual_distance_km: actual === "" ? null : actual,
   }
 }
 

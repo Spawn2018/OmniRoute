@@ -102,6 +102,10 @@ def require_trip_planned_distance_km(raw: object) -> Decimal | None:
     return parsed.quantize(_FOUR)
 
 
+def require_trip_actual_distance_km(raw: object) -> Decimal | None:
+    return require_trip_planned_distance_km(raw)
+
+
 def _require_buy_amount(raw: object) -> Decimal:
     if isinstance(raw, float) or isinstance(raw, bool):
         raise InvalidTrip("kwota nie może być float")

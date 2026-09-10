@@ -9,6 +9,7 @@ from app.domain.trip import (
     require_distinct_drivers,
     require_expected_buy,
     require_route_label,
+    require_trip_actual_distance_km,
     require_trip_no,
     require_trip_planned_distance_km,
     require_trip_slot,
@@ -96,3 +97,19 @@ def test_planned_distance_rejects_float_bool_and_negative() -> None:
         require_trip_planned_distance_km(True)
     with pytest.raises(InvalidTrip, match="km"):
         require_trip_planned_distance_km(-1)
+
+
+def test_actual_distance_omits_blank_and_keeps_zero() -> None:
+    assert require_trip_actual_distance_km(None) is None
+    assert require_trip_actual_distance_km("  ") is None
+    assert str(require_trip_actual_distance_km(0)) == "0.0000"
+    assert str(require_trip_actual_distance_km("8.25")) == "8.2500"
+
+
+def test_actual_distance_rejects_float_bool_and_negative() -> None:
+    with pytest.raises(InvalidTrip, match="km"):
+        require_trip_actual_distance_km(1.5)
+    with pytest.raises(InvalidTrip, match="km"):
+        require_trip_actual_distance_km(True)
+    with pytest.raises(InvalidTrip, match="km"):
+        require_trip_actual_distance_km(-1)

@@ -267,3 +267,27 @@ async def test_trip_planned_distance_same_tenant(session, two_tenants) -> None:
     loaded = await session.scalar(select(Trip).where(Trip.id == row.id))
     assert loaded is not None
     assert loaded.planned_distance_km == Decimal("12.5000")
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_trip_actual_distance_same_tenant(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    user_a = two_tenants["user_a"]
+    await bind_tenant(session, org_a.id)
+    row = Trip(
+        id=uuid4(),
+        organization_id=org_a.id,
+        trip_no="TR-L",
+        status="draft",
+        source_ref="fixture://trip/l",
+        actual_distance_km=Decimal("8.2500"),
+        created_by=user_a.id,
+    )
+    session.add(row)
+    await session.flush()
+    session.expunge_all()
+    await bind_tenant(session, org_a.id)
+    loaded = await session.scalar(select(Trip).where(Trip.id == row.id))
+    assert loaded is not None
+    assert loaded.actual_distance_km == Decimal("8.2500")

@@ -64,6 +64,7 @@ def test_generated_api_types_include_trip() -> None:
     assert "driver2_id" in source
     assert "route_label" in source
     assert "planned_distance_km" in source
+    assert "actual_distance_km" in source
 
 
 def test_migration_153_adds_route_label_without_km() -> None:
@@ -105,3 +106,17 @@ def test_migration_192_adds_planned_distance_without_gps() -> None:
     assert "leaflet" not in source
     assert "def downgrade" in source
     assert "planned_distance_km" in source.split("def downgrade")[1]
+
+
+def test_migration_193_adds_actual_distance_without_gps() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "193_trip_actual_distance.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "193_trip_actual_distance"' in source
+    assert 'down_revision: str | None = "192_trip_planned_distance"' in source
+    assert "actual_distance_km" in source
+    assert "ck_trip_actual_distance" in source
+    assert "create_table" not in source
+    assert "leaflet" not in source
+    assert "def downgrade" in source
+    assert "actual_distance_km" in source.split("def downgrade")[1]
