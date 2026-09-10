@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** leftover S53 Auth0 → portale/diada → CT7/CI9/reszta pinu 2026-09-08c. Leftover HITL/SQL = praca. Park = live HTTP bez testu albo sekretu, nie skip pola. Live M-02 konsument / Auth0 / portale tylko gdy ten ID jest bieżącym Q. P6c auto-award zakaz. Nic z pinu nie wypada. Nie zgaduj 71–270.
+**Następny:** plaster 270.0 leftover S53 HITL `idp_connector` (delta accepted `/noc`). Portale/diada po zamknięciu. Nie live HTTP. Leftover HITL/SQL = praca. Park = live HTTP bez testu albo sekretu, nie skip pola. Live M-02 konsument / Auth0 I1/I2 / portale tylko gdy ten ID jest bieżącym Q. P6c auto-award zakaz. Nic z pinu nie wypada. Nie zgaduj 71–270.
 <!-- os-status:end -->
 
 ```mermaid
@@ -215,7 +215,7 @@ Optimistic UI: wolno na filtrach/widokach/kolumnach. **Zakaz** na kwocie, `charg
 
 ## Auth0 — odroczone
 
-I1 (BFF + PKCE + cookie; org z `app_metadata`; first-login bez org = odmowa) i I2 (RS256 JWKS; hello OFF staging/prod) **nie teraz** — brak tenanta. Nie pytać. Hasła + refresh zostają sesją. Zero kodu Auth0 / placeholder / „hello OAuth”. Organizations feature **nie** w I1. OpenFGA = SoT ról (first-login = member; reviewer ręczny seed).
+I1 (BFF + PKCE + cookie; org z `app_metadata`; first-login bez org = odmowa) i I2 (RS256 JWKS; hello OFF staging/prod) **nie teraz** — brak tenanta. Nie pytać. Hasła + refresh zostają sesją. **270.0** = HITL katalog `idp_connector` (token `auth0`, fixture); to **nie** jest login i **nie** zastępuje 0.12/0.15. Zero live HTTP / JWKS / BFF / „hello OAuth”. Organizations feature **nie** w I1. OpenFGA = SoT ról (first-login = member; reviewer ręczny seed).
 
 Gdy user **ma** tenant: SPA Vite → BFF FastAPI → Auth0; cookie HttpOnly; Secure; SameSite=Lax; region EU / SCC jeśli plan pozwala. **Nie** w tym samym plasterze co hasła.
 
@@ -466,7 +466,7 @@ Reguły kolejności (żeby `/noc` nie złożył awarii):
 | S50 | Arch. M-111 flota | 112.0 park | named park (`docs/deltas/archived/112.0-fleet-named-park.md`) | Brak jobu „własne auto”. Nie TMS |
 | S51 | Żywe **M-55** reklamacja | 113.0 | zamknięty (`docs/deltas/archived/113.0-cargo-claim.md`) | Reklamacja na zleceniu. Nie kwota. Nie scoring |
 | S52 | Kat. M-54 oszustwo | 114.0 | zamknięty (`docs/deltas/archived/114.0-fraud-flag.md`) | Flaga na kontrahencie. Nie scoring osoby |
-| **S53** | M-04 / Auth0 | Plan → plaster | po S52 | Tu odblokowanie Auth0. Przed portalami |
+| **S53** | M-04 / Auth0 | 270.0 delta accepted | po S52 | HITL `idp_connector` fixture; JWT hello zostaje; live I1/I2 parked. Przed portalami |
 | S54 | Arch. M-76 status klienta | 115.0 park | named park (`docs/deltas/archived/115.0-client-status-named-park.md`) | Aż Auth0 S53. Nie wieża operatora |
 | **S55** | F10 M-61…M-67, M-73, M-199 | Plan → plaster | po S53 | Giełda live tylko przy umowie i prawie do danych |
 | **S56** | Pogłębienie M-57 (kat. M-58) | 116.0 | zamknięty (`docs/deltas/archived/116.0-copilot-watchtower.md`) | Szkice na wieży. Nie nowy czat |
@@ -486,7 +486,7 @@ Klej (nie osobny rok): **U6** + **M-72** = DoD każdego UI; **N** i **A** wchodz
 
 Kolejka żywa jest w [CURRENT.md](state/CURRENT.md). `/noc` jedzie ją bez wycinania. Godzina ucina **nowy** plaster, nie wiersz pinu.
 
-Kolejność (WIP=1 na `main`): T3 cutoffy na `container` → eventy `entity_event` z warstwy API (2a/2b; BC nie importuje `entity_events`) → `stop_group`/EXP1 → km/`/fleet` → `consignment` → T6 mapa → SQL na `charge` → lookup/KSeF TE → outbox T5 → `plan_snapshot` (DONE 265.0) → `circle_sim` HITL (DONE 266.0) → leftover km ładowny/pusty/dolot (DONE 267.0) → leftover F9 Optima fixture (DONE 268.0) → leftover T8 slot capability (DONE 269.0) → S53 → portale/diada → CT7/CI9/reszta pinu. `plan_snapshot` **po** obiektach, **przed** kółkami — nie w jednym worku ze stopami. Cały łańcuch XL→WAPRO nie wchodzi przed outbox. P6c auto-award = zakaz.
+Kolejność (WIP=1 na `main`): T3 cutoffy na `container` → eventy `entity_event` z warstwy API (2a/2b; BC nie importuje `entity_events`) → `stop_group`/EXP1 → km/`/fleet` → `consignment` → T6 mapa → SQL na `charge` → lookup/KSeF TE → outbox T5 → `plan_snapshot` (DONE 265.0) → `circle_sim` HITL (DONE 266.0) → leftover km ładowny/pusty/dolot (DONE 267.0) → leftover F9 Optima fixture (DONE 268.0) → leftover T8 slot capability (DONE 269.0) → leftover S53 HITL `idp_connector` (270.0 delta) → portale/diada → CT7/CI9/reszta pinu. `plan_snapshot` **po** obiektach, **przed** kółkami — nie w jednym worku ze stopami. Cały łańcuch XL→WAPRO nie wchodzi przed outbox. P6c auto-award = zakaz.
 
 Bliźniak = wzorzec (stan RLS + `entity_event` + opcjonalnie kopia planu / karta komunikacji), nie druga tabela `*_twin`. Rodziny rosną katalogiem. AI szuka i proponuje; `operator_decision` zamyka. LLM nie liczy.
 
@@ -774,7 +774,7 @@ M-48…M-51 modały · M-52…M-56 compliance (M-53 sankcje, M-56 RODO) · M-57�
 | ID | Dlaczego nie teraz | Kiedy |
 |---|---|---|
 | **M-02** outbox | **DONE 79.0** (`inbound_message_saved`). Konsument leftover | S17+ |
-| **Auth0 I1/I2** | Brak tenanta / nie bieżące Q | **S53**. JWT hello zostaje do tego wiersza |
+| **Auth0 I1/I2** | Brak tenanta / brak sekretu live | po HITL **270.0**. JWT hello zostaje |
 | **Watchtower / mapa** | **DONE 94.0 + 124.0** lista + liczniki + lazy placeholder | AIS leftover, nie F9.1 |
 | **Portale F10** | Brak IdP | **S55** po **S53** |
 | **M-04 SSO** | OpenFGA hello ≠ IdP | Razem z Auth0 **S53** |
@@ -853,13 +853,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->
