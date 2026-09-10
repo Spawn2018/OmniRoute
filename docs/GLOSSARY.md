@@ -61,7 +61,7 @@
 | szablon wydruku | document_template | 162.0 layout jako dane; nie `quotation_print_template`; nie PDF |
 | karta stawek | rate_card | 163.0 `applies_when` jako dane + Decimal; 205.0 równość GET matching; nie silnik WHEN/IF; nie `rate_line` |
 | szablon opłat | charge_template | 164.0 kolekcja `charge_code` + daty; 206.0 exclusion daterange; nie `charge` |
-| szablon zadania | task_template | T5 HITL 263.0 kod + `applies_when` jako dane; nie instancja `task`; nie matching |
+| szablon zadania | task_template | T5 HITL 263.0 kod + `applies_when`; 264.0 outbox `task_template_saved`; nie instancja `task`; nie matching |
 | indeks paliwowy | fuel_index | 165.0 katalog FSC/BAF/CAF obok `nbp_rate`; nie przeliczenie na `charge` |
 | dopłata lokalna | local_charge | 166.0 THC/ISPS/seal/amendment + Decimal; 207.0 opcjonalny `port_unlocode`; 208.0 opcjonalny `iso_size_type`; nie warning; nie `port_surcharge` |
 | lotniczy | air | 154.0 odcinek `shipment_leg` air; 209.0 opcjonalny `hawb_no`/`mawb_no`; lotnisko = `port` z `airport`; nie pula IATA |
@@ -108,7 +108,7 @@
 | porównanie odpowiedzi | response_comparison | 84.0 zapis `charge` (buy kanał, sell wycena); 24.0 zestawienie na POL/POD; nie odejmuj w JS |
 | integracja pocztowa | mail_integration | 25.0 tablica znanych adresów na `/mail`; 64.0 dopina `inbound_message`; nie IMAP |
 | wiadomość przychodząca | inbound_message | 64.0 tabela per tenant; 66.0 treść → extract HITL; 78.0/80.0 ingest `graph://` / `imap://` + `external_id`; 79.0 zdarzenie outbox; nie live skrzynka; nie send; nie blob |
-| zdarzenie outbox | outbox_event | 79.0 tabela per tenant; kind `inbound_message_saved`; nie Temporal; nie konsument |
+| zdarzenie outbox | outbox_event | 79.0 tabela per tenant; 264.0 kind `task_template_saved` obok `inbound_message_saved`; nie Temporal; nie konsument |
 | klient poczty | mail_client | 26.0 `mailto:` z `party_contact.email`; 81.0 dispatch zaakceptowanego szkicu; nie dodatek Office; nie Graph HTTP |
 | powiadomienie operatora | operator_notice | 27.0 tablica pending; 75.0 inbox; 123.0 filtr kind; nie auto-INSERT; nie wysyłka |
 | narzut | markup | kaskada — Python mały zbiór (DECISIONS) |

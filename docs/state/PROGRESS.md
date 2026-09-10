@@ -609,3 +609,4 @@
 | 2026-09-10 | Plan 263.0 | T5 | task_template HITL kod + applies_when, nie instancja i nie outbox. Delta zaakceptowana (`/noc`). Nastepny: kod 263.0. |
 | 2026-09-10 | 263.0 | T5 | task_template HITL kod + applies_when. Nie instancja. Nie outbox. Nastepny: leftover outbox T5 Plan. |
 | 2026-09-10 | Plan 264.0 | T5 | outbox task_template_saved na istniejacej tabeli, nie konsument i nie worker. Delta zaakceptowana (`/noc`). Nastepny: kod 264.0. |
+| 2026-09-10 | 264.0 | T5 | outbox task_template_saved. Nie konsument. Nie worker. Nastepny: leftover plan_snapshot Plan. |

@@ -11,7 +11,7 @@ class OutboxEvent(Base, TimestampMixin):
     __tablename__ = "outbox_event"
     __table_args__ = (
         CheckConstraint(
-            "event_kind = 'inbound_message_saved'",
+            "event_kind IN ('inbound_message_saved','task_template_saved')",
             name="ck_outbox_event_kind",
         ),
         CheckConstraint("status = 'pending'", name="ck_outbox_event_status"),

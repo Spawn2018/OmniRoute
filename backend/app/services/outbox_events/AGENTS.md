@@ -1,6 +1,6 @@
 # BC outbox_event (M-02)
 
-Zdarzenie między BC per tenant. Pierwszy kind: `inbound_message_saved`. Nie Temporal, nie konsument.
+Zdarzenie między BC per tenant. Kind: `inbound_message_saved` albo `task_template_saved`. Nie Temporal, nie konsument.
 
 ## Dozwolone zależności
 - `app.models.outbox_event`
@@ -8,7 +8,7 @@ Zdarzenie między BC per tenant. Pierwszy kind: `inbound_message_saved`. Nie Tem
 - `app.domain`
 
 ## Zakaz
-- import innych BC services (inbound, quotations, extraction, mail_drafts)
+- import innych BC services (inbound, task_templates, quotations, extraction, mail_drafts)
 - worker / dispatcher / Temporal / Hatchet
 - HTTP do Graph / IMAP / SMTP
 - liczenie kwot / marży

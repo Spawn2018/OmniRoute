@@ -7,6 +7,7 @@ from app.domain.outbox_event import (
     outbox_pending_status,
     require_outbox_source_ref,
     require_outbox_subject_id,
+    task_template_saved_kind,
 )
 from app.models.outbox_event import OutboxEvent
 from app.repositories.outbox_events.outbox_event_repository import OutboxEventRepository
@@ -27,7 +28,39 @@ class OutboxEventService:
         subject_id: object,
         source_ref: str,
     ) -> OutboxEvent:
-        kind = inbound_message_saved_kind()
+        return await self._enqueue_pending(
+            kind=inbound_message_saved_kind(),
+            organization_id=organization_id,
+            user_id=user_id,
+            subject_id=subject_id,
+            source_ref=source_ref,
+        )
+
+    async def record_template_saved(
+        self,
+        *,
+        organization_id: UUID,
+        user_id: UUID,
+        subject_id: object,
+        source_ref: str,
+    ) -> OutboxEvent:
+        return await self._enqueue_pending(
+            kind=task_template_saved_kind(),
+            organization_id=organization_id,
+            user_id=user_id,
+            subject_id=subject_id,
+            source_ref=source_ref,
+        )
+
+    async def _enqueue_pending(
+        self,
+        *,
+        kind: str,
+        organization_id: UUID,
+        user_id: UUID,
+        subject_id: object,
+        source_ref: str,
+    ) -> OutboxEvent:
         token = require_outbox_subject_id(subject_id)
         found = await self._events.get_by_subject(kind, token)
         if found is not None:

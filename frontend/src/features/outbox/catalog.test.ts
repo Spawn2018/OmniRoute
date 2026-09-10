@@ -17,6 +17,7 @@ describe("outbox surface for 79.0", () => {
     expect(nav).toContain("/outbox")
     expect(lists).toContain("outboxEvents")
     expect(ops).toContain("/outbox")
+    expect(ops).toContain('"264.0": "/outbox"')
     expect(page).toContain('data-outbox="board"')
     expect(page).toContain("recordOutboxEvent")
     expect(page).toContain("Zapisz zdarzenie")

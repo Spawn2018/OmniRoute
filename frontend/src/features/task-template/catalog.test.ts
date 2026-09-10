@@ -35,5 +35,6 @@ describe("task_template surface for 263.0", () => {
     expect(form).not.toContain("parseFloat")
     expect(form).not.toContain("CatalogCreateForm")
     expect(src("features/ops/ops-index.ts")).toContain('"263.0": "/task-templates"')
+    expect(src("features/ops/ops-index.ts")).toContain('"264.0": "/outbox"')
   })
 })

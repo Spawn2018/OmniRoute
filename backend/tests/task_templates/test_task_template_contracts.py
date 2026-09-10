@@ -21,6 +21,16 @@ def test_migration_196_creates_task_template_and_forces_rls() -> None:
     assert "drop_table" in source.split("def downgrade")[1]
 
 
+def test_task_template_api_composes_outbox_after_save() -> None:
+    api = (_ROOT / "backend" / "app" / "api" / "task_templates.py").read_text(
+        encoding="utf-8",
+    )
+    assert "record_template_saved" in api
+    assert "OutboxEventService" in api
+    assert "outbox://task-template/" in api
+    assert "httpx" not in api
+
+
 def test_task_template_service_does_not_import_parents() -> None:
     service = (_SERVICES / "task_templates" / "task_template_service.py").read_text(
         encoding="utf-8",

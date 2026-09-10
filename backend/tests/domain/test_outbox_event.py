@@ -9,6 +9,7 @@ from app.domain.outbox_event import (
     require_outbox_event_kind,
     require_outbox_source_ref,
     require_outbox_subject_id,
+    task_template_saved_kind,
 )
 
 
@@ -18,6 +19,15 @@ def test_outbox_pending_status_is_pending() -> None:
 
 def test_inbound_message_saved_kind() -> None:
     assert inbound_message_saved_kind() == "inbound_message_saved"
+
+
+def test_task_template_saved_kind() -> None:
+    assert task_template_saved_kind() == "task_template_saved"
+
+
+def test_require_outbox_event_kind_accepts_both() -> None:
+    assert require_outbox_event_kind("inbound_message_saved") == "inbound_message_saved"
+    assert require_outbox_event_kind("task_template_saved") == "task_template_saved"
 
 
 def test_require_outbox_source_ref_accepts_prefix() -> None:

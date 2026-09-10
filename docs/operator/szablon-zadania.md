@@ -6,7 +6,8 @@ Na `/task-templates` zapisujesz **szablon zadania** tenanta: kod snake i warunek
 2. Wpisz `applies_when` (tekst do 512 znaków). System go **nie** interpretuje.
 3. Podaj `source_ref` (`fixture://task-template/…` albo `tenant:manual`).
 4. „Zapisz szablon zadania”. Zły kod wraca jako `szablon`, pusty warunek jako `warunek`, obce pochodzenie jako `obce`.
+5. Zapis dokłada też zdarzenie na `/outbox` o rodzaju `task_template_saved`. Ten sam szablon = ten sam wiersz. Konsument go nie zjada.
 
-Czego tu nie ma: instancja `task` na `shipment`/`trip`/`stop`, matching SQL, outbox, live KSeF, live VIES. Marża zostaje na `/charges`. Szablon opłat zostaje na `/charge-templates`.
+Czego tu nie ma: instancja `task` na `shipment`/`trip`/`stop`, matching SQL, worker outboxa, live KSeF, live VIES. Marża zostaje na `/charges`. Szablon opłat zostaje na `/charge-templates`.
 
-Nazwy w kodzie: `task_template` · `template_code` · `applies_when` · `source_ref`.
+Nazwy w kodzie: `task_template` · `template_code` · `applies_when` · `source_ref` · `task_template_saved`.

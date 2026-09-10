@@ -5,6 +5,8 @@ from app.domain.rate_line import require_source_ref
 
 _PENDING = "pending"
 _SAVED = "inbound_message_saved"
+_TEMPLATE = "task_template_saved"
+_KINDS = frozenset({_SAVED, _TEMPLATE})
 _SOURCE_PREFIX = "outbox://"
 
 
@@ -14,6 +16,10 @@ def outbox_pending_status() -> str:
 
 def inbound_message_saved_kind() -> str:
     return _SAVED
+
+
+def task_template_saved_kind() -> str:
+    return _TEMPLATE
 
 
 def require_outbox_source_ref(raw: object) -> str:
@@ -27,8 +33,10 @@ def require_outbox_event_kind(raw: object) -> str:
     if type(raw) is not str:
         raise InvalidOutboxEvent("event_kind musi być tekstem")
     token = raw.strip()
-    if token != _SAVED:
-        raise InvalidOutboxEvent("event_kind: tylko inbound_message_saved")
+    if token not in _KINDS:
+        raise InvalidOutboxEvent(
+            "event_kind: inbound_message_saved albo task_template_saved",
+        )
     return token
 
 

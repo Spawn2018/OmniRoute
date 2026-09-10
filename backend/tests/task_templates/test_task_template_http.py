@@ -56,9 +56,27 @@ class StubBlueprints:
         return row
 
 
+class StubOutbox:
+    def __init__(self, session: object) -> None:
+        self._session = session
+        self.saved: list[UUID] = []
+
+    async def record_template_saved(
+        self,
+        *,
+        organization_id: UUID,
+        user_id: UUID,
+        subject_id: object,
+        source_ref: str,
+    ) -> None:
+        _ = organization_id, user_id, source_ref
+        self.saved.append(UUID(str(subject_id)))
+
+
 @pytest.fixture
 def catalog_client(monkeypatch: pytest.MonkeyPatch) -> object:
     blueprints = StubBlueprints(object())
+    outbox = StubOutbox(object())
 
     async def _fake_tenant_session() -> object:
         session = AsyncMock()
@@ -69,9 +87,13 @@ def catalog_client(monkeypatch: pytest.MonkeyPatch) -> object:
         "app.api.task_templates.TaskTemplateService",
         lambda _s: blueprints,
     )
+    monkeypatch.setattr(
+        "app.api.task_templates.OutboxEventService",
+        lambda _s: outbox,
+    )
     set_authz_checker(AllowAllAuthz())
     app.dependency_overrides[require_tenant_session] = _fake_tenant_session
-    yield TestClient(app), blueprints
+    yield TestClient(app), blueprints, outbox
     app.dependency_overrides.clear()
     set_authz_checker(None)
 
@@ -87,7 +109,7 @@ def _payload(**overrides: object) -> dict[str, object]:
 
 
 def test_http_create_and_list_task_template(catalog_client: object) -> None:
-    client, _rows = catalog_client
+    client, _rows, outbox = catalog_client
     org_id = uuid4()
     headers = bearer_auth_headers(organization_id=org_id)
     created = client.post("/api/v1/task-templates", headers=headers, json=_payload())
@@ -97,13 +119,14 @@ def test_http_create_and_list_task_template(catalog_client: object) -> None:
     assert body["template_code"] == "gate_in"
     assert body["applies_when"] == "container at CY"
     assert "buy_amount" not in body
+    assert outbox.saved == [UUID(body["id"])]
     listed = client.get("/api/v1/task-templates", headers=headers)
     assert listed.status_code == 200
     assert listed.json()[0]["id"] == body["id"]
 
 
 def test_http_create_bad_code_is_400(catalog_client: object) -> None:
-    client, _rows = catalog_client
+    client, _rows, _outbox = catalog_client
     response = client.post(
         "/api/v1/task-templates",
         headers=bearer_auth_headers(),
@@ -114,7 +137,7 @@ def test_http_create_bad_code_is_400(catalog_client: object) -> None:
 
 
 def test_http_create_blank_when_is_400(catalog_client: object) -> None:
-    client, _rows = catalog_client
+    client, _rows, _outbox = catalog_client
     response = client.post(
         "/api/v1/task-templates",
         headers=bearer_auth_headers(),
@@ -125,7 +148,7 @@ def test_http_create_blank_when_is_400(catalog_client: object) -> None:
 
 
 def test_http_create_foreign_source_ref_is_400(catalog_client: object) -> None:
-    client, _rows = catalog_client
+    client, _rows, _outbox = catalog_client
     response = client.post(
         "/api/v1/task-templates",
         headers=bearer_auth_headers(),

@@ -2,6 +2,7 @@ from pathlib import Path
 
 _ROOT = Path(__file__).resolve().parents[3]
 _MIGRATION = _ROOT / "backend" / "alembic" / "versions" / "039_outbox_event_rls.py"
+_KIND = _ROOT / "backend" / "alembic" / "versions" / "197_outbox_task_template_kind.py"
 _SERVICES = _ROOT / "backend" / "app" / "services"
 
 
@@ -17,17 +18,32 @@ def test_migration_039_creates_outbox_event_and_forces_rls() -> None:
     assert "drop_table" in source.split("def downgrade")[1]
 
 
+def test_migration_197_widens_outbox_kind() -> None:
+    source = _KIND.read_text(encoding="utf-8")
+    assert 'revision: str = "197_outbox_task_template_kind"' in source
+    assert 'down_revision: str | None = "196_task_template"' in source
+    assert "task_template_saved" in source
+    assert "inbound_message_saved" in source
+    assert "create_table" not in source
+    assert "httpx" not in source
+    assert "def downgrade" in source
+    assert "_OLD" in source.split("def downgrade")[1]
+    assert "event_kind = 'inbound_message_saved'" in source
+
+
 def test_outbox_service_does_not_import_other_bc() -> None:
     service = (_SERVICES / "outbox_events" / "outbox_event_service.py").read_text(
         encoding="utf-8",
     )
     assert "app.services.inbound_messages" not in service
+    assert "app.services.task_templates" not in service
     assert "app.services.quotations" not in service
     assert "app.services.extraction" not in service
     assert "app.services.mail_drafts" not in service
     assert "temporal" not in service.lower()
     assert "httpx" not in service
     assert "payload" not in service
+    assert "record_template_saved" in service
 
 
 def test_importlinter_lists_outbox_events_as_independent() -> None:
