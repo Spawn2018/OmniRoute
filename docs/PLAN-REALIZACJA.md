@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** plaster **273.0** leftover CI9 opaque `blob_ciphertext` (HITL fixture bytes present/absent, nie szyfr; park KMS/unwrap/KEK). Delta zaakceptowana `/noc` — wolno `/plaster`. Leftover HITL/SQL = praca. Park = live HTTP bez testu albo sekretu, nie skip pola. Live M-02 konsument / Auth0 I1/I2 / portale / giełda live tylko gdy ten ID jest bieżącym Q. P6c auto-award zakaz. Nic z pinu nie wypada. Nie zgaduj 71–273.
+**Następny:** leftover CI9 KEK mark (bez materiału klucza; park KMS/unwrap) albo CT7 parked live / reszta pinu 2026-09-08c. Leftover HITL/SQL = praca. Park = live HTTP bez testu albo sekretu, nie skip pola. Live M-02 konsument / Auth0 I1/I2 / portale / giełda live tylko gdy ten ID jest bieżącym Q. P6c auto-award zakaz. Nic z pinu nie wypada. Nie zgaduj 71–274.
 <!-- os-status:end -->
 
 ```mermaid
@@ -486,7 +486,7 @@ Klej (nie osobny rok): **U6** + **M-72** = DoD każdego UI; **N** i **A** wchodz
 
 Kolejka żywa jest w [CURRENT.md](state/CURRENT.md). `/noc` jedzie ją bez wycinania. Godzina ucina **nowy** plaster, nie wiersz pinu.
 
-Kolejność (WIP=1 na `main`): T3 cutoffy na `container` → eventy `entity_event` z warstwy API (2a/2b; BC nie importuje `entity_events`) → `stop_group`/EXP1 → km/`/fleet` → `consignment` → T6 mapa → SQL na `charge` → lookup/KSeF TE → outbox T5 → `plan_snapshot` (DONE 265.0) → `circle_sim` HITL (DONE 266.0) → leftover km ładowny/pusty/dolot (DONE 267.0) → leftover F9 Optima fixture (DONE 268.0) → leftover T8 slot capability (DONE 269.0) → leftover S53 HITL `idp_connector` (DONE 270.0) → leftover S55 HITL `exchange_connector` (DONE 271.0) → leftover CI9 HITL `customer_contract` nagłówek (DONE 272.0) → leftover CI9 opaque `blob_ciphertext` (273.0 w Kod; present/absent, nie szyfr) → leftover KEK mark (bez materiału) albo CT7 parked live / reszta pinu. `plan_snapshot` **po** obiektach, **przed** kółkami — nie w jednym worku ze stopami. Cały łańcuch XL→WAPRO nie wchodzi przed outbox. P6c auto-award = zakaz.
+Kolejność (WIP=1 na `main`): T3 cutoffy na `container` → eventy `entity_event` z warstwy API (2a/2b; BC nie importuje `entity_events`) → `stop_group`/EXP1 → km/`/fleet` → `consignment` → T6 mapa → SQL na `charge` → lookup/KSeF TE → outbox T5 → `plan_snapshot` (DONE 265.0) → `circle_sim` HITL (DONE 266.0) → leftover km ładowny/pusty/dolot (DONE 267.0) → leftover F9 Optima fixture (DONE 268.0) → leftover T8 slot capability (DONE 269.0) → leftover S53 HITL `idp_connector` (DONE 270.0) → leftover S55 HITL `exchange_connector` (DONE 271.0) → leftover CI9 HITL `customer_contract` nagłówek (DONE 272.0) → leftover CI9 opaque `blob_ciphertext` (DONE 273.0; present/absent, nie szyfr) → leftover KEK mark (bez materiału) albo CT7 parked live / reszta pinu. `plan_snapshot` **po** obiektach, **przed** kółkami — nie w jednym worku ze stopami. Cały łańcuch XL→WAPRO nie wchodzi przed outbox. P6c auto-award = zakaz.
 
 Bliźniak = wzorzec (stan RLS + `entity_event` + opcjonalnie kopia planu / karta komunikacji), nie druga tabela `*_twin`. Rodziny rosną katalogiem. AI szuka i proponuje; `operator_decision` zamyka. LLM nie liczy.
 
@@ -700,7 +700,7 @@ Karta: [karty-pol-fala-ci.md](analysis/karty-pol-fala-ci.md). **CI9 przed CI1.**
 
 | ID | Co | Status | Poza |
 |---|---|---|---|
-| **CI9** | zero-knowledge: ciphertext + KEK tenanta; deny-list AI; test super-admin = bytea | 272.0 zamknięty nagłówek; 273.0 delta opaque BYTEA (`docs/deltas/open/273.0-customer-contract-ciphertext.md`) — present/absent, nie szyfr; leftover KEK/KMS | klucz Omni-master; Langfuse na PDF |
+| **CI9** | zero-knowledge: ciphertext + KEK tenanta; deny-list AI; test super-admin = bytea | 272.0 nagłówek; 273.0 zamknięty opaque BYTEA (`docs/deltas/archived/273.0-customer-contract-ciphertext.md`) — present/absent, nie szyfr; leftover KEK mark / KMS | klucz Omni-master; Langfuse na PDF |
 | CI1 | upload + formularz `sla_clause` (wiele umów × odbiorców) | po X1+CI9 | extract LLM |
 | CI2 | FV vs umowa (spend leakage) | | druga marża |
 | CI3 | operacja czyta klauzulę (409/notice) | | auto-kara na FV |
@@ -853,13 +853,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

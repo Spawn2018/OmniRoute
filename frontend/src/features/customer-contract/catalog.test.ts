@@ -11,16 +11,20 @@ describe("pactHeaderWrite", () => {
       loaderHint: " Acme Logistics ",
       buyerHint: " Bayer PL ",
       originHint: "tenant:manual",
+      attachOpaque: true,
     })
     expect(written.contract_code).toBe("acme_pl_2026")
     expect(written.shipper_label).toBe("Acme Logistics")
     expect(written.their_customer_label).toBe("Bayer PL")
     expect(written.source_ref).toBe("tenant:manual")
+    expect(written.opaque_fixture).toBe(true)
+    expect(written).not.toHaveProperty("opaque_blob")
+    expect(written).not.toHaveProperty("blob_ciphertext")
   })
 })
 
-describe("customer_contract surface for 272.0", () => {
-  it("wires the header catalog without a PDF viewer or unwrap", () => {
+describe("customer_contract surface for 273.0", () => {
+  it("wires opaque fixture present/absent without showing bytes", () => {
     const page = src("features/customer-contract/catalog-page.tsx")
     const panel = src("features/customer-contract/header-form.tsx")
     const client = src("lib/customer-contracts-api.ts")
@@ -31,14 +35,21 @@ describe("customer_contract surface for 272.0", () => {
     expect(page).toMatch(/CustomerContractDesk/)
     expect(page).toMatch(/DataTableShell/)
     expect(page).toMatch(/CatalogHeading/)
+    expect(page).toMatch(/has_ciphertext/)
+    expect(page.includes("blob_ciphertext")).toBe(false)
     expect(panel).toMatch(/persistCustomerContract/)
     expect(panel).toMatch(/Zapisz nagłówek umowy/)
+    expect(panel).toMatch(/dołącz fixture/)
     expect(panel.includes("<Money")).toBe(false)
     expect(panel.includes("parseFloat")).toBe(false)
     expect(panel.includes("unwrap")).toBe(false)
     expect(panel.includes("PDF")).toBe(false)
     expect(src("features/ops/ops-index.ts")).toMatch(/"272\.0": "\/customer-contracts"/)
+    expect(src("features/ops/ops-index.ts")).toMatch(/"273\.0": "\/customer-contracts"/)
+    expect(client).toMatch(/has_ciphertext/)
+    expect(client).toMatch(/opaque_fixture/)
     expect(client.includes("blob_ciphertext")).toBe(false)
     expect(client.includes("wrapped_dek")).toBe(false)
+    expect(client.includes("opaque_blob")).toBe(false)
   })
 })

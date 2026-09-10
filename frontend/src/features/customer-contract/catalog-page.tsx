@@ -17,6 +17,10 @@ const HEADER_COLUMNS = [
   helper.accessor("shipper_label", { header: "Załadowca" }),
   helper.accessor("their_customer_label", { header: "Odbiorca" }),
   helper.accessor("source_ref", { header: "Pochodzenie" }),
+  helper.accessor("has_ciphertext", {
+    header: "Opakowanie",
+    cell: (info) => (info.getValue() ? "Tak" : "Nie"),
+  }),
 ]
 
 const HEADER_LABELS = {
@@ -24,6 +28,7 @@ const HEADER_LABELS = {
   shipper_label: "Załadowca",
   their_customer_label: "Odbiorca",
   source_ref: "Pochodzenie",
+  has_ciphertext: "Opakowanie",
 }
 
 function PactHeaderRows(args: { organizationId: string | null }) {
@@ -55,7 +60,7 @@ export function CustomerContractDesk() {
     <section className="flex flex-col gap-5" data-customer-contract="header-desk">
       <CatalogHeading
         title="Umowa klienta"
-        subtitle="CI9 customer_contract · nagłówek jako dane · nie treść · nie ciphertext"
+        subtitle="CI9 customer_contract · nagłówek + opakowanie present/absent · nie szyfr"
       />
       {!ready ? <TenantSessionNotice /> : null}
       {ready ? (

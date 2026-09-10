@@ -707,4 +707,4 @@ class InvalidExchangeConnector(DomainError):
 
 
 class InvalidCustomerContract(DomainError):
-    """CI9: HITL nagłówek umowy (kod + etykiety) — nie treść i nie ciphertext."""
+    """CI9: HITL nagłówek + opaque blob present/absent — nie szyfr."""

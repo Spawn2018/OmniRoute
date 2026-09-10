@@ -1742,6 +1742,14 @@ export type CustomerContractCreate = {
      * Source Ref
      */
     source_ref: string;
+    /**
+     * Opaque Fixture
+     */
+    opaque_fixture?: boolean;
+    /**
+     * Opaque Blob
+     */
+    opaque_blob?: string | null;
 };
 
 /**
@@ -1772,6 +1780,10 @@ export type CustomerContractResponse = {
      * Source Ref
      */
     source_ref: string;
+    /**
+     * Has Ciphertext
+     */
+    has_ciphertext: boolean;
 };
 
 /**

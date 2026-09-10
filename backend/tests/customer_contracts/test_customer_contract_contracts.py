@@ -2,6 +2,7 @@ from pathlib import Path
 
 _ROOT = Path(__file__).resolve().parents[3]
 _MIGRATION = _ROOT / "backend" / "alembic" / "versions" / "205_customer_contract.py"
+_BLOB_MIGRATION = _ROOT / "backend" / "alembic" / "versions" / "206_customer_contract_blob.py"
 _SERVICES = _ROOT / "backend" / "app" / "services"
 _EXTRACTION = _SERVICES / "extraction"
 
@@ -26,6 +27,21 @@ def test_migration_205_creates_customer_contract_and_forces_rls() -> None:
     assert "drop_table" in source.split("def downgrade")[1]
 
 
+def test_migration_206_adds_nullable_blob_without_kek() -> None:
+    source = _BLOB_MIGRATION.read_text(encoding="utf-8")
+    assert 'revision: str = "206_customer_contract_blob"' in source
+    assert 'down_revision: str | None = "205_customer_contract"' in source
+    assert "blob_ciphertext" in source
+    assert "BYTEA" in source or "LargeBinary" in source
+    assert "wrapped_dek" not in source
+    assert "tenant_contract_kek" not in source
+    assert "unwrap" not in source
+    assert "Fernet" not in source
+    assert "AES" not in source
+    assert "FORCE ROW LEVEL SECURITY" not in source
+    assert "drop_column" in source.split("def downgrade")[1]
+
+
 def test_customer_contract_service_is_catalog_and_isolated() -> None:
     service = (_SERVICES / "customer_contracts" / "customer_contract_service.py").read_text(
         encoding="utf-8",
@@ -39,8 +55,12 @@ def test_customer_contract_service_is_catalog_and_isolated() -> None:
     assert "DELETE" not in service
     assert "delete(" not in service
     assert ".update(" not in service
-    assert "blob_ciphertext" not in service
     assert "wrapped_dek" not in service
+    assert "tenant_contract_kek" not in service
+    assert "def decrypt" not in service
+    assert "unwrap" not in service
+    assert "Fernet" not in service
+    assert "AES" not in service
 
 
 def test_extraction_service_does_not_import_customer_contracts() -> None:
@@ -79,7 +99,10 @@ def test_generated_api_types_include_customer_contract() -> None:
     )
     assert "CustomerContractResponse" in source
     assert "CustomerContractCreate" in source
-    assert "blob_ciphertext" not in source.split("CustomerContractResponse")[1].split(
+    response = source.split("export type CustomerContractResponse")[1].split(
         "export type",
         1,
     )[0]
+    assert "has_ciphertext" in response
+    assert "blob_ciphertext" not in response
+    assert "plaintext" not in response

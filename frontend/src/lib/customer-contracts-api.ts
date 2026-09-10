@@ -10,6 +10,7 @@ export type CustomerContractHeader = {
   shipper_label: string
   their_customer_label: string
   source_ref: string
+  has_ciphertext: boolean
 }
 
 export type CustomerContractHeaderWrite = {
@@ -17,6 +18,7 @@ export type CustomerContractHeaderWrite = {
   shipper_label: string
   their_customer_label: string
   source_ref: string
+  opaque_fixture?: boolean
 }
 
 export function pactHeaderWrite(draft: {
@@ -24,12 +26,14 @@ export function pactHeaderWrite(draft: {
   loaderHint: string
   buyerHint: string
   originHint: string
+  attachOpaque: boolean
 }): CustomerContractHeaderWrite {
   return {
     contract_code: draft.pactMark.trim(),
     shipper_label: draft.loaderHint.trim(),
     their_customer_label: draft.buyerHint.trim(),
     source_ref: draft.originHint.trim(),
+    opaque_fixture: draft.attachOpaque,
   }
 }
 

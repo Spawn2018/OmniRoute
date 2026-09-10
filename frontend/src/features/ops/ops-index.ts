@@ -817,6 +817,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "270.0": "/idp-connectors",
   "271.0": "/exchange-connectors",
   "272.0": "/customer-contracts",
+  "273.0": "/customer-contracts",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

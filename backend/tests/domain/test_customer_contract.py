@@ -3,10 +3,12 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from app.domain.customer_contract import (
+    fixture_opaque_blob,
     require_contract_code,
     require_contract_source_ref,
     require_shipper_label,
     require_their_customer_label,
+    resolve_opaque_blob,
 )
 from app.domain.errors import InvalidCustomerContract
 
@@ -55,3 +57,24 @@ def test_contract_source_ref_accepts_manual_and_fixture() -> None:
 def test_contract_source_ref_rejects_empty_and_foreign(raw: str) -> None:
     with pytest.raises(InvalidCustomerContract, match="obce"):
         require_contract_source_ref(raw)
+
+
+def test_resolve_opaque_blob_fixture_flag_stores_constant() -> None:
+    assert resolve_opaque_blob(opaque_fixture=True, opaque_blob=None) == fixture_opaque_blob()
+    assert resolve_opaque_blob(opaque_fixture=False, opaque_blob=None) is None
+
+
+def test_resolve_opaque_blob_accepts_fixture_base64() -> None:
+    from base64 import b64encode
+
+    packed = b64encode(b"omni-fixture-bytes").decode("ascii")
+    assert resolve_opaque_blob(opaque_fixture=False, opaque_blob=packed) == b"omni-fixture-bytes"
+
+
+def test_resolve_opaque_blob_rejects_bad_payload() -> None:
+    with pytest.raises(InvalidCustomerContract, match="opakowanie"):
+        resolve_opaque_blob(opaque_fixture="tak", opaque_blob=None)
+    with pytest.raises(InvalidCustomerContract, match="opakowanie"):
+        resolve_opaque_blob(opaque_fixture=False, opaque_blob="%%%")
+    with pytest.raises(InvalidCustomerContract, match="opakowanie"):
+        resolve_opaque_blob(opaque_fixture=False, opaque_blob=12)

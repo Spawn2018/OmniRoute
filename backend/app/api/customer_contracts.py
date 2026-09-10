@@ -21,6 +21,8 @@ class CustomerContractCreate(BaseModel):
     shipper_label: str
     their_customer_label: str
     source_ref: str
+    opaque_fixture: bool = False
+    opaque_blob: str | None = None
 
 
 class CustomerContractResponse(BaseModel):
@@ -32,6 +34,7 @@ class CustomerContractResponse(BaseModel):
     shipper_label: str
     their_customer_label: str
     source_ref: str
+    has_ciphertext: bool
 
 
 def _as_row(row: CustomerContract) -> CustomerContractResponse:
@@ -42,6 +45,7 @@ def _as_row(row: CustomerContract) -> CustomerContractResponse:
         shipper_label=row.shipper_label,
         their_customer_label=row.their_customer_label,
         source_ref=row.source_ref,
+        has_ciphertext=row.has_ciphertext,
     )
 
 
@@ -72,6 +76,8 @@ async def create_customer_contract(
         shipper_label=payload.shipper_label,
         their_customer_label=payload.their_customer_label,
         source_ref=payload.source_ref,
+        opaque_fixture=payload.opaque_fixture,
+        opaque_blob=payload.opaque_blob,
     )
     await session.commit()
     return _as_row(row)

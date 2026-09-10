@@ -1,7 +1,7 @@
 import uuid
 
 from sqlalchemy import CheckConstraint, ForeignKey, Index, String, UniqueConstraint
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.dialects.postgresql import BYTEA, UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.models.base import Base, TimestampMixin
@@ -47,3 +47,12 @@ class CustomerContract(Base, TimestampMixin):
     shipper_label: Mapped[str] = mapped_column(String(128), nullable=False)
     their_customer_label: Mapped[str] = mapped_column(String(128), nullable=False)
     source_ref: Mapped[str] = mapped_column(String(256), nullable=False)
+    blob_ciphertext: Mapped[bytes | None] = mapped_column(
+        BYTEA,
+        nullable=True,
+        comment="HITL opaque fixture bytes — present/absent, nie szyfr",
+    )
+
+    @property
+    def has_ciphertext(self) -> bool:
+        return self.blob_ciphertext is not None

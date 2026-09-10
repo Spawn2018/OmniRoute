@@ -9,6 +9,7 @@ type PactHeaderDraft = {
   loaderHint: string
   buyerHint: string
   originHint: string
+  attachOpaque: boolean
 }
 
 const EMPTY_PACT: PactHeaderDraft = {
@@ -16,6 +17,7 @@ const EMPTY_PACT: PactHeaderDraft = {
   loaderHint: "Acme Logistics",
   buyerHint: "Bayer PL",
   originHint: "fixture://contract/",
+  attachOpaque: false,
 }
 
 export function CustomerContractSave(args: { organizationId: string | null }) {
@@ -39,8 +41,8 @@ export function CustomerContractSave(args: { organizationId: string | null }) {
       }}
     >
       <p className="text-xs text-muted-foreground">
-        Nagłówek umowy: kod snake oraz etykiety załadowcy i odbiorcy. To nie jest treść umowy,
-        skan ani szyfr. Serwis nie woła extractu.
+        Nagłówek umowy: kod snake oraz etykiety załadowcy i odbiorcy. Opcjonalny fixture blob
+        zapisuje tylko obecność opakowania — lista nie pokazuje bajtów. To nie jest szyfr.
       </p>
       <label className="text-xs">
         Kod umowy (snake 2–32)
@@ -81,6 +83,15 @@ export function CustomerContractSave(args: { organizationId: string | null }) {
           value={draft.originHint}
           onChange={(ev) => setDraft({ ...draft, originHint: ev.target.value })}
         />
+      </label>
+      <label className="flex items-center gap-2 text-xs">
+        <input
+          type="checkbox"
+          aria-label="dołącz fixture blob"
+          checked={draft.attachOpaque}
+          onChange={(change) => setDraft({ ...draft, attachOpaque: change.target.checked })}
+        />
+        dołącz fixture blob (obecność, nie podgląd)
       </label>
       <div>
         <Button type="submit" disabled={locked}>

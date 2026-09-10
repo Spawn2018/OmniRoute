@@ -15447,6 +15447,22 @@
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
+          },
+          "opaque_fixture": {
+            "type": "boolean",
+            "title": "Opaque Fixture",
+            "default": false
+          },
+          "opaque_blob": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Opaque Blob"
           }
         },
         "additionalProperties": false,
@@ -15486,6 +15502,10 @@
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
+          },
+          "has_ciphertext": {
+            "type": "boolean",
+            "title": "Has Ciphertext"
           }
         },
         "type": "object",
@@ -15495,7 +15515,8 @@
           "contract_code",
           "shipper_label",
           "their_customer_label",
-          "source_ref"
+          "source_ref",
+          "has_ciphertext"
         ],
         "title": "CustomerContractResponse"
       },

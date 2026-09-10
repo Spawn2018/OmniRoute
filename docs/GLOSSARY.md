@@ -188,7 +188,7 @@
 | ETA prawne | eta_legal | V2 HITL 194.0 na `stop`; zakaz jazdy/tacho leftover |
 | obserwacja pogody | weather_observation | V2 HITL 195.0; Open-Meteo/geometria leftover; nie ETA |
 | zegar D&D | free_time_clock | V3 HITL 196.0 rodzaj + free_days; nie countdown; nie charge |
-| umowa klienta | customer_contract | CI9 HITL 272.0 nagłówek; 273.0 opaque blob present/absent, nie szyfr; leftover KEK; nie super-admin |
+| umowa klienta | customer_contract | CI9 HITL 272.0 nagłówek; 273.0 opaque present/absent, nie szyfr; leftover KEK mark; nie super-admin |
 | klauzula SLA | sla_clause | CI; wpis ręczny; kara SQL |
 | prognoza spóźnienia | delay_forecast | CI4; przed actual late |
 | wynik interwencji | intervention_outcome | CI6–CI7; saved = SQL |

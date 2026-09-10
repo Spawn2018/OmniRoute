@@ -11,4 +11,4 @@ Katalog nagłówka umowy klienta per tenant. HITL kod + etykiety załadowca/odbi
 - ExtractionService nie importuje tego BC
 - Job: `/customer-contracts`
 
-Delta: [273.0](../deltas/open/273.0-customer-contract-ciphertext.md) · zamknięty [272.0](../deltas/archived/272.0-customer-contract.md).
+Delta: [273.0](../deltas/archived/273.0-customer-contract-ciphertext.md) · [272.0](../deltas/archived/272.0-customer-contract.md).
