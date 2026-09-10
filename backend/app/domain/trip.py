@@ -44,6 +44,14 @@ def require_trip_resource_id(raw: object) -> UUID | None:
     return raw
 
 
+def require_trip_subcontractor_party_id(raw: object) -> UUID | None:
+    if raw is None:
+        return None
+    if type(raw) is not UUID:
+        raise InvalidTrip("podwykonawca musi być UUID")
+    return raw
+
+
 def require_trip_slot(slot: object, resource_kind: object) -> None:
     if type(slot) is not str or slot not in _SLOTS:
         raise InvalidTrip("nieznany slot floty")

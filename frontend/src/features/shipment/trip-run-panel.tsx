@@ -30,6 +30,7 @@ export function TripRunPanel(args: { signedIn: boolean }) {
   const [routeLabel, setRouteLabel] = useState("")
   const [plannedDistance, setPlannedDistance] = useState("")
   const [actualDistance, setActualDistance] = useState("")
+  const [subcontractor, setSubcontractor] = useState("")
   const [buyAmount, setBuyAmount] = useState("")
   const [buyCurrency, setBuyCurrency] = useState("EUR")
   const listed = useQuery({
@@ -51,6 +52,7 @@ export function TripRunPanel(args: { signedIn: boolean }) {
           routeLabel,
           plannedDistance,
           actualDistance,
+          subcontractor,
           buyAmount,
           buyCurrency,
         }),
@@ -64,8 +66,8 @@ export function TripRunPanel(args: { signedIn: boolean }) {
       <h2 className="text-sm font-medium">Przejazd</h2>
       <p className="text-xs text-muted-foreground">
         Numer i status. Snapshot kupna przy w drodze. Flota opcjonalna, w tym drugi kierowca.
-        Etykieta trasy opcjonalna. Opcjonalna odległość planowana i wykonana HITL. Nie liczenie km. Nie
-        wariancja.
+        Etykieta trasy opcjonalna. Opcjonalna odległość planowana i wykonana HITL. Opcjonalny
+        podwykonawca. Nie liczenie km. Nie wariancja.
       </p>
       <label className="flex flex-col gap-1 text-xs">
         Numer przejazdu
@@ -176,6 +178,15 @@ export function TripRunPanel(args: { signedIn: boolean }) {
           onChange={(event) => setActualDistance(event.target.value)}
         />
       </label>
+      <label className="flex flex-col gap-1 text-xs">
+        Podwykonawca (opcjonalnie)
+        <Input
+          aria-label="Identyfikator podwykonawcy przejazdu"
+          placeholder="subcontractor_party_id"
+          value={subcontractor}
+          onChange={(event) => setSubcontractor(event.target.value)}
+        />
+      </label>
       <Button
         type="button"
         disabled={!args.signedIn || number.trim() === "" || persist.isPending}
@@ -193,6 +204,7 @@ export function TripRunPanel(args: { signedIn: boolean }) {
             {row.route_label !== null ? ` · ${row.route_label}` : ""}
             {row.planned_distance_km !== null ? ` · ${row.planned_distance_km}` : ""}
             {row.actual_distance_km !== null ? ` · ${row.actual_distance_km}` : ""}
+            {row.subcontractor_party_id !== null ? ` · ${row.subcontractor_party_id}` : ""}
             {row.expected_buy_amount !== null && row.expected_buy_currency !== null ? (
               <>
                 {" · "}

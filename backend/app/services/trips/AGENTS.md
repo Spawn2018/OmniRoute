@@ -1,6 +1,6 @@
 # BC trip (T2b / S50 / P5)
 
-Przejazd per tenant: numer + status + opcjonalna flota + snapshot `expected_buy` + HITL `planned_distance_km` + HITL `actual_distance_km`. Nie liczenie km. Nie mapa. Nie wariancja.
+Przejazd per tenant: numer + status + opcjonalna flota + snapshot `expected_buy` + HITL km + HITL `subcontractor_party_id`. Nie liczenie km. Nie mapa. Nie wariancja.
 
 ## Dozwolone zależności
 - `app.models.trip`

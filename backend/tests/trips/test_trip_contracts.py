@@ -65,6 +65,7 @@ def test_generated_api_types_include_trip() -> None:
     assert "route_label" in source
     assert "planned_distance_km" in source
     assert "actual_distance_km" in source
+    assert "subcontractor_party_id" in source
 
 
 def test_migration_153_adds_route_label_without_km() -> None:
@@ -120,3 +121,17 @@ def test_migration_193_adds_actual_distance_without_gps() -> None:
     assert "leaflet" not in source
     assert "def downgrade" in source
     assert "actual_distance_km" in source.split("def downgrade")[1]
+
+
+def test_migration_194_adds_subcontractor_without_fleet() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "194_trip_subcontractor.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "194_trip_subcontractor"' in source
+    assert 'down_revision: str | None = "193_trip_actual_distance"' in source
+    assert "subcontractor_party_id" in source
+    assert "fk_trip_subcontractor_party" in source
+    assert "create_table" not in source
+    assert "leaflet" not in source
+    assert "def downgrade" in source
+    assert "subcontractor_party_id" in source.split("def downgrade")[1]

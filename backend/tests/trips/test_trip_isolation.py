@@ -6,6 +6,7 @@ from sqlalchemy import select, text
 from sqlalchemy.exc import IntegrityError
 
 from app.core.database import bind_tenant
+from app.models.party import Party
 from app.models.resource import Resource
 from app.models.trip import Trip
 
@@ -291,3 +292,39 @@ async def test_trip_actual_distance_same_tenant(session, two_tenants) -> None:
     loaded = await session.scalar(select(Trip).where(Trip.id == row.id))
     assert loaded is not None
     assert loaded.actual_distance_km == Decimal("8.2500")
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_trip_subcontractor_party_same_tenant(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    user_a = two_tenants["user_a"]
+    await bind_tenant(session, org_a.id)
+    vendor = Party(
+        id=uuid4(),
+        organization_id=org_a.id,
+        legal_name="Haul A",
+        country_code="PL",
+        roles=["subcontractor"],
+        source_ref="tenant:manual",
+        is_active=True,
+        created_by=user_a.id,
+    )
+    session.add(vendor)
+    await session.flush()
+    row = Trip(
+        id=uuid4(),
+        organization_id=org_a.id,
+        trip_no="TR-M",
+        status="draft",
+        source_ref="fixture://trip/m",
+        subcontractor_party_id=vendor.id,
+        created_by=user_a.id,
+    )
+    session.add(row)
+    await session.flush()
+    session.expunge_all()
+    await bind_tenant(session, org_a.id)
+    loaded = await session.scalar(select(Trip).where(Trip.id == row.id))
+    assert loaded is not None
+    assert loaded.subcontractor_party_id == vendor.id

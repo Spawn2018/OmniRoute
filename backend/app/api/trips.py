@@ -6,8 +6,9 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import get_current_identity, require_permission, require_tenant_session
 from app.core.session_token import SessionIdentity
-from app.domain.trip import require_trip_slot
+from app.domain.trip import require_trip_slot, require_trip_subcontractor_party_id
 from app.models.trip import Trip
+from app.services.parties.party_service import PartyService
 from app.services.resources.resource_service import ResourceService
 from app.services.trips.trip_service import TripService
 
@@ -31,6 +32,7 @@ class TripCreate(BaseModel):
     route_label: str | None = None
     planned_distance_km: str | int | float | bool | None = None
     actual_distance_km: str | int | float | bool | None = None
+    subcontractor_party_id: UUID | bool | None = None
 
 
 class TripResponse(BaseModel):
@@ -50,6 +52,7 @@ class TripResponse(BaseModel):
     route_label: str | None
     planned_distance_km: str | None
     actual_distance_km: str | None
+    subcontractor_party_id: UUID | None
     superseded_by: UUID | None
 
 
@@ -73,6 +76,7 @@ def _as_response(row: Trip) -> TripResponse:
         route_label=row.route_label,
         planned_distance_km=planned,
         actual_distance_km=actual,
+        subcontractor_party_id=row.subcontractor_party_id,
         superseded_by=row.superseded_by,
     )
 
@@ -86,6 +90,13 @@ async def _assigned(
         return None
     row = await ResourceService(session).get_resource(resource_id)
     require_trip_slot(slot, row.resource_kind)
+    return row.id
+
+
+async def _bound_party(session: AsyncSession, party_id: UUID | None) -> UUID | None:
+    if party_id is None:
+        return None
+    row = await PartyService(session).get_party(party_id)
     return row.id
 
 
@@ -111,6 +122,10 @@ async def create_trip(
     trailer_id = await _assigned(session, body.trailer_id, "trailer")
     driver_id = await _assigned(session, body.driver_id, "driver")
     driver2_id = await _assigned(session, body.driver2_id, "driver")
+    vendor_id = await _bound_party(
+        session,
+        require_trip_subcontractor_party_id(body.subcontractor_party_id),
+    )
     row = await TripService(session).record_trip(
         organization_id=identity.organization_id,
         user_id=identity.user_id,
@@ -126,6 +141,7 @@ async def create_trip(
         route_label=body.route_label,
         planned_distance_km=body.planned_distance_km,
         actual_distance_km=body.actual_distance_km,
+        subcontractor_party_id=vendor_id,
     )
     await session.commit()
     return _as_response(row)

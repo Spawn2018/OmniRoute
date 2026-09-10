@@ -15,6 +15,7 @@ from app.domain.trip import (
     require_trip_slot,
     require_trip_source_ref,
     require_trip_status,
+    require_trip_subcontractor_party_id,
 )
 
 
@@ -113,3 +114,13 @@ def test_actual_distance_rejects_float_bool_and_negative() -> None:
         require_trip_actual_distance_km(True)
     with pytest.raises(InvalidTrip, match="km"):
         require_trip_actual_distance_km(-1)
+
+
+def test_subcontractor_party_id_accepts_uuid_and_rejects_text() -> None:
+    mark = uuid4()
+    assert require_trip_subcontractor_party_id(None) is None
+    assert require_trip_subcontractor_party_id(mark) == mark
+    with pytest.raises(InvalidTrip, match="podwykonawca"):
+        require_trip_subcontractor_party_id(str(mark))
+    with pytest.raises(InvalidTrip, match="podwykonawca"):
+        require_trip_subcontractor_party_id(True)

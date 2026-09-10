@@ -14,6 +14,7 @@ export type TripWrite = {
   route_label: string | null
   planned_distance_km: string | null
   actual_distance_km: string | null
+  subcontractor_party_id: string | null
 }
 
 export type TripRow = TripWrite & {
@@ -39,6 +40,7 @@ export function tripWrite(args: {
   routeLabel: string
   plannedDistance: string
   actualDistance: string
+  subcontractor: string
   buyAmount: string
   buyCurrency: string
 }): TripWrite {
@@ -58,6 +60,7 @@ export function tripWrite(args: {
     route_label: optionalId(args.routeLabel),
     planned_distance_km: planned === "" ? null : planned,
     actual_distance_km: actual === "" ? null : actual,
+    subcontractor_party_id: optionalId(args.subcontractor),
   }
 }
 

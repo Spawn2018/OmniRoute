@@ -23376,6 +23376,21 @@
               }
             ],
             "title": "Actual Distance Km"
+          },
+          "subcontractor_party_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Subcontractor Party Id"
           }
         },
         "additionalProperties": false,
@@ -23514,6 +23529,18 @@
             ],
             "title": "Actual Distance Km"
           },
+          "subcontractor_party_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Subcontractor Party Id"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -23543,6 +23570,7 @@
           "route_label",
           "planned_distance_km",
           "actual_distance_km",
+          "subcontractor_party_id",
           "superseded_by"
         ],
         "title": "TripResponse"

@@ -16,8 +16,10 @@ from app.domain.trip import (
     require_trip_resource_id,
     require_trip_source_ref,
     require_trip_status,
+    require_trip_subcontractor_party_id,
 )
 from app.main import app
+from app.models.party import Party
 from app.models.resource import Resource
 from app.models.trip import Trip
 from tests.http_auth import bearer_auth_headers
@@ -33,6 +35,17 @@ class AllowAllAuthz:
         object_id: UUID,
     ) -> bool:
         return True
+
+
+class StubPartyService:
+    def __init__(self) -> None:
+        self.rows: list[Party] = []
+
+    async def get_party(self, party_id: UUID) -> Party:
+        for row in self.rows:
+            if row.id == party_id:
+                return row
+        raise ResourceNotFound(f"nieznany kontrahent: {party_id}")
 
 
 class StubResourceService:
@@ -77,6 +90,7 @@ class StubTripService:
         route_label: object = None,
         planned_distance_km: object = None,
         actual_distance_km: object = None,
+        subcontractor_party_id: object = None,
     ) -> Trip:
         number = require_trip_no(trip_no)
         state = require_trip_status(status)
@@ -89,6 +103,7 @@ class StubTripService:
         label = require_route_label(route_label)
         planned = require_trip_planned_distance_km(planned_distance_km)
         actual = require_trip_actual_distance_km(actual_distance_km)
+        vendor = require_trip_subcontractor_party_id(subcontractor_party_id)
         buy_amount, buy_currency = require_expected_buy(
             state,
             expected_buy_amount,
@@ -109,6 +124,7 @@ class StubTripService:
             and current.route_label == label
             and current.planned_distance_km == planned
             and current.actual_distance_km == actual
+            and current.subcontractor_party_id == vendor
             and current.expected_buy_amount == buy_amount
             and current.expected_buy_currency == buy_currency
         ):
@@ -126,6 +142,7 @@ class StubTripService:
             route_label=label,
             planned_distance_km=planned,
             actual_distance_km=actual,
+            subcontractor_party_id=vendor,
             expected_buy_amount=buy_amount,
             expected_buy_currency=buy_currency,
             created_by=user_id,
@@ -140,6 +157,8 @@ class StubTripService:
 def run_client(monkeypatch: pytest.MonkeyPatch) -> object:
     trips = StubTripService(object())
     fleet = StubResourceService(object())
+    counterparts = StubPartyService()
+    trips.counterparts = counterparts
 
     async def _fake_tenant_session() -> object:
         session = AsyncMock()
@@ -148,6 +167,7 @@ def run_client(monkeypatch: pytest.MonkeyPatch) -> object:
 
     monkeypatch.setattr("app.api.trips.TripService", lambda _s: trips)
     monkeypatch.setattr("app.api.trips.ResourceService", lambda _s: fleet)
+    monkeypatch.setattr("app.api.trips.PartyService", lambda _s: counterparts)
     set_authz_checker(AllowAllAuthz())
     app.dependency_overrides[require_tenant_session] = _fake_tenant_session
     yield TestClient(app), trips, fleet
@@ -171,6 +191,7 @@ def test_http_create_list_supersede_and_reject_queued(run_client: object) -> Non
     assert first.json()["route_label"] is None
     assert first.json()["planned_distance_km"] is None
     assert first.json()["actual_distance_km"] is None
+    assert first.json()["subcontractor_party_id"] is None
     assert "amount" not in first.json()
     second = client.post(
         "/api/v1/trips",
@@ -468,3 +489,66 @@ def test_http_rejects_float_actual_distance(run_client: object) -> None:
     )
     assert reply.status_code == 400
     assert "km" in reply.json()["detail"]
+
+
+def test_http_create_trip_with_subcontractor_party(run_client: object) -> None:
+    client, trips, _fleet = run_client
+    vendor = Party(
+        id=uuid4(),
+        organization_id=uuid4(),
+        legal_name="Haul",
+        country_code="PL",
+        roles=["subcontractor"],
+        source_ref="tenant:manual",
+        is_active=True,
+    )
+    trips.counterparts.rows.append(vendor)
+    headers = bearer_auth_headers(organization_id=uuid4())
+    reply = client.post(
+        "/api/v1/trips",
+        headers=headers,
+        json={
+            "trip_no": "TR-13",
+            "status": "draft",
+            "source_ref": "tenant:manual",
+            "subcontractor_party_id": str(vendor.id),
+        },
+    )
+    assert reply.status_code == 201
+    assert reply.json()["subcontractor_party_id"] == str(vendor.id)
+    assert reply.json()["actual_distance_km"] is None
+    assert "margin" not in reply.json()
+
+
+def test_http_rejects_unknown_subcontractor_party(run_client: object) -> None:
+    client, _trips, _fleet = run_client
+    headers = bearer_auth_headers(organization_id=uuid4())
+    reply = client.post(
+        "/api/v1/trips",
+        headers=headers,
+        json={
+            "trip_no": "TR-14",
+            "status": "draft",
+            "source_ref": "tenant:manual",
+            "subcontractor_party_id": str(uuid4()),
+        },
+    )
+    assert reply.status_code == 404
+    assert "kontrahent" in reply.json()["detail"]
+
+
+def test_http_rejects_bool_subcontractor_party(run_client: object) -> None:
+    client, _trips, _fleet = run_client
+    headers = bearer_auth_headers(organization_id=uuid4())
+    reply = client.post(
+        "/api/v1/trips",
+        headers=headers,
+        json={
+            "trip_no": "TR-15",
+            "status": "draft",
+            "source_ref": "tenant:manual",
+            "subcontractor_party_id": True,
+        },
+    )
+    assert reply.status_code == 400
+    assert "podwykonawca" in reply.json()["detail"]

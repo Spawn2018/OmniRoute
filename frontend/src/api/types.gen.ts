@@ -7098,6 +7098,10 @@ export type TripCreate = {
      * Actual Distance Km
      */
     actual_distance_km?: string | number | number | boolean | null;
+    /**
+     * Subcontractor Party Id
+     */
+    subcontractor_party_id?: string | boolean | null;
 };
 
 /**
@@ -7160,6 +7164,10 @@ export type TripResponse = {
      * Actual Distance Km
      */
     actual_distance_km: string | null;
+    /**
+     * Subcontractor Party Id
+     */
+    subcontractor_party_id: string | null;
     /**
      * Superseded By
      */
