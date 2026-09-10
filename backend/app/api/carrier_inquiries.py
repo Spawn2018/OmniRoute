@@ -11,6 +11,7 @@ from app.core.session_token import SessionIdentity
 from app.domain.carrier_inquiry import InquiryMemberRank
 from app.models.carrier_inquiry import CarrierInquiry
 from app.services.carrier_inquiries.carrier_inquiry_service import CarrierInquiryService
+from app.services.entity_events.entity_event_service import EntityEventService
 
 router = APIRouter(prefix="/carrier-inquiries", tags=["carrier-inquiries"])
 
@@ -94,6 +95,24 @@ class CarrierInquiryResponse(BaseModel):
         )
 
 
+async def _append_queued_event(
+    session: AsyncSession,
+    identity: SessionIdentity,
+    row: CarrierInquiry,
+) -> None:
+    if row.status != "queued":
+        return
+    await EntityEventService(session).create_event(
+        organization_id=identity.organization_id,
+        user_id=identity.user_id,
+        subject_kind="carrier_inquiry",
+        subject_id=row.id,
+        event_kind="inquiry_queued",
+        source_ref=row.source_ref,
+        occurred_at=None,
+    )
+
+
 @router.get("", response_model=list[CarrierInquiryResponse])
 async def list_carrier_inquiries(
     silent: str | None = Query(default=None),
@@ -132,6 +151,7 @@ async def create_carrier_inquiry(
         quoted_transit_days=body.quoted_transit_days,
         no_reply_after=body.no_reply_after,
     )
+    await _append_queued_event(session, identity, row)
     await session.commit()
     return CarrierInquiryResponse.from_row(row)
 

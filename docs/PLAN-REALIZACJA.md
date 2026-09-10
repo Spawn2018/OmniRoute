@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **244.0** leftover 2a `inquiry_queued` z API → 2b → `stop_group`/EXP1 → km/`/fleet` → `consignment` → T6 mapa → SQL `charge` → lookup/KSeF TE → outbox T5 → `plan_snapshot`/kółka → F9 Optima fixture → T8 → S53 Auth0 → portale/diada → CT7/CI9/reszta pinu 2026-09-08c. Leftover HITL/SQL = praca. Park = live HTTP bez testu albo sekretu, nie skip pola. Live M-02 konsument / Auth0 / portale tylko gdy ten ID jest bieżącym Q. P6c auto-award zakaz. Nic z pinu nie wypada. Nie zgaduj 71–244.
+**Następny:** **245.0** leftover 2b (`inquiry_sent` / `quote_recorded`) → `stop_group`/EXP1 → km/`/fleet` → `consignment` → T6 mapa → SQL `charge` → lookup/KSeF TE → outbox T5 → `plan_snapshot`/kółka → F9 Optima fixture → T8 → S53 Auth0 → portale/diada → CT7/CI9/reszta pinu 2026-09-08c. Leftover HITL/SQL = praca. Park = live HTTP bez testu albo sekretu, nie skip pola. Live M-02 konsument / Auth0 / portale tylko gdy ten ID jest bieżącym Q. P6c auto-award zakaz. Nic z pinu nie wypada. Nie zgaduj 71–245.
 <!-- os-status:end -->
 
 ```mermaid
@@ -506,7 +506,7 @@ Pogłębienie żywych M-07/M-08 (`source_ref`), M-10, M-12, M-13, M-19, M-20, M-
 | **O0** | `network_member.party_id` FK tenanta | Plan → plaster | zamknięty (`docs/deltas/archived/130.0-network-member-party.md`) | FK tenanta. 409 rankingu = O3 |
 | **M10-1** | Dedup NIP/VAT-EU/EORI/DUNS + wymóg ID biznesowego | Plan → plaster | zamknięty (`docs/deltas/archived/131.0-party-business-ids.md`) | 409 z linkiem. Zakaz B2C bez NIP |
 | **M10-2** | `party_role_assignment` + JDG + `parent_party_id` | Plan → plaster | zamknięty (`docs/deltas/archived/132.0-party-roles-jdg.md`) | JDG → kredyt HITL. Agent/armator/podwykonawca = role, nie trzy tabele |
-| **B0a** | `entity_event` append-only | Plan → plaster | zamknięty (`docs/deltas/archived/133.0-entity-event.md`); leftover 2a delta [244.0](deltas/open/244.0-inquiry-queued-event.md) | Kind: `inquiry_queued` / `inquiry_sent` / `quote_recorded`. 2a = compose z API. Ledger/what-if = B0b po T2 |
+| **B0a** | `entity_event` append-only | Plan → plaster | zamknięty (`docs/deltas/archived/133.0-entity-event.md`); leftover 2a [244.0](deltas/archived/244.0-inquiry-queued-event.md); leftover 2b | Kind: `inquiry_queued` / `inquiry_sent` / `quote_recorded`. 2a = compose z API. Ledger/what-if = B0b po T2 |
 | **O1** | `channel_quote.transit_days` + znaczki najtańsza / najszybszy TT (SQL, ta sama waluta) | Plan → plaster | zamknięty (`docs/deltas/archived/134.0-channel-quote-transit.md`) | Nie mnożenie NBP (T7). UI `/quotations` |
 | **O2** | Ręczny POST `channel_quote` z wyceny (`source_ref=tenant:manual:`) | Plan → plaster | zamknięty (`docs/deltas/archived/135.0-channel-quote-from-quote.md`) | Nie mutacja stawki. Nie 1.3 `rate_line` w tym wierszu |
 | **O3** | `carrier_inquiry` batch; statusy `queued`/`sent`/`answered`/`declined`; lane POL/POD | Plan → plaster | zamknięty (`docs/deltas/archived/136.0-carrier-inquiry-batch.md`) | Wskazanie wyceny w API, nie import serwisu. 1 / wielu / wszyscy |
@@ -853,13 +853,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

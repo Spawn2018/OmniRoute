@@ -124,7 +124,7 @@
 | oferta z kanału | channel_quote | M-19; katalog oferty armatora per POL/POD; O1 `transit_days`; nie live HTTP; nie `rate_line` |
 | czas tranzytu | transit_days | dni kalendarzowe na ofercie kanału; znaczek najszybszy TT liczy SQL; nie float |
 | karta lane | party_lane_scorecard | M-13 per POL/POD; SQL-refresh; podpowiedź z pól; nie scoring osoby; nie LLM |
-| zdarzenie obiektu | entity_event | B0a append-only (`inquiry_sent` / `quote_recorded`); nie Temporal |
+| zdarzenie obiektu | entity_event | B0a append-only (`inquiry_queued` 244.0 z API / `inquiry_sent` / `quote_recorded`); nie Temporal |
 | przypisanie roli | party_role_assignment | 132.0; wiele ról na jednym `party`; nie osobny kontrahent na rolę |
 | JDG | is_sole_trader | 132.0; kredyt tylko HITL recenzją |
 | kontrahent nadrzędny | parent_party_id | 132.0; grupa / oddział; FK tenanta |

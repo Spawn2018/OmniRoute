@@ -33,6 +33,15 @@ class AllowAllAuthz:
         return True
 
 
+class StubEventService:
+    def __init__(self) -> None:
+        self.writes: list[dict[str, object]] = []
+
+    async def create_event(self, **write: object) -> object:
+        self.writes.append(write)
+        return object()
+
+
 class StubInquiryService:
     def __init__(self, session: object) -> None:
         self._session = session
@@ -147,6 +156,8 @@ class StubInquiryService:
 @pytest.fixture
 def inquiry_client(monkeypatch: pytest.MonkeyPatch) -> object:
     stub = StubInquiryService(object())
+    ledger = StubEventService()
+    stub.ledger = ledger
 
     def _service(_session: object) -> StubInquiryService:
         return stub
@@ -157,6 +168,7 @@ def inquiry_client(monkeypatch: pytest.MonkeyPatch) -> object:
         return session
 
     monkeypatch.setattr("app.api.carrier_inquiries.CarrierInquiryService", _service)
+    monkeypatch.setattr("app.api.carrier_inquiries.EntityEventService", lambda _s: ledger)
     set_authz_checker(AllowAllAuthz())
     app.dependency_overrides[require_tenant_session] = _fake_tenant_session
     yield TestClient(app), stub
@@ -323,3 +335,33 @@ def test_http_patch_sets_no_reply_after(inquiry_client: object) -> None:
     )
     assert patched.status_code == 200
     assert patched.json()["no_reply_after"] == past
+
+
+def test_http_queued_inquiry_appends_entity_event(inquiry_client: object) -> None:
+    client, stub = inquiry_client
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/carrier-inquiries",
+        headers=headers,
+        json={"network_member_id": str(uuid4()), "status": "queued"},
+    )
+    assert created.status_code == 201
+    assert created.json()["status"] == "queued"
+    assert len(stub.ledger.writes) == 1
+    write = stub.ledger.writes[0]
+    assert write["event_kind"] == "inquiry_queued"
+    assert write["subject_kind"] == "carrier_inquiry"
+    assert write["subject_id"] == UUID(created.json()["id"])
+    assert write["source_ref"] == "tenant:manual"
+
+
+def test_http_draft_inquiry_skips_entity_event(inquiry_client: object) -> None:
+    client, stub = inquiry_client
+    created = client.post(
+        "/api/v1/carrier-inquiries",
+        headers=bearer_auth_headers(),
+        json={"network_member_id": str(uuid4())},
+    )
+    assert created.status_code == 201
+    assert created.json()["status"] == "draft"
+    assert stub.ledger.writes == []

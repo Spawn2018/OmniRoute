@@ -25,6 +25,7 @@ def test_inquiry_service_stays_inside_own_bc() -> None:
     source = _SERVICE.read_text(encoding="utf-8")
     assert "app.services.networks" not in source
     assert "app.services.quotations" not in source
+    assert "app.services.entity_events" not in source
     assert "app.services.channel_quotes" not in source
     assert "app.services.customer_rfqs" not in source
     assert "httpx" not in source

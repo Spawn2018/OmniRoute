@@ -97,7 +97,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **240.0 leftover:** leftover T3 `booking_no` DONE 241.0. Zostaje leftover T3 `carrier_party_id` FK; PIN. Tu tylko `last_survey_at` HITL. Nie live HTTP. Nie PIN.
 - **241.0 leftover:** leftover T3 `carrier_party_id` FK DONE 242.0. Zostaje leftover T3 `shipment_leg_id`; PIN. Tu tylko `booking_no` HITL. Nie S21. Nie live HTTP. Nie PIN.
 - **242.0 leftover:** leftover T3 `shipment_leg_id` DONE 243.0. Zostaje leftover eventy 2a/2b; PIN. Tu tylko `carrier_party_id` HITL. Nie S21. Nie live HTTP. Nie PIN.
-- **243.0 leftover:** leftover eventy 2a/2b; PIN; TARA; TEU. Tu tylko `shipment_leg_id` HITL. Nie S21. Nie live HTTP. Nie PIN.
+- **243.0 leftover:** leftover eventy 2a DONE 244.0. Zostaje leftover 2b; PIN; TARA; TEU. Tu tylko `shipment_leg_id` HITL. Nie S21. Nie live HTTP. Nie PIN.
+- **244.0 leftover:** leftover 2b (`inquiry_sent` / `quote_recorded` / batch / `channel_quote`). Tu tylko 2a `inquiry_queued` z API. Nie import BC. Nie live HTTP. Nie Temporal.
 - **215.0 leftover:** leftover T1b tabela `stop_group`; EXP1 waga/plomba/awizacja. Tu tylko `notes_for_driver` HITL. Nie waga. Nie mapa.
 - **214.0 leftover:** leftover T2c km/`party`/`/fleet`. Tu tylko `route_label` HITL. Nie km. Nie mapa.
 - **152.0 leftover:** `driver2_id` DONE 212.0; `route_label` DONE 214.0; `stop_group` kolumna DONE 213.0. Zostaje Decimal km / freeze kosztu; `party_id`; `/fleet` / HW. Tu tylko status + opcjonalny slot floty + etykieta. Nie km.
