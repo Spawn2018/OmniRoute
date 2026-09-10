@@ -568,3 +568,4 @@
 | 2026-09-10 | 242.0 | T3 | carrier_party_id HITL na container. Nie live HTTP. Nie PIN. Nastepny: leftover T3 shipment_leg_id Plan. |
 | 2026-09-10 | Plan 243.0 | T3 | shipment_leg_id HITL na container, nie live HTTP i nie PIN. Delta zaakceptowana (`/noc`). Nastepny: kod 243.0. |
 | 2026-09-10 | 243.0 | T3 | shipment_leg_id HITL na container. Nie live HTTP. Nie PIN. Nastepny: leftover eventy 2a/2b Plan. |
+| 2026-09-10 | Plan 244.0 | B0a | inquiry_queued z API przy POST queued, nie import BC. Delta zaakceptowana (`/noc`). Nastepny: kod 244.0. |
