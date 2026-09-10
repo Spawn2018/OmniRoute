@@ -174,6 +174,7 @@
 | wymiana kontaktów | contact_exchange | zakres I4; DAP import: origin_agent + klient; nie booking ocean |
 | rodzaj obserwacji GPS | observation_kind | V5; `omni_telematic` = flota w umowie pakietu; `external_api` = 3 dni robocze bez trip |
 | konektor telematyki | telematics_connector | V5 HITL 197.0 reżim + dostawca; nie live GPS; nie sekrety |
+| konektor ERP | erp_connector | F9 HITL 268.0 kod + kind `optima` + source_ref; nie live SOAP; nie sekrety |
 | konektor slotu | terminal_slot_connector | T8; mode `api`/`email_hitl`/`portal_task`/`unsupported` per terminal; nie gwarancja |
 | awizacja terminalu | terminal_appointment | T8; requested/confirmed/rejected; `source_ref` |
 | kalendarz organizacji | organization_calendar | U4; dni robocze; grace GPS |
