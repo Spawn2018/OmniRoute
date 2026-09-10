@@ -4,12 +4,12 @@
 **Repo:** https://github.com/Spawn2018/OmniRoute  
 
 **Ostatni plaster:** **268.0** leftover HITL `erp_connector` Optima fixture  
-**Etap:** Plan  
+**Etap:** Kod  
 **Noc:** `/noc 7` do 2026-09-11T07:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).  
-**Następny:** leftover T8 → S53 Auth0 → portale/diada → CT7/CI9/reszta pinu 2026-09-08c. Leftover HITL/SQL = praca. Park = live HTTP bez testu albo sekretu, nie skip pola. Live M-02 konsument / Auth0 / portale tylko gdy ten ID jest bieżącym Q. P6c auto-award zakaz. Nic z pinu nie wypada. Nie zgaduj 71–269.  
+**Następny:** leftover T8 kod 269.0 (`terminal_slot_connector`) → S53 Auth0 → portale/diada → CT7/CI9/reszta pinu 2026-09-08c. Leftover HITL/SQL = praca. Park = live HTTP bez testu albo sekretu, nie skip pola. Live M-02 konsument / Auth0 / portale tylko gdy ten ID jest bieżącym Q. P6c auto-award zakaz. Nic z pinu nie wypada. Nie zgaduj 71–269.  
 M-02 **fundament 79.0** (konsument = krok osi T5, nie skip nocy). Auth0 = S53 gdy CURRENT dojdzie. Portale **po S53**. S21 live HTTP = park live. S50 = T2 (`resource` 151.0, `trip` 152.0; leftover T2c `driver2` = 212.0; leftover T2 `route_label` = 214.0; leftover T2c km = 256.0/257.0; leftover `party` = 258.0; leftover `/fleet` = 259.0). Exit Wave FE **nie** claim.
 
-**Spec (jedna na sesję):** brak — następne Q to leftover T8 (slot capability + godziny terminalu N4; `confirmed` tylko z API). Komenda `/plan-modul`. Oś: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Oś leftoverów `/noc`. Karta T8 w PLAN. Nie G2.22 P/lista. Nie RAG na stawkach / umowach CI. Nie pgvector. Nie T8 live API. Nie drugi czat. Nie N8. Nie live VIES. Nie auto-award. Nie scrape. Nie Citizen API. Nie silnik ≥500k. Nie kalkulator kg. Nie live PUESC/KSeF. Nie 409 na shipment. Nie CAMT. Nie silnik CRPS. Nie Open-Meteo HTTP. Nie myto. Nie countdown D&D. Nie live GPS. Nie sekrety adaptera. Nie scoring osoby. Nie silnik EBITDA. Nie fizyka twinów. ExtractionService nie importuje tenders/rates. LLM nie sumuje.
+**Spec (jedna na sesję):** [269.0-terminal-slot-connector.md](../deltas/open/269.0-terminal-slot-connector.md) — delta zaakceptowana (`/noc`). Wolno `/plaster`. HITL `terminal_slot_connector` (capability + godziny N4). `confirmed` nie z formularza. Oś: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Oś leftoverów `/noc`. Karta T8 w PLAN. Nie live T8 API. Nie Selenium. Nie D3. Nie G2.22 P/lista. Nie Auth0. Nie portale. Nie RAG na stawkach / umowach CI. Nie pgvector. Nie drugi czat. Nie N8. Nie live VIES. Nie auto-award. Nie scrape. Nie Citizen API. Nie silnik ≥500k. Nie kalkulator kg. Nie live PUESC/KSeF. Nie 409 na shipment. Nie CAMT. Nie silnik CRPS. Nie Open-Meteo HTTP. Nie myto. Nie countdown D&D. Nie live GPS. Nie sekrety adaptera. Nie scoring osoby. Nie silnik EBITDA. Nie fizyka twinów. ExtractionService nie importuje tenders/rates. LLM nie sumuje.
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
@@ -17,4 +17,4 @@ M-02 **fundament 79.0** (konsument = krok osi T5, nie skip nocy). Auth0 = S53 gd
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` są w PATH. Przed pracą: `pg_ctl -D tools\pgdata -o "-p 5432" start` oraz `tools\openfga\openfga.exe run`. Potem `just gate` i `just test`. PG 16: `tools\pg16`.
 
-**2026-09-08c:** pin całości rozmowy Luki i ulepszenia. **268.0** zamknięty (`/noc`) — HITL `erp_connector` kind `optima`, fixture, zero sekretów. Następne Q = plan leftover T8, nie Auth0, nie portale, nie live HTTP. `/noc` nie pomija osi. LLM nie liczy.
+**2026-09-08c:** pin całości rozmowy Luki i ulepszenia. **268.0** zamknięty (`/noc`) — HITL `erp_connector` kind `optima`, fixture, zero sekretów. Delta **269.0** T8 `terminal_slot_connector` zaakceptowana (`/noc`) — wolno `/plaster`. Nie Auth0, nie portale, nie live HTTP. `/noc` nie pomija osi. LLM nie liczy.
