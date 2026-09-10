@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **265.0** leftover `plan_snapshot`/kółka → F9 Optima fixture → T8 → S53 Auth0 → portale/diada → CT7/CI9/reszta pinu 2026-09-08c. Leftover HITL/SQL = praca. Park = live HTTP bez testu albo sekretu, nie skip pola. Live M-02 konsument / Auth0 / portale tylko gdy ten ID jest bieżącym Q. P6c auto-award zakaz. Nic z pinu nie wypada. Nie zgaduj 71–265.
+**Następny:** **265.0** leftover `plan_snapshot` → kółka → F9 Optima fixture → T8 → S53 Auth0 → portale/diada → CT7/CI9/reszta pinu 2026-09-08c. Leftover HITL/SQL = praca. Park = live HTTP bez testu albo sekretu, nie skip pola. Live M-02 konsument / Auth0 / portale tylko gdy ten ID jest bieżącym Q. P6c auto-award zakaz. Nic z pinu nie wypada. Nie zgaduj 71–265.
 <!-- os-status:end -->
 
 ```mermaid
@@ -558,7 +558,7 @@ Przy `/plan-modul`: karta T + [EXP1](analysis/karty-pol-fala-exp.md) (stop/konte
 | T7 | `fx_rate_basis` SQL; kalendarz U4 | zamknięty HITL ([211.0](deltas/archived/211.0-fx-rate-basis.md); leftover T7b override/`charge`; leftover T7c U4 D-1) | po T1+U4 | LLM/JS nie liczą |
 | T8 | slot capability + godziny terminalu N4; **confirmed tylko z API** | Plan → plaster | po T3 | nie gwarancja prawna; nie Selenium |
 
-**B0b** (po T2): zamknięty HITL `prediction_ledger` + N7 ([193.0](deltas/archived/193.0-prediction-ledger.md)); leftover `plan_snapshot` / TT z actuals — karta [karty-pol-fala-v.md](analysis/karty-pol-fala-v.md). Indeks paliwa = P3 `fuel_index`.
+**B0b** (po T2): zamknięty HITL `prediction_ledger` + N7 ([193.0](deltas/archived/193.0-prediction-ledger.md)); leftover `plan_snapshot` ([265.0](deltas/open/265.0-plan-snapshot.md)); leftover TT z actuals — karta [karty-pol-fala-v.md](analysis/karty-pol-fala-v.md). Indeks paliwa = P3 `fuel_index`.
 
 **N / A w T:** N9 z U1; A3/A6/A7/A9/A14/A17 przy T — karta [karty-pol-fala-n.md](analysis/karty-pol-fala-n.md) · [a](analysis/karty-pol-fala-a.md).
 
@@ -853,13 +853,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

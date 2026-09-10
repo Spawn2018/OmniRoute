@@ -610,3 +610,4 @@
 | 2026-09-10 | 263.0 | T5 | task_template HITL kod + applies_when. Nie instancja. Nie outbox. Nastepny: leftover outbox T5 Plan. |
 | 2026-09-10 | Plan 264.0 | T5 | outbox task_template_saved na istniejacej tabeli, nie konsument i nie worker. Delta zaakceptowana (`/noc`). Nastepny: kod 264.0. |
 | 2026-09-10 | 264.0 | T5 | outbox task_template_saved. Nie konsument. Nie worker. Nastepny: leftover plan_snapshot Plan. |
+| 2026-09-10 | Plan 265.0 | B0b | plan_snapshot HITL trojka UUID bez FK, nie kolka i nie what-if. Delta zaakceptowana (/noc). Nastepny: kod 265.0. |
