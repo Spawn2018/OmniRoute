@@ -18,6 +18,7 @@ export function StopPointPanel(args: { canWrite: boolean }) {
   const [etaLegal, setEtaLegal] = useState("2026-09-09T12:00:00+00:00")
   const [groupCode, setGroupCode] = useState("")
   const [driverNotes, setDriverNotes] = useState("")
+  const [weightKg, setWeightKg] = useState("")
   const listQuery = useQuery({
     queryKey: ["stops", ctx.organizationId, shipmentId],
     queryFn: () => fetchStops(shipmentId),
@@ -38,6 +39,7 @@ export function StopPointPanel(args: { canWrite: boolean }) {
           etaLegal,
           groupCode,
           driverNotes,
+          weightKg,
         }),
       ),
     onSuccess: () => {
@@ -52,7 +54,7 @@ export function StopPointPanel(args: { canWrite: boolean }) {
       <p className="text-sm font-medium">Punkt załadunku i wyładunku</p>
       <p className="text-xs text-muted-foreground">
         Miejsce ze słownika lokalizacji. Strefa IANA. Dwa ETA HITL. Opcjonalny kod grupy.
-        Nie mapa. Nie GPS. Nie pogoda.
+        Opcjonalna waga HITL. Nie mapa. Nie GPS. Nie pogoda.
       </p>
       <Input
         aria-label="Identyfikator zlecenia punktu"
@@ -102,6 +104,12 @@ export function StopPointPanel(args: { canWrite: boolean }) {
         value={driverNotes}
         onChange={(event) => setDriverNotes(event.target.value)}
       />
+      <Input
+        aria-label="Waga punktu w kilogramach"
+        placeholder="weight_kg"
+        value={weightKg}
+        onChange={(event) => setWeightKg(event.target.value)}
+      />
       <fieldset className="space-y-1 text-xs">
         <legend>Rodzaj punktu</legend>
         {(["loading", "unloading", "customs", "ferry", "terminal", "depot", "other"] as const).map(
@@ -146,7 +154,7 @@ export function StopPointPanel(args: { canWrite: boolean }) {
         {rows.map((row) => (
           <li key={row.id} className="font-mono text-xs">
             {row.sequence_no} {row.stop_kind} {row.status} {row.stop_group_code ?? ""}{" "}
-            {row.notes_for_driver ?? ""} {row.eta_physical} {row.eta_legal}
+            {row.notes_for_driver ?? ""} {row.weight_kg ?? ""} {row.eta_physical} {row.eta_legal}
           </li>
         ))}
       </ul>

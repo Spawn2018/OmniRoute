@@ -21217,6 +21217,17 @@
               }
             ],
             "title": "Notes For Driver"
+          },
+          "weight_kg": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Weight Kg"
           }
         },
         "additionalProperties": false,
@@ -21308,6 +21319,17 @@
             ],
             "title": "Notes For Driver"
           },
+          "weight_kg": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Weight Kg"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -21336,6 +21358,7 @@
           "eta_legal",
           "stop_group_code",
           "notes_for_driver",
+          "weight_kg",
           "superseded_by"
         ],
         "title": "StopResponse"

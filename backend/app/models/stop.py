@@ -1,5 +1,6 @@
 import uuid
 from datetime import datetime
+from decimal import Decimal
 
 from sqlalchemy import (
     CheckConstraint,
@@ -8,6 +9,7 @@ from sqlalchemy import (
     ForeignKeyConstraint,
     Index,
     Integer,
+    Numeric,
     String,
     Text,
     UniqueConstraint,
@@ -37,6 +39,10 @@ class Stop(Base, TimestampMixin):
         CheckConstraint(
             "stop_group_code IS NULL OR stop_group_code ~ '^[A-Za-z0-9_-]{2,32}$'",
             name="ck_stop_group_code",
+        ),
+        CheckConstraint(
+            "weight_kg IS NULL OR weight_kg >= 0",
+            name="ck_stop_weight_kg",
         ),
         ForeignKeyConstraint(
             ["organization_id", "shipment_id"],
@@ -75,6 +81,7 @@ class Stop(Base, TimestampMixin):
     source_ref: Mapped[str] = mapped_column(Text, nullable=False)
     stop_group_code: Mapped[str | None] = mapped_column(String(32), nullable=True)
     notes_for_driver: Mapped[str | None] = mapped_column(String(256), nullable=True)
+    weight_kg: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
     eta_physical: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
     eta_legal: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
     superseded_by: Mapped[uuid.UUID | None] = mapped_column(

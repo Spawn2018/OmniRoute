@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from datetime import datetime
+from decimal import Decimal
 from uuid import UUID, uuid4
 
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -16,6 +17,7 @@ from app.domain.stop import (
     require_stop_shipment_id,
     require_stop_source_ref,
     require_stop_status,
+    require_stop_weight_kg,
     require_time_zone,
 )
 from app.models.stop import Stop
@@ -33,6 +35,7 @@ class _PackedPoint:
     origin: str
     group_code: str | None
     driver_notes: str | None
+    mass: Decimal | None
     physical: datetime
     legal: datetime
 
@@ -50,6 +53,7 @@ def _pack_point(
     eta_legal: object,
     stop_group_code: object,
     notes_for_driver: object,
+    weight_kg: object,
 ) -> _PackedPoint:
     return _PackedPoint(
         order_id=require_stop_shipment_id(shipment_id),
@@ -61,6 +65,7 @@ def _pack_point(
         origin=require_stop_source_ref(source_ref),
         group_code=require_stop_group_code(stop_group_code),
         driver_notes=require_notes_for_driver(notes_for_driver),
+        mass=require_stop_weight_kg(weight_kg),
         physical=require_eta_physical(eta_physical),
         legal=require_eta_legal(eta_legal),
     )
@@ -75,6 +80,7 @@ def _same_point(current: Stop, packed: _PackedPoint) -> bool:
         and current.source_ref == packed.origin
         and current.stop_group_code == packed.group_code
         and current.notes_for_driver == packed.driver_notes
+        and current.weight_kg == packed.mass
         and current.eta_physical == packed.physical
         and current.eta_legal == packed.legal
     )
@@ -109,6 +115,7 @@ class StopService:
         eta_legal: object,
         stop_group_code: object = None,
         notes_for_driver: object = None,
+        weight_kg: object = None,
     ) -> Stop:
         packed = _pack_point(
             shipment_id=shipment_id,
@@ -122,6 +129,7 @@ class StopService:
             eta_legal=eta_legal,
             stop_group_code=stop_group_code,
             notes_for_driver=notes_for_driver,
+            weight_kg=weight_kg,
         )
         current = await self._rows.find_current(packed.order_id, packed.seq)
         if current is not None and _same_point(current, packed):
@@ -145,6 +153,7 @@ class StopService:
                 source_ref=packed.origin,
                 stop_group_code=packed.group_code,
                 notes_for_driver=packed.driver_notes,
+                weight_kg=packed.mass,
                 eta_physical=packed.physical,
                 eta_legal=packed.legal,
                 created_by=user_id,

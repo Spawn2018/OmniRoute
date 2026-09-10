@@ -1,5 +1,6 @@
 import re
 from datetime import datetime
+from decimal import Decimal, InvalidOperation
 from uuid import UUID
 
 from app.domain.errors import InvalidStop
@@ -14,6 +15,7 @@ _MAX_REF = 256
 _MAX_NOTES = 256
 _FIXTURE = "fixture://stop/"
 _MANUAL = "tenant:manual"
+_FOUR = Decimal("0.0001")
 
 
 def require_stop_shipment_id(raw: object) -> UUID:
@@ -100,6 +102,24 @@ def require_notes_for_driver(raw: object) -> str | None:
     if len(token) > _MAX_NOTES:
         raise InvalidStop("notatka dla kierowcy za długa")
     return token
+
+
+def require_stop_weight_kg(raw: object) -> Decimal | None:
+    if raw is None:
+        return None
+    if type(raw) is str and raw.strip() == "":
+        return None
+    if isinstance(raw, float) or isinstance(raw, bool):
+        raise InvalidStop("waga nie może być float")
+    if not isinstance(raw, Decimal | str | int):
+        raise InvalidStop("waga musi być liczbą dziesiętną")
+    try:
+        parsed = raw if isinstance(raw, Decimal) else Decimal(str(raw))
+    except InvalidOperation as exc:
+        raise InvalidStop("waga musi być liczbą dziesiętną") from exc
+    if parsed < 0:
+        raise InvalidStop("waga nie może być ujemna")
+    return parsed.quantize(_FOUR)
 
 
 def _require_eta_clock(raw: object, label: str) -> datetime:

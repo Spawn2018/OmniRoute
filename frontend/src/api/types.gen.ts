@@ -5762,6 +5762,10 @@ export type StopCreate = {
      * Notes For Driver
      */
     notes_for_driver?: string | null;
+    /**
+     * Weight Kg
+     */
+    weight_kg?: string | null;
 };
 
 /**
@@ -5820,6 +5824,10 @@ export type StopResponse = {
      * Notes For Driver
      */
     notes_for_driver: string | null;
+    /**
+     * Weight Kg
+     */
+    weight_kg: string | null;
     /**
      * Superseded By
      */

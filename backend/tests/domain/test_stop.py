@@ -1,4 +1,5 @@
 from datetime import UTC, datetime
+from decimal import Decimal
 
 import pytest
 from hypothesis import given
@@ -13,6 +14,7 @@ from app.domain.stop import (
     require_stop_group_code,
     require_stop_kind,
     require_stop_status,
+    require_stop_weight_kg,
     require_time_zone,
 )
 
@@ -75,3 +77,17 @@ def test_notes_for_driver_omits_blank_and_keeps_token() -> None:
 def test_notes_for_driver_rejects_too_long() -> None:
     with pytest.raises(InvalidStop, match="notatka"):
         require_notes_for_driver("x" * 257)
+
+
+def test_stop_weight_kg_omits_blank_and_keeps_decimal() -> None:
+    assert require_stop_weight_kg(None) is None
+    assert require_stop_weight_kg("  ") is None
+    assert require_stop_weight_kg("12.5") == Decimal("12.5000")
+    assert require_stop_weight_kg("0") == Decimal("0.0000")
+
+
+def test_stop_weight_kg_rejects_float_and_negative() -> None:
+    with pytest.raises(InvalidStop, match="waga"):
+        require_stop_weight_kg(12.5)
+    with pytest.raises(InvalidStop, match="waga"):
+        require_stop_weight_kg("-1")

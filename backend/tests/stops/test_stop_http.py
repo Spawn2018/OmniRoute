@@ -15,6 +15,7 @@ from app.domain.stop import (
     require_stop_kind,
     require_stop_source_ref,
     require_stop_status,
+    require_stop_weight_kg,
     require_time_zone,
 )
 from app.main import app
@@ -89,6 +90,7 @@ class StubStopService:
         eta_legal: object,
         stop_group_code: object = None,
         notes_for_driver: object = None,
+        weight_kg: object = None,
     ) -> Stop:
         kind = require_stop_kind(stop_kind)
         seq = require_sequence_no(sequence_no)
@@ -97,6 +99,7 @@ class StubStopService:
         origin = require_stop_source_ref(source_ref)
         group = require_stop_group_code(stop_group_code)
         notes = require_notes_for_driver(notes_for_driver)
+        mass = require_stop_weight_kg(weight_kg)
         physical = require_eta_physical(eta_physical)
         legal = require_eta_legal(eta_legal)
         order_id = shipment_id if type(shipment_id) is UUID else uuid4()
@@ -122,6 +125,7 @@ class StubStopService:
             and current.eta_legal == legal
             and current.stop_group_code == group
             and current.notes_for_driver == notes
+            and current.weight_kg == mass
         ):
             return current
         successor = Stop(
@@ -136,6 +140,7 @@ class StubStopService:
             source_ref=origin,
             stop_group_code=group,
             notes_for_driver=notes,
+            weight_kg=mass,
             eta_physical=physical,
             eta_legal=legal,
             created_by=user_id,
@@ -331,7 +336,7 @@ def test_http_create_stop_with_notes_for_driver(catalog_client: object) -> None:
     )
     assert created.status_code == 201
     assert created.json()["notes_for_driver"] == "brama B, dzwonek 2"
-    assert "weight" not in created.json()
+    assert created.json()["weight_kg"] is None
     assert "margin" not in created.json()
 
 
@@ -358,3 +363,50 @@ def test_http_rejects_too_long_notes_for_driver(catalog_client: object) -> None:
     )
     assert reply.status_code == 400
     assert "notatka" in reply.json()["detail"]
+
+
+def test_http_create_stop_with_weight_kg(catalog_client: object) -> None:
+    client, ships, places, _rows = catalog_client
+    assert ships.row is not None
+    assert places.row is not None
+    created = client.post(
+        "/api/v1/stops",
+        headers=bearer_auth_headers(),
+        json={
+            "shipment_id": str(ships.row.id),
+            "location_id": str(places.row.id),
+            "stop_kind": "loading",
+            "sequence_no": 6,
+            "time_zone": "Europe/Warsaw",
+            "status": "pending",
+            "source_ref": "tenant:manual",
+            "eta_physical": _HITL_ISO,
+            "eta_legal": _HITL_ISO,
+            "weight_kg": "12.5",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["weight_kg"] == "12.5000"
+    assert "margin" not in created.json()
+
+
+def test_http_rejects_float_and_negative_weight_kg(catalog_client: object) -> None:
+    client, ships, places, _rows = catalog_client
+    assert ships.row is not None
+    assert places.row is not None
+    headers = bearer_auth_headers()
+    payload = {
+        "shipment_id": str(ships.row.id),
+        "location_id": str(places.row.id),
+        "stop_kind": "loading",
+        "sequence_no": 7,
+        "time_zone": "Europe/Warsaw",
+        "status": "pending",
+        "source_ref": "tenant:manual",
+        "eta_physical": _HITL_ISO,
+        "eta_legal": _HITL_ISO,
+        "weight_kg": "-1",
+    }
+    negative = client.post("/api/v1/stops", headers=headers, json=payload)
+    assert negative.status_code == 400
+    assert "waga" in negative.json()["detail"]

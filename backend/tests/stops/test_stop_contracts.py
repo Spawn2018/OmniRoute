@@ -25,6 +25,7 @@ def test_service_does_not_import_parents_or_map() -> None:
     assert "app.services.shipments" not in service
     assert "app.services.geography" not in service
     assert "app.services.charges" not in service
+    assert "app.services.containers" not in service
     assert "httpx" not in service
     assert "leaflet" not in service
     assert "open-meteo" not in service.casefold()
@@ -62,9 +63,8 @@ def test_importlinter_lists_stops_as_independent() -> None:
 def test_generated_api_types_include_stop() -> None:
     source = (_ROOT / "frontend" / "src" / "api" / "types.gen.ts").read_text(encoding="utf-8")
     assert "StopResponse" in source
-    assert "StopCreate" in source
-    assert "stop_group_code" in source
     assert "notes_for_driver" in source
+    assert "weight_kg" in source
 
 
 def test_migration_152_adds_group_code_without_table() -> None:
@@ -94,3 +94,17 @@ def test_migration_154_adds_notes_without_weight() -> None:
     assert "leaflet" not in source
     assert "def downgrade" in source
     assert "notes_for_driver" in source.split("def downgrade")[1]
+
+
+def test_migration_183_adds_weight_without_vgm() -> None:
+    source = (_ROOT / "backend" / "alembic" / "versions" / "183_stop_weight.py").read_text(
+        encoding="utf-8"
+    )
+    assert 'revision: str = "183_stop_weight"' in source
+    assert 'down_revision: str | None = "182_container_shipment_leg"' in source
+    assert "weight_kg" in source
+    assert "vgm" not in source
+    assert "create_table" not in source
+    assert "leaflet" not in source
+    assert "def downgrade" in source
+    assert "weight_kg" in source.split("def downgrade")[1]

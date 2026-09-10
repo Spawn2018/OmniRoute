@@ -31,6 +31,7 @@ class StopCreate(BaseModel):
     eta_legal: str
     stop_group_code: str | None = None
     notes_for_driver: str | None = None
+    weight_kg: str | None = None
 
 
 class StopResponse(BaseModel):
@@ -49,11 +50,14 @@ class StopResponse(BaseModel):
     eta_legal: datetime
     stop_group_code: str | None
     notes_for_driver: str | None
+    weight_kg: str | None
     superseded_by: UUID | None
 
 
 def _as_response(row: Stop) -> StopResponse:
-    return StopResponse.model_validate(row)
+    dumped = {name: getattr(row, name) for name in StopResponse.model_fields}
+    dumped["weight_kg"] = None if row.weight_kg is None else format(row.weight_kg, "f")
+    return StopResponse.model_validate(dumped)
 
 
 @router.get("", response_model=list[StopResponse])
@@ -90,6 +94,7 @@ async def create_stop(
         eta_legal=body.eta_legal,
         stop_group_code=body.stop_group_code,
         notes_for_driver=body.notes_for_driver,
+        weight_kg=body.weight_kg,
     )
     await session.commit()
     return _as_response(row)
