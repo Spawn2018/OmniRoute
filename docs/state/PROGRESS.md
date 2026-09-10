@@ -612,3 +612,4 @@
 | 2026-09-10 | 264.0 | T5 | outbox task_template_saved. Nie konsument. Nie worker. Nastepny: leftover plan_snapshot Plan. |
 | 2026-09-10 | Plan 265.0 | B0b | plan_snapshot HITL trojka UUID bez FK, nie kolka i nie what-if. Delta zaakceptowana (/noc). Nastepny: kod 265.0. |
 | 2026-09-10 | 265.0 | B0b | plan_snapshot HITL trojka UUID bez FK. Nie kolka. Nie what-if. Nastepny: leftover kolka / circle_sim Plan. |
+| 2026-09-10 | Plan 266.0 | G2.20 | circle_sim HITL kod + para UN/LOCODE unload/load, nie silnik 500k. Delta zaakceptowana (`/noc`). Nastepny: kod 266.0. |
