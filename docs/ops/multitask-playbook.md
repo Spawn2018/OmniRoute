@@ -24,7 +24,7 @@ Zobacz też [automations.md](automations.md).
 | **Multitask, druga sesja na TYM SAMYM drzewie** | Tylko Ask / Plan / odczyt | `/plaster`, `/zamknij`, `/noc`, commit, push, edycja plików | Pisarz musi wiedzieć, że ta sesja istnieje |
 | **Cloud Agent / worktree, inna gałąź** | Recenzja diffu; karta knowledge; how-to; dopisek threat-model; konkurencyjny PLAN **w innym pliku**; eksperyment UI na gałęzi throwaway; ewaluacja promptu na `synth://` | Drugi `/plaster` tego samego M-xx; równoległa migracja Alembic; edycja `CURRENT.md`, `docs/deltas/open/<to samo Q>`, `agentlint.baseline.json`, `AGENTS.md`, `GROUNDING.md`; merge bez rebase; force-push; `--no-verify` | Osobny worktree **i** osobna gałąź; merge robi człowiek po `just gate` |
 | **Subagent w jednej sesji** | `lowca-duplikatow`, explore, Bugbot / security-review read-only | Push; edycja CURRENT; 30 person; chat agent↔agent bez artefaktu | Wewnątrz jednego plastra |
-| **`/noc`** | Jedna sesja, pętla `/loop`, sama pushuje delty | **Zero** drugiego agenta piszącego gdziekolwiek; zero Multitask w tle | `scripts/noc-preflight.ps1`; czysty git; `main`; jeden busy w NOC-LIVE |
+| **`/noc`** | Jedna sesja na `main`, pętla `/loop`, sama pushuje delty produktu | Drugi `/noc`; drugi pisarz w drzewie `main`; Cloud Agent na `main` | `scripts/noc-preflight.ps1`; czysty git; `main`; jeden busy w NOC-LIVE |
 
 ---
 
@@ -46,13 +46,15 @@ Wolno mu pisać, ale tylko: karty knowledge, how-to, dopiski ops, eksperymenty n
 
 ### Lista kolizyjna (zakaz równoległej edycji, także na worktree)
 
-`docs/state/CURRENT.md` · `docs/PLAN-REALIZACJA.md` · `docs/deltas/open/*` · `alembic/versions/*` · `agentlint.baseline.json` · `AGENTS.md` · `GROUNDING.md` · `.cursor/rules/*`
+`docs/state/CURRENT.md` · `docs/PLAN-REALIZACJA.md` · `backend/alembic/versions/*` · `agentlint.baseline.json` · `AGENTS.md` · `GROUNDING.md` · `.cursor/rules/*`
+
+`docs/deltas/open/*` bieżącego Q = tylko koordynator na `main`. Kolejna delta: worktree po zielonym CI, merge `git merge --ff-only` gdy `NOC-LIVE` = `idle`.
 
 ---
 
 ## 3. Checklista przed odpaleniem drugiej sesji
 
-1. Czy `/noc` jest aktywna? **Tak → nie odpalam nic.** Koniec.
+1. Czy `/noc` jest aktywna? **Tak → nie odpalam drugiego koordynatora.** Ask / explore / `noc-preflight.ps1 -Helper` z worktree: wolno. Drugi `--allow-noc`: stop.
 2. Czy pas 1 istnieje i wiem, co robi? Nie wiem → sprawdzam `CURRENT.md` i `git status`.
 3. Czy druga sesja ma pisać? **Nie → wolno, to pas 2, dowolnie.**
 4. Jeśli ma pisać: osobny worktree **i** osobna gałąź? Nie → stop.
@@ -67,10 +69,10 @@ W praktyce większość sesji kończy się na pytaniu 3 i jest wolna od razu.
 
 ## 4. Spięcie z `/noc` i WIP=1
 
-- **WIP=1 dotyczy plastra produktu, nie liczby okien.** Pięć sesji Ask plus jeden pisarz to nadal WIP=1. Dwa worktree piszące karty knowledge to nadal WIP=1, bo żaden nie realizuje wiersza kolejki.
-- **Multitask nie startuje kolejnego Q, gdy CURRENT wskazuje inne.** Kolejka jest jedna: `CURRENT.md` + PLAN § Kolejka. Przepustowość rośnie na osi „review, dokumentacja, wiedza”, nie na osi „więcej plastrów naraz”.
-- **`/noc` jest trybem wyłącznym.** Preflight sprawdza czysty git, gałąź `main`, jeden busy w NOC-LIVE. Multitask w trakcie nocy to awaria z definicji, także gdy druga sesja „tylko czyta” — pętla `/loop` pushuje i rano nie da się odtworzyć, kto co widział.
-- **Drugi agent może** bezpiecznie: review PR, propozycja leftovera do `docs-debt.md`, karta knowledge, how-to operatora, dopisek do threat-modelu, Ask o spec. Nie może zmienić numeru Q ani otworzyć drugiej delty na to samo Q.
+- **WIP=1 dotyczy plastra produktu, nie liczby okien.** Pięć sesji Ask plus jeden pisarz to nadal WIP=1. Worktree z następną deltą po zielonym CI to nadal WIP=1, bo na `origin/main` jedzie jeden plaster.
+- **Multitask nie startuje kolejnego Q, gdy CURRENT wskazuje inne.** Kolejka jest jedna: `CURRENT.md` + PLAN § Oś leftoverów `/noc`. Przepustowość rośnie na osi „review, dokumentacja, wiedza”, nie na osi „więcej plastrów naraz”.
+- **`/noc` jest trybem wyłącznym na `main`.** Preflight sprawdza czysty git, gałąź `main`, `writer_preflight --allow-noc`. Druga sesja **pisząca w drzewie `main`** to awaria. Ask, `explore`, `gh run watch`, `/loop` i pas pomocniczy (`-Helper` w worktree, bez push) nie są awarią.
+- **Drugi agent może** bezpiecznie: review PR, propozycja leftovera do `docs-debt.md`, karta knowledge, how-to operatora, dopisek do threat-modelu, Ask o spec, delta N+1 w worktree po CI. Nie może zmienić numeru Q na `main` ani otworzyć drugiej delty na to samo Q.
 
 ---
 
@@ -82,7 +84,7 @@ W praktyce większość sesji kończy się na pytaniu 3 i jest wolna od razu.
 2. `CURRENT.md` mówi co innego niż `git log`.
 3. Dwie delty `open` na to samo Q.
 4. Hash agentlinta w innym commicie niż treść kontraktu.
-5. `/noc` plus jakikolwiek piszący Multitask.
+5. `/noc` plus drugi pisarz w drzewie `main` albo drugi `--allow-noc`.
 
 **Hamulec, w tej kolejności:**
 

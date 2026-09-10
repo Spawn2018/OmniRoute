@@ -5,7 +5,8 @@
   Exit 0 = wolno startować zmianę. Exit 1 = stop.
 #>
 param(
-  [switch]$NoStart
+  [switch]$NoStart,
+  [switch]$Helper
 )
 
 $ErrorActionPreference = "Continue"
@@ -13,6 +14,18 @@ $Root = Split-Path -Parent $PSScriptRoot
 if (-not (Test-Path (Join-Path $Root "AGENTS.md"))) {
   $Root = (Get-Location).Path
 }
+
+if ($Helper) {
+  Write-Host "noc-preflight  pas pomocniczy  $((Get-Location).Path)"
+  python (Join-Path $Root "scripts\quality\writer_preflight.py") --allow-noc-helper
+  if ($LASTEXITCODE -ne 0) {
+    Write-Host "noc-preflight: STOP - pas pomocniczy nie na worktree albo noc nie jedzie."
+    exit 1
+  }
+  Write-Host "noc-preflight: OK - pas pomocniczy (bez push na origin/main)."
+  exit 0
+}
+
 Set-Location $Root
 
 $script:failed = $false

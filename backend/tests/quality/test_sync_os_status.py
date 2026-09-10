@@ -72,3 +72,26 @@ def test_agents_kanon_rejects_program_as_sot() -> None:
     sync = _load()
     assert not sync.agents_kanon_ok("| Program 12m (SoT) | `docs/state/PROGRAM-12M.md` |")
     assert sync.agents_kanon_ok("| Plan realizacji (jedyny) | `docs/PLAN-REALIZACJA.md` |")
+
+
+def test_plan_status_is_next_not_blocked() -> None:
+    sync = _load()
+    status = sync.OsStatus("235.0", "Plan", "236.0 leftover T3")
+    rendered = sync.render_plan_status(status)
+    assert rendered.startswith("**Następny:**")
+    assert "zablokowany" not in rendered
+
+
+def test_current_does_not_tell_noc_to_skip_leftovers() -> None:
+    text = (_ROOT / "docs" / "state" / "CURRENT.md").read_text(encoding="utf-8")
+    assert "`/noc` pomija" not in text
+    assert "Named parks parked" not in text
+
+
+def test_plan_os_status_label_is_next() -> None:
+    plan = (_ROOT / "docs" / "PLAN-REALIZACJA.md").read_text(encoding="utf-8")
+    start = plan.index("<!-- os-status:start -->")
+    end = plan.index("<!-- os-status:end -->")
+    block = plan[start:end]
+    assert "**Następny (zablokowany):**" not in block
+    assert "**Następny:**" in block

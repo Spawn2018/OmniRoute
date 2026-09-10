@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny (zablokowany):** **236.0** leftover T3 `ams_cutoff_at` na `container` → leftover T2c km/`party`/`/fleet` parked → leftover T1b tabela `stop_group` parked → leftover T1 EXP1 waga/plomba parked → leftover T7b override/`charge` parked → leftover T7c U4 D-1 parked → leftover T4b rentowność SQL parked → leftover U3c pule M-03 parked → leftover P4c warning parked → leftover P1c WHEN/IF/CALC parked → leftover P1d exclusion parked → leftover D9c–f PDF/ZPL/409 sieci parked → leftover V7 tacho TO_VERIFY parked → leftover V8 what-if parked → leftover V6 silnik EBITDA / `sla_clause` CI5 parked → leftover V5 `position_event` / ciphertext / 3 dni U4 parked → leftover V5b `exchange_message` parked → leftover V4 AIS wieży (S32) parked → leftover V2b myto→`charge` parked → leftover C3 live VIES/GUS parked → leftover C4 eCMR parked → leftover C9 Trans.eu parked → leftover C2 AIS/PUESC parked → leftover C6 BDO parked → leftover F2b Decimal/rezerwy parked → leftover F3 noty/period lock parked → leftover F4 CAMT parked → leftover G2.20–G2.22 circle_sim/km/P parked → leftover G2.15–G2.18 kg/CBAM parked → leftover F1 live FA(3) parked → leftover C1 filing XML parked → leftover C8 409/`relation_document_requirement` parked → leftover N3 countdown D&D / szkic `charge` parked → leftover P3b SQL na `charge` parked → leftover P3c live HTTP parked → leftover P3d A11 parked → leftover P5b–c parked → leftover P6c auto-award parked → leftover G2.23 Citizen API parked → leftover P4b armator/serwis parked → leftover N1 `consignment` parked → leftover T5 outbox M-02 parked → leftover T6 mapa parked → leftover T8 live API parked → leftover N11 handover parked → S53 → X → WA1 → Plat → Demo-1 → CT → CI9–CI8 → G → EXP → Mob → K0. D8 parked. Named parks parked — `/noc` pomija aż CURRENT wskaże S53. Nic z pinu 2026-09-08c nie wypada. Nie zgaduj 71–236.
+**Następny:** **236.0** leftover T3 `ams_cutoff_at` na `container` → CY → CFS → VGM bundle → `last_survey_at` → `booking_no` → `carrier_party_id` → `shipment_leg_id` → eventy 2a/2b → `stop_group`/EXP1 → km/`/fleet` → `consignment` → T6 mapa → SQL `charge` → lookup/KSeF TE → outbox T5 → `plan_snapshot`/kółka → F9 Optima fixture → T8 → S53 Auth0 → portale/diada → CT7/CI9/reszta pinu 2026-09-08c. Leftover HITL/SQL = praca. Park = live HTTP bez testu albo sekretu, nie skip pola. Live M-02 konsument / Auth0 / portale tylko gdy ten ID jest bieżącym Q. P6c auto-award zakaz. Nic z pinu nie wypada. Nie zgaduj 71–236.
 <!-- os-status:end -->
 
 ```mermaid
@@ -57,7 +57,7 @@ Nota **4,4–5** stawia karta i diff — nie prompt „pisz jak senior”. Kalib
 
 Trzy twarde reguły: (1) szybkość jest liczbą z budżetu AGENTS albo jawnym N/A — k6-echo nie zamyka; (2) dług ukryty zakazany — wiersz w [docs-debt.md](ops/docs-debt.md) z „dlaczego” albo gwoźdź w diffie; (3) komentarz mówi *dlaczego* (ustawa, HC), linia powtarzająca kod obniża notę. Dokumentacja programu ≠ `AGENTS.md`.
 
-Procedura nie jedzie „aż 5,0 sama”. Hamulec: karta [post-plaster.md](ops/post-plaster.md). Spłata starego 3,x: `/refaktor` (max 3). Kolejka: **Fala E** (zamknięta), **Fala S** (named parks **parked** — `/noc` pomija), potem **P0** + oś pinu **2026-09-08c** (O/I/U/T/D/P/G2/F/C/V/W/X/WA/Plat/Demo/CT/CI/G/EXP/K0). F9.1 bez żywej nazwy aż wiersze **S56–S58** (zamknięte). Nie zgaduj 71–212. Puste ID zostają puste.
+Procedura nie jedzie „aż 5,0 sama”. Hamulec: karta [post-plaster.md](ops/post-plaster.md). Spłata starego 3,x: `/refaktor` (max 3). Kolejka: **Fala E** (zamknięta), **Fala S** (pogłębienia; live Auth0/portale/M-02 konsument gdy CURRENT wskaże to Q), potem **P0** + oś pinu **2026-09-08c** (O/I/U/T/D/P/G2/F/C/V/W/X/WA/Plat/Demo/CT/CI/G/EXP/K0). Leftover HITL/SQL **nie** jest skipem nocy. F9.1 bez żywej nazwy aż wiersze **S56–S58** (zamknięte). Nie zgaduj 71–212. Puste ID zostają puste.
 
 ---
 
@@ -391,7 +391,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E2** | Testy przez Alembic; pomiar wyceny (EXPLAIN / p95 albo N/A z liczbą wierszy) | 61.0 | zamknięty (`docs/deltas/archived/61.0-alembic-quote-budget.md`) |
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | 62.0 | zamknięty (`docs/deltas/archived/62.0-operator-howto-c4.md`) |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | 63.0 | zamknięty (`docs/deltas/archived/63.0-threat-model-codeql.md`) |
-| po Q-E4 | **Fala S**, named parks (Auth0 / portale / AIS) | — | parked (`/noc` pomija) |
+| po Q-E4 | **Fala S**, named parks (Auth0 / portale / AIS) | — | w osi; live gdy CURRENT wskaże Q |
 | po parks | **P0** → pełna oś pinu **2026-09-08c** (O/I/U/T/D/P/G2/F/C/V/W/X/Plat/CT/CI/G/EXP) | Plan → plaster | **O4 138.0 zamknięty; O5 139.0 następny** |
 
 ### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
@@ -409,7 +409,7 @@ Reguły kolejności (żeby `/noc` nie złożył awarii):
 5. Auth0 (**S53**) zanim portale (**S55**).
 6. Katalog 71–212 **wpinany** gdy jest poprzednik (faza 10), nie odliczany od 71.
 7. COVERED: nie drugi silnik pod arch. M-17 / M-22.
-8. Po pinie 2026-09-08 `/noc` **pomija** named parks i startuje od **P0**, nie od S53.
+8. Po pinie 2026-09-08 `/noc` jedzie leftover HITL/SQL z CURRENT. Named park **live** (S53/S55/konsument M-02) tylko gdy CURRENT wskaże to Q — nie zgaduj S53 przy cutoffie T3.
 
 | S | Co | Tryb | Status | Powód / poza zakresem tego wiersza |
 |---|---|---|---|---|
@@ -474,13 +474,23 @@ Reguły kolejności (żeby `/noc` nie złożył awarii):
 | S58 | Kat. M-60 drafty po SOP | 118.0 | zamknięty (`docs/deltas/archived/118.0-sop-drafts.md`) | SOP `blocks_auto` na `/ai`. Nigdy auto-send |
 | S59 | M-68 OTel, M-69 QA, M-70 rollout | 119.0 park | named park (`docs/deltas/archived/119.0-otel-rollout-named-park.md`) | Aż konsument outboxa / umowa SaaS. Nie k6 |
 
-Po S59 named parks **zostają parked** (S53 Auth0, S55 ogólnik portali, S21, S50, S54, S59, AIS leftover). Katalog 71–212 wpinany gdy jest poprzednik (cło/WMS po C/D; fintech po F). Luki **M-203, M-204** puste — nie zgaduj.
+Po S59 named parks **live** (S53 Auth0, S55 ogólnik portali, S21, S50, S54, S59, AIS) czekają na swoje Q w CURRENT. Katalog 71–212 wpinany gdy jest poprzednik (cło/WMS po C/D; fintech po F). Luki **M-203, M-204** puste — nie zgaduj.
 
 Pin operatora **2026-09-08c** (akceptacja „Luki i ulepszenia”): **nic nie wypada**. Oś:
 
 `P0 → O0 → M10-1/M10-2 → B0a → O1–O3 → I0/U2 → O4–O8 → N5 → U1+U5 → I1–I4 → U4 → T1–T8 → B0b → U3 → D1–D9 → P1–P6 → G2.0–G2.23 → F1–F11 → C1–C9 → V1–V8 → W1–W5 → S53 → X1–X9 → WA1 → Plat → Demo-1 → CT1–CT12 → CI9 → CI1–CI8 → G1+G3–G17 → EXP2–EXP8 (co nie wkleiło się w falę) → Mob → K0`
 
-Klej (nie osobny rok): **U6** + **M-72** = DoD każdego UI; **N** i **A** wchodzą z falą w kolumnie „Gdzie”; **EXP0/EXP1** = pola przy `/plan-modul` obiektu. Fala **X** i **Mob** po **S53**. Named parks (S53/S55/AIS/S21/S50/S54/S59) **parked** — `/noc` nie zgaduje ich „przy okazji”; S53 rusza gdy CURRENT dojdzie do tego wiersza osi.
+Klej (nie osobny rok): **U6** + **M-72** = DoD każdego UI; **N** i **A** wchodzą z falą w kolumnie „Gdzie”; **EXP0/EXP1** = pola przy `/plan-modul` obiektu. Fala **X** i **Mob** po **S53**. `/noc` nie zgaduje S53 przy cutoffie T3; S53 rusza gdy CURRENT dojdzie do tego wiersza. Park = brak testu HTTP / sekretu na **live**, nie skip leftoveru HITL.
+
+### Oś leftoverów `/noc` (przyczyna, nie skip)
+
+Kolejka żywa jest w [CURRENT.md](state/CURRENT.md). `/noc` jedzie ją bez wycinania. Godzina ucina **nowy** plaster, nie wiersz pinu.
+
+Kolejność (WIP=1 na `main`): T3 cutoffy na `container` → eventy `entity_event` z warstwy API (2a/2b; BC nie importuje `entity_events`) → `stop_group`/EXP1 → km/`/fleet` → `consignment` → T6 mapa → SQL na `charge` → lookup/KSeF TE → outbox T5 → `plan_snapshot`/kółka → jeden plaster F9 Optima fixture → T8 → S53 → portale/diada → CT7/CI9/reszta pinu. `plan_snapshot` **po** obiektach, **przed** kółkami — nie w jednym worku ze stopami. Cały łańcuch XL→WAPRO nie wchodzi przed outbox. P6c auto-award = zakaz.
+
+Bliźniak = wzorzec (stan RLS + `entity_event` + opcjonalnie kopia planu / karta komunikacji), nie druga tabela `*_twin`. Rodziny rosną katalogiem. AI szuka i proponuje; `operator_decision` zamyka. LLM nie liczy.
+
+Protokół nocy: [nocna-zmiana.md](ops/nocna-zmiana.md). Lista API operatora: [api-dostawy-operatora.md](ops/api-dostawy-operatora.md). Mapa funkcji: [konkurencja-funkcje-2026-09.md](analysis/konkurencja-funkcje-2026-09.md).
 
 Karty: [karty-pol-fala-o.md](analysis/karty-pol-fala-o.md) · [i](analysis/karty-pol-fala-i.md) · [u](analysis/karty-pol-fala-u.md) · [n](analysis/karty-pol-fala-n.md) · [a](analysis/karty-pol-fala-a.md) · [t](analysis/karty-pol-fala-t.md) · [d](analysis/karty-pol-fala-d.md) · [p](analysis/karty-pol-fala-p.md) · [f](analysis/karty-pol-fala-f.md) · [c](analysis/karty-pol-fala-c.md) · [v](analysis/karty-pol-fala-v.md) · [w](analysis/karty-pol-fala-w.md) · [x](analysis/karty-pol-fala-x.md) · [g](analysis/karty-pol-fala-g.md) · [g2](analysis/karty-pol-g2-tender.md) · [ci](analysis/karty-pol-fala-ci.md) · [ct](analysis/karty-pol-fala-ct.md) · [plat](analysis/karty-pol-fala-plat.md) · [exp](analysis/karty-pol-fala-exp.md). Pola: [pola-wizja-2026-09.md](analysis/pola-wizja-2026-09.md).
 

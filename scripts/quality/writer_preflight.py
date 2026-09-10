@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Start sesji piszącej: /noc aktywna = stop. Nie zastępuje pre-commit."""
+"""Start sesji piszącej: /noc na main = wyłączność. Pomocnik tylko poza ROOT."""
 from __future__ import annotations
 
 import sys
@@ -19,12 +19,38 @@ def noc_status() -> str:
     return "stop"
 
 
+def _side_lane(status: str) -> int:
+    if status == "stop":
+        print(
+            "writer-preflight: brak żywego koordynatora /noc.",
+            file=sys.stderr,
+        )
+        return 1
+    if Path.cwd().resolve() == ROOT.resolve():
+        print(
+            "writer-preflight: pas pomocniczy na drzewie main = stop. Worktree.",
+            file=sys.stderr,
+        )
+        return 1
+    print("writer-preflight: OK (pas pomocniczy)")
+    return 0
+
+
 def main() -> int:
-    status = noc_status()
     allow_noc = "--allow-noc" in sys.argv
+    allow_side = "--allow-noc-helper" in sys.argv
+    if allow_noc and allow_side:
+        print(
+            "writer-preflight: --allow-noc i --allow-noc-helper naraz = stop.",
+            file=sys.stderr,
+        )
+        return 1
     if allow_noc:
         print("writer-preflight: OK (sesja /noc)")
         return 0
+    status = noc_status()
+    if allow_side:
+        return _side_lane(status)
     if status != "stop":
         print(
             f"writer-preflight: NOC-LIVE status={status}. "

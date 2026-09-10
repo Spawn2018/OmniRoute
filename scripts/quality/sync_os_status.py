@@ -135,7 +135,8 @@ def render_tree() -> str:
 
 
 def render_plan_status(status: OsStatus) -> str:
-    return f"**Następny (zablokowany):** {status.next_step}"
+    # Etap Plan = `/plan-modul`, nie blokada kolejki.
+    return f"**Następny:** {status.next_step}"
 
 
 def render_plan_start(status: OsStatus) -> str:

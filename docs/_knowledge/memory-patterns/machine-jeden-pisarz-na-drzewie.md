@@ -12,6 +12,7 @@ Albo `docs/state/NOC-LIVE.md` ≠ `stop` przy starcie `/plaster`.
 
 - `scripts/githooks/pre-commit` → `scripts/quality/pre_commit_factory.py`
 - `/plaster` i `/plan-modul`: `python scripts/quality/writer_preflight.py`
+- `/noc` na `main`: `writer_preflight.py --allow-noc`. Pas pomocniczy: `noc-preflight.ps1 -Helper` z worktree (`--allow-noc-helper`). Nigdy drugi `--allow-noc`.
 - Fabryka poza Q: worktree + osobna gałąź; merge po czystym drzewie
 - Nie rebase / nie force-push commita produktu (`0224f1b`)
 

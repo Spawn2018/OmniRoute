@@ -30,7 +30,7 @@ Przed **każdym nowym** cyklem (nie w środku pytest): znowu `scripts/noc-prefli
 
 ## Cykl (aż do godziny)
 
-Czytaj CURRENT + kolejkę. Parked (M-02, Auth0, portale) **pomijaj**. F9.1 bez żywej nazwy — **pomijaj**.
+Czytaj CURRENT + kolejkę. Leftover HITL/SQL z **Następny** = praca, nie skip. Park live HTTP = brak testu albo sekretu (fixture wolno). Live M-02 konsument / Auth0 / portale tylko gdy CURRENT wskaże to Q. F9.1 bez żywej nazwy — **pomijaj**.
 
 **Etap: Refaktor** → `/refaktor` (max 3 ruchy, testy bez zmiany asercji, karta post-plaster, `/zamknij`, push). Potem następne Q z PLAN Fali E. Nie `/plan-modul` i nie nowy M-xx.
 

@@ -18,6 +18,7 @@ Operator **nie** jest w pętli. `/plan-modul`, `/plaster`, `/refaktor`, `/noc`, 
 | `pre-commit` | Drugi pisarz / brak baseline | Auto `--write` |
 | `report-failure` | Komentarz PR i push na main | Commit docs-debt |
 | `noc-preflight.ps1` | `--allow-noc` + `factory_cycle --start noc` | Start przy brudnym git |
+| `noc-preflight.ps1 -Helper` | `--allow-noc-helper` z worktree | Push `origin/main`, drugi `/noc` |
 
 `just hooks` po clone.
 
