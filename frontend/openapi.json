@@ -13902,6 +13902,15 @@
               }
             ],
             "title": "Last Survey At"
+          },
+          "booking_no": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Booking No"
           }
         },
         "additionalProperties": false,
@@ -14245,6 +14254,17 @@
             ],
             "title": "Last Survey At"
           },
+          "booking_no": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Booking No"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -14293,6 +14313,7 @@
           "vgm_method",
           "vgm_cutoff_at",
           "last_survey_at",
+          "booking_no",
           "superseded_by"
         ],
         "title": "ContainerResponse"

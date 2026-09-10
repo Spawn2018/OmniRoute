@@ -75,6 +75,7 @@ class Container(Base, TimestampMixin):
     vgm_method: Mapped[str | None] = mapped_column(String(16), nullable=True)
     vgm_cutoff_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     last_survey_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    booking_no: Mapped[str | None] = mapped_column(String(64), nullable=True)
     superseded_by: Mapped[uuid.UUID | None] = mapped_column(
         UUID(as_uuid=True),
         ForeignKey("container.id", ondelete="RESTRICT"),

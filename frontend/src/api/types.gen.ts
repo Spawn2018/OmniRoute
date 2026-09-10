@@ -1344,6 +1344,10 @@ export type ContainerCreate = {
      * Last Survey At
      */
     last_survey_at?: unknown | null;
+    /**
+     * Booking No
+     */
+    booking_no?: unknown | null;
 };
 
 /**
@@ -1482,6 +1486,10 @@ export type ContainerResponse = {
      * Last Survey At
      */
     last_survey_at: string | null;
+    /**
+     * Booking No
+     */
+    booking_no: string | null;
     /**
      * Superseded By
      */

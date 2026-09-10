@@ -432,6 +432,20 @@ def test_migration_179_adds_last_survey_without_live_http() -> None:
     assert "last_survey_at" in source.split("def downgrade")[1]
 
 
+def test_migration_180_adds_booking_no_without_live_http() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "180_container_booking_no.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "180_container_booking_no"' in source
+    assert 'down_revision: str | None = "179_container_last_survey"' in source
+    assert "booking_no" in source
+    assert "pin_code" not in source
+    assert "httpx" not in source
+    assert "create_table" not in source
+    assert "def downgrade" in source
+    assert "booking_no" in source.split("def downgrade")[1]
+
+
 def test_generated_api_types_include_container() -> None:
     source = (_ROOT / "frontend" / "src" / "api" / "types.gen.ts").read_text(encoding="utf-8")
     assert "ContainerResponse" in source
@@ -457,3 +471,4 @@ def test_generated_api_types_include_container() -> None:
     assert "vgm_method" in source
     assert "vgm_cutoff_at" in source
     assert "last_survey_at" in source
+    assert "booking_no" in source

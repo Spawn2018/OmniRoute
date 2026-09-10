@@ -141,6 +141,7 @@ def test_http_create_list_supersede_and_reject_check_digit(box_client: object) -
     assert first.json()["vgm_method"] is None
     assert first.json()["vgm_cutoff_at"] is None
     assert first.json()["last_survey_at"] is None
+    assert first.json()["booking_no"] is None
     assert "amount" not in first.json()
     assert "vgm" not in first.json()
     second = client.post(
@@ -493,7 +494,7 @@ def test_http_create_container_with_ref_1(box_client: object) -> None:
     assert created.json()["packaging_code"] is None
     assert "pin" not in created.json()
     assert "vgm" not in created.json()
-    assert "booking_no" not in created.json()
+    assert created.json()["booking_no"] is None
 
 
 def test_http_rejects_too_long_ref_1(box_client: object) -> None:
@@ -1143,3 +1144,39 @@ def test_http_rejects_naive_last_survey_at(box_client: object) -> None:
     )
     assert reply.status_code == 400
     assert "survey" in reply.json()["detail"]
+
+
+def test_http_create_container_with_booking_no(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "booking_no": " BK123456 ",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["booking_no"] == "BK123456"
+    assert created.json()["last_survey_at"] is None
+    assert "pin" not in created.json()
+
+
+def test_http_rejects_too_long_booking_no(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "booking_no": "x" * 65,
+        },
+    )
+    assert reply.status_code == 400
+    assert "booking" in reply.json()["detail"]
