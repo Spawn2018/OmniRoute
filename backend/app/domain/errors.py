@@ -672,3 +672,7 @@ class InvalidExecutiveMark(DomainError):
 
 class InvalidRankMark(DomainError):
     """Ranking W5: HITL oś zakupu — nie auto-award i nie paczka szkiców."""
+
+
+class InvalidTaskTemplate(DomainError):
+    """T5: HITL szablon zadania — nie instancja, nie matching i nie outbox."""

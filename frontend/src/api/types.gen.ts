@@ -6037,6 +6037,50 @@ export type TableViewUpdate = {
 };
 
 /**
+ * TaskTemplateCreate
+ */
+export type TaskTemplateCreate = {
+    /**
+     * Template Code
+     */
+    template_code: string;
+    /**
+     * Applies When
+     */
+    applies_when: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TaskTemplateResponse
+ */
+export type TaskTemplateResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Template Code
+     */
+    template_code: string;
+    /**
+     * Applies When
+     */
+    applies_when: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * TelematicsConnectorCreate
  */
 export type TelematicsConnectorCreate = {
@@ -9191,6 +9235,49 @@ export type CreateRankMarkApiV1RankMarksPostResponses = {
 };
 
 export type CreateRankMarkApiV1RankMarksPostResponse = CreateRankMarkApiV1RankMarksPostResponses[keyof CreateRankMarkApiV1RankMarksPostResponses];
+
+export type ListTaskTemplatesApiV1TaskTemplatesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/task-templates';
+};
+
+export type ListTaskTemplatesApiV1TaskTemplatesGetResponses = {
+    /**
+     * Response List Task Templates Api V1 Task Templates Get
+     *
+     * Successful Response
+     */
+    200: Array<TaskTemplateResponse>;
+};
+
+export type ListTaskTemplatesApiV1TaskTemplatesGetResponse = ListTaskTemplatesApiV1TaskTemplatesGetResponses[keyof ListTaskTemplatesApiV1TaskTemplatesGetResponses];
+
+export type CreateTaskTemplateApiV1TaskTemplatesPostData = {
+    body: TaskTemplateCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/task-templates';
+};
+
+export type CreateTaskTemplateApiV1TaskTemplatesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTaskTemplateApiV1TaskTemplatesPostError = CreateTaskTemplateApiV1TaskTemplatesPostErrors[keyof CreateTaskTemplateApiV1TaskTemplatesPostErrors];
+
+export type CreateTaskTemplateApiV1TaskTemplatesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TaskTemplateResponse;
+};
+
+export type CreateTaskTemplateApiV1TaskTemplatesPostResponse = CreateTaskTemplateApiV1TaskTemplatesPostResponses[keyof CreateTaskTemplateApiV1TaskTemplatesPostResponses];
 
 export type ListOutboxEventsApiV1OutboxEventsGetData = {
     body?: never;

@@ -2991,6 +2991,80 @@
         ]
       }
     },
+    "/api/v1/task-templates": {
+      "get": {
+        "tags": [
+          "task-templates"
+        ],
+        "summary": "List Task Templates",
+        "operationId": "list_task_templates_api_v1_task_templates_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TaskTemplateResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Task Templates Api V1 Task Templates Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "task-templates"
+        ],
+        "summary": "Create Task Template",
+        "operationId": "create_task_template_api_v1_task_templates_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskTemplateCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskTemplateResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/outbox-events": {
       "get": {
         "tags": [
@@ -21856,6 +21930,65 @@
         },
         "type": "object",
         "title": "TableViewUpdate"
+      },
+      "TaskTemplateCreate": {
+        "properties": {
+          "template_code": {
+            "type": "string",
+            "title": "Template Code"
+          },
+          "applies_when": {
+            "type": "string",
+            "title": "Applies When"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "template_code",
+          "applies_when",
+          "source_ref"
+        ],
+        "title": "TaskTemplateCreate"
+      },
+      "TaskTemplateResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "template_code": {
+            "type": "string",
+            "title": "Template Code"
+          },
+          "applies_when": {
+            "type": "string",
+            "title": "Applies When"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "template_code",
+          "applies_when",
+          "source_ref"
+        ],
+        "title": "TaskTemplateResponse"
       },
       "TelematicsConnectorCreate": {
         "properties": {

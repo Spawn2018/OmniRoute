@@ -81,6 +81,7 @@ from app.api import (
     shipments,
     stops,
     table_views,
+    task_templates,
     telematics_connectors,
     tenancy,
     tender_award_reviews,
@@ -132,6 +133,7 @@ api_router.include_router(mail_drafts.router)
 api_router.include_router(memory_edges.router)
 api_router.include_router(executive_marks.router)
 api_router.include_router(rank_marks.router)
+api_router.include_router(task_templates.router)
 api_router.include_router(outbox_events.router)
 api_router.include_router(entity_events.router)
 api_router.include_router(nbp_rates.router)

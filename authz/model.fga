@@ -57,6 +57,7 @@ type organization
     define can_manage_document_templates: member
     define can_manage_rate_cards: member
     define can_manage_charge_templates: member
+    define can_manage_task_templates: member
     define can_manage_fuel_indexes: member
     define can_manage_local_charges: member
     define can_manage_tender_quotes: member

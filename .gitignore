@@ -28,6 +28,7 @@ frontend/.tanstack/
 
 # Nocna zmiana — bicie serca strażnika, nie commitować
 docs/state/NOC-LIVE.md
+.tmp-noc/
 
 # Lokalny brief do ChatGPT — nie kanon, nie plaster
 docs/briefing/

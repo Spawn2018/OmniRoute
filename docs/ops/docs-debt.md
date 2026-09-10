@@ -117,6 +117,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **260.0 leftover:** leftover FTL=1 409; leftover D2b FK paczki na przesyłkę; leftover `stop` na consignment. Tu tylko tabela `consignment` N na `shipment`. Nie mapa. Nie live HTTP.
 - **261.0 leftover:** 4 widoki Timeline/Blocks/Table/Legs; N10; T6b–d select&drop/pre-planning/polygon; X8 podkłady; GET `stop` bez `shipment_id`. Tu tylko `/planning` + lazy overlay `trip`. Nie leaflet.
 - **262.0 leftover:** rollup SQL marży po `parent_shipment_id` (brak `charge.shipment_id`). Tu tylko GET listy `sell_amount - buy_amount` w SQL. Nie generated column.
+- **263.0 leftover:** instancja `task` (FK shipment/trip/stop, assignee, status); matching SQL `applies_when`; outbox/async T5. Tu tylko HITL `task_template` kod + warunek jako dane. Nie worker.
 - **215.0 leftover:** leftover T1b tabela `stop_group`; EXP1 waga/plomba/awizacja. Tu tylko `notes_for_driver` HITL. Nie waga. Nie mapa.
 - **214.0 leftover:** leftover T2c km/`party`/`/fleet`. Tu tylko `route_label` HITL. Nie km. Nie mapa.
 - **152.0 leftover:** `driver2_id` DONE 212.0; `route_label` DONE 214.0; `stop_group` kolumna DONE 213.0. Zostaje Decimal km / freeze kosztu; `party_id`; `/fleet` / HW. Tu tylko status + opcjonalny slot floty + etykieta. Nie km.

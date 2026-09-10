@@ -518,6 +518,11 @@ export const OPS_JOBS = [
     label: "Planowanie",
     job: "leniwy overlay etykiet trip",
   },
+  {
+    route: BUSINESS_LISTS.taskTemplate.route,
+    label: "Szablon zadania",
+    job: "katalog task_template HITL",
+  },
   { route: BUSINESS_LISTS.users.route, label: "Użytkownicy", job: "tenant users" },
   { route: "/session", label: "Sesja", job: "token klienta" },
 ] as const
@@ -762,6 +767,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "260.0": "/consignments",
   "261.0": "/planning",
   "262.0": "/charges",
+  "263.0": "/task-templates",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

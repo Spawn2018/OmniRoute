@@ -86,6 +86,7 @@ import { Route as SessionRouteImport } from './routes/session'
 import { Route as ShipmentDocumentsRouteImport } from './routes/shipment-documents'
 import { Route as ShipmentPackagesRouteImport } from './routes/shipment-packages'
 import { Route as ShipmentsRouteImport } from './routes/shipments'
+import { Route as TaskTemplatesRouteImport } from './routes/task-templates'
 import { Route as TelematicsConnectorsRouteImport } from './routes/telematics-connectors'
 import { Route as TenderAwardReviewsRouteImport } from './routes/tender-award-reviews'
 import { Route as TenderBidStancesRouteImport } from './routes/tender-bid-stances'
@@ -497,6 +498,11 @@ const ShipmentsRoute = ShipmentsRouteImport.update({
   path: '/shipments',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TaskTemplatesRoute = TaskTemplatesRouteImport.update({
+  id: '/task-templates',
+  path: '/task-templates',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TelematicsConnectorsRoute = TelematicsConnectorsRouteImport.update({
   id: '/telematics-connectors',
   path: '/telematics-connectors',
@@ -701,6 +707,7 @@ export interface FileRoutesByFullPath {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/task-templates': typeof TaskTemplatesRoute
   '/telematics-connectors': typeof TelematicsConnectorsRoute
   '/tender-award-reviews': typeof TenderAwardReviewsRoute
   '/tender-bid-stances': typeof TenderBidStancesRoute
@@ -805,6 +812,7 @@ export interface FileRoutesByTo {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/task-templates': typeof TaskTemplatesRoute
   '/telematics-connectors': typeof TelematicsConnectorsRoute
   '/tender-award-reviews': typeof TenderAwardReviewsRoute
   '/tender-bid-stances': typeof TenderBidStancesRoute
@@ -910,6 +918,7 @@ export interface FileRoutesById {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/task-templates': typeof TaskTemplatesRoute
   '/telematics-connectors': typeof TelematicsConnectorsRoute
   '/tender-award-reviews': typeof TenderAwardReviewsRoute
   '/tender-bid-stances': typeof TenderBidStancesRoute
@@ -1016,6 +1025,7 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/task-templates'
     | '/telematics-connectors'
     | '/tender-award-reviews'
     | '/tender-bid-stances'
@@ -1120,6 +1130,7 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/task-templates'
     | '/telematics-connectors'
     | '/tender-award-reviews'
     | '/tender-bid-stances'
@@ -1224,6 +1235,7 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/task-templates'
     | '/telematics-connectors'
     | '/tender-award-reviews'
     | '/tender-bid-stances'
@@ -1329,6 +1341,7 @@ export interface RootRouteChildren {
   ShipmentDocumentsRoute: typeof ShipmentDocumentsRoute
   ShipmentPackagesRoute: typeof ShipmentPackagesRoute
   ShipmentsRoute: typeof ShipmentsRoute
+  TaskTemplatesRoute: typeof TaskTemplatesRoute
   TelematicsConnectorsRoute: typeof TelematicsConnectorsRoute
   TenderAwardReviewsRoute: typeof TenderAwardReviewsRoute
   TenderBidStancesRoute: typeof TenderBidStancesRoute
@@ -1897,6 +1910,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShipmentsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/task-templates': {
+      id: '/task-templates'
+      path: '/task-templates'
+      fullPath: '/task-templates'
+      preLoaderRoute: typeof TaskTemplatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/telematics-connectors': {
       id: '/telematics-connectors'
       path: '/telematics-connectors'
@@ -2153,6 +2173,7 @@ const rootRouteChildren: RootRouteChildren = {
   ShipmentDocumentsRoute: ShipmentDocumentsRoute,
   ShipmentPackagesRoute: ShipmentPackagesRoute,
   ShipmentsRoute: ShipmentsRoute,
+  TaskTemplatesRoute: TaskTemplatesRoute,
   TelematicsConnectorsRoute: TelematicsConnectorsRoute,
   TenderAwardReviewsRoute: TenderAwardReviewsRoute,
   TenderBidStancesRoute: TenderBidStancesRoute,

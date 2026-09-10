@@ -177,6 +177,11 @@ const NAV_ACTIONS = [
     to: "/rank-marks",
   },
   {
+    id: "nav-task-templates",
+    label: "Idź do szablonu zadania",
+    to: "/task-templates",
+  },
+  {
     id: "nav-tender-award-reviews",
     label: "Idź do czterech oczu nagrody",
     to: "/tender-award-reviews",
