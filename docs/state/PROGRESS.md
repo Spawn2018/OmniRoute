@@ -566,3 +566,4 @@
 | 2026-09-10 | 241.0 | T3 | booking_no HITL na container. Nie live HTTP. Nie PIN. Nastepny: leftover T3 carrier_party_id Plan. |
 | 2026-09-10 | Plan 242.0 | T3 | carrier_party_id HITL na container, nie live HTTP i nie PIN. Delta zaakceptowana (`/noc`). Nastepny: kod 242.0. |
 | 2026-09-10 | 242.0 | T3 | carrier_party_id HITL na container. Nie live HTTP. Nie PIN. Nastepny: leftover T3 shipment_leg_id Plan. |
+| 2026-09-10 | Plan 243.0 | T3 | shipment_leg_id HITL na container, nie live HTTP i nie PIN. Delta zaakceptowana (`/noc`). Nastepny: kod 243.0. |
