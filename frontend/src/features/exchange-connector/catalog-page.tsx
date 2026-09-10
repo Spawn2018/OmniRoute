@@ -22,24 +22,24 @@ const COLUMN_LABELS = {
 }
 
 function TransEuBoardRows(args: { organizationId: string | null }) {
-  const listed = useQuery({
-    enabled: args.organizationId !== null,
+  const boardQuery = useQuery({
+    enabled: Boolean(args.organizationId),
     queryFn: listExchangeConnectors,
-    queryKey: ["exchange-connectors", args.organizationId],
+    queryKey: ["exchange-connectors", "fixture", args.organizationId],
     retry: false,
   })
-  const rows = listed.data ?? []
+  if (boardQuery.error) {
+    return <CatalogError error={boardQuery.error} />
+  }
+  const boardRows = boardQuery.data ?? []
   return (
-    <div className="min-w-0 flex-1">
-      {listed.error ? <CatalogError error={listed.error} /> : null}
-      <DataTableShell
-        columnLabels={COLUMN_LABELS}
-        columns={columns}
-        data={rows}
-        globalFilterPlaceholder="Szukaj konektora giełdy…"
-        tableKey={BUSINESS_LISTS.exchangeConnector.tableKey}
-      />
-    </div>
+    <DataTableShell
+      columns={columns}
+      data={boardRows}
+      tableKey={BUSINESS_LISTS.exchangeConnector.tableKey}
+      columnLabels={COLUMN_LABELS}
+      globalFilterPlaceholder="Filtruj konektor giełdy…"
+    />
   )
 }
 

@@ -23,9 +23,12 @@ export function ExchangeConnectorSave(args: { organizationId: string | null }) {
     mutationFn: () => persistExchangeConnector(exchangeBoardWrite(draft)),
     onSuccess: () => {
       setDraft({ ...EMPTY_BOARD })
-      void cache.invalidateQueries({ queryKey: ["exchange-connectors", args.organizationId] })
+      void cache.invalidateQueries({
+        queryKey: ["exchange-connectors", "fixture", args.organizationId],
+      })
     },
   })
+  const locked = persist.isPending || args.organizationId === null
   return (
     <form
       className="grid max-w-lg gap-3"
@@ -39,7 +42,7 @@ export function ExchangeConnectorSave(args: { organizationId: string | null }) {
         Katalog fixture giełdy: kod i kind `trans_eu`. To nie jest publiczny portal ani
         wystawienie frachtu. Serwis nie woła Trans.eu.
       </p>
-      <label className="grid gap-1 text-xs">
+      <label className="flex flex-col gap-1 text-xs">
         Kod konektora giełdy (snake 2–32)
         <input
           aria-label="Kod konektora giełdy"
@@ -49,7 +52,7 @@ export function ExchangeConnectorSave(args: { organizationId: string | null }) {
           required
         />
       </label>
-      <label className="grid gap-1 text-xs">
+      <label className="flex flex-col gap-1 text-xs">
         Tablica (trans_eu)
         <input
           aria-label="Kind tablicy giełdy"
@@ -59,19 +62,21 @@ export function ExchangeConnectorSave(args: { organizationId: string | null }) {
           required
         />
       </label>
-      <label className="grid gap-1 text-xs">
-        Pochodzenie (`tenant:manual` albo `fixture://portal/…`)
+      <label className="flex flex-col gap-1 text-xs">
+        source_ref (`tenant:manual` albo `fixture://portal/…`)
         <input
-          aria-label="Pochodzenie konektora giełdy"
-          className="h-9 rounded-md border bg-background px-2 font-mono"
-          onChange={(change) => setDraft({ ...draft, originHint: change.target.value })}
           required
+          aria-label="source_ref konektora giełdy"
+          className="h-9 rounded-md border border-input bg-background px-3 font-mono text-sm"
           value={draft.originHint}
+          onChange={(ev) => setDraft({ ...draft, originHint: ev.target.value })}
         />
       </label>
-      <Button type="submit" disabled={persist.isPending || !args.organizationId}>
-        Zapisz konektor giełdy
-      </Button>
+      <div>
+        <Button type="submit" disabled={locked}>
+          Zapisz konektor giełdy
+        </Button>
+      </div>
       {persist.isError ? <CatalogError error={persist.error} /> : null}
     </form>
   )

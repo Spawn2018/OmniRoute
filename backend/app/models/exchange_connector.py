@@ -33,9 +33,11 @@ class ExchangeConnector(Base, TimestampMixin):
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
-    # RLS: konektor giełdy tego tenanta — kind to dana, nie live HTTP.
     organization_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), ForeignKey("organization.id", ondelete="RESTRICT"), nullable=False
+        UUID(as_uuid=True),
+        ForeignKey("organization.id", ondelete="RESTRICT"),
+        nullable=False,
+        comment="RLS tenant — fixture giełdy, nie live HTTP",
     )
     connector_code: Mapped[str] = mapped_column(String(32), nullable=False)
     system_kind: Mapped[str] = mapped_column(String(16), nullable=False)

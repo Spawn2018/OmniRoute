@@ -1,7 +1,7 @@
 import { ApiError, httpErrorStatus, readApiDetail } from "@/lib/api"
 import { requireAuthHeaders } from "@/lib/tenant"
 
-const PATH = "/api/v1/exchange-connectors"
+const BOARD_PATH = "/api/v1/exchange-connectors"
 
 export type ExchangeConnectorRow = {
   id: string
@@ -29,22 +29,31 @@ export function exchangeBoardWrite(draft: {
   }
 }
 
-export async function listExchangeConnectors(): Promise<ExchangeConnectorRow[]> {
-  const listed = await fetch(PATH, { headers: requireAuthHeaders() })
-  if (listed.status !== 200) {
-    throw new ApiError(await readApiDetail(listed, "Błąd listy konektorów giełdy"), httpErrorStatus(listed))
+async function readBoardJson<T>(response: Response, fallback: string, ok: number): Promise<T> {
+  const status = response.status
+  if (status === ok) {
+    return (await response.json()) as T
   }
-  return (await listed.json()) as ExchangeConnectorRow[]
+  const detail = await readApiDetail(response, fallback)
+  throw new ApiError(detail, httpErrorStatus(response))
 }
 
-export async function persistExchangeConnector(payload: ExchangeConnectorWrite): Promise<ExchangeConnectorRow> {
-  const saved = await fetch(PATH, {
+export async function listExchangeConnectors(): Promise<ExchangeConnectorRow[]> {
+  const listed = await fetch(BOARD_PATH, { headers: requireAuthHeaders() })
+  return readBoardJson(listed, "Błąd listy konektorów giełdy", 200)
+}
+
+export async function persistExchangeConnector(
+  payload: ExchangeConnectorWrite,
+): Promise<ExchangeConnectorRow> {
+  const posted = await fetch(BOARD_PATH, {
     method: "POST",
-    headers: { ...requireAuthHeaders(), Accept: "application/json", "Content-Type": "application/json" },
+    headers: {
+      ...requireAuthHeaders(),
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify(payload),
   })
-  if (saved.status !== 201) {
-    throw new ApiError(await readApiDetail(saved, "Błąd zapisu konektora giełdy"), httpErrorStatus(saved))
-  }
-  return (await saved.json()) as ExchangeConnectorRow
+  return readBoardJson(posted, "Błąd zapisu konektora giełdy", 201)
 }
