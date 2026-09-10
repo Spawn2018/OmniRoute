@@ -21270,6 +21270,17 @@
               }
             ],
             "title": "Seal In"
+          },
+          "seal_out": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Seal Out"
           }
         },
         "additionalProperties": false,
@@ -21405,6 +21416,17 @@
             ],
             "title": "Seal In"
           },
+          "seal_out": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Seal Out"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -21437,6 +21459,7 @@
           "quantity",
           "packaging_code",
           "seal_in",
+          "seal_out",
           "superseded_by"
         ],
         "title": "StopResponse"

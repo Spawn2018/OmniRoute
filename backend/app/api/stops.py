@@ -35,6 +35,7 @@ class StopCreate(BaseModel):
     quantity: int | str | float | bool | None = None
     packaging_code: str | None = None
     seal_in: str | None = None
+    seal_out: str | None = None
 
 
 class StopResponse(BaseModel):
@@ -57,6 +58,7 @@ class StopResponse(BaseModel):
     quantity: int | None
     packaging_code: str | None
     seal_in: str | None
+    seal_out: str | None
     superseded_by: UUID | None
 
 
@@ -104,6 +106,7 @@ async def create_stop(
         quantity=body.quantity,
         packaging_code=body.packaging_code,
         seal_in=body.seal_in,
+        seal_out=body.seal_out,
     )
     await session.commit()
     return _as_response(row)

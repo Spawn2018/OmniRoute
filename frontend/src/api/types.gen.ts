@@ -5778,6 +5778,10 @@ export type StopCreate = {
      * Seal In
      */
     seal_in?: string | null;
+    /**
+     * Seal Out
+     */
+    seal_out?: string | null;
 };
 
 /**
@@ -5852,6 +5856,10 @@ export type StopResponse = {
      * Seal In
      */
     seal_in: string | null;
+    /**
+     * Seal Out
+     */
+    seal_out: string | null;
     /**
      * Superseded By
      */

@@ -17,6 +17,7 @@ from app.domain.stop import (
     require_stop_packaging_code,
     require_stop_quantity,
     require_stop_seal_in,
+    require_stop_seal_out,
     require_stop_shipment_id,
     require_stop_source_ref,
     require_stop_status,
@@ -42,12 +43,23 @@ class _PackedPoint:
     count: int | None
     pack: str | None
     inbound_seal: str | None
+    outbound_seal: str | None
     physical: datetime
     legal: datetime
 
 
+@dataclass(frozen=True)
+class _HitlTail:
+    group_code: object = None
+    driver_notes: object = None
+    mass: object = None
+    count: object = None
+    pack: object = None
+    inbound_seal: object = None
+    outbound_seal: object = None
+
+
 def _pack_point(
-    *,
     shipment_id: object,
     location_id: object,
     stop_kind: object,
@@ -57,12 +69,7 @@ def _pack_point(
     source_ref: object,
     eta_physical: object,
     eta_legal: object,
-    stop_group_code: object,
-    notes_for_driver: object,
-    weight_kg: object,
-    quantity: object,
-    packaging_code: object,
-    seal_in: object,
+    tail: _HitlTail,
 ) -> _PackedPoint:
     return _PackedPoint(
         order_id=require_stop_shipment_id(shipment_id),
@@ -72,12 +79,13 @@ def _pack_point(
         zone=require_time_zone(time_zone),
         state=require_stop_status(status),
         origin=require_stop_source_ref(source_ref),
-        group_code=require_stop_group_code(stop_group_code),
-        driver_notes=require_notes_for_driver(notes_for_driver),
-        mass=require_stop_weight_kg(weight_kg),
-        count=require_stop_quantity(quantity),
-        pack=require_stop_packaging_code(packaging_code),
-        inbound_seal=require_stop_seal_in(seal_in),
+        group_code=require_stop_group_code(tail.group_code),
+        driver_notes=require_notes_for_driver(tail.driver_notes),
+        mass=require_stop_weight_kg(tail.mass),
+        count=require_stop_quantity(tail.count),
+        pack=require_stop_packaging_code(tail.pack),
+        inbound_seal=require_stop_seal_in(tail.inbound_seal),
+        outbound_seal=require_stop_seal_out(tail.outbound_seal),
         physical=require_eta_physical(eta_physical),
         legal=require_eta_legal(eta_legal),
     )
@@ -96,6 +104,7 @@ def _same_point(current: Stop, packed: _PackedPoint) -> bool:
         and current.quantity == packed.count
         and current.packaging_code == packed.pack
         and current.seal_in == packed.inbound_seal
+        and current.seal_out == packed.outbound_seal
         and current.eta_physical == packed.physical
         and current.eta_legal == packed.legal
     )
@@ -134,23 +143,20 @@ class StopService:
         quantity: object = None,
         packaging_code: object = None,
         seal_in: object = None,
+        seal_out: object = None,
     ) -> Stop:
+        tail = _HitlTail(
+            stop_group_code,
+            notes_for_driver,
+            weight_kg,
+            quantity,
+            packaging_code,
+            seal_in,
+            seal_out,
+        )
         packed = _pack_point(
-            shipment_id=shipment_id,
-            location_id=location_id,
-            stop_kind=stop_kind,
-            sequence_no=sequence_no,
-            time_zone=time_zone,
-            status=status,
-            source_ref=source_ref,
-            eta_physical=eta_physical,
-            eta_legal=eta_legal,
-            stop_group_code=stop_group_code,
-            notes_for_driver=notes_for_driver,
-            weight_kg=weight_kg,
-            quantity=quantity,
-            packaging_code=packaging_code,
-            seal_in=seal_in,
+            shipment_id, location_id, stop_kind, sequence_no, time_zone, status, source_ref,
+            eta_physical, eta_legal, tail,
         )
         return await self._persist(organization_id, user_id, packed)
 
@@ -186,6 +192,7 @@ class StopService:
                 quantity=packed.count,
                 packaging_code=packed.pack,
                 seal_in=packed.inbound_seal,
+                seal_out=packed.outbound_seal,
                 eta_physical=packed.physical,
                 eta_legal=packed.legal,
                 created_by=user_id,

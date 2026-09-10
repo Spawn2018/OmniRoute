@@ -170,6 +170,10 @@ def require_stop_seal_in(raw: object) -> str | None:
     return token
 
 
+def require_stop_seal_out(raw: object) -> str | None:
+    return require_stop_seal_in(raw)
+
+
 def _require_eta_clock(raw: object, label: str) -> datetime:
     if type(raw) is not str:
         raise InvalidStop(f"{label} musi być tekstem")

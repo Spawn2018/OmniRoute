@@ -16,6 +16,7 @@ from app.domain.stop import (
     require_stop_packaging_code,
     require_stop_quantity,
     require_stop_seal_in,
+    require_stop_seal_out,
     require_stop_status,
     require_stop_weight_kg,
     require_time_zone,
@@ -137,3 +138,11 @@ def test_stop_seal_in_rejects_non_text_and_too_long() -> None:
         require_stop_seal_in(12)
     with pytest.raises(InvalidStop, match="plomba"):
         require_stop_seal_in("x" * 33)
+
+
+def test_stop_seal_out_reuses_seal_in_rule() -> None:
+    assert require_stop_seal_out(None) is None
+    assert require_stop_seal_out("  ") is None
+    assert require_stop_seal_out(" XYZ ") == "XYZ"
+    with pytest.raises(InvalidStop, match="plomba"):
+        require_stop_seal_out("x" * 33)

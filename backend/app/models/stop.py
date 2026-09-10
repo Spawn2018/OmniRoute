@@ -89,6 +89,7 @@ class Stop(Base, TimestampMixin):
     quantity: Mapped[int | None] = mapped_column(Integer, nullable=True)
     packaging_code: Mapped[str | None] = mapped_column(String(32), nullable=True)
     seal_in: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    seal_out: Mapped[str | None] = mapped_column(String(32), nullable=True)
     eta_physical: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
     eta_legal: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
     superseded_by: Mapped[uuid.UUID | None] = mapped_column(

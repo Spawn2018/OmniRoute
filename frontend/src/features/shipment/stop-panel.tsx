@@ -22,6 +22,7 @@ export function StopPointPanel(args: { canWrite: boolean }) {
   const [quantityHitl, setQuantityHitl] = useState("")
   const [packagingCode, setPackagingCode] = useState("")
   const [sealIn, setSealIn] = useState("")
+  const [sealOut, setSealOut] = useState("")
   const listQuery = useQuery({
     queryKey: ["stops", ctx.organizationId, shipmentId],
     queryFn: () => fetchStops(shipmentId),
@@ -46,6 +47,7 @@ export function StopPointPanel(args: { canWrite: boolean }) {
           quantityHitl,
           packagingCode,
           sealIn,
+          sealOut,
         }),
       ),
     onSuccess: () => {
@@ -61,7 +63,7 @@ export function StopPointPanel(args: { canWrite: boolean }) {
       <p className="text-xs text-muted-foreground">
         Miejsce ze słownika lokalizacji. Strefa IANA. Dwa ETA HITL. Opcjonalny kod grupy.
         Opcjonalna waga HITL. Opcjonalna ilość HITL. Opcjonalny kod opakowania HITL. Opcjonalna plomba
-        wjazdu HITL. Nie mapa. Nie GPS. Nie pogoda.
+        wjazdu i wyjazdu HITL. Nie mapa. Nie GPS. Nie pogoda.
       </p>
       <Input
         aria-label="Identyfikator zlecenia punktu"
@@ -135,6 +137,12 @@ export function StopPointPanel(args: { canWrite: boolean }) {
         value={sealIn}
         onChange={(event) => setSealIn(event.target.value)}
       />
+      <Input
+        aria-label="Plomba wyjazdu"
+        placeholder="seal_out"
+        value={sealOut}
+        onChange={(event) => setSealOut(event.target.value)}
+      />
       <fieldset className="space-y-1 text-xs">
         <legend>Rodzaj punktu</legend>
         {(["loading", "unloading", "customs", "ferry", "terminal", "depot", "other"] as const).map(
@@ -180,7 +188,8 @@ export function StopPointPanel(args: { canWrite: boolean }) {
           <li key={row.id} className="font-mono text-xs">
             {row.sequence_no} {row.stop_kind} {row.status} {row.stop_group_code ?? ""}{" "}
             {row.notes_for_driver ?? ""} {row.weight_kg ?? ""} {row.quantity ?? ""}{" "}
-            {row.packaging_code ?? ""} {row.seal_in ?? ""} {row.eta_physical} {row.eta_legal}
+            {row.packaging_code ?? ""} {row.seal_in ?? ""} {row.seal_out ?? ""} {row.eta_physical}{" "}
+            {row.eta_legal}
           </li>
         ))}
       </ul>
