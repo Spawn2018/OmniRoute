@@ -557,3 +557,4 @@
 | 2026-09-10 | Plan 237.0 | T3 | cy_cutoff_at HITL na container, nie live HTTP i nie PIN. Delta zaakceptowana (`/noc`). Nastepny: kod 237.0. |
 | 2026-09-10 | 237.0 | T3 | cy_cutoff_at HITL na container. Nie live HTTP. Nie PIN. Nastepny: leftover T3 cfs_cutoff_at Plan. |
 | 2026-09-10 | Plan 238.0 | T3 | cfs_cutoff_at HITL na container, nie live HTTP i nie PIN. Delta zaakceptowana (`/noc`). Nastepny: kod 238.0. |
+| 2026-09-10 | 238.0 | T3 | cfs_cutoff_at HITL na container. Nie live HTTP. Nie PIN. Nastepny: leftover T3 VGM bundle Plan. |

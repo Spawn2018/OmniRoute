@@ -7,6 +7,7 @@ from hypothesis import strategies as st
 from app.domain.container import (
     require_ams_cutoff_at,
     require_cargo_description,
+    require_cfs_cutoff_at,
     require_container_bl_kind,
     require_container_no,
     require_container_reefer,
@@ -222,6 +223,17 @@ def test_cy_cutoff_at_reuses_aware_clock_and_rejects_naive() -> None:
         require_cy_cutoff_at("2026-09-10T12:00:00")
     with pytest.raises(InvalidContainer, match="cy"):
         require_cy_cutoff_at("not-iso")
+
+
+def test_cfs_cutoff_at_reuses_aware_clock_and_rejects_naive() -> None:
+    clock = datetime(2026, 9, 10, 12, 0, tzinfo=UTC)
+    assert require_cfs_cutoff_at(None) is None
+    assert require_cfs_cutoff_at("  ") is None
+    assert require_cfs_cutoff_at("2026-09-10T12:00:00+00:00") == clock
+    with pytest.raises(InvalidContainer, match="cfs"):
+        require_cfs_cutoff_at("2026-09-10T12:00:00")
+    with pytest.raises(InvalidContainer, match="cfs"):
+        require_cfs_cutoff_at("not-iso")
 
 
 @given(st.sampled_from(["CSQU3054384", "MSCU1234567", "ABCD"]))

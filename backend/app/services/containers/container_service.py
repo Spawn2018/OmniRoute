@@ -7,6 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.domain.container import (
     require_ams_cutoff_at,
     require_cargo_description,
+    require_cfs_cutoff_at,
     require_container_bl_kind,
     require_container_no,
     require_container_reefer,
@@ -63,6 +64,7 @@ class _WriteBox(NamedTuple):
     cut: object
     ams: object
     cy: object
+    cfs: object
 
 
 class _BoxDraft(NamedTuple):
@@ -92,6 +94,7 @@ class _BoxDraft(NamedTuple):
     cut: datetime | None
     ams: datetime | None
     cy: datetime | None
+    cfs: datetime | None
 
 
 def _box_draft(write: _WriteBox) -> _BoxDraft:
@@ -122,6 +125,7 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_si_cutoff_at(write.cut),
         require_ams_cutoff_at(write.ams),
         require_cy_cutoff_at(write.cy),
+        require_cfs_cutoff_at(write.cfs),
     )
 
 
@@ -152,6 +156,7 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.si_cutoff_at == draft.cut
         and current.ams_cutoff_at == draft.ams
         and current.cy_cutoff_at == draft.cy
+        and current.cfs_cutoff_at == draft.cfs
     )
 
 
@@ -185,6 +190,7 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         si_cutoff_at=draft.cut,
         ams_cutoff_at=draft.ams,
         cy_cutoff_at=draft.cy,
+        cfs_cutoff_at=draft.cfs,
         created_by=user_id,
     )
 

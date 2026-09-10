@@ -386,6 +386,21 @@ def test_migration_176_adds_cy_cutoff_without_live_http() -> None:
     assert "cy_cutoff_at" in source.split("def downgrade")[1]
 
 
+def test_migration_177_adds_cfs_cutoff_without_live_http() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "177_container_cfs_cutoff.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "177_container_cfs_cutoff"' in source
+    assert 'down_revision: str | None = "176_container_cy_cutoff"' in source
+    assert "cfs_cutoff_at" in source
+    assert "vgm" not in source.casefold()
+    assert "pin_code" not in source
+    assert "httpx" not in source
+    assert "create_table" not in source
+    assert "def downgrade" in source
+    assert "cfs_cutoff_at" in source.split("def downgrade")[1]
+
+
 def test_generated_api_types_include_container() -> None:
     source = (_ROOT / "frontend" / "src" / "api" / "types.gen.ts").read_text(encoding="utf-8")
     assert "ContainerResponse" in source
@@ -406,3 +421,4 @@ def test_generated_api_types_include_container() -> None:
     assert "si_cutoff_at" in source
     assert "ams_cutoff_at" in source
     assert "cy_cutoff_at" in source
+    assert "cfs_cutoff_at" in source

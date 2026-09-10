@@ -1324,6 +1324,10 @@ export type ContainerCreate = {
      * Cy Cutoff At
      */
     cy_cutoff_at?: unknown | null;
+    /**
+     * Cfs Cutoff At
+     */
+    cfs_cutoff_at?: unknown | null;
 };
 
 /**
@@ -1442,6 +1446,10 @@ export type ContainerResponse = {
      * Cy Cutoff At
      */
     cy_cutoff_at: string | null;
+    /**
+     * Cfs Cutoff At
+     */
+    cfs_cutoff_at: string | null;
     /**
      * Superseded By
      */
