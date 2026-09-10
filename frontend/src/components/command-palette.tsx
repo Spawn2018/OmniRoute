@@ -157,6 +157,11 @@ const NAV_ACTIONS = [
     to: "/idp-connectors",
   },
   {
+    id: "nav-customer-contracts",
+    label: "Idź do umowy klienta",
+    to: "/customer-contracts",
+  },
+  {
     id: "nav-exchange-connectors",
     label: "Idź do konektora giełdy",
     to: "/exchange-connectors",

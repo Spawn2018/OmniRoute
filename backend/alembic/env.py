@@ -104,6 +104,7 @@ from app.models.plan_snapshot import PlanSnapshot  # noqa: F401
 from app.models.circle_sim import CircleSim  # noqa: F401
 from app.models.lane_km import LaneKm  # noqa: F401
 from app.models.erp_connector import ErpConnector  # noqa: F401
+from app.models.customer_contract import CustomerContract  # noqa: F401
 from app.models.exchange_connector import ExchangeConnector  # noqa: F401
 from app.models.idp_connector import IdpConnector  # noqa: F401
 from app.models.terminal_slot_connector import TerminalSlotConnector  # noqa: F401

@@ -72,6 +72,7 @@ def test_authorization_model_includes_table_view_permission() -> None:
     assert "can_manage_kreptd_licences" in org.relations
     assert "can_manage_monitoring_schemes" in org.relations
     assert "can_manage_party_documents" in org.relations
+    assert "can_manage_customer_contracts" in org.relations
     assert "can_manage_cash_discounts" in org.relations
     assert "can_manage_carbon_methods" in org.relations
     assert "can_manage_prediction_ledgers" in org.relations
@@ -281,6 +282,9 @@ def test_authorization_model_includes_table_view_permission() -> None:
     party_documents = org.relations["can_manage_party_documents"]
     assert party_documents.computed_userset is not None
     assert party_documents.computed_userset.relation == "member"
+    customer_contracts = org.relations["can_manage_customer_contracts"]
+    assert customer_contracts.computed_userset is not None
+    assert customer_contracts.computed_userset.relation == "member"
     cash_discounts = org.relations["can_manage_cash_discounts"]
     assert cash_discounts.computed_userset is not None
     assert cash_discounts.computed_userset.relation == "member"

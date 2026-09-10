@@ -1723,6 +1723,58 @@ export type CreditReviewResponse = {
 };
 
 /**
+ * CustomerContractCreate
+ */
+export type CustomerContractCreate = {
+    /**
+     * Contract Code
+     */
+    contract_code: string;
+    /**
+     * Shipper Label
+     */
+    shipper_label: string;
+    /**
+     * Their Customer Label
+     */
+    their_customer_label: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CustomerContractResponse
+ */
+export type CustomerContractResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Contract Code
+     */
+    contract_code: string;
+    /**
+     * Shipper Label
+     */
+    shipper_label: string;
+    /**
+     * Their Customer Label
+     */
+    their_customer_label: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * CustomerRfqCreate
  */
 export type CustomerRfqCreate = {
@@ -12788,6 +12840,49 @@ export type CreateErpConnectorApiV1ErpConnectorsPostResponses = {
 };
 
 export type CreateErpConnectorApiV1ErpConnectorsPostResponse = CreateErpConnectorApiV1ErpConnectorsPostResponses[keyof CreateErpConnectorApiV1ErpConnectorsPostResponses];
+
+export type ListCustomerContractsApiV1CustomerContractsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/customer-contracts';
+};
+
+export type ListCustomerContractsApiV1CustomerContractsGetResponses = {
+    /**
+     * Response List Customer Contracts Api V1 Customer Contracts Get
+     *
+     * Successful Response
+     */
+    200: Array<CustomerContractResponse>;
+};
+
+export type ListCustomerContractsApiV1CustomerContractsGetResponse = ListCustomerContractsApiV1CustomerContractsGetResponses[keyof ListCustomerContractsApiV1CustomerContractsGetResponses];
+
+export type CreateCustomerContractApiV1CustomerContractsPostData = {
+    body: CustomerContractCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/customer-contracts';
+};
+
+export type CreateCustomerContractApiV1CustomerContractsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCustomerContractApiV1CustomerContractsPostError = CreateCustomerContractApiV1CustomerContractsPostErrors[keyof CreateCustomerContractApiV1CustomerContractsPostErrors];
+
+export type CreateCustomerContractApiV1CustomerContractsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CustomerContractResponse;
+};
+
+export type CreateCustomerContractApiV1CustomerContractsPostResponse = CreateCustomerContractApiV1CustomerContractsPostResponses[keyof CreateCustomerContractApiV1CustomerContractsPostResponses];
 
 export type ListExchangeConnectorsApiV1ExchangeConnectorsGetData = {
     body?: never;

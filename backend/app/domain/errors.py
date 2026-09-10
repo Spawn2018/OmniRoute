@@ -704,3 +704,7 @@ class InvalidIdpConnector(DomainError):
 
 class InvalidExchangeConnector(DomainError):
     """S55: HITL konektor giełdy (trans_eu) jako dane — nie live HTTP i nie SPA."""
+
+
+class InvalidCustomerContract(DomainError):
+    """CI9: HITL nagłówek umowy (kod + etykiety) — nie treść i nie ciphertext."""

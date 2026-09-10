@@ -8486,6 +8486,80 @@
         ]
       }
     },
+    "/api/v1/customer-contracts": {
+      "get": {
+        "tags": [
+          "customer-contracts"
+        ],
+        "summary": "List Customer Contracts",
+        "operationId": "list_customer_contracts_api_v1_customer_contracts_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CustomerContractResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Customer Contracts Api V1 Customer Contracts Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "customer-contracts"
+        ],
+        "summary": "Create Customer Contract",
+        "operationId": "create_customer_contract_api_v1_customer_contracts_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomerContractCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomerContractResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/exchange-connectors": {
       "get": {
         "tags": [
@@ -15355,6 +15429,75 @@
           "bureau_attachment_ref"
         ],
         "title": "CreditReviewResponse"
+      },
+      "CustomerContractCreate": {
+        "properties": {
+          "contract_code": {
+            "type": "string",
+            "title": "Contract Code"
+          },
+          "shipper_label": {
+            "type": "string",
+            "title": "Shipper Label"
+          },
+          "their_customer_label": {
+            "type": "string",
+            "title": "Their Customer Label"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "contract_code",
+          "shipper_label",
+          "their_customer_label",
+          "source_ref"
+        ],
+        "title": "CustomerContractCreate"
+      },
+      "CustomerContractResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "contract_code": {
+            "type": "string",
+            "title": "Contract Code"
+          },
+          "shipper_label": {
+            "type": "string",
+            "title": "Shipper Label"
+          },
+          "their_customer_label": {
+            "type": "string",
+            "title": "Their Customer Label"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "contract_code",
+          "shipper_label",
+          "their_customer_label",
+          "source_ref"
+        ],
+        "title": "CustomerContractResponse"
       },
       "CustomerRfqCreate": {
         "properties": {
