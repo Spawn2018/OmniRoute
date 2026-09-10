@@ -23336,6 +23336,26 @@
               }
             ],
             "title": "Route Label"
+          },
+          "planned_distance_km": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Planned Distance Km"
           }
         },
         "additionalProperties": false,
@@ -23452,6 +23472,17 @@
             ],
             "title": "Route Label"
           },
+          "planned_distance_km": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Planned Distance Km"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -23479,6 +23510,7 @@
           "expected_buy_amount",
           "expected_buy_currency",
           "route_label",
+          "planned_distance_km",
           "superseded_by"
         ],
         "title": "TripResponse"

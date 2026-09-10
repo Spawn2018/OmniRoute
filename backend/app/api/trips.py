@@ -29,6 +29,7 @@ class TripCreate(BaseModel):
     expected_buy_amount: str | None = None
     expected_buy_currency: str | None = None
     route_label: str | None = None
+    planned_distance_km: str | int | float | bool | None = None
 
 
 class TripResponse(BaseModel):
@@ -46,11 +47,13 @@ class TripResponse(BaseModel):
     expected_buy_amount: str | None
     expected_buy_currency: str | None
     route_label: str | None
+    planned_distance_km: str | None
     superseded_by: UUID | None
 
 
 def _as_response(row: Trip) -> TripResponse:
     amount = None if row.expected_buy_amount is None else format(row.expected_buy_amount, "f")
+    planned = None if row.planned_distance_km is None else format(row.planned_distance_km, "f")
     currency = None if row.expected_buy_currency is None else str(row.expected_buy_currency).strip()
     return TripResponse(
         id=row.id,
@@ -65,6 +68,7 @@ def _as_response(row: Trip) -> TripResponse:
         expected_buy_amount=amount,
         expected_buy_currency=currency,
         route_label=row.route_label,
+        planned_distance_km=planned,
         superseded_by=row.superseded_by,
     )
 
@@ -116,6 +120,7 @@ async def create_trip(
         expected_buy_amount=body.expected_buy_amount,
         expected_buy_currency=body.expected_buy_currency,
         route_label=body.route_label,
+        planned_distance_km=body.planned_distance_km,
     )
     await session.commit()
     return _as_response(row)

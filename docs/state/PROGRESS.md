@@ -593,3 +593,4 @@
 | 2026-09-10 | Plan 255.0 | T1 | pod_quality HITL na stop, nie kamera i nie km. Delta zaakceptowana (`/noc`). Nastepny: kod 255.0. |
 | 2026-09-10 | 255.0 | T1 | pod_quality HITL na stop. Nie kamera. Nie mapa. Nastepny: leftover T2c km/fleet Plan. |
 | 2026-09-10 | Plan 256.0 | T2 | planned_distance_km HITL na trip, nie actual i nie fleet. Delta zaakceptowana (`/noc`). Nastepny: kod 256.0. |
+| 2026-09-10 | 256.0 | T2 | planned_distance_km HITL na trip. Nie GPS. Nie mapa. Nastepny: leftover T2c actual_distance_km Plan. |

@@ -110,6 +110,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **253.0 leftover:** leftover T1 EXP1 `waiting_started_at`/POD; leftover T1b tabela. Tu tylko `waiting_free_minutes` HITL. Nie odliczanie. Nie live HTTP.
 - **254.0 leftover:** leftover T1 EXP1 POD (`pod_quality`); leftover T1b tabela; leftover `appointment_status`/`no_show_at`. Tu tylko `waiting_started_at` HITL. Nie odliczanie. Nie live HTTP.
 - **255.0 leftover:** leftover T1b tabela; leftover `appointment_status`/`no_show_at`; leftover T2c km/`/fleet`. Tu tylko `pod_quality` HITL. Nie kamera. Nie live HTTP.
+- **256.0 leftover:** leftover T2c `actual_distance_km` / `subcontractor_party_id` / `/fleet`; leftover T1b tabela. Tu tylko `planned_distance_km` HITL. Nie GPS. Nie live HTTP.
 - **215.0 leftover:** leftover T1b tabela `stop_group`; EXP1 waga/plomba/awizacja. Tu tylko `notes_for_driver` HITL. Nie waga. Nie mapa.
 - **214.0 leftover:** leftover T2c km/`party`/`/fleet`. Tu tylko `route_label` HITL. Nie km. Nie mapa.
 - **152.0 leftover:** `driver2_id` DONE 212.0; `route_label` DONE 214.0; `stop_group` kolumna DONE 213.0. Zostaje Decimal km / freeze kosztu; `party_id`; `/fleet` / HW. Tu tylko status + opcjonalny slot floty + etykieta. Nie km.

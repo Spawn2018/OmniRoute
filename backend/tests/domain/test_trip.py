@@ -10,6 +10,7 @@ from app.domain.trip import (
     require_expected_buy,
     require_route_label,
     require_trip_no,
+    require_trip_planned_distance_km,
     require_trip_slot,
     require_trip_source_ref,
     require_trip_status,
@@ -79,3 +80,19 @@ def test_route_label_omits_blank_and_keeps_token() -> None:
 def test_route_label_rejects_too_long() -> None:
     with pytest.raises(InvalidTrip, match="trasa"):
         require_route_label("x" * 129)
+
+
+def test_planned_distance_omits_blank_and_keeps_zero() -> None:
+    assert require_trip_planned_distance_km(None) is None
+    assert require_trip_planned_distance_km("  ") is None
+    assert str(require_trip_planned_distance_km(0)) == "0.0000"
+    assert str(require_trip_planned_distance_km("12.5")) == "12.5000"
+
+
+def test_planned_distance_rejects_float_bool_and_negative() -> None:
+    with pytest.raises(InvalidTrip, match="km"):
+        require_trip_planned_distance_km(1.5)
+    with pytest.raises(InvalidTrip, match="km"):
+        require_trip_planned_distance_km(True)
+    with pytest.raises(InvalidTrip, match="km"):
+        require_trip_planned_distance_km(-1)

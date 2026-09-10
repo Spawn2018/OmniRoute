@@ -84,6 +84,24 @@ def require_route_label(raw: object) -> str | None:
     return token
 
 
+def require_trip_planned_distance_km(raw: object) -> Decimal | None:
+    if raw is None:
+        return None
+    if type(raw) is str and raw.strip() == "":
+        return None
+    if isinstance(raw, float) or isinstance(raw, bool):
+        raise InvalidTrip("km nie może być float")
+    if not isinstance(raw, Decimal | str | int):
+        raise InvalidTrip("km musi być liczbą dziesiętną")
+    try:
+        parsed = raw if isinstance(raw, Decimal) else Decimal(str(raw))
+    except InvalidOperation as exc:
+        raise InvalidTrip("km musi być liczbą dziesiętną") from exc
+    if parsed < 0:
+        raise InvalidTrip("km nie może być ujemne")
+    return parsed.quantize(_FOUR)
+
+
 def _require_buy_amount(raw: object) -> Decimal:
     if isinstance(raw, float) or isinstance(raw, bool):
         raise InvalidTrip("kwota nie może być float")

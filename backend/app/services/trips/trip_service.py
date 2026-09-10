@@ -9,6 +9,7 @@ from app.domain.trip import (
     require_expected_buy,
     require_route_label,
     require_trip_no,
+    require_trip_planned_distance_km,
     require_trip_resource_id,
     require_trip_source_ref,
     require_trip_status,
@@ -26,6 +27,7 @@ class _RunDraft(NamedTuple):
     driver2_id: UUID | None
     origin: str
     route_label: str | None
+    planned_km: Decimal | None
     buy_amount: Decimal | None
     buy_currency: str | None
 
@@ -41,6 +43,7 @@ def _run_draft(
     expected_buy_amount: object,
     expected_buy_currency: object,
     route_label: object,
+    planned_distance_km: object,
 ) -> _RunDraft:
     state = require_trip_status(status)
     buy_amount, buy_currency = require_expected_buy(
@@ -60,6 +63,7 @@ def _run_draft(
         second,
         require_trip_source_ref(source_ref),
         require_route_label(route_label),
+        require_trip_planned_distance_km(planned_distance_km),
         buy_amount,
         buy_currency,
     )
@@ -74,6 +78,7 @@ def _run_unchanged(current: Trip, draft: _RunDraft) -> bool:
         and current.driver2_id == draft.driver2_id
         and current.source_ref == draft.origin
         and current.route_label == draft.route_label
+        and current.planned_distance_km == draft.planned_km
         and current.expected_buy_amount == draft.buy_amount
         and (
             None
@@ -112,6 +117,7 @@ class TripService:
                 driver2_id=draft.driver2_id,
                 source_ref=draft.origin,
                 route_label=draft.route_label,
+                planned_distance_km=draft.planned_km,
                 expected_buy_amount=draft.buy_amount,
                 expected_buy_currency=draft.buy_currency,
                 created_by=user_id,
@@ -136,6 +142,7 @@ class TripService:
         expected_buy_currency: object = None,
         driver2_id: object = None,
         route_label: object = None,
+        planned_distance_km: object = None,
     ) -> Trip:
         draft = _run_draft(
             trip_no,
@@ -148,6 +155,7 @@ class TripService:
             expected_buy_amount,
             expected_buy_currency,
             route_label,
+            planned_distance_km,
         )
         current = await self._rows.find_current(draft.number)
         if current is not None and _run_unchanged(current, draft):

@@ -7090,6 +7090,10 @@ export type TripCreate = {
      * Route Label
      */
     route_label?: string | null;
+    /**
+     * Planned Distance Km
+     */
+    planned_distance_km?: string | number | number | boolean | null;
 };
 
 /**
@@ -7144,6 +7148,10 @@ export type TripResponse = {
      * Route Label
      */
     route_label: string | null;
+    /**
+     * Planned Distance Km
+     */
+    planned_distance_km: string | null;
     /**
      * Superseded By
      */

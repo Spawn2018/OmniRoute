@@ -41,6 +41,7 @@ def test_service_does_not_import_fleet_or_charges() -> None:
     assert "app.services.resources" not in service
     assert "app.services.shipments" not in service
     assert "app.services.charges" not in service
+    assert "app.services.parties" not in service
     assert "httpx" not in service
 
 
@@ -62,6 +63,7 @@ def test_generated_api_types_include_trip() -> None:
     assert "TripCreate" in source
     assert "driver2_id" in source
     assert "route_label" in source
+    assert "planned_distance_km" in source
 
 
 def test_migration_153_adds_route_label_without_km() -> None:
@@ -88,3 +90,18 @@ def test_migration_151_adds_driver2_without_km() -> None:
     assert "app.services.charges" not in source
     assert "def downgrade" in source
     assert "driver2_id" in source.split("def downgrade")[1]
+
+
+def test_migration_192_adds_planned_distance_without_gps() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "192_trip_planned_distance.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "192_trip_planned_distance"' in source
+    assert 'down_revision: str | None = "191_stop_pod_quality"' in source
+    assert "planned_distance_km" in source
+    assert "ck_trip_planned_distance" in source
+    assert "actual_distance" not in source
+    assert "create_table" not in source
+    assert "leaflet" not in source
+    assert "def downgrade" in source
+    assert "planned_distance_km" in source.split("def downgrade")[1]
