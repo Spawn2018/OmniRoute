@@ -1,24 +1,6 @@
 import { ApiError, httpErrorStatus, readApiDetail } from "@/lib/api"
 import { requireAuthHeaders } from "@/lib/tenant"
 
-export type TripRow = {
-  id: string
-  organization_id: string
-  trip_no: string
-  status: string
-  vehicle_id: string | null
-  trailer_id: string | null
-  driver_id: string | null
-  driver2_id: string | null
-  source_ref: string
-  expected_buy_amount: string | null
-  expected_buy_currency: string | null
-  route_label: string | null
-  planned_distance_km: string | null
-  actual_distance_km: string | null
-  superseded_by: string | null
-}
-
 export type TripWrite = {
   trip_no: string
   status: string
@@ -32,6 +14,12 @@ export type TripWrite = {
   route_label: string | null
   planned_distance_km: string | null
   actual_distance_km: string | null
+}
+
+export type TripRow = TripWrite & {
+  id: string
+  organization_id: string
+  superseded_by: string | null
 }
 
 const PATH = "/api/v1/trips"
