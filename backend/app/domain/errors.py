@@ -712,3 +712,7 @@ class InvalidCustomerContract(DomainError):
 
 class InvalidTenantContractKek(DomainError):
     """CI9: HITL znacznik owijki (password|kms) — nie klucz i nie materiał."""
+
+
+class InvalidVisibilityConnector(DomainError):
+    """CT7: HITL konektor widoczności (p44) jako dane — nie live HTTP i nie feed."""

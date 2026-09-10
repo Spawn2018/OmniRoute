@@ -79,6 +79,7 @@ type organization
     define can_manage_party_documents: member
     define can_manage_customer_contracts: member
     define can_manage_tenant_contract_keks: member
+    define can_manage_visibility_connectors: member
     define can_manage_cash_discounts: member
     define can_manage_carbon_methods: member
     define can_manage_prediction_ledgers: member

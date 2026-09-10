@@ -167,6 +167,11 @@ const NAV_ACTIONS = [
     to: "/tenant-contract-keks",
   },
   {
+    id: "nav-visibility-connectors",
+    label: "Idź do konektora widoczności",
+    to: "/visibility-connectors",
+  },
+  {
     id: "nav-exchange-connectors",
     label: "Idź do konektora giełdy",
     to: "/exchange-connectors",

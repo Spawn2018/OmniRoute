@@ -8782,6 +8782,80 @@
         ]
       }
     },
+    "/api/v1/visibility-connectors": {
+      "get": {
+        "tags": [
+          "visibility-connectors"
+        ],
+        "summary": "List Visibility Connectors",
+        "operationId": "list_visibility_connectors_api_v1_visibility_connectors_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/VisibilityConnectorResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Visibility Connectors Api V1 Visibility Connectors Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "visibility-connectors"
+        ],
+        "summary": "Create Visibility Connector",
+        "operationId": "create_visibility_connector_api_v1_visibility_connectors_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VisibilityConnectorCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VisibilityConnectorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/terminal-slot-connectors": {
       "get": {
         "tags": [
@@ -25347,6 +25421,65 @@
           "type"
         ],
         "title": "ValidationError"
+      },
+      "VisibilityConnectorCreate": {
+        "properties": {
+          "connector_code": {
+            "type": "string",
+            "title": "Connector Code"
+          },
+          "system_kind": {
+            "type": "string",
+            "title": "System Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "connector_code",
+          "system_kind",
+          "source_ref"
+        ],
+        "title": "VisibilityConnectorCreate"
+      },
+      "VisibilityConnectorResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "connector_code": {
+            "type": "string",
+            "title": "Connector Code"
+          },
+          "system_kind": {
+            "type": "string",
+            "title": "System Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "connector_code",
+          "system_kind",
+          "source_ref"
+        ],
+        "title": "VisibilityConnectorResponse"
       },
       "WarRoomMarkCreate": {
         "properties": {

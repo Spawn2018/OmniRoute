@@ -7839,6 +7839,50 @@ export type ValidationError = {
 };
 
 /**
+ * VisibilityConnectorCreate
+ */
+export type VisibilityConnectorCreate = {
+    /**
+     * Connector Code
+     */
+    connector_code: string;
+    /**
+     * System Kind
+     */
+    system_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * VisibilityConnectorResponse
+ */
+export type VisibilityConnectorResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Connector Code
+     */
+    connector_code: string;
+    /**
+     * System Kind
+     */
+    system_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * WarRoomMarkCreate
  */
 export type WarRoomMarkCreate = {
@@ -13068,6 +13112,49 @@ export type CreateTenantContractKekApiV1TenantContractKeksPostResponses = {
 };
 
 export type CreateTenantContractKekApiV1TenantContractKeksPostResponse = CreateTenantContractKekApiV1TenantContractKeksPostResponses[keyof CreateTenantContractKekApiV1TenantContractKeksPostResponses];
+
+export type ListVisibilityConnectorsApiV1VisibilityConnectorsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/visibility-connectors';
+};
+
+export type ListVisibilityConnectorsApiV1VisibilityConnectorsGetResponses = {
+    /**
+     * Response List Visibility Connectors Api V1 Visibility Connectors Get
+     *
+     * Successful Response
+     */
+    200: Array<VisibilityConnectorResponse>;
+};
+
+export type ListVisibilityConnectorsApiV1VisibilityConnectorsGetResponse = ListVisibilityConnectorsApiV1VisibilityConnectorsGetResponses[keyof ListVisibilityConnectorsApiV1VisibilityConnectorsGetResponses];
+
+export type CreateVisibilityConnectorApiV1VisibilityConnectorsPostData = {
+    body: VisibilityConnectorCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/visibility-connectors';
+};
+
+export type CreateVisibilityConnectorApiV1VisibilityConnectorsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateVisibilityConnectorApiV1VisibilityConnectorsPostError = CreateVisibilityConnectorApiV1VisibilityConnectorsPostErrors[keyof CreateVisibilityConnectorApiV1VisibilityConnectorsPostErrors];
+
+export type CreateVisibilityConnectorApiV1VisibilityConnectorsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: VisibilityConnectorResponse;
+};
+
+export type CreateVisibilityConnectorApiV1VisibilityConnectorsPostResponse = CreateVisibilityConnectorApiV1VisibilityConnectorsPostResponses[keyof CreateVisibilityConnectorApiV1VisibilityConnectorsPostResponses];
 
 export type ListTerminalSlotConnectorsApiV1TerminalSlotConnectorsGetData = {
     body?: never;

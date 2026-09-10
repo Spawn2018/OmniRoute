@@ -114,6 +114,7 @@ from app.api import (
     tracking_events,
     trips,
     twin_marks,
+    visibility_connectors,
     war_room_marks,
     weather_observations,
 )
@@ -210,6 +211,7 @@ api_router.include_router(customer_contracts.router)
 api_router.include_router(exchange_connectors.router)
 api_router.include_router(idp_connectors.router)
 api_router.include_router(tenant_contract_keks.router)
+api_router.include_router(visibility_connectors.router)
 api_router.include_router(terminal_slot_connectors.router)
 api_router.include_router(tower_impacts.router)
 api_router.include_router(twin_marks.router)

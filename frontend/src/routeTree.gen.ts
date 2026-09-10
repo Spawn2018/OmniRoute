@@ -117,6 +117,7 @@ import { Route as TerminalsRouteImport } from './routes/terminals'
 import { Route as TowerImpactsRouteImport } from './routes/tower-impacts'
 import { Route as TrackingRouteImport } from './routes/tracking'
 import { Route as TwinMarksRouteImport } from './routes/twin-marks'
+import { Route as VisibilityConnectorsRouteImport } from './routes/visibility-connectors'
 import { Route as WarRoomMarksRouteImport } from './routes/war-room-marks'
 import { Route as WatchtowerRouteImport } from './routes/watchtower'
 import { Route as WeatherObservationsRouteImport } from './routes/weather-observations'
@@ -662,6 +663,11 @@ const TwinMarksRoute = TwinMarksRouteImport.update({
   path: '/twin-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const VisibilityConnectorsRoute = VisibilityConnectorsRouteImport.update({
+  id: '/visibility-connectors',
+  path: '/visibility-connectors',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WarRoomMarksRoute = WarRoomMarksRouteImport.update({
   id: '/war-room-marks',
   path: '/war-room-marks',
@@ -792,6 +798,7 @@ export interface FileRoutesByFullPath {
   '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
   '/twin-marks': typeof TwinMarksRoute
+  '/visibility-connectors': typeof VisibilityConnectorsRoute
   '/war-room-marks': typeof WarRoomMarksRoute
   '/watchtower': typeof WatchtowerRoute
   '/weather-observations': typeof WeatherObservationsRoute
@@ -906,6 +913,7 @@ export interface FileRoutesByTo {
   '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
   '/twin-marks': typeof TwinMarksRoute
+  '/visibility-connectors': typeof VisibilityConnectorsRoute
   '/war-room-marks': typeof WarRoomMarksRoute
   '/watchtower': typeof WatchtowerRoute
   '/weather-observations': typeof WeatherObservationsRoute
@@ -1021,6 +1029,7 @@ export interface FileRoutesById {
   '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
   '/twin-marks': typeof TwinMarksRoute
+  '/visibility-connectors': typeof VisibilityConnectorsRoute
   '/war-room-marks': typeof WarRoomMarksRoute
   '/watchtower': typeof WatchtowerRoute
   '/weather-observations': typeof WeatherObservationsRoute
@@ -1137,6 +1146,7 @@ export interface FileRouteTypes {
     | '/tower-impacts'
     | '/tracking'
     | '/twin-marks'
+    | '/visibility-connectors'
     | '/war-room-marks'
     | '/watchtower'
     | '/weather-observations'
@@ -1251,6 +1261,7 @@ export interface FileRouteTypes {
     | '/tower-impacts'
     | '/tracking'
     | '/twin-marks'
+    | '/visibility-connectors'
     | '/war-room-marks'
     | '/watchtower'
     | '/weather-observations'
@@ -1365,6 +1376,7 @@ export interface FileRouteTypes {
     | '/tower-impacts'
     | '/tracking'
     | '/twin-marks'
+    | '/visibility-connectors'
     | '/war-room-marks'
     | '/watchtower'
     | '/weather-observations'
@@ -1480,6 +1492,7 @@ export interface RootRouteChildren {
   TowerImpactsRoute: typeof TowerImpactsRoute
   TrackingRoute: typeof TrackingRoute
   TwinMarksRoute: typeof TwinMarksRoute
+  VisibilityConnectorsRoute: typeof VisibilityConnectorsRoute
   WarRoomMarksRoute: typeof WarRoomMarksRoute
   WatchtowerRoute: typeof WatchtowerRoute
   WeatherObservationsRoute: typeof WeatherObservationsRoute
@@ -2244,6 +2257,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TwinMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/visibility-connectors': {
+      id: '/visibility-connectors'
+      path: '/visibility-connectors'
+      fullPath: '/visibility-connectors'
+      preLoaderRoute: typeof VisibilityConnectorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/war-room-marks': {
       id: '/war-room-marks'
       path: '/war-room-marks'
@@ -2384,6 +2404,7 @@ const rootRouteChildren: RootRouteChildren = {
   TowerImpactsRoute: TowerImpactsRoute,
   TrackingRoute: TrackingRoute,
   TwinMarksRoute: TwinMarksRoute,
+  VisibilityConnectorsRoute: VisibilityConnectorsRoute,
   WarRoomMarksRoute: WarRoomMarksRoute,
   WatchtowerRoute: WatchtowerRoute,
   WeatherObservationsRoute: WeatherObservationsRoute,

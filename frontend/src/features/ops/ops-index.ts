@@ -559,6 +559,11 @@ export const OPS_JOBS = [
     job: "katalog tenant_contract_kek HITL",
   },
   {
+    route: BUSINESS_LISTS.visibilityConnector.route,
+    label: "Konektor widoczności",
+    job: "katalog visibility_connector HITL",
+  },
+  {
     route: BUSINESS_LISTS.exchangeConnector.route,
     label: "Konektor giełdy",
     job: "katalog exchange_connector HITL",
@@ -824,6 +829,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "272.0": "/customer-contracts",
   "273.0": "/customer-contracts",
   "274.0": "/tenant-contract-keks",
+  "275.0": "/visibility-connectors",
 } as const
 
 export const ROUTES_BREADTH_STANDING =
