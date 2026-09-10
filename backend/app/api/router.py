@@ -16,6 +16,7 @@ from app.api import (
     cod_instructions,
     collective_invoices,
     commodity_codes,
+    consignments,
     containers,
     cost_to_serve,
     credit_reviews,
@@ -152,6 +153,7 @@ api_router.include_router(operational_exceptions.router)
 api_router.include_router(cargo_claims.router)
 api_router.include_router(cod_instructions.router)
 api_router.include_router(ocean_bills.router)
+api_router.include_router(consignments.router)
 api_router.include_router(pallet_balances.router)
 api_router.include_router(document_templates.router)
 api_router.include_router(rate_cards.router)

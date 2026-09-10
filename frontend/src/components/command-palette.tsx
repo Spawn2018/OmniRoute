@@ -29,6 +29,7 @@ const NAV_ACTIONS = [
   { id: "nav-china-rail", label: "Idź do kolei z Chin", to: "/china-rail" },
   { id: "nav-lcl", label: "Idź do drobnicy morskiej", to: "/lcl" },
   { id: "nav-ocean-bills", label: "Idź do konosamentu LCL", to: "/ocean-bills" },
+  { id: "nav-consignments", label: "Idź do przesyłek", to: "/consignments" },
   { id: "nav-pallet-balances", label: "Idź do salda palet", to: "/pallet-balances" },
   { id: "nav-document-templates", label: "Idź do szablonów wydruku", to: "/document-templates" },
   { id: "nav-air", label: "Idź do lotniczego", to: "/air" },

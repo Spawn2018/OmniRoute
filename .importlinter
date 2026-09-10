@@ -74,6 +74,7 @@ modules =
     app.services.cod_instructions
     app.services.groupage_tariffs
     app.services.ocean_bills
+    app.services.consignments
     app.services.pallet_balances
     app.services.document_templates
     app.services.rate_cards
@@ -297,6 +298,9 @@ forbidden_modules =
     app.services.ocean_bills
     app.repositories.ocean_bills
     app.models.ocean_bill
+    app.services.consignments
+    app.repositories.consignments
+    app.models.consignment
     app.services.pallet_balances
     app.repositories.pallet_balances
     app.models.pallet_balance

@@ -1157,6 +1157,50 @@ export type CommodityCodeResponse = {
 };
 
 /**
+ * ConsignmentCreate
+ */
+export type ConsignmentCreate = {
+    /**
+     * Shipment Id
+     */
+    shipment_id?: string | boolean | null;
+    /**
+     * Consignment Ref
+     */
+    consignment_ref: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ConsignmentResponse
+ */
+export type ConsignmentResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Consignment Ref
+     */
+    consignment_ref: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * ContactCreate
  */
 export type ContactCreate = {
@@ -10385,6 +10429,49 @@ export type CreateOceanBillApiV1OceanBillsPostResponses = {
 };
 
 export type CreateOceanBillApiV1OceanBillsPostResponse = CreateOceanBillApiV1OceanBillsPostResponses[keyof CreateOceanBillApiV1OceanBillsPostResponses];
+
+export type ListConsignmentsApiV1ConsignmentsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/consignments';
+};
+
+export type ListConsignmentsApiV1ConsignmentsGetResponses = {
+    /**
+     * Response List Consignments Api V1 Consignments Get
+     *
+     * Successful Response
+     */
+    200: Array<ConsignmentResponse>;
+};
+
+export type ListConsignmentsApiV1ConsignmentsGetResponse = ListConsignmentsApiV1ConsignmentsGetResponses[keyof ListConsignmentsApiV1ConsignmentsGetResponses];
+
+export type CreateConsignmentApiV1ConsignmentsPostData = {
+    body: ConsignmentCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/consignments';
+};
+
+export type CreateConsignmentApiV1ConsignmentsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateConsignmentApiV1ConsignmentsPostError = CreateConsignmentApiV1ConsignmentsPostErrors[keyof CreateConsignmentApiV1ConsignmentsPostErrors];
+
+export type CreateConsignmentApiV1ConsignmentsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ConsignmentResponse;
+};
+
+export type CreateConsignmentApiV1ConsignmentsPostResponse = CreateConsignmentApiV1ConsignmentsPostResponses[keyof CreateConsignmentApiV1ConsignmentsPostResponses];
 
 export type ListPalletBalancesApiV1PalletBalancesGetData = {
     body?: never;

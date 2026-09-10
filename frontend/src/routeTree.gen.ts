@@ -24,6 +24,7 @@ import { Route as ChinaRailRouteImport } from './routes/china-rail'
 import { Route as ClaimsRouteImport } from './routes/claims'
 import { Route as CodRouteImport } from './routes/cod'
 import { Route as CommodityCodesRouteImport } from './routes/commodity-codes'
+import { Route as ConsignmentsRouteImport } from './routes/consignments'
 import { Route as CostToServeRouteImport } from './routes/cost-to-serve'
 import { Route as CreditReviewsRouteImport } from './routes/credit-reviews'
 import { Route as CustomerSopsRouteImport } from './routes/customer-sops'
@@ -183,6 +184,11 @@ const CodRoute = CodRouteImport.update({
 const CommodityCodesRoute = CommodityCodesRouteImport.update({
   id: '/commodity-codes',
   path: '/commodity-codes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConsignmentsRoute = ConsignmentsRouteImport.update({
+  id: '/consignments',
+  path: '/consignments',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CostToServeRoute = CostToServeRouteImport.update({
@@ -627,6 +633,7 @@ export interface FileRoutesByFullPath {
   '/claims': typeof ClaimsRoute
   '/cod': typeof CodRoute
   '/commodity-codes': typeof CommodityCodesRoute
+  '/consignments': typeof ConsignmentsRoute
   '/cost-to-serve': typeof CostToServeRoute
   '/credit-reviews': typeof CreditReviewsRoute
   '/customer-sops': typeof CustomerSopsRoute
@@ -729,6 +736,7 @@ export interface FileRoutesByTo {
   '/claims': typeof ClaimsRoute
   '/cod': typeof CodRoute
   '/commodity-codes': typeof CommodityCodesRoute
+  '/consignments': typeof ConsignmentsRoute
   '/cost-to-serve': typeof CostToServeRoute
   '/credit-reviews': typeof CreditReviewsRoute
   '/customer-sops': typeof CustomerSopsRoute
@@ -832,6 +840,7 @@ export interface FileRoutesById {
   '/claims': typeof ClaimsRoute
   '/cod': typeof CodRoute
   '/commodity-codes': typeof CommodityCodesRoute
+  '/consignments': typeof ConsignmentsRoute
   '/cost-to-serve': typeof CostToServeRoute
   '/credit-reviews': typeof CreditReviewsRoute
   '/customer-sops': typeof CustomerSopsRoute
@@ -936,6 +945,7 @@ export interface FileRouteTypes {
     | '/claims'
     | '/cod'
     | '/commodity-codes'
+    | '/consignments'
     | '/cost-to-serve'
     | '/credit-reviews'
     | '/customer-sops'
@@ -1038,6 +1048,7 @@ export interface FileRouteTypes {
     | '/claims'
     | '/cod'
     | '/commodity-codes'
+    | '/consignments'
     | '/cost-to-serve'
     | '/credit-reviews'
     | '/customer-sops'
@@ -1140,6 +1151,7 @@ export interface FileRouteTypes {
     | '/claims'
     | '/cod'
     | '/commodity-codes'
+    | '/consignments'
     | '/cost-to-serve'
     | '/credit-reviews'
     | '/customer-sops'
@@ -1243,6 +1255,7 @@ export interface RootRouteChildren {
   ClaimsRoute: typeof ClaimsRoute
   CodRoute: typeof CodRoute
   CommodityCodesRoute: typeof CommodityCodesRoute
+  ConsignmentsRoute: typeof ConsignmentsRoute
   CostToServeRoute: typeof CostToServeRoute
   CreditReviewsRoute: typeof CreditReviewsRoute
   CustomerSopsRoute: typeof CustomerSopsRoute
@@ -1435,6 +1448,13 @@ declare module '@tanstack/react-router' {
       path: '/commodity-codes'
       fullPath: '/commodity-codes'
       preLoaderRoute: typeof CommodityCodesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/consignments': {
+      id: '/consignments'
+      path: '/consignments'
+      fullPath: '/consignments'
+      preLoaderRoute: typeof ConsignmentsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cost-to-serve': {
@@ -2051,6 +2071,7 @@ const rootRouteChildren: RootRouteChildren = {
   ClaimsRoute: ClaimsRoute,
   CodRoute: CodRoute,
   CommodityCodesRoute: CommodityCodesRoute,
+  ConsignmentsRoute: ConsignmentsRoute,
   CostToServeRoute: CostToServeRoute,
   CreditReviewsRoute: CreditReviewsRoute,
   CustomerSopsRoute: CustomerSopsRoute,

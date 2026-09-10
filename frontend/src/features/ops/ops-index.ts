@@ -84,6 +84,11 @@ export const OPS_JOBS = [
     job: "znacznik ocean_bill HBL/MBL bez PDF",
   },
   {
+    route: BUSINESS_LISTS.consignment.route,
+    label: "Przesyłki",
+    job: "zapis consignment na zleceniu",
+  },
+  {
     route: BUSINESS_LISTS.palletBalance.route,
     label: "Saldo palet",
     job: "saldo pallet_balance Chep/LPR bez giełdy",
@@ -749,6 +754,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "257.0": "/shipments",
   "258.0": "/shipments",
   "259.0": "/fleet",
+  "260.0": "/consignments",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

@@ -176,7 +176,7 @@
 | kalendarz organizacji | organization_calendar | U4; dni robocze; grace GPS |
 | przeniesienie pól | field_carry_forward | U1; oferta→zlecenie; nie cichy overwrite |
 | reguła checklisty dokumentów | document_checklist_rule | U5; incoterm×strona×mode → rodzaj + blocks_dispatch |
-| przesyłka | consignment | N1; obok shipment |
+| przesyłka | consignment | N1; 260.0 tabela na shipment; LTL/LCL=N; nie paczka; nie FTL unique |
 | podłoga marży | margin_floor | N6; Decimal; 409 albo S11 |
 | ETA fizyczne | eta_physical | V2 HITL 194.0 na `stop`; GPS/korek leftover; nie jedyny znacznik |
 | ETA prawne | eta_legal | V2 HITL 194.0 na `stop`; zakaz jazdy/tacho leftover |

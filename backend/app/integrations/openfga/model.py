@@ -77,7 +77,13 @@ def _organization_ops_relations() -> dict[str, Userset]:
         "can_manage_dock_appointments": _member(),
         "can_manage_cod_instructions": _member(),
         "can_manage_groupage_tariffs": _member(),
+    }
+
+
+def _organization_ops_catalog_relations() -> dict[str, Userset]:
+    return {
         "can_manage_ocean_bills": _member(),
+        "can_manage_consignments": _member(),
         "can_manage_pallet_balances": _member(),
         "can_manage_document_templates": _member(),
         "can_manage_rate_cards": _member(),
@@ -121,6 +127,7 @@ def _organization_relations() -> dict[str, Userset]:
     return {
         **_organization_core_relations(),
         **_organization_ops_relations(),
+        **_organization_ops_catalog_relations(),
         **_organization_tender_relations(),
     }
 

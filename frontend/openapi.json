@@ -5188,6 +5188,80 @@
         ]
       }
     },
+    "/api/v1/consignments": {
+      "get": {
+        "tags": [
+          "consignments"
+        ],
+        "summary": "List Consignments",
+        "operationId": "list_consignments_api_v1_consignments_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ConsignmentResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Consignments Api V1 Consignments Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "consignments"
+        ],
+        "summary": "Create Consignment",
+        "operationId": "create_consignment_api_v1_consignments_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConsignmentCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConsignmentResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/pallet-balances": {
       "get": {
         "tags": [
@@ -13487,6 +13561,76 @@
           "source_ref"
         ],
         "title": "CommodityCodeResponse"
+      },
+      "ConsignmentCreate": {
+        "properties": {
+          "shipment_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Shipment Id"
+          },
+          "consignment_ref": {
+            "type": "string",
+            "title": "Consignment Ref"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "consignment_ref",
+          "source_ref"
+        ],
+        "title": "ConsignmentCreate"
+      },
+      "ConsignmentResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "consignment_ref": {
+            "type": "string",
+            "title": "Consignment Ref"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "shipment_id",
+          "consignment_ref",
+          "source_ref"
+        ],
+        "title": "ConsignmentResponse"
       },
       "ContactCreate": {
         "properties": {

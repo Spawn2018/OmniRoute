@@ -76,6 +76,7 @@ from app.models.dock_appointment import DockAppointment  # noqa: F401
 from app.models.cod_instruction import CodInstruction  # noqa: F401
 from app.models.groupage_tariff import GroupageTariff  # noqa: F401
 from app.models.ocean_bill import OceanBill  # noqa: F401
+from app.models.consignment import Consignment  # noqa: F401
 from app.models.pallet_balance import PalletBalance  # noqa: F401
 from app.models.document_template import DocumentTemplate  # noqa: F401
 from app.models.rate_card import RateCard  # noqa: F401
