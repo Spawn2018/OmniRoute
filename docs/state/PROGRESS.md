@@ -619,3 +619,4 @@
 | 2026-09-10 | Plan 268.0 | F9 | erp_connector HITL kod + kind optima, nie live SOAP. Delta zaakceptowana (`/noc`). Nastepny: kod 268.0. |
 | 2026-09-10 | 268.0 | F9 | erp_connector HITL kod + kind optima. Nie live SOAP. Nie sekrety. Nastepny: leftover T8 Plan. |
 | 2026-09-10 | Plan 269.0 | T8 | terminal_slot_connector HITL mode + godziny N4, nie booking i nie confirmed z formularza. Delta zaakceptowana (`/noc`). Nastepny: kod 269.0. |
+| 2026-09-10 | 269.0 | T8 | terminal_slot_connector HITL mode + godziny N4. Nie live T8. Nie confirmed z formularza. Nastepny: leftover S53 Auth0 Plan. |

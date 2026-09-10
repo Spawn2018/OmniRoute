@@ -152,6 +152,11 @@ const NAV_ACTIONS = [
     to: "/erp-connectors",
   },
   {
+    id: "nav-terminal-slot-connectors",
+    label: "Idź do konektora slotu",
+    to: "/terminal-slot-connectors",
+  },
+  {
     id: "nav-weather-observations",
     label: "Idź do pogody",
     to: "/weather-observations",

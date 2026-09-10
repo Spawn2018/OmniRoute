@@ -98,6 +98,7 @@ modules =
     app.services.circle_sims
     app.services.lane_kms
     app.services.erp_connectors
+    app.services.terminal_slot_connectors
     app.services.kreptd_licences
     app.services.monitoring_schemes
     app.services.party_documents
@@ -393,6 +394,9 @@ forbidden_modules =
     app.services.erp_connectors
     app.repositories.erp_connectors
     app.models.erp_connector
+    app.services.terminal_slot_connectors
+    app.repositories.terminal_slot_connectors
+    app.models.terminal_slot_connector
     app.services.prediction_ledgers
     app.repositories.prediction_ledgers
     app.models.prediction_ledger

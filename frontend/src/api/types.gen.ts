@@ -7267,6 +7267,82 @@ export type TerminalResponse = {
 };
 
 /**
+ * TerminalSlotConnectorCreate
+ */
+export type TerminalSlotConnectorCreate = {
+    /**
+     * Connector Code
+     */
+    connector_code: string;
+    /**
+     * Terminal Code
+     */
+    terminal_code: string;
+    /**
+     * Mode
+     */
+    mode: string;
+    /**
+     * Opens Local
+     */
+    opens_local: string;
+    /**
+     * Closes Local
+     */
+    closes_local: string;
+    /**
+     * Cutoff Local
+     */
+    cutoff_local: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TerminalSlotConnectorResponse
+ */
+export type TerminalSlotConnectorResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Connector Code
+     */
+    connector_code: string;
+    /**
+     * Terminal Code
+     */
+    terminal_code: string;
+    /**
+     * Mode
+     */
+    mode: string;
+    /**
+     * Opens Local
+     */
+    opens_local: string;
+    /**
+     * Closes Local
+     */
+    closes_local: string;
+    /**
+     * Cutoff Local
+     */
+    cutoff_local: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * TowerImpactCreate
  */
 export type TowerImpactCreate = {
@@ -12616,6 +12692,49 @@ export type CreateErpConnectorApiV1ErpConnectorsPostResponses = {
 };
 
 export type CreateErpConnectorApiV1ErpConnectorsPostResponse = CreateErpConnectorApiV1ErpConnectorsPostResponses[keyof CreateErpConnectorApiV1ErpConnectorsPostResponses];
+
+export type ListTerminalSlotConnectorsApiV1TerminalSlotConnectorsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/terminal-slot-connectors';
+};
+
+export type ListTerminalSlotConnectorsApiV1TerminalSlotConnectorsGetResponses = {
+    /**
+     * Response List Terminal Slot Connectors Api V1 Terminal Slot Connectors Get
+     *
+     * Successful Response
+     */
+    200: Array<TerminalSlotConnectorResponse>;
+};
+
+export type ListTerminalSlotConnectorsApiV1TerminalSlotConnectorsGetResponse = ListTerminalSlotConnectorsApiV1TerminalSlotConnectorsGetResponses[keyof ListTerminalSlotConnectorsApiV1TerminalSlotConnectorsGetResponses];
+
+export type CreateTerminalSlotConnectorApiV1TerminalSlotConnectorsPostData = {
+    body: TerminalSlotConnectorCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/terminal-slot-connectors';
+};
+
+export type CreateTerminalSlotConnectorApiV1TerminalSlotConnectorsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTerminalSlotConnectorApiV1TerminalSlotConnectorsPostError = CreateTerminalSlotConnectorApiV1TerminalSlotConnectorsPostErrors[keyof CreateTerminalSlotConnectorApiV1TerminalSlotConnectorsPostErrors];
+
+export type CreateTerminalSlotConnectorApiV1TerminalSlotConnectorsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TerminalSlotConnectorResponse;
+};
+
+export type CreateTerminalSlotConnectorApiV1TerminalSlotConnectorsPostResponse = CreateTerminalSlotConnectorApiV1TerminalSlotConnectorsPostResponses[keyof CreateTerminalSlotConnectorApiV1TerminalSlotConnectorsPostResponses];
 
 export type ListTowerImpactsApiV1TowerImpactsGetData = {
     body?: never;

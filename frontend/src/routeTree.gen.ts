@@ -108,6 +108,7 @@ import { Route as TenderRoundsRouteImport } from './routes/tender-rounds'
 import { Route as TenderTedNoticesRouteImport } from './routes/tender-ted-notices'
 import { Route as TenderWinLossesRouteImport } from './routes/tender-win-losses'
 import { Route as TendersRouteImport } from './routes/tenders'
+import { Route as TerminalSlotConnectorsRouteImport } from './routes/terminal-slot-connectors'
 import { Route as TerminalsRouteImport } from './routes/terminals'
 import { Route as TowerImpactsRouteImport } from './routes/tower-impacts'
 import { Route as TrackingRouteImport } from './routes/tracking'
@@ -612,6 +613,11 @@ const TendersRoute = TendersRouteImport.update({
   path: '/tenders',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TerminalSlotConnectorsRoute = TerminalSlotConnectorsRouteImport.update({
+  id: '/terminal-slot-connectors',
+  path: '/terminal-slot-connectors',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TerminalsRoute = TerminalsRouteImport.update({
   id: '/terminals',
   path: '/terminals',
@@ -753,6 +759,7 @@ export interface FileRoutesByFullPath {
   '/tender-ted-notices': typeof TenderTedNoticesRoute
   '/tender-win-losses': typeof TenderWinLossesRoute
   '/tenders': typeof TendersRoute
+  '/terminal-slot-connectors': typeof TerminalSlotConnectorsRoute
   '/terminals': typeof TerminalsRoute
   '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
@@ -862,6 +869,7 @@ export interface FileRoutesByTo {
   '/tender-ted-notices': typeof TenderTedNoticesRoute
   '/tender-win-losses': typeof TenderWinLossesRoute
   '/tenders': typeof TendersRoute
+  '/terminal-slot-connectors': typeof TerminalSlotConnectorsRoute
   '/terminals': typeof TerminalsRoute
   '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
@@ -972,6 +980,7 @@ export interface FileRoutesById {
   '/tender-ted-notices': typeof TenderTedNoticesRoute
   '/tender-win-losses': typeof TenderWinLossesRoute
   '/tenders': typeof TendersRoute
+  '/terminal-slot-connectors': typeof TerminalSlotConnectorsRoute
   '/terminals': typeof TerminalsRoute
   '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
@@ -1083,6 +1092,7 @@ export interface FileRouteTypes {
     | '/tender-ted-notices'
     | '/tender-win-losses'
     | '/tenders'
+    | '/terminal-slot-connectors'
     | '/terminals'
     | '/tower-impacts'
     | '/tracking'
@@ -1192,6 +1202,7 @@ export interface FileRouteTypes {
     | '/tender-ted-notices'
     | '/tender-win-losses'
     | '/tenders'
+    | '/terminal-slot-connectors'
     | '/terminals'
     | '/tower-impacts'
     | '/tracking'
@@ -1301,6 +1312,7 @@ export interface FileRouteTypes {
     | '/tender-ted-notices'
     | '/tender-win-losses'
     | '/tenders'
+    | '/terminal-slot-connectors'
     | '/terminals'
     | '/tower-impacts'
     | '/tracking'
@@ -1411,6 +1423,7 @@ export interface RootRouteChildren {
   TenderTedNoticesRoute: typeof TenderTedNoticesRoute
   TenderWinLossesRoute: typeof TenderWinLossesRoute
   TendersRoute: typeof TendersRoute
+  TerminalSlotConnectorsRoute: typeof TerminalSlotConnectorsRoute
   TerminalsRoute: typeof TerminalsRoute
   TowerImpactsRoute: typeof TowerImpactsRoute
   TrackingRoute: typeof TrackingRoute
@@ -2116,6 +2129,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TendersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/terminal-slot-connectors': {
+      id: '/terminal-slot-connectors'
+      path: '/terminal-slot-connectors'
+      fullPath: '/terminal-slot-connectors'
+      preLoaderRoute: typeof TerminalSlotConnectorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terminals': {
       id: '/terminals'
       path: '/terminals'
@@ -2275,6 +2295,7 @@ const rootRouteChildren: RootRouteChildren = {
   TenderTedNoticesRoute: TenderTedNoticesRoute,
   TenderWinLossesRoute: TenderWinLossesRoute,
   TendersRoute: TendersRoute,
+  TerminalSlotConnectorsRoute: TerminalSlotConnectorsRoute,
   TerminalsRoute: TerminalsRoute,
   TowerImpactsRoute: TowerImpactsRoute,
   TrackingRoute: TrackingRoute,

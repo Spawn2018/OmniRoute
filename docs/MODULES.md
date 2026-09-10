@@ -72,6 +72,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | G2.20 | Kółko HITL | 266.0 `circle_sim` | **ukończony (HITL)** · kod + para unload/load; leftover silnik 500k / km / P |
 | G2.21 | Km ładowny HITL | 267.0 `lane_km` | **ukończony (HITL)** · ładowny/pusty/dolot Decimal; leftover P / silnik 500k |
 | F9 | Konektor Optima HITL | 268.0 `erp_connector` | **ukończony (HITL)** · kod + kind `optima`; leftover XL / live SOAP / FS+FZ |
+| T8 | Konektor slotu HITL | 269.0 `terminal_slot_connector` | **ukończony (HITL)** · mode + godziny N4; leftover live API / `terminal_appointment` / confirmed |
 | V2 | Pogoda HITL | 194.0 `stop` ETA · 195.0 `weather_observation` | **ukończony (HITL)** · dwa ETA + warunek/stacja; leftover Open-Meteo / myto |
 | V3 | Zegar D&D HITL | 196.0 `free_time_clock` | **ukończony (HITL)** · rodzaj + dni wolne; leftover countdown / charge / blank sailing |
 | V5 | Konektor GPS HITL | 197.0 `telematics_connector` | **ukończony (HITL)** · reżim + dostawca; leftover position_event / ciphertext / 3 dni U4 |

@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** leftover T8 kod 269.0 (`terminal_slot_connector`) → S53 Auth0 → portale/diada → CT7/CI9/reszta pinu 2026-09-08c. Leftover HITL/SQL = praca. Park = live HTTP bez testu albo sekretu, nie skip pola. Live M-02 konsument / Auth0 / portale tylko gdy ten ID jest bieżącym Q. P6c auto-award zakaz. Nic z pinu nie wypada. Nie zgaduj 71–269.
+**Następny:** leftover S53 Auth0 → portale/diada → CT7/CI9/reszta pinu 2026-09-08c. Leftover HITL/SQL = praca. Park = live HTTP bez testu albo sekretu, nie skip pola. Live M-02 konsument / Auth0 / portale tylko gdy ten ID jest bieżącym Q. P6c auto-award zakaz. Nic z pinu nie wypada. Nie zgaduj 71–270.
 <!-- os-status:end -->
 
 ```mermaid
@@ -486,7 +486,7 @@ Klej (nie osobny rok): **U6** + **M-72** = DoD każdego UI; **N** i **A** wchodz
 
 Kolejka żywa jest w [CURRENT.md](state/CURRENT.md). `/noc` jedzie ją bez wycinania. Godzina ucina **nowy** plaster, nie wiersz pinu.
 
-Kolejność (WIP=1 na `main`): T3 cutoffy na `container` → eventy `entity_event` z warstwy API (2a/2b; BC nie importuje `entity_events`) → `stop_group`/EXP1 → km/`/fleet` → `consignment` → T6 mapa → SQL na `charge` → lookup/KSeF TE → outbox T5 → `plan_snapshot` (DONE 265.0) → `circle_sim` HITL (DONE 266.0) → leftover km ładowny/pusty/dolot (DONE 267.0) → leftover F9 Optima fixture (DONE 268.0) → T8 → S53 → portale/diada → CT7/CI9/reszta pinu. `plan_snapshot` **po** obiektach, **przed** kółkami — nie w jednym worku ze stopami. Cały łańcuch XL→WAPRO nie wchodzi przed outbox. P6c auto-award = zakaz.
+Kolejność (WIP=1 na `main`): T3 cutoffy na `container` → eventy `entity_event` z warstwy API (2a/2b; BC nie importuje `entity_events`) → `stop_group`/EXP1 → km/`/fleet` → `consignment` → T6 mapa → SQL na `charge` → lookup/KSeF TE → outbox T5 → `plan_snapshot` (DONE 265.0) → `circle_sim` HITL (DONE 266.0) → leftover km ładowny/pusty/dolot (DONE 267.0) → leftover F9 Optima fixture (DONE 268.0) → leftover T8 slot capability (DONE 269.0) → S53 → portale/diada → CT7/CI9/reszta pinu. `plan_snapshot` **po** obiektach, **przed** kółkami — nie w jednym worku ze stopami. Cały łańcuch XL→WAPRO nie wchodzi przed outbox. P6c auto-award = zakaz.
 
 Bliźniak = wzorzec (stan RLS + `entity_event` + opcjonalnie kopia planu / karta komunikacji), nie druga tabela `*_twin`. Rodziny rosną katalogiem. AI szuka i proponuje; `operator_decision` zamyka. LLM nie liczy.
 
@@ -556,7 +556,7 @@ Przy `/plan-modul`: karta T + [EXP1](analysis/karty-pol-fala-exp.md) (stop/konte
 | T6 | planning board 4 widoki + mapa lazy + klawiatura N10 | zamknięty HITL mapa ([261.0](deltas/archived/261.0-planning-map.md); leftover 4 widoki / N10 / T6b–d / X8) | po T2 | mapa poza 250 kB |
 | **N11** | handover SBAR zmiany | Plan → plaster | po T6 | |
 | T7 | `fx_rate_basis` SQL; kalendarz U4 | zamknięty HITL ([211.0](deltas/archived/211.0-fx-rate-basis.md); leftover T7b override/`charge`; leftover T7c U4 D-1) | po T1+U4 | LLM/JS nie liczą |
-| T8 | slot capability + godziny terminalu N4; **confirmed tylko z API** | Plan → plaster | po T3 | nie gwarancja prawna; nie Selenium |
+| T8 | slot capability + godziny terminalu N4; **confirmed tylko z API** | zamknięty HITL ([269.0](deltas/archived/269.0-terminal-slot-connector.md); leftover live API / `terminal_appointment` / confirmed z adaptera) | po T3 | nie gwarancja prawna; nie Selenium |
 
 **B0b** (po T2): zamknięty HITL `prediction_ledger` + N7 ([193.0](deltas/archived/193.0-prediction-ledger.md)); zamknięty HITL `plan_snapshot` ([265.0](deltas/archived/265.0-plan-snapshot.md)); zamknięty HITL `circle_sim` ([266.0](deltas/archived/266.0-circle-sim.md)); zamknięty HITL `lane_km` ([267.0](deltas/archived/267.0-lane-km.md)); leftover TT z actuals — karta [karty-pol-fala-v.md](analysis/karty-pol-fala-v.md). Indeks paliwa = P3 `fuel_index`.
 
@@ -853,13 +853,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

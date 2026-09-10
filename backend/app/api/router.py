@@ -104,6 +104,7 @@ from app.api import (
     tender_ted_notices,
     tender_win_losses,
     tenders,
+    terminal_slot_connectors,
     terminals,
     tower_impacts,
     tracking_events,
@@ -201,6 +202,7 @@ api_router.include_router(weather_observations.router)
 api_router.include_router(free_time_clocks.router)
 api_router.include_router(telematics_connectors.router)
 api_router.include_router(erp_connectors.router)
+api_router.include_router(terminal_slot_connectors.router)
 api_router.include_router(tower_impacts.router)
 api_router.include_router(twin_marks.router)
 api_router.include_router(war_room_marks.router)

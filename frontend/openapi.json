@@ -8486,6 +8486,80 @@
         ]
       }
     },
+    "/api/v1/terminal-slot-connectors": {
+      "get": {
+        "tags": [
+          "terminal-slot-connectors"
+        ],
+        "summary": "List Terminal Slot Connectors",
+        "operationId": "list_terminal_slot_connectors_api_v1_terminal_slot_connectors_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TerminalSlotConnectorResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Terminal Slot Connectors Api V1 Terminal Slot Connectors Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "terminal-slot-connectors"
+        ],
+        "summary": "Create Terminal Slot Connector",
+        "operationId": "create_terminal_slot_connector_api_v1_terminal_slot_connectors_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TerminalSlotConnectorCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TerminalSlotConnectorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/tower-impacts": {
       "get": {
         "tags": [
@@ -24019,6 +24093,108 @@
           "source_ref"
         ],
         "title": "TerminalResponse"
+      },
+      "TerminalSlotConnectorCreate": {
+        "properties": {
+          "connector_code": {
+            "type": "string",
+            "title": "Connector Code"
+          },
+          "terminal_code": {
+            "type": "string",
+            "title": "Terminal Code"
+          },
+          "mode": {
+            "type": "string",
+            "title": "Mode"
+          },
+          "opens_local": {
+            "type": "string",
+            "title": "Opens Local"
+          },
+          "closes_local": {
+            "type": "string",
+            "title": "Closes Local"
+          },
+          "cutoff_local": {
+            "type": "string",
+            "title": "Cutoff Local"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "connector_code",
+          "terminal_code",
+          "mode",
+          "opens_local",
+          "closes_local",
+          "cutoff_local",
+          "source_ref"
+        ],
+        "title": "TerminalSlotConnectorCreate"
+      },
+      "TerminalSlotConnectorResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "connector_code": {
+            "type": "string",
+            "title": "Connector Code"
+          },
+          "terminal_code": {
+            "type": "string",
+            "title": "Terminal Code"
+          },
+          "mode": {
+            "type": "string",
+            "title": "Mode"
+          },
+          "opens_local": {
+            "type": "string",
+            "format": "time",
+            "title": "Opens Local"
+          },
+          "closes_local": {
+            "type": "string",
+            "format": "time",
+            "title": "Closes Local"
+          },
+          "cutoff_local": {
+            "type": "string",
+            "format": "time",
+            "title": "Cutoff Local"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "connector_code",
+          "terminal_code",
+          "mode",
+          "opens_local",
+          "closes_local",
+          "cutoff_local",
+          "source_ref"
+        ],
+        "title": "TerminalSlotConnectorResponse"
       },
       "TowerImpactCreate": {
         "properties": {
