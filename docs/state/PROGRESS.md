@@ -584,3 +584,4 @@
 | 2026-09-10 | 250.0 | T1 | seal_in HITL na stop. Nie seal_out. Nie mapa. Nastepny: leftover T1 EXP1 seal_out/awizacja Plan. |
 | 2026-09-10 | Plan 251.0 | T1 | seal_out HITL na stop, nie awizacja. Delta zaakceptowana (`/noc`). Nastepny: kod 251.0. |
 | 2026-09-10 | 251.0 | T1 | seal_out HITL na stop. Nie awizacja. Nie mapa. Nastepny: leftover T1 EXP1 awizacja Plan. |
+| 2026-09-10 | Plan 252.0 | T1 | appointment_ref HITL na stop, nie D3 i nie waiting. Delta zaakceptowana (`/noc`). Nastepny: kod 252.0. |
