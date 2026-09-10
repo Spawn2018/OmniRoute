@@ -179,6 +179,7 @@
 | konektor IdP | idp_connector | S53 HITL 270.0 kod + provider `auth0` + source_ref; nie login; nie live HTTP; nie sekrety |
 | konektor giełdy | exchange_connector | S55 HITL 271.0 kod + kind `trans_eu` + source_ref; nie live HTTP; nie SPA; nie sekrety |
 | konektor widoczności | visibility_connector | CT7 HITL 275.0 kod + kind `p44` + source_ref; nie live HTTP; nie sekrety; nie AIS |
+| zamówienie zakupu | purchase_order | CT1 HITL 276.0 nagłówek `po_code` + opcjonalny `plant_label` + source_ref; nie `po_line`; nie ASN; nie shipment |
 | awizacja terminalu | terminal_appointment | T8; requested/confirmed/rejected; `source_ref` |
 | kalendarz organizacji | organization_calendar | U4; dni robocze; grace GPS |
 | przeniesienie pól | field_carry_forward | U1; oferta→zlecenie; nie cichy overwrite |

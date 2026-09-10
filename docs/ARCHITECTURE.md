@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **275.0** leftover HITL `visibility_connector` token `p44`. **Etap:** Plan. **Następny:** leftover CT1 HITL `purchase_order` / reszta pinu 2026-09-08c. CT8 AIS = park live (TO_VERIFY licencja). Nie CI1 extract. Nie live p44. Leftover HITL/SQL = praca. Park = live HTTP bez testu albo sekretu, nie skip pola. Live M-02 konsument / Auth0 I1/I2 / portale / giełda live / p44 live tylko gdy ten ID jest bieżącym Q. P6c auto-award zakaz. Nic z pinu nie wypada. Nie zgaduj 71–276. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **275.0** leftover HITL `visibility_connector` token `p44`. **Etap:** Kod. **Następny:** leftover CT1 HITL `purchase_order` nagłówek **276.0** (delta przyjęta `/noc`, wolno `/plaster`) / reszta pinu 2026-09-08c. CT8 AIS = park live (TO_VERIFY licencja). Nie CI1 extract. Nie live p44. Nie `po_line` / ASN w tym Q. Leftover HITL/SQL = praca. Park = live HTTP bez testu albo sekretu, nie skip pola. Live M-02 konsument / Auth0 I1/I2 / portale / giełda live / p44 live tylko gdy ten ID jest bieżącym Q. P6c auto-award zakaz. Nic z pinu nie wypada. 276.0 = ten Q. Nie zgaduj 277. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
