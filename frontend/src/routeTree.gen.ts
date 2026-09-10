@@ -95,6 +95,7 @@ import { Route as ShipmentPackagesRouteImport } from './routes/shipment-packages
 import { Route as ShipmentsRouteImport } from './routes/shipments'
 import { Route as TaskTemplatesRouteImport } from './routes/task-templates'
 import { Route as TelematicsConnectorsRouteImport } from './routes/telematics-connectors'
+import { Route as TenantContractKeksRouteImport } from './routes/tenant-contract-keks'
 import { Route as TenderAwardReviewsRouteImport } from './routes/tender-award-reviews'
 import { Route as TenderBidStancesRouteImport } from './routes/tender-bid-stances'
 import { Route as TenderCarbonMarksRouteImport } from './routes/tender-carbon-marks'
@@ -111,7 +112,6 @@ import { Route as TenderRoundsRouteImport } from './routes/tender-rounds'
 import { Route as TenderTedNoticesRouteImport } from './routes/tender-ted-notices'
 import { Route as TenderWinLossesRouteImport } from './routes/tender-win-losses'
 import { Route as TendersRouteImport } from './routes/tenders'
-import { Route as TenantContractKeksRouteImport } from './routes/tenant-contract-keks'
 import { Route as TerminalSlotConnectorsRouteImport } from './routes/terminal-slot-connectors'
 import { Route as TerminalsRouteImport } from './routes/terminals'
 import { Route as TowerImpactsRouteImport } from './routes/tower-impacts'
@@ -552,6 +552,11 @@ const TelematicsConnectorsRoute = TelematicsConnectorsRouteImport.update({
   path: '/telematics-connectors',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TenantContractKeksRoute = TenantContractKeksRouteImport.update({
+  id: '/tenant-contract-keks',
+  path: '/tenant-contract-keks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TenderAwardReviewsRoute = TenderAwardReviewsRouteImport.update({
   id: '/tender-award-reviews',
   path: '/tender-award-reviews',
@@ -630,11 +635,6 @@ const TenderWinLossesRoute = TenderWinLossesRouteImport.update({
 const TendersRoute = TendersRouteImport.update({
   id: '/tenders',
   path: '/tenders',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TenantContractKeksRoute = TenantContractKeksRouteImport.update({
-  id: '/tenant-contract-keks',
-  path: '/tenant-contract-keks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TerminalSlotConnectorsRoute = TerminalSlotConnectorsRouteImport.update({
@@ -770,6 +770,7 @@ export interface FileRoutesByFullPath {
   '/shipments': typeof ShipmentsRoute
   '/task-templates': typeof TaskTemplatesRoute
   '/telematics-connectors': typeof TelematicsConnectorsRoute
+  '/tenant-contract-keks': typeof TenantContractKeksRoute
   '/tender-award-reviews': typeof TenderAwardReviewsRoute
   '/tender-bid-stances': typeof TenderBidStancesRoute
   '/tender-carbon-marks': typeof TenderCarbonMarksRoute
@@ -786,7 +787,6 @@ export interface FileRoutesByFullPath {
   '/tender-ted-notices': typeof TenderTedNoticesRoute
   '/tender-win-losses': typeof TenderWinLossesRoute
   '/tenders': typeof TendersRoute
-  '/tenant-contract-keks': typeof TenantContractKeksRoute
   '/terminal-slot-connectors': typeof TerminalSlotConnectorsRoute
   '/terminals': typeof TerminalsRoute
   '/tower-impacts': typeof TowerImpactsRoute
@@ -884,6 +884,7 @@ export interface FileRoutesByTo {
   '/shipments': typeof ShipmentsRoute
   '/task-templates': typeof TaskTemplatesRoute
   '/telematics-connectors': typeof TelematicsConnectorsRoute
+  '/tenant-contract-keks': typeof TenantContractKeksRoute
   '/tender-award-reviews': typeof TenderAwardReviewsRoute
   '/tender-bid-stances': typeof TenderBidStancesRoute
   '/tender-carbon-marks': typeof TenderCarbonMarksRoute
@@ -900,7 +901,6 @@ export interface FileRoutesByTo {
   '/tender-ted-notices': typeof TenderTedNoticesRoute
   '/tender-win-losses': typeof TenderWinLossesRoute
   '/tenders': typeof TendersRoute
-  '/tenant-contract-keks': typeof TenantContractKeksRoute
   '/terminal-slot-connectors': typeof TerminalSlotConnectorsRoute
   '/terminals': typeof TerminalsRoute
   '/tower-impacts': typeof TowerImpactsRoute
@@ -999,6 +999,7 @@ export interface FileRoutesById {
   '/shipments': typeof ShipmentsRoute
   '/task-templates': typeof TaskTemplatesRoute
   '/telematics-connectors': typeof TelematicsConnectorsRoute
+  '/tenant-contract-keks': typeof TenantContractKeksRoute
   '/tender-award-reviews': typeof TenderAwardReviewsRoute
   '/tender-bid-stances': typeof TenderBidStancesRoute
   '/tender-carbon-marks': typeof TenderCarbonMarksRoute
@@ -1015,7 +1016,6 @@ export interface FileRoutesById {
   '/tender-ted-notices': typeof TenderTedNoticesRoute
   '/tender-win-losses': typeof TenderWinLossesRoute
   '/tenders': typeof TendersRoute
-  '/tenant-contract-keks': typeof TenantContractKeksRoute
   '/terminal-slot-connectors': typeof TerminalSlotConnectorsRoute
   '/terminals': typeof TerminalsRoute
   '/tower-impacts': typeof TowerImpactsRoute
@@ -1115,6 +1115,7 @@ export interface FileRouteTypes {
     | '/shipments'
     | '/task-templates'
     | '/telematics-connectors'
+    | '/tenant-contract-keks'
     | '/tender-award-reviews'
     | '/tender-bid-stances'
     | '/tender-carbon-marks'
@@ -1131,7 +1132,6 @@ export interface FileRouteTypes {
     | '/tender-ted-notices'
     | '/tender-win-losses'
     | '/tenders'
-    | '/tenant-contract-keks'
     | '/terminal-slot-connectors'
     | '/terminals'
     | '/tower-impacts'
@@ -1229,6 +1229,7 @@ export interface FileRouteTypes {
     | '/shipments'
     | '/task-templates'
     | '/telematics-connectors'
+    | '/tenant-contract-keks'
     | '/tender-award-reviews'
     | '/tender-bid-stances'
     | '/tender-carbon-marks'
@@ -1245,7 +1246,6 @@ export interface FileRouteTypes {
     | '/tender-ted-notices'
     | '/tender-win-losses'
     | '/tenders'
-    | '/tenant-contract-keks'
     | '/terminal-slot-connectors'
     | '/terminals'
     | '/tower-impacts'
@@ -1343,6 +1343,7 @@ export interface FileRouteTypes {
     | '/shipments'
     | '/task-templates'
     | '/telematics-connectors'
+    | '/tenant-contract-keks'
     | '/tender-award-reviews'
     | '/tender-bid-stances'
     | '/tender-carbon-marks'
@@ -1359,7 +1360,6 @@ export interface FileRouteTypes {
     | '/tender-ted-notices'
     | '/tender-win-losses'
     | '/tenders'
-    | '/tenant-contract-keks'
     | '/terminal-slot-connectors'
     | '/terminals'
     | '/tower-impacts'
@@ -1458,6 +1458,7 @@ export interface RootRouteChildren {
   ShipmentsRoute: typeof ShipmentsRoute
   TaskTemplatesRoute: typeof TaskTemplatesRoute
   TelematicsConnectorsRoute: typeof TelematicsConnectorsRoute
+  TenantContractKeksRoute: typeof TenantContractKeksRoute
   TenderAwardReviewsRoute: typeof TenderAwardReviewsRoute
   TenderBidStancesRoute: typeof TenderBidStancesRoute
   TenderCarbonMarksRoute: typeof TenderCarbonMarksRoute
@@ -1474,7 +1475,6 @@ export interface RootRouteChildren {
   TenderTedNoticesRoute: typeof TenderTedNoticesRoute
   TenderWinLossesRoute: typeof TenderWinLossesRoute
   TendersRoute: typeof TendersRoute
-  TenantContractKeksRoute: typeof TenantContractKeksRoute
   TerminalSlotConnectorsRoute: typeof TerminalSlotConnectorsRoute
   TerminalsRoute: typeof TerminalsRoute
   TowerImpactsRoute: typeof TowerImpactsRoute
@@ -2090,6 +2090,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TelematicsConnectorsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tenant-contract-keks': {
+      id: '/tenant-contract-keks'
+      path: '/tenant-contract-keks'
+      fullPath: '/tenant-contract-keks'
+      preLoaderRoute: typeof TenantContractKeksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tender-award-reviews': {
       id: '/tender-award-reviews'
       path: '/tender-award-reviews'
@@ -2200,13 +2207,6 @@ declare module '@tanstack/react-router' {
       path: '/tenders'
       fullPath: '/tenders'
       preLoaderRoute: typeof TendersRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tenant-contract-keks': {
-      id: '/tenant-contract-keks'
-      path: '/tenant-contract-keks'
-      fullPath: '/tenant-contract-keks'
-      preLoaderRoute: typeof TenantContractKeksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/terminal-slot-connectors': {
@@ -2362,6 +2362,7 @@ const rootRouteChildren: RootRouteChildren = {
   ShipmentsRoute: ShipmentsRoute,
   TaskTemplatesRoute: TaskTemplatesRoute,
   TelematicsConnectorsRoute: TelematicsConnectorsRoute,
+  TenantContractKeksRoute: TenantContractKeksRoute,
   TenderAwardReviewsRoute: TenderAwardReviewsRoute,
   TenderBidStancesRoute: TenderBidStancesRoute,
   TenderCarbonMarksRoute: TenderCarbonMarksRoute,
@@ -2378,7 +2379,6 @@ const rootRouteChildren: RootRouteChildren = {
   TenderTedNoticesRoute: TenderTedNoticesRoute,
   TenderWinLossesRoute: TenderWinLossesRoute,
   TendersRoute: TendersRoute,
-  TenantContractKeksRoute: TenantContractKeksRoute,
   TerminalSlotConnectorsRoute: TerminalSlotConnectorsRoute,
   TerminalsRoute: TerminalsRoute,
   TowerImpactsRoute: TowerImpactsRoute,
