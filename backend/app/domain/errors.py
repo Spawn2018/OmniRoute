@@ -680,3 +680,7 @@ class InvalidTaskTemplate(DomainError):
 
 class InvalidPlanSnapshot(DomainError):
     """B0b: HITL wersja planu — nie silnik, nie kółka i nie FK do trip/shipment."""
+
+
+class InvalidCircleSim(DomainError):
+    """G2.20: HITL kółko jako dane — nie silnik 500k i nie km."""

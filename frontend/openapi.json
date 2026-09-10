@@ -5912,6 +5912,80 @@
         ]
       }
     },
+    "/api/v1/circle-sims": {
+      "get": {
+        "tags": [
+          "circle-sims"
+        ],
+        "summary": "List Circle Sims",
+        "operationId": "list_circle_sims_api_v1_circle_sims_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CircleSimResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Circle Sims Api V1 Circle Sims Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "circle-sims"
+        ],
+        "summary": "Create Circle Sim",
+        "operationId": "create_circle_sim_api_v1_circle_sims_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CircleSimCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CircleSimResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/local-charges": {
       "get": {
         "tags": [
@@ -13502,6 +13576,75 @@
           "source_ref"
         ],
         "title": "ChargeTemplateResponse"
+      },
+      "CircleSimCreate": {
+        "properties": {
+          "sim_code": {
+            "type": "string",
+            "title": "Sim Code"
+          },
+          "unload_unlocode": {
+            "type": "string",
+            "title": "Unload Unlocode"
+          },
+          "load_unlocode": {
+            "type": "string",
+            "title": "Load Unlocode"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "sim_code",
+          "unload_unlocode",
+          "load_unlocode",
+          "source_ref"
+        ],
+        "title": "CircleSimCreate"
+      },
+      "CircleSimResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "sim_code": {
+            "type": "string",
+            "title": "Sim Code"
+          },
+          "unload_unlocode": {
+            "type": "string",
+            "title": "Unload Unlocode"
+          },
+          "load_unlocode": {
+            "type": "string",
+            "title": "Load Unlocode"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "sim_code",
+          "unload_unlocode",
+          "load_unlocode",
+          "source_ref"
+        ],
+        "title": "CircleSimResponse"
       },
       "CodInstructionCreate": {
         "properties": {

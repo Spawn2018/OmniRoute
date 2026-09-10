@@ -13,6 +13,7 @@ from app.api import (
     charge_codes,
     charge_templates,
     charges,
+    circle_sims,
     cod_instructions,
     collective_invoices,
     commodity_codes,
@@ -164,6 +165,7 @@ api_router.include_router(charge_templates.router)
 api_router.include_router(fuel_indexes.router)
 api_router.include_router(kreptd_licences.router)
 api_router.include_router(lane_patterns.router)
+api_router.include_router(circle_sims.router)
 api_router.include_router(local_charges.router)
 api_router.include_router(tender_quotes.router)
 api_router.include_router(tender_data_rooms.router)

@@ -137,6 +137,11 @@ const NAV_ACTIONS = [
     to: "/plan-snapshots",
   },
   {
+    id: "nav-circle-sims",
+    label: "Idź do kółka",
+    to: "/circle-sims",
+  },
+  {
     id: "nav-weather-observations",
     label: "Idź do pogody",
     to: "/weather-observations",

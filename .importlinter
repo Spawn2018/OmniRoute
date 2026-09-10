@@ -95,6 +95,7 @@ modules =
     app.services.tender_bid_stances
     app.services.tender_carbon_marks
     app.services.lane_patterns
+    app.services.circle_sims
     app.services.kreptd_licences
     app.services.monitoring_schemes
     app.services.party_documents
@@ -381,6 +382,9 @@ forbidden_modules =
     app.services.plan_snapshots
     app.repositories.plan_snapshots
     app.models.plan_snapshot
+    app.services.circle_sims
+    app.repositories.circle_sims
+    app.models.circle_sim
     app.services.prediction_ledgers
     app.repositories.prediction_ledgers
     app.models.prediction_ledger

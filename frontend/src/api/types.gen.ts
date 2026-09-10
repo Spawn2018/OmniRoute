@@ -1013,6 +1013,58 @@ export type ChargeTemplateResponse = {
 };
 
 /**
+ * CircleSimCreate
+ */
+export type CircleSimCreate = {
+    /**
+     * Sim Code
+     */
+    sim_code: string;
+    /**
+     * Unload Unlocode
+     */
+    unload_unlocode: string;
+    /**
+     * Load Unlocode
+     */
+    load_unlocode: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CircleSimResponse
+ */
+export type CircleSimResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Sim Code
+     */
+    sim_code: string;
+    /**
+     * Unload Unlocode
+     */
+    unload_unlocode: string;
+    /**
+     * Load Unlocode
+     */
+    load_unlocode: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * CodInstructionCreate
  */
 export type CodInstructionCreate = {
@@ -10968,6 +11020,49 @@ export type CreateLanePatternApiV1LanePatternsPostResponses = {
 };
 
 export type CreateLanePatternApiV1LanePatternsPostResponse = CreateLanePatternApiV1LanePatternsPostResponses[keyof CreateLanePatternApiV1LanePatternsPostResponses];
+
+export type ListCircleSimsApiV1CircleSimsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/circle-sims';
+};
+
+export type ListCircleSimsApiV1CircleSimsGetResponses = {
+    /**
+     * Response List Circle Sims Api V1 Circle Sims Get
+     *
+     * Successful Response
+     */
+    200: Array<CircleSimResponse>;
+};
+
+export type ListCircleSimsApiV1CircleSimsGetResponse = ListCircleSimsApiV1CircleSimsGetResponses[keyof ListCircleSimsApiV1CircleSimsGetResponses];
+
+export type CreateCircleSimApiV1CircleSimsPostData = {
+    body: CircleSimCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/circle-sims';
+};
+
+export type CreateCircleSimApiV1CircleSimsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCircleSimApiV1CircleSimsPostError = CreateCircleSimApiV1CircleSimsPostErrors[keyof CreateCircleSimApiV1CircleSimsPostErrors];
+
+export type CreateCircleSimApiV1CircleSimsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CircleSimResponse;
+};
+
+export type CreateCircleSimApiV1CircleSimsPostResponse = CreateCircleSimApiV1CircleSimsPostResponses[keyof CreateCircleSimApiV1CircleSimsPostResponses];
 
 export type ListLocalChargesApiV1LocalChargesGetData = {
     body?: never;

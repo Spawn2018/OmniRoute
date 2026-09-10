@@ -78,6 +78,7 @@ const NAV = [
   { to: "/carbon-methods", label: "Metodyka CO₂" },
   { to: "/prediction-ledgers", label: "Ledger predykcji" },
   { to: "/plan-snapshots", label: "Migawka planu" },
+  { to: "/circle-sims", label: "Kółko" },
   { to: "/weather-observations", label: "Pogoda" },
   { to: "/free-time-clocks", label: "Zegar DD" },
   { to: "/telematics-connectors", label: "Konektor GPS" },

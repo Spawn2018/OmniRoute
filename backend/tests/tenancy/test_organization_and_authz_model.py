@@ -76,6 +76,7 @@ def test_authorization_model_includes_table_view_permission() -> None:
     assert "can_manage_carbon_methods" in org.relations
     assert "can_manage_prediction_ledgers" in org.relations
     assert "can_manage_plan_snapshots" in org.relations
+    assert "can_manage_circle_sims" in org.relations
     assert "can_manage_weather_observations" in org.relations
     assert "can_manage_free_time_clocks" in org.relations
     assert "can_manage_telematics_connectors" in org.relations
@@ -287,6 +288,9 @@ def test_authorization_model_includes_table_view_permission() -> None:
     plan_snapshots = org.relations["can_manage_plan_snapshots"]
     assert plan_snapshots.computed_userset is not None
     assert plan_snapshots.computed_userset.relation == "member"
+    circle_sims = org.relations["can_manage_circle_sims"]
+    assert circle_sims.computed_userset is not None
+    assert circle_sims.computed_userset.relation == "member"
     weather_observations = org.relations["can_manage_weather_observations"]
     assert weather_observations.computed_userset is not None
     assert weather_observations.computed_userset.relation == "member"

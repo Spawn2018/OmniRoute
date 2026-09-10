@@ -613,3 +613,4 @@
 | 2026-09-10 | Plan 265.0 | B0b | plan_snapshot HITL trojka UUID bez FK, nie kolka i nie what-if. Delta zaakceptowana (/noc). Nastepny: kod 265.0. |
 | 2026-09-10 | 265.0 | B0b | plan_snapshot HITL trojka UUID bez FK. Nie kolka. Nie what-if. Nastepny: leftover kolka / circle_sim Plan. |
 | 2026-09-10 | Plan 266.0 | G2.20 | circle_sim HITL kod + para UN/LOCODE unload/load, nie silnik 500k. Delta zaakceptowana (`/noc`). Nastepny: kod 266.0. |
+| 2026-09-10 | 266.0 | G2.20 | circle_sim HITL kod + para UN/LOCODE unload/load. Nie silnik 500k. Nie km. Nastepny: leftover km ladowny/pusty/dolot Plan. |

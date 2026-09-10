@@ -528,6 +528,11 @@ export const OPS_JOBS = [
     label: "Migawka planu",
     job: "katalog plan_snapshot HITL",
   },
+  {
+    route: BUSINESS_LISTS.circleSim.route,
+    label: "Kółko",
+    job: "katalog circle_sim HITL",
+  },
   { route: BUSINESS_LISTS.users.route, label: "Użytkownicy", job: "tenant users" },
   { route: "/session", label: "Sesja", job: "token klienta" },
 ] as const
@@ -775,6 +780,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "263.0": "/task-templates",
   "264.0": "/outbox",
   "265.0": "/plan-snapshots",
+  "266.0": "/circle-sims",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

@@ -21,6 +21,7 @@ import { Route as ChargeCodesRouteImport } from './routes/charge-codes'
 import { Route as ChargeTemplatesRouteImport } from './routes/charge-templates'
 import { Route as ChargesRouteImport } from './routes/charges'
 import { Route as ChinaRailRouteImport } from './routes/china-rail'
+import { Route as CircleSimsRouteImport } from './routes/circle-sims'
 import { Route as ClaimsRouteImport } from './routes/claims'
 import { Route as CodRouteImport } from './routes/cod'
 import { Route as CommodityCodesRouteImport } from './routes/commodity-codes'
@@ -172,6 +173,11 @@ const ChargesRoute = ChargesRouteImport.update({
 const ChinaRailRoute = ChinaRailRouteImport.update({
   id: '/china-rail',
   path: '/china-rail',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CircleSimsRoute = CircleSimsRouteImport.update({
+  id: '/circle-sims',
+  path: '/circle-sims',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ClaimsRoute = ClaimsRouteImport.update({
@@ -648,6 +654,7 @@ export interface FileRoutesByFullPath {
   '/charge-templates': typeof ChargeTemplatesRoute
   '/charges': typeof ChargesRoute
   '/china-rail': typeof ChinaRailRoute
+  '/circle-sims': typeof CircleSimsRoute
   '/claims': typeof ClaimsRoute
   '/cod': typeof CodRoute
   '/commodity-codes': typeof CommodityCodesRoute
@@ -754,6 +761,7 @@ export interface FileRoutesByTo {
   '/charge-templates': typeof ChargeTemplatesRoute
   '/charges': typeof ChargesRoute
   '/china-rail': typeof ChinaRailRoute
+  '/circle-sims': typeof CircleSimsRoute
   '/claims': typeof ClaimsRoute
   '/cod': typeof CodRoute
   '/commodity-codes': typeof CommodityCodesRoute
@@ -861,6 +869,7 @@ export interface FileRoutesById {
   '/charge-templates': typeof ChargeTemplatesRoute
   '/charges': typeof ChargesRoute
   '/china-rail': typeof ChinaRailRoute
+  '/circle-sims': typeof CircleSimsRoute
   '/claims': typeof ClaimsRoute
   '/cod': typeof CodRoute
   '/commodity-codes': typeof CommodityCodesRoute
@@ -969,6 +978,7 @@ export interface FileRouteTypes {
     | '/charge-templates'
     | '/charges'
     | '/china-rail'
+    | '/circle-sims'
     | '/claims'
     | '/cod'
     | '/commodity-codes'
@@ -1075,6 +1085,7 @@ export interface FileRouteTypes {
     | '/charge-templates'
     | '/charges'
     | '/china-rail'
+    | '/circle-sims'
     | '/claims'
     | '/cod'
     | '/commodity-codes'
@@ -1181,6 +1192,7 @@ export interface FileRouteTypes {
     | '/charge-templates'
     | '/charges'
     | '/china-rail'
+    | '/circle-sims'
     | '/claims'
     | '/cod'
     | '/commodity-codes'
@@ -1288,6 +1300,7 @@ export interface RootRouteChildren {
   ChargeTemplatesRoute: typeof ChargeTemplatesRoute
   ChargesRoute: typeof ChargesRoute
   ChinaRailRoute: typeof ChinaRailRoute
+  CircleSimsRoute: typeof CircleSimsRoute
   ClaimsRoute: typeof ClaimsRoute
   CodRoute: typeof CodRoute
   CommodityCodesRoute: typeof CommodityCodesRoute
@@ -1466,6 +1479,13 @@ declare module '@tanstack/react-router' {
       path: '/china-rail'
       fullPath: '/china-rail'
       preLoaderRoute: typeof ChinaRailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/circle-sims': {
+      id: '/circle-sims'
+      path: '/circle-sims'
+      fullPath: '/circle-sims'
+      preLoaderRoute: typeof CircleSimsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/claims': {
@@ -2128,6 +2148,7 @@ const rootRouteChildren: RootRouteChildren = {
   ChargeTemplatesRoute: ChargeTemplatesRoute,
   ChargesRoute: ChargesRoute,
   ChinaRailRoute: ChinaRailRoute,
+  CircleSimsRoute: CircleSimsRoute,
   ClaimsRoute: ClaimsRoute,
   CodRoute: CodRoute,
   CommodityCodesRoute: CommodityCodesRoute,
