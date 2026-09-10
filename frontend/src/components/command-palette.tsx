@@ -172,6 +172,11 @@ const NAV_ACTIONS = [
     to: "/visibility-connectors",
   },
   {
+    id: "nav-purchase-orders",
+    label: "Idź do zamówienia zakupu",
+    to: "/purchase-orders",
+  },
+  {
     id: "nav-exchange-connectors",
     label: "Idź do konektora giełdy",
     to: "/exchange-connectors",

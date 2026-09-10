@@ -716,3 +716,7 @@ class InvalidTenantContractKek(DomainError):
 
 class InvalidVisibilityConnector(DomainError):
     """CT7: HITL konektor widoczności (p44) jako dane — nie live HTTP i nie feed."""
+
+
+class InvalidPurchaseOrder(DomainError):
+    """CT1: HITL nagłówek zamówienia zakupu — nie linia SKU i nie ASN."""

@@ -85,6 +85,7 @@ const NAV = [
   { to: "/customer-contracts", label: "Umowa klienta" },
   { to: "/tenant-contract-keks", label: "Znacznik KEK" },
   { to: "/visibility-connectors", label: "Konektor widoczności" },
+  { to: "/purchase-orders", label: "Zamówienie zakupu" },
   { to: "/exchange-connectors", label: "Konektor giełdy" },
   { to: "/terminal-slot-connectors", label: "Konektor slotu" },
   { to: "/weather-observations", label: "Pogoda" },

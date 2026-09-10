@@ -5135,6 +5135,50 @@ export type PredictionLedgerResponse = {
 };
 
 /**
+ * PurchaseOrderCreate
+ */
+export type PurchaseOrderCreate = {
+    /**
+     * Po Code
+     */
+    po_code: string;
+    /**
+     * Plant Label
+     */
+    plant_label?: string | null;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * PurchaseOrderResponse
+ */
+export type PurchaseOrderResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Po Code
+     */
+    po_code: string;
+    /**
+     * Plant Label
+     */
+    plant_label: string | null;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * QuotationBatchCreate
  */
 export type QuotationBatchCreate = {
@@ -13155,6 +13199,49 @@ export type CreateVisibilityConnectorApiV1VisibilityConnectorsPostResponses = {
 };
 
 export type CreateVisibilityConnectorApiV1VisibilityConnectorsPostResponse = CreateVisibilityConnectorApiV1VisibilityConnectorsPostResponses[keyof CreateVisibilityConnectorApiV1VisibilityConnectorsPostResponses];
+
+export type ListPurchaseOrdersApiV1PurchaseOrdersGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/purchase-orders';
+};
+
+export type ListPurchaseOrdersApiV1PurchaseOrdersGetResponses = {
+    /**
+     * Response List Purchase Orders Api V1 Purchase Orders Get
+     *
+     * Successful Response
+     */
+    200: Array<PurchaseOrderResponse>;
+};
+
+export type ListPurchaseOrdersApiV1PurchaseOrdersGetResponse = ListPurchaseOrdersApiV1PurchaseOrdersGetResponses[keyof ListPurchaseOrdersApiV1PurchaseOrdersGetResponses];
+
+export type CreatePurchaseOrderApiV1PurchaseOrdersPostData = {
+    body: PurchaseOrderCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/purchase-orders';
+};
+
+export type CreatePurchaseOrderApiV1PurchaseOrdersPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreatePurchaseOrderApiV1PurchaseOrdersPostError = CreatePurchaseOrderApiV1PurchaseOrdersPostErrors[keyof CreatePurchaseOrderApiV1PurchaseOrdersPostErrors];
+
+export type CreatePurchaseOrderApiV1PurchaseOrdersPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: PurchaseOrderResponse;
+};
+
+export type CreatePurchaseOrderApiV1PurchaseOrdersPostResponse = CreatePurchaseOrderApiV1PurchaseOrdersPostResponses[keyof CreatePurchaseOrderApiV1PurchaseOrdersPostResponses];
 
 export type ListTerminalSlotConnectorsApiV1TerminalSlotConnectorsGetData = {
     body?: never;

@@ -73,6 +73,7 @@ from app.api import (
     port_surcharges,
     ports,
     prediction_ledgers,
+    purchase_orders,
     quotations,
     quote_invoice_settlements,
     rank_marks,
@@ -212,6 +213,7 @@ api_router.include_router(exchange_connectors.router)
 api_router.include_router(idp_connectors.router)
 api_router.include_router(tenant_contract_keks.router)
 api_router.include_router(visibility_connectors.router)
+api_router.include_router(purchase_orders.router)
 api_router.include_router(terminal_slot_connectors.router)
 api_router.include_router(tower_impacts.router)
 api_router.include_router(twin_marks.router)

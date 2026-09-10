@@ -632,3 +632,5 @@
 | 2026-09-10 | 274.0 | CI9 | tenant_contract_kek HITL wrap_kind password/kms. Nie klucz. Nie materiał. Nastepny: leftover CT7 parked live / reszta pinu Plan. |
 | 2026-09-10 | Plan 275.0 | CT7 | visibility_connector HITL kod + kind p44, nie live track. Delta zaakceptowana (`/noc`). Nastepny: kod 275.0. |
 | 2026-09-10 | 275.0 | CT7 | visibility_connector HITL kind p44. Nie live track. Nie AIS. Nastepny: leftover CT1 purchase_order / reszta pinu Plan. |
+| 2026-09-10 | Plan 276.0 | CT1 | purchase_order HITL nagłówek kod + opcjonalny zakład. Delta zaakceptowana (`/noc`). Nastepny: kod 276.0. |
+| 2026-09-10 | 276.0 | CT1 | purchase_order HITL nagłówek. Nie po_line. Nie ASN. Nastepny: leftover CT1 po_line / ASN / reszta pinu Plan. |

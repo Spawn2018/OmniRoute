@@ -79,6 +79,7 @@ import { Route as PlanningRouteImport } from './routes/planning'
 import { Route as PortSurchargesRouteImport } from './routes/port-surcharges'
 import { Route as PortsRouteImport } from './routes/ports'
 import { Route as PredictionLedgersRouteImport } from './routes/prediction-ledgers'
+import { Route as PurchaseOrdersRouteImport } from './routes/purchase-orders'
 import { Route as QualityRouteImport } from './routes/quality'
 import { Route as QuotationsRouteImport } from './routes/quotations'
 import { Route as QuoteInvoicesRouteImport } from './routes/quote-invoices'
@@ -473,6 +474,11 @@ const PredictionLedgersRoute = PredictionLedgersRouteImport.update({
   path: '/prediction-ledgers',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PurchaseOrdersRoute = PurchaseOrdersRouteImport.update({
+  id: '/purchase-orders',
+  path: '/purchase-orders',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const QualityRoute = QualityRouteImport.update({
   id: '/quality',
   path: '/quality',
@@ -760,6 +766,7 @@ export interface FileRoutesByFullPath {
   '/port-surcharges': typeof PortSurchargesRoute
   '/ports': typeof PortsRoute
   '/prediction-ledgers': typeof PredictionLedgersRoute
+  '/purchase-orders': typeof PurchaseOrdersRoute
   '/quality': typeof QualityRoute
   '/quotations': typeof QuotationsRoute
   '/quote-invoices': typeof QuoteInvoicesRoute
@@ -875,6 +882,7 @@ export interface FileRoutesByTo {
   '/port-surcharges': typeof PortSurchargesRoute
   '/ports': typeof PortsRoute
   '/prediction-ledgers': typeof PredictionLedgersRoute
+  '/purchase-orders': typeof PurchaseOrdersRoute
   '/quality': typeof QualityRoute
   '/quotations': typeof QuotationsRoute
   '/quote-invoices': typeof QuoteInvoicesRoute
@@ -991,6 +999,7 @@ export interface FileRoutesById {
   '/port-surcharges': typeof PortSurchargesRoute
   '/ports': typeof PortsRoute
   '/prediction-ledgers': typeof PredictionLedgersRoute
+  '/purchase-orders': typeof PurchaseOrdersRoute
   '/quality': typeof QualityRoute
   '/quotations': typeof QuotationsRoute
   '/quote-invoices': typeof QuoteInvoicesRoute
@@ -1108,6 +1117,7 @@ export interface FileRouteTypes {
     | '/port-surcharges'
     | '/ports'
     | '/prediction-ledgers'
+    | '/purchase-orders'
     | '/quality'
     | '/quotations'
     | '/quote-invoices'
@@ -1223,6 +1233,7 @@ export interface FileRouteTypes {
     | '/port-surcharges'
     | '/ports'
     | '/prediction-ledgers'
+    | '/purchase-orders'
     | '/quality'
     | '/quotations'
     | '/quote-invoices'
@@ -1338,6 +1349,7 @@ export interface FileRouteTypes {
     | '/port-surcharges'
     | '/ports'
     | '/prediction-ledgers'
+    | '/purchase-orders'
     | '/quality'
     | '/quotations'
     | '/quote-invoices'
@@ -1454,6 +1466,7 @@ export interface RootRouteChildren {
   PortSurchargesRoute: typeof PortSurchargesRoute
   PortsRoute: typeof PortsRoute
   PredictionLedgersRoute: typeof PredictionLedgersRoute
+  PurchaseOrdersRoute: typeof PurchaseOrdersRoute
   QualityRoute: typeof QualityRoute
   QuotationsRoute: typeof QuotationsRoute
   QuoteInvoicesRoute: typeof QuoteInvoicesRoute
@@ -1991,6 +2004,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PredictionLedgersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/purchase-orders': {
+      id: '/purchase-orders'
+      path: '/purchase-orders'
+      fullPath: '/purchase-orders'
+      preLoaderRoute: typeof PurchaseOrdersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/quality': {
       id: '/quality'
       path: '/quality'
@@ -2366,6 +2386,7 @@ const rootRouteChildren: RootRouteChildren = {
   PortSurchargesRoute: PortSurchargesRoute,
   PortsRoute: PortsRoute,
   PredictionLedgersRoute: PredictionLedgersRoute,
+  PurchaseOrdersRoute: PurchaseOrdersRoute,
   QualityRoute: QualityRoute,
   QuotationsRoute: QuotationsRoute,
   QuoteInvoicesRoute: QuoteInvoicesRoute,

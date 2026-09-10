@@ -8856,6 +8856,80 @@
         ]
       }
     },
+    "/api/v1/purchase-orders": {
+      "get": {
+        "tags": [
+          "purchase-orders"
+        ],
+        "summary": "List Purchase Orders",
+        "operationId": "list_purchase_orders_api_v1_purchase_orders_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PurchaseOrderResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Purchase Orders Api V1 Purchase Orders Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "purchase-orders"
+        ],
+        "summary": "Create Purchase Order",
+        "operationId": "create_purchase_order_api_v1_purchase_orders_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PurchaseOrderCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PurchaseOrderResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/terminal-slot-connectors": {
       "get": {
         "tags": [
@@ -20920,6 +20994,78 @@
           "source_ref"
         ],
         "title": "PredictionLedgerResponse"
+      },
+      "PurchaseOrderCreate": {
+        "properties": {
+          "po_code": {
+            "type": "string",
+            "title": "Po Code"
+          },
+          "plant_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Plant Label"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "po_code",
+          "source_ref"
+        ],
+        "title": "PurchaseOrderCreate"
+      },
+      "PurchaseOrderResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "po_code": {
+            "type": "string",
+            "title": "Po Code"
+          },
+          "plant_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Plant Label"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "po_code",
+          "plant_label",
+          "source_ref"
+        ],
+        "title": "PurchaseOrderResponse"
       },
       "QuotationBatchCreate": {
         "properties": {

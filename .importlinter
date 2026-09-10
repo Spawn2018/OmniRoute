@@ -101,6 +101,7 @@ modules =
     app.services.customer_contracts
     app.services.tenant_contract_keks
     app.services.visibility_connectors
+    app.services.purchase_orders
     app.services.exchange_connectors
     app.services.idp_connectors
     app.services.terminal_slot_connectors
@@ -408,6 +409,9 @@ forbidden_modules =
     app.services.visibility_connectors
     app.repositories.visibility_connectors
     app.models.visibility_connector
+    app.services.purchase_orders
+    app.repositories.purchase_orders
+    app.models.purchase_order
     app.services.exchange_connectors
     app.repositories.exchange_connectors
     app.models.exchange_connector
