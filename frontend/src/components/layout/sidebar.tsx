@@ -39,6 +39,7 @@ const NAV = [
   { to: "/entity-events", label: "Zdarzenia podmiotu" },
   { to: "/shipments", label: "Zlecenia" },
   { to: "/fleet", label: "Flota" },
+  { to: "/planning", label: "Planowanie" },
   { to: "/tracking", label: "Tracking" },
   { to: "/exceptions", label: "Wyjątki" },
   { to: "/claims", label: "Reklamacje ładunku" },

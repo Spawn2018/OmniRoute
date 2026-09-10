@@ -513,6 +513,11 @@ export const OPS_JOBS = [
     label: "Flota",
     job: "zapis zasobu pojazdu/kierowcy/naczepy",
   },
+  {
+    route: BUSINESS_LISTS.planning.route,
+    label: "Planowanie",
+    job: "leniwy overlay etykiet trip",
+  },
   { route: BUSINESS_LISTS.users.route, label: "Użytkownicy", job: "tenant users" },
   { route: "/session", label: "Sesja", job: "token klienta" },
 ] as const
@@ -755,6 +760,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "258.0": "/shipments",
   "259.0": "/fleet",
   "260.0": "/consignments",
+  "261.0": "/planning",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

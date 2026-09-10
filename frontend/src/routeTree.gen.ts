@@ -68,6 +68,7 @@ import { Route as PartiesRouteImport } from './routes/parties'
 import { Route as PartyDocumentsRouteImport } from './routes/party-documents'
 import { Route as PartyScorecardsRouteImport } from './routes/party-scorecards'
 import { Route as PaymentsRouteImport } from './routes/payments'
+import { Route as PlanningRouteImport } from './routes/planning'
 import { Route as PortSurchargesRouteImport } from './routes/port-surcharges'
 import { Route as PortsRouteImport } from './routes/ports'
 import { Route as PredictionLedgersRouteImport } from './routes/prediction-ledgers'
@@ -406,6 +407,11 @@ const PaymentsRoute = PaymentsRouteImport.update({
   path: '/payments',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PlanningRoute = PlanningRouteImport.update({
+  id: '/planning',
+  path: '/planning',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PortSurchargesRoute = PortSurchargesRouteImport.update({
   id: '/port-surcharges',
   path: '/port-surcharges',
@@ -677,6 +683,7 @@ export interface FileRoutesByFullPath {
   '/party-documents': typeof PartyDocumentsRoute
   '/party-scorecards': typeof PartyScorecardsRoute
   '/payments': typeof PaymentsRoute
+  '/planning': typeof PlanningRoute
   '/port-surcharges': typeof PortSurchargesRoute
   '/ports': typeof PortsRoute
   '/prediction-ledgers': typeof PredictionLedgersRoute
@@ -780,6 +787,7 @@ export interface FileRoutesByTo {
   '/party-documents': typeof PartyDocumentsRoute
   '/party-scorecards': typeof PartyScorecardsRoute
   '/payments': typeof PaymentsRoute
+  '/planning': typeof PlanningRoute
   '/port-surcharges': typeof PortSurchargesRoute
   '/ports': typeof PortsRoute
   '/prediction-ledgers': typeof PredictionLedgersRoute
@@ -884,6 +892,7 @@ export interface FileRoutesById {
   '/party-documents': typeof PartyDocumentsRoute
   '/party-scorecards': typeof PartyScorecardsRoute
   '/payments': typeof PaymentsRoute
+  '/planning': typeof PlanningRoute
   '/port-surcharges': typeof PortSurchargesRoute
   '/ports': typeof PortsRoute
   '/prediction-ledgers': typeof PredictionLedgersRoute
@@ -989,6 +998,7 @@ export interface FileRouteTypes {
     | '/party-documents'
     | '/party-scorecards'
     | '/payments'
+    | '/planning'
     | '/port-surcharges'
     | '/ports'
     | '/prediction-ledgers'
@@ -1092,6 +1102,7 @@ export interface FileRouteTypes {
     | '/party-documents'
     | '/party-scorecards'
     | '/payments'
+    | '/planning'
     | '/port-surcharges'
     | '/ports'
     | '/prediction-ledgers'
@@ -1195,6 +1206,7 @@ export interface FileRouteTypes {
     | '/party-documents'
     | '/party-scorecards'
     | '/payments'
+    | '/planning'
     | '/port-surcharges'
     | '/ports'
     | '/prediction-ledgers'
@@ -1299,6 +1311,7 @@ export interface RootRouteChildren {
   PartyDocumentsRoute: typeof PartyDocumentsRoute
   PartyScorecardsRoute: typeof PartyScorecardsRoute
   PaymentsRoute: typeof PaymentsRoute
+  PlanningRoute: typeof PlanningRoute
   PortSurchargesRoute: typeof PortSurchargesRoute
   PortsRoute: typeof PortsRoute
   PredictionLedgersRoute: typeof PredictionLedgersRoute
@@ -1758,6 +1771,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PaymentsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/planning': {
+      id: '/planning'
+      path: '/planning'
+      fullPath: '/planning'
+      preLoaderRoute: typeof PlanningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/port-surcharges': {
       id: '/port-surcharges'
       path: '/port-surcharges'
@@ -2115,6 +2135,7 @@ const rootRouteChildren: RootRouteChildren = {
   PartyDocumentsRoute: PartyDocumentsRoute,
   PartyScorecardsRoute: PartyScorecardsRoute,
   PaymentsRoute: PaymentsRoute,
+  PlanningRoute: PlanningRoute,
   PortSurchargesRoute: PortSurchargesRoute,
   PortsRoute: PortsRoute,
   PredictionLedgersRoute: PredictionLedgersRoute,
