@@ -576,3 +576,4 @@
 | 2026-09-10 | 246.0 | B0a | quote_recorded z API przy POST answered. Nie live HTTP. Nie import BC. Nastepny: leftover stop_group/EXP1 Plan. |
 | 2026-09-10 | Plan 247.0 | T1 | weight_kg HITL na stop, nie tabela stop_group i nie VGM. Delta zaakceptowana (`/noc`). Nastepny: kod 247.0. |
 | 2026-09-10 | 247.0 | T1 | weight_kg HITL na stop. Nie VGM. Nie mapa. Nastepny: leftover T1 EXP1 ilosc/plomba Plan. |
+| 2026-09-10 | Plan 248.0 | T1 | quantity HITL na stop, nie opakowanie i nie plomba. Delta zaakceptowana (`/noc`). Nastepny: kod 248.0. |
