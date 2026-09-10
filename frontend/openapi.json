@@ -8412,6 +8412,80 @@
         ]
       }
     },
+    "/api/v1/erp-connectors": {
+      "get": {
+        "tags": [
+          "erp-connectors"
+        ],
+        "summary": "List Erp Connectors",
+        "operationId": "list_erp_connectors_api_v1_erp_connectors_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ErpConnectorResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Erp Connectors Api V1 Erp Connectors Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "erp-connectors"
+        ],
+        "summary": "Create Erp Connector",
+        "operationId": "create_erp_connector_api_v1_erp_connectors_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ErpConnectorCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErpConnectorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/tower-impacts": {
       "get": {
         "tags": [
@@ -15993,6 +16067,65 @@
           "source_ref"
         ],
         "title": "EntityEventResponse"
+      },
+      "ErpConnectorCreate": {
+        "properties": {
+          "connector_code": {
+            "type": "string",
+            "title": "Connector Code"
+          },
+          "system_kind": {
+            "type": "string",
+            "title": "System Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "connector_code",
+          "system_kind",
+          "source_ref"
+        ],
+        "title": "ErpConnectorCreate"
+      },
+      "ErpConnectorResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "connector_code": {
+            "type": "string",
+            "title": "Connector Code"
+          },
+          "system_kind": {
+            "type": "string",
+            "title": "System Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "connector_code",
+          "system_kind",
+          "source_ref"
+        ],
+        "title": "ErpConnectorResponse"
       },
       "ExecutiveMarkCreate": {
         "properties": {

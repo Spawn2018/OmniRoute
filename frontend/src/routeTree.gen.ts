@@ -35,6 +35,7 @@ import { Route as DockAppointmentsRouteImport } from './routes/dock-appointments
 import { Route as DocumentTemplatesRouteImport } from './routes/document-templates'
 import { Route as EdiRouteImport } from './routes/edi'
 import { Route as EntityEventsRouteImport } from './routes/entity-events'
+import { Route as ErpConnectorsRouteImport } from './routes/erp-connectors'
 import { Route as ExceptionsRouteImport } from './routes/exceptions'
 import { Route as ExecutiveMarksRouteImport } from './routes/executive-marks'
 import { Route as ExtractionsRouteImport } from './routes/extractions'
@@ -244,6 +245,11 @@ const EdiRoute = EdiRouteImport.update({
 const EntityEventsRoute = EntityEventsRouteImport.update({
   id: '/entity-events',
   path: '/entity-events',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ErpConnectorsRoute = ErpConnectorsRouteImport.update({
+  id: '/erp-connectors',
+  path: '/erp-connectors',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ExceptionsRoute = ExceptionsRouteImport.update({
@@ -674,6 +680,7 @@ export interface FileRoutesByFullPath {
   '/document-templates': typeof DocumentTemplatesRoute
   '/edi': typeof EdiRoute
   '/entity-events': typeof EntityEventsRoute
+  '/erp-connectors': typeof ErpConnectorsRoute
   '/exceptions': typeof ExceptionsRoute
   '/executive-marks': typeof ExecutiveMarksRoute
   '/extractions': typeof ExtractionsRoute
@@ -782,6 +789,7 @@ export interface FileRoutesByTo {
   '/document-templates': typeof DocumentTemplatesRoute
   '/edi': typeof EdiRoute
   '/entity-events': typeof EntityEventsRoute
+  '/erp-connectors': typeof ErpConnectorsRoute
   '/exceptions': typeof ExceptionsRoute
   '/executive-marks': typeof ExecutiveMarksRoute
   '/extractions': typeof ExtractionsRoute
@@ -891,6 +899,7 @@ export interface FileRoutesById {
   '/document-templates': typeof DocumentTemplatesRoute
   '/edi': typeof EdiRoute
   '/entity-events': typeof EntityEventsRoute
+  '/erp-connectors': typeof ErpConnectorsRoute
   '/exceptions': typeof ExceptionsRoute
   '/executive-marks': typeof ExecutiveMarksRoute
   '/extractions': typeof ExtractionsRoute
@@ -1001,6 +1010,7 @@ export interface FileRouteTypes {
     | '/document-templates'
     | '/edi'
     | '/entity-events'
+    | '/erp-connectors'
     | '/exceptions'
     | '/executive-marks'
     | '/extractions'
@@ -1109,6 +1119,7 @@ export interface FileRouteTypes {
     | '/document-templates'
     | '/edi'
     | '/entity-events'
+    | '/erp-connectors'
     | '/exceptions'
     | '/executive-marks'
     | '/extractions'
@@ -1217,6 +1228,7 @@ export interface FileRouteTypes {
     | '/document-templates'
     | '/edi'
     | '/entity-events'
+    | '/erp-connectors'
     | '/exceptions'
     | '/executive-marks'
     | '/extractions'
@@ -1326,6 +1338,7 @@ export interface RootRouteChildren {
   DocumentTemplatesRoute: typeof DocumentTemplatesRoute
   EdiRoute: typeof EdiRoute
   EntityEventsRoute: typeof EntityEventsRoute
+  ErpConnectorsRoute: typeof ErpConnectorsRoute
   ExceptionsRoute: typeof ExceptionsRoute
   ExecutiveMarksRoute: typeof ExecutiveMarksRoute
   ExtractionsRoute: typeof ExtractionsRoute
@@ -1590,6 +1603,13 @@ declare module '@tanstack/react-router' {
       path: '/entity-events'
       fullPath: '/entity-events'
       preLoaderRoute: typeof EntityEventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/erp-connectors': {
+      id: '/erp-connectors'
+      path: '/erp-connectors'
+      fullPath: '/erp-connectors'
+      preLoaderRoute: typeof ErpConnectorsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/exceptions': {
@@ -2182,6 +2202,7 @@ const rootRouteChildren: RootRouteChildren = {
   DocumentTemplatesRoute: DocumentTemplatesRoute,
   EdiRoute: EdiRoute,
   EntityEventsRoute: EntityEventsRoute,
+  ErpConnectorsRoute: ErpConnectorsRoute,
   ExceptionsRoute: ExceptionsRoute,
   ExecutiveMarksRoute: ExecutiveMarksRoute,
   ExtractionsRoute: ExtractionsRoute,

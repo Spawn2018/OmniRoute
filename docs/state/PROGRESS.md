@@ -616,3 +616,5 @@
 | 2026-09-10 | 266.0 | G2.20 | circle_sim HITL kod + para UN/LOCODE unload/load. Nie silnik 500k. Nie km. Nastepny: leftover km ladowny/pusty/dolot Plan. |
 | 2026-09-10 | Plan 267.0 | G2.21 | lane_km HITL ladowny/pusty/dolot Decimal, nie Haversine i nie trip. Delta zaakceptowana (`/noc`). Nastepny: kod 267.0. |
 | 2026-09-10 | 267.0 | G2.21 | lane_km HITL ladowny/pusty/dolot Decimal. Nie Haversine. Nie trip. Nastepny: leftover F9 Optima fixture Plan. |
+| 2026-09-10 | Plan 268.0 | F9 | erp_connector HITL kod + kind optima, nie live SOAP. Delta zaakceptowana (`/noc`). Nastepny: kod 268.0. |
+| 2026-09-10 | 268.0 | F9 | erp_connector HITL kod + kind optima. Nie live SOAP. Nie sekrety. Nastepny: leftover T8 Plan. |

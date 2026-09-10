@@ -688,3 +688,7 @@ class InvalidCircleSim(DomainError):
 
 class InvalidLaneKm(DomainError):
     """G2.21: HITL km ładowny/pusty/dolot jako dane — nie Haversine i nie trip."""
+
+
+class InvalidErpConnector(DomainError):
+    """F9: HITL konektor Optima jako dane — nie live SOAP i nie sekrety."""

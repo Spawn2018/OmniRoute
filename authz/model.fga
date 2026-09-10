@@ -86,6 +86,7 @@ type organization
     define can_manage_weather_observations: member
     define can_manage_free_time_clocks: member
     define can_manage_telematics_connectors: member
+    define can_manage_erp_connectors: member
     define can_manage_tower_impacts: member
     define can_manage_twin_marks: member
     define can_manage_war_room_marks: member

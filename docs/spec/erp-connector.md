@@ -9,4 +9,4 @@ Katalog konektora Comarch Optima per tenant. HITL kod + kind `optima`. Nie live 
 - Katalog INSERT, bez UPDATE/DELETE
 - Job: `/erp-connectors`
 
-Delta: [268.0](../deltas/open/268.0-erp-connector.md).
+Delta: [268.0](../deltas/archived/268.0-erp-connector.md).

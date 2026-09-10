@@ -80,6 +80,7 @@ const NAV = [
   { to: "/plan-snapshots", label: "Migawka planu" },
   { to: "/circle-sims", label: "Kółko" },
   { to: "/lane-kms", label: "Km ładowny" },
+  { to: "/erp-connectors", label: "Konektor Optima" },
   { to: "/weather-observations", label: "Pogoda" },
   { to: "/free-time-clocks", label: "Zegar DD" },
   { to: "/telematics-connectors", label: "Konektor GPS" },

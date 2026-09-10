@@ -538,6 +538,11 @@ export const OPS_JOBS = [
     label: "Km ładowny",
     job: "katalog lane_km HITL",
   },
+  {
+    route: BUSINESS_LISTS.erpConnector.route,
+    label: "Konektor Optima",
+    job: "katalog erp_connector HITL",
+  },
   { route: BUSINESS_LISTS.users.route, label: "Użytkownicy", job: "tenant users" },
   { route: "/session", label: "Sesja", job: "token klienta" },
 ] as const
@@ -787,6 +792,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "265.0": "/plan-snapshots",
   "266.0": "/circle-sims",
   "267.0": "/lane-kms",
+  "268.0": "/erp-connectors",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

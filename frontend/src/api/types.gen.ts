@@ -2351,6 +2351,50 @@ export type EntityEventResponse = {
 };
 
 /**
+ * ErpConnectorCreate
+ */
+export type ErpConnectorCreate = {
+    /**
+     * Connector Code
+     */
+    connector_code: string;
+    /**
+     * System Kind
+     */
+    system_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ErpConnectorResponse
+ */
+export type ErpConnectorResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Connector Code
+     */
+    connector_code: string;
+    /**
+     * System Kind
+     */
+    system_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * ExecutiveMarkCreate
  */
 export type ExecutiveMarkCreate = {
@@ -12529,6 +12573,49 @@ export type CreateTelematicsConnectorApiV1TelematicsConnectorsPostResponses = {
 };
 
 export type CreateTelematicsConnectorApiV1TelematicsConnectorsPostResponse = CreateTelematicsConnectorApiV1TelematicsConnectorsPostResponses[keyof CreateTelematicsConnectorApiV1TelematicsConnectorsPostResponses];
+
+export type ListErpConnectorsApiV1ErpConnectorsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/erp-connectors';
+};
+
+export type ListErpConnectorsApiV1ErpConnectorsGetResponses = {
+    /**
+     * Response List Erp Connectors Api V1 Erp Connectors Get
+     *
+     * Successful Response
+     */
+    200: Array<ErpConnectorResponse>;
+};
+
+export type ListErpConnectorsApiV1ErpConnectorsGetResponse = ListErpConnectorsApiV1ErpConnectorsGetResponses[keyof ListErpConnectorsApiV1ErpConnectorsGetResponses];
+
+export type CreateErpConnectorApiV1ErpConnectorsPostData = {
+    body: ErpConnectorCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/erp-connectors';
+};
+
+export type CreateErpConnectorApiV1ErpConnectorsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateErpConnectorApiV1ErpConnectorsPostError = CreateErpConnectorApiV1ErpConnectorsPostErrors[keyof CreateErpConnectorApiV1ErpConnectorsPostErrors];
+
+export type CreateErpConnectorApiV1ErpConnectorsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ErpConnectorResponse;
+};
+
+export type CreateErpConnectorApiV1ErpConnectorsPostResponse = CreateErpConnectorApiV1ErpConnectorsPostResponses[keyof CreateErpConnectorApiV1ErpConnectorsPostResponses];
 
 export type ListTowerImpactsApiV1TowerImpactsGetData = {
     body?: never;

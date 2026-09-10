@@ -147,6 +147,11 @@ const NAV_ACTIONS = [
     to: "/lane-kms",
   },
   {
+    id: "nav-erp-connectors",
+    label: "Idź do konektora Optima",
+    to: "/erp-connectors",
+  },
+  {
     id: "nav-weather-observations",
     label: "Idź do pogody",
     to: "/weather-observations",
