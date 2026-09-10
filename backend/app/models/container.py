@@ -66,6 +66,7 @@ class Container(Base, TimestampMixin):
     free_time_origin_h: Mapped[int | None] = mapped_column(Integer(), nullable=True)
     free_time_dest_h: Mapped[int | None] = mapped_column(Integer(), nullable=True)
     si_cutoff_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    ams_cutoff_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     superseded_by: Mapped[uuid.UUID | None] = mapped_column(
         UUID(as_uuid=True),
         ForeignKey("container.id", ondelete="RESTRICT"),

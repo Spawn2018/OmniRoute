@@ -227,6 +227,13 @@ def require_si_cutoff_at(raw: object) -> datetime | None:
     return parsed
 
 
+def require_ams_cutoff_at(raw: object) -> datetime | None:
+    try:
+        return require_si_cutoff_at(raw)
+    except InvalidContainer as exc:
+        raise InvalidContainer(str(exc).replace("si", "ams", 1)) from exc
+
+
 def require_container_ref_1(raw: object) -> str | None:
     if raw is None:
         return None

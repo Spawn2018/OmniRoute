@@ -25,6 +25,7 @@ from app.domain.container import (
     require_seal_no_1,
     require_seal_no_2,
     require_seal_no_3,
+    require_ams_cutoff_at,
     require_si_cutoff_at,
     require_vessel_name,
     require_voyage_no,
@@ -198,6 +199,17 @@ def test_si_cutoff_at_keeps_aware_clock_and_rejects_naive() -> None:
         require_si_cutoff_at("2026-09-10T12:00:00")
     with pytest.raises(InvalidContainer, match="si"):
         require_si_cutoff_at("not-iso")
+
+
+def test_ams_cutoff_at_reuses_aware_clock_and_rejects_naive() -> None:
+    clock = datetime(2026, 9, 10, 12, 0, tzinfo=UTC)
+    assert require_ams_cutoff_at(None) is None
+    assert require_ams_cutoff_at("  ") is None
+    assert require_ams_cutoff_at("2026-09-10T12:00:00+00:00") == clock
+    with pytest.raises(InvalidContainer, match="ams"):
+        require_ams_cutoff_at("2026-09-10T12:00:00")
+    with pytest.raises(InvalidContainer, match="ams"):
+        require_ams_cutoff_at("not-iso")
 
 
 @given(st.sampled_from(["CSQU3054384", "MSCU1234567", "ABCD"]))

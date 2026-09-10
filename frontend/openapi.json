@@ -13839,6 +13839,15 @@
               }
             ],
             "title": "Si Cutoff At"
+          },
+          "ams_cutoff_at": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ams Cutoff At"
           }
         },
         "additionalProperties": false,
@@ -14100,6 +14109,18 @@
             ],
             "title": "Si Cutoff At"
           },
+          "ams_cutoff_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ams Cutoff At"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -14141,6 +14162,7 @@
           "free_time_origin_h",
           "free_time_dest_h",
           "si_cutoff_at",
+          "ams_cutoff_at",
           "superseded_by"
         ],
         "title": "ContainerResponse"

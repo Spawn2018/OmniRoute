@@ -134,6 +134,7 @@ def test_http_create_list_supersede_and_reject_check_digit(box_client: object) -
     assert first.json()["free_time_origin_h"] is None
     assert first.json()["free_time_dest_h"] is None
     assert first.json()["si_cutoff_at"] is None
+    assert first.json()["ams_cutoff_at"] is None
     assert "amount" not in first.json()
     assert "vgm" not in first.json()
     second = client.post(
@@ -915,3 +916,40 @@ def test_http_rejects_naive_si_cutoff_at(box_client: object) -> None:
     )
     assert reply.status_code == 400
     assert "si" in reply.json()["detail"]
+
+
+def test_http_create_container_with_ams_cutoff_at(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "ams_cutoff_at": "2026-09-10T12:00:00+00:00",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["ams_cutoff_at"].startswith("2026-09-10T12:00:00")
+    assert created.json()["si_cutoff_at"] is None
+    assert "pin" not in created.json()
+    assert "vgm" not in created.json()
+
+
+def test_http_rejects_naive_ams_cutoff_at(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "ams_cutoff_at": "2026-09-10T12:00:00",
+        },
+    )
+    assert reply.status_code == 400
+    assert "ams" in reply.json()["detail"]

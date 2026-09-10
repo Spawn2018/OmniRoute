@@ -1316,6 +1316,10 @@ export type ContainerCreate = {
      * Si Cutoff At
      */
     si_cutoff_at?: unknown | null;
+    /**
+     * Ams Cutoff At
+     */
+    ams_cutoff_at?: unknown | null;
 };
 
 /**
@@ -1426,6 +1430,10 @@ export type ContainerResponse = {
      * Si Cutoff At
      */
     si_cutoff_at: string | null;
+    /**
+     * Ams Cutoff At
+     */
+    ams_cutoff_at: string | null;
     /**
      * Superseded By
      */
