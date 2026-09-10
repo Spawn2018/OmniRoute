@@ -8486,6 +8486,80 @@
         ]
       }
     },
+    "/api/v1/exchange-connectors": {
+      "get": {
+        "tags": [
+          "exchange-connectors"
+        ],
+        "summary": "List Exchange Connectors",
+        "operationId": "list_exchange_connectors_api_v1_exchange_connectors_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ExchangeConnectorResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Exchange Connectors Api V1 Exchange Connectors Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "exchange-connectors"
+        ],
+        "summary": "Create Exchange Connector",
+        "operationId": "create_exchange_connector_api_v1_exchange_connectors_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExchangeConnectorCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExchangeConnectorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/idp-connectors": {
       "get": {
         "tags": [
@@ -16274,6 +16348,65 @@
           "source_ref"
         ],
         "title": "ErpConnectorResponse"
+      },
+      "ExchangeConnectorCreate": {
+        "properties": {
+          "connector_code": {
+            "type": "string",
+            "title": "Connector Code"
+          },
+          "system_kind": {
+            "type": "string",
+            "title": "System Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "connector_code",
+          "system_kind",
+          "source_ref"
+        ],
+        "title": "ExchangeConnectorCreate"
+      },
+      "ExchangeConnectorResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "connector_code": {
+            "type": "string",
+            "title": "Connector Code"
+          },
+          "system_kind": {
+            "type": "string",
+            "title": "System Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "connector_code",
+          "system_kind",
+          "source_ref"
+        ],
+        "title": "ExchangeConnectorResponse"
       },
       "ExecutiveMarkCreate": {
         "properties": {

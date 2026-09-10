@@ -82,6 +82,7 @@ def test_authorization_model_includes_table_view_permission() -> None:
     assert "can_manage_free_time_clocks" in org.relations
     assert "can_manage_telematics_connectors" in org.relations
     assert "can_manage_erp_connectors" in org.relations
+    assert "can_manage_exchange_connectors" in org.relations
     assert "can_manage_idp_connectors" in org.relations
     assert "can_manage_terminal_slot_connectors" in org.relations
     assert "can_manage_tower_impacts" in org.relations
@@ -310,6 +311,9 @@ def test_authorization_model_includes_table_view_permission() -> None:
     erp_connectors = org.relations["can_manage_erp_connectors"]
     assert erp_connectors.computed_userset is not None
     assert erp_connectors.computed_userset.relation == "member"
+    exchange_connectors = org.relations["can_manage_exchange_connectors"]
+    assert exchange_connectors.computed_userset is not None
+    assert exchange_connectors.computed_userset.relation == "member"
     idp_connectors = org.relations["can_manage_idp_connectors"]
     assert idp_connectors.computed_userset is not None
     assert idp_connectors.computed_userset.relation == "member"

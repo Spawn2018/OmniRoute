@@ -31,6 +31,7 @@ from app.api import (
     edi_messages,
     entity_events,
     erp_connectors,
+    exchange_connectors,
     executive_marks,
     extractions,
     field_carry_forwards,
@@ -203,6 +204,7 @@ api_router.include_router(weather_observations.router)
 api_router.include_router(free_time_clocks.router)
 api_router.include_router(telematics_connectors.router)
 api_router.include_router(erp_connectors.router)
+api_router.include_router(exchange_connectors.router)
 api_router.include_router(idp_connectors.router)
 api_router.include_router(terminal_slot_connectors.router)
 api_router.include_router(tower_impacts.router)

@@ -2395,6 +2395,50 @@ export type ErpConnectorResponse = {
 };
 
 /**
+ * ExchangeConnectorCreate
+ */
+export type ExchangeConnectorCreate = {
+    /**
+     * Connector Code
+     */
+    connector_code: string;
+    /**
+     * System Kind
+     */
+    system_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ExchangeConnectorResponse
+ */
+export type ExchangeConnectorResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Connector Code
+     */
+    connector_code: string;
+    /**
+     * System Kind
+     */
+    system_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * ExecutiveMarkCreate
  */
 export type ExecutiveMarkCreate = {
@@ -12744,6 +12788,49 @@ export type CreateErpConnectorApiV1ErpConnectorsPostResponses = {
 };
 
 export type CreateErpConnectorApiV1ErpConnectorsPostResponse = CreateErpConnectorApiV1ErpConnectorsPostResponses[keyof CreateErpConnectorApiV1ErpConnectorsPostResponses];
+
+export type ListExchangeConnectorsApiV1ExchangeConnectorsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/exchange-connectors';
+};
+
+export type ListExchangeConnectorsApiV1ExchangeConnectorsGetResponses = {
+    /**
+     * Response List Exchange Connectors Api V1 Exchange Connectors Get
+     *
+     * Successful Response
+     */
+    200: Array<ExchangeConnectorResponse>;
+};
+
+export type ListExchangeConnectorsApiV1ExchangeConnectorsGetResponse = ListExchangeConnectorsApiV1ExchangeConnectorsGetResponses[keyof ListExchangeConnectorsApiV1ExchangeConnectorsGetResponses];
+
+export type CreateExchangeConnectorApiV1ExchangeConnectorsPostData = {
+    body: ExchangeConnectorCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/exchange-connectors';
+};
+
+export type CreateExchangeConnectorApiV1ExchangeConnectorsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateExchangeConnectorApiV1ExchangeConnectorsPostError = CreateExchangeConnectorApiV1ExchangeConnectorsPostErrors[keyof CreateExchangeConnectorApiV1ExchangeConnectorsPostErrors];
+
+export type CreateExchangeConnectorApiV1ExchangeConnectorsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ExchangeConnectorResponse;
+};
+
+export type CreateExchangeConnectorApiV1ExchangeConnectorsPostResponse = CreateExchangeConnectorApiV1ExchangeConnectorsPostResponses[keyof CreateExchangeConnectorApiV1ExchangeConnectorsPostResponses];
 
 export type ListIdpConnectorsApiV1IdpConnectorsGetData = {
     body?: never;

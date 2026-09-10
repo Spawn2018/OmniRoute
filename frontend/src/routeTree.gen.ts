@@ -37,6 +37,7 @@ import { Route as EdiRouteImport } from './routes/edi'
 import { Route as EntityEventsRouteImport } from './routes/entity-events'
 import { Route as ErpConnectorsRouteImport } from './routes/erp-connectors'
 import { Route as ExceptionsRouteImport } from './routes/exceptions'
+import { Route as ExchangeConnectorsRouteImport } from './routes/exchange-connectors'
 import { Route as ExecutiveMarksRouteImport } from './routes/executive-marks'
 import { Route as ExtractionsRouteImport } from './routes/extractions'
 import { Route as FinanceRouteImport } from './routes/finance'
@@ -257,6 +258,11 @@ const ErpConnectorsRoute = ErpConnectorsRouteImport.update({
 const ExceptionsRoute = ExceptionsRouteImport.update({
   id: '/exceptions',
   path: '/exceptions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExchangeConnectorsRoute = ExchangeConnectorsRouteImport.update({
+  id: '/exchange-connectors',
+  path: '/exchange-connectors',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ExecutiveMarksRoute = ExecutiveMarksRouteImport.update({
@@ -694,6 +700,7 @@ export interface FileRoutesByFullPath {
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/exceptions': typeof ExceptionsRoute
+  '/exchange-connectors': typeof ExchangeConnectorsRoute
   '/executive-marks': typeof ExecutiveMarksRoute
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
@@ -805,6 +812,7 @@ export interface FileRoutesByTo {
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/exceptions': typeof ExceptionsRoute
+  '/exchange-connectors': typeof ExchangeConnectorsRoute
   '/executive-marks': typeof ExecutiveMarksRoute
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
@@ -917,6 +925,7 @@ export interface FileRoutesById {
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/exceptions': typeof ExceptionsRoute
+  '/exchange-connectors': typeof ExchangeConnectorsRoute
   '/executive-marks': typeof ExecutiveMarksRoute
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
@@ -1364,6 +1373,7 @@ export interface RootRouteChildren {
   EntityEventsRoute: typeof EntityEventsRoute
   ErpConnectorsRoute: typeof ErpConnectorsRoute
   ExceptionsRoute: typeof ExceptionsRoute
+  ExchangeConnectorsRoute: typeof ExchangeConnectorsRoute
   ExecutiveMarksRoute: typeof ExecutiveMarksRoute
   ExtractionsRoute: typeof ExtractionsRoute
   FinanceRoute: typeof FinanceRoute
@@ -1643,6 +1653,13 @@ declare module '@tanstack/react-router' {
       path: '/exceptions'
       fullPath: '/exceptions'
       preLoaderRoute: typeof ExceptionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/exchange-connectors': {
+      id: '/exchange-connectors'
+      path: '/exchange-connectors'
+      fullPath: '/exchange-connectors'
+      preLoaderRoute: typeof ExchangeConnectorsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/executive-marks': {
@@ -2244,6 +2261,7 @@ const rootRouteChildren: RootRouteChildren = {
   EntityEventsRoute: EntityEventsRoute,
   ErpConnectorsRoute: ErpConnectorsRoute,
   ExceptionsRoute: ExceptionsRoute,
+  ExchangeConnectorsRoute: ExchangeConnectorsRoute,
   ExecutiveMarksRoute: ExecutiveMarksRoute,
   ExtractionsRoute: ExtractionsRoute,
   FinanceRoute: FinanceRoute,

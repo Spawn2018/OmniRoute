@@ -157,6 +157,11 @@ const NAV_ACTIONS = [
     to: "/idp-connectors",
   },
   {
+    id: "nav-exchange-connectors",
+    label: "Idź do konektora giełdy",
+    to: "/exchange-connectors",
+  },
+  {
     id: "nav-terminal-slot-connectors",
     label: "Idź do konektora slotu",
     to: "/terminal-slot-connectors",

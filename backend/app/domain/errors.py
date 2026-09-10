@@ -700,3 +700,7 @@ class InvalidTerminalSlotConnector(DomainError):
 
 class InvalidIdpConnector(DomainError):
     """S53: HITL konektor IdP (auth0) jako dane — nie login i nie live HTTP."""
+
+
+class InvalidExchangeConnector(DomainError):
+    """S55: HITL konektor giełdy (trans_eu) jako dane — nie live HTTP i nie SPA."""
