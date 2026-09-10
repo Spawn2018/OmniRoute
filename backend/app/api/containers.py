@@ -9,6 +9,7 @@ from app.api.deps import get_current_identity, require_permission, require_tenan
 from app.core.session_token import SessionIdentity
 from app.models.container import Container
 from app.services.containers.container_service import ContainerService, _WriteBox
+from app.services.parties.party_service import PartyService
 from app.services.shipments.shipment_service import ShipmentService
 
 router = APIRouter(prefix="/containers", tags=["containers"])
@@ -51,6 +52,7 @@ class ContainerCreate(BaseModel):
     vgm_cutoff_at: object | None = None
     last_survey_at: object | None = None
     booking_no: object | None = None
+    carrier_party_id: UUID | None = None
 
 
 class ContainerResponse(BaseModel):
@@ -90,6 +92,7 @@ class ContainerResponse(BaseModel):
     vgm_cutoff_at: datetime | None
     last_survey_at: datetime | None
     booking_no: str | None
+    carrier_party_id: UUID | None
     superseded_by: UUID | None
 
 
@@ -99,7 +102,11 @@ def _as_response(row: Container) -> ContainerResponse:
     return ContainerResponse.model_validate(dumped)
 
 
-def _write_from_body(body: ContainerCreate, shipment_id: UUID | None) -> _WriteBox:
+def _write_from_body(
+    body: ContainerCreate,
+    shipment_id: UUID | None,
+    carrier_id: UUID | None,
+) -> _WriteBox:
     return _WriteBox(
         body.container_no,
         body.iso_size_type,
@@ -133,6 +140,7 @@ def _write_from_body(body: ContainerCreate, shipment_id: UUID | None) -> _WriteB
         body.vgm_cutoff_at,
         body.last_survey_at,
         body.booking_no,
+        carrier_id,
     )
 
 
@@ -140,6 +148,13 @@ async def _bound_shipment(session: AsyncSession, shipment_id: UUID | None) -> UU
     if shipment_id is None:
         return None
     row = await ShipmentService(session).get_shipment(shipment_id)
+    return row.id
+
+
+async def _bound_carrier(session: AsyncSession, carrier_id: UUID | None) -> UUID | None:
+    if carrier_id is None:
+        return None
+    row = await PartyService(session).get_party(carrier_id)
     return row.id
 
 
@@ -162,10 +177,11 @@ async def create_container(
     identity: SessionIdentity = Depends(get_current_identity),
 ) -> ContainerResponse:
     shipment_id = await _bound_shipment(session, body.shipment_id)
+    carrier_id = await _bound_carrier(session, body.carrier_party_id)
     row = await ContainerService(session).record_container(
         organization_id=identity.organization_id,
         user_id=identity.user_id,
-        write=_write_from_body(body, shipment_id),
+        write=_write_from_body(body, shipment_id, carrier_id),
     )
     await session.commit()
     return _as_response(row)

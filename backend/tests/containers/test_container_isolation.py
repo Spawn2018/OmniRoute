@@ -8,6 +8,7 @@ from sqlalchemy.exc import IntegrityError
 
 from app.core.database import bind_tenant
 from app.models.container import Container
+from app.models.party import Party
 from tests.sales_invoices.test_sales_invoice_isolation import _booked
 
 
@@ -730,3 +731,39 @@ async def test_container_booking_no_same_tenant(session, two_tenants) -> None:
     await bind_tenant(session, org_a.id)
     loaded = list((await session.scalars(select(Container))).all())
     assert loaded[0].booking_no == "BK123456"
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_container_carrier_party_id_same_tenant(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    user_a = two_tenants["user_a"]
+    await bind_tenant(session, org_a.id)
+    carrier = Party(
+        id=uuid4(),
+        organization_id=org_a.id,
+        legal_name="Line A",
+        country_code="PL",
+        roles=["carrier"],
+        source_ref="tenant:manual",
+        is_active=True,
+        created_by=user_a.id,
+    )
+    session.add(carrier)
+    await session.flush()
+    session.add(
+        Container(
+            id=uuid4(),
+            organization_id=org_a.id,
+            container_no="CSQU3054383",
+            iso_size_type="22G1",
+            source_ref="fixture://container/carrier",
+            carrier_party_id=carrier.id,
+            created_by=user_a.id,
+        ),
+    )
+    await session.flush()
+    session.expunge_all()
+    await bind_tenant(session, org_a.id)
+    loaded = list((await session.scalars(select(Container))).all())
+    assert loaded[0].carrier_party_id == carrier.id

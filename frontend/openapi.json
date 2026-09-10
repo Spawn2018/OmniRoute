@@ -13911,6 +13911,18 @@
               }
             ],
             "title": "Booking No"
+          },
+          "carrier_party_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Carrier Party Id"
           }
         },
         "additionalProperties": false,
@@ -14265,6 +14277,18 @@
             ],
             "title": "Booking No"
           },
+          "carrier_party_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Carrier Party Id"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -14314,6 +14338,7 @@
           "vgm_cutoff_at",
           "last_survey_at",
           "booking_no",
+          "carrier_party_id",
           "superseded_by"
         ],
         "title": "ContainerResponse"

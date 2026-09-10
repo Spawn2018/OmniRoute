@@ -1348,6 +1348,10 @@ export type ContainerCreate = {
      * Booking No
      */
     booking_no?: unknown | null;
+    /**
+     * Carrier Party Id
+     */
+    carrier_party_id?: string | null;
 };
 
 /**
@@ -1490,6 +1494,10 @@ export type ContainerResponse = {
      * Booking No
      */
     booking_no: string | null;
+    /**
+     * Carrier Party Id
+     */
+    carrier_party_id: string | null;
     /**
      * Superseded By
      */

@@ -9,6 +9,7 @@ from app.domain.container import require_iso_size_type
 from app.domain.errors import ResourceNotFound
 from app.main import app
 from app.models.container import Container
+from app.models.party import Party
 from app.models.shipment import Shipment
 from app.services.containers.container_service import (
     _box_draft,
@@ -31,6 +32,17 @@ class AllowAllAuthz:
         object_id: UUID,
     ) -> bool:
         return True
+
+
+class StubPartyService:
+    def __init__(self) -> None:
+        self.rows: list[Party] = []
+
+    async def get_party(self, party_id: UUID) -> Party:
+        for row in self.rows:
+            if row.id == party_id:
+                return row
+        raise ResourceNotFound(f"nieznany kontrahent: {party_id}")
 
 
 class StubShipmentService:
@@ -87,6 +99,8 @@ class StubContainerService:
 def box_client(monkeypatch: pytest.MonkeyPatch) -> object:
     boxes = StubContainerService(object())
     jobs = StubShipmentService(object())
+    counterparts = StubPartyService()
+    boxes.counterparts = counterparts
 
     async def _fake_tenant_session() -> object:
         session = AsyncMock()
@@ -95,6 +109,7 @@ def box_client(monkeypatch: pytest.MonkeyPatch) -> object:
 
     monkeypatch.setattr("app.api.containers.ContainerService", lambda _s: boxes)
     monkeypatch.setattr("app.api.containers.ShipmentService", lambda _s: jobs)
+    monkeypatch.setattr("app.api.containers.PartyService", lambda _s: counterparts)
     set_authz_checker(AllowAllAuthz())
     app.dependency_overrides[require_tenant_session] = _fake_tenant_session
     yield TestClient(app), boxes, jobs
@@ -142,6 +157,7 @@ def test_http_create_list_supersede_and_reject_check_digit(box_client: object) -
     assert first.json()["vgm_cutoff_at"] is None
     assert first.json()["last_survey_at"] is None
     assert first.json()["booking_no"] is None
+    assert first.json()["carrier_party_id"] is None
     assert "amount" not in first.json()
     assert "vgm" not in first.json()
     second = client.post(
@@ -1180,3 +1196,49 @@ def test_http_rejects_too_long_booking_no(box_client: object) -> None:
     )
     assert reply.status_code == 400
     assert "booking" in reply.json()["detail"]
+
+
+def test_http_create_container_with_carrier_party_id(box_client: object) -> None:
+    client, boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    carrier = Party(
+        id=uuid4(),
+        organization_id=uuid4(),
+        legal_name="Line",
+        country_code="PL",
+        roles=["carrier"],
+        source_ref="tenant:manual",
+        is_active=True,
+    )
+    boxes.counterparts.rows.append(carrier)
+    created = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "carrier_party_id": str(carrier.id),
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["carrier_party_id"] == str(carrier.id)
+    assert created.json()["booking_no"] is None
+    assert "pin" not in created.json()
+
+
+def test_http_rejects_unknown_carrier_party_id(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "carrier_party_id": str(uuid4()),
+        },
+    )
+    assert reply.status_code == 404
+    assert "kontrahent" in reply.json()["detail"]

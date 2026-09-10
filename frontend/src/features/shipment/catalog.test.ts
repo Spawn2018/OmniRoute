@@ -68,6 +68,7 @@ describe("shipment surface for 28.0 and 90.0", () => {
     expect(box).toContain("Zapisz kontener")
     expect(box).not.toContain("parseFloat")
     expect(box).toContain("vgm_kg")
+    expect(box).toContain("carrier_party_id")
     expect(page).not.toContain("fetchQuotations")
     expect(page).not.toContain("quotationAcceptancePending")
     const panel = readFileSync(path.join(srcRoot, "features/shipment/shipment-stakeholder-panel.tsx"), "utf8")

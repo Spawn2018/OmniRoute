@@ -1,5 +1,6 @@
 from datetime import UTC, datetime
 from decimal import Decimal
+from uuid import uuid4
 
 import pytest
 from hypothesis import given
@@ -9,6 +10,7 @@ from app.domain.container import (
     require_ams_cutoff_at,
     require_booking_no,
     require_cargo_description,
+    require_carrier_party_id,
     require_cfs_cutoff_at,
     require_container_bl_kind,
     require_container_no,
@@ -103,6 +105,14 @@ def test_booking_no_omits_blank_and_keeps_token() -> None:
     assert require_booking_no(" BK123456 ") == "BK123456"
     with pytest.raises(InvalidContainer, match="booking"):
         require_booking_no("x" * 65)
+
+
+def test_carrier_party_id_accepts_uuid_and_rejects_text() -> None:
+    mark = uuid4()
+    assert require_carrier_party_id(None) is None
+    assert require_carrier_party_id(mark) == mark
+    with pytest.raises(InvalidContainer, match="armatora"):
+        require_carrier_party_id(str(mark))
 
 
 def test_container_remarks_omits_blank_and_keeps_token() -> None:

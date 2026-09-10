@@ -9,6 +9,7 @@ from app.domain.container import (
     require_ams_cutoff_at,
     require_booking_no,
     require_cargo_description,
+    require_carrier_party_id,
     require_cfs_cutoff_at,
     require_container_bl_kind,
     require_container_no,
@@ -76,6 +77,7 @@ class _WriteBox(NamedTuple):
     vgm: object
     survey: object
     book: object
+    carrier: object
 
 
 class _BoxDraft(NamedTuple):
@@ -111,6 +113,7 @@ class _BoxDraft(NamedTuple):
     vgm: datetime | None
     survey: datetime | None
     book: str | None
+    carrier: UUID | None
 
 
 def _box_draft(write: _WriteBox) -> _BoxDraft:
@@ -147,6 +150,7 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_vgm_cutoff_at(write.vgm),
         require_last_survey_at(write.survey),
         require_booking_no(write.book),
+        require_carrier_party_id(write.carrier),
     )
 
 
@@ -183,6 +187,7 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.vgm_cutoff_at == draft.vgm
         and current.last_survey_at == draft.survey
         and current.booking_no == draft.book
+        and current.carrier_party_id == draft.carrier
     )
 
 
@@ -222,6 +227,7 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         vgm_cutoff_at=draft.vgm,
         last_survey_at=draft.survey,
         booking_no=draft.book,
+        carrier_party_id=draft.carrier,
         created_by=user_id,
     )
 
