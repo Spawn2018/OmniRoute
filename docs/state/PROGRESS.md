@@ -580,3 +580,4 @@
 | 2026-09-10 | 248.0 | T1 | quantity HITL na stop. Nie opakowanie. Nie mapa. Nastepny: leftover T1 EXP1 opakowanie/plomba Plan. |
 | 2026-09-10 | Plan 249.0 | T1 | packaging_code HITL na stop, nie plomba i nie FK slownika. Delta zaakceptowana (`/noc`). Nastepny: kod 249.0. |
 | 2026-09-10 | 249.0 | T1 | packaging_code HITL na stop. Nie plomba. Nie mapa. Nastepny: leftover T1 EXP1 plomba/awizacja Plan. |
+| 2026-09-10 | Plan 250.0 | T1 | seal_in HITL na stop, nie seal_out i nie awizacja. Delta zaakceptowana (`/noc`). Nastepny: kod 250.0. |
