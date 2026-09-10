@@ -602,3 +602,4 @@
 | 2026-09-10 | 259.0 | T2 | trasa /fleet na resource. Nie GPS. Nie HW. Nastepny: leftover N1 consignment Plan. |
 | 2026-09-10 | Plan 260.0 | N1 | consignment HITL na shipment, N wierszy, nie FTL unique i nie mapa. Delta zaakceptowana (`/noc`). Nastepny: kod 260.0. |
 | 2026-09-10 | 260.0 | N1 | consignment HITL na shipment. N wierszy. Nie mapa. Nastepny: leftover T6 mapa Plan. |
+| 2026-09-10 | Plan 261.0 | T6 | trasa /planning + mapa lazy na trip, nie GPS i nie 4 widoki. Delta zaakceptowana (`/noc`). Nastepny: kod 261.0. |
