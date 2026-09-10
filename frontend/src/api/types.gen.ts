@@ -1340,6 +1340,10 @@ export type ContainerCreate = {
      * Vgm Cutoff At
      */
     vgm_cutoff_at?: unknown | null;
+    /**
+     * Last Survey At
+     */
+    last_survey_at?: unknown | null;
 };
 
 /**
@@ -1474,6 +1478,10 @@ export type ContainerResponse = {
      * Vgm Cutoff At
      */
     vgm_cutoff_at: string | null;
+    /**
+     * Last Survey At
+     */
+    last_survey_at: string | null;
     /**
      * Superseded By
      */

@@ -24,6 +24,7 @@ from app.domain.container import (
     require_free_time_dest_h,
     require_free_time_origin_h,
     require_iso_size_type,
+    require_last_survey_at,
     require_packaging_code,
     require_pickup_terminal,
     require_return_terminal,
@@ -72,6 +73,7 @@ class _WriteBox(NamedTuple):
     mass: object
     weigh: object
     vgm: object
+    survey: object
 
 
 class _BoxDraft(NamedTuple):
@@ -105,6 +107,7 @@ class _BoxDraft(NamedTuple):
     mass: Decimal | None
     weigh: str | None
     vgm: datetime | None
+    survey: datetime | None
 
 
 def _box_draft(write: _WriteBox) -> _BoxDraft:
@@ -139,6 +142,7 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_vgm_kg(write.mass),
         require_vgm_method(write.weigh),
         require_vgm_cutoff_at(write.vgm),
+        require_last_survey_at(write.survey),
     )
 
 
@@ -173,6 +177,7 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.vgm_kg == draft.mass
         and current.vgm_method == draft.weigh
         and current.vgm_cutoff_at == draft.vgm
+        and current.last_survey_at == draft.survey
     )
 
 
@@ -210,6 +215,7 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         vgm_kg=draft.mass,
         vgm_method=draft.weigh,
         vgm_cutoff_at=draft.vgm,
+        last_survey_at=draft.survey,
         created_by=user_id,
     )
 

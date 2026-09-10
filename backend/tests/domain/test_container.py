@@ -23,6 +23,7 @@ from app.domain.container import (
     require_free_time_dest_h,
     require_free_time_origin_h,
     require_iso_size_type,
+    require_last_survey_at,
     require_packaging_code,
     require_pickup_terminal,
     require_return_terminal,
@@ -255,6 +256,17 @@ def test_vgm_bundle_accepts_decimal_solas_and_aware_clock() -> None:
         require_vgm_method("weighed")
     with pytest.raises(InvalidContainer, match="vgm"):
         require_vgm_cutoff_at("2026-09-10T12:00:00")
+
+
+def test_last_survey_at_reuses_aware_clock_and_rejects_naive() -> None:
+    clock = datetime(2026, 9, 10, 12, 0, tzinfo=UTC)
+    assert require_last_survey_at(None) is None
+    assert require_last_survey_at("  ") is None
+    assert require_last_survey_at("2026-09-10T12:00:00+00:00") == clock
+    with pytest.raises(InvalidContainer, match="survey"):
+        require_last_survey_at("2026-09-10T12:00:00")
+    with pytest.raises(InvalidContainer, match="survey"):
+        require_last_survey_at("not-iso")
 
 
 @given(st.sampled_from(["CSQU3054384", "MSCU1234567", "ABCD"]))

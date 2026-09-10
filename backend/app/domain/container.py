@@ -251,6 +251,13 @@ def require_cfs_cutoff_at(raw: object) -> datetime | None:
         raise InvalidContainer(str(exc).replace("si", "cfs", 1)) from exc
 
 
+def require_last_survey_at(raw: object) -> datetime | None:
+    try:
+        return require_si_cutoff_at(raw)
+    except InvalidContainer as exc:
+        raise InvalidContainer(str(exc).replace("si", "survey", 1)) from exc
+
+
 def require_vgm_cutoff_at(raw: object) -> datetime | None:
     try:
         return require_si_cutoff_at(raw)

@@ -49,6 +49,7 @@ class ContainerCreate(BaseModel):
     vgm_kg: object | None = None
     vgm_method: object | None = None
     vgm_cutoff_at: object | None = None
+    last_survey_at: object | None = None
 
 
 class ContainerResponse(BaseModel):
@@ -86,6 +87,7 @@ class ContainerResponse(BaseModel):
     vgm_kg: str | None
     vgm_method: str | None
     vgm_cutoff_at: datetime | None
+    last_survey_at: datetime | None
     superseded_by: UUID | None
 
 
@@ -127,6 +129,7 @@ def _write_from_body(body: ContainerCreate, shipment_id: UUID | None) -> _WriteB
         body.vgm_kg,
         body.vgm_method,
         body.vgm_cutoff_at,
+        body.last_survey_at,
     )
 
 

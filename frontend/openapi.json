@@ -13893,6 +13893,15 @@
               }
             ],
             "title": "Vgm Cutoff At"
+          },
+          "last_survey_at": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Survey At"
           }
         },
         "additionalProperties": false,
@@ -14224,6 +14233,18 @@
             ],
             "title": "Vgm Cutoff At"
           },
+          "last_survey_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Survey At"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -14271,6 +14292,7 @@
           "vgm_kg",
           "vgm_method",
           "vgm_cutoff_at",
+          "last_survey_at",
           "superseded_by"
         ],
         "title": "ContainerResponse"

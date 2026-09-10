@@ -681,3 +681,28 @@ async def test_container_vgm_bundle_same_tenant(session, two_tenants) -> None:
     assert loaded[0].vgm_kg == Decimal("12345.5000")
     assert loaded[0].vgm_method == "method1"
     assert loaded[0].vgm_cutoff_at == clock
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_container_last_survey_at_same_tenant(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    user_a = two_tenants["user_a"]
+    await bind_tenant(session, org_a.id)
+    clock = datetime(2026, 9, 10, 12, 0, tzinfo=UTC)
+    session.add(
+        Container(
+            id=uuid4(),
+            organization_id=org_a.id,
+            container_no="CSQU3054383",
+            iso_size_type="22G1",
+            source_ref="fixture://container/survey",
+            last_survey_at=clock,
+            created_by=user_a.id,
+        ),
+    )
+    await session.flush()
+    session.expunge_all()
+    await bind_tenant(session, org_a.id)
+    loaded = list((await session.scalars(select(Container))).all())
+    assert loaded[0].last_survey_at == clock

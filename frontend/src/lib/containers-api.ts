@@ -34,6 +34,7 @@ export type ContainerRow = {
   vgm_kg: string | null
   vgm_method: string | null
   vgm_cutoff_at: string | null
+  last_survey_at: string | null
   superseded_by: string | null
 }
 
@@ -68,6 +69,7 @@ export type ContainerWrite = {
   vgm_kg?: string | null
   vgm_method?: string | null
   vgm_cutoff_at?: string | null
+  last_survey_at?: string | null
 }
 
 const PATH = "/api/v1/containers"

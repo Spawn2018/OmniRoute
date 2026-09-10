@@ -37,6 +37,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
   const [mass, setMass] = useState("")
   const [weigh, setWeigh] = useState("")
   const [vgm, setVgm] = useState("")
+  const [survey, setSurvey] = useState("")
   const listed = useQuery({
     queryKey: ["containers", ctx.organizationId, sizeType],
     queryFn: () => fetchContainers(sizeType),
@@ -77,6 +78,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
         vgm_kg: optionalToken(mass),
         vgm_method: optionalToken(weigh),
         vgm_cutoff_at: optionalToken(vgm),
+        last_survey_at: optionalToken(survey),
       }),
     onSuccess: () => {
       void cache.invalidateQueries({ queryKey: ["containers", ctx.organizationId, sizeType] })
@@ -87,7 +89,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
     <section className="grid gap-2 rounded-md border border-border p-3" data-container="iso">
       <h2 className="text-sm font-medium">Kontener ISO</h2>
       <p className="text-xs text-muted-foreground">
-        Numer z cyfrą kontrolną i typ 4 znaków. Opcjonalne plomby, statek, rejs, uwaga, ładunek, opakowanie, referencje, flaga chłodniczego, terminale pobrania oraz zwrotu, rodzaj listu, godziny wolnego czasu na origin oraz destination, cutoff SI, cutoff AMS, cutoff CY, cutoff CFS oraz VGM (kg Decimal, metoda SOLAS, cutoff). Nie odliczanie. Nie HBL. Nie temperatura. Nie kalkulator kg. Nie PIN. Nie booking. Nie live HTTP.
+        Numer z cyfrą kontrolną i typ 4 znaków. Opcjonalne plomby, statek, rejs, uwaga, ładunek, opakowanie, referencje, flaga chłodniczego, terminale pobrania oraz zwrotu, rodzaj listu, godziny wolnego czasu na origin oraz destination, cutoff SI, cutoff AMS, cutoff CY, cutoff CFS, VGM (kg Decimal, metoda SOLAS, cutoff) oraz czas ostatniego przeglądu. Nie odliczanie. Nie HBL. Nie temperatura. Nie kalkulator kg. Nie PIN. Nie booking. Nie live HTTP.
       </p>
       <label className="flex flex-col gap-1 text-xs">
         Numer ISO 6346
@@ -350,6 +352,15 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
           onChange={(event) => setVgm(event.target.value)}
         />
       </label>
+      <label className="flex flex-col gap-1 text-xs">
+        Ostatni przegląd (opcjonalnie)
+        <Input
+          aria-label="Ostatni przegląd kontenera"
+          placeholder="last_survey_at"
+          value={survey}
+          onChange={(event) => setSurvey(event.target.value)}
+        />
+      </label>
       <Button type="button" disabled={blocked} onClick={() => persist.mutate()}>
         Zapisz kontener
       </Button>
@@ -386,6 +397,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
             {row.vgm_kg !== null ? ` · VGM ${row.vgm_kg}` : ""}
             {row.vgm_method !== null ? ` · ${row.vgm_method}` : ""}
             {row.vgm_cutoff_at !== null ? ` · VGM ${row.vgm_cutoff_at}` : ""}
+            {row.last_survey_at !== null ? ` · przegląd ${row.last_survey_at}` : ""}
           </li>
         ))}
       </ul>
