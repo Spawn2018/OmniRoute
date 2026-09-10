@@ -44,6 +44,7 @@ class ContainerCreate(BaseModel):
     free_time_dest_h: object | None = None
     si_cutoff_at: object | None = None
     ams_cutoff_at: object | None = None
+    cy_cutoff_at: object | None = None
 
 
 class ContainerResponse(BaseModel):
@@ -76,6 +77,7 @@ class ContainerResponse(BaseModel):
     free_time_dest_h: int | None
     si_cutoff_at: datetime | None
     ams_cutoff_at: datetime | None
+    cy_cutoff_at: datetime | None
     superseded_by: UUID | None
 
 
@@ -110,6 +112,7 @@ def _write_from_body(body: ContainerCreate, shipment_id: UUID | None) -> _WriteB
         body.free_time_dest_h,
         body.si_cutoff_at,
         body.ams_cutoff_at,
+        body.cy_cutoff_at,
     )
 
 

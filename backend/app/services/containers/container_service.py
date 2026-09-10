@@ -18,6 +18,7 @@ from app.domain.container import (
     require_container_remarks,
     require_container_shipment_id,
     require_container_source_ref,
+    require_cy_cutoff_at,
     require_free_time_dest_h,
     require_free_time_origin_h,
     require_iso_size_type,
@@ -61,6 +62,7 @@ class _WriteBox(NamedTuple):
     dwell: object
     cut: object
     ams: object
+    cy: object
 
 
 class _BoxDraft(NamedTuple):
@@ -89,6 +91,7 @@ class _BoxDraft(NamedTuple):
     dwell: int | None
     cut: datetime | None
     ams: datetime | None
+    cy: datetime | None
 
 
 def _box_draft(write: _WriteBox) -> _BoxDraft:
@@ -118,6 +121,7 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_free_time_dest_h(write.dwell),
         require_si_cutoff_at(write.cut),
         require_ams_cutoff_at(write.ams),
+        require_cy_cutoff_at(write.cy),
     )
 
 
@@ -147,6 +151,7 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.free_time_dest_h == draft.dwell
         and current.si_cutoff_at == draft.cut
         and current.ams_cutoff_at == draft.ams
+        and current.cy_cutoff_at == draft.cy
     )
 
 
@@ -179,6 +184,7 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         free_time_dest_h=draft.dwell,
         si_cutoff_at=draft.cut,
         ams_cutoff_at=draft.ams,
+        cy_cutoff_at=draft.cy,
         created_by=user_id,
     )
 
