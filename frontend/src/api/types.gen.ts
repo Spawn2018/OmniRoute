@@ -4467,6 +4467,82 @@ export type PartyScreenSanctions = {
 };
 
 /**
+ * PlanSnapshotCreate
+ */
+export type PlanSnapshotCreate = {
+    /**
+     * Snapshot Code
+     */
+    snapshot_code: string;
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Trip Id
+     */
+    trip_id: string;
+    /**
+     * Resource Id
+     */
+    resource_id: string;
+    /**
+     * Author Label
+     */
+    author_label: string;
+    /**
+     * Recorded At
+     */
+    recorded_at: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * PlanSnapshotResponse
+ */
+export type PlanSnapshotResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Snapshot Code
+     */
+    snapshot_code: string;
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Trip Id
+     */
+    trip_id: string;
+    /**
+     * Resource Id
+     */
+    resource_id: string;
+    /**
+     * Author Label
+     */
+    author_label: string;
+    /**
+     * Recorded At
+     */
+    recorded_at: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * PortCreate
  */
 export type PortCreate = {
@@ -12040,6 +12116,49 @@ export type CreateCarbonMethodApiV1CarbonMethodsPostResponses = {
 };
 
 export type CreateCarbonMethodApiV1CarbonMethodsPostResponse = CreateCarbonMethodApiV1CarbonMethodsPostResponses[keyof CreateCarbonMethodApiV1CarbonMethodsPostResponses];
+
+export type ListPlanSnapshotsApiV1PlanSnapshotsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/plan-snapshots';
+};
+
+export type ListPlanSnapshotsApiV1PlanSnapshotsGetResponses = {
+    /**
+     * Response List Plan Snapshots Api V1 Plan Snapshots Get
+     *
+     * Successful Response
+     */
+    200: Array<PlanSnapshotResponse>;
+};
+
+export type ListPlanSnapshotsApiV1PlanSnapshotsGetResponse = ListPlanSnapshotsApiV1PlanSnapshotsGetResponses[keyof ListPlanSnapshotsApiV1PlanSnapshotsGetResponses];
+
+export type CreatePlanSnapshotApiV1PlanSnapshotsPostData = {
+    body: PlanSnapshotCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/plan-snapshots';
+};
+
+export type CreatePlanSnapshotApiV1PlanSnapshotsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreatePlanSnapshotApiV1PlanSnapshotsPostError = CreatePlanSnapshotApiV1PlanSnapshotsPostErrors[keyof CreatePlanSnapshotApiV1PlanSnapshotsPostErrors];
+
+export type CreatePlanSnapshotApiV1PlanSnapshotsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: PlanSnapshotResponse;
+};
+
+export type CreatePlanSnapshotApiV1PlanSnapshotsPostResponse = CreatePlanSnapshotApiV1PlanSnapshotsPostResponses[keyof CreatePlanSnapshotApiV1PlanSnapshotsPostResponses];
 
 export type ListPredictionLedgersApiV1PredictionLedgersGetData = {
     body?: never;

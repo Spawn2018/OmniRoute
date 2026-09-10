@@ -68,12 +68,12 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-69 | Jakość | 49.0 `extraction_quality` | **ukończony (fundament)** · tablica `unparsed_regions`; nie scoring; nie tabela QA |
 | M-70 | Wdrożenie | 50.0 `tenant_rollout` | **ukończony (fundament)** · tablica `default_currency`; nie tabela rollout; nie upsert |
 | M-71 | Szyna decyzji operatora | 74.0 `operator_decision` · 77.0 lock · 121.0 `changed` | **ukończony (leftover S11b)** · pending → accept/changed/reject + `lock_version`; nie extract 1.3; nie send |
-| B0b | Ledger predykcji | 193.0 `prediction_ledger` | **ukończony (HITL)** · przedział + CRPS/MAE; leftover `plan_snapshot` / champion / drift |
+| B0b | Ledger predykcji | 193.0 `prediction_ledger` · 265.0 `plan_snapshot` | **ukończony (HITL)** · przedział + CRPS/MAE + wersja planu; leftover kółka / champion / drift |
 | V2 | Pogoda HITL | 194.0 `stop` ETA · 195.0 `weather_observation` | **ukończony (HITL)** · dwa ETA + warunek/stacja; leftover Open-Meteo / myto |
 | V3 | Zegar D&D HITL | 196.0 `free_time_clock` | **ukończony (HITL)** · rodzaj + dni wolne; leftover countdown / charge / blank sailing |
 | V5 | Konektor GPS HITL | 197.0 `telematics_connector` | **ukończony (HITL)** · reżim + dostawca; leftover position_event / ciphertext / 3 dni U4 |
 | V6 | Impact wieży HITL | 198.0 `tower_impact` | **ukończony (HITL)** · etap łańcucha + status umowy; leftover silnik EBITDA / sla_clause / scoring |
-| W1 | Bliźniak HITL | 199.0 `twin_mark` | **ukończony (HITL)** · 8 rodzajów; leftover `plan_snapshot` / 8 silników fizyki |
+| W1 | Bliźniak HITL | 199.0 `twin_mark` | **ukończony (HITL)** · 8 rodzajów; leftover 8 silników fizyki (`plan_snapshot` DONE 265.0) |
 | W2 | Sala kryzysowa HITL | 200.0 `war_room_mark` | **ukończony (HITL)** · rodzaj incydentu; leftover N8 / T8 live API / widok sklejony |
 | W3 | Krawędź pamięci HITL | 201.0 `memory_edge` | **ukończony (HITL)** · rodzaj krawędzi; leftover graf / pgvector / RAG na stawkach |
 | W4 | Pytanie zarządu HITL | 202.0 `executive_mark` | **ukończony (HITL)** · rodzaj pytania; leftover suma LLM / zdania SQL |

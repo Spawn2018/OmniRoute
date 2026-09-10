@@ -7894,6 +7894,80 @@
         ]
       }
     },
+    "/api/v1/plan-snapshots": {
+      "get": {
+        "tags": [
+          "plan-snapshots"
+        ],
+        "summary": "List Plan Snapshots",
+        "operationId": "list_plan_snapshots_api_v1_plan_snapshots_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PlanSnapshotResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Plan Snapshots Api V1 Plan Snapshots Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "plan-snapshots"
+        ],
+        "summary": "Create Plan Snapshot",
+        "operationId": "create_plan_snapshot_api_v1_plan_snapshots_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlanSnapshotCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlanSnapshotResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/prediction-ledgers": {
       "get": {
         "tags": [
@@ -19136,6 +19210,109 @@
           "sanctions_list_ref"
         ],
         "title": "PartyScreenSanctions"
+      },
+      "PlanSnapshotCreate": {
+        "properties": {
+          "snapshot_code": {
+            "type": "string",
+            "title": "Snapshot Code"
+          },
+          "shipment_id": {
+            "type": "string",
+            "title": "Shipment Id"
+          },
+          "trip_id": {
+            "type": "string",
+            "title": "Trip Id"
+          },
+          "resource_id": {
+            "type": "string",
+            "title": "Resource Id"
+          },
+          "author_label": {
+            "type": "string",
+            "title": "Author Label"
+          },
+          "recorded_at": {
+            "type": "string",
+            "title": "Recorded At"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "snapshot_code",
+          "shipment_id",
+          "trip_id",
+          "resource_id",
+          "author_label",
+          "recorded_at",
+          "source_ref"
+        ],
+        "title": "PlanSnapshotCreate"
+      },
+      "PlanSnapshotResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "snapshot_code": {
+            "type": "string",
+            "title": "Snapshot Code"
+          },
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "trip_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Trip Id"
+          },
+          "resource_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Resource Id"
+          },
+          "author_label": {
+            "type": "string",
+            "title": "Author Label"
+          },
+          "recorded_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Recorded At"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "snapshot_code",
+          "shipment_id",
+          "trip_id",
+          "resource_id",
+          "author_label",
+          "recorded_at",
+          "source_ref"
+        ],
+        "title": "PlanSnapshotResponse"
       },
       "PortCreate": {
         "properties": {

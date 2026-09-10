@@ -100,6 +100,7 @@ modules =
     app.services.party_documents
     app.services.cash_discounts
     app.services.carbon_methods
+    app.services.plan_snapshots
     app.services.prediction_ledgers
     app.services.weather_observations
     app.services.free_time_clocks
@@ -377,6 +378,9 @@ forbidden_modules =
     app.models.cash_discount
     app.repositories.carbon_methods
     app.models.carbon_method
+    app.services.plan_snapshots
+    app.repositories.plan_snapshots
+    app.models.plan_snapshot
     app.services.prediction_ledgers
     app.repositories.prediction_ledgers
     app.models.prediction_ledger

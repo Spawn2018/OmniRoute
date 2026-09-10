@@ -80,6 +80,7 @@ type organization
     define can_manage_cash_discounts: member
     define can_manage_carbon_methods: member
     define can_manage_prediction_ledgers: member
+    define can_manage_plan_snapshots: member
     define can_manage_weather_observations: member
     define can_manage_free_time_clocks: member
     define can_manage_telematics_connectors: member

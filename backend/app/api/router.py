@@ -63,6 +63,7 @@ from app.api import (
     party_documents,
     party_lane_scorecards,
     party_scorecards,
+    plan_snapshots,
     port_surcharges,
     ports,
     prediction_ledgers,
@@ -189,6 +190,7 @@ api_router.include_router(money_costs.router)
 api_router.include_router(monitoring_schemes.router)
 api_router.include_router(fx_differences.router)
 api_router.include_router(carbon_methods.router)
+api_router.include_router(plan_snapshots.router)
 api_router.include_router(prediction_ledgers.router)
 api_router.include_router(weather_observations.router)
 api_router.include_router(free_time_clocks.router)

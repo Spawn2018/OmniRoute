@@ -676,3 +676,7 @@ class InvalidRankMark(DomainError):
 
 class InvalidTaskTemplate(DomainError):
     """T5: HITL szablon zadania — nie instancja, nie matching i nie outbox."""
+
+
+class InvalidPlanSnapshot(DomainError):
+    """B0b: HITL wersja planu — nie silnik, nie kółka i nie FK do trip/shipment."""

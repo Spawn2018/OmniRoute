@@ -132,6 +132,11 @@ const NAV_ACTIONS = [
     to: "/prediction-ledgers",
   },
   {
+    id: "nav-plan-snapshots",
+    label: "Idź do migawki planu",
+    to: "/plan-snapshots",
+  },
+  {
     id: "nav-weather-observations",
     label: "Idź do pogody",
     to: "/weather-observations",

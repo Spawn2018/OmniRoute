@@ -523,6 +523,11 @@ export const OPS_JOBS = [
     label: "Szablon zadania",
     job: "katalog task_template HITL",
   },
+  {
+    route: BUSINESS_LISTS.planSnapshot.route,
+    label: "Migawka planu",
+    job: "katalog plan_snapshot HITL",
+  },
   { route: BUSINESS_LISTS.users.route, label: "Użytkownicy", job: "tenant users" },
   { route: "/session", label: "Sesja", job: "token klienta" },
 ] as const
@@ -769,6 +774,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "262.0": "/charges",
   "263.0": "/task-templates",
   "264.0": "/outbox",
+  "265.0": "/plan-snapshots",
 } as const
 
 export const ROUTES_BREADTH_STANDING =
