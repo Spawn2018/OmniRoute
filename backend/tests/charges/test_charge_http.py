@@ -1,3 +1,4 @@
+from decimal import Decimal
 from unittest.mock import AsyncMock
 from uuid import UUID, uuid4
 
@@ -30,8 +31,8 @@ class StubChargeService:
         self._session = session
         self.rows: list[Charge] = []
 
-    async def list_charges(self) -> list[Charge]:
-        return list(self.rows)
+    async def list_charges(self) -> list[tuple[Charge, Decimal]]:
+        return [(row, row.sell_amount - row.buy_amount) for row in self.rows]
 
     async def create_charge(
         self,

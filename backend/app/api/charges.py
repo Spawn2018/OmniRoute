@@ -1,3 +1,4 @@
+from decimal import Decimal
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, status
@@ -41,10 +42,25 @@ class ChargeResponse(BaseModel):
     def from_row(cls, row: Charge) -> "ChargeResponse":
         buy = Money.of(row.buy_amount, row.buy_currency)
         sell = Money.of(row.sell_amount, row.sell_currency)
-        computed = margin(buy, sell)
+        return cls._packed(row, buy, sell, margin(buy, sell))
+
+    @classmethod
+    def from_sql_gap(cls, row: Charge, sql_gap: Decimal) -> "ChargeResponse":
+        buy = Money.of(row.buy_amount, row.buy_currency)
+        sell = Money.of(row.sell_amount, row.sell_currency)
+        return cls._packed(row, buy, sell, Money.of(sql_gap, row.buy_currency))
+
+    @classmethod
+    def _packed(
+        cls,
+        row: Charge,
+        buy: Money,
+        sell: Money,
+        gap: Money,
+    ) -> "ChargeResponse":
         buy_text, buy_ccy = buy.as_pair()
         sell_text, sell_ccy = sell.as_pair()
-        margin_text, margin_ccy = computed.as_pair()
+        margin_text, margin_ccy = gap.as_pair()
         return cls(
             id=row.id,
             organization_id=row.organization_id,
@@ -66,8 +82,8 @@ async def list_charges(
     session: AsyncSession = Depends(require_tenant_session),
 ) -> list[ChargeResponse]:
     service = ChargeService(session)
-    rows = await service.list_charges()
-    return [ChargeResponse.from_row(row) for row in rows]
+    pairs = await service.list_charges()
+    return [ChargeResponse.from_sql_gap(row, gap) for row, gap in pairs]
 
 
 @router.post("", response_model=ChargeResponse, status_code=status.HTTP_201_CREATED)

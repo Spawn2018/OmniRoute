@@ -6,7 +6,7 @@
 | opłata / charge | charge / shipment_charge | jedyne miejsce prawdy o marży; buy+sell na jednym wierszu |
 | kupno | buy | kwota zakupu na `charge` |
 | sprzedaż | sell | kwota sprzedaży na `charge` |
-| marża | margin | sell − buy, ta sama waluta; tylko funkcja `margin()` |
+| marża | margin | sell − buy, ta sama waluta; zapis: `margin()`; GET lista: SQL; nie kolumna magazynu |
 | kod opłaty | charge_code | katalog M-06; typowany token, nie luźny string |
 | alias kodu opłaty | charge_code alias | synonim w katalogu tenanta |
 | kod towarowy | commodity_code | katalog M-09; 70.0 FK na RFQ/wycenie; nie luźna nazwa |

@@ -220,16 +220,17 @@ async def test_create_rejects_rate_line_with_other_charge_code() -> None:
 
 
 @pytest.mark.asyncio
-async def test_list_returns_repository_rows() -> None:
+async def test_list_returns_repository_sql_margin_pairs() -> None:
     session = AsyncMock()
     row = _charge()
-    scalars = MagicMock()
-    scalars.all.return_value = [row]
-    session.scalars = AsyncMock(return_value=scalars)
+    gap = Decimal("4.0000")
+    result = MagicMock()
+    result.all.return_value = [(row, gap)]
+    session.execute = AsyncMock(return_value=result)
     service = ChargeService(session)
 
     listed = await service.list_charges()
-    assert listed == [row]
+    assert listed == [(row, gap)]
 
 
 @pytest.mark.asyncio
@@ -247,6 +248,16 @@ async def test_create_rejects_blank_source_ref() -> None:
             rate_line_id=None,
             source_ref="   ",
         )
+
+
+def test_list_get_uses_sql_gap_not_domain_margin() -> None:
+    api = Path(__file__).parents[2] / "app" / "api" / "charges.py"
+    text = api.read_text(encoding="utf-8")
+    chunk = text.split("async def list_charges")[1].split("async def create_charge")[0]
+    assert "margin(" not in chunk
+    assert "from_sql_gap" in chunk
+    repo = Path(__file__).parents[2] / "app" / "repositories" / "charges" / "charge_repository.py"
+    assert "Charge.sell_amount - Charge.buy_amount" in repo.read_text(encoding="utf-8")
 
 
 def test_charge_service_reuses_rate_line_source_ref_validator() -> None:

@@ -1,5 +1,11 @@
+import { readFileSync } from "node:fs"
 import { describe, expect, it } from "vitest"
 import { chargeCreateBody, comparisonChargeBody } from "@/lib/charges-api"
+
+const page = readFileSync(
+  new URL("../../features/charges/catalog-page.tsx", import.meta.url),
+  "utf8",
+)
 
 describe("chargeCreateBody", () => {
   it("sends buy and sell as text with one currency", () => {
@@ -53,5 +59,14 @@ describe("comparisonChargeBody", () => {
       rate_line_id: null,
       source_ref: "tenant:manual:comparison",
     })
+  })
+})
+
+describe("charge catalog 262.0", () => {
+  it("renders API margin without subtracting in the browser", () => {
+    expect(page).toContain("margin_amount")
+    expect(page).toContain("<Money")
+    expect(page).not.toContain("parseFloat")
+    expect(page).not.toContain("sell_amount -")
   })
 })

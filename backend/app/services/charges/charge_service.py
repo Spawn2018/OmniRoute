@@ -1,3 +1,4 @@
+from decimal import Decimal
 from uuid import UUID, uuid4
 
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -20,8 +21,8 @@ class ChargeService:
         self._codes = ChargeCodeRepository(session)
         self._rates = RateLineRepository(session)
 
-    async def list_charges(self) -> list[Charge]:
-        return await self._charges.list_all()
+    async def list_charges(self) -> list[tuple[Charge, Decimal]]:
+        return await self._charges.list_with_sql_margin()
 
     async def get_charge(self, charge_id: UUID) -> Charge:
         found = await self._charges.get(charge_id)
