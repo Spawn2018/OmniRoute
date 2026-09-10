@@ -552,7 +552,7 @@ Przy `/plan-modul`: karta T + [EXP1](analysis/karty-pol-fala-exp.md) (stop/konte
 | T2 | `trip` + `resource`; floating trailer; multi-manning | zamknięty (`resource` [151.0](deltas/archived/151.0-resource.md); `trip` [152.0](deltas/archived/152.0-trip.md); leftover T2c `driver2` [212.0](deltas/archived/212.0-trip-driver2.md); leftover T2 `route_label` [214.0](deltas/archived/214.0-trip-route-label.md); leftover T2c `planned_distance_km` [256.0](deltas/archived/256.0-trip-planned-distance.md); leftover T2c `actual_distance_km` [257.0](deltas/archived/257.0-trip-actual-distance.md); leftover T2c `subcontractor_party_id` [258.0](deltas/archived/258.0-trip-subcontractor.md); leftover T2c `/fleet` [259.0](deltas/archived/259.0-fleet-route.md)) | po T1 | nie własne HW; job S50 |
 | T3 | `container` ISO + EXP1 (VGM, free time, BL kind, cutoffy CY/CFS/VGM/SI/AMS) | zamknięty ([153.0](deltas/archived/153.0-container.md); leftover T3 `seal_no_1` [216.0](deltas/archived/216.0-container-seal.md); leftover T3 `seal_no_2` [217.0](deltas/archived/217.0-container-seal2.md); leftover T3 `seal_no_3` [218.0](deltas/archived/218.0-container-seal3.md); leftover T3 `vessel_name` [219.0](deltas/archived/219.0-container-vessel.md); leftover T3 `voyage_no` [220.0](deltas/archived/220.0-container-voyage.md); leftover T3 `remarks` [221.0](deltas/archived/221.0-container-remarks.md); leftover T3 `cargo_description` [222.0](deltas/archived/222.0-container-cargo.md); leftover T3 `packaging_code` [223.0](deltas/archived/223.0-container-pack.md); leftover T3 `ref_1` [224.0](deltas/archived/224.0-container-ref1.md); leftover T3 `ref_2` [225.0](deltas/archived/225.0-container-ref2.md); leftover T3 `ref_3` [226.0](deltas/archived/226.0-container-ref3.md); leftover T3 `ref_4` [227.0](deltas/archived/227.0-container-ref4.md); leftover T3 `ref_5` [228.0](deltas/archived/228.0-container-ref5.md); leftover T3 `reefer` [229.0](deltas/archived/229.0-container-reefer.md); leftover T3 `pickup_terminal` [230.0](deltas/archived/230.0-container-pickup-terminal.md); leftover T3 `return_terminal` [231.0](deltas/archived/231.0-container-return-terminal.md); leftover T3 `bl_kind` [232.0](deltas/archived/232.0-container-bl-kind.md); leftover T3 `free_time_origin_h` [233.0](deltas/archived/233.0-container-free-time-origin.md); leftover T3 `free_time_dest_h` [234.0](deltas/archived/234.0-container-free-time-dest.md); leftover T3 `si_cutoff_at` [235.0](deltas/archived/235.0-container-si-cutoff.md); leftover T3 `ams_cutoff_at` [236.0](deltas/archived/236.0-container-ams-cutoff.md); leftover T3 `cy_cutoff_at` [237.0](deltas/archived/237.0-container-cy-cutoff.md); leftover T3 `cfs_cutoff_at` [238.0](deltas/archived/238.0-container-cfs-cutoff.md); leftover T3 VGM bundle [239.0](deltas/archived/239.0-container-vgm.md); leftover T3 `last_survey_at` [240.0](deltas/archived/240.0-container-last-survey.md); leftover T3 `booking_no` [241.0](deltas/archived/241.0-container-booking-no.md); leftover T3 `carrier_party_id` [242.0](deltas/archived/242.0-container-carrier-party.md); leftover T3 `shipment_leg_id` [243.0](deltas/archived/243.0-container-shipment-leg.md); leftover EXP1 PIN) | po T1 | nie booking armatorski |
 | T4 | `parent_shipment_id`; rentowność SQL na `charge` | zamknięty HITL ([210.0](deltas/archived/210.0-shipment-parent.md); leftover T4b SQL lista ([262.0](deltas/archived/262.0-charge-sql-margin.md)); leftover rollup drzewa) | po T1 | nie druga marża |
-| T5 | task engine (warunki = dane) | zamknięty HITL szablon ([263.0](deltas/archived/263.0-task-template.md); leftover instancja `task` / matching SQL / outbox) | po T2 | async po konsumencie outboxa (leftover M-02) |
+| T5 | task engine (warunki = dane) | zamknięty HITL szablon ([263.0](deltas/archived/263.0-task-template.md); leftover outbox kind ([264.0](deltas/open/264.0-outbox-task-template.md)); leftover instancja `task` / matching SQL / konsument) | po T2 | async po konsumencie outboxa (leftover M-02) |
 | T6 | planning board 4 widoki + mapa lazy + klawiatura N10 | zamknięty HITL mapa ([261.0](deltas/archived/261.0-planning-map.md); leftover 4 widoki / N10 / T6b–d / X8) | po T2 | mapa poza 250 kB |
 | **N11** | handover SBAR zmiany | Plan → plaster | po T6 | |
 | T7 | `fx_rate_basis` SQL; kalendarz U4 | zamknięty HITL ([211.0](deltas/archived/211.0-fx-rate-basis.md); leftover T7b override/`charge`; leftover T7c U4 D-1) | po T1+U4 | LLM/JS nie liczą |
@@ -853,13 +853,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->
