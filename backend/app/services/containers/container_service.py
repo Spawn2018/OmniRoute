@@ -5,6 +5,7 @@ from uuid import UUID, uuid4
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.container import (
+    require_ams_cutoff_at,
     require_cargo_description,
     require_container_bl_kind,
     require_container_no,
@@ -26,7 +27,6 @@ from app.domain.container import (
     require_seal_no_1,
     require_seal_no_2,
     require_seal_no_3,
-    require_ams_cutoff_at,
     require_si_cutoff_at,
     require_vessel_name,
     require_voyage_no,
