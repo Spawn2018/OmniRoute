@@ -624,3 +624,4 @@
 | 2026-09-10 | 270.0 | S53 | idp_connector HITL token auth0. Nie login. Nie live Auth0. Nastepny: leftover portale/diada S55 / Fala X Plan. |
 | 2026-09-10 | Plan 271.0 | S55 | exchange_connector HITL kod + kind trans_eu, nie live giełda. Delta zaakceptowana (`/noc`). Nastepny: kod 271.0. |
 | 2026-09-10 | 271.0 | S55 | exchange_connector HITL kind trans_eu. Nie live giełda. Nie SPA. Nastepny: leftover CT7/CI9 / reszta pinu Plan. |
+| 2026-09-10 | Plan 272.0 | CI9 | customer_contract HITL nagłówek kod + etykiety, nie ciphertext i nie CT7 live. Delta zaakceptowana (`/noc`). Nastepny: kod 272.0. |
