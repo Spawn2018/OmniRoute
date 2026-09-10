@@ -14,6 +14,7 @@ from app.domain.stop import (
     require_stop_group_code,
     require_stop_kind,
     require_stop_location_id,
+    require_stop_packaging_code,
     require_stop_quantity,
     require_stop_shipment_id,
     require_stop_source_ref,
@@ -38,6 +39,7 @@ class _PackedPoint:
     driver_notes: str | None
     mass: Decimal | None
     count: int | None
+    pack: str | None
     physical: datetime
     legal: datetime
 
@@ -57,6 +59,7 @@ def _pack_point(
     notes_for_driver: object,
     weight_kg: object,
     quantity: object,
+    packaging_code: object,
 ) -> _PackedPoint:
     return _PackedPoint(
         order_id=require_stop_shipment_id(shipment_id),
@@ -70,6 +73,7 @@ def _pack_point(
         driver_notes=require_notes_for_driver(notes_for_driver),
         mass=require_stop_weight_kg(weight_kg),
         count=require_stop_quantity(quantity),
+        pack=require_stop_packaging_code(packaging_code),
         physical=require_eta_physical(eta_physical),
         legal=require_eta_legal(eta_legal),
     )
@@ -86,6 +90,7 @@ def _same_point(current: Stop, packed: _PackedPoint) -> bool:
         and current.notes_for_driver == packed.driver_notes
         and current.weight_kg == packed.mass
         and current.quantity == packed.count
+        and current.packaging_code == packed.pack
         and current.eta_physical == packed.physical
         and current.eta_legal == packed.legal
     )
@@ -122,6 +127,7 @@ class StopService:
         notes_for_driver: object = None,
         weight_kg: object = None,
         quantity: object = None,
+        packaging_code: object = None,
     ) -> Stop:
         packed = _pack_point(
             shipment_id=shipment_id,
@@ -137,6 +143,7 @@ class StopService:
             notes_for_driver=notes_for_driver,
             weight_kg=weight_kg,
             quantity=quantity,
+            packaging_code=packaging_code,
         )
         return await self._persist(organization_id, user_id, packed)
 
@@ -170,6 +177,7 @@ class StopService:
                 notes_for_driver=packed.driver_notes,
                 weight_kg=packed.mass,
                 quantity=packed.count,
+                packaging_code=packed.pack,
                 eta_physical=packed.physical,
                 eta_legal=packed.legal,
                 created_by=user_id,

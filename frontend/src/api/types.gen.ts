@@ -5770,6 +5770,10 @@ export type StopCreate = {
      * Quantity
      */
     quantity?: number | string | number | boolean | null;
+    /**
+     * Packaging Code
+     */
+    packaging_code?: string | null;
 };
 
 /**
@@ -5836,6 +5840,10 @@ export type StopResponse = {
      * Quantity
      */
     quantity: number | null;
+    /**
+     * Packaging Code
+     */
+    packaging_code: string | null;
     /**
      * Superseded By
      */

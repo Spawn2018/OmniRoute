@@ -21248,6 +21248,17 @@
               }
             ],
             "title": "Quantity"
+          },
+          "packaging_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Packaging Code"
           }
         },
         "additionalProperties": false,
@@ -21361,6 +21372,17 @@
             ],
             "title": "Quantity"
           },
+          "packaging_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Packaging Code"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -21391,6 +21413,7 @@
           "notes_for_driver",
           "weight_kg",
           "quantity",
+          "packaging_code",
           "superseded_by"
         ],
         "title": "StopResponse"

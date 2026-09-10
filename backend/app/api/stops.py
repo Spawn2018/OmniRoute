@@ -33,6 +33,7 @@ class StopCreate(BaseModel):
     notes_for_driver: str | None = None
     weight_kg: str | None = None
     quantity: int | str | float | bool | None = None
+    packaging_code: str | None = None
 
 
 class StopResponse(BaseModel):
@@ -53,6 +54,7 @@ class StopResponse(BaseModel):
     notes_for_driver: str | None
     weight_kg: str | None
     quantity: int | None
+    packaging_code: str | None
     superseded_by: UUID | None
 
 
@@ -98,6 +100,7 @@ async def create_stop(
         notes_for_driver=body.notes_for_driver,
         weight_kg=body.weight_kg,
         quantity=body.quantity,
+        packaging_code=body.packaging_code,
     )
     await session.commit()
     return _as_response(row)

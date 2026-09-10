@@ -13,6 +13,7 @@ from app.domain.stop import (
     require_sequence_no,
     require_stop_group_code,
     require_stop_kind,
+    require_stop_packaging_code,
     require_stop_quantity,
     require_stop_source_ref,
     require_stop_status,
@@ -93,6 +94,7 @@ class StubStopService:
         notes_for_driver: object = None,
         weight_kg: object = None,
         quantity: object = None,
+        packaging_code: object = None,
     ) -> Stop:
         kind = require_stop_kind(stop_kind)
         seq = require_sequence_no(sequence_no)
@@ -103,6 +105,7 @@ class StubStopService:
         notes = require_notes_for_driver(notes_for_driver)
         mass = require_stop_weight_kg(weight_kg)
         count = require_stop_quantity(quantity)
+        pack = require_stop_packaging_code(packaging_code)
         physical = require_eta_physical(eta_physical)
         legal = require_eta_legal(eta_legal)
         order_id = shipment_id if type(shipment_id) is UUID else uuid4()
@@ -130,6 +133,7 @@ class StubStopService:
             and current.notes_for_driver == notes
             and current.weight_kg == mass
             and current.quantity == count
+            and current.packaging_code == pack
         ):
             return current
         successor = Stop(
@@ -146,6 +150,7 @@ class StubStopService:
             notes_for_driver=notes,
             weight_kg=mass,
             quantity=count,
+            packaging_code=pack,
             eta_physical=physical,
             eta_legal=legal,
             created_by=user_id,
@@ -343,6 +348,7 @@ def test_http_create_stop_with_notes_for_driver(catalog_client: object) -> None:
     assert created.json()["notes_for_driver"] == "brama B, dzwonek 2"
     assert created.json()["weight_kg"] is None
     assert created.json()["quantity"] is None
+    assert created.json()["packaging_code"] is None
     assert "margin" not in created.json()
 
 
@@ -442,6 +448,7 @@ def test_http_create_stop_with_quantity(catalog_client: object) -> None:
     assert created.status_code == 201
     assert created.json()["quantity"] == 12
     assert created.json()["weight_kg"] is None
+    assert created.json()["packaging_code"] is None
     assert "margin" not in created.json()
 
 
@@ -469,3 +476,54 @@ def test_http_rejects_float_and_negative_quantity(catalog_client: object) -> Non
     floated = client.post("/api/v1/stops", headers=headers, json=payload)
     assert floated.status_code == 400
     assert "ilość" in floated.json()["detail"]
+
+
+def test_http_create_stop_with_packaging_code(catalog_client: object) -> None:
+    client, ships, places, _rows = catalog_client
+    assert ships.row is not None
+    assert places.row is not None
+    created = client.post(
+        "/api/v1/stops",
+        headers=bearer_auth_headers(),
+        json={
+            "shipment_id": str(ships.row.id),
+            "location_id": str(places.row.id),
+            "stop_kind": "loading",
+            "sequence_no": 10,
+            "time_zone": "Europe/Warsaw",
+            "status": "pending",
+            "source_ref": "tenant:manual",
+            "eta_physical": _HITL_ISO,
+            "eta_legal": _HITL_ISO,
+            "packaging_code": " EUR ",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["packaging_code"] == "EUR"
+    assert created.json()["quantity"] is None
+    assert "margin" not in created.json()
+
+
+def test_http_rejects_too_long_packaging_code(catalog_client: object) -> None:
+    client, ships, places, _rows = catalog_client
+    assert ships.row is not None
+    assert places.row is not None
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/stops",
+        headers=headers,
+        json={
+            "shipment_id": str(ships.row.id),
+            "location_id": str(places.row.id),
+            "stop_kind": "loading",
+            "sequence_no": 11,
+            "time_zone": "Europe/Warsaw",
+            "status": "pending",
+            "source_ref": "tenant:manual",
+            "eta_physical": _HITL_ISO,
+            "eta_legal": _HITL_ISO,
+            "packaging_code": "x" * 33,
+        },
+    )
+    assert reply.status_code == 400
+    assert "opakowanie" in reply.json()["detail"]

@@ -13,6 +13,7 @@ _ZONE = re.compile(r"^[A-Za-z_]+/[A-Za-z0-9_+-]+(?:/[A-Za-z0-9_+-]+)?$")
 _GROUP = re.compile(r"^[A-Za-z0-9_-]{2,32}$")
 _MAX_REF = 256
 _MAX_NOTES = 256
+_MAX_PACK = 32
 _FIXTURE = "fixture://stop/"
 _MANUAL = "tenant:manual"
 _FOUR = Decimal("0.0001")
@@ -140,6 +141,19 @@ def require_stop_quantity(raw: object) -> int | None:
     if raw < 0:
         raise InvalidStop("ilość nie może być ujemna")
     return raw
+
+
+def require_stop_packaging_code(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidStop("opakowanie musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    if len(token) > _MAX_PACK:
+        raise InvalidStop("opakowanie za długie")
+    return token
 
 
 def _require_eta_clock(raw: object, label: str) -> datetime:

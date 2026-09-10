@@ -13,6 +13,7 @@ from app.domain.stop import (
     require_sequence_no,
     require_stop_group_code,
     require_stop_kind,
+    require_stop_packaging_code,
     require_stop_quantity,
     require_stop_status,
     require_stop_weight_kg,
@@ -109,3 +110,16 @@ def test_stop_quantity_rejects_float_bool_and_negative() -> None:
         require_stop_quantity(True)
     with pytest.raises(InvalidStop, match="ilość"):
         require_stop_quantity(-1)
+
+
+def test_stop_packaging_code_omits_blank_and_trims() -> None:
+    assert require_stop_packaging_code(None) is None
+    assert require_stop_packaging_code("  ") is None
+    assert require_stop_packaging_code(" EUR ") == "EUR"
+
+
+def test_stop_packaging_code_rejects_non_text_and_too_long() -> None:
+    with pytest.raises(InvalidStop, match="opakowanie"):
+        require_stop_packaging_code(12)
+    with pytest.raises(InvalidStop, match="opakowanie"):
+        require_stop_packaging_code("x" * 33)

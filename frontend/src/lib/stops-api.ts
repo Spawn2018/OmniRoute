@@ -17,6 +17,7 @@ export type StopRow = {
   notes_for_driver: string | null
   weight_kg: string | null
   quantity: number | null
+  packaging_code: string | null
   superseded_by: string | null
 }
 
@@ -34,6 +35,7 @@ export type StopWrite = {
   notes_for_driver: string | null
   weight_kg: string | null
   quantity: number | string | null
+  packaging_code: string | null
 }
 
 const PATH = "/api/v1/stops"
@@ -51,10 +53,12 @@ export function stopWrite(args: {
   driverNotes: string
   weightKg: string
   quantityHitl: string
+  packagingCode: string
 }): StopWrite {
   const group = args.groupCode.trim()
   const notes = args.driverNotes.trim()
   const mass = args.weightKg.trim()
+  const pack = args.packagingCode.trim()
   return {
     shipment_id: args.shipmentId.trim(),
     location_id: args.locationId.trim(),
@@ -68,6 +72,7 @@ export function stopWrite(args: {
     notes_for_driver: notes === "" ? null : notes,
     weight_kg: mass === "" ? null : mass,
     quantity: optionalStopQuantity(args.quantityHitl),
+    packaging_code: pack === "" ? null : pack,
     source_ref: "tenant:manual",
   }
 }

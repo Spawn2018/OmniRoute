@@ -364,3 +364,37 @@ async def test_stop_quantity_same_tenant(session, two_tenants) -> None:
     await bind_tenant(session, org_a.id)
     loaded = list((await session.scalars(select(Stop))).all())
     assert loaded[0].quantity == 12
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_stop_packaging_code_same_tenant(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    user_a = two_tenants["user_a"]
+    await bind_tenant(session, org_a.id)
+    ship_a = await _booked(session, organization_id=org_a.id, user_id=user_a.id, suffix="pk")
+    loc_a = _zone(organization_id=org_a.id, created_by=user_a.id, code="PL-P", name="Strefa P")
+    session.add(loc_a)
+    await session.flush()
+    session.add(
+        Stop(
+            id=uuid4(),
+            organization_id=org_a.id,
+            shipment_id=ship_a.id,
+            location_id=loc_a.id,
+            stop_kind="loading",
+            sequence_no=1,
+            time_zone="Europe/Warsaw",
+            status="pending",
+            source_ref="fixture://stop/p1",
+            packaging_code="EUR",
+            eta_physical=_CLOCK,
+            eta_legal=_CLOCK,
+            created_by=user_a.id,
+        ),
+    )
+    await session.flush()
+    session.expunge_all()
+    await bind_tenant(session, org_a.id)
+    loaded = list((await session.scalars(select(Stop))).all())
+    assert loaded[0].packaging_code == "EUR"
