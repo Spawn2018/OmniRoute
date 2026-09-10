@@ -571,3 +571,4 @@
 | 2026-09-10 | Plan 244.0 | B0a | inquiry_queued z API przy POST queued, nie import BC. Delta zaakceptowana (`/noc`). Nastepny: kod 244.0. |
 | 2026-09-10 | 244.0 | B0a | inquiry_queued z API przy POST queued. Nie live HTTP. Nie import BC. Nastepny: leftover 2b Plan. |
 | 2026-09-10 | Plan 245.0 | B0a | inquiry_sent z API przy POST sent, nie quote_recorded. Delta zaakceptowana (/noc). Nastepny: kod 245.0. |
+| 2026-09-10 | 245.0 | B0a | inquiry_sent z API przy POST sent. Nie live HTTP. Nie import BC. Nastepny: leftover quote_recorded Plan. |
