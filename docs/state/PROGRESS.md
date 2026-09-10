@@ -604,3 +604,4 @@
 | 2026-09-10 | 260.0 | N1 | consignment HITL na shipment. N wierszy. Nie mapa. Nastepny: leftover T6 mapa Plan. |
 | 2026-09-10 | Plan 261.0 | T6 | trasa /planning + mapa lazy na trip, nie GPS i nie 4 widoki. Delta zaakceptowana (`/noc`). Nastepny: kod 261.0. |
 | 2026-09-10 | 261.0 | T6 | /planning leniwy overlay trip. Nie GPS. Nie 4 widoki. Nastepny: leftover T4b SQL charge Plan. |
+| 2026-09-10 | Plan 262.0 | T4 | marża listy charge z SQL, nie kolumna i nie rollup drzewa. Delta zaakceptowana (`/noc`). Nastepny: kod 262.0. |
