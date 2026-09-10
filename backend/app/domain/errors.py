@@ -696,3 +696,7 @@ class InvalidErpConnector(DomainError):
 
 class InvalidTerminalSlotConnector(DomainError):
     """T8: HITL capability slotu + godziny N4 — nie booking i nie confirmed z formularza."""
+
+
+class InvalidIdpConnector(DomainError):
+    """S53: HITL konektor IdP (auth0) jako dane — nie login i nie live HTTP."""

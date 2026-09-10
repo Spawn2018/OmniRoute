@@ -368,7 +368,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **1.0 leftover (dlaczego nie w tym plasterze):** isolation/integration = CI — lokalnie PG wisiał (jak 0.16–0.18); `just api-types` nie regen — wrapper fetch, gate = typecheck
 - **1.0 leftover:** aliasy jako `TEXT[]` na wierszu, nie osobna tabela — wystarcza resolve; osobny wiersz aliasu gdy 1.1+ tego wymaga
 - **Leftover ≠ DONE:** wiersz w tym pliku / PLAN nie zamyka plastra i nie zastępuje `just gate`
-- **OAuth/OIDC:** Auth0 I1/I2 **odroczone** (brak tenanta; nie pytać aż będzie). Sesja = email+hasło+JWT (0.15 + 0.12). 0.12/0.15 **nie** są IdP. Zero kodu Auth0 / placeholder tenanta.
+- **OAuth/OIDC:** HITL `idp_connector` **270.0**. I1/I2 live **parked** (brak tenanta / sekretu / testu). Sesja = email+hasło+JWT (0.15 + 0.12). 0.12/0.15 **nie** są IdP.
 - **0.11 DONE:** HTTP XOR 422 + vitest `extractionCreateBody`
 - **0.12 DONE:** JWT HS256 hello (`Authorization: Bearer`); identity z claims; OpenFGA nadal AuthZ
 - **0.13 DONE:** split-screen HITL (podgląd `input_text` | recenzja); nie PDF canvas

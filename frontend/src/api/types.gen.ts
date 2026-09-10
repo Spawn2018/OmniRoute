@@ -2975,6 +2975,58 @@ export type IbanLookupRequest = {
 };
 
 /**
+ * IdpConnectorCreate
+ */
+export type IdpConnectorCreate = {
+    /**
+     * Connector Code
+     */
+    connector_code: string;
+    /**
+     * Provider Code
+     */
+    provider_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+    /**
+     * Public Domain
+     */
+    public_domain?: string | null;
+};
+
+/**
+ * IdpConnectorResponse
+ */
+export type IdpConnectorResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Connector Code
+     */
+    connector_code: string;
+    /**
+     * Provider Code
+     */
+    provider_code: string;
+    /**
+     * Public Domain
+     */
+    public_domain: string | null;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * InboundExtractResponse
  */
 export type InboundExtractResponse = {
@@ -12692,6 +12744,49 @@ export type CreateErpConnectorApiV1ErpConnectorsPostResponses = {
 };
 
 export type CreateErpConnectorApiV1ErpConnectorsPostResponse = CreateErpConnectorApiV1ErpConnectorsPostResponses[keyof CreateErpConnectorApiV1ErpConnectorsPostResponses];
+
+export type ListIdpConnectorsApiV1IdpConnectorsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/idp-connectors';
+};
+
+export type ListIdpConnectorsApiV1IdpConnectorsGetResponses = {
+    /**
+     * Response List Idp Connectors Api V1 Idp Connectors Get
+     *
+     * Successful Response
+     */
+    200: Array<IdpConnectorResponse>;
+};
+
+export type ListIdpConnectorsApiV1IdpConnectorsGetResponse = ListIdpConnectorsApiV1IdpConnectorsGetResponses[keyof ListIdpConnectorsApiV1IdpConnectorsGetResponses];
+
+export type CreateIdpConnectorApiV1IdpConnectorsPostData = {
+    body: IdpConnectorCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/idp-connectors';
+};
+
+export type CreateIdpConnectorApiV1IdpConnectorsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateIdpConnectorApiV1IdpConnectorsPostError = CreateIdpConnectorApiV1IdpConnectorsPostErrors[keyof CreateIdpConnectorApiV1IdpConnectorsPostErrors];
+
+export type CreateIdpConnectorApiV1IdpConnectorsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: IdpConnectorResponse;
+};
+
+export type CreateIdpConnectorApiV1IdpConnectorsPostResponse = CreateIdpConnectorApiV1IdpConnectorsPostResponses[keyof CreateIdpConnectorApiV1IdpConnectorsPostResponses];
 
 export type ListTerminalSlotConnectorsApiV1TerminalSlotConnectorsGetData = {
     body?: never;

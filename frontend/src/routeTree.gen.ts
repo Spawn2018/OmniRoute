@@ -49,6 +49,7 @@ import { Route as GdprRouteImport } from './routes/gdpr'
 import { Route as GroupageRouteImport } from './routes/groupage'
 import { Route as GroupageTariffsRouteImport } from './routes/groupage-tariffs'
 import { Route as HealthRouteImport } from './routes/health'
+import { Route as IdpConnectorsRouteImport } from './routes/idp-connectors'
 import { Route as InvoicesRouteImport } from './routes/invoices'
 import { Route as KreptdLicencesRouteImport } from './routes/kreptd-licences'
 import { Route as LaneKmsRouteImport } from './routes/lane-kms'
@@ -316,6 +317,11 @@ const GroupageTariffsRoute = GroupageTariffsRouteImport.update({
 const HealthRoute = HealthRouteImport.update({
   id: '/health',
   path: '/health',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IdpConnectorsRoute = IdpConnectorsRouteImport.update({
+  id: '/idp-connectors',
+  path: '/idp-connectors',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InvoicesRoute = InvoicesRouteImport.update({
@@ -700,6 +706,7 @@ export interface FileRoutesByFullPath {
   '/groupage': typeof GroupageRoute
   '/groupage-tariffs': typeof GroupageTariffsRoute
   '/health': typeof HealthRoute
+  '/idp-connectors': typeof IdpConnectorsRoute
   '/invoices': typeof InvoicesRoute
   '/kreptd-licences': typeof KreptdLicencesRoute
   '/lane-kms': typeof LaneKmsRoute
@@ -810,6 +817,7 @@ export interface FileRoutesByTo {
   '/groupage': typeof GroupageRoute
   '/groupage-tariffs': typeof GroupageTariffsRoute
   '/health': typeof HealthRoute
+  '/idp-connectors': typeof IdpConnectorsRoute
   '/invoices': typeof InvoicesRoute
   '/kreptd-licences': typeof KreptdLicencesRoute
   '/lane-kms': typeof LaneKmsRoute
@@ -921,6 +929,7 @@ export interface FileRoutesById {
   '/groupage': typeof GroupageRoute
   '/groupage-tariffs': typeof GroupageTariffsRoute
   '/health': typeof HealthRoute
+  '/idp-connectors': typeof IdpConnectorsRoute
   '/invoices': typeof InvoicesRoute
   '/kreptd-licences': typeof KreptdLicencesRoute
   '/lane-kms': typeof LaneKmsRoute
@@ -1033,6 +1042,7 @@ export interface FileRouteTypes {
     | '/groupage'
     | '/groupage-tariffs'
     | '/health'
+    | '/idp-connectors'
     | '/invoices'
     | '/kreptd-licences'
     | '/lane-kms'
@@ -1143,6 +1153,7 @@ export interface FileRouteTypes {
     | '/groupage'
     | '/groupage-tariffs'
     | '/health'
+    | '/idp-connectors'
     | '/invoices'
     | '/kreptd-licences'
     | '/lane-kms'
@@ -1253,6 +1264,7 @@ export interface FileRouteTypes {
     | '/groupage'
     | '/groupage-tariffs'
     | '/health'
+    | '/idp-connectors'
     | '/invoices'
     | '/kreptd-licences'
     | '/lane-kms'
@@ -1364,6 +1376,7 @@ export interface RootRouteChildren {
   GroupageRoute: typeof GroupageRoute
   GroupageTariffsRoute: typeof GroupageTariffsRoute
   HealthRoute: typeof HealthRoute
+  IdpConnectorsRoute: typeof IdpConnectorsRoute
   InvoicesRoute: typeof InvoicesRoute
   KreptdLicencesRoute: typeof KreptdLicencesRoute
   LaneKmsRoute: typeof LaneKmsRoute
@@ -1714,6 +1727,13 @@ declare module '@tanstack/react-router' {
       path: '/health'
       fullPath: '/health'
       preLoaderRoute: typeof HealthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/idp-connectors': {
+      id: '/idp-connectors'
+      path: '/idp-connectors'
+      fullPath: '/idp-connectors'
+      preLoaderRoute: typeof IdpConnectorsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/invoices': {
@@ -2236,6 +2256,7 @@ const rootRouteChildren: RootRouteChildren = {
   GroupageRoute: GroupageRoute,
   GroupageTariffsRoute: GroupageTariffsRoute,
   HealthRoute: HealthRoute,
+  IdpConnectorsRoute: IdpConnectorsRoute,
   InvoicesRoute: InvoicesRoute,
   KreptdLicencesRoute: KreptdLicencesRoute,
   LaneKmsRoute: LaneKmsRoute,

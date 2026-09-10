@@ -544,6 +544,11 @@ export const OPS_JOBS = [
     job: "katalog erp_connector HITL",
   },
   {
+    route: BUSINESS_LISTS.idpConnector.route,
+    label: "Konektor Auth0",
+    job: "katalog idp_connector HITL",
+  },
+  {
     route: BUSINESS_LISTS.terminalSlotConnector.route,
     label: "Konektor slotu",
     job: "katalog terminal_slot_connector HITL",
@@ -799,6 +804,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "267.0": "/lane-kms",
   "268.0": "/erp-connectors",
   "269.0": "/terminal-slot-connectors",
+  "270.0": "/idp-connectors",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

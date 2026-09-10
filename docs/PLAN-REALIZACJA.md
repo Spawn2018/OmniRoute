@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** plaster 270.0 leftover S53 HITL `idp_connector` (delta accepted `/noc`). Portale/diada po zamknięciu. Nie live HTTP. Leftover HITL/SQL = praca. Park = live HTTP bez testu albo sekretu, nie skip pola. Live M-02 konsument / Auth0 I1/I2 / portale tylko gdy ten ID jest bieżącym Q. P6c auto-award zakaz. Nic z pinu nie wypada. Nie zgaduj 71–270.
+**Następny:** leftover portale/diada S55 / Fala X → CT7/CI9/reszta pinu 2026-09-08c. Leftover HITL/SQL = praca. Park = live HTTP bez testu albo sekretu, nie skip pola. Live M-02 konsument / Auth0 I1/I2 / portale tylko gdy ten ID jest bieżącym Q. P6c auto-award zakaz. Nic z pinu nie wypada. Nie zgaduj 71–271.
 <!-- os-status:end -->
 
 ```mermaid
@@ -466,7 +466,7 @@ Reguły kolejności (żeby `/noc` nie złożył awarii):
 | S50 | Arch. M-111 flota | 112.0 park | named park (`docs/deltas/archived/112.0-fleet-named-park.md`) | Brak jobu „własne auto”. Nie TMS |
 | S51 | Żywe **M-55** reklamacja | 113.0 | zamknięty (`docs/deltas/archived/113.0-cargo-claim.md`) | Reklamacja na zleceniu. Nie kwota. Nie scoring |
 | S52 | Kat. M-54 oszustwo | 114.0 | zamknięty (`docs/deltas/archived/114.0-fraud-flag.md`) | Flaga na kontrahencie. Nie scoring osoby |
-| **S53** | M-04 / Auth0 | 270.0 delta accepted | po S52 | HITL `idp_connector` fixture; JWT hello zostaje; live I1/I2 parked. Przed portalami |
+| **S53** | M-04 / Auth0 | 270.0 | zamknięty (`docs/deltas/archived/270.0-idp-connector.md`) | HITL `idp_connector` fixture; JWT hello zostaje; live I1/I2 parked. Przed portalami |
 | S54 | Arch. M-76 status klienta | 115.0 park | named park (`docs/deltas/archived/115.0-client-status-named-park.md`) | Aż Auth0 S53. Nie wieża operatora |
 | **S55** | F10 M-61…M-67, M-73, M-199 | Plan → plaster | po S53 | Giełda live tylko przy umowie i prawie do danych |
 | **S56** | Pogłębienie M-57 (kat. M-58) | 116.0 | zamknięty (`docs/deltas/archived/116.0-copilot-watchtower.md`) | Szkice na wieży. Nie nowy czat |
@@ -486,7 +486,7 @@ Klej (nie osobny rok): **U6** + **M-72** = DoD każdego UI; **N** i **A** wchodz
 
 Kolejka żywa jest w [CURRENT.md](state/CURRENT.md). `/noc` jedzie ją bez wycinania. Godzina ucina **nowy** plaster, nie wiersz pinu.
 
-Kolejność (WIP=1 na `main`): T3 cutoffy na `container` → eventy `entity_event` z warstwy API (2a/2b; BC nie importuje `entity_events`) → `stop_group`/EXP1 → km/`/fleet` → `consignment` → T6 mapa → SQL na `charge` → lookup/KSeF TE → outbox T5 → `plan_snapshot` (DONE 265.0) → `circle_sim` HITL (DONE 266.0) → leftover km ładowny/pusty/dolot (DONE 267.0) → leftover F9 Optima fixture (DONE 268.0) → leftover T8 slot capability (DONE 269.0) → leftover S53 HITL `idp_connector` (270.0 delta) → portale/diada → CT7/CI9/reszta pinu. `plan_snapshot` **po** obiektach, **przed** kółkami — nie w jednym worku ze stopami. Cały łańcuch XL→WAPRO nie wchodzi przed outbox. P6c auto-award = zakaz.
+Kolejność (WIP=1 na `main`): T3 cutoffy na `container` → eventy `entity_event` z warstwy API (2a/2b; BC nie importuje `entity_events`) → `stop_group`/EXP1 → km/`/fleet` → `consignment` → T6 mapa → SQL na `charge` → lookup/KSeF TE → outbox T5 → `plan_snapshot` (DONE 265.0) → `circle_sim` HITL (DONE 266.0) → leftover km ładowny/pusty/dolot (DONE 267.0) → leftover F9 Optima fixture (DONE 268.0) → leftover T8 slot capability (DONE 269.0) → leftover S53 HITL `idp_connector` (DONE 270.0) → portale/diada → CT7/CI9/reszta pinu. `plan_snapshot` **po** obiektach, **przed** kółkami — nie w jednym worku ze stopami. Cały łańcuch XL→WAPRO nie wchodzi przed outbox. P6c auto-award = zakaz.
 
 Bliźniak = wzorzec (stan RLS + `entity_event` + opcjonalnie kopia planu / karta komunikacji), nie druga tabela `*_twin`. Rodziny rosną katalogiem. AI szuka i proponuje; `operator_decision` zamyka. LLM nie liczy.
 
@@ -795,7 +795,7 @@ Nie implementuj z tej tabeli „na zapas”. To mapa, żeby nic nie zginęło. S
 | M-01 | Wielodostępność | DONE fundament |
 | M-02 | Niezawodność zdarzeń | DONE fundament 79.0 (`outbox_event`) |
 | M-03 | Konfiguracja per organizacja | CZĘŚĆ (`default_currency` + prefiks/szablon; numer oferty od 72.0) |
-| M-04 | Uprawnienia i tożsamość | CZĘŚĆ (OpenFGA hello; SSO parked) |
+| M-04 | Uprawnienia i tożsamość | CZĘŚĆ (OpenFGA hello; HITL `idp_connector` 270.0; live SSO parked) |
 | M-05 | Geografia | DONE fundament (`port` + `location`/strefy + `terminal`/WPI; `operator_party_id` od 5.0) |
 | M-06 | Słownik opłat | DONE jako `charge_code` |
 | M-07 | Waluty i czas | DONE katalog 6.0; żywy ID **M-23** `nbp_rate` (nie M-07) |
@@ -853,13 +853,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

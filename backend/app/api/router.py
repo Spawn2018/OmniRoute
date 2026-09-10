@@ -41,6 +41,7 @@ from app.api import (
     gdpr_requests,
     groupage_lines,
     groupage_tariffs,
+    idp_connectors,
     inbound_messages,
     incoterm_responsibilities,
     kreptd_licences,
@@ -202,6 +203,7 @@ api_router.include_router(weather_observations.router)
 api_router.include_router(free_time_clocks.router)
 api_router.include_router(telematics_connectors.router)
 api_router.include_router(erp_connectors.router)
+api_router.include_router(idp_connectors.router)
 api_router.include_router(terminal_slot_connectors.router)
 api_router.include_router(tower_impacts.router)
 api_router.include_router(twin_marks.router)

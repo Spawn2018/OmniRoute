@@ -152,6 +152,11 @@ const NAV_ACTIONS = [
     to: "/erp-connectors",
   },
   {
+    id: "nav-idp-connectors",
+    label: "Idź do konektora Auth0",
+    to: "/idp-connectors",
+  },
+  {
     id: "nav-terminal-slot-connectors",
     label: "Idź do konektora slotu",
     to: "/terminal-slot-connectors",
