@@ -684,3 +684,7 @@ class InvalidPlanSnapshot(DomainError):
 
 class InvalidCircleSim(DomainError):
     """G2.20: HITL kółko jako dane — nie silnik 500k i nie km."""
+
+
+class InvalidLaneKm(DomainError):
+    """G2.21: HITL km ładowny/pusty/dolot jako dane — nie Haversine i nie trip."""

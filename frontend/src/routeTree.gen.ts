@@ -50,6 +50,7 @@ import { Route as GroupageTariffsRouteImport } from './routes/groupage-tariffs'
 import { Route as HealthRouteImport } from './routes/health'
 import { Route as InvoicesRouteImport } from './routes/invoices'
 import { Route as KreptdLicencesRouteImport } from './routes/kreptd-licences'
+import { Route as LaneKmsRouteImport } from './routes/lane-kms'
 import { Route as LanePatternsRouteImport } from './routes/lane-patterns'
 import { Route as LclRouteImport } from './routes/lcl'
 import { Route as LocalChargesRouteImport } from './routes/local-charges'
@@ -318,6 +319,11 @@ const InvoicesRoute = InvoicesRouteImport.update({
 const KreptdLicencesRoute = KreptdLicencesRouteImport.update({
   id: '/kreptd-licences',
   path: '/kreptd-licences',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LaneKmsRoute = LaneKmsRouteImport.update({
+  id: '/lane-kms',
+  path: '/lane-kms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LanePatternsRoute = LanePatternsRouteImport.update({
@@ -683,6 +689,7 @@ export interface FileRoutesByFullPath {
   '/health': typeof HealthRoute
   '/invoices': typeof InvoicesRoute
   '/kreptd-licences': typeof KreptdLicencesRoute
+  '/lane-kms': typeof LaneKmsRoute
   '/lane-patterns': typeof LanePatternsRoute
   '/lcl': typeof LclRoute
   '/local-charges': typeof LocalChargesRoute
@@ -790,6 +797,7 @@ export interface FileRoutesByTo {
   '/health': typeof HealthRoute
   '/invoices': typeof InvoicesRoute
   '/kreptd-licences': typeof KreptdLicencesRoute
+  '/lane-kms': typeof LaneKmsRoute
   '/lane-patterns': typeof LanePatternsRoute
   '/lcl': typeof LclRoute
   '/local-charges': typeof LocalChargesRoute
@@ -898,6 +906,7 @@ export interface FileRoutesById {
   '/health': typeof HealthRoute
   '/invoices': typeof InvoicesRoute
   '/kreptd-licences': typeof KreptdLicencesRoute
+  '/lane-kms': typeof LaneKmsRoute
   '/lane-patterns': typeof LanePatternsRoute
   '/lcl': typeof LclRoute
   '/local-charges': typeof LocalChargesRoute
@@ -1007,6 +1016,7 @@ export interface FileRouteTypes {
     | '/health'
     | '/invoices'
     | '/kreptd-licences'
+    | '/lane-kms'
     | '/lane-patterns'
     | '/lcl'
     | '/local-charges'
@@ -1114,6 +1124,7 @@ export interface FileRouteTypes {
     | '/health'
     | '/invoices'
     | '/kreptd-licences'
+    | '/lane-kms'
     | '/lane-patterns'
     | '/lcl'
     | '/local-charges'
@@ -1221,6 +1232,7 @@ export interface FileRouteTypes {
     | '/health'
     | '/invoices'
     | '/kreptd-licences'
+    | '/lane-kms'
     | '/lane-patterns'
     | '/lcl'
     | '/local-charges'
@@ -1329,6 +1341,7 @@ export interface RootRouteChildren {
   HealthRoute: typeof HealthRoute
   InvoicesRoute: typeof InvoicesRoute
   KreptdLicencesRoute: typeof KreptdLicencesRoute
+  LaneKmsRoute: typeof LaneKmsRoute
   LanePatternsRoute: typeof LanePatternsRoute
   LclRoute: typeof LclRoute
   LocalChargesRoute: typeof LocalChargesRoute
@@ -1682,6 +1695,13 @@ declare module '@tanstack/react-router' {
       path: '/kreptd-licences'
       fullPath: '/kreptd-licences'
       preLoaderRoute: typeof KreptdLicencesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lane-kms': {
+      id: '/lane-kms'
+      path: '/lane-kms'
+      fullPath: '/lane-kms'
+      preLoaderRoute: typeof LaneKmsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lane-patterns': {
@@ -2177,6 +2197,7 @@ const rootRouteChildren: RootRouteChildren = {
   HealthRoute: HealthRoute,
   InvoicesRoute: InvoicesRoute,
   KreptdLicencesRoute: KreptdLicencesRoute,
+  LaneKmsRoute: LaneKmsRoute,
   LanePatternsRoute: LanePatternsRoute,
   LclRoute: LclRoute,
   LocalChargesRoute: LocalChargesRoute,

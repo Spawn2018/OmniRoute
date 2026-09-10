@@ -96,6 +96,7 @@ modules =
     app.services.tender_carbon_marks
     app.services.lane_patterns
     app.services.circle_sims
+    app.services.lane_kms
     app.services.kreptd_licences
     app.services.monitoring_schemes
     app.services.party_documents
@@ -385,6 +386,9 @@ forbidden_modules =
     app.services.circle_sims
     app.repositories.circle_sims
     app.models.circle_sim
+    app.services.lane_kms
+    app.repositories.lane_kms
+    app.models.lane_km
     app.services.prediction_ledgers
     app.repositories.prediction_ledgers
     app.models.prediction_ledger

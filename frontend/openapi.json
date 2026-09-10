@@ -5912,6 +5912,80 @@
         ]
       }
     },
+    "/api/v1/lane-kms": {
+      "get": {
+        "tags": [
+          "lane-kms"
+        ],
+        "summary": "List Lane Kms",
+        "operationId": "list_lane_kms_api_v1_lane_kms_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/LaneKmResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Lane Kms Api V1 Lane Kms Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "lane-kms"
+        ],
+        "summary": "Create Lane Km",
+        "operationId": "create_lane_km_api_v1_lane_kms_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LaneKmCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LaneKmResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/circle-sims": {
       "get": {
         "tags": [
@@ -17208,6 +17282,124 @@
           "source_ref"
         ],
         "title": "KreptdLicenceResponse"
+      },
+      "LaneKmCreate": {
+        "properties": {
+          "km_code": {
+            "type": "string",
+            "title": "Km Code"
+          },
+          "loaded_km": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              }
+            ],
+            "title": "Loaded Km"
+          },
+          "empty_km": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              }
+            ],
+            "title": "Empty Km"
+          },
+          "approach_km": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              }
+            ],
+            "title": "Approach Km"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "km_code",
+          "loaded_km",
+          "empty_km",
+          "approach_km",
+          "source_ref"
+        ],
+        "title": "LaneKmCreate"
+      },
+      "LaneKmResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "km_code": {
+            "type": "string",
+            "title": "Km Code"
+          },
+          "loaded_km": {
+            "type": "string",
+            "title": "Loaded Km"
+          },
+          "empty_km": {
+            "type": "string",
+            "title": "Empty Km"
+          },
+          "approach_km": {
+            "type": "string",
+            "title": "Approach Km"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "km_code",
+          "loaded_km",
+          "empty_km",
+          "approach_km",
+          "source_ref"
+        ],
+        "title": "LaneKmResponse"
       },
       "LanePatternCreate": {
         "properties": {

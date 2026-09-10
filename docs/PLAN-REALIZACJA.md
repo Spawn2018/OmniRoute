@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** leftover km ładowny/pusty/dolot (G2.21) — delta [267.0](../deltas/open/267.0-lane-km.md) zaakceptowana (`/noc`), wolno `/plaster`. Potem F9 Optima fixture → T8 → S53 Auth0 → portale/diada → CT7/CI9/reszta pinu 2026-09-08c. Leftover HITL/SQL = praca. Park = live HTTP bez testu albo sekretu, nie skip pola. Live M-02 konsument / Auth0 / portale tylko gdy ten ID jest bieżącym Q. P6c auto-award zakaz. Nic z pinu nie wypada. Nie zgaduj 71–267.
+**Następny:** leftover F9 Optima fixture → T8 → S53 Auth0 → portale/diada → CT7/CI9/reszta pinu 2026-09-08c. Leftover HITL/SQL = praca. Park = live HTTP bez testu albo sekretu, nie skip pola. Live M-02 konsument / Auth0 / portale tylko gdy ten ID jest bieżącym Q. P6c auto-award zakaz. Nic z pinu nie wypada. Nie zgaduj 71–268.
 <!-- os-status:end -->
 
 ```mermaid
@@ -486,7 +486,7 @@ Klej (nie osobny rok): **U6** + **M-72** = DoD każdego UI; **N** i **A** wchodz
 
 Kolejka żywa jest w [CURRENT.md](state/CURRENT.md). `/noc` jedzie ją bez wycinania. Godzina ucina **nowy** plaster, nie wiersz pinu.
 
-Kolejność (WIP=1 na `main`): T3 cutoffy na `container` → eventy `entity_event` z warstwy API (2a/2b; BC nie importuje `entity_events`) → `stop_group`/EXP1 → km/`/fleet` → `consignment` → T6 mapa → SQL na `charge` → lookup/KSeF TE → outbox T5 → `plan_snapshot` (DONE 265.0) → `circle_sim` HITL (DONE 266.0) → leftover km ładowny/pusty/dolot (G2.21) → jeden plaster F9 Optima fixture → T8 → S53 → portale/diada → CT7/CI9/reszta pinu. `plan_snapshot` **po** obiektach, **przed** kółkami — nie w jednym worku ze stopami. Cały łańcuch XL→WAPRO nie wchodzi przed outbox. P6c auto-award = zakaz.
+Kolejność (WIP=1 na `main`): T3 cutoffy na `container` → eventy `entity_event` z warstwy API (2a/2b; BC nie importuje `entity_events`) → `stop_group`/EXP1 → km/`/fleet` → `consignment` → T6 mapa → SQL na `charge` → lookup/KSeF TE → outbox T5 → `plan_snapshot` (DONE 265.0) → `circle_sim` HITL (DONE 266.0) → leftover km ładowny/pusty/dolot (DONE 267.0) → jeden plaster F9 Optima fixture → T8 → S53 → portale/diada → CT7/CI9/reszta pinu. `plan_snapshot` **po** obiektach, **przed** kółkami — nie w jednym worku ze stopami. Cały łańcuch XL→WAPRO nie wchodzi przed outbox. P6c auto-award = zakaz.
 
 Bliźniak = wzorzec (stan RLS + `entity_event` + opcjonalnie kopia planu / karta komunikacji), nie druga tabela `*_twin`. Rodziny rosną katalogiem. AI szuka i proponuje; `operator_decision` zamyka. LLM nie liczy.
 
@@ -558,7 +558,7 @@ Przy `/plan-modul`: karta T + [EXP1](analysis/karty-pol-fala-exp.md) (stop/konte
 | T7 | `fx_rate_basis` SQL; kalendarz U4 | zamknięty HITL ([211.0](deltas/archived/211.0-fx-rate-basis.md); leftover T7b override/`charge`; leftover T7c U4 D-1) | po T1+U4 | LLM/JS nie liczą |
 | T8 | slot capability + godziny terminalu N4; **confirmed tylko z API** | Plan → plaster | po T3 | nie gwarancja prawna; nie Selenium |
 
-**B0b** (po T2): zamknięty HITL `prediction_ledger` + N7 ([193.0](deltas/archived/193.0-prediction-ledger.md)); zamknięty HITL `plan_snapshot` ([265.0](deltas/archived/265.0-plan-snapshot.md)); zamknięty HITL `circle_sim` ([266.0](deltas/archived/266.0-circle-sim.md)); leftover km ładowny/pusty/dolot (G2.21); leftover TT z actuals — karta [karty-pol-fala-v.md](analysis/karty-pol-fala-v.md). Indeks paliwa = P3 `fuel_index`.
+**B0b** (po T2): zamknięty HITL `prediction_ledger` + N7 ([193.0](deltas/archived/193.0-prediction-ledger.md)); zamknięty HITL `plan_snapshot` ([265.0](deltas/archived/265.0-plan-snapshot.md)); zamknięty HITL `circle_sim` ([266.0](deltas/archived/266.0-circle-sim.md)); zamknięty HITL `lane_km` ([267.0](deltas/archived/267.0-lane-km.md)); leftover TT z actuals — karta [karty-pol-fala-v.md](analysis/karty-pol-fala-v.md). Indeks paliwa = P3 `fuel_index`.
 
 **N / A w T:** N9 z U1; A3/A6/A7/A9/A14/A17 przy T — karta [karty-pol-fala-n.md](analysis/karty-pol-fala-n.md) · [a](analysis/karty-pol-fala-a.md).
 
@@ -596,7 +596,7 @@ Karta: [karty-pol-g2-tender.md](analysis/karty-pol-g2-tender.md). P6 = oferty od
 | G2.7 | win/loss `tender_win_loss` (wynik + source_ref) | zamknięty ([176.0](deltas/archived/176.0-tender-win-loss.md); leftover G2.8–G2.18) | po G2.6; nie extract RFP; nie four-eyes |
 | G2.8 | konsorcjum `tender_consortium_member` (fotel + source_ref) | zamknięty ([177.0](deltas/archived/177.0-tender-consortium-member.md); leftover G2.9–G2.18) | po G2.7; nie extract RFP; nie TED |
 | G2.9–G2.18 | extract RFP HITL, prospecting HITL, bid/no-bid, award four-eyes, TED capability, CO₂ | zamknięty intake ([178.0](deltas/archived/178.0-tender-rfp-intake.md)); zamknięty kind/accept ([179.0](deltas/archived/179.0-tender-rfp-draft-kind.md)); zamknięty prospect ([180.0](deltas/archived/180.0-tender-prospect.md)); zamknięty bid/no-bid ([181.0](deltas/archived/181.0-tender-bid-stance.md)); zamknięty four-eyes ([182.0](deltas/archived/182.0-tender-award-review.md)); zamknięty TED HITL ([183.0](deltas/archived/183.0-tender-ted-notice.md)); zamknięty CO₂ HITL ([184.0](deltas/archived/184.0-tender-carbon-mark.md)); leftover G2.15–G2.18 kg/CBAM | auto-award; scrape kontaktów |
-| G2.19–G2.22 | `lane_pattern`, `circle_sim` ≥500k w Postgres, km ładowny/pusty/dolot, lista przewoźników | zamknięty HITL para UN/LOCODE ([185.0](deltas/archived/185.0-lane-pattern.md)); zamknięty HITL kółko ([266.0](deltas/archived/266.0-circle-sim.md)); leftover G2.21–G2.22 km/P / silnik 500k | LLM-VRP; copy „natychmiast” bez p95 stage |
+| G2.19–G2.22 | `lane_pattern`, `circle_sim` ≥500k w Postgres, km ładowny/pusty/dolot, lista przewoźników | zamknięty HITL para UN/LOCODE ([185.0](deltas/archived/185.0-lane-pattern.md)); zamknięty HITL kółko ([266.0](deltas/archived/266.0-circle-sim.md)); zamknięty HITL km ładowny ([267.0](deltas/archived/267.0-lane-km.md)); leftover G2.22 P/lista / silnik 500k | LLM-VRP; copy „natychmiast” bez p95 stage |
 | **G2.23** | KREPTD/GITD (ITD): P0 link+HITL; P1 Citizen API po certyfikacie; lead + C8 licencja | zamknięty HITL numer licencji ([186.0](deltas/archived/186.0-kreptd-licence.md)); leftover Citizen API / C8 `party_document` | scrape HTML kreptd; scoring osoby |
 
 ### Fala F — finanse głębiej (ID **F1–F11** bez kropki)
@@ -853,13 +853,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

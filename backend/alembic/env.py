@@ -102,6 +102,7 @@ from app.models.party_document import PartyDocument  # noqa: F401
 from app.models.carbon_method import CarbonMethod  # noqa: F401
 from app.models.plan_snapshot import PlanSnapshot  # noqa: F401
 from app.models.circle_sim import CircleSim  # noqa: F401
+from app.models.lane_km import LaneKm  # noqa: F401
 from app.models.prediction_ledger import PredictionLedger  # noqa: F401
 from app.models.weather_observation import WeatherObservation  # noqa: F401
 from app.models.free_time_clock import FreeTimeClock  # noqa: F401

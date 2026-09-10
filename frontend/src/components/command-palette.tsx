@@ -142,6 +142,11 @@ const NAV_ACTIONS = [
     to: "/circle-sims",
   },
   {
+    id: "nav-lane-kms",
+    label: "Idź do km ładowny",
+    to: "/lane-kms",
+  },
+  {
     id: "nav-weather-observations",
     label: "Idź do pogody",
     to: "/weather-observations",

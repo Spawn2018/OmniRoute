@@ -82,6 +82,7 @@ type organization
     define can_manage_prediction_ledgers: member
     define can_manage_plan_snapshots: member
     define can_manage_circle_sims: member
+    define can_manage_lane_kms: member
     define can_manage_weather_observations: member
     define can_manage_free_time_clocks: member
     define can_manage_telematics_connectors: member

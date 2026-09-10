@@ -3203,6 +3203,66 @@ export type KreptdLicenceResponse = {
 };
 
 /**
+ * LaneKmCreate
+ */
+export type LaneKmCreate = {
+    /**
+     * Km Code
+     */
+    km_code: string;
+    /**
+     * Loaded Km
+     */
+    loaded_km: string | number | number | boolean;
+    /**
+     * Empty Km
+     */
+    empty_km: string | number | number | boolean;
+    /**
+     * Approach Km
+     */
+    approach_km: string | number | number | boolean;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * LaneKmResponse
+ */
+export type LaneKmResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Km Code
+     */
+    km_code: string;
+    /**
+     * Loaded Km
+     */
+    loaded_km: string;
+    /**
+     * Empty Km
+     */
+    empty_km: string;
+    /**
+     * Approach Km
+     */
+    approach_km: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * LanePatternCreate
  */
 export type LanePatternCreate = {
@@ -11020,6 +11080,49 @@ export type CreateLanePatternApiV1LanePatternsPostResponses = {
 };
 
 export type CreateLanePatternApiV1LanePatternsPostResponse = CreateLanePatternApiV1LanePatternsPostResponses[keyof CreateLanePatternApiV1LanePatternsPostResponses];
+
+export type ListLaneKmsApiV1LaneKmsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/lane-kms';
+};
+
+export type ListLaneKmsApiV1LaneKmsGetResponses = {
+    /**
+     * Response List Lane Kms Api V1 Lane Kms Get
+     *
+     * Successful Response
+     */
+    200: Array<LaneKmResponse>;
+};
+
+export type ListLaneKmsApiV1LaneKmsGetResponse = ListLaneKmsApiV1LaneKmsGetResponses[keyof ListLaneKmsApiV1LaneKmsGetResponses];
+
+export type CreateLaneKmApiV1LaneKmsPostData = {
+    body: LaneKmCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/lane-kms';
+};
+
+export type CreateLaneKmApiV1LaneKmsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateLaneKmApiV1LaneKmsPostError = CreateLaneKmApiV1LaneKmsPostErrors[keyof CreateLaneKmApiV1LaneKmsPostErrors];
+
+export type CreateLaneKmApiV1LaneKmsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: LaneKmResponse;
+};
+
+export type CreateLaneKmApiV1LaneKmsPostResponse = CreateLaneKmApiV1LaneKmsPostResponses[keyof CreateLaneKmApiV1LaneKmsPostResponses];
 
 export type ListCircleSimsApiV1CircleSimsGetData = {
     body?: never;
