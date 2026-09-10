@@ -23,20 +23,21 @@ const COLUMN_LABELS = {
 
 function ErpConnectorRows(args: { organizationId: string | null }) {
   const listed = useQuery({
-    queryKey: ["erp-connectors", args.organizationId],
+    enabled: args.organizationId !== null,
     queryFn: listErpConnectors,
-    enabled: Boolean(args.organizationId),
+    queryKey: ["erp-connectors", args.organizationId],
     retry: false,
   })
+  const rows = listed.data ?? []
   return (
     <div className="min-w-0 flex-1">
-      {listed.isError ? <CatalogError error={listed.error} /> : null}
+      {listed.error ? <CatalogError error={listed.error} /> : null}
       <DataTableShell
-        tableKey={BUSINESS_LISTS.erpConnector.tableKey}
-        columns={columns}
-        data={listed.data ?? []}
         columnLabels={COLUMN_LABELS}
+        columns={columns}
+        data={rows}
         globalFilterPlaceholder="Szukaj konektora Optima…"
+        tableKey={BUSINESS_LISTS.erpConnector.tableKey}
       />
     </div>
   )

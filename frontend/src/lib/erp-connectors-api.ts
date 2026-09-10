@@ -29,29 +29,22 @@ export function erpConnectorWrite(draft: {
   }
 }
 
-async function parseErpConnector<T>(res: Response, fallback: string, ok: number): Promise<T> {
-  if (res.status !== ok) {
-    throw new ApiError(await readApiDetail(res, fallback), httpErrorStatus(res))
-  }
-  return (await res.json()) as T
-}
-
 export async function listErpConnectors(): Promise<ErpConnectorRow[]> {
-  return parseErpConnector(
-    await fetch(PATH, { headers: requireAuthHeaders() }),
-    "Błąd listy konektorów Optima",
-    200,
-  )
+  const listed = await fetch(PATH, { headers: requireAuthHeaders() })
+  if (listed.status !== 200) {
+    throw new ApiError(await readApiDetail(listed, "Błąd listy konektorów Optima"), httpErrorStatus(listed))
+  }
+  return (await listed.json()) as ErpConnectorRow[]
 }
 
 export async function persistErpConnector(payload: ErpConnectorWrite): Promise<ErpConnectorRow> {
-  return parseErpConnector(
-    await fetch(PATH, {
-      method: "POST",
-      headers: { ...requireAuthHeaders(), Accept: "application/json", "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    }),
-    "Błąd zapisu konektora Optima",
-    201,
-  )
+  const saved = await fetch(PATH, {
+    method: "POST",
+    headers: { ...requireAuthHeaders(), Accept: "application/json", "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  })
+  if (saved.status !== 201) {
+    throw new ApiError(await readApiDetail(saved, "Błąd zapisu konektora Optima"), httpErrorStatus(saved))
+  }
+  return (await saved.json()) as ErpConnectorRow
 }

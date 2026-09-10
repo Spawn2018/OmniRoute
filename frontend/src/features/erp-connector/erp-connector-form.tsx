@@ -59,14 +59,14 @@ export function ErpConnectorSave(args: { organizationId: string | null }) {
           required
         />
       </label>
-      <label className="flex flex-col gap-1 text-xs">
-        source_ref (tenant:manual albo fixture://optima/…)
+      <label className="grid gap-1 text-xs">
+        Pochodzenie (`tenant:manual` albo `fixture://optima/…`)
         <input
-          aria-label="source_ref konektora Optima"
+          aria-label="Pochodzenie konektora Optima"
           className="h-9 rounded-md border bg-background px-2 font-mono"
-          value={draft.originStamp}
           onChange={(change) => setDraft({ ...draft, originStamp: change.target.value })}
           required
+          value={draft.originStamp}
         />
       </label>
       <Button type="submit" disabled={persist.isPending || !args.organizationId}>
