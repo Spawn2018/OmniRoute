@@ -739,6 +739,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "252.0": "/shipments",
   "253.0": "/shipments",
   "254.0": "/shipments",
+  "255.0": "/shipments",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

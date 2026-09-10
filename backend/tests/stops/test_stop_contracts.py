@@ -28,6 +28,7 @@ def test_service_does_not_import_parents_or_map() -> None:
     assert "app.services.containers" not in service
     assert "app.services.dock_appointments" not in service
     assert "app.services.free_time_clocks" not in service
+    assert "app.services.shipment_documents" not in service
     assert "httpx" not in service
     assert "leaflet" not in service
     assert "open-meteo" not in service.casefold()
@@ -74,6 +75,7 @@ def test_generated_api_types_include_stop() -> None:
     assert "appointment_ref" in source
     assert "waiting_free_minutes" in source
     assert "waiting_started_at" in source
+    assert "pod_quality" in source
 
 
 def test_migration_152_adds_group_code_without_table() -> None:
@@ -216,3 +218,18 @@ def test_migration_190_adds_waiting_started_without_countdown() -> None:
     assert "leaflet" not in source
     assert "def downgrade" in source
     assert "waiting_started_at" in source.split("def downgrade")[1]
+
+
+def test_migration_191_adds_pod_quality_without_camera() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "191_stop_pod_quality.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "191_stop_pod_quality"' in source
+    assert 'down_revision: str | None = "190_stop_waiting_started"' in source
+    assert "pod_quality" in source
+    assert "ck_stop_pod_quality" in source
+    assert "camera" not in source
+    assert "create_table" not in source
+    assert "leaflet" not in source
+    assert "def downgrade" in source
+    assert "pod_quality" in source.split("def downgrade")[1]

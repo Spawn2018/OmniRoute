@@ -26,6 +26,7 @@ export function StopPointPanel(args: { canWrite: boolean }) {
   const [appointmentRef, setAppointmentRef] = useState("")
   const [waitingFreeMinutes, setWaitingFreeMinutes] = useState("")
   const [waitingStartedAt, setWaitingStartedAt] = useState("")
+  const [podQuality, setPodQuality] = useState("")
   const listQuery = useQuery({
     queryKey: ["stops", ctx.organizationId, shipmentId],
     queryFn: () => fetchStops(shipmentId),
@@ -54,6 +55,7 @@ export function StopPointPanel(args: { canWrite: boolean }) {
           appointmentRef,
           waitingFreeMinutes,
           waitingStartedAt,
+          podQuality,
         }),
       ),
     onSuccess: () => {
@@ -70,7 +72,8 @@ export function StopPointPanel(args: { canWrite: boolean }) {
         Miejsce ze słownika lokalizacji. Strefa IANA. Dwa ETA HITL. Opcjonalny kod grupy.
         Opcjonalna waga HITL. Opcjonalna ilość HITL. Opcjonalny kod opakowania HITL. Opcjonalna plomba
         wjazdu i wyjazdu HITL. Opcjonalny numer awizacji HITL. Opcjonalne minuty wolnego oczekiwania
-        HITL. Opcjonalny początek oczekiwania HITL. Nie mapa. Nie GPS. Nie pogoda. Nie odliczanie.
+        HITL. Opcjonalny początek oczekiwania HITL. Opcjonalna jakość POD HITL.
+        Nie mapa. Nie GPS. Nie pogoda. Nie odliczanie. Nie kamera.
       </p>
       <Input
         aria-label="Identyfikator zlecenia punktu"
@@ -168,6 +171,12 @@ export function StopPointPanel(args: { canWrite: boolean }) {
         value={waitingStartedAt}
         onChange={(event) => setWaitingStartedAt(event.target.value)}
       />
+      <Input
+        aria-label="Jakość POD"
+        placeholder="pod_quality"
+        value={podQuality}
+        onChange={(event) => setPodQuality(event.target.value)}
+      />
       <fieldset className="space-y-1 text-xs">
         <legend>Rodzaj punktu</legend>
         {(["loading", "unloading", "customs", "ferry", "terminal", "depot", "other"] as const).map(
@@ -215,7 +224,8 @@ export function StopPointPanel(args: { canWrite: boolean }) {
             {row.notes_for_driver ?? ""} {row.weight_kg ?? ""} {row.quantity ?? ""}{" "}
             {row.packaging_code ?? ""} {row.seal_in ?? ""} {row.seal_out ?? ""}{" "}
             {row.appointment_ref ?? ""} {row.waiting_free_minutes ?? ""}{" "}
-            {row.waiting_started_at ?? ""} {row.eta_physical} {row.eta_legal}
+            {row.waiting_started_at ?? ""} {row.pod_quality ?? ""} {row.eta_physical}{" "}
+            {row.eta_legal}
           </li>
         ))}
       </ul>

@@ -15,6 +15,7 @@ from app.domain.stop import (
     require_stop_group_code,
     require_stop_kind,
     require_stop_packaging_code,
+    require_stop_pod_quality,
     require_stop_quantity,
     require_stop_seal_in,
     require_stop_seal_out,
@@ -196,3 +197,18 @@ def test_stop_waiting_started_rejects_naive_and_non_text() -> None:
         require_stop_waiting_started_at("2026-09-09T12:00:00")
     with pytest.raises(InvalidStop, match="początek"):
         require_stop_waiting_started_at("nie-data")
+
+
+def test_stop_pod_quality_omits_blank_and_allowlists() -> None:
+    assert require_stop_pod_quality(None) is None
+    assert require_stop_pod_quality("  ") is None
+    assert require_stop_pod_quality("ok") == "ok"
+    assert require_stop_pod_quality("retake") == "retake"
+    assert require_stop_pod_quality("missing") == "missing"
+
+
+def test_stop_pod_quality_rejects_unknown_and_non_text() -> None:
+    with pytest.raises(InvalidStop, match="pod"):
+        require_stop_pod_quality(12)
+    with pytest.raises(InvalidStop, match="pod"):
+        require_stop_pod_quality("blurry")

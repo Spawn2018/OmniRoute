@@ -5794,6 +5794,10 @@ export type StopCreate = {
      * Waiting Started At
      */
     waiting_started_at?: string | null;
+    /**
+     * Pod Quality
+     */
+    pod_quality?: string | null;
 };
 
 /**
@@ -5884,6 +5888,10 @@ export type StopResponse = {
      * Waiting Started At
      */
     waiting_started_at: string | null;
+    /**
+     * Pod Quality
+     */
+    pod_quality: string | null;
     /**
      * Superseded By
      */

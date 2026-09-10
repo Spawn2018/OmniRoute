@@ -21323,6 +21323,17 @@
               }
             ],
             "title": "Waiting Started At"
+          },
+          "pod_quality": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pod Quality"
           }
         },
         "additionalProperties": false,
@@ -21503,6 +21514,17 @@
             ],
             "title": "Waiting Started At"
           },
+          "pod_quality": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pod Quality"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -21539,6 +21561,7 @@
           "appointment_ref",
           "waiting_free_minutes",
           "waiting_started_at",
+          "pod_quality",
           "superseded_by"
         ],
         "title": "StopResponse"

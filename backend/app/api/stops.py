@@ -39,6 +39,7 @@ class StopCreate(BaseModel):
     appointment_ref: str | None = None
     waiting_free_minutes: int | str | float | bool | None = None
     waiting_started_at: str | None = None
+    pod_quality: str | None = None
 
 
 class StopResponse(BaseModel):
@@ -65,6 +66,7 @@ class StopResponse(BaseModel):
     appointment_ref: str | None
     waiting_free_minutes: int | None
     waiting_started_at: datetime | None
+    pod_quality: str | None
     superseded_by: UUID | None
 
 
@@ -116,6 +118,7 @@ async def create_stop(
         appointment_ref=body.appointment_ref,
         waiting_free_minutes=body.waiting_free_minutes,
         waiting_started_at=body.waiting_started_at,
+        pod_quality=body.pod_quality,
     )
     await session.commit()
     return _as_response(row)

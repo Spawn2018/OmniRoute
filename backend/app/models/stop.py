@@ -100,6 +100,7 @@ class Stop(Base, TimestampMixin):
         DateTime(timezone=True),
         nullable=True,
     )
+    pod_quality: Mapped[str | None] = mapped_column(String(12), nullable=True)
     eta_physical: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
     eta_legal: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
     superseded_by: Mapped[uuid.UUID | None] = mapped_column(
