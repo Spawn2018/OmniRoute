@@ -12,4 +12,4 @@ Katalog znacznika owijki per tenant. HITL kod + `wrap_kind`. To jest znacznik, n
 - ExtractionService nie importuje tego BC
 - Job: `/tenant-contract-keks`
 
-Delta: [274.0](../deltas/open/274.0-tenant-contract-kek.md).
+Delta: [274.0](../deltas/archived/274.0-tenant-contract-kek.md).

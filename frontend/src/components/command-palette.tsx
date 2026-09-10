@@ -162,6 +162,11 @@ const NAV_ACTIONS = [
     to: "/customer-contracts",
   },
   {
+    id: "nav-tenant-contract-keks",
+    label: "Idź do znacznika KEK",
+    to: "/tenant-contract-keks",
+  },
+  {
     id: "nav-exchange-connectors",
     label: "Idź do konektora giełdy",
     to: "/exchange-connectors",

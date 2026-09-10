@@ -708,3 +708,7 @@ class InvalidExchangeConnector(DomainError):
 
 class InvalidCustomerContract(DomainError):
     """CI9: HITL nagłówek + opaque blob present/absent — nie szyfr."""
+
+
+class InvalidTenantContractKek(DomainError):
+    """CI9: HITL znacznik owijki (password|kms) — nie klucz i nie materiał."""

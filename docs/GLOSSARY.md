@@ -189,7 +189,7 @@
 | obserwacja pogody | weather_observation | V2 HITL 195.0; Open-Meteo/geometria leftover; nie ETA |
 | zegar D&D | free_time_clock | V3 HITL 196.0 rodzaj + free_days; nie countdown; nie charge |
 | umowa klienta | customer_contract | CI9 HITL 272.0 nagłówek; 273.0 opaque present/absent, nie szyfr; leftover `wrapped_dek`; nie super-admin |
-| znacznik KEK | tenant_contract_kek | CI9 HITL 274.0 Kod znacznik owijki (`password`/`kms`); nie klucz; nie materiał; 273.0 nadal nie szyfr |
+| znacznik KEK | tenant_contract_kek | CI9 HITL 274.0 wrap_kind `password`/`kms`; nie klucz; nie materiał; 273.0 nadal nie szyfr |
 | klauzula SLA | sla_clause | CI; wpis ręczny; kara SQL |
 | prognoza spóźnienia | delay_forecast | CI4; przed actual late |
 | wynik interwencji | intervention_outcome | CI6–CI7; saved = SQL |

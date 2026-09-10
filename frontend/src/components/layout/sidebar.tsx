@@ -83,6 +83,7 @@ const NAV = [
   { to: "/erp-connectors", label: "Konektor Optima" },
   { to: "/idp-connectors", label: "Konektor Auth0" },
   { to: "/customer-contracts", label: "Umowa klienta" },
+  { to: "/tenant-contract-keks", label: "Znacznik KEK" },
   { to: "/exchange-connectors", label: "Konektor giełdy" },
   { to: "/terminal-slot-connectors", label: "Konektor slotu" },
   { to: "/weather-observations", label: "Pogoda" },

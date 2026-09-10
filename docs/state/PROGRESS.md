@@ -628,3 +628,5 @@
 | 2026-09-10 | 272.0 | CI9 | customer_contract HITL nagłówek kod + etykiety. Nie treść. Nie ciphertext. Nastepny: leftover CI9 ciphertext/KEK albo CT7 parked live Plan. |
 | 2026-09-10 | Plan 273.0 | CI9 | customer_contract HITL opaque BYTEA present/absent, nie szyfr. Delta zaakceptowana (`/noc`). Nastepny: kod 273.0. |
 | 2026-09-10 | 273.0 | CI9 | customer_contract HITL opaque blob present/absent. Nie szyfr. Nie KEK. Nastepny: leftover CI9 KEK mark albo CT7 parked live Plan. |
+| 2026-09-10 | Plan 274.0 | CI9 | tenant_contract_kek HITL znacznik owijki, nie klucz. Delta zaakceptowana (`/noc`). Nastepny: kod 274.0. |
+| 2026-09-10 | 274.0 | CI9 | tenant_contract_kek HITL wrap_kind password/kms. Nie klucz. Nie materiał. Nastepny: leftover CT7 parked live / reszta pinu Plan. |

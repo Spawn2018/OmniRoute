@@ -91,6 +91,7 @@ from app.api import (
     task_templates,
     telematics_connectors,
     tenancy,
+    tenant_contract_keks,
     tender_award_reviews,
     tender_bid_stances,
     tender_carbon_marks,
@@ -208,6 +209,7 @@ api_router.include_router(erp_connectors.router)
 api_router.include_router(customer_contracts.router)
 api_router.include_router(exchange_connectors.router)
 api_router.include_router(idp_connectors.router)
+api_router.include_router(tenant_contract_keks.router)
 api_router.include_router(terminal_slot_connectors.router)
 api_router.include_router(tower_impacts.router)
 api_router.include_router(twin_marks.router)

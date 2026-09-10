@@ -111,6 +111,7 @@ import { Route as TenderRoundsRouteImport } from './routes/tender-rounds'
 import { Route as TenderTedNoticesRouteImport } from './routes/tender-ted-notices'
 import { Route as TenderWinLossesRouteImport } from './routes/tender-win-losses'
 import { Route as TendersRouteImport } from './routes/tenders'
+import { Route as TenantContractKeksRouteImport } from './routes/tenant-contract-keks'
 import { Route as TerminalSlotConnectorsRouteImport } from './routes/terminal-slot-connectors'
 import { Route as TerminalsRouteImport } from './routes/terminals'
 import { Route as TowerImpactsRouteImport } from './routes/tower-impacts'
@@ -631,6 +632,11 @@ const TendersRoute = TendersRouteImport.update({
   path: '/tenders',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TenantContractKeksRoute = TenantContractKeksRouteImport.update({
+  id: '/tenant-contract-keks',
+  path: '/tenant-contract-keks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TerminalSlotConnectorsRoute = TerminalSlotConnectorsRouteImport.update({
   id: '/terminal-slot-connectors',
   path: '/terminal-slot-connectors',
@@ -780,6 +786,7 @@ export interface FileRoutesByFullPath {
   '/tender-ted-notices': typeof TenderTedNoticesRoute
   '/tender-win-losses': typeof TenderWinLossesRoute
   '/tenders': typeof TendersRoute
+  '/tenant-contract-keks': typeof TenantContractKeksRoute
   '/terminal-slot-connectors': typeof TerminalSlotConnectorsRoute
   '/terminals': typeof TerminalsRoute
   '/tower-impacts': typeof TowerImpactsRoute
@@ -893,6 +900,7 @@ export interface FileRoutesByTo {
   '/tender-ted-notices': typeof TenderTedNoticesRoute
   '/tender-win-losses': typeof TenderWinLossesRoute
   '/tenders': typeof TendersRoute
+  '/tenant-contract-keks': typeof TenantContractKeksRoute
   '/terminal-slot-connectors': typeof TerminalSlotConnectorsRoute
   '/terminals': typeof TerminalsRoute
   '/tower-impacts': typeof TowerImpactsRoute
@@ -1007,6 +1015,7 @@ export interface FileRoutesById {
   '/tender-ted-notices': typeof TenderTedNoticesRoute
   '/tender-win-losses': typeof TenderWinLossesRoute
   '/tenders': typeof TendersRoute
+  '/tenant-contract-keks': typeof TenantContractKeksRoute
   '/terminal-slot-connectors': typeof TerminalSlotConnectorsRoute
   '/terminals': typeof TerminalsRoute
   '/tower-impacts': typeof TowerImpactsRoute
@@ -1122,6 +1131,7 @@ export interface FileRouteTypes {
     | '/tender-ted-notices'
     | '/tender-win-losses'
     | '/tenders'
+    | '/tenant-contract-keks'
     | '/terminal-slot-connectors'
     | '/terminals'
     | '/tower-impacts'
@@ -1235,6 +1245,7 @@ export interface FileRouteTypes {
     | '/tender-ted-notices'
     | '/tender-win-losses'
     | '/tenders'
+    | '/tenant-contract-keks'
     | '/terminal-slot-connectors'
     | '/terminals'
     | '/tower-impacts'
@@ -1348,6 +1359,7 @@ export interface FileRouteTypes {
     | '/tender-ted-notices'
     | '/tender-win-losses'
     | '/tenders'
+    | '/tenant-contract-keks'
     | '/terminal-slot-connectors'
     | '/terminals'
     | '/tower-impacts'
@@ -1462,6 +1474,7 @@ export interface RootRouteChildren {
   TenderTedNoticesRoute: typeof TenderTedNoticesRoute
   TenderWinLossesRoute: typeof TenderWinLossesRoute
   TendersRoute: typeof TendersRoute
+  TenantContractKeksRoute: typeof TenantContractKeksRoute
   TerminalSlotConnectorsRoute: typeof TerminalSlotConnectorsRoute
   TerminalsRoute: typeof TerminalsRoute
   TowerImpactsRoute: typeof TowerImpactsRoute
@@ -2189,6 +2202,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TendersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tenant-contract-keks': {
+      id: '/tenant-contract-keks'
+      path: '/tenant-contract-keks'
+      fullPath: '/tenant-contract-keks'
+      preLoaderRoute: typeof TenantContractKeksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terminal-slot-connectors': {
       id: '/terminal-slot-connectors'
       path: '/terminal-slot-connectors'
@@ -2358,6 +2378,7 @@ const rootRouteChildren: RootRouteChildren = {
   TenderTedNoticesRoute: TenderTedNoticesRoute,
   TenderWinLossesRoute: TenderWinLossesRoute,
   TendersRoute: TendersRoute,
+  TenantContractKeksRoute: TenantContractKeksRoute,
   TerminalSlotConnectorsRoute: TerminalSlotConnectorsRoute,
   TerminalsRoute: TerminalsRoute,
   TowerImpactsRoute: TowerImpactsRoute,

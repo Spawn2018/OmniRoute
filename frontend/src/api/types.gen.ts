@@ -6517,6 +6517,50 @@ export type TelematicsConnectorResponse = {
 };
 
 /**
+ * TenantContractKekCreate
+ */
+export type TenantContractKekCreate = {
+    /**
+     * Kek Code
+     */
+    kek_code: string;
+    /**
+     * Wrap Kind
+     */
+    wrap_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TenantContractKekResponse
+ */
+export type TenantContractKekResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Kek Code
+     */
+    kek_code: string;
+    /**
+     * Wrap Kind
+     */
+    wrap_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * TenderAwardReviewCreate
  */
 export type TenderAwardReviewCreate = {
@@ -12981,6 +13025,49 @@ export type CreateIdpConnectorApiV1IdpConnectorsPostResponses = {
 };
 
 export type CreateIdpConnectorApiV1IdpConnectorsPostResponse = CreateIdpConnectorApiV1IdpConnectorsPostResponses[keyof CreateIdpConnectorApiV1IdpConnectorsPostResponses];
+
+export type ListTenantContractKeksApiV1TenantContractKeksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tenant-contract-keks';
+};
+
+export type ListTenantContractKeksApiV1TenantContractKeksGetResponses = {
+    /**
+     * Response List Tenant Contract Keks Api V1 Tenant Contract Keks Get
+     *
+     * Successful Response
+     */
+    200: Array<TenantContractKekResponse>;
+};
+
+export type ListTenantContractKeksApiV1TenantContractKeksGetResponse = ListTenantContractKeksApiV1TenantContractKeksGetResponses[keyof ListTenantContractKeksApiV1TenantContractKeksGetResponses];
+
+export type CreateTenantContractKekApiV1TenantContractKeksPostData = {
+    body: TenantContractKekCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tenant-contract-keks';
+};
+
+export type CreateTenantContractKekApiV1TenantContractKeksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTenantContractKekApiV1TenantContractKeksPostError = CreateTenantContractKekApiV1TenantContractKeksPostErrors[keyof CreateTenantContractKekApiV1TenantContractKeksPostErrors];
+
+export type CreateTenantContractKekApiV1TenantContractKeksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TenantContractKekResponse;
+};
+
+export type CreateTenantContractKekApiV1TenantContractKeksPostResponse = CreateTenantContractKekApiV1TenantContractKeksPostResponses[keyof CreateTenantContractKekApiV1TenantContractKeksPostResponses];
 
 export type ListTerminalSlotConnectorsApiV1TerminalSlotConnectorsGetData = {
     body?: never;

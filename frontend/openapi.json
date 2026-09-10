@@ -8708,6 +8708,80 @@
         ]
       }
     },
+    "/api/v1/tenant-contract-keks": {
+      "get": {
+        "tags": [
+          "tenant-contract-keks"
+        ],
+        "summary": "List Tenant Contract Keks",
+        "operationId": "list_tenant_contract_keks_api_v1_tenant_contract_keks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TenantContractKekResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Tenant Contract Keks Api V1 Tenant Contract Keks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "tenant-contract-keks"
+        ],
+        "summary": "Create Tenant Contract Kek",
+        "operationId": "create_tenant_contract_kek_api_v1_tenant_contract_keks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TenantContractKekCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TenantContractKekResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/terminal-slot-connectors": {
       "get": {
         "tags": [
@@ -23220,6 +23294,65 @@
           "source_ref"
         ],
         "title": "TelematicsConnectorResponse"
+      },
+      "TenantContractKekCreate": {
+        "properties": {
+          "kek_code": {
+            "type": "string",
+            "title": "Kek Code"
+          },
+          "wrap_kind": {
+            "type": "string",
+            "title": "Wrap Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "kek_code",
+          "wrap_kind",
+          "source_ref"
+        ],
+        "title": "TenantContractKekCreate"
+      },
+      "TenantContractKekResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "kek_code": {
+            "type": "string",
+            "title": "Kek Code"
+          },
+          "wrap_kind": {
+            "type": "string",
+            "title": "Wrap Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "kek_code",
+          "wrap_kind",
+          "source_ref"
+        ],
+        "title": "TenantContractKekResponse"
       },
       "TenderAwardReviewCreate": {
         "properties": {
