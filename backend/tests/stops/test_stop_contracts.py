@@ -67,6 +67,7 @@ def test_generated_api_types_include_stop() -> None:
     assert "weight_kg" in source
     assert "quantity" in source
     assert "packaging_code" in source
+    assert "seal_in" in source
 
 
 def test_migration_152_adds_group_code_without_table() -> None:
@@ -138,3 +139,17 @@ def test_migration_185_adds_pack_without_seal() -> None:
     assert "leaflet" not in source
     assert "def downgrade" in source
     assert "packaging_code" in source.split("def downgrade")[1]
+
+
+def test_migration_186_adds_seal_in_without_seal_out() -> None:
+    source = (_ROOT / "backend" / "alembic" / "versions" / "186_stop_seal_in.py").read_text(
+        encoding="utf-8"
+    )
+    assert 'revision: str = "186_stop_seal_in"' in source
+    assert 'down_revision: str | None = "185_stop_pack"' in source
+    assert "seal_in" in source
+    assert 'sa.Column("seal_out"' not in source
+    assert "create_table" not in source
+    assert "leaflet" not in source
+    assert "def downgrade" in source
+    assert "seal_in" in source.split("def downgrade")[1]

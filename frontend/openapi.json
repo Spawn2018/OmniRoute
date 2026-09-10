@@ -21259,6 +21259,17 @@
               }
             ],
             "title": "Packaging Code"
+          },
+          "seal_in": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Seal In"
           }
         },
         "additionalProperties": false,
@@ -21383,6 +21394,17 @@
             ],
             "title": "Packaging Code"
           },
+          "seal_in": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Seal In"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -21414,6 +21436,7 @@
           "weight_kg",
           "quantity",
           "packaging_code",
+          "seal_in",
           "superseded_by"
         ],
         "title": "StopResponse"

@@ -15,6 +15,7 @@ from app.domain.stop import (
     require_stop_kind,
     require_stop_packaging_code,
     require_stop_quantity,
+    require_stop_seal_in,
     require_stop_source_ref,
     require_stop_status,
     require_stop_weight_kg,
@@ -95,6 +96,7 @@ class StubStopService:
         weight_kg: object = None,
         quantity: object = None,
         packaging_code: object = None,
+        seal_in: object = None,
     ) -> Stop:
         kind = require_stop_kind(stop_kind)
         seq = require_sequence_no(sequence_no)
@@ -106,6 +108,7 @@ class StubStopService:
         mass = require_stop_weight_kg(weight_kg)
         count = require_stop_quantity(quantity)
         pack = require_stop_packaging_code(packaging_code)
+        inbound = require_stop_seal_in(seal_in)
         physical = require_eta_physical(eta_physical)
         legal = require_eta_legal(eta_legal)
         order_id = shipment_id if type(shipment_id) is UUID else uuid4()
@@ -134,6 +137,7 @@ class StubStopService:
             and current.weight_kg == mass
             and current.quantity == count
             and current.packaging_code == pack
+            and current.seal_in == inbound
         ):
             return current
         successor = Stop(
@@ -151,6 +155,7 @@ class StubStopService:
             weight_kg=mass,
             quantity=count,
             packaging_code=pack,
+            seal_in=inbound,
             eta_physical=physical,
             eta_legal=legal,
             created_by=user_id,
@@ -349,6 +354,7 @@ def test_http_create_stop_with_notes_for_driver(catalog_client: object) -> None:
     assert created.json()["weight_kg"] is None
     assert created.json()["quantity"] is None
     assert created.json()["packaging_code"] is None
+    assert created.json()["seal_in"] is None
     assert "margin" not in created.json()
 
 
@@ -501,6 +507,7 @@ def test_http_create_stop_with_packaging_code(catalog_client: object) -> None:
     assert created.status_code == 201
     assert created.json()["packaging_code"] == "EUR"
     assert created.json()["quantity"] is None
+    assert created.json()["seal_in"] is None
     assert "margin" not in created.json()
 
 
@@ -527,3 +534,54 @@ def test_http_rejects_too_long_packaging_code(catalog_client: object) -> None:
     )
     assert reply.status_code == 400
     assert "opakowanie" in reply.json()["detail"]
+
+
+def test_http_create_stop_with_seal_in(catalog_client: object) -> None:
+    client, ships, places, _rows = catalog_client
+    assert ships.row is not None
+    assert places.row is not None
+    created = client.post(
+        "/api/v1/stops",
+        headers=bearer_auth_headers(),
+        json={
+            "shipment_id": str(ships.row.id),
+            "location_id": str(places.row.id),
+            "stop_kind": "loading",
+            "sequence_no": 12,
+            "time_zone": "Europe/Warsaw",
+            "status": "pending",
+            "source_ref": "tenant:manual",
+            "eta_physical": _HITL_ISO,
+            "eta_legal": _HITL_ISO,
+            "seal_in": " ABC123 ",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["seal_in"] == "ABC123"
+    assert "seal_out" not in created.json()
+    assert "margin" not in created.json()
+
+
+def test_http_rejects_too_long_seal_in(catalog_client: object) -> None:
+    client, ships, places, _rows = catalog_client
+    assert ships.row is not None
+    assert places.row is not None
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/stops",
+        headers=headers,
+        json={
+            "shipment_id": str(ships.row.id),
+            "location_id": str(places.row.id),
+            "stop_kind": "loading",
+            "sequence_no": 13,
+            "time_zone": "Europe/Warsaw",
+            "status": "pending",
+            "source_ref": "tenant:manual",
+            "eta_physical": _HITL_ISO,
+            "eta_legal": _HITL_ISO,
+            "seal_in": "x" * 33,
+        },
+    )
+    assert reply.status_code == 400
+    assert "plomba" in reply.json()["detail"]

@@ -18,6 +18,7 @@ export type StopRow = {
   weight_kg: string | null
   quantity: number | null
   packaging_code: string | null
+  seal_in: string | null
   superseded_by: string | null
 }
 
@@ -36,6 +37,7 @@ export type StopWrite = {
   weight_kg: string | null
   quantity: number | string | null
   packaging_code: string | null
+  seal_in: string | null
 }
 
 const PATH = "/api/v1/stops"
@@ -54,11 +56,13 @@ export function stopWrite(args: {
   weightKg: string
   quantityHitl: string
   packagingCode: string
+  sealIn: string
 }): StopWrite {
   const group = args.groupCode.trim()
   const notes = args.driverNotes.trim()
   const mass = args.weightKg.trim()
   const pack = args.packagingCode.trim()
+  const inbound = args.sealIn.trim()
   return {
     shipment_id: args.shipmentId.trim(),
     location_id: args.locationId.trim(),
@@ -73,6 +77,7 @@ export function stopWrite(args: {
     weight_kg: mass === "" ? null : mass,
     quantity: optionalStopQuantity(args.quantityHitl),
     packaging_code: pack === "" ? null : pack,
+    seal_in: inbound === "" ? null : inbound,
     source_ref: "tenant:manual",
   }
 }

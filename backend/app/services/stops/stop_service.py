@@ -16,6 +16,7 @@ from app.domain.stop import (
     require_stop_location_id,
     require_stop_packaging_code,
     require_stop_quantity,
+    require_stop_seal_in,
     require_stop_shipment_id,
     require_stop_source_ref,
     require_stop_status,
@@ -40,6 +41,7 @@ class _PackedPoint:
     mass: Decimal | None
     count: int | None
     pack: str | None
+    inbound_seal: str | None
     physical: datetime
     legal: datetime
 
@@ -60,6 +62,7 @@ def _pack_point(
     weight_kg: object,
     quantity: object,
     packaging_code: object,
+    seal_in: object,
 ) -> _PackedPoint:
     return _PackedPoint(
         order_id=require_stop_shipment_id(shipment_id),
@@ -74,6 +77,7 @@ def _pack_point(
         mass=require_stop_weight_kg(weight_kg),
         count=require_stop_quantity(quantity),
         pack=require_stop_packaging_code(packaging_code),
+        inbound_seal=require_stop_seal_in(seal_in),
         physical=require_eta_physical(eta_physical),
         legal=require_eta_legal(eta_legal),
     )
@@ -91,6 +95,7 @@ def _same_point(current: Stop, packed: _PackedPoint) -> bool:
         and current.weight_kg == packed.mass
         and current.quantity == packed.count
         and current.packaging_code == packed.pack
+        and current.seal_in == packed.inbound_seal
         and current.eta_physical == packed.physical
         and current.eta_legal == packed.legal
     )
@@ -128,6 +133,7 @@ class StopService:
         weight_kg: object = None,
         quantity: object = None,
         packaging_code: object = None,
+        seal_in: object = None,
     ) -> Stop:
         packed = _pack_point(
             shipment_id=shipment_id,
@@ -144,6 +150,7 @@ class StopService:
             weight_kg=weight_kg,
             quantity=quantity,
             packaging_code=packaging_code,
+            seal_in=seal_in,
         )
         return await self._persist(organization_id, user_id, packed)
 
@@ -178,6 +185,7 @@ class StopService:
                 weight_kg=packed.mass,
                 quantity=packed.count,
                 packaging_code=packed.pack,
+                seal_in=packed.inbound_seal,
                 eta_physical=packed.physical,
                 eta_legal=packed.legal,
                 created_by=user_id,

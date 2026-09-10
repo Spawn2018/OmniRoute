@@ -15,6 +15,7 @@ from app.domain.stop import (
     require_stop_kind,
     require_stop_packaging_code,
     require_stop_quantity,
+    require_stop_seal_in,
     require_stop_status,
     require_stop_weight_kg,
     require_time_zone,
@@ -123,3 +124,16 @@ def test_stop_packaging_code_rejects_non_text_and_too_long() -> None:
         require_stop_packaging_code(12)
     with pytest.raises(InvalidStop, match="opakowanie"):
         require_stop_packaging_code("x" * 33)
+
+
+def test_stop_seal_in_omits_blank_and_trims() -> None:
+    assert require_stop_seal_in(None) is None
+    assert require_stop_seal_in("  ") is None
+    assert require_stop_seal_in(" ABC123 ") == "ABC123"
+
+
+def test_stop_seal_in_rejects_non_text_and_too_long() -> None:
+    with pytest.raises(InvalidStop, match="plomba"):
+        require_stop_seal_in(12)
+    with pytest.raises(InvalidStop, match="plomba"):
+        require_stop_seal_in("x" * 33)

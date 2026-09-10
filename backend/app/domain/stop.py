@@ -14,6 +14,7 @@ _GROUP = re.compile(r"^[A-Za-z0-9_-]{2,32}$")
 _MAX_REF = 256
 _MAX_NOTES = 256
 _MAX_PACK = 32
+_MAX_SEAL = 32
 _FIXTURE = "fixture://stop/"
 _MANUAL = "tenant:manual"
 _FOUR = Decimal("0.0001")
@@ -153,6 +154,19 @@ def require_stop_packaging_code(raw: object) -> str | None:
         return None
     if len(token) > _MAX_PACK:
         raise InvalidStop("opakowanie za długie")
+    return token
+
+
+def require_stop_seal_in(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidStop("plomba musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    if len(token) > _MAX_SEAL:
+        raise InvalidStop("plomba za długa")
     return token
 
 

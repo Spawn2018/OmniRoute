@@ -5774,6 +5774,10 @@ export type StopCreate = {
      * Packaging Code
      */
     packaging_code?: string | null;
+    /**
+     * Seal In
+     */
+    seal_in?: string | null;
 };
 
 /**
@@ -5844,6 +5848,10 @@ export type StopResponse = {
      * Packaging Code
      */
     packaging_code: string | null;
+    /**
+     * Seal In
+     */
+    seal_in: string | null;
     /**
      * Superseded By
      */
