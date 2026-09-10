@@ -1352,6 +1352,10 @@ export type ContainerCreate = {
      * Carrier Party Id
      */
     carrier_party_id?: string | null;
+    /**
+     * Shipment Leg Id
+     */
+    shipment_leg_id?: string | null;
 };
 
 /**
@@ -1498,6 +1502,10 @@ export type ContainerResponse = {
      * Carrier Party Id
      */
     carrier_party_id: string | null;
+    /**
+     * Shipment Leg Id
+     */
+    shipment_leg_id: string | null;
     /**
      * Superseded By
      */

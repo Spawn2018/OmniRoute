@@ -13923,6 +13923,18 @@
               }
             ],
             "title": "Carrier Party Id"
+          },
+          "shipment_leg_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Shipment Leg Id"
           }
         },
         "additionalProperties": false,
@@ -14289,6 +14301,18 @@
             ],
             "title": "Carrier Party Id"
           },
+          "shipment_leg_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Shipment Leg Id"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -14339,6 +14363,7 @@
           "last_survey_at",
           "booking_no",
           "carrier_party_id",
+          "shipment_leg_id",
           "superseded_by"
         ],
         "title": "ContainerResponse"

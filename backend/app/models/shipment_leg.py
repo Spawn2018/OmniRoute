@@ -45,6 +45,11 @@ class ShipmentLeg(Base, TimestampMixin):
         ),
         UniqueConstraint(
             "organization_id",
+            "id",
+            name="uq_shipment_leg_org_id",
+        ),
+        UniqueConstraint(
+            "organization_id",
             "shipment_id",
             "leg_kind",
             name="uq_shipment_leg_org_kind",

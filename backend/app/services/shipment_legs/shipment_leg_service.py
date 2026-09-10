@@ -3,7 +3,7 @@ from uuid import UUID, uuid4
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.domain.errors import InvalidShipmentLeg
+from app.domain.errors import InvalidShipmentLeg, ResourceNotFound
 from app.domain.shipment_leg import (
     require_air_waybill_kind,
     require_air_waybill_no,
@@ -22,6 +22,12 @@ class ShipmentLegService:
 
     async def list_legs(self) -> list[ShipmentLeg]:
         return await self._rows.list_all()
+
+    async def get_leg(self, leg_id: UUID) -> ShipmentLeg:
+        found = await self._rows.get(leg_id)
+        if found is None:
+            raise ResourceNotFound(f"nieznany odcinek: {leg_id}")
+        return found
 
     async def record_leg(
         self,

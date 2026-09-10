@@ -21,6 +21,7 @@ from app.domain.container import (
     require_container_ref_5,
     require_container_remarks,
     require_container_shipment_id,
+    require_container_shipment_leg_id,
     require_container_source_ref,
     require_cy_cutoff_at,
     require_free_time_dest_h,
@@ -78,6 +79,7 @@ class _WriteBox(NamedTuple):
     survey: object
     book: object
     carrier: object
+    leg: object
 
 
 class _BoxDraft(NamedTuple):
@@ -114,6 +116,7 @@ class _BoxDraft(NamedTuple):
     survey: datetime | None
     book: str | None
     carrier: UUID | None
+    leg: UUID | None
 
 
 def _box_draft(write: _WriteBox) -> _BoxDraft:
@@ -151,6 +154,7 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_last_survey_at(write.survey),
         require_booking_no(write.book),
         require_carrier_party_id(write.carrier),
+        require_container_shipment_leg_id(write.leg),
     )
 
 
@@ -188,6 +192,7 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.last_survey_at == draft.survey
         and current.booking_no == draft.book
         and current.carrier_party_id == draft.carrier
+        and current.shipment_leg_id == draft.leg
     )
 
 
@@ -228,6 +233,7 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         last_survey_at=draft.survey,
         booking_no=draft.book,
         carrier_party_id=draft.carrier,
+        shipment_leg_id=draft.leg,
         created_by=user_id,
     )
 

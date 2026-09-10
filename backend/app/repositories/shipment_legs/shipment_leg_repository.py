@@ -1,3 +1,5 @@
+from uuid import UUID
+
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -13,6 +15,10 @@ class ShipmentLegRepository:
             select(ShipmentLeg).order_by(ShipmentLeg.created_at.desc()),
         )
         return list(result.all())
+
+    async def get(self, leg_id: UUID) -> ShipmentLeg | None:
+        found = await self._session.get(ShipmentLeg, leg_id)
+        return found if isinstance(found, ShipmentLeg) else None
 
     async def add(self, row: ShipmentLeg) -> ShipmentLeg:
         self._session.add(row)

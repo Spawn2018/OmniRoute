@@ -11,6 +11,7 @@ from app.main import app
 from app.models.container import Container
 from app.models.party import Party
 from app.models.shipment import Shipment
+from app.models.shipment_leg import ShipmentLeg
 from app.services.containers.container_service import (
     _box_draft,
     _box_unchanged,
@@ -43,6 +44,17 @@ class StubPartyService:
             if row.id == party_id:
                 return row
         raise ResourceNotFound(f"nieznany kontrahent: {party_id}")
+
+
+class StubShipmentLegService:
+    def __init__(self) -> None:
+        self.rows: list[ShipmentLeg] = []
+
+    async def get_leg(self, leg_id: UUID) -> ShipmentLeg:
+        for row in self.rows:
+            if row.id == leg_id:
+                return row
+        raise ResourceNotFound(f"nieznany odcinek: {leg_id}")
 
 
 class StubShipmentService:
@@ -100,7 +112,9 @@ def box_client(monkeypatch: pytest.MonkeyPatch) -> object:
     boxes = StubContainerService(object())
     jobs = StubShipmentService(object())
     counterparts = StubPartyService()
+    legs = StubShipmentLegService()
     boxes.counterparts = counterparts
+    boxes.legs = legs
 
     async def _fake_tenant_session() -> object:
         session = AsyncMock()
@@ -110,6 +124,7 @@ def box_client(monkeypatch: pytest.MonkeyPatch) -> object:
     monkeypatch.setattr("app.api.containers.ContainerService", lambda _s: boxes)
     monkeypatch.setattr("app.api.containers.ShipmentService", lambda _s: jobs)
     monkeypatch.setattr("app.api.containers.PartyService", lambda _s: counterparts)
+    monkeypatch.setattr("app.api.containers.ShipmentLegService", lambda _s: legs)
     set_authz_checker(AllowAllAuthz())
     app.dependency_overrides[require_tenant_session] = _fake_tenant_session
     yield TestClient(app), boxes, jobs
@@ -158,6 +173,7 @@ def test_http_create_list_supersede_and_reject_check_digit(box_client: object) -
     assert first.json()["last_survey_at"] is None
     assert first.json()["booking_no"] is None
     assert first.json()["carrier_party_id"] is None
+    assert first.json()["shipment_leg_id"] is None
     assert "amount" not in first.json()
     assert "vgm" not in first.json()
     second = client.post(
@@ -1242,3 +1258,49 @@ def test_http_rejects_unknown_carrier_party_id(box_client: object) -> None:
     )
     assert reply.status_code == 404
     assert "kontrahent" in reply.json()["detail"]
+
+
+def test_http_create_container_with_shipment_leg_id(box_client: object) -> None:
+    client, boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    leg = ShipmentLeg(
+        id=uuid4(),
+        organization_id=uuid4(),
+        shipment_id=uuid4(),
+        origin_location_id=uuid4(),
+        destination_location_id=uuid4(),
+        leg_kind="road",
+        source_ref="fixture://shipment-leg/http",
+    )
+    boxes.legs.rows.append(leg)
+    created = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "shipment_leg_id": str(leg.id),
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["shipment_leg_id"] == str(leg.id)
+    assert created.json()["carrier_party_id"] is None
+    assert "pin" not in created.json()
+
+
+def test_http_rejects_unknown_shipment_leg_id(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "shipment_leg_id": str(uuid4()),
+        },
+    )
+    assert reply.status_code == 404
+    assert "odcinek" in reply.json()["detail"]

@@ -10,6 +10,7 @@ from app.core.session_token import SessionIdentity
 from app.models.container import Container
 from app.services.containers.container_service import ContainerService, _WriteBox
 from app.services.parties.party_service import PartyService
+from app.services.shipment_legs.shipment_leg_service import ShipmentLegService
 from app.services.shipments.shipment_service import ShipmentService
 
 router = APIRouter(prefix="/containers", tags=["containers"])
@@ -53,6 +54,7 @@ class ContainerCreate(BaseModel):
     last_survey_at: object | None = None
     booking_no: object | None = None
     carrier_party_id: UUID | None = None
+    shipment_leg_id: UUID | None = None
 
 
 class ContainerResponse(BaseModel):
@@ -93,6 +95,7 @@ class ContainerResponse(BaseModel):
     last_survey_at: datetime | None
     booking_no: str | None
     carrier_party_id: UUID | None
+    shipment_leg_id: UUID | None
     superseded_by: UUID | None
 
 
@@ -103,9 +106,7 @@ def _as_response(row: Container) -> ContainerResponse:
 
 
 def _write_from_body(
-    body: ContainerCreate,
-    shipment_id: UUID | None,
-    carrier_id: UUID | None,
+    body: ContainerCreate, shipment_id: UUID | None, carrier_id: UUID | None, leg_id: UUID | None,
 ) -> _WriteBox:
     return _WriteBox(
         body.container_no,
@@ -141,6 +142,7 @@ def _write_from_body(
         body.last_survey_at,
         body.booking_no,
         carrier_id,
+        leg_id,
     )
 
 
@@ -155,6 +157,13 @@ async def _bound_carrier(session: AsyncSession, carrier_id: UUID | None) -> UUID
     if carrier_id is None:
         return None
     row = await PartyService(session).get_party(carrier_id)
+    return row.id
+
+
+async def _bound_leg(session: AsyncSession, leg_id: UUID | None) -> UUID | None:
+    if leg_id is None:
+        return None
+    row = await ShipmentLegService(session).get_leg(leg_id)
     return row.id
 
 
@@ -178,10 +187,11 @@ async def create_container(
 ) -> ContainerResponse:
     shipment_id = await _bound_shipment(session, body.shipment_id)
     carrier_id = await _bound_carrier(session, body.carrier_party_id)
+    leg_id = await _bound_leg(session, body.shipment_leg_id)
     row = await ContainerService(session).record_container(
         organization_id=identity.organization_id,
         user_id=identity.user_id,
-        write=_write_from_body(body, shipment_id, carrier_id),
+        write=_write_from_body(body, shipment_id, carrier_id, leg_id),
     )
     await session.commit()
     return _as_response(row)

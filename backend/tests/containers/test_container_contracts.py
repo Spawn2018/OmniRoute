@@ -24,6 +24,7 @@ def test_service_does_not_import_shipments_or_charges() -> None:
     service = (_SERVICES / "containers" / "container_service.py").read_text(encoding="utf-8")
     assert "app.services.shipments" not in service
     assert "app.services.parties" not in service
+    assert "app.services.shipment_legs" not in service
     assert "app.services.charges" not in service
     assert "app.services.geography" not in service
     assert "app.services.stops" not in service
@@ -462,6 +463,22 @@ def test_migration_181_adds_carrier_party_without_live_http() -> None:
     assert "carrier_party_id" in source.split("def downgrade")[1]
 
 
+def test_migration_182_adds_shipment_leg_without_live_http() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "182_container_shipment_leg.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "182_container_shipment_leg"' in source
+    assert 'down_revision: str | None = "181_container_carrier_party"' in source
+    assert "shipment_leg_id" in source
+    assert "uq_shipment_leg_org_id" in source
+    assert "fk_container_shipment_leg" in source
+    assert "pin_code" not in source
+    assert "httpx" not in source
+    assert "create_table" not in source
+    assert "def downgrade" in source
+    assert "shipment_leg_id" in source.split("def downgrade")[1]
+
+
 def test_generated_api_types_include_container() -> None:
     source = (_ROOT / "frontend" / "src" / "api" / "types.gen.ts").read_text(encoding="utf-8")
     assert "ContainerResponse" in source
@@ -489,3 +506,4 @@ def test_generated_api_types_include_container() -> None:
     assert "last_survey_at" in source
     assert "booking_no" in source
     assert "carrier_party_id" in source
+    assert "shipment_leg_id" in source

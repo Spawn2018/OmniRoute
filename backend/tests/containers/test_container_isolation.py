@@ -8,7 +8,9 @@ from sqlalchemy.exc import IntegrityError
 
 from app.core.database import bind_tenant
 from app.models.container import Container
+from app.models.location import Location
 from app.models.party import Party
+from app.models.shipment_leg import ShipmentLeg
 from tests.sales_invoices.test_sales_invoice_isolation import _booked
 
 
@@ -767,3 +769,60 @@ async def test_container_carrier_party_id_same_tenant(session, two_tenants) -> N
     await bind_tenant(session, org_a.id)
     loaded = list((await session.scalars(select(Container))).all())
     assert loaded[0].carrier_party_id == carrier.id
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_container_shipment_leg_id_same_tenant(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    user_a = two_tenants["user_a"]
+    await bind_tenant(session, org_a.id)
+    job = await _booked(session, organization_id=org_a.id, user_id=user_a.id, suffix="boxleg")
+    origin = Location(
+        id=uuid4(),
+        organization_id=org_a.id,
+        kind="postal_zone",
+        name="A start",
+        code="A_ORIG",
+        source_ref="tenant:manual",
+        created_by=user_a.id,
+    )
+    dest = Location(
+        id=uuid4(),
+        organization_id=org_a.id,
+        kind="postal_zone",
+        name="A koniec",
+        code="A_DEST",
+        source_ref="tenant:manual",
+        created_by=user_a.id,
+    )
+    session.add_all([origin, dest])
+    await session.flush()
+    leg = ShipmentLeg(
+        id=uuid4(),
+        organization_id=org_a.id,
+        shipment_id=job.id,
+        origin_location_id=origin.id,
+        destination_location_id=dest.id,
+        leg_kind="road",
+        source_ref="fixture://shipment-leg/box",
+        created_by=user_a.id,
+    )
+    session.add(leg)
+    await session.flush()
+    session.add(
+        Container(
+            id=uuid4(),
+            organization_id=org_a.id,
+            container_no="CSQU3054383",
+            iso_size_type="22G1",
+            source_ref="fixture://container/leg",
+            shipment_leg_id=leg.id,
+            created_by=user_a.id,
+        ),
+    )
+    await session.flush()
+    session.expunge_all()
+    await bind_tenant(session, org_a.id)
+    loaded = list((await session.scalars(select(Container))).all())
+    assert loaded[0].shipment_leg_id == leg.id

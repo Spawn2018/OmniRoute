@@ -21,6 +21,7 @@ from app.domain.container import (
     require_container_ref_4,
     require_container_ref_5,
     require_container_remarks,
+    require_container_shipment_leg_id,
     require_container_source_ref,
     require_cy_cutoff_at,
     require_free_time_dest_h,
@@ -113,6 +114,14 @@ def test_carrier_party_id_accepts_uuid_and_rejects_text() -> None:
     assert require_carrier_party_id(mark) == mark
     with pytest.raises(InvalidContainer, match="armatora"):
         require_carrier_party_id(str(mark))
+
+
+def test_shipment_leg_id_accepts_uuid_and_rejects_text() -> None:
+    mark = uuid4()
+    assert require_container_shipment_leg_id(None) is None
+    assert require_container_shipment_leg_id(mark) == mark
+    with pytest.raises(InvalidContainer, match="odcinka"):
+        require_container_shipment_leg_id(str(mark))
 
 
 def test_container_remarks_omits_blank_and_keeps_token() -> None:
