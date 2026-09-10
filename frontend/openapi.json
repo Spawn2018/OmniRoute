@@ -21281,6 +21281,17 @@
               }
             ],
             "title": "Seal Out"
+          },
+          "appointment_ref": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Appointment Ref"
           }
         },
         "additionalProperties": false,
@@ -21427,6 +21438,17 @@
             ],
             "title": "Seal Out"
           },
+          "appointment_ref": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Appointment Ref"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -21460,6 +21482,7 @@
           "packaging_code",
           "seal_in",
           "seal_out",
+          "appointment_ref",
           "superseded_by"
         ],
         "title": "StopResponse"

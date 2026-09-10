@@ -11,6 +11,7 @@ from app.domain.stop import (
     require_eta_physical,
     require_notes_for_driver,
     require_sequence_no,
+    require_stop_appointment_ref,
     require_stop_group_code,
     require_stop_kind,
     require_stop_packaging_code,
@@ -146,3 +147,16 @@ def test_stop_seal_out_reuses_seal_in_rule() -> None:
     assert require_stop_seal_out(" XYZ ") == "XYZ"
     with pytest.raises(InvalidStop, match="plomba"):
         require_stop_seal_out("x" * 33)
+
+
+def test_stop_appointment_ref_omits_blank_and_trims() -> None:
+    assert require_stop_appointment_ref(None) is None
+    assert require_stop_appointment_ref("  ") is None
+    assert require_stop_appointment_ref(" WH-12 ") == "WH-12"
+
+
+def test_stop_appointment_ref_rejects_non_text_and_too_long() -> None:
+    with pytest.raises(InvalidStop, match="awizacja"):
+        require_stop_appointment_ref(12)
+    with pytest.raises(InvalidStop, match="awizacja"):
+        require_stop_appointment_ref("x" * 33)

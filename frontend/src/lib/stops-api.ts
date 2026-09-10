@@ -20,6 +20,7 @@ export type StopRow = {
   packaging_code: string | null
   seal_in: string | null
   seal_out: string | null
+  appointment_ref: string | null
   superseded_by: string | null
 }
 
@@ -40,6 +41,7 @@ export type StopWrite = {
   packaging_code: string | null
   seal_in: string | null
   seal_out: string | null
+  appointment_ref: string | null
 }
 
 const PATH = "/api/v1/stops"
@@ -60,6 +62,7 @@ export function stopWrite(args: {
   packagingCode: string
   sealIn: string
   sealOut: string
+  appointmentRef: string
 }): StopWrite {
   const group = args.groupCode.trim()
   const notes = args.driverNotes.trim()
@@ -67,6 +70,7 @@ export function stopWrite(args: {
   const pack = args.packagingCode.trim()
   const inbound = args.sealIn.trim()
   const outbound = args.sealOut.trim()
+  const booking = args.appointmentRef.trim()
   return {
     shipment_id: args.shipmentId.trim(),
     location_id: args.locationId.trim(),
@@ -83,6 +87,7 @@ export function stopWrite(args: {
     packaging_code: pack === "" ? null : pack,
     seal_in: inbound === "" ? null : inbound,
     seal_out: outbound === "" ? null : outbound,
+    appointment_ref: booking === "" ? null : booking,
     source_ref: "tenant:manual",
   }
 }

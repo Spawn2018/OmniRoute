@@ -11,6 +11,7 @@ from app.domain.stop import (
     require_eta_physical,
     require_notes_for_driver,
     require_sequence_no,
+    require_stop_appointment_ref,
     require_stop_group_code,
     require_stop_kind,
     require_stop_packaging_code,
@@ -99,6 +100,7 @@ class StubStopService:
         packaging_code: object = None,
         seal_in: object = None,
         seal_out: object = None,
+        appointment_ref: object = None,
     ) -> Stop:
         kind = require_stop_kind(stop_kind)
         seq = require_sequence_no(sequence_no)
@@ -112,6 +114,7 @@ class StubStopService:
         pack = require_stop_packaging_code(packaging_code)
         inbound = require_stop_seal_in(seal_in)
         outbound = require_stop_seal_out(seal_out)
+        booking = require_stop_appointment_ref(appointment_ref)
         physical = require_eta_physical(eta_physical)
         legal = require_eta_legal(eta_legal)
         order_id = shipment_id if type(shipment_id) is UUID else uuid4()
@@ -142,6 +145,7 @@ class StubStopService:
             and current.packaging_code == pack
             and current.seal_in == inbound
             and current.seal_out == outbound
+            and current.appointment_ref == booking
         ):
             return current
         successor = Stop(
@@ -161,6 +165,7 @@ class StubStopService:
             packaging_code=pack,
             seal_in=inbound,
             seal_out=outbound,
+            appointment_ref=booking,
             eta_physical=physical,
             eta_legal=legal,
             created_by=user_id,
@@ -361,6 +366,7 @@ def test_http_create_stop_with_notes_for_driver(catalog_client: object) -> None:
     assert created.json()["packaging_code"] is None
     assert created.json()["seal_in"] is None
     assert created.json()["seal_out"] is None
+    assert created.json()["appointment_ref"] is None
     assert "margin" not in created.json()
 
 
@@ -616,6 +622,7 @@ def test_http_create_stop_with_seal_out(catalog_client: object) -> None:
     assert created.status_code == 201
     assert created.json()["seal_out"] == "XYZ"
     assert created.json()["seal_in"] is None
+    assert created.json()["appointment_ref"] is None
     assert "margin" not in created.json()
 
 
@@ -642,3 +649,54 @@ def test_http_rejects_too_long_seal_out(catalog_client: object) -> None:
     )
     assert reply.status_code == 400
     assert "plomba" in reply.json()["detail"]
+
+
+def test_http_create_stop_with_appointment_ref(catalog_client: object) -> None:
+    client, ships, places, _rows = catalog_client
+    assert ships.row is not None
+    assert places.row is not None
+    created = client.post(
+        "/api/v1/stops",
+        headers=bearer_auth_headers(),
+        json={
+            "shipment_id": str(ships.row.id),
+            "location_id": str(places.row.id),
+            "stop_kind": "loading",
+            "sequence_no": 16,
+            "time_zone": "Europe/Warsaw",
+            "status": "pending",
+            "source_ref": "tenant:manual",
+            "eta_physical": _HITL_ISO,
+            "eta_legal": _HITL_ISO,
+            "appointment_ref": " WH-12 ",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["appointment_ref"] == "WH-12"
+    assert created.json()["seal_out"] is None
+    assert "margin" not in created.json()
+
+
+def test_http_rejects_too_long_appointment_ref(catalog_client: object) -> None:
+    client, ships, places, _rows = catalog_client
+    assert ships.row is not None
+    assert places.row is not None
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/stops",
+        headers=headers,
+        json={
+            "shipment_id": str(ships.row.id),
+            "location_id": str(places.row.id),
+            "stop_kind": "loading",
+            "sequence_no": 17,
+            "time_zone": "Europe/Warsaw",
+            "status": "pending",
+            "source_ref": "tenant:manual",
+            "eta_physical": _HITL_ISO,
+            "eta_legal": _HITL_ISO,
+            "appointment_ref": "x" * 33,
+        },
+    )
+    assert reply.status_code == 400
+    assert "awizacja" in reply.json()["detail"]

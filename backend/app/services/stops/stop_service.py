@@ -11,6 +11,7 @@ from app.domain.stop import (
     require_eta_physical,
     require_notes_for_driver,
     require_sequence_no,
+    require_stop_appointment_ref,
     require_stop_group_code,
     require_stop_kind,
     require_stop_location_id,
@@ -44,6 +45,7 @@ class _PackedPoint:
     pack: str | None
     inbound_seal: str | None
     outbound_seal: str | None
+    appointment: str | None
     physical: datetime
     legal: datetime
 
@@ -57,6 +59,7 @@ class _HitlTail:
     pack: object = None
     inbound_seal: object = None
     outbound_seal: object = None
+    appointment: object = None
 
 
 def _pack_point(
@@ -86,6 +89,7 @@ def _pack_point(
         pack=require_stop_packaging_code(tail.pack),
         inbound_seal=require_stop_seal_in(tail.inbound_seal),
         outbound_seal=require_stop_seal_out(tail.outbound_seal),
+        appointment=require_stop_appointment_ref(tail.appointment),
         physical=require_eta_physical(eta_physical),
         legal=require_eta_legal(eta_legal),
     )
@@ -105,6 +109,7 @@ def _same_point(current: Stop, packed: _PackedPoint) -> bool:
         and current.packaging_code == packed.pack
         and current.seal_in == packed.inbound_seal
         and current.seal_out == packed.outbound_seal
+        and current.appointment_ref == packed.appointment
         and current.eta_physical == packed.physical
         and current.eta_legal == packed.legal
     )
@@ -144,6 +149,7 @@ class StopService:
         packaging_code: object = None,
         seal_in: object = None,
         seal_out: object = None,
+        appointment_ref: object = None,
     ) -> Stop:
         tail = _HitlTail(
             stop_group_code,
@@ -153,6 +159,7 @@ class StopService:
             packaging_code,
             seal_in,
             seal_out,
+            appointment_ref,
         )
         packed = _pack_point(
             shipment_id, location_id, stop_kind, sequence_no, time_zone, status, source_ref,
@@ -193,6 +200,7 @@ class StopService:
                 packaging_code=packed.pack,
                 seal_in=packed.inbound_seal,
                 seal_out=packed.outbound_seal,
+                appointment_ref=packed.appointment,
                 eta_physical=packed.physical,
                 eta_legal=packed.legal,
                 created_by=user_id,

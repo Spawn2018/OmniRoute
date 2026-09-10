@@ -15,6 +15,7 @@ _MAX_REF = 256
 _MAX_NOTES = 256
 _MAX_PACK = 32
 _MAX_SEAL = 32
+_MAX_APPOINTMENT = 32
 _FIXTURE = "fixture://stop/"
 _MANUAL = "tenant:manual"
 _FOUR = Decimal("0.0001")
@@ -172,6 +173,19 @@ def require_stop_seal_in(raw: object) -> str | None:
 
 def require_stop_seal_out(raw: object) -> str | None:
     return require_stop_seal_in(raw)
+
+
+def require_stop_appointment_ref(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidStop("awizacja musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    if len(token) > _MAX_APPOINTMENT:
+        raise InvalidStop("awizacja za długa")
+    return token
 
 
 def _require_eta_clock(raw: object, label: str) -> datetime:

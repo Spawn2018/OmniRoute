@@ -26,6 +26,7 @@ def test_service_does_not_import_parents_or_map() -> None:
     assert "app.services.geography" not in service
     assert "app.services.charges" not in service
     assert "app.services.containers" not in service
+    assert "app.services.dock_appointments" not in service
     assert "httpx" not in service
     assert "leaflet" not in service
     assert "open-meteo" not in service.casefold()
@@ -69,6 +70,7 @@ def test_generated_api_types_include_stop() -> None:
     assert "packaging_code" in source
     assert "seal_in" in source
     assert "seal_out" in source
+    assert "appointment_ref" in source
 
 
 def test_migration_152_adds_group_code_without_table() -> None:
@@ -168,3 +170,17 @@ def test_migration_187_adds_seal_out_without_appointment() -> None:
     assert "leaflet" not in source
     assert "def downgrade" in source
     assert "seal_out" in source.split("def downgrade")[1]
+
+
+def test_migration_188_adds_appointment_ref_without_dock_table() -> None:
+    source = (_ROOT / "backend" / "alembic" / "versions" / "188_stop_appointment_ref.py").read_text(
+        encoding="utf-8"
+    )
+    assert 'revision: str = "188_stop_appointment_ref"' in source
+    assert 'down_revision: str | None = "187_stop_seal_out"' in source
+    assert "appointment_ref" in source
+    assert "no_show" not in source
+    assert "create_table" not in source
+    assert "leaflet" not in source
+    assert "def downgrade" in source
+    assert "appointment_ref" in source.split("def downgrade")[1]
