@@ -244,12 +244,13 @@ describe("U-routes-breadth standing", () => {
       "256.0": "/shipments",
       "257.0": "/shipments",
       "258.0": "/shipments",
+      "259.0": "/fleet",
     })
     expect(OPS_JOBS.map((job) => job.route)).toEqual(
       expect.arrayContaining(Object.values(SHIPPED_CHARGE_ROUTES)),
     )
-    expect(OPS_JOBS).toHaveLength(106)
-    expect(OPS_JOBS.length).not.toBe(107)
+    expect(OPS_JOBS).toHaveLength(107)
+    expect(OPS_JOBS.length).not.toBe(108)
 
     const html = renderToStaticMarkup(
       createElement(OpsIndex, { healthLabel: "ok", healthState: "ok" }),

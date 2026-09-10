@@ -503,6 +503,11 @@ export const OPS_JOBS = [
     label: "Zdarzenia podmiotu",
     job: "ledger entity_event append-only",
   },
+  {
+    route: BUSINESS_LISTS.fleet.route,
+    label: "Flota",
+    job: "zapis zasobu pojazdu/kierowcy/naczepy",
+  },
   { route: BUSINESS_LISTS.users.route, label: "Użytkownicy", job: "tenant users" },
   { route: "/session", label: "Sesja", job: "token klienta" },
 ] as const
@@ -743,6 +748,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "256.0": "/shipments",
   "257.0": "/shipments",
   "258.0": "/shipments",
+  "259.0": "/fleet",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

@@ -37,6 +37,7 @@ const NAV = [
   { to: "/outbox", label: "Outbox" },
   { to: "/entity-events", label: "Zdarzenia podmiotu" },
   { to: "/shipments", label: "Zlecenia" },
+  { to: "/fleet", label: "Flota" },
   { to: "/tracking", label: "Tracking" },
   { to: "/exceptions", label: "Wyjątki" },
   { to: "/claims", label: "Reklamacje ładunku" },

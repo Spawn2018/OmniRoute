@@ -48,6 +48,7 @@ const NAV_ACTIONS = [
   { id: "nav-notifications", label: "Idź do powiadomień", to: "/notifications" },
   { id: "nav-outbox", label: "Idź do outbox", to: "/outbox" },
   { id: "nav-shipments", label: "Idź do zleceń", to: "/shipments" },
+  { id: "nav-fleet", label: "Idź do floty", to: "/fleet" },
   { id: "nav-tracking", label: "Idź do trackingu", to: "/tracking" },
   { id: "nav-exceptions", label: "Idź do wyjątków", to: "/exceptions" },
   { id: "nav-claims", label: "Idź do reklamacji", to: "/claims" },

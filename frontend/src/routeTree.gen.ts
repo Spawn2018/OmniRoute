@@ -37,6 +37,7 @@ import { Route as ExceptionsRouteImport } from './routes/exceptions'
 import { Route as ExecutiveMarksRouteImport } from './routes/executive-marks'
 import { Route as ExtractionsRouteImport } from './routes/extractions'
 import { Route as FinanceRouteImport } from './routes/finance'
+import { Route as FleetRouteImport } from './routes/fleet'
 import { Route as FraudRouteImport } from './routes/fraud'
 import { Route as FreeTimeClocksRouteImport } from './routes/free-time-clocks'
 import { Route as FuelIndexesRouteImport } from './routes/fuel-indexes'
@@ -247,6 +248,11 @@ const ExtractionsRoute = ExtractionsRouteImport.update({
 const FinanceRoute = FinanceRouteImport.update({
   id: '/finance',
   path: '/finance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FleetRoute = FleetRouteImport.update({
+  id: '/fleet',
+  path: '/fleet',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FraudRoute = FraudRouteImport.update({
@@ -634,6 +640,7 @@ export interface FileRoutesByFullPath {
   '/executive-marks': typeof ExecutiveMarksRoute
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
+  '/fleet': typeof FleetRoute
   '/fraud': typeof FraudRoute
   '/free-time-clocks': typeof FreeTimeClocksRoute
   '/fuel-indexes': typeof FuelIndexesRoute
@@ -735,6 +742,7 @@ export interface FileRoutesByTo {
   '/executive-marks': typeof ExecutiveMarksRoute
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
+  '/fleet': typeof FleetRoute
   '/fraud': typeof FraudRoute
   '/free-time-clocks': typeof FreeTimeClocksRoute
   '/fuel-indexes': typeof FuelIndexesRoute
@@ -837,6 +845,7 @@ export interface FileRoutesById {
   '/executive-marks': typeof ExecutiveMarksRoute
   '/extractions': typeof ExtractionsRoute
   '/finance': typeof FinanceRoute
+  '/fleet': typeof FleetRoute
   '/fraud': typeof FraudRoute
   '/free-time-clocks': typeof FreeTimeClocksRoute
   '/fuel-indexes': typeof FuelIndexesRoute
@@ -940,6 +949,7 @@ export interface FileRouteTypes {
     | '/executive-marks'
     | '/extractions'
     | '/finance'
+    | '/fleet'
     | '/fraud'
     | '/free-time-clocks'
     | '/fuel-indexes'
@@ -1041,6 +1051,7 @@ export interface FileRouteTypes {
     | '/executive-marks'
     | '/extractions'
     | '/finance'
+    | '/fleet'
     | '/fraud'
     | '/free-time-clocks'
     | '/fuel-indexes'
@@ -1142,6 +1153,7 @@ export interface FileRouteTypes {
     | '/executive-marks'
     | '/extractions'
     | '/finance'
+    | '/fleet'
     | '/fraud'
     | '/free-time-clocks'
     | '/fuel-indexes'
@@ -1244,6 +1256,7 @@ export interface RootRouteChildren {
   ExecutiveMarksRoute: typeof ExecutiveMarksRoute
   ExtractionsRoute: typeof ExtractionsRoute
   FinanceRoute: typeof FinanceRoute
+  FleetRoute: typeof FleetRoute
   FraudRoute: typeof FraudRoute
   FreeTimeClocksRoute: typeof FreeTimeClocksRoute
   FuelIndexesRoute: typeof FuelIndexesRoute
@@ -1513,6 +1526,13 @@ declare module '@tanstack/react-router' {
       path: '/finance'
       fullPath: '/finance'
       preLoaderRoute: typeof FinanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fleet': {
+      id: '/fleet'
+      path: '/fleet'
+      fullPath: '/fleet'
+      preLoaderRoute: typeof FleetRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/fraud': {
@@ -2044,6 +2064,7 @@ const rootRouteChildren: RootRouteChildren = {
   ExecutiveMarksRoute: ExecutiveMarksRoute,
   ExtractionsRoute: ExtractionsRoute,
   FinanceRoute: FinanceRoute,
+  FleetRoute: FleetRoute,
   FraudRoute: FraudRoute,
   FreeTimeClocksRoute: FreeTimeClocksRoute,
   FuelIndexesRoute: FuelIndexesRoute,

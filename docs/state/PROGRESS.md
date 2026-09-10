@@ -599,3 +599,4 @@
 | 2026-09-10 | Plan 258.0 | T2 | subcontractor_party_id HITL na trip, nie fleet i nie C8. Delta zaakceptowana (`/noc`). Nastepny: kod 258.0. |
 | 2026-09-10 | 258.0 | T2 | subcontractor_party_id HITL na trip. Nie fleet. Nie mapa. Nastepny: leftover T2c /fleet Plan. |
 | 2026-09-10 | Plan 259.0 | T2 | trasa /fleet na resource, nie GPS i nie HW. Delta zaakceptowana (`/noc`). Nastepny: kod 259.0. |
+| 2026-09-10 | 259.0 | T2 | trasa /fleet na resource. Nie GPS. Nie HW. Nastepny: leftover N1 consignment Plan. |
