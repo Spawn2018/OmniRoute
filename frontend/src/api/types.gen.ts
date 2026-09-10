@@ -5790,6 +5790,10 @@ export type StopCreate = {
      * Waiting Free Minutes
      */
     waiting_free_minutes?: number | string | number | boolean | null;
+    /**
+     * Waiting Started At
+     */
+    waiting_started_at?: string | null;
 };
 
 /**
@@ -5876,6 +5880,10 @@ export type StopResponse = {
      * Waiting Free Minutes
      */
     waiting_free_minutes: number | null;
+    /**
+     * Waiting Started At
+     */
+    waiting_started_at: string | null;
     /**
      * Superseded By
      */

@@ -20,6 +20,7 @@ from app.domain.stop import (
     require_stop_seal_out,
     require_stop_status,
     require_stop_waiting_free_minutes,
+    require_stop_waiting_started_at,
     require_stop_weight_kg,
     require_time_zone,
 )
@@ -178,3 +179,20 @@ def test_stop_waiting_free_rejects_float_bool_and_negative() -> None:
         require_stop_waiting_free_minutes(True)
     with pytest.raises(InvalidStop, match="oczekiwanie"):
         require_stop_waiting_free_minutes(-1)
+
+
+def test_stop_waiting_started_omits_blank_and_parses_iso() -> None:
+    assert require_stop_waiting_started_at(None) is None
+    assert require_stop_waiting_started_at("  ") is None
+    parsed = require_stop_waiting_started_at("2026-09-09T12:00:00+00:00")
+    assert parsed is not None
+    assert parsed.tzinfo is not None
+
+
+def test_stop_waiting_started_rejects_naive_and_non_text() -> None:
+    with pytest.raises(InvalidStop, match="początek"):
+        require_stop_waiting_started_at(12)
+    with pytest.raises(InvalidStop, match="początek"):
+        require_stop_waiting_started_at("2026-09-09T12:00:00")
+    with pytest.raises(InvalidStop, match="początek"):
+        require_stop_waiting_started_at("nie-data")

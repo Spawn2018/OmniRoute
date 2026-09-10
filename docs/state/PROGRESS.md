@@ -589,3 +589,4 @@
 | 2026-09-10 | Plan 253.0 | T1 | waiting_free_minutes HITL na stop, nie countdown i nie POD. Delta zaakceptowana (`/noc`). Nastepny: kod 253.0. |
 | 2026-09-10 | 253.0 | T1 | waiting_free_minutes HITL na stop. Nie countdown. Nie mapa. Nastepny: leftover T1 EXP1 waiting_started_at Plan. |
 | 2026-09-10 | Plan 254.0 | T1 | waiting_started_at HITL na stop, nie countdown i nie POD. Delta zaakceptowana (`/noc`). Nastepny: kod 254.0. |
+| 2026-09-10 | 254.0 | T1 | waiting_started_at HITL na stop. Nie countdown. Nie mapa. Nastepny: leftover T1 EXP1 POD Plan. |

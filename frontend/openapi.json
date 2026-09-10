@@ -21312,6 +21312,17 @@
               }
             ],
             "title": "Waiting Free Minutes"
+          },
+          "waiting_started_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Waiting Started At"
           }
         },
         "additionalProperties": false,
@@ -21480,6 +21491,18 @@
             ],
             "title": "Waiting Free Minutes"
           },
+          "waiting_started_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Waiting Started At"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -21515,6 +21538,7 @@
           "seal_out",
           "appointment_ref",
           "waiting_free_minutes",
+          "waiting_started_at",
           "superseded_by"
         ],
         "title": "StopResponse"

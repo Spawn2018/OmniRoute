@@ -229,3 +229,14 @@ def require_eta_physical(raw: object) -> datetime:
 
 def require_eta_legal(raw: object) -> datetime:
     return _require_eta_clock(raw, "prawny")
+
+
+def require_stop_waiting_started_at(raw: object) -> datetime | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidStop("początek musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    return _require_eta_clock(token, "początek")
