@@ -22,6 +22,7 @@ from app.domain.stop import (
     require_stop_shipment_id,
     require_stop_source_ref,
     require_stop_status,
+    require_stop_waiting_free_minutes,
     require_stop_weight_kg,
     require_time_zone,
 )
@@ -46,6 +47,7 @@ class _PackedPoint:
     inbound_seal: str | None
     outbound_seal: str | None
     appointment: str | None
+    wait_free: int | None
     physical: datetime
     legal: datetime
 
@@ -60,6 +62,7 @@ class _HitlTail:
     inbound_seal: object = None
     outbound_seal: object = None
     appointment: object = None
+    wait_free: object = None
 
 
 def _pack_point(
@@ -90,6 +93,7 @@ def _pack_point(
         inbound_seal=require_stop_seal_in(tail.inbound_seal),
         outbound_seal=require_stop_seal_out(tail.outbound_seal),
         appointment=require_stop_appointment_ref(tail.appointment),
+        wait_free=require_stop_waiting_free_minutes(tail.wait_free),
         physical=require_eta_physical(eta_physical),
         legal=require_eta_legal(eta_legal),
     )
@@ -110,6 +114,7 @@ def _same_point(current: Stop, packed: _PackedPoint) -> bool:
         and current.seal_in == packed.inbound_seal
         and current.seal_out == packed.outbound_seal
         and current.appointment_ref == packed.appointment
+        and current.waiting_free_minutes == packed.wait_free
         and current.eta_physical == packed.physical
         and current.eta_legal == packed.legal
     )
@@ -150,16 +155,11 @@ class StopService:
         seal_in: object = None,
         seal_out: object = None,
         appointment_ref: object = None,
+        waiting_free_minutes: object = None,
     ) -> Stop:
         tail = _HitlTail(
-            stop_group_code,
-            notes_for_driver,
-            weight_kg,
-            quantity,
-            packaging_code,
-            seal_in,
-            seal_out,
-            appointment_ref,
+            stop_group_code, notes_for_driver, weight_kg, quantity, packaging_code,
+            seal_in, seal_out, appointment_ref, waiting_free_minutes,
         )
         packed = _pack_point(
             shipment_id, location_id, stop_kind, sequence_no, time_zone, status, source_ref,
@@ -201,6 +201,7 @@ class StopService:
                 seal_in=packed.inbound_seal,
                 seal_out=packed.outbound_seal,
                 appointment_ref=packed.appointment,
+                waiting_free_minutes=packed.wait_free,
                 eta_physical=packed.physical,
                 eta_legal=packed.legal,
                 created_by=user_id,

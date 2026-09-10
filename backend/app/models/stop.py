@@ -48,6 +48,10 @@ class Stop(Base, TimestampMixin):
             "quantity IS NULL OR quantity >= 0",
             name="ck_stop_quantity",
         ),
+        CheckConstraint(
+            "waiting_free_minutes IS NULL OR waiting_free_minutes >= 0",
+            name="ck_stop_waiting_free",
+        ),
         ForeignKeyConstraint(
             ["organization_id", "shipment_id"],
             ["shipment.organization_id", "shipment.id"],
@@ -91,6 +95,7 @@ class Stop(Base, TimestampMixin):
     seal_in: Mapped[str | None] = mapped_column(String(32), nullable=True)
     seal_out: Mapped[str | None] = mapped_column(String(32), nullable=True)
     appointment_ref: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    waiting_free_minutes: Mapped[int | None] = mapped_column(Integer, nullable=True)
     eta_physical: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
     eta_legal: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
     superseded_by: Mapped[uuid.UUID | None] = mapped_column(

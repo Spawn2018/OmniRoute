@@ -19,6 +19,7 @@ from app.domain.stop import (
     require_stop_seal_in,
     require_stop_seal_out,
     require_stop_status,
+    require_stop_waiting_free_minutes,
     require_stop_weight_kg,
     require_time_zone,
 )
@@ -160,3 +161,20 @@ def test_stop_appointment_ref_rejects_non_text_and_too_long() -> None:
         require_stop_appointment_ref(12)
     with pytest.raises(InvalidStop, match="awizacja"):
         require_stop_appointment_ref("x" * 33)
+
+
+def test_stop_waiting_free_omits_blank_and_keeps_int() -> None:
+    assert require_stop_waiting_free_minutes(None) is None
+    assert require_stop_waiting_free_minutes("  ") is None
+    assert require_stop_waiting_free_minutes(0) == 0
+    assert require_stop_waiting_free_minutes(15) == 15
+    assert require_stop_waiting_free_minutes("3") == 3
+
+
+def test_stop_waiting_free_rejects_float_bool_and_negative() -> None:
+    with pytest.raises(InvalidStop, match="oczekiwanie"):
+        require_stop_waiting_free_minutes(1.5)
+    with pytest.raises(InvalidStop, match="oczekiwanie"):
+        require_stop_waiting_free_minutes(True)
+    with pytest.raises(InvalidStop, match="oczekiwanie"):
+        require_stop_waiting_free_minutes(-1)

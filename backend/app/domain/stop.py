@@ -145,6 +145,26 @@ def require_stop_quantity(raw: object) -> int | None:
     return raw
 
 
+def require_stop_waiting_free_minutes(raw: object) -> int | None:
+    if raw is None:
+        return None
+    if type(raw) is str:
+        token = raw.strip()
+        if token == "":
+            return None
+        try:
+            raw = int(token)
+        except ValueError as exc:
+            raise InvalidStop("oczekiwanie musi być liczbą całkowitą") from exc
+    if isinstance(raw, float) or isinstance(raw, bool):
+        raise InvalidStop("oczekiwanie nie może być float")
+    if type(raw) is not int:
+        raise InvalidStop("oczekiwanie musi być liczbą całkowitą")
+    if raw < 0:
+        raise InvalidStop("oczekiwanie nie może być ujemne")
+    return raw
+
+
 def require_stop_packaging_code(raw: object) -> str | None:
     if raw is None:
         return None

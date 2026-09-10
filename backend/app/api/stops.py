@@ -37,6 +37,7 @@ class StopCreate(BaseModel):
     seal_in: str | None = None
     seal_out: str | None = None
     appointment_ref: str | None = None
+    waiting_free_minutes: int | str | float | bool | None = None
 
 
 class StopResponse(BaseModel):
@@ -61,6 +62,7 @@ class StopResponse(BaseModel):
     seal_in: str | None
     seal_out: str | None
     appointment_ref: str | None
+    waiting_free_minutes: int | None
     superseded_by: UUID | None
 
 
@@ -110,6 +112,7 @@ async def create_stop(
         seal_in=body.seal_in,
         seal_out=body.seal_out,
         appointment_ref=body.appointment_ref,
+        waiting_free_minutes=body.waiting_free_minutes,
     )
     await session.commit()
     return _as_response(row)

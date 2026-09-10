@@ -5786,6 +5786,10 @@ export type StopCreate = {
      * Appointment Ref
      */
     appointment_ref?: string | null;
+    /**
+     * Waiting Free Minutes
+     */
+    waiting_free_minutes?: number | string | number | boolean | null;
 };
 
 /**
@@ -5868,6 +5872,10 @@ export type StopResponse = {
      * Appointment Ref
      */
     appointment_ref: string | null;
+    /**
+     * Waiting Free Minutes
+     */
+    waiting_free_minutes: number | null;
     /**
      * Superseded By
      */

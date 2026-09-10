@@ -21,6 +21,7 @@ export type StopRow = {
   seal_in: string | null
   seal_out: string | null
   appointment_ref: string | null
+  waiting_free_minutes: number | null
   superseded_by: string | null
 }
 
@@ -42,6 +43,7 @@ export type StopWrite = {
   seal_in: string | null
   seal_out: string | null
   appointment_ref: string | null
+  waiting_free_minutes: number | string | null
 }
 
 const PATH = "/api/v1/stops"
@@ -63,6 +65,7 @@ export function stopWrite(args: {
   sealIn: string
   sealOut: string
   appointmentRef: string
+  waitingFreeMinutes: string
 }): StopWrite {
   const group = args.groupCode.trim()
   const notes = args.driverNotes.trim()
@@ -83,16 +86,17 @@ export function stopWrite(args: {
     stop_group_code: group === "" ? null : group,
     notes_for_driver: notes === "" ? null : notes,
     weight_kg: mass === "" ? null : mass,
-    quantity: optionalStopQuantity(args.quantityHitl),
+    quantity: optionalStopInt(args.quantityHitl),
     packaging_code: pack === "" ? null : pack,
     seal_in: inbound === "" ? null : inbound,
     seal_out: outbound === "" ? null : outbound,
     appointment_ref: booking === "" ? null : booking,
+    waiting_free_minutes: optionalStopInt(args.waitingFreeMinutes),
     source_ref: "tenant:manual",
   }
 }
 
-function optionalStopQuantity(raw: string): number | string | null {
+function optionalStopInt(raw: string): number | string | null {
   const token = raw.trim()
   if (token === "") {
     return null

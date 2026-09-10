@@ -21292,6 +21292,26 @@
               }
             ],
             "title": "Appointment Ref"
+          },
+          "waiting_free_minutes": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Waiting Free Minutes"
           }
         },
         "additionalProperties": false,
@@ -21449,6 +21469,17 @@
             ],
             "title": "Appointment Ref"
           },
+          "waiting_free_minutes": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Waiting Free Minutes"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -21483,6 +21514,7 @@
           "seal_in",
           "seal_out",
           "appointment_ref",
+          "waiting_free_minutes",
           "superseded_by"
         ],
         "title": "StopResponse"
