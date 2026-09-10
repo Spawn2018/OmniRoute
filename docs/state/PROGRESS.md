@@ -592,3 +592,4 @@
 | 2026-09-10 | 254.0 | T1 | waiting_started_at HITL na stop. Nie countdown. Nie mapa. Nastepny: leftover T1 EXP1 POD Plan. |
 | 2026-09-10 | Plan 255.0 | T1 | pod_quality HITL na stop, nie kamera i nie km. Delta zaakceptowana (`/noc`). Nastepny: kod 255.0. |
 | 2026-09-10 | 255.0 | T1 | pod_quality HITL na stop. Nie kamera. Nie mapa. Nastepny: leftover T2c km/fleet Plan. |
+| 2026-09-10 | Plan 256.0 | T2 | planned_distance_km HITL na trip, nie actual i nie fleet. Delta zaakceptowana (`/noc`). Nastepny: kod 256.0. |
