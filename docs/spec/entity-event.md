@@ -6,4 +6,4 @@ Ledger zdarzeń podmiotu per tenant. Append-only INSERT. Nie outbox, nie `predic
 - `event_kind`: `inquiry_queued` / `inquiry_sent` / `quote_recorded`
 - `subject_kind`: `carrier_inquiry` / `quotation` / `channel_quote`
 - `source_ref` obowiązkowe. Wskazanie UUID bez FK do innych BC.
-- Job: `/entity-events`
+- Job: `/entity-events`. POST zapytania `answered` składa `quote_recorded` w API (246.0).

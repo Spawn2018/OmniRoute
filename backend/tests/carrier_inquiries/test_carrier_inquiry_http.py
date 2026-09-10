@@ -381,3 +381,37 @@ def test_http_sent_inquiry_appends_entity_event(inquiry_client: object) -> None:
     assert write["subject_kind"] == "carrier_inquiry"
     assert write["subject_id"] == UUID(created.json()["id"])
     assert write["source_ref"] == "tenant:manual"
+
+
+def test_http_answered_inquiry_appends_quote_recorded(inquiry_client: object) -> None:
+    client, stub = inquiry_client
+    created = client.post(
+        "/api/v1/carrier-inquiries",
+        headers=bearer_auth_headers(),
+        json={
+            "network_member_id": str(uuid4()),
+            "status": "answered",
+            "quoted_amount": "10.0000",
+            "quoted_currency": "USD",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["status"] == "answered"
+    assert len(stub.ledger.writes) == 1
+    write = stub.ledger.writes[0]
+    assert write["event_kind"] == "quote_recorded"
+    assert write["subject_kind"] == "carrier_inquiry"
+    assert write["subject_id"] == UUID(created.json()["id"])
+    assert write["source_ref"] == "tenant:manual"
+
+
+def test_http_declined_inquiry_skips_entity_event(inquiry_client: object) -> None:
+    client, stub = inquiry_client
+    created = client.post(
+        "/api/v1/carrier-inquiries",
+        headers=bearer_auth_headers(),
+        json={"network_member_id": str(uuid4()), "status": "declined"},
+    )
+    assert created.status_code == 201
+    assert created.json()["status"] == "declined"
+    assert stub.ledger.writes == []

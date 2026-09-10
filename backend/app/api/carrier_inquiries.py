@@ -100,7 +100,11 @@ async def _append_queued_event(
     identity: SessionIdentity,
     row: CarrierInquiry,
 ) -> None:
-    kind = {"queued": "inquiry_queued", "sent": "inquiry_sent"}.get(row.status)
+    kind = {
+        "queued": "inquiry_queued",
+        "sent": "inquiry_sent",
+        "answered": "quote_recorded",
+    }.get(row.status)
     if kind is None:
         return
     await EntityEventService(session).create_event(

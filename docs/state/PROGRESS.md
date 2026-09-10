@@ -573,3 +573,4 @@
 | 2026-09-10 | Plan 245.0 | B0a | inquiry_sent z API przy POST sent, nie quote_recorded. Delta zaakceptowana (/noc). Nastepny: kod 245.0. |
 | 2026-09-10 | 245.0 | B0a | inquiry_sent z API przy POST sent. Nie live HTTP. Nie import BC. Nastepny: leftover quote_recorded Plan. |
 | 2026-09-10 | Plan 246.0 | B0a | quote_recorded z API przy POST answered, nie channel_quote. Delta zaakceptowana (`/noc`). Nastepny: kod 246.0. |
+| 2026-09-10 | 246.0 | B0a | quote_recorded z API przy POST answered. Nie live HTTP. Nie import BC. Nastepny: leftover stop_group/EXP1 Plan. |
