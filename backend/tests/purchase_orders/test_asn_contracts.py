@@ -82,6 +82,26 @@ def test_create_schema_forbids_shipment_and_money_fields() -> None:
     assert "payload" not in source
 
 
+def test_api_composes_promote_without_bc_cross_import() -> None:
+    api = _API.read_text(encoding="utf-8")
+    assert "/{asn_id}/promote" in api
+    assert "ShipmentService" in api
+    assert "QuotationService" in api
+    service = _SERVICE.read_text(encoding="utf-8")
+    assert "app.services.shipments" not in service
+    assert "app.services.quotations" not in service
+
+
+def test_migration_223_links_shipment_asn() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "223_shipment_asn_id.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "223_shipment_asn_id"' in source
+    assert "asn_id" in source
+    assert "uq_shipment_org_asn" in source
+    assert "fk_shipment_asn" in source
+
+
 def test_generated_api_types_include_asn() -> None:
     source = (_ROOT / "frontend" / "src" / "api" / "types.gen.ts").read_text(encoding="utf-8")
     assert "AsnResponse" in source

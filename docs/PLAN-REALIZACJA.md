@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **291.0** leftover CT1 HITL promote ASN → shipment.
+**Następny:** leftover Fala CT / pin — U1 masowy / wspólny SELECT / CT2 albo następny wąski HITL.
 <!-- os-status:end -->
 
 ```mermaid
@@ -681,7 +681,7 @@ Karta: [karty-pol-fala-ct.md](analysis/karty-pol-fala-ct.md). Tenant `shipper` R
 
 | ID | Co | Status | Poza |
 |---|---|---|---|
-| CT1 | PO → ASN → shipment (U1); plant/SKU | 276.0 HITL nagłówek `purchase_order`; 277.0 HITL `po_line`; 278.0 HITL `asn` | auto shipment / qty float / live EDI |
+| CT1 | PO → ASN → shipment (U1); plant/SKU | 276.0–278.0 HITL; 291.0 promote ASN→shipment | auto przy POST asn / qty float / live EDI / U1 masowy |
 | CT2 | impact chain; klej CI5 | po V6 | auto „zatrzymaj produkcję” |
 | CT3 | OTIF pickup vs delivery vs SKU | 280.0 HITL katalog `otif_mark` | OTIF% / scoring SQL |
 | CT4 | routing guide 409 | 279.0–290.0: guide · tryb · 409 ASN/shipment · match kind · label match ASN/shipment | live EDI · auto shipment |
@@ -853,13 +853,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

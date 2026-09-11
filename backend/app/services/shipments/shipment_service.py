@@ -27,6 +27,10 @@ def _raise_create_conflict(orig: IntegrityError) -> NoReturn:
         raise ShipmentConflict("to zlecenie już istnieje dla tej wyceny") from orig
     if "uq_shipment_org_shipment_ref" in detail:
         raise ShipmentConflict("ten numer zlecenia już istnieje") from orig
+    if "uq_shipment_org_asn" in detail:
+        raise ShipmentConflict("to awizo już ma zlecenie") from orig
+    if "fk_shipment_asn" in detail:
+        raise InvalidShipment("awizo nie istnieje") from orig
     if "fk_shipment_parent" in detail:
         raise InvalidShipment("główne zlecenie nie istnieje") from orig
     raise orig
@@ -59,6 +63,7 @@ class ShipmentService:
         guide_code: object = None,
         plant_label: object = None,
         carrier_label: object = None,
+        asn_id: UUID | None = None,
     ) -> Shipment:
         row_id = uuid4()
         parent = require_parent_shipment_id(parent_shipment_id)
@@ -76,6 +81,7 @@ class ShipmentService:
             guide_code=require_guide_code(guide_code),
             plant_label=require_optional_label(plant_label, "zakład"),
             carrier_label=require_optional_label(carrier_label, "przewoźnik"),
+            asn_id=asn_id,
             status=shipment_draft_status(),
             created_by=user_id,
         )

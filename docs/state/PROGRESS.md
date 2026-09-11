@@ -2,6 +2,7 @@
 
 | Data | Plaster | Moduł | Opis |
 |---|---|---|---|
+| 2026-09-11 | 291.0 | CT1 | HITL promote ASN → shipment (`asn_id`). Nie auto przy POST asn. |
 | 2026-09-11 | 290.0 | CT4 | Matching lane/mode na shipment przy block_409 + etykiety HITL. |
 | 2026-09-11 | 289.0 | CT4 | Matching lane/mode na ASN przy block_409 + katalog match. Nie matching na shipment. |
 | 2026-09-11 | 288.0 | CT4 | HITL `routing_guide_match` guide_code_only/lane/mode. Nie silnik. |

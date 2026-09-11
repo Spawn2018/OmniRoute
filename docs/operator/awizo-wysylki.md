@@ -9,7 +9,8 @@ Na `/asns` dopisujesz **awizo** na istniejącym nagłówku zamówienia zakupu: k
 5. Etykiety zakład / przewoźnik / referencja zostaw puste albo wpisz tekst 1–128 — o ile punkt 4 nie wymaga konkretnej wartości. To nie są FK.
 6. Podaj `source_ref` (`fixture://asn/…` albo `tenant:manual`).
 7. „Zapisz awizo wysyłki”. Ten sam kod na tym samym nagłówku albo to samo `source_ref` u tenanta nie wejdzie drugi raz. Cudzy nagłówek nie istnieje.
+8. Świadoma promocja: wklej `asn_id` i `quotation_id`, „Promuj awizo do zlecenia”. Kopiuje guide/etykiety. Drugi promote tego awiza → konflikt. Nie startuje sam przy zapisie awiza.
 
-Czego tu nie ma: live EDI 856, automatyczne zlecenie, kwota, parser X12, matching etykiet na zleceniu. Marża zostaje na `/charges`. Linia SKU zostaje na `/po-lines`. Zlecenie zostaje na `/shipments`.
+Czego tu nie ma: live EDI 856, automatyczne zlecenie przy zapisie awiza, kwota, parser X12. Marża zostaje na `/charges`. Linia SKU zostaje na `/po-lines`. Zlecenie: [zlecenie.md](zlecenie.md).
 
-Nazwy w kodzie: `asn` · `asn_code` · `guide_code` · `purchase_order_id` · `plant_label` · `carrier_label` · `ship_ref_label` · `source_ref` · `routing_guide_match`.
+Nazwy w kodzie: `asn` · `asn_code` · `guide_code` · `purchase_order_id` · `plant_label` · `carrier_label` · `ship_ref_label` · `source_ref` · `routing_guide_match` · `promote` · `shipment.asn_id`.

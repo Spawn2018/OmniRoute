@@ -17,6 +17,12 @@ class AsnService:
     async def list_notices(self) -> list[Asn]:
         return await self._rows.list_notices()
 
+    async def get_notice(self, asn_id: UUID) -> Asn:
+        found = await self._rows.get_notice(asn_id)
+        if found is None:
+            raise ResourceNotFound("nieznane awizo")
+        return found
+
     async def persist_asn(
         self,
         *,

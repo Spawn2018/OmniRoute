@@ -74,3 +74,23 @@ export async function persistAsn(payload: AsnBody): Promise<AsnRow> {
   })
   return readAsnJson(posted, "Błąd zapisu awiza wysyłki", 201)
 }
+
+export async function promoteAsn(input: {
+  asnId: string
+  quotationId: string
+  sourceRef?: string
+}): Promise<{ id: string; asn_id: string | null }> {
+  const posted = await fetch(`${ASN_PATH}/${input.asnId}/promote`, {
+    method: "POST",
+    headers: {
+      ...requireAuthHeaders(),
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      quotation_id: input.quotationId,
+      source_ref: input.sourceRef ?? "tenant:manual",
+    }),
+  })
+  return readAsnJson(posted, "Błąd promocji awiza do zlecenia", 201)
+}

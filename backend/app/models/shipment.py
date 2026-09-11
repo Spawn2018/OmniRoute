@@ -51,6 +51,17 @@ class Shipment(Base, TimestampMixin):
             name="fk_shipment_parent",
             ondelete="RESTRICT",
         ),
+        ForeignKeyConstraint(
+            ["organization_id", "asn_id"],
+            ["asn.organization_id", "asn.id"],
+            name="fk_shipment_asn",
+            ondelete="RESTRICT",
+        ),
+        UniqueConstraint(
+            "organization_id",
+            "asn_id",
+            name="uq_shipment_org_asn",
+        ),
         CheckConstraint(
             "(parent_shipment_id IS NULL AND relation_kind IS NULL) OR "
             "(parent_shipment_id IS NOT NULL AND relation_kind IS NOT NULL AND "
@@ -100,4 +111,5 @@ class Shipment(Base, TimestampMixin):
     guide_code: Mapped[str | None] = mapped_column(String(32), nullable=True)
     plant_label: Mapped[str | None] = mapped_column(String(128), nullable=True)
     carrier_label: Mapped[str | None] = mapped_column(String(128), nullable=True)
+    asn_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
     status: Mapped[str] = mapped_column(String(8), nullable=False)

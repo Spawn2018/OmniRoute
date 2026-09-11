@@ -17,6 +17,10 @@ class AsnRepository:
         )
         return list(packed.all())
 
+    async def get_notice(self, asn_id: UUID) -> Asn | None:
+        packed = await self._session.scalars(select(Asn).where(Asn.id == asn_id))
+        return packed.first()
+
     async def get_header(self, purchase_order_id: UUID) -> PurchaseOrder | None:
         packed = await self._session.scalars(
             select(PurchaseOrder).where(PurchaseOrder.id == purchase_order_id)

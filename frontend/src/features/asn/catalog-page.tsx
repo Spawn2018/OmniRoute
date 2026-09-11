@@ -1,8 +1,11 @@
-import { useQuery } from "@tanstack/react-query"
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
+import { useState } from "react"
 import { createColumnHelper } from "@tanstack/react-table"
 import { CatalogError, CatalogHeading, TenantSessionNotice } from "@/components/catalog/catalog-parts"
 import { DataTableShell } from "@/components/data-table/data-table-shell"
-import { listAsns, type AsnRow } from "@/lib/asns-api"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { listAsns, promoteAsn, type AsnRow } from "@/lib/asns-api"
 import { BUSINESS_LISTS } from "@/lib/business-lists"
 import { getTenantContext } from "@/lib/tenant"
 import { AsnSave } from "./asn-form"
@@ -25,6 +28,50 @@ const ASN_LABELS = {
   carrier_label: "Przewoźnik",
   ship_ref_label: "Referencja",
   source_ref: "Pochodzenie",
+}
+
+function AsnPromotePanel(args: { organizationId: string | null }) {
+  const client = useQueryClient()
+  const [asnId, setAsnId] = useState("")
+  const [quotationId, setQuotationId] = useState("")
+  const save = useMutation({
+    mutationFn: () =>
+      promoteAsn({ asnId: asnId.trim(), quotationId: quotationId.trim() }),
+    onSuccess: () => {
+      setAsnId("")
+      setQuotationId("")
+      void client.invalidateQueries({ queryKey: ["asns", args.organizationId] })
+      void client.invalidateQueries({ queryKey: ["shipments", args.organizationId] })
+    },
+  })
+  return (
+    <form
+      className="flex flex-wrap items-end gap-2 rounded-md border border-border bg-card p-3"
+      onSubmit={(event) => {
+        event.preventDefault()
+        save.mutate()
+      }}
+    >
+      <Input
+        aria-label="Identyfikator awiza asn_id"
+        placeholder="asn_id"
+        value={asnId}
+        onChange={(event) => setAsnId(event.target.value)}
+        required
+      />
+      <Input
+        aria-label="Identyfikator wyceny quotation_id"
+        placeholder="quotation_id"
+        value={quotationId}
+        onChange={(event) => setQuotationId(event.target.value)}
+        required
+      />
+      <Button type="submit" disabled={save.isPending || !args.organizationId}>
+        Promuj awizo do zlecenia
+      </Button>
+      {save.isError ? <CatalogError error={save.error} /> : null}
+    </form>
+  )
 }
 
 function AsnTable(args: { organizationId: string | null }) {
@@ -56,12 +103,13 @@ export function AsnDesk() {
     <section className="flex flex-col gap-5" data-asn="board">
       <CatalogHeading
         title="Awizo wysyłki"
-        subtitle="CT1 asn · HITL na PO · nie live EDI · nie zlecenie"
+        subtitle="CT1 asn · HITL na PO · promote do zlecenia · nie live EDI"
       />
       {!ready ? <TenantSessionNotice /> : null}
       {ready ? (
         <div className="flex flex-col gap-8">
           <AsnSave organizationId={ctx.organizationId} />
+          <AsnPromotePanel organizationId={ctx.organizationId} />
           <AsnTable organizationId={ctx.organizationId} />
         </div>
       ) : null}

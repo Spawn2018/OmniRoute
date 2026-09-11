@@ -35,6 +35,12 @@ class InMemoryAsnDesk:
     async def list_notices(self) -> list[Asn]:
         return list(self.notices)
 
+    async def get_notice(self, asn_id: UUID) -> Asn:
+        for row in self.notices:
+            if row.id == asn_id:
+                return row
+        raise ResourceNotFound("nieznane awizo")
+
     async def persist_asn(
         self,
         *,
@@ -308,4 +314,106 @@ def test_http_accepts_asn_when_lane_match_ok(asn_http: object) -> None:
         ),
     )
     assert created.status_code == 201
+
+
+def test_http_promote_asn_creates_shipment(asn_http: object, monkeypatch: pytest.MonkeyPatch) -> None:
+    from decimal import Decimal
+
+    from app.models.quotation import Quotation
+    from app.models.shipment import Shipment
+
+    client, desk, _guides, _enf, _matches = asn_http
+    header = uuid4()
+    desk.known_headers.add(header)
+    created = client.post(
+        "/api/v1/asns",
+        headers=bearer_auth_headers(),
+        json=_payload(header, guide_code=None, asn_code="asn_prom"),
+    )
+    assert created.status_code == 201
+    asn_id = created.json()["id"]
+    quote_id = uuid4()
+    party_id = uuid4()
+    org_id = uuid4()
+
+    class _Quotes:
+        async def get_quotation(self, quotation_id: UUID) -> Quotation:
+            assert quotation_id == quote_id
+            return Quotation(
+                id=quote_id,
+                organization_id=org_id,
+                charge_code="THC",
+                rate_line_id=uuid4(),
+                amount=Decimal("10.0000"),
+                currency="EUR",
+                source_ref="tariff://a",
+                party_id=party_id,
+            )
+
+    class _Shipments:
+        async def create_shipment(self, **kwargs: object) -> Shipment:
+            assert kwargs["asn_id"] == UUID(asn_id)
+            assert kwargs["plant_label"] == "Gdańsk"
+            return Shipment(
+                id=uuid4(),
+                organization_id=kwargs["organization_id"],  # type: ignore[arg-type]
+                quotation_id=quote_id,
+                party_id=party_id,
+                source_ref=kwargs["source_ref"],  # type: ignore[arg-type]
+                shipment_ref=None,
+                parent_shipment_id=None,
+                relation_kind=None,
+                guide_code=None,
+                plant_label="Gdańsk",
+                carrier_label="DB Schenker",
+                asn_id=UUID(asn_id),
+                status="draft",
+                created_by=kwargs["user_id"],  # type: ignore[arg-type]
+            )
+
+    monkeypatch.setattr("app.api.asns.QuotationService", lambda _s: _Quotes())
+    monkeypatch.setattr("app.api.asns.ShipmentService", lambda _s: _Shipments())
+    promoted = client.post(
+        f"/api/v1/asns/{asn_id}/promote",
+        headers=bearer_auth_headers(),
+        json={"quotation_id": str(quote_id)},
+    )
+    assert promoted.status_code == 201
+    body = promoted.json()
+    assert body["asn_id"] == asn_id
+    assert body["plant_label"] == "Gdańsk"
+    assert body["quotation_id"] == str(quote_id)
+
+
+def test_http_promote_unknown_asn_is_404(asn_http: object) -> None:
+    client, _desk, _guides, _enf, _matches = asn_http
+    response = client.post(
+        f"/api/v1/asns/{uuid4()}/promote",
+        headers=bearer_auth_headers(),
+        json={"quotation_id": str(uuid4())},
+    )
+    assert response.status_code == 404
+    assert "awizo" in response.json()["detail"]
+
+
+def test_http_promote_respects_block_409(asn_http: object) -> None:
+    client, desk, guides, enforcements, _matches = asn_http
+    header = uuid4()
+    desk.known_headers.add(header)
+    created = client.post(
+        "/api/v1/asns",
+        headers=bearer_auth_headers(),
+        json=_payload(header, asn_code="asn_blk", guide_code=None),
+    )
+    assert created.status_code == 201
+    asn_id = created.json()["id"]
+    guides._codes = ["lane_pl_de"]
+    enforcements._kinds = ["block_409"]
+    response = client.post(
+        f"/api/v1/asns/{asn_id}/promote",
+        headers=bearer_auth_headers(),
+        json={"quotation_id": str(uuid4())},
+    )
+    assert response.status_code == 409
+    assert "guide_code" in response.json()["detail"]
 

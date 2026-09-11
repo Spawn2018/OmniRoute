@@ -5,13 +5,16 @@ from pydantic import BaseModel, ConfigDict
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import get_current_identity, require_permission, require_tenant_session
+from app.api.shipments import ShipmentResponse
 from app.core.session_token import SessionIdentity
 from app.domain.routing_guide_gate import (
     assert_asn_labels_on_routing_guide,
     assert_asn_on_routing_guide,
 )
+from app.domain.shipment import require_party_on_quotation
 from app.models.asn import Asn
 from app.services.purchase_orders.asn_service import AsnService
+from app.services.quotations.quotation_service import QuotationService
 from app.services.routing_guide_enforcements.routing_guide_enforcement_service import (
     RoutingGuideEnforcementService,
 )
@@ -19,6 +22,7 @@ from app.services.routing_guide_matches.routing_guide_match_service import (
     RoutingGuideMatchService,
 )
 from app.services.routing_guides.routing_guide_service import RoutingGuideService
+from app.services.shipments.shipment_service import ShipmentService
 
 router = APIRouter(prefix="/asns", tags=["asns"])
 
@@ -136,3 +140,45 @@ async def create_asn(
     )
     await session.commit()
     return _notice(saved)
+
+
+class AsnPromote(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    quotation_id: UUID
+    source_ref: str = "tenant:manual"
+
+
+@router.post(
+    "/{asn_id}/promote",
+    response_model=ShipmentResponse,
+    status_code=status.HTTP_201_CREATED,
+)
+async def promote_asn_to_shipment(
+    asn_id: UUID,
+    body: AsnPromote,
+    _authz: None = Depends(require_permission("can_manage_shipments", "organization")),
+    session: AsyncSession = Depends(require_tenant_session),
+    identity: SessionIdentity = Depends(get_current_identity),
+) -> ShipmentResponse:
+    notice = await AsnService(session).get_notice(asn_id)
+    await _enforce_guide_if_blocking(
+        session,
+        guide_code=notice.guide_code,
+        plant_label=notice.plant_label,
+        carrier_label=notice.carrier_label,
+    )
+    quote = await QuotationService(session).get_quotation(body.quotation_id)
+    row = await ShipmentService(session).create_shipment(
+        organization_id=identity.organization_id,
+        user_id=identity.user_id,
+        quotation_id=quote.id,
+        party_id=require_party_on_quotation(quote.party_id),
+        source_ref=body.source_ref,
+        guide_code=notice.guide_code,
+        plant_label=notice.plant_label,
+        carrier_label=notice.carrier_label,
+        asn_id=notice.id,
+    )
+    await session.commit()
+    return ShipmentResponse.model_validate(row)

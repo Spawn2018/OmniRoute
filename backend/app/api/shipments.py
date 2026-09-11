@@ -51,6 +51,7 @@ class ShipmentResponse(BaseModel):
     guide_code: str | None
     plant_label: str | None
     carrier_label: str | None
+    asn_id: UUID | None
     status: str
 
 

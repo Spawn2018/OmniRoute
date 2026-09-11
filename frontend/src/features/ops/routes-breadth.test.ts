@@ -276,6 +276,7 @@ describe("U-routes-breadth standing", () => {
       "288.0": "/routing-guide-matches",
       "289.0": "/asns",
       "290.0": "/shipments",
+      "291.0": "/asns",
     })
     expect(OPS_JOBS.map((job) => job.route)).toEqual(
       expect.arrayContaining(Object.values(SHIPPED_CHARGE_ROUTES)),
