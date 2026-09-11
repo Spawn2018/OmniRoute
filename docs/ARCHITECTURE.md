@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **287.0** leftover CT4 409 na shipment poza guide. **Etap:** Plan. **Następny:** leftover Fala CT / pin — matching lane/mode przewodnika albo następny wąski HITL z PLAN. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **287.0** leftover CT4 409 na shipment poza guide. **Etap:** Kod. **Następny:** **288.0** leftover CT4 HITL `routing_guide_match` (tryb guide_code_only|lane_label|mode_label). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
