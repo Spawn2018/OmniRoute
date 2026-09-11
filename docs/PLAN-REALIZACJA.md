@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **319.0** CI8 HITL `repair_playbook` (playbook_code + stance_kind + source_ref; bez auto-send S11).
+**Następny:** **320.0** CI2 HITL `spend_mark` (mark_code + leakage_kind + source_ref; bez SQL FV vs charge).
 <!-- os-status:end -->
 
 ```mermaid

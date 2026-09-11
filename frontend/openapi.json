@@ -6208,6 +6208,80 @@
         ]
       }
     },
+    "/api/v1/repair-playbooks": {
+      "get": {
+        "tags": [
+          "repair-playbooks"
+        ],
+        "summary": "List Repair Playbooks",
+        "operationId": "list_repair_playbooks_api_v1_repair_playbooks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/RepairPlaybookResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Repair Playbooks Api V1 Repair Playbooks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "repair-playbooks"
+        ],
+        "summary": "Create Repair Playbook",
+        "operationId": "create_repair_playbook_api_v1_repair_playbooks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RepairPlaybookCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RepairPlaybookResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/local-charges": {
       "get": {
         "tags": [
@@ -24032,6 +24106,65 @@
           "source_ref"
         ],
         "title": "RemediationOptionResponse"
+      },
+      "RepairPlaybookCreate": {
+        "properties": {
+          "playbook_code": {
+            "type": "string",
+            "title": "Playbook Code"
+          },
+          "stance_kind": {
+            "type": "string",
+            "title": "Stance Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "playbook_code",
+          "stance_kind",
+          "source_ref"
+        ],
+        "title": "RepairPlaybookCreate"
+      },
+      "RepairPlaybookResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "playbook_code": {
+            "type": "string",
+            "title": "Playbook Code"
+          },
+          "stance_kind": {
+            "type": "string",
+            "title": "Stance Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "playbook_code",
+          "stance_kind",
+          "source_ref"
+        ],
+        "title": "RepairPlaybookResponse"
       },
       "ResourceCreate": {
         "properties": {

@@ -98,6 +98,7 @@ import { Route as RankMarksRouteImport } from './routes/rank-marks'
 import { Route as RateCardsRouteImport } from './routes/rate-cards'
 import { Route as RateLinesRouteImport } from './routes/rate-lines'
 import { Route as RemediationOptionsRouteImport } from './routes/remediation-options'
+import { Route as RepairPlaybooksRouteImport } from './routes/repair-playbooks'
 import { Route as RoadRouteImport } from './routes/road'
 import { Route as RolloutRouteImport } from './routes/rollout'
 import { Route as RoutingGuideEnforcementsRouteImport } from './routes/routing-guide-enforcements'
@@ -585,6 +586,11 @@ const RemediationOptionsRoute = RemediationOptionsRouteImport.update({
   path: '/remediation-options',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RepairPlaybooksRoute = RepairPlaybooksRouteImport.update({
+  id: '/repair-playbooks',
+  path: '/repair-playbooks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RoadRoute = RoadRouteImport.update({
   id: '/road',
   path: '/road',
@@ -882,6 +888,7 @@ export interface FileRoutesByFullPath {
   '/rate-cards': typeof RateCardsRoute
   '/rate-lines': typeof RateLinesRoute
   '/remediation-options': typeof RemediationOptionsRoute
+  '/repair-playbooks': typeof RepairPlaybooksRoute
   '/road': typeof RoadRoute
   '/rollout': typeof RolloutRoute
   '/routing-guide-enforcements': typeof RoutingGuideEnforcementsRoute
@@ -1014,6 +1021,7 @@ export interface FileRoutesByTo {
   '/rate-cards': typeof RateCardsRoute
   '/rate-lines': typeof RateLinesRoute
   '/remediation-options': typeof RemediationOptionsRoute
+  '/repair-playbooks': typeof RepairPlaybooksRoute
   '/road': typeof RoadRoute
   '/rollout': typeof RolloutRoute
   '/routing-guide-enforcements': typeof RoutingGuideEnforcementsRoute
@@ -1147,6 +1155,7 @@ export interface FileRoutesById {
   '/rate-cards': typeof RateCardsRoute
   '/rate-lines': typeof RateLinesRoute
   '/remediation-options': typeof RemediationOptionsRoute
+  '/repair-playbooks': typeof RepairPlaybooksRoute
   '/road': typeof RoadRoute
   '/rollout': typeof RolloutRoute
   '/routing-guide-enforcements': typeof RoutingGuideEnforcementsRoute
@@ -1281,6 +1290,7 @@ export interface FileRouteTypes {
     | '/rate-cards'
     | '/rate-lines'
     | '/remediation-options'
+    | '/repair-playbooks'
     | '/road'
     | '/rollout'
     | '/routing-guide-enforcements'
@@ -1413,6 +1423,7 @@ export interface FileRouteTypes {
     | '/rate-cards'
     | '/rate-lines'
     | '/remediation-options'
+    | '/repair-playbooks'
     | '/road'
     | '/rollout'
     | '/routing-guide-enforcements'
@@ -1545,6 +1556,7 @@ export interface FileRouteTypes {
     | '/rate-cards'
     | '/rate-lines'
     | '/remediation-options'
+    | '/repair-playbooks'
     | '/road'
     | '/rollout'
     | '/routing-guide-enforcements'
@@ -1678,6 +1690,7 @@ export interface RootRouteChildren {
   RateCardsRoute: typeof RateCardsRoute
   RateLinesRoute: typeof RateLinesRoute
   RemediationOptionsRoute: typeof RemediationOptionsRoute
+  RepairPlaybooksRoute: typeof RepairPlaybooksRoute
   RoadRoute: typeof RoadRoute
   RolloutRoute: typeof RolloutRoute
   RoutingGuideEnforcementsRoute: typeof RoutingGuideEnforcementsRoute
@@ -2346,6 +2359,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RemediationOptionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/repair-playbooks': {
+      id: '/repair-playbooks'
+      path: '/repair-playbooks'
+      fullPath: '/repair-playbooks'
+      preLoaderRoute: typeof RepairPlaybooksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/road': {
       id: '/road'
       path: '/road'
@@ -2726,6 +2746,7 @@ const rootRouteChildren: RootRouteChildren = {
   RateCardsRoute: RateCardsRoute,
   RateLinesRoute: RateLinesRoute,
   RemediationOptionsRoute: RemediationOptionsRoute,
+  RepairPlaybooksRoute: RepairPlaybooksRoute,
   RoadRoute: RoadRoute,
   RolloutRoute: RolloutRoute,
   RoutingGuideEnforcementsRoute: RoutingGuideEnforcementsRoute,

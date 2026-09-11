@@ -6207,6 +6207,50 @@ export type RemediationOptionResponse = {
 };
 
 /**
+ * RepairPlaybookCreate
+ */
+export type RepairPlaybookCreate = {
+    /**
+     * Playbook Code
+     */
+    playbook_code: string;
+    /**
+     * Stance Kind
+     */
+    stance_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * RepairPlaybookResponse
+ */
+export type RepairPlaybookResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Playbook Code
+     */
+    playbook_code: string;
+    /**
+     * Stance Kind
+     */
+    stance_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * ResourceCreate
  */
 export type ResourceCreate = {
@@ -12530,6 +12574,49 @@ export type CreateCalibrationMarkApiV1CalibrationMarksPostResponses = {
 };
 
 export type CreateCalibrationMarkApiV1CalibrationMarksPostResponse = CreateCalibrationMarkApiV1CalibrationMarksPostResponses[keyof CreateCalibrationMarkApiV1CalibrationMarksPostResponses];
+
+export type ListRepairPlaybooksApiV1RepairPlaybooksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/repair-playbooks';
+};
+
+export type ListRepairPlaybooksApiV1RepairPlaybooksGetResponses = {
+    /**
+     * Response List Repair Playbooks Api V1 Repair Playbooks Get
+     *
+     * Successful Response
+     */
+    200: Array<RepairPlaybookResponse>;
+};
+
+export type ListRepairPlaybooksApiV1RepairPlaybooksGetResponse = ListRepairPlaybooksApiV1RepairPlaybooksGetResponses[keyof ListRepairPlaybooksApiV1RepairPlaybooksGetResponses];
+
+export type CreateRepairPlaybookApiV1RepairPlaybooksPostData = {
+    body: RepairPlaybookCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/repair-playbooks';
+};
+
+export type CreateRepairPlaybookApiV1RepairPlaybooksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateRepairPlaybookApiV1RepairPlaybooksPostError = CreateRepairPlaybookApiV1RepairPlaybooksPostErrors[keyof CreateRepairPlaybookApiV1RepairPlaybooksPostErrors];
+
+export type CreateRepairPlaybookApiV1RepairPlaybooksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: RepairPlaybookResponse;
+};
+
+export type CreateRepairPlaybookApiV1RepairPlaybooksPostResponse = CreateRepairPlaybookApiV1RepairPlaybooksPostResponses[keyof CreateRepairPlaybookApiV1RepairPlaybooksPostResponses];
 
 export type ListLocalChargesApiV1LocalChargesGetData = {
     body?: never;

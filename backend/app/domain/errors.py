@@ -770,6 +770,10 @@ class InvalidCalibrationMark(DomainError):
     """CI7: HITL znacznik gotowości próbki — nie MAE SQL."""
 
 
+class InvalidRepairPlaybook(DomainError):
+    """CI8: HITL playbook naprawy — nie auto-send S11."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

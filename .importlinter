@@ -114,6 +114,7 @@ modules =
     app.services.impact_scenarios
     app.services.clause_notices
     app.services.calibration_marks
+    app.services.repair_playbooks
     app.services.freight_audit_marks
     app.services.collaboration_marks
     app.services.exchange_connectors
@@ -464,6 +465,9 @@ forbidden_modules =
     app.services.calibration_marks
     app.repositories.calibration_marks
     app.models.calibration_mark
+    app.services.repair_playbooks
+    app.repositories.repair_playbooks
+    app.models.repair_playbook
     app.services.freight_audit_marks
     app.repositories.freight_audit_marks
     app.models.freight_audit_mark
