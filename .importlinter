@@ -137,6 +137,7 @@ modules =
     app.services.make_or_buy_marks
     app.services.cost_allocation_marks
     app.services.cargo_cover_marks
+    app.services.sanctions_marks
     app.services.freight_audit_marks
     app.services.collaboration_marks
     app.services.exchange_connectors
@@ -556,6 +557,9 @@ forbidden_modules =
     app.services.cargo_cover_marks
     app.repositories.cargo_cover_marks
     app.models.cargo_cover_mark
+    app.services.sanctions_marks
+    app.repositories.sanctions_marks
+    app.models.sanctions_mark
     app.services.freight_audit_marks
     app.repositories.freight_audit_marks
     app.models.freight_audit_mark

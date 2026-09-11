@@ -2,7 +2,8 @@
 
 | Data | Plaster | Moduł | Opis |
 |---|---|---|---|
-| 2026-09-11 | 341.0 | EXP2.4 cargo_cover_mark HITL | 2026-09-11 | PRZESZŁO | N/A | N/A | OK | OK | 5–15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
+| 2026-09-11 | 342.0 | EXP2.5 sanctions_mark HITL | 2026-09-11 | PRZESZŁO | N/A | N/A | OK | OK | 5–15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
+| 341.0 | EXP2.4 cargo_cover_mark HITL | 2026-09-11 | PRZESZŁO | N/A | N/A | OK | OK | 5–15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 340.0 | EXP2.3 | HITL `cost_allocation_mark` (alloc_kind). Nie allocation SQL. Nastepny: Plan EXP2.4. |
 | 2026-09-11 | 339.0 | EXP2.2 | HITL `make_or_buy_mark` (buy_kind). Nie silnik. Nastepny: Plan EXP2.3. |
 | 2026-09-11 | 338.0 | EXP2.1 | HITL `working_capital_mark` (capital_kind). Nie DSO SQL. Nastepny: Plan EXP2.2. |

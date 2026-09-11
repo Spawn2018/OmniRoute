@@ -862,6 +862,10 @@ class InvalidCargoCoverMark(DomainError):
     """EXP2.4: HITL cargo cover — nie live insurance."""
 
 
+class InvalidSanctionsMark(DomainError):
+    """EXP2.5: HITL lista sankcji — nie live scrape."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

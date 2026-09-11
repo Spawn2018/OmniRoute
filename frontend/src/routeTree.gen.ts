@@ -124,6 +124,7 @@ import { Route as RoutingGuideEnforcementsRouteImport } from './routes/routing-g
 import { Route as RoutingGuideMatchesRouteImport } from './routes/routing-guide-matches'
 import { Route as RoutingGuidesRouteImport } from './routes/routing-guides'
 import { Route as SanctionsRouteImport } from './routes/sanctions'
+import { Route as SanctionsMarksRouteImport } from './routes/sanctions-marks'
 import { Route as SapConnectorsRouteImport } from './routes/sap-connectors'
 import { Route as SessionRouteImport } from './routes/session'
 import { Route as ShipmentDocumentsRouteImport } from './routes/shipment-documents'
@@ -739,6 +740,11 @@ const SanctionsRoute = SanctionsRouteImport.update({
   path: '/sanctions',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SanctionsMarksRoute = SanctionsMarksRouteImport.update({
+  id: '/sanctions-marks',
+  path: '/sanctions-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SapConnectorsRoute = SapConnectorsRouteImport.update({
   id: '/sap-connectors',
   path: '/sap-connectors',
@@ -1046,6 +1052,7 @@ export interface FileRoutesByFullPath {
   '/routing-guide-matches': typeof RoutingGuideMatchesRoute
   '/routing-guides': typeof RoutingGuidesRoute
   '/sanctions': typeof SanctionsRoute
+  '/sanctions-marks': typeof SanctionsMarksRoute
   '/sap-connectors': typeof SapConnectorsRoute
   '/session': typeof SessionRoute
   '/shipment-documents': typeof ShipmentDocumentsRoute
@@ -1201,6 +1208,7 @@ export interface FileRoutesByTo {
   '/routing-guide-matches': typeof RoutingGuideMatchesRoute
   '/routing-guides': typeof RoutingGuidesRoute
   '/sanctions': typeof SanctionsRoute
+  '/sanctions-marks': typeof SanctionsMarksRoute
   '/sap-connectors': typeof SapConnectorsRoute
   '/session': typeof SessionRoute
   '/shipment-documents': typeof ShipmentDocumentsRoute
@@ -1357,6 +1365,7 @@ export interface FileRoutesById {
   '/routing-guide-matches': typeof RoutingGuideMatchesRoute
   '/routing-guides': typeof RoutingGuidesRoute
   '/sanctions': typeof SanctionsRoute
+  '/sanctions-marks': typeof SanctionsMarksRoute
   '/sap-connectors': typeof SapConnectorsRoute
   '/session': typeof SessionRoute
   '/shipment-documents': typeof ShipmentDocumentsRoute
@@ -1514,6 +1523,7 @@ export interface FileRouteTypes {
     | '/routing-guide-matches'
     | '/routing-guides'
     | '/sanctions'
+    | '/sanctions-marks'
     | '/sap-connectors'
     | '/session'
     | '/shipment-documents'
@@ -1669,6 +1679,7 @@ export interface FileRouteTypes {
     | '/routing-guide-matches'
     | '/routing-guides'
     | '/sanctions'
+    | '/sanctions-marks'
     | '/sap-connectors'
     | '/session'
     | '/shipment-documents'
@@ -1824,6 +1835,7 @@ export interface FileRouteTypes {
     | '/routing-guide-matches'
     | '/routing-guides'
     | '/sanctions'
+    | '/sanctions-marks'
     | '/sap-connectors'
     | '/session'
     | '/shipment-documents'
@@ -1980,6 +1992,7 @@ export interface RootRouteChildren {
   RoutingGuideMatchesRoute: typeof RoutingGuideMatchesRoute
   RoutingGuidesRoute: typeof RoutingGuidesRoute
   SanctionsRoute: typeof SanctionsRoute
+  SanctionsMarksRoute: typeof SanctionsMarksRoute
   SapConnectorsRoute: typeof SapConnectorsRoute
   SessionRoute: typeof SessionRoute
   ShipmentDocumentsRoute: typeof ShipmentDocumentsRoute
@@ -2827,6 +2840,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SanctionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sanctions-marks': {
+      id: '/sanctions-marks'
+      path: '/sanctions-marks'
+      fullPath: '/sanctions-marks'
+      preLoaderRoute: typeof SanctionsMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sap-connectors': {
       id: '/sap-connectors'
       path: '/sap-connectors'
@@ -3212,6 +3232,7 @@ const rootRouteChildren: RootRouteChildren = {
   RoutingGuideMatchesRoute: RoutingGuideMatchesRoute,
   RoutingGuidesRoute: RoutingGuidesRoute,
   SanctionsRoute: SanctionsRoute,
+  SanctionsMarksRoute: SanctionsMarksRoute,
   SapConnectorsRoute: SapConnectorsRoute,
   SessionRoute: SessionRoute,
   ShipmentDocumentsRoute: ShipmentDocumentsRoute,
