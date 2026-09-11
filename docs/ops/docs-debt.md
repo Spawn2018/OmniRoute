@@ -1,4 +1,5 @@
-- **298.0 leftover:** label-form rank/executive/memory/prediction/weather. 298.0 = SourceRefField na war-room/twin/tower.
+- **299.0 leftover:** label-form prediction/weather (+ inne connector forms). 299.0 = SourceRefField na rank/executive/memory.
+- **298.0 leftover:** label-form DONE częściowo 299.0. Zostaje prediction/weather. 298.0 = war-room/twin/tower.
 - **297.0 leftover:** label-form DONE częściowo 298.0 (W marks). Zostaje rank/executive/memory/prediction/weather. 297.0 = circle/lane-km/plan-snapshot.
 - **296.0 leftover:** paper-form pozostałe DONE częściowo; label-form DONE częściowo 297.0. 296.0 = HintField na TED/award/bid-stance.
 - **295.0 leftover:** paper-form tender DONE częściowo 296.0. Zostaje inne paper-form / label-form. 295.0 = HintField na lane/monitoring/carbon.

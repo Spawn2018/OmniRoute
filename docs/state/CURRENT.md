@@ -8,15 +8,15 @@
 
 
 
-**Ostatni plaster:** **298.0** `/refaktor` CatalogSourceRefField (war-room/twin/tower)  
+**Ostatni plaster:** **299.0** `/refaktor` CatalogSourceRefField (rank/executive/memory)  
 
 **Etap:** Refaktor  
 
 **Noc:** `/noc 17` do 2026-09-11T17:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).  
 
-**Następny:** leftover label-form `source_ref` (rank/executive/memory/prediction/weather) albo wąski HITL.  
+**Następny:** leftover label-form prediction/weather albo wąski HITL z pinu.  
 
-Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44/FourKites/Shippeo. Nie CI1 extract. Nie zgaduj 71–298.
+Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44/FourKites/Shippeo. Nie CI1 extract. Nie zgaduj 71–299.
 
 
 
@@ -36,5 +36,5 @@ Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow 
 
 
 
-**2026-09-11:** **298.0** zamknięty — war-room / twin / tower na SourceRefField.
+**2026-09-11:** **299.0** zamknięty — rank / executive / memory na SourceRefField.
 

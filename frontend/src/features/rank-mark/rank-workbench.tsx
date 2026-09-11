@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefField } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { listRankMarks, persistRankMark, rankWrite } from "@/lib/rank-marks-api"
 
@@ -57,17 +57,12 @@ function RankComposer(args: { organizationId: string | null }) {
           ))}
         </div>
       </fieldset>
-      <label className="text-xs block">
-        Pochodzenie zapisu
-        <input
-          aria-label="source_ref osi rankingu"
-          className="mt-1 h-9 w-full rounded-md border bg-background px-2 font-mono"
-          value={draft.origin}
-          onChange={(change) => setDraft({ ...draft, origin: change.target.value })}
-          placeholder="tenant:manual albo fixture://rank-mark/…"
-          required
-        />
-      </label>
+      <CatalogSourceRefField
+        label="source_ref (tenant:manual albo fixture://rank-mark/…)"
+        ariaLabel="source_ref osi rankingu"
+        value={draft.origin}
+        onChange={(origin) => setDraft({ ...draft, origin })}
+      />
       <Button type="submit" disabled={args.organizationId === null || persist.isPending}>
         Zapisz oś rankingu
       </Button>

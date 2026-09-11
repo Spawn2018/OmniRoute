@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefField } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { edgeWrite, listMemoryEdges, persistEdgeMark } from "@/lib/memory-edges-api"
 
@@ -61,17 +61,12 @@ function EdgeComposer(args: { organizationId: string | null }) {
           ))}
         </div>
       </fieldset>
-      <label className="block space-y-1 text-xs">
-        Pochodzenie zapisu
-        <input
-          aria-label="source_ref krawędzi pamięci"
-          className="h-9 w-full rounded-md border bg-background px-2 font-mono"
-          value={draft.originToken}
-          onChange={(change) => setDraft({ ...draft, originToken: change.target.value })}
-          placeholder="tenant:manual albo fixture://memory-edge/…"
-          required
-        />
-      </label>
+      <CatalogSourceRefField
+        label="source_ref (tenant:manual albo fixture://memory-edge/…)"
+        ariaLabel="source_ref krawędzi pamięci"
+        value={draft.originToken}
+        onChange={(originToken) => setDraft({ ...draft, originToken })}
+      />
       <Button type="submit" disabled={!idle}>
         Zapisz krawędź pamięci
       </Button>
