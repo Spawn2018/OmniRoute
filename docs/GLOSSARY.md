@@ -179,8 +179,9 @@
 | konektor IdP | idp_connector | S53 HITL 270.0 kod + provider `auth0` + source_ref; nie login; nie live HTTP; nie sekrety |
 | konektor giełdy | exchange_connector | S55 HITL 271.0 kod + kind `trans_eu` + source_ref; nie live HTTP; nie SPA; nie sekrety |
 | konektor widoczności | visibility_connector | CT7 HITL 275.0 kod + kind `p44` + source_ref; nie live HTTP; nie sekrety; nie AIS |
-| zamówienie zakupu | purchase_order | CT1 HITL 276.0 nagłówek `po_code` + opcjonalny `plant_label` + source_ref; leftover ASN; nie shipment |
-| linia zamówienia zakupu | po_line | CT1 HITL 277.0 `line_code` + FK nagłówka + `sku_code` + `qty` Decimal + `uom_code` + etykiety; leftover ASN; nie kwota |
+| zamówienie zakupu | purchase_order | CT1 HITL 276.0 nagłówek `po_code` + opcjonalny `plant_label` + source_ref; nie shipment |
+| linia zamówienia zakupu | po_line | CT1 HITL 277.0 `line_code` + FK nagłówka + `sku_code` + `qty` Decimal + `uom_code` + etykiety; nie kwota |
+| awizo wysyłki | asn | CT1 HITL 278.0 `asn_code` + FK nagłówka + etykiety; nie live EDI 856; nie auto shipment |
 | awizacja terminalu | terminal_appointment | T8; requested/confirmed/rejected; `source_ref` |
 | kalendarz organizacji | organization_calendar | U4; dni robocze; grace GPS |
 | przeniesienie pól | field_carry_forward | U1; oferta→zlecenie; nie cichy overwrite |
