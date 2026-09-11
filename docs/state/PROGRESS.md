@@ -2,7 +2,7 @@
 
 | Data | Plaster | Moduł | Opis |
 |---|---|---|---|
-| 2026-09-11 | 289.0 | CT4 | Matching lane/mode na ASN przy block_409 + match kind. |
+| 2026-09-11 | 289.0 | CT4 | Matching lane/mode na ASN przy block_409 + katalog match. Nie matching na shipment. |
 | 2026-09-11 | 288.0 | CT4 | HITL `routing_guide_match` guide_code_only/lane/mode. Nie silnik. |
 | 2026-09-11 | 287.0 | CT4 | 409 na POST shipment gdy block_409 bez znanego guide_code. |
 | 2026-09-11 | 286.0 | CT4 | Żywy HTTP 409 na ASN poza `routing_guide` przy `block_409`. Nie 409 na shipment. |

@@ -88,7 +88,7 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 <!-- os-status:start -->
 - **Ostatni plaster:** **289.0** leftover CT4 matching lane/mode na ASN
 - **Etap:** Plan
-- **Następny:** leftover Fala CT / pin — matching na shipment albo następny wąski HITL z PLAN.
+- **Następny:** leftover CT4 matching lane/mode na shipment (albo następny wąski HITL z PLAN).
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
