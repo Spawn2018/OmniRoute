@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **283.0** leftover HITL `freight_audit_mark`. **Etap:** Plan. **Następny:** leftover Fala CT / pin — egzekucja 409 z `routing_guide` albo CT9/CT11 gdy węższe HITL. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **283.0** leftover HITL `freight_audit_mark`. **Etap:** Kod. **Następny:** **284.0** leftover CT11 HITL `collaboration_mark` (rola shipper|carrier|consignee). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
