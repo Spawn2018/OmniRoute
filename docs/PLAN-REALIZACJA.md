@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **329.0** G8 HITL retencja / legal hold / eIDAS (węższa z kolejki; delta do utworzenia).
+**Następny:** **329.0** G8 HITL `legal_hold_mark` (delta `docs/deltas/open/329.0-legal-hold-mark.md`).
 <!-- os-status:end -->
 
 ```mermaid
@@ -722,7 +722,7 @@ Karta: [karty-pol-fala-g.md](analysis/karty-pol-fala-g.md). G2 wyżej.
 | G5 | OOG / lashing / eskort | 326.0 HITL katalog `oog_mark` (escort_kind); leftover wymiary/cert/T1 | |
 | G6 | load plan OR (osie, bin) | 327.0 HITL katalog `load_plan_mark` (stance_kind); leftover OR/osie/T2 | LLM-VRP |
 | G7 | CMMS + DTC | 328.0 HITL katalog `cmms_mark` (work_kind); leftover work_order/DTC/V5 | kara kierowcy |
-| G8 | eIDAS / retencja / legal hold | F1 | |
+| G8 | eIDAS / retencja / legal hold | 329.0 Plan HITL `legal_hold_mark` (hold_kind); leftover eIDAS crypto / wipe / F1 | |
 | G10 | multi-company w tenancie | F | drugi tenant |
 | G11 | bonded / miejsce uznane | C+D | WMS e-com |
 | G12 | ICS2/CBAM/EUDR/eFTI | C7 | „SENT-UE” |

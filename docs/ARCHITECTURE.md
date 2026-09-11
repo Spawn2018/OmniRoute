@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **328.0** G7 HITL `cmms_mark`. **Etap:** Plan — wolno `/plan-modul` **329.0** G8. **Następny:** **329.0** G8 HITL retencja / legal hold / eIDAS (węższa z kolejki; delta do utworzenia). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **328.0** G7 HITL `cmms_mark`. **Etap:** Plan (delta zaakceptowana `/noc`) — wolno `/plaster` **329.0**. **Następny:** **329.0** G8 HITL `legal_hold_mark` (delta `docs/deltas/open/329.0-legal-hold-mark.md`). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
