@@ -6948,6 +6948,80 @@
         ]
       }
     },
+    "/api/v1/company-marks": {
+      "get": {
+        "tags": [
+          "company-marks"
+        ],
+        "summary": "List Company Marks",
+        "operationId": "list_company_marks_api_v1_company_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CompanyMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Company Marks Api V1 Company Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "company-marks"
+        ],
+        "summary": "Create Company Mark",
+        "operationId": "create_company_mark_api_v1_company_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompanyMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompanyMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/local-charges": {
       "get": {
         "tags": [
@@ -17042,6 +17116,65 @@
           "source_ref"
         ],
         "title": "CommodityCodeResponse"
+      },
+      "CompanyMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "seat_kind": {
+            "type": "string",
+            "title": "Seat Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "seat_kind",
+          "source_ref"
+        ],
+        "title": "CompanyMarkCreate"
+      },
+      "CompanyMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "seat_kind": {
+            "type": "string",
+            "title": "Seat Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "seat_kind",
+          "source_ref"
+        ],
+        "title": "CompanyMarkResponse"
       },
       "ConsignmentCreate": {
         "properties": {

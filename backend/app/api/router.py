@@ -23,6 +23,7 @@ from app.api import (
     collaboration_marks,
     collective_invoices,
     commodity_codes,
+    company_marks,
     consignments,
     containers,
     cost_to_serve,
@@ -215,6 +216,7 @@ api_router.include_router(intervention_outcomes.router)
 api_router.include_router(load_plan_marks.router)
 api_router.include_router(cmms_marks.router)
 api_router.include_router(legal_hold_marks.router)
+api_router.include_router(company_marks.router)
 api_router.include_router(local_charges.router)
 api_router.include_router(tender_quotes.router)
 api_router.include_router(tender_data_rooms.router)

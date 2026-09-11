@@ -31,6 +31,7 @@ import { Route as CmmsMarksRouteImport } from './routes/cmms-marks'
 import { Route as CodRouteImport } from './routes/cod'
 import { Route as CollaborationMarksRouteImport } from './routes/collaboration-marks'
 import { Route as CommodityCodesRouteImport } from './routes/commodity-codes'
+import { Route as CompanyMarksRouteImport } from './routes/company-marks'
 import { Route as ConsignmentsRouteImport } from './routes/consignments'
 import { Route as CostToServeRouteImport } from './routes/cost-to-serve'
 import { Route as CreditReviewsRouteImport } from './routes/credit-reviews'
@@ -259,6 +260,11 @@ const CollaborationMarksRoute = CollaborationMarksRouteImport.update({
 const CommodityCodesRoute = CommodityCodesRouteImport.update({
   id: '/commodity-codes',
   path: '/commodity-codes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompanyMarksRoute = CompanyMarksRouteImport.update({
+  id: '/company-marks',
+  path: '/company-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ConsignmentsRoute = ConsignmentsRouteImport.update({
@@ -881,6 +887,7 @@ export interface FileRoutesByFullPath {
   '/cod': typeof CodRoute
   '/collaboration-marks': typeof CollaborationMarksRoute
   '/commodity-codes': typeof CommodityCodesRoute
+  '/company-marks': typeof CompanyMarksRoute
   '/consignments': typeof ConsignmentsRoute
   '/cost-to-serve': typeof CostToServeRoute
   '/credit-reviews': typeof CreditReviewsRoute
@@ -1024,6 +1031,7 @@ export interface FileRoutesByTo {
   '/cod': typeof CodRoute
   '/collaboration-marks': typeof CollaborationMarksRoute
   '/commodity-codes': typeof CommodityCodesRoute
+  '/company-marks': typeof CompanyMarksRoute
   '/consignments': typeof ConsignmentsRoute
   '/cost-to-serve': typeof CostToServeRoute
   '/credit-reviews': typeof CreditReviewsRoute
@@ -1168,6 +1176,7 @@ export interface FileRoutesById {
   '/cod': typeof CodRoute
   '/collaboration-marks': typeof CollaborationMarksRoute
   '/commodity-codes': typeof CommodityCodesRoute
+  '/company-marks': typeof CompanyMarksRoute
   '/consignments': typeof ConsignmentsRoute
   '/cost-to-serve': typeof CostToServeRoute
   '/credit-reviews': typeof CreditReviewsRoute
@@ -1313,6 +1322,7 @@ export interface FileRouteTypes {
     | '/cod'
     | '/collaboration-marks'
     | '/commodity-codes'
+    | '/company-marks'
     | '/consignments'
     | '/cost-to-serve'
     | '/credit-reviews'
@@ -1456,6 +1466,7 @@ export interface FileRouteTypes {
     | '/cod'
     | '/collaboration-marks'
     | '/commodity-codes'
+    | '/company-marks'
     | '/consignments'
     | '/cost-to-serve'
     | '/credit-reviews'
@@ -1599,6 +1610,7 @@ export interface FileRouteTypes {
     | '/cod'
     | '/collaboration-marks'
     | '/commodity-codes'
+    | '/company-marks'
     | '/consignments'
     | '/cost-to-serve'
     | '/credit-reviews'
@@ -1743,6 +1755,7 @@ export interface RootRouteChildren {
   CodRoute: typeof CodRoute
   CollaborationMarksRoute: typeof CollaborationMarksRoute
   CommodityCodesRoute: typeof CommodityCodesRoute
+  CompanyMarksRoute: typeof CompanyMarksRoute
   ConsignmentsRoute: typeof ConsignmentsRoute
   CostToServeRoute: typeof CostToServeRoute
   CreditReviewsRoute: typeof CreditReviewsRoute
@@ -2018,6 +2031,13 @@ declare module '@tanstack/react-router' {
       path: '/commodity-codes'
       fullPath: '/commodity-codes'
       preLoaderRoute: typeof CommodityCodesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/company-marks': {
+      id: '/company-marks'
+      path: '/company-marks'
+      fullPath: '/company-marks'
+      preLoaderRoute: typeof CompanyMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/consignments': {
@@ -2879,6 +2899,7 @@ const rootRouteChildren: RootRouteChildren = {
   CodRoute: CodRoute,
   CollaborationMarksRoute: CollaborationMarksRoute,
   CommodityCodesRoute: CommodityCodesRoute,
+  CompanyMarksRoute: CompanyMarksRoute,
   ConsignmentsRoute: ConsignmentsRoute,
   CostToServeRoute: CostToServeRoute,
   CreditReviewsRoute: CreditReviewsRoute,

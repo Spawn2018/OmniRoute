@@ -1519,6 +1519,50 @@ export type CommodityCodeResponse = {
 };
 
 /**
+ * CompanyMarkCreate
+ */
+export type CompanyMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Seat Kind
+     */
+    seat_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CompanyMarkResponse
+ */
+export type CompanyMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Seat Kind
+     */
+    seat_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * ConsignmentCreate
  */
 export type ConsignmentCreate = {
@@ -13444,6 +13488,49 @@ export type CreateLegalHoldMarkApiV1LegalHoldMarksPostResponses = {
 };
 
 export type CreateLegalHoldMarkApiV1LegalHoldMarksPostResponse = CreateLegalHoldMarkApiV1LegalHoldMarksPostResponses[keyof CreateLegalHoldMarkApiV1LegalHoldMarksPostResponses];
+
+export type ListCompanyMarksApiV1CompanyMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/company-marks';
+};
+
+export type ListCompanyMarksApiV1CompanyMarksGetResponses = {
+    /**
+     * Response List Company Marks Api V1 Company Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<CompanyMarkResponse>;
+};
+
+export type ListCompanyMarksApiV1CompanyMarksGetResponse = ListCompanyMarksApiV1CompanyMarksGetResponses[keyof ListCompanyMarksApiV1CompanyMarksGetResponses];
+
+export type CreateCompanyMarkApiV1CompanyMarksPostData = {
+    body: CompanyMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/company-marks';
+};
+
+export type CreateCompanyMarkApiV1CompanyMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCompanyMarkApiV1CompanyMarksPostError = CreateCompanyMarkApiV1CompanyMarksPostErrors[keyof CreateCompanyMarkApiV1CompanyMarksPostErrors];
+
+export type CreateCompanyMarkApiV1CompanyMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CompanyMarkResponse;
+};
+
+export type CreateCompanyMarkApiV1CompanyMarksPostResponse = CreateCompanyMarkApiV1CompanyMarksPostResponses[keyof CreateCompanyMarkApiV1CompanyMarksPostResponses];
 
 export type ListLocalChargesApiV1LocalChargesGetData = {
     body?: never;

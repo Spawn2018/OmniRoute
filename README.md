@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **329.0** G8 HITL `legal_hold_mark`
-- **Etap:** Plan (delta zaakceptowana `/noc`) — wolno `/plaster` **330.0**
-- **Następny:** **330.0** G10 HITL `company_mark` (delta `docs/deltas/open/330.0-company-mark.md`).
+- **Ostatni plaster:** **330.0** G10 HITL `company_mark`
+- **Etap:** Plan — wolno `/plan-modul` **331.0** G11
+- **Następny:** **331.0** G11 bonded / miejsce uznane (węższa z kolejki; delta do utworzenia).
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

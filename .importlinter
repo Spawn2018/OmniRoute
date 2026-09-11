@@ -125,6 +125,7 @@ modules =
     app.services.load_plan_marks
     app.services.cmms_marks
     app.services.legal_hold_marks
+    app.services.company_marks
     app.services.freight_audit_marks
     app.services.collaboration_marks
     app.services.exchange_connectors
@@ -508,6 +509,9 @@ forbidden_modules =
     app.services.legal_hold_marks
     app.repositories.legal_hold_marks
     app.models.legal_hold_mark
+    app.services.company_marks
+    app.repositories.company_marks
+    app.models.company_mark
     app.services.freight_audit_marks
     app.repositories.freight_audit_marks
     app.models.freight_audit_mark

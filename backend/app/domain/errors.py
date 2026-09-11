@@ -814,6 +814,10 @@ class InvalidLegalHoldMark(DomainError):
     """G8: HITL znacznik legal hold — nie eIDAS crypto."""
 
 
+class InvalidCompanyMark(DomainError):
+    """G10: HITL znacznik spółki — nie drugi tenant."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 
