@@ -79,9 +79,22 @@ class InMemoryAsnDesk:
 class _GuideDesk:
     def __init__(self, codes: list[str]) -> None:
         self._codes = codes
+        self._lanes: dict[str, str | None] = {}
+        self._modes: dict[str, str | None] = {}
 
     async def list_guides(self) -> list[object]:
-        return [type("G", (), {"guide_code": code})() for code in self._codes]
+        return [
+            type(
+                "G",
+                (),
+                {
+                    "guide_code": code,
+                    "lane_label": self._lanes.get(code),
+                    "mode_label": self._modes.get(code),
+                },
+            )()
+            for code in self._codes
+        ]
 
 
 class _EnforcementDesk:
@@ -92,11 +105,20 @@ class _EnforcementDesk:
         return [type("E", (), {"enforcement_kind": kind})() for kind in self._kinds]
 
 
+class _MatchDesk:
+    def __init__(self, kinds: list[str]) -> None:
+        self._kinds = kinds
+
+    async def list_marks(self) -> list[object]:
+        return [type("M", (), {"match_kind": kind})() for kind in self._kinds]
+
+
 @pytest.fixture
 def asn_http(monkeypatch: pytest.MonkeyPatch) -> object:
     desk = InMemoryAsnDesk(object())
     guides = _GuideDesk([])
     enforcements = _EnforcementDesk([])
+    matches = _MatchDesk([])
 
     async def _session() -> object:
         handle = AsyncMock()
@@ -109,9 +131,13 @@ def asn_http(monkeypatch: pytest.MonkeyPatch) -> object:
         "app.api.asns.RoutingGuideEnforcementService",
         lambda _s: enforcements,
     )
+    monkeypatch.setattr(
+        "app.api.asns.RoutingGuideMatchService",
+        lambda _s: matches,
+    )
     set_authz_checker(PermitAsnAuthz())
     app.dependency_overrides[require_tenant_session] = _session
-    yield TestClient(app), desk, guides, enforcements
+    yield TestClient(app), desk, guides, enforcements, matches
     app.dependency_overrides.clear()
     set_authz_checker(None)
 
@@ -130,7 +156,7 @@ def _payload(header: UUID, **extra: object) -> dict[str, object]:
 
 
 def test_http_lists_and_creates_asn(asn_http: object) -> None:
-    client, desk, _guides, _enf = asn_http
+    client, desk, _guides, _enf, _matches = asn_http
     header = uuid4()
     desk.known_headers.add(header)
     created = client.post(
@@ -150,7 +176,7 @@ def test_http_lists_and_creates_asn(asn_http: object) -> None:
 
 
 def test_http_creates_asn_with_known_guide_under_block_409(asn_http: object) -> None:
-    client, desk, guides, enforcements = asn_http
+    client, desk, guides, enforcements, _matches = asn_http
     header = uuid4()
     desk.known_headers.add(header)
     guides._codes = ["lane_pl_de"]
@@ -165,7 +191,7 @@ def test_http_creates_asn_with_known_guide_under_block_409(asn_http: object) -> 
 
 
 def test_http_rejects_asn_without_guide_when_block_409(asn_http: object) -> None:
-    client, desk, guides, enforcements = asn_http
+    client, desk, guides, enforcements, _matches = asn_http
     header = uuid4()
     desk.known_headers.add(header)
     guides._codes = ["lane_pl_de"]
@@ -180,7 +206,7 @@ def test_http_rejects_asn_without_guide_when_block_409(asn_http: object) -> None
 
 
 def test_http_rejects_unknown_guide_when_block_409(asn_http: object) -> None:
-    client, desk, guides, enforcements = asn_http
+    client, desk, guides, enforcements, _matches = asn_http
     header = uuid4()
     desk.known_headers.add(header)
     guides._codes = ["lane_pl_de"]
@@ -195,7 +221,7 @@ def test_http_rejects_unknown_guide_when_block_409(asn_http: object) -> None:
 
 
 def test_http_allows_asn_without_guide_when_record_only(asn_http: object) -> None:
-    client, desk, _guides, enforcements = asn_http
+    client, desk, _guides, enforcements, _matches = asn_http
     header = uuid4()
     desk.known_headers.add(header)
     enforcements._kinds = ["record_only"]
@@ -209,7 +235,7 @@ def test_http_allows_asn_without_guide_when_record_only(asn_http: object) -> Non
 
 
 def test_http_rejects_bad_asn_code(asn_http: object) -> None:
-    client, desk, _guides, _enf = asn_http
+    client, desk, _guides, _enf, _matches = asn_http
     header = uuid4()
     desk.known_headers.add(header)
     response = client.post(
@@ -222,7 +248,7 @@ def test_http_rejects_bad_asn_code(asn_http: object) -> None:
 
 
 def test_http_rejects_unknown_header(asn_http: object) -> None:
-    client, _desk, _guides, _enf = asn_http
+    client, _desk, _guides, _enf, _matches = asn_http
     response = client.post(
         "/api/v1/asns",
         headers=bearer_auth_headers(),
@@ -234,7 +260,7 @@ def test_http_rejects_unknown_header(asn_http: object) -> None:
 
 @pytest.mark.parametrize("field", _FORBIDDEN_FIELDS)
 def test_http_forbids_shipment_and_money_fields(asn_http: object, field: str) -> None:
-    client, desk, _guides, _enf = asn_http
+    client, desk, _guides, _enf, _matches = asn_http
     header = uuid4()
     desk.known_headers.add(header)
     body = _payload(header)
@@ -245,3 +271,41 @@ def test_http_forbids_shipment_and_money_fields(asn_http: object, field: str) ->
         json=body,
     )
     assert response.status_code == 422
+
+def test_http_rejects_asn_when_lane_match_fails(asn_http: object) -> None:
+    client, desk, guides, enforcements, matches = asn_http
+    header = uuid4()
+    desk.known_headers.add(header)
+    guides._codes = ["lane_pl_de"]
+    guides._lanes = {"lane_pl_de": "pl-de"}
+    enforcements._kinds = ["block_409"]
+    matches._kinds = ["lane_label"]
+    response = client.post(
+        "/api/v1/asns",
+        headers=bearer_auth_headers(),
+        json=_payload(header, guide_code="lane_pl_de", plant_label="wrong"),
+    )
+    assert response.status_code == 409
+    assert "plant_label" in response.json()["detail"]
+
+
+def test_http_accepts_asn_when_lane_match_ok(asn_http: object) -> None:
+    client, desk, guides, enforcements, matches = asn_http
+    header = uuid4()
+    desk.known_headers.add(header)
+    guides._codes = ["lane_pl_de"]
+    guides._lanes = {"lane_pl_de": "Gdańsk"}
+    enforcements._kinds = ["block_409"]
+    matches._kinds = ["lane_label"]
+    created = client.post(
+        "/api/v1/asns",
+        headers=bearer_auth_headers(),
+        json=_payload(
+            header,
+            guide_code="lane_pl_de",
+            asn_code="asn_lane",
+            plant_label=" gdańsk ",
+        ),
+    )
+    assert created.status_code == 201
+

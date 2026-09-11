@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** leftover Fala CT / pin — silnik matching lane/mode albo następny wąski HITL z PLAN.
+**Następny:** leftover Fala CT / pin — matching na shipment albo następny wąski HITL z PLAN.
 <!-- os-status:end -->
 
 ```mermaid

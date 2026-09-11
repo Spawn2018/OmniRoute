@@ -58,7 +58,9 @@ def test_api_composes_routing_gate_without_service_import_in_bc() -> None:
     api = _API.read_text(encoding="utf-8")
     assert "RoutingGuideEnforcementService" in api
     assert "RoutingGuideService" in api
+    assert "RoutingGuideMatchService" in api
     assert "assert_asn_on_routing_guide" in api
+    assert "assert_asn_labels_on_routing_guide" in api
     assert "guide_code" in api
     service = _SERVICE.read_text(encoding="utf-8")
     assert "routing_guide" not in service

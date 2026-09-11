@@ -1,3 +1,4 @@
+- **289.0 leftover:** matching na shipment; wspólny SELECT; auto shipment; CT2; CT5/CT8 live. 289.0 = lane/mode na ASN. Lock: `SHIPPED_CHARGE_ROUTES["289.0"]`.
 - **288.0 leftover:** silnik matching lane/mode na POST; wspólny SELECT; auto shipment; CT2; CT5/CT8 live. 288.0 = katalog trybu. Lock: `SHIPPED_CHARGE_ROUTES["288.0"]`.
 # Dług techniczny — żywy rejestr
 
