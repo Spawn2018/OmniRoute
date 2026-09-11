@@ -68,6 +68,7 @@ import { Route as LaneKmsRouteImport } from './routes/lane-kms'
 import { Route as LanePatternsRouteImport } from './routes/lane-patterns'
 import { Route as LcChecklistsRouteImport } from './routes/lc-checklists'
 import { Route as LclRouteImport } from './routes/lcl'
+import { Route as LoadPlanMarksRouteImport } from './routes/load-plan-marks'
 import { Route as LocalChargesRouteImport } from './routes/local-charges'
 import { Route as LocationsRouteImport } from './routes/locations'
 import { Route as MailRouteImport } from './routes/mail'
@@ -441,6 +442,11 @@ const LcChecklistsRoute = LcChecklistsRouteImport.update({
 const LclRoute = LclRouteImport.update({
   id: '/lcl',
   path: '/lcl',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoadPlanMarksRoute = LoadPlanMarksRouteImport.update({
+  id: '/load-plan-marks',
+  path: '/load-plan-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LocalChargesRoute = LocalChargesRouteImport.update({
@@ -900,6 +906,7 @@ export interface FileRoutesByFullPath {
   '/lane-patterns': typeof LanePatternsRoute
   '/lc-checklists': typeof LcChecklistsRoute
   '/lcl': typeof LclRoute
+  '/load-plan-marks': typeof LoadPlanMarksRoute
   '/local-charges': typeof LocalChargesRoute
   '/locations': typeof LocationsRoute
   '/mail': typeof MailRoute
@@ -1040,6 +1047,7 @@ export interface FileRoutesByTo {
   '/lane-patterns': typeof LanePatternsRoute
   '/lc-checklists': typeof LcChecklistsRoute
   '/lcl': typeof LclRoute
+  '/load-plan-marks': typeof LoadPlanMarksRoute
   '/local-charges': typeof LocalChargesRoute
   '/locations': typeof LocationsRoute
   '/mail': typeof MailRoute
@@ -1181,6 +1189,7 @@ export interface FileRoutesById {
   '/lane-patterns': typeof LanePatternsRoute
   '/lc-checklists': typeof LcChecklistsRoute
   '/lcl': typeof LclRoute
+  '/load-plan-marks': typeof LoadPlanMarksRoute
   '/local-charges': typeof LocalChargesRoute
   '/locations': typeof LocationsRoute
   '/mail': typeof MailRoute
@@ -1323,6 +1332,7 @@ export interface FileRouteTypes {
     | '/lane-patterns'
     | '/lc-checklists'
     | '/lcl'
+    | '/load-plan-marks'
     | '/local-charges'
     | '/locations'
     | '/mail'
@@ -1463,6 +1473,7 @@ export interface FileRouteTypes {
     | '/lane-patterns'
     | '/lc-checklists'
     | '/lcl'
+    | '/load-plan-marks'
     | '/local-charges'
     | '/locations'
     | '/mail'
@@ -1603,6 +1614,7 @@ export interface FileRouteTypes {
     | '/lane-patterns'
     | '/lc-checklists'
     | '/lcl'
+    | '/load-plan-marks'
     | '/local-charges'
     | '/locations'
     | '/mail'
@@ -1744,6 +1756,7 @@ export interface RootRouteChildren {
   LanePatternsRoute: typeof LanePatternsRoute
   LcChecklistsRoute: typeof LcChecklistsRoute
   LclRoute: typeof LclRoute
+  LoadPlanMarksRoute: typeof LoadPlanMarksRoute
   LocalChargesRoute: typeof LocalChargesRoute
   LocationsRoute: typeof LocationsRoute
   MailRoute: typeof MailRoute
@@ -2238,6 +2251,13 @@ declare module '@tanstack/react-router' {
       path: '/lcl'
       fullPath: '/lcl'
       preLoaderRoute: typeof LclRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/load-plan-marks': {
+      id: '/load-plan-marks'
+      path: '/load-plan-marks'
+      fullPath: '/load-plan-marks'
+      preLoaderRoute: typeof LoadPlanMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/local-charges': {
@@ -2856,6 +2876,7 @@ const rootRouteChildren: RootRouteChildren = {
   LanePatternsRoute: LanePatternsRoute,
   LcChecklistsRoute: LcChecklistsRoute,
   LclRoute: LclRoute,
+  LoadPlanMarksRoute: LoadPlanMarksRoute,
   LocalChargesRoute: LocalChargesRoute,
   LocationsRoute: LocationsRoute,
   MailRoute: MailRoute,

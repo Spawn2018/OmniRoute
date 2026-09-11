@@ -6726,6 +6726,80 @@
         ]
       }
     },
+    "/api/v1/load-plan-marks": {
+      "get": {
+        "tags": [
+          "load-plan-marks"
+        ],
+        "summary": "List Load Plan Marks",
+        "operationId": "list_load_plan_marks_api_v1_load_plan_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/LoadPlanMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Load Plan Marks Api V1 Load Plan Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "load-plan-marks"
+        ],
+        "summary": "Create Load Plan Mark",
+        "operationId": "create_load_plan_mark_api_v1_load_plan_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoadPlanMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoadPlanMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/local-charges": {
       "get": {
         "tags": [
@@ -21117,6 +21191,65 @@
           "source_ref"
         ],
         "title": "LcChecklistResponse"
+      },
+      "LoadPlanMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "stance_kind": {
+            "type": "string",
+            "title": "Stance Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "stance_kind",
+          "source_ref"
+        ],
+        "title": "LoadPlanMarkCreate"
+      },
+      "LoadPlanMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "stance_kind": {
+            "type": "string",
+            "title": "Stance Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "stance_kind",
+          "source_ref"
+        ],
+        "title": "LoadPlanMarkResponse"
       },
       "LocalChargeCreate": {
         "properties": {

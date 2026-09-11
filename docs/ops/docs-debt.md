@@ -1,3 +1,4 @@
+- **327.0 leftover:** solver OR; osie Decimal; ADR tunel; klej T2+M-52; LLM-VRP. 327.0 = HITL `load_plan_mark` (stance_kind).
 - **326.0 leftover:** wymiary; lashing_cert; escort FK; zezwolenie_kraj; klej T1. 326.0 = HITL `oog_mark` (escort_kind).
 - **325.0 leftover:** plomby z nóg; klej C2; teatr PUESC; XML. 325.0 = HITL `ncts_draft` (transit_kind).
 - **324.0 leftover:** bank stakeholder; presentation_due; klej U5/I3; bank live. 324.0 = HITL `lc_checklist` (status_kind).

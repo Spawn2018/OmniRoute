@@ -120,6 +120,7 @@ from app.models.crm_lead import CrmLead  # noqa: F401
 from app.models.lc_checklist import LcChecklist  # noqa: F401
 from app.models.ncts_draft import NctsDraft  # noqa: F401
 from app.models.oog_mark import OogMark  # noqa: F401
+from app.models.load_plan_mark import LoadPlanMark  # noqa: F401
 from app.models.collaboration_mark import CollaborationMark  # noqa: F401
 from app.models.freight_audit_mark import FreightAuditMark  # noqa: F401
 from app.models.routing_guide import RoutingGuide  # noqa: F401

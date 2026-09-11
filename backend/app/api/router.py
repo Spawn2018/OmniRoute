@@ -60,6 +60,7 @@ from app.api import (
     lane_kms,
     lane_patterns,
     lc_checklists,
+    load_plan_marks,
     local_charges,
     locations,
     mail_drafts,
@@ -209,6 +210,7 @@ api_router.include_router(repair_playbooks.router)
 api_router.include_router(spend_marks.router)
 api_router.include_router(penalty_marks.router)
 api_router.include_router(intervention_outcomes.router)
+api_router.include_router(load_plan_marks.router)
 api_router.include_router(local_charges.router)
 api_router.include_router(tender_quotes.router)
 api_router.include_router(tender_data_rooms.router)

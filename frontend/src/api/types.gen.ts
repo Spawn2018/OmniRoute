@@ -4153,6 +4153,50 @@ export type LcChecklistResponse = {
 };
 
 /**
+ * LoadPlanMarkCreate
+ */
+export type LoadPlanMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Stance Kind
+     */
+    stance_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * LoadPlanMarkResponse
+ */
+export type LoadPlanMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Stance Kind
+     */
+    stance_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * LocalChargeCreate
  */
 export type LocalChargeCreate = {
@@ -13183,6 +13227,49 @@ export type CreateInterventionOutcomeApiV1InterventionOutcomesPostResponses = {
 };
 
 export type CreateInterventionOutcomeApiV1InterventionOutcomesPostResponse = CreateInterventionOutcomeApiV1InterventionOutcomesPostResponses[keyof CreateInterventionOutcomeApiV1InterventionOutcomesPostResponses];
+
+export type ListLoadPlanMarksApiV1LoadPlanMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/load-plan-marks';
+};
+
+export type ListLoadPlanMarksApiV1LoadPlanMarksGetResponses = {
+    /**
+     * Response List Load Plan Marks Api V1 Load Plan Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<LoadPlanMarkResponse>;
+};
+
+export type ListLoadPlanMarksApiV1LoadPlanMarksGetResponse = ListLoadPlanMarksApiV1LoadPlanMarksGetResponses[keyof ListLoadPlanMarksApiV1LoadPlanMarksGetResponses];
+
+export type CreateLoadPlanMarkApiV1LoadPlanMarksPostData = {
+    body: LoadPlanMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/load-plan-marks';
+};
+
+export type CreateLoadPlanMarkApiV1LoadPlanMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateLoadPlanMarkApiV1LoadPlanMarksPostError = CreateLoadPlanMarkApiV1LoadPlanMarksPostErrors[keyof CreateLoadPlanMarkApiV1LoadPlanMarksPostErrors];
+
+export type CreateLoadPlanMarkApiV1LoadPlanMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: LoadPlanMarkResponse;
+};
+
+export type CreateLoadPlanMarkApiV1LoadPlanMarksPostResponse = CreateLoadPlanMarkApiV1LoadPlanMarksPostResponses[keyof CreateLoadPlanMarkApiV1LoadPlanMarksPostResponses];
 
 export type ListLocalChargesApiV1LocalChargesGetData = {
     body?: never;

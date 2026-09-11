@@ -802,6 +802,10 @@ class InvalidOogMark(DomainError):
     """G5: HITL znacznik OOG — nie wymiary."""
 
 
+class InvalidLoadPlanMark(DomainError):
+    """G6: HITL znacznik planu załadunku — nie solver OR."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 
