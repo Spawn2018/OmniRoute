@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefField } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { impactWrite, listImpactMarks, persistImpactMark } from "@/lib/tower-impacts-api"
 
@@ -74,17 +74,12 @@ function ImpactSave(args: { organizationId: string | null }) {
           </label>
         ))}
       </fieldset>
-      <label className="flex flex-col gap-1 text-xs">
-        Pochodzenie zapisu
-        <input
-          aria-label="source_ref skutku wieży"
-          className="h-9 rounded-md border bg-background px-2 font-mono"
-          value={draft.originStamp}
-          onChange={(change) => setDraft({ ...draft, originStamp: change.target.value })}
-          placeholder="tenant:manual albo fixture://tower-impact/…"
-          required
-        />
-      </label>
+      <CatalogSourceRefField
+        label="source_ref (tenant:manual albo fixture://tower-impact/…)"
+        ariaLabel="source_ref skutku wieży"
+        value={draft.originStamp}
+        onChange={(originStamp) => setDraft({ ...draft, originStamp })}
+      />
       <Button type="submit" disabled={persist.isPending || !args.organizationId}>
         Zapisz skutek wieży
       </Button>

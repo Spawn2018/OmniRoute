@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefField } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { listTwinMarks, persistTwinMark, twinWrite } from "@/lib/twin-marks-api"
 
@@ -64,17 +64,12 @@ function TwinSave(args: { organizationId: string | null }) {
           </label>
         ))}
       </fieldset>
-      <label className="flex flex-col gap-1 text-xs">
-        Pochodzenie zapisu
-        <input
-          aria-label="source_ref bliźniaka"
-          className="h-9 rounded-md border bg-background px-2 font-mono"
-          value={draft.originStamp}
-          onChange={(change) => setDraft({ ...draft, originStamp: change.target.value })}
-          placeholder="tenant:manual albo fixture://twin-mark/…"
-          required
-        />
-      </label>
+      <CatalogSourceRefField
+        label="source_ref (tenant:manual albo fixture://twin-mark/…)"
+        ariaLabel="source_ref bliźniaka"
+        value={draft.originStamp}
+        onChange={(originStamp) => setDraft({ ...draft, originStamp })}
+      />
       <Button type="submit" disabled={persist.isPending || !args.organizationId}>
         Zapisz bliźniaka
       </Button>

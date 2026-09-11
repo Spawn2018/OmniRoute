@@ -1,4 +1,5 @@
-- **297.0 leftover:** label-form prediction/weather/war-room/twin/tower/rank/executive/memory. 297.0 = SourceRefField na circle/lane-km/plan-snapshot.
+- **298.0 leftover:** label-form rank/executive/memory/prediction/weather. 298.0 = SourceRefField na war-room/twin/tower.
+- **297.0 leftover:** label-form DONE częściowo 298.0 (W marks). Zostaje rank/executive/memory/prediction/weather. 297.0 = circle/lane-km/plan-snapshot.
 - **296.0 leftover:** paper-form pozostałe DONE częściowo; label-form DONE częściowo 297.0. 296.0 = HintField na TED/award/bid-stance.
 - **295.0 leftover:** paper-form tender DONE częściowo 296.0. Zostaje inne paper-form / label-form. 295.0 = HintField na lane/monitoring/carbon.
 - **294.0 leftover:** live p44 / FourKites / Shippeo HTTP (TO_VERIFY umowa); „drugi vendor jako prawda” live; CT8 AIS; U1 masowy; wspólny SELECT; CT2. 294.0 = tokeny `fourkites`|`shippeo` na istniejącej tabeli.
