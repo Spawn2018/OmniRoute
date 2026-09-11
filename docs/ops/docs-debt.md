@@ -1,4 +1,5 @@
-- **308.0 leftover:** pozostałe label-form (tender lot/lane/quote / rate-card / fuel…). 308.0 = SourceRefField na prospect/win-loss/data-room.
+- **309.0 leftover:** pozostałe label-form (tender round/matrix/side / rate-card / fuel…). 309.0 = SourceRefField na lot/lane/quote.
+- **308.0 leftover:** lot/lane/quote DONE 309.0. 308.0 = SourceRefField na prospect/win-loss/data-room.
 - **307.0 leftover:** prospect/win-loss/data-room DONE 308.0. 307.0 = SourceRefField na rfp-intake/playbook/consortium.
 - **306.0 leftover:** rfp/playbook/consortium DONE 307.0. 306.0 = SourceRefField na otif/enforcement/task-template.
 - **305.0 leftover:** otif/enforcement/task DONE 306.0. 305.0 = SourceRefField na freight-audit/collaboration/routing-guide-match.

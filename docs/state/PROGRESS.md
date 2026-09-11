@@ -2,6 +2,7 @@
 
 | Data | Plaster | Moduł | Opis |
 |---|---|---|---|
+| 2026-09-11 | 309.0 | UI | `/refaktor`: SourceRefField na lot/lane/quote. Nastepny: leftover label-form. |
 | 2026-09-11 | 308.0 | UI | `/refaktor`: SourceRefField na prospect/win-loss/data-room. Nastepny: leftover label-form. |
 | 2026-09-11 | 307.0 | UI | `/refaktor`: SourceRefField na rfp-intake/playbook/consortium. Nastepny: leftover label-form. |
 | 2026-09-11 | 306.0 | UI | `/refaktor`: SourceRefField na otif/enforcement/task-template. Nastepny: leftover label-form. |

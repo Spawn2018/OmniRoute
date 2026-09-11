@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefField } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { listLotMarks, lotWrite, persistLotMark } from "@/lib/tender-lots-api"
 
@@ -58,18 +58,12 @@ function LotSave(args: { organizationId: string | null }) {
           required
         />
       </label>
-      <div className="flex flex-col gap-1 text-xs">
-        <span>Pochodzenie zapisu partii</span>
-        <input
-          aria-label="Pochodzenie zapisu partii przetargu"
-          autoComplete="off"
-          className="h-9 rounded-md border bg-background px-2 font-mono"
-          spellCheck={false}
-          value={draft.originStamp}
-          onChange={(change) => setDraft({ ...draft, originStamp: change.target.value })}
-          required
-        />
-      </div>
+      <CatalogSourceRefField
+        label="source_ref (tenant:manual albo fixture://tender-lot/…)"
+        ariaLabel="Pochodzenie zapisu partii przetargu"
+        value={draft.originStamp}
+        onChange={(originStamp) => setDraft({ ...draft, originStamp })}
+      />
       <Button type="submit" disabled={persist.isPending || !args.organizationId}>
         Zapisz partię
       </Button>

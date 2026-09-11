@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefField } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { laneWrite, listLaneMarks, persistLaneMark } from "@/lib/tender-lanes-api"
 
@@ -70,18 +70,12 @@ function LaneSave(args: { organizationId: string | null }) {
           required
         />
       </label>
-      <div className="flex flex-col gap-1 text-xs">
-        <span>Pochodzenie zapisu korytarza</span>
-        <input
-          aria-label="Pochodzenie zapisu korytarza przetargu"
-          autoComplete="off"
-          className="h-9 rounded-md border bg-background px-2 font-mono"
-          spellCheck={false}
-          value={draft.originRef}
-          onChange={(change) => setDraft({ ...draft, originRef: change.target.value })}
-          required
-        />
-      </div>
+      <CatalogSourceRefField
+        label="source_ref (tenant:manual albo fixture://tender-lane/…)"
+        ariaLabel="Pochodzenie zapisu korytarza przetargu"
+        value={draft.originRef}
+        onChange={(originRef) => setDraft({ ...draft, originRef })}
+      />
       <Button type="submit" disabled={persist.isPending || !args.organizationId}>
         Zapisz korytarz
       </Button>
