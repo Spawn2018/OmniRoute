@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **323.0** G1 HITL `crm_lead` **Następny:** **G3** LC checklista (Plan). Pin po G1.
+**Stan (z CURRENT.md):** **323.0** G1 HITL `crm_lead` **Następny:** **324.0** G3 HITL `lc_checklist` (delta `docs/deltas/open/324.0-lc-checklist.md`).
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

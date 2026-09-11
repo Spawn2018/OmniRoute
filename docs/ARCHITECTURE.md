@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **323.0** G1 HITL `crm_lead`. **Etap:** Plan — wolno `/plan-modul` **G3**. **Następny:** **G3** LC checklista (Plan). Pin po G1. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **323.0** G1 HITL `crm_lead`. **Etap:** Plan (delta zaakceptowana `/noc`) — wolno `/plaster` **324.0**. **Następny:** **324.0** G3 HITL `lc_checklist` (delta `docs/deltas/open/324.0-lc-checklist.md`). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
