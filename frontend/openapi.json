@@ -6060,6 +6060,80 @@
         ]
       }
     },
+    "/api/v1/clause-notices": {
+      "get": {
+        "tags": [
+          "clause-notices"
+        ],
+        "summary": "List Clause Notices",
+        "operationId": "list_clause_notices_api_v1_clause_notices_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ClauseNoticeResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Clause Notices Api V1 Clause Notices Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "clause-notices"
+        ],
+        "summary": "Create Clause Notice",
+        "operationId": "create_clause_notice_api_v1_clause_notices_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClauseNoticeCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClauseNoticeResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/local-charges": {
       "get": {
         "tags": [
@@ -15637,6 +15711,65 @@
           "source_ref"
         ],
         "title": "CircleSimResponse"
+      },
+      "ClauseNoticeCreate": {
+        "properties": {
+          "notice_code": {
+            "type": "string",
+            "title": "Notice Code"
+          },
+          "clause_label": {
+            "type": "string",
+            "title": "Clause Label"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "notice_code",
+          "clause_label",
+          "source_ref"
+        ],
+        "title": "ClauseNoticeCreate"
+      },
+      "ClauseNoticeResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "notice_code": {
+            "type": "string",
+            "title": "Notice Code"
+          },
+          "clause_label": {
+            "type": "string",
+            "title": "Clause Label"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "notice_code",
+          "clause_label",
+          "source_ref"
+        ],
+        "title": "ClauseNoticeResponse"
       },
       "CodInstructionCreate": {
         "properties": {

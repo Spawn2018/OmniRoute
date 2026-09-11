@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **317.0** CI3 HITL `clause_notice` (notice_code + clause_label + source_ref; bez 409).
+**Następny:** **318.0** CI7 HITL `calibration_mark` (mark_code + sample_ready + source_ref; bez MAE SQL).
 <!-- os-status:end -->
 
 ```mermaid
@@ -703,7 +703,7 @@ Karta: [karty-pol-fala-ci.md](analysis/karty-pol-fala-ci.md). **CI9 przed CI1.**
 | **CI9** | zero-knowledge: ciphertext + KEK tenanta; deny-list AI; test super-admin = bytea | 272.0 nagłówek; 273.0 zamknięty opaque BYTEA (`docs/deltas/archived/273.0-customer-contract-ciphertext.md`) — present/absent, nie szyfr; 274.0 zamknięty znacznik owijki (`docs/deltas/archived/274.0-tenant-contract-kek.md`) — nie klucz; leftover `wrapped_dek` / KMS | klucz Omni-master; Langfuse na PDF |
 | CI1 | upload + formularz `sla_clause` (wiele umów × odbiorców) | po X1+CI9 | extract LLM |
 | CI2 | FV vs umowa (spend leakage) | | druga marża |
-| CI3 | operacja czyta klauzulę (409/notice) | | auto-kara na FV |
+| CI3 | operacja czyta klauzulę (409/notice) | 317.0 HITL katalog `clause_notice` (etykieta); leftover egzekucja 409 | auto-kara na FV |
 | CI4 | `delay_forecast` wcześniej niż okno | 314.0 HITL katalog (`horizon_hours` + `p_late` Decimal); leftover wróżba punktowa / GPS | wróżba punktowa |
 | CI5 | które SLA pęknie + kara SQL; bez klauzuli = „brak danych umowy” | | auto linia produkcyjna |
 | CI6 | strata / koszt naprawy / uratowane | 315.0 `remediation_option`; 316.0 `impact_scenario` (etykieta); leftover repair_cost / expected_save / EBITDA SQL / S11 | float; LLM |

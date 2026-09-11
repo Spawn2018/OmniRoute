@@ -762,6 +762,10 @@ class InvalidImpactScenario(DomainError):
     """CI6: HITL scenariusz skutku — nie EBITDA SQL."""
 
 
+class InvalidClauseNotice(DomainError):
+    """CI3: HITL powiadomienie o klauzuli — nie 409 i nie auto-kara."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

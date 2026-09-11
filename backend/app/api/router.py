@@ -16,6 +16,7 @@ from app.api import (
     charge_templates,
     charges,
     circle_sims,
+    clause_notices,
     cod_instructions,
     collaboration_marks,
     collective_invoices,
@@ -190,6 +191,7 @@ api_router.include_router(kreptd_licences.router)
 api_router.include_router(lane_patterns.router)
 api_router.include_router(lane_kms.router)
 api_router.include_router(circle_sims.router)
+api_router.include_router(clause_notices.router)
 api_router.include_router(local_charges.router)
 api_router.include_router(tender_quotes.router)
 api_router.include_router(tender_data_rooms.router)

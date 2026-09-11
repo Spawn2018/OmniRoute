@@ -1199,6 +1199,50 @@ export type CircleSimResponse = {
 };
 
 /**
+ * ClauseNoticeCreate
+ */
+export type ClauseNoticeCreate = {
+    /**
+     * Notice Code
+     */
+    notice_code: string;
+    /**
+     * Clause Label
+     */
+    clause_label: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ClauseNoticeResponse
+ */
+export type ClauseNoticeResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Notice Code
+     */
+    notice_code: string;
+    /**
+     * Clause Label
+     */
+    clause_label: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * CodInstructionCreate
  */
 export type CodInstructionCreate = {
@@ -12356,6 +12400,49 @@ export type CreateCircleSimApiV1CircleSimsPostResponses = {
 };
 
 export type CreateCircleSimApiV1CircleSimsPostResponse = CreateCircleSimApiV1CircleSimsPostResponses[keyof CreateCircleSimApiV1CircleSimsPostResponses];
+
+export type ListClauseNoticesApiV1ClauseNoticesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/clause-notices';
+};
+
+export type ListClauseNoticesApiV1ClauseNoticesGetResponses = {
+    /**
+     * Response List Clause Notices Api V1 Clause Notices Get
+     *
+     * Successful Response
+     */
+    200: Array<ClauseNoticeResponse>;
+};
+
+export type ListClauseNoticesApiV1ClauseNoticesGetResponse = ListClauseNoticesApiV1ClauseNoticesGetResponses[keyof ListClauseNoticesApiV1ClauseNoticesGetResponses];
+
+export type CreateClauseNoticeApiV1ClauseNoticesPostData = {
+    body: ClauseNoticeCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/clause-notices';
+};
+
+export type CreateClauseNoticeApiV1ClauseNoticesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateClauseNoticeApiV1ClauseNoticesPostError = CreateClauseNoticeApiV1ClauseNoticesPostErrors[keyof CreateClauseNoticeApiV1ClauseNoticesPostErrors];
+
+export type CreateClauseNoticeApiV1ClauseNoticesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ClauseNoticeResponse;
+};
+
+export type CreateClauseNoticeApiV1ClauseNoticesPostResponse = CreateClauseNoticeApiV1ClauseNoticesPostResponses[keyof CreateClauseNoticeApiV1ClauseNoticesPostResponses];
 
 export type ListLocalChargesApiV1LocalChargesGetData = {
     body?: never;
