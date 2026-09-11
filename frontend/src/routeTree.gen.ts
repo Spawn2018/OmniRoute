@@ -156,6 +156,7 @@ import { Route as TenderWinLossesRouteImport } from './routes/tender-win-losses'
 import { Route as TendersRouteImport } from './routes/tenders'
 import { Route as TerminalSlotConnectorsRouteImport } from './routes/terminal-slot-connectors'
 import { Route as TerminalsRouteImport } from './routes/terminals'
+import { Route as TimeToFixMarksRouteImport } from './routes/time-to-fix-marks'
 import { Route as TowerImpactsRouteImport } from './routes/tower-impacts'
 import { Route as TrackingRouteImport } from './routes/tracking'
 import { Route as TwinMarksRouteImport } from './routes/twin-marks'
@@ -903,6 +904,11 @@ const TerminalsRoute = TerminalsRouteImport.update({
   path: '/terminals',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TimeToFixMarksRoute = TimeToFixMarksRouteImport.update({
+  id: '/time-to-fix-marks',
+  path: '/time-to-fix-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TowerImpactsRoute = TowerImpactsRouteImport.update({
   id: '/tower-impacts',
   path: '/tower-impacts',
@@ -1102,6 +1108,7 @@ export interface FileRoutesByFullPath {
   '/tenders': typeof TendersRoute
   '/terminal-slot-connectors': typeof TerminalSlotConnectorsRoute
   '/terminals': typeof TerminalsRoute
+  '/time-to-fix-marks': typeof TimeToFixMarksRoute
   '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
   '/twin-marks': typeof TwinMarksRoute
@@ -1261,6 +1268,7 @@ export interface FileRoutesByTo {
   '/tenders': typeof TendersRoute
   '/terminal-slot-connectors': typeof TerminalSlotConnectorsRoute
   '/terminals': typeof TerminalsRoute
+  '/time-to-fix-marks': typeof TimeToFixMarksRoute
   '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
   '/twin-marks': typeof TwinMarksRoute
@@ -1421,6 +1429,7 @@ export interface FileRoutesById {
   '/tenders': typeof TendersRoute
   '/terminal-slot-connectors': typeof TerminalSlotConnectorsRoute
   '/terminals': typeof TerminalsRoute
+  '/time-to-fix-marks': typeof TimeToFixMarksRoute
   '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
   '/twin-marks': typeof TwinMarksRoute
@@ -1582,6 +1591,7 @@ export interface FileRouteTypes {
     | '/tenders'
     | '/terminal-slot-connectors'
     | '/terminals'
+    | '/time-to-fix-marks'
     | '/tower-impacts'
     | '/tracking'
     | '/twin-marks'
@@ -1741,6 +1751,7 @@ export interface FileRouteTypes {
     | '/tenders'
     | '/terminal-slot-connectors'
     | '/terminals'
+    | '/time-to-fix-marks'
     | '/tower-impacts'
     | '/tracking'
     | '/twin-marks'
@@ -1900,6 +1911,7 @@ export interface FileRouteTypes {
     | '/tenders'
     | '/terminal-slot-connectors'
     | '/terminals'
+    | '/time-to-fix-marks'
     | '/tower-impacts'
     | '/tracking'
     | '/twin-marks'
@@ -2060,6 +2072,7 @@ export interface RootRouteChildren {
   TendersRoute: typeof TendersRoute
   TerminalSlotConnectorsRoute: typeof TerminalSlotConnectorsRoute
   TerminalsRoute: typeof TerminalsRoute
+  TimeToFixMarksRoute: typeof TimeToFixMarksRoute
   TowerImpactsRoute: typeof TowerImpactsRoute
   TrackingRoute: typeof TrackingRoute
   TwinMarksRoute: typeof TwinMarksRoute
@@ -3103,6 +3116,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TerminalsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/time-to-fix-marks': {
+      id: '/time-to-fix-marks'
+      path: '/time-to-fix-marks'
+      fullPath: '/time-to-fix-marks'
+      preLoaderRoute: typeof TimeToFixMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tower-impacts': {
       id: '/tower-impacts'
       path: '/tower-impacts'
@@ -3324,6 +3344,7 @@ const rootRouteChildren: RootRouteChildren = {
   TendersRoute: TendersRoute,
   TerminalSlotConnectorsRoute: TerminalSlotConnectorsRoute,
   TerminalsRoute: TerminalsRoute,
+  TimeToFixMarksRoute: TimeToFixMarksRoute,
   TowerImpactsRoute: TowerImpactsRoute,
   TrackingRoute: TrackingRoute,
   TwinMarksRoute: TwinMarksRoute,

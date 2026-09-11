@@ -9557,6 +9557,50 @@ export type TerminalSlotConnectorResponse = {
 };
 
 /**
+ * TimeToFixMarkCreate
+ */
+export type TimeToFixMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Fix Kind
+     */
+    fix_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TimeToFixMarkResponse
+ */
+export type TimeToFixMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Fix Kind
+     */
+    fix_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * TowerImpactCreate
  */
 export type TowerImpactCreate = {
@@ -19247,6 +19291,49 @@ export type ResolveTerminalApiV1TerminalsResolveGetResponses = {
 };
 
 export type ResolveTerminalApiV1TerminalsResolveGetResponse = ResolveTerminalApiV1TerminalsResolveGetResponses[keyof ResolveTerminalApiV1TerminalsResolveGetResponses];
+
+export type ListTimeToFixMarksApiV1TimeToFixMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/time-to-fix-marks';
+};
+
+export type ListTimeToFixMarksApiV1TimeToFixMarksGetResponses = {
+    /**
+     * Response List Time To Fix Marks Api V1 Time To Fix Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<TimeToFixMarkResponse>;
+};
+
+export type ListTimeToFixMarksApiV1TimeToFixMarksGetResponse = ListTimeToFixMarksApiV1TimeToFixMarksGetResponses[keyof ListTimeToFixMarksApiV1TimeToFixMarksGetResponses];
+
+export type CreateTimeToFixMarkApiV1TimeToFixMarksPostData = {
+    body: TimeToFixMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/time-to-fix-marks';
+};
+
+export type CreateTimeToFixMarkApiV1TimeToFixMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTimeToFixMarkApiV1TimeToFixMarksPostError = CreateTimeToFixMarkApiV1TimeToFixMarksPostErrors[keyof CreateTimeToFixMarkApiV1TimeToFixMarksPostErrors];
+
+export type CreateTimeToFixMarkApiV1TimeToFixMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TimeToFixMarkResponse;
+};
+
+export type CreateTimeToFixMarkApiV1TimeToFixMarksPostResponse = CreateTimeToFixMarkApiV1TimeToFixMarksPostResponses[keyof CreateTimeToFixMarkApiV1TimeToFixMarksPostResponses];
 
 export type HealthHealthGetData = {
     body?: never;

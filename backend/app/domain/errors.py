@@ -878,6 +878,10 @@ class InvalidCutoffMark(DomainError):
     """EXP2.8: HITL cutoff rozdzielony — nie silnik cutoff."""
 
 
+class InvalidTimeToFixMark(DomainError):
+    """EXP2.9: HITL TIME-TO-FIX — nie silnik TTF."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

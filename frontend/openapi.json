@@ -15778,6 +15778,80 @@
         }
       }
     },
+    "/api/v1/time-to-fix-marks": {
+      "get": {
+        "tags": [
+          "time-to-fix-marks"
+        ],
+        "summary": "List Time To Fix Marks",
+        "operationId": "list_time_to_fix_marks_api_v1_time_to_fix_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TimeToFixMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Time To Fix Marks Api V1 Time To Fix Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "time-to-fix-marks"
+        ],
+        "summary": "Create Time To Fix Mark",
+        "operationId": "create_time_to_fix_mark_api_v1_time_to_fix_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TimeToFixMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TimeToFixMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/health": {
       "get": {
         "summary": "Health",
@@ -31070,6 +31144,65 @@
           "source_ref"
         ],
         "title": "TerminalSlotConnectorResponse"
+      },
+      "TimeToFixMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "fix_kind": {
+            "type": "string",
+            "title": "Fix Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "fix_kind",
+          "source_ref"
+        ],
+        "title": "TimeToFixMarkCreate"
+      },
+      "TimeToFixMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "fix_kind": {
+            "type": "string",
+            "title": "Fix Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "fix_kind",
+          "source_ref"
+        ],
+        "title": "TimeToFixMarkResponse"
       },
       "TowerImpactCreate": {
         "properties": {

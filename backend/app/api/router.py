@@ -152,6 +152,7 @@ from app.api import (
     tenders,
     terminal_slot_connectors,
     terminals,
+    time_to_fix_marks,
     tower_impacts,
     tracking_events,
     trips,
@@ -325,6 +326,7 @@ api_router.include_router(ports.router)
 api_router.include_router(port_surcharges.router)
 api_router.include_router(locations.router)
 api_router.include_router(terminals.router)
+api_router.include_router(time_to_fix_marks.router)
 
 
 @api_router.api_route(
