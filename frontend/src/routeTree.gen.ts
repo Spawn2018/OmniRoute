@@ -59,6 +59,7 @@ import { Route as ExceptionsRouteImport } from './routes/exceptions'
 import { Route as ExchangeConnectorsRouteImport } from './routes/exchange-connectors'
 import { Route as ExecutiveMarksRouteImport } from './routes/executive-marks'
 import { Route as ExtractionsRouteImport } from './routes/extractions'
+import { Route as FerryArt9MarksRouteImport } from './routes/ferry-art9-marks'
 import { Route as FilingSchemeMarksRouteImport } from './routes/filing-scheme-marks'
 import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as FleetRouteImport } from './routes/fleet'
@@ -419,6 +420,11 @@ const ExecutiveMarksRoute = ExecutiveMarksRouteImport.update({
 const ExtractionsRoute = ExtractionsRouteImport.update({
   id: '/extractions',
   path: '/extractions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FerryArt9MarksRoute = FerryArt9MarksRouteImport.update({
+  id: '/ferry-art9-marks',
+  path: '/ferry-art9-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FilingSchemeMarksRoute = FilingSchemeMarksRouteImport.update({
@@ -1029,6 +1035,7 @@ export interface FileRoutesByFullPath {
   '/exchange-connectors': typeof ExchangeConnectorsRoute
   '/executive-marks': typeof ExecutiveMarksRoute
   '/extractions': typeof ExtractionsRoute
+  '/ferry-art9-marks': typeof FerryArt9MarksRoute
   '/filing-scheme-marks': typeof FilingSchemeMarksRoute
   '/finance': typeof FinanceRoute
   '/fleet': typeof FleetRoute
@@ -1192,6 +1199,7 @@ export interface FileRoutesByTo {
   '/exchange-connectors': typeof ExchangeConnectorsRoute
   '/executive-marks': typeof ExecutiveMarksRoute
   '/extractions': typeof ExtractionsRoute
+  '/ferry-art9-marks': typeof FerryArt9MarksRoute
   '/filing-scheme-marks': typeof FilingSchemeMarksRoute
   '/finance': typeof FinanceRoute
   '/fleet': typeof FleetRoute
@@ -1356,6 +1364,7 @@ export interface FileRoutesById {
   '/exchange-connectors': typeof ExchangeConnectorsRoute
   '/executive-marks': typeof ExecutiveMarksRoute
   '/extractions': typeof ExtractionsRoute
+  '/ferry-art9-marks': typeof FerryArt9MarksRoute
   '/filing-scheme-marks': typeof FilingSchemeMarksRoute
   '/finance': typeof FinanceRoute
   '/fleet': typeof FleetRoute
@@ -1521,6 +1530,7 @@ export interface FileRouteTypes {
     | '/exchange-connectors'
     | '/executive-marks'
     | '/extractions'
+    | '/ferry-art9-marks'
     | '/filing-scheme-marks'
     | '/finance'
     | '/fleet'
@@ -1684,6 +1694,7 @@ export interface FileRouteTypes {
     | '/exchange-connectors'
     | '/executive-marks'
     | '/extractions'
+    | '/ferry-art9-marks'
     | '/filing-scheme-marks'
     | '/finance'
     | '/fleet'
@@ -1847,6 +1858,7 @@ export interface FileRouteTypes {
     | '/exchange-connectors'
     | '/executive-marks'
     | '/extractions'
+    | '/ferry-art9-marks'
     | '/filing-scheme-marks'
     | '/finance'
     | '/fleet'
@@ -2011,6 +2023,7 @@ export interface RootRouteChildren {
   ExchangeConnectorsRoute: typeof ExchangeConnectorsRoute
   ExecutiveMarksRoute: typeof ExecutiveMarksRoute
   ExtractionsRoute: typeof ExtractionsRoute
+  FerryArt9MarksRoute: typeof FerryArt9MarksRoute
   FilingSchemeMarksRoute: typeof FilingSchemeMarksRoute
   FinanceRoute: typeof FinanceRoute
   FleetRoute: typeof FleetRoute
@@ -2474,6 +2487,13 @@ declare module '@tanstack/react-router' {
       path: '/extractions'
       fullPath: '/extractions'
       preLoaderRoute: typeof ExtractionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ferry-art9-marks': {
+      id: '/ferry-art9-marks'
+      path: '/ferry-art9-marks'
+      fullPath: '/ferry-art9-marks'
+      preLoaderRoute: typeof FerryArt9MarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/filing-scheme-marks': {
@@ -3307,6 +3327,7 @@ const rootRouteChildren: RootRouteChildren = {
   ExchangeConnectorsRoute: ExchangeConnectorsRoute,
   ExecutiveMarksRoute: ExecutiveMarksRoute,
   ExtractionsRoute: ExtractionsRoute,
+  FerryArt9MarksRoute: FerryArt9MarksRoute,
   FilingSchemeMarksRoute: FilingSchemeMarksRoute,
   FinanceRoute: FinanceRoute,
   FleetRoute: FleetRoute,

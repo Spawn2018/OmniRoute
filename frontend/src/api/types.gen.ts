@@ -3461,6 +3461,50 @@ export type ExtractionDraftResponse = {
 };
 
 /**
+ * FerryArt9MarkCreate
+ */
+export type FerryArt9MarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Ferry Kind
+     */
+    ferry_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * FerryArt9MarkResponse
+ */
+export type FerryArt9MarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Ferry Kind
+     */
+    ferry_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * FieldCarryForwardCreate
  */
 export type FieldCarryForwardCreate = {
@@ -19595,6 +19639,49 @@ export type CreateCombinedTransportMarkApiV1CombinedTransportMarksPostResponses 
 };
 
 export type CreateCombinedTransportMarkApiV1CombinedTransportMarksPostResponse = CreateCombinedTransportMarkApiV1CombinedTransportMarksPostResponses[keyof CreateCombinedTransportMarkApiV1CombinedTransportMarksPostResponses];
+
+export type ListFerryArt9MarksApiV1FerryArt9MarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/ferry-art9-marks';
+};
+
+export type ListFerryArt9MarksApiV1FerryArt9MarksGetResponses = {
+    /**
+     * Response List Ferry Art9 Marks Api V1 Ferry Art9 Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<FerryArt9MarkResponse>;
+};
+
+export type ListFerryArt9MarksApiV1FerryArt9MarksGetResponse = ListFerryArt9MarksApiV1FerryArt9MarksGetResponses[keyof ListFerryArt9MarksApiV1FerryArt9MarksGetResponses];
+
+export type CreateFerryArt9MarkApiV1FerryArt9MarksPostData = {
+    body: FerryArt9MarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/ferry-art9-marks';
+};
+
+export type CreateFerryArt9MarkApiV1FerryArt9MarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateFerryArt9MarkApiV1FerryArt9MarksPostError = CreateFerryArt9MarkApiV1FerryArt9MarksPostErrors[keyof CreateFerryArt9MarkApiV1FerryArt9MarksPostErrors];
+
+export type CreateFerryArt9MarkApiV1FerryArt9MarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: FerryArt9MarkResponse;
+};
+
+export type CreateFerryArt9MarkApiV1FerryArt9MarksPostResponse = CreateFerryArt9MarkApiV1FerryArt9MarksPostResponses[keyof CreateFerryArt9MarkApiV1FerryArt9MarksPostResponses];
 
 export type HealthHealthGetData = {
     body?: never;

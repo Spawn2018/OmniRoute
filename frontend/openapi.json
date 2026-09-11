@@ -16074,6 +16074,80 @@
         ]
       }
     },
+    "/api/v1/ferry-art9-marks": {
+      "get": {
+        "tags": [
+          "ferry-art9-marks"
+        ],
+        "summary": "List Ferry Art9 Marks",
+        "operationId": "list_ferry_art9_marks_api_v1_ferry_art9_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/FerryArt9MarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Ferry Art9 Marks Api V1 Ferry Art9 Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "ferry-art9-marks"
+        ],
+        "summary": "Create Ferry Art9 Mark",
+        "operationId": "create_ferry_art9_mark_api_v1_ferry_art9_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FerryArt9MarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FerryArt9MarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/health": {
       "get": {
         "summary": "Health",
@@ -21733,6 +21807,65 @@
           "reviewed_at"
         ],
         "title": "ExtractionDraftResponse"
+      },
+      "FerryArt9MarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "ferry_kind": {
+            "type": "string",
+            "title": "Ferry Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "ferry_kind",
+          "source_ref"
+        ],
+        "title": "FerryArt9MarkCreate"
+      },
+      "FerryArt9MarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "ferry_kind": {
+            "type": "string",
+            "title": "Ferry Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "ferry_kind",
+          "source_ref"
+        ],
+        "title": "FerryArt9MarkResponse"
       },
       "FieldCarryForwardCreate": {
         "properties": {

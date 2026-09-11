@@ -894,6 +894,10 @@ class InvalidCombinedTransportMark(DomainError):
     """EXP2.12: HITL combined transport — nie silnik / Mobility Package."""
 
 
+class InvalidFerryArt9Mark(DomainError):
+    """EXP2.13: HITL ferry art. 9 — nie tacho / Driver Time Solver."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

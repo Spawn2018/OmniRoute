@@ -53,6 +53,7 @@ from app.api import (
     exchange_connectors,
     executive_marks,
     extractions,
+    ferry_art9_marks,
     field_carry_forwards,
     filing_scheme_marks,
     fraud_flags,
@@ -333,6 +334,7 @@ api_router.include_router(time_to_fix_marks.router)
 api_router.include_router(what_if_marks.router)
 api_router.include_router(cabotage_marks.router)
 api_router.include_router(combined_transport_marks.router)
+api_router.include_router(ferry_art9_marks.router)
 
 
 @api_router.api_route(

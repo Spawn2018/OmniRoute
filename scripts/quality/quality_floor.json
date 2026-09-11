@@ -1,6 +1,6 @@
 {
-  "isolation_tests": 165,
-  "bench_cases": 282,
+  "isolation_tests": 166,
+  "bench_cases": 283,
   "promptfoo_fixtures": 2,
   "grounding_hc": 8,
   "long_functions": 0,
