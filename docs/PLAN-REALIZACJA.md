@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** leftover Fala CT / pin — U1 masowy / wspólny SELECT / CT2 albo następny wąski HITL.
+**Następny:** **294.0** CT7 `visibility_connector` tokeny `fourkites`|`shippeo` (nie live).
 <!-- os-status:end -->
 
 ```mermaid
@@ -687,7 +687,7 @@ Karta: [karty-pol-fala-ct.md](analysis/karty-pol-fala-ct.md). Tenant `shipper` R
 | CT4 | routing guide 409 | 279.0–290.0: guide · tryb · 409 ASN/shipment · match kind · label match ASN/shipment | live EDI · auto shipment |
 | CT5 | EDI 214/315/856/210 + webhook | TO_VERIFY partner | |
 | CT6 | SAP/Oracle adapter jak F9 | 281.0 HITL katalog `sap_connector` | live SOAP / SQL do SAP |
-| CT7 | p44 **albo** FourKites **albo** Shippeo | 275.0 HITL `visibility_connector` token `p44` (nie live); leftover FourKites/Shippeo + live HTTP (TO_VERIFY umowa) | scrape ocean |
+| CT7 | p44 **albo** FourKites **albo** Shippeo | 275.0 HITL `p44`; **294.0** delta tokeny `fourkites`\|`shippeo` (nie live); leftover live HTTP (TO_VERIFY umowa) | scrape ocean |
 | CT8 | AIS + kongestia | TO_VERIFY licencja | |
 | CT9 | CO₂ GLEC + `methodology_version` CSRD | z C5 | |
 | CT10 | freight audit FV vs `charge` | 283.0 HITL katalog `freight_audit_mark` | SQL vs charge / druga marża |
