@@ -9152,6 +9152,80 @@
         ]
       }
     },
+    "/api/v1/routing-guide-enforcements": {
+      "get": {
+        "tags": [
+          "routing-guide-enforcements"
+        ],
+        "summary": "List Routing Guide Enforcements",
+        "operationId": "list_routing_guide_enforcements_api_v1_routing_guide_enforcements_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/RoutingGuideEnforcementResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Routing Guide Enforcements Api V1 Routing Guide Enforcements Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "routing-guide-enforcements"
+        ],
+        "summary": "Create Routing Guide Enforcement",
+        "operationId": "create_routing_guide_enforcement_api_v1_routing_guide_enforcements_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoutingGuideEnforcementCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoutingGuideEnforcementResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/routing-guides": {
       "get": {
         "tags": [
@@ -23161,6 +23235,65 @@
           "source_ref"
         ],
         "title": "RoutingGuideCreate"
+      },
+      "RoutingGuideEnforcementCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "enforcement_kind": {
+            "type": "string",
+            "title": "Enforcement Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "enforcement_kind",
+          "source_ref"
+        ],
+        "title": "RoutingGuideEnforcementCreate"
+      },
+      "RoutingGuideEnforcementResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "enforcement_kind": {
+            "type": "string",
+            "title": "Enforcement Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "enforcement_kind",
+          "source_ref"
+        ],
+        "title": "RoutingGuideEnforcementResponse"
       },
       "RoutingGuideResponse": {
         "properties": {

@@ -187,6 +187,11 @@ const NAV_ACTIONS = [
     to: "/asns",
   },
   {
+    id: "nav-routing-guide-enforcements",
+    label: "Egzekucja przewodnika",
+    to: "/routing-guide-enforcements",
+  },
+  {
     id: "nav-routing-guides",
     label: "Idź do przewodnika routingu",
     to: "/routing-guides",

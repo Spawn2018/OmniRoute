@@ -63,6 +63,10 @@ export const BUSINESS_LISTS = {
   poLine: { route: "/po-lines", tableKey: "po_line" },
   asn: { route: "/asns", tableKey: "asn" },
   routingGuide: { route: "/routing-guides", tableKey: "routing_guide" },
+  routingGuideEnforcement: {
+    route: "/routing-guide-enforcements",
+    tableKey: "routing_guide_enforcement",
+  },
   otifMark: { route: "/otif-marks", tableKey: "otif_mark" },
   sapConnector: { route: "/sap-connectors", tableKey: "sap_connector" },
   capaMark: { route: "/capa-marks", tableKey: "capa_mark" },
@@ -185,6 +189,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/purchase-orders",
   "/po-lines",
   "/asns",
+  "/routing-guide-enforcements",
   "/routing-guides",
   "/otif-marks",
   "/sap-connectors",

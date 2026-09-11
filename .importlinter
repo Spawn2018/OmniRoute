@@ -102,6 +102,7 @@ modules =
     app.services.tenant_contract_keks
     app.services.visibility_connectors
     app.services.purchase_orders
+    app.services.routing_guide_enforcements
     app.services.routing_guides
     app.services.otif_marks
     app.services.sap_connectors
@@ -420,6 +421,9 @@ forbidden_modules =
     app.models.purchase_order
     app.models.po_line
     app.models.asn
+    app.services.routing_guide_enforcements
+    app.repositories.routing_guide_enforcements
+    app.models.routing_guide_enforcement
     app.services.routing_guides
     app.repositories.routing_guides
     app.models.routing_guide

@@ -6035,6 +6035,50 @@ export type RoutingGuideCreate = {
 };
 
 /**
+ * RoutingGuideEnforcementCreate
+ */
+export type RoutingGuideEnforcementCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Enforcement Kind
+     */
+    enforcement_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * RoutingGuideEnforcementResponse
+ */
+export type RoutingGuideEnforcementResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Enforcement Kind
+     */
+    enforcement_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * RoutingGuideResponse
  */
 export type RoutingGuideResponse = {
@@ -13811,6 +13855,49 @@ export type CreateOtifMarkApiV1OtifMarksPostResponses = {
 };
 
 export type CreateOtifMarkApiV1OtifMarksPostResponse = CreateOtifMarkApiV1OtifMarksPostResponses[keyof CreateOtifMarkApiV1OtifMarksPostResponses];
+
+export type ListRoutingGuideEnforcementsApiV1RoutingGuideEnforcementsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/routing-guide-enforcements';
+};
+
+export type ListRoutingGuideEnforcementsApiV1RoutingGuideEnforcementsGetResponses = {
+    /**
+     * Response List Routing Guide Enforcements Api V1 Routing Guide Enforcements Get
+     *
+     * Successful Response
+     */
+    200: Array<RoutingGuideEnforcementResponse>;
+};
+
+export type ListRoutingGuideEnforcementsApiV1RoutingGuideEnforcementsGetResponse = ListRoutingGuideEnforcementsApiV1RoutingGuideEnforcementsGetResponses[keyof ListRoutingGuideEnforcementsApiV1RoutingGuideEnforcementsGetResponses];
+
+export type CreateRoutingGuideEnforcementApiV1RoutingGuideEnforcementsPostData = {
+    body: RoutingGuideEnforcementCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/routing-guide-enforcements';
+};
+
+export type CreateRoutingGuideEnforcementApiV1RoutingGuideEnforcementsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateRoutingGuideEnforcementApiV1RoutingGuideEnforcementsPostError = CreateRoutingGuideEnforcementApiV1RoutingGuideEnforcementsPostErrors[keyof CreateRoutingGuideEnforcementApiV1RoutingGuideEnforcementsPostErrors];
+
+export type CreateRoutingGuideEnforcementApiV1RoutingGuideEnforcementsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: RoutingGuideEnforcementResponse;
+};
+
+export type CreateRoutingGuideEnforcementApiV1RoutingGuideEnforcementsPostResponse = CreateRoutingGuideEnforcementApiV1RoutingGuideEnforcementsPostResponses[keyof CreateRoutingGuideEnforcementApiV1RoutingGuideEnforcementsPostResponses];
 
 export type ListRoutingGuidesApiV1RoutingGuidesGetData = {
     body?: never;

@@ -113,9 +113,10 @@ from app.models.asn import Asn  # noqa: F401
 from app.models.otif_mark import OtifMark  # noqa: F401
 from app.models.sap_connector import SapConnector  # noqa: F401
 from app.models.capa_mark import CapaMark  # noqa: F401
-from app.models.freight_audit_mark import FreightAuditMark  # noqa: F401
 from app.models.collaboration_mark import CollaborationMark  # noqa: F401
+from app.models.freight_audit_mark import FreightAuditMark  # noqa: F401
 from app.models.routing_guide import RoutingGuide  # noqa: F401
+from app.models.routing_guide_enforcement import RoutingGuideEnforcement  # noqa: F401
 from app.models.exchange_connector import ExchangeConnector  # noqa: F401
 from app.models.idp_connector import IdpConnector  # noqa: F401
 from app.models.terminal_slot_connector import TerminalSlotConnector  # noqa: F401

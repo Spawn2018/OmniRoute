@@ -752,3 +752,7 @@ class InvalidFreightAuditMark(DomainError):
 
 class InvalidCollaborationMark(DomainError):
     """CT11: HITL rola współpracy 3 stron — nie wspólny SELECT."""
+
+
+class InvalidRoutingGuideEnforcement(DomainError):
+    """CT4 leftover: HITL tryb egzekucji przewodnika — nie żywy 409."""

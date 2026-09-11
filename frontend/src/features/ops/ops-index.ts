@@ -584,6 +584,11 @@ export const OPS_JOBS = [
     job: "katalog routing_guide HITL",
   },
   {
+    route: BUSINESS_LISTS.routingGuideEnforcement.route,
+    label: "Egzekucja przewodnika",
+    job: "katalog routing_guide_enforcement HITL",
+  },
+  {
     route: BUSINESS_LISTS.otifMark.route,
     label: "Znacznik OTIF",
     job: "katalog otif_mark HITL",
@@ -884,6 +889,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "282.0": "/capa-marks",
   "283.0": "/freight-audit-marks",
   "284.0": "/collaboration-marks",
+  "285.0": "/routing-guide-enforcements",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

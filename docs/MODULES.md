@@ -78,7 +78,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | CI9 | Umowa klienta HITL | 272.0–273.0 `customer_contract` · 274.0 `tenant_contract_kek` | **ukończony (HITL nagłówek + opaque BYTEA + znacznik owijki)** · znacznik, nie klucz; leftover `wrapped_dek` / KMS |
 | CT7 | Konektor widoczności HITL | 275.0 `visibility_connector` | **ukończony (HITL)** · kod + kind `p44`; leftover live p44 / FourKites / Shippeo / AIS |
 | CT1 | Zamówienie zakupu HITL | 276.0 `purchase_order` · 277.0 `po_line` · 278.0 `asn` | **ukończony (HITL nagłówek + linia + awizo)** · leftover auto shipment / live EDI |
-| CT4 | Przewodnik routingu HITL | 279.0 `routing_guide` | **ukończony (HITL katalog)** · leftover 409 egzekucja |
+| CT4 | Przewodnik routingu HITL | 279.0 `routing_guide`; 285.0 `routing_guide_enforcement` | **ukończony (HITL katalog + tryb)** · leftover żywy HTTP 409 |
 | CT3 | Znacznik OTIF HITL | 280.0 `otif_mark` | **ukończony (HITL katalog zakresu)** · leftover OTIF% |
 | CT6 | Konektor SAP/Oracle HITL | 281.0 `sap_connector` | **ukończony (HITL katalog)** · leftover live SOAP |
 | CT10 | Znacznik audytu frachtu HITL | 283.0 `freight_audit_mark` | **ukończony (HITL katalog rodzaju)** · leftover SQL vs charge |

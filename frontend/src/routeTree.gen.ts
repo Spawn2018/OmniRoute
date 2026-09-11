@@ -95,6 +95,7 @@ import { Route as RateCardsRouteImport } from './routes/rate-cards'
 import { Route as RateLinesRouteImport } from './routes/rate-lines'
 import { Route as RoadRouteImport } from './routes/road'
 import { Route as RolloutRouteImport } from './routes/rollout'
+import { Route as RoutingGuideEnforcementsRouteImport } from './routes/routing-guide-enforcements'
 import { Route as RoutingGuidesRouteImport } from './routes/routing-guides'
 import { Route as SanctionsRouteImport } from './routes/sanctions'
 import { Route as SapConnectorsRouteImport } from './routes/sap-connectors'
@@ -562,6 +563,11 @@ const RolloutRoute = RolloutRouteImport.update({
   path: '/rollout',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RoutingGuideEnforcementsRoute = RoutingGuideEnforcementsRouteImport.update({
+  id: '/routing-guide-enforcements',
+  path: '/routing-guide-enforcements',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RoutingGuidesRoute = RoutingGuidesRouteImport.update({
   id: '/routing-guides',
   path: '/routing-guides',
@@ -830,6 +836,7 @@ export interface FileRoutesByFullPath {
   '/rate-lines': typeof RateLinesRoute
   '/road': typeof RoadRoute
   '/rollout': typeof RolloutRoute
+  '/routing-guide-enforcements': typeof RoutingGuideEnforcementsRoute
   '/routing-guides': typeof RoutingGuidesRoute
   '/sanctions': typeof SanctionsRoute
   '/sap-connectors': typeof SapConnectorsRoute
@@ -954,6 +961,7 @@ export interface FileRoutesByTo {
   '/rate-lines': typeof RateLinesRoute
   '/road': typeof RoadRoute
   '/rollout': typeof RolloutRoute
+  '/routing-guide-enforcements': typeof RoutingGuideEnforcementsRoute
   '/routing-guides': typeof RoutingGuidesRoute
   '/sanctions': typeof SanctionsRoute
   '/sap-connectors': typeof SapConnectorsRoute
@@ -1079,6 +1087,7 @@ export interface FileRoutesById {
   '/rate-lines': typeof RateLinesRoute
   '/road': typeof RoadRoute
   '/rollout': typeof RolloutRoute
+  '/routing-guide-enforcements': typeof RoutingGuideEnforcementsRoute
   '/routing-guides': typeof RoutingGuidesRoute
   '/sanctions': typeof SanctionsRoute
   '/sap-connectors': typeof SapConnectorsRoute
@@ -1205,6 +1214,7 @@ export interface FileRouteTypes {
     | '/rate-lines'
     | '/road'
     | '/rollout'
+    | '/routing-guide-enforcements'
     | '/routing-guides'
     | '/sanctions'
     | '/sap-connectors'
@@ -1329,6 +1339,7 @@ export interface FileRouteTypes {
     | '/rate-lines'
     | '/road'
     | '/rollout'
+    | '/routing-guide-enforcements'
     | '/routing-guides'
     | '/sanctions'
     | '/sap-connectors'
@@ -1453,6 +1464,7 @@ export interface FileRouteTypes {
     | '/rate-lines'
     | '/road'
     | '/rollout'
+    | '/routing-guide-enforcements'
     | '/routing-guides'
     | '/sanctions'
     | '/sap-connectors'
@@ -1578,6 +1590,7 @@ export interface RootRouteChildren {
   RateLinesRoute: typeof RateLinesRoute
   RoadRoute: typeof RoadRoute
   RolloutRoute: typeof RolloutRoute
+  RoutingGuideEnforcementsRoute: typeof RoutingGuideEnforcementsRoute
   RoutingGuidesRoute: typeof RoutingGuidesRoute
   SanctionsRoute: typeof SanctionsRoute
   SapConnectorsRoute: typeof SapConnectorsRoute
@@ -2220,6 +2233,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RolloutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/routing-guide-enforcements': {
+      id: '/routing-guide-enforcements'
+      path: '/routing-guide-enforcements'
+      fullPath: '/routing-guide-enforcements'
+      preLoaderRoute: typeof RoutingGuideEnforcementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/routing-guides': {
       id: '/routing-guides'
       path: '/routing-guides'
@@ -2562,6 +2582,7 @@ const rootRouteChildren: RootRouteChildren = {
   RateLinesRoute: RateLinesRoute,
   RoadRoute: RoadRoute,
   RolloutRoute: RolloutRoute,
+  RoutingGuideEnforcementsRoute: RoutingGuideEnforcementsRoute,
   RoutingGuidesRoute: RoutingGuidesRoute,
   SanctionsRoute: SanctionsRoute,
   SapConnectorsRoute: SapConnectorsRoute,
