@@ -2,6 +2,7 @@
 
 | Data | Plaster | Moduł | Opis |
 |---|---|---|---|
+| 2026-09-11 | 338.0 | EXP2.1 | HITL `working_capital_mark` (capital_kind). Nie DSO SQL. Nastepny: Plan EXP2.2. |
 | 2026-09-11 | 337.0 | EXP7.2 | HITL `registry_poll_mark` (poll_kind). Nie scrape. Nastepny: Plan EXP2.1. |
 | 2026-09-11 | 336.0 | G16 | HITL `billing_mark` (billing_kind). Nie live Stripe. Nastepny: Plan EXP7.2. |
 | 2026-09-11 | 335.0 | G15 | HITL `yard_mark` (yard_kind). Nie live yard. Nastepny: Plan G16. |

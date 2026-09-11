@@ -152,6 +152,7 @@ from app.api import (
     visibility_connectors,
     war_room_marks,
     weather_observations,
+    working_capital_marks,
     yard_marks,
 )
 from app.domain.errors import PermissionDenied
@@ -270,6 +271,7 @@ api_router.include_router(aeo_dossier_marks.router)
 api_router.include_router(yard_marks.router)
 api_router.include_router(billing_marks.router)
 api_router.include_router(registry_poll_marks.router)
+api_router.include_router(working_capital_marks.router)
 api_router.include_router(asns.router)
 api_router.include_router(otif_marks.router)
 api_router.include_router(routing_guide_enforcements.router)

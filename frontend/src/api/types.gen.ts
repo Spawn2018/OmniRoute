@@ -9681,6 +9681,50 @@ export type WeatherObservationResponse = {
 };
 
 /**
+ * WorkingCapitalMarkCreate
+ */
+export type WorkingCapitalMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Capital Kind
+     */
+    capital_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * WorkingCapitalMarkResponse
+ */
+export type WorkingCapitalMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Capital Kind
+     */
+    capital_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * WorkingDayResponse
  */
 export type WorkingDayResponse = {
@@ -15847,6 +15891,49 @@ export type CreateRegistryPollMarkApiV1RegistryPollMarksPostResponses = {
 };
 
 export type CreateRegistryPollMarkApiV1RegistryPollMarksPostResponse = CreateRegistryPollMarkApiV1RegistryPollMarksPostResponses[keyof CreateRegistryPollMarkApiV1RegistryPollMarksPostResponses];
+
+export type ListWorkingCapitalMarksApiV1WorkingCapitalMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/working-capital-marks';
+};
+
+export type ListWorkingCapitalMarksApiV1WorkingCapitalMarksGetResponses = {
+    /**
+     * Response List Working Capital Marks Api V1 Working Capital Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<WorkingCapitalMarkResponse>;
+};
+
+export type ListWorkingCapitalMarksApiV1WorkingCapitalMarksGetResponse = ListWorkingCapitalMarksApiV1WorkingCapitalMarksGetResponses[keyof ListWorkingCapitalMarksApiV1WorkingCapitalMarksGetResponses];
+
+export type CreateWorkingCapitalMarkApiV1WorkingCapitalMarksPostData = {
+    body: WorkingCapitalMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/working-capital-marks';
+};
+
+export type CreateWorkingCapitalMarkApiV1WorkingCapitalMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateWorkingCapitalMarkApiV1WorkingCapitalMarksPostError = CreateWorkingCapitalMarkApiV1WorkingCapitalMarksPostErrors[keyof CreateWorkingCapitalMarkApiV1WorkingCapitalMarksPostErrors];
+
+export type CreateWorkingCapitalMarkApiV1WorkingCapitalMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: WorkingCapitalMarkResponse;
+};
+
+export type CreateWorkingCapitalMarkApiV1WorkingCapitalMarksPostResponse = CreateWorkingCapitalMarkApiV1WorkingCapitalMarksPostResponses[keyof CreateWorkingCapitalMarkApiV1WorkingCapitalMarksPostResponses];
 
 export type ListAsnsApiV1AsnsGetData = {
     body?: never;

@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **338.0** EXP2.1 working capital DSO / cash-at-risk / aging (węższa z kolejki; delta do utworzenia).
+**Następny:** **339.0** EXP2.2 make-or-buy (węższa z kolejki; delta do utworzenia).
 <!-- os-status:end -->
 
 ```mermaid
@@ -614,7 +614,7 @@ Karta: [karty-pol-g2-tender.md](analysis/karty-pol-g2-tender.md). P6 = oferty od
 | **N14** | self-billing podwykonawcy | po F9+D | |
 | F10 | ingest FV HITL + ranking SQL | po F9 + X9 | nigdy auto-link |
 | F11 | książka PP EN+USS+EPO | TO_VERIFY umowa | **≠ e-Doręczenia** (EXP2.19) |
-| **EXP2.1** | working capital: DSO, cash-at-risk, aging | po F1 | nie druga marża |
+| **EXP2.1** | working capital: DSO, cash-at-risk, aging | 338.0 HITL katalog `working_capital_mark` (capital_kind); leftover DSO SQL / druga marża | nie druga marża |
 
 ### Fala C — celna / compliance
 

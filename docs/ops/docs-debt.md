@@ -1,3 +1,4 @@
+- **338.0 leftover:** DSO SQL; cash-at-risk SQL; aging SQL; druga marża; klej F1. 338.0 = HITL `working_capital_mark` (capital_kind).
 - **337.0 leftover:** live CEIDG/KRS/VIES/whitelist; auto notice; scrape; klej M-10. 337.0 = HITL `registry_poll_mark` (poll_kind).
 - **336.0 leftover:** live Stripe; Paddle; platform_usage_daily; limity SQL; klej S53. 336.0 = HITL `billing_mark` (billing_kind).
 - **335.0 leftover:** live yard; WMS; weigh SQL vs VGM; EIR PDF; klej D3+T3. 335.0 = HITL `yard_mark` (yard_kind).

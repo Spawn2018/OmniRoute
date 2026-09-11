@@ -133,6 +133,7 @@ modules =
     app.services.yard_marks
     app.services.billing_marks
     app.services.registry_poll_marks
+    app.services.working_capital_marks
     app.services.freight_audit_marks
     app.services.collaboration_marks
     app.services.exchange_connectors
@@ -540,6 +541,9 @@ forbidden_modules =
     app.services.registry_poll_marks
     app.repositories.registry_poll_marks
     app.models.registry_poll_mark
+    app.services.working_capital_marks
+    app.repositories.working_capital_marks
+    app.models.working_capital_mark
     app.services.freight_audit_marks
     app.repositories.freight_audit_marks
     app.models.freight_audit_mark

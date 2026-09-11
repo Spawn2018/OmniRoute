@@ -846,6 +846,10 @@ class InvalidRegistryPollMark(DomainError):
     """EXP7.2: HITL poll rejestru — nie live scrape."""
 
 
+class InvalidWorkingCapitalMark(DomainError):
+    """EXP2.1: HITL working capital — nie DSO SQL."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 
