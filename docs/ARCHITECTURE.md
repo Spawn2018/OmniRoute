@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **325.0** G4 HITL `ncts_draft`. **Etap:** Plan — wolno `/plan-modul` **G5**. **Następny:** **G5** OOG / lashing / eskort (Plan). Pin po G4. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **325.0** G4 HITL `ncts_draft`. **Etap:** Plan (delta zaakceptowana `/noc`) — wolno `/plaster` **326.0**. **Następny:** **326.0** G5 HITL `oog_mark` (delta `docs/deltas/open/326.0-oog-mark.md`). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

@@ -10,17 +10,17 @@
 
 **Ostatni plaster:** **325.0** G4 HITL `ncts_draft`  
 
-**Etap:** Plan — wolno `/plan-modul` **G5**  
+**Etap:** Plan (delta zaakceptowana `/noc`) — wolno `/plaster` **326.0**  
 
 **Noc:** `/noc 10` do 2026-09-12T10:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).  
 
-**Następny:** **G5** OOG / lashing / eskort (Plan). Pin po G4.  
+**Następny:** **326.0** G5 HITL `oog_mark` (delta `docs/deltas/open/326.0-oog-mark.md`).  
 
-Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44 · extract · CI5 kara SQL · wróżba punktowa · CI6 kwoty · S11 auto-send · EBITDA SQL · egzekucja 409 · MAE SQL · outcome SQL · crm_opportunity · activity · cold auto-send · bank stakeholder · presentation_due · teatr PUESC. Nie zgaduj 71–325.
+Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44 · extract · CI5 kara SQL · wróżba punktowa · CI6 kwoty · S11 auto-send · EBITDA SQL · egzekucja 409 · MAE SQL · outcome SQL · crm_opportunity · activity · cold auto-send · bank stakeholder · presentation_due · teatr PUESC · wymiary OOG. Nie zgaduj 71–326.
 
 
 
-**Spec (jedyna na sesję):** brak — najpierw `/plan-modul` G5.
+**Spec (jedyna na sesję):** [docs/deltas/open/326.0-oog-mark.md](../deltas/open/326.0-oog-mark.md)
 
 
 
@@ -36,4 +36,4 @@ Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow 
 
 
 
-**2026-09-11:** **325.0** zamknięty — HITL `ncts_draft` bez PUESC. Następny: Plan G5.
+**2026-09-11:** Delta **326.0** zaakceptowana (`/noc`) — HITL `oog_mark` bez wymiarów.

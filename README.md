@@ -87,8 +87,8 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **325.0** G4 HITL `ncts_draft`
-- **Etap:** Plan — wolno `/plan-modul` **G5**
-- **Następny:** **G5** OOG / lashing / eskort (Plan). Pin po G4.
+- **Etap:** Plan (delta zaakceptowana `/noc`) — wolno `/plaster` **326.0**
+- **Następny:** **326.0** G5 HITL `oog_mark` (delta `docs/deltas/open/326.0-oog-mark.md`).
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
