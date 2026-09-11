@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefHintField } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { carbonWrite, listCarbonMarks, persistCarbonMark } from "@/lib/tender-carbon-marks-api"
 
@@ -62,13 +62,11 @@ function CarbonSave(args: { organizationId: string | null }) {
           <option value="exempt">exempt</option>
         </select>
       </label>
-      <p className="text-xs text-muted-foreground">source_ref: tenant:manual albo fixture://tender-carbon-mark/…</p>
-      <input
-        aria-label="source_ref znacznika śladu"
-        className="h-9 max-w-lg rounded-md border bg-background px-2 font-mono text-xs"
+      <CatalogSourceRefHintField
+        hint="source_ref: tenant:manual albo fixture://tender-carbon-mark/…"
+        ariaLabel="source_ref znacznika śladu"
         value={draft.originStamp}
-        onChange={(change) => setDraft({ ...draft, originStamp: change.target.value })}
-        required
+        onChange={(originStamp) => setDraft({ ...draft, originStamp })}
       />
       <Button type="submit" disabled={persist.isPending || !args.organizationId}>
         Zapisz znacznik śladu

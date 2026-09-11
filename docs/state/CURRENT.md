@@ -8,19 +8,19 @@
 
 
 
-**Ostatni plaster:** **294.0** CT7 `visibility_connector` tokeny `fourkites`|`shippeo`  
+**Ostatni plaster:** **295.0** `/refaktor` CatalogSourceRefHintField (paper-form #2)  
 
 **Etap:** Refaktor  
 
 **Noc:** `/noc 17` do 2026-09-11T17:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).  
 
-**Następny:** leftover paper-form `source_ref` (`CatalogSourceRefHintField`) — lane-pattern / monitoring-scheme / tender-* (Q-E1).  
+**Następny:** leftover paper-form `source_ref` — tender-ted / award-review / bid-stance (Q-E1).  
 
-Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44/FourKites/Shippeo. Nie CI1 extract. Nie zgaduj 71–294.
+Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44/FourKites/Shippeo. Nie CI1 extract. Nie zgaduj 71–295.
 
 
 
-**Spec (jedyna na sesję):** brak — `/refaktor` max 3 ruchy na paper-form `source_ref`.
+**Spec (jedyna na sesję):** brak — `/refaktor` max 3 ruchy.
 
 
 
@@ -36,5 +36,5 @@ Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow 
 
 
 
-**2026-09-11:** **294.0** zamknięty — tokeny FourKites/Shippeo na `visibility_connector`. Następne = `/refaktor` paper-form.
+**2026-09-11:** **295.0** zamknięty — lane-pattern / monitoring / tender-carbon na HintField. Następne = `/refaktor` tender paper-form.
 

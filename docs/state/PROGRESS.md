@@ -2,6 +2,7 @@
 
 | Data | Plaster | Moduł | Opis |
 |---|---|---|---|
+| 2026-09-11 | 295.0 | UI | `/refaktor`: HintField na lane-pattern/monitoring/tender-carbon. Nastepny: tender paper-form. |
 | 2026-09-11 | 294.0 | CT7 | visibility_connector tokeny fourkites/shippeo. Nie live. Nastepny: paper-form source_ref /refaktor. |
 | 2026-09-11 | Plan 294.0 | CT7 | visibility_connector tokeny fourkites/shippeo, nie live. Delta zaakceptowana (`/noc`). Nastepny: kod 294.0. |
 | 2026-09-11 | 293.0 | UI | `/refaktor`: `CatalogSourceRefHintField` na cash/kreptd/party-doc. Nie mixin. Następny: leftover CT/pin Plan. |

@@ -1,5 +1,6 @@
+- **295.0 leftover:** paper-form tender-ted / award-review / bid-stance / prospect…; label-form circle/lane-km. 295.0 = HintField na lane-pattern/monitoring/tender-carbon.
 - **294.0 leftover:** live p44 / FourKites / Shippeo HTTP (TO_VERIFY umowa); „drugi vendor jako prawda” live; CT8 AIS; U1 masowy; wspólny SELECT; CT2. 294.0 = tokeny `fourkites`|`shippeo` na istniejącej tabeli.
-- **293.0 leftover:** paper-form `source_ref` poza cash/kreptd/party-doc (lane-pattern, monitoring-scheme, tender-*); label-form circle/lane-km/plan-snapshot. 293.0 = `CatalogSourceRefHintField` na trzech formularzach.
+- **293.0 leftover:** paper-form DONE częściowo 295.0 (lane/monitoring/carbon). Zostaje tender-* reszta + label-form. 293.0 = HintField na cash/kreptd/party-doc.
 - **292.0 leftover:** paper-form DONE częściowo 293.0. Zostaje reszta paper-form + label-form HITL; `parse*` w `*-api.ts`; EXPLAIN `ix_resource_org_kind` lokalnie. 292.0 = `CatalogSourceRefField` na trzech formularzach.
 - **291.0 leftover:** U1 masowy; qty float; wspólny SELECT; auto przy POST asn (zakaz); CT2; CT5/CT8 live. 291.0 = HITL promote. Lock: `SHIPPED_CHARGE_ROUTES["291.0"]`.
 - **290.0 leftover:** wspólny SELECT; auto shipment HITL DONE 291.0; CT2; CT5/CT8 live; live EDI. 290.0 = lane/mode na shipment. Lock: `SHIPPED_CHARGE_ROUTES["290.0"]`.

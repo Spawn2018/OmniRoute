@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefHintField } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { listSchemeMarks, persistSchemeMark, schemeWrite } from "@/lib/monitoring-schemes-api"
 
@@ -47,15 +47,11 @@ function SchemeSave(args: { organizationId: string | null }) {
           required
         />
       </label>
-      <p className="text-xs text-muted-foreground">
-        source_ref: tenant:manual albo fixture://monitoring-scheme/…
-      </p>
-      <input
-        aria-label="source_ref schematu monitoringu"
-        className="h-9 max-w-lg rounded-md border bg-background px-2 font-mono text-xs"
+      <CatalogSourceRefHintField
+        hint="source_ref: tenant:manual albo fixture://monitoring-scheme/…"
+        ariaLabel="source_ref schematu monitoringu"
         value={draft.originStamp}
-        onChange={(change) => setDraft({ ...draft, originStamp: change.target.value })}
-        required
+        onChange={(originStamp) => setDraft({ ...draft, originStamp })}
       />
       <Button type="submit" disabled={persist.isPending || !args.organizationId}>
         Zapisz schemat monitoringu
