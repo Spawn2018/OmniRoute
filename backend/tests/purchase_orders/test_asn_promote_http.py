@@ -1,3 +1,4 @@
+from decimal import Decimal
 from unittest.mock import AsyncMock
 from uuid import UUID, uuid4
 
@@ -25,11 +26,8 @@ class AllowAllAuthz:
         return True
 
 
-@pytest.fixture
-def promote_http(monkeypatch: pytest.MonkeyPatch) -> object:
-    from decimal import Decimal
-
-    asn = Asn(
+def _sample_asn() -> Asn:
+    return Asn(
         id=uuid4(),
         organization_id=uuid4(),
         purchase_order_id=uuid4(),
@@ -41,9 +39,12 @@ def promote_http(monkeypatch: pytest.MonkeyPatch) -> object:
         source_ref="fixture://asn/1",
         created_by=uuid4(),
     )
-    quote = Quotation(
+
+
+def _sample_quote(organization_id: UUID) -> Quotation:
+    return Quotation(
         id=uuid4(),
-        organization_id=asn.organization_id,
+        organization_id=organization_id,
         charge_code="THC",
         rate_line_id=uuid4(),
         amount=Decimal("10.0000"),
@@ -51,8 +52,15 @@ def promote_http(monkeypatch: pytest.MonkeyPatch) -> object:
         source_ref="tariff://a",
         party_id=uuid4(),
     )
-    shipments: list[Shipment] = []
 
+
+def _bind_promote(
+    monkeypatch: pytest.MonkeyPatch,
+    *,
+    asn: Asn,
+    quote: Quotation,
+    shipments: list[Shipment],
+) -> None:
     class _AsnDesk:
         async def get_notice(self, asn_id: UUID) -> Asn:
             if asn_id != asn.id:
@@ -102,18 +110,9 @@ def promote_http(monkeypatch: pytest.MonkeyPatch) -> object:
                 )()
             ]
 
-    class _EnfDesk:
+    class _EmptyMarks:
         async def list_marks(self) -> list[object]:
             return []
-
-    class _MatchDesk:
-        async def list_marks(self) -> list[object]:
-            return []
-
-    async def _session() -> object:
-        handle = AsyncMock()
-        handle.commit = AsyncMock()
-        return handle
 
     monkeypatch.setattr("app.api.asns.AsnService", lambda _s: _AsnDesk())
     monkeypatch.setattr("app.api.asns.QuotationService", lambda _s: _QuoteDesk())
@@ -121,12 +120,26 @@ def promote_http(monkeypatch: pytest.MonkeyPatch) -> object:
     monkeypatch.setattr("app.api.asns.RoutingGuideService", lambda _s: _GuideDesk())
     monkeypatch.setattr(
         "app.api.asns.RoutingGuideEnforcementService",
-        lambda _s: _EnfDesk(),
+        lambda _s: _EmptyMarks(),
     )
     monkeypatch.setattr(
         "app.api.asns.RoutingGuideMatchService",
-        lambda _s: _MatchDesk(),
+        lambda _s: _EmptyMarks(),
     )
+
+
+@pytest.fixture
+def promote_http(monkeypatch: pytest.MonkeyPatch) -> object:
+    asn = _sample_asn()
+    quote = _sample_quote(asn.organization_id)
+    shipments: list[Shipment] = []
+    _bind_promote(monkeypatch, asn=asn, quote=quote, shipments=shipments)
+
+    async def _session() -> object:
+        handle = AsyncMock()
+        handle.commit = AsyncMock()
+        return handle
+
     set_authz_checker(AllowAllAuthz())
     app.dependency_overrides[require_tenant_session] = _session
     yield TestClient(app), asn, quote, shipments
