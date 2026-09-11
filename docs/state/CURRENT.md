@@ -12,7 +12,7 @@
 
 **Następny:** **345.0** EXP2.8 cutoffy rozdzielone (węższa z kolejki; delta do utworzenia).
 
-Park: schedule live · cutoff live. Nie zgaduj 71–345.
+Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44 · extract · CI5 kara SQL · wróżba punktowa · CI6 kwoty · S11 auto-send · EBITDA SQL · egzekucja 409 · MAE SQL · outcome SQL · crm_opportunity · activity · cold auto-send · bank stakeholder · presentation_due · teatr PUESC · wymiary OOG · LLM-VRP · solver OR · kara kierowcy · work_order · F1 KSeF live · eIDAS crypto · wipe · drugi tenant · company_id FK · WMS e-com · SENT-UE · filer live · silent write · zestaw party_document · yard live · Stripe live · registry scrape · druga marża WC · make-or-buy silnik · allocation SQL · cargo_cover live · sanctions live · subcontract live · schedule live · cutoff live. Nie zgaduj 71–345.
 
 **Spec (jedyna na sesję):** brak otwartej delty — `/plan-modul` EXP2.8.
 
