@@ -103,14 +103,6 @@ def _organization_ops_catalog_relations() -> dict[str, Userset]:
         "can_manage_otif_marks": _member(),
         "can_manage_sap_connectors": _member(),
         "can_manage_capa_marks": _member(),
-        "can_manage_sla_clauses": _member(),
-        "can_manage_delay_forecasts": _member(),
-        "can_manage_remediation_options": _member(),
-        "can_manage_impact_scenarios": _member(),
-        "can_manage_clause_notices": _member(),
-        "can_manage_calibration_marks": _member(),
-        "can_manage_repair_playbooks": _member(),
-        "can_manage_spend_marks": _member(),
         "can_manage_freight_audit_marks": _member(),
         "can_manage_collaboration_marks": _member(),
         "can_manage_routing_guide_enforcements": _member(),
@@ -125,6 +117,19 @@ def _organization_ops_catalog_relations() -> dict[str, Userset]:
         "can_manage_lane_kms": _member(),
         "can_manage_weather_observations": _member(),
         "can_manage_free_time_clocks": _member(),
+    }
+
+
+def _organization_ci_catalog_relations() -> dict[str, Userset]:
+    return {
+        "can_manage_sla_clauses": _member(),
+        "can_manage_delay_forecasts": _member(),
+        "can_manage_remediation_options": _member(),
+        "can_manage_impact_scenarios": _member(),
+        "can_manage_clause_notices": _member(),
+        "can_manage_calibration_marks": _member(),
+        "can_manage_repair_playbooks": _member(),
+        "can_manage_spend_marks": _member(),
     }
 
 
@@ -156,6 +161,7 @@ def _organization_relations() -> dict[str, Userset]:
         **_organization_core_relations(),
         **_organization_ops_relations(),
         **_organization_ops_catalog_relations(),
+        **_organization_ci_catalog_relations(),
         **_organization_tender_relations(),
     }
 
