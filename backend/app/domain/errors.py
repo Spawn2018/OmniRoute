@@ -842,6 +842,10 @@ class InvalidBillingMark(DomainError):
     """G16: HITL billing SaaS — nie live Stripe."""
 
 
+class InvalidRegistryPollMark(DomainError):
+    """EXP7.2: HITL poll rejestru — nie live scrape."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

@@ -104,6 +104,7 @@ from app.api import (
     rank_marks,
     rate_cards,
     rate_lines,
+    registry_poll_marks,
     remediation_options,
     repair_playbooks,
     resources,
@@ -268,6 +269,7 @@ api_router.include_router(po_lines.router)
 api_router.include_router(aeo_dossier_marks.router)
 api_router.include_router(yard_marks.router)
 api_router.include_router(billing_marks.router)
+api_router.include_router(registry_poll_marks.router)
 api_router.include_router(asns.router)
 api_router.include_router(otif_marks.router)
 api_router.include_router(routing_guide_enforcements.router)

@@ -6823,6 +6823,50 @@ export type RateLineSupersede = {
 };
 
 /**
+ * RegistryPollMarkCreate
+ */
+export type RegistryPollMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Poll Kind
+     */
+    poll_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * RegistryPollMarkResponse
+ */
+export type RegistryPollMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Poll Kind
+     */
+    poll_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * RemediationOptionCreate
  */
 export type RemediationOptionCreate = {
@@ -15760,6 +15804,49 @@ export type CreateBillingMarkApiV1BillingMarksPostResponses = {
 };
 
 export type CreateBillingMarkApiV1BillingMarksPostResponse = CreateBillingMarkApiV1BillingMarksPostResponses[keyof CreateBillingMarkApiV1BillingMarksPostResponses];
+
+export type ListRegistryPollMarksApiV1RegistryPollMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/registry-poll-marks';
+};
+
+export type ListRegistryPollMarksApiV1RegistryPollMarksGetResponses = {
+    /**
+     * Response List Registry Poll Marks Api V1 Registry Poll Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<RegistryPollMarkResponse>;
+};
+
+export type ListRegistryPollMarksApiV1RegistryPollMarksGetResponse = ListRegistryPollMarksApiV1RegistryPollMarksGetResponses[keyof ListRegistryPollMarksApiV1RegistryPollMarksGetResponses];
+
+export type CreateRegistryPollMarkApiV1RegistryPollMarksPostData = {
+    body: RegistryPollMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/registry-poll-marks';
+};
+
+export type CreateRegistryPollMarkApiV1RegistryPollMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateRegistryPollMarkApiV1RegistryPollMarksPostError = CreateRegistryPollMarkApiV1RegistryPollMarksPostErrors[keyof CreateRegistryPollMarkApiV1RegistryPollMarksPostErrors];
+
+export type CreateRegistryPollMarkApiV1RegistryPollMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: RegistryPollMarkResponse;
+};
+
+export type CreateRegistryPollMarkApiV1RegistryPollMarksPostResponse = CreateRegistryPollMarkApiV1RegistryPollMarksPostResponses[keyof CreateRegistryPollMarkApiV1RegistryPollMarksPostResponses];
 
 export type ListAsnsApiV1AsnsGetData = {
     body?: never;

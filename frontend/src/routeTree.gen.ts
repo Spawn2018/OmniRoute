@@ -112,6 +112,7 @@ import { Route as RailRouteImport } from './routes/rail'
 import { Route as RankMarksRouteImport } from './routes/rank-marks'
 import { Route as RateCardsRouteImport } from './routes/rate-cards'
 import { Route as RateLinesRouteImport } from './routes/rate-lines'
+import { Route as RegistryPollMarksRouteImport } from './routes/registry-poll-marks'
 import { Route as RemediationOptionsRouteImport } from './routes/remediation-options'
 import { Route as RepairPlaybooksRouteImport } from './routes/repair-playbooks'
 import { Route as RoadRouteImport } from './routes/road'
@@ -673,6 +674,11 @@ const RateLinesRoute = RateLinesRouteImport.update({
   path: '/rate-lines',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RegistryPollMarksRoute = RegistryPollMarksRouteImport.update({
+  id: '/registry-poll-marks',
+  path: '/registry-poll-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RemediationOptionsRoute = RemediationOptionsRouteImport.update({
   id: '/remediation-options',
   path: '/remediation-options',
@@ -1004,6 +1010,7 @@ export interface FileRoutesByFullPath {
   '/rank-marks': typeof RankMarksRoute
   '/rate-cards': typeof RateCardsRoute
   '/rate-lines': typeof RateLinesRoute
+  '/registry-poll-marks': typeof RegistryPollMarksRoute
   '/remediation-options': typeof RemediationOptionsRoute
   '/repair-playbooks': typeof RepairPlaybooksRoute
   '/road': typeof RoadRoute
@@ -1154,6 +1161,7 @@ export interface FileRoutesByTo {
   '/rank-marks': typeof RankMarksRoute
   '/rate-cards': typeof RateCardsRoute
   '/rate-lines': typeof RateLinesRoute
+  '/registry-poll-marks': typeof RegistryPollMarksRoute
   '/remediation-options': typeof RemediationOptionsRoute
   '/repair-playbooks': typeof RepairPlaybooksRoute
   '/road': typeof RoadRoute
@@ -1305,6 +1313,7 @@ export interface FileRoutesById {
   '/rank-marks': typeof RankMarksRoute
   '/rate-cards': typeof RateCardsRoute
   '/rate-lines': typeof RateLinesRoute
+  '/registry-poll-marks': typeof RegistryPollMarksRoute
   '/remediation-options': typeof RemediationOptionsRoute
   '/repair-playbooks': typeof RepairPlaybooksRoute
   '/road': typeof RoadRoute
@@ -1457,6 +1466,7 @@ export interface FileRouteTypes {
     | '/rank-marks'
     | '/rate-cards'
     | '/rate-lines'
+    | '/registry-poll-marks'
     | '/remediation-options'
     | '/repair-playbooks'
     | '/road'
@@ -1607,6 +1617,7 @@ export interface FileRouteTypes {
     | '/rank-marks'
     | '/rate-cards'
     | '/rate-lines'
+    | '/registry-poll-marks'
     | '/remediation-options'
     | '/repair-playbooks'
     | '/road'
@@ -1757,6 +1768,7 @@ export interface FileRouteTypes {
     | '/rank-marks'
     | '/rate-cards'
     | '/rate-lines'
+    | '/registry-poll-marks'
     | '/remediation-options'
     | '/repair-playbooks'
     | '/road'
@@ -1908,6 +1920,7 @@ export interface RootRouteChildren {
   RankMarksRoute: typeof RankMarksRoute
   RateCardsRoute: typeof RateCardsRoute
   RateLinesRoute: typeof RateLinesRoute
+  RegistryPollMarksRoute: typeof RegistryPollMarksRoute
   RemediationOptionsRoute: typeof RemediationOptionsRoute
   RepairPlaybooksRoute: typeof RepairPlaybooksRoute
   RoadRoute: typeof RoadRoute
@@ -2678,6 +2691,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RateLinesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/registry-poll-marks': {
+      id: '/registry-poll-marks'
+      path: '/registry-poll-marks'
+      fullPath: '/registry-poll-marks'
+      preLoaderRoute: typeof RegistryPollMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/remediation-options': {
       id: '/remediation-options'
       path: '/remediation-options'
@@ -3100,6 +3120,7 @@ const rootRouteChildren: RootRouteChildren = {
   RankMarksRoute: RankMarksRoute,
   RateCardsRoute: RateCardsRoute,
   RateLinesRoute: RateLinesRoute,
+  RegistryPollMarksRoute: RegistryPollMarksRoute,
   RemediationOptionsRoute: RemediationOptionsRoute,
   RepairPlaybooksRoute: RepairPlaybooksRoute,
   RoadRoute: RoadRoute,

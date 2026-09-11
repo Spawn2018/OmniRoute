@@ -10410,6 +10410,80 @@
         ]
       }
     },
+    "/api/v1/registry-poll-marks": {
+      "get": {
+        "tags": [
+          "registry-poll-marks"
+        ],
+        "summary": "List Registry Poll Marks",
+        "operationId": "list_registry_poll_marks_api_v1_registry_poll_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/RegistryPollMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Registry Poll Marks Api V1 Registry Poll Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "registry-poll-marks"
+        ],
+        "summary": "Create Registry Poll Mark",
+        "operationId": "create_registry_poll_mark_api_v1_registry_poll_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistryPollMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegistryPollMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/asns": {
       "get": {
         "tags": [
@@ -26190,6 +26264,65 @@
           "source_ref"
         ],
         "title": "RateLineSupersede"
+      },
+      "RegistryPollMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "poll_kind": {
+            "type": "string",
+            "title": "Poll Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "poll_kind",
+          "source_ref"
+        ],
+        "title": "RegistryPollMarkCreate"
+      },
+      "RegistryPollMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "poll_kind": {
+            "type": "string",
+            "title": "Poll Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "poll_kind",
+          "source_ref"
+        ],
+        "title": "RegistryPollMarkResponse"
       },
       "RemediationOptionCreate": {
         "properties": {
