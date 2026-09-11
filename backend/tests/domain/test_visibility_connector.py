@@ -11,6 +11,14 @@ def test_parse_visibility_row_accepts_p44_manual() -> None:
     assert (code, kind, origin) == ("p44_desk_pl", "p44", "tenant:manual")
 
 
+@pytest.mark.parametrize("vendor", ["fourkites", "shippeo", "FourKites", "SHIPPEO"])
+def test_parse_visibility_row_accepts_named_vendors(vendor: str) -> None:
+    code, kind, origin = parse_visibility_row("ocean_watch", vendor, "tenant:manual")
+    assert code == "ocean_watch"
+    assert kind == vendor.casefold()
+    assert origin == "tenant:manual"
+
+
 def test_parse_visibility_row_accepts_fixture_prefix() -> None:
     parsed = parse_visibility_row("ocean_watch", "p44", "fixture://visibility/pl-1")
     assert parsed[2] == "fixture://visibility/pl-1"
@@ -23,7 +31,7 @@ def test_parse_visibility_row_rejects_bad_code() -> None:
         parse_visibility_row(1, "p44", "tenant:manual")
 
 
-@given(st.sampled_from(["", "fourkites", "shippeo", "ais", "live"]))
+@given(st.sampled_from(["", "ais", "live", "project44", "four_kites"]))
 def test_parse_visibility_row_rejects_foreign_vendors(raw: str) -> None:
     with pytest.raises(InvalidVisibilityConnector, match="system"):
         parse_visibility_row("p44_desk_pl", raw, "tenant:manual")

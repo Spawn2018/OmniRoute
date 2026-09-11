@@ -50,7 +50,7 @@ export function VisibilityConnectorDesk() {
     <section className="flex flex-col gap-5" data-visibility-fixture="board">
       <CatalogHeading
         title="Konektor widoczności"
-        subtitle="CT7 visibility_connector · token p44 · nie live track · nie AIS"
+        subtitle="CT7 visibility_connector · tokeny p44/fourkites/shippeo · nie live track · nie AIS"
       />
       {!ready ? <TenantSessionNotice /> : null}
       {ready ? (

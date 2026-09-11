@@ -20,8 +20,8 @@ describe("visibilityFixtureBody", () => {
   })
 })
 
-describe("visibility_connector surface for 275.0", () => {
-  it("records HITL p44 fixture on /visibility-connectors without secret fields", () => {
+describe("visibility_connector surface for 275.0/294.0", () => {
+  it("records HITL vendor tokens on /visibility-connectors without secret fields", () => {
     const page = src("features/visibility-connector/catalog-page.tsx")
     const panel = src("features/visibility-connector/visibility-connector-form.tsx")
     const client = src("lib/visibility-connectors-api.ts")
@@ -35,6 +35,8 @@ describe("visibility_connector surface for 275.0", () => {
     expect(panel).toContain("persistVisibilityConnector")
     expect(panel).toContain("Zapisz konektor widoczności")
     expect(panel).toContain('type="radio"')
+    expect(panel).toContain("fourkites")
+    expect(panel).toContain("shippeo")
     expect(panel).not.toContain("<Money")
     expect(panel).not.toContain("parseFloat")
     expect(panel).not.toContain("api_key")

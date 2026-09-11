@@ -1,6 +1,7 @@
 # BC visibility_connector (CT7)
 
-HITL katalog konektora widoczności per tenant. connector_code + system_kind `p44` + source_ref. Nie live HTTP. Nie sekrety. Nie AIS.
+HITL katalog konektora widoczności per tenant. connector_code + system_kind
+`p44`|`fourkites`|`shippeo` + source_ref. Nie live HTTP. Nie sekrety. Nie AIS.
 
 ## Dozwolone zależności
 - `app.models.visibility_connector`

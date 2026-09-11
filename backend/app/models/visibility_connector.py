@@ -25,12 +25,15 @@ class VisibilityConnector(Base, TimestampMixin):
             "connector_code ~ '^[a-z][a-z0-9_]{1,31}$'",
             name="ck_visibility_connector_code",
         ),
-        CheckConstraint("system_kind IN ('p44')", name="ck_visibility_connector_kind"),
+        CheckConstraint(
+            "system_kind IN ('p44', 'fourkites', 'shippeo')",
+            name="ck_visibility_connector_kind",
+        ),
         Index("ix_visibility_connector_organization_id", "organization_id"),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
-    # RLS: fixture vendora widoczności tego tenanta — p44 to token, nie live call.
+    # RLS: fixture vendora widoczności — token marki, nie live call.
     organization_id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True), ForeignKey("organization.id", ondelete="RESTRICT"), nullable=False
     )

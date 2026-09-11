@@ -1,7 +1,10 @@
 from pathlib import Path
 
 _ROOT = Path(__file__).resolve().parents[3]
-_MIGRATION = _ROOT / "backend" / "alembic" / "versions" / "208_visibility_connector.py"
+_MIGRATION_208 = _ROOT / "backend" / "alembic" / "versions" / "208_visibility_connector.py"
+_MIGRATION_224 = (
+    _ROOT / "backend" / "alembic" / "versions" / "224_visibility_connector_vendors.py"
+)
 _SERVICE = (
     _ROOT
     / "backend"
@@ -25,7 +28,7 @@ _BANNED = (
 
 
 def test_migration_208_creates_visibility_connector_and_forces_rls() -> None:
-    source = _MIGRATION.read_text(encoding="utf-8")
+    source = _MIGRATION_208.read_text(encoding="utf-8")
     assert 'revision: str = "208_visibility_connector"' in source
     assert 'down_revision: str | None = "207_tenant_contract_kek"' in source
     assert '"visibility_connector"' in source
@@ -40,6 +43,19 @@ def test_migration_208_creates_visibility_connector_and_forces_rls() -> None:
         assert banned not in source
     assert "def downgrade" in source
     assert "drop_table" in source.split("def downgrade")[1]
+
+
+def test_migration_224_expands_visibility_vendor_tokens() -> None:
+    source = _MIGRATION_224.read_text(encoding="utf-8")
+    assert 'revision: str = "224_visibility_connector_vendors"' in source
+    assert 'down_revision: str | None = "223_shipment_asn_id"' in source
+    assert "fourkites" in source
+    assert "shippeo" in source
+    assert "p44" in source
+    assert "ck_visibility_connector_kind" in source
+    for banned in ("httpx", "float(", "api_key", "BYTEA", "buy_amount"):
+        assert banned not in source
+    assert "def downgrade" in source
 
 
 def test_visibility_service_is_catalog_and_isolated() -> None:

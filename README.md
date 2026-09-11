@@ -86,10 +86,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **293.0** `/refaktor` CatalogSourceRefHintField (Q-E1 leftover)
-- **Etap:** Plan (delta 294.0 zaakceptowana `/noc` — wolno `/plaster`)
-- **Następny:** **294.0** CT7 `visibility_connector` tokeny `fourkites`|`shippeo` (nie live).
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **294.0** CT7 `visibility_connector` tokeny `fourkites`|`shippeo`
+- **Etap:** Refaktor
+- **Następny:** leftover paper-form `source_ref` (`CatalogSourceRefHintField`) — lane-pattern / monitoring-scheme / tender-* (Q-E1).
+- **Komenda teraz:** `/refaktor` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

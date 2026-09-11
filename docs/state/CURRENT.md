@@ -8,19 +8,19 @@
 
 
 
-**Ostatni plaster:** **293.0** `/refaktor` CatalogSourceRefHintField (Q-E1 leftover)  
+**Ostatni plaster:** **294.0** CT7 `visibility_connector` tokeny `fourkites`|`shippeo`  
 
-**Etap:** Plan (delta 294.0 zaakceptowana `/noc` — wolno `/plaster`)  
+**Etap:** Refaktor  
 
 **Noc:** `/noc 17` do 2026-09-11T17:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).  
 
-**Następny:** **294.0** CT7 `visibility_connector` tokeny `fourkites`|`shippeo` (nie live).  
+**Następny:** leftover paper-form `source_ref` (`CatalogSourceRefHintField`) — lane-pattern / monitoring-scheme / tender-* (Q-E1).  
 
-Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44 · paper-form source_ref (reszta). Nie CI1 extract. Nie zgaduj 71–294.
+Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44/FourKites/Shippeo. Nie CI1 extract. Nie zgaduj 71–294.
 
 
 
-**Spec (jedyna na sesję):** [docs/deltas/open/294.0-visibility-connector-vendors.md](../deltas/open/294.0-visibility-connector-vendors.md)
+**Spec (jedyna na sesję):** brak — `/refaktor` max 3 ruchy na paper-form `source_ref`.
 
 
 
@@ -36,5 +36,5 @@ Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow 
 
 
 
-**2026-09-11:** Delta **294.0** zaakceptowana (`/noc`). Następne = kod 294.0.
+**2026-09-11:** **294.0** zamknięty — tokeny FourKites/Shippeo na `visibility_connector`. Następne = `/refaktor` paper-form.
 

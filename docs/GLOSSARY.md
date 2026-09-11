@@ -178,7 +178,7 @@
 | konektor slotu | terminal_slot_connector | T8 HITL 269.0 mode + godziny N4 + source_ref; nie booking; nie confirmed z formularza; nie gwarancja |
 | konektor IdP | idp_connector | S53 HITL 270.0 kod + provider `auth0` + source_ref; nie login; nie live HTTP; nie sekrety |
 | konektor giełdy | exchange_connector | S55 HITL 271.0 kod + kind `trans_eu` + source_ref; nie live HTTP; nie SPA; nie sekrety |
-| konektor widoczności | visibility_connector | CT7 HITL 275.0 kod + kind `p44` + source_ref; nie live HTTP; nie sekrety; nie AIS |
+| konektor widoczności | visibility_connector | CT7 HITL 275.0/294.0 kod + kind `p44`\|`fourkites`\|`shippeo` + source_ref; nie live HTTP; nie sekrety; nie AIS |
 | zamówienie zakupu | purchase_order | CT1 HITL 276.0 nagłówek `po_code` + opcjonalny `plant_label` + source_ref; nie shipment |
 | linia zamówienia zakupu | po_line | CT1 HITL 277.0 `line_code` + FK nagłówka + `sku_code` + `qty` Decimal + `uom_code` + etykiety; nie kwota |
 | awizo wysyłki | asn | CT1 HITL 278.0 `asn_code` + FK nagłówka + etykiety; nie live EDI 856; nie auto shipment |

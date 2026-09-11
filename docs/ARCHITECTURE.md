@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **293.0** `/refaktor` CatalogSourceRefHintField (Q-E1 leftover). **Etap:** Plan (delta 294.0 zaakceptowana `/noc` — wolno `/plaster`). **Następny:** **294.0** CT7 `visibility_connector` tokeny `fourkites`|`shippeo` (nie live). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **294.0** CT7 `visibility_connector` tokeny `fourkites`|`shippeo`. **Etap:** Refaktor. **Następny:** leftover paper-form `source_ref` (`CatalogSourceRefHintField`) — lane-pattern / monitoring-scheme / tender-* (Q-E1). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

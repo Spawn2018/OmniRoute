@@ -10,6 +10,8 @@ type VisibilityDraft = {
   originPointer: string
 }
 
+const VENDOR_TOKENS = ["p44", "fourkites", "shippeo"] as const
+
 const EMPTY_FIXTURE: VisibilityDraft = {
   deskSlug: "p44_desk_pl",
   vendorToken: "p44",
@@ -36,8 +38,8 @@ export function VisibilityConnectorSave(args: { organizationId: string | null })
       }}
     >
       <p className="text-xs text-muted-foreground">
-        Fixture vendora widoczności: kod snake i token `p44`. To nie jest live track i nie
-        przyjmuje klucza API.
+        Fixture vendora widoczności: kod snake i token marki (`p44` / `fourkites` / `shippeo`).
+        To nie jest live track i nie przyjmuje klucza API.
       </p>
       <label className="grid gap-1 text-xs">
         Kod konektora widoczności (snake 2–32)
@@ -50,18 +52,20 @@ export function VisibilityConnectorSave(args: { organizationId: string | null })
         />
       </label>
       <fieldset className="grid gap-1 text-xs">
-        <legend>Vendor (jedyny token w tym katalogu)</legend>
-        <label className="flex items-center gap-2 font-mono">
-          <input
-            aria-label="Vendor p44"
-            checked={draft.vendorToken === "p44"}
-            name="visibility-vendor"
-            onChange={() => setDraft({ ...draft, vendorToken: "p44" })}
-            type="radio"
-            value="p44"
-          />
-          p44
-        </label>
+        <legend>Vendor (token HITL, nie live)</legend>
+        {VENDOR_TOKENS.map((token) => (
+          <label key={token} className="flex items-center gap-2 font-mono">
+            <input
+              aria-label={`Vendor ${token}`}
+              checked={draft.vendorToken === token}
+              name="visibility-vendor"
+              onChange={() => setDraft({ ...draft, vendorToken: token })}
+              type="radio"
+              value={token}
+            />
+            {token}
+          </label>
+        ))}
       </fieldset>
       <label className="grid gap-1 text-xs">
         Pochodzenie (`tenant:manual` albo `fixture://visibility/…`)

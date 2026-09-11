@@ -3,7 +3,7 @@ import re
 from app.domain.errors import InvalidVisibilityConnector
 
 _SNAKE = re.compile(r"^[a-z][a-z0-9_]{1,31}$")
-_VENDOR = "p44"
+_VENDORS = frozenset({"p44", "fourkites", "shippeo"})
 _MANUAL = "tenant:manual"
 _PREFIX = "fixture://visibility/"
 _REF_CAP = 256
@@ -18,7 +18,7 @@ def parse_visibility_row(code: object, kind: object, origin: object) -> tuple[st
     if type(kind) is not str:
         raise InvalidVisibilityConnector("system musi być tekstem")
     vendor = kind.strip().casefold()
-    if vendor != _VENDOR:
+    if vendor not in _VENDORS:
         raise InvalidVisibilityConnector("system: allowlista HITL")
     if type(origin) is not str:
         raise InvalidVisibilityConnector("obce source_ref")

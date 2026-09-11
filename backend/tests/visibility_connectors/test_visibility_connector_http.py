@@ -123,6 +123,22 @@ def test_http_create_bad_code_is_400(visibility_http: object) -> None:
 
 
 @pytest.mark.parametrize("vendor", ["fourkites", "shippeo"])
+def test_http_create_named_vendor_ok(visibility_http: object, vendor: str) -> None:
+    client, _desk = visibility_http
+    response = client.post(
+        "/api/v1/visibility-connectors",
+        headers=bearer_auth_headers(),
+        json=_payload(
+            connector_code=f"{vendor}_desk",
+            system_kind=vendor,
+            source_ref=f"fixture://visibility/{vendor}-1",
+        ),
+    )
+    assert response.status_code == 201
+    assert response.json()["system_kind"] == vendor
+
+
+@pytest.mark.parametrize("vendor", ["ais", "live", "project44"])
 def test_http_create_foreign_vendor_is_400(visibility_http: object, vendor: str) -> None:
     client, _desk = visibility_http
     response = client.post(
