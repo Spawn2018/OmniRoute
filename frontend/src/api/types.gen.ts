@@ -2769,6 +2769,50 @@ export type DocumentTemplateResponse = {
 };
 
 /**
+ * EdiMapMarkCreate
+ */
+export type EdiMapMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Map Kind
+     */
+    map_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * EdiMapMarkResponse
+ */
+export type EdiMapMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Map Kind
+     */
+    map_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * EdiMessageCreate
  */
 export type EdiMessageCreate = {
@@ -14479,6 +14523,49 @@ export type CreateFraudFlagApiV1FraudFlagsPostResponses = {
 };
 
 export type CreateFraudFlagApiV1FraudFlagsPostResponse = CreateFraudFlagApiV1FraudFlagsPostResponses[keyof CreateFraudFlagApiV1FraudFlagsPostResponses];
+
+export type ListEdiMapMarksApiV1EdiMapMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/edi-map-marks';
+};
+
+export type ListEdiMapMarksApiV1EdiMapMarksGetResponses = {
+    /**
+     * Response List Edi Map Marks Api V1 Edi Map Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<EdiMapMarkResponse>;
+};
+
+export type ListEdiMapMarksApiV1EdiMapMarksGetResponse = ListEdiMapMarksApiV1EdiMapMarksGetResponses[keyof ListEdiMapMarksApiV1EdiMapMarksGetResponses];
+
+export type CreateEdiMapMarkApiV1EdiMapMarksPostData = {
+    body: EdiMapMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/edi-map-marks';
+};
+
+export type CreateEdiMapMarkApiV1EdiMapMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateEdiMapMarkApiV1EdiMapMarksPostError = CreateEdiMapMarkApiV1EdiMapMarksPostErrors[keyof CreateEdiMapMarkApiV1EdiMapMarksPostErrors];
+
+export type CreateEdiMapMarkApiV1EdiMapMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: EdiMapMarkResponse;
+};
+
+export type CreateEdiMapMarkApiV1EdiMapMarksPostResponse = CreateEdiMapMarkApiV1EdiMapMarksPostResponses[keyof CreateEdiMapMarkApiV1EdiMapMarksPostResponses];
 
 export type ListEdiMessagesApiV1EdiMessagesGetData = {
     body?: never;

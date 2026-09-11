@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **333.0** G13 EDI parser → draft (węższa z kolejki; delta do utworzenia).
+**Następny:** **334.0** G14 AEO dossier (węższa z kolejki; delta do utworzenia).
 <!-- os-status:end -->
 
 ```mermaid
@@ -726,7 +726,7 @@ Karta: [karty-pol-fala-g.md](analysis/karty-pol-fala-g.md). G2 wyżej.
 | G10 | multi-company w tenancie | 330.0 HITL katalog `company_mark` (seat_kind); leftover company_id FK / drugi tenant | drugi tenant |
 | G11 | bonded / miejsce uznane | 331.0 HITL katalog `bonded_mark` (bond_kind); leftover procedura / WMS | WMS e-com |
 | G12 | ICS2/CBAM/EUDR/eFTI | 332.0 HITL katalog `filing_scheme_mark` (scheme_kind); leftover filer/deadline/C7 | „SENT-UE” |
-| G13 | EDI parser → draft | M-39 | silent write |
+| G13 | EDI parser → draft | 333.0 HITL katalog `edi_map_mark` (map_kind); leftover parser/silent write | silent write |
 | G14 | AEO dossier | C8 | |
 | G15 | yard / waga / EIR | D3+T3 | |
 | G16 | SaaS billing Omni | S53 | |

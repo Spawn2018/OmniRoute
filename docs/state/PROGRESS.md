@@ -2,6 +2,7 @@
 
 | Data | Plaster | Moduł | Opis |
 |---|---|---|---|
+| 2026-09-11 | 333.0 | G13 | HITL `edi_map_mark` (map_kind). Nie silent write. Nastepny: Plan G14. |
 | 2026-09-11 | 332.0 | G12 | HITL `filing_scheme_mark` (scheme_kind). Nie SENT-UE. Nastepny: Plan G13. |
 | 2026-09-11 | 331.0 | G11 | HITL `bonded_mark` (bond_kind). Nie WMS. Nastepny: Plan G12. |
 | 2026-09-11 | 330.0 | G10 | HITL `company_mark` (seat_kind). Nie drugi tenant. Nastepny: Plan G11. |

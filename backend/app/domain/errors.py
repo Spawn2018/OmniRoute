@@ -826,6 +826,10 @@ class InvalidFilingSchemeMark(DomainError):
     """G12: HITL schemat składania — nie SENT-UE."""
 
 
+class InvalidEdiMapMark(DomainError):
+    """G13: HITL mapa pól EDI — nie silent write."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

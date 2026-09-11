@@ -45,6 +45,7 @@ import { Route as DelayForecastsRouteImport } from './routes/delay-forecasts'
 import { Route as DockAppointmentsRouteImport } from './routes/dock-appointments'
 import { Route as DocumentTemplatesRouteImport } from './routes/document-templates'
 import { Route as EdiRouteImport } from './routes/edi'
+import { Route as EdiMapMarksRouteImport } from './routes/edi-map-marks'
 import { Route as EntityEventsRouteImport } from './routes/entity-events'
 import { Route as ErpConnectorsRouteImport } from './routes/erp-connectors'
 import { Route as ExceptionsRouteImport } from './routes/exceptions'
@@ -332,6 +333,11 @@ const DocumentTemplatesRoute = DocumentTemplatesRouteImport.update({
 const EdiRoute = EdiRouteImport.update({
   id: '/edi',
   path: '/edi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EdiMapMarksRoute = EdiMapMarksRouteImport.update({
+  id: '/edi-map-marks',
+  path: '/edi-map-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EntityEventsRoute = EntityEventsRouteImport.update({
@@ -913,6 +919,7 @@ export interface FileRoutesByFullPath {
   '/dock-appointments': typeof DockAppointmentsRoute
   '/document-templates': typeof DocumentTemplatesRoute
   '/edi': typeof EdiRoute
+  '/edi-map-marks': typeof EdiMapMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/exceptions': typeof ExceptionsRoute
@@ -1059,6 +1066,7 @@ export interface FileRoutesByTo {
   '/dock-appointments': typeof DockAppointmentsRoute
   '/document-templates': typeof DocumentTemplatesRoute
   '/edi': typeof EdiRoute
+  '/edi-map-marks': typeof EdiMapMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/exceptions': typeof ExceptionsRoute
@@ -1206,6 +1214,7 @@ export interface FileRoutesById {
   '/dock-appointments': typeof DockAppointmentsRoute
   '/document-templates': typeof DocumentTemplatesRoute
   '/edi': typeof EdiRoute
+  '/edi-map-marks': typeof EdiMapMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/exceptions': typeof ExceptionsRoute
@@ -1354,6 +1363,7 @@ export interface FileRouteTypes {
     | '/dock-appointments'
     | '/document-templates'
     | '/edi'
+    | '/edi-map-marks'
     | '/entity-events'
     | '/erp-connectors'
     | '/exceptions'
@@ -1500,6 +1510,7 @@ export interface FileRouteTypes {
     | '/dock-appointments'
     | '/document-templates'
     | '/edi'
+    | '/edi-map-marks'
     | '/entity-events'
     | '/erp-connectors'
     | '/exceptions'
@@ -1646,6 +1657,7 @@ export interface FileRouteTypes {
     | '/dock-appointments'
     | '/document-templates'
     | '/edi'
+    | '/edi-map-marks'
     | '/entity-events'
     | '/erp-connectors'
     | '/exceptions'
@@ -1793,6 +1805,7 @@ export interface RootRouteChildren {
   DockAppointmentsRoute: typeof DockAppointmentsRoute
   DocumentTemplatesRoute: typeof DocumentTemplatesRoute
   EdiRoute: typeof EdiRoute
+  EdiMapMarksRoute: typeof EdiMapMarksRoute
   EntityEventsRoute: typeof EntityEventsRoute
   ErpConnectorsRoute: typeof ErpConnectorsRoute
   ExceptionsRoute: typeof ExceptionsRoute
@@ -2155,6 +2168,13 @@ declare module '@tanstack/react-router' {
       path: '/edi'
       fullPath: '/edi'
       preLoaderRoute: typeof EdiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/edi-map-marks': {
+      id: '/edi-map-marks'
+      path: '/edi-map-marks'
+      fullPath: '/edi-map-marks'
+      preLoaderRoute: typeof EdiMapMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/entity-events': {
@@ -2953,6 +2973,7 @@ const rootRouteChildren: RootRouteChildren = {
   DockAppointmentsRoute: DockAppointmentsRoute,
   DocumentTemplatesRoute: DocumentTemplatesRoute,
   EdiRoute: EdiRoute,
+  EdiMapMarksRoute: EdiMapMarksRoute,
   EntityEventsRoute: EntityEventsRoute,
   ErpConnectorsRoute: ErpConnectorsRoute,
   ExceptionsRoute: ExceptionsRoute,

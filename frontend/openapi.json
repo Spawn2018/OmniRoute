@@ -8502,6 +8502,80 @@
         ]
       }
     },
+    "/api/v1/edi-map-marks": {
+      "get": {
+        "tags": [
+          "edi-map-marks"
+        ],
+        "summary": "List Edi Map Marks",
+        "operationId": "list_edi_map_marks_api_v1_edi_map_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/EdiMapMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Edi Map Marks Api V1 Edi Map Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "edi-map-marks"
+        ],
+        "summary": "Create Edi Map Mark",
+        "operationId": "create_edi_map_mark_api_v1_edi_map_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EdiMapMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EdiMapMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/edi-messages": {
       "get": {
         "tags": [
@@ -19470,6 +19544,65 @@
           "source_ref"
         ],
         "title": "DocumentTemplateResponse"
+      },
+      "EdiMapMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "map_kind": {
+            "type": "string",
+            "title": "Map Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "map_kind",
+          "source_ref"
+        ],
+        "title": "EdiMapMarkCreate"
+      },
+      "EdiMapMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "map_kind": {
+            "type": "string",
+            "title": "Map Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "map_kind",
+          "source_ref"
+        ],
+        "title": "EdiMapMarkResponse"
       },
       "EdiMessageCreate": {
         "properties": {

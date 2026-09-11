@@ -39,6 +39,7 @@ from app.api import (
     document_checklist_rules,
     document_dispatch_rules,
     document_templates,
+    edi_map_marks,
     edi_messages,
     entity_events,
     erp_connectors,
@@ -239,6 +240,7 @@ api_router.include_router(tender_rounds.router)
 api_router.include_router(tender_ted_notices.router)
 api_router.include_router(tenders.router)
 api_router.include_router(fraud_flags.router)
+api_router.include_router(edi_map_marks.router)
 api_router.include_router(edi_messages.router)
 api_router.include_router(sales_invoices.router)
 api_router.include_router(quote_invoice_settlements.router)
