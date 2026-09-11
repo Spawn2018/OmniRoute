@@ -39,7 +39,12 @@ def _note(rel: str, lineno: int, msg: str) -> str:
 
 def py_sources() -> list[Path]:
     app = ROOT / "backend" / "app"
-    return sorted(path for path in app.rglob("*.py") if "__pycache__" not in path.parts)
+    # main_cors = lokalny sales-mock ASGI, nie produkt (może wrócić z BOM)
+    return sorted(
+        path
+        for path in app.rglob("*.py")
+        if "__pycache__" not in path.parts and path.stem != "main_cors"
+    )
 
 
 def ts_sources() -> list[Path]:

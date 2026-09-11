@@ -30,6 +30,11 @@ frontend/.tanstack/
 docs/state/NOC-LIVE.md
 .tmp-noc/
 
+# Lokalny ASGI CORS (sales mock Vite) — nie produkt
+backend/asgi_cors.py
+backend/app/main_cors.py
+backend/local/
+
 # Lokalny brief do ChatGPT — nie kanon, nie plaster
 docs/briefing/
 

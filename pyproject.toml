@@ -53,6 +53,8 @@ where = ["backend"]
 target-version = "py312"
 line-length = 100
 src = ["backend"]
+# Lokalne ASGI CORS (sales mock) — nie produkt; równoległy proces potrafi je odtworzyć
+extend-exclude = ["backend/asgi_cors.py", "backend/app/main_cors.py", "backend/local"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B", "BLE", "C901"]
