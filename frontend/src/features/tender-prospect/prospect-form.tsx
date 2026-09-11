@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefField } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import {
   listProspectMarks,
@@ -75,22 +75,12 @@ function ProspectSave(args: { organizationId: string | null }) {
           required
         />
       </label>
-      <fieldset className="space-y-1 border-0 p-0">
-        <legend className="text-xs font-medium">Pochodzenie prospektu</legend>
-        <input
-          aria-label="Pochodzenie zapisu prospektu przetargu"
-          autoComplete="off"
-          className="h-9 w-full rounded-md border bg-background px-2 font-mono text-[13px]"
-          name="prospect-origin"
-          spellCheck={false}
-          value={draft.originStamp}
-          onChange={(event) => {
-            const originStamp = event.target.value
-            setDraft((current) => ({ ...current, originStamp }))
-          }}
-          required
-        />
-      </fieldset>
+      <CatalogSourceRefField
+        label="source_ref (tenant:manual albo fixture://tender-prospect/…)"
+        ariaLabel="Pochodzenie zapisu prospektu przetargu"
+        value={draft.originStamp}
+        onChange={(originStamp) => setDraft({ ...draft, originStamp })}
+      />
       <Button type="submit" disabled={persist.isPending || !args.organizationId}>
         Zapisz prospekt
       </Button>

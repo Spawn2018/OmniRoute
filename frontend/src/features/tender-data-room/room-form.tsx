@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefField } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { listRoomMarks, ndaWrite, persistRoomMark } from "@/lib/tender-data-rooms-api"
 
@@ -58,19 +58,12 @@ function RoomSave(args: { organizationId: string | null }) {
           required
         />
       </label>
-      <fieldset className="m-0 border-0 p-0">
-        <legend className="mb-1 px-0 text-xs">Pochodzenie zapisu pokoju danych</legend>
-        <input
-          aria-label="Pochodzenie zapisu pokoju danych"
-          autoComplete="off"
-          className="h-9 w-full rounded-md border bg-background px-2 font-mono text-[13px]"
-          name="room-source-ref"
-          spellCheck={false}
-          value={draft.originRef}
-          onChange={(change) => setDraft({ ...draft, originRef: change.target.value })}
-          required
-        />
-      </fieldset>
+      <CatalogSourceRefField
+        label="source_ref (tenant:manual albo fixture://tender-data-room/…)"
+        ariaLabel="Pochodzenie zapisu pokoju danych"
+        value={draft.originRef}
+        onChange={(originRef) => setDraft({ ...draft, originRef })}
+      />
       <Button type="submit" disabled={persist.isPending || !args.organizationId}>
         Zapisz pokój
       </Button>

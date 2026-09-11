@@ -8,15 +8,15 @@
 
 
 
-**Ostatni plaster:** **307.0** `/refaktor` CatalogSourceRefField (rfp-intake/playbook/consortium)  
+**Ostatni plaster:** **308.0** `/refaktor` CatalogSourceRefField (prospect/win-loss/data-room)  
 
 **Etap:** Refaktor  
 
 **Noc:** `/noc 17` do 2026-09-11T17:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).  
 
-**Następny:** leftover label-form (tender-* reszta / rate-card / …) albo wąski HITL z pinu.  
+**Następny:** leftover label-form (tender lot/lane/quote / rate-card / …) albo wąski HITL z pinu.  
 
-Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44/FourKites/Shippeo. Nie CI1 extract. Nie zgaduj 71–307.
+Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44/FourKites/Shippeo. Nie CI1 extract. Nie zgaduj 71–308.
 
 
 
@@ -36,4 +36,4 @@ Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow 
 
 
 
-**2026-09-11:** **307.0** zamknięty — rfp-intake / playbook / consortium-member na SourceRefField.
+**2026-09-11:** **308.0** zamknięty — prospect / win-loss / data-room na SourceRefField.
