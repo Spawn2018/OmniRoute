@@ -8,15 +8,15 @@
 
 
 
-**Ostatni plaster:** **303.0** `/refaktor` CatalogSourceRefField (po-line/visibility/sap)  
+**Ostatni plaster:** **304.0** `/refaktor` CatalogSourceRefField (asn/routing-guide/capa)  
 
 **Etap:** Refaktor  
 
 **Noc:** `/noc 17` do 2026-09-11T17:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).  
 
-**Następny:** leftover label-form albo wąski HITL z pinu.  
+**Następny:** leftover label-form (freight-audit / collaboration / match) albo wąski HITL z pinu.  
 
-Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44/FourKites/Shippeo. Nie CI1 extract. Nie zgaduj 71–303.
+Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44/FourKites/Shippeo. Nie CI1 extract. Nie zgaduj 71–304.
 
 
 
@@ -36,5 +36,4 @@ Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow 
 
 
 
-**2026-09-11:** **303.0** zamknięty — po-line / visibility / sap na SourceRefField.
-
+**2026-09-11:** **304.0** zamknięty — asn / routing-guide / capa-mark na SourceRefField.

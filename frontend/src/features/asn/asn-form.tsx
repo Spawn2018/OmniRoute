@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefField } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { asnBody, persistAsn } from "@/lib/asns-api"
 
@@ -103,16 +103,12 @@ export function AsnSave(args: { organizationId: string | null }) {
           value={draft.shipRefText}
         />
       </label>
-      <label className="grid gap-1 text-xs">
-        Pochodzenie (source_ref)
-        <input
-          aria-label="Pochodzenie awiza"
-          className="h-9 rounded-md border bg-background px-2 font-mono"
-          onChange={(change) => setDraft({ ...draft, originPointer: change.target.value })}
-          required
-          value={draft.originPointer}
-        />
-      </label>
+      <CatalogSourceRefField
+        label="source_ref (tenant:manual albo fixture://asn/…)"
+        ariaLabel="Pochodzenie awiza"
+        value={draft.originPointer}
+        onChange={(originPointer) => setDraft({ ...draft, originPointer })}
+      />
       {persist.error ? <CatalogError error={persist.error} /> : null}
       <Button disabled={!args.organizationId || persist.isPending} type="submit">
         Zapisz awizo wysyłki

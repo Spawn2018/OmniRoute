@@ -2,6 +2,7 @@
 
 | Data | Plaster | Moduł | Opis |
 |---|---|---|---|
+| 2026-09-11 | 304.0 | UI | `/refaktor`: SourceRefField na asn/routing-guide/capa. Nastepny: leftover label-form. |
 | 2026-09-11 | 303.0 | UI | `/refaktor`: SourceRefField na po-line/visibility/sap. Nastepny: leftover label-form. |
 | 2026-09-11 | 302.0 | UI | `/refaktor`: SourceRefField na kek/PO/terminal-slot. Nastepny: po-line/visibility. |
 | 2026-09-11 | 301.0 | UI | `/refaktor`: SourceRefField na erp/idp/contract. Nastepny: connector forms. |

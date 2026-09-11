@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **303.0** `/refaktor` CatalogSourceRefField (po-line/visibility/sap)
+- **Ostatni plaster:** **304.0** `/refaktor` CatalogSourceRefField (asn/routing-guide/capa)
 - **Etap:** Refaktor
-- **Następny:** leftover label-form albo wąski HITL z pinu.
+- **Następny:** leftover label-form (freight-audit / collaboration / match) albo wąski HITL z pinu.
 - **Komenda teraz:** `/refaktor` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

@@ -1,4 +1,5 @@
-- **303.0 leftover:** pozostałe label-form (asn / routing / mark catalogs). 303.0 = SourceRefField na po-line/visibility/sap.
+- **304.0 leftover:** pozostałe mark/label-form (freight-audit / collaboration / routing-guide-match / otif…). 304.0 = SourceRefField na asn/routing-guide/capa-mark.
+- **303.0 leftover:** asn/routing/capa DONE 304.0. 303.0 = SourceRefField na po-line/visibility/sap.
 - **302.0 leftover:** po-line/visibility/sap DONE 303.0. 302.0 = kek/PO/terminal-slot.
 - **301.0 leftover:** kek/PO/terminal-slot DONE 302.0. 301.0 = erp/idp/contract.
 - **300.0 leftover:** connector/header DONE częściowo 301.0. 300.0 = prediction/weather/exchange.
