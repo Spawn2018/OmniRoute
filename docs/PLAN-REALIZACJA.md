@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **352.0** EXP2.15 fleet cost/CMMS (węższa z kolejki; delta do utworzenia).
+**Następny:** **353.0** EXP2.16 bin-pack OR HITL (węższa z kolejki; delta do utworzenia).
 <!-- os-status:end -->
 
 ```mermaid

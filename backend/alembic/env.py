@@ -145,6 +145,7 @@ from app.models.cabotage_mark import CabotageMark  # noqa: F401
 from app.models.combined_transport_mark import CombinedTransportMark  # noqa: F401
 from app.models.ferry_art9_mark import FerryArt9Mark  # noqa: F401
 from app.models.fuel_anomaly_mark import FuelAnomalyMark  # noqa: F401
+from app.models.fleet_cost_mark import FleetCostMark  # noqa: F401
 from app.models.collaboration_mark import CollaborationMark  # noqa: F401
 from app.models.freight_audit_mark import FreightAuditMark  # noqa: F401
 from app.models.routing_guide import RoutingGuide  # noqa: F401

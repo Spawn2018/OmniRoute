@@ -63,6 +63,7 @@ import { Route as FerryArt9MarksRouteImport } from './routes/ferry-art9-marks'
 import { Route as FilingSchemeMarksRouteImport } from './routes/filing-scheme-marks'
 import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as FleetRouteImport } from './routes/fleet'
+import { Route as FleetCostMarksRouteImport } from './routes/fleet-cost-marks'
 import { Route as FraudRouteImport } from './routes/fraud'
 import { Route as FreeTimeClocksRouteImport } from './routes/free-time-clocks'
 import { Route as FreightAuditMarksRouteImport } from './routes/freight-audit-marks'
@@ -441,6 +442,11 @@ const FinanceRoute = FinanceRouteImport.update({
 const FleetRoute = FleetRouteImport.update({
   id: '/fleet',
   path: '/fleet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FleetCostMarksRoute = FleetCostMarksRouteImport.update({
+  id: '/fleet-cost-marks',
+  path: '/fleet-cost-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FraudRoute = FraudRouteImport.update({
@@ -1045,6 +1051,7 @@ export interface FileRoutesByFullPath {
   '/filing-scheme-marks': typeof FilingSchemeMarksRoute
   '/finance': typeof FinanceRoute
   '/fleet': typeof FleetRoute
+  '/fleet-cost-marks': typeof FleetCostMarksRoute
   '/fraud': typeof FraudRoute
   '/free-time-clocks': typeof FreeTimeClocksRoute
   '/freight-audit-marks': typeof FreightAuditMarksRoute
@@ -1210,6 +1217,7 @@ export interface FileRoutesByTo {
   '/filing-scheme-marks': typeof FilingSchemeMarksRoute
   '/finance': typeof FinanceRoute
   '/fleet': typeof FleetRoute
+  '/fleet-cost-marks': typeof FleetCostMarksRoute
   '/fraud': typeof FraudRoute
   '/free-time-clocks': typeof FreeTimeClocksRoute
   '/freight-audit-marks': typeof FreightAuditMarksRoute
@@ -1376,6 +1384,7 @@ export interface FileRoutesById {
   '/filing-scheme-marks': typeof FilingSchemeMarksRoute
   '/finance': typeof FinanceRoute
   '/fleet': typeof FleetRoute
+  '/fleet-cost-marks': typeof FleetCostMarksRoute
   '/fraud': typeof FraudRoute
   '/free-time-clocks': typeof FreeTimeClocksRoute
   '/freight-audit-marks': typeof FreightAuditMarksRoute
@@ -1543,6 +1552,7 @@ export interface FileRouteTypes {
     | '/filing-scheme-marks'
     | '/finance'
     | '/fleet'
+    | '/fleet-cost-marks'
     | '/fraud'
     | '/free-time-clocks'
     | '/freight-audit-marks'
@@ -1708,6 +1718,7 @@ export interface FileRouteTypes {
     | '/filing-scheme-marks'
     | '/finance'
     | '/fleet'
+    | '/fleet-cost-marks'
     | '/fraud'
     | '/free-time-clocks'
     | '/freight-audit-marks'
@@ -1873,6 +1884,7 @@ export interface FileRouteTypes {
     | '/filing-scheme-marks'
     | '/finance'
     | '/fleet'
+    | '/fleet-cost-marks'
     | '/fraud'
     | '/free-time-clocks'
     | '/freight-audit-marks'
@@ -2039,6 +2051,7 @@ export interface RootRouteChildren {
   FilingSchemeMarksRoute: typeof FilingSchemeMarksRoute
   FinanceRoute: typeof FinanceRoute
   FleetRoute: typeof FleetRoute
+  FleetCostMarksRoute: typeof FleetCostMarksRoute
   FraudRoute: typeof FraudRoute
   FreeTimeClocksRoute: typeof FreeTimeClocksRoute
   FreightAuditMarksRoute: typeof FreightAuditMarksRoute
@@ -2528,6 +2541,13 @@ declare module '@tanstack/react-router' {
       path: '/fleet'
       fullPath: '/fleet'
       preLoaderRoute: typeof FleetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fleet-cost-marks': {
+      id: '/fleet-cost-marks'
+      path: '/fleet-cost-marks'
+      fullPath: '/fleet-cost-marks'
+      preLoaderRoute: typeof FleetCostMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/fraud': {
@@ -3351,6 +3371,7 @@ const rootRouteChildren: RootRouteChildren = {
   FilingSchemeMarksRoute: FilingSchemeMarksRoute,
   FinanceRoute: FinanceRoute,
   FleetRoute: FleetRoute,
+  FleetCostMarksRoute: FleetCostMarksRoute,
   FraudRoute: FraudRoute,
   FreeTimeClocksRoute: FreeTimeClocksRoute,
   FreightAuditMarksRoute: FreightAuditMarksRoute,

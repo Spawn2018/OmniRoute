@@ -3603,6 +3603,50 @@ export type FilingSchemeMarkResponse = {
 };
 
 /**
+ * FleetCostMarkCreate
+ */
+export type FleetCostMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Cost Kind
+     */
+    cost_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * FleetCostMarkResponse
+ */
+export type FleetCostMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Cost Kind
+     */
+    cost_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * FraudFlagCreate
  */
 export type FraudFlagCreate = {
@@ -19769,6 +19813,49 @@ export type CreateFuelAnomalyMarkApiV1FuelAnomalyMarksPostResponses = {
 };
 
 export type CreateFuelAnomalyMarkApiV1FuelAnomalyMarksPostResponse = CreateFuelAnomalyMarkApiV1FuelAnomalyMarksPostResponses[keyof CreateFuelAnomalyMarkApiV1FuelAnomalyMarksPostResponses];
+
+export type ListFleetCostMarksApiV1FleetCostMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/fleet-cost-marks';
+};
+
+export type ListFleetCostMarksApiV1FleetCostMarksGetResponses = {
+    /**
+     * Response List Fleet Cost Marks Api V1 Fleet Cost Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<FleetCostMarkResponse>;
+};
+
+export type ListFleetCostMarksApiV1FleetCostMarksGetResponse = ListFleetCostMarksApiV1FleetCostMarksGetResponses[keyof ListFleetCostMarksApiV1FleetCostMarksGetResponses];
+
+export type CreateFleetCostMarkApiV1FleetCostMarksPostData = {
+    body: FleetCostMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/fleet-cost-marks';
+};
+
+export type CreateFleetCostMarkApiV1FleetCostMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateFleetCostMarkApiV1FleetCostMarksPostError = CreateFleetCostMarkApiV1FleetCostMarksPostErrors[keyof CreateFleetCostMarkApiV1FleetCostMarksPostErrors];
+
+export type CreateFleetCostMarkApiV1FleetCostMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: FleetCostMarkResponse;
+};
+
+export type CreateFleetCostMarkApiV1FleetCostMarksPostResponse = CreateFleetCostMarkApiV1FleetCostMarksPostResponses[keyof CreateFleetCostMarkApiV1FleetCostMarksPostResponses];
 
 export type HealthHealthGetData = {
     body?: never;

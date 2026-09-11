@@ -902,6 +902,10 @@ class InvalidFuelAnomalyMark(DomainError):
     """EXP2.14: HITL karta/anomalia paliwa — nie live card / telemetry."""
 
 
+class InvalidFleetCostMark(DomainError):
+    """EXP2.15: HITL koszt floty — nie TCO SQL / CMMS silnik."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

@@ -16222,6 +16222,80 @@
         ]
       }
     },
+    "/api/v1/fleet-cost-marks": {
+      "get": {
+        "tags": [
+          "fleet-cost-marks"
+        ],
+        "summary": "List Fleet Cost Marks",
+        "operationId": "list_fleet_cost_marks_api_v1_fleet_cost_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/FleetCostMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Fleet Cost Marks Api V1 Fleet Cost Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "fleet-cost-marks"
+        ],
+        "summary": "Create Fleet Cost Mark",
+        "operationId": "create_fleet_cost_mark_api_v1_fleet_cost_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FleetCostMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FleetCostMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/health": {
       "get": {
         "summary": "Health",
@@ -22083,6 +22157,65 @@
           "source_ref"
         ],
         "title": "FilingSchemeMarkResponse"
+      },
+      "FleetCostMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "cost_kind": {
+            "type": "string",
+            "title": "Cost Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "cost_kind",
+          "source_ref"
+        ],
+        "title": "FleetCostMarkCreate"
+      },
+      "FleetCostMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "cost_kind": {
+            "type": "string",
+            "title": "Cost Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "cost_kind",
+          "source_ref"
+        ],
+        "title": "FleetCostMarkResponse"
       },
       "FraudFlagCreate": {
         "properties": {

@@ -56,6 +56,7 @@ from app.api import (
     ferry_art9_marks,
     field_carry_forwards,
     filing_scheme_marks,
+    fleet_cost_marks,
     fraud_flags,
     free_time_clocks,
     freight_audit_marks,
@@ -337,6 +338,7 @@ api_router.include_router(cabotage_marks.router)
 api_router.include_router(combined_transport_marks.router)
 api_router.include_router(ferry_art9_marks.router)
 api_router.include_router(fuel_anomaly_marks.router)
+api_router.include_router(fleet_cost_marks.router)
 
 
 @api_router.api_route(
