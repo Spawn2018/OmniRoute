@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **284.0** leftover CT11 HITL `collaboration_mark` (rola shipper|carrier|consignee).
+**Następny:** leftover Fala CT / pin — egzekucja 409 z `routing_guide` albo CT9 gdy węższe HITL.
 <!-- os-status:end -->
 
 ```mermaid
@@ -486,7 +486,7 @@ Klej (nie osobny rok): **U6** + **M-72** = DoD każdego UI; **N** i **A** wchodz
 
 Kolejka żywa jest w [CURRENT.md](state/CURRENT.md). `/noc` jedzie ją bez wycinania. Godzina ucina **nowy** plaster, nie wiersz pinu.
 
-Kolejność (WIP=1 na `main`): T3 cutoffy na `container` → eventy `entity_event` z warstwy API (2a/2b; BC nie importuje `entity_events`) → `stop_group`/EXP1 → km/`/fleet` → `consignment` → T6 mapa → SQL na `charge` → lookup/KSeF TE → outbox T5 → `plan_snapshot` (DONE 265.0) → `circle_sim` HITL (DONE 266.0) → leftover km ładowny/pusty/dolot (DONE 267.0) → leftover F9 Optima fixture (DONE 268.0) → leftover T8 slot capability (DONE 269.0) → leftover S53 HITL `idp_connector` (DONE 270.0) → leftover S55 HITL `exchange_connector` (DONE 271.0) → leftover CI9 HITL `customer_contract` nagłówek (DONE 272.0) → leftover CI9 opaque `blob_ciphertext` (DONE 273.0; present/absent, nie szyfr) → leftover CI9 KEK mark (DONE 274.0; znacznik, nie klucz) → leftover CT7 HITL `visibility_connector` (DONE 275.0; token `p44`, nie live) → leftover CT1 HITL `purchase_order` nagłówek (DONE 276.0) → leftover CT1 HITL `po_line` (DONE 277.0) → leftover CT1 HITL `asn` (DONE 278.0) → leftover CT4 HITL `routing_guide` (DONE 279.0; auto shipment/CT2 parked z powodem) → leftover CT3 HITL `otif_mark` (DONE 280.0) → leftover CT6 HITL `sap_connector` (DONE 281.0) → leftover CT12 HITL `capa_mark` (DONE 282.0) → leftover CT10 HITL `freight_audit_mark` (DONE 283.0) → leftover 409/compose / reszta pinu. `plan_snapshot` **po** obiektach, **przed** kółkami — nie w jednym worku ze stopami. Cały łańcuch XL→WAPRO nie wchodzi przed outbox. P6c auto-award = zakaz.
+Kolejność (WIP=1 na `main`): T3 cutoffy na `container` → eventy `entity_event` z warstwy API (2a/2b; BC nie importuje `entity_events`) → `stop_group`/EXP1 → km/`/fleet` → `consignment` → T6 mapa → SQL na `charge` → lookup/KSeF TE → outbox T5 → `plan_snapshot` (DONE 265.0) → `circle_sim` HITL (DONE 266.0) → leftover km ładowny/pusty/dolot (DONE 267.0) → leftover F9 Optima fixture (DONE 268.0) → leftover T8 slot capability (DONE 269.0) → leftover S53 HITL `idp_connector` (DONE 270.0) → leftover S55 HITL `exchange_connector` (DONE 271.0) → leftover CI9 HITL `customer_contract` nagłówek (DONE 272.0) → leftover CI9 opaque `blob_ciphertext` (DONE 273.0; present/absent, nie szyfr) → leftover CI9 KEK mark (DONE 274.0; znacznik, nie klucz) → leftover CT7 HITL `visibility_connector` (DONE 275.0; token `p44`, nie live) → leftover CT1 HITL `purchase_order` nagłówek (DONE 276.0) → leftover CT1 HITL `po_line` (DONE 277.0) → leftover CT1 HITL `asn` (DONE 278.0) → leftover CT4 HITL `routing_guide` (DONE 279.0; auto shipment/CT2 parked z powodem) → leftover CT3 HITL `otif_mark` (DONE 280.0) → leftover CT6 HITL `sap_connector` (DONE 281.0) → leftover CT12 HITL `capa_mark` (DONE 282.0) → leftover CT10 HITL `freight_audit_mark` (DONE 283.0) → leftover CT11 HITL `collaboration_mark` (DONE 284.0) → leftover 409/compose / reszta pinu. `plan_snapshot` **po** obiektach, **przed** kółkami — nie w jednym worku ze stopami. Cały łańcuch XL→WAPRO nie wchodzi przed outbox. P6c auto-award = zakaz.
 
 Bliźniak = wzorzec (stan RLS + `entity_event` + opcjonalnie kopia planu / karta komunikacji), nie druga tabela `*_twin`. Rodziny rosną katalogiem. AI szuka i proponuje; `operator_decision` zamyka. LLM nie liczy.
 
@@ -691,7 +691,7 @@ Karta: [karty-pol-fala-ct.md](analysis/karty-pol-fala-ct.md). Tenant `shipper` R
 | CT8 | AIS + kongestia | TO_VERIFY licencja | |
 | CT9 | CO₂ GLEC + `methodology_version` CSRD | z C5 | |
 | CT10 | freight audit FV vs `charge` | 283.0 HITL katalog `freight_audit_mark` | SQL vs charge / druga marża |
-| CT11 | collaboration 3-way role OpenFGA | | wspólny SELECT |
+| CT11 | collaboration 3-way role OpenFGA | 284.0 HITL katalog `collaboration_mark` | wspólny SELECT / tuple per strona |
 | CT12 | QMS CAPA/8D | 282.0 HITL katalog `capa_mark` | workflow CAPA |
 
 ### Fala CI — umowy / SLA / strata / uratowane (kamień sprzedaży)
@@ -853,13 +853,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

@@ -9448,6 +9448,80 @@
         ]
       }
     },
+    "/api/v1/collaboration-marks": {
+      "get": {
+        "tags": [
+          "collaboration-marks"
+        ],
+        "summary": "List Collaboration Marks",
+        "operationId": "list_collaboration_marks_api_v1_collaboration_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CollaborationMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Collaboration Marks Api V1 Collaboration Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "collaboration-marks"
+        ],
+        "summary": "Create Collaboration Mark",
+        "operationId": "create_collaboration_mark_api_v1_collaboration_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CollaborationMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CollaborationMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/terminal-slot-connectors": {
       "get": {
         "tags": [
@@ -15089,6 +15163,65 @@
           "source_ref"
         ],
         "title": "CodInstructionResponse"
+      },
+      "CollaborationMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "role_kind": {
+            "type": "string",
+            "title": "Role Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "role_kind",
+          "source_ref"
+        ],
+        "title": "CollaborationMarkCreate"
+      },
+      "CollaborationMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "role_kind": {
+            "type": "string",
+            "title": "Role Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "role_kind",
+          "source_ref"
+        ],
+        "title": "CollaborationMarkResponse"
       },
       "CollectiveInvoiceCreate": {
         "properties": {

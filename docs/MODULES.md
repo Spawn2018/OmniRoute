@@ -82,6 +82,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | CT3 | Znacznik OTIF HITL | 280.0 `otif_mark` | **ukończony (HITL katalog zakresu)** · leftover OTIF% |
 | CT6 | Konektor SAP/Oracle HITL | 281.0 `sap_connector` | **ukończony (HITL katalog)** · leftover live SOAP |
 | CT10 | Znacznik audytu frachtu HITL | 283.0 `freight_audit_mark` | **ukończony (HITL katalog rodzaju)** · leftover SQL vs charge |
+| CT11 | Znacznik współpracy 3 stron HITL | 284.0 `collaboration_mark` | **ukończony (HITL katalog roli)** · leftover wspólny SELECT |
 | CT12 | Znacznik CAPA HITL | 282.0 `capa_mark` | **ukończony (HITL katalog rodzaju)** · leftover workflow |
 | V2 | Pogoda HITL | 194.0 `stop` ETA · 195.0 `weather_observation` | **ukończony (HITL)** · dwa ETA + warunek/stacja; leftover Open-Meteo / myto |
 | V3 | Zegar D&D HITL | 196.0 `free_time_clock` | **ukończony (HITL)** · rodzaj + dni wolne; leftover countdown / charge / blank sailing |

@@ -1229,6 +1229,50 @@ export type CodInstructionResponse = {
 };
 
 /**
+ * CollaborationMarkCreate
+ */
+export type CollaborationMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Role Kind
+     */
+    role_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CollaborationMarkResponse
+ */
+export type CollaborationMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Role Kind
+     */
+    role_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * CollectiveInvoiceCreate
  */
 export type CollectiveInvoiceCreate = {
@@ -13939,6 +13983,49 @@ export type CreateFreightAuditMarkApiV1FreightAuditMarksPostResponses = {
 };
 
 export type CreateFreightAuditMarkApiV1FreightAuditMarksPostResponse = CreateFreightAuditMarkApiV1FreightAuditMarksPostResponses[keyof CreateFreightAuditMarkApiV1FreightAuditMarksPostResponses];
+
+export type ListCollaborationMarksApiV1CollaborationMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/collaboration-marks';
+};
+
+export type ListCollaborationMarksApiV1CollaborationMarksGetResponses = {
+    /**
+     * Response List Collaboration Marks Api V1 Collaboration Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<CollaborationMarkResponse>;
+};
+
+export type ListCollaborationMarksApiV1CollaborationMarksGetResponse = ListCollaborationMarksApiV1CollaborationMarksGetResponses[keyof ListCollaborationMarksApiV1CollaborationMarksGetResponses];
+
+export type CreateCollaborationMarkApiV1CollaborationMarksPostData = {
+    body: CollaborationMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/collaboration-marks';
+};
+
+export type CreateCollaborationMarkApiV1CollaborationMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCollaborationMarkApiV1CollaborationMarksPostError = CreateCollaborationMarkApiV1CollaborationMarksPostErrors[keyof CreateCollaborationMarkApiV1CollaborationMarksPostErrors];
+
+export type CreateCollaborationMarkApiV1CollaborationMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CollaborationMarkResponse;
+};
+
+export type CreateCollaborationMarkApiV1CollaborationMarksPostResponse = CreateCollaborationMarkApiV1CollaborationMarksPostResponses[keyof CreateCollaborationMarkApiV1CollaborationMarksPostResponses];
 
 export type ListTerminalSlotConnectorsApiV1TerminalSlotConnectorsGetData = {
     body?: never;

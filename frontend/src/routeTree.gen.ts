@@ -26,6 +26,7 @@ import { Route as ChinaRailRouteImport } from './routes/china-rail'
 import { Route as CircleSimsRouteImport } from './routes/circle-sims'
 import { Route as ClaimsRouteImport } from './routes/claims'
 import { Route as CodRouteImport } from './routes/cod'
+import { Route as CollaborationMarksRouteImport } from './routes/collaboration-marks'
 import { Route as CommodityCodesRouteImport } from './routes/commodity-codes'
 import { Route as ConsignmentsRouteImport } from './routes/consignments'
 import { Route as CostToServeRouteImport } from './routes/cost-to-serve'
@@ -214,6 +215,11 @@ const ClaimsRoute = ClaimsRouteImport.update({
 const CodRoute = CodRouteImport.update({
   id: '/cod',
   path: '/cod',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollaborationMarksRoute = CollaborationMarksRouteImport.update({
+  id: '/collaboration-marks',
+  path: '/collaboration-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CommodityCodesRoute = CommodityCodesRouteImport.update({
@@ -755,6 +761,7 @@ export interface FileRoutesByFullPath {
   '/circle-sims': typeof CircleSimsRoute
   '/claims': typeof ClaimsRoute
   '/cod': typeof CodRoute
+  '/collaboration-marks': typeof CollaborationMarksRoute
   '/commodity-codes': typeof CommodityCodesRoute
   '/consignments': typeof ConsignmentsRoute
   '/cost-to-serve': typeof CostToServeRoute
@@ -878,6 +885,7 @@ export interface FileRoutesByTo {
   '/circle-sims': typeof CircleSimsRoute
   '/claims': typeof ClaimsRoute
   '/cod': typeof CodRoute
+  '/collaboration-marks': typeof CollaborationMarksRoute
   '/commodity-codes': typeof CommodityCodesRoute
   '/consignments': typeof ConsignmentsRoute
   '/cost-to-serve': typeof CostToServeRoute
@@ -1002,6 +1010,7 @@ export interface FileRoutesById {
   '/circle-sims': typeof CircleSimsRoute
   '/claims': typeof ClaimsRoute
   '/cod': typeof CodRoute
+  '/collaboration-marks': typeof CollaborationMarksRoute
   '/commodity-codes': typeof CommodityCodesRoute
   '/consignments': typeof ConsignmentsRoute
   '/cost-to-serve': typeof CostToServeRoute
@@ -1127,6 +1136,7 @@ export interface FileRouteTypes {
     | '/circle-sims'
     | '/claims'
     | '/cod'
+    | '/collaboration-marks'
     | '/commodity-codes'
     | '/consignments'
     | '/cost-to-serve'
@@ -1250,6 +1260,7 @@ export interface FileRouteTypes {
     | '/circle-sims'
     | '/claims'
     | '/cod'
+    | '/collaboration-marks'
     | '/commodity-codes'
     | '/consignments'
     | '/cost-to-serve'
@@ -1373,6 +1384,7 @@ export interface FileRouteTypes {
     | '/circle-sims'
     | '/claims'
     | '/cod'
+    | '/collaboration-marks'
     | '/commodity-codes'
     | '/consignments'
     | '/cost-to-serve'
@@ -1497,6 +1509,7 @@ export interface RootRouteChildren {
   CircleSimsRoute: typeof CircleSimsRoute
   ClaimsRoute: typeof ClaimsRoute
   CodRoute: typeof CodRoute
+  CollaborationMarksRoute: typeof CollaborationMarksRoute
   CommodityCodesRoute: typeof CommodityCodesRoute
   ConsignmentsRoute: typeof ConsignmentsRoute
   CostToServeRoute: typeof CostToServeRoute
@@ -1722,6 +1735,13 @@ declare module '@tanstack/react-router' {
       path: '/cod'
       fullPath: '/cod'
       preLoaderRoute: typeof CodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/collaboration-marks': {
+      id: '/collaboration-marks'
+      path: '/collaboration-marks'
+      fullPath: '/collaboration-marks'
+      preLoaderRoute: typeof CollaborationMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/commodity-codes': {
@@ -2473,6 +2493,7 @@ const rootRouteChildren: RootRouteChildren = {
   CircleSimsRoute: CircleSimsRoute,
   ClaimsRoute: ClaimsRoute,
   CodRoute: CodRoute,
+  CollaborationMarksRoute: CollaborationMarksRoute,
   CommodityCodesRoute: CommodityCodesRoute,
   ConsignmentsRoute: ConsignmentsRoute,
   CostToServeRoute: CostToServeRoute,

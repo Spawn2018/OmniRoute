@@ -2,6 +2,7 @@
 
 | Data | Plaster | Moduł | Opis |
 |---|---|---|---|
+| 2026-09-11 | 284.0 | CT11 | HITL `collaboration_mark` shipper/carrier/consignee. Nie wspólny SELECT. |
 | 2026-09-11 | 283.0 | CT10 | HITL `freight_audit_mark` expected_vs_invoice/charge. Nie SQL vs charge. Nie druga marża. |
 | 2026-09-11 | 282.0 | CT12 | HITL `capa_mark` capa/eight_d/recurrence. Nie workflow CAPA. |
 | 2026-09-11 | 281.0 | CT6 | HITL `sap_connector` sap/oracle. Nie live SOAP. Nie sekrety. |

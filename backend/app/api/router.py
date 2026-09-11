@@ -17,6 +17,7 @@ from app.api import (
     charges,
     circle_sims,
     cod_instructions,
+    collaboration_marks,
     collective_invoices,
     commodity_codes,
     consignments,
@@ -228,6 +229,7 @@ api_router.include_router(routing_guides.router)
 api_router.include_router(sap_connectors.router)
 api_router.include_router(capa_marks.router)
 api_router.include_router(freight_audit_marks.router)
+api_router.include_router(collaboration_marks.router)
 api_router.include_router(terminal_slot_connectors.router)
 api_router.include_router(tower_impacts.router)
 api_router.include_router(twin_marks.router)

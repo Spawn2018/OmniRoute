@@ -604,6 +604,11 @@ export const OPS_JOBS = [
     job: "katalog freight_audit_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.collaborationMark.route,
+    label: "Współpraca 3 stron",
+    job: "katalog collaboration_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.exchangeConnector.route,
     label: "Konektor giełdy",
     job: "katalog exchange_connector HITL",
@@ -878,6 +883,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "281.0": "/sap-connectors",
   "282.0": "/capa-marks",
   "283.0": "/freight-audit-marks",
+  "284.0": "/collaboration-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

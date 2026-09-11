@@ -212,6 +212,11 @@ const NAV_ACTIONS = [
     to: "/freight-audit-marks",
   },
   {
+    id: "nav-collaboration-marks",
+    label: "Współpraca 3 stron",
+    to: "/collaboration-marks",
+  },
+  {
     id: "nav-exchange-connectors",
     label: "Idź do konektora giełdy",
     to: "/exchange-connectors",

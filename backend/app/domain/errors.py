@@ -748,3 +748,7 @@ class InvalidCapaMark(DomainError):
 
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
+
+
+class InvalidCollaborationMark(DomainError):
+    """CT11: HITL rola współpracy 3 stron — nie wspólny SELECT."""

@@ -107,6 +107,7 @@ modules =
     app.services.sap_connectors
     app.services.capa_marks
     app.services.freight_audit_marks
+    app.services.collaboration_marks
     app.services.exchange_connectors
     app.services.idp_connectors
     app.services.terminal_slot_connectors
@@ -434,6 +435,9 @@ forbidden_modules =
     app.services.freight_audit_marks
     app.repositories.freight_audit_marks
     app.models.freight_audit_mark
+    app.services.collaboration_marks
+    app.repositories.collaboration_marks
+    app.models.collaboration_mark
     app.services.exchange_connectors
     app.repositories.exchange_connectors
     app.models.exchange_connector
