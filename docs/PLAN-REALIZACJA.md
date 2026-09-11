@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** leftover CT1 auto `shipment` (U1) / reszta pinu 2026-09-08c. CT5 EDI 856 live = park. CT8 AIS = park live (TO_VERIFY licencja). Nie CI1 extract. Nie live p44. 278.0 = awizo HITL, nie live EDI, nie auto shipment. Leftover HITL/SQL = praca. Park = live HTTP bez testu albo sekretu, nie skip pola. Live M-02 konsument / Auth0 I1/I2 / portale / giełda live / p44 live tylko gdy ten ID jest bieżącym Q. P6c auto-award zakaz. Nic z pinu nie wypada. Nie zgaduj 71–278.
+**Następny:** **279.0** leftover CT4 HITL `routing_guide` (katalog; nie 409 egzekucja). CT1 auto shipment = parked (quotation_id + zakaz FK shipment w BC PO). CT2 = parked (CI5 brak). CT8 AIS = park live. Nie CI1 extract. Nie live p44. Leftover HITL/SQL = praca. Park = live HTTP bez testu albo sekretu, nie skip pola. Live M-02 konsument / Auth0 I1/I2 / portale / giełda live / p44 live tylko gdy ten ID jest bieżącym Q. P6c auto-award zakaz. Nic z pinu nie wypada. Nie zgaduj 71–279.
 <!-- os-status:end -->
 
 ```mermaid
@@ -486,7 +486,7 @@ Klej (nie osobny rok): **U6** + **M-72** = DoD każdego UI; **N** i **A** wchodz
 
 Kolejka żywa jest w [CURRENT.md](state/CURRENT.md). `/noc` jedzie ją bez wycinania. Godzina ucina **nowy** plaster, nie wiersz pinu.
 
-Kolejność (WIP=1 na `main`): T3 cutoffy na `container` → eventy `entity_event` z warstwy API (2a/2b; BC nie importuje `entity_events`) → `stop_group`/EXP1 → km/`/fleet` → `consignment` → T6 mapa → SQL na `charge` → lookup/KSeF TE → outbox T5 → `plan_snapshot` (DONE 265.0) → `circle_sim` HITL (DONE 266.0) → leftover km ładowny/pusty/dolot (DONE 267.0) → leftover F9 Optima fixture (DONE 268.0) → leftover T8 slot capability (DONE 269.0) → leftover S53 HITL `idp_connector` (DONE 270.0) → leftover S55 HITL `exchange_connector` (DONE 271.0) → leftover CI9 HITL `customer_contract` nagłówek (DONE 272.0) → leftover CI9 opaque `blob_ciphertext` (DONE 273.0; present/absent, nie szyfr) → leftover CI9 KEK mark (DONE 274.0; znacznik, nie klucz) → leftover CT7 HITL `visibility_connector` (DONE 275.0; token `p44`, nie live) → leftover CT1 HITL `purchase_order` nagłówek (DONE 276.0) → leftover CT1 HITL `po_line` (DONE 277.0) → leftover CT1 HITL `asn` (DONE 278.0) → leftover auto shipment / reszta pinu. `plan_snapshot` **po** obiektach, **przed** kółkami — nie w jednym worku ze stopami. Cały łańcuch XL→WAPRO nie wchodzi przed outbox. P6c auto-award = zakaz.
+Kolejność (WIP=1 na `main`): T3 cutoffy na `container` → eventy `entity_event` z warstwy API (2a/2b; BC nie importuje `entity_events`) → `stop_group`/EXP1 → km/`/fleet` → `consignment` → T6 mapa → SQL na `charge` → lookup/KSeF TE → outbox T5 → `plan_snapshot` (DONE 265.0) → `circle_sim` HITL (DONE 266.0) → leftover km ładowny/pusty/dolot (DONE 267.0) → leftover F9 Optima fixture (DONE 268.0) → leftover T8 slot capability (DONE 269.0) → leftover S53 HITL `idp_connector` (DONE 270.0) → leftover S55 HITL `exchange_connector` (DONE 271.0) → leftover CI9 HITL `customer_contract` nagłówek (DONE 272.0) → leftover CI9 opaque `blob_ciphertext` (DONE 273.0; present/absent, nie szyfr) → leftover CI9 KEK mark (DONE 274.0; znacznik, nie klucz) → leftover CT7 HITL `visibility_connector` (DONE 275.0; token `p44`, nie live) → leftover CT1 HITL `purchase_order` nagłówek (DONE 276.0) → leftover CT1 HITL `po_line` (DONE 277.0) → leftover CT1 HITL `asn` (DONE 278.0) → leftover CT4 HITL `routing_guide` (plan 279.0; auto shipment/CT2 parked z powodem) → reszta pinu. `plan_snapshot` **po** obiektach, **przed** kółkami — nie w jednym worku ze stopami. Cały łańcuch XL→WAPRO nie wchodzi przed outbox. P6c auto-award = zakaz.
 
 Bliźniak = wzorzec (stan RLS + `entity_event` + opcjonalnie kopia planu / karta komunikacji), nie druga tabela `*_twin`. Rodziny rosną katalogiem. AI szuka i proponuje; `operator_decision` zamyka. LLM nie liczy.
 
@@ -684,7 +684,7 @@ Karta: [karty-pol-fala-ct.md](analysis/karty-pol-fala-ct.md). Tenant `shipper` R
 | CT1 | PO → ASN → shipment (U1); plant/SKU | 276.0 HITL nagłówek `purchase_order`; 277.0 HITL `po_line`; 278.0 HITL `asn` | auto shipment / qty float / live EDI |
 | CT2 | impact chain; klej CI5 | po V6 | auto „zatrzymaj produkcję” |
 | CT3 | OTIF pickup vs delivery vs SKU | | |
-| CT4 | routing guide 409 | | |
+| CT4 | routing guide 409 | 279.0 plan HITL katalog `routing_guide` | egzekucja 409 |
 | CT5 | EDI 214/315/856/210 + webhook | TO_VERIFY partner | |
 | CT6 | SAP/Oracle adapter jak F9 | TO_VERIFY | SQL do SAP |
 | CT7 | p44 **albo** FourKites **albo** Shippeo | 275.0 HITL `visibility_connector` token `p44` (nie live); leftover FourKites/Shippeo + live HTTP (TO_VERIFY umowa) | scrape ocean |
@@ -853,13 +853,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->
