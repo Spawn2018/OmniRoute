@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **313.0** CI1 HITL `sla_clause`
-- **Etap:** Plan
-- **Następny:** leftover CI1 ciphertext/kara SQL **parked** — wąski HITL z pinu (CI2 / G / EXP) albo kolejny pin bez park live.
+- **Ostatni plaster:** **314.0** CI4 HITL `delay_forecast`
+- **Etap:** Plan — wolno `/plan-modul` **315.0**
+- **Następny:** **315.0** CI6 HITL `remediation_option` (kind + source_ref; bez kwoty).
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

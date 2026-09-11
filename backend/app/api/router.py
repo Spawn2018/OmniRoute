@@ -28,6 +28,7 @@ from app.api import (
     customer_rfqs,
     customer_sops,
     dangerous_goods,
+    delay_forecasts,
     dock_appointments,
     document_checklist_rules,
     document_dispatch_rules,
@@ -234,6 +235,7 @@ api_router.include_router(routing_guides.router)
 api_router.include_router(sap_connectors.router)
 api_router.include_router(capa_marks.router)
 api_router.include_router(sla_clauses.router)
+api_router.include_router(delay_forecasts.router)
 api_router.include_router(freight_audit_marks.router)
 api_router.include_router(collaboration_marks.router)
 api_router.include_router(terminal_slot_connectors.router)

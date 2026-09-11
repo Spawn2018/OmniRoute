@@ -1,3 +1,4 @@
+- **314.0 leftover:** wróżba punktowa / GPS; CI2 spend; CI3 409; CI5 kara; CI6 kwoty na remediation. 314.0 = HITL `delay_forecast` (horizon + p_late Decimal).
 - **313.0 leftover:** extract LLM / upload PDF; `penalty_ciphertext` / `obligation_ciphertext`; CI5 kara SQL; CI2 spend; CT2; X1 portal. 313.0 = HITL `sla_clause` (metryka + próg tekst + FK umowa).
 - **312.0 leftover:** label-form SourceRef wyczerpane. 313.0 = CI1 `sla_clause`. 312.0 = SourceRefField na local-charge/charge-template/cod.
 - **311.0 leftover:** local/charge-template/cod DONE 312.0. 311.0 = SourceRefField na rate-card/fuel/groupage.

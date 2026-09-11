@@ -9654,6 +9654,80 @@
         ]
       }
     },
+    "/api/v1/delay-forecasts": {
+      "get": {
+        "tags": [
+          "delay-forecasts"
+        ],
+        "summary": "List Delay Forecasts",
+        "operationId": "list_delay_forecasts_api_v1_delay_forecasts_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/DelayForecastResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Delay Forecasts Api V1 Delay Forecasts Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "delay-forecasts"
+        ],
+        "summary": "Create Delay Forecast",
+        "operationId": "create_delay_forecast_api_v1_delay_forecasts_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DelayForecastCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DelayForecastResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/freight-audit-marks": {
       "get": {
         "tags": [
@@ -17263,6 +17337,84 @@
           "source_ref"
         ],
         "title": "DangerousGoodResponse"
+      },
+      "DelayForecastCreate": {
+        "properties": {
+          "forecast_code": {
+            "type": "string",
+            "title": "Forecast Code"
+          },
+          "horizon_hours": {
+            "type": "integer",
+            "title": "Horizon Hours"
+          },
+          "p_late": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string",
+                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$"
+              }
+            ],
+            "title": "P Late"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "forecast_code",
+          "horizon_hours",
+          "p_late",
+          "source_ref"
+        ],
+        "title": "DelayForecastCreate"
+      },
+      "DelayForecastResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "forecast_code": {
+            "type": "string",
+            "title": "Forecast Code"
+          },
+          "horizon_hours": {
+            "type": "integer",
+            "title": "Horizon Hours"
+          },
+          "p_late": {
+            "type": "string",
+            "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+            "title": "P Late"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "forecast_code",
+          "horizon_hours",
+          "p_late",
+          "source_ref"
+        ],
+        "title": "DelayForecastResponse"
       },
       "DockAppointmentCreate": {
         "properties": {

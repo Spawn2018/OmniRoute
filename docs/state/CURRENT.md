@@ -8,19 +8,19 @@
 
 
 
-**Ostatni plaster:** **313.0** CI1 HITL `sla_clause`  
+**Ostatni plaster:** **314.0** CI4 HITL `delay_forecast`  
 
-**Etap:** Plan  
+**Etap:** Plan — wolno `/plan-modul` **315.0**  
 
 **Noc:** `/noc 17` do 2026-09-11T17:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).  
 
-**Następny:** leftover CI1 ciphertext/kara SQL **parked** — wąski HITL z pinu (CI2 / G / EXP) albo kolejny pin bez park live.  
+**Następny:** **315.0** CI6 HITL `remediation_option` (kind + source_ref; bez kwoty).  
 
-Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44/FourKites/Shippeo · extract LLM · penalty ciphertext · CI5 kara. Nie zgaduj 71–313.
+Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44 · extract · CI5 kara · wróżba punktowa · CI6 kwoty. Nie zgaduj 71–315.
 
 
 
-**Spec (jedyna na sesję):** brak — po 313.0 wybierz następny HITL z pinu (`/plan-modul`).
+**Spec (jedyna na sesję):** brak delty — `/plan-modul` 315.0
 
 
 
@@ -36,4 +36,4 @@ Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow 
 
 
 
-**2026-09-11:** **313.0** zamknięty — HITL `sla_clause` na umowie, bez extract/ciphertext.
+**2026-09-11:** **314.0** zamknięty. Następny: Plan **315.0** `remediation_option` bez kwoty.

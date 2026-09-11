@@ -35,6 +35,7 @@ import { Route as CustomerContractsRouteImport } from './routes/customer-contrac
 import { Route as CustomerSopsRouteImport } from './routes/customer-sops'
 import { Route as DangerousGoodsRouteImport } from './routes/dangerous-goods'
 import { Route as DecisionsRouteImport } from './routes/decisions'
+import { Route as DelayForecastsRouteImport } from './routes/delay-forecasts'
 import { Route as DockAppointmentsRouteImport } from './routes/dock-appointments'
 import { Route as DocumentTemplatesRouteImport } from './routes/document-templates'
 import { Route as EdiRouteImport } from './routes/edi'
@@ -263,6 +264,11 @@ const DangerousGoodsRoute = DangerousGoodsRouteImport.update({
 const DecisionsRoute = DecisionsRouteImport.update({
   id: '/decisions',
   path: '/decisions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DelayForecastsRoute = DelayForecastsRouteImport.update({
+  id: '/delay-forecasts',
+  path: '/delay-forecasts',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DockAppointmentsRoute = DockAppointmentsRouteImport.update({
@@ -789,6 +795,7 @@ export interface FileRoutesByFullPath {
   '/customer-sops': typeof CustomerSopsRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
   '/decisions': typeof DecisionsRoute
+  '/delay-forecasts': typeof DelayForecastsRoute
   '/dock-appointments': typeof DockAppointmentsRoute
   '/document-templates': typeof DocumentTemplatesRoute
   '/edi': typeof EdiRoute
@@ -916,6 +923,7 @@ export interface FileRoutesByTo {
   '/customer-sops': typeof CustomerSopsRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
   '/decisions': typeof DecisionsRoute
+  '/delay-forecasts': typeof DelayForecastsRoute
   '/dock-appointments': typeof DockAppointmentsRoute
   '/document-templates': typeof DocumentTemplatesRoute
   '/edi': typeof EdiRoute
@@ -1044,6 +1052,7 @@ export interface FileRoutesById {
   '/customer-sops': typeof CustomerSopsRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
   '/decisions': typeof DecisionsRoute
+  '/delay-forecasts': typeof DelayForecastsRoute
   '/dock-appointments': typeof DockAppointmentsRoute
   '/document-templates': typeof DocumentTemplatesRoute
   '/edi': typeof EdiRoute
@@ -1173,6 +1182,7 @@ export interface FileRouteTypes {
     | '/customer-sops'
     | '/dangerous-goods'
     | '/decisions'
+    | '/delay-forecasts'
     | '/dock-appointments'
     | '/document-templates'
     | '/edi'
@@ -1300,6 +1310,7 @@ export interface FileRouteTypes {
     | '/customer-sops'
     | '/dangerous-goods'
     | '/decisions'
+    | '/delay-forecasts'
     | '/dock-appointments'
     | '/document-templates'
     | '/edi'
@@ -1427,6 +1438,7 @@ export interface FileRouteTypes {
     | '/customer-sops'
     | '/dangerous-goods'
     | '/decisions'
+    | '/delay-forecasts'
     | '/dock-appointments'
     | '/document-templates'
     | '/edi'
@@ -1555,6 +1567,7 @@ export interface RootRouteChildren {
   CustomerSopsRoute: typeof CustomerSopsRoute
   DangerousGoodsRoute: typeof DangerousGoodsRoute
   DecisionsRoute: typeof DecisionsRoute
+  DelayForecastsRoute: typeof DelayForecastsRoute
   DockAppointmentsRoute: typeof DockAppointmentsRoute
   DocumentTemplatesRoute: typeof DocumentTemplatesRoute
   EdiRoute: typeof EdiRoute
@@ -1838,6 +1851,13 @@ declare module '@tanstack/react-router' {
       path: '/decisions'
       fullPath: '/decisions'
       preLoaderRoute: typeof DecisionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/delay-forecasts': {
+      id: '/delay-forecasts'
+      path: '/delay-forecasts'
+      fullPath: '/delay-forecasts'
+      preLoaderRoute: typeof DelayForecastsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dock-appointments': {
@@ -2563,6 +2583,7 @@ const rootRouteChildren: RootRouteChildren = {
   CustomerSopsRoute: CustomerSopsRoute,
   DangerousGoodsRoute: DangerousGoodsRoute,
   DecisionsRoute: DecisionsRoute,
+  DelayForecastsRoute: DelayForecastsRoute,
   DockAppointmentsRoute: DockAppointmentsRoute,
   DocumentTemplatesRoute: DocumentTemplatesRoute,
   EdiRoute: EdiRoute,

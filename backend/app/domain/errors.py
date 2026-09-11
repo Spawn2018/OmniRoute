@@ -750,6 +750,10 @@ class InvalidSlaClause(DomainError):
     """CI1: HITL klauzula SLA — nie extract i nie kara SQL."""
 
 
+class InvalidDelayForecast(DomainError):
+    """CI4: HITL prognoza opóźnienia — nie wróżba punktowa."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

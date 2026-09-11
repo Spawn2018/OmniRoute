@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** leftover CI1 ciphertext/kara SQL **parked** — wąski HITL z pinu (CI2 / G / EXP) albo kolejny pin bez park live.
+**Następny:** **315.0** CI6 HITL `remediation_option` (kind + source_ref; bez kwoty).
 <!-- os-status:end -->
 
 ```mermaid
@@ -704,7 +704,7 @@ Karta: [karty-pol-fala-ci.md](analysis/karty-pol-fala-ci.md). **CI9 przed CI1.**
 | CI1 | upload + formularz `sla_clause` (wiele umów × odbiorców) | po X1+CI9 | extract LLM |
 | CI2 | FV vs umowa (spend leakage) | | druga marża |
 | CI3 | operacja czyta klauzulę (409/notice) | | auto-kara na FV |
-| CI4 | `delay_forecast` wcześniej niż okno | po V2 | wróżba punktowa |
+| CI4 | `delay_forecast` wcześniej niż okno | 314.0 HITL katalog (`horizon_hours` + `p_late` Decimal); leftover wróżba punktowa / GPS | wróżba punktowa |
 | CI5 | które SLA pęknie + kara SQL; bez klauzuli = „brak danych umowy” | | auto linia produkcyjna |
 | CI6 | strata / koszt naprawy / uratowane | po B0b | float; LLM |
 | CI7 | scorecard MAE/kalibracja; sample≥N zanim oferta | | suma nachodzących oszczędności |

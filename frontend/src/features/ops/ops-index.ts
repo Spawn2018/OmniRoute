@@ -614,6 +614,11 @@ export const OPS_JOBS = [
     job: "katalog sla_clause HITL",
   },
   {
+    route: BUSINESS_LISTS.delayForecast.route,
+    label: "Prognoza opóźnienia",
+    job: "katalog delay_forecast HITL",
+  },
+  {
     route: BUSINESS_LISTS.freightAuditMark.route,
     label: "Audyt frachtu",
     job: "katalog freight_audit_mark HITL",
@@ -907,6 +912,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "290.0": "/shipments",
   "291.0": "/asns",
   "313.0": "/sla-clauses",
+  "314.0": "/delay-forecasts",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

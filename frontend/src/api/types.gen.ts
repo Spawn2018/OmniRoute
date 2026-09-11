@@ -2185,6 +2185,58 @@ export type DangerousGoodResponse = {
 };
 
 /**
+ * DelayForecastCreate
+ */
+export type DelayForecastCreate = {
+    /**
+     * Forecast Code
+     */
+    forecast_code: string;
+    /**
+     * Horizon Hours
+     */
+    horizon_hours: number;
+    /**
+     * P Late
+     */
+    p_late: number | string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * DelayForecastResponse
+ */
+export type DelayForecastResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Forecast Code
+     */
+    forecast_code: string;
+    /**
+     * Horizon Hours
+     */
+    horizon_hours: number;
+    /**
+     * P Late
+     */
+    p_late: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * DockAppointmentCreate
  */
 export type DockAppointmentCreate = {
@@ -14297,6 +14349,49 @@ export type CreateSlaClauseApiV1SlaClausesPostResponses = {
 };
 
 export type CreateSlaClauseApiV1SlaClausesPostResponse = CreateSlaClauseApiV1SlaClausesPostResponses[keyof CreateSlaClauseApiV1SlaClausesPostResponses];
+
+export type ListDelayForecastsApiV1DelayForecastsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/delay-forecasts';
+};
+
+export type ListDelayForecastsApiV1DelayForecastsGetResponses = {
+    /**
+     * Response List Delay Forecasts Api V1 Delay Forecasts Get
+     *
+     * Successful Response
+     */
+    200: Array<DelayForecastResponse>;
+};
+
+export type ListDelayForecastsApiV1DelayForecastsGetResponse = ListDelayForecastsApiV1DelayForecastsGetResponses[keyof ListDelayForecastsApiV1DelayForecastsGetResponses];
+
+export type CreateDelayForecastApiV1DelayForecastsPostData = {
+    body: DelayForecastCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/delay-forecasts';
+};
+
+export type CreateDelayForecastApiV1DelayForecastsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateDelayForecastApiV1DelayForecastsPostError = CreateDelayForecastApiV1DelayForecastsPostErrors[keyof CreateDelayForecastApiV1DelayForecastsPostErrors];
+
+export type CreateDelayForecastApiV1DelayForecastsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: DelayForecastResponse;
+};
+
+export type CreateDelayForecastApiV1DelayForecastsPostResponse = CreateDelayForecastApiV1DelayForecastsPostResponses[keyof CreateDelayForecastApiV1DelayForecastsPostResponses];
 
 export type ListFreightAuditMarksApiV1FreightAuditMarksGetData = {
     body?: never;
