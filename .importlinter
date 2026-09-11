@@ -118,6 +118,7 @@ modules =
     app.services.spend_marks
     app.services.penalty_marks
     app.services.intervention_outcomes
+    app.services.crm_leads
     app.services.freight_audit_marks
     app.services.collaboration_marks
     app.services.exchange_connectors
@@ -480,6 +481,9 @@ forbidden_modules =
     app.services.intervention_outcomes
     app.repositories.intervention_outcomes
     app.models.intervention_outcome
+    app.services.crm_leads
+    app.repositories.crm_leads
+    app.models.crm_lead
     app.services.freight_audit_marks
     app.repositories.freight_audit_marks
     app.models.freight_audit_mark

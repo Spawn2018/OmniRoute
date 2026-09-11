@@ -1989,6 +1989,50 @@ export type CreditReviewResponse = {
 };
 
 /**
+ * CrmLeadCreate
+ */
+export type CrmLeadCreate = {
+    /**
+     * Lead Code
+     */
+    lead_code: string;
+    /**
+     * Stage Kind
+     */
+    stage_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CrmLeadResponse
+ */
+export type CrmLeadResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Lead Code
+     */
+    lead_code: string;
+    /**
+     * Stage Kind
+     */
+    stage_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * CustomerContractCreate
  */
 export type CustomerContractCreate = {
@@ -16661,6 +16705,49 @@ export type AttachCreditReviewBureauApiV1CreditReviewsReviewIdAttachBureauPatchR
 };
 
 export type AttachCreditReviewBureauApiV1CreditReviewsReviewIdAttachBureauPatchResponse = AttachCreditReviewBureauApiV1CreditReviewsReviewIdAttachBureauPatchResponses[keyof AttachCreditReviewBureauApiV1CreditReviewsReviewIdAttachBureauPatchResponses];
+
+export type ListCrmLeadsApiV1CrmLeadsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/crm-leads';
+};
+
+export type ListCrmLeadsApiV1CrmLeadsGetResponses = {
+    /**
+     * Response List Crm Leads Api V1 Crm Leads Get
+     *
+     * Successful Response
+     */
+    200: Array<CrmLeadResponse>;
+};
+
+export type ListCrmLeadsApiV1CrmLeadsGetResponse = ListCrmLeadsApiV1CrmLeadsGetResponses[keyof ListCrmLeadsApiV1CrmLeadsGetResponses];
+
+export type CreateCrmLeadApiV1CrmLeadsPostData = {
+    body: CrmLeadCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/crm-leads';
+};
+
+export type CreateCrmLeadApiV1CrmLeadsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCrmLeadApiV1CrmLeadsPostError = CreateCrmLeadApiV1CrmLeadsPostErrors[keyof CreateCrmLeadApiV1CrmLeadsPostErrors];
+
+export type CreateCrmLeadApiV1CrmLeadsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CrmLeadResponse;
+};
+
+export type CreateCrmLeadApiV1CrmLeadsPostResponse = CreateCrmLeadApiV1CrmLeadsPostResponses[keyof CreateCrmLeadApiV1CrmLeadsPostResponses];
 
 export type ListCustomerSopsApiV1CustomerSopsGetData = {
     body?: never;

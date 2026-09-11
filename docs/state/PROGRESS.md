@@ -2,6 +2,7 @@
 
 | Data | Plaster | Moduł | Opis |
 |---|---|---|---|
+| 2026-09-11 | 323.0 | G1 | HITL `crm_lead` (stage_kind). Nie cold-send. Nastepny: Plan G3. |
 | 2026-09-11 | 322.0 | CI7 | HITL `intervention_outcome` (result_kind). Nie SQL saved. Nastepny: Plan G1. |
 | 2026-09-11 | 321.0 | CI5 | HITL `penalty_mark` (breach_kind). Nie kara SQL. Nastepny: Plan 322.0 pin. |
 | 2026-09-11 | 320.0 | CI2 | HITL `spend_mark` (leakage_kind). Nie SQL FV. Nastepny: Plan 321.0 penalty_mark. |

@@ -33,6 +33,7 @@ import { Route as CommodityCodesRouteImport } from './routes/commodity-codes'
 import { Route as ConsignmentsRouteImport } from './routes/consignments'
 import { Route as CostToServeRouteImport } from './routes/cost-to-serve'
 import { Route as CreditReviewsRouteImport } from './routes/credit-reviews'
+import { Route as CrmLeadsRouteImport } from './routes/crm-leads'
 import { Route as CustomerContractsRouteImport } from './routes/customer-contracts'
 import { Route as CustomerSopsRouteImport } from './routes/customer-sops'
 import { Route as DangerousGoodsRouteImport } from './routes/dangerous-goods'
@@ -262,6 +263,11 @@ const CostToServeRoute = CostToServeRouteImport.update({
 const CreditReviewsRoute = CreditReviewsRouteImport.update({
   id: '/credit-reviews',
   path: '/credit-reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CrmLeadsRoute = CrmLeadsRouteImport.update({
+  id: '/crm-leads',
+  path: '/crm-leads',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CustomerContractsRoute = CustomerContractsRouteImport.update({
@@ -841,6 +847,7 @@ export interface FileRoutesByFullPath {
   '/consignments': typeof ConsignmentsRoute
   '/cost-to-serve': typeof CostToServeRoute
   '/credit-reviews': typeof CreditReviewsRoute
+  '/crm-leads': typeof CrmLeadsRoute
   '/customer-contracts': typeof CustomerContractsRoute
   '/customer-sops': typeof CustomerSopsRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
@@ -977,6 +984,7 @@ export interface FileRoutesByTo {
   '/consignments': typeof ConsignmentsRoute
   '/cost-to-serve': typeof CostToServeRoute
   '/credit-reviews': typeof CreditReviewsRoute
+  '/crm-leads': typeof CrmLeadsRoute
   '/customer-contracts': typeof CustomerContractsRoute
   '/customer-sops': typeof CustomerSopsRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
@@ -1114,6 +1122,7 @@ export interface FileRoutesById {
   '/consignments': typeof ConsignmentsRoute
   '/cost-to-serve': typeof CostToServeRoute
   '/credit-reviews': typeof CreditReviewsRoute
+  '/crm-leads': typeof CrmLeadsRoute
   '/customer-contracts': typeof CustomerContractsRoute
   '/customer-sops': typeof CustomerSopsRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
@@ -1252,6 +1261,7 @@ export interface FileRouteTypes {
     | '/consignments'
     | '/cost-to-serve'
     | '/credit-reviews'
+    | '/crm-leads'
     | '/customer-contracts'
     | '/customer-sops'
     | '/dangerous-goods'
@@ -1388,6 +1398,7 @@ export interface FileRouteTypes {
     | '/consignments'
     | '/cost-to-serve'
     | '/credit-reviews'
+    | '/crm-leads'
     | '/customer-contracts'
     | '/customer-sops'
     | '/dangerous-goods'
@@ -1524,6 +1535,7 @@ export interface FileRouteTypes {
     | '/consignments'
     | '/cost-to-serve'
     | '/credit-reviews'
+    | '/crm-leads'
     | '/customer-contracts'
     | '/customer-sops'
     | '/dangerous-goods'
@@ -1661,6 +1673,7 @@ export interface RootRouteChildren {
   ConsignmentsRoute: typeof ConsignmentsRoute
   CostToServeRoute: typeof CostToServeRoute
   CreditReviewsRoute: typeof CreditReviewsRoute
+  CrmLeadsRoute: typeof CrmLeadsRoute
   CustomerContractsRoute: typeof CustomerContractsRoute
   CustomerSopsRoute: typeof CustomerSopsRoute
   DangerousGoodsRoute: typeof DangerousGoodsRoute
@@ -1941,6 +1954,13 @@ declare module '@tanstack/react-router' {
       path: '/credit-reviews'
       fullPath: '/credit-reviews'
       preLoaderRoute: typeof CreditReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/crm-leads': {
+      id: '/crm-leads'
+      path: '/crm-leads'
+      fullPath: '/crm-leads'
+      preLoaderRoute: typeof CrmLeadsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/customer-contracts': {
@@ -2741,6 +2761,7 @@ const rootRouteChildren: RootRouteChildren = {
   ConsignmentsRoute: ConsignmentsRoute,
   CostToServeRoute: CostToServeRoute,
   CreditReviewsRoute: CreditReviewsRoute,
+  CrmLeadsRoute: CrmLeadsRoute,
   CustomerContractsRoute: CustomerContractsRoute,
   CustomerSopsRoute: CustomerSopsRoute,
   DangerousGoodsRoute: DangerousGoodsRoute,

@@ -26,6 +26,7 @@ from app.api import (
     containers,
     cost_to_serve,
     credit_reviews,
+    crm_leads,
     customer_contracts,
     customer_rfqs,
     customer_sops,
@@ -274,6 +275,7 @@ api_router.include_router(party_documents.router)
 api_router.include_router(party_scorecards.router)
 api_router.include_router(party_lane_scorecards.router)
 api_router.include_router(credit_reviews.router)
+api_router.include_router(crm_leads.router)
 api_router.include_router(customer_sops.router)
 api_router.include_router(ports.router)
 api_router.include_router(port_surcharges.router)

@@ -786,6 +786,10 @@ class InvalidInterventionOutcome(DomainError):
     """CI7: HITL wynik interwencji — nie SQL saved."""
 
 
+class InvalidCrmLead(DomainError):
+    """G1: HITL lead CRM — nie cold-send."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

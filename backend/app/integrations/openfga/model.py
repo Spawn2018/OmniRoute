@@ -135,6 +135,12 @@ def _organization_ci_catalog_relations() -> dict[str, Userset]:
     }
 
 
+def _organization_g_catalog_relations() -> dict[str, Userset]:
+    return {
+        "can_manage_crm_leads": _member(),
+    }
+
+
 def _organization_tender_relations() -> dict[str, Userset]:
     return {
         "can_manage_tender_quotes": _member(),
@@ -164,6 +170,7 @@ def _organization_relations() -> dict[str, Userset]:
         **_organization_ops_relations(),
         **_organization_ops_catalog_relations(),
         **_organization_ci_catalog_relations(),
+        **_organization_g_catalog_relations(),
         **_organization_tender_relations(),
     }
 

@@ -669,6 +669,11 @@ export const OPS_JOBS = [
     job: "katalog collaboration_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.crmLead.route,
+    label: "Lead CRM",
+    job: "katalog crm_lead HITL",
+  },
+  {
     route: BUSINESS_LISTS.exchangeConnector.route,
     label: "Konektor giełdy",
     job: "katalog exchange_connector HITL",
@@ -961,6 +966,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "320.0": "/spend-marks",
   "321.0": "/penalty-marks",
   "322.0": "/intervention-outcomes",
+  "323.0": "/crm-leads",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

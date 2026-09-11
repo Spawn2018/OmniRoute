@@ -13042,6 +13042,80 @@
         }
       }
     },
+    "/api/v1/crm-leads": {
+      "get": {
+        "tags": [
+          "crm-leads"
+        ],
+        "summary": "List Crm Leads",
+        "operationId": "list_crm_leads_api_v1_crm_leads_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CrmLeadResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Crm Leads Api V1 Crm Leads Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "crm-leads"
+        ],
+        "summary": "Create Crm Lead",
+        "operationId": "create_crm_lead_api_v1_crm_leads_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CrmLeadCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CrmLeadResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/customer-sops": {
       "get": {
         "tags": [
@@ -17598,6 +17672,65 @@
           "bureau_attachment_ref"
         ],
         "title": "CreditReviewResponse"
+      },
+      "CrmLeadCreate": {
+        "properties": {
+          "lead_code": {
+            "type": "string",
+            "title": "Lead Code"
+          },
+          "stage_kind": {
+            "type": "string",
+            "title": "Stage Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "lead_code",
+          "stage_kind",
+          "source_ref"
+        ],
+        "title": "CrmLeadCreate"
+      },
+      "CrmLeadResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "lead_code": {
+            "type": "string",
+            "title": "Lead Code"
+          },
+          "stage_kind": {
+            "type": "string",
+            "title": "Stage Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "lead_code",
+          "stage_kind",
+          "source_ref"
+        ],
+        "title": "CrmLeadResponse"
       },
       "CustomerContractCreate": {
         "properties": {
