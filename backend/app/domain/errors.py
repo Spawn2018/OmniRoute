@@ -756,3 +756,7 @@ class InvalidCollaborationMark(DomainError):
 
 class InvalidRoutingGuideEnforcement(DomainError):
     """CT4 leftover: HITL tryb egzekucji przewodnika — nie żywy 409."""
+
+
+class RoutingGuideOffGuide(DomainError):
+    """CT4 leftover: ASN poza przewodnikiem przy block_409 — nie shipment."""

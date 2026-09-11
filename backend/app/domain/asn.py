@@ -17,14 +17,16 @@ def parse_asn_row(
     plant_label: object,
     carrier_label: object,
     ship_ref_label: object,
+    guide_code: object,
     source_ref: object,
-) -> tuple[UUID, str, str | None, str | None, str | None, str]:
+) -> tuple[UUID, str, str | None, str | None, str | None, str | None, str]:
     return (
         _require_header(purchase_order_id),
         _require_asn_code(asn_code),
         _optional_label(plant_label, "zakład"),
         _optional_label(carrier_label, "przewoźnik"),
         _optional_label(ship_ref_label, "referencja"),
+        _optional_guide_code(guide_code),
         _require_origin(source_ref),
     )
 
@@ -55,6 +57,19 @@ def _optional_label(raw: object, token: str) -> str | None:
     if len(label) > _MAX_LABEL:
         raise InvalidAsn(f"{token}: tekst 1–128")
     return label
+
+
+def _optional_guide_code(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidAsn("przewodnik musi być tekstem")
+    slug = raw.strip()
+    if not slug:
+        return None
+    if _SNAKE.fullmatch(slug) is None:
+        raise InvalidAsn("przewodnik: snake 2–32")
+    return slug
 
 
 def _require_origin(raw: object) -> str:

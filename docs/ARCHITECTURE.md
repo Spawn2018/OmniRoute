@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **285.0** leftover HITL `routing_guide_enforcement`. **Etap:** Kod. **Następny:** **286.0** leftover CT4 żywy HTTP 409 na ASN poza guide. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **286.0** leftover CT4 409 na ASN poza guide. **Etap:** Plan. **Następny:** leftover 409 na shipment poza guide (pin 2026-09-08c) albo reszta pinu z PLAN § Kolejka. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

@@ -11,6 +11,7 @@ export type AsnRow = {
   plant_label: string | null
   carrier_label: string | null
   ship_ref_label: string | null
+  guide_code: string | null
   source_ref: string
 }
 
@@ -20,6 +21,7 @@ export type AsnBody = {
   plant_label: string | null
   carrier_label: string | null
   ship_ref_label: string | null
+  guide_code: string | null
   source_ref: string
 }
 
@@ -34,6 +36,7 @@ export function asnBody(draft: {
   plantText: string
   carrierText: string
   shipRefText: string
+  guideSlug: string
   originPointer: string
 }): AsnBody {
   return {
@@ -42,6 +45,7 @@ export function asnBody(draft: {
     plant_label: optionalLabel(draft.plantText),
     carrier_label: optionalLabel(draft.carrierText),
     ship_ref_label: optionalLabel(draft.shipRefText),
+    guide_code: optionalLabel(draft.guideSlug),
     source_ref: draft.originPointer.trim(),
   }
 }

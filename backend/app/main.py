@@ -11,6 +11,7 @@ from app.domain.errors import (
     PermissionDenied,
     QuotationNamedPlaceRequired,
     ResourceNotFound,
+    RoutingGuideOffGuide,
     TenantContextMissing,
     Unauthenticated,
 )
@@ -49,6 +50,14 @@ async def resource_not_found_handler(_request: Request, exc: ResourceNotFound) -
 async def channel_quote_conflict_handler(
     _request: Request,
     exc: ChannelQuoteConflict,
+) -> JSONResponse:
+    return JSONResponse(status_code=409, content={"detail": str(exc)})
+
+
+@app.exception_handler(RoutingGuideOffGuide)
+async def routing_guide_off_guide_handler(
+    _request: Request,
+    exc: RoutingGuideOffGuide,
 ) -> JSONResponse:
     return JSONResponse(status_code=409, content={"detail": str(exc)})
 

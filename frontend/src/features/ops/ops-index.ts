@@ -890,6 +890,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "283.0": "/freight-audit-marks",
   "284.0": "/collaboration-marks",
   "285.0": "/routing-guide-enforcements",
+  "286.0": "/asns",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

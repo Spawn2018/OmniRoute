@@ -2,6 +2,7 @@ from pathlib import Path
 
 _ROOT = Path(__file__).resolve().parents[3]
 _MIGRATION = _ROOT / "backend" / "alembic" / "versions" / "211_asn.py"
+_GUIDE_MIG = _ROOT / "backend" / "alembic" / "versions" / "219_asn_guide_code.py"
 _SERVICE = _ROOT / "backend" / "app" / "services" / "purchase_orders" / "asn_service.py"
 _API = _ROOT / "backend" / "app" / "api" / "asns.py"
 _BANNED = (
@@ -13,6 +14,8 @@ _BANNED = (
     "app.services.field_carry_forwards",
     "app.services.edi_messages",
     "app.services.extraction",
+    "app.services.routing_guides",
+    "app.services.routing_guide_enforcements",
 )
 
 
@@ -32,6 +35,15 @@ def test_migration_211_creates_asn_and_forces_rls() -> None:
     assert "drop_table" in source.split("def downgrade")[1]
 
 
+def test_migration_219_adds_nullable_guide_code() -> None:
+    source = _GUIDE_MIG.read_text(encoding="utf-8")
+    assert 'revision: str = "219_asn_guide_code"' in source
+    assert 'down_revision: str | None = "218_routing_guide_enforcement"' in source
+    assert "guide_code" in source
+    assert "ck_asn_guide_code" in source
+    assert "drop_column" in source.split("def downgrade")[1]
+
+
 def test_asn_service_is_catalog_and_isolated() -> None:
     source = _SERVICE.read_text(encoding="utf-8")
     for banned in _BANNED:
@@ -40,6 +52,16 @@ def test_asn_service_is_catalog_and_isolated() -> None:
     assert "DELETE" not in source
     assert "delete(" not in source
     assert ".update(" not in source
+
+
+def test_api_composes_routing_gate_without_service_import_in_bc() -> None:
+    api = _API.read_text(encoding="utf-8")
+    assert "RoutingGuideEnforcementService" in api
+    assert "RoutingGuideService" in api
+    assert "assert_asn_on_routing_guide" in api
+    assert "guide_code" in api
+    service = _SERVICE.read_text(encoding="utf-8")
+    assert "routing_guide" not in service
 
 
 def test_importlinter_lists_asn_model_on_deny_list() -> None:

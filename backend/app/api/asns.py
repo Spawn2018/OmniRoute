@@ -6,8 +6,13 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import get_current_identity, require_permission, require_tenant_session
 from app.core.session_token import SessionIdentity
+from app.domain.routing_guide_gate import assert_asn_on_routing_guide
 from app.models.asn import Asn
 from app.services.purchase_orders.asn_service import AsnService
+from app.services.routing_guide_enforcements.routing_guide_enforcement_service import (
+    RoutingGuideEnforcementService,
+)
+from app.services.routing_guides.routing_guide_service import RoutingGuideService
 
 router = APIRouter(prefix="/asns", tags=["asns"])
 
@@ -22,6 +27,7 @@ class AsnCreate(BaseModel):
     plant_label: str | None = None
     carrier_label: str | None = None
     ship_ref_label: str | None = None
+    guide_code: str | None = None
     source_ref: str
 
 
@@ -35,6 +41,7 @@ class AsnResponse(BaseModel):
     plant_label: str | None
     carrier_label: str | None
     ship_ref_label: str | None
+    guide_code: str | None
     source_ref: str
 
 
@@ -47,7 +54,28 @@ def _notice(saved: Asn) -> AsnResponse:
         plant_label=saved.plant_label,
         carrier_label=saved.carrier_label,
         ship_ref_label=saved.ship_ref_label,
+        guide_code=saved.guide_code,
         source_ref=saved.source_ref,
+    )
+
+
+async def _enforce_guide_if_blocking(
+    session: AsyncSession, guide_code: str | None
+) -> None:
+    kinds = {
+        row.enforcement_kind
+        for row in await RoutingGuideEnforcementService(session).list_marks()
+    }
+    codes = {
+        row.guide_code for row in await RoutingGuideService(session).list_guides()
+    }
+    token = guide_code.strip() if type(guide_code) is str else guide_code
+    if type(token) is str and not token:
+        token = None
+    assert_asn_on_routing_guide(
+        guide_code=token,
+        enforcement_kinds=kinds,
+        known_guide_codes=codes,
     )
 
 
@@ -67,6 +95,7 @@ async def create_asn(
     session: AsyncSession = Depends(require_tenant_session),
     identity: SessionIdentity = Depends(get_current_identity),
 ) -> AsnResponse:
+    await _enforce_guide_if_blocking(session, body.guide_code)
     saved = await AsnService(session).persist_asn(
         organization_id=identity.organization_id,
         user_id=identity.user_id,
@@ -75,6 +104,7 @@ async def create_asn(
         plant_label=body.plant_label,
         carrier_label=body.carrier_label,
         ship_ref_label=body.ship_ref_label,
+        guide_code=body.guide_code,
         source_ref=body.source_ref,
     )
     await session.commit()

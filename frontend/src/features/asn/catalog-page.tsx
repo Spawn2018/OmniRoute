@@ -11,6 +11,7 @@ const cols = createColumnHelper<AsnRow>()
 
 const ASN_COLUMNS = [
   cols.accessor("asn_code", { header: "Awizo" }),
+  cols.accessor("guide_code", { header: "Przewodnik" }),
   cols.accessor("plant_label", { header: "Zakład" }),
   cols.accessor("carrier_label", { header: "Przewoźnik" }),
   cols.accessor("ship_ref_label", { header: "Referencja" }),
@@ -19,6 +20,7 @@ const ASN_COLUMNS = [
 
 const ASN_LABELS = {
   asn_code: "Awizo",
+  guide_code: "Przewodnik",
   plant_label: "Zakład",
   carrier_label: "Przewoźnik",
   ship_ref_label: "Referencja",

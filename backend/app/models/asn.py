@@ -51,6 +51,10 @@ class Asn(Base, TimestampMixin):
             "ship_ref_label IS NULL OR char_length(btrim(ship_ref_label)) BETWEEN 1 AND 128",
             name="ck_asn_ship_ref",
         ),
+        CheckConstraint(
+            "guide_code IS NULL OR guide_code ~ '^[a-z][a-z0-9_]{1,31}$'",
+            name="ck_asn_guide_code",
+        ),
         Index("ix_asn_organization_id", "organization_id"),
         Index("ix_asn_org_header", "organization_id", "purchase_order_id"),
     )
@@ -65,4 +69,5 @@ class Asn(Base, TimestampMixin):
     plant_label: Mapped[str | None] = mapped_column(String(128), nullable=True)
     carrier_label: Mapped[str | None] = mapped_column(String(128), nullable=True)
     ship_ref_label: Mapped[str | None] = mapped_column(String(128), nullable=True)
+    guide_code: Mapped[str | None] = mapped_column(String(32), nullable=True)
     source_ref: Mapped[str] = mapped_column(String(256), nullable=False)

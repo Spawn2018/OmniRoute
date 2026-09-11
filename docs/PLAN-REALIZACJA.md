@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **286.0** leftover CT4 żywy HTTP 409 na ASN poza guide.
+**Następny:** leftover 409 na shipment poza guide (pin 2026-09-08c) albo reszta pinu z PLAN § Kolejka.
 <!-- os-status:end -->
 
 ```mermaid
@@ -684,7 +684,7 @@ Karta: [karty-pol-fala-ct.md](analysis/karty-pol-fala-ct.md). Tenant `shipper` R
 | CT1 | PO → ASN → shipment (U1); plant/SKU | 276.0 HITL nagłówek `purchase_order`; 277.0 HITL `po_line`; 278.0 HITL `asn` | auto shipment / qty float / live EDI |
 | CT2 | impact chain; klej CI5 | po V6 | auto „zatrzymaj produkcję” |
 | CT3 | OTIF pickup vs delivery vs SKU | 280.0 HITL katalog `otif_mark` | OTIF% / scoring SQL |
-| CT4 | routing guide 409 | 279.0 HITL katalog `routing_guide`; 285.0 HITL tryb `routing_guide_enforcement` | żywy HTTP 409 na shipment/ASN |
+| CT4 | routing guide 409 | 279.0 HITL `routing_guide`; 285.0 tryb; 286.0 409 na ASN | 409 na shipment |
 | CT5 | EDI 214/315/856/210 + webhook | TO_VERIFY partner | |
 | CT6 | SAP/Oracle adapter jak F9 | 281.0 HITL katalog `sap_connector` | live SOAP / SQL do SAP |
 | CT7 | p44 **albo** FourKites **albo** Shippeo | 275.0 HITL `visibility_connector` token `p44` (nie live); leftover FourKites/Shippeo + live HTTP (TO_VERIFY umowa) | scrape ocean |
@@ -853,13 +853,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

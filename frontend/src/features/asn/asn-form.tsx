@@ -10,6 +10,7 @@ type AsnDraft = {
   plantText: string
   carrierText: string
   shipRefText: string
+  guideSlug: string
   originPointer: string
 }
 
@@ -19,6 +20,7 @@ const EMPTY_ASN: AsnDraft = {
   plantText: "",
   carrierText: "",
   shipRefText: "",
+  guideSlug: "",
   originPointer: "fixture://asn/",
 }
 
@@ -42,7 +44,8 @@ export function AsnSave(args: { organizationId: string | null }) {
       }}
     >
       <p className="text-xs text-muted-foreground">
-        Awizo wysyłki na istniejącym zamówieniu zakupu. To nie jest live EDI 856 ani zlecenie.
+        Awizo wysyłki na istniejącym zamówieniu zakupu. To nie jest live EDI 856 ani zlecenie. Przy
+        egzekucji block_409 wpisz guide_code z katalogu przewodnika.
       </p>
       <label className="grid gap-1 text-xs">
         Id nagłówka zamówienia zakupu
@@ -62,6 +65,15 @@ export function AsnSave(args: { organizationId: string | null }) {
           onChange={(change) => setDraft({ ...draft, asnSlug: change.target.value })}
           required
           value={draft.asnSlug}
+        />
+      </label>
+      <label className="grid gap-1 text-xs">
+        Kod przewodnika (guide_code, opcjonalnie / wymagany przy block_409)
+        <input
+          aria-label="Kod przewodnika routingu"
+          className="h-9 rounded-md border bg-background px-2 font-mono"
+          onChange={(change) => setDraft({ ...draft, guideSlug: change.target.value })}
+          value={draft.guideSlug}
         />
       </label>
       <label className="grid gap-1 text-xs">

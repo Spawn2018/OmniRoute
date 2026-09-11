@@ -7,7 +7,7 @@ from app.domain.errors import ResourceNotFound
 from app.models.asn import Asn
 from app.repositories.purchase_orders.asn_repository import AsnRepository
 
-_AsnParsed = tuple[UUID, str, str | None, str | None, str | None, str]
+_AsnParsed = tuple[UUID, str, str | None, str | None, str | None, str | None, str]
 
 
 class AsnService:
@@ -27,6 +27,7 @@ class AsnService:
         plant_label: object,
         carrier_label: object,
         ship_ref_label: object,
+        guide_code: object,
         source_ref: object,
     ) -> Asn:
         packed = parse_asn_row(
@@ -35,6 +36,7 @@ class AsnService:
             plant_label=plant_label,
             carrier_label=carrier_label,
             ship_ref_label=ship_ref_label,
+            guide_code=guide_code,
             source_ref=source_ref,
         )
         header = await self._rows.get_header(packed[0])
@@ -52,6 +54,7 @@ def _notice_row(organization_id: UUID, user_id: UUID, packed: _AsnParsed) -> Asn
         plant_label=packed[2],
         carrier_label=packed[3],
         ship_ref_label=packed[4],
-        source_ref=packed[5],
+        guide_code=packed[5],
+        source_ref=packed[6],
         created_by=user_id,
     )

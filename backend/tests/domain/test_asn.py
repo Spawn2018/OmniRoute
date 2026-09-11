@@ -13,6 +13,7 @@ def _parse(**overrides: object) -> tuple[object, ...]:
         "plant_label": "Gdańsk",
         "carrier_label": "DB Schenker",
         "ship_ref_label": "REF-9",
+        "guide_code": None,
         "source_ref": "tenant:manual",
     }
     body.update(overrides)
@@ -27,6 +28,7 @@ def test_parse_asn_row_accepts_code_and_labels() -> None:
         plant_label=" Gdańsk ",
         carrier_label=" DB Schenker ",
         ship_ref_label=" REF-9 ",
+        guide_code=" lane_pl_de ",
         source_ref="fixture://asn/a",
     )
     assert packed[0] == header
@@ -34,14 +36,16 @@ def test_parse_asn_row_accepts_code_and_labels() -> None:
     assert packed[2] == "Gdańsk"
     assert packed[3] == "DB Schenker"
     assert packed[4] == "REF-9"
-    assert packed[5] == "fixture://asn/a"
+    assert packed[5] == "lane_pl_de"
+    assert packed[6] == "fixture://asn/a"
 
 
 def test_parse_asn_row_accepts_blank_labels() -> None:
-    packed = _parse(plant_label="  ", carrier_label=None, ship_ref_label="")
+    packed = _parse(plant_label="  ", carrier_label=None, ship_ref_label="", guide_code="")
     assert packed[2] is None
     assert packed[3] is None
     assert packed[4] is None
+    assert packed[5] is None
 
 
 def test_parse_asn_row_rejects_bad_asn_code() -> None:
@@ -49,6 +53,13 @@ def test_parse_asn_row_rejects_bad_asn_code() -> None:
         _parse(asn_code="X")
     with pytest.raises(InvalidAsn, match="awizo"):
         _parse(asn_code=1)
+
+
+def test_parse_asn_row_rejects_bad_guide_code() -> None:
+    with pytest.raises(InvalidAsn, match="przewodnik"):
+        _parse(guide_code="X")
+    with pytest.raises(InvalidAsn, match="przewodnik"):
+        _parse(guide_code=1)
 
 
 def test_parse_asn_row_rejects_bad_labels_and_origin() -> None:

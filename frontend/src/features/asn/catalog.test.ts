@@ -13,6 +13,7 @@ describe("asnBody", () => {
         plantText: " Gdańsk ",
         carrierText: "  ",
         shipRefText: "",
+        guideSlug: " lane_pl_de ",
         originPointer: "tenant:manual",
       }),
     ).toEqual({
@@ -21,12 +22,13 @@ describe("asnBody", () => {
       plant_label: "Gdańsk",
       carrier_label: null,
       ship_ref_label: null,
+      guide_code: "lane_pl_de",
       source_ref: "tenant:manual",
     })
   })
 })
 
-describe("asn surface for 278.0", () => {
+describe("asn surface for 278.0 / 286.0", () => {
   it("records HITL awizo on /asns without shipment or money", () => {
     const page = src("features/asn/catalog-page.tsx")
     const panel = src("features/asn/asn-form.tsx")
@@ -38,7 +40,9 @@ describe("asn surface for 278.0", () => {
     expect(page).toContain("AsnDesk")
     expect(page).toContain("DataTableShell")
     expect(page).toContain("CatalogHeading")
+    expect(page).toContain("guide_code")
     expect(panel).toContain("persistAsn")
+    expect(panel).toContain("guideSlug")
     expect(panel).toContain("Zapisz awizo wysyłki")
     expect(panel).not.toContain("<Money")
     expect(panel).not.toContain("parseFloat")
@@ -46,6 +50,7 @@ describe("asn surface for 278.0", () => {
     expect(panel).not.toContain("Wyślij EDI")
     expect(client).not.toContain("shipment_id")
     expect(client).not.toContain("amount")
-    expect(src("features/ops/ops-index.ts")).toContain('"278.0": "/asns"')
+    expect(client).toContain("guide_code")
+    expect(src("features/ops/ops-index.ts")).toContain('"286.0": "/asns"')
   })
 })

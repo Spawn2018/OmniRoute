@@ -13320,6 +13320,17 @@
             ],
             "title": "Ship Ref Label"
           },
+          "guide_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Guide Code"
+          },
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
@@ -13388,6 +13399,17 @@
             ],
             "title": "Ship Ref Label"
           },
+          "guide_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Guide Code"
+          },
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
@@ -13402,6 +13424,7 @@
           "plant_label",
           "carrier_label",
           "ship_ref_label",
+          "guide_code",
           "source_ref"
         ],
         "title": "AsnResponse"

@@ -51,6 +51,10 @@ export type AsnCreate = {
      */
     ship_ref_label?: string | null;
     /**
+     * Guide Code
+     */
+    guide_code?: string | null;
+    /**
      * Source Ref
      */
     source_ref: string;
@@ -88,6 +92,10 @@ export type AsnResponse = {
      * Ship Ref Label
      */
     ship_ref_label: string | null;
+    /**
+     * Guide Code
+     */
+    guide_code: string | null;
     /**
      * Source Ref
      */

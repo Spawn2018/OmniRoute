@@ -210,5 +210,6 @@ async def test_asn_rejects_foreign_header(session, two_tenants) -> None:
             plant_label=None,
             carrier_label=None,
             ship_ref_label=None,
+            guide_code=None,
             source_ref="fixture://asn/cross",
         )
