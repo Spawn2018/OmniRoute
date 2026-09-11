@@ -8,15 +8,15 @@
 
 
 
-**Ostatni plaster:** **310.0** `/refaktor` CatalogSourceRefField (round/matrix/side)  
+**Ostatni plaster:** **311.0** `/refaktor` CatalogSourceRefField (rate-card/fuel/groupage)  
 
 **Etap:** Refaktor  
 
 **Noc:** `/noc 17` do 2026-09-11T17:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).  
 
-**Następny:** leftover label-form (rate-card / fuel / groupage / local-charge…) albo wąski HITL z pinu.  
+**Następny:** leftover label-form (local-charge / charge-template / cod…) albo wąski HITL z pinu.  
 
-Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44/FourKites/Shippeo. Nie CI1 extract. Nie zgaduj 71–310.
+Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44/FourKites/Shippeo. Nie CI1 extract. Nie zgaduj 71–311.
 
 
 
@@ -36,4 +36,4 @@ Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow 
 
 
 
-**2026-09-11:** **310.0** zamknięty — round / matrix-cell / tender side na SourceRefField.
+**2026-09-11:** **311.0** zamknięty — rate-card / fuel-index / groupage-tariff na SourceRefField.

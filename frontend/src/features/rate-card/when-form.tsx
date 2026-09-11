@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefField } from "@/components/catalog/catalog-parts"
 import { Money } from "@/components/money"
 import { Button } from "@/components/ui/button"
 import { listWhenMarks, persistWhenMark, whenWrite } from "@/lib/rate-cards-api"
@@ -84,16 +84,12 @@ function WhenSave(args: { organizationId: string | null }) {
           required
         />
       </label>
-      <label className="flex flex-col gap-1 text-xs">
-        Pochodzenie zapisu karty stawek
-        <input
-          aria-label="Pochodzenie zapisu karty stawek"
-          className="h-9 rounded-md border bg-background px-2 font-mono"
-          value={draft.originStamp}
-          onChange={(change) => setDraft({ ...draft, originStamp: change.target.value })}
-          required
-        />
-      </label>
+      <CatalogSourceRefField
+        label="source_ref (tenant:manual albo fixture://rate-card/…)"
+        ariaLabel="Pochodzenie zapisu karty stawek"
+        value={draft.originStamp}
+        onChange={(originStamp) => setDraft({ ...draft, originStamp })}
+      />
       <Button type="submit" disabled={persist.isPending || !args.organizationId}>
         Zapisz kartę stawek
       </Button>

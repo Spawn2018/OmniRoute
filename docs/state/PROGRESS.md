@@ -2,6 +2,7 @@
 
 | Data | Plaster | Moduł | Opis |
 |---|---|---|---|
+| 2026-09-11 | 311.0 | UI | `/refaktor`: SourceRefField na rate-card/fuel/groupage. Nastepny: leftover label-form. |
 | 2026-09-11 | 310.0 | UI | `/refaktor`: SourceRefField na round/matrix/side. Nastepny: leftover label-form. |
 | 2026-09-11 | 309.0 | UI | `/refaktor`: SourceRefField na lot/lane/quote. Nastepny: leftover label-form. |
 | 2026-09-11 | 308.0 | UI | `/refaktor`: SourceRefField na prospect/win-loss/data-room. Nastepny: leftover label-form. |

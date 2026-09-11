@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { Link } from "@tanstack/react-router"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefField } from "@/components/catalog/catalog-parts"
 import { Money } from "@/components/money"
 import { Button } from "@/components/ui/button"
 import { bandWrite, listWeightBands, persistWeightBand } from "@/lib/groupage-tariffs-api"
@@ -97,16 +97,12 @@ function BandSave(args: { organizationId: string | null }) {
           required
         />
       </label>
-      <label className="flex flex-col gap-1 text-xs">
-        Pochodzenie zapisu cennika
-        <input
-          aria-label="Pochodzenie zapisu cennika"
-          className="h-9 rounded-md border bg-background px-2 font-mono"
-          value={draft.originStamp}
-          onChange={(change) => setDraft({ ...draft, originStamp: change.target.value })}
-          required
-        />
-      </label>
+      <CatalogSourceRefField
+        label="source_ref (tenant:manual albo fixture://groupage-tariff/…)"
+        ariaLabel="Pochodzenie zapisu cennika"
+        value={draft.originStamp}
+        onChange={(originStamp) => setDraft({ ...draft, originStamp })}
+      />
       <Button type="submit" disabled={persist.isPending || !args.organizationId}>
         Zapisz próg cennika drobnicy
       </Button>
