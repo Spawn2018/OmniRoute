@@ -10632,6 +10632,80 @@
         ]
       }
     },
+    "/api/v1/cost-allocation-marks": {
+      "get": {
+        "tags": [
+          "cost-allocation-marks"
+        ],
+        "summary": "List Cost Allocation Marks",
+        "operationId": "list_cost_allocation_marks_api_v1_cost_allocation_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CostAllocationMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Cost Allocation Marks Api V1 Cost Allocation Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "cost-allocation-marks"
+        ],
+        "summary": "Create Cost Allocation Mark",
+        "operationId": "create_cost_allocation_mark_api_v1_cost_allocation_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CostAllocationMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CostAllocationMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/asns": {
       "get": {
         "tags": [
@@ -18968,6 +19042,65 @@
           "superseded_by"
         ],
         "title": "ContainerResponse"
+      },
+      "CostAllocationMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "alloc_kind": {
+            "type": "string",
+            "title": "Alloc Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "alloc_kind",
+          "source_ref"
+        ],
+        "title": "CostAllocationMarkCreate"
+      },
+      "CostAllocationMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "alloc_kind": {
+            "type": "string",
+            "title": "Alloc Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "alloc_kind",
+          "source_ref"
+        ],
+        "title": "CostAllocationMarkResponse"
       },
       "CostToServeCreate": {
         "properties": {

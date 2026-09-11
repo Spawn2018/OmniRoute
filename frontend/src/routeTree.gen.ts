@@ -158,6 +158,7 @@ import { Route as WatchtowerRouteImport } from './routes/watchtower'
 import { Route as WeatherObservationsRouteImport } from './routes/weather-observations'
 import { Route as WorkingCapitalMarksRouteImport } from './routes/working-capital-marks'
 import { Route as MakeOrBuyMarksRouteImport } from './routes/make-or-buy-marks'
+import { Route as CostAllocationMarksRouteImport } from './routes/cost-allocation-marks'
 import { Route as YardMarksRouteImport } from './routes/yard-marks'
 import { Route as TenancyUsersRouteImport } from './routes/tenancy.users'
 
@@ -907,6 +908,11 @@ const MakeOrBuyMarksRoute = MakeOrBuyMarksRouteImport.update({
   path: '/make-or-buy-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CostAllocationMarksRoute = CostAllocationMarksRouteImport.update({
+  id: '/cost-allocation-marks',
+  path: '/cost-allocation-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const YardMarksRoute = YardMarksRouteImport.update({
   id: '/yard-marks',
   path: '/yard-marks',
@@ -1068,6 +1074,7 @@ export interface FileRoutesByFullPath {
   '/weather-observations': typeof WeatherObservationsRoute
   '/working-capital-marks': typeof WorkingCapitalMarksRoute
   '/make-or-buy-marks': typeof MakeOrBuyMarksRoute
+  '/cost-allocation-marks': typeof CostAllocationMarksRoute
   '/yard-marks': typeof YardMarksRoute
   '/tenancy/users': typeof TenancyUsersRoute
 }
@@ -1221,6 +1228,7 @@ export interface FileRoutesByTo {
   '/weather-observations': typeof WeatherObservationsRoute
   '/working-capital-marks': typeof WorkingCapitalMarksRoute
   '/make-or-buy-marks': typeof MakeOrBuyMarksRoute
+  '/cost-allocation-marks': typeof CostAllocationMarksRoute
   '/yard-marks': typeof YardMarksRoute
   '/tenancy/users': typeof TenancyUsersRoute
 }
@@ -1375,6 +1383,7 @@ export interface FileRoutesById {
   '/weather-observations': typeof WeatherObservationsRoute
   '/working-capital-marks': typeof WorkingCapitalMarksRoute
   '/make-or-buy-marks': typeof MakeOrBuyMarksRoute
+  '/cost-allocation-marks': typeof CostAllocationMarksRoute
   '/yard-marks': typeof YardMarksRoute
   '/tenancy/users': typeof TenancyUsersRoute
 }
@@ -1530,6 +1539,7 @@ export interface FileRouteTypes {
     | '/weather-observations'
     | '/working-capital-marks'
     | '/make-or-buy-marks'
+    | '/cost-allocation-marks'
     | '/yard-marks'
     | '/tenancy/users'
   fileRoutesByTo: FileRoutesByTo
@@ -1683,6 +1693,7 @@ export interface FileRouteTypes {
     | '/weather-observations'
     | '/working-capital-marks'
     | '/make-or-buy-marks'
+    | '/cost-allocation-marks'
     | '/yard-marks'
     | '/tenancy/users'
   id:
@@ -1836,6 +1847,7 @@ export interface FileRouteTypes {
     | '/weather-observations'
     | '/working-capital-marks'
     | '/make-or-buy-marks'
+    | '/cost-allocation-marks'
     | '/yard-marks'
     | '/tenancy/users'
   fileRoutesById: FileRoutesById
@@ -1990,6 +2002,7 @@ export interface RootRouteChildren {
   WeatherObservationsRoute: typeof WeatherObservationsRoute
   WorkingCapitalMarksRoute: typeof WorkingCapitalMarksRoute
   MakeOrBuyMarksRoute: typeof MakeOrBuyMarksRoute
+  CostAllocationMarksRoute: typeof CostAllocationMarksRoute
   YardMarksRoute: typeof YardMarksRoute
   TenancyUsersRoute: typeof TenancyUsersRoute
 }
@@ -3039,6 +3052,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MakeOrBuyMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cost-allocation-marks': {
+      id: '/cost-allocation-marks'
+      path: '/cost-allocation-marks'
+      fullPath: '/cost-allocation-marks'
+      preLoaderRoute: typeof CostAllocationMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/yard-marks': {
       id: '/yard-marks'
       path: '/yard-marks'
@@ -3206,6 +3226,7 @@ const rootRouteChildren: RootRouteChildren = {
   WeatherObservationsRoute: WeatherObservationsRoute,
   WorkingCapitalMarksRoute: WorkingCapitalMarksRoute,
   MakeOrBuyMarksRoute: MakeOrBuyMarksRoute,
+  CostAllocationMarksRoute: CostAllocationMarksRoute,
   YardMarksRoute: YardMarksRoute,
   TenancyUsersRoute: TenancyUsersRoute,
 }

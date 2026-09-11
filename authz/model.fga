@@ -109,6 +109,7 @@ type organization
     define can_manage_registry_poll_marks: member
     define can_manage_working_capital_marks: member
     define can_manage_make_or_buy_marks: member
+    define can_manage_cost_allocation_marks: member
     define can_manage_freight_audit_marks: member
     define can_manage_collaboration_marks: member
     define can_manage_routing_guide_enforcements: member

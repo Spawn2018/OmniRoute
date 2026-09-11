@@ -854,6 +854,10 @@ class InvalidMakeOrBuyMark(DomainError):
     """EXP2.2: HITL make-or-buy — nie silnik kosztu."""
 
 
+class InvalidCostAllocationMark(DomainError):
+    """EXP2.3: HITL cost allocation — nie allocation SQL."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

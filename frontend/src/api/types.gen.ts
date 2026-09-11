@@ -2095,6 +2095,50 @@ export type ContainerResponse = {
 };
 
 /**
+ * CostAllocationMarkCreate
+ */
+export type CostAllocationMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Alloc Kind
+     */
+    alloc_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CostAllocationMarkResponse
+ */
+export type CostAllocationMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Alloc Kind
+     */
+    alloc_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * CostToServeCreate
  */
 export type CostToServeCreate = {
@@ -16021,6 +16065,49 @@ export type CreateMakeOrBuyMarkApiV1MakeOrBuyMarksPostResponses = {
 };
 
 export type CreateMakeOrBuyMarkApiV1MakeOrBuyMarksPostResponse = CreateMakeOrBuyMarkApiV1MakeOrBuyMarksPostResponses[keyof CreateMakeOrBuyMarkApiV1MakeOrBuyMarksPostResponses];
+
+export type ListCostAllocationMarksApiV1CostAllocationMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/cost-allocation-marks';
+};
+
+export type ListCostAllocationMarksApiV1CostAllocationMarksGetResponses = {
+    /**
+     * Response List Cost Allocation Marks Api V1 Cost Allocation Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<CostAllocationMarkResponse>;
+};
+
+export type ListCostAllocationMarksApiV1CostAllocationMarksGetResponse = ListCostAllocationMarksApiV1CostAllocationMarksGetResponses[keyof ListCostAllocationMarksApiV1CostAllocationMarksGetResponses];
+
+export type CreateCostAllocationMarkApiV1CostAllocationMarksPostData = {
+    body: CostAllocationMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/cost-allocation-marks';
+};
+
+export type CreateCostAllocationMarkApiV1CostAllocationMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCostAllocationMarkApiV1CostAllocationMarksPostError = CreateCostAllocationMarkApiV1CostAllocationMarksPostErrors[keyof CreateCostAllocationMarkApiV1CostAllocationMarksPostErrors];
+
+export type CreateCostAllocationMarkApiV1CostAllocationMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CostAllocationMarkResponse;
+};
+
+export type CreateCostAllocationMarkApiV1CostAllocationMarksPostResponse = CreateCostAllocationMarkApiV1CostAllocationMarksPostResponses[keyof CreateCostAllocationMarkApiV1CostAllocationMarksPostResponses];
 
 export type ListAsnsApiV1AsnsGetData = {
     body?: never;

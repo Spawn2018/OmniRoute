@@ -29,6 +29,7 @@ from app.api import (
     company_marks,
     consignments,
     containers,
+    cost_allocation_marks,
     cost_to_serve,
     credit_reviews,
     crm_leads,
@@ -274,6 +275,7 @@ api_router.include_router(billing_marks.router)
 api_router.include_router(registry_poll_marks.router)
 api_router.include_router(working_capital_marks.router)
 api_router.include_router(make_or_buy_marks.router)
+api_router.include_router(cost_allocation_marks.router)
 api_router.include_router(asns.router)
 api_router.include_router(otif_marks.router)
 api_router.include_router(routing_guide_enforcements.router)
