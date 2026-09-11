@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefField } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { erpConnectorWrite, persistErpConnector } from "@/lib/erp-connectors-api"
 
@@ -59,16 +59,12 @@ export function ErpConnectorSave(args: { organizationId: string | null }) {
           required
         />
       </label>
-      <label className="grid gap-1 text-xs">
-        Pochodzenie (`tenant:manual` albo `fixture://optima/…`)
-        <input
-          aria-label="Pochodzenie konektora Optima"
-          className="h-9 rounded-md border bg-background px-2 font-mono"
-          onChange={(change) => setDraft({ ...draft, originStamp: change.target.value })}
-          required
-          value={draft.originStamp}
-        />
-      </label>
+      <CatalogSourceRefField
+        label="source_ref (tenant:manual albo fixture://optima/…)"
+        ariaLabel="Pochodzenie konektora Optima"
+        value={draft.originStamp}
+        onChange={(originStamp) => setDraft({ ...draft, originStamp })}
+      />
       <Button type="submit" disabled={persist.isPending || !args.organizationId}>
         Zapisz konektor Optima
       </Button>

@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefField } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { pactHeaderWrite, persistCustomerContract } from "@/lib/customer-contracts-api"
 
@@ -74,16 +74,12 @@ export function CustomerContractSave(args: { organizationId: string | null }) {
           required
         />
       </label>
-      <label className="text-xs">
-        source_ref (`tenant:manual` albo `fixture://contract/…`)
-        <input
-          required
-          aria-label="source_ref nagłówka umowy"
-          className="mt-1 h-9 w-full rounded-md border border-input bg-background px-3 font-mono text-sm"
-          value={draft.originHint}
-          onChange={(ev) => setDraft({ ...draft, originHint: ev.target.value })}
-        />
-      </label>
+      <CatalogSourceRefField
+        label="source_ref (`tenant:manual` albo `fixture://contract/…`)"
+        ariaLabel="source_ref nagłówka umowy"
+        value={draft.originHint}
+        onChange={(originHint) => setDraft({ ...draft, originHint })}
+      />
       <label className="flex items-center gap-2 text-xs">
         <input
           type="checkbox"

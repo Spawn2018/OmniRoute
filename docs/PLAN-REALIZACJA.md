@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** leftover label-form connector/header albo wąski HITL z pinu.
+**Następny:** leftover label-form connector (terminal-slot / kek / PO / visibility) albo wąski HITL.
 <!-- os-status:end -->
 
 ```mermaid

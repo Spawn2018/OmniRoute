@@ -1,4 +1,5 @@
-- **300.0 leftover:** label-form pozostałe connector/header (erp/idp/customer-contract/…). 300.0 = SourceRefField na prediction/weather/exchange.
+- **301.0 leftover:** label-form terminal-slot / tenant-kek / purchase-order / po-line / visibility. 301.0 = SourceRefField na erp/idp/contract.
+- **300.0 leftover:** connector/header DONE częściowo 301.0. 300.0 = prediction/weather/exchange.
 - **299.0 leftover:** prediction/weather DONE 300.0. 299.0 = rank/executive/memory.
 - **298.0 leftover:** label-form DONE częściowo 299.0. Zostaje prediction/weather. 298.0 = war-room/twin/tower.
 - **297.0 leftover:** label-form DONE częściowo 298.0 (W marks). Zostaje rank/executive/memory/prediction/weather. 297.0 = circle/lane-km/plan-snapshot.

@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefField } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { idpConnectorWrite, persistIdpConnector } from "@/lib/idp-connectors-api"
 
@@ -70,16 +70,12 @@ export function IdpConnectorSave(args: { organizationId: string | null }) {
           onChange={(change) => setDraft({ ...draft, hostLabel: change.target.value })}
         />
       </label>
-      <label className="grid gap-1 text-xs">
-        Pochodzenie (`tenant:manual` albo `fixture://auth0/…`)
-        <input
-          aria-label="Pochodzenie konektora IdP"
-          className="h-9 rounded-md border bg-background px-2 font-mono"
-          onChange={(change) => setDraft({ ...draft, originHint: change.target.value })}
-          required
-          value={draft.originHint}
-        />
-      </label>
+      <CatalogSourceRefField
+        label="source_ref (tenant:manual albo fixture://auth0/…)"
+        ariaLabel="Pochodzenie konektora IdP"
+        value={draft.originHint}
+        onChange={(originHint) => setDraft({ ...draft, originHint })}
+      />
       <Button type="submit" disabled={persist.isPending || !args.organizationId}>
         Zapisz konektor Auth0
       </Button>
