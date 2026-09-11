@@ -1,3 +1,4 @@
+- **318.0 leftover:** MAE SQL; sample≥N egzekucja; suma oszczędności. 318.0 = HITL `calibration_mark` (sample_ready).
 - **317.0 leftover:** egzekucja 409; auto-kara FV; CI2/CI5. 317.0 = HITL `clause_notice` (clause_label).
 - **316.0 leftover:** EBITDA SQL; intervention_outcome; CI2/CI5; S11. 316.0 = HITL `impact_scenario` (chain_label).
 - **315.0 leftover:** repair_cost / expected_save; intervention_outcome SQL; S11 auto-send; CI2/CI5. 315.0 = HITL `remediation_option` (kind).

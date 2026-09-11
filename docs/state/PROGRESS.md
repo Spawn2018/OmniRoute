@@ -2,6 +2,7 @@
 
 | Data | Plaster | Moduł | Opis |
 |---|---|---|---|
+| 2026-09-11 | 318.0 | CI7 | HITL `calibration_mark` (sample_ready). Nie MAE SQL. Nastepny: Plan 319.0 repair_playbook. |
 | 2026-09-11 | 317.0 | CI3 | HITL `clause_notice` (clause_label). Nie 409. Nastepny: Plan 318.0 calibration_mark. |
 | 2026-09-11 | 316.0 | CI6 | HITL `impact_scenario` (chain_label). Nie EBITDA SQL. Nastepny: Plan 317.0 clause_notice. |
 | 2026-09-11 | 315.0 | CI6 | HITL `remediation_option` (kind bez kwoty). Nie S11. Nastepny: Plan 316.0 impact_scenario. |

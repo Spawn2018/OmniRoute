@@ -5,6 +5,7 @@ from app.api import (
     bank_payments,
     booking_instructions,
     bookkeeping,
+    calibration_marks,
     capa_marks,
     carbon_methods,
     cargo_claims,
@@ -192,6 +193,7 @@ api_router.include_router(lane_patterns.router)
 api_router.include_router(lane_kms.router)
 api_router.include_router(circle_sims.router)
 api_router.include_router(clause_notices.router)
+api_router.include_router(calibration_marks.router)
 api_router.include_router(local_charges.router)
 api_router.include_router(tender_quotes.router)
 api_router.include_router(tender_data_rooms.router)

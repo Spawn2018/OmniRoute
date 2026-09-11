@@ -6134,6 +6134,80 @@
         ]
       }
     },
+    "/api/v1/calibration-marks": {
+      "get": {
+        "tags": [
+          "calibration-marks"
+        ],
+        "summary": "List Calibration Marks",
+        "operationId": "list_calibration_marks_api_v1_calibration_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CalibrationMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Calibration Marks Api V1 Calibration Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "calibration-marks"
+        ],
+        "summary": "Create Calibration Mark",
+        "operationId": "create_calibration_mark_api_v1_calibration_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CalibrationMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CalibrationMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/local-charges": {
       "get": {
         "tags": [
@@ -14255,6 +14329,65 @@
           "source_ref"
         ],
         "title": "BookkeepingResponse"
+      },
+      "CalibrationMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "sample_ready": {
+            "type": "string",
+            "title": "Sample Ready"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "sample_ready",
+          "source_ref"
+        ],
+        "title": "CalibrationMarkCreate"
+      },
+      "CalibrationMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "sample_ready": {
+            "type": "string",
+            "title": "Sample Ready"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "sample_ready",
+          "source_ref"
+        ],
+        "title": "CalibrationMarkResponse"
       },
       "CapaMarkCreate": {
         "properties": {

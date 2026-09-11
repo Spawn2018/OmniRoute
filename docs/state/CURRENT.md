@@ -8,19 +8,19 @@
 
 
 
-**Ostatni plaster:** **317.0** CI3 HITL `clause_notice`  
+**Ostatni plaster:** **318.0** CI7 HITL `calibration_mark`  
 
-**Etap:** Plan — wolno `/plan-modul` **318.0**  
+**Etap:** Plan — wolno `/plan-modul` **319.0**  
 
 **Noc:** `/noc 17` do 2026-09-11T17:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).  
 
-**Następny:** **318.0** CI7 HITL `calibration_mark` (mark_code + sample_ready + source_ref; bez MAE SQL).  
+**Następny:** **319.0** CI8 HITL `repair_playbook` (playbook_code + stance_kind + source_ref; bez auto-send S11).  
 
-Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44 · extract · CI5 kara · wróżba punktowa · CI6 kwoty · S11 auto-send · EBITDA SQL · egzekucja 409 · MAE SQL. Nie zgaduj 71–318.
+Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44 · extract · CI5 kara · wróżba punktowa · CI6 kwoty · S11 auto-send · EBITDA SQL · egzekucja 409 · MAE SQL. Nie zgaduj 71–319.
 
 
 
-**Spec (jedyna na sesję):** brak delty — `/plan-modul` 318.0
+**Spec (jedyna na sesję):** brak delty — `/plan-modul` 319.0
 
 
 
@@ -36,4 +36,4 @@ Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow 
 
 
 
-**2026-09-11:** **317.0** zamknięty. Następny: Plan **318.0** `calibration_mark` bez MAE SQL.
+**2026-09-11:** **318.0** zamknięty. Następny: Plan **319.0** `repair_playbook` bez auto-send.

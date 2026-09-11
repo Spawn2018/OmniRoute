@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **318.0** CI7 HITL `calibration_mark` (mark_code + sample_ready + source_ref; bez MAE SQL).
+**Następny:** **319.0** CI8 HITL `repair_playbook` (playbook_code + stance_kind + source_ref; bez auto-send S11).
 <!-- os-status:end -->
 
 ```mermaid
@@ -707,7 +707,7 @@ Karta: [karty-pol-fala-ci.md](analysis/karty-pol-fala-ci.md). **CI9 przed CI1.**
 | CI4 | `delay_forecast` wcześniej niż okno | 314.0 HITL katalog (`horizon_hours` + `p_late` Decimal); leftover wróżba punktowa / GPS | wróżba punktowa |
 | CI5 | które SLA pęknie + kara SQL; bez klauzuli = „brak danych umowy” | | auto linia produkcyjna |
 | CI6 | strata / koszt naprawy / uratowane | 315.0 `remediation_option`; 316.0 `impact_scenario` (etykieta); leftover repair_cost / expected_save / EBITDA SQL / S11 | float; LLM |
-| CI7 | scorecard MAE/kalibracja; sample≥N zanim oferta | | suma nachodzących oszczędności |
+| CI7 | scorecard MAE/kalibracja; sample≥N zanim oferta | 318.0 HITL katalog `calibration_mark` (sample_ready); leftover MAE SQL / egzekucja sample≥N | suma nachodzących oszczędności |
 | CI8 | playbook naprawczy + S11 | | auto-send do jego klienta |
 
 ### Fala G — reszta modułów (nie dubluj T–V)

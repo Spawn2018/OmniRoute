@@ -321,6 +321,50 @@ export type BookkeepingResponse = {
 };
 
 /**
+ * CalibrationMarkCreate
+ */
+export type CalibrationMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Sample Ready
+     */
+    sample_ready: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CalibrationMarkResponse
+ */
+export type CalibrationMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Sample Ready
+     */
+    sample_ready: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * CapaMarkCreate
  */
 export type CapaMarkCreate = {
@@ -12443,6 +12487,49 @@ export type CreateClauseNoticeApiV1ClauseNoticesPostResponses = {
 };
 
 export type CreateClauseNoticeApiV1ClauseNoticesPostResponse = CreateClauseNoticeApiV1ClauseNoticesPostResponses[keyof CreateClauseNoticeApiV1ClauseNoticesPostResponses];
+
+export type ListCalibrationMarksApiV1CalibrationMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/calibration-marks';
+};
+
+export type ListCalibrationMarksApiV1CalibrationMarksGetResponses = {
+    /**
+     * Response List Calibration Marks Api V1 Calibration Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<CalibrationMarkResponse>;
+};
+
+export type ListCalibrationMarksApiV1CalibrationMarksGetResponse = ListCalibrationMarksApiV1CalibrationMarksGetResponses[keyof ListCalibrationMarksApiV1CalibrationMarksGetResponses];
+
+export type CreateCalibrationMarkApiV1CalibrationMarksPostData = {
+    body: CalibrationMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/calibration-marks';
+};
+
+export type CreateCalibrationMarkApiV1CalibrationMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCalibrationMarkApiV1CalibrationMarksPostError = CreateCalibrationMarkApiV1CalibrationMarksPostErrors[keyof CreateCalibrationMarkApiV1CalibrationMarksPostErrors];
+
+export type CreateCalibrationMarkApiV1CalibrationMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CalibrationMarkResponse;
+};
+
+export type CreateCalibrationMarkApiV1CalibrationMarksPostResponse = CreateCalibrationMarkApiV1CalibrationMarksPostResponses[keyof CreateCalibrationMarkApiV1CalibrationMarksPostResponses];
 
 export type ListLocalChargesApiV1LocalChargesGetData = {
     body?: never;

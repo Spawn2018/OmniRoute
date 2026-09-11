@@ -766,6 +766,10 @@ class InvalidClauseNotice(DomainError):
     """CI3: HITL powiadomienie o klauzuli — nie 409 i nie auto-kara."""
 
 
+class InvalidCalibrationMark(DomainError):
+    """CI7: HITL znacznik gotowości próbki — nie MAE SQL."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

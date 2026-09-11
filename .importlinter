@@ -113,6 +113,7 @@ modules =
     app.services.remediation_options
     app.services.impact_scenarios
     app.services.clause_notices
+    app.services.calibration_marks
     app.services.freight_audit_marks
     app.services.collaboration_marks
     app.services.exchange_connectors
@@ -460,6 +461,9 @@ forbidden_modules =
     app.services.clause_notices
     app.repositories.clause_notices
     app.models.clause_notice
+    app.services.calibration_marks
+    app.repositories.calibration_marks
+    app.models.calibration_mark
     app.services.freight_audit_marks
     app.repositories.freight_audit_marks
     app.models.freight_audit_mark
