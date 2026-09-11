@@ -68,3 +68,5 @@ htmlcov/
 playwright-report/
 test-results/
 blob-report/
+
+_push*.log
