@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefField } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { buildFreightAuditWrite, saveFreightAuditMark } from "@/lib/freight-audit-marks-api"
 
@@ -60,16 +60,12 @@ export function FreightAuditMarkSave(args: { organizationId: string | null }) {
           ))}
         </select>
       </label>
-      <label className="grid gap-1 text-xs">
-        source_ref
-        <input
-          aria-label="Pochodzenie audytu frachtu"
-          className="h-9 rounded-md border bg-background px-2 font-mono"
-          onChange={(change) => setOrigin(change.target.value)}
-          required
-          value={origin}
-        />
-      </label>
+      <CatalogSourceRefField
+        label="source_ref (tenant:manual albo fixture://freight-audit-mark/…)"
+        ariaLabel="Pochodzenie audytu frachtu"
+        value={origin}
+        onChange={setOrigin}
+      />
       {save.error ? <CatalogError error={save.error} /> : null}
       <Button disabled={!args.organizationId || save.isPending} type="submit">
         Zapisz znacznik audytu frachtu

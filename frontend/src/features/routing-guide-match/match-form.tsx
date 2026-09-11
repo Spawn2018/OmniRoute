@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefField } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import {
   createRoutingGuideMatch,
@@ -68,16 +68,12 @@ export function MatchKindWriter(props: { organizationId: string | null }) {
           ))}
         </select>
       </label>
-      <label className="grid gap-1 text-xs">
-        source_ref
-        <input
-          aria-label="Pochodzenie trybu dopasowania"
-          className="h-9 rounded-md border bg-background px-2 font-mono"
-          onChange={(event) => setPointer(event.target.value)}
-          required
-          value={pointer}
-        />
-      </label>
+      <CatalogSourceRefField
+        label="source_ref (tenant:manual albo fixture://routing-guide-match/…)"
+        ariaLabel="Pochodzenie trybu dopasowania"
+        value={pointer}
+        onChange={setPointer}
+      />
       {mutation.error ? <CatalogError error={mutation.error} /> : null}
       <Button disabled={!props.organizationId || mutation.isPending} type="submit">
         Zapisz tryb dopasowania

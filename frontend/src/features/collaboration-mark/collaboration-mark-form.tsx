@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefField } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import {
   createCollaborationMark,
@@ -68,16 +68,12 @@ export function CollaborationMarkWriter(props: { organizationId: string | null }
           </label>
         ))}
       </fieldset>
-      <div className="grid gap-1 text-xs">
-        <span>source_ref</span>
-        <input
-          aria-label="Pochodzenie znacznika współpracy"
-          className="h-9 rounded-md border bg-background px-2 font-mono"
-          onChange={(event) => setPointer(event.target.value)}
-          required
-          value={pointer}
-        />
-      </div>
+      <CatalogSourceRefField
+        label="source_ref (tenant:manual albo fixture://collaboration-mark/…)"
+        ariaLabel="Pochodzenie znacznika współpracy"
+        value={pointer}
+        onChange={setPointer}
+      />
       {mutation.error ? <CatalogError error={mutation.error} /> : null}
       <Button disabled={!props.organizationId || mutation.isPending} type="submit">
         Zapisz rolę współpracy
