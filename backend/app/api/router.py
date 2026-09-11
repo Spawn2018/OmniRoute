@@ -126,6 +126,7 @@ from app.api import (
     sla_clauses,
     spend_marks,
     stops,
+    subcontract_edge_marks,
     table_views,
     task_templates,
     telematics_connectors,
@@ -195,6 +196,7 @@ api_router.include_router(quotations.router)
 api_router.include_router(shipments.router)
 api_router.include_router(shipment_stakeholders.router)
 api_router.include_router(stops.router)
+api_router.include_router(subcontract_edge_marks.router)
 api_router.include_router(resources.router)
 api_router.include_router(trips.router)
 api_router.include_router(containers.router)

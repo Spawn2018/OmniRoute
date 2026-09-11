@@ -4364,6 +4364,80 @@
         }
       }
     },
+    "/api/v1/subcontract-edge-marks": {
+      "get": {
+        "tags": [
+          "subcontract-edge-marks"
+        ],
+        "summary": "List Subcontract Edge Marks",
+        "operationId": "list_subcontract_edge_marks_api_v1_subcontract_edge_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SubcontractEdgeMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Subcontract Edge Marks Api V1 Subcontract Edge Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "subcontract-edge-marks"
+        ],
+        "summary": "Create Subcontract Edge Mark",
+        "operationId": "create_subcontract_edge_mark_api_v1_subcontract_edge_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubcontractEdgeMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubcontractEdgeMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/resources": {
       "get": {
         "tags": [
@@ -28919,6 +28993,65 @@
           "superseded_by"
         ],
         "title": "StopResponse"
+      },
+      "SubcontractEdgeMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "edge_kind": {
+            "type": "string",
+            "title": "Edge Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "edge_kind",
+          "source_ref"
+        ],
+        "title": "SubcontractEdgeMarkCreate"
+      },
+      "SubcontractEdgeMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "edge_kind": {
+            "type": "string",
+            "title": "Edge Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "edge_kind",
+          "source_ref"
+        ],
+        "title": "SubcontractEdgeMarkResponse"
       },
       "TableViewConfig": {
         "properties": {

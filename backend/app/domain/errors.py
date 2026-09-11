@@ -866,6 +866,10 @@ class InvalidSanctionsMark(DomainError):
     """EXP2.5: HITL lista sankcji — nie live scrape."""
 
 
+class InvalidSubcontractEdgeMark(DomainError):
+    """EXP2.6: HITL krawędź podwykonawstwa — nie graf live."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

@@ -8213,6 +8213,50 @@ export type StopResponse = {
 };
 
 /**
+ * SubcontractEdgeMarkCreate
+ */
+export type SubcontractEdgeMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Edge Kind
+     */
+    edge_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * SubcontractEdgeMarkResponse
+ */
+export type SubcontractEdgeMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Edge Kind
+     */
+    edge_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * TableViewConfig
  */
 export type TableViewConfig = {
@@ -12523,6 +12567,49 @@ export type CreateStopApiV1StopsPostResponses = {
 };
 
 export type CreateStopApiV1StopsPostResponse = CreateStopApiV1StopsPostResponses[keyof CreateStopApiV1StopsPostResponses];
+
+export type ListSubcontractEdgeMarksApiV1SubcontractEdgeMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/subcontract-edge-marks';
+};
+
+export type ListSubcontractEdgeMarksApiV1SubcontractEdgeMarksGetResponses = {
+    /**
+     * Response List Subcontract Edge Marks Api V1 Subcontract Edge Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<SubcontractEdgeMarkResponse>;
+};
+
+export type ListSubcontractEdgeMarksApiV1SubcontractEdgeMarksGetResponse = ListSubcontractEdgeMarksApiV1SubcontractEdgeMarksGetResponses[keyof ListSubcontractEdgeMarksApiV1SubcontractEdgeMarksGetResponses];
+
+export type CreateSubcontractEdgeMarkApiV1SubcontractEdgeMarksPostData = {
+    body: SubcontractEdgeMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/subcontract-edge-marks';
+};
+
+export type CreateSubcontractEdgeMarkApiV1SubcontractEdgeMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateSubcontractEdgeMarkApiV1SubcontractEdgeMarksPostError = CreateSubcontractEdgeMarkApiV1SubcontractEdgeMarksPostErrors[keyof CreateSubcontractEdgeMarkApiV1SubcontractEdgeMarksPostErrors];
+
+export type CreateSubcontractEdgeMarkApiV1SubcontractEdgeMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: SubcontractEdgeMarkResponse;
+};
+
+export type CreateSubcontractEdgeMarkApiV1SubcontractEdgeMarksPostResponse = CreateSubcontractEdgeMarkApiV1SubcontractEdgeMarksPostResponses[keyof CreateSubcontractEdgeMarkApiV1SubcontractEdgeMarksPostResponses];
 
 export type ListResourcesApiV1ResourcesGetData = {
     body?: never;

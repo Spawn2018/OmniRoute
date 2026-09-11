@@ -136,6 +136,7 @@ from app.models.make_or_buy_mark import MakeOrBuyMark  # noqa: F401
 from app.models.cost_allocation_mark import CostAllocationMark  # noqa: F401
 from app.models.cargo_cover_mark import CargoCoverMark  # noqa: F401
 from app.models.sanctions_mark import SanctionsMark  # noqa: F401
+from app.models.subcontract_edge_mark import SubcontractEdgeMark  # noqa: F401
 from app.models.collaboration_mark import CollaborationMark  # noqa: F401
 from app.models.freight_audit_mark import FreightAuditMark  # noqa: F401
 from app.models.routing_guide import RoutingGuide  # noqa: F401

@@ -132,6 +132,7 @@ import { Route as ShipmentPackagesRouteImport } from './routes/shipment-packages
 import { Route as ShipmentsRouteImport } from './routes/shipments'
 import { Route as SlaClausesRouteImport } from './routes/sla-clauses'
 import { Route as SpendMarksRouteImport } from './routes/spend-marks'
+import { Route as SubcontractEdgeMarksRouteImport } from './routes/subcontract-edge-marks'
 import { Route as TaskTemplatesRouteImport } from './routes/task-templates'
 import { Route as TelematicsConnectorsRouteImport } from './routes/telematics-connectors'
 import { Route as TenantContractKeksRouteImport } from './routes/tenant-contract-keks'
@@ -780,6 +781,11 @@ const SpendMarksRoute = SpendMarksRouteImport.update({
   path: '/spend-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SubcontractEdgeMarksRoute = SubcontractEdgeMarksRouteImport.update({
+  id: '/subcontract-edge-marks',
+  path: '/subcontract-edge-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TaskTemplatesRoute = TaskTemplatesRouteImport.update({
   id: '/task-templates',
   path: '/task-templates',
@@ -1060,6 +1066,7 @@ export interface FileRoutesByFullPath {
   '/shipments': typeof ShipmentsRoute
   '/sla-clauses': typeof SlaClausesRoute
   '/spend-marks': typeof SpendMarksRoute
+  '/subcontract-edge-marks': typeof SubcontractEdgeMarksRoute
   '/task-templates': typeof TaskTemplatesRoute
   '/telematics-connectors': typeof TelematicsConnectorsRoute
   '/tenant-contract-keks': typeof TenantContractKeksRoute
@@ -1216,6 +1223,7 @@ export interface FileRoutesByTo {
   '/shipments': typeof ShipmentsRoute
   '/sla-clauses': typeof SlaClausesRoute
   '/spend-marks': typeof SpendMarksRoute
+  '/subcontract-edge-marks': typeof SubcontractEdgeMarksRoute
   '/task-templates': typeof TaskTemplatesRoute
   '/telematics-connectors': typeof TelematicsConnectorsRoute
   '/tenant-contract-keks': typeof TenantContractKeksRoute
@@ -1373,6 +1381,7 @@ export interface FileRoutesById {
   '/shipments': typeof ShipmentsRoute
   '/sla-clauses': typeof SlaClausesRoute
   '/spend-marks': typeof SpendMarksRoute
+  '/subcontract-edge-marks': typeof SubcontractEdgeMarksRoute
   '/task-templates': typeof TaskTemplatesRoute
   '/telematics-connectors': typeof TelematicsConnectorsRoute
   '/tenant-contract-keks': typeof TenantContractKeksRoute
@@ -1531,6 +1540,7 @@ export interface FileRouteTypes {
     | '/shipments'
     | '/sla-clauses'
     | '/spend-marks'
+    | '/subcontract-edge-marks'
     | '/task-templates'
     | '/telematics-connectors'
     | '/tenant-contract-keks'
@@ -1687,6 +1697,7 @@ export interface FileRouteTypes {
     | '/shipments'
     | '/sla-clauses'
     | '/spend-marks'
+    | '/subcontract-edge-marks'
     | '/task-templates'
     | '/telematics-connectors'
     | '/tenant-contract-keks'
@@ -1843,6 +1854,7 @@ export interface FileRouteTypes {
     | '/shipments'
     | '/sla-clauses'
     | '/spend-marks'
+    | '/subcontract-edge-marks'
     | '/task-templates'
     | '/telematics-connectors'
     | '/tenant-contract-keks'
@@ -2000,6 +2012,7 @@ export interface RootRouteChildren {
   ShipmentsRoute: typeof ShipmentsRoute
   SlaClausesRoute: typeof SlaClausesRoute
   SpendMarksRoute: typeof SpendMarksRoute
+  SubcontractEdgeMarksRoute: typeof SubcontractEdgeMarksRoute
   TaskTemplatesRoute: typeof TaskTemplatesRoute
   TelematicsConnectorsRoute: typeof TelematicsConnectorsRoute
   TenantContractKeksRoute: typeof TenantContractKeksRoute
@@ -2896,6 +2909,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SpendMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/subcontract-edge-marks': {
+      id: '/subcontract-edge-marks'
+      path: '/subcontract-edge-marks'
+      fullPath: '/subcontract-edge-marks'
+      preLoaderRoute: typeof SubcontractEdgeMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/task-templates': {
       id: '/task-templates'
       path: '/task-templates'
@@ -3240,6 +3260,7 @@ const rootRouteChildren: RootRouteChildren = {
   ShipmentsRoute: ShipmentsRoute,
   SlaClausesRoute: SlaClausesRoute,
   SpendMarksRoute: SpendMarksRoute,
+  SubcontractEdgeMarksRoute: SubcontractEdgeMarksRoute,
   TaskTemplatesRoute: TaskTemplatesRoute,
   TelematicsConnectorsRoute: TelematicsConnectorsRoute,
   TenantContractKeksRoute: TenantContractKeksRoute,
