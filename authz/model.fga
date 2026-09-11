@@ -89,6 +89,7 @@ type organization
     define can_manage_clause_notices: member
     define can_manage_calibration_marks: member
     define can_manage_repair_playbooks: member
+    define can_manage_spend_marks: member
     define can_manage_freight_audit_marks: member
     define can_manage_collaboration_marks: member
     define can_manage_routing_guide_enforcements: member

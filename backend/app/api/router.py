@@ -104,6 +104,7 @@ from app.api import (
     shipment_stakeholders,
     shipments,
     sla_clauses,
+    spend_marks,
     stops,
     table_views,
     task_templates,
@@ -196,6 +197,7 @@ api_router.include_router(circle_sims.router)
 api_router.include_router(clause_notices.router)
 api_router.include_router(calibration_marks.router)
 api_router.include_router(repair_playbooks.router)
+api_router.include_router(spend_marks.router)
 api_router.include_router(local_charges.router)
 api_router.include_router(tender_quotes.router)
 api_router.include_router(tender_data_rooms.router)

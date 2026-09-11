@@ -6282,6 +6282,80 @@
         ]
       }
     },
+    "/api/v1/spend-marks": {
+      "get": {
+        "tags": [
+          "spend-marks"
+        ],
+        "summary": "List Spend Marks",
+        "operationId": "list_spend_marks_api_v1_spend_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SpendMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Spend Marks Api V1 Spend Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "spend-marks"
+        ],
+        "summary": "Create Spend Mark",
+        "operationId": "create_spend_mark_api_v1_spend_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SpendMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SpendMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/local-charges": {
       "get": {
         "tags": [
@@ -25568,6 +25642,65 @@
           "source_ref"
         ],
         "title": "SlaClauseResponse"
+      },
+      "SpendMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "leakage_kind": {
+            "type": "string",
+            "title": "Leakage Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "leakage_kind",
+          "source_ref"
+        ],
+        "title": "SpendMarkCreate"
+      },
+      "SpendMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "leakage_kind": {
+            "type": "string",
+            "title": "Leakage Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "leakage_kind",
+          "source_ref"
+        ],
+        "title": "SpendMarkResponse"
       },
       "StopCreate": {
         "properties": {

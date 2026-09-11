@@ -111,6 +111,7 @@ import { Route as ShipmentDocumentsRouteImport } from './routes/shipment-documen
 import { Route as ShipmentPackagesRouteImport } from './routes/shipment-packages'
 import { Route as ShipmentsRouteImport } from './routes/shipments'
 import { Route as SlaClausesRouteImport } from './routes/sla-clauses'
+import { Route as SpendMarksRouteImport } from './routes/spend-marks'
 import { Route as TaskTemplatesRouteImport } from './routes/task-templates'
 import { Route as TelematicsConnectorsRouteImport } from './routes/telematics-connectors'
 import { Route as TenantContractKeksRouteImport } from './routes/tenant-contract-keks'
@@ -652,6 +653,11 @@ const SlaClausesRoute = SlaClausesRouteImport.update({
   path: '/sla-clauses',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SpendMarksRoute = SpendMarksRouteImport.update({
+  id: '/spend-marks',
+  path: '/spend-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TaskTemplatesRoute = TaskTemplatesRouteImport.update({
   id: '/task-templates',
   path: '/task-templates',
@@ -901,6 +907,7 @@ export interface FileRoutesByFullPath {
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
   '/sla-clauses': typeof SlaClausesRoute
+  '/spend-marks': typeof SpendMarksRoute
   '/task-templates': typeof TaskTemplatesRoute
   '/telematics-connectors': typeof TelematicsConnectorsRoute
   '/tenant-contract-keks': typeof TenantContractKeksRoute
@@ -1034,6 +1041,7 @@ export interface FileRoutesByTo {
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
   '/sla-clauses': typeof SlaClausesRoute
+  '/spend-marks': typeof SpendMarksRoute
   '/task-templates': typeof TaskTemplatesRoute
   '/telematics-connectors': typeof TelematicsConnectorsRoute
   '/tenant-contract-keks': typeof TenantContractKeksRoute
@@ -1168,6 +1176,7 @@ export interface FileRoutesById {
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
   '/sla-clauses': typeof SlaClausesRoute
+  '/spend-marks': typeof SpendMarksRoute
   '/task-templates': typeof TaskTemplatesRoute
   '/telematics-connectors': typeof TelematicsConnectorsRoute
   '/tenant-contract-keks': typeof TenantContractKeksRoute
@@ -1303,6 +1312,7 @@ export interface FileRouteTypes {
     | '/shipment-packages'
     | '/shipments'
     | '/sla-clauses'
+    | '/spend-marks'
     | '/task-templates'
     | '/telematics-connectors'
     | '/tenant-contract-keks'
@@ -1436,6 +1446,7 @@ export interface FileRouteTypes {
     | '/shipment-packages'
     | '/shipments'
     | '/sla-clauses'
+    | '/spend-marks'
     | '/task-templates'
     | '/telematics-connectors'
     | '/tenant-contract-keks'
@@ -1569,6 +1580,7 @@ export interface FileRouteTypes {
     | '/shipment-packages'
     | '/shipments'
     | '/sla-clauses'
+    | '/spend-marks'
     | '/task-templates'
     | '/telematics-connectors'
     | '/tenant-contract-keks'
@@ -1703,6 +1715,7 @@ export interface RootRouteChildren {
   ShipmentPackagesRoute: typeof ShipmentPackagesRoute
   ShipmentsRoute: typeof ShipmentsRoute
   SlaClausesRoute: typeof SlaClausesRoute
+  SpendMarksRoute: typeof SpendMarksRoute
   TaskTemplatesRoute: typeof TaskTemplatesRoute
   TelematicsConnectorsRoute: typeof TelematicsConnectorsRoute
   TenantContractKeksRoute: typeof TenantContractKeksRoute
@@ -2450,6 +2463,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SlaClausesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/spend-marks': {
+      id: '/spend-marks'
+      path: '/spend-marks'
+      fullPath: '/spend-marks'
+      preLoaderRoute: typeof SpendMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/task-templates': {
       id: '/task-templates'
       path: '/task-templates'
@@ -2759,6 +2779,7 @@ const rootRouteChildren: RootRouteChildren = {
   ShipmentPackagesRoute: ShipmentPackagesRoute,
   ShipmentsRoute: ShipmentsRoute,
   SlaClausesRoute: SlaClausesRoute,
+  SpendMarksRoute: SpendMarksRoute,
   TaskTemplatesRoute: TaskTemplatesRoute,
   TelematicsConnectorsRoute: TelematicsConnectorsRoute,
   TenantContractKeksRoute: TenantContractKeksRoute,

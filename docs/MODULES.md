@@ -83,6 +83,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | CI3 | Powiadomienie klauzuli HITL | 317.0 `clause_notice` | **ukończony (HITL)** · clause_label; leftover egzekucja 409 |
 | CI7 | Znacznik kalibracji HITL | 318.0 `calibration_mark` | **ukończony (HITL)** · sample_ready; leftover MAE SQL / sample≥N |
 | CI8 | Playbook naprawy HITL | 319.0 `repair_playbook` | **ukończony (HITL)** · stance_kind; leftover auto-send S11 / mail_body |
+| CI2 | Znacznik wycieku HITL | 320.0 `spend_mark` | **ukończony (HITL)** · leakage_kind; leftover SQL FV vs charge |
 | CT7 | Konektor widoczności HITL | 275.0 `visibility_connector` | **ukończony (HITL)** · kod + kind `p44`; leftover live p44 / FourKites / Shippeo / AIS |
 | CT1 | Zamówienie zakupu HITL | 276.0 `purchase_order` · 277.0 `po_line` · 278.0 `asn` | **ukończony (HITL nagłówek + linia + awizo)** · leftover auto shipment / live EDI |
 | CT4 | Przewodnik routingu HITL | 279.0 `routing_guide`; 285.0 `routing_guide_enforcement`; 286.0 ASN 409 | **ukończony (HITL + 409 na ASN)** · leftover 409 na shipment |

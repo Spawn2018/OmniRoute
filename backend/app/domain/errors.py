@@ -774,6 +774,10 @@ class InvalidRepairPlaybook(DomainError):
     """CI8: HITL playbook naprawy — nie auto-send S11."""
 
 
+class InvalidSpendMark(DomainError):
+    """CI2: HITL rodzaj wycieku spend — nie SQL FV vs charge."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

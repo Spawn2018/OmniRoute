@@ -7105,6 +7105,50 @@ export type SlaClauseResponse = {
 };
 
 /**
+ * SpendMarkCreate
+ */
+export type SpendMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Leakage Kind
+     */
+    leakage_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * SpendMarkResponse
+ */
+export type SpendMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Leakage Kind
+     */
+    leakage_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * StopCreate
  */
 export type StopCreate = {
@@ -12617,6 +12661,49 @@ export type CreateRepairPlaybookApiV1RepairPlaybooksPostResponses = {
 };
 
 export type CreateRepairPlaybookApiV1RepairPlaybooksPostResponse = CreateRepairPlaybookApiV1RepairPlaybooksPostResponses[keyof CreateRepairPlaybookApiV1RepairPlaybooksPostResponses];
+
+export type ListSpendMarksApiV1SpendMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/spend-marks';
+};
+
+export type ListSpendMarksApiV1SpendMarksGetResponses = {
+    /**
+     * Response List Spend Marks Api V1 Spend Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<SpendMarkResponse>;
+};
+
+export type ListSpendMarksApiV1SpendMarksGetResponse = ListSpendMarksApiV1SpendMarksGetResponses[keyof ListSpendMarksApiV1SpendMarksGetResponses];
+
+export type CreateSpendMarkApiV1SpendMarksPostData = {
+    body: SpendMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/spend-marks';
+};
+
+export type CreateSpendMarkApiV1SpendMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateSpendMarkApiV1SpendMarksPostError = CreateSpendMarkApiV1SpendMarksPostErrors[keyof CreateSpendMarkApiV1SpendMarksPostErrors];
+
+export type CreateSpendMarkApiV1SpendMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: SpendMarkResponse;
+};
+
+export type CreateSpendMarkApiV1SpendMarksPostResponse = CreateSpendMarkApiV1SpendMarksPostResponses[keyof CreateSpendMarkApiV1SpendMarksPostResponses];
 
 export type ListLocalChargesApiV1LocalChargesGetData = {
     body?: never;

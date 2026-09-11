@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **319.0** CI8 HITL `repair_playbook`
-- **Etap:** Plan — wolno `/plan-modul` **320.0**
-- **Następny:** **320.0** CI2 HITL `spend_mark` (mark_code + leakage_kind + source_ref; bez SQL FV vs charge).
+- **Ostatni plaster:** **320.0** CI2 HITL `spend_mark`
+- **Etap:** Plan — wolno `/plan-modul` **321.0**
+- **Następny:** **321.0** CI5 HITL `penalty_mark` (mark_code + breach_kind + source_ref; bez kara SQL).
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

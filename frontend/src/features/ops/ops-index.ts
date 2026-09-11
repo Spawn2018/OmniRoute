@@ -644,6 +644,11 @@ export const OPS_JOBS = [
     job: "katalog repair_playbook HITL",
   },
   {
+    route: BUSINESS_LISTS.spendMark.route,
+    label: "Znacznik wycieku",
+    job: "katalog spend_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.freightAuditMark.route,
     label: "Audyt frachtu",
     job: "katalog freight_audit_mark HITL",
@@ -943,6 +948,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "317.0": "/clause-notices",
   "318.0": "/calibration-marks",
   "319.0": "/repair-playbooks",
+  "320.0": "/spend-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

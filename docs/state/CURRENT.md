@@ -8,19 +8,19 @@
 
 
 
-**Ostatni plaster:** **319.0** CI8 HITL `repair_playbook`  
+**Ostatni plaster:** **320.0** CI2 HITL `spend_mark`  
 
-**Etap:** Plan — wolno `/plan-modul` **320.0**  
+**Etap:** Plan — wolno `/plan-modul` **321.0**  
 
 **Noc:** `/noc 17` do 2026-09-11T17:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).  
 
-**Następny:** **320.0** CI2 HITL `spend_mark` (mark_code + leakage_kind + source_ref; bez SQL FV vs charge).  
+**Następny:** **321.0** CI5 HITL `penalty_mark` (mark_code + breach_kind + source_ref; bez kara SQL).  
 
-Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44 · extract · CI5 kara · wróżba punktowa · CI6 kwoty · S11 auto-send · EBITDA SQL · egzekucja 409 · MAE SQL. Nie zgaduj 71–320.
+Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44 · extract · CI5 kara SQL · wróżba punktowa · CI6 kwoty · S11 auto-send · EBITDA SQL · egzekucja 409 · MAE SQL. Nie zgaduj 71–321.
 
 
 
-**Spec (jedyna na sesję):** brak delty — `/plan-modul` 320.0
+**Spec (jedyna na sesję):** brak delty — `/plan-modul` 321.0
 
 
 
@@ -36,4 +36,4 @@ Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow 
 
 
 
-**2026-09-11:** **319.0** zamknięty. Następny: Plan **320.0** `spend_mark` bez SQL FV.
+**2026-09-11:** **320.0** zamknięty. Następny: Plan **321.0** `penalty_mark` bez kara SQL.

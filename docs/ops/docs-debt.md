@@ -1,3 +1,4 @@
+- **320.0 leftover:** SQL FV vs charge; druga marża. 320.0 = HITL `spend_mark` (leakage_kind).
 - **319.0 leftover:** auto-send S11; mail_draft auto. 319.0 = HITL `repair_playbook` (stance_kind).
 - **318.0 leftover:** MAE SQL; sample≥N egzekucja; suma oszczędności. 318.0 = HITL `calibration_mark` (sample_ready).
 - **317.0 leftover:** egzekucja 409; auto-kara FV; CI2/CI5. 317.0 = HITL `clause_notice` (clause_label).

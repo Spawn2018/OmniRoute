@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **320.0** CI2 HITL `spend_mark` (mark_code + leakage_kind + source_ref; bez SQL FV vs charge).
+**Następny:** **321.0** CI5 HITL `penalty_mark` (mark_code + breach_kind + source_ref; bez kara SQL).
 <!-- os-status:end -->
 
 ```mermaid
@@ -702,13 +702,13 @@ Karta: [karty-pol-fala-ci.md](analysis/karty-pol-fala-ci.md). **CI9 przed CI1.**
 |---|---|---|---|
 | **CI9** | zero-knowledge: ciphertext + KEK tenanta; deny-list AI; test super-admin = bytea | 272.0 nagłówek; 273.0 zamknięty opaque BYTEA (`docs/deltas/archived/273.0-customer-contract-ciphertext.md`) — present/absent, nie szyfr; 274.0 zamknięty znacznik owijki (`docs/deltas/archived/274.0-tenant-contract-kek.md`) — nie klucz; leftover `wrapped_dek` / KMS | klucz Omni-master; Langfuse na PDF |
 | CI1 | upload + formularz `sla_clause` (wiele umów × odbiorców) | po X1+CI9 | extract LLM |
-| CI2 | FV vs umowa (spend leakage) | | druga marża |
+| CI2 | FV vs umowa (spend leakage) | 320.0 HITL katalog `spend_mark` (leakage_kind); leftover SQL FV vs charge | druga marża |
 | CI3 | operacja czyta klauzulę (409/notice) | 317.0 HITL katalog `clause_notice` (etykieta); leftover egzekucja 409 | auto-kara na FV |
 | CI4 | `delay_forecast` wcześniej niż okno | 314.0 HITL katalog (`horizon_hours` + `p_late` Decimal); leftover wróżba punktowa / GPS | wróżba punktowa |
 | CI5 | które SLA pęknie + kara SQL; bez klauzuli = „brak danych umowy” | | auto linia produkcyjna |
 | CI6 | strata / koszt naprawy / uratowane | 315.0 `remediation_option`; 316.0 `impact_scenario` (etykieta); leftover repair_cost / expected_save / EBITDA SQL / S11 | float; LLM |
 | CI7 | scorecard MAE/kalibracja; sample≥N zanim oferta | 318.0 HITL katalog `calibration_mark` (sample_ready); leftover MAE SQL / egzekucja sample≥N | suma nachodzących oszczędności |
-| CI8 | playbook naprawczy + S11 | | auto-send do jego klienta |
+| CI8 | playbook naprawczy + S11 | 319.0 HITL katalog `repair_playbook` (stance_kind); leftover auto-send S11 | auto-send do jego klienta |
 
 ### Fala G — reszta modułów (nie dubluj T–V)
 
