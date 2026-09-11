@@ -6398,6 +6398,10 @@ export type ShipmentCreate = {
      * Relation Kind
      */
     relation_kind?: string | null;
+    /**
+     * Guide Code
+     */
+    guide_code?: string | null;
 };
 
 /**
@@ -6624,6 +6628,10 @@ export type ShipmentResponse = {
      * Relation Kind
      */
     relation_kind: string | null;
+    /**
+     * Guide Code
+     */
+    guide_code: string | null;
     /**
      * Status
      */

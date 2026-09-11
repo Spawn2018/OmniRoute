@@ -6,6 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.errors import InvalidShipment, ResourceNotFound, ShipmentConflict
 from app.domain.shipment import (
+    require_guide_code,
     require_parent_pair,
     require_parent_shipment_id,
     require_party_on_quotation,
@@ -54,6 +55,7 @@ class ShipmentService:
         shipment_ref: object = None,
         parent_shipment_id: object = None,
         relation_kind: object = None,
+        guide_code: object = None,
     ) -> Shipment:
         row_id = uuid4()
         parent = require_parent_shipment_id(parent_shipment_id)
@@ -68,6 +70,7 @@ class ShipmentService:
             shipment_ref=require_shipment_ref(shipment_ref),
             parent_shipment_id=parent,
             relation_kind=kind,
+            guide_code=require_guide_code(guide_code),
             status=shipment_draft_status(),
             created_by=user_id,
         )

@@ -23844,6 +23844,17 @@
               }
             ],
             "title": "Relation Kind"
+          },
+          "guide_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Guide Code"
           }
         },
         "additionalProperties": false,
@@ -24199,6 +24210,17 @@
             ],
             "title": "Relation Kind"
           },
+          "guide_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Guide Code"
+          },
           "status": {
             "type": "string",
             "title": "Status"
@@ -24214,6 +24236,7 @@
           "shipment_ref",
           "parent_shipment_id",
           "relation_kind",
+          "guide_code",
           "status"
         ],
         "title": "ShipmentResponse"

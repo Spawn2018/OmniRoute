@@ -65,6 +65,20 @@ def require_shipment_ref(raw: object) -> str | None:
 
 
 _PARENT_KINDS = frozenset({"drayage", "oncarriage", "leg_subcontract", "other"})
+_SNAKE = re.compile(r"^[a-z][a-z0-9_]{1,31}$")
+
+
+def require_guide_code(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidShipment("przewodnik musi być tekstem")
+    slug = raw.strip()
+    if not slug:
+        return None
+    if _SNAKE.fullmatch(slug) is None:
+        raise InvalidShipment("przewodnik: snake 2–32")
+    return slug
 
 
 def require_parent_shipment_id(raw: object) -> UUID | None:

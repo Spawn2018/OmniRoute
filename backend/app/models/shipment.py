@@ -62,6 +62,10 @@ class Shipment(Base, TimestampMixin):
             "parent_shipment_id IS NULL OR parent_shipment_id <> id",
             name="ck_shipment_parent_not_self",
         ),
+        CheckConstraint(
+            "guide_code IS NULL OR guide_code ~ '^[a-z][a-z0-9_]{1,31}$'",
+            name="ck_shipment_guide_code",
+        ),
         Index("ix_shipment_org_party", "organization_id", "party_id"),
         Index("ix_shipment_org_created", "organization_id", "created_at"),
         Index("ix_shipment_org_parent", "organization_id", "parent_shipment_id"),
@@ -85,4 +89,5 @@ class Shipment(Base, TimestampMixin):
         nullable=True,
     )
     relation_kind: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    guide_code: Mapped[str | None] = mapped_column(String(32), nullable=True)
     status: Mapped[str] = mapped_column(String(8), nullable=False)

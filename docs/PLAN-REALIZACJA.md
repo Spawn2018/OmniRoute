@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** leftover 409 na shipment poza guide (pin 2026-09-08c) albo reszta pinu z PLAN § Kolejka.
+**Następny:** leftover Fala CT / pin — matching lane/mode przewodnika albo następny wąski HITL z PLAN.
 <!-- os-status:end -->
 
 ```mermaid
