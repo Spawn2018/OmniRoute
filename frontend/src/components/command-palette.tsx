@@ -182,6 +182,11 @@ const NAV_ACTIONS = [
     to: "/po-lines",
   },
   {
+    id: "nav-asns",
+    label: "Idź do awiza wysyłki",
+    to: "/asns",
+  },
+  {
     id: "nav-exchange-connectors",
     label: "Idź do konektora giełdy",
     to: "/exchange-connectors",

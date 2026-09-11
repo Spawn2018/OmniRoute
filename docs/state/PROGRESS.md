@@ -637,3 +637,4 @@
 | 2026-09-10 | Plan 277.0 | CT1 | po_line HITL linia SKU + qty Decimal + JM. Delta zaakceptowana (`/noc`). Nastepny: kod 277.0. |
 | 2026-09-10 | 277.0 | CT1 | po_line HITL linia SKU + qty Decimal. Nie ASN. Nastepny: leftover CT1 ASN / reszta pinu Plan. |
 | 2026-09-11 | Plan 278.0 | CT1 | asn HITL awizo na PO. Delta zaakceptowana (`/noc`). Nastepny: kod 278.0. |
+| 2026-09-11 | 278.0 | CT1 | asn HITL awizo na PO. Nie live EDI. Nie auto shipment. Nastepny: leftover auto shipment / reszta pinu Plan. |

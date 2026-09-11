@@ -36,6 +36,17 @@ _CALLS = (
             "source_ref": "fixture://po-line/pl-1",
         },
     ),
+    ("GET", "/api/v1/asns", None, None),
+    (
+        "POST",
+        "/api/v1/asns",
+        None,
+        {
+            "purchase_order_id": "00000000-0000-0000-0000-000000000001",
+            "asn_code": "asn_01",
+            "source_ref": "fixture://asn/pl-1",
+        },
+    ),
 )
 
 

@@ -724,3 +724,7 @@ class InvalidPurchaseOrder(DomainError):
 
 class InvalidPoLine(DomainError):
     """CT1: HITL linia zamówienia zakupu — nie ASN i nie kwota."""
+
+
+class InvalidAsn(DomainError):
+    """CT1: HITL awizo wysyłki — nie live EDI i nie auto shipment."""

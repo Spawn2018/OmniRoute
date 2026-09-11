@@ -27,6 +27,74 @@ export type AppUserResponse = {
 };
 
 /**
+ * AsnCreate
+ */
+export type AsnCreate = {
+    /**
+     * Purchase Order Id
+     */
+    purchase_order_id: string;
+    /**
+     * Asn Code
+     */
+    asn_code: string;
+    /**
+     * Plant Label
+     */
+    plant_label?: string | null;
+    /**
+     * Carrier Label
+     */
+    carrier_label?: string | null;
+    /**
+     * Ship Ref Label
+     */
+    ship_ref_label?: string | null;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * AsnResponse
+ */
+export type AsnResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Purchase Order Id
+     */
+    purchase_order_id: string;
+    /**
+     * Asn Code
+     */
+    asn_code: string;
+    /**
+     * Plant Label
+     */
+    plant_label: string | null;
+    /**
+     * Carrier Label
+     */
+    carrier_label: string | null;
+    /**
+     * Ship Ref Label
+     */
+    ship_ref_label: string | null;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * BankAccountCreate
  */
 export type BankAccountCreate = {
@@ -13385,6 +13453,49 @@ export type CreatePoLineApiV1PoLinesPostResponses = {
 };
 
 export type CreatePoLineApiV1PoLinesPostResponse = CreatePoLineApiV1PoLinesPostResponses[keyof CreatePoLineApiV1PoLinesPostResponses];
+
+export type ListAsnsApiV1AsnsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/asns';
+};
+
+export type ListAsnsApiV1AsnsGetResponses = {
+    /**
+     * Response List Asns Api V1 Asns Get
+     *
+     * Successful Response
+     */
+    200: Array<AsnResponse>;
+};
+
+export type ListAsnsApiV1AsnsGetResponse = ListAsnsApiV1AsnsGetResponses[keyof ListAsnsApiV1AsnsGetResponses];
+
+export type CreateAsnApiV1AsnsPostData = {
+    body: AsnCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/asns';
+};
+
+export type CreateAsnApiV1AsnsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateAsnApiV1AsnsPostError = CreateAsnApiV1AsnsPostErrors[keyof CreateAsnApiV1AsnsPostErrors];
+
+export type CreateAsnApiV1AsnsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: AsnResponse;
+};
+
+export type CreateAsnApiV1AsnsPostResponse = CreateAsnApiV1AsnsPostResponses[keyof CreateAsnApiV1AsnsPostResponses];
 
 export type ListTerminalSlotConnectorsApiV1TerminalSlotConnectorsGetData = {
     body?: never;

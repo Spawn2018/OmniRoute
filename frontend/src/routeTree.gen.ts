@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AiRouteImport } from './routes/ai'
 import { Route as AirRouteImport } from './routes/air'
+import { Route as AsnsRouteImport } from './routes/asns'
 import { Route as BookkeepingRouteImport } from './routes/bookkeeping'
 import { Route as CarbonMethodsRouteImport } from './routes/carbon-methods'
 import { Route as CashDiscountsRouteImport } from './routes/cash-discounts'
@@ -138,6 +139,11 @@ const AiRoute = AiRouteImport.update({
 const AirRoute = AirRouteImport.update({
   id: '/air',
   path: '/air',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AsnsRoute = AsnsRouteImport.update({
+  id: '/asns',
+  path: '/asns',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BookkeepingRoute = BookkeepingRouteImport.update({
@@ -705,6 +711,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/ai': typeof AiRoute
   '/air': typeof AirRoute
+  '/asns': typeof AsnsRoute
   '/bookkeeping': typeof BookkeepingRoute
   '/carbon-methods': typeof CarbonMethodsRoute
   '/cash-discounts': typeof CashDiscountsRoute
@@ -822,6 +829,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/ai': typeof AiRoute
   '/air': typeof AirRoute
+  '/asns': typeof AsnsRoute
   '/bookkeeping': typeof BookkeepingRoute
   '/carbon-methods': typeof CarbonMethodsRoute
   '/cash-discounts': typeof CashDiscountsRoute
@@ -940,6 +948,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/ai': typeof AiRoute
   '/air': typeof AirRoute
+  '/asns': typeof AsnsRoute
   '/bookkeeping': typeof BookkeepingRoute
   '/carbon-methods': typeof CarbonMethodsRoute
   '/cash-discounts': typeof CashDiscountsRoute
@@ -1059,6 +1068,7 @@ export interface FileRouteTypes {
     | '/'
     | '/ai'
     | '/air'
+    | '/asns'
     | '/bookkeeping'
     | '/carbon-methods'
     | '/cash-discounts'
@@ -1176,6 +1186,7 @@ export interface FileRouteTypes {
     | '/'
     | '/ai'
     | '/air'
+    | '/asns'
     | '/bookkeeping'
     | '/carbon-methods'
     | '/cash-discounts'
@@ -1293,6 +1304,7 @@ export interface FileRouteTypes {
     | '/'
     | '/ai'
     | '/air'
+    | '/asns'
     | '/bookkeeping'
     | '/carbon-methods'
     | '/cash-discounts'
@@ -1411,6 +1423,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AiRoute: typeof AiRoute
   AirRoute: typeof AirRoute
+  AsnsRoute: typeof AsnsRoute
   BookkeepingRoute: typeof BookkeepingRoute
   CarbonMethodsRoute: typeof CarbonMethodsRoute
   CashDiscountsRoute: typeof CashDiscountsRoute
@@ -1546,6 +1559,13 @@ declare module '@tanstack/react-router' {
       path: '/air'
       fullPath: '/air'
       preLoaderRoute: typeof AirRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/asns': {
+      id: '/asns'
+      path: '/asns'
+      fullPath: '/asns'
+      preLoaderRoute: typeof AsnsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/bookkeeping': {
@@ -2339,6 +2359,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AiRoute: AiRoute,
   AirRoute: AirRoute,
+  AsnsRoute: AsnsRoute,
   BookkeepingRoute: BookkeepingRoute,
   CarbonMethodsRoute: CarbonMethodsRoute,
   CashDiscountsRoute: CashDiscountsRoute,

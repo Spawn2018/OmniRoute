@@ -574,6 +574,11 @@ export const OPS_JOBS = [
     job: "katalog po_line HITL",
   },
   {
+    route: BUSINESS_LISTS.asn.route,
+    label: "Awizo wysyłki",
+    job: "katalog asn HITL",
+  },
+  {
     route: BUSINESS_LISTS.exchangeConnector.route,
     label: "Konektor giełdy",
     job: "katalog exchange_connector HITL",
@@ -842,6 +847,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "275.0": "/visibility-connectors",
   "276.0": "/purchase-orders",
   "277.0": "/po-lines",
+  "278.0": "/asns",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

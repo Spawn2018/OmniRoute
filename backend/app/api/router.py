@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 
 from app.api import (
+    asns,
     bank_payments,
     booking_instructions,
     bookkeeping,
@@ -216,6 +217,7 @@ api_router.include_router(tenant_contract_keks.router)
 api_router.include_router(visibility_connectors.router)
 api_router.include_router(purchase_orders.router)
 api_router.include_router(po_lines.router)
+api_router.include_router(asns.router)
 api_router.include_router(terminal_slot_connectors.router)
 api_router.include_router(tower_impacts.router)
 api_router.include_router(twin_marks.router)
