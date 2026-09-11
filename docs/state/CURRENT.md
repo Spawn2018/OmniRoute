@@ -8,15 +8,15 @@
 
 
 
-**Ostatni plaster:** **301.0** `/refaktor` CatalogSourceRefField (erp/idp/contract)  
+**Ostatni plaster:** **302.0** `/refaktor` CatalogSourceRefField (kek/PO/terminal-slot)  
 
 **Etap:** Refaktor  
 
 **Noc:** `/noc 17` do 2026-09-11T17:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).  
 
-**Następny:** leftover label-form connector (terminal-slot / kek / PO / visibility) albo wąski HITL.  
+**Następny:** leftover label-form (po-line / visibility / sap) albo wąski HITL.  
 
-Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44/FourKites/Shippeo. Nie CI1 extract. Nie zgaduj 71–301.
+Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44/FourKites/Shippeo. Nie CI1 extract. Nie zgaduj 71–302.
 
 
 
@@ -36,5 +36,5 @@ Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow 
 
 
 
-**2026-09-11:** **301.0** zamknięty — erp / idp / customer-contract na SourceRefField. Noc wznowiona po timeout GitHub.
+**2026-09-11:** **302.0** zamknięty — kek / PO / terminal-slot na SourceRefField.
 

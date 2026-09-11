@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefField } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { persistTerminalSlotConnector, toSlotWrite } from "@/lib/terminal-slot-connectors-api"
 
@@ -136,16 +136,12 @@ export function TerminalSlotSave(args: { organizationId: string | null }) {
       </p>
       <SlotIdentityFields draft={draft} onDraft={setDraft} />
       <GateHoursFields draft={draft} onDraft={setDraft} />
-      <label className="grid gap-1 text-xs">
-        Pochodzenie (`tenant:manual` albo `fixture://terminal-slot-connector/…`)
-        <input
-          aria-label="Pochodzenie konektora slotu"
-          className="h-9 rounded-md border bg-background px-2 font-mono"
-          onChange={(change) => setDraft({ ...draft, originHint: change.target.value })}
-          required
-          value={draft.originHint}
-        />
-      </label>
+      <CatalogSourceRefField
+        label="source_ref (tenant:manual albo fixture://terminal-slot-connector/…)"
+        ariaLabel="Pochodzenie konektora slotu"
+        value={draft.originHint}
+        onChange={(originHint) => setDraft({ ...draft, originHint })}
+      />
       <Button type="submit" disabled={persist.isPending || !args.organizationId}>
         Zapisz konektor slotu
       </Button>
