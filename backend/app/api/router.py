@@ -46,6 +46,7 @@ from app.api import (
     executive_marks,
     extractions,
     field_carry_forwards,
+    filing_scheme_marks,
     fraud_flags,
     free_time_clocks,
     freight_audit_marks,
@@ -219,6 +220,7 @@ api_router.include_router(cmms_marks.router)
 api_router.include_router(legal_hold_marks.router)
 api_router.include_router(company_marks.router)
 api_router.include_router(bonded_marks.router)
+api_router.include_router(filing_scheme_marks.router)
 api_router.include_router(local_charges.router)
 api_router.include_router(tender_quotes.router)
 api_router.include_router(tender_data_rooms.router)

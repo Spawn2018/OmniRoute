@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **332.0** G12 ICS2/CBAM/EUDR/eFTI (węższa z kolejki; delta do utworzenia).
+**Następny:** **333.0** G13 EDI parser → draft (węższa z kolejki; delta do utworzenia).
 <!-- os-status:end -->
 
 ```mermaid
@@ -725,7 +725,7 @@ Karta: [karty-pol-fala-g.md](analysis/karty-pol-fala-g.md). G2 wyżej.
 | G8 | eIDAS / retencja / legal hold | 329.0 HITL katalog `legal_hold_mark` (hold_kind); leftover eIDAS crypto / wipe / F1 | |
 | G10 | multi-company w tenancie | 330.0 HITL katalog `company_mark` (seat_kind); leftover company_id FK / drugi tenant | drugi tenant |
 | G11 | bonded / miejsce uznane | 331.0 HITL katalog `bonded_mark` (bond_kind); leftover procedura / WMS | WMS e-com |
-| G12 | ICS2/CBAM/EUDR/eFTI | C7 | „SENT-UE” |
+| G12 | ICS2/CBAM/EUDR/eFTI | 332.0 HITL katalog `filing_scheme_mark` (scheme_kind); leftover filer/deadline/C7 | „SENT-UE” |
 | G13 | EDI parser → draft | M-39 | silent write |
 | G14 | AEO dossier | C8 | |
 | G15 | yard / waga / EIR | D3+T3 | |

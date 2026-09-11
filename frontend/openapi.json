@@ -7096,6 +7096,80 @@
         ]
       }
     },
+    "/api/v1/filing-scheme-marks": {
+      "get": {
+        "tags": [
+          "filing-scheme-marks"
+        ],
+        "summary": "List Filing Scheme Marks",
+        "operationId": "list_filing_scheme_marks_api_v1_filing_scheme_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/FilingSchemeMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Filing Scheme Marks Api V1 Filing Scheme Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "filing-scheme-marks"
+        ],
+        "summary": "Create Filing Scheme Mark",
+        "operationId": "create_filing_scheme_mark_api_v1_filing_scheme_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FilingSchemeMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FilingSchemeMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/local-charges": {
       "get": {
         "tags": [
@@ -20013,6 +20087,65 @@
           "superseded_by"
         ],
         "title": "FieldCarryForwardResponse"
+      },
+      "FilingSchemeMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "scheme_kind": {
+            "type": "string",
+            "title": "Scheme Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "scheme_kind",
+          "source_ref"
+        ],
+        "title": "FilingSchemeMarkCreate"
+      },
+      "FilingSchemeMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "scheme_kind": {
+            "type": "string",
+            "title": "Scheme Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "scheme_kind",
+          "source_ref"
+        ],
+        "title": "FilingSchemeMarkResponse"
       },
       "FraudFlagCreate": {
         "properties": {

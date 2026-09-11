@@ -1,3 +1,4 @@
+- **332.0 leftover:** filer live; deadline SQL; klej C7; SENT-UE. 332.0 = HITL `filing_scheme_mark` (scheme_kind).
 - **331.0 leftover:** procedura bonded live; WMS e-com; dock yard. 331.0 = HITL `bonded_mark` (bond_kind).
 - **330.0 leftover:** company_id FK; drugi tenant; multi-ledger. 330.0 = HITL `company_mark` (seat_kind).
 - **329.0 leftover:** eIDAS crypto; wipe ciphertext; F1 KSeF live. 329.0 = HITL `legal_hold_mark` (hold_kind).

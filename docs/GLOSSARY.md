@@ -214,6 +214,7 @@
 | znacznik legal hold | legal_hold_mark | G8 HITL katalog; leftover eIDAS crypto / wipe / F1 |
 | znacznik spółki | company_mark | G10 HITL katalog; leftover company_id FK / drugi tenant |
 | znacznik bonded | bonded_mark | G11 HITL katalog; leftover procedura / WMS e-com |
+| schemat składania | filing_scheme_mark | G12 HITL katalog; leftover filer / deadline / SENT-UE |
 | opcja naprawy | remediation_option | CI6 HITL 315.0; kind rebook/wait/claim/other; leftover kwota / S11 |
 | scenariusz skutku | impact_scenario | CI6 HITL 316.0; chain_label tekst; nie EBITDA SQL; nie tower_impact |
 | powiadomienie klauzuli | clause_notice | CI3 HITL 317.0; clause_label tekst; nie 409; nie auto-kara |

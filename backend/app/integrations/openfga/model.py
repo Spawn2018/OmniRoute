@@ -146,6 +146,7 @@ def _organization_g_catalog_relations() -> dict[str, Userset]:
         "can_manage_legal_hold_marks": _member(),
         "can_manage_company_marks": _member(),
         "can_manage_bonded_marks": _member(),
+        "can_manage_filing_scheme_marks": _member(),
     }
 
 

@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **331.0** G11 HITL `bonded_mark`
-- **Etap:** Plan — wolno `/plan-modul` **332.0** G12
-- **Następny:** **332.0** G12 ICS2/CBAM/EUDR/eFTI (węższa z kolejki; delta do utworzenia).
+- **Ostatni plaster:** **332.0** G12 HITL `filing_scheme_mark`
+- **Etap:** Plan — wolno `/plan-modul` **333.0** G13
+- **Następny:** **333.0** G13 EDI parser → draft (węższa z kolejki; delta do utworzenia).
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

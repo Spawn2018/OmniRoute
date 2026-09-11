@@ -51,6 +51,7 @@ import { Route as ExceptionsRouteImport } from './routes/exceptions'
 import { Route as ExchangeConnectorsRouteImport } from './routes/exchange-connectors'
 import { Route as ExecutiveMarksRouteImport } from './routes/executive-marks'
 import { Route as ExtractionsRouteImport } from './routes/extractions'
+import { Route as FilingSchemeMarksRouteImport } from './routes/filing-scheme-marks'
 import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as FleetRouteImport } from './routes/fleet'
 import { Route as FraudRouteImport } from './routes/fraud'
@@ -361,6 +362,11 @@ const ExecutiveMarksRoute = ExecutiveMarksRouteImport.update({
 const ExtractionsRoute = ExtractionsRouteImport.update({
   id: '/extractions',
   path: '/extractions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FilingSchemeMarksRoute = FilingSchemeMarksRouteImport.update({
+  id: '/filing-scheme-marks',
+  path: '/filing-scheme-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FinanceRoute = FinanceRouteImport.update({
@@ -913,6 +919,7 @@ export interface FileRoutesByFullPath {
   '/exchange-connectors': typeof ExchangeConnectorsRoute
   '/executive-marks': typeof ExecutiveMarksRoute
   '/extractions': typeof ExtractionsRoute
+  '/filing-scheme-marks': typeof FilingSchemeMarksRoute
   '/finance': typeof FinanceRoute
   '/fleet': typeof FleetRoute
   '/fraud': typeof FraudRoute
@@ -1058,6 +1065,7 @@ export interface FileRoutesByTo {
   '/exchange-connectors': typeof ExchangeConnectorsRoute
   '/executive-marks': typeof ExecutiveMarksRoute
   '/extractions': typeof ExtractionsRoute
+  '/filing-scheme-marks': typeof FilingSchemeMarksRoute
   '/finance': typeof FinanceRoute
   '/fleet': typeof FleetRoute
   '/fraud': typeof FraudRoute
@@ -1204,6 +1212,7 @@ export interface FileRoutesById {
   '/exchange-connectors': typeof ExchangeConnectorsRoute
   '/executive-marks': typeof ExecutiveMarksRoute
   '/extractions': typeof ExtractionsRoute
+  '/filing-scheme-marks': typeof FilingSchemeMarksRoute
   '/finance': typeof FinanceRoute
   '/fleet': typeof FleetRoute
   '/fraud': typeof FraudRoute
@@ -1351,6 +1360,7 @@ export interface FileRouteTypes {
     | '/exchange-connectors'
     | '/executive-marks'
     | '/extractions'
+    | '/filing-scheme-marks'
     | '/finance'
     | '/fleet'
     | '/fraud'
@@ -1496,6 +1506,7 @@ export interface FileRouteTypes {
     | '/exchange-connectors'
     | '/executive-marks'
     | '/extractions'
+    | '/filing-scheme-marks'
     | '/finance'
     | '/fleet'
     | '/fraud'
@@ -1641,6 +1652,7 @@ export interface FileRouteTypes {
     | '/exchange-connectors'
     | '/executive-marks'
     | '/extractions'
+    | '/filing-scheme-marks'
     | '/finance'
     | '/fleet'
     | '/fraud'
@@ -1787,6 +1799,7 @@ export interface RootRouteChildren {
   ExchangeConnectorsRoute: typeof ExchangeConnectorsRoute
   ExecutiveMarksRoute: typeof ExecutiveMarksRoute
   ExtractionsRoute: typeof ExtractionsRoute
+  FilingSchemeMarksRoute: typeof FilingSchemeMarksRoute
   FinanceRoute: typeof FinanceRoute
   FleetRoute: typeof FleetRoute
   FraudRoute: typeof FraudRoute
@@ -2184,6 +2197,13 @@ declare module '@tanstack/react-router' {
       path: '/extractions'
       fullPath: '/extractions'
       preLoaderRoute: typeof ExtractionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/filing-scheme-marks': {
+      id: '/filing-scheme-marks'
+      path: '/filing-scheme-marks'
+      fullPath: '/filing-scheme-marks'
+      preLoaderRoute: typeof FilingSchemeMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/finance': {
@@ -2939,6 +2959,7 @@ const rootRouteChildren: RootRouteChildren = {
   ExchangeConnectorsRoute: ExchangeConnectorsRoute,
   ExecutiveMarksRoute: ExecutiveMarksRoute,
   ExtractionsRoute: ExtractionsRoute,
+  FilingSchemeMarksRoute: FilingSchemeMarksRoute,
   FinanceRoute: FinanceRoute,
   FleetRoute: FleetRoute,
   FraudRoute: FraudRoute,

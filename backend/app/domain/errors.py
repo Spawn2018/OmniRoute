@@ -822,6 +822,10 @@ class InvalidBondedMark(DomainError):
     """G11: HITL znacznik bonded — nie WMS."""
 
 
+class InvalidFilingSchemeMark(DomainError):
+    """G12: HITL schemat składania — nie SENT-UE."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

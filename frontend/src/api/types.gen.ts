@@ -3163,6 +3163,50 @@ export type FieldCarryForwardResponse = {
 };
 
 /**
+ * FilingSchemeMarkCreate
+ */
+export type FilingSchemeMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Scheme Kind
+     */
+    scheme_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * FilingSchemeMarkResponse
+ */
+export type FilingSchemeMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Scheme Kind
+     */
+    scheme_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * FraudFlagCreate
  */
 export type FraudFlagCreate = {
@@ -13618,6 +13662,49 @@ export type CreateBondedMarkApiV1BondedMarksPostResponses = {
 };
 
 export type CreateBondedMarkApiV1BondedMarksPostResponse = CreateBondedMarkApiV1BondedMarksPostResponses[keyof CreateBondedMarkApiV1BondedMarksPostResponses];
+
+export type ListFilingSchemeMarksApiV1FilingSchemeMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/filing-scheme-marks';
+};
+
+export type ListFilingSchemeMarksApiV1FilingSchemeMarksGetResponses = {
+    /**
+     * Response List Filing Scheme Marks Api V1 Filing Scheme Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<FilingSchemeMarkResponse>;
+};
+
+export type ListFilingSchemeMarksApiV1FilingSchemeMarksGetResponse = ListFilingSchemeMarksApiV1FilingSchemeMarksGetResponses[keyof ListFilingSchemeMarksApiV1FilingSchemeMarksGetResponses];
+
+export type CreateFilingSchemeMarkApiV1FilingSchemeMarksPostData = {
+    body: FilingSchemeMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/filing-scheme-marks';
+};
+
+export type CreateFilingSchemeMarkApiV1FilingSchemeMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateFilingSchemeMarkApiV1FilingSchemeMarksPostError = CreateFilingSchemeMarkApiV1FilingSchemeMarksPostErrors[keyof CreateFilingSchemeMarkApiV1FilingSchemeMarksPostErrors];
+
+export type CreateFilingSchemeMarkApiV1FilingSchemeMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: FilingSchemeMarkResponse;
+};
+
+export type CreateFilingSchemeMarkApiV1FilingSchemeMarksPostResponse = CreateFilingSchemeMarkApiV1FilingSchemeMarksPostResponses[keyof CreateFilingSchemeMarkApiV1FilingSchemeMarksPostResponses];
 
 export type ListLocalChargesApiV1LocalChargesGetData = {
     body?: never;
