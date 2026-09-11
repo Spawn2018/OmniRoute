@@ -18,6 +18,7 @@ from app.api import (
     charges,
     circle_sims,
     clause_notices,
+    cmms_marks,
     cod_instructions,
     collaboration_marks,
     collective_invoices,
@@ -211,6 +212,7 @@ api_router.include_router(spend_marks.router)
 api_router.include_router(penalty_marks.router)
 api_router.include_router(intervention_outcomes.router)
 api_router.include_router(load_plan_marks.router)
+api_router.include_router(cmms_marks.router)
 api_router.include_router(local_charges.router)
 api_router.include_router(tender_quotes.router)
 api_router.include_router(tender_data_rooms.router)

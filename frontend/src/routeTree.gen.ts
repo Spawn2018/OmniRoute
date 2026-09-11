@@ -27,6 +27,7 @@ import { Route as ChinaRailRouteImport } from './routes/china-rail'
 import { Route as CircleSimsRouteImport } from './routes/circle-sims'
 import { Route as ClaimsRouteImport } from './routes/claims'
 import { Route as ClauseNoticesRouteImport } from './routes/clause-notices'
+import { Route as CmmsMarksRouteImport } from './routes/cmms-marks'
 import { Route as CodRouteImport } from './routes/cod'
 import { Route as CollaborationMarksRouteImport } from './routes/collaboration-marks'
 import { Route as CommodityCodesRouteImport } from './routes/commodity-codes'
@@ -237,6 +238,11 @@ const ClaimsRoute = ClaimsRouteImport.update({
 const ClauseNoticesRoute = ClauseNoticesRouteImport.update({
   id: '/clause-notices',
   path: '/clause-notices',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CmmsMarksRoute = CmmsMarksRouteImport.update({
+  id: '/cmms-marks',
+  path: '/cmms-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CodRoute = CodRouteImport.update({
@@ -865,6 +871,7 @@ export interface FileRoutesByFullPath {
   '/circle-sims': typeof CircleSimsRoute
   '/claims': typeof ClaimsRoute
   '/clause-notices': typeof ClauseNoticesRoute
+  '/cmms-marks': typeof CmmsMarksRoute
   '/cod': typeof CodRoute
   '/collaboration-marks': typeof CollaborationMarksRoute
   '/commodity-codes': typeof CommodityCodesRoute
@@ -1006,6 +1013,7 @@ export interface FileRoutesByTo {
   '/circle-sims': typeof CircleSimsRoute
   '/claims': typeof ClaimsRoute
   '/clause-notices': typeof ClauseNoticesRoute
+  '/cmms-marks': typeof CmmsMarksRoute
   '/cod': typeof CodRoute
   '/collaboration-marks': typeof CollaborationMarksRoute
   '/commodity-codes': typeof CommodityCodesRoute
@@ -1148,6 +1156,7 @@ export interface FileRoutesById {
   '/circle-sims': typeof CircleSimsRoute
   '/claims': typeof ClaimsRoute
   '/clause-notices': typeof ClauseNoticesRoute
+  '/cmms-marks': typeof CmmsMarksRoute
   '/cod': typeof CodRoute
   '/collaboration-marks': typeof CollaborationMarksRoute
   '/commodity-codes': typeof CommodityCodesRoute
@@ -1291,6 +1300,7 @@ export interface FileRouteTypes {
     | '/circle-sims'
     | '/claims'
     | '/clause-notices'
+    | '/cmms-marks'
     | '/cod'
     | '/collaboration-marks'
     | '/commodity-codes'
@@ -1432,6 +1442,7 @@ export interface FileRouteTypes {
     | '/circle-sims'
     | '/claims'
     | '/clause-notices'
+    | '/cmms-marks'
     | '/cod'
     | '/collaboration-marks'
     | '/commodity-codes'
@@ -1573,6 +1584,7 @@ export interface FileRouteTypes {
     | '/circle-sims'
     | '/claims'
     | '/clause-notices'
+    | '/cmms-marks'
     | '/cod'
     | '/collaboration-marks'
     | '/commodity-codes'
@@ -1715,6 +1727,7 @@ export interface RootRouteChildren {
   CircleSimsRoute: typeof CircleSimsRoute
   ClaimsRoute: typeof ClaimsRoute
   ClauseNoticesRoute: typeof ClauseNoticesRoute
+  CmmsMarksRoute: typeof CmmsMarksRoute
   CodRoute: typeof CodRoute
   CollaborationMarksRoute: typeof CollaborationMarksRoute
   CommodityCodesRoute: typeof CommodityCodesRoute
@@ -1964,6 +1977,13 @@ declare module '@tanstack/react-router' {
       path: '/clause-notices'
       fullPath: '/clause-notices'
       preLoaderRoute: typeof ClauseNoticesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cmms-marks': {
+      id: '/cmms-marks'
+      path: '/cmms-marks'
+      fullPath: '/cmms-marks'
+      preLoaderRoute: typeof CmmsMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cod': {
@@ -2835,6 +2855,7 @@ const rootRouteChildren: RootRouteChildren = {
   CircleSimsRoute: CircleSimsRoute,
   ClaimsRoute: ClaimsRoute,
   ClauseNoticesRoute: ClauseNoticesRoute,
+  CmmsMarksRoute: CmmsMarksRoute,
   CodRoute: CodRoute,
   CollaborationMarksRoute: CollaborationMarksRoute,
   CommodityCodesRoute: CommodityCodesRoute,

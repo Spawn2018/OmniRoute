@@ -806,6 +806,10 @@ class InvalidLoadPlanMark(DomainError):
     """G6: HITL znacznik planu załadunku — nie solver OR."""
 
 
+class InvalidCmmsMark(DomainError):
+    """G7: HITL znacznik CMMS — nie work_order."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

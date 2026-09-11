@@ -1287,6 +1287,50 @@ export type ClauseNoticeResponse = {
 };
 
 /**
+ * CmmsMarkCreate
+ */
+export type CmmsMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Work Kind
+     */
+    work_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CmmsMarkResponse
+ */
+export type CmmsMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Work Kind
+     */
+    work_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * CodInstructionCreate
  */
 export type CodInstructionCreate = {
@@ -13270,6 +13314,49 @@ export type CreateLoadPlanMarkApiV1LoadPlanMarksPostResponses = {
 };
 
 export type CreateLoadPlanMarkApiV1LoadPlanMarksPostResponse = CreateLoadPlanMarkApiV1LoadPlanMarksPostResponses[keyof CreateLoadPlanMarkApiV1LoadPlanMarksPostResponses];
+
+export type ListCmmsMarksApiV1CmmsMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/cmms-marks';
+};
+
+export type ListCmmsMarksApiV1CmmsMarksGetResponses = {
+    /**
+     * Response List Cmms Marks Api V1 Cmms Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<CmmsMarkResponse>;
+};
+
+export type ListCmmsMarksApiV1CmmsMarksGetResponse = ListCmmsMarksApiV1CmmsMarksGetResponses[keyof ListCmmsMarksApiV1CmmsMarksGetResponses];
+
+export type CreateCmmsMarkApiV1CmmsMarksPostData = {
+    body: CmmsMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/cmms-marks';
+};
+
+export type CreateCmmsMarkApiV1CmmsMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCmmsMarkApiV1CmmsMarksPostError = CreateCmmsMarkApiV1CmmsMarksPostErrors[keyof CreateCmmsMarkApiV1CmmsMarksPostErrors];
+
+export type CreateCmmsMarkApiV1CmmsMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CmmsMarkResponse;
+};
+
+export type CreateCmmsMarkApiV1CmmsMarksPostResponse = CreateCmmsMarkApiV1CmmsMarksPostResponses[keyof CreateCmmsMarkApiV1CmmsMarksPostResponses];
 
 export type ListLocalChargesApiV1LocalChargesGetData = {
     body?: never;

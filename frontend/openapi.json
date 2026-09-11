@@ -6800,6 +6800,80 @@
         ]
       }
     },
+    "/api/v1/cmms-marks": {
+      "get": {
+        "tags": [
+          "cmms-marks"
+        ],
+        "summary": "List Cmms Marks",
+        "operationId": "list_cmms_marks_api_v1_cmms_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CmmsMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Cmms Marks Api V1 Cmms Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "cmms-marks"
+        ],
+        "summary": "Create Cmms Mark",
+        "operationId": "create_cmms_mark_api_v1_cmms_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CmmsMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CmmsMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/local-charges": {
       "get": {
         "tags": [
@@ -16569,6 +16643,65 @@
           "source_ref"
         ],
         "title": "ClauseNoticeResponse"
+      },
+      "CmmsMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "work_kind": {
+            "type": "string",
+            "title": "Work Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "work_kind",
+          "source_ref"
+        ],
+        "title": "CmmsMarkCreate"
+      },
+      "CmmsMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "work_kind": {
+            "type": "string",
+            "title": "Work Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "work_kind",
+          "source_ref"
+        ],
+        "title": "CmmsMarkResponse"
       },
       "CodInstructionCreate": {
         "properties": {
