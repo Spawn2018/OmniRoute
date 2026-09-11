@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefField } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { persistSnapshot, snapshotWrite } from "@/lib/plan-snapshots-api"
 
@@ -107,16 +107,12 @@ export function SnapshotSave(args: { organizationId: string | null }) {
           required
         />
       </label>
-      <label className="flex flex-col gap-1 text-xs">
-        source_ref (tenant:manual albo fixture://plan-snapshot/…)
-        <input
-          aria-label="source_ref migawki planu"
-          className="h-9 rounded-md border bg-background px-2 font-mono"
-          value={draft.originStamp}
-          onChange={(change) => setDraft({ ...draft, originStamp: change.target.value })}
-          required
-        />
-      </label>
+      <CatalogSourceRefField
+        label="source_ref (tenant:manual albo fixture://plan-snapshot/…)"
+        ariaLabel="source_ref migawki planu"
+        value={draft.originStamp}
+        onChange={(originStamp) => setDraft({ ...draft, originStamp })}
+      />
       <Button type="submit" disabled={persist.isPending || !args.organizationId}>
         Zapisz migawkę
       </Button>

@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **296.0** `/refaktor` CatalogSourceRefHintField (paper-form #3 tender) **Następny:** leftover paper-form / label-form `source_ref` (Q-E1) albo wąski HITL z pinu.
+**Stan (z CURRENT.md):** **297.0** `/refaktor` CatalogSourceRefField (circle/lane-km/plan-snapshot) **Następny:** leftover label-form `source_ref` (Q-E1) albo wąski HITL z pinu.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

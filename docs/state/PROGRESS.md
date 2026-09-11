@@ -2,6 +2,7 @@
 
 | Data | Plaster | Moduł | Opis |
 |---|---|---|---|
+| 2026-09-11 | 297.0 | UI | `/refaktor`: SourceRefField na circle/lane-km/plan-snapshot. Nastepny: label-form. |
 | 2026-09-11 | 296.0 | UI | `/refaktor`: HintField na TED/award-review/bid-stance. Nastepny: paper-form/label-form. |
 | 2026-09-11 | 295.0 | UI | `/refaktor`: HintField na lane-pattern/monitoring/tender-carbon. Nastepny: tender paper-form. |
 | 2026-09-11 | 294.0 | CT7 | visibility_connector tokeny fourkites/shippeo. Nie live. Nastepny: paper-form source_ref /refaktor. |
