@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AiRouteImport } from './routes/ai'
 import { Route as AirRouteImport } from './routes/air'
 import { Route as AsnsRouteImport } from './routes/asns'
+import { Route as BondedMarksRouteImport } from './routes/bonded-marks'
 import { Route as BookkeepingRouteImport } from './routes/bookkeeping'
 import { Route as CalibrationMarksRouteImport } from './routes/calibration-marks'
 import { Route as CapaMarksRouteImport } from './routes/capa-marks'
@@ -170,6 +171,11 @@ const AirRoute = AirRouteImport.update({
 const AsnsRoute = AsnsRouteImport.update({
   id: '/asns',
   path: '/asns',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BondedMarksRoute = BondedMarksRouteImport.update({
+  id: '/bonded-marks',
+  path: '/bonded-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BookkeepingRoute = BookkeepingRouteImport.update({
@@ -869,6 +875,7 @@ export interface FileRoutesByFullPath {
   '/ai': typeof AiRoute
   '/air': typeof AirRoute
   '/asns': typeof AsnsRoute
+  '/bonded-marks': typeof BondedMarksRoute
   '/bookkeeping': typeof BookkeepingRoute
   '/calibration-marks': typeof CalibrationMarksRoute
   '/capa-marks': typeof CapaMarksRoute
@@ -1013,6 +1020,7 @@ export interface FileRoutesByTo {
   '/ai': typeof AiRoute
   '/air': typeof AirRoute
   '/asns': typeof AsnsRoute
+  '/bonded-marks': typeof BondedMarksRoute
   '/bookkeeping': typeof BookkeepingRoute
   '/calibration-marks': typeof CalibrationMarksRoute
   '/capa-marks': typeof CapaMarksRoute
@@ -1158,6 +1166,7 @@ export interface FileRoutesById {
   '/ai': typeof AiRoute
   '/air': typeof AirRoute
   '/asns': typeof AsnsRoute
+  '/bonded-marks': typeof BondedMarksRoute
   '/bookkeeping': typeof BookkeepingRoute
   '/calibration-marks': typeof CalibrationMarksRoute
   '/capa-marks': typeof CapaMarksRoute
@@ -1304,6 +1313,7 @@ export interface FileRouteTypes {
     | '/ai'
     | '/air'
     | '/asns'
+    | '/bonded-marks'
     | '/bookkeeping'
     | '/calibration-marks'
     | '/capa-marks'
@@ -1448,6 +1458,7 @@ export interface FileRouteTypes {
     | '/ai'
     | '/air'
     | '/asns'
+    | '/bonded-marks'
     | '/bookkeeping'
     | '/calibration-marks'
     | '/capa-marks'
@@ -1592,6 +1603,7 @@ export interface FileRouteTypes {
     | '/ai'
     | '/air'
     | '/asns'
+    | '/bonded-marks'
     | '/bookkeeping'
     | '/calibration-marks'
     | '/capa-marks'
@@ -1737,6 +1749,7 @@ export interface RootRouteChildren {
   AiRoute: typeof AiRoute
   AirRoute: typeof AirRoute
   AsnsRoute: typeof AsnsRoute
+  BondedMarksRoute: typeof BondedMarksRoute
   BookkeepingRoute: typeof BookkeepingRoute
   CalibrationMarksRoute: typeof CalibrationMarksRoute
   CapaMarksRoute: typeof CapaMarksRoute
@@ -1905,6 +1918,13 @@ declare module '@tanstack/react-router' {
       path: '/asns'
       fullPath: '/asns'
       preLoaderRoute: typeof AsnsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bonded-marks': {
+      id: '/bonded-marks'
+      path: '/bonded-marks'
+      fullPath: '/bonded-marks'
+      preLoaderRoute: typeof BondedMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/bookkeeping': {
@@ -2881,6 +2901,7 @@ const rootRouteChildren: RootRouteChildren = {
   AiRoute: AiRoute,
   AirRoute: AirRoute,
   AsnsRoute: AsnsRoute,
+  BondedMarksRoute: BondedMarksRoute,
   BookkeepingRoute: BookkeepingRoute,
   CalibrationMarksRoute: CalibrationMarksRoute,
   CapaMarksRoute: CapaMarksRoute,

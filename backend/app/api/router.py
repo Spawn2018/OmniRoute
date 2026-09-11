@@ -3,6 +3,7 @@ from fastapi import APIRouter
 from app.api import (
     asns,
     bank_payments,
+    bonded_marks,
     booking_instructions,
     bookkeeping,
     calibration_marks,
@@ -217,6 +218,7 @@ api_router.include_router(load_plan_marks.router)
 api_router.include_router(cmms_marks.router)
 api_router.include_router(legal_hold_marks.router)
 api_router.include_router(company_marks.router)
+api_router.include_router(bonded_marks.router)
 api_router.include_router(local_charges.router)
 api_router.include_router(tender_quotes.router)
 api_router.include_router(tender_data_rooms.router)

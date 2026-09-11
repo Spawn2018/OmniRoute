@@ -2,6 +2,7 @@
 
 | Data | Plaster | Moduł | Opis |
 |---|---|---|---|
+| 2026-09-11 | 331.0 | G11 | HITL `bonded_mark` (bond_kind). Nie WMS. Nastepny: Plan G12. |
 | 2026-09-11 | 330.0 | G10 | HITL `company_mark` (seat_kind). Nie drugi tenant. Nastepny: Plan G11. |
 | 2026-09-11 | 329.0 | G8 | HITL `legal_hold_mark` (hold_kind). Nie eIDAS crypto. Nastepny: Plan G10. |
 | 2026-09-11 | 328.0 | G7 | HITL `cmms_mark` (work_kind). Nie work_order. Nastepny: Plan G8. |

@@ -213,6 +213,50 @@ export type BankPaymentResponse = {
 };
 
 /**
+ * BondedMarkCreate
+ */
+export type BondedMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Bond Kind
+     */
+    bond_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * BondedMarkResponse
+ */
+export type BondedMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Bond Kind
+     */
+    bond_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * BookingInstructionCreate
  */
 export type BookingInstructionCreate = {
@@ -13531,6 +13575,49 @@ export type CreateCompanyMarkApiV1CompanyMarksPostResponses = {
 };
 
 export type CreateCompanyMarkApiV1CompanyMarksPostResponse = CreateCompanyMarkApiV1CompanyMarksPostResponses[keyof CreateCompanyMarkApiV1CompanyMarksPostResponses];
+
+export type ListBondedMarksApiV1BondedMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/bonded-marks';
+};
+
+export type ListBondedMarksApiV1BondedMarksGetResponses = {
+    /**
+     * Response List Bonded Marks Api V1 Bonded Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<BondedMarkResponse>;
+};
+
+export type ListBondedMarksApiV1BondedMarksGetResponse = ListBondedMarksApiV1BondedMarksGetResponses[keyof ListBondedMarksApiV1BondedMarksGetResponses];
+
+export type CreateBondedMarkApiV1BondedMarksPostData = {
+    body: BondedMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/bonded-marks';
+};
+
+export type CreateBondedMarkApiV1BondedMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateBondedMarkApiV1BondedMarksPostError = CreateBondedMarkApiV1BondedMarksPostErrors[keyof CreateBondedMarkApiV1BondedMarksPostErrors];
+
+export type CreateBondedMarkApiV1BondedMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: BondedMarkResponse;
+};
+
+export type CreateBondedMarkApiV1BondedMarksPostResponse = CreateBondedMarkApiV1BondedMarksPostResponses[keyof CreateBondedMarkApiV1BondedMarksPostResponses];
 
 export type ListLocalChargesApiV1LocalChargesGetData = {
     body?: never;

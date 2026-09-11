@@ -818,6 +818,10 @@ class InvalidCompanyMark(DomainError):
     """G10: HITL znacznik spółki — nie drugi tenant."""
 
 
+class InvalidBondedMark(DomainError):
+    """G11: HITL znacznik bonded — nie WMS."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 
