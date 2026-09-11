@@ -2,6 +2,7 @@
 
 | Data | Plaster | Moduł | Opis |
 |---|---|---|---|
+| 2026-09-12 | 351.0 | EXP2.14 fuel_anomaly_mark HITL | 2026-09-12 | PRZESZŁO | N/A | N/A | OK | OK | 5–15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-12 | 350.0 | EXP2.13 ferry_art9_mark HITL | 2026-09-12 | PRZESZŁO | N/A | N/A | OK | OK | 5–15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-12 | 349.0 | EXP2.12 combined_transport_mark HITL | 2026-09-12 | PRZESZŁO | N/A | N/A | OK | OK | 5–15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-12 | 348.0 | EXP2.11 cabotage_mark HITL | 2026-09-12 | PRZESZŁO | N/A | N/A | OK | OK | 5–15 | PRZESZŁO | N/A | N/A | PRZESZŁO |

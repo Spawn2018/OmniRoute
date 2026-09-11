@@ -146,6 +146,7 @@ modules =
     app.services.cabotage_marks
     app.services.combined_transport_marks
     app.services.ferry_art9_marks
+    app.services.fuel_anomaly_marks
     app.services.freight_audit_marks
     app.services.collaboration_marks
     app.services.exchange_connectors
@@ -592,6 +593,9 @@ forbidden_modules =
     app.services.ferry_art9_marks
     app.repositories.ferry_art9_marks
     app.models.ferry_art9_mark
+    app.services.fuel_anomaly_marks
+    app.repositories.fuel_anomaly_marks
+    app.models.fuel_anomaly_mark
     app.services.freight_audit_marks
     app.repositories.freight_audit_marks
     app.models.freight_audit_mark

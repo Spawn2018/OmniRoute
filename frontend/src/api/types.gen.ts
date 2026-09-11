@@ -3735,6 +3735,50 @@ export type FreightAuditMarkResponse = {
 };
 
 /**
+ * FuelAnomalyMarkCreate
+ */
+export type FuelAnomalyMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Anomaly Kind
+     */
+    anomaly_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * FuelAnomalyMarkResponse
+ */
+export type FuelAnomalyMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Anomaly Kind
+     */
+    anomaly_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * FuelIndexCreate
  */
 export type FuelIndexCreate = {
@@ -19682,6 +19726,49 @@ export type CreateFerryArt9MarkApiV1FerryArt9MarksPostResponses = {
 };
 
 export type CreateFerryArt9MarkApiV1FerryArt9MarksPostResponse = CreateFerryArt9MarkApiV1FerryArt9MarksPostResponses[keyof CreateFerryArt9MarkApiV1FerryArt9MarksPostResponses];
+
+export type ListFuelAnomalyMarksApiV1FuelAnomalyMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/fuel-anomaly-marks';
+};
+
+export type ListFuelAnomalyMarksApiV1FuelAnomalyMarksGetResponses = {
+    /**
+     * Response List Fuel Anomaly Marks Api V1 Fuel Anomaly Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<FuelAnomalyMarkResponse>;
+};
+
+export type ListFuelAnomalyMarksApiV1FuelAnomalyMarksGetResponse = ListFuelAnomalyMarksApiV1FuelAnomalyMarksGetResponses[keyof ListFuelAnomalyMarksApiV1FuelAnomalyMarksGetResponses];
+
+export type CreateFuelAnomalyMarkApiV1FuelAnomalyMarksPostData = {
+    body: FuelAnomalyMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/fuel-anomaly-marks';
+};
+
+export type CreateFuelAnomalyMarkApiV1FuelAnomalyMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateFuelAnomalyMarkApiV1FuelAnomalyMarksPostError = CreateFuelAnomalyMarkApiV1FuelAnomalyMarksPostErrors[keyof CreateFuelAnomalyMarkApiV1FuelAnomalyMarksPostErrors];
+
+export type CreateFuelAnomalyMarkApiV1FuelAnomalyMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: FuelAnomalyMarkResponse;
+};
+
+export type CreateFuelAnomalyMarkApiV1FuelAnomalyMarksPostResponse = CreateFuelAnomalyMarkApiV1FuelAnomalyMarksPostResponses[keyof CreateFuelAnomalyMarkApiV1FuelAnomalyMarksPostResponses];
 
 export type HealthHealthGetData = {
     body?: never;

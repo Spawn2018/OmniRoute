@@ -898,6 +898,10 @@ class InvalidFerryArt9Mark(DomainError):
     """EXP2.13: HITL ferry art. 9 — nie tacho / Driver Time Solver."""
 
 
+class InvalidFuelAnomalyMark(DomainError):
+    """EXP2.14: HITL karta/anomalia paliwa — nie live card / telemetry."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

@@ -16148,6 +16148,80 @@
         ]
       }
     },
+    "/api/v1/fuel-anomaly-marks": {
+      "get": {
+        "tags": [
+          "fuel-anomaly-marks"
+        ],
+        "summary": "List Fuel Anomaly Marks",
+        "operationId": "list_fuel_anomaly_marks_api_v1_fuel_anomaly_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/FuelAnomalyMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Fuel Anomaly Marks Api V1 Fuel Anomaly Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "fuel-anomaly-marks"
+        ],
+        "summary": "Create Fuel Anomaly Mark",
+        "operationId": "create_fuel_anomaly_mark_api_v1_fuel_anomaly_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FuelAnomalyMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FuelAnomalyMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/health": {
       "get": {
         "summary": "Health",
@@ -22188,6 +22262,65 @@
           "source_ref"
         ],
         "title": "FreightAuditMarkResponse"
+      },
+      "FuelAnomalyMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "anomaly_kind": {
+            "type": "string",
+            "title": "Anomaly Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "anomaly_kind",
+          "source_ref"
+        ],
+        "title": "FuelAnomalyMarkCreate"
+      },
+      "FuelAnomalyMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "anomaly_kind": {
+            "type": "string",
+            "title": "Anomaly Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "anomaly_kind",
+          "source_ref"
+        ],
+        "title": "FuelAnomalyMarkResponse"
       },
       "FuelIndexCreate": {
         "properties": {

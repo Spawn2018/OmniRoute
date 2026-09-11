@@ -66,6 +66,7 @@ import { Route as FleetRouteImport } from './routes/fleet'
 import { Route as FraudRouteImport } from './routes/fraud'
 import { Route as FreeTimeClocksRouteImport } from './routes/free-time-clocks'
 import { Route as FreightAuditMarksRouteImport } from './routes/freight-audit-marks'
+import { Route as FuelAnomalyMarksRouteImport } from './routes/fuel-anomaly-marks'
 import { Route as FuelIndexesRouteImport } from './routes/fuel-indexes'
 import { Route as FxDifferencesRouteImport } from './routes/fx-differences'
 import { Route as GdprRouteImport } from './routes/gdpr'
@@ -455,6 +456,11 @@ const FreeTimeClocksRoute = FreeTimeClocksRouteImport.update({
 const FreightAuditMarksRoute = FreightAuditMarksRouteImport.update({
   id: '/freight-audit-marks',
   path: '/freight-audit-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FuelAnomalyMarksRoute = FuelAnomalyMarksRouteImport.update({
+  id: '/fuel-anomaly-marks',
+  path: '/fuel-anomaly-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FuelIndexesRoute = FuelIndexesRouteImport.update({
@@ -1042,6 +1048,7 @@ export interface FileRoutesByFullPath {
   '/fraud': typeof FraudRoute
   '/free-time-clocks': typeof FreeTimeClocksRoute
   '/freight-audit-marks': typeof FreightAuditMarksRoute
+  '/fuel-anomaly-marks': typeof FuelAnomalyMarksRoute
   '/fuel-indexes': typeof FuelIndexesRoute
   '/fx-differences': typeof FxDifferencesRoute
   '/gdpr': typeof GdprRoute
@@ -1206,6 +1213,7 @@ export interface FileRoutesByTo {
   '/fraud': typeof FraudRoute
   '/free-time-clocks': typeof FreeTimeClocksRoute
   '/freight-audit-marks': typeof FreightAuditMarksRoute
+  '/fuel-anomaly-marks': typeof FuelAnomalyMarksRoute
   '/fuel-indexes': typeof FuelIndexesRoute
   '/fx-differences': typeof FxDifferencesRoute
   '/gdpr': typeof GdprRoute
@@ -1371,6 +1379,7 @@ export interface FileRoutesById {
   '/fraud': typeof FraudRoute
   '/free-time-clocks': typeof FreeTimeClocksRoute
   '/freight-audit-marks': typeof FreightAuditMarksRoute
+  '/fuel-anomaly-marks': typeof FuelAnomalyMarksRoute
   '/fuel-indexes': typeof FuelIndexesRoute
   '/fx-differences': typeof FxDifferencesRoute
   '/gdpr': typeof GdprRoute
@@ -1537,6 +1546,7 @@ export interface FileRouteTypes {
     | '/fraud'
     | '/free-time-clocks'
     | '/freight-audit-marks'
+    | '/fuel-anomaly-marks'
     | '/fuel-indexes'
     | '/fx-differences'
     | '/gdpr'
@@ -1701,6 +1711,7 @@ export interface FileRouteTypes {
     | '/fraud'
     | '/free-time-clocks'
     | '/freight-audit-marks'
+    | '/fuel-anomaly-marks'
     | '/fuel-indexes'
     | '/fx-differences'
     | '/gdpr'
@@ -1865,6 +1876,7 @@ export interface FileRouteTypes {
     | '/fraud'
     | '/free-time-clocks'
     | '/freight-audit-marks'
+    | '/fuel-anomaly-marks'
     | '/fuel-indexes'
     | '/fx-differences'
     | '/gdpr'
@@ -2030,6 +2042,7 @@ export interface RootRouteChildren {
   FraudRoute: typeof FraudRoute
   FreeTimeClocksRoute: typeof FreeTimeClocksRoute
   FreightAuditMarksRoute: typeof FreightAuditMarksRoute
+  FuelAnomalyMarksRoute: typeof FuelAnomalyMarksRoute
   FuelIndexesRoute: typeof FuelIndexesRoute
   FxDifferencesRoute: typeof FxDifferencesRoute
   GdprRoute: typeof GdprRoute
@@ -2536,6 +2549,13 @@ declare module '@tanstack/react-router' {
       path: '/freight-audit-marks'
       fullPath: '/freight-audit-marks'
       preLoaderRoute: typeof FreightAuditMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fuel-anomaly-marks': {
+      id: '/fuel-anomaly-marks'
+      path: '/fuel-anomaly-marks'
+      fullPath: '/fuel-anomaly-marks'
+      preLoaderRoute: typeof FuelAnomalyMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/fuel-indexes': {
@@ -3334,6 +3354,7 @@ const rootRouteChildren: RootRouteChildren = {
   FraudRoute: FraudRoute,
   FreeTimeClocksRoute: FreeTimeClocksRoute,
   FreightAuditMarksRoute: FreightAuditMarksRoute,
+  FuelAnomalyMarksRoute: FuelAnomalyMarksRoute,
   FuelIndexesRoute: FuelIndexesRoute,
   FxDifferencesRoute: FxDifferencesRoute,
   GdprRoute: GdprRoute,

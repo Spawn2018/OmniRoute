@@ -4,17 +4,17 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **350.0** EXP2.13 HITL `ferry_art9_mark`
+**Ostatni plaster:** **351.0** EXP2.14 HITL `fuel_anomaly_mark`
 
-**Etap:** Plan — wolno `/plan-modul` **351.0** EXP2.14
+**Etap:** Plan — wolno `/plan-modul` **352.0** EXP2.15
 
 **Noc:** `/noc 10` do 2026-09-12T10:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).
 
-**Następny:** **351.0** EXP2.14 fuel card+anomalia (węższa z kolejki; delta do utworzenia).
+**Następny:** **352.0** EXP2.15 fleet cost/CMMS (węższa z kolejki; delta do utworzenia).
 
-Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44 · extract · CI5 kara SQL · wróżba punktowa · CI6 kwoty · S11 auto-send · EBITDA SQL · egzekucja 409 · MAE SQL · outcome SQL · crm_opportunity · activity · cold auto-send · bank stakeholder · presentation_due · teatr PUESC · wymiary OOG · LLM-VRP · solver OR · kara kierowcy · work_order · F1 KSeF live · eIDAS crypto · wipe · drugi tenant · company_id FK · WMS e-com · SENT-UE · filer live · silent write · zestaw party_document · yard live · Stripe live · registry scrape · druga marża WC · make-or-buy silnik · allocation SQL · cargo_cover live · sanctions live · subcontract live · schedule live · cutoff live · TIME-TO-FIX live · what-if silnik · cabotage live · combined transport live · ferry art. 9 live · fuel anomaly live. Nie zgaduj 71–351.
+Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44 · extract · CI5 kara SQL · wróżba punktowa · CI6 kwoty · S11 auto-send · EBITDA SQL · egzekucja 409 · MAE SQL · outcome SQL · crm_opportunity · activity · cold auto-send · bank stakeholder · presentation_due · teatr PUESC · wymiary OOG · LLM-VRP · solver OR · kara kierowcy · work_order · F1 KSeF live · eIDAS crypto · wipe · drugi tenant · company_id FK · WMS e-com · SENT-UE · filer live · silent write · zestaw party_document · yard live · Stripe live · registry scrape · druga marża WC · make-or-buy silnik · allocation SQL · cargo_cover live · sanctions live · subcontract live · schedule live · cutoff live · TIME-TO-FIX live · what-if silnik · cabotage live · combined transport live · ferry art. 9 live · fuel anomaly live · fleet cost live. Nie zgaduj 71–352.
 
-**Spec (jedyna na sesję):** brak otwartej delty — `/plan-modul` EXP2.14.
+**Spec (jedyna na sesję):** brak otwartej delty — `/plan-modul` EXP2.15.
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
@@ -22,4 +22,4 @@ Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow 
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-12:** Plaster **350.0** zamknięty (`/noc`) — HITL `ferry_art9_mark` bez tacho / Driver Time Solver.
+**2026-09-12:** Plaster **351.0** zamknięty (`/noc`) — HITL `fuel_anomaly_mark` bez live fuel card.
