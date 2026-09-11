@@ -94,6 +94,7 @@ type organization
     define can_manage_intervention_outcomes: member
     define can_manage_crm_leads: member
     define can_manage_lc_checklists: member
+    define can_manage_ncts_drafts: member
     define can_manage_freight_audit_marks: member
     define can_manage_collaboration_marks: member
     define can_manage_routing_guide_enforcements: member

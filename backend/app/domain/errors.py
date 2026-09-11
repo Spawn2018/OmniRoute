@@ -794,6 +794,10 @@ class InvalidLcChecklist(DomainError):
     """G3: HITL checklista LC — nie bank due."""
 
 
+class InvalidNctsDraft(DomainError):
+    """G4: HITL szkic NCTS — nie PUESC."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

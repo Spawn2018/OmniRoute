@@ -1,3 +1,4 @@
+- **325.0 leftover:** plomby z nóg; klej C2; teatr PUESC; XML. 325.0 = HITL `ncts_draft` (transit_kind).
 - **324.0 leftover:** bank stakeholder; presentation_due; klej U5/I3; bank live. 324.0 = HITL `lc_checklist` (status_kind).
 - **323.0 leftover:** crm_opportunity; activity; dedup NIP; klej X7; cold auto-send. 323.0 = HITL `crm_lead` (stage_kind).
 - **322.0 leftover:** predicted_loss / repair_cost / actual_loss / saved SQL; suma nachodzących oszczędności. 322.0 = HITL `intervention_outcome` (result_kind).

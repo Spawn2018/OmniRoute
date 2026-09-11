@@ -2,6 +2,7 @@
 
 | Data | Plaster | Moduł | Opis |
 |---|---|---|---|
+| 2026-09-11 | 325.0 | G4 | HITL `ncts_draft` (transit_kind). Nie PUESC. Nastepny: Plan G5. |
 | 2026-09-11 | 324.0 | G3 | HITL `lc_checklist` (status_kind). Nie bank due. Nastepny: Plan G4. |
 | 2026-09-11 | 323.0 | G1 | HITL `crm_lead` (stage_kind). Nie cold-send. Nastepny: Plan G3. |
 | 2026-09-11 | 322.0 | CI7 | HITL `intervention_outcome` (result_kind). Nie SQL saved. Nastepny: Plan G1. |

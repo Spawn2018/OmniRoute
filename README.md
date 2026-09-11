@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **324.0** G3 HITL `lc_checklist`
-- **Etap:** Plan — wolno `/plan-modul` **G4**
-- **Następny:** **G4** NCTS szkic (Plan). Pin po G3.
+- **Ostatni plaster:** **325.0** G4 HITL `ncts_draft`
+- **Etap:** Plan — wolno `/plan-modul` **G5**
+- **Następny:** **G5** OOG / lashing / eskort (Plan). Pin po G4.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

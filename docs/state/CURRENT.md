@@ -8,19 +8,19 @@
 
 
 
-**Ostatni plaster:** **324.0** G3 HITL `lc_checklist`  
+**Ostatni plaster:** **325.0** G4 HITL `ncts_draft`  
 
-**Etap:** Plan — wolno `/plan-modul` **G4**  
+**Etap:** Plan — wolno `/plan-modul` **G5**  
 
 **Noc:** `/noc 10` do 2026-09-12T10:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).  
 
-**Następny:** **G4** NCTS szkic (Plan). Pin po G3.  
+**Następny:** **G5** OOG / lashing / eskort (Plan). Pin po G4.  
 
-Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44 · extract · CI5 kara SQL · wróżba punktowa · CI6 kwoty · S11 auto-send · EBITDA SQL · egzekucja 409 · MAE SQL · outcome SQL · crm_opportunity · activity · cold auto-send · bank stakeholder · presentation_due · teatr PUESC. Nie zgaduj 71–324.
+Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44 · extract · CI5 kara SQL · wróżba punktowa · CI6 kwoty · S11 auto-send · EBITDA SQL · egzekucja 409 · MAE SQL · outcome SQL · crm_opportunity · activity · cold auto-send · bank stakeholder · presentation_due · teatr PUESC. Nie zgaduj 71–325.
 
 
 
-**Spec (jedyna na sesję):** brak — najpierw `/plan-modul` G4.
+**Spec (jedyna na sesję):** brak — najpierw `/plan-modul` G5.
 
 
 
@@ -36,4 +36,4 @@ Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow 
 
 
 
-**2026-09-11:** **324.0** zamknięty — HITL `lc_checklist` bez banku i due. Następny: Plan G4.
+**2026-09-11:** **325.0** zamknięty — HITL `ncts_draft` bez PUESC. Następny: Plan G5.

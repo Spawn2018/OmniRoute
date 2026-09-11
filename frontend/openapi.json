@@ -6060,6 +6060,80 @@
         ]
       }
     },
+    "/api/v1/ncts-drafts": {
+      "get": {
+        "tags": [
+          "ncts-drafts"
+        ],
+        "summary": "List Ncts Drafts",
+        "operationId": "list_ncts_drafts_api_v1_ncts_drafts_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/NctsDraftResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Ncts Drafts Api V1 Ncts Drafts Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "ncts-drafts"
+        ],
+        "summary": "Create Ncts Draft",
+        "operationId": "create_ncts_draft_api_v1_ncts_drafts_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NctsDraftCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NctsDraftResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/circle-sims": {
       "get": {
         "tags": [
@@ -21645,6 +21719,65 @@
           "source_ref"
         ],
         "title": "NbpRateResponse"
+      },
+      "NctsDraftCreate": {
+        "properties": {
+          "draft_code": {
+            "type": "string",
+            "title": "Draft Code"
+          },
+          "transit_kind": {
+            "type": "string",
+            "title": "Transit Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "draft_code",
+          "transit_kind",
+          "source_ref"
+        ],
+        "title": "NctsDraftCreate"
+      },
+      "NctsDraftResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "draft_code": {
+            "type": "string",
+            "title": "Draft Code"
+          },
+          "transit_kind": {
+            "type": "string",
+            "title": "Transit Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "draft_code",
+          "transit_kind",
+          "source_ref"
+        ],
+        "title": "NctsDraftResponse"
       },
       "NetworkCreate": {
         "properties": {

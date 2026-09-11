@@ -67,6 +67,7 @@ from app.api import (
     money_costs,
     monitoring_schemes,
     nbp_rates,
+    ncts_drafts,
     networks,
     ocean_bills,
     operational_exceptions,
@@ -198,6 +199,7 @@ api_router.include_router(kreptd_licences.router)
 api_router.include_router(lane_patterns.router)
 api_router.include_router(lane_kms.router)
 api_router.include_router(lc_checklists.router)
+api_router.include_router(ncts_drafts.router)
 api_router.include_router(circle_sims.router)
 api_router.include_router(clause_notices.router)
 api_router.include_router(calibration_marks.router)

@@ -75,6 +75,7 @@ import { Route as MemoryEdgesRouteImport } from './routes/memory-edges'
 import { Route as MoneyCostRouteImport } from './routes/money-cost'
 import { Route as MonitoringSchemesRouteImport } from './routes/monitoring-schemes'
 import { Route as NbpRatesRouteImport } from './routes/nbp-rates'
+import { Route as NctsDraftsRouteImport } from './routes/ncts-drafts'
 import { Route as NetworksRouteImport } from './routes/networks'
 import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as OceanBillsRouteImport } from './routes/ocean-bills'
@@ -474,6 +475,11 @@ const MonitoringSchemesRoute = MonitoringSchemesRouteImport.update({
 const NbpRatesRoute = NbpRatesRouteImport.update({
   id: '/nbp-rates',
   path: '/nbp-rates',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NctsDraftsRoute = NctsDraftsRouteImport.update({
+  id: '/ncts-drafts',
+  path: '/ncts-drafts',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NetworksRoute = NetworksRouteImport.update({
@@ -895,6 +901,7 @@ export interface FileRoutesByFullPath {
   '/money-cost': typeof MoneyCostRoute
   '/monitoring-schemes': typeof MonitoringSchemesRoute
   '/nbp-rates': typeof NbpRatesRoute
+  '/ncts-drafts': typeof NctsDraftsRoute
   '/networks': typeof NetworksRoute
   '/notifications': typeof NotificationsRoute
   '/ocean-bills': typeof OceanBillsRoute
@@ -1033,6 +1040,7 @@ export interface FileRoutesByTo {
   '/money-cost': typeof MoneyCostRoute
   '/monitoring-schemes': typeof MonitoringSchemesRoute
   '/nbp-rates': typeof NbpRatesRoute
+  '/ncts-drafts': typeof NctsDraftsRoute
   '/networks': typeof NetworksRoute
   '/notifications': typeof NotificationsRoute
   '/ocean-bills': typeof OceanBillsRoute
@@ -1172,6 +1180,7 @@ export interface FileRoutesById {
   '/money-cost': typeof MoneyCostRoute
   '/monitoring-schemes': typeof MonitoringSchemesRoute
   '/nbp-rates': typeof NbpRatesRoute
+  '/ncts-drafts': typeof NctsDraftsRoute
   '/networks': typeof NetworksRoute
   '/notifications': typeof NotificationsRoute
   '/ocean-bills': typeof OceanBillsRoute
@@ -1312,6 +1321,7 @@ export interface FileRouteTypes {
     | '/money-cost'
     | '/monitoring-schemes'
     | '/nbp-rates'
+    | '/ncts-drafts'
     | '/networks'
     | '/notifications'
     | '/ocean-bills'
@@ -1450,6 +1460,7 @@ export interface FileRouteTypes {
     | '/money-cost'
     | '/monitoring-schemes'
     | '/nbp-rates'
+    | '/ncts-drafts'
     | '/networks'
     | '/notifications'
     | '/ocean-bills'
@@ -1588,6 +1599,7 @@ export interface FileRouteTypes {
     | '/money-cost'
     | '/monitoring-schemes'
     | '/nbp-rates'
+    | '/ncts-drafts'
     | '/networks'
     | '/notifications'
     | '/ocean-bills'
@@ -1727,6 +1739,7 @@ export interface RootRouteChildren {
   MoneyCostRoute: typeof MoneyCostRoute
   MonitoringSchemesRoute: typeof MonitoringSchemesRoute
   NbpRatesRoute: typeof NbpRatesRoute
+  NctsDraftsRoute: typeof NctsDraftsRoute
   NetworksRoute: typeof NetworksRoute
   NotificationsRoute: typeof NotificationsRoute
   OceanBillsRoute: typeof OceanBillsRoute
@@ -2261,6 +2274,13 @@ declare module '@tanstack/react-router' {
       path: '/nbp-rates'
       fullPath: '/nbp-rates'
       preLoaderRoute: typeof NbpRatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ncts-drafts': {
+      id: '/ncts-drafts'
+      path: '/ncts-drafts'
+      fullPath: '/ncts-drafts'
+      preLoaderRoute: typeof NctsDraftsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/networks': {
@@ -2823,6 +2843,7 @@ const rootRouteChildren: RootRouteChildren = {
   MoneyCostRoute: MoneyCostRoute,
   MonitoringSchemesRoute: MonitoringSchemesRoute,
   NbpRatesRoute: NbpRatesRoute,
+  NctsDraftsRoute: NctsDraftsRoute,
   NetworksRoute: NetworksRoute,
   NotificationsRoute: NotificationsRoute,
   OceanBillsRoute: OceanBillsRoute,

@@ -4565,6 +4565,50 @@ export type NbpRateResponse = {
 };
 
 /**
+ * NctsDraftCreate
+ */
+export type NctsDraftCreate = {
+    /**
+     * Draft Code
+     */
+    draft_code: string;
+    /**
+     * Transit Kind
+     */
+    transit_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * NctsDraftResponse
+ */
+export type NctsDraftResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Draft Code
+     */
+    draft_code: string;
+    /**
+     * Transit Kind
+     */
+    transit_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * NetworkCreate
  */
 export type NetworkCreate = {
@@ -12708,6 +12752,49 @@ export type CreateLcChecklistApiV1LcChecklistsPostResponses = {
 };
 
 export type CreateLcChecklistApiV1LcChecklistsPostResponse = CreateLcChecklistApiV1LcChecklistsPostResponses[keyof CreateLcChecklistApiV1LcChecklistsPostResponses];
+
+export type ListNctsDraftsApiV1NctsDraftsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/ncts-drafts';
+};
+
+export type ListNctsDraftsApiV1NctsDraftsGetResponses = {
+    /**
+     * Response List Ncts Drafts Api V1 Ncts Drafts Get
+     *
+     * Successful Response
+     */
+    200: Array<NctsDraftResponse>;
+};
+
+export type ListNctsDraftsApiV1NctsDraftsGetResponse = ListNctsDraftsApiV1NctsDraftsGetResponses[keyof ListNctsDraftsApiV1NctsDraftsGetResponses];
+
+export type CreateNctsDraftApiV1NctsDraftsPostData = {
+    body: NctsDraftCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/ncts-drafts';
+};
+
+export type CreateNctsDraftApiV1NctsDraftsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateNctsDraftApiV1NctsDraftsPostError = CreateNctsDraftApiV1NctsDraftsPostErrors[keyof CreateNctsDraftApiV1NctsDraftsPostErrors];
+
+export type CreateNctsDraftApiV1NctsDraftsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: NctsDraftResponse;
+};
+
+export type CreateNctsDraftApiV1NctsDraftsPostResponse = CreateNctsDraftApiV1NctsDraftsPostResponses[keyof CreateNctsDraftApiV1NctsDraftsPostResponses];
 
 export type ListCircleSimsApiV1CircleSimsGetData = {
     body?: never;
