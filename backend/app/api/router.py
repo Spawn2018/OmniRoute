@@ -61,6 +61,7 @@ from app.api import (
     lane_kms,
     lane_patterns,
     lc_checklists,
+    legal_hold_marks,
     load_plan_marks,
     local_charges,
     locations,
@@ -213,6 +214,7 @@ api_router.include_router(penalty_marks.router)
 api_router.include_router(intervention_outcomes.router)
 api_router.include_router(load_plan_marks.router)
 api_router.include_router(cmms_marks.router)
+api_router.include_router(legal_hold_marks.router)
 api_router.include_router(local_charges.router)
 api_router.include_router(tender_quotes.router)
 api_router.include_router(tender_data_rooms.router)

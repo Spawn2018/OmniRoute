@@ -810,6 +810,10 @@ class InvalidCmmsMark(DomainError):
     """G7: HITL znacznik CMMS — nie work_order."""
 
 
+class InvalidLegalHoldMark(DomainError):
+    """G8: HITL znacznik legal hold — nie eIDAS crypto."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

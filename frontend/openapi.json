@@ -6874,6 +6874,80 @@
         ]
       }
     },
+    "/api/v1/legal-hold-marks": {
+      "get": {
+        "tags": [
+          "legal-hold-marks"
+        ],
+        "summary": "List Legal Hold Marks",
+        "operationId": "list_legal_hold_marks_api_v1_legal_hold_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/LegalHoldMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Legal Hold Marks Api V1 Legal Hold Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "legal-hold-marks"
+        ],
+        "summary": "Create Legal Hold Mark",
+        "operationId": "create_legal_hold_mark_api_v1_legal_hold_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LegalHoldMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LegalHoldMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/local-charges": {
       "get": {
         "tags": [
@@ -21324,6 +21398,65 @@
           "source_ref"
         ],
         "title": "LcChecklistResponse"
+      },
+      "LegalHoldMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "hold_kind": {
+            "type": "string",
+            "title": "Hold Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "hold_kind",
+          "source_ref"
+        ],
+        "title": "LegalHoldMarkCreate"
+      },
+      "LegalHoldMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "hold_kind": {
+            "type": "string",
+            "title": "Hold Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "hold_kind",
+          "source_ref"
+        ],
+        "title": "LegalHoldMarkResponse"
       },
       "LoadPlanMarkCreate": {
         "properties": {

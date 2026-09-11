@@ -4197,6 +4197,50 @@ export type LcChecklistResponse = {
 };
 
 /**
+ * LegalHoldMarkCreate
+ */
+export type LegalHoldMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Hold Kind
+     */
+    hold_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * LegalHoldMarkResponse
+ */
+export type LegalHoldMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Hold Kind
+     */
+    hold_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * LoadPlanMarkCreate
  */
 export type LoadPlanMarkCreate = {
@@ -13357,6 +13401,49 @@ export type CreateCmmsMarkApiV1CmmsMarksPostResponses = {
 };
 
 export type CreateCmmsMarkApiV1CmmsMarksPostResponse = CreateCmmsMarkApiV1CmmsMarksPostResponses[keyof CreateCmmsMarkApiV1CmmsMarksPostResponses];
+
+export type ListLegalHoldMarksApiV1LegalHoldMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/legal-hold-marks';
+};
+
+export type ListLegalHoldMarksApiV1LegalHoldMarksGetResponses = {
+    /**
+     * Response List Legal Hold Marks Api V1 Legal Hold Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<LegalHoldMarkResponse>;
+};
+
+export type ListLegalHoldMarksApiV1LegalHoldMarksGetResponse = ListLegalHoldMarksApiV1LegalHoldMarksGetResponses[keyof ListLegalHoldMarksApiV1LegalHoldMarksGetResponses];
+
+export type CreateLegalHoldMarkApiV1LegalHoldMarksPostData = {
+    body: LegalHoldMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/legal-hold-marks';
+};
+
+export type CreateLegalHoldMarkApiV1LegalHoldMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateLegalHoldMarkApiV1LegalHoldMarksPostError = CreateLegalHoldMarkApiV1LegalHoldMarksPostErrors[keyof CreateLegalHoldMarkApiV1LegalHoldMarksPostErrors];
+
+export type CreateLegalHoldMarkApiV1LegalHoldMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: LegalHoldMarkResponse;
+};
+
+export type CreateLegalHoldMarkApiV1LegalHoldMarksPostResponse = CreateLegalHoldMarkApiV1LegalHoldMarksPostResponses[keyof CreateLegalHoldMarkApiV1LegalHoldMarksPostResponses];
 
 export type ListLocalChargesApiV1LocalChargesGetData = {
     body?: never;

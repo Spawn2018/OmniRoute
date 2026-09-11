@@ -1,3 +1,4 @@
+- **329.0 leftover:** eIDAS crypto; wipe ciphertext; F1 KSeF live. 329.0 = HITL `legal_hold_mark` (hold_kind).
 - **328.0 leftover:** work_order silnik; dtc z V5 live; kara kierowcy; klej T2. 328.0 = HITL `cmms_mark` (work_kind).
 - **327.0 leftover:** solver OR; osie Decimal; ADR tunel; klej T2+M-52; LLM-VRP. 327.0 = HITL `load_plan_mark` (stance_kind).
 - **326.0 leftover:** wymiary; lashing_cert; escort FK; zezwolenie_kraj; klej T1. 326.0 = HITL `oog_mark` (escort_kind).

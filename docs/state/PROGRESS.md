@@ -2,6 +2,7 @@
 
 | Data | Plaster | Moduł | Opis |
 |---|---|---|---|
+| 2026-09-11 | 329.0 | G8 | HITL `legal_hold_mark` (hold_kind). Nie eIDAS crypto. Nastepny: Plan G10. |
 | 2026-09-11 | 328.0 | G7 | HITL `cmms_mark` (work_kind). Nie work_order. Nastepny: Plan G8. |
 | 2026-09-11 | 327.0 | G6 | HITL `load_plan_mark` (stance_kind). Nie OR. Nastepny: Plan G7. |
 | 2026-09-11 | 326.0 | G5 | HITL `oog_mark` (escort_kind). Nie wymiary. Nastepny: Plan G6. |
