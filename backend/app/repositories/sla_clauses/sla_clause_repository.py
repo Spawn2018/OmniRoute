@@ -18,9 +18,10 @@ class SlaClauseRepository:
         return list(packed.all())
 
     async def get_contract(self, contract_id: UUID) -> CustomerContract | None:
-        return await self._session.scalar(
+        packed = await self._session.scalars(
             select(CustomerContract).where(CustomerContract.id == contract_id),
         )
+        return packed.first()
 
     async def add_clause(self, row: SlaClause) -> SlaClause:
         self._session.add(row)
