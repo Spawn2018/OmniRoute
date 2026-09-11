@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefField } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { listSeatMarks, persistSeatMark, seatWrite } from "@/lib/tender-consortium-members-api"
 
@@ -74,22 +74,12 @@ function SeatSave(args: { organizationId: string | null }) {
           <option value="member">member</option>
         </select>
       </label>
-      <fieldset className="space-y-1 border-0 p-0">
-        <legend className="text-xs font-medium">Pochodzenie fotela</legend>
-        <input
-          aria-label="Pochodzenie zapisu fotela konsorcjum"
-          autoComplete="off"
-          className="h-9 w-full rounded-md border bg-background px-2 font-mono text-[13px]"
-          name="consortium-origin"
-          spellCheck={false}
-          value={draft.originStamp}
-          onChange={(event) => {
-            const originStamp = event.target.value
-            setDraft((current) => ({ ...current, originStamp }))
-          }}
-          required
-        />
-      </fieldset>
+      <CatalogSourceRefField
+        label="source_ref (tenant:manual albo fixture://tender-consortium-member/…)"
+        ariaLabel="Pochodzenie zapisu fotela konsorcjum"
+        value={draft.originStamp}
+        onChange={(originStamp) => setDraft({ ...draft, originStamp })}
+      />
       <Button type="submit" disabled={persist.isPending || !args.organizationId}>
         Zapisz fotel
       </Button>

@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **306.0** `/refaktor` CatalogSourceRefField (otif/enforcement/task-template)
+- **Ostatni plaster:** **307.0** `/refaktor` CatalogSourceRefField (rfp-intake/playbook/consortium)
 - **Etap:** Refaktor
-- **Następny:** leftover label-form (tender-* / rate-card / …) albo wąski HITL z pinu.
+- **Następny:** leftover label-form (tender-* reszta / rate-card / …) albo wąski HITL z pinu.
 - **Komenda teraz:** `/refaktor` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
