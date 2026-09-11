@@ -139,6 +139,7 @@ modules =
     app.services.cargo_cover_marks
     app.services.sanctions_marks
     app.services.subcontract_edge_marks
+    app.services.schedule_exception_marks
     app.services.freight_audit_marks
     app.services.collaboration_marks
     app.services.exchange_connectors
@@ -564,6 +565,9 @@ forbidden_modules =
     app.services.subcontract_edge_marks
     app.repositories.subcontract_edge_marks
     app.models.subcontract_edge_mark
+    app.services.schedule_exception_marks
+    app.repositories.schedule_exception_marks
+    app.models.schedule_exception_mark
     app.services.freight_audit_marks
     app.repositories.freight_audit_marks
     app.models.freight_audit_mark

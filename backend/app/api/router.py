@@ -117,6 +117,7 @@ from app.api import (
     sales_invoices,
     sanctions_marks,
     sap_connectors,
+    schedule_exception_marks,
     session,
     shipment_documents,
     shipment_legs,
@@ -255,6 +256,7 @@ api_router.include_router(fraud_flags.router)
 api_router.include_router(edi_map_marks.router)
 api_router.include_router(edi_messages.router)
 api_router.include_router(sales_invoices.router)
+api_router.include_router(schedule_exception_marks.router)
 api_router.include_router(sanctions_marks.router)
 api_router.include_router(quote_invoice_settlements.router)
 api_router.include_router(bank_payments.router)

@@ -126,6 +126,7 @@ import { Route as RoutingGuidesRouteImport } from './routes/routing-guides'
 import { Route as SanctionsRouteImport } from './routes/sanctions'
 import { Route as SanctionsMarksRouteImport } from './routes/sanctions-marks'
 import { Route as SapConnectorsRouteImport } from './routes/sap-connectors'
+import { Route as ScheduleExceptionMarksRouteImport } from './routes/schedule-exception-marks'
 import { Route as SessionRouteImport } from './routes/session'
 import { Route as ShipmentDocumentsRouteImport } from './routes/shipment-documents'
 import { Route as ShipmentPackagesRouteImport } from './routes/shipment-packages'
@@ -751,6 +752,11 @@ const SapConnectorsRoute = SapConnectorsRouteImport.update({
   path: '/sap-connectors',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ScheduleExceptionMarksRoute = ScheduleExceptionMarksRouteImport.update({
+  id: '/schedule-exception-marks',
+  path: '/schedule-exception-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SessionRoute = SessionRouteImport.update({
   id: '/session',
   path: '/session',
@@ -1060,6 +1066,7 @@ export interface FileRoutesByFullPath {
   '/sanctions': typeof SanctionsRoute
   '/sanctions-marks': typeof SanctionsMarksRoute
   '/sap-connectors': typeof SapConnectorsRoute
+  '/schedule-exception-marks': typeof ScheduleExceptionMarksRoute
   '/session': typeof SessionRoute
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
@@ -1217,6 +1224,7 @@ export interface FileRoutesByTo {
   '/sanctions': typeof SanctionsRoute
   '/sanctions-marks': typeof SanctionsMarksRoute
   '/sap-connectors': typeof SapConnectorsRoute
+  '/schedule-exception-marks': typeof ScheduleExceptionMarksRoute
   '/session': typeof SessionRoute
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
@@ -1375,6 +1383,7 @@ export interface FileRoutesById {
   '/sanctions': typeof SanctionsRoute
   '/sanctions-marks': typeof SanctionsMarksRoute
   '/sap-connectors': typeof SapConnectorsRoute
+  '/schedule-exception-marks': typeof ScheduleExceptionMarksRoute
   '/session': typeof SessionRoute
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
@@ -1534,6 +1543,7 @@ export interface FileRouteTypes {
     | '/sanctions'
     | '/sanctions-marks'
     | '/sap-connectors'
+    | '/schedule-exception-marks'
     | '/session'
     | '/shipment-documents'
     | '/shipment-packages'
@@ -1691,6 +1701,7 @@ export interface FileRouteTypes {
     | '/sanctions'
     | '/sanctions-marks'
     | '/sap-connectors'
+    | '/schedule-exception-marks'
     | '/session'
     | '/shipment-documents'
     | '/shipment-packages'
@@ -1848,6 +1859,7 @@ export interface FileRouteTypes {
     | '/sanctions'
     | '/sanctions-marks'
     | '/sap-connectors'
+    | '/schedule-exception-marks'
     | '/session'
     | '/shipment-documents'
     | '/shipment-packages'
@@ -2006,6 +2018,7 @@ export interface RootRouteChildren {
   SanctionsRoute: typeof SanctionsRoute
   SanctionsMarksRoute: typeof SanctionsMarksRoute
   SapConnectorsRoute: typeof SapConnectorsRoute
+  ScheduleExceptionMarksRoute: typeof ScheduleExceptionMarksRoute
   SessionRoute: typeof SessionRoute
   ShipmentDocumentsRoute: typeof ShipmentDocumentsRoute
   ShipmentPackagesRoute: typeof ShipmentPackagesRoute
@@ -2867,6 +2880,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SapConnectorsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/schedule-exception-marks': {
+      id: '/schedule-exception-marks'
+      path: '/schedule-exception-marks'
+      fullPath: '/schedule-exception-marks'
+      preLoaderRoute: typeof ScheduleExceptionMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/session': {
       id: '/session'
       path: '/session'
@@ -3254,6 +3274,7 @@ const rootRouteChildren: RootRouteChildren = {
   SanctionsRoute: SanctionsRoute,
   SanctionsMarksRoute: SanctionsMarksRoute,
   SapConnectorsRoute: SapConnectorsRoute,
+  ScheduleExceptionMarksRoute: ScheduleExceptionMarksRoute,
   SessionRoute: SessionRoute,
   ShipmentDocumentsRoute: ShipmentDocumentsRoute,
   ShipmentPackagesRoute: ShipmentPackagesRoute,

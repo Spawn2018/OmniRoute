@@ -870,6 +870,10 @@ class InvalidSubcontractEdgeMark(DomainError):
     """EXP2.6: HITL krawędź podwykonawstwa — nie graf live."""
 
 
+class InvalidScheduleExceptionMark(DomainError):
+    """EXP2.7: HITL wyjątek harmonogramu — nie silnik schedule."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

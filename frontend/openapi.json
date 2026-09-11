@@ -8930,6 +8930,80 @@
         }
       }
     },
+    "/api/v1/schedule-exception-marks": {
+      "get": {
+        "tags": [
+          "schedule-exception-marks"
+        ],
+        "summary": "List Schedule Exception Marks",
+        "operationId": "list_schedule_exception_marks_api_v1_schedule_exception_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ScheduleExceptionMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Schedule Exception Marks Api V1 Schedule Exception Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "schedule-exception-marks"
+        ],
+        "summary": "Create Schedule Exception Mark",
+        "operationId": "create_schedule_exception_mark_api_v1_schedule_exception_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScheduleExceptionMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScheduleExceptionMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/sanctions-marks": {
       "get": {
         "tags": [
@@ -27598,6 +27672,65 @@
           "source_ref"
         ],
         "title": "SapConnectorResponse"
+      },
+      "ScheduleExceptionMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "exception_kind": {
+            "type": "string",
+            "title": "Exception Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "exception_kind",
+          "source_ref"
+        ],
+        "title": "ScheduleExceptionMarkCreate"
+      },
+      "ScheduleExceptionMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "exception_kind": {
+            "type": "string",
+            "title": "Exception Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "exception_kind",
+          "source_ref"
+        ],
+        "title": "ScheduleExceptionMarkResponse"
       },
       "ScorecardResponse": {
         "properties": {

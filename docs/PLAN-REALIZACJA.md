@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **344.0** EXP2.7 schedule_exception (węższa z kolejki; delta do utworzenia).
+**Następny:** **345.0** EXP2.8 cutoffy rozdzielone (węższa z kolejki; delta do utworzenia).
 <!-- os-status:end -->
 
 ```mermaid

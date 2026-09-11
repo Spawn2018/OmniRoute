@@ -7441,6 +7441,50 @@ export type SapConnectorResponse = {
 };
 
 /**
+ * ScheduleExceptionMarkCreate
+ */
+export type ScheduleExceptionMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Exception Kind
+     */
+    exception_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ScheduleExceptionMarkResponse
+ */
+export type ScheduleExceptionMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Exception Kind
+     */
+    exception_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * ScorecardResponse
  */
 export type ScorecardResponse = {
@@ -15208,6 +15252,49 @@ export type NoteSalesInvoiceKsefApiV1SalesInvoicesInvoiceIdNoteKsefPostResponses
 };
 
 export type NoteSalesInvoiceKsefApiV1SalesInvoicesInvoiceIdNoteKsefPostResponse = NoteSalesInvoiceKsefApiV1SalesInvoicesInvoiceIdNoteKsefPostResponses[keyof NoteSalesInvoiceKsefApiV1SalesInvoicesInvoiceIdNoteKsefPostResponses];
+
+export type ListScheduleExceptionMarksApiV1ScheduleExceptionMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/schedule-exception-marks';
+};
+
+export type ListScheduleExceptionMarksApiV1ScheduleExceptionMarksGetResponses = {
+    /**
+     * Response List Schedule Exception Marks Api V1 Schedule Exception Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<ScheduleExceptionMarkResponse>;
+};
+
+export type ListScheduleExceptionMarksApiV1ScheduleExceptionMarksGetResponse = ListScheduleExceptionMarksApiV1ScheduleExceptionMarksGetResponses[keyof ListScheduleExceptionMarksApiV1ScheduleExceptionMarksGetResponses];
+
+export type CreateScheduleExceptionMarkApiV1ScheduleExceptionMarksPostData = {
+    body: ScheduleExceptionMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/schedule-exception-marks';
+};
+
+export type CreateScheduleExceptionMarkApiV1ScheduleExceptionMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateScheduleExceptionMarkApiV1ScheduleExceptionMarksPostError = CreateScheduleExceptionMarkApiV1ScheduleExceptionMarksPostErrors[keyof CreateScheduleExceptionMarkApiV1ScheduleExceptionMarksPostErrors];
+
+export type CreateScheduleExceptionMarkApiV1ScheduleExceptionMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ScheduleExceptionMarkResponse;
+};
+
+export type CreateScheduleExceptionMarkApiV1ScheduleExceptionMarksPostResponse = CreateScheduleExceptionMarkApiV1ScheduleExceptionMarksPostResponses[keyof CreateScheduleExceptionMarkApiV1ScheduleExceptionMarksPostResponses];
 
 export type ListSanctionsMarksApiV1SanctionsMarksGetData = {
     body?: never;

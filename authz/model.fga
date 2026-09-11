@@ -113,6 +113,7 @@ type organization
     define can_manage_cargo_cover_marks: member
     define can_manage_sanctions_marks: member
     define can_manage_subcontract_edge_marks: member
+    define can_manage_schedule_exception_marks: member
     define can_manage_freight_audit_marks: member
     define can_manage_collaboration_marks: member
     define can_manage_routing_guide_enforcements: member
