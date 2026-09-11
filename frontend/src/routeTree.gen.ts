@@ -91,6 +91,7 @@ import { Route as RateCardsRouteImport } from './routes/rate-cards'
 import { Route as RateLinesRouteImport } from './routes/rate-lines'
 import { Route as RoadRouteImport } from './routes/road'
 import { Route as RolloutRouteImport } from './routes/rollout'
+import { Route as RoutingGuidesRouteImport } from './routes/routing-guides'
 import { Route as SanctionsRouteImport } from './routes/sanctions'
 import { Route as SessionRouteImport } from './routes/session'
 import { Route as ShipmentDocumentsRouteImport } from './routes/shipment-documents'
@@ -536,6 +537,11 @@ const RolloutRoute = RolloutRouteImport.update({
   path: '/rollout',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RoutingGuidesRoute = RoutingGuidesRouteImport.update({
+  id: '/routing-guides',
+  path: '/routing-guides',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SanctionsRoute = SanctionsRouteImport.update({
   id: '/sanctions',
   path: '/sanctions',
@@ -790,6 +796,7 @@ export interface FileRoutesByFullPath {
   '/rate-lines': typeof RateLinesRoute
   '/road': typeof RoadRoute
   '/rollout': typeof RolloutRoute
+  '/routing-guides': typeof RoutingGuidesRoute
   '/sanctions': typeof SanctionsRoute
   '/session': typeof SessionRoute
   '/shipment-documents': typeof ShipmentDocumentsRoute
@@ -908,6 +915,7 @@ export interface FileRoutesByTo {
   '/rate-lines': typeof RateLinesRoute
   '/road': typeof RoadRoute
   '/rollout': typeof RolloutRoute
+  '/routing-guides': typeof RoutingGuidesRoute
   '/sanctions': typeof SanctionsRoute
   '/session': typeof SessionRoute
   '/shipment-documents': typeof ShipmentDocumentsRoute
@@ -1027,6 +1035,7 @@ export interface FileRoutesById {
   '/rate-lines': typeof RateLinesRoute
   '/road': typeof RoadRoute
   '/rollout': typeof RolloutRoute
+  '/routing-guides': typeof RoutingGuidesRoute
   '/sanctions': typeof SanctionsRoute
   '/session': typeof SessionRoute
   '/shipment-documents': typeof ShipmentDocumentsRoute
@@ -1147,6 +1156,7 @@ export interface FileRouteTypes {
     | '/rate-lines'
     | '/road'
     | '/rollout'
+    | '/routing-guides'
     | '/sanctions'
     | '/session'
     | '/shipment-documents'
@@ -1265,6 +1275,7 @@ export interface FileRouteTypes {
     | '/rate-lines'
     | '/road'
     | '/rollout'
+    | '/routing-guides'
     | '/sanctions'
     | '/session'
     | '/shipment-documents'
@@ -1383,6 +1394,7 @@ export interface FileRouteTypes {
     | '/rate-lines'
     | '/road'
     | '/rollout'
+    | '/routing-guides'
     | '/sanctions'
     | '/session'
     | '/shipment-documents'
@@ -1502,6 +1514,7 @@ export interface RootRouteChildren {
   RateLinesRoute: typeof RateLinesRoute
   RoadRoute: typeof RoadRoute
   RolloutRoute: typeof RolloutRoute
+  RoutingGuidesRoute: typeof RoutingGuidesRoute
   SanctionsRoute: typeof SanctionsRoute
   SessionRoute: typeof SessionRoute
   ShipmentDocumentsRoute: typeof ShipmentDocumentsRoute
@@ -2114,6 +2127,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RolloutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/routing-guides': {
+      id: '/routing-guides'
+      path: '/routing-guides'
+      fullPath: '/routing-guides'
+      preLoaderRoute: typeof RoutingGuidesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sanctions': {
       id: '/sanctions'
       path: '/sanctions'
@@ -2438,6 +2458,7 @@ const rootRouteChildren: RootRouteChildren = {
   RateLinesRoute: RateLinesRoute,
   RoadRoute: RoadRoute,
   RolloutRoute: RolloutRoute,
+  RoutingGuidesRoute: RoutingGuidesRoute,
   SanctionsRoute: SanctionsRoute,
   SessionRoute: SessionRoute,
   ShipmentDocumentsRoute: ShipmentDocumentsRoute,

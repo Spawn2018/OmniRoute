@@ -86,10 +86,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **278.0** leftover HITL `asn`
-- **Etap:** Kod
-- **Następny:** **279.0** leftover CT4 HITL `routing_guide` (katalog; nie 409 egzekucja). CT1 auto shipment = parked (quotation_id + zakaz FK shipment w BC PO). CT2 = parked (CI5 brak). CT8 AIS = park live. Nie CI1 extract. Nie live p44. Leftover HITL/SQL = praca. Park = live HTTP bez testu albo sekretu, nie skip pola. Live M-02 konsument / Auth0 I1/I2 / portale / giełda live / p44 live tylko gdy ten ID jest bieżącym Q. P6c auto-award zakaz. Nic z pinu nie wypada. Nie zgaduj 71–279.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **279.0** leftover HITL `routing_guide`
+- **Etap:** Plan
+- **Następny:** leftover Fala CT / pin — CT3 OTIF katalog albo CT1 auto shipment compose (parked z powodem) / egzekucja 409 / CT2 gdy CI5. CT5 EDI live = park. CT8 AIS = park live. Nie CI1 extract. Nie live p44. Leftover HITL/SQL = praca. Park = live HTTP bez testu albo sekretu. Nie zgaduj 71–279.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

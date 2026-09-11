@@ -9078,6 +9078,80 @@
         ]
       }
     },
+    "/api/v1/routing-guides": {
+      "get": {
+        "tags": [
+          "routing-guides"
+        ],
+        "summary": "List Routing Guides",
+        "operationId": "list_routing_guides_api_v1_routing_guides_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/RoutingGuideResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Routing Guides Api V1 Routing Guides Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "routing-guides"
+        ],
+        "summary": "Create Routing Guide",
+        "operationId": "create_routing_guide_api_v1_routing_guides_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoutingGuideCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoutingGuideResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/terminal-slot-connectors": {
       "get": {
         "tags": [
@@ -22440,6 +22514,101 @@
           "superseded_by"
         ],
         "title": "ResourceResponse"
+      },
+      "RoutingGuideCreate": {
+        "properties": {
+          "guide_code": {
+            "type": "string",
+            "title": "Guide Code"
+          },
+          "lane_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lane Label"
+          },
+          "mode_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mode Label"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "guide_code",
+          "source_ref"
+        ],
+        "title": "RoutingGuideCreate"
+      },
+      "RoutingGuideResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "guide_code": {
+            "type": "string",
+            "title": "Guide Code"
+          },
+          "lane_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lane Label"
+          },
+          "mode_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mode Label"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "guide_code",
+          "lane_label",
+          "mode_label",
+          "source_ref"
+        ],
+        "title": "RoutingGuideResponse"
       },
       "SalesInvoiceCreate": {
         "properties": {

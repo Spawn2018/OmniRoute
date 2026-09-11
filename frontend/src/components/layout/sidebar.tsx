@@ -88,6 +88,7 @@ const NAV = [
   { to: "/purchase-orders", label: "Zamówienie zakupu" },
   { to: "/po-lines", label: "Linia zamówienia" },
   { to: "/asns", label: "Awizo wysyłki" },
+  { to: "/routing-guides", label: "Przewodnik routingu" },
   { to: "/exchange-connectors", label: "Konektor giełdy" },
   { to: "/terminal-slot-connectors", label: "Konektor slotu" },
   { to: "/weather-observations", label: "Pogoda" },

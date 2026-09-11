@@ -187,6 +187,11 @@ const NAV_ACTIONS = [
     to: "/asns",
   },
   {
+    id: "nav-routing-guides",
+    label: "Idź do przewodnika routingu",
+    to: "/routing-guides",
+  },
+  {
     id: "nav-exchange-connectors",
     label: "Idź do konektora giełdy",
     to: "/exchange-connectors",

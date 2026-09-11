@@ -728,3 +728,7 @@ class InvalidPoLine(DomainError):
 
 class InvalidAsn(DomainError):
     """CT1: HITL awizo wysyłki — nie live EDI i nie auto shipment."""
+
+
+class InvalidRoutingGuide(DomainError):
+    """CT4: HITL przewodnik routingu — nie 409 egzekucja."""

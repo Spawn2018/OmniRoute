@@ -82,6 +82,7 @@ from app.api import (
     rate_cards,
     rate_lines,
     resources,
+    routing_guides,
     sales_invoices,
     session,
     shipment_documents,
@@ -218,6 +219,7 @@ api_router.include_router(visibility_connectors.router)
 api_router.include_router(purchase_orders.router)
 api_router.include_router(po_lines.router)
 api_router.include_router(asns.router)
+api_router.include_router(routing_guides.router)
 api_router.include_router(terminal_slot_connectors.router)
 api_router.include_router(tower_impacts.router)
 api_router.include_router(twin_marks.router)

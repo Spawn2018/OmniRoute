@@ -5837,6 +5837,58 @@ export type ResourceResponse = {
 };
 
 /**
+ * RoutingGuideCreate
+ */
+export type RoutingGuideCreate = {
+    /**
+     * Guide Code
+     */
+    guide_code: string;
+    /**
+     * Lane Label
+     */
+    lane_label?: string | null;
+    /**
+     * Mode Label
+     */
+    mode_label?: string | null;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * RoutingGuideResponse
+ */
+export type RoutingGuideResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Guide Code
+     */
+    guide_code: string;
+    /**
+     * Lane Label
+     */
+    lane_label: string | null;
+    /**
+     * Mode Label
+     */
+    mode_label: string | null;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * SalesInvoiceCreate
  */
 export type SalesInvoiceCreate = {
@@ -13496,6 +13548,49 @@ export type CreateAsnApiV1AsnsPostResponses = {
 };
 
 export type CreateAsnApiV1AsnsPostResponse = CreateAsnApiV1AsnsPostResponses[keyof CreateAsnApiV1AsnsPostResponses];
+
+export type ListRoutingGuidesApiV1RoutingGuidesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/routing-guides';
+};
+
+export type ListRoutingGuidesApiV1RoutingGuidesGetResponses = {
+    /**
+     * Response List Routing Guides Api V1 Routing Guides Get
+     *
+     * Successful Response
+     */
+    200: Array<RoutingGuideResponse>;
+};
+
+export type ListRoutingGuidesApiV1RoutingGuidesGetResponse = ListRoutingGuidesApiV1RoutingGuidesGetResponses[keyof ListRoutingGuidesApiV1RoutingGuidesGetResponses];
+
+export type CreateRoutingGuideApiV1RoutingGuidesPostData = {
+    body: RoutingGuideCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/routing-guides';
+};
+
+export type CreateRoutingGuideApiV1RoutingGuidesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateRoutingGuideApiV1RoutingGuidesPostError = CreateRoutingGuideApiV1RoutingGuidesPostErrors[keyof CreateRoutingGuideApiV1RoutingGuidesPostErrors];
+
+export type CreateRoutingGuideApiV1RoutingGuidesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: RoutingGuideResponse;
+};
+
+export type CreateRoutingGuideApiV1RoutingGuidesPostResponse = CreateRoutingGuideApiV1RoutingGuidesPostResponses[keyof CreateRoutingGuideApiV1RoutingGuidesPostResponses];
 
 export type ListTerminalSlotConnectorsApiV1TerminalSlotConnectorsGetData = {
     body?: never;
