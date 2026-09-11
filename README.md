@@ -87,8 +87,8 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **322.0** CI7 HITL `intervention_outcome`
-- **Etap:** Plan — wolno `/plan-modul` **G1**
-- **Następny:** **G1** CRM lead→szansa (Plan). Pin po CI1–CI8.
+- **Etap:** Plan (delta zaakceptowana `/noc`) — wolno `/plaster` **323.0**
+- **Następny:** **323.0** G1 HITL `crm_lead` (delta `docs/deltas/open/323.0-crm-lead.md`).
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

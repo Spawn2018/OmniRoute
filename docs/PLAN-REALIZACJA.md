@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **G1** CRM lead→szansa (Plan). Pin po CI1–CI8.
+**Następny:** **323.0** G1 HITL `crm_lead` (delta `docs/deltas/open/323.0-crm-lead.md`).
 <!-- os-status:end -->
 
 ```mermaid
@@ -716,7 +716,7 @@ Karta: [karty-pol-fala-g.md](analysis/karty-pol-fala-g.md). G2 wyżej.
 
 | ID | Co | Klej | Poza |
 |---|---|---|---|
-| G1 | CRM lead→szansa | po X7 | cold auto-send |
+| G1 | CRM lead→szansa | 323.0 Plan HITL `crm_lead` (stage_kind); leftover opportunity/activity/dedup/X7 | cold auto-send |
 | G3 | LC checklista | I3 | bank live |
 | G4 | NCTS T1/T2 szkic | C2 | teatr PUESC |
 | G5 | OOG / lashing / eskort | T1 | |

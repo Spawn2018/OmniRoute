@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **322.0** CI7 HITL `intervention_outcome` **Następny:** **G1** CRM lead→szansa (Plan). Pin po CI1–CI8.
+**Stan (z CURRENT.md):** **322.0** CI7 HITL `intervention_outcome` **Następny:** **323.0** G1 HITL `crm_lead` (delta `docs/deltas/open/323.0-crm-lead.md`).
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

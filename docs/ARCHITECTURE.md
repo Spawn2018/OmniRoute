@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **322.0** CI7 HITL `intervention_outcome`. **Etap:** Plan — wolno `/plan-modul` **G1**. **Następny:** **G1** CRM lead→szansa (Plan). Pin po CI1–CI8. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **322.0** CI7 HITL `intervention_outcome`. **Etap:** Plan (delta zaakceptowana `/noc`) — wolno `/plaster` **323.0**. **Następny:** **323.0** G1 HITL `crm_lead` (delta `docs/deltas/open/323.0-crm-lead.md`). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
