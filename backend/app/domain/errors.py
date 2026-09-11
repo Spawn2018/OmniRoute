@@ -760,3 +760,7 @@ class InvalidRoutingGuideEnforcement(DomainError):
 
 class RoutingGuideOffGuide(DomainError):
     """CT4 leftover: ASN poza przewodnikiem przy block_409 — nie shipment."""
+
+
+class InvalidRoutingGuideMatch(DomainError):
+    """CT4 leftover: HITL tryb dopasowania przewodnika — nie silnik."""

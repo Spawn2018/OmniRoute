@@ -87,6 +87,7 @@ from app.api import (
     rate_lines,
     resources,
     routing_guide_enforcements,
+    routing_guide_matches,
     routing_guides,
     sales_invoices,
     sap_connectors,
@@ -227,6 +228,7 @@ api_router.include_router(po_lines.router)
 api_router.include_router(asns.router)
 api_router.include_router(otif_marks.router)
 api_router.include_router(routing_guide_enforcements.router)
+api_router.include_router(routing_guide_matches.router)
 api_router.include_router(routing_guides.router)
 api_router.include_router(sap_connectors.router)
 api_router.include_router(capa_marks.router)

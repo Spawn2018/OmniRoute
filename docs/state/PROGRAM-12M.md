@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **287.0** leftover CT4 409 na shipment poza guide **Następny:** **288.0** leftover CT4 HITL `routing_guide_match` (tryb guide_code_only|lane_label|mode_label).
+**Stan (z CURRENT.md):** **288.0** leftover HITL `routing_guide_match` **Następny:** leftover Fala CT / pin — silnik matching lane/mode albo następny wąski HITL z PLAN.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

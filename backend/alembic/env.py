@@ -117,6 +117,7 @@ from app.models.collaboration_mark import CollaborationMark  # noqa: F401
 from app.models.freight_audit_mark import FreightAuditMark  # noqa: F401
 from app.models.routing_guide import RoutingGuide  # noqa: F401
 from app.models.routing_guide_enforcement import RoutingGuideEnforcement  # noqa: F401
+from app.models.routing_guide_match import RoutingGuideMatch  # noqa: F401
 from app.models.exchange_connector import ExchangeConnector  # noqa: F401
 from app.models.idp_connector import IdpConnector  # noqa: F401
 from app.models.terminal_slot_connector import TerminalSlotConnector  # noqa: F401

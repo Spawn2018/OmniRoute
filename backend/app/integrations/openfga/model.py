@@ -106,6 +106,7 @@ def _organization_ops_catalog_relations() -> dict[str, Userset]:
         "can_manage_freight_audit_marks": _member(),
         "can_manage_collaboration_marks": _member(),
         "can_manage_routing_guide_enforcements": _member(),
+        "can_manage_routing_guide_matches": _member(),
         "can_manage_routing_guides": _member(),
         "can_manage_tenant_contract_keks": _member(),
         "can_manage_cash_discounts": _member(),

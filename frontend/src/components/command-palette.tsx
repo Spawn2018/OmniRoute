@@ -192,6 +192,11 @@ const NAV_ACTIONS = [
     to: "/routing-guide-enforcements",
   },
   {
+    id: "nav-routing-guide-matches",
+    label: "Dopasowanie przewodnika",
+    to: "/routing-guide-matches",
+  },
+  {
     id: "nav-routing-guides",
     label: "Idź do przewodnika routingu",
     to: "/routing-guides",

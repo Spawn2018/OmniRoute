@@ -89,6 +89,7 @@ const NAV = [
   { to: "/po-lines", label: "Linia zamówienia" },
   { to: "/asns", label: "Awizo wysyłki" },
   { to: "/routing-guide-enforcements", label: "Egzekucja przewodnika" },
+  { to: "/routing-guide-matches", label: "Dopasowanie przewodnika" },
   { to: "/routing-guides", label: "Przewodnik routingu" },
   { to: "/otif-marks", label: "Znacznik OTIF" },
   { to: "/sap-connectors", label: "Konektor SAP/Oracle" },

@@ -6087,6 +6087,50 @@ export type RoutingGuideEnforcementResponse = {
 };
 
 /**
+ * RoutingGuideMatchCreate
+ */
+export type RoutingGuideMatchCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Match Kind
+     */
+    match_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * RoutingGuideMatchResponse
+ */
+export type RoutingGuideMatchResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Match Kind
+     */
+    match_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * RoutingGuideResponse
  */
 export type RoutingGuideResponse = {
@@ -13914,6 +13958,49 @@ export type CreateRoutingGuideEnforcementApiV1RoutingGuideEnforcementsPostRespon
 };
 
 export type CreateRoutingGuideEnforcementApiV1RoutingGuideEnforcementsPostResponse = CreateRoutingGuideEnforcementApiV1RoutingGuideEnforcementsPostResponses[keyof CreateRoutingGuideEnforcementApiV1RoutingGuideEnforcementsPostResponses];
+
+export type ListRoutingGuideMatchesApiV1RoutingGuideMatchesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/routing-guide-matches';
+};
+
+export type ListRoutingGuideMatchesApiV1RoutingGuideMatchesGetResponses = {
+    /**
+     * Response List Routing Guide Matches Api V1 Routing Guide Matches Get
+     *
+     * Successful Response
+     */
+    200: Array<RoutingGuideMatchResponse>;
+};
+
+export type ListRoutingGuideMatchesApiV1RoutingGuideMatchesGetResponse = ListRoutingGuideMatchesApiV1RoutingGuideMatchesGetResponses[keyof ListRoutingGuideMatchesApiV1RoutingGuideMatchesGetResponses];
+
+export type CreateRoutingGuideMatchApiV1RoutingGuideMatchesPostData = {
+    body: RoutingGuideMatchCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/routing-guide-matches';
+};
+
+export type CreateRoutingGuideMatchApiV1RoutingGuideMatchesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateRoutingGuideMatchApiV1RoutingGuideMatchesPostError = CreateRoutingGuideMatchApiV1RoutingGuideMatchesPostErrors[keyof CreateRoutingGuideMatchApiV1RoutingGuideMatchesPostErrors];
+
+export type CreateRoutingGuideMatchApiV1RoutingGuideMatchesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: RoutingGuideMatchResponse;
+};
+
+export type CreateRoutingGuideMatchApiV1RoutingGuideMatchesPostResponse = CreateRoutingGuideMatchApiV1RoutingGuideMatchesPostResponses[keyof CreateRoutingGuideMatchApiV1RoutingGuideMatchesPostResponses];
 
 export type ListRoutingGuidesApiV1RoutingGuidesGetData = {
     body?: never;
