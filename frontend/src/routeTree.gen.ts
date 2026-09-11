@@ -14,6 +14,7 @@ import { Route as AeoDossierMarksRouteImport } from './routes/aeo-dossier-marks'
 import { Route as AiRouteImport } from './routes/ai'
 import { Route as AirRouteImport } from './routes/air'
 import { Route as AsnsRouteImport } from './routes/asns'
+import { Route as BillingMarksRouteImport } from './routes/billing-marks'
 import { Route as BondedMarksRouteImport } from './routes/bonded-marks'
 import { Route as BookkeepingRouteImport } from './routes/bookkeeping'
 import { Route as CalibrationMarksRouteImport } from './routes/calibration-marks'
@@ -155,7 +156,6 @@ import { Route as WarRoomMarksRouteImport } from './routes/war-room-marks'
 import { Route as WatchtowerRouteImport } from './routes/watchtower'
 import { Route as WeatherObservationsRouteImport } from './routes/weather-observations'
 import { Route as YardMarksRouteImport } from './routes/yard-marks'
-import { Route as BillingMarksRouteImport } from './routes/billing-marks'
 import { Route as TenancyUsersRouteImport } from './routes/tenancy.users'
 
 const IndexRoute = IndexRouteImport.update({
@@ -181,6 +181,11 @@ const AirRoute = AirRouteImport.update({
 const AsnsRoute = AsnsRouteImport.update({
   id: '/asns',
   path: '/asns',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BillingMarksRoute = BillingMarksRouteImport.update({
+  id: '/billing-marks',
+  path: '/billing-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BondedMarksRoute = BondedMarksRouteImport.update({
@@ -889,11 +894,6 @@ const YardMarksRoute = YardMarksRouteImport.update({
   path: '/yard-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BillingMarksRoute = BillingMarksRouteImport.update({
-  id: '/billing-marks',
-  path: '/billing-marks',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const TenancyUsersRoute = TenancyUsersRouteImport.update({
   id: '/tenancy/users',
   path: '/tenancy/users',
@@ -906,6 +906,7 @@ export interface FileRoutesByFullPath {
   '/ai': typeof AiRoute
   '/air': typeof AirRoute
   '/asns': typeof AsnsRoute
+  '/billing-marks': typeof BillingMarksRoute
   '/bonded-marks': typeof BondedMarksRoute
   '/bookkeeping': typeof BookkeepingRoute
   '/calibration-marks': typeof CalibrationMarksRoute
@@ -1047,7 +1048,6 @@ export interface FileRoutesByFullPath {
   '/watchtower': typeof WatchtowerRoute
   '/weather-observations': typeof WeatherObservationsRoute
   '/yard-marks': typeof YardMarksRoute
-  '/billing-marks': typeof BillingMarksRoute
   '/tenancy/users': typeof TenancyUsersRoute
 }
 export interface FileRoutesByTo {
@@ -1056,6 +1056,7 @@ export interface FileRoutesByTo {
   '/ai': typeof AiRoute
   '/air': typeof AirRoute
   '/asns': typeof AsnsRoute
+  '/billing-marks': typeof BillingMarksRoute
   '/bonded-marks': typeof BondedMarksRoute
   '/bookkeeping': typeof BookkeepingRoute
   '/calibration-marks': typeof CalibrationMarksRoute
@@ -1197,7 +1198,6 @@ export interface FileRoutesByTo {
   '/watchtower': typeof WatchtowerRoute
   '/weather-observations': typeof WeatherObservationsRoute
   '/yard-marks': typeof YardMarksRoute
-  '/billing-marks': typeof BillingMarksRoute
   '/tenancy/users': typeof TenancyUsersRoute
 }
 export interface FileRoutesById {
@@ -1207,6 +1207,7 @@ export interface FileRoutesById {
   '/ai': typeof AiRoute
   '/air': typeof AirRoute
   '/asns': typeof AsnsRoute
+  '/billing-marks': typeof BillingMarksRoute
   '/bonded-marks': typeof BondedMarksRoute
   '/bookkeeping': typeof BookkeepingRoute
   '/calibration-marks': typeof CalibrationMarksRoute
@@ -1348,7 +1349,6 @@ export interface FileRoutesById {
   '/watchtower': typeof WatchtowerRoute
   '/weather-observations': typeof WeatherObservationsRoute
   '/yard-marks': typeof YardMarksRoute
-  '/billing-marks': typeof BillingMarksRoute
   '/tenancy/users': typeof TenancyUsersRoute
 }
 export interface FileRouteTypes {
@@ -1359,6 +1359,7 @@ export interface FileRouteTypes {
     | '/ai'
     | '/air'
     | '/asns'
+    | '/billing-marks'
     | '/bonded-marks'
     | '/bookkeeping'
     | '/calibration-marks'
@@ -1500,7 +1501,6 @@ export interface FileRouteTypes {
     | '/watchtower'
     | '/weather-observations'
     | '/yard-marks'
-    | '/billing-marks'
     | '/tenancy/users'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -1509,6 +1509,7 @@ export interface FileRouteTypes {
     | '/ai'
     | '/air'
     | '/asns'
+    | '/billing-marks'
     | '/bonded-marks'
     | '/bookkeeping'
     | '/calibration-marks'
@@ -1650,7 +1651,6 @@ export interface FileRouteTypes {
     | '/watchtower'
     | '/weather-observations'
     | '/yard-marks'
-    | '/billing-marks'
     | '/tenancy/users'
   id:
     | '__root__'
@@ -1659,6 +1659,7 @@ export interface FileRouteTypes {
     | '/ai'
     | '/air'
     | '/asns'
+    | '/billing-marks'
     | '/bonded-marks'
     | '/bookkeeping'
     | '/calibration-marks'
@@ -1800,7 +1801,6 @@ export interface FileRouteTypes {
     | '/watchtower'
     | '/weather-observations'
     | '/yard-marks'
-    | '/billing-marks'
     | '/tenancy/users'
   fileRoutesById: FileRoutesById
 }
@@ -1810,6 +1810,7 @@ export interface RootRouteChildren {
   AiRoute: typeof AiRoute
   AirRoute: typeof AirRoute
   AsnsRoute: typeof AsnsRoute
+  BillingMarksRoute: typeof BillingMarksRoute
   BondedMarksRoute: typeof BondedMarksRoute
   BookkeepingRoute: typeof BookkeepingRoute
   CalibrationMarksRoute: typeof CalibrationMarksRoute
@@ -1951,7 +1952,6 @@ export interface RootRouteChildren {
   WatchtowerRoute: typeof WatchtowerRoute
   WeatherObservationsRoute: typeof WeatherObservationsRoute
   YardMarksRoute: typeof YardMarksRoute
-  BillingMarksRoute: typeof BillingMarksRoute
   TenancyUsersRoute: typeof TenancyUsersRoute
 }
 
@@ -1990,6 +1990,13 @@ declare module '@tanstack/react-router' {
       path: '/asns'
       fullPath: '/asns'
       preLoaderRoute: typeof AsnsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/billing-marks': {
+      id: '/billing-marks'
+      path: '/billing-marks'
+      fullPath: '/billing-marks'
+      preLoaderRoute: typeof BillingMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/bonded-marks': {
@@ -2979,13 +2986,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof YardMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/billing-marks': {
-      id: '/billing-marks'
-      path: '/billing-marks'
-      fullPath: '/billing-marks'
-      preLoaderRoute: typeof BillingMarksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/tenancy/users': {
       id: '/tenancy/users'
       path: '/tenancy/users'
@@ -3002,6 +3002,7 @@ const rootRouteChildren: RootRouteChildren = {
   AiRoute: AiRoute,
   AirRoute: AirRoute,
   AsnsRoute: AsnsRoute,
+  BillingMarksRoute: BillingMarksRoute,
   BondedMarksRoute: BondedMarksRoute,
   BookkeepingRoute: BookkeepingRoute,
   CalibrationMarksRoute: CalibrationMarksRoute,
@@ -3143,7 +3144,6 @@ const rootRouteChildren: RootRouteChildren = {
   WatchtowerRoute: WatchtowerRoute,
   WeatherObservationsRoute: WeatherObservationsRoute,
   YardMarksRoute: YardMarksRoute,
-  BillingMarksRoute: BillingMarksRoute,
   TenancyUsersRoute: TenancyUsersRoute,
 }
 export const routeTree = rootRouteImport
