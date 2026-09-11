@@ -87,8 +87,8 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **314.0** CI4 HITL `delay_forecast`
-- **Etap:** Plan — wolno `/plan-modul` **315.0**
-- **Następny:** **315.0** CI6 HITL `remediation_option` (kind + source_ref; bez kwoty).
+- **Etap:** Plan (delta zaakceptowana `/noc`) — wolno `/plaster` **315.0**
+- **Następny:** **315.0** CI6 HITL `remediation_option` (delta `docs/deltas/open/315.0-remediation-option.md`).
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

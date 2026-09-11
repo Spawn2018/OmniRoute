@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **315.0** CI6 HITL `remediation_option` (kind + source_ref; bez kwoty).
+**Następny:** **315.0** CI6 HITL `remediation_option` (delta `docs/deltas/open/315.0-remediation-option.md`).
 <!-- os-status:end -->
 
 ```mermaid
