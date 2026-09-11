@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefField } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { exchangeBoardWrite, persistExchangeConnector } from "@/lib/exchange-connectors-api"
 
@@ -62,16 +62,12 @@ export function ExchangeConnectorSave(args: { organizationId: string | null }) {
           required
         />
       </label>
-      <label className="flex flex-col gap-1 text-xs">
-        source_ref (`tenant:manual` albo `fixture://portal/…`)
-        <input
-          required
-          aria-label="source_ref konektora giełdy"
-          className="h-9 rounded-md border border-input bg-background px-3 font-mono text-sm"
-          value={draft.originHint}
-          onChange={(ev) => setDraft({ ...draft, originHint: ev.target.value })}
-        />
-      </label>
+      <CatalogSourceRefField
+        label="source_ref (`tenant:manual` albo `fixture://portal/…`)"
+        ariaLabel="source_ref konektora giełdy"
+        value={draft.originHint}
+        onChange={(originHint) => setDraft({ ...draft, originHint })}
+      />
       <div>
         <Button type="submit" disabled={locked}>
           Zapisz konektor giełdy

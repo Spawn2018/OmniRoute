@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefField } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { listWeatherMarks, persistWeatherMark, weatherWrite } from "@/lib/weather-observations-api"
 
@@ -83,11 +83,11 @@ function WeatherFields(args: {
         value={draft.providerStamp}
         onValue={(providerStamp) => onChange({ ...draft, providerStamp })}
       />
-      <StampField
+      <CatalogSourceRefField
         label="source_ref (tenant:manual albo fixture://weather-observation/…)"
-        aria="source_ref pogody"
+        ariaLabel="source_ref pogody"
         value={draft.originStamp}
-        onValue={(originStamp) => onChange({ ...draft, originStamp })}
+        onChange={(originStamp) => onChange({ ...draft, originStamp })}
       />
     </>
   )

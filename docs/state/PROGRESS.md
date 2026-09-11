@@ -2,6 +2,7 @@
 
 | Data | Plaster | Moduł | Opis |
 |---|---|---|---|
+| 2026-09-11 | 300.0 | UI | `/refaktor`: SourceRefField na prediction/weather/exchange. Nastepny: connector forms. |
 | 2026-09-11 | 299.0 | UI | `/refaktor`: SourceRefField na rank/executive/memory. Nastepny: prediction/weather. |
 | 2026-09-11 | 298.0 | UI | `/refaktor`: SourceRefField na war-room/twin/tower. Nastepny: label-form. |
 | 2026-09-11 | 297.0 | UI | `/refaktor`: SourceRefField na circle/lane-km/plan-snapshot. Nastepny: label-form. |
