@@ -76,6 +76,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | S53 | Konektor IdP HITL | 270.0 `idp_connector` | **ukończony (HITL)** · kod + provider `auth0`; leftover I1/I2 live / portale |
 | S55 | Konektor giełdy HITL | 271.0 `exchange_connector` | **ukończony (HITL)** · kod + kind `trans_eu`; leftover live giełda / X1–X5 SPA |
 | CI9 | Umowa klienta HITL | 272.0–273.0 `customer_contract` · 274.0 `tenant_contract_kek` | **ukończony (HITL nagłówek + opaque BYTEA + znacznik owijki)** · znacznik, nie klucz; leftover `wrapped_dek` / KMS |
+| CI1 | Klauzula SLA HITL | 313.0 `sla_clause` | **ukończony (HITL)** · próg jako tekst; leftover extract / ciphertext / kara SQL |
 | CT7 | Konektor widoczności HITL | 275.0 `visibility_connector` | **ukończony (HITL)** · kod + kind `p44`; leftover live p44 / FourKites / Shippeo / AIS |
 | CT1 | Zamówienie zakupu HITL | 276.0 `purchase_order` · 277.0 `po_line` · 278.0 `asn` | **ukończony (HITL nagłówek + linia + awizo)** · leftover auto shipment / live EDI |
 | CT4 | Przewodnik routingu HITL | 279.0 `routing_guide`; 285.0 `routing_guide_enforcement`; 286.0 ASN 409 | **ukończony (HITL + 409 na ASN)** · leftover 409 na shipment |

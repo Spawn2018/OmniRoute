@@ -8,19 +8,19 @@
 
 
 
-**Ostatni plaster:** **312.0** `/refaktor` CatalogSourceRefField (local/charge-template/cod)  
+**Ostatni plaster:** **313.0** CI1 HITL `sla_clause`  
 
-**Etap:** Plan (delta zaakceptowana `/noc`) — wolno `/plaster` **313.0**  
+**Etap:** Plan  
 
 **Noc:** `/noc 17` do 2026-09-11T17:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).  
 
-**Następny:** **313.0** CI1 HITL `sla_clause` (delta `docs/deltas/open/313.0-sla-clause.md`).  
+**Następny:** leftover CI1 ciphertext/kara SQL **parked** — wąski HITL z pinu (CI2 / G / EXP) albo kolejny pin bez park live.  
 
-Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44/FourKites/Shippeo · extract LLM na umowach · penalty ciphertext. Nie zgaduj 71–313.
+Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44/FourKites/Shippeo · extract LLM · penalty ciphertext · CI5 kara. Nie zgaduj 71–313.
 
 
 
-**Spec (jedyna na sesję):** [docs/deltas/open/313.0-sla-clause.md](../deltas/open/313.0-sla-clause.md)
+**Spec (jedyna na sesję):** brak — po 313.0 wybierz następny HITL z pinu (`/plan-modul`).
 
 
 
@@ -36,4 +36,4 @@ Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow 
 
 
 
-**2026-09-11:** **312.0** zamknięty. Delta **313.0** zaakceptowana (`/noc`) — HITL `sla_clause` bez extract/ciphertext.
+**2026-09-11:** **313.0** zamknięty — HITL `sla_clause` na umowie, bez extract/ciphertext.

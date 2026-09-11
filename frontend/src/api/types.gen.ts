@@ -61,6 +61,20 @@ export type AsnCreate = {
 };
 
 /**
+ * AsnPromote
+ */
+export type AsnPromote = {
+    /**
+     * Quotation Id
+     */
+    quotation_id: string;
+    /**
+     * Source Ref
+     */
+    source_ref?: string;
+};
+
+/**
  * AsnResponse
  */
 export type AsnResponse = {
@@ -6693,6 +6707,10 @@ export type ShipmentResponse = {
      */
     carrier_label: string | null;
     /**
+     * Asn Id
+     */
+    asn_id: string | null;
+    /**
      * Status
      */
     status: string;
@@ -6752,6 +6770,66 @@ export type ShipmentStakeholderResponse = {
      * Superseded By
      */
     superseded_by: string | null;
+};
+
+/**
+ * SlaClauseCreate
+ */
+export type SlaClauseCreate = {
+    /**
+     * Customer Contract Id
+     */
+    customer_contract_id: string;
+    /**
+     * Clause Code
+     */
+    clause_code: string;
+    /**
+     * Metric Kind
+     */
+    metric_kind: string;
+    /**
+     * Threshold Label
+     */
+    threshold_label: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * SlaClauseResponse
+ */
+export type SlaClauseResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Customer Contract Id
+     */
+    customer_contract_id: string;
+    /**
+     * Clause Code
+     */
+    clause_code: string;
+    /**
+     * Metric Kind
+     */
+    metric_kind: string;
+    /**
+     * Threshold Label
+     */
+    threshold_label: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
 };
 
 /**
@@ -13889,6 +13967,36 @@ export type CreateAsnApiV1AsnsPostResponses = {
 
 export type CreateAsnApiV1AsnsPostResponse = CreateAsnApiV1AsnsPostResponses[keyof CreateAsnApiV1AsnsPostResponses];
 
+export type PromoteAsnToShipmentApiV1AsnsAsnIdPromotePostData = {
+    body: AsnPromote;
+    path: {
+        /**
+         * Asn Id
+         */
+        asn_id: string;
+    };
+    query?: never;
+    url: '/api/v1/asns/{asn_id}/promote';
+};
+
+export type PromoteAsnToShipmentApiV1AsnsAsnIdPromotePostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type PromoteAsnToShipmentApiV1AsnsAsnIdPromotePostError = PromoteAsnToShipmentApiV1AsnsAsnIdPromotePostErrors[keyof PromoteAsnToShipmentApiV1AsnsAsnIdPromotePostErrors];
+
+export type PromoteAsnToShipmentApiV1AsnsAsnIdPromotePostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ShipmentResponse;
+};
+
+export type PromoteAsnToShipmentApiV1AsnsAsnIdPromotePostResponse = PromoteAsnToShipmentApiV1AsnsAsnIdPromotePostResponses[keyof PromoteAsnToShipmentApiV1AsnsAsnIdPromotePostResponses];
+
 export type ListOtifMarksApiV1OtifMarksGetData = {
     body?: never;
     path?: never;
@@ -14146,6 +14254,49 @@ export type CreateCapaMarkApiV1CapaMarksPostResponses = {
 };
 
 export type CreateCapaMarkApiV1CapaMarksPostResponse = CreateCapaMarkApiV1CapaMarksPostResponses[keyof CreateCapaMarkApiV1CapaMarksPostResponses];
+
+export type ListSlaClausesApiV1SlaClausesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/sla-clauses';
+};
+
+export type ListSlaClausesApiV1SlaClausesGetResponses = {
+    /**
+     * Response List Sla Clauses Api V1 Sla Clauses Get
+     *
+     * Successful Response
+     */
+    200: Array<SlaClauseResponse>;
+};
+
+export type ListSlaClausesApiV1SlaClausesGetResponse = ListSlaClausesApiV1SlaClausesGetResponses[keyof ListSlaClausesApiV1SlaClausesGetResponses];
+
+export type CreateSlaClauseApiV1SlaClausesPostData = {
+    body: SlaClauseCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/sla-clauses';
+};
+
+export type CreateSlaClauseApiV1SlaClausesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateSlaClauseApiV1SlaClausesPostError = CreateSlaClauseApiV1SlaClausesPostErrors[keyof CreateSlaClauseApiV1SlaClausesPostErrors];
+
+export type CreateSlaClauseApiV1SlaClausesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: SlaClauseResponse;
+};
+
+export type CreateSlaClauseApiV1SlaClausesPostResponse = CreateSlaClauseApiV1SlaClausesPostResponses[keyof CreateSlaClauseApiV1SlaClausesPostResponses];
 
 export type ListFreightAuditMarksApiV1FreightAuditMarksGetData = {
     body?: never;

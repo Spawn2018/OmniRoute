@@ -202,7 +202,7 @@
 | zegar D&D | free_time_clock | V3 HITL 196.0 rodzaj + free_days; nie countdown; nie charge |
 | umowa klienta | customer_contract | CI9 HITL 272.0 nagłówek; 273.0 opaque present/absent, nie szyfr; leftover `wrapped_dek`; nie super-admin |
 | znacznik KEK | tenant_contract_kek | CI9 HITL 274.0 wrap_kind `password`/`kms`; nie klucz; nie materiał; 273.0 nadal nie szyfr |
-| klauzula SLA | sla_clause | CI; wpis ręczny; kara SQL |
+| klauzula SLA | sla_clause | CI1 HITL 313.0 na `customer_contract`; próg jako tekst; leftover kara SQL / ciphertext |
 | prognoza spóźnienia | delay_forecast | CI4; przed actual late |
 | wynik interwencji | intervention_outcome | CI6–CI7; saved = SQL |
 | przetarg | tender | G2.0 nagłówek sell/buy; nie P6 `tender_quote`; nie loty |

@@ -9078,6 +9078,64 @@
         ]
       }
     },
+    "/api/v1/asns/{asn_id}/promote": {
+      "post": {
+        "tags": [
+          "asns"
+        ],
+        "summary": "Promote Asn To Shipment",
+        "operationId": "promote_asn_to_shipment_api_v1_asns__asn_id__promote_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "asn_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Asn Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AsnPromote"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShipmentResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/otif-marks": {
       "get": {
         "tags": [
@@ -9500,6 +9558,80 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/CapaMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/sla-clauses": {
+      "get": {
+        "tags": [
+          "sla-clauses"
+        ],
+        "summary": "List Sla Clauses",
+        "operationId": "list_sla_clauses_api_v1_sla_clauses_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SlaClauseResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Sla Clauses Api V1 Sla Clauses Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "sla-clauses"
+        ],
+        "summary": "Create Sla Clause",
+        "operationId": "create_sla_clause_api_v1_sla_clauses_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SlaClauseCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SlaClauseResponse"
                 }
               }
             }
@@ -13418,6 +13550,26 @@
           "source_ref"
         ],
         "title": "AsnCreate"
+      },
+      "AsnPromote": {
+        "properties": {
+          "quotation_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Quotation Id"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref",
+            "default": "tenant:manual"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "quotation_id"
+        ],
+        "title": "AsnPromote"
       },
       "AsnResponse": {
         "properties": {
@@ -24398,6 +24550,18 @@
             ],
             "title": "Carrier Label"
           },
+          "asn_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Asn Id"
+          },
           "status": {
             "type": "string",
             "title": "Status"
@@ -24416,6 +24580,7 @@
           "guide_code",
           "plant_label",
           "carrier_label",
+          "asn_id",
           "status"
         ],
         "title": "ShipmentResponse"
@@ -24505,6 +24670,87 @@
           "superseded_by"
         ],
         "title": "ShipmentStakeholderResponse"
+      },
+      "SlaClauseCreate": {
+        "properties": {
+          "customer_contract_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Customer Contract Id"
+          },
+          "clause_code": {
+            "type": "string",
+            "title": "Clause Code"
+          },
+          "metric_kind": {
+            "type": "string",
+            "title": "Metric Kind"
+          },
+          "threshold_label": {
+            "type": "string",
+            "title": "Threshold Label"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "customer_contract_id",
+          "clause_code",
+          "metric_kind",
+          "threshold_label",
+          "source_ref"
+        ],
+        "title": "SlaClauseCreate"
+      },
+      "SlaClauseResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "customer_contract_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Customer Contract Id"
+          },
+          "clause_code": {
+            "type": "string",
+            "title": "Clause Code"
+          },
+          "metric_kind": {
+            "type": "string",
+            "title": "Metric Kind"
+          },
+          "threshold_label": {
+            "type": "string",
+            "title": "Threshold Label"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "customer_contract_id",
+          "clause_code",
+          "metric_kind",
+          "threshold_label",
+          "source_ref"
+        ],
+        "title": "SlaClauseResponse"
       },
       "StopCreate": {
         "properties": {

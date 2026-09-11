@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **313.0** CI1 HITL `sla_clause` (delta `docs/deltas/open/313.0-sla-clause.md`).
+**Następny:** leftover CI1 ciphertext/kara SQL **parked** — wąski HITL z pinu (CI2 / G / EXP) albo kolejny pin bez park live.
 <!-- os-status:end -->
 
 ```mermaid

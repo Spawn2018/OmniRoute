@@ -1,4 +1,5 @@
-- **312.0 leftover:** label-form SourceRef wyczerpane. Następny = wąski HITL z pinu (nie park live/U1/CT2). 312.0 = SourceRefField na local-charge/charge-template/cod.
+- **313.0 leftover:** extract LLM / upload PDF; `penalty_ciphertext` / `obligation_ciphertext`; CI5 kara SQL; CI2 spend; CT2; X1 portal. 313.0 = HITL `sla_clause` (metryka + próg tekst + FK umowa).
+- **312.0 leftover:** label-form SourceRef wyczerpane. 313.0 = CI1 `sla_clause`. 312.0 = SourceRefField na local-charge/charge-template/cod.
 - **311.0 leftover:** local/charge-template/cod DONE 312.0. 311.0 = SourceRefField na rate-card/fuel/groupage.
 - **310.0 leftover:** rate-card/fuel/groupage DONE 311.0. 310.0 = SourceRefField na round/matrix/side.
 - **309.0 leftover:** round/matrix/side DONE 310.0. 309.0 = SourceRefField na lot/lane/quote.

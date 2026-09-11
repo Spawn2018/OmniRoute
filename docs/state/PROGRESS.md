@@ -2,6 +2,7 @@
 
 | Data | Plaster | Moduł | Opis |
 |---|---|---|---|
+| 2026-09-11 | 313.0 | CI1 | HITL `sla_clause` na customer_contract. Nie extract. Nie kara. Nastepny: pin HITL Plan. |
 | 2026-09-11 | 312.0 | UI | `/refaktor`: SourceRefField na local/charge-template/cod. Label-form SourceRef DONE. Nastepny: HITL pin Plan. |
 | 2026-09-11 | 311.0 | UI | `/refaktor`: SourceRefField na rate-card/fuel/groupage. Nastepny: leftover label-form. |
 | 2026-09-11 | 310.0 | UI | `/refaktor`: SourceRefField na round/matrix/side. Nastepny: leftover label-form. |

@@ -97,6 +97,7 @@ from app.api import (
     shipment_packages,
     shipment_stakeholders,
     shipments,
+    sla_clauses,
     stops,
     table_views,
     task_templates,
@@ -232,6 +233,7 @@ api_router.include_router(routing_guide_matches.router)
 api_router.include_router(routing_guides.router)
 api_router.include_router(sap_connectors.router)
 api_router.include_router(capa_marks.router)
+api_router.include_router(sla_clauses.router)
 api_router.include_router(freight_audit_marks.router)
 api_router.include_router(collaboration_marks.router)
 api_router.include_router(terminal_slot_connectors.router)

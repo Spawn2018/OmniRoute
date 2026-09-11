@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **312.0** `/refaktor` CatalogSourceRefField (local/charge-template/cod)
-- **Etap:** Plan (delta zaakceptowana `/noc`) — wolno `/plaster` **313.0**
-- **Następny:** **313.0** CI1 HITL `sla_clause` (delta `docs/deltas/open/313.0-sla-clause.md`).
+- **Ostatni plaster:** **313.0** CI1 HITL `sla_clause`
+- **Etap:** Plan
+- **Następny:** leftover CI1 ciphertext/kara SQL **parked** — wąski HITL z pinu (CI2 / G / EXP) albo kolejny pin bez park live.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

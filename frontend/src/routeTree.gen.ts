@@ -104,6 +104,7 @@ import { Route as SessionRouteImport } from './routes/session'
 import { Route as ShipmentDocumentsRouteImport } from './routes/shipment-documents'
 import { Route as ShipmentPackagesRouteImport } from './routes/shipment-packages'
 import { Route as ShipmentsRouteImport } from './routes/shipments'
+import { Route as SlaClausesRouteImport } from './routes/sla-clauses'
 import { Route as TaskTemplatesRouteImport } from './routes/task-templates'
 import { Route as TelematicsConnectorsRouteImport } from './routes/telematics-connectors'
 import { Route as TenantContractKeksRouteImport } from './routes/tenant-contract-keks'
@@ -564,11 +565,12 @@ const RolloutRoute = RolloutRouteImport.update({
   path: '/rollout',
   getParentRoute: () => rootRouteImport,
 } as any)
-const RoutingGuideEnforcementsRoute = RoutingGuideEnforcementsRouteImport.update({
-  id: '/routing-guide-enforcements',
-  path: '/routing-guide-enforcements',
-  getParentRoute: () => rootRouteImport,
-} as any)
+const RoutingGuideEnforcementsRoute =
+  RoutingGuideEnforcementsRouteImport.update({
+    id: '/routing-guide-enforcements',
+    path: '/routing-guide-enforcements',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const RoutingGuideMatchesRoute = RoutingGuideMatchesRouteImport.update({
   id: '/routing-guide-matches',
   path: '/routing-guide-matches',
@@ -607,6 +609,11 @@ const ShipmentPackagesRoute = ShipmentPackagesRouteImport.update({
 const ShipmentsRoute = ShipmentsRouteImport.update({
   id: '/shipments',
   path: '/shipments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SlaClausesRoute = SlaClausesRouteImport.update({
+  id: '/sla-clauses',
+  path: '/sla-clauses',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TaskTemplatesRoute = TaskTemplatesRouteImport.update({
@@ -851,6 +858,7 @@ export interface FileRoutesByFullPath {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/sla-clauses': typeof SlaClausesRoute
   '/task-templates': typeof TaskTemplatesRoute
   '/telematics-connectors': typeof TelematicsConnectorsRoute
   '/tenant-contract-keks': typeof TenantContractKeksRoute
@@ -977,6 +985,7 @@ export interface FileRoutesByTo {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/sla-clauses': typeof SlaClausesRoute
   '/task-templates': typeof TaskTemplatesRoute
   '/telematics-connectors': typeof TelematicsConnectorsRoute
   '/tenant-contract-keks': typeof TenantContractKeksRoute
@@ -1104,6 +1113,7 @@ export interface FileRoutesById {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/sla-clauses': typeof SlaClausesRoute
   '/task-templates': typeof TaskTemplatesRoute
   '/telematics-connectors': typeof TelematicsConnectorsRoute
   '/tenant-contract-keks': typeof TenantContractKeksRoute
@@ -1232,6 +1242,7 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/sla-clauses'
     | '/task-templates'
     | '/telematics-connectors'
     | '/tenant-contract-keks'
@@ -1358,6 +1369,7 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/sla-clauses'
     | '/task-templates'
     | '/telematics-connectors'
     | '/tenant-contract-keks'
@@ -1484,6 +1496,7 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/sla-clauses'
     | '/task-templates'
     | '/telematics-connectors'
     | '/tenant-contract-keks'
@@ -1611,6 +1624,7 @@ export interface RootRouteChildren {
   ShipmentDocumentsRoute: typeof ShipmentDocumentsRoute
   ShipmentPackagesRoute: typeof ShipmentPackagesRoute
   ShipmentsRoute: typeof ShipmentsRoute
+  SlaClausesRoute: typeof SlaClausesRoute
   TaskTemplatesRoute: typeof TaskTemplatesRoute
   TelematicsConnectorsRoute: typeof TelematicsConnectorsRoute
   TenantContractKeksRoute: typeof TenantContractKeksRoute
@@ -2309,6 +2323,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShipmentsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sla-clauses': {
+      id: '/sla-clauses'
+      path: '/sla-clauses'
+      fullPath: '/sla-clauses'
+      preLoaderRoute: typeof SlaClausesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/task-templates': {
       id: '/task-templates'
       path: '/task-templates'
@@ -2611,6 +2632,7 @@ const rootRouteChildren: RootRouteChildren = {
   ShipmentDocumentsRoute: ShipmentDocumentsRoute,
   ShipmentPackagesRoute: ShipmentPackagesRoute,
   ShipmentsRoute: ShipmentsRoute,
+  SlaClausesRoute: SlaClausesRoute,
   TaskTemplatesRoute: TaskTemplatesRoute,
   TelematicsConnectorsRoute: TelematicsConnectorsRoute,
   TenantContractKeksRoute: TenantContractKeksRoute,

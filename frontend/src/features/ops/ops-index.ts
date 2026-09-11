@@ -609,6 +609,11 @@ export const OPS_JOBS = [
     job: "katalog capa_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.slaClause.route,
+    label: "Klauzula SLA",
+    job: "katalog sla_clause HITL",
+  },
+  {
     route: BUSINESS_LISTS.freightAuditMark.route,
     label: "Audyt frachtu",
     job: "katalog freight_audit_mark HITL",
@@ -901,6 +906,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "289.0": "/asns",
   "290.0": "/shipments",
   "291.0": "/asns",
+  "313.0": "/sla-clauses",
 } as const
 
 export const ROUTES_BREADTH_STANDING =
