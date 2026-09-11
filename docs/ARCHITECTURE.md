@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **289.0** leftover CT4 matching lane/mode na ASN. **Etap:** Plan. **Następny:** leftover CT4 matching lane/mode na shipment (albo następny wąski HITL z PLAN). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **289.0** leftover CT4 matching lane/mode na ASN. **Etap:** Plan. **Następny:** **290.0** leftover CT4 matching lane/mode na shipment (`plant_label`/`carrier_label` + ten sam gate co ASN). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

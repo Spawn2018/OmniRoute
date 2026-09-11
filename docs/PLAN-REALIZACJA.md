@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** leftover CT4 matching lane/mode na shipment (albo następny wąski HITL z PLAN).
+**Następny:** **290.0** leftover CT4 matching lane/mode na shipment (`plant_label`/`carrier_label` + ten sam gate co ASN).
 <!-- os-status:end -->
 
 ```mermaid
