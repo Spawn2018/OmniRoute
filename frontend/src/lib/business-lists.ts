@@ -86,6 +86,10 @@ export const BUSINESS_LISTS = {
   repairPlaybook: { route: "/repair-playbooks", tableKey: "repair_playbook" },
   spendMark: { route: "/spend-marks", tableKey: "spend_mark" },
   penaltyMark: { route: "/penalty-marks", tableKey: "penalty_mark" },
+  interventionOutcome: {
+    route: "/intervention-outcomes",
+    tableKey: "intervention_outcome",
+  },
   freightAuditMark: { route: "/freight-audit-marks", tableKey: "freight_audit_mark" },
   collaborationMark: { route: "/collaboration-marks", tableKey: "collaboration_mark" },
   exchangeConnector: { route: "/exchange-connectors", tableKey: "exchange_connector" },
@@ -220,6 +224,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/repair-playbooks",
   "/spend-marks",
   "/penalty-marks",
+  "/intervention-outcomes",
   "/freight-audit-marks",
   "/collaboration-marks",
   "/exchange-connectors",

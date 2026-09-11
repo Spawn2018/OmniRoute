@@ -782,6 +782,10 @@ class InvalidPenaltyMark(DomainError):
     """CI5: HITL rodzaj naruszenia kary — nie kara SQL."""
 
 
+class InvalidInterventionOutcome(DomainError):
+    """CI7: HITL wynik interwencji — nie SQL saved."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

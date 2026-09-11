@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **322.0** leftover Fala CI wyczerpane HITL katalogów — Plan G/EXP wąski z pinu (czytaj PLAN § Kolejka).
+**Następny:** **G1** CRM lead→szansa (Plan). Pin po CI1–CI8.
 <!-- os-status:end -->
 
 ```mermaid
@@ -707,7 +707,7 @@ Karta: [karty-pol-fala-ci.md](analysis/karty-pol-fala-ci.md). **CI9 przed CI1.**
 | CI4 | `delay_forecast` wcześniej niż okno | 314.0 HITL katalog (`horizon_hours` + `p_late` Decimal); leftover wróżba punktowa / GPS | wróżba punktowa |
 | CI5 | które SLA pęknie + kara SQL; bez klauzuli = „brak danych umowy” | 321.0 HITL katalog `penalty_mark` (breach_kind); leftover kara SQL | auto linia produkcyjna |
 | CI6 | strata / koszt naprawy / uratowane | 315.0 `remediation_option`; 316.0 `impact_scenario` (etykieta); leftover repair_cost / expected_save / EBITDA SQL / S11 | float; LLM |
-| CI7 | scorecard MAE/kalibracja; sample≥N zanim oferta | 318.0 HITL katalog `calibration_mark` (sample_ready); leftover MAE SQL / egzekucja sample≥N | suma nachodzących oszczędności |
+| CI7 | scorecard MAE/kalibracja; sample≥N zanim oferta | 318.0 HITL katalog `calibration_mark` (sample_ready); 322.0 HITL katalog `intervention_outcome` (result_kind); leftover MAE SQL / egzekucja sample≥N / saved SQL | suma nachodzących oszczędności |
 | CI8 | playbook naprawczy + S11 | 319.0 HITL katalog `repair_playbook` (stance_kind); leftover auto-send S11 | auto-send do jego klienta |
 
 ### Fala G — reszta modułów (nie dubluj T–V)

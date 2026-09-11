@@ -54,6 +54,7 @@ from app.api import (
     impact_scenarios,
     inbound_messages,
     incoterm_responsibilities,
+    intervention_outcomes,
     kreptd_licences,
     lane_kms,
     lane_patterns,
@@ -200,6 +201,7 @@ api_router.include_router(calibration_marks.router)
 api_router.include_router(repair_playbooks.router)
 api_router.include_router(spend_marks.router)
 api_router.include_router(penalty_marks.router)
+api_router.include_router(intervention_outcomes.router)
 api_router.include_router(local_charges.router)
 api_router.include_router(tender_quotes.router)
 api_router.include_router(tender_data_rooms.router)

@@ -204,7 +204,7 @@
 | znacznik KEK | tenant_contract_kek | CI9 HITL 274.0 wrap_kind `password`/`kms`; nie klucz; nie materiał; 273.0 nadal nie szyfr |
 | klauzula SLA | sla_clause | CI1 HITL 313.0 na `customer_contract`; próg jako tekst; leftover kara SQL / ciphertext |
 | prognoza spóźnienia | delay_forecast | CI4 HITL 314.0; horizon_hours + p_late Decimal; nie wróżba punktowa; nie GPS |
-| wynik interwencji | intervention_outcome | CI6–CI7; saved = SQL |
+| wynik interwencji | intervention_outcome | CI7 HITL katalog; leftover saved SQL |
 | opcja naprawy | remediation_option | CI6 HITL 315.0; kind rebook/wait/claim/other; leftover kwota / S11 |
 | scenariusz skutku | impact_scenario | CI6 HITL 316.0; chain_label tekst; nie EBITDA SQL; nie tower_impact |
 | powiadomienie klauzuli | clause_notice | CI3 HITL 317.0; clause_label tekst; nie 409; nie auto-kara |

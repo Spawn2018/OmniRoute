@@ -6430,6 +6430,80 @@
         ]
       }
     },
+    "/api/v1/intervention-outcomes": {
+      "get": {
+        "tags": [
+          "intervention-outcomes"
+        ],
+        "summary": "List Intervention Outcomes",
+        "operationId": "list_intervention_outcomes_api_v1_intervention_outcomes_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/InterventionOutcomeResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Intervention Outcomes Api V1 Intervention Outcomes Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "intervention-outcomes"
+        ],
+        "summary": "Create Intervention Outcome",
+        "operationId": "create_intervention_outcome_api_v1_intervention_outcomes_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InterventionOutcomeCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InterventionOutcomeResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/local-charges": {
       "get": {
         "tags": [
@@ -20172,6 +20246,65 @@
           "answered_count"
         ],
         "title": "InquiryMemberRankResponse"
+      },
+      "InterventionOutcomeCreate": {
+        "properties": {
+          "outcome_code": {
+            "type": "string",
+            "title": "Outcome Code"
+          },
+          "result_kind": {
+            "type": "string",
+            "title": "Result Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "outcome_code",
+          "result_kind",
+          "source_ref"
+        ],
+        "title": "InterventionOutcomeCreate"
+      },
+      "InterventionOutcomeResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "outcome_code": {
+            "type": "string",
+            "title": "Outcome Code"
+          },
+          "result_kind": {
+            "type": "string",
+            "title": "Result Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "outcome_code",
+          "result_kind",
+          "source_ref"
+        ],
+        "title": "InterventionOutcomeResponse"
       },
       "KreptdLicenceCreate": {
         "properties": {

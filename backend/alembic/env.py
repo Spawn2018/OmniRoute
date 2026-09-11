@@ -115,6 +115,7 @@ from app.models.sap_connector import SapConnector  # noqa: F401
 from app.models.capa_mark import CapaMark  # noqa: F401
 from app.models.spend_mark import SpendMark  # noqa: F401
 from app.models.penalty_mark import PenaltyMark  # noqa: F401
+from app.models.intervention_outcome import InterventionOutcome  # noqa: F401
 from app.models.collaboration_mark import CollaborationMark  # noqa: F401
 from app.models.freight_audit_mark import FreightAuditMark  # noqa: F401
 from app.models.routing_guide import RoutingGuide  # noqa: F401

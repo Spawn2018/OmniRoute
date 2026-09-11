@@ -2,6 +2,7 @@
 
 | Data | Plaster | Moduł | Opis |
 |---|---|---|---|
+| 2026-09-11 | 322.0 | CI7 | HITL `intervention_outcome` (result_kind). Nie SQL saved. Nastepny: Plan G1. |
 | 2026-09-11 | 321.0 | CI5 | HITL `penalty_mark` (breach_kind). Nie kara SQL. Nastepny: Plan 322.0 pin. |
 | 2026-09-11 | 320.0 | CI2 | HITL `spend_mark` (leakage_kind). Nie SQL FV. Nastepny: Plan 321.0 penalty_mark. |
 | 2026-09-11 | 319.0 | CI8 | HITL `repair_playbook` (stance_kind). Nie auto-send S11. Nastepny: Plan 320.0 spend_mark. |

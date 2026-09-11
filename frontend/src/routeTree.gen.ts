@@ -60,6 +60,7 @@ import { Route as GroupageTariffsRouteImport } from './routes/groupage-tariffs'
 import { Route as HealthRouteImport } from './routes/health'
 import { Route as IdpConnectorsRouteImport } from './routes/idp-connectors'
 import { Route as ImpactScenariosRouteImport } from './routes/impact-scenarios'
+import { Route as InterventionOutcomesRouteImport } from './routes/intervention-outcomes'
 import { Route as InvoicesRouteImport } from './routes/invoices'
 import { Route as KreptdLicencesRouteImport } from './routes/kreptd-licences'
 import { Route as LaneKmsRouteImport } from './routes/lane-kms'
@@ -396,6 +397,11 @@ const IdpConnectorsRoute = IdpConnectorsRouteImport.update({
 const ImpactScenariosRoute = ImpactScenariosRouteImport.update({
   id: '/impact-scenarios',
   path: '/impact-scenarios',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InterventionOutcomesRoute = InterventionOutcomesRouteImport.update({
+  id: '/intervention-outcomes',
+  path: '/intervention-outcomes',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InvoicesRoute = InvoicesRouteImport.update({
@@ -862,6 +868,7 @@ export interface FileRoutesByFullPath {
   '/health': typeof HealthRoute
   '/idp-connectors': typeof IdpConnectorsRoute
   '/impact-scenarios': typeof ImpactScenariosRoute
+  '/intervention-outcomes': typeof InterventionOutcomesRoute
   '/invoices': typeof InvoicesRoute
   '/kreptd-licences': typeof KreptdLicencesRoute
   '/lane-kms': typeof LaneKmsRoute
@@ -997,6 +1004,7 @@ export interface FileRoutesByTo {
   '/health': typeof HealthRoute
   '/idp-connectors': typeof IdpConnectorsRoute
   '/impact-scenarios': typeof ImpactScenariosRoute
+  '/intervention-outcomes': typeof InterventionOutcomesRoute
   '/invoices': typeof InvoicesRoute
   '/kreptd-licences': typeof KreptdLicencesRoute
   '/lane-kms': typeof LaneKmsRoute
@@ -1133,6 +1141,7 @@ export interface FileRoutesById {
   '/health': typeof HealthRoute
   '/idp-connectors': typeof IdpConnectorsRoute
   '/impact-scenarios': typeof ImpactScenariosRoute
+  '/intervention-outcomes': typeof InterventionOutcomesRoute
   '/invoices': typeof InvoicesRoute
   '/kreptd-licences': typeof KreptdLicencesRoute
   '/lane-kms': typeof LaneKmsRoute
@@ -1270,6 +1279,7 @@ export interface FileRouteTypes {
     | '/health'
     | '/idp-connectors'
     | '/impact-scenarios'
+    | '/intervention-outcomes'
     | '/invoices'
     | '/kreptd-licences'
     | '/lane-kms'
@@ -1405,6 +1415,7 @@ export interface FileRouteTypes {
     | '/health'
     | '/idp-connectors'
     | '/impact-scenarios'
+    | '/intervention-outcomes'
     | '/invoices'
     | '/kreptd-licences'
     | '/lane-kms'
@@ -1540,6 +1551,7 @@ export interface FileRouteTypes {
     | '/health'
     | '/idp-connectors'
     | '/impact-scenarios'
+    | '/intervention-outcomes'
     | '/invoices'
     | '/kreptd-licences'
     | '/lane-kms'
@@ -1676,6 +1688,7 @@ export interface RootRouteChildren {
   HealthRoute: typeof HealthRoute
   IdpConnectorsRoute: typeof IdpConnectorsRoute
   ImpactScenariosRoute: typeof ImpactScenariosRoute
+  InterventionOutcomesRoute: typeof InterventionOutcomesRoute
   InvoicesRoute: typeof InvoicesRoute
   KreptdLicencesRoute: typeof KreptdLicencesRoute
   LaneKmsRoute: typeof LaneKmsRoute
@@ -2117,6 +2130,13 @@ declare module '@tanstack/react-router' {
       path: '/impact-scenarios'
       fullPath: '/impact-scenarios'
       preLoaderRoute: typeof ImpactScenariosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/intervention-outcomes': {
+      id: '/intervention-outcomes'
+      path: '/intervention-outcomes'
+      fullPath: '/intervention-outcomes'
+      preLoaderRoute: typeof InterventionOutcomesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/invoices': {
@@ -2748,6 +2768,7 @@ const rootRouteChildren: RootRouteChildren = {
   HealthRoute: HealthRoute,
   IdpConnectorsRoute: IdpConnectorsRoute,
   ImpactScenariosRoute: ImpactScenariosRoute,
+  InterventionOutcomesRoute: InterventionOutcomesRoute,
   InvoicesRoute: InvoicesRoute,
   KreptdLicencesRoute: KreptdLicencesRoute,
   LaneKmsRoute: LaneKmsRoute,

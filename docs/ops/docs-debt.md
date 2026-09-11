@@ -1,3 +1,4 @@
+- **322.0 leftover:** predicted_loss / repair_cost / actual_loss / saved SQL; suma nachodzących oszczędności. 322.0 = HITL `intervention_outcome` (result_kind).
 - **321.0 leftover:** kara SQL; auto linia produkcyjna. 321.0 = HITL `penalty_mark` (breach_kind).
 - **320.0 leftover:** SQL FV vs charge; druga marża. 320.0 = HITL `spend_mark` (leakage_kind).
 - **319.0 leftover:** auto-send S11; mail_draft auto. 319.0 = HITL `repair_playbook` (stance_kind).

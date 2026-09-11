@@ -117,6 +117,7 @@ modules =
     app.services.repair_playbooks
     app.services.spend_marks
     app.services.penalty_marks
+    app.services.intervention_outcomes
     app.services.freight_audit_marks
     app.services.collaboration_marks
     app.services.exchange_connectors
@@ -476,6 +477,9 @@ forbidden_modules =
     app.services.penalty_marks
     app.repositories.penalty_marks
     app.models.penalty_mark
+    app.services.intervention_outcomes
+    app.repositories.intervention_outcomes
+    app.models.intervention_outcome
     app.services.freight_audit_marks
     app.repositories.freight_audit_marks
     app.models.freight_audit_mark

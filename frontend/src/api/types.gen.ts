@@ -3769,6 +3769,50 @@ export type InquiryMemberRankResponse = {
 };
 
 /**
+ * InterventionOutcomeCreate
+ */
+export type InterventionOutcomeCreate = {
+    /**
+     * Outcome Code
+     */
+    outcome_code: string;
+    /**
+     * Result Kind
+     */
+    result_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * InterventionOutcomeResponse
+ */
+export type InterventionOutcomeResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Outcome Code
+     */
+    outcome_code: string;
+    /**
+     * Result Kind
+     */
+    result_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * KreptdLicenceCreate
  */
 export type KreptdLicenceCreate = {
@@ -12791,6 +12835,49 @@ export type CreatePenaltyMarkApiV1PenaltyMarksPostResponses = {
 };
 
 export type CreatePenaltyMarkApiV1PenaltyMarksPostResponse = CreatePenaltyMarkApiV1PenaltyMarksPostResponses[keyof CreatePenaltyMarkApiV1PenaltyMarksPostResponses];
+
+export type ListInterventionOutcomesApiV1InterventionOutcomesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/intervention-outcomes';
+};
+
+export type ListInterventionOutcomesApiV1InterventionOutcomesGetResponses = {
+    /**
+     * Response List Intervention Outcomes Api V1 Intervention Outcomes Get
+     *
+     * Successful Response
+     */
+    200: Array<InterventionOutcomeResponse>;
+};
+
+export type ListInterventionOutcomesApiV1InterventionOutcomesGetResponse = ListInterventionOutcomesApiV1InterventionOutcomesGetResponses[keyof ListInterventionOutcomesApiV1InterventionOutcomesGetResponses];
+
+export type CreateInterventionOutcomeApiV1InterventionOutcomesPostData = {
+    body: InterventionOutcomeCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/intervention-outcomes';
+};
+
+export type CreateInterventionOutcomeApiV1InterventionOutcomesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateInterventionOutcomeApiV1InterventionOutcomesPostError = CreateInterventionOutcomeApiV1InterventionOutcomesPostErrors[keyof CreateInterventionOutcomeApiV1InterventionOutcomesPostErrors];
+
+export type CreateInterventionOutcomeApiV1InterventionOutcomesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: InterventionOutcomeResponse;
+};
+
+export type CreateInterventionOutcomeApiV1InterventionOutcomesPostResponse = CreateInterventionOutcomeApiV1InterventionOutcomesPostResponses[keyof CreateInterventionOutcomeApiV1InterventionOutcomesPostResponses];
 
 export type ListLocalChargesApiV1LocalChargesGetData = {
     body?: never;

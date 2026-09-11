@@ -8,19 +8,19 @@
 
 
 
-**Ostatni plaster:** **321.0** CI5 HITL `penalty_mark`  
+**Ostatni plaster:** **322.0** CI7 HITL `intervention_outcome`  
 
-**Etap:** Plan — wolno `/plan-modul` **322.0**  
+**Etap:** Plan — wolno `/plan-modul` **G1**  
 
-**Noc:** `/noc 17` do 2026-09-11T17:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).  
+**Noc:** `/noc 10` do 2026-09-12T10:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).  
 
-**Następny:** **322.0** leftover Fala CI wyczerpane HITL katalogów — Plan G/EXP wąski z pinu (czytaj PLAN § Kolejka).  
+**Następny:** **G1** CRM lead→szansa (Plan). Pin po CI1–CI8.  
 
-Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44 · extract · CI5 kara SQL · wróżba punktowa · CI6 kwoty · S11 auto-send · EBITDA SQL · egzekucja 409 · MAE SQL. Nie zgaduj 71–322.
+Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44 · extract · CI5 kara SQL · wróżba punktowa · CI6 kwoty · S11 auto-send · EBITDA SQL · egzekucja 409 · MAE SQL · outcome SQL. Nie zgaduj 71–322.
 
 
 
-**Spec (jedyna na sesję):** brak delty — `/plan-modul` 322.0
+**Spec (jedyna na sesję):** brak — najpierw `/plan-modul` G1.
 
 
 
@@ -36,4 +36,4 @@ Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow 
 
 
 
-**2026-09-11:** **321.0** zamknięty. Fala CI HITL katalogi w wąskim pinie domknięte. Następny: Plan **322.0**.
+**2026-09-11:** **322.0** zamknięty — HITL `intervention_outcome` bez SQL saved. Następny: Plan G1.
