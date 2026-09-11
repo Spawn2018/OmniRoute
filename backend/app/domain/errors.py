@@ -740,3 +740,7 @@ class InvalidOtifMark(DomainError):
 
 class InvalidSapConnector(DomainError):
     """CT6: HITL konektor SAP/Oracle — nie live SOAP i nie SQL do SAP."""
+
+
+class InvalidCapaMark(DomainError):
+    """CT12: HITL rodzaj QMS CAPA/8D — nie workflow."""

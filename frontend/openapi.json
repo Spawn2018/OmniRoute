@@ -9300,6 +9300,80 @@
         ]
       }
     },
+    "/api/v1/capa-marks": {
+      "get": {
+        "tags": [
+          "capa-marks"
+        ],
+        "summary": "List Capa Marks",
+        "operationId": "list_capa_marks_api_v1_capa_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CapaMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Capa Marks Api V1 Capa Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "capa-marks"
+        ],
+        "summary": "Create Capa Mark",
+        "operationId": "create_capa_mark_api_v1_capa_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CapaMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CapaMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/terminal-slot-connectors": {
       "get": {
         "tags": [
@@ -13414,6 +13488,65 @@
           "source_ref"
         ],
         "title": "BookkeepingResponse"
+      },
+      "CapaMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "mark_kind": {
+            "type": "string",
+            "title": "Mark Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "mark_kind",
+          "source_ref"
+        ],
+        "title": "CapaMarkCreate"
+      },
+      "CapaMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "mark_kind": {
+            "type": "string",
+            "title": "Mark Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "mark_kind",
+          "source_ref"
+        ],
+        "title": "CapaMarkResponse"
       },
       "CarbonMethodCreate": {
         "properties": {

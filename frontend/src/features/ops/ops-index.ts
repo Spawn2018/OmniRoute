@@ -594,6 +594,11 @@ export const OPS_JOBS = [
     job: "katalog sap_connector HITL",
   },
   {
+    route: BUSINESS_LISTS.capaMark.route,
+    label: "Znacznik CAPA",
+    job: "katalog capa_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.exchangeConnector.route,
     label: "Konektor giełdy",
     job: "katalog exchange_connector HITL",
@@ -866,6 +871,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "279.0": "/routing-guides",
   "280.0": "/otif-marks",
   "281.0": "/sap-connectors",
+  "282.0": "/capa-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

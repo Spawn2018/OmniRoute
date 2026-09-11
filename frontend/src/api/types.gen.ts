@@ -299,6 +299,50 @@ export type BookkeepingResponse = {
 };
 
 /**
+ * CapaMarkCreate
+ */
+export type CapaMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Mark Kind
+     */
+    mark_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CapaMarkResponse
+ */
+export type CapaMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Mark Kind
+     */
+    mark_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * CarbonMethodCreate
  */
 export type CarbonMethodCreate = {
@@ -13765,6 +13809,49 @@ export type CreateSapConnectorApiV1SapConnectorsPostResponses = {
 };
 
 export type CreateSapConnectorApiV1SapConnectorsPostResponse = CreateSapConnectorApiV1SapConnectorsPostResponses[keyof CreateSapConnectorApiV1SapConnectorsPostResponses];
+
+export type ListCapaMarksApiV1CapaMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/capa-marks';
+};
+
+export type ListCapaMarksApiV1CapaMarksGetResponses = {
+    /**
+     * Response List Capa Marks Api V1 Capa Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<CapaMarkResponse>;
+};
+
+export type ListCapaMarksApiV1CapaMarksGetResponse = ListCapaMarksApiV1CapaMarksGetResponses[keyof ListCapaMarksApiV1CapaMarksGetResponses];
+
+export type CreateCapaMarkApiV1CapaMarksPostData = {
+    body: CapaMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/capa-marks';
+};
+
+export type CreateCapaMarkApiV1CapaMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCapaMarkApiV1CapaMarksPostError = CreateCapaMarkApiV1CapaMarksPostErrors[keyof CreateCapaMarkApiV1CapaMarksPostErrors];
+
+export type CreateCapaMarkApiV1CapaMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CapaMarkResponse;
+};
+
+export type CreateCapaMarkApiV1CapaMarksPostResponse = CreateCapaMarkApiV1CapaMarksPostResponses[keyof CreateCapaMarkApiV1CapaMarksPostResponses];
 
 export type ListTerminalSlotConnectorsApiV1TerminalSlotConnectorsGetData = {
     body?: never;

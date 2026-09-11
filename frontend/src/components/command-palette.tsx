@@ -202,6 +202,11 @@ const NAV_ACTIONS = [
     to: "/sap-connectors",
   },
   {
+    id: "nav-capa-marks",
+    label: "Idź do znacznika CAPA",
+    to: "/capa-marks",
+  },
+  {
     id: "nav-exchange-connectors",
     label: "Idź do konektora giełdy",
     to: "/exchange-connectors",

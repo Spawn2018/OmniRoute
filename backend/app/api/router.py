@@ -5,6 +5,7 @@ from app.api import (
     bank_payments,
     booking_instructions,
     bookkeeping,
+    capa_marks,
     carbon_methods,
     cargo_claims,
     carrier_inquiries,
@@ -224,6 +225,7 @@ api_router.include_router(asns.router)
 api_router.include_router(otif_marks.router)
 api_router.include_router(routing_guides.router)
 api_router.include_router(sap_connectors.router)
+api_router.include_router(capa_marks.router)
 api_router.include_router(terminal_slot_connectors.router)
 api_router.include_router(tower_impacts.router)
 api_router.include_router(twin_marks.router)
