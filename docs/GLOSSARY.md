@@ -205,6 +205,7 @@
 | klauzula SLA | sla_clause | CI1 HITL 313.0 na `customer_contract`; próg jako tekst; leftover kara SQL / ciphertext |
 | prognoza spóźnienia | delay_forecast | CI4 HITL 314.0; horizon_hours + p_late Decimal; nie wróżba punktowa; nie GPS |
 | wynik interwencji | intervention_outcome | CI6–CI7; saved = SQL |
+| opcja naprawy | remediation_option | CI6 HITL 315.0; kind rebook/wait/claim/other; leftover kwota / S11 |
 | przetarg | tender | G2.0 nagłówek sell/buy; nie P6 `tender_quote`; nie loty |
 | partia przetargu | tender_lot | G2.1 kod partii na `tender`; nie korytarz; nie kwota |
 | korytarz przetargu | tender_lane | G2.2 para UN/LOCODE na `tender_lot`; nie runda; nie kwota |

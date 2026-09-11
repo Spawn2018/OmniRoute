@@ -76,6 +76,10 @@ export const BUSINESS_LISTS = {
   capaMark: { route: "/capa-marks", tableKey: "capa_mark" },
   slaClause: { route: "/sla-clauses", tableKey: "sla_clause" },
   delayForecast: { route: "/delay-forecasts", tableKey: "delay_forecast" },
+  remediationOption: {
+    route: "/remediation-options",
+    tableKey: "remediation_option",
+  },
   freightAuditMark: { route: "/freight-audit-marks", tableKey: "freight_audit_mark" },
   collaborationMark: { route: "/collaboration-marks", tableKey: "collaboration_mark" },
   exchangeConnector: { route: "/exchange-connectors", tableKey: "exchange_connector" },
@@ -203,6 +207,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/capa-marks",
   "/sla-clauses",
   "/delay-forecasts",
+  "/remediation-options",
   "/freight-audit-marks",
   "/collaboration-marks",
   "/exchange-connectors",

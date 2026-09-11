@@ -9728,6 +9728,80 @@
         ]
       }
     },
+    "/api/v1/remediation-options": {
+      "get": {
+        "tags": [
+          "remediation-options"
+        ],
+        "summary": "List Remediation Options",
+        "operationId": "list_remediation_options_api_v1_remediation_options_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/RemediationOptionResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Remediation Options Api V1 Remediation Options Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "remediation-options"
+        ],
+        "summary": "Create Remediation Option",
+        "operationId": "create_remediation_option_api_v1_remediation_options_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RemediationOptionCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemediationOptionResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/freight-audit-marks": {
       "get": {
         "tags": [
@@ -23500,6 +23574,65 @@
           "source_ref"
         ],
         "title": "RateLineSupersede"
+      },
+      "RemediationOptionCreate": {
+        "properties": {
+          "option_code": {
+            "type": "string",
+            "title": "Option Code"
+          },
+          "option_kind": {
+            "type": "string",
+            "title": "Option Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "option_code",
+          "option_kind",
+          "source_ref"
+        ],
+        "title": "RemediationOptionCreate"
+      },
+      "RemediationOptionResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "option_code": {
+            "type": "string",
+            "title": "Option Code"
+          },
+          "option_kind": {
+            "type": "string",
+            "title": "Option Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "option_code",
+          "option_kind",
+          "source_ref"
+        ],
+        "title": "RemediationOptionResponse"
       },
       "ResourceCreate": {
         "properties": {

@@ -754,6 +754,10 @@ class InvalidDelayForecast(DomainError):
     """CI4: HITL prognoza opóźnienia — nie wróżba punktowa."""
 
 
+class InvalidRemediationOption(DomainError):
+    """CI6: HITL opcja naprawy — nie kwota i nie S11 silnik."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

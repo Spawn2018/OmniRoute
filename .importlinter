@@ -110,6 +110,7 @@ modules =
     app.services.capa_marks
     app.services.sla_clauses
     app.services.delay_forecasts
+    app.services.remediation_options
     app.services.freight_audit_marks
     app.services.collaboration_marks
     app.services.exchange_connectors
@@ -448,6 +449,9 @@ forbidden_modules =
     app.services.delay_forecasts
     app.repositories.delay_forecasts
     app.models.delay_forecast
+    app.services.remediation_options
+    app.repositories.remediation_options
+    app.models.remediation_option
     app.services.freight_audit_marks
     app.repositories.freight_audit_marks
     app.models.freight_audit_mark

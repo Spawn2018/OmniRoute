@@ -86,6 +86,7 @@ from app.api import (
     rank_marks,
     rate_cards,
     rate_lines,
+    remediation_options,
     resources,
     routing_guide_enforcements,
     routing_guide_matches,
@@ -236,6 +237,7 @@ api_router.include_router(sap_connectors.router)
 api_router.include_router(capa_marks.router)
 api_router.include_router(sla_clauses.router)
 api_router.include_router(delay_forecasts.router)
+api_router.include_router(remediation_options.router)
 api_router.include_router(freight_audit_marks.router)
 api_router.include_router(collaboration_marks.router)
 api_router.include_router(terminal_slot_connectors.router)

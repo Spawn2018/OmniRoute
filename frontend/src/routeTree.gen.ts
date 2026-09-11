@@ -94,6 +94,7 @@ import { Route as RailRouteImport } from './routes/rail'
 import { Route as RankMarksRouteImport } from './routes/rank-marks'
 import { Route as RateCardsRouteImport } from './routes/rate-cards'
 import { Route as RateLinesRouteImport } from './routes/rate-lines'
+import { Route as RemediationOptionsRouteImport } from './routes/remediation-options'
 import { Route as RoadRouteImport } from './routes/road'
 import { Route as RolloutRouteImport } from './routes/rollout'
 import { Route as RoutingGuideEnforcementsRouteImport } from './routes/routing-guide-enforcements'
@@ -561,6 +562,11 @@ const RateLinesRoute = RateLinesRouteImport.update({
   path: '/rate-lines',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RemediationOptionsRoute = RemediationOptionsRouteImport.update({
+  id: '/remediation-options',
+  path: '/remediation-options',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RoadRoute = RoadRouteImport.update({
   id: '/road',
   path: '/road',
@@ -854,6 +860,7 @@ export interface FileRoutesByFullPath {
   '/rank-marks': typeof RankMarksRoute
   '/rate-cards': typeof RateCardsRoute
   '/rate-lines': typeof RateLinesRoute
+  '/remediation-options': typeof RemediationOptionsRoute
   '/road': typeof RoadRoute
   '/rollout': typeof RolloutRoute
   '/routing-guide-enforcements': typeof RoutingGuideEnforcementsRoute
@@ -982,6 +989,7 @@ export interface FileRoutesByTo {
   '/rank-marks': typeof RankMarksRoute
   '/rate-cards': typeof RateCardsRoute
   '/rate-lines': typeof RateLinesRoute
+  '/remediation-options': typeof RemediationOptionsRoute
   '/road': typeof RoadRoute
   '/rollout': typeof RolloutRoute
   '/routing-guide-enforcements': typeof RoutingGuideEnforcementsRoute
@@ -1111,6 +1119,7 @@ export interface FileRoutesById {
   '/rank-marks': typeof RankMarksRoute
   '/rate-cards': typeof RateCardsRoute
   '/rate-lines': typeof RateLinesRoute
+  '/remediation-options': typeof RemediationOptionsRoute
   '/road': typeof RoadRoute
   '/rollout': typeof RolloutRoute
   '/routing-guide-enforcements': typeof RoutingGuideEnforcementsRoute
@@ -1241,6 +1250,7 @@ export interface FileRouteTypes {
     | '/rank-marks'
     | '/rate-cards'
     | '/rate-lines'
+    | '/remediation-options'
     | '/road'
     | '/rollout'
     | '/routing-guide-enforcements'
@@ -1369,6 +1379,7 @@ export interface FileRouteTypes {
     | '/rank-marks'
     | '/rate-cards'
     | '/rate-lines'
+    | '/remediation-options'
     | '/road'
     | '/rollout'
     | '/routing-guide-enforcements'
@@ -1497,6 +1508,7 @@ export interface FileRouteTypes {
     | '/rank-marks'
     | '/rate-cards'
     | '/rate-lines'
+    | '/remediation-options'
     | '/road'
     | '/rollout'
     | '/routing-guide-enforcements'
@@ -1626,6 +1638,7 @@ export interface RootRouteChildren {
   RankMarksRoute: typeof RankMarksRoute
   RateCardsRoute: typeof RateCardsRoute
   RateLinesRoute: typeof RateLinesRoute
+  RemediationOptionsRoute: typeof RemediationOptionsRoute
   RoadRoute: typeof RoadRoute
   RolloutRoute: typeof RolloutRoute
   RoutingGuideEnforcementsRoute: typeof RoutingGuideEnforcementsRoute
@@ -2266,6 +2279,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RateLinesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/remediation-options': {
+      id: '/remediation-options'
+      path: '/remediation-options'
+      fullPath: '/remediation-options'
+      preLoaderRoute: typeof RemediationOptionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/road': {
       id: '/road'
       path: '/road'
@@ -2642,6 +2662,7 @@ const rootRouteChildren: RootRouteChildren = {
   RankMarksRoute: RankMarksRoute,
   RateCardsRoute: RateCardsRoute,
   RateLinesRoute: RateLinesRoute,
+  RemediationOptionsRoute: RemediationOptionsRoute,
   RoadRoute: RoadRoute,
   RolloutRoute: RolloutRoute,
   RoutingGuideEnforcementsRoute: RoutingGuideEnforcementsRoute,

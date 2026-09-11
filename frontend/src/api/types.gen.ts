@@ -6031,6 +6031,50 @@ export type RateLineSupersede = {
 };
 
 /**
+ * RemediationOptionCreate
+ */
+export type RemediationOptionCreate = {
+    /**
+     * Option Code
+     */
+    option_code: string;
+    /**
+     * Option Kind
+     */
+    option_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * RemediationOptionResponse
+ */
+export type RemediationOptionResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Option Code
+     */
+    option_code: string;
+    /**
+     * Option Kind
+     */
+    option_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * ResourceCreate
  */
 export type ResourceCreate = {
@@ -14392,6 +14436,49 @@ export type CreateDelayForecastApiV1DelayForecastsPostResponses = {
 };
 
 export type CreateDelayForecastApiV1DelayForecastsPostResponse = CreateDelayForecastApiV1DelayForecastsPostResponses[keyof CreateDelayForecastApiV1DelayForecastsPostResponses];
+
+export type ListRemediationOptionsApiV1RemediationOptionsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/remediation-options';
+};
+
+export type ListRemediationOptionsApiV1RemediationOptionsGetResponses = {
+    /**
+     * Response List Remediation Options Api V1 Remediation Options Get
+     *
+     * Successful Response
+     */
+    200: Array<RemediationOptionResponse>;
+};
+
+export type ListRemediationOptionsApiV1RemediationOptionsGetResponse = ListRemediationOptionsApiV1RemediationOptionsGetResponses[keyof ListRemediationOptionsApiV1RemediationOptionsGetResponses];
+
+export type CreateRemediationOptionApiV1RemediationOptionsPostData = {
+    body: RemediationOptionCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/remediation-options';
+};
+
+export type CreateRemediationOptionApiV1RemediationOptionsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateRemediationOptionApiV1RemediationOptionsPostError = CreateRemediationOptionApiV1RemediationOptionsPostErrors[keyof CreateRemediationOptionApiV1RemediationOptionsPostErrors];
+
+export type CreateRemediationOptionApiV1RemediationOptionsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: RemediationOptionResponse;
+};
+
+export type CreateRemediationOptionApiV1RemediationOptionsPostResponse = CreateRemediationOptionApiV1RemediationOptionsPostResponses[keyof CreateRemediationOptionApiV1RemediationOptionsPostResponses];
 
 export type ListFreightAuditMarksApiV1FreightAuditMarksGetData = {
     body?: never;
