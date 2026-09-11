@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefHintField } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { listTedMarks, persistTedMark, tedWrite } from "@/lib/tender-ted-notices-api"
 
@@ -59,13 +59,11 @@ function TedSave(args: { organizationId: string | null }) {
           required
         />
       </label>
-      <p className="text-xs text-muted-foreground">source_ref: tenant:manual albo fixture://tender-ted-notice/…</p>
-      <input
-        aria-label="source_ref ogłoszenia TED"
-        className="h-9 max-w-lg rounded-md border bg-background px-2 font-mono text-xs"
+      <CatalogSourceRefHintField
+        hint="source_ref: tenant:manual albo fixture://tender-ted-notice/…"
+        ariaLabel="source_ref ogłoszenia TED"
         value={draft.originStamp}
-        onChange={(change) => setDraft({ ...draft, originStamp: change.target.value })}
-        required
+        onChange={(originStamp) => setDraft({ ...draft, originStamp })}
       />
       <Button type="submit" disabled={persist.isPending || !args.organizationId}>
         Zapisz ogłoszenie TED

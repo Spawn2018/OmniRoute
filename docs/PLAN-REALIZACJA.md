@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** leftover paper-form `source_ref` — tender-ted / award-review / bid-stance (Q-E1).
+**Następny:** leftover paper-form / label-form `source_ref` (Q-E1) albo wąski HITL z pinu.
 <!-- os-status:end -->
 
 ```mermaid

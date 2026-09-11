@@ -8,15 +8,15 @@
 
 
 
-**Ostatni plaster:** **295.0** `/refaktor` CatalogSourceRefHintField (paper-form #2)  
+**Ostatni plaster:** **296.0** `/refaktor` CatalogSourceRefHintField (paper-form #3 tender)  
 
 **Etap:** Refaktor  
 
 **Noc:** `/noc 17` do 2026-09-11T17:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).  
 
-**Następny:** leftover paper-form `source_ref` — tender-ted / award-review / bid-stance (Q-E1).  
+**Następny:** leftover paper-form / label-form `source_ref` (Q-E1) albo wąski HITL z pinu.  
 
-Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44/FourKites/Shippeo. Nie CI1 extract. Nie zgaduj 71–295.
+Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44/FourKites/Shippeo. Nie CI1 extract. Nie zgaduj 71–296.
 
 
 
@@ -36,5 +36,5 @@ Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow 
 
 
 
-**2026-09-11:** **295.0** zamknięty — lane-pattern / monitoring / tender-carbon na HintField. Następne = `/refaktor` tender paper-form.
+**2026-09-11:** **296.0** zamknięty — TED / award-review / bid-stance na HintField.
 

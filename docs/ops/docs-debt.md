@@ -1,4 +1,5 @@
-- **295.0 leftover:** paper-form tender-ted / award-review / bid-stance / prospect…; label-form circle/lane-km. 295.0 = HintField na lane-pattern/monitoring/tender-carbon.
+- **296.0 leftover:** paper-form pozostałe + label-form circle/lane-km/plan-snapshot. 296.0 = HintField na TED/award/bid-stance.
+- **295.0 leftover:** paper-form tender DONE częściowo 296.0. Zostaje inne paper-form / label-form. 295.0 = HintField na lane/monitoring/carbon.
 - **294.0 leftover:** live p44 / FourKites / Shippeo HTTP (TO_VERIFY umowa); „drugi vendor jako prawda” live; CT8 AIS; U1 masowy; wspólny SELECT; CT2. 294.0 = tokeny `fourkites`|`shippeo` na istniejącej tabeli.
 - **293.0 leftover:** paper-form DONE częściowo 295.0 (lane/monitoring/carbon). Zostaje tender-* reszta + label-form. 293.0 = HintField na cash/kreptd/party-doc.
 - **292.0 leftover:** paper-form DONE częściowo 293.0. Zostaje reszta paper-form + label-form HITL; `parse*` w `*-api.ts`; EXPLAIN `ix_resource_org_kind` lokalnie. 292.0 = `CatalogSourceRefField` na trzech formularzach.
