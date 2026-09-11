@@ -79,6 +79,10 @@ export const BUSINESS_LISTS = {
   timeToFixMark: { route: "/time-to-fix-marks", tableKey: "time_to_fix_mark" },
   whatIfMark: { route: "/what-if-marks", tableKey: "what_if_mark" },
   cabotageMark: { route: "/cabotage-marks", tableKey: "cabotage_mark" },
+  combinedTransportMark: {
+    route: "/combined-transport-marks",
+    tableKey: "combined_transport_mark",
+  },
   erpConnector: { route: "/erp-connectors", tableKey: "erp_connector" },
   idpConnector: { route: "/idp-connectors", tableKey: "idp_connector" },
   customerContract: { route: "/customer-contracts", tableKey: "customer_contract" },
@@ -252,6 +256,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/time-to-fix-marks",
   "/what-if-marks",
   "/cabotage-marks",
+  "/combined-transport-marks",
   "/erp-connectors",
   "/idp-connectors",
   "/customer-contracts",

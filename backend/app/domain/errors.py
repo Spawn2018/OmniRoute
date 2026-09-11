@@ -890,6 +890,10 @@ class InvalidCabotageMark(DomainError):
     """EXP2.11: HITL kabotaż — nie silnik / RTPD."""
 
 
+class InvalidCombinedTransportMark(DomainError):
+    """EXP2.12: HITL combined transport — nie silnik / Mobility Package."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

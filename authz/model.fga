@@ -118,6 +118,7 @@ type organization
     define can_manage_time_to_fix_marks: member
     define can_manage_what_if_marks: member
     define can_manage_cabotage_marks: member
+    define can_manage_combined_transport_marks: member
     define can_manage_freight_audit_marks: member
     define can_manage_collaboration_marks: member
     define can_manage_routing_guide_enforcements: member

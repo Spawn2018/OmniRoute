@@ -1691,6 +1691,50 @@ export type CollectiveInvoiceResponse = {
 };
 
 /**
+ * CombinedTransportMarkCreate
+ */
+export type CombinedTransportMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Regime Kind
+     */
+    regime_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CombinedTransportMarkResponse
+ */
+export type CombinedTransportMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Regime Kind
+     */
+    regime_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * CommodityCodeCreate
  */
 export type CommodityCodeCreate = {
@@ -19508,6 +19552,49 @@ export type CreateCabotageMarkApiV1CabotageMarksPostResponses = {
 };
 
 export type CreateCabotageMarkApiV1CabotageMarksPostResponse = CreateCabotageMarkApiV1CabotageMarksPostResponses[keyof CreateCabotageMarkApiV1CabotageMarksPostResponses];
+
+export type ListCombinedTransportMarksApiV1CombinedTransportMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/combined-transport-marks';
+};
+
+export type ListCombinedTransportMarksApiV1CombinedTransportMarksGetResponses = {
+    /**
+     * Response List Combined Transport Marks Api V1 Combined Transport Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<CombinedTransportMarkResponse>;
+};
+
+export type ListCombinedTransportMarksApiV1CombinedTransportMarksGetResponse = ListCombinedTransportMarksApiV1CombinedTransportMarksGetResponses[keyof ListCombinedTransportMarksApiV1CombinedTransportMarksGetResponses];
+
+export type CreateCombinedTransportMarkApiV1CombinedTransportMarksPostData = {
+    body: CombinedTransportMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/combined-transport-marks';
+};
+
+export type CreateCombinedTransportMarkApiV1CombinedTransportMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCombinedTransportMarkApiV1CombinedTransportMarksPostError = CreateCombinedTransportMarkApiV1CombinedTransportMarksPostErrors[keyof CreateCombinedTransportMarkApiV1CombinedTransportMarksPostErrors];
+
+export type CreateCombinedTransportMarkApiV1CombinedTransportMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CombinedTransportMarkResponse;
+};
+
+export type CreateCombinedTransportMarkApiV1CombinedTransportMarksPostResponse = CreateCombinedTransportMarkApiV1CombinedTransportMarksPostResponses[keyof CreateCombinedTransportMarkApiV1CombinedTransportMarksPostResponses];
 
 export type HealthHealthGetData = {
     body?: never;

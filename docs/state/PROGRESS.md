@@ -2,6 +2,7 @@
 
 | Data | Plaster | Moduł | Opis |
 |---|---|---|---|
+| 2026-09-12 | 349.0 | EXP2.12 combined_transport_mark HITL | 2026-09-12 | PRZESZŁO | N/A | N/A | OK | OK | 5–15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-12 | 348.0 | EXP2.11 cabotage_mark HITL | 2026-09-12 | PRZESZŁO | N/A | N/A | OK | OK | 5–15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-12 | 347.0 | EXP2.10 what_if_mark HITL | 2026-09-12 | PRZESZŁO | N/A | N/A | OK | OK | 5–15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-11 | 346.0 | EXP2.9 time_to_fix_mark HITL | 2026-09-12 | PRZESZŁO | N/A | N/A | OK | OK | 5–15 | PRZESZŁO | N/A | N/A | PRZESZŁO |

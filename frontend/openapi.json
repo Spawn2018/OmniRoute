@@ -16000,6 +16000,80 @@
         ]
       }
     },
+    "/api/v1/combined-transport-marks": {
+      "get": {
+        "tags": [
+          "combined-transport-marks"
+        ],
+        "summary": "List Combined Transport Marks",
+        "operationId": "list_combined_transport_marks_api_v1_combined_transport_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CombinedTransportMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Combined Transport Marks Api V1 Combined Transport Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "combined-transport-marks"
+        ],
+        "summary": "Create Combined Transport Mark",
+        "operationId": "create_combined_transport_mark_api_v1_combined_transport_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CombinedTransportMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CombinedTransportMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/health": {
       "get": {
         "summary": "Health",
@@ -18670,6 +18744,65 @@
           "source_ref"
         ],
         "title": "CollectiveInvoiceResponse"
+      },
+      "CombinedTransportMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "regime_kind": {
+            "type": "string",
+            "title": "Regime Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "regime_kind",
+          "source_ref"
+        ],
+        "title": "CombinedTransportMarkCreate"
+      },
+      "CombinedTransportMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "regime_kind": {
+            "type": "string",
+            "title": "Regime Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "regime_kind",
+          "source_ref"
+        ],
+        "title": "CombinedTransportMarkResponse"
       },
       "CommodityCodeCreate": {
         "properties": {

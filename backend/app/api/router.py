@@ -27,6 +27,7 @@ from app.api import (
     cod_instructions,
     collaboration_marks,
     collective_invoices,
+    combined_transport_marks,
     commodity_codes,
     company_marks,
     consignments,
@@ -331,6 +332,7 @@ api_router.include_router(terminals.router)
 api_router.include_router(time_to_fix_marks.router)
 api_router.include_router(what_if_marks.router)
 api_router.include_router(cabotage_marks.router)
+api_router.include_router(combined_transport_marks.router)
 
 
 @api_router.api_route(

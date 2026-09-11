@@ -35,6 +35,7 @@ import { Route as ClauseNoticesRouteImport } from './routes/clause-notices'
 import { Route as CmmsMarksRouteImport } from './routes/cmms-marks'
 import { Route as CodRouteImport } from './routes/cod'
 import { Route as CollaborationMarksRouteImport } from './routes/collaboration-marks'
+import { Route as CombinedTransportMarksRouteImport } from './routes/combined-transport-marks'
 import { Route as CommodityCodesRouteImport } from './routes/commodity-codes'
 import { Route as CompanyMarksRouteImport } from './routes/company-marks'
 import { Route as ConsignmentsRouteImport } from './routes/consignments'
@@ -298,6 +299,11 @@ const CodRoute = CodRouteImport.update({
 const CollaborationMarksRoute = CollaborationMarksRouteImport.update({
   id: '/collaboration-marks',
   path: '/collaboration-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CombinedTransportMarksRoute = CombinedTransportMarksRouteImport.update({
+  id: '/combined-transport-marks',
+  path: '/combined-transport-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CommodityCodesRoute = CommodityCodesRouteImport.update({
@@ -999,6 +1005,7 @@ export interface FileRoutesByFullPath {
   '/cmms-marks': typeof CmmsMarksRoute
   '/cod': typeof CodRoute
   '/collaboration-marks': typeof CollaborationMarksRoute
+  '/combined-transport-marks': typeof CombinedTransportMarksRoute
   '/commodity-codes': typeof CommodityCodesRoute
   '/company-marks': typeof CompanyMarksRoute
   '/consignments': typeof ConsignmentsRoute
@@ -1161,6 +1168,7 @@ export interface FileRoutesByTo {
   '/cmms-marks': typeof CmmsMarksRoute
   '/cod': typeof CodRoute
   '/collaboration-marks': typeof CollaborationMarksRoute
+  '/combined-transport-marks': typeof CombinedTransportMarksRoute
   '/commodity-codes': typeof CommodityCodesRoute
   '/company-marks': typeof CompanyMarksRoute
   '/consignments': typeof ConsignmentsRoute
@@ -1324,6 +1332,7 @@ export interface FileRoutesById {
   '/cmms-marks': typeof CmmsMarksRoute
   '/cod': typeof CodRoute
   '/collaboration-marks': typeof CollaborationMarksRoute
+  '/combined-transport-marks': typeof CombinedTransportMarksRoute
   '/commodity-codes': typeof CommodityCodesRoute
   '/company-marks': typeof CompanyMarksRoute
   '/consignments': typeof ConsignmentsRoute
@@ -1488,6 +1497,7 @@ export interface FileRouteTypes {
     | '/cmms-marks'
     | '/cod'
     | '/collaboration-marks'
+    | '/combined-transport-marks'
     | '/commodity-codes'
     | '/company-marks'
     | '/consignments'
@@ -1650,6 +1660,7 @@ export interface FileRouteTypes {
     | '/cmms-marks'
     | '/cod'
     | '/collaboration-marks'
+    | '/combined-transport-marks'
     | '/commodity-codes'
     | '/company-marks'
     | '/consignments'
@@ -1812,6 +1823,7 @@ export interface FileRouteTypes {
     | '/cmms-marks'
     | '/cod'
     | '/collaboration-marks'
+    | '/combined-transport-marks'
     | '/commodity-codes'
     | '/company-marks'
     | '/consignments'
@@ -1975,6 +1987,7 @@ export interface RootRouteChildren {
   CmmsMarksRoute: typeof CmmsMarksRoute
   CodRoute: typeof CodRoute
   CollaborationMarksRoute: typeof CollaborationMarksRoute
+  CombinedTransportMarksRoute: typeof CombinedTransportMarksRoute
   CommodityCodesRoute: typeof CommodityCodesRoute
   CompanyMarksRoute: typeof CompanyMarksRoute
   ConsignmentsRoute: typeof ConsignmentsRoute
@@ -2293,6 +2306,13 @@ declare module '@tanstack/react-router' {
       path: '/collaboration-marks'
       fullPath: '/collaboration-marks'
       preLoaderRoute: typeof CollaborationMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/combined-transport-marks': {
+      id: '/combined-transport-marks'
+      path: '/combined-transport-marks'
+      fullPath: '/combined-transport-marks'
+      preLoaderRoute: typeof CombinedTransportMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/commodity-codes': {
@@ -3263,6 +3283,7 @@ const rootRouteChildren: RootRouteChildren = {
   CmmsMarksRoute: CmmsMarksRoute,
   CodRoute: CodRoute,
   CollaborationMarksRoute: CollaborationMarksRoute,
+  CombinedTransportMarksRoute: CombinedTransportMarksRoute,
   CommodityCodesRoute: CommodityCodesRoute,
   CompanyMarksRoute: CompanyMarksRoute,
   ConsignmentsRoute: ConsignmentsRoute,
