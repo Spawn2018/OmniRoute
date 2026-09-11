@@ -5986,6 +5986,80 @@
         ]
       }
     },
+    "/api/v1/lc-checklists": {
+      "get": {
+        "tags": [
+          "lc-checklists"
+        ],
+        "summary": "List Lc Checklists",
+        "operationId": "list_lc_checklists_api_v1_lc_checklists_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/LcChecklistResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Lc Checklists Api V1 Lc Checklists Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "lc-checklists"
+        ],
+        "summary": "Create Lc Checklist",
+        "operationId": "create_lc_checklist_api_v1_lc_checklists_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LcChecklistCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LcChecklistResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/circle-sims": {
       "get": {
         "tags": [
@@ -20836,6 +20910,65 @@
           "destination_port_id"
         ],
         "title": "LaneScorecardUpsert"
+      },
+      "LcChecklistCreate": {
+        "properties": {
+          "checklist_code": {
+            "type": "string",
+            "title": "Checklist Code"
+          },
+          "status_kind": {
+            "type": "string",
+            "title": "Status Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "checklist_code",
+          "status_kind",
+          "source_ref"
+        ],
+        "title": "LcChecklistCreate"
+      },
+      "LcChecklistResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "checklist_code": {
+            "type": "string",
+            "title": "Checklist Code"
+          },
+          "status_kind": {
+            "type": "string",
+            "title": "Status Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "checklist_code",
+          "status_kind",
+          "source_ref"
+        ],
+        "title": "LcChecklistResponse"
       },
       "LocalChargeCreate": {
         "properties": {

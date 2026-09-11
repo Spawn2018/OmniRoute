@@ -4109,6 +4109,50 @@ export type LaneScorecardUpsert = {
 };
 
 /**
+ * LcChecklistCreate
+ */
+export type LcChecklistCreate = {
+    /**
+     * Checklist Code
+     */
+    checklist_code: string;
+    /**
+     * Status Kind
+     */
+    status_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * LcChecklistResponse
+ */
+export type LcChecklistResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Checklist Code
+     */
+    checklist_code: string;
+    /**
+     * Status Kind
+     */
+    status_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * LocalChargeCreate
  */
 export type LocalChargeCreate = {
@@ -12621,6 +12665,49 @@ export type CreateLaneKmApiV1LaneKmsPostResponses = {
 };
 
 export type CreateLaneKmApiV1LaneKmsPostResponse = CreateLaneKmApiV1LaneKmsPostResponses[keyof CreateLaneKmApiV1LaneKmsPostResponses];
+
+export type ListLcChecklistsApiV1LcChecklistsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/lc-checklists';
+};
+
+export type ListLcChecklistsApiV1LcChecklistsGetResponses = {
+    /**
+     * Response List Lc Checklists Api V1 Lc Checklists Get
+     *
+     * Successful Response
+     */
+    200: Array<LcChecklistResponse>;
+};
+
+export type ListLcChecklistsApiV1LcChecklistsGetResponse = ListLcChecklistsApiV1LcChecklistsGetResponses[keyof ListLcChecklistsApiV1LcChecklistsGetResponses];
+
+export type CreateLcChecklistApiV1LcChecklistsPostData = {
+    body: LcChecklistCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/lc-checklists';
+};
+
+export type CreateLcChecklistApiV1LcChecklistsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateLcChecklistApiV1LcChecklistsPostError = CreateLcChecklistApiV1LcChecklistsPostErrors[keyof CreateLcChecklistApiV1LcChecklistsPostErrors];
+
+export type CreateLcChecklistApiV1LcChecklistsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: LcChecklistResponse;
+};
+
+export type CreateLcChecklistApiV1LcChecklistsPostResponse = CreateLcChecklistApiV1LcChecklistsPostResponses[keyof CreateLcChecklistApiV1LcChecklistsPostResponses];
 
 export type ListCircleSimsApiV1CircleSimsGetData = {
     body?: never;

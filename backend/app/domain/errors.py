@@ -790,6 +790,10 @@ class InvalidCrmLead(DomainError):
     """G1: HITL lead CRM — nie cold-send."""
 
 
+class InvalidLcChecklist(DomainError):
+    """G3: HITL checklista LC — nie bank due."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

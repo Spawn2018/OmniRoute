@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **324.0** G3 HITL `lc_checklist` (delta `docs/deltas/open/324.0-lc-checklist.md`).
+**Następny:** **G4** NCTS szkic (Plan). Pin po G3.
 <!-- os-status:end -->
 
 ```mermaid
@@ -717,7 +717,7 @@ Karta: [karty-pol-fala-g.md](analysis/karty-pol-fala-g.md). G2 wyżej.
 | ID | Co | Klej | Poza |
 |---|---|---|---|
 | G1 | CRM lead→szansa | 323.0 HITL katalog `crm_lead` (stage_kind); leftover opportunity/activity/dedup/X7 | cold auto-send |
-| G3 | LC checklista | 324.0 Plan HITL `lc_checklist` (status_kind); leftover bank/due/U5/I3 | bank live |
+| G3 | LC checklista | 324.0 HITL katalog `lc_checklist` (status_kind); leftover bank/due/U5/I3 | bank live |
 | G4 | NCTS T1/T2 szkic | C2 | teatr PUESC |
 | G5 | OOG / lashing / eskort | T1 | |
 | G6 | load plan OR (osie, bin) | po T2 | LLM-VRP |

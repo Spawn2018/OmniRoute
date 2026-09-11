@@ -117,6 +117,7 @@ from app.models.spend_mark import SpendMark  # noqa: F401
 from app.models.penalty_mark import PenaltyMark  # noqa: F401
 from app.models.intervention_outcome import InterventionOutcome  # noqa: F401
 from app.models.crm_lead import CrmLead  # noqa: F401
+from app.models.lc_checklist import LcChecklist  # noqa: F401
 from app.models.collaboration_mark import CollaborationMark  # noqa: F401
 from app.models.freight_audit_mark import FreightAuditMark  # noqa: F401
 from app.models.routing_guide import RoutingGuide  # noqa: F401

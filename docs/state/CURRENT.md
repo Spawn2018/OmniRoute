@@ -8,19 +8,19 @@
 
 
 
-**Ostatni plaster:** **323.0** G1 HITL `crm_lead`  
+**Ostatni plaster:** **324.0** G3 HITL `lc_checklist`  
 
-**Etap:** Plan (delta zaakceptowana `/noc`) — wolno `/plaster` **324.0**  
+**Etap:** Plan — wolno `/plan-modul` **G4**  
 
 **Noc:** `/noc 10` do 2026-09-12T10:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).  
 
-**Następny:** **324.0** G3 HITL `lc_checklist` (delta `docs/deltas/open/324.0-lc-checklist.md`).  
+**Następny:** **G4** NCTS szkic (Plan). Pin po G3.  
 
-Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44 · extract · CI5 kara SQL · wróżba punktowa · CI6 kwoty · S11 auto-send · EBITDA SQL · egzekucja 409 · MAE SQL · outcome SQL · crm_opportunity · activity · cold auto-send · bank stakeholder · presentation_due. Nie zgaduj 71–324.
+Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44 · extract · CI5 kara SQL · wróżba punktowa · CI6 kwoty · S11 auto-send · EBITDA SQL · egzekucja 409 · MAE SQL · outcome SQL · crm_opportunity · activity · cold auto-send · bank stakeholder · presentation_due · teatr PUESC. Nie zgaduj 71–324.
 
 
 
-**Spec (jedyna na sesję):** [docs/deltas/open/324.0-lc-checklist.md](../deltas/open/324.0-lc-checklist.md)
+**Spec (jedyna na sesję):** brak — najpierw `/plan-modul` G4.
 
 
 
@@ -36,4 +36,4 @@ Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow 
 
 
 
-**2026-09-11:** Delta **324.0** zaakceptowana (`/noc`) — HITL `lc_checklist` bez banku i due.
+**2026-09-11:** **324.0** zamknięty — HITL `lc_checklist` bez banku i due. Następny: Plan G4.

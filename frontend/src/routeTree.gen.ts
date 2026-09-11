@@ -66,6 +66,7 @@ import { Route as InvoicesRouteImport } from './routes/invoices'
 import { Route as KreptdLicencesRouteImport } from './routes/kreptd-licences'
 import { Route as LaneKmsRouteImport } from './routes/lane-kms'
 import { Route as LanePatternsRouteImport } from './routes/lane-patterns'
+import { Route as LcChecklistsRouteImport } from './routes/lc-checklists'
 import { Route as LclRouteImport } from './routes/lcl'
 import { Route as LocalChargesRouteImport } from './routes/local-charges'
 import { Route as LocationsRouteImport } from './routes/locations'
@@ -428,6 +429,11 @@ const LaneKmsRoute = LaneKmsRouteImport.update({
 const LanePatternsRoute = LanePatternsRouteImport.update({
   id: '/lane-patterns',
   path: '/lane-patterns',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LcChecklistsRoute = LcChecklistsRouteImport.update({
+  id: '/lc-checklists',
+  path: '/lc-checklists',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LclRoute = LclRouteImport.update({
@@ -880,6 +886,7 @@ export interface FileRoutesByFullPath {
   '/kreptd-licences': typeof KreptdLicencesRoute
   '/lane-kms': typeof LaneKmsRoute
   '/lane-patterns': typeof LanePatternsRoute
+  '/lc-checklists': typeof LcChecklistsRoute
   '/lcl': typeof LclRoute
   '/local-charges': typeof LocalChargesRoute
   '/locations': typeof LocationsRoute
@@ -1017,6 +1024,7 @@ export interface FileRoutesByTo {
   '/kreptd-licences': typeof KreptdLicencesRoute
   '/lane-kms': typeof LaneKmsRoute
   '/lane-patterns': typeof LanePatternsRoute
+  '/lc-checklists': typeof LcChecklistsRoute
   '/lcl': typeof LclRoute
   '/local-charges': typeof LocalChargesRoute
   '/locations': typeof LocationsRoute
@@ -1155,6 +1163,7 @@ export interface FileRoutesById {
   '/kreptd-licences': typeof KreptdLicencesRoute
   '/lane-kms': typeof LaneKmsRoute
   '/lane-patterns': typeof LanePatternsRoute
+  '/lc-checklists': typeof LcChecklistsRoute
   '/lcl': typeof LclRoute
   '/local-charges': typeof LocalChargesRoute
   '/locations': typeof LocationsRoute
@@ -1294,6 +1303,7 @@ export interface FileRouteTypes {
     | '/kreptd-licences'
     | '/lane-kms'
     | '/lane-patterns'
+    | '/lc-checklists'
     | '/lcl'
     | '/local-charges'
     | '/locations'
@@ -1431,6 +1441,7 @@ export interface FileRouteTypes {
     | '/kreptd-licences'
     | '/lane-kms'
     | '/lane-patterns'
+    | '/lc-checklists'
     | '/lcl'
     | '/local-charges'
     | '/locations'
@@ -1568,6 +1579,7 @@ export interface FileRouteTypes {
     | '/kreptd-licences'
     | '/lane-kms'
     | '/lane-patterns'
+    | '/lc-checklists'
     | '/lcl'
     | '/local-charges'
     | '/locations'
@@ -1706,6 +1718,7 @@ export interface RootRouteChildren {
   KreptdLicencesRoute: typeof KreptdLicencesRoute
   LaneKmsRoute: typeof LaneKmsRoute
   LanePatternsRoute: typeof LanePatternsRoute
+  LcChecklistsRoute: typeof LcChecklistsRoute
   LclRoute: typeof LclRoute
   LocalChargesRoute: typeof LocalChargesRoute
   LocationsRoute: typeof LocationsRoute
@@ -2185,6 +2198,13 @@ declare module '@tanstack/react-router' {
       path: '/lane-patterns'
       fullPath: '/lane-patterns'
       preLoaderRoute: typeof LanePatternsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lc-checklists': {
+      id: '/lc-checklists'
+      path: '/lc-checklists'
+      fullPath: '/lc-checklists'
+      preLoaderRoute: typeof LcChecklistsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lcl': {
@@ -2794,6 +2814,7 @@ const rootRouteChildren: RootRouteChildren = {
   KreptdLicencesRoute: KreptdLicencesRoute,
   LaneKmsRoute: LaneKmsRoute,
   LanePatternsRoute: LanePatternsRoute,
+  LcChecklistsRoute: LcChecklistsRoute,
   LclRoute: LclRoute,
   LocalChargesRoute: LocalChargesRoute,
   LocationsRoute: LocationsRoute,
