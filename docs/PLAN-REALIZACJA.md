@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **335.0** G15 yard / waga / EIR (węższa z kolejki; delta do utworzenia).
+**Następny:** **336.0** G16 SaaS billing Omni (węższa z kolejki; delta do utworzenia).
 <!-- os-status:end -->
 
 ```mermaid
@@ -728,7 +728,7 @@ Karta: [karty-pol-fala-g.md](analysis/karty-pol-fala-g.md). G2 wyżej.
 | G12 | ICS2/CBAM/EUDR/eFTI | 332.0 HITL katalog `filing_scheme_mark` (scheme_kind); leftover filer/deadline/C7 | „SENT-UE” |
 | G13 | EDI parser → draft | 333.0 HITL katalog `edi_map_mark` (map_kind); leftover parser/silent write | silent write |
 | G14 | AEO dossier | 334.0 HITL katalog `aeo_dossier_mark` (dossier_kind); leftover zestaw party_document / C8 | |
-| G15 | yard / waga / EIR | D3+T3 | |
+| G15 | yard / waga / EIR | 335.0 HITL katalog `yard_mark` (yard_kind); leftover live yard / WMS / kg / klej D3+T3 | |
 | G16 | SaaS billing Omni | S53 | |
 | **EXP7.2** | poll CEIDG/KRS/VIES/biała lista → notice | M-10 | scrape |
 

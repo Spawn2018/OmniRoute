@@ -9611,6 +9611,50 @@ export type WorkingDayResponse = {
 };
 
 /**
+ * YardMarkCreate
+ */
+export type YardMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Yard Kind
+     */
+    yard_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * YardMarkResponse
+ */
+export type YardMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Yard Kind
+     */
+    yard_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * ZoneCreate
  */
 export type ZoneCreate = {
@@ -15586,6 +15630,49 @@ export type CreateAeoDossierMarkApiV1AeoDossierMarksPostResponses = {
 };
 
 export type CreateAeoDossierMarkApiV1AeoDossierMarksPostResponse = CreateAeoDossierMarkApiV1AeoDossierMarksPostResponses[keyof CreateAeoDossierMarkApiV1AeoDossierMarksPostResponses];
+
+export type ListYardMarksApiV1YardMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/yard-marks';
+};
+
+export type ListYardMarksApiV1YardMarksGetResponses = {
+    /**
+     * Response List Yard Marks Api V1 Yard Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<YardMarkResponse>;
+};
+
+export type ListYardMarksApiV1YardMarksGetResponse = ListYardMarksApiV1YardMarksGetResponses[keyof ListYardMarksApiV1YardMarksGetResponses];
+
+export type CreateYardMarkApiV1YardMarksPostData = {
+    body: YardMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/yard-marks';
+};
+
+export type CreateYardMarkApiV1YardMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateYardMarkApiV1YardMarksPostError = CreateYardMarkApiV1YardMarksPostErrors[keyof CreateYardMarkApiV1YardMarksPostErrors];
+
+export type CreateYardMarkApiV1YardMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: YardMarkResponse;
+};
+
+export type CreateYardMarkApiV1YardMarksPostResponse = CreateYardMarkApiV1YardMarksPostResponses[keyof CreateYardMarkApiV1YardMarksPostResponses];
 
 export type ListAsnsApiV1AsnsGetData = {
     body?: never;

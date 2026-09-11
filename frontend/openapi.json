@@ -10262,6 +10262,80 @@
         ]
       }
     },
+    "/api/v1/yard-marks": {
+      "get": {
+        "tags": [
+          "yard-marks"
+        ],
+        "summary": "List Yard Marks",
+        "operationId": "list_yard_marks_api_v1_yard_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/YardMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Yard Marks Api V1 Yard Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "yard-marks"
+        ],
+        "summary": "Create Yard Mark",
+        "operationId": "create_yard_mark_api_v1_yard_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/YardMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/YardMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/asns": {
       "get": {
         "tags": [
@@ -30503,6 +30577,65 @@
           "is_working_day"
         ],
         "title": "WorkingDayResponse"
+      },
+      "YardMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "yard_kind": {
+            "type": "string",
+            "title": "Yard Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "yard_kind",
+          "source_ref"
+        ],
+        "title": "YardMarkCreate"
+      },
+      "YardMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "yard_kind": {
+            "type": "string",
+            "title": "Yard Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "yard_kind",
+          "source_ref"
+        ],
+        "title": "YardMarkResponse"
       },
       "ZoneCreate": {
         "properties": {

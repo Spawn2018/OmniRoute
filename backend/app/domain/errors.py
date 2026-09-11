@@ -834,6 +834,10 @@ class InvalidAeoDossierMark(DomainError):
     """G14: HITL dossier AEO — nie party_document."""
 
 
+class InvalidYardMark(DomainError):
+    """G15: HITL yard/waga/EIR — nie live yard."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 
