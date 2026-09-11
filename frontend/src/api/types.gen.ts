@@ -6446,6 +6446,14 @@ export type ShipmentCreate = {
      * Guide Code
      */
     guide_code?: string | null;
+    /**
+     * Plant Label
+     */
+    plant_label?: string | null;
+    /**
+     * Carrier Label
+     */
+    carrier_label?: string | null;
 };
 
 /**
@@ -6676,6 +6684,14 @@ export type ShipmentResponse = {
      * Guide Code
      */
     guide_code: string | null;
+    /**
+     * Plant Label
+     */
+    plant_label: string | null;
+    /**
+     * Carrier Label
+     */
+    carrier_label: string | null;
     /**
      * Status
      */

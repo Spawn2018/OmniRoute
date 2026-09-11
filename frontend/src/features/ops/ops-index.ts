@@ -899,6 +899,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "287.0": "/shipments",
   "288.0": "/routing-guide-matches",
   "289.0": "/asns",
+  "290.0": "/shipments",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

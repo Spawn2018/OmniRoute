@@ -1,5 +1,6 @@
-- **289.0 leftover:** matching na shipment; wspólny SELECT; auto shipment; CT2; CT5/CT8 live. 289.0 = lane/mode na ASN. Lock: `SHIPPED_CHARGE_ROUTES["289.0"]`.
-- **288.0 leftover:** silnik matching lane/mode na POST; wspólny SELECT; auto shipment; CT2; CT5/CT8 live. 288.0 = katalog trybu. Lock: `SHIPPED_CHARGE_ROUTES["288.0"]`.
+- **290.0 leftover:** wspólny SELECT; auto shipment; CT2; CT5/CT8 live; live EDI. 290.0 = lane/mode na shipment. Lock: `SHIPPED_CHARGE_ROUTES["290.0"]`.
+- **289.0 leftover:** matching na shipment DONE 290.0. Zostaje wspólny SELECT; auto shipment; CT2; CT5/CT8 live. 289.0 = lane/mode na ASN. Lock: `SHIPPED_CHARGE_ROUTES["289.0"]`.
+- **288.0 leftover:** silnik matching lane/mode na POST DONE 289–290. Zostaje wspólny SELECT; auto shipment; CT2; CT5/CT8 live. 288.0 = katalog trybu. Lock: `SHIPPED_CHARGE_ROUTES["288.0"]`.
 # Dług techniczny — żywy rejestr
 
 Aktualizuj **po każdym plasterze** (pętla `docs/ops/post-plaster.md`). Nie dumpuj audytu od nowa.

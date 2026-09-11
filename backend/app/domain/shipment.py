@@ -66,6 +66,20 @@ def require_shipment_ref(raw: object) -> str | None:
 
 _PARENT_KINDS = frozenset({"drayage", "oncarriage", "leg_subcontract", "other"})
 _SNAKE = re.compile(r"^[a-z][a-z0-9_]{1,31}$")
+_MAX_LABEL = 128
+
+
+def require_optional_label(raw: object, token: str) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidShipment(f"{token} musi być tekstem")
+    label = raw.strip()
+    if label == "":
+        return None
+    if len(label) > _MAX_LABEL:
+        raise InvalidShipment(f"{token} za długi")
+    return label
 
 
 def require_guide_code(raw: object) -> str | None:

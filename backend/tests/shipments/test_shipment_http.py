@@ -61,6 +61,8 @@ class StubShipmentService:
         parent_shipment_id: object = None,
         relation_kind: object = None,
         guide_code: object = None,
+        plant_label: object = None,
+        carrier_label: object = None,
     ) -> Shipment:
         if any(row.quotation_id == quotation_id for row in self.rows):
             raise ShipmentConflict("to zlecenie już istnieje dla tej wyceny")
@@ -74,6 +76,12 @@ class StubShipmentService:
         if type(guide_code) is str:
             stripped = guide_code.strip()
             token = stripped or None
+        plant = None
+        if type(plant_label) is str:
+            plant = plant_label.strip() or None
+        carrier = None
+        if type(carrier_label) is str:
+            carrier = carrier_label.strip() or None
         row = Shipment(
             id=row_id,
             organization_id=organization_id,
@@ -84,6 +92,8 @@ class StubShipmentService:
             parent_shipment_id=parent,
             relation_kind=kind,
             guide_code=token,
+            plant_label=plant,
+            carrier_label=carrier,
             status="draft",
             created_by=user_id,
         )
@@ -94,9 +104,22 @@ class StubShipmentService:
 class _GuideDesk:
     def __init__(self, codes: list[str]) -> None:
         self._codes = codes
+        self._lanes: dict[str, str | None] = {}
+        self._modes: dict[str, str | None] = {}
 
     async def list_guides(self) -> list[object]:
-        return [type("G", (), {"guide_code": code})() for code in self._codes]
+        return [
+            type(
+                "G",
+                (),
+                {
+                    "guide_code": code,
+                    "lane_label": self._lanes.get(code),
+                    "mode_label": self._modes.get(code),
+                },
+            )()
+            for code in self._codes
+        ]
 
 
 class _EnforcementDesk:
@@ -105,6 +128,14 @@ class _EnforcementDesk:
 
     async def list_marks(self) -> list[object]:
         return [type("E", (), {"enforcement_kind": kind})() for kind in self._kinds]
+
+
+class _MatchDesk:
+    def __init__(self, kinds: list[str]) -> None:
+        self._kinds = kinds
+
+    async def list_marks(self) -> list[object]:
+        return [type("M", (), {"match_kind": kind})() for kind in self._kinds]
 
 
 def _quote(*, party_id: UUID | None) -> Quotation:
@@ -128,6 +159,7 @@ def catalog_client(monkeypatch: pytest.MonkeyPatch) -> object:
     shipments = StubShipmentService(object())
     guides = _GuideDesk([])
     enforcements = _EnforcementDesk([])
+    matches = _MatchDesk([])
 
     def _quotes(_session: object) -> StubQuotationService:
         return quotes
@@ -147,16 +179,20 @@ def catalog_client(monkeypatch: pytest.MonkeyPatch) -> object:
         "app.api.shipments.RoutingGuideEnforcementService",
         lambda _s: enforcements,
     )
+    monkeypatch.setattr(
+        "app.api.shipments.RoutingGuideMatchService",
+        lambda _s: matches,
+    )
     quotes.row = _quote(party_id=uuid4())
     set_authz_checker(AllowAllAuthz())
     app.dependency_overrides[require_tenant_session] = _fake_tenant_session
-    yield TestClient(app), quotes, shipments, guides, enforcements
+    yield TestClient(app), quotes, shipments, guides, enforcements, matches
     app.dependency_overrides.clear()
     set_authz_checker(None)
 
 
 def test_http_create_and_list_shipment(catalog_client: object) -> None:
-    client, quotes, _shipments, _guides, _enf = catalog_client
+    client, quotes, _shipments, _guides, _enf, _matches = catalog_client
     assert quotes.row is not None
     org_id = uuid4()
     headers = bearer_auth_headers(organization_id=org_id)
@@ -189,7 +225,7 @@ def test_http_create_and_list_shipment(catalog_client: object) -> None:
 
 
 def test_http_create_shipment_unknown_quotation_is_404(catalog_client: object) -> None:
-    client, _quotes, _shipments, _guides, _enf = catalog_client
+    client, _quotes, _shipments, _guides, _enf, _matches = catalog_client
     response = client.post(
         "/api/v1/shipments",
         headers=bearer_auth_headers(),
@@ -202,7 +238,7 @@ def test_http_create_shipment_unknown_quotation_is_404(catalog_client: object) -
 
 
 def test_http_create_shipment_without_party_is_400(catalog_client: object) -> None:
-    client, quotes, _shipments, _guides, _enf = catalog_client
+    client, quotes, _shipments, _guides, _enf, _matches = catalog_client
     quotes.row = _quote(party_id=None)
     response = client.post(
         "/api/v1/shipments",
@@ -217,7 +253,7 @@ def test_http_create_shipment_without_party_is_400(catalog_client: object) -> No
 
 
 def test_http_duplicate_shipment_for_quotation_is_conflict(catalog_client: object) -> None:
-    client, quotes, _shipments, _guides, _enf = catalog_client
+    client, quotes, _shipments, _guides, _enf, _matches = catalog_client
     assert quotes.row is not None
     headers = bearer_auth_headers()
     payload = {
@@ -232,7 +268,7 @@ def test_http_duplicate_shipment_for_quotation_is_conflict(catalog_client: objec
 
 
 def test_http_create_shipment_with_ref(catalog_client: object) -> None:
-    client, quotes, _shipments, _guides, _enf = catalog_client
+    client, quotes, _shipments, _guides, _enf, _matches = catalog_client
     assert quotes.row is not None
     created = client.post(
         "/api/v1/shipments",
@@ -249,7 +285,7 @@ def test_http_create_shipment_with_ref(catalog_client: object) -> None:
 
 
 def test_http_create_shipment_bad_ref_is_400(catalog_client: object) -> None:
-    client, quotes, _shipments, _guides, _enf = catalog_client
+    client, quotes, _shipments, _guides, _enf, _matches = catalog_client
     assert quotes.row is not None
     numbered = client.post(
         "/api/v1/shipments",
@@ -276,7 +312,7 @@ def test_http_create_shipment_bad_ref_is_400(catalog_client: object) -> None:
 
 
 def test_http_create_shipment_with_parent(catalog_client: object) -> None:
-    client, quotes, _shipments, _guides, _enf = catalog_client
+    client, quotes, _shipments, _guides, _enf, _matches = catalog_client
     assert quotes.row is not None
     parent_id = uuid4()
     created = client.post(
@@ -298,7 +334,7 @@ def test_http_create_shipment_with_parent(catalog_client: object) -> None:
 
 
 def test_http_create_shipment_parent_without_kind_is_400(catalog_client: object) -> None:
-    client, quotes, _shipments, _guides, _enf = catalog_client
+    client, quotes, _shipments, _guides, _enf, _matches = catalog_client
     assert quotes.row is not None
     response = client.post(
         "/api/v1/shipments",
@@ -314,7 +350,7 @@ def test_http_create_shipment_parent_without_kind_is_400(catalog_client: object)
 
 
 def test_http_create_shipment_kind_without_parent_is_400(catalog_client: object) -> None:
-    client, quotes, _shipments, _guides, _enf = catalog_client
+    client, quotes, _shipments, _guides, _enf, _matches = catalog_client
     assert quotes.row is not None
     response = client.post(
         "/api/v1/shipments",
@@ -330,7 +366,7 @@ def test_http_create_shipment_kind_without_parent_is_400(catalog_client: object)
 
 
 def test_http_create_shipment_bad_kind_is_400(catalog_client: object) -> None:
-    client, quotes, _shipments, _guides, _enf = catalog_client
+    client, quotes, _shipments, _guides, _enf, _matches = catalog_client
     assert quotes.row is not None
     response = client.post(
         "/api/v1/shipments",
@@ -347,7 +383,7 @@ def test_http_create_shipment_bad_kind_is_400(catalog_client: object) -> None:
 
 
 def test_http_block_409_rejects_shipment_without_guide(catalog_client: object) -> None:
-    client, quotes, _shipments, guides, enforcements = catalog_client
+    client, quotes, _shipments, guides, enforcements, _matches = catalog_client
     assert quotes.row is not None
     guides._codes = ["lane_pl_de"]
     enforcements._kinds = ["block_409"]
@@ -364,7 +400,7 @@ def test_http_block_409_rejects_shipment_without_guide(catalog_client: object) -
 
 
 def test_http_block_409_accepts_known_guide(catalog_client: object) -> None:
-    client, quotes, _shipments, guides, enforcements = catalog_client
+    client, quotes, _shipments, guides, enforcements, _matches = catalog_client
     assert quotes.row is not None
     guides._codes = ["lane_pl_de"]
     enforcements._kinds = ["block_409"]
@@ -379,3 +415,45 @@ def test_http_block_409_accepts_known_guide(catalog_client: object) -> None:
     )
     assert created.status_code == 201
     assert created.json()["guide_code"] == "lane_pl_de"
+
+
+def test_http_rejects_shipment_when_lane_match_fails(catalog_client: object) -> None:
+    client, quotes, _shipments, guides, enforcements, matches = catalog_client
+    assert quotes.row is not None
+    guides._codes = ["lane_pl_de"]
+    guides._lanes = {"lane_pl_de": "pl-de"}
+    enforcements._kinds = ["block_409"]
+    matches._kinds = ["lane_label"]
+    response = client.post(
+        "/api/v1/shipments",
+        headers=bearer_auth_headers(),
+        json={
+            "quotation_id": str(quotes.row.id),
+            "source_ref": "fixture://shipment/lane-bad",
+            "guide_code": "lane_pl_de",
+            "plant_label": "wrong",
+        },
+    )
+    assert response.status_code == 409
+    assert "plant_label" in response.json()["detail"]
+
+
+def test_http_accepts_shipment_when_lane_match_ok(catalog_client: object) -> None:
+    client, quotes, _shipments, guides, enforcements, matches = catalog_client
+    assert quotes.row is not None
+    guides._codes = ["lane_pl_de"]
+    guides._lanes = {"lane_pl_de": "Gdańsk"}
+    enforcements._kinds = ["block_409"]
+    matches._kinds = ["lane_label"]
+    created = client.post(
+        "/api/v1/shipments",
+        headers=bearer_auth_headers(),
+        json={
+            "quotation_id": str(quotes.row.id),
+            "source_ref": "fixture://shipment/lane-ok",
+            "guide_code": "lane_pl_de",
+            "plant_label": " gdańsk ",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["plant_label"] == "gdańsk"

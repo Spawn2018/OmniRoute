@@ -66,6 +66,14 @@ class Shipment(Base, TimestampMixin):
             "guide_code IS NULL OR guide_code ~ '^[a-z][a-z0-9_]{1,31}$'",
             name="ck_shipment_guide_code",
         ),
+        CheckConstraint(
+            "plant_label IS NULL OR char_length(btrim(plant_label)) BETWEEN 1 AND 128",
+            name="ck_shipment_plant_label",
+        ),
+        CheckConstraint(
+            "carrier_label IS NULL OR char_length(btrim(carrier_label)) BETWEEN 1 AND 128",
+            name="ck_shipment_carrier_label",
+        ),
         Index("ix_shipment_org_party", "organization_id", "party_id"),
         Index("ix_shipment_org_created", "organization_id", "created_at"),
         Index("ix_shipment_org_parent", "organization_id", "parent_shipment_id"),
@@ -90,4 +98,6 @@ class Shipment(Base, TimestampMixin):
     )
     relation_kind: Mapped[str | None] = mapped_column(String(32), nullable=True)
     guide_code: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    plant_label: Mapped[str | None] = mapped_column(String(128), nullable=True)
+    carrier_label: Mapped[str | None] = mapped_column(String(128), nullable=True)
     status: Mapped[str] = mapped_column(String(8), nullable=False)

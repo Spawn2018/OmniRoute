@@ -11,6 +11,8 @@ export type Shipment = {
   parent_shipment_id: string | null
   relation_kind: string | null
   guide_code: string | null
+  plant_label: string | null
+  carrier_label: string | null
   status: string
 }
 
@@ -34,6 +36,8 @@ export async function createShipment(input: {
   parent_shipment_id?: string | null
   relation_kind?: string | null
   guide_code?: string | null
+  plant_label?: string | null
+  carrier_label?: string | null
 }): Promise<Shipment> {
   const response = await fetch("/api/v1/shipments", {
     method: "POST",

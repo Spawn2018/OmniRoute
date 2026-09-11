@@ -6,11 +6,17 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import get_current_identity, require_permission, require_tenant_session
 from app.core.session_token import SessionIdentity
-from app.domain.routing_guide_gate import assert_asn_on_routing_guide
+from app.domain.routing_guide_gate import (
+    assert_asn_labels_on_routing_guide,
+    assert_asn_on_routing_guide,
+)
 from app.domain.shipment import require_party_on_quotation
 from app.services.quotations.quotation_service import QuotationService
 from app.services.routing_guide_enforcements.routing_guide_enforcement_service import (
     RoutingGuideEnforcementService,
+)
+from app.services.routing_guide_matches.routing_guide_match_service import (
+    RoutingGuideMatchService,
 )
 from app.services.routing_guides.routing_guide_service import RoutingGuideService
 from app.services.shipments.shipment_service import ShipmentService
@@ -27,6 +33,8 @@ class ShipmentCreate(BaseModel):
     parent_shipment_id: UUID | None = None
     relation_kind: str | None = None
     guide_code: str | None = None
+    plant_label: str | None = None
+    carrier_label: str | None = None
 
 
 class ShipmentResponse(BaseModel):
@@ -41,19 +49,24 @@ class ShipmentResponse(BaseModel):
     parent_shipment_id: UUID | None
     relation_kind: str | None
     guide_code: str | None
+    plant_label: str | None
+    carrier_label: str | None
     status: str
 
 
 async def _enforce_guide_if_blocking(
-    session: AsyncSession, guide_code: str | None
+    session: AsyncSession,
+    *,
+    guide_code: str | None,
+    plant_label: str | None,
+    carrier_label: str | None,
 ) -> None:
     kinds = {
         row.enforcement_kind
         for row in await RoutingGuideEnforcementService(session).list_marks()
     }
-    codes = {
-        row.guide_code for row in await RoutingGuideService(session).list_guides()
-    }
+    guides = await RoutingGuideService(session).list_guides()
+    codes = {row.guide_code for row in guides}
     token = guide_code.strip() if type(guide_code) is str else guide_code
     if type(token) is str and not token:
         token = None
@@ -61,6 +74,19 @@ async def _enforce_guide_if_blocking(
         guide_code=token,
         enforcement_kinds=kinds,
         known_guide_codes=codes,
+    )
+    match_kinds = {
+        row.match_kind
+        for row in await RoutingGuideMatchService(session).list_marks()
+    }
+    assert_asn_labels_on_routing_guide(
+        guide_code=token,
+        enforcement_kinds=kinds,
+        match_kinds=match_kinds,
+        plant_label=plant_label,
+        carrier_label=carrier_label,
+        guide_lane_by_code={row.guide_code: row.lane_label for row in guides},
+        guide_mode_by_code={row.guide_code: row.mode_label for row in guides},
     )
 
 
@@ -80,7 +106,12 @@ async def create_shipment(
     session: AsyncSession = Depends(require_tenant_session),
     identity: SessionIdentity = Depends(get_current_identity),
 ) -> ShipmentResponse:
-    await _enforce_guide_if_blocking(session, body.guide_code)
+    await _enforce_guide_if_blocking(
+        session,
+        guide_code=body.guide_code,
+        plant_label=body.plant_label,
+        carrier_label=body.carrier_label,
+    )
     quote = await QuotationService(session).get_quotation(body.quotation_id)
     row = await ShipmentService(session).create_shipment(
         organization_id=identity.organization_id,
@@ -92,6 +123,8 @@ async def create_shipment(
         parent_shipment_id=body.parent_shipment_id,
         relation_kind=body.relation_kind,
         guide_code=body.guide_code,
+        plant_label=body.plant_label,
+        carrier_label=body.carrier_label,
     )
     await session.commit()
     return ShipmentResponse.model_validate(row)

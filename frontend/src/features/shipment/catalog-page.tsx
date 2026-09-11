@@ -25,6 +25,8 @@ function ShipmentCreateForm(args: { organizationId: string | null }) {
   const [parentId, setParentId] = useState("")
   const [relationKind, setRelationKind] = useState("")
   const [guideCode, setGuideCode] = useState("")
+  const [plantLabel, setPlantLabel] = useState("")
+  const [carrierLabel, setCarrierLabel] = useState("")
   const save = useMutation({
     mutationFn: () =>
       createShipment({
@@ -34,6 +36,8 @@ function ShipmentCreateForm(args: { organizationId: string | null }) {
         parent_shipment_id: parentId.trim() === "" ? null : parentId.trim(),
         relation_kind: relationKind.trim() === "" ? null : relationKind.trim(),
         guide_code: guideCode.trim() === "" ? null : guideCode.trim(),
+        plant_label: plantLabel.trim() === "" ? null : plantLabel.trim(),
+        carrier_label: carrierLabel.trim() === "" ? null : carrierLabel.trim(),
       }),
     onSuccess: () => {
       setQuotationId("")
@@ -41,6 +45,8 @@ function ShipmentCreateForm(args: { organizationId: string | null }) {
       setParentId("")
       setRelationKind("")
       setGuideCode("")
+      setPlantLabel("")
+      setCarrierLabel("")
       void client.invalidateQueries({ queryKey: ["shipments", args.organizationId] })
     },
   })
@@ -77,6 +83,18 @@ function ShipmentCreateForm(args: { organizationId: string | null }) {
         placeholder="guide_code albo puste"
         value={guideCode}
         onChange={(event) => setGuideCode(event.target.value)}
+      />
+      <Input
+        aria-label="Etykieta zakładu plant_label"
+        placeholder="plant_label albo puste"
+        value={plantLabel}
+        onChange={(event) => setPlantLabel(event.target.value)}
+      />
+      <Input
+        aria-label="Etykieta przewoźnika carrier_label"
+        placeholder="carrier_label albo puste"
+        value={carrierLabel}
+        onChange={(event) => setCarrierLabel(event.target.value)}
       />
       <Button type="submit" disabled={save.isPending || !args.organizationId}>
         Zapisz zlecenie

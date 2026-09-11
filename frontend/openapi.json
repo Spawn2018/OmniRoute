@@ -23988,6 +23988,28 @@
               }
             ],
             "title": "Guide Code"
+          },
+          "plant_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Plant Label"
+          },
+          "carrier_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Carrier Label"
           }
         },
         "additionalProperties": false,
@@ -24354,6 +24376,28 @@
             ],
             "title": "Guide Code"
           },
+          "plant_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Plant Label"
+          },
+          "carrier_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Carrier Label"
+          },
           "status": {
             "type": "string",
             "title": "Status"
@@ -24370,6 +24414,8 @@
           "parent_shipment_id",
           "relation_kind",
           "guide_code",
+          "plant_label",
+          "carrier_label",
           "status"
         ],
         "title": "ShipmentResponse"
