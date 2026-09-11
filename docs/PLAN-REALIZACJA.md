@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** wąski HITL z pinu **2026-09-08c** (nie park: U1 masowy / wspólny SELECT / live HTTP / CAPA workflow).
+**Następny:** **313.0** CI1 HITL `sla_clause` (delta `docs/deltas/open/313.0-sla-clause.md`).
 <!-- os-status:end -->
 
 ```mermaid
