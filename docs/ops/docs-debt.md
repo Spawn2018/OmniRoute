@@ -1,3 +1,4 @@
+- **339.0 leftover:** silnik make-or-buy; allocation SQL; druga marża; klej charge. 339.0 = HITL `make_or_buy_mark` (buy_kind).
 - **338.0 leftover:** DSO SQL; cash-at-risk SQL; aging SQL; druga marża; klej F1. 338.0 = HITL `working_capital_mark` (capital_kind).
 - **337.0 leftover:** live CEIDG/KRS/VIES/whitelist; auto notice; scrape; klej M-10. 337.0 = HITL `registry_poll_mark` (poll_kind).
 - **336.0 leftover:** live Stripe; Paddle; platform_usage_daily; limity SQL; klej S53. 336.0 = HITL `billing_mark` (billing_kind).

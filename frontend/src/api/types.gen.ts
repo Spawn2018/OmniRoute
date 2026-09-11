@@ -4797,6 +4797,50 @@ export type MailDraftResponse = {
 };
 
 /**
+ * MakeOrBuyMarkCreate
+ */
+export type MakeOrBuyMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Buy Kind
+     */
+    buy_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * MakeOrBuyMarkResponse
+ */
+export type MakeOrBuyMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Buy Kind
+     */
+    buy_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * MemoryEdgeCreate
  */
 export type MemoryEdgeCreate = {
@@ -15934,6 +15978,49 @@ export type CreateWorkingCapitalMarkApiV1WorkingCapitalMarksPostResponses = {
 };
 
 export type CreateWorkingCapitalMarkApiV1WorkingCapitalMarksPostResponse = CreateWorkingCapitalMarkApiV1WorkingCapitalMarksPostResponses[keyof CreateWorkingCapitalMarkApiV1WorkingCapitalMarksPostResponses];
+
+export type ListMakeOrBuyMarksApiV1MakeOrBuyMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/make-or-buy-marks';
+};
+
+export type ListMakeOrBuyMarksApiV1MakeOrBuyMarksGetResponses = {
+    /**
+     * Response List Make Or Buy Marks Api V1 Make Or Buy Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<MakeOrBuyMarkResponse>;
+};
+
+export type ListMakeOrBuyMarksApiV1MakeOrBuyMarksGetResponse = ListMakeOrBuyMarksApiV1MakeOrBuyMarksGetResponses[keyof ListMakeOrBuyMarksApiV1MakeOrBuyMarksGetResponses];
+
+export type CreateMakeOrBuyMarkApiV1MakeOrBuyMarksPostData = {
+    body: MakeOrBuyMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/make-or-buy-marks';
+};
+
+export type CreateMakeOrBuyMarkApiV1MakeOrBuyMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateMakeOrBuyMarkApiV1MakeOrBuyMarksPostError = CreateMakeOrBuyMarkApiV1MakeOrBuyMarksPostErrors[keyof CreateMakeOrBuyMarkApiV1MakeOrBuyMarksPostErrors];
+
+export type CreateMakeOrBuyMarkApiV1MakeOrBuyMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: MakeOrBuyMarkResponse;
+};
+
+export type CreateMakeOrBuyMarkApiV1MakeOrBuyMarksPostResponse = CreateMakeOrBuyMarkApiV1MakeOrBuyMarksPostResponses[keyof CreateMakeOrBuyMarkApiV1MakeOrBuyMarksPostResponses];
 
 export type ListAsnsApiV1AsnsGetData = {
     body?: never;

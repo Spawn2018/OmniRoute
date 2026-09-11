@@ -72,6 +72,7 @@ from app.api import (
     local_charges,
     locations,
     mail_drafts,
+    make_or_buy_marks,
     memory_edges,
     money_costs,
     monitoring_schemes,
@@ -272,6 +273,7 @@ api_router.include_router(yard_marks.router)
 api_router.include_router(billing_marks.router)
 api_router.include_router(registry_poll_marks.router)
 api_router.include_router(working_capital_marks.router)
+api_router.include_router(make_or_buy_marks.router)
 api_router.include_router(asns.router)
 api_router.include_router(otif_marks.router)
 api_router.include_router(routing_guide_enforcements.router)

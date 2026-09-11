@@ -10558,6 +10558,80 @@
         ]
       }
     },
+    "/api/v1/make-or-buy-marks": {
+      "get": {
+        "tags": [
+          "make-or-buy-marks"
+        ],
+        "summary": "List Make Or Buy Marks",
+        "operationId": "list_make_or_buy_marks_api_v1_make_or_buy_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/MakeOrBuyMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Make Or Buy Marks Api V1 Make Or Buy Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "make-or-buy-marks"
+        ],
+        "summary": "Create Make Or Buy Mark",
+        "operationId": "create_make_or_buy_mark_api_v1_make_or_buy_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MakeOrBuyMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MakeOrBuyMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/asns": {
       "get": {
         "tags": [
@@ -22981,6 +23055,65 @@
           "source_ref"
         ],
         "title": "MailDraftResponse"
+      },
+      "MakeOrBuyMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "buy_kind": {
+            "type": "string",
+            "title": "Buy Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "buy_kind",
+          "source_ref"
+        ],
+        "title": "MakeOrBuyMarkCreate"
+      },
+      "MakeOrBuyMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "buy_kind": {
+            "type": "string",
+            "title": "Buy Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "buy_kind",
+          "source_ref"
+        ],
+        "title": "MakeOrBuyMarkResponse"
       },
       "MemoryEdgeCreate": {
         "properties": {

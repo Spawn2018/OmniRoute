@@ -850,6 +850,10 @@ class InvalidWorkingCapitalMark(DomainError):
     """EXP2.1: HITL working capital — nie DSO SQL."""
 
 
+class InvalidMakeOrBuyMark(DomainError):
+    """EXP2.2: HITL make-or-buy — nie silnik kosztu."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

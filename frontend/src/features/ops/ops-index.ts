@@ -614,6 +614,11 @@ export const OPS_JOBS = [
     job: "katalog working_capital_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.makeOrBuyMark.route,
+    label: "Make-or-buy",
+    job: "katalog make_or_buy_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.erpConnector.route,
     label: "Konektor Optima",
     job: "katalog erp_connector HITL",
@@ -1057,6 +1062,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "336.0": "/billing-marks",
   "337.0": "/registry-poll-marks",
   "338.0": "/working-capital-marks",
+  "339.0": "/make-or-buy-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =
