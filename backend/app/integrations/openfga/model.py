@@ -100,6 +100,7 @@ def _organization_ops_catalog_relations() -> dict[str, Userset]:
         "can_manage_party_documents": _member(),
         "can_manage_customer_contracts": _member(),
         "can_manage_purchase_orders": _member(),
+        "can_manage_otif_marks": _member(),
         "can_manage_routing_guides": _member(),
         "can_manage_tenant_contract_keks": _member(),
         "can_manage_cash_discounts": _member(),

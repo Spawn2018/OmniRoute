@@ -732,3 +732,7 @@ class InvalidAsn(DomainError):
 
 class InvalidRoutingGuide(DomainError):
     """CT4: HITL przewodnik routingu — nie 409 egzekucja."""
+
+
+class InvalidOtifMark(DomainError):
+    """CT3: HITL zakres OTIF — nie metryka % i nie scoring SQL."""

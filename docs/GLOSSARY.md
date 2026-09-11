@@ -183,6 +183,7 @@
 | linia zamówienia zakupu | po_line | CT1 HITL 277.0 `line_code` + FK nagłówka + `sku_code` + `qty` Decimal + `uom_code` + etykiety; nie kwota |
 | awizo wysyłki | asn | CT1 HITL 278.0 `asn_code` + FK nagłówka + etykiety; nie live EDI 856; nie auto shipment |
 | przewodnik routingu | routing_guide | CT4 HITL 279.0 `guide_code` + etykiety; nie 409 egzekucja; nie mapa |
+| znacznik OTIF | otif_mark | CT3 HITL 280.0 `mark_code` + `scope_kind` pickup\|delivery\|sku; nie OTIF%; nie scoring SQL |
 | awizacja terminalu | terminal_appointment | T8; requested/confirmed/rejected; `source_ref` |
 | kalendarz organizacji | organization_calendar | U4; dni robocze; grace GPS |
 | przeniesienie pól | field_carry_forward | U1; oferta→zlecenie; nie cichy overwrite |

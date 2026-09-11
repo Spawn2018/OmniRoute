@@ -192,6 +192,11 @@ const NAV_ACTIONS = [
     to: "/routing-guides",
   },
   {
+    id: "nav-otif-marks",
+    label: "Idź do znacznika OTIF",
+    to: "/otif-marks",
+  },
+  {
     id: "nav-exchange-connectors",
     label: "Idź do konektora giełdy",
     to: "/exchange-connectors",

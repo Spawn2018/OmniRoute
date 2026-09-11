@@ -69,6 +69,7 @@ import { Route as NetworksRouteImport } from './routes/networks'
 import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as OceanBillsRouteImport } from './routes/ocean-bills'
 import { Route as OrganizationSettingsRouteImport } from './routes/organization-settings'
+import { Route as OtifMarksRouteImport } from './routes/otif-marks'
 import { Route as OutboxRouteImport } from './routes/outbox'
 import { Route as PalletBalancesRouteImport } from './routes/pallet-balances'
 import { Route as PartiesRouteImport } from './routes/parties'
@@ -427,6 +428,11 @@ const OrganizationSettingsRoute = OrganizationSettingsRouteImport.update({
   path: '/organization-settings',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OtifMarksRoute = OtifMarksRouteImport.update({
+  id: '/otif-marks',
+  path: '/otif-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OutboxRoute = OutboxRouteImport.update({
   id: '/outbox',
   path: '/outbox',
@@ -774,6 +780,7 @@ export interface FileRoutesByFullPath {
   '/notifications': typeof NotificationsRoute
   '/ocean-bills': typeof OceanBillsRoute
   '/organization-settings': typeof OrganizationSettingsRoute
+  '/otif-marks': typeof OtifMarksRoute
   '/outbox': typeof OutboxRoute
   '/pallet-balances': typeof PalletBalancesRoute
   '/parties': typeof PartiesRoute
@@ -893,6 +900,7 @@ export interface FileRoutesByTo {
   '/notifications': typeof NotificationsRoute
   '/ocean-bills': typeof OceanBillsRoute
   '/organization-settings': typeof OrganizationSettingsRoute
+  '/otif-marks': typeof OtifMarksRoute
   '/outbox': typeof OutboxRoute
   '/pallet-balances': typeof PalletBalancesRoute
   '/parties': typeof PartiesRoute
@@ -1013,6 +1021,7 @@ export interface FileRoutesById {
   '/notifications': typeof NotificationsRoute
   '/ocean-bills': typeof OceanBillsRoute
   '/organization-settings': typeof OrganizationSettingsRoute
+  '/otif-marks': typeof OtifMarksRoute
   '/outbox': typeof OutboxRoute
   '/pallet-balances': typeof PalletBalancesRoute
   '/parties': typeof PartiesRoute
@@ -1134,6 +1143,7 @@ export interface FileRouteTypes {
     | '/notifications'
     | '/ocean-bills'
     | '/organization-settings'
+    | '/otif-marks'
     | '/outbox'
     | '/pallet-balances'
     | '/parties'
@@ -1253,6 +1263,7 @@ export interface FileRouteTypes {
     | '/notifications'
     | '/ocean-bills'
     | '/organization-settings'
+    | '/otif-marks'
     | '/outbox'
     | '/pallet-balances'
     | '/parties'
@@ -1372,6 +1383,7 @@ export interface FileRouteTypes {
     | '/notifications'
     | '/ocean-bills'
     | '/organization-settings'
+    | '/otif-marks'
     | '/outbox'
     | '/pallet-balances'
     | '/parties'
@@ -1492,6 +1504,7 @@ export interface RootRouteChildren {
   NotificationsRoute: typeof NotificationsRoute
   OceanBillsRoute: typeof OceanBillsRoute
   OrganizationSettingsRoute: typeof OrganizationSettingsRoute
+  OtifMarksRoute: typeof OtifMarksRoute
   OutboxRoute: typeof OutboxRoute
   PalletBalancesRoute: typeof PalletBalancesRoute
   PartiesRoute: typeof PartiesRoute
@@ -1973,6 +1986,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OrganizationSettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/otif-marks': {
+      id: '/otif-marks'
+      path: '/otif-marks'
+      fullPath: '/otif-marks'
+      preLoaderRoute: typeof OtifMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/outbox': {
       id: '/outbox'
       path: '/outbox'
@@ -2436,6 +2456,7 @@ const rootRouteChildren: RootRouteChildren = {
   NotificationsRoute: NotificationsRoute,
   OceanBillsRoute: OceanBillsRoute,
   OrganizationSettingsRoute: OrganizationSettingsRoute,
+  OtifMarksRoute: OtifMarksRoute,
   OutboxRoute: OutboxRoute,
   PalletBalancesRoute: PalletBalancesRoute,
   PartiesRoute: PartiesRoute,

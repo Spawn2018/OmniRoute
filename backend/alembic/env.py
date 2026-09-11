@@ -110,6 +110,7 @@ from app.models.visibility_connector import VisibilityConnector  # noqa: F401
 from app.models.purchase_order import PurchaseOrder  # noqa: F401
 from app.models.po_line import PoLine  # noqa: F401
 from app.models.asn import Asn  # noqa: F401
+from app.models.otif_mark import OtifMark  # noqa: F401
 from app.models.routing_guide import RoutingGuide  # noqa: F401
 from app.models.exchange_connector import ExchangeConnector  # noqa: F401
 from app.models.idp_connector import IdpConnector  # noqa: F401

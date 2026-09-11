@@ -64,6 +64,7 @@ from app.api import (
     operator_notices,
     organization_calendars,
     organization_settings,
+    otif_marks,
     outbox_events,
     pallet_balances,
     parties,
@@ -219,6 +220,7 @@ api_router.include_router(visibility_connectors.router)
 api_router.include_router(purchase_orders.router)
 api_router.include_router(po_lines.router)
 api_router.include_router(asns.router)
+api_router.include_router(otif_marks.router)
 api_router.include_router(routing_guides.router)
 api_router.include_router(terminal_slot_connectors.router)
 api_router.include_router(tower_impacts.router)

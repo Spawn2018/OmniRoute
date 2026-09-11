@@ -79,6 +79,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | CT7 | Konektor widoczności HITL | 275.0 `visibility_connector` | **ukończony (HITL)** · kod + kind `p44`; leftover live p44 / FourKites / Shippeo / AIS |
 | CT1 | Zamówienie zakupu HITL | 276.0 `purchase_order` · 277.0 `po_line` · 278.0 `asn` | **ukończony (HITL nagłówek + linia + awizo)** · leftover auto shipment / live EDI |
 | CT4 | Przewodnik routingu HITL | 279.0 `routing_guide` | **ukończony (HITL katalog)** · leftover 409 egzekucja |
+| CT3 | Znacznik OTIF HITL | 280.0 `otif_mark` | **ukończony (HITL katalog zakresu)** · leftover OTIF% |
 | V2 | Pogoda HITL | 194.0 `stop` ETA · 195.0 `weather_observation` | **ukończony (HITL)** · dwa ETA + warunek/stacja; leftover Open-Meteo / myto |
 | V3 | Zegar D&D HITL | 196.0 `free_time_clock` | **ukończony (HITL)** · rodzaj + dni wolne; leftover countdown / charge / blank sailing |
 | V5 | Konektor GPS HITL | 197.0 `telematics_connector` | **ukończony (HITL)** · reżim + dostawca; leftover position_event / ciphertext / 3 dni U4 |

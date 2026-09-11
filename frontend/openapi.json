@@ -9078,6 +9078,80 @@
         ]
       }
     },
+    "/api/v1/otif-marks": {
+      "get": {
+        "tags": [
+          "otif-marks"
+        ],
+        "summary": "List Otif Marks",
+        "operationId": "list_otif_marks_api_v1_otif_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/OtifMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Otif Marks Api V1 Otif Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "otif-marks"
+        ],
+        "summary": "Create Otif Mark",
+        "operationId": "create_otif_mark_api_v1_otif_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OtifMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OtifMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/routing-guides": {
       "get": {
         "tags": [
@@ -20197,6 +20271,65 @@
           "setting_value"
         ],
         "title": "OrganizationSettingUpsert"
+      },
+      "OtifMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "scope_kind": {
+            "type": "string",
+            "title": "Scope Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "scope_kind",
+          "source_ref"
+        ],
+        "title": "OtifMarkCreate"
+      },
+      "OtifMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "scope_kind": {
+            "type": "string",
+            "title": "Scope Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "scope_kind",
+          "source_ref"
+        ],
+        "title": "OtifMarkResponse"
       },
       "OutboxEventCreate": {
         "properties": {

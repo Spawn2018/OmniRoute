@@ -4529,6 +4529,50 @@ export type OrganizationSettingUpsert = {
 };
 
 /**
+ * OtifMarkCreate
+ */
+export type OtifMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Scope Kind
+     */
+    scope_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * OtifMarkResponse
+ */
+export type OtifMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Scope Kind
+     */
+    scope_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * OutboxEventCreate
  */
 export type OutboxEventCreate = {
@@ -13548,6 +13592,49 @@ export type CreateAsnApiV1AsnsPostResponses = {
 };
 
 export type CreateAsnApiV1AsnsPostResponse = CreateAsnApiV1AsnsPostResponses[keyof CreateAsnApiV1AsnsPostResponses];
+
+export type ListOtifMarksApiV1OtifMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/otif-marks';
+};
+
+export type ListOtifMarksApiV1OtifMarksGetResponses = {
+    /**
+     * Response List Otif Marks Api V1 Otif Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<OtifMarkResponse>;
+};
+
+export type ListOtifMarksApiV1OtifMarksGetResponse = ListOtifMarksApiV1OtifMarksGetResponses[keyof ListOtifMarksApiV1OtifMarksGetResponses];
+
+export type CreateOtifMarkApiV1OtifMarksPostData = {
+    body: OtifMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/otif-marks';
+};
+
+export type CreateOtifMarkApiV1OtifMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateOtifMarkApiV1OtifMarksPostError = CreateOtifMarkApiV1OtifMarksPostErrors[keyof CreateOtifMarkApiV1OtifMarksPostErrors];
+
+export type CreateOtifMarkApiV1OtifMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: OtifMarkResponse;
+};
+
+export type CreateOtifMarkApiV1OtifMarksPostResponse = CreateOtifMarkApiV1OtifMarksPostResponses[keyof CreateOtifMarkApiV1OtifMarksPostResponses];
 
 export type ListRoutingGuidesApiV1RoutingGuidesGetData = {
     body?: never;

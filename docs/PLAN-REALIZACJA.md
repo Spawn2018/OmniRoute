@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** leftover Fala CT / pin — CT3 OTIF katalog albo CT1 auto shipment compose (parked z powodem) / egzekucja 409 / CT2 gdy CI5. CT5 EDI live = park. CT8 AIS = park live. Nie CI1 extract. Nie live p44. Leftover HITL/SQL = praca. Park = live HTTP bez testu albo sekretu. Nie zgaduj 71–279.
+**Następny:** leftover Fala CT / pin — CT6 HITL konektor SAP/Oracle (jak F9) albo CT12 CAPA katalog albo egzekucja 409 z `routing_guide`.
 <!-- os-status:end -->
 
 ```mermaid
@@ -486,7 +486,7 @@ Klej (nie osobny rok): **U6** + **M-72** = DoD każdego UI; **N** i **A** wchodz
 
 Kolejka żywa jest w [CURRENT.md](state/CURRENT.md). `/noc` jedzie ją bez wycinania. Godzina ucina **nowy** plaster, nie wiersz pinu.
 
-Kolejność (WIP=1 na `main`): T3 cutoffy na `container` → eventy `entity_event` z warstwy API (2a/2b; BC nie importuje `entity_events`) → `stop_group`/EXP1 → km/`/fleet` → `consignment` → T6 mapa → SQL na `charge` → lookup/KSeF TE → outbox T5 → `plan_snapshot` (DONE 265.0) → `circle_sim` HITL (DONE 266.0) → leftover km ładowny/pusty/dolot (DONE 267.0) → leftover F9 Optima fixture (DONE 268.0) → leftover T8 slot capability (DONE 269.0) → leftover S53 HITL `idp_connector` (DONE 270.0) → leftover S55 HITL `exchange_connector` (DONE 271.0) → leftover CI9 HITL `customer_contract` nagłówek (DONE 272.0) → leftover CI9 opaque `blob_ciphertext` (DONE 273.0; present/absent, nie szyfr) → leftover CI9 KEK mark (DONE 274.0; znacznik, nie klucz) → leftover CT7 HITL `visibility_connector` (DONE 275.0; token `p44`, nie live) → leftover CT1 HITL `purchase_order` nagłówek (DONE 276.0) → leftover CT1 HITL `po_line` (DONE 277.0) → leftover CT1 HITL `asn` (DONE 278.0) → leftover CT4 HITL `routing_guide` (DONE 279.0; auto shipment/CT2 parked z powodem) → leftover CT3/409/compose / reszta pinu. `plan_snapshot` **po** obiektach, **przed** kółkami — nie w jednym worku ze stopami. Cały łańcuch XL→WAPRO nie wchodzi przed outbox. P6c auto-award = zakaz.
+Kolejność (WIP=1 na `main`): T3 cutoffy na `container` → eventy `entity_event` z warstwy API (2a/2b; BC nie importuje `entity_events`) → `stop_group`/EXP1 → km/`/fleet` → `consignment` → T6 mapa → SQL na `charge` → lookup/KSeF TE → outbox T5 → `plan_snapshot` (DONE 265.0) → `circle_sim` HITL (DONE 266.0) → leftover km ładowny/pusty/dolot (DONE 267.0) → leftover F9 Optima fixture (DONE 268.0) → leftover T8 slot capability (DONE 269.0) → leftover S53 HITL `idp_connector` (DONE 270.0) → leftover S55 HITL `exchange_connector` (DONE 271.0) → leftover CI9 HITL `customer_contract` nagłówek (DONE 272.0) → leftover CI9 opaque `blob_ciphertext` (DONE 273.0; present/absent, nie szyfr) → leftover CI9 KEK mark (DONE 274.0; znacznik, nie klucz) → leftover CT7 HITL `visibility_connector` (DONE 275.0; token `p44`, nie live) → leftover CT1 HITL `purchase_order` nagłówek (DONE 276.0) → leftover CT1 HITL `po_line` (DONE 277.0) → leftover CT1 HITL `asn` (DONE 278.0) → leftover CT4 HITL `routing_guide` (DONE 279.0; auto shipment/CT2 parked z powodem) → leftover CT3 HITL `otif_mark` (DONE 280.0) → leftover 409/compose/CT6/CT12 / reszta pinu. `plan_snapshot` **po** obiektach, **przed** kółkami — nie w jednym worku ze stopami. Cały łańcuch XL→WAPRO nie wchodzi przed outbox. P6c auto-award = zakaz.
 
 Bliźniak = wzorzec (stan RLS + `entity_event` + opcjonalnie kopia planu / karta komunikacji), nie druga tabela `*_twin`. Rodziny rosną katalogiem. AI szuka i proponuje; `operator_decision` zamyka. LLM nie liczy.
 
@@ -683,7 +683,7 @@ Karta: [karty-pol-fala-ct.md](analysis/karty-pol-fala-ct.md). Tenant `shipper` R
 |---|---|---|---|
 | CT1 | PO → ASN → shipment (U1); plant/SKU | 276.0 HITL nagłówek `purchase_order`; 277.0 HITL `po_line`; 278.0 HITL `asn` | auto shipment / qty float / live EDI |
 | CT2 | impact chain; klej CI5 | po V6 | auto „zatrzymaj produkcję” |
-| CT3 | OTIF pickup vs delivery vs SKU | | |
+| CT3 | OTIF pickup vs delivery vs SKU | 280.0 HITL katalog `otif_mark` | OTIF% / scoring SQL |
 | CT4 | routing guide 409 | 279.0 HITL katalog `routing_guide` | egzekucja 409 |
 | CT5 | EDI 214/315/856/210 + webhook | TO_VERIFY partner | |
 | CT6 | SAP/Oracle adapter jak F9 | TO_VERIFY | SQL do SAP |
