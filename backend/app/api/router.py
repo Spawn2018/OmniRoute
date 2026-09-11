@@ -37,6 +37,7 @@ from app.api import (
     customer_contracts,
     customer_rfqs,
     customer_sops,
+    cutoff_marks,
     dangerous_goods,
     delay_forecasts,
     dock_appointments,
@@ -319,6 +320,7 @@ api_router.include_router(party_lane_scorecards.router)
 api_router.include_router(credit_reviews.router)
 api_router.include_router(crm_leads.router)
 api_router.include_router(customer_sops.router)
+api_router.include_router(cutoff_marks.router)
 api_router.include_router(ports.router)
 api_router.include_router(port_surcharges.router)
 api_router.include_router(locations.router)

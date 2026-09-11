@@ -43,6 +43,7 @@ import { Route as CreditReviewsRouteImport } from './routes/credit-reviews'
 import { Route as CrmLeadsRouteImport } from './routes/crm-leads'
 import { Route as CustomerContractsRouteImport } from './routes/customer-contracts'
 import { Route as CustomerSopsRouteImport } from './routes/customer-sops'
+import { Route as CutoffMarksRouteImport } from './routes/cutoff-marks'
 import { Route as DangerousGoodsRouteImport } from './routes/dangerous-goods'
 import { Route as DecisionsRouteImport } from './routes/decisions'
 import { Route as DelayForecastsRouteImport } from './routes/delay-forecasts'
@@ -334,6 +335,11 @@ const CustomerContractsRoute = CustomerContractsRouteImport.update({
 const CustomerSopsRoute = CustomerSopsRouteImport.update({
   id: '/customer-sops',
   path: '/customer-sops',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CutoffMarksRoute = CutoffMarksRouteImport.update({
+  id: '/cutoff-marks',
+  path: '/cutoff-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DangerousGoodsRoute = DangerousGoodsRouteImport.update({
@@ -983,6 +989,7 @@ export interface FileRoutesByFullPath {
   '/crm-leads': typeof CrmLeadsRoute
   '/customer-contracts': typeof CustomerContractsRoute
   '/customer-sops': typeof CustomerSopsRoute
+  '/cutoff-marks': typeof CutoffMarksRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
   '/decisions': typeof DecisionsRoute
   '/delay-forecasts': typeof DelayForecastsRoute
@@ -1141,6 +1148,7 @@ export interface FileRoutesByTo {
   '/crm-leads': typeof CrmLeadsRoute
   '/customer-contracts': typeof CustomerContractsRoute
   '/customer-sops': typeof CustomerSopsRoute
+  '/cutoff-marks': typeof CutoffMarksRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
   '/decisions': typeof DecisionsRoute
   '/delay-forecasts': typeof DelayForecastsRoute
@@ -1300,6 +1308,7 @@ export interface FileRoutesById {
   '/crm-leads': typeof CrmLeadsRoute
   '/customer-contracts': typeof CustomerContractsRoute
   '/customer-sops': typeof CustomerSopsRoute
+  '/cutoff-marks': typeof CutoffMarksRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
   '/decisions': typeof DecisionsRoute
   '/delay-forecasts': typeof DelayForecastsRoute
@@ -1460,6 +1469,7 @@ export interface FileRouteTypes {
     | '/crm-leads'
     | '/customer-contracts'
     | '/customer-sops'
+    | '/cutoff-marks'
     | '/dangerous-goods'
     | '/decisions'
     | '/delay-forecasts'
@@ -1618,6 +1628,7 @@ export interface FileRouteTypes {
     | '/crm-leads'
     | '/customer-contracts'
     | '/customer-sops'
+    | '/cutoff-marks'
     | '/dangerous-goods'
     | '/decisions'
     | '/delay-forecasts'
@@ -1776,6 +1787,7 @@ export interface FileRouteTypes {
     | '/crm-leads'
     | '/customer-contracts'
     | '/customer-sops'
+    | '/cutoff-marks'
     | '/dangerous-goods'
     | '/decisions'
     | '/delay-forecasts'
@@ -1935,6 +1947,7 @@ export interface RootRouteChildren {
   CrmLeadsRoute: typeof CrmLeadsRoute
   CustomerContractsRoute: typeof CustomerContractsRoute
   CustomerSopsRoute: typeof CustomerSopsRoute
+  CutoffMarksRoute: typeof CutoffMarksRoute
   DangerousGoodsRoute: typeof DangerousGoodsRoute
   DecisionsRoute: typeof DecisionsRoute
   DelayForecastsRoute: typeof DelayForecastsRoute
@@ -2297,6 +2310,13 @@ declare module '@tanstack/react-router' {
       path: '/customer-sops'
       fullPath: '/customer-sops'
       preLoaderRoute: typeof CustomerSopsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cutoff-marks': {
+      id: '/cutoff-marks'
+      path: '/cutoff-marks'
+      fullPath: '/cutoff-marks'
+      preLoaderRoute: typeof CutoffMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dangerous-goods': {
@@ -3191,6 +3211,7 @@ const rootRouteChildren: RootRouteChildren = {
   CrmLeadsRoute: CrmLeadsRoute,
   CustomerContractsRoute: CustomerContractsRoute,
   CustomerSopsRoute: CustomerSopsRoute,
+  CutoffMarksRoute: CutoffMarksRoute,
   DangerousGoodsRoute: DangerousGoodsRoute,
   DecisionsRoute: DecisionsRoute,
   DelayForecastsRoute: DelayForecastsRoute,

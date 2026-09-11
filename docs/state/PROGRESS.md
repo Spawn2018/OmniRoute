@@ -2,7 +2,8 @@
 
 | Data | Plaster | Moduł | Opis |
 |---|---|---|---|
-| 2026-09-11 | 344.0 | EXP2.7 schedule_exception_mark HITL | 2026-09-12 | PRZESZŁO | N/A | N/A | OK | OK | 5–15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
+| 2026-09-11 | 345.0 | EXP2.8 cutoff_mark HITL | 2026-09-12 | PRZESZŁO | N/A | N/A | OK | OK | 5–15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
+| 344.0 | EXP2.7 schedule_exception_mark HITL | 2026-09-12 | PRZESZŁO | N/A | N/A | OK | OK | 5–15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 343.0 | EXP2.6 subcontract_edge_mark HITL | 2026-09-12 | PRZESZŁO | N/A | N/A | OK | OK | 5–15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 342.0 | EXP2.5 sanctions_mark HITL | 2026-09-11 | PRZESZŁO | N/A | N/A | OK | OK | 5–15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 341.0 | EXP2.4 cargo_cover_mark HITL | 2026-09-11 | PRZESZŁO | N/A | N/A | OK | OK | 5–15 | PRZESZŁO | N/A | N/A | PRZESZŁO |

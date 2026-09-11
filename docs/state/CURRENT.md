@@ -4,22 +4,22 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **344.0** EXP2.7 HITL `schedule_exception_mark`
+**Ostatni plaster:** **345.0** EXP2.8 HITL `cutoff_mark`
 
-**Etap:** Plan — wolno `/plan-modul` **345.0** EXP2.8
+**Etap:** Plan — wolno `/plan-modul` **346.0** EXP2.9
 
 **Noc:** `/noc 10` do 2026-09-12T10:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).
 
-**Następny:** **345.0** EXP2.8 cutoffy rozdzielone (węższa z kolejki; delta do utworzenia).
+**Następny:** **346.0** EXP2.9 TIME-TO-FIX (węższa z kolejki; delta do utworzenia).
 
-Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44 · extract · CI5 kara SQL · wróżba punktowa · CI6 kwoty · S11 auto-send · EBITDA SQL · egzekucja 409 · MAE SQL · outcome SQL · crm_opportunity · activity · cold auto-send · bank stakeholder · presentation_due · teatr PUESC · wymiary OOG · LLM-VRP · solver OR · kara kierowcy · work_order · F1 KSeF live · eIDAS crypto · wipe · drugi tenant · company_id FK · WMS e-com · SENT-UE · filer live · silent write · zestaw party_document · yard live · Stripe live · registry scrape · druga marża WC · make-or-buy silnik · allocation SQL · cargo_cover live · sanctions live · subcontract live · schedule live · cutoff live. Nie zgaduj 71–345.
+Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44 · extract · CI5 kara SQL · wróżba punktowa · CI6 kwoty · S11 auto-send · EBITDA SQL · egzekucja 409 · MAE SQL · outcome SQL · crm_opportunity · activity · cold auto-send · bank stakeholder · presentation_due · teatr PUESC · wymiary OOG · LLM-VRP · solver OR · kara kierowcy · work_order · F1 KSeF live · eIDAS crypto · wipe · drugi tenant · company_id FK · WMS e-com · SENT-UE · filer live · silent write · zestaw party_document · yard live · Stripe live · registry scrape · druga marża WC · make-or-buy silnik · allocation SQL · cargo_cover live · sanctions live · subcontract live · schedule live · cutoff live · TIME-TO-FIX live. Nie zgaduj 71–346.
 
-**Spec (jedyna na sesję):** brak otwartej delty — `/plan-modul` EXP2.8.
+**Spec (jedyna na sesję):** brak otwartej delty — `/plan-modul` EXP2.9.
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
-**Uczciwość:** HITL zostaje. LLM nie liczy. `charge` = marża.
+**Uczciwość:** HITL zostaje. LLM nie liczy. `charge` = marża. Auto przy POST asn nadal zakazane. Nota 4,4–5 = karta i diff.
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-12:** Plaster **344.0** zamknięty (`/noc`) — HITL `schedule_exception_mark`.
+**2026-09-12:** Plaster **345.0** zamknięty (`/noc`) — HITL `cutoff_mark` bez silnika cutoff.

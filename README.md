@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **344.0** EXP2.7 HITL `schedule_exception_mark`
-- **Etap:** Plan — wolno `/plan-modul` **345.0** EXP2.8
-- **Następny:** **345.0** EXP2.8 cutoffy rozdzielone (węższa z kolejki; delta do utworzenia).
+- **Ostatni plaster:** **345.0** EXP2.8 HITL `cutoff_mark`
+- **Etap:** Plan — wolno `/plan-modul` **346.0** EXP2.9
+- **Następny:** **346.0** EXP2.9 TIME-TO-FIX (węższa z kolejki; delta do utworzenia).
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

@@ -14899,6 +14899,80 @@
         }
       }
     },
+    "/api/v1/cutoff-marks": {
+      "get": {
+        "tags": [
+          "cutoff-marks"
+        ],
+        "summary": "List Cutoff Marks",
+        "operationId": "list_cutoff_marks_api_v1_cutoff_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CutoffMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Cutoff Marks Api V1 Cutoff Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "cutoff-marks"
+        ],
+        "summary": "Create Cutoff Mark",
+        "operationId": "create_cutoff_mark_api_v1_cutoff_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CutoffMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CutoffMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/ports": {
       "get": {
         "tags": [
@@ -20038,6 +20112,65 @@
           "source_ref"
         ],
         "title": "CustomerSopResponse"
+      },
+      "CutoffMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "cutoff_kind": {
+            "type": "string",
+            "title": "Cutoff Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "cutoff_kind",
+          "source_ref"
+        ],
+        "title": "CutoffMarkCreate"
+      },
+      "CutoffMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "cutoff_kind": {
+            "type": "string",
+            "title": "Cutoff Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "cutoff_kind",
+          "source_ref"
+        ],
+        "title": "CutoffMarkResponse"
       },
       "DangerousGoodCreate": {
         "properties": {

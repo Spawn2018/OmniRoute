@@ -644,6 +644,11 @@ export const OPS_JOBS = [
     job: "katalog schedule_exception_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.cutoffMark.route,
+    label: "Cutoff",
+    job: "katalog cutoff_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.erpConnector.route,
     label: "Konektor Optima",
     job: "katalog erp_connector HITL",
@@ -1093,6 +1098,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "342.0": "/sanctions-marks",
   "343.0": "/subcontract-edge-marks",
   "344.0": "/schedule-exception-marks",
+  "345.0": "/cutoff-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

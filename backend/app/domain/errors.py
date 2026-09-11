@@ -874,6 +874,10 @@ class InvalidScheduleExceptionMark(DomainError):
     """EXP2.7: HITL wyjątek harmonogramu — nie silnik schedule."""
 
 
+class InvalidCutoffMark(DomainError):
+    """EXP2.8: HITL cutoff rozdzielony — nie silnik cutoff."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

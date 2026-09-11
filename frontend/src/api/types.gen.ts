@@ -2553,6 +2553,50 @@ export type CustomerSopResponse = {
 };
 
 /**
+ * CutoffMarkCreate
+ */
+export type CutoffMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Cutoff Kind
+     */
+    cutoff_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CutoffMarkResponse
+ */
+export type CutoffMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Cutoff Kind
+     */
+    cutoff_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * DangerousGoodCreate
  */
 export type DangerousGoodCreate = {
@@ -18712,6 +18756,49 @@ export type ApproveCustomerSopApiV1CustomerSopsSopIdApprovePostResponses = {
 };
 
 export type ApproveCustomerSopApiV1CustomerSopsSopIdApprovePostResponse = ApproveCustomerSopApiV1CustomerSopsSopIdApprovePostResponses[keyof ApproveCustomerSopApiV1CustomerSopsSopIdApprovePostResponses];
+
+export type ListCutoffMarksApiV1CutoffMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/cutoff-marks';
+};
+
+export type ListCutoffMarksApiV1CutoffMarksGetResponses = {
+    /**
+     * Response List Cutoff Marks Api V1 Cutoff Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<CutoffMarkResponse>;
+};
+
+export type ListCutoffMarksApiV1CutoffMarksGetResponse = ListCutoffMarksApiV1CutoffMarksGetResponses[keyof ListCutoffMarksApiV1CutoffMarksGetResponses];
+
+export type CreateCutoffMarkApiV1CutoffMarksPostData = {
+    body: CutoffMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/cutoff-marks';
+};
+
+export type CreateCutoffMarkApiV1CutoffMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCutoffMarkApiV1CutoffMarksPostError = CreateCutoffMarkApiV1CutoffMarksPostErrors[keyof CreateCutoffMarkApiV1CutoffMarksPostErrors];
+
+export type CreateCutoffMarkApiV1CutoffMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CutoffMarkResponse;
+};
+
+export type CreateCutoffMarkApiV1CutoffMarksPostResponse = CreateCutoffMarkApiV1CutoffMarksPostResponses[keyof CreateCutoffMarkApiV1CutoffMarksPostResponses];
 
 export type ListPortsApiV1PortsGetData = {
     body?: never;
