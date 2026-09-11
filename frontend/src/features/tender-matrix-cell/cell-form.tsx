@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefField } from "@/components/catalog/catalog-parts"
 import { Money } from "@/components/money"
 import { Button } from "@/components/ui/button"
 import { cellWrite, listCellMarks, persistCellMark } from "@/lib/tender-matrix-cells-api"
@@ -85,22 +85,12 @@ function CellSave(args: { organizationId: string | null }) {
           required
         />
       </label>
-      <aside className="space-y-1">
-        <p className="text-xs font-medium">Pochodzenie komórki matrycy</p>
-        <input
-          aria-label="Pochodzenie zapisu komórki matrycy"
-          autoComplete="off"
-          className="h-9 w-full rounded-md border bg-background px-2 font-mono text-[13px]"
-          name="matrix-cell-origin"
-          spellCheck={false}
-          value={draft.originStamp}
-          onChange={(event) => {
-            const originStamp = event.target.value
-            setDraft((current) => ({ ...current, originStamp }))
-          }}
-          required
-        />
-      </aside>
+      <CatalogSourceRefField
+        label="source_ref (tenant:manual albo fixture://tender-matrix-cell/…)"
+        ariaLabel="Pochodzenie zapisu komórki matrycy"
+        value={draft.originStamp}
+        onChange={(originStamp) => setDraft({ ...draft, originStamp })}
+      />
       <Button type="submit" disabled={persist.isPending || !args.organizationId}>
         Zapisz komórkę
       </Button>

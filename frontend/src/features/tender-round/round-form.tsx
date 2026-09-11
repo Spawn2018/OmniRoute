@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefField } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { listTurnMarks, persistRoundMark, roundWrite } from "@/lib/tender-rounds-api"
 
@@ -59,19 +59,12 @@ function RoundSave(args: { organizationId: string | null }) {
           required
         />
       </label>
-      <p className="m-0 flex flex-col gap-1 text-xs">
-        Pochodzenie zapisu rundy
-        <input
-          aria-label="Pochodzenie zapisu rundy przetargu"
-          autoComplete="off"
-          className="h-9 rounded-md border bg-background px-2 font-mono text-[13px]"
-          name="round-source-ref"
-          spellCheck={false}
-          value={draft.originRef}
-          onChange={(change) => setDraft({ ...draft, originRef: change.target.value })}
-          required
-        />
-      </p>
+      <CatalogSourceRefField
+        label="source_ref (tenant:manual albo fixture://tender-round/…)"
+        ariaLabel="Pochodzenie zapisu rundy przetargu"
+        value={draft.originRef}
+        onChange={(originRef) => setDraft({ ...draft, originRef })}
+      />
       <Button type="submit" disabled={persist.isPending || !args.organizationId}>
         Zapisz rundę
       </Button>
