@@ -661,6 +661,50 @@ export type CargoClaimResponse = {
 };
 
 /**
+ * CargoCoverMarkCreate
+ */
+export type CargoCoverMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Cover Kind
+     */
+    cover_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CargoCoverMarkResponse
+ */
+export type CargoCoverMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Cover Kind
+     */
+    cover_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * CarrierInquiryBatchCreate
  */
 export type CarrierInquiryBatchCreate = {
@@ -16108,6 +16152,49 @@ export type CreateCostAllocationMarkApiV1CostAllocationMarksPostResponses = {
 };
 
 export type CreateCostAllocationMarkApiV1CostAllocationMarksPostResponse = CreateCostAllocationMarkApiV1CostAllocationMarksPostResponses[keyof CreateCostAllocationMarkApiV1CostAllocationMarksPostResponses];
+
+export type ListCargoCoverMarksApiV1CargoCoverMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/cargo-cover-marks';
+};
+
+export type ListCargoCoverMarksApiV1CargoCoverMarksGetResponses = {
+    /**
+     * Response List Cargo Cover Marks Api V1 Cargo Cover Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<CargoCoverMarkResponse>;
+};
+
+export type ListCargoCoverMarksApiV1CargoCoverMarksGetResponse = ListCargoCoverMarksApiV1CargoCoverMarksGetResponses[keyof ListCargoCoverMarksApiV1CargoCoverMarksGetResponses];
+
+export type CreateCargoCoverMarkApiV1CargoCoverMarksPostData = {
+    body: CargoCoverMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/cargo-cover-marks';
+};
+
+export type CreateCargoCoverMarkApiV1CargoCoverMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCargoCoverMarkApiV1CargoCoverMarksPostError = CreateCargoCoverMarkApiV1CargoCoverMarksPostErrors[keyof CreateCargoCoverMarkApiV1CargoCoverMarksPostErrors];
+
+export type CreateCargoCoverMarkApiV1CargoCoverMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CargoCoverMarkResponse;
+};
+
+export type CreateCargoCoverMarkApiV1CargoCoverMarksPostResponse = CreateCargoCoverMarkApiV1CargoCoverMarksPostResponses[keyof CreateCargoCoverMarkApiV1CargoCoverMarksPostResponses];
 
 export type ListAsnsApiV1AsnsGetData = {
     body?: never;

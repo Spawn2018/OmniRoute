@@ -12,6 +12,7 @@ from app.api import (
     capa_marks,
     carbon_methods,
     cargo_claims,
+    cargo_cover_marks,
     carrier_inquiries,
     cash_discounts,
     cash_flows,
@@ -202,6 +203,7 @@ api_router.include_router(shipment_packages.router)
 api_router.include_router(dock_appointments.router)
 api_router.include_router(operational_exceptions.router)
 api_router.include_router(cargo_claims.router)
+api_router.include_router(cargo_cover_marks.router)
 api_router.include_router(cod_instructions.router)
 api_router.include_router(ocean_bills.router)
 api_router.include_router(oog_marks.router)

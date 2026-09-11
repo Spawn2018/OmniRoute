@@ -20,6 +20,7 @@ import { Route as BookkeepingRouteImport } from './routes/bookkeeping'
 import { Route as CalibrationMarksRouteImport } from './routes/calibration-marks'
 import { Route as CapaMarksRouteImport } from './routes/capa-marks'
 import { Route as CarbonMethodsRouteImport } from './routes/carbon-methods'
+import { Route as CargoCoverMarksRouteImport } from './routes/cargo-cover-marks'
 import { Route as CashDiscountsRouteImport } from './routes/cash-discounts'
 import { Route as CashflowsRouteImport } from './routes/cashflows'
 import { Route as ChannelQuotesRouteImport } from './routes/channel-quotes'
@@ -36,6 +37,7 @@ import { Route as CollaborationMarksRouteImport } from './routes/collaboration-m
 import { Route as CommodityCodesRouteImport } from './routes/commodity-codes'
 import { Route as CompanyMarksRouteImport } from './routes/company-marks'
 import { Route as ConsignmentsRouteImport } from './routes/consignments'
+import { Route as CostAllocationMarksRouteImport } from './routes/cost-allocation-marks'
 import { Route as CostToServeRouteImport } from './routes/cost-to-serve'
 import { Route as CreditReviewsRouteImport } from './routes/credit-reviews'
 import { Route as CrmLeadsRouteImport } from './routes/crm-leads'
@@ -80,6 +82,7 @@ import { Route as LoadPlanMarksRouteImport } from './routes/load-plan-marks'
 import { Route as LocalChargesRouteImport } from './routes/local-charges'
 import { Route as LocationsRouteImport } from './routes/locations'
 import { Route as MailRouteImport } from './routes/mail'
+import { Route as MakeOrBuyMarksRouteImport } from './routes/make-or-buy-marks'
 import { Route as MemoryEdgesRouteImport } from './routes/memory-edges'
 import { Route as MoneyCostRouteImport } from './routes/money-cost'
 import { Route as MonitoringSchemesRouteImport } from './routes/monitoring-schemes'
@@ -157,8 +160,6 @@ import { Route as WarRoomMarksRouteImport } from './routes/war-room-marks'
 import { Route as WatchtowerRouteImport } from './routes/watchtower'
 import { Route as WeatherObservationsRouteImport } from './routes/weather-observations'
 import { Route as WorkingCapitalMarksRouteImport } from './routes/working-capital-marks'
-import { Route as MakeOrBuyMarksRouteImport } from './routes/make-or-buy-marks'
-import { Route as CostAllocationMarksRouteImport } from './routes/cost-allocation-marks'
 import { Route as YardMarksRouteImport } from './routes/yard-marks'
 import { Route as TenancyUsersRouteImport } from './routes/tenancy.users'
 
@@ -215,6 +216,11 @@ const CapaMarksRoute = CapaMarksRouteImport.update({
 const CarbonMethodsRoute = CarbonMethodsRouteImport.update({
   id: '/carbon-methods',
   path: '/carbon-methods',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CargoCoverMarksRoute = CargoCoverMarksRouteImport.update({
+  id: '/cargo-cover-marks',
+  path: '/cargo-cover-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CashDiscountsRoute = CashDiscountsRouteImport.update({
@@ -295,6 +301,11 @@ const CompanyMarksRoute = CompanyMarksRouteImport.update({
 const ConsignmentsRoute = ConsignmentsRouteImport.update({
   id: '/consignments',
   path: '/consignments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CostAllocationMarksRoute = CostAllocationMarksRouteImport.update({
+  id: '/cost-allocation-marks',
+  path: '/cost-allocation-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CostToServeRoute = CostToServeRouteImport.update({
@@ -515,6 +526,11 @@ const LocationsRoute = LocationsRouteImport.update({
 const MailRoute = MailRouteImport.update({
   id: '/mail',
   path: '/mail',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MakeOrBuyMarksRoute = MakeOrBuyMarksRouteImport.update({
+  id: '/make-or-buy-marks',
+  path: '/make-or-buy-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MemoryEdgesRoute = MemoryEdgesRouteImport.update({
@@ -903,16 +919,6 @@ const WorkingCapitalMarksRoute = WorkingCapitalMarksRouteImport.update({
   path: '/working-capital-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
-const MakeOrBuyMarksRoute = MakeOrBuyMarksRouteImport.update({
-  id: '/make-or-buy-marks',
-  path: '/make-or-buy-marks',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CostAllocationMarksRoute = CostAllocationMarksRouteImport.update({
-  id: '/cost-allocation-marks',
-  path: '/cost-allocation-marks',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const YardMarksRoute = YardMarksRouteImport.update({
   id: '/yard-marks',
   path: '/yard-marks',
@@ -936,6 +942,7 @@ export interface FileRoutesByFullPath {
   '/calibration-marks': typeof CalibrationMarksRoute
   '/capa-marks': typeof CapaMarksRoute
   '/carbon-methods': typeof CarbonMethodsRoute
+  '/cargo-cover-marks': typeof CargoCoverMarksRoute
   '/cash-discounts': typeof CashDiscountsRoute
   '/cashflows': typeof CashflowsRoute
   '/channel-quotes': typeof ChannelQuotesRoute
@@ -952,6 +959,7 @@ export interface FileRoutesByFullPath {
   '/commodity-codes': typeof CommodityCodesRoute
   '/company-marks': typeof CompanyMarksRoute
   '/consignments': typeof ConsignmentsRoute
+  '/cost-allocation-marks': typeof CostAllocationMarksRoute
   '/cost-to-serve': typeof CostToServeRoute
   '/credit-reviews': typeof CreditReviewsRoute
   '/crm-leads': typeof CrmLeadsRoute
@@ -996,6 +1004,7 @@ export interface FileRoutesByFullPath {
   '/local-charges': typeof LocalChargesRoute
   '/locations': typeof LocationsRoute
   '/mail': typeof MailRoute
+  '/make-or-buy-marks': typeof MakeOrBuyMarksRoute
   '/memory-edges': typeof MemoryEdgesRoute
   '/money-cost': typeof MoneyCostRoute
   '/monitoring-schemes': typeof MonitoringSchemesRoute
@@ -1073,8 +1082,6 @@ export interface FileRoutesByFullPath {
   '/watchtower': typeof WatchtowerRoute
   '/weather-observations': typeof WeatherObservationsRoute
   '/working-capital-marks': typeof WorkingCapitalMarksRoute
-  '/make-or-buy-marks': typeof MakeOrBuyMarksRoute
-  '/cost-allocation-marks': typeof CostAllocationMarksRoute
   '/yard-marks': typeof YardMarksRoute
   '/tenancy/users': typeof TenancyUsersRoute
 }
@@ -1090,6 +1097,7 @@ export interface FileRoutesByTo {
   '/calibration-marks': typeof CalibrationMarksRoute
   '/capa-marks': typeof CapaMarksRoute
   '/carbon-methods': typeof CarbonMethodsRoute
+  '/cargo-cover-marks': typeof CargoCoverMarksRoute
   '/cash-discounts': typeof CashDiscountsRoute
   '/cashflows': typeof CashflowsRoute
   '/channel-quotes': typeof ChannelQuotesRoute
@@ -1106,6 +1114,7 @@ export interface FileRoutesByTo {
   '/commodity-codes': typeof CommodityCodesRoute
   '/company-marks': typeof CompanyMarksRoute
   '/consignments': typeof ConsignmentsRoute
+  '/cost-allocation-marks': typeof CostAllocationMarksRoute
   '/cost-to-serve': typeof CostToServeRoute
   '/credit-reviews': typeof CreditReviewsRoute
   '/crm-leads': typeof CrmLeadsRoute
@@ -1150,6 +1159,7 @@ export interface FileRoutesByTo {
   '/local-charges': typeof LocalChargesRoute
   '/locations': typeof LocationsRoute
   '/mail': typeof MailRoute
+  '/make-or-buy-marks': typeof MakeOrBuyMarksRoute
   '/memory-edges': typeof MemoryEdgesRoute
   '/money-cost': typeof MoneyCostRoute
   '/monitoring-schemes': typeof MonitoringSchemesRoute
@@ -1227,8 +1237,6 @@ export interface FileRoutesByTo {
   '/watchtower': typeof WatchtowerRoute
   '/weather-observations': typeof WeatherObservationsRoute
   '/working-capital-marks': typeof WorkingCapitalMarksRoute
-  '/make-or-buy-marks': typeof MakeOrBuyMarksRoute
-  '/cost-allocation-marks': typeof CostAllocationMarksRoute
   '/yard-marks': typeof YardMarksRoute
   '/tenancy/users': typeof TenancyUsersRoute
 }
@@ -1245,6 +1253,7 @@ export interface FileRoutesById {
   '/calibration-marks': typeof CalibrationMarksRoute
   '/capa-marks': typeof CapaMarksRoute
   '/carbon-methods': typeof CarbonMethodsRoute
+  '/cargo-cover-marks': typeof CargoCoverMarksRoute
   '/cash-discounts': typeof CashDiscountsRoute
   '/cashflows': typeof CashflowsRoute
   '/channel-quotes': typeof ChannelQuotesRoute
@@ -1261,6 +1270,7 @@ export interface FileRoutesById {
   '/commodity-codes': typeof CommodityCodesRoute
   '/company-marks': typeof CompanyMarksRoute
   '/consignments': typeof ConsignmentsRoute
+  '/cost-allocation-marks': typeof CostAllocationMarksRoute
   '/cost-to-serve': typeof CostToServeRoute
   '/credit-reviews': typeof CreditReviewsRoute
   '/crm-leads': typeof CrmLeadsRoute
@@ -1305,6 +1315,7 @@ export interface FileRoutesById {
   '/local-charges': typeof LocalChargesRoute
   '/locations': typeof LocationsRoute
   '/mail': typeof MailRoute
+  '/make-or-buy-marks': typeof MakeOrBuyMarksRoute
   '/memory-edges': typeof MemoryEdgesRoute
   '/money-cost': typeof MoneyCostRoute
   '/monitoring-schemes': typeof MonitoringSchemesRoute
@@ -1382,8 +1393,6 @@ export interface FileRoutesById {
   '/watchtower': typeof WatchtowerRoute
   '/weather-observations': typeof WeatherObservationsRoute
   '/working-capital-marks': typeof WorkingCapitalMarksRoute
-  '/make-or-buy-marks': typeof MakeOrBuyMarksRoute
-  '/cost-allocation-marks': typeof CostAllocationMarksRoute
   '/yard-marks': typeof YardMarksRoute
   '/tenancy/users': typeof TenancyUsersRoute
 }
@@ -1401,6 +1410,7 @@ export interface FileRouteTypes {
     | '/calibration-marks'
     | '/capa-marks'
     | '/carbon-methods'
+    | '/cargo-cover-marks'
     | '/cash-discounts'
     | '/cashflows'
     | '/channel-quotes'
@@ -1417,6 +1427,7 @@ export interface FileRouteTypes {
     | '/commodity-codes'
     | '/company-marks'
     | '/consignments'
+    | '/cost-allocation-marks'
     | '/cost-to-serve'
     | '/credit-reviews'
     | '/crm-leads'
@@ -1461,6 +1472,7 @@ export interface FileRouteTypes {
     | '/local-charges'
     | '/locations'
     | '/mail'
+    | '/make-or-buy-marks'
     | '/memory-edges'
     | '/money-cost'
     | '/monitoring-schemes'
@@ -1538,8 +1550,6 @@ export interface FileRouteTypes {
     | '/watchtower'
     | '/weather-observations'
     | '/working-capital-marks'
-    | '/make-or-buy-marks'
-    | '/cost-allocation-marks'
     | '/yard-marks'
     | '/tenancy/users'
   fileRoutesByTo: FileRoutesByTo
@@ -1555,6 +1565,7 @@ export interface FileRouteTypes {
     | '/calibration-marks'
     | '/capa-marks'
     | '/carbon-methods'
+    | '/cargo-cover-marks'
     | '/cash-discounts'
     | '/cashflows'
     | '/channel-quotes'
@@ -1571,6 +1582,7 @@ export interface FileRouteTypes {
     | '/commodity-codes'
     | '/company-marks'
     | '/consignments'
+    | '/cost-allocation-marks'
     | '/cost-to-serve'
     | '/credit-reviews'
     | '/crm-leads'
@@ -1615,6 +1627,7 @@ export interface FileRouteTypes {
     | '/local-charges'
     | '/locations'
     | '/mail'
+    | '/make-or-buy-marks'
     | '/memory-edges'
     | '/money-cost'
     | '/monitoring-schemes'
@@ -1692,8 +1705,6 @@ export interface FileRouteTypes {
     | '/watchtower'
     | '/weather-observations'
     | '/working-capital-marks'
-    | '/make-or-buy-marks'
-    | '/cost-allocation-marks'
     | '/yard-marks'
     | '/tenancy/users'
   id:
@@ -1709,6 +1720,7 @@ export interface FileRouteTypes {
     | '/calibration-marks'
     | '/capa-marks'
     | '/carbon-methods'
+    | '/cargo-cover-marks'
     | '/cash-discounts'
     | '/cashflows'
     | '/channel-quotes'
@@ -1725,6 +1737,7 @@ export interface FileRouteTypes {
     | '/commodity-codes'
     | '/company-marks'
     | '/consignments'
+    | '/cost-allocation-marks'
     | '/cost-to-serve'
     | '/credit-reviews'
     | '/crm-leads'
@@ -1769,6 +1782,7 @@ export interface FileRouteTypes {
     | '/local-charges'
     | '/locations'
     | '/mail'
+    | '/make-or-buy-marks'
     | '/memory-edges'
     | '/money-cost'
     | '/monitoring-schemes'
@@ -1846,8 +1860,6 @@ export interface FileRouteTypes {
     | '/watchtower'
     | '/weather-observations'
     | '/working-capital-marks'
-    | '/make-or-buy-marks'
-    | '/cost-allocation-marks'
     | '/yard-marks'
     | '/tenancy/users'
   fileRoutesById: FileRoutesById
@@ -1864,6 +1876,7 @@ export interface RootRouteChildren {
   CalibrationMarksRoute: typeof CalibrationMarksRoute
   CapaMarksRoute: typeof CapaMarksRoute
   CarbonMethodsRoute: typeof CarbonMethodsRoute
+  CargoCoverMarksRoute: typeof CargoCoverMarksRoute
   CashDiscountsRoute: typeof CashDiscountsRoute
   CashflowsRoute: typeof CashflowsRoute
   ChannelQuotesRoute: typeof ChannelQuotesRoute
@@ -1880,6 +1893,7 @@ export interface RootRouteChildren {
   CommodityCodesRoute: typeof CommodityCodesRoute
   CompanyMarksRoute: typeof CompanyMarksRoute
   ConsignmentsRoute: typeof ConsignmentsRoute
+  CostAllocationMarksRoute: typeof CostAllocationMarksRoute
   CostToServeRoute: typeof CostToServeRoute
   CreditReviewsRoute: typeof CreditReviewsRoute
   CrmLeadsRoute: typeof CrmLeadsRoute
@@ -1924,6 +1938,7 @@ export interface RootRouteChildren {
   LocalChargesRoute: typeof LocalChargesRoute
   LocationsRoute: typeof LocationsRoute
   MailRoute: typeof MailRoute
+  MakeOrBuyMarksRoute: typeof MakeOrBuyMarksRoute
   MemoryEdgesRoute: typeof MemoryEdgesRoute
   MoneyCostRoute: typeof MoneyCostRoute
   MonitoringSchemesRoute: typeof MonitoringSchemesRoute
@@ -2001,8 +2016,6 @@ export interface RootRouteChildren {
   WatchtowerRoute: typeof WatchtowerRoute
   WeatherObservationsRoute: typeof WeatherObservationsRoute
   WorkingCapitalMarksRoute: typeof WorkingCapitalMarksRoute
-  MakeOrBuyMarksRoute: typeof MakeOrBuyMarksRoute
-  CostAllocationMarksRoute: typeof CostAllocationMarksRoute
   YardMarksRoute: typeof YardMarksRoute
   TenancyUsersRoute: typeof TenancyUsersRoute
 }
@@ -2084,6 +2097,13 @@ declare module '@tanstack/react-router' {
       path: '/carbon-methods'
       fullPath: '/carbon-methods'
       preLoaderRoute: typeof CarbonMethodsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cargo-cover-marks': {
+      id: '/cargo-cover-marks'
+      path: '/cargo-cover-marks'
+      fullPath: '/cargo-cover-marks'
+      preLoaderRoute: typeof CargoCoverMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cash-discounts': {
@@ -2196,6 +2216,13 @@ declare module '@tanstack/react-router' {
       path: '/consignments'
       fullPath: '/consignments'
       preLoaderRoute: typeof ConsignmentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cost-allocation-marks': {
+      id: '/cost-allocation-marks'
+      path: '/cost-allocation-marks'
+      fullPath: '/cost-allocation-marks'
+      preLoaderRoute: typeof CostAllocationMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cost-to-serve': {
@@ -2504,6 +2531,13 @@ declare module '@tanstack/react-router' {
       path: '/mail'
       fullPath: '/mail'
       preLoaderRoute: typeof MailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/make-or-buy-marks': {
+      id: '/make-or-buy-marks'
+      path: '/make-or-buy-marks'
+      fullPath: '/make-or-buy-marks'
+      preLoaderRoute: typeof MakeOrBuyMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/memory-edges': {
@@ -3045,20 +3079,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorkingCapitalMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/make-or-buy-marks': {
-      id: '/make-or-buy-marks'
-      path: '/make-or-buy-marks'
-      fullPath: '/make-or-buy-marks'
-      preLoaderRoute: typeof MakeOrBuyMarksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/cost-allocation-marks': {
-      id: '/cost-allocation-marks'
-      path: '/cost-allocation-marks'
-      fullPath: '/cost-allocation-marks'
-      preLoaderRoute: typeof CostAllocationMarksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/yard-marks': {
       id: '/yard-marks'
       path: '/yard-marks'
@@ -3088,6 +3108,7 @@ const rootRouteChildren: RootRouteChildren = {
   CalibrationMarksRoute: CalibrationMarksRoute,
   CapaMarksRoute: CapaMarksRoute,
   CarbonMethodsRoute: CarbonMethodsRoute,
+  CargoCoverMarksRoute: CargoCoverMarksRoute,
   CashDiscountsRoute: CashDiscountsRoute,
   CashflowsRoute: CashflowsRoute,
   ChannelQuotesRoute: ChannelQuotesRoute,
@@ -3104,6 +3125,7 @@ const rootRouteChildren: RootRouteChildren = {
   CommodityCodesRoute: CommodityCodesRoute,
   CompanyMarksRoute: CompanyMarksRoute,
   ConsignmentsRoute: ConsignmentsRoute,
+  CostAllocationMarksRoute: CostAllocationMarksRoute,
   CostToServeRoute: CostToServeRoute,
   CreditReviewsRoute: CreditReviewsRoute,
   CrmLeadsRoute: CrmLeadsRoute,
@@ -3148,6 +3170,7 @@ const rootRouteChildren: RootRouteChildren = {
   LocalChargesRoute: LocalChargesRoute,
   LocationsRoute: LocationsRoute,
   MailRoute: MailRoute,
+  MakeOrBuyMarksRoute: MakeOrBuyMarksRoute,
   MemoryEdgesRoute: MemoryEdgesRoute,
   MoneyCostRoute: MoneyCostRoute,
   MonitoringSchemesRoute: MonitoringSchemesRoute,
@@ -3225,8 +3248,6 @@ const rootRouteChildren: RootRouteChildren = {
   WatchtowerRoute: WatchtowerRoute,
   WeatherObservationsRoute: WeatherObservationsRoute,
   WorkingCapitalMarksRoute: WorkingCapitalMarksRoute,
-  MakeOrBuyMarksRoute: MakeOrBuyMarksRoute,
-  CostAllocationMarksRoute: CostAllocationMarksRoute,
   YardMarksRoute: YardMarksRoute,
   TenancyUsersRoute: TenancyUsersRoute,
 }

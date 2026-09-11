@@ -858,6 +858,10 @@ class InvalidCostAllocationMark(DomainError):
     """EXP2.3: HITL cost allocation — nie allocation SQL."""
 
 
+class InvalidCargoCoverMark(DomainError):
+    """EXP2.4: HITL cargo cover — nie live insurance."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **340.0** EXP2.3 HITL `cost_allocation_mark`
-- **Etap:** Plan — wolno `/plan-modul` **341.0** EXP2.4
-- **Następny:** **341.0** EXP2.4 cargo_cover (węższa z kolejki; delta do utworzenia).
+- **Ostatni plaster:** **341.0** EXP2.4 HITL `cargo_cover_mark`
+- **Etap:** Plan — wolno `/plan-modul` **342.0** EXP2.5
+- **Następny:** **342.0** EXP2.5 sanctions (węższa z kolejki; delta do utworzenia).
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
