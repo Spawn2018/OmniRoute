@@ -15926,6 +15926,80 @@
         ]
       }
     },
+    "/api/v1/cabotage-marks": {
+      "get": {
+        "tags": [
+          "cabotage-marks"
+        ],
+        "summary": "List Cabotage Marks",
+        "operationId": "list_cabotage_marks_api_v1_cabotage_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CabotageMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Cabotage Marks Api V1 Cabotage Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "cabotage-marks"
+        ],
+        "summary": "Create Cabotage Mark",
+        "operationId": "create_cabotage_mark_api_v1_cabotage_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CabotageMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CabotageMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/health": {
       "get": {
         "summary": "Health",
@@ -16652,6 +16726,65 @@
           "source_ref"
         ],
         "title": "BookkeepingResponse"
+      },
+      "CabotageMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "cabotage_kind": {
+            "type": "string",
+            "title": "Cabotage Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "cabotage_kind",
+          "source_ref"
+        ],
+        "title": "CabotageMarkCreate"
+      },
+      "CabotageMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "cabotage_kind": {
+            "type": "string",
+            "title": "Cabotage Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "cabotage_kind",
+          "source_ref"
+        ],
+        "title": "CabotageMarkResponse"
       },
       "CalibrationMarkCreate": {
         "properties": {

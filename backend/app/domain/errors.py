@@ -886,6 +886,10 @@ class InvalidWhatIfMark(DomainError):
     """EXP2.10: HITL what-if — nie silnik scenariusza."""
 
 
+class InvalidCabotageMark(DomainError):
+    """EXP2.11: HITL kabotaż — nie silnik / RTPD."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

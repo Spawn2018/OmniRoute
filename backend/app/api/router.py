@@ -8,6 +8,7 @@ from app.api import (
     bonded_marks,
     booking_instructions,
     bookkeeping,
+    cabotage_marks,
     calibration_marks,
     capa_marks,
     carbon_methods,
@@ -329,6 +330,7 @@ api_router.include_router(locations.router)
 api_router.include_router(terminals.router)
 api_router.include_router(time_to_fix_marks.router)
 api_router.include_router(what_if_marks.router)
+api_router.include_router(cabotage_marks.router)
 
 
 @api_router.api_route(

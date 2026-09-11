@@ -17,6 +17,7 @@ import { Route as AsnsRouteImport } from './routes/asns'
 import { Route as BillingMarksRouteImport } from './routes/billing-marks'
 import { Route as BondedMarksRouteImport } from './routes/bonded-marks'
 import { Route as BookkeepingRouteImport } from './routes/bookkeeping'
+import { Route as CabotageMarksRouteImport } from './routes/cabotage-marks'
 import { Route as CalibrationMarksRouteImport } from './routes/calibration-marks'
 import { Route as CapaMarksRouteImport } from './routes/capa-marks'
 import { Route as CarbonMethodsRouteImport } from './routes/carbon-methods'
@@ -207,6 +208,11 @@ const BondedMarksRoute = BondedMarksRouteImport.update({
 const BookkeepingRoute = BookkeepingRouteImport.update({
   id: '/bookkeeping',
   path: '/bookkeeping',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CabotageMarksRoute = CabotageMarksRouteImport.update({
+  id: '/cabotage-marks',
+  path: '/cabotage-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CalibrationMarksRoute = CalibrationMarksRouteImport.update({
@@ -975,6 +981,7 @@ export interface FileRoutesByFullPath {
   '/billing-marks': typeof BillingMarksRoute
   '/bonded-marks': typeof BondedMarksRoute
   '/bookkeeping': typeof BookkeepingRoute
+  '/cabotage-marks': typeof CabotageMarksRoute
   '/calibration-marks': typeof CalibrationMarksRoute
   '/capa-marks': typeof CapaMarksRoute
   '/carbon-methods': typeof CarbonMethodsRoute
@@ -1136,6 +1143,7 @@ export interface FileRoutesByTo {
   '/billing-marks': typeof BillingMarksRoute
   '/bonded-marks': typeof BondedMarksRoute
   '/bookkeeping': typeof BookkeepingRoute
+  '/cabotage-marks': typeof CabotageMarksRoute
   '/calibration-marks': typeof CalibrationMarksRoute
   '/capa-marks': typeof CapaMarksRoute
   '/carbon-methods': typeof CarbonMethodsRoute
@@ -1298,6 +1306,7 @@ export interface FileRoutesById {
   '/billing-marks': typeof BillingMarksRoute
   '/bonded-marks': typeof BondedMarksRoute
   '/bookkeeping': typeof BookkeepingRoute
+  '/cabotage-marks': typeof CabotageMarksRoute
   '/calibration-marks': typeof CalibrationMarksRoute
   '/capa-marks': typeof CapaMarksRoute
   '/carbon-methods': typeof CarbonMethodsRoute
@@ -1461,6 +1470,7 @@ export interface FileRouteTypes {
     | '/billing-marks'
     | '/bonded-marks'
     | '/bookkeeping'
+    | '/cabotage-marks'
     | '/calibration-marks'
     | '/capa-marks'
     | '/carbon-methods'
@@ -1622,6 +1632,7 @@ export interface FileRouteTypes {
     | '/billing-marks'
     | '/bonded-marks'
     | '/bookkeeping'
+    | '/cabotage-marks'
     | '/calibration-marks'
     | '/capa-marks'
     | '/carbon-methods'
@@ -1783,6 +1794,7 @@ export interface FileRouteTypes {
     | '/billing-marks'
     | '/bonded-marks'
     | '/bookkeeping'
+    | '/cabotage-marks'
     | '/calibration-marks'
     | '/capa-marks'
     | '/carbon-methods'
@@ -1945,6 +1957,7 @@ export interface RootRouteChildren {
   BillingMarksRoute: typeof BillingMarksRoute
   BondedMarksRoute: typeof BondedMarksRoute
   BookkeepingRoute: typeof BookkeepingRoute
+  CabotageMarksRoute: typeof CabotageMarksRoute
   CalibrationMarksRoute: typeof CalibrationMarksRoute
   CapaMarksRoute: typeof CapaMarksRoute
   CarbonMethodsRoute: typeof CarbonMethodsRoute
@@ -2154,6 +2167,13 @@ declare module '@tanstack/react-router' {
       path: '/bookkeeping'
       fullPath: '/bookkeeping'
       preLoaderRoute: typeof BookkeepingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cabotage-marks': {
+      id: '/cabotage-marks'
+      path: '/cabotage-marks'
+      fullPath: '/cabotage-marks'
+      preLoaderRoute: typeof CabotageMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/calibration-marks': {
@@ -3225,6 +3245,7 @@ const rootRouteChildren: RootRouteChildren = {
   BillingMarksRoute: BillingMarksRoute,
   BondedMarksRoute: BondedMarksRoute,
   BookkeepingRoute: BookkeepingRoute,
+  CabotageMarksRoute: CabotageMarksRoute,
   CalibrationMarksRoute: CalibrationMarksRoute,
   CapaMarksRoute: CapaMarksRoute,
   CarbonMethodsRoute: CarbonMethodsRoute,

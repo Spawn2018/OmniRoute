@@ -453,6 +453,50 @@ export type BookkeepingResponse = {
 };
 
 /**
+ * CabotageMarkCreate
+ */
+export type CabotageMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Cabotage Kind
+     */
+    cabotage_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CabotageMarkResponse
+ */
+export type CabotageMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Cabotage Kind
+     */
+    cabotage_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * CalibrationMarkCreate
  */
 export type CalibrationMarkCreate = {
@@ -19421,6 +19465,49 @@ export type CreateWhatIfMarkApiV1WhatIfMarksPostResponses = {
 };
 
 export type CreateWhatIfMarkApiV1WhatIfMarksPostResponse = CreateWhatIfMarkApiV1WhatIfMarksPostResponses[keyof CreateWhatIfMarkApiV1WhatIfMarksPostResponses];
+
+export type ListCabotageMarksApiV1CabotageMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/cabotage-marks';
+};
+
+export type ListCabotageMarksApiV1CabotageMarksGetResponses = {
+    /**
+     * Response List Cabotage Marks Api V1 Cabotage Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<CabotageMarkResponse>;
+};
+
+export type ListCabotageMarksApiV1CabotageMarksGetResponse = ListCabotageMarksApiV1CabotageMarksGetResponses[keyof ListCabotageMarksApiV1CabotageMarksGetResponses];
+
+export type CreateCabotageMarkApiV1CabotageMarksPostData = {
+    body: CabotageMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/cabotage-marks';
+};
+
+export type CreateCabotageMarkApiV1CabotageMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCabotageMarkApiV1CabotageMarksPostError = CreateCabotageMarkApiV1CabotageMarksPostErrors[keyof CreateCabotageMarkApiV1CabotageMarksPostErrors];
+
+export type CreateCabotageMarkApiV1CabotageMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CabotageMarkResponse;
+};
+
+export type CreateCabotageMarkApiV1CabotageMarksPostResponse = CreateCabotageMarkApiV1CabotageMarksPostResponses[keyof CreateCabotageMarkApiV1CabotageMarksPostResponses];
 
 export type HealthHealthGetData = {
     body?: never;
