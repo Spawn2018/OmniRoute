@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **276.0** leftover HITL `purchase_order` nagłówek **Następny:** kod 277.0 leftover CT1 HITL `po_line`. Delta zaakceptowana (`/noc`) — wolno `/plaster`. 276.0 = nagłówek; 277.0 = linia; nie ASN. CT8 AIS = park live (TO_VERIFY licencja). Nie CI1 extract. Nie live p44. Leftover HITL/SQL = praca. Park = live HTTP bez testu albo sekretu, nie skip pola. Live M-02 konsument / Auth0 I1/I2 / portale / giełda live / p44 live tylko gdy ten ID jest bieżącym Q. P6c auto-award zakaz. Nic z pinu nie wypada. Nie zgaduj 71–277.
+**Stan (z CURRENT.md):** **277.0** leftover HITL `po_line` **Następny:** leftover CT1 HITL ASN / reszta pinu 2026-09-08c. CT8 AIS = park live (TO_VERIFY licencja). Nie CI1 extract. Nie live p44. 277.0 = linia SKU, nie ASN. Leftover HITL/SQL = praca. Park = live HTTP bez testu albo sekretu, nie skip pola. Live M-02 konsument / Auth0 I1/I2 / portale / giełda live / p44 live tylko gdy ten ID jest bieżącym Q. P6c auto-award zakaz. Nic z pinu nie wypada. Nie zgaduj 71–277.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

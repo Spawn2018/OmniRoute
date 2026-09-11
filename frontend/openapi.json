@@ -8930,6 +8930,80 @@
         ]
       }
     },
+    "/api/v1/po-lines": {
+      "get": {
+        "tags": [
+          "po-lines"
+        ],
+        "summary": "List Po Lines",
+        "operationId": "list_po_lines_api_v1_po_lines_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PoLineResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Po Lines Api V1 Po Lines Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "po-lines"
+        ],
+        "summary": "Create Po Line",
+        "operationId": "create_po_line_api_v1_po_lines_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PoLineCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PoLineResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/terminal-slot-connectors": {
       "get": {
         "tags": [
@@ -20530,6 +20604,202 @@
           "source_ref"
         ],
         "title": "PlanSnapshotResponse"
+      },
+      "PoLineCreate": {
+        "properties": {
+          "purchase_order_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Purchase Order Id"
+          },
+          "line_code": {
+            "type": "string",
+            "title": "Line Code"
+          },
+          "sku_code": {
+            "type": "string",
+            "title": "Sku Code"
+          },
+          "qty": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              }
+            ],
+            "title": "Qty"
+          },
+          "uom_code": {
+            "type": "string",
+            "title": "Uom Code"
+          },
+          "plant_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Plant Label"
+          },
+          "batch_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Batch Label"
+          },
+          "serial_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Serial Label"
+          },
+          "coo_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Coo Label"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "purchase_order_id",
+          "line_code",
+          "sku_code",
+          "qty",
+          "uom_code",
+          "source_ref"
+        ],
+        "title": "PoLineCreate"
+      },
+      "PoLineResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "purchase_order_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Purchase Order Id"
+          },
+          "line_code": {
+            "type": "string",
+            "title": "Line Code"
+          },
+          "sku_code": {
+            "type": "string",
+            "title": "Sku Code"
+          },
+          "qty": {
+            "type": "string",
+            "title": "Qty"
+          },
+          "uom_code": {
+            "type": "string",
+            "title": "Uom Code"
+          },
+          "plant_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Plant Label"
+          },
+          "batch_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Batch Label"
+          },
+          "serial_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Serial Label"
+          },
+          "coo_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Coo Label"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "purchase_order_id",
+          "line_code",
+          "sku_code",
+          "qty",
+          "uom_code",
+          "plant_label",
+          "batch_label",
+          "serial_label",
+          "coo_label",
+          "source_ref"
+        ],
+        "title": "PoLineResponse"
       },
       "PortCreate": {
         "properties": {

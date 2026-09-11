@@ -108,6 +108,7 @@ from app.models.customer_contract import CustomerContract  # noqa: F401
 from app.models.tenant_contract_kek import TenantContractKek  # noqa: F401
 from app.models.visibility_connector import VisibilityConnector  # noqa: F401
 from app.models.purchase_order import PurchaseOrder  # noqa: F401
+from app.models.po_line import PoLine  # noqa: F401
 from app.models.exchange_connector import ExchangeConnector  # noqa: F401
 from app.models.idp_connector import IdpConnector  # noqa: F401
 from app.models.terminal_slot_connector import TerminalSlotConnector  # noqa: F401

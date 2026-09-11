@@ -7,6 +7,6 @@ Na `/purchase-orders` dopisujesz **nagłówek zamówienia zakupu** tenanta: kod 
 3. Podaj `source_ref` (`fixture://purchase-order/…` albo `tenant:manual`).
 4. „Zapisz zamówienie zakupu”. Ten sam kod albo to samo `source_ref` u tenanta nie wejdzie drugi raz.
 
-Czego tu nie ma: `po_line`, SKU, qty, ASN, EDI 856, automatyczne zlecenie, kwota. Marża zostaje na `/charges`. Zlecenie zostaje na `/shipments`. Przeniesienie pól oferty zostaje na `/quotations`.
+Czego tu nie ma: ASN, EDI 856, automatyczne zlecenie, kwota. Linia SKU jest na `/po-lines`. Marża zostaje na `/charges`. Zlecenie zostaje na `/shipments`. Przeniesienie pól oferty zostaje na `/quotations`.
 
 Nazwy w kodzie: `purchase_order` · `po_code` · `plant_label` · `source_ref`.

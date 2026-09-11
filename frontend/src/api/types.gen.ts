@@ -4859,6 +4859,106 @@ export type PlanSnapshotResponse = {
 };
 
 /**
+ * PoLineCreate
+ */
+export type PoLineCreate = {
+    /**
+     * Purchase Order Id
+     */
+    purchase_order_id: string;
+    /**
+     * Line Code
+     */
+    line_code: string;
+    /**
+     * Sku Code
+     */
+    sku_code: string;
+    /**
+     * Qty
+     */
+    qty: string | number | number | boolean;
+    /**
+     * Uom Code
+     */
+    uom_code: string;
+    /**
+     * Plant Label
+     */
+    plant_label?: string | null;
+    /**
+     * Batch Label
+     */
+    batch_label?: string | null;
+    /**
+     * Serial Label
+     */
+    serial_label?: string | null;
+    /**
+     * Coo Label
+     */
+    coo_label?: string | null;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * PoLineResponse
+ */
+export type PoLineResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Purchase Order Id
+     */
+    purchase_order_id: string;
+    /**
+     * Line Code
+     */
+    line_code: string;
+    /**
+     * Sku Code
+     */
+    sku_code: string;
+    /**
+     * Qty
+     */
+    qty: string;
+    /**
+     * Uom Code
+     */
+    uom_code: string;
+    /**
+     * Plant Label
+     */
+    plant_label: string | null;
+    /**
+     * Batch Label
+     */
+    batch_label: string | null;
+    /**
+     * Serial Label
+     */
+    serial_label: string | null;
+    /**
+     * Coo Label
+     */
+    coo_label: string | null;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * PortCreate
  */
 export type PortCreate = {
@@ -13242,6 +13342,49 @@ export type CreatePurchaseOrderApiV1PurchaseOrdersPostResponses = {
 };
 
 export type CreatePurchaseOrderApiV1PurchaseOrdersPostResponse = CreatePurchaseOrderApiV1PurchaseOrdersPostResponses[keyof CreatePurchaseOrderApiV1PurchaseOrdersPostResponses];
+
+export type ListPoLinesApiV1PoLinesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/po-lines';
+};
+
+export type ListPoLinesApiV1PoLinesGetResponses = {
+    /**
+     * Response List Po Lines Api V1 Po Lines Get
+     *
+     * Successful Response
+     */
+    200: Array<PoLineResponse>;
+};
+
+export type ListPoLinesApiV1PoLinesGetResponse = ListPoLinesApiV1PoLinesGetResponses[keyof ListPoLinesApiV1PoLinesGetResponses];
+
+export type CreatePoLineApiV1PoLinesPostData = {
+    body: PoLineCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/po-lines';
+};
+
+export type CreatePoLineApiV1PoLinesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreatePoLineApiV1PoLinesPostError = CreatePoLineApiV1PoLinesPostErrors[keyof CreatePoLineApiV1PoLinesPostErrors];
+
+export type CreatePoLineApiV1PoLinesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: PoLineResponse;
+};
+
+export type CreatePoLineApiV1PoLinesPostResponse = CreatePoLineApiV1PoLinesPostResponses[keyof CreatePoLineApiV1PoLinesPostResponses];
 
 export type ListTerminalSlotConnectorsApiV1TerminalSlotConnectorsGetData = {
     body?: never;

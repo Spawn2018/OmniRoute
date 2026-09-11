@@ -9,5 +9,6 @@ Katalog nagłówka zamówienia zakupu per tenant. HITL kod + opcjonalny zakład.
 - Katalog INSERT, bez UPDATE/DELETE
 - ExtractionService nie importuje tego BC
 - Job: `/purchase-orders`
+- Linia SKU: [po-line.md](po-line.md) (277.0)
 
 Delta: [276.0](../deltas/archived/276.0-purchase-order.md).

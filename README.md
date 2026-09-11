@@ -86,10 +86,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **276.0** leftover HITL `purchase_order` nagłówek
-- **Etap:** Kod
-- **Następny:** kod 277.0 leftover CT1 HITL `po_line`. Delta zaakceptowana (`/noc`) — wolno `/plaster`. 276.0 = nagłówek; 277.0 = linia; nie ASN. CT8 AIS = park live (TO_VERIFY licencja). Nie CI1 extract. Nie live p44. Leftover HITL/SQL = praca. Park = live HTTP bez testu albo sekretu, nie skip pola. Live M-02 konsument / Auth0 I1/I2 / portale / giełda live / p44 live tylko gdy ten ID jest bieżącym Q. P6c auto-award zakaz. Nic z pinu nie wypada. Nie zgaduj 71–277.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **277.0** leftover HITL `po_line`
+- **Etap:** Plan
+- **Następny:** leftover CT1 HITL ASN / reszta pinu 2026-09-08c. CT8 AIS = park live (TO_VERIFY licencja). Nie CI1 extract. Nie live p44. 277.0 = linia SKU, nie ASN. Leftover HITL/SQL = praca. Park = live HTTP bez testu albo sekretu, nie skip pola. Live M-02 konsument / Auth0 I1/I2 / portale / giełda live / p44 live tylko gdy ten ID jest bieżącym Q. P6c auto-award zakaz. Nic z pinu nie wypada. Nie zgaduj 71–277.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

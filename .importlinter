@@ -412,6 +412,7 @@ forbidden_modules =
     app.services.purchase_orders
     app.repositories.purchase_orders
     app.models.purchase_order
+    app.models.po_line
     app.services.exchange_connectors
     app.repositories.exchange_connectors
     app.models.exchange_connector

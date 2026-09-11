@@ -76,6 +76,7 @@ import { Route as PartyScorecardsRouteImport } from './routes/party-scorecards'
 import { Route as PaymentsRouteImport } from './routes/payments'
 import { Route as PlanSnapshotsRouteImport } from './routes/plan-snapshots'
 import { Route as PlanningRouteImport } from './routes/planning'
+import { Route as PoLinesRouteImport } from './routes/po-lines'
 import { Route as PortSurchargesRouteImport } from './routes/port-surcharges'
 import { Route as PortsRouteImport } from './routes/ports'
 import { Route as PredictionLedgersRouteImport } from './routes/prediction-ledgers'
@@ -459,6 +460,11 @@ const PlanningRoute = PlanningRouteImport.update({
   path: '/planning',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PoLinesRoute = PoLinesRouteImport.update({
+  id: '/po-lines',
+  path: '/po-lines',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PortSurchargesRoute = PortSurchargesRouteImport.update({
   id: '/port-surcharges',
   path: '/port-surcharges',
@@ -763,6 +769,7 @@ export interface FileRoutesByFullPath {
   '/payments': typeof PaymentsRoute
   '/plan-snapshots': typeof PlanSnapshotsRoute
   '/planning': typeof PlanningRoute
+  '/po-lines': typeof PoLinesRoute
   '/port-surcharges': typeof PortSurchargesRoute
   '/ports': typeof PortsRoute
   '/prediction-ledgers': typeof PredictionLedgersRoute
@@ -879,6 +886,7 @@ export interface FileRoutesByTo {
   '/payments': typeof PaymentsRoute
   '/plan-snapshots': typeof PlanSnapshotsRoute
   '/planning': typeof PlanningRoute
+  '/po-lines': typeof PoLinesRoute
   '/port-surcharges': typeof PortSurchargesRoute
   '/ports': typeof PortsRoute
   '/prediction-ledgers': typeof PredictionLedgersRoute
@@ -996,6 +1004,7 @@ export interface FileRoutesById {
   '/payments': typeof PaymentsRoute
   '/plan-snapshots': typeof PlanSnapshotsRoute
   '/planning': typeof PlanningRoute
+  '/po-lines': typeof PoLinesRoute
   '/port-surcharges': typeof PortSurchargesRoute
   '/ports': typeof PortsRoute
   '/prediction-ledgers': typeof PredictionLedgersRoute
@@ -1114,6 +1123,7 @@ export interface FileRouteTypes {
     | '/payments'
     | '/plan-snapshots'
     | '/planning'
+    | '/po-lines'
     | '/port-surcharges'
     | '/ports'
     | '/prediction-ledgers'
@@ -1230,6 +1240,7 @@ export interface FileRouteTypes {
     | '/payments'
     | '/plan-snapshots'
     | '/planning'
+    | '/po-lines'
     | '/port-surcharges'
     | '/ports'
     | '/prediction-ledgers'
@@ -1346,6 +1357,7 @@ export interface FileRouteTypes {
     | '/payments'
     | '/plan-snapshots'
     | '/planning'
+    | '/po-lines'
     | '/port-surcharges'
     | '/ports'
     | '/prediction-ledgers'
@@ -1463,6 +1475,7 @@ export interface RootRouteChildren {
   PaymentsRoute: typeof PaymentsRoute
   PlanSnapshotsRoute: typeof PlanSnapshotsRoute
   PlanningRoute: typeof PlanningRoute
+  PoLinesRoute: typeof PoLinesRoute
   PortSurchargesRoute: typeof PortSurchargesRoute
   PortsRoute: typeof PortsRoute
   PredictionLedgersRoute: typeof PredictionLedgersRoute
@@ -1983,6 +1996,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlanningRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/po-lines': {
+      id: '/po-lines'
+      path: '/po-lines'
+      fullPath: '/po-lines'
+      preLoaderRoute: typeof PoLinesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/port-surcharges': {
       id: '/port-surcharges'
       path: '/port-surcharges'
@@ -2383,6 +2403,7 @@ const rootRouteChildren: RootRouteChildren = {
   PaymentsRoute: PaymentsRoute,
   PlanSnapshotsRoute: PlanSnapshotsRoute,
   PlanningRoute: PlanningRoute,
+  PoLinesRoute: PoLinesRoute,
   PortSurchargesRoute: PortSurchargesRoute,
   PortsRoute: PortsRoute,
   PredictionLedgersRoute: PredictionLedgersRoute,

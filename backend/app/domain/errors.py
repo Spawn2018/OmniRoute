@@ -720,3 +720,7 @@ class InvalidVisibilityConnector(DomainError):
 
 class InvalidPurchaseOrder(DomainError):
     """CT1: HITL nagłówek zamówienia zakupu — nie linia SKU i nie ASN."""
+
+
+class InvalidPoLine(DomainError):
+    """CT1: HITL linia zamówienia zakupu — nie ASN i nie kwota."""

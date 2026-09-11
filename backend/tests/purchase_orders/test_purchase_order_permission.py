@@ -22,6 +22,20 @@ _CALLS = (
             "source_ref": "fixture://purchase-order/pl-1",
         },
     ),
+    ("GET", "/api/v1/po-lines", None, None),
+    (
+        "POST",
+        "/api/v1/po-lines",
+        None,
+        {
+            "purchase_order_id": "00000000-0000-0000-0000-000000000001",
+            "line_code": "line_01",
+            "sku_code": "SKU-4401",
+            "qty": "1",
+            "uom_code": "pcs",
+            "source_ref": "fixture://po-line/pl-1",
+        },
+    ),
 )
 
 
