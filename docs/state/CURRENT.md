@@ -4,17 +4,17 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute  
 
-**Ostatni plaster:** **333.0** G13 HITL `edi_map_mark`  
+**Ostatni plaster:** **334.0** G14 HITL `aeo_dossier_mark`  
 
-**Etap:** Plan — wolno `/plan-modul` **334.0** G14  
+**Etap:** Plan — wolno `/plan-modul` **335.0** G15  
 
 **Noc:** `/noc 10` do 2026-09-12T10:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).  
 
-**Następny:** **334.0** G14 AEO dossier (węższa z kolejki; delta do utworzenia).  
+**Następny:** **335.0** G15 yard / waga / EIR (węższa z kolejki; delta do utworzenia).  
 
-Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44 · extract · CI5 kara SQL · wróżba punktowa · CI6 kwoty · S11 auto-send · EBITDA SQL · egzekucja 409 · MAE SQL · outcome SQL · crm_opportunity · activity · cold auto-send · bank stakeholder · presentation_due · teatr PUESC · wymiary OOG · LLM-VRP · solver OR · kara kierowcy · work_order · F1 KSeF live · eIDAS crypto · wipe · drugi tenant · company_id FK · WMS e-com · SENT-UE · filer live · silent write. Nie zgaduj 71–334.
+Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44 · extract · CI5 kara SQL · wróżba punktowa · CI6 kwoty · S11 auto-send · EBITDA SQL · egzekucja 409 · MAE SQL · outcome SQL · crm_opportunity · activity · cold auto-send · bank stakeholder · presentation_due · teatr PUESC · wymiary OOG · LLM-VRP · solver OR · kara kierowcy · work_order · F1 KSeF live · eIDAS crypto · wipe · drugi tenant · company_id FK · WMS e-com · SENT-UE · filer live · silent write · zestaw party_document · yard live. Nie zgaduj 71–335.
 
-**Spec (jedyna na sesję):** brak otwartej delty — `/plan-modul` G14.
+**Spec (jedyna na sesję):** brak otwartej delty — `/plan-modul` G15.
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
@@ -22,4 +22,4 @@ Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow 
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-11:** Plaster **333.0** zamknięty (`/noc`) — HITL `edi_map_mark` bez silent write.
+**2026-09-11:** Plaster **334.0** zamknięty (`/noc`) — HITL `aeo_dossier_mark` bez zestawu C8.

@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AeoDossierMarksRouteImport } from './routes/aeo-dossier-marks'
 import { Route as AiRouteImport } from './routes/ai'
 import { Route as AirRouteImport } from './routes/air'
 import { Route as AsnsRouteImport } from './routes/asns'
@@ -158,6 +159,11 @@ import { Route as TenancyUsersRouteImport } from './routes/tenancy.users'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AeoDossierMarksRoute = AeoDossierMarksRouteImport.update({
+  id: '/aeo-dossier-marks',
+  path: '/aeo-dossier-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AiRoute = AiRouteImport.update({
@@ -884,6 +890,7 @@ const TenancyUsersRoute = TenancyUsersRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/aeo-dossier-marks': typeof AeoDossierMarksRoute
   '/ai': typeof AiRoute
   '/air': typeof AirRoute
   '/asns': typeof AsnsRoute
@@ -1031,6 +1038,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/aeo-dossier-marks': typeof AeoDossierMarksRoute
   '/ai': typeof AiRoute
   '/air': typeof AirRoute
   '/asns': typeof AsnsRoute
@@ -1179,6 +1187,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/aeo-dossier-marks': typeof AeoDossierMarksRoute
   '/ai': typeof AiRoute
   '/air': typeof AirRoute
   '/asns': typeof AsnsRoute
@@ -1328,6 +1337,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/aeo-dossier-marks'
     | '/ai'
     | '/air'
     | '/asns'
@@ -1475,6 +1485,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/aeo-dossier-marks'
     | '/ai'
     | '/air'
     | '/asns'
@@ -1622,6 +1633,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/aeo-dossier-marks'
     | '/ai'
     | '/air'
     | '/asns'
@@ -1770,6 +1782,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AeoDossierMarksRoute: typeof AeoDossierMarksRoute
   AiRoute: typeof AiRoute
   AirRoute: typeof AirRoute
   AsnsRoute: typeof AsnsRoute
@@ -1923,6 +1936,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/aeo-dossier-marks': {
+      id: '/aeo-dossier-marks'
+      path: '/aeo-dossier-marks'
+      fullPath: '/aeo-dossier-marks'
+      preLoaderRoute: typeof AeoDossierMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ai': {
@@ -2938,6 +2958,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AeoDossierMarksRoute: AeoDossierMarksRoute,
   AiRoute: AiRoute,
   AirRoute: AirRoute,
   AsnsRoute: AsnsRoute,

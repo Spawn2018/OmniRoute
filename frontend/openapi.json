@@ -10188,6 +10188,80 @@
         ]
       }
     },
+    "/api/v1/aeo-dossier-marks": {
+      "get": {
+        "tags": [
+          "aeo-dossier-marks"
+        ],
+        "summary": "List Aeo Dossier Marks",
+        "operationId": "list_aeo_dossier_marks_api_v1_aeo_dossier_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/AeoDossierMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Aeo Dossier Marks Api V1 Aeo Dossier Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "aeo-dossier-marks"
+        ],
+        "summary": "Create Aeo Dossier Mark",
+        "operationId": "create_aeo_dossier_mark_api_v1_aeo_dossier_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AeoDossierMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AeoDossierMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/asns": {
       "get": {
         "tags": [
@@ -14931,6 +15005,65 @@
   },
   "components": {
     "schemas": {
+      "AeoDossierMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "dossier_kind": {
+            "type": "string",
+            "title": "Dossier Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "dossier_kind",
+          "source_ref"
+        ],
+        "title": "AeoDossierMarkCreate"
+      },
+      "AeoDossierMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "dossier_kind": {
+            "type": "string",
+            "title": "Dossier Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "dossier_kind",
+          "source_ref"
+        ],
+        "title": "AeoDossierMarkResponse"
+      },
       "AppUserResponse": {
         "properties": {
           "id": {

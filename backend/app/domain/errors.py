@@ -830,6 +830,10 @@ class InvalidEdiMapMark(DomainError):
     """G13: HITL mapa pól EDI — nie silent write."""
 
 
+class InvalidAeoDossierMark(DomainError):
+    """G14: HITL dossier AEO — nie party_document."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

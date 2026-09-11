@@ -1,3 +1,4 @@
+- **334.0 leftover:** zestaw party_document; klej C8; scoring osoby. 334.0 = HITL `aeo_dossier_mark` (dossier_kind).
 - **333.0 leftover:** parser EDI live; silent write; draft auto. 333.0 = HITL `edi_map_mark` (map_kind).
 - **332.0 leftover:** filer live; deadline SQL; klej C7; SENT-UE. 332.0 = HITL `filing_scheme_mark` (scheme_kind).
 - **331.0 leftover:** procedura bonded live; WMS e-com; dock yard. 331.0 = HITL `bonded_mark` (bond_kind).

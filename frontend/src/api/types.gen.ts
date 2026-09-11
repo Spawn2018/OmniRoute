@@ -5,6 +5,50 @@ export type ClientOptions = {
 };
 
 /**
+ * AeoDossierMarkCreate
+ */
+export type AeoDossierMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Dossier Kind
+     */
+    dossier_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * AeoDossierMarkResponse
+ */
+export type AeoDossierMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Dossier Kind
+     */
+    dossier_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * AppUserResponse
  */
 export type AppUserResponse = {
@@ -15499,6 +15543,49 @@ export type CreatePoLineApiV1PoLinesPostResponses = {
 };
 
 export type CreatePoLineApiV1PoLinesPostResponse = CreatePoLineApiV1PoLinesPostResponses[keyof CreatePoLineApiV1PoLinesPostResponses];
+
+export type ListAeoDossierMarksApiV1AeoDossierMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/aeo-dossier-marks';
+};
+
+export type ListAeoDossierMarksApiV1AeoDossierMarksGetResponses = {
+    /**
+     * Response List Aeo Dossier Marks Api V1 Aeo Dossier Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<AeoDossierMarkResponse>;
+};
+
+export type ListAeoDossierMarksApiV1AeoDossierMarksGetResponse = ListAeoDossierMarksApiV1AeoDossierMarksGetResponses[keyof ListAeoDossierMarksApiV1AeoDossierMarksGetResponses];
+
+export type CreateAeoDossierMarkApiV1AeoDossierMarksPostData = {
+    body: AeoDossierMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/aeo-dossier-marks';
+};
+
+export type CreateAeoDossierMarkApiV1AeoDossierMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateAeoDossierMarkApiV1AeoDossierMarksPostError = CreateAeoDossierMarkApiV1AeoDossierMarksPostErrors[keyof CreateAeoDossierMarkApiV1AeoDossierMarksPostErrors];
+
+export type CreateAeoDossierMarkApiV1AeoDossierMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: AeoDossierMarkResponse;
+};
+
+export type CreateAeoDossierMarkApiV1AeoDossierMarksPostResponse = CreateAeoDossierMarkApiV1AeoDossierMarksPostResponses[keyof CreateAeoDossierMarkApiV1AeoDossierMarksPostResponses];
 
 export type ListAsnsApiV1AsnsGetData = {
     body?: never;

@@ -148,6 +148,7 @@ def _organization_g_catalog_relations() -> dict[str, Userset]:
         "can_manage_bonded_marks": _member(),
         "can_manage_filing_scheme_marks": _member(),
         "can_manage_edi_map_marks": _member(),
+        "can_manage_aeo_dossier_marks": _member(),
     }
 
 

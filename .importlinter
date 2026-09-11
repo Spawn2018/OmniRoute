@@ -129,6 +129,7 @@ modules =
     app.services.bonded_marks
     app.services.filing_scheme_marks
     app.services.edi_map_marks
+    app.services.aeo_dossier_marks
     app.services.freight_audit_marks
     app.services.collaboration_marks
     app.services.exchange_connectors
@@ -524,6 +525,9 @@ forbidden_modules =
     app.services.edi_map_marks
     app.repositories.edi_map_marks
     app.models.edi_map_mark
+    app.services.aeo_dossier_marks
+    app.repositories.aeo_dossier_marks
+    app.models.aeo_dossier_mark
     app.services.freight_audit_marks
     app.repositories.freight_audit_marks
     app.models.freight_audit_mark
