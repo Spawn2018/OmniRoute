@@ -60,6 +60,32 @@ export function CatalogSourceRefField({
   )
 }
 
+/** Wariant paper-form: hint nad inputem (inne klasy niż CatalogSourceRefField). */
+export function CatalogSourceRefHintField({
+  hint,
+  ariaLabel,
+  value,
+  onChange,
+}: {
+  hint: string
+  ariaLabel: string
+  value: string
+  onChange: (value: string) => void
+}) {
+  return (
+    <>
+      <p className="text-xs text-muted-foreground">{hint}</p>
+      <input
+        aria-label={ariaLabel}
+        className="h-9 max-w-lg rounded-md border bg-background px-2 font-mono text-xs"
+        value={value}
+        onChange={(change) => onChange(change.target.value)}
+        required
+      />
+    </>
+  )
+}
+
 export function CatalogCreateForm({
   code,
   name,

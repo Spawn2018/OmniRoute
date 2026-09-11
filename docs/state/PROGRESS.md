@@ -2,6 +2,7 @@
 
 | Data | Plaster | Moduł | Opis |
 |---|---|---|---|
+| 2026-09-11 | 293.0 | UI | `/refaktor`: `CatalogSourceRefHintField` na cash/kreptd/party-doc. Nie mixin. Następny: leftover CT/pin Plan. |
 | 2026-09-11 | 292.0 | UI | `/refaktor`: `CatalogSourceRefField` na carbon/free-time/telematics. Nie mixin. Następny: leftover CT/pin Plan. |
 | 2026-09-11 | 291.0 | CT1 | HITL promote ASN → shipment (`asn_id`). Nie auto przy POST asn. |
 | 2026-09-11 | 290.0 | CT4 | Matching lane/mode na shipment przy block_409 + etykiety HITL. |

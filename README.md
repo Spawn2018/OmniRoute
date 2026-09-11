@@ -86,7 +86,7 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **292.0** `/refaktor` CatalogSourceRefField (Q-E1 leftover)
+- **Ostatni plaster:** **293.0** `/refaktor` CatalogSourceRefHintField (Q-E1 leftover)
 - **Etap:** Plan
 - **Następny:** leftover Fala CT / pin — U1 masowy / wspólny SELECT / CT2 albo następny wąski HITL.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
