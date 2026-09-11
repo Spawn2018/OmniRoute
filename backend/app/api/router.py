@@ -160,6 +160,7 @@ from app.api import (
     visibility_connectors,
     war_room_marks,
     weather_observations,
+    what_if_marks,
     working_capital_marks,
     yard_marks,
 )
@@ -327,6 +328,7 @@ api_router.include_router(port_surcharges.router)
 api_router.include_router(locations.router)
 api_router.include_router(terminals.router)
 api_router.include_router(time_to_fix_marks.router)
+api_router.include_router(what_if_marks.router)
 
 
 @api_router.api_route(

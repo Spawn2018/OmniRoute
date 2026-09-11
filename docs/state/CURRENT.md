@@ -4,17 +4,17 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **346.0** EXP2.9 HITL `time_to_fix_mark`
+**Ostatni plaster:** **347.0** EXP2.10 HITL `what_if_mark`
 
-**Etap:** Plan — wolno `/plan-modul` **347.0** EXP2.10
+**Etap:** Plan — wolno `/plan-modul` **348.0** EXP2.11
 
 **Noc:** `/noc 10` do 2026-09-12T10:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).
 
-**Następny:** **347.0** EXP2.10 what-if (węższa z kolejki; delta do utworzenia).
+**Następny:** **348.0** EXP2.11 cabotage (węższa z kolejki; delta do utworzenia).
 
-Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44 · extract · CI5 kara SQL · wróżba punktowa · CI6 kwoty · S11 auto-send · EBITDA SQL · egzekucja 409 · MAE SQL · outcome SQL · crm_opportunity · activity · cold auto-send · bank stakeholder · presentation_due · teatr PUESC · wymiary OOG · LLM-VRP · solver OR · kara kierowcy · work_order · F1 KSeF live · eIDAS crypto · wipe · drugi tenant · company_id FK · WMS e-com · SENT-UE · filer live · silent write · zestaw party_document · yard live · Stripe live · registry scrape · druga marża WC · make-or-buy silnik · allocation SQL · cargo_cover live · sanctions live · subcontract live · schedule live · cutoff live · TIME-TO-FIX live · what-if silnik. Nie zgaduj 71–347.
+Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44 · extract · CI5 kara SQL · wróżba punktowa · CI6 kwoty · S11 auto-send · EBITDA SQL · egzekucja 409 · MAE SQL · outcome SQL · crm_opportunity · activity · cold auto-send · bank stakeholder · presentation_due · teatr PUESC · wymiary OOG · LLM-VRP · solver OR · kara kierowcy · work_order · F1 KSeF live · eIDAS crypto · wipe · drugi tenant · company_id FK · WMS e-com · SENT-UE · filer live · silent write · zestaw party_document · yard live · Stripe live · registry scrape · druga marża WC · make-or-buy silnik · allocation SQL · cargo_cover live · sanctions live · subcontract live · schedule live · cutoff live · TIME-TO-FIX live · what-if silnik · cabotage live. Nie zgaduj 71–348.
 
-**Spec (jedyna na sesję):** brak otwartej delty — `/plan-modul` EXP2.10.
+**Spec (jedyna na sesję):** brak otwartej delty — `/plan-modul` EXP2.11.
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
@@ -22,4 +22,4 @@ Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow 
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-12:** Plaster **346.0** zamknięty (`/noc`) — HITL `time_to_fix_mark` bez silnika TTF.
+**2026-09-12:** Plaster **347.0** zamknięty (`/noc`) — HITL `what_if_mark` bez silnika what-if.

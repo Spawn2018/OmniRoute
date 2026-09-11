@@ -882,6 +882,10 @@ class InvalidTimeToFixMark(DomainError):
     """EXP2.9: HITL TIME-TO-FIX — nie silnik TTF."""
 
 
+class InvalidWhatIfMark(DomainError):
+    """EXP2.10: HITL what-if — nie silnik scenariusza."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

@@ -140,6 +140,7 @@ from app.models.subcontract_edge_mark import SubcontractEdgeMark  # noqa: F401
 from app.models.schedule_exception_mark import ScheduleExceptionMark  # noqa: F401
 from app.models.cutoff_mark import CutoffMark  # noqa: F401
 from app.models.time_to_fix_mark import TimeToFixMark  # noqa: F401
+from app.models.what_if_mark import WhatIfMark  # noqa: F401
 from app.models.collaboration_mark import CollaborationMark  # noqa: F401
 from app.models.freight_audit_mark import FreightAuditMark  # noqa: F401
 from app.models.routing_guide import RoutingGuide  # noqa: F401

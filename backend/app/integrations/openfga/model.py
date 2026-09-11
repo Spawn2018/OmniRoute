@@ -161,6 +161,7 @@ def _organization_g_catalog_relations() -> dict[str, Userset]:
         "can_manage_schedule_exception_marks": _member(),
         "can_manage_cutoff_marks": _member(),
         "can_manage_time_to_fix_marks": _member(),
+        "can_manage_what_if_marks": _member(),
     }
 
 

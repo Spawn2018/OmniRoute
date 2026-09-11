@@ -142,6 +142,7 @@ modules =
     app.services.schedule_exception_marks
     app.services.cutoff_marks
     app.services.time_to_fix_marks
+    app.services.what_if_marks
     app.services.freight_audit_marks
     app.services.collaboration_marks
     app.services.exchange_connectors
@@ -576,6 +577,9 @@ forbidden_modules =
     app.services.time_to_fix_marks
     app.repositories.time_to_fix_marks
     app.models.time_to_fix_mark
+    app.services.what_if_marks
+    app.repositories.what_if_marks
+    app.models.what_if_mark
     app.services.freight_audit_marks
     app.repositories.freight_audit_marks
     app.models.freight_audit_mark

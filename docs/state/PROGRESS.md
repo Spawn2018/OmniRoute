@@ -2,6 +2,7 @@
 
 | Data | Plaster | Moduł | Opis |
 |---|---|---|---|
+| 2026-09-12 | 347.0 | EXP2.10 what_if_mark HITL | 2026-09-12 | PRZESZŁO | N/A | N/A | OK | OK | 5–15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-11 | 346.0 | EXP2.9 time_to_fix_mark HITL | 2026-09-12 | PRZESZŁO | N/A | N/A | OK | OK | 5–15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 345.0 | EXP2.8 cutoff_mark HITL | 2026-09-12 | PRZESZŁO | N/A | N/A | OK | OK | 5–15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 344.0 | EXP2.7 schedule_exception_mark HITL | 2026-09-12 | PRZESZŁO | N/A | N/A | OK | OK | 5–15 | PRZESZŁO | N/A | N/A | PRZESZŁO |

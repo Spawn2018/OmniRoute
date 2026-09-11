@@ -15852,6 +15852,80 @@
         ]
       }
     },
+    "/api/v1/what-if-marks": {
+      "get": {
+        "tags": [
+          "what-if-marks"
+        ],
+        "summary": "List What If Marks",
+        "operationId": "list_what_if_marks_api_v1_what_if_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/WhatIfMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List What If Marks Api V1 What If Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "what-if-marks"
+        ],
+        "summary": "Create What If Mark",
+        "operationId": "create_what_if_mark_api_v1_what_if_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WhatIfMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WhatIfMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/health": {
       "get": {
         "summary": "Health",
@@ -31957,6 +32031,65 @@
           "source_ref"
         ],
         "title": "WeatherObservationResponse"
+      },
+      "WhatIfMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "scenario_kind": {
+            "type": "string",
+            "title": "Scenario Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "scenario_kind",
+          "source_ref"
+        ],
+        "title": "WhatIfMarkCreate"
+      },
+      "WhatIfMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "scenario_kind": {
+            "type": "string",
+            "title": "Scenario Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "scenario_kind",
+          "source_ref"
+        ],
+        "title": "WhatIfMarkResponse"
       },
       "WorkingCapitalMarkCreate": {
         "properties": {

@@ -10033,6 +10033,50 @@ export type WeatherObservationResponse = {
 };
 
 /**
+ * WhatIfMarkCreate
+ */
+export type WhatIfMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Scenario Kind
+     */
+    scenario_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * WhatIfMarkResponse
+ */
+export type WhatIfMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Scenario Kind
+     */
+    scenario_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * WorkingCapitalMarkCreate
  */
 export type WorkingCapitalMarkCreate = {
@@ -19334,6 +19378,49 @@ export type CreateTimeToFixMarkApiV1TimeToFixMarksPostResponses = {
 };
 
 export type CreateTimeToFixMarkApiV1TimeToFixMarksPostResponse = CreateTimeToFixMarkApiV1TimeToFixMarksPostResponses[keyof CreateTimeToFixMarkApiV1TimeToFixMarksPostResponses];
+
+export type ListWhatIfMarksApiV1WhatIfMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/what-if-marks';
+};
+
+export type ListWhatIfMarksApiV1WhatIfMarksGetResponses = {
+    /**
+     * Response List What If Marks Api V1 What If Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<WhatIfMarkResponse>;
+};
+
+export type ListWhatIfMarksApiV1WhatIfMarksGetResponse = ListWhatIfMarksApiV1WhatIfMarksGetResponses[keyof ListWhatIfMarksApiV1WhatIfMarksGetResponses];
+
+export type CreateWhatIfMarkApiV1WhatIfMarksPostData = {
+    body: WhatIfMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/what-if-marks';
+};
+
+export type CreateWhatIfMarkApiV1WhatIfMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateWhatIfMarkApiV1WhatIfMarksPostError = CreateWhatIfMarkApiV1WhatIfMarksPostErrors[keyof CreateWhatIfMarkApiV1WhatIfMarksPostErrors];
+
+export type CreateWhatIfMarkApiV1WhatIfMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: WhatIfMarkResponse;
+};
+
+export type CreateWhatIfMarkApiV1WhatIfMarksPostResponse = CreateWhatIfMarkApiV1WhatIfMarksPostResponses[keyof CreateWhatIfMarkApiV1WhatIfMarksPostResponses];
 
 export type HealthHealthGetData = {
     body?: never;

@@ -164,6 +164,7 @@ import { Route as VisibilityConnectorsRouteImport } from './routes/visibility-co
 import { Route as WarRoomMarksRouteImport } from './routes/war-room-marks'
 import { Route as WatchtowerRouteImport } from './routes/watchtower'
 import { Route as WeatherObservationsRouteImport } from './routes/weather-observations'
+import { Route as WhatIfMarksRouteImport } from './routes/what-if-marks'
 import { Route as WorkingCapitalMarksRouteImport } from './routes/working-capital-marks'
 import { Route as YardMarksRouteImport } from './routes/yard-marks'
 import { Route as TenancyUsersRouteImport } from './routes/tenancy.users'
@@ -944,6 +945,11 @@ const WeatherObservationsRoute = WeatherObservationsRouteImport.update({
   path: '/weather-observations',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WhatIfMarksRoute = WhatIfMarksRouteImport.update({
+  id: '/what-if-marks',
+  path: '/what-if-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WorkingCapitalMarksRoute = WorkingCapitalMarksRouteImport.update({
   id: '/working-capital-marks',
   path: '/working-capital-marks',
@@ -1116,6 +1122,7 @@ export interface FileRoutesByFullPath {
   '/war-room-marks': typeof WarRoomMarksRoute
   '/watchtower': typeof WatchtowerRoute
   '/weather-observations': typeof WeatherObservationsRoute
+  '/what-if-marks': typeof WhatIfMarksRoute
   '/working-capital-marks': typeof WorkingCapitalMarksRoute
   '/yard-marks': typeof YardMarksRoute
   '/tenancy/users': typeof TenancyUsersRoute
@@ -1276,6 +1283,7 @@ export interface FileRoutesByTo {
   '/war-room-marks': typeof WarRoomMarksRoute
   '/watchtower': typeof WatchtowerRoute
   '/weather-observations': typeof WeatherObservationsRoute
+  '/what-if-marks': typeof WhatIfMarksRoute
   '/working-capital-marks': typeof WorkingCapitalMarksRoute
   '/yard-marks': typeof YardMarksRoute
   '/tenancy/users': typeof TenancyUsersRoute
@@ -1437,6 +1445,7 @@ export interface FileRoutesById {
   '/war-room-marks': typeof WarRoomMarksRoute
   '/watchtower': typeof WatchtowerRoute
   '/weather-observations': typeof WeatherObservationsRoute
+  '/what-if-marks': typeof WhatIfMarksRoute
   '/working-capital-marks': typeof WorkingCapitalMarksRoute
   '/yard-marks': typeof YardMarksRoute
   '/tenancy/users': typeof TenancyUsersRoute
@@ -1599,6 +1608,7 @@ export interface FileRouteTypes {
     | '/war-room-marks'
     | '/watchtower'
     | '/weather-observations'
+    | '/what-if-marks'
     | '/working-capital-marks'
     | '/yard-marks'
     | '/tenancy/users'
@@ -1759,6 +1769,7 @@ export interface FileRouteTypes {
     | '/war-room-marks'
     | '/watchtower'
     | '/weather-observations'
+    | '/what-if-marks'
     | '/working-capital-marks'
     | '/yard-marks'
     | '/tenancy/users'
@@ -1919,6 +1930,7 @@ export interface FileRouteTypes {
     | '/war-room-marks'
     | '/watchtower'
     | '/weather-observations'
+    | '/what-if-marks'
     | '/working-capital-marks'
     | '/yard-marks'
     | '/tenancy/users'
@@ -2080,6 +2092,7 @@ export interface RootRouteChildren {
   WarRoomMarksRoute: typeof WarRoomMarksRoute
   WatchtowerRoute: typeof WatchtowerRoute
   WeatherObservationsRoute: typeof WeatherObservationsRoute
+  WhatIfMarksRoute: typeof WhatIfMarksRoute
   WorkingCapitalMarksRoute: typeof WorkingCapitalMarksRoute
   YardMarksRoute: typeof YardMarksRoute
   TenancyUsersRoute: typeof TenancyUsersRoute
@@ -3172,6 +3185,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WeatherObservationsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/what-if-marks': {
+      id: '/what-if-marks'
+      path: '/what-if-marks'
+      fullPath: '/what-if-marks'
+      preLoaderRoute: typeof WhatIfMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/working-capital-marks': {
       id: '/working-capital-marks'
       path: '/working-capital-marks'
@@ -3352,6 +3372,7 @@ const rootRouteChildren: RootRouteChildren = {
   WarRoomMarksRoute: WarRoomMarksRoute,
   WatchtowerRoute: WatchtowerRoute,
   WeatherObservationsRoute: WeatherObservationsRoute,
+  WhatIfMarksRoute: WhatIfMarksRoute,
   WorkingCapitalMarksRoute: WorkingCapitalMarksRoute,
   YardMarksRoute: YardMarksRoute,
   TenancyUsersRoute: TenancyUsersRoute,
