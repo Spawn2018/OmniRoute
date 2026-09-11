@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefField } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { connectorWrite, listConnectorMarks, persistConnectorMark } from "@/lib/telematics-connectors-api"
 
@@ -74,16 +74,12 @@ function ConnectorSave(args: { organizationId: string | null }) {
           ))}
         </select>
       </label>
-      <label className="flex flex-col gap-1 text-xs">
-        source_ref (tenant:manual albo fixture://telematics-connector/…)
-        <input
-          aria-label="source_ref konektora GPS"
-          className="h-9 rounded-md border bg-background px-2 font-mono"
-          value={draft.originStamp}
-          onChange={(change) => setDraft({ ...draft, originStamp: change.target.value })}
-          required
-        />
-      </label>
+      <CatalogSourceRefField
+        label="source_ref (tenant:manual albo fixture://telematics-connector/…)"
+        ariaLabel="source_ref konektora GPS"
+        value={draft.originStamp}
+        onChange={(originStamp) => setDraft({ ...draft, originStamp })}
+      />
       <Button type="submit" disabled={persist.isPending || !args.organizationId}>
         Zapisz konektor GPS
       </Button>

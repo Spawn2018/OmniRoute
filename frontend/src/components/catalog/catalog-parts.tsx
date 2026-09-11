@@ -34,6 +34,32 @@ export function CatalogHeading({ title, subtitle }: { title: string; subtitle: s
   )
 }
 
+/** Wspólne pole source_ref w formularzach HITL — trzecie powtórzenie label+mono input. */
+export function CatalogSourceRefField({
+  label,
+  ariaLabel,
+  value,
+  onChange,
+}: {
+  label: string
+  ariaLabel: string
+  value: string
+  onChange: (value: string) => void
+}) {
+  return (
+    <label className="flex flex-col gap-1 text-xs">
+      {label}
+      <input
+        aria-label={ariaLabel}
+        className="h-9 rounded-md border bg-background px-2 font-mono"
+        value={value}
+        onChange={(change) => onChange(change.target.value)}
+        required
+      />
+    </label>
+  )
+}
+
 export function CatalogCreateForm({
   code,
   name,
