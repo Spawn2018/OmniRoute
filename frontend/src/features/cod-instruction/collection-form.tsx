@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { Link } from "@tanstack/react-router"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefField } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { collectionWrite, listCodMarks, persistCodMark } from "@/lib/cod-instructions-api"
 
@@ -79,16 +79,12 @@ function MarkSave(args: { organizationId: string | null }) {
           </label>
         ))}
       </fieldset>
-      <label className="flex flex-col gap-1 text-xs">
-        Pochodzenie zapisu pobrania
-        <input
-          aria-label="Pochodzenie zapisu pobrania"
-          className="h-9 rounded-md border bg-background px-2 font-mono"
-          value={draft.originStamp}
-          onChange={(change) => setDraft({ ...draft, originStamp: change.target.value })}
-          required
-        />
-      </label>
+      <CatalogSourceRefField
+        label="source_ref (tenant:manual albo fixture://cod-instruction/…)"
+        ariaLabel="Pochodzenie zapisu pobrania"
+        value={draft.originStamp}
+        onChange={(originStamp) => setDraft({ ...draft, originStamp })}
+      />
       <Button type="submit" disabled={persist.isPending || !args.organizationId}>
         Zapisz instrukcję pobrania
       </Button>

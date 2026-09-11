@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefField } from "@/components/catalog/catalog-parts"
 import { Money } from "@/components/money"
 import { Button } from "@/components/ui/button"
 import { levyWrite, listLevyMarks, persistLevyMark } from "@/lib/local-charges-api"
@@ -98,16 +98,12 @@ function LevySave(args: { organizationId: string | null }) {
           onChange={(change) => setDraft({ ...draft, isoToken: change.target.value })}
         />
       </label>
-      <label className="flex flex-col gap-1 text-xs">
-        Pochodzenie zapisu dopłaty lokalnej
-        <input
-          aria-label="Pochodzenie zapisu dopłaty lokalnej"
-          className="h-9 rounded-md border bg-background px-2 font-mono"
-          value={draft.originStamp}
-          onChange={(change) => setDraft({ ...draft, originStamp: change.target.value })}
-          required
-        />
-      </label>
+      <CatalogSourceRefField
+        label="source_ref (tenant:manual albo fixture://local-charge/…)"
+        ariaLabel="Pochodzenie zapisu dopłaty lokalnej"
+        value={draft.originStamp}
+        onChange={(originStamp) => setDraft({ ...draft, originStamp })}
+      />
       <Button type="submit" disabled={persist.isPending || !args.organizationId}>
         Zapisz dopłatę lokalną
       </Button>

@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefField } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { bundleWrite, listBundleSlots, persistBundleSlot } from "@/lib/charge-templates-api"
 
@@ -85,16 +85,12 @@ function BundleSave(args: { organizationId: string | null }) {
           required
         />
       </label>
-      <label className="flex flex-col gap-1 text-xs">
-        Pochodzenie zapisu szablonu opłat
-        <input
-          aria-label="Pochodzenie zapisu szablonu opłat"
-          className="h-9 rounded-md border bg-background px-2 font-mono"
-          value={draft.originStamp}
-          onChange={(change) => setDraft({ ...draft, originStamp: change.target.value })}
-          required
-        />
-      </label>
+      <CatalogSourceRefField
+        label="source_ref (tenant:manual albo fixture://charge-template/…)"
+        ariaLabel="Pochodzenie zapisu szablonu opłat"
+        value={draft.originStamp}
+        onChange={(originStamp) => setDraft({ ...draft, originStamp })}
+      />
       <Button type="submit" disabled={persist.isPending || !args.organizationId}>
         Zapisz szablon opłat
       </Button>

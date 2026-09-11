@@ -86,10 +86,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **311.0** `/refaktor` CatalogSourceRefField (rate-card/fuel/groupage)
-- **Etap:** Refaktor
-- **Następny:** leftover label-form (local-charge / charge-template / cod…) albo wąski HITL z pinu.
-- **Komenda teraz:** `/refaktor` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **312.0** `/refaktor` CatalogSourceRefField (local-charge/charge-template/cod)
+- **Etap:** Plan
+- **Następny:** wąski HITL z pinu **2026-09-08c** (nie park: U1 masowy / wspólny SELECT / live HTTP / CAPA workflow).
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

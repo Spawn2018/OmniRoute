@@ -8,19 +8,19 @@
 
 
 
-**Ostatni plaster:** **311.0** `/refaktor` CatalogSourceRefField (rate-card/fuel/groupage)  
+**Ostatni plaster:** **312.0** `/refaktor` CatalogSourceRefField (local-charge/charge-template/cod)  
 
-**Etap:** Refaktor  
+**Etap:** Plan  
 
 **Noc:** `/noc 17` do 2026-09-11T17:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).  
 
-**Następny:** leftover label-form (local-charge / charge-template / cod…) albo wąski HITL z pinu.  
+**Następny:** wąski HITL z pinu **2026-09-08c** (nie park: U1 masowy / wspólny SELECT / live HTTP / CAPA workflow).  
 
-Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44/FourKites/Shippeo. Nie CI1 extract. Nie zgaduj 71–311.
+Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44/FourKites/Shippeo. Nie CI1 extract. Nie zgaduj 71–312.
 
 
 
-**Spec (jedyna na sesję):** brak — `/refaktor` max 3 ruchy.
+**Spec (jedyna na sesję):** brak — po 312.0 label-form SourceRef wyczerpane; `/plan-modul` na wąski HITL.
 
 
 
@@ -36,4 +36,4 @@ Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow 
 
 
 
-**2026-09-11:** **311.0** zamknięty — rate-card / fuel-index / groupage-tariff na SourceRefField.
+**2026-09-11:** **312.0** zamknięty — local-charge / charge-template / COD na SourceRefField. Label-form SourceRef DONE.

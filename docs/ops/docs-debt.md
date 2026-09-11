@@ -1,4 +1,5 @@
-- **311.0 leftover:** pozostałe label-form (local-charge / charge-template / cod…). 311.0 = SourceRefField na rate-card/fuel/groupage.
+- **312.0 leftover:** label-form SourceRef wyczerpane. Następny = wąski HITL z pinu (nie park live/U1/CT2). 312.0 = SourceRefField na local-charge/charge-template/cod.
+- **311.0 leftover:** local/charge-template/cod DONE 312.0. 311.0 = SourceRefField na rate-card/fuel/groupage.
 - **310.0 leftover:** rate-card/fuel/groupage DONE 311.0. 310.0 = SourceRefField na round/matrix/side.
 - **309.0 leftover:** round/matrix/side DONE 310.0. 309.0 = SourceRefField na lot/lane/quote.
 - **308.0 leftover:** lot/lane/quote DONE 309.0. 308.0 = SourceRefField na prospect/win-loss/data-room.

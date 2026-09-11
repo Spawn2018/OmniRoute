@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **311.0** `/refaktor` CatalogSourceRefField (rate-card/fuel/groupage). **Etap:** Refaktor. **Następny:** leftover label-form (local-charge / charge-template / cod…) albo wąski HITL z pinu. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **312.0** `/refaktor` CatalogSourceRefField (local-charge/charge-template/cod). **Etap:** Plan. **Następny:** wąski HITL z pinu **2026-09-08c** (nie park: U1 masowy / wspólny SELECT / live HTTP / CAPA workflow). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
