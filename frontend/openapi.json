@@ -9226,6 +9226,80 @@
         ]
       }
     },
+    "/api/v1/sap-connectors": {
+      "get": {
+        "tags": [
+          "sap-connectors"
+        ],
+        "summary": "List Sap Connectors",
+        "operationId": "list_sap_connectors_api_v1_sap_connectors_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SapConnectorResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Sap Connectors Api V1 Sap Connectors Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "sap-connectors"
+        ],
+        "summary": "Create Sap Connector",
+        "operationId": "create_sap_connector_api_v1_sap_connectors_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SapConnectorCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SapConnectorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/terminal-slot-connectors": {
       "get": {
         "tags": [
@@ -22852,6 +22926,65 @@
           "ksef_noted_at"
         ],
         "title": "SalesInvoiceResponse"
+      },
+      "SapConnectorCreate": {
+        "properties": {
+          "connector_code": {
+            "type": "string",
+            "title": "Connector Code"
+          },
+          "system_kind": {
+            "type": "string",
+            "title": "System Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "connector_code",
+          "system_kind",
+          "source_ref"
+        ],
+        "title": "SapConnectorCreate"
+      },
+      "SapConnectorResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "connector_code": {
+            "type": "string",
+            "title": "Connector Code"
+          },
+          "system_kind": {
+            "type": "string",
+            "title": "System Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "connector_code",
+          "system_kind",
+          "source_ref"
+        ],
+        "title": "SapConnectorResponse"
       },
       "ScorecardResponse": {
         "properties": {

@@ -85,6 +85,7 @@ from app.api import (
     resources,
     routing_guides,
     sales_invoices,
+    sap_connectors,
     session,
     shipment_documents,
     shipment_legs,
@@ -222,6 +223,7 @@ api_router.include_router(po_lines.router)
 api_router.include_router(asns.router)
 api_router.include_router(otif_marks.router)
 api_router.include_router(routing_guides.router)
+api_router.include_router(sap_connectors.router)
 api_router.include_router(terminal_slot_connectors.router)
 api_router.include_router(tower_impacts.router)
 api_router.include_router(twin_marks.router)

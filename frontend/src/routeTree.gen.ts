@@ -94,6 +94,7 @@ import { Route as RoadRouteImport } from './routes/road'
 import { Route as RolloutRouteImport } from './routes/rollout'
 import { Route as RoutingGuidesRouteImport } from './routes/routing-guides'
 import { Route as SanctionsRouteImport } from './routes/sanctions'
+import { Route as SapConnectorsRouteImport } from './routes/sap-connectors'
 import { Route as SessionRouteImport } from './routes/session'
 import { Route as ShipmentDocumentsRouteImport } from './routes/shipment-documents'
 import { Route as ShipmentPackagesRouteImport } from './routes/shipment-packages'
@@ -553,6 +554,11 @@ const SanctionsRoute = SanctionsRouteImport.update({
   path: '/sanctions',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SapConnectorsRoute = SapConnectorsRouteImport.update({
+  id: '/sap-connectors',
+  path: '/sap-connectors',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SessionRoute = SessionRouteImport.update({
   id: '/session',
   path: '/session',
@@ -805,6 +811,7 @@ export interface FileRoutesByFullPath {
   '/rollout': typeof RolloutRoute
   '/routing-guides': typeof RoutingGuidesRoute
   '/sanctions': typeof SanctionsRoute
+  '/sap-connectors': typeof SapConnectorsRoute
   '/session': typeof SessionRoute
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
@@ -925,6 +932,7 @@ export interface FileRoutesByTo {
   '/rollout': typeof RolloutRoute
   '/routing-guides': typeof RoutingGuidesRoute
   '/sanctions': typeof SanctionsRoute
+  '/sap-connectors': typeof SapConnectorsRoute
   '/session': typeof SessionRoute
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
@@ -1046,6 +1054,7 @@ export interface FileRoutesById {
   '/rollout': typeof RolloutRoute
   '/routing-guides': typeof RoutingGuidesRoute
   '/sanctions': typeof SanctionsRoute
+  '/sap-connectors': typeof SapConnectorsRoute
   '/session': typeof SessionRoute
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
@@ -1168,6 +1177,7 @@ export interface FileRouteTypes {
     | '/rollout'
     | '/routing-guides'
     | '/sanctions'
+    | '/sap-connectors'
     | '/session'
     | '/shipment-documents'
     | '/shipment-packages'
@@ -1288,6 +1298,7 @@ export interface FileRouteTypes {
     | '/rollout'
     | '/routing-guides'
     | '/sanctions'
+    | '/sap-connectors'
     | '/session'
     | '/shipment-documents'
     | '/shipment-packages'
@@ -1408,6 +1419,7 @@ export interface FileRouteTypes {
     | '/rollout'
     | '/routing-guides'
     | '/sanctions'
+    | '/sap-connectors'
     | '/session'
     | '/shipment-documents'
     | '/shipment-packages'
@@ -1529,6 +1541,7 @@ export interface RootRouteChildren {
   RolloutRoute: typeof RolloutRoute
   RoutingGuidesRoute: typeof RoutingGuidesRoute
   SanctionsRoute: typeof SanctionsRoute
+  SapConnectorsRoute: typeof SapConnectorsRoute
   SessionRoute: typeof SessionRoute
   ShipmentDocumentsRoute: typeof ShipmentDocumentsRoute
   ShipmentPackagesRoute: typeof ShipmentPackagesRoute
@@ -2161,6 +2174,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SanctionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sap-connectors': {
+      id: '/sap-connectors'
+      path: '/sap-connectors'
+      fullPath: '/sap-connectors'
+      preLoaderRoute: typeof SapConnectorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/session': {
       id: '/session'
       path: '/session'
@@ -2481,6 +2501,7 @@ const rootRouteChildren: RootRouteChildren = {
   RolloutRoute: RolloutRoute,
   RoutingGuidesRoute: RoutingGuidesRoute,
   SanctionsRoute: SanctionsRoute,
+  SapConnectorsRoute: SapConnectorsRoute,
   SessionRoute: SessionRoute,
   ShipmentDocumentsRoute: ShipmentDocumentsRoute,
   ShipmentPackagesRoute: ShipmentPackagesRoute,

@@ -104,6 +104,7 @@ modules =
     app.services.purchase_orders
     app.services.routing_guides
     app.services.otif_marks
+    app.services.sap_connectors
     app.services.exchange_connectors
     app.services.idp_connectors
     app.services.terminal_slot_connectors
@@ -422,6 +423,9 @@ forbidden_modules =
     app.services.otif_marks
     app.repositories.otif_marks
     app.models.otif_mark
+    app.services.sap_connectors
+    app.repositories.sap_connectors
+    app.models.sap_connector
     app.services.exchange_connectors
     app.repositories.exchange_connectors
     app.models.exchange_connector

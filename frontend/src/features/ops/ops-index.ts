@@ -589,6 +589,11 @@ export const OPS_JOBS = [
     job: "katalog otif_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.sapConnector.route,
+    label: "Konektor SAP/Oracle",
+    job: "katalog sap_connector HITL",
+  },
+  {
     route: BUSINESS_LISTS.exchangeConnector.route,
     label: "Konektor giełdy",
     job: "katalog exchange_connector HITL",
@@ -860,6 +865,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "278.0": "/asns",
   "279.0": "/routing-guides",
   "280.0": "/otif-marks",
+  "281.0": "/sap-connectors",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

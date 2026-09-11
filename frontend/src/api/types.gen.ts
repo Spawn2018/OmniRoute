@@ -6003,6 +6003,50 @@ export type SalesInvoiceResponse = {
 };
 
 /**
+ * SapConnectorCreate
+ */
+export type SapConnectorCreate = {
+    /**
+     * Connector Code
+     */
+    connector_code: string;
+    /**
+     * System Kind
+     */
+    system_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * SapConnectorResponse
+ */
+export type SapConnectorResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Connector Code
+     */
+    connector_code: string;
+    /**
+     * System Kind
+     */
+    system_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * ScorecardResponse
  */
 export type ScorecardResponse = {
@@ -13678,6 +13722,49 @@ export type CreateRoutingGuideApiV1RoutingGuidesPostResponses = {
 };
 
 export type CreateRoutingGuideApiV1RoutingGuidesPostResponse = CreateRoutingGuideApiV1RoutingGuidesPostResponses[keyof CreateRoutingGuideApiV1RoutingGuidesPostResponses];
+
+export type ListSapConnectorsApiV1SapConnectorsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/sap-connectors';
+};
+
+export type ListSapConnectorsApiV1SapConnectorsGetResponses = {
+    /**
+     * Response List Sap Connectors Api V1 Sap Connectors Get
+     *
+     * Successful Response
+     */
+    200: Array<SapConnectorResponse>;
+};
+
+export type ListSapConnectorsApiV1SapConnectorsGetResponse = ListSapConnectorsApiV1SapConnectorsGetResponses[keyof ListSapConnectorsApiV1SapConnectorsGetResponses];
+
+export type CreateSapConnectorApiV1SapConnectorsPostData = {
+    body: SapConnectorCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/sap-connectors';
+};
+
+export type CreateSapConnectorApiV1SapConnectorsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateSapConnectorApiV1SapConnectorsPostError = CreateSapConnectorApiV1SapConnectorsPostErrors[keyof CreateSapConnectorApiV1SapConnectorsPostErrors];
+
+export type CreateSapConnectorApiV1SapConnectorsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: SapConnectorResponse;
+};
+
+export type CreateSapConnectorApiV1SapConnectorsPostResponse = CreateSapConnectorApiV1SapConnectorsPostResponses[keyof CreateSapConnectorApiV1SapConnectorsPostResponses];
 
 export type ListTerminalSlotConnectorsApiV1TerminalSlotConnectorsGetData = {
     body?: never;

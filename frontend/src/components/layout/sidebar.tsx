@@ -90,6 +90,7 @@ const NAV = [
   { to: "/asns", label: "Awizo wysyłki" },
   { to: "/routing-guides", label: "Przewodnik routingu" },
   { to: "/otif-marks", label: "Znacznik OTIF" },
+  { to: "/sap-connectors", label: "Konektor SAP/Oracle" },
   { to: "/exchange-connectors", label: "Konektor giełdy" },
   { to: "/terminal-slot-connectors", label: "Konektor slotu" },
   { to: "/weather-observations", label: "Pogoda" },

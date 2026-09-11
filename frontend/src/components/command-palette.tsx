@@ -197,6 +197,11 @@ const NAV_ACTIONS = [
     to: "/otif-marks",
   },
   {
+    id: "nav-sap-connectors",
+    label: "Idź do konektora SAP/Oracle",
+    to: "/sap-connectors",
+  },
+  {
     id: "nav-exchange-connectors",
     label: "Idź do konektora giełdy",
     to: "/exchange-connectors",

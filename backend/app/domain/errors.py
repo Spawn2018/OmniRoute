@@ -736,3 +736,7 @@ class InvalidRoutingGuide(DomainError):
 
 class InvalidOtifMark(DomainError):
     """CT3: HITL zakres OTIF — nie metryka % i nie scoring SQL."""
+
+
+class InvalidSapConnector(DomainError):
+    """CT6: HITL konektor SAP/Oracle — nie live SOAP i nie SQL do SAP."""

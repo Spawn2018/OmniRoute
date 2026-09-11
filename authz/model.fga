@@ -80,6 +80,7 @@ type organization
     define can_manage_customer_contracts: member
     define can_manage_purchase_orders: member
     define can_manage_otif_marks: member
+    define can_manage_sap_connectors: member
     define can_manage_routing_guides: member
     define can_manage_tenant_contract_keks: member
     define can_manage_visibility_connectors: member

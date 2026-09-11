@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **280.0** leftover HITL `otif_mark`
+- **Ostatni plaster:** **281.0** leftover HITL `sap_connector`
 - **Etap:** Plan
-- **Następny:** leftover Fala CT / pin — CT6 HITL konektor SAP/Oracle (jak F9) albo CT12 CAPA katalog albo egzekucja 409 z `routing_guide`.
+- **Następny:** leftover Fala CT / pin — CT12 CAPA katalog albo egzekucja 409 z `routing_guide`.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
