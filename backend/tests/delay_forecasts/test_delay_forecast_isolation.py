@@ -1,5 +1,5 @@
-from uuid import uuid4
 from decimal import Decimal
+from uuid import uuid4
 
 import pytest
 from sqlalchemy import select
@@ -8,7 +8,13 @@ from app.core.database import bind_tenant
 from app.models.delay_forecast import DelayForecast
 
 
-def _row(*, organization_id, created_by, forecast_code: str = "late_24h_01", source_ref: str = "tenant:manual") -> DelayForecast:
+def _row(
+    *,
+    organization_id,
+    created_by,
+    forecast_code: str = "late_24h_01",
+    source_ref: str = "tenant:manual",
+) -> DelayForecast:
     return DelayForecast(
         id=uuid4(),
         organization_id=organization_id,
