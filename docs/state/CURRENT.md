@@ -8,15 +8,15 @@
 
 
 
-**Ostatni plaster:** **305.0** `/refaktor` CatalogSourceRefField (freight-audit/collaboration/match)  
+**Ostatni plaster:** **306.0** `/refaktor` CatalogSourceRefField (otif/enforcement/task-template)  
 
 **Etap:** Refaktor  
 
 **Noc:** `/noc 17` do 2026-09-11T17:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).  
 
-**Następny:** leftover label-form (otif / enforcement / inne mark) albo wąski HITL z pinu.  
+**Następny:** leftover label-form (tender-* / rate-card / …) albo wąski HITL z pinu.  
 
-Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44/FourKites/Shippeo. Nie CI1 extract. Nie zgaduj 71–305.
+Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44/FourKites/Shippeo. Nie CI1 extract. Nie zgaduj 71–306.
 
 
 
@@ -36,4 +36,4 @@ Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow 
 
 
 
-**2026-09-11:** **305.0** zamknięty — freight-audit / collaboration / routing-guide-match na SourceRefField.
+**2026-09-11:** **306.0** zamknięty — otif / enforcement / task-template na SourceRefField.

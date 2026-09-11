@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefField } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import {
   packEnforcementMode,
@@ -81,19 +81,12 @@ export function EnforcementModeComposer(props: {
           })}
         </div>
       </div>
-      <div className="space-y-1">
-        <label className="text-xs font-medium" htmlFor="enforcement-origin">
-          source_ref
-        </label>
-        <input
-          aria-label="Pochodzenie trybu egzekucji przewodnika"
-          className="h-10 w-full rounded border bg-background px-3 font-mono text-sm"
-          id="enforcement-origin"
-          onChange={(event) => setOrigin(event.target.value)}
-          required
-          value={origin}
-        />
-      </div>
+      <CatalogSourceRefField
+        label="source_ref (tenant:manual albo fixture://routing-guide-enforcement/…)"
+        ariaLabel="Pochodzenie trybu egzekucji przewodnika"
+        value={origin}
+        onChange={setOrigin}
+      />
       {write.error ? <CatalogError error={write.error} /> : null}
       <Button disabled={!props.tenantKey || write.isPending} type="submit">
         Zapisz tryb egzekucji

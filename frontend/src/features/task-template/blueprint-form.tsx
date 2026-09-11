@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefField } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import {
   blueprintWrite,
@@ -65,12 +65,11 @@ function BlueprintFields(args: {
         value={draft.whenNote}
         onValue={(whenNote) => args.onDraft({ ...draft, whenNote })}
       />
-      <BlueprintField
-        label="Pochodzenie zapisu"
-        aria="source_ref szablonu zadania"
+      <CatalogSourceRefField
+        label="source_ref (tenant:manual albo fixture://task-template/…)"
+        ariaLabel="source_ref szablonu zadania"
         value={draft.originStamp}
-        placeholder="tenant:manual albo fixture://task-template/…"
-        onValue={(originStamp) => args.onDraft({ ...draft, originStamp })}
+        onChange={(originStamp) => args.onDraft({ ...draft, originStamp })}
       />
     </>
   )
