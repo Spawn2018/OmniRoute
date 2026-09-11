@@ -211,6 +211,7 @@
 | znacznik kalibracji | calibration_mark | CI7 HITL 318.0; sample_ready ready\|pending; nie MAE SQL |
 | playbook naprawy | repair_playbook | CI8 HITL 319.0; stance contain\|reroute\|claim\|other; nie auto-send S11 |
 | znacznik wycieku | spend_mark | CI2 HITL 320.0; leakage invoice\|clause\|other; nie SQL FV vs charge |
+| znacznik kary | penalty_mark | CI5 HITL 321.0; breach otif\|delay\|damage\|other; nie kara SQL |
 | przetarg | tender | G2.0 nagłówek sell/buy; nie P6 `tender_quote`; nie loty |
 | partia przetargu | tender_lot | G2.1 kod partii na `tender`; nie korytarz; nie kwota |
 | korytarz przetargu | tender_lane | G2.2 para UN/LOCODE na `tender_lot`; nie runda; nie kwota |

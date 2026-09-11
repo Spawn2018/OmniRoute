@@ -83,6 +83,7 @@ import { Route as PartiesRouteImport } from './routes/parties'
 import { Route as PartyDocumentsRouteImport } from './routes/party-documents'
 import { Route as PartyScorecardsRouteImport } from './routes/party-scorecards'
 import { Route as PaymentsRouteImport } from './routes/payments'
+import { Route as PenaltyMarksRouteImport } from './routes/penalty-marks'
 import { Route as PlanSnapshotsRouteImport } from './routes/plan-snapshots'
 import { Route as PlanningRouteImport } from './routes/planning'
 import { Route as PoLinesRouteImport } from './routes/po-lines'
@@ -512,6 +513,11 @@ const PaymentsRoute = PaymentsRouteImport.update({
   path: '/payments',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PenaltyMarksRoute = PenaltyMarksRouteImport.update({
+  id: '/penalty-marks',
+  path: '/penalty-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PlanSnapshotsRoute = PlanSnapshotsRouteImport.update({
   id: '/plan-snapshots',
   path: '/plan-snapshots',
@@ -879,6 +885,7 @@ export interface FileRoutesByFullPath {
   '/party-documents': typeof PartyDocumentsRoute
   '/party-scorecards': typeof PartyScorecardsRoute
   '/payments': typeof PaymentsRoute
+  '/penalty-marks': typeof PenaltyMarksRoute
   '/plan-snapshots': typeof PlanSnapshotsRoute
   '/planning': typeof PlanningRoute
   '/po-lines': typeof PoLinesRoute
@@ -1013,6 +1020,7 @@ export interface FileRoutesByTo {
   '/party-documents': typeof PartyDocumentsRoute
   '/party-scorecards': typeof PartyScorecardsRoute
   '/payments': typeof PaymentsRoute
+  '/penalty-marks': typeof PenaltyMarksRoute
   '/plan-snapshots': typeof PlanSnapshotsRoute
   '/planning': typeof PlanningRoute
   '/po-lines': typeof PoLinesRoute
@@ -1148,6 +1156,7 @@ export interface FileRoutesById {
   '/party-documents': typeof PartyDocumentsRoute
   '/party-scorecards': typeof PartyScorecardsRoute
   '/payments': typeof PaymentsRoute
+  '/penalty-marks': typeof PenaltyMarksRoute
   '/plan-snapshots': typeof PlanSnapshotsRoute
   '/planning': typeof PlanningRoute
   '/po-lines': typeof PoLinesRoute
@@ -1284,6 +1293,7 @@ export interface FileRouteTypes {
     | '/party-documents'
     | '/party-scorecards'
     | '/payments'
+    | '/penalty-marks'
     | '/plan-snapshots'
     | '/planning'
     | '/po-lines'
@@ -1418,6 +1428,7 @@ export interface FileRouteTypes {
     | '/party-documents'
     | '/party-scorecards'
     | '/payments'
+    | '/penalty-marks'
     | '/plan-snapshots'
     | '/planning'
     | '/po-lines'
@@ -1552,6 +1563,7 @@ export interface FileRouteTypes {
     | '/party-documents'
     | '/party-scorecards'
     | '/payments'
+    | '/penalty-marks'
     | '/plan-snapshots'
     | '/planning'
     | '/po-lines'
@@ -1687,6 +1699,7 @@ export interface RootRouteChildren {
   PartyDocumentsRoute: typeof PartyDocumentsRoute
   PartyScorecardsRoute: typeof PartyScorecardsRoute
   PaymentsRoute: typeof PaymentsRoute
+  PenaltyMarksRoute: typeof PenaltyMarksRoute
   PlanSnapshotsRoute: typeof PlanSnapshotsRoute
   PlanningRoute: typeof PlanningRoute
   PoLinesRoute: typeof PoLinesRoute
@@ -2267,6 +2280,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PaymentsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/penalty-marks': {
+      id: '/penalty-marks'
+      path: '/penalty-marks'
+      fullPath: '/penalty-marks'
+      preLoaderRoute: typeof PenaltyMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/plan-snapshots': {
       id: '/plan-snapshots'
       path: '/plan-snapshots'
@@ -2751,6 +2771,7 @@ const rootRouteChildren: RootRouteChildren = {
   PartyDocumentsRoute: PartyDocumentsRoute,
   PartyScorecardsRoute: PartyScorecardsRoute,
   PaymentsRoute: PaymentsRoute,
+  PenaltyMarksRoute: PenaltyMarksRoute,
   PlanSnapshotsRoute: PlanSnapshotsRoute,
   PlanningRoute: PlanningRoute,
   PoLinesRoute: PoLinesRoute,

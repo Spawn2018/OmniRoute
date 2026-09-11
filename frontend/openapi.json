@@ -6356,6 +6356,80 @@
         ]
       }
     },
+    "/api/v1/penalty-marks": {
+      "get": {
+        "tags": [
+          "penalty-marks"
+        ],
+        "summary": "List Penalty Marks",
+        "operationId": "list_penalty_marks_api_v1_penalty_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PenaltyMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Penalty Marks Api V1 Penalty Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "penalty-marks"
+        ],
+        "summary": "Create Penalty Mark",
+        "operationId": "create_penalty_mark_api_v1_penalty_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PenaltyMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PenaltyMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/local-charges": {
       "get": {
         "tags": [
@@ -22481,6 +22555,65 @@
           "sanctions_list_ref"
         ],
         "title": "PartyScreenSanctions"
+      },
+      "PenaltyMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "breach_kind": {
+            "type": "string",
+            "title": "Breach Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "breach_kind",
+          "source_ref"
+        ],
+        "title": "PenaltyMarkCreate"
+      },
+      "PenaltyMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "breach_kind": {
+            "type": "string",
+            "title": "Breach Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "breach_kind",
+          "source_ref"
+        ],
+        "title": "PenaltyMarkResponse"
       },
       "PlanSnapshotCreate": {
         "properties": {

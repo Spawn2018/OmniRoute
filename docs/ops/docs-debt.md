@@ -1,3 +1,4 @@
+- **321.0 leftover:** kara SQL; auto linia produkcyjna. 321.0 = HITL `penalty_mark` (breach_kind).
 - **320.0 leftover:** SQL FV vs charge; druga marża. 320.0 = HITL `spend_mark` (leakage_kind).
 - **319.0 leftover:** auto-send S11; mail_draft auto. 319.0 = HITL `repair_playbook` (stance_kind).
 - **318.0 leftover:** MAE SQL; sample≥N egzekucja; suma oszczędności. 318.0 = HITL `calibration_mark` (sample_ready).

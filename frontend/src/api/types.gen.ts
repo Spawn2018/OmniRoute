@@ -5233,6 +5233,50 @@ export type PartyScreenSanctions = {
 };
 
 /**
+ * PenaltyMarkCreate
+ */
+export type PenaltyMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Breach Kind
+     */
+    breach_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * PenaltyMarkResponse
+ */
+export type PenaltyMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Breach Kind
+     */
+    breach_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * PlanSnapshotCreate
  */
 export type PlanSnapshotCreate = {
@@ -12704,6 +12748,49 @@ export type CreateSpendMarkApiV1SpendMarksPostResponses = {
 };
 
 export type CreateSpendMarkApiV1SpendMarksPostResponse = CreateSpendMarkApiV1SpendMarksPostResponses[keyof CreateSpendMarkApiV1SpendMarksPostResponses];
+
+export type ListPenaltyMarksApiV1PenaltyMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/penalty-marks';
+};
+
+export type ListPenaltyMarksApiV1PenaltyMarksGetResponses = {
+    /**
+     * Response List Penalty Marks Api V1 Penalty Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<PenaltyMarkResponse>;
+};
+
+export type ListPenaltyMarksApiV1PenaltyMarksGetResponse = ListPenaltyMarksApiV1PenaltyMarksGetResponses[keyof ListPenaltyMarksApiV1PenaltyMarksGetResponses];
+
+export type CreatePenaltyMarkApiV1PenaltyMarksPostData = {
+    body: PenaltyMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/penalty-marks';
+};
+
+export type CreatePenaltyMarkApiV1PenaltyMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreatePenaltyMarkApiV1PenaltyMarksPostError = CreatePenaltyMarkApiV1PenaltyMarksPostErrors[keyof CreatePenaltyMarkApiV1PenaltyMarksPostErrors];
+
+export type CreatePenaltyMarkApiV1PenaltyMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: PenaltyMarkResponse;
+};
+
+export type CreatePenaltyMarkApiV1PenaltyMarksPostResponse = CreatePenaltyMarkApiV1PenaltyMarksPostResponses[keyof CreatePenaltyMarkApiV1PenaltyMarksPostResponses];
 
 export type ListLocalChargesApiV1LocalChargesGetData = {
     body?: never;
