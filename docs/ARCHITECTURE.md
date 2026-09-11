@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **327.0** G6 HITL `load_plan_mark`. **Etap:** Plan — wolno `/plan-modul` **G7**. **Następny:** **G7** CMMS + DTC (Plan). Pin po G6. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **327.0** G6 HITL `load_plan_mark`. **Etap:** Plan (delta zaakceptowana `/noc`) — wolno `/plaster` **328.0**. **Następny:** **328.0** G7 HITL `cmms_mark` (delta `docs/deltas/open/328.0-cmms-mark.md`). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

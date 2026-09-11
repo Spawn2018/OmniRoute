@@ -87,8 +87,8 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **327.0** G6 HITL `load_plan_mark`
-- **Etap:** Plan — wolno `/plan-modul` **G7**
-- **Następny:** **G7** CMMS + DTC (Plan). Pin po G6.
+- **Etap:** Plan (delta zaakceptowana `/noc`) — wolno `/plaster` **328.0**
+- **Następny:** **328.0** G7 HITL `cmms_mark` (delta `docs/deltas/open/328.0-cmms-mark.md`).
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

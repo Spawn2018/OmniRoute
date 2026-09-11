@@ -10,17 +10,17 @@
 
 **Ostatni plaster:** **327.0** G6 HITL `load_plan_mark`  
 
-**Etap:** Plan — wolno `/plan-modul` **G7**  
+**Etap:** Plan (delta zaakceptowana `/noc`) — wolno `/plaster` **328.0**  
 
 **Noc:** `/noc 10` do 2026-09-12T10:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).  
 
-**Następny:** **G7** CMMS + DTC (Plan). Pin po G6.  
+**Następny:** **328.0** G7 HITL `cmms_mark` (delta `docs/deltas/open/328.0-cmms-mark.md`).  
 
-Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44 · extract · CI5 kara SQL · wróżba punktowa · CI6 kwoty · S11 auto-send · EBITDA SQL · egzekucja 409 · MAE SQL · outcome SQL · crm_opportunity · activity · cold auto-send · bank stakeholder · presentation_due · teatr PUESC · wymiary OOG · LLM-VRP · solver OR · kara kierowcy. Nie zgaduj 71–327.
+Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44 · extract · CI5 kara SQL · wróżba punktowa · CI6 kwoty · S11 auto-send · EBITDA SQL · egzekucja 409 · MAE SQL · outcome SQL · crm_opportunity · activity · cold auto-send · bank stakeholder · presentation_due · teatr PUESC · wymiary OOG · LLM-VRP · solver OR · kara kierowcy · work_order. Nie zgaduj 71–328.
 
 
 
-**Spec (jedyna na sesję):** brak — najpierw `/plan-modul` G7.
+**Spec (jedyna na sesję):** [docs/deltas/open/328.0-cmms-mark.md](../deltas/open/328.0-cmms-mark.md)
 
 
 
@@ -36,4 +36,4 @@ Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow 
 
 
 
-**2026-09-11:** **327.0** zamknięty — HITL `load_plan_mark` bez solvera OR. Następny: Plan G7.
+**2026-09-11:** Delta **328.0** zaakceptowana (`/noc`) — HITL `cmms_mark` bez work_order.
