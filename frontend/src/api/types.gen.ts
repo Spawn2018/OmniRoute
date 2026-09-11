@@ -3409,6 +3409,50 @@ export type IdpConnectorResponse = {
 };
 
 /**
+ * ImpactScenarioCreate
+ */
+export type ImpactScenarioCreate = {
+    /**
+     * Scenario Code
+     */
+    scenario_code: string;
+    /**
+     * Chain Label
+     */
+    chain_label: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ImpactScenarioResponse
+ */
+export type ImpactScenarioResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Scenario Code
+     */
+    scenario_code: string;
+    /**
+     * Chain Label
+     */
+    chain_label: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * InboundExtractResponse
  */
 export type InboundExtractResponse = {
@@ -14479,6 +14523,49 @@ export type CreateRemediationOptionApiV1RemediationOptionsPostResponses = {
 };
 
 export type CreateRemediationOptionApiV1RemediationOptionsPostResponse = CreateRemediationOptionApiV1RemediationOptionsPostResponses[keyof CreateRemediationOptionApiV1RemediationOptionsPostResponses];
+
+export type ListImpactScenariosApiV1ImpactScenariosGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/impact-scenarios';
+};
+
+export type ListImpactScenariosApiV1ImpactScenariosGetResponses = {
+    /**
+     * Response List Impact Scenarios Api V1 Impact Scenarios Get
+     *
+     * Successful Response
+     */
+    200: Array<ImpactScenarioResponse>;
+};
+
+export type ListImpactScenariosApiV1ImpactScenariosGetResponse = ListImpactScenariosApiV1ImpactScenariosGetResponses[keyof ListImpactScenariosApiV1ImpactScenariosGetResponses];
+
+export type CreateImpactScenarioApiV1ImpactScenariosPostData = {
+    body: ImpactScenarioCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/impact-scenarios';
+};
+
+export type CreateImpactScenarioApiV1ImpactScenariosPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateImpactScenarioApiV1ImpactScenariosPostError = CreateImpactScenarioApiV1ImpactScenariosPostErrors[keyof CreateImpactScenarioApiV1ImpactScenariosPostErrors];
+
+export type CreateImpactScenarioApiV1ImpactScenariosPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ImpactScenarioResponse;
+};
+
+export type CreateImpactScenarioApiV1ImpactScenariosPostResponse = CreateImpactScenarioApiV1ImpactScenariosPostResponses[keyof CreateImpactScenarioApiV1ImpactScenariosPostResponses];
 
 export type ListFreightAuditMarksApiV1FreightAuditMarksGetData = {
     body?: never;

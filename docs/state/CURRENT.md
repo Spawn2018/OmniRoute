@@ -8,19 +8,19 @@
 
 
 
-**Ostatni plaster:** **315.0** CI6 HITL `remediation_option`  
+**Ostatni plaster:** **316.0** CI6 HITL `impact_scenario`  
 
-**Etap:** Plan — wolno `/plan-modul` **316.0**  
+**Etap:** Plan — wolno `/plan-modul` **317.0**  
 
 **Noc:** `/noc 17` do 2026-09-11T17:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).  
 
-**Następny:** **316.0** CI6 HITL `impact_scenario` (scenario_code + chain_label + source_ref; bez EBITDA SQL).  
+**Następny:** **317.0** CI3 HITL `clause_notice` (notice_code + clause_label + source_ref; bez 409).  
 
-Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44 · extract · CI5 kara · wróżba punktowa · CI6 kwoty · S11 auto-send. Nie zgaduj 71–316.
+Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44 · extract · CI5 kara · wróżba punktowa · CI6 kwoty · S11 auto-send · EBITDA SQL · egzekucja 409. Nie zgaduj 71–317.
 
 
 
-**Spec (jedyna na sesję):** brak delty — `/plan-modul` 316.0
+**Spec (jedyna na sesję):** brak delty — `/plan-modul` 317.0
 
 
 
@@ -36,4 +36,4 @@ Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow 
 
 
 
-**2026-09-11:** **315.0** zamknięty. Następny: Plan **316.0** `impact_scenario` bez SQL.
+**2026-09-11:** **316.0** zamknięty. Następny: Plan **317.0** `clause_notice` bez 409.

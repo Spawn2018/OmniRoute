@@ -758,6 +758,10 @@ class InvalidRemediationOption(DomainError):
     """CI6: HITL opcja naprawy — nie kwota i nie S11 silnik."""
 
 
+class InvalidImpactScenario(DomainError):
+    """CI6: HITL scenariusz skutku — nie EBITDA SQL."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

@@ -9802,6 +9802,80 @@
         ]
       }
     },
+    "/api/v1/impact-scenarios": {
+      "get": {
+        "tags": [
+          "impact-scenarios"
+        ],
+        "summary": "List Impact Scenarios",
+        "operationId": "list_impact_scenarios_api_v1_impact_scenarios_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ImpactScenarioResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Impact Scenarios Api V1 Impact Scenarios Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "impact-scenarios"
+        ],
+        "summary": "Create Impact Scenario",
+        "operationId": "create_impact_scenario_api_v1_impact_scenarios_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ImpactScenarioCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImpactScenarioResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/freight-audit-marks": {
       "get": {
         "tags": [
@@ -19195,6 +19269,65 @@
           "source_ref"
         ],
         "title": "IdpConnectorResponse"
+      },
+      "ImpactScenarioCreate": {
+        "properties": {
+          "scenario_code": {
+            "type": "string",
+            "title": "Scenario Code"
+          },
+          "chain_label": {
+            "type": "string",
+            "title": "Chain Label"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "scenario_code",
+          "chain_label",
+          "source_ref"
+        ],
+        "title": "ImpactScenarioCreate"
+      },
+      "ImpactScenarioResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "scenario_code": {
+            "type": "string",
+            "title": "Scenario Code"
+          },
+          "chain_label": {
+            "type": "string",
+            "title": "Chain Label"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "scenario_code",
+          "chain_label",
+          "source_ref"
+        ],
+        "title": "ImpactScenarioResponse"
       },
       "InboundExtractResponse": {
         "properties": {

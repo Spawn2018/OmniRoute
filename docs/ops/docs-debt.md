@@ -1,3 +1,4 @@
+- **316.0 leftover:** EBITDA SQL; intervention_outcome; CI2/CI5; S11. 316.0 = HITL `impact_scenario` (chain_label).
 - **315.0 leftover:** repair_cost / expected_save; intervention_outcome SQL; S11 auto-send; CI2/CI5. 315.0 = HITL `remediation_option` (kind).
 - **314.0 leftover:** wróżba punktowa / GPS; CI2 spend; CI3 409; CI5 kara; CI6 kwoty na remediation. 314.0 = HITL `delay_forecast` (horizon + p_late Decimal).
 - **313.0 leftover:** extract LLM / upload PDF; `penalty_ciphertext` / `obligation_ciphertext`; CI5 kara SQL; CI2 spend; CT2; X1 portal. 313.0 = HITL `sla_clause` (metryka + próg tekst + FK umowa).

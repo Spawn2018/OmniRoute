@@ -624,6 +624,11 @@ export const OPS_JOBS = [
     job: "katalog remediation_option HITL",
   },
   {
+    route: BUSINESS_LISTS.impactScenario.route,
+    label: "Scenariusz skutku",
+    job: "katalog impact_scenario HITL",
+  },
+  {
     route: BUSINESS_LISTS.freightAuditMark.route,
     label: "Audyt frachtu",
     job: "katalog freight_audit_mark HITL",
@@ -919,6 +924,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "313.0": "/sla-clauses",
   "314.0": "/delay-forecasts",
   "315.0": "/remediation-options",
+  "316.0": "/impact-scenarios",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

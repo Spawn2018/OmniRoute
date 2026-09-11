@@ -49,6 +49,7 @@ from app.api import (
     groupage_lines,
     groupage_tariffs,
     idp_connectors,
+    impact_scenarios,
     inbound_messages,
     incoterm_responsibilities,
     kreptd_licences,
@@ -238,6 +239,7 @@ api_router.include_router(capa_marks.router)
 api_router.include_router(sla_clauses.router)
 api_router.include_router(delay_forecasts.router)
 api_router.include_router(remediation_options.router)
+api_router.include_router(impact_scenarios.router)
 api_router.include_router(freight_audit_marks.router)
 api_router.include_router(collaboration_marks.router)
 api_router.include_router(terminal_slot_connectors.router)

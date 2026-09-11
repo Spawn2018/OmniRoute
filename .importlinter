@@ -111,6 +111,7 @@ modules =
     app.services.sla_clauses
     app.services.delay_forecasts
     app.services.remediation_options
+    app.services.impact_scenarios
     app.services.freight_audit_marks
     app.services.collaboration_marks
     app.services.exchange_connectors
@@ -452,6 +453,9 @@ forbidden_modules =
     app.services.remediation_options
     app.repositories.remediation_options
     app.models.remediation_option
+    app.services.impact_scenarios
+    app.repositories.impact_scenarios
+    app.models.impact_scenario
     app.services.freight_audit_marks
     app.repositories.freight_audit_marks
     app.models.freight_audit_mark

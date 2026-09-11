@@ -206,6 +206,7 @@
 | prognoza spóźnienia | delay_forecast | CI4 HITL 314.0; horizon_hours + p_late Decimal; nie wróżba punktowa; nie GPS |
 | wynik interwencji | intervention_outcome | CI6–CI7; saved = SQL |
 | opcja naprawy | remediation_option | CI6 HITL 315.0; kind rebook/wait/claim/other; leftover kwota / S11 |
+| scenariusz skutku | impact_scenario | CI6 HITL 316.0; chain_label tekst; nie EBITDA SQL; nie tower_impact |
 | przetarg | tender | G2.0 nagłówek sell/buy; nie P6 `tender_quote`; nie loty |
 | partia przetargu | tender_lot | G2.1 kod partii na `tender`; nie korytarz; nie kwota |
 | korytarz przetargu | tender_lane | G2.2 para UN/LOCODE na `tender_lot`; nie runda; nie kwota |
