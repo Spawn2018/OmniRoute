@@ -40,6 +40,7 @@ from app.api import (
     field_carry_forwards,
     fraud_flags,
     free_time_clocks,
+    freight_audit_marks,
     fuel_indexes,
     fx_differences,
     gdpr_requests,
@@ -226,6 +227,7 @@ api_router.include_router(otif_marks.router)
 api_router.include_router(routing_guides.router)
 api_router.include_router(sap_connectors.router)
 api_router.include_router(capa_marks.router)
+api_router.include_router(freight_audit_marks.router)
 api_router.include_router(terminal_slot_connectors.router)
 api_router.include_router(tower_impacts.router)
 api_router.include_router(twin_marks.router)

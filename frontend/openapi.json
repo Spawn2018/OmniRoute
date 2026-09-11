@@ -9374,6 +9374,80 @@
         ]
       }
     },
+    "/api/v1/freight-audit-marks": {
+      "get": {
+        "tags": [
+          "freight-audit-marks"
+        ],
+        "summary": "List Freight Audit Marks",
+        "operationId": "list_freight_audit_marks_api_v1_freight_audit_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/FreightAuditMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Freight Audit Marks Api V1 Freight Audit Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "freight-audit-marks"
+        ],
+        "summary": "Create Freight Audit Mark",
+        "operationId": "create_freight_audit_mark_api_v1_freight_audit_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FreightAuditMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FreightAuditMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/terminal-slot-connectors": {
       "get": {
         "tags": [
@@ -17839,6 +17913,65 @@
           "source_ref"
         ],
         "title": "FreeTimeClockResponse"
+      },
+      "FreightAuditMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "audit_kind": {
+            "type": "string",
+            "title": "Audit Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "audit_kind",
+          "source_ref"
+        ],
+        "title": "FreightAuditMarkCreate"
+      },
+      "FreightAuditMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "audit_kind": {
+            "type": "string",
+            "title": "Audit Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "audit_kind",
+          "source_ref"
+        ],
+        "title": "FreightAuditMarkResponse"
       },
       "FuelIndexCreate": {
         "properties": {

@@ -744,3 +744,7 @@ class InvalidSapConnector(DomainError):
 
 class InvalidCapaMark(DomainError):
     """CT12: HITL rodzaj QMS CAPA/8D — nie workflow."""
+
+
+class InvalidFreightAuditMark(DomainError):
+    """CT10: HITL rodzaj audytu frachtu — nie druga marża."""

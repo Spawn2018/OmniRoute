@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **282.0** leftover HITL `capa_mark`
+- **Ostatni plaster:** **283.0** leftover HITL `freight_audit_mark`
 - **Etap:** Plan
-- **Następny:** leftover Fala CT / pin — egzekucja 409 z `routing_guide` albo CT9/CT10/CT11 gdy węższe HITL.
+- **Następny:** leftover Fala CT / pin — egzekucja 409 z `routing_guide` albo CT9/CT11 gdy węższe HITL.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

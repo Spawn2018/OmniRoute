@@ -2869,6 +2869,50 @@ export type FreeTimeClockResponse = {
 };
 
 /**
+ * FreightAuditMarkCreate
+ */
+export type FreightAuditMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Audit Kind
+     */
+    audit_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * FreightAuditMarkResponse
+ */
+export type FreightAuditMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Audit Kind
+     */
+    audit_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * FuelIndexCreate
  */
 export type FuelIndexCreate = {
@@ -13852,6 +13896,49 @@ export type CreateCapaMarkApiV1CapaMarksPostResponses = {
 };
 
 export type CreateCapaMarkApiV1CapaMarksPostResponse = CreateCapaMarkApiV1CapaMarksPostResponses[keyof CreateCapaMarkApiV1CapaMarksPostResponses];
+
+export type ListFreightAuditMarksApiV1FreightAuditMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/freight-audit-marks';
+};
+
+export type ListFreightAuditMarksApiV1FreightAuditMarksGetResponses = {
+    /**
+     * Response List Freight Audit Marks Api V1 Freight Audit Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<FreightAuditMarkResponse>;
+};
+
+export type ListFreightAuditMarksApiV1FreightAuditMarksGetResponse = ListFreightAuditMarksApiV1FreightAuditMarksGetResponses[keyof ListFreightAuditMarksApiV1FreightAuditMarksGetResponses];
+
+export type CreateFreightAuditMarkApiV1FreightAuditMarksPostData = {
+    body: FreightAuditMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/freight-audit-marks';
+};
+
+export type CreateFreightAuditMarkApiV1FreightAuditMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateFreightAuditMarkApiV1FreightAuditMarksPostError = CreateFreightAuditMarkApiV1FreightAuditMarksPostErrors[keyof CreateFreightAuditMarkApiV1FreightAuditMarksPostErrors];
+
+export type CreateFreightAuditMarkApiV1FreightAuditMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: FreightAuditMarkResponse;
+};
+
+export type CreateFreightAuditMarkApiV1FreightAuditMarksPostResponse = CreateFreightAuditMarkApiV1FreightAuditMarksPostResponses[keyof CreateFreightAuditMarkApiV1FreightAuditMarksPostResponses];
 
 export type ListTerminalSlotConnectorsApiV1TerminalSlotConnectorsGetData = {
     body?: never;

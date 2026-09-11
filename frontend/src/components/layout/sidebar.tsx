@@ -92,6 +92,7 @@ const NAV = [
   { to: "/otif-marks", label: "Znacznik OTIF" },
   { to: "/sap-connectors", label: "Konektor SAP/Oracle" },
   { to: "/capa-marks", label: "Znacznik CAPA" },
+  { to: "/freight-audit-marks", label: "Audyt frachtu" },
   { to: "/exchange-connectors", label: "Konektor giełdy" },
   { to: "/terminal-slot-connectors", label: "Konektor slotu" },
   { to: "/weather-observations", label: "Pogoda" },

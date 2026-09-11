@@ -207,6 +207,11 @@ const NAV_ACTIONS = [
     to: "/capa-marks",
   },
   {
+    id: "nav-freight-audit-marks",
+    label: "Audyt frachtu",
+    to: "/freight-audit-marks",
+  },
+  {
     id: "nav-exchange-connectors",
     label: "Idź do konektora giełdy",
     to: "/exchange-connectors",
