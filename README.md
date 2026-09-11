@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **335.0** G15 HITL `yard_mark`
-- **Etap:** Plan — wolno `/plan-modul` **336.0** G16
-- **Następny:** **336.0** G16 SaaS billing Omni (węższa z kolejki; delta do utworzenia).
+- **Ostatni plaster:** **336.0** G16 HITL `billing_mark`
+- **Etap:** Plan — wolno `/plan-modul` **337.0** EXP7.2
+- **Następny:** **337.0** EXP7.2 poll CEIDG/KRS/VIES/biała lista → notice (węższa z kolejki; delta do utworzenia).
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

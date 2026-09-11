@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **336.0** G16 SaaS billing Omni (węższa z kolejki; delta do utworzenia).
+**Następny:** **337.0** EXP7.2 poll CEIDG/KRS/VIES/biała lista → notice (węższa z kolejki; delta do utworzenia).
 <!-- os-status:end -->
 
 ```mermaid
@@ -729,7 +729,7 @@ Karta: [karty-pol-fala-g.md](analysis/karty-pol-fala-g.md). G2 wyżej.
 | G13 | EDI parser → draft | 333.0 HITL katalog `edi_map_mark` (map_kind); leftover parser/silent write | silent write |
 | G14 | AEO dossier | 334.0 HITL katalog `aeo_dossier_mark` (dossier_kind); leftover zestaw party_document / C8 | |
 | G15 | yard / waga / EIR | 335.0 HITL katalog `yard_mark` (yard_kind); leftover live yard / WMS / kg / klej D3+T3 | |
-| G16 | SaaS billing Omni | S53 | |
+| G16 | SaaS billing Omni | 336.0 HITL katalog `billing_mark` (billing_kind); leftover Stripe / limity / S53 | |
 | **EXP7.2** | poll CEIDG/KRS/VIES/biała lista → notice | M-10 | scrape |
 
 ### Fala EXP — silniki i pola, które nie wkleiły się wyżej

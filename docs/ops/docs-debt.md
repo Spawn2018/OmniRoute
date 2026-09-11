@@ -1,3 +1,4 @@
+- **336.0 leftover:** live Stripe; Paddle; platform_usage_daily; limity SQL; klej S53. 336.0 = HITL `billing_mark` (billing_kind).
 - **335.0 leftover:** live yard; WMS; weigh SQL vs VGM; EIR PDF; klej D3+T3. 335.0 = HITL `yard_mark` (yard_kind).
 - **334.0 leftover:** zestaw party_document; klej C8; scoring osoby. 334.0 = HITL `aeo_dossier_mark` (dossier_kind).
 - **333.0 leftover:** parser EDI live; silent write; draft auto. 333.0 = HITL `edi_map_mark` (map_kind).

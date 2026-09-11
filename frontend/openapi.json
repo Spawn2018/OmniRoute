@@ -10336,6 +10336,80 @@
         ]
       }
     },
+    "/api/v1/billing-marks": {
+      "get": {
+        "tags": [
+          "billing-marks"
+        ],
+        "summary": "List Billing Marks",
+        "operationId": "list_billing_marks_api_v1_billing_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/BillingMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Billing Marks Api V1 Billing Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "billing-marks"
+        ],
+        "summary": "Create Billing Mark",
+        "operationId": "create_billing_mark_api_v1_billing_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BillingMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BillingMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/asns": {
       "get": {
         "tags": [
@@ -15489,6 +15563,65 @@
           "source_ref"
         ],
         "title": "BankPaymentResponse"
+      },
+      "BillingMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "billing_kind": {
+            "type": "string",
+            "title": "Billing Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "billing_kind",
+          "source_ref"
+        ],
+        "title": "BillingMarkCreate"
+      },
+      "BillingMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "billing_kind": {
+            "type": "string",
+            "title": "Billing Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "billing_kind",
+          "source_ref"
+        ],
+        "title": "BillingMarkResponse"
       },
       "BondedMarkCreate": {
         "properties": {

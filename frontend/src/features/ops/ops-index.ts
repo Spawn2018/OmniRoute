@@ -599,6 +599,11 @@ export const OPS_JOBS = [
     job: "katalog yard_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.billingMark.route,
+    label: "Billing SaaS Omni",
+    job: "katalog billing_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.erpConnector.route,
     label: "Konektor Optima",
     job: "katalog erp_connector HITL",
@@ -1039,6 +1044,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "333.0": "/edi-map-marks",
   "334.0": "/aeo-dossier-marks",
   "335.0": "/yard-marks",
+  "336.0": "/billing-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

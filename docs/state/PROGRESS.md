@@ -2,6 +2,7 @@
 
 | Data | Plaster | Moduł | Opis |
 |---|---|---|---|
+| 2026-09-11 | 336.0 | G16 | HITL `billing_mark` (billing_kind). Nie live Stripe. Nastepny: Plan EXP7.2. |
 | 2026-09-11 | 335.0 | G15 | HITL `yard_mark` (yard_kind). Nie live yard. Nastepny: Plan G16. |
 | 2026-09-11 | 334.0 | G14 | HITL `aeo_dossier_mark` (dossier_kind). Nie zestaw C8. Nastepny: Plan G15. |
 | 2026-09-11 | 333.0 | G13 | HITL `edi_map_mark` (map_kind). Nie silent write. Nastepny: Plan G14. |

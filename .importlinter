@@ -131,6 +131,7 @@ modules =
     app.services.edi_map_marks
     app.services.aeo_dossier_marks
     app.services.yard_marks
+    app.services.billing_marks
     app.services.freight_audit_marks
     app.services.collaboration_marks
     app.services.exchange_connectors
@@ -532,6 +533,9 @@ forbidden_modules =
     app.services.yard_marks
     app.repositories.yard_marks
     app.models.yard_mark
+    app.services.billing_marks
+    app.repositories.billing_marks
+    app.models.billing_mark
     app.services.freight_audit_marks
     app.repositories.freight_audit_marks
     app.models.freight_audit_mark

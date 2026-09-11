@@ -838,6 +838,10 @@ class InvalidYardMark(DomainError):
     """G15: HITL yard/waga/EIR — nie live yard."""
 
 
+class InvalidBillingMark(DomainError):
+    """G16: HITL billing SaaS — nie live Stripe."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

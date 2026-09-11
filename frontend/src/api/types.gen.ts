@@ -257,6 +257,50 @@ export type BankPaymentResponse = {
 };
 
 /**
+ * BillingMarkCreate
+ */
+export type BillingMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Billing Kind
+     */
+    billing_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * BillingMarkResponse
+ */
+export type BillingMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Billing Kind
+     */
+    billing_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * BondedMarkCreate
  */
 export type BondedMarkCreate = {
@@ -15673,6 +15717,49 @@ export type CreateYardMarkApiV1YardMarksPostResponses = {
 };
 
 export type CreateYardMarkApiV1YardMarksPostResponse = CreateYardMarkApiV1YardMarksPostResponses[keyof CreateYardMarkApiV1YardMarksPostResponses];
+
+export type ListBillingMarksApiV1BillingMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/billing-marks';
+};
+
+export type ListBillingMarksApiV1BillingMarksGetResponses = {
+    /**
+     * Response List Billing Marks Api V1 Billing Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<BillingMarkResponse>;
+};
+
+export type ListBillingMarksApiV1BillingMarksGetResponse = ListBillingMarksApiV1BillingMarksGetResponses[keyof ListBillingMarksApiV1BillingMarksGetResponses];
+
+export type CreateBillingMarkApiV1BillingMarksPostData = {
+    body: BillingMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/billing-marks';
+};
+
+export type CreateBillingMarkApiV1BillingMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateBillingMarkApiV1BillingMarksPostError = CreateBillingMarkApiV1BillingMarksPostErrors[keyof CreateBillingMarkApiV1BillingMarksPostErrors];
+
+export type CreateBillingMarkApiV1BillingMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: BillingMarkResponse;
+};
+
+export type CreateBillingMarkApiV1BillingMarksPostResponse = CreateBillingMarkApiV1BillingMarksPostResponses[keyof CreateBillingMarkApiV1BillingMarksPostResponses];
 
 export type ListAsnsApiV1AsnsGetData = {
     body?: never;

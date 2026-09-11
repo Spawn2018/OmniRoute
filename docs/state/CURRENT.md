@@ -4,17 +4,17 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute  
 
-**Ostatni plaster:** **335.0** G15 HITL `yard_mark`  
+**Ostatni plaster:** **336.0** G16 HITL `billing_mark`  
 
-**Etap:** Plan — wolno `/plan-modul` **336.0** G16  
+**Etap:** Plan — wolno `/plan-modul` **337.0** EXP7.2  
 
 **Noc:** `/noc 10` do 2026-09-12T10:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).  
 
-**Następny:** **336.0** G16 SaaS billing Omni (węższa z kolejki; delta do utworzenia).  
+**Następny:** **337.0** EXP7.2 poll CEIDG/KRS/VIES/biała lista → notice (węższa z kolejki; delta do utworzenia).  
 
-Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44 · extract · CI5 kara SQL · wróżba punktowa · CI6 kwoty · S11 auto-send · EBITDA SQL · egzekucja 409 · MAE SQL · outcome SQL · crm_opportunity · activity · cold auto-send · bank stakeholder · presentation_due · teatr PUESC · wymiary OOG · LLM-VRP · solver OR · kara kierowcy · work_order · F1 KSeF live · eIDAS crypto · wipe · drugi tenant · company_id FK · WMS e-com · SENT-UE · filer live · silent write · zestaw party_document · yard live. Nie zgaduj 71–336.
+Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44 · extract · CI5 kara SQL · wróżba punktowa · CI6 kwoty · S11 auto-send · EBITDA SQL · egzekucja 409 · MAE SQL · outcome SQL · crm_opportunity · activity · cold auto-send · bank stakeholder · presentation_due · teatr PUESC · wymiary OOG · LLM-VRP · solver OR · kara kierowcy · work_order · F1 KSeF live · eIDAS crypto · wipe · drugi tenant · company_id FK · WMS e-com · SENT-UE · filer live · silent write · zestaw party_document · yard live · Stripe live · registry scrape. Nie zgaduj 71–337.
 
-**Spec (jedyna na sesję):** brak otwartej delty — `/plan-modul` G16.
+**Spec (jedyna na sesję):** brak otwartej delty — `/plan-modul` EXP7.2.
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
@@ -22,4 +22,4 @@ Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow 
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-11:** Plaster **335.0** zamknięty (`/noc`) — HITL `yard_mark` bez live yard.
+**2026-09-11:** Plaster **336.0** zamknięty (`/noc`) — HITL `billing_mark` bez live Stripe.
