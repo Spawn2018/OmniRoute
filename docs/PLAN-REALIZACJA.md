@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **G6** load plan OR (Plan). Pin po G5.
+**Następny:** **327.0** G6 HITL `load_plan_mark` (delta `docs/deltas/open/327.0-load-plan-mark.md`).
 <!-- os-status:end -->
 
 ```mermaid
@@ -720,7 +720,7 @@ Karta: [karty-pol-fala-g.md](analysis/karty-pol-fala-g.md). G2 wyżej.
 | G3 | LC checklista | 324.0 HITL katalog `lc_checklist` (status_kind); leftover bank/due/U5/I3 | bank live |
 | G4 | NCTS T1/T2 szkic | 325.0 HITL katalog `ncts_draft` (transit_kind); leftover plomby/C2/PUESC | teatr PUESC |
 | G5 | OOG / lashing / eskort | 326.0 HITL katalog `oog_mark` (escort_kind); leftover wymiary/cert/T1 | |
-| G6 | load plan OR (osie, bin) | po T2 | LLM-VRP |
+| G6 | load plan OR (osie, bin) | 327.0 Plan HITL `load_plan_mark` (stance_kind); leftover OR/osie/T2 | LLM-VRP |
 | G7 | CMMS + DTC | T2+V5 | kara kierowcy |
 | G8 | eIDAS / retencja / legal hold | F1 | |
 | G10 | multi-company w tenancie | F | drugi tenant |
