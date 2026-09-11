@@ -70,6 +70,7 @@ from app.api import (
     ncts_drafts,
     networks,
     ocean_bills,
+    oog_marks,
     operational_exceptions,
     operator_decisions,
     operator_notices,
@@ -189,6 +190,7 @@ api_router.include_router(operational_exceptions.router)
 api_router.include_router(cargo_claims.router)
 api_router.include_router(cod_instructions.router)
 api_router.include_router(ocean_bills.router)
+api_router.include_router(oog_marks.router)
 api_router.include_router(consignments.router)
 api_router.include_router(pallet_balances.router)
 api_router.include_router(document_templates.router)

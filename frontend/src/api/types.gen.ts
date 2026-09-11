@@ -4785,6 +4785,50 @@ export type OceanBillResponse = {
 };
 
 /**
+ * OogMarkCreate
+ */
+export type OogMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Escort Kind
+     */
+    escort_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * OogMarkResponse
+ */
+export type OogMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Escort Kind
+     */
+    escort_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * OperationalExceptionCreate
  */
 export type OperationalExceptionCreate = {
@@ -12290,6 +12334,49 @@ export type CreateOceanBillApiV1OceanBillsPostResponses = {
 };
 
 export type CreateOceanBillApiV1OceanBillsPostResponse = CreateOceanBillApiV1OceanBillsPostResponses[keyof CreateOceanBillApiV1OceanBillsPostResponses];
+
+export type ListOogMarksApiV1OogMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/oog-marks';
+};
+
+export type ListOogMarksApiV1OogMarksGetResponses = {
+    /**
+     * Response List Oog Marks Api V1 Oog Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<OogMarkResponse>;
+};
+
+export type ListOogMarksApiV1OogMarksGetResponse = ListOogMarksApiV1OogMarksGetResponses[keyof ListOogMarksApiV1OogMarksGetResponses];
+
+export type CreateOogMarkApiV1OogMarksPostData = {
+    body: OogMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/oog-marks';
+};
+
+export type CreateOogMarkApiV1OogMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateOogMarkApiV1OogMarksPostError = CreateOogMarkApiV1OogMarksPostErrors[keyof CreateOogMarkApiV1OogMarksPostErrors];
+
+export type CreateOogMarkApiV1OogMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: OogMarkResponse;
+};
+
+export type CreateOogMarkApiV1OogMarksPostResponse = CreateOogMarkApiV1OogMarksPostResponses[keyof CreateOogMarkApiV1OogMarksPostResponses];
 
 export type ListConsignmentsApiV1ConsignmentsGetData = {
     body?: never;

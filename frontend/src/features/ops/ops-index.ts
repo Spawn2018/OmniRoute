@@ -549,6 +549,11 @@ export const OPS_JOBS = [
     job: "katalog ncts_draft HITL",
   },
   {
+    route: BUSINESS_LISTS.oogMark.route,
+    label: "Znacznik OOG",
+    job: "katalog oog_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.erpConnector.route,
     label: "Konektor Optima",
     job: "katalog erp_connector HITL",
@@ -979,6 +984,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "323.0": "/crm-leads",
   "324.0": "/lc-checklists",
   "325.0": "/ncts-drafts",
+  "326.0": "/oog-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

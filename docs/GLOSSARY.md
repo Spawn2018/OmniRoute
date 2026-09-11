@@ -208,6 +208,7 @@
 | lead CRM | crm_lead | G1 HITL katalog; leftover szansa/activity |
 | checklista LC | lc_checklist | G3 HITL katalog; leftover bank/due |
 | szkic NCTS | ncts_draft | G4 HITL katalog; leftover PUESC/plomby |
+| znacznik OOG | oog_mark | G5 HITL katalog; leftover wymiary/cert |
 | opcja naprawy | remediation_option | CI6 HITL 315.0; kind rebook/wait/claim/other; leftover kwota / S11 |
 | scenariusz skutku | impact_scenario | CI6 HITL 316.0; chain_label tekst; nie EBITDA SQL; nie tower_impact |
 | powiadomienie klauzuli | clause_notice | CI3 HITL 317.0; clause_label tekst; nie 409; nie auto-kara |

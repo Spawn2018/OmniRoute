@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **325.0** G4 HITL `ncts_draft` **Następny:** **326.0** G5 HITL `oog_mark` (delta `docs/deltas/open/326.0-oog-mark.md`).
+**Stan (z CURRENT.md):** **326.0** G5 HITL `oog_mark` **Następny:** **G6** load plan OR (Plan). Pin po G5.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

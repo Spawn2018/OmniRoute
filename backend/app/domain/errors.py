@@ -798,6 +798,10 @@ class InvalidNctsDraft(DomainError):
     """G4: HITL szkic NCTS — nie PUESC."""
 
 
+class InvalidOogMark(DomainError):
+    """G5: HITL znacznik OOG — nie wymiary."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

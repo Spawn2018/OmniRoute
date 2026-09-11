@@ -5262,6 +5262,80 @@
         ]
       }
     },
+    "/api/v1/oog-marks": {
+      "get": {
+        "tags": [
+          "oog-marks"
+        ],
+        "summary": "List Oog Marks",
+        "operationId": "list_oog_marks_api_v1_oog_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/OogMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Oog Marks Api V1 Oog Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "oog-marks"
+        ],
+        "summary": "Create Oog Mark",
+        "operationId": "create_oog_mark_api_v1_oog_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OogMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OogMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/consignments": {
       "get": {
         "tags": [
@@ -22063,6 +22137,65 @@
           "source_ref"
         ],
         "title": "OceanBillResponse"
+      },
+      "OogMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "escort_kind": {
+            "type": "string",
+            "title": "Escort Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "escort_kind",
+          "source_ref"
+        ],
+        "title": "OogMarkCreate"
+      },
+      "OogMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "escort_kind": {
+            "type": "string",
+            "title": "Escort Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "escort_kind",
+          "source_ref"
+        ],
+        "title": "OogMarkResponse"
       },
       "OperationalExceptionCreate": {
         "properties": {

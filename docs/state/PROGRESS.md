@@ -2,6 +2,7 @@
 
 | Data | Plaster | Moduł | Opis |
 |---|---|---|---|
+| 2026-09-11 | 326.0 | G5 | HITL `oog_mark` (escort_kind). Nie wymiary. Nastepny: Plan G6. |
 | 2026-09-11 | 325.0 | G4 | HITL `ncts_draft` (transit_kind). Nie PUESC. Nastepny: Plan G5. |
 | 2026-09-11 | 324.0 | G3 | HITL `lc_checklist` (status_kind). Nie bank due. Nastepny: Plan G4. |
 | 2026-09-11 | 323.0 | G1 | HITL `crm_lead` (stage_kind). Nie cold-send. Nastepny: Plan G3. |

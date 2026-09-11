@@ -121,6 +121,7 @@ modules =
     app.services.crm_leads
     app.services.lc_checklists
     app.services.ncts_drafts
+    app.services.oog_marks
     app.services.freight_audit_marks
     app.services.collaboration_marks
     app.services.exchange_connectors
@@ -492,6 +493,9 @@ forbidden_modules =
     app.services.ncts_drafts
     app.repositories.ncts_drafts
     app.models.ncts_draft
+    app.services.oog_marks
+    app.repositories.oog_marks
+    app.models.oog_mark
     app.services.freight_audit_marks
     app.repositories.freight_audit_marks
     app.models.freight_audit_mark
