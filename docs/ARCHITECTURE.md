@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **302.0** `/refaktor` CatalogSourceRefField (kek/PO/terminal-slot). **Etap:** Refaktor. **Następny:** leftover label-form (po-line / visibility / sap) albo wąski HITL. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **303.0** `/refaktor` CatalogSourceRefField (po-line/visibility/sap). **Etap:** Refaktor. **Następny:** leftover label-form albo wąski HITL z pinu. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

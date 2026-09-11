@@ -1,4 +1,5 @@
-- **302.0 leftover:** label-form po-line / visibility / sap. 302.0 = SourceRefField na kek/PO/terminal-slot.
+- **303.0 leftover:** pozostałe label-form (asn / routing / mark catalogs). 303.0 = SourceRefField na po-line/visibility/sap.
+- **302.0 leftover:** po-line/visibility/sap DONE 303.0. 302.0 = kek/PO/terminal-slot.
 - **301.0 leftover:** kek/PO/terminal-slot DONE 302.0. 301.0 = erp/idp/contract.
 - **300.0 leftover:** connector/header DONE częściowo 301.0. 300.0 = prediction/weather/exchange.
 - **299.0 leftover:** prediction/weather DONE 300.0. 299.0 = rank/executive/memory.

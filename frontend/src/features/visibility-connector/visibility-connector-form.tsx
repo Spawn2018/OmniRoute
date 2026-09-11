@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { type FormEvent, useState } from "react"
-import { CatalogError } from "@/components/catalog/catalog-parts"
+import { CatalogError, CatalogSourceRefField } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { persistVisibilityConnector, visibilityFixtureBody } from "@/lib/visibility-connectors-api"
 
@@ -67,16 +67,12 @@ export function VisibilityConnectorSave(args: { organizationId: string | null })
           </label>
         ))}
       </fieldset>
-      <label className="grid gap-1 text-xs">
-        Pochodzenie (`tenant:manual` albo `fixture://visibility/…`)
-        <input
-          aria-label="Pochodzenie konektora widoczności"
-          className="h-9 rounded-md border bg-background px-2 font-mono"
-          onChange={(change) => setDraft({ ...draft, originPointer: change.target.value })}
-          required
-          value={draft.originPointer}
-        />
-      </label>
+      <CatalogSourceRefField
+        label="source_ref (tenant:manual albo fixture://visibility/…)"
+        ariaLabel="Pochodzenie konektora widoczności"
+        value={draft.originPointer}
+        onChange={(originPointer) => setDraft({ ...draft, originPointer })}
+      />
       <Button disabled={persist.isPending || !args.organizationId} type="submit">
         Zapisz konektor widoczności
       </Button>
