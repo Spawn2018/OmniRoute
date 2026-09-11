@@ -44,6 +44,7 @@ def _notice(
         plant_label=None,
         carrier_label=None,
         ship_ref_label=None,
+        guide_code=None,
         source_ref=source_ref,
         created_by=created_by,
     )
