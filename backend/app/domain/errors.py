@@ -1034,6 +1034,10 @@ class InvalidHaulierRoleMark(DomainError):
     """EXP1: HITL haulier_role_mark — nie FK party na shipment / cargo_value."""
 
 
+class InvalidDiversionMark(DomainError):
+    """EXP1: HITL diversion_mark — nie FK shipment / cargo_value."""
+
+
 class InvalidImpersonateGuardMark(DomainError):
     """EXP0.12: HITL impersonate≠unwrap — nie crypto / Auth0 live."""
 

@@ -212,6 +212,14 @@ def _organization_exp2_catalog_relations() -> dict[str, Userset]:
 
 
 def _organization_exp4_catalog_relations() -> dict[str, Userset]:
+    # Split: craft_style ≤40 linii na funkcję (słownik relacji rośnie z HITL).
+    return {
+        **_organization_exp4_mode_catalog_relations(),
+        **_organization_exp1_shipment_catalog_relations(),
+    }
+
+
+def _organization_exp4_mode_catalog_relations() -> dict[str, Userset]:
     return {
         "can_manage_air_ra3_marks": _member(),
         "can_manage_rail_cim_marks": _member(),
@@ -225,16 +233,6 @@ def _organization_exp4_catalog_relations() -> dict[str, Userset]:
         "can_manage_empty_depot_marks": _member(),
         "can_manage_po_batch_marks": _member(),
         "can_manage_un_segregation_marks": _member(),
-        "can_manage_dual_ledger_marks": _member(),
-        "can_manage_named_place_marks": _member(),
-        "can_manage_slot_guarantee_marks": _member(),
-        "can_manage_freight_term_marks": _member(),
-        "can_manage_customer_po_marks": _member(),
-        "can_manage_profit_center_marks": _member(),
-        "can_manage_high_value_marks": _member(),
-        "can_manage_payment_terms_marks": _member(),
-        "can_manage_language_code_marks": _member(),
-        "can_manage_haulier_role_marks": _member(),
         "can_manage_nvocc_marks": _member(),
         "can_manage_multi_manning_marks": _member(),
         "can_manage_posting_marks": _member(),
@@ -250,6 +248,22 @@ def _organization_exp4_catalog_relations() -> dict[str, Userset]:
         "can_manage_copy_ban_marks": _member(),
         "can_manage_erru_marks": _member(),
         "can_manage_mobile_client_marks": _member(),
+    }
+
+
+def _organization_exp1_shipment_catalog_relations() -> dict[str, Userset]:
+    return {
+        "can_manage_dual_ledger_marks": _member(),
+        "can_manage_named_place_marks": _member(),
+        "can_manage_slot_guarantee_marks": _member(),
+        "can_manage_freight_term_marks": _member(),
+        "can_manage_customer_po_marks": _member(),
+        "can_manage_profit_center_marks": _member(),
+        "can_manage_high_value_marks": _member(),
+        "can_manage_payment_terms_marks": _member(),
+        "can_manage_language_code_marks": _member(),
+        "can_manage_haulier_role_marks": _member(),
+        "can_manage_diversion_marks": _member(),
     }
 
 

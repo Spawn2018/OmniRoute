@@ -792,3 +792,5 @@
 - 2026-09-12T21:01:11Z · 425.0 · language_code_mark · DONE · HITL locale_kind pl|en|de|other · migracja 335 · /language-code-marks
 
 - 2026-09-12T21:22:04Z · 426.0 · haulier_role_mark · DONE · HITL role_kind booked|actual|other · migracja 336 · /haulier-role-marks
+
+- 2026-09-12T21:41:56Z · 427.0 · diversion_mark · DONE · HITL stance_kind diversion|reroute|other · migracja 337 · /diversion-marks

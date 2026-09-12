@@ -14538,6 +14538,80 @@
         ]
       }
     },
+    "/api/v1/diversion-marks": {
+      "get": {
+        "tags": [
+          "diversion-mark"
+        ],
+        "summary": "List Diversion Marks",
+        "operationId": "list_diversion_marks_api_v1_diversion_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/DiversionMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Diversion Marks Api V1 Diversion Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "diversion-mark"
+        ],
+        "summary": "Create Diversion Mark",
+        "operationId": "create_diversion_mark_api_v1_diversion_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DiversionMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DiversionMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/demo-gps-marks": {
       "get": {
         "tags": [
@@ -27090,6 +27164,71 @@
           "source_ref"
         ],
         "title": "DemoWipeMarkResponse"
+      },
+      "DiversionMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "stance_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 4,
+            "title": "Stance Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "stance_kind",
+          "source_ref"
+        ],
+        "title": "DiversionMarkCreate"
+      },
+      "DiversionMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "stance_kind": {
+            "type": "string",
+            "title": "Stance Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "stance_kind",
+          "source_ref"
+        ],
+        "title": "DiversionMarkResponse"
       },
       "DockAppointmentCreate": {
         "properties": {

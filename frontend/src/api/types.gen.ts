@@ -3337,6 +3337,50 @@ export type DemoWipeMarkResponse = {
 };
 
 /**
+ * DiversionMarkCreate
+ */
+export type DiversionMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Stance Kind
+     */
+    stance_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * DiversionMarkResponse
+ */
+export type DiversionMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Stance Kind
+     */
+    stance_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * DockAppointmentCreate
  */
 export type DockAppointmentCreate = {
@@ -22035,6 +22079,49 @@ export type CreateDemandSnapshotMarkApiV1DemandSnapshotMarksPostResponses = {
 };
 
 export type CreateDemandSnapshotMarkApiV1DemandSnapshotMarksPostResponse = CreateDemandSnapshotMarkApiV1DemandSnapshotMarksPostResponses[keyof CreateDemandSnapshotMarkApiV1DemandSnapshotMarksPostResponses];
+
+export type ListDiversionMarksApiV1DiversionMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/diversion-marks';
+};
+
+export type ListDiversionMarksApiV1DiversionMarksGetResponses = {
+    /**
+     * Response List Diversion Marks Api V1 Diversion Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<DiversionMarkResponse>;
+};
+
+export type ListDiversionMarksApiV1DiversionMarksGetResponse = ListDiversionMarksApiV1DiversionMarksGetResponses[keyof ListDiversionMarksApiV1DiversionMarksGetResponses];
+
+export type CreateDiversionMarkApiV1DiversionMarksPostData = {
+    body: DiversionMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/diversion-marks';
+};
+
+export type CreateDiversionMarkApiV1DiversionMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateDiversionMarkApiV1DiversionMarksPostError = CreateDiversionMarkApiV1DiversionMarksPostErrors[keyof CreateDiversionMarkApiV1DiversionMarksPostErrors];
+
+export type CreateDiversionMarkApiV1DiversionMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: DiversionMarkResponse;
+};
+
+export type CreateDiversionMarkApiV1DiversionMarksPostResponse = CreateDiversionMarkApiV1DiversionMarksPostResponses[keyof CreateDiversionMarkApiV1DiversionMarksPostResponses];
 
 export type ListDemoGpsMarksApiV1DemoGpsMarksGetData = {
     body?: never;

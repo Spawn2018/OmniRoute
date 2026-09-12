@@ -61,6 +61,7 @@ import { Route as DemandSnapshotMarksRouteImport } from './routes/demand-snapsho
 import { Route as DemoGpsMarksRouteImport } from './routes/demo-gps-marks'
 import { Route as DemoSimMarksRouteImport } from './routes/demo-sim-marks'
 import { Route as DemoWipeMarksRouteImport } from './routes/demo-wipe-marks'
+import { Route as DiversionMarksRouteImport } from './routes/diversion-marks'
 import { Route as DockAppointmentsRouteImport } from './routes/dock-appointments'
 import { Route as DocumentTemplatesRouteImport } from './routes/document-templates'
 import { Route as DualLedgerMarksRouteImport } from './routes/dual-ledger-marks'
@@ -504,6 +505,11 @@ const DemoSimMarksRoute = DemoSimMarksRouteImport.update({
 const DemoWipeMarksRoute = DemoWipeMarksRouteImport.update({
   id: '/demo-wipe-marks',
   path: '/demo-wipe-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiversionMarksRoute = DiversionMarksRouteImport.update({
+  id: '/diversion-marks',
+  path: '/diversion-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DockAppointmentsRoute = DockAppointmentsRouteImport.update({
@@ -1481,6 +1487,7 @@ export interface FileRoutesByFullPath {
   '/demo-gps-marks': typeof DemoGpsMarksRoute
   '/demo-sim-marks': typeof DemoSimMarksRoute
   '/demo-wipe-marks': typeof DemoWipeMarksRoute
+  '/diversion-marks': typeof DiversionMarksRoute
   '/dock-appointments': typeof DockAppointmentsRoute
   '/document-templates': typeof DocumentTemplatesRoute
   '/dual-ledger-marks': typeof DualLedgerMarksRoute
@@ -1719,6 +1726,7 @@ export interface FileRoutesByTo {
   '/demo-gps-marks': typeof DemoGpsMarksRoute
   '/demo-sim-marks': typeof DemoSimMarksRoute
   '/demo-wipe-marks': typeof DemoWipeMarksRoute
+  '/diversion-marks': typeof DiversionMarksRoute
   '/dock-appointments': typeof DockAppointmentsRoute
   '/document-templates': typeof DocumentTemplatesRoute
   '/dual-ledger-marks': typeof DualLedgerMarksRoute
@@ -1958,6 +1966,7 @@ export interface FileRoutesById {
   '/demo-gps-marks': typeof DemoGpsMarksRoute
   '/demo-sim-marks': typeof DemoSimMarksRoute
   '/demo-wipe-marks': typeof DemoWipeMarksRoute
+  '/diversion-marks': typeof DiversionMarksRoute
   '/dock-appointments': typeof DockAppointmentsRoute
   '/document-templates': typeof DocumentTemplatesRoute
   '/dual-ledger-marks': typeof DualLedgerMarksRoute
@@ -2198,6 +2207,7 @@ export interface FileRouteTypes {
     | '/demo-gps-marks'
     | '/demo-sim-marks'
     | '/demo-wipe-marks'
+    | '/diversion-marks'
     | '/dock-appointments'
     | '/document-templates'
     | '/dual-ledger-marks'
@@ -2436,6 +2446,7 @@ export interface FileRouteTypes {
     | '/demo-gps-marks'
     | '/demo-sim-marks'
     | '/demo-wipe-marks'
+    | '/diversion-marks'
     | '/dock-appointments'
     | '/document-templates'
     | '/dual-ledger-marks'
@@ -2674,6 +2685,7 @@ export interface FileRouteTypes {
     | '/demo-gps-marks'
     | '/demo-sim-marks'
     | '/demo-wipe-marks'
+    | '/diversion-marks'
     | '/dock-appointments'
     | '/document-templates'
     | '/dual-ledger-marks'
@@ -2913,6 +2925,7 @@ export interface RootRouteChildren {
   DemoGpsMarksRoute: typeof DemoGpsMarksRoute
   DemoSimMarksRoute: typeof DemoSimMarksRoute
   DemoWipeMarksRoute: typeof DemoWipeMarksRoute
+  DiversionMarksRoute: typeof DiversionMarksRoute
   DockAppointmentsRoute: typeof DockAppointmentsRoute
   DocumentTemplatesRoute: typeof DocumentTemplatesRoute
   DualLedgerMarksRoute: typeof DualLedgerMarksRoute
@@ -3463,6 +3476,13 @@ declare module '@tanstack/react-router' {
       path: '/demo-wipe-marks'
       fullPath: '/demo-wipe-marks'
       preLoaderRoute: typeof DemoWipeMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/diversion-marks': {
+      id: '/diversion-marks'
+      path: '/diversion-marks'
+      fullPath: '/diversion-marks'
+      preLoaderRoute: typeof DiversionMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dock-appointments': {
@@ -4809,6 +4829,7 @@ const rootRouteChildren: RootRouteChildren = {
   DemoGpsMarksRoute: DemoGpsMarksRoute,
   DemoSimMarksRoute: DemoSimMarksRoute,
   DemoWipeMarksRoute: DemoWipeMarksRoute,
+  DiversionMarksRoute: DiversionMarksRoute,
   DockAppointmentsRoute: DockAppointmentsRoute,
   DocumentTemplatesRoute: DocumentTemplatesRoute,
   DualLedgerMarksRoute: DualLedgerMarksRoute,
