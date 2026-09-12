@@ -4027,6 +4027,80 @@
         ]
       }
     },
+    "/api/v1/line-impact-marks": {
+      "get": {
+        "tags": [
+          "line-impact-mark"
+        ],
+        "summary": "List Line Impact Marks",
+        "operationId": "list_line_impact_marks_api_v1_line_impact_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/LineImpactMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Line Impact Marks Api V1 Line Impact Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "line-impact-mark"
+        ],
+        "summary": "Create Line Impact Mark",
+        "operationId": "create_line_impact_mark_api_v1_line_impact_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LineImpactMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LineImpactMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/entity-events": {
       "get": {
         "tags": [
@@ -29729,6 +29803,71 @@
           "source_ref"
         ],
         "title": "LezMarkResponse"
+      },
+      "LineImpactMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "impact_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Impact Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "impact_kind",
+          "source_ref"
+        ],
+        "title": "LineImpactMarkCreate"
+      },
+      "LineImpactMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "impact_kind": {
+            "type": "string",
+            "title": "Impact Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "impact_kind",
+          "source_ref"
+        ],
+        "title": "LineImpactMarkResponse"
       },
       "LoadPlanMarkCreate": {
         "properties": {

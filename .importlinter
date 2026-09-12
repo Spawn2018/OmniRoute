@@ -186,6 +186,7 @@ modules =
     app.services.ocean_feeder_marks
     app.services.reefer_marks
     app.services.chassis_marks
+    app.services.line_impact_marks
     app.services.empty_depot_marks
 
     app.services.nvocc_marks
@@ -852,6 +853,9 @@ forbidden_modules =
     app.services.chassis_marks
     app.repositories.chassis_marks
     app.models.chassis_mark
+    app.services.line_impact_marks
+    app.repositories.line_impact_marks
+    app.models.line_impact_mark
     app.services.empty_depot_marks
     app.repositories.empty_depot_marks
     app.models.empty_depot_mark

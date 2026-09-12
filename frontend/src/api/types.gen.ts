@@ -6089,6 +6089,50 @@ export type LezMarkResponse = {
 };
 
 /**
+ * LineImpactMarkCreate
+ */
+export type LineImpactMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Impact Kind
+     */
+    impact_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * LineImpactMarkResponse
+ */
+export type LineImpactMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Impact Kind
+     */
+    impact_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * LoadPlanMarkCreate
  */
 export type LoadPlanMarkCreate = {
@@ -15175,6 +15219,49 @@ export type CreateLezMarkApiV1LezMarksPostResponses = {
 };
 
 export type CreateLezMarkApiV1LezMarksPostResponse = CreateLezMarkApiV1LezMarksPostResponses[keyof CreateLezMarkApiV1LezMarksPostResponses];
+
+export type ListLineImpactMarksApiV1LineImpactMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/line-impact-marks';
+};
+
+export type ListLineImpactMarksApiV1LineImpactMarksGetResponses = {
+    /**
+     * Response List Line Impact Marks Api V1 Line Impact Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<LineImpactMarkResponse>;
+};
+
+export type ListLineImpactMarksApiV1LineImpactMarksGetResponse = ListLineImpactMarksApiV1LineImpactMarksGetResponses[keyof ListLineImpactMarksApiV1LineImpactMarksGetResponses];
+
+export type CreateLineImpactMarkApiV1LineImpactMarksPostData = {
+    body: LineImpactMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/line-impact-marks';
+};
+
+export type CreateLineImpactMarkApiV1LineImpactMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateLineImpactMarkApiV1LineImpactMarksPostError = CreateLineImpactMarkApiV1LineImpactMarksPostErrors[keyof CreateLineImpactMarkApiV1LineImpactMarksPostErrors];
+
+export type CreateLineImpactMarkApiV1LineImpactMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: LineImpactMarkResponse;
+};
+
+export type CreateLineImpactMarkApiV1LineImpactMarksPostResponse = CreateLineImpactMarkApiV1LineImpactMarksPostResponses[keyof CreateLineImpactMarkApiV1LineImpactMarksPostResponses];
 
 export type ListEntityEventsApiV1EntityEventsGetData = {
     body?: never;

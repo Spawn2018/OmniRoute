@@ -1058,6 +1058,10 @@ class InvalidChassisMark(DomainError):
     """EXP4.5b: HITL chassis_mark — nie live chassis pool / TEU / yard."""
 
 
+class InvalidLineImpactMark(DomainError):
+    """EXP3.3b: HITL line_impact_mark — nie SQL line impact / EBITDA / plant live."""
+
+
 class InvalidEmptyDepotMark(DomainError):
     """EXP4.6: HITL empty/depot — nie depot live API / scrape."""
 

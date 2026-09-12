@@ -112,6 +112,7 @@ import { Route as LcChecklistsRouteImport } from './routes/lc-checklists'
 import { Route as LclRouteImport } from './routes/lcl'
 import { Route as LegalHoldMarksRouteImport } from './routes/legal-hold-marks'
 import { Route as LezMarksRouteImport } from './routes/lez-marks'
+import { Route as LineImpactMarksRouteImport } from './routes/line-impact-marks'
 import { Route as LoadPlanMarksRouteImport } from './routes/load-plan-marks'
 import { Route as LocalChargesRouteImport } from './routes/local-charges'
 import { Route as LocationsRouteImport } from './routes/locations'
@@ -741,6 +742,11 @@ const LegalHoldMarksRoute = LegalHoldMarksRouteImport.update({
 const LezMarksRoute = LezMarksRouteImport.update({
   id: '/lez-marks',
   path: '/lez-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LineImpactMarksRoute = LineImpactMarksRouteImport.update({
+  id: '/line-impact-marks',
+  path: '/line-impact-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoadPlanMarksRoute = LoadPlanMarksRouteImport.update({
@@ -1424,6 +1430,7 @@ export interface FileRoutesByFullPath {
   '/lcl': typeof LclRoute
   '/legal-hold-marks': typeof LegalHoldMarksRoute
   '/lez-marks': typeof LezMarksRoute
+  '/line-impact-marks': typeof LineImpactMarksRoute
   '/load-plan-marks': typeof LoadPlanMarksRoute
   '/local-charges': typeof LocalChargesRoute
   '/locations': typeof LocationsRoute
@@ -1644,6 +1651,7 @@ export interface FileRoutesByTo {
   '/lcl': typeof LclRoute
   '/legal-hold-marks': typeof LegalHoldMarksRoute
   '/lez-marks': typeof LezMarksRoute
+  '/line-impact-marks': typeof LineImpactMarksRoute
   '/load-plan-marks': typeof LoadPlanMarksRoute
   '/local-charges': typeof LocalChargesRoute
   '/locations': typeof LocationsRoute
@@ -1865,6 +1873,7 @@ export interface FileRoutesById {
   '/lcl': typeof LclRoute
   '/legal-hold-marks': typeof LegalHoldMarksRoute
   '/lez-marks': typeof LezMarksRoute
+  '/line-impact-marks': typeof LineImpactMarksRoute
   '/load-plan-marks': typeof LoadPlanMarksRoute
   '/local-charges': typeof LocalChargesRoute
   '/locations': typeof LocationsRoute
@@ -2087,6 +2096,7 @@ export interface FileRouteTypes {
     | '/lcl'
     | '/legal-hold-marks'
     | '/lez-marks'
+    | '/line-impact-marks'
     | '/load-plan-marks'
     | '/local-charges'
     | '/locations'
@@ -2307,6 +2317,7 @@ export interface FileRouteTypes {
     | '/lcl'
     | '/legal-hold-marks'
     | '/lez-marks'
+    | '/line-impact-marks'
     | '/load-plan-marks'
     | '/local-charges'
     | '/locations'
@@ -2527,6 +2538,7 @@ export interface FileRouteTypes {
     | '/lcl'
     | '/legal-hold-marks'
     | '/lez-marks'
+    | '/line-impact-marks'
     | '/load-plan-marks'
     | '/local-charges'
     | '/locations'
@@ -2748,6 +2760,7 @@ export interface RootRouteChildren {
   LclRoute: typeof LclRoute
   LegalHoldMarksRoute: typeof LegalHoldMarksRoute
   LezMarksRoute: typeof LezMarksRoute
+  LineImpactMarksRoute: typeof LineImpactMarksRoute
   LoadPlanMarksRoute: typeof LoadPlanMarksRoute
   LocalChargesRoute: typeof LocalChargesRoute
   LocationsRoute: typeof LocationsRoute
@@ -3586,6 +3599,13 @@ declare module '@tanstack/react-router' {
       path: '/lez-marks'
       fullPath: '/lez-marks'
       preLoaderRoute: typeof LezMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/line-impact-marks': {
+      id: '/line-impact-marks'
+      path: '/line-impact-marks'
+      fullPath: '/line-impact-marks'
+      preLoaderRoute: typeof LineImpactMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/load-plan-marks': {
@@ -4500,6 +4520,7 @@ const rootRouteChildren: RootRouteChildren = {
   LclRoute: LclRoute,
   LegalHoldMarksRoute: LegalHoldMarksRoute,
   LezMarksRoute: LezMarksRoute,
+  LineImpactMarksRoute: LineImpactMarksRoute,
   LoadPlanMarksRoute: LoadPlanMarksRoute,
   LocalChargesRoute: LocalChargesRoute,
   LocationsRoute: LocationsRoute,

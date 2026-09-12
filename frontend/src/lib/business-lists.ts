@@ -53,6 +53,7 @@ export const BUSINESS_LISTS = {
   cashDiscount: { route: "/cash-discounts", tableKey: "cash_discount" },
   carbonMethod: { route: "/carbon-methods", tableKey: "carbon_method" },
   chassisMark: { route: "/chassis-marks", tableKey: "chassis_mark" },
+  lineImpactMark: { route: "/line-impact-marks", tableKey: "line_impact_mark" },
   predictionLedger: { route: "/prediction-ledgers", tableKey: "prediction_ledger" },
   planSnapshot: { route: "/plan-snapshots", tableKey: "plan_snapshot" },
   circleSim: { route: "/circle-sims", tableKey: "circle_sim" },
@@ -379,6 +380,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/ocean-alliance-marks",
   "/ocean-feeder-marks",
   "/chassis-marks",
+  "/line-impact-marks",
   "/reefer-marks",
   "/empty-depot-marks",
 

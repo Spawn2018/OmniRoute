@@ -924,6 +924,11 @@ export const OPS_JOBS = [
     job: "katalog chassis_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.lineImpactMark.route,
+    label: "Skutek linii",
+    job: "katalog line_impact_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.reeferMark.route,
     label: "Reefer",
     job: "katalog reefer_mark HITL",
@@ -1466,6 +1471,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "406.0": "/rail-uic-marks",
   "407.0": "/ocean-feeder-marks",
   "408.0": "/chassis-marks",
+  "409.0": "/line-impact-marks",
 } as const
 
 

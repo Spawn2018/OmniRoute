@@ -86,10 +86,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **408.0** EXP4.5b HITL `chassis_mark`
-- **Etap:** Plaster — **409.0** EXP3.3b
-- **Następny:** **409.0** EXP3.3b HITL `line_impact_mark` (line impact; bez SQL).
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **409.0** EXP3.3b HITL `line_impact_mark`
+- **Etap:** Plan — **410.0** EXP3.3c
+- **Następny:** **410.0** EXP3.3c HITL `three_way_mark` (3-way OpenFGA; bez tuple per strona).
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 
