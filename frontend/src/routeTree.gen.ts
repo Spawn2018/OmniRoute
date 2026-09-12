@@ -58,6 +58,7 @@ import { Route as DecisionsRouteImport } from './routes/decisions'
 import { Route as DelayForecastsRouteImport } from './routes/delay-forecasts'
 import { Route as DemandSnapshotMarksRouteImport } from './routes/demand-snapshot-marks'
 import { Route as DemoGpsMarksRouteImport } from './routes/demo-gps-marks'
+import { Route as DemoWipeMarksRouteImport } from './routes/demo-wipe-marks'
 import { Route as DockAppointmentsRouteImport } from './routes/dock-appointments'
 import { Route as DocumentTemplatesRouteImport } from './routes/document-templates'
 import { Route as ECmrMarksRouteImport } from './routes/e-cmr-marks'
@@ -473,6 +474,11 @@ const DemandSnapshotMarksRoute = DemandSnapshotMarksRouteImport.update({
 const DemoGpsMarksRoute = DemoGpsMarksRouteImport.update({
   id: '/demo-gps-marks',
   path: '/demo-gps-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoWipeMarksRoute = DemoWipeMarksRouteImport.update({
+  id: '/demo-wipe-marks',
+  path: '/demo-wipe-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DockAppointmentsRoute = DockAppointmentsRouteImport.update({
@@ -1382,6 +1388,7 @@ export interface FileRoutesByFullPath {
   '/delay-forecasts': typeof DelayForecastsRoute
   '/demand-snapshot-marks': typeof DemandSnapshotMarksRoute
   '/demo-gps-marks': typeof DemoGpsMarksRoute
+  '/demo-wipe-marks': typeof DemoWipeMarksRoute
   '/dock-appointments': typeof DockAppointmentsRoute
   '/document-templates': typeof DocumentTemplatesRoute
   '/e-cmr-marks': typeof ECmrMarksRoute
@@ -1604,6 +1611,7 @@ export interface FileRoutesByTo {
   '/delay-forecasts': typeof DelayForecastsRoute
   '/demand-snapshot-marks': typeof DemandSnapshotMarksRoute
   '/demo-gps-marks': typeof DemoGpsMarksRoute
+  '/demo-wipe-marks': typeof DemoWipeMarksRoute
   '/dock-appointments': typeof DockAppointmentsRoute
   '/document-templates': typeof DocumentTemplatesRoute
   '/e-cmr-marks': typeof ECmrMarksRoute
@@ -1827,6 +1835,7 @@ export interface FileRoutesById {
   '/delay-forecasts': typeof DelayForecastsRoute
   '/demand-snapshot-marks': typeof DemandSnapshotMarksRoute
   '/demo-gps-marks': typeof DemoGpsMarksRoute
+  '/demo-wipe-marks': typeof DemoWipeMarksRoute
   '/dock-appointments': typeof DockAppointmentsRoute
   '/document-templates': typeof DocumentTemplatesRoute
   '/e-cmr-marks': typeof ECmrMarksRoute
@@ -2051,6 +2060,7 @@ export interface FileRouteTypes {
     | '/delay-forecasts'
     | '/demand-snapshot-marks'
     | '/demo-gps-marks'
+    | '/demo-wipe-marks'
     | '/dock-appointments'
     | '/document-templates'
     | '/e-cmr-marks'
@@ -2273,6 +2283,7 @@ export interface FileRouteTypes {
     | '/delay-forecasts'
     | '/demand-snapshot-marks'
     | '/demo-gps-marks'
+    | '/demo-wipe-marks'
     | '/dock-appointments'
     | '/document-templates'
     | '/e-cmr-marks'
@@ -2495,6 +2506,7 @@ export interface FileRouteTypes {
     | '/delay-forecasts'
     | '/demand-snapshot-marks'
     | '/demo-gps-marks'
+    | '/demo-wipe-marks'
     | '/dock-appointments'
     | '/document-templates'
     | '/e-cmr-marks'
@@ -2718,6 +2730,7 @@ export interface RootRouteChildren {
   DelayForecastsRoute: typeof DelayForecastsRoute
   DemandSnapshotMarksRoute: typeof DemandSnapshotMarksRoute
   DemoGpsMarksRoute: typeof DemoGpsMarksRoute
+  DemoWipeMarksRoute: typeof DemoWipeMarksRoute
   DockAppointmentsRoute: typeof DockAppointmentsRoute
   DocumentTemplatesRoute: typeof DocumentTemplatesRoute
   ECmrMarksRoute: typeof ECmrMarksRoute
@@ -3234,6 +3247,13 @@ declare module '@tanstack/react-router' {
       path: '/demo-gps-marks'
       fullPath: '/demo-gps-marks'
       preLoaderRoute: typeof DemoGpsMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo-wipe-marks': {
+      id: '/demo-wipe-marks'
+      path: '/demo-wipe-marks'
+      fullPath: '/demo-wipe-marks'
+      preLoaderRoute: typeof DemoWipeMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dock-appointments': {
@@ -4486,6 +4506,7 @@ const rootRouteChildren: RootRouteChildren = {
   DelayForecastsRoute: DelayForecastsRoute,
   DemandSnapshotMarksRoute: DemandSnapshotMarksRoute,
   DemoGpsMarksRoute: DemoGpsMarksRoute,
+  DemoWipeMarksRoute: DemoWipeMarksRoute,
   DockAppointmentsRoute: DockAppointmentsRoute,
   DocumentTemplatesRoute: DocumentTemplatesRoute,
   ECmrMarksRoute: ECmrMarksRoute,

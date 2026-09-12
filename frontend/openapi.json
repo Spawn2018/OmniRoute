@@ -13724,6 +13724,80 @@
         ]
       }
     },
+    "/api/v1/demo-wipe-marks": {
+      "get": {
+        "tags": [
+          "demo-wipe-mark"
+        ],
+        "summary": "List Demo Wipe Marks",
+        "operationId": "list_demo_wipe_marks_api_v1_demo_wipe_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/DemoWipeMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Demo Wipe Marks Api V1 Demo Wipe Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "demo-wipe-mark"
+        ],
+        "summary": "Create Demo Wipe Mark",
+        "operationId": "create_demo_wipe_mark_api_v1_demo_wipe_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DemoWipeMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DemoWipeMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/remediation-options": {
       "get": {
         "tags": [
@@ -25711,6 +25785,71 @@
           "source_ref"
         ],
         "title": "DemoGpsMarkResponse"
+      },
+      "DemoWipeMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "wipe_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Wipe Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "wipe_kind",
+          "source_ref"
+        ],
+        "title": "DemoWipeMarkCreate"
+      },
+      "DemoWipeMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "wipe_kind": {
+            "type": "string",
+            "title": "Wipe Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "wipe_kind",
+          "source_ref"
+        ],
+        "title": "DemoWipeMarkResponse"
       },
       "DockAppointmentCreate": {
         "properties": {

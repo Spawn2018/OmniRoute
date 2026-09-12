@@ -970,6 +970,10 @@ class InvalidDemoGpsMark(DomainError):
     """EXP0.11: HITL demo GPS — nie live GPS / lat/lng."""
 
 
+class InvalidDemoWipeMark(DomainError):
+    """Demo-1: HITL demo_wipe_mark — nie live wipe / DELETE tenant data / kwota."""
+
+
 class InvalidImpersonateGuardMark(DomainError):
     """EXP0.12: HITL impersonate≠unwrap — nie crypto / Auth0 live."""
 

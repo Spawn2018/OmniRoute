@@ -3205,6 +3205,50 @@ export type DemoGpsMarkResponse = {
 };
 
 /**
+ * DemoWipeMarkCreate
+ */
+export type DemoWipeMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Wipe Kind
+     */
+    wipe_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * DemoWipeMarkResponse
+ */
+export type DemoWipeMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Wipe Kind
+     */
+    wipe_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * DockAppointmentCreate
  */
 export type DockAppointmentCreate = {
@@ -20850,6 +20894,49 @@ export type CreateDemoGpsMarkApiV1DemoGpsMarksPostResponses = {
 };
 
 export type CreateDemoGpsMarkApiV1DemoGpsMarksPostResponse = CreateDemoGpsMarkApiV1DemoGpsMarksPostResponses[keyof CreateDemoGpsMarkApiV1DemoGpsMarksPostResponses];
+
+export type ListDemoWipeMarksApiV1DemoWipeMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/demo-wipe-marks';
+};
+
+export type ListDemoWipeMarksApiV1DemoWipeMarksGetResponses = {
+    /**
+     * Response List Demo Wipe Marks Api V1 Demo Wipe Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<DemoWipeMarkResponse>;
+};
+
+export type ListDemoWipeMarksApiV1DemoWipeMarksGetResponse = ListDemoWipeMarksApiV1DemoWipeMarksGetResponses[keyof ListDemoWipeMarksApiV1DemoWipeMarksGetResponses];
+
+export type CreateDemoWipeMarkApiV1DemoWipeMarksPostData = {
+    body: DemoWipeMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/demo-wipe-marks';
+};
+
+export type CreateDemoWipeMarkApiV1DemoWipeMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateDemoWipeMarkApiV1DemoWipeMarksPostError = CreateDemoWipeMarkApiV1DemoWipeMarksPostErrors[keyof CreateDemoWipeMarkApiV1DemoWipeMarksPostErrors];
+
+export type CreateDemoWipeMarkApiV1DemoWipeMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: DemoWipeMarkResponse;
+};
+
+export type CreateDemoWipeMarkApiV1DemoWipeMarksPostResponse = CreateDemoWipeMarkApiV1DemoWipeMarksPostResponses[keyof CreateDemoWipeMarkApiV1DemoWipeMarksPostResponses];
 
 export type ListRemediationOptionsApiV1RemediationOptionsGetData = {
     body?: never;

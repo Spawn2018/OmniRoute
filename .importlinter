@@ -177,6 +177,7 @@ modules =
     app.services.tender_decline_reasons
     app.services.demand_snapshot_marks
     app.services.demo_gps_marks
+    app.services.demo_wipe_marks
     app.services.impersonate_guard_marks
     app.services.csrd_marks
     app.services.air_ra3_marks
@@ -827,6 +828,9 @@ forbidden_modules =
     app.services.demo_gps_marks
     app.repositories.demo_gps_marks
     app.models.demo_gps_mark
+    app.services.demo_wipe_marks
+    app.repositories.demo_wipe_marks
+    app.models.demo_wipe_mark
     app.services.impersonate_guard_marks
     app.repositories.impersonate_guard_marks
     app.models.impersonate_guard_mark
