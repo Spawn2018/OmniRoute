@@ -106,6 +106,7 @@ from app.api import (
     party_lane_scorecards,
     party_scorecards,
     penalty_marks,
+    peppol_marks,
     plan_snapshots,
     po_lines,
     port_surcharges,
@@ -347,6 +348,7 @@ api_router.include_router(bin_pack_marks.router)
 api_router.include_router(pallet_pool_marks.router)
 api_router.include_router(e_cmr_marks.router)
 api_router.include_router(e_delivery_marks.router)
+api_router.include_router(peppol_marks.router)
 
 
 @api_router.api_route(

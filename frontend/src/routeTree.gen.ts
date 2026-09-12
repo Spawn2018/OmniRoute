@@ -111,6 +111,7 @@ import { Route as PartyDocumentsRouteImport } from './routes/party-documents'
 import { Route as PartyScorecardsRouteImport } from './routes/party-scorecards'
 import { Route as PaymentsRouteImport } from './routes/payments'
 import { Route as PenaltyMarksRouteImport } from './routes/penalty-marks'
+import { Route as PeppolMarksRouteImport } from './routes/peppol-marks'
 import { Route as PlanSnapshotsRouteImport } from './routes/plan-snapshots'
 import { Route as PlanningRouteImport } from './routes/planning'
 import { Route as PoLinesRouteImport } from './routes/po-lines'
@@ -688,6 +689,11 @@ const PenaltyMarksRoute = PenaltyMarksRouteImport.update({
   path: '/penalty-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PeppolMarksRoute = PeppolMarksRouteImport.update({
+  id: '/peppol-marks',
+  path: '/peppol-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PlanSnapshotsRoute = PlanSnapshotsRouteImport.update({
   id: '/plan-snapshots',
   path: '/plan-snapshots',
@@ -1123,6 +1129,7 @@ export interface FileRoutesByFullPath {
   '/party-scorecards': typeof PartyScorecardsRoute
   '/payments': typeof PaymentsRoute
   '/penalty-marks': typeof PenaltyMarksRoute
+  '/peppol-marks': typeof PeppolMarksRoute
   '/plan-snapshots': typeof PlanSnapshotsRoute
   '/planning': typeof PlanningRoute
   '/po-lines': typeof PoLinesRoute
@@ -1293,6 +1300,7 @@ export interface FileRoutesByTo {
   '/party-scorecards': typeof PartyScorecardsRoute
   '/payments': typeof PaymentsRoute
   '/penalty-marks': typeof PenaltyMarksRoute
+  '/peppol-marks': typeof PeppolMarksRoute
   '/plan-snapshots': typeof PlanSnapshotsRoute
   '/planning': typeof PlanningRoute
   '/po-lines': typeof PoLinesRoute
@@ -1464,6 +1472,7 @@ export interface FileRoutesById {
   '/party-scorecards': typeof PartyScorecardsRoute
   '/payments': typeof PaymentsRoute
   '/penalty-marks': typeof PenaltyMarksRoute
+  '/peppol-marks': typeof PeppolMarksRoute
   '/plan-snapshots': typeof PlanSnapshotsRoute
   '/planning': typeof PlanningRoute
   '/po-lines': typeof PoLinesRoute
@@ -1636,6 +1645,7 @@ export interface FileRouteTypes {
     | '/party-scorecards'
     | '/payments'
     | '/penalty-marks'
+    | '/peppol-marks'
     | '/plan-snapshots'
     | '/planning'
     | '/po-lines'
@@ -1806,6 +1816,7 @@ export interface FileRouteTypes {
     | '/party-scorecards'
     | '/payments'
     | '/penalty-marks'
+    | '/peppol-marks'
     | '/plan-snapshots'
     | '/planning'
     | '/po-lines'
@@ -1976,6 +1987,7 @@ export interface FileRouteTypes {
     | '/party-scorecards'
     | '/payments'
     | '/penalty-marks'
+    | '/peppol-marks'
     | '/plan-snapshots'
     | '/planning'
     | '/po-lines'
@@ -2147,6 +2159,7 @@ export interface RootRouteChildren {
   PartyScorecardsRoute: typeof PartyScorecardsRoute
   PaymentsRoute: typeof PaymentsRoute
   PenaltyMarksRoute: typeof PenaltyMarksRoute
+  PeppolMarksRoute: typeof PeppolMarksRoute
   PlanSnapshotsRoute: typeof PlanSnapshotsRoute
   PlanningRoute: typeof PlanningRoute
   PoLinesRoute: typeof PoLinesRoute
@@ -2931,6 +2944,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PenaltyMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/peppol-marks': {
+      id: '/peppol-marks'
+      path: '/peppol-marks'
+      fullPath: '/peppol-marks'
+      preLoaderRoute: typeof PeppolMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/plan-snapshots': {
       id: '/plan-snapshots'
       path: '/plan-snapshots'
@@ -3499,6 +3519,7 @@ const rootRouteChildren: RootRouteChildren = {
   PartyScorecardsRoute: PartyScorecardsRoute,
   PaymentsRoute: PaymentsRoute,
   PenaltyMarksRoute: PenaltyMarksRoute,
+  PeppolMarksRoute: PeppolMarksRoute,
   PlanSnapshotsRoute: PlanSnapshotsRoute,
   PlanningRoute: PlanningRoute,
   PoLinesRoute: PoLinesRoute,

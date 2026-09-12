@@ -16592,6 +16592,80 @@
         ]
       }
     },
+    "/api/v1/peppol-marks": {
+      "get": {
+        "tags": [
+          "peppol-marks"
+        ],
+        "summary": "List Peppol Marks",
+        "operationId": "list_peppol_marks_api_v1_peppol_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PeppolMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Peppol Marks Api V1 Peppol Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "peppol-marks"
+        ],
+        "summary": "Create Peppol Mark",
+        "operationId": "create_peppol_mark_api_v1_peppol_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PeppolMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PeppolMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/health": {
       "get": {
         "summary": "Health",
@@ -26797,6 +26871,65 @@
           "source_ref"
         ],
         "title": "PenaltyMarkResponse"
+      },
+      "PeppolMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "peppol_kind": {
+            "type": "string",
+            "title": "Peppol Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "peppol_kind",
+          "source_ref"
+        ],
+        "title": "PeppolMarkCreate"
+      },
+      "PeppolMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "peppol_kind": {
+            "type": "string",
+            "title": "Peppol Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "peppol_kind",
+          "source_ref"
+        ],
+        "title": "PeppolMarkResponse"
       },
       "PlanSnapshotCreate": {
         "properties": {

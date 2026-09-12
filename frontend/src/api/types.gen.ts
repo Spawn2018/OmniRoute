@@ -6465,6 +6465,50 @@ export type PenaltyMarkResponse = {
 };
 
 /**
+ * PeppolMarkCreate
+ */
+export type PeppolMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Peppol Kind
+     */
+    peppol_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * PeppolMarkResponse
+ */
+export type PeppolMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Peppol Kind
+     */
+    peppol_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * PlanSnapshotCreate
  */
 export type PlanSnapshotCreate = {
@@ -20204,6 +20248,49 @@ export type CreateEDeliveryMarkApiV1eDeliveryMarksPostResponses = {
 };
 
 export type CreateEDeliveryMarkApiV1eDeliveryMarksPostResponse = CreateEDeliveryMarkApiV1eDeliveryMarksPostResponses[keyof CreateEDeliveryMarkApiV1eDeliveryMarksPostResponses];
+
+export type ListPeppolMarksApiV1PeppolMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/peppol-marks';
+};
+
+export type ListPeppolMarksApiV1PeppolMarksGetResponses = {
+    /**
+     * Response List Peppol Marks Api V1 Peppol Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<PeppolMarkResponse>;
+};
+
+export type ListPeppolMarksApiV1PeppolMarksGetResponse = ListPeppolMarksApiV1PeppolMarksGetResponses[keyof ListPeppolMarksApiV1PeppolMarksGetResponses];
+
+export type CreatePeppolMarkApiV1PeppolMarksPostData = {
+    body: PeppolMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/peppol-marks';
+};
+
+export type CreatePeppolMarkApiV1PeppolMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreatePeppolMarkApiV1PeppolMarksPostError = CreatePeppolMarkApiV1PeppolMarksPostErrors[keyof CreatePeppolMarkApiV1PeppolMarksPostErrors];
+
+export type CreatePeppolMarkApiV1PeppolMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: PeppolMarkResponse;
+};
+
+export type CreatePeppolMarkApiV1PeppolMarksPostResponse = CreatePeppolMarkApiV1PeppolMarksPostResponses[keyof CreatePeppolMarkApiV1PeppolMarksPostResponses];
 
 export type HealthHealthGetData = {
     body?: never;
