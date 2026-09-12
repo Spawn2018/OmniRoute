@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **405.0** EXP2.19 HITL `e_doreczenia_mark`. **Etap:** Plan — **406.0** EXP4.2. **Następny:** **406.0** EXP4.2 HITL `rail_uic_mark` (UIC/CIM/SMGS; bez live). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **405.0** EXP2.19 HITL `e_doreczenia_mark`. **Etap:** Plaster — **406.0** EXP4.2. **Następny:** **406.0** EXP4.2 HITL `rail_uic_mark` (UIC/CIM/SMGS; bez live). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
