@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **400.0** K0 inwentaryzacja nazw
-- **Etap:** Plan — **401.0** EXP4.21
+- **Etap:** Plaster — **401.0** EXP4.21 (delta zaakceptowana `/noc`, wolno `/plaster`)
 - **Następny:** **401.0** EXP4.21 Job-metric HITL `job_metric_mark` (kolejka EXP4 / M-72).
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

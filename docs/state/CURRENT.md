@@ -6,7 +6,7 @@
 
 **Ostatni plaster:** **400.0** K0 inwentaryzacja nazw
 
-**Etap:** Plan — **401.0** EXP4.21
+**Etap:** Plaster — **401.0** EXP4.21 (delta zaakceptowana `/noc`, wolno `/plaster`)
 
 **Noc:** `/noc 17` do 2026-09-12T17:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).
 
@@ -14,7 +14,7 @@
 
 Park: Graph live · Expo/EAS live · scoring osoby. Nie zgaduj 71–401.
 
-**Spec (jedyna na sesję):** (brak — plan 401.0).
+**Spec (jedyna na sesję):** [docs/spec/job-metric-mark.md](../spec/job-metric-mark.md) · delta [docs/deltas/open/401.0-job-metric-mark.md](../deltas/open/401.0-job-metric-mark.md).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
@@ -22,4 +22,4 @@ Park: Graph live · Expo/EAS live · scoring osoby. Nie zgaduj 71–401.
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-12:** Plaster **400.0** zamknięty (`/noc`) — K0 inventory. Pin Mob HITL + K0.
+**2026-09-12:** Plaster **400.0** zamknięty (`/noc`) — K0. Delta **401.0** zaakceptowana `/noc`.
