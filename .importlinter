@@ -181,6 +181,7 @@ modules =
     app.services.csrd_marks
     app.services.air_ra3_marks
     app.services.rail_cim_marks
+    app.services.rail_uic_marks
     app.services.ocean_alliance_marks
     app.services.reefer_marks
     app.services.empty_depot_marks
@@ -833,6 +834,9 @@ forbidden_modules =
     app.services.rail_cim_marks
     app.repositories.rail_cim_marks
     app.models.rail_cim_mark
+    app.services.rail_uic_marks
+    app.repositories.rail_uic_marks
+    app.models.rail_uic_mark
     app.services.ocean_alliance_marks
     app.repositories.ocean_alliance_marks
     app.models.ocean_alliance_mark

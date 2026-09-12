@@ -3213,6 +3213,80 @@
         ]
       }
     },
+    "/api/v1/rail-uic-marks": {
+      "get": {
+        "tags": [
+          "rail-uic-mark"
+        ],
+        "summary": "List Rail Uic Marks",
+        "operationId": "list_rail_uic_marks_api_v1_rail_uic_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/RailUicMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Rail Uic Marks Api V1 Rail Uic Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "rail-uic-mark"
+        ],
+        "summary": "Create Rail Uic Mark",
+        "operationId": "create_rail_uic_mark_api_v1_rail_uic_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RailUicMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RailUicMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/rank-marks": {
       "get": {
         "tags": [
@@ -33990,6 +34064,71 @@
           "source_ref"
         ],
         "title": "RailCimMarkResponse"
+      },
+      "RailUicMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "rail_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Rail Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "rail_kind",
+          "source_ref"
+        ],
+        "title": "RailUicMarkCreate"
+      },
+      "RailUicMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "rail_kind": {
+            "type": "string",
+            "title": "Rail Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "rail_kind",
+          "source_ref"
+        ],
+        "title": "RailUicMarkResponse"
       },
       "RankMarkCreate": {
         "properties": {

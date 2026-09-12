@@ -904,6 +904,11 @@ export const OPS_JOBS = [
     job: "katalog rail_cim_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.railUicMark.route,
+    label: "Rail UIC",
+    job: "katalog rail_uic_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.oceanAllianceMark.route,
     label: "Ocean alliance",
     job: "katalog ocean_alliance_mark HITL",
@@ -1447,6 +1452,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "403.0": "/impersonate-guard-marks",
   "404.0": "/fuel-card-marks",
   "405.0": "/e-doreczenia-marks",
+  "406.0": "/rail-uic-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

@@ -179,6 +179,7 @@ from app.models.csrd_mark import CsrdMark  # noqa: F401
 
 from app.models.air_ra3_mark import AirRa3Mark  # noqa: F401
 from app.models.rail_cim_mark import RailCimMark  # noqa: F401
+from app.models.rail_uic_mark import RailUicMark  # noqa: F401
 from app.models.ocean_alliance_mark import OceanAllianceMark  # noqa: F401
 from app.models.reefer_mark import ReeferMark  # noqa: F401
 from app.models.empty_depot_mark import EmptyDepotMark  # noqa: F401

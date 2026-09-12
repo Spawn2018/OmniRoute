@@ -159,6 +159,7 @@ import { Route as QuoteInvoicesRouteImport } from './routes/quote-invoices'
 import { Route as RagSopMarksRouteImport } from './routes/rag-sop-marks'
 import { Route as RailRouteImport } from './routes/rail'
 import { Route as RailCimMarksRouteImport } from './routes/rail-cim-marks'
+import { Route as RailUicMarksRouteImport } from './routes/rail-uic-marks'
 import { Route as RankMarksRouteImport } from './routes/rank-marks'
 import { Route as RateCardsRouteImport } from './routes/rate-cards'
 import { Route as RateLinesRouteImport } from './routes/rate-lines'
@@ -975,6 +976,11 @@ const RailCimMarksRoute = RailCimMarksRouteImport.update({
   path: '/rail-cim-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RailUicMarksRoute = RailUicMarksRouteImport.update({
+  id: '/rail-uic-marks',
+  path: '/rail-uic-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RankMarksRoute = RankMarksRouteImport.update({
   id: '/rank-marks',
   path: '/rank-marks',
@@ -1453,6 +1459,7 @@ export interface FileRoutesByFullPath {
   '/rag-sop-marks': typeof RagSopMarksRoute
   '/rail': typeof RailRoute
   '/rail-cim-marks': typeof RailCimMarksRoute
+  '/rail-uic-marks': typeof RailUicMarksRoute
   '/rank-marks': typeof RankMarksRoute
   '/rate-cards': typeof RateCardsRoute
   '/rate-lines': typeof RateLinesRoute
@@ -1670,6 +1677,7 @@ export interface FileRoutesByTo {
   '/rag-sop-marks': typeof RagSopMarksRoute
   '/rail': typeof RailRoute
   '/rail-cim-marks': typeof RailCimMarksRoute
+  '/rail-uic-marks': typeof RailUicMarksRoute
   '/rank-marks': typeof RankMarksRoute
   '/rate-cards': typeof RateCardsRoute
   '/rate-lines': typeof RateLinesRoute
@@ -1888,6 +1896,7 @@ export interface FileRoutesById {
   '/rag-sop-marks': typeof RagSopMarksRoute
   '/rail': typeof RailRoute
   '/rail-cim-marks': typeof RailCimMarksRoute
+  '/rail-uic-marks': typeof RailUicMarksRoute
   '/rank-marks': typeof RankMarksRoute
   '/rate-cards': typeof RateCardsRoute
   '/rate-lines': typeof RateLinesRoute
@@ -2107,6 +2116,7 @@ export interface FileRouteTypes {
     | '/rag-sop-marks'
     | '/rail'
     | '/rail-cim-marks'
+    | '/rail-uic-marks'
     | '/rank-marks'
     | '/rate-cards'
     | '/rate-lines'
@@ -2324,6 +2334,7 @@ export interface FileRouteTypes {
     | '/rag-sop-marks'
     | '/rail'
     | '/rail-cim-marks'
+    | '/rail-uic-marks'
     | '/rank-marks'
     | '/rate-cards'
     | '/rate-lines'
@@ -2541,6 +2552,7 @@ export interface FileRouteTypes {
     | '/rag-sop-marks'
     | '/rail'
     | '/rail-cim-marks'
+    | '/rail-uic-marks'
     | '/rank-marks'
     | '/rate-cards'
     | '/rate-lines'
@@ -2759,6 +2771,7 @@ export interface RootRouteChildren {
   RagSopMarksRoute: typeof RagSopMarksRoute
   RailRoute: typeof RailRoute
   RailCimMarksRoute: typeof RailCimMarksRoute
+  RailUicMarksRoute: typeof RailUicMarksRoute
   RankMarksRoute: typeof RankMarksRoute
   RateCardsRoute: typeof RateCardsRoute
   RateLinesRoute: typeof RateLinesRoute
@@ -3878,6 +3891,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RailCimMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/rail-uic-marks': {
+      id: '/rail-uic-marks'
+      path: '/rail-uic-marks'
+      fullPath: '/rail-uic-marks'
+      preLoaderRoute: typeof RailUicMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/rank-marks': {
       id: '/rank-marks'
       path: '/rank-marks'
@@ -4487,6 +4507,7 @@ const rootRouteChildren: RootRouteChildren = {
   RagSopMarksRoute: RagSopMarksRoute,
   RailRoute: RailRoute,
   RailCimMarksRoute: RailCimMarksRoute,
+  RailUicMarksRoute: RailUicMarksRoute,
   RankMarksRoute: RankMarksRoute,
   RateCardsRoute: RateCardsRoute,
   RateLinesRoute: RateLinesRoute,

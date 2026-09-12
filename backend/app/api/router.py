@@ -151,6 +151,7 @@ from app.api import (
     quote_invoice_settlements,
     rag_sop_marks,
     rail_cim_marks,
+    rail_uic_marks,
     rank_marks,
     rate_cards,
     rate_lines,
@@ -248,6 +249,7 @@ api_router.include_router(rag_sop_marks.router)
 api_router.include_router(memory_edges.router)
 api_router.include_router(executive_marks.router)
 api_router.include_router(rail_cim_marks.router)
+api_router.include_router(rail_uic_marks.router)
 api_router.include_router(rank_marks.router)
 api_router.include_router(task_templates.router)
 api_router.include_router(outbox_events.router)

@@ -8853,6 +8853,50 @@ export type RailCimMarkResponse = {
 };
 
 /**
+ * RailUicMarkCreate
+ */
+export type RailUicMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Rail Kind
+     */
+    rail_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * RailUicMarkResponse
+ */
+export type RailUicMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Rail Kind
+     */
+    rail_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * RankMarkCreate
  */
 export type RankMarkCreate = {
@@ -14570,6 +14614,49 @@ export type CreateRailCimMarkApiV1RailCimMarksPostResponses = {
 };
 
 export type CreateRailCimMarkApiV1RailCimMarksPostResponse = CreateRailCimMarkApiV1RailCimMarksPostResponses[keyof CreateRailCimMarkApiV1RailCimMarksPostResponses];
+
+export type ListRailUicMarksApiV1RailUicMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/rail-uic-marks';
+};
+
+export type ListRailUicMarksApiV1RailUicMarksGetResponses = {
+    /**
+     * Response List Rail Uic Marks Api V1 Rail Uic Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<RailUicMarkResponse>;
+};
+
+export type ListRailUicMarksApiV1RailUicMarksGetResponse = ListRailUicMarksApiV1RailUicMarksGetResponses[keyof ListRailUicMarksApiV1RailUicMarksGetResponses];
+
+export type CreateRailUicMarkApiV1RailUicMarksPostData = {
+    body: RailUicMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/rail-uic-marks';
+};
+
+export type CreateRailUicMarkApiV1RailUicMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateRailUicMarkApiV1RailUicMarksPostError = CreateRailUicMarkApiV1RailUicMarksPostErrors[keyof CreateRailUicMarkApiV1RailUicMarksPostErrors];
+
+export type CreateRailUicMarkApiV1RailUicMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: RailUicMarkResponse;
+};
+
+export type CreateRailUicMarkApiV1RailUicMarksPostResponse = CreateRailUicMarkApiV1RailUicMarksPostResponses[keyof CreateRailUicMarkApiV1RailUicMarksPostResponses];
 
 export type ListRankMarksApiV1RankMarksGetData = {
     body?: never;
