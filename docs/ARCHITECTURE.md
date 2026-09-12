@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **417.0** EXP0.10 HITL `dual_ledger_mark`. **Etap:** Plan — **418.0** EXP0.6. **Następny:** **418.0** EXP0.6 HITL `named_place_mark` (named_place+wersja; bez ICC cytat) — kolejka po cutoff. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **417.0** EXP0.10 HITL `dual_ledger_mark`. **Etap:** Plaster — **418.0** EXP0.6 (delta zaakceptowana `/noc`). **Następny:** **418.0** EXP0.6 HITL `named_place_mark` (named_place+wersja; bez ICC cytat) — kolejka po cutoff. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

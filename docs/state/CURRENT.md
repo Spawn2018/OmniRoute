@@ -6,7 +6,7 @@
 
 **Ostatni plaster:** **417.0** EXP0.10 HITL `dual_ledger_mark`
 
-**Etap:** Plan — **418.0** EXP0.6
+**Etap:** Plaster — **418.0** EXP0.6 (delta zaakceptowana `/noc`)
 
 **Noc:** `/noc 10` do 2026-09-13T10:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).
 
@@ -14,7 +14,7 @@
 
 Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj 71–418.
 
-**Spec (jedyna na sesję):** (brak — plan 418.0 po nocnej zmianie).
+**Spec (jedyna na sesję):** [docs/deltas/open/418.0-named-place-mark.md](../deltas/open/418.0-named-place-mark.md)
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
