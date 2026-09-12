@@ -3121,6 +3121,50 @@ export type DocumentTemplateResponse = {
 };
 
 /**
+ * ECmrMarkCreate
+ */
+export type ECmrMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Cmr Kind
+     */
+    cmr_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ECmrMarkResponse
+ */
+export type ECmrMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Cmr Kind
+     */
+    cmr_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * EdiMapMarkCreate
  */
 export type EdiMapMarkCreate = {
@@ -20030,6 +20074,49 @@ export type CreatePalletPoolMarkApiV1PalletPoolMarksPostResponses = {
 };
 
 export type CreatePalletPoolMarkApiV1PalletPoolMarksPostResponse = CreatePalletPoolMarkApiV1PalletPoolMarksPostResponses[keyof CreatePalletPoolMarkApiV1PalletPoolMarksPostResponses];
+
+export type ListECmrMarksApiV1eCmrMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/e-cmr-marks';
+};
+
+export type ListECmrMarksApiV1eCmrMarksGetResponses = {
+    /**
+     * Response List E Cmr Marks Api V1 E Cmr Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<ECmrMarkResponse>;
+};
+
+export type ListECmrMarksApiV1eCmrMarksGetResponse = ListECmrMarksApiV1eCmrMarksGetResponses[keyof ListECmrMarksApiV1eCmrMarksGetResponses];
+
+export type CreateECmrMarkApiV1eCmrMarksPostData = {
+    body: ECmrMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/e-cmr-marks';
+};
+
+export type CreateECmrMarkApiV1eCmrMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateECmrMarkApiV1eCmrMarksPostError = CreateECmrMarkApiV1eCmrMarksPostErrors[keyof CreateECmrMarkApiV1eCmrMarksPostErrors];
+
+export type CreateECmrMarkApiV1eCmrMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ECmrMarkResponse;
+};
+
+export type CreateECmrMarkApiV1eCmrMarksPostResponse = CreateECmrMarkApiV1eCmrMarksPostResponses[keyof CreateECmrMarkApiV1eCmrMarksPostResponses];
 
 export type HealthHealthGetData = {
     body?: never;

@@ -914,6 +914,10 @@ class InvalidPalletPoolMark(DomainError):
     """EXP2.17: HITL pula palet — nie giełda / depozyt."""
 
 
+class InvalidECmrMark(DomainError):
+    """EXP2.18: HITL e-CMR/eFTI — nie filer live / e-CMR HTTP."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

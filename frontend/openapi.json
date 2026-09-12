@@ -16444,6 +16444,80 @@
         ]
       }
     },
+    "/api/v1/e-cmr-marks": {
+      "get": {
+        "tags": [
+          "e-cmr-marks"
+        ],
+        "summary": "List E Cmr Marks",
+        "operationId": "list_e_cmr_marks_api_v1_e_cmr_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ECmrMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List E Cmr Marks Api V1 E Cmr Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "e-cmr-marks"
+        ],
+        "summary": "Create E Cmr Mark",
+        "operationId": "create_e_cmr_mark_api_v1_e_cmr_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ECmrMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ECmrMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/health": {
       "get": {
         "summary": "Health",
@@ -21570,6 +21644,65 @@
           "source_ref"
         ],
         "title": "DocumentTemplateResponse"
+      },
+      "ECmrMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "cmr_kind": {
+            "type": "string",
+            "title": "Cmr Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "cmr_kind",
+          "source_ref"
+        ],
+        "title": "ECmrMarkCreate"
+      },
+      "ECmrMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "cmr_kind": {
+            "type": "string",
+            "title": "Cmr Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "cmr_kind",
+          "source_ref"
+        ],
+        "title": "ECmrMarkResponse"
       },
       "EdiMapMarkCreate": {
         "properties": {

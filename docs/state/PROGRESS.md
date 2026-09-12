@@ -2,6 +2,7 @@
 
 | Data | Plaster | Moduł | Opis |
 |---|---|---|---|
+| 2026-09-12 | 355.0 | EXP2.18 e_cmr_mark HITL | 2026-09-12 | PRZESZŁO | N/A | N/A | OK | OK | 5–15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-12 | 354.0 | EXP2.17 pallet_pool_mark HITL | 2026-09-12 | PRZESZŁO | N/A | N/A | OK | OK | 5–15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-12 | 353.0 | EXP2.16 bin_pack_mark HITL | 2026-09-12 | PRZESZŁO | N/A | N/A | OK | OK | 5–15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-12 | 352.0 | EXP2.15 fleet_cost_mark HITL | 2026-09-12 | PRZESZŁO | N/A | N/A | OK | OK | 5–15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
