@@ -906,6 +906,10 @@ class InvalidFleetCostMark(DomainError):
     """EXP2.15: HITL koszt floty — nie TCO SQL / CMMS silnik."""
 
 
+class InvalidBinPackMark(DomainError):
+    """EXP2.16: HITL bin-pack — nie solver OR / LLM-VRP."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

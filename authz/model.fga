@@ -122,6 +122,7 @@ type organization
     define can_manage_ferry_art9_marks: member
     define can_manage_fuel_anomaly_marks: member
     define can_manage_fleet_cost_marks: member
+    define can_manage_bin_pack_marks: member
     define can_manage_freight_audit_marks: member
     define can_manage_collaboration_marks: member
     define can_manage_routing_guide_enforcements: member

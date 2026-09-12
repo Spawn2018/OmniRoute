@@ -148,6 +148,7 @@ modules =
     app.services.ferry_art9_marks
     app.services.fuel_anomaly_marks
     app.services.fleet_cost_marks
+    app.services.bin_pack_marks
     app.services.freight_audit_marks
     app.services.collaboration_marks
     app.services.exchange_connectors
@@ -600,6 +601,9 @@ forbidden_modules =
     app.services.fleet_cost_marks
     app.repositories.fleet_cost_marks
     app.models.fleet_cost_mark
+    app.services.bin_pack_marks
+    app.repositories.bin_pack_marks
+    app.models.bin_pack_mark
     app.services.freight_audit_marks
     app.repositories.freight_audit_marks
     app.models.freight_audit_mark

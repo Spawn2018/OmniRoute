@@ -301,6 +301,50 @@ export type BillingMarkResponse = {
 };
 
 /**
+ * BinPackMarkCreate
+ */
+export type BinPackMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Pack Kind
+     */
+    pack_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * BinPackMarkResponse
+ */
+export type BinPackMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Pack Kind
+     */
+    pack_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * BondedMarkCreate
  */
 export type BondedMarkCreate = {
@@ -19856,6 +19900,49 @@ export type CreateFleetCostMarkApiV1FleetCostMarksPostResponses = {
 };
 
 export type CreateFleetCostMarkApiV1FleetCostMarksPostResponse = CreateFleetCostMarkApiV1FleetCostMarksPostResponses[keyof CreateFleetCostMarkApiV1FleetCostMarksPostResponses];
+
+export type ListBinPackMarksApiV1BinPackMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/bin-pack-marks';
+};
+
+export type ListBinPackMarksApiV1BinPackMarksGetResponses = {
+    /**
+     * Response List Bin Pack Marks Api V1 Bin Pack Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<BinPackMarkResponse>;
+};
+
+export type ListBinPackMarksApiV1BinPackMarksGetResponse = ListBinPackMarksApiV1BinPackMarksGetResponses[keyof ListBinPackMarksApiV1BinPackMarksGetResponses];
+
+export type CreateBinPackMarkApiV1BinPackMarksPostData = {
+    body: BinPackMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/bin-pack-marks';
+};
+
+export type CreateBinPackMarkApiV1BinPackMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateBinPackMarkApiV1BinPackMarksPostError = CreateBinPackMarkApiV1BinPackMarksPostErrors[keyof CreateBinPackMarkApiV1BinPackMarksPostErrors];
+
+export type CreateBinPackMarkApiV1BinPackMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: BinPackMarkResponse;
+};
+
+export type CreateBinPackMarkApiV1BinPackMarksPostResponse = CreateBinPackMarkApiV1BinPackMarksPostResponses[keyof CreateBinPackMarkApiV1BinPackMarksPostResponses];
 
 export type HealthHealthGetData = {
     body?: never;

@@ -16296,6 +16296,80 @@
         ]
       }
     },
+    "/api/v1/bin-pack-marks": {
+      "get": {
+        "tags": [
+          "bin-pack-marks"
+        ],
+        "summary": "List Bin Pack Marks",
+        "operationId": "list_bin_pack_marks_api_v1_bin_pack_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/BinPackMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Bin Pack Marks Api V1 Bin Pack Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "bin-pack-marks"
+        ],
+        "summary": "Create Bin Pack Mark",
+        "operationId": "create_bin_pack_mark_api_v1_bin_pack_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BinPackMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BinPackMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/health": {
       "get": {
         "summary": "Health",
@@ -16806,6 +16880,65 @@
           "source_ref"
         ],
         "title": "BillingMarkResponse"
+      },
+      "BinPackMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "pack_kind": {
+            "type": "string",
+            "title": "Pack Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "pack_kind",
+          "source_ref"
+        ],
+        "title": "BinPackMarkCreate"
+      },
+      "BinPackMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "pack_kind": {
+            "type": "string",
+            "title": "Pack Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "pack_kind",
+          "source_ref"
+        ],
+        "title": "BinPackMarkResponse"
       },
       "BondedMarkCreate": {
         "properties": {

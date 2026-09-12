@@ -15,6 +15,7 @@ import { Route as AiRouteImport } from './routes/ai'
 import { Route as AirRouteImport } from './routes/air'
 import { Route as AsnsRouteImport } from './routes/asns'
 import { Route as BillingMarksRouteImport } from './routes/billing-marks'
+import { Route as BinPackMarksRouteImport } from './routes/bin-pack-marks'
 import { Route as BondedMarksRouteImport } from './routes/bonded-marks'
 import { Route as BookkeepingRouteImport } from './routes/bookkeeping'
 import { Route as CabotageMarksRouteImport } from './routes/cabotage-marks'
@@ -202,6 +203,11 @@ const AsnsRoute = AsnsRouteImport.update({
 const BillingMarksRoute = BillingMarksRouteImport.update({
   id: '/billing-marks',
   path: '/billing-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BinPackMarksRoute = BinPackMarksRouteImport.update({
+  id: '/bin-pack-marks',
+  path: '/bin-pack-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BondedMarksRoute = BondedMarksRouteImport.update({
@@ -1003,6 +1009,7 @@ export interface FileRoutesByFullPath {
   '/air': typeof AirRoute
   '/asns': typeof AsnsRoute
   '/billing-marks': typeof BillingMarksRoute
+  '/bin-pack-marks': typeof BinPackMarksRoute
   '/bonded-marks': typeof BondedMarksRoute
   '/bookkeeping': typeof BookkeepingRoute
   '/cabotage-marks': typeof CabotageMarksRoute
@@ -1169,6 +1176,7 @@ export interface FileRoutesByTo {
   '/air': typeof AirRoute
   '/asns': typeof AsnsRoute
   '/billing-marks': typeof BillingMarksRoute
+  '/bin-pack-marks': typeof BinPackMarksRoute
   '/bonded-marks': typeof BondedMarksRoute
   '/bookkeeping': typeof BookkeepingRoute
   '/cabotage-marks': typeof CabotageMarksRoute
@@ -1336,6 +1344,7 @@ export interface FileRoutesById {
   '/air': typeof AirRoute
   '/asns': typeof AsnsRoute
   '/billing-marks': typeof BillingMarksRoute
+  '/bin-pack-marks': typeof BinPackMarksRoute
   '/bonded-marks': typeof BondedMarksRoute
   '/bookkeeping': typeof BookkeepingRoute
   '/cabotage-marks': typeof CabotageMarksRoute
@@ -1504,6 +1513,7 @@ export interface FileRouteTypes {
     | '/air'
     | '/asns'
     | '/billing-marks'
+    | '/bin-pack-marks'
     | '/bonded-marks'
     | '/bookkeeping'
     | '/cabotage-marks'
@@ -1670,6 +1680,7 @@ export interface FileRouteTypes {
     | '/air'
     | '/asns'
     | '/billing-marks'
+    | '/bin-pack-marks'
     | '/bonded-marks'
     | '/bookkeeping'
     | '/cabotage-marks'
@@ -1836,6 +1847,7 @@ export interface FileRouteTypes {
     | '/air'
     | '/asns'
     | '/billing-marks'
+    | '/bin-pack-marks'
     | '/bonded-marks'
     | '/bookkeeping'
     | '/cabotage-marks'
@@ -2003,6 +2015,7 @@ export interface RootRouteChildren {
   AirRoute: typeof AirRoute
   AsnsRoute: typeof AsnsRoute
   BillingMarksRoute: typeof BillingMarksRoute
+  BinPackMarksRoute: typeof BinPackMarksRoute
   BondedMarksRoute: typeof BondedMarksRoute
   BookkeepingRoute: typeof BookkeepingRoute
   CabotageMarksRoute: typeof CabotageMarksRoute
@@ -2205,6 +2218,13 @@ declare module '@tanstack/react-router' {
       path: '/billing-marks'
       fullPath: '/billing-marks'
       preLoaderRoute: typeof BillingMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bin-pack-marks': {
+      id: '/bin-pack-marks'
+      path: '/bin-pack-marks'
+      fullPath: '/bin-pack-marks'
+      preLoaderRoute: typeof BinPackMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/bonded-marks': {
@@ -3323,6 +3343,7 @@ const rootRouteChildren: RootRouteChildren = {
   AirRoute: AirRoute,
   AsnsRoute: AsnsRoute,
   BillingMarksRoute: BillingMarksRoute,
+  BinPackMarksRoute: BinPackMarksRoute,
   BondedMarksRoute: BondedMarksRoute,
   BookkeepingRoute: BookkeepingRoute,
   CabotageMarksRoute: CabotageMarksRoute,

@@ -5,6 +5,7 @@ from app.api import (
     asns,
     bank_payments,
     billing_marks,
+    bin_pack_marks,
     bonded_marks,
     booking_instructions,
     bookkeeping,
@@ -339,6 +340,7 @@ api_router.include_router(combined_transport_marks.router)
 api_router.include_router(ferry_art9_marks.router)
 api_router.include_router(fuel_anomaly_marks.router)
 api_router.include_router(fleet_cost_marks.router)
+api_router.include_router(bin_pack_marks.router)
 
 
 @api_router.api_route(
