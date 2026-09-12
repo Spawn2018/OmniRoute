@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **366.0** — po EXP2.28; ustal z PLAN § Kolejka (nie zgaduj).
+**Następny:** **367.0** EXP3.2 VDA/Odette HITL (węższa z kolejki; delta do utworzenia).
 <!-- os-status:end -->
 
 ```mermaid

@@ -17184,6 +17184,80 @@
         ]
       }
     },
+    "/api/v1/jit-jis-marks": {
+      "get": {
+        "tags": [
+          "jit-jis-marks"
+        ],
+        "summary": "List Jit Jis Marks",
+        "operationId": "list_jit_jis_marks_api_v1_jit_jis_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/JitJisMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Jit Jis Marks Api V1 Jit Jis Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "jit-jis-marks"
+        ],
+        "summary": "Create Jit Jis Mark",
+        "operationId": "create_jit_jis_mark_api_v1_jit_jis_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JitJisMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JitJisMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/health": {
       "get": {
         "summary": "Health",
@@ -24652,6 +24726,65 @@
           "source_ref"
         ],
         "title": "IsoNis2MarkResponse"
+      },
+      "JitJisMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "flow_kind": {
+            "type": "string",
+            "title": "Flow Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "flow_kind",
+          "source_ref"
+        ],
+        "title": "JitJisMarkCreate"
+      },
+      "JitJisMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "flow_kind": {
+            "type": "string",
+            "title": "Flow Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "flow_kind",
+          "source_ref"
+        ],
+        "title": "JitJisMarkResponse"
       },
       "KreptdLicenceCreate": {
         "properties": {

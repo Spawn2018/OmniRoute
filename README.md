@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **365.0** EXP2.28 HITL `offboarding_mark` (364.0 COVERED = G8)
-- **Etap:** Plan — **366.0** (kolejka po EXP2)
-- **Następny:** **366.0** — po EXP2.28; ustal z PLAN § Kolejka (nie zgaduj).
+- **Ostatni plaster:** **366.0** EXP3.1 HITL `jit_jis_mark`
+- **Etap:** Plan — **367.0** EXP3.2
+- **Następny:** **367.0** EXP3.2 VDA/Odette HITL (węższa z kolejki; delta do utworzenia).
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

@@ -83,6 +83,7 @@ import { Route as IntegrationHubMarksRouteImport } from './routes/integration-hu
 import { Route as InterventionOutcomesRouteImport } from './routes/intervention-outcomes'
 import { Route as InvoicesRouteImport } from './routes/invoices'
 import { Route as IsoNis2MarksRouteImport } from './routes/iso-nis2-marks'
+import { Route as JitJisMarksRouteImport } from './routes/jit-jis-marks'
 import { Route as KreptdLicencesRouteImport } from './routes/kreptd-licences'
 import { Route as LaneKmsRouteImport } from './routes/lane-kms'
 import { Route as LanePatternsRouteImport } from './routes/lane-patterns'
@@ -554,6 +555,11 @@ const InvoicesRoute = InvoicesRouteImport.update({
 const IsoNis2MarksRoute = IsoNis2MarksRouteImport.update({
   id: '/iso-nis2-marks',
   path: '/iso-nis2-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JitJisMarksRoute = JitJisMarksRouteImport.update({
+  id: '/jit-jis-marks',
+  path: '/jit-jis-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const KreptdLicencesRoute = KreptdLicencesRouteImport.update({
@@ -1143,6 +1149,7 @@ export interface FileRoutesByFullPath {
   '/intervention-outcomes': typeof InterventionOutcomesRoute
   '/invoices': typeof InvoicesRoute
   '/iso-nis2-marks': typeof IsoNis2MarksRoute
+  '/jit-jis-marks': typeof JitJisMarksRoute
   '/kreptd-licences': typeof KreptdLicencesRoute
   '/lane-kms': typeof LaneKmsRoute
   '/lane-patterns': typeof LanePatternsRoute
@@ -1321,6 +1328,7 @@ export interface FileRoutesByTo {
   '/intervention-outcomes': typeof InterventionOutcomesRoute
   '/invoices': typeof InvoicesRoute
   '/iso-nis2-marks': typeof IsoNis2MarksRoute
+  '/jit-jis-marks': typeof JitJisMarksRoute
   '/kreptd-licences': typeof KreptdLicencesRoute
   '/lane-kms': typeof LaneKmsRoute
   '/lane-patterns': typeof LanePatternsRoute
@@ -1500,6 +1508,7 @@ export interface FileRoutesById {
   '/intervention-outcomes': typeof InterventionOutcomesRoute
   '/invoices': typeof InvoicesRoute
   '/iso-nis2-marks': typeof IsoNis2MarksRoute
+  '/jit-jis-marks': typeof JitJisMarksRoute
   '/kreptd-licences': typeof KreptdLicencesRoute
   '/lane-kms': typeof LaneKmsRoute
   '/lane-patterns': typeof LanePatternsRoute
@@ -1680,6 +1689,7 @@ export interface FileRouteTypes {
     | '/intervention-outcomes'
     | '/invoices'
     | '/iso-nis2-marks'
+    | '/jit-jis-marks'
     | '/kreptd-licences'
     | '/lane-kms'
     | '/lane-patterns'
@@ -1858,6 +1868,7 @@ export interface FileRouteTypes {
     | '/intervention-outcomes'
     | '/invoices'
     | '/iso-nis2-marks'
+    | '/jit-jis-marks'
     | '/kreptd-licences'
     | '/lane-kms'
     | '/lane-patterns'
@@ -2036,6 +2047,7 @@ export interface FileRouteTypes {
     | '/intervention-outcomes'
     | '/invoices'
     | '/iso-nis2-marks'
+    | '/jit-jis-marks'
     | '/kreptd-licences'
     | '/lane-kms'
     | '/lane-patterns'
@@ -2215,6 +2227,7 @@ export interface RootRouteChildren {
   InterventionOutcomesRoute: typeof InterventionOutcomesRoute
   InvoicesRoute: typeof InvoicesRoute
   IsoNis2MarksRoute: typeof IsoNis2MarksRoute
+  JitJisMarksRoute: typeof JitJisMarksRoute
   KreptdLicencesRoute: typeof KreptdLicencesRoute
   LaneKmsRoute: typeof LaneKmsRoute
   LanePatternsRoute: typeof LanePatternsRoute
@@ -2837,6 +2850,13 @@ declare module '@tanstack/react-router' {
       path: '/iso-nis2-marks'
       fullPath: '/iso-nis2-marks'
       preLoaderRoute: typeof IsoNis2MarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jit-jis-marks': {
+      id: '/jit-jis-marks'
+      path: '/jit-jis-marks'
+      fullPath: '/jit-jis-marks'
+      preLoaderRoute: typeof JitJisMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/kreptd-licences': {
@@ -3631,6 +3651,7 @@ const rootRouteChildren: RootRouteChildren = {
   InterventionOutcomesRoute: InterventionOutcomesRoute,
   InvoicesRoute: InvoicesRoute,
   IsoNis2MarksRoute: IsoNis2MarksRoute,
+  JitJisMarksRoute: JitJisMarksRoute,
   KreptdLicencesRoute: KreptdLicencesRoute,
   LaneKmsRoute: LaneKmsRoute,
   LanePatternsRoute: LanePatternsRoute,

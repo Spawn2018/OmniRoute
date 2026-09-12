@@ -744,6 +744,11 @@ export const OPS_JOBS = [
     job: "katalog offboarding_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.jitJisMark.route,
+    label: "JIT/JIS",
+    job: "katalog jit_jis_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.erpConnector.route,
     label: "Konektor Optima",
     job: "katalog erp_connector HITL",
@@ -1213,6 +1218,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "362.0": "/regulatory-radar-marks",
   "363.0": "/iso-nis2-marks",
   "365.0": "/offboarding-marks",
+  "366.0": "/jit-jis-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

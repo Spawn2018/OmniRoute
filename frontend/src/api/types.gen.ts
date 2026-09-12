@@ -4737,6 +4737,50 @@ export type IsoNis2MarkResponse = {
 };
 
 /**
+ * JitJisMarkCreate
+ */
+export type JitJisMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Flow Kind
+     */
+    flow_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * JitJisMarkResponse
+ */
+export type JitJisMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Flow Kind
+     */
+    flow_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * KreptdLicenceCreate
  */
 export type KreptdLicenceCreate = {
@@ -20900,6 +20944,49 @@ export type CreateOffboardingMarkApiV1OffboardingMarksPostResponses = {
 };
 
 export type CreateOffboardingMarkApiV1OffboardingMarksPostResponse = CreateOffboardingMarkApiV1OffboardingMarksPostResponses[keyof CreateOffboardingMarkApiV1OffboardingMarksPostResponses];
+
+export type ListJitJisMarksApiV1JitJisMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/jit-jis-marks';
+};
+
+export type ListJitJisMarksApiV1JitJisMarksGetResponses = {
+    /**
+     * Response List Jit Jis Marks Api V1 Jit Jis Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<JitJisMarkResponse>;
+};
+
+export type ListJitJisMarksApiV1JitJisMarksGetResponse = ListJitJisMarksApiV1JitJisMarksGetResponses[keyof ListJitJisMarksApiV1JitJisMarksGetResponses];
+
+export type CreateJitJisMarkApiV1JitJisMarksPostData = {
+    body: JitJisMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/jit-jis-marks';
+};
+
+export type CreateJitJisMarkApiV1JitJisMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateJitJisMarkApiV1JitJisMarksPostError = CreateJitJisMarkApiV1JitJisMarksPostErrors[keyof CreateJitJisMarkApiV1JitJisMarksPostErrors];
+
+export type CreateJitJisMarkApiV1JitJisMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: JitJisMarkResponse;
+};
+
+export type CreateJitJisMarkApiV1JitJisMarksPostResponse = CreateJitJisMarkApiV1JitJisMarksPostResponses[keyof CreateJitJisMarkApiV1JitJisMarksPostResponses];
 
 export type HealthHealthGetData = {
     body?: never;

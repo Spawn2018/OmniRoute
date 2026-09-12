@@ -954,6 +954,10 @@ class InvalidOffboardingMark(DomainError):
     """EXP2.28: HITL offboarding — nie wipe ciphertext / DELETE konta."""
 
 
+class InvalidJitJisMark(DomainError):
+    """EXP3.1: HITL JIT/JIS — nie WMS live / silnik JIT."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 
