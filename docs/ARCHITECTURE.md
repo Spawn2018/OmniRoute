@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **394.0** EXP4.16 HITL `mail_accept_mark`. **Etap:** Plan — **395.0** EXP4.17. **Następny:** **395.0** EXP4.17 Widoki ról HITL `role_view_mark` (kolejka EXP4). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **394.0** EXP4.16 HITL `mail_accept_mark`. **Etap:** Plaster — **395.0** EXP4.17 (delta zaakceptowana `/noc`, wolno `/plaster`). **Następny:** **395.0** EXP4.17 Widoki ról HITL `role_view_mark` (kolejka EXP4). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
