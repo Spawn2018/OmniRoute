@@ -794,3 +794,5 @@
 - 2026-09-12T21:22:04Z · 426.0 · haulier_role_mark · DONE · HITL role_kind booked|actual|other · migracja 336 · /haulier-role-marks
 
 - 2026-09-12T21:41:56Z · 427.0 · diversion_mark · DONE · HITL stance_kind diversion|reroute|other · migracja 337 · /diversion-marks
+
+- 2026-09-12T22:09:38Z · 428.0 · spot_contract_mark · DONE · HITL deal_kind spot|contract|other · migracja 338 · /spot-contract-marks

@@ -177,6 +177,7 @@ modules =
     app.services.tender_decline_reasons
     app.services.demand_snapshot_marks
     app.services.diversion_marks
+    app.services.spot_contract_marks
     app.services.demo_gps_marks
     app.services.demo_sim_marks
     app.services.demo_wipe_marks
@@ -844,6 +845,9 @@ forbidden_modules =
     app.services.diversion_marks
     app.repositories.diversion_marks
     app.models.diversion_mark
+    app.services.spot_contract_marks
+    app.repositories.spot_contract_marks
+    app.models.spot_contract_mark
     app.services.demo_gps_marks
     app.repositories.demo_gps_marks
     app.models.demo_gps_mark

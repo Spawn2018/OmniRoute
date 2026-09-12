@@ -204,6 +204,7 @@ import { Route as SidImportMarksRouteImport } from './routes/sid-import-marks'
 import { Route as SlaClausesRouteImport } from './routes/sla-clauses'
 import { Route as SlotGuaranteeMarksRouteImport } from './routes/slot-guarantee-marks'
 import { Route as SpendMarksRouteImport } from './routes/spend-marks'
+import { Route as SpotContractMarksRouteImport } from './routes/spot-contract-marks'
 import { Route as SubcontractEdgeMarksRouteImport } from './routes/subcontract-edge-marks'
 import { Route as SwitchBlLoiMarksRouteImport } from './routes/switch-bl-loi-marks'
 import { Route as TachoOfficeMarksRouteImport } from './routes/tacho-office-marks'
@@ -1223,6 +1224,11 @@ const SpendMarksRoute = SpendMarksRouteImport.update({
   path: '/spend-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SpotContractMarksRoute = SpotContractMarksRouteImport.update({
+  id: '/spot-contract-marks',
+  path: '/spot-contract-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SubcontractEdgeMarksRoute = SubcontractEdgeMarksRouteImport.update({
   id: '/subcontract-edge-marks',
   path: '/subcontract-edge-marks',
@@ -1630,6 +1636,7 @@ export interface FileRoutesByFullPath {
   '/sla-clauses': typeof SlaClausesRoute
   '/slot-guarantee-marks': typeof SlotGuaranteeMarksRoute
   '/spend-marks': typeof SpendMarksRoute
+  '/spot-contract-marks': typeof SpotContractMarksRoute
   '/subcontract-edge-marks': typeof SubcontractEdgeMarksRoute
   '/switch-bl-loi-marks': typeof SwitchBlLoiMarksRoute
   '/tacho-office-marks': typeof TachoOfficeMarksRoute
@@ -1869,6 +1876,7 @@ export interface FileRoutesByTo {
   '/sla-clauses': typeof SlaClausesRoute
   '/slot-guarantee-marks': typeof SlotGuaranteeMarksRoute
   '/spend-marks': typeof SpendMarksRoute
+  '/spot-contract-marks': typeof SpotContractMarksRoute
   '/subcontract-edge-marks': typeof SubcontractEdgeMarksRoute
   '/switch-bl-loi-marks': typeof SwitchBlLoiMarksRoute
   '/tacho-office-marks': typeof TachoOfficeMarksRoute
@@ -2109,6 +2117,7 @@ export interface FileRoutesById {
   '/sla-clauses': typeof SlaClausesRoute
   '/slot-guarantee-marks': typeof SlotGuaranteeMarksRoute
   '/spend-marks': typeof SpendMarksRoute
+  '/spot-contract-marks': typeof SpotContractMarksRoute
   '/subcontract-edge-marks': typeof SubcontractEdgeMarksRoute
   '/switch-bl-loi-marks': typeof SwitchBlLoiMarksRoute
   '/tacho-office-marks': typeof TachoOfficeMarksRoute
@@ -2350,6 +2359,7 @@ export interface FileRouteTypes {
     | '/sla-clauses'
     | '/slot-guarantee-marks'
     | '/spend-marks'
+    | '/spot-contract-marks'
     | '/subcontract-edge-marks'
     | '/switch-bl-loi-marks'
     | '/tacho-office-marks'
@@ -2589,6 +2599,7 @@ export interface FileRouteTypes {
     | '/sla-clauses'
     | '/slot-guarantee-marks'
     | '/spend-marks'
+    | '/spot-contract-marks'
     | '/subcontract-edge-marks'
     | '/switch-bl-loi-marks'
     | '/tacho-office-marks'
@@ -2828,6 +2839,7 @@ export interface FileRouteTypes {
     | '/sla-clauses'
     | '/slot-guarantee-marks'
     | '/spend-marks'
+    | '/spot-contract-marks'
     | '/subcontract-edge-marks'
     | '/switch-bl-loi-marks'
     | '/tacho-office-marks'
@@ -3068,6 +3080,7 @@ export interface RootRouteChildren {
   SlaClausesRoute: typeof SlaClausesRoute
   SlotGuaranteeMarksRoute: typeof SlotGuaranteeMarksRoute
   SpendMarksRoute: typeof SpendMarksRoute
+  SpotContractMarksRoute: typeof SpotContractMarksRoute
   SubcontractEdgeMarksRoute: typeof SubcontractEdgeMarksRoute
   SwitchBlLoiMarksRoute: typeof SwitchBlLoiMarksRoute
   TachoOfficeMarksRoute: typeof TachoOfficeMarksRoute
@@ -4479,6 +4492,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SpendMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/spot-contract-marks': {
+      id: '/spot-contract-marks'
+      path: '/spot-contract-marks'
+      fullPath: '/spot-contract-marks'
+      preLoaderRoute: typeof SpotContractMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/subcontract-edge-marks': {
       id: '/subcontract-edge-marks'
       path: '/subcontract-edge-marks'
@@ -4972,6 +4992,7 @@ const rootRouteChildren: RootRouteChildren = {
   SlaClausesRoute: SlaClausesRoute,
   SlotGuaranteeMarksRoute: SlotGuaranteeMarksRoute,
   SpendMarksRoute: SpendMarksRoute,
+  SpotContractMarksRoute: SpotContractMarksRoute,
   SubcontractEdgeMarksRoute: SubcontractEdgeMarksRoute,
   SwitchBlLoiMarksRoute: SwitchBlLoiMarksRoute,
   TachoOfficeMarksRoute: TachoOfficeMarksRoute,

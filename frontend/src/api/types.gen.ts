@@ -11205,6 +11205,50 @@ export type SpendMarkResponse = {
 };
 
 /**
+ * SpotContractMarkCreate
+ */
+export type SpotContractMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Deal Kind
+     */
+    deal_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * SpotContractMarkResponse
+ */
+export type SpotContractMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Deal Kind
+     */
+    deal_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * StopCreate
  */
 export type StopCreate = {
@@ -22122,6 +22166,49 @@ export type CreateDiversionMarkApiV1DiversionMarksPostResponses = {
 };
 
 export type CreateDiversionMarkApiV1DiversionMarksPostResponse = CreateDiversionMarkApiV1DiversionMarksPostResponses[keyof CreateDiversionMarkApiV1DiversionMarksPostResponses];
+
+export type ListSpotContractMarksApiV1SpotContractMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/spot-contract-marks';
+};
+
+export type ListSpotContractMarksApiV1SpotContractMarksGetResponses = {
+    /**
+     * Response List Spot Contract Marks Api V1 Spot Contract Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<SpotContractMarkResponse>;
+};
+
+export type ListSpotContractMarksApiV1SpotContractMarksGetResponse = ListSpotContractMarksApiV1SpotContractMarksGetResponses[keyof ListSpotContractMarksApiV1SpotContractMarksGetResponses];
+
+export type CreateSpotContractMarkApiV1SpotContractMarksPostData = {
+    body: SpotContractMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/spot-contract-marks';
+};
+
+export type CreateSpotContractMarkApiV1SpotContractMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateSpotContractMarkApiV1SpotContractMarksPostError = CreateSpotContractMarkApiV1SpotContractMarksPostErrors[keyof CreateSpotContractMarkApiV1SpotContractMarksPostErrors];
+
+export type CreateSpotContractMarkApiV1SpotContractMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: SpotContractMarkResponse;
+};
+
+export type CreateSpotContractMarkApiV1SpotContractMarksPostResponse = CreateSpotContractMarkApiV1SpotContractMarksPostResponses[keyof CreateSpotContractMarkApiV1SpotContractMarksPostResponses];
 
 export type ListDemoGpsMarksApiV1DemoGpsMarksGetData = {
     body?: never;

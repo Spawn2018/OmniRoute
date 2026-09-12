@@ -14612,6 +14612,80 @@
         ]
       }
     },
+    "/api/v1/spot-contract-marks": {
+      "get": {
+        "tags": [
+          "spot-contract-mark"
+        ],
+        "summary": "List Spot Contract Marks",
+        "operationId": "list_spot_contract_marks_api_v1_spot_contract_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SpotContractMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Spot Contract Marks Api V1 Spot Contract Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "spot-contract-mark"
+        ],
+        "summary": "Create Spot Contract Mark",
+        "operationId": "create_spot_contract_mark_api_v1_spot_contract_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SpotContractMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SpotContractMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/demo-gps-marks": {
       "get": {
         "tags": [
@@ -39181,6 +39255,71 @@
           "source_ref"
         ],
         "title": "SpendMarkResponse"
+      },
+      "SpotContractMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "deal_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 4,
+            "title": "Deal Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "deal_kind",
+          "source_ref"
+        ],
+        "title": "SpotContractMarkCreate"
+      },
+      "SpotContractMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "deal_kind": {
+            "type": "string",
+            "title": "Deal Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "deal_kind",
+          "source_ref"
+        ],
+        "title": "SpotContractMarkResponse"
       },
       "StopCreate": {
         "properties": {

@@ -197,6 +197,7 @@ from app.api import (
     sla_clauses,
     slot_guarantee_marks,
     spend_marks,
+    spot_contract_marks,
     stops,
     subcontract_edge_marks,
     switch_bl_loi_marks,
@@ -413,6 +414,7 @@ api_router.include_router(slot_guarantee_marks.router)
 api_router.include_router(delay_forecasts.router)
 api_router.include_router(demand_snapshot_marks.router)
 api_router.include_router(diversion_marks.router)
+api_router.include_router(spot_contract_marks.router)
 api_router.include_router(demo_gps_marks.router)
 api_router.include_router(demo_sim_marks.router)
 api_router.include_router(demo_wipe_marks.router)

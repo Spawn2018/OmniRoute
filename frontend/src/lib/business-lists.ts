@@ -170,6 +170,10 @@ export const BUSINESS_LISTS = {
   delayForecast: { route: "/delay-forecasts", tableKey: "delay_forecast" },
   demandSnapshotMark: { route: "/demand-snapshot-marks", tableKey: "demand_snapshot_mark" },
   diversionMark: { route: "/diversion-marks", tableKey: "diversion_mark" },
+  spotContractMark: {
+    route: "/spot-contract-marks",
+    tableKey: "spot_contract_mark",
+  },
   demoGpsMark: { route: "/demo-gps-marks", tableKey: "demo_gps_mark" },
   demoSimMark: { route: "/demo-sim-marks", tableKey: "demo_sim_mark" },
   demoWipeMark: { route: "/demo-wipe-marks", tableKey: "demo_wipe_mark" },
@@ -423,6 +427,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/delay-forecasts",
   "/demand-snapshot-marks",
   "/diversion-marks",
+  "/spot-contract-marks",
   "/demo-gps-marks",
   "/demo-sim-marks",
   "/demo-wipe-marks",

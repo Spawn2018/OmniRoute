@@ -1038,6 +1038,10 @@ class InvalidDiversionMark(DomainError):
     """EXP1: HITL diversion_mark — nie FK shipment / cargo_value."""
 
 
+class InvalidSpotContractMark(DomainError):
+    """EXP1: HITL spot_contract_mark — nie FK quotation / cargo_value."""
+
+
 class InvalidImpersonateGuardMark(DomainError):
     """EXP0.12: HITL impersonate≠unwrap — nie crypto / Auth0 live."""
 
