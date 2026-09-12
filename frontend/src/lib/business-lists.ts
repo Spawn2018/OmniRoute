@@ -256,6 +256,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/lcl",
   "/ocean-bills",
   "/consignments",
+  "/copy-ban-marks",
   "/pallet-balances",
   "/document-templates",
   "/rate-cards",
