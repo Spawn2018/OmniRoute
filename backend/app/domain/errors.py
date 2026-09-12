@@ -998,6 +998,10 @@ class InvalidGeneralAverageMark(DomainError):
     """EXP3.11: HITL general average — nie GA live / GA scrape."""
 
 
+class InvalidTenderDeclineReason(DomainError):
+    """EXP3.12: HITL tender decline — nie decline auto / RFP scrape."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

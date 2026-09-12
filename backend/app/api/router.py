@@ -165,6 +165,7 @@ from app.api import (
     tender_carbon_marks,
     tender_consortium_members,
     tender_data_rooms,
+    tender_decline_reasons,
     tender_lanes,
     tender_lots,
     tender_matrix_cells,
@@ -270,6 +271,7 @@ api_router.include_router(filing_scheme_marks.router)
 api_router.include_router(local_charges.router)
 api_router.include_router(tender_quotes.router)
 api_router.include_router(tender_data_rooms.router)
+api_router.include_router(tender_decline_reasons.router)
 api_router.include_router(tender_lanes.router)
 api_router.include_router(tender_lots.router)
 api_router.include_router(tender_matrix_cells.router)

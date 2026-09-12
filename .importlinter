@@ -171,6 +171,7 @@ modules =
     app.services.switch_bl_loi_marks
     app.services.abandoned_rto_marks
     app.services.general_average_marks
+    app.services.tender_decline_reasons
     app.services.freight_audit_marks
     app.services.collaboration_marks
     app.services.exchange_connectors
@@ -770,6 +771,9 @@ forbidden_modules =
     app.services.general_average_marks
     app.repositories.general_average_marks
     app.models.general_average_mark
+    app.services.tender_decline_reasons
+    app.repositories.tender_decline_reasons
+    app.models.tender_decline_reason
     app.services.freight_audit_marks
     app.repositories.freight_audit_marks
     app.models.freight_audit_mark

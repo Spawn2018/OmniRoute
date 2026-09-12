@@ -195,6 +195,7 @@ def _organization_exp2_catalog_relations() -> dict[str, Userset]:
         "can_manage_switch_bl_loi_marks": _member(),
         "can_manage_abandoned_rto_marks": _member(),
         "can_manage_general_average_marks": _member(),
+        "can_manage_tender_decline_reasons": _member(),
     }
 
 

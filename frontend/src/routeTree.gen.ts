@@ -169,6 +169,7 @@ import { Route as TenderBidStancesRouteImport } from './routes/tender-bid-stance
 import { Route as TenderCarbonMarksRouteImport } from './routes/tender-carbon-marks'
 import { Route as TenderConsortiumMembersRouteImport } from './routes/tender-consortium-members'
 import { Route as TenderDataRoomsRouteImport } from './routes/tender-data-rooms'
+import { Route as TenderDeclineReasonsRouteImport } from './routes/tender-decline-reasons'
 import { Route as TenderLanesRouteImport } from './routes/tender-lanes'
 import { Route as TenderLotsRouteImport } from './routes/tender-lots'
 import { Route as TenderMatrixCellsRouteImport } from './routes/tender-matrix-cells'
@@ -998,6 +999,11 @@ const TenderDataRoomsRoute = TenderDataRoomsRouteImport.update({
   path: '/tender-data-rooms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TenderDeclineReasonsRoute = TenderDeclineReasonsRouteImport.update({
+  id: '/tender-decline-reasons',
+  path: '/tender-decline-reasons',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TenderLanesRoute = TenderLanesRouteImport.update({
   id: '/tender-lanes',
   path: '/tender-lanes',
@@ -1295,6 +1301,7 @@ export interface FileRoutesByFullPath {
   '/tender-carbon-marks': typeof TenderCarbonMarksRoute
   '/tender-consortium-members': typeof TenderConsortiumMembersRoute
   '/tender-data-rooms': typeof TenderDataRoomsRoute
+  '/tender-decline-reasons': typeof TenderDeclineReasonsRoute
   '/tender-lanes': typeof TenderLanesRoute
   '/tender-lots': typeof TenderLotsRoute
   '/tender-matrix-cells': typeof TenderMatrixCellsRoute
@@ -1484,6 +1491,7 @@ export interface FileRoutesByTo {
   '/tender-carbon-marks': typeof TenderCarbonMarksRoute
   '/tender-consortium-members': typeof TenderConsortiumMembersRoute
   '/tender-data-rooms': typeof TenderDataRoomsRoute
+  '/tender-decline-reasons': typeof TenderDeclineReasonsRoute
   '/tender-lanes': typeof TenderLanesRoute
   '/tender-lots': typeof TenderLotsRoute
   '/tender-matrix-cells': typeof TenderMatrixCellsRoute
@@ -1674,6 +1682,7 @@ export interface FileRoutesById {
   '/tender-carbon-marks': typeof TenderCarbonMarksRoute
   '/tender-consortium-members': typeof TenderConsortiumMembersRoute
   '/tender-data-rooms': typeof TenderDataRoomsRoute
+  '/tender-decline-reasons': typeof TenderDeclineReasonsRoute
   '/tender-lanes': typeof TenderLanesRoute
   '/tender-lots': typeof TenderLotsRoute
   '/tender-matrix-cells': typeof TenderMatrixCellsRoute
@@ -1865,6 +1874,7 @@ export interface FileRouteTypes {
     | '/tender-carbon-marks'
     | '/tender-consortium-members'
     | '/tender-data-rooms'
+    | '/tender-decline-reasons'
     | '/tender-lanes'
     | '/tender-lots'
     | '/tender-matrix-cells'
@@ -2054,6 +2064,7 @@ export interface FileRouteTypes {
     | '/tender-carbon-marks'
     | '/tender-consortium-members'
     | '/tender-data-rooms'
+    | '/tender-decline-reasons'
     | '/tender-lanes'
     | '/tender-lots'
     | '/tender-matrix-cells'
@@ -2243,6 +2254,7 @@ export interface FileRouteTypes {
     | '/tender-carbon-marks'
     | '/tender-consortium-members'
     | '/tender-data-rooms'
+    | '/tender-decline-reasons'
     | '/tender-lanes'
     | '/tender-lots'
     | '/tender-matrix-cells'
@@ -2433,6 +2445,7 @@ export interface RootRouteChildren {
   TenderCarbonMarksRoute: typeof TenderCarbonMarksRoute
   TenderConsortiumMembersRoute: typeof TenderConsortiumMembersRoute
   TenderDataRoomsRoute: typeof TenderDataRoomsRoute
+  TenderDeclineReasonsRoute: typeof TenderDeclineReasonsRoute
   TenderLanesRoute: typeof TenderLanesRoute
   TenderLotsRoute: typeof TenderLotsRoute
   TenderMatrixCellsRoute: typeof TenderMatrixCellsRoute
@@ -3585,6 +3598,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TenderDataRoomsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tender-decline-reasons': {
+      id: '/tender-decline-reasons'
+      path: '/tender-decline-reasons'
+      fullPath: '/tender-decline-reasons'
+      preLoaderRoute: typeof TenderDeclineReasonsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tender-lanes': {
       id: '/tender-lanes'
       path: '/tender-lanes'
@@ -3938,6 +3958,7 @@ const rootRouteChildren: RootRouteChildren = {
   TenderCarbonMarksRoute: TenderCarbonMarksRoute,
   TenderConsortiumMembersRoute: TenderConsortiumMembersRoute,
   TenderDataRoomsRoute: TenderDataRoomsRoute,
+  TenderDeclineReasonsRoute: TenderDeclineReasonsRoute,
   TenderLanesRoute: TenderLanesRoute,
   TenderLotsRoute: TenderLotsRoute,
   TenderMatrixCellsRoute: TenderMatrixCellsRoute,

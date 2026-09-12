@@ -7614,6 +7614,80 @@
         ]
       }
     },
+    "/api/v1/tender-decline-reasons": {
+      "get": {
+        "tags": [
+          "tender-decline-reasons"
+        ],
+        "summary": "List Tender Decline Reasons",
+        "operationId": "list_tender_decline_reasons_api_v1_tender_decline_reasons_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TenderDeclineReasonResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Tender Decline Reasons Api V1 Tender Decline Reasons Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "tender-decline-reasons"
+        ],
+        "summary": "Create Tender Decline Reason",
+        "operationId": "create_tender_decline_reason_api_v1_tender_decline_reasons_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TenderDeclineReasonCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TenderDeclineReasonResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/tender-lanes": {
       "get": {
         "tags": [
@@ -33768,6 +33842,65 @@
           "source_ref"
         ],
         "title": "TenderDataRoomResponse"
+      },
+      "TenderDeclineReasonCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "decline_kind": {
+            "type": "string",
+            "title": "Decline Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "decline_kind",
+          "source_ref"
+        ],
+        "title": "TenderDeclineReasonCreate"
+      },
+      "TenderDeclineReasonResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "decline_kind": {
+            "type": "string",
+            "title": "Decline Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "decline_kind",
+          "source_ref"
+        ],
+        "title": "TenderDeclineReasonResponse"
       },
       "TenderLaneCreate": {
         "properties": {

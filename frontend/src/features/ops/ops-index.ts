@@ -124,6 +124,11 @@ export const OPS_JOBS = [
     job: "NDA na tender bez extractu",
   },
   {
+    route: BUSINESS_LISTS.tenderDeclineReason.route,
+    label: "Tender decline",
+    job: "katalog tender_decline_reason HITL",
+  },
+  {
     route: BUSINESS_LISTS.tenderMatrixCell.route,
     label: "Komórki matrycy",
     job: "kwota Decimal z P bez LLM",
@@ -1279,6 +1284,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "374.0": "/switch-bl-loi-marks",
   "375.0": "/abandoned-rto-marks",
   "376.0": "/general-average-marks",
+  "377.0": "/tender-decline-reasons",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

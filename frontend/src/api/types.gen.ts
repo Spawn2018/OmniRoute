@@ -9985,6 +9985,50 @@ export type TenderDataRoomResponse = {
 };
 
 /**
+ * TenderDeclineReasonCreate
+ */
+export type TenderDeclineReasonCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Decline Kind
+     */
+    decline_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TenderDeclineReasonResponse
+ */
+export type TenderDeclineReasonResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Decline Kind
+     */
+    decline_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * TenderLaneCreate
  */
 export type TenderLaneCreate = {
@@ -15855,6 +15899,49 @@ export type CreateTenderDataRoomApiV1TenderDataRoomsPostResponses = {
 };
 
 export type CreateTenderDataRoomApiV1TenderDataRoomsPostResponse = CreateTenderDataRoomApiV1TenderDataRoomsPostResponses[keyof CreateTenderDataRoomApiV1TenderDataRoomsPostResponses];
+
+export type ListTenderDeclineReasonsApiV1TenderDeclineReasonsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tender-decline-reasons';
+};
+
+export type ListTenderDeclineReasonsApiV1TenderDeclineReasonsGetResponses = {
+    /**
+     * Response List Tender Decline Reasons Api V1 Tender Decline Reasons Get
+     *
+     * Successful Response
+     */
+    200: Array<TenderDeclineReasonResponse>;
+};
+
+export type ListTenderDeclineReasonsApiV1TenderDeclineReasonsGetResponse = ListTenderDeclineReasonsApiV1TenderDeclineReasonsGetResponses[keyof ListTenderDeclineReasonsApiV1TenderDeclineReasonsGetResponses];
+
+export type CreateTenderDeclineReasonApiV1TenderDeclineReasonsPostData = {
+    body: TenderDeclineReasonCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tender-decline-reasons';
+};
+
+export type CreateTenderDeclineReasonApiV1TenderDeclineReasonsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTenderDeclineReasonApiV1TenderDeclineReasonsPostError = CreateTenderDeclineReasonApiV1TenderDeclineReasonsPostErrors[keyof CreateTenderDeclineReasonApiV1TenderDeclineReasonsPostErrors];
+
+export type CreateTenderDeclineReasonApiV1TenderDeclineReasonsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TenderDeclineReasonResponse;
+};
+
+export type CreateTenderDeclineReasonApiV1TenderDeclineReasonsPostResponse = CreateTenderDeclineReasonApiV1TenderDeclineReasonsPostResponses[keyof CreateTenderDeclineReasonApiV1TenderDeclineReasonsPostResponses];
 
 export type ListTenderLanesApiV1TenderLanesGetData = {
     body?: never;
