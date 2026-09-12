@@ -639,6 +639,11 @@ export const OPS_JOBS = [
     job: "katalog subcontract_edge_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.switchBlLoiMark.route,
+    label: "switch BL/LOI",
+    job: "katalog switch_bl_loi_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.scheduleExceptionMark.route,
     label: "Schedule exception",
     job: "katalog schedule_exception_mark HITL",
@@ -1261,6 +1266,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "371.0": "/eccn-marks",
   "372.0": "/eur1-atr-marks",
   "373.0": "/phyto-ata-marks",
+  "374.0": "/switch-bl-loi-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

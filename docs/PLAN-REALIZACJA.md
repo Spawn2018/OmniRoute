@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **374.0** EXP3.9 switch BL/LOI HITL `switch_bl_loi_mark` (LC = już `lc_checklist`).
+**Następny:** **375.0** EXP3.10 abandoned/RTO HITL `abandoned_rto_mark`.
 <!-- os-status:end -->
 
 ```mermaid

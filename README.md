@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **373.0** EXP3.8 HITL `phyto_ata_mark`
-- **Etap:** Plan — **374.0** EXP3.9
-- **Następny:** **374.0** EXP3.9 switch BL/LOI HITL `switch_bl_loi_mark` (LC = już `lc_checklist`).
+- **Ostatni plaster:** **374.0** EXP3.9 HITL `switch_bl_loi_mark`
+- **Etap:** Plan — **375.0** EXP3.10
+- **Następny:** **375.0** EXP3.10 abandoned/RTO HITL `abandoned_rto_mark`.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

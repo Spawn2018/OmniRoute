@@ -4438,6 +4438,80 @@
         ]
       }
     },
+    "/api/v1/switch-bl-loi-marks": {
+      "get": {
+        "tags": [
+          "switch-bl-loi-marks"
+        ],
+        "summary": "List Switch Bl Loi Marks",
+        "operationId": "list_switch_bl_loi_marks_api_v1_switch_bl_loi_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SwitchBlLoiMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Switch Bl Loi Marks Api V1 Switch Bl Loi Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "switch-bl-loi-marks"
+        ],
+        "summary": "Create Switch Bl Loi Mark",
+        "operationId": "create_switch_bl_loi_mark_api_v1_switch_bl_loi_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SwitchBlLoiMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SwitchBlLoiMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/resources": {
       "get": {
         "tags": [
@@ -32673,6 +32747,65 @@
           "source_ref"
         ],
         "title": "SubcontractEdgeMarkResponse"
+      },
+      "SwitchBlLoiMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "instrument_kind": {
+            "type": "string",
+            "title": "Instrument Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "instrument_kind",
+          "source_ref"
+        ],
+        "title": "SwitchBlLoiMarkCreate"
+      },
+      "SwitchBlLoiMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "instrument_kind": {
+            "type": "string",
+            "title": "Instrument Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "instrument_kind",
+          "source_ref"
+        ],
+        "title": "SwitchBlLoiMarkResponse"
       },
       "TableViewConfig": {
         "properties": {

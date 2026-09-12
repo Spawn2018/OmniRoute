@@ -9357,6 +9357,50 @@ export type SubcontractEdgeMarkResponse = {
 };
 
 /**
+ * SwitchBlLoiMarkCreate
+ */
+export type SwitchBlLoiMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Instrument Kind
+     */
+    instrument_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * SwitchBlLoiMarkResponse
+ */
+export type SwitchBlLoiMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Instrument Kind
+     */
+    instrument_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * TableViewConfig
  */
 export type TableViewConfig = {
@@ -13886,6 +13930,49 @@ export type CreateSubcontractEdgeMarkApiV1SubcontractEdgeMarksPostResponses = {
 };
 
 export type CreateSubcontractEdgeMarkApiV1SubcontractEdgeMarksPostResponse = CreateSubcontractEdgeMarkApiV1SubcontractEdgeMarksPostResponses[keyof CreateSubcontractEdgeMarkApiV1SubcontractEdgeMarksPostResponses];
+
+export type ListSwitchBlLoiMarksApiV1SwitchBlLoiMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/switch-bl-loi-marks';
+};
+
+export type ListSwitchBlLoiMarksApiV1SwitchBlLoiMarksGetResponses = {
+    /**
+     * Response List Switch Bl Loi Marks Api V1 Switch Bl Loi Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<SwitchBlLoiMarkResponse>;
+};
+
+export type ListSwitchBlLoiMarksApiV1SwitchBlLoiMarksGetResponse = ListSwitchBlLoiMarksApiV1SwitchBlLoiMarksGetResponses[keyof ListSwitchBlLoiMarksApiV1SwitchBlLoiMarksGetResponses];
+
+export type CreateSwitchBlLoiMarkApiV1SwitchBlLoiMarksPostData = {
+    body: SwitchBlLoiMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/switch-bl-loi-marks';
+};
+
+export type CreateSwitchBlLoiMarkApiV1SwitchBlLoiMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateSwitchBlLoiMarkApiV1SwitchBlLoiMarksPostError = CreateSwitchBlLoiMarkApiV1SwitchBlLoiMarksPostErrors[keyof CreateSwitchBlLoiMarkApiV1SwitchBlLoiMarksPostErrors];
+
+export type CreateSwitchBlLoiMarkApiV1SwitchBlLoiMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: SwitchBlLoiMarkResponse;
+};
+
+export type CreateSwitchBlLoiMarkApiV1SwitchBlLoiMarksPostResponse = CreateSwitchBlLoiMarkApiV1SwitchBlLoiMarksPostResponses[keyof CreateSwitchBlLoiMarkApiV1SwitchBlLoiMarksPostResponses];
 
 export type ListResourcesApiV1ResourcesGetData = {
     body?: never;

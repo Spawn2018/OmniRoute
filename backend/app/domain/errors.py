@@ -986,6 +986,10 @@ class InvalidPhytoAtaMark(DomainError):
     """EXP3.8: HITL phyto/ATA — nie phyto live / ATA scrape."""
 
 
+class InvalidSwitchBlLoiMark(DomainError):
+    """EXP3.9: HITL switch BL/LOI — nie switch BL live / LOI scrape."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

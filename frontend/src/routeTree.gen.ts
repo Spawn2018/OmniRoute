@@ -158,6 +158,7 @@ import { Route as SidImportMarksRouteImport } from './routes/sid-import-marks'
 import { Route as SlaClausesRouteImport } from './routes/sla-clauses'
 import { Route as SpendMarksRouteImport } from './routes/spend-marks'
 import { Route as SubcontractEdgeMarksRouteImport } from './routes/subcontract-edge-marks'
+import { Route as SwitchBlLoiMarksRouteImport } from './routes/switch-bl-loi-marks'
 import { Route as TaskTemplatesRouteImport } from './routes/task-templates'
 import { Route as TelematicsConnectorsRouteImport } from './routes/telematics-connectors'
 import { Route as TenantContractKeksRouteImport } from './routes/tenant-contract-keks'
@@ -940,6 +941,11 @@ const SubcontractEdgeMarksRoute = SubcontractEdgeMarksRouteImport.update({
   path: '/subcontract-edge-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SwitchBlLoiMarksRoute = SwitchBlLoiMarksRouteImport.update({
+  id: '/switch-bl-loi-marks',
+  path: '/switch-bl-loi-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TaskTemplatesRoute = TaskTemplatesRouteImport.update({
   id: '/task-templates',
   path: '/task-templates',
@@ -1266,6 +1272,7 @@ export interface FileRoutesByFullPath {
   '/sla-clauses': typeof SlaClausesRoute
   '/spend-marks': typeof SpendMarksRoute
   '/subcontract-edge-marks': typeof SubcontractEdgeMarksRoute
+  '/switch-bl-loi-marks': typeof SwitchBlLoiMarksRoute
   '/task-templates': typeof TaskTemplatesRoute
   '/telematics-connectors': typeof TelematicsConnectorsRoute
   '/tenant-contract-keks': typeof TenantContractKeksRoute
@@ -1452,6 +1459,7 @@ export interface FileRoutesByTo {
   '/sla-clauses': typeof SlaClausesRoute
   '/spend-marks': typeof SpendMarksRoute
   '/subcontract-edge-marks': typeof SubcontractEdgeMarksRoute
+  '/switch-bl-loi-marks': typeof SwitchBlLoiMarksRoute
   '/task-templates': typeof TaskTemplatesRoute
   '/telematics-connectors': typeof TelematicsConnectorsRoute
   '/tenant-contract-keks': typeof TenantContractKeksRoute
@@ -1639,6 +1647,7 @@ export interface FileRoutesById {
   '/sla-clauses': typeof SlaClausesRoute
   '/spend-marks': typeof SpendMarksRoute
   '/subcontract-edge-marks': typeof SubcontractEdgeMarksRoute
+  '/switch-bl-loi-marks': typeof SwitchBlLoiMarksRoute
   '/task-templates': typeof TaskTemplatesRoute
   '/telematics-connectors': typeof TelematicsConnectorsRoute
   '/tenant-contract-keks': typeof TenantContractKeksRoute
@@ -1827,6 +1836,7 @@ export interface FileRouteTypes {
     | '/sla-clauses'
     | '/spend-marks'
     | '/subcontract-edge-marks'
+    | '/switch-bl-loi-marks'
     | '/task-templates'
     | '/telematics-connectors'
     | '/tenant-contract-keks'
@@ -2013,6 +2023,7 @@ export interface FileRouteTypes {
     | '/sla-clauses'
     | '/spend-marks'
     | '/subcontract-edge-marks'
+    | '/switch-bl-loi-marks'
     | '/task-templates'
     | '/telematics-connectors'
     | '/tenant-contract-keks'
@@ -2199,6 +2210,7 @@ export interface FileRouteTypes {
     | '/sla-clauses'
     | '/spend-marks'
     | '/subcontract-edge-marks'
+    | '/switch-bl-loi-marks'
     | '/task-templates'
     | '/telematics-connectors'
     | '/tenant-contract-keks'
@@ -2386,6 +2398,7 @@ export interface RootRouteChildren {
   SlaClausesRoute: typeof SlaClausesRoute
   SpendMarksRoute: typeof SpendMarksRoute
   SubcontractEdgeMarksRoute: typeof SubcontractEdgeMarksRoute
+  SwitchBlLoiMarksRoute: typeof SwitchBlLoiMarksRoute
   TaskTemplatesRoute: typeof TaskTemplatesRoute
   TelematicsConnectorsRoute: typeof TelematicsConnectorsRoute
   TenantContractKeksRoute: typeof TenantContractKeksRoute
@@ -3469,6 +3482,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SubcontractEdgeMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/switch-bl-loi-marks': {
+      id: '/switch-bl-loi-marks'
+      path: '/switch-bl-loi-marks'
+      fullPath: '/switch-bl-loi-marks'
+      preLoaderRoute: typeof SwitchBlLoiMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/task-templates': {
       id: '/task-templates'
       path: '/task-templates'
@@ -3867,6 +3887,7 @@ const rootRouteChildren: RootRouteChildren = {
   SlaClausesRoute: SlaClausesRoute,
   SpendMarksRoute: SpendMarksRoute,
   SubcontractEdgeMarksRoute: SubcontractEdgeMarksRoute,
+  SwitchBlLoiMarksRoute: SwitchBlLoiMarksRoute,
   TaskTemplatesRoute: TaskTemplatesRoute,
   TelematicsConnectorsRoute: TelematicsConnectorsRoute,
   TenantContractKeksRoute: TenantContractKeksRoute,

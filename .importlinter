@@ -168,6 +168,7 @@ modules =
     app.services.eccn_marks
     app.services.eur1_atr_marks
     app.services.phyto_ata_marks
+    app.services.switch_bl_loi_marks
     app.services.freight_audit_marks
     app.services.collaboration_marks
     app.services.exchange_connectors
@@ -758,6 +759,9 @@ forbidden_modules =
     app.services.phyto_ata_marks
     app.repositories.phyto_ata_marks
     app.models.phyto_ata_mark
+    app.services.switch_bl_loi_marks
+    app.repositories.switch_bl_loi_marks
+    app.models.switch_bl_loi_mark
     app.services.freight_audit_marks
     app.repositories.freight_audit_marks
     app.models.freight_audit_mark
