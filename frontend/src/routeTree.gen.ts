@@ -69,6 +69,7 @@ import { Route as TachoOfficeMarksRouteImport } from './routes/tacho-office-mark
 import { Route as LezMarksRouteImport } from './routes/lez-marks'
 import { Route as LabelParkingMarksRouteImport } from './routes/label-parking-marks'
 import { Route as AbSusMarksRouteImport } from './routes/ab-sus-marks'
+import { Route as FunnelMarksRouteImport } from './routes/funnel-marks'
 import { Route as EntityEventsRouteImport } from './routes/entity-events'
 import { Route as ErpConnectorsRouteImport } from './routes/erp-connectors'
 import { Route as Eur1AtrMarksRouteImport } from './routes/eur1-atr-marks'
@@ -510,6 +511,11 @@ const LabelParkingMarksRoute = LabelParkingMarksRouteImport.update({
 const AbSusMarksRoute = AbSusMarksRouteImport.update({
   id: '/ab-sus-marks',
   path: '/ab-sus-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FunnelMarksRoute = FunnelMarksRouteImport.update({
+  id: '/funnel-marks',
+  path: '/funnel-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EntityEventsRoute = EntityEventsRouteImport.update({
@@ -1285,6 +1291,7 @@ export interface FileRoutesByFullPath {
   '/lez-marks': typeof LezMarksRoute
   '/label-parking-marks': typeof LabelParkingMarksRoute
   '/ab-sus-marks': typeof AbSusMarksRoute
+  '/funnel-marks': typeof FunnelMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/eur1-atr-marks': typeof Eur1AtrMarksRoute
@@ -1489,6 +1496,7 @@ export interface FileRoutesByTo {
   '/lez-marks': typeof LezMarksRoute
   '/label-parking-marks': typeof LabelParkingMarksRoute
   '/ab-sus-marks': typeof AbSusMarksRoute
+  '/funnel-marks': typeof FunnelMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/eur1-atr-marks': typeof Eur1AtrMarksRoute
@@ -1694,6 +1702,7 @@ export interface FileRoutesById {
   '/lez-marks': typeof LezMarksRoute
   '/label-parking-marks': typeof LabelParkingMarksRoute
   '/ab-sus-marks': typeof AbSusMarksRoute
+  '/funnel-marks': typeof FunnelMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/eur1-atr-marks': typeof Eur1AtrMarksRoute
@@ -1900,6 +1909,7 @@ export interface FileRouteTypes {
     | '/lez-marks'
     | '/label-parking-marks'
     | '/ab-sus-marks'
+    | '/funnel-marks'
     | '/entity-events'
     | '/erp-connectors'
     | '/eur1-atr-marks'
@@ -2104,6 +2114,7 @@ export interface FileRouteTypes {
     | '/lez-marks'
     | '/label-parking-marks'
     | '/ab-sus-marks'
+    | '/funnel-marks'
     | '/entity-events'
     | '/erp-connectors'
     | '/eur1-atr-marks'
@@ -2308,6 +2319,7 @@ export interface FileRouteTypes {
     | '/lez-marks'
     | '/label-parking-marks'
     | '/ab-sus-marks'
+    | '/funnel-marks'
     | '/entity-events'
     | '/erp-connectors'
     | '/eur1-atr-marks'
@@ -2513,6 +2525,7 @@ export interface RootRouteChildren {
   LezMarksRoute: typeof LezMarksRoute
   LabelParkingMarksRoute: typeof LabelParkingMarksRoute
   AbSusMarksRoute: typeof AbSusMarksRoute
+  FunnelMarksRoute: typeof FunnelMarksRoute
   EntityEventsRoute: typeof EntityEventsRoute
   ErpConnectorsRoute: typeof ErpConnectorsRoute
   Eur1AtrMarksRoute: typeof Eur1AtrMarksRoute
@@ -3077,6 +3090,13 @@ declare module '@tanstack/react-router' {
       path: '/ab-sus-marks'
       fullPath: '/ab-sus-marks'
       preLoaderRoute: typeof AbSusMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/funnel-marks': {
+      id: '/funnel-marks'
+      path: '/funnel-marks'
+      fullPath: '/funnel-marks'
+      preLoaderRoute: typeof FunnelMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
 
@@ -4142,6 +4162,7 @@ const rootRouteChildren: RootRouteChildren = {
   LezMarksRoute: LezMarksRoute,
   LabelParkingMarksRoute: LabelParkingMarksRoute,
   AbSusMarksRoute: AbSusMarksRoute,
+  FunnelMarksRoute: FunnelMarksRoute,
   EntityEventsRoute: EntityEventsRoute,
   ErpConnectorsRoute: ErpConnectorsRoute,
   Eur1AtrMarksRoute: Eur1AtrMarksRoute,

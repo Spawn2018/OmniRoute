@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **392.0** EXP4.14 X7 lejek HITL `funnel_mark` (kolejka EXP4).
+**Następny:** **393.0** EXP4.15 Terms AI HITL `terms_ai_mark` (kolejka EXP4; nie CI blob).
 <!-- os-status:end -->
 
 ```mermaid

@@ -4403,6 +4403,50 @@ export type FuelIndexResponse = {
 };
 
 /**
+ * FunnelMarkCreate
+ */
+export type FunnelMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Funnel Kind
+     */
+    funnel_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * FunnelMarkResponse
+ */
+export type FunnelMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Funnel Kind
+     */
+    funnel_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * FxDifferenceCreate
  */
 export type FxDifferenceCreate = {
@@ -17590,6 +17634,49 @@ export type CreateFraudFlagApiV1FraudFlagsPostResponses = {
 };
 
 export type CreateFraudFlagApiV1FraudFlagsPostResponse = CreateFraudFlagApiV1FraudFlagsPostResponses[keyof CreateFraudFlagApiV1FraudFlagsPostResponses];
+
+export type ListFunnelMarksApiV1FunnelMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/funnel-marks';
+};
+
+export type ListFunnelMarksApiV1FunnelMarksGetResponses = {
+    /**
+     * Response List Funnel Marks Api V1 Funnel Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<FunnelMarkResponse>;
+};
+
+export type ListFunnelMarksApiV1FunnelMarksGetResponse = ListFunnelMarksApiV1FunnelMarksGetResponses[keyof ListFunnelMarksApiV1FunnelMarksGetResponses];
+
+export type CreateFunnelMarkApiV1FunnelMarksPostData = {
+    body: FunnelMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/funnel-marks';
+};
+
+export type CreateFunnelMarkApiV1FunnelMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateFunnelMarkApiV1FunnelMarksPostError = CreateFunnelMarkApiV1FunnelMarksPostErrors[keyof CreateFunnelMarkApiV1FunnelMarksPostErrors];
+
+export type CreateFunnelMarkApiV1FunnelMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: FunnelMarkResponse;
+};
+
+export type CreateFunnelMarkApiV1FunnelMarksPostResponse = CreateFunnelMarkApiV1FunnelMarksPostResponses[keyof CreateFunnelMarkApiV1FunnelMarksPostResponses];
 
 export type ListEdiMapMarksApiV1EdiMapMarksGetData = {
     body?: never;

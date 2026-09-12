@@ -74,6 +74,7 @@ from app.api import (
     freight_audit_marks,
     fuel_anomaly_marks,
     fuel_indexes,
+    funnel_marks,
     fx_differences,
     gdpr_requests,
     general_average_marks,
@@ -310,6 +311,7 @@ api_router.include_router(tender_rounds.router)
 api_router.include_router(tender_ted_notices.router)
 api_router.include_router(tenders.router)
 api_router.include_router(fraud_flags.router)
+api_router.include_router(funnel_marks.router)
 api_router.include_router(edi_map_marks.router)
 api_router.include_router(edi_messages.router)
 api_router.include_router(sales_invoices.router)

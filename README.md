@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **391.0** EXP4.13 HITL `ab_sus_mark`
-- **Etap:** Plan — **392.0** EXP4.14
-- **Następny:** **392.0** EXP4.14 X7 lejek HITL `funnel_mark` (kolejka EXP4).
+- **Ostatni plaster:** **392.0** EXP4.14 HITL `funnel_mark`
+- **Etap:** Plan — **393.0** EXP4.15
+- **Następny:** **393.0** EXP4.15 Terms AI HITL `terms_ai_mark` (kolejka EXP4; nie CI blob).
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

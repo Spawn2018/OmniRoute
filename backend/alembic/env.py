@@ -184,6 +184,7 @@ from app.models.tacho_office_mark import TachoOfficeMark  # noqa: F401
 from app.models.lez_mark import LezMark  # noqa: F401
 from app.models.label_parking_mark import LabelParkingMark  # noqa: F401
 from app.models.ab_sus_mark import AbSusMark  # noqa: F401
+from app.models.funnel_mark import FunnelMark  # noqa: F401
 from app.models.collaboration_mark import CollaborationMark  # noqa: F401
 from app.models.freight_audit_mark import FreightAuditMark  # noqa: F401
 from app.models.routing_guide import RoutingGuide  # noqa: F401

@@ -1058,6 +1058,10 @@ class InvalidAbSusMark(DomainError):
     """EXP4.13: HITL A/B+SUS — nie A/B live / scoring SUS."""
 
 
+class InvalidFunnelMark(DomainError):
+    """EXP4.14: HITL X7 lejek — nie funnel live / CRM attribution."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 
