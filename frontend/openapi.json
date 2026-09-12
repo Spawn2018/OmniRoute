@@ -14612,6 +14612,80 @@
         ]
       }
     },
+    "/api/v1/freight-term-marks": {
+      "get": {
+        "tags": [
+          "freight-term-mark"
+        ],
+        "summary": "List Freight Term Marks",
+        "operationId": "list_freight_term_marks_api_v1_freight_term_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/FreightTermMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Freight Term Marks Api V1 Freight Term Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "freight-term-mark"
+        ],
+        "summary": "Create Freight Term Mark",
+        "operationId": "create_freight_term_mark_api_v1_freight_term_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FreightTermMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FreightTermMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/collaboration-marks": {
       "get": {
         "tags": [
@@ -28463,6 +28537,71 @@
           "source_ref"
         ],
         "title": "FreightAuditMarkResponse"
+      },
+      "FreightTermMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "term_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Term Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "term_kind",
+          "source_ref"
+        ],
+        "title": "FreightTermMarkCreate"
+      },
+      "FreightTermMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "term_kind": {
+            "type": "string",
+            "title": "Term Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "term_kind",
+          "source_ref"
+        ],
+        "title": "FreightTermMarkResponse"
       },
       "FuelAnomalyMarkCreate": {
         "properties": {

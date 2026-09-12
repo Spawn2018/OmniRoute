@@ -1075,6 +1075,11 @@ export const OPS_JOBS = [
     job: "katalog slot_guarantee_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.freightTermMark.route,
+    label: "Warunek frachtu",
+    job: "katalog freight_term_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.impersonateGuardMark.route,
     label: "Impersonate guard",
     job: "katalog impersonate_guard_mark HITL",
@@ -1532,6 +1537,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "417.0": "/dual-ledger-marks",
   "418.0": "/named-place-marks",
   "419.0": "/slot-guarantee-marks",
+  "420.0": "/freight-term-marks",
 } as const
 
 

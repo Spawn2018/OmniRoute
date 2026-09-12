@@ -87,6 +87,7 @@ import { Route as FleetCostMarksRouteImport } from './routes/fleet-cost-marks'
 import { Route as FraudRouteImport } from './routes/fraud'
 import { Route as FreeTimeClocksRouteImport } from './routes/free-time-clocks'
 import { Route as FreightAuditMarksRouteImport } from './routes/freight-audit-marks'
+import { Route as FreightTermMarksRouteImport } from './routes/freight-term-marks'
 import { Route as FuelAnomalyMarksRouteImport } from './routes/fuel-anomaly-marks'
 import { Route as FuelCardMarksRouteImport } from './routes/fuel-card-marks'
 import { Route as FuelIndexesRouteImport } from './routes/fuel-indexes'
@@ -627,6 +628,11 @@ const FreeTimeClocksRoute = FreeTimeClocksRouteImport.update({
 const FreightAuditMarksRoute = FreightAuditMarksRouteImport.update({
   id: '/freight-audit-marks',
   path: '/freight-audit-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FreightTermMarksRoute = FreightTermMarksRouteImport.update({
+  id: '/freight-term-marks',
+  path: '/freight-term-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FuelAnomalyMarksRoute = FuelAnomalyMarksRouteImport.update({
@@ -1465,6 +1471,7 @@ export interface FileRoutesByFullPath {
   '/fraud': typeof FraudRoute
   '/free-time-clocks': typeof FreeTimeClocksRoute
   '/freight-audit-marks': typeof FreightAuditMarksRoute
+  '/freight-term-marks': typeof FreightTermMarksRoute
   '/fuel-anomaly-marks': typeof FuelAnomalyMarksRoute
   '/fuel-card-marks': typeof FuelCardMarksRoute
   '/fuel-indexes': typeof FuelIndexesRoute
@@ -1696,6 +1703,7 @@ export interface FileRoutesByTo {
   '/fraud': typeof FraudRoute
   '/free-time-clocks': typeof FreeTimeClocksRoute
   '/freight-audit-marks': typeof FreightAuditMarksRoute
+  '/freight-term-marks': typeof FreightTermMarksRoute
   '/fuel-anomaly-marks': typeof FuelAnomalyMarksRoute
   '/fuel-card-marks': typeof FuelCardMarksRoute
   '/fuel-indexes': typeof FuelIndexesRoute
@@ -1928,6 +1936,7 @@ export interface FileRoutesById {
   '/fraud': typeof FraudRoute
   '/free-time-clocks': typeof FreeTimeClocksRoute
   '/freight-audit-marks': typeof FreightAuditMarksRoute
+  '/freight-term-marks': typeof FreightTermMarksRoute
   '/fuel-anomaly-marks': typeof FuelAnomalyMarksRoute
   '/fuel-card-marks': typeof FuelCardMarksRoute
   '/fuel-indexes': typeof FuelIndexesRoute
@@ -2161,6 +2170,7 @@ export interface FileRouteTypes {
     | '/fraud'
     | '/free-time-clocks'
     | '/freight-audit-marks'
+    | '/freight-term-marks'
     | '/fuel-anomaly-marks'
     | '/fuel-card-marks'
     | '/fuel-indexes'
@@ -2392,6 +2402,7 @@ export interface FileRouteTypes {
     | '/fraud'
     | '/free-time-clocks'
     | '/freight-audit-marks'
+    | '/freight-term-marks'
     | '/fuel-anomaly-marks'
     | '/fuel-card-marks'
     | '/fuel-indexes'
@@ -2623,6 +2634,7 @@ export interface FileRouteTypes {
     | '/fraud'
     | '/free-time-clocks'
     | '/freight-audit-marks'
+    | '/freight-term-marks'
     | '/fuel-anomaly-marks'
     | '/fuel-card-marks'
     | '/fuel-indexes'
@@ -2855,6 +2867,7 @@ export interface RootRouteChildren {
   FraudRoute: typeof FraudRoute
   FreeTimeClocksRoute: typeof FreeTimeClocksRoute
   FreightAuditMarksRoute: typeof FreightAuditMarksRoute
+  FreightTermMarksRoute: typeof FreightTermMarksRoute
   FuelAnomalyMarksRoute: typeof FuelAnomalyMarksRoute
   FuelCardMarksRoute: typeof FuelCardMarksRoute
   FuelIndexesRoute: typeof FuelIndexesRoute
@@ -3554,6 +3567,13 @@ declare module '@tanstack/react-router' {
       path: '/freight-audit-marks'
       fullPath: '/freight-audit-marks'
       preLoaderRoute: typeof FreightAuditMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/freight-term-marks': {
+      id: '/freight-term-marks'
+      path: '/freight-term-marks'
+      fullPath: '/freight-term-marks'
+      preLoaderRoute: typeof FreightTermMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/fuel-anomaly-marks': {
@@ -4695,6 +4715,7 @@ const rootRouteChildren: RootRouteChildren = {
   FraudRoute: FraudRoute,
   FreeTimeClocksRoute: FreeTimeClocksRoute,
   FreightAuditMarksRoute: FreightAuditMarksRoute,
+  FreightTermMarksRoute: FreightTermMarksRoute,
   FuelAnomalyMarksRoute: FuelAnomalyMarksRoute,
   FuelCardMarksRoute: FuelCardMarksRoute,
   FuelIndexesRoute: FuelIndexesRoute,

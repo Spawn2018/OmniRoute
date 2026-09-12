@@ -80,6 +80,7 @@ from app.api import (
     fraud_flags,
     free_time_clocks,
     freight_audit_marks,
+    freight_term_marks,
     fuel_anomaly_marks,
     fuel_card_marks,
     fuel_indexes,
@@ -405,6 +406,7 @@ api_router.include_router(remediation_options.router)
 api_router.include_router(impact_scenarios.router)
 api_router.include_router(impersonate_guard_marks.router)
 api_router.include_router(freight_audit_marks.router)
+api_router.include_router(freight_term_marks.router)
 api_router.include_router(collaboration_marks.router)
 api_router.include_router(terminal_slot_connectors.router)
 api_router.include_router(tower_impacts.router)

@@ -159,6 +159,7 @@ type organization
     define can_manage_dual_ledger_marks: member
     define can_manage_named_place_marks: member
     define can_manage_slot_guarantee_marks: member
+    define can_manage_freight_term_marks: member
     define can_manage_impersonate_guard_marks: member
 
     define can_manage_fuel_card_marks: member

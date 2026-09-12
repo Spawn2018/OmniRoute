@@ -1006,6 +1006,10 @@ class InvalidSlotGuaranteeMark(DomainError):
     """EXP0.3: HITL slot_guarantee_mark — nie live T8 / confirmed / kwota."""
 
 
+class InvalidFreightTermMark(DomainError):
+    """EXP1: HITL freight_term_mark — nie kolumna shipment / kwota."""
+
+
 class InvalidImpersonateGuardMark(DomainError):
     """EXP0.12: HITL impersonate≠unwrap — nie crypto / Auth0 live."""
 

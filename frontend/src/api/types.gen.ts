@@ -4659,6 +4659,50 @@ export type FreightAuditMarkResponse = {
 };
 
 /**
+ * FreightTermMarkCreate
+ */
+export type FreightTermMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Term Kind
+     */
+    term_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * FreightTermMarkResponse
+ */
+export type FreightTermMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Term Kind
+     */
+    term_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * FuelAnomalyMarkCreate
  */
 export type FuelAnomalyMarkCreate = {
@@ -21770,6 +21814,49 @@ export type CreateFreightAuditMarkApiV1FreightAuditMarksPostResponses = {
 };
 
 export type CreateFreightAuditMarkApiV1FreightAuditMarksPostResponse = CreateFreightAuditMarkApiV1FreightAuditMarksPostResponses[keyof CreateFreightAuditMarkApiV1FreightAuditMarksPostResponses];
+
+export type ListFreightTermMarksApiV1FreightTermMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/freight-term-marks';
+};
+
+export type ListFreightTermMarksApiV1FreightTermMarksGetResponses = {
+    /**
+     * Response List Freight Term Marks Api V1 Freight Term Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<FreightTermMarkResponse>;
+};
+
+export type ListFreightTermMarksApiV1FreightTermMarksGetResponse = ListFreightTermMarksApiV1FreightTermMarksGetResponses[keyof ListFreightTermMarksApiV1FreightTermMarksGetResponses];
+
+export type CreateFreightTermMarkApiV1FreightTermMarksPostData = {
+    body: FreightTermMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/freight-term-marks';
+};
+
+export type CreateFreightTermMarkApiV1FreightTermMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateFreightTermMarkApiV1FreightTermMarksPostError = CreateFreightTermMarkApiV1FreightTermMarksPostErrors[keyof CreateFreightTermMarkApiV1FreightTermMarksPostErrors];
+
+export type CreateFreightTermMarkApiV1FreightTermMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: FreightTermMarkResponse;
+};
+
+export type CreateFreightTermMarkApiV1FreightTermMarksPostResponse = CreateFreightTermMarkApiV1FreightTermMarksPostResponses[keyof CreateFreightTermMarkApiV1FreightTermMarksPostResponses];
 
 export type ListCollaborationMarksApiV1CollaborationMarksGetData = {
     body?: never;

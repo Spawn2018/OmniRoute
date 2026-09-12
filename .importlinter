@@ -186,6 +186,7 @@ modules =
     app.services.dual_ledger_marks
     app.services.named_place_marks
     app.services.slot_guarantee_marks
+    app.services.freight_term_marks
     app.services.impersonate_guard_marks
     app.services.csrd_marks
     app.services.air_ra3_marks
@@ -863,6 +864,9 @@ forbidden_modules =
     app.services.slot_guarantee_marks
     app.repositories.slot_guarantee_marks
     app.models.slot_guarantee_mark
+    app.services.freight_term_marks
+    app.repositories.freight_term_marks
+    app.models.freight_term_mark
     app.services.impersonate_guard_marks
     app.repositories.impersonate_guard_marks
     app.models.impersonate_guard_mark
