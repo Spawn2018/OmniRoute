@@ -884,6 +884,11 @@ export const OPS_JOBS = [
     job: "katalog delay_forecast HITL",
   },
   {
+    route: BUSINESS_LISTS.demandSnapshotMark.route,
+    label: "Demand snapshot",
+    job: "katalog demand_snapshot_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.remediationOption.route,
     label: "Opcja naprawy",
     job: "katalog remediation_option HITL",
@@ -1285,6 +1290,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "375.0": "/abandoned-rto-marks",
   "376.0": "/general-average-marks",
   "377.0": "/tender-decline-reasons",
+  "378.0": "/demand-snapshot-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

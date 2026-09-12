@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **378.0** EXP3.13 demand_snapshot HITL `demand_snapshot_mark`.
+**Następny:** **379.0** EXP3.14 collaboration leftover 3-way OpenFGA HITL (kolejka: CAPA istnieje `capa_mark` — skip jeśli dup).
 <!-- os-status:end -->
 
 ```mermaid

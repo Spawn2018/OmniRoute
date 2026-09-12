@@ -11948,6 +11948,80 @@
         ]
       }
     },
+    "/api/v1/demand-snapshot-marks": {
+      "get": {
+        "tags": [
+          "demand-snapshot-marks"
+        ],
+        "summary": "List Demand Snapshot Marks",
+        "operationId": "list_demand_snapshot_marks_api_v1_demand_snapshot_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/DemandSnapshotMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Demand Snapshot Marks Api V1 Demand Snapshot Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "demand-snapshot-marks"
+        ],
+        "summary": "Create Demand Snapshot Mark",
+        "operationId": "create_demand_snapshot_mark_api_v1_demand_snapshot_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DemandSnapshotMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DemandSnapshotMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/remediation-options": {
       "get": {
         "tags": [
@@ -22888,6 +22962,71 @@
           "source_ref"
         ],
         "title": "DelayForecastResponse"
+      },
+      "DemandSnapshotMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "snapshot_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Snapshot Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "snapshot_kind",
+          "source_ref"
+        ],
+        "title": "DemandSnapshotMarkCreate"
+      },
+      "DemandSnapshotMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "snapshot_kind": {
+            "type": "string",
+            "title": "Snapshot Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "snapshot_kind",
+          "source_ref"
+        ],
+        "title": "DemandSnapshotMarkResponse"
       },
       "DockAppointmentCreate": {
         "properties": {
@@ -33847,14 +33986,20 @@
         "properties": {
           "mark_code": {
             "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
             "title": "Mark Code"
           },
           "decline_kind": {
             "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
             "title": "Decline Kind"
           },
           "source_ref": {
             "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
             "title": "Source Ref"
           }
         },

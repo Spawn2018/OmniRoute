@@ -172,6 +172,7 @@ modules =
     app.services.abandoned_rto_marks
     app.services.general_average_marks
     app.services.tender_decline_reasons
+    app.services.demand_snapshot_marks
     app.services.freight_audit_marks
     app.services.collaboration_marks
     app.services.exchange_connectors
@@ -774,6 +775,9 @@ forbidden_modules =
     app.services.tender_decline_reasons
     app.repositories.tender_decline_reasons
     app.models.tender_decline_reason
+    app.services.demand_snapshot_marks
+    app.repositories.demand_snapshot_marks
+    app.models.demand_snapshot_mark
     app.services.freight_audit_marks
     app.repositories.freight_audit_marks
     app.models.freight_audit_mark

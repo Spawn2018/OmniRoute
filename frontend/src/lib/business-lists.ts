@@ -134,6 +134,7 @@ export const BUSINESS_LISTS = {
   capaMark: { route: "/capa-marks", tableKey: "capa_mark" },
   slaClause: { route: "/sla-clauses", tableKey: "sla_clause" },
   delayForecast: { route: "/delay-forecasts", tableKey: "delay_forecast" },
+  demandSnapshotMark: { route: "/demand-snapshot-marks", tableKey: "demand_snapshot_mark" },
   remediationOption: {
     route: "/remediation-options",
     tableKey: "remediation_option",
@@ -329,6 +330,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/capa-marks",
   "/sla-clauses",
   "/delay-forecasts",
+  "/demand-snapshot-marks",
   "/remediation-options",
   "/impact-scenarios",
   "/clause-notices",

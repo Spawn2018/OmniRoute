@@ -50,6 +50,7 @@ import { Route as CustomerSopsRouteImport } from './routes/customer-sops'
 import { Route as CutoffMarksRouteImport } from './routes/cutoff-marks'
 import { Route as DangerousGoodsRouteImport } from './routes/dangerous-goods'
 import { Route as DecisionsRouteImport } from './routes/decisions'
+import { Route as DemandSnapshotMarksRouteImport } from './routes/demand-snapshot-marks'
 import { Route as DelayForecastsRouteImport } from './routes/delay-forecasts'
 import { Route as DockAppointmentsRouteImport } from './routes/dock-appointments'
 import { Route as DocumentTemplatesRouteImport } from './routes/document-templates'
@@ -401,6 +402,11 @@ const DangerousGoodsRoute = DangerousGoodsRouteImport.update({
 const DecisionsRoute = DecisionsRouteImport.update({
   id: '/decisions',
   path: '/decisions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemandSnapshotMarksRoute = DemandSnapshotMarksRouteImport.update({
+  id: '/demand-snapshot-marks',
+  path: '/demand-snapshot-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DelayForecastsRoute = DelayForecastsRouteImport.update({
@@ -1182,6 +1188,7 @@ export interface FileRoutesByFullPath {
   '/cutoff-marks': typeof CutoffMarksRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
   '/decisions': typeof DecisionsRoute
+  '/demand-snapshot-marks': typeof DemandSnapshotMarksRoute
   '/delay-forecasts': typeof DelayForecastsRoute
   '/dock-appointments': typeof DockAppointmentsRoute
   '/document-templates': typeof DocumentTemplatesRoute
@@ -1372,6 +1379,7 @@ export interface FileRoutesByTo {
   '/cutoff-marks': typeof CutoffMarksRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
   '/decisions': typeof DecisionsRoute
+  '/demand-snapshot-marks': typeof DemandSnapshotMarksRoute
   '/delay-forecasts': typeof DelayForecastsRoute
   '/dock-appointments': typeof DockAppointmentsRoute
   '/document-templates': typeof DocumentTemplatesRoute
@@ -1563,6 +1571,7 @@ export interface FileRoutesById {
   '/cutoff-marks': typeof CutoffMarksRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
   '/decisions': typeof DecisionsRoute
+  '/demand-snapshot-marks': typeof DemandSnapshotMarksRoute
   '/delay-forecasts': typeof DelayForecastsRoute
   '/dock-appointments': typeof DockAppointmentsRoute
   '/document-templates': typeof DocumentTemplatesRoute
@@ -1755,6 +1764,7 @@ export interface FileRouteTypes {
     | '/cutoff-marks'
     | '/dangerous-goods'
     | '/decisions'
+    | '/demand-snapshot-marks'
     | '/delay-forecasts'
     | '/dock-appointments'
     | '/document-templates'
@@ -1945,6 +1955,7 @@ export interface FileRouteTypes {
     | '/cutoff-marks'
     | '/dangerous-goods'
     | '/decisions'
+    | '/demand-snapshot-marks'
     | '/delay-forecasts'
     | '/dock-appointments'
     | '/document-templates'
@@ -2135,6 +2146,7 @@ export interface FileRouteTypes {
     | '/cutoff-marks'
     | '/dangerous-goods'
     | '/decisions'
+    | '/demand-snapshot-marks'
     | '/delay-forecasts'
     | '/dock-appointments'
     | '/document-templates'
@@ -2326,6 +2338,7 @@ export interface RootRouteChildren {
   CutoffMarksRoute: typeof CutoffMarksRoute
   DangerousGoodsRoute: typeof DangerousGoodsRoute
   DecisionsRoute: typeof DecisionsRoute
+  DemandSnapshotMarksRoute: typeof DemandSnapshotMarksRoute
   DelayForecastsRoute: typeof DelayForecastsRoute
   DockAppointmentsRoute: typeof DockAppointmentsRoute
   DocumentTemplatesRoute: typeof DocumentTemplatesRoute
@@ -2762,6 +2775,13 @@ declare module '@tanstack/react-router' {
       path: '/decisions'
       fullPath: '/decisions'
       preLoaderRoute: typeof DecisionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demand-snapshot-marks': {
+      id: '/demand-snapshot-marks'
+      path: '/demand-snapshot-marks'
+      fullPath: '/demand-snapshot-marks'
+      preLoaderRoute: typeof DemandSnapshotMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/delay-forecasts': {
@@ -3839,6 +3859,7 @@ const rootRouteChildren: RootRouteChildren = {
   CutoffMarksRoute: CutoffMarksRoute,
   DangerousGoodsRoute: DangerousGoodsRoute,
   DecisionsRoute: DecisionsRoute,
+  DemandSnapshotMarksRoute: DemandSnapshotMarksRoute,
   DelayForecastsRoute: DelayForecastsRoute,
   DockAppointmentsRoute: DockAppointmentsRoute,
   DocumentTemplatesRoute: DocumentTemplatesRoute,

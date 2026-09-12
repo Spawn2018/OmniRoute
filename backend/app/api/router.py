@@ -44,6 +44,7 @@ from app.api import (
     cutoff_marks,
     dangerous_goods,
     delay_forecasts,
+    demand_snapshot_marks,
     dock_appointments,
     document_checklist_rules,
     document_dispatch_rules,
@@ -328,6 +329,7 @@ api_router.include_router(sap_connectors.router)
 api_router.include_router(capa_marks.router)
 api_router.include_router(sla_clauses.router)
 api_router.include_router(delay_forecasts.router)
+api_router.include_router(demand_snapshot_marks.router)
 api_router.include_router(remediation_options.router)
 api_router.include_router(impact_scenarios.router)
 api_router.include_router(freight_audit_marks.router)

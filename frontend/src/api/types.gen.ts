@@ -2897,6 +2897,50 @@ export type DelayForecastResponse = {
 };
 
 /**
+ * DemandSnapshotMarkCreate
+ */
+export type DemandSnapshotMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Snapshot Kind
+     */
+    snapshot_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * DemandSnapshotMarkResponse
+ */
+export type DemandSnapshotMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Snapshot Kind
+     */
+    snapshot_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * DockAppointmentCreate
  */
 export type DockAppointmentCreate = {
@@ -18410,6 +18454,49 @@ export type CreateDelayForecastApiV1DelayForecastsPostResponses = {
 };
 
 export type CreateDelayForecastApiV1DelayForecastsPostResponse = CreateDelayForecastApiV1DelayForecastsPostResponses[keyof CreateDelayForecastApiV1DelayForecastsPostResponses];
+
+export type ListDemandSnapshotMarksApiV1DemandSnapshotMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/demand-snapshot-marks';
+};
+
+export type ListDemandSnapshotMarksApiV1DemandSnapshotMarksGetResponses = {
+    /**
+     * Response List Demand Snapshot Marks Api V1 Demand Snapshot Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<DemandSnapshotMarkResponse>;
+};
+
+export type ListDemandSnapshotMarksApiV1DemandSnapshotMarksGetResponse = ListDemandSnapshotMarksApiV1DemandSnapshotMarksGetResponses[keyof ListDemandSnapshotMarksApiV1DemandSnapshotMarksGetResponses];
+
+export type CreateDemandSnapshotMarkApiV1DemandSnapshotMarksPostData = {
+    body: DemandSnapshotMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/demand-snapshot-marks';
+};
+
+export type CreateDemandSnapshotMarkApiV1DemandSnapshotMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateDemandSnapshotMarkApiV1DemandSnapshotMarksPostError = CreateDemandSnapshotMarkApiV1DemandSnapshotMarksPostErrors[keyof CreateDemandSnapshotMarkApiV1DemandSnapshotMarksPostErrors];
+
+export type CreateDemandSnapshotMarkApiV1DemandSnapshotMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: DemandSnapshotMarkResponse;
+};
+
+export type CreateDemandSnapshotMarkApiV1DemandSnapshotMarksPostResponse = CreateDemandSnapshotMarkApiV1DemandSnapshotMarksPostResponses[keyof CreateDemandSnapshotMarkApiV1DemandSnapshotMarksPostResponses];
 
 export type ListRemediationOptionsApiV1RemediationOptionsGetData = {
     body?: never;

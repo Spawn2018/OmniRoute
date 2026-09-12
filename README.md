@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **377.0** EXP3.12 HITL `tender_decline_reason`
-- **Etap:** Plan — **378.0** EXP3.13
-- **Następny:** **378.0** EXP3.13 demand_snapshot HITL `demand_snapshot_mark`.
+- **Ostatni plaster:** **378.0** EXP3.13 HITL `demand_snapshot_mark`
+- **Etap:** Plan — **379.0** EXP3.14
+- **Następny:** **379.0** EXP3.14 collaboration leftover 3-way OpenFGA HITL (kolejka: CAPA istnieje `capa_mark` — skip jeśli dup).
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

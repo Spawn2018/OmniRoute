@@ -1002,6 +1002,10 @@ class InvalidTenderDeclineReason(DomainError):
     """EXP3.12: HITL tender decline — nie decline auto / RFP scrape."""
 
 
+class InvalidDemandSnapshotMark(DomainError):
+    """EXP3.13: HITL demand snapshot — nie demand SQL / auto-forecast."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 
