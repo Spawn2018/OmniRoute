@@ -8413,6 +8413,50 @@ export type QuoteInvoiceSettlementResponse = {
 };
 
 /**
+ * RagSopMarkCreate
+ */
+export type RagSopMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Scope Kind
+     */
+    scope_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * RagSopMarkResponse
+ */
+export type RagSopMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Scope Kind
+     */
+    scope_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * RailCimMarkCreate
  */
 export type RailCimMarkCreate = {
@@ -14002,6 +14046,49 @@ export type CreateRoleViewMarkApiV1RoleViewMarksPostResponses = {
 };
 
 export type CreateRoleViewMarkApiV1RoleViewMarksPostResponse = CreateRoleViewMarkApiV1RoleViewMarksPostResponses[keyof CreateRoleViewMarkApiV1RoleViewMarksPostResponses];
+
+export type ListRagSopMarksApiV1RagSopMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/rag-sop-marks';
+};
+
+export type ListRagSopMarksApiV1RagSopMarksGetResponses = {
+    /**
+     * Response List Rag Sop Marks Api V1 Rag Sop Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<RagSopMarkResponse>;
+};
+
+export type ListRagSopMarksApiV1RagSopMarksGetResponse = ListRagSopMarksApiV1RagSopMarksGetResponses[keyof ListRagSopMarksApiV1RagSopMarksGetResponses];
+
+export type CreateRagSopMarkApiV1RagSopMarksPostData = {
+    body: RagSopMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/rag-sop-marks';
+};
+
+export type CreateRagSopMarkApiV1RagSopMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateRagSopMarkApiV1RagSopMarksPostError = CreateRagSopMarkApiV1RagSopMarksPostErrors[keyof CreateRagSopMarkApiV1RagSopMarksPostErrors];
+
+export type CreateRagSopMarkApiV1RagSopMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: RagSopMarkResponse;
+};
+
+export type CreateRagSopMarkApiV1RagSopMarksPostResponse = CreateRagSopMarkApiV1RagSopMarksPostResponses[keyof CreateRagSopMarkApiV1RagSopMarksPostResponses];
 
 export type ListMemoryEdgesApiV1MemoryEdgesGetData = {
     body?: never;

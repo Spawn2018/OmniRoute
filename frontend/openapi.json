@@ -2917,6 +2917,80 @@
         ]
       }
     },
+    "/api/v1/rag-sop-marks": {
+      "get": {
+        "tags": [
+          "rag-sop"
+        ],
+        "summary": "List Rag Sop Marks",
+        "operationId": "list_rag_sop_marks_api_v1_rag_sop_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/RagSopMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Rag Sop Marks Api V1 Rag Sop Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "rag-sop"
+        ],
+        "summary": "Create Rag Sop Mark",
+        "operationId": "create_rag_sop_mark_api_v1_rag_sop_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RagSopMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RagSopMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/memory-edges": {
       "get": {
         "tags": [
@@ -32674,6 +32748,71 @@
           "source_ref"
         ],
         "title": "QuoteInvoiceSettlementResponse"
+      },
+      "RagSopMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "scope_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Scope Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "scope_kind",
+          "source_ref"
+        ],
+        "title": "RagSopMarkCreate"
+      },
+      "RagSopMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "scope_kind": {
+            "type": "string",
+            "title": "Scope Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "scope_kind",
+          "source_ref"
+        ],
+        "title": "RagSopMarkResponse"
       },
       "RailCimMarkCreate": {
         "properties": {

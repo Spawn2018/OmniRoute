@@ -190,6 +190,7 @@ modules =
     app.services.funnel_marks
     app.services.mail_accept_marks
     app.services.role_view_marks
+    app.services.rag_sop_marks
     app.services.freight_audit_marks
     app.services.collaboration_marks
     app.services.exchange_connectors
@@ -846,6 +847,9 @@ forbidden_modules =
     app.services.role_view_marks
     app.repositories.role_view_marks
     app.models.role_view_mark
+    app.services.rag_sop_marks
+    app.repositories.rag_sop_marks
+    app.models.rag_sop_mark
     app.services.freight_audit_marks
     app.repositories.freight_audit_marks
     app.models.freight_audit_mark

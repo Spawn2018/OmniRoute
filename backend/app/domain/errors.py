@@ -1074,6 +1074,10 @@ class InvalidRoleViewMark(DomainError):
     """EXP4.17: HITL widok roli — nie board T6 / mapa."""
 
 
+class InvalidRagSopMark(DomainError):
+    """EXP4.18: HITL zakres RAG — nie pgvector / wycena."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 
