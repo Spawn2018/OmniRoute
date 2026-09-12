@@ -98,6 +98,7 @@ from app.api import (
     otif_marks,
     outbox_events,
     pallet_balances,
+    pallet_pool_marks,
     parties,
     party_documents,
     party_lane_scorecards,
@@ -341,6 +342,7 @@ api_router.include_router(ferry_art9_marks.router)
 api_router.include_router(fuel_anomaly_marks.router)
 api_router.include_router(fleet_cost_marks.router)
 api_router.include_router(bin_pack_marks.router)
+api_router.include_router(pallet_pool_marks.router)
 
 
 @api_router.api_route(

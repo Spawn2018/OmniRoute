@@ -910,6 +910,10 @@ class InvalidBinPackMark(DomainError):
     """EXP2.16: HITL bin-pack — nie solver OR / LLM-VRP."""
 
 
+class InvalidPalletPoolMark(DomainError):
+    """EXP2.17: HITL pula palet — nie giełda / depozyt."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

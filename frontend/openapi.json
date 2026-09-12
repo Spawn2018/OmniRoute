@@ -16370,6 +16370,80 @@
         ]
       }
     },
+    "/api/v1/pallet-pool-marks": {
+      "get": {
+        "tags": [
+          "pallet-pool-marks"
+        ],
+        "summary": "List Pallet Pool Marks",
+        "operationId": "list_pallet_pool_marks_api_v1_pallet_pool_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PalletPoolMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Pallet Pool Marks Api V1 Pallet Pool Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "pallet-pool-marks"
+        ],
+        "summary": "Create Pallet Pool Mark",
+        "operationId": "create_pallet_pool_mark_api_v1_pallet_pool_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PalletPoolMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PalletPoolMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/health": {
       "get": {
         "summary": "Health",
@@ -25889,6 +25963,65 @@
           "source_ref"
         ],
         "title": "PalletBalanceResponse"
+      },
+      "PalletPoolMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "pool_kind": {
+            "type": "string",
+            "title": "Pool Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "pool_kind",
+          "source_ref"
+        ],
+        "title": "PalletPoolMarkCreate"
+      },
+      "PalletPoolMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "pool_kind": {
+            "type": "string",
+            "title": "Pool Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "pool_kind",
+          "source_ref"
+        ],
+        "title": "PalletPoolMarkResponse"
       },
       "PartyCreate": {
         "properties": {

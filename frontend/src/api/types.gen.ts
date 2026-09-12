@@ -6063,6 +6063,50 @@ export type PalletBalanceResponse = {
 };
 
 /**
+ * PalletPoolMarkCreate
+ */
+export type PalletPoolMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Pool Kind
+     */
+    pool_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * PalletPoolMarkResponse
+ */
+export type PalletPoolMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Pool Kind
+     */
+    pool_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * PartyCreate
  */
 export type PartyCreate = {
@@ -19943,6 +19987,49 @@ export type CreateBinPackMarkApiV1BinPackMarksPostResponses = {
 };
 
 export type CreateBinPackMarkApiV1BinPackMarksPostResponse = CreateBinPackMarkApiV1BinPackMarksPostResponses[keyof CreateBinPackMarkApiV1BinPackMarksPostResponses];
+
+export type ListPalletPoolMarksApiV1PalletPoolMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/pallet-pool-marks';
+};
+
+export type ListPalletPoolMarksApiV1PalletPoolMarksGetResponses = {
+    /**
+     * Response List Pallet Pool Marks Api V1 Pallet Pool Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<PalletPoolMarkResponse>;
+};
+
+export type ListPalletPoolMarksApiV1PalletPoolMarksGetResponse = ListPalletPoolMarksApiV1PalletPoolMarksGetResponses[keyof ListPalletPoolMarksApiV1PalletPoolMarksGetResponses];
+
+export type CreatePalletPoolMarkApiV1PalletPoolMarksPostData = {
+    body: PalletPoolMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/pallet-pool-marks';
+};
+
+export type CreatePalletPoolMarkApiV1PalletPoolMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreatePalletPoolMarkApiV1PalletPoolMarksPostError = CreatePalletPoolMarkApiV1PalletPoolMarksPostErrors[keyof CreatePalletPoolMarkApiV1PalletPoolMarksPostErrors];
+
+export type CreatePalletPoolMarkApiV1PalletPoolMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: PalletPoolMarkResponse;
+};
+
+export type CreatePalletPoolMarkApiV1PalletPoolMarksPostResponse = CreatePalletPoolMarkApiV1PalletPoolMarksPostResponses[keyof CreatePalletPoolMarkApiV1PalletPoolMarksPostResponses];
 
 export type HealthHealthGetData = {
     body?: never;

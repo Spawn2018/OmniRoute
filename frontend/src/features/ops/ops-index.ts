@@ -689,6 +689,11 @@ export const OPS_JOBS = [
     job: "katalog bin_pack_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.palletPoolMark.route,
+    label: "Pallet pool",
+    job: "katalog pallet_pool_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.erpConnector.route,
     label: "Konektor Optima",
     job: "katalog erp_connector HITL",
@@ -1147,6 +1152,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "351.0": "/fuel-anomaly-marks",
   "352.0": "/fleet-cost-marks",
   "353.0": "/bin-pack-marks",
+  "354.0": "/pallet-pool-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

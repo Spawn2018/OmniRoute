@@ -103,6 +103,7 @@ import { Route as OrganizationSettingsRouteImport } from './routes/organization-
 import { Route as OtifMarksRouteImport } from './routes/otif-marks'
 import { Route as OutboxRouteImport } from './routes/outbox'
 import { Route as PalletBalancesRouteImport } from './routes/pallet-balances'
+import { Route as PalletPoolMarksRouteImport } from './routes/pallet-pool-marks'
 import { Route as PartiesRouteImport } from './routes/parties'
 import { Route as PartyDocumentsRouteImport } from './routes/party-documents'
 import { Route as PartyScorecardsRouteImport } from './routes/party-scorecards'
@@ -645,6 +646,11 @@ const PalletBalancesRoute = PalletBalancesRouteImport.update({
   path: '/pallet-balances',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PalletPoolMarksRoute = PalletPoolMarksRouteImport.update({
+  id: '/pallet-pool-marks',
+  path: '/pallet-pool-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PartiesRoute = PartiesRouteImport.update({
   id: '/parties',
   path: '/parties',
@@ -1097,6 +1103,7 @@ export interface FileRoutesByFullPath {
   '/otif-marks': typeof OtifMarksRoute
   '/outbox': typeof OutboxRoute
   '/pallet-balances': typeof PalletBalancesRoute
+  '/pallet-pool-marks': typeof PalletPoolMarksRoute
   '/parties': typeof PartiesRoute
   '/party-documents': typeof PartyDocumentsRoute
   '/party-scorecards': typeof PartyScorecardsRoute
@@ -1264,6 +1271,7 @@ export interface FileRoutesByTo {
   '/otif-marks': typeof OtifMarksRoute
   '/outbox': typeof OutboxRoute
   '/pallet-balances': typeof PalletBalancesRoute
+  '/pallet-pool-marks': typeof PalletPoolMarksRoute
   '/parties': typeof PartiesRoute
   '/party-documents': typeof PartyDocumentsRoute
   '/party-scorecards': typeof PartyScorecardsRoute
@@ -1432,6 +1440,7 @@ export interface FileRoutesById {
   '/otif-marks': typeof OtifMarksRoute
   '/outbox': typeof OutboxRoute
   '/pallet-balances': typeof PalletBalancesRoute
+  '/pallet-pool-marks': typeof PalletPoolMarksRoute
   '/parties': typeof PartiesRoute
   '/party-documents': typeof PartyDocumentsRoute
   '/party-scorecards': typeof PartyScorecardsRoute
@@ -1601,6 +1610,7 @@ export interface FileRouteTypes {
     | '/otif-marks'
     | '/outbox'
     | '/pallet-balances'
+    | '/pallet-pool-marks'
     | '/parties'
     | '/party-documents'
     | '/party-scorecards'
@@ -1768,6 +1778,7 @@ export interface FileRouteTypes {
     | '/otif-marks'
     | '/outbox'
     | '/pallet-balances'
+    | '/pallet-pool-marks'
     | '/parties'
     | '/party-documents'
     | '/party-scorecards'
@@ -1935,6 +1946,7 @@ export interface FileRouteTypes {
     | '/otif-marks'
     | '/outbox'
     | '/pallet-balances'
+    | '/pallet-pool-marks'
     | '/parties'
     | '/party-documents'
     | '/party-scorecards'
@@ -2103,6 +2115,7 @@ export interface RootRouteChildren {
   OtifMarksRoute: typeof OtifMarksRoute
   OutboxRoute: typeof OutboxRoute
   PalletBalancesRoute: typeof PalletBalancesRoute
+  PalletPoolMarksRoute: typeof PalletPoolMarksRoute
   PartiesRoute: typeof PartiesRoute
   PartyDocumentsRoute: typeof PartyDocumentsRoute
   PartyScorecardsRoute: typeof PartyScorecardsRoute
@@ -2836,6 +2849,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PalletBalancesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pallet-pool-marks': {
+      id: '/pallet-pool-marks'
+      path: '/pallet-pool-marks'
+      fullPath: '/pallet-pool-marks'
+      preLoaderRoute: typeof PalletPoolMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/parties': {
       id: '/parties'
       path: '/parties'
@@ -3431,6 +3451,7 @@ const rootRouteChildren: RootRouteChildren = {
   OtifMarksRoute: OtifMarksRoute,
   OutboxRoute: OutboxRoute,
   PalletBalancesRoute: PalletBalancesRoute,
+  PalletPoolMarksRoute: PalletPoolMarksRoute,
   PartiesRoute: PartiesRoute,
   PartyDocumentsRoute: PartyDocumentsRoute,
   PartyScorecardsRoute: PartyScorecardsRoute,
