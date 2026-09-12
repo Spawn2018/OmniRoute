@@ -79,6 +79,7 @@ import { Route as GroupageTariffsRouteImport } from './routes/groupage-tariffs'
 import { Route as HealthRouteImport } from './routes/health'
 import { Route as IdpConnectorsRouteImport } from './routes/idp-connectors'
 import { Route as ImpactScenariosRouteImport } from './routes/impact-scenarios'
+import { Route as IntegrationHubMarksRouteImport } from './routes/integration-hub-marks'
 import { Route as InterventionOutcomesRouteImport } from './routes/intervention-outcomes'
 import { Route as InvoicesRouteImport } from './routes/invoices'
 import { Route as KreptdLicencesRouteImport } from './routes/kreptd-licences'
@@ -528,6 +529,11 @@ const IdpConnectorsRoute = IdpConnectorsRouteImport.update({
 const ImpactScenariosRoute = ImpactScenariosRouteImport.update({
   id: '/impact-scenarios',
   path: '/impact-scenarios',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IntegrationHubMarksRoute = IntegrationHubMarksRouteImport.update({
+  id: '/integration-hub-marks',
+  path: '/integration-hub-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InterventionOutcomesRoute = InterventionOutcomesRouteImport.update({
@@ -1103,6 +1109,7 @@ export interface FileRoutesByFullPath {
   '/health': typeof HealthRoute
   '/idp-connectors': typeof IdpConnectorsRoute
   '/impact-scenarios': typeof ImpactScenariosRoute
+  '/integration-hub-marks': typeof IntegrationHubMarksRoute
   '/intervention-outcomes': typeof InterventionOutcomesRoute
   '/invoices': typeof InvoicesRoute
   '/kreptd-licences': typeof KreptdLicencesRoute
@@ -1275,6 +1282,7 @@ export interface FileRoutesByTo {
   '/health': typeof HealthRoute
   '/idp-connectors': typeof IdpConnectorsRoute
   '/impact-scenarios': typeof ImpactScenariosRoute
+  '/integration-hub-marks': typeof IntegrationHubMarksRoute
   '/intervention-outcomes': typeof InterventionOutcomesRoute
   '/invoices': typeof InvoicesRoute
   '/kreptd-licences': typeof KreptdLicencesRoute
@@ -1448,6 +1456,7 @@ export interface FileRoutesById {
   '/health': typeof HealthRoute
   '/idp-connectors': typeof IdpConnectorsRoute
   '/impact-scenarios': typeof ImpactScenariosRoute
+  '/integration-hub-marks': typeof IntegrationHubMarksRoute
   '/intervention-outcomes': typeof InterventionOutcomesRoute
   '/invoices': typeof InvoicesRoute
   '/kreptd-licences': typeof KreptdLicencesRoute
@@ -1622,6 +1631,7 @@ export interface FileRouteTypes {
     | '/health'
     | '/idp-connectors'
     | '/impact-scenarios'
+    | '/integration-hub-marks'
     | '/intervention-outcomes'
     | '/invoices'
     | '/kreptd-licences'
@@ -1794,6 +1804,7 @@ export interface FileRouteTypes {
     | '/health'
     | '/idp-connectors'
     | '/impact-scenarios'
+    | '/integration-hub-marks'
     | '/intervention-outcomes'
     | '/invoices'
     | '/kreptd-licences'
@@ -1966,6 +1977,7 @@ export interface FileRouteTypes {
     | '/health'
     | '/idp-connectors'
     | '/impact-scenarios'
+    | '/integration-hub-marks'
     | '/intervention-outcomes'
     | '/invoices'
     | '/kreptd-licences'
@@ -2139,6 +2151,7 @@ export interface RootRouteChildren {
   HealthRoute: typeof HealthRoute
   IdpConnectorsRoute: typeof IdpConnectorsRoute
   ImpactScenariosRoute: typeof ImpactScenariosRoute
+  IntegrationHubMarksRoute: typeof IntegrationHubMarksRoute
   InterventionOutcomesRoute: typeof InterventionOutcomesRoute
   InvoicesRoute: typeof InvoicesRoute
   KreptdLicencesRoute: typeof KreptdLicencesRoute
@@ -2731,6 +2744,13 @@ declare module '@tanstack/react-router' {
       path: '/impact-scenarios'
       fullPath: '/impact-scenarios'
       preLoaderRoute: typeof ImpactScenariosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/integration-hub-marks': {
+      id: '/integration-hub-marks'
+      path: '/integration-hub-marks'
+      fullPath: '/integration-hub-marks'
+      preLoaderRoute: typeof IntegrationHubMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/intervention-outcomes': {
@@ -3507,6 +3527,7 @@ const rootRouteChildren: RootRouteChildren = {
   HealthRoute: HealthRoute,
   IdpConnectorsRoute: IdpConnectorsRoute,
   ImpactScenariosRoute: ImpactScenariosRoute,
+  IntegrationHubMarksRoute: IntegrationHubMarksRoute,
   InterventionOutcomesRoute: InterventionOutcomesRoute,
   InvoicesRoute: InvoicesRoute,
   KreptdLicencesRoute: KreptdLicencesRoute,

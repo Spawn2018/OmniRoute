@@ -4605,6 +4605,50 @@ export type InquiryMemberRankResponse = {
 };
 
 /**
+ * IntegrationHubMarkCreate
+ */
+export type IntegrationHubMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Hub Kind
+     */
+    hub_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * IntegrationHubMarkResponse
+ */
+export type IntegrationHubMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Hub Kind
+     */
+    hub_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * InterventionOutcomeCreate
  */
 export type InterventionOutcomeCreate = {
@@ -20378,6 +20422,49 @@ export type CreateSidImportMarkApiV1SidImportMarksPostResponses = {
 };
 
 export type CreateSidImportMarkApiV1SidImportMarksPostResponse = CreateSidImportMarkApiV1SidImportMarksPostResponses[keyof CreateSidImportMarkApiV1SidImportMarksPostResponses];
+
+export type ListIntegrationHubMarksApiV1IntegrationHubMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/integration-hub-marks';
+};
+
+export type ListIntegrationHubMarksApiV1IntegrationHubMarksGetResponses = {
+    /**
+     * Response List Integration Hub Marks Api V1 Integration Hub Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<IntegrationHubMarkResponse>;
+};
+
+export type ListIntegrationHubMarksApiV1IntegrationHubMarksGetResponse = ListIntegrationHubMarksApiV1IntegrationHubMarksGetResponses[keyof ListIntegrationHubMarksApiV1IntegrationHubMarksGetResponses];
+
+export type CreateIntegrationHubMarkApiV1IntegrationHubMarksPostData = {
+    body: IntegrationHubMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/integration-hub-marks';
+};
+
+export type CreateIntegrationHubMarkApiV1IntegrationHubMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateIntegrationHubMarkApiV1IntegrationHubMarksPostError = CreateIntegrationHubMarkApiV1IntegrationHubMarksPostErrors[keyof CreateIntegrationHubMarkApiV1IntegrationHubMarksPostErrors];
+
+export type CreateIntegrationHubMarkApiV1IntegrationHubMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: IntegrationHubMarkResponse;
+};
+
+export type CreateIntegrationHubMarkApiV1IntegrationHubMarksPostResponse = CreateIntegrationHubMarkApiV1IntegrationHubMarksPostResponses[keyof CreateIntegrationHubMarkApiV1IntegrationHubMarksPostResponses];
 
 export type HealthHealthGetData = {
     body?: never;

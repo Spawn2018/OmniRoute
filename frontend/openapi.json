@@ -16740,6 +16740,80 @@
         ]
       }
     },
+    "/api/v1/integration-hub-marks": {
+      "get": {
+        "tags": [
+          "integration-hub-marks"
+        ],
+        "summary": "List Integration Hub Marks",
+        "operationId": "list_integration_hub_marks_api_v1_integration_hub_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/IntegrationHubMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Integration Hub Marks Api V1 Integration Hub Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "integration-hub-marks"
+        ],
+        "summary": "Create Integration Hub Mark",
+        "operationId": "create_integration_hub_mark_api_v1_integration_hub_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IntegrationHubMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IntegrationHubMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/health": {
       "get": {
         "summary": "Health",
@@ -24031,6 +24105,65 @@
           "answered_count"
         ],
         "title": "InquiryMemberRankResponse"
+      },
+      "IntegrationHubMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "hub_kind": {
+            "type": "string",
+            "title": "Hub Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "hub_kind",
+          "source_ref"
+        ],
+        "title": "IntegrationHubMarkCreate"
+      },
+      "IntegrationHubMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "hub_kind": {
+            "type": "string",
+            "title": "Hub Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "hub_kind",
+          "source_ref"
+        ],
+        "title": "IntegrationHubMarkResponse"
       },
       "InterventionOutcomeCreate": {
         "properties": {

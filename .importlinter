@@ -154,6 +154,7 @@ modules =
     app.services.e_delivery_marks
     app.services.peppol_marks
     app.services.sid_import_marks
+    app.services.integration_hub_marks
     app.services.freight_audit_marks
     app.services.collaboration_marks
     app.services.exchange_connectors
@@ -624,6 +625,9 @@ forbidden_modules =
     app.services.sid_import_marks
     app.repositories.sid_import_marks
     app.models.sid_import_mark
+    app.services.integration_hub_marks
+    app.repositories.integration_hub_marks
+    app.models.integration_hub_mark
     app.services.freight_audit_marks
     app.repositories.freight_audit_marks
     app.models.freight_audit_mark

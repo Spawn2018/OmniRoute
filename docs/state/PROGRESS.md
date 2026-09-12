@@ -1,25 +1,26 @@
-# Historia plastrĂłw
+# Historia plastrÄ‚Ĺ‚w
 
-| Data | Plaster | ModuĹ‚ | Opis |
+| Data | Plaster | ModuÄąâ€š | Opis |
 |---|---|---|---|
-| 2026-09-12 | 357.0 | EXP2.20 peppol_mark HITL | 2026-09-12 | PRZESZĹO | N/A | N/A | OK | OK | 5â€“15 | PRZESZĹO | N/A | N/A | PRZESZĹO |
-| 2026-09-12 | 358.0 | EXP2.21 sid_import_mark HITL | 2026-09-12 | PRZESZŁO | N/A | N/A | OK | OK | 5–15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
-| 2026-09-12 | 356.0 | EXP2.19 e_delivery_mark HITL | 2026-09-12 | PRZESZĹO | N/A | N/A | OK | OK | 5â€“15 | PRZESZĹO | N/A | N/A | PRZESZĹO |
-| 2026-09-12 | 355.0 | EXP2.18 e_cmr_mark HITL | 2026-09-12 | PRZESZĹO | N/A | N/A | OK | OK | 5â€“15 | PRZESZĹO | N/A | N/A | PRZESZĹO |
-| 2026-09-12 | 354.0 | EXP2.17 pallet_pool_mark HITL | 2026-09-12 | PRZESZĹO | N/A | N/A | OK | OK | 5â€“15 | PRZESZĹO | N/A | N/A | PRZESZĹO |
-| 2026-09-12 | 353.0 | EXP2.16 bin_pack_mark HITL | 2026-09-12 | PRZESZĹO | N/A | N/A | OK | OK | 5â€“15 | PRZESZĹO | N/A | N/A | PRZESZĹO |
-| 2026-09-12 | 352.0 | EXP2.15 fleet_cost_mark HITL | 2026-09-12 | PRZESZĹO | N/A | N/A | OK | OK | 5â€“15 | PRZESZĹO | N/A | N/A | PRZESZĹO |
-| 2026-09-12 | 351.0 | EXP2.14 fuel_anomaly_mark HITL | 2026-09-12 | PRZESZĹO | N/A | N/A | OK | OK | 5â€“15 | PRZESZĹO | N/A | N/A | PRZESZĹO |
-| 2026-09-12 | 350.0 | EXP2.13 ferry_art9_mark HITL | 2026-09-12 | PRZESZĹO | N/A | N/A | OK | OK | 5â€“15 | PRZESZĹO | N/A | N/A | PRZESZĹO |
-| 2026-09-12 | 349.0 | EXP2.12 combined_transport_mark HITL | 2026-09-12 | PRZESZĹO | N/A | N/A | OK | OK | 5â€“15 | PRZESZĹO | N/A | N/A | PRZESZĹO |
-| 2026-09-12 | 348.0 | EXP2.11 cabotage_mark HITL | 2026-09-12 | PRZESZĹO | N/A | N/A | OK | OK | 5â€“15 | PRZESZĹO | N/A | N/A | PRZESZĹO |
-| 2026-09-12 | 347.0 | EXP2.10 what_if_mark HITL | 2026-09-12 | PRZESZĹO | N/A | N/A | OK | OK | 5â€“15 | PRZESZĹO | N/A | N/A | PRZESZĹO |
-| 2026-09-11 | 346.0 | EXP2.9 time_to_fix_mark HITL | 2026-09-12 | PRZESZĹO | N/A | N/A | OK | OK | 5â€“15 | PRZESZĹO | N/A | N/A | PRZESZĹO |
-| 345.0 | EXP2.8 cutoff_mark HITL | 2026-09-12 | PRZESZĹO | N/A | N/A | OK | OK | 5â€“15 | PRZESZĹO | N/A | N/A | PRZESZĹO |
-| 344.0 | EXP2.7 schedule_exception_mark HITL | 2026-09-12 | PRZESZĹO | N/A | N/A | OK | OK | 5â€“15 | PRZESZĹO | N/A | N/A | PRZESZĹO |
-| 343.0 | EXP2.6 subcontract_edge_mark HITL | 2026-09-12 | PRZESZĹO | N/A | N/A | OK | OK | 5â€“15 | PRZESZĹO | N/A | N/A | PRZESZĹO |
-| 342.0 | EXP2.5 sanctions_mark HITL | 2026-09-11 | PRZESZĹO | N/A | N/A | OK | OK | 5â€“15 | PRZESZĹO | N/A | N/A | PRZESZĹO |
-| 341.0 | EXP2.4 cargo_cover_mark HITL | 2026-09-11 | PRZESZĹO | N/A | N/A | OK | OK | 5â€“15 | PRZESZĹO | N/A | N/A | PRZESZĹO |
+| 2026-09-12 | 357.0 | EXP2.20 peppol_mark HITL | 2026-09-12 | PRZESZÄąÂO | N/A | N/A | OK | OK | 5Ă˘â‚¬â€ś15 | PRZESZÄąÂO | N/A | N/A | PRZESZÄąÂO |
+| 2026-09-12 | 358.0 | EXP2.21 sid_import_mark HITL | 2026-09-12 | PRZESZĹO | N/A | N/A | OK | OK | 5â€“15 | PRZESZĹO | N/A | N/A | PRZESZĹO |
+| 2026-09-12 | 359.0 | EXP2.22 integration_hub_mark HITL | 2026-09-12 | PRZESZŁO | N/A | N/A | OK | OK | 5–15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
+| 2026-09-12 | 356.0 | EXP2.19 e_delivery_mark HITL | 2026-09-12 | PRZESZÄąÂO | N/A | N/A | OK | OK | 5Ă˘â‚¬â€ś15 | PRZESZÄąÂO | N/A | N/A | PRZESZÄąÂO |
+| 2026-09-12 | 355.0 | EXP2.18 e_cmr_mark HITL | 2026-09-12 | PRZESZÄąÂO | N/A | N/A | OK | OK | 5Ă˘â‚¬â€ś15 | PRZESZÄąÂO | N/A | N/A | PRZESZÄąÂO |
+| 2026-09-12 | 354.0 | EXP2.17 pallet_pool_mark HITL | 2026-09-12 | PRZESZÄąÂO | N/A | N/A | OK | OK | 5Ă˘â‚¬â€ś15 | PRZESZÄąÂO | N/A | N/A | PRZESZÄąÂO |
+| 2026-09-12 | 353.0 | EXP2.16 bin_pack_mark HITL | 2026-09-12 | PRZESZÄąÂO | N/A | N/A | OK | OK | 5Ă˘â‚¬â€ś15 | PRZESZÄąÂO | N/A | N/A | PRZESZÄąÂO |
+| 2026-09-12 | 352.0 | EXP2.15 fleet_cost_mark HITL | 2026-09-12 | PRZESZÄąÂO | N/A | N/A | OK | OK | 5Ă˘â‚¬â€ś15 | PRZESZÄąÂO | N/A | N/A | PRZESZÄąÂO |
+| 2026-09-12 | 351.0 | EXP2.14 fuel_anomaly_mark HITL | 2026-09-12 | PRZESZÄąÂO | N/A | N/A | OK | OK | 5Ă˘â‚¬â€ś15 | PRZESZÄąÂO | N/A | N/A | PRZESZÄąÂO |
+| 2026-09-12 | 350.0 | EXP2.13 ferry_art9_mark HITL | 2026-09-12 | PRZESZÄąÂO | N/A | N/A | OK | OK | 5Ă˘â‚¬â€ś15 | PRZESZÄąÂO | N/A | N/A | PRZESZÄąÂO |
+| 2026-09-12 | 349.0 | EXP2.12 combined_transport_mark HITL | 2026-09-12 | PRZESZÄąÂO | N/A | N/A | OK | OK | 5Ă˘â‚¬â€ś15 | PRZESZÄąÂO | N/A | N/A | PRZESZÄąÂO |
+| 2026-09-12 | 348.0 | EXP2.11 cabotage_mark HITL | 2026-09-12 | PRZESZÄąÂO | N/A | N/A | OK | OK | 5Ă˘â‚¬â€ś15 | PRZESZÄąÂO | N/A | N/A | PRZESZÄąÂO |
+| 2026-09-12 | 347.0 | EXP2.10 what_if_mark HITL | 2026-09-12 | PRZESZÄąÂO | N/A | N/A | OK | OK | 5Ă˘â‚¬â€ś15 | PRZESZÄąÂO | N/A | N/A | PRZESZÄąÂO |
+| 2026-09-11 | 346.0 | EXP2.9 time_to_fix_mark HITL | 2026-09-12 | PRZESZÄąÂO | N/A | N/A | OK | OK | 5Ă˘â‚¬â€ś15 | PRZESZÄąÂO | N/A | N/A | PRZESZÄąÂO |
+| 345.0 | EXP2.8 cutoff_mark HITL | 2026-09-12 | PRZESZÄąÂO | N/A | N/A | OK | OK | 5Ă˘â‚¬â€ś15 | PRZESZÄąÂO | N/A | N/A | PRZESZÄąÂO |
+| 344.0 | EXP2.7 schedule_exception_mark HITL | 2026-09-12 | PRZESZÄąÂO | N/A | N/A | OK | OK | 5Ă˘â‚¬â€ś15 | PRZESZÄąÂO | N/A | N/A | PRZESZÄąÂO |
+| 343.0 | EXP2.6 subcontract_edge_mark HITL | 2026-09-12 | PRZESZÄąÂO | N/A | N/A | OK | OK | 5Ă˘â‚¬â€ś15 | PRZESZÄąÂO | N/A | N/A | PRZESZÄąÂO |
+| 342.0 | EXP2.5 sanctions_mark HITL | 2026-09-11 | PRZESZÄąÂO | N/A | N/A | OK | OK | 5Ă˘â‚¬â€ś15 | PRZESZÄąÂO | N/A | N/A | PRZESZÄąÂO |
+| 341.0 | EXP2.4 cargo_cover_mark HITL | 2026-09-11 | PRZESZÄąÂO | N/A | N/A | OK | OK | 5Ă˘â‚¬â€ś15 | PRZESZÄąÂO | N/A | N/A | PRZESZÄąÂO |
 | 340.0 | EXP2.3 | HITL `cost_allocation_mark` (alloc_kind). Nie allocation SQL. Nastepny: Plan EXP2.4. |
 | 2026-09-11 | 339.0 | EXP2.2 | HITL `make_or_buy_mark` (buy_kind). Nie silnik. Nastepny: Plan EXP2.3. |
 | 2026-09-11 | 338.0 | EXP2.1 | HITL `working_capital_mark` (capital_kind). Nie DSO SQL. Nastepny: Plan EXP2.2. |
@@ -46,7 +47,7 @@
 | 2026-09-11 | 317.0 | CI3 | HITL `clause_notice` (clause_label). Nie 409. Nastepny: Plan 318.0 calibration_mark. |
 | 2026-09-11 | 316.0 | CI6 | HITL `impact_scenario` (chain_label). Nie EBITDA SQL. Nastepny: Plan 317.0 clause_notice. |
 | 2026-09-11 | 315.0 | CI6 | HITL `remediation_option` (kind bez kwoty). Nie S11. Nastepny: Plan 316.0 impact_scenario. |
-| 2026-09-11 | 314.0 | CI4 | HITL `delay_forecast` (horizon + p_late Decimal). Nie wrĂłĹĽba. Nie GPS. Nastepny: Plan 315.0 remediation. |
+| 2026-09-11 | 314.0 | CI4 | HITL `delay_forecast` (horizon + p_late Decimal). Nie wrÄ‚Ĺ‚ÄąÄ˝ba. Nie GPS. Nastepny: Plan 315.0 remediation. |
 | 2026-09-11 | 313.0 | CI1 | HITL `sla_clause` na customer_contract. Nie extract. Nie kara. Nastepny: pin HITL Plan. |
 | 2026-09-11 | 312.0 | UI | `/refaktor`: SourceRefField na local/charge-template/cod. Label-form SourceRef DONE. Nastepny: HITL pin Plan. |
 | 2026-09-11 | 311.0 | UI | `/refaktor`: SourceRefField na rate-card/fuel/groupage. Nastepny: leftover label-form. |
@@ -68,382 +69,382 @@
 | 2026-09-11 | 295.0 | UI | `/refaktor`: HintField na lane-pattern/monitoring/tender-carbon. Nastepny: tender paper-form. |
 | 2026-09-11 | 294.0 | CT7 | visibility_connector tokeny fourkites/shippeo. Nie live. Nastepny: paper-form source_ref /refaktor. |
 | 2026-09-11 | Plan 294.0 | CT7 | visibility_connector tokeny fourkites/shippeo, nie live. Delta zaakceptowana (`/noc`). Nastepny: kod 294.0. |
-| 2026-09-11 | 293.0 | UI | `/refaktor`: `CatalogSourceRefHintField` na cash/kreptd/party-doc. Nie mixin. NastÄ™pny: leftover CT/pin Plan. |
-| 2026-09-11 | 292.0 | UI | `/refaktor`: `CatalogSourceRefField` na carbon/free-time/telematics. Nie mixin. NastÄ™pny: leftover CT/pin Plan. |
-| 2026-09-11 | 291.0 | CT1 | HITL promote ASN â†’ shipment (`asn_id`). Nie auto przy POST asn. |
+| 2026-09-11 | 293.0 | UI | `/refaktor`: `CatalogSourceRefHintField` na cash/kreptd/party-doc. Nie mixin. NastĂ„â„˘pny: leftover CT/pin Plan. |
+| 2026-09-11 | 292.0 | UI | `/refaktor`: `CatalogSourceRefField` na carbon/free-time/telematics. Nie mixin. NastĂ„â„˘pny: leftover CT/pin Plan. |
+| 2026-09-11 | 291.0 | CT1 | HITL promote ASN Ă˘â€ â€™ shipment (`asn_id`). Nie auto przy POST asn. |
 | 2026-09-11 | 290.0 | CT4 | Matching lane/mode na shipment przy block_409 + etykiety HITL. |
 | 2026-09-11 | 289.0 | CT4 | Matching lane/mode na ASN przy block_409 + katalog match. Nie matching na shipment. |
 | 2026-09-11 | 288.0 | CT4 | HITL `routing_guide_match` guide_code_only/lane/mode. Nie silnik. |
 | 2026-09-11 | 287.0 | CT4 | 409 na POST shipment gdy block_409 bez znanego guide_code. |
-| 2026-09-11 | 286.0 | CT4 | Ĺ»ywy HTTP 409 na ASN poza `routing_guide` przy `block_409`. Nie 409 na shipment. |
-| 2026-09-11 | 285.0 | CT4 | HITL `routing_guide_enforcement` record_only/block_409. Nie ĹĽywy 409 na shipment. |
-| 2026-09-11 | 284.0 | CT11 | HITL `collaboration_mark` shipper/carrier/consignee. Nie wspĂłlny SELECT. |
-| 2026-09-11 | 283.0 | CT10 | HITL `freight_audit_mark` expected_vs_invoice/charge. Nie SQL vs charge. Nie druga marĹĽa. |
+| 2026-09-11 | 286.0 | CT4 | ÄąÂ»ywy HTTP 409 na ASN poza `routing_guide` przy `block_409`. Nie 409 na shipment. |
+| 2026-09-11 | 285.0 | CT4 | HITL `routing_guide_enforcement` record_only/block_409. Nie ÄąÄ˝ywy 409 na shipment. |
+| 2026-09-11 | 284.0 | CT11 | HITL `collaboration_mark` shipper/carrier/consignee. Nie wspÄ‚Ĺ‚lny SELECT. |
+| 2026-09-11 | 283.0 | CT10 | HITL `freight_audit_mark` expected_vs_invoice/charge. Nie SQL vs charge. Nie druga marÄąÄ˝a. |
 | 2026-09-11 | 282.0 | CT12 | HITL `capa_mark` capa/eight_d/recurrence. Nie workflow CAPA. |
 | 2026-09-11 | 281.0 | CT6 | HITL `sap_connector` sap/oracle. Nie live SOAP. Nie sekrety. |
 | 2026-09-11 | 280.0 | CT3 | HITL otif_mark zakres pickup/delivery/sku. Nie OTIF%. Nie scoring SQL. |
-| 2026-08-31 | Phase 0 | â€” | GitHub: repo Spawn2018/OmniRoute, init, initial commit, push na origin/main |
-| 2026-08-31 | Phase A | â€” | Bootstrap Cursor OS: AGENTS.md, GROUNDING.md, rules, skills, hooks, gate.yml |
-| 2026-08-31 | ADR-0001 | â€” | Weryfikacja Cursor factory (Gemini/ChatGPT/nauka) â†’ docs/adr |
-| 2026-08-31 | CI fix | â€” | Bootstrap gate: agent-refs only do Fazy B (58facbd) |
-| 2026-08-31 | Plan sync | â€” | Plan Cursor zsynchronizowany ze stanem repo |
-| 2026-08-31 | Phase A.5 | â€” | gh CLI auth, .env.example, plan w .cursor/plans/ |
-| 2026-08-31 | Phase B.1 | â€” | pyproject.toml, FastAPI, docker-compose, alembic |
+| 2026-08-31 | Phase 0 | Ă˘â‚¬â€ť | GitHub: repo Spawn2018/OmniRoute, init, initial commit, push na origin/main |
+| 2026-08-31 | Phase A | Ă˘â‚¬â€ť | Bootstrap Cursor OS: AGENTS.md, GROUNDING.md, rules, skills, hooks, gate.yml |
+| 2026-08-31 | ADR-0001 | Ă˘â‚¬â€ť | Weryfikacja Cursor factory (Gemini/ChatGPT/nauka) Ă˘â€ â€™ docs/adr |
+| 2026-08-31 | CI fix | Ă˘â‚¬â€ť | Bootstrap gate: agent-refs only do Fazy B (58facbd) |
+| 2026-08-31 | Plan sync | Ă˘â‚¬â€ť | Plan Cursor zsynchronizowany ze stanem repo |
+| 2026-08-31 | Phase A.5 | Ă˘â‚¬â€ť | gh CLI auth, .env.example, plan w .cursor/plans/ |
+| 2026-08-31 | Phase B.1 | Ă˘â‚¬â€ť | pyproject.toml, FastAPI, docker-compose, alembic |
 | 2026-08-31 | 0.3 | M-01 | RLS Golden Standard: organization, app_user, test izolacji |
-| 2026-08-31 | Phase B.3 | â€” | PeĹ‚ny gate: ruff, mypy, pytest-unit, import-linter + CI postgres |
+| 2026-08-31 | Phase B.3 | Ă˘â‚¬â€ť | PeÄąâ€šny gate: ruff, mypy, pytest-unit, import-linter + CI postgres |
 | 2026-08-31 | 0.4 | M-01 | OpenFGA hello: model, klient, require_permission, CI green |
-| 2026-08-31 | ADR-0002 | â€” | Frontend platform 2026 (Thoughtworks/SoR/NN/G) + DataTableShell |
-| 2026-08-31 | Audyt | â€” | Gate vs DoD + B.7 Free/403 wciÄ…gniÄ™te do planu, AGENTS, skills, rules |
-| 2026-08-31 | 0.5 | UI | Frontend Shell: Vite, Compiler, TanStack R/Q/Form, shadcn, âŚK, PostHog, /tenancy/users |
+| 2026-08-31 | ADR-0002 | Ă˘â‚¬â€ť | Frontend platform 2026 (Thoughtworks/SoR/NN/G) + DataTableShell |
+| 2026-08-31 | Audyt | Ă˘â‚¬â€ť | Gate vs DoD + B.7 Free/403 wciĂ„â€¦gniĂ„â„˘te do planu, AGENTS, skills, rules |
+| 2026-08-31 | 0.5 | UI | Frontend Shell: Vite, Compiler, TanStack R/Q/Form, shadcn, Ă˘ĹšÂK, PostHog, /tenancy/users |
 | 2026-08-31 | 0.6 | UI/M-01 | DataTableShell + table_view RLS + ColumnEditor DnD + ViewManager + vitest |
-| 2026-08-31 | B.7 | ops | Branch protection: procedura rÄ™czna (Free private 403) â€” docs/ops/branch-protection.md |
-| 2026-08-31 | JakoĹ›Ä‡ | â€” | openapi-ts + covâ‰Ą80% + jscpdâ‰¤3% w gate + lazy PostHog |
+| 2026-08-31 | B.7 | ops | Branch protection: procedura rĂ„â„˘czna (Free private 403) Ă˘â‚¬â€ť docs/ops/branch-protection.md |
+| 2026-08-31 | JakoÄąâ€şĂ„â€ˇ | Ă˘â‚¬â€ť | openapi-ts + covĂ˘â€°Ä„80% + jscpdĂ˘â€°Â¤3% w gate + lazy PostHog |
 | 2026-08-31 | 0.7 | M-20 | AI extract HITL: extraction_draft RLS, MockExtractor, OpenFGA, UI queue |
 | 2026-08-31 | Faza C scaffold | AI | docling stub, langfuse no-op, promptfoo.yaml, knowledge cards |
 | 2026-08-31 | Faza D | ops | agentlint w gate, pr-nudge.yml, weekly-refactor + friday-retrospective |
 | 2026-08-31 | 0.8 | M-20 | instructor + llm-guard: schemat Pydantic, guard przed modelem, CI=mock |
 | 2026-08-31 | 0.9 | M-20 | docling A/B: fingerprint, pdf_strings vs docling, ab_delta_chars, upload |
-| 2026-08-31 | docs/OS | â€” | Honesty sync: PLAN/README/ARCHITECTURE/MODULES/ADR/skills/rules + spec M-20; delty 0.3/0.4 archived; `just test` bez `|| true`; leftovery audytu w PLAN + docs-debt.md |
+| 2026-08-31 | docs/OS | Ă˘â‚¬â€ť | Honesty sync: PLAN/README/ARCHITECTURE/MODULES/ADR/skills/rules + spec M-20; delty 0.3/0.4 archived; `just test` bez `|| true`; leftovery audytu w PLAN + docs-debt.md |
 | 2026-08-31 | 0.10 | M-20 | langfuse trace przy extract (no-op bez kluczy) + `just promptfoo` pytest echo |
-| 2026-08-31 | ops | â€” | PÄ™tla po kaĹĽdym kroku: docs/ops/post-plaster.md (pomiar â†’ naprawa â†’ docs-debt) |
+| 2026-08-31 | ops | Ă˘â‚¬â€ť | PĂ„â„˘tla po kaÄąÄ˝dym kroku: docs/ops/post-plaster.md (pomiar Ă˘â€ â€™ naprawa Ă˘â€ â€™ docs-debt) |
 | 2026-08-31 | 0.11 | M-20 | HTTP XOR 422 + vitest extractionCreateBody (kolejka HITL) |
 | 2026-08-31 | 0.12 | M-01 | JWT HS256 session: Bearer claims, nie spoofowalne headery |
-| 2026-08-31 | 0.13 | M-20 | split-screen HITL: podglÄ…d input_text \| recenzja kandydatĂłw |
+| 2026-08-31 | 0.13 | M-20 | split-screen HITL: podglĂ„â€¦d input_text \| recenzja kandydatÄ‚Ĺ‚w |
 | 2026-08-31 | 0.14 | M-20 | HTTP happy-path extract/list/accept/reject (JWT, stub serwisu) |
-| 2026-08-31 | docs/OS | â€” | kanon `/testy` `/bramka` zamiast person z archiwum |
-| 2026-08-31 | 0.15 | M-01 | hasĹ‚a argon2id + rotacja refresh; UUID-login wyciÄ™ty |
-| 2026-09-01 | docs/OS | FE | Exit Wave FE: twardy pasek powierzchni 2026 (U-densityâ€¦U-admin-ref, Art. 50 UI); adapter+RTL nie zamyka fali |
-| 2026-09-01 | D0 | OS | uczciwoĹ›Ä‡ OS: stos dziĹ› vs cel; GitHub Encrypted Secrets; `.cursorignore` dump; leftoverâ‰ DONE; HITL bez zmian |
-| 2026-09-01 | 0.15 T0 | M-20 | `document_base64` max_length â†’ 422 przed decode |
+| 2026-08-31 | docs/OS | Ă˘â‚¬â€ť | kanon `/testy` `/bramka` zamiast person z archiwum |
+| 2026-08-31 | 0.15 | M-01 | hasÄąâ€ša argon2id + rotacja refresh; UUID-login wyciĂ„â„˘ty |
+| 2026-09-01 | docs/OS | FE | Exit Wave FE: twardy pasek powierzchni 2026 (U-densityĂ˘â‚¬Â¦U-admin-ref, Art. 50 UI); adapter+RTL nie zamyka fali |
+| 2026-09-01 | D0 | OS | uczciwoÄąâ€şĂ„â€ˇ OS: stos dziÄąâ€ş vs cel; GitHub Encrypted Secrets; `.cursorignore` dump; leftoverĂ˘â€°Â DONE; HITL bez zmian |
+| 2026-09-01 | 0.15 T0 | M-20 | `document_base64` max_length Ă˘â€ â€™ 422 przed decode |
 | 2026-09-01 | 0.16 T1 | M-01 | rola `omniroute_app` NOBYPASSRLS; runtime URL; RLS integration = CI |
-| 2026-09-01 | 0.17 T2 | M-01 | matryca RLS S1â€“S6 + WITH CHECK; integration = CI |
-| 2026-09-01 | 0.18 | M-20 | HTTP extract live PG; token A / draft B â†’ 404; integration = CI |
-| 2026-09-01 | 0.19 A1 | API | undeclared `/api/v1` â†’ 403; playground off |
+| 2026-09-01 | 0.17 T2 | M-01 | matryca RLS S1Ă˘â‚¬â€śS6 + WITH CHECK; integration = CI |
+| 2026-09-01 | 0.18 | M-20 | HTTP extract live PG; token A / draft B Ă˘â€ â€™ 404; integration = CI |
+| 2026-09-01 | 0.19 A1 | API | undeclared `/api/v1` Ă˘â€ â€™ 403; playground off |
 | 2026-09-01 | 0.20 A2 | AuthZ | `can_review_extractions` = reviewer; member nie recenzuje |
 | 2026-09-01 | 0.21 T4 | M-01 | `hello_token` default false; mint UUID tylko local/CI |
 | 2026-09-01 | 0.22 T5 | M-01 | JWT iss/aud/jti/ver; TTL 15 min |
 | 2026-09-01 | 0.23 S1 | ops | JWT_SECRET z GitHub Encrypted Secrets, nie YAML |
-| 2026-09-01 | Exit Wave A | â€” | D0 + 0.15 T0 â€¦ 0.23 na origin. Charge/FE/Auth0 nie startowane. |
+| 2026-09-01 | Exit Wave A | Ă˘â‚¬â€ť | D0 + 0.15 T0 Ă˘â‚¬Â¦ 0.23 na origin. Charge/FE/Auth0 nie startowane. |
 | 2026-09-01 | 0.25 | domain | Money Decimal + waluta ISO 4217 + `<Money/>` na HITL; bez tabeli charge |
-| 2026-09-01 | 1.0 | M-06 | `charge_code` katalog + aliasy + RLS + `/charge-codes`; nie luĹşny string |
+| 2026-09-01 | 1.0 | M-06 | `charge_code` katalog + aliasy + RLS + `/charge-codes`; nie luÄąĹźny string |
 | 2026-09-01 | 1.1 | M-07 | `rate_line` immutable + `source_ref` + `/rate-lines`; nie `charge` / accept |
 | 2026-09-01 | 1.2 | M-08 | `charge` buy+sell na jednym wierszu + `margin()` w kodzie + `/charges`; nie accept HITL |
-| 2026-09-01 | 1.3 | M-20 | accept HITL â†’ `rate_line` (kupno) w jednej transakcji HTTP; ExtractionService bez rates; nie outbox |
-| 2026-09-01 | U-art50 | M-20 UI | label â€žpropozycja AIâ€ť na recenzji HITL; Art. 50 = UI, nie PDF prawny |
-| 2026-09-01 | U-palette-ops | UI | âŚK: extract, accept-focus, save-view, clear-session; nie tylko nawigacja |
+| 2026-09-01 | 1.3 | M-20 | accept HITL Ă˘â€ â€™ `rate_line` (kupno) w jednej transakcji HTTP; ExtractionService bez rates; nie outbox |
+| 2026-09-01 | U-art50 | M-20 UI | label Ă˘â‚¬Ĺľpropozycja AIĂ˘â‚¬ĹĄ na recenzji HITL; Art. 50 = UI, nie PDF prawny |
+| 2026-09-01 | U-palette-ops | UI | Ă˘ĹšÂK: extract, accept-focus, save-view, clear-session; nie tylko nawigacja |
 | 2026-09-01 | U-density | UI | compact default + toggle na users / charge-codes / rate-lines / charges / extractions |
-| 2026-09-01 | U-a11y | UI | skip-to-main + `:focus-visible` + Ĺ›cieĹĽka Tab/âŚK; RTL â‰  DoD |
-| 2026-09-01 | U-size-limit-real | ops/FE | `just perf` size-limit initial JS gzip < 250 kB; w gate; echo usuniÄ™te |
-| 2026-09-01 | U-pdf-spans | M-20 UI | PDF viewer + highlight spanĂłw HITL; lazy pdf.js; bez OCR |
-| 2026-09-01 | U-admin-ref | UI | gÄ™sty admin: sidebar, toolbar, âŚK; pulpit = joby, nie hello-dashboard |
-| 2026-09-01 | U-routes-breadth | UI/program | standing: Charge 1.0â€“1.2 majÄ… trasy; nowe BC = UI w tym samym plasterze; nie 70 stubĂłw |
-| 2026-09-01 | docs/OS | program | Auth0 I1/I2 **odroczone** (brak tenanta). Sesja = email+hasĹ‚o+JWT. |
+| 2026-09-01 | U-a11y | UI | skip-to-main + `:focus-visible` + Äąâ€şcieÄąÄ˝ka Tab/Ă˘ĹšÂK; RTL Ă˘â€°Â  DoD |
+| 2026-09-01 | U-size-limit-real | ops/FE | `just perf` size-limit initial JS gzip < 250 kB; w gate; echo usuniĂ„â„˘te |
+| 2026-09-01 | U-pdf-spans | M-20 UI | PDF viewer + highlight spanÄ‚Ĺ‚w HITL; lazy pdf.js; bez OCR |
+| 2026-09-01 | U-admin-ref | UI | gĂ„â„˘sty admin: sidebar, toolbar, Ă˘ĹšÂK; pulpit = joby, nie hello-dashboard |
+| 2026-09-01 | U-routes-breadth | UI/program | standing: Charge 1.0Ă˘â‚¬â€ś1.2 majĂ„â€¦ trasy; nowe BC = UI w tym samym plasterze; nie 70 stubÄ‚Ĺ‚w |
+| 2026-09-01 | docs/OS | program | Auth0 I1/I2 **odroczone** (brak tenanta). Sesja = email+hasÄąâ€šo+JWT. |
 | 2026-09-01 | 0.24 | ops | pip-audit projektu + SHA pin Actions + `/ready` + `X-Request-ID`; nie w local gate |
-| 2026-09-01 | 2.1â€“2.2 | M-20 | Presidio stub tylko instructor + 10 syntetyk `synth://`; zero PDF klienta; nie Presidio-all |
-| 2026-09-01 | 2.0 | M-21 | `quotation` INSERTâ€¦SELECT z bieĹĽÄ…cego `rate_line` + RLS + `/quotations`; nie k6; nie marĹĽa |
+| 2026-09-01 | 2.1Ă˘â‚¬â€ś2.2 | M-20 | Presidio stub tylko instructor + 10 syntetyk `synth://`; zero PDF klienta; nie Presidio-all |
+| 2026-09-01 | 2.0 | M-21 | `quotation` INSERTĂ˘â‚¬Â¦SELECT z bieÄąÄ˝Ă„â€¦cego `rate_line` + RLS + `/quotations`; nie k6; nie marÄąÄ˝a |
 | 2026-09-01 | 3.0 | M-03 | `organization_setting` allowlista `default_currency` + RLS + `/organization-settings`; nie sekrety |
 | 2026-09-01 | ADR-0003 | UI | System UI: OKLCH/dark, Radix pin, wzorce HITL/charge/tenant; makiety `docs/design/`; **nie Q1**; zero kodu `frontend/` |
-| 2026-09-01 | CI | ops | gate: 005 `current_database()` zamiast `Connection.url`; `docs-debt` path; URI â‰  plik w agent-refs |
-| â€” | leftover | Auth0 | I1/I2 **odroczone** aĹĽ bÄ™dzie tenant. Nie pytaÄ‡. 0.12/0.15 â‰  IdP. |
-| â€” | leftover | produkt | **NastÄ™pny:** 4.0 M-05 `port` (`/plaster`). Leftovery UI ADR-0003 **nie** zamiast 4.0. M-02 parked. |
-| 2026-09-01 | Plan 4.0 | M-05 | delta `docs/deltas/open/4.0-port.md` + spec `geography.md`. NastÄ™pny: `/plaster` 4.0 w nowej rozmowie. Nie 4.1. Nie Q2. |
-| 2026-09-01 | 4.0 | M-05 | `port` UN/LOCODE + RLS FORCE + `resolve` (Gdingenâ†’PLGDY) + `/ports` + `seed_ports.py`; 45 testĂłw integracyjnych zielonych lokalnie na PG 16; nie `location`, nie `terminal`, nie WPI |
-| 2026-09-01 | ops | toolchain | `just` 1.58 w `tools/just`, PG 16 przenoĹ›ny w `tools/pg16`, `lint-imports`/`psql` w PATH, `sh` z `D:\Git\bin`. **`just gate` i `just test` przechodzÄ… lokalnie w caĹ‚oĹ›ci** â€” koniec wpisĂłw â€žPG wisiaĹ‚, zostaje CIâ€ť |
-| 2026-09-01 | kontrakt | os | wrĂłciĹ‚ prĂłg **plan przed kodem powyĹĽej trzech plikĂłw**, jawnie takĹĽe poza kolejkÄ… Q (hotfix, leftover); w `AGENTS.md`, `context.mdc`, `/plaster`, skillu `nowy-plaster`; baseline `agentlint` przepisany |
-| 2026-09-01 | 4.1 | M-05 | `location` (`unlocode`/`postal_zone`/`address`) + `location_zone_member` z typem `postal_range` (kolacja "C"), kolumnÄ… generowanÄ… `postal_span` i exclusion GiST; `resolve(country, postal)` w Postgresie z filtrem dĹ‚ugoĹ›ci; FK zĹ‚oĹĽone tenant-safe do `port` (migracja dokĹ‚ada brakujÄ…ce `uq_port_org_id`); RLS FORCE + izolacja na obu tabelach; `/locations` z panelem zakresĂłw; nie `terminal`, nie WPI, nie `pg_trgm` |
-| 2026-09-01 | 4.2 | M-05 | `terminal` (ISPS, `operator_name` tekst, RLS FORCE, unikat czÄ™Ĺ›ciowy, FK zĹ‚oĹĽone do `port`) + kolumny WPI na `port`; ingest poza HTTP (`seed_wpi.py` + fixture); `/terminals` + kolumny WPI na `/ports`; OpenFGA bez zmian; nie `operator_party_id`, nie `kind=terminal` na `location`, nie live NGA |
-| 2026-09-01 | Plan 5.0 | M-10 | delta `docs/deltas/archived/5.0-party.md` + spec `parties.md`. CaĹ‚y katalog M-10 w jednym plastrze. NastÄ™pny: `/plaster` 5.0 w nowej rozmowie. Nie Q3. |
+| 2026-09-01 | CI | ops | gate: 005 `current_database()` zamiast `Connection.url`; `docs-debt` path; URI Ă˘â€°Â  plik w agent-refs |
+| Ă˘â‚¬â€ť | leftover | Auth0 | I1/I2 **odroczone** aÄąÄ˝ bĂ„â„˘dzie tenant. Nie pytaĂ„â€ˇ. 0.12/0.15 Ă˘â€°Â  IdP. |
+| Ă˘â‚¬â€ť | leftover | produkt | **NastĂ„â„˘pny:** 4.0 M-05 `port` (`/plaster`). Leftovery UI ADR-0003 **nie** zamiast 4.0. M-02 parked. |
+| 2026-09-01 | Plan 4.0 | M-05 | delta `docs/deltas/open/4.0-port.md` + spec `geography.md`. NastĂ„â„˘pny: `/plaster` 4.0 w nowej rozmowie. Nie 4.1. Nie Q2. |
+| 2026-09-01 | 4.0 | M-05 | `port` UN/LOCODE + RLS FORCE + `resolve` (GdingenĂ˘â€ â€™PLGDY) + `/ports` + `seed_ports.py`; 45 testÄ‚Ĺ‚w integracyjnych zielonych lokalnie na PG 16; nie `location`, nie `terminal`, nie WPI |
+| 2026-09-01 | ops | toolchain | `just` 1.58 w `tools/just`, PG 16 przenoÄąâ€şny w `tools/pg16`, `lint-imports`/`psql` w PATH, `sh` z `D:\Git\bin`. **`just gate` i `just test` przechodzĂ„â€¦ lokalnie w caÄąâ€šoÄąâ€şci** Ă˘â‚¬â€ť koniec wpisÄ‚Ĺ‚w Ă˘â‚¬ĹľPG wisiaÄąâ€š, zostaje CIĂ˘â‚¬ĹĄ |
+| 2026-09-01 | kontrakt | os | wrÄ‚Ĺ‚ciÄąâ€š prÄ‚Ĺ‚g **plan przed kodem powyÄąÄ˝ej trzech plikÄ‚Ĺ‚w**, jawnie takÄąÄ˝e poza kolejkĂ„â€¦ Q (hotfix, leftover); w `AGENTS.md`, `context.mdc`, `/plaster`, skillu `nowy-plaster`; baseline `agentlint` przepisany |
+| 2026-09-01 | 4.1 | M-05 | `location` (`unlocode`/`postal_zone`/`address`) + `location_zone_member` z typem `postal_range` (kolacja "C"), kolumnĂ„â€¦ generowanĂ„â€¦ `postal_span` i exclusion GiST; `resolve(country, postal)` w Postgresie z filtrem dÄąâ€šugoÄąâ€şci; FK zÄąâ€šoÄąÄ˝one tenant-safe do `port` (migracja dokÄąâ€šada brakujĂ„â€¦ce `uq_port_org_id`); RLS FORCE + izolacja na obu tabelach; `/locations` z panelem zakresÄ‚Ĺ‚w; nie `terminal`, nie WPI, nie `pg_trgm` |
+| 2026-09-01 | 4.2 | M-05 | `terminal` (ISPS, `operator_name` tekst, RLS FORCE, unikat czĂ„â„˘Äąâ€şciowy, FK zÄąâ€šoÄąÄ˝one do `port`) + kolumny WPI na `port`; ingest poza HTTP (`seed_wpi.py` + fixture); `/terminals` + kolumny WPI na `/ports`; OpenFGA bez zmian; nie `operator_party_id`, nie `kind=terminal` na `location`, nie live NGA |
+| 2026-09-01 | Plan 5.0 | M-10 | delta `docs/deltas/archived/5.0-party.md` + spec `parties.md`. CaÄąâ€šy katalog M-10 w jednym plastrze. NastĂ„â„˘pny: `/plaster` 5.0 w nowej rozmowie. Nie Q3. |
 | 2026-09-01 | 5.0 | M-10 | `party` + kontakty/rachunki/domeny/override/`carrier_profile`; RLS FORCE; `resolve(tax_id)`; lookup GUS/VIES/IBAN jako szkic (fixture); OpenFGA `can_manage_parties`; `/parties`; leftover `terminal.operator_party_id`. Nie Q3, nie silnik wyceny z override. |
-| 2026-09-01 | Plan 5.1 | M-21 | delta `docs/deltas/open/5.1-quotation-port-party.md`: POL/POD + `party_id` na `quotation`; SQL nadal z istniejÄ…cego `rate_line`; nie override, nie k6. NastÄ™pny: `/plaster` 5.1. |
-| 2026-09-01 | 5.1 | M-21 | `quotation.origin_port_id` / `destination_port_id` / `party_id`; FK zĹ‚oĹĽone; CHECK kompletnoĹ›ci; lista filtruje w SQL; UI `/quotations` z pickerami. Kwota nadal ze stawki. Nie override, nie k6. |
-| 2026-09-01 | Plan 5.2 | M-09 | delta `docs/deltas/archived/5.2-commodity-code.md` + spec. Katalog HS/CN per tenant. Nie podpiÄ™cie do wyceny. NastÄ™pny: `/plaster` 5.2. |
-| 2026-09-01 | 5.2 | M-09 | `commodity_code` HS/CN + aliasy + `source_ref` + RLS FORCE + `resolve` + OpenFGA `can_manage_commodity_codes` + `/commodity-codes`. Nie podpiÄ™cie do wyceny, nie IMDG, nie TARIC live. |
-| 2026-09-01 | Plan 6.0 | M-23 | delta `docs/deltas/archived/6.0-nbp-rate.md` + spec. Katalog kursu NBP tabeli A. Nie przeliczenie wyceny. Nie M-07 `rate_line`. NastÄ™pny: `/plaster` 6.0. |
+| 2026-09-01 | Plan 5.1 | M-21 | delta `docs/deltas/open/5.1-quotation-port-party.md`: POL/POD + `party_id` na `quotation`; SQL nadal z istniejĂ„â€¦cego `rate_line`; nie override, nie k6. NastĂ„â„˘pny: `/plaster` 5.1. |
+| 2026-09-01 | 5.1 | M-21 | `quotation.origin_port_id` / `destination_port_id` / `party_id`; FK zÄąâ€šoÄąÄ˝one; CHECK kompletnoÄąâ€şci; lista filtruje w SQL; UI `/quotations` z pickerami. Kwota nadal ze stawki. Nie override, nie k6. |
+| 2026-09-01 | Plan 5.2 | M-09 | delta `docs/deltas/archived/5.2-commodity-code.md` + spec. Katalog HS/CN per tenant. Nie podpiĂ„â„˘cie do wyceny. NastĂ„â„˘pny: `/plaster` 5.2. |
+| 2026-09-01 | 5.2 | M-09 | `commodity_code` HS/CN + aliasy + `source_ref` + RLS FORCE + `resolve` + OpenFGA `can_manage_commodity_codes` + `/commodity-codes`. Nie podpiĂ„â„˘cie do wyceny, nie IMDG, nie TARIC live. |
+| 2026-09-01 | Plan 6.0 | M-23 | delta `docs/deltas/archived/6.0-nbp-rate.md` + spec. Katalog kursu NBP tabeli A. Nie przeliczenie wyceny. Nie M-07 `rate_line`. NastĂ„â„˘pny: `/plaster` 6.0. |
 | 2026-09-01 | 6.0 | M-23 | `nbp_rate` tabela A + `source_ref` + RLS FORCE + `resolve(currency, on_date)` + OpenFGA `can_manage_nbp_rates` + `/nbp-rates`. Nie przeliczenie wyceny, nie live NBP, nie M-07 `rate_line`. |
-| 2026-09-01 | Plan 7.0 | M-52 | delta `docs/deltas/archived/7.0-dangerous-good.md` + spec. Katalog UN/IMDG per tenant. Nie podpiÄ™cie do wyceny. Nie M-08 `charge`. NastÄ™pny: `/plaster` 7.0. |
-| 2026-09-01 | 7.0 | M-52 | `dangerous_good` UN/IMDG + aliasy + `source_ref` + RLS FORCE + `resolve` + OpenFGA `can_manage_dangerous_goods` + `/dangerous-goods`. Nie podpiÄ™cie do wyceny, nie M-08 `charge`, nie live IMO. |
-| 2026-09-01 | Plan 8.0 | M-11 | delta `docs/deltas/archived/8.0-party-email-match.md`. Matcher `resolve_email` na `party_email_domain`. Nie nowa tabela, nie IMAP, nie auto-INSERT kontaktu. NastÄ™pny: `/plaster` 8.0. |
-| 2026-09-01 | 8.0 | M-11 | `resolve_email` na `party_email_domain`; `UnknownEmailDomain`; GET `/parties/resolve-email`; pole â€žSprawdĹş mailâ€ť na `/parties`. Nie nowa tabela, nie IMAP, nie auto-INSERT kontaktu. |
-| 2026-09-01 | Plan 9.0 | M-12 | delta `docs/deltas/archived/9.0-network.md` + spec. Katalog `network` per tenant. Nie `network_member`, nie scraping, nie RapidFuzz. NastÄ™pny: `/plaster` 9.0. |
-| 2026-09-02 | 9.0 | M-12 | `network` katalog + `source_ref` + RLS FORCE + `resolve` + OpenFGA `can_manage_networks` + `/networks`. Nie katalog agentĂłw, nie scraping. |
-| 2026-09-02 | Plan 10.0 | M-13 | delta `docs/deltas/archived/10.0-party-scorecard.md` + spec. Snapshot `party_scorecard` per party. Nie SQL-refresh, nie scoring osoby, nie RFQ. NastÄ™pny: `/plaster` 10.0. |
+| 2026-09-01 | Plan 7.0 | M-52 | delta `docs/deltas/archived/7.0-dangerous-good.md` + spec. Katalog UN/IMDG per tenant. Nie podpiĂ„â„˘cie do wyceny. Nie M-08 `charge`. NastĂ„â„˘pny: `/plaster` 7.0. |
+| 2026-09-01 | 7.0 | M-52 | `dangerous_good` UN/IMDG + aliasy + `source_ref` + RLS FORCE + `resolve` + OpenFGA `can_manage_dangerous_goods` + `/dangerous-goods`. Nie podpiĂ„â„˘cie do wyceny, nie M-08 `charge`, nie live IMO. |
+| 2026-09-01 | Plan 8.0 | M-11 | delta `docs/deltas/archived/8.0-party-email-match.md`. Matcher `resolve_email` na `party_email_domain`. Nie nowa tabela, nie IMAP, nie auto-INSERT kontaktu. NastĂ„â„˘pny: `/plaster` 8.0. |
+| 2026-09-01 | 8.0 | M-11 | `resolve_email` na `party_email_domain`; `UnknownEmailDomain`; GET `/parties/resolve-email`; pole Ă˘â‚¬ĹľSprawdÄąĹź mailĂ˘â‚¬ĹĄ na `/parties`. Nie nowa tabela, nie IMAP, nie auto-INSERT kontaktu. |
+| 2026-09-01 | Plan 9.0 | M-12 | delta `docs/deltas/archived/9.0-network.md` + spec. Katalog `network` per tenant. Nie `network_member`, nie scraping, nie RapidFuzz. NastĂ„â„˘pny: `/plaster` 9.0. |
+| 2026-09-02 | 9.0 | M-12 | `network` katalog + `source_ref` + RLS FORCE + `resolve` + OpenFGA `can_manage_networks` + `/networks`. Nie katalog agentÄ‚Ĺ‚w, nie scraping. |
+| 2026-09-02 | Plan 10.0 | M-13 | delta `docs/deltas/archived/10.0-party-scorecard.md` + spec. Snapshot `party_scorecard` per party. Nie SQL-refresh, nie scoring osoby, nie RFQ. NastĂ„â„˘pny: `/plaster` 10.0. |
 | 2026-09-02 | 10.0 | M-13 | `party_scorecard` snapshot + RLS FORCE + ranking + OpenFGA `can_manage_parties` + `/party-scorecards` + panel na `/parties`. Nie SQL-refresh, nie scoring osoby, nie RFQ. |
-| 2026-09-02 | Plan 11.0 | M-16 | delta `docs/deltas/archived/11.0-customer-sop.md` + spec. Katalog `customer_sop` + zatwierdzenie. Nie generator zadaĹ„, nie M-35. NastÄ™pny: `/plaster` 11.0. |
-| 2026-09-02 | 11.0 | M-16 | `customer_sop` katalog + RLS FORCE + `resolve(party_id, code)` + zatwierdzenie + OpenFGA `can_manage_parties` + `/customer-sops` + panel na `/parties`. Nie generator zadaĹ„, nie M-35, nie `superseded_by`. |
-| 2026-09-02 | Plan 12.0 | M-18 | delta `docs/deltas/archived/12.0-port-surcharge.md` + spec. Katalog `port_surcharge` per port. Nie zapis do `charge`, nie ewaluacja warunku. NastÄ™pny: `/plaster` 12.0. |
+| 2026-09-02 | Plan 11.0 | M-16 | delta `docs/deltas/archived/11.0-customer-sop.md` + spec. Katalog `customer_sop` + zatwierdzenie. Nie generator zadaÄąâ€ž, nie M-35. NastĂ„â„˘pny: `/plaster` 11.0. |
+| 2026-09-02 | 11.0 | M-16 | `customer_sop` katalog + RLS FORCE + `resolve(party_id, code)` + zatwierdzenie + OpenFGA `can_manage_parties` + `/customer-sops` + panel na `/parties`. Nie generator zadaÄąâ€ž, nie M-35, nie `superseded_by`. |
+| 2026-09-02 | Plan 12.0 | M-18 | delta `docs/deltas/archived/12.0-port-surcharge.md` + spec. Katalog `port_surcharge` per port. Nie zapis do `charge`, nie ewaluacja warunku. NastĂ„â„˘pny: `/plaster` 12.0. |
 | 2026-09-02 | 12.0 | M-18 | `port_surcharge` katalog extra + RLS FORCE + `resolve(port_id, code)` + OpenFGA `can_manage_geography` + `/port-surcharges` + panel na `/ports`. Nie zapis do `charge`, nie ewaluacja warunku, nie M-19 live. |
-| 2026-09-02 | Plan 13.0 | M-19 | delta `docs/deltas/archived/13.0-channel-quote.md` + spec. Katalog `channel_quote` per armator+POL/POD. Nie live HTTP, nie zapis do `rate_line`. NastÄ™pny: `/plaster` 13.0. |
+| 2026-09-02 | Plan 13.0 | M-19 | delta `docs/deltas/archived/13.0-channel-quote.md` + spec. Katalog `channel_quote` per armator+POL/POD. Nie live HTTP, nie zapis do `rate_line`. NastĂ„â„˘pny: `/plaster` 13.0. |
 | 2026-09-02 | 13.0 | M-19 | `channel_quote` katalog oferty + RLS FORCE + `resolve` as-of + OpenFGA `can_manage_rate_lines` + `/channel-quotes`. Nie live HTTP, nie zapis do `rate_line`/`charge`, nie IMAP. |
-| 2026-09-02 | Plan 14.0 | M-14 | delta `docs/deltas/archived/14.0-credit-review.md` + spec. Katalog `credit_review` per party. Nie auto-scoring, nie zmiana `credit_limit`. NastÄ™pny: `/plaster` 14.0. |
+| 2026-09-02 | Plan 14.0 | M-14 | delta `docs/deltas/archived/14.0-credit-review.md` + spec. Katalog `credit_review` per party. Nie auto-scoring, nie zmiana `credit_limit`. NastĂ„â„˘pny: `/plaster` 14.0. |
 | 2026-09-02 | 14.0 | M-14 | `credit_review` katalog recenzji + RLS FORCE + `resolve` as-of + OpenFGA `can_manage_parties` + `/credit-reviews` + panel na `/parties`. Nie auto-scoring, nie zapis `credit_limit`, nie biuro HTTP. |
-| 2026-09-02 | Plan 15.0 | M-15 | delta `docs/deltas/archived/15.0-finance-board.md` + spec. Tablica odczytu `/finance`. Nie nowa tabela, LLM nie liczy. NastÄ™pny: `/plaster` 15.0. |
-| 2026-09-02 | 15.0 | M-15 | `finance_board` tablica odczytu `/finance` (marĹĽa z `charge`, NBP, limit, recenzja). Nie nowa tabela, LLM nie liczy, nie zapis `charge`/`credit_limit`. |
-| 2026-09-02 | Plan 16.0 | M-23 | delta `docs/deltas/archived/16.0-quotation-nbp.md` + spec. Wycena czyta `nbp_rate`. Nie drugi katalog, nie mnoĹĽenie kwoty. NastÄ™pny: `/plaster` 16.0. |
-| 2026-09-02 | 16.0 | M-23 | `nbp_rate` odczyt przy `/quotations` (waluta oferty + dzieĹ„). Nie nowa tabela, nie mnoĹĽenie `amount`, nie drugi katalog FX. |
-| 2026-09-02 | Plan 17.0 | M-24 | delta `docs/deltas/archived/17.0-offer-risk.md` + spec. Wycena czyta recenzjÄ™ i kartÄ™. Nie scoring, nie nowa tabela. NastÄ™pny: `/plaster` 17.0. |
+| 2026-09-02 | Plan 15.0 | M-15 | delta `docs/deltas/archived/15.0-finance-board.md` + spec. Tablica odczytu `/finance`. Nie nowa tabela, LLM nie liczy. NastĂ„â„˘pny: `/plaster` 15.0. |
+| 2026-09-02 | 15.0 | M-15 | `finance_board` tablica odczytu `/finance` (marÄąÄ˝a z `charge`, NBP, limit, recenzja). Nie nowa tabela, LLM nie liczy, nie zapis `charge`/`credit_limit`. |
+| 2026-09-02 | Plan 16.0 | M-23 | delta `docs/deltas/archived/16.0-quotation-nbp.md` + spec. Wycena czyta `nbp_rate`. Nie drugi katalog, nie mnoÄąÄ˝enie kwoty. NastĂ„â„˘pny: `/plaster` 16.0. |
+| 2026-09-02 | 16.0 | M-23 | `nbp_rate` odczyt przy `/quotations` (waluta oferty + dzieÄąâ€ž). Nie nowa tabela, nie mnoÄąÄ˝enie `amount`, nie drugi katalog FX. |
+| 2026-09-02 | Plan 17.0 | M-24 | delta `docs/deltas/archived/17.0-offer-risk.md` + spec. Wycena czyta recenzjĂ„â„˘ i kartĂ„â„˘. Nie scoring, nie nowa tabela. NastĂ„â„˘pny: `/plaster` 17.0. |
 | 2026-09-02 | 17.0 | M-24 | `offer_risk` odczyt recenzji i karty przy `/quotations`. Nie nowa tabela, nie scoring, nie zapis `credit_limit`. |
-| 2026-09-02 | Plan 18.0 | M-25 | delta `docs/deltas/archived/18.0-offer-negotiation.md` + spec. Wycena czyta `channel_quote`. Nie wynik won/lost, nie spread. NastÄ™pny: `/plaster` 18.0. |
+| 2026-09-02 | Plan 18.0 | M-25 | delta `docs/deltas/archived/18.0-offer-negotiation.md` + spec. Wycena czyta `channel_quote`. Nie wynik won/lost, nie spread. NastĂ„â„˘pny: `/plaster` 18.0. |
 | 2026-09-02 | 18.0 | M-25 | `offer_negotiation` odczyt `channel_quote` przy `/quotations`. Nie nowa tabela, nie odejmowanie kwot, nie zapis wyniku. |
-| 2026-09-02 | Plan 19.0 | M-26 | delta `docs/deltas/archived/19.0-offer-document.md` + spec. PodglÄ…d faktĂłw wyceny. Nie PDF, nie U-print. NastÄ™pny: `/plaster` 19.0. |
-| 2026-09-02 | 19.0 | M-26 | `offer_document` podglÄ…d faktĂłw `quotation` na `/quotations`. Nie PDF, nie `window.print`, nie nowa tabela. |
-| 2026-09-02 | Plan 20.0 | M-27 | delta `docs/deltas/archived/20.0-quotation-batch.md` + spec. Wiele kodĂłw na lane. Nie CSV, nie nowa tabela. NastÄ™pny: `/plaster` 20.0. |
-| 2026-09-02 | 20.0 | M-27 | `quotation_batch` wiele kodĂłw na jednej lane (`POST /quotations/batch`). Nie CSV, nie nowa tabela, nie set-based SQL. |
-| 2026-09-02 | Plan 21.0 | M-28 | delta `docs/deltas/archived/21.0-customer-inquiry.md` + spec. Ĺšlad wycen per party. Nie tabela RFQ, nie IMAP. NastÄ™pny: `/plaster` 21.0. |
-| 2026-09-02 | 21.0 | M-28 | `customer_inquiry` Ĺ›lad wycen per party na `/quotations`. Nie tabela RFQ, nie IMAP, nie suma kwot. |
-| 2026-09-02 | Plan 22.0 | M-29 | delta `docs/deltas/archived/22.0-offer-acceptance.md` + spec. Pending z wycen. Nie tabela wyniku, nie HITL accept. NastÄ™pny: `/plaster` 22.0. |
+| 2026-09-02 | Plan 19.0 | M-26 | delta `docs/deltas/archived/19.0-offer-document.md` + spec. PodglĂ„â€¦d faktÄ‚Ĺ‚w wyceny. Nie PDF, nie U-print. NastĂ„â„˘pny: `/plaster` 19.0. |
+| 2026-09-02 | 19.0 | M-26 | `offer_document` podglĂ„â€¦d faktÄ‚Ĺ‚w `quotation` na `/quotations`. Nie PDF, nie `window.print`, nie nowa tabela. |
+| 2026-09-02 | Plan 20.0 | M-27 | delta `docs/deltas/archived/20.0-quotation-batch.md` + spec. Wiele kodÄ‚Ĺ‚w na lane. Nie CSV, nie nowa tabela. NastĂ„â„˘pny: `/plaster` 20.0. |
+| 2026-09-02 | 20.0 | M-27 | `quotation_batch` wiele kodÄ‚Ĺ‚w na jednej lane (`POST /quotations/batch`). Nie CSV, nie nowa tabela, nie set-based SQL. |
+| 2026-09-02 | Plan 21.0 | M-28 | delta `docs/deltas/archived/21.0-customer-inquiry.md` + spec. ÄąĹˇlad wycen per party. Nie tabela RFQ, nie IMAP. NastĂ„â„˘pny: `/plaster` 21.0. |
+| 2026-09-02 | 21.0 | M-28 | `customer_inquiry` Äąâ€şlad wycen per party na `/quotations`. Nie tabela RFQ, nie IMAP, nie suma kwot. |
+| 2026-09-02 | Plan 22.0 | M-29 | delta `docs/deltas/archived/22.0-offer-acceptance.md` + spec. Pending z wycen. Nie tabela wyniku, nie HITL accept. NastĂ„â„˘pny: `/plaster` 22.0. |
 | 2026-09-02 | 22.0 | M-29 | `offer_acceptance` pending z wycen na `/quotations`. Nie tabela wyniku, nie HITL accept, nie IMAP. |
-| 2026-09-02 | Plan 23.0 | M-30 | delta `docs/deltas/archived/23.0-carrier-inquiry.md` + spec. Ĺšlad `channel_quote` przy lane. Nie tabela RFQ, nie live HTTP. NastÄ™pny: `/plaster` 23.0. |
-| 2026-09-02 | 23.0 | M-30 | `carrier_inquiry` Ĺ›lad `channel_quote` przy lane na `/quotations`. Nie tabela RFQ, nie live HTTP, nie odejmowanie kwot. |
-| 2026-09-02 | Plan 24.0 | M-31 | delta `docs/deltas/archived/24.0-response-comparison.md` + spec. Zestawienie kwot na POL/POD. Nie tabela, nie spread w JS. NastÄ™pny: `/plaster` 24.0. |
+| 2026-09-02 | Plan 23.0 | M-30 | delta `docs/deltas/archived/23.0-carrier-inquiry.md` + spec. ÄąĹˇlad `channel_quote` przy lane. Nie tabela RFQ, nie live HTTP. NastĂ„â„˘pny: `/plaster` 23.0. |
+| 2026-09-02 | 23.0 | M-30 | `carrier_inquiry` Äąâ€şlad `channel_quote` przy lane na `/quotations`. Nie tabela RFQ, nie live HTTP, nie odejmowanie kwot. |
+| 2026-09-02 | Plan 24.0 | M-31 | delta `docs/deltas/archived/24.0-response-comparison.md` + spec. Zestawienie kwot na POL/POD. Nie tabela, nie spread w JS. NastĂ„â„˘pny: `/plaster` 24.0. |
 | 2026-09-02 | 24.0 | M-31 | `response_comparison` zestawienie wyceny i `channel_quote` na POL/POD. Nie tabela, nie odejmowanie kwot, nie silnik spread. |
-| 2026-09-02 | Plan 25.0 | M-32 | delta `docs/deltas/archived/25.0-mail-integration.md` + spec. Tablica znanych adresĂłw. Nie IMAP, nie tabela skrzynki. NastÄ™pny: `/plaster` 25.0. |
+| 2026-09-02 | Plan 25.0 | M-32 | delta `docs/deltas/archived/25.0-mail-integration.md` + spec. Tablica znanych adresÄ‚Ĺ‚w. Nie IMAP, nie tabela skrzynki. NastĂ„â„˘pny: `/plaster` 25.0. |
 | 2026-09-02 | 25.0 | M-32 | `mail_integration` tablica `/mail` (domeny, kontakty, resolve_email). Nie IMAP, nie tabela skrzynki, nie sekrety. |
-| 2026-09-02 | Plan 26.0 | M-33 | delta `docs/deltas/archived/26.0-mail-client.md` + spec. `mailto:` na `/mail`. Nie Office.js, nie Graph. NastÄ™pny: `/plaster` 26.0. |
+| 2026-09-02 | Plan 26.0 | M-33 | delta `docs/deltas/archived/26.0-mail-client.md` + spec. `mailto:` na `/mail`. Nie Office.js, nie Graph. NastĂ„â„˘pny: `/plaster` 26.0. |
 | 2026-09-02 | 26.0 | M-33 | `mail_client` `mailto:` z `party_contact.email` na `/mail`. Nie Office.js, nie Graph, nie IMAP. |
-| 2026-09-02 | Plan 27.0 | M-34 | delta `docs/deltas/archived/27.0-operator-notice.md` + spec. Tablica HITL i wycen pending. Nie tabela, nie wysyĹ‚ka. NastÄ™pny: `/plaster` 27.0. |
-| 2026-09-02 | 27.0 | M-34 | `operator_notice` tablica `/notifications` (HITL pending + wyceny pending). Nie tabela, nie wysyĹ‚ka, nie HITL accept. |
-| 2026-09-02 | Plan 28.0 | M-35 | delta `docs/deltas/archived/28.0-shipment.md` + spec. Tablica wycen z `party_id`. Nie tabela `shipment`, nie tracking. NastÄ™pny: `/plaster` 28.0. |
+| 2026-09-02 | Plan 27.0 | M-34 | delta `docs/deltas/archived/27.0-operator-notice.md` + spec. Tablica HITL i wycen pending. Nie tabela, nie wysyÄąâ€ška. NastĂ„â„˘pny: `/plaster` 27.0. |
+| 2026-09-02 | 27.0 | M-34 | `operator_notice` tablica `/notifications` (HITL pending + wyceny pending). Nie tabela, nie wysyÄąâ€ška, nie HITL accept. |
+| 2026-09-02 | Plan 28.0 | M-35 | delta `docs/deltas/archived/28.0-shipment.md` + spec. Tablica wycen z `party_id`. Nie tabela `shipment`, nie tracking. NastĂ„â„˘pny: `/plaster` 28.0. |
 | 2026-09-02 | 28.0 | M-35 | `shipment` tablica `/shipments` (wyceny z `party_id`). Nie tabela, nie tracking, nie odcinki. |
-| 2026-09-02 | Plan 29.0 | M-36 | delta `docs/deltas/archived/29.0-tracking.md` + spec. Tablica lane POL/POD. Nie tabela zdarzeĹ„, nie mapa. NastÄ™pny: `/plaster` 29.0. |
+| 2026-09-02 | Plan 29.0 | M-36 | delta `docs/deltas/archived/29.0-tracking.md` + spec. Tablica lane POL/POD. Nie tabela zdarzeÄąâ€ž, nie mapa. NastĂ„â„˘pny: `/plaster` 29.0. |
 | 2026-09-02 | 29.0 | M-36 | `tracking` tablica `/tracking` (lane POL/POD + UN/LOCODE). Nie tabela, nie AIS, nie mapa. |
-| 2026-09-02 | Plan 30.0 | M-37 | delta `docs/deltas/archived/30.0-operational-exception.md` + spec. Tablica wycen z party bez peĹ‚nego POL/POD. Nie tabela zdarzeĹ„, nie mapa. NastÄ™pny: `/plaster` 30.0. |
-| 2026-09-02 | 30.0 | M-37 | `operational_exception` tablica `/exceptions` (party bez peĹ‚nego POL/POD). Nie tabela, nie AIS, nie mapa. |
-| 2026-09-02 | Plan 31.0 | M-38 | delta `docs/deltas/archived/31.0-shipment-document.md` + spec. Tablica `source_ref` wycen z party. Nie tabela HBL, nie PDF. NastÄ™pny: `/plaster` 31.0. |
+| 2026-09-02 | Plan 30.0 | M-37 | delta `docs/deltas/archived/30.0-operational-exception.md` + spec. Tablica wycen z party bez peÄąâ€šnego POL/POD. Nie tabela zdarzeÄąâ€ž, nie mapa. NastĂ„â„˘pny: `/plaster` 30.0. |
+| 2026-09-02 | 30.0 | M-37 | `operational_exception` tablica `/exceptions` (party bez peÄąâ€šnego POL/POD). Nie tabela, nie AIS, nie mapa. |
+| 2026-09-02 | Plan 31.0 | M-38 | delta `docs/deltas/archived/31.0-shipment-document.md` + spec. Tablica `source_ref` wycen z party. Nie tabela HBL, nie PDF. NastĂ„â„˘pny: `/plaster` 31.0. |
 | 2026-09-02 | 31.0 | M-38 | `shipment_document` tablica `/shipment-documents` (`source_ref` wycen z party). Nie tabela, nie PDF, nie HBL. |
-| 2026-09-02 | Plan 32.0 | M-39 | delta `docs/deltas/archived/32.0-edi-message.md` + spec. Tablica `channel_quote` na lane. Nie tabela EDI, nie X12. NastÄ™pny: `/plaster` 32.0. |
+| 2026-09-02 | Plan 32.0 | M-39 | delta `docs/deltas/archived/32.0-edi-message.md` + spec. Tablica `channel_quote` na lane. Nie tabela EDI, nie X12. NastĂ„â„˘pny: `/plaster` 32.0. |
 | 2026-09-02 | 32.0 | M-39 | `edi_message` tablica `/edi` (`channel_quote` na lane wyceny). Nie tabela, nie X12, nie live HTTP. |
-| 2026-09-02 | Plan 33.0 | M-40 | delta `docs/deltas/archived/33.0-sales-invoice.md` + spec. Tablica sell z charge. Nie tabela FV, nie KSeF. NastÄ™pny: `/plaster` 33.0. |
+| 2026-09-02 | Plan 33.0 | M-40 | delta `docs/deltas/archived/33.0-sales-invoice.md` + spec. Tablica sell z charge. Nie tabela FV, nie KSeF. NastĂ„â„˘pny: `/plaster` 33.0. |
 | 2026-09-02 | 33.0 | M-40 | `sales_invoice` tablica `/invoices` (sell z charge). Nie tabela, nie KSeF, nie odejmowanie kwot. |
-| 2026-09-02 | Plan 34.0 | M-41 | delta `docs/deltas/archived/34.0-quote-invoice-settlement.md` + spec. Tablica wycena + sell po `rate_line_id`. Nie tabela rozliczenia. NastÄ™pny: `/plaster` 34.0. |
+| 2026-09-02 | Plan 34.0 | M-41 | delta `docs/deltas/archived/34.0-quote-invoice-settlement.md` + spec. Tablica wycena + sell po `rate_line_id`. Nie tabela rozliczenia. NastĂ„â„˘pny: `/plaster` 34.0. |
 | 2026-09-02 | 34.0 | M-41 | `quote_invoice_settlement` tablica `/quote-invoices` (wycena + sell po `rate_line_id`). Nie tabela, nie odejmowanie kwot. |
-| 2026-09-02 | Plan 35.0 | M-42 | delta `docs/deltas/archived/35.0-bank-payment.md` + spec. Tablica IBAN + sell. Nie tabela pĹ‚atnoĹ›ci. NastÄ™pny: `/plaster` 35.0. |
-| 2026-09-02 | 35.0 | M-42 | `bank_payment` tablica `/payments` (IBAN + sell z charge). Nie tabela pĹ‚atnoĹ›ci, nie SEPA, nie N+1. |
-| 2026-09-02 | Plan 36.0 | M-43 | delta `docs/deltas/archived/36.0-money-cost.md` + spec. Tablica NBP + buy. Nie tabela odsetek. NastÄ™pny: `/plaster` 36.0. |
-| 2026-09-02 | 36.0 | M-43 | `money_cost` tablica `/money-cost` (NBP + buy z charge). Nie tabela odsetek, nie mnoĹĽenie kursem. |
-| 2026-09-02 | Plan 37.0 | M-44 | delta `docs/deltas/archived/37.0-fx-difference.md` + spec. Tablica NBP walut z charge/quotation. Nie tabela FX. NastÄ™pny: `/plaster` 37.0. |
+| 2026-09-02 | Plan 35.0 | M-42 | delta `docs/deltas/archived/35.0-bank-payment.md` + spec. Tablica IBAN + sell. Nie tabela pÄąâ€šatnoÄąâ€şci. NastĂ„â„˘pny: `/plaster` 35.0. |
+| 2026-09-02 | 35.0 | M-42 | `bank_payment` tablica `/payments` (IBAN + sell z charge). Nie tabela pÄąâ€šatnoÄąâ€şci, nie SEPA, nie N+1. |
+| 2026-09-02 | Plan 36.0 | M-43 | delta `docs/deltas/archived/36.0-money-cost.md` + spec. Tablica NBP + buy. Nie tabela odsetek. NastĂ„â„˘pny: `/plaster` 36.0. |
+| 2026-09-02 | 36.0 | M-43 | `money_cost` tablica `/money-cost` (NBP + buy z charge). Nie tabela odsetek, nie mnoÄąÄ˝enie kursem. |
+| 2026-09-02 | Plan 37.0 | M-44 | delta `docs/deltas/archived/37.0-fx-difference.md` + spec. Tablica NBP walut z charge/quotation. Nie tabela FX. NastĂ„â„˘pny: `/plaster` 37.0. |
 | 2026-09-02 | 37.0 | M-44 | `fx_difference` tablica `/fx-differences` (NBP walut z charge/quotation). Nie tabela, nie przeliczenie. |
-| 2026-09-02 | Plan 38.0 | M-45 | delta `docs/deltas/archived/38.0-cash-flow.md` + spec. Tablica buy+sell jako wypĹ‚yw/wpĹ‚yw. Nie tabela ksiÄ™gi. NastÄ™pny: `/plaster` 38.0. |
-| 2026-09-02 | 38.0 | M-45 | `cash_flow` tablica `/cashflows` (buy=wypĹ‚yw, sell=wpĹ‚yw). Nie tabela ksiÄ™gi, nie odejmowanie. |
-| 2026-09-02 | Plan 39.0 | M-46 | delta `docs/deltas/archived/39.0-cost-to-serve.md` + spec. Tablica SOP + wyceny kontrahenta. Nie tabela ABC. NastÄ™pny: `/plaster` 39.0. |
+| 2026-09-02 | Plan 38.0 | M-45 | delta `docs/deltas/archived/38.0-cash-flow.md` + spec. Tablica buy+sell jako wypÄąâ€šyw/wpÄąâ€šyw. Nie tabela ksiĂ„â„˘gi. NastĂ„â„˘pny: `/plaster` 38.0. |
+| 2026-09-02 | 38.0 | M-45 | `cash_flow` tablica `/cashflows` (buy=wypÄąâ€šyw, sell=wpÄąâ€šyw). Nie tabela ksiĂ„â„˘gi, nie odejmowanie. |
+| 2026-09-02 | Plan 39.0 | M-46 | delta `docs/deltas/archived/39.0-cost-to-serve.md` + spec. Tablica SOP + wyceny kontrahenta. Nie tabela ABC. NastĂ„â„˘pny: `/plaster` 39.0. |
 | 2026-09-02 | 39.0 | M-46 | `cost_to_serve` tablica `/cost-to-serve` (SOP + wyceny kontrahenta). Nie tabela ABC, nie suma kwot. |
-| 2026-09-02 | Plan 40.0 | M-47 | delta `docs/deltas/archived/40.0-bookkeeping.md` + spec. Tablica charge + nazwa kodu. Nie JPK. NastÄ™pny: `/plaster` 40.0. |
+| 2026-09-02 | Plan 40.0 | M-47 | delta `docs/deltas/archived/40.0-bookkeeping.md` + spec. Tablica charge + nazwa kodu. Nie JPK. NastĂ„â„˘pny: `/plaster` 40.0. |
 | 2026-09-02 | 40.0 | M-47 | `bookkeeping` tablica `/bookkeeping` (charge + charge_code.name). Nie JPK, nie ERP. |
-| 2026-09-02 | Plan 41.0 | M-48 | delta `docs/deltas/archived/41.0-road-transport.md` + spec. Tablica location postal_zone/address. Nie TMS. NastÄ™pny: `/plaster` 41.0. |
+| 2026-09-02 | Plan 41.0 | M-48 | delta `docs/deltas/archived/41.0-road-transport.md` + spec. Tablica location postal_zone/address. Nie TMS. NastĂ„â„˘pny: `/plaster` 41.0. |
 | 2026-09-02 | 41.0 | M-48 | `road_transport` tablica `/road` (postal_zone i address). Nie TMS, nie GPS. |
-| 2026-09-02 | Plan 42.0 | M-49 | delta `docs/deltas/archived/42.0-intermodal-rail.md` + spec. Tablica portĂłw z flagÄ… rail. Nie wagon. NastÄ™pny: `/plaster` 42.0. |
-| 2026-09-02 | 42.0 | M-49 | `intermodal_rail` tablica `/rail` (porty z flagÄ… rail). Nie wagon, nie CIM. |
-| 2026-09-02 | Plan 43.0 | M-50 | delta `docs/deltas/archived/43.0-china-rail.md` + spec. Tablica portĂłw CN z flagÄ… rail. Nie korytarz. NastÄ™pny: `/plaster` 43.0. |
-| 2026-09-02 | 43.0 | M-50 | `china_rail` tablica `/china-rail` (porty CN z flagÄ… rail). Nie korytarz, nie HTTP. |
-| 2026-09-02 | Plan 44.0 | M-51 | delta `docs/deltas/archived/44.0-ocean-lcl.md` + spec. Tablica portĂłw `is_seaport`. Nie tabela LCL. NastÄ™pny: `/plaster` 44.0. |
+| 2026-09-02 | Plan 42.0 | M-49 | delta `docs/deltas/archived/42.0-intermodal-rail.md` + spec. Tablica portÄ‚Ĺ‚w z flagĂ„â€¦ rail. Nie wagon. NastĂ„â„˘pny: `/plaster` 42.0. |
+| 2026-09-02 | 42.0 | M-49 | `intermodal_rail` tablica `/rail` (porty z flagĂ„â€¦ rail). Nie wagon, nie CIM. |
+| 2026-09-02 | Plan 43.0 | M-50 | delta `docs/deltas/archived/43.0-china-rail.md` + spec. Tablica portÄ‚Ĺ‚w CN z flagĂ„â€¦ rail. Nie korytarz. NastĂ„â„˘pny: `/plaster` 43.0. |
+| 2026-09-02 | 43.0 | M-50 | `china_rail` tablica `/china-rail` (porty CN z flagĂ„â€¦ rail). Nie korytarz, nie HTTP. |
+| 2026-09-02 | Plan 44.0 | M-51 | delta `docs/deltas/archived/44.0-ocean-lcl.md` + spec. Tablica portÄ‚Ĺ‚w `is_seaport`. Nie tabela LCL. NastĂ„â„˘pny: `/plaster` 44.0. |
 | 2026-09-02 | 44.0 | M-51 | `ocean_lcl` tablica `/lcl` (porty z `is_seaport`). Nie tabela LCL, nie CFS. |
-| 2026-09-02 | Plan 45.0 | M-53 | delta `docs/deltas/archived/45.0-sanctions.md` + spec. Tablica aktywnych party tax_id/country. Nie OFAC. NastÄ™pny: `/plaster` 45.0. |
+| 2026-09-02 | Plan 45.0 | M-53 | delta `docs/deltas/archived/45.0-sanctions.md` + spec. Tablica aktywnych party tax_id/country. Nie OFAC. NastĂ„â„˘pny: `/plaster` 45.0. |
 | 2026-09-02 | 45.0 | M-53 | `sanctions` tablica `/sanctions` (aktywni party, tax_id i kraj). Nie OFAC, nie HTTP. |
-| 2026-09-02 | Plan 46.0 | M-56 | delta `docs/deltas/archived/46.0-gdpr.md` + spec. Tablica `app_user` email. Nie wnioski. NastÄ™pny: `/plaster` 46.0. |
+| 2026-09-02 | Plan 46.0 | M-56 | delta `docs/deltas/archived/46.0-gdpr.md` + spec. Tablica `app_user` email. Nie wnioski. NastĂ„â„˘pny: `/plaster` 46.0. |
 | 2026-09-02 | 46.0 | M-56 | `gdpr` tablica `/gdpr` (emaile kont tenanta). Nie wniosek, nie usuwanie. |
-| 2026-09-02 | Plan 47.0 | M-57 | delta `docs/deltas/archived/47.0-ai-copilot.md` + spec. Tablica extraction pending. Nie czat. NastÄ™pny: `/plaster` 47.0. |
+| 2026-09-02 | Plan 47.0 | M-57 | delta `docs/deltas/archived/47.0-ai-copilot.md` + spec. Tablica extraction pending. Nie czat. NastĂ„â„˘pny: `/plaster` 47.0. |
 | 2026-09-02 | 47.0 | M-57 | `ai_copilot` tablica `/ai` (szkice pending, source_ref). Nie czat, nie accept. |
-| 2026-09-02 | Plan 48.0 | M-68 | delta `docs/deltas/archived/48.0-observability.md` + spec. Tablica `fetchHealth`. Nie OTel. NastÄ™pny: `/plaster` 48.0. |
+| 2026-09-02 | Plan 48.0 | M-68 | delta `docs/deltas/archived/48.0-observability.md` + spec. Tablica `fetchHealth`. Nie OTel. NastĂ„â„˘pny: `/plaster` 48.0. |
 | 2026-09-02 | 48.0 | M-68 | `observability` tablica `/health` (`fetchHealth`). Nie OTel, nie k6. |
-| 2026-09-02 | Plan 49.0 | M-69 | delta `docs/deltas/archived/49.0-extraction-quality.md` + spec. Tablica unparsed_regions. Nie scoring. NastÄ™pny: `/plaster` 49.0. |
+| 2026-09-02 | Plan 49.0 | M-69 | delta `docs/deltas/archived/49.0-extraction-quality.md` + spec. Tablica unparsed_regions. Nie scoring. NastĂ„â„˘pny: `/plaster` 49.0. |
 | 2026-09-02 | 49.0 | M-69 | `extraction_quality` tablica `/quality` (`unparsed_regions`). Nie scoring, nie tabela QA. |
-| 2026-09-02 | Plan 50.0 | M-70 | delta `docs/deltas/archived/50.0-tenant-rollout.md` + spec. Tablica `default_currency`. Nie tabela rollout. NastÄ™pny: `/plaster` 50.0. |
+| 2026-09-02 | Plan 50.0 | M-70 | delta `docs/deltas/archived/50.0-tenant-rollout.md` + spec. Tablica `default_currency`. Nie tabela rollout. NastĂ„â„˘pny: `/plaster` 50.0. |
 | 2026-09-02 | 50.0 | M-70 | `tenant_rollout` tablica `/rollout` (`default_currency`). Nie tabela, nie upsert. |
-| 2026-09-02 | Plan 51.0 | U-oklch-dark | delta `docs/deltas/archived/51.0-oklch-dark.md` + spec. Tokeny oklch + `.dark`. NastÄ™pny: `/plaster` 51.0. |
+| 2026-09-02 | Plan 51.0 | U-oklch-dark | delta `docs/deltas/archived/51.0-oklch-dark.md` + spec. Tokeny oklch + `.dark`. NastĂ„â„˘pny: `/plaster` 51.0. |
 | 2026-09-02 | 51.0 | U-oklch-dark | tokeny `oklch` + `.dark` w `index.css`. Nie tabela, nie nowa trasa. |
-| 2026-09-02 | Plan 52.0 | U-money-align | delta `docs/deltas/archived/52.0-money-align.md` + spec. OĹ› dziesiÄ™tna `<Money/>`. NastÄ™pny: `/plaster` 52.0. |
-| 2026-09-02 | 52.0 | U-money-align | `<Money/>` siatka integer/uĹ‚amek/ISO. Nie float, nie grouping. |
-| 2026-09-02 | Plan 53.0 | U-condensed | delta `docs/deltas/archived/53.0-table-condensed.md` + spec. Condensed tylko na `/rate-lines`. NastÄ™pny: `/plaster` 53.0. |
+| 2026-09-02 | Plan 52.0 | U-money-align | delta `docs/deltas/archived/52.0-money-align.md` + spec. OÄąâ€ş dziesiĂ„â„˘tna `<Money/>`. NastĂ„â„˘pny: `/plaster` 52.0. |
+| 2026-09-02 | 52.0 | U-money-align | `<Money/>` siatka integer/uÄąâ€šamek/ISO. Nie float, nie grouping. |
+| 2026-09-02 | Plan 53.0 | U-condensed | delta `docs/deltas/archived/53.0-table-condensed.md` + spec. Condensed tylko na `/rate-lines`. NastĂ„â„˘pny: `/plaster` 53.0. |
 | 2026-09-02 | 53.0 | U-condensed | `allowCondensed` na gridzie stawek. Nie globalnie. |
-| 2026-09-02 | Plan 54.0 | U-primitives-json | delta `docs/deltas/archived/54.0-shadcn-radix-base.md` + spec. Pin Radix. NastÄ™pny: `/plaster` 54.0. |
+| 2026-09-02 | Plan 54.0 | U-primitives-json | delta `docs/deltas/archived/54.0-shadcn-radix-base.md` + spec. Pin Radix. NastĂ„â„˘pny: `/plaster` 54.0. |
 | 2026-09-02 | 54.0 | U-primitives-json | `components.json` `base: radix`. Nie Base UI. |
-| 2026-09-02 | Plan 55.0 | U-i18n-structure | delta `docs/deltas/archived/55.0-i18n-structure.md` + spec. Klucze pl. NastÄ™pny: `/plaster` 55.0. |
+| 2026-09-02 | Plan 55.0 | U-i18n-structure | delta `docs/deltas/archived/55.0-i18n-structure.md` + spec. Klucze pl. NastĂ„â„˘pny: `/plaster` 55.0. |
 | 2026-09-02 | 55.0 | U-i18n-structure | `t()` + katalog pl na `/quality` i `/rollout`. Nie EN. |
-| 2026-09-02 | Plan 56.0 | U-playwright-axe | delta `docs/deltas/archived/56.0-playwright-axe.md` + spec. E2E+axe. NastÄ™pny: `/plaster` 56.0. |
+| 2026-09-02 | Plan 56.0 | U-playwright-axe | delta `docs/deltas/archived/56.0-playwright-axe.md` + spec. E2E+axe. NastĂ„â„˘pny: `/plaster` 56.0. |
 | 2026-09-02 | 56.0 | U-playwright-axe | Chromium + axe na sesji, stawkach, HITL, wycenie. Nie live accept. |
-| 2026-09-02 | Plan 57.0 | U-print | delta `docs/deltas/archived/57.0-print-sheet.md` + spec. `@media print`. NastÄ™pny: `/plaster` 57.0. |
+| 2026-09-02 | Plan 57.0 | U-print | delta `docs/deltas/archived/57.0-print-sheet.md` + spec. `@media print`. NastĂ„â„˘pny: `/plaster` 57.0. |
 | 2026-09-02 | 57.0 | U-print | `@media print` chowa chrome. Nie PDF. |
-| 2026-09-02 | 58.0 | ops | Karta jakoĹ›ci w `/po-plastrze`. Baseline drzewa: C901 OK, dup 2,81%, ratio 0,6%, EXPLAIN wyceny Index Scan, 0 wierszy `rate_line`. Proza: `docs/operator/Ĺ›cieĹĽka-pieniÄ™dzy.md`. |
-| 2026-09-02 | 59.0 | ops | Kanon 4,4â€“5 w PLAN. Fala E w kolejce. Etap Refaktor â†’ `/refaktor`. NastÄ™pny: Q-E1 katalogi. |
-| 2026-09-02 | Plan S | ops | Fala S (pogĹ‚Ä™bienia S1â€¦) w PLAN po Q-E4. CURRENT zostaje Q-E1. Nie F9.1 po E. |
-| 2026-09-02 | 60.0 | UI | Q-E1: `/charges`, `/organization-settings`, `/rate-lines` na `catalog-parts`. Nie mixin modeli. Nie `/quotations`. NastÄ™pny: Q-E2 Plan. |
-| 2026-09-02 | Plan 61.0 | ops | Q-E2: testy przez Alembic + pomiar wyceny. Delta zaakceptowana (`/noc`). Nie seed 50k. NastÄ™pny: `/plaster` 61.0. |
-| 2026-09-02 | 61.0 | ops | Q-E2: testy przez Alembic na `omniroute_test`. EXPLAIN Index Scan, 0 wierszy `rate_line` = N/A. NastÄ™pny: Q-E3 Plan. |
-| 2026-09-02 | Plan 62.0 | ops | Q-E3: how-to kontrahent+katalogi + C4 context/container. Delta zaakceptowana (`/noc`). NastÄ™pny: `/plaster` 62.0. |
-| 2026-09-02 | 62.0 | ops | Q-E3: how-to kontrahent i katalogi zapisu; C4 context+container w ARCHITECTURE. Nie 70 stubĂłw. NastÄ™pny: Q-E4 Plan. |
-| 2026-09-02 | Plan 63.0 | ops | Q-E4: STRIDE tenant+HITL + workflow CodeQL poza gate. GHAS nie claim. NastÄ™pny: `/plaster` 63.0. |
-| 2026-09-02 | 63.0 | ops | Q-E4: threat model tenant+HITL; CodeQL workflow poza gate. GHAS leftover. NastÄ™pny: S1 Plan (nie F9.1). |
-| 2026-09-02 | Plan 64.0 | M-32 | S1: `inbound_message` draft+fixture. Delta zaakceptowana (`/noc`). Nie Graph/IMAP/send. NastÄ™pny: `/plaster` 64.0. |
-| 2026-09-02 | 64.0 | M-32 | `inbound_message` per tenant, RLS FORCE, fixture `source_ref`, OpenFGA, GET/POST, `/mail` lista+zapis. Nie Graph/IMAP/send. NastÄ™pny: S2 Plan. |
-| 2026-09-02 | Plan 65.0 | M-11 | S2: `resolve_email` na `inbound_message`. Delta zaakceptowana (`/noc`). Nie IMAP/Graph. NastÄ™pny: `/plaster` 65.0. |
-| 2026-09-02 | 65.0 | M-11 | `resolve_email` dopina `party_id` na `inbound_message`. FK tenanta. Nie IMAP. Nie auto przy INSERT. NastÄ™pny: S3 Plan. |
-| 2026-09-02 | Plan 66.0 | M-20 | S3: treĹ›Ä‡ `inbound_message` â†’ extract HITL. Delta zaakceptowana (`/noc`). Nie blob, nie zapis `rate_line`. NastÄ™pny: `/plaster` 66.0. |
-| 2026-09-02 | 66.0 | M-20 | TreĹ›Ä‡ `inbound_message` â†’ `extract_to_draft` HITL. Przycisk na `/mail`. Nie accept, nie `rate_line` z poczty. NastÄ™pny: S4 Plan. |
-| 2026-09-02 | OS-2 | ops | factory_cycle na komendach, C2, E2 run_gate, podĹ‚oga jakoĹ›ci, bench 66.0, karty z 3Ă— CI. Nie Auto-AGENTS. Nie S4. |
+| 2026-09-02 | 58.0 | ops | Karta jakoÄąâ€şci w `/po-plastrze`. Baseline drzewa: C901 OK, dup 2,81%, ratio 0,6%, EXPLAIN wyceny Index Scan, 0 wierszy `rate_line`. Proza: `docs/operator/Äąâ€şcieÄąÄ˝ka-pieniĂ„â„˘dzy.md`. |
+| 2026-09-02 | 59.0 | ops | Kanon 4,4Ă˘â‚¬â€ś5 w PLAN. Fala E w kolejce. Etap Refaktor Ă˘â€ â€™ `/refaktor`. NastĂ„â„˘pny: Q-E1 katalogi. |
+| 2026-09-02 | Plan S | ops | Fala S (pogÄąâ€šĂ„â„˘bienia S1Ă˘â‚¬Â¦) w PLAN po Q-E4. CURRENT zostaje Q-E1. Nie F9.1 po E. |
+| 2026-09-02 | 60.0 | UI | Q-E1: `/charges`, `/organization-settings`, `/rate-lines` na `catalog-parts`. Nie mixin modeli. Nie `/quotations`. NastĂ„â„˘pny: Q-E2 Plan. |
+| 2026-09-02 | Plan 61.0 | ops | Q-E2: testy przez Alembic + pomiar wyceny. Delta zaakceptowana (`/noc`). Nie seed 50k. NastĂ„â„˘pny: `/plaster` 61.0. |
+| 2026-09-02 | 61.0 | ops | Q-E2: testy przez Alembic na `omniroute_test`. EXPLAIN Index Scan, 0 wierszy `rate_line` = N/A. NastĂ„â„˘pny: Q-E3 Plan. |
+| 2026-09-02 | Plan 62.0 | ops | Q-E3: how-to kontrahent+katalogi + C4 context/container. Delta zaakceptowana (`/noc`). NastĂ„â„˘pny: `/plaster` 62.0. |
+| 2026-09-02 | 62.0 | ops | Q-E3: how-to kontrahent i katalogi zapisu; C4 context+container w ARCHITECTURE. Nie 70 stubÄ‚Ĺ‚w. NastĂ„â„˘pny: Q-E4 Plan. |
+| 2026-09-02 | Plan 63.0 | ops | Q-E4: STRIDE tenant+HITL + workflow CodeQL poza gate. GHAS nie claim. NastĂ„â„˘pny: `/plaster` 63.0. |
+| 2026-09-02 | 63.0 | ops | Q-E4: threat model tenant+HITL; CodeQL workflow poza gate. GHAS leftover. NastĂ„â„˘pny: S1 Plan (nie F9.1). |
+| 2026-09-02 | Plan 64.0 | M-32 | S1: `inbound_message` draft+fixture. Delta zaakceptowana (`/noc`). Nie Graph/IMAP/send. NastĂ„â„˘pny: `/plaster` 64.0. |
+| 2026-09-02 | 64.0 | M-32 | `inbound_message` per tenant, RLS FORCE, fixture `source_ref`, OpenFGA, GET/POST, `/mail` lista+zapis. Nie Graph/IMAP/send. NastĂ„â„˘pny: S2 Plan. |
+| 2026-09-02 | Plan 65.0 | M-11 | S2: `resolve_email` na `inbound_message`. Delta zaakceptowana (`/noc`). Nie IMAP/Graph. NastĂ„â„˘pny: `/plaster` 65.0. |
+| 2026-09-02 | 65.0 | M-11 | `resolve_email` dopina `party_id` na `inbound_message`. FK tenanta. Nie IMAP. Nie auto przy INSERT. NastĂ„â„˘pny: S3 Plan. |
+| 2026-09-02 | Plan 66.0 | M-20 | S3: treÄąâ€şĂ„â€ˇ `inbound_message` Ă˘â€ â€™ extract HITL. Delta zaakceptowana (`/noc`). Nie blob, nie zapis `rate_line`. NastĂ„â„˘pny: `/plaster` 66.0. |
+| 2026-09-02 | 66.0 | M-20 | TreÄąâ€şĂ„â€ˇ `inbound_message` Ă˘â€ â€™ `extract_to_draft` HITL. Przycisk na `/mail`. Nie accept, nie `rate_line` z poczty. NastĂ„â„˘pny: S4 Plan. |
+| 2026-09-02 | OS-2 | ops | factory_cycle na komendach, C2, E2 run_gate, podÄąâ€šoga jakoÄąâ€şci, bench 66.0, karty z 3Ä‚â€” CI. Nie Auto-AGENTS. Nie S4. |
 | 2026-09-02 | OS-3 | ops | Test z nowym serwisem/API, how-to albo leftover przy zapisie, delta produktu zanim kod. Nie S4. |
-| 2026-09-02 | OS-4 | ops | Skaner slopu (`craft-style`) + sufit funkcji >40 linii. Nie toĹĽsamoĹ›Ä‡ z czĹ‚owiekiem. Nie S4. |
-| 2026-09-03 | Plan 67.0 | M-28 | S4: `customer_rfq` powiÄ…zany z `inbound_message`. Delta zaakceptowana (`/noc`). Nie Ĺ›lad wycen, nie silnik. NastÄ™pny: `/plaster` 67.0. |
-| 2026-09-03 | 67.0 | M-28 | `customer_rfq` per tenant, FK tenanta do `inbound_message`, jeden RFQ na wiadomoĹ›Ä‡, `/mail`. Nie kwota. Nie silnik. NastÄ™pny: S5 Plan. |
-| 2026-09-03 | Plan 68.0 | M-21 | S5: istniejÄ…cy silnik wyceny na `customer_rfq`. Delta zaakceptowana (`/noc`). Nie nowy silnik. LLM nie liczy. NastÄ™pny: `/plaster` 68.0. |
-| 2026-09-03 | 68.0 | M-21 | IstniejÄ…cy silnik na `customer_rfq` (`quotation.customer_rfq_id`). Kwota ze stawki. Nie nowy silnik. NastÄ™pny: S6 Plan. |
-| 2026-09-03 | Plan 69.0 | M-18 | S6: ewaluacja `applies_when` w SQL. Delta zaakceptowana (`/noc`). Nie zapis marĹĽy do `charge`. NastÄ™pny: `/plaster` 69.0. |
-| 2026-09-03 | 69.0 | M-18 | Matching `applies_when` w SQL na `port_surcharge`. Nie zapis do `charge`. NastÄ™pny: S7 Plan. |
-| 2026-09-03 | Plan 70.0 | M-09 | S7: HS/CN na RFQ/wycenie. Delta zaakceptowana (`/noc`). UN z M-52 leftover. NastÄ™pny: `/plaster` 70.0. |
-| 2026-09-03 | 70.0 | M-09 | HS/CN z katalogu na RFQ i wycenie. Kwota nadal ze stawki. UN leftover. NastÄ™pny: S8 Plan. |
-| 2026-09-03 | Plan 71.0 | M-03 | S8: prefiks numeru i token szablonu w `organization_setting`. Delta zaakceptowana (`/noc`). NastÄ™pny: `/plaster` 71.0. |
-| 2026-09-03 | 71.0 | M-03 | Prefiks i token szablonu w allowliĹ›cie. Nie licznik. Nie PDF. NastÄ™pny: S9 Plan. |
-| 2026-09-03 | Plan 72.0 | M-26 | S9: numer na dokumencie oferty + print 57.0. Delta zaakceptowana (`/noc`). Nie send. NastÄ™pny: `/plaster` 72.0. |
-| 2026-09-03 | 72.0 | M-26 | `document_number` z prefiksu w SQL. Druk 57.0. Nie send. Nie PDF. NastÄ™pny: S10 Plan. |
-| 2026-09-03 | Plan 73.0 | M-16 | S10: `blocks_auto` na `customer_sop`. Delta zaakceptowana (`/noc`). Nie send. NastÄ™pny: `/plaster` 73.0. |
-| 2026-09-03 | 73.0 | M-16 | `blocks_auto` na SOP. Draft nie blokuje. Nie send. NastÄ™pny: S11 Plan. |
-| 2026-09-03 | Plan 74.0 | M-71 | S11: szyna `operator_decision`. Delta zaakceptowana (`/noc`). Nie M-57. NastÄ™pny: `/plaster` 74.0. |
-| 2026-09-03 | 74.0 | M-71 | Szyna `operator_decision` pending/accept/reject. Nie M-57. Nie send. NastÄ™pny: S12 Plan. |
-| 2026-09-03 | Plan 75.0 | M-34 | S12: tabela `operator_notice`. Delta zaakceptowana (`/noc`). Nie filtr wycen. NastÄ™pny: `/plaster` 75.0. |
-| 2026-09-03 | 75.0 | M-34 | Tabela `operator_notice` unread/read. Nie filtr wycen. Nie send. NastÄ™pny: S13 Plan. |
-| 2026-09-03 | Plan 76.0 | M-57 | S13: tabela `mail_draft` obok extract. Delta zaakceptowana (`/noc`). Accept przez S11. NastÄ™pny: `/plaster` 76.0. |
-| 2026-09-03 | 76.0 | M-57 | Tabela `mail_draft` obok extract. Accept przez S11. Nie czat. Nie send. NastÄ™pny: S14 Plan. |
-| 2026-09-03 | Plan 77.0 | M-71 | S14: `lock_version` na decyzji. Delta zaakceptowana (`/noc`). Dwa Akceptuj = jeden konflikt. NastÄ™pny: `/plaster` 77.0. |
-| 2026-09-03 | 77.0 | M-71 | `lock_version` na decide. Dwa Akceptuj = jeden konflikt. Nie send. NastÄ™pny: S15 Plan. |
-| 2026-09-03 | Plan 78.0 | M-32 | S15: ingest Graph (`graph://`, `external_id`). Delta zaakceptowana (`/noc`). Nie live HTTP. NastÄ™pny: `/plaster` 78.0. |
-| 2026-09-03 | 78.0 | M-32 | Ingest `graph://` + `external_id` na `inbound_message`. Ten sam id = ten sam wiersz. Nie live HTTP. Nie send. NastÄ™pny: S16 Plan. |
-| 2026-09-03 | Plan 79.0 | M-02 | S16: outbox `inbound_message_saved`. Delta zaakceptowana (`/noc`). Nie Temporal. NastÄ™pny: `/plaster` 79.0. |
-| 2026-09-03 | 79.0 | M-02 | Tabela `outbox_event`, zdarzenie po zapisie wiadomoĹ›ci. Ten sam subject = ten sam wiersz. Nie Temporal. NastÄ™pny: S17 Plan. |
-| 2026-09-03 | Plan 80.0 | M-32 | S17: ingest IMAP (`imap://`, `external_id`). Delta zaakceptowana (`/noc`). Nie live skrzynka. NastÄ™pny: `/plaster` 80.0. |
-| 2026-09-03 | 80.0 | M-32 | Ingest `imap://` + `external_id` na `inbound_message`. Ten sam id = ten sam wiersz. Nie live skrzynka. NastÄ™pny: S18 Plan. |
-| 2026-09-03 | Plan 81.0 | M-33 | S18: Ĺ›wiadomy `mailto:` po akceptacji szkicu. Delta zaakceptowana (`/noc`). Nie Graph HTTP. NastÄ™pny: `/plaster` 81.0. |
-| 2026-09-03 | 81.0 | M-33 | Ĺšwiadomy `mailto:` po accept szkicu. `blocks_auto` nie blokuje klikniÄ™cia. Nie Graph HTTP. NastÄ™pny: S19 Plan. |
-| 2026-09-03 | Plan 82.0 | M-12 | S19: tabela `network_member`. Delta zaakceptowana (`/noc`). Nie scraping. NastÄ™pny: `/plaster` 82.0. |
-| 2026-09-03 | 82.0 | M-12 | Tabela `network_member` RLS. RÄ™czny agent w sieci. Nie portal. NastÄ™pny: S20 Plan. |
-| 2026-09-03 | Plan 83.0 | M-30 | S20: tabela `carrier_inquiry` (buy, do `network_member`). Delta zaakceptowana (`/noc`). Nie live HTTP. NastÄ™pny: `/plaster` 83.0. |
-| 2026-09-03 | 83.0 | M-30 | Tabela `carrier_inquiry` RLS. Zapytanie do `network_member`, draft, bez kwoty. Nie live HTTP. NastÄ™pny: S21 Plan. |
-| 2026-09-03 | S21 park | M-19 | Live HTTP kanaĹ‚u zaparkowane â€” brak umowy. Nie teatr HTTP. NastÄ™pny: S22 Plan. |
-| 2026-09-03 | Plan 84.0 | M-31 | S22: porĂłwnanie zapisuje `charge` (buy kanaĹ‚, sell wycena). Delta zaakceptowana (`/noc`). Nie odejmuj w JS. NastÄ™pny: `/plaster` 84.0. |
-| 2026-09-03 | 84.0 | M-31 | PorĂłwnanie zapisuje `charge`; marĹĽa z `margin()`. Nie odejmuj w JS. NastÄ™pny: S23 Plan. |
-| 2026-09-03 | Plan 85.0 | M-25 | S23: `negotiated_channel_quote_id` na wycenie. Delta zaakceptowana (`/noc`). Nie nowa kwota. NastÄ™pny: `/plaster` 85.0. |
-| 2026-09-03 | 85.0 | M-25 | Wskazanie `channel_quote` na wycenie. Nie nowa kwota. Nie zamiast `margin()`. NastÄ™pny: S24 Plan. |
-| 2026-09-03 | Plan 86.0 | M-29 | S24: accept oferty = `operator_decision` na `quotation`. Delta zaakceptowana (`/noc`). Nie HITL extract. NastÄ™pny: `/plaster` 86.0. |
-| 2026-09-03 | 86.0 | M-29 | Accept oferty przez S11 (`quotation`). Nie HITL extract. NastÄ™pny: S25 Plan. |
-| 2026-09-03 | Plan 87.0 | M-24 | S25: `noted_credit_review_id` na wycenie. Delta zaakceptowana (`/noc`). Nie scoring. NastÄ™pny: `/plaster` 87.0. |
-| 2026-09-03 | 87.0 | M-24 | Wskazanie recenzji na wycenie. Nie scoring. NastÄ™pny: S26 Plan. |
-| 2026-09-03 | Plan 88.0 | M-14 | S26: `bureau_attachment_ref` na recenzji. Delta zaakceptowana (`/noc`). Nie auto-limit. NastÄ™pny: `/plaster` 88.0. |
-| 2026-09-03 | 88.0 | M-14 | Wskazanie raportu wywiadowni na recenzji. Nie auto-limit. Nie HTTP do biura. NastÄ™pny: S27 Plan. |
-| 2026-09-03 | Plan 89.0 | M-53 | S27: sprawdzenie listy na `party`. Delta zaakceptowana (`/noc`). Nie auto-match. NastÄ™pny: `/plaster` 89.0. |
-| 2026-09-03 | 89.0 | M-53 | Sprawdzenie listy na `party`. Nie auto-match. Nie live lista. NastÄ™pny: S28 Plan. |
-| 2026-09-03 | Plan 90.0 | M-35 | S28: tabela `shipment` z wyceny. Delta zaakceptowana (`/noc`). Nie tracking. NastÄ™pny: `/plaster` 90.0. |
-| 2026-09-03 | 90.0 | M-35 | Tabela `shipment` z wyceny. Nie tracking. Nie numer. NastÄ™pny: S29 Plan. |
-| 2026-09-03 | Plan 91.0 | M-36 | S29: `tracking_event` na zleceniu. Delta zaakceptowana (`/noc`). Nie mapa. NastÄ™pny: `/plaster` 91.0. |
-| 2026-09-03 | 91.0 | M-36 | Zdarzenia trackingu na zleceniu. Nie mapa. Nie AIS. NastÄ™pny: S30 Plan. |
-| 2026-09-03 | Plan 92.0 | M-38 | S30: `shipment_document` na zleceniu. Delta zaakceptowana (`/noc`). Nie PDF. NastÄ™pny: `/plaster` 92.0. |
-| 2026-09-03 | 92.0 | M-38 | Dokumenty na zleceniu. Nie bajty. Nie PDF. NastÄ™pny: S31 Plan. |
-| 2026-09-03 | Plan 93.0 | M-37 | S31: `operational_exception` na zleceniu. Delta zaakceptowana (`/noc`). Nie mapa. NastÄ™pny: `/plaster` 93.0. |
-| 2026-09-03 | 93.0 | M-37 | Tabela wyjÄ…tkĂłw na zleceniu. Nie mapa. Nie filtr wycen. NastÄ™pny: S32 Plan. |
-| 2026-09-03 | Plan 94.0 | UI | S32: Watchtower lista + S11 + lazy mapa. Delta zaakceptowana (`/noc`). Nie leaflet. NastÄ™pny: `/plaster` 94.0. |
-| 2026-09-03 | 94.0 | UI | WieĹĽa: wyjÄ…tki + pending S11 + leniwy panel mapy. Nie leaflet. NastÄ™pny: S33 Plan. |
-| 2026-09-03 | Plan 95.0 | M-39 | S33: `edi_message` na zleceniu. Delta zaakceptowana (`/noc`). Nie parser. NastÄ™pny: `/plaster` 95.0. |
-| 2026-09-03 | 95.0 | M-39 | Tabela komunikatu EDI na zleceniu. Nie parser. Nie live HTTP. NastÄ™pny: S34 Plan. |
-| 2026-09-03 | Plan 96.0 | M-40 | S34: `sales_invoice` na zleceniu. Delta zaakceptowana (`/noc`). Nie KSeF. NastÄ™pny: `/plaster` 96.0. |
-| 2026-09-03 | 96.0 | M-40 | Tabela faktury sprzedaĹĽy na zleceniu. Nie KSeF. Nie druga marĹĽa. NastÄ™pny: S35 Plan. |
-| 2026-09-03 | Plan 97.0 | M-40 | S35: `ksef_ref` na fakturze. Delta zaakceptowana (`/noc`). Nie live HTTP. NastÄ™pny: `/plaster` 97.0. |
-| 2026-09-03 | 97.0 | M-40 | Numer sesji KSeF na fakturze. Nie live HTTP. Nie XML. NastÄ™pny: S36 Plan. |
-| 2026-09-03 | Plan 98.0 | M-41 | S36: `quote_invoice_settlement` wiÄ…ĹĽe wycenÄ™ z fakturÄ…. Delta zaakceptowana (`/noc`). Nie druga marĹĽa. NastÄ™pny: `/plaster` 98.0. |
-| 2026-09-03 | 98.0 | M-41 | Tabela rozliczenia wyceny z fakturÄ…. Nie druga marĹĽa. Nie odejmowanie. NastÄ™pny: S37 Plan. |
-| 2026-09-03 | Plan 99.0 | M-42 | S37: `bank_payment` wiÄ…ĹĽe fakturÄ™ z rachunkiem. Delta zaakceptowana (`/noc`). Nie SEPA. NastÄ™pny: `/plaster` 99.0. |
-| 2026-09-03 | 99.0 | M-42 | Tabela pĹ‚atnoĹ›ci faktury na rachunek. Nie SEPA. Nie druga marĹĽa. NastÄ™pny: S38 Plan. |
-| 2026-09-03 | Plan 100.0 | M-43 | S38: `money_cost` wiÄ…ĹĽe pĹ‚atnoĹ›Ä‡ z kursem NBP. Delta zaakceptowana (`/noc`). Nie odsetki. NastÄ™pny: `/plaster` 100.0. |
-| 2026-09-03 | 100.0 | M-43 | Tabela kosztu pieniÄ…dza: pĹ‚atnoĹ›Ä‡ przy kursie NBP. Nie odsetki. Nie mnoĹĽenie. NastÄ™pny: S39 Plan. |
-| 2026-09-03 | Plan 101.0 | M-44 | S39: `fx_difference` wiÄ…ĹĽe wycenÄ™ z kursem NBP. Delta zaakceptowana (`/noc`). Nie przeliczenie. NastÄ™pny: `/plaster` 101.0. |
-| 2026-09-03 | 101.0 | M-44 | Tabela rĂłĹĽnicy kursowej: wycena przy kursie NBP. Nie przeliczenie. NastÄ™pny: S40 Plan. |
-| 2026-09-03 | Plan 102.0 | M-45 | S40: `cash_flow` wiÄ…ĹĽe wycenÄ™ z pĹ‚atnoĹ›ciÄ…. Delta zaakceptowana (`/noc`). Nie odejmowanie. NastÄ™pny: `/plaster` 102.0. |
-| 2026-09-03 | 102.0 | M-45 | Tabela przepĹ‚ywu: wycena przy pĹ‚atnoĹ›ci. Nie odejmowanie. NastÄ™pny: S41 Plan. |
-| 2026-09-03 | Plan 103.0 | M-46 | S41: `cost_to_serve` wiÄ…ĹĽe SOP z wycenÄ…. Delta zaakceptowana (`/noc`). Nie suma. NastÄ™pny: `/plaster` 103.0. |
-| 2026-09-03 | 103.0 | M-46 | Tabela kosztu obsĹ‚ugi: SOP przy wycenie. Nie suma. NastÄ™pny: S42 Plan. |
-| 2026-09-03 | Plan 104.0 | M-47 | S42: `bookkeeping` wiÄ…ĹĽe opĹ‚atÄ™ z fakturÄ…. Delta zaakceptowana (`/noc`). Nie JPK. NastÄ™pny: `/plaster` 104.0. |
-| 2026-09-03 | 104.0 | M-47 | Tabela dekretu: opĹ‚ata na fakturÄ™. Nie JPK. Nie odejmowanie. NastÄ™pny: S43 Plan. |
-| 2026-09-03 | Plan 105.0 | M-91 | S43: `collective_invoice` wiÄ…ĹĽe fakturÄ™ z dodatkowym zleceniem. Delta zaakceptowana (`/noc`). Nie pĹ‚atnoĹ›Ä‡ paczkÄ…. NastÄ™pny: `/plaster` 105.0. |
-| 2026-09-03 | 105.0 | M-91 | Tabela zbiorczej: dodatkowe zlecenie na fakturze. Nie pĹ‚atnoĹ›Ä‡ paczkÄ…. Nie JPK. NastÄ™pny: S44 Plan. |
-| 2026-09-03 | Plan 106.0 | M-15 | S44: `/finance` czyta faktury. Delta zaakceptowana (`/noc`). Nie narracja. NastÄ™pny: `/plaster` 106.0. |
-| 2026-09-03 | 106.0 | M-15 | Tablica `/finance` czyta faktury sprzedaĹĽy. Nie suma. Nie narracja. NastÄ™pny: S45 Plan. |
-| 2026-09-03 | Plan 107.0 | M-56 | S45: `gdpr_request` access/erasure + tombstone konta. Delta zaakceptowana (`/noc`). Nie DPIA. NastÄ™pny: `/plaster` 107.0. |
-| 2026-09-03 | 107.0 | M-56 | Tabela wniosku RODO + tombstone konta. Nie DPIA. Nie DELETE `app_user`. NastÄ™pny: S46 Plan. |
-| 2026-09-03 | Plan 108.0 | M-48 | S46: `shipment_leg` odcinek drogowy na zleceniu. Delta zaakceptowana (`/noc`). Nie mapa. NastÄ™pny: `/plaster` 108.0. |
-| 2026-09-03 | 108.0 | M-48 | Tabela odcinka drogowego na zleceniu. Nie mapa. Nie TMS. NastÄ™pny: S47 Plan. |
-| 2026-09-03 | Plan 109.0 | M-49 | S47: `shipment_leg` `rail` na zleceniu. Delta zaakceptowana (`/noc`). Nie mapa. NastÄ™pny: `/plaster` 109.0. |
-| 2026-09-03 | 109.0 | M-49 | Odcinek kolejowy na tej samej tabeli nogi. Nie wagon. Nie mapa. NastÄ™pny: S48 Plan. |
-| 2026-09-03 | Plan 110.0 | M-50 | S48: `shipment_leg` `china_rail` na zleceniu. Delta zaakceptowana (`/noc`). Nie korytarz. NastÄ™pny: `/plaster` 110.0. |
-| 2026-09-03 | 110.0 | M-50 | Odcinek kolej z Chin na tej samej tabeli nogi. Nie korytarz. Nie HTTP. NastÄ™pny: S49 Plan. |
-| 2026-09-04 | Plan 111.0 | M-51 | S49: `shipment_leg` `ocean_lcl` na zleceniu. Delta zaakceptowana (`/noc`). Nie CFS. NastÄ™pny: `/plaster` 111.0. |
-| 2026-09-04 | 111.0 | M-51 | Odcinek drobnicy na tej samej tabeli nogi. Nie CFS. Nie CBM. NastÄ™pny: S50 Plan (park floty). |
-| 2026-09-04 | Plan 112.0 | M-111 | S50 flota named park â€” brak jobu â€žwĹ‚asne autoâ€ť. Zero kodu. NastÄ™pny: S51 Plan. |
-| 2026-09-04 | Plan 113.0 | M-55 | S51: `cargo_claim` na zleceniu. Delta zaakceptowana (`/noc`). Nie kwota. NastÄ™pny: `/plaster` 113.0. |
-| 2026-09-04 | 113.0 | M-55 | Tabela reklamacji Ĺ‚adunku na zleceniu. Nie kwota. Nie scoring. NastÄ™pny: S52 Plan. |
-| 2026-09-04 | Plan 114.0 | M-54 | S52: `fraud_flag` na kontrahencie. Delta zaakceptowana (`/noc`). Nie scoring osoby. NastÄ™pny: `/plaster` 114.0. |
-| 2026-09-04 | 114.0 | M-54 | Tabela flagi oszustwa na kontrahencie. Nie scoring osoby. Nie kwota. NastÄ™pny: S54 Plan (S53 Auth0 parked). |
-| 2026-09-04 | Plan 115.0 | M-76 | S54 status klienta named park â€” brak Auth0 S53. Zero kodu. NastÄ™pny: S56 Plan. |
-| 2026-09-04 | Plan 116.0 | M-57 | S56: szkice `mail_draft` na wieĹĽy. Delta zaakceptowana (`/noc`). Nie czat. NastÄ™pny: `/plaster` 116.0. |
-| 2026-09-04 | 116.0 | M-57 | WieĹĽa czyta `mail_draft`. Zapis zostaje na `/ai`. Nie czat. NastÄ™pny: S57 Plan. |
-| 2026-09-04 | Plan 117.0 | M-15 | S57: narracja po SQL na `/finance`. Delta zaakceptowana (`/noc`). LLM nie liczy. NastÄ™pny: `/plaster` 117.0. |
-| 2026-09-04 | 117.0 | M-15 | Narracja po SQL na `/finance`. Nie suma. Nie LLM. NastÄ™pny: S58 Plan. |
-| 2026-09-04 | Plan 118.0 | M-57 | S58: SOP `blocks_auto` obok szkicĂłw na `/ai`. Delta zaakceptowana (`/noc`). Nie auto-send. NastÄ™pny: `/plaster` 118.0. |
-| 2026-09-04 | 118.0 | M-57 | SOP `blocks_auto` na `/ai` obok szkicĂłw. Nie auto-send. NastÄ™pny: S59 Plan. |
-| 2026-09-04 | Plan 119.0 | M-68 | S59 OTel/QA/rollout named park â€” brak konsumenta outboxa i jobu SaaS. Zero kodu. NastÄ™pny: nie zgaduj 71â€“212. |
-| 2026-09-04 | Plan 120.0 | M-13 | S27b: decyzje oferty na karcie. Delta zaakceptowana (`/noc`). Nie scoring osoby. NastÄ™pny: `/plaster` 120.0. |
-| 2026-09-04 | 120.0 | M-13 | S27b: karta czyta przyjÄ™te/odrzucone wyceny. Nie scoring osoby. NastÄ™pny: leftover S11 `changed`. |
-| 2026-09-04 | Plan 121.0 | M-71 | Leftover S11 `changed`. Delta zaakceptowana (`/noc`). Nie extract. NastÄ™pny: `/plaster` 121.0. |
-| 2026-09-04 | 121.0 | M-71 | Leftover S11: werdykt `changed` z lock. Nie extract. NastÄ™pny: leftover S7 UN na RFQ. |
-| 2026-09-04 | Plan 122.0 | M-52 | S7b: UN na RFQ/wycenie. Delta zaakceptowana (`/noc`). Nie LLM. NastÄ™pny: `/plaster` 122.0. |
-| 2026-09-04 | 122.0 | M-52 | S7b: UN na RFQ/wycenie. Nie LLM. Nie filtr stawki. NastÄ™pny: leftover S12 filtr 27.0. |
-| 2026-09-04 | Plan 123.0 | M-34 | S12b: filtr kind na tablicy 27.0. Delta zaakceptowana (`/noc`). Nie auto-INSERT. NastÄ™pny: `/plaster` 123.0. |
-| 2026-09-04 | 123.0 | M-34 | S12b: filtr kind na tablicy 27.0. Nie auto-INSERT. NastÄ™pny: leftover S32 kafelki wieĹĽy. |
-| 2026-09-04 | Plan 124.0 | UI | S32: liczniki na `/watchtower`. Delta zaakceptowana (`/noc`). Nie leaflet. NastÄ™pny: `/plaster` 124.0. |
-| 2026-09-04 | 124.0 | UI | S32: liczniki wyjÄ…tkĂłw, pending i szkicĂłw na wieĹĽy. Nie leaflet. Nie AIS. NastÄ™pny: `/refaktor` mixin modeli. |
-| 2026-09-04 | 125.0 | M-10 | `/refaktor`: trzy metody PartyService â‰¤40 linii. Nie mixin. NastÄ™pny: `/refaktor` `create_quote`. |
-| 2026-09-04 | 126.0 | M-19 | `/refaktor`: `create_quote` â‰¤40. Sufit funkcji 0. NastÄ™pny: leftover DNA `--ink`. |
-| 2026-09-04 | 127.0 | UI/M-10 | leftover DNA `--ink` + `/refaktor` `_blank_to_none`. Nie mixin. NastÄ™pny: named parks. |
-| 2026-09-04 | 128.0 | OS | leftover context rot: PLAN bez rÄ™cznego SHA; AGENTS M-71 z `changed`+lock. Nie konsument. NastÄ™pny: named parks. |
-| 2026-09-07 | Plan benchmark | OS | Benchmark Qargo+SPEED+PDF: ADR-0004, matryca `docs/analysis/`, karty pĂłl Fali T, kolejka-propozycja, karty `_knowledge/market/`, digesty `docs/_source/benchmark/`. Kanon kolejki bez zmian. NastÄ™pny: named parks (bez zmian). |
-| 2026-09-07 | Plan Â§13g | OS | Hub telematyczny: zero wĹ‚asnego HW (Teltonika+Queclink), BYO API + pĹ‚yta, okno `trip`+N dni, widocznoĹ›Ä‡ gieĹ‚d, zakaz scrapingu czatĂłw. Karta `006-telematics-hub`. Kanon kolejki bez zmian. |
-| 2026-09-07 | Plan Â§13h | OS | Pogoda pan-EU, BDO+DIWASS, blokada zlecenia po polisie/licencji, snapshot Trans.eu, katalog SENT-europa, myto EU/EFTA. Karta `007-compliance-eu`. Kanon kolejki bez zmian. |
-| 2026-09-07 | Plan Â§13i | OS | Lejek oferty: sent/open/PDF/reply/conversion, czasy SQL, hostowany token, piksel tylko po zgodzie. Karta `008-quote-engagement`. Kanon kolejki bez zmian. |
-| 2026-09-07 | Plan inwentarz | OS | Korekta Â§13e: nagĹ‚Ăłwki â‰  peĹ‚ny PDF. Audyt `inwentarz-mc-pdf.md` + luki Â§13j + odrzucenia (dwa produkty, blueprint, HERE, auto-zapis). Kanon kolejki bez zmian. |
-| 2026-09-07 | Plan Â§13k | OS | PodkĹ‚ady map: darmowe on/off u uĹĽytkownika; pĹ‚atne BYO u admina tenanta; instrukcja `podklady-map-admin.md`. Zakaz tile.openstreetmap.org. Kanon kolejki bez zmian. |
-| 2026-09-07 | Plan Â§13l | OS | Adapter ERP/FK P0: Comarch Optima+XL, Symfonia WebAPI, Subiekt nexo+GT. Jeden KSeF. Zakaz SQL do bazy klienta. `erp-fk-adapter.md`. Kanon kolejki bez zmian. |
-| 2026-09-07 | Plan Â§13l | OS | Doprecyzowanie: Omni wystawia FV; do FK idÄ… przychodowe (`sales_invoice`) i kosztowe (`purchase_invoice`). KSeF tylko Omni. |
-| 2026-09-07 | Plan Â§13m | OS | FV kosztowe z maila/KSeF/skanu: draft HITL, ranking zleceĹ„ SQL, shipment_ref na wychodzÄ…cych, zakaz auto-link. F10. |
-| 2026-09-07 | Plan Â§13n | OS | Wydruki sieci drobnicowych (CMR/groupage/etykieta) + skan zwrotny: QR Omni = podpiÄ™cie, bez kodu = HITL. D9. |
-| 2026-09-07 | Plan Â§13o | OS | SĹ‚abe zdjÄ™cia: gate + OpenCV (kadr/deskew/CLAHE/Lanczos), nie GAN. Split HITL z ramkami, pewnoĹ›ciÄ… i edycjÄ…. X9. |
-| 2026-09-07 | Plan Â§13o | OS | Cel wyglÄ…du: skaner pĹ‚aski (~300 DPI, biel, bez cienia). ML Kit/VisionKit przy spuĹ›cie; FV bez wymazywania plam. |
-| 2026-09-07 | Plan Â§13p | OS | KsiÄ…ĹĽka nadawcza PP: EN + Ĺ›ledzenie REST + EPO (kto odebraĹ‚). F11. Zakaz scrapingu; imiÄ™ tylko z EPO lub skanu ZPO. |
-| 2026-09-07 | Plan Â§13p | OS | FV papierowa = kanaĹ‚ `paper_post` (Poczta Polska). Nie wyĹ‚Ä…cza KSeF. Bez nadania nie ma statusu wysĹ‚ana. |
-| 2026-09-07 | Audyt V5/C9 | OS | SpĂłjnoĹ›Ä‡ matrycaâ†”kolejka: P0 GBOX/IKOL/Flotis/Wialon w V5 (nie HZ); Tronik/Logisat po umowie; C9 bez obietnicy opinii sĹ‚ownych ([ ] TO_VERIFY `api@trans.eu`). Kanon kolejki bez zmian. |
-| 2026-09-07 | Plan Â§13q | OS | 42 nazwy z PDF: matryca Â§13q + rejestr odrzuceĹ„ (Driver Score, wĹ‚asny Video/FOTA, OSS/IOSS, JPK-moduĹ‚, Selenium, gwarancja slotu, benchmarki cross-tenant). Kanon kolejki bez zmian. |
-| 2026-09-07 | Audyt Â§10 | OS | Akapit faktĂłw po tabeli AI w `benchmark-tms-2026.md` Â§10: DocILE HITL vs Goddard RR + Skitka commission; PAL GSM-HARD; zakaz GAN SR; ETA=ML+MAE; Qargo â’75% slogan; Copilot lab â‰  METR +19%. Kanon kolejki bez zmian. |
-| 2026-09-07 | Analiza | OS | Luka HC-05: `charge` (009 + model) bez `source_ref`. P0 leftover w `kolejka-propozycja`; zdanie w benchmark Â§13h. Kanon PLAN/CURRENT bez zmian. |
-| 2026-09-08 | Pin kolejki | OS | Operator: P0 `charge.source_ref` + Fala O (biurko ocean) + T/D/P/X/F/C/V w PLAN/CURRENT. Named parks parked. Karty `karty-pol-fala-o.md` â€¦ `v.md`. `/noc` nie startuje w tej sesji. |
-| 2026-09-08 | Pin Fala I + O7/O8 + V5 dwa reĹĽimy | OS | Incoterms/booking/odprawa (I1â€“I4), kraj na liĹ›cie agentĂłw, buy-desk group-by, slot = capability (T8), GPS `omni_telematic` vs 3 dni robocze, scoring = HITL+DPA. Audyt `incoterms-booking-customs-ux.md`. `/noc` nie startuje. |
-| 2026-09-08 | Pin 2026-09-08c Luki i ulepszenia | OS | CaĹ‚a oĹ› U/N/A/G/G2/W/WA/Plat/Demo-1/CT/CI/EXP/K0 w PLAN. Karty u/n/a/w/g/g2/ci/ct/plat/exp. GLOSSARY + pola-wizja EXP1. Nic nie wyĹ‚Ä…czone. `/noc` bez godziny nie startuje. Pierwszy kod = P0. |
-| 2026-09-08 | Plan 129.0 | M-08 | P0: `charge.source_ref` nullable stare / obowiÄ…zkowe na INSERT. Delta zaakceptowana (`/noc`). Nie myto. NastÄ™pny: `/plaster` 129.0. |
-| 2026-09-08 | 129.0 | M-08 | P0: `charge.source_ref`. Stare NULL; nowy INSERT wymaga pochodzenia. Nie myto. Nie F11. NastÄ™pny: O0 Plan. |
-| 2026-09-08 | Plan 130.0 | M-12 | O0: `network_member.party_id`. Delta zaakceptowana (`/noc`). Nie ranking. NastÄ™pny: `/plaster` 130.0. |
-| 2026-09-08 | 130.0 | M-12 | O0: `network_member.party_id` FK tenanta. Stare NULL; nowy czĹ‚onek wymaga kontrahenta. Nie ranking. NastÄ™pny: M10-1 Plan. |
-| 2026-09-08 | Plan 131.0 | M-10 | M10-1: ID biznesowe + unikat + 409 z linkiem. Delta zaakceptowana (`/noc`). Nie M10-2. NastÄ™pny: kod 131.0. |
-| 2026-09-08 | 131.0 | M-10 | M10-1: NIP/VAT-EU/EORI/DUNS unikat; nowy zapis wymaga ID; customer bez NIP = 400; 409 z linkiem. Nie M10-2. NastÄ™pny: M10-2 Plan. |
-| 2026-09-08 | Plan 132.0 | M-10 | M10-2: assignment + JDG + parent. Delta zaakceptowana (`/noc`). Nie trzy tabele. NastÄ™pny: kod 132.0. |
-| 2026-09-08 | 132.0 | M-10 | M10-2: role assignment + JDG + parent. Limit na JDG tylko HITL. Nie trzy tabele. NastÄ™pny: B0a Plan. |
-| 2026-09-08 | Plan 133.0 | B0a | `entity_event` append-only. Delta zaakceptowana (`/noc`). Nie B0b. NastÄ™pny: kod 133.0. |
-| 2026-09-08 | 133.0 | B0a | `entity_event` append-only. Kind inquiry/quote. Nie outbox. Nie B0b. NastÄ™pny: O1 Plan. |
-| 2026-09-08 | Plan 134.0 | M-19 | O1: `transit_days` + znaczki SQL. Delta zaakceptowana (`/noc`). Nie T7. NastÄ™pny: kod 134.0. |
-| 2026-09-08 | 134.0 | M-19 | O1: `transit_days` + znaczki SQL (ta sama waluta). Nie NBP. NastÄ™pny: O2 Plan. |
-| 2026-09-08 | Plan 135.0 | M-19 | O2: zapis oferty z `/quotations`. Delta zaakceptowana (`/noc`). Nie 1.3. NastÄ™pny: kod 135.0. |
-| 2026-09-08 | 135.0 | M-19 | O2: `source_ref` z user + 409 + formularz na wycenie. Nie 1.3. NastÄ™pny: O3 Plan. |
-| 2026-09-08 | Plan 136.0 | M-30 | O3: batch + statusy + lane. Delta zaakceptowana (`/noc`). Nie send. NastÄ™pny: kod 136.0. |
-| 2026-09-08 | 136.0 | M-30 | O3: batch + statusy + lane. Kwota tylko przy answered. Nie send. NastÄ™pny: I0/U2 Plan. |
-| 2026-09-08 | Plan 137.0 | M-21 | I0/U2: Incoterms na `quotation`. Delta zaakceptowana (`/noc`). Nie I1. NastÄ™pny: kod 137.0. |
-| 2026-09-08 | 137.0 | M-21 | I0/U2: Incoterms na wycenie. DAP/DDP bez miejsca = 409. Nie I1. NastÄ™pny: O4 Plan. |
-| 2026-09-08 | Plan 138.0 | O4 | NĂ— `mail_draft` + ranking SQL + default N. Delta zaakceptowana (`/noc`). Nie O5. NastÄ™pny: kod 138.0. |
-| 2026-09-08 | 138.0 | M-57 | O4: NĂ— mail_draft (carrier_inquiry) + ranking SQL + inquiry_default_n. Nie O5. NastÄ™pny: O5 Plan. |
-| 2026-09-08 | Plan 139.0 | M-13 | O5: party_lane_scorecard snapshot per lane. Delta zaakceptowana (/noc). Nie O6. NastÄ™pny: kod 139.0. |
-| 2026-09-08 | 139.0 | M-13 | O5: party_lane_scorecard snapshot per lane. Hint z szablonu. Nie O6. NastÄ™pny: O6 Plan. |
-| 2026-09-08 | Plan 140.0 | M-20 | O6: draft_kind carrier_quote + accept â†’ channel_quote. Delta zaakceptowana (`/noc`). Nie F10. NastÄ™pny: kod 140.0. |
-| 2026-09-08 | 140.0 | M-20 | O6: draft_kind carrier_quote + accept API -> channel_quote. Nie F10. NastÄ™pny: O7 Plan. |
+| 2026-09-02 | OS-4 | ops | Skaner slopu (`craft-style`) + sufit funkcji >40 linii. Nie toÄąÄ˝samoÄąâ€şĂ„â€ˇ z czÄąâ€šowiekiem. Nie S4. |
+| 2026-09-03 | Plan 67.0 | M-28 | S4: `customer_rfq` powiĂ„â€¦zany z `inbound_message`. Delta zaakceptowana (`/noc`). Nie Äąâ€şlad wycen, nie silnik. NastĂ„â„˘pny: `/plaster` 67.0. |
+| 2026-09-03 | 67.0 | M-28 | `customer_rfq` per tenant, FK tenanta do `inbound_message`, jeden RFQ na wiadomoÄąâ€şĂ„â€ˇ, `/mail`. Nie kwota. Nie silnik. NastĂ„â„˘pny: S5 Plan. |
+| 2026-09-03 | Plan 68.0 | M-21 | S5: istniejĂ„â€¦cy silnik wyceny na `customer_rfq`. Delta zaakceptowana (`/noc`). Nie nowy silnik. LLM nie liczy. NastĂ„â„˘pny: `/plaster` 68.0. |
+| 2026-09-03 | 68.0 | M-21 | IstniejĂ„â€¦cy silnik na `customer_rfq` (`quotation.customer_rfq_id`). Kwota ze stawki. Nie nowy silnik. NastĂ„â„˘pny: S6 Plan. |
+| 2026-09-03 | Plan 69.0 | M-18 | S6: ewaluacja `applies_when` w SQL. Delta zaakceptowana (`/noc`). Nie zapis marÄąÄ˝y do `charge`. NastĂ„â„˘pny: `/plaster` 69.0. |
+| 2026-09-03 | 69.0 | M-18 | Matching `applies_when` w SQL na `port_surcharge`. Nie zapis do `charge`. NastĂ„â„˘pny: S7 Plan. |
+| 2026-09-03 | Plan 70.0 | M-09 | S7: HS/CN na RFQ/wycenie. Delta zaakceptowana (`/noc`). UN z M-52 leftover. NastĂ„â„˘pny: `/plaster` 70.0. |
+| 2026-09-03 | 70.0 | M-09 | HS/CN z katalogu na RFQ i wycenie. Kwota nadal ze stawki. UN leftover. NastĂ„â„˘pny: S8 Plan. |
+| 2026-09-03 | Plan 71.0 | M-03 | S8: prefiks numeru i token szablonu w `organization_setting`. Delta zaakceptowana (`/noc`). NastĂ„â„˘pny: `/plaster` 71.0. |
+| 2026-09-03 | 71.0 | M-03 | Prefiks i token szablonu w allowliÄąâ€şcie. Nie licznik. Nie PDF. NastĂ„â„˘pny: S9 Plan. |
+| 2026-09-03 | Plan 72.0 | M-26 | S9: numer na dokumencie oferty + print 57.0. Delta zaakceptowana (`/noc`). Nie send. NastĂ„â„˘pny: `/plaster` 72.0. |
+| 2026-09-03 | 72.0 | M-26 | `document_number` z prefiksu w SQL. Druk 57.0. Nie send. Nie PDF. NastĂ„â„˘pny: S10 Plan. |
+| 2026-09-03 | Plan 73.0 | M-16 | S10: `blocks_auto` na `customer_sop`. Delta zaakceptowana (`/noc`). Nie send. NastĂ„â„˘pny: `/plaster` 73.0. |
+| 2026-09-03 | 73.0 | M-16 | `blocks_auto` na SOP. Draft nie blokuje. Nie send. NastĂ„â„˘pny: S11 Plan. |
+| 2026-09-03 | Plan 74.0 | M-71 | S11: szyna `operator_decision`. Delta zaakceptowana (`/noc`). Nie M-57. NastĂ„â„˘pny: `/plaster` 74.0. |
+| 2026-09-03 | 74.0 | M-71 | Szyna `operator_decision` pending/accept/reject. Nie M-57. Nie send. NastĂ„â„˘pny: S12 Plan. |
+| 2026-09-03 | Plan 75.0 | M-34 | S12: tabela `operator_notice`. Delta zaakceptowana (`/noc`). Nie filtr wycen. NastĂ„â„˘pny: `/plaster` 75.0. |
+| 2026-09-03 | 75.0 | M-34 | Tabela `operator_notice` unread/read. Nie filtr wycen. Nie send. NastĂ„â„˘pny: S13 Plan. |
+| 2026-09-03 | Plan 76.0 | M-57 | S13: tabela `mail_draft` obok extract. Delta zaakceptowana (`/noc`). Accept przez S11. NastĂ„â„˘pny: `/plaster` 76.0. |
+| 2026-09-03 | 76.0 | M-57 | Tabela `mail_draft` obok extract. Accept przez S11. Nie czat. Nie send. NastĂ„â„˘pny: S14 Plan. |
+| 2026-09-03 | Plan 77.0 | M-71 | S14: `lock_version` na decyzji. Delta zaakceptowana (`/noc`). Dwa Akceptuj = jeden konflikt. NastĂ„â„˘pny: `/plaster` 77.0. |
+| 2026-09-03 | 77.0 | M-71 | `lock_version` na decide. Dwa Akceptuj = jeden konflikt. Nie send. NastĂ„â„˘pny: S15 Plan. |
+| 2026-09-03 | Plan 78.0 | M-32 | S15: ingest Graph (`graph://`, `external_id`). Delta zaakceptowana (`/noc`). Nie live HTTP. NastĂ„â„˘pny: `/plaster` 78.0. |
+| 2026-09-03 | 78.0 | M-32 | Ingest `graph://` + `external_id` na `inbound_message`. Ten sam id = ten sam wiersz. Nie live HTTP. Nie send. NastĂ„â„˘pny: S16 Plan. |
+| 2026-09-03 | Plan 79.0 | M-02 | S16: outbox `inbound_message_saved`. Delta zaakceptowana (`/noc`). Nie Temporal. NastĂ„â„˘pny: `/plaster` 79.0. |
+| 2026-09-03 | 79.0 | M-02 | Tabela `outbox_event`, zdarzenie po zapisie wiadomoÄąâ€şci. Ten sam subject = ten sam wiersz. Nie Temporal. NastĂ„â„˘pny: S17 Plan. |
+| 2026-09-03 | Plan 80.0 | M-32 | S17: ingest IMAP (`imap://`, `external_id`). Delta zaakceptowana (`/noc`). Nie live skrzynka. NastĂ„â„˘pny: `/plaster` 80.0. |
+| 2026-09-03 | 80.0 | M-32 | Ingest `imap://` + `external_id` na `inbound_message`. Ten sam id = ten sam wiersz. Nie live skrzynka. NastĂ„â„˘pny: S18 Plan. |
+| 2026-09-03 | Plan 81.0 | M-33 | S18: Äąâ€şwiadomy `mailto:` po akceptacji szkicu. Delta zaakceptowana (`/noc`). Nie Graph HTTP. NastĂ„â„˘pny: `/plaster` 81.0. |
+| 2026-09-03 | 81.0 | M-33 | ÄąĹˇwiadomy `mailto:` po accept szkicu. `blocks_auto` nie blokuje klikniĂ„â„˘cia. Nie Graph HTTP. NastĂ„â„˘pny: S19 Plan. |
+| 2026-09-03 | Plan 82.0 | M-12 | S19: tabela `network_member`. Delta zaakceptowana (`/noc`). Nie scraping. NastĂ„â„˘pny: `/plaster` 82.0. |
+| 2026-09-03 | 82.0 | M-12 | Tabela `network_member` RLS. RĂ„â„˘czny agent w sieci. Nie portal. NastĂ„â„˘pny: S20 Plan. |
+| 2026-09-03 | Plan 83.0 | M-30 | S20: tabela `carrier_inquiry` (buy, do `network_member`). Delta zaakceptowana (`/noc`). Nie live HTTP. NastĂ„â„˘pny: `/plaster` 83.0. |
+| 2026-09-03 | 83.0 | M-30 | Tabela `carrier_inquiry` RLS. Zapytanie do `network_member`, draft, bez kwoty. Nie live HTTP. NastĂ„â„˘pny: S21 Plan. |
+| 2026-09-03 | S21 park | M-19 | Live HTTP kanaÄąâ€šu zaparkowane Ă˘â‚¬â€ť brak umowy. Nie teatr HTTP. NastĂ„â„˘pny: S22 Plan. |
+| 2026-09-03 | Plan 84.0 | M-31 | S22: porÄ‚Ĺ‚wnanie zapisuje `charge` (buy kanaÄąâ€š, sell wycena). Delta zaakceptowana (`/noc`). Nie odejmuj w JS. NastĂ„â„˘pny: `/plaster` 84.0. |
+| 2026-09-03 | 84.0 | M-31 | PorÄ‚Ĺ‚wnanie zapisuje `charge`; marÄąÄ˝a z `margin()`. Nie odejmuj w JS. NastĂ„â„˘pny: S23 Plan. |
+| 2026-09-03 | Plan 85.0 | M-25 | S23: `negotiated_channel_quote_id` na wycenie. Delta zaakceptowana (`/noc`). Nie nowa kwota. NastĂ„â„˘pny: `/plaster` 85.0. |
+| 2026-09-03 | 85.0 | M-25 | Wskazanie `channel_quote` na wycenie. Nie nowa kwota. Nie zamiast `margin()`. NastĂ„â„˘pny: S24 Plan. |
+| 2026-09-03 | Plan 86.0 | M-29 | S24: accept oferty = `operator_decision` na `quotation`. Delta zaakceptowana (`/noc`). Nie HITL extract. NastĂ„â„˘pny: `/plaster` 86.0. |
+| 2026-09-03 | 86.0 | M-29 | Accept oferty przez S11 (`quotation`). Nie HITL extract. NastĂ„â„˘pny: S25 Plan. |
+| 2026-09-03 | Plan 87.0 | M-24 | S25: `noted_credit_review_id` na wycenie. Delta zaakceptowana (`/noc`). Nie scoring. NastĂ„â„˘pny: `/plaster` 87.0. |
+| 2026-09-03 | 87.0 | M-24 | Wskazanie recenzji na wycenie. Nie scoring. NastĂ„â„˘pny: S26 Plan. |
+| 2026-09-03 | Plan 88.0 | M-14 | S26: `bureau_attachment_ref` na recenzji. Delta zaakceptowana (`/noc`). Nie auto-limit. NastĂ„â„˘pny: `/plaster` 88.0. |
+| 2026-09-03 | 88.0 | M-14 | Wskazanie raportu wywiadowni na recenzji. Nie auto-limit. Nie HTTP do biura. NastĂ„â„˘pny: S27 Plan. |
+| 2026-09-03 | Plan 89.0 | M-53 | S27: sprawdzenie listy na `party`. Delta zaakceptowana (`/noc`). Nie auto-match. NastĂ„â„˘pny: `/plaster` 89.0. |
+| 2026-09-03 | 89.0 | M-53 | Sprawdzenie listy na `party`. Nie auto-match. Nie live lista. NastĂ„â„˘pny: S28 Plan. |
+| 2026-09-03 | Plan 90.0 | M-35 | S28: tabela `shipment` z wyceny. Delta zaakceptowana (`/noc`). Nie tracking. NastĂ„â„˘pny: `/plaster` 90.0. |
+| 2026-09-03 | 90.0 | M-35 | Tabela `shipment` z wyceny. Nie tracking. Nie numer. NastĂ„â„˘pny: S29 Plan. |
+| 2026-09-03 | Plan 91.0 | M-36 | S29: `tracking_event` na zleceniu. Delta zaakceptowana (`/noc`). Nie mapa. NastĂ„â„˘pny: `/plaster` 91.0. |
+| 2026-09-03 | 91.0 | M-36 | Zdarzenia trackingu na zleceniu. Nie mapa. Nie AIS. NastĂ„â„˘pny: S30 Plan. |
+| 2026-09-03 | Plan 92.0 | M-38 | S30: `shipment_document` na zleceniu. Delta zaakceptowana (`/noc`). Nie PDF. NastĂ„â„˘pny: `/plaster` 92.0. |
+| 2026-09-03 | 92.0 | M-38 | Dokumenty na zleceniu. Nie bajty. Nie PDF. NastĂ„â„˘pny: S31 Plan. |
+| 2026-09-03 | Plan 93.0 | M-37 | S31: `operational_exception` na zleceniu. Delta zaakceptowana (`/noc`). Nie mapa. NastĂ„â„˘pny: `/plaster` 93.0. |
+| 2026-09-03 | 93.0 | M-37 | Tabela wyjĂ„â€¦tkÄ‚Ĺ‚w na zleceniu. Nie mapa. Nie filtr wycen. NastĂ„â„˘pny: S32 Plan. |
+| 2026-09-03 | Plan 94.0 | UI | S32: Watchtower lista + S11 + lazy mapa. Delta zaakceptowana (`/noc`). Nie leaflet. NastĂ„â„˘pny: `/plaster` 94.0. |
+| 2026-09-03 | 94.0 | UI | WieÄąÄ˝a: wyjĂ„â€¦tki + pending S11 + leniwy panel mapy. Nie leaflet. NastĂ„â„˘pny: S33 Plan. |
+| 2026-09-03 | Plan 95.0 | M-39 | S33: `edi_message` na zleceniu. Delta zaakceptowana (`/noc`). Nie parser. NastĂ„â„˘pny: `/plaster` 95.0. |
+| 2026-09-03 | 95.0 | M-39 | Tabela komunikatu EDI na zleceniu. Nie parser. Nie live HTTP. NastĂ„â„˘pny: S34 Plan. |
+| 2026-09-03 | Plan 96.0 | M-40 | S34: `sales_invoice` na zleceniu. Delta zaakceptowana (`/noc`). Nie KSeF. NastĂ„â„˘pny: `/plaster` 96.0. |
+| 2026-09-03 | 96.0 | M-40 | Tabela faktury sprzedaÄąÄ˝y na zleceniu. Nie KSeF. Nie druga marÄąÄ˝a. NastĂ„â„˘pny: S35 Plan. |
+| 2026-09-03 | Plan 97.0 | M-40 | S35: `ksef_ref` na fakturze. Delta zaakceptowana (`/noc`). Nie live HTTP. NastĂ„â„˘pny: `/plaster` 97.0. |
+| 2026-09-03 | 97.0 | M-40 | Numer sesji KSeF na fakturze. Nie live HTTP. Nie XML. NastĂ„â„˘pny: S36 Plan. |
+| 2026-09-03 | Plan 98.0 | M-41 | S36: `quote_invoice_settlement` wiĂ„â€¦ÄąÄ˝e wycenĂ„â„˘ z fakturĂ„â€¦. Delta zaakceptowana (`/noc`). Nie druga marÄąÄ˝a. NastĂ„â„˘pny: `/plaster` 98.0. |
+| 2026-09-03 | 98.0 | M-41 | Tabela rozliczenia wyceny z fakturĂ„â€¦. Nie druga marÄąÄ˝a. Nie odejmowanie. NastĂ„â„˘pny: S37 Plan. |
+| 2026-09-03 | Plan 99.0 | M-42 | S37: `bank_payment` wiĂ„â€¦ÄąÄ˝e fakturĂ„â„˘ z rachunkiem. Delta zaakceptowana (`/noc`). Nie SEPA. NastĂ„â„˘pny: `/plaster` 99.0. |
+| 2026-09-03 | 99.0 | M-42 | Tabela pÄąâ€šatnoÄąâ€şci faktury na rachunek. Nie SEPA. Nie druga marÄąÄ˝a. NastĂ„â„˘pny: S38 Plan. |
+| 2026-09-03 | Plan 100.0 | M-43 | S38: `money_cost` wiĂ„â€¦ÄąÄ˝e pÄąâ€šatnoÄąâ€şĂ„â€ˇ z kursem NBP. Delta zaakceptowana (`/noc`). Nie odsetki. NastĂ„â„˘pny: `/plaster` 100.0. |
+| 2026-09-03 | 100.0 | M-43 | Tabela kosztu pieniĂ„â€¦dza: pÄąâ€šatnoÄąâ€şĂ„â€ˇ przy kursie NBP. Nie odsetki. Nie mnoÄąÄ˝enie. NastĂ„â„˘pny: S39 Plan. |
+| 2026-09-03 | Plan 101.0 | M-44 | S39: `fx_difference` wiĂ„â€¦ÄąÄ˝e wycenĂ„â„˘ z kursem NBP. Delta zaakceptowana (`/noc`). Nie przeliczenie. NastĂ„â„˘pny: `/plaster` 101.0. |
+| 2026-09-03 | 101.0 | M-44 | Tabela rÄ‚Ĺ‚ÄąÄ˝nicy kursowej: wycena przy kursie NBP. Nie przeliczenie. NastĂ„â„˘pny: S40 Plan. |
+| 2026-09-03 | Plan 102.0 | M-45 | S40: `cash_flow` wiĂ„â€¦ÄąÄ˝e wycenĂ„â„˘ z pÄąâ€šatnoÄąâ€şciĂ„â€¦. Delta zaakceptowana (`/noc`). Nie odejmowanie. NastĂ„â„˘pny: `/plaster` 102.0. |
+| 2026-09-03 | 102.0 | M-45 | Tabela przepÄąâ€šywu: wycena przy pÄąâ€šatnoÄąâ€şci. Nie odejmowanie. NastĂ„â„˘pny: S41 Plan. |
+| 2026-09-03 | Plan 103.0 | M-46 | S41: `cost_to_serve` wiĂ„â€¦ÄąÄ˝e SOP z wycenĂ„â€¦. Delta zaakceptowana (`/noc`). Nie suma. NastĂ„â„˘pny: `/plaster` 103.0. |
+| 2026-09-03 | 103.0 | M-46 | Tabela kosztu obsÄąâ€šugi: SOP przy wycenie. Nie suma. NastĂ„â„˘pny: S42 Plan. |
+| 2026-09-03 | Plan 104.0 | M-47 | S42: `bookkeeping` wiĂ„â€¦ÄąÄ˝e opÄąâ€šatĂ„â„˘ z fakturĂ„â€¦. Delta zaakceptowana (`/noc`). Nie JPK. NastĂ„â„˘pny: `/plaster` 104.0. |
+| 2026-09-03 | 104.0 | M-47 | Tabela dekretu: opÄąâ€šata na fakturĂ„â„˘. Nie JPK. Nie odejmowanie. NastĂ„â„˘pny: S43 Plan. |
+| 2026-09-03 | Plan 105.0 | M-91 | S43: `collective_invoice` wiĂ„â€¦ÄąÄ˝e fakturĂ„â„˘ z dodatkowym zleceniem. Delta zaakceptowana (`/noc`). Nie pÄąâ€šatnoÄąâ€şĂ„â€ˇ paczkĂ„â€¦. NastĂ„â„˘pny: `/plaster` 105.0. |
+| 2026-09-03 | 105.0 | M-91 | Tabela zbiorczej: dodatkowe zlecenie na fakturze. Nie pÄąâ€šatnoÄąâ€şĂ„â€ˇ paczkĂ„â€¦. Nie JPK. NastĂ„â„˘pny: S44 Plan. |
+| 2026-09-03 | Plan 106.0 | M-15 | S44: `/finance` czyta faktury. Delta zaakceptowana (`/noc`). Nie narracja. NastĂ„â„˘pny: `/plaster` 106.0. |
+| 2026-09-03 | 106.0 | M-15 | Tablica `/finance` czyta faktury sprzedaÄąÄ˝y. Nie suma. Nie narracja. NastĂ„â„˘pny: S45 Plan. |
+| 2026-09-03 | Plan 107.0 | M-56 | S45: `gdpr_request` access/erasure + tombstone konta. Delta zaakceptowana (`/noc`). Nie DPIA. NastĂ„â„˘pny: `/plaster` 107.0. |
+| 2026-09-03 | 107.0 | M-56 | Tabela wniosku RODO + tombstone konta. Nie DPIA. Nie DELETE `app_user`. NastĂ„â„˘pny: S46 Plan. |
+| 2026-09-03 | Plan 108.0 | M-48 | S46: `shipment_leg` odcinek drogowy na zleceniu. Delta zaakceptowana (`/noc`). Nie mapa. NastĂ„â„˘pny: `/plaster` 108.0. |
+| 2026-09-03 | 108.0 | M-48 | Tabela odcinka drogowego na zleceniu. Nie mapa. Nie TMS. NastĂ„â„˘pny: S47 Plan. |
+| 2026-09-03 | Plan 109.0 | M-49 | S47: `shipment_leg` `rail` na zleceniu. Delta zaakceptowana (`/noc`). Nie mapa. NastĂ„â„˘pny: `/plaster` 109.0. |
+| 2026-09-03 | 109.0 | M-49 | Odcinek kolejowy na tej samej tabeli nogi. Nie wagon. Nie mapa. NastĂ„â„˘pny: S48 Plan. |
+| 2026-09-03 | Plan 110.0 | M-50 | S48: `shipment_leg` `china_rail` na zleceniu. Delta zaakceptowana (`/noc`). Nie korytarz. NastĂ„â„˘pny: `/plaster` 110.0. |
+| 2026-09-03 | 110.0 | M-50 | Odcinek kolej z Chin na tej samej tabeli nogi. Nie korytarz. Nie HTTP. NastĂ„â„˘pny: S49 Plan. |
+| 2026-09-04 | Plan 111.0 | M-51 | S49: `shipment_leg` `ocean_lcl` na zleceniu. Delta zaakceptowana (`/noc`). Nie CFS. NastĂ„â„˘pny: `/plaster` 111.0. |
+| 2026-09-04 | 111.0 | M-51 | Odcinek drobnicy na tej samej tabeli nogi. Nie CFS. Nie CBM. NastĂ„â„˘pny: S50 Plan (park floty). |
+| 2026-09-04 | Plan 112.0 | M-111 | S50 flota named park Ă˘â‚¬â€ť brak jobu Ă˘â‚¬ĹľwÄąâ€šasne autoĂ˘â‚¬ĹĄ. Zero kodu. NastĂ„â„˘pny: S51 Plan. |
+| 2026-09-04 | Plan 113.0 | M-55 | S51: `cargo_claim` na zleceniu. Delta zaakceptowana (`/noc`). Nie kwota. NastĂ„â„˘pny: `/plaster` 113.0. |
+| 2026-09-04 | 113.0 | M-55 | Tabela reklamacji Äąâ€šadunku na zleceniu. Nie kwota. Nie scoring. NastĂ„â„˘pny: S52 Plan. |
+| 2026-09-04 | Plan 114.0 | M-54 | S52: `fraud_flag` na kontrahencie. Delta zaakceptowana (`/noc`). Nie scoring osoby. NastĂ„â„˘pny: `/plaster` 114.0. |
+| 2026-09-04 | 114.0 | M-54 | Tabela flagi oszustwa na kontrahencie. Nie scoring osoby. Nie kwota. NastĂ„â„˘pny: S54 Plan (S53 Auth0 parked). |
+| 2026-09-04 | Plan 115.0 | M-76 | S54 status klienta named park Ă˘â‚¬â€ť brak Auth0 S53. Zero kodu. NastĂ„â„˘pny: S56 Plan. |
+| 2026-09-04 | Plan 116.0 | M-57 | S56: szkice `mail_draft` na wieÄąÄ˝y. Delta zaakceptowana (`/noc`). Nie czat. NastĂ„â„˘pny: `/plaster` 116.0. |
+| 2026-09-04 | 116.0 | M-57 | WieÄąÄ˝a czyta `mail_draft`. Zapis zostaje na `/ai`. Nie czat. NastĂ„â„˘pny: S57 Plan. |
+| 2026-09-04 | Plan 117.0 | M-15 | S57: narracja po SQL na `/finance`. Delta zaakceptowana (`/noc`). LLM nie liczy. NastĂ„â„˘pny: `/plaster` 117.0. |
+| 2026-09-04 | 117.0 | M-15 | Narracja po SQL na `/finance`. Nie suma. Nie LLM. NastĂ„â„˘pny: S58 Plan. |
+| 2026-09-04 | Plan 118.0 | M-57 | S58: SOP `blocks_auto` obok szkicÄ‚Ĺ‚w na `/ai`. Delta zaakceptowana (`/noc`). Nie auto-send. NastĂ„â„˘pny: `/plaster` 118.0. |
+| 2026-09-04 | 118.0 | M-57 | SOP `blocks_auto` na `/ai` obok szkicÄ‚Ĺ‚w. Nie auto-send. NastĂ„â„˘pny: S59 Plan. |
+| 2026-09-04 | Plan 119.0 | M-68 | S59 OTel/QA/rollout named park Ă˘â‚¬â€ť brak konsumenta outboxa i jobu SaaS. Zero kodu. NastĂ„â„˘pny: nie zgaduj 71Ă˘â‚¬â€ś212. |
+| 2026-09-04 | Plan 120.0 | M-13 | S27b: decyzje oferty na karcie. Delta zaakceptowana (`/noc`). Nie scoring osoby. NastĂ„â„˘pny: `/plaster` 120.0. |
+| 2026-09-04 | 120.0 | M-13 | S27b: karta czyta przyjĂ„â„˘te/odrzucone wyceny. Nie scoring osoby. NastĂ„â„˘pny: leftover S11 `changed`. |
+| 2026-09-04 | Plan 121.0 | M-71 | Leftover S11 `changed`. Delta zaakceptowana (`/noc`). Nie extract. NastĂ„â„˘pny: `/plaster` 121.0. |
+| 2026-09-04 | 121.0 | M-71 | Leftover S11: werdykt `changed` z lock. Nie extract. NastĂ„â„˘pny: leftover S7 UN na RFQ. |
+| 2026-09-04 | Plan 122.0 | M-52 | S7b: UN na RFQ/wycenie. Delta zaakceptowana (`/noc`). Nie LLM. NastĂ„â„˘pny: `/plaster` 122.0. |
+| 2026-09-04 | 122.0 | M-52 | S7b: UN na RFQ/wycenie. Nie LLM. Nie filtr stawki. NastĂ„â„˘pny: leftover S12 filtr 27.0. |
+| 2026-09-04 | Plan 123.0 | M-34 | S12b: filtr kind na tablicy 27.0. Delta zaakceptowana (`/noc`). Nie auto-INSERT. NastĂ„â„˘pny: `/plaster` 123.0. |
+| 2026-09-04 | 123.0 | M-34 | S12b: filtr kind na tablicy 27.0. Nie auto-INSERT. NastĂ„â„˘pny: leftover S32 kafelki wieÄąÄ˝y. |
+| 2026-09-04 | Plan 124.0 | UI | S32: liczniki na `/watchtower`. Delta zaakceptowana (`/noc`). Nie leaflet. NastĂ„â„˘pny: `/plaster` 124.0. |
+| 2026-09-04 | 124.0 | UI | S32: liczniki wyjĂ„â€¦tkÄ‚Ĺ‚w, pending i szkicÄ‚Ĺ‚w na wieÄąÄ˝y. Nie leaflet. Nie AIS. NastĂ„â„˘pny: `/refaktor` mixin modeli. |
+| 2026-09-04 | 125.0 | M-10 | `/refaktor`: trzy metody PartyService Ă˘â€°Â¤40 linii. Nie mixin. NastĂ„â„˘pny: `/refaktor` `create_quote`. |
+| 2026-09-04 | 126.0 | M-19 | `/refaktor`: `create_quote` Ă˘â€°Â¤40. Sufit funkcji 0. NastĂ„â„˘pny: leftover DNA `--ink`. |
+| 2026-09-04 | 127.0 | UI/M-10 | leftover DNA `--ink` + `/refaktor` `_blank_to_none`. Nie mixin. NastĂ„â„˘pny: named parks. |
+| 2026-09-04 | 128.0 | OS | leftover context rot: PLAN bez rĂ„â„˘cznego SHA; AGENTS M-71 z `changed`+lock. Nie konsument. NastĂ„â„˘pny: named parks. |
+| 2026-09-07 | Plan benchmark | OS | Benchmark Qargo+SPEED+PDF: ADR-0004, matryca `docs/analysis/`, karty pÄ‚Ĺ‚l Fali T, kolejka-propozycja, karty `_knowledge/market/`, digesty `docs/_source/benchmark/`. Kanon kolejki bez zmian. NastĂ„â„˘pny: named parks (bez zmian). |
+| 2026-09-07 | Plan Ă‚Â§13g | OS | Hub telematyczny: zero wÄąâ€šasnego HW (Teltonika+Queclink), BYO API + pÄąâ€šyta, okno `trip`+N dni, widocznoÄąâ€şĂ„â€ˇ gieÄąâ€šd, zakaz scrapingu czatÄ‚Ĺ‚w. Karta `006-telematics-hub`. Kanon kolejki bez zmian. |
+| 2026-09-07 | Plan Ă‚Â§13h | OS | Pogoda pan-EU, BDO+DIWASS, blokada zlecenia po polisie/licencji, snapshot Trans.eu, katalog SENT-europa, myto EU/EFTA. Karta `007-compliance-eu`. Kanon kolejki bez zmian. |
+| 2026-09-07 | Plan Ă‚Â§13i | OS | Lejek oferty: sent/open/PDF/reply/conversion, czasy SQL, hostowany token, piksel tylko po zgodzie. Karta `008-quote-engagement`. Kanon kolejki bez zmian. |
+| 2026-09-07 | Plan inwentarz | OS | Korekta Ă‚Â§13e: nagÄąâ€šÄ‚Ĺ‚wki Ă˘â€°Â  peÄąâ€šny PDF. Audyt `inwentarz-mc-pdf.md` + luki Ă‚Â§13j + odrzucenia (dwa produkty, blueprint, HERE, auto-zapis). Kanon kolejki bez zmian. |
+| 2026-09-07 | Plan Ă‚Â§13k | OS | PodkÄąâ€šady map: darmowe on/off u uÄąÄ˝ytkownika; pÄąâ€šatne BYO u admina tenanta; instrukcja `podklady-map-admin.md`. Zakaz tile.openstreetmap.org. Kanon kolejki bez zmian. |
+| 2026-09-07 | Plan Ă‚Â§13l | OS | Adapter ERP/FK P0: Comarch Optima+XL, Symfonia WebAPI, Subiekt nexo+GT. Jeden KSeF. Zakaz SQL do bazy klienta. `erp-fk-adapter.md`. Kanon kolejki bez zmian. |
+| 2026-09-07 | Plan Ă‚Â§13l | OS | Doprecyzowanie: Omni wystawia FV; do FK idĂ„â€¦ przychodowe (`sales_invoice`) i kosztowe (`purchase_invoice`). KSeF tylko Omni. |
+| 2026-09-07 | Plan Ă‚Â§13m | OS | FV kosztowe z maila/KSeF/skanu: draft HITL, ranking zleceÄąâ€ž SQL, shipment_ref na wychodzĂ„â€¦cych, zakaz auto-link. F10. |
+| 2026-09-07 | Plan Ă‚Â§13n | OS | Wydruki sieci drobnicowych (CMR/groupage/etykieta) + skan zwrotny: QR Omni = podpiĂ„â„˘cie, bez kodu = HITL. D9. |
+| 2026-09-07 | Plan Ă‚Â§13o | OS | SÄąâ€šabe zdjĂ„â„˘cia: gate + OpenCV (kadr/deskew/CLAHE/Lanczos), nie GAN. Split HITL z ramkami, pewnoÄąâ€şciĂ„â€¦ i edycjĂ„â€¦. X9. |
+| 2026-09-07 | Plan Ă‚Â§13o | OS | Cel wyglĂ„â€¦du: skaner pÄąâ€šaski (~300 DPI, biel, bez cienia). ML Kit/VisionKit przy spuÄąâ€şcie; FV bez wymazywania plam. |
+| 2026-09-07 | Plan Ă‚Â§13p | OS | KsiĂ„â€¦ÄąÄ˝ka nadawcza PP: EN + Äąâ€şledzenie REST + EPO (kto odebraÄąâ€š). F11. Zakaz scrapingu; imiĂ„â„˘ tylko z EPO lub skanu ZPO. |
+| 2026-09-07 | Plan Ă‚Â§13p | OS | FV papierowa = kanaÄąâ€š `paper_post` (Poczta Polska). Nie wyÄąâ€šĂ„â€¦cza KSeF. Bez nadania nie ma statusu wysÄąâ€šana. |
+| 2026-09-07 | Audyt V5/C9 | OS | SpÄ‚Ĺ‚jnoÄąâ€şĂ„â€ˇ matrycaĂ˘â€ â€ťkolejka: P0 GBOX/IKOL/Flotis/Wialon w V5 (nie HZ); Tronik/Logisat po umowie; C9 bez obietnicy opinii sÄąâ€šownych ([ ] TO_VERIFY `api@trans.eu`). Kanon kolejki bez zmian. |
+| 2026-09-07 | Plan Ă‚Â§13q | OS | 42 nazwy z PDF: matryca Ă‚Â§13q + rejestr odrzuceÄąâ€ž (Driver Score, wÄąâ€šasny Video/FOTA, OSS/IOSS, JPK-moduÄąâ€š, Selenium, gwarancja slotu, benchmarki cross-tenant). Kanon kolejki bez zmian. |
+| 2026-09-07 | Audyt Ă‚Â§10 | OS | Akapit faktÄ‚Ĺ‚w po tabeli AI w `benchmark-tms-2026.md` Ă‚Â§10: DocILE HITL vs Goddard RR + Skitka commission; PAL GSM-HARD; zakaz GAN SR; ETA=ML+MAE; Qargo Ă˘Ââ€™75% slogan; Copilot lab Ă˘â€°Â  METR +19%. Kanon kolejki bez zmian. |
+| 2026-09-07 | Analiza | OS | Luka HC-05: `charge` (009 + model) bez `source_ref`. P0 leftover w `kolejka-propozycja`; zdanie w benchmark Ă‚Â§13h. Kanon PLAN/CURRENT bez zmian. |
+| 2026-09-08 | Pin kolejki | OS | Operator: P0 `charge.source_ref` + Fala O (biurko ocean) + T/D/P/X/F/C/V w PLAN/CURRENT. Named parks parked. Karty `karty-pol-fala-o.md` Ă˘â‚¬Â¦ `v.md`. `/noc` nie startuje w tej sesji. |
+| 2026-09-08 | Pin Fala I + O7/O8 + V5 dwa reÄąÄ˝imy | OS | Incoterms/booking/odprawa (I1Ă˘â‚¬â€śI4), kraj na liÄąâ€şcie agentÄ‚Ĺ‚w, buy-desk group-by, slot = capability (T8), GPS `omni_telematic` vs 3 dni robocze, scoring = HITL+DPA. Audyt `incoterms-booking-customs-ux.md`. `/noc` nie startuje. |
+| 2026-09-08 | Pin 2026-09-08c Luki i ulepszenia | OS | CaÄąâ€ša oÄąâ€ş U/N/A/G/G2/W/WA/Plat/Demo-1/CT/CI/EXP/K0 w PLAN. Karty u/n/a/w/g/g2/ci/ct/plat/exp. GLOSSARY + pola-wizja EXP1. Nic nie wyÄąâ€šĂ„â€¦czone. `/noc` bez godziny nie startuje. Pierwszy kod = P0. |
+| 2026-09-08 | Plan 129.0 | M-08 | P0: `charge.source_ref` nullable stare / obowiĂ„â€¦zkowe na INSERT. Delta zaakceptowana (`/noc`). Nie myto. NastĂ„â„˘pny: `/plaster` 129.0. |
+| 2026-09-08 | 129.0 | M-08 | P0: `charge.source_ref`. Stare NULL; nowy INSERT wymaga pochodzenia. Nie myto. Nie F11. NastĂ„â„˘pny: O0 Plan. |
+| 2026-09-08 | Plan 130.0 | M-12 | O0: `network_member.party_id`. Delta zaakceptowana (`/noc`). Nie ranking. NastĂ„â„˘pny: `/plaster` 130.0. |
+| 2026-09-08 | 130.0 | M-12 | O0: `network_member.party_id` FK tenanta. Stare NULL; nowy czÄąâ€šonek wymaga kontrahenta. Nie ranking. NastĂ„â„˘pny: M10-1 Plan. |
+| 2026-09-08 | Plan 131.0 | M-10 | M10-1: ID biznesowe + unikat + 409 z linkiem. Delta zaakceptowana (`/noc`). Nie M10-2. NastĂ„â„˘pny: kod 131.0. |
+| 2026-09-08 | 131.0 | M-10 | M10-1: NIP/VAT-EU/EORI/DUNS unikat; nowy zapis wymaga ID; customer bez NIP = 400; 409 z linkiem. Nie M10-2. NastĂ„â„˘pny: M10-2 Plan. |
+| 2026-09-08 | Plan 132.0 | M-10 | M10-2: assignment + JDG + parent. Delta zaakceptowana (`/noc`). Nie trzy tabele. NastĂ„â„˘pny: kod 132.0. |
+| 2026-09-08 | 132.0 | M-10 | M10-2: role assignment + JDG + parent. Limit na JDG tylko HITL. Nie trzy tabele. NastĂ„â„˘pny: B0a Plan. |
+| 2026-09-08 | Plan 133.0 | B0a | `entity_event` append-only. Delta zaakceptowana (`/noc`). Nie B0b. NastĂ„â„˘pny: kod 133.0. |
+| 2026-09-08 | 133.0 | B0a | `entity_event` append-only. Kind inquiry/quote. Nie outbox. Nie B0b. NastĂ„â„˘pny: O1 Plan. |
+| 2026-09-08 | Plan 134.0 | M-19 | O1: `transit_days` + znaczki SQL. Delta zaakceptowana (`/noc`). Nie T7. NastĂ„â„˘pny: kod 134.0. |
+| 2026-09-08 | 134.0 | M-19 | O1: `transit_days` + znaczki SQL (ta sama waluta). Nie NBP. NastĂ„â„˘pny: O2 Plan. |
+| 2026-09-08 | Plan 135.0 | M-19 | O2: zapis oferty z `/quotations`. Delta zaakceptowana (`/noc`). Nie 1.3. NastĂ„â„˘pny: kod 135.0. |
+| 2026-09-08 | 135.0 | M-19 | O2: `source_ref` z user + 409 + formularz na wycenie. Nie 1.3. NastĂ„â„˘pny: O3 Plan. |
+| 2026-09-08 | Plan 136.0 | M-30 | O3: batch + statusy + lane. Delta zaakceptowana (`/noc`). Nie send. NastĂ„â„˘pny: kod 136.0. |
+| 2026-09-08 | 136.0 | M-30 | O3: batch + statusy + lane. Kwota tylko przy answered. Nie send. NastĂ„â„˘pny: I0/U2 Plan. |
+| 2026-09-08 | Plan 137.0 | M-21 | I0/U2: Incoterms na `quotation`. Delta zaakceptowana (`/noc`). Nie I1. NastĂ„â„˘pny: kod 137.0. |
+| 2026-09-08 | 137.0 | M-21 | I0/U2: Incoterms na wycenie. DAP/DDP bez miejsca = 409. Nie I1. NastĂ„â„˘pny: O4 Plan. |
+| 2026-09-08 | Plan 138.0 | O4 | NÄ‚â€” `mail_draft` + ranking SQL + default N. Delta zaakceptowana (`/noc`). Nie O5. NastĂ„â„˘pny: kod 138.0. |
+| 2026-09-08 | 138.0 | M-57 | O4: NÄ‚â€” mail_draft (carrier_inquiry) + ranking SQL + inquiry_default_n. Nie O5. NastĂ„â„˘pny: O5 Plan. |
+| 2026-09-08 | Plan 139.0 | M-13 | O5: party_lane_scorecard snapshot per lane. Delta zaakceptowana (/noc). Nie O6. NastĂ„â„˘pny: kod 139.0. |
+| 2026-09-08 | 139.0 | M-13 | O5: party_lane_scorecard snapshot per lane. Hint z szablonu. Nie O6. NastĂ„â„˘pny: O6 Plan. |
+| 2026-09-08 | Plan 140.0 | M-20 | O6: draft_kind carrier_quote + accept Ă˘â€ â€™ channel_quote. Delta zaakceptowana (`/noc`). Nie F10. NastĂ„â„˘pny: kod 140.0. |
+| 2026-09-08 | 140.0 | M-20 | O6: draft_kind carrier_quote + accept API -> channel_quote. Nie F10. NastĂ„â„˘pny: O7 Plan. |
 | 2026-09-08 | 141.0 | M-12 | O7: filtr country_code na /networks z party. Nie O8. Nastepny: O8 Plan. |
 | 2026-09-08 | Plan 142.0 | M-32 | O8: group_by party/country/status na /mail w table_view.config. Delta zaakceptowana (/noc). Nie watek. Nastepny: kod 142.0. |
 | 2026-09-08 | 142.0 | M-32 | O8: group_by party/country/status na /mail w table_view.config. Nie watek. Nastepny: N5 Plan. |
@@ -455,7 +456,7 @@
 | 2026-09-08 | 145.0 | I1 | incoterm_responsibility 11x2 Omni ops, nie cytat ICC. Nie I2. Nastepny: I2 Plan. |
 | 2026-09-08 | Plan 146.0 | I2 | shipment_stakeholder (7 rol z karty I2, party_id wymagane). Delta zaakceptowana (/noc). Nie EXP1. Nastepny: kod 146.0. |
 | 2026-09-08 | 146.0 | I2 | shipment_stakeholder 7 rol, party_id wymagane. Nie EXP1. Nie I3. Nastepny: I3 Plan. |
-| 2026-09-08 | Plan 147.0 | I3 | document_dispatch_rule (adresat, nie send). Delta zaakceptowana (`/noc`). Nie I4. NastÄ™pny: kod 147.0. |
+| 2026-09-08 | Plan 147.0 | I3 | document_dispatch_rule (adresat, nie send). Delta zaakceptowana (`/noc`). Nie I4. NastĂ„â„˘pny: kod 147.0. |
 | 2026-09-08 | 147.0 | I3 | document_dispatch_rule katalog adresata. Nie send. Nie I4. Nastepny: I4 Plan. |
 | 2026-09-08 | Plan 148.0 | I4 | booking_instruction (scope+rola, nie S21). Delta zaakceptowana (`/noc`). Nie U4. Nastepny: kod 148.0. |
 | 2026-09-08 | 148.0 | I4 | booking_instruction na zleceniu. Nie S21. Nastepny: U4 Plan. |
@@ -477,28 +478,28 @@
 | 2026-09-08 | 157.0 | D3 | dock_appointment okno TIME na stop magazynu. Nie WMS. Nastepny: D4 Plan. |
 | 2026-09-08 | Plan 158.0 | D4 | cod_instruction znacznik pobrania bez kwoty, nie F. Delta zaakceptowana (`/noc`). Nie D5. Nastepny: kod 158.0. |
 | 2026-09-08 | 158.0 | D4 | cod_instruction znacznik pobrania bez kwoty. Nie F. Nastepny: D5 Plan. |
-| 2026-09-08 | Plan 159.0 | D5 | groupage_tariff prĂłg wagi na strefie, nie silnik P1. Delta zaakceptowana (`/noc`). Nie D6. Nastepny: kod 159.0. |
-| 2026-09-08 | 159.0 | D5 | groupage_tariff prĂłg wagi na strefie Decimal. Nie silnik P1. Nastepny: D6 Plan. |
+| 2026-09-08 | Plan 159.0 | D5 | groupage_tariff prÄ‚Ĺ‚g wagi na strefie, nie silnik P1. Delta zaakceptowana (`/noc`). Nie D6. Nastepny: kod 159.0. |
+| 2026-09-08 | 159.0 | D5 | groupage_tariff prÄ‚Ĺ‚g wagi na strefie Decimal. Nie silnik P1. Nastepny: D6 Plan. |
 | 2026-09-08 | Plan 160.0 | D6 | ocean_bill znacznik HBL/MBL na zleceniu, nie booking. Delta zaakceptowana (`/noc`). Nie D7. Nastepny: kod 160.0. |
 | 2026-09-08 | 160.0 | D6 | ocean_bill znacznik HBL/MBL na zleceniu. Nie booking. Nastepny: D7 Plan. |
-| 2026-09-08 | Plan 161.0 | D7 | pallet_balance saldo Chep/LPR na party, nie gieĹ‚da. Delta zaakceptowana (`/noc`). Nie D8. Nastepny: kod 161.0. |
-| 2026-09-08 | 161.0 | D7 | pallet_balance saldo Chep/LPR integer na party. Nie gieĹ‚da. Nastepny: D9 Plan (D8 parked). |
+| 2026-09-08 | Plan 161.0 | D7 | pallet_balance saldo Chep/LPR na party, nie gieÄąâ€šda. Delta zaakceptowana (`/noc`). Nie D8. Nastepny: kod 161.0. |
+| 2026-09-08 | 161.0 | D7 | pallet_balance saldo Chep/LPR integer na party. Nie gieÄąâ€šda. Nastepny: D9 Plan (D8 parked). |
 | 2026-09-08 | Plan 162.0 | D9 | document_template layout jako dane, nie PDF. Delta zaakceptowana (`/noc`). Nie D8. Nastepny: kod 162.0. |
-| 2026-09-08 | 162.0 | D9 | document_template layout jako dane. Nie PDF. Nastepny: P1 Plan (D9 leftover D9bâ€“f). |
+| 2026-09-08 | 162.0 | D9 | document_template layout jako dane. Nie PDF. Nastepny: P1 Plan (D9 leftover D9bĂ˘â‚¬â€śf). |
 | 2026-09-08 | Plan 163.0 | P1 | rate_card warunek jako dane + Decimal, nie silnik WHEN. Delta zaakceptowana (`/noc`). Nie P2. Nastepny: kod 163.0. |
 | 2026-09-08 | 163.0 | P1 | rate_card applies_when jako dane + Decimal. Nie silnik WHEN. Nastepny: P2 Plan. |
-| 2026-09-08 | Plan 164.0 | P2 | charge_template kolekcja kodĂłw + daty jako dane, nie exclusion. Delta zaakceptowana (`/noc`). Nie P3. Nastepny: kod 164.0. |
-| 2026-09-08 | 164.0 | P2 | charge_template kolekcja kodĂłw + daty jako dane. Nie exclusion. Nastepny: P3 Plan. |
-| 2026-09-08 | Plan 165.0 | P3 | fuel_index katalog FSC/BAF/CAF obok nbp_rate, nie mnoĹĽenie na charge. Delta zaakceptowana (`/noc`). Nie P4. Nastepny: kod 165.0. |
-| 2026-09-08 | 165.0 | P3 | fuel_index katalog FSC/BAF/CAF Decimal obok nbp_rate. Nie mnoĹĽenie na charge. Nastepny: P4 Plan. |
-| 2026-09-08 | Plan 166.0 | P4 | local_charge THC/ISPS jako dane + Decimal, nie warning brakĂłw. Delta zaakceptowana (`/noc`). Nie P5. Nastepny: kod 166.0. |
-| 2026-09-08 | 166.0 | P4 | local_charge katalog THC/ISPS Decimal. Nie warning brakĂłw. Nastepny: P5 Plan. |
+| 2026-09-08 | Plan 164.0 | P2 | charge_template kolekcja kodÄ‚Ĺ‚w + daty jako dane, nie exclusion. Delta zaakceptowana (`/noc`). Nie P3. Nastepny: kod 164.0. |
+| 2026-09-08 | 164.0 | P2 | charge_template kolekcja kodÄ‚Ĺ‚w + daty jako dane. Nie exclusion. Nastepny: P3 Plan. |
+| 2026-09-08 | Plan 165.0 | P3 | fuel_index katalog FSC/BAF/CAF obok nbp_rate, nie mnoÄąÄ˝enie na charge. Delta zaakceptowana (`/noc`). Nie P4. Nastepny: kod 165.0. |
+| 2026-09-08 | 165.0 | P3 | fuel_index katalog FSC/BAF/CAF Decimal obok nbp_rate. Nie mnoÄąÄ˝enie na charge. Nastepny: P4 Plan. |
+| 2026-09-08 | Plan 166.0 | P4 | local_charge THC/ISPS jako dane + Decimal, nie warning brakÄ‚Ĺ‚w. Delta zaakceptowana (`/noc`). Nie P5. Nastepny: kod 166.0. |
+| 2026-09-08 | 166.0 | P4 | local_charge katalog THC/ISPS Decimal. Nie warning brakÄ‚Ĺ‚w. Nastepny: P5 Plan. |
 | 2026-09-08 | Plan 167.0 | P5 | expected_buy snapshot na trip przy in_transit, nie wariancja. Delta zaakceptowana (`/noc`). Nie P6. Nastepny: kod 167.0. |
 | 2026-09-08 | 167.0 | P5 | expected_buy freeze Decimal na trip przy in_transit. Nie wariancja. Nastepny: P6 Plan. |
-| 2026-09-08 | Plan 168.0 | P6 | tender_quote waĹĽnoĹ›Ä‡ + limit orderĂłw, nie auto-award. Delta zaakceptowana (`/noc`). Nie G2. Nastepny: kod 168.0. |
-| 2026-09-08 | 168.0 | P6 | tender_quote waĹĽnoĹ›Ä‡ + limit orderĂłw integer. Nie auto-award. Nastepny: G2.0 Plan. |
-| 2026-09-08 | Plan 169.0 | G2.0 | tender nagĹ‚Ăłwek sell/buy jako dane, nie loty. Delta zaakceptowana (`/noc`). Nie auto-award. Nastepny: kod 169.0. |
-| 2026-09-08 | 169.0 | G2.0 | tender nagĹ‚Ăłwek sell/buy jako dane. Nie loty. Nie auto-award. Nastepny: G2.1 Plan. |
+| 2026-09-08 | Plan 168.0 | P6 | tender_quote waÄąÄ˝noÄąâ€şĂ„â€ˇ + limit orderÄ‚Ĺ‚w, nie auto-award. Delta zaakceptowana (`/noc`). Nie G2. Nastepny: kod 168.0. |
+| 2026-09-08 | 168.0 | P6 | tender_quote waÄąÄ˝noÄąâ€şĂ„â€ˇ + limit orderÄ‚Ĺ‚w integer. Nie auto-award. Nastepny: G2.0 Plan. |
+| 2026-09-08 | Plan 169.0 | G2.0 | tender nagÄąâ€šÄ‚Ĺ‚wek sell/buy jako dane, nie loty. Delta zaakceptowana (`/noc`). Nie auto-award. Nastepny: kod 169.0. |
+| 2026-09-08 | 169.0 | G2.0 | tender nagÄąâ€šÄ‚Ĺ‚wek sell/buy jako dane. Nie loty. Nie auto-award. Nastepny: G2.1 Plan. |
 | 2026-09-08 | Plan 170.0 | G2.1 | tender_lot kod partii na tender, nie korytarz. Delta zaakceptowana (`/noc`). Nie auto-award. Nastepny: kod 170.0. |
 | 2026-09-08 | 170.0 | G2.1 | tender_lot kod partii na tender. Nie korytarz. Nie auto-award. Nastepny: G2.2 Plan. |
 | 2026-09-09 | Plan 171.0 | G2.2 | tender_lane para UN/LOCODE na tender_lot, nie runda. Delta zaakceptowana (`/noc`). Nie auto-award. Nastepny: kod 171.0. |
@@ -508,7 +509,7 @@
 | 2026-09-09 | Plan 173.0 | G2.4 | tender_data_room NDA na tender, nie extract. Delta zaakceptowana (`/noc`). Nie auto-award. Nastepny: kod 173.0. |
 | 2026-09-09 | 173.0 | G2.4 | tender_data_room NDA na tender. Nie extract. Nie auto-award. Nastepny: G2.5 Plan. |
 | 2026-09-09 | Plan 174.0 | G2.5 | tender_matrix_cell kwota Decimal z P, nie LLM. Delta zaakceptowana (`/noc`). Nie auto-award. Nastepny: kod 174.0. |
-| 2026-09-09 | 174.0 | G2.5 | tender_matrix_cell kwota Decimal z P na tender. Nie LLM. Nie druga marĹĽa. Nastepny: G2.6 Plan. |
+| 2026-09-09 | 174.0 | G2.5 | tender_matrix_cell kwota Decimal z P na tender. Nie LLM. Nie druga marÄąÄ˝a. Nastepny: G2.6 Plan. |
 | 2026-09-09 | Plan 175.0 | G2.6 | tender_playbook twierdzenie + source_ref, nie extract RFP. Delta zaakceptowana (`/noc`). Nie auto-award. Nastepny: kod 175.0. |
 | 2026-09-09 | 175.0 | G2.6 | tender_playbook twierdzenie + source_ref na tender. Nie extract RFP. Nie kwota. Nastepny: G2.7 Plan. |
 | 2026-09-09 | Plan 176.0 | G2.7 | tender_win_loss wynik + source_ref, nie extract RFP. Delta zaakceptowana (`/noc`). Nie auto-award. Nastepny: kod 176.0. |
@@ -526,17 +527,17 @@
 | 2026-09-09 | Plan 182.0 | G2.12 | tender_award_review HITL cztery oczy, nie auto-award. Delta zaakceptowana (`/noc`). Nie TED scrape. Nastepny: kod 182.0. |
 | 2026-09-09 | 182.0 | G2.12 | tender_award_review HITL countersign/challenge + source_ref na tender. Nie auto-award. Nie win/loss. Nastepny: G2.13 Plan. |
 | 2026-09-09 | Plan 183.0 | G2.13 | tender_ted_notice HITL numer TED, nie scrape. Delta zaakceptowana (`/noc`). Nie auto-award. Nastepny: kod 183.0. |
-| 2026-09-09 | 183.0 | G2.13 | tender_ted_notice HITL numer ogĹ‚oszenia TED + source_ref na tender. Nie scrape. Nie live HTTP. Nastepny: G2.14 Plan. |
+| 2026-09-09 | 183.0 | G2.13 | tender_ted_notice HITL numer ogÄąâ€šoszenia TED + source_ref na tender. Nie scrape. Nie live HTTP. Nastepny: G2.14 Plan. |
 | 2026-09-09 | Plan 184.0 | G2.14 | tender_carbon_mark HITL declared/exempt, nie kalkulator kg. Delta zaakceptowana (`/noc`). Nie auto-award. Nastepny: kod 184.0. |
-| 2026-09-09 | 184.0 | G2.14 | tender_carbon_mark HITL declared/exempt + source_ref na tender. Nie kalkulator kg. Nie CBAM. Nastepny: leftover G2.15â€“G2.18 Plan. |
+| 2026-09-09 | 184.0 | G2.14 | tender_carbon_mark HITL declared/exempt + source_ref na tender. Nie kalkulator kg. Nie CBAM. Nastepny: leftover G2.15Ă˘â‚¬â€śG2.18 Plan. |
 | 2026-09-09 | Plan 185.0 | G2.19 | lane_pattern HITL para UN/LOCODE, nie circle_sim. Delta zaakceptowana (`/noc`). Nie kalkulator kg. Nastepny: kod 185.0. |
-| 2026-09-09 | 185.0 | G2.19 | lane_pattern HITL para UN/LOCODE + source_ref. Nie circle_sim. Nie km. Nastepny: leftover G2.20â€“G2.22 Plan. |
+| 2026-09-09 | 185.0 | G2.19 | lane_pattern HITL para UN/LOCODE + source_ref. Nie circle_sim. Nie km. Nastepny: leftover G2.20Ă˘â‚¬â€śG2.22 Plan. |
 | 2026-09-09 | Plan 186.0 | G2.23 | kreptd_licence HITL numer licencji, nie scrape. Delta zaakceptowana (`/noc`). Nie Citizen API. Nastepny: kod 186.0. |
-| 2026-09-09 | 186.0 | G2.23 | kreptd_licence HITL numer licencji + source_ref na party. Nie scrape. Nie Citizen API. Nastepny: leftover G2.20â€“G2.22 Plan. |
+| 2026-09-09 | 186.0 | G2.23 | kreptd_licence HITL numer licencji + source_ref na party. Nie scrape. Nie Citizen API. Nastepny: leftover G2.20Ă˘â‚¬â€śG2.22 Plan. |
 | 2026-09-09 | Plan 187.0 | C7 | monitoring_scheme HITL katalog, nie SENT XML. Delta zaakceptowana (`/noc`). Nie live PUESC. Nastepny: kod 187.0. |
-| 2026-09-09 | 187.0 | C7 | monitoring_scheme HITL kod schematu + source_ref. Nie SENT XML. Nie live PUESC. Nastepny: leftover G2.20â€“G2.22 Plan. |
+| 2026-09-09 | 187.0 | C7 | monitoring_scheme HITL kod schematu + source_ref. Nie SENT XML. Nie live PUESC. Nastepny: leftover G2.20Ă˘â‚¬â€śG2.22 Plan. |
 | 2026-09-09 | Plan 188.0 | C8 | party_document HITL rodzaj dokumentu na party, nie 409. Delta zaakceptowana (`/noc`). Nie extract. Nastepny: kod 188.0. |
-| 2026-09-09 | 188.0 | C8 | party_document HITL kind + source_ref na party. Nie 409. Nie extract. Nastepny: leftover G2.20â€“G2.22 Plan. |
+| 2026-09-09 | 188.0 | C8 | party_document HITL kind + source_ref na party. Nie 409. Nie extract. Nastepny: leftover G2.20Ă˘â‚¬â€śG2.22 Plan. |
 | 2026-09-09 | Plan 189.0 | F2 | cash_discount HITL kind na fakturze, nie kwota. Delta zaakceptowana (`/noc`). Nie CAMT. Nastepny: kod 189.0. |
 | 2026-09-09 | 189.0 | F2 | cash_discount HITL kind + source_ref na fakturze. Nie kwota. Nie CAMT. Nastepny: leftover F2b Plan. |
 | 2026-09-09 | Plan 190.0 | C5 | carbon_method HITL GLEC/GHG + wersja, nie kalkulator kg. Delta zaakceptowana (`/noc`). Nie live HTTP. Nastepny: kod 190.0. |
@@ -545,34 +546,34 @@
 | 2026-09-09 | 191.0 | EXP0.8 | cargo_claim HITL OS&D + notice/suit DATE. Nie silnik 7/21/365. Nie kwota. Nastepny: leftover C3 Plan. |
 | 2026-09-09 | Plan 192.0 | EXP0.9 | dangerous_good HITL tunel ADR + SG, nie klasa z LLM. Delta zaakceptowana (`/noc`). Nastepny: kod 192.0. |
 | 2026-09-09 | 192.0 | EXP0.9 | dangerous_good HITL tunel ADR + grupa SG. Nie klasa z LLM. Nie live IMO. Nastepny: leftover C3 Plan. |
-| 2026-09-09 | Plan 193.0 | B0b/V1 | prediction_ledger HITL przedziaĹ‚ + CRPS/MAE, nie silnik. Delta zaakceptowana (`/noc`). Nastepny: kod 193.0. |
-| 2026-09-09 | 193.0 | B0b/V1 | prediction_ledger HITL przedziaĹ‚ + CRPS/MAE. Nie silnik. Nie scoring osoby. Nastepny: leftover C3 Plan. |
+| 2026-09-09 | Plan 193.0 | B0b/V1 | prediction_ledger HITL przedziaÄąâ€š + CRPS/MAE, nie silnik. Delta zaakceptowana (`/noc`). Nastepny: kod 193.0. |
+| 2026-09-09 | 193.0 | B0b/V1 | prediction_ledger HITL przedziaÄąâ€š + CRPS/MAE. Nie silnik. Nie scoring osoby. Nastepny: leftover C3 Plan. |
 | 2026-09-09 | Plan 194.0 | V2 | stop HITL eta_physical/eta_legal, nie GPS i nie pogoda. Delta zaakceptowana (`/noc`). Nastepny: kod 194.0. |
 | 2026-09-09 | 194.0 | V2 | stop HITL dwa ETA (fizyczne/prawne). Nie GPS. Nie pogoda. Nastepny: leftover V2 pogoda Plan. |
 | 2026-09-09 | Plan 195.0 | V2 | weather_observation HITL warunek + UN/LOCODE, nie Open-Meteo. Delta zaakceptowana (`/noc`). Nastepny: kod 195.0. |
 | 2026-09-09 | 195.0 | V2 | weather_observation HITL warunek + stacja + czas. Nie Open-Meteo. Nie ETA. Nastepny: V3 D&D Plan. |
 | 2026-09-09 | Plan 196.0 | V3 | free_time_clock HITL rodzaj + free_days, nie countdown. Delta zaakceptowana (`/noc`). Nastepny: kod 196.0. |
 | 2026-09-09 | 196.0 | V3 | free_time_clock HITL rodzaj + dni wolne. Nie countdown. Nie charge. Nastepny: V5 GPS HITL Plan. |
-| 2026-09-09 | Plan 197.0 | V5 | telematics_connector HITL reĹĽim + dostawca, nie live GPS. Delta zaakceptowana (`/noc`). Nastepny: kod 197.0. |
-| 2026-09-09 | 197.0 | V5 | telematics_connector HITL reĹĽim + dostawca. Nie live GPS. Nie sekrety. Nastepny: V6 wieĹĽa Plan. |
-| 2026-09-09 | Plan 198.0 | V6 | tower_impact HITL etap Ĺ‚aĹ„cucha + status umowy, nie EBITDA. Delta zaakceptowana (`/noc`). Nastepny: kod 198.0. |
-| 2026-09-09 | 198.0 | V6 | tower_impact HITL etap Ĺ‚aĹ„cucha + status umowy. Nie EBITDA. Nie scoring. Nastepny: W1 twin Plan. |
-| 2026-09-09 | Plan 199.0 | W1 | twin_mark HITL 8 rodzajĂłw, nie fizyka. Delta zaakceptowana (`/noc`). Nastepny: kod 199.0. |
-| 2026-09-09 | 199.0 | W1 | twin_mark HITL 8 rodzajĂłw. Nie fizyka. Nie plan_snapshot. Nastepny: W2 war room Plan. |
+| 2026-09-09 | Plan 197.0 | V5 | telematics_connector HITL reÄąÄ˝im + dostawca, nie live GPS. Delta zaakceptowana (`/noc`). Nastepny: kod 197.0. |
+| 2026-09-09 | 197.0 | V5 | telematics_connector HITL reÄąÄ˝im + dostawca. Nie live GPS. Nie sekrety. Nastepny: V6 wieÄąÄ˝a Plan. |
+| 2026-09-09 | Plan 198.0 | V6 | tower_impact HITL etap Äąâ€šaÄąâ€žcucha + status umowy, nie EBITDA. Delta zaakceptowana (`/noc`). Nastepny: kod 198.0. |
+| 2026-09-09 | 198.0 | V6 | tower_impact HITL etap Äąâ€šaÄąâ€žcucha + status umowy. Nie EBITDA. Nie scoring. Nastepny: W1 twin Plan. |
+| 2026-09-09 | Plan 199.0 | W1 | twin_mark HITL 8 rodzajÄ‚Ĺ‚w, nie fizyka. Delta zaakceptowana (`/noc`). Nastepny: kod 199.0. |
+| 2026-09-09 | 199.0 | W1 | twin_mark HITL 8 rodzajÄ‚Ĺ‚w. Nie fizyka. Nie plan_snapshot. Nastepny: W2 war room Plan. |
 | 2026-09-09 | Plan 200.0 | W2 | war_room_mark HITL rodzaj incydentu, nie N8, nie drugi czat. Delta zaakceptowana (`/noc`). Nastepny: kod 200.0. |
 | 2026-09-09 | 200.0 | W2 | war_room_mark HITL rodzaj incydentu. Nie N8. Nie drugi czat. Nastepny: W3 memory graph Plan. |
-| 2026-09-09 | Plan 201.0 | W3 | memory_edge HITL rodzaj krawÄ™dzi, nie RAG. Delta zaakceptowana (`/noc`). Nastepny: kod 201.0. |
-| 2026-09-09 | 201.0 | W3 | memory_edge HITL rodzaj krawÄ™dzi. Nie RAG. Nie graf na entity_event. Nastepny: W4 Executive AI Plan. |
-| 2026-09-09 | Plan 202.0 | W4 | executive_mark HITL rodzaj pytania zarzÄ…du, nie suma LLM. Delta zaakceptowana (`/noc`). Nastepny: kod 202.0. |
-| 2026-09-09 | 202.0 | W4 | executive_mark HITL rodzaj pytania zarzÄ…du. Nie suma LLM. Nie narracja SQL. Nastepny: W5 ranking Plan. |
-| 2026-09-09 | Plan 203.0 | W5 | rank_mark HITL oĹ› rankingu, nie auto-award. Delta zaakceptowana (`/noc`). Nastepny: kod 203.0. |
-| 2026-09-09 | 203.0 | W5 | rank_mark HITL oĹ› rankingu zakupu. Nie auto-award. Nie N szkicĂłw. Nastepny: leftover D9b Plan. |
+| 2026-09-09 | Plan 201.0 | W3 | memory_edge HITL rodzaj krawĂ„â„˘dzi, nie RAG. Delta zaakceptowana (`/noc`). Nastepny: kod 201.0. |
+| 2026-09-09 | 201.0 | W3 | memory_edge HITL rodzaj krawĂ„â„˘dzi. Nie RAG. Nie graf na entity_event. Nastepny: W4 Executive AI Plan. |
+| 2026-09-09 | Plan 202.0 | W4 | executive_mark HITL rodzaj pytania zarzĂ„â€¦du, nie suma LLM. Delta zaakceptowana (`/noc`). Nastepny: kod 202.0. |
+| 2026-09-09 | 202.0 | W4 | executive_mark HITL rodzaj pytania zarzĂ„â€¦du. Nie suma LLM. Nie narracja SQL. Nastepny: W5 ranking Plan. |
+| 2026-09-09 | Plan 203.0 | W5 | rank_mark HITL oÄąâ€ş rankingu, nie auto-award. Delta zaakceptowana (`/noc`). Nastepny: kod 203.0. |
+| 2026-09-09 | 203.0 | W5 | rank_mark HITL oÄąâ€ş rankingu zakupu. Nie auto-award. Nie N szkicÄ‚Ĺ‚w. Nastepny: leftover D9b Plan. |
 | 2026-09-09 | Plan 204.0 | D9b | shipment_ref HITL numer zlecenia, nie QR/PDF. Delta zaakceptowana (`/noc`). Nastepny: kod 204.0. |
 | 2026-09-09 | 204.0 | D9b | shipment_ref HITL twardy numer na zleceniu. Nie QR. Nie PDF. Nastepny: leftover P1b Plan. |
-| 2026-09-09 | Plan 205.0 | P1b | rate_card matching GET rĂłwnoĹ›Ä‡ SQL jak 69.0, nie parser. Delta zaakceptowana (`/noc`). Nastepny: kod 205.0. |
-| 2026-09-09 | 205.0 | P1b | rate_card matching GET rĂłwnoĹ›Ä‡ SQL. Nie parser WHEN/IF. Nastepny: leftover P2c Plan. |
+| 2026-09-09 | Plan 205.0 | P1b | rate_card matching GET rÄ‚Ĺ‚wnoÄąâ€şĂ„â€ˇ SQL jak 69.0, nie parser. Delta zaakceptowana (`/noc`). Nastepny: kod 205.0. |
+| 2026-09-09 | 205.0 | P1b | rate_card matching GET rÄ‚Ĺ‚wnoÄąâ€şĂ„â€ˇ SQL. Nie parser WHEN/IF. Nastepny: leftover P2c Plan. |
 | 2026-09-09 | Plan 206.0 | P2c | charge_template exclusion daterange jak 4.1, nie Python. Delta zaakceptowana (`/noc`). Nastepny: kod 206.0. |
-| 2026-09-09 | 206.0 | P2c | charge_template exclusion daterange. Nie overlap w Pythonie. Nastepny: leftover P3bâ€“d Plan. |
+| 2026-09-09 | 206.0 | P2c | charge_template exclusion daterange. Nie overlap w Pythonie. Nastepny: leftover P3bĂ˘â‚¬â€śd Plan. |
 | 2026-09-09 | Plan 207.0 | P4b | local_charge port_unlocode HITL, nie FK geography. Delta zaakceptowana (`/noc`). Nastepny: kod 207.0. |
 | 2026-09-09 | 207.0 | P4b | local_charge port_unlocode HITL. Nie FK geography. Nastepny: leftover P4b rest Plan. |
 | 2026-09-09 | Plan 208.0 | P4b | local_charge iso_size_type HITL, nie FK container. Delta zaakceptowana (`/noc`). Nastepny: kod 208.0. |
@@ -684,8 +685,8 @@
 | 2026-09-10 | 260.0 | N1 | consignment HITL na shipment. N wierszy. Nie mapa. Nastepny: leftover T6 mapa Plan. |
 | 2026-09-10 | Plan 261.0 | T6 | trasa /planning + mapa lazy na trip, nie GPS i nie 4 widoki. Delta zaakceptowana (`/noc`). Nastepny: kod 261.0. |
 | 2026-09-10 | 261.0 | T6 | /planning leniwy overlay trip. Nie GPS. Nie 4 widoki. Nastepny: leftover T4b SQL charge Plan. |
-| 2026-09-10 | Plan 262.0 | T4 | marĹĽa listy charge z SQL, nie kolumna i nie rollup drzewa. Delta zaakceptowana (`/noc`). Nastepny: kod 262.0. |
-| 2026-09-10 | 262.0 | T4 | GET listy charge: marĹĽa sellâ’buy w SQL. Nie kolumna. Nie rollup. Nastepny: leftover lookup/KSeF TE Plan. |
+| 2026-09-10 | Plan 262.0 | T4 | marÄąÄ˝a listy charge z SQL, nie kolumna i nie rollup drzewa. Delta zaakceptowana (`/noc`). Nastepny: kod 262.0. |
+| 2026-09-10 | 262.0 | T4 | GET listy charge: marÄąÄ˝a sellĂ˘Ââ€™buy w SQL. Nie kolumna. Nie rollup. Nastepny: leftover lookup/KSeF TE Plan. |
 | 2026-09-10 | Plan 263.0 | T5 | task_template HITL kod + applies_when, nie instancja i nie outbox. Delta zaakceptowana (`/noc`). Nastepny: kod 263.0. |
 | 2026-09-10 | 263.0 | T5 | task_template HITL kod + applies_when. Nie instancja. Nie outbox. Nastepny: leftover outbox T5 Plan. |
 | 2026-09-10 | Plan 264.0 | T5 | outbox task_template_saved na istniejacej tabeli, nie konsument i nie worker. Delta zaakceptowana (`/noc`). Nastepny: kod 264.0. |
@@ -702,18 +703,18 @@
 | 2026-09-10 | 269.0 | T8 | terminal_slot_connector HITL mode + godziny N4. Nie live T8. Nie confirmed z formularza. Nastepny: leftover S53 Auth0 Plan. |
 | 2026-09-10 | Plan 270.0 | S53 | idp_connector HITL Auth0 fixture, nie login i nie live HTTP. Delta zaakceptowana (`/noc`). Nastepny: kod 270.0. |
 | 2026-09-10 | 270.0 | S53 | idp_connector HITL token auth0. Nie login. Nie live Auth0. Nastepny: leftover portale/diada S55 / Fala X Plan. |
-| 2026-09-10 | Plan 271.0 | S55 | exchange_connector HITL kod + kind trans_eu, nie live gieĹ‚da. Delta zaakceptowana (`/noc`). Nastepny: kod 271.0. |
-| 2026-09-10 | 271.0 | S55 | exchange_connector HITL kind trans_eu. Nie live gieĹ‚da. Nie SPA. Nastepny: leftover CT7/CI9 / reszta pinu Plan. |
-| 2026-09-10 | Plan 272.0 | CI9 | customer_contract HITL nagĹ‚Ăłwek kod + etykiety, nie ciphertext i nie CT7 live. Delta zaakceptowana (`/noc`). Nastepny: kod 272.0. |
-| 2026-09-10 | 272.0 | CI9 | customer_contract HITL nagĹ‚Ăłwek kod + etykiety. Nie treĹ›Ä‡. Nie ciphertext. Nastepny: leftover CI9 ciphertext/KEK albo CT7 parked live Plan. |
+| 2026-09-10 | Plan 271.0 | S55 | exchange_connector HITL kod + kind trans_eu, nie live gieÄąâ€šda. Delta zaakceptowana (`/noc`). Nastepny: kod 271.0. |
+| 2026-09-10 | 271.0 | S55 | exchange_connector HITL kind trans_eu. Nie live gieÄąâ€šda. Nie SPA. Nastepny: leftover CT7/CI9 / reszta pinu Plan. |
+| 2026-09-10 | Plan 272.0 | CI9 | customer_contract HITL nagÄąâ€šÄ‚Ĺ‚wek kod + etykiety, nie ciphertext i nie CT7 live. Delta zaakceptowana (`/noc`). Nastepny: kod 272.0. |
+| 2026-09-10 | 272.0 | CI9 | customer_contract HITL nagÄąâ€šÄ‚Ĺ‚wek kod + etykiety. Nie treÄąâ€şĂ„â€ˇ. Nie ciphertext. Nastepny: leftover CI9 ciphertext/KEK albo CT7 parked live Plan. |
 | 2026-09-10 | Plan 273.0 | CI9 | customer_contract HITL opaque BYTEA present/absent, nie szyfr. Delta zaakceptowana (`/noc`). Nastepny: kod 273.0. |
 | 2026-09-10 | 273.0 | CI9 | customer_contract HITL opaque blob present/absent. Nie szyfr. Nie KEK. Nastepny: leftover CI9 KEK mark albo CT7 parked live Plan. |
 | 2026-09-10 | Plan 274.0 | CI9 | tenant_contract_kek HITL znacznik owijki, nie klucz. Delta zaakceptowana (`/noc`). Nastepny: kod 274.0. |
-| 2026-09-10 | 274.0 | CI9 | tenant_contract_kek HITL wrap_kind password/kms. Nie klucz. Nie materiaĹ‚. Nastepny: leftover CT7 parked live / reszta pinu Plan. |
+| 2026-09-10 | 274.0 | CI9 | tenant_contract_kek HITL wrap_kind password/kms. Nie klucz. Nie materiaÄąâ€š. Nastepny: leftover CT7 parked live / reszta pinu Plan. |
 | 2026-09-10 | Plan 275.0 | CT7 | visibility_connector HITL kod + kind p44, nie live track. Delta zaakceptowana (`/noc`). Nastepny: kod 275.0. |
 | 2026-09-10 | 275.0 | CT7 | visibility_connector HITL kind p44. Nie live track. Nie AIS. Nastepny: leftover CT1 purchase_order / reszta pinu Plan. |
-| 2026-09-10 | Plan 276.0 | CT1 | purchase_order HITL nagĹ‚Ăłwek kod + opcjonalny zakĹ‚ad. Delta zaakceptowana (`/noc`). Nastepny: kod 276.0. |
-| 2026-09-10 | 276.0 | CT1 | purchase_order HITL nagĹ‚Ăłwek. Nie po_line. Nie ASN. Nastepny: leftover CT1 po_line / ASN / reszta pinu Plan. |
+| 2026-09-10 | Plan 276.0 | CT1 | purchase_order HITL nagÄąâ€šÄ‚Ĺ‚wek kod + opcjonalny zakÄąâ€šad. Delta zaakceptowana (`/noc`). Nastepny: kod 276.0. |
+| 2026-09-10 | 276.0 | CT1 | purchase_order HITL nagÄąâ€šÄ‚Ĺ‚wek. Nie po_line. Nie ASN. Nastepny: leftover CT1 po_line / ASN / reszta pinu Plan. |
 | 2026-09-10 | Plan 277.0 | CT1 | po_line HITL linia SKU + qty Decimal + JM. Delta zaakceptowana (`/noc`). Nastepny: kod 277.0. |
 | 2026-09-10 | 277.0 | CT1 | po_line HITL linia SKU + qty Decimal. Nie ASN. Nastepny: leftover CT1 ASN / reszta pinu Plan. |
 | 2026-09-11 | Plan 278.0 | CT1 | asn HITL awizo na PO. Delta zaakceptowana (`/noc`). Nastepny: kod 278.0. |

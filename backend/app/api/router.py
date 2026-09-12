@@ -73,6 +73,7 @@ from app.api import (
     impact_scenarios,
     inbound_messages,
     incoterm_responsibilities,
+    integration_hub_marks,
     intervention_outcomes,
     kreptd_licences,
     lane_kms,
@@ -351,6 +352,7 @@ api_router.include_router(e_cmr_marks.router)
 api_router.include_router(e_delivery_marks.router)
 api_router.include_router(peppol_marks.router)
 api_router.include_router(sid_import_marks.router)
+api_router.include_router(integration_hub_marks.router)
 
 
 @api_router.api_route(

@@ -930,6 +930,10 @@ class InvalidSidImportMark(DomainError):
     """EXP2.21: HITL import SID — nie SID HTTP / ICS2 live."""
 
 
+class InvalidIntegrationHubMark(DomainError):
+    """EXP2.22: HITL Integration Hub — nie live HTTP / Selenium."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

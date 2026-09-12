@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **358.0** EXP2.21 HITL `sid_import_mark`
-- **Etap:** Plan — **359.0** EXP2.22
-- **Następny:** **359.0** EXP2.22 Integration Hub HITL (węższa z kolejki; delta do utworzenia).
+- **Ostatni plaster:** **359.0** EXP2.22 HITL `integration_hub_mark`
+- **Etap:** Plan — **360.0** EXP2.23
+- **Następny:** **360.0** EXP2.23 webhook outbox HITL (węższa z kolejki; delta do utworzenia).
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
