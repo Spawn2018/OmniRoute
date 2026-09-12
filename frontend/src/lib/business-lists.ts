@@ -159,6 +159,10 @@ export const BUSINESS_LISTS = {
     route: "/dual-ledger-marks",
     tableKey: "dual_ledger_mark",
   },
+  namedPlaceMark: {
+    route: "/named-place-marks",
+    tableKey: "named_place_mark",
+  },
   impersonateGuardMark: {
     route: "/impersonate-guard-marks",
     tableKey: "impersonate_guard_mark",
@@ -393,6 +397,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/po-batch-marks",
   "/un-segregation-marks",
   "/dual-ledger-marks",
+  "/named-place-marks",
   "/impersonate-guard-marks",
   "/csrd-marks",
   "/air-ra3-marks",

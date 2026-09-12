@@ -3731,6 +3731,80 @@
         ]
       }
     },
+    "/api/v1/named-place-marks": {
+      "get": {
+        "tags": [
+          "named-place-mark"
+        ],
+        "summary": "List Named Place Marks",
+        "operationId": "list_named_place_marks_api_v1_named_place_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/NamedPlaceMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Named Place Marks Api V1 Named Place Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "named-place-mark"
+        ],
+        "summary": "Create Named Place Mark",
+        "operationId": "create_named_place_mark_api_v1_named_place_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NamedPlaceMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NamedPlaceMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/posting-marks": {
       "get": {
         "tags": [
@@ -31633,6 +31707,83 @@
           "source_ref"
         ],
         "title": "MultiManningMarkResponse"
+      },
+      "NamedPlaceMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "named_place": {
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 1,
+            "title": "Named Place"
+          },
+          "terms_version": {
+            "type": "string",
+            "maxLength": 4,
+            "minLength": 4,
+            "title": "Terms Version"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "named_place",
+          "terms_version",
+          "source_ref"
+        ],
+        "title": "NamedPlaceMarkCreate"
+      },
+      "NamedPlaceMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "named_place": {
+            "type": "string",
+            "title": "Named Place"
+          },
+          "terms_version": {
+            "type": "string",
+            "title": "Terms Version"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "named_place",
+          "terms_version",
+          "source_ref"
+        ],
+        "title": "NamedPlaceMarkResponse"
       },
       "NbpRateCreate": {
         "properties": {

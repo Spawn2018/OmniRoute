@@ -128,6 +128,7 @@ import { Route as MoneyCostRouteImport } from './routes/money-cost'
 import { Route as MonitoringSchemesRouteImport } from './routes/monitoring-schemes'
 import { Route as MqcMarksRouteImport } from './routes/mqc-marks'
 import { Route as MultiManningMarksRouteImport } from './routes/multi-manning-marks'
+import { Route as NamedPlaceMarksRouteImport } from './routes/named-place-marks'
 import { Route as NbpRatesRouteImport } from './routes/nbp-rates'
 import { Route as NctsDraftsRouteImport } from './routes/ncts-drafts'
 import { Route as NetworksRouteImport } from './routes/networks'
@@ -832,6 +833,11 @@ const MultiManningMarksRoute = MultiManningMarksRouteImport.update({
   path: '/multi-manning-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NamedPlaceMarksRoute = NamedPlaceMarksRouteImport.update({
+  id: '/named-place-marks',
+  path: '/named-place-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NbpRatesRoute = NbpRatesRouteImport.update({
   id: '/nbp-rates',
   path: '/nbp-rates',
@@ -1494,6 +1500,7 @@ export interface FileRoutesByFullPath {
   '/monitoring-schemes': typeof MonitoringSchemesRoute
   '/mqc-marks': typeof MqcMarksRoute
   '/multi-manning-marks': typeof MultiManningMarksRoute
+  '/named-place-marks': typeof NamedPlaceMarksRoute
   '/nbp-rates': typeof NbpRatesRoute
   '/ncts-drafts': typeof NctsDraftsRoute
   '/networks': typeof NetworksRoute
@@ -1723,6 +1730,7 @@ export interface FileRoutesByTo {
   '/monitoring-schemes': typeof MonitoringSchemesRoute
   '/mqc-marks': typeof MqcMarksRoute
   '/multi-manning-marks': typeof MultiManningMarksRoute
+  '/named-place-marks': typeof NamedPlaceMarksRoute
   '/nbp-rates': typeof NbpRatesRoute
   '/ncts-drafts': typeof NctsDraftsRoute
   '/networks': typeof NetworksRoute
@@ -1953,6 +1961,7 @@ export interface FileRoutesById {
   '/monitoring-schemes': typeof MonitoringSchemesRoute
   '/mqc-marks': typeof MqcMarksRoute
   '/multi-manning-marks': typeof MultiManningMarksRoute
+  '/named-place-marks': typeof NamedPlaceMarksRoute
   '/nbp-rates': typeof NbpRatesRoute
   '/ncts-drafts': typeof NctsDraftsRoute
   '/networks': typeof NetworksRoute
@@ -2184,6 +2193,7 @@ export interface FileRouteTypes {
     | '/monitoring-schemes'
     | '/mqc-marks'
     | '/multi-manning-marks'
+    | '/named-place-marks'
     | '/nbp-rates'
     | '/ncts-drafts'
     | '/networks'
@@ -2413,6 +2423,7 @@ export interface FileRouteTypes {
     | '/monitoring-schemes'
     | '/mqc-marks'
     | '/multi-manning-marks'
+    | '/named-place-marks'
     | '/nbp-rates'
     | '/ncts-drafts'
     | '/networks'
@@ -2642,6 +2653,7 @@ export interface FileRouteTypes {
     | '/monitoring-schemes'
     | '/mqc-marks'
     | '/multi-manning-marks'
+    | '/named-place-marks'
     | '/nbp-rates'
     | '/ncts-drafts'
     | '/networks'
@@ -2872,6 +2884,7 @@ export interface RootRouteChildren {
   MonitoringSchemesRoute: typeof MonitoringSchemesRoute
   MqcMarksRoute: typeof MqcMarksRoute
   MultiManningMarksRoute: typeof MultiManningMarksRoute
+  NamedPlaceMarksRoute: typeof NamedPlaceMarksRoute
   NbpRatesRoute: typeof NbpRatesRoute
   NctsDraftsRoute: typeof NctsDraftsRoute
   NetworksRoute: typeof NetworksRoute
@@ -3817,6 +3830,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MultiManningMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/named-place-marks': {
+      id: '/named-place-marks'
+      path: '/named-place-marks'
+      fullPath: '/named-place-marks'
+      preLoaderRoute: typeof NamedPlaceMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/nbp-rates': {
       id: '/nbp-rates'
       path: '/nbp-rates'
@@ -4696,6 +4716,7 @@ const rootRouteChildren: RootRouteChildren = {
   MonitoringSchemesRoute: MonitoringSchemesRoute,
   MqcMarksRoute: MqcMarksRoute,
   MultiManningMarksRoute: MultiManningMarksRoute,
+  NamedPlaceMarksRoute: NamedPlaceMarksRoute,
   NbpRatesRoute: NbpRatesRoute,
   NctsDraftsRoute: NctsDraftsRoute,
   NetworksRoute: NetworksRoute,

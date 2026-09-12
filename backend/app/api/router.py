@@ -120,6 +120,7 @@ from app.api import (
     monitoring_schemes,
     mqc_marks,
     multi_manning_marks,
+    named_place_marks,
     nbp_rates,
     ncts_drafts,
     networks,
@@ -267,6 +268,7 @@ api_router.include_router(outbox_events.router)
 api_router.include_router(empty_depot_marks.router)
 api_router.include_router(nvocc_marks.router)
 api_router.include_router(multi_manning_marks.router)
+api_router.include_router(named_place_marks.router)
 api_router.include_router(posting_marks.router)
 api_router.include_router(tacho_office_marks.router)
 api_router.include_router(label_parking_marks.router)

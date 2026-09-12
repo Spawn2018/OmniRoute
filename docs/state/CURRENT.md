@@ -4,17 +4,17 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **417.0** EXP0.10 HITL `dual_ledger_mark`
+**Ostatni plaster:** **418.0** EXP0.6 HITL `named_place_mark`
 
-**Etap:** Plaster — **418.0** EXP0.6 (delta zaakceptowana `/noc`)
+**Etap:** Plan — **419.0** EXP0.7
 
 **Noc:** `/noc 10` do 2026-09-13T10:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).
 
-**Następny:** **418.0** EXP0.6 HITL `named_place_mark` (named_place+wersja; bez ICC cytat) — kolejka po cutoff.
+**Następny:** **419.0** EXP0.7 HITL `holding_mark` (holding|hq|branch|other; bez drugiego tenanta) — kolejka po cutoff.
 
-Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj 71–418.
+Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj 71–419.
 
-**Spec (jedyna na sesję):** [docs/deltas/open/418.0-named-place-mark.md](../deltas/open/418.0-named-place-mark.md)
+**Spec (jedyna na sesję):** (brak — plan 419.0 po nocnej zmianie).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
@@ -22,5 +22,5 @@ Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj 71–4
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-12:** Plaster **416.0** zamknięty (`/noc`) — HITL `un_segregation_mark`.
 **2026-09-12:** Plaster **417.0** zamknięty (`/noc`) — HITL `dual_ledger_mark`.
+**2026-09-12:** Plaster **418.0** zamknięty (`/noc`) — HITL `named_place_mark`.

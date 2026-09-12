@@ -260,6 +260,7 @@
 | ship-to | ship_to_party_id | EXP1 |
 | haulier faktyczny | actual_haulier_party_id | ≠ booked; double-broker |
 | miejsce nazwane | named_place | Incoterms; 409 bez DAP/DDP |
+| znacznik miejsca nazwanego | named_place_mark | EXP0.6 HITL named_place+2020\|2010; nie cytat ICC |
 | fabryka demo | demo_sim | Demo-1; nie GBOX klienta |
 | zakłócenie demo | demo_disruption | korki/wypadki fixture |
 | zużycie platformy | platform_usage_daily | Admin-P; agregat; nie cross-tenant SELECT |

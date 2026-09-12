@@ -1065,6 +1065,11 @@ export const OPS_JOBS = [
     job: "katalog dual_ledger_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.namedPlaceMark.route,
+    label: "Miejsce nazwane",
+    job: "katalog named_place_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.impersonateGuardMark.route,
     label: "Impersonate guard",
     job: "katalog impersonate_guard_mark HITL",
@@ -1520,6 +1525,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "415.0": "/po-batch-marks",
   "416.0": "/un-segregation-marks",
   "417.0": "/dual-ledger-marks",
+  "418.0": "/named-place-marks",
 } as const
 
 

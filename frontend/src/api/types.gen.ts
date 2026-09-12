@@ -6893,6 +6893,58 @@ export type MultiManningMarkResponse = {
 };
 
 /**
+ * NamedPlaceMarkCreate
+ */
+export type NamedPlaceMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Named Place
+     */
+    named_place: string;
+    /**
+     * Terms Version
+     */
+    terms_version: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * NamedPlaceMarkResponse
+ */
+export type NamedPlaceMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Named Place
+     */
+    named_place: string;
+    /**
+     * Terms Version
+     */
+    terms_version: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * NbpRateCreate
  */
 export type NbpRateCreate = {
@@ -15399,6 +15451,49 @@ export type CreateMultiManningMarkApiV1MultiManningMarksPostResponses = {
 };
 
 export type CreateMultiManningMarkApiV1MultiManningMarksPostResponse = CreateMultiManningMarkApiV1MultiManningMarksPostResponses[keyof CreateMultiManningMarkApiV1MultiManningMarksPostResponses];
+
+export type ListNamedPlaceMarksApiV1NamedPlaceMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/named-place-marks';
+};
+
+export type ListNamedPlaceMarksApiV1NamedPlaceMarksGetResponses = {
+    /**
+     * Response List Named Place Marks Api V1 Named Place Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<NamedPlaceMarkResponse>;
+};
+
+export type ListNamedPlaceMarksApiV1NamedPlaceMarksGetResponse = ListNamedPlaceMarksApiV1NamedPlaceMarksGetResponses[keyof ListNamedPlaceMarksApiV1NamedPlaceMarksGetResponses];
+
+export type CreateNamedPlaceMarkApiV1NamedPlaceMarksPostData = {
+    body: NamedPlaceMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/named-place-marks';
+};
+
+export type CreateNamedPlaceMarkApiV1NamedPlaceMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateNamedPlaceMarkApiV1NamedPlaceMarksPostError = CreateNamedPlaceMarkApiV1NamedPlaceMarksPostErrors[keyof CreateNamedPlaceMarkApiV1NamedPlaceMarksPostErrors];
+
+export type CreateNamedPlaceMarkApiV1NamedPlaceMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: NamedPlaceMarkResponse;
+};
+
+export type CreateNamedPlaceMarkApiV1NamedPlaceMarksPostResponse = CreateNamedPlaceMarkApiV1NamedPlaceMarksPostResponses[keyof CreateNamedPlaceMarkApiV1NamedPlaceMarksPostResponses];
 
 export type ListPostingMarksApiV1PostingMarksGetData = {
     body?: never;

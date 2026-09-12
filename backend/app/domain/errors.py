@@ -998,6 +998,10 @@ class InvalidDualLedgerMark(DomainError):
     """EXP0.10: HITL dual_ledger_mark — nie druga marża / SQL na charge / kwota."""
 
 
+class InvalidNamedPlaceMark(DomainError):
+    """EXP0.6: HITL named_place_mark — nie cytat ICC / mutacja wyceny / kwota."""
+
+
 class InvalidImpersonateGuardMark(DomainError):
     """EXP0.12: HITL impersonate≠unwrap — nie crypto / Auth0 live."""
 
