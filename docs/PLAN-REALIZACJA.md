@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **381.0** EXP4.2 Rail UIC/CIM/SMGS HITL `rail_cim_mark` (kolejka EXP4).
+**Następny:** **382.0** EXP4.3 Ocean alliance/feeder HITL `ocean_alliance_mark` (kolejka EXP4).
 <!-- os-status:end -->
 
 ```mermaid

@@ -7973,6 +7973,50 @@ export type QuoteInvoiceSettlementResponse = {
 };
 
 /**
+ * RailCimMarkCreate
+ */
+export type RailCimMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Rail Kind
+     */
+    rail_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * RailCimMarkResponse
+ */
+export type RailCimMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Rail Kind
+     */
+    rail_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * RankMarkCreate
  */
 export type RankMarkCreate = {
@@ -13342,6 +13386,49 @@ export type CreateExecutiveMarkApiV1ExecutiveMarksPostResponses = {
 };
 
 export type CreateExecutiveMarkApiV1ExecutiveMarksPostResponse = CreateExecutiveMarkApiV1ExecutiveMarksPostResponses[keyof CreateExecutiveMarkApiV1ExecutiveMarksPostResponses];
+
+export type ListRailCimMarksApiV1RailCimMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/rail-cim-marks';
+};
+
+export type ListRailCimMarksApiV1RailCimMarksGetResponses = {
+    /**
+     * Response List Rail Cim Marks Api V1 Rail Cim Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<RailCimMarkResponse>;
+};
+
+export type ListRailCimMarksApiV1RailCimMarksGetResponse = ListRailCimMarksApiV1RailCimMarksGetResponses[keyof ListRailCimMarksApiV1RailCimMarksGetResponses];
+
+export type CreateRailCimMarkApiV1RailCimMarksPostData = {
+    body: RailCimMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/rail-cim-marks';
+};
+
+export type CreateRailCimMarkApiV1RailCimMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateRailCimMarkApiV1RailCimMarksPostError = CreateRailCimMarkApiV1RailCimMarksPostErrors[keyof CreateRailCimMarkApiV1RailCimMarksPostErrors];
+
+export type CreateRailCimMarkApiV1RailCimMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: RailCimMarkResponse;
+};
+
+export type CreateRailCimMarkApiV1RailCimMarksPostResponse = CreateRailCimMarkApiV1RailCimMarksPostResponses[keyof CreateRailCimMarkApiV1RailCimMarksPostResponses];
 
 export type ListRankMarksApiV1RankMarksGetData = {
     body?: never;

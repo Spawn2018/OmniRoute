@@ -899,6 +899,11 @@ export const OPS_JOBS = [
     job: "katalog air_ra3_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.railCimMark.route,
+    label: "Rail CIM",
+    job: "katalog rail_cim_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.remediationOption.route,
     label: "Opcja naprawy",
     job: "katalog remediation_option HITL",
@@ -1303,6 +1308,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "378.0": "/demand-snapshot-marks",
   "379.0": "/csrd-marks",
   "380.0": "/air-ra3-marks",
+  "381.0": "/rail-cim-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

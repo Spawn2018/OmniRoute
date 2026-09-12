@@ -1014,6 +1014,10 @@ class InvalidAirRa3Mark(DomainError):
     """EXP4.1: HITL air RA3/lithium — nie IATA live / RA3 scrape."""
 
 
+class InvalidRailCimMark(DomainError):
+    """EXP4.2: HITL rail UIC/CIM/SMGS — nie rail live filing / CIM scrape."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

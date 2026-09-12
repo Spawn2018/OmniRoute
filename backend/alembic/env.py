@@ -173,6 +173,7 @@ from app.models.tender_decline_reason import TenderDeclineReason  # noqa: F401
 from app.models.demand_snapshot_mark import DemandSnapshotMark  # noqa: F401
 from app.models.csrd_mark import CsrdMark  # noqa: F401
 from app.models.air_ra3_mark import AirRa3Mark  # noqa: F401
+from app.models.rail_cim_mark import RailCimMark  # noqa: F401
 from app.models.collaboration_mark import CollaborationMark  # noqa: F401
 from app.models.freight_audit_mark import FreightAuditMark  # noqa: F401
 from app.models.routing_guide import RoutingGuide  # noqa: F401

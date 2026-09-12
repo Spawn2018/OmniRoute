@@ -139,6 +139,7 @@ import { Route as QualityRouteImport } from './routes/quality'
 import { Route as QuotationsRouteImport } from './routes/quotations'
 import { Route as QuoteInvoicesRouteImport } from './routes/quote-invoices'
 import { Route as RailRouteImport } from './routes/rail'
+import { Route as RailCimMarksRouteImport } from './routes/rail-cim-marks'
 import { Route as RankMarksRouteImport } from './routes/rank-marks'
 import { Route as RateCardsRouteImport } from './routes/rate-cards'
 import { Route as RateLinesRouteImport } from './routes/rate-lines'
@@ -851,6 +852,11 @@ const RailRoute = RailRouteImport.update({
   path: '/rail',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RailCimMarksRoute = RailCimMarksRouteImport.update({
+  id: '/rail-cim-marks',
+  path: '/rail-cim-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RankMarksRoute = RankMarksRouteImport.update({
   id: '/rank-marks',
   path: '/rank-marks',
@@ -1289,6 +1295,7 @@ export interface FileRoutesByFullPath {
   '/quotations': typeof QuotationsRoute
   '/quote-invoices': typeof QuoteInvoicesRoute
   '/rail': typeof RailRoute
+  '/rail-cim-marks': typeof RailCimMarksRoute
   '/rank-marks': typeof RankMarksRoute
   '/rate-cards': typeof RateCardsRoute
   '/rate-lines': typeof RateLinesRoute
@@ -1482,6 +1489,7 @@ export interface FileRoutesByTo {
   '/quotations': typeof QuotationsRoute
   '/quote-invoices': typeof QuoteInvoicesRoute
   '/rail': typeof RailRoute
+  '/rail-cim-marks': typeof RailCimMarksRoute
   '/rank-marks': typeof RankMarksRoute
   '/rate-cards': typeof RateCardsRoute
   '/rate-lines': typeof RateLinesRoute
@@ -1676,6 +1684,7 @@ export interface FileRoutesById {
   '/quotations': typeof QuotationsRoute
   '/quote-invoices': typeof QuoteInvoicesRoute
   '/rail': typeof RailRoute
+  '/rail-cim-marks': typeof RailCimMarksRoute
   '/rank-marks': typeof RankMarksRoute
   '/rate-cards': typeof RateCardsRoute
   '/rate-lines': typeof RateLinesRoute
@@ -1871,6 +1880,7 @@ export interface FileRouteTypes {
     | '/quotations'
     | '/quote-invoices'
     | '/rail'
+    | '/rail-cim-marks'
     | '/rank-marks'
     | '/rate-cards'
     | '/rate-lines'
@@ -2064,6 +2074,7 @@ export interface FileRouteTypes {
     | '/quotations'
     | '/quote-invoices'
     | '/rail'
+    | '/rail-cim-marks'
     | '/rank-marks'
     | '/rate-cards'
     | '/rate-lines'
@@ -2257,6 +2268,7 @@ export interface FileRouteTypes {
     | '/quotations'
     | '/quote-invoices'
     | '/rail'
+    | '/rail-cim-marks'
     | '/rank-marks'
     | '/rate-cards'
     | '/rate-lines'
@@ -2451,6 +2463,7 @@ export interface RootRouteChildren {
   QuotationsRoute: typeof QuotationsRoute
   QuoteInvoicesRoute: typeof QuoteInvoicesRoute
   RailRoute: typeof RailRoute
+  RailCimMarksRoute: typeof RailCimMarksRoute
   RankMarksRoute: typeof RankMarksRoute
   RateCardsRoute: typeof RateCardsRoute
   RateLinesRoute: typeof RateLinesRoute
@@ -3427,6 +3440,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RailRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/rail-cim-marks': {
+      id: '/rail-cim-marks'
+      path: '/rail-cim-marks'
+      fullPath: '/rail-cim-marks'
+      preLoaderRoute: typeof RailCimMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/rank-marks': {
       id: '/rank-marks'
       path: '/rank-marks'
@@ -3988,6 +4008,7 @@ const rootRouteChildren: RootRouteChildren = {
   QuotationsRoute: QuotationsRoute,
   QuoteInvoicesRoute: QuoteInvoicesRoute,
   RailRoute: RailRoute,
+  RailCimMarksRoute: RailCimMarksRoute,
   RankMarksRoute: RankMarksRoute,
   RateCardsRoute: RateCardsRoute,
   RateLinesRoute: RateLinesRoute,
