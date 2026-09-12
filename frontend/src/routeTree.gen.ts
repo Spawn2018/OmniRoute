@@ -43,6 +43,7 @@ import { Route as CompanyMarksRouteImport } from './routes/company-marks'
 import { Route as ConsignmentsRouteImport } from './routes/consignments'
 import { Route as CostAllocationMarksRouteImport } from './routes/cost-allocation-marks'
 import { Route as CostToServeRouteImport } from './routes/cost-to-serve'
+import { Route as CsrdMarksRouteImport } from './routes/csrd-marks'
 import { Route as CreditReviewsRouteImport } from './routes/credit-reviews'
 import { Route as CrmLeadsRouteImport } from './routes/crm-leads'
 import { Route as CustomerContractsRouteImport } from './routes/customer-contracts'
@@ -367,6 +368,11 @@ const CostAllocationMarksRoute = CostAllocationMarksRouteImport.update({
 const CostToServeRoute = CostToServeRouteImport.update({
   id: '/cost-to-serve',
   path: '/cost-to-serve',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CsrdMarksRoute = CsrdMarksRouteImport.update({
+  id: '/csrd-marks',
+  path: '/csrd-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CreditReviewsRoute = CreditReviewsRouteImport.update({
@@ -1181,6 +1187,7 @@ export interface FileRoutesByFullPath {
   '/consignments': typeof ConsignmentsRoute
   '/cost-allocation-marks': typeof CostAllocationMarksRoute
   '/cost-to-serve': typeof CostToServeRoute
+  '/csrd-marks': typeof CsrdMarksRoute
   '/credit-reviews': typeof CreditReviewsRoute
   '/crm-leads': typeof CrmLeadsRoute
   '/customer-contracts': typeof CustomerContractsRoute
@@ -1372,6 +1379,7 @@ export interface FileRoutesByTo {
   '/consignments': typeof ConsignmentsRoute
   '/cost-allocation-marks': typeof CostAllocationMarksRoute
   '/cost-to-serve': typeof CostToServeRoute
+  '/csrd-marks': typeof CsrdMarksRoute
   '/credit-reviews': typeof CreditReviewsRoute
   '/crm-leads': typeof CrmLeadsRoute
   '/customer-contracts': typeof CustomerContractsRoute
@@ -1564,6 +1572,7 @@ export interface FileRoutesById {
   '/consignments': typeof ConsignmentsRoute
   '/cost-allocation-marks': typeof CostAllocationMarksRoute
   '/cost-to-serve': typeof CostToServeRoute
+  '/csrd-marks': typeof CsrdMarksRoute
   '/credit-reviews': typeof CreditReviewsRoute
   '/crm-leads': typeof CrmLeadsRoute
   '/customer-contracts': typeof CustomerContractsRoute
@@ -1757,6 +1766,7 @@ export interface FileRouteTypes {
     | '/consignments'
     | '/cost-allocation-marks'
     | '/cost-to-serve'
+    | '/csrd-marks'
     | '/credit-reviews'
     | '/crm-leads'
     | '/customer-contracts'
@@ -1948,6 +1958,7 @@ export interface FileRouteTypes {
     | '/consignments'
     | '/cost-allocation-marks'
     | '/cost-to-serve'
+    | '/csrd-marks'
     | '/credit-reviews'
     | '/crm-leads'
     | '/customer-contracts'
@@ -2139,6 +2150,7 @@ export interface FileRouteTypes {
     | '/consignments'
     | '/cost-allocation-marks'
     | '/cost-to-serve'
+    | '/csrd-marks'
     | '/credit-reviews'
     | '/crm-leads'
     | '/customer-contracts'
@@ -2331,6 +2343,7 @@ export interface RootRouteChildren {
   ConsignmentsRoute: typeof ConsignmentsRoute
   CostAllocationMarksRoute: typeof CostAllocationMarksRoute
   CostToServeRoute: typeof CostToServeRoute
+  CsrdMarksRoute: typeof CsrdMarksRoute
   CreditReviewsRoute: typeof CreditReviewsRoute
   CrmLeadsRoute: typeof CrmLeadsRoute
   CustomerContractsRoute: typeof CustomerContractsRoute
@@ -2726,6 +2739,13 @@ declare module '@tanstack/react-router' {
       path: '/cost-to-serve'
       fullPath: '/cost-to-serve'
       preLoaderRoute: typeof CostToServeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/csrd-marks': {
+      id: '/csrd-marks'
+      path: '/csrd-marks'
+      fullPath: '/csrd-marks'
+      preLoaderRoute: typeof CsrdMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/credit-reviews': {
@@ -3852,6 +3872,7 @@ const rootRouteChildren: RootRouteChildren = {
   ConsignmentsRoute: ConsignmentsRoute,
   CostAllocationMarksRoute: CostAllocationMarksRoute,
   CostToServeRoute: CostToServeRoute,
+  CsrdMarksRoute: CsrdMarksRoute,
   CreditReviewsRoute: CreditReviewsRoute,
   CrmLeadsRoute: CrmLeadsRoute,
   CustomerContractsRoute: CustomerContractsRoute,

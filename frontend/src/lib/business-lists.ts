@@ -135,6 +135,7 @@ export const BUSINESS_LISTS = {
   slaClause: { route: "/sla-clauses", tableKey: "sla_clause" },
   delayForecast: { route: "/delay-forecasts", tableKey: "delay_forecast" },
   demandSnapshotMark: { route: "/demand-snapshot-marks", tableKey: "demand_snapshot_mark" },
+  csrdMark: { route: "/csrd-marks", tableKey: "csrd_mark" },
   remediationOption: {
     route: "/remediation-options",
     tableKey: "remediation_option",
@@ -331,6 +332,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/sla-clauses",
   "/delay-forecasts",
   "/demand-snapshot-marks",
+  "/csrd-marks",
   "/remediation-options",
   "/impact-scenarios",
   "/clause-notices",

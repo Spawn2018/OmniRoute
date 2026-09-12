@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **379.0** EXP3.14 collaboration leftover 3-way OpenFGA HITL (kolejka: CAPA istnieje `capa_mark` — skip jeśli dup).
+**Następny:** **380.0** — po CSRD fala EXP3 domknięta w katalogach HITL; weź kolejny z PLAN § Kolejka / leftover pin (nie zgaduj).
 <!-- os-status:end -->
 
 ```mermaid

@@ -889,6 +889,11 @@ export const OPS_JOBS = [
     job: "katalog demand_snapshot_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.csrdMark.route,
+    label: "CSRD",
+    job: "katalog csrd_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.remediationOption.route,
     label: "Opcja naprawy",
     job: "katalog remediation_option HITL",
@@ -1291,6 +1296,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "376.0": "/general-average-marks",
   "377.0": "/tender-decline-reasons",
   "378.0": "/demand-snapshot-marks",
+  "379.0": "/csrd-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

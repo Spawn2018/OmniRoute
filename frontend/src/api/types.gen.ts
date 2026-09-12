@@ -2517,6 +2517,50 @@ export type CrmLeadResponse = {
 };
 
 /**
+ * CsrdMarkCreate
+ */
+export type CsrdMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Report Kind
+     */
+    report_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CsrdMarkResponse
+ */
+export type CsrdMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Report Kind
+     */
+    report_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * CustomerContractCreate
  */
 export type CustomerContractCreate = {
@@ -20199,6 +20243,49 @@ export type AttachCreditReviewBureauApiV1CreditReviewsReviewIdAttachBureauPatchR
 };
 
 export type AttachCreditReviewBureauApiV1CreditReviewsReviewIdAttachBureauPatchResponse = AttachCreditReviewBureauApiV1CreditReviewsReviewIdAttachBureauPatchResponses[keyof AttachCreditReviewBureauApiV1CreditReviewsReviewIdAttachBureauPatchResponses];
+
+export type ListCsrdMarksApiV1CsrdMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/csrd-marks';
+};
+
+export type ListCsrdMarksApiV1CsrdMarksGetResponses = {
+    /**
+     * Response List Csrd Marks Api V1 Csrd Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<CsrdMarkResponse>;
+};
+
+export type ListCsrdMarksApiV1CsrdMarksGetResponse = ListCsrdMarksApiV1CsrdMarksGetResponses[keyof ListCsrdMarksApiV1CsrdMarksGetResponses];
+
+export type CreateCsrdMarkApiV1CsrdMarksPostData = {
+    body: CsrdMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/csrd-marks';
+};
+
+export type CreateCsrdMarkApiV1CsrdMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCsrdMarkApiV1CsrdMarksPostError = CreateCsrdMarkApiV1CsrdMarksPostErrors[keyof CreateCsrdMarkApiV1CsrdMarksPostErrors];
+
+export type CreateCsrdMarkApiV1CsrdMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CsrdMarkResponse;
+};
+
+export type CreateCsrdMarkApiV1CsrdMarksPostResponse = CreateCsrdMarkApiV1CsrdMarksPostResponses[keyof CreateCsrdMarkApiV1CsrdMarksPostResponses];
 
 export type ListCrmLeadsApiV1CrmLeadsGetData = {
     body?: never;

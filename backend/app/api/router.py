@@ -38,6 +38,7 @@ from app.api import (
     cost_to_serve,
     credit_reviews,
     crm_leads,
+    csrd_marks,
     customer_contracts,
     customer_rfqs,
     customer_sops,
@@ -355,6 +356,7 @@ api_router.include_router(party_documents.router)
 api_router.include_router(party_scorecards.router)
 api_router.include_router(party_lane_scorecards.router)
 api_router.include_router(credit_reviews.router)
+api_router.include_router(csrd_marks.router)
 api_router.include_router(crm_leads.router)
 api_router.include_router(customer_sops.router)
 api_router.include_router(cutoff_marks.router)

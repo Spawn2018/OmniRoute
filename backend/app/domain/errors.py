@@ -1006,6 +1006,10 @@ class InvalidDemandSnapshotMark(DomainError):
     """EXP3.13: HITL demand snapshot — nie demand SQL / auto-forecast."""
 
 
+class InvalidCsrdMark(DomainError):
+    """EXP3.14: HITL CSRD — nie kg / CSRD live filing."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 
