@@ -1,0 +1,39 @@
+import re
+
+from app.domain.errors import InvalidSidImportMark
+
+_SNAKE = re.compile(r"^[a-z][a-z0-9_]{1,31}$")
+_KINDS = frozenset({"sid", "batch", "manual", "other"})
+_MANUAL = "tenant:manual"
+_PREFIX = "fixture://sid-import-mark/"
+_REF_CAP = 256
+
+
+def parse_sid_import_mark_row(
+    code: object,
+    kind: object,
+    origin: object,
+) -> tuple[str, str, str]:
+    if type(code) is not str:
+        raise InvalidSidImportMark("oznaczenie musi być tekstem")
+    slug = code.strip()
+    if _SNAKE.fullmatch(slug) is None:
+        raise InvalidSidImportMark("oznaczenie: snake 2–32")
+    if type(kind) is not str:
+        raise InvalidSidImportMark("rodzaj musi być tekstem")
+    token = kind.strip().lower()
+    if token not in _KINDS:
+        raise InvalidSidImportMark(
+            "rodzaj: sid, batch, manual albo other",
+        )
+    if type(origin) is not str:
+        raise InvalidSidImportMark("obce source_ref")
+    pointer = origin.strip()
+    known = pointer == _MANUAL or pointer.startswith(_PREFIX)
+    if not known:
+        raise InvalidSidImportMark("obce wskazanie zapisu znacznika importu SID")
+    if len(pointer) > _REF_CAP:
+        raise InvalidSidImportMark(
+            "obce wskazanie zapisu znacznika importu SID za długie",
+        )
+    return slug, token, pointer

@@ -135,6 +135,7 @@ from app.api import (
     shipment_packages,
     shipment_stakeholders,
     shipments,
+    sid_import_marks,
     sla_clauses,
     spend_marks,
     stops,
@@ -349,6 +350,7 @@ api_router.include_router(pallet_pool_marks.router)
 api_router.include_router(e_cmr_marks.router)
 api_router.include_router(e_delivery_marks.router)
 api_router.include_router(peppol_marks.router)
+api_router.include_router(sid_import_marks.router)
 
 
 @api_router.api_route(

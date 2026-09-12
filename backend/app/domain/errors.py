@@ -926,6 +926,10 @@ class InvalidPeppolMark(DomainError):
     """EXP2.20: HITL Peppol/MPP — nie AS4 HTTP / live."""
 
 
+class InvalidSidImportMark(DomainError):
+    """EXP2.21: HITL import SID — nie SID HTTP / ICS2 live."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

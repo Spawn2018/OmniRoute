@@ -16666,6 +16666,80 @@
         ]
       }
     },
+    "/api/v1/sid-import-marks": {
+      "get": {
+        "tags": [
+          "sid-import-marks"
+        ],
+        "summary": "List Sid Import Marks",
+        "operationId": "list_sid_import_marks_api_v1_sid_import_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SidImportMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Sid Import Marks Api V1 Sid Import Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "sid-import-marks"
+        ],
+        "summary": "Create Sid Import Mark",
+        "operationId": "create_sid_import_mark_api_v1_sid_import_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SidImportMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SidImportMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/health": {
       "get": {
         "summary": "Health",
@@ -30187,6 +30261,65 @@
           "superseded_by"
         ],
         "title": "ShipmentStakeholderResponse"
+      },
+      "SidImportMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "sid_kind": {
+            "type": "string",
+            "title": "Sid Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "sid_kind",
+          "source_ref"
+        ],
+        "title": "SidImportMarkCreate"
+      },
+      "SidImportMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "sid_kind": {
+            "type": "string",
+            "title": "Sid Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "sid_kind",
+          "source_ref"
+        ],
+        "title": "SidImportMarkResponse"
       },
       "SlaClauseCreate": {
         "properties": {

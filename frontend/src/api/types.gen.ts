@@ -8453,6 +8453,50 @@ export type ShipmentStakeholderResponse = {
 };
 
 /**
+ * SidImportMarkCreate
+ */
+export type SidImportMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Sid Kind
+     */
+    sid_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * SidImportMarkResponse
+ */
+export type SidImportMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Sid Kind
+     */
+    sid_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * SlaClauseCreate
  */
 export type SlaClauseCreate = {
@@ -20291,6 +20335,49 @@ export type CreatePeppolMarkApiV1PeppolMarksPostResponses = {
 };
 
 export type CreatePeppolMarkApiV1PeppolMarksPostResponse = CreatePeppolMarkApiV1PeppolMarksPostResponses[keyof CreatePeppolMarkApiV1PeppolMarksPostResponses];
+
+export type ListSidImportMarksApiV1SidImportMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/sid-import-marks';
+};
+
+export type ListSidImportMarksApiV1SidImportMarksGetResponses = {
+    /**
+     * Response List Sid Import Marks Api V1 Sid Import Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<SidImportMarkResponse>;
+};
+
+export type ListSidImportMarksApiV1SidImportMarksGetResponse = ListSidImportMarksApiV1SidImportMarksGetResponses[keyof ListSidImportMarksApiV1SidImportMarksGetResponses];
+
+export type CreateSidImportMarkApiV1SidImportMarksPostData = {
+    body: SidImportMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/sid-import-marks';
+};
+
+export type CreateSidImportMarkApiV1SidImportMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateSidImportMarkApiV1SidImportMarksPostError = CreateSidImportMarkApiV1SidImportMarksPostErrors[keyof CreateSidImportMarkApiV1SidImportMarksPostErrors];
+
+export type CreateSidImportMarkApiV1SidImportMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: SidImportMarkResponse;
+};
+
+export type CreateSidImportMarkApiV1SidImportMarksPostResponse = CreateSidImportMarkApiV1SidImportMarksPostResponses[keyof CreateSidImportMarkApiV1SidImportMarksPostResponses];
 
 export type HealthHealthGetData = {
     body?: never;

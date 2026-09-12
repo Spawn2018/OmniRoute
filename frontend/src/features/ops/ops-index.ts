@@ -709,6 +709,11 @@ export const OPS_JOBS = [
     job: "katalog peppol_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.sidImportMark.route,
+    label: "Import SID",
+    job: "katalog sid_import_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.erpConnector.route,
     label: "Konektor Optima",
     job: "katalog erp_connector HITL",
@@ -1171,6 +1176,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "355.0": "/e-cmr-marks",
   "356.0": "/e-delivery-marks",
   "357.0": "/peppol-marks",
+  "358.0": "/sid-import-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

@@ -142,6 +142,7 @@ import { Route as SessionRouteImport } from './routes/session'
 import { Route as ShipmentDocumentsRouteImport } from './routes/shipment-documents'
 import { Route as ShipmentPackagesRouteImport } from './routes/shipment-packages'
 import { Route as ShipmentsRouteImport } from './routes/shipments'
+import { Route as SidImportMarksRouteImport } from './routes/sid-import-marks'
 import { Route as SlaClausesRouteImport } from './routes/sla-clauses'
 import { Route as SpendMarksRouteImport } from './routes/spend-marks'
 import { Route as SubcontractEdgeMarksRouteImport } from './routes/subcontract-edge-marks'
@@ -845,6 +846,11 @@ const ShipmentsRoute = ShipmentsRouteImport.update({
   path: '/shipments',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SidImportMarksRoute = SidImportMarksRouteImport.update({
+  id: '/sid-import-marks',
+  path: '/sid-import-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SlaClausesRoute = SlaClausesRouteImport.update({
   id: '/sla-clauses',
   path: '/sla-clauses',
@@ -1160,6 +1166,7 @@ export interface FileRoutesByFullPath {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/sid-import-marks': typeof SidImportMarksRoute
   '/sla-clauses': typeof SlaClausesRoute
   '/spend-marks': typeof SpendMarksRoute
   '/subcontract-edge-marks': typeof SubcontractEdgeMarksRoute
@@ -1331,6 +1338,7 @@ export interface FileRoutesByTo {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/sid-import-marks': typeof SidImportMarksRoute
   '/sla-clauses': typeof SlaClausesRoute
   '/spend-marks': typeof SpendMarksRoute
   '/subcontract-edge-marks': typeof SubcontractEdgeMarksRoute
@@ -1503,6 +1511,7 @@ export interface FileRoutesById {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/sid-import-marks': typeof SidImportMarksRoute
   '/sla-clauses': typeof SlaClausesRoute
   '/spend-marks': typeof SpendMarksRoute
   '/subcontract-edge-marks': typeof SubcontractEdgeMarksRoute
@@ -1676,6 +1685,7 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/sid-import-marks'
     | '/sla-clauses'
     | '/spend-marks'
     | '/subcontract-edge-marks'
@@ -1847,6 +1857,7 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/sid-import-marks'
     | '/sla-clauses'
     | '/spend-marks'
     | '/subcontract-edge-marks'
@@ -2018,6 +2029,7 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/sid-import-marks'
     | '/sla-clauses'
     | '/spend-marks'
     | '/subcontract-edge-marks'
@@ -2190,6 +2202,7 @@ export interface RootRouteChildren {
   ShipmentDocumentsRoute: typeof ShipmentDocumentsRoute
   ShipmentPackagesRoute: typeof ShipmentPackagesRoute
   ShipmentsRoute: typeof ShipmentsRoute
+  SidImportMarksRoute: typeof SidImportMarksRoute
   SlaClausesRoute: typeof SlaClausesRoute
   SpendMarksRoute: typeof SpendMarksRoute
   SubcontractEdgeMarksRoute: typeof SubcontractEdgeMarksRoute
@@ -3161,6 +3174,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShipmentsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sid-import-marks': {
+      id: '/sid-import-marks'
+      path: '/sid-import-marks'
+      fullPath: '/sid-import-marks'
+      preLoaderRoute: typeof SidImportMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sla-clauses': {
       id: '/sla-clauses'
       path: '/sla-clauses'
@@ -3550,6 +3570,7 @@ const rootRouteChildren: RootRouteChildren = {
   ShipmentDocumentsRoute: ShipmentDocumentsRoute,
   ShipmentPackagesRoute: ShipmentPackagesRoute,
   ShipmentsRoute: ShipmentsRoute,
+  SidImportMarksRoute: SidImportMarksRoute,
   SlaClausesRoute: SlaClausesRoute,
   SpendMarksRoute: SpendMarksRoute,
   SubcontractEdgeMarksRoute: SubcontractEdgeMarksRoute,
