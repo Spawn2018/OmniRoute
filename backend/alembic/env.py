@@ -171,7 +171,9 @@ from app.models.abandoned_rto_mark import AbandonedRtoMark  # noqa: F401
 from app.models.general_average_mark import GeneralAverageMark  # noqa: F401
 from app.models.tender_decline_reason import TenderDeclineReason  # noqa: F401
 from app.models.demand_snapshot_mark import DemandSnapshotMark  # noqa: F401
+from app.models.demo_gps_mark import DemoGpsMark  # noqa: F401
 from app.models.csrd_mark import CsrdMark  # noqa: F401
+
 from app.models.air_ra3_mark import AirRa3Mark  # noqa: F401
 from app.models.rail_cim_mark import RailCimMark  # noqa: F401
 from app.models.ocean_alliance_mark import OceanAllianceMark  # noqa: F401

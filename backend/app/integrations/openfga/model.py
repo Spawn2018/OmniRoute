@@ -198,6 +198,8 @@ def _organization_exp2_catalog_relations() -> dict[str, Userset]:
         "can_manage_general_average_marks": _member(),
         "can_manage_tender_decline_reasons": _member(),
         "can_manage_demand_snapshot_marks": _member(),
+        "can_manage_demo_gps_marks": _member(),
+
         "can_manage_csrd_marks": _member(),
         **_organization_exp4_catalog_relations(),
     }

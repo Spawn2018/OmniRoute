@@ -13280,6 +13280,80 @@
         ]
       }
     },
+    "/api/v1/demo-gps-marks": {
+      "get": {
+        "tags": [
+          "demo-gps-mark"
+        ],
+        "summary": "List Demo Gps Marks",
+        "operationId": "list_demo_gps_marks_api_v1_demo_gps_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/DemoGpsMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Demo Gps Marks Api V1 Demo Gps Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "demo-gps-mark"
+        ],
+        "summary": "Create Demo Gps Mark",
+        "operationId": "create_demo_gps_mark_api_v1_demo_gps_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DemoGpsMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DemoGpsMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/remediation-options": {
       "get": {
         "tags": [
@@ -24915,6 +24989,71 @@
           "source_ref"
         ],
         "title": "DemandSnapshotMarkResponse"
+      },
+      "DemoGpsMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "demo_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Demo Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "demo_kind",
+          "source_ref"
+        ],
+        "title": "DemoGpsMarkCreate"
+      },
+      "DemoGpsMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "demo_kind": {
+            "type": "string",
+            "title": "Demo Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "demo_kind",
+          "source_ref"
+        ],
+        "title": "DemoGpsMarkResponse"
       },
       "DockAppointmentCreate": {
         "properties": {

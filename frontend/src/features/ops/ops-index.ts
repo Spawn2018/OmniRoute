@@ -999,6 +999,11 @@ export const OPS_JOBS = [
     job: "katalog job_metric_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.demoGpsMark.route,
+    label: "Demo GPS",
+    job: "katalog demo_gps_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.remediationOption.route,
     label: "Opcja naprawy",
     job: "katalog remediation_option HITL",
@@ -1423,6 +1428,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "398.0": "/erru-marks",
   "399.0": "/mobile-client-marks",
   "401.0": "/job-metric-marks",
+  "402.0": "/demo-gps-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

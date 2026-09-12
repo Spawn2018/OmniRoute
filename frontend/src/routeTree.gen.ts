@@ -56,6 +56,7 @@ import { Route as DangerousGoodsRouteImport } from './routes/dangerous-goods'
 import { Route as DecisionsRouteImport } from './routes/decisions'
 import { Route as DelayForecastsRouteImport } from './routes/delay-forecasts'
 import { Route as DemandSnapshotMarksRouteImport } from './routes/demand-snapshot-marks'
+import { Route as DemoGpsMarksRouteImport } from './routes/demo-gps-marks'
 import { Route as DockAppointmentsRouteImport } from './routes/dock-appointments'
 import { Route as DocumentTemplatesRouteImport } from './routes/document-templates'
 import { Route as ECmrMarksRouteImport } from './routes/e-cmr-marks'
@@ -454,6 +455,11 @@ const DelayForecastsRoute = DelayForecastsRouteImport.update({
 const DemandSnapshotMarksRoute = DemandSnapshotMarksRouteImport.update({
   id: '/demand-snapshot-marks',
   path: '/demand-snapshot-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoGpsMarksRoute = DemoGpsMarksRouteImport.update({
+  id: '/demo-gps-marks',
+  path: '/demo-gps-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DockAppointmentsRoute = DockAppointmentsRouteImport.update({
@@ -1326,6 +1332,7 @@ export interface FileRoutesByFullPath {
   '/decisions': typeof DecisionsRoute
   '/delay-forecasts': typeof DelayForecastsRoute
   '/demand-snapshot-marks': typeof DemandSnapshotMarksRoute
+  '/demo-gps-marks': typeof DemoGpsMarksRoute
   '/dock-appointments': typeof DockAppointmentsRoute
   '/document-templates': typeof DocumentTemplatesRoute
   '/e-cmr-marks': typeof ECmrMarksRoute
@@ -1539,6 +1546,7 @@ export interface FileRoutesByTo {
   '/decisions': typeof DecisionsRoute
   '/delay-forecasts': typeof DelayForecastsRoute
   '/demand-snapshot-marks': typeof DemandSnapshotMarksRoute
+  '/demo-gps-marks': typeof DemoGpsMarksRoute
   '/dock-appointments': typeof DockAppointmentsRoute
   '/document-templates': typeof DocumentTemplatesRoute
   '/e-cmr-marks': typeof ECmrMarksRoute
@@ -1753,6 +1761,7 @@ export interface FileRoutesById {
   '/decisions': typeof DecisionsRoute
   '/delay-forecasts': typeof DelayForecastsRoute
   '/demand-snapshot-marks': typeof DemandSnapshotMarksRoute
+  '/demo-gps-marks': typeof DemoGpsMarksRoute
   '/dock-appointments': typeof DockAppointmentsRoute
   '/document-templates': typeof DocumentTemplatesRoute
   '/e-cmr-marks': typeof ECmrMarksRoute
@@ -1968,6 +1977,7 @@ export interface FileRouteTypes {
     | '/decisions'
     | '/delay-forecasts'
     | '/demand-snapshot-marks'
+    | '/demo-gps-marks'
     | '/dock-appointments'
     | '/document-templates'
     | '/e-cmr-marks'
@@ -2181,6 +2191,7 @@ export interface FileRouteTypes {
     | '/decisions'
     | '/delay-forecasts'
     | '/demand-snapshot-marks'
+    | '/demo-gps-marks'
     | '/dock-appointments'
     | '/document-templates'
     | '/e-cmr-marks'
@@ -2394,6 +2405,7 @@ export interface FileRouteTypes {
     | '/decisions'
     | '/delay-forecasts'
     | '/demand-snapshot-marks'
+    | '/demo-gps-marks'
     | '/dock-appointments'
     | '/document-templates'
     | '/e-cmr-marks'
@@ -2608,6 +2620,7 @@ export interface RootRouteChildren {
   DecisionsRoute: typeof DecisionsRoute
   DelayForecastsRoute: typeof DelayForecastsRoute
   DemandSnapshotMarksRoute: typeof DemandSnapshotMarksRoute
+  DemoGpsMarksRoute: typeof DemoGpsMarksRoute
   DockAppointmentsRoute: typeof DockAppointmentsRoute
   DocumentTemplatesRoute: typeof DocumentTemplatesRoute
   ECmrMarksRoute: typeof ECmrMarksRoute
@@ -3103,6 +3116,13 @@ declare module '@tanstack/react-router' {
       path: '/demand-snapshot-marks'
       fullPath: '/demand-snapshot-marks'
       preLoaderRoute: typeof DemandSnapshotMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo-gps-marks': {
+      id: '/demo-gps-marks'
+      path: '/demo-gps-marks'
+      fullPath: '/demo-gps-marks'
+      preLoaderRoute: typeof DemoGpsMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dock-appointments': {
@@ -4304,6 +4324,7 @@ const rootRouteChildren: RootRouteChildren = {
   DecisionsRoute: DecisionsRoute,
   DelayForecastsRoute: DelayForecastsRoute,
   DemandSnapshotMarksRoute: DemandSnapshotMarksRoute,
+  DemoGpsMarksRoute: DemoGpsMarksRoute,
   DockAppointmentsRoute: DockAppointmentsRoute,
   DocumentTemplatesRoute: DocumentTemplatesRoute,
   ECmrMarksRoute: ECmrMarksRoute,

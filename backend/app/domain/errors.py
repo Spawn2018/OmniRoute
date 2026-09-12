@@ -962,6 +962,10 @@ class InvalidJobMetricMark(DomainError):
     """EXP4.21: HITL metryka jobu — nie scoring osoby / SQL job."""
 
 
+class InvalidDemoGpsMark(DomainError):
+    """EXP0.11: HITL demo GPS — nie live GPS / lat/lng."""
+
+
 class InvalidVdaOdetteMark(DomainError):
     """EXP3.2: HITL VDA/Odette — nie live EDI VDA / ZPL."""
 

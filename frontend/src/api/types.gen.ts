@@ -3117,6 +3117,50 @@ export type DemandSnapshotMarkResponse = {
 };
 
 /**
+ * DemoGpsMarkCreate
+ */
+export type DemoGpsMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Demo Kind
+     */
+    demo_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * DemoGpsMarkResponse
+ */
+export type DemoGpsMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Demo Kind
+     */
+    demo_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * DockAppointmentCreate
  */
 export type DockAppointmentCreate = {
@@ -20196,6 +20240,49 @@ export type CreateDemandSnapshotMarkApiV1DemandSnapshotMarksPostResponses = {
 };
 
 export type CreateDemandSnapshotMarkApiV1DemandSnapshotMarksPostResponse = CreateDemandSnapshotMarkApiV1DemandSnapshotMarksPostResponses[keyof CreateDemandSnapshotMarkApiV1DemandSnapshotMarksPostResponses];
+
+export type ListDemoGpsMarksApiV1DemoGpsMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/demo-gps-marks';
+};
+
+export type ListDemoGpsMarksApiV1DemoGpsMarksGetResponses = {
+    /**
+     * Response List Demo Gps Marks Api V1 Demo Gps Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<DemoGpsMarkResponse>;
+};
+
+export type ListDemoGpsMarksApiV1DemoGpsMarksGetResponse = ListDemoGpsMarksApiV1DemoGpsMarksGetResponses[keyof ListDemoGpsMarksApiV1DemoGpsMarksGetResponses];
+
+export type CreateDemoGpsMarkApiV1DemoGpsMarksPostData = {
+    body: DemoGpsMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/demo-gps-marks';
+};
+
+export type CreateDemoGpsMarkApiV1DemoGpsMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateDemoGpsMarkApiV1DemoGpsMarksPostError = CreateDemoGpsMarkApiV1DemoGpsMarksPostErrors[keyof CreateDemoGpsMarkApiV1DemoGpsMarksPostErrors];
+
+export type CreateDemoGpsMarkApiV1DemoGpsMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: DemoGpsMarkResponse;
+};
+
+export type CreateDemoGpsMarkApiV1DemoGpsMarksPostResponse = CreateDemoGpsMarkApiV1DemoGpsMarksPostResponses[keyof CreateDemoGpsMarkApiV1DemoGpsMarksPostResponses];
 
 export type ListRemediationOptionsApiV1RemediationOptionsGetData = {
     body?: never;
