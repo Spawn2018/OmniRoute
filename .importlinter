@@ -161,6 +161,7 @@ modules =
     app.services.iso_nis2_marks
     app.services.offboarding_marks
     app.services.jit_jis_marks
+    app.services.job_metric_marks
     app.services.vda_odette_marks
     app.services.inventory_position_marks
     app.services.fair_share_marks
@@ -193,6 +194,7 @@ modules =
     app.services.rag_sop_marks
     app.services.copy_ban_marks
     app.services.erru_marks
+    app.services.job_metric_marks
     app.services.mobile_client_marks
     app.services.freight_audit_marks
     app.services.collaboration_marks
@@ -671,6 +673,7 @@ forbidden_modules =
     app.services.iso_nis2_marks
     app.services.offboarding_marks
     app.services.jit_jis_marks
+    app.services.job_metric_marks
     app.services.vda_odette_marks
     app.services.inventory_position_marks
     app.services.fair_share_marks
@@ -685,6 +688,7 @@ forbidden_modules =
     app.services.iso_nis2_marks
     app.services.offboarding_marks
     app.services.jit_jis_marks
+    app.services.job_metric_marks
     app.services.vda_odette_marks
     app.services.inventory_position_marks
     app.services.fair_share_marks
@@ -698,6 +702,7 @@ forbidden_modules =
     app.services.iso_nis2_marks
     app.services.offboarding_marks
     app.services.jit_jis_marks
+    app.services.job_metric_marks
     app.services.vda_odette_marks
     app.services.inventory_position_marks
     app.services.fair_share_marks
@@ -710,6 +715,7 @@ forbidden_modules =
     app.services.iso_nis2_marks
     app.services.offboarding_marks
     app.services.jit_jis_marks
+    app.services.job_metric_marks
     app.services.vda_odette_marks
     app.services.inventory_position_marks
     app.services.fair_share_marks
@@ -721,6 +727,7 @@ forbidden_modules =
     app.services.iso_nis2_marks
     app.services.offboarding_marks
     app.services.jit_jis_marks
+    app.services.job_metric_marks
     app.services.vda_odette_marks
     app.services.inventory_position_marks
     app.services.fair_share_marks
@@ -731,6 +738,7 @@ forbidden_modules =
     app.models.iso_nis2_mark
     app.services.offboarding_marks
     app.services.jit_jis_marks
+    app.services.job_metric_marks
     app.services.vda_odette_marks
     app.services.inventory_position_marks
     app.services.fair_share_marks
@@ -740,6 +748,7 @@ forbidden_modules =
     app.repositories.offboarding_marks
     app.models.offboarding_mark
     app.services.jit_jis_marks
+    app.services.job_metric_marks
     app.services.vda_odette_marks
     app.services.inventory_position_marks
     app.services.fair_share_marks
@@ -859,6 +868,9 @@ forbidden_modules =
     app.services.erru_marks
     app.repositories.erru_marks
     app.models.erru_mark
+    app.services.job_metric_marks
+    app.repositories.job_metric_marks
+    app.models.job_metric_mark
     app.services.mobile_client_marks
     app.repositories.mobile_client_marks
     app.models.mobile_client_mark

@@ -91,6 +91,7 @@ from app.api import (
     inventory_position_marks,
     iso_nis2_marks,
     jit_jis_marks,
+    job_metric_marks,
     kreptd_licences,
     label_parking_marks,
     lane_kms,
@@ -425,6 +426,7 @@ api_router.include_router(regulatory_radar_marks.router)
 api_router.include_router(iso_nis2_marks.router)
 api_router.include_router(offboarding_marks.router)
 api_router.include_router(jit_jis_marks.router)
+api_router.include_router(job_metric_marks.router)
 api_router.include_router(vda_odette_marks.router)
 api_router.include_router(inventory_position_marks.router)
 api_router.include_router(fair_share_marks.router)

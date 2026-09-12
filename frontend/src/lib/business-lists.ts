@@ -104,6 +104,7 @@ export const BUSINESS_LISTS = {
   isoNis2Mark: { route: "/iso-nis2-marks", tableKey: "iso_nis2_mark" },
   offboardingMark: { route: "/offboarding-marks", tableKey: "offboarding_mark" },
   jitJisMark: { route: "/jit-jis-marks", tableKey: "jit_jis_mark" },
+  jobMetricMark: { route: "/job-metric-marks", tableKey: "job_metric_mark" },
   vdaOdetteMark: { route: "/vda-odette-marks", tableKey: "vda_odette_mark" },
   inventoryPositionMark: {
     route: "/inventory-position-marks",
@@ -330,6 +331,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/iso-nis2-marks",
   "/offboarding-marks",
   "/jit-jis-marks",
+  "/job-metric-marks",
   "/vda-odette-marks",
   "/inventory-position-marks",
   "/fair-share-marks",

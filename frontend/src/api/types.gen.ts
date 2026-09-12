@@ -5397,6 +5397,50 @@ export type JitJisMarkResponse = {
 };
 
 /**
+ * JobMetricMarkCreate
+ */
+export type JobMetricMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Metric Kind
+     */
+    metric_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * JobMetricMarkResponse
+ */
+export type JobMetricMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Metric Kind
+     */
+    metric_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * KreptdLicenceCreate
  */
 export type KreptdLicenceCreate = {
@@ -23600,6 +23644,49 @@ export type CreateJitJisMarkApiV1JitJisMarksPostResponses = {
 };
 
 export type CreateJitJisMarkApiV1JitJisMarksPostResponse = CreateJitJisMarkApiV1JitJisMarksPostResponses[keyof CreateJitJisMarkApiV1JitJisMarksPostResponses];
+
+export type ListJobMetricMarksApiV1JobMetricMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/job-metric-marks';
+};
+
+export type ListJobMetricMarksApiV1JobMetricMarksGetResponses = {
+    /**
+     * Response List Job Metric Marks Api V1 Job Metric Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<JobMetricMarkResponse>;
+};
+
+export type ListJobMetricMarksApiV1JobMetricMarksGetResponse = ListJobMetricMarksApiV1JobMetricMarksGetResponses[keyof ListJobMetricMarksApiV1JobMetricMarksGetResponses];
+
+export type CreateJobMetricMarkApiV1JobMetricMarksPostData = {
+    body: JobMetricMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/job-metric-marks';
+};
+
+export type CreateJobMetricMarkApiV1JobMetricMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateJobMetricMarkApiV1JobMetricMarksPostError = CreateJobMetricMarkApiV1JobMetricMarksPostErrors[keyof CreateJobMetricMarkApiV1JobMetricMarksPostErrors];
+
+export type CreateJobMetricMarkApiV1JobMetricMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: JobMetricMarkResponse;
+};
+
+export type CreateJobMetricMarkApiV1JobMetricMarksPostResponse = CreateJobMetricMarkApiV1JobMetricMarksPostResponses[keyof CreateJobMetricMarkApiV1JobMetricMarksPostResponses];
 
 export type ListVdaOdetteMarksApiV1VdaOdetteMarksGetData = {
     body?: never;

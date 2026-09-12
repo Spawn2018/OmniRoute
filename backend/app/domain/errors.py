@@ -958,6 +958,10 @@ class InvalidJitJisMark(DomainError):
     """EXP3.1: HITL JIT/JIS — nie WMS live / silnik JIT."""
 
 
+class InvalidJobMetricMark(DomainError):
+    """EXP4.21: HITL metryka jobu — nie scoring osoby / SQL job."""
+
+
 class InvalidVdaOdetteMark(DomainError):
     """EXP3.2: HITL VDA/Odette — nie live EDI VDA / ZPL."""
 
