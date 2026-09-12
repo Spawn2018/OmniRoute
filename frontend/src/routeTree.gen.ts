@@ -194,6 +194,7 @@ import { Route as ShipmentPackagesRouteImport } from './routes/shipment-packages
 import { Route as ShipmentsRouteImport } from './routes/shipments'
 import { Route as SidImportMarksRouteImport } from './routes/sid-import-marks'
 import { Route as SlaClausesRouteImport } from './routes/sla-clauses'
+import { Route as SlotGuaranteeMarksRouteImport } from './routes/slot-guarantee-marks'
 import { Route as SpendMarksRouteImport } from './routes/spend-marks'
 import { Route as SubcontractEdgeMarksRouteImport } from './routes/subcontract-edge-marks'
 import { Route as SwitchBlLoiMarksRouteImport } from './routes/switch-bl-loi-marks'
@@ -1164,6 +1165,11 @@ const SlaClausesRoute = SlaClausesRouteImport.update({
   path: '/sla-clauses',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SlotGuaranteeMarksRoute = SlotGuaranteeMarksRouteImport.update({
+  id: '/slot-guarantee-marks',
+  path: '/slot-guarantee-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SpendMarksRoute = SpendMarksRouteImport.update({
   id: '/spend-marks',
   path: '/spend-marks',
@@ -1566,6 +1572,7 @@ export interface FileRoutesByFullPath {
   '/shipments': typeof ShipmentsRoute
   '/sid-import-marks': typeof SidImportMarksRoute
   '/sla-clauses': typeof SlaClausesRoute
+  '/slot-guarantee-marks': typeof SlotGuaranteeMarksRoute
   '/spend-marks': typeof SpendMarksRoute
   '/subcontract-edge-marks': typeof SubcontractEdgeMarksRoute
   '/switch-bl-loi-marks': typeof SwitchBlLoiMarksRoute
@@ -1796,6 +1803,7 @@ export interface FileRoutesByTo {
   '/shipments': typeof ShipmentsRoute
   '/sid-import-marks': typeof SidImportMarksRoute
   '/sla-clauses': typeof SlaClausesRoute
+  '/slot-guarantee-marks': typeof SlotGuaranteeMarksRoute
   '/spend-marks': typeof SpendMarksRoute
   '/subcontract-edge-marks': typeof SubcontractEdgeMarksRoute
   '/switch-bl-loi-marks': typeof SwitchBlLoiMarksRoute
@@ -2027,6 +2035,7 @@ export interface FileRoutesById {
   '/shipments': typeof ShipmentsRoute
   '/sid-import-marks': typeof SidImportMarksRoute
   '/sla-clauses': typeof SlaClausesRoute
+  '/slot-guarantee-marks': typeof SlotGuaranteeMarksRoute
   '/spend-marks': typeof SpendMarksRoute
   '/subcontract-edge-marks': typeof SubcontractEdgeMarksRoute
   '/switch-bl-loi-marks': typeof SwitchBlLoiMarksRoute
@@ -2259,6 +2268,7 @@ export interface FileRouteTypes {
     | '/shipments'
     | '/sid-import-marks'
     | '/sla-clauses'
+    | '/slot-guarantee-marks'
     | '/spend-marks'
     | '/subcontract-edge-marks'
     | '/switch-bl-loi-marks'
@@ -2489,6 +2499,7 @@ export interface FileRouteTypes {
     | '/shipments'
     | '/sid-import-marks'
     | '/sla-clauses'
+    | '/slot-guarantee-marks'
     | '/spend-marks'
     | '/subcontract-edge-marks'
     | '/switch-bl-loi-marks'
@@ -2719,6 +2730,7 @@ export interface FileRouteTypes {
     | '/shipments'
     | '/sid-import-marks'
     | '/sla-clauses'
+    | '/slot-guarantee-marks'
     | '/spend-marks'
     | '/subcontract-edge-marks'
     | '/switch-bl-loi-marks'
@@ -2950,6 +2962,7 @@ export interface RootRouteChildren {
   ShipmentsRoute: typeof ShipmentsRoute
   SidImportMarksRoute: typeof SidImportMarksRoute
   SlaClausesRoute: typeof SlaClausesRoute
+  SlotGuaranteeMarksRoute: typeof SlotGuaranteeMarksRoute
   SpendMarksRoute: typeof SpendMarksRoute
   SubcontractEdgeMarksRoute: typeof SubcontractEdgeMarksRoute
   SwitchBlLoiMarksRoute: typeof SwitchBlLoiMarksRoute
@@ -4292,6 +4305,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SlaClausesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/slot-guarantee-marks': {
+      id: '/slot-guarantee-marks'
+      path: '/slot-guarantee-marks'
+      fullPath: '/slot-guarantee-marks'
+      preLoaderRoute: typeof SlotGuaranteeMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/spend-marks': {
       id: '/spend-marks'
       path: '/spend-marks'
@@ -4782,6 +4802,7 @@ const rootRouteChildren: RootRouteChildren = {
   ShipmentsRoute: ShipmentsRoute,
   SidImportMarksRoute: SidImportMarksRoute,
   SlaClausesRoute: SlaClausesRoute,
+  SlotGuaranteeMarksRoute: SlotGuaranteeMarksRoute,
   SpendMarksRoute: SpendMarksRoute,
   SubcontractEdgeMarksRoute: SubcontractEdgeMarksRoute,
   SwitchBlLoiMarksRoute: SwitchBlLoiMarksRoute,

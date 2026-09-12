@@ -10765,6 +10765,50 @@ export type SlaClauseResponse = {
 };
 
 /**
+ * SlotGuaranteeMarkCreate
+ */
+export type SlotGuaranteeMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Stance Kind
+     */
+    stance_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * SlotGuaranteeMarkResponse
+ */
+export type SlotGuaranteeMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Stance Kind
+     */
+    stance_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * SpendMarkCreate
  */
 export type SpendMarkCreate = {
@@ -21296,6 +21340,49 @@ export type CreateSlaClauseApiV1SlaClausesPostResponses = {
 };
 
 export type CreateSlaClauseApiV1SlaClausesPostResponse = CreateSlaClauseApiV1SlaClausesPostResponses[keyof CreateSlaClauseApiV1SlaClausesPostResponses];
+
+export type ListSlotGuaranteeMarksApiV1SlotGuaranteeMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/slot-guarantee-marks';
+};
+
+export type ListSlotGuaranteeMarksApiV1SlotGuaranteeMarksGetResponses = {
+    /**
+     * Response List Slot Guarantee Marks Api V1 Slot Guarantee Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<SlotGuaranteeMarkResponse>;
+};
+
+export type ListSlotGuaranteeMarksApiV1SlotGuaranteeMarksGetResponse = ListSlotGuaranteeMarksApiV1SlotGuaranteeMarksGetResponses[keyof ListSlotGuaranteeMarksApiV1SlotGuaranteeMarksGetResponses];
+
+export type CreateSlotGuaranteeMarkApiV1SlotGuaranteeMarksPostData = {
+    body: SlotGuaranteeMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/slot-guarantee-marks';
+};
+
+export type CreateSlotGuaranteeMarkApiV1SlotGuaranteeMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateSlotGuaranteeMarkApiV1SlotGuaranteeMarksPostError = CreateSlotGuaranteeMarkApiV1SlotGuaranteeMarksPostErrors[keyof CreateSlotGuaranteeMarkApiV1SlotGuaranteeMarksPostErrors];
+
+export type CreateSlotGuaranteeMarkApiV1SlotGuaranteeMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: SlotGuaranteeMarkResponse;
+};
+
+export type CreateSlotGuaranteeMarkApiV1SlotGuaranteeMarksPostResponse = CreateSlotGuaranteeMarkApiV1SlotGuaranteeMarksPostResponses[keyof CreateSlotGuaranteeMarkApiV1SlotGuaranteeMarksPostResponses];
 
 export type ListDelayForecastsApiV1DelayForecastsGetData = {
     body?: never;

@@ -163,6 +163,10 @@ export const BUSINESS_LISTS = {
     route: "/named-place-marks",
     tableKey: "named_place_mark",
   },
+  slotGuaranteeMark: {
+    route: "/slot-guarantee-marks",
+    tableKey: "slot_guarantee_mark",
+  },
   impersonateGuardMark: {
     route: "/impersonate-guard-marks",
     tableKey: "impersonate_guard_mark",
@@ -398,6 +402,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/un-segregation-marks",
   "/dual-ledger-marks",
   "/named-place-marks",
+  "/slot-guarantee-marks",
   "/impersonate-guard-marks",
   "/csrd-marks",
   "/air-ra3-marks",

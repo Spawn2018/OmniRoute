@@ -13872,6 +13872,80 @@
         ]
       }
     },
+    "/api/v1/slot-guarantee-marks": {
+      "get": {
+        "tags": [
+          "slot-guarantee-mark"
+        ],
+        "summary": "List Slot Guarantee Marks",
+        "operationId": "list_slot_guarantee_marks_api_v1_slot_guarantee_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SlotGuaranteeMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Slot Guarantee Marks Api V1 Slot Guarantee Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "slot-guarantee-mark"
+        ],
+        "summary": "Create Slot Guarantee Mark",
+        "operationId": "create_slot_guarantee_mark_api_v1_slot_guarantee_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SlotGuaranteeMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SlotGuaranteeMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/delay-forecasts": {
       "get": {
         "tags": [
@@ -37871,6 +37945,71 @@
           "source_ref"
         ],
         "title": "SlaClauseResponse"
+      },
+      "SlotGuaranteeMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "stance_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Stance Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "stance_kind",
+          "source_ref"
+        ],
+        "title": "SlotGuaranteeMarkCreate"
+      },
+      "SlotGuaranteeMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "stance_kind": {
+            "type": "string",
+            "title": "Stance Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "stance_kind",
+          "source_ref"
+        ],
+        "title": "SlotGuaranteeMarkResponse"
       },
       "SpendMarkCreate": {
         "properties": {

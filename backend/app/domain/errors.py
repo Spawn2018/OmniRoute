@@ -1002,6 +1002,10 @@ class InvalidNamedPlaceMark(DomainError):
     """EXP0.6: HITL named_place_mark — nie cytat ICC / mutacja wyceny / kwota."""
 
 
+class InvalidSlotGuaranteeMark(DomainError):
+    """EXP0.3: HITL slot_guarantee_mark — nie live T8 / confirmed / kwota."""
+
+
 class InvalidImpersonateGuardMark(DomainError):
     """EXP0.12: HITL impersonate≠unwrap — nie crypto / Auth0 live."""
 

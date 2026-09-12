@@ -185,6 +185,7 @@ modules =
     app.services.un_segregation_marks
     app.services.dual_ledger_marks
     app.services.named_place_marks
+    app.services.slot_guarantee_marks
     app.services.impersonate_guard_marks
     app.services.csrd_marks
     app.services.air_ra3_marks
@@ -859,6 +860,9 @@ forbidden_modules =
     app.services.named_place_marks
     app.repositories.named_place_marks
     app.models.named_place_mark
+    app.services.slot_guarantee_marks
+    app.repositories.slot_guarantee_marks
+    app.models.slot_guarantee_mark
     app.services.impersonate_guard_marks
     app.repositories.impersonate_guard_marks
     app.models.impersonate_guard_mark

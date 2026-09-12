@@ -261,6 +261,7 @@
 | haulier faktyczny | actual_haulier_party_id | ≠ booked; double-broker |
 | miejsce nazwane | named_place | Incoterms; 409 bez DAP/DDP |
 | znacznik miejsca nazwanego | named_place_mark | EXP0.6 HITL named_place+2020\|2010; nie cytat ICC |
+| znacznik stance slotu | slot_guarantee_mark | EXP0.3 HITL capability\|non_guarantee\|other; nie live T8 |
 | fabryka demo | demo_sim | Demo-1; nie GBOX klienta |
 | zakłócenie demo | demo_disruption | korki/wypadki fixture |
 | zużycie platformy | platform_usage_daily | Admin-P; agregat; nie cross-tenant SELECT |

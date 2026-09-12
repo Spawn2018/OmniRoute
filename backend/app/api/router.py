@@ -187,6 +187,7 @@ from app.api import (
     shipments,
     sid_import_marks,
     sla_clauses,
+    slot_guarantee_marks,
     spend_marks,
     stops,
     subcontract_edge_marks,
@@ -394,6 +395,7 @@ api_router.include_router(routing_guides.router)
 api_router.include_router(sap_connectors.router)
 api_router.include_router(capa_marks.router)
 api_router.include_router(sla_clauses.router)
+api_router.include_router(slot_guarantee_marks.router)
 api_router.include_router(delay_forecasts.router)
 api_router.include_router(demand_snapshot_marks.router)
 api_router.include_router(demo_gps_marks.router)
