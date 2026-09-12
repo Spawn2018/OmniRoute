@@ -268,6 +268,7 @@
 | znacznik protokolu high-value | high_value_mark | EXP1 HITL high_value\|protocol\|other; nie kolumna shipment |
 | znacznik warunków płatności | payment_terms_mark | EXP1 HITL net\|prepaid\|other; nie kolumna shipment |
 | znacznik kodu języka | language_code_mark | EXP1 HITL pl\|en\|de\|other; nie kolumna shipment |
+| znacznik roli przewoznika | haulier_role_mark | EXP1 HITL booked\|actual\|other; nie FK party |
 | fabryka demo | demo_sim | Demo-1; nie GBOX klienta |
 | zakłócenie demo | demo_disruption | korki/wypadki fixture |
 | zużycie platformy | platform_usage_daily | Admin-P; agregat; nie cross-tenant SELECT |

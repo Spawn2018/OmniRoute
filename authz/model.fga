@@ -165,6 +165,7 @@ type organization
     define can_manage_high_value_marks: member
     define can_manage_payment_terms_marks: member
     define can_manage_language_code_marks: member
+    define can_manage_haulier_role_marks: member
     define can_manage_impersonate_guard_marks: member
 
     define can_manage_fuel_card_marks: member

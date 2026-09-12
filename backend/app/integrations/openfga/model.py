@@ -234,6 +234,7 @@ def _organization_exp4_catalog_relations() -> dict[str, Userset]:
         "can_manage_high_value_marks": _member(),
         "can_manage_payment_terms_marks": _member(),
         "can_manage_language_code_marks": _member(),
+        "can_manage_haulier_role_marks": _member(),
         "can_manage_nvocc_marks": _member(),
         "can_manage_multi_manning_marks": _member(),
         "can_manage_posting_marks": _member(),

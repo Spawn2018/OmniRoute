@@ -98,6 +98,7 @@ import { Route as GdprRouteImport } from './routes/gdpr'
 import { Route as GeneralAverageMarksRouteImport } from './routes/general-average-marks'
 import { Route as GroupageRouteImport } from './routes/groupage'
 import { Route as GroupageTariffsRouteImport } from './routes/groupage-tariffs'
+import { Route as HaulierRoleMarksRouteImport } from './routes/haulier-role-marks'
 import { Route as HealthRouteImport } from './routes/health'
 import { Route as HighValueMarksRouteImport } from './routes/high-value-marks'
 import { Route as IdpConnectorsRouteImport } from './routes/idp-connectors'
@@ -688,6 +689,11 @@ const GroupageRoute = GroupageRouteImport.update({
 const GroupageTariffsRoute = GroupageTariffsRouteImport.update({
   id: '/groupage-tariffs',
   path: '/groupage-tariffs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HaulierRoleMarksRoute = HaulierRoleMarksRouteImport.update({
+  id: '/haulier-role-marks',
+  path: '/haulier-role-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HealthRoute = HealthRouteImport.update({
@@ -1512,6 +1518,7 @@ export interface FileRoutesByFullPath {
   '/general-average-marks': typeof GeneralAverageMarksRoute
   '/groupage': typeof GroupageRoute
   '/groupage-tariffs': typeof GroupageTariffsRoute
+  '/haulier-role-marks': typeof HaulierRoleMarksRoute
   '/health': typeof HealthRoute
   '/high-value-marks': typeof HighValueMarksRoute
   '/idp-connectors': typeof IdpConnectorsRoute
@@ -1749,6 +1756,7 @@ export interface FileRoutesByTo {
   '/general-average-marks': typeof GeneralAverageMarksRoute
   '/groupage': typeof GroupageRoute
   '/groupage-tariffs': typeof GroupageTariffsRoute
+  '/haulier-role-marks': typeof HaulierRoleMarksRoute
   '/health': typeof HealthRoute
   '/high-value-marks': typeof HighValueMarksRoute
   '/idp-connectors': typeof IdpConnectorsRoute
@@ -1987,6 +1995,7 @@ export interface FileRoutesById {
   '/general-average-marks': typeof GeneralAverageMarksRoute
   '/groupage': typeof GroupageRoute
   '/groupage-tariffs': typeof GroupageTariffsRoute
+  '/haulier-role-marks': typeof HaulierRoleMarksRoute
   '/health': typeof HealthRoute
   '/high-value-marks': typeof HighValueMarksRoute
   '/idp-connectors': typeof IdpConnectorsRoute
@@ -2226,6 +2235,7 @@ export interface FileRouteTypes {
     | '/general-average-marks'
     | '/groupage'
     | '/groupage-tariffs'
+    | '/haulier-role-marks'
     | '/health'
     | '/high-value-marks'
     | '/idp-connectors'
@@ -2463,6 +2473,7 @@ export interface FileRouteTypes {
     | '/general-average-marks'
     | '/groupage'
     | '/groupage-tariffs'
+    | '/haulier-role-marks'
     | '/health'
     | '/high-value-marks'
     | '/idp-connectors'
@@ -2700,6 +2711,7 @@ export interface FileRouteTypes {
     | '/general-average-marks'
     | '/groupage'
     | '/groupage-tariffs'
+    | '/haulier-role-marks'
     | '/health'
     | '/high-value-marks'
     | '/idp-connectors'
@@ -2938,6 +2950,7 @@ export interface RootRouteChildren {
   GeneralAverageMarksRoute: typeof GeneralAverageMarksRoute
   GroupageRoute: typeof GroupageRoute
   GroupageTariffsRoute: typeof GroupageTariffsRoute
+  HaulierRoleMarksRoute: typeof HaulierRoleMarksRoute
   HealthRoute: typeof HealthRoute
   HighValueMarksRoute: typeof HighValueMarksRoute
   IdpConnectorsRoute: typeof IdpConnectorsRoute
@@ -3709,6 +3722,13 @@ declare module '@tanstack/react-router' {
       path: '/groupage-tariffs'
       fullPath: '/groupage-tariffs'
       preLoaderRoute: typeof GroupageTariffsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/haulier-role-marks': {
+      id: '/haulier-role-marks'
+      path: '/haulier-role-marks'
+      fullPath: '/haulier-role-marks'
+      preLoaderRoute: typeof HaulierRoleMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/health': {
@@ -4826,6 +4846,7 @@ const rootRouteChildren: RootRouteChildren = {
   GeneralAverageMarksRoute: GeneralAverageMarksRoute,
   GroupageRoute: GroupageRoute,
   GroupageTariffsRoute: GroupageTariffsRoute,
+  HaulierRoleMarksRoute: HaulierRoleMarksRoute,
   HealthRoute: HealthRoute,
   HighValueMarksRoute: HighValueMarksRoute,
   IdpConnectorsRoute: IdpConnectorsRoute,

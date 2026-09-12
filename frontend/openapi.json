@@ -2349,6 +2349,80 @@
         ]
       }
     },
+    "/api/v1/haulier-role-marks": {
+      "get": {
+        "tags": [
+          "haulier-role-mark"
+        ],
+        "summary": "List Haulier Role Marks",
+        "operationId": "list_haulier_role_marks_api_v1_haulier_role_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HaulierRoleMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Haulier Role Marks Api V1 Haulier Role Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "haulier-role-mark"
+        ],
+        "summary": "Create Haulier Role Mark",
+        "operationId": "create_haulier_role_mark_api_v1_haulier_role_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HaulierRoleMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HaulierRoleMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/high-value-marks": {
       "get": {
         "tags": [
@@ -29711,6 +29785,71 @@
         },
         "type": "object",
         "title": "HTTPValidationError"
+      },
+      "HaulierRoleMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "role_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 4,
+            "title": "Role Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "role_kind",
+          "source_ref"
+        ],
+        "title": "HaulierRoleMarkCreate"
+      },
+      "HaulierRoleMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "role_kind": {
+            "type": "string",
+            "title": "Role Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "role_kind",
+          "source_ref"
+        ],
+        "title": "HaulierRoleMarkResponse"
       },
       "HighValueMarkCreate": {
         "properties": {

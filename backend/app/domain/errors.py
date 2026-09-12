@@ -1030,6 +1030,10 @@ class InvalidLanguageCodeMark(DomainError):
     """EXP1: HITL language_code_mark — nie kolumna shipment / preferred_language party."""
 
 
+class InvalidHaulierRoleMark(DomainError):
+    """EXP1: HITL haulier_role_mark — nie FK party na shipment / cargo_value."""
+
+
 class InvalidImpersonateGuardMark(DomainError):
     """EXP0.12: HITL impersonate≠unwrap — nie crypto / Auth0 live."""
 

@@ -790,3 +790,5 @@
 - 2026-09-12T20:40:05Z · 424.0 · payment_terms_mark · DONE · HITL terms_kind net|prepaid|other · migracja 334 · /payment-terms-marks
 
 - 2026-09-12T21:01:11Z · 425.0 · language_code_mark · DONE · HITL locale_kind pl|en|de|other · migracja 335 · /language-code-marks
+
+- 2026-09-12T21:22:04Z · 426.0 · haulier_role_mark · DONE · HITL role_kind booked|actual|other · migracja 336 · /haulier-role-marks

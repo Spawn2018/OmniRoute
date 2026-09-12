@@ -91,6 +91,7 @@ from app.api import (
     general_average_marks,
     groupage_lines,
     groupage_tariffs,
+    haulier_role_marks,
     high_value_marks,
     idp_connectors,
     impact_scenarios,
@@ -260,6 +261,7 @@ api_router.include_router(inbound_messages.router)
 api_router.include_router(incoterm_responsibilities.router)
 api_router.include_router(customer_po_marks.router)
 api_router.include_router(profit_center_marks.router)
+api_router.include_router(haulier_role_marks.router)
 api_router.include_router(high_value_marks.router)
 api_router.include_router(payment_terms_marks.router)
 api_router.include_router(customer_rfqs.router)

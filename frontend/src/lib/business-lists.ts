@@ -133,6 +133,10 @@ export const BUSINESS_LISTS = {
     route: "/profit-center-marks",
     tableKey: "profit_center_mark",
   },
+  haulierRoleMark: {
+    route: "/haulier-role-marks",
+    tableKey: "haulier_role_mark",
+  },
   highValueMark: {
     route: "/high-value-marks",
     tableKey: "high_value_mark",
@@ -430,6 +434,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/freight-term-marks",
   "/customer-po-marks",
   "/profit-center-marks",
+  "/haulier-role-marks",
   "/high-value-marks",
   "/payment-terms-marks",
   "/language-code-marks",

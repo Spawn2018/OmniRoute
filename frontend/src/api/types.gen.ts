@@ -5225,6 +5225,50 @@ export type HttpValidationError = {
 };
 
 /**
+ * HaulierRoleMarkCreate
+ */
+export type HaulierRoleMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Role Kind
+     */
+    role_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * HaulierRoleMarkResponse
+ */
+export type HaulierRoleMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Role Kind
+     */
+    role_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * HighValueMarkCreate
  */
 export type HighValueMarkCreate = {
@@ -14967,6 +15011,49 @@ export type CreateProfitCenterMarkApiV1ProfitCenterMarksPostResponses = {
 };
 
 export type CreateProfitCenterMarkApiV1ProfitCenterMarksPostResponse = CreateProfitCenterMarkApiV1ProfitCenterMarksPostResponses[keyof CreateProfitCenterMarkApiV1ProfitCenterMarksPostResponses];
+
+export type ListHaulierRoleMarksApiV1HaulierRoleMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/haulier-role-marks';
+};
+
+export type ListHaulierRoleMarksApiV1HaulierRoleMarksGetResponses = {
+    /**
+     * Response List Haulier Role Marks Api V1 Haulier Role Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<HaulierRoleMarkResponse>;
+};
+
+export type ListHaulierRoleMarksApiV1HaulierRoleMarksGetResponse = ListHaulierRoleMarksApiV1HaulierRoleMarksGetResponses[keyof ListHaulierRoleMarksApiV1HaulierRoleMarksGetResponses];
+
+export type CreateHaulierRoleMarkApiV1HaulierRoleMarksPostData = {
+    body: HaulierRoleMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/haulier-role-marks';
+};
+
+export type CreateHaulierRoleMarkApiV1HaulierRoleMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateHaulierRoleMarkApiV1HaulierRoleMarksPostError = CreateHaulierRoleMarkApiV1HaulierRoleMarksPostErrors[keyof CreateHaulierRoleMarkApiV1HaulierRoleMarksPostErrors];
+
+export type CreateHaulierRoleMarkApiV1HaulierRoleMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: HaulierRoleMarkResponse;
+};
+
+export type CreateHaulierRoleMarkApiV1HaulierRoleMarksPostResponse = CreateHaulierRoleMarkApiV1HaulierRoleMarksPostResponses[keyof CreateHaulierRoleMarkApiV1HaulierRoleMarksPostResponses];
 
 export type ListHighValueMarksApiV1HighValueMarksGetData = {
     body?: never;
