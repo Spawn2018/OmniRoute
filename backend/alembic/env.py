@@ -167,6 +167,7 @@ from app.models.eccn_mark import EccnMark  # noqa: F401
 from app.models.eur1_atr_mark import Eur1AtrMark  # noqa: F401
 from app.models.phyto_ata_mark import PhytoAtaMark  # noqa: F401
 from app.models.switch_bl_loi_mark import SwitchBlLoiMark  # noqa: F401
+from app.models.abandoned_rto_mark import AbandonedRtoMark  # noqa: F401
 from app.models.collaboration_mark import CollaborationMark  # noqa: F401
 from app.models.freight_audit_mark import FreightAuditMark  # noqa: F401
 from app.models.routing_guide import RoutingGuide  # noqa: F401

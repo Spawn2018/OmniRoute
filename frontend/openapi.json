@@ -10558,6 +10558,80 @@
         ]
       }
     },
+    "/api/v1/abandoned-rto-marks": {
+      "get": {
+        "tags": [
+          "abandoned-rto-marks"
+        ],
+        "summary": "List Abandoned Rto Marks",
+        "operationId": "list_abandoned_rto_marks_api_v1_abandoned_rto_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/AbandonedRtoMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Abandoned Rto Marks Api V1 Abandoned Rto Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "abandoned-rto-marks"
+        ],
+        "summary": "Create Abandoned Rto Mark",
+        "operationId": "create_abandoned_rto_mark_api_v1_abandoned_rto_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AbandonedRtoMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AbandonedRtoMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/aeo-dossier-marks": {
       "get": {
         "tags": [
@@ -17891,6 +17965,65 @@
   },
   "components": {
     "schemas": {
+      "AbandonedRtoMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "fate_kind": {
+            "type": "string",
+            "title": "Fate Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "fate_kind",
+          "source_ref"
+        ],
+        "title": "AbandonedRtoMarkCreate"
+      },
+      "AbandonedRtoMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "fate_kind": {
+            "type": "string",
+            "title": "Fate Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "fate_kind",
+          "source_ref"
+        ],
+        "title": "AbandonedRtoMarkResponse"
+      },
       "AeoDossierMarkCreate": {
         "properties": {
           "mark_code": {

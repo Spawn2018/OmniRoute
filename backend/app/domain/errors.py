@@ -990,6 +990,10 @@ class InvalidSwitchBlLoiMark(DomainError):
     """EXP3.9: HITL switch BL/LOI — nie switch BL live / LOI scrape."""
 
 
+class InvalidAbandonedRtoMark(DomainError):
+    """EXP3.10: HITL abandoned/RTO — nie abandoned live / RTO scrape."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

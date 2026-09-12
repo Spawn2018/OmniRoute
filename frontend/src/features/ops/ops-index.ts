@@ -594,6 +594,11 @@ export const OPS_JOBS = [
     job: "katalog aeo_dossier_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.abandonedRtoMark.route,
+    label: "abandoned/RTO",
+    job: "katalog abandoned_rto_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.yardMark.route,
     label: "Yard / waga / EIR",
     job: "katalog yard_mark HITL",
@@ -1267,6 +1272,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "372.0": "/eur1-atr-marks",
   "373.0": "/phyto-ata-marks",
   "374.0": "/switch-bl-loi-marks",
+  "375.0": "/abandoned-rto-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

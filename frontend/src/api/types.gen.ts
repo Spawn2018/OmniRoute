@@ -5,6 +5,50 @@ export type ClientOptions = {
 };
 
 /**
+ * AbandonedRtoMarkCreate
+ */
+export type AbandonedRtoMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Fate Kind
+     */
+    fate_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * AbandonedRtoMarkResponse
+ */
+export type AbandonedRtoMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Fate Kind
+     */
+    fate_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * AeoDossierMarkCreate
  */
 export type AeoDossierMarkCreate = {
@@ -17474,6 +17518,49 @@ export type CreatePoLineApiV1PoLinesPostResponses = {
 };
 
 export type CreatePoLineApiV1PoLinesPostResponse = CreatePoLineApiV1PoLinesPostResponses[keyof CreatePoLineApiV1PoLinesPostResponses];
+
+export type ListAbandonedRtoMarksApiV1AbandonedRtoMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/abandoned-rto-marks';
+};
+
+export type ListAbandonedRtoMarksApiV1AbandonedRtoMarksGetResponses = {
+    /**
+     * Response List Abandoned Rto Marks Api V1 Abandoned Rto Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<AbandonedRtoMarkResponse>;
+};
+
+export type ListAbandonedRtoMarksApiV1AbandonedRtoMarksGetResponse = ListAbandonedRtoMarksApiV1AbandonedRtoMarksGetResponses[keyof ListAbandonedRtoMarksApiV1AbandonedRtoMarksGetResponses];
+
+export type CreateAbandonedRtoMarkApiV1AbandonedRtoMarksPostData = {
+    body: AbandonedRtoMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/abandoned-rto-marks';
+};
+
+export type CreateAbandonedRtoMarkApiV1AbandonedRtoMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateAbandonedRtoMarkApiV1AbandonedRtoMarksPostError = CreateAbandonedRtoMarkApiV1AbandonedRtoMarksPostErrors[keyof CreateAbandonedRtoMarkApiV1AbandonedRtoMarksPostErrors];
+
+export type CreateAbandonedRtoMarkApiV1AbandonedRtoMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: AbandonedRtoMarkResponse;
+};
+
+export type CreateAbandonedRtoMarkApiV1AbandonedRtoMarksPostResponse = CreateAbandonedRtoMarkApiV1AbandonedRtoMarksPostResponses[keyof CreateAbandonedRtoMarkApiV1AbandonedRtoMarksPostResponses];
 
 export type ListAeoDossierMarksApiV1AeoDossierMarksGetData = {
     body?: never;

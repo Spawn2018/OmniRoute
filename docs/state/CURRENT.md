@@ -4,17 +4,17 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **374.0** EXP3.9 HITL `switch_bl_loi_mark`
+**Ostatni plaster:** **375.0** EXP3.10 HITL `abandoned_rto_mark`
 
-**Etap:** Plan — **375.0** EXP3.10
+**Etap:** Plan — **376.0** EXP3.11
 
 **Noc:** `/noc 10` do 2026-09-12T10:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).
 
-**Następny:** **375.0** EXP3.10 abandoned/RTO HITL `abandoned_rto_mark`.
+**Następny:** **376.0** EXP3.11 general average HITL `general_average_mark`.
 
-Park: abandoned live · RTO scrape · general average. Nie zgaduj 71–375.
+Park: GA live · OTIF split · tender_decline. Nie zgaduj 71–376.
 
-**Spec (jedyna na sesję):** (brak — plan 375.0).
+**Spec (jedyna na sesję):** (brak — plan 376.0).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
@@ -22,4 +22,4 @@ Park: abandoned live · RTO scrape · general average. Nie zgaduj 71–375.
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-12:** Plaster **374.0** zamknięty (`/noc`) — HITL `switch_bl_loi_mark`.
+**2026-09-12:** Plaster **375.0** zamknięty (`/noc`) — HITL `abandoned_rto_mark`.
