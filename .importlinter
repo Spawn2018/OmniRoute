@@ -192,6 +192,7 @@ modules =
     app.services.role_view_marks
     app.services.rag_sop_marks
     app.services.copy_ban_marks
+    app.services.erru_marks
     app.services.freight_audit_marks
     app.services.collaboration_marks
     app.services.exchange_connectors
@@ -854,6 +855,9 @@ forbidden_modules =
     app.services.copy_ban_marks
     app.repositories.copy_ban_marks
     app.models.copy_ban_mark
+    app.services.erru_marks
+    app.repositories.erru_marks
+    app.models.erru_mark
     app.services.freight_audit_marks
     app.repositories.freight_audit_marks
     app.models.freight_audit_mark

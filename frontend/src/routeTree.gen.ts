@@ -66,6 +66,7 @@ import { Route as EdiMapMarksRouteImport } from './routes/edi-map-marks'
 import { Route as EmptyDepotMarksRouteImport } from './routes/empty-depot-marks'
 import { Route as EntityEventsRouteImport } from './routes/entity-events'
 import { Route as ErpConnectorsRouteImport } from './routes/erp-connectors'
+import { Route as ErruMarksRouteImport } from './routes/erru-marks'
 import { Route as Eur1AtrMarksRouteImport } from './routes/eur1-atr-marks'
 import { Route as ExceptionsRouteImport } from './routes/exceptions'
 import { Route as ExchangeConnectorsRouteImport } from './routes/exchange-connectors'
@@ -501,6 +502,11 @@ const EntityEventsRoute = EntityEventsRouteImport.update({
 const ErpConnectorsRoute = ErpConnectorsRouteImport.update({
   id: '/erp-connectors',
   path: '/erp-connectors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ErruMarksRoute = ErruMarksRouteImport.update({
+  id: '/erru-marks',
+  path: '/erru-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const Eur1AtrMarksRoute = Eur1AtrMarksRouteImport.update({
@@ -1318,6 +1324,7 @@ export interface FileRoutesByFullPath {
   '/empty-depot-marks': typeof EmptyDepotMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
+  '/erru-marks': typeof ErruMarksRoute
   '/eur1-atr-marks': typeof Eur1AtrMarksRoute
   '/exceptions': typeof ExceptionsRoute
   '/exchange-connectors': typeof ExchangeConnectorsRoute
@@ -1528,6 +1535,7 @@ export interface FileRoutesByTo {
   '/empty-depot-marks': typeof EmptyDepotMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
+  '/erru-marks': typeof ErruMarksRoute
   '/eur1-atr-marks': typeof Eur1AtrMarksRoute
   '/exceptions': typeof ExceptionsRoute
   '/exchange-connectors': typeof ExchangeConnectorsRoute
@@ -1739,6 +1747,7 @@ export interface FileRoutesById {
   '/empty-depot-marks': typeof EmptyDepotMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
+  '/erru-marks': typeof ErruMarksRoute
   '/eur1-atr-marks': typeof Eur1AtrMarksRoute
   '/exceptions': typeof ExceptionsRoute
   '/exchange-connectors': typeof ExchangeConnectorsRoute
@@ -1951,6 +1960,7 @@ export interface FileRouteTypes {
     | '/empty-depot-marks'
     | '/entity-events'
     | '/erp-connectors'
+    | '/erru-marks'
     | '/eur1-atr-marks'
     | '/exceptions'
     | '/exchange-connectors'
@@ -2161,6 +2171,7 @@ export interface FileRouteTypes {
     | '/empty-depot-marks'
     | '/entity-events'
     | '/erp-connectors'
+    | '/erru-marks'
     | '/eur1-atr-marks'
     | '/exceptions'
     | '/exchange-connectors'
@@ -2371,6 +2382,7 @@ export interface FileRouteTypes {
     | '/empty-depot-marks'
     | '/entity-events'
     | '/erp-connectors'
+    | '/erru-marks'
     | '/eur1-atr-marks'
     | '/exceptions'
     | '/exchange-connectors'
@@ -2582,6 +2594,7 @@ export interface RootRouteChildren {
   EmptyDepotMarksRoute: typeof EmptyDepotMarksRoute
   EntityEventsRoute: typeof EntityEventsRoute
   ErpConnectorsRoute: typeof ErpConnectorsRoute
+  ErruMarksRoute: typeof ErruMarksRoute
   Eur1AtrMarksRoute: typeof Eur1AtrMarksRoute
   ExceptionsRoute: typeof ExceptionsRoute
   ExchangeConnectorsRoute: typeof ExchangeConnectorsRoute
@@ -3134,6 +3147,13 @@ declare module '@tanstack/react-router' {
       path: '/erp-connectors'
       fullPath: '/erp-connectors'
       preLoaderRoute: typeof ErpConnectorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/erru-marks': {
+      id: '/erru-marks'
+      path: '/erru-marks'
+      fullPath: '/erru-marks'
+      preLoaderRoute: typeof ErruMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/eur1-atr-marks': {
@@ -4254,6 +4274,7 @@ const rootRouteChildren: RootRouteChildren = {
   EmptyDepotMarksRoute: EmptyDepotMarksRoute,
   EntityEventsRoute: EntityEventsRoute,
   ErpConnectorsRoute: ErpConnectorsRoute,
+  ErruMarksRoute: ErruMarksRoute,
   Eur1AtrMarksRoute: Eur1AtrMarksRoute,
   ExceptionsRoute: ExceptionsRoute,
   ExchangeConnectorsRoute: ExchangeConnectorsRoute,

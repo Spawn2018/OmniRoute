@@ -1082,6 +1082,10 @@ class InvalidCopyBanMark(DomainError):
     """EXP4.19: HITL zakaz copy claimów — nie silnik banów / kwota."""
 
 
+class InvalidErruMark(DomainError):
+    """EXP4.20: HITL sprawdzenie ERRU — nie live ERRU / scoring."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

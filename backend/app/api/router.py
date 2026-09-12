@@ -61,6 +61,7 @@ from app.api import (
     empty_depot_marks,
     entity_events,
     erp_connectors,
+    erru_marks,
     eur1_atr_marks,
     exchange_connectors,
     executive_marks,
@@ -377,6 +378,7 @@ api_router.include_router(war_room_marks.router)
 api_router.include_router(cash_discounts.router)
 api_router.include_router(cash_flows.router)
 api_router.include_router(copy_ban_marks.router)
+api_router.include_router(erru_marks.router)
 api_router.include_router(cost_to_serve.router)
 api_router.include_router(bookkeeping.router)
 api_router.include_router(collective_invoices.router)

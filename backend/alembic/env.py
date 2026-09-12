@@ -190,6 +190,7 @@ from app.models.mail_accept_mark import MailAcceptMark  # noqa: F401
 from app.models.role_view_mark import RoleViewMark  # noqa: F401
 from app.models.rag_sop_mark import RagSopMark  # noqa: F401
 from app.models.copy_ban_mark import CopyBanMark  # noqa: F401
+from app.models.erru_mark import ErruMark  # noqa: F401
 from app.models.collaboration_mark import CollaborationMark  # noqa: F401
 from app.models.freight_audit_mark import FreightAuditMark  # noqa: F401
 from app.models.routing_guide import RoutingGuide  # noqa: F401

@@ -166,6 +166,7 @@ type organization
     define can_manage_role_view_marks: member
     define can_manage_rag_sop_marks: member
     define can_manage_copy_ban_marks: member
+    define can_manage_erru_marks: member
     define can_manage_freight_audit_marks: member
     define can_manage_collaboration_marks: member
     define can_manage_routing_guide_enforcements: member

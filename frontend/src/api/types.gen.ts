@@ -3789,6 +3789,50 @@ export type ErpConnectorResponse = {
 };
 
 /**
+ * ErruMarkCreate
+ */
+export type ErruMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Check Kind
+     */
+    check_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ErruMarkResponse
+ */
+export type ErruMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Check Kind
+     */
+    check_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * Eur1AtrMarkCreate
  */
 export type Eur1AtrMarkCreate = {
@@ -20537,6 +20581,49 @@ export type CreateCopyBanMarkApiV1CopyBanMarksPostResponses = {
 };
 
 export type CreateCopyBanMarkApiV1CopyBanMarksPostResponse = CreateCopyBanMarkApiV1CopyBanMarksPostResponses[keyof CreateCopyBanMarkApiV1CopyBanMarksPostResponses];
+
+export type ListErruMarksApiV1ErruMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/erru-marks';
+};
+
+export type ListErruMarksApiV1ErruMarksGetResponses = {
+    /**
+     * Response List Erru Marks Api V1 Erru Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<ErruMarkResponse>;
+};
+
+export type ListErruMarksApiV1ErruMarksGetResponse = ListErruMarksApiV1ErruMarksGetResponses[keyof ListErruMarksApiV1ErruMarksGetResponses];
+
+export type CreateErruMarkApiV1ErruMarksPostData = {
+    body: ErruMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/erru-marks';
+};
+
+export type CreateErruMarkApiV1ErruMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateErruMarkApiV1ErruMarksPostError = CreateErruMarkApiV1ErruMarksPostErrors[keyof CreateErruMarkApiV1ErruMarksPostErrors];
+
+export type CreateErruMarkApiV1ErruMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ErruMarkResponse;
+};
+
+export type CreateErruMarkApiV1ErruMarksPostResponse = CreateErruMarkApiV1ErruMarksPostResponses[keyof CreateErruMarkApiV1ErruMarksPostResponses];
 
 export type ListCostToServeApiV1CostToServesGetData = {
     body?: never;
