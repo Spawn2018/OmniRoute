@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **407.0** EXP4.3b HITL `ocean_feeder_mark`. **Etap:** Plan — **408.0** EXP4.5b. **Następny:** **408.0** EXP4.5b HITL `chassis_mark` (chassis; bez live). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **407.0** EXP4.3b HITL `ocean_feeder_mark`. **Etap:** Plaster — **408.0** EXP4.5b. **Następny:** **408.0** EXP4.5b HITL `chassis_mark` (chassis; bez live). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
