@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **418.0** EXP0.6 HITL `named_place_mark`
 
-**Etap:** Plan — **419.0** EXP0.7
+**Etap:** Plaster — **419.0** EXP0.3 (delta zaakceptowana `/noc`; EXP0.7 skipped — dubluje G10)
 
 **Noc:** `/noc 10` do 2026-09-13T10:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).
 
-**Następny:** **419.0** EXP0.7 HITL `holding_mark` (holding|hq|branch|other; bez drugiego tenanta) — kolejka po cutoff.
+**Następny:** **419.0** EXP0.3 HITL `slot_guarantee_mark` (capability|non_guarantee|other; bez live T8) — kolejka po cutoff.
 
 Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj 71–419.
 
-**Spec (jedyna na sesję):** (brak — plan 419.0 po nocnej zmianie).
+**Spec (jedyna na sesję):** [docs/deltas/open/419.0-slot-guarantee-mark.md](../deltas/open/419.0-slot-guarantee-mark.md)
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
