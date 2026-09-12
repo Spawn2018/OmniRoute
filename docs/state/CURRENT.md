@@ -4,17 +4,17 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **412.0** Demo-1b HITL `demo_sim_mark`
+**Ostatni plaster:** **413.0** EXP3.0b HITL `po_plant_mark`
 
-**Etap:** Plaster — **413.0** EXP3.0b
+**Etap:** Plan — **414.0** EXP3.0c
 
 **Noc:** `/noc 17` do 2026-09-12T17:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).
 
-**Następny:** **413.0** EXP3.0b HITL `po_plant_mark` (PO plant/batch; bez live EDI).
+**Następny:** **414.0** EXP3.0c HITL `po_sku_mark` (PO SKU line; bez live EDI) — kolejka po cutoff.
 
-Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj 71–413.
+Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj 71–414.
 
-**Spec (jedyna na sesję):** [docs/deltas/open/413.0-po-plant-mark.md](../deltas/open/413.0-po-plant-mark.md).
+**Spec (jedyna na sesję):** (brak — plan 414.0 po nocnej zmianie).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
@@ -22,4 +22,4 @@ Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj 71–4
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-12:** Plan **413.0** — HITL `po_plant_mark` (bez live EDI).
+**2026-09-12:** Plaster **413.0** zamknięty (`/noc`) — HITL `po_plant_mark`.

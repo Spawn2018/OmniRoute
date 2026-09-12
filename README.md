@@ -86,10 +86,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **412.0** Demo-1b HITL `demo_sim_mark`
-- **Etap:** Plaster — **413.0** EXP3.0b
-- **Następny:** **413.0** EXP3.0b HITL `po_plant_mark` (PO plant/batch; bez live EDI).
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **413.0** EXP3.0b HITL `po_plant_mark`
+- **Etap:** Plan — **414.0** EXP3.0c
+- **Następny:** **414.0** EXP3.0c HITL `po_sku_mark` (PO SKU line; bez live EDI) — kolejka po cutoff.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

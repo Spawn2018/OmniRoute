@@ -12038,6 +12038,80 @@
         ]
       }
     },
+    "/api/v1/po-plant-marks": {
+      "get": {
+        "tags": [
+          "po-plant-mark"
+        ],
+        "summary": "List Po Plant Marks",
+        "operationId": "list_po_plant_marks_api_v1_po_plant_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PoPlantMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Po Plant Marks Api V1 Po Plant Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "po-plant-mark"
+        ],
+        "summary": "Create Po Plant Mark",
+        "operationId": "create_po_plant_mark_api_v1_po_plant_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PoPlantMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PoPlantMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/abandoned-rto-marks": {
       "get": {
         "tags": [
@@ -33543,6 +33617,71 @@
           "source_ref"
         ],
         "title": "PoLineResponse"
+      },
+      "PoPlantMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "plant_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Plant Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "plant_kind",
+          "source_ref"
+        ],
+        "title": "PoPlantMarkCreate"
+      },
+      "PoPlantMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "plant_kind": {
+            "type": "string",
+            "title": "Plant Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "plant_kind",
+          "source_ref"
+        ],
+        "title": "PoPlantMarkResponse"
       },
       "PortCreate": {
         "properties": {

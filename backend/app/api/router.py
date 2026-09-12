@@ -147,6 +147,7 @@ from app.api import (
     phyto_ata_marks,
     plan_snapshots,
     po_lines,
+    po_plant_marks,
     port_surcharges,
     ports,
     posting_marks,
@@ -364,6 +365,7 @@ api_router.include_router(tenant_contract_keks.router)
 api_router.include_router(visibility_connectors.router)
 api_router.include_router(purchase_orders.router)
 api_router.include_router(po_lines.router)
+api_router.include_router(po_plant_marks.router)
 api_router.include_router(abandoned_rto_marks.router)
 api_router.include_router(ab_sus_marks.router)
 api_router.include_router(air_ra3_marks.router)

@@ -375,11 +375,12 @@ describe("U-routes-breadth standing", () => {
       "410.0": "/three-way-marks",
       "411.0": "/demo-wipe-marks",
       "412.0": "/demo-sim-marks",
+      "413.0": "/po-plant-marks",
     })
     expect(OPS_JOBS.map((job) => job.route)).toEqual(
       expect.arrayContaining(Object.values(SHIPPED_CHARGE_ROUTES)),
     )
-    expect(OPS_JOBS).toHaveLength(229)
+    expect(OPS_JOBS).toHaveLength(230)
 
     expect(OPS_JOBS.length).not.toBe(157)
 

@@ -978,6 +978,10 @@ class InvalidDemoSimMark(DomainError):
     """Demo-1b: HITL demo_sim_mark — nie live sim / generator 150 aut / kwota."""
 
 
+class InvalidPoPlantMark(DomainError):
+    """EXP3.0b: HITL po_plant_mark — nie live EDI / auto shipment / kwota."""
+
+
 class InvalidImpersonateGuardMark(DomainError):
     """EXP0.12: HITL impersonate≠unwrap — nie crypto / Auth0 live."""
 

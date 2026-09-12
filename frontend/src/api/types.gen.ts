@@ -8357,6 +8357,50 @@ export type PoLineResponse = {
 };
 
 /**
+ * PoPlantMarkCreate
+ */
+export type PoPlantMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Plant Kind
+     */
+    plant_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * PoPlantMarkResponse
+ */
+export type PoPlantMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Plant Kind
+     */
+    plant_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * PortCreate
  */
 export type PortCreate = {
@@ -19962,6 +20006,49 @@ export type CreatePoLineApiV1PoLinesPostResponses = {
 };
 
 export type CreatePoLineApiV1PoLinesPostResponse = CreatePoLineApiV1PoLinesPostResponses[keyof CreatePoLineApiV1PoLinesPostResponses];
+
+export type ListPoPlantMarksApiV1PoPlantMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/po-plant-marks';
+};
+
+export type ListPoPlantMarksApiV1PoPlantMarksGetResponses = {
+    /**
+     * Response List Po Plant Marks Api V1 Po Plant Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<PoPlantMarkResponse>;
+};
+
+export type ListPoPlantMarksApiV1PoPlantMarksGetResponse = ListPoPlantMarksApiV1PoPlantMarksGetResponses[keyof ListPoPlantMarksApiV1PoPlantMarksGetResponses];
+
+export type CreatePoPlantMarkApiV1PoPlantMarksPostData = {
+    body: PoPlantMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/po-plant-marks';
+};
+
+export type CreatePoPlantMarkApiV1PoPlantMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreatePoPlantMarkApiV1PoPlantMarksPostError = CreatePoPlantMarkApiV1PoPlantMarksPostErrors[keyof CreatePoPlantMarkApiV1PoPlantMarksPostErrors];
+
+export type CreatePoPlantMarkApiV1PoPlantMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: PoPlantMarkResponse;
+};
+
+export type CreatePoPlantMarkApiV1PoPlantMarksPostResponse = CreatePoPlantMarkApiV1PoPlantMarksPostResponses[keyof CreatePoPlantMarkApiV1PoPlantMarksPostResponses];
 
 export type ListAbandonedRtoMarksApiV1AbandonedRtoMarksGetData = {
     body?: never;
