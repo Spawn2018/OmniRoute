@@ -6,7 +6,7 @@
 
 **Ostatni plaster:** **408.0** EXP4.5b HITL `chassis_mark`
 
-**Etap:** Plan — **409.0** EXP3.3b
+**Etap:** Plaster — **409.0** EXP3.3b
 
 **Noc:** `/noc 17` do 2026-09-12T17:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).
 
@@ -14,7 +14,7 @@
 
 Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj 71–409.
 
-**Spec (jedyna na sesję):** (brak — plan 409.0).
+**Spec (jedyna na sesję):** [docs/deltas/open/409.0-line-impact-mark.md](../deltas/open/409.0-line-impact-mark.md).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
@@ -22,4 +22,4 @@ Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj 71–4
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-12:** Plaster **408.0** zamknięty (`/noc`) — HITL `chassis_mark`.
+**2026-09-12:** Plan **409.0** — HITL `line_impact_mark` (bez SQL impact).
