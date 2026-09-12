@@ -179,6 +179,7 @@ modules =
     app.services.ocean_alliance_marks
     app.services.reefer_marks
     app.services.empty_depot_marks
+    app.services.nvocc_marks
     app.services.freight_audit_marks
     app.services.collaboration_marks
     app.services.exchange_connectors
@@ -802,6 +803,9 @@ forbidden_modules =
     app.services.empty_depot_marks
     app.repositories.empty_depot_marks
     app.models.empty_depot_mark
+    app.services.nvocc_marks
+    app.repositories.nvocc_marks
+    app.models.nvocc_mark
     app.services.freight_audit_marks
     app.repositories.freight_audit_marks
     app.models.freight_audit_mark

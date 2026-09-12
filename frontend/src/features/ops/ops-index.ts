@@ -919,6 +919,11 @@ export const OPS_JOBS = [
     job: "katalog empty_depot_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.nvoccMark.route,
+    label: "NVOCC",
+    job: "katalog nvocc_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.remediationOption.route,
     label: "Opcja naprawy",
     job: "katalog remediation_option HITL",
@@ -1327,6 +1332,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "382.0": "/ocean-alliance-marks",
   "383.0": "/reefer-marks",
   "384.0": "/empty-depot-marks",
+  "385.0": "/nvocc-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

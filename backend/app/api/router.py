@@ -104,6 +104,7 @@ from app.api import (
     nbp_rates,
     ncts_drafts,
     networks,
+    nvocc_marks,
     ocean_alliance_marks,
     ocean_bills,
     offboarding_marks,
@@ -229,6 +230,7 @@ api_router.include_router(rank_marks.router)
 api_router.include_router(task_templates.router)
 api_router.include_router(outbox_events.router)
 api_router.include_router(empty_depot_marks.router)
+api_router.include_router(nvocc_marks.router)
 api_router.include_router(entity_events.router)
 api_router.include_router(nbp_rates.router)
 api_router.include_router(charges.router)

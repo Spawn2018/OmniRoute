@@ -6273,6 +6273,50 @@ export type NetworkResponse = {
 };
 
 /**
+ * NvoccMarkCreate
+ */
+export type NvoccMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Nvocc Kind
+     */
+    nvocc_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * NvoccMarkResponse
+ */
+export type NvoccMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Nvocc Kind
+     */
+    nvocc_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * OceanAllianceMarkCreate
  */
 export type OceanAllianceMarkCreate = {
@@ -13733,6 +13777,49 @@ export type CreateEmptyDepotMarkApiV1EmptyDepotMarksPostResponses = {
 };
 
 export type CreateEmptyDepotMarkApiV1EmptyDepotMarksPostResponse = CreateEmptyDepotMarkApiV1EmptyDepotMarksPostResponses[keyof CreateEmptyDepotMarkApiV1EmptyDepotMarksPostResponses];
+
+export type ListNvoccMarksApiV1NvoccMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/nvocc-marks';
+};
+
+export type ListNvoccMarksApiV1NvoccMarksGetResponses = {
+    /**
+     * Response List Nvocc Marks Api V1 Nvocc Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<NvoccMarkResponse>;
+};
+
+export type ListNvoccMarksApiV1NvoccMarksGetResponse = ListNvoccMarksApiV1NvoccMarksGetResponses[keyof ListNvoccMarksApiV1NvoccMarksGetResponses];
+
+export type CreateNvoccMarkApiV1NvoccMarksPostData = {
+    body: NvoccMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/nvocc-marks';
+};
+
+export type CreateNvoccMarkApiV1NvoccMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateNvoccMarkApiV1NvoccMarksPostError = CreateNvoccMarkApiV1NvoccMarksPostErrors[keyof CreateNvoccMarkApiV1NvoccMarksPostErrors];
+
+export type CreateNvoccMarkApiV1NvoccMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: NvoccMarkResponse;
+};
+
+export type CreateNvoccMarkApiV1NvoccMarksPostResponse = CreateNvoccMarkApiV1NvoccMarksPostResponses[keyof CreateNvoccMarkApiV1NvoccMarksPostResponses];
 
 export type ListEntityEventsApiV1EntityEventsGetData = {
     body?: never;

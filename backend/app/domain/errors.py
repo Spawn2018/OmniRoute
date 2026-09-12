@@ -1030,6 +1030,10 @@ class InvalidEmptyDepotMark(DomainError):
     """EXP4.6: HITL empty/depot/chassis — nie depot live API / scrape."""
 
 
+class InvalidNvoccMark(DomainError):
+    """EXP4.7: HITL NVOCC — nie nvocc live API / scrape."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

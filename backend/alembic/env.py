@@ -177,6 +177,7 @@ from app.models.rail_cim_mark import RailCimMark  # noqa: F401
 from app.models.ocean_alliance_mark import OceanAllianceMark  # noqa: F401
 from app.models.reefer_mark import ReeferMark  # noqa: F401
 from app.models.empty_depot_mark import EmptyDepotMark  # noqa: F401
+from app.models.nvocc_mark import NvoccMark  # noqa: F401
 from app.models.collaboration_mark import CollaborationMark  # noqa: F401
 from app.models.freight_audit_mark import FreightAuditMark  # noqa: F401
 from app.models.routing_guide import RoutingGuide  # noqa: F401

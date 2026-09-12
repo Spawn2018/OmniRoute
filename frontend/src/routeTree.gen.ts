@@ -62,6 +62,7 @@ import { Route as EdiRouteImport } from './routes/edi'
 import { Route as EccnMarksRouteImport } from './routes/eccn-marks'
 import { Route as EdiMapMarksRouteImport } from './routes/edi-map-marks'
 import { Route as EmptyDepotMarksRouteImport } from './routes/empty-depot-marks'
+import { Route as NvoccMarksRouteImport } from './routes/nvocc-marks'
 import { Route as EntityEventsRouteImport } from './routes/entity-events'
 import { Route as ErpConnectorsRouteImport } from './routes/erp-connectors'
 import { Route as Eur1AtrMarksRouteImport } from './routes/eur1-atr-marks'
@@ -468,6 +469,11 @@ const EdiMapMarksRoute = EdiMapMarksRouteImport.update({
 const EmptyDepotMarksRoute = EmptyDepotMarksRouteImport.update({
   id: '/empty-depot-marks',
   path: '/empty-depot-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NvoccMarksRoute = NvoccMarksRouteImport.update({
+  id: '/nvocc-marks',
+  path: '/nvocc-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EntityEventsRoute = EntityEventsRouteImport.update({
@@ -1236,6 +1242,7 @@ export interface FileRoutesByFullPath {
   '/eccn-marks': typeof EccnMarksRoute
   '/edi-map-marks': typeof EdiMapMarksRoute
   '/empty-depot-marks': typeof EmptyDepotMarksRoute
+  '/nvocc-marks': typeof NvoccMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/eur1-atr-marks': typeof Eur1AtrMarksRoute
@@ -1433,6 +1440,7 @@ export interface FileRoutesByTo {
   '/eccn-marks': typeof EccnMarksRoute
   '/edi-map-marks': typeof EdiMapMarksRoute
   '/empty-depot-marks': typeof EmptyDepotMarksRoute
+  '/nvocc-marks': typeof NvoccMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/eur1-atr-marks': typeof Eur1AtrMarksRoute
@@ -1631,6 +1639,7 @@ export interface FileRoutesById {
   '/eccn-marks': typeof EccnMarksRoute
   '/edi-map-marks': typeof EdiMapMarksRoute
   '/empty-depot-marks': typeof EmptyDepotMarksRoute
+  '/nvocc-marks': typeof NvoccMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/eur1-atr-marks': typeof Eur1AtrMarksRoute
@@ -1830,6 +1839,7 @@ export interface FileRouteTypes {
     | '/eccn-marks'
     | '/edi-map-marks'
     | '/empty-depot-marks'
+    | '/nvocc-marks'
     | '/entity-events'
     | '/erp-connectors'
     | '/eur1-atr-marks'
@@ -2027,6 +2037,7 @@ export interface FileRouteTypes {
     | '/eccn-marks'
     | '/edi-map-marks'
     | '/empty-depot-marks'
+    | '/nvocc-marks'
     | '/entity-events'
     | '/erp-connectors'
     | '/eur1-atr-marks'
@@ -2224,6 +2235,7 @@ export interface FileRouteTypes {
     | '/eccn-marks'
     | '/edi-map-marks'
     | '/empty-depot-marks'
+    | '/nvocc-marks'
     | '/entity-events'
     | '/erp-connectors'
     | '/eur1-atr-marks'
@@ -2422,6 +2434,7 @@ export interface RootRouteChildren {
   EccnMarksRoute: typeof EccnMarksRoute
   EdiMapMarksRoute: typeof EdiMapMarksRoute
   EmptyDepotMarksRoute: typeof EmptyDepotMarksRoute
+  NvoccMarksRoute: typeof NvoccMarksRoute
   EntityEventsRoute: typeof EntityEventsRoute
   ErpConnectorsRoute: typeof ErpConnectorsRoute
   Eur1AtrMarksRoute: typeof Eur1AtrMarksRoute
@@ -2937,6 +2950,13 @@ declare module '@tanstack/react-router' {
       path: '/empty-depot-marks'
       fullPath: '/empty-depot-marks'
       preLoaderRoute: typeof EmptyDepotMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nvocc-marks': {
+      id: '/nvocc-marks'
+      path: '/nvocc-marks'
+      fullPath: '/nvocc-marks'
+      preLoaderRoute: typeof NvoccMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/entity-events': {
@@ -3991,6 +4011,7 @@ const rootRouteChildren: RootRouteChildren = {
   EccnMarksRoute: EccnMarksRoute,
   EdiMapMarksRoute: EdiMapMarksRoute,
   EmptyDepotMarksRoute: EmptyDepotMarksRoute,
+  NvoccMarksRoute: NvoccMarksRoute,
   EntityEventsRoute: EntityEventsRoute,
   ErpConnectorsRoute: ErpConnectorsRoute,
   Eur1AtrMarksRoute: Eur1AtrMarksRoute,

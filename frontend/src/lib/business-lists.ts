@@ -141,6 +141,7 @@ export const BUSINESS_LISTS = {
   oceanAllianceMark: { route: "/ocean-alliance-marks", tableKey: "ocean_alliance_mark" },
   reeferMark: { route: "/reefer-marks", tableKey: "reefer_mark" },
   emptyDepotMark: { route: "/empty-depot-marks", tableKey: "empty_depot_mark" },
+  nvoccMark: { route: "/nvocc-marks", tableKey: "nvocc_mark" },
   remediationOption: {
     route: "/remediation-options",
     tableKey: "remediation_option",
@@ -343,6 +344,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/ocean-alliance-marks",
   "/reefer-marks",
   "/empty-depot-marks",
+  "/nvocc-marks",
   "/remediation-options",
   "/impact-scenarios",
   "/clause-notices",
