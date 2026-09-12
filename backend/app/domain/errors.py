@@ -1010,6 +1010,10 @@ class InvalidCsrdMark(DomainError):
     """EXP3.14: HITL CSRD — nie kg / CSRD live filing."""
 
 
+class InvalidAirRa3Mark(DomainError):
+    """EXP4.1: HITL air RA3/lithium — nie IATA live / RA3 scrape."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

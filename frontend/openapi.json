@@ -10706,6 +10706,80 @@
         ]
       }
     },
+    "/api/v1/air-ra3-marks": {
+      "get": {
+        "tags": [
+          "air-ra3"
+        ],
+        "summary": "List Air Ra3 Marks",
+        "operationId": "list_air_ra3_marks_api_v1_air_ra3_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/AirRa3MarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Air Ra3 Marks Api V1 Air Ra3 Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "air-ra3"
+        ],
+        "summary": "Create Air Ra3 Mark",
+        "operationId": "create_air_ra3_mark_api_v1_air_ra3_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AirRa3MarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AirRa3MarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/aeo-dossier-marks": {
       "get": {
         "tags": [
@@ -14969,7 +15043,7 @@
     "/api/v1/csrd-marks": {
       "get": {
         "tags": [
-          "csrd-marks"
+          "csrd"
         ],
         "summary": "List Csrd Marks",
         "operationId": "list_csrd_marks_api_v1_csrd_marks_get",
@@ -14997,7 +15071,7 @@
       },
       "post": {
         "tags": [
-          "csrd-marks"
+          "csrd"
         ],
         "summary": "Create Csrd Mark",
         "operationId": "create_csrd_mark_api_v1_csrd_marks_post",
@@ -18378,6 +18452,71 @@
           "source_ref"
         ],
         "title": "AeoDossierMarkResponse"
+      },
+      "AirRa3MarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "air_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Air Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "air_kind",
+          "source_ref"
+        ],
+        "title": "AirRa3MarkCreate"
+      },
+      "AirRa3MarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "air_kind": {
+            "type": "string",
+            "title": "Air Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "air_kind",
+          "source_ref"
+        ],
+        "title": "AirRa3MarkResponse"
       },
       "AppUserResponse": {
         "properties": {

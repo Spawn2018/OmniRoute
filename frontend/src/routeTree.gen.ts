@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AirRa3MarksRouteImport } from './routes/air-ra3-marks'
 import { Route as AbandonedRtoMarksRouteImport } from './routes/abandoned-rto-marks'
 import { Route as AeoDossierMarksRouteImport } from './routes/aeo-dossier-marks'
 import { Route as AiRouteImport } from './routes/ai'
@@ -203,6 +204,11 @@ import { Route as TenancyUsersRouteImport } from './routes/tenancy.users'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AirRa3MarksRoute = AirRa3MarksRouteImport.update({
+  id: '/air-ra3-marks',
+  path: '/air-ra3-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AbandonedRtoMarksRoute = AbandonedRtoMarksRouteImport.update({
@@ -1154,6 +1160,7 @@ const TenancyUsersRoute = TenancyUsersRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/air-ra3-marks': typeof AirRa3MarksRoute
   '/abandoned-rto-marks': typeof AbandonedRtoMarksRoute
   '/aeo-dossier-marks': typeof AeoDossierMarksRoute
   '/ai': typeof AiRoute
@@ -1346,6 +1353,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/air-ra3-marks': typeof AirRa3MarksRoute
   '/abandoned-rto-marks': typeof AbandonedRtoMarksRoute
   '/aeo-dossier-marks': typeof AeoDossierMarksRoute
   '/ai': typeof AiRoute
@@ -1539,6 +1547,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/air-ra3-marks': typeof AirRa3MarksRoute
   '/abandoned-rto-marks': typeof AbandonedRtoMarksRoute
   '/aeo-dossier-marks': typeof AeoDossierMarksRoute
   '/ai': typeof AiRoute
@@ -1733,6 +1742,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/air-ra3-marks'
     | '/abandoned-rto-marks'
     | '/aeo-dossier-marks'
     | '/ai'
@@ -1925,6 +1935,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/air-ra3-marks'
     | '/abandoned-rto-marks'
     | '/aeo-dossier-marks'
     | '/ai'
@@ -2117,6 +2128,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/air-ra3-marks'
     | '/abandoned-rto-marks'
     | '/aeo-dossier-marks'
     | '/ai'
@@ -2310,6 +2322,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AirRa3MarksRoute: typeof AirRa3MarksRoute
   AbandonedRtoMarksRoute: typeof AbandonedRtoMarksRoute
   AeoDossierMarksRoute: typeof AeoDossierMarksRoute
   AiRoute: typeof AiRoute
@@ -2508,6 +2521,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/air-ra3-marks': {
+      id: '/air-ra3-marks'
+      path: '/air-ra3-marks'
+      fullPath: '/air-ra3-marks'
+      preLoaderRoute: typeof AirRa3MarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/abandoned-rto-marks': {
@@ -3839,6 +3859,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AirRa3MarksRoute: AirRa3MarksRoute,
   AbandonedRtoMarksRoute: AbandonedRtoMarksRoute,
   AeoDossierMarksRoute: AeoDossierMarksRoute,
   AiRoute: AiRoute,

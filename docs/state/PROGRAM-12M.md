@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **379.0** EXP3.14 HITL `csrd_mark` **Następny:** **380.0** — po CSRD fala EXP3 domknięta w katalogach HITL; weź kolejny z PLAN § Kolejka / leftover pin (nie zgaduj).
+**Stan (z CURRENT.md):** **380.0** EXP4.1 HITL `air_ra3_mark` **Następny:** **381.0** EXP4.2 Rail UIC/CIM/SMGS HITL `rail_cim_mark` (kolejka EXP4).
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

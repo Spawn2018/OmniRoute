@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **380.0** — po CSRD fala EXP3 domknięta w katalogach HITL; weź kolejny z PLAN § Kolejka / leftover pin (nie zgaduj).
+**Następny:** **381.0** EXP4.2 Rail UIC/CIM/SMGS HITL `rail_cim_mark` (kolejka EXP4).
 <!-- os-status:end -->
 
 ```mermaid

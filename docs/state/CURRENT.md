@@ -4,17 +4,17 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **379.0** EXP3.14 HITL `csrd_mark`
+**Ostatni plaster:** **380.0** EXP4.1 HITL `air_ra3_mark`
 
-**Etap:** Plan — **380.0**
+**Etap:** Plan — **381.0** EXP4.2
 
 **Noc:** `/noc 10` do 2026-09-12T10:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).
 
-**Następny:** **380.0** — po CSRD fala EXP3 domknięta w katalogach HITL; weź kolejny z PLAN § Kolejka / leftover pin (nie zgaduj).
+**Następny:** **381.0** EXP4.2 Rail UIC/CIM/SMGS HITL `rail_cim_mark` (kolejka EXP4).
 
-Park: kg · CSRD live filing. Nie zgaduj 71–380.
+Park: IATA live · RA3 scrape. Nie zgaduj 71–381.
 
-**Spec (jedyna na sesję):** (brak — plan 380.0).
+**Spec (jedyna na sesję):** (brak — plan 381.0).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
@@ -22,4 +22,4 @@ Park: kg · CSRD live filing. Nie zgaduj 71–380.
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-12:** Plaster **379.0** zamknięty (`/noc`) — HITL `csrd_mark` (3-way/CAPA skip).
+**2026-09-12:** Plaster **380.0** zamknięty (`/noc`) — HITL `air_ra3_mark`.

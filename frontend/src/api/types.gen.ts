@@ -93,6 +93,50 @@ export type AeoDossierMarkResponse = {
 };
 
 /**
+ * AirRa3MarkCreate
+ */
+export type AirRa3MarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Air Kind
+     */
+    air_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * AirRa3MarkResponse
+ */
+export type AirRa3MarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Air Kind
+     */
+    air_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * AppUserResponse
  */
 export type AppUserResponse = {
@@ -17780,6 +17824,49 @@ export type CreateAbandonedRtoMarkApiV1AbandonedRtoMarksPostResponses = {
 };
 
 export type CreateAbandonedRtoMarkApiV1AbandonedRtoMarksPostResponse = CreateAbandonedRtoMarkApiV1AbandonedRtoMarksPostResponses[keyof CreateAbandonedRtoMarkApiV1AbandonedRtoMarksPostResponses];
+
+export type ListAirRa3MarksApiV1AirRa3MarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/air-ra3-marks';
+};
+
+export type ListAirRa3MarksApiV1AirRa3MarksGetResponses = {
+    /**
+     * Response List Air Ra3 Marks Api V1 Air Ra3 Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<AirRa3MarkResponse>;
+};
+
+export type ListAirRa3MarksApiV1AirRa3MarksGetResponse = ListAirRa3MarksApiV1AirRa3MarksGetResponses[keyof ListAirRa3MarksApiV1AirRa3MarksGetResponses];
+
+export type CreateAirRa3MarkApiV1AirRa3MarksPostData = {
+    body: AirRa3MarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/air-ra3-marks';
+};
+
+export type CreateAirRa3MarkApiV1AirRa3MarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateAirRa3MarkApiV1AirRa3MarksPostError = CreateAirRa3MarkApiV1AirRa3MarksPostErrors[keyof CreateAirRa3MarkApiV1AirRa3MarksPostErrors];
+
+export type CreateAirRa3MarkApiV1AirRa3MarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: AirRa3MarkResponse;
+};
+
+export type CreateAirRa3MarkApiV1AirRa3MarksPostResponse = CreateAirRa3MarkApiV1AirRa3MarksPostResponses[keyof CreateAirRa3MarkApiV1AirRa3MarksPostResponses];
 
 export type ListAeoDossierMarksApiV1AeoDossierMarksGetData = {
     body?: never;

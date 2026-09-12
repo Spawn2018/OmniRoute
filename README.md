@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **379.0** EXP3.14 HITL `csrd_mark`
-- **Etap:** Plan — **380.0**
-- **Następny:** **380.0** — po CSRD fala EXP3 domknięta w katalogach HITL; weź kolejny z PLAN § Kolejka / leftover pin (nie zgaduj).
+- **Ostatni plaster:** **380.0** EXP4.1 HITL `air_ra3_mark`
+- **Etap:** Plan — **381.0** EXP4.2
+- **Następny:** **381.0** EXP4.2 Rail UIC/CIM/SMGS HITL `rail_cim_mark` (kolejka EXP4).
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

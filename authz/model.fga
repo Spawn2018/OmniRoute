@@ -148,6 +148,7 @@ type organization
     define can_manage_tender_decline_reasons: member
     define can_manage_demand_snapshot_marks: member
     define can_manage_csrd_marks: member
+    define can_manage_air_ra3_marks: member
     define can_manage_freight_audit_marks: member
     define can_manage_collaboration_marks: member
     define can_manage_routing_guide_enforcements: member

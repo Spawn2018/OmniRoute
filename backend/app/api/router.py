@@ -3,6 +3,7 @@ from fastapi import APIRouter
 from app.api import (
     abandoned_rto_marks,
     aeo_dossier_marks,
+    air_ra3_marks,
     asns,
     bank_payments,
     billing_marks,
@@ -314,6 +315,7 @@ api_router.include_router(visibility_connectors.router)
 api_router.include_router(purchase_orders.router)
 api_router.include_router(po_lines.router)
 api_router.include_router(abandoned_rto_marks.router)
+api_router.include_router(air_ra3_marks.router)
 api_router.include_router(aeo_dossier_marks.router)
 api_router.include_router(yard_marks.router)
 api_router.include_router(billing_marks.router)

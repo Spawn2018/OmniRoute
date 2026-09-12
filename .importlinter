@@ -174,6 +174,7 @@ modules =
     app.services.tender_decline_reasons
     app.services.demand_snapshot_marks
     app.services.csrd_marks
+    app.services.air_ra3_marks
     app.services.freight_audit_marks
     app.services.collaboration_marks
     app.services.exchange_connectors
@@ -782,6 +783,9 @@ forbidden_modules =
     app.services.csrd_marks
     app.repositories.csrd_marks
     app.models.csrd_mark
+    app.services.air_ra3_marks
+    app.repositories.air_ra3_marks
+    app.models.air_ra3_mark
     app.services.freight_audit_marks
     app.repositories.freight_audit_marks
     app.models.freight_audit_mark
