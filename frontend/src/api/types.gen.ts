@@ -3561,6 +3561,50 @@ export type DocumentTemplateResponse = {
 };
 
 /**
+ * DualLedgerMarkCreate
+ */
+export type DualLedgerMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Ledger Kind
+     */
+    ledger_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * DualLedgerMarkResponse
+ */
+export type DualLedgerMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Ledger Kind
+     */
+    ledger_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * ECmrMarkCreate
  */
 export type ECmrMarkCreate = {
@@ -17195,6 +17239,49 @@ export type CreateDocumentTemplateApiV1DocumentTemplatesPostResponses = {
 };
 
 export type CreateDocumentTemplateApiV1DocumentTemplatesPostResponse = CreateDocumentTemplateApiV1DocumentTemplatesPostResponses[keyof CreateDocumentTemplateApiV1DocumentTemplatesPostResponses];
+
+export type ListDualLedgerMarksApiV1DualLedgerMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/dual-ledger-marks';
+};
+
+export type ListDualLedgerMarksApiV1DualLedgerMarksGetResponses = {
+    /**
+     * Response List Dual Ledger Marks Api V1 Dual Ledger Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<DualLedgerMarkResponse>;
+};
+
+export type ListDualLedgerMarksApiV1DualLedgerMarksGetResponse = ListDualLedgerMarksApiV1DualLedgerMarksGetResponses[keyof ListDualLedgerMarksApiV1DualLedgerMarksGetResponses];
+
+export type CreateDualLedgerMarkApiV1DualLedgerMarksPostData = {
+    body: DualLedgerMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/dual-ledger-marks';
+};
+
+export type CreateDualLedgerMarkApiV1DualLedgerMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateDualLedgerMarkApiV1DualLedgerMarksPostError = CreateDualLedgerMarkApiV1DualLedgerMarksPostErrors[keyof CreateDualLedgerMarkApiV1DualLedgerMarksPostErrors];
+
+export type CreateDualLedgerMarkApiV1DualLedgerMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: DualLedgerMarkResponse;
+};
+
+export type CreateDualLedgerMarkApiV1DualLedgerMarksPostResponse = CreateDualLedgerMarkApiV1DualLedgerMarksPostResponses[keyof CreateDualLedgerMarkApiV1DualLedgerMarksPostResponses];
 
 export type ListRateCardsApiV1RateCardsGetData = {
     body?: never;

@@ -155,6 +155,10 @@ export const BUSINESS_LISTS = {
     route: "/un-segregation-marks",
     tableKey: "un_segregation_mark",
   },
+  dualLedgerMark: {
+    route: "/dual-ledger-marks",
+    tableKey: "dual_ledger_mark",
+  },
   impersonateGuardMark: {
     route: "/impersonate-guard-marks",
     tableKey: "impersonate_guard_mark",

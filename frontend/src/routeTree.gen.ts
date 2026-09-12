@@ -62,6 +62,7 @@ import { Route as DemoSimMarksRouteImport } from './routes/demo-sim-marks'
 import { Route as DemoWipeMarksRouteImport } from './routes/demo-wipe-marks'
 import { Route as DockAppointmentsRouteImport } from './routes/dock-appointments'
 import { Route as DocumentTemplatesRouteImport } from './routes/document-templates'
+import { Route as DualLedgerMarksRouteImport } from './routes/dual-ledger-marks'
 import { Route as ECmrMarksRouteImport } from './routes/e-cmr-marks'
 import { Route as EDeliveryMarksRouteImport } from './routes/e-delivery-marks'
 import { Route as EDoreczeniaMarksRouteImport } from './routes/e-doreczenia-marks'
@@ -499,6 +500,11 @@ const DockAppointmentsRoute = DockAppointmentsRouteImport.update({
 const DocumentTemplatesRoute = DocumentTemplatesRouteImport.update({
   id: '/document-templates',
   path: '/document-templates',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DualLedgerMarksRoute = DualLedgerMarksRouteImport.update({
+  id: '/dual-ledger-marks',
+  path: '/dual-ledger-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ECmrMarksRoute = ECmrMarksRouteImport.update({
@@ -1422,6 +1428,7 @@ export interface FileRoutesByFullPath {
   '/demo-wipe-marks': typeof DemoWipeMarksRoute
   '/dock-appointments': typeof DockAppointmentsRoute
   '/document-templates': typeof DocumentTemplatesRoute
+  '/dual-ledger-marks': typeof DualLedgerMarksRoute
   '/e-cmr-marks': typeof ECmrMarksRoute
   '/e-delivery-marks': typeof EDeliveryMarksRoute
   '/e-doreczenia-marks': typeof EDoreczeniaMarksRoute
@@ -1650,6 +1657,7 @@ export interface FileRoutesByTo {
   '/demo-wipe-marks': typeof DemoWipeMarksRoute
   '/dock-appointments': typeof DockAppointmentsRoute
   '/document-templates': typeof DocumentTemplatesRoute
+  '/dual-ledger-marks': typeof DualLedgerMarksRoute
   '/e-cmr-marks': typeof ECmrMarksRoute
   '/e-delivery-marks': typeof EDeliveryMarksRoute
   '/e-doreczenia-marks': typeof EDoreczeniaMarksRoute
@@ -1879,6 +1887,7 @@ export interface FileRoutesById {
   '/demo-wipe-marks': typeof DemoWipeMarksRoute
   '/dock-appointments': typeof DockAppointmentsRoute
   '/document-templates': typeof DocumentTemplatesRoute
+  '/dual-ledger-marks': typeof DualLedgerMarksRoute
   '/e-cmr-marks': typeof ECmrMarksRoute
   '/e-delivery-marks': typeof EDeliveryMarksRoute
   '/e-doreczenia-marks': typeof EDoreczeniaMarksRoute
@@ -2109,6 +2118,7 @@ export interface FileRouteTypes {
     | '/demo-wipe-marks'
     | '/dock-appointments'
     | '/document-templates'
+    | '/dual-ledger-marks'
     | '/e-cmr-marks'
     | '/e-delivery-marks'
     | '/e-doreczenia-marks'
@@ -2337,6 +2347,7 @@ export interface FileRouteTypes {
     | '/demo-wipe-marks'
     | '/dock-appointments'
     | '/document-templates'
+    | '/dual-ledger-marks'
     | '/e-cmr-marks'
     | '/e-delivery-marks'
     | '/e-doreczenia-marks'
@@ -2565,6 +2576,7 @@ export interface FileRouteTypes {
     | '/demo-wipe-marks'
     | '/dock-appointments'
     | '/document-templates'
+    | '/dual-ledger-marks'
     | '/e-cmr-marks'
     | '/e-delivery-marks'
     | '/e-doreczenia-marks'
@@ -2794,6 +2806,7 @@ export interface RootRouteChildren {
   DemoWipeMarksRoute: typeof DemoWipeMarksRoute
   DockAppointmentsRoute: typeof DockAppointmentsRoute
   DocumentTemplatesRoute: typeof DocumentTemplatesRoute
+  DualLedgerMarksRoute: typeof DualLedgerMarksRoute
   ECmrMarksRoute: typeof ECmrMarksRoute
   EDeliveryMarksRoute: typeof EDeliveryMarksRoute
   EDoreczeniaMarksRoute: typeof EDoreczeniaMarksRoute
@@ -3340,6 +3353,13 @@ declare module '@tanstack/react-router' {
       path: '/document-templates'
       fullPath: '/document-templates'
       preLoaderRoute: typeof DocumentTemplatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dual-ledger-marks': {
+      id: '/dual-ledger-marks'
+      path: '/dual-ledger-marks'
+      fullPath: '/dual-ledger-marks'
+      preLoaderRoute: typeof DualLedgerMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/e-cmr-marks': {
@@ -4610,6 +4630,7 @@ const rootRouteChildren: RootRouteChildren = {
   DemoWipeMarksRoute: DemoWipeMarksRoute,
   DockAppointmentsRoute: DockAppointmentsRoute,
   DocumentTemplatesRoute: DocumentTemplatesRoute,
+  DualLedgerMarksRoute: DualLedgerMarksRoute,
   ECmrMarksRoute: ECmrMarksRoute,
   EDeliveryMarksRoute: EDeliveryMarksRoute,
   EDoreczeniaMarksRoute: EDoreczeniaMarksRoute,

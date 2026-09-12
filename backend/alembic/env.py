@@ -180,6 +180,7 @@ from app.models.demand_snapshot_mark import DemandSnapshotMark  # noqa: F401
 from app.models.demo_gps_mark import DemoGpsMark  # noqa: F401
 from app.models.demo_sim_mark import DemoSimMark  # noqa: F401
 from app.models.demo_wipe_mark import DemoWipeMark  # noqa: F401
+from app.models.dual_ledger_mark import DualLedgerMark  # noqa: F401
 from app.models.po_plant_mark import PoPlantMark  # noqa: F401
 from app.models.po_sku_mark import PoSkuMark  # noqa: F401
 from app.models.po_batch_mark import PoBatchMark  # noqa: F401

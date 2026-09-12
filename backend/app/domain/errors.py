@@ -994,6 +994,10 @@ class InvalidUnSegregationMark(DomainError):
     """EXP0.9: HITL un_segregation_mark — nie solver OR / LLM-VRP / kwota."""
 
 
+class InvalidDualLedgerMark(DomainError):
+    """EXP0.10: HITL dual_ledger_mark — nie druga marża / SQL na charge / kwota."""
+
+
 class InvalidImpersonateGuardMark(DomainError):
     """EXP0.12: HITL impersonate≠unwrap — nie crypto / Auth0 live."""
 
