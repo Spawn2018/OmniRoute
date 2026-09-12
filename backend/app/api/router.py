@@ -131,6 +131,7 @@ from app.api import (
     po_lines,
     port_surcharges,
     ports,
+    posting_marks,
     prediction_ledgers,
     purchase_orders,
     quotations,
@@ -233,6 +234,7 @@ api_router.include_router(outbox_events.router)
 api_router.include_router(empty_depot_marks.router)
 api_router.include_router(nvocc_marks.router)
 api_router.include_router(multi_manning_marks.router)
+api_router.include_router(posting_marks.router)
 api_router.include_router(entity_events.router)
 api_router.include_router(nbp_rates.router)
 api_router.include_router(charges.router)

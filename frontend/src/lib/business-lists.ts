@@ -143,6 +143,7 @@ export const BUSINESS_LISTS = {
   emptyDepotMark: { route: "/empty-depot-marks", tableKey: "empty_depot_mark" },
   nvoccMark: { route: "/nvocc-marks", tableKey: "nvocc_mark" },
   multiManningMark: { route: "/multi-manning-marks", tableKey: "multi_manning_mark" },
+  postingMark: { route: "/posting-marks", tableKey: "posting_mark" },
   remediationOption: {
     route: "/remediation-options",
     tableKey: "remediation_option",
@@ -347,6 +348,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/empty-depot-marks",
   "/nvocc-marks",
   "/multi-manning-marks",
+  "/posting-marks",
   "/remediation-options",
   "/impact-scenarios",
   "/clause-notices",

@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **387.0** EXP4.9 Posting HITL `posting_mark` (kolejka EXP4).
+**Następny:** **388.0** EXP4.10 Tacho Office HITL `tacho_office_mark` (kolejka EXP4).
 <!-- os-status:end -->
 
 ```mermaid

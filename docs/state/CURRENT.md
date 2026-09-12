@@ -4,17 +4,17 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **386.0** EXP4.8 HITL `multi_manning_mark`
+**Ostatni plaster:** **387.0** EXP4.9 HITL `posting_mark`
 
-**Etap:** Plan — **387.0** EXP4.9
+**Etap:** Plan — **388.0** EXP4.10
 
 **Noc:** `/noc 10` do 2026-09-12T10:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).
 
-**Następny:** **387.0** EXP4.9 Posting HITL `posting_mark` (kolejka EXP4).
+**Następny:** **388.0** EXP4.10 Tacho Office HITL `tacho_office_mark` (kolejka EXP4).
 
-Park: tacho live API · driver scrape. Nie zgaduj 71–387.
+Park: posting live API · tacho DDD. Nie zgaduj 71–388.
 
-**Spec (jedyna na sesję):** (brak — plan 387.0).
+**Spec (jedyna na sesję):** (brak — plan 388.0).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
@@ -22,4 +22,4 @@ Park: tacho live API · driver scrape. Nie zgaduj 71–387.
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-12:** Plaster **386.0** zamknięty (`/noc`) — HITL `multi_manning_mark`.
+**2026-09-12:** Plaster **387.0** zamknięty (`/noc`) — HITL `posting_mark`.

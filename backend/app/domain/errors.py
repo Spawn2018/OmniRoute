@@ -1038,6 +1038,10 @@ class InvalidMultiManningMark(DomainError):
     """EXP4.8: HITL multi-manning — nie tacho live / driver2 SQL."""
 
 
+class InvalidPostingMark(DomainError):
+    """EXP4.9: HITL posting — nie posting live / tacho DDD."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

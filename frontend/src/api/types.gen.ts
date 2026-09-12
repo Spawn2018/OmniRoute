@@ -7757,6 +7757,50 @@ export type PortSurchargeResponse = {
 };
 
 /**
+ * PostingMarkCreate
+ */
+export type PostingMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Posting Kind
+     */
+    posting_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * PostingMarkResponse
+ */
+export type PostingMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Posting Kind
+     */
+    posting_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * PredictionLedgerCreate
  */
 export type PredictionLedgerCreate = {
@@ -13907,6 +13951,49 @@ export type CreateMultiManningMarkApiV1MultiManningMarksPostResponses = {
 };
 
 export type CreateMultiManningMarkApiV1MultiManningMarksPostResponse = CreateMultiManningMarkApiV1MultiManningMarksPostResponses[keyof CreateMultiManningMarkApiV1MultiManningMarksPostResponses];
+
+export type ListPostingMarksApiV1PostingMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/posting-marks';
+};
+
+export type ListPostingMarksApiV1PostingMarksGetResponses = {
+    /**
+     * Response List Posting Marks Api V1 Posting Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<PostingMarkResponse>;
+};
+
+export type ListPostingMarksApiV1PostingMarksGetResponse = ListPostingMarksApiV1PostingMarksGetResponses[keyof ListPostingMarksApiV1PostingMarksGetResponses];
+
+export type CreatePostingMarkApiV1PostingMarksPostData = {
+    body: PostingMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/posting-marks';
+};
+
+export type CreatePostingMarkApiV1PostingMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreatePostingMarkApiV1PostingMarksPostError = CreatePostingMarkApiV1PostingMarksPostErrors[keyof CreatePostingMarkApiV1PostingMarksPostErrors];
+
+export type CreatePostingMarkApiV1PostingMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: PostingMarkResponse;
+};
+
+export type CreatePostingMarkApiV1PostingMarksPostResponse = CreatePostingMarkApiV1PostingMarksPostResponses[keyof CreatePostingMarkApiV1PostingMarksPostResponses];
 
 export type ListEntityEventsApiV1EntityEventsGetData = {
     body?: never;
