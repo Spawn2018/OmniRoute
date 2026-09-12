@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **413.0** EXP3.0b HITL `po_plant_mark`
 
-**Etap:** Plan — **414.0** EXP3.0c
+**Etap:** Plaster — **414.0** EXP3.0c (delta zaakceptowana `/noc`, wolno `/plaster`)
 
-**Noc:** `/noc 17` do 2026-09-12T17:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).
+**Noc:** `/noc 10` do 2026-09-13T10:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).
 
 **Następny:** **414.0** EXP3.0c HITL `po_sku_mark` (PO SKU line; bez live EDI) — kolejka po cutoff.
 
 Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj 71–414.
 
-**Spec (jedyna na sesję):** (brak — plan 414.0 po nocnej zmianie).
+**Spec (jedyna na sesję):** [docs/deltas/open/414.0-po-sku-mark.md](../deltas/open/414.0-po-sku-mark.md)
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
@@ -23,3 +23,4 @@ Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj 71–4
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
 **2026-09-12:** Plaster **413.0** zamknięty (`/noc`) — HITL `po_plant_mark`.
+**2026-09-12:** Delta **414.0** zaakceptowana (`/noc`) — wolno `/plaster`.
