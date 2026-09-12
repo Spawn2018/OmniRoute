@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **395.0** EXP4.17 HITL `role_view_mark`
-- **Etap:** Plan — **396.0** EXP4.18
+- **Etap:** Plaster — **396.0** EXP4.18 (delta zaakceptowana `/noc`, wolno `/plaster`)
 - **Następny:** **396.0** EXP4.18 RAG tylko SOP HITL `rag_sop_mark` (kolejka EXP4).
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 
