@@ -103,6 +103,7 @@ from app.api import (
     nbp_rates,
     ncts_drafts,
     networks,
+    ocean_alliance_marks,
     ocean_bills,
     offboarding_marks,
     oog_marks,
@@ -247,6 +248,7 @@ api_router.include_router(operational_exceptions.router)
 api_router.include_router(cargo_claims.router)
 api_router.include_router(cargo_cover_marks.router)
 api_router.include_router(cod_instructions.router)
+api_router.include_router(ocean_alliance_marks.router)
 api_router.include_router(ocean_bills.router)
 api_router.include_router(oog_marks.router)
 api_router.include_router(consignments.router)

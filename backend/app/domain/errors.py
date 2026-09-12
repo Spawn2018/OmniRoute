@@ -1018,6 +1018,10 @@ class InvalidRailCimMark(DomainError):
     """EXP4.2: HITL rail UIC/CIM/SMGS — nie rail live filing / CIM scrape."""
 
 
+class InvalidOceanAllianceMark(DomainError):
+    """EXP4.3: HITL ocean alliance/feeder — nie ocean live API / alliance scrape."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

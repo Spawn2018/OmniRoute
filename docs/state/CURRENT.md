@@ -4,17 +4,17 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **381.0** EXP4.2 HITL `rail_cim_mark`
+**Ostatni plaster:** **382.0** EXP4.3 HITL `ocean_alliance_mark`
 
-**Etap:** Plan — **382.0** EXP4.3
+**Etap:** Plan — **383.0** EXP4.4
 
 **Noc:** `/noc 10` do 2026-09-12T10:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).
 
-**Następny:** **382.0** EXP4.3 Ocean alliance/feeder HITL `ocean_alliance_mark` (kolejka EXP4).
+**Następny:** **383.0** EXP4.4 ICS2 filer HITL `ics2_filer_mark` (kolejka EXP4; filing_scheme_mark istnieje — sprawdź dup).
 
-Park: rail live filing · CIM scrape. Nie zgaduj 71–382.
+Park: ocean live API · alliance scrape. Nie zgaduj 71–383.
 
-**Spec (jedyna na sesję):** (brak — plan 382.0).
+**Spec (jedyna na sesję):** (brak — plan 383.0).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
@@ -22,4 +22,4 @@ Park: rail live filing · CIM scrape. Nie zgaduj 71–382.
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-12:** Plaster **381.0** zamknięty (`/noc`) — HITL `rail_cim_mark`.
+**2026-09-12:** Plaster **382.0** zamknięty (`/noc`) — HITL `ocean_alliance_mark`.

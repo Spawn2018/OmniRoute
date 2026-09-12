@@ -200,6 +200,7 @@ def _organization_exp2_catalog_relations() -> dict[str, Userset]:
         "can_manage_csrd_marks": _member(),
         "can_manage_air_ra3_marks": _member(),
         "can_manage_rail_cim_marks": _member(),
+        "can_manage_ocean_alliance_marks": _member(),
     }
 
 

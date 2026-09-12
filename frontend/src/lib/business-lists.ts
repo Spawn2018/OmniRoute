@@ -138,6 +138,7 @@ export const BUSINESS_LISTS = {
   csrdMark: { route: "/csrd-marks", tableKey: "csrd_mark" },
   airRa3Mark: { route: "/air-ra3-marks", tableKey: "air_ra3_mark" },
   railCimMark: { route: "/rail-cim-marks", tableKey: "rail_cim_mark" },
+  oceanAllianceMark: { route: "/ocean-alliance-marks", tableKey: "ocean_alliance_mark" },
   remediationOption: {
     route: "/remediation-options",
     tableKey: "remediation_option",
@@ -337,6 +338,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/csrd-marks",
   "/air-ra3-marks",
   "/rail-cim-marks",
+  "/ocean-alliance-marks",
   "/remediation-options",
   "/impact-scenarios",
   "/clause-notices",

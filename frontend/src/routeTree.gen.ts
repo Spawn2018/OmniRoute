@@ -112,6 +112,7 @@ import { Route as NbpRatesRouteImport } from './routes/nbp-rates'
 import { Route as NctsDraftsRouteImport } from './routes/ncts-drafts'
 import { Route as NetworksRouteImport } from './routes/networks'
 import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as OceanAllianceMarksRouteImport } from './routes/ocean-alliance-marks'
 import { Route as OceanBillsRouteImport } from './routes/ocean-bills'
 import { Route as OffboardingMarksRouteImport } from './routes/offboarding-marks'
 import { Route as OogMarksRouteImport } from './routes/oog-marks'
@@ -717,6 +718,11 @@ const NotificationsRoute = NotificationsRouteImport.update({
   path: '/notifications',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OceanAllianceMarksRoute = OceanAllianceMarksRouteImport.update({
+  id: '/ocean-alliance-marks',
+  path: '/ocean-alliance-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OceanBillsRoute = OceanBillsRouteImport.update({
   id: '/ocean-bills',
   path: '/ocean-bills',
@@ -1268,6 +1274,7 @@ export interface FileRoutesByFullPath {
   '/ncts-drafts': typeof NctsDraftsRoute
   '/networks': typeof NetworksRoute
   '/notifications': typeof NotificationsRoute
+  '/ocean-alliance-marks': typeof OceanAllianceMarksRoute
   '/ocean-bills': typeof OceanBillsRoute
   '/offboarding-marks': typeof OffboardingMarksRoute
   '/oog-marks': typeof OogMarksRoute
@@ -1462,6 +1469,7 @@ export interface FileRoutesByTo {
   '/ncts-drafts': typeof NctsDraftsRoute
   '/networks': typeof NetworksRoute
   '/notifications': typeof NotificationsRoute
+  '/ocean-alliance-marks': typeof OceanAllianceMarksRoute
   '/ocean-bills': typeof OceanBillsRoute
   '/offboarding-marks': typeof OffboardingMarksRoute
   '/oog-marks': typeof OogMarksRoute
@@ -1657,6 +1665,7 @@ export interface FileRoutesById {
   '/ncts-drafts': typeof NctsDraftsRoute
   '/networks': typeof NetworksRoute
   '/notifications': typeof NotificationsRoute
+  '/ocean-alliance-marks': typeof OceanAllianceMarksRoute
   '/ocean-bills': typeof OceanBillsRoute
   '/offboarding-marks': typeof OffboardingMarksRoute
   '/oog-marks': typeof OogMarksRoute
@@ -1853,6 +1862,7 @@ export interface FileRouteTypes {
     | '/ncts-drafts'
     | '/networks'
     | '/notifications'
+    | '/ocean-alliance-marks'
     | '/ocean-bills'
     | '/offboarding-marks'
     | '/oog-marks'
@@ -2047,6 +2057,7 @@ export interface FileRouteTypes {
     | '/ncts-drafts'
     | '/networks'
     | '/notifications'
+    | '/ocean-alliance-marks'
     | '/ocean-bills'
     | '/offboarding-marks'
     | '/oog-marks'
@@ -2241,6 +2252,7 @@ export interface FileRouteTypes {
     | '/ncts-drafts'
     | '/networks'
     | '/notifications'
+    | '/ocean-alliance-marks'
     | '/ocean-bills'
     | '/offboarding-marks'
     | '/oog-marks'
@@ -2436,6 +2448,7 @@ export interface RootRouteChildren {
   NctsDraftsRoute: typeof NctsDraftsRoute
   NetworksRoute: typeof NetworksRoute
   NotificationsRoute: typeof NotificationsRoute
+  OceanAllianceMarksRoute: typeof OceanAllianceMarksRoute
   OceanBillsRoute: typeof OceanBillsRoute
   OffboardingMarksRoute: typeof OffboardingMarksRoute
   OogMarksRoute: typeof OogMarksRoute
@@ -3251,6 +3264,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NotificationsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ocean-alliance-marks': {
+      id: '/ocean-alliance-marks'
+      path: '/ocean-alliance-marks'
+      fullPath: '/ocean-alliance-marks'
+      preLoaderRoute: typeof OceanAllianceMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/ocean-bills': {
       id: '/ocean-bills'
       path: '/ocean-bills'
@@ -3981,6 +4001,7 @@ const rootRouteChildren: RootRouteChildren = {
   NctsDraftsRoute: NctsDraftsRoute,
   NetworksRoute: NetworksRoute,
   NotificationsRoute: NotificationsRoute,
+  OceanAllianceMarksRoute: OceanAllianceMarksRoute,
   OceanBillsRoute: OceanBillsRoute,
   OffboardingMarksRoute: OffboardingMarksRoute,
   OogMarksRoute: OogMarksRoute,

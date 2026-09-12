@@ -5484,6 +5484,80 @@
         ]
       }
     },
+    "/api/v1/ocean-alliance-marks": {
+      "get": {
+        "tags": [
+          "ocean-alliance"
+        ],
+        "summary": "List Ocean Alliance Marks",
+        "operationId": "list_ocean_alliance_marks_api_v1_ocean_alliance_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/OceanAllianceMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Ocean Alliance Marks Api V1 Ocean Alliance Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "ocean-alliance"
+        ],
+        "summary": "Create Ocean Alliance Mark",
+        "operationId": "create_ocean_alliance_mark_api_v1_ocean_alliance_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OceanAllianceMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OceanAllianceMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/ocean-bills": {
       "get": {
         "tags": [
@@ -28086,6 +28160,71 @@
           "source_ref"
         ],
         "title": "NetworkResponse"
+      },
+      "OceanAllianceMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "ocean_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Ocean Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "ocean_kind",
+          "source_ref"
+        ],
+        "title": "OceanAllianceMarkCreate"
+      },
+      "OceanAllianceMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "ocean_kind": {
+            "type": "string",
+            "title": "Ocean Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "ocean_kind",
+          "source_ref"
+        ],
+        "title": "OceanAllianceMarkResponse"
       },
       "OceanBillCreate": {
         "properties": {

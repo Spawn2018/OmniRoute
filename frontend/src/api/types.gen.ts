@@ -6229,6 +6229,50 @@ export type NetworkResponse = {
 };
 
 /**
+ * OceanAllianceMarkCreate
+ */
+export type OceanAllianceMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Ocean Kind
+     */
+    ocean_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * OceanAllianceMarkResponse
+ */
+export type OceanAllianceMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Ocean Kind
+     */
+    ocean_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * OceanBillCreate
  */
 export type OceanBillCreate = {
@@ -14839,6 +14883,49 @@ export type CreateCodInstructionApiV1CodInstructionsPostResponses = {
 };
 
 export type CreateCodInstructionApiV1CodInstructionsPostResponse = CreateCodInstructionApiV1CodInstructionsPostResponses[keyof CreateCodInstructionApiV1CodInstructionsPostResponses];
+
+export type ListOceanAllianceMarksApiV1OceanAllianceMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/ocean-alliance-marks';
+};
+
+export type ListOceanAllianceMarksApiV1OceanAllianceMarksGetResponses = {
+    /**
+     * Response List Ocean Alliance Marks Api V1 Ocean Alliance Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<OceanAllianceMarkResponse>;
+};
+
+export type ListOceanAllianceMarksApiV1OceanAllianceMarksGetResponse = ListOceanAllianceMarksApiV1OceanAllianceMarksGetResponses[keyof ListOceanAllianceMarksApiV1OceanAllianceMarksGetResponses];
+
+export type CreateOceanAllianceMarkApiV1OceanAllianceMarksPostData = {
+    body: OceanAllianceMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/ocean-alliance-marks';
+};
+
+export type CreateOceanAllianceMarkApiV1OceanAllianceMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateOceanAllianceMarkApiV1OceanAllianceMarksPostError = CreateOceanAllianceMarkApiV1OceanAllianceMarksPostErrors[keyof CreateOceanAllianceMarkApiV1OceanAllianceMarksPostErrors];
+
+export type CreateOceanAllianceMarkApiV1OceanAllianceMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: OceanAllianceMarkResponse;
+};
+
+export type CreateOceanAllianceMarkApiV1OceanAllianceMarksPostResponse = CreateOceanAllianceMarkApiV1OceanAllianceMarksPostResponses[keyof CreateOceanAllianceMarkApiV1OceanAllianceMarksPostResponses];
 
 export type ListOceanBillsApiV1OceanBillsGetData = {
     body?: never;
