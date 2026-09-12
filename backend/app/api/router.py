@@ -76,6 +76,7 @@ from app.api import (
     free_time_clocks,
     freight_audit_marks,
     fuel_anomaly_marks,
+    fuel_card_marks,
     fuel_indexes,
     funnel_marks,
     fx_differences,
@@ -415,6 +416,7 @@ api_router.include_router(cabotage_marks.router)
 api_router.include_router(combined_transport_marks.router)
 api_router.include_router(ferry_art9_marks.router)
 api_router.include_router(fuel_anomaly_marks.router)
+api_router.include_router(fuel_card_marks.router)
 api_router.include_router(fleet_cost_marks.router)
 api_router.include_router(bin_pack_marks.router)
 api_router.include_router(pallet_pool_marks.router)

@@ -150,6 +150,7 @@ type organization
     define can_manage_demand_snapshot_marks: member
     define can_manage_demo_gps_marks: member
     define can_manage_impersonate_guard_marks: member
+    define can_manage_fuel_card_marks: member
 
     define can_manage_csrd_marks: member
     define can_manage_air_ra3_marks: member

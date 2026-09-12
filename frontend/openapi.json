@@ -18294,6 +18294,80 @@
         ]
       }
     },
+    "/api/v1/fuel-card-marks": {
+      "get": {
+        "tags": [
+          "fuel-card-mark"
+        ],
+        "summary": "List Fuel Card Marks",
+        "operationId": "list_fuel_card_marks_api_v1_fuel_card_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/FuelCardMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Fuel Card Marks Api V1 Fuel Card Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "fuel-card-mark"
+        ],
+        "summary": "Create Fuel Card Mark",
+        "operationId": "create_fuel_card_mark_api_v1_fuel_card_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FuelCardMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FuelCardMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/fleet-cost-marks": {
       "get": {
         "tags": [
@@ -27013,6 +27087,71 @@
           "source_ref"
         ],
         "title": "FuelAnomalyMarkResponse"
+      },
+      "FuelCardMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "card_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Card Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "card_kind",
+          "source_ref"
+        ],
+        "title": "FuelCardMarkCreate"
+      },
+      "FuelCardMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "card_kind": {
+            "type": "string",
+            "title": "Card Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "card_kind",
+          "source_ref"
+        ],
+        "title": "FuelCardMarkResponse"
       },
       "FuelIndexCreate": {
         "properties": {

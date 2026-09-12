@@ -147,6 +147,7 @@ modules =
     app.services.combined_transport_marks
     app.services.ferry_art9_marks
     app.services.fuel_anomaly_marks
+    app.services.fuel_card_marks
     app.services.fleet_cost_marks
     app.services.bin_pack_marks
     app.services.pallet_pool_marks
@@ -647,6 +648,9 @@ forbidden_modules =
     app.services.fuel_anomaly_marks
     app.repositories.fuel_anomaly_marks
     app.models.fuel_anomaly_mark
+    app.services.fuel_card_marks
+    app.repositories.fuel_card_marks
+    app.models.fuel_card_mark
     app.services.fleet_cost_marks
     app.repositories.fleet_cost_marks
     app.models.fleet_cost_mark

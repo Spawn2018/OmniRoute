@@ -970,6 +970,10 @@ class InvalidImpersonateGuardMark(DomainError):
     """EXP0.12: HITL impersonate≠unwrap — nie crypto / Auth0 live."""
 
 
+class InvalidFuelCardMark(DomainError):
+    """EXP2.14: HITL fuel card — nie live fuel / litry / anomaly SQL."""
+
+
 class InvalidVdaOdetteMark(DomainError):
     """EXP3.2: HITL VDA/Odette — nie live EDI VDA / ZPL."""
 

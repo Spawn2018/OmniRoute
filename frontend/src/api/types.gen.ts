@@ -4483,6 +4483,50 @@ export type FuelAnomalyMarkResponse = {
 };
 
 /**
+ * FuelCardMarkCreate
+ */
+export type FuelCardMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Card Kind
+     */
+    card_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * FuelCardMarkResponse
+ */
+export type FuelCardMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Card Kind
+     */
+    card_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * FuelIndexCreate
  */
 export type FuelIndexCreate = {
@@ -23173,6 +23217,49 @@ export type CreateFuelAnomalyMarkApiV1FuelAnomalyMarksPostResponses = {
 };
 
 export type CreateFuelAnomalyMarkApiV1FuelAnomalyMarksPostResponse = CreateFuelAnomalyMarkApiV1FuelAnomalyMarksPostResponses[keyof CreateFuelAnomalyMarkApiV1FuelAnomalyMarksPostResponses];
+
+export type ListFuelCardMarksApiV1FuelCardMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/fuel-card-marks';
+};
+
+export type ListFuelCardMarksApiV1FuelCardMarksGetResponses = {
+    /**
+     * Response List Fuel Card Marks Api V1 Fuel Card Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<FuelCardMarkResponse>;
+};
+
+export type ListFuelCardMarksApiV1FuelCardMarksGetResponse = ListFuelCardMarksApiV1FuelCardMarksGetResponses[keyof ListFuelCardMarksApiV1FuelCardMarksGetResponses];
+
+export type CreateFuelCardMarkApiV1FuelCardMarksPostData = {
+    body: FuelCardMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/fuel-card-marks';
+};
+
+export type CreateFuelCardMarkApiV1FuelCardMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateFuelCardMarkApiV1FuelCardMarksPostError = CreateFuelCardMarkApiV1FuelCardMarksPostErrors[keyof CreateFuelCardMarkApiV1FuelCardMarksPostErrors];
+
+export type CreateFuelCardMarkApiV1FuelCardMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: FuelCardMarkResponse;
+};
+
+export type CreateFuelCardMarkApiV1FuelCardMarksPostResponse = CreateFuelCardMarkApiV1FuelCardMarksPostResponses[keyof CreateFuelCardMarkApiV1FuelCardMarksPostResponses];
 
 export type ListFleetCostMarksApiV1FleetCostMarksGetData = {
     body?: never;
