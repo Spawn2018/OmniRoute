@@ -55,6 +55,7 @@ import { Route as DocumentTemplatesRouteImport } from './routes/document-templat
 import { Route as ECmrMarksRouteImport } from './routes/e-cmr-marks'
 import { Route as EDeliveryMarksRouteImport } from './routes/e-delivery-marks'
 import { Route as EdiRouteImport } from './routes/edi'
+import { Route as EccnMarksRouteImport } from './routes/eccn-marks'
 import { Route as EdiMapMarksRouteImport } from './routes/edi-map-marks'
 import { Route as EntityEventsRouteImport } from './routes/entity-events'
 import { Route as ErpConnectorsRouteImport } from './routes/erp-connectors'
@@ -419,6 +420,11 @@ const EDeliveryMarksRoute = EDeliveryMarksRouteImport.update({
 const EdiRoute = EdiRouteImport.update({
   id: '/edi',
   path: '/edi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EccnMarksRoute = EccnMarksRouteImport.update({
+  id: '/eccn-marks',
+  path: '/eccn-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EdiMapMarksRoute = EdiMapMarksRouteImport.update({
@@ -1145,6 +1151,7 @@ export interface FileRoutesByFullPath {
   '/e-cmr-marks': typeof ECmrMarksRoute
   '/e-delivery-marks': typeof EDeliveryMarksRoute
   '/edi': typeof EdiRoute
+  '/eccn-marks': typeof EccnMarksRoute
   '/edi-map-marks': typeof EdiMapMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
@@ -1328,6 +1335,7 @@ export interface FileRoutesByTo {
   '/e-cmr-marks': typeof ECmrMarksRoute
   '/e-delivery-marks': typeof EDeliveryMarksRoute
   '/edi': typeof EdiRoute
+  '/eccn-marks': typeof EccnMarksRoute
   '/edi-map-marks': typeof EdiMapMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
@@ -1512,6 +1520,7 @@ export interface FileRoutesById {
   '/e-cmr-marks': typeof ECmrMarksRoute
   '/e-delivery-marks': typeof EDeliveryMarksRoute
   '/edi': typeof EdiRoute
+  '/eccn-marks': typeof EccnMarksRoute
   '/edi-map-marks': typeof EdiMapMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
@@ -1697,6 +1706,7 @@ export interface FileRouteTypes {
     | '/e-cmr-marks'
     | '/e-delivery-marks'
     | '/edi'
+    | '/eccn-marks'
     | '/edi-map-marks'
     | '/entity-events'
     | '/erp-connectors'
@@ -1880,6 +1890,7 @@ export interface FileRouteTypes {
     | '/e-cmr-marks'
     | '/e-delivery-marks'
     | '/edi'
+    | '/eccn-marks'
     | '/edi-map-marks'
     | '/entity-events'
     | '/erp-connectors'
@@ -2063,6 +2074,7 @@ export interface FileRouteTypes {
     | '/e-cmr-marks'
     | '/e-delivery-marks'
     | '/edi'
+    | '/eccn-marks'
     | '/edi-map-marks'
     | '/entity-events'
     | '/erp-connectors'
@@ -2247,6 +2259,7 @@ export interface RootRouteChildren {
   ECmrMarksRoute: typeof ECmrMarksRoute
   EDeliveryMarksRoute: typeof EDeliveryMarksRoute
   EdiRoute: typeof EdiRoute
+  EccnMarksRoute: typeof EccnMarksRoute
   EdiMapMarksRoute: typeof EdiMapMarksRoute
   EntityEventsRoute: typeof EntityEventsRoute
   ErpConnectorsRoute: typeof ErpConnectorsRoute
@@ -2706,6 +2719,13 @@ declare module '@tanstack/react-router' {
       path: '/edi'
       fullPath: '/edi'
       preLoaderRoute: typeof EdiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/eccn-marks': {
+      id: '/eccn-marks'
+      path: '/eccn-marks'
+      fullPath: '/eccn-marks'
+      preLoaderRoute: typeof EccnMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/edi-map-marks': {
@@ -3704,6 +3724,7 @@ const rootRouteChildren: RootRouteChildren = {
   ECmrMarksRoute: ECmrMarksRoute,
   EDeliveryMarksRoute: EDeliveryMarksRoute,
   EdiRoute: EdiRoute,
+  EccnMarksRoute: EccnMarksRoute,
   EdiMapMarksRoute: EdiMapMarksRoute,
   EntityEventsRoute: EntityEventsRoute,
   ErpConnectorsRoute: ErpConnectorsRoute,

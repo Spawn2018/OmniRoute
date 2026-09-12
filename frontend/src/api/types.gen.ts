@@ -3209,6 +3209,50 @@ export type EDeliveryMarkResponse = {
 };
 
 /**
+ * EccnMarkCreate
+ */
+export type EccnMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Control Kind
+     */
+    control_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * EccnMarkResponse
+ */
+export type EccnMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Control Kind
+     */
+    control_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * EdiMapMarkCreate
  */
 export type EdiMapMarkCreate = {
@@ -21335,6 +21379,49 @@ export type CreateMqcMarkApiV1MqcMarksPostResponses = {
 };
 
 export type CreateMqcMarkApiV1MqcMarksPostResponse = CreateMqcMarkApiV1MqcMarksPostResponses[keyof CreateMqcMarkApiV1MqcMarksPostResponses];
+
+export type ListEccnMarksApiV1EccnMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/eccn-marks';
+};
+
+export type ListEccnMarksApiV1EccnMarksGetResponses = {
+    /**
+     * Response List Eccn Marks Api V1 Eccn Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<EccnMarkResponse>;
+};
+
+export type ListEccnMarksApiV1EccnMarksGetResponse = ListEccnMarksApiV1EccnMarksGetResponses[keyof ListEccnMarksApiV1EccnMarksGetResponses];
+
+export type CreateEccnMarkApiV1EccnMarksPostData = {
+    body: EccnMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/eccn-marks';
+};
+
+export type CreateEccnMarkApiV1EccnMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateEccnMarkApiV1EccnMarksPostError = CreateEccnMarkApiV1EccnMarksPostErrors[keyof CreateEccnMarkApiV1EccnMarksPostErrors];
+
+export type CreateEccnMarkApiV1EccnMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: EccnMarkResponse;
+};
+
+export type CreateEccnMarkApiV1EccnMarksPostResponse = CreateEccnMarkApiV1EccnMarksPostResponses[keyof CreateEccnMarkApiV1EccnMarksPostResponses];
 
 export type HealthHealthGetData = {
     body?: never;

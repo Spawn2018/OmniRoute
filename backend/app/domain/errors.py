@@ -974,6 +974,10 @@ class InvalidMqcMark(DomainError):
     """EXP3.5: HITL MQC — nie MQC SQL / qty float."""
 
 
+class InvalidEccnMark(DomainError):
+    """EXP3.6: HITL ECCN — nie ECCN live / license HTTP."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

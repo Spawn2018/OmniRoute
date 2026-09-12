@@ -17554,6 +17554,80 @@
         ]
       }
     },
+    "/api/v1/eccn-marks": {
+      "get": {
+        "tags": [
+          "eccn-marks"
+        ],
+        "summary": "List Eccn Marks",
+        "operationId": "list_eccn_marks_api_v1_eccn_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/EccnMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Eccn Marks Api V1 Eccn Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "eccn-marks"
+        ],
+        "summary": "Create Eccn Mark",
+        "operationId": "create_eccn_mark_api_v1_eccn_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EccnMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EccnMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/health": {
       "get": {
         "summary": "Health",
@@ -22798,6 +22872,65 @@
           "source_ref"
         ],
         "title": "EDeliveryMarkResponse"
+      },
+      "EccnMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "control_kind": {
+            "type": "string",
+            "title": "Control Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "control_kind",
+          "source_ref"
+        ],
+        "title": "EccnMarkCreate"
+      },
+      "EccnMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "control_kind": {
+            "type": "string",
+            "title": "Control Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "control_kind",
+          "source_ref"
+        ],
+        "title": "EccnMarkResponse"
       },
       "EdiMapMarkCreate": {
         "properties": {

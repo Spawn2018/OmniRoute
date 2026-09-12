@@ -49,6 +49,7 @@ from app.api import (
     document_templates,
     e_cmr_marks,
     e_delivery_marks,
+    eccn_marks,
     edi_map_marks,
     edi_messages,
     entity_events,
@@ -373,6 +374,7 @@ api_router.include_router(vda_odette_marks.router)
 api_router.include_router(inventory_position_marks.router)
 api_router.include_router(fair_share_marks.router)
 api_router.include_router(mqc_marks.router)
+api_router.include_router(eccn_marks.router)
 
 
 @api_router.api_route(
