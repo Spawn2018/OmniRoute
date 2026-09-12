@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **410.0** EXP3.3c HITL `three_way_mark`. **Etap:** Plan — **411.0** Demo-1. **Następny:** **411.0** Demo-1 HITL `demo_wipe_mark` (wipe `USUN`; bez live wipe). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **410.0** EXP3.3c HITL `three_way_mark`. **Etap:** Plaster — **411.0** Demo-1. **Następny:** **411.0** Demo-1 HITL `demo_wipe_mark` (wipe `USUN`; bez live wipe). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
