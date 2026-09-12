@@ -16518,6 +16518,80 @@
         ]
       }
     },
+    "/api/v1/e-delivery-marks": {
+      "get": {
+        "tags": [
+          "e-delivery-marks"
+        ],
+        "summary": "List E Delivery Marks",
+        "operationId": "list_e_delivery_marks_api_v1_e_delivery_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/EDeliveryMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List E Delivery Marks Api V1 E Delivery Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "e-delivery-marks"
+        ],
+        "summary": "Create E Delivery Mark",
+        "operationId": "create_e_delivery_mark_api_v1_e_delivery_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EDeliveryMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EDeliveryMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/health": {
       "get": {
         "summary": "Health",
@@ -21703,6 +21777,65 @@
           "source_ref"
         ],
         "title": "ECmrMarkResponse"
+      },
+      "EDeliveryMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "delivery_kind": {
+            "type": "string",
+            "title": "Delivery Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "delivery_kind",
+          "source_ref"
+        ],
+        "title": "EDeliveryMarkCreate"
+      },
+      "EDeliveryMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "delivery_kind": {
+            "type": "string",
+            "title": "Delivery Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "delivery_kind",
+          "source_ref"
+        ],
+        "title": "EDeliveryMarkResponse"
       },
       "EdiMapMarkCreate": {
         "properties": {

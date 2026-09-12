@@ -149,6 +149,7 @@ from app.models.fleet_cost_mark import FleetCostMark  # noqa: F401
 from app.models.bin_pack_mark import BinPackMark  # noqa: F401
 from app.models.pallet_pool_mark import PalletPoolMark  # noqa: F401
 from app.models.e_cmr_mark import ECmrMark  # noqa: F401
+from app.models.e_delivery_mark import EDeliveryMark  # noqa: F401
 from app.models.collaboration_mark import CollaborationMark  # noqa: F401
 from app.models.freight_audit_mark import FreightAuditMark  # noqa: F401
 from app.models.routing_guide import RoutingGuide  # noqa: F401

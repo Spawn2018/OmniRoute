@@ -3165,6 +3165,50 @@ export type ECmrMarkResponse = {
 };
 
 /**
+ * EDeliveryMarkCreate
+ */
+export type EDeliveryMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Delivery Kind
+     */
+    delivery_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * EDeliveryMarkResponse
+ */
+export type EDeliveryMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Delivery Kind
+     */
+    delivery_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * EdiMapMarkCreate
  */
 export type EdiMapMarkCreate = {
@@ -20117,6 +20161,49 @@ export type CreateECmrMarkApiV1eCmrMarksPostResponses = {
 };
 
 export type CreateECmrMarkApiV1eCmrMarksPostResponse = CreateECmrMarkApiV1eCmrMarksPostResponses[keyof CreateECmrMarkApiV1eCmrMarksPostResponses];
+
+export type ListEDeliveryMarksApiV1eDeliveryMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/e-delivery-marks';
+};
+
+export type ListEDeliveryMarksApiV1eDeliveryMarksGetResponses = {
+    /**
+     * Response List E Delivery Marks Api V1 E Delivery Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<EDeliveryMarkResponse>;
+};
+
+export type ListEDeliveryMarksApiV1eDeliveryMarksGetResponse = ListEDeliveryMarksApiV1eDeliveryMarksGetResponses[keyof ListEDeliveryMarksApiV1eDeliveryMarksGetResponses];
+
+export type CreateEDeliveryMarkApiV1eDeliveryMarksPostData = {
+    body: EDeliveryMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/e-delivery-marks';
+};
+
+export type CreateEDeliveryMarkApiV1eDeliveryMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateEDeliveryMarkApiV1eDeliveryMarksPostError = CreateEDeliveryMarkApiV1eDeliveryMarksPostErrors[keyof CreateEDeliveryMarkApiV1eDeliveryMarksPostErrors];
+
+export type CreateEDeliveryMarkApiV1eDeliveryMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: EDeliveryMarkResponse;
+};
+
+export type CreateEDeliveryMarkApiV1eDeliveryMarksPostResponse = CreateEDeliveryMarkApiV1eDeliveryMarksPostResponses[keyof CreateEDeliveryMarkApiV1eDeliveryMarksPostResponses];
 
 export type HealthHealthGetData = {
     body?: never;

@@ -918,6 +918,10 @@ class InvalidECmrMark(DomainError):
     """EXP2.18: HITL e-CMR/eFTI — nie filer live / e-CMR HTTP."""
 
 
+class InvalidEDeliveryMark(DomainError):
+    """EXP2.19: HITL e-Doręczenia — nie PUDO HTTP / live."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

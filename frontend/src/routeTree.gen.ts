@@ -53,6 +53,7 @@ import { Route as DelayForecastsRouteImport } from './routes/delay-forecasts'
 import { Route as DockAppointmentsRouteImport } from './routes/dock-appointments'
 import { Route as DocumentTemplatesRouteImport } from './routes/document-templates'
 import { Route as ECmrMarksRouteImport } from './routes/e-cmr-marks'
+import { Route as EDeliveryMarksRouteImport } from './routes/e-delivery-marks'
 import { Route as EdiRouteImport } from './routes/edi'
 import { Route as EdiMapMarksRouteImport } from './routes/edi-map-marks'
 import { Route as EntityEventsRouteImport } from './routes/entity-events'
@@ -395,6 +396,11 @@ const DocumentTemplatesRoute = DocumentTemplatesRouteImport.update({
 const ECmrMarksRoute = ECmrMarksRouteImport.update({
   id: '/e-cmr-marks',
   path: '/e-cmr-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EDeliveryMarksRoute = EDeliveryMarksRouteImport.update({
+  id: '/e-delivery-marks',
+  path: '/e-delivery-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EdiRoute = EdiRouteImport.update({
@@ -1059,6 +1065,7 @@ export interface FileRoutesByFullPath {
   '/dock-appointments': typeof DockAppointmentsRoute
   '/document-templates': typeof DocumentTemplatesRoute
   '/e-cmr-marks': typeof ECmrMarksRoute
+  '/e-delivery-marks': typeof EDeliveryMarksRoute
   '/edi': typeof EdiRoute
   '/edi-map-marks': typeof EdiMapMarksRoute
   '/entity-events': typeof EntityEventsRoute
@@ -1228,6 +1235,7 @@ export interface FileRoutesByTo {
   '/dock-appointments': typeof DockAppointmentsRoute
   '/document-templates': typeof DocumentTemplatesRoute
   '/e-cmr-marks': typeof ECmrMarksRoute
+  '/e-delivery-marks': typeof EDeliveryMarksRoute
   '/edi': typeof EdiRoute
   '/edi-map-marks': typeof EdiMapMarksRoute
   '/entity-events': typeof EntityEventsRoute
@@ -1398,6 +1406,7 @@ export interface FileRoutesById {
   '/dock-appointments': typeof DockAppointmentsRoute
   '/document-templates': typeof DocumentTemplatesRoute
   '/e-cmr-marks': typeof ECmrMarksRoute
+  '/e-delivery-marks': typeof EDeliveryMarksRoute
   '/edi': typeof EdiRoute
   '/edi-map-marks': typeof EdiMapMarksRoute
   '/entity-events': typeof EntityEventsRoute
@@ -1569,6 +1578,7 @@ export interface FileRouteTypes {
     | '/dock-appointments'
     | '/document-templates'
     | '/e-cmr-marks'
+    | '/e-delivery-marks'
     | '/edi'
     | '/edi-map-marks'
     | '/entity-events'
@@ -1738,6 +1748,7 @@ export interface FileRouteTypes {
     | '/dock-appointments'
     | '/document-templates'
     | '/e-cmr-marks'
+    | '/e-delivery-marks'
     | '/edi'
     | '/edi-map-marks'
     | '/entity-events'
@@ -1907,6 +1918,7 @@ export interface FileRouteTypes {
     | '/dock-appointments'
     | '/document-templates'
     | '/e-cmr-marks'
+    | '/e-delivery-marks'
     | '/edi'
     | '/edi-map-marks'
     | '/entity-events'
@@ -2077,6 +2089,7 @@ export interface RootRouteChildren {
   DockAppointmentsRoute: typeof DockAppointmentsRoute
   DocumentTemplatesRoute: typeof DocumentTemplatesRoute
   ECmrMarksRoute: typeof ECmrMarksRoute
+  EDeliveryMarksRoute: typeof EDeliveryMarksRoute
   EdiRoute: typeof EdiRoute
   EdiMapMarksRoute: typeof EdiMapMarksRoute
   EntityEventsRoute: typeof EntityEventsRoute
@@ -2510,6 +2523,13 @@ declare module '@tanstack/react-router' {
       path: '/e-cmr-marks'
       fullPath: '/e-cmr-marks'
       preLoaderRoute: typeof ECmrMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/e-delivery-marks': {
+      id: '/e-delivery-marks'
+      path: '/e-delivery-marks'
+      fullPath: '/e-delivery-marks'
+      preLoaderRoute: typeof EDeliveryMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/edi': {
@@ -3421,6 +3441,7 @@ const rootRouteChildren: RootRouteChildren = {
   DockAppointmentsRoute: DockAppointmentsRoute,
   DocumentTemplatesRoute: DocumentTemplatesRoute,
   ECmrMarksRoute: ECmrMarksRoute,
+  EDeliveryMarksRoute: EDeliveryMarksRoute,
   EdiRoute: EdiRoute,
   EdiMapMarksRoute: EdiMapMarksRoute,
   EntityEventsRoute: EntityEventsRoute,

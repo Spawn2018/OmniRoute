@@ -48,6 +48,7 @@ from app.api import (
     document_dispatch_rules,
     document_templates,
     e_cmr_marks,
+    e_delivery_marks,
     edi_map_marks,
     edi_messages,
     entity_events,
@@ -345,6 +346,7 @@ api_router.include_router(fleet_cost_marks.router)
 api_router.include_router(bin_pack_marks.router)
 api_router.include_router(pallet_pool_marks.router)
 api_router.include_router(e_cmr_marks.router)
+api_router.include_router(e_delivery_marks.router)
 
 
 @api_router.api_route(
