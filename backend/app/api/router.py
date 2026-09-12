@@ -44,6 +44,7 @@ from app.api import (
     crm_leads,
     csrd_marks,
     customer_contracts,
+    customer_po_marks,
     customer_rfqs,
     customer_sops,
     cutoff_marks,
@@ -253,6 +254,7 @@ api_router.include_router(networks.router)
 api_router.include_router(carrier_inquiries.router)
 api_router.include_router(inbound_messages.router)
 api_router.include_router(incoterm_responsibilities.router)
+api_router.include_router(customer_po_marks.router)
 api_router.include_router(customer_rfqs.router)
 api_router.include_router(operator_decisions.router)
 api_router.include_router(operator_notices.router)

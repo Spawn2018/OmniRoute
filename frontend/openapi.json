@@ -2201,6 +2201,80 @@
         ]
       }
     },
+    "/api/v1/customer-po-marks": {
+      "get": {
+        "tags": [
+          "customer-po-mark"
+        ],
+        "summary": "List Customer Po Marks",
+        "operationId": "list_customer_po_marks_api_v1_customer_po_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CustomerPoMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Customer Po Marks Api V1 Customer Po Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "customer-po-mark"
+        ],
+        "summary": "Create Customer Po Mark",
+        "operationId": "create_customer_po_mark_api_v1_customer_po_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomerPoMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomerPoMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/customer-rfqs": {
       "get": {
         "tags": [
@@ -25825,6 +25899,71 @@
           "has_ciphertext"
         ],
         "title": "CustomerContractResponse"
+      },
+      "CustomerPoMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "ref_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Ref Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "ref_kind",
+          "source_ref"
+        ],
+        "title": "CustomerPoMarkCreate"
+      },
+      "CustomerPoMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "ref_kind": {
+            "type": "string",
+            "title": "Ref Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "ref_kind",
+          "source_ref"
+        ],
+        "title": "CustomerPoMarkResponse"
       },
       "CustomerRfqCreate": {
         "properties": {

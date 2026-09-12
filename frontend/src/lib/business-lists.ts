@@ -125,6 +125,10 @@ export const BUSINESS_LISTS = {
   mobileClientMark: { route: "/mobile-client-marks", tableKey: "mobile_client_mark" },
   idpConnector: { route: "/idp-connectors", tableKey: "idp_connector" },
   customerContract: { route: "/customer-contracts", tableKey: "customer_contract" },
+  customerPoMark: {
+    route: "/customer-po-marks",
+    tableKey: "customer_po_mark",
+  },
   tenantContractKek: { route: "/tenant-contract-keks", tableKey: "tenant_contract_kek" },
   visibilityConnector: { route: "/visibility-connectors", tableKey: "visibility_connector" },
   purchaseOrder: { route: "/purchase-orders", tableKey: "purchase_order" },
@@ -408,6 +412,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/named-place-marks",
   "/slot-guarantee-marks",
   "/freight-term-marks",
+  "/customer-po-marks",
   "/impersonate-guard-marks",
   "/csrd-marks",
   "/air-ra3-marks",

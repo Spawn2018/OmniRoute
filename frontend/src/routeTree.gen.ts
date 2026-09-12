@@ -51,6 +51,7 @@ import { Route as CreditReviewsRouteImport } from './routes/credit-reviews'
 import { Route as CrmLeadsRouteImport } from './routes/crm-leads'
 import { Route as CsrdMarksRouteImport } from './routes/csrd-marks'
 import { Route as CustomerContractsRouteImport } from './routes/customer-contracts'
+import { Route as CustomerPoMarksRouteImport } from './routes/customer-po-marks'
 import { Route as CustomerSopsRouteImport } from './routes/customer-sops'
 import { Route as CutoffMarksRouteImport } from './routes/cutoff-marks'
 import { Route as DangerousGoodsRouteImport } from './routes/dangerous-goods'
@@ -448,6 +449,11 @@ const CsrdMarksRoute = CsrdMarksRouteImport.update({
 const CustomerContractsRoute = CustomerContractsRouteImport.update({
   id: '/customer-contracts',
   path: '/customer-contracts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomerPoMarksRoute = CustomerPoMarksRouteImport.update({
+  id: '/customer-po-marks',
+  path: '/customer-po-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CustomerSopsRoute = CustomerSopsRouteImport.update({
@@ -1435,6 +1441,7 @@ export interface FileRoutesByFullPath {
   '/crm-leads': typeof CrmLeadsRoute
   '/csrd-marks': typeof CsrdMarksRoute
   '/customer-contracts': typeof CustomerContractsRoute
+  '/customer-po-marks': typeof CustomerPoMarksRoute
   '/customer-sops': typeof CustomerSopsRoute
   '/cutoff-marks': typeof CutoffMarksRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
@@ -1667,6 +1674,7 @@ export interface FileRoutesByTo {
   '/crm-leads': typeof CrmLeadsRoute
   '/csrd-marks': typeof CsrdMarksRoute
   '/customer-contracts': typeof CustomerContractsRoute
+  '/customer-po-marks': typeof CustomerPoMarksRoute
   '/customer-sops': typeof CustomerSopsRoute
   '/cutoff-marks': typeof CutoffMarksRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
@@ -1900,6 +1908,7 @@ export interface FileRoutesById {
   '/crm-leads': typeof CrmLeadsRoute
   '/csrd-marks': typeof CsrdMarksRoute
   '/customer-contracts': typeof CustomerContractsRoute
+  '/customer-po-marks': typeof CustomerPoMarksRoute
   '/customer-sops': typeof CustomerSopsRoute
   '/cutoff-marks': typeof CutoffMarksRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
@@ -2134,6 +2143,7 @@ export interface FileRouteTypes {
     | '/crm-leads'
     | '/csrd-marks'
     | '/customer-contracts'
+    | '/customer-po-marks'
     | '/customer-sops'
     | '/cutoff-marks'
     | '/dangerous-goods'
@@ -2366,6 +2376,7 @@ export interface FileRouteTypes {
     | '/crm-leads'
     | '/csrd-marks'
     | '/customer-contracts'
+    | '/customer-po-marks'
     | '/customer-sops'
     | '/cutoff-marks'
     | '/dangerous-goods'
@@ -2598,6 +2609,7 @@ export interface FileRouteTypes {
     | '/crm-leads'
     | '/csrd-marks'
     | '/customer-contracts'
+    | '/customer-po-marks'
     | '/customer-sops'
     | '/cutoff-marks'
     | '/dangerous-goods'
@@ -2831,6 +2843,7 @@ export interface RootRouteChildren {
   CrmLeadsRoute: typeof CrmLeadsRoute
   CsrdMarksRoute: typeof CsrdMarksRoute
   CustomerContractsRoute: typeof CustomerContractsRoute
+  CustomerPoMarksRoute: typeof CustomerPoMarksRoute
   CustomerSopsRoute: typeof CustomerSopsRoute
   CutoffMarksRoute: typeof CutoffMarksRoute
   DangerousGoodsRoute: typeof DangerousGoodsRoute
@@ -3315,6 +3328,13 @@ declare module '@tanstack/react-router' {
       path: '/customer-contracts'
       fullPath: '/customer-contracts'
       preLoaderRoute: typeof CustomerContractsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customer-po-marks': {
+      id: '/customer-po-marks'
+      path: '/customer-po-marks'
+      fullPath: '/customer-po-marks'
+      preLoaderRoute: typeof CustomerPoMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/customer-sops': {
@@ -4679,6 +4699,7 @@ const rootRouteChildren: RootRouteChildren = {
   CrmLeadsRoute: CrmLeadsRoute,
   CsrdMarksRoute: CsrdMarksRoute,
   CustomerContractsRoute: CustomerContractsRoute,
+  CustomerPoMarksRoute: CustomerPoMarksRoute,
   CustomerSopsRoute: CustomerSopsRoute,
   CutoffMarksRoute: CutoffMarksRoute,
   DangerousGoodsRoute: DangerousGoodsRoute,

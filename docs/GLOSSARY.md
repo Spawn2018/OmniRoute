@@ -263,6 +263,7 @@
 | znacznik miejsca nazwanego | named_place_mark | EXP0.6 HITL named_place+2020\|2010; nie cytat ICC |
 | znacznik stance slotu | slot_guarantee_mark | EXP0.3 HITL capability\|non_guarantee\|other; nie live T8 |
 | znacznik warunku frachtu | freight_term_mark | EXP1 HITL prepaid\|collect\|third_party\|other; nie kolumna shipment |
+| znacznik referencji PO klienta | customer_po_mark | EXP1 HITL customer_po\|release\|call_off\|other; nie purchase_order CT1 |
 | fabryka demo | demo_sim | Demo-1; nie GBOX klienta |
 | zakłócenie demo | demo_disruption | korki/wypadki fixture |
 | zużycie platformy | platform_usage_daily | Admin-P; agregat; nie cross-tenant SELECT |

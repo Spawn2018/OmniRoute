@@ -2801,6 +2801,50 @@ export type CustomerContractResponse = {
 };
 
 /**
+ * CustomerPoMarkCreate
+ */
+export type CustomerPoMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Ref Kind
+     */
+    ref_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CustomerPoMarkResponse
+ */
+export type CustomerPoMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Ref Kind
+     */
+    ref_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * CustomerRfqCreate
  */
 export type CustomerRfqCreate = {
@@ -14661,6 +14705,49 @@ export type SeedIncotermResponsibilitiesApiV1IncotermResponsibilitiesSeedPostRes
 };
 
 export type SeedIncotermResponsibilitiesApiV1IncotermResponsibilitiesSeedPostResponse = SeedIncotermResponsibilitiesApiV1IncotermResponsibilitiesSeedPostResponses[keyof SeedIncotermResponsibilitiesApiV1IncotermResponsibilitiesSeedPostResponses];
+
+export type ListCustomerPoMarksApiV1CustomerPoMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/customer-po-marks';
+};
+
+export type ListCustomerPoMarksApiV1CustomerPoMarksGetResponses = {
+    /**
+     * Response List Customer Po Marks Api V1 Customer Po Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<CustomerPoMarkResponse>;
+};
+
+export type ListCustomerPoMarksApiV1CustomerPoMarksGetResponse = ListCustomerPoMarksApiV1CustomerPoMarksGetResponses[keyof ListCustomerPoMarksApiV1CustomerPoMarksGetResponses];
+
+export type CreateCustomerPoMarkApiV1CustomerPoMarksPostData = {
+    body: CustomerPoMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/customer-po-marks';
+};
+
+export type CreateCustomerPoMarkApiV1CustomerPoMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCustomerPoMarkApiV1CustomerPoMarksPostError = CreateCustomerPoMarkApiV1CustomerPoMarksPostErrors[keyof CreateCustomerPoMarkApiV1CustomerPoMarksPostErrors];
+
+export type CreateCustomerPoMarkApiV1CustomerPoMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CustomerPoMarkResponse;
+};
+
+export type CreateCustomerPoMarkApiV1CustomerPoMarksPostResponse = CreateCustomerPoMarkApiV1CustomerPoMarksPostResponses[keyof CreateCustomerPoMarkApiV1CustomerPoMarksPostResponses];
 
 export type ListCustomerRfqsApiV1CustomerRfqsGetData = {
     body?: never;
