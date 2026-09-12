@@ -67,6 +67,7 @@ import { Route as MultiManningMarksRouteImport } from './routes/multi-manning-ma
 import { Route as PostingMarksRouteImport } from './routes/posting-marks'
 import { Route as TachoOfficeMarksRouteImport } from './routes/tacho-office-marks'
 import { Route as LezMarksRouteImport } from './routes/lez-marks'
+import { Route as LabelParkingMarksRouteImport } from './routes/label-parking-marks'
 import { Route as EntityEventsRouteImport } from './routes/entity-events'
 import { Route as ErpConnectorsRouteImport } from './routes/erp-connectors'
 import { Route as Eur1AtrMarksRouteImport } from './routes/eur1-atr-marks'
@@ -498,6 +499,11 @@ const TachoOfficeMarksRoute = TachoOfficeMarksRouteImport.update({
 const LezMarksRoute = LezMarksRouteImport.update({
   id: '/lez-marks',
   path: '/lez-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LabelParkingMarksRoute = LabelParkingMarksRouteImport.update({
+  id: '/label-parking-marks',
+  path: '/label-parking-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EntityEventsRoute = EntityEventsRouteImport.update({
@@ -1271,6 +1277,7 @@ export interface FileRoutesByFullPath {
   '/posting-marks': typeof PostingMarksRoute
   '/tacho-office-marks': typeof TachoOfficeMarksRoute
   '/lez-marks': typeof LezMarksRoute
+  '/label-parking-marks': typeof LabelParkingMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/eur1-atr-marks': typeof Eur1AtrMarksRoute
@@ -1473,6 +1480,7 @@ export interface FileRoutesByTo {
   '/posting-marks': typeof PostingMarksRoute
   '/tacho-office-marks': typeof TachoOfficeMarksRoute
   '/lez-marks': typeof LezMarksRoute
+  '/label-parking-marks': typeof LabelParkingMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/eur1-atr-marks': typeof Eur1AtrMarksRoute
@@ -1676,6 +1684,7 @@ export interface FileRoutesById {
   '/posting-marks': typeof PostingMarksRoute
   '/tacho-office-marks': typeof TachoOfficeMarksRoute
   '/lez-marks': typeof LezMarksRoute
+  '/label-parking-marks': typeof LabelParkingMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/eur1-atr-marks': typeof Eur1AtrMarksRoute
@@ -1880,6 +1889,7 @@ export interface FileRouteTypes {
     | '/posting-marks'
     | '/tacho-office-marks'
     | '/lez-marks'
+    | '/label-parking-marks'
     | '/entity-events'
     | '/erp-connectors'
     | '/eur1-atr-marks'
@@ -2082,6 +2092,7 @@ export interface FileRouteTypes {
     | '/posting-marks'
     | '/tacho-office-marks'
     | '/lez-marks'
+    | '/label-parking-marks'
     | '/entity-events'
     | '/erp-connectors'
     | '/eur1-atr-marks'
@@ -2284,6 +2295,7 @@ export interface FileRouteTypes {
     | '/posting-marks'
     | '/tacho-office-marks'
     | '/lez-marks'
+    | '/label-parking-marks'
     | '/entity-events'
     | '/erp-connectors'
     | '/eur1-atr-marks'
@@ -2487,6 +2499,7 @@ export interface RootRouteChildren {
   PostingMarksRoute: typeof PostingMarksRoute
   TachoOfficeMarksRoute: typeof TachoOfficeMarksRoute
   LezMarksRoute: typeof LezMarksRoute
+  LabelParkingMarksRoute: typeof LabelParkingMarksRoute
   EntityEventsRoute: typeof EntityEventsRoute
   ErpConnectorsRoute: typeof ErpConnectorsRoute
   Eur1AtrMarksRoute: typeof Eur1AtrMarksRoute
@@ -3037,6 +3050,13 @@ declare module '@tanstack/react-router' {
       path: '/lez-marks'
       fullPath: '/lez-marks'
       preLoaderRoute: typeof LezMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/label-parking-marks': {
+      id: '/label-parking-marks'
+      path: '/label-parking-marks'
+      fullPath: '/label-parking-marks'
+      preLoaderRoute: typeof LabelParkingMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
 
@@ -4100,6 +4120,7 @@ const rootRouteChildren: RootRouteChildren = {
   PostingMarksRoute: PostingMarksRoute,
   TachoOfficeMarksRoute: TachoOfficeMarksRoute,
   LezMarksRoute: LezMarksRoute,
+  LabelParkingMarksRoute: LabelParkingMarksRoute,
   EntityEventsRoute: EntityEventsRoute,
   ErpConnectorsRoute: ErpConnectorsRoute,
   Eur1AtrMarksRoute: Eur1AtrMarksRoute,

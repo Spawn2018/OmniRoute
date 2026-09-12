@@ -146,6 +146,7 @@ export const BUSINESS_LISTS = {
   postingMark: { route: "/posting-marks", tableKey: "posting_mark" },
   tachoOfficeMark: { route: "/tacho-office-marks", tableKey: "tacho_office_mark" },
   lezMark: { route: "/lez-marks", tableKey: "lez_mark" },
+  labelParkingMark: { route: "/label-parking-marks", tableKey: "label_parking_mark" },
   remediationOption: {
     route: "/remediation-options",
     tableKey: "remediation_option",
@@ -353,6 +354,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/posting-marks",
   "/tacho-office-marks",
   "/lez-marks",
+  "/label-parking-marks",
   "/remediation-options",
   "/impact-scenarios",
   "/clause-notices",

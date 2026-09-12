@@ -5265,6 +5265,50 @@ export type KreptdLicenceResponse = {
 };
 
 /**
+ * LabelParkingMarkCreate
+ */
+export type LabelParkingMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Parking Kind
+     */
+    parking_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * LabelParkingMarkResponse
+ */
+export type LabelParkingMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Parking Kind
+     */
+    parking_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * LaneKmCreate
  */
 export type LaneKmCreate = {
@@ -14125,6 +14169,49 @@ export type CreateTachoOfficeMarkApiV1TachoOfficeMarksPostResponses = {
 };
 
 export type CreateTachoOfficeMarkApiV1TachoOfficeMarksPostResponse = CreateTachoOfficeMarkApiV1TachoOfficeMarksPostResponses[keyof CreateTachoOfficeMarkApiV1TachoOfficeMarksPostResponses];
+
+export type ListLabelParkingMarksApiV1LabelParkingMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/label-parking-marks';
+};
+
+export type ListLabelParkingMarksApiV1LabelParkingMarksGetResponses = {
+    /**
+     * Response List Label Parking Marks Api V1 Label Parking Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<LabelParkingMarkResponse>;
+};
+
+export type ListLabelParkingMarksApiV1LabelParkingMarksGetResponse = ListLabelParkingMarksApiV1LabelParkingMarksGetResponses[keyof ListLabelParkingMarksApiV1LabelParkingMarksGetResponses];
+
+export type CreateLabelParkingMarkApiV1LabelParkingMarksPostData = {
+    body: LabelParkingMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/label-parking-marks';
+};
+
+export type CreateLabelParkingMarkApiV1LabelParkingMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateLabelParkingMarkApiV1LabelParkingMarksPostError = CreateLabelParkingMarkApiV1LabelParkingMarksPostErrors[keyof CreateLabelParkingMarkApiV1LabelParkingMarksPostErrors];
+
+export type CreateLabelParkingMarkApiV1LabelParkingMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: LabelParkingMarkResponse;
+};
+
+export type CreateLabelParkingMarkApiV1LabelParkingMarksPostResponse = CreateLabelParkingMarkApiV1LabelParkingMarksPostResponses[keyof CreateLabelParkingMarkApiV1LabelParkingMarksPostResponses];
 
 export type ListLezMarksApiV1LezMarksGetData = {
     body?: never;

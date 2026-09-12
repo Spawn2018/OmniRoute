@@ -88,6 +88,7 @@ from app.api import (
     iso_nis2_marks,
     jit_jis_marks,
     kreptd_licences,
+    label_parking_marks,
     lane_kms,
     lane_patterns,
     lc_checklists,
@@ -238,6 +239,7 @@ api_router.include_router(nvocc_marks.router)
 api_router.include_router(multi_manning_marks.router)
 api_router.include_router(posting_marks.router)
 api_router.include_router(tacho_office_marks.router)
+api_router.include_router(label_parking_marks.router)
 api_router.include_router(lez_marks.router)
 api_router.include_router(entity_events.router)
 api_router.include_router(nbp_rates.router)

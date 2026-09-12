@@ -1050,6 +1050,10 @@ class InvalidLezMark(DomainError):
     """EXP4.11: HITL LEZ/zakazy — nie LEZ live / mapa."""
 
 
+class InvalidLabelParkingMark(DomainError):
+    """EXP4.12: HITL LABEL parking — nie parking live / mapa."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

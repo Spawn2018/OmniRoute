@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **390.0** EXP4.12 LABEL parking HITL `label_parking_mark` (kolejka EXP4).
+**Następny:** **391.0** EXP4.13 A/B+SUS HITL `ab_sus_mark` (kolejka EXP4; DTC→CMMS = leftover `cmms_mark`).
 <!-- os-status:end -->
 
 ```mermaid

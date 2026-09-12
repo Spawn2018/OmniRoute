@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **389.0** EXP4.11 HITL `lez_mark` **Następny:** **390.0** EXP4.12 LABEL parking HITL `label_parking_mark` (kolejka EXP4).
+**Stan (z CURRENT.md):** **390.0** EXP4.12 HITL `label_parking_mark` **Następny:** **391.0** EXP4.13 A/B+SUS HITL `ab_sus_mark` (kolejka EXP4; DTC→CMMS = leftover `cmms_mark`).
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.
