@@ -17480,6 +17480,80 @@
         ]
       }
     },
+    "/api/v1/mqc-marks": {
+      "get": {
+        "tags": [
+          "mqc-marks"
+        ],
+        "summary": "List Mqc Marks",
+        "operationId": "list_mqc_marks_api_v1_mqc_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/MqcMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Mqc Marks Api V1 Mqc Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "mqc-marks"
+        ],
+        "summary": "Create Mqc Mark",
+        "operationId": "create_mqc_mark_api_v1_mqc_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MqcMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MqcMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/health": {
       "get": {
         "summary": "Health",
@@ -26365,6 +26439,65 @@
           "source_ref"
         ],
         "title": "MonitoringSchemeResponse"
+      },
+      "MqcMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "mqc_kind": {
+            "type": "string",
+            "title": "Mqc Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "mqc_kind",
+          "source_ref"
+        ],
+        "title": "MqcMarkCreate"
+      },
+      "MqcMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "mqc_kind": {
+            "type": "string",
+            "title": "Mqc Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "mqc_kind",
+          "source_ref"
+        ],
+        "title": "MqcMarkResponse"
       },
       "NbpRateCreate": {
         "properties": {

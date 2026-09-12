@@ -162,6 +162,7 @@ from app.models.jit_jis_mark import JitJisMark  # noqa: F401
 from app.models.vda_odette_mark import VdaOdetteMark  # noqa: F401
 from app.models.inventory_position_mark import InventoryPositionMark  # noqa: F401
 from app.models.fair_share_mark import FairShareMark  # noqa: F401
+from app.models.mqc_mark import MqcMark  # noqa: F401
 from app.models.collaboration_mark import CollaborationMark  # noqa: F401
 from app.models.freight_audit_mark import FreightAuditMark  # noqa: F401
 from app.models.routing_guide import RoutingGuide  # noqa: F401

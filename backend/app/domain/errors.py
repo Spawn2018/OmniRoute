@@ -970,6 +970,10 @@ class InvalidFairShareMark(DomainError):
     """EXP3.4: HITL fair share — nie allocation SQL / druga marża."""
 
 
+class InvalidMqcMark(DomainError):
+    """EXP3.5: HITL MQC — nie MQC SQL / qty float."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

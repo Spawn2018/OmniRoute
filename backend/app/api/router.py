@@ -92,6 +92,7 @@ from app.api import (
     memory_edges,
     money_costs,
     monitoring_schemes,
+    mqc_marks,
     nbp_rates,
     ncts_drafts,
     networks,
@@ -371,6 +372,7 @@ api_router.include_router(jit_jis_marks.router)
 api_router.include_router(vda_odette_marks.router)
 api_router.include_router(inventory_position_marks.router)
 api_router.include_router(fair_share_marks.router)
+api_router.include_router(mqc_marks.router)
 
 
 @api_router.api_route(

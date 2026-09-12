@@ -100,6 +100,7 @@ import { Route as MakeOrBuyMarksRouteImport } from './routes/make-or-buy-marks'
 import { Route as MemoryEdgesRouteImport } from './routes/memory-edges'
 import { Route as MoneyCostRouteImport } from './routes/money-cost'
 import { Route as MonitoringSchemesRouteImport } from './routes/monitoring-schemes'
+import { Route as MqcMarksRouteImport } from './routes/mqc-marks'
 import { Route as NbpRatesRouteImport } from './routes/nbp-rates'
 import { Route as NctsDraftsRouteImport } from './routes/ncts-drafts'
 import { Route as NetworksRouteImport } from './routes/networks'
@@ -645,6 +646,11 @@ const MonitoringSchemesRoute = MonitoringSchemesRouteImport.update({
   path: '/monitoring-schemes',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MqcMarksRoute = MqcMarksRouteImport.update({
+  id: '/mqc-marks',
+  path: '/mqc-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NbpRatesRoute = NbpRatesRouteImport.update({
   id: '/nbp-rates',
   path: '/nbp-rates',
@@ -1184,6 +1190,7 @@ export interface FileRoutesByFullPath {
   '/memory-edges': typeof MemoryEdgesRoute
   '/money-cost': typeof MoneyCostRoute
   '/monitoring-schemes': typeof MonitoringSchemesRoute
+  '/mqc-marks': typeof MqcMarksRoute
   '/nbp-rates': typeof NbpRatesRoute
   '/ncts-drafts': typeof NctsDraftsRoute
   '/networks': typeof NetworksRoute
@@ -1366,6 +1373,7 @@ export interface FileRoutesByTo {
   '/memory-edges': typeof MemoryEdgesRoute
   '/money-cost': typeof MoneyCostRoute
   '/monitoring-schemes': typeof MonitoringSchemesRoute
+  '/mqc-marks': typeof MqcMarksRoute
   '/nbp-rates': typeof NbpRatesRoute
   '/ncts-drafts': typeof NctsDraftsRoute
   '/networks': typeof NetworksRoute
@@ -1549,6 +1557,7 @@ export interface FileRoutesById {
   '/memory-edges': typeof MemoryEdgesRoute
   '/money-cost': typeof MoneyCostRoute
   '/monitoring-schemes': typeof MonitoringSchemesRoute
+  '/mqc-marks': typeof MqcMarksRoute
   '/nbp-rates': typeof NbpRatesRoute
   '/ncts-drafts': typeof NctsDraftsRoute
   '/networks': typeof NetworksRoute
@@ -1733,6 +1742,7 @@ export interface FileRouteTypes {
     | '/memory-edges'
     | '/money-cost'
     | '/monitoring-schemes'
+    | '/mqc-marks'
     | '/nbp-rates'
     | '/ncts-drafts'
     | '/networks'
@@ -1915,6 +1925,7 @@ export interface FileRouteTypes {
     | '/memory-edges'
     | '/money-cost'
     | '/monitoring-schemes'
+    | '/mqc-marks'
     | '/nbp-rates'
     | '/ncts-drafts'
     | '/networks'
@@ -2097,6 +2108,7 @@ export interface FileRouteTypes {
     | '/memory-edges'
     | '/money-cost'
     | '/monitoring-schemes'
+    | '/mqc-marks'
     | '/nbp-rates'
     | '/ncts-drafts'
     | '/networks'
@@ -2280,6 +2292,7 @@ export interface RootRouteChildren {
   MemoryEdgesRoute: typeof MemoryEdgesRoute
   MoneyCostRoute: typeof MoneyCostRoute
   MonitoringSchemesRoute: typeof MonitoringSchemesRoute
+  MqcMarksRoute: typeof MqcMarksRoute
   NbpRatesRoute: typeof NbpRatesRoute
   NctsDraftsRoute: typeof NctsDraftsRoute
   NetworksRoute: typeof NetworksRoute
@@ -3010,6 +3023,14 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MonitoringSchemesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/mqc-marks': {
+      id: '/mqc-marks'
+      path: '/mqc-marks'
+      fullPath: '/mqc-marks'
+      preLoaderRoute: typeof MqcMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+
     '/nbp-rates': {
       id: '/nbp-rates'
       path: '/nbp-rates'
@@ -3728,6 +3749,7 @@ const rootRouteChildren: RootRouteChildren = {
   MemoryEdgesRoute: MemoryEdgesRoute,
   MoneyCostRoute: MoneyCostRoute,
   MonitoringSchemesRoute: MonitoringSchemesRoute,
+  MqcMarksRoute: MqcMarksRoute,
   NbpRatesRoute: NbpRatesRoute,
   NctsDraftsRoute: NctsDraftsRoute,
   NetworksRoute: NetworksRoute,

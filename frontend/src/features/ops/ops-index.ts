@@ -764,6 +764,11 @@ export const OPS_JOBS = [
     job: "katalog fair_share_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.mqcMark.route,
+    label: "MQC",
+    job: "katalog mqc_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.erpConnector.route,
     label: "Konektor Optima",
     job: "katalog erp_connector HITL",
@@ -1237,6 +1242,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "367.0": "/vda-odette-marks",
   "368.0": "/inventory-position-marks",
   "369.0": "/fair-share-marks",
+  "370.0": "/mqc-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

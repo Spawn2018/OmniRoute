@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **369.0** EXP3.4 HITL `fair_share_mark`
-- **Etap:** Plan — **370.0** EXP3.5
-- **Następny:** **370.0** EXP3.5 MQC vs actual HITL (delta do utworzenia).
+- **Ostatni plaster:** **370.0** EXP3.5 HITL mqc_mark
+- **Etap:** Plan — **371.0** EXP3.6
+- **Następny:** **371.0** EXP3.6 ECCN HITL (delta do utworzenia).
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

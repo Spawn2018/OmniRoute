@@ -5661,6 +5661,50 @@ export type MonitoringSchemeResponse = {
 };
 
 /**
+ * MqcMarkCreate
+ */
+export type MqcMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Mqc Kind
+     */
+    mqc_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * MqcMarkResponse
+ */
+export type MqcMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Mqc Kind
+     */
+    mqc_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * NbpRateCreate
  */
 export type NbpRateCreate = {
@@ -21248,6 +21292,49 @@ export type CreateFairShareMarkApiV1FairShareMarksPostResponses = {
 };
 
 export type CreateFairShareMarkApiV1FairShareMarksPostResponse = CreateFairShareMarkApiV1FairShareMarksPostResponses[keyof CreateFairShareMarkApiV1FairShareMarksPostResponses];
+
+export type ListMqcMarksApiV1MqcMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/mqc-marks';
+};
+
+export type ListMqcMarksApiV1MqcMarksGetResponses = {
+    /**
+     * Response List Mqc Marks Api V1 Mqc Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<MqcMarkResponse>;
+};
+
+export type ListMqcMarksApiV1MqcMarksGetResponse = ListMqcMarksApiV1MqcMarksGetResponses[keyof ListMqcMarksApiV1MqcMarksGetResponses];
+
+export type CreateMqcMarkApiV1MqcMarksPostData = {
+    body: MqcMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/mqc-marks';
+};
+
+export type CreateMqcMarkApiV1MqcMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateMqcMarkApiV1MqcMarksPostError = CreateMqcMarkApiV1MqcMarksPostErrors[keyof CreateMqcMarkApiV1MqcMarksPostErrors];
+
+export type CreateMqcMarkApiV1MqcMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: MqcMarkResponse;
+};
+
+export type CreateMqcMarkApiV1MqcMarksPostResponse = CreateMqcMarkApiV1MqcMarksPostResponses[keyof CreateMqcMarkApiV1MqcMarksPostResponses];
 
 export type HealthHealthGetData = {
     body?: never;
