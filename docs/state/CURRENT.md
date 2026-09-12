@@ -6,7 +6,7 @@
 
 **Ostatni plaster:** **414.0** EXP3.0c HITL `po_sku_mark`
 
-**Etap:** Plan — **415.0** EXP3.0d
+**Etap:** Plaster — **415.0** EXP3.0d (delta zaakceptowana `/noc`, wolno `/plaster`)
 
 **Noc:** `/noc 10` do 2026-09-13T10:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).
 
@@ -14,7 +14,7 @@
 
 Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj 71–415.
 
-**Spec (jedyna na sesję):** (brak — plan 415.0 po nocnej zmianie).
+**Spec (jedyna na sesję):** [docs/deltas/open/415.0-po-batch-mark.md](../deltas/open/415.0-po-batch-mark.md)
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
@@ -24,3 +24,4 @@ Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj 71–4
 
 **2026-09-12:** Plaster **413.0** zamknięty (`/noc`) — HITL `po_plant_mark`.
 **2026-09-12:** Plaster **414.0** zamknięty (`/noc`) — HITL `po_sku_mark`.
+**2026-09-12:** Delta **415.0** zaakceptowana (`/noc`) — wolno `/plaster`.
