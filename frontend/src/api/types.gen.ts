@@ -3205,6 +3205,50 @@ export type DemoGpsMarkResponse = {
 };
 
 /**
+ * DemoSimMarkCreate
+ */
+export type DemoSimMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Sim Kind
+     */
+    sim_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * DemoSimMarkResponse
+ */
+export type DemoSimMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Sim Kind
+     */
+    sim_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * DemoWipeMarkCreate
  */
 export type DemoWipeMarkCreate = {
@@ -20894,6 +20938,49 @@ export type CreateDemoGpsMarkApiV1DemoGpsMarksPostResponses = {
 };
 
 export type CreateDemoGpsMarkApiV1DemoGpsMarksPostResponse = CreateDemoGpsMarkApiV1DemoGpsMarksPostResponses[keyof CreateDemoGpsMarkApiV1DemoGpsMarksPostResponses];
+
+export type ListDemoSimMarksApiV1DemoSimMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/demo-sim-marks';
+};
+
+export type ListDemoSimMarksApiV1DemoSimMarksGetResponses = {
+    /**
+     * Response List Demo Sim Marks Api V1 Demo Sim Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<DemoSimMarkResponse>;
+};
+
+export type ListDemoSimMarksApiV1DemoSimMarksGetResponse = ListDemoSimMarksApiV1DemoSimMarksGetResponses[keyof ListDemoSimMarksApiV1DemoSimMarksGetResponses];
+
+export type CreateDemoSimMarkApiV1DemoSimMarksPostData = {
+    body: DemoSimMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/demo-sim-marks';
+};
+
+export type CreateDemoSimMarkApiV1DemoSimMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateDemoSimMarkApiV1DemoSimMarksPostError = CreateDemoSimMarkApiV1DemoSimMarksPostErrors[keyof CreateDemoSimMarkApiV1DemoSimMarksPostErrors];
+
+export type CreateDemoSimMarkApiV1DemoSimMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: DemoSimMarkResponse;
+};
+
+export type CreateDemoSimMarkApiV1DemoSimMarksPostResponse = CreateDemoSimMarkApiV1DemoSimMarksPostResponses[keyof CreateDemoSimMarkApiV1DemoSimMarksPostResponses];
 
 export type ListDemoWipeMarksApiV1DemoWipeMarksGetData = {
     body?: never;

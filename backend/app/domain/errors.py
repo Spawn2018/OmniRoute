@@ -974,6 +974,10 @@ class InvalidDemoWipeMark(DomainError):
     """Demo-1: HITL demo_wipe_mark — nie live wipe / DELETE tenant data / kwota."""
 
 
+class InvalidDemoSimMark(DomainError):
+    """Demo-1b: HITL demo_sim_mark — nie live sim / generator 150 aut / kwota."""
+
+
 class InvalidImpersonateGuardMark(DomainError):
     """EXP0.12: HITL impersonate≠unwrap — nie crypto / Auth0 live."""
 

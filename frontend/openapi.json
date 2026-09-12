@@ -13724,6 +13724,80 @@
         ]
       }
     },
+    "/api/v1/demo-sim-marks": {
+      "get": {
+        "tags": [
+          "demo-sim-mark"
+        ],
+        "summary": "List Demo Sim Marks",
+        "operationId": "list_demo_sim_marks_api_v1_demo_sim_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/DemoSimMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Demo Sim Marks Api V1 Demo Sim Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "demo-sim-mark"
+        ],
+        "summary": "Create Demo Sim Mark",
+        "operationId": "create_demo_sim_mark_api_v1_demo_sim_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DemoSimMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DemoSimMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/demo-wipe-marks": {
       "get": {
         "tags": [
@@ -25785,6 +25859,71 @@
           "source_ref"
         ],
         "title": "DemoGpsMarkResponse"
+      },
+      "DemoSimMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "sim_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Sim Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "sim_kind",
+          "source_ref"
+        ],
+        "title": "DemoSimMarkCreate"
+      },
+      "DemoSimMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "sim_kind": {
+            "type": "string",
+            "title": "Sim Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "sim_kind",
+          "source_ref"
+        ],
+        "title": "DemoSimMarkResponse"
       },
       "DemoWipeMarkCreate": {
         "properties": {
