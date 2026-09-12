@@ -17628,6 +17628,80 @@
         ]
       }
     },
+    "/api/v1/eur1-atr-marks": {
+      "get": {
+        "tags": [
+          "eur1-atr-marks"
+        ],
+        "summary": "List Eur1 Atr Marks",
+        "operationId": "list_eur1_atr_marks_api_v1_eur1_atr_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Eur1AtrMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Eur1 Atr Marks Api V1 Eur1 Atr Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "eur1-atr-marks"
+        ],
+        "summary": "Create Eur1 Atr Mark",
+        "operationId": "create_eur1_atr_mark_api_v1_eur1_atr_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Eur1AtrMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Eur1AtrMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/health": {
       "get": {
         "summary": "Health",
@@ -23255,6 +23329,65 @@
           "source_ref"
         ],
         "title": "ErpConnectorResponse"
+      },
+      "Eur1AtrMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "cert_kind": {
+            "type": "string",
+            "title": "Cert Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "cert_kind",
+          "source_ref"
+        ],
+        "title": "Eur1AtrMarkCreate"
+      },
+      "Eur1AtrMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "cert_kind": {
+            "type": "string",
+            "title": "Cert Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "cert_kind",
+          "source_ref"
+        ],
+        "title": "Eur1AtrMarkResponse"
       },
       "ExchangeConnectorCreate": {
         "properties": {

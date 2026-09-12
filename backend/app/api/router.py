@@ -54,6 +54,7 @@ from app.api import (
     edi_messages,
     entity_events,
     erp_connectors,
+    eur1_atr_marks,
     exchange_connectors,
     executive_marks,
     extractions,
@@ -375,6 +376,7 @@ api_router.include_router(inventory_position_marks.router)
 api_router.include_router(fair_share_marks.router)
 api_router.include_router(mqc_marks.router)
 api_router.include_router(eccn_marks.router)
+api_router.include_router(eur1_atr_marks.router)
 
 
 @api_router.api_route(

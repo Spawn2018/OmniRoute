@@ -164,6 +164,7 @@ from app.models.inventory_position_mark import InventoryPositionMark  # noqa: F4
 from app.models.fair_share_mark import FairShareMark  # noqa: F401
 from app.models.mqc_mark import MqcMark  # noqa: F401
 from app.models.eccn_mark import EccnMark  # noqa: F401
+from app.models.eur1_atr_mark import Eur1AtrMark  # noqa: F401
 from app.models.collaboration_mark import CollaborationMark  # noqa: F401
 from app.models.freight_audit_mark import FreightAuditMark  # noqa: F401
 from app.models.routing_guide import RoutingGuide  # noqa: F401

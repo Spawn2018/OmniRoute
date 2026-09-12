@@ -3481,6 +3481,50 @@ export type ErpConnectorResponse = {
 };
 
 /**
+ * Eur1AtrMarkCreate
+ */
+export type Eur1AtrMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Cert Kind
+     */
+    cert_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * Eur1AtrMarkResponse
+ */
+export type Eur1AtrMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Cert Kind
+     */
+    cert_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * ExchangeConnectorCreate
  */
 export type ExchangeConnectorCreate = {
@@ -21422,6 +21466,49 @@ export type CreateEccnMarkApiV1EccnMarksPostResponses = {
 };
 
 export type CreateEccnMarkApiV1EccnMarksPostResponse = CreateEccnMarkApiV1EccnMarksPostResponses[keyof CreateEccnMarkApiV1EccnMarksPostResponses];
+
+export type ListEur1AtrMarksApiV1Eur1AtrMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/eur1-atr-marks';
+};
+
+export type ListEur1AtrMarksApiV1Eur1AtrMarksGetResponses = {
+    /**
+     * Response List Eur1 Atr Marks Api V1 Eur1 Atr Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<Eur1AtrMarkResponse>;
+};
+
+export type ListEur1AtrMarksApiV1Eur1AtrMarksGetResponse = ListEur1AtrMarksApiV1Eur1AtrMarksGetResponses[keyof ListEur1AtrMarksApiV1Eur1AtrMarksGetResponses];
+
+export type CreateEur1AtrMarkApiV1Eur1AtrMarksPostData = {
+    body: Eur1AtrMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/eur1-atr-marks';
+};
+
+export type CreateEur1AtrMarkApiV1Eur1AtrMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateEur1AtrMarkApiV1Eur1AtrMarksPostError = CreateEur1AtrMarkApiV1Eur1AtrMarksPostErrors[keyof CreateEur1AtrMarkApiV1Eur1AtrMarksPostErrors];
+
+export type CreateEur1AtrMarkApiV1Eur1AtrMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: Eur1AtrMarkResponse;
+};
+
+export type CreateEur1AtrMarkApiV1Eur1AtrMarksPostResponse = CreateEur1AtrMarkApiV1Eur1AtrMarksPostResponses[keyof CreateEur1AtrMarkApiV1Eur1AtrMarksPostResponses];
 
 export type HealthHealthGetData = {
     body?: never;
