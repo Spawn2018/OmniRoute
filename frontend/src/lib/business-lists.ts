@@ -392,6 +392,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/po-sku-marks",
   "/po-batch-marks",
   "/un-segregation-marks",
+  "/dual-ledger-marks",
   "/impersonate-guard-marks",
   "/csrd-marks",
   "/air-ra3-marks",
