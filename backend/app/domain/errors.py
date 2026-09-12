@@ -1034,6 +1034,10 @@ class InvalidNvoccMark(DomainError):
     """EXP4.7: HITL NVOCC — nie nvocc live API / scrape."""
 
 
+class InvalidMultiManningMark(DomainError):
+    """EXP4.8: HITL multi-manning — nie tacho live / driver2 SQL."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

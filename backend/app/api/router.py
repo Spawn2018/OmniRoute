@@ -101,6 +101,7 @@ from app.api import (
     money_costs,
     monitoring_schemes,
     mqc_marks,
+    multi_manning_marks,
     nbp_rates,
     ncts_drafts,
     networks,
@@ -231,6 +232,7 @@ api_router.include_router(task_templates.router)
 api_router.include_router(outbox_events.router)
 api_router.include_router(empty_depot_marks.router)
 api_router.include_router(nvocc_marks.router)
+api_router.include_router(multi_manning_marks.router)
 api_router.include_router(entity_events.router)
 api_router.include_router(nbp_rates.router)
 api_router.include_router(charges.router)

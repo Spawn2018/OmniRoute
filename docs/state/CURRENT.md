@@ -4,17 +4,17 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **385.0** EXP4.7 HITL `nvocc_mark`
+**Ostatni plaster:** **386.0** EXP4.8 HITL `multi_manning_mark`
 
-**Etap:** Plan — **386.0** EXP4.8
+**Etap:** Plan — **387.0** EXP4.9
 
 **Noc:** `/noc 10` do 2026-09-12T10:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).
 
-**Następny:** **386.0** EXP4.8 Multi-manning HITL `multi_manning_mark` (kolejka EXP4; EIR skip wcześniej).
+**Następny:** **387.0** EXP4.9 Posting HITL `posting_mark` (kolejka EXP4).
 
-Park: nvocc live API · nvocc scrape. Nie zgaduj 71–386.
+Park: tacho live API · driver scrape. Nie zgaduj 71–387.
 
-**Spec (jedyna na sesję):** (brak — plan 386.0).
+**Spec (jedyna na sesję):** (brak — plan 387.0).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
@@ -22,4 +22,4 @@ Park: nvocc live API · nvocc scrape. Nie zgaduj 71–386.
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-12:** Plaster **385.0** zamknięty (`/noc`) — HITL `nvocc_mark` (EIR skip).
+**2026-09-12:** Plaster **386.0** zamknięty (`/noc`) — HITL `multi_manning_mark`.

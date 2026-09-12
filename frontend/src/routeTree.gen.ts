@@ -63,6 +63,7 @@ import { Route as EccnMarksRouteImport } from './routes/eccn-marks'
 import { Route as EdiMapMarksRouteImport } from './routes/edi-map-marks'
 import { Route as EmptyDepotMarksRouteImport } from './routes/empty-depot-marks'
 import { Route as NvoccMarksRouteImport } from './routes/nvocc-marks'
+import { Route as MultiManningMarksRouteImport } from './routes/multi-manning-marks'
 import { Route as EntityEventsRouteImport } from './routes/entity-events'
 import { Route as ErpConnectorsRouteImport } from './routes/erp-connectors'
 import { Route as Eur1AtrMarksRouteImport } from './routes/eur1-atr-marks'
@@ -474,6 +475,11 @@ const EmptyDepotMarksRoute = EmptyDepotMarksRouteImport.update({
 const NvoccMarksRoute = NvoccMarksRouteImport.update({
   id: '/nvocc-marks',
   path: '/nvocc-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MultiManningMarksRoute = MultiManningMarksRouteImport.update({
+  id: '/multi-manning-marks',
+  path: '/multi-manning-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EntityEventsRoute = EntityEventsRouteImport.update({
@@ -1243,6 +1249,7 @@ export interface FileRoutesByFullPath {
   '/edi-map-marks': typeof EdiMapMarksRoute
   '/empty-depot-marks': typeof EmptyDepotMarksRoute
   '/nvocc-marks': typeof NvoccMarksRoute
+  '/multi-manning-marks': typeof MultiManningMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/eur1-atr-marks': typeof Eur1AtrMarksRoute
@@ -1441,6 +1448,7 @@ export interface FileRoutesByTo {
   '/edi-map-marks': typeof EdiMapMarksRoute
   '/empty-depot-marks': typeof EmptyDepotMarksRoute
   '/nvocc-marks': typeof NvoccMarksRoute
+  '/multi-manning-marks': typeof MultiManningMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/eur1-atr-marks': typeof Eur1AtrMarksRoute
@@ -1640,6 +1648,7 @@ export interface FileRoutesById {
   '/edi-map-marks': typeof EdiMapMarksRoute
   '/empty-depot-marks': typeof EmptyDepotMarksRoute
   '/nvocc-marks': typeof NvoccMarksRoute
+  '/multi-manning-marks': typeof MultiManningMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/eur1-atr-marks': typeof Eur1AtrMarksRoute
@@ -1840,6 +1849,7 @@ export interface FileRouteTypes {
     | '/edi-map-marks'
     | '/empty-depot-marks'
     | '/nvocc-marks'
+    | '/multi-manning-marks'
     | '/entity-events'
     | '/erp-connectors'
     | '/eur1-atr-marks'
@@ -2038,6 +2048,7 @@ export interface FileRouteTypes {
     | '/edi-map-marks'
     | '/empty-depot-marks'
     | '/nvocc-marks'
+    | '/multi-manning-marks'
     | '/entity-events'
     | '/erp-connectors'
     | '/eur1-atr-marks'
@@ -2236,6 +2247,7 @@ export interface FileRouteTypes {
     | '/edi-map-marks'
     | '/empty-depot-marks'
     | '/nvocc-marks'
+    | '/multi-manning-marks'
     | '/entity-events'
     | '/erp-connectors'
     | '/eur1-atr-marks'
@@ -2435,6 +2447,7 @@ export interface RootRouteChildren {
   EdiMapMarksRoute: typeof EdiMapMarksRoute
   EmptyDepotMarksRoute: typeof EmptyDepotMarksRoute
   NvoccMarksRoute: typeof NvoccMarksRoute
+  MultiManningMarksRoute: typeof MultiManningMarksRoute
   EntityEventsRoute: typeof EntityEventsRoute
   ErpConnectorsRoute: typeof ErpConnectorsRoute
   Eur1AtrMarksRoute: typeof Eur1AtrMarksRoute
@@ -2959,6 +2972,14 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NvoccMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/multi-manning-marks': {
+      id: '/multi-manning-marks'
+      path: '/multi-manning-marks'
+      fullPath: '/multi-manning-marks'
+      preLoaderRoute: typeof MultiManningMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+
     '/entity-events': {
       id: '/entity-events'
       path: '/entity-events'
@@ -4012,6 +4033,7 @@ const rootRouteChildren: RootRouteChildren = {
   EdiMapMarksRoute: EdiMapMarksRoute,
   EmptyDepotMarksRoute: EmptyDepotMarksRoute,
   NvoccMarksRoute: NvoccMarksRoute,
+  MultiManningMarksRoute: MultiManningMarksRoute,
   EntityEventsRoute: EntityEventsRoute,
   ErpConnectorsRoute: ErpConnectorsRoute,
   Eur1AtrMarksRoute: Eur1AtrMarksRoute,

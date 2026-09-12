@@ -154,6 +154,7 @@ type organization
     define can_manage_reefer_marks: member
     define can_manage_empty_depot_marks: member
     define can_manage_nvocc_marks: member
+    define can_manage_multi_manning_marks: member
     define can_manage_freight_audit_marks: member
     define can_manage_collaboration_marks: member
     define can_manage_routing_guide_enforcements: member

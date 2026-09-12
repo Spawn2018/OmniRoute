@@ -3361,6 +3361,80 @@
         ]
       }
     },
+    "/api/v1/multi-manning-marks": {
+      "get": {
+        "tags": [
+          "empty-depot"
+        ],
+        "summary": "List Multi Manning Marks",
+        "operationId": "list_multi_manning_marks_api_v1_multi_manning_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/MultiManningMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Multi Manning Marks Api V1 Multi Manning Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "empty-depot"
+        ],
+        "summary": "Create Multi Manning Mark",
+        "operationId": "create_multi_manning_mark_api_v1_multi_manning_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MultiManningMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MultiManningMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/entity-events": {
       "get": {
         "tags": [
@@ -28104,6 +28178,71 @@
           "source_ref"
         ],
         "title": "MqcMarkResponse"
+      },
+      "MultiManningMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "manning_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Manning Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "manning_kind",
+          "source_ref"
+        ],
+        "title": "MultiManningMarkCreate"
+      },
+      "MultiManningMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "manning_kind": {
+            "type": "string",
+            "title": "Manning Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "manning_kind",
+          "source_ref"
+        ],
+        "title": "MultiManningMarkResponse"
       },
       "NbpRateCreate": {
         "properties": {

@@ -6057,6 +6057,50 @@ export type MqcMarkResponse = {
 };
 
 /**
+ * MultiManningMarkCreate
+ */
+export type MultiManningMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Manning Kind
+     */
+    manning_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * MultiManningMarkResponse
+ */
+export type MultiManningMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Manning Kind
+     */
+    manning_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * NbpRateCreate
  */
 export type NbpRateCreate = {
@@ -13820,6 +13864,49 @@ export type CreateNvoccMarkApiV1NvoccMarksPostResponses = {
 };
 
 export type CreateNvoccMarkApiV1NvoccMarksPostResponse = CreateNvoccMarkApiV1NvoccMarksPostResponses[keyof CreateNvoccMarkApiV1NvoccMarksPostResponses];
+
+export type ListMultiManningMarksApiV1MultiManningMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/multi-manning-marks';
+};
+
+export type ListMultiManningMarksApiV1MultiManningMarksGetResponses = {
+    /**
+     * Response List Multi Manning Marks Api V1 Multi Manning Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<MultiManningMarkResponse>;
+};
+
+export type ListMultiManningMarksApiV1MultiManningMarksGetResponse = ListMultiManningMarksApiV1MultiManningMarksGetResponses[keyof ListMultiManningMarksApiV1MultiManningMarksGetResponses];
+
+export type CreateMultiManningMarkApiV1MultiManningMarksPostData = {
+    body: MultiManningMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/multi-manning-marks';
+};
+
+export type CreateMultiManningMarkApiV1MultiManningMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateMultiManningMarkApiV1MultiManningMarksPostError = CreateMultiManningMarkApiV1MultiManningMarksPostErrors[keyof CreateMultiManningMarkApiV1MultiManningMarksPostErrors];
+
+export type CreateMultiManningMarkApiV1MultiManningMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: MultiManningMarkResponse;
+};
+
+export type CreateMultiManningMarkApiV1MultiManningMarksPostResponse = CreateMultiManningMarkApiV1MultiManningMarksPostResponses[keyof CreateMultiManningMarkApiV1MultiManningMarksPostResponses];
 
 export type ListEntityEventsApiV1EntityEventsGetData = {
     body?: never;
