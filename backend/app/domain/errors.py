@@ -950,6 +950,10 @@ class InvalidIsoNis2Mark(DomainError):
     """EXP2.26: HITL ISO/NIS2 ops — nie audyt live / certyfikat HTTP."""
 
 
+class InvalidOffboardingMark(DomainError):
+    """EXP2.28: HITL offboarding — nie wipe ciphertext / DELETE konta."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

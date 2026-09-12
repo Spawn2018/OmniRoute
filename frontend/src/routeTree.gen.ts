@@ -102,6 +102,7 @@ import { Route as NctsDraftsRouteImport } from './routes/ncts-drafts'
 import { Route as NetworksRouteImport } from './routes/networks'
 import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as OceanBillsRouteImport } from './routes/ocean-bills'
+import { Route as OffboardingMarksRouteImport } from './routes/offboarding-marks'
 import { Route as OogMarksRouteImport } from './routes/oog-marks'
 import { Route as OrganizationSettingsRouteImport } from './routes/organization-settings'
 import { Route as OtifMarksRouteImport } from './routes/otif-marks'
@@ -650,6 +651,11 @@ const OceanBillsRoute = OceanBillsRouteImport.update({
   path: '/ocean-bills',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OffboardingMarksRoute = OffboardingMarksRouteImport.update({
+  id: '/offboarding-marks',
+  path: '/offboarding-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OogMarksRoute = OogMarksRouteImport.update({
   id: '/oog-marks',
   path: '/oog-marks',
@@ -1156,6 +1162,7 @@ export interface FileRoutesByFullPath {
   '/networks': typeof NetworksRoute
   '/notifications': typeof NotificationsRoute
   '/ocean-bills': typeof OceanBillsRoute
+  '/offboarding-marks': typeof OffboardingMarksRoute
   '/oog-marks': typeof OogMarksRoute
   '/organization-settings': typeof OrganizationSettingsRoute
   '/otif-marks': typeof OtifMarksRoute
@@ -1333,6 +1340,7 @@ export interface FileRoutesByTo {
   '/networks': typeof NetworksRoute
   '/notifications': typeof NotificationsRoute
   '/ocean-bills': typeof OceanBillsRoute
+  '/offboarding-marks': typeof OffboardingMarksRoute
   '/oog-marks': typeof OogMarksRoute
   '/organization-settings': typeof OrganizationSettingsRoute
   '/otif-marks': typeof OtifMarksRoute
@@ -1511,6 +1519,7 @@ export interface FileRoutesById {
   '/networks': typeof NetworksRoute
   '/notifications': typeof NotificationsRoute
   '/ocean-bills': typeof OceanBillsRoute
+  '/offboarding-marks': typeof OffboardingMarksRoute
   '/oog-marks': typeof OogMarksRoute
   '/organization-settings': typeof OrganizationSettingsRoute
   '/otif-marks': typeof OtifMarksRoute
@@ -1690,6 +1699,7 @@ export interface FileRouteTypes {
     | '/networks'
     | '/notifications'
     | '/ocean-bills'
+    | '/offboarding-marks'
     | '/oog-marks'
     | '/organization-settings'
     | '/otif-marks'
@@ -1867,6 +1877,7 @@ export interface FileRouteTypes {
     | '/networks'
     | '/notifications'
     | '/ocean-bills'
+    | '/offboarding-marks'
     | '/oog-marks'
     | '/organization-settings'
     | '/otif-marks'
@@ -2044,6 +2055,7 @@ export interface FileRouteTypes {
     | '/networks'
     | '/notifications'
     | '/ocean-bills'
+    | '/offboarding-marks'
     | '/oog-marks'
     | '/organization-settings'
     | '/otif-marks'
@@ -2222,6 +2234,7 @@ export interface RootRouteChildren {
   NetworksRoute: typeof NetworksRoute
   NotificationsRoute: typeof NotificationsRoute
   OceanBillsRoute: typeof OceanBillsRoute
+  OffboardingMarksRoute: typeof OffboardingMarksRoute
   OogMarksRoute: typeof OogMarksRoute
   OrganizationSettingsRoute: typeof OrganizationSettingsRoute
   OtifMarksRoute: typeof OtifMarksRoute
@@ -2959,6 +2972,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OceanBillsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/offboarding-marks': {
+      id: '/offboarding-marks'
+      path: '/offboarding-marks'
+      fullPath: '/offboarding-marks'
+      preLoaderRoute: typeof OffboardingMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/oog-marks': {
       id: '/oog-marks'
       path: '/oog-marks'
@@ -3630,6 +3650,7 @@ const rootRouteChildren: RootRouteChildren = {
   NetworksRoute: NetworksRoute,
   NotificationsRoute: NotificationsRoute,
   OceanBillsRoute: OceanBillsRoute,
+  OffboardingMarksRoute: OffboardingMarksRoute,
   OogMarksRoute: OogMarksRoute,
   OrganizationSettingsRoute: OrganizationSettingsRoute,
   OtifMarksRoute: OtifMarksRoute,

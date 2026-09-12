@@ -93,6 +93,7 @@ from app.api import (
     ncts_drafts,
     networks,
     ocean_bills,
+    offboarding_marks,
     oog_marks,
     operational_exceptions,
     operator_decisions,
@@ -361,6 +362,7 @@ api_router.include_router(webhook_outbox_marks.router)
 api_router.include_router(partner_exchange_marks.router)
 api_router.include_router(regulatory_radar_marks.router)
 api_router.include_router(iso_nis2_marks.router)
+api_router.include_router(offboarding_marks.router)
 
 
 @api_router.api_route(

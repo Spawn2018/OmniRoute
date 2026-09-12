@@ -5797,6 +5797,50 @@ export type OceanBillResponse = {
 };
 
 /**
+ * OffboardingMarkCreate
+ */
+export type OffboardingMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Offboard Kind
+     */
+    offboard_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * OffboardingMarkResponse
+ */
+export type OffboardingMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Offboard Kind
+     */
+    offboard_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * OogMarkCreate
  */
 export type OogMarkCreate = {
@@ -20813,6 +20857,49 @@ export type CreateIsoNis2MarkApiV1IsoNis2MarksPostResponses = {
 };
 
 export type CreateIsoNis2MarkApiV1IsoNis2MarksPostResponse = CreateIsoNis2MarkApiV1IsoNis2MarksPostResponses[keyof CreateIsoNis2MarkApiV1IsoNis2MarksPostResponses];
+
+export type ListOffboardingMarksApiV1OffboardingMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/offboarding-marks';
+};
+
+export type ListOffboardingMarksApiV1OffboardingMarksGetResponses = {
+    /**
+     * Response List Offboarding Marks Api V1 Offboarding Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<OffboardingMarkResponse>;
+};
+
+export type ListOffboardingMarksApiV1OffboardingMarksGetResponse = ListOffboardingMarksApiV1OffboardingMarksGetResponses[keyof ListOffboardingMarksApiV1OffboardingMarksGetResponses];
+
+export type CreateOffboardingMarkApiV1OffboardingMarksPostData = {
+    body: OffboardingMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/offboarding-marks';
+};
+
+export type CreateOffboardingMarkApiV1OffboardingMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateOffboardingMarkApiV1OffboardingMarksPostError = CreateOffboardingMarkApiV1OffboardingMarksPostErrors[keyof CreateOffboardingMarkApiV1OffboardingMarksPostErrors];
+
+export type CreateOffboardingMarkApiV1OffboardingMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: OffboardingMarkResponse;
+};
+
+export type CreateOffboardingMarkApiV1OffboardingMarksPostResponse = CreateOffboardingMarkApiV1OffboardingMarksPostResponses[keyof CreateOffboardingMarkApiV1OffboardingMarksPostResponses];
 
 export type HealthHealthGetData = {
     body?: never;

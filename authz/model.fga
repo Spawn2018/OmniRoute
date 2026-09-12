@@ -133,6 +133,7 @@ type organization
     define can_manage_partner_exchange_marks: member
     define can_manage_regulatory_radar_marks: member
     define can_manage_iso_nis2_marks: member
+    define can_manage_offboarding_marks: member
     define can_manage_freight_audit_marks: member
     define can_manage_collaboration_marks: member
     define can_manage_routing_guide_enforcements: member
