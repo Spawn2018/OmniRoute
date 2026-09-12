@@ -17258,6 +17258,80 @@
         ]
       }
     },
+    "/api/v1/vda-odette-marks": {
+      "get": {
+        "tags": [
+          "vda-odette-marks"
+        ],
+        "summary": "List Vda Odette Marks",
+        "operationId": "list_vda_odette_marks_api_v1_vda_odette_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/VdaOdetteMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Vda Odette Marks Api V1 Vda Odette Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "vda-odette-marks"
+        ],
+        "summary": "Create Vda Odette Mark",
+        "operationId": "create_vda_odette_mark_api_v1_vda_odette_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VdaOdetteMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VdaOdetteMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/health": {
       "get": {
         "summary": "Health",
@@ -34178,6 +34252,65 @@
           "type"
         ],
         "title": "ValidationError"
+      },
+      "VdaOdetteMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "edi_kind": {
+            "type": "string",
+            "title": "Edi Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "edi_kind",
+          "source_ref"
+        ],
+        "title": "VdaOdetteMarkCreate"
+      },
+      "VdaOdetteMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "edi_kind": {
+            "type": "string",
+            "title": "Edi Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "edi_kind",
+          "source_ref"
+        ],
+        "title": "VdaOdetteMarkResponse"
       },
       "VisibilityConnectorCreate": {
         "properties": {

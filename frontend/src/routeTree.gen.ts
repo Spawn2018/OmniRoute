@@ -177,6 +177,7 @@ import { Route as TimeToFixMarksRouteImport } from './routes/time-to-fix-marks'
 import { Route as TowerImpactsRouteImport } from './routes/tower-impacts'
 import { Route as TrackingRouteImport } from './routes/tracking'
 import { Route as TwinMarksRouteImport } from './routes/twin-marks'
+import { Route as VdaOdetteMarksRouteImport } from './routes/vda-odette-marks'
 import { Route as VisibilityConnectorsRouteImport } from './routes/visibility-connectors'
 import { Route as WarRoomMarksRouteImport } from './routes/war-room-marks'
 import { Route as WatchtowerRouteImport } from './routes/watchtower'
@@ -1028,6 +1029,11 @@ const TwinMarksRoute = TwinMarksRouteImport.update({
   path: '/twin-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const VdaOdetteMarksRoute = VdaOdetteMarksRouteImport.update({
+  id: '/vda-odette-marks',
+  path: '/vda-odette-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const VisibilityConnectorsRoute = VisibilityConnectorsRouteImport.update({
   id: '/visibility-connectors',
   path: '/visibility-connectors',
@@ -1243,6 +1249,7 @@ export interface FileRoutesByFullPath {
   '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
   '/twin-marks': typeof TwinMarksRoute
+  '/vda-odette-marks': typeof VdaOdetteMarksRoute
   '/visibility-connectors': typeof VisibilityConnectorsRoute
   '/war-room-marks': typeof WarRoomMarksRoute
   '/watchtower': typeof WatchtowerRoute
@@ -1422,6 +1429,7 @@ export interface FileRoutesByTo {
   '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
   '/twin-marks': typeof TwinMarksRoute
+  '/vda-odette-marks': typeof VdaOdetteMarksRoute
   '/visibility-connectors': typeof VisibilityConnectorsRoute
   '/war-room-marks': typeof WarRoomMarksRoute
   '/watchtower': typeof WatchtowerRoute
@@ -1602,6 +1610,7 @@ export interface FileRoutesById {
   '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
   '/twin-marks': typeof TwinMarksRoute
+  '/vda-odette-marks': typeof VdaOdetteMarksRoute
   '/visibility-connectors': typeof VisibilityConnectorsRoute
   '/war-room-marks': typeof WarRoomMarksRoute
   '/watchtower': typeof WatchtowerRoute
@@ -1783,6 +1792,7 @@ export interface FileRouteTypes {
     | '/tower-impacts'
     | '/tracking'
     | '/twin-marks'
+    | '/vda-odette-marks'
     | '/visibility-connectors'
     | '/war-room-marks'
     | '/watchtower'
@@ -1962,6 +1972,7 @@ export interface FileRouteTypes {
     | '/tower-impacts'
     | '/tracking'
     | '/twin-marks'
+    | '/vda-odette-marks'
     | '/visibility-connectors'
     | '/war-room-marks'
     | '/watchtower'
@@ -2141,6 +2152,7 @@ export interface FileRouteTypes {
     | '/tower-impacts'
     | '/tracking'
     | '/twin-marks'
+    | '/vda-odette-marks'
     | '/visibility-connectors'
     | '/war-room-marks'
     | '/watchtower'
@@ -2321,6 +2333,7 @@ export interface RootRouteChildren {
   TowerImpactsRoute: typeof TowerImpactsRoute
   TrackingRoute: typeof TrackingRoute
   TwinMarksRoute: typeof TwinMarksRoute
+  VdaOdetteMarksRoute: typeof VdaOdetteMarksRoute
   VisibilityConnectorsRoute: typeof VisibilityConnectorsRoute
   WarRoomMarksRoute: typeof WarRoomMarksRoute
   WatchtowerRoute: typeof WatchtowerRoute
@@ -3510,6 +3523,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TwinMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/vda-odette-marks': {
+      id: '/vda-odette-marks'
+      path: '/vda-odette-marks'
+      fullPath: '/vda-odette-marks'
+      preLoaderRoute: typeof VdaOdetteMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/visibility-connectors': {
       id: '/visibility-connectors'
       path: '/visibility-connectors'
@@ -3745,6 +3765,7 @@ const rootRouteChildren: RootRouteChildren = {
   TowerImpactsRoute: TowerImpactsRoute,
   TrackingRoute: TrackingRoute,
   TwinMarksRoute: TwinMarksRoute,
+  VdaOdetteMarksRoute: VdaOdetteMarksRoute,
   VisibilityConnectorsRoute: VisibilityConnectorsRoute,
   WarRoomMarksRoute: WarRoomMarksRoute,
   WatchtowerRoute: WatchtowerRoute,

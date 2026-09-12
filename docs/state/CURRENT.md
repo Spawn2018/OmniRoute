@@ -4,17 +4,17 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **366.0** EXP3.1 HITL `jit_jis_mark`
+**Ostatni plaster:** **367.0** EXP3.2 HITL `vda_odette_mark`
 
-**Etap:** Plan — **367.0** EXP3.2
+**Etap:** Plan — **368.0** EXP3.3
 
 **Noc:** `/noc 10` do 2026-09-12T10:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).
 
-**Następny:** **367.0** EXP3.2 VDA/Odette HITL (węższa z kolejki; delta do utworzenia).
+**Następny:** **368.0** EXP3.3 inventory position HITL (delta do utworzenia). Nie WMS.
 
-Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44 · extract · CI5 kara SQL · wróżba punktowa · CI6 kwoty · S11 auto-send · EBITDA SQL · egzekucja 409 · MAE SQL · outcome SQL · crm_opportunity · activity · cold auto-send · bank stakeholder · presentation_due · teatr PUESC · wymiary OOG · LLM-VRP · solver OR · kara kierowcy · work_order · F1 KSeF live · eIDAS crypto · wipe · drugi tenant · company_id FK · WMS e-com · SENT-UE · filer live · silent write · zestaw party_document · yard live · Stripe live · registry scrape · druga marża WC · make-or-buy silnik · allocation SQL · cargo_cover live · sanctions live · subcontract live · schedule live · cutoff live · TIME-TO-FIX live · what-if silnik · cabotage live · combined transport live · ferry art. 9 live · fuel anomaly live · fleet cost live · bin-pack OR live · Chep live · e-CMR live · e-Doręczenia live · Peppol live · SID live · Integration Hub live · webhook live · giełda partnerska live · regulatory radar live · ISO/NIS2 live · wipe ciphertext · WMS/JIT live. Nie zgaduj 71–367.
+Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow CAPA · live SOAP · CT2 · CT5/CT8 live · live p44 · extract · CI5 kara SQL · wróżba punktowa · CI6 kwoty · S11 auto-send · EBITDA SQL · egzekucja 409 · MAE SQL · outcome SQL · crm_opportunity · activity · cold auto-send · bank stakeholder · presentation_due · teatr PUESC · wymiary OOG · LLM-VRP · solver OR · kara kierowcy · work_order · F1 KSeF live · eIDAS crypto · wipe · drugi tenant · company_id FK · WMS e-com · SENT-UE · filer live · silent write · zestaw party_document · yard live · Stripe live · registry scrape · druga marża WC · make-or-buy silnik · allocation SQL · cargo_cover live · sanctions live · subcontract live · schedule live · cutoff live · TIME-TO-FIX live · what-if silnik · cabotage live · combined transport live · ferry art. 9 live · fuel anomaly live · fleet cost live · bin-pack OR live · Chep live · e-CMR live · e-Doręczenia live · Peppol live · SID live · Integration Hub live · webhook live · giełda partnerska live · regulatory radar live · ISO/NIS2 live · wipe ciphertext · WMS/JIT live · live EDI VDA · WMS inventory. Nie zgaduj 71–368.
 
-**Spec (jedyna na sesję):** brak — `/plan-modul` **367.0**.
+**Spec (jedyna na sesję):** brak otwartej delty — najpierw plan 368.0.
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
@@ -22,4 +22,5 @@ Park: U1 masowy · qty float · wspólny SELECT · SQL FV vs charge · workflow 
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-12:** Plaster **366.0** zamknięty (`/noc`). Następny **367.0** EXP3.2.
+**2026-09-12:** Plaster **367.0** zamknięty (`/noc`) — HITL `vda_odette_mark`. Następny plan **368.0**.
+

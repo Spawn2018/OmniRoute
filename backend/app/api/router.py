@@ -174,6 +174,7 @@ from app.api import (
     tracking_events,
     trips,
     twin_marks,
+    vda_odette_marks,
     visibility_connectors,
     war_room_marks,
     weather_observations,
@@ -365,6 +366,7 @@ api_router.include_router(regulatory_radar_marks.router)
 api_router.include_router(iso_nis2_marks.router)
 api_router.include_router(offboarding_marks.router)
 api_router.include_router(jit_jis_marks.router)
+api_router.include_router(vda_odette_marks.router)
 
 
 @api_router.api_route(

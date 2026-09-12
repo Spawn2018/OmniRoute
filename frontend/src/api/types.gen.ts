@@ -10641,6 +10641,50 @@ export type ValidationError = {
 };
 
 /**
+ * VdaOdetteMarkCreate
+ */
+export type VdaOdetteMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Edi Kind
+     */
+    edi_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * VdaOdetteMarkResponse
+ */
+export type VdaOdetteMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Edi Kind
+     */
+    edi_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * VisibilityConnectorCreate
  */
 export type VisibilityConnectorCreate = {
@@ -20987,6 +21031,49 @@ export type CreateJitJisMarkApiV1JitJisMarksPostResponses = {
 };
 
 export type CreateJitJisMarkApiV1JitJisMarksPostResponse = CreateJitJisMarkApiV1JitJisMarksPostResponses[keyof CreateJitJisMarkApiV1JitJisMarksPostResponses];
+
+export type ListVdaOdetteMarksApiV1VdaOdetteMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/vda-odette-marks';
+};
+
+export type ListVdaOdetteMarksApiV1VdaOdetteMarksGetResponses = {
+    /**
+     * Response List Vda Odette Marks Api V1 Vda Odette Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<VdaOdetteMarkResponse>;
+};
+
+export type ListVdaOdetteMarksApiV1VdaOdetteMarksGetResponse = ListVdaOdetteMarksApiV1VdaOdetteMarksGetResponses[keyof ListVdaOdetteMarksApiV1VdaOdetteMarksGetResponses];
+
+export type CreateVdaOdetteMarkApiV1VdaOdetteMarksPostData = {
+    body: VdaOdetteMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/vda-odette-marks';
+};
+
+export type CreateVdaOdetteMarkApiV1VdaOdetteMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateVdaOdetteMarkApiV1VdaOdetteMarksPostError = CreateVdaOdetteMarkApiV1VdaOdetteMarksPostErrors[keyof CreateVdaOdetteMarkApiV1VdaOdetteMarksPostErrors];
+
+export type CreateVdaOdetteMarkApiV1VdaOdetteMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: VdaOdetteMarkResponse;
+};
+
+export type CreateVdaOdetteMarkApiV1VdaOdetteMarksPostResponse = CreateVdaOdetteMarkApiV1VdaOdetteMarksPostResponses[keyof CreateVdaOdetteMarkApiV1VdaOdetteMarksPostResponses];
 
 export type HealthHealthGetData = {
     body?: never;

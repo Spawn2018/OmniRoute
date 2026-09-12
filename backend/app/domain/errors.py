@@ -958,6 +958,10 @@ class InvalidJitJisMark(DomainError):
     """EXP3.1: HITL JIT/JIS — nie WMS live / silnik JIT."""
 
 
+class InvalidVdaOdetteMark(DomainError):
+    """EXP3.2: HITL VDA/Odette — nie live EDI VDA / ZPL."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

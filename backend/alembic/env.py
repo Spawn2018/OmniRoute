@@ -159,6 +159,7 @@ from app.models.regulatory_radar_mark import RegulatoryRadarMark  # noqa: F401
 from app.models.iso_nis2_mark import IsoNis2Mark  # noqa: F401
 from app.models.offboarding_mark import OffboardingMark  # noqa: F401
 from app.models.jit_jis_mark import JitJisMark  # noqa: F401
+from app.models.vda_odette_mark import VdaOdetteMark  # noqa: F401
 from app.models.collaboration_mark import CollaborationMark  # noqa: F401
 from app.models.freight_audit_mark import FreightAuditMark  # noqa: F401
 from app.models.routing_guide import RoutingGuide  # noqa: F401
