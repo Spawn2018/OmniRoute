@@ -4993,6 +4993,50 @@ export type ImpactScenarioResponse = {
 };
 
 /**
+ * ImpersonateGuardMarkCreate
+ */
+export type ImpersonateGuardMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Guard Kind
+     */
+    guard_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ImpersonateGuardMarkResponse
+ */
+export type ImpersonateGuardMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Guard Kind
+     */
+    guard_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * InboundExtractResponse
  */
 export type InboundExtractResponse = {
@@ -20369,6 +20413,49 @@ export type CreateImpactScenarioApiV1ImpactScenariosPostResponses = {
 };
 
 export type CreateImpactScenarioApiV1ImpactScenariosPostResponse = CreateImpactScenarioApiV1ImpactScenariosPostResponses[keyof CreateImpactScenarioApiV1ImpactScenariosPostResponses];
+
+export type ListImpersonateGuardMarksApiV1ImpersonateGuardMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/impersonate-guard-marks';
+};
+
+export type ListImpersonateGuardMarksApiV1ImpersonateGuardMarksGetResponses = {
+    /**
+     * Response List Impersonate Guard Marks Api V1 Impersonate Guard Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<ImpersonateGuardMarkResponse>;
+};
+
+export type ListImpersonateGuardMarksApiV1ImpersonateGuardMarksGetResponse = ListImpersonateGuardMarksApiV1ImpersonateGuardMarksGetResponses[keyof ListImpersonateGuardMarksApiV1ImpersonateGuardMarksGetResponses];
+
+export type CreateImpersonateGuardMarkApiV1ImpersonateGuardMarksPostData = {
+    body: ImpersonateGuardMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/impersonate-guard-marks';
+};
+
+export type CreateImpersonateGuardMarkApiV1ImpersonateGuardMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateImpersonateGuardMarkApiV1ImpersonateGuardMarksPostError = CreateImpersonateGuardMarkApiV1ImpersonateGuardMarksPostErrors[keyof CreateImpersonateGuardMarkApiV1ImpersonateGuardMarksPostErrors];
+
+export type CreateImpersonateGuardMarkApiV1ImpersonateGuardMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ImpersonateGuardMarkResponse;
+};
+
+export type CreateImpersonateGuardMarkApiV1ImpersonateGuardMarksPostResponse = CreateImpersonateGuardMarkApiV1ImpersonateGuardMarksPostResponses[keyof CreateImpersonateGuardMarkApiV1ImpersonateGuardMarksPostResponses];
 
 export type ListFreightAuditMarksApiV1FreightAuditMarksGetData = {
     body?: never;

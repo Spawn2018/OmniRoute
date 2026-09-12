@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **402.0** EXP0.11 HITL `demo_gps_mark`. **Etap:** Plaster — **403.0** EXP0.12. **Następny:** **403.0** EXP0.12 HITL `impersonate_guard_mark` (impersonate≠unwrap). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **403.0** EXP0.12 HITL `impersonate_guard_mark`. **Etap:** Plan — **404.0** EXP2.14. **Następny:** **404.0** EXP2.14 HITL `fuel_card_mark` (karta paliwowa + anomalia; bez live). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

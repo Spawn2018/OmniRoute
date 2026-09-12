@@ -140,6 +140,10 @@ export const BUSINESS_LISTS = {
   delayForecast: { route: "/delay-forecasts", tableKey: "delay_forecast" },
   demandSnapshotMark: { route: "/demand-snapshot-marks", tableKey: "demand_snapshot_mark" },
   demoGpsMark: { route: "/demo-gps-marks", tableKey: "demo_gps_mark" },
+  impersonateGuardMark: {
+    route: "/impersonate-guard-marks",
+    tableKey: "impersonate_guard_mark",
+  },
   csrdMark: { route: "/csrd-marks", tableKey: "csrd_mark" },
   airRa3Mark: { route: "/air-ra3-marks", tableKey: "air_ra3_mark" },
   railCimMark: { route: "/rail-cim-marks", tableKey: "rail_cim_mark" },
@@ -359,6 +363,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/delay-forecasts",
   "/demand-snapshot-marks",
   "/demo-gps-marks",
+  "/impersonate-guard-marks",
   "/csrd-marks",
   "/air-ra3-marks",
   "/rail-cim-marks",

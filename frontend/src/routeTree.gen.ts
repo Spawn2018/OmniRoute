@@ -93,6 +93,7 @@ import { Route as GroupageTariffsRouteImport } from './routes/groupage-tariffs'
 import { Route as HealthRouteImport } from './routes/health'
 import { Route as IdpConnectorsRouteImport } from './routes/idp-connectors'
 import { Route as ImpactScenariosRouteImport } from './routes/impact-scenarios'
+import { Route as ImpersonateGuardMarksRouteImport } from './routes/impersonate-guard-marks'
 import { Route as IntegrationHubMarksRouteImport } from './routes/integration-hub-marks'
 import { Route as InterventionOutcomesRouteImport } from './routes/intervention-outcomes'
 import { Route as InventoryPositionMarksRouteImport } from './routes/inventory-position-marks'
@@ -640,6 +641,11 @@ const IdpConnectorsRoute = IdpConnectorsRouteImport.update({
 const ImpactScenariosRoute = ImpactScenariosRouteImport.update({
   id: '/impact-scenarios',
   path: '/impact-scenarios',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImpersonateGuardMarksRoute = ImpersonateGuardMarksRouteImport.update({
+  id: '/impersonate-guard-marks',
+  path: '/impersonate-guard-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IntegrationHubMarksRoute = IntegrationHubMarksRouteImport.update({
@@ -1369,6 +1375,7 @@ export interface FileRoutesByFullPath {
   '/health': typeof HealthRoute
   '/idp-connectors': typeof IdpConnectorsRoute
   '/impact-scenarios': typeof ImpactScenariosRoute
+  '/impersonate-guard-marks': typeof ImpersonateGuardMarksRoute
   '/integration-hub-marks': typeof IntegrationHubMarksRoute
   '/intervention-outcomes': typeof InterventionOutcomesRoute
   '/inventory-position-marks': typeof InventoryPositionMarksRoute
@@ -1583,6 +1590,7 @@ export interface FileRoutesByTo {
   '/health': typeof HealthRoute
   '/idp-connectors': typeof IdpConnectorsRoute
   '/impact-scenarios': typeof ImpactScenariosRoute
+  '/impersonate-guard-marks': typeof ImpersonateGuardMarksRoute
   '/integration-hub-marks': typeof IntegrationHubMarksRoute
   '/intervention-outcomes': typeof InterventionOutcomesRoute
   '/inventory-position-marks': typeof InventoryPositionMarksRoute
@@ -1798,6 +1806,7 @@ export interface FileRoutesById {
   '/health': typeof HealthRoute
   '/idp-connectors': typeof IdpConnectorsRoute
   '/impact-scenarios': typeof ImpactScenariosRoute
+  '/impersonate-guard-marks': typeof ImpersonateGuardMarksRoute
   '/integration-hub-marks': typeof IntegrationHubMarksRoute
   '/intervention-outcomes': typeof InterventionOutcomesRoute
   '/inventory-position-marks': typeof InventoryPositionMarksRoute
@@ -2014,6 +2023,7 @@ export interface FileRouteTypes {
     | '/health'
     | '/idp-connectors'
     | '/impact-scenarios'
+    | '/impersonate-guard-marks'
     | '/integration-hub-marks'
     | '/intervention-outcomes'
     | '/inventory-position-marks'
@@ -2228,6 +2238,7 @@ export interface FileRouteTypes {
     | '/health'
     | '/idp-connectors'
     | '/impact-scenarios'
+    | '/impersonate-guard-marks'
     | '/integration-hub-marks'
     | '/intervention-outcomes'
     | '/inventory-position-marks'
@@ -2442,6 +2453,7 @@ export interface FileRouteTypes {
     | '/health'
     | '/idp-connectors'
     | '/impact-scenarios'
+    | '/impersonate-guard-marks'
     | '/integration-hub-marks'
     | '/intervention-outcomes'
     | '/inventory-position-marks'
@@ -2657,6 +2669,7 @@ export interface RootRouteChildren {
   HealthRoute: typeof HealthRoute
   IdpConnectorsRoute: typeof IdpConnectorsRoute
   ImpactScenariosRoute: typeof ImpactScenariosRoute
+  ImpersonateGuardMarksRoute: typeof ImpersonateGuardMarksRoute
   IntegrationHubMarksRoute: typeof IntegrationHubMarksRoute
   InterventionOutcomesRoute: typeof InterventionOutcomesRoute
   InventoryPositionMarksRoute: typeof InventoryPositionMarksRoute
@@ -3375,6 +3388,13 @@ declare module '@tanstack/react-router' {
       path: '/impact-scenarios'
       fullPath: '/impact-scenarios'
       preLoaderRoute: typeof ImpactScenariosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/impersonate-guard-marks': {
+      id: '/impersonate-guard-marks'
+      path: '/impersonate-guard-marks'
+      fullPath: '/impersonate-guard-marks'
+      preLoaderRoute: typeof ImpersonateGuardMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/integration-hub-marks': {
@@ -4361,6 +4381,7 @@ const rootRouteChildren: RootRouteChildren = {
   HealthRoute: HealthRoute,
   IdpConnectorsRoute: IdpConnectorsRoute,
   ImpactScenariosRoute: ImpactScenariosRoute,
+  ImpersonateGuardMarksRoute: ImpersonateGuardMarksRoute,
   IntegrationHubMarksRoute: IntegrationHubMarksRoute,
   InterventionOutcomesRoute: InterventionOutcomesRoute,
   InventoryPositionMarksRoute: InventoryPositionMarksRoute,

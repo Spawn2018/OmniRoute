@@ -1004,6 +1004,11 @@ export const OPS_JOBS = [
     job: "katalog demo_gps_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.impersonateGuardMark.route,
+    label: "Impersonate guard",
+    job: "katalog impersonate_guard_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.remediationOption.route,
     label: "Opcja naprawy",
     job: "katalog remediation_option HITL",
@@ -1429,6 +1434,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "399.0": "/mobile-client-marks",
   "401.0": "/job-metric-marks",
   "402.0": "/demo-gps-marks",
+  "403.0": "/impersonate-guard-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

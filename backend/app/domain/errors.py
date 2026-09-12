@@ -966,6 +966,10 @@ class InvalidDemoGpsMark(DomainError):
     """EXP0.11: HITL demo GPS — nie live GPS / lat/lng."""
 
 
+class InvalidImpersonateGuardMark(DomainError):
+    """EXP0.12: HITL impersonate≠unwrap — nie crypto / Auth0 live."""
+
+
 class InvalidVdaOdetteMark(DomainError):
     """EXP3.2: HITL VDA/Odette — nie live EDI VDA / ZPL."""
 

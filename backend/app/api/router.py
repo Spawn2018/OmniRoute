@@ -85,6 +85,7 @@ from app.api import (
     groupage_tariffs,
     idp_connectors,
     impact_scenarios,
+    impersonate_guard_marks,
     inbound_messages,
     incoterm_responsibilities,
     integration_hub_marks,
@@ -373,6 +374,7 @@ api_router.include_router(demand_snapshot_marks.router)
 api_router.include_router(demo_gps_marks.router)
 api_router.include_router(remediation_options.router)
 api_router.include_router(impact_scenarios.router)
+api_router.include_router(impersonate_guard_marks.router)
 api_router.include_router(freight_audit_marks.router)
 api_router.include_router(collaboration_marks.router)
 api_router.include_router(terminal_slot_connectors.router)

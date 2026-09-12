@@ -13502,6 +13502,80 @@
         ]
       }
     },
+    "/api/v1/impersonate-guard-marks": {
+      "get": {
+        "tags": [
+          "impersonate-guard-mark"
+        ],
+        "summary": "List Impersonate Guard Marks",
+        "operationId": "list_impersonate_guard_marks_api_v1_impersonate_guard_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ImpersonateGuardMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Impersonate Guard Marks Api V1 Impersonate Guard Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "impersonate-guard-mark"
+        ],
+        "summary": "Create Impersonate Guard Mark",
+        "operationId": "create_impersonate_guard_mark_api_v1_impersonate_guard_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ImpersonateGuardMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImpersonateGuardMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/freight-audit-marks": {
       "get": {
         "tags": [
@@ -27663,6 +27737,71 @@
           "source_ref"
         ],
         "title": "ImpactScenarioResponse"
+      },
+      "ImpersonateGuardMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "guard_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Guard Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "guard_kind",
+          "source_ref"
+        ],
+        "title": "ImpersonateGuardMarkCreate"
+      },
+      "ImpersonateGuardMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "guard_kind": {
+            "type": "string",
+            "title": "Guard Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "guard_kind",
+          "source_ref"
+        ],
+        "title": "ImpersonateGuardMarkResponse"
       },
       "InboundExtractResponse": {
         "properties": {
