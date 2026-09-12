@@ -938,6 +938,10 @@ class InvalidWebhookOutboxMark(DomainError):
     """EXP2.23: HITL webhook outbox — nie live dispatch / Temporal."""
 
 
+class InvalidPartnerExchangeMark(DomainError):
+    """EXP2.24: HITL giełda partnerska — nie live Trans.eu / auto-post."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

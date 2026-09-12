@@ -103,6 +103,7 @@ from app.api import (
     pallet_balances,
     pallet_pool_marks,
     parties,
+    partner_exchange_marks,
     party_documents,
     party_lane_scorecards,
     party_scorecards,
@@ -355,6 +356,7 @@ api_router.include_router(peppol_marks.router)
 api_router.include_router(sid_import_marks.router)
 api_router.include_router(integration_hub_marks.router)
 api_router.include_router(webhook_outbox_marks.router)
+api_router.include_router(partner_exchange_marks.router)
 
 
 @api_router.api_route(

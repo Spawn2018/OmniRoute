@@ -325,11 +325,12 @@ describe("U-routes-breadth standing", () => {
       "358.0": "/sid-import-marks",
       "359.0": "/integration-hub-marks",
       "360.0": "/webhook-outbox-marks",
+      "361.0": "/partner-exchange-marks",
     })
     expect(OPS_JOBS.map((job) => job.route)).toEqual(
       expect.arrayContaining(Object.values(SHIPPED_CHARGE_ROUTES)),
     )
-    expect(OPS_JOBS).toHaveLength(179)
+    expect(OPS_JOBS).toHaveLength(180)
     expect(OPS_JOBS.length).not.toBe(157)
 
     const html = renderToStaticMarkup(

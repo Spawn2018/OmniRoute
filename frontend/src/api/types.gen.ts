@@ -6239,6 +6239,50 @@ export type PalletPoolMarkResponse = {
 };
 
 /**
+ * PartnerExchangeMarkCreate
+ */
+export type PartnerExchangeMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Exchange Kind
+     */
+    exchange_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * PartnerExchangeMarkResponse
+ */
+export type PartnerExchangeMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Exchange Kind
+     */
+    exchange_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * PartyCreate
  */
 export type PartyCreate = {
@@ -20552,6 +20596,49 @@ export type CreateWebhookOutboxMarkApiV1WebhookOutboxMarksPostResponses = {
 };
 
 export type CreateWebhookOutboxMarkApiV1WebhookOutboxMarksPostResponse = CreateWebhookOutboxMarkApiV1WebhookOutboxMarksPostResponses[keyof CreateWebhookOutboxMarkApiV1WebhookOutboxMarksPostResponses];
+
+export type ListPartnerExchangeMarksApiV1PartnerExchangeMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/partner-exchange-marks';
+};
+
+export type ListPartnerExchangeMarksApiV1PartnerExchangeMarksGetResponses = {
+    /**
+     * Response List Partner Exchange Marks Api V1 Partner Exchange Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<PartnerExchangeMarkResponse>;
+};
+
+export type ListPartnerExchangeMarksApiV1PartnerExchangeMarksGetResponse = ListPartnerExchangeMarksApiV1PartnerExchangeMarksGetResponses[keyof ListPartnerExchangeMarksApiV1PartnerExchangeMarksGetResponses];
+
+export type CreatePartnerExchangeMarkApiV1PartnerExchangeMarksPostData = {
+    body: PartnerExchangeMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/partner-exchange-marks';
+};
+
+export type CreatePartnerExchangeMarkApiV1PartnerExchangeMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreatePartnerExchangeMarkApiV1PartnerExchangeMarksPostError = CreatePartnerExchangeMarkApiV1PartnerExchangeMarksPostErrors[keyof CreatePartnerExchangeMarkApiV1PartnerExchangeMarksPostErrors];
+
+export type CreatePartnerExchangeMarkApiV1PartnerExchangeMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: PartnerExchangeMarkResponse;
+};
+
+export type CreatePartnerExchangeMarkApiV1PartnerExchangeMarksPostResponse = CreatePartnerExchangeMarkApiV1PartnerExchangeMarksPostResponses[keyof CreatePartnerExchangeMarkApiV1PartnerExchangeMarksPostResponses];
 
 export type HealthHealthGetData = {
     body?: never;

@@ -16888,6 +16888,80 @@
         ]
       }
     },
+    "/api/v1/partner-exchange-marks": {
+      "get": {
+        "tags": [
+          "partner-exchange-marks"
+        ],
+        "summary": "List Partner Exchange Marks",
+        "operationId": "list_partner_exchange_marks_api_v1_partner_exchange_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PartnerExchangeMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Partner Exchange Marks Api V1 Partner Exchange Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "partner-exchange-marks"
+        ],
+        "summary": "Create Partner Exchange Mark",
+        "operationId": "create_partner_exchange_mark_api_v1_partner_exchange_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PartnerExchangeMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PartnerExchangeMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/health": {
       "get": {
         "summary": "Health",
@@ -26643,6 +26717,65 @@
           "source_ref"
         ],
         "title": "PalletPoolMarkResponse"
+      },
+      "PartnerExchangeMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "exchange_kind": {
+            "type": "string",
+            "title": "Exchange Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "exchange_kind",
+          "source_ref"
+        ],
+        "title": "PartnerExchangeMarkCreate"
+      },
+      "PartnerExchangeMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "exchange_kind": {
+            "type": "string",
+            "title": "Exchange Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "exchange_kind",
+          "source_ref"
+        ],
+        "title": "PartnerExchangeMarkResponse"
       },
       "PartyCreate": {
         "properties": {

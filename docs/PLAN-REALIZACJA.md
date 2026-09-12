@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **361.0** EXP2.24 giełda partnerska HITL (węższa z kolejki; delta do utworzenia).
+**Następny:** **362.0** EXP2.25 regulatory radar HITL (węższa z kolejki; delta do utworzenia).
 <!-- os-status:end -->
 
 ```mermaid

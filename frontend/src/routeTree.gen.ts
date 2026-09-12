@@ -108,6 +108,7 @@ import { Route as OutboxRouteImport } from './routes/outbox'
 import { Route as PalletBalancesRouteImport } from './routes/pallet-balances'
 import { Route as PalletPoolMarksRouteImport } from './routes/pallet-pool-marks'
 import { Route as PartiesRouteImport } from './routes/parties'
+import { Route as PartnerExchangeMarksRouteImport } from './routes/partner-exchange-marks'
 import { Route as PartyDocumentsRouteImport } from './routes/party-documents'
 import { Route as PartyScorecardsRouteImport } from './routes/party-scorecards'
 import { Route as PaymentsRouteImport } from './routes/payments'
@@ -677,6 +678,11 @@ const PartiesRoute = PartiesRouteImport.update({
   path: '/parties',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PartnerExchangeMarksRoute = PartnerExchangeMarksRouteImport.update({
+  id: '/partner-exchange-marks',
+  path: '/partner-exchange-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PartyDocumentsRoute = PartyDocumentsRouteImport.update({
   id: '/party-documents',
   path: '/party-documents',
@@ -1144,6 +1150,7 @@ export interface FileRoutesByFullPath {
   '/pallet-balances': typeof PalletBalancesRoute
   '/pallet-pool-marks': typeof PalletPoolMarksRoute
   '/parties': typeof PartiesRoute
+  '/partner-exchange-marks': typeof PartnerExchangeMarksRoute
   '/party-documents': typeof PartyDocumentsRoute
   '/party-scorecards': typeof PartyScorecardsRoute
   '/payments': typeof PaymentsRoute
@@ -1318,6 +1325,7 @@ export interface FileRoutesByTo {
   '/pallet-balances': typeof PalletBalancesRoute
   '/pallet-pool-marks': typeof PalletPoolMarksRoute
   '/parties': typeof PartiesRoute
+  '/partner-exchange-marks': typeof PartnerExchangeMarksRoute
   '/party-documents': typeof PartyDocumentsRoute
   '/party-scorecards': typeof PartyScorecardsRoute
   '/payments': typeof PaymentsRoute
@@ -1493,6 +1501,7 @@ export interface FileRoutesById {
   '/pallet-balances': typeof PalletBalancesRoute
   '/pallet-pool-marks': typeof PalletPoolMarksRoute
   '/parties': typeof PartiesRoute
+  '/partner-exchange-marks': typeof PartnerExchangeMarksRoute
   '/party-documents': typeof PartyDocumentsRoute
   '/party-scorecards': typeof PartyScorecardsRoute
   '/payments': typeof PaymentsRoute
@@ -1669,6 +1678,7 @@ export interface FileRouteTypes {
     | '/pallet-balances'
     | '/pallet-pool-marks'
     | '/parties'
+    | '/partner-exchange-marks'
     | '/party-documents'
     | '/party-scorecards'
     | '/payments'
@@ -1843,6 +1853,7 @@ export interface FileRouteTypes {
     | '/pallet-balances'
     | '/pallet-pool-marks'
     | '/parties'
+    | '/partner-exchange-marks'
     | '/party-documents'
     | '/party-scorecards'
     | '/payments'
@@ -2017,6 +2028,7 @@ export interface FileRouteTypes {
     | '/pallet-balances'
     | '/pallet-pool-marks'
     | '/parties'
+    | '/partner-exchange-marks'
     | '/party-documents'
     | '/party-scorecards'
     | '/payments'
@@ -2192,6 +2204,7 @@ export interface RootRouteChildren {
   PalletBalancesRoute: typeof PalletBalancesRoute
   PalletPoolMarksRoute: typeof PalletPoolMarksRoute
   PartiesRoute: typeof PartiesRoute
+  PartnerExchangeMarksRoute: typeof PartnerExchangeMarksRoute
   PartyDocumentsRoute: typeof PartyDocumentsRoute
   PartyScorecardsRoute: typeof PartyScorecardsRoute
   PaymentsRoute: typeof PaymentsRoute
@@ -2962,6 +2975,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PartiesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/partner-exchange-marks': {
+      id: '/partner-exchange-marks'
+      path: '/partner-exchange-marks'
+      fullPath: '/partner-exchange-marks'
+      preLoaderRoute: typeof PartnerExchangeMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/party-documents': {
       id: '/party-documents'
       path: '/party-documents'
@@ -3576,6 +3596,7 @@ const rootRouteChildren: RootRouteChildren = {
   PalletBalancesRoute: PalletBalancesRoute,
   PalletPoolMarksRoute: PalletPoolMarksRoute,
   PartiesRoute: PartiesRoute,
+  PartnerExchangeMarksRoute: PartnerExchangeMarksRoute,
   PartyDocumentsRoute: PartyDocumentsRoute,
   PartyScorecardsRoute: PartyScorecardsRoute,
   PaymentsRoute: PaymentsRoute,

@@ -180,6 +180,7 @@ def _organization_exp2_catalog_relations() -> dict[str, Userset]:
         "can_manage_sid_import_marks": _member(),
         "can_manage_integration_hub_marks": _member(),
         "can_manage_webhook_outbox_marks": _member(),
+        "can_manage_partner_exchange_marks": _member(),
     }
 
 
