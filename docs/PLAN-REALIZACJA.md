@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **383.0** EXP4.4 ICS2 filer HITL `ics2_filer_mark` (kolejka EXP4; filing_scheme_mark istnieje — sprawdź dup).
+**Następny:** **384.0** EXP4.6 empty/depot/chassis HITL `empty_depot_mark` (kolejka EXP4; local_charge/OOG już są).
 <!-- os-status:end -->
 
 ```mermaid

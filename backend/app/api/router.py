@@ -136,6 +136,7 @@ from app.api import (
     rank_marks,
     rate_cards,
     rate_lines,
+    reefer_marks,
     registry_poll_marks,
     regulatory_radar_marks,
     remediation_options,
@@ -323,6 +324,7 @@ api_router.include_router(air_ra3_marks.router)
 api_router.include_router(aeo_dossier_marks.router)
 api_router.include_router(yard_marks.router)
 api_router.include_router(billing_marks.router)
+api_router.include_router(reefer_marks.router)
 api_router.include_router(registry_poll_marks.router)
 api_router.include_router(working_capital_marks.router)
 api_router.include_router(make_or_buy_marks.router)

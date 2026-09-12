@@ -177,6 +177,7 @@ modules =
     app.services.air_ra3_marks
     app.services.rail_cim_marks
     app.services.ocean_alliance_marks
+    app.services.reefer_marks
     app.services.freight_audit_marks
     app.services.collaboration_marks
     app.services.exchange_connectors
@@ -794,6 +795,9 @@ forbidden_modules =
     app.services.ocean_alliance_marks
     app.repositories.ocean_alliance_marks
     app.models.ocean_alliance_mark
+    app.services.reefer_marks
+    app.repositories.reefer_marks
+    app.models.reefer_mark
     app.services.freight_audit_marks
     app.repositories.freight_audit_marks
     app.models.freight_audit_mark

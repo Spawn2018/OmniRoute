@@ -151,6 +151,7 @@ type organization
     define can_manage_air_ra3_marks: member
     define can_manage_rail_cim_marks: member
     define can_manage_ocean_alliance_marks: member
+    define can_manage_reefer_marks: member
     define can_manage_freight_audit_marks: member
     define can_manage_collaboration_marks: member
     define can_manage_routing_guide_enforcements: member

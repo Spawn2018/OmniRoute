@@ -8231,6 +8231,50 @@ export type RateLineSupersede = {
 };
 
 /**
+ * ReeferMarkCreate
+ */
+export type ReeferMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Reefer Kind
+     */
+    reefer_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ReeferMarkResponse
+ */
+export type ReeferMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Reefer Kind
+     */
+    reefer_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * RegistryPollMarkCreate
  */
 export type RegistryPollMarkCreate = {
@@ -18170,6 +18214,49 @@ export type CreateBillingMarkApiV1BillingMarksPostResponses = {
 };
 
 export type CreateBillingMarkApiV1BillingMarksPostResponse = CreateBillingMarkApiV1BillingMarksPostResponses[keyof CreateBillingMarkApiV1BillingMarksPostResponses];
+
+export type ListReeferMarksApiV1ReeferMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/reefer-marks';
+};
+
+export type ListReeferMarksApiV1ReeferMarksGetResponses = {
+    /**
+     * Response List Reefer Marks Api V1 Reefer Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<ReeferMarkResponse>;
+};
+
+export type ListReeferMarksApiV1ReeferMarksGetResponse = ListReeferMarksApiV1ReeferMarksGetResponses[keyof ListReeferMarksApiV1ReeferMarksGetResponses];
+
+export type CreateReeferMarkApiV1ReeferMarksPostData = {
+    body: ReeferMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/reefer-marks';
+};
+
+export type CreateReeferMarkApiV1ReeferMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateReeferMarkApiV1ReeferMarksPostError = CreateReeferMarkApiV1ReeferMarksPostErrors[keyof CreateReeferMarkApiV1ReeferMarksPostErrors];
+
+export type CreateReeferMarkApiV1ReeferMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ReeferMarkResponse;
+};
+
+export type CreateReeferMarkApiV1ReeferMarksPostResponse = CreateReeferMarkApiV1ReeferMarksPostResponses[keyof CreateReeferMarkApiV1ReeferMarksPostResponses];
 
 export type ListRegistryPollMarksApiV1RegistryPollMarksGetData = {
     body?: never;

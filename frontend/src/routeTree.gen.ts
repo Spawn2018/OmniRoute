@@ -144,6 +144,7 @@ import { Route as RailCimMarksRouteImport } from './routes/rail-cim-marks'
 import { Route as RankMarksRouteImport } from './routes/rank-marks'
 import { Route as RateCardsRouteImport } from './routes/rate-cards'
 import { Route as RateLinesRouteImport } from './routes/rate-lines'
+import { Route as ReeferMarksRouteImport } from './routes/reefer-marks'
 import { Route as RegistryPollMarksRouteImport } from './routes/registry-poll-marks'
 import { Route as RegulatoryRadarMarksRouteImport } from './routes/regulatory-radar-marks'
 import { Route as RemediationOptionsRouteImport } from './routes/remediation-options'
@@ -878,6 +879,11 @@ const RateLinesRoute = RateLinesRouteImport.update({
   path: '/rate-lines',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReeferMarksRoute = ReeferMarksRouteImport.update({
+  id: '/reefer-marks',
+  path: '/reefer-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RegistryPollMarksRoute = RegistryPollMarksRouteImport.update({
   id: '/registry-poll-marks',
   path: '/registry-poll-marks',
@@ -1306,6 +1312,7 @@ export interface FileRoutesByFullPath {
   '/rank-marks': typeof RankMarksRoute
   '/rate-cards': typeof RateCardsRoute
   '/rate-lines': typeof RateLinesRoute
+  '/reefer-marks': typeof ReeferMarksRoute
   '/registry-poll-marks': typeof RegistryPollMarksRoute
   '/regulatory-radar-marks': typeof RegulatoryRadarMarksRoute
   '/remediation-options': typeof RemediationOptionsRoute
@@ -1501,6 +1508,7 @@ export interface FileRoutesByTo {
   '/rank-marks': typeof RankMarksRoute
   '/rate-cards': typeof RateCardsRoute
   '/rate-lines': typeof RateLinesRoute
+  '/reefer-marks': typeof ReeferMarksRoute
   '/registry-poll-marks': typeof RegistryPollMarksRoute
   '/regulatory-radar-marks': typeof RegulatoryRadarMarksRoute
   '/remediation-options': typeof RemediationOptionsRoute
@@ -1697,6 +1705,7 @@ export interface FileRoutesById {
   '/rank-marks': typeof RankMarksRoute
   '/rate-cards': typeof RateCardsRoute
   '/rate-lines': typeof RateLinesRoute
+  '/reefer-marks': typeof ReeferMarksRoute
   '/registry-poll-marks': typeof RegistryPollMarksRoute
   '/regulatory-radar-marks': typeof RegulatoryRadarMarksRoute
   '/remediation-options': typeof RemediationOptionsRoute
@@ -1894,6 +1903,7 @@ export interface FileRouteTypes {
     | '/rank-marks'
     | '/rate-cards'
     | '/rate-lines'
+    | '/reefer-marks'
     | '/registry-poll-marks'
     | '/regulatory-radar-marks'
     | '/remediation-options'
@@ -2089,6 +2099,7 @@ export interface FileRouteTypes {
     | '/rank-marks'
     | '/rate-cards'
     | '/rate-lines'
+    | '/reefer-marks'
     | '/registry-poll-marks'
     | '/regulatory-radar-marks'
     | '/remediation-options'
@@ -2284,6 +2295,7 @@ export interface FileRouteTypes {
     | '/rank-marks'
     | '/rate-cards'
     | '/rate-lines'
+    | '/reefer-marks'
     | '/registry-poll-marks'
     | '/regulatory-radar-marks'
     | '/remediation-options'
@@ -2480,6 +2492,7 @@ export interface RootRouteChildren {
   RankMarksRoute: typeof RankMarksRoute
   RateCardsRoute: typeof RateCardsRoute
   RateLinesRoute: typeof RateLinesRoute
+  ReeferMarksRoute: typeof ReeferMarksRoute
   RegistryPollMarksRoute: typeof RegistryPollMarksRoute
   RegulatoryRadarMarksRoute: typeof RegulatoryRadarMarksRoute
   RemediationOptionsRoute: typeof RemediationOptionsRoute
@@ -3488,6 +3501,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RateLinesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reefer-marks': {
+      id: '/reefer-marks'
+      path: '/reefer-marks'
+      fullPath: '/reefer-marks'
+      preLoaderRoute: typeof ReeferMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/registry-poll-marks': {
       id: '/registry-poll-marks'
       path: '/registry-poll-marks'
@@ -4033,6 +4053,7 @@ const rootRouteChildren: RootRouteChildren = {
   RankMarksRoute: RankMarksRoute,
   RateCardsRoute: RateCardsRoute,
   RateLinesRoute: RateLinesRoute,
+  ReeferMarksRoute: ReeferMarksRoute,
   RegistryPollMarksRoute: RegistryPollMarksRoute,
   RegulatoryRadarMarksRoute: RegulatoryRadarMarksRoute,
   RemediationOptionsRoute: RemediationOptionsRoute,

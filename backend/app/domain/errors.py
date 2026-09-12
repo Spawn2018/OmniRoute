@@ -1022,6 +1022,10 @@ class InvalidOceanAllianceMark(DomainError):
     """EXP4.3: HITL ocean alliance/feeder — nie ocean live API / alliance scrape."""
 
 
+class InvalidReeferMark(DomainError):
+    """EXP4.5: HITL reefer — nie reefer live API / reefer scrape."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 
