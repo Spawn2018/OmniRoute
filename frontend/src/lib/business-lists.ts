@@ -129,6 +129,10 @@ export const BUSINESS_LISTS = {
     route: "/customer-po-marks",
     tableKey: "customer_po_mark",
   },
+  profitCenterMark: {
+    route: "/profit-center-marks",
+    tableKey: "profit_center_mark",
+  },
   tenantContractKek: { route: "/tenant-contract-keks", tableKey: "tenant_contract_kek" },
   visibilityConnector: { route: "/visibility-connectors", tableKey: "visibility_connector" },
   purchaseOrder: { route: "/purchase-orders", tableKey: "purchase_order" },
@@ -413,6 +417,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/slot-guarantee-marks",
   "/freight-term-marks",
   "/customer-po-marks",
+  "/profit-center-marks",
   "/impersonate-guard-marks",
   "/csrd-marks",
   "/air-ra3-marks",

@@ -8993,6 +8993,50 @@ export type PredictionLedgerResponse = {
 };
 
 /**
+ * ProfitCenterMarkCreate
+ */
+export type ProfitCenterMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Center Kind
+     */
+    center_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ProfitCenterMarkResponse
+ */
+export type ProfitCenterMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Center Kind
+     */
+    center_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * PurchaseOrderCreate
  */
 export type PurchaseOrderCreate = {
@@ -14748,6 +14792,49 @@ export type CreateCustomerPoMarkApiV1CustomerPoMarksPostResponses = {
 };
 
 export type CreateCustomerPoMarkApiV1CustomerPoMarksPostResponse = CreateCustomerPoMarkApiV1CustomerPoMarksPostResponses[keyof CreateCustomerPoMarkApiV1CustomerPoMarksPostResponses];
+
+export type ListProfitCenterMarksApiV1ProfitCenterMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/profit-center-marks';
+};
+
+export type ListProfitCenterMarksApiV1ProfitCenterMarksGetResponses = {
+    /**
+     * Response List Profit Center Marks Api V1 Profit Center Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<ProfitCenterMarkResponse>;
+};
+
+export type ListProfitCenterMarksApiV1ProfitCenterMarksGetResponse = ListProfitCenterMarksApiV1ProfitCenterMarksGetResponses[keyof ListProfitCenterMarksApiV1ProfitCenterMarksGetResponses];
+
+export type CreateProfitCenterMarkApiV1ProfitCenterMarksPostData = {
+    body: ProfitCenterMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/profit-center-marks';
+};
+
+export type CreateProfitCenterMarkApiV1ProfitCenterMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateProfitCenterMarkApiV1ProfitCenterMarksPostError = CreateProfitCenterMarkApiV1ProfitCenterMarksPostErrors[keyof CreateProfitCenterMarkApiV1ProfitCenterMarksPostErrors];
+
+export type CreateProfitCenterMarkApiV1ProfitCenterMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ProfitCenterMarkResponse;
+};
+
+export type CreateProfitCenterMarkApiV1ProfitCenterMarksPostResponse = CreateProfitCenterMarkApiV1ProfitCenterMarksPostResponses[keyof CreateProfitCenterMarkApiV1ProfitCenterMarksPostResponses];
 
 export type ListCustomerRfqsApiV1CustomerRfqsGetData = {
     body?: never;

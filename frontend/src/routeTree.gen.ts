@@ -164,6 +164,7 @@ import { Route as PortSurchargesRouteImport } from './routes/port-surcharges'
 import { Route as PortsRouteImport } from './routes/ports'
 import { Route as PostingMarksRouteImport } from './routes/posting-marks'
 import { Route as PredictionLedgersRouteImport } from './routes/prediction-ledgers'
+import { Route as ProfitCenterMarksRouteImport } from './routes/profit-center-marks'
 import { Route as PurchaseOrdersRouteImport } from './routes/purchase-orders'
 import { Route as QualityRouteImport } from './routes/quality'
 import { Route as QuotationsRouteImport } from './routes/quotations'
@@ -1016,6 +1017,11 @@ const PredictionLedgersRoute = PredictionLedgersRouteImport.update({
   path: '/prediction-ledgers',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProfitCenterMarksRoute = ProfitCenterMarksRouteImport.update({
+  id: '/profit-center-marks',
+  path: '/profit-center-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PurchaseOrdersRoute = PurchaseOrdersRouteImport.update({
   id: '/purchase-orders',
   path: '/purchase-orders',
@@ -1554,6 +1560,7 @@ export interface FileRoutesByFullPath {
   '/ports': typeof PortsRoute
   '/posting-marks': typeof PostingMarksRoute
   '/prediction-ledgers': typeof PredictionLedgersRoute
+  '/profit-center-marks': typeof ProfitCenterMarksRoute
   '/purchase-orders': typeof PurchaseOrdersRoute
   '/quality': typeof QualityRoute
   '/quotations': typeof QuotationsRoute
@@ -1787,6 +1794,7 @@ export interface FileRoutesByTo {
   '/ports': typeof PortsRoute
   '/posting-marks': typeof PostingMarksRoute
   '/prediction-ledgers': typeof PredictionLedgersRoute
+  '/profit-center-marks': typeof ProfitCenterMarksRoute
   '/purchase-orders': typeof PurchaseOrdersRoute
   '/quality': typeof QualityRoute
   '/quotations': typeof QuotationsRoute
@@ -2021,6 +2029,7 @@ export interface FileRoutesById {
   '/ports': typeof PortsRoute
   '/posting-marks': typeof PostingMarksRoute
   '/prediction-ledgers': typeof PredictionLedgersRoute
+  '/profit-center-marks': typeof ProfitCenterMarksRoute
   '/purchase-orders': typeof PurchaseOrdersRoute
   '/quality': typeof QualityRoute
   '/quotations': typeof QuotationsRoute
@@ -2256,6 +2265,7 @@ export interface FileRouteTypes {
     | '/ports'
     | '/posting-marks'
     | '/prediction-ledgers'
+    | '/profit-center-marks'
     | '/purchase-orders'
     | '/quality'
     | '/quotations'
@@ -2489,6 +2499,7 @@ export interface FileRouteTypes {
     | '/ports'
     | '/posting-marks'
     | '/prediction-ledgers'
+    | '/profit-center-marks'
     | '/purchase-orders'
     | '/quality'
     | '/quotations'
@@ -2722,6 +2733,7 @@ export interface FileRouteTypes {
     | '/ports'
     | '/posting-marks'
     | '/prediction-ledgers'
+    | '/profit-center-marks'
     | '/purchase-orders'
     | '/quality'
     | '/quotations'
@@ -2956,6 +2968,7 @@ export interface RootRouteChildren {
   PortsRoute: typeof PortsRoute
   PostingMarksRoute: typeof PostingMarksRoute
   PredictionLedgersRoute: typeof PredictionLedgersRoute
+  ProfitCenterMarksRoute: typeof ProfitCenterMarksRoute
   PurchaseOrdersRoute: typeof PurchaseOrdersRoute
   QualityRoute: typeof QualityRoute
   QuotationsRoute: typeof QuotationsRoute
@@ -4121,6 +4134,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PredictionLedgersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/profit-center-marks': {
+      id: '/profit-center-marks'
+      path: '/profit-center-marks'
+      fullPath: '/profit-center-marks'
+      preLoaderRoute: typeof ProfitCenterMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/purchase-orders': {
       id: '/purchase-orders'
       path: '/purchase-orders'
@@ -4812,6 +4832,7 @@ const rootRouteChildren: RootRouteChildren = {
   PortsRoute: PortsRoute,
   PostingMarksRoute: PostingMarksRoute,
   PredictionLedgersRoute: PredictionLedgersRoute,
+  ProfitCenterMarksRoute: ProfitCenterMarksRoute,
   PurchaseOrdersRoute: PurchaseOrdersRoute,
   QualityRoute: QualityRoute,
   QuotationsRoute: QuotationsRoute,

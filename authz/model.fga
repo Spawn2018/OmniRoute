@@ -161,6 +161,7 @@ type organization
     define can_manage_slot_guarantee_marks: member
     define can_manage_freight_term_marks: member
     define can_manage_customer_po_marks: member
+    define can_manage_profit_center_marks: member
     define can_manage_impersonate_guard_marks: member
 
     define can_manage_fuel_card_marks: member

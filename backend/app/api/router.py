@@ -158,6 +158,7 @@ from app.api import (
     ports,
     posting_marks,
     prediction_ledgers,
+    profit_center_marks,
     purchase_orders,
     quotations,
     quote_invoice_settlements,
@@ -255,6 +256,7 @@ api_router.include_router(carrier_inquiries.router)
 api_router.include_router(inbound_messages.router)
 api_router.include_router(incoterm_responsibilities.router)
 api_router.include_router(customer_po_marks.router)
+api_router.include_router(profit_center_marks.router)
 api_router.include_router(customer_rfqs.router)
 api_router.include_router(operator_decisions.router)
 api_router.include_router(operator_notices.router)

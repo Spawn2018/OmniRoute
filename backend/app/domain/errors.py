@@ -1014,6 +1014,10 @@ class InvalidCustomerPoMark(DomainError):
     """EXP1: HITL customer_po_mark — nie purchase_order CT1 / kwota."""
 
 
+class InvalidProfitCenterMark(DomainError):
+    """EXP1: HITL profit_center_mark — nie kolumna shipment / kwota."""
+
+
 class InvalidImpersonateGuardMark(DomainError):
     """EXP0.12: HITL impersonate≠unwrap — nie crypto / Auth0 live."""
 
