@@ -10023,6 +10023,50 @@ export type TableViewUpdate = {
 };
 
 /**
+ * TachoOfficeMarkCreate
+ */
+export type TachoOfficeMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Tacho Kind
+     */
+    tacho_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TachoOfficeMarkResponse
+ */
+export type TachoOfficeMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Tacho Kind
+     */
+    tacho_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * TaskTemplateCreate
  */
 export type TaskTemplateCreate = {
@@ -13994,6 +14038,49 @@ export type CreatePostingMarkApiV1PostingMarksPostResponses = {
 };
 
 export type CreatePostingMarkApiV1PostingMarksPostResponse = CreatePostingMarkApiV1PostingMarksPostResponses[keyof CreatePostingMarkApiV1PostingMarksPostResponses];
+
+export type ListTachoOfficeMarksApiV1TachoOfficeMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tacho-office-marks';
+};
+
+export type ListTachoOfficeMarksApiV1TachoOfficeMarksGetResponses = {
+    /**
+     * Response List Tacho Office Marks Api V1 Tacho Office Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<TachoOfficeMarkResponse>;
+};
+
+export type ListTachoOfficeMarksApiV1TachoOfficeMarksGetResponse = ListTachoOfficeMarksApiV1TachoOfficeMarksGetResponses[keyof ListTachoOfficeMarksApiV1TachoOfficeMarksGetResponses];
+
+export type CreateTachoOfficeMarkApiV1TachoOfficeMarksPostData = {
+    body: TachoOfficeMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tacho-office-marks';
+};
+
+export type CreateTachoOfficeMarkApiV1TachoOfficeMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTachoOfficeMarkApiV1TachoOfficeMarksPostError = CreateTachoOfficeMarkApiV1TachoOfficeMarksPostErrors[keyof CreateTachoOfficeMarkApiV1TachoOfficeMarksPostErrors];
+
+export type CreateTachoOfficeMarkApiV1TachoOfficeMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TachoOfficeMarkResponse;
+};
+
+export type CreateTachoOfficeMarkApiV1TachoOfficeMarksPostResponse = CreateTachoOfficeMarkApiV1TachoOfficeMarksPostResponses[keyof CreateTachoOfficeMarkApiV1TachoOfficeMarksPostResponses];
 
 export type ListEntityEventsApiV1EntityEventsGetData = {
     body?: never;

@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **387.0** EXP4.9 HITL `posting_mark`
-- **Etap:** Plan — **388.0** EXP4.10
-- **Następny:** **388.0** EXP4.10 Tacho Office HITL `tacho_office_mark` (kolejka EXP4).
+- **Ostatni plaster:** **388.0** EXP4.10 HITL `tacho_office_mark`
+- **Etap:** Plan — **389.0** EXP4.11
+- **Następny:** **389.0** EXP4.11 LEZ/zakazy HITL `lez_mark` (kolejka EXP4).
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

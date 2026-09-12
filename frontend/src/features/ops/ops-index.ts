@@ -934,6 +934,11 @@ export const OPS_JOBS = [
     job: "katalog posting_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.tachoOfficeMark.route,
+    label: "Tacho Office",
+    job: "katalog tacho_office_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.remediationOption.route,
     label: "Opcja naprawy",
     job: "katalog remediation_option HITL",
@@ -1345,6 +1350,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "385.0": "/nvocc-marks",
   "386.0": "/multi-manning-marks",
   "387.0": "/posting-marks",
+  "388.0": "/tacho-office-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

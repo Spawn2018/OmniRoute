@@ -166,6 +166,7 @@ from app.api import (
     subcontract_edge_marks,
     switch_bl_loi_marks,
     table_views,
+    tacho_office_marks,
     task_templates,
     telematics_connectors,
     tenancy,
@@ -235,6 +236,7 @@ api_router.include_router(empty_depot_marks.router)
 api_router.include_router(nvocc_marks.router)
 api_router.include_router(multi_manning_marks.router)
 api_router.include_router(posting_marks.router)
+api_router.include_router(tacho_office_marks.router)
 api_router.include_router(entity_events.router)
 api_router.include_router(nbp_rates.router)
 api_router.include_router(charges.router)

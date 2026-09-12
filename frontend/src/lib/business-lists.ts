@@ -144,6 +144,7 @@ export const BUSINESS_LISTS = {
   nvoccMark: { route: "/nvocc-marks", tableKey: "nvocc_mark" },
   multiManningMark: { route: "/multi-manning-marks", tableKey: "multi_manning_mark" },
   postingMark: { route: "/posting-marks", tableKey: "posting_mark" },
+  tachoOfficeMark: { route: "/tacho-office-marks", tableKey: "tacho_office_mark" },
   remediationOption: {
     route: "/remediation-options",
     tableKey: "remediation_option",
@@ -349,6 +350,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/nvocc-marks",
   "/multi-manning-marks",
   "/posting-marks",
+  "/tacho-office-marks",
   "/remediation-options",
   "/impact-scenarios",
   "/clause-notices",

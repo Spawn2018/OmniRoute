@@ -3509,6 +3509,80 @@
         ]
       }
     },
+    "/api/v1/tacho-office-marks": {
+      "get": {
+        "tags": [
+          "empty-depot"
+        ],
+        "summary": "List Tacho Office Marks",
+        "operationId": "list_tacho_office_marks_api_v1_tacho_office_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TachoOfficeMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Tacho Office Marks Api V1 Tacho Office Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "empty-depot"
+        ],
+        "summary": "Create Tacho Office Mark",
+        "operationId": "create_tacho_office_mark_api_v1_tacho_office_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TachoOfficeMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TachoOfficeMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/entity-events": {
       "get": {
         "tags": [
@@ -34683,6 +34757,71 @@
         },
         "type": "object",
         "title": "TableViewUpdate"
+      },
+      "TachoOfficeMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "tacho_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Tacho Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "tacho_kind",
+          "source_ref"
+        ],
+        "title": "TachoOfficeMarkCreate"
+      },
+      "TachoOfficeMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "tacho_kind": {
+            "type": "string",
+            "title": "Tacho Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "tacho_kind",
+          "source_ref"
+        ],
+        "title": "TachoOfficeMarkResponse"
       },
       "TaskTemplateCreate": {
         "properties": {

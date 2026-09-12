@@ -65,6 +65,7 @@ import { Route as EmptyDepotMarksRouteImport } from './routes/empty-depot-marks'
 import { Route as NvoccMarksRouteImport } from './routes/nvocc-marks'
 import { Route as MultiManningMarksRouteImport } from './routes/multi-manning-marks'
 import { Route as PostingMarksRouteImport } from './routes/posting-marks'
+import { Route as TachoOfficeMarksRouteImport } from './routes/tacho-office-marks'
 import { Route as EntityEventsRouteImport } from './routes/entity-events'
 import { Route as ErpConnectorsRouteImport } from './routes/erp-connectors'
 import { Route as Eur1AtrMarksRouteImport } from './routes/eur1-atr-marks'
@@ -486,6 +487,11 @@ const MultiManningMarksRoute = MultiManningMarksRouteImport.update({
 const PostingMarksRoute = PostingMarksRouteImport.update({
   id: '/posting-marks',
   path: '/posting-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TachoOfficeMarksRoute = TachoOfficeMarksRouteImport.update({
+  id: '/tacho-office-marks',
+  path: '/tacho-office-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EntityEventsRoute = EntityEventsRouteImport.update({
@@ -1257,6 +1263,7 @@ export interface FileRoutesByFullPath {
   '/nvocc-marks': typeof NvoccMarksRoute
   '/multi-manning-marks': typeof MultiManningMarksRoute
   '/posting-marks': typeof PostingMarksRoute
+  '/tacho-office-marks': typeof TachoOfficeMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/eur1-atr-marks': typeof Eur1AtrMarksRoute
@@ -1457,6 +1464,7 @@ export interface FileRoutesByTo {
   '/nvocc-marks': typeof NvoccMarksRoute
   '/multi-manning-marks': typeof MultiManningMarksRoute
   '/posting-marks': typeof PostingMarksRoute
+  '/tacho-office-marks': typeof TachoOfficeMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/eur1-atr-marks': typeof Eur1AtrMarksRoute
@@ -1658,6 +1666,7 @@ export interface FileRoutesById {
   '/nvocc-marks': typeof NvoccMarksRoute
   '/multi-manning-marks': typeof MultiManningMarksRoute
   '/posting-marks': typeof PostingMarksRoute
+  '/tacho-office-marks': typeof TachoOfficeMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/eur1-atr-marks': typeof Eur1AtrMarksRoute
@@ -1860,6 +1869,7 @@ export interface FileRouteTypes {
     | '/nvocc-marks'
     | '/multi-manning-marks'
     | '/posting-marks'
+    | '/tacho-office-marks'
     | '/entity-events'
     | '/erp-connectors'
     | '/eur1-atr-marks'
@@ -2060,6 +2070,7 @@ export interface FileRouteTypes {
     | '/nvocc-marks'
     | '/multi-manning-marks'
     | '/posting-marks'
+    | '/tacho-office-marks'
     | '/entity-events'
     | '/erp-connectors'
     | '/eur1-atr-marks'
@@ -2260,6 +2271,7 @@ export interface FileRouteTypes {
     | '/nvocc-marks'
     | '/multi-manning-marks'
     | '/posting-marks'
+    | '/tacho-office-marks'
     | '/entity-events'
     | '/erp-connectors'
     | '/eur1-atr-marks'
@@ -2461,6 +2473,7 @@ export interface RootRouteChildren {
   NvoccMarksRoute: typeof NvoccMarksRoute
   MultiManningMarksRoute: typeof MultiManningMarksRoute
   PostingMarksRoute: typeof PostingMarksRoute
+  TachoOfficeMarksRoute: typeof TachoOfficeMarksRoute
   EntityEventsRoute: typeof EntityEventsRoute
   ErpConnectorsRoute: typeof ErpConnectorsRoute
   Eur1AtrMarksRoute: typeof Eur1AtrMarksRoute
@@ -2999,6 +3012,14 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PostingMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tacho-office-marks': {
+      id: '/tacho-office-marks'
+      path: '/tacho-office-marks'
+      fullPath: '/tacho-office-marks'
+      preLoaderRoute: typeof TachoOfficeMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+
 
 
     '/entity-events': {
@@ -4056,6 +4077,7 @@ const rootRouteChildren: RootRouteChildren = {
   NvoccMarksRoute: NvoccMarksRoute,
   MultiManningMarksRoute: MultiManningMarksRoute,
   PostingMarksRoute: PostingMarksRoute,
+  TachoOfficeMarksRoute: TachoOfficeMarksRoute,
   EntityEventsRoute: EntityEventsRoute,
   ErpConnectorsRoute: ErpConnectorsRoute,
   Eur1AtrMarksRoute: Eur1AtrMarksRoute,
