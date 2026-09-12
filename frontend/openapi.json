@@ -2769,6 +2769,80 @@
         }
       }
     },
+    "/api/v1/mail-accept-marks": {
+      "get": {
+        "tags": [
+          "funnel"
+        ],
+        "summary": "List Mail Accept Marks",
+        "operationId": "list_mail_accept_marks_api_v1_mail_accept_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/MailAcceptMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Mail Accept Marks Api V1 Mail Accept Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "funnel"
+        ],
+        "summary": "Create Mail Accept Mark",
+        "operationId": "create_mail_accept_mark_api_v1_mail_accept_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MailAcceptMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MailAcceptMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/memory-edges": {
       "get": {
         "tags": [
@@ -28481,6 +28555,71 @@
           "source_ref"
         ],
         "title": "LocationResponse"
+      },
+      "MailAcceptMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "accept_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Accept Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "accept_kind",
+          "source_ref"
+        ],
+        "title": "MailAcceptMarkCreate"
+      },
+      "MailAcceptMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "accept_kind": {
+            "type": "string",
+            "title": "Accept Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "accept_kind",
+          "source_ref"
+        ],
+        "title": "MailAcceptMarkResponse"
       },
       "MailDraftBatchCreate": {
         "properties": {

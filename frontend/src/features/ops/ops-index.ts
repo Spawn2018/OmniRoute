@@ -964,6 +964,11 @@ export const OPS_JOBS = [
     job: "katalog funnel_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.mailAcceptMark.route,
+    label: "Accept z maila",
+    job: "katalog mail_accept_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.remediationOption.route,
     label: "Opcja naprawy",
     job: "katalog remediation_option HITL",
@@ -1381,6 +1386,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "391.0": "/ab-sus-marks",
   "392.0": "/funnel-marks",
   "393.0": "/terms-ai-marks",
+  "394.0": "/mail-accept-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

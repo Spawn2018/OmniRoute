@@ -1066,6 +1066,10 @@ class InvalidFunnelMark(DomainError):
     """EXP4.14: HITL X7 lejek — nie funnel live / CRM attribution."""
 
 
+class InvalidMailAcceptMark(DomainError):
+    """EXP4.16: HITL Accept z maila — nie Graph live / auto-send."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

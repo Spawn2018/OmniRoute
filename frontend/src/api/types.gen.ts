@@ -5907,6 +5907,50 @@ export type LocationResponse = {
 };
 
 /**
+ * MailAcceptMarkCreate
+ */
+export type MailAcceptMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Accept Kind
+     */
+    accept_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * MailAcceptMarkResponse
+ */
+export type MailAcceptMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Accept Kind
+     */
+    accept_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * MailDraftBatchCreate
  */
 export type MailDraftBatchCreate = {
@@ -13828,6 +13872,49 @@ export type DispatchMailDraftMailtoApiV1MailDraftsDraftIdDispatchMailtoPostRespo
 };
 
 export type DispatchMailDraftMailtoApiV1MailDraftsDraftIdDispatchMailtoPostResponse = DispatchMailDraftMailtoApiV1MailDraftsDraftIdDispatchMailtoPostResponses[keyof DispatchMailDraftMailtoApiV1MailDraftsDraftIdDispatchMailtoPostResponses];
+
+export type ListMailAcceptMarksApiV1MailAcceptMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/mail-accept-marks';
+};
+
+export type ListMailAcceptMarksApiV1MailAcceptMarksGetResponses = {
+    /**
+     * Response List Mail Accept Marks Api V1 Mail Accept Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<MailAcceptMarkResponse>;
+};
+
+export type ListMailAcceptMarksApiV1MailAcceptMarksGetResponse = ListMailAcceptMarksApiV1MailAcceptMarksGetResponses[keyof ListMailAcceptMarksApiV1MailAcceptMarksGetResponses];
+
+export type CreateMailAcceptMarkApiV1MailAcceptMarksPostData = {
+    body: MailAcceptMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/mail-accept-marks';
+};
+
+export type CreateMailAcceptMarkApiV1MailAcceptMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateMailAcceptMarkApiV1MailAcceptMarksPostError = CreateMailAcceptMarkApiV1MailAcceptMarksPostErrors[keyof CreateMailAcceptMarkApiV1MailAcceptMarksPostErrors];
+
+export type CreateMailAcceptMarkApiV1MailAcceptMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: MailAcceptMarkResponse;
+};
+
+export type CreateMailAcceptMarkApiV1MailAcceptMarksPostResponse = CreateMailAcceptMarkApiV1MailAcceptMarksPostResponses[keyof CreateMailAcceptMarkApiV1MailAcceptMarksPostResponses];
 
 export type ListMemoryEdgesApiV1MemoryEdgesGetData = {
     body?: never;

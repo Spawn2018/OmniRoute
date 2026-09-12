@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **393.0** EXP4.15 HITL `terms_ai_mark`
-- **Etap:** Plan — **394.0** EXP4.16
-- **Następny:** **394.0** EXP4.16 Accept z maila HITL `mail_accept_mark` (kolejka EXP4).
+- **Ostatni plaster:** **394.0** EXP4.16 HITL `mail_accept_mark`
+- **Etap:** Plan — **395.0** EXP4.17
+- **Następny:** **395.0** EXP4.17 Widoki ról HITL `role_view_mark` (kolejka EXP4).
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
