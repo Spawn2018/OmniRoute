@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **383.0** EXP4.5 HITL `reefer_mark`
-- **Etap:** Plan — **384.0** EXP4.6
-- **Następny:** **384.0** EXP4.6 empty/depot/chassis HITL `empty_depot_mark` (kolejka EXP4; local_charge/OOG już są).
+- **Ostatni plaster:** **384.0** EXP4.6 HITL `empty_depot_mark`
+- **Etap:** Plan — **385.0** EXP4.7
+- **Następny:** **385.0** EXP4.7 NVOCC HITL `nvocc_mark` (kolejka EXP4; EIR skip — `yard_mark.yard_kind=eir`).
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

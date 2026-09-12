@@ -3553,6 +3553,50 @@ export type EmailDomainResponse = {
 };
 
 /**
+ * EmptyDepotMarkCreate
+ */
+export type EmptyDepotMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Depot Kind
+     */
+    depot_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * EmptyDepotMarkResponse
+ */
+export type EmptyDepotMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Depot Kind
+     */
+    depot_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * EntityEventCreate
  */
 export type EntityEventCreate = {
@@ -13646,6 +13690,49 @@ export type CreateOutboxEventApiV1OutboxEventsPostResponses = {
 };
 
 export type CreateOutboxEventApiV1OutboxEventsPostResponse = CreateOutboxEventApiV1OutboxEventsPostResponses[keyof CreateOutboxEventApiV1OutboxEventsPostResponses];
+
+export type ListEmptyDepotMarksApiV1EmptyDepotMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/empty-depot-marks';
+};
+
+export type ListEmptyDepotMarksApiV1EmptyDepotMarksGetResponses = {
+    /**
+     * Response List Empty Depot Marks Api V1 Empty Depot Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<EmptyDepotMarkResponse>;
+};
+
+export type ListEmptyDepotMarksApiV1EmptyDepotMarksGetResponse = ListEmptyDepotMarksApiV1EmptyDepotMarksGetResponses[keyof ListEmptyDepotMarksApiV1EmptyDepotMarksGetResponses];
+
+export type CreateEmptyDepotMarkApiV1EmptyDepotMarksPostData = {
+    body: EmptyDepotMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/empty-depot-marks';
+};
+
+export type CreateEmptyDepotMarkApiV1EmptyDepotMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateEmptyDepotMarkApiV1EmptyDepotMarksPostError = CreateEmptyDepotMarkApiV1EmptyDepotMarksPostErrors[keyof CreateEmptyDepotMarkApiV1EmptyDepotMarksPostErrors];
+
+export type CreateEmptyDepotMarkApiV1EmptyDepotMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: EmptyDepotMarkResponse;
+};
+
+export type CreateEmptyDepotMarkApiV1EmptyDepotMarksPostResponse = CreateEmptyDepotMarkApiV1EmptyDepotMarksPostResponses[keyof CreateEmptyDepotMarkApiV1EmptyDepotMarksPostResponses];
 
 export type ListEntityEventsApiV1EntityEventsGetData = {
     body?: never;

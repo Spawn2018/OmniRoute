@@ -1026,6 +1026,10 @@ class InvalidReeferMark(DomainError):
     """EXP4.5: HITL reefer — nie reefer live API / reefer scrape."""
 
 
+class InvalidEmptyDepotMark(DomainError):
+    """EXP4.6: HITL empty/depot/chassis — nie depot live API / scrape."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

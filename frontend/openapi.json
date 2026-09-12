@@ -3213,6 +3213,80 @@
         ]
       }
     },
+    "/api/v1/empty-depot-marks": {
+      "get": {
+        "tags": [
+          "empty-depot"
+        ],
+        "summary": "List Empty Depot Marks",
+        "operationId": "list_empty_depot_marks_api_v1_empty_depot_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/EmptyDepotMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Empty Depot Marks Api V1 Empty Depot Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "empty-depot"
+        ],
+        "summary": "Create Empty Depot Mark",
+        "operationId": "create_empty_depot_mark_api_v1_empty_depot_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmptyDepotMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyDepotMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/entity-events": {
       "get": {
         "tags": [
@@ -24249,6 +24323,71 @@
           "source_ref"
         ],
         "title": "EmailDomainResponse"
+      },
+      "EmptyDepotMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "depot_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Depot Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "depot_kind",
+          "source_ref"
+        ],
+        "title": "EmptyDepotMarkCreate"
+      },
+      "EmptyDepotMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "depot_kind": {
+            "type": "string",
+            "title": "Depot Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "depot_kind",
+          "source_ref"
+        ],
+        "title": "EmptyDepotMarkResponse"
       },
       "EntityEventCreate": {
         "properties": {

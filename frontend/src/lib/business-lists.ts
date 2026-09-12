@@ -140,6 +140,7 @@ export const BUSINESS_LISTS = {
   railCimMark: { route: "/rail-cim-marks", tableKey: "rail_cim_mark" },
   oceanAllianceMark: { route: "/ocean-alliance-marks", tableKey: "ocean_alliance_mark" },
   reeferMark: { route: "/reefer-marks", tableKey: "reefer_mark" },
+  emptyDepotMark: { route: "/empty-depot-marks", tableKey: "empty_depot_mark" },
   remediationOption: {
     route: "/remediation-options",
     tableKey: "remediation_option",
@@ -341,6 +342,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/rail-cim-marks",
   "/ocean-alliance-marks",
   "/reefer-marks",
+  "/empty-depot-marks",
   "/remediation-options",
   "/impact-scenarios",
   "/clause-notices",

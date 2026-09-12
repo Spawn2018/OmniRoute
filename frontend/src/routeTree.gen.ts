@@ -61,6 +61,7 @@ import { Route as EDeliveryMarksRouteImport } from './routes/e-delivery-marks'
 import { Route as EdiRouteImport } from './routes/edi'
 import { Route as EccnMarksRouteImport } from './routes/eccn-marks'
 import { Route as EdiMapMarksRouteImport } from './routes/edi-map-marks'
+import { Route as EmptyDepotMarksRouteImport } from './routes/empty-depot-marks'
 import { Route as EntityEventsRouteImport } from './routes/entity-events'
 import { Route as ErpConnectorsRouteImport } from './routes/erp-connectors'
 import { Route as Eur1AtrMarksRouteImport } from './routes/eur1-atr-marks'
@@ -462,6 +463,11 @@ const EccnMarksRoute = EccnMarksRouteImport.update({
 const EdiMapMarksRoute = EdiMapMarksRouteImport.update({
   id: '/edi-map-marks',
   path: '/edi-map-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmptyDepotMarksRoute = EmptyDepotMarksRouteImport.update({
+  id: '/empty-depot-marks',
+  path: '/empty-depot-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EntityEventsRoute = EntityEventsRouteImport.update({
@@ -1229,6 +1235,7 @@ export interface FileRoutesByFullPath {
   '/edi': typeof EdiRoute
   '/eccn-marks': typeof EccnMarksRoute
   '/edi-map-marks': typeof EdiMapMarksRoute
+  '/empty-depot-marks': typeof EmptyDepotMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/eur1-atr-marks': typeof Eur1AtrMarksRoute
@@ -1425,6 +1432,7 @@ export interface FileRoutesByTo {
   '/edi': typeof EdiRoute
   '/eccn-marks': typeof EccnMarksRoute
   '/edi-map-marks': typeof EdiMapMarksRoute
+  '/empty-depot-marks': typeof EmptyDepotMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/eur1-atr-marks': typeof Eur1AtrMarksRoute
@@ -1622,6 +1630,7 @@ export interface FileRoutesById {
   '/edi': typeof EdiRoute
   '/eccn-marks': typeof EccnMarksRoute
   '/edi-map-marks': typeof EdiMapMarksRoute
+  '/empty-depot-marks': typeof EmptyDepotMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/eur1-atr-marks': typeof Eur1AtrMarksRoute
@@ -1820,6 +1829,7 @@ export interface FileRouteTypes {
     | '/edi'
     | '/eccn-marks'
     | '/edi-map-marks'
+    | '/empty-depot-marks'
     | '/entity-events'
     | '/erp-connectors'
     | '/eur1-atr-marks'
@@ -2016,6 +2026,7 @@ export interface FileRouteTypes {
     | '/edi'
     | '/eccn-marks'
     | '/edi-map-marks'
+    | '/empty-depot-marks'
     | '/entity-events'
     | '/erp-connectors'
     | '/eur1-atr-marks'
@@ -2212,6 +2223,7 @@ export interface FileRouteTypes {
     | '/edi'
     | '/eccn-marks'
     | '/edi-map-marks'
+    | '/empty-depot-marks'
     | '/entity-events'
     | '/erp-connectors'
     | '/eur1-atr-marks'
@@ -2409,6 +2421,7 @@ export interface RootRouteChildren {
   EdiRoute: typeof EdiRoute
   EccnMarksRoute: typeof EccnMarksRoute
   EdiMapMarksRoute: typeof EdiMapMarksRoute
+  EmptyDepotMarksRoute: typeof EmptyDepotMarksRoute
   EntityEventsRoute: typeof EntityEventsRoute
   ErpConnectorsRoute: typeof ErpConnectorsRoute
   Eur1AtrMarksRoute: typeof Eur1AtrMarksRoute
@@ -2917,6 +2930,13 @@ declare module '@tanstack/react-router' {
       path: '/edi-map-marks'
       fullPath: '/edi-map-marks'
       preLoaderRoute: typeof EdiMapMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/empty-depot-marks': {
+      id: '/empty-depot-marks'
+      path: '/empty-depot-marks'
+      fullPath: '/empty-depot-marks'
+      preLoaderRoute: typeof EmptyDepotMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/entity-events': {
@@ -3970,6 +3990,7 @@ const rootRouteChildren: RootRouteChildren = {
   EdiRoute: EdiRoute,
   EccnMarksRoute: EccnMarksRoute,
   EdiMapMarksRoute: EdiMapMarksRoute,
+  EmptyDepotMarksRoute: EmptyDepotMarksRoute,
   EntityEventsRoute: EntityEventsRoute,
   ErpConnectorsRoute: ErpConnectorsRoute,
   Eur1AtrMarksRoute: Eur1AtrMarksRoute,

@@ -56,6 +56,7 @@ from app.api import (
     eccn_marks,
     edi_map_marks,
     edi_messages,
+    empty_depot_marks,
     entity_events,
     erp_connectors,
     eur1_atr_marks,
@@ -227,6 +228,7 @@ api_router.include_router(rail_cim_marks.router)
 api_router.include_router(rank_marks.router)
 api_router.include_router(task_templates.router)
 api_router.include_router(outbox_events.router)
+api_router.include_router(empty_depot_marks.router)
 api_router.include_router(entity_events.router)
 api_router.include_router(nbp_rates.router)
 api_router.include_router(charges.router)
