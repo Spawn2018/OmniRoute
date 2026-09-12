@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **401.0** EXP4.21 HITL `job_metric_mark`. **Etap:** Plan — **402.0** EXP0.11. **Następny:** **402.0** EXP0.11 Demo GPS HITL `demo_gps_mark` (kolejka EXP0). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **401.0** EXP4.21 HITL `job_metric_mark`. **Etap:** Plaster — **402.0** EXP0.11. **Następny:** **402.0** EXP0.11 Demo GPS HITL `demo_gps_mark` (kolejka EXP0). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
