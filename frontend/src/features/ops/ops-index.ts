@@ -919,6 +919,11 @@ export const OPS_JOBS = [
     job: "katalog ocean_feeder_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.chassisMark.route,
+    label: "Chassis",
+    job: "katalog chassis_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.reeferMark.route,
     label: "Reefer",
     job: "katalog reefer_mark HITL",
@@ -928,6 +933,7 @@ export const OPS_JOBS = [
     label: "Empty / depot",
     job: "katalog empty_depot_mark HITL",
   },
+
   {
     route: BUSINESS_LISTS.nvoccMark.route,
     label: "NVOCC",
@@ -1459,7 +1465,9 @@ export const SHIPPED_CHARGE_ROUTES = {
   "405.0": "/e-doreczenia-marks",
   "406.0": "/rail-uic-marks",
   "407.0": "/ocean-feeder-marks",
+  "408.0": "/chassis-marks",
 } as const
+
 
 export const ROUTES_BREADTH_STANDING =
   "Nowe BC z jobem operatora = trasa w tym samym plasterze. Charge 1.0–1.2 już mają UI. To standing, nie 70 modułów."

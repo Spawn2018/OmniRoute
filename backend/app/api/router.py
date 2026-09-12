@@ -25,6 +25,7 @@ from app.api import (
     charge_codes,
     charge_templates,
     charges,
+    chassis_marks,
     circle_sims,
     clause_notices,
     cmms_marks,
@@ -264,6 +265,7 @@ api_router.include_router(lez_marks.router)
 api_router.include_router(entity_events.router)
 api_router.include_router(nbp_rates.router)
 api_router.include_router(charges.router)
+api_router.include_router(chassis_marks.router)
 api_router.include_router(rate_lines.router)
 api_router.include_router(channel_quotes.router)
 api_router.include_router(quotations.router)

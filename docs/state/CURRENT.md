@@ -4,17 +4,17 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **407.0** EXP4.3b HITL `ocean_feeder_mark`
+**Ostatni plaster:** **408.0** EXP4.5b HITL `chassis_mark`
 
-**Etap:** Plaster — **408.0** EXP4.5b
+**Etap:** Plan — **409.0** EXP3.3b
 
 **Noc:** `/noc 17` do 2026-09-12T17:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).
 
-**Następny:** **408.0** EXP4.5b HITL `chassis_mark` (chassis; bez live).
+**Następny:** **409.0** EXP3.3b HITL `line_impact_mark` (line impact; bez SQL).
 
-Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj 71–408.
+Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj 71–409.
 
-**Spec (jedyna na sesję):** [docs/deltas/open/408.0-chassis-mark.md](../deltas/open/408.0-chassis-mark.md).
+**Spec (jedyna na sesję):** (brak — plan 409.0).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
@@ -22,4 +22,4 @@ Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj 71–4
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-12:** Plan **408.0** — HITL `chassis_mark` (bez live pool).
+**2026-09-12:** Plaster **408.0** zamknięty (`/noc`) — HITL `chassis_mark`.

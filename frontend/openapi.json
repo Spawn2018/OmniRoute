@@ -4308,6 +4308,80 @@
         ]
       }
     },
+    "/api/v1/chassis-marks": {
+      "get": {
+        "tags": [
+          "chassis-mark"
+        ],
+        "summary": "List Chassis Marks",
+        "operationId": "list_chassis_marks_api_v1_chassis_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ChassisMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Chassis Marks Api V1 Chassis Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "chassis-mark"
+        ],
+        "summary": "Create Chassis Mark",
+        "operationId": "create_chassis_mark_api_v1_chassis_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChassisMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChassisMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/rate-lines": {
       "get": {
         "tags": [
@@ -22756,6 +22830,71 @@
           "source_ref"
         ],
         "title": "ChargeTemplateResponse"
+      },
+      "ChassisMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "chassis_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Chassis Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "chassis_kind",
+          "source_ref"
+        ],
+        "title": "ChassisMarkCreate"
+      },
+      "ChassisMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "chassis_kind": {
+            "type": "string",
+            "title": "Chassis Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "chassis_kind",
+          "source_ref"
+        ],
+        "title": "ChassisMarkResponse"
       },
       "CircleSimCreate": {
         "properties": {

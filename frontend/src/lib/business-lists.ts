@@ -52,9 +52,11 @@ export const BUSINESS_LISTS = {
   partyDocument: { route: "/party-documents", tableKey: "party_document" },
   cashDiscount: { route: "/cash-discounts", tableKey: "cash_discount" },
   carbonMethod: { route: "/carbon-methods", tableKey: "carbon_method" },
+  chassisMark: { route: "/chassis-marks", tableKey: "chassis_mark" },
   predictionLedger: { route: "/prediction-ledgers", tableKey: "prediction_ledger" },
   planSnapshot: { route: "/plan-snapshots", tableKey: "plan_snapshot" },
   circleSim: { route: "/circle-sims", tableKey: "circle_sim" },
+
   laneKm: { route: "/lane-kms", tableKey: "lane_km" },
   lcChecklist: { route: "/lc-checklists", tableKey: "lc_checklist" },
   nctsDraft: { route: "/ncts-drafts", tableKey: "ncts_draft" },
@@ -376,8 +378,10 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/rail-uic-marks",
   "/ocean-alliance-marks",
   "/ocean-feeder-marks",
+  "/chassis-marks",
   "/reefer-marks",
   "/empty-depot-marks",
+
   "/nvocc-marks",
   "/multi-manning-marks",
   "/posting-marks",

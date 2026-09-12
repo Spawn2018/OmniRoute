@@ -1054,8 +1054,12 @@ class InvalidReeferMark(DomainError):
     """EXP4.5: HITL reefer — nie reefer live API / reefer scrape."""
 
 
+class InvalidChassisMark(DomainError):
+    """EXP4.5b: HITL chassis_mark — nie live chassis pool / TEU / yard."""
+
+
 class InvalidEmptyDepotMark(DomainError):
-    """EXP4.6: HITL empty/depot/chassis — nie depot live API / scrape."""
+    """EXP4.6: HITL empty/depot — nie depot live API / scrape."""
 
 
 class InvalidNvoccMark(DomainError):

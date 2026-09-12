@@ -32,6 +32,7 @@ import { Route as ChannelQuotesRouteImport } from './routes/channel-quotes'
 import { Route as ChargeCodesRouteImport } from './routes/charge-codes'
 import { Route as ChargeTemplatesRouteImport } from './routes/charge-templates'
 import { Route as ChargesRouteImport } from './routes/charges'
+import { Route as ChassisMarksRouteImport } from './routes/chassis-marks'
 import { Route as ChinaRailRouteImport } from './routes/china-rail'
 import { Route as CircleSimsRouteImport } from './routes/circle-sims'
 import { Route as ClaimsRouteImport } from './routes/claims'
@@ -340,6 +341,11 @@ const ChargeTemplatesRoute = ChargeTemplatesRouteImport.update({
 const ChargesRoute = ChargesRouteImport.update({
   id: '/charges',
   path: '/charges',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChassisMarksRoute = ChassisMarksRouteImport.update({
+  id: '/chassis-marks',
+  path: '/chassis-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ChinaRailRoute = ChinaRailRouteImport.update({
@@ -1338,6 +1344,7 @@ export interface FileRoutesByFullPath {
   '/charge-codes': typeof ChargeCodesRoute
   '/charge-templates': typeof ChargeTemplatesRoute
   '/charges': typeof ChargesRoute
+  '/chassis-marks': typeof ChassisMarksRoute
   '/china-rail': typeof ChinaRailRoute
   '/circle-sims': typeof CircleSimsRoute
   '/claims': typeof ClaimsRoute
@@ -1557,6 +1564,7 @@ export interface FileRoutesByTo {
   '/charge-codes': typeof ChargeCodesRoute
   '/charge-templates': typeof ChargeTemplatesRoute
   '/charges': typeof ChargesRoute
+  '/chassis-marks': typeof ChassisMarksRoute
   '/china-rail': typeof ChinaRailRoute
   '/circle-sims': typeof CircleSimsRoute
   '/claims': typeof ClaimsRoute
@@ -1777,6 +1785,7 @@ export interface FileRoutesById {
   '/charge-codes': typeof ChargeCodesRoute
   '/charge-templates': typeof ChargeTemplatesRoute
   '/charges': typeof ChargesRoute
+  '/chassis-marks': typeof ChassisMarksRoute
   '/china-rail': typeof ChinaRailRoute
   '/circle-sims': typeof CircleSimsRoute
   '/claims': typeof ClaimsRoute
@@ -1998,6 +2007,7 @@ export interface FileRouteTypes {
     | '/charge-codes'
     | '/charge-templates'
     | '/charges'
+    | '/chassis-marks'
     | '/china-rail'
     | '/circle-sims'
     | '/claims'
@@ -2217,6 +2227,7 @@ export interface FileRouteTypes {
     | '/charge-codes'
     | '/charge-templates'
     | '/charges'
+    | '/chassis-marks'
     | '/china-rail'
     | '/circle-sims'
     | '/claims'
@@ -2436,6 +2447,7 @@ export interface FileRouteTypes {
     | '/charge-codes'
     | '/charge-templates'
     | '/charges'
+    | '/chassis-marks'
     | '/china-rail'
     | '/circle-sims'
     | '/claims'
@@ -2656,6 +2668,7 @@ export interface RootRouteChildren {
   ChargeCodesRoute: typeof ChargeCodesRoute
   ChargeTemplatesRoute: typeof ChargeTemplatesRoute
   ChargesRoute: typeof ChargesRoute
+  ChassisMarksRoute: typeof ChassisMarksRoute
   ChinaRailRoute: typeof ChinaRailRoute
   CircleSimsRoute: typeof CircleSimsRoute
   ClaimsRoute: typeof ClaimsRoute
@@ -3013,6 +3026,13 @@ declare module '@tanstack/react-router' {
       path: '/charges'
       fullPath: '/charges'
       preLoaderRoute: typeof ChargesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chassis-marks': {
+      id: '/chassis-marks'
+      path: '/chassis-marks'
+      fullPath: '/chassis-marks'
+      preLoaderRoute: typeof ChassisMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/china-rail': {
@@ -4400,6 +4420,7 @@ const rootRouteChildren: RootRouteChildren = {
   ChargeCodesRoute: ChargeCodesRoute,
   ChargeTemplatesRoute: ChargeTemplatesRoute,
   ChargesRoute: ChargesRoute,
+  ChassisMarksRoute: ChassisMarksRoute,
   ChinaRailRoute: ChinaRailRoute,
   CircleSimsRoute: CircleSimsRoute,
   ClaimsRoute: ClaimsRoute,

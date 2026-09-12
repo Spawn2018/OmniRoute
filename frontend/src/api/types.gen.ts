@@ -1587,6 +1587,50 @@ export type ChargeTemplateResponse = {
 };
 
 /**
+ * ChassisMarkCreate
+ */
+export type ChassisMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Chassis Kind
+     */
+    chassis_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ChassisMarkResponse
+ */
+export type ChassisMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Chassis Kind
+     */
+    chassis_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * CircleSimCreate
  */
 export type CircleSimCreate = {
@@ -15294,6 +15338,49 @@ export type CreateChargeApiV1ChargesPostResponses = {
 };
 
 export type CreateChargeApiV1ChargesPostResponse = CreateChargeApiV1ChargesPostResponses[keyof CreateChargeApiV1ChargesPostResponses];
+
+export type ListChassisMarksApiV1ChassisMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/chassis-marks';
+};
+
+export type ListChassisMarksApiV1ChassisMarksGetResponses = {
+    /**
+     * Response List Chassis Marks Api V1 Chassis Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<ChassisMarkResponse>;
+};
+
+export type ListChassisMarksApiV1ChassisMarksGetResponse = ListChassisMarksApiV1ChassisMarksGetResponses[keyof ListChassisMarksApiV1ChassisMarksGetResponses];
+
+export type CreateChassisMarkApiV1ChassisMarksPostData = {
+    body: ChassisMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/chassis-marks';
+};
+
+export type CreateChassisMarkApiV1ChassisMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateChassisMarkApiV1ChassisMarksPostError = CreateChassisMarkApiV1ChassisMarksPostErrors[keyof CreateChassisMarkApiV1ChassisMarksPostErrors];
+
+export type CreateChassisMarkApiV1ChassisMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ChassisMarkResponse;
+};
+
+export type CreateChassisMarkApiV1ChassisMarksPostResponse = CreateChassisMarkApiV1ChassisMarksPostResponses[keyof CreateChassisMarkApiV1ChassisMarksPostResponses];
 
 export type ListRateLinesApiV1RateLinesGetData = {
     body?: never;
