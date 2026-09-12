@@ -740,7 +740,7 @@ Pełna lista: [karty-pol-fala-exp.md](analysis/karty-pol-fala-exp.md). `/noc` po
 
 | ID | Co | Status |
 |---|---|---|
-| **K0** | inwentaryzacja **nazw** z rejestru (ID+nazwa+1 linia; nie dump archiwum) | po osi produktowej |
+| **K0** | inwentaryzacja **nazw** z rejestru (ID+nazwa+1 linia; nie dump archiwum) | zamknięty ([400.0](deltas/archived/400.0-k0-inventory.md); [K0-inventory.md](state/K0-inventory.md)) |
 | K1…Kn | tylko nazwane i niepokryte | puste ID zostają puste |
 
 ### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster

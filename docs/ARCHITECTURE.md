@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **399.0** Mob HITL `mobile_client_mark`. **Etap:** Plaster — **400.0** K0 (delta zaakceptowana `/noc`, wolno `/plaster`). **Następny:** **400.0** K0 inwentaryzacja nazw rejestru (Fala K; nie dump archiwum). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **400.0** K0 inwentaryzacja nazw. **Etap:** Plan — **401.0** EXP4.21. **Następny:** **401.0** EXP4.21 Job-metric HITL `job_metric_mark` (kolejka EXP4 / M-72). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
