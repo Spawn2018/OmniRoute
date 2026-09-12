@@ -126,6 +126,7 @@ type organization
     define can_manage_pallet_pool_marks: member
     define can_manage_e_cmr_marks: member
     define can_manage_e_delivery_marks: member
+    define can_manage_e_doreczenia_marks: member
     define can_manage_peppol_marks: member
     define can_manage_sid_import_marks: member
     define can_manage_integration_hub_marks: member

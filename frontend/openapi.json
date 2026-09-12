@@ -18738,6 +18738,80 @@
         ]
       }
     },
+    "/api/v1/e-doreczenia-marks": {
+      "get": {
+        "tags": [
+          "e-doreczenia-mark"
+        ],
+        "summary": "List E Doreczenia Marks",
+        "operationId": "list_e_doreczenia_marks_api_v1_e_doreczenia_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/EDoreczeniaMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List E Doreczenia Marks Api V1 E Doreczenia Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "e-doreczenia-mark"
+        ],
+        "summary": "Create E Doreczenia Mark",
+        "operationId": "create_e_doreczenia_mark_api_v1_e_doreczenia_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EDoreczeniaMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EDoreczeniaMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/peppol-marks": {
       "get": {
         "tags": [
@@ -25689,6 +25763,71 @@
           "source_ref"
         ],
         "title": "EDeliveryMarkResponse"
+      },
+      "EDoreczeniaMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "delivery_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Delivery Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "delivery_kind",
+          "source_ref"
+        ],
+        "title": "EDoreczeniaMarkCreate"
+      },
+      "EDoreczeniaMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "delivery_kind": {
+            "type": "string",
+            "title": "Delivery Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "delivery_kind",
+          "source_ref"
+        ],
+        "title": "EDoreczeniaMarkResponse"
       },
       "EccnMarkCreate": {
         "properties": {

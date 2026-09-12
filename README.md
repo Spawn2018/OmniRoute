@@ -86,10 +86,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **404.0** EXP2.14 HITL `fuel_card_mark`
-- **Etap:** Plaster — **405.0** EXP2.19
-- **Następny:** **405.0** EXP2.19 HITL `e_doreczenia_mark` (e-Doręczenia; bez live).
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **405.0** EXP2.19 HITL `e_doreczenia_mark`
+- **Etap:** Plan — **406.0** EXP4.2
+- **Następny:** **406.0** EXP4.2 HITL `rail_uic_mark` (UIC/CIM/SMGS; bez live).
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

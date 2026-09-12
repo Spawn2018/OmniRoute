@@ -153,6 +153,7 @@ modules =
     app.services.pallet_pool_marks
     app.services.e_cmr_marks
     app.services.e_delivery_marks
+    app.services.e_doreczenia_marks
     app.services.peppol_marks
     app.services.sid_import_marks
     app.services.integration_hub_marks
@@ -666,6 +667,9 @@ forbidden_modules =
     app.services.e_delivery_marks
     app.repositories.e_delivery_marks
     app.models.e_delivery_mark
+    app.services.e_doreczenia_marks
+    app.repositories.e_doreczenia_marks
+    app.models.e_doreczenia_mark
     app.services.peppol_marks
     app.repositories.peppol_marks
     app.models.peppol_mark

@@ -4,17 +4,17 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **404.0** EXP2.14 HITL `fuel_card_mark`
+**Ostatni plaster:** **405.0** EXP2.19 HITL `e_doreczenia_mark`
 
-**Etap:** Plaster — **405.0** EXP2.19
+**Etap:** Plan — **406.0** EXP4.2
 
 **Noc:** `/noc 17` do 2026-09-12T17:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).
 
-**Następny:** **405.0** EXP2.19 HITL `e_doreczenia_mark` (e-Doręczenia; bez live).
+**Następny:** **406.0** EXP4.2 HITL `rail_uic_mark` (UIC/CIM/SMGS; bez live).
 
-Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj 71–405.
+Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj 71–406.
 
-**Spec (jedyna na sesję):** [docs/deltas/open/405.0-e-doreczenia-mark.md](../deltas/open/405.0-e-doreczenia-mark.md).
+**Spec (jedyna na sesję):** (brak — plan 406.0).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
@@ -22,4 +22,4 @@ Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj 71–4
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-12:** Plan **405.0** — HITL `e_doreczenia_mark` (bez live ADE).
+**2026-09-12:** Plaster **405.0** zamknięty (`/noc`) — HITL `e_doreczenia_mark`.

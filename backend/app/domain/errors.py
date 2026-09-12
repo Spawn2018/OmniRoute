@@ -922,6 +922,10 @@ class InvalidEDeliveryMark(DomainError):
     """EXP2.19: HITL e-Doręczenia — nie PUDO HTTP / live."""
 
 
+class InvalidEDoreczeniaMark(DomainError):
+    """EXP2.19: HITL e_doreczenia_mark — nie live ADE / bajty PDF."""
+
+
 class InvalidPeppolMark(DomainError):
     """EXP2.20: HITL Peppol/MPP — nie AS4 HTTP / live."""
 

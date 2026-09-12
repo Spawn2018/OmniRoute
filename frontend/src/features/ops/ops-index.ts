@@ -1014,6 +1014,11 @@ export const OPS_JOBS = [
     job: "katalog fuel_card_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.eDoreczeniaMark.route,
+    label: "e-Doręczenia",
+    job: "katalog e_doreczenia_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.remediationOption.route,
     label: "Opcja naprawy",
     job: "katalog remediation_option HITL",
@@ -1441,6 +1446,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "402.0": "/demo-gps-marks",
   "403.0": "/impersonate-guard-marks",
   "404.0": "/fuel-card-marks",
+  "405.0": "/e-doreczenia-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

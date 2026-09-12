@@ -61,6 +61,7 @@ import { Route as DockAppointmentsRouteImport } from './routes/dock-appointments
 import { Route as DocumentTemplatesRouteImport } from './routes/document-templates'
 import { Route as ECmrMarksRouteImport } from './routes/e-cmr-marks'
 import { Route as EDeliveryMarksRouteImport } from './routes/e-delivery-marks'
+import { Route as EDoreczeniaMarksRouteImport } from './routes/e-doreczenia-marks'
 import { Route as EccnMarksRouteImport } from './routes/eccn-marks'
 import { Route as EdiRouteImport } from './routes/edi'
 import { Route as EdiMapMarksRouteImport } from './routes/edi-map-marks'
@@ -482,6 +483,11 @@ const ECmrMarksRoute = ECmrMarksRouteImport.update({
 const EDeliveryMarksRoute = EDeliveryMarksRouteImport.update({
   id: '/e-delivery-marks',
   path: '/e-delivery-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EDoreczeniaMarksRoute = EDoreczeniaMarksRouteImport.update({
+  id: '/e-doreczenia-marks',
+  path: '/e-doreczenia-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EccnMarksRoute = EccnMarksRouteImport.update({
@@ -1349,6 +1355,7 @@ export interface FileRoutesByFullPath {
   '/document-templates': typeof DocumentTemplatesRoute
   '/e-cmr-marks': typeof ECmrMarksRoute
   '/e-delivery-marks': typeof EDeliveryMarksRoute
+  '/e-doreczenia-marks': typeof EDoreczeniaMarksRoute
   '/eccn-marks': typeof EccnMarksRoute
   '/edi': typeof EdiRoute
   '/edi-map-marks': typeof EdiMapMarksRoute
@@ -1565,6 +1572,7 @@ export interface FileRoutesByTo {
   '/document-templates': typeof DocumentTemplatesRoute
   '/e-cmr-marks': typeof ECmrMarksRoute
   '/e-delivery-marks': typeof EDeliveryMarksRoute
+  '/e-doreczenia-marks': typeof EDoreczeniaMarksRoute
   '/eccn-marks': typeof EccnMarksRoute
   '/edi': typeof EdiRoute
   '/edi-map-marks': typeof EdiMapMarksRoute
@@ -1782,6 +1790,7 @@ export interface FileRoutesById {
   '/document-templates': typeof DocumentTemplatesRoute
   '/e-cmr-marks': typeof ECmrMarksRoute
   '/e-delivery-marks': typeof EDeliveryMarksRoute
+  '/e-doreczenia-marks': typeof EDoreczeniaMarksRoute
   '/eccn-marks': typeof EccnMarksRoute
   '/edi': typeof EdiRoute
   '/edi-map-marks': typeof EdiMapMarksRoute
@@ -2000,6 +2009,7 @@ export interface FileRouteTypes {
     | '/document-templates'
     | '/e-cmr-marks'
     | '/e-delivery-marks'
+    | '/e-doreczenia-marks'
     | '/eccn-marks'
     | '/edi'
     | '/edi-map-marks'
@@ -2216,6 +2226,7 @@ export interface FileRouteTypes {
     | '/document-templates'
     | '/e-cmr-marks'
     | '/e-delivery-marks'
+    | '/e-doreczenia-marks'
     | '/eccn-marks'
     | '/edi'
     | '/edi-map-marks'
@@ -2432,6 +2443,7 @@ export interface FileRouteTypes {
     | '/document-templates'
     | '/e-cmr-marks'
     | '/e-delivery-marks'
+    | '/e-doreczenia-marks'
     | '/eccn-marks'
     | '/edi'
     | '/edi-map-marks'
@@ -2649,6 +2661,7 @@ export interface RootRouteChildren {
   DocumentTemplatesRoute: typeof DocumentTemplatesRoute
   ECmrMarksRoute: typeof ECmrMarksRoute
   EDeliveryMarksRoute: typeof EDeliveryMarksRoute
+  EDoreczeniaMarksRoute: typeof EDoreczeniaMarksRoute
   EccnMarksRoute: typeof EccnMarksRoute
   EdiRoute: typeof EdiRoute
   EdiMapMarksRoute: typeof EdiMapMarksRoute
@@ -3177,6 +3190,13 @@ declare module '@tanstack/react-router' {
       path: '/e-delivery-marks'
       fullPath: '/e-delivery-marks'
       preLoaderRoute: typeof EDeliveryMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/e-doreczenia-marks': {
+      id: '/e-doreczenia-marks'
+      path: '/e-doreczenia-marks'
+      fullPath: '/e-doreczenia-marks'
+      preLoaderRoute: typeof EDoreczeniaMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/eccn-marks': {
@@ -4369,6 +4389,7 @@ const rootRouteChildren: RootRouteChildren = {
   DocumentTemplatesRoute: DocumentTemplatesRoute,
   ECmrMarksRoute: ECmrMarksRoute,
   EDeliveryMarksRoute: EDeliveryMarksRoute,
+  EDoreczeniaMarksRoute: EDoreczeniaMarksRoute,
   EccnMarksRoute: EccnMarksRoute,
   EdiRoute: EdiRoute,
   EdiMapMarksRoute: EdiMapMarksRoute,

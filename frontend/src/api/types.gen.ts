@@ -3517,6 +3517,50 @@ export type EDeliveryMarkResponse = {
 };
 
 /**
+ * EDoreczeniaMarkCreate
+ */
+export type EDoreczeniaMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Delivery Kind
+     */
+    delivery_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * EDoreczeniaMarkResponse
+ */
+export type EDoreczeniaMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Delivery Kind
+     */
+    delivery_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * EccnMarkCreate
  */
 export type EccnMarkCreate = {
@@ -23475,6 +23519,49 @@ export type CreateEDeliveryMarkApiV1eDeliveryMarksPostResponses = {
 };
 
 export type CreateEDeliveryMarkApiV1eDeliveryMarksPostResponse = CreateEDeliveryMarkApiV1eDeliveryMarksPostResponses[keyof CreateEDeliveryMarkApiV1eDeliveryMarksPostResponses];
+
+export type ListEDoreczeniaMarksApiV1eDoreczeniaMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/e-doreczenia-marks';
+};
+
+export type ListEDoreczeniaMarksApiV1eDoreczeniaMarksGetResponses = {
+    /**
+     * Response List E Doreczenia Marks Api V1 E Doreczenia Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<EDoreczeniaMarkResponse>;
+};
+
+export type ListEDoreczeniaMarksApiV1eDoreczeniaMarksGetResponse = ListEDoreczeniaMarksApiV1eDoreczeniaMarksGetResponses[keyof ListEDoreczeniaMarksApiV1eDoreczeniaMarksGetResponses];
+
+export type CreateEDoreczeniaMarkApiV1eDoreczeniaMarksPostData = {
+    body: EDoreczeniaMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/e-doreczenia-marks';
+};
+
+export type CreateEDoreczeniaMarkApiV1eDoreczeniaMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateEDoreczeniaMarkApiV1eDoreczeniaMarksPostError = CreateEDoreczeniaMarkApiV1eDoreczeniaMarksPostErrors[keyof CreateEDoreczeniaMarkApiV1eDoreczeniaMarksPostErrors];
+
+export type CreateEDoreczeniaMarkApiV1eDoreczeniaMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: EDoreczeniaMarkResponse;
+};
+
+export type CreateEDoreczeniaMarkApiV1eDoreczeniaMarksPostResponse = CreateEDoreczeniaMarkApiV1eDoreczeniaMarksPostResponses[keyof CreateEDoreczeniaMarkApiV1eDoreczeniaMarksPostResponses];
 
 export type ListPeppolMarksApiV1PeppolMarksGetData = {
     body?: never;

@@ -151,6 +151,7 @@ from app.models.bin_pack_mark import BinPackMark  # noqa: F401
 from app.models.pallet_pool_mark import PalletPoolMark  # noqa: F401
 from app.models.e_cmr_mark import ECmrMark  # noqa: F401
 from app.models.e_delivery_mark import EDeliveryMark  # noqa: F401
+from app.models.e_doreczenia_mark import EDoreczeniaMark  # noqa: F401
 from app.models.peppol_mark import PeppolMark  # noqa: F401
 from app.models.sid_import_mark import SidImportMark  # noqa: F401
 from app.models.integration_hub_mark import IntegrationHubMark  # noqa: F401
