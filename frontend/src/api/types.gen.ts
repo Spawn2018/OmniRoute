@@ -8903,6 +8903,50 @@ export type ResourceResponse = {
 };
 
 /**
+ * RoleViewMarkCreate
+ */
+export type RoleViewMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * View Kind
+     */
+    view_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * RoleViewMarkResponse
+ */
+export type RoleViewMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * View Kind
+     */
+    view_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * RoutingGuideCreate
  */
 export type RoutingGuideCreate = {
@@ -13915,6 +13959,49 @@ export type CreateMailAcceptMarkApiV1MailAcceptMarksPostResponses = {
 };
 
 export type CreateMailAcceptMarkApiV1MailAcceptMarksPostResponse = CreateMailAcceptMarkApiV1MailAcceptMarksPostResponses[keyof CreateMailAcceptMarkApiV1MailAcceptMarksPostResponses];
+
+export type ListRoleViewMarksApiV1RoleViewMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/role-view-marks';
+};
+
+export type ListRoleViewMarksApiV1RoleViewMarksGetResponses = {
+    /**
+     * Response List Role View Marks Api V1 Role View Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<RoleViewMarkResponse>;
+};
+
+export type ListRoleViewMarksApiV1RoleViewMarksGetResponse = ListRoleViewMarksApiV1RoleViewMarksGetResponses[keyof ListRoleViewMarksApiV1RoleViewMarksGetResponses];
+
+export type CreateRoleViewMarkApiV1RoleViewMarksPostData = {
+    body: RoleViewMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/role-view-marks';
+};
+
+export type CreateRoleViewMarkApiV1RoleViewMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateRoleViewMarkApiV1RoleViewMarksPostError = CreateRoleViewMarkApiV1RoleViewMarksPostErrors[keyof CreateRoleViewMarkApiV1RoleViewMarksPostErrors];
+
+export type CreateRoleViewMarkApiV1RoleViewMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: RoleViewMarkResponse;
+};
+
+export type CreateRoleViewMarkApiV1RoleViewMarksPostResponse = CreateRoleViewMarkApiV1RoleViewMarksPostResponses[keyof CreateRoleViewMarkApiV1RoleViewMarksPostResponses];
 
 export type ListMemoryEdgesApiV1MemoryEdgesGetData = {
     body?: never;

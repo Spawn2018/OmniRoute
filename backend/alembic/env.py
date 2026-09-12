@@ -187,6 +187,7 @@ from app.models.ab_sus_mark import AbSusMark  # noqa: F401
 from app.models.funnel_mark import FunnelMark  # noqa: F401
 from app.models.terms_ai_mark import TermsAiMark  # noqa: F401
 from app.models.mail_accept_mark import MailAcceptMark  # noqa: F401
+from app.models.role_view_mark import RoleViewMark  # noqa: F401
 from app.models.collaboration_mark import CollaborationMark  # noqa: F401
 from app.models.freight_audit_mark import FreightAuditMark  # noqa: F401
 from app.models.routing_guide import RoutingGuide  # noqa: F401

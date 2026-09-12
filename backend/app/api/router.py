@@ -151,6 +151,7 @@ from app.api import (
     remediation_options,
     repair_playbooks,
     resources,
+    role_view_marks,
     routing_guide_enforcements,
     routing_guide_matches,
     routing_guides,
@@ -233,6 +234,7 @@ api_router.include_router(operator_decisions.router)
 api_router.include_router(operator_notices.router)
 api_router.include_router(mail_drafts.router)
 api_router.include_router(mail_accept_marks.router)
+api_router.include_router(role_view_marks.router)
 api_router.include_router(memory_edges.router)
 api_router.include_router(executive_marks.router)
 api_router.include_router(rail_cim_marks.router)

@@ -151,6 +151,7 @@ export const BUSINESS_LISTS = {
   funnelMark: { route: "/funnel-marks", tableKey: "funnel_mark" },
   termsAiMark: { route: "/terms-ai-marks", tableKey: "terms_ai_mark" },
   mailAcceptMark: { route: "/mail-accept-marks", tableKey: "mail_accept_mark" },
+  roleViewMark: { route: "/role-view-marks", tableKey: "role_view_mark" },
   remediationOption: {
     route: "/remediation-options",
     tableKey: "remediation_option",
@@ -363,6 +364,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/funnel-marks",
   "/terms-ai-marks",
   "/mail-accept-marks",
+  "/role-view-marks",
   "/remediation-options",
   "/impact-scenarios",
   "/clause-notices",

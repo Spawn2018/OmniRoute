@@ -4,17 +4,17 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **394.0** EXP4.16 HITL `mail_accept_mark`
+**Ostatni plaster:** **395.0** EXP4.17 HITL `role_view_mark`
 
-**Etap:** Plaster — **395.0** EXP4.17 (delta zaakceptowana `/noc`, wolno `/plaster`)
+**Etap:** Plan — **396.0** EXP4.18
 
 **Noc:** `/noc 17` do 2026-09-12T17:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).
 
-**Następny:** **395.0** EXP4.17 Widoki ról HITL `role_view_mark` (kolejka EXP4).
+**Następny:** **396.0** EXP4.18 RAG tylko SOP HITL `rag_sop_mark` (kolejka EXP4).
 
-Park: Graph live · auto-send · board T6 live. Nie zgaduj 71–395.
+Park: Graph live · auto-send · board T6 live. Nie zgaduj 71–396.
 
-**Spec (jedyna na sesję):** [docs/spec/role-view-mark.md](../spec/role-view-mark.md) · delta [docs/deltas/open/395.0-role-view-mark.md](../deltas/open/395.0-role-view-mark.md).
+**Spec (jedyna na sesję):** (brak — plan 396.0).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
@@ -22,4 +22,4 @@ Park: Graph live · auto-send · board T6 live. Nie zgaduj 71–395.
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-12:** Plaster **394.0** zamknięty (`/noc`) — HITL `mail_accept_mark`. Delta **395.0** zaakceptowana `/noc`.
+**2026-09-12:** Plaster **395.0** zamknięty (`/noc`) — HITL `role_view_mark`.

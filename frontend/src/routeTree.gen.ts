@@ -10,11 +10,12 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AirRa3MarksRouteImport } from './routes/air-ra3-marks'
+import { Route as AbSusMarksRouteImport } from './routes/ab-sus-marks'
 import { Route as AbandonedRtoMarksRouteImport } from './routes/abandoned-rto-marks'
 import { Route as AeoDossierMarksRouteImport } from './routes/aeo-dossier-marks'
 import { Route as AiRouteImport } from './routes/ai'
 import { Route as AirRouteImport } from './routes/air'
+import { Route as AirRa3MarksRouteImport } from './routes/air-ra3-marks'
 import { Route as AsnsRouteImport } from './routes/asns'
 import { Route as BillingMarksRouteImport } from './routes/billing-marks'
 import { Route as BinPackMarksRouteImport } from './routes/bin-pack-marks'
@@ -44,34 +45,24 @@ import { Route as CompanyMarksRouteImport } from './routes/company-marks'
 import { Route as ConsignmentsRouteImport } from './routes/consignments'
 import { Route as CostAllocationMarksRouteImport } from './routes/cost-allocation-marks'
 import { Route as CostToServeRouteImport } from './routes/cost-to-serve'
-import { Route as CsrdMarksRouteImport } from './routes/csrd-marks'
 import { Route as CreditReviewsRouteImport } from './routes/credit-reviews'
 import { Route as CrmLeadsRouteImport } from './routes/crm-leads'
+import { Route as CsrdMarksRouteImport } from './routes/csrd-marks'
 import { Route as CustomerContractsRouteImport } from './routes/customer-contracts'
 import { Route as CustomerSopsRouteImport } from './routes/customer-sops'
 import { Route as CutoffMarksRouteImport } from './routes/cutoff-marks'
 import { Route as DangerousGoodsRouteImport } from './routes/dangerous-goods'
 import { Route as DecisionsRouteImport } from './routes/decisions'
-import { Route as DemandSnapshotMarksRouteImport } from './routes/demand-snapshot-marks'
 import { Route as DelayForecastsRouteImport } from './routes/delay-forecasts'
+import { Route as DemandSnapshotMarksRouteImport } from './routes/demand-snapshot-marks'
 import { Route as DockAppointmentsRouteImport } from './routes/dock-appointments'
 import { Route as DocumentTemplatesRouteImport } from './routes/document-templates'
 import { Route as ECmrMarksRouteImport } from './routes/e-cmr-marks'
 import { Route as EDeliveryMarksRouteImport } from './routes/e-delivery-marks'
-import { Route as EdiRouteImport } from './routes/edi'
 import { Route as EccnMarksRouteImport } from './routes/eccn-marks'
+import { Route as EdiRouteImport } from './routes/edi'
 import { Route as EdiMapMarksRouteImport } from './routes/edi-map-marks'
 import { Route as EmptyDepotMarksRouteImport } from './routes/empty-depot-marks'
-import { Route as NvoccMarksRouteImport } from './routes/nvocc-marks'
-import { Route as MultiManningMarksRouteImport } from './routes/multi-manning-marks'
-import { Route as PostingMarksRouteImport } from './routes/posting-marks'
-import { Route as TachoOfficeMarksRouteImport } from './routes/tacho-office-marks'
-import { Route as LezMarksRouteImport } from './routes/lez-marks'
-import { Route as LabelParkingMarksRouteImport } from './routes/label-parking-marks'
-import { Route as AbSusMarksRouteImport } from './routes/ab-sus-marks'
-import { Route as FunnelMarksRouteImport } from './routes/funnel-marks'
-import { Route as TermsAiMarksRouteImport } from './routes/terms-ai-marks'
-import { Route as MailAcceptMarksRouteImport } from './routes/mail-accept-marks'
 import { Route as EntityEventsRouteImport } from './routes/entity-events'
 import { Route as ErpConnectorsRouteImport } from './routes/erp-connectors'
 import { Route as Eur1AtrMarksRouteImport } from './routes/eur1-atr-marks'
@@ -90,6 +81,7 @@ import { Route as FreeTimeClocksRouteImport } from './routes/free-time-clocks'
 import { Route as FreightAuditMarksRouteImport } from './routes/freight-audit-marks'
 import { Route as FuelAnomalyMarksRouteImport } from './routes/fuel-anomaly-marks'
 import { Route as FuelIndexesRouteImport } from './routes/fuel-indexes'
+import { Route as FunnelMarksRouteImport } from './routes/funnel-marks'
 import { Route as FxDifferencesRouteImport } from './routes/fx-differences'
 import { Route as GdprRouteImport } from './routes/gdpr'
 import { Route as GeneralAverageMarksRouteImport } from './routes/general-average-marks'
@@ -105,24 +97,29 @@ import { Route as InvoicesRouteImport } from './routes/invoices'
 import { Route as IsoNis2MarksRouteImport } from './routes/iso-nis2-marks'
 import { Route as JitJisMarksRouteImport } from './routes/jit-jis-marks'
 import { Route as KreptdLicencesRouteImport } from './routes/kreptd-licences'
+import { Route as LabelParkingMarksRouteImport } from './routes/label-parking-marks'
 import { Route as LaneKmsRouteImport } from './routes/lane-kms'
 import { Route as LanePatternsRouteImport } from './routes/lane-patterns'
 import { Route as LcChecklistsRouteImport } from './routes/lc-checklists'
 import { Route as LclRouteImport } from './routes/lcl'
 import { Route as LegalHoldMarksRouteImport } from './routes/legal-hold-marks'
+import { Route as LezMarksRouteImport } from './routes/lez-marks'
 import { Route as LoadPlanMarksRouteImport } from './routes/load-plan-marks'
 import { Route as LocalChargesRouteImport } from './routes/local-charges'
 import { Route as LocationsRouteImport } from './routes/locations'
 import { Route as MailRouteImport } from './routes/mail'
+import { Route as MailAcceptMarksRouteImport } from './routes/mail-accept-marks'
 import { Route as MakeOrBuyMarksRouteImport } from './routes/make-or-buy-marks'
 import { Route as MemoryEdgesRouteImport } from './routes/memory-edges'
 import { Route as MoneyCostRouteImport } from './routes/money-cost'
 import { Route as MonitoringSchemesRouteImport } from './routes/monitoring-schemes'
 import { Route as MqcMarksRouteImport } from './routes/mqc-marks'
+import { Route as MultiManningMarksRouteImport } from './routes/multi-manning-marks'
 import { Route as NbpRatesRouteImport } from './routes/nbp-rates'
 import { Route as NctsDraftsRouteImport } from './routes/ncts-drafts'
 import { Route as NetworksRouteImport } from './routes/networks'
 import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as NvoccMarksRouteImport } from './routes/nvocc-marks'
 import { Route as OceanAllianceMarksRouteImport } from './routes/ocean-alliance-marks'
 import { Route as OceanBillsRouteImport } from './routes/ocean-bills'
 import { Route as OffboardingMarksRouteImport } from './routes/offboarding-marks'
@@ -145,6 +142,7 @@ import { Route as PlanningRouteImport } from './routes/planning'
 import { Route as PoLinesRouteImport } from './routes/po-lines'
 import { Route as PortSurchargesRouteImport } from './routes/port-surcharges'
 import { Route as PortsRouteImport } from './routes/ports'
+import { Route as PostingMarksRouteImport } from './routes/posting-marks'
 import { Route as PredictionLedgersRouteImport } from './routes/prediction-ledgers'
 import { Route as PurchaseOrdersRouteImport } from './routes/purchase-orders'
 import { Route as QualityRouteImport } from './routes/quality'
@@ -161,6 +159,7 @@ import { Route as RegulatoryRadarMarksRouteImport } from './routes/regulatory-ra
 import { Route as RemediationOptionsRouteImport } from './routes/remediation-options'
 import { Route as RepairPlaybooksRouteImport } from './routes/repair-playbooks'
 import { Route as RoadRouteImport } from './routes/road'
+import { Route as RoleViewMarksRouteImport } from './routes/role-view-marks'
 import { Route as RolloutRouteImport } from './routes/rollout'
 import { Route as RoutingGuideEnforcementsRouteImport } from './routes/routing-guide-enforcements'
 import { Route as RoutingGuideMatchesRouteImport } from './routes/routing-guide-matches'
@@ -178,6 +177,7 @@ import { Route as SlaClausesRouteImport } from './routes/sla-clauses'
 import { Route as SpendMarksRouteImport } from './routes/spend-marks'
 import { Route as SubcontractEdgeMarksRouteImport } from './routes/subcontract-edge-marks'
 import { Route as SwitchBlLoiMarksRouteImport } from './routes/switch-bl-loi-marks'
+import { Route as TachoOfficeMarksRouteImport } from './routes/tacho-office-marks'
 import { Route as TaskTemplatesRouteImport } from './routes/task-templates'
 import { Route as TelematicsConnectorsRouteImport } from './routes/telematics-connectors'
 import { Route as TenantContractKeksRouteImport } from './routes/tenant-contract-keks'
@@ -200,6 +200,7 @@ import { Route as TenderWinLossesRouteImport } from './routes/tender-win-losses'
 import { Route as TendersRouteImport } from './routes/tenders'
 import { Route as TerminalSlotConnectorsRouteImport } from './routes/terminal-slot-connectors'
 import { Route as TerminalsRouteImport } from './routes/terminals'
+import { Route as TermsAiMarksRouteImport } from './routes/terms-ai-marks'
 import { Route as TimeToFixMarksRouteImport } from './routes/time-to-fix-marks'
 import { Route as TowerImpactsRouteImport } from './routes/tower-impacts'
 import { Route as TrackingRouteImport } from './routes/tracking'
@@ -220,9 +221,9 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AirRa3MarksRoute = AirRa3MarksRouteImport.update({
-  id: '/air-ra3-marks',
-  path: '/air-ra3-marks',
+const AbSusMarksRoute = AbSusMarksRouteImport.update({
+  id: '/ab-sus-marks',
+  path: '/ab-sus-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AbandonedRtoMarksRoute = AbandonedRtoMarksRouteImport.update({
@@ -243,6 +244,11 @@ const AiRoute = AiRouteImport.update({
 const AirRoute = AirRouteImport.update({
   id: '/air',
   path: '/air',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AirRa3MarksRoute = AirRa3MarksRouteImport.update({
+  id: '/air-ra3-marks',
+  path: '/air-ra3-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AsnsRoute = AsnsRouteImport.update({
@@ -390,11 +396,6 @@ const CostToServeRoute = CostToServeRouteImport.update({
   path: '/cost-to-serve',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CsrdMarksRoute = CsrdMarksRouteImport.update({
-  id: '/csrd-marks',
-  path: '/csrd-marks',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const CreditReviewsRoute = CreditReviewsRouteImport.update({
   id: '/credit-reviews',
   path: '/credit-reviews',
@@ -403,6 +404,11 @@ const CreditReviewsRoute = CreditReviewsRouteImport.update({
 const CrmLeadsRoute = CrmLeadsRouteImport.update({
   id: '/crm-leads',
   path: '/crm-leads',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CsrdMarksRoute = CsrdMarksRouteImport.update({
+  id: '/csrd-marks',
+  path: '/csrd-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CustomerContractsRoute = CustomerContractsRouteImport.update({
@@ -430,14 +436,14 @@ const DecisionsRoute = DecisionsRouteImport.update({
   path: '/decisions',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DemandSnapshotMarksRoute = DemandSnapshotMarksRouteImport.update({
-  id: '/demand-snapshot-marks',
-  path: '/demand-snapshot-marks',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const DelayForecastsRoute = DelayForecastsRouteImport.update({
   id: '/delay-forecasts',
   path: '/delay-forecasts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemandSnapshotMarksRoute = DemandSnapshotMarksRouteImport.update({
+  id: '/demand-snapshot-marks',
+  path: '/demand-snapshot-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DockAppointmentsRoute = DockAppointmentsRouteImport.update({
@@ -460,14 +466,14 @@ const EDeliveryMarksRoute = EDeliveryMarksRouteImport.update({
   path: '/e-delivery-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
-const EdiRoute = EdiRouteImport.update({
-  id: '/edi',
-  path: '/edi',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const EccnMarksRoute = EccnMarksRouteImport.update({
   id: '/eccn-marks',
   path: '/eccn-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EdiRoute = EdiRouteImport.update({
+  id: '/edi',
+  path: '/edi',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EdiMapMarksRoute = EdiMapMarksRouteImport.update({
@@ -478,56 +484,6 @@ const EdiMapMarksRoute = EdiMapMarksRouteImport.update({
 const EmptyDepotMarksRoute = EmptyDepotMarksRouteImport.update({
   id: '/empty-depot-marks',
   path: '/empty-depot-marks',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NvoccMarksRoute = NvoccMarksRouteImport.update({
-  id: '/nvocc-marks',
-  path: '/nvocc-marks',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MultiManningMarksRoute = MultiManningMarksRouteImport.update({
-  id: '/multi-manning-marks',
-  path: '/multi-manning-marks',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PostingMarksRoute = PostingMarksRouteImport.update({
-  id: '/posting-marks',
-  path: '/posting-marks',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TachoOfficeMarksRoute = TachoOfficeMarksRouteImport.update({
-  id: '/tacho-office-marks',
-  path: '/tacho-office-marks',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LezMarksRoute = LezMarksRouteImport.update({
-  id: '/lez-marks',
-  path: '/lez-marks',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LabelParkingMarksRoute = LabelParkingMarksRouteImport.update({
-  id: '/label-parking-marks',
-  path: '/label-parking-marks',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AbSusMarksRoute = AbSusMarksRouteImport.update({
-  id: '/ab-sus-marks',
-  path: '/ab-sus-marks',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FunnelMarksRoute = FunnelMarksRouteImport.update({
-  id: '/funnel-marks',
-  path: '/funnel-marks',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TermsAiMarksRoute = TermsAiMarksRouteImport.update({
-  id: '/terms-ai-marks',
-  path: '/terms-ai-marks',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MailAcceptMarksRoute = MailAcceptMarksRouteImport.update({
-  id: '/mail-accept-marks',
-  path: '/mail-accept-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EntityEventsRoute = EntityEventsRouteImport.update({
@@ -620,6 +576,11 @@ const FuelIndexesRoute = FuelIndexesRouteImport.update({
   path: '/fuel-indexes',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FunnelMarksRoute = FunnelMarksRouteImport.update({
+  id: '/funnel-marks',
+  path: '/funnel-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FxDifferencesRoute = FxDifferencesRouteImport.update({
   id: '/fx-differences',
   path: '/fx-differences',
@@ -695,6 +656,11 @@ const KreptdLicencesRoute = KreptdLicencesRouteImport.update({
   path: '/kreptd-licences',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LabelParkingMarksRoute = LabelParkingMarksRouteImport.update({
+  id: '/label-parking-marks',
+  path: '/label-parking-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LaneKmsRoute = LaneKmsRouteImport.update({
   id: '/lane-kms',
   path: '/lane-kms',
@@ -720,6 +686,11 @@ const LegalHoldMarksRoute = LegalHoldMarksRouteImport.update({
   path: '/legal-hold-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LezMarksRoute = LezMarksRouteImport.update({
+  id: '/lez-marks',
+  path: '/lez-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoadPlanMarksRoute = LoadPlanMarksRouteImport.update({
   id: '/load-plan-marks',
   path: '/load-plan-marks',
@@ -738,6 +709,11 @@ const LocationsRoute = LocationsRouteImport.update({
 const MailRoute = MailRouteImport.update({
   id: '/mail',
   path: '/mail',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MailAcceptMarksRoute = MailAcceptMarksRouteImport.update({
+  id: '/mail-accept-marks',
+  path: '/mail-accept-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MakeOrBuyMarksRoute = MakeOrBuyMarksRouteImport.update({
@@ -765,6 +741,11 @@ const MqcMarksRoute = MqcMarksRouteImport.update({
   path: '/mqc-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MultiManningMarksRoute = MultiManningMarksRouteImport.update({
+  id: '/multi-manning-marks',
+  path: '/multi-manning-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NbpRatesRoute = NbpRatesRouteImport.update({
   id: '/nbp-rates',
   path: '/nbp-rates',
@@ -783,6 +764,11 @@ const NetworksRoute = NetworksRouteImport.update({
 const NotificationsRoute = NotificationsRouteImport.update({
   id: '/notifications',
   path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NvoccMarksRoute = NvoccMarksRouteImport.update({
+  id: '/nvocc-marks',
+  path: '/nvocc-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OceanAllianceMarksRoute = OceanAllianceMarksRouteImport.update({
@@ -895,6 +881,11 @@ const PortsRoute = PortsRouteImport.update({
   path: '/ports',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PostingMarksRoute = PostingMarksRouteImport.update({
+  id: '/posting-marks',
+  path: '/posting-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PredictionLedgersRoute = PredictionLedgersRouteImport.update({
   id: '/prediction-ledgers',
   path: '/prediction-ledgers',
@@ -973,6 +964,11 @@ const RepairPlaybooksRoute = RepairPlaybooksRouteImport.update({
 const RoadRoute = RoadRouteImport.update({
   id: '/road',
   path: '/road',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RoleViewMarksRoute = RoleViewMarksRouteImport.update({
+  id: '/role-view-marks',
+  path: '/role-view-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RolloutRoute = RolloutRouteImport.update({
@@ -1059,6 +1055,11 @@ const SubcontractEdgeMarksRoute = SubcontractEdgeMarksRouteImport.update({
 const SwitchBlLoiMarksRoute = SwitchBlLoiMarksRouteImport.update({
   id: '/switch-bl-loi-marks',
   path: '/switch-bl-loi-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TachoOfficeMarksRoute = TachoOfficeMarksRouteImport.update({
+  id: '/tacho-office-marks',
+  path: '/tacho-office-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TaskTemplatesRoute = TaskTemplatesRouteImport.update({
@@ -1171,6 +1172,11 @@ const TerminalsRoute = TerminalsRouteImport.update({
   path: '/terminals',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TermsAiMarksRoute = TermsAiMarksRouteImport.update({
+  id: '/terms-ai-marks',
+  path: '/terms-ai-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TimeToFixMarksRoute = TimeToFixMarksRouteImport.update({
   id: '/time-to-fix-marks',
   path: '/time-to-fix-marks',
@@ -1244,11 +1250,12 @@ const TenancyUsersRoute = TenancyUsersRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/air-ra3-marks': typeof AirRa3MarksRoute
+  '/ab-sus-marks': typeof AbSusMarksRoute
   '/abandoned-rto-marks': typeof AbandonedRtoMarksRoute
   '/aeo-dossier-marks': typeof AeoDossierMarksRoute
   '/ai': typeof AiRoute
   '/air': typeof AirRoute
+  '/air-ra3-marks': typeof AirRa3MarksRoute
   '/asns': typeof AsnsRoute
   '/billing-marks': typeof BillingMarksRoute
   '/bin-pack-marks': typeof BinPackMarksRoute
@@ -1278,34 +1285,24 @@ export interface FileRoutesByFullPath {
   '/consignments': typeof ConsignmentsRoute
   '/cost-allocation-marks': typeof CostAllocationMarksRoute
   '/cost-to-serve': typeof CostToServeRoute
-  '/csrd-marks': typeof CsrdMarksRoute
   '/credit-reviews': typeof CreditReviewsRoute
   '/crm-leads': typeof CrmLeadsRoute
+  '/csrd-marks': typeof CsrdMarksRoute
   '/customer-contracts': typeof CustomerContractsRoute
   '/customer-sops': typeof CustomerSopsRoute
   '/cutoff-marks': typeof CutoffMarksRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
   '/decisions': typeof DecisionsRoute
-  '/demand-snapshot-marks': typeof DemandSnapshotMarksRoute
   '/delay-forecasts': typeof DelayForecastsRoute
+  '/demand-snapshot-marks': typeof DemandSnapshotMarksRoute
   '/dock-appointments': typeof DockAppointmentsRoute
   '/document-templates': typeof DocumentTemplatesRoute
   '/e-cmr-marks': typeof ECmrMarksRoute
   '/e-delivery-marks': typeof EDeliveryMarksRoute
-  '/edi': typeof EdiRoute
   '/eccn-marks': typeof EccnMarksRoute
+  '/edi': typeof EdiRoute
   '/edi-map-marks': typeof EdiMapMarksRoute
   '/empty-depot-marks': typeof EmptyDepotMarksRoute
-  '/nvocc-marks': typeof NvoccMarksRoute
-  '/multi-manning-marks': typeof MultiManningMarksRoute
-  '/posting-marks': typeof PostingMarksRoute
-  '/tacho-office-marks': typeof TachoOfficeMarksRoute
-  '/lez-marks': typeof LezMarksRoute
-  '/label-parking-marks': typeof LabelParkingMarksRoute
-  '/ab-sus-marks': typeof AbSusMarksRoute
-  '/funnel-marks': typeof FunnelMarksRoute
-  '/terms-ai-marks': typeof TermsAiMarksRoute
-  '/mail-accept-marks': typeof MailAcceptMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/eur1-atr-marks': typeof Eur1AtrMarksRoute
@@ -1324,6 +1321,7 @@ export interface FileRoutesByFullPath {
   '/freight-audit-marks': typeof FreightAuditMarksRoute
   '/fuel-anomaly-marks': typeof FuelAnomalyMarksRoute
   '/fuel-indexes': typeof FuelIndexesRoute
+  '/funnel-marks': typeof FunnelMarksRoute
   '/fx-differences': typeof FxDifferencesRoute
   '/gdpr': typeof GdprRoute
   '/general-average-marks': typeof GeneralAverageMarksRoute
@@ -1339,24 +1337,29 @@ export interface FileRoutesByFullPath {
   '/iso-nis2-marks': typeof IsoNis2MarksRoute
   '/jit-jis-marks': typeof JitJisMarksRoute
   '/kreptd-licences': typeof KreptdLicencesRoute
+  '/label-parking-marks': typeof LabelParkingMarksRoute
   '/lane-kms': typeof LaneKmsRoute
   '/lane-patterns': typeof LanePatternsRoute
   '/lc-checklists': typeof LcChecklistsRoute
   '/lcl': typeof LclRoute
   '/legal-hold-marks': typeof LegalHoldMarksRoute
+  '/lez-marks': typeof LezMarksRoute
   '/load-plan-marks': typeof LoadPlanMarksRoute
   '/local-charges': typeof LocalChargesRoute
   '/locations': typeof LocationsRoute
   '/mail': typeof MailRoute
+  '/mail-accept-marks': typeof MailAcceptMarksRoute
   '/make-or-buy-marks': typeof MakeOrBuyMarksRoute
   '/memory-edges': typeof MemoryEdgesRoute
   '/money-cost': typeof MoneyCostRoute
   '/monitoring-schemes': typeof MonitoringSchemesRoute
   '/mqc-marks': typeof MqcMarksRoute
+  '/multi-manning-marks': typeof MultiManningMarksRoute
   '/nbp-rates': typeof NbpRatesRoute
   '/ncts-drafts': typeof NctsDraftsRoute
   '/networks': typeof NetworksRoute
   '/notifications': typeof NotificationsRoute
+  '/nvocc-marks': typeof NvoccMarksRoute
   '/ocean-alliance-marks': typeof OceanAllianceMarksRoute
   '/ocean-bills': typeof OceanBillsRoute
   '/offboarding-marks': typeof OffboardingMarksRoute
@@ -1379,6 +1382,7 @@ export interface FileRoutesByFullPath {
   '/po-lines': typeof PoLinesRoute
   '/port-surcharges': typeof PortSurchargesRoute
   '/ports': typeof PortsRoute
+  '/posting-marks': typeof PostingMarksRoute
   '/prediction-ledgers': typeof PredictionLedgersRoute
   '/purchase-orders': typeof PurchaseOrdersRoute
   '/quality': typeof QualityRoute
@@ -1395,6 +1399,7 @@ export interface FileRoutesByFullPath {
   '/remediation-options': typeof RemediationOptionsRoute
   '/repair-playbooks': typeof RepairPlaybooksRoute
   '/road': typeof RoadRoute
+  '/role-view-marks': typeof RoleViewMarksRoute
   '/rollout': typeof RolloutRoute
   '/routing-guide-enforcements': typeof RoutingGuideEnforcementsRoute
   '/routing-guide-matches': typeof RoutingGuideMatchesRoute
@@ -1412,6 +1417,7 @@ export interface FileRoutesByFullPath {
   '/spend-marks': typeof SpendMarksRoute
   '/subcontract-edge-marks': typeof SubcontractEdgeMarksRoute
   '/switch-bl-loi-marks': typeof SwitchBlLoiMarksRoute
+  '/tacho-office-marks': typeof TachoOfficeMarksRoute
   '/task-templates': typeof TaskTemplatesRoute
   '/telematics-connectors': typeof TelematicsConnectorsRoute
   '/tenant-contract-keks': typeof TenantContractKeksRoute
@@ -1434,6 +1440,7 @@ export interface FileRoutesByFullPath {
   '/tenders': typeof TendersRoute
   '/terminal-slot-connectors': typeof TerminalSlotConnectorsRoute
   '/terminals': typeof TerminalsRoute
+  '/terms-ai-marks': typeof TermsAiMarksRoute
   '/time-to-fix-marks': typeof TimeToFixMarksRoute
   '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
@@ -1451,11 +1458,12 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/air-ra3-marks': typeof AirRa3MarksRoute
+  '/ab-sus-marks': typeof AbSusMarksRoute
   '/abandoned-rto-marks': typeof AbandonedRtoMarksRoute
   '/aeo-dossier-marks': typeof AeoDossierMarksRoute
   '/ai': typeof AiRoute
   '/air': typeof AirRoute
+  '/air-ra3-marks': typeof AirRa3MarksRoute
   '/asns': typeof AsnsRoute
   '/billing-marks': typeof BillingMarksRoute
   '/bin-pack-marks': typeof BinPackMarksRoute
@@ -1485,34 +1493,24 @@ export interface FileRoutesByTo {
   '/consignments': typeof ConsignmentsRoute
   '/cost-allocation-marks': typeof CostAllocationMarksRoute
   '/cost-to-serve': typeof CostToServeRoute
-  '/csrd-marks': typeof CsrdMarksRoute
   '/credit-reviews': typeof CreditReviewsRoute
   '/crm-leads': typeof CrmLeadsRoute
+  '/csrd-marks': typeof CsrdMarksRoute
   '/customer-contracts': typeof CustomerContractsRoute
   '/customer-sops': typeof CustomerSopsRoute
   '/cutoff-marks': typeof CutoffMarksRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
   '/decisions': typeof DecisionsRoute
-  '/demand-snapshot-marks': typeof DemandSnapshotMarksRoute
   '/delay-forecasts': typeof DelayForecastsRoute
+  '/demand-snapshot-marks': typeof DemandSnapshotMarksRoute
   '/dock-appointments': typeof DockAppointmentsRoute
   '/document-templates': typeof DocumentTemplatesRoute
   '/e-cmr-marks': typeof ECmrMarksRoute
   '/e-delivery-marks': typeof EDeliveryMarksRoute
-  '/edi': typeof EdiRoute
   '/eccn-marks': typeof EccnMarksRoute
+  '/edi': typeof EdiRoute
   '/edi-map-marks': typeof EdiMapMarksRoute
   '/empty-depot-marks': typeof EmptyDepotMarksRoute
-  '/nvocc-marks': typeof NvoccMarksRoute
-  '/multi-manning-marks': typeof MultiManningMarksRoute
-  '/posting-marks': typeof PostingMarksRoute
-  '/tacho-office-marks': typeof TachoOfficeMarksRoute
-  '/lez-marks': typeof LezMarksRoute
-  '/label-parking-marks': typeof LabelParkingMarksRoute
-  '/ab-sus-marks': typeof AbSusMarksRoute
-  '/funnel-marks': typeof FunnelMarksRoute
-  '/terms-ai-marks': typeof TermsAiMarksRoute
-  '/mail-accept-marks': typeof MailAcceptMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/eur1-atr-marks': typeof Eur1AtrMarksRoute
@@ -1531,6 +1529,7 @@ export interface FileRoutesByTo {
   '/freight-audit-marks': typeof FreightAuditMarksRoute
   '/fuel-anomaly-marks': typeof FuelAnomalyMarksRoute
   '/fuel-indexes': typeof FuelIndexesRoute
+  '/funnel-marks': typeof FunnelMarksRoute
   '/fx-differences': typeof FxDifferencesRoute
   '/gdpr': typeof GdprRoute
   '/general-average-marks': typeof GeneralAverageMarksRoute
@@ -1546,24 +1545,29 @@ export interface FileRoutesByTo {
   '/iso-nis2-marks': typeof IsoNis2MarksRoute
   '/jit-jis-marks': typeof JitJisMarksRoute
   '/kreptd-licences': typeof KreptdLicencesRoute
+  '/label-parking-marks': typeof LabelParkingMarksRoute
   '/lane-kms': typeof LaneKmsRoute
   '/lane-patterns': typeof LanePatternsRoute
   '/lc-checklists': typeof LcChecklistsRoute
   '/lcl': typeof LclRoute
   '/legal-hold-marks': typeof LegalHoldMarksRoute
+  '/lez-marks': typeof LezMarksRoute
   '/load-plan-marks': typeof LoadPlanMarksRoute
   '/local-charges': typeof LocalChargesRoute
   '/locations': typeof LocationsRoute
   '/mail': typeof MailRoute
+  '/mail-accept-marks': typeof MailAcceptMarksRoute
   '/make-or-buy-marks': typeof MakeOrBuyMarksRoute
   '/memory-edges': typeof MemoryEdgesRoute
   '/money-cost': typeof MoneyCostRoute
   '/monitoring-schemes': typeof MonitoringSchemesRoute
   '/mqc-marks': typeof MqcMarksRoute
+  '/multi-manning-marks': typeof MultiManningMarksRoute
   '/nbp-rates': typeof NbpRatesRoute
   '/ncts-drafts': typeof NctsDraftsRoute
   '/networks': typeof NetworksRoute
   '/notifications': typeof NotificationsRoute
+  '/nvocc-marks': typeof NvoccMarksRoute
   '/ocean-alliance-marks': typeof OceanAllianceMarksRoute
   '/ocean-bills': typeof OceanBillsRoute
   '/offboarding-marks': typeof OffboardingMarksRoute
@@ -1586,6 +1590,7 @@ export interface FileRoutesByTo {
   '/po-lines': typeof PoLinesRoute
   '/port-surcharges': typeof PortSurchargesRoute
   '/ports': typeof PortsRoute
+  '/posting-marks': typeof PostingMarksRoute
   '/prediction-ledgers': typeof PredictionLedgersRoute
   '/purchase-orders': typeof PurchaseOrdersRoute
   '/quality': typeof QualityRoute
@@ -1602,6 +1607,7 @@ export interface FileRoutesByTo {
   '/remediation-options': typeof RemediationOptionsRoute
   '/repair-playbooks': typeof RepairPlaybooksRoute
   '/road': typeof RoadRoute
+  '/role-view-marks': typeof RoleViewMarksRoute
   '/rollout': typeof RolloutRoute
   '/routing-guide-enforcements': typeof RoutingGuideEnforcementsRoute
   '/routing-guide-matches': typeof RoutingGuideMatchesRoute
@@ -1619,6 +1625,7 @@ export interface FileRoutesByTo {
   '/spend-marks': typeof SpendMarksRoute
   '/subcontract-edge-marks': typeof SubcontractEdgeMarksRoute
   '/switch-bl-loi-marks': typeof SwitchBlLoiMarksRoute
+  '/tacho-office-marks': typeof TachoOfficeMarksRoute
   '/task-templates': typeof TaskTemplatesRoute
   '/telematics-connectors': typeof TelematicsConnectorsRoute
   '/tenant-contract-keks': typeof TenantContractKeksRoute
@@ -1641,6 +1648,7 @@ export interface FileRoutesByTo {
   '/tenders': typeof TendersRoute
   '/terminal-slot-connectors': typeof TerminalSlotConnectorsRoute
   '/terminals': typeof TerminalsRoute
+  '/terms-ai-marks': typeof TermsAiMarksRoute
   '/time-to-fix-marks': typeof TimeToFixMarksRoute
   '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
@@ -1659,11 +1667,12 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/air-ra3-marks': typeof AirRa3MarksRoute
+  '/ab-sus-marks': typeof AbSusMarksRoute
   '/abandoned-rto-marks': typeof AbandonedRtoMarksRoute
   '/aeo-dossier-marks': typeof AeoDossierMarksRoute
   '/ai': typeof AiRoute
   '/air': typeof AirRoute
+  '/air-ra3-marks': typeof AirRa3MarksRoute
   '/asns': typeof AsnsRoute
   '/billing-marks': typeof BillingMarksRoute
   '/bin-pack-marks': typeof BinPackMarksRoute
@@ -1693,34 +1702,24 @@ export interface FileRoutesById {
   '/consignments': typeof ConsignmentsRoute
   '/cost-allocation-marks': typeof CostAllocationMarksRoute
   '/cost-to-serve': typeof CostToServeRoute
-  '/csrd-marks': typeof CsrdMarksRoute
   '/credit-reviews': typeof CreditReviewsRoute
   '/crm-leads': typeof CrmLeadsRoute
+  '/csrd-marks': typeof CsrdMarksRoute
   '/customer-contracts': typeof CustomerContractsRoute
   '/customer-sops': typeof CustomerSopsRoute
   '/cutoff-marks': typeof CutoffMarksRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
   '/decisions': typeof DecisionsRoute
-  '/demand-snapshot-marks': typeof DemandSnapshotMarksRoute
   '/delay-forecasts': typeof DelayForecastsRoute
+  '/demand-snapshot-marks': typeof DemandSnapshotMarksRoute
   '/dock-appointments': typeof DockAppointmentsRoute
   '/document-templates': typeof DocumentTemplatesRoute
   '/e-cmr-marks': typeof ECmrMarksRoute
   '/e-delivery-marks': typeof EDeliveryMarksRoute
-  '/edi': typeof EdiRoute
   '/eccn-marks': typeof EccnMarksRoute
+  '/edi': typeof EdiRoute
   '/edi-map-marks': typeof EdiMapMarksRoute
   '/empty-depot-marks': typeof EmptyDepotMarksRoute
-  '/nvocc-marks': typeof NvoccMarksRoute
-  '/multi-manning-marks': typeof MultiManningMarksRoute
-  '/posting-marks': typeof PostingMarksRoute
-  '/tacho-office-marks': typeof TachoOfficeMarksRoute
-  '/lez-marks': typeof LezMarksRoute
-  '/label-parking-marks': typeof LabelParkingMarksRoute
-  '/ab-sus-marks': typeof AbSusMarksRoute
-  '/funnel-marks': typeof FunnelMarksRoute
-  '/terms-ai-marks': typeof TermsAiMarksRoute
-  '/mail-accept-marks': typeof MailAcceptMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/eur1-atr-marks': typeof Eur1AtrMarksRoute
@@ -1739,6 +1738,7 @@ export interface FileRoutesById {
   '/freight-audit-marks': typeof FreightAuditMarksRoute
   '/fuel-anomaly-marks': typeof FuelAnomalyMarksRoute
   '/fuel-indexes': typeof FuelIndexesRoute
+  '/funnel-marks': typeof FunnelMarksRoute
   '/fx-differences': typeof FxDifferencesRoute
   '/gdpr': typeof GdprRoute
   '/general-average-marks': typeof GeneralAverageMarksRoute
@@ -1754,24 +1754,29 @@ export interface FileRoutesById {
   '/iso-nis2-marks': typeof IsoNis2MarksRoute
   '/jit-jis-marks': typeof JitJisMarksRoute
   '/kreptd-licences': typeof KreptdLicencesRoute
+  '/label-parking-marks': typeof LabelParkingMarksRoute
   '/lane-kms': typeof LaneKmsRoute
   '/lane-patterns': typeof LanePatternsRoute
   '/lc-checklists': typeof LcChecklistsRoute
   '/lcl': typeof LclRoute
   '/legal-hold-marks': typeof LegalHoldMarksRoute
+  '/lez-marks': typeof LezMarksRoute
   '/load-plan-marks': typeof LoadPlanMarksRoute
   '/local-charges': typeof LocalChargesRoute
   '/locations': typeof LocationsRoute
   '/mail': typeof MailRoute
+  '/mail-accept-marks': typeof MailAcceptMarksRoute
   '/make-or-buy-marks': typeof MakeOrBuyMarksRoute
   '/memory-edges': typeof MemoryEdgesRoute
   '/money-cost': typeof MoneyCostRoute
   '/monitoring-schemes': typeof MonitoringSchemesRoute
   '/mqc-marks': typeof MqcMarksRoute
+  '/multi-manning-marks': typeof MultiManningMarksRoute
   '/nbp-rates': typeof NbpRatesRoute
   '/ncts-drafts': typeof NctsDraftsRoute
   '/networks': typeof NetworksRoute
   '/notifications': typeof NotificationsRoute
+  '/nvocc-marks': typeof NvoccMarksRoute
   '/ocean-alliance-marks': typeof OceanAllianceMarksRoute
   '/ocean-bills': typeof OceanBillsRoute
   '/offboarding-marks': typeof OffboardingMarksRoute
@@ -1794,6 +1799,7 @@ export interface FileRoutesById {
   '/po-lines': typeof PoLinesRoute
   '/port-surcharges': typeof PortSurchargesRoute
   '/ports': typeof PortsRoute
+  '/posting-marks': typeof PostingMarksRoute
   '/prediction-ledgers': typeof PredictionLedgersRoute
   '/purchase-orders': typeof PurchaseOrdersRoute
   '/quality': typeof QualityRoute
@@ -1810,6 +1816,7 @@ export interface FileRoutesById {
   '/remediation-options': typeof RemediationOptionsRoute
   '/repair-playbooks': typeof RepairPlaybooksRoute
   '/road': typeof RoadRoute
+  '/role-view-marks': typeof RoleViewMarksRoute
   '/rollout': typeof RolloutRoute
   '/routing-guide-enforcements': typeof RoutingGuideEnforcementsRoute
   '/routing-guide-matches': typeof RoutingGuideMatchesRoute
@@ -1827,6 +1834,7 @@ export interface FileRoutesById {
   '/spend-marks': typeof SpendMarksRoute
   '/subcontract-edge-marks': typeof SubcontractEdgeMarksRoute
   '/switch-bl-loi-marks': typeof SwitchBlLoiMarksRoute
+  '/tacho-office-marks': typeof TachoOfficeMarksRoute
   '/task-templates': typeof TaskTemplatesRoute
   '/telematics-connectors': typeof TelematicsConnectorsRoute
   '/tenant-contract-keks': typeof TenantContractKeksRoute
@@ -1849,6 +1857,7 @@ export interface FileRoutesById {
   '/tenders': typeof TendersRoute
   '/terminal-slot-connectors': typeof TerminalSlotConnectorsRoute
   '/terminals': typeof TerminalsRoute
+  '/terms-ai-marks': typeof TermsAiMarksRoute
   '/time-to-fix-marks': typeof TimeToFixMarksRoute
   '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
@@ -1868,11 +1877,12 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/air-ra3-marks'
+    | '/ab-sus-marks'
     | '/abandoned-rto-marks'
     | '/aeo-dossier-marks'
     | '/ai'
     | '/air'
+    | '/air-ra3-marks'
     | '/asns'
     | '/billing-marks'
     | '/bin-pack-marks'
@@ -1902,34 +1912,24 @@ export interface FileRouteTypes {
     | '/consignments'
     | '/cost-allocation-marks'
     | '/cost-to-serve'
-    | '/csrd-marks'
     | '/credit-reviews'
     | '/crm-leads'
+    | '/csrd-marks'
     | '/customer-contracts'
     | '/customer-sops'
     | '/cutoff-marks'
     | '/dangerous-goods'
     | '/decisions'
-    | '/demand-snapshot-marks'
     | '/delay-forecasts'
+    | '/demand-snapshot-marks'
     | '/dock-appointments'
     | '/document-templates'
     | '/e-cmr-marks'
     | '/e-delivery-marks'
-    | '/edi'
     | '/eccn-marks'
+    | '/edi'
     | '/edi-map-marks'
     | '/empty-depot-marks'
-    | '/nvocc-marks'
-    | '/multi-manning-marks'
-    | '/posting-marks'
-    | '/tacho-office-marks'
-    | '/lez-marks'
-    | '/label-parking-marks'
-    | '/ab-sus-marks'
-    | '/funnel-marks'
-    | '/terms-ai-marks'
-    | '/mail-accept-marks'
     | '/entity-events'
     | '/erp-connectors'
     | '/eur1-atr-marks'
@@ -1948,6 +1948,7 @@ export interface FileRouteTypes {
     | '/freight-audit-marks'
     | '/fuel-anomaly-marks'
     | '/fuel-indexes'
+    | '/funnel-marks'
     | '/fx-differences'
     | '/gdpr'
     | '/general-average-marks'
@@ -1963,24 +1964,29 @@ export interface FileRouteTypes {
     | '/iso-nis2-marks'
     | '/jit-jis-marks'
     | '/kreptd-licences'
+    | '/label-parking-marks'
     | '/lane-kms'
     | '/lane-patterns'
     | '/lc-checklists'
     | '/lcl'
     | '/legal-hold-marks'
+    | '/lez-marks'
     | '/load-plan-marks'
     | '/local-charges'
     | '/locations'
     | '/mail'
+    | '/mail-accept-marks'
     | '/make-or-buy-marks'
     | '/memory-edges'
     | '/money-cost'
     | '/monitoring-schemes'
     | '/mqc-marks'
+    | '/multi-manning-marks'
     | '/nbp-rates'
     | '/ncts-drafts'
     | '/networks'
     | '/notifications'
+    | '/nvocc-marks'
     | '/ocean-alliance-marks'
     | '/ocean-bills'
     | '/offboarding-marks'
@@ -2003,6 +2009,7 @@ export interface FileRouteTypes {
     | '/po-lines'
     | '/port-surcharges'
     | '/ports'
+    | '/posting-marks'
     | '/prediction-ledgers'
     | '/purchase-orders'
     | '/quality'
@@ -2019,6 +2026,7 @@ export interface FileRouteTypes {
     | '/remediation-options'
     | '/repair-playbooks'
     | '/road'
+    | '/role-view-marks'
     | '/rollout'
     | '/routing-guide-enforcements'
     | '/routing-guide-matches'
@@ -2036,6 +2044,7 @@ export interface FileRouteTypes {
     | '/spend-marks'
     | '/subcontract-edge-marks'
     | '/switch-bl-loi-marks'
+    | '/tacho-office-marks'
     | '/task-templates'
     | '/telematics-connectors'
     | '/tenant-contract-keks'
@@ -2058,6 +2067,7 @@ export interface FileRouteTypes {
     | '/tenders'
     | '/terminal-slot-connectors'
     | '/terminals'
+    | '/terms-ai-marks'
     | '/time-to-fix-marks'
     | '/tower-impacts'
     | '/tracking'
@@ -2075,11 +2085,12 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/air-ra3-marks'
+    | '/ab-sus-marks'
     | '/abandoned-rto-marks'
     | '/aeo-dossier-marks'
     | '/ai'
     | '/air'
+    | '/air-ra3-marks'
     | '/asns'
     | '/billing-marks'
     | '/bin-pack-marks'
@@ -2109,34 +2120,24 @@ export interface FileRouteTypes {
     | '/consignments'
     | '/cost-allocation-marks'
     | '/cost-to-serve'
-    | '/csrd-marks'
     | '/credit-reviews'
     | '/crm-leads'
+    | '/csrd-marks'
     | '/customer-contracts'
     | '/customer-sops'
     | '/cutoff-marks'
     | '/dangerous-goods'
     | '/decisions'
-    | '/demand-snapshot-marks'
     | '/delay-forecasts'
+    | '/demand-snapshot-marks'
     | '/dock-appointments'
     | '/document-templates'
     | '/e-cmr-marks'
     | '/e-delivery-marks'
-    | '/edi'
     | '/eccn-marks'
+    | '/edi'
     | '/edi-map-marks'
     | '/empty-depot-marks'
-    | '/nvocc-marks'
-    | '/multi-manning-marks'
-    | '/posting-marks'
-    | '/tacho-office-marks'
-    | '/lez-marks'
-    | '/label-parking-marks'
-    | '/ab-sus-marks'
-    | '/funnel-marks'
-    | '/terms-ai-marks'
-    | '/mail-accept-marks'
     | '/entity-events'
     | '/erp-connectors'
     | '/eur1-atr-marks'
@@ -2155,6 +2156,7 @@ export interface FileRouteTypes {
     | '/freight-audit-marks'
     | '/fuel-anomaly-marks'
     | '/fuel-indexes'
+    | '/funnel-marks'
     | '/fx-differences'
     | '/gdpr'
     | '/general-average-marks'
@@ -2170,24 +2172,29 @@ export interface FileRouteTypes {
     | '/iso-nis2-marks'
     | '/jit-jis-marks'
     | '/kreptd-licences'
+    | '/label-parking-marks'
     | '/lane-kms'
     | '/lane-patterns'
     | '/lc-checklists'
     | '/lcl'
     | '/legal-hold-marks'
+    | '/lez-marks'
     | '/load-plan-marks'
     | '/local-charges'
     | '/locations'
     | '/mail'
+    | '/mail-accept-marks'
     | '/make-or-buy-marks'
     | '/memory-edges'
     | '/money-cost'
     | '/monitoring-schemes'
     | '/mqc-marks'
+    | '/multi-manning-marks'
     | '/nbp-rates'
     | '/ncts-drafts'
     | '/networks'
     | '/notifications'
+    | '/nvocc-marks'
     | '/ocean-alliance-marks'
     | '/ocean-bills'
     | '/offboarding-marks'
@@ -2210,6 +2217,7 @@ export interface FileRouteTypes {
     | '/po-lines'
     | '/port-surcharges'
     | '/ports'
+    | '/posting-marks'
     | '/prediction-ledgers'
     | '/purchase-orders'
     | '/quality'
@@ -2226,6 +2234,7 @@ export interface FileRouteTypes {
     | '/remediation-options'
     | '/repair-playbooks'
     | '/road'
+    | '/role-view-marks'
     | '/rollout'
     | '/routing-guide-enforcements'
     | '/routing-guide-matches'
@@ -2243,6 +2252,7 @@ export interface FileRouteTypes {
     | '/spend-marks'
     | '/subcontract-edge-marks'
     | '/switch-bl-loi-marks'
+    | '/tacho-office-marks'
     | '/task-templates'
     | '/telematics-connectors'
     | '/tenant-contract-keks'
@@ -2265,6 +2275,7 @@ export interface FileRouteTypes {
     | '/tenders'
     | '/terminal-slot-connectors'
     | '/terminals'
+    | '/terms-ai-marks'
     | '/time-to-fix-marks'
     | '/tower-impacts'
     | '/tracking'
@@ -2282,11 +2293,12 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/air-ra3-marks'
+    | '/ab-sus-marks'
     | '/abandoned-rto-marks'
     | '/aeo-dossier-marks'
     | '/ai'
     | '/air'
+    | '/air-ra3-marks'
     | '/asns'
     | '/billing-marks'
     | '/bin-pack-marks'
@@ -2316,34 +2328,24 @@ export interface FileRouteTypes {
     | '/consignments'
     | '/cost-allocation-marks'
     | '/cost-to-serve'
-    | '/csrd-marks'
     | '/credit-reviews'
     | '/crm-leads'
+    | '/csrd-marks'
     | '/customer-contracts'
     | '/customer-sops'
     | '/cutoff-marks'
     | '/dangerous-goods'
     | '/decisions'
-    | '/demand-snapshot-marks'
     | '/delay-forecasts'
+    | '/demand-snapshot-marks'
     | '/dock-appointments'
     | '/document-templates'
     | '/e-cmr-marks'
     | '/e-delivery-marks'
-    | '/edi'
     | '/eccn-marks'
+    | '/edi'
     | '/edi-map-marks'
     | '/empty-depot-marks'
-    | '/nvocc-marks'
-    | '/multi-manning-marks'
-    | '/posting-marks'
-    | '/tacho-office-marks'
-    | '/lez-marks'
-    | '/label-parking-marks'
-    | '/ab-sus-marks'
-    | '/funnel-marks'
-    | '/terms-ai-marks'
-    | '/mail-accept-marks'
     | '/entity-events'
     | '/erp-connectors'
     | '/eur1-atr-marks'
@@ -2362,6 +2364,7 @@ export interface FileRouteTypes {
     | '/freight-audit-marks'
     | '/fuel-anomaly-marks'
     | '/fuel-indexes'
+    | '/funnel-marks'
     | '/fx-differences'
     | '/gdpr'
     | '/general-average-marks'
@@ -2377,24 +2380,29 @@ export interface FileRouteTypes {
     | '/iso-nis2-marks'
     | '/jit-jis-marks'
     | '/kreptd-licences'
+    | '/label-parking-marks'
     | '/lane-kms'
     | '/lane-patterns'
     | '/lc-checklists'
     | '/lcl'
     | '/legal-hold-marks'
+    | '/lez-marks'
     | '/load-plan-marks'
     | '/local-charges'
     | '/locations'
     | '/mail'
+    | '/mail-accept-marks'
     | '/make-or-buy-marks'
     | '/memory-edges'
     | '/money-cost'
     | '/monitoring-schemes'
     | '/mqc-marks'
+    | '/multi-manning-marks'
     | '/nbp-rates'
     | '/ncts-drafts'
     | '/networks'
     | '/notifications'
+    | '/nvocc-marks'
     | '/ocean-alliance-marks'
     | '/ocean-bills'
     | '/offboarding-marks'
@@ -2417,6 +2425,7 @@ export interface FileRouteTypes {
     | '/po-lines'
     | '/port-surcharges'
     | '/ports'
+    | '/posting-marks'
     | '/prediction-ledgers'
     | '/purchase-orders'
     | '/quality'
@@ -2433,6 +2442,7 @@ export interface FileRouteTypes {
     | '/remediation-options'
     | '/repair-playbooks'
     | '/road'
+    | '/role-view-marks'
     | '/rollout'
     | '/routing-guide-enforcements'
     | '/routing-guide-matches'
@@ -2450,6 +2460,7 @@ export interface FileRouteTypes {
     | '/spend-marks'
     | '/subcontract-edge-marks'
     | '/switch-bl-loi-marks'
+    | '/tacho-office-marks'
     | '/task-templates'
     | '/telematics-connectors'
     | '/tenant-contract-keks'
@@ -2472,6 +2483,7 @@ export interface FileRouteTypes {
     | '/tenders'
     | '/terminal-slot-connectors'
     | '/terminals'
+    | '/terms-ai-marks'
     | '/time-to-fix-marks'
     | '/tower-impacts'
     | '/tracking'
@@ -2490,11 +2502,12 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AirRa3MarksRoute: typeof AirRa3MarksRoute
+  AbSusMarksRoute: typeof AbSusMarksRoute
   AbandonedRtoMarksRoute: typeof AbandonedRtoMarksRoute
   AeoDossierMarksRoute: typeof AeoDossierMarksRoute
   AiRoute: typeof AiRoute
   AirRoute: typeof AirRoute
+  AirRa3MarksRoute: typeof AirRa3MarksRoute
   AsnsRoute: typeof AsnsRoute
   BillingMarksRoute: typeof BillingMarksRoute
   BinPackMarksRoute: typeof BinPackMarksRoute
@@ -2524,34 +2537,24 @@ export interface RootRouteChildren {
   ConsignmentsRoute: typeof ConsignmentsRoute
   CostAllocationMarksRoute: typeof CostAllocationMarksRoute
   CostToServeRoute: typeof CostToServeRoute
-  CsrdMarksRoute: typeof CsrdMarksRoute
   CreditReviewsRoute: typeof CreditReviewsRoute
   CrmLeadsRoute: typeof CrmLeadsRoute
+  CsrdMarksRoute: typeof CsrdMarksRoute
   CustomerContractsRoute: typeof CustomerContractsRoute
   CustomerSopsRoute: typeof CustomerSopsRoute
   CutoffMarksRoute: typeof CutoffMarksRoute
   DangerousGoodsRoute: typeof DangerousGoodsRoute
   DecisionsRoute: typeof DecisionsRoute
-  DemandSnapshotMarksRoute: typeof DemandSnapshotMarksRoute
   DelayForecastsRoute: typeof DelayForecastsRoute
+  DemandSnapshotMarksRoute: typeof DemandSnapshotMarksRoute
   DockAppointmentsRoute: typeof DockAppointmentsRoute
   DocumentTemplatesRoute: typeof DocumentTemplatesRoute
   ECmrMarksRoute: typeof ECmrMarksRoute
   EDeliveryMarksRoute: typeof EDeliveryMarksRoute
-  EdiRoute: typeof EdiRoute
   EccnMarksRoute: typeof EccnMarksRoute
+  EdiRoute: typeof EdiRoute
   EdiMapMarksRoute: typeof EdiMapMarksRoute
   EmptyDepotMarksRoute: typeof EmptyDepotMarksRoute
-  NvoccMarksRoute: typeof NvoccMarksRoute
-  MultiManningMarksRoute: typeof MultiManningMarksRoute
-  PostingMarksRoute: typeof PostingMarksRoute
-  TachoOfficeMarksRoute: typeof TachoOfficeMarksRoute
-  LezMarksRoute: typeof LezMarksRoute
-  LabelParkingMarksRoute: typeof LabelParkingMarksRoute
-  AbSusMarksRoute: typeof AbSusMarksRoute
-  FunnelMarksRoute: typeof FunnelMarksRoute
-  TermsAiMarksRoute: typeof TermsAiMarksRoute
-  MailAcceptMarksRoute: typeof MailAcceptMarksRoute
   EntityEventsRoute: typeof EntityEventsRoute
   ErpConnectorsRoute: typeof ErpConnectorsRoute
   Eur1AtrMarksRoute: typeof Eur1AtrMarksRoute
@@ -2570,6 +2573,7 @@ export interface RootRouteChildren {
   FreightAuditMarksRoute: typeof FreightAuditMarksRoute
   FuelAnomalyMarksRoute: typeof FuelAnomalyMarksRoute
   FuelIndexesRoute: typeof FuelIndexesRoute
+  FunnelMarksRoute: typeof FunnelMarksRoute
   FxDifferencesRoute: typeof FxDifferencesRoute
   GdprRoute: typeof GdprRoute
   GeneralAverageMarksRoute: typeof GeneralAverageMarksRoute
@@ -2585,24 +2589,29 @@ export interface RootRouteChildren {
   IsoNis2MarksRoute: typeof IsoNis2MarksRoute
   JitJisMarksRoute: typeof JitJisMarksRoute
   KreptdLicencesRoute: typeof KreptdLicencesRoute
+  LabelParkingMarksRoute: typeof LabelParkingMarksRoute
   LaneKmsRoute: typeof LaneKmsRoute
   LanePatternsRoute: typeof LanePatternsRoute
   LcChecklistsRoute: typeof LcChecklistsRoute
   LclRoute: typeof LclRoute
   LegalHoldMarksRoute: typeof LegalHoldMarksRoute
+  LezMarksRoute: typeof LezMarksRoute
   LoadPlanMarksRoute: typeof LoadPlanMarksRoute
   LocalChargesRoute: typeof LocalChargesRoute
   LocationsRoute: typeof LocationsRoute
   MailRoute: typeof MailRoute
+  MailAcceptMarksRoute: typeof MailAcceptMarksRoute
   MakeOrBuyMarksRoute: typeof MakeOrBuyMarksRoute
   MemoryEdgesRoute: typeof MemoryEdgesRoute
   MoneyCostRoute: typeof MoneyCostRoute
   MonitoringSchemesRoute: typeof MonitoringSchemesRoute
   MqcMarksRoute: typeof MqcMarksRoute
+  MultiManningMarksRoute: typeof MultiManningMarksRoute
   NbpRatesRoute: typeof NbpRatesRoute
   NctsDraftsRoute: typeof NctsDraftsRoute
   NetworksRoute: typeof NetworksRoute
   NotificationsRoute: typeof NotificationsRoute
+  NvoccMarksRoute: typeof NvoccMarksRoute
   OceanAllianceMarksRoute: typeof OceanAllianceMarksRoute
   OceanBillsRoute: typeof OceanBillsRoute
   OffboardingMarksRoute: typeof OffboardingMarksRoute
@@ -2625,6 +2634,7 @@ export interface RootRouteChildren {
   PoLinesRoute: typeof PoLinesRoute
   PortSurchargesRoute: typeof PortSurchargesRoute
   PortsRoute: typeof PortsRoute
+  PostingMarksRoute: typeof PostingMarksRoute
   PredictionLedgersRoute: typeof PredictionLedgersRoute
   PurchaseOrdersRoute: typeof PurchaseOrdersRoute
   QualityRoute: typeof QualityRoute
@@ -2641,6 +2651,7 @@ export interface RootRouteChildren {
   RemediationOptionsRoute: typeof RemediationOptionsRoute
   RepairPlaybooksRoute: typeof RepairPlaybooksRoute
   RoadRoute: typeof RoadRoute
+  RoleViewMarksRoute: typeof RoleViewMarksRoute
   RolloutRoute: typeof RolloutRoute
   RoutingGuideEnforcementsRoute: typeof RoutingGuideEnforcementsRoute
   RoutingGuideMatchesRoute: typeof RoutingGuideMatchesRoute
@@ -2658,6 +2669,7 @@ export interface RootRouteChildren {
   SpendMarksRoute: typeof SpendMarksRoute
   SubcontractEdgeMarksRoute: typeof SubcontractEdgeMarksRoute
   SwitchBlLoiMarksRoute: typeof SwitchBlLoiMarksRoute
+  TachoOfficeMarksRoute: typeof TachoOfficeMarksRoute
   TaskTemplatesRoute: typeof TaskTemplatesRoute
   TelematicsConnectorsRoute: typeof TelematicsConnectorsRoute
   TenantContractKeksRoute: typeof TenantContractKeksRoute
@@ -2680,6 +2692,7 @@ export interface RootRouteChildren {
   TendersRoute: typeof TendersRoute
   TerminalSlotConnectorsRoute: typeof TerminalSlotConnectorsRoute
   TerminalsRoute: typeof TerminalsRoute
+  TermsAiMarksRoute: typeof TermsAiMarksRoute
   TimeToFixMarksRoute: typeof TimeToFixMarksRoute
   TowerImpactsRoute: typeof TowerImpactsRoute
   TrackingRoute: typeof TrackingRoute
@@ -2705,11 +2718,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/air-ra3-marks': {
-      id: '/air-ra3-marks'
-      path: '/air-ra3-marks'
-      fullPath: '/air-ra3-marks'
-      preLoaderRoute: typeof AirRa3MarksRouteImport
+    '/ab-sus-marks': {
+      id: '/ab-sus-marks'
+      path: '/ab-sus-marks'
+      fullPath: '/ab-sus-marks'
+      preLoaderRoute: typeof AbSusMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/abandoned-rto-marks': {
@@ -2738,6 +2751,13 @@ declare module '@tanstack/react-router' {
       path: '/air'
       fullPath: '/air'
       preLoaderRoute: typeof AirRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/air-ra3-marks': {
+      id: '/air-ra3-marks'
+      path: '/air-ra3-marks'
+      fullPath: '/air-ra3-marks'
+      preLoaderRoute: typeof AirRa3MarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/asns': {
@@ -2943,13 +2963,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CostToServeRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/csrd-marks': {
-      id: '/csrd-marks'
-      path: '/csrd-marks'
-      fullPath: '/csrd-marks'
-      preLoaderRoute: typeof CsrdMarksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/credit-reviews': {
       id: '/credit-reviews'
       path: '/credit-reviews'
@@ -2962,6 +2975,13 @@ declare module '@tanstack/react-router' {
       path: '/crm-leads'
       fullPath: '/crm-leads'
       preLoaderRoute: typeof CrmLeadsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/csrd-marks': {
+      id: '/csrd-marks'
+      path: '/csrd-marks'
+      fullPath: '/csrd-marks'
+      preLoaderRoute: typeof CsrdMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/customer-contracts': {
@@ -2999,18 +3019,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DecisionsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/demand-snapshot-marks': {
-      id: '/demand-snapshot-marks'
-      path: '/demand-snapshot-marks'
-      fullPath: '/demand-snapshot-marks'
-      preLoaderRoute: typeof DemandSnapshotMarksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/delay-forecasts': {
       id: '/delay-forecasts'
       path: '/delay-forecasts'
       fullPath: '/delay-forecasts'
       preLoaderRoute: typeof DelayForecastsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demand-snapshot-marks': {
+      id: '/demand-snapshot-marks'
+      path: '/demand-snapshot-marks'
+      fullPath: '/demand-snapshot-marks'
+      preLoaderRoute: typeof DemandSnapshotMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dock-appointments': {
@@ -3041,18 +3061,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EDeliveryMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/edi': {
-      id: '/edi'
-      path: '/edi'
-      fullPath: '/edi'
-      preLoaderRoute: typeof EdiRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/eccn-marks': {
       id: '/eccn-marks'
       path: '/eccn-marks'
       fullPath: '/eccn-marks'
       preLoaderRoute: typeof EccnMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/edi': {
+      id: '/edi'
+      path: '/edi'
+      fullPath: '/edi'
+      preLoaderRoute: typeof EdiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/edi-map-marks': {
@@ -3069,80 +3089,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EmptyDepotMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/nvocc-marks': {
-      id: '/nvocc-marks'
-      path: '/nvocc-marks'
-      fullPath: '/nvocc-marks'
-      preLoaderRoute: typeof NvoccMarksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/multi-manning-marks': {
-      id: '/multi-manning-marks'
-      path: '/multi-manning-marks'
-      fullPath: '/multi-manning-marks'
-      preLoaderRoute: typeof MultiManningMarksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/posting-marks': {
-      id: '/posting-marks'
-      path: '/posting-marks'
-      fullPath: '/posting-marks'
-      preLoaderRoute: typeof PostingMarksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tacho-office-marks': {
-      id: '/tacho-office-marks'
-      path: '/tacho-office-marks'
-      fullPath: '/tacho-office-marks'
-      preLoaderRoute: typeof TachoOfficeMarksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/lez-marks': {
-      id: '/lez-marks'
-      path: '/lez-marks'
-      fullPath: '/lez-marks'
-      preLoaderRoute: typeof LezMarksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/label-parking-marks': {
-      id: '/label-parking-marks'
-      path: '/label-parking-marks'
-      fullPath: '/label-parking-marks'
-      preLoaderRoute: typeof LabelParkingMarksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ab-sus-marks': {
-      id: '/ab-sus-marks'
-      path: '/ab-sus-marks'
-      fullPath: '/ab-sus-marks'
-      preLoaderRoute: typeof AbSusMarksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/funnel-marks': {
-      id: '/funnel-marks'
-      path: '/funnel-marks'
-      fullPath: '/funnel-marks'
-      preLoaderRoute: typeof FunnelMarksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/terms-ai-marks': {
-      id: '/terms-ai-marks'
-      path: '/terms-ai-marks'
-      fullPath: '/terms-ai-marks'
-      preLoaderRoute: typeof TermsAiMarksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/mail-accept-marks': {
-      id: '/mail-accept-marks'
-      path: '/mail-accept-marks'
-      fullPath: '/mail-accept-marks'
-      preLoaderRoute: typeof MailAcceptMarksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-
-
-
-
     '/entity-events': {
       id: '/entity-events'
       path: '/entity-events'
@@ -3269,6 +3215,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FuelIndexesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/funnel-marks': {
+      id: '/funnel-marks'
+      path: '/funnel-marks'
+      fullPath: '/funnel-marks'
+      preLoaderRoute: typeof FunnelMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/fx-differences': {
       id: '/fx-differences'
       path: '/fx-differences'
@@ -3374,6 +3327,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof KreptdLicencesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/label-parking-marks': {
+      id: '/label-parking-marks'
+      path: '/label-parking-marks'
+      fullPath: '/label-parking-marks'
+      preLoaderRoute: typeof LabelParkingMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/lane-kms': {
       id: '/lane-kms'
       path: '/lane-kms'
@@ -3409,6 +3369,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LegalHoldMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lez-marks': {
+      id: '/lez-marks'
+      path: '/lez-marks'
+      fullPath: '/lez-marks'
+      preLoaderRoute: typeof LezMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/load-plan-marks': {
       id: '/load-plan-marks'
       path: '/load-plan-marks'
@@ -3435,6 +3402,13 @@ declare module '@tanstack/react-router' {
       path: '/mail'
       fullPath: '/mail'
       preLoaderRoute: typeof MailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mail-accept-marks': {
+      id: '/mail-accept-marks'
+      path: '/mail-accept-marks'
+      fullPath: '/mail-accept-marks'
+      preLoaderRoute: typeof MailAcceptMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/make-or-buy-marks': {
@@ -3472,7 +3446,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MqcMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
-
+    '/multi-manning-marks': {
+      id: '/multi-manning-marks'
+      path: '/multi-manning-marks'
+      fullPath: '/multi-manning-marks'
+      preLoaderRoute: typeof MultiManningMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/nbp-rates': {
       id: '/nbp-rates'
       path: '/nbp-rates'
@@ -3499,6 +3479,13 @@ declare module '@tanstack/react-router' {
       path: '/notifications'
       fullPath: '/notifications'
       preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nvocc-marks': {
+      id: '/nvocc-marks'
+      path: '/nvocc-marks'
+      fullPath: '/nvocc-marks'
+      preLoaderRoute: typeof NvoccMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ocean-alliance-marks': {
@@ -3655,6 +3642,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/posting-marks': {
+      id: '/posting-marks'
+      path: '/posting-marks'
+      fullPath: '/posting-marks'
+      preLoaderRoute: typeof PostingMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/prediction-ledgers': {
       id: '/prediction-ledgers'
       path: '/prediction-ledgers'
@@ -3765,6 +3759,13 @@ declare module '@tanstack/react-router' {
       path: '/road'
       fullPath: '/road'
       preLoaderRoute: typeof RoadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/role-view-marks': {
+      id: '/role-view-marks'
+      path: '/role-view-marks'
+      fullPath: '/role-view-marks'
+      preLoaderRoute: typeof RoleViewMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/rollout': {
@@ -3884,6 +3885,13 @@ declare module '@tanstack/react-router' {
       path: '/switch-bl-loi-marks'
       fullPath: '/switch-bl-loi-marks'
       preLoaderRoute: typeof SwitchBlLoiMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tacho-office-marks': {
+      id: '/tacho-office-marks'
+      path: '/tacho-office-marks'
+      fullPath: '/tacho-office-marks'
+      preLoaderRoute: typeof TachoOfficeMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/task-templates': {
@@ -4040,6 +4048,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TerminalsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/terms-ai-marks': {
+      id: '/terms-ai-marks'
+      path: '/terms-ai-marks'
+      fullPath: '/terms-ai-marks'
+      preLoaderRoute: typeof TermsAiMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/time-to-fix-marks': {
       id: '/time-to-fix-marks'
       path: '/time-to-fix-marks'
@@ -4143,11 +4158,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AirRa3MarksRoute: AirRa3MarksRoute,
+  AbSusMarksRoute: AbSusMarksRoute,
   AbandonedRtoMarksRoute: AbandonedRtoMarksRoute,
   AeoDossierMarksRoute: AeoDossierMarksRoute,
   AiRoute: AiRoute,
   AirRoute: AirRoute,
+  AirRa3MarksRoute: AirRa3MarksRoute,
   AsnsRoute: AsnsRoute,
   BillingMarksRoute: BillingMarksRoute,
   BinPackMarksRoute: BinPackMarksRoute,
@@ -4177,34 +4193,24 @@ const rootRouteChildren: RootRouteChildren = {
   ConsignmentsRoute: ConsignmentsRoute,
   CostAllocationMarksRoute: CostAllocationMarksRoute,
   CostToServeRoute: CostToServeRoute,
-  CsrdMarksRoute: CsrdMarksRoute,
   CreditReviewsRoute: CreditReviewsRoute,
   CrmLeadsRoute: CrmLeadsRoute,
+  CsrdMarksRoute: CsrdMarksRoute,
   CustomerContractsRoute: CustomerContractsRoute,
   CustomerSopsRoute: CustomerSopsRoute,
   CutoffMarksRoute: CutoffMarksRoute,
   DangerousGoodsRoute: DangerousGoodsRoute,
   DecisionsRoute: DecisionsRoute,
-  DemandSnapshotMarksRoute: DemandSnapshotMarksRoute,
   DelayForecastsRoute: DelayForecastsRoute,
+  DemandSnapshotMarksRoute: DemandSnapshotMarksRoute,
   DockAppointmentsRoute: DockAppointmentsRoute,
   DocumentTemplatesRoute: DocumentTemplatesRoute,
   ECmrMarksRoute: ECmrMarksRoute,
   EDeliveryMarksRoute: EDeliveryMarksRoute,
-  EdiRoute: EdiRoute,
   EccnMarksRoute: EccnMarksRoute,
+  EdiRoute: EdiRoute,
   EdiMapMarksRoute: EdiMapMarksRoute,
   EmptyDepotMarksRoute: EmptyDepotMarksRoute,
-  NvoccMarksRoute: NvoccMarksRoute,
-  MultiManningMarksRoute: MultiManningMarksRoute,
-  PostingMarksRoute: PostingMarksRoute,
-  TachoOfficeMarksRoute: TachoOfficeMarksRoute,
-  LezMarksRoute: LezMarksRoute,
-  LabelParkingMarksRoute: LabelParkingMarksRoute,
-  AbSusMarksRoute: AbSusMarksRoute,
-  FunnelMarksRoute: FunnelMarksRoute,
-  TermsAiMarksRoute: TermsAiMarksRoute,
-  MailAcceptMarksRoute: MailAcceptMarksRoute,
   EntityEventsRoute: EntityEventsRoute,
   ErpConnectorsRoute: ErpConnectorsRoute,
   Eur1AtrMarksRoute: Eur1AtrMarksRoute,
@@ -4223,6 +4229,7 @@ const rootRouteChildren: RootRouteChildren = {
   FreightAuditMarksRoute: FreightAuditMarksRoute,
   FuelAnomalyMarksRoute: FuelAnomalyMarksRoute,
   FuelIndexesRoute: FuelIndexesRoute,
+  FunnelMarksRoute: FunnelMarksRoute,
   FxDifferencesRoute: FxDifferencesRoute,
   GdprRoute: GdprRoute,
   GeneralAverageMarksRoute: GeneralAverageMarksRoute,
@@ -4238,24 +4245,29 @@ const rootRouteChildren: RootRouteChildren = {
   IsoNis2MarksRoute: IsoNis2MarksRoute,
   JitJisMarksRoute: JitJisMarksRoute,
   KreptdLicencesRoute: KreptdLicencesRoute,
+  LabelParkingMarksRoute: LabelParkingMarksRoute,
   LaneKmsRoute: LaneKmsRoute,
   LanePatternsRoute: LanePatternsRoute,
   LcChecklistsRoute: LcChecklistsRoute,
   LclRoute: LclRoute,
   LegalHoldMarksRoute: LegalHoldMarksRoute,
+  LezMarksRoute: LezMarksRoute,
   LoadPlanMarksRoute: LoadPlanMarksRoute,
   LocalChargesRoute: LocalChargesRoute,
   LocationsRoute: LocationsRoute,
   MailRoute: MailRoute,
+  MailAcceptMarksRoute: MailAcceptMarksRoute,
   MakeOrBuyMarksRoute: MakeOrBuyMarksRoute,
   MemoryEdgesRoute: MemoryEdgesRoute,
   MoneyCostRoute: MoneyCostRoute,
   MonitoringSchemesRoute: MonitoringSchemesRoute,
   MqcMarksRoute: MqcMarksRoute,
+  MultiManningMarksRoute: MultiManningMarksRoute,
   NbpRatesRoute: NbpRatesRoute,
   NctsDraftsRoute: NctsDraftsRoute,
   NetworksRoute: NetworksRoute,
   NotificationsRoute: NotificationsRoute,
+  NvoccMarksRoute: NvoccMarksRoute,
   OceanAllianceMarksRoute: OceanAllianceMarksRoute,
   OceanBillsRoute: OceanBillsRoute,
   OffboardingMarksRoute: OffboardingMarksRoute,
@@ -4278,6 +4290,7 @@ const rootRouteChildren: RootRouteChildren = {
   PoLinesRoute: PoLinesRoute,
   PortSurchargesRoute: PortSurchargesRoute,
   PortsRoute: PortsRoute,
+  PostingMarksRoute: PostingMarksRoute,
   PredictionLedgersRoute: PredictionLedgersRoute,
   PurchaseOrdersRoute: PurchaseOrdersRoute,
   QualityRoute: QualityRoute,
@@ -4294,6 +4307,7 @@ const rootRouteChildren: RootRouteChildren = {
   RemediationOptionsRoute: RemediationOptionsRoute,
   RepairPlaybooksRoute: RepairPlaybooksRoute,
   RoadRoute: RoadRoute,
+  RoleViewMarksRoute: RoleViewMarksRoute,
   RolloutRoute: RolloutRoute,
   RoutingGuideEnforcementsRoute: RoutingGuideEnforcementsRoute,
   RoutingGuideMatchesRoute: RoutingGuideMatchesRoute,
@@ -4311,6 +4325,7 @@ const rootRouteChildren: RootRouteChildren = {
   SpendMarksRoute: SpendMarksRoute,
   SubcontractEdgeMarksRoute: SubcontractEdgeMarksRoute,
   SwitchBlLoiMarksRoute: SwitchBlLoiMarksRoute,
+  TachoOfficeMarksRoute: TachoOfficeMarksRoute,
   TaskTemplatesRoute: TaskTemplatesRoute,
   TelematicsConnectorsRoute: TelematicsConnectorsRoute,
   TenantContractKeksRoute: TenantContractKeksRoute,
@@ -4333,6 +4348,7 @@ const rootRouteChildren: RootRouteChildren = {
   TendersRoute: TendersRoute,
   TerminalSlotConnectorsRoute: TerminalSlotConnectorsRoute,
   TerminalsRoute: TerminalsRoute,
+  TermsAiMarksRoute: TermsAiMarksRoute,
   TimeToFixMarksRoute: TimeToFixMarksRoute,
   TowerImpactsRoute: TowerImpactsRoute,
   TrackingRoute: TrackingRoute,

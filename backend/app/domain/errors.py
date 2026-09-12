@@ -1070,6 +1070,10 @@ class InvalidMailAcceptMark(DomainError):
     """EXP4.16: HITL Accept z maila — nie Graph live / auto-send."""
 
 
+class InvalidRoleViewMark(DomainError):
+    """EXP4.17: HITL widok roli — nie board T6 / mapa."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

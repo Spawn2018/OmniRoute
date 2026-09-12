@@ -2843,6 +2843,80 @@
         ]
       }
     },
+    "/api/v1/role-view-marks": {
+      "get": {
+        "tags": [
+          "role-view"
+        ],
+        "summary": "List Role View Marks",
+        "operationId": "list_role_view_marks_api_v1_role_view_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/RoleViewMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Role View Marks Api V1 Role View Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "role-view"
+        ],
+        "summary": "Create Role View Mark",
+        "operationId": "create_role_view_mark_api_v1_role_view_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoleViewMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoleViewMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/memory-edges": {
       "get": {
         "tags": [
@@ -33307,6 +33381,71 @@
           "superseded_by"
         ],
         "title": "ResourceResponse"
+      },
+      "RoleViewMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "view_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "View Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "view_kind",
+          "source_ref"
+        ],
+        "title": "RoleViewMarkCreate"
+      },
+      "RoleViewMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "view_kind": {
+            "type": "string",
+            "title": "View Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "view_kind",
+          "source_ref"
+        ],
+        "title": "RoleViewMarkResponse"
       },
       "RoutingGuideCreate": {
         "properties": {
