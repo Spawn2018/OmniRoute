@@ -6,7 +6,7 @@
 
 **Ostatni plaster:** **422.0** EXP1 HITL `profit_center_mark`
 
-**Etap:** Plan — **423.0** EXP1
+**Etap:** Plaster — **423.0** EXP1 (delta zaakceptowana `/noc`)
 
 **Noc:** `/noc 10` do 2026-09-13T10:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).
 
@@ -14,7 +14,7 @@
 
 Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj 71–423.
 
-**Spec (jedyna na sesję):** (brak — plan 423.0 po nocnej zmianie).
+**Spec (jedyna na sesję):** [docs/deltas/open/423.0-high-value-mark.md](../deltas/open/423.0-high-value-mark.md)
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 

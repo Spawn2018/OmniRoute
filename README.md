@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **422.0** EXP1 HITL `profit_center_mark`
-- **Etap:** Plan — **423.0** EXP1
+- **Etap:** Plaster — **423.0** EXP1 (delta zaakceptowana `/noc`)
 - **Następny:** **423.0** EXP1 HITL `high_value_mark` (high_value|protocol|other) — kolejka po cutoff.
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 
