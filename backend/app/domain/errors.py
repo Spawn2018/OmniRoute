@@ -1046,6 +1046,10 @@ class InvalidOceanAllianceMark(DomainError):
     """EXP4.3: HITL ocean alliance/feeder — nie ocean live API / alliance scrape."""
 
 
+class InvalidOceanFeederMark(DomainError):
+    """EXP4.3b: HITL ocean_feeder_mark — nie live feeder / TEU / AIS."""
+
+
 class InvalidReeferMark(DomainError):
     """EXP4.5: HITL reefer — nie reefer live API / reefer scrape."""
 

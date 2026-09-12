@@ -130,6 +130,7 @@ import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as NvoccMarksRouteImport } from './routes/nvocc-marks'
 import { Route as OceanAllianceMarksRouteImport } from './routes/ocean-alliance-marks'
 import { Route as OceanBillsRouteImport } from './routes/ocean-bills'
+import { Route as OceanFeederMarksRouteImport } from './routes/ocean-feeder-marks'
 import { Route as OffboardingMarksRouteImport } from './routes/offboarding-marks'
 import { Route as OogMarksRouteImport } from './routes/oog-marks'
 import { Route as OrganizationSettingsRouteImport } from './routes/organization-settings'
@@ -831,6 +832,11 @@ const OceanBillsRoute = OceanBillsRouteImport.update({
   path: '/ocean-bills',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OceanFeederMarksRoute = OceanFeederMarksRouteImport.update({
+  id: '/ocean-feeder-marks',
+  path: '/ocean-feeder-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OffboardingMarksRoute = OffboardingMarksRouteImport.update({
   id: '/offboarding-marks',
   path: '/offboarding-marks',
@@ -1430,6 +1436,7 @@ export interface FileRoutesByFullPath {
   '/nvocc-marks': typeof NvoccMarksRoute
   '/ocean-alliance-marks': typeof OceanAllianceMarksRoute
   '/ocean-bills': typeof OceanBillsRoute
+  '/ocean-feeder-marks': typeof OceanFeederMarksRoute
   '/offboarding-marks': typeof OffboardingMarksRoute
   '/oog-marks': typeof OogMarksRoute
   '/organization-settings': typeof OrganizationSettingsRoute
@@ -1648,6 +1655,7 @@ export interface FileRoutesByTo {
   '/nvocc-marks': typeof NvoccMarksRoute
   '/ocean-alliance-marks': typeof OceanAllianceMarksRoute
   '/ocean-bills': typeof OceanBillsRoute
+  '/ocean-feeder-marks': typeof OceanFeederMarksRoute
   '/offboarding-marks': typeof OffboardingMarksRoute
   '/oog-marks': typeof OogMarksRoute
   '/organization-settings': typeof OrganizationSettingsRoute
@@ -1867,6 +1875,7 @@ export interface FileRoutesById {
   '/nvocc-marks': typeof NvoccMarksRoute
   '/ocean-alliance-marks': typeof OceanAllianceMarksRoute
   '/ocean-bills': typeof OceanBillsRoute
+  '/ocean-feeder-marks': typeof OceanFeederMarksRoute
   '/offboarding-marks': typeof OffboardingMarksRoute
   '/oog-marks': typeof OogMarksRoute
   '/organization-settings': typeof OrganizationSettingsRoute
@@ -2087,6 +2096,7 @@ export interface FileRouteTypes {
     | '/nvocc-marks'
     | '/ocean-alliance-marks'
     | '/ocean-bills'
+    | '/ocean-feeder-marks'
     | '/offboarding-marks'
     | '/oog-marks'
     | '/organization-settings'
@@ -2305,6 +2315,7 @@ export interface FileRouteTypes {
     | '/nvocc-marks'
     | '/ocean-alliance-marks'
     | '/ocean-bills'
+    | '/ocean-feeder-marks'
     | '/offboarding-marks'
     | '/oog-marks'
     | '/organization-settings'
@@ -2523,6 +2534,7 @@ export interface FileRouteTypes {
     | '/nvocc-marks'
     | '/ocean-alliance-marks'
     | '/ocean-bills'
+    | '/ocean-feeder-marks'
     | '/offboarding-marks'
     | '/oog-marks'
     | '/organization-settings'
@@ -2742,6 +2754,7 @@ export interface RootRouteChildren {
   NvoccMarksRoute: typeof NvoccMarksRoute
   OceanAllianceMarksRoute: typeof OceanAllianceMarksRoute
   OceanBillsRoute: typeof OceanBillsRoute
+  OceanFeederMarksRoute: typeof OceanFeederMarksRoute
   OffboardingMarksRoute: typeof OffboardingMarksRoute
   OogMarksRoute: typeof OogMarksRoute
   OrganizationSettingsRoute: typeof OrganizationSettingsRoute
@@ -3688,6 +3701,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OceanBillsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ocean-feeder-marks': {
+      id: '/ocean-feeder-marks'
+      path: '/ocean-feeder-marks'
+      fullPath: '/ocean-feeder-marks'
+      preLoaderRoute: typeof OceanFeederMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/offboarding-marks': {
       id: '/offboarding-marks'
       path: '/offboarding-marks'
@@ -4478,6 +4498,7 @@ const rootRouteChildren: RootRouteChildren = {
   NvoccMarksRoute: NvoccMarksRoute,
   OceanAllianceMarksRoute: OceanAllianceMarksRoute,
   OceanBillsRoute: OceanBillsRoute,
+  OceanFeederMarksRoute: OceanFeederMarksRoute,
   OffboardingMarksRoute: OffboardingMarksRoute,
   OogMarksRoute: OogMarksRoute,
   OrganizationSettingsRoute: OrganizationSettingsRoute,

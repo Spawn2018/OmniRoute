@@ -7029,6 +7029,50 @@ export type OceanBillResponse = {
 };
 
 /**
+ * OceanFeederMarkCreate
+ */
+export type OceanFeederMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Feeder Kind
+     */
+    feeder_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * OceanFeederMarkResponse
+ */
+export type OceanFeederMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Feeder Kind
+     */
+    feeder_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * OffboardingMarkCreate
  */
 export type OffboardingMarkCreate = {
@@ -16454,6 +16498,49 @@ export type CreateOceanBillApiV1OceanBillsPostResponses = {
 };
 
 export type CreateOceanBillApiV1OceanBillsPostResponse = CreateOceanBillApiV1OceanBillsPostResponses[keyof CreateOceanBillApiV1OceanBillsPostResponses];
+
+export type ListOceanFeederMarksApiV1OceanFeederMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/ocean-feeder-marks';
+};
+
+export type ListOceanFeederMarksApiV1OceanFeederMarksGetResponses = {
+    /**
+     * Response List Ocean Feeder Marks Api V1 Ocean Feeder Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<OceanFeederMarkResponse>;
+};
+
+export type ListOceanFeederMarksApiV1OceanFeederMarksGetResponse = ListOceanFeederMarksApiV1OceanFeederMarksGetResponses[keyof ListOceanFeederMarksApiV1OceanFeederMarksGetResponses];
+
+export type CreateOceanFeederMarkApiV1OceanFeederMarksPostData = {
+    body: OceanFeederMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/ocean-feeder-marks';
+};
+
+export type CreateOceanFeederMarkApiV1OceanFeederMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateOceanFeederMarkApiV1OceanFeederMarksPostError = CreateOceanFeederMarkApiV1OceanFeederMarksPostErrors[keyof CreateOceanFeederMarkApiV1OceanFeederMarksPostErrors];
+
+export type CreateOceanFeederMarkApiV1OceanFeederMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: OceanFeederMarkResponse;
+};
+
+export type CreateOceanFeederMarkApiV1OceanFeederMarksPostResponse = CreateOceanFeederMarkApiV1OceanFeederMarksPostResponses[keyof CreateOceanFeederMarkApiV1OceanFeederMarksPostResponses];
 
 export type ListOogMarksApiV1OogMarksGetData = {
     body?: never;

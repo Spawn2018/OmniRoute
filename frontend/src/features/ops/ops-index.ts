@@ -914,6 +914,11 @@ export const OPS_JOBS = [
     job: "katalog ocean_alliance_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.oceanFeederMark.route,
+    label: "Ocean feeder",
+    job: "katalog ocean_feeder_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.reeferMark.route,
     label: "Reefer",
     job: "katalog reefer_mark HITL",
@@ -1453,6 +1458,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "404.0": "/fuel-card-marks",
   "405.0": "/e-doreczenia-marks",
   "406.0": "/rail-uic-marks",
+  "407.0": "/ocean-feeder-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

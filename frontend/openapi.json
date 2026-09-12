@@ -6446,6 +6446,80 @@
         ]
       }
     },
+    "/api/v1/ocean-feeder-marks": {
+      "get": {
+        "tags": [
+          "ocean-feeder-mark"
+        ],
+        "summary": "List Ocean Feeder Marks",
+        "operationId": "list_ocean_feeder_marks_api_v1_ocean_feeder_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/OceanFeederMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Ocean Feeder Marks Api V1 Ocean Feeder Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "ocean-feeder-mark"
+        ],
+        "summary": "Create Ocean Feeder Mark",
+        "operationId": "create_ocean_feeder_mark_api_v1_ocean_feeder_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OceanFeederMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OceanFeederMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/oog-marks": {
       "get": {
         "tags": [
@@ -31038,6 +31112,71 @@
           "source_ref"
         ],
         "title": "OceanBillResponse"
+      },
+      "OceanFeederMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "feeder_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Feeder Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "feeder_kind",
+          "source_ref"
+        ],
+        "title": "OceanFeederMarkCreate"
+      },
+      "OceanFeederMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "feeder_kind": {
+            "type": "string",
+            "title": "Feeder Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "feeder_kind",
+          "source_ref"
+        ],
+        "title": "OceanFeederMarkResponse"
       },
       "OffboardingMarkCreate": {
         "properties": {

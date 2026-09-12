@@ -121,6 +121,7 @@ from app.api import (
     nvocc_marks,
     ocean_alliance_marks,
     ocean_bills,
+    ocean_feeder_marks,
     offboarding_marks,
     oog_marks,
     operational_exceptions,
@@ -284,6 +285,7 @@ api_router.include_router(cargo_cover_marks.router)
 api_router.include_router(cod_instructions.router)
 api_router.include_router(ocean_alliance_marks.router)
 api_router.include_router(ocean_bills.router)
+api_router.include_router(ocean_feeder_marks.router)
 api_router.include_router(oog_marks.router)
 api_router.include_router(consignments.router)
 api_router.include_router(pallet_balances.router)

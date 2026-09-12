@@ -158,6 +158,7 @@ type organization
     define can_manage_rail_cim_marks: member
     define can_manage_rail_uic_marks: member
     define can_manage_ocean_alliance_marks: member
+    define can_manage_ocean_feeder_marks: member
     define can_manage_reefer_marks: member
     define can_manage_empty_depot_marks: member
     define can_manage_nvocc_marks: member

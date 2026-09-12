@@ -183,6 +183,7 @@ modules =
     app.services.rail_cim_marks
     app.services.rail_uic_marks
     app.services.ocean_alliance_marks
+    app.services.ocean_feeder_marks
     app.services.reefer_marks
     app.services.empty_depot_marks
     app.services.nvocc_marks
@@ -840,6 +841,9 @@ forbidden_modules =
     app.services.ocean_alliance_marks
     app.repositories.ocean_alliance_marks
     app.models.ocean_alliance_mark
+    app.services.ocean_feeder_marks
+    app.repositories.ocean_feeder_marks
+    app.models.ocean_feeder_mark
     app.services.reefer_marks
     app.repositories.reefer_marks
     app.models.reefer_mark
