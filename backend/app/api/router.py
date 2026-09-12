@@ -75,6 +75,7 @@ from app.api import (
     incoterm_responsibilities,
     integration_hub_marks,
     intervention_outcomes,
+    iso_nis2_marks,
     kreptd_licences,
     lane_kms,
     lane_patterns,
@@ -359,6 +360,7 @@ api_router.include_router(integration_hub_marks.router)
 api_router.include_router(webhook_outbox_marks.router)
 api_router.include_router(partner_exchange_marks.router)
 api_router.include_router(regulatory_radar_marks.router)
+api_router.include_router(iso_nis2_marks.router)
 
 
 @api_router.api_route(

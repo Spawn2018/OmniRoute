@@ -4693,6 +4693,50 @@ export type InterventionOutcomeResponse = {
 };
 
 /**
+ * IsoNis2MarkCreate
+ */
+export type IsoNis2MarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Ops Kind
+     */
+    ops_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * IsoNis2MarkResponse
+ */
+export type IsoNis2MarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Ops Kind
+     */
+    ops_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * KreptdLicenceCreate
  */
 export type KreptdLicenceCreate = {
@@ -20726,6 +20770,49 @@ export type CreateRegulatoryRadarMarkApiV1RegulatoryRadarMarksPostResponses = {
 };
 
 export type CreateRegulatoryRadarMarkApiV1RegulatoryRadarMarksPostResponse = CreateRegulatoryRadarMarkApiV1RegulatoryRadarMarksPostResponses[keyof CreateRegulatoryRadarMarkApiV1RegulatoryRadarMarksPostResponses];
+
+export type ListIsoNis2MarksApiV1IsoNis2MarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/iso-nis2-marks';
+};
+
+export type ListIsoNis2MarksApiV1IsoNis2MarksGetResponses = {
+    /**
+     * Response List Iso Nis2 Marks Api V1 Iso Nis2 Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<IsoNis2MarkResponse>;
+};
+
+export type ListIsoNis2MarksApiV1IsoNis2MarksGetResponse = ListIsoNis2MarksApiV1IsoNis2MarksGetResponses[keyof ListIsoNis2MarksApiV1IsoNis2MarksGetResponses];
+
+export type CreateIsoNis2MarkApiV1IsoNis2MarksPostData = {
+    body: IsoNis2MarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/iso-nis2-marks';
+};
+
+export type CreateIsoNis2MarkApiV1IsoNis2MarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateIsoNis2MarkApiV1IsoNis2MarksPostError = CreateIsoNis2MarkApiV1IsoNis2MarksPostErrors[keyof CreateIsoNis2MarkApiV1IsoNis2MarksPostErrors];
+
+export type CreateIsoNis2MarkApiV1IsoNis2MarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: IsoNis2MarkResponse;
+};
+
+export type CreateIsoNis2MarkApiV1IsoNis2MarksPostResponse = CreateIsoNis2MarkApiV1IsoNis2MarksPostResponses[keyof CreateIsoNis2MarkApiV1IsoNis2MarksPostResponses];
 
 export type HealthHealthGetData = {
     body?: never;

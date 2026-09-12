@@ -82,6 +82,7 @@ import { Route as ImpactScenariosRouteImport } from './routes/impact-scenarios'
 import { Route as IntegrationHubMarksRouteImport } from './routes/integration-hub-marks'
 import { Route as InterventionOutcomesRouteImport } from './routes/intervention-outcomes'
 import { Route as InvoicesRouteImport } from './routes/invoices'
+import { Route as IsoNis2MarksRouteImport } from './routes/iso-nis2-marks'
 import { Route as KreptdLicencesRouteImport } from './routes/kreptd-licences'
 import { Route as LaneKmsRouteImport } from './routes/lane-kms'
 import { Route as LanePatternsRouteImport } from './routes/lane-patterns'
@@ -547,6 +548,11 @@ const InterventionOutcomesRoute = InterventionOutcomesRouteImport.update({
 const InvoicesRoute = InvoicesRouteImport.update({
   id: '/invoices',
   path: '/invoices',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IsoNis2MarksRoute = IsoNis2MarksRouteImport.update({
+  id: '/iso-nis2-marks',
+  path: '/iso-nis2-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const KreptdLicencesRoute = KreptdLicencesRouteImport.update({
@@ -1130,6 +1136,7 @@ export interface FileRoutesByFullPath {
   '/integration-hub-marks': typeof IntegrationHubMarksRoute
   '/intervention-outcomes': typeof InterventionOutcomesRoute
   '/invoices': typeof InvoicesRoute
+  '/iso-nis2-marks': typeof IsoNis2MarksRoute
   '/kreptd-licences': typeof KreptdLicencesRoute
   '/lane-kms': typeof LaneKmsRoute
   '/lane-patterns': typeof LanePatternsRoute
@@ -1306,6 +1313,7 @@ export interface FileRoutesByTo {
   '/integration-hub-marks': typeof IntegrationHubMarksRoute
   '/intervention-outcomes': typeof InterventionOutcomesRoute
   '/invoices': typeof InvoicesRoute
+  '/iso-nis2-marks': typeof IsoNis2MarksRoute
   '/kreptd-licences': typeof KreptdLicencesRoute
   '/lane-kms': typeof LaneKmsRoute
   '/lane-patterns': typeof LanePatternsRoute
@@ -1483,6 +1491,7 @@ export interface FileRoutesById {
   '/integration-hub-marks': typeof IntegrationHubMarksRoute
   '/intervention-outcomes': typeof InterventionOutcomesRoute
   '/invoices': typeof InvoicesRoute
+  '/iso-nis2-marks': typeof IsoNis2MarksRoute
   '/kreptd-licences': typeof KreptdLicencesRoute
   '/lane-kms': typeof LaneKmsRoute
   '/lane-patterns': typeof LanePatternsRoute
@@ -1661,6 +1670,7 @@ export interface FileRouteTypes {
     | '/integration-hub-marks'
     | '/intervention-outcomes'
     | '/invoices'
+    | '/iso-nis2-marks'
     | '/kreptd-licences'
     | '/lane-kms'
     | '/lane-patterns'
@@ -1837,6 +1847,7 @@ export interface FileRouteTypes {
     | '/integration-hub-marks'
     | '/intervention-outcomes'
     | '/invoices'
+    | '/iso-nis2-marks'
     | '/kreptd-licences'
     | '/lane-kms'
     | '/lane-patterns'
@@ -2013,6 +2024,7 @@ export interface FileRouteTypes {
     | '/integration-hub-marks'
     | '/intervention-outcomes'
     | '/invoices'
+    | '/iso-nis2-marks'
     | '/kreptd-licences'
     | '/lane-kms'
     | '/lane-patterns'
@@ -2190,6 +2202,7 @@ export interface RootRouteChildren {
   IntegrationHubMarksRoute: typeof IntegrationHubMarksRoute
   InterventionOutcomesRoute: typeof InterventionOutcomesRoute
   InvoicesRoute: typeof InvoicesRoute
+  IsoNis2MarksRoute: typeof IsoNis2MarksRoute
   KreptdLicencesRoute: typeof KreptdLicencesRoute
   LaneKmsRoute: typeof LaneKmsRoute
   LanePatternsRoute: typeof LanePatternsRoute
@@ -2804,6 +2817,13 @@ declare module '@tanstack/react-router' {
       path: '/invoices'
       fullPath: '/invoices'
       preLoaderRoute: typeof InvoicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/iso-nis2-marks': {
+      id: '/iso-nis2-marks'
+      path: '/iso-nis2-marks'
+      fullPath: '/iso-nis2-marks'
+      preLoaderRoute: typeof IsoNis2MarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/kreptd-licences': {
@@ -3590,6 +3610,7 @@ const rootRouteChildren: RootRouteChildren = {
   IntegrationHubMarksRoute: IntegrationHubMarksRoute,
   InterventionOutcomesRoute: InterventionOutcomesRoute,
   InvoicesRoute: InvoicesRoute,
+  IsoNis2MarksRoute: IsoNis2MarksRoute,
   KreptdLicencesRoute: KreptdLicencesRoute,
   LaneKmsRoute: LaneKmsRoute,
   LanePatternsRoute: LanePatternsRoute,

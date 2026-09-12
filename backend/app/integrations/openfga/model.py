@@ -182,6 +182,7 @@ def _organization_exp2_catalog_relations() -> dict[str, Userset]:
         "can_manage_webhook_outbox_marks": _member(),
         "can_manage_partner_exchange_marks": _member(),
         "can_manage_regulatory_radar_marks": _member(),
+        "can_manage_iso_nis2_marks": _member(),
     }
 
 
