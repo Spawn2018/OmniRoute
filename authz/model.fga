@@ -162,6 +162,7 @@ type organization
     define can_manage_reefer_marks: member
     define can_manage_chassis_marks: member
     define can_manage_line_impact_marks: member
+    define can_manage_three_way_marks: member
     define can_manage_empty_depot_marks: member
 
     define can_manage_nvocc_marks: member

@@ -1062,6 +1062,10 @@ class InvalidLineImpactMark(DomainError):
     """EXP3.3b: HITL line_impact_mark — nie SQL line impact / EBITDA / plant live."""
 
 
+class InvalidThreeWayMark(DomainError):
+    """EXP3.3c: HITL three_way_mark — nie tuple per strona / wspólny SELECT / kwota."""
+
+
 class InvalidEmptyDepotMark(DomainError):
     """EXP4.6: HITL empty/depot — nie depot live API / scrape."""
 

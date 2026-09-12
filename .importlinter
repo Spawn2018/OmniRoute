@@ -187,6 +187,7 @@ modules =
     app.services.reefer_marks
     app.services.chassis_marks
     app.services.line_impact_marks
+    app.services.three_way_marks
     app.services.empty_depot_marks
 
     app.services.nvocc_marks
@@ -856,6 +857,9 @@ forbidden_modules =
     app.services.line_impact_marks
     app.repositories.line_impact_marks
     app.models.line_impact_mark
+    app.services.three_way_marks
+    app.repositories.three_way_marks
+    app.models.three_way_mark
     app.services.empty_depot_marks
     app.repositories.empty_depot_marks
     app.models.empty_depot_mark

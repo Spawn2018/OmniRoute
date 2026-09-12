@@ -210,6 +210,7 @@ from app.api import (
     terminal_slot_connectors,
     terminals,
     terms_ai_marks,
+    three_way_marks,
     time_to_fix_marks,
     tower_impacts,
     tracking_events,
@@ -335,6 +336,7 @@ api_router.include_router(tender_ted_notices.router)
 api_router.include_router(tenders.router)
 api_router.include_router(fraud_flags.router)
 api_router.include_router(terms_ai_marks.router)
+api_router.include_router(three_way_marks.router)
 api_router.include_router(funnel_marks.router)
 api_router.include_router(edi_map_marks.router)
 api_router.include_router(edi_messages.router)

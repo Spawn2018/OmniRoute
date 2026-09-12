@@ -929,6 +929,11 @@ export const OPS_JOBS = [
     job: "katalog line_impact_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.threeWayMark.route,
+    label: "Znacznik 3-way",
+    job: "katalog three_way_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.reeferMark.route,
     label: "Reefer",
     job: "katalog reefer_mark HITL",
@@ -1472,6 +1477,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "407.0": "/ocean-feeder-marks",
   "408.0": "/chassis-marks",
   "409.0": "/line-impact-marks",
+  "410.0": "/three-way-marks",
 } as const
 
 

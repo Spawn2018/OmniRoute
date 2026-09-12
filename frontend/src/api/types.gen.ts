@@ -12109,6 +12109,50 @@ export type TermsAiMarkResponse = {
 };
 
 /**
+ * ThreeWayMarkCreate
+ */
+export type ThreeWayMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Way Kind
+     */
+    way_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ThreeWayMarkResponse
+ */
+export type ThreeWayMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Way Kind
+     */
+    way_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * TimeToFixMarkCreate
  */
 export type TimeToFixMarkCreate = {
@@ -18682,6 +18726,49 @@ export type CreateTermsAiMarkApiV1TermsAiMarksPostResponses = {
 };
 
 export type CreateTermsAiMarkApiV1TermsAiMarksPostResponse = CreateTermsAiMarkApiV1TermsAiMarksPostResponses[keyof CreateTermsAiMarkApiV1TermsAiMarksPostResponses];
+
+export type ListThreeWayMarksApiV1ThreeWayMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/three-way-marks';
+};
+
+export type ListThreeWayMarksApiV1ThreeWayMarksGetResponses = {
+    /**
+     * Response List Three Way Marks Api V1 Three Way Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<ThreeWayMarkResponse>;
+};
+
+export type ListThreeWayMarksApiV1ThreeWayMarksGetResponse = ListThreeWayMarksApiV1ThreeWayMarksGetResponses[keyof ListThreeWayMarksApiV1ThreeWayMarksGetResponses];
+
+export type CreateThreeWayMarkApiV1ThreeWayMarksPostData = {
+    body: ThreeWayMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/three-way-marks';
+};
+
+export type CreateThreeWayMarkApiV1ThreeWayMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateThreeWayMarkApiV1ThreeWayMarksPostError = CreateThreeWayMarkApiV1ThreeWayMarksPostErrors[keyof CreateThreeWayMarkApiV1ThreeWayMarksPostErrors];
+
+export type CreateThreeWayMarkApiV1ThreeWayMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ThreeWayMarkResponse;
+};
+
+export type CreateThreeWayMarkApiV1ThreeWayMarksPostResponse = CreateThreeWayMarkApiV1ThreeWayMarksPostResponses[keyof CreateThreeWayMarkApiV1ThreeWayMarksPostResponses];
 
 export type ListFunnelMarksApiV1FunnelMarksGetData = {
     body?: never;

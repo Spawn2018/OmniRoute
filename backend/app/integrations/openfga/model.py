@@ -219,6 +219,7 @@ def _organization_exp4_catalog_relations() -> dict[str, Userset]:
         "can_manage_reefer_marks": _member(),
         "can_manage_chassis_marks": _member(),
         "can_manage_line_impact_marks": _member(),
+        "can_manage_three_way_marks": _member(),
         "can_manage_empty_depot_marks": _member(),
 
         "can_manage_nvocc_marks": _member(),

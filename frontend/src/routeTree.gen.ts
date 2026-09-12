@@ -214,6 +214,7 @@ import { Route as TendersRouteImport } from './routes/tenders'
 import { Route as TerminalSlotConnectorsRouteImport } from './routes/terminal-slot-connectors'
 import { Route as TerminalsRouteImport } from './routes/terminals'
 import { Route as TermsAiMarksRouteImport } from './routes/terms-ai-marks'
+import { Route as ThreeWayMarksRouteImport } from './routes/three-way-marks'
 import { Route as TimeToFixMarksRouteImport } from './routes/time-to-fix-marks'
 import { Route as TowerImpactsRouteImport } from './routes/tower-impacts'
 import { Route as TrackingRouteImport } from './routes/tracking'
@@ -1255,6 +1256,11 @@ const TermsAiMarksRoute = TermsAiMarksRouteImport.update({
   path: '/terms-ai-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ThreeWayMarksRoute = ThreeWayMarksRouteImport.update({
+  id: '/three-way-marks',
+  path: '/three-way-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TimeToFixMarksRoute = TimeToFixMarksRouteImport.update({
   id: '/time-to-fix-marks',
   path: '/time-to-fix-marks',
@@ -1532,6 +1538,7 @@ export interface FileRoutesByFullPath {
   '/terminal-slot-connectors': typeof TerminalSlotConnectorsRoute
   '/terminals': typeof TerminalsRoute
   '/terms-ai-marks': typeof TermsAiMarksRoute
+  '/three-way-marks': typeof ThreeWayMarksRoute
   '/time-to-fix-marks': typeof TimeToFixMarksRoute
   '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
@@ -1753,6 +1760,7 @@ export interface FileRoutesByTo {
   '/terminal-slot-connectors': typeof TerminalSlotConnectorsRoute
   '/terminals': typeof TerminalsRoute
   '/terms-ai-marks': typeof TermsAiMarksRoute
+  '/three-way-marks': typeof ThreeWayMarksRoute
   '/time-to-fix-marks': typeof TimeToFixMarksRoute
   '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
@@ -1975,6 +1983,7 @@ export interface FileRoutesById {
   '/terminal-slot-connectors': typeof TerminalSlotConnectorsRoute
   '/terminals': typeof TerminalsRoute
   '/terms-ai-marks': typeof TermsAiMarksRoute
+  '/three-way-marks': typeof ThreeWayMarksRoute
   '/time-to-fix-marks': typeof TimeToFixMarksRoute
   '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
@@ -2198,6 +2207,7 @@ export interface FileRouteTypes {
     | '/terminal-slot-connectors'
     | '/terminals'
     | '/terms-ai-marks'
+    | '/three-way-marks'
     | '/time-to-fix-marks'
     | '/tower-impacts'
     | '/tracking'
@@ -2419,6 +2429,7 @@ export interface FileRouteTypes {
     | '/terminal-slot-connectors'
     | '/terminals'
     | '/terms-ai-marks'
+    | '/three-way-marks'
     | '/time-to-fix-marks'
     | '/tower-impacts'
     | '/tracking'
@@ -2640,6 +2651,7 @@ export interface FileRouteTypes {
     | '/terminal-slot-connectors'
     | '/terminals'
     | '/terms-ai-marks'
+    | '/three-way-marks'
     | '/time-to-fix-marks'
     | '/tower-impacts'
     | '/tracking'
@@ -2862,6 +2874,7 @@ export interface RootRouteChildren {
   TerminalSlotConnectorsRoute: typeof TerminalSlotConnectorsRoute
   TerminalsRoute: typeof TerminalsRoute
   TermsAiMarksRoute: typeof TermsAiMarksRoute
+  ThreeWayMarksRoute: typeof ThreeWayMarksRoute
   TimeToFixMarksRoute: typeof TimeToFixMarksRoute
   TowerImpactsRoute: typeof TowerImpactsRoute
   TrackingRoute: typeof TrackingRoute
@@ -4315,6 +4328,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsAiMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/three-way-marks': {
+      id: '/three-way-marks'
+      path: '/three-way-marks'
+      fullPath: '/three-way-marks'
+      preLoaderRoute: typeof ThreeWayMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/time-to-fix-marks': {
       id: '/time-to-fix-marks'
       path: '/time-to-fix-marks'
@@ -4622,6 +4642,7 @@ const rootRouteChildren: RootRouteChildren = {
   TerminalSlotConnectorsRoute: TerminalSlotConnectorsRoute,
   TerminalsRoute: TerminalsRoute,
   TermsAiMarksRoute: TermsAiMarksRoute,
+  ThreeWayMarksRoute: ThreeWayMarksRoute,
   TimeToFixMarksRoute: TimeToFixMarksRoute,
   TowerImpactsRoute: TowerImpactsRoute,
   TrackingRoute: TrackingRoute,

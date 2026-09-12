@@ -10056,6 +10056,80 @@
         ]
       }
     },
+    "/api/v1/three-way-marks": {
+      "get": {
+        "tags": [
+          "three-way-mark"
+        ],
+        "summary": "List Three Way Marks",
+        "operationId": "list_three_way_marks_api_v1_three_way_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ThreeWayMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Three Way Marks Api V1 Three Way Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "three-way-mark"
+        ],
+        "summary": "Create Three Way Mark",
+        "operationId": "create_three_way_mark_api_v1_three_way_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ThreeWayMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThreeWayMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/funnel-marks": {
       "get": {
         "tags": [
@@ -39272,6 +39346,71 @@
           "source_ref"
         ],
         "title": "TermsAiMarkResponse"
+      },
+      "ThreeWayMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "way_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Way Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "way_kind",
+          "source_ref"
+        ],
+        "title": "ThreeWayMarkCreate"
+      },
+      "ThreeWayMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "way_kind": {
+            "type": "string",
+            "title": "Way Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "way_kind",
+          "source_ref"
+        ],
+        "title": "ThreeWayMarkResponse"
       },
       "TimeToFixMarkCreate": {
         "properties": {
