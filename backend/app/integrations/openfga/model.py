@@ -207,6 +207,7 @@ def _organization_exp2_catalog_relations() -> dict[str, Userset]:
         "can_manage_multi_manning_marks": _member(),
         "can_manage_posting_marks": _member(),
         "can_manage_tacho_office_marks": _member(),
+        "can_manage_lez_marks": _member(),
     }
 
 

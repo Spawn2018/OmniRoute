@@ -183,6 +183,7 @@ modules =
     app.services.multi_manning_marks
     app.services.posting_marks
     app.services.tacho_office_marks
+    app.services.lez_marks
     app.services.freight_audit_marks
     app.services.collaboration_marks
     app.services.exchange_connectors
@@ -818,6 +819,9 @@ forbidden_modules =
     app.services.tacho_office_marks
     app.repositories.tacho_office_marks
     app.models.tacho_office_mark
+    app.services.lez_marks
+    app.repositories.lez_marks
+    app.models.lez_mark
     app.services.freight_audit_marks
     app.repositories.freight_audit_marks
     app.models.freight_audit_mark

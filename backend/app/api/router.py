@@ -92,6 +92,7 @@ from app.api import (
     lane_patterns,
     lc_checklists,
     legal_hold_marks,
+    lez_marks,
     load_plan_marks,
     local_charges,
     locations,
@@ -237,6 +238,7 @@ api_router.include_router(nvocc_marks.router)
 api_router.include_router(multi_manning_marks.router)
 api_router.include_router(posting_marks.router)
 api_router.include_router(tacho_office_marks.router)
+api_router.include_router(lez_marks.router)
 api_router.include_router(entity_events.router)
 api_router.include_router(nbp_rates.router)
 api_router.include_router(charges.router)

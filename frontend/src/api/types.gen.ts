@@ -5561,6 +5561,50 @@ export type LegalHoldMarkResponse = {
 };
 
 /**
+ * LezMarkCreate
+ */
+export type LezMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Lez Kind
+     */
+    lez_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * LezMarkResponse
+ */
+export type LezMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Lez Kind
+     */
+    lez_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * LoadPlanMarkCreate
  */
 export type LoadPlanMarkCreate = {
@@ -14081,6 +14125,49 @@ export type CreateTachoOfficeMarkApiV1TachoOfficeMarksPostResponses = {
 };
 
 export type CreateTachoOfficeMarkApiV1TachoOfficeMarksPostResponse = CreateTachoOfficeMarkApiV1TachoOfficeMarksPostResponses[keyof CreateTachoOfficeMarkApiV1TachoOfficeMarksPostResponses];
+
+export type ListLezMarksApiV1LezMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/lez-marks';
+};
+
+export type ListLezMarksApiV1LezMarksGetResponses = {
+    /**
+     * Response List Lez Marks Api V1 Lez Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<LezMarkResponse>;
+};
+
+export type ListLezMarksApiV1LezMarksGetResponse = ListLezMarksApiV1LezMarksGetResponses[keyof ListLezMarksApiV1LezMarksGetResponses];
+
+export type CreateLezMarkApiV1LezMarksPostData = {
+    body: LezMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/lez-marks';
+};
+
+export type CreateLezMarkApiV1LezMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateLezMarkApiV1LezMarksPostError = CreateLezMarkApiV1LezMarksPostErrors[keyof CreateLezMarkApiV1LezMarksPostErrors];
+
+export type CreateLezMarkApiV1LezMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: LezMarkResponse;
+};
+
+export type CreateLezMarkApiV1LezMarksPostResponse = CreateLezMarkApiV1LezMarksPostResponses[keyof CreateLezMarkApiV1LezMarksPostResponses];
 
 export type ListEntityEventsApiV1EntityEventsGetData = {
     body?: never;

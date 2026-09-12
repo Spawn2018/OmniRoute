@@ -3583,6 +3583,80 @@
         ]
       }
     },
+    "/api/v1/lez-marks": {
+      "get": {
+        "tags": [
+          "empty-depot"
+        ],
+        "summary": "List Lez Marks",
+        "operationId": "list_lez_marks_api_v1_lez_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/LezMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Lez Marks Api V1 Lez Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "empty-depot"
+        ],
+        "summary": "Create Lez Mark",
+        "operationId": "create_lez_mark_api_v1_lez_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LezMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LezMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/entity-events": {
       "get": {
         "tags": [
@@ -27543,6 +27617,71 @@
           "source_ref"
         ],
         "title": "LegalHoldMarkResponse"
+      },
+      "LezMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "lez_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Lez Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "lez_kind",
+          "source_ref"
+        ],
+        "title": "LezMarkCreate"
+      },
+      "LezMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "lez_kind": {
+            "type": "string",
+            "title": "Lez Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "lez_kind",
+          "source_ref"
+        ],
+        "title": "LezMarkResponse"
       },
       "LoadPlanMarkCreate": {
         "properties": {

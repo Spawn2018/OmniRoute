@@ -145,6 +145,7 @@ export const BUSINESS_LISTS = {
   multiManningMark: { route: "/multi-manning-marks", tableKey: "multi_manning_mark" },
   postingMark: { route: "/posting-marks", tableKey: "posting_mark" },
   tachoOfficeMark: { route: "/tacho-office-marks", tableKey: "tacho_office_mark" },
+  lezMark: { route: "/lez-marks", tableKey: "lez_mark" },
   remediationOption: {
     route: "/remediation-options",
     tableKey: "remediation_option",
@@ -351,6 +352,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/multi-manning-marks",
   "/posting-marks",
   "/tacho-office-marks",
+  "/lez-marks",
   "/remediation-options",
   "/impact-scenarios",
   "/clause-notices",

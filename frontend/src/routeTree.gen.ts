@@ -66,6 +66,7 @@ import { Route as NvoccMarksRouteImport } from './routes/nvocc-marks'
 import { Route as MultiManningMarksRouteImport } from './routes/multi-manning-marks'
 import { Route as PostingMarksRouteImport } from './routes/posting-marks'
 import { Route as TachoOfficeMarksRouteImport } from './routes/tacho-office-marks'
+import { Route as LezMarksRouteImport } from './routes/lez-marks'
 import { Route as EntityEventsRouteImport } from './routes/entity-events'
 import { Route as ErpConnectorsRouteImport } from './routes/erp-connectors'
 import { Route as Eur1AtrMarksRouteImport } from './routes/eur1-atr-marks'
@@ -492,6 +493,11 @@ const PostingMarksRoute = PostingMarksRouteImport.update({
 const TachoOfficeMarksRoute = TachoOfficeMarksRouteImport.update({
   id: '/tacho-office-marks',
   path: '/tacho-office-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LezMarksRoute = LezMarksRouteImport.update({
+  id: '/lez-marks',
+  path: '/lez-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EntityEventsRoute = EntityEventsRouteImport.update({
@@ -1264,6 +1270,7 @@ export interface FileRoutesByFullPath {
   '/multi-manning-marks': typeof MultiManningMarksRoute
   '/posting-marks': typeof PostingMarksRoute
   '/tacho-office-marks': typeof TachoOfficeMarksRoute
+  '/lez-marks': typeof LezMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/eur1-atr-marks': typeof Eur1AtrMarksRoute
@@ -1465,6 +1472,7 @@ export interface FileRoutesByTo {
   '/multi-manning-marks': typeof MultiManningMarksRoute
   '/posting-marks': typeof PostingMarksRoute
   '/tacho-office-marks': typeof TachoOfficeMarksRoute
+  '/lez-marks': typeof LezMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/eur1-atr-marks': typeof Eur1AtrMarksRoute
@@ -1667,6 +1675,7 @@ export interface FileRoutesById {
   '/multi-manning-marks': typeof MultiManningMarksRoute
   '/posting-marks': typeof PostingMarksRoute
   '/tacho-office-marks': typeof TachoOfficeMarksRoute
+  '/lez-marks': typeof LezMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/eur1-atr-marks': typeof Eur1AtrMarksRoute
@@ -1870,6 +1879,7 @@ export interface FileRouteTypes {
     | '/multi-manning-marks'
     | '/posting-marks'
     | '/tacho-office-marks'
+    | '/lez-marks'
     | '/entity-events'
     | '/erp-connectors'
     | '/eur1-atr-marks'
@@ -2071,6 +2081,7 @@ export interface FileRouteTypes {
     | '/multi-manning-marks'
     | '/posting-marks'
     | '/tacho-office-marks'
+    | '/lez-marks'
     | '/entity-events'
     | '/erp-connectors'
     | '/eur1-atr-marks'
@@ -2272,6 +2283,7 @@ export interface FileRouteTypes {
     | '/multi-manning-marks'
     | '/posting-marks'
     | '/tacho-office-marks'
+    | '/lez-marks'
     | '/entity-events'
     | '/erp-connectors'
     | '/eur1-atr-marks'
@@ -2474,6 +2486,7 @@ export interface RootRouteChildren {
   MultiManningMarksRoute: typeof MultiManningMarksRoute
   PostingMarksRoute: typeof PostingMarksRoute
   TachoOfficeMarksRoute: typeof TachoOfficeMarksRoute
+  LezMarksRoute: typeof LezMarksRoute
   EntityEventsRoute: typeof EntityEventsRoute
   ErpConnectorsRoute: typeof ErpConnectorsRoute
   Eur1AtrMarksRoute: typeof Eur1AtrMarksRoute
@@ -3019,6 +3032,14 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TachoOfficeMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lez-marks': {
+      id: '/lez-marks'
+      path: '/lez-marks'
+      fullPath: '/lez-marks'
+      preLoaderRoute: typeof LezMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+
 
 
 
@@ -4078,6 +4099,7 @@ const rootRouteChildren: RootRouteChildren = {
   MultiManningMarksRoute: MultiManningMarksRoute,
   PostingMarksRoute: PostingMarksRoute,
   TachoOfficeMarksRoute: TachoOfficeMarksRoute,
+  LezMarksRoute: LezMarksRoute,
   EntityEventsRoute: EntityEventsRoute,
   ErpConnectorsRoute: ErpConnectorsRoute,
   Eur1AtrMarksRoute: Eur1AtrMarksRoute,

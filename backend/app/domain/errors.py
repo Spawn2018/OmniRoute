@@ -1046,6 +1046,10 @@ class InvalidTachoOfficeMark(DomainError):
     """EXP4.10: HITL tacho office — nie tacho live / DDD parse."""
 
 
+class InvalidLezMark(DomainError):
+    """EXP4.11: HITL LEZ/zakazy — nie LEZ live / mapa."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

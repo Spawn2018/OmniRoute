@@ -181,6 +181,7 @@ from app.models.nvocc_mark import NvoccMark  # noqa: F401
 from app.models.multi_manning_mark import MultiManningMark  # noqa: F401
 from app.models.posting_mark import PostingMark  # noqa: F401
 from app.models.tacho_office_mark import TachoOfficeMark  # noqa: F401
+from app.models.lez_mark import LezMark  # noqa: F401
 from app.models.collaboration_mark import CollaborationMark  # noqa: F401
 from app.models.freight_audit_mark import FreightAuditMark  # noqa: F401
 from app.models.routing_guide import RoutingGuide  # noqa: F401
