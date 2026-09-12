@@ -6,7 +6,7 @@
 
 **Ostatni plaster:** **398.0** EXP4.20 HITL `erru_mark`
 
-**Etap:** Plan — **399.0** Mob
+**Etap:** Plaster — **399.0** Mob (delta zaakceptowana `/noc`, wolno `/plaster`)
 
 **Noc:** `/noc 17` do 2026-09-12T17:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).
 
@@ -14,7 +14,7 @@
 
 Park: Graph live · Expo/EAS live · ERRU live. Nie zgaduj 71–399.
 
-**Spec (jedyna na sesję):** (brak — plan 399.0).
+**Spec (jedyna na sesję):** [docs/spec/mobile-client-mark.md](../spec/mobile-client-mark.md) · delta [docs/deltas/open/399.0-mobile-client-mark.md](../deltas/open/399.0-mobile-client-mark.md).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
@@ -22,4 +22,4 @@ Park: Graph live · Expo/EAS live · ERRU live. Nie zgaduj 71–399.
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-12:** Plaster **398.0** zamknięty (`/noc`) — HITL `erru_mark`. Oś EXP4 (Widoki→ERRU) domknięta w HITL.
+**2026-09-12:** Plaster **398.0** zamknięty (`/noc`) — HITL `erru_mark`. Delta **399.0** zaakceptowana `/noc`.

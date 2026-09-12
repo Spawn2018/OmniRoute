@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **398.0** EXP4.20 HITL `erru_mark`. **Etap:** Plan — **399.0** Mob. **Następny:** **399.0** Mob HITL `mobile_client_mark` (kolejka pin → Mob; nie Expo live). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **398.0** EXP4.20 HITL `erru_mark`. **Etap:** Plaster — **399.0** Mob (delta zaakceptowana `/noc`, wolno `/plaster`). **Następny:** **399.0** Mob HITL `mobile_client_mark` (kolejka pin → Mob; nie Expo live). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
