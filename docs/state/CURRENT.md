@@ -6,7 +6,7 @@
 
 **Ostatni plaster:** **396.0** EXP4.18 HITL `rag_sop_mark`
 
-**Etap:** Plan — **397.0** EXP4.19
+**Etap:** Plaster — **397.0** EXP4.19 (delta zaakceptowana `/noc`, wolno `/plaster`)
 
 **Noc:** `/noc 17` do 2026-09-12T17:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).
 
@@ -14,7 +14,7 @@
 
 Park: Graph live · auto-send · board T6 live · pgvector. Nie zgaduj 71–397.
 
-**Spec (jedyna na sesję):** (brak — plan 397.0).
+**Spec (jedyna na sesję):** [docs/spec/copy-ban-mark.md](../spec/copy-ban-mark.md) · delta [docs/deltas/open/397.0-copy-ban-mark.md](../deltas/open/397.0-copy-ban-mark.md).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
@@ -22,4 +22,4 @@ Park: Graph live · auto-send · board T6 live · pgvector. Nie zgaduj 71–397.
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-12:** Plaster **396.0** zamknięty (`/noc`) — HITL `rag_sop_mark`.
+**2026-09-12:** Plaster **396.0** zamknięty (`/noc`) — HITL `rag_sop_mark`. Delta **397.0** zaakceptowana `/noc`.
