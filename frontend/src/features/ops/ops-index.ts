@@ -954,6 +954,11 @@ export const OPS_JOBS = [
     job: "katalog ab_sus_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.termsAiMark.route,
+    label: "Terms AI",
+    job: "katalog terms_ai_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.funnelMark.route,
     label: "X7 lejek",
     job: "katalog funnel_mark HITL",
@@ -1375,6 +1380,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "390.0": "/label-parking-marks",
   "391.0": "/ab-sus-marks",
   "392.0": "/funnel-marks",
+  "393.0": "/terms-ai-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

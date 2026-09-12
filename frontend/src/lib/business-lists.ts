@@ -149,6 +149,7 @@ export const BUSINESS_LISTS = {
   labelParkingMark: { route: "/label-parking-marks", tableKey: "label_parking_mark" },
   abSusMark: { route: "/ab-sus-marks", tableKey: "ab_sus_mark" },
   funnelMark: { route: "/funnel-marks", tableKey: "funnel_mark" },
+  termsAiMark: { route: "/terms-ai-marks", tableKey: "terms_ai_mark" },
   remediationOption: {
     route: "/remediation-options",
     tableKey: "remediation_option",
@@ -359,6 +360,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/label-parking-marks",
   "/ab-sus-marks",
   "/funnel-marks",
+  "/terms-ai-marks",
   "/remediation-options",
   "/impact-scenarios",
   "/clause-notices",

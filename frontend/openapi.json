@@ -9464,6 +9464,80 @@
         ]
       }
     },
+    "/api/v1/terms-ai-marks": {
+      "get": {
+        "tags": [
+          "funnel"
+        ],
+        "summary": "List Terms Ai Marks",
+        "operationId": "list_terms_ai_marks_api_v1_terms_ai_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TermsAiMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Terms Ai Marks Api V1 Terms Ai Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "funnel"
+        ],
+        "summary": "Create Terms Ai Mark",
+        "operationId": "create_terms_ai_mark_api_v1_terms_ai_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TermsAiMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TermsAiMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/funnel-marks": {
       "get": {
         "tags": [
@@ -37048,6 +37122,71 @@
           "source_ref"
         ],
         "title": "TerminalSlotConnectorResponse"
+      },
+      "TermsAiMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "terms_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Terms Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "terms_kind",
+          "source_ref"
+        ],
+        "title": "TermsAiMarkCreate"
+      },
+      "TermsAiMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "terms_kind": {
+            "type": "string",
+            "title": "Terms Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "terms_kind",
+          "source_ref"
+        ],
+        "title": "TermsAiMarkResponse"
       },
       "TimeToFixMarkCreate": {
         "properties": {

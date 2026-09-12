@@ -70,6 +70,7 @@ import { Route as LezMarksRouteImport } from './routes/lez-marks'
 import { Route as LabelParkingMarksRouteImport } from './routes/label-parking-marks'
 import { Route as AbSusMarksRouteImport } from './routes/ab-sus-marks'
 import { Route as FunnelMarksRouteImport } from './routes/funnel-marks'
+import { Route as TermsAiMarksRouteImport } from './routes/terms-ai-marks'
 import { Route as EntityEventsRouteImport } from './routes/entity-events'
 import { Route as ErpConnectorsRouteImport } from './routes/erp-connectors'
 import { Route as Eur1AtrMarksRouteImport } from './routes/eur1-atr-marks'
@@ -516,6 +517,11 @@ const AbSusMarksRoute = AbSusMarksRouteImport.update({
 const FunnelMarksRoute = FunnelMarksRouteImport.update({
   id: '/funnel-marks',
   path: '/funnel-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsAiMarksRoute = TermsAiMarksRouteImport.update({
+  id: '/terms-ai-marks',
+  path: '/terms-ai-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EntityEventsRoute = EntityEventsRouteImport.update({
@@ -1292,6 +1298,7 @@ export interface FileRoutesByFullPath {
   '/label-parking-marks': typeof LabelParkingMarksRoute
   '/ab-sus-marks': typeof AbSusMarksRoute
   '/funnel-marks': typeof FunnelMarksRoute
+  '/terms-ai-marks': typeof TermsAiMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/eur1-atr-marks': typeof Eur1AtrMarksRoute
@@ -1497,6 +1504,7 @@ export interface FileRoutesByTo {
   '/label-parking-marks': typeof LabelParkingMarksRoute
   '/ab-sus-marks': typeof AbSusMarksRoute
   '/funnel-marks': typeof FunnelMarksRoute
+  '/terms-ai-marks': typeof TermsAiMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/eur1-atr-marks': typeof Eur1AtrMarksRoute
@@ -1703,6 +1711,7 @@ export interface FileRoutesById {
   '/label-parking-marks': typeof LabelParkingMarksRoute
   '/ab-sus-marks': typeof AbSusMarksRoute
   '/funnel-marks': typeof FunnelMarksRoute
+  '/terms-ai-marks': typeof TermsAiMarksRoute
   '/entity-events': typeof EntityEventsRoute
   '/erp-connectors': typeof ErpConnectorsRoute
   '/eur1-atr-marks': typeof Eur1AtrMarksRoute
@@ -1910,6 +1919,7 @@ export interface FileRouteTypes {
     | '/label-parking-marks'
     | '/ab-sus-marks'
     | '/funnel-marks'
+    | '/terms-ai-marks'
     | '/entity-events'
     | '/erp-connectors'
     | '/eur1-atr-marks'
@@ -2115,6 +2125,7 @@ export interface FileRouteTypes {
     | '/label-parking-marks'
     | '/ab-sus-marks'
     | '/funnel-marks'
+    | '/terms-ai-marks'
     | '/entity-events'
     | '/erp-connectors'
     | '/eur1-atr-marks'
@@ -2320,6 +2331,7 @@ export interface FileRouteTypes {
     | '/label-parking-marks'
     | '/ab-sus-marks'
     | '/funnel-marks'
+    | '/terms-ai-marks'
     | '/entity-events'
     | '/erp-connectors'
     | '/eur1-atr-marks'
@@ -2526,6 +2538,7 @@ export interface RootRouteChildren {
   LabelParkingMarksRoute: typeof LabelParkingMarksRoute
   AbSusMarksRoute: typeof AbSusMarksRoute
   FunnelMarksRoute: typeof FunnelMarksRoute
+  TermsAiMarksRoute: typeof TermsAiMarksRoute
   EntityEventsRoute: typeof EntityEventsRoute
   ErpConnectorsRoute: typeof ErpConnectorsRoute
   Eur1AtrMarksRoute: typeof Eur1AtrMarksRoute
@@ -3097,6 +3110,13 @@ declare module '@tanstack/react-router' {
       path: '/funnel-marks'
       fullPath: '/funnel-marks'
       preLoaderRoute: typeof FunnelMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms-ai-marks': {
+      id: '/terms-ai-marks'
+      path: '/terms-ai-marks'
+      fullPath: '/terms-ai-marks'
+      preLoaderRoute: typeof TermsAiMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
 
@@ -4163,6 +4183,7 @@ const rootRouteChildren: RootRouteChildren = {
   LabelParkingMarksRoute: LabelParkingMarksRoute,
   AbSusMarksRoute: AbSusMarksRoute,
   FunnelMarksRoute: FunnelMarksRoute,
+  TermsAiMarksRoute: TermsAiMarksRoute,
   EntityEventsRoute: EntityEventsRoute,
   ErpConnectorsRoute: ErpConnectorsRoute,
   Eur1AtrMarksRoute: Eur1AtrMarksRoute,

@@ -11405,6 +11405,50 @@ export type TerminalSlotConnectorResponse = {
 };
 
 /**
+ * TermsAiMarkCreate
+ */
+export type TermsAiMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Terms Kind
+     */
+    terms_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TermsAiMarkResponse
+ */
+export type TermsAiMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Terms Kind
+     */
+    terms_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * TimeToFixMarkCreate
  */
 export type TimeToFixMarkCreate = {
@@ -17634,6 +17678,49 @@ export type CreateFraudFlagApiV1FraudFlagsPostResponses = {
 };
 
 export type CreateFraudFlagApiV1FraudFlagsPostResponse = CreateFraudFlagApiV1FraudFlagsPostResponses[keyof CreateFraudFlagApiV1FraudFlagsPostResponses];
+
+export type ListTermsAiMarksApiV1TermsAiMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/terms-ai-marks';
+};
+
+export type ListTermsAiMarksApiV1TermsAiMarksGetResponses = {
+    /**
+     * Response List Terms Ai Marks Api V1 Terms Ai Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<TermsAiMarkResponse>;
+};
+
+export type ListTermsAiMarksApiV1TermsAiMarksGetResponse = ListTermsAiMarksApiV1TermsAiMarksGetResponses[keyof ListTermsAiMarksApiV1TermsAiMarksGetResponses];
+
+export type CreateTermsAiMarkApiV1TermsAiMarksPostData = {
+    body: TermsAiMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/terms-ai-marks';
+};
+
+export type CreateTermsAiMarkApiV1TermsAiMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTermsAiMarkApiV1TermsAiMarksPostError = CreateTermsAiMarkApiV1TermsAiMarksPostErrors[keyof CreateTermsAiMarkApiV1TermsAiMarksPostErrors];
+
+export type CreateTermsAiMarkApiV1TermsAiMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TermsAiMarkResponse;
+};
+
+export type CreateTermsAiMarkApiV1TermsAiMarksPostResponse = CreateTermsAiMarkApiV1TermsAiMarksPostResponses[keyof CreateTermsAiMarkApiV1TermsAiMarksPostResponses];
 
 export type ListFunnelMarksApiV1FunnelMarksGetData = {
     body?: never;

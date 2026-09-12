@@ -1058,6 +1058,10 @@ class InvalidAbSusMark(DomainError):
     """EXP4.13: HITL A/B+SUS — nie A/B live / scoring SUS."""
 
 
+class InvalidTermsAiMark(DomainError):
+    """EXP4.15: HITL Terms AI — nie terms live / CI blob."""
+
+
 class InvalidFunnelMark(DomainError):
     """EXP4.14: HITL X7 lejek — nie funnel live / CRM attribution."""
 

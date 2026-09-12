@@ -161,6 +161,7 @@ type organization
     define can_manage_label_parking_marks: member
     define can_manage_ab_sus_marks: member
     define can_manage_funnel_marks: member
+    define can_manage_terms_ai_marks: member
     define can_manage_freight_audit_marks: member
     define can_manage_collaboration_marks: member
     define can_manage_routing_guide_enforcements: member

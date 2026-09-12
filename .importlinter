@@ -186,6 +186,7 @@ modules =
     app.services.lez_marks
     app.services.label_parking_marks
     app.services.ab_sus_marks
+    app.services.terms_ai_marks
     app.services.funnel_marks
     app.services.freight_audit_marks
     app.services.collaboration_marks
@@ -831,6 +832,9 @@ forbidden_modules =
     app.services.ab_sus_marks
     app.repositories.ab_sus_marks
     app.models.ab_sus_mark
+    app.services.terms_ai_marks
+    app.repositories.terms_ai_marks
+    app.models.terms_ai_mark
     app.services.funnel_marks
     app.repositories.funnel_marks
     app.models.funnel_mark
