@@ -4693,6 +4693,50 @@ export type InterventionOutcomeResponse = {
 };
 
 /**
+ * InventoryPositionMarkCreate
+ */
+export type InventoryPositionMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Stock Kind
+     */
+    stock_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * InventoryPositionMarkResponse
+ */
+export type InventoryPositionMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Stock Kind
+     */
+    stock_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * IsoNis2MarkCreate
  */
 export type IsoNis2MarkCreate = {
@@ -21074,6 +21118,49 @@ export type CreateVdaOdetteMarkApiV1VdaOdetteMarksPostResponses = {
 };
 
 export type CreateVdaOdetteMarkApiV1VdaOdetteMarksPostResponse = CreateVdaOdetteMarkApiV1VdaOdetteMarksPostResponses[keyof CreateVdaOdetteMarkApiV1VdaOdetteMarksPostResponses];
+
+export type ListInventoryPositionMarksApiV1InventoryPositionMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/inventory-position-marks';
+};
+
+export type ListInventoryPositionMarksApiV1InventoryPositionMarksGetResponses = {
+    /**
+     * Response List Inventory Position Marks Api V1 Inventory Position Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<InventoryPositionMarkResponse>;
+};
+
+export type ListInventoryPositionMarksApiV1InventoryPositionMarksGetResponse = ListInventoryPositionMarksApiV1InventoryPositionMarksGetResponses[keyof ListInventoryPositionMarksApiV1InventoryPositionMarksGetResponses];
+
+export type CreateInventoryPositionMarkApiV1InventoryPositionMarksPostData = {
+    body: InventoryPositionMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/inventory-position-marks';
+};
+
+export type CreateInventoryPositionMarkApiV1InventoryPositionMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateInventoryPositionMarkApiV1InventoryPositionMarksPostError = CreateInventoryPositionMarkApiV1InventoryPositionMarksPostErrors[keyof CreateInventoryPositionMarkApiV1InventoryPositionMarksPostErrors];
+
+export type CreateInventoryPositionMarkApiV1InventoryPositionMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: InventoryPositionMarkResponse;
+};
+
+export type CreateInventoryPositionMarkApiV1InventoryPositionMarksPostResponse = CreateInventoryPositionMarkApiV1InventoryPositionMarksPostResponses[keyof CreateInventoryPositionMarkApiV1InventoryPositionMarksPostResponses];
 
 export type HealthHealthGetData = {
     body?: never;

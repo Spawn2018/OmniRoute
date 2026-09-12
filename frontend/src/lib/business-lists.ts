@@ -100,6 +100,10 @@ export const BUSINESS_LISTS = {
   offboardingMark: { route: "/offboarding-marks", tableKey: "offboarding_mark" },
   jitJisMark: { route: "/jit-jis-marks", tableKey: "jit_jis_mark" },
   vdaOdetteMark: { route: "/vda-odette-marks", tableKey: "vda_odette_mark" },
+  inventoryPositionMark: {
+    route: "/inventory-position-marks",
+    tableKey: "inventory_position_mark",
+  },
   erpConnector: { route: "/erp-connectors", tableKey: "erp_connector" },
   idpConnector: { route: "/idp-connectors", tableKey: "idp_connector" },
   customerContract: { route: "/customer-contracts", tableKey: "customer_contract" },
@@ -291,6 +295,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/offboarding-marks",
   "/jit-jis-marks",
   "/vda-odette-marks",
+  "/inventory-position-marks",
   "/erp-connectors",
   "/idp-connectors",
   "/customer-contracts",

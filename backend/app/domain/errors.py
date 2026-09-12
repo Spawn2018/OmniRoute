@@ -962,6 +962,10 @@ class InvalidVdaOdetteMark(DomainError):
     """EXP3.2: HITL VDA/Odette — nie live EDI VDA / ZPL."""
 
 
+class InvalidInventoryPositionMark(DomainError):
+    """EXP3.3: HITL inventory position — nie WMS live / bilans SQL."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

@@ -75,6 +75,7 @@ from app.api import (
     incoterm_responsibilities,
     integration_hub_marks,
     intervention_outcomes,
+    inventory_position_marks,
     iso_nis2_marks,
     jit_jis_marks,
     kreptd_licences,
@@ -367,6 +368,7 @@ api_router.include_router(iso_nis2_marks.router)
 api_router.include_router(offboarding_marks.router)
 api_router.include_router(jit_jis_marks.router)
 api_router.include_router(vda_odette_marks.router)
+api_router.include_router(inventory_position_marks.router)
 
 
 @api_router.api_route(

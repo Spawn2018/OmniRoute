@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **367.0** EXP3.2 HITL `vda_odette_mark`
-- **Etap:** Plan — **368.0** EXP3.3
-- **Następny:** **368.0** EXP3.3 inventory position HITL (delta do utworzenia). Nie WMS.
+- **Ostatni plaster:** **368.0** EXP3.3 HITL `inventory_position_mark`
+- **Etap:** Plan — **369.0** EXP3.4
+- **Następny:** **369.0** EXP3.4 fair share HITL (delta do utworzenia). Nie allocation SQL.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

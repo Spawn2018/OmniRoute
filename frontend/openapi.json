@@ -17332,6 +17332,80 @@
         ]
       }
     },
+    "/api/v1/inventory-position-marks": {
+      "get": {
+        "tags": [
+          "inventory-position-marks"
+        ],
+        "summary": "List Inventory Position Marks",
+        "operationId": "list_inventory_position_marks_api_v1_inventory_position_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/InventoryPositionMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Inventory Position Marks Api V1 Inventory Position Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "inventory-position-marks"
+        ],
+        "summary": "Create Inventory Position Mark",
+        "operationId": "create_inventory_position_mark_api_v1_inventory_position_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventoryPositionMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InventoryPositionMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/health": {
       "get": {
         "summary": "Health",
@@ -24741,6 +24815,65 @@
           "source_ref"
         ],
         "title": "InterventionOutcomeResponse"
+      },
+      "InventoryPositionMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "stock_kind": {
+            "type": "string",
+            "title": "Stock Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "stock_kind",
+          "source_ref"
+        ],
+        "title": "InventoryPositionMarkCreate"
+      },
+      "InventoryPositionMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "stock_kind": {
+            "type": "string",
+            "title": "Stock Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "stock_kind",
+          "source_ref"
+        ],
+        "title": "InventoryPositionMarkResponse"
       },
       "IsoNis2MarkCreate": {
         "properties": {

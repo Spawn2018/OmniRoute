@@ -81,6 +81,7 @@ import { Route as IdpConnectorsRouteImport } from './routes/idp-connectors'
 import { Route as ImpactScenariosRouteImport } from './routes/impact-scenarios'
 import { Route as IntegrationHubMarksRouteImport } from './routes/integration-hub-marks'
 import { Route as InterventionOutcomesRouteImport } from './routes/intervention-outcomes'
+import { Route as InventoryPositionMarksRouteImport } from './routes/inventory-position-marks'
 import { Route as InvoicesRouteImport } from './routes/invoices'
 import { Route as IsoNis2MarksRouteImport } from './routes/iso-nis2-marks'
 import { Route as JitJisMarksRouteImport } from './routes/jit-jis-marks'
@@ -546,6 +547,11 @@ const IntegrationHubMarksRoute = IntegrationHubMarksRouteImport.update({
 const InterventionOutcomesRoute = InterventionOutcomesRouteImport.update({
   id: '/intervention-outcomes',
   path: '/intervention-outcomes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InventoryPositionMarksRoute = InventoryPositionMarksRouteImport.update({
+  id: '/inventory-position-marks',
+  path: '/inventory-position-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InvoicesRoute = InvoicesRouteImport.update({
@@ -1153,6 +1159,7 @@ export interface FileRoutesByFullPath {
   '/impact-scenarios': typeof ImpactScenariosRoute
   '/integration-hub-marks': typeof IntegrationHubMarksRoute
   '/intervention-outcomes': typeof InterventionOutcomesRoute
+  '/inventory-position-marks': typeof InventoryPositionMarksRoute
   '/invoices': typeof InvoicesRoute
   '/iso-nis2-marks': typeof IsoNis2MarksRoute
   '/jit-jis-marks': typeof JitJisMarksRoute
@@ -1333,6 +1340,7 @@ export interface FileRoutesByTo {
   '/impact-scenarios': typeof ImpactScenariosRoute
   '/integration-hub-marks': typeof IntegrationHubMarksRoute
   '/intervention-outcomes': typeof InterventionOutcomesRoute
+  '/inventory-position-marks': typeof InventoryPositionMarksRoute
   '/invoices': typeof InvoicesRoute
   '/iso-nis2-marks': typeof IsoNis2MarksRoute
   '/jit-jis-marks': typeof JitJisMarksRoute
@@ -1514,6 +1522,7 @@ export interface FileRoutesById {
   '/impact-scenarios': typeof ImpactScenariosRoute
   '/integration-hub-marks': typeof IntegrationHubMarksRoute
   '/intervention-outcomes': typeof InterventionOutcomesRoute
+  '/inventory-position-marks': typeof InventoryPositionMarksRoute
   '/invoices': typeof InvoicesRoute
   '/iso-nis2-marks': typeof IsoNis2MarksRoute
   '/jit-jis-marks': typeof JitJisMarksRoute
@@ -1696,6 +1705,7 @@ export interface FileRouteTypes {
     | '/impact-scenarios'
     | '/integration-hub-marks'
     | '/intervention-outcomes'
+    | '/inventory-position-marks'
     | '/invoices'
     | '/iso-nis2-marks'
     | '/jit-jis-marks'
@@ -1876,6 +1886,7 @@ export interface FileRouteTypes {
     | '/impact-scenarios'
     | '/integration-hub-marks'
     | '/intervention-outcomes'
+    | '/inventory-position-marks'
     | '/invoices'
     | '/iso-nis2-marks'
     | '/jit-jis-marks'
@@ -2056,6 +2067,7 @@ export interface FileRouteTypes {
     | '/impact-scenarios'
     | '/integration-hub-marks'
     | '/intervention-outcomes'
+    | '/inventory-position-marks'
     | '/invoices'
     | '/iso-nis2-marks'
     | '/jit-jis-marks'
@@ -2237,6 +2249,7 @@ export interface RootRouteChildren {
   ImpactScenariosRoute: typeof ImpactScenariosRoute
   IntegrationHubMarksRoute: typeof IntegrationHubMarksRoute
   InterventionOutcomesRoute: typeof InterventionOutcomesRoute
+  InventoryPositionMarksRoute: typeof InventoryPositionMarksRoute
   InvoicesRoute: typeof InvoicesRoute
   IsoNis2MarksRoute: typeof IsoNis2MarksRoute
   JitJisMarksRoute: typeof JitJisMarksRoute
@@ -2849,6 +2862,13 @@ declare module '@tanstack/react-router' {
       path: '/intervention-outcomes'
       fullPath: '/intervention-outcomes'
       preLoaderRoute: typeof InterventionOutcomesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inventory-position-marks': {
+      id: '/inventory-position-marks'
+      path: '/inventory-position-marks'
+      fullPath: '/inventory-position-marks'
+      preLoaderRoute: typeof InventoryPositionMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/invoices': {
@@ -3669,6 +3689,7 @@ const rootRouteChildren: RootRouteChildren = {
   ImpactScenariosRoute: ImpactScenariosRoute,
   IntegrationHubMarksRoute: IntegrationHubMarksRoute,
   InterventionOutcomesRoute: InterventionOutcomesRoute,
+  InventoryPositionMarksRoute: InventoryPositionMarksRoute,
   InvoicesRoute: InvoicesRoute,
   IsoNis2MarksRoute: IsoNis2MarksRoute,
   JitJisMarksRoute: JitJisMarksRoute,
