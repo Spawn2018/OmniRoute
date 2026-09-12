@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **419.0** EXP0.3 HITL `slot_guarantee_mark`. **Etap:** Plan — **420.0** EXP0.4. **Następny:** **420.0** EXP0.4 — sprawdź łowcą vs `copy_ban_mark` (397.0); nie dubluj five_hundred_k. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **419.0** EXP0.3 HITL `slot_guarantee_mark`. **Etap:** Plaster — **420.0** EXP1 (delta zaakceptowana `/noc`; EXP0.4 skipped — dubluje copy_ban). **Następny:** **420.0** EXP1 HITL `freight_term_mark` (prepaid|collect|third_party|other) — kolejka po cutoff. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

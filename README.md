@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **419.0** EXP0.3 HITL `slot_guarantee_mark`
-- **Etap:** Plan — **420.0** EXP0.4
-- **Następny:** **420.0** EXP0.4 — sprawdź łowcą vs `copy_ban_mark` (397.0); nie dubluj five_hundred_k.
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Etap:** Plaster — **420.0** EXP1 (delta zaakceptowana `/noc`; EXP0.4 skipped — dubluje copy_ban)
+- **Następny:** **420.0** EXP1 HITL `freight_term_mark` (prepaid|collect|third_party|other) — kolejka po cutoff.
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 
