@@ -12681,6 +12681,50 @@ export type TwinMarkResponse = {
 };
 
 /**
+ * UnSegregationMarkCreate
+ */
+export type UnSegregationMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Segregate Kind
+     */
+    segregate_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * UnSegregationMarkResponse
+ */
+export type UnSegregationMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Segregate Kind
+     */
+    segregate_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * ValidationError
  */
 export type ValidationError = {
@@ -21629,6 +21673,49 @@ export type CreateTwinMarkApiV1TwinMarksPostResponses = {
 };
 
 export type CreateTwinMarkApiV1TwinMarksPostResponse = CreateTwinMarkApiV1TwinMarksPostResponses[keyof CreateTwinMarkApiV1TwinMarksPostResponses];
+
+export type ListUnSegregationMarksApiV1UnSegregationMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/un-segregation-marks';
+};
+
+export type ListUnSegregationMarksApiV1UnSegregationMarksGetResponses = {
+    /**
+     * Response List Un Segregation Marks Api V1 Un Segregation Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<UnSegregationMarkResponse>;
+};
+
+export type ListUnSegregationMarksApiV1UnSegregationMarksGetResponse = ListUnSegregationMarksApiV1UnSegregationMarksGetResponses[keyof ListUnSegregationMarksApiV1UnSegregationMarksGetResponses];
+
+export type CreateUnSegregationMarkApiV1UnSegregationMarksPostData = {
+    body: UnSegregationMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/un-segregation-marks';
+};
+
+export type CreateUnSegregationMarkApiV1UnSegregationMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateUnSegregationMarkApiV1UnSegregationMarksPostError = CreateUnSegregationMarkApiV1UnSegregationMarksPostErrors[keyof CreateUnSegregationMarkApiV1UnSegregationMarksPostErrors];
+
+export type CreateUnSegregationMarkApiV1UnSegregationMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: UnSegregationMarkResponse;
+};
+
+export type CreateUnSegregationMarkApiV1UnSegregationMarksPostResponse = CreateUnSegregationMarkApiV1UnSegregationMarksPostResponses[keyof CreateUnSegregationMarkApiV1UnSegregationMarksPostResponses];
 
 export type ListWarRoomMarksApiV1WarRoomMarksGetData = {
     body?: never;

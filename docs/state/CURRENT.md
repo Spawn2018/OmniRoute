@@ -4,17 +4,17 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **415.0** EXP3.0d HITL `po_batch_mark`
+**Ostatni plaster:** **416.0** EXP0.9 HITL `un_segregation_mark`
 
-**Etap:** Plaster — **416.0** EXP0.9 (delta zaakceptowana `/noc`, wolno `/plaster`)
+**Etap:** Plan — **417.0** EXP0.10
 
 **Noc:** `/noc 10` do 2026-09-13T10:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).
 
-**Następny:** **416.0** EXP0.9 HITL `un_segregation_mark` (tunel/segregacja UN; bez solver OR) — kolejka po cutoff.
+**Następny:** **417.0** EXP0.10 HITL `dual_ledger_mark` (dwa ledgery; bez druga marża) — kolejka po cutoff.
 
-Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj 71–416.
+Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj 71–417.
 
-**Spec (jedyna na sesję):** [docs/deltas/open/416.0-un-segregation-mark.md](../deltas/open/416.0-un-segregation-mark.md)
+**Spec (jedyna na sesję):** (brak — plan 417.0 po nocnej zmianie).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
@@ -25,4 +25,4 @@ Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj 71–4
 **2026-09-12:** Plaster **413.0** zamknięty (`/noc`) — HITL `po_plant_mark`.
 **2026-09-12:** Plaster **414.0** zamknięty (`/noc`) — HITL `po_sku_mark`.
 **2026-09-12:** Plaster **415.0** zamknięty (`/noc`) — HITL `po_batch_mark`.
-**2026-09-12:** Delta **416.0** zaakceptowana (`/noc`) — wolno `/plaster`.
+**2026-09-12:** Plaster **416.0** zamknięty (`/noc`) — HITL `un_segregation_mark`.

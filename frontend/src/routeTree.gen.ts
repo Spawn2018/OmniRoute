@@ -224,6 +224,7 @@ import { Route as TimeToFixMarksRouteImport } from './routes/time-to-fix-marks'
 import { Route as TowerImpactsRouteImport } from './routes/tower-impacts'
 import { Route as TrackingRouteImport } from './routes/tracking'
 import { Route as TwinMarksRouteImport } from './routes/twin-marks'
+import { Route as UnSegregationMarksRouteImport } from './routes/un-segregation-marks'
 import { Route as VdaOdetteMarksRouteImport } from './routes/vda-odette-marks'
 import { Route as VisibilityConnectorsRouteImport } from './routes/visibility-connectors'
 import { Route as WarRoomMarksRouteImport } from './routes/war-room-marks'
@@ -1311,6 +1312,11 @@ const TwinMarksRoute = TwinMarksRouteImport.update({
   path: '/twin-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UnSegregationMarksRoute = UnSegregationMarksRouteImport.update({
+  id: '/un-segregation-marks',
+  path: '/un-segregation-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const VdaOdetteMarksRoute = VdaOdetteMarksRouteImport.update({
   id: '/vda-odette-marks',
   path: '/vda-odette-marks',
@@ -1578,6 +1584,7 @@ export interface FileRoutesByFullPath {
   '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
   '/twin-marks': typeof TwinMarksRoute
+  '/un-segregation-marks': typeof UnSegregationMarksRoute
   '/vda-odette-marks': typeof VdaOdetteMarksRoute
   '/visibility-connectors': typeof VisibilityConnectorsRoute
   '/war-room-marks': typeof WarRoomMarksRoute
@@ -1805,6 +1812,7 @@ export interface FileRoutesByTo {
   '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
   '/twin-marks': typeof TwinMarksRoute
+  '/un-segregation-marks': typeof UnSegregationMarksRoute
   '/vda-odette-marks': typeof VdaOdetteMarksRoute
   '/visibility-connectors': typeof VisibilityConnectorsRoute
   '/war-room-marks': typeof WarRoomMarksRoute
@@ -2033,6 +2041,7 @@ export interface FileRoutesById {
   '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
   '/twin-marks': typeof TwinMarksRoute
+  '/un-segregation-marks': typeof UnSegregationMarksRoute
   '/vda-odette-marks': typeof VdaOdetteMarksRoute
   '/visibility-connectors': typeof VisibilityConnectorsRoute
   '/war-room-marks': typeof WarRoomMarksRoute
@@ -2262,6 +2271,7 @@ export interface FileRouteTypes {
     | '/tower-impacts'
     | '/tracking'
     | '/twin-marks'
+    | '/un-segregation-marks'
     | '/vda-odette-marks'
     | '/visibility-connectors'
     | '/war-room-marks'
@@ -2489,6 +2499,7 @@ export interface FileRouteTypes {
     | '/tower-impacts'
     | '/tracking'
     | '/twin-marks'
+    | '/un-segregation-marks'
     | '/vda-odette-marks'
     | '/visibility-connectors'
     | '/war-room-marks'
@@ -2716,6 +2727,7 @@ export interface FileRouteTypes {
     | '/tower-impacts'
     | '/tracking'
     | '/twin-marks'
+    | '/un-segregation-marks'
     | '/vda-odette-marks'
     | '/visibility-connectors'
     | '/war-room-marks'
@@ -2944,6 +2956,7 @@ export interface RootRouteChildren {
   TowerImpactsRoute: typeof TowerImpactsRoute
   TrackingRoute: typeof TrackingRoute
   TwinMarksRoute: typeof TwinMarksRoute
+  UnSegregationMarksRoute: typeof UnSegregationMarksRoute
   VdaOdetteMarksRoute: typeof VdaOdetteMarksRoute
   VisibilityConnectorsRoute: typeof VisibilityConnectorsRoute
   WarRoomMarksRoute: typeof WarRoomMarksRoute
@@ -4463,6 +4476,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TwinMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/un-segregation-marks': {
+      id: '/un-segregation-marks'
+      path: '/un-segregation-marks'
+      fullPath: '/un-segregation-marks'
+      preLoaderRoute: typeof UnSegregationMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/vda-odette-marks': {
       id: '/vda-odette-marks'
       path: '/vda-odette-marks'
@@ -4752,6 +4772,7 @@ const rootRouteChildren: RootRouteChildren = {
   TowerImpactsRoute: TowerImpactsRoute,
   TrackingRoute: TrackingRoute,
   TwinMarksRoute: TwinMarksRoute,
+  UnSegregationMarksRoute: UnSegregationMarksRoute,
   VdaOdetteMarksRoute: VdaOdetteMarksRoute,
   VisibilityConnectorsRoute: VisibilityConnectorsRoute,
   WarRoomMarksRoute: WarRoomMarksRoute,

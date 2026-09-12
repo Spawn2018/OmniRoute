@@ -182,6 +182,7 @@ modules =
     app.services.po_plant_marks
     app.services.po_sku_marks
     app.services.po_batch_marks
+    app.services.un_segregation_marks
     app.services.impersonate_guard_marks
     app.services.csrd_marks
     app.services.air_ra3_marks
@@ -847,6 +848,9 @@ forbidden_modules =
     app.services.po_batch_marks
     app.repositories.po_batch_marks
     app.models.po_batch_mark
+    app.services.un_segregation_marks
+    app.repositories.un_segregation_marks
+    app.models.un_segregation_mark
     app.services.impersonate_guard_marks
     app.repositories.impersonate_guard_marks
     app.models.impersonate_guard_mark

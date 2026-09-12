@@ -990,6 +990,10 @@ class InvalidPoBatchMark(DomainError):
     """EXP3.0d: HITL po_batch_mark — nie live EDI / auto shipment / kwota."""
 
 
+class InvalidUnSegregationMark(DomainError):
+    """EXP0.9: HITL un_segregation_mark — nie solver OR / LLM-VRP / kwota."""
+
+
 class InvalidImpersonateGuardMark(DomainError):
     """EXP0.12: HITL impersonate≠unwrap — nie crypto / Auth0 live."""
 

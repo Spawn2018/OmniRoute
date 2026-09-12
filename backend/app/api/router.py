@@ -221,6 +221,7 @@ from app.api import (
     tracking_events,
     trips,
     twin_marks,
+    un_segregation_marks,
     vda_odette_marks,
     visibility_connectors,
     war_room_marks,
@@ -402,6 +403,7 @@ api_router.include_router(collaboration_marks.router)
 api_router.include_router(terminal_slot_connectors.router)
 api_router.include_router(tower_impacts.router)
 api_router.include_router(twin_marks.router)
+api_router.include_router(un_segregation_marks.router)
 api_router.include_router(war_room_marks.router)
 api_router.include_router(cash_discounts.router)
 api_router.include_router(cash_flows.router)

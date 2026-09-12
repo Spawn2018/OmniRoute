@@ -1055,6 +1055,11 @@ export const OPS_JOBS = [
     job: "katalog po_batch_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.unSegregationMark.route,
+    label: "Segregacja UN",
+    job: "katalog un_segregation_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.impersonateGuardMark.route,
     label: "Impersonate guard",
     job: "katalog impersonate_guard_mark HITL",
@@ -1508,6 +1513,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "413.0": "/po-plant-marks",
   "414.0": "/po-sku-marks",
   "415.0": "/po-batch-marks",
+  "416.0": "/un-segregation-marks",
 } as const
 
 

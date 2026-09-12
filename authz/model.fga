@@ -155,6 +155,7 @@ type organization
     define can_manage_po_plant_marks: member
     define can_manage_po_sku_marks: member
     define can_manage_po_batch_marks: member
+    define can_manage_un_segregation_marks: member
     define can_manage_impersonate_guard_marks: member
 
     define can_manage_fuel_card_marks: member
