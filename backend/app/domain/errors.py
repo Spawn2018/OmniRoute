@@ -1078,6 +1078,10 @@ class InvalidRagSopMark(DomainError):
     """EXP4.18: HITL zakres RAG — nie pgvector / wycena."""
 
 
+class InvalidCopyBanMark(DomainError):
+    """EXP4.19: HITL zakaz copy claimów — nie silnik banów / kwota."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

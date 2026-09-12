@@ -18,6 +18,7 @@ export const BUSINESS_LISTS = {
   moneyCost: { route: "/money-cost", tableKey: "money_cost" },
   fxDifference: { route: "/fx-differences", tableKey: "fx_difference" },
   cashFlow: { route: "/cashflows", tableKey: "cash_flow" },
+  copyBanMark: { route: "/copy-ban-marks", tableKey: "copy_ban_mark" },
   costToServe: { route: "/cost-to-serve", tableKey: "cost_to_serve" },
   bookkeeping: { route: "/bookkeeping", tableKey: "bookkeeping" },
   roadTransport: { route: "/road", tableKey: "road_transport" },

@@ -14020,6 +14020,80 @@
         ]
       }
     },
+    "/api/v1/copy-ban-marks": {
+      "get": {
+        "tags": [
+          "copy-ban"
+        ],
+        "summary": "List Copy Ban Marks",
+        "operationId": "list_copy_ban_marks_api_v1_copy_ban_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CopyBanMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Copy Ban Marks Api V1 Copy Ban Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "copy-ban"
+        ],
+        "summary": "Create Copy Ban Mark",
+        "operationId": "create_copy_ban_mark_api_v1_copy_ban_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CopyBanMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CopyBanMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/cost-to-serves": {
       "get": {
         "tags": [
@@ -23537,6 +23611,71 @@
           "superseded_by"
         ],
         "title": "ContainerResponse"
+      },
+      "CopyBanMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "ban_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Ban Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "ban_kind",
+          "source_ref"
+        ],
+        "title": "CopyBanMarkCreate"
+      },
+      "CopyBanMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "ban_kind": {
+            "type": "string",
+            "title": "Ban Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "ban_kind",
+          "source_ref"
+        ],
+        "title": "CopyBanMarkResponse"
       },
       "CostAllocationMarkCreate": {
         "properties": {

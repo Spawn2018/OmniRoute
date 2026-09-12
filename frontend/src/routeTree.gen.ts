@@ -43,6 +43,7 @@ import { Route as CombinedTransportMarksRouteImport } from './routes/combined-tr
 import { Route as CommodityCodesRouteImport } from './routes/commodity-codes'
 import { Route as CompanyMarksRouteImport } from './routes/company-marks'
 import { Route as ConsignmentsRouteImport } from './routes/consignments'
+import { Route as CopyBanMarksRouteImport } from './routes/copy-ban-marks'
 import { Route as CostAllocationMarksRouteImport } from './routes/cost-allocation-marks'
 import { Route as CostToServeRouteImport } from './routes/cost-to-serve'
 import { Route as CreditReviewsRouteImport } from './routes/credit-reviews'
@@ -385,6 +386,11 @@ const CompanyMarksRoute = CompanyMarksRouteImport.update({
 const ConsignmentsRoute = ConsignmentsRouteImport.update({
   id: '/consignments',
   path: '/consignments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CopyBanMarksRoute = CopyBanMarksRouteImport.update({
+  id: '/copy-ban-marks',
+  path: '/copy-ban-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CostAllocationMarksRoute = CostAllocationMarksRouteImport.update({
@@ -1289,6 +1295,7 @@ export interface FileRoutesByFullPath {
   '/commodity-codes': typeof CommodityCodesRoute
   '/company-marks': typeof CompanyMarksRoute
   '/consignments': typeof ConsignmentsRoute
+  '/copy-ban-marks': typeof CopyBanMarksRoute
   '/cost-allocation-marks': typeof CostAllocationMarksRoute
   '/cost-to-serve': typeof CostToServeRoute
   '/credit-reviews': typeof CreditReviewsRoute
@@ -1498,6 +1505,7 @@ export interface FileRoutesByTo {
   '/commodity-codes': typeof CommodityCodesRoute
   '/company-marks': typeof CompanyMarksRoute
   '/consignments': typeof ConsignmentsRoute
+  '/copy-ban-marks': typeof CopyBanMarksRoute
   '/cost-allocation-marks': typeof CostAllocationMarksRoute
   '/cost-to-serve': typeof CostToServeRoute
   '/credit-reviews': typeof CreditReviewsRoute
@@ -1708,6 +1716,7 @@ export interface FileRoutesById {
   '/commodity-codes': typeof CommodityCodesRoute
   '/company-marks': typeof CompanyMarksRoute
   '/consignments': typeof ConsignmentsRoute
+  '/copy-ban-marks': typeof CopyBanMarksRoute
   '/cost-allocation-marks': typeof CostAllocationMarksRoute
   '/cost-to-serve': typeof CostToServeRoute
   '/credit-reviews': typeof CreditReviewsRoute
@@ -1919,6 +1928,7 @@ export interface FileRouteTypes {
     | '/commodity-codes'
     | '/company-marks'
     | '/consignments'
+    | '/copy-ban-marks'
     | '/cost-allocation-marks'
     | '/cost-to-serve'
     | '/credit-reviews'
@@ -2128,6 +2138,7 @@ export interface FileRouteTypes {
     | '/commodity-codes'
     | '/company-marks'
     | '/consignments'
+    | '/copy-ban-marks'
     | '/cost-allocation-marks'
     | '/cost-to-serve'
     | '/credit-reviews'
@@ -2337,6 +2348,7 @@ export interface FileRouteTypes {
     | '/commodity-codes'
     | '/company-marks'
     | '/consignments'
+    | '/copy-ban-marks'
     | '/cost-allocation-marks'
     | '/cost-to-serve'
     | '/credit-reviews'
@@ -2547,6 +2559,7 @@ export interface RootRouteChildren {
   CommodityCodesRoute: typeof CommodityCodesRoute
   CompanyMarksRoute: typeof CompanyMarksRoute
   ConsignmentsRoute: typeof ConsignmentsRoute
+  CopyBanMarksRoute: typeof CopyBanMarksRoute
   CostAllocationMarksRoute: typeof CostAllocationMarksRoute
   CostToServeRoute: typeof CostToServeRoute
   CreditReviewsRoute: typeof CreditReviewsRoute
@@ -2960,6 +2973,13 @@ declare module '@tanstack/react-router' {
       path: '/consignments'
       fullPath: '/consignments'
       preLoaderRoute: typeof ConsignmentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/copy-ban-marks': {
+      id: '/copy-ban-marks'
+      path: '/copy-ban-marks'
+      fullPath: '/copy-ban-marks'
+      preLoaderRoute: typeof CopyBanMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cost-allocation-marks': {
@@ -4211,6 +4231,7 @@ const rootRouteChildren: RootRouteChildren = {
   CommodityCodesRoute: CommodityCodesRoute,
   CompanyMarksRoute: CompanyMarksRoute,
   ConsignmentsRoute: ConsignmentsRoute,
+  CopyBanMarksRoute: CopyBanMarksRoute,
   CostAllocationMarksRoute: CostAllocationMarksRoute,
   CostToServeRoute: CostToServeRoute,
   CreditReviewsRoute: CreditReviewsRoute,

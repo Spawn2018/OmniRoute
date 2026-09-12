@@ -36,6 +36,7 @@ from app.api import (
     company_marks,
     consignments,
     containers,
+    copy_ban_marks,
     cost_allocation_marks,
     cost_to_serve,
     credit_reviews,
@@ -375,6 +376,7 @@ api_router.include_router(twin_marks.router)
 api_router.include_router(war_room_marks.router)
 api_router.include_router(cash_discounts.router)
 api_router.include_router(cash_flows.router)
+api_router.include_router(copy_ban_marks.router)
 api_router.include_router(cost_to_serve.router)
 api_router.include_router(bookkeeping.router)
 api_router.include_router(collective_invoices.router)

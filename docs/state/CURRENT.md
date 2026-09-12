@@ -4,17 +4,17 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **396.0** EXP4.18 HITL `rag_sop_mark`
+**Ostatni plaster:** **397.0** EXP4.19 HITL `copy_ban_mark`
 
-**Etap:** Plaster — **397.0** EXP4.19 (delta zaakceptowana `/noc`, wolno `/plaster`)
+**Etap:** Plan — **398.0** EXP4.20
 
 **Noc:** `/noc 17` do 2026-09-12T17:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).
 
-**Następny:** **397.0** EXP4.19 Zakaz copy HITL `copy_ban_mark` (kolejka EXP4).
+**Następny:** **398.0** EXP4.20 ERRU HITL `erru_mark` (kolejka EXP4).
 
-Park: Graph live · auto-send · board T6 live · pgvector. Nie zgaduj 71–397.
+Park: Graph live · auto-send · board T6 live · pgvector · Bayer scrape. Nie zgaduj 71–398.
 
-**Spec (jedyna na sesję):** [docs/spec/copy-ban-mark.md](../spec/copy-ban-mark.md) · delta [docs/deltas/open/397.0-copy-ban-mark.md](../deltas/open/397.0-copy-ban-mark.md).
+**Spec (jedyna na sesję):** (brak — plan 398.0).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
@@ -22,4 +22,4 @@ Park: Graph live · auto-send · board T6 live · pgvector. Nie zgaduj 71–397.
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-12:** Plaster **396.0** zamknięty (`/noc`) — HITL `rag_sop_mark`. Delta **397.0** zaakceptowana `/noc`.
+**2026-09-12:** Plaster **397.0** zamknięty (`/noc`) — HITL `copy_ban_mark`.

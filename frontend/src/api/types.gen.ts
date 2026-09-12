@@ -2403,6 +2403,50 @@ export type ContainerResponse = {
 };
 
 /**
+ * CopyBanMarkCreate
+ */
+export type CopyBanMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Ban Kind
+     */
+    ban_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CopyBanMarkResponse
+ */
+export type CopyBanMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Ban Kind
+     */
+    ban_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * CostAllocationMarkCreate
  */
 export type CostAllocationMarkCreate = {
@@ -20450,6 +20494,49 @@ export type CreateCashFlowApiV1CashFlowsPostResponses = {
 };
 
 export type CreateCashFlowApiV1CashFlowsPostResponse = CreateCashFlowApiV1CashFlowsPostResponses[keyof CreateCashFlowApiV1CashFlowsPostResponses];
+
+export type ListCopyBanMarksApiV1CopyBanMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/copy-ban-marks';
+};
+
+export type ListCopyBanMarksApiV1CopyBanMarksGetResponses = {
+    /**
+     * Response List Copy Ban Marks Api V1 Copy Ban Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<CopyBanMarkResponse>;
+};
+
+export type ListCopyBanMarksApiV1CopyBanMarksGetResponse = ListCopyBanMarksApiV1CopyBanMarksGetResponses[keyof ListCopyBanMarksApiV1CopyBanMarksGetResponses];
+
+export type CreateCopyBanMarkApiV1CopyBanMarksPostData = {
+    body: CopyBanMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/copy-ban-marks';
+};
+
+export type CreateCopyBanMarkApiV1CopyBanMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCopyBanMarkApiV1CopyBanMarksPostError = CreateCopyBanMarkApiV1CopyBanMarksPostErrors[keyof CreateCopyBanMarkApiV1CopyBanMarksPostErrors];
+
+export type CreateCopyBanMarkApiV1CopyBanMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CopyBanMarkResponse;
+};
+
+export type CreateCopyBanMarkApiV1CopyBanMarksPostResponse = CreateCopyBanMarkApiV1CopyBanMarksPostResponses[keyof CreateCopyBanMarkApiV1CopyBanMarksPostResponses];
 
 export type ListCostToServeApiV1CostToServesGetData = {
     body?: never;

@@ -979,6 +979,11 @@ export const OPS_JOBS = [
     job: "katalog rag_sop_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.copyBanMark.route,
+    label: "Zakaz copy claimów",
+    job: "katalog copy_ban_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.remediationOption.route,
     label: "Opcja naprawy",
     job: "katalog remediation_option HITL",
@@ -1399,6 +1404,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "394.0": "/mail-accept-marks",
   "395.0": "/role-view-marks",
   "396.0": "/rag-sop-marks",
+  "397.0": "/copy-ban-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =
