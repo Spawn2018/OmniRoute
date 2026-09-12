@@ -12186,6 +12186,80 @@
         ]
       }
     },
+    "/api/v1/po-batch-marks": {
+      "get": {
+        "tags": [
+          "po-batch-mark"
+        ],
+        "summary": "List Po Batch Marks",
+        "operationId": "list_po_batch_marks_api_v1_po_batch_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PoBatchMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Po Batch Marks Api V1 Po Batch Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "po-batch-mark"
+        ],
+        "summary": "Create Po Batch Mark",
+        "operationId": "create_po_batch_mark_api_v1_po_batch_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PoBatchMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PoBatchMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/abandoned-rto-marks": {
       "get": {
         "tags": [
@@ -33495,6 +33569,71 @@
           "source_ref"
         ],
         "title": "PlanSnapshotResponse"
+      },
+      "PoBatchMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "batch_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Batch Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "batch_kind",
+          "source_ref"
+        ],
+        "title": "PoBatchMarkCreate"
+      },
+      "PoBatchMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "batch_kind": {
+            "type": "string",
+            "title": "Batch Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "batch_kind",
+          "source_ref"
+        ],
+        "title": "PoBatchMarkResponse"
       },
       "PoLineCreate": {
         "properties": {

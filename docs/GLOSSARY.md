@@ -182,6 +182,7 @@
 | zamówienie zakupu | purchase_order | CT1 HITL 276.0 nagłówek `po_code` + opcjonalny `plant_label` + source_ref; nie shipment |
 | znacznik plant PO | po_plant_mark | EXP3.0b HITL plant\|batch\|sku\|other; nie live EDI; nie auto shipment |
 | znacznik SKU PO | po_sku_mark | EXP3.0c HITL sku\|gtin\|customer_sku\|other; nie live EDI; nie auto shipment |
+| znacznik batch PO | po_batch_mark | EXP3.0d HITL batch\|lot\|serial\|other; nie live EDI; nie auto shipment |
 | linia zamówienia zakupu | po_line | CT1 HITL 277.0 `line_code` + FK nagłówka + `sku_code` + `qty` Decimal + `uom_code` + etykiety; nie kwota |
 | awizo wysyłki | asn | CT1 HITL 278.0 `asn_code` + FK nagłówka + etykiety; nie live EDI 856; nie auto shipment |
 | przewodnik routingu | routing_guide | CT4 HITL 279.0 `guide_code` + etykiety; nie 409 egzekucja; nie mapa |

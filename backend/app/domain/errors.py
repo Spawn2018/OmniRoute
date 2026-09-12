@@ -986,6 +986,10 @@ class InvalidPoSkuMark(DomainError):
     """EXP3.0c: HITL po_sku_mark — nie live EDI / auto shipment / kwota."""
 
 
+class InvalidPoBatchMark(DomainError):
+    """EXP3.0d: HITL po_batch_mark — nie live EDI / auto shipment / kwota."""
+
+
 class InvalidImpersonateGuardMark(DomainError):
     """EXP0.12: HITL impersonate≠unwrap — nie crypto / Auth0 live."""
 

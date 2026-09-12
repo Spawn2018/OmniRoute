@@ -150,6 +150,7 @@ export const BUSINESS_LISTS = {
   demoWipeMark: { route: "/demo-wipe-marks", tableKey: "demo_wipe_mark" },
   poPlantMark: { route: "/po-plant-marks", tableKey: "po_plant_mark" },
   poSkuMark: { route: "/po-sku-marks", tableKey: "po_sku_mark" },
+  poBatchMark: { route: "/po-batch-marks", tableKey: "po_batch_mark" },
   impersonateGuardMark: {
     route: "/impersonate-guard-marks",
     tableKey: "impersonate_guard_mark",
@@ -381,6 +382,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/demo-wipe-marks",
   "/po-plant-marks",
   "/po-sku-marks",
+  "/po-batch-marks",
   "/impersonate-guard-marks",
   "/csrd-marks",
   "/air-ra3-marks",

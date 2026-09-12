@@ -152,6 +152,7 @@ import { Route as PeppolMarksRouteImport } from './routes/peppol-marks'
 import { Route as PhytoAtaMarksRouteImport } from './routes/phyto-ata-marks'
 import { Route as PlanSnapshotsRouteImport } from './routes/plan-snapshots'
 import { Route as PlanningRouteImport } from './routes/planning'
+import { Route as PoBatchMarksRouteImport } from './routes/po-batch-marks'
 import { Route as PoLinesRouteImport } from './routes/po-lines'
 import { Route as PoPlantMarksRouteImport } from './routes/po-plant-marks'
 import { Route as PoSkuMarksRouteImport } from './routes/po-sku-marks'
@@ -949,6 +950,11 @@ const PlanningRoute = PlanningRouteImport.update({
   path: '/planning',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PoBatchMarksRoute = PoBatchMarksRouteImport.update({
+  id: '/po-batch-marks',
+  path: '/po-batch-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PoLinesRoute = PoLinesRouteImport.update({
   id: '/po-lines',
   path: '/po-lines',
@@ -1500,6 +1506,7 @@ export interface FileRoutesByFullPath {
   '/phyto-ata-marks': typeof PhytoAtaMarksRoute
   '/plan-snapshots': typeof PlanSnapshotsRoute
   '/planning': typeof PlanningRoute
+  '/po-batch-marks': typeof PoBatchMarksRoute
   '/po-lines': typeof PoLinesRoute
   '/po-plant-marks': typeof PoPlantMarksRoute
   '/po-sku-marks': typeof PoSkuMarksRoute
@@ -1726,6 +1733,7 @@ export interface FileRoutesByTo {
   '/phyto-ata-marks': typeof PhytoAtaMarksRoute
   '/plan-snapshots': typeof PlanSnapshotsRoute
   '/planning': typeof PlanningRoute
+  '/po-batch-marks': typeof PoBatchMarksRoute
   '/po-lines': typeof PoLinesRoute
   '/po-plant-marks': typeof PoPlantMarksRoute
   '/po-sku-marks': typeof PoSkuMarksRoute
@@ -1953,6 +1961,7 @@ export interface FileRoutesById {
   '/phyto-ata-marks': typeof PhytoAtaMarksRoute
   '/plan-snapshots': typeof PlanSnapshotsRoute
   '/planning': typeof PlanningRoute
+  '/po-batch-marks': typeof PoBatchMarksRoute
   '/po-lines': typeof PoLinesRoute
   '/po-plant-marks': typeof PoPlantMarksRoute
   '/po-sku-marks': typeof PoSkuMarksRoute
@@ -2181,6 +2190,7 @@ export interface FileRouteTypes {
     | '/phyto-ata-marks'
     | '/plan-snapshots'
     | '/planning'
+    | '/po-batch-marks'
     | '/po-lines'
     | '/po-plant-marks'
     | '/po-sku-marks'
@@ -2407,6 +2417,7 @@ export interface FileRouteTypes {
     | '/phyto-ata-marks'
     | '/plan-snapshots'
     | '/planning'
+    | '/po-batch-marks'
     | '/po-lines'
     | '/po-plant-marks'
     | '/po-sku-marks'
@@ -2633,6 +2644,7 @@ export interface FileRouteTypes {
     | '/phyto-ata-marks'
     | '/plan-snapshots'
     | '/planning'
+    | '/po-batch-marks'
     | '/po-lines'
     | '/po-plant-marks'
     | '/po-sku-marks'
@@ -2860,6 +2872,7 @@ export interface RootRouteChildren {
   PhytoAtaMarksRoute: typeof PhytoAtaMarksRoute
   PlanSnapshotsRoute: typeof PlanSnapshotsRoute
   PlanningRoute: typeof PlanningRoute
+  PoBatchMarksRoute: typeof PoBatchMarksRoute
   PoLinesRoute: typeof PoLinesRoute
   PoPlantMarksRoute: typeof PoPlantMarksRoute
   PoSkuMarksRoute: typeof PoSkuMarksRoute
@@ -3946,6 +3959,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlanningRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/po-batch-marks': {
+      id: '/po-batch-marks'
+      path: '/po-batch-marks'
+      fullPath: '/po-batch-marks'
+      preLoaderRoute: typeof PoBatchMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/po-lines': {
       id: '/po-lines'
       path: '/po-lines'
@@ -4660,6 +4680,7 @@ const rootRouteChildren: RootRouteChildren = {
   PhytoAtaMarksRoute: PhytoAtaMarksRoute,
   PlanSnapshotsRoute: PlanSnapshotsRoute,
   PlanningRoute: PlanningRoute,
+  PoBatchMarksRoute: PoBatchMarksRoute,
   PoLinesRoute: PoLinesRoute,
   PoPlantMarksRoute: PoPlantMarksRoute,
   PoSkuMarksRoute: PoSkuMarksRoute,

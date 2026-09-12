@@ -8257,6 +8257,50 @@ export type PlanSnapshotResponse = {
 };
 
 /**
+ * PoBatchMarkCreate
+ */
+export type PoBatchMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Batch Kind
+     */
+    batch_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * PoBatchMarkResponse
+ */
+export type PoBatchMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Batch Kind
+     */
+    batch_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * PoLineCreate
  */
 export type PoLineCreate = {
@@ -20136,6 +20180,49 @@ export type CreatePoSkuMarkApiV1PoSkuMarksPostResponses = {
 };
 
 export type CreatePoSkuMarkApiV1PoSkuMarksPostResponse = CreatePoSkuMarkApiV1PoSkuMarksPostResponses[keyof CreatePoSkuMarkApiV1PoSkuMarksPostResponses];
+
+export type ListPoBatchMarksApiV1PoBatchMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/po-batch-marks';
+};
+
+export type ListPoBatchMarksApiV1PoBatchMarksGetResponses = {
+    /**
+     * Response List Po Batch Marks Api V1 Po Batch Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<PoBatchMarkResponse>;
+};
+
+export type ListPoBatchMarksApiV1PoBatchMarksGetResponse = ListPoBatchMarksApiV1PoBatchMarksGetResponses[keyof ListPoBatchMarksApiV1PoBatchMarksGetResponses];
+
+export type CreatePoBatchMarkApiV1PoBatchMarksPostData = {
+    body: PoBatchMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/po-batch-marks';
+};
+
+export type CreatePoBatchMarkApiV1PoBatchMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreatePoBatchMarkApiV1PoBatchMarksPostError = CreatePoBatchMarkApiV1PoBatchMarksPostErrors[keyof CreatePoBatchMarkApiV1PoBatchMarksPostErrors];
+
+export type CreatePoBatchMarkApiV1PoBatchMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: PoBatchMarkResponse;
+};
+
+export type CreatePoBatchMarkApiV1PoBatchMarksPostResponse = CreatePoBatchMarkApiV1PoBatchMarksPostResponses[keyof CreatePoBatchMarkApiV1PoBatchMarksPostResponses];
 
 export type ListAbandonedRtoMarksApiV1AbandonedRtoMarksGetData = {
     body?: never;
