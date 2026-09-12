@@ -117,6 +117,7 @@ from app.api import (
     party_scorecards,
     penalty_marks,
     peppol_marks,
+    phyto_ata_marks,
     plan_snapshots,
     po_lines,
     port_surcharges,
@@ -363,6 +364,7 @@ api_router.include_router(pallet_pool_marks.router)
 api_router.include_router(e_cmr_marks.router)
 api_router.include_router(e_delivery_marks.router)
 api_router.include_router(peppol_marks.router)
+api_router.include_router(phyto_ata_marks.router)
 api_router.include_router(sid_import_marks.router)
 api_router.include_router(integration_hub_marks.router)
 api_router.include_router(webhook_outbox_marks.router)

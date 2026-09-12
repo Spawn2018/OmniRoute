@@ -4,17 +4,17 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **372.0** EXP3.7 HITL `eur1_atr_mark`
+**Ostatni plaster:** **373.0** EXP3.8 HITL `phyto_ata_mark`
 
-**Etap:** Plan — **373.0** EXP3.8
+**Etap:** Plan — **374.0** EXP3.9
 
 **Noc:** `/noc 10` do 2026-09-12T10:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).
 
-**Następny:** **373.0** EXP3.8 phyto/ATA HITL `phyto_ata_mark`.
+**Następny:** **374.0** EXP3.9 switch BL/LOI HITL `switch_bl_loi_mark` (LC = już `lc_checklist`).
 
-Park: phyto live · ATA scrape · EUR.1 live. Nie zgaduj 71–373.
+Park: switch BL live · LOI scrape · abandoned/RTO. Nie zgaduj 71–374.
 
-**Spec (jedyna na sesję):** (brak — plan 373.0).
+**Spec (jedyna na sesję):** (brak — plan 374.0).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
@@ -22,4 +22,4 @@ Park: phyto live · ATA scrape · EUR.1 live. Nie zgaduj 71–373.
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-12:** Plaster **372.0** zamknięty (`/noc`) — HITL `eur1_atr_mark`.
+**2026-09-12:** Plaster **373.0** zamknięty (`/noc`) — HITL `phyto_ata_mark`.

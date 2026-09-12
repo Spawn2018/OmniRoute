@@ -6949,6 +6949,50 @@ export type PeppolMarkResponse = {
 };
 
 /**
+ * PhytoAtaMarkCreate
+ */
+export type PhytoAtaMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Permit Kind
+     */
+    permit_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * PhytoAtaMarkResponse
+ */
+export type PhytoAtaMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Permit Kind
+     */
+    permit_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * PlanSnapshotCreate
  */
 export type PlanSnapshotCreate = {
@@ -20907,6 +20951,49 @@ export type CreatePeppolMarkApiV1PeppolMarksPostResponses = {
 };
 
 export type CreatePeppolMarkApiV1PeppolMarksPostResponse = CreatePeppolMarkApiV1PeppolMarksPostResponses[keyof CreatePeppolMarkApiV1PeppolMarksPostResponses];
+
+export type ListPhytoAtaMarksApiV1PhytoAtaMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/phyto-ata-marks';
+};
+
+export type ListPhytoAtaMarksApiV1PhytoAtaMarksGetResponses = {
+    /**
+     * Response List Phyto Ata Marks Api V1 Phyto Ata Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<PhytoAtaMarkResponse>;
+};
+
+export type ListPhytoAtaMarksApiV1PhytoAtaMarksGetResponse = ListPhytoAtaMarksApiV1PhytoAtaMarksGetResponses[keyof ListPhytoAtaMarksApiV1PhytoAtaMarksGetResponses];
+
+export type CreatePhytoAtaMarkApiV1PhytoAtaMarksPostData = {
+    body: PhytoAtaMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/phyto-ata-marks';
+};
+
+export type CreatePhytoAtaMarkApiV1PhytoAtaMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreatePhytoAtaMarkApiV1PhytoAtaMarksPostError = CreatePhytoAtaMarkApiV1PhytoAtaMarksPostErrors[keyof CreatePhytoAtaMarkApiV1PhytoAtaMarksPostErrors];
+
+export type CreatePhytoAtaMarkApiV1PhytoAtaMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: PhytoAtaMarkResponse;
+};
+
+export type CreatePhytoAtaMarkApiV1PhytoAtaMarksPostResponse = CreatePhytoAtaMarkApiV1PhytoAtaMarksPostResponses[keyof CreatePhytoAtaMarkApiV1PhytoAtaMarksPostResponses];
 
 export type ListSidImportMarksApiV1SidImportMarksGetData = {
     body?: never;

@@ -122,6 +122,7 @@ import { Route as PartyScorecardsRouteImport } from './routes/party-scorecards'
 import { Route as PaymentsRouteImport } from './routes/payments'
 import { Route as PenaltyMarksRouteImport } from './routes/penalty-marks'
 import { Route as PeppolMarksRouteImport } from './routes/peppol-marks'
+import { Route as PhytoAtaMarksRouteImport } from './routes/phyto-ata-marks'
 import { Route as PlanSnapshotsRouteImport } from './routes/plan-snapshots'
 import { Route as PlanningRouteImport } from './routes/planning'
 import { Route as PoLinesRouteImport } from './routes/po-lines'
@@ -758,6 +759,11 @@ const PeppolMarksRoute = PeppolMarksRouteImport.update({
   path: '/peppol-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PhytoAtaMarksRoute = PhytoAtaMarksRouteImport.update({
+  id: '/phyto-ata-marks',
+  path: '/phyto-ata-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PlanSnapshotsRoute = PlanSnapshotsRouteImport.update({
   id: '/plan-snapshots',
   path: '/plan-snapshots',
@@ -1224,6 +1230,7 @@ export interface FileRoutesByFullPath {
   '/payments': typeof PaymentsRoute
   '/penalty-marks': typeof PenaltyMarksRoute
   '/peppol-marks': typeof PeppolMarksRoute
+  '/phyto-ata-marks': typeof PhytoAtaMarksRoute
   '/plan-snapshots': typeof PlanSnapshotsRoute
   '/planning': typeof PlanningRoute
   '/po-lines': typeof PoLinesRoute
@@ -1409,6 +1416,7 @@ export interface FileRoutesByTo {
   '/payments': typeof PaymentsRoute
   '/penalty-marks': typeof PenaltyMarksRoute
   '/peppol-marks': typeof PeppolMarksRoute
+  '/phyto-ata-marks': typeof PhytoAtaMarksRoute
   '/plan-snapshots': typeof PlanSnapshotsRoute
   '/planning': typeof PlanningRoute
   '/po-lines': typeof PoLinesRoute
@@ -1595,6 +1603,7 @@ export interface FileRoutesById {
   '/payments': typeof PaymentsRoute
   '/penalty-marks': typeof PenaltyMarksRoute
   '/peppol-marks': typeof PeppolMarksRoute
+  '/phyto-ata-marks': typeof PhytoAtaMarksRoute
   '/plan-snapshots': typeof PlanSnapshotsRoute
   '/planning': typeof PlanningRoute
   '/po-lines': typeof PoLinesRoute
@@ -1782,6 +1791,7 @@ export interface FileRouteTypes {
     | '/payments'
     | '/penalty-marks'
     | '/peppol-marks'
+    | '/phyto-ata-marks'
     | '/plan-snapshots'
     | '/planning'
     | '/po-lines'
@@ -1967,6 +1977,7 @@ export interface FileRouteTypes {
     | '/payments'
     | '/penalty-marks'
     | '/peppol-marks'
+    | '/phyto-ata-marks'
     | '/plan-snapshots'
     | '/planning'
     | '/po-lines'
@@ -2152,6 +2163,7 @@ export interface FileRouteTypes {
     | '/payments'
     | '/penalty-marks'
     | '/peppol-marks'
+    | '/phyto-ata-marks'
     | '/plan-snapshots'
     | '/planning'
     | '/po-lines'
@@ -2338,6 +2350,7 @@ export interface RootRouteChildren {
   PaymentsRoute: typeof PaymentsRoute
   PenaltyMarksRoute: typeof PenaltyMarksRoute
   PeppolMarksRoute: typeof PeppolMarksRoute
+  PhytoAtaMarksRoute: typeof PhytoAtaMarksRoute
   PlanSnapshotsRoute: typeof PlanSnapshotsRoute
   PlanningRoute: typeof PlanningRoute
   PoLinesRoute: typeof PoLinesRoute
@@ -3204,6 +3217,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PeppolMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/phyto-ata-marks': {
+      id: '/phyto-ata-marks'
+      path: '/phyto-ata-marks'
+      fullPath: '/phyto-ata-marks'
+      preLoaderRoute: typeof PhytoAtaMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/plan-snapshots': {
       id: '/plan-snapshots'
       path: '/plan-snapshots'
@@ -3811,6 +3831,7 @@ const rootRouteChildren: RootRouteChildren = {
   PaymentsRoute: PaymentsRoute,
   PenaltyMarksRoute: PenaltyMarksRoute,
   PeppolMarksRoute: PeppolMarksRoute,
+  PhytoAtaMarksRoute: PhytoAtaMarksRoute,
   PlanSnapshotsRoute: PlanSnapshotsRoute,
   PlanningRoute: PlanningRoute,
   PoLinesRoute: PoLinesRoute,

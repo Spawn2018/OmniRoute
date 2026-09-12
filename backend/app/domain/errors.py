@@ -982,6 +982,10 @@ class InvalidEur1AtrMark(DomainError):
     """EXP3.7: HITL EUR.1/ATR — nie EUR.1 live / ATR scrape."""
 
 
+class InvalidPhytoAtaMark(DomainError):
+    """EXP3.8: HITL phyto/ATA — nie phyto live / ATA scrape."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

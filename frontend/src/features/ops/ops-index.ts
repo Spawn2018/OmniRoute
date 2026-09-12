@@ -709,6 +709,11 @@ export const OPS_JOBS = [
     job: "katalog peppol_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.phytoAtaMark.route,
+    label: "phyto/ATA",
+    job: "katalog phyto_ata_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.sidImportMark.route,
     label: "Import SID",
     job: "katalog sid_import_mark HITL",
@@ -1255,6 +1260,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "370.0": "/mqc-marks",
   "371.0": "/eccn-marks",
   "372.0": "/eur1-atr-marks",
+  "373.0": "/phyto-ata-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

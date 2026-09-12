@@ -16666,6 +16666,80 @@
         ]
       }
     },
+    "/api/v1/phyto-ata-marks": {
+      "get": {
+        "tags": [
+          "phyto-ata-marks"
+        ],
+        "summary": "List Phyto Ata Marks",
+        "operationId": "list_phyto_ata_marks_api_v1_phyto_ata_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PhytoAtaMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Phyto Ata Marks Api V1 Phyto Ata Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "phyto-ata-marks"
+        ],
+        "summary": "Create Phyto Ata Mark",
+        "operationId": "create_phyto_ata_mark_api_v1_phyto_ata_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PhytoAtaMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PhytoAtaMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/sid-import-marks": {
       "get": {
         "tags": [
@@ -28556,6 +28630,65 @@
           "source_ref"
         ],
         "title": "PeppolMarkResponse"
+      },
+      "PhytoAtaMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "permit_kind": {
+            "type": "string",
+            "title": "Permit Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "permit_kind",
+          "source_ref"
+        ],
+        "title": "PhytoAtaMarkCreate"
+      },
+      "PhytoAtaMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "permit_kind": {
+            "type": "string",
+            "title": "Permit Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "permit_kind",
+          "source_ref"
+        ],
+        "title": "PhytoAtaMarkResponse"
       },
       "PlanSnapshotCreate": {
         "properties": {
