@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **404.0** EXP2.14 HITL `fuel_card_mark`. **Etap:** Plan — **405.0** EXP2.19. **Następny:** **405.0** EXP2.19 HITL `e_doreczenia_mark` (e-Doręczenia; bez live). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **404.0** EXP2.14 HITL `fuel_card_mark`. **Etap:** Plaster — **405.0** EXP2.19. **Następny:** **405.0** EXP2.19 HITL `e_doreczenia_mark` (e-Doręczenia; bez live). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

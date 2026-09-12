@@ -6,7 +6,7 @@
 
 **Ostatni plaster:** **404.0** EXP2.14 HITL `fuel_card_mark`
 
-**Etap:** Plan — **405.0** EXP2.19
+**Etap:** Plaster — **405.0** EXP2.19
 
 **Noc:** `/noc 17` do 2026-09-12T17:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).
 
@@ -14,7 +14,7 @@
 
 Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj 71–405.
 
-**Spec (jedyna na sesję):** (brak — plan 405.0).
+**Spec (jedyna na sesję):** [docs/deltas/open/405.0-e-doreczenia-mark.md](../deltas/open/405.0-e-doreczenia-mark.md).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
@@ -22,4 +22,4 @@ Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj 71–4
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-12:** Plaster **404.0** zamknięty (`/noc`) — HITL `fuel_card_mark`.
+**2026-09-12:** Plan **405.0** — HITL `e_doreczenia_mark` (bez live ADE).
