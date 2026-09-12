@@ -149,6 +149,7 @@ export const BUSINESS_LISTS = {
   demoSimMark: { route: "/demo-sim-marks", tableKey: "demo_sim_mark" },
   demoWipeMark: { route: "/demo-wipe-marks", tableKey: "demo_wipe_mark" },
   poPlantMark: { route: "/po-plant-marks", tableKey: "po_plant_mark" },
+  poSkuMark: { route: "/po-sku-marks", tableKey: "po_sku_mark" },
   impersonateGuardMark: {
     route: "/impersonate-guard-marks",
     tableKey: "impersonate_guard_mark",
@@ -379,6 +380,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/demo-sim-marks",
   "/demo-wipe-marks",
   "/po-plant-marks",
+  "/po-sku-marks",
   "/impersonate-guard-marks",
   "/csrd-marks",
   "/air-ra3-marks",

@@ -8401,6 +8401,50 @@ export type PoPlantMarkResponse = {
 };
 
 /**
+ * PoSkuMarkCreate
+ */
+export type PoSkuMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Sku Kind
+     */
+    sku_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * PoSkuMarkResponse
+ */
+export type PoSkuMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Sku Kind
+     */
+    sku_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * PortCreate
  */
 export type PortCreate = {
@@ -20049,6 +20093,49 @@ export type CreatePoPlantMarkApiV1PoPlantMarksPostResponses = {
 };
 
 export type CreatePoPlantMarkApiV1PoPlantMarksPostResponse = CreatePoPlantMarkApiV1PoPlantMarksPostResponses[keyof CreatePoPlantMarkApiV1PoPlantMarksPostResponses];
+
+export type ListPoSkuMarksApiV1PoSkuMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/po-sku-marks';
+};
+
+export type ListPoSkuMarksApiV1PoSkuMarksGetResponses = {
+    /**
+     * Response List Po Sku Marks Api V1 Po Sku Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<PoSkuMarkResponse>;
+};
+
+export type ListPoSkuMarksApiV1PoSkuMarksGetResponse = ListPoSkuMarksApiV1PoSkuMarksGetResponses[keyof ListPoSkuMarksApiV1PoSkuMarksGetResponses];
+
+export type CreatePoSkuMarkApiV1PoSkuMarksPostData = {
+    body: PoSkuMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/po-sku-marks';
+};
+
+export type CreatePoSkuMarkApiV1PoSkuMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreatePoSkuMarkApiV1PoSkuMarksPostError = CreatePoSkuMarkApiV1PoSkuMarksPostErrors[keyof CreatePoSkuMarkApiV1PoSkuMarksPostErrors];
+
+export type CreatePoSkuMarkApiV1PoSkuMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: PoSkuMarkResponse;
+};
+
+export type CreatePoSkuMarkApiV1PoSkuMarksPostResponse = CreatePoSkuMarkApiV1PoSkuMarksPostResponses[keyof CreatePoSkuMarkApiV1PoSkuMarksPostResponses];
 
 export type ListAbandonedRtoMarksApiV1AbandonedRtoMarksGetData = {
     body?: never;

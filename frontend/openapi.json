@@ -12112,6 +12112,80 @@
         ]
       }
     },
+    "/api/v1/po-sku-marks": {
+      "get": {
+        "tags": [
+          "po-sku-mark"
+        ],
+        "summary": "List Po Sku Marks",
+        "operationId": "list_po_sku_marks_api_v1_po_sku_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PoSkuMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Po Sku Marks Api V1 Po Sku Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "po-sku-mark"
+        ],
+        "summary": "Create Po Sku Mark",
+        "operationId": "create_po_sku_mark_api_v1_po_sku_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PoSkuMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PoSkuMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/abandoned-rto-marks": {
       "get": {
         "tags": [
@@ -33682,6 +33756,71 @@
           "source_ref"
         ],
         "title": "PoPlantMarkResponse"
+      },
+      "PoSkuMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "sku_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Sku Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "sku_kind",
+          "source_ref"
+        ],
+        "title": "PoSkuMarkCreate"
+      },
+      "PoSkuMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "sku_kind": {
+            "type": "string",
+            "title": "Sku Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "sku_kind",
+          "source_ref"
+        ],
+        "title": "PoSkuMarkResponse"
       },
       "PortCreate": {
         "properties": {

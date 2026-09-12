@@ -154,6 +154,7 @@ import { Route as PlanSnapshotsRouteImport } from './routes/plan-snapshots'
 import { Route as PlanningRouteImport } from './routes/planning'
 import { Route as PoLinesRouteImport } from './routes/po-lines'
 import { Route as PoPlantMarksRouteImport } from './routes/po-plant-marks'
+import { Route as PoSkuMarksRouteImport } from './routes/po-sku-marks'
 import { Route as PortSurchargesRouteImport } from './routes/port-surcharges'
 import { Route as PortsRouteImport } from './routes/ports'
 import { Route as PostingMarksRouteImport } from './routes/posting-marks'
@@ -958,6 +959,11 @@ const PoPlantMarksRoute = PoPlantMarksRouteImport.update({
   path: '/po-plant-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PoSkuMarksRoute = PoSkuMarksRouteImport.update({
+  id: '/po-sku-marks',
+  path: '/po-sku-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PortSurchargesRoute = PortSurchargesRouteImport.update({
   id: '/port-surcharges',
   path: '/port-surcharges',
@@ -1496,6 +1502,7 @@ export interface FileRoutesByFullPath {
   '/planning': typeof PlanningRoute
   '/po-lines': typeof PoLinesRoute
   '/po-plant-marks': typeof PoPlantMarksRoute
+  '/po-sku-marks': typeof PoSkuMarksRoute
   '/port-surcharges': typeof PortSurchargesRoute
   '/ports': typeof PortsRoute
   '/posting-marks': typeof PostingMarksRoute
@@ -1721,6 +1728,7 @@ export interface FileRoutesByTo {
   '/planning': typeof PlanningRoute
   '/po-lines': typeof PoLinesRoute
   '/po-plant-marks': typeof PoPlantMarksRoute
+  '/po-sku-marks': typeof PoSkuMarksRoute
   '/port-surcharges': typeof PortSurchargesRoute
   '/ports': typeof PortsRoute
   '/posting-marks': typeof PostingMarksRoute
@@ -1947,6 +1955,7 @@ export interface FileRoutesById {
   '/planning': typeof PlanningRoute
   '/po-lines': typeof PoLinesRoute
   '/po-plant-marks': typeof PoPlantMarksRoute
+  '/po-sku-marks': typeof PoSkuMarksRoute
   '/port-surcharges': typeof PortSurchargesRoute
   '/ports': typeof PortsRoute
   '/posting-marks': typeof PostingMarksRoute
@@ -2174,6 +2183,7 @@ export interface FileRouteTypes {
     | '/planning'
     | '/po-lines'
     | '/po-plant-marks'
+    | '/po-sku-marks'
     | '/port-surcharges'
     | '/ports'
     | '/posting-marks'
@@ -2399,6 +2409,7 @@ export interface FileRouteTypes {
     | '/planning'
     | '/po-lines'
     | '/po-plant-marks'
+    | '/po-sku-marks'
     | '/port-surcharges'
     | '/ports'
     | '/posting-marks'
@@ -2624,6 +2635,7 @@ export interface FileRouteTypes {
     | '/planning'
     | '/po-lines'
     | '/po-plant-marks'
+    | '/po-sku-marks'
     | '/port-surcharges'
     | '/ports'
     | '/posting-marks'
@@ -2850,6 +2862,7 @@ export interface RootRouteChildren {
   PlanningRoute: typeof PlanningRoute
   PoLinesRoute: typeof PoLinesRoute
   PoPlantMarksRoute: typeof PoPlantMarksRoute
+  PoSkuMarksRoute: typeof PoSkuMarksRoute
   PortSurchargesRoute: typeof PortSurchargesRoute
   PortsRoute: typeof PortsRoute
   PostingMarksRoute: typeof PostingMarksRoute
@@ -3947,6 +3960,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PoPlantMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/po-sku-marks': {
+      id: '/po-sku-marks'
+      path: '/po-sku-marks'
+      fullPath: '/po-sku-marks'
+      preLoaderRoute: typeof PoSkuMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/port-surcharges': {
       id: '/port-surcharges'
       path: '/port-surcharges'
@@ -4642,6 +4662,7 @@ const rootRouteChildren: RootRouteChildren = {
   PlanningRoute: PlanningRoute,
   PoLinesRoute: PoLinesRoute,
   PoPlantMarksRoute: PoPlantMarksRoute,
+  PoSkuMarksRoute: PoSkuMarksRoute,
   PortSurchargesRoute: PortSurchargesRoute,
   PortsRoute: PortsRoute,
   PostingMarksRoute: PostingMarksRoute,
