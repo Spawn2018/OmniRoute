@@ -729,6 +729,11 @@ export const OPS_JOBS = [
     job: "katalog partner_exchange_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.regulatoryRadarMark.route,
+    label: "Regulatory radar",
+    job: "katalog regulatory_radar_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.erpConnector.route,
     label: "Konektor Optima",
     job: "katalog erp_connector HITL",
@@ -1195,6 +1200,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "359.0": "/integration-hub-marks",
   "360.0": "/webhook-outbox-marks",
   "361.0": "/partner-exchange-marks",
+  "362.0": "/regulatory-radar-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

@@ -16962,6 +16962,80 @@
         ]
       }
     },
+    "/api/v1/regulatory-radar-marks": {
+      "get": {
+        "tags": [
+          "regulatory-radar-marks"
+        ],
+        "summary": "List Regulatory Radar Marks",
+        "operationId": "list_regulatory_radar_marks_api_v1_regulatory_radar_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/RegulatoryRadarMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Regulatory Radar Marks Api V1 Regulatory Radar Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "regulatory-radar-marks"
+        ],
+        "summary": "Create Regulatory Radar Mark",
+        "operationId": "create_regulatory_radar_mark_api_v1_regulatory_radar_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegulatoryRadarMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegulatoryRadarMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/health": {
       "get": {
         "summary": "Health",
@@ -29043,6 +29117,65 @@
           "source_ref"
         ],
         "title": "RegistryPollMarkResponse"
+      },
+      "RegulatoryRadarMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "radar_kind": {
+            "type": "string",
+            "title": "Radar Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "radar_kind",
+          "source_ref"
+        ],
+        "title": "RegulatoryRadarMarkCreate"
+      },
+      "RegulatoryRadarMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "radar_kind": {
+            "type": "string",
+            "title": "Radar Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "radar_kind",
+          "source_ref"
+        ],
+        "title": "RegulatoryRadarMarkResponse"
       },
       "RemediationOptionCreate": {
         "properties": {

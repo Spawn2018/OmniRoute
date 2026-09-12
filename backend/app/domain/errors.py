@@ -942,6 +942,10 @@ class InvalidPartnerExchangeMark(DomainError):
     """EXP2.24: HITL giełda partnerska — nie live Trans.eu / auto-post."""
 
 
+class InvalidRegulatoryRadarMark(DomainError):
+    """EXP2.25: HITL regulatory radar — nie scrape urzędów / live feed."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

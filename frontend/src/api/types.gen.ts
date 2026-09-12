@@ -7571,6 +7571,50 @@ export type RegistryPollMarkResponse = {
 };
 
 /**
+ * RegulatoryRadarMarkCreate
+ */
+export type RegulatoryRadarMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Radar Kind
+     */
+    radar_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * RegulatoryRadarMarkResponse
+ */
+export type RegulatoryRadarMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Radar Kind
+     */
+    radar_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * RemediationOptionCreate
  */
 export type RemediationOptionCreate = {
@@ -20639,6 +20683,49 @@ export type CreatePartnerExchangeMarkApiV1PartnerExchangeMarksPostResponses = {
 };
 
 export type CreatePartnerExchangeMarkApiV1PartnerExchangeMarksPostResponse = CreatePartnerExchangeMarkApiV1PartnerExchangeMarksPostResponses[keyof CreatePartnerExchangeMarkApiV1PartnerExchangeMarksPostResponses];
+
+export type ListRegulatoryRadarMarksApiV1RegulatoryRadarMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/regulatory-radar-marks';
+};
+
+export type ListRegulatoryRadarMarksApiV1RegulatoryRadarMarksGetResponses = {
+    /**
+     * Response List Regulatory Radar Marks Api V1 Regulatory Radar Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<RegulatoryRadarMarkResponse>;
+};
+
+export type ListRegulatoryRadarMarksApiV1RegulatoryRadarMarksGetResponse = ListRegulatoryRadarMarksApiV1RegulatoryRadarMarksGetResponses[keyof ListRegulatoryRadarMarksApiV1RegulatoryRadarMarksGetResponses];
+
+export type CreateRegulatoryRadarMarkApiV1RegulatoryRadarMarksPostData = {
+    body: RegulatoryRadarMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/regulatory-radar-marks';
+};
+
+export type CreateRegulatoryRadarMarkApiV1RegulatoryRadarMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateRegulatoryRadarMarkApiV1RegulatoryRadarMarksPostError = CreateRegulatoryRadarMarkApiV1RegulatoryRadarMarksPostErrors[keyof CreateRegulatoryRadarMarkApiV1RegulatoryRadarMarksPostErrors];
+
+export type CreateRegulatoryRadarMarkApiV1RegulatoryRadarMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: RegulatoryRadarMarkResponse;
+};
+
+export type CreateRegulatoryRadarMarkApiV1RegulatoryRadarMarksPostResponse = CreateRegulatoryRadarMarkApiV1RegulatoryRadarMarksPostResponses[keyof CreateRegulatoryRadarMarkApiV1RegulatoryRadarMarksPostResponses];
 
 export type HealthHealthGetData = {
     body?: never;

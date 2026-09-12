@@ -155,6 +155,7 @@ from app.models.sid_import_mark import SidImportMark  # noqa: F401
 from app.models.integration_hub_mark import IntegrationHubMark  # noqa: F401
 from app.models.webhook_outbox_mark import WebhookOutboxMark  # noqa: F401
 from app.models.partner_exchange_mark import PartnerExchangeMark  # noqa: F401
+from app.models.regulatory_radar_mark import RegulatoryRadarMark  # noqa: F401
 from app.models.collaboration_mark import CollaborationMark  # noqa: F401
 from app.models.freight_audit_mark import FreightAuditMark  # noqa: F401
 from app.models.routing_guide import RoutingGuide  # noqa: F401

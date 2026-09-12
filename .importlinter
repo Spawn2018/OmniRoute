@@ -157,6 +157,7 @@ modules =
     app.services.integration_hub_marks
     app.services.webhook_outbox_marks
     app.services.partner_exchange_marks
+    app.services.regulatory_radar_marks
     app.services.freight_audit_marks
     app.services.collaboration_marks
     app.services.exchange_connectors
@@ -630,15 +631,21 @@ forbidden_modules =
     app.services.integration_hub_marks
     app.services.webhook_outbox_marks
     app.services.partner_exchange_marks
+    app.services.regulatory_radar_marks
     app.repositories.integration_hub_marks
     app.models.integration_hub_mark
     app.services.webhook_outbox_marks
     app.services.partner_exchange_marks
+    app.services.regulatory_radar_marks
     app.repositories.webhook_outbox_marks
     app.models.webhook_outbox_mark
     app.services.partner_exchange_marks
+    app.services.regulatory_radar_marks
     app.repositories.partner_exchange_marks
     app.models.partner_exchange_mark
+    app.services.regulatory_radar_marks
+    app.repositories.regulatory_radar_marks
+    app.models.regulatory_radar_mark
     app.services.freight_audit_marks
     app.repositories.freight_audit_marks
     app.models.freight_audit_mark

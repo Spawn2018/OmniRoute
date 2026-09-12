@@ -129,6 +129,7 @@ import { Route as RankMarksRouteImport } from './routes/rank-marks'
 import { Route as RateCardsRouteImport } from './routes/rate-cards'
 import { Route as RateLinesRouteImport } from './routes/rate-lines'
 import { Route as RegistryPollMarksRouteImport } from './routes/registry-poll-marks'
+import { Route as RegulatoryRadarMarksRouteImport } from './routes/regulatory-radar-marks'
 import { Route as RemediationOptionsRouteImport } from './routes/remediation-options'
 import { Route as RepairPlaybooksRouteImport } from './routes/repair-playbooks'
 import { Route as RoadRouteImport } from './routes/road'
@@ -783,6 +784,11 @@ const RegistryPollMarksRoute = RegistryPollMarksRouteImport.update({
   path: '/registry-poll-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RegulatoryRadarMarksRoute = RegulatoryRadarMarksRouteImport.update({
+  id: '/regulatory-radar-marks',
+  path: '/regulatory-radar-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RemediationOptionsRoute = RemediationOptionsRouteImport.update({
   id: '/remediation-options',
   path: '/remediation-options',
@@ -1171,6 +1177,7 @@ export interface FileRoutesByFullPath {
   '/rate-cards': typeof RateCardsRoute
   '/rate-lines': typeof RateLinesRoute
   '/registry-poll-marks': typeof RegistryPollMarksRoute
+  '/regulatory-radar-marks': typeof RegulatoryRadarMarksRoute
   '/remediation-options': typeof RemediationOptionsRoute
   '/repair-playbooks': typeof RepairPlaybooksRoute
   '/road': typeof RoadRoute
@@ -1346,6 +1353,7 @@ export interface FileRoutesByTo {
   '/rate-cards': typeof RateCardsRoute
   '/rate-lines': typeof RateLinesRoute
   '/registry-poll-marks': typeof RegistryPollMarksRoute
+  '/regulatory-radar-marks': typeof RegulatoryRadarMarksRoute
   '/remediation-options': typeof RemediationOptionsRoute
   '/repair-playbooks': typeof RepairPlaybooksRoute
   '/road': typeof RoadRoute
@@ -1522,6 +1530,7 @@ export interface FileRoutesById {
   '/rate-cards': typeof RateCardsRoute
   '/rate-lines': typeof RateLinesRoute
   '/registry-poll-marks': typeof RegistryPollMarksRoute
+  '/regulatory-radar-marks': typeof RegulatoryRadarMarksRoute
   '/remediation-options': typeof RemediationOptionsRoute
   '/repair-playbooks': typeof RepairPlaybooksRoute
   '/road': typeof RoadRoute
@@ -1699,6 +1708,7 @@ export interface FileRouteTypes {
     | '/rate-cards'
     | '/rate-lines'
     | '/registry-poll-marks'
+    | '/regulatory-radar-marks'
     | '/remediation-options'
     | '/repair-playbooks'
     | '/road'
@@ -1874,6 +1884,7 @@ export interface FileRouteTypes {
     | '/rate-cards'
     | '/rate-lines'
     | '/registry-poll-marks'
+    | '/regulatory-radar-marks'
     | '/remediation-options'
     | '/repair-playbooks'
     | '/road'
@@ -2049,6 +2060,7 @@ export interface FileRouteTypes {
     | '/rate-cards'
     | '/rate-lines'
     | '/registry-poll-marks'
+    | '/regulatory-radar-marks'
     | '/remediation-options'
     | '/repair-playbooks'
     | '/road'
@@ -2225,6 +2237,7 @@ export interface RootRouteChildren {
   RateCardsRoute: typeof RateCardsRoute
   RateLinesRoute: typeof RateLinesRoute
   RegistryPollMarksRoute: typeof RegistryPollMarksRoute
+  RegulatoryRadarMarksRoute: typeof RegulatoryRadarMarksRoute
   RemediationOptionsRoute: typeof RemediationOptionsRoute
   RepairPlaybooksRoute: typeof RepairPlaybooksRoute
   RoadRoute: typeof RoadRoute
@@ -3122,6 +3135,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RegistryPollMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/regulatory-radar-marks': {
+      id: '/regulatory-radar-marks'
+      path: '/regulatory-radar-marks'
+      fullPath: '/regulatory-radar-marks'
+      preLoaderRoute: typeof RegulatoryRadarMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/remediation-options': {
       id: '/remediation-options'
       path: '/remediation-options'
@@ -3617,6 +3637,7 @@ const rootRouteChildren: RootRouteChildren = {
   RateCardsRoute: RateCardsRoute,
   RateLinesRoute: RateLinesRoute,
   RegistryPollMarksRoute: RegistryPollMarksRoute,
+  RegulatoryRadarMarksRoute: RegulatoryRadarMarksRoute,
   RemediationOptionsRoute: RemediationOptionsRoute,
   RepairPlaybooksRoute: RepairPlaybooksRoute,
   RoadRoute: RoadRoute,
