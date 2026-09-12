@@ -144,6 +144,7 @@ type organization
     define can_manage_phyto_ata_marks: member
     define can_manage_switch_bl_loi_marks: member
     define can_manage_abandoned_rto_marks: member
+    define can_manage_general_average_marks: member
     define can_manage_freight_audit_marks: member
     define can_manage_collaboration_marks: member
     define can_manage_routing_guide_enforcements: member

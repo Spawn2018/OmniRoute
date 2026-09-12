@@ -78,6 +78,7 @@ import { Route as FuelAnomalyMarksRouteImport } from './routes/fuel-anomaly-mark
 import { Route as FuelIndexesRouteImport } from './routes/fuel-indexes'
 import { Route as FxDifferencesRouteImport } from './routes/fx-differences'
 import { Route as GdprRouteImport } from './routes/gdpr'
+import { Route as GeneralAverageMarksRouteImport } from './routes/general-average-marks'
 import { Route as GroupageRouteImport } from './routes/groupage'
 import { Route as GroupageTariffsRouteImport } from './routes/groupage-tariffs'
 import { Route as HealthRouteImport } from './routes/health'
@@ -539,6 +540,11 @@ const FxDifferencesRoute = FxDifferencesRouteImport.update({
 const GdprRoute = GdprRouteImport.update({
   id: '/gdpr',
   path: '/gdpr',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GeneralAverageMarksRoute = GeneralAverageMarksRouteImport.update({
+  id: '/general-average-marks',
+  path: '/general-average-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GroupageRoute = GroupageRouteImport.update({
@@ -1198,6 +1204,7 @@ export interface FileRoutesByFullPath {
   '/fuel-indexes': typeof FuelIndexesRoute
   '/fx-differences': typeof FxDifferencesRoute
   '/gdpr': typeof GdprRoute
+  '/general-average-marks': typeof GeneralAverageMarksRoute
   '/groupage': typeof GroupageRoute
   '/groupage-tariffs': typeof GroupageTariffsRoute
   '/health': typeof HealthRoute
@@ -1386,6 +1393,7 @@ export interface FileRoutesByTo {
   '/fuel-indexes': typeof FuelIndexesRoute
   '/fx-differences': typeof FxDifferencesRoute
   '/gdpr': typeof GdprRoute
+  '/general-average-marks': typeof GeneralAverageMarksRoute
   '/groupage': typeof GroupageRoute
   '/groupage-tariffs': typeof GroupageTariffsRoute
   '/health': typeof HealthRoute
@@ -1575,6 +1583,7 @@ export interface FileRoutesById {
   '/fuel-indexes': typeof FuelIndexesRoute
   '/fx-differences': typeof FxDifferencesRoute
   '/gdpr': typeof GdprRoute
+  '/general-average-marks': typeof GeneralAverageMarksRoute
   '/groupage': typeof GroupageRoute
   '/groupage-tariffs': typeof GroupageTariffsRoute
   '/health': typeof HealthRoute
@@ -1765,6 +1774,7 @@ export interface FileRouteTypes {
     | '/fuel-indexes'
     | '/fx-differences'
     | '/gdpr'
+    | '/general-average-marks'
     | '/groupage'
     | '/groupage-tariffs'
     | '/health'
@@ -1953,6 +1963,7 @@ export interface FileRouteTypes {
     | '/fuel-indexes'
     | '/fx-differences'
     | '/gdpr'
+    | '/general-average-marks'
     | '/groupage'
     | '/groupage-tariffs'
     | '/health'
@@ -2141,6 +2152,7 @@ export interface FileRouteTypes {
     | '/fuel-indexes'
     | '/fx-differences'
     | '/gdpr'
+    | '/general-average-marks'
     | '/groupage'
     | '/groupage-tariffs'
     | '/health'
@@ -2330,6 +2342,7 @@ export interface RootRouteChildren {
   FuelIndexesRoute: typeof FuelIndexesRoute
   FxDifferencesRoute: typeof FxDifferencesRoute
   GdprRoute: typeof GdprRoute
+  GeneralAverageMarksRoute: typeof GeneralAverageMarksRoute
   GroupageRoute: typeof GroupageRoute
   GroupageTariffsRoute: typeof GroupageTariffsRoute
   HealthRoute: typeof HealthRoute
@@ -2932,6 +2945,13 @@ declare module '@tanstack/react-router' {
       path: '/gdpr'
       fullPath: '/gdpr'
       preLoaderRoute: typeof GdprRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/general-average-marks': {
+      id: '/general-average-marks'
+      path: '/general-average-marks'
+      fullPath: '/general-average-marks'
+      preLoaderRoute: typeof GeneralAverageMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/groupage': {
@@ -3827,6 +3847,7 @@ const rootRouteChildren: RootRouteChildren = {
   FuelIndexesRoute: FuelIndexesRoute,
   FxDifferencesRoute: FxDifferencesRoute,
   GdprRoute: GdprRoute,
+  GeneralAverageMarksRoute: GeneralAverageMarksRoute,
   GroupageRoute: GroupageRoute,
   GroupageTariffsRoute: GroupageTariffsRoute,
   HealthRoute: HealthRoute,

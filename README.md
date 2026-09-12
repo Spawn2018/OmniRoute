@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **375.0** EXP3.10 HITL `abandoned_rto_mark`
-- **Etap:** Plan — **376.0** EXP3.11
-- **Następny:** **376.0** EXP3.11 general average HITL `general_average_mark`.
+- **Ostatni plaster:** **376.0** EXP3.11 HITL `general_average_mark`
+- **Etap:** Plan — **377.0** EXP3.12
+- **Następny:** **377.0** EXP3.12 OTIF split HITL `otif_split_mark` (istnieje `otif_mark` — sprawdź lowca).
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

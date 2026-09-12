@@ -4275,6 +4275,50 @@ export type GdprRequestResponse = {
 };
 
 /**
+ * GeneralAverageMarkCreate
+ */
+export type GeneralAverageMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Average Kind
+     */
+    average_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * GeneralAverageMarkResponse
+ */
+export type GeneralAverageMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Average Kind
+     */
+    average_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * GroupageLineCreate
  */
 export type GroupageLineCreate = {
@@ -18911,6 +18955,49 @@ export type FulfillGdprRequestApiV1GdprRequestsRequestIdFulfillPostResponses = {
 };
 
 export type FulfillGdprRequestApiV1GdprRequestsRequestIdFulfillPostResponse = FulfillGdprRequestApiV1GdprRequestsRequestIdFulfillPostResponses[keyof FulfillGdprRequestApiV1GdprRequestsRequestIdFulfillPostResponses];
+
+export type ListGeneralAverageMarksApiV1GeneralAverageMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/general-average-marks';
+};
+
+export type ListGeneralAverageMarksApiV1GeneralAverageMarksGetResponses = {
+    /**
+     * Response List General Average Marks Api V1 General Average Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<GeneralAverageMarkResponse>;
+};
+
+export type ListGeneralAverageMarksApiV1GeneralAverageMarksGetResponse = ListGeneralAverageMarksApiV1GeneralAverageMarksGetResponses[keyof ListGeneralAverageMarksApiV1GeneralAverageMarksGetResponses];
+
+export type CreateGeneralAverageMarkApiV1GeneralAverageMarksPostData = {
+    body: GeneralAverageMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/general-average-marks';
+};
+
+export type CreateGeneralAverageMarkApiV1GeneralAverageMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateGeneralAverageMarkApiV1GeneralAverageMarksPostError = CreateGeneralAverageMarkApiV1GeneralAverageMarksPostErrors[keyof CreateGeneralAverageMarkApiV1GeneralAverageMarksPostErrors];
+
+export type CreateGeneralAverageMarkApiV1GeneralAverageMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: GeneralAverageMarkResponse;
+};
+
+export type CreateGeneralAverageMarkApiV1GeneralAverageMarksPostResponse = CreateGeneralAverageMarkApiV1GeneralAverageMarksPostResponses[keyof CreateGeneralAverageMarkApiV1GeneralAverageMarksPostResponses];
 
 export type ListGroupageLinesApiV1GroupageLinesGetData = {
     body?: never;

@@ -319,6 +319,11 @@ export const OPS_JOBS = [
     job: "wniosek i usunięcie katalogu",
   },
   {
+    route: BUSINESS_LISTS.generalAverageMark.route,
+    label: "General average",
+    job: "katalog general_average_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.aiCopilot.route,
     label: "Propozycje AI",
     job: "szkice HITL pending",
@@ -1273,6 +1278,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "373.0": "/phyto-ata-marks",
   "374.0": "/switch-bl-loi-marks",
   "375.0": "/abandoned-rto-marks",
+  "376.0": "/general-average-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

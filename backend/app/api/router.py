@@ -71,6 +71,7 @@ from app.api import (
     fuel_indexes,
     fx_differences,
     gdpr_requests,
+    general_average_marks,
     groupage_lines,
     groupage_tariffs,
     idp_connectors,
@@ -339,6 +340,7 @@ api_router.include_router(cost_to_serve.router)
 api_router.include_router(bookkeeping.router)
 api_router.include_router(collective_invoices.router)
 api_router.include_router(gdpr_requests.router)
+api_router.include_router(general_average_marks.router)
 api_router.include_router(groupage_lines.router)
 api_router.include_router(groupage_tariffs.router)
 api_router.include_router(shipment_legs.router)

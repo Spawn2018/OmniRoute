@@ -170,6 +170,7 @@ modules =
     app.services.phyto_ata_marks
     app.services.switch_bl_loi_marks
     app.services.abandoned_rto_marks
+    app.services.general_average_marks
     app.services.freight_audit_marks
     app.services.collaboration_marks
     app.services.exchange_connectors
@@ -766,6 +767,9 @@ forbidden_modules =
     app.services.abandoned_rto_marks
     app.repositories.abandoned_rto_marks
     app.models.abandoned_rto_mark
+    app.services.general_average_marks
+    app.repositories.general_average_marks
+    app.models.general_average_mark
     app.services.freight_audit_marks
     app.repositories.freight_audit_marks
     app.models.freight_audit_mark
