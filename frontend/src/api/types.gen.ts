@@ -10561,6 +10561,50 @@ export type WeatherObservationResponse = {
 };
 
 /**
+ * WebhookOutboxMarkCreate
+ */
+export type WebhookOutboxMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Outbox Kind
+     */
+    outbox_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * WebhookOutboxMarkResponse
+ */
+export type WebhookOutboxMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Outbox Kind
+     */
+    outbox_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * WhatIfMarkCreate
  */
 export type WhatIfMarkCreate = {
@@ -20465,6 +20509,49 @@ export type CreateIntegrationHubMarkApiV1IntegrationHubMarksPostResponses = {
 };
 
 export type CreateIntegrationHubMarkApiV1IntegrationHubMarksPostResponse = CreateIntegrationHubMarkApiV1IntegrationHubMarksPostResponses[keyof CreateIntegrationHubMarkApiV1IntegrationHubMarksPostResponses];
+
+export type ListWebhookOutboxMarksApiV1WebhookOutboxMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/webhook-outbox-marks';
+};
+
+export type ListWebhookOutboxMarksApiV1WebhookOutboxMarksGetResponses = {
+    /**
+     * Response List Webhook Outbox Marks Api V1 Webhook Outbox Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<WebhookOutboxMarkResponse>;
+};
+
+export type ListWebhookOutboxMarksApiV1WebhookOutboxMarksGetResponse = ListWebhookOutboxMarksApiV1WebhookOutboxMarksGetResponses[keyof ListWebhookOutboxMarksApiV1WebhookOutboxMarksGetResponses];
+
+export type CreateWebhookOutboxMarkApiV1WebhookOutboxMarksPostData = {
+    body: WebhookOutboxMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/webhook-outbox-marks';
+};
+
+export type CreateWebhookOutboxMarkApiV1WebhookOutboxMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateWebhookOutboxMarkApiV1WebhookOutboxMarksPostError = CreateWebhookOutboxMarkApiV1WebhookOutboxMarksPostErrors[keyof CreateWebhookOutboxMarkApiV1WebhookOutboxMarksPostErrors];
+
+export type CreateWebhookOutboxMarkApiV1WebhookOutboxMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: WebhookOutboxMarkResponse;
+};
+
+export type CreateWebhookOutboxMarkApiV1WebhookOutboxMarksPostResponse = CreateWebhookOutboxMarkApiV1WebhookOutboxMarksPostResponses[keyof CreateWebhookOutboxMarkApiV1WebhookOutboxMarksPostResponses];
 
 export type HealthHealthGetData = {
     body?: never;

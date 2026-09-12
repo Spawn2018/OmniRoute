@@ -167,6 +167,11 @@ def _organization_g_catalog_relations() -> dict[str, Userset]:
         "can_manage_ferry_art9_marks": _member(),
         "can_manage_fuel_anomaly_marks": _member(),
         "can_manage_fleet_cost_marks": _member(),
+    }
+
+
+def _organization_exp2_catalog_relations() -> dict[str, Userset]:
+    return {
         "can_manage_bin_pack_marks": _member(),
         "can_manage_pallet_pool_marks": _member(),
         "can_manage_e_cmr_marks": _member(),
@@ -174,6 +179,7 @@ def _organization_g_catalog_relations() -> dict[str, Userset]:
         "can_manage_peppol_marks": _member(),
         "can_manage_sid_import_marks": _member(),
         "can_manage_integration_hub_marks": _member(),
+        "can_manage_webhook_outbox_marks": _member(),
     }
 
 
@@ -207,6 +213,7 @@ def _organization_relations() -> dict[str, Userset]:
         **_organization_ops_catalog_relations(),
         **_organization_ci_catalog_relations(),
         **_organization_g_catalog_relations(),
+        **_organization_exp2_catalog_relations(),
         **_organization_tender_relations(),
     }
 

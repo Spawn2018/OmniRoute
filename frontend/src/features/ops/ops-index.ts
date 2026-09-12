@@ -719,6 +719,11 @@ export const OPS_JOBS = [
     job: "katalog integration_hub_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.webhookOutboxMark.route,
+    label: "Webhook outbox",
+    job: "katalog webhook_outbox_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.erpConnector.route,
     label: "Konektor Optima",
     job: "katalog erp_connector HITL",
@@ -1183,6 +1188,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "357.0": "/peppol-marks",
   "358.0": "/sid-import-marks",
   "359.0": "/integration-hub-marks",
+  "360.0": "/webhook-outbox-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

@@ -934,6 +934,10 @@ class InvalidIntegrationHubMark(DomainError):
     """EXP2.22: HITL Integration Hub — nie live HTTP / Selenium."""
 
 
+class InvalidWebhookOutboxMark(DomainError):
+    """EXP2.23: HITL webhook outbox — nie live dispatch / Temporal."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

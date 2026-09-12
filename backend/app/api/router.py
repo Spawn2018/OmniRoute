@@ -172,6 +172,7 @@ from app.api import (
     visibility_connectors,
     war_room_marks,
     weather_observations,
+    webhook_outbox_marks,
     what_if_marks,
     working_capital_marks,
     yard_marks,
@@ -353,6 +354,7 @@ api_router.include_router(e_delivery_marks.router)
 api_router.include_router(peppol_marks.router)
 api_router.include_router(sid_import_marks.router)
 api_router.include_router(integration_hub_marks.router)
+api_router.include_router(webhook_outbox_marks.router)
 
 
 @api_router.api_route(

@@ -16814,6 +16814,80 @@
         ]
       }
     },
+    "/api/v1/webhook-outbox-marks": {
+      "get": {
+        "tags": [
+          "webhook-outbox-marks"
+        ],
+        "summary": "List Webhook Outbox Marks",
+        "operationId": "list_webhook_outbox_marks_api_v1_webhook_outbox_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/WebhookOutboxMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Webhook Outbox Marks Api V1 Webhook Outbox Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "webhook-outbox-marks"
+        ],
+        "summary": "Create Webhook Outbox Mark",
+        "operationId": "create_webhook_outbox_mark_api_v1_webhook_outbox_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebhookOutboxMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WebhookOutboxMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/health": {
       "get": {
         "summary": "Health",
@@ -33627,6 +33701,65 @@
           "source_ref"
         ],
         "title": "WeatherObservationResponse"
+      },
+      "WebhookOutboxMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "outbox_kind": {
+            "type": "string",
+            "title": "Outbox Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "outbox_kind",
+          "source_ref"
+        ],
+        "title": "WebhookOutboxMarkCreate"
+      },
+      "WebhookOutboxMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "outbox_kind": {
+            "type": "string",
+            "title": "Outbox Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "outbox_kind",
+          "source_ref"
+        ],
+        "title": "WebhookOutboxMarkResponse"
       },
       "WhatIfMarkCreate": {
         "properties": {

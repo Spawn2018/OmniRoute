@@ -176,6 +176,7 @@ import { Route as VisibilityConnectorsRouteImport } from './routes/visibility-co
 import { Route as WarRoomMarksRouteImport } from './routes/war-room-marks'
 import { Route as WatchtowerRouteImport } from './routes/watchtower'
 import { Route as WeatherObservationsRouteImport } from './routes/weather-observations'
+import { Route as WebhookOutboxMarksRouteImport } from './routes/webhook-outbox-marks'
 import { Route as WhatIfMarksRouteImport } from './routes/what-if-marks'
 import { Route as WorkingCapitalMarksRouteImport } from './routes/working-capital-marks'
 import { Route as YardMarksRouteImport } from './routes/yard-marks'
@@ -1017,6 +1018,11 @@ const WeatherObservationsRoute = WeatherObservationsRouteImport.update({
   path: '/weather-observations',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WebhookOutboxMarksRoute = WebhookOutboxMarksRouteImport.update({
+  id: '/webhook-outbox-marks',
+  path: '/webhook-outbox-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WhatIfMarksRoute = WhatIfMarksRouteImport.update({
   id: '/what-if-marks',
   path: '/what-if-marks',
@@ -1206,6 +1212,7 @@ export interface FileRoutesByFullPath {
   '/war-room-marks': typeof WarRoomMarksRoute
   '/watchtower': typeof WatchtowerRoute
   '/weather-observations': typeof WeatherObservationsRoute
+  '/webhook-outbox-marks': typeof WebhookOutboxMarksRoute
   '/what-if-marks': typeof WhatIfMarksRoute
   '/working-capital-marks': typeof WorkingCapitalMarksRoute
   '/yard-marks': typeof YardMarksRoute
@@ -1379,6 +1386,7 @@ export interface FileRoutesByTo {
   '/war-room-marks': typeof WarRoomMarksRoute
   '/watchtower': typeof WatchtowerRoute
   '/weather-observations': typeof WeatherObservationsRoute
+  '/webhook-outbox-marks': typeof WebhookOutboxMarksRoute
   '/what-if-marks': typeof WhatIfMarksRoute
   '/working-capital-marks': typeof WorkingCapitalMarksRoute
   '/yard-marks': typeof YardMarksRoute
@@ -1553,6 +1561,7 @@ export interface FileRoutesById {
   '/war-room-marks': typeof WarRoomMarksRoute
   '/watchtower': typeof WatchtowerRoute
   '/weather-observations': typeof WeatherObservationsRoute
+  '/webhook-outbox-marks': typeof WebhookOutboxMarksRoute
   '/what-if-marks': typeof WhatIfMarksRoute
   '/working-capital-marks': typeof WorkingCapitalMarksRoute
   '/yard-marks': typeof YardMarksRoute
@@ -1728,6 +1737,7 @@ export interface FileRouteTypes {
     | '/war-room-marks'
     | '/watchtower'
     | '/weather-observations'
+    | '/webhook-outbox-marks'
     | '/what-if-marks'
     | '/working-capital-marks'
     | '/yard-marks'
@@ -1901,6 +1911,7 @@ export interface FileRouteTypes {
     | '/war-room-marks'
     | '/watchtower'
     | '/weather-observations'
+    | '/webhook-outbox-marks'
     | '/what-if-marks'
     | '/working-capital-marks'
     | '/yard-marks'
@@ -2074,6 +2085,7 @@ export interface FileRouteTypes {
     | '/war-room-marks'
     | '/watchtower'
     | '/weather-observations'
+    | '/webhook-outbox-marks'
     | '/what-if-marks'
     | '/working-capital-marks'
     | '/yard-marks'
@@ -2248,6 +2260,7 @@ export interface RootRouteChildren {
   WarRoomMarksRoute: typeof WarRoomMarksRoute
   WatchtowerRoute: typeof WatchtowerRoute
   WeatherObservationsRoute: typeof WeatherObservationsRoute
+  WebhookOutboxMarksRoute: typeof WebhookOutboxMarksRoute
   WhatIfMarksRoute: typeof WhatIfMarksRoute
   WorkingCapitalMarksRoute: typeof WorkingCapitalMarksRoute
   YardMarksRoute: typeof YardMarksRoute
@@ -3425,6 +3438,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WeatherObservationsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/webhook-outbox-marks': {
+      id: '/webhook-outbox-marks'
+      path: '/webhook-outbox-marks'
+      fullPath: '/webhook-outbox-marks'
+      preLoaderRoute: typeof WebhookOutboxMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/what-if-marks': {
       id: '/what-if-marks'
       path: '/what-if-marks'
@@ -3624,6 +3644,7 @@ const rootRouteChildren: RootRouteChildren = {
   WarRoomMarksRoute: WarRoomMarksRoute,
   WatchtowerRoute: WatchtowerRoute,
   WeatherObservationsRoute: WeatherObservationsRoute,
+  WebhookOutboxMarksRoute: WebhookOutboxMarksRoute,
   WhatIfMarksRoute: WhatIfMarksRoute,
   WorkingCapitalMarksRoute: WorkingCapitalMarksRoute,
   YardMarksRoute: YardMarksRoute,
