@@ -137,6 +137,7 @@ type organization
     define can_manage_jit_jis_marks: member
     define can_manage_vda_odette_marks: member
     define can_manage_inventory_position_marks: member
+    define can_manage_fair_share_marks: member
     define can_manage_freight_audit_marks: member
     define can_manage_collaboration_marks: member
     define can_manage_routing_guide_enforcements: member

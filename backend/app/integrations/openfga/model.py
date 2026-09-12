@@ -187,6 +187,7 @@ def _organization_exp2_catalog_relations() -> dict[str, Userset]:
         "can_manage_jit_jis_marks": _member(),
         "can_manage_vda_odette_marks": _member(),
         "can_manage_inventory_position_marks": _member(),
+        "can_manage_fair_share_marks": _member(),
     }
 
 

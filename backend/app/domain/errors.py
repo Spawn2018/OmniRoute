@@ -966,6 +966,10 @@ class InvalidInventoryPositionMark(DomainError):
     """EXP3.3: HITL inventory position — nie WMS live / bilans SQL."""
 
 
+class InvalidFairShareMark(DomainError):
+    """EXP3.4: HITL fair share — nie allocation SQL / druga marża."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **369.0** EXP3.4 fair share HITL (delta do utworzenia). Nie allocation SQL.
+**Następny:** **370.0** EXP3.5 MQC vs actual HITL (delta do utworzenia).
 <!-- os-status:end -->
 
 ```mermaid

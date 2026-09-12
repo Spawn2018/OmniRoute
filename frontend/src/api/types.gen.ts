@@ -3593,6 +3593,50 @@ export type ExtractionDraftResponse = {
 };
 
 /**
+ * FairShareMarkCreate
+ */
+export type FairShareMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Share Kind
+     */
+    share_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * FairShareMarkResponse
+ */
+export type FairShareMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Share Kind
+     */
+    share_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * FerryArt9MarkCreate
  */
 export type FerryArt9MarkCreate = {
@@ -21161,6 +21205,49 @@ export type CreateInventoryPositionMarkApiV1InventoryPositionMarksPostResponses 
 };
 
 export type CreateInventoryPositionMarkApiV1InventoryPositionMarksPostResponse = CreateInventoryPositionMarkApiV1InventoryPositionMarksPostResponses[keyof CreateInventoryPositionMarkApiV1InventoryPositionMarksPostResponses];
+
+export type ListFairShareMarksApiV1FairShareMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/fair-share-marks';
+};
+
+export type ListFairShareMarksApiV1FairShareMarksGetResponses = {
+    /**
+     * Response List Fair Share Marks Api V1 Fair Share Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<FairShareMarkResponse>;
+};
+
+export type ListFairShareMarksApiV1FairShareMarksGetResponse = ListFairShareMarksApiV1FairShareMarksGetResponses[keyof ListFairShareMarksApiV1FairShareMarksGetResponses];
+
+export type CreateFairShareMarkApiV1FairShareMarksPostData = {
+    body: FairShareMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/fair-share-marks';
+};
+
+export type CreateFairShareMarkApiV1FairShareMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateFairShareMarkApiV1FairShareMarksPostError = CreateFairShareMarkApiV1FairShareMarksPostErrors[keyof CreateFairShareMarkApiV1FairShareMarksPostErrors];
+
+export type CreateFairShareMarkApiV1FairShareMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: FairShareMarkResponse;
+};
+
+export type CreateFairShareMarkApiV1FairShareMarksPostResponse = CreateFairShareMarkApiV1FairShareMarksPostResponses[keyof CreateFairShareMarkApiV1FairShareMarksPostResponses];
 
 export type HealthHealthGetData = {
     body?: never;

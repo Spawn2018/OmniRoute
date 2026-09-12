@@ -17406,6 +17406,80 @@
         ]
       }
     },
+    "/api/v1/fair-share-marks": {
+      "get": {
+        "tags": [
+          "fair-share-marks"
+        ],
+        "summary": "List Fair Share Marks",
+        "operationId": "list_fair_share_marks_api_v1_fair_share_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/FairShareMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Fair Share Marks Api V1 Fair Share Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "fair-share-marks"
+        ],
+        "summary": "Create Fair Share Mark",
+        "operationId": "create_fair_share_mark_api_v1_fair_share_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FairShareMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FairShareMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/health": {
       "get": {
         "summary": "Health",
@@ -23242,6 +23316,65 @@
           "reviewed_at"
         ],
         "title": "ExtractionDraftResponse"
+      },
+      "FairShareMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "share_kind": {
+            "type": "string",
+            "title": "Share Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "share_kind",
+          "source_ref"
+        ],
+        "title": "FairShareMarkCreate"
+      },
+      "FairShareMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "share_kind": {
+            "type": "string",
+            "title": "Share Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "share_kind",
+          "source_ref"
+        ],
+        "title": "FairShareMarkResponse"
       },
       "FerryArt9MarkCreate": {
         "properties": {

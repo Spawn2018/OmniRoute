@@ -759,6 +759,11 @@ export const OPS_JOBS = [
     job: "katalog inventory_position_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.fairShareMark.route,
+    label: "Fair share",
+    job: "katalog fair_share_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.erpConnector.route,
     label: "Konektor Optima",
     job: "katalog erp_connector HITL",
@@ -1231,6 +1236,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "366.0": "/jit-jis-marks",
   "367.0": "/vda-odette-marks",
   "368.0": "/inventory-position-marks",
+  "369.0": "/fair-share-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

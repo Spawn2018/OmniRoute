@@ -62,6 +62,7 @@ import { Route as ExceptionsRouteImport } from './routes/exceptions'
 import { Route as ExchangeConnectorsRouteImport } from './routes/exchange-connectors'
 import { Route as ExecutiveMarksRouteImport } from './routes/executive-marks'
 import { Route as ExtractionsRouteImport } from './routes/extractions'
+import { Route as FairShareMarksRouteImport } from './routes/fair-share-marks'
 import { Route as FerryArt9MarksRouteImport } from './routes/ferry-art9-marks'
 import { Route as FilingSchemeMarksRouteImport } from './routes/filing-scheme-marks'
 import { Route as FinanceRouteImport } from './routes/finance'
@@ -452,6 +453,11 @@ const ExecutiveMarksRoute = ExecutiveMarksRouteImport.update({
 const ExtractionsRoute = ExtractionsRouteImport.update({
   id: '/extractions',
   path: '/extractions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FairShareMarksRoute = FairShareMarksRouteImport.update({
+  id: '/fair-share-marks',
+  path: '/fair-share-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FerryArt9MarksRoute = FerryArt9MarksRouteImport.update({
@@ -1140,6 +1146,7 @@ export interface FileRoutesByFullPath {
   '/exchange-connectors': typeof ExchangeConnectorsRoute
   '/executive-marks': typeof ExecutiveMarksRoute
   '/extractions': typeof ExtractionsRoute
+  '/fair-share-marks': typeof FairShareMarksRoute
   '/ferry-art9-marks': typeof FerryArt9MarksRoute
   '/filing-scheme-marks': typeof FilingSchemeMarksRoute
   '/finance': typeof FinanceRoute
@@ -1321,6 +1328,7 @@ export interface FileRoutesByTo {
   '/exchange-connectors': typeof ExchangeConnectorsRoute
   '/executive-marks': typeof ExecutiveMarksRoute
   '/extractions': typeof ExtractionsRoute
+  '/fair-share-marks': typeof FairShareMarksRoute
   '/ferry-art9-marks': typeof FerryArt9MarksRoute
   '/filing-scheme-marks': typeof FilingSchemeMarksRoute
   '/finance': typeof FinanceRoute
@@ -1503,6 +1511,7 @@ export interface FileRoutesById {
   '/exchange-connectors': typeof ExchangeConnectorsRoute
   '/executive-marks': typeof ExecutiveMarksRoute
   '/extractions': typeof ExtractionsRoute
+  '/fair-share-marks': typeof FairShareMarksRoute
   '/ferry-art9-marks': typeof FerryArt9MarksRoute
   '/filing-scheme-marks': typeof FilingSchemeMarksRoute
   '/finance': typeof FinanceRoute
@@ -1686,6 +1695,7 @@ export interface FileRouteTypes {
     | '/exchange-connectors'
     | '/executive-marks'
     | '/extractions'
+    | '/fair-share-marks'
     | '/ferry-art9-marks'
     | '/filing-scheme-marks'
     | '/finance'
@@ -1867,6 +1877,7 @@ export interface FileRouteTypes {
     | '/exchange-connectors'
     | '/executive-marks'
     | '/extractions'
+    | '/fair-share-marks'
     | '/ferry-art9-marks'
     | '/filing-scheme-marks'
     | '/finance'
@@ -2048,6 +2059,7 @@ export interface FileRouteTypes {
     | '/exchange-connectors'
     | '/executive-marks'
     | '/extractions'
+    | '/fair-share-marks'
     | '/ferry-art9-marks'
     | '/filing-scheme-marks'
     | '/finance'
@@ -2230,6 +2242,7 @@ export interface RootRouteChildren {
   ExchangeConnectorsRoute: typeof ExchangeConnectorsRoute
   ExecutiveMarksRoute: typeof ExecutiveMarksRoute
   ExtractionsRoute: typeof ExtractionsRoute
+  FairShareMarksRoute: typeof FairShareMarksRoute
   FerryArt9MarksRoute: typeof FerryArt9MarksRoute
   FilingSchemeMarksRoute: typeof FilingSchemeMarksRoute
   FinanceRoute: typeof FinanceRoute
@@ -2729,6 +2742,13 @@ declare module '@tanstack/react-router' {
       path: '/extractions'
       fullPath: '/extractions'
       preLoaderRoute: typeof ExtractionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fair-share-marks': {
+      id: '/fair-share-marks'
+      path: '/fair-share-marks'
+      fullPath: '/fair-share-marks'
+      preLoaderRoute: typeof FairShareMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ferry-art9-marks': {
@@ -3670,6 +3690,7 @@ const rootRouteChildren: RootRouteChildren = {
   ExchangeConnectorsRoute: ExchangeConnectorsRoute,
   ExecutiveMarksRoute: ExecutiveMarksRoute,
   ExtractionsRoute: ExtractionsRoute,
+  FairShareMarksRoute: FairShareMarksRoute,
   FerryArt9MarksRoute: FerryArt9MarksRoute,
   FilingSchemeMarksRoute: FilingSchemeMarksRoute,
   FinanceRoute: FinanceRoute,

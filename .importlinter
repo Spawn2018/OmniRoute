@@ -163,6 +163,7 @@ modules =
     app.services.jit_jis_marks
     app.services.vda_odette_marks
     app.services.inventory_position_marks
+    app.services.fair_share_marks
     app.services.freight_audit_marks
     app.services.collaboration_marks
     app.services.exchange_connectors
@@ -642,6 +643,7 @@ forbidden_modules =
     app.services.jit_jis_marks
     app.services.vda_odette_marks
     app.services.inventory_position_marks
+    app.services.fair_share_marks
     app.repositories.integration_hub_marks
     app.models.integration_hub_mark
     app.services.webhook_outbox_marks
@@ -652,6 +654,7 @@ forbidden_modules =
     app.services.jit_jis_marks
     app.services.vda_odette_marks
     app.services.inventory_position_marks
+    app.services.fair_share_marks
     app.repositories.webhook_outbox_marks
     app.models.webhook_outbox_mark
     app.services.partner_exchange_marks
@@ -661,6 +664,7 @@ forbidden_modules =
     app.services.jit_jis_marks
     app.services.vda_odette_marks
     app.services.inventory_position_marks
+    app.services.fair_share_marks
     app.repositories.partner_exchange_marks
     app.models.partner_exchange_mark
     app.services.regulatory_radar_marks
@@ -669,6 +673,7 @@ forbidden_modules =
     app.services.jit_jis_marks
     app.services.vda_odette_marks
     app.services.inventory_position_marks
+    app.services.fair_share_marks
     app.repositories.regulatory_radar_marks
     app.models.regulatory_radar_mark
     app.services.iso_nis2_marks
@@ -676,26 +681,34 @@ forbidden_modules =
     app.services.jit_jis_marks
     app.services.vda_odette_marks
     app.services.inventory_position_marks
+    app.services.fair_share_marks
     app.repositories.iso_nis2_marks
     app.models.iso_nis2_mark
     app.services.offboarding_marks
     app.services.jit_jis_marks
     app.services.vda_odette_marks
     app.services.inventory_position_marks
+    app.services.fair_share_marks
     app.repositories.offboarding_marks
     app.models.offboarding_mark
     app.services.jit_jis_marks
     app.services.vda_odette_marks
     app.services.inventory_position_marks
+    app.services.fair_share_marks
     app.repositories.jit_jis_marks
     app.models.jit_jis_mark
     app.services.vda_odette_marks
     app.services.inventory_position_marks
+    app.services.fair_share_marks
     app.repositories.vda_odette_marks
     app.models.vda_odette_mark
     app.services.inventory_position_marks
+    app.services.fair_share_marks
     app.repositories.inventory_position_marks
     app.models.inventory_position_mark
+    app.services.fair_share_marks
+    app.repositories.fair_share_marks
+    app.models.fair_share_mark
     app.services.freight_audit_marks
     app.repositories.freight_audit_marks
     app.models.freight_audit_mark

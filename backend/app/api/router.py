@@ -56,6 +56,7 @@ from app.api import (
     exchange_connectors,
     executive_marks,
     extractions,
+    fair_share_marks,
     ferry_art9_marks,
     field_carry_forwards,
     filing_scheme_marks,
@@ -369,6 +370,7 @@ api_router.include_router(offboarding_marks.router)
 api_router.include_router(jit_jis_marks.router)
 api_router.include_router(vda_odette_marks.router)
 api_router.include_router(inventory_position_marks.router)
+api_router.include_router(fair_share_marks.router)
 
 
 @api_router.api_route(
