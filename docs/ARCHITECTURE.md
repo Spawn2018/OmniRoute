@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **409.0** EXP3.3b HITL `line_impact_mark`. **Etap:** Plan — **410.0** EXP3.3c. **Następny:** **410.0** EXP3.3c HITL `three_way_mark` (3-way OpenFGA; bez tuple per strona). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **409.0** EXP3.3b HITL `line_impact_mark`. **Etap:** Plaster — **410.0** EXP3.3c. **Następny:** **410.0** EXP3.3c HITL `three_way_mark` (3-way OpenFGA; bez tuple per strona). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
