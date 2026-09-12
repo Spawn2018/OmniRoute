@@ -989,6 +989,11 @@ export const OPS_JOBS = [
     job: "katalog erru_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.mobileClientMark.route,
+    label: "Klient mobilny",
+    job: "katalog mobile_client_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.remediationOption.route,
     label: "Opcja naprawy",
     job: "katalog remediation_option HITL",
@@ -1411,6 +1416,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "396.0": "/rag-sop-marks",
   "397.0": "/copy-ban-marks",
   "398.0": "/erru-marks",
+  "399.0": "/mobile-client-marks",
 } as const
 
 export const ROUTES_BREADTH_STANDING =

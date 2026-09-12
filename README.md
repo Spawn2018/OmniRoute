@@ -86,10 +86,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **398.0** EXP4.20 HITL `erru_mark`
-- **Etap:** Plaster — **399.0** Mob (delta zaakceptowana `/noc`, wolno `/plaster`)
-- **Następny:** **399.0** Mob HITL `mobile_client_mark` (kolejka pin → Mob; nie Expo live).
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **399.0** Mob HITL `mobile_client_mark`
+- **Etap:** Plan — **400.0** K0
+- **Następny:** **400.0** K0 inwentaryzacja nazw rejestru (Fala K; nie dump archiwum).
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

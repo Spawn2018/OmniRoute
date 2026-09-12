@@ -113,6 +113,7 @@ import { Route as MailRouteImport } from './routes/mail'
 import { Route as MailAcceptMarksRouteImport } from './routes/mail-accept-marks'
 import { Route as MakeOrBuyMarksRouteImport } from './routes/make-or-buy-marks'
 import { Route as MemoryEdgesRouteImport } from './routes/memory-edges'
+import { Route as MobileClientMarksRouteImport } from './routes/mobile-client-marks'
 import { Route as MoneyCostRouteImport } from './routes/money-cost'
 import { Route as MonitoringSchemesRouteImport } from './routes/monitoring-schemes'
 import { Route as MqcMarksRouteImport } from './routes/mqc-marks'
@@ -737,6 +738,11 @@ const MakeOrBuyMarksRoute = MakeOrBuyMarksRouteImport.update({
 const MemoryEdgesRoute = MemoryEdgesRouteImport.update({
   id: '/memory-edges',
   path: '/memory-edges',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MobileClientMarksRoute = MobileClientMarksRouteImport.update({
+  id: '/mobile-client-marks',
+  path: '/mobile-client-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MoneyCostRoute = MoneyCostRouteImport.update({
@@ -1371,6 +1377,7 @@ export interface FileRoutesByFullPath {
   '/mail-accept-marks': typeof MailAcceptMarksRoute
   '/make-or-buy-marks': typeof MakeOrBuyMarksRoute
   '/memory-edges': typeof MemoryEdgesRoute
+  '/mobile-client-marks': typeof MobileClientMarksRoute
   '/money-cost': typeof MoneyCostRoute
   '/monitoring-schemes': typeof MonitoringSchemesRoute
   '/mqc-marks': typeof MqcMarksRoute
@@ -1582,6 +1589,7 @@ export interface FileRoutesByTo {
   '/mail-accept-marks': typeof MailAcceptMarksRoute
   '/make-or-buy-marks': typeof MakeOrBuyMarksRoute
   '/memory-edges': typeof MemoryEdgesRoute
+  '/mobile-client-marks': typeof MobileClientMarksRoute
   '/money-cost': typeof MoneyCostRoute
   '/monitoring-schemes': typeof MonitoringSchemesRoute
   '/mqc-marks': typeof MqcMarksRoute
@@ -1794,6 +1802,7 @@ export interface FileRoutesById {
   '/mail-accept-marks': typeof MailAcceptMarksRoute
   '/make-or-buy-marks': typeof MakeOrBuyMarksRoute
   '/memory-edges': typeof MemoryEdgesRoute
+  '/mobile-client-marks': typeof MobileClientMarksRoute
   '/money-cost': typeof MoneyCostRoute
   '/monitoring-schemes': typeof MonitoringSchemesRoute
   '/mqc-marks': typeof MqcMarksRoute
@@ -2007,6 +2016,7 @@ export interface FileRouteTypes {
     | '/mail-accept-marks'
     | '/make-or-buy-marks'
     | '/memory-edges'
+    | '/mobile-client-marks'
     | '/money-cost'
     | '/monitoring-schemes'
     | '/mqc-marks'
@@ -2218,6 +2228,7 @@ export interface FileRouteTypes {
     | '/mail-accept-marks'
     | '/make-or-buy-marks'
     | '/memory-edges'
+    | '/mobile-client-marks'
     | '/money-cost'
     | '/monitoring-schemes'
     | '/mqc-marks'
@@ -2429,6 +2440,7 @@ export interface FileRouteTypes {
     | '/mail-accept-marks'
     | '/make-or-buy-marks'
     | '/memory-edges'
+    | '/mobile-client-marks'
     | '/money-cost'
     | '/monitoring-schemes'
     | '/mqc-marks'
@@ -2641,6 +2653,7 @@ export interface RootRouteChildren {
   MailAcceptMarksRoute: typeof MailAcceptMarksRoute
   MakeOrBuyMarksRoute: typeof MakeOrBuyMarksRoute
   MemoryEdgesRoute: typeof MemoryEdgesRoute
+  MobileClientMarksRoute: typeof MobileClientMarksRoute
   MoneyCostRoute: typeof MoneyCostRoute
   MonitoringSchemesRoute: typeof MonitoringSchemesRoute
   MqcMarksRoute: typeof MqcMarksRoute
@@ -3476,6 +3489,13 @@ declare module '@tanstack/react-router' {
       path: '/memory-edges'
       fullPath: '/memory-edges'
       preLoaderRoute: typeof MemoryEdgesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mobile-client-marks': {
+      id: '/mobile-client-marks'
+      path: '/mobile-client-marks'
+      fullPath: '/mobile-client-marks'
+      preLoaderRoute: typeof MobileClientMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/money-cost': {
@@ -4321,6 +4341,7 @@ const rootRouteChildren: RootRouteChildren = {
   MailAcceptMarksRoute: MailAcceptMarksRoute,
   MakeOrBuyMarksRoute: MakeOrBuyMarksRoute,
   MemoryEdgesRoute: MemoryEdgesRoute,
+  MobileClientMarksRoute: MobileClientMarksRoute,
   MoneyCostRoute: MoneyCostRoute,
   MonitoringSchemesRoute: MonitoringSchemesRoute,
   MqcMarksRoute: MqcMarksRoute,

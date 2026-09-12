@@ -6241,6 +6241,50 @@ export type MemoryEdgeResponse = {
 };
 
 /**
+ * MobileClientMarkCreate
+ */
+export type MobileClientMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Client Kind
+     */
+    client_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * MobileClientMarkResponse
+ */
+export type MobileClientMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Client Kind
+     */
+    client_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * MoneyCostCreate
  */
 export type MoneyCostCreate = {
@@ -20624,6 +20668,49 @@ export type CreateErruMarkApiV1ErruMarksPostResponses = {
 };
 
 export type CreateErruMarkApiV1ErruMarksPostResponse = CreateErruMarkApiV1ErruMarksPostResponses[keyof CreateErruMarkApiV1ErruMarksPostResponses];
+
+export type ListMobileClientMarksApiV1MobileClientMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/mobile-client-marks';
+};
+
+export type ListMobileClientMarksApiV1MobileClientMarksGetResponses = {
+    /**
+     * Response List Mobile Client Marks Api V1 Mobile Client Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<MobileClientMarkResponse>;
+};
+
+export type ListMobileClientMarksApiV1MobileClientMarksGetResponse = ListMobileClientMarksApiV1MobileClientMarksGetResponses[keyof ListMobileClientMarksApiV1MobileClientMarksGetResponses];
+
+export type CreateMobileClientMarkApiV1MobileClientMarksPostData = {
+    body: MobileClientMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/mobile-client-marks';
+};
+
+export type CreateMobileClientMarkApiV1MobileClientMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateMobileClientMarkApiV1MobileClientMarksPostError = CreateMobileClientMarkApiV1MobileClientMarksPostErrors[keyof CreateMobileClientMarkApiV1MobileClientMarksPostErrors];
+
+export type CreateMobileClientMarkApiV1MobileClientMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: MobileClientMarkResponse;
+};
+
+export type CreateMobileClientMarkApiV1MobileClientMarksPostResponse = CreateMobileClientMarkApiV1MobileClientMarksPostResponses[keyof CreateMobileClientMarkApiV1MobileClientMarksPostResponses];
 
 export type ListCostToServeApiV1CostToServesGetData = {
     body?: never;

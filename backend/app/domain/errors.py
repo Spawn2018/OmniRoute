@@ -1086,6 +1086,10 @@ class InvalidErruMark(DomainError):
     """EXP4.20: HITL sprawdzenie ERRU — nie live ERRU / scoring."""
 
 
+class InvalidMobileClientMark(DomainError):
+    """Mob: HITL klient mobilny — nie Expo / EAS / kwota."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 

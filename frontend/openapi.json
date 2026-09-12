@@ -14168,6 +14168,80 @@
         ]
       }
     },
+    "/api/v1/mobile-client-marks": {
+      "get": {
+        "tags": [
+          "mobile-client-mark"
+        ],
+        "summary": "List Mobile Client Marks",
+        "operationId": "list_mobile_client_marks_api_v1_mobile_client_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/MobileClientMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Mobile Client Marks Api V1 Mobile Client Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "mobile-client-mark"
+        ],
+        "summary": "Create Mobile Client Mark",
+        "operationId": "create_mobile_client_mark_api_v1_mobile_client_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MobileClientMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MobileClientMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/cost-to-serves": {
       "get": {
         "tags": [
@@ -29350,6 +29424,71 @@
           "source_ref"
         ],
         "title": "MemoryEdgeResponse"
+      },
+      "MobileClientMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "client_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Client Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "client_kind",
+          "source_ref"
+        ],
+        "title": "MobileClientMarkCreate"
+      },
+      "MobileClientMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "client_kind": {
+            "type": "string",
+            "title": "Client Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "client_kind",
+          "source_ref"
+        ],
+        "title": "MobileClientMarkResponse"
       },
       "MoneyCostCreate": {
         "properties": {

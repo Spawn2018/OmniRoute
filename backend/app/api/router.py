@@ -105,6 +105,7 @@ from app.api import (
     mail_drafts,
     make_or_buy_marks,
     memory_edges,
+    mobile_client_marks,
     money_costs,
     monitoring_schemes,
     mqc_marks,
@@ -379,6 +380,7 @@ api_router.include_router(cash_discounts.router)
 api_router.include_router(cash_flows.router)
 api_router.include_router(copy_ban_marks.router)
 api_router.include_router(erru_marks.router)
+api_router.include_router(mobile_client_marks.router)
 api_router.include_router(cost_to_serve.router)
 api_router.include_router(bookkeeping.router)
 api_router.include_router(collective_invoices.router)
