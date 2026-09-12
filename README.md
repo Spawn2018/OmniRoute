@@ -86,10 +86,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **424.0** EXP1 HITL `payment_terms_mark`
-- **Etap:** Plaster — **425.0** EXP1 (delta zaakceptowana, wolno `/plaster`)
-- **Następny:** **425.0** EXP1 HITL `language_code_mark` (pl|en|de|other) — kolejka po cutoff.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **425.0** EXP1 HITL `language_code_mark`
+- **Etap:** Plan — **426.0** EXP1
+- **Następny:** **426.0** EXP1 HITL `haulier_role_mark` (booked|actual|other) — kolejka po cutoff.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

@@ -191,6 +191,7 @@ modules =
     app.services.profit_center_marks
     app.services.high_value_marks
     app.services.payment_terms_marks
+    app.services.language_code_marks
     app.services.impersonate_guard_marks
     app.services.csrd_marks
     app.services.air_ra3_marks
@@ -883,6 +884,9 @@ forbidden_modules =
     app.services.payment_terms_marks
     app.repositories.payment_terms_marks
     app.models.payment_terms_mark
+    app.services.language_code_marks
+    app.repositories.language_code_marks
+    app.models.language_code_mark
     app.services.impersonate_guard_marks
     app.repositories.impersonate_guard_marks
     app.models.impersonate_guard_mark

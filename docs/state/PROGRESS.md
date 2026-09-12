@@ -788,3 +788,5 @@
 - 2026-09-12T20:14:30Z · 423.0 · high_value_mark · DONE · HITL protokó³ high_value|protocol|other · migracja 333 · /high-value-marks
 
 - 2026-09-12T20:40:05Z · 424.0 · payment_terms_mark · DONE · HITL terms_kind net|prepaid|other · migracja 334 · /payment-terms-marks
+
+- 2026-09-12T21:01:11Z · 425.0 · language_code_mark · DONE · HITL locale_kind pl|en|de|other · migracja 335 · /language-code-marks

@@ -107,6 +107,7 @@ from app.api import (
     label_parking_marks,
     lane_kms,
     lane_patterns,
+    language_code_marks,
     lc_checklists,
     legal_hold_marks,
     lez_marks,
@@ -322,6 +323,7 @@ api_router.include_router(kreptd_licences.router)
 api_router.include_router(lane_patterns.router)
 api_router.include_router(lane_kms.router)
 api_router.include_router(lc_checklists.router)
+api_router.include_router(language_code_marks.router)
 api_router.include_router(ncts_drafts.router)
 api_router.include_router(circle_sims.router)
 api_router.include_router(clause_notices.router)

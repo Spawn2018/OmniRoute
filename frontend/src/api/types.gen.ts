@@ -6221,6 +6221,50 @@ export type LaneScorecardUpsert = {
 };
 
 /**
+ * LanguageCodeMarkCreate
+ */
+export type LanguageCodeMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Locale Kind
+     */
+    locale_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * LanguageCodeMarkResponse
+ */
+export type LanguageCodeMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Locale Kind
+     */
+    locale_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * LcChecklistCreate
  */
 export type LcChecklistCreate = {
@@ -18146,6 +18190,49 @@ export type CreateLcChecklistApiV1LcChecklistsPostResponses = {
 };
 
 export type CreateLcChecklistApiV1LcChecklistsPostResponse = CreateLcChecklistApiV1LcChecklistsPostResponses[keyof CreateLcChecklistApiV1LcChecklistsPostResponses];
+
+export type ListLanguageCodeMarksApiV1LanguageCodeMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/language-code-marks';
+};
+
+export type ListLanguageCodeMarksApiV1LanguageCodeMarksGetResponses = {
+    /**
+     * Response List Language Code Marks Api V1 Language Code Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<LanguageCodeMarkResponse>;
+};
+
+export type ListLanguageCodeMarksApiV1LanguageCodeMarksGetResponse = ListLanguageCodeMarksApiV1LanguageCodeMarksGetResponses[keyof ListLanguageCodeMarksApiV1LanguageCodeMarksGetResponses];
+
+export type CreateLanguageCodeMarkApiV1LanguageCodeMarksPostData = {
+    body: LanguageCodeMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/language-code-marks';
+};
+
+export type CreateLanguageCodeMarkApiV1LanguageCodeMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateLanguageCodeMarkApiV1LanguageCodeMarksPostError = CreateLanguageCodeMarkApiV1LanguageCodeMarksPostErrors[keyof CreateLanguageCodeMarkApiV1LanguageCodeMarksPostErrors];
+
+export type CreateLanguageCodeMarkApiV1LanguageCodeMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: LanguageCodeMarkResponse;
+};
+
+export type CreateLanguageCodeMarkApiV1LanguageCodeMarksPostResponse = CreateLanguageCodeMarkApiV1LanguageCodeMarksPostResponses[keyof CreateLanguageCodeMarkApiV1LanguageCodeMarksPostResponses];
 
 export type ListNctsDraftsApiV1NctsDraftsGetData = {
     body?: never;

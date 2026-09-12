@@ -7984,6 +7984,80 @@
         ]
       }
     },
+    "/api/v1/language-code-marks": {
+      "get": {
+        "tags": [
+          "language-code-mark"
+        ],
+        "summary": "List Language Code Marks",
+        "operationId": "list_language_code_marks_api_v1_language_code_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/LanguageCodeMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Language Code Marks Api V1 Language Code Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "language-code-mark"
+        ],
+        "summary": "Create Language Code Mark",
+        "operationId": "create_language_code_mark_api_v1_language_code_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LanguageCodeMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LanguageCodeMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/ncts-drafts": {
       "get": {
         "tags": [
@@ -31120,6 +31194,71 @@
           "destination_port_id"
         ],
         "title": "LaneScorecardUpsert"
+      },
+      "LanguageCodeMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "locale_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Locale Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "locale_kind",
+          "source_ref"
+        ],
+        "title": "LanguageCodeMarkCreate"
+      },
+      "LanguageCodeMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "locale_kind": {
+            "type": "string",
+            "title": "Locale Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "locale_kind",
+          "source_ref"
+        ],
+        "title": "LanguageCodeMarkResponse"
       },
       "LcChecklistCreate": {
         "properties": {

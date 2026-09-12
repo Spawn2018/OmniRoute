@@ -1026,6 +1026,10 @@ class InvalidPaymentTermsMark(DomainError):
     """EXP1: HITL payment_terms_mark — nie kolumna shipment / payment_terms_days."""
 
 
+class InvalidLanguageCodeMark(DomainError):
+    """EXP1: HITL language_code_mark — nie kolumna shipment / preferred_language party."""
+
+
 class InvalidImpersonateGuardMark(DomainError):
     """EXP0.12: HITL impersonate≠unwrap — nie crypto / Auth0 live."""
 

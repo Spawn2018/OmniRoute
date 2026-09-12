@@ -114,6 +114,7 @@ import { Route as KreptdLicencesRouteImport } from './routes/kreptd-licences'
 import { Route as LabelParkingMarksRouteImport } from './routes/label-parking-marks'
 import { Route as LaneKmsRouteImport } from './routes/lane-kms'
 import { Route as LanePatternsRouteImport } from './routes/lane-patterns'
+import { Route as LanguageCodeMarksRouteImport } from './routes/language-code-marks'
 import { Route as LcChecklistsRouteImport } from './routes/lc-checklists'
 import { Route as LclRouteImport } from './routes/lcl'
 import { Route as LegalHoldMarksRouteImport } from './routes/legal-hold-marks'
@@ -767,6 +768,11 @@ const LaneKmsRoute = LaneKmsRouteImport.update({
 const LanePatternsRoute = LanePatternsRouteImport.update({
   id: '/lane-patterns',
   path: '/lane-patterns',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LanguageCodeMarksRoute = LanguageCodeMarksRouteImport.update({
+  id: '/language-code-marks',
+  path: '/language-code-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LcChecklistsRoute = LcChecklistsRouteImport.update({
@@ -1522,6 +1528,7 @@ export interface FileRoutesByFullPath {
   '/label-parking-marks': typeof LabelParkingMarksRoute
   '/lane-kms': typeof LaneKmsRoute
   '/lane-patterns': typeof LanePatternsRoute
+  '/language-code-marks': typeof LanguageCodeMarksRoute
   '/lc-checklists': typeof LcChecklistsRoute
   '/lcl': typeof LclRoute
   '/legal-hold-marks': typeof LegalHoldMarksRoute
@@ -1758,6 +1765,7 @@ export interface FileRoutesByTo {
   '/label-parking-marks': typeof LabelParkingMarksRoute
   '/lane-kms': typeof LaneKmsRoute
   '/lane-patterns': typeof LanePatternsRoute
+  '/language-code-marks': typeof LanguageCodeMarksRoute
   '/lc-checklists': typeof LcChecklistsRoute
   '/lcl': typeof LclRoute
   '/legal-hold-marks': typeof LegalHoldMarksRoute
@@ -1995,6 +2003,7 @@ export interface FileRoutesById {
   '/label-parking-marks': typeof LabelParkingMarksRoute
   '/lane-kms': typeof LaneKmsRoute
   '/lane-patterns': typeof LanePatternsRoute
+  '/language-code-marks': typeof LanguageCodeMarksRoute
   '/lc-checklists': typeof LcChecklistsRoute
   '/lcl': typeof LclRoute
   '/legal-hold-marks': typeof LegalHoldMarksRoute
@@ -2233,6 +2242,7 @@ export interface FileRouteTypes {
     | '/label-parking-marks'
     | '/lane-kms'
     | '/lane-patterns'
+    | '/language-code-marks'
     | '/lc-checklists'
     | '/lcl'
     | '/legal-hold-marks'
@@ -2469,6 +2479,7 @@ export interface FileRouteTypes {
     | '/label-parking-marks'
     | '/lane-kms'
     | '/lane-patterns'
+    | '/language-code-marks'
     | '/lc-checklists'
     | '/lcl'
     | '/legal-hold-marks'
@@ -2705,6 +2716,7 @@ export interface FileRouteTypes {
     | '/label-parking-marks'
     | '/lane-kms'
     | '/lane-patterns'
+    | '/language-code-marks'
     | '/lc-checklists'
     | '/lcl'
     | '/legal-hold-marks'
@@ -2942,6 +2954,7 @@ export interface RootRouteChildren {
   LabelParkingMarksRoute: typeof LabelParkingMarksRoute
   LaneKmsRoute: typeof LaneKmsRoute
   LanePatternsRoute: typeof LanePatternsRoute
+  LanguageCodeMarksRoute: typeof LanguageCodeMarksRoute
   LcChecklistsRoute: typeof LcChecklistsRoute
   LclRoute: typeof LclRoute
   LegalHoldMarksRoute: typeof LegalHoldMarksRoute
@@ -3808,6 +3821,13 @@ declare module '@tanstack/react-router' {
       path: '/lane-patterns'
       fullPath: '/lane-patterns'
       preLoaderRoute: typeof LanePatternsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/language-code-marks': {
+      id: '/language-code-marks'
+      path: '/language-code-marks'
+      fullPath: '/language-code-marks'
+      preLoaderRoute: typeof LanguageCodeMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lc-checklists': {
@@ -4822,6 +4842,7 @@ const rootRouteChildren: RootRouteChildren = {
   LabelParkingMarksRoute: LabelParkingMarksRoute,
   LaneKmsRoute: LaneKmsRoute,
   LanePatternsRoute: LanePatternsRoute,
+  LanguageCodeMarksRoute: LanguageCodeMarksRoute,
   LcChecklistsRoute: LcChecklistsRoute,
   LclRoute: LclRoute,
   LegalHoldMarksRoute: LegalHoldMarksRoute,

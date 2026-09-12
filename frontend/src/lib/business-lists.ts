@@ -141,6 +141,10 @@ export const BUSINESS_LISTS = {
     route: "/payment-terms-marks",
     tableKey: "payment_terms_mark",
   },
+  languageCodeMark: {
+    route: "/language-code-marks",
+    tableKey: "language_code_mark",
+  },
   tenantContractKek: { route: "/tenant-contract-keks", tableKey: "tenant_contract_kek" },
   visibilityConnector: { route: "/visibility-connectors", tableKey: "visibility_connector" },
   purchaseOrder: { route: "/purchase-orders", tableKey: "purchase_order" },
@@ -428,6 +432,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/profit-center-marks",
   "/high-value-marks",
   "/payment-terms-marks",
+  "/language-code-marks",
   "/impersonate-guard-marks",
   "/csrd-marks",
   "/air-ra3-marks",
