@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **397.0** EXP4.19 HITL `copy_ban_mark`. **Etap:** Plan — **398.0** EXP4.20. **Następny:** **398.0** EXP4.20 ERRU HITL `erru_mark` (kolejka EXP4). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **397.0** EXP4.19 HITL `copy_ban_mark`. **Etap:** Plaster — **398.0** EXP4.20 (delta zaakceptowana `/noc`, wolno `/plaster`). **Następny:** **398.0** EXP4.20 ERRU HITL `erru_mark` (kolejka EXP4). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
