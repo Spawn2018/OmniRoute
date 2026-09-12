@@ -4,17 +4,17 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **390.0** EXP4.12 HITL `label_parking_mark`
+**Ostatni plaster:** **391.0** EXP4.13 HITL `ab_sus_mark`
 
-**Etap:** Plan — **391.0** EXP4.13
+**Etap:** Plan — **392.0** EXP4.14
 
 **Noc:** `/noc 10` do 2026-09-12T10:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).
 
-**Następny:** **391.0** EXP4.13 A/B+SUS HITL `ab_sus_mark` (kolejka EXP4; DTC→CMMS = leftover `cmms_mark`).
+**Następny:** **392.0** EXP4.14 X7 lejek HITL `funnel_mark` (kolejka EXP4).
 
-Park: parking live API · mapa parkingów · GPS. Nie zgaduj 71–391.
+Park: A/B live · scoring SUS. Nie zgaduj 71–392.
 
-**Spec (jedyna na sesję):** (brak — plan 391.0).
+**Spec (jedyna na sesję):** (brak — plan 392.0).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
@@ -22,4 +22,4 @@ Park: parking live API · mapa parkingów · GPS. Nie zgaduj 71–391.
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-12:** Plaster **390.0** zamknięty (`/noc`) — HITL `label_parking_mark`.
+**2026-09-12:** Plaster **391.0** zamknięty (`/noc`) — HITL `ab_sus_mark`.

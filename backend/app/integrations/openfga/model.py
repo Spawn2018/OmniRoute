@@ -198,6 +198,12 @@ def _organization_exp2_catalog_relations() -> dict[str, Userset]:
         "can_manage_tender_decline_reasons": _member(),
         "can_manage_demand_snapshot_marks": _member(),
         "can_manage_csrd_marks": _member(),
+        **_organization_exp4_catalog_relations(),
+    }
+
+
+def _organization_exp4_catalog_relations() -> dict[str, Userset]:
+    return {
         "can_manage_air_ra3_marks": _member(),
         "can_manage_rail_cim_marks": _member(),
         "can_manage_ocean_alliance_marks": _member(),
@@ -209,6 +215,7 @@ def _organization_exp2_catalog_relations() -> dict[str, Userset]:
         "can_manage_tacho_office_marks": _member(),
         "can_manage_lez_marks": _member(),
         "can_manage_label_parking_marks": _member(),
+        "can_manage_ab_sus_marks": _member(),
     }
 
 

@@ -11372,6 +11372,80 @@
         ]
       }
     },
+    "/api/v1/ab-sus-marks": {
+      "get": {
+        "tags": [
+          "ab-sus"
+        ],
+        "summary": "List Ab Sus Marks",
+        "operationId": "list_ab_sus_marks_api_v1_ab_sus_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/AbSusMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Ab Sus Marks Api V1 Ab Sus Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "ab-sus"
+        ],
+        "summary": "Create Ab Sus Mark",
+        "operationId": "create_ab_sus_mark_api_v1_ab_sus_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AbSusMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AbSusMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/air-ra3-marks": {
       "get": {
         "tags": [
@@ -19075,6 +19149,71 @@
   },
   "components": {
     "schemas": {
+      "AbSusMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "trial_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Trial Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "trial_kind",
+          "source_ref"
+        ],
+        "title": "AbSusMarkCreate"
+      },
+      "AbSusMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "trial_kind": {
+            "type": "string",
+            "title": "Trial Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "trial_kind",
+          "source_ref"
+        ],
+        "title": "AbSusMarkResponse"
+      },
       "AbandonedRtoMarkCreate": {
         "properties": {
           "mark_code": {

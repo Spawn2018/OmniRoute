@@ -5,6 +5,50 @@ export type ClientOptions = {
 };
 
 /**
+ * AbSusMarkCreate
+ */
+export type AbSusMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Trial Kind
+     */
+    trial_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * AbSusMarkResponse
+ */
+export type AbSusMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Trial Kind
+     */
+    trial_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * AbandonedRtoMarkCreate
  */
 export type AbandonedRtoMarkCreate = {
@@ -18651,6 +18695,49 @@ export type CreateAbandonedRtoMarkApiV1AbandonedRtoMarksPostResponses = {
 };
 
 export type CreateAbandonedRtoMarkApiV1AbandonedRtoMarksPostResponse = CreateAbandonedRtoMarkApiV1AbandonedRtoMarksPostResponses[keyof CreateAbandonedRtoMarkApiV1AbandonedRtoMarksPostResponses];
+
+export type ListAbSusMarksApiV1AbSusMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/ab-sus-marks';
+};
+
+export type ListAbSusMarksApiV1AbSusMarksGetResponses = {
+    /**
+     * Response List Ab Sus Marks Api V1 Ab Sus Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<AbSusMarkResponse>;
+};
+
+export type ListAbSusMarksApiV1AbSusMarksGetResponse = ListAbSusMarksApiV1AbSusMarksGetResponses[keyof ListAbSusMarksApiV1AbSusMarksGetResponses];
+
+export type CreateAbSusMarkApiV1AbSusMarksPostData = {
+    body: AbSusMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/ab-sus-marks';
+};
+
+export type CreateAbSusMarkApiV1AbSusMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateAbSusMarkApiV1AbSusMarksPostError = CreateAbSusMarkApiV1AbSusMarksPostErrors[keyof CreateAbSusMarkApiV1AbSusMarksPostErrors];
+
+export type CreateAbSusMarkApiV1AbSusMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: AbSusMarkResponse;
+};
+
+export type CreateAbSusMarkApiV1AbSusMarksPostResponse = CreateAbSusMarkApiV1AbSusMarksPostResponses[keyof CreateAbSusMarkApiV1AbSusMarksPostResponses];
 
 export type ListAirRa3MarksApiV1AirRa3MarksGetData = {
     body?: never;

@@ -1054,6 +1054,10 @@ class InvalidLabelParkingMark(DomainError):
     """EXP4.12: HITL LABEL parking — nie parking live / mapa."""
 
 
+class InvalidAbSusMark(DomainError):
+    """EXP4.13: HITL A/B+SUS — nie A/B live / scoring SUS."""
+
+
 class InvalidFreightAuditMark(DomainError):
     """CT10: HITL rodzaj audytu frachtu — nie druga marża."""
 
