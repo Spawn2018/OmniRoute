@@ -1018,6 +1018,10 @@ class InvalidProfitCenterMark(DomainError):
     """EXP1: HITL profit_center_mark — nie kolumna shipment / kwota."""
 
 
+class InvalidHighValueMark(DomainError):
+    """EXP1: HITL high_value_mark — nie kolumna shipment / cargo_value."""
+
+
 class InvalidImpersonateGuardMark(DomainError):
     """EXP0.12: HITL impersonate≠unwrap — nie crypto / Auth0 live."""
 

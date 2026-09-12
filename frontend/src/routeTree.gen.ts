@@ -99,6 +99,7 @@ import { Route as GeneralAverageMarksRouteImport } from './routes/general-averag
 import { Route as GroupageRouteImport } from './routes/groupage'
 import { Route as GroupageTariffsRouteImport } from './routes/groupage-tariffs'
 import { Route as HealthRouteImport } from './routes/health'
+import { Route as HighValueMarksRouteImport } from './routes/high-value-marks'
 import { Route as IdpConnectorsRouteImport } from './routes/idp-connectors'
 import { Route as ImpactScenariosRouteImport } from './routes/impact-scenarios'
 import { Route as ImpersonateGuardMarksRouteImport } from './routes/impersonate-guard-marks'
@@ -690,6 +691,11 @@ const GroupageTariffsRoute = GroupageTariffsRouteImport.update({
 const HealthRoute = HealthRouteImport.update({
   id: '/health',
   path: '/health',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HighValueMarksRoute = HighValueMarksRouteImport.update({
+  id: '/high-value-marks',
+  path: '/high-value-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IdpConnectorsRoute = IdpConnectorsRouteImport.update({
@@ -1495,6 +1501,7 @@ export interface FileRoutesByFullPath {
   '/groupage': typeof GroupageRoute
   '/groupage-tariffs': typeof GroupageTariffsRoute
   '/health': typeof HealthRoute
+  '/high-value-marks': typeof HighValueMarksRoute
   '/idp-connectors': typeof IdpConnectorsRoute
   '/impact-scenarios': typeof ImpactScenariosRoute
   '/impersonate-guard-marks': typeof ImpersonateGuardMarksRoute
@@ -1729,6 +1736,7 @@ export interface FileRoutesByTo {
   '/groupage': typeof GroupageRoute
   '/groupage-tariffs': typeof GroupageTariffsRoute
   '/health': typeof HealthRoute
+  '/high-value-marks': typeof HighValueMarksRoute
   '/idp-connectors': typeof IdpConnectorsRoute
   '/impact-scenarios': typeof ImpactScenariosRoute
   '/impersonate-guard-marks': typeof ImpersonateGuardMarksRoute
@@ -1964,6 +1972,7 @@ export interface FileRoutesById {
   '/groupage': typeof GroupageRoute
   '/groupage-tariffs': typeof GroupageTariffsRoute
   '/health': typeof HealthRoute
+  '/high-value-marks': typeof HighValueMarksRoute
   '/idp-connectors': typeof IdpConnectorsRoute
   '/impact-scenarios': typeof ImpactScenariosRoute
   '/impersonate-guard-marks': typeof ImpersonateGuardMarksRoute
@@ -2200,6 +2209,7 @@ export interface FileRouteTypes {
     | '/groupage'
     | '/groupage-tariffs'
     | '/health'
+    | '/high-value-marks'
     | '/idp-connectors'
     | '/impact-scenarios'
     | '/impersonate-guard-marks'
@@ -2434,6 +2444,7 @@ export interface FileRouteTypes {
     | '/groupage'
     | '/groupage-tariffs'
     | '/health'
+    | '/high-value-marks'
     | '/idp-connectors'
     | '/impact-scenarios'
     | '/impersonate-guard-marks'
@@ -2668,6 +2679,7 @@ export interface FileRouteTypes {
     | '/groupage'
     | '/groupage-tariffs'
     | '/health'
+    | '/high-value-marks'
     | '/idp-connectors'
     | '/impact-scenarios'
     | '/impersonate-guard-marks'
@@ -2903,6 +2915,7 @@ export interface RootRouteChildren {
   GroupageRoute: typeof GroupageRoute
   GroupageTariffsRoute: typeof GroupageTariffsRoute
   HealthRoute: typeof HealthRoute
+  HighValueMarksRoute: typeof HighValueMarksRoute
   IdpConnectorsRoute: typeof IdpConnectorsRoute
   ImpactScenariosRoute: typeof ImpactScenariosRoute
   ImpersonateGuardMarksRoute: typeof ImpersonateGuardMarksRoute
@@ -3677,6 +3690,13 @@ declare module '@tanstack/react-router' {
       path: '/health'
       fullPath: '/health'
       preLoaderRoute: typeof HealthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/high-value-marks': {
+      id: '/high-value-marks'
+      path: '/high-value-marks'
+      fullPath: '/high-value-marks'
+      preLoaderRoute: typeof HighValueMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/idp-connectors': {
@@ -4767,6 +4787,7 @@ const rootRouteChildren: RootRouteChildren = {
   GroupageRoute: GroupageRoute,
   GroupageTariffsRoute: GroupageTariffsRoute,
   HealthRoute: HealthRoute,
+  HighValueMarksRoute: HighValueMarksRoute,
   IdpConnectorsRoute: IdpConnectorsRoute,
   ImpactScenariosRoute: ImpactScenariosRoute,
   ImpersonateGuardMarksRoute: ImpersonateGuardMarksRoute,

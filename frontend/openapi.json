@@ -2349,6 +2349,80 @@
         ]
       }
     },
+    "/api/v1/high-value-marks": {
+      "get": {
+        "tags": [
+          "high-value-mark"
+        ],
+        "summary": "List High Value Marks",
+        "operationId": "list_high_value_marks_api_v1_high_value_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HighValueMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List High Value Marks Api V1 High Value Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "high-value-mark"
+        ],
+        "summary": "Create High Value Mark",
+        "operationId": "create_high_value_mark_api_v1_high_value_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HighValueMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HighValueMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/customer-rfqs": {
       "get": {
         "tags": [
@@ -29489,6 +29563,71 @@
         },
         "type": "object",
         "title": "HTTPValidationError"
+      },
+      "HighValueMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "protocol_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Protocol Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "protocol_kind",
+          "source_ref"
+        ],
+        "title": "HighValueMarkCreate"
+      },
+      "HighValueMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "protocol_kind": {
+            "type": "string",
+            "title": "Protocol Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "protocol_kind",
+          "source_ref"
+        ],
+        "title": "HighValueMarkResponse"
       },
       "IbanDraftResponse": {
         "properties": {

@@ -784,3 +784,5 @@
 | 2026-09-11 | 278.0 | CT1 | asn HITL awizo na PO. Nie live EDI. Nie auto shipment. Nastepny: leftover auto shipment / reszta pinu Plan. |
 | 2026-09-11 | Plan 279.0 | CT4 | routing_guide HITL katalog. Auto shipment/CT2 parked z powodem. Delta zaakceptowana (`/noc`). Nastepny: kod 279.0. |
 | 2026-09-11 | 279.0 | CT4 | routing_guide HITL katalog. Nie 409. Nastepny: leftover CT / pin Plan. |
+
+- 2026-09-12T20:14:30Z · 423.0 · high_value_mark · DONE · HITL protokó³ high_value|protocol|other · migracja 333 · /high-value-marks

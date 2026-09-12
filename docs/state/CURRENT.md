@@ -1,26 +1,27 @@
-# Bieżący focus
+﻿# CURRENT
 
-**Faza:** P0 leftover + pełna oś pinu 2026-09-08c (Luki i ulepszenia)
+## Cel
+423.0 DONE. Następny: 424.0 EXP1 leftover HITL (kolejka Fali E / EXP1 shipment marks).
 
-**Repo:** https://github.com/Spawn2018/OmniRoute
+## Etap
+Plan
 
-**Ostatni plaster:** **422.0** EXP1 HITL `profit_center_mark`
+## Zakres
+EXP1 HITL katalog — po high_value_mark.
 
-**Etap:** Plaster — **423.0** EXP1 (delta zaakceptowana `/noc`)
+## Ustalenia
+- 423.0 high_value_mark: protocol_kind high_value|protocol|other; bez cargo_value.
+- OpenFGA: can_manage_high_value_marks.
+- GitHub Actions billing limit — lokalny gate.
 
-**Noc:** `/noc 10` do 2026-09-13T10:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).
+## Następny
+424.0 — plan delty EXP1 leftover HITL (CURRENT/PLAN Fali E).
 
-**Następny:** **423.0** EXP1 HITL `high_value_mark` (high_value|protocol|other) — kolejka po cutoff.
+## Spec
+(brak — etap Plan)
 
-Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj 71–423.
+## Plaster
+423.0
 
-**Spec (jedyna na sesję):** [docs/deltas/open/423.0-high-value-mark.md](../deltas/open/423.0-high-value-mark.md)
-
-**Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
-
-**Uczciwość:** HITL zostaje. LLM nie liczy. `charge` = marża. Impersonate ≠ decrypt.
-
-**Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
-
-**2026-09-12:** Plaster **421.0** zamknięty (`/noc`) — HITL `customer_po_mark`.
-**2026-09-12:** Plaster **422.0** zamknięty (`/noc`) — HITL `profit_center_mark`.
+## Ostatni
+423.0 EXP1 HITL high_value_mark

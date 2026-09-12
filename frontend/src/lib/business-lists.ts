@@ -133,6 +133,10 @@ export const BUSINESS_LISTS = {
     route: "/profit-center-marks",
     tableKey: "profit_center_mark",
   },
+  highValueMark: {
+    route: "/high-value-marks",
+    tableKey: "high_value_mark",
+  },
   tenantContractKek: { route: "/tenant-contract-keks", tableKey: "tenant_contract_kek" },
   visibilityConnector: { route: "/visibility-connectors", tableKey: "visibility_connector" },
   purchaseOrder: { route: "/purchase-orders", tableKey: "purchase_order" },
@@ -418,6 +422,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/freight-term-marks",
   "/customer-po-marks",
   "/profit-center-marks",
+  "/high-value-marks",
   "/impersonate-guard-marks",
   "/csrd-marks",
   "/air-ra3-marks",

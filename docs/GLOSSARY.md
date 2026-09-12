@@ -265,6 +265,7 @@
 | znacznik warunku frachtu | freight_term_mark | EXP1 HITL prepaid\|collect\|third_party\|other; nie kolumna shipment |
 | znacznik referencji PO klienta | customer_po_mark | EXP1 HITL customer_po\|release\|call_off\|other; nie purchase_order CT1 |
 | znacznik centrum zysku/kosztu | profit_center_mark | EXP1 HITL profit\|cost\|project\|other; nie kolumna shipment |
+| znacznik protokolu high-value | high_value_mark | EXP1 HITL high_value\|protocol\|other; nie kolumna shipment |
 | fabryka demo | demo_sim | Demo-1; nie GBOX klienta |
 | zakłócenie demo | demo_disruption | korki/wypadki fixture |
 | zużycie platformy | platform_usage_daily | Admin-P; agregat; nie cross-tenant SELECT |

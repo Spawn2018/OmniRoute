@@ -5225,6 +5225,50 @@ export type HttpValidationError = {
 };
 
 /**
+ * HighValueMarkCreate
+ */
+export type HighValueMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Protocol Kind
+     */
+    protocol_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * HighValueMarkResponse
+ */
+export type HighValueMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Protocol Kind
+     */
+    protocol_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * IbanDraftResponse
  */
 export type IbanDraftResponse = {
@@ -14835,6 +14879,49 @@ export type CreateProfitCenterMarkApiV1ProfitCenterMarksPostResponses = {
 };
 
 export type CreateProfitCenterMarkApiV1ProfitCenterMarksPostResponse = CreateProfitCenterMarkApiV1ProfitCenterMarksPostResponses[keyof CreateProfitCenterMarkApiV1ProfitCenterMarksPostResponses];
+
+export type ListHighValueMarksApiV1HighValueMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/high-value-marks';
+};
+
+export type ListHighValueMarksApiV1HighValueMarksGetResponses = {
+    /**
+     * Response List High Value Marks Api V1 High Value Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<HighValueMarkResponse>;
+};
+
+export type ListHighValueMarksApiV1HighValueMarksGetResponse = ListHighValueMarksApiV1HighValueMarksGetResponses[keyof ListHighValueMarksApiV1HighValueMarksGetResponses];
+
+export type CreateHighValueMarkApiV1HighValueMarksPostData = {
+    body: HighValueMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/high-value-marks';
+};
+
+export type CreateHighValueMarkApiV1HighValueMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateHighValueMarkApiV1HighValueMarksPostError = CreateHighValueMarkApiV1HighValueMarksPostErrors[keyof CreateHighValueMarkApiV1HighValueMarksPostErrors];
+
+export type CreateHighValueMarkApiV1HighValueMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: HighValueMarkResponse;
+};
+
+export type CreateHighValueMarkApiV1HighValueMarksPostResponse = CreateHighValueMarkApiV1HighValueMarksPostResponses[keyof CreateHighValueMarkApiV1HighValueMarksPostResponses];
 
 export type ListCustomerRfqsApiV1CustomerRfqsGetData = {
     body?: never;

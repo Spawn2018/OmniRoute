@@ -189,6 +189,7 @@ modules =
     app.services.freight_term_marks
     app.services.customer_po_marks
     app.services.profit_center_marks
+    app.services.high_value_marks
     app.services.impersonate_guard_marks
     app.services.csrd_marks
     app.services.air_ra3_marks
@@ -875,6 +876,9 @@ forbidden_modules =
     app.services.profit_center_marks
     app.repositories.profit_center_marks
     app.models.profit_center_mark
+    app.services.high_value_marks
+    app.repositories.high_value_marks
+    app.models.high_value_mark
     app.services.impersonate_guard_marks
     app.repositories.impersonate_guard_marks
     app.models.impersonate_guard_mark

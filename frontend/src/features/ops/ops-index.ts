@@ -1090,6 +1090,11 @@ export const OPS_JOBS = [
     job: "katalog profit_center_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.highValueMark.route,
+    label: "Protokol high-value",
+    job: "katalog high_value_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.impersonateGuardMark.route,
     label: "Impersonate guard",
     job: "katalog impersonate_guard_mark HITL",
@@ -1550,6 +1555,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "420.0": "/freight-term-marks",
   "421.0": "/customer-po-marks",
   "422.0": "/profit-center-marks",
+  "423.0": "/high-value-marks",
 } as const
 
 
