@@ -8277,6 +8277,50 @@ export type PartyScreenSanctions = {
 };
 
 /**
+ * PaymentTermsMarkCreate
+ */
+export type PaymentTermsMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Terms Kind
+     */
+    terms_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * PaymentTermsMarkResponse
+ */
+export type PaymentTermsMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Terms Kind
+     */
+    terms_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * PenaltyMarkCreate
  */
 export type PenaltyMarkCreate = {
@@ -14922,6 +14966,49 @@ export type CreateHighValueMarkApiV1HighValueMarksPostResponses = {
 };
 
 export type CreateHighValueMarkApiV1HighValueMarksPostResponse = CreateHighValueMarkApiV1HighValueMarksPostResponses[keyof CreateHighValueMarkApiV1HighValueMarksPostResponses];
+
+export type ListPaymentTermsMarksApiV1PaymentTermsMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/payment-terms-marks';
+};
+
+export type ListPaymentTermsMarksApiV1PaymentTermsMarksGetResponses = {
+    /**
+     * Response List Payment Terms Marks Api V1 Payment Terms Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<PaymentTermsMarkResponse>;
+};
+
+export type ListPaymentTermsMarksApiV1PaymentTermsMarksGetResponse = ListPaymentTermsMarksApiV1PaymentTermsMarksGetResponses[keyof ListPaymentTermsMarksApiV1PaymentTermsMarksGetResponses];
+
+export type CreatePaymentTermsMarkApiV1PaymentTermsMarksPostData = {
+    body: PaymentTermsMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/payment-terms-marks';
+};
+
+export type CreatePaymentTermsMarkApiV1PaymentTermsMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreatePaymentTermsMarkApiV1PaymentTermsMarksPostError = CreatePaymentTermsMarkApiV1PaymentTermsMarksPostErrors[keyof CreatePaymentTermsMarkApiV1PaymentTermsMarksPostErrors];
+
+export type CreatePaymentTermsMarkApiV1PaymentTermsMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: PaymentTermsMarkResponse;
+};
+
+export type CreatePaymentTermsMarkApiV1PaymentTermsMarksPostResponse = CreatePaymentTermsMarkApiV1PaymentTermsMarksPostResponses[keyof CreatePaymentTermsMarkApiV1PaymentTermsMarksPostResponses];
 
 export type ListCustomerRfqsApiV1CustomerRfqsGetData = {
     body?: never;

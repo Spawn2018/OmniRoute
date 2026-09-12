@@ -1022,6 +1022,10 @@ class InvalidHighValueMark(DomainError):
     """EXP1: HITL high_value_mark — nie kolumna shipment / cargo_value."""
 
 
+class InvalidPaymentTermsMark(DomainError):
+    """EXP1: HITL payment_terms_mark — nie kolumna shipment / payment_terms_days."""
+
+
 class InvalidImpersonateGuardMark(DomainError):
     """EXP0.12: HITL impersonate≠unwrap — nie crypto / Auth0 live."""
 

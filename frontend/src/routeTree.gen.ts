@@ -151,6 +151,7 @@ import { Route as PartiesRouteImport } from './routes/parties'
 import { Route as PartnerExchangeMarksRouteImport } from './routes/partner-exchange-marks'
 import { Route as PartyDocumentsRouteImport } from './routes/party-documents'
 import { Route as PartyScorecardsRouteImport } from './routes/party-scorecards'
+import { Route as PaymentTermsMarksRouteImport } from './routes/payment-terms-marks'
 import { Route as PaymentsRouteImport } from './routes/payments'
 import { Route as PenaltyMarksRouteImport } from './routes/penalty-marks'
 import { Route as PeppolMarksRouteImport } from './routes/peppol-marks'
@@ -953,6 +954,11 @@ const PartyScorecardsRoute = PartyScorecardsRouteImport.update({
   path: '/party-scorecards',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PaymentTermsMarksRoute = PaymentTermsMarksRouteImport.update({
+  id: '/payment-terms-marks',
+  path: '/payment-terms-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PaymentsRoute = PaymentsRouteImport.update({
   id: '/payments',
   path: '/payments',
@@ -1553,6 +1559,7 @@ export interface FileRoutesByFullPath {
   '/partner-exchange-marks': typeof PartnerExchangeMarksRoute
   '/party-documents': typeof PartyDocumentsRoute
   '/party-scorecards': typeof PartyScorecardsRoute
+  '/payment-terms-marks': typeof PaymentTermsMarksRoute
   '/payments': typeof PaymentsRoute
   '/penalty-marks': typeof PenaltyMarksRoute
   '/peppol-marks': typeof PeppolMarksRoute
@@ -1788,6 +1795,7 @@ export interface FileRoutesByTo {
   '/partner-exchange-marks': typeof PartnerExchangeMarksRoute
   '/party-documents': typeof PartyDocumentsRoute
   '/party-scorecards': typeof PartyScorecardsRoute
+  '/payment-terms-marks': typeof PaymentTermsMarksRoute
   '/payments': typeof PaymentsRoute
   '/penalty-marks': typeof PenaltyMarksRoute
   '/peppol-marks': typeof PeppolMarksRoute
@@ -2024,6 +2032,7 @@ export interface FileRoutesById {
   '/partner-exchange-marks': typeof PartnerExchangeMarksRoute
   '/party-documents': typeof PartyDocumentsRoute
   '/party-scorecards': typeof PartyScorecardsRoute
+  '/payment-terms-marks': typeof PaymentTermsMarksRoute
   '/payments': typeof PaymentsRoute
   '/penalty-marks': typeof PenaltyMarksRoute
   '/peppol-marks': typeof PeppolMarksRoute
@@ -2261,6 +2270,7 @@ export interface FileRouteTypes {
     | '/partner-exchange-marks'
     | '/party-documents'
     | '/party-scorecards'
+    | '/payment-terms-marks'
     | '/payments'
     | '/penalty-marks'
     | '/peppol-marks'
@@ -2496,6 +2506,7 @@ export interface FileRouteTypes {
     | '/partner-exchange-marks'
     | '/party-documents'
     | '/party-scorecards'
+    | '/payment-terms-marks'
     | '/payments'
     | '/penalty-marks'
     | '/peppol-marks'
@@ -2731,6 +2742,7 @@ export interface FileRouteTypes {
     | '/partner-exchange-marks'
     | '/party-documents'
     | '/party-scorecards'
+    | '/payment-terms-marks'
     | '/payments'
     | '/penalty-marks'
     | '/peppol-marks'
@@ -2967,6 +2979,7 @@ export interface RootRouteChildren {
   PartnerExchangeMarksRoute: typeof PartnerExchangeMarksRoute
   PartyDocumentsRoute: typeof PartyDocumentsRoute
   PartyScorecardsRoute: typeof PartyScorecardsRoute
+  PaymentTermsMarksRoute: typeof PaymentTermsMarksRoute
   PaymentsRoute: typeof PaymentsRoute
   PenaltyMarksRoute: typeof PenaltyMarksRoute
   PeppolMarksRoute: typeof PeppolMarksRoute
@@ -4056,6 +4069,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PartyScorecardsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/payment-terms-marks': {
+      id: '/payment-terms-marks'
+      path: '/payment-terms-marks'
+      fullPath: '/payment-terms-marks'
+      preLoaderRoute: typeof PaymentTermsMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/payments': {
       id: '/payments'
       path: '/payments'
@@ -4839,6 +4859,7 @@ const rootRouteChildren: RootRouteChildren = {
   PartnerExchangeMarksRoute: PartnerExchangeMarksRoute,
   PartyDocumentsRoute: PartyDocumentsRoute,
   PartyScorecardsRoute: PartyScorecardsRoute,
+  PaymentTermsMarksRoute: PaymentTermsMarksRoute,
   PaymentsRoute: PaymentsRoute,
   PenaltyMarksRoute: PenaltyMarksRoute,
   PeppolMarksRoute: PeppolMarksRoute,

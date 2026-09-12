@@ -786,3 +786,5 @@
 | 2026-09-11 | 279.0 | CT4 | routing_guide HITL katalog. Nie 409. Nastepny: leftover CT / pin Plan. |
 
 - 2026-09-12T20:14:30Z · 423.0 · high_value_mark · DONE · HITL protokó³ high_value|protocol|other · migracja 333 · /high-value-marks
+
+- 2026-09-12T20:40:05Z · 424.0 · payment_terms_mark · DONE · HITL terms_kind net|prepaid|other · migracja 334 · /payment-terms-marks

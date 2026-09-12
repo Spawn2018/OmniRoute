@@ -2423,6 +2423,80 @@
         ]
       }
     },
+    "/api/v1/payment-terms-marks": {
+      "get": {
+        "tags": [
+          "payment-terms-mark"
+        ],
+        "summary": "List Payment Terms Marks",
+        "operationId": "list_payment_terms_marks_api_v1_payment_terms_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PaymentTermsMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Payment Terms Marks Api V1 Payment Terms Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "payment-terms-mark"
+        ],
+        "summary": "Create Payment Terms Mark",
+        "operationId": "create_payment_terms_mark_api_v1_payment_terms_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentTermsMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentTermsMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/customer-rfqs": {
       "get": {
         "tags": [
@@ -34218,6 +34292,71 @@
           "sanctions_list_ref"
         ],
         "title": "PartyScreenSanctions"
+      },
+      "PaymentTermsMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "terms_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Terms Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "terms_kind",
+          "source_ref"
+        ],
+        "title": "PaymentTermsMarkCreate"
+      },
+      "PaymentTermsMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "terms_kind": {
+            "type": "string",
+            "title": "Terms Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "terms_kind",
+          "source_ref"
+        ],
+        "title": "PaymentTermsMarkResponse"
       },
       "PenaltyMarkCreate": {
         "properties": {

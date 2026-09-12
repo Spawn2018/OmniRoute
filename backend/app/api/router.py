@@ -147,6 +147,7 @@ from app.api import (
     party_documents,
     party_lane_scorecards,
     party_scorecards,
+    payment_terms_marks,
     penalty_marks,
     peppol_marks,
     phyto_ata_marks,
@@ -259,6 +260,7 @@ api_router.include_router(incoterm_responsibilities.router)
 api_router.include_router(customer_po_marks.router)
 api_router.include_router(profit_center_marks.router)
 api_router.include_router(high_value_marks.router)
+api_router.include_router(payment_terms_marks.router)
 api_router.include_router(customer_rfqs.router)
 api_router.include_router(operator_decisions.router)
 api_router.include_router(operator_notices.router)
