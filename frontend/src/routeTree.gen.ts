@@ -222,6 +222,7 @@ import { Route as ShipmentPackagesRouteImport } from './routes/shipment-packages
 import { Route as ShipmentsRouteImport } from './routes/shipments'
 import { Route as ShipperTenderMarksRouteImport } from './routes/shipper-tender-marks'
 import { Route as SidImportMarksRouteImport } from './routes/sid-import-marks'
+import { Route as SilkCorridorMarksRouteImport } from './routes/silk-corridor-marks'
 import { Route as SlaClausesRouteImport } from './routes/sla-clauses'
 import { Route as SlotGuaranteeMarksRouteImport } from './routes/slot-guarantee-marks'
 import { Route as SpendMarksRouteImport } from './routes/spend-marks'
@@ -1343,6 +1344,11 @@ const SidImportMarksRoute = SidImportMarksRouteImport.update({
   path: '/sid-import-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SilkCorridorMarksRoute = SilkCorridorMarksRouteImport.update({
+  id: '/silk-corridor-marks',
+  path: '/silk-corridor-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SlaClausesRoute = SlaClausesRouteImport.update({
   id: '/sla-clauses',
   path: '/sla-clauses',
@@ -1828,6 +1834,7 @@ export interface FileRoutesByFullPath {
   '/shipments': typeof ShipmentsRoute
   '/shipper-tender-marks': typeof ShipperTenderMarksRoute
   '/sid-import-marks': typeof SidImportMarksRoute
+  '/silk-corridor-marks': typeof SilkCorridorMarksRoute
   '/sla-clauses': typeof SlaClausesRoute
   '/slot-guarantee-marks': typeof SlotGuaranteeMarksRoute
   '/spend-marks': typeof SpendMarksRoute
@@ -2097,6 +2104,7 @@ export interface FileRoutesByTo {
   '/shipments': typeof ShipmentsRoute
   '/shipper-tender-marks': typeof ShipperTenderMarksRoute
   '/sid-import-marks': typeof SidImportMarksRoute
+  '/silk-corridor-marks': typeof SilkCorridorMarksRoute
   '/sla-clauses': typeof SlaClausesRoute
   '/slot-guarantee-marks': typeof SlotGuaranteeMarksRoute
   '/spend-marks': typeof SpendMarksRoute
@@ -2367,6 +2375,7 @@ export interface FileRoutesById {
   '/shipments': typeof ShipmentsRoute
   '/shipper-tender-marks': typeof ShipperTenderMarksRoute
   '/sid-import-marks': typeof SidImportMarksRoute
+  '/silk-corridor-marks': typeof SilkCorridorMarksRoute
   '/sla-clauses': typeof SlaClausesRoute
   '/slot-guarantee-marks': typeof SlotGuaranteeMarksRoute
   '/spend-marks': typeof SpendMarksRoute
@@ -2638,6 +2647,7 @@ export interface FileRouteTypes {
     | '/shipments'
     | '/shipper-tender-marks'
     | '/sid-import-marks'
+    | '/silk-corridor-marks'
     | '/sla-clauses'
     | '/slot-guarantee-marks'
     | '/spend-marks'
@@ -2907,6 +2917,7 @@ export interface FileRouteTypes {
     | '/shipments'
     | '/shipper-tender-marks'
     | '/sid-import-marks'
+    | '/silk-corridor-marks'
     | '/sla-clauses'
     | '/slot-guarantee-marks'
     | '/spend-marks'
@@ -3176,6 +3187,7 @@ export interface FileRouteTypes {
     | '/shipments'
     | '/shipper-tender-marks'
     | '/sid-import-marks'
+    | '/silk-corridor-marks'
     | '/sla-clauses'
     | '/slot-guarantee-marks'
     | '/spend-marks'
@@ -3446,6 +3458,7 @@ export interface RootRouteChildren {
   ShipmentsRoute: typeof ShipmentsRoute
   ShipperTenderMarksRoute: typeof ShipperTenderMarksRoute
   SidImportMarksRoute: typeof SidImportMarksRoute
+  SilkCorridorMarksRoute: typeof SilkCorridorMarksRoute
   SlaClausesRoute: typeof SlaClausesRoute
   SlotGuaranteeMarksRoute: typeof SlotGuaranteeMarksRoute
   SpendMarksRoute: typeof SpendMarksRoute
@@ -4995,6 +5008,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SidImportMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/silk-corridor-marks': {
+      id: '/silk-corridor-marks'
+      path: '/silk-corridor-marks'
+      fullPath: '/silk-corridor-marks'
+      preLoaderRoute: typeof SilkCorridorMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sla-clauses': {
       id: '/sla-clauses'
       path: '/sla-clauses'
@@ -5590,6 +5610,7 @@ const rootRouteChildren: RootRouteChildren = {
   ShipmentsRoute: ShipmentsRoute,
   ShipperTenderMarksRoute: ShipperTenderMarksRoute,
   SidImportMarksRoute: SidImportMarksRoute,
+  SilkCorridorMarksRoute: SilkCorridorMarksRoute,
   SlaClausesRoute: SlaClausesRoute,
   SlotGuaranteeMarksRoute: SlotGuaranteeMarksRoute,
   SpendMarksRoute: SpendMarksRoute,

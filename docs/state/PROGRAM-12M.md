@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **469.0** BR4.3 — HITL `nac_mark` **Następny:** plaster **470.0** HITL `silk_corridor_mark`. Nie live CR Express. Nie FK do `shipment_leg` / `lane_pattern`.
+**Stan (z CURRENT.md):** **470.0** BR4.4 — HITL `silk_corridor_mark` **Następny:** `/plan-modul` **BR5.0** faktoring (integracja z partnerem). Nie live HTTP bez nazwy partnera. Nie zgaduj plaster ID.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

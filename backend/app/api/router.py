@@ -215,6 +215,7 @@ from app.api import (
     shipments,
     shipper_tender_marks,
     sid_import_marks,
+    silk_corridor_marks,
     sla_clauses,
     slot_guarantee_marks,
     spend_marks,
@@ -362,6 +363,7 @@ api_router.include_router(lane_patterns.router)
 api_router.include_router(lane_kms.router)
 api_router.include_router(lcl_console_marks.router)
 api_router.include_router(nac_marks.router)
+api_router.include_router(silk_corridor_marks.router)
 api_router.include_router(lc_checklists.router)
 api_router.include_router(language_code_marks.router)
 api_router.include_router(ncts_drafts.router)

@@ -878,6 +878,10 @@ class InvalidNacMark(DomainError):
     """BR4.3: HITL NAC / agent nominowany — nie live NAC HTTP."""
 
 
+class InvalidSilkCorridorMark(DomainError):
+    """BR4.4: HITL Jedwabny Szlak — nie live CR Express / para UN/LOCODE."""
+
+
 class InvalidLoadPlanMark(DomainError):
     """G6: HITL znacznik planu załadunku — nie solver OR."""
 

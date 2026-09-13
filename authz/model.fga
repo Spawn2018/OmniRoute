@@ -106,6 +106,7 @@ type organization
     define can_manage_oog_permit_marks: member
     define can_manage_lcl_console_marks: member
     define can_manage_nac_marks: member
+    define can_manage_silk_corridor_marks: member
     define can_manage_load_plan_marks: member
     define can_manage_cmms_marks: member
     define can_manage_legal_hold_marks: member
