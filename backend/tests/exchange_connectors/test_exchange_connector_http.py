@@ -115,12 +115,23 @@ def test_http_create_bad_code_is_400(catalog_client: object) -> None:
     assert "oznaczenie" in response.json()["detail"]
 
 
-def test_http_create_timocom_kind_is_400(catalog_client: object) -> None:
+def test_http_create_timocom_kind_is_201(catalog_client: object) -> None:
     client, _desk = catalog_client
     response = client.post(
         "/api/v1/exchange-connectors",
         headers=bearer_auth_headers(),
-        json=_payload(system_kind="timocom"),
+        json=_payload(connector_code="timocom_desk", system_kind="timocom"),
+    )
+    assert response.status_code == 201
+    assert response.json()["system_kind"] == "timocom"
+
+
+def test_http_create_unknown_kind_is_400(catalog_client: object) -> None:
+    client, _desk = catalog_client
+    response = client.post(
+        "/api/v1/exchange-connectors",
+        headers=bearer_auth_headers(),
+        json=_payload(system_kind="timocom_live"),
     )
     assert response.status_code == 400
     assert "system" in response.json()["detail"]

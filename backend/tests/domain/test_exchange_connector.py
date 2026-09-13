@@ -21,12 +21,24 @@ def test_connector_code_rejects_bad_token() -> None:
         require_connector_code(1)
 
 
-@given(st.sampled_from(["trans_eu", "TRANS_EU", " Trans.eu ".replace(".", "_")]))
-def test_system_kind_allowlist_trans_eu(raw: str) -> None:
-    assert require_system_kind(raw) == "trans_eu"
+@given(
+    st.sampled_from(
+        [
+            "trans_eu",
+            "TRANS_EU",
+            "timocom",
+            "TIMOCOM",
+            "teleroute",
+            "transporeon",
+            "other",
+        ],
+    ),
+)
+def test_system_kind_allowlist_p0_boards(raw: str) -> None:
+    assert require_system_kind(raw) == raw.strip().lower()
 
 
-@given(st.sampled_from(["", "timocom", "transporeon", "teleroute", "portal"]))
+@given(st.sampled_from(["", "portal", "timocom_live", "trans_eu_api"]))
 def test_system_kind_rejects_foreign_boards(raw: str) -> None:
     with pytest.raises(InvalidExchangeConnector, match="system"):
         require_system_kind(raw)

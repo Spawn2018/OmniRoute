@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **472.0** BR5.1 — HITL `po_financing_mark`
-- **Etap:** Plan — delta **473.0** BR5.2 giełdy transportowe (katalog konektora). Zero kodu do akceptacji delty.
-- **Następny:** akceptacja delty **473.0** → `/plaster` HITL katalog giełdy. Nie live Trans.eu/TIMOCOM. Nie zgaduj plaster ID.
+- **Ostatni plaster:** **473.0** BR5.2 — rozszerzenie CHECK `exchange_connector`
+- **Etap:** Plan — kolejka po Fali BR pin **2026-09-08c** (nie zgaduj Q). Zero kodu bez delty.
+- **Następny:** wskaż Q z [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Kolejka — nie startuj 431.0 ani poza pinem bez człowieka.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

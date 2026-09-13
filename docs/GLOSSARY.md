@@ -198,7 +198,7 @@ kolumn. Nie 468.0.
 | konektor ERP | erp_connector | F9 HITL 268.0 kod + kind `optima` + source_ref; nie live SOAP; nie sekrety |
 | konektor slotu | terminal_slot_connector | T8 HITL 269.0 mode + godziny N4 + source_ref; nie booking; nie confirmed z formularza; nie gwarancja |
 | konektor IdP | idp_connector | S53 HITL 270.0 kod + provider `auth0` + source_ref; nie login; nie live HTTP; nie sekrety |
-| konektor giełdy | exchange_connector | S55 HITL 271.0 kod + kind `trans_eu` + source_ref; nie live HTTP; nie SPA; nie sekrety |
+| konektor giełdy | exchange_connector | S55 HITL 271.0 + BR5.2 473.0 kind P0 trans_eu/timocom/teleroute/transporeon/other + source_ref; nie live HTTP; nie SPA; nie sekrety |
 | konektor widoczności | visibility_connector | CT7 HITL 275.0/294.0 kod + kind `p44`\|`fourkites`\|`shippeo` + source_ref; nie live HTTP; nie sekrety; nie AIS |
 | zamówienie zakupu | purchase_order | CT1 HITL 276.0 nagłówek `po_code` + opcjonalny `plant_label` + source_ref; nie shipment |
 | znacznik plant PO | po_plant_mark | EXP3.0b HITL plant\|batch\|sku\|other; nie live EDI; nie auto shipment |

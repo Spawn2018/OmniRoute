@@ -87,6 +87,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | BR4.4 | Znacznik Jedwabnego Szlaku HITL | 470.0 `silk_corridor_mark` | **ukończony (HITL)** · kind silk/block_train/transit/other; leftover live CR Express / UN/LOCODE |
 | BR5.0 | Konektor faktoringu HITL | 471.0 `factoring_connector` | **ukończony (HITL)** · kind smeo/other; leftover live SMEO HTTP / workflow F7 |
 | BR5.1 | Finansowanie zamówienia HITL | 472.0 `po_financing_mark` | **ukończony (HITL)** · kind po/release/advance/other; leftover FK PO · wycena zapasu BR1.2 |
+| BR5.2 | Giełdy transportowe HITL | 473.0 `exchange_connector` (+271.0) | **ukończony (HITL)** · kind P0 rozszerzony; leftover live HTTP · auto-post · wymiana ofert |
 | BR6.0 | Okazja CRM HITL | 456.0 `crm_opportunity` | **ukończony (HITL)** · stage open/won/lost/other; leftover activity / pipeline |
 | BR6.1 | Korytarz sprzedażowy HITL | 460.0 `sales_lane` | **ukończony (HITL)** · kind repeat/spot/other; leftover UN/LOCODE / wolumen |
 | BR6.2 | Tryb przetargu załadowcy HITL | 461.0 `shipper_tender_mark` | **ukończony (HITL)** · kind round/bench/spot/other; leftover rundy / like-for-like |

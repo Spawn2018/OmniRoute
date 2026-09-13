@@ -26,7 +26,7 @@ class ExchangeConnector(Base, TimestampMixin):
             name="ck_exchange_connector_code",
         ),
         CheckConstraint(
-            "system_kind IN ('trans_eu')",
+            "system_kind IN ('trans_eu', 'timocom', 'teleroute', 'transporeon', 'other')",
             name="ck_exchange_connector_kind",
         ),
         Index("ix_exchange_connector_organization_id", "organization_id"),

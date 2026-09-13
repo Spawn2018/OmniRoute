@@ -3,7 +3,7 @@ import re
 from app.domain.errors import InvalidExchangeConnector
 
 _CODE = re.compile(r"^[a-z][a-z0-9_]{1,31}$")
-_KINDS = frozenset({"trans_eu"})
+_KINDS = frozenset({"trans_eu", "timocom", "teleroute", "transporeon", "other"})
 _MAX_REF = 256
 _FIXTURE = "fixture://portal/"
 _MANUAL = "tenant:manual"

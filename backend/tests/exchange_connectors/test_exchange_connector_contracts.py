@@ -6,6 +6,19 @@ _SERVICES = _ROOT / "backend" / "app" / "services"
 _SESSION = _ROOT / "backend" / "app" / "api" / "session.py"
 
 
+def test_migration_378_expands_exchange_connector_kinds() -> None:
+    migration = _ROOT / "backend" / "alembic" / "versions" / "378_exchange_connector_kinds.py"
+    source = migration.read_text(encoding="utf-8")
+    assert 'revision: str = "378_exchange_connector_kinds"' in source
+    assert 'down_revision: str | None = "377_po_financing_mark"' in source
+    assert "timocom" in source
+    assert "teleroute" in source
+    assert "transporeon" in source
+    assert "ck_exchange_connector_kind" in source
+    assert "httpx" not in source
+    assert "client_secret" not in source
+
+
 def test_migration_204_creates_exchange_connector_and_forces_rls() -> None:
     source = _MIGRATION.read_text(encoding="utf-8")
     assert 'revision: str = "204_exchange_connector"' in source

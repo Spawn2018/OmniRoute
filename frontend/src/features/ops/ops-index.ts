@@ -1632,6 +1632,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "269.0": "/terminal-slot-connectors",
   "270.0": "/idp-connectors",
   "271.0": "/exchange-connectors",
+  "473.0": "/exchange-connectors",
   "272.0": "/customer-contracts",
   "273.0": "/customer-contracts",
   "274.0": "/tenant-contract-keks",
