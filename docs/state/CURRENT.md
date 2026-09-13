@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **435.0** AI1.3 HITL `benefit_ledger`
 
-**Etap:** Plan — **AI1.4** / **436.0** (brak delty, `/plan-modul`)
+**Etap:** Plan — **AI1.4** / **436.0** (delta zaakceptowana `/noc`, wolno `/plaster`)
 
 **Noc:** `/noc 11` do **2026-09-13T11:00+02**.
 
-**Następny:** **436.0** AI1.4 HITL słowniki otwarte: `twin_kind`, `data_source`, `autonomy_level`, `suggestion_kind`.
+**Następny:** **436.0** AI1.4 HITL `suggestion_kind` — otwarty słownik kind_code, bez CHECK.
 
 Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 436.0.
 
-**Spec (jedyna na sesję):** brak — najpierw delta `docs/deltas/open/436.0-*.md`.
+**Spec (jedyna na sesję):** [docs/deltas/open/436.0-suggestion-kind.md](../deltas/open/436.0-suggestion-kind.md).
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 

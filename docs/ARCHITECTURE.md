@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **435.0** AI1.3 HITL `benefit_ledger`. **Etap:** Plan — **AI1.4** / **436.0** (brak delty, `/plan-modul`). **Następny:** **436.0** AI1.4 HITL słowniki otwarte: `twin_kind`, `data_source`, `autonomy_level`, `suggestion_kind`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **435.0** AI1.3 HITL `benefit_ledger`. **Etap:** Plan — **AI1.4** / **436.0** (delta zaakceptowana `/noc`, wolno `/plaster`). **Następny:** **436.0** AI1.4 HITL `suggestion_kind` — otwarty słownik kind_code, bez CHECK. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

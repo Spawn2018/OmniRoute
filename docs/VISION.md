@@ -3,7 +3,7 @@
 ```
 status:        roboczy kanon
 wersja:        0.3
-ostatnia zmiana: 2026-09-13 08:20
+ostatnia zmiana: 2026-09-13 08:28
 ```
 
 ## Jak czytać
@@ -42,6 +42,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | **434.0** `counterfactual_run` w kodzie. Następny = AI1.3 `benefit_ledger`. |
 | 2026-09-13 | AI1.3 plan (**435.0**): HITL `benefit_ledger` z metodą punktu odniesienia. Druga marża = zakaz. |
 | 2026-09-13 | **435.0** `benefit_ledger` w kodzie. Następny = AI1.4 słowniki otwarte. |
+| 2026-09-13 | AI1.4 plan (**436.0**): pierwszy słownik = HITL `suggestion_kind` bez CHECK. |
 
 ---
 
@@ -51,7 +52,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 status:        roboczy kanon (zastępuje "Informacje z claude/vision.md" z 2026-08-29)
 wersja:        0.1
 utworzony:     2026-09-13
-ostatnia zmiana: 2026-09-13 08:20
+ostatnia zmiana: 2026-09-13 08:28
 autor ustaleń: Sebastian Bożek (właściciel produktu)
 redakcja:      agent, na podstawie dokumentów 01-07 i 09-11 w tym katalogu
 lokalizacja:   docs/VISION.md (repozytorium OmniRoute)
@@ -120,6 +121,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | **434.0** `counterfactual_run` w kodzie (`CONFIRMED`, git). Następny = **AI1.3** `benefit_ledger` (`REQUIREMENT`). Silnik what-if zostaje `REJECTED` na tym wierszu. | CURRENT + plaster 434.0 `/noc` |
 | 2026-09-13 | AI1.3 (**435.0**) = HITL `benefit_ledger`: `method_label` + `hours_saved` + `saved_amount` Decimal. Druga marża `REJECTED`. Liczenie z `charge` `REJECTED`. | `/plan-modul` `/noc`; VISION B.2 |
 | 2026-09-13 | **435.0** `benefit_ledger` w kodzie (`CONFIRMED`, git). Następny = **AI1.4** słowniki (`REQUIREMENT`). Druga marża i SQL z `charge` zostają `REJECTED` na tym wierszu. | CURRENT + plaster 435.0 `/noc` |
+| 2026-09-13 | AI1.4 (**436.0**) = HITL `suggestion_kind`: `kind_code` bez CHECK/ENUM. `twin_kind` / `data_source` / `autonomy_level` leftover. FK z `suggestion_ledger` `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION B.3 |
 
 ---
 ---
