@@ -88,8 +88,8 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **431.0** EXP1 HITL `quote_validity_mark`
-- **Etap:** Plan — **AI1.0**
-- **Następny:** **AI1.0** `suggestion_ledger` — podpowiedź: BC, encja, przedział/pewność, wersja modelu i promptu, reakcja `accept|modify|reject` i na co zmienił.
+- **Etap:** Plan — **AI1.0** / **432.0** (delta zaakceptowana `/noc`, wolno `/plaster`)
+- **Następny:** **432.0** AI1.0 HITL `suggestion_ledger` — target_bc + entity_id + przedział Decimal + reaction + changed_to.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

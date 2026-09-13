@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **431.0** EXP1 HITL `quote_validity_mark`. **Etap:** Plan — **AI1.0**. **Następny:** **AI1.0** `suggestion_ledger` — podpowiedź: BC, encja, przedział/pewność, wersja modelu i promptu, reakcja `accept|modify|reject` i na co zmienił. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **431.0** EXP1 HITL `quote_validity_mark`. **Etap:** Plan — **AI1.0** / **432.0** (delta zaakceptowana `/noc`, wolno `/plaster`). **Następny:** **432.0** AI1.0 HITL `suggestion_ledger` — target_bc + entity_id + przedział Decimal + reaction + changed_to. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

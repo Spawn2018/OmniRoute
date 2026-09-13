@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **431.0** EXP1 HITL `quote_validity_mark`
 
-**Etap:** Plan — **AI1.0**
+**Etap:** Plan — **AI1.0** / **432.0** (delta zaakceptowana `/noc`, wolno `/plaster`)
 
 **Noc:** `/noc 11` do **2026-09-13T11:00+02**.
 
-**Następny:** **AI1.0** `suggestion_ledger` — podpowiedź: BC, encja, przedział/pewność, wersja modelu i promptu, reakcja `accept|modify|reject` i na co zmienił.
+**Następny:** **432.0** AI1.0 HITL `suggestion_ledger` — target_bc + entity_id + przedział Decimal + reaction + changed_to.
 
-Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza AI1.0.
+Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 432.0.
 
-**Spec (jedyna na sesję):** (brak — plan AI1.0).
+**Spec (jedyna na sesję):** [docs/deltas/open/432.0-suggestion-ledger.md](../deltas/open/432.0-suggestion-ledger.md).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [docs/VISION.md](../VISION.md).
 
