@@ -1,3 +1,4 @@
+from pathlib import Path
 from unittest.mock import AsyncMock
 from uuid import UUID, uuid4
 
@@ -9,6 +10,8 @@ from app.domain.twin_mark import require_twin_kind, require_twin_source_ref
 from app.main import app
 from app.models.twin_mark import TwinMark
 from tests.http_auth import bearer_auth_headers
+
+_ROOT = Path(__file__).resolve().parents[3]
 
 
 class AllowAllAuthz:
@@ -76,6 +79,17 @@ def _payload(**overrides: object) -> dict[str, object]:
     return body
 
 
+def test_migration_350_replaces_kind_list_with_fk() -> None:
+    source = (_ROOT / "backend/alembic/versions/350_twin_mark_kind_fk.py").read_text(
+        encoding="utf-8",
+    )
+    assert 'revision: str = "350_twin_mark_kind_fk"' in source
+    assert 'down_revision: str | None = "349_suggestion_ledger_kind_fk"' in source
+    assert "fk_twin_mark_kind" in source
+    assert "IN (" not in source
+    assert "ck_twin_mark_kind" in source
+
+
 def test_http_create_and_list_twin_mark(catalog_client: object) -> None:
     client, _marks = catalog_client
     org_id = uuid4()
@@ -91,15 +105,27 @@ def test_http_create_and_list_twin_mark(catalog_client: object) -> None:
     assert listed.json()[0]["id"] == body["id"]
 
 
+def test_http_create_open_kind_is_201(catalog_client: object) -> None:
+    client, marks = catalog_client
+    response = client.post(
+        "/api/v1/twin-marks",
+        headers=bearer_auth_headers(),
+        json=_payload(twin_kind="tender"),
+    )
+    assert response.status_code == 201
+    assert response.json()["twin_kind"] == "tender"
+    assert len(marks.rows) == 1
+
+
 def test_http_create_bad_kind_is_400(catalog_client: object) -> None:
     client, _marks = catalog_client
     response = client.post(
         "/api/v1/twin-marks",
         headers=bearer_auth_headers(),
-        json=_payload(twin_kind="physics"),
+        json=_payload(twin_kind="1x"),
     )
     assert response.status_code == 400
-    assert "postać" in response.json()["detail"]
+    assert "rodzaj" in response.json()["detail"]
 
 
 def test_http_create_twin_foreign_source_ref_is_400(catalog_client: object) -> None:

@@ -12,3 +12,4 @@ HITL katalog rodzaju bliźniaka per tenant. twin_kind. Nie fizyka. Nie plan_snap
 - zapis `resource` / `trip` / `charge` / `container`
 - fizyka / circle_sim / kwota / marża / float
 - HTTP / plan_snapshot
+- import `twin_kinds` (FK rodzaju jest w bazie)

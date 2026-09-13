@@ -819,4 +819,6 @@
 
 - 2026-09-13T08:00:00Z · 439.0 · suggestion_ledger FK · DONE · zdj?ty CHECK kind; FK do suggestion_kind · migracja 349
 
+- 2026-09-13T08:20:00Z · 440.0 · twin_mark FK · DONE · zdjety CHECK kind; FK do twin_kind · migracja 350
+
 - 2026-09-13T05:40:00Z · kanon · Fala AI + Fala BR w PLAN · VISION.md · HC-04 L0?2/L3?5 · AI0 ju? w kodzie (072) · nast?pny leftover 431.0

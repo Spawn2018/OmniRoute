@@ -24,7 +24,7 @@
 | wyjątek operacyjny | operational_exception | 93.0 tabela na zleceniu; nie AIS; nie mapa; nie `party_charge_override` |
 | wieża | watchtower | 94.0 wyjątki + pending S11 + leniwy panel mapy; 116.0 odczyt `mail_draft`; 124.0 liczniki tablicy; nie leaflet; nie AIS; nie czat; nie łańcuch V6 |
 | impact wieży | tower_impact | V6 HITL 198.0 etap łańcucha + status umowy; bez sla_clause = „brak danych umowy”; nie scoring osoby; nie EBITDA |
-| bliźniak | twin_mark | W1 HITL 199.0 rodzaj 8; nie fizyka; nie plan_snapshot |
+| bliźniak | twin_mark | W1 HITL 199.0 / 440.0 FK do twin_kind; nie fizyka; nie plan_snapshot |
 | rodzaj bliźniaka | twin_kind | AI1.4 HITL otwarty słownik kind_code; nie CHECK; nie twin_mark |
 | poziom autonomii | autonomy_level | AI1.4 HITL otwarty słownik level_code; nie CHECK; nie FK klienta |
 | sala kryzysowa | war_room_mark | W2 HITL 200.0 rodzaj incydentu; nie N8; nie drugi czat; nie T8 API |

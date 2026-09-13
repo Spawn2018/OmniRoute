@@ -1,7 +1,7 @@
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, status
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import get_current_identity, require_permission, require_tenant_session
@@ -17,8 +17,8 @@ _PERM = "can_manage_twin_marks"
 class TwinMarkCreate(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    twin_kind: str
-    source_ref: str
+    twin_kind: str = Field(min_length=2, max_length=32)
+    source_ref: str = Field(min_length=1, max_length=256)
 
 
 class TwinMarkResponse(BaseModel):

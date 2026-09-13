@@ -27,6 +27,7 @@ def test_twin_mark_service_does_not_import_parents() -> None:
     assert "app.services.resources" not in service
     assert "app.services.trips" not in service
     assert "app.services.extraction" not in service
+    assert "app.services.twin_kinds" not in service
     assert "httpx" not in service
     assert "buy_amount" not in service
     assert "plan_snapshot" not in service

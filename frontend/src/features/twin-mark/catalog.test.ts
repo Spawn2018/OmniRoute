@@ -25,6 +25,8 @@ describe("twin_mark surface for 199.0", () => {
     expect(panel).toContain("persistTwinMark")
     expect(panel).not.toContain("<Money")
     expect(panel).toContain("Zapisz bliźniaka")
+    expect(panel).toContain('aria-label="twin_kind open dict"')
+    expect(panel).not.toContain("allowlista")
     expect(panel).not.toContain("parseFloat")
     expect(panel).not.toContain("CatalogCreateForm")
     expect(src("features/ops/ops-index.ts")).toContain('"199.0": "/twin-marks"')

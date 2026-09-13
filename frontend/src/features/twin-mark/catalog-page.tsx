@@ -10,7 +10,7 @@ export function TwinDesk() {
     <section className="flex flex-col gap-4" data-twin-mark="desk">
       <CatalogHeading
         title="Bliźniak"
-        subtitle="W1 twin_mark · osiem rodzajów · nie fizyka"
+        subtitle="W1 twin_mark · kind ze słownika · nie fizyka"
       />
       {!ready ? <TenantSessionNotice /> : null}
       {ready ? <TwinPanel organizationId={ctx.organizationId} /> : null}

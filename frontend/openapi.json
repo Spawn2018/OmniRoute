@@ -43928,10 +43928,14 @@
         "properties": {
           "twin_kind": {
             "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
             "title": "Twin Kind"
           },
           "source_ref": {
             "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
             "title": "Source Ref"
           }
         },

@@ -14,17 +14,6 @@ const EMPTY_TWIN: TwinDraft = {
   originStamp: "fixture://twin-mark/",
 }
 
-const KINDS = [
-  "vehicle",
-  "driver",
-  "container",
-  "shipment",
-  "network",
-  "plan",
-  "office",
-  "cargo",
-] as const
-
 function TwinSave(args: { organizationId: string | null }) {
   const cache = useQueryClient()
   const [draft, setDraft] = useState(EMPTY_TWIN)
@@ -45,25 +34,19 @@ function TwinSave(args: { organizationId: string | null }) {
       }}
     >
       <p className="text-xs text-muted-foreground">
-        Osiem postaci katalogu (pojazd, kierowca, kontener, zlecenie, sieć, plan, urząd, ładunek).
-        To nie jest silnik fizyki i nie `plan_snapshot`. Marża zostaje na `/charges`.
+        Rodzaj ze słownika `twin_kind` (snake). To nie jest silnik fizyki i nie `plan_snapshot`.
+        Marża zostaje na `/charges`.
       </p>
-      <fieldset className="grid grid-cols-2 gap-1 text-xs">
-        <legend className="col-span-2">Postać bliźniaka (allowlista)</legend>
-        {KINDS.map((token) => (
-          <label key={token} className="flex items-center gap-2 font-mono">
-            <input
-              type="radio"
-              name="twin-kind"
-              aria-label={`Postać ${token}`}
-              checked={draft.kindStamp === token}
-              onChange={() => setDraft({ ...draft, kindStamp: token })}
-              value={token}
-            />
-            {token}
-          </label>
-        ))}
-      </fieldset>
+      <label className="text-xs">
+        twin_kind
+        <input
+          aria-label="twin_kind open dict"
+          className="mt-1 h-9 w-full rounded border px-2 font-mono text-sm"
+          onChange={(e) => setDraft({ ...draft, kindStamp: e.target.value })}
+          required
+          value={draft.kindStamp}
+        />
+      </label>
       <CatalogSourceRefField
         label="source_ref (tenant:manual albo fixture://twin-mark/…)"
         ariaLabel="source_ref bliźniaka"

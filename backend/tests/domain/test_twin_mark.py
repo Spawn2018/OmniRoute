@@ -6,18 +6,14 @@ from app.domain.errors import InvalidTwinMark
 from app.domain.twin_mark import require_twin_kind, require_twin_source_ref
 
 
-@given(
-    st.sampled_from(
-        ["vehicle", "driver", "container", "shipment", "network", "plan", "office", "cargo"]
-    )
-)
-def test_twin_kind_allowlist(raw: str) -> None:
+@given(st.sampled_from(["vehicle", "tender", "office_twin"]))
+def test_twin_kind_accepts_snake(raw: str) -> None:
     assert require_twin_kind(raw) == raw
 
 
-@given(st.sampled_from(["", "physics", "VEHICLE kg"]))
+@given(st.sampled_from(["", "1x", "VEHICLE kg"]))
 def test_twin_kind_rejects_foreign(raw: str) -> None:
-    with pytest.raises(InvalidTwinMark, match="postać"):
+    with pytest.raises(InvalidTwinMark, match="rodzaj|postać"):
         require_twin_kind(raw)
 
 

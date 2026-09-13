@@ -1,7 +1,9 @@
 from uuid import UUID, uuid4
 
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.domain.errors import InvalidTwinMark
 from app.domain.twin_mark import require_twin_kind, require_twin_source_ref
 from app.models.twin_mark import TwinMark
 from app.repositories.twin_marks.twin_mark_repository import TwinMarkRepository
@@ -31,4 +33,10 @@ class TwinMarkService:
             source_ref=origin,
             created_by=user_id,
         )
-        return await self._store.add(packed)
+        try:
+            return await self._store.add(packed)
+        except IntegrityError as orig:
+            detail = str(orig.orig) if orig.orig is not None else str(orig)
+            if "fk_twin_mark_kind" in detail:
+                raise InvalidTwinMark("rodzaj: brak w słowniku") from orig
+            raise InvalidTwinMark("zapis znacznika odrzucony") from orig

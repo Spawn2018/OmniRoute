@@ -3,7 +3,7 @@
 ```
 status:        roboczy kanon
 wersja:        0.3
-ostatnia zmiana: 2026-09-13 10:10
+ostatnia zmiana: 2026-09-13 10:20
 ```
 
 ## Jak czytać
@@ -51,6 +51,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | AI1.4 plan (**439.0**): FK `suggestion_ledger` → `suggestion_kind`. twin_mark CHECK zostaje. |
 | 2026-09-13 | **439.0** FK ledgeru w kodzie. Następny = leftover FK `twin_mark`. |
 | 2026-09-13 | AI1.4 plan (**440.0**): FK `twin_mark` → `twin_kind`. outcome_kind CHECK zostaje. |
+| 2026-09-13 | **440.0** FK `twin_mark` w kodzie. Następny = leftover `outcome_kind`. |
 
 ---
 
@@ -60,7 +61,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 status:        roboczy kanon (zastępuje "Informacje z claude/vision.md" z 2026-08-29)
 wersja:        0.1
 utworzony:     2026-09-13
-ostatnia zmiana: 2026-09-13 10:10
+ostatnia zmiana: 2026-09-13 10:20
 autor ustaleń: Sebastian Bożek (właściciel produktu)
 redakcja:      agent, na podstawie dokumentów 01-07 i 09-11 w tym katalogu
 lokalizacja:   docs/VISION.md (repozytorium OmniRoute)
@@ -138,6 +139,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | AI1.4 (**439.0**) = FK `(organization_id, suggestion_kind)` → słownik. CHECK listy `REJECTED`. Import `suggestion_kinds` z ledgeru `REJECTED`. `twin_mark` CHECK zostaje. | `/plan-modul` `/noc`; VISION B.3 |
 | 2026-09-13 | **439.0** FK `suggestion_ledger` w kodzie (`CONFIRMED`, git). Następny = FK `twin_mark` (`REQUIREMENT`). `data_source` = AI5. CRPS `REJECTED` na tym wierszu. | CURRENT + plaster 439.0 `/noc` |
 | 2026-09-13 | AI1.4 (**440.0**) = FK `(organization_id, twin_kind)` → słownik. CHECK ośmiu `REJECTED`. Import `twin_kinds` ze znacznika `REJECTED`. `outcome_kind` CHECK zostaje. | `/plan-modul` `/noc`; VISION C.2 |
+| 2026-09-13 | **440.0** FK `twin_mark` w kodzie (`CONFIRMED`, git). Następny = HITL `outcome_kind` (`REQUIREMENT`). `data_source` = AI5. CRPS `REJECTED` na tym wierszu. | CURRENT + plaster 440.0 `/noc` |
 
 ---
 ---
@@ -749,19 +751,18 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | nazwy z PDF-ów bez wiersza w planie | **136** (z czego 28 to aliasy) |
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
-Ostatni ukończony plaster: **439.0** (FK `suggestion_ledger`), następny w kolejce
-**AI1.4 leftover** (FK `twin_mark`). AI1.0–AI1.3, trzy słowniki i FK ledgeru
-są w kodzie (`CONFIRMED`); `data_source` zostaje w AI5 (`REQUIREMENT`).
-CRPS ze złączenia zostaje w AI2 (`REQUIREMENT`). Teza B.1 zostaje:
-szerokość katalogów nie zastępuje pomiaru.
+Ostatni ukończony plaster: **440.0** (FK `twin_mark`), następny w kolejce
+**AI1.4 leftover** (HITL `outcome_kind`). AI1.0–AI1.3, trzy słowniki i FK
+ledgeru oraz `twin_mark` są w kodzie (`CONFIRMED`); `data_source` zostaje
+w AI5 (`REQUIREMENT`). CRPS ze złączenia zostaje w AI2 (`REQUIREMENT`).
+Teza B.1 zostaje: szerokość katalogów nie zastępuje pomiaru.
 
 ## C.2 Bliźniaki — scalona taksonomia
 
 Źródła podawały **cztery różne listy bliźniaków: 12, 23, 8 i 8 pozycji**
-(`CONFIRMED`, dokument `01` §6.5). W kodzie `twin_mark` ma CHECK **8 wartości**
-(`CONFIRMED`, 199.0) — najwęższa lista. Tabela słownikowa `twin_kind` jest otwarta
-(`CONFIRMED`, 437.0): nowy rodzaj = `INSERT`. FK z `twin_mark` i zdjęcie CHECK
-zostają leftover.
+(`CONFIRMED`, dokument `01` §6.5). Tabela słownikowa `twin_kind` jest otwarta
+(`CONFIRMED`, 437.0). `twin_mark.twin_kind` ma FK do słownika
+(`CONFIRMED`, 440.0) — CHECK ośmiu wartości zdjęty. Nowy rodzaj = `INSERT`.
 
 **Rozstrzygnięcie:** jedna taksonomia, pięć osi, `twin_kind` jest tabelą
 słownikową, więc rozszerzanie nie wymaga migracji ani zmiany `CHECK`.

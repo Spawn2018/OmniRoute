@@ -1,28 +1,19 @@
+import re
+
 from app.domain.errors import InvalidTwinMark
 
-_KINDS = (
-    "vehicle",
-    "driver",
-    "container",
-    "shipment",
-    "network",
-    "plan",
-    "office",
-    "cargo",
-)
+_CODE = re.compile(r"^[a-z][a-z0-9_]{1,31}$")
 _FIXTURE = "fixture://twin-mark/"
 _MANUAL = "tenant:manual"
 
 
 def require_twin_kind(raw: object) -> str:
-    match raw:
-        case str() as text:
-            token = text.strip().lower()
-            if token in _KINDS:
-                return token
-            raise InvalidTwinMark("postać: allowlista HITL")
-        case _:
-            raise InvalidTwinMark("postać musi być tekstem")
+    if type(raw) is not str:
+        raise InvalidTwinMark("postać musi być tekstem")
+    token = raw.strip().lower().replace("-", "_")
+    if _CODE.fullmatch(token) is None:
+        raise InvalidTwinMark("rodzaj: snake 2–32")
+    return token
 
 
 def require_twin_source_ref(raw: object) -> str:
