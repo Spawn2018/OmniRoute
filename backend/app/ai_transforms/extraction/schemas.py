@@ -24,3 +24,4 @@ class ExtractionPayload(BaseModel):
     parser_challenger: str | None = None
     ab_delta_chars: int | None = None
     revision: int = 0
+    extract_path: str = "text"

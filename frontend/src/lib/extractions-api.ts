@@ -25,6 +25,7 @@ export type ExtractionPayload = {
   parser_challenger?: string | null
   ab_delta_chars?: number | null
   revision?: number
+  extract_path?: string
 }
 
 export type ExtractionDraft = {
@@ -57,11 +58,13 @@ export function extractionCreateBody(args: {
     tender_id: string
     intake_code: string
   }
+  extractPath?: string
 }): {
   source_ref: string
   input_text?: string
   document_base64?: string
   draft_kind?: string
+  extract_path?: string
   quote?: (typeof args)["quote"]
   rfp?: (typeof args)["rfp"]
 } {
@@ -70,6 +73,7 @@ export function extractionCreateBody(args: {
     input_text?: string
     document_base64?: string
     draft_kind?: string
+    extract_path?: string
     quote?: (typeof args)["quote"]
     rfp?: (typeof args)["rfp"]
   } =
@@ -84,6 +88,9 @@ export function extractionCreateBody(args: {
   }
   if (args.rfp !== undefined) {
     body.rfp = args.rfp
+  }
+  if (args.extractPath !== undefined && args.extractPath !== "") {
+    body.extract_path = args.extractPath
   }
   return body
 }
@@ -121,6 +128,7 @@ function asPayload(raw: { [key: string]: unknown }): ExtractionPayload {
     parser_challenger: typeof raw.parser_challenger === "string" ? raw.parser_challenger : null,
     ab_delta_chars: typeof raw.ab_delta_chars === "number" ? raw.ab_delta_chars : null,
     revision: typeof raw.revision === "number" ? raw.revision : 0,
+    extract_path: typeof raw.extract_path === "string" ? raw.extract_path : "text",
   }
 }
 
@@ -162,6 +170,8 @@ export async function createExtractionDraft(body: {
   source_ref: string
   input_text?: string
   document_base64?: string
+  extract_path?: string
+  draft_kind?: string
 }): Promise<ExtractionDraft> {
   const { data, error, response } = await createExtractionDraftApiV1ExtractionsPost({
     // openapi-ts spłaszcza anyOf|null — payload XOR idzie w JSON

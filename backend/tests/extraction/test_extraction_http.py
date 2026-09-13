@@ -52,6 +52,7 @@ class StubExtractionService:
         **_unused: object,
     ) -> ExtractionDraft:
         kind = require_extraction_draft_kind(_unused.get("draft_kind"))
+        extract_path = _unused.get("extract_path") or "text"
         self.draft = ExtractionDraft(
             id=uuid4(),
             organization_id=organization_id,
@@ -67,6 +68,7 @@ class StubExtractionService:
                 "parser_challenger": parser_challenger,
                 "ab_delta_chars": ab_delta_chars,
                 "revision": 0,
+                "extract_path": extract_path,
             },
             created_at=_NOW,
             updated_at=_NOW,
@@ -89,6 +91,7 @@ class StubExtractionService:
             source_ref=source_ref,
             input_text=raw_bytes.decode("utf-8"),
             parser_name="stub",
+            extract_path=_unused.get("extract_path"),
         )
 
     async def accept(self, *, draft_id: UUID, user_id: UUID) -> ExtractionDraft:
@@ -207,6 +210,26 @@ def test_http_extract_document_base64_creates_pending_draft(happy_client: TestCl
     assert response.status_code == 201
     assert response.json()["status"] == "pending"
     assert response.json()["payload"]["parser_name"] == "stub"
+    assert response.json()["payload"]["extract_path"] == "text"
+
+
+def test_http_extract_document_image_path_still_uses_stub_parser(
+    happy_client: TestClient,
+) -> None:
+    response = happy_client.post(
+        "/api/v1/extractions",
+        headers=bearer_auth_headers(),
+        json={
+            "source_ref": "doc://pdf",
+            "document_base64": "VEhDIDEwIEVVUg==",
+            "extract_path": "image",
+        },
+    )
+    assert response.status_code == 201
+    body = response.json()
+    assert body["payload"]["extract_path"] == "image"
+    assert body["payload"]["parser_name"] == "stub"
+    assert body["payload"]["candidates"][0]["code"] == "THC"
 
 
 def test_http_accept_marks_draft_accepted(happy_client: TestClient) -> None:
@@ -364,6 +387,44 @@ def test_http_patch_not_pending_returns_409(happy_client: TestClient) -> None:
         json={"candidates": [{"code": "THC", "amount_text": "11", "currency": "EUR"}]},
     )
     assert patched.status_code == 409
+
+
+def test_http_extract_defaults_path_text(happy_client: TestClient) -> None:
+    response = happy_client.post(
+        "/api/v1/extractions",
+        headers=bearer_auth_headers(),
+        json={"source_ref": "doc://x", "input_text": "THC 10 EUR"},
+    )
+    assert response.status_code == 201
+    assert response.json()["payload"]["extract_path"] == "text"
+
+
+def test_http_extract_records_image_path_without_vision(happy_client: TestClient) -> None:
+    response = happy_client.post(
+        "/api/v1/extractions",
+        headers=bearer_auth_headers(),
+        json={
+            "source_ref": "doc://x",
+            "input_text": "THC 10 EUR",
+            "extract_path": "image",
+        },
+    )
+    assert response.status_code == 201
+    assert response.json()["payload"]["extract_path"] == "image"
+    assert response.json()["payload"]["candidates"][0]["code"] == "THC"
+
+
+def test_http_extract_rejects_unknown_path(happy_client: TestClient) -> None:
+    response = happy_client.post(
+        "/api/v1/extractions",
+        headers=bearer_auth_headers(),
+        json={
+            "source_ref": "doc://x",
+            "input_text": "THC 10 EUR",
+            "extract_path": "pixels",
+        },
+    )
+    assert response.status_code == 422
 
 
 def test_http_extract_starts_revision_at_zero(happy_client: TestClient) -> None:

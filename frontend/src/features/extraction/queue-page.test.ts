@@ -8,8 +8,9 @@ describe("extractionCreateBody", () => {
         sourceRef: "doc://x",
         inputText: "THC 1 EUR",
         documentBase64: "YQ==",
+        extractPath: "image",
       }),
-    ).toEqual({ source_ref: "doc://x", document_base64: "YQ==" })
+    ).toEqual({ source_ref: "doc://x", document_base64: "YQ==", extract_path: "image" })
   })
 
   it("sends input_text without document_base64 when there is no file", () => {

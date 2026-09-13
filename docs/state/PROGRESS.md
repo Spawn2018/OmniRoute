@@ -838,3 +838,5 @@
 - 2026-09-13T12:50:00Z | 447.0 | extraction_draft | DONE | PATCH candidates na pending/rate_line przed accept; bez nowej tabeli
 
 - 2026-09-13T13:15:00Z | 448.0 | extraction_draft | DONE | payload.revision + bbox_text/confidence_text; bez tabeli historii
+
+- 2026-09-13T13:40:00Z | 449.0 | extraction_draft | DONE | extract_path text|image etykieta; bez live vision

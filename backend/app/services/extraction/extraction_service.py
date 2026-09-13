@@ -13,6 +13,7 @@ from app.domain.extraction_draft import (
     extraction_tender_rfp_kind,
     next_extraction_revision,
     require_carrier_quote_payload,
+    require_extract_path,
     require_extraction_draft_kind,
     require_rate_candidates_editable,
     require_tender_rfp_payload,
@@ -60,6 +61,7 @@ class ExtractionService:
         draft_kind: object = None,
         quote_payload: object = None,
         rfp_payload: object = None,
+        extract_path: object = None,
     ) -> ExtractionDraft:
         kind = require_extraction_draft_kind(draft_kind)
         self._guard.scan(input_text)
@@ -69,12 +71,9 @@ class ExtractionService:
             dumped = _rfp_payload(source_ref, rfp_payload)
         else:
             dumped = self._rate_payload(
-                source_ref,
-                input_text,
-                parser_name,
-                parser_challenger,
-                ab_delta_chars,
+                source_ref, input_text, parser_name, parser_challenger, ab_delta_chars,
             )
+        dumped["extract_path"] = require_extract_path(extract_path)
         stored_ref = dumped.get("source_ref")
         draft = ExtractionDraft(
             id=uuid4(),
@@ -124,6 +123,7 @@ class ExtractionService:
         draft_kind: object = None,
         quote_payload: object = None,
         rfp_payload: object = None,
+        extract_path: object = None,
     ) -> ExtractionDraft:
         if len(raw_bytes) > _MAX_DOCUMENT_BYTES:
             raise UnparseableDocument("Dokument przekracza 2 MB")
@@ -139,6 +139,7 @@ class ExtractionService:
             draft_kind=draft_kind,
             quote_payload=quote_payload,
             rfp_payload=rfp_payload,
+            extract_path=extract_path,
         )
 
     async def accept(self, *, draft_id: UUID, user_id: UUID) -> ExtractionDraft:

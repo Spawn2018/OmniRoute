@@ -1,7 +1,7 @@
 from base64 import b64decode
 from binascii import Error as BinasciiError
 from datetime import datetime
-from typing import Any, Self
+from typing import Any, Literal, Self
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, Query, status
@@ -49,6 +49,7 @@ class ExtractRequest(BaseModel):
         default=None, min_length=1, max_length=DOCUMENT_BASE64_MAX_LENGTH
     )
     draft_kind: str | None = None
+    extract_path: Literal["text", "image"] | None = None
     quote: CarrierQuoteExtract | None = None
     rfp: TenderRfpExtract | None = None
 
@@ -119,6 +120,7 @@ async def create_extraction_draft(
             draft_kind=body.draft_kind,
             quote_payload=None if body.quote is None else body.quote.model_dump(),
             rfp_payload=None if body.rfp is None else body.rfp.model_dump(),
+            extract_path=body.extract_path,
         )
     else:
         if body.input_text is None:
@@ -131,6 +133,7 @@ async def create_extraction_draft(
             draft_kind=body.draft_kind,
             quote_payload=None if body.quote is None else body.quote.model_dump(),
             rfp_payload=None if body.rfp is None else body.rfp.model_dump(),
+            extract_path=body.extract_path,
         )
     await session.commit()
     return _draft_response(draft)

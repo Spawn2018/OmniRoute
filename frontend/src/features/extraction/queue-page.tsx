@@ -50,6 +50,7 @@ export function ExtractionQueuePage() {
   const [quoteCurrency, setQuoteCurrency] = useState("USD")
   const [rfpTenderId, setRfpTenderId] = useState("")
   const [rfpIntakeCode, setRfpIntakeCode] = useState("scope")
+  const [extractPath, setExtractPath] = useState("text")
 
   const query = useQuery({
     queryKey: ["extractions", "pending", ctx.organizationId],
@@ -69,6 +70,7 @@ export function ExtractionQueuePage() {
           inputText,
           documentBase64,
           draftKind,
+          extractPath,
           quote:
             draftKind === "carrier_quote"
               ? {
@@ -238,6 +240,18 @@ export function ExtractionQueuePage() {
             <option value="rate_line">rate_line</option>
             <option value="carrier_quote">carrier_quote</option>
             <option value="tender_rfp">tender_rfp</option>
+          </select>
+        </label>
+        <label className="block text-xs text-muted-foreground">
+          extract_path
+          <select
+            aria-label="Ścieżka ekstrakcji"
+            className="mt-1 h-8 w-full rounded-md border border-input bg-background px-2 text-sm"
+            value={extractPath}
+            onChange={(event) => setExtractPath(event.target.value)}
+          >
+            <option value="text">text</option>
+            <option value="image">image</option>
           </select>
         </label>
         {draftKind === "carrier_quote" ? (

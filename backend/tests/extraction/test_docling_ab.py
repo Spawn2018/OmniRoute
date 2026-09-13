@@ -93,7 +93,25 @@ async def test_extract_from_document_stores_parser_name() -> None:
         raw_bytes=_FAKE_PDF,
     )
     assert draft.payload["parser_name"] == "pdf_strings"
+    assert draft.payload["extract_path"] == "text"
     assert "THC" in draft.payload["candidates"][0]["code"]
+
+
+@pytest.mark.asyncio
+async def test_extract_from_document_image_path_still_uses_text_parser() -> None:
+    session = AsyncMock()
+    session.add = MagicMock()
+    session.flush = AsyncMock()
+    service = ExtractionService(session, parser=DeterministicDocumentParser())
+    draft = await service.extract_from_document(
+        organization_id=uuid4(),
+        user_id=uuid4(),
+        source_ref="doc://p",
+        raw_bytes=_FAKE_PDF,
+        extract_path="image",
+    )
+    assert draft.payload["extract_path"] == "image"
+    assert draft.payload["parser_name"] == "pdf_strings"
 
 
 @pytest.mark.asyncio

@@ -13,6 +13,9 @@ _RATE = "rate_line"
 _QUOTE = "carrier_quote"
 _RFP = "tender_rfp"
 _KINDS = frozenset({_RATE, _QUOTE, _RFP})
+_PATH_TEXT = "text"
+_PATH_IMAGE = "image"
+_PATHS = frozenset({_PATH_TEXT, _PATH_IMAGE})
 
 
 def extraction_rate_kind() -> str:
@@ -31,6 +34,17 @@ def next_extraction_revision(raw: object) -> int:
     if type(raw) is not int or raw < 0:
         return 1
     return raw + 1
+
+
+def require_extract_path(raw: object) -> str:
+    if raw is None:
+        return _PATH_TEXT
+    if type(raw) is not str:
+        raise InvalidExtractionDraft("extract_path musi być tekstem")
+    token = raw.strip()
+    if token not in _PATHS:
+        raise InvalidExtractionDraft("extract_path spoza allowlisty")
+    return token
 
 
 def require_rate_candidates_editable(draft_kind: object) -> None:

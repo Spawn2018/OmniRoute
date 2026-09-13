@@ -35,7 +35,31 @@ async def test_extract_to_draft_stores_payload_without_rate_line() -> None:
     assert "unparsed_regions" in draft.payload
     assert draft.payload["candidates"][0]["code"] == "THC"
     assert draft.payload["revision"] == 0
+    assert draft.payload["extract_path"] == "text"
     session.add.assert_called_once()
+
+
+@pytest.mark.asyncio
+async def test_extract_image_path_still_uses_text_extractor() -> None:
+    session = AsyncMock()
+    session.add = MagicMock()
+    session.flush = AsyncMock()
+    extractor = MockExtractor()
+    extract = MagicMock(wraps=extractor.extract)
+    extractor.extract = extract
+    service = ExtractionService(session, extractor=extractor)
+    draft = await service.extract_to_draft(
+        organization_id=uuid4(),
+        user_id=uuid4(),
+        source_ref="doc://x",
+        input_text="THC 10 EUR",
+        extract_path="image",
+    )
+    assert draft.payload["extract_path"] == "image"
+    assert draft.payload["candidates"][0]["code"] == "THC"
+    extract.assert_called_once()
+    assert extract.call_args.kwargs["input_text"] == "THC 10 EUR"
+    assert "raw_bytes" not in extract.call_args.kwargs
 
 
 class _RecordingTracer(LangfuseTracer):

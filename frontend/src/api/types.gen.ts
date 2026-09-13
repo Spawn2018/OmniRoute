@@ -4536,6 +4536,10 @@ export type ExtractRequest = {
      * Draft Kind
      */
     draft_kind?: string | null;
+    /**
+     * Extract Path
+     */
+    extract_path?: 'text' | 'image' | null;
     quote?: CarrierQuoteExtract | null;
     rfp?: TenderRfpExtract | null;
 };

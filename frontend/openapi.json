@@ -29912,6 +29912,21 @@
             ],
             "title": "Draft Kind"
           },
+          "extract_path": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "text",
+                  "image"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Extract Path"
+          },
           "quote": {
             "anyOf": [
               {

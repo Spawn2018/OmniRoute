@@ -4,21 +4,21 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **448.0** AI3.1 — `payload.revision` + `bbox_text` / `confidence_text`
+**Ostatni plaster:** **449.0** AI3.2 — `payload.extract_path` text|image (etykieta)
 
-**Etap:** plaster — **449.0** AI3.2 `extract_path` text|image. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
+**Etap:** Plan — **450.0** AI3.3 golden. Wolno `/plan-modul`. Zero kodu.
 
 **Noc:** `/noc 20` do **2026-09-13T20:00+02**.
 
-**Następny:** **449.0** etykieta ścieżki obraz vs tekst. Nie live vision. Nie Excel. Nie zapis z modelu.
+**Następny:** **450.0** własny zbiór golden + bramka. Nie live vision. Nie Excel. Nie cytat preprintu jako fakt.
 
-Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 449.0. Nie otwieraj AI0.
+Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 450.0. Nie otwieraj AI0.
 
-**Spec (jedyna na sesję):** [docs/deltas/open/449.0-extraction-image-path.md](../deltas/open/449.0-extraction-image-path.md)
+**Spec (jedyna na sesję):** brak — `/plan-modul`
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 
-**Uczciwość:** HITL zostaje. LLM nie liczy. `charge` = marża. Impersonate ≠ decrypt. `charge.source_ref` **jest** (129.0 / 072) — nie otwieraj plastra AI0. **AI1.0–AI1.4**, **443.0–448.0** w kodzie. `data_source` = AI5.
+**Uczciwość:** HITL zostaje. LLM nie liczy. `charge` = marża. Impersonate ≠ decrypt. `charge.source_ref` **jest** (129.0 / 072) — nie otwieraj plastra AI0. **AI1.0–AI1.4**, **443.0–449.0** w kodzie. `data_source` = AI5.
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
@@ -43,6 +43,7 @@ Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll �
 **2026-09-13:** Plaster **446.0** zamknięty (`/noc`) — `prediction_ledger` bez wpisanego CRPS/MAE.
 **2026-09-13:** Plaster **447.0** zamknięty (`/noc`) — `PATCH` kandydatów na szkicu przed akceptacją.
 **2026-09-13:** Plaster **448.0** zamknięty (`/noc`) — wersja szkicu + ramka i pewność jako tekst.
+**2026-09-13:** Plaster **449.0** zamknięty (`/noc`) — etykieta ścieżki `extract_path` text|image.
 **2026-09-13:** Kanon Fali AI/BR w PLAN; `docs/VISION.md`; HC-04 przepisane (Q1–Q2).
 **2026-09-13:** Dump CT (badania `03` B.1–B.3, B.7–B.10) w kanonie VISION + PLAN Fala AI/BR; B.4–B.6 FourKites/BY/Kinaxis nietknięte.
 **2026-09-13:** Dump TMS top-10 (badania `04b` A–H × 10) w kanonie VISION + PLAN Fala AI/BR. CargoWise/Qargo/interLAN zostają w `04`.

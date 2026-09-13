@@ -48,6 +48,7 @@ async def test_http_extract_live_pg_creates_pending_draft(
     assert body["status"] == "pending"
     assert body["organization_id"] == str(org_a.id)
     assert "rate_line" not in body["payload"]
+    assert body["payload"]["extract_path"] == "text"
 
 
 @pytest.mark.integration
@@ -286,3 +287,31 @@ async def test_http_patch_after_accept_returns_409(
         json={"candidates": [{"code": "THC", "amount_text": "11", "currency": "EUR"}]},
     )
     assert patched.status_code == 409
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_http_extract_live_image_path_does_not_write_rate_line(
+    live_client: AsyncClient,
+    two_tenants,
+) -> None:
+    org_a = two_tenants["org_a"]
+    user_a = two_tenants["user_a"]
+    headers = bearer_auth_headers(organization_id=org_a.id, user_id=user_a.id)
+    created = await live_client.post(
+        "/api/v1/extractions",
+        headers=headers,
+        json={
+            "source_ref": "doc://image-label",
+            "input_text": "THC 10 EUR",
+            "extract_path": "image",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["payload"]["extract_path"] == "image"
+    listed = await live_client.get("/api/v1/extractions", headers=headers)
+    assert listed.status_code == 200
+    assert listed.json()[0]["payload"]["extract_path"] == "image"
+    rates = await live_client.get("/api/v1/rate-lines", headers=headers)
+    assert rates.status_code == 200
+    assert rates.json() == []

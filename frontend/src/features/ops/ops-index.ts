@@ -1673,6 +1673,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "446.0": "/prediction-ledgers",
   "447.0": "/extractions",
   "448.0": "/extractions",
+  "449.0": "/extractions",
 } as const
 
 
