@@ -41,14 +41,10 @@ function Write-Fail([string]$Message) {
 
 function Test-ListenPort([int]$Port) {
   try {
-    $client = New-Object System.Net.Sockets.TcpClient
-    $iar = $client.BeginConnect("127.0.0.1", $Port, $null, $null)
-    $ok = $iar.AsyncWaitHandle.WaitOne(800)
-    if ($ok -and $client.Connected) {
-      $client.Close()
-      return $true
+    $listeners = [System.Net.NetworkInformation.IPGlobalProperties]::GetIPGlobalProperties().GetActiveTcpListeners()
+    foreach ($endpoint in $listeners) {
+      if ($endpoint.Port -eq $Port) { return $true }
     }
-    $client.Close()
   } catch {
     return $false
   }
