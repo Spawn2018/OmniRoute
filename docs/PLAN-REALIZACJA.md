@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **447.0** edycja `payload.candidates` na szkicu `pending` / `rate_line` przed akceptacją. Nie zapis z modelu. Nie wersja szkicu.
+**Następny:** **448.0** wersja szkicu + `bbox` i pewność w JSONB. Nie nowy BC. Nie zapis z modelu. `draft_kind` już jest.
 <!-- os-status:end -->
 
 ```mermaid
@@ -758,7 +758,7 @@ Dump TMS 2026-09-13 (badania `04b` A–H × 10; CargoWise/Qargo/interLAN zostaj�
 | AI1.4 | Słowniki otwarte: `twin_kind`, `data_source`, `autonomy_level`, `suggestion_kind` | 436.0–442.0 DONE | leftover `data_source` (AI5) |
 | AI2.0 | CRPS, Brier, MAE **liczone** ze złączenia AI1.0×AI1.1 | po AI1.1 | **443.0 DONE** widok; **446.0 DONE** bez wpisu na `prediction_ledger`; leftover: Brier (brak p) · dump `04b`: Oracle LML 95% interval = metoda, nie CRPS/MAE |
 | AI2.1 | champion/challenger + wykrywanie dryfu | po AI2.0 | **444.0 DONE** widok średnich; **445.0 DONE** widok dzienny; leftover: detektor/próg `REJECTED` · auto-champion `REJECTED` · zapis `prediction_ledger` (**446.0**) · V1 |
-| AI3.0 | `PATCH` na `extraction_draft` + edycja w interfejsie przed akceptacją | po AI2.0 | **447.0** plan `/noc` = PATCH `candidates` na pending/`rate_line`; leftover: wersja/bbox (AI3.1) |
+| AI3.0 | `PATCH` na `extraction_draft` + edycja w interfejsie przed akceptacją | po AI2.0 | **447.0 DONE** PATCH `candidates` na pending/`rate_line`; leftover: wersja/bbox (AI3.1) · quote/rfp PATCH |
 | AI3.1 | wersjonowanie szkicu + `draft_kind` + `bbox` i pewność w JSONB | po AI3.0 | rozszerzenie istniejącego obiektu |
 | AI3.2 | ścieżka **obraz wprost** jako challenger dla obecnej ścieżki przez tekst | po AI3.1 | preprint 96,50% / 92,71% vs markdown — faktury, nie taryfy; mierzyć u siebie; wolno cytować z caveat (Q8) |
 | AI3.3 | własny zbiór golden + bramka wydaniowa na progach | po AI3.2 | 96,6% i 92,71% = cel z bramką na **własnym** zbiorze |
@@ -934,13 +934,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

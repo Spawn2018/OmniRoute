@@ -4541,6 +4541,38 @@ export type ExtractRequest = {
 };
 
 /**
+ * ExtractionCandidatePatch
+ */
+export type ExtractionCandidatePatch = {
+    /**
+     * Code
+     */
+    code: string;
+    /**
+     * Amount Text
+     */
+    amount_text: string;
+    /**
+     * Currency
+     */
+    currency: string;
+    /**
+     * Note
+     */
+    note?: string;
+};
+
+/**
+ * ExtractionDraftPatchRequest
+ */
+export type ExtractionDraftPatchRequest = {
+    /**
+     * Candidates
+     */
+    candidates: Array<ExtractionCandidatePatch>;
+};
+
+/**
  * ExtractionDraftResponse
  */
 export type ExtractionDraftResponse = {
@@ -14651,6 +14683,36 @@ export type CreateExtractionDraftApiV1ExtractionsPostResponses = {
 };
 
 export type CreateExtractionDraftApiV1ExtractionsPostResponse = CreateExtractionDraftApiV1ExtractionsPostResponses[keyof CreateExtractionDraftApiV1ExtractionsPostResponses];
+
+export type PatchExtractionDraftApiV1ExtractionsDraftIdPatchData = {
+    body: ExtractionDraftPatchRequest;
+    path: {
+        /**
+         * Draft Id
+         */
+        draft_id: string;
+    };
+    query?: never;
+    url: '/api/v1/extractions/{draft_id}';
+};
+
+export type PatchExtractionDraftApiV1ExtractionsDraftIdPatchErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type PatchExtractionDraftApiV1ExtractionsDraftIdPatchError = PatchExtractionDraftApiV1ExtractionsDraftIdPatchErrors[keyof PatchExtractionDraftApiV1ExtractionsDraftIdPatchErrors];
+
+export type PatchExtractionDraftApiV1ExtractionsDraftIdPatchResponses = {
+    /**
+     * Successful Response
+     */
+    200: ExtractionDraftResponse;
+};
+
+export type PatchExtractionDraftApiV1ExtractionsDraftIdPatchResponse = PatchExtractionDraftApiV1ExtractionsDraftIdPatchResponses[keyof PatchExtractionDraftApiV1ExtractionsDraftIdPatchResponses];
 
 export type AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostData = {
     body?: never;

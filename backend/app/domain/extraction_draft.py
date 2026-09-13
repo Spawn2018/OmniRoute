@@ -3,6 +3,7 @@ from uuid import UUID
 
 from app.domain.errors import (
     AcceptRequiresChannelQuote,
+    ExtractionCandidatesNotEditable,
     InvalidExtractionDraft,
     InvalidTenderRfpIntake,
 )
@@ -24,6 +25,11 @@ def extraction_carrier_quote_kind() -> str:
 
 def extraction_tender_rfp_kind() -> str:
     return _RFP
+
+
+def require_rate_candidates_editable(draft_kind: object) -> None:
+    if draft_kind != _RATE:
+        raise ExtractionCandidatesNotEditable("edycja kandydatów tylko dla szkicu rate_line")
 
 
 def require_extraction_draft_kind(raw: object) -> str:

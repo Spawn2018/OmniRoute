@@ -8,6 +8,7 @@ from fastapi import APIRouter, Depends, Query, status
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.ai_transforms.extraction.schemas import ExtractedChargeCandidate
 from app.api.accept_extraction import AcceptExtractionToRates
 from app.api.deps import get_current_identity, require_permission, require_tenant_session
 from app.core.session_token import SessionIdentity
@@ -58,6 +59,16 @@ class ExtractRequest(BaseModel):
         if has_text == has_doc:
             raise ValueError("Podaj dokładnie jedno: input_text albo document_base64")
         return self
+
+
+class ExtractionCandidatePatch(ExtractedChargeCandidate):
+    model_config = ConfigDict(extra="forbid")
+
+
+class ExtractionDraftPatchRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    candidates: list[ExtractionCandidatePatch]
 
 
 class ExtractionDraftResponse(BaseModel):
@@ -121,6 +132,22 @@ async def create_extraction_draft(
             quote_payload=None if body.quote is None else body.quote.model_dump(),
             rfp_payload=None if body.rfp is None else body.rfp.model_dump(),
         )
+    await session.commit()
+    return _draft_response(draft)
+
+
+@router.patch("/{draft_id}", response_model=ExtractionDraftResponse)
+async def patch_extraction_draft(
+    draft_id: UUID,
+    body: ExtractionDraftPatchRequest,
+    _authz: None = Depends(require_permission("can_review_extractions", "organization")),
+    session: AsyncSession = Depends(require_tenant_session),
+) -> ExtractionDraftResponse:
+    service = ExtractionService(session)
+    draft = await service.patch_candidates(
+        draft_id=draft_id,
+        candidates=[row.model_dump() for row in body.candidates],
+    )
     await session.commit()
     return _draft_response(draft)
 

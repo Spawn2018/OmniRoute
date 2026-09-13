@@ -193,3 +193,94 @@ async def test_http_token_a_cannot_create_rate_for_draft_b(
     pending_b = await live_client.get("/api/v1/extractions", headers=headers_b)
     assert pending_b.status_code == 200
     assert pending_b.json()[0]["status"] == "pending"
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_http_patch_live_replaces_candidates_without_rate_line(
+    live_client: AsyncClient,
+    two_tenants,
+) -> None:
+    org_a = two_tenants["org_a"]
+    user_a = two_tenants["user_a"]
+    headers = bearer_auth_headers(organization_id=org_a.id, user_id=user_a.id)
+    created = await live_client.post(
+        "/api/v1/extractions",
+        headers=headers,
+        json={"source_ref": "doc://patch", "input_text": "THC 10 EUR"},
+    )
+    assert created.status_code == 201
+    draft_id = created.json()["id"]
+    patched = await live_client.patch(
+        f"/api/v1/extractions/{draft_id}",
+        headers=headers,
+        json={
+            "candidates": [
+                {"code": "BAF", "amount_text": "12", "currency": "USD", "note": "HITL"},
+            ],
+        },
+    )
+    assert patched.status_code == 200
+    assert patched.json()["payload"]["candidates"][0]["code"] == "BAF"
+    assert patched.json()["payload"]["source_ref"] == "doc://patch"
+    listed = await live_client.get("/api/v1/extractions", headers=headers)
+    assert listed.json()[0]["payload"]["candidates"][0]["amount_text"] == "12"
+    rates = await live_client.get("/api/v1/rate-lines", headers=headers)
+    assert rates.status_code == 200
+    assert rates.json() == []
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_http_token_a_cannot_patch_draft_b(
+    live_client: AsyncClient,
+    two_tenants,
+) -> None:
+    org_a = two_tenants["org_a"]
+    org_b = two_tenants["org_b"]
+    user_a = two_tenants["user_a"]
+    user_b = two_tenants["user_b"]
+    created = await live_client.post(
+        "/api/v1/extractions",
+        headers=bearer_auth_headers(organization_id=org_b.id, user_id=user_b.id),
+        json={"source_ref": "doc://b-patch", "input_text": "THC 10 EUR"},
+    )
+    assert created.status_code == 201
+    draft_b = created.json()["id"]
+    stolen = await live_client.patch(
+        f"/api/v1/extractions/{draft_b}",
+        headers=bearer_auth_headers(organization_id=org_a.id, user_id=user_a.id),
+        json={"candidates": [{"code": "THC", "amount_text": "99", "currency": "EUR"}]},
+    )
+    assert stolen.status_code == 404
+    listed_b = await live_client.get(
+        "/api/v1/extractions",
+        headers=bearer_auth_headers(organization_id=org_b.id, user_id=user_b.id),
+    )
+    assert listed_b.json()[0]["payload"]["candidates"][0]["amount_text"] == "10"
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_http_patch_after_accept_returns_409(
+    live_client: AsyncClient,
+    two_tenants,
+) -> None:
+    org_a = two_tenants["org_a"]
+    user_a = two_tenants["user_a"]
+    headers = bearer_auth_headers(organization_id=org_a.id, user_id=user_a.id)
+    await _seed_thc(live_client, org_id=org_a.id, user_id=user_a.id)
+    created = await live_client.post(
+        "/api/v1/extractions",
+        headers=headers,
+        json={"source_ref": "doc://after-accept", "input_text": "THC 10 EUR"},
+    )
+    draft_id = created.json()["id"]
+    accepted = await live_client.post(f"/api/v1/extractions/{draft_id}/accept", headers=headers)
+    assert accepted.status_code == 200
+    patched = await live_client.patch(
+        f"/api/v1/extractions/{draft_id}",
+        headers=headers,
+        json={"candidates": [{"code": "THC", "amount_text": "11", "currency": "EUR"}]},
+    )
+    assert patched.status_code == 409

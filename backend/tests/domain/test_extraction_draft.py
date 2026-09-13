@@ -2,9 +2,14 @@ from uuid import uuid4
 
 import pytest
 
-from app.domain.errors import InvalidExtractionDraft, InvalidTenderRfpIntake
+from app.domain.errors import (
+    ExtractionCandidatesNotEditable,
+    InvalidExtractionDraft,
+    InvalidTenderRfpIntake,
+)
 from app.domain.extraction_draft import (
     require_extraction_draft_kind,
+    require_rate_candidates_editable,
     require_tender_rfp_payload,
 )
 
@@ -19,6 +24,12 @@ def test_draft_kind_accepts_carrier_quote() -> None:
 
 def test_draft_kind_accepts_tender_rfp() -> None:
     assert require_extraction_draft_kind("tender_rfp") == "tender_rfp"
+
+
+def test_rate_candidates_editable_only_rate_line() -> None:
+    require_rate_candidates_editable("rate_line")
+    with pytest.raises(ExtractionCandidatesNotEditable, match="rate_line"):
+        require_rate_candidates_editable("tender_rfp")
 
 
 def test_draft_kind_rejects_unknown() -> None:

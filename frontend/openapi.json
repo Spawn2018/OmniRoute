@@ -440,6 +440,64 @@
         }
       }
     },
+    "/api/v1/extractions/{draft_id}": {
+      "patch": {
+        "tags": [
+          "extractions"
+        ],
+        "summary": "Patch Extraction Draft",
+        "operationId": "patch_extraction_draft_api_v1_extractions__draft_id__patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "draft_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Draft Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExtractionDraftPatchRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExtractionDraftResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/extractions/{draft_id}/accept": {
       "post": {
         "tags": [
@@ -29880,6 +29938,58 @@
           "source_ref"
         ],
         "title": "ExtractRequest"
+      },
+      "ExtractionCandidatePatch": {
+        "properties": {
+          "code": {
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1,
+            "title": "Code"
+          },
+          "amount_text": {
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1,
+            "title": "Amount Text"
+          },
+          "currency": {
+            "type": "string",
+            "maxLength": 3,
+            "minLength": 3,
+            "title": "Currency"
+          },
+          "note": {
+            "type": "string",
+            "title": "Note",
+            "default": ""
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "code",
+          "amount_text",
+          "currency"
+        ],
+        "title": "ExtractionCandidatePatch"
+      },
+      "ExtractionDraftPatchRequest": {
+        "properties": {
+          "candidates": {
+            "items": {
+              "$ref": "#/components/schemas/ExtractionCandidatePatch"
+            },
+            "type": "array",
+            "title": "Candidates"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "candidates"
+        ],
+        "title": "ExtractionDraftPatchRequest"
       },
       "ExtractionDraftResponse": {
         "properties": {

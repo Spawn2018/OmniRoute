@@ -7,7 +7,12 @@ from fastapi.testclient import TestClient
 
 from app.api.accept_extraction import ExtractionAcceptResult
 from app.api.deps import require_tenant_session, set_authz_checker
-from app.domain.errors import UnknownChargeCode
+from app.domain.errors import (
+    DraftNotPending,
+    ExtractionCandidatesNotEditable,
+    ResourceNotFound,
+    UnknownChargeCode,
+)
 from app.domain.extraction_draft import require_extraction_draft_kind
 from app.main import app
 from app.models.extraction_draft import ExtractionDraft
@@ -105,6 +110,25 @@ class StubExtractionService:
         if self.draft is None:
             return []
         return [self.draft]
+
+    async def patch_candidates(
+        self,
+        *,
+        draft_id: UUID,
+        candidates: list[dict[str, object]],
+    ) -> ExtractionDraft:
+        if self.draft is None or self.draft.id != draft_id:
+            raise ResourceNotFound("Szkic ekstrakcji nie istnieje")
+        if self.draft.status != "pending":
+            raise DraftNotPending("Szkic nie jest w statusie pending")
+        if self.draft.draft_kind != "rate_line":
+            raise ExtractionCandidatesNotEditable(
+                "edycja kandydatów tylko dla szkicu rate_line",
+            )
+        payload = dict(self.draft.payload)
+        payload["candidates"] = candidates
+        self.draft.payload = payload
+        return self.draft
 
 
 class StubAcceptToRates:
@@ -284,6 +308,118 @@ def test_http_rejects_unknown_draft_kind(happy_client: TestClient) -> None:
     )
     assert response.status_code == 400
     assert "allowlist" in response.json()["detail"]
+
+
+def test_http_patch_pending_rate_line_replaces_candidates(happy_client: TestClient) -> None:
+    headers = bearer_auth_headers()
+    created = happy_client.post(
+        "/api/v1/extractions",
+        headers=headers,
+        json={"source_ref": "doc://x", "input_text": "THC 10 EUR"},
+    )
+    draft_id = created.json()["id"]
+    patched = happy_client.patch(
+        f"/api/v1/extractions/{draft_id}",
+        headers=headers,
+        json={
+            "candidates": [
+                {"code": "BAF", "amount_text": "12", "currency": "USD", "note": "HITL"},
+            ],
+        },
+    )
+    assert patched.status_code == 200
+    body = patched.json()
+    assert body["payload"]["candidates"] == [
+        {"code": "BAF", "amount_text": "12", "currency": "USD", "note": "HITL"},
+    ]
+    assert body["payload"]["source_ref"] == "doc://x"
+    listed = happy_client.get("/api/v1/extractions", headers=headers)
+    assert listed.json()[0]["payload"]["candidates"][0]["code"] == "BAF"
+
+
+def test_http_patch_not_pending_returns_409(happy_client: TestClient) -> None:
+    headers = bearer_auth_headers()
+    created = happy_client.post(
+        "/api/v1/extractions",
+        headers=headers,
+        json={"source_ref": "doc://x", "input_text": "THC 10 EUR"},
+    )
+    draft_id = created.json()["id"]
+    happy_client.post(f"/api/v1/extractions/{draft_id}/reject", headers=headers)
+    patched = happy_client.patch(
+        f"/api/v1/extractions/{draft_id}",
+        headers=headers,
+        json={"candidates": [{"code": "THC", "amount_text": "11", "currency": "EUR"}]},
+    )
+    assert patched.status_code == 409
+
+
+def test_http_patch_extra_field_returns_422(happy_client: TestClient) -> None:
+    headers = bearer_auth_headers()
+    created = happy_client.post(
+        "/api/v1/extractions",
+        headers=headers,
+        json={"source_ref": "doc://x", "input_text": "THC 10 EUR"},
+    )
+    draft_id = created.json()["id"]
+    patched = happy_client.patch(
+        f"/api/v1/extractions/{draft_id}",
+        headers=headers,
+        json={
+            "candidates": [{"code": "THC", "amount_text": "10", "currency": "EUR"}],
+            "status": "accepted",
+        },
+    )
+    assert patched.status_code == 422
+
+
+def test_http_patch_computed_amount_returns_422(happy_client: TestClient) -> None:
+    headers = bearer_auth_headers()
+    created = happy_client.post(
+        "/api/v1/extractions",
+        headers=headers,
+        json={"source_ref": "doc://x", "input_text": "THC 10 EUR"},
+    )
+    draft_id = created.json()["id"]
+    patched = happy_client.patch(
+        f"/api/v1/extractions/{draft_id}",
+        headers=headers,
+        json={
+            "candidates": [
+                {
+                    "code": "THC",
+                    "amount_text": "10",
+                    "currency": "EUR",
+                    "amount": "10.0000",
+                },
+            ],
+        },
+    )
+    assert patched.status_code == 422
+
+
+def test_http_patch_tender_rfp_returns_422(happy_client: TestClient) -> None:
+    headers = bearer_auth_headers()
+    created = happy_client.post(
+        "/api/v1/extractions",
+        headers=headers,
+        json={
+            "source_ref": "doc://rfp",
+            "input_text": "RFP",
+            "draft_kind": "tender_rfp",
+            "rfp": {
+                "tender_id": str(uuid4()),
+                "intake_code": "scope",
+            },
+        },
+    )
+    draft_id = created.json()["id"]
+    patched = happy_client.patch(
+        f"/api/v1/extractions/{draft_id}",
+        headers=headers,
+        json={"candidates": [{"code": "THC", "amount_text": "1", "currency": "EUR"}]},
+    )
+    assert patched.status_code == 422
 
 
 def test_http_accepts_tender_rfp_draft_kind(happy_client: TestClient) -> None:

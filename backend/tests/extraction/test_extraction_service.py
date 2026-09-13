@@ -4,7 +4,11 @@ from uuid import uuid4
 import pytest
 
 from app.ai_transforms.extraction.mock_extractor import MockExtractor
-from app.domain.errors import DraftNotPending, ResourceNotFound
+from app.domain.errors import (
+    DraftNotPending,
+    ExtractionCandidatesNotEditable,
+    ResourceNotFound,
+)
 from app.integrations.langfuse.tracer import LangfuseTracer, PromptTrace
 from app.models.extraction_draft import ExtractionDraft
 from app.services.extraction.extraction_service import ExtractionService
@@ -134,6 +138,79 @@ async def test_reject_marks_pending() -> None:
     rejected = await service.reject(draft_id=draft.id, user_id=user_id)
     assert rejected.status == "rejected"
     assert rejected.reviewed_by == user_id
+
+
+@pytest.mark.asyncio
+async def test_patch_candidates_replaces_only_candidates() -> None:
+    session = AsyncMock()
+    session.flush = AsyncMock()
+    extractor = MagicMock()
+    draft = ExtractionDraft(
+        id=uuid4(),
+        organization_id=uuid4(),
+        status="pending",
+        draft_kind="rate_line",
+        source_ref="doc://x",
+        input_text="THC 10 EUR",
+        payload={
+            "source_ref": "doc://x",
+            "unparsed_regions": ["weekend"],
+            "candidates": [{"code": "THC", "amount_text": "10", "currency": "EUR"}],
+            "parser_name": "plain",
+        },
+    )
+    session.get = AsyncMock(return_value=draft)
+    service = ExtractionService(session, extractor=extractor)
+    patched = await service.patch_candidates(
+        draft_id=draft.id,
+        candidates=[{"code": "BAF", "amount_text": "12", "currency": "USD", "note": "poprawka"}],
+    )
+    assert patched.payload["candidates"] == [
+        {"code": "BAF", "amount_text": "12", "currency": "USD", "note": "poprawka"},
+    ]
+    assert patched.payload["source_ref"] == "doc://x"
+    assert patched.payload["unparsed_regions"] == ["weekend"]
+    assert patched.payload["parser_name"] == "plain"
+    extractor.extract.assert_not_called()
+
+
+@pytest.mark.asyncio
+async def test_patch_candidates_rejects_non_pending() -> None:
+    session = AsyncMock()
+    draft = ExtractionDraft(
+        id=uuid4(),
+        organization_id=uuid4(),
+        status="accepted",
+        draft_kind="rate_line",
+        source_ref="doc://x",
+        input_text="x",
+        payload={"source_ref": "doc://x", "unparsed_regions": [], "candidates": []},
+    )
+    session.get = AsyncMock(return_value=draft)
+    service = ExtractionService(session, extractor=MagicMock())
+    with pytest.raises(DraftNotPending):
+        await service.patch_candidates(draft_id=draft.id, candidates=[])
+
+
+@pytest.mark.asyncio
+async def test_patch_candidates_rejects_non_rate_line() -> None:
+    session = AsyncMock()
+    draft = ExtractionDraft(
+        id=uuid4(),
+        organization_id=uuid4(),
+        status="pending",
+        draft_kind="tender_rfp",
+        source_ref="doc://rfp",
+        input_text="RFP",
+        payload={"source_ref": "doc://rfp", "unparsed_regions": [], "candidates": []},
+    )
+    session.get = AsyncMock(return_value=draft)
+    service = ExtractionService(session, extractor=MagicMock())
+    with pytest.raises(ExtractionCandidatesNotEditable):
+        await service.patch_candidates(
+            draft_id=draft.id,
+            candidates=[{"code": "THC", "amount_text": "1", "currency": "EUR"}],
+        )
 
 
 @pytest.mark.asyncio

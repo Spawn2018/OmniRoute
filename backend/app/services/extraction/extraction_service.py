@@ -2,16 +2,19 @@ from datetime import UTC, datetime
 from uuid import UUID, uuid4
 
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm.attributes import flag_modified
 
 from app.ai_transforms.extraction.input_guard import ExtractionInputGuard
 from app.ai_transforms.extraction.protocol import DocumentExtractor
 from app.ai_transforms.extraction.provider import default_extractor
+
 from app.domain.errors import DraftNotPending, ResourceNotFound, UnparseableDocument
 from app.domain.extraction_draft import (
     extraction_carrier_quote_kind,
     extraction_tender_rfp_kind,
     require_carrier_quote_payload,
     require_extraction_draft_kind,
+    require_rate_candidates_editable,
     require_tender_rfp_payload,
 )
 from app.integrations.docling.parser import DocumentParser
@@ -151,6 +154,21 @@ class ExtractionService:
         draft.status = "rejected"
         draft.reviewed_by = user_id
         draft.reviewed_at = datetime.now(UTC)
+        await self._session.flush()
+        return draft
+
+    async def patch_candidates(
+        self,
+        *,
+        draft_id: UUID,
+        candidates: list[dict[str, object]],
+    ) -> ExtractionDraft:
+        draft = await self._require_pending(draft_id)
+        require_rate_candidates_editable(draft.draft_kind)
+        payload = dict(draft.payload)
+        payload["candidates"] = candidates
+        draft.payload = payload
+        flag_modified(draft, "payload")
         await self._session.flush()
         return draft
 

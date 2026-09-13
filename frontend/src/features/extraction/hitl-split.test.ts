@@ -64,6 +64,22 @@ describe("hitlSplitView", () => {
     expect(html).toContain("data-hitl-span")
   })
 
+  it("shows candidate edit fields when a save handler is provided", () => {
+    const html = renderToStaticMarkup(
+      createElement(HitlReviewSplit, {
+        draft: sampleDraft(),
+        pdfBase64: null,
+        busy: false,
+        onAccept: () => undefined,
+        onReject: () => undefined,
+        onPatchCandidates: () => undefined,
+      }),
+    )
+    expect(html).toContain("Zapisz poprawkę")
+    expect(html).toContain("Kod kandydata 1")
+    expect(html).toContain("Kwota kandydata 1")
+  })
+
   it("does not show the AI label when no draft is selected", () => {
     const html = renderToStaticMarkup(
       createElement(HitlReviewSplit, {

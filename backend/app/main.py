@@ -7,6 +7,8 @@ from app.core.request_id import RequestIdMiddleware
 from app.domain.errors import (
     ChannelQuoteConflict,
     DomainError,
+    DraftNotPending,
+    ExtractionCandidatesNotEditable,
     PartyConflict,
     PermissionDenied,
     QuotationNamedPlaceRequired,
@@ -44,6 +46,19 @@ async def permission_denied_handler(_request: Request, exc: PermissionDenied) ->
 @app.exception_handler(ResourceNotFound)
 async def resource_not_found_handler(_request: Request, exc: ResourceNotFound) -> JSONResponse:
     return JSONResponse(status_code=404, content={"detail": str(exc)})
+
+
+@app.exception_handler(DraftNotPending)
+async def draft_not_pending_handler(_request: Request, exc: DraftNotPending) -> JSONResponse:
+    return JSONResponse(status_code=409, content={"detail": str(exc)})
+
+
+@app.exception_handler(ExtractionCandidatesNotEditable)
+async def extraction_candidates_not_editable_handler(
+    _request: Request,
+    exc: ExtractionCandidatesNotEditable,
+) -> JSONResponse:
+    return JSONResponse(status_code=422, content={"detail": str(exc)})
 
 
 @app.exception_handler(ChannelQuoteConflict)

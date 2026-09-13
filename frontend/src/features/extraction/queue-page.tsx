@@ -14,7 +14,9 @@ import {
   createExtractionDraft,
   extractionCreateBody,
   fetchExtractionDrafts,
+  patchExtractionCandidates,
   rejectExtractionDraft,
+  type ExtractionCandidate,
   type ExtractionDraft,
 } from "@/lib/extractions-api"
 import { getTenantContext } from "@/lib/tenant"
@@ -110,6 +112,15 @@ export function ExtractionQueuePage() {
     onSuccess: () => {
       track("extraction_draft_rejected")
       setSelectedDraftId(null)
+      invalidate()
+    },
+  })
+
+  const patchMutation = useMutation({
+    mutationFn: (args: { draftId: string; candidates: ExtractionCandidate[] }) =>
+      patchExtractionCandidates(args.draftId, args.candidates),
+    onSuccess: () => {
+      track("extraction_draft_patched")
       invalidate()
     },
   })
@@ -313,12 +324,20 @@ export function ExtractionQueuePage() {
       <HitlReviewSplit
         draft={query.data?.find((row) => row.id === selectedDraftId) ?? null}
         pdfBase64={documentBase64}
-        busy={acceptMutation.isPending || rejectMutation.isPending}
+        busy={
+          acceptMutation.isPending || rejectMutation.isPending || patchMutation.isPending
+        }
         onAccept={(draftId) => acceptMutation.mutate(draftId)}
         onReject={(draftId) => rejectMutation.mutate(draftId)}
+        onPatchCandidates={(draftId, candidates) =>
+          patchMutation.mutate({ draftId, candidates })
+        }
       />
       {acceptMutation.isError ? (
         <p className="text-sm text-destructive">{(acceptMutation.error as Error).message}</p>
+      ) : null}
+      {patchMutation.isError ? (
+        <p className="text-sm text-destructive">{(patchMutation.error as Error).message}</p>
       ) : null}
       {acceptedRateNote ? (
         <p className="text-sm">

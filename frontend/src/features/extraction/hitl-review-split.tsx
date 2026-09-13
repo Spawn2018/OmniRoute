@@ -1,13 +1,14 @@
 import { lazy, Suspense } from "react"
 import { Money } from "@/components/money"
 import { Button } from "@/components/ui/button"
+import { CandidatePatchForm } from "@/features/extraction/candidate-patch-form"
 import { hitlGeneratedContentLabel, hitlSplitView } from "@/features/extraction/hitl-split"
 import {
   hitlPreviewSegments,
   hitlPreviewSpans,
   isPdfBase64,
 } from "@/features/extraction/hitl-spans"
-import type { ExtractionDraft } from "@/lib/extractions-api"
+import type { ExtractionCandidate, ExtractionDraft } from "@/lib/extractions-api"
 
 const HitlPdfViewer = lazy(() => import("@/features/extraction/hitl-pdf-viewer"))
 
@@ -17,6 +18,7 @@ type HitlReviewSplitProps = {
   busy: boolean
   onAccept: (draftId: string) => void
   onReject: (draftId: string) => void
+  onPatchCandidates?: (draftId: string, candidates: ExtractionCandidate[]) => void
 }
 
 export function HitlReviewSplit({
@@ -25,10 +27,11 @@ export function HitlReviewSplit({
   busy,
   onAccept,
   onReject,
+  onPatchCandidates,
 }: HitlReviewSplitProps) {
   const view = hitlSplitView(draft)
 
-  if (view.kind === "empty") {
+  if (view.kind === "empty" || draft === null) {
     return (
       <div className="rounded-md border border-border bg-card p-3 text-sm text-muted-foreground">
         Wybierz szkic z kolejki, żeby zobaczyć podgląd i recenzję.
@@ -78,20 +81,31 @@ export function HitlReviewSplit({
             {hitlGeneratedContentLabel(view)}
           </p>
         </div>
-        <ul className="mt-2 space-y-1 text-sm">
-          {view.candidates.length === 0 ? (
-            <li className="text-muted-foreground">Brak kandydatów</li>
-          ) : (
-            view.candidates.map((candidate) => (
-              <li key={`${candidate.code}-${candidate.amount_text}-${candidate.currency}`}>
-                <span className="font-mono text-xs">
-                  {candidate.code}{" "}
-                  <Money amount={candidate.amount_text} currency={candidate.currency} />
-                </span>
-              </li>
-            ))
-          )}
-        </ul>
+        {draft.status === "pending" &&
+        draft.draft_kind === "rate_line" &&
+        onPatchCandidates !== undefined ? (
+          <CandidatePatchForm
+            draftId={view.draftId}
+            candidates={view.candidates}
+            disabled={busy}
+            onSave={onPatchCandidates}
+          />
+        ) : (
+          <ul className="mt-2 space-y-1 text-sm">
+            {view.candidates.length === 0 ? (
+              <li className="text-muted-foreground">Brak kandydatów</li>
+            ) : (
+              view.candidates.map((candidate) => (
+                <li key={`${candidate.code}-${candidate.amount_text}-${candidate.currency}`}>
+                  <span className="font-mono text-xs">
+                    {candidate.code}{" "}
+                    <Money amount={candidate.amount_text} currency={candidate.currency} />
+                  </span>
+                </li>
+              ))
+            )}
+          </ul>
+        )}
         {view.unparsedRegions.length > 0 ? (
           <p className="mt-2 text-xs text-muted-foreground">
             Nierozpoznane: {view.unparsedRegions.join(" · ")}

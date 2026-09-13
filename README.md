@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **446.0** AI2 leftover — `prediction_ledger` bez wpisanego CRPS/MAE
-- **Etap:** plaster — **447.0** AI3.0 `PATCH` `extraction_draft`. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
-- **Następny:** **447.0** edycja `payload.candidates` na szkicu `pending` / `rate_line` przed akceptacją. Nie zapis z modelu. Nie wersja szkicu.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **447.0** AI3.0 — `PATCH` `payload.candidates` na szkicu `pending` / `rate_line`
+- **Etap:** Plan — **448.0** AI3.1 wersjonowanie szkicu + `bbox` + pewność. Komenda `/plan-modul`. Zero kodu.
+- **Następny:** **448.0** wersja szkicu + `bbox` i pewność w JSONB. Nie nowy BC. Nie zapis z modelu. `draft_kind` już jest.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

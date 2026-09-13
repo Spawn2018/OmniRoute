@@ -19,7 +19,7 @@ class ResourceNotFound(DomainError):
 
 
 class DraftNotPending(DomainError):
-    """Akceptacja/odrzucenie tylko dla szkicu w statusie pending."""
+    """Akceptacja, odrzucenie i PATCH tylko dla szkicu w statusie pending."""
 
 
 class UntrustedExtractionInput(DomainError):
@@ -148,6 +148,10 @@ class AcceptRequiresRateLine(DomainError):
 
 class InvalidExtractionDraft(DomainError):
     """draft_kind spoza rate_line / carrier_quote / tender_rfp — nie F10."""
+
+
+class ExtractionCandidatesNotEditable(DomainError):
+    """PATCH candidates tylko na szkicu rate_line."""
 
 
 class AcceptRequiresChannelQuote(DomainError):

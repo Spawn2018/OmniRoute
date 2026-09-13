@@ -834,3 +834,5 @@
 - 2026-09-13T12:00:00Z ? 445.0 ? version_window ? DONE ? srednie MAE/CRPS per model_version i dzien UTC ? migracja 355
 
 - 2026-09-13T12:25:00Z ? 446.0 ? prediction_ledger ? DONE ? POST bez wpisanego CRPS/MAE; kolumny nullable ? migracja 356
+
+- 2026-09-13T12:50:00Z | 447.0 | extraction_draft | DONE | PATCH candidates na pending/rate_line przed accept; bez nowej tabeli

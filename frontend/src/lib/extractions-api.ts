@@ -2,6 +2,7 @@ import {
   acceptExtractionDraftApiV1ExtractionsDraftIdAcceptPost,
   createExtractionDraftApiV1ExtractionsPost,
   listExtractionDraftsApiV1ExtractionsGet,
+  patchExtractionDraftApiV1ExtractionsDraftIdPatch,
   rejectExtractionDraftApiV1ExtractionsDraftIdRejectPost,
 } from "@/api/sdk.gen"
 import type { ExtractRequest, ExtractionDraftResponse } from "@/api/types.gen"
@@ -162,6 +163,20 @@ export async function createExtractionDraft(body: {
   })
   if (error || !data) {
     throw new ApiError(JSON.stringify(error) || "Błąd ekstrakcji", httpErrorStatus(response))
+  }
+  return toDraft(data)
+}
+
+export async function patchExtractionCandidates(
+  draftId: string,
+  candidates: ExtractionCandidate[],
+): Promise<ExtractionDraft> {
+  const { data, error, response } = await patchExtractionDraftApiV1ExtractionsDraftIdPatch({
+    path: { draft_id: draftId },
+    body: { candidates },
+  })
+  if (error || !data) {
+    throw new ApiError(JSON.stringify(error) || "Błąd poprawki szkicu", httpErrorStatus(response))
   }
   return toDraft(data)
 }

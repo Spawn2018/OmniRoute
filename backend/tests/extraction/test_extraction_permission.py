@@ -26,3 +26,14 @@ def test_list_extractions_forbidden_without_permission() -> None:
         headers=bearer_auth_headers(),
     )
     assert response.status_code == 403
+
+
+def test_patch_extractions_forbidden_without_permission() -> None:
+    set_authz_checker(DenyAllAuthz())
+    client = TestClient(app)
+    response = client.patch(
+        "/api/v1/extractions/11111111-1111-1111-1111-111111111111",
+        headers=bearer_auth_headers(),
+        json={"candidates": [{"code": "THC", "amount_text": "10", "currency": "EUR"}]},
+    )
+    assert response.status_code == 403
