@@ -6,7 +6,7 @@
 
 **Ostatni plaster:** **440.0** AI1.4 leftover FK `twin_mark` → `twin_kind`
 
-**Etap:** Plan — **AI1.4 leftover** / **441.0**
+**Etap:** Plan — **AI1.4 leftover** / **441.0** (delta zaakceptowana `/noc`, wolno `/plaster`)
 
 **Noc:** `/noc 11` do **2026-09-13T11:00+02**.
 
@@ -14,7 +14,7 @@
 
 Park: `data_source` (licencja, AI5) · FK `outcome_ledger` (po słowniku) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 441.0. Nie startuj AI2 (CRPS).
 
-**Spec (jedyna na sesję):** brak — `/plan-modul` na 441.0.
+**Spec (jedyna na sesję):** [docs/deltas/open/441.0-outcome-kind.md](../deltas/open/441.0-outcome-kind.md).
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 
