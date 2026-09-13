@@ -858,3 +858,5 @@
 - 2026-09-13T16:40:00Z | 458.0 | telematics_device | DONE | HITL catalog device_kind tracker/fault/other; bez parowania
 
 - 2026-09-13T16:55:00Z | 459.0 | tracking_consent | DONE | HITL catalog consent_kind party/driver/other; bez kolumny na kontakcie
+
+- 2026-09-13T17:10:00Z | 460.0 | sales_lane | DONE | HITL catalog lane_kind repeat/spot/other; bez UN/LOCODE

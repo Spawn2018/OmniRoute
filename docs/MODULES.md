@@ -78,6 +78,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | G2.20 | Kółko HITL | 266.0 `circle_sim` · 454.0 | **ukończony (HITL+SQL)** · para uzupełniająca w widoku; leftover generator 500k / km / VRP |
 | BR3.0 | Znacznik planu trasy HITL | 455.0 `route_plan_mark` | **ukończony (HITL)** · kind route/stop/window/other; leftover Valhalla / VRP / km |
 | BR6.0 | Okazja CRM HITL | 456.0 `crm_opportunity` | **ukończony (HITL)** · stage open/won/lost/other; leftover activity / pipeline |
+| BR6.1 | Korytarz sprzedażowy HITL | 460.0 `sales_lane` | **ukończony (HITL)** · kind repeat/spot/other; leftover UN/LOCODE / wolumen |
 | BR2.0 | Zdarzenie pozycji HITL | 457.0 `position_event` | **ukończony (HITL)** · kind gps/manual/other; leftover współrzędne / poll |
 | BR2.1 | Urządzenie telematyczne HITL | 458.0 `telematics_device` | **ukończony (HITL)** · kind tracker/fault/other; leftover parowanie / poll |
 | BR2.2 | Zgoda na śledzenie HITL | 459.0 `tracking_consent` | **ukończony (HITL)** · kind party/driver/other; leftover kolumna na `party_contact` |

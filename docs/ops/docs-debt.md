@@ -1,4 +1,5 @@
-- **456.0 leftover:** activity · pipeline · FK leada/party · dedup NIP · cold-send · BR6.1 korytarz. 456.0 = HITL `crm_opportunity`.
+- **456.0 leftover:** activity · pipeline · FK leada/party · dedup NIP · cold-send. 456.0 = HITL `crm_opportunity`.
+- **460.0 leftover:** para UN/LOCODE · wolumen · FK do okazji/party · pipeline · HubSpot live · BR6.2. 460.0 = HITL `sales_lane`.
 - **455.0 leftover:** Valhalla live · VRP · km · tacho constraint (BR3.3) · BR3.1 załadunek. 455.0 = HITL `route_plan_mark`.
 - **454.0 leftover:** generator 500k · km · `n_overlap` · VRP · EXPLAIN p95. 454.0 = widok `circle_sim_pair`.
 - **453.0 leftover:** AI4.2 kółka SQL · solver liczb · JSON dźwigni · CASCADE. 453.0 = FK przebieg → migawka + widok `what_if_replay`.

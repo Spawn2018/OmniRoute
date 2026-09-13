@@ -258,6 +258,7 @@ describe("U-routes-breadth standing", () => {
       "457.0": "/position-events",
       "458.0": "/telematics-devices",
       "459.0": "/tracking-consents",
+      "460.0": "/sales-lanes",
       "267.0": "/lane-kms",
       "268.0": "/erp-connectors",
       "269.0": "/terminal-slot-connectors",
@@ -422,7 +423,7 @@ describe("U-routes-breadth standing", () => {
     expect(OPS_JOBS.map((job) => job.route)).toEqual(
       expect.arrayContaining(Object.values(SHIPPED_CHARGE_ROUTES)),
     )
-    expect(OPS_JOBS).toHaveLength(264)
+    expect(OPS_JOBS).toHaveLength(265)
 
     expect(OPS_JOBS.length).not.toBe(157)
 

@@ -204,6 +204,7 @@ import { Route as RoutePlanMarksRouteImport } from './routes/route-plan-marks'
 import { Route as RoutingGuideEnforcementsRouteImport } from './routes/routing-guide-enforcements'
 import { Route as RoutingGuideMatchesRouteImport } from './routes/routing-guide-matches'
 import { Route as RoutingGuidesRouteImport } from './routes/routing-guides'
+import { Route as SalesLanesRouteImport } from './routes/sales-lanes'
 import { Route as SanctionsRouteImport } from './routes/sanctions'
 import { Route as SanctionsMarksRouteImport } from './routes/sanctions-marks'
 import { Route as SapConnectorsRouteImport } from './routes/sap-connectors'
@@ -1243,6 +1244,11 @@ const RoutingGuidesRoute = RoutingGuidesRouteImport.update({
   path: '/routing-guides',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SalesLanesRoute = SalesLanesRouteImport.update({
+  id: '/sales-lanes',
+  path: '/sales-lanes',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SanctionsRoute = SanctionsRouteImport.update({
   id: '/sanctions',
   path: '/sanctions',
@@ -1750,6 +1756,7 @@ export interface FileRoutesByFullPath {
   '/routing-guide-enforcements': typeof RoutingGuideEnforcementsRoute
   '/routing-guide-matches': typeof RoutingGuideMatchesRoute
   '/routing-guides': typeof RoutingGuidesRoute
+  '/sales-lanes': typeof SalesLanesRoute
   '/sanctions': typeof SanctionsRoute
   '/sanctions-marks': typeof SanctionsMarksRoute
   '/sap-connectors': typeof SapConnectorsRoute
@@ -2009,6 +2016,7 @@ export interface FileRoutesByTo {
   '/routing-guide-enforcements': typeof RoutingGuideEnforcementsRoute
   '/routing-guide-matches': typeof RoutingGuideMatchesRoute
   '/routing-guides': typeof RoutingGuidesRoute
+  '/sales-lanes': typeof SalesLanesRoute
   '/sanctions': typeof SanctionsRoute
   '/sanctions-marks': typeof SanctionsMarksRoute
   '/sap-connectors': typeof SapConnectorsRoute
@@ -2269,6 +2277,7 @@ export interface FileRoutesById {
   '/routing-guide-enforcements': typeof RoutingGuideEnforcementsRoute
   '/routing-guide-matches': typeof RoutingGuideMatchesRoute
   '/routing-guides': typeof RoutingGuidesRoute
+  '/sales-lanes': typeof SalesLanesRoute
   '/sanctions': typeof SanctionsRoute
   '/sanctions-marks': typeof SanctionsMarksRoute
   '/sap-connectors': typeof SapConnectorsRoute
@@ -2530,6 +2539,7 @@ export interface FileRouteTypes {
     | '/routing-guide-enforcements'
     | '/routing-guide-matches'
     | '/routing-guides'
+    | '/sales-lanes'
     | '/sanctions'
     | '/sanctions-marks'
     | '/sap-connectors'
@@ -2789,6 +2799,7 @@ export interface FileRouteTypes {
     | '/routing-guide-enforcements'
     | '/routing-guide-matches'
     | '/routing-guides'
+    | '/sales-lanes'
     | '/sanctions'
     | '/sanctions-marks'
     | '/sap-connectors'
@@ -3048,6 +3059,7 @@ export interface FileRouteTypes {
     | '/routing-guide-enforcements'
     | '/routing-guide-matches'
     | '/routing-guides'
+    | '/sales-lanes'
     | '/sanctions'
     | '/sanctions-marks'
     | '/sap-connectors'
@@ -3308,6 +3320,7 @@ export interface RootRouteChildren {
   RoutingGuideEnforcementsRoute: typeof RoutingGuideEnforcementsRoute
   RoutingGuideMatchesRoute: typeof RoutingGuideMatchesRoute
   RoutingGuidesRoute: typeof RoutingGuidesRoute
+  SalesLanesRoute: typeof SalesLanesRoute
   SanctionsRoute: typeof SanctionsRoute
   SanctionsMarksRoute: typeof SanctionsMarksRoute
   SapConnectorsRoute: typeof SapConnectorsRoute
@@ -4739,6 +4752,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RoutingGuidesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sales-lanes': {
+      id: '/sales-lanes'
+      path: '/sales-lanes'
+      fullPath: '/sales-lanes'
+      preLoaderRoute: typeof SalesLanesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sanctions': {
       id: '/sanctions'
       path: '/sanctions'
@@ -5372,6 +5392,7 @@ const rootRouteChildren: RootRouteChildren = {
   RoutingGuideEnforcementsRoute: RoutingGuideEnforcementsRoute,
   RoutingGuideMatchesRoute: RoutingGuideMatchesRoute,
   RoutingGuidesRoute: RoutingGuidesRoute,
+  SalesLanesRoute: SalesLanesRoute,
   SanctionsRoute: SanctionsRoute,
   SanctionsMarksRoute: SanctionsMarksRoute,
   SapConnectorsRoute: SapConnectorsRoute,

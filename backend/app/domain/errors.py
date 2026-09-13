@@ -322,6 +322,10 @@ class InvalidEdiMessage(DomainError):
     """Komunikat EDI: kind z allowlisty i source_ref zapisu — nie parser, nie kwota."""
 
 
+class InvalidSalesLane(DomainError):
+    """BR6.1: HITL korytarz sprzedazy — nie UN/LOCODE / pipeline / HubSpot."""
+
+
 class InvalidSalesInvoice(DomainError):
     """Faktura: kind z allowlisty i source_ref zapisu — nie KSeF, nie kwota."""
 

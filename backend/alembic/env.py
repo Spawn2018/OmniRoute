@@ -69,6 +69,7 @@ from app.models.cargo_claim import CargoClaim  # noqa: F401
 from app.models.fraud_flag import FraudFlag  # noqa: F401
 from app.models.edi_message import EdiMessage  # noqa: F401
 from app.models.sales_invoice import SalesInvoice  # noqa: F401
+from app.models.sales_lane import SalesLane  # noqa: F401
 from app.models.bank_payment import BankPayment  # noqa: F401
 from app.models.fx_difference import FxDifference  # noqa: F401
 from app.models.cash_flow import CashFlow  # noqa: F401

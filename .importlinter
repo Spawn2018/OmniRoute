@@ -59,6 +59,7 @@ modules =
     app.services.fraud_flags
     app.services.edi_messages
     app.services.sales_invoices
+    app.services.sales_lanes
     app.services.quote_invoice_settlements
     app.services.bank_payments
     app.services.money_costs
@@ -408,6 +409,9 @@ forbidden_modules =
     app.services.sales_invoices
     app.repositories.sales_invoices
     app.models.sales_invoice
+    app.services.sales_lanes
+    app.repositories.sales_lanes
+    app.models.sales_lane
     app.services.quote_invoice_settlements
     app.repositories.quote_invoice_settlements
     app.models.quote_invoice_settlement

@@ -37,6 +37,7 @@ type organization
     define can_manage_fraud_flags: member
     define can_manage_edi_messages: member
     define can_manage_sales_invoices: member
+    define can_manage_sales_lanes: member
     define can_manage_quote_invoice_settlements: member
     define can_manage_bank_payments: member
     define can_manage_money_costs: member

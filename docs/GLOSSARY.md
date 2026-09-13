@@ -227,6 +227,7 @@
 | wynik interwencji | intervention_outcome | CI7 HITL katalog; leftover saved SQL |
 | lead CRM | crm_lead | G1 HITL katalog; leftover szansa/activity |
 | okazja CRM | crm_opportunity | BR6.0 HITL katalog; leftover activity / pipeline |
+| korytarz sprzedażowy | sales_lane | BR6.1 HITL katalog; leftover UN/LOCODE / wolumen |
 | zdarzenie pozycji | position_event | BR2.0 HITL katalog; leftover współrzędne / poll |
 | urządzenie telematyczne | telematics_device | BR2.1 HITL katalog; leftover parowanie / poll |
 | zgoda na śledzenie | tracking_consent | BR2.2 HITL katalog; leftover kolumna na `party_contact` |

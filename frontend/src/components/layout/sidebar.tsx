@@ -91,6 +91,7 @@ const NAV = [
   { to: "/circle-sims", label: "Kółko" },
   { to: "/route-plan-marks", label: "Znacznik planu trasy" },
   { to: "/crm-opportunities", label: "Okazja CRM" },
+  { to: "/sales-lanes", label: "Korytarz sprzedażowy" },
   { to: "/position-events", label: "Zdarzenie pozycji" },
   { to: "/telematics-devices", label: "Urządzenie telematyczne" },
   { to: "/tracking-consents", label: "Zgoda na śledzenie" },
