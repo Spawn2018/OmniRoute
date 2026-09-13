@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **461.0** BR6.2 — HITL `shipper_tender_mark` (tryb załadowcy)
 
-**Etap:** Plan — **462.0** BR6.5 marketing. Brak delty. `/plan-modul`.
+**Etap:** plaster — **462.0** BR6.5 `campaign_mark`. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
 
 **Noc:** `/noc 20` do **2026-09-13T20:00+02**.
 
-**Następny:** **462.0** HITL znacznik kampanii / lejka. Nie atrybucja live. Nie Expo.
+**Następny:** **462.0** HITL znacznik kampanii. Nie atrybucja live. Nie `funnel_mark`. Nie Expo.
 
 Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 462.0. Nie otwieraj AI0. Nie startuj leftover Valhalla / pipeline / BR2.3 Expo / BR6.3 Expo.
 
-**Spec (jedyna na sesję):** brak — /plan-modul
+**Spec (jedyna na sesję):** [docs/deltas/open/462.0-campaign-mark.md](../deltas/open/462.0-campaign-mark.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 

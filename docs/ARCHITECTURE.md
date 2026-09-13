@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **461.0** BR6.2 — HITL `shipper_tender_mark` (tryb załadowcy). **Etap:** Plan — **462.0** BR6.5 marketing. Brak delty. `/plan-modul`. **Następny:** **462.0** HITL znacznik kampanii / lejka. Nie atrybucja live. Nie Expo. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **461.0** BR6.2 — HITL `shipper_tender_mark` (tryb załadowcy). **Etap:** plaster — **462.0** BR6.5 `campaign_mark`. Delta zaakceptowana (`/noc`). Wolno `/plaster`. **Następny:** **462.0** HITL znacznik kampanii. Nie atrybucja live. Nie `funnel_mark`. Nie Expo. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

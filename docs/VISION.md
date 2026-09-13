@@ -94,6 +94,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | **460.0** `sales_lane` w kodzie (`CONFIRMED`, git). Następny = **BR6.2** przetarg załadowcy (`REQUIREMENT`). Expo / AI5 `REJECTED` na tym wierszu. |
 | 2026-09-13 | BR6.2 plan (**461.0**): HITL `shipper_tender_mark`. Druga tabela `tender` / auto-award / Alpega live `REJECTED` na tym wierszu. |
 | 2026-09-13 | **461.0** `shipper_tender_mark` w kodzie (`CONFIRMED`, git). Następny = **BR6.5** marketing (`REQUIREMENT`). Expo BR6.3 / AI5 `REJECTED` na tym wierszu. |
+| 2026-09-13 | BR6.5 plan (**462.0**): HITL `campaign_mark`. Atrybucja live / klej do `funnel_mark` `REJECTED` na tym wierszu. |
 
 ---
 
@@ -224,6 +225,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | **460.0** w kodzie (`CONFIRMED`, git). Katalog korytarza sprzedaży. Następny = **BR6.2** (`REQUIREMENT`). UN/LOCODE leftover. | CURRENT + plaster 460.0 `/noc` |
 | 2026-09-13 | BR6.2 (**461.0**) = HITL `shipper_tender_mark` (`round|bench|spot|other`). Druga tabela `tender` / auto-award / Alpega live `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
 | 2026-09-13 | **461.0** w kodzie (`CONFIRMED`, git). Katalog trybu załadowcy. Następny = **BR6.5** (`REQUIREMENT`). Rundy leftover. Expo BR6.3 park. | CURRENT + plaster 461.0 `/noc` |
+| 2026-09-13 | BR6.5 (**462.0**) = HITL `campaign_mark` (`campaign|attribution|other`). Atrybucja live / `funnel_mark` `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
 
 ---
 ---
@@ -947,7 +949,9 @@ bo bez ewidencji magazynowej nie ma zastawu na towarze.
   na tym wierszu. Alpega TenderEasy + Freight Bench = kanon EU, nie live.
 - **Aplikacja mobilna dla sprzedaży** — iOS i Android
 - **Portale** — klienta, przewoźnika, podwykonawcy
-- **Marketing i automatyzacja** — kampanie, atrybucja, lejek
+- **Marketing i automatyzacja** — katalog HITL `campaign_mark` w planie
+  (`REQUIREMENT`, 462.0); leftover atrybucja live (`REQUIREMENT`).
+  Klej do `funnel_mark` `REJECTED` na tym wierszu.
 
 **Grupa 7 — Watch Tower jako produkt.**
 - **Graf skutku biznesowego** — kaskada do marży i gotówki (część B.6, punkt 6)

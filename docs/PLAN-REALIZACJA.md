@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **462.0** HITL znacznik kampanii / lejka. Nie atrybucja live. Nie Expo.
+**Następny:** **462.0** HITL znacznik kampanii. Nie atrybucja live. Nie `funnel_mark`. Nie Expo.
 <!-- os-status:end -->
 
 ```mermaid
@@ -812,7 +812,7 @@ Dump TMS `04b`: WMS nie jest dekoracją (Manhattan Active TM+WMS+Yard+Labour, In
 | BR6.2 | przetargi korporacyjne po stronie załadowcy | po G2 | **461.0** DONE HITL `shipper_tender_mark`; leftover: rundy · like-for-like; Alpega/Freight Bench nie live; nie auto-award |
 | BR6.3 | aplikacja mobilna sprzedaży iOS/Android | po BR6.0 | Expo/RN; web UI się nie przenosi |
 | BR6.4 | portale: klienta, przewoźnika, podwykonawcy | po S53 | zbieżne z X1–X5 |
-| BR6.5 | marketing: kampanie, atrybucja, lejek | po BR6.0 | |
+| BR6.5 | marketing: kampanie, atrybucja, lejek | po BR6.0 | plan **462.0** HITL `campaign_mark`; leftover: atrybucja live; nie `funnel_mark` |
 | BR7.0 | sala operacyjna — warstwa działająca | po W2 leftover | dziś tylko katalog rodzaju incydentu |
 | BR7.1 | wpływ na linię produkcyjną — warstwa liczona | po AI6.0 | dziś tylko katalog znacznika |
 
@@ -934,13 +934,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->
