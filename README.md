@@ -88,8 +88,8 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **471.0** BR5.0 — HITL `factoring_connector`
-- **Etap:** Plan — następny **BR5.1** finansowanie zamówienia (PO Financing). Komenda `/plan-modul`. Zero kodu do akceptacji delty.
-- **Następny:** `/plan-modul` **BR5.1** PO Financing (rdzeń Trade-Tech). Nie live HTTP bez umowy partnera. Nie zgaduj plaster ID.
+- **Etap:** Plan — delta **472.0** BR5.1 `po_financing_mark`. Zero kodu do akceptacji delty.
+- **Następny:** akceptacja delty **472.0** → `/plaster` HITL `po_financing_mark`. Nie FK do `purchase_order`. Nie zgaduj plaster ID.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

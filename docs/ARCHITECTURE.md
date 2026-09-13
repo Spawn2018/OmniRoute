@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **471.0** BR5.0 — HITL `factoring_connector`. **Etap:** Plan — następny **BR5.1** finansowanie zamówienia (PO Financing). Komenda `/plan-modul`. Zero kodu do akceptacji delty. **Następny:** `/plan-modul` **BR5.1** PO Financing (rdzeń Trade-Tech). Nie live HTTP bez umowy partnera. Nie zgaduj plaster ID. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **471.0** BR5.0 — HITL `factoring_connector`. **Etap:** Plan — delta **472.0** BR5.1 `po_financing_mark`. Zero kodu do akceptacji delty. **Następny:** akceptacja delty **472.0** → `/plaster` HITL `po_financing_mark`. Nie FK do `purchase_order`. Nie zgaduj plaster ID. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
