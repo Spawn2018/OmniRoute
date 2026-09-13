@@ -88,8 +88,8 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **467.0** BR4.1 — HITL `oog_permit_mark`
-- **Etap:** Plan — **468.0** BR4.2 konsolidacja morska LCL (konsole, CFS).
-- **Następny:** **468.0** plan HITL LCL. Nie live CFS. Nie druga tabela LCL.
+- **Etap:** Plan — delta **468.0** zaakceptowana (`/noc`). Wolno `/plaster`.
+- **Następny:** plaster **468.0** HITL `lcl_console_mark`. Nie live CFS. Nie druga tabela LCL.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

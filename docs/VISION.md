@@ -106,6 +106,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | **466.0** `ferry_booking_mark` w kodzie (`CONFIRMED`, git). Następny = **BR4.1** OOG (`REQUIREMENT`). Live bilet / Expo / AI5 `REJECTED` na tym wierszu. |
 | 2026-09-13 | BR4.1 plan (**467.0**): HITL `oog_permit_mark`. Wymiary Decimal / live zezwolenie / klej do `oog_mark` `REJECTED` na tym wierszu. |
 | 2026-09-13 | **467.0** `oog_permit_mark` w kodzie (`CONFIRMED`, git). Następny = **BR4.2** LCL (`REQUIREMENT`). Wymiary / Expo / AI5 `REJECTED` na tym wierszu. |
+| 2026-09-13 | BR4.2 plan (**468.0**): HITL `lcl_console_mark`. Live CFS / CBM / druga tabela LCL `REJECTED` na tym wierszu. |
 
 ---
 
@@ -248,6 +249,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | **466.0** w kodzie (`CONFIRMED`, git). Katalog rezerwacji promu. Następny = **BR4.1** (`REQUIREMENT`). Live bilet leftover. | CURRENT + plaster 466.0 `/noc` |
 | 2026-09-13 | BR4.1 (**467.0**) = HITL `oog_permit_mark` (`permit|pilot|route|other`). Wymiary Decimal / live zezwolenie / klej do G5 `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
 | 2026-09-13 | **467.0** w kodzie (`CONFIRMED`, git). Katalog zezwolenia OOG. Następny = **BR4.2** (`REQUIREMENT`). Wymiary leftover. | CURRENT + plaster 467.0 `/noc` |
+| 2026-09-13 | BR4.2 (**468.0**) = HITL `lcl_console_mark` (`console|cfs|other`). Live CFS / CBM / klej do D6 `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
 
 ---
 ---
@@ -876,7 +878,7 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
 Ostatni ukończony plaster: **467.0** (HITL `oog_permit_mark`).
-Następny = **468.0** BR4.2 plan HITL LCL (`REQUIREMENT`).
+Następny = **468.0** plaster HITL `lcl_console_mark` (`REQUIREMENT`).
 AI1.0–AI1.4 oraz 443.0–467.0 są w kodzie (`CONFIRMED`); `data_source`
 zostaje w AI5 (`REQUIREMENT`). Teza B.1 zostaje: szerokość katalogów nie zastępuje pomiaru.
 
@@ -960,7 +962,10 @@ bo bez ewidencji magazynowej nie ma zastawu na towarze.
   (`CONFIRMED`, 467.0); leftover wymiary Decimal / live zezwolenie
   (`REQUIREMENT`). `oog_mark` zostaje oog/lashing/escort. Klej do G5
   `REJECTED` na katalogu.
-- **Konsolidacja morska LCL** — konsole, CFS, kalkulacja
+- **Konsolidacja morska LCL** — plan **468.0**: HITL `lcl_console_mark`
+  (`REQUIREMENT`); leftover live CFS / kalkulacja CBM (`REQUIREMENT`).
+  Druga tabela LCL `REJECTED`. `ocean_bill` zostaje HBL/MBL. Odcinek
+  `ocean_lcl` zostaje na `shipment_leg`. Klej do D6 `REJECTED` na katalogu.
 - **NAC i agent nominowany** — rola w przepływie dokumentowym
 - **Jedwabny Szlak / kolej Chiny–Europa** — korytarz z własną specyfiką
 

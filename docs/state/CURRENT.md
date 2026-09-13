@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **467.0** BR4.1 — HITL `oog_permit_mark`
 
-**Etap:** Plan — **468.0** BR4.2 konsolidacja morska LCL (konsole, CFS).
+**Etap:** Plan — delta **468.0** zaakceptowana (`/noc`). Wolno `/plaster`.
 
 **Noc:** `/noc 7` do **2026-09-14T07:00+02**.
 
-**Następny:** **468.0** plan HITL LCL. Nie live CFS. Nie druga tabela LCL.
+**Następny:** plaster **468.0** HITL `lcl_console_mark`. Nie live CFS. Nie druga tabela LCL.
 
-Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 468.0. Nie otwieraj AI0. Nie startuj leftover Valhalla / live zezwolenie / Expo / Alpega / HubSpot.
+Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 468.0. Nie otwieraj AI0. Nie startuj leftover Valhalla / live CFS / Expo / Alpega / HubSpot.
 
-**Spec (jedyna na sesję):** brak — `/plan-modul` BR4.2
+**Spec (jedyna na sesję):** [468.0](../deltas/open/468.0.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 
@@ -62,6 +62,7 @@ Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll �
 **2026-09-13:** Plaster **465.0** zamknięty (`/noc`) — HITL `tacho_plan_mark`.
 **2026-09-13:** Plaster **466.0** zamknięty (`/noc`) — HITL `ferry_booking_mark`.
 **2026-09-13:** Plaster **467.0** zamknięty (`/noc`) — HITL `oog_permit_mark`.
+**2026-09-13:** Plan **468.0** (`/noc`) — HITL `lcl_console_mark`. Wolno plaster.
 **2026-09-13:** Kanon Fali AI/BR w PLAN; `docs/VISION.md`; HC-04 przepisane (Q1–Q2).
 **2026-09-13:** Dump CT (badania `03` B.1–B.3, B.7–B.10) w kanonie VISION + PLAN Fala AI/BR; B.4–B.6 FourKites/BY/Kinaxis nietknięte.
 **2026-09-13:** Dump TMS top-10 (badania `04b` A–H × 10) w kanonie VISION + PLAN Fala AI/BR. CargoWise/Qargo/interLAN zostają w `04`.

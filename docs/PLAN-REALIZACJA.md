@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **468.0** plan HITL LCL. Nie live CFS. Nie druga tabela LCL.
+**Następny:** plaster **468.0** HITL `lcl_console_mark`. Nie live CFS. Nie druga tabela LCL.
 <!-- os-status:end -->
 
 ```mermaid
@@ -801,7 +801,7 @@ Dump TMS `04b`: WMS nie jest dekoracją (Manhattan Active TM+WMS+Yard+Labour, In
 | BR3.3 | tacho jako **ograniczenie planu**, nie raport po fakcie | po BR3.0 + V7 | **465.0** DONE HITL `tacho_plan_mark`; leftover live DDD · solver godzin; office zostaje |
 | BR4.0 | promy: rezerwacja, okna, art. 9 | po T | **466.0** DONE HITL `ferry_booking_mark`; leftover live bilet · solver art. 9; art. 9 zostaje |
 | BR4.1 | ładunki ponadnormatywne: zezwolenia, pilotaż, trasa specjalna | po BR3.1 | **467.0** DONE HITL `oog_permit_mark`; leftover wymiary Decimal · live zezwolenie; G5 zostaje |
-| BR4.2 | konsolidacja morska LCL: konsole, CFS | po D | |
+| BR4.2 | konsolidacja morska LCL: konsole, CFS | po D | plan **468.0** HITL `lcl_console_mark`; leftover live CFS · CBM; D6 zostaje |
 | BR4.3 | NAC i agent nominowany | po I | rola w przepływie dokumentowym |
 | BR4.4 | korytarz Chiny-Europa (Jedwabny Szlak) | po BR3.0 | |
 | BR5.0 | faktoring — integracja z partnerem | po F | SMEO w osi wejścia |

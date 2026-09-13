@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **467.0** BR4.1 — HITL `oog_permit_mark`. **Etap:** Plan — **468.0** BR4.2 konsolidacja morska LCL (konsole, CFS). **Następny:** **468.0** plan HITL LCL. Nie live CFS. Nie druga tabela LCL. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **467.0** BR4.1 — HITL `oog_permit_mark`. **Etap:** Plan — delta **468.0** zaakceptowana (`/noc`). Wolno `/plaster`. **Następny:** plaster **468.0** HITL `lcl_console_mark`. Nie live CFS. Nie druga tabela LCL. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
