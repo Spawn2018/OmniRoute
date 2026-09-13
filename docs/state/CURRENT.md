@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **447.0** AI3.0 — `PATCH` `payload.candidates` na szkicu `pending` / `rate_line`
 
-**Etap:** Plan — **448.0** AI3.1 wersjonowanie szkicu + `bbox` + pewność. Komenda `/plan-modul`. Zero kodu.
+**Etap:** plaster — **448.0** AI3.1 wersja + `bbox_text` + `confidence_text`. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
 
 **Noc:** `/noc 20` do **2026-09-13T20:00+02**.
 
-**Następny:** **448.0** wersja szkicu + `bbox` i pewność w JSONB. Nie nowy BC. Nie zapis z modelu. `draft_kind` już jest.
+**Następny:** **448.0** `payload.revision` + ramka i pewność jako tekst na kandydacie. Nie tabela historii. Nie zapis z modelu.
 
 Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 448.0. Nie otwieraj AI0.
 
-**Spec (jedyna na sesję):** brak — najpierw `/plan-modul`.
+**Spec (jedyna na sesję):** [docs/deltas/open/448.0-extraction-draft-revision.md](../deltas/open/448.0-extraction-draft-revision.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 

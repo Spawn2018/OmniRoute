@@ -10,7 +10,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | ID | Moduł | Plaster | Status |
 |---|---|---|---|
 | M-01 | Wielodostępność / tenancy | 0.3 RLS + 0.4 OpenFGA + 0.12 JWT + 0.15 hasła | **ukończony (fundament)** · Auth0 I1/I2 **odroczone** (brak tenanta); sesja email+hasło+JWT ≠ IdP |
-| M-20 | Ekstrakcja dokumentów | 0.7–0.14 HITL + T0 + 0.18 live HTTP PG + 1.3 accept→rate_line + U-art50 + U-pdf-spans + 2.1–2.2 · 66.0 z `inbound_message` · **447.0** PATCH `candidates` | **ukończony (fundament)** · leftover AI3.1 wersja/bbox; ExtractionService nie importuje rates ani inbound |
+| M-20 | Ekstrakcja dokumentów | 0.7–0.14 HITL + T0 + 0.18 live HTTP PG + 1.3 accept→rate_line + U-art50 + U-pdf-spans + 2.1–2.2 · 66.0 z `inbound_message` · **447.0** PATCH `candidates` | **ukończony (fundament)** · **448.0** plan wersja/bbox; ExtractionService nie importuje rates ani inbound |
 | M-02 | Outbox / idempotencja | 79.0 `outbox_event` · 264.0 `task_template_saved` | **ukończony (fundament)** · dwa kindy; nie Temporal; nie konsument |
 | M-03 | Konfiguracja jako dane | 3.0 `organization_setting` · 71.0 prefiks/szablon | **ukończony (fundament)** · allowlista; nie sekrety; numer oferty w 72.0 |
 | M-06 | charge_code + aliasy | 1.0 katalog | **ukończony (fundament)** · aliasy na wierszu; nie `rate_line` / `charge` |

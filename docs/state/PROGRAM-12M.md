@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **447.0** AI3.0 — `PATCH` `payload.candidates` na szkicu `pending` / `rate_line` **Następny:** **448.0** wersja szkicu + `bbox` i pewność w JSONB. Nie nowy BC. Nie zapis z modelu. `draft_kind` już jest.
+**Stan (z CURRENT.md):** **447.0** AI3.0 — `PATCH` `payload.candidates` na szkicu `pending` / `rate_line` **Następny:** **448.0** `payload.revision` + ramka i pewność jako tekst na kandydacie. Nie tabela historii. Nie zapis z modelu.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

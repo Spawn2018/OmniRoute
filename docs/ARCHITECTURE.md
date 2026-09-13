@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **447.0** AI3.0 — `PATCH` `payload.candidates` na szkicu `pending` / `rate_line`. **Etap:** Plan — **448.0** AI3.1 wersjonowanie szkicu + `bbox` + pewność. Komenda `/plan-modul`. Zero kodu. **Następny:** **448.0** wersja szkicu + `bbox` i pewność w JSONB. Nie nowy BC. Nie zapis z modelu. `draft_kind` już jest. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **447.0** AI3.0 — `PATCH` `payload.candidates` na szkicu `pending` / `rate_line`. **Etap:** plaster — **448.0** AI3.1 wersja + `bbox_text` + `confidence_text`. Delta zaakceptowana (`/noc`). Wolno `/plaster`. **Następny:** **448.0** `payload.revision` + ramka i pewność jako tekst na kandydacie. Nie tabela historii. Nie zapis z modelu. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
