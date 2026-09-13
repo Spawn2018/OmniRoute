@@ -217,6 +217,7 @@ type organization
     define can_manage_counterfactual_runs: member
     define can_manage_benefit_ledgers: member
     define can_manage_suggestion_kinds: member
+    define can_manage_autonomy_levels: member
     define can_manage_plan_snapshots: member
     define can_manage_circle_sims: member
     define can_manage_lane_kms: member

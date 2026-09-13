@@ -206,6 +206,10 @@ export const BUSINESS_LISTS = {
     route: "/suggestion-kinds",
     tableKey: "suggestion_kind",
   },
+  autonomyLevel: {
+    route: "/autonomy-levels",
+    tableKey: "autonomy_level",
+  },
   demoGpsMark: { route: "/demo-gps-marks", tableKey: "demo_gps_mark" },
   demoSimMark: { route: "/demo-sim-marks", tableKey: "demo_sim_mark" },
   demoWipeMark: { route: "/demo-wipe-marks", tableKey: "demo_wipe_mark" },
@@ -469,6 +473,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/counterfactual-runs",
   "/benefit-ledgers",
   "/suggestion-kinds",
+  "/autonomy-levels",
   "/demo-gps-marks",
   "/demo-sim-marks",
   "/demo-wipe-marks",

@@ -658,6 +658,10 @@ class InvalidSuggestionKind(DomainError):
     """Słownik AI1.4: HITL kind_code bez CHECK — nie ledger i nie ENUM."""
 
 
+class InvalidAutonomyLevel(DomainError):
+    """Słownik AI1.4: HITL level_code bez CHECK — nie FK klienta i nie ENUM."""
+
+
 class InvalidWeatherObservation(DomainError):
     """Pogoda V2: HITL warunek + UN/LOCODE + czas — nie Open-Meteo i nie ETA."""
 

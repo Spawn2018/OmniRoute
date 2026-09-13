@@ -815,4 +815,6 @@
 
 - 2026-09-13T07:10:00Z · 437.0 · twin_kind · DONE · HITL otwarty kind_code bez CHECK · migracja 347 · /twin-kinds
 
+- 2026-09-13T07:35:00Z · 438.0 · autonomy_level · DONE · HITL otwarty level_code bez CHECK · migracja 348 · /autonomy-levels
+
 - 2026-09-13T05:40:00Z · kanon · Fala AI + Fala BR w PLAN · VISION.md · HC-04 L0?2/L3?5 · AI0 ju? w kodzie (072) · nast?pny leftover 431.0

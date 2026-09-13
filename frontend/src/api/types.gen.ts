@@ -293,6 +293,42 @@ export type AsnResponse = {
 };
 
 /**
+ * AutonomyLevelCreate
+ */
+export type AutonomyLevelCreate = {
+    /**
+     * Level Code
+     */
+    level_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * AutonomyLevelResponse
+ */
+export type AutonomyLevelResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Level Code
+     */
+    level_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * BankAccountCreate
  */
 export type BankAccountCreate = {
@@ -22924,6 +22960,49 @@ export type CreateSuggestionKindApiV1SuggestionKindsPostResponses = {
 };
 
 export type CreateSuggestionKindApiV1SuggestionKindsPostResponse = CreateSuggestionKindApiV1SuggestionKindsPostResponses[keyof CreateSuggestionKindApiV1SuggestionKindsPostResponses];
+
+export type ListAutonomyLevelsApiV1AutonomyLevelsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/autonomy-levels';
+};
+
+export type ListAutonomyLevelsApiV1AutonomyLevelsGetResponses = {
+    /**
+     * Response List Autonomy Levels Api V1 Autonomy Levels Get
+     *
+     * Successful Response
+     */
+    200: Array<AutonomyLevelResponse>;
+};
+
+export type ListAutonomyLevelsApiV1AutonomyLevelsGetResponse = ListAutonomyLevelsApiV1AutonomyLevelsGetResponses[keyof ListAutonomyLevelsApiV1AutonomyLevelsGetResponses];
+
+export type CreateAutonomyLevelApiV1AutonomyLevelsPostData = {
+    body: AutonomyLevelCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/autonomy-levels';
+};
+
+export type CreateAutonomyLevelApiV1AutonomyLevelsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateAutonomyLevelApiV1AutonomyLevelsPostError = CreateAutonomyLevelApiV1AutonomyLevelsPostErrors[keyof CreateAutonomyLevelApiV1AutonomyLevelsPostErrors];
+
+export type CreateAutonomyLevelApiV1AutonomyLevelsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: AutonomyLevelResponse;
+};
+
+export type CreateAutonomyLevelApiV1AutonomyLevelsPostResponse = CreateAutonomyLevelApiV1AutonomyLevelsPostResponses[keyof CreateAutonomyLevelApiV1AutonomyLevelsPostResponses];
 
 export type ListOutcomeLedgersApiV1OutcomeLedgersGetData = {
     body?: never;

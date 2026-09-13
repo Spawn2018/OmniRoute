@@ -118,6 +118,7 @@ def _organization_ops_catalog_relations() -> dict[str, Userset]:
         "can_manage_counterfactual_runs": _member(),
         "can_manage_benefit_ledgers": _member(),
         "can_manage_suggestion_kinds": _member(),
+        "can_manage_autonomy_levels": _member(),
         "can_manage_plan_snapshots": _member(),
         "can_manage_circle_sims": _member(),
         "can_manage_lane_kms": _member(),

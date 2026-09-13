@@ -82,6 +82,7 @@ const NAV = [
   { to: "/counterfactual-runs", label: "Przebieg what-if" },
   { to: "/benefit-ledgers", label: "Ledger oszczędności" },
   { to: "/suggestion-kinds", label: "Rodzaj podpowiedzi" },
+  { to: "/autonomy-levels", label: "Poziom autonomii" },
   { to: "/plan-snapshots", label: "Migawka planu" },
   { to: "/circle-sims", label: "Kółko" },
   { to: "/lane-kms", label: "Km ładowny" },

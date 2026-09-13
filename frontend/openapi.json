@@ -15056,6 +15056,80 @@
         ]
       }
     },
+    "/api/v1/autonomy-levels": {
+      "get": {
+        "tags": [
+          "autonomy-levels"
+        ],
+        "summary": "List Autonomy Levels",
+        "operationId": "list_autonomy_levels_api_v1_autonomy_levels_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/AutonomyLevelResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Autonomy Levels Api V1 Autonomy Levels Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "autonomy-levels"
+        ],
+        "summary": "Create Autonomy Level",
+        "operationId": "create_autonomy_level_api_v1_autonomy_levels_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AutonomyLevelCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AutonomyLevelResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/outcome-ledgers": {
       "get": {
         "tags": [
@@ -22930,6 +23004,59 @@
           "source_ref"
         ],
         "title": "AsnResponse"
+      },
+      "AutonomyLevelCreate": {
+        "properties": {
+          "level_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Level Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "level_code",
+          "source_ref"
+        ],
+        "title": "AutonomyLevelCreate"
+      },
+      "AutonomyLevelResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "level_code": {
+            "type": "string",
+            "title": "Level Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "level_code",
+          "source_ref"
+        ],
+        "title": "AutonomyLevelResponse"
       },
       "BankAccountCreate": {
         "properties": {

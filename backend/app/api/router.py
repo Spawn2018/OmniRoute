@@ -6,6 +6,7 @@ from app.api import (
     aeo_dossier_marks,
     air_ra3_marks,
     asns,
+    autonomy_levels,
     bank_payments,
     benefit_ledgers,
     bid_decision_marks,
@@ -429,6 +430,7 @@ api_router.include_router(quote_currency_marks.router)
 api_router.include_router(quote_validity_marks.router)
 api_router.include_router(suggestion_ledgers.router)
 api_router.include_router(suggestion_kinds.router)
+api_router.include_router(autonomy_levels.router)
 api_router.include_router(outcome_ledgers.router)
 api_router.include_router(demo_gps_marks.router)
 api_router.include_router(demo_sim_marks.router)

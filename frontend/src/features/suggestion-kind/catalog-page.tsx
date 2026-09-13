@@ -46,7 +46,7 @@ export function SuggestionKindBoard() {
         <ul className="list-disc space-y-1 pl-5 text-sm text-muted-foreground">
           <li>HITL otwarty słownik — nowy rodzaj to nowy wiersz.</li>
           <li>Brak zamkniętej listy eta/rate/route. Ledger podpowiedzi zostaje osobno.</li>
-          <li>data_source i autonomy_level zostają następnymi słownikami.</li>
+          <li>data_source (licencja) zostaje w AI5.</li>
         </ul>
         {query.error ? <CatalogError error={query.error} /> : null}
         {showTable && catalog.length === 0 ? (

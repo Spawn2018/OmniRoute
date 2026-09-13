@@ -3,7 +3,7 @@
 ```
 status:        roboczy kanon
 wersja:        0.3
-ostatnia zmiana: 2026-09-13 09:20
+ostatnia zmiana: 2026-09-13 09:40
 ```
 
 ## Jak czytać
@@ -47,6 +47,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | AI1.4 plan (**437.0**): HITL `twin_kind` bez CHECK. twin_mark CHECK zostaje. |
 | 2026-09-13 | **437.0** `twin_kind` w kodzie. Następny = leftover `autonomy_level`. `data_source` = AI5. |
 | 2026-09-13 | AI1.4 plan (**438.0**): HITL `autonomy_level` bez CHECK i bez FK klienta. |
+| 2026-09-13 | **438.0** `autonomy_level` w kodzie. Następny = leftover FK `suggestion_ledger`. |
 
 ---
 
@@ -56,7 +57,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 status:        roboczy kanon (zastępuje "Informacje z claude/vision.md" z 2026-08-29)
 wersja:        0.1
 utworzony:     2026-09-13
-ostatnia zmiana: 2026-09-13 09:20
+ostatnia zmiana: 2026-09-13 09:40
 autor ustaleń: Sebastian Bożek (właściciel produktu)
 redakcja:      agent, na podstawie dokumentów 01-07 i 09-11 w tym katalogu
 lokalizacja:   docs/VISION.md (repozytorium OmniRoute)
@@ -130,6 +131,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | AI1.4 (**437.0**) = HITL `twin_kind`: `kind_code` bez CHECK/ENUM. Zmiana `twin_mark` `REJECTED`. `data_source` / `autonomy_level` leftover. | `/plan-modul` `/noc`; VISION C.2 |
 | 2026-09-13 | **437.0** `twin_kind` w kodzie (`CONFIRMED`, git). Następny = **autonomy_level** (`REQUIREMENT`, B.3). `data_source` = AI5 (`REQUIREMENT`). CHECK na `twin_mark` zostaje `REJECTED` na tym wierszu. | CURRENT + plaster 437.0 `/noc` |
 | 2026-09-13 | AI1.4 (**438.0**) = HITL `autonomy_level`: `level_code` bez CHECK/ENUM. FK `party` `REJECTED`. `data_source` leftover AI5. Silnik L3+ `REJECTED`. | `/plan-modul` `/noc`; VISION B.3 · B.4 |
+| 2026-09-13 | **438.0** `autonomy_level` w kodzie (`CONFIRMED`, git). Następny = FK `suggestion_ledger` (`REQUIREMENT`, B.3). `data_source` = AI5. CRPS `REJECTED` na tym wierszu. | CURRENT + plaster 438.0 `/noc` |
 
 ---
 ---
@@ -528,8 +530,8 @@ w tabeli słownikowej.**
 - **`twin_kind`** — nowy rodzaj bliźniaka to `INSERT`, nie migracja i nie wydanie (`CONFIRMED`, 437.0).
 - **`data_source`** — słownik źródeł zewnętrznych, z licencją i zakresem praw
   przy każdym wierszu. To jest miejsce, w którym mieszka katalog z dokumentu `10`.
-- **`autonomy_level`** — poziom autonomii jako **dana per tenant i per klient**,
-  nie stała w kodzie (część B.4).
+- **`autonomy_level`** — poziom autonomii jako **dana per tenant** (`CONFIRMED`,
+  438.0). Per klient (FK) zostaje leftover. Nie stała w kodzie (część B.4).
 - **`suggestion_kind`** — nowy rodzaj podpowiedzi to wiersz.
 
 **Model zdarzeń SAP GTT** (`REQUIREMENT`, `03` B.7, PDF LBN 2.0 z 19.04.2025):
@@ -741,9 +743,10 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | nazwy z PDF-ów bez wiersza w planie | **136** (z czego 28 to aliasy) |
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
-Ostatni ukończony plaster: **437.0** (`twin_kind`), następny w kolejce
-**AI1.4 leftover** (`autonomy_level`). AI1.0–AI1.3, `suggestion_kind` i `twin_kind`
-są w kodzie (`CONFIRMED`); `data_source` zostaje w AI5 (`REQUIREMENT`).
+Ostatni ukończony plaster: **438.0** (`autonomy_level`), następny w kolejce
+**AI1.4 leftover** (FK `suggestion_ledger`). AI1.0–AI1.3 i trzy słowniki
+(`suggestion_kind`, `twin_kind`, `autonomy_level`) są w kodzie (`CONFIRMED`);
+`data_source` zostaje w AI5 (`REQUIREMENT`).
 CRPS ze złączenia zostaje w AI2 (`REQUIREMENT`). Teza B.1 zostaje:
 szerokość katalogów nie zastępuje pomiaru.
 
