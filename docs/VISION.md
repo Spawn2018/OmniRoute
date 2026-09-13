@@ -3,7 +3,7 @@
 ```
 status:        roboczy kanon
 wersja:        0.3
-ostatnia zmiana: 2026-09-13 08:50
+ostatnia zmiana: 2026-09-13 09:10
 ```
 
 ## Jak czytać
@@ -45,6 +45,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | AI1.4 plan (**436.0**): pierwszy słownik = HITL `suggestion_kind` bez CHECK. |
 | 2026-09-13 | **436.0** `suggestion_kind` w kodzie. Następny = leftover `twin_kind`. |
 | 2026-09-13 | AI1.4 plan (**437.0**): HITL `twin_kind` bez CHECK. twin_mark CHECK zostaje. |
+| 2026-09-13 | **437.0** `twin_kind` w kodzie. Następny = leftover `autonomy_level`. `data_source` = AI5. |
 
 ---
 
@@ -54,7 +55,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 status:        roboczy kanon (zastępuje "Informacje z claude/vision.md" z 2026-08-29)
 wersja:        0.1
 utworzony:     2026-09-13
-ostatnia zmiana: 2026-09-13 08:50
+ostatnia zmiana: 2026-09-13 09:10
 autor ustaleń: Sebastian Bożek (właściciel produktu)
 redakcja:      agent, na podstawie dokumentów 01-07 i 09-11 w tym katalogu
 lokalizacja:   docs/VISION.md (repozytorium OmniRoute)
@@ -126,6 +127,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | AI1.4 (**436.0**) = HITL `suggestion_kind`: `kind_code` bez CHECK/ENUM. `twin_kind` / `data_source` / `autonomy_level` leftover. FK z `suggestion_ledger` `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION B.3 |
 | 2026-09-13 | **436.0** `suggestion_kind` w kodzie (`CONFIRMED`, git). Następny = **twin_kind** słownik (`REQUIREMENT`, C.2). CHECK na `suggestion_ledger` zostaje `REJECTED` na tym wierszu. | CURRENT + plaster 436.0 `/noc` |
 | 2026-09-13 | AI1.4 (**437.0**) = HITL `twin_kind`: `kind_code` bez CHECK/ENUM. Zmiana `twin_mark` `REJECTED`. `data_source` / `autonomy_level` leftover. | `/plan-modul` `/noc`; VISION C.2 |
+| 2026-09-13 | **437.0** `twin_kind` w kodzie (`CONFIRMED`, git). Następny = **autonomy_level** (`REQUIREMENT`, B.3). `data_source` = AI5 (`REQUIREMENT`). CHECK na `twin_mark` zostaje `REJECTED` na tym wierszu. | CURRENT + plaster 437.0 `/noc` |
 
 ---
 ---
@@ -521,7 +523,7 @@ Decyzja wiążąca numer 6 z 2026-09-13, `CONFIRMED`. Właściciel postawił wym
 **Rodzaj bytu nigdy nie jest ograniczeniem `CHECK` ani typem `ENUM`. Jest wierszem
 w tabeli słownikowej.**
 
-- **`twin_kind`** — nowy rodzaj bliźniaka to `INSERT`, nie migracja i nie wydanie.
+- **`twin_kind`** — nowy rodzaj bliźniaka to `INSERT`, nie migracja i nie wydanie (`CONFIRMED`, 437.0).
 - **`data_source`** — słownik źródeł zewnętrznych, z licencją i zakresem praw
   przy każdym wierszu. To jest miejsce, w którym mieszka katalog z dokumentu `10`.
 - **`autonomy_level`** — poziom autonomii jako **dana per tenant i per klient**,
@@ -737,19 +739,22 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | nazwy z PDF-ów bez wiersza w planie | **136** (z czego 28 to aliasy) |
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
-Ostatni ukończony plaster: **436.0** (`suggestion_kind`), następny w kolejce
-**AI1.4 leftover** (`twin_kind`). AI1.0–AI1.3 i pierwszy słownik są w kodzie (`CONFIRMED`);
+Ostatni ukończony plaster: **437.0** (`twin_kind`), następny w kolejce
+**AI1.4 leftover** (`autonomy_level`). AI1.0–AI1.3, `suggestion_kind` i `twin_kind`
+są w kodzie (`CONFIRMED`); `data_source` zostaje w AI5 (`REQUIREMENT`).
 CRPS ze złączenia zostaje w AI2 (`REQUIREMENT`). Teza B.1 zostaje:
 szerokość katalogów nie zastępuje pomiaru.
 
 ## C.2 Bliźniaki — scalona taksonomia
 
 Źródła podawały **cztery różne listy bliźniaków: 12, 23, 8 i 8 pozycji**
-(`CONFIRMED`, dokument `01` §6.5). W kodzie `twin_kind` ma **8 wartości i jest
-najwęższą z nich**. To była jedna z czterech luk wymagających decyzji właściciela.
+(`CONFIRMED`, dokument `01` §6.5). W kodzie `twin_mark` ma CHECK **8 wartości**
+(`CONFIRMED`, 199.0) — najwęższa lista. Tabela słownikowa `twin_kind` jest otwarta
+(`CONFIRMED`, 437.0): nowy rodzaj = `INSERT`. FK z `twin_mark` i zdjęcie CHECK
+zostają leftover.
 
-**Rozstrzygnięcie:** jedna taksonomia, pięć osi, `twin_kind` przechodzi na
-tabelę słownikową, więc rozszerzanie nie wymaga migracji ani zmiany `CHECK`.
+**Rozstrzygnięcie:** jedna taksonomia, pięć osi, `twin_kind` jest tabelą
+słownikową, więc rozszerzanie nie wymaga migracji ani zmiany `CHECK`.
 
 | Oś | Co modeluje | Przykłady |
 |---|---|---|

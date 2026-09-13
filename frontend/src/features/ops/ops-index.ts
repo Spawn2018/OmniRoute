@@ -224,6 +224,11 @@ export const OPS_JOBS = [
     job: "HITL etap łańcucha bez scoringu",
   },
   {
+    route: BUSINESS_LISTS.twinKind.route,
+    label: "Rodzaj bliźniaka",
+    job: "katalog twin_kind HITL",
+  },
+  {
     route: BUSINESS_LISTS.twinMark.route,
     label: "Bliźniak",
     job: "HITL 8 rodzajów bez fizyki",
@@ -1634,6 +1639,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "434.0": "/counterfactual-runs",
   "435.0": "/benefit-ledgers",
   "436.0": "/suggestion-kinds",
+  "437.0": "/twin-kinds",
 } as const
 
 

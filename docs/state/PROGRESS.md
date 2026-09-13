@@ -813,4 +813,6 @@
 
 - 2026-09-13T08:42:00Z · 436.0 · suggestion_kind · DONE · HITL otwarty kind_code bez CHECK · migracja 346 · /suggestion-kinds
 
+- 2026-09-13T07:10:00Z · 437.0 · twin_kind · DONE · HITL otwarty kind_code bez CHECK · migracja 347 · /twin-kinds
+
 - 2026-09-13T05:40:00Z · kanon · Fala AI + Fala BR w PLAN · VISION.md · HC-04 L0?2/L3?5 · AI0 ju? w kodzie (072) · nast?pny leftover 431.0

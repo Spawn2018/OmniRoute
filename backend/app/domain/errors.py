@@ -678,6 +678,10 @@ class InvalidTwinMark(DomainError):
     """Bliźniak W1: HITL rodzaj 8 — nie fizyka i nie plan_snapshot."""
 
 
+class InvalidTwinKind(DomainError):
+    """Słownik AI1.4: HITL kind_code bez CHECK — nie twin_mark i nie ENUM."""
+
+
 class InvalidWarRoomMark(DomainError):
     """Sala W2: HITL rodzaj incydentu — nie koalescencja i nie drugi czat."""
 

@@ -240,6 +240,7 @@ from app.api import (
     tower_impacts,
     tracking_events,
     trips,
+    twin_kinds,
     twin_marks,
     un_segregation_marks,
     vda_odette_marks,
@@ -440,6 +441,7 @@ api_router.include_router(freight_term_marks.router)
 api_router.include_router(collaboration_marks.router)
 api_router.include_router(terminal_slot_connectors.router)
 api_router.include_router(tower_impacts.router)
+api_router.include_router(twin_kinds.router)
 api_router.include_router(twin_marks.router)
 api_router.include_router(un_segregation_marks.router)
 api_router.include_router(war_room_marks.router)

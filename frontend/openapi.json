@@ -15944,6 +15944,80 @@
         ]
       }
     },
+    "/api/v1/twin-kinds": {
+      "get": {
+        "tags": [
+          "twin-kinds"
+        ],
+        "summary": "List Twin Kinds",
+        "operationId": "list_twin_kinds_api_v1_twin_kinds_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TwinKindResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Twin Kinds Api V1 Twin Kinds Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "twin-kinds"
+        ],
+        "summary": "Create Twin Kind",
+        "operationId": "create_twin_kind_api_v1_twin_kinds_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TwinKindCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TwinKindResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/twin-marks": {
       "get": {
         "tags": [
@@ -43669,6 +43743,59 @@
           "superseded_by"
         ],
         "title": "TripResponse"
+      },
+      "TwinKindCreate": {
+        "properties": {
+          "kind_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Kind Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "kind_code",
+          "source_ref"
+        ],
+        "title": "TwinKindCreate"
+      },
+      "TwinKindResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "kind_code": {
+            "type": "string",
+            "title": "Kind Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "kind_code",
+          "source_ref"
+        ],
+        "title": "TwinKindResponse"
       },
       "TwinMarkCreate": {
         "properties": {

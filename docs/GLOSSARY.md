@@ -25,6 +25,7 @@
 | wieża | watchtower | 94.0 wyjątki + pending S11 + leniwy panel mapy; 116.0 odczyt `mail_draft`; 124.0 liczniki tablicy; nie leaflet; nie AIS; nie czat; nie łańcuch V6 |
 | impact wieży | tower_impact | V6 HITL 198.0 etap łańcucha + status umowy; bez sla_clause = „brak danych umowy”; nie scoring osoby; nie EBITDA |
 | bliźniak | twin_mark | W1 HITL 199.0 rodzaj 8; nie fizyka; nie plan_snapshot |
+| rodzaj bliźniaka | twin_kind | AI1.4 HITL otwarty słownik kind_code; nie CHECK; nie twin_mark |
 | sala kryzysowa | war_room_mark | W2 HITL 200.0 rodzaj incydentu; nie N8; nie drugi czat; nie T8 API |
 | krawędź pamięci | memory_edge | W3 HITL 201.0 rodzaj krawędzi; nie RAG; nie graf na entity_event |
 | pytanie zarządu | executive_mark | W4 HITL 202.0 rodzaj pytania; nie suma LLM; nie narracja SQL |

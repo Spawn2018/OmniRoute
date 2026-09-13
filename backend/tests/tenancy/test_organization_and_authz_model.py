@@ -93,6 +93,7 @@ def test_authorization_model_includes_table_view_permission() -> None:
     assert "can_manage_idp_connectors" in org.relations
     assert "can_manage_terminal_slot_connectors" in org.relations
     assert "can_manage_tower_impacts" in org.relations
+    assert "can_manage_twin_kinds" in org.relations
     assert "can_manage_twin_marks" in org.relations
     assert "can_manage_war_room_marks" in org.relations
     assert "can_manage_memory_edges" in org.relations
@@ -351,6 +352,9 @@ def test_authorization_model_includes_table_view_permission() -> None:
     tower_impacts = org.relations["can_manage_tower_impacts"]
     assert tower_impacts.computed_userset is not None
     assert tower_impacts.computed_userset.relation == "member"
+    twin_kinds = org.relations["can_manage_twin_kinds"]
+    assert twin_kinds.computed_userset is not None
+    assert twin_kinds.computed_userset.relation == "member"
     twin_marks = org.relations["can_manage_twin_marks"]
     assert twin_marks.computed_userset is not None
     assert twin_marks.computed_userset.relation == "member"

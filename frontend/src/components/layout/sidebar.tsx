@@ -107,6 +107,7 @@ const NAV = [
   { to: "/free-time-clocks", label: "Zegar DD" },
   { to: "/telematics-connectors", label: "Konektor GPS" },
   { to: "/tower-impacts", label: "Skutek wieży" },
+  { to: "/twin-kinds", label: "Rodzaj bliźniaka" },
   { to: "/twin-marks", label: "Bliźniak" },
   { to: "/war-room-marks", label: "Sala kryzysowa" },
   { to: "/memory-edges", label: "Krawędź pamięci" },

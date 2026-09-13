@@ -13645,6 +13645,42 @@ export type TripResponse = {
 };
 
 /**
+ * TwinKindCreate
+ */
+export type TwinKindCreate = {
+    /**
+     * Kind Code
+     */
+    kind_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TwinKindResponse
+ */
+export type TwinKindResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Kind Code
+     */
+    kind_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * TwinMarkCreate
  */
 export type TwinMarkCreate = {
@@ -23404,6 +23440,49 @@ export type CreateTowerImpactApiV1TowerImpactsPostResponses = {
 };
 
 export type CreateTowerImpactApiV1TowerImpactsPostResponse = CreateTowerImpactApiV1TowerImpactsPostResponses[keyof CreateTowerImpactApiV1TowerImpactsPostResponses];
+
+export type ListTwinKindsApiV1TwinKindsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/twin-kinds';
+};
+
+export type ListTwinKindsApiV1TwinKindsGetResponses = {
+    /**
+     * Response List Twin Kinds Api V1 Twin Kinds Get
+     *
+     * Successful Response
+     */
+    200: Array<TwinKindResponse>;
+};
+
+export type ListTwinKindsApiV1TwinKindsGetResponse = ListTwinKindsApiV1TwinKindsGetResponses[keyof ListTwinKindsApiV1TwinKindsGetResponses];
+
+export type CreateTwinKindApiV1TwinKindsPostData = {
+    body: TwinKindCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/twin-kinds';
+};
+
+export type CreateTwinKindApiV1TwinKindsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTwinKindApiV1TwinKindsPostError = CreateTwinKindApiV1TwinKindsPostErrors[keyof CreateTwinKindApiV1TwinKindsPostErrors];
+
+export type CreateTwinKindApiV1TwinKindsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TwinKindResponse;
+};
+
+export type CreateTwinKindApiV1TwinKindsPostResponse = CreateTwinKindApiV1TwinKindsPostResponses[keyof CreateTwinKindApiV1TwinKindsPostResponses];
 
 export type ListTwinMarksApiV1TwinMarksGetData = {
     body?: never;

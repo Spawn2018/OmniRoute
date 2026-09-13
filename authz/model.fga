@@ -228,6 +228,7 @@ type organization
     define can_manage_idp_connectors: member
     define can_manage_terminal_slot_connectors: member
     define can_manage_tower_impacts: member
+    define can_manage_twin_kinds: member
     define can_manage_twin_marks: member
     define can_manage_war_room_marks: member
     define can_manage_memory_edges: member

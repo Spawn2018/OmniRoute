@@ -243,6 +243,7 @@ import { Route as ThreeWayMarksRouteImport } from './routes/three-way-marks'
 import { Route as TimeToFixMarksRouteImport } from './routes/time-to-fix-marks'
 import { Route as TowerImpactsRouteImport } from './routes/tower-impacts'
 import { Route as TrackingRouteImport } from './routes/tracking'
+import { Route as TwinKindsRouteImport } from './routes/twin-kinds'
 import { Route as TwinMarksRouteImport } from './routes/twin-marks'
 import { Route as UnSegregationMarksRouteImport } from './routes/un-segregation-marks'
 import { Route as VdaOdetteMarksRouteImport } from './routes/vda-odette-marks'
@@ -1427,6 +1428,11 @@ const TrackingRoute = TrackingRouteImport.update({
   path: '/tracking',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TwinKindsRoute = TwinKindsRouteImport.update({
+  id: '/twin-kinds',
+  path: '/twin-kinds',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TwinMarksRoute = TwinMarksRouteImport.update({
   id: '/twin-marks',
   path: '/twin-marks',
@@ -1723,6 +1729,7 @@ export interface FileRoutesByFullPath {
   '/time-to-fix-marks': typeof TimeToFixMarksRoute
   '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
+  '/twin-kinds': typeof TwinKindsRoute
   '/twin-marks': typeof TwinMarksRoute
   '/un-segregation-marks': typeof UnSegregationMarksRoute
   '/vda-odette-marks': typeof VdaOdetteMarksRoute
@@ -1971,6 +1978,7 @@ export interface FileRoutesByTo {
   '/time-to-fix-marks': typeof TimeToFixMarksRoute
   '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
+  '/twin-kinds': typeof TwinKindsRoute
   '/twin-marks': typeof TwinMarksRoute
   '/un-segregation-marks': typeof UnSegregationMarksRoute
   '/vda-odette-marks': typeof VdaOdetteMarksRoute
@@ -2220,6 +2228,7 @@ export interface FileRoutesById {
   '/time-to-fix-marks': typeof TimeToFixMarksRoute
   '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
+  '/twin-kinds': typeof TwinKindsRoute
   '/twin-marks': typeof TwinMarksRoute
   '/un-segregation-marks': typeof UnSegregationMarksRoute
   '/vda-odette-marks': typeof VdaOdetteMarksRoute
@@ -2470,6 +2479,7 @@ export interface FileRouteTypes {
     | '/time-to-fix-marks'
     | '/tower-impacts'
     | '/tracking'
+    | '/twin-kinds'
     | '/twin-marks'
     | '/un-segregation-marks'
     | '/vda-odette-marks'
@@ -2718,6 +2728,7 @@ export interface FileRouteTypes {
     | '/time-to-fix-marks'
     | '/tower-impacts'
     | '/tracking'
+    | '/twin-kinds'
     | '/twin-marks'
     | '/un-segregation-marks'
     | '/vda-odette-marks'
@@ -2966,6 +2977,7 @@ export interface FileRouteTypes {
     | '/time-to-fix-marks'
     | '/tower-impacts'
     | '/tracking'
+    | '/twin-kinds'
     | '/twin-marks'
     | '/un-segregation-marks'
     | '/vda-odette-marks'
@@ -3215,6 +3227,7 @@ export interface RootRouteChildren {
   TimeToFixMarksRoute: typeof TimeToFixMarksRoute
   TowerImpactsRoute: typeof TowerImpactsRoute
   TrackingRoute: typeof TrackingRoute
+  TwinKindsRoute: typeof TwinKindsRoute
   TwinMarksRoute: typeof TwinMarksRoute
   UnSegregationMarksRoute: typeof UnSegregationMarksRoute
   VdaOdetteMarksRoute: typeof VdaOdetteMarksRoute
@@ -4869,6 +4882,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TrackingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/twin-kinds': {
+      id: '/twin-kinds'
+      path: '/twin-kinds'
+      fullPath: '/twin-kinds'
+      preLoaderRoute: typeof TwinKindsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/twin-marks': {
       id: '/twin-marks'
       path: '/twin-marks'
@@ -5191,6 +5211,7 @@ const rootRouteChildren: RootRouteChildren = {
   TimeToFixMarksRoute: TimeToFixMarksRoute,
   TowerImpactsRoute: TowerImpactsRoute,
   TrackingRoute: TrackingRoute,
+  TwinKindsRoute: TwinKindsRoute,
   TwinMarksRoute: TwinMarksRoute,
   UnSegregationMarksRoute: UnSegregationMarksRoute,
   VdaOdetteMarksRoute: VdaOdetteMarksRoute,

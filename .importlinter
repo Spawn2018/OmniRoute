@@ -248,6 +248,7 @@ modules =
     app.services.free_time_clocks
     app.services.telematics_connectors
     app.services.tower_impacts
+    app.services.twin_kinds
     app.services.twin_marks
     app.services.war_room_marks
     app.services.memory_edges
@@ -1046,6 +1047,9 @@ forbidden_modules =
     app.services.tower_impacts
     app.repositories.tower_impacts
     app.models.tower_impact
+    app.services.twin_kinds
+    app.repositories.twin_kinds
+    app.models.twin_kind
     app.services.twin_marks
     app.repositories.twin_marks
     app.models.twin_mark
