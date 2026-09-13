@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **468.0** BR4.2 — HITL `lcl_console_mark` **Następny:** plan **469.0** (BR4.3) HITL rola NAC / agent nominowany. Nie live NAC HTTP. Nie FK do `shipment_stakeholder`.
+**Stan (z CURRENT.md):** **468.0** BR4.2 — HITL `lcl_console_mark` **Następny:** plaster **469.0** HITL `nac_mark`. Nie live NAC HTTP. Nie FK do `shipment_stakeholder`.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

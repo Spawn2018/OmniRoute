@@ -108,6 +108,7 @@ zostają w badaniach `04`).
 | 2026-09-13 | **467.0** `oog_permit_mark` w kodzie (`CONFIRMED`, git). Następny = **BR4.2** LCL (`REQUIREMENT`). Wymiary / Expo / AI5 `REJECTED` na tym wierszu. |
 | 2026-09-13 | BR4.2 plan (**468.0**): HITL `lcl_console_mark`. Live CFS / CBM / druga tabela LCL `REJECTED` na tym wierszu. |
 | 2026-09-13 | **468.0** `lcl_console_mark` w kodzie (`CONFIRMED`, git). Następny = **BR4.3** NAC (`REQUIREMENT`). Live CFS / Expo / AI5 `REJECTED` na tym wierszu. |
+| 2026-09-13 | BR4.3 plan (**469.0**): HITL `nac_mark`. Live NAC / FK do `shipment_stakeholder` / auto-send `REJECTED` na tym wierszu. |
 | 2026-09-13 | C.3 **Grupa 8**: help desk produktu (ticket → agent → akceptacja właściciela) + mobile całego OmniRoute. Leftover PLAN **Plat-HD** / **Mob**. Nie 468.0. |
 | 2026-09-13 | D.7 readiness (Murphy 2026 + audyt PDF/czat): Three-Bucket, Definition Gap, szwy eskalacji = leftover. Mission Control / wektor / druga warstwa semantyczna / Bertha `REJECTED`. |
 | 2026-09-13 | Ciało C.3 Grupa 8 + D.7 + skrót `03` B.4–B.6 w A.2. E.3: HC-04 i FK `plan_snapshot` zamknięte. [WYCOFANE 2026-09-13: „B.4–B.6 nietknięte w dumpie” — skrót jest w kanonie]. |
@@ -257,6 +258,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | **467.0** w kodzie (`CONFIRMED`, git). Katalog zezwolenia OOG. Następny = **BR4.2** (`REQUIREMENT`). Wymiary leftover. | CURRENT + plaster 467.0 `/noc` |
 | 2026-09-13 | BR4.2 (**468.0**) = HITL `lcl_console_mark` (`console|cfs|other`). Live CFS / CBM / klej do D6 `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
 | 2026-09-13 | **468.0** w kodzie (`CONFIRMED`, git). Katalog konsoli LCL/CFS. Następny = **BR4.3** (`REQUIREMENT`). Live CFS leftover. | CURRENT + plaster 468.0 `/noc` |
+| 2026-09-13 | BR4.3 (**469.0**) = HITL `nac_mark` (`nac|nominated|agent|other`). Live NAC / FK do I2 / auto-send `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
 
 ---
 ---

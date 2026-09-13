@@ -88,8 +88,8 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **468.0** BR4.2 — HITL `lcl_console_mark`
-- **Etap:** Plan — następny **BR4.3** NAC i agent nominowany. Komenda `/plan-modul`. Zero kodu produktu.
-- **Następny:** plan **469.0** (BR4.3) HITL rola NAC / agent nominowany. Nie live NAC HTTP. Nie FK do `shipment_stakeholder`.
+- **Etap:** Plan — delta **469.0** zaakceptowana (`/noc`). Wolno `/plaster`.
+- **Następny:** plaster **469.0** HITL `nac_mark`. Nie live NAC HTTP. Nie FK do `shipment_stakeholder`.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

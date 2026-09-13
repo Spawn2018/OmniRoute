@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **468.0** BR4.2 — HITL `lcl_console_mark`. **Etap:** Plan — następny **BR4.3** NAC i agent nominowany. Komenda `/plan-modul`. Zero kodu produktu. **Następny:** plan **469.0** (BR4.3) HITL rola NAC / agent nominowany. Nie live NAC HTTP. Nie FK do `shipment_stakeholder`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **468.0** BR4.2 — HITL `lcl_console_mark`. **Etap:** Plan — delta **469.0** zaakceptowana (`/noc`). Wolno `/plaster`. **Następny:** plaster **469.0** HITL `nac_mark`. Nie live NAC HTTP. Nie FK do `shipment_stakeholder`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

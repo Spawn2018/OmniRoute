@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **468.0** BR4.2 — HITL `lcl_console_mark`
 
-**Etap:** Plan — następny **BR4.3** NAC i agent nominowany. Komenda `/plan-modul`. Zero kodu produktu.
+**Etap:** Plan — delta **469.0** zaakceptowana (`/noc`). Wolno `/plaster`.
 
 **Noc:** `/noc 7` do **2026-09-14T07:00+02**.
 
-**Następny:** plan **469.0** (BR4.3) HITL rola NAC / agent nominowany. Nie live NAC HTTP. Nie FK do `shipment_stakeholder`.
+**Następny:** plaster **469.0** HITL `nac_mark`. Nie live NAC HTTP. Nie FK do `shipment_stakeholder`.
 
-Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza BR4.3. Nie otwieraj AI0. Nie startuj leftover Valhalla / live CFS / Expo / Alpega / HubSpot.
+Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 469.0. Nie otwieraj AI0. Nie startuj leftover Valhalla / live CFS / Expo / Alpega / HubSpot.
 
-**Spec (jedyna na sesję):** brak — delta po `/plan-modul`
+**Spec (jedyna na sesję):** [469.0](../deltas/open/469.0.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 
@@ -23,6 +23,7 @@ Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll �
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
 **2026-09-13:** Plaster **468.0** zamknięty (`/noc`) — HITL `lcl_console_mark`.
+**2026-09-13:** Plan **469.0** (`/noc`) — HITL `nac_mark`. Wolno plaster.
 **2026-09-13:** Plaster **428.0** zamknięty (`/noc`) — HITL `spot_contract_mark`.
 **2026-09-13:** Plaster **429.0** zamknięty (`/noc`) — HITL `bid_decision_mark`.
 **2026-09-13:** Plaster **430.0** zamknięty (`/noc`) — HITL `quote_currency_mark`.
