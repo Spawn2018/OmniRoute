@@ -88,8 +88,8 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **469.0** BR4.3 — HITL `nac_mark`
-- **Etap:** Plan — następny **BR4.4** Jedwabny Szlak. Komenda `/plan-modul`. Zero kodu do akceptacji delty.
-- **Następny:** `/plan-modul` **BR4.4** korytarz Chiny-Europa (Jedwabny Szlak). Nie live HTTP. Nie zgaduj plaster ID.
+- **Etap:** Plan — delta **470.0** zaakceptowana (`/noc`). Wolno `/plaster`.
+- **Następny:** plaster **470.0** HITL `silk_corridor_mark`. Nie live CR Express. Nie FK do `shipment_leg` / `lane_pattern`.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

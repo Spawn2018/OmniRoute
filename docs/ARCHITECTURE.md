@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **469.0** BR4.3 — HITL `nac_mark`. **Etap:** Plan — następny **BR4.4** Jedwabny Szlak. Komenda `/plan-modul`. Zero kodu do akceptacji delty. **Następny:** `/plan-modul` **BR4.4** korytarz Chiny-Europa (Jedwabny Szlak). Nie live HTTP. Nie zgaduj plaster ID. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **469.0** BR4.3 — HITL `nac_mark`. **Etap:** Plan — delta **470.0** zaakceptowana (`/noc`). Wolno `/plaster`. **Następny:** plaster **470.0** HITL `silk_corridor_mark`. Nie live CR Express. Nie FK do `shipment_leg` / `lane_pattern`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

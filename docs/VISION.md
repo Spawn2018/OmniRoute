@@ -110,6 +110,7 @@ zostają w badaniach `04`).
 | 2026-09-13 | **468.0** `lcl_console_mark` w kodzie (`CONFIRMED`, git). Następny = **BR4.3** NAC (`REQUIREMENT`). Live CFS / Expo / AI5 `REJECTED` na tym wierszu. |
 | 2026-09-13 | BR4.3 plan (**469.0**): HITL `nac_mark`. Live NAC / FK do `shipment_stakeholder` / auto-send `REJECTED` na tym wierszu. |
 | 2026-09-13 | **469.0** `nac_mark` w kodzie (`CONFIRMED`, git). Następny = **BR4.4** Jedwabny Szlak (`REQUIREMENT`). Live NAC / Expo / AI5 `REJECTED` na tym wierszu. |
+| 2026-09-14 | BR4.4 plan (**470.0**): HITL `silk_corridor_mark`. Live CR Express / FK do `shipment_leg` / para UN/LOCODE `REJECTED` na tym wierszu. |
 | 2026-09-13 | C.3 **Grupa 8**: help desk produktu (ticket → agent → akceptacja właściciela) + mobile całego OmniRoute. Leftover PLAN **Plat-HD** / **Mob**. Nie 468.0. |
 | 2026-09-13 | D.7 readiness (Murphy 2026 + audyt PDF/czat): Three-Bucket, Definition Gap, szwy eskalacji = leftover. Mission Control / wektor / druga warstwa semantyczna / Bertha `REJECTED`. |
 | 2026-09-13 | Ciało C.3 Grupa 8 + D.7 + skrót `03` B.4–B.6 w A.2. E.3: HC-04 i FK `plan_snapshot` zamknięte. [WYCOFANE 2026-09-13: „B.4–B.6 nietknięte w dumpie” — skrót jest w kanonie]. |
@@ -261,6 +262,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | **468.0** w kodzie (`CONFIRMED`, git). Katalog konsoli LCL/CFS. Następny = **BR4.3** (`REQUIREMENT`). Live CFS leftover. | CURRENT + plaster 468.0 `/noc` |
 | 2026-09-13 | BR4.3 (**469.0**) = HITL `nac_mark` (`nac|nominated|agent|other`). Live NAC / FK do I2 / auto-send `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
 | 2026-09-13 | **469.0** w kodzie (`CONFIRMED`, git). Katalog NAC / agenta nominowanego. Następny = **BR4.4** (`REQUIREMENT`). Live NAC leftover. | CURRENT + plaster 469.0 `/noc` |
+| 2026-09-14 | BR4.4 (**470.0**) = HITL `silk_corridor_mark` (`silk|block_train|transit|other`). Live CR Express / FK do 110.0 / `lane_pattern` `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
 
 ---
 ---
@@ -904,7 +906,7 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
 Ostatni ukończony plaster: **469.0** (HITL `nac_mark`).
-Następny = **BR4.4** plan Jedwabny Szlak (`REQUIREMENT`).
+Następny = **BR4.4** plaster **470.0** Jedwabny Szlak (`REQUIREMENT`).
 AI1.0–AI1.4 oraz 443.0–469.0 są w kodzie (`CONFIRMED`); `data_source`
 zostaje w AI5 (`REQUIREMENT`). Teza B.1 zostaje: szerokość katalogów nie zastępuje pomiaru.
 
@@ -993,7 +995,9 @@ bo bez ewidencji magazynowej nie ma zastawu na towarze.
   Druga tabela LCL `REJECTED`. `ocean_bill` zostaje HBL/MBL. Odcinek
   `ocean_lcl` zostaje na `shipment_leg`. Klej do D6 `REJECTED` na katalogu.
 - **NAC i agent nominowany** — rola w przepływie dokumentowym
-- **Jedwabny Szlak / kolej Chiny–Europa** — korytarz z własną specyfiką
+- **Jedwabny Szlak / kolej Chiny–Europa** — plan HITL `silk_corridor_mark`
+  (`REQUIREMENT`, 470.0); odcinek `china_rail` zostaje (110.0); leftover
+  live CR Express / para UN/LOCODE (`REJECTED` na katalogu)
 
 **Grupa 5 — finanse i pieniądz.**
 - **Faktoring** — integracja z partnerem (SMEO w osi wejścia)
