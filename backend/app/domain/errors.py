@@ -822,6 +822,10 @@ class InvalidCalibrationMark(DomainError):
     """CI7: HITL znacznik gotowości próbki — nie MAE SQL."""
 
 
+class InvalidCampaignMark(DomainError):
+    """BR6.5: HITL kampania — nie lejek X7 / atrybucja live."""
+
+
 class InvalidRepairPlaybook(DomainError):
     """CI8: HITL playbook naprawy — nie auto-send S11."""
 

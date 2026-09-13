@@ -26,6 +26,7 @@ import { Route as BondedMarksRouteImport } from './routes/bonded-marks'
 import { Route as BookkeepingRouteImport } from './routes/bookkeeping'
 import { Route as CabotageMarksRouteImport } from './routes/cabotage-marks'
 import { Route as CalibrationMarksRouteImport } from './routes/calibration-marks'
+import { Route as CampaignMarksRouteImport } from './routes/campaign-marks'
 import { Route as CapaMarksRouteImport } from './routes/capa-marks'
 import { Route as CarbonMethodsRouteImport } from './routes/carbon-methods'
 import { Route as CargoCoverMarksRouteImport } from './routes/cargo-cover-marks'
@@ -352,6 +353,11 @@ const CabotageMarksRoute = CabotageMarksRouteImport.update({
 const CalibrationMarksRoute = CalibrationMarksRouteImport.update({
   id: '/calibration-marks',
   path: '/calibration-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CampaignMarksRoute = CampaignMarksRouteImport.update({
+  id: '/campaign-marks',
+  path: '/campaign-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CapaMarksRoute = CapaMarksRouteImport.update({
@@ -1584,6 +1590,7 @@ export interface FileRoutesByFullPath {
   '/bookkeeping': typeof BookkeepingRoute
   '/cabotage-marks': typeof CabotageMarksRoute
   '/calibration-marks': typeof CalibrationMarksRoute
+  '/campaign-marks': typeof CampaignMarksRoute
   '/capa-marks': typeof CapaMarksRoute
   '/carbon-methods': typeof CarbonMethodsRoute
   '/cargo-cover-marks': typeof CargoCoverMarksRoute
@@ -1845,6 +1852,7 @@ export interface FileRoutesByTo {
   '/bookkeeping': typeof BookkeepingRoute
   '/cabotage-marks': typeof CabotageMarksRoute
   '/calibration-marks': typeof CalibrationMarksRoute
+  '/campaign-marks': typeof CampaignMarksRoute
   '/capa-marks': typeof CapaMarksRoute
   '/carbon-methods': typeof CarbonMethodsRoute
   '/cargo-cover-marks': typeof CargoCoverMarksRoute
@@ -2107,6 +2115,7 @@ export interface FileRoutesById {
   '/bookkeeping': typeof BookkeepingRoute
   '/cabotage-marks': typeof CabotageMarksRoute
   '/calibration-marks': typeof CalibrationMarksRoute
+  '/campaign-marks': typeof CampaignMarksRoute
   '/capa-marks': typeof CapaMarksRoute
   '/carbon-methods': typeof CarbonMethodsRoute
   '/cargo-cover-marks': typeof CargoCoverMarksRoute
@@ -2370,6 +2379,7 @@ export interface FileRouteTypes {
     | '/bookkeeping'
     | '/cabotage-marks'
     | '/calibration-marks'
+    | '/campaign-marks'
     | '/capa-marks'
     | '/carbon-methods'
     | '/cargo-cover-marks'
@@ -2631,6 +2641,7 @@ export interface FileRouteTypes {
     | '/bookkeeping'
     | '/cabotage-marks'
     | '/calibration-marks'
+    | '/campaign-marks'
     | '/capa-marks'
     | '/carbon-methods'
     | '/cargo-cover-marks'
@@ -2892,6 +2903,7 @@ export interface FileRouteTypes {
     | '/bookkeeping'
     | '/cabotage-marks'
     | '/calibration-marks'
+    | '/campaign-marks'
     | '/capa-marks'
     | '/carbon-methods'
     | '/cargo-cover-marks'
@@ -3154,6 +3166,7 @@ export interface RootRouteChildren {
   BookkeepingRoute: typeof BookkeepingRoute
   CabotageMarksRoute: typeof CabotageMarksRoute
   CalibrationMarksRoute: typeof CalibrationMarksRoute
+  CampaignMarksRoute: typeof CampaignMarksRoute
   CapaMarksRoute: typeof CapaMarksRoute
   CarbonMethodsRoute: typeof CarbonMethodsRoute
   CargoCoverMarksRoute: typeof CargoCoverMarksRoute
@@ -3517,6 +3530,13 @@ declare module '@tanstack/react-router' {
       path: '/calibration-marks'
       fullPath: '/calibration-marks'
       preLoaderRoute: typeof CalibrationMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/campaign-marks': {
+      id: '/campaign-marks'
+      path: '/campaign-marks'
+      fullPath: '/campaign-marks'
+      preLoaderRoute: typeof CampaignMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/capa-marks': {
@@ -5234,6 +5254,7 @@ const rootRouteChildren: RootRouteChildren = {
   BookkeepingRoute: BookkeepingRoute,
   CabotageMarksRoute: CabotageMarksRoute,
   CalibrationMarksRoute: CalibrationMarksRoute,
+  CampaignMarksRoute: CampaignMarksRoute,
   CapaMarksRoute: CapaMarksRoute,
   CarbonMethodsRoute: CarbonMethodsRoute,
   CargoCoverMarksRoute: CargoCoverMarksRoute,

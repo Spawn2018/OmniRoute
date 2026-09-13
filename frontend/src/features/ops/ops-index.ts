@@ -1240,6 +1240,11 @@ export const OPS_JOBS = [
     job: "katalog calibration_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.campaignMark.route,
+    label: "Kampania marketingowa",
+    job: "katalog campaign_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.repairPlaybook.route,
     label: "Playbook naprawy",
     job: "katalog repair_playbook HITL",
@@ -1561,6 +1566,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "459.0": "/tracking-consents",
   "460.0": "/sales-lanes",
   "461.0": "/shipper-tender-marks",
+  "462.0": "/campaign-marks",
   "267.0": "/lane-kms",
   "268.0": "/erp-connectors",
   "269.0": "/terminal-slot-connectors",

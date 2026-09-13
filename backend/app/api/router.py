@@ -17,6 +17,7 @@ from app.api import (
     bookkeeping,
     cabotage_marks,
     calibration_marks,
+    campaign_marks,
     capa_marks,
     carbon_methods,
     cargo_claims,
@@ -357,6 +358,7 @@ api_router.include_router(circle_sims.router)
 api_router.include_router(circle_sims.pair_router)
 api_router.include_router(clause_notices.router)
 api_router.include_router(calibration_marks.router)
+api_router.include_router(campaign_marks.router)
 api_router.include_router(repair_playbooks.router)
 api_router.include_router(spend_marks.router)
 api_router.include_router(penalty_marks.router)

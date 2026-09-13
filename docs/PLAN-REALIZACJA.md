@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **462.0** HITL znacznik kampanii. Nie atrybucja live. Nie `funnel_mark`. Nie Expo.
+**Następny:** **463.0** HITL dyspozytor drobnicy. Nie silnik hubów. Nie live.
 <!-- os-status:end -->
 
 ```mermaid
@@ -797,7 +797,7 @@ Dump TMS `04b`: WMS nie jest dekoracją (Manhattan Active TM+WMS+Yard+Labour, In
 | BR2.3 | aplikacja kierowcy: zlecenie, POD, skan, status, tryb offline | po BR2.1 | wzorzec offline: Briefcase Builder |
 | BR3.0 | planowanie tras — **solver, nie model językowy** | **start HHL** | **455.0** DONE HITL `route_plan_mark`; leftover: Valhalla · VRP · km |
 | BR3.1 | planowanie załadunku: osie, wymiary, kolejność, tunele | po BR3.0 | podnosi G6 |
-| BR3.2 | dyspozytor drobnicy: linie, huby, cutoffy, konsolidacja | po D1/D5 | |
+| BR3.2 | dyspozytor drobnicy: linie, huby, cutoffy, konsolidacja | po D1/D5 | następny **463.0** HITL; nie silnik hubów |
 | BR3.3 | tacho jako **ograniczenie planu**, nie raport po fakcie | po BR3.0 + V7 | |
 | BR4.0 | promy: rezerwacja, okna, art. 9 | po T | podnosi EXP2.13 |
 | BR4.1 | ładunki ponadnormatywne: zezwolenia, pilotaż, trasa specjalna | po BR3.1 | podnosi G5 |
@@ -812,7 +812,7 @@ Dump TMS `04b`: WMS nie jest dekoracją (Manhattan Active TM+WMS+Yard+Labour, In
 | BR6.2 | przetargi korporacyjne po stronie załadowcy | po G2 | **461.0** DONE HITL `shipper_tender_mark`; leftover: rundy · like-for-like; Alpega/Freight Bench nie live; nie auto-award |
 | BR6.3 | aplikacja mobilna sprzedaży iOS/Android | po BR6.0 | Expo/RN; web UI się nie przenosi |
 | BR6.4 | portale: klienta, przewoźnika, podwykonawcy | po S53 | zbieżne z X1–X5 |
-| BR6.5 | marketing: kampanie, atrybucja, lejek | po BR6.0 | plan **462.0** HITL `campaign_mark`; leftover: atrybucja live; nie `funnel_mark` |
+| BR6.5 | marketing: kampanie, atrybucja, lejek | po BR6.0 | **462.0** DONE HITL `campaign_mark`; leftover: atrybucja live; nie `funnel_mark` |
 | BR7.0 | sala operacyjna — warstwa działająca | po W2 leftover | dziś tylko katalog rodzaju incydentu |
 | BR7.1 | wpływ na linię produkcyjną — warstwa liczona | po AI6.0 | dziś tylko katalog znacznika |
 
@@ -934,13 +934,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

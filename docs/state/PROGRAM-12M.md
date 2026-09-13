@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **461.0** BR6.2 — HITL `shipper_tender_mark` (tryb załadowcy) **Następny:** **462.0** HITL znacznik kampanii. Nie atrybucja live. Nie `funnel_mark`. Nie Expo.
+**Stan (z CURRENT.md):** **462.0** BR6.5 — HITL `campaign_mark` **Następny:** **463.0** HITL dyspozytor drobnicy. Nie silnik hubów. Nie live.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

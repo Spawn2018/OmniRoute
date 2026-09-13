@@ -121,6 +121,7 @@ from app.models.po_line import PoLine  # noqa: F401
 from app.models.asn import Asn  # noqa: F401
 from app.models.otif_mark import OtifMark  # noqa: F401
 from app.models.sap_connector import SapConnector  # noqa: F401
+from app.models.campaign_mark import CampaignMark  # noqa: F401
 from app.models.capa_mark import CapaMark  # noqa: F401
 from app.models.spend_mark import SpendMark  # noqa: F401
 from app.models.penalty_mark import PenaltyMark  # noqa: F401

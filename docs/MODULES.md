@@ -80,6 +80,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | BR6.0 | Okazja CRM HITL | 456.0 `crm_opportunity` | **ukończony (HITL)** · stage open/won/lost/other; leftover activity / pipeline |
 | BR6.1 | Korytarz sprzedażowy HITL | 460.0 `sales_lane` | **ukończony (HITL)** · kind repeat/spot/other; leftover UN/LOCODE / wolumen |
 | BR6.2 | Tryb przetargu załadowcy HITL | 461.0 `shipper_tender_mark` | **ukończony (HITL)** · kind round/bench/spot/other; leftover rundy / like-for-like |
+| BR6.5 | Znacznik kampanii HITL | 462.0 `campaign_mark` | **ukończony (HITL)** · kind campaign/attribution/other; leftover atrybucja live / lejek X7 |
 | BR2.0 | Zdarzenie pozycji HITL | 457.0 `position_event` | **ukończony (HITL)** · kind gps/manual/other; leftover współrzędne / poll |
 | BR2.1 | Urządzenie telematyczne HITL | 458.0 `telematics_device` | **ukończony (HITL)** · kind tracker/fault/other; leftover parowanie / poll |
 | BR2.2 | Zgoda na śledzenie HITL | 459.0 `tracking_consent` | **ukończony (HITL)** · kind party/driver/other; leftover kolumna na `party_contact` |

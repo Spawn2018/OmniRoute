@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **461.0** BR6.2 — HITL `shipper_tender_mark` (tryb załadowcy)
-- **Etap:** plaster — **462.0** BR6.5 `campaign_mark`. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
-- **Następny:** **462.0** HITL znacznik kampanii. Nie atrybucja live. Nie `funnel_mark`. Nie Expo.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **462.0** BR6.5 — HITL `campaign_mark`
+- **Etap:** Plan — **463.0** BR3.2 dyspozytor drobnicy. Brak delty. `/plan-modul`.
+- **Następny:** **463.0** HITL dyspozytor drobnicy. Nie silnik hubów. Nie live.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

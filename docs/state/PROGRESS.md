@@ -862,3 +862,5 @@
 - 2026-09-13T17:10:00Z | 460.0 | sales_lane | DONE | HITL catalog lane_kind repeat/spot/other; bez UN/LOCODE
 
 - 2026-09-13T17:28:00Z | 461.0 | shipper_tender_mark | DONE | HITL catalog shipper_kind round/bench/spot/other; bez drugiej tabeli tender
+
+- 2026-09-13T17:50:00Z | 462.0 | campaign_mark | DONE | HITL catalog campaign_kind campaign/attribution/other; bez funnel_mark

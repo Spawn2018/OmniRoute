@@ -95,6 +95,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | BR6.2 plan (**461.0**): HITL `shipper_tender_mark`. Druga tabela `tender` / auto-award / Alpega live `REJECTED` na tym wierszu. |
 | 2026-09-13 | **461.0** `shipper_tender_mark` w kodzie (`CONFIRMED`, git). Następny = **BR6.5** marketing (`REQUIREMENT`). Expo BR6.3 / AI5 `REJECTED` na tym wierszu. |
 | 2026-09-13 | BR6.5 plan (**462.0**): HITL `campaign_mark`. Atrybucja live / klej do `funnel_mark` `REJECTED` na tym wierszu. |
+| 2026-09-13 | **462.0** `campaign_mark` w kodzie (`CONFIRMED`, git). Następny = **BR3.2** dyspozytor drobnicy (`REQUIREMENT`). Atrybucja live / Expo BR6.3 / AI5 `REJECTED` na tym wierszu. |
 
 ---
 
@@ -226,6 +227,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | BR6.2 (**461.0**) = HITL `shipper_tender_mark` (`round|bench|spot|other`). Druga tabela `tender` / auto-award / Alpega live `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
 | 2026-09-13 | **461.0** w kodzie (`CONFIRMED`, git). Katalog trybu załadowcy. Następny = **BR6.5** (`REQUIREMENT`). Rundy leftover. Expo BR6.3 park. | CURRENT + plaster 461.0 `/noc` |
 | 2026-09-13 | BR6.5 (**462.0**) = HITL `campaign_mark` (`campaign|attribution|other`). Atrybucja live / `funnel_mark` `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
+| 2026-09-13 | **462.0** w kodzie (`CONFIRMED`, git). Katalog kampanii. Następny = **BR3.2** (`REQUIREMENT`). Atrybucja leftover. Expo BR6.3 park. | CURRENT + plaster 462.0 `/noc` |
 
 ---
 ---
@@ -853,9 +855,9 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | nazwy z PDF-ów bez wiersza w planie | **136** (z czego 28 to aliasy) |
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
-Ostatni ukończony plaster: **461.0** (HITL `shipper_tender_mark`).
-Następny = **462.0** BR6.5 marketing (`REQUIREMENT`).
-AI1.0–AI1.4 oraz 443.0–461.0 są w kodzie (`CONFIRMED`); `data_source`
+Ostatni ukończony plaster: **462.0** (HITL `campaign_mark`).
+Następny = **463.0** BR3.2 dyspozytor drobnicy (`REQUIREMENT`).
+AI1.0–AI1.4 oraz 443.0–462.0 są w kodzie (`CONFIRMED`); `data_source`
 zostaje w AI5 (`REQUIREMENT`). Teza B.1 zostaje: szerokość katalogów nie zastępuje pomiaru.
 
 ## C.2 Bliźniaki — scalona taksonomia
@@ -949,8 +951,8 @@ bo bez ewidencji magazynowej nie ma zastawu na towarze.
   na tym wierszu. Alpega TenderEasy + Freight Bench = kanon EU, nie live.
 - **Aplikacja mobilna dla sprzedaży** — iOS i Android
 - **Portale** — klienta, przewoźnika, podwykonawcy
-- **Marketing i automatyzacja** — katalog HITL `campaign_mark` w planie
-  (`REQUIREMENT`, 462.0); leftover atrybucja live (`REQUIREMENT`).
+- **Marketing i automatyzacja** — katalog HITL `campaign_mark` jest
+  (`CONFIRMED`, 462.0); leftover atrybucja live (`REQUIREMENT`).
   Klej do `funnel_mark` `REJECTED` na tym wierszu.
 
 **Grupa 7 — Watch Tower jako produkt.**

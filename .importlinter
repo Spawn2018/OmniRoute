@@ -117,6 +117,7 @@ modules =
     app.services.impact_scenarios
     app.services.clause_notices
     app.services.calibration_marks
+    app.services.campaign_marks
     app.services.repair_playbooks
     app.services.spend_marks
     app.services.penalty_marks
@@ -605,6 +606,9 @@ forbidden_modules =
     app.services.calibration_marks
     app.repositories.calibration_marks
     app.models.calibration_mark
+    app.services.campaign_marks
+    app.repositories.campaign_marks
+    app.models.campaign_mark
     app.services.repair_playbooks
     app.repositories.repair_playbooks
     app.models.repair_playbook
