@@ -1,3 +1,4 @@
+- **450.0 plan:** AI3.3 golden + pytest. Leftover po zamknięciu: większy zbiór · instructor w CI · Excel · live vision.
 - **449.0 leftover:** AI3.3 golden (**450.0**) · AI3.4 Excel · live vision · extra=forbid na całym POST extract (zostaje ignore). 449.0 = etykieta `extract_path`.
 - **448.0 leftover:** AI3.2 zamknięty w 449.0 · historia wierszy · PATCH quote/rfp. 448.0 = `revision` + `bbox_text`/`confidence_text`.
 - **447.0 leftover:** AI3.1 (**448.0**) · PATCH quote/rfp · EXPLAIN UPDATE JSONB. 447.0 = PATCH `candidates` na pending/`rate_line`. Import `isort` w follow-up commicie (ruff I001).

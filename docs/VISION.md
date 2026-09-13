@@ -70,6 +70,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | **448.0** wersja/ramka/pewność w kodzie (`CONFIRMED`, git). Następny = **AI3.2** obraz wprost (`REQUIREMENT`). Historia wierszy leftover. |
 | 2026-09-13 | AI3.2 plan (**449.0**): `extract_path` text|image jako etykieta. Live vision `REJECTED`. |
 | 2026-09-13 | **449.0** `extract_path` w kodzie (`CONFIRMED`, git). Następny = **AI3.3** golden (`REQUIREMENT`). Live vision `REJECTED`. |
+| 2026-09-13 | AI3.3 plan (**450.0**): własny golden + pytest. 96,6% / 92,71% = `TO_VERIFY` literatura, nie fakt Omni (`REJECTED` w kodzie). |
 
 ---
 
@@ -176,6 +177,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | **448.0** w kodzie (`CONFIRMED`, git). `revision` + `bbox_text`/`confidence_text`. Następny = **AI3.2** obraz wprost (`REQUIREMENT`). | CURRENT + plaster 448.0 `/noc` |
 | 2026-09-13 | AI3.2 (**449.0**) = `extract_path` text|image. Live piksele `REJECTED`. Excel/golden `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E AI3 |
 | 2026-09-13 | **449.0** w kodzie (`CONFIRMED`, git). `extract_path` text|image jako etykieta. Następny = **AI3.3** golden (`REQUIREMENT`). Live vision `REJECTED`. | CURRENT + plaster 449.0 `/noc` |
+| 2026-09-13 | AI3.3 (**450.0**) = własny zbiór golden + bramka pytest. Liczby z preprintu `REJECTED` jako stała. Excel/vision `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E AI3 |
 
 ---
 ---
@@ -804,7 +806,7 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
 Ostatni ukończony plaster: **449.0** (`extract_path` text|image).
-Następny = **450.0** AI3.3 golden + bramka (`REQUIREMENT`). Live vision `REJECTED`.
+Następny = **450.0** AI3.3 golden + bramka pytest (`REQUIREMENT`). 96,6% `TO_VERIFY` (nie kod).
 AI1.0–AI1.4 oraz 443.0–449.0 są w kodzie (`CONFIRMED`); `data_source`
 zostaje w AI5 (`REQUIREMENT`). Teza B.1 zostaje: szerokość katalogów nie zastępuje pomiaru.
 

@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **450.0** własny zbiór golden + bramka. Nie live vision. Nie Excel. Nie cytat preprintu jako fakt.
+**Następny:** **450.0** własny zbiór golden + bramka pytest. Nie liczby z papieru. Nie Excel. Nie live vision.
 <!-- os-status:end -->
 
 ```mermaid
@@ -761,7 +761,7 @@ Dump TMS 2026-09-13 (badania `04b` A–H × 10; CargoWise/Qargo/interLAN zostaj�
 | AI3.0 | `PATCH` na `extraction_draft` + edycja w interfejsie przed akceptacją | po AI2.0 | **447.0 DONE** PATCH `candidates` na pending/`rate_line`; leftover: wersja/bbox (AI3.1) · quote/rfp PATCH |
 | AI3.1 | wersjonowanie szkicu + `draft_kind` + `bbox` i pewność w JSONB | po AI3.0 | **448.0 DONE** `payload.revision` + `bbox_text`/`confidence_text`; leftover: historia wierszy |
 | AI3.2 | ścieżka **obraz wprost** jako challenger dla obecnej ścieżki przez tekst | po AI3.1 | **449.0 DONE** `extract_path` text|image etykieta; leftover: live vision · AI3.3 · AI3.4 |
-| AI3.3 | własny zbiór golden + bramka wydaniowa na progach | po AI3.2 | 96,6% i 92,71% = cel z bramką na **własnym** zbiorze |
+| AI3.3 | własny zbiór golden + bramka wydaniowa na progach | po AI3.2 | **450.0** plan `/noc` = pytest vs oczekiwane kody na 2 fixture’ach; 96,6% nie wchodzi do kodu |
 | AI3.4 | ekstrakcja z Excela (dziś tylko PDF) | po AI3.1 | taryfy częściej w Excelu |
 | AI4.0 | `plan_snapshot` z FK do shipment/trip/resource | po AI1; **Q3=tak** | `ON DELETE RESTRICT`; nadal zakaz UPDATE/DELETE wiersza snapshot |
 | AI4.1 | silnik what-if na `counterfactual_run` | po AI4.0 | podnosi V8 i W1; dump `04b`: what-if/Optimizer/Archer u konkurencji = runtime, u nas HITL aż ten wiersz |
@@ -934,13 +934,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

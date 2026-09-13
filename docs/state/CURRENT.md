@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **449.0** AI3.2 — `payload.extract_path` text|image (etykieta)
 
-**Etap:** Plan — **450.0** AI3.3 golden. Wolno `/plan-modul`. Zero kodu.
+**Etap:** plaster — **450.0** AI3.3 golden. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
 
 **Noc:** `/noc 20` do **2026-09-13T20:00+02**.
 
-**Następny:** **450.0** własny zbiór golden + bramka. Nie live vision. Nie Excel. Nie cytat preprintu jako fakt.
+**Następny:** **450.0** własny zbiór golden + bramka pytest. Nie liczby z papieru. Nie Excel. Nie live vision.
 
 Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 450.0. Nie otwieraj AI0.
 
-**Spec (jedyna na sesję):** brak — `/plan-modul`
+**Spec (jedyna na sesję):** [docs/deltas/open/450.0-extraction-golden-gate.md](../deltas/open/450.0-extraction-golden-gate.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 
