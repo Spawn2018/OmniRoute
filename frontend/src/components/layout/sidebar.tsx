@@ -94,6 +94,7 @@ const NAV = [
   { to: "/sales-lanes", label: "Korytarz sprzedażowy" },
   { to: "/shipper-tender-marks", label: "Przetarg załadowcy" },
   { to: "/campaign-marks", label: "Kampania marketingowa" },
+  { to: "/groupage-dispatcher-marks", label: "Dyspozytor drobnicy" },
   { to: "/position-events", label: "Zdarzenie pozycji" },
   { to: "/telematics-devices", label: "Urządzenie telematyczne" },
   { to: "/tracking-consents", label: "Zgoda na śledzenie" },

@@ -826,6 +826,10 @@ class InvalidCampaignMark(DomainError):
     """BR6.5: HITL kampania — nie lejek X7 / atrybucja live."""
 
 
+class InvalidGroupageDispatcherMark(DomainError):
+    """BR3.2: HITL dyspozytor drobnicy — nie silnik hubów."""
+
+
 class InvalidRepairPlaybook(DomainError):
     """CI8: HITL playbook naprawy — nie auto-send S11."""
 

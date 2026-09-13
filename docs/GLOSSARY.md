@@ -54,6 +54,7 @@
 | kolej z Chin | china_rail | 43.0 tablica `port` CN z flagą `rail`; 110.0 odcinek `shipment_leg` china_rail; nie korytarz; nie HTTP |
 | drobnica morska | ocean_lcl | 44.0 tablica `port` z `is_seaport`; 111.0 odcinek `shipment_leg` ocean_lcl; nie tabela LCL; nie CFS |
 | linia drobnicy | groupage_line | 155.0 katalog linii LTL: `cutoff_local`, `transit_days`, `operating_dows`, dwa `location`; nie OR hubów; nie WMS |
+| znacznik dyspozytora drobnicy | groupage_dispatcher_mark | BR3.2 HITL katalog; leftover silnik hubów / konsolidacja |
 | paczka na zleceniu | shipment_package | 156.0 sztuka na `shipment`: `package_status`, skan QR Omni, `stop` z trasy; nie WMS; nie auto-link |
 | awizacja doku | dock_appointment | 157.0 okno TIME na `stop` w magazynie (`postal_zone`/`address`); nie WMS; nie T8 |
 | pobranie COD | cod_instruction | 158.0 znacznik na `shipment` bez kwoty; nie rozliczenie F; nie POD portu |

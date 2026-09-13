@@ -118,6 +118,7 @@ modules =
     app.services.clause_notices
     app.services.calibration_marks
     app.services.campaign_marks
+    app.services.groupage_dispatcher_marks
     app.services.repair_playbooks
     app.services.spend_marks
     app.services.penalty_marks
@@ -609,6 +610,9 @@ forbidden_modules =
     app.services.campaign_marks
     app.repositories.campaign_marks
     app.models.campaign_mark
+    app.services.groupage_dispatcher_marks
+    app.repositories.groupage_dispatcher_marks
+    app.models.groupage_dispatcher_mark
     app.services.repair_playbooks
     app.repositories.repair_playbooks
     app.models.repair_playbook

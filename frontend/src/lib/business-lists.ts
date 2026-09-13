@@ -286,6 +286,10 @@ export const BUSINESS_LISTS = {
   clauseNotice: { route: "/clause-notices", tableKey: "clause_notice" },
   calibrationMark: { route: "/calibration-marks", tableKey: "calibration_mark" },
   campaignMark: { route: "/campaign-marks", tableKey: "campaign_mark" },
+  groupageDispatcherMark: {
+    route: "/groupage-dispatcher-marks",
+    tableKey: "groupage_dispatcher_mark",
+  },
   repairPlaybook: { route: "/repair-playbooks", tableKey: "repair_playbook" },
   spendMark: { route: "/spend-marks", tableKey: "spend_mark" },
   penaltyMark: { route: "/penalty-marks", tableKey: "penalty_mark" },
@@ -550,6 +554,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/clause-notices",
   "/calibration-marks",
   "/campaign-marks",
+  "/groupage-dispatcher-marks",
   "/repair-playbooks",
   "/spend-marks",
   "/penalty-marks",

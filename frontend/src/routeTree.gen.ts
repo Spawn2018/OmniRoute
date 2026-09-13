@@ -104,6 +104,7 @@ import { Route as FxDifferencesRouteImport } from './routes/fx-differences'
 import { Route as GdprRouteImport } from './routes/gdpr'
 import { Route as GeneralAverageMarksRouteImport } from './routes/general-average-marks'
 import { Route as GroupageRouteImport } from './routes/groupage'
+import { Route as GroupageDispatcherMarksRouteImport } from './routes/groupage-dispatcher-marks'
 import { Route as GroupageTariffsRouteImport } from './routes/groupage-tariffs'
 import { Route as HaulierRoleMarksRouteImport } from './routes/haulier-role-marks'
 import { Route as HealthRouteImport } from './routes/health'
@@ -743,6 +744,11 @@ const GeneralAverageMarksRoute = GeneralAverageMarksRouteImport.update({
 const GroupageRoute = GroupageRouteImport.update({
   id: '/groupage',
   path: '/groupage',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GroupageDispatcherMarksRoute = GroupageDispatcherMarksRouteImport.update({
+  id: '/groupage-dispatcher-marks',
+  path: '/groupage-dispatcher-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GroupageTariffsRoute = GroupageTariffsRouteImport.update({
@@ -1668,6 +1674,7 @@ export interface FileRoutesByFullPath {
   '/gdpr': typeof GdprRoute
   '/general-average-marks': typeof GeneralAverageMarksRoute
   '/groupage': typeof GroupageRoute
+  '/groupage-dispatcher-marks': typeof GroupageDispatcherMarksRoute
   '/groupage-tariffs': typeof GroupageTariffsRoute
   '/haulier-role-marks': typeof HaulierRoleMarksRoute
   '/health': typeof HealthRoute
@@ -1930,6 +1937,7 @@ export interface FileRoutesByTo {
   '/gdpr': typeof GdprRoute
   '/general-average-marks': typeof GeneralAverageMarksRoute
   '/groupage': typeof GroupageRoute
+  '/groupage-dispatcher-marks': typeof GroupageDispatcherMarksRoute
   '/groupage-tariffs': typeof GroupageTariffsRoute
   '/haulier-role-marks': typeof HaulierRoleMarksRoute
   '/health': typeof HealthRoute
@@ -2193,6 +2201,7 @@ export interface FileRoutesById {
   '/gdpr': typeof GdprRoute
   '/general-average-marks': typeof GeneralAverageMarksRoute
   '/groupage': typeof GroupageRoute
+  '/groupage-dispatcher-marks': typeof GroupageDispatcherMarksRoute
   '/groupage-tariffs': typeof GroupageTariffsRoute
   '/haulier-role-marks': typeof HaulierRoleMarksRoute
   '/health': typeof HealthRoute
@@ -2457,6 +2466,7 @@ export interface FileRouteTypes {
     | '/gdpr'
     | '/general-average-marks'
     | '/groupage'
+    | '/groupage-dispatcher-marks'
     | '/groupage-tariffs'
     | '/haulier-role-marks'
     | '/health'
@@ -2719,6 +2729,7 @@ export interface FileRouteTypes {
     | '/gdpr'
     | '/general-average-marks'
     | '/groupage'
+    | '/groupage-dispatcher-marks'
     | '/groupage-tariffs'
     | '/haulier-role-marks'
     | '/health'
@@ -2981,6 +2992,7 @@ export interface FileRouteTypes {
     | '/gdpr'
     | '/general-average-marks'
     | '/groupage'
+    | '/groupage-dispatcher-marks'
     | '/groupage-tariffs'
     | '/haulier-role-marks'
     | '/health'
@@ -3244,6 +3256,7 @@ export interface RootRouteChildren {
   GdprRoute: typeof GdprRoute
   GeneralAverageMarksRoute: typeof GeneralAverageMarksRoute
   GroupageRoute: typeof GroupageRoute
+  GroupageDispatcherMarksRoute: typeof GroupageDispatcherMarksRoute
   GroupageTariffsRoute: typeof GroupageTariffsRoute
   HaulierRoleMarksRoute: typeof HaulierRoleMarksRoute
   HealthRoute: typeof HealthRoute
@@ -4076,6 +4089,13 @@ declare module '@tanstack/react-router' {
       path: '/groupage'
       fullPath: '/groupage'
       preLoaderRoute: typeof GroupageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/groupage-dispatcher-marks': {
+      id: '/groupage-dispatcher-marks'
+      path: '/groupage-dispatcher-marks'
+      fullPath: '/groupage-dispatcher-marks'
+      preLoaderRoute: typeof GroupageDispatcherMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/groupage-tariffs': {
@@ -5332,6 +5352,7 @@ const rootRouteChildren: RootRouteChildren = {
   GdprRoute: GdprRoute,
   GeneralAverageMarksRoute: GeneralAverageMarksRoute,
   GroupageRoute: GroupageRoute,
+  GroupageDispatcherMarksRoute: GroupageDispatcherMarksRoute,
   GroupageTariffsRoute: GroupageTariffsRoute,
   HaulierRoleMarksRoute: HaulierRoleMarksRoute,
   HealthRoute: HealthRoute,

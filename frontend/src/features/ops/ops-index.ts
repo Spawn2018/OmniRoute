@@ -1245,6 +1245,11 @@ export const OPS_JOBS = [
     job: "katalog campaign_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.groupageDispatcherMark.route,
+    label: "Dyspozytor drobnicy",
+    job: "katalog groupage_dispatcher_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.repairPlaybook.route,
     label: "Playbook naprawy",
     job: "katalog repair_playbook HITL",
@@ -1567,6 +1572,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "460.0": "/sales-lanes",
   "461.0": "/shipper-tender-marks",
   "462.0": "/campaign-marks",
+  "463.0": "/groupage-dispatcher-marks",
   "267.0": "/lane-kms",
   "268.0": "/erp-connectors",
   "269.0": "/terminal-slot-connectors",

@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **463.0** HITL `groupage_dispatcher_mark`. Nie silnik hubów. Nie live.
+**Następny:** **464.0** HITL planowanie załadunku. Nie solver. Nie wymiary Decimal.
 <!-- os-status:end -->
 
 ```mermaid
@@ -797,7 +797,7 @@ Dump TMS `04b`: WMS nie jest dekoracją (Manhattan Active TM+WMS+Yard+Labour, In
 | BR2.3 | aplikacja kierowcy: zlecenie, POD, skan, status, tryb offline | po BR2.1 | wzorzec offline: Briefcase Builder |
 | BR3.0 | planowanie tras — **solver, nie model językowy** | **start HHL** | **455.0** DONE HITL `route_plan_mark`; leftover: Valhalla · VRP · km |
 | BR3.1 | planowanie załadunku: osie, wymiary, kolejność, tunele | po BR3.0 | podnosi G6 |
-| BR3.2 | dyspozytor drobnicy: linie, huby, cutoffy, konsolidacja | po D1/D5 | **463.0** delta HITL `groupage_dispatcher_mark`; nie silnik hubów |
+| BR3.2 | dyspozytor drobnicy: linie, huby, cutoffy, konsolidacja | po D1/D5 | **463.0** DONE HITL `groupage_dispatcher_mark`; leftover: silnik hubów · konsolidacja |
 | BR3.3 | tacho jako **ograniczenie planu**, nie raport po fakcie | po BR3.0 + V7 | |
 | BR4.0 | promy: rezerwacja, okna, art. 9 | po T | podnosi EXP2.13 |
 | BR4.1 | ładunki ponadnormatywne: zezwolenia, pilotaż, trasa specjalna | po BR3.1 | podnosi G5 |
@@ -934,13 +934,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->
