@@ -178,6 +178,10 @@ export const BUSINESS_LISTS = {
     route: "/bid-decision-marks",
     tableKey: "bid_decision_mark",
   },
+  quoteCurrencyMark: {
+    route: "/quote-currency-marks",
+    tableKey: "quote_currency_mark",
+  },
   demoGpsMark: { route: "/demo-gps-marks", tableKey: "demo_gps_mark" },
   demoSimMark: { route: "/demo-sim-marks", tableKey: "demo_sim_mark" },
   demoWipeMark: { route: "/demo-wipe-marks", tableKey: "demo_wipe_mark" },
@@ -433,6 +437,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/diversion-marks",
   "/spot-contract-marks",
   "/bid-decision-marks",
+  "/quote-currency-marks",
   "/demo-gps-marks",
   "/demo-sim-marks",
   "/demo-wipe-marks",

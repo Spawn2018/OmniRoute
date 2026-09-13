@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **430.0** EXP1 HITL `quote_currency_mark` (account|pay|other) — currency_account vs currency_pay.
+**Następny:** **431.0** EXP1 HITL `quote_validity_mark` (open|revised|superseded|other) — leftover valid_until/revision.
 <!-- os-status:end -->
 
 ```mermaid

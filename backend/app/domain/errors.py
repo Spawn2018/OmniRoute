@@ -1046,6 +1046,10 @@ class InvalidBidDecisionMark(DomainError):
     """EXP1: HITL bid_decision_mark — nie kolumna quotation / auto-award."""
 
 
+class InvalidQuoteCurrencyMark(DomainError):
+    """EXP1: HITL quote_currency_mark — nie kolumna quotation / NBP."""
+
+
 class InvalidImpersonateGuardMark(DomainError):
     """EXP0.12: HITL impersonate≠unwrap — nie crypto / Auth0 live."""
 

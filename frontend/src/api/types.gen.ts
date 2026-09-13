@@ -9565,6 +9565,50 @@ export type QuotationResponse = {
 };
 
 /**
+ * QuoteCurrencyMarkCreate
+ */
+export type QuoteCurrencyMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Currency Kind
+     */
+    currency_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * QuoteCurrencyMarkResponse
+ */
+export type QuoteCurrencyMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Currency Kind
+     */
+    currency_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * QuoteInvoiceSettlementCreate
  */
 export type QuoteInvoiceSettlementCreate = {
@@ -22296,6 +22340,49 @@ export type CreateBidDecisionMarkApiV1BidDecisionMarksPostResponses = {
 };
 
 export type CreateBidDecisionMarkApiV1BidDecisionMarksPostResponse = CreateBidDecisionMarkApiV1BidDecisionMarksPostResponses[keyof CreateBidDecisionMarkApiV1BidDecisionMarksPostResponses];
+
+export type ListQuoteCurrencyMarksApiV1QuoteCurrencyMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/quote-currency-marks';
+};
+
+export type ListQuoteCurrencyMarksApiV1QuoteCurrencyMarksGetResponses = {
+    /**
+     * Response List Quote Currency Marks Api V1 Quote Currency Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<QuoteCurrencyMarkResponse>;
+};
+
+export type ListQuoteCurrencyMarksApiV1QuoteCurrencyMarksGetResponse = ListQuoteCurrencyMarksApiV1QuoteCurrencyMarksGetResponses[keyof ListQuoteCurrencyMarksApiV1QuoteCurrencyMarksGetResponses];
+
+export type CreateQuoteCurrencyMarkApiV1QuoteCurrencyMarksPostData = {
+    body: QuoteCurrencyMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/quote-currency-marks';
+};
+
+export type CreateQuoteCurrencyMarkApiV1QuoteCurrencyMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateQuoteCurrencyMarkApiV1QuoteCurrencyMarksPostError = CreateQuoteCurrencyMarkApiV1QuoteCurrencyMarksPostErrors[keyof CreateQuoteCurrencyMarkApiV1QuoteCurrencyMarksPostErrors];
+
+export type CreateQuoteCurrencyMarkApiV1QuoteCurrencyMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: QuoteCurrencyMarkResponse;
+};
+
+export type CreateQuoteCurrencyMarkApiV1QuoteCurrencyMarksPostResponse = CreateQuoteCurrencyMarkApiV1QuoteCurrencyMarksPostResponses[keyof CreateQuoteCurrencyMarkApiV1QuoteCurrencyMarksPostResponses];
 
 export type ListDemoGpsMarksApiV1DemoGpsMarksGetData = {
     body?: never;

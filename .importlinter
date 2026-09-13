@@ -179,6 +179,7 @@ modules =
     app.services.diversion_marks
     app.services.spot_contract_marks
     app.services.bid_decision_marks
+    app.services.quote_currency_marks
     app.services.demo_gps_marks
     app.services.demo_sim_marks
     app.services.demo_wipe_marks
@@ -852,6 +853,9 @@ forbidden_modules =
     app.services.bid_decision_marks
     app.repositories.bid_decision_marks
     app.models.bid_decision_mark
+    app.services.quote_currency_marks
+    app.repositories.quote_currency_marks
+    app.models.quote_currency_mark
     app.services.demo_gps_marks
     app.repositories.demo_gps_marks
     app.models.demo_gps_mark

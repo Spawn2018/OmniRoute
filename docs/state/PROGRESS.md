@@ -798,3 +798,5 @@
 - 2026-09-12T22:09:38Z · 428.0 · spot_contract_mark · DONE · HITL deal_kind spot|contract|other · migracja 338 · /spot-contract-marks
 
 - 2026-09-13T01:36:00Z · 429.0 · bid_decision_mark · DONE · HITL decision_kind go|no_go|hold|other · migracja 339 · /bid-decision-marks
+
+- 2026-09-13T02:10:00Z · 430.0 · quote_currency_mark · DONE · HITL currency_kind account|pay|other · migracja 340 · /quote-currency-marks

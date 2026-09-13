@@ -86,9 +86,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **429.0** EXP1 HITL `bid_decision_mark`
-- **Etap:** Plan — **430.0** EXP1
-- **Następny:** **430.0** EXP1 HITL `quote_currency_mark` (account|pay|other) — currency_account vs currency_pay.
+- **Ostatni plaster:** **430.0** EXP1 HITL `quote_currency_mark`
+- **Etap:** Plan — **431.0** EXP1
+- **Następny:** **431.0** EXP1 HITL `quote_validity_mark` (open|revised|superseded|other) — leftover valid_until/revision.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

@@ -167,6 +167,7 @@ from app.api import (
     profit_center_marks,
     purchase_orders,
     quotations,
+    quote_currency_marks,
     quote_invoice_settlements,
     rag_sop_marks,
     rail_cim_marks,
@@ -417,6 +418,7 @@ api_router.include_router(demand_snapshot_marks.router)
 api_router.include_router(diversion_marks.router)
 api_router.include_router(spot_contract_marks.router)
 api_router.include_router(bid_decision_marks.router)
+api_router.include_router(quote_currency_marks.router)
 api_router.include_router(demo_gps_marks.router)
 api_router.include_router(demo_sim_marks.router)
 api_router.include_router(demo_wipe_marks.router)

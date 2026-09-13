@@ -174,6 +174,7 @@ import { Route as ProfitCenterMarksRouteImport } from './routes/profit-center-ma
 import { Route as PurchaseOrdersRouteImport } from './routes/purchase-orders'
 import { Route as QualityRouteImport } from './routes/quality'
 import { Route as QuotationsRouteImport } from './routes/quotations'
+import { Route as QuoteCurrencyMarksRouteImport } from './routes/quote-currency-marks'
 import { Route as QuoteInvoicesRouteImport } from './routes/quote-invoices'
 import { Route as RagSopMarksRouteImport } from './routes/rag-sop-marks'
 import { Route as RailRouteImport } from './routes/rail'
@@ -1074,6 +1075,11 @@ const QuotationsRoute = QuotationsRouteImport.update({
   path: '/quotations',
   getParentRoute: () => rootRouteImport,
 } as any)
+const QuoteCurrencyMarksRoute = QuoteCurrencyMarksRouteImport.update({
+  id: '/quote-currency-marks',
+  path: '/quote-currency-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const QuoteInvoicesRoute = QuoteInvoicesRouteImport.update({
   id: '/quote-invoices',
   path: '/quote-invoices',
@@ -1612,6 +1618,7 @@ export interface FileRoutesByFullPath {
   '/purchase-orders': typeof PurchaseOrdersRoute
   '/quality': typeof QualityRoute
   '/quotations': typeof QuotationsRoute
+  '/quote-currency-marks': typeof QuoteCurrencyMarksRoute
   '/quote-invoices': typeof QuoteInvoicesRoute
   '/rag-sop-marks': typeof RagSopMarksRoute
   '/rail': typeof RailRoute
@@ -1853,6 +1860,7 @@ export interface FileRoutesByTo {
   '/purchase-orders': typeof PurchaseOrdersRoute
   '/quality': typeof QualityRoute
   '/quotations': typeof QuotationsRoute
+  '/quote-currency-marks': typeof QuoteCurrencyMarksRoute
   '/quote-invoices': typeof QuoteInvoicesRoute
   '/rag-sop-marks': typeof RagSopMarksRoute
   '/rail': typeof RailRoute
@@ -2095,6 +2103,7 @@ export interface FileRoutesById {
   '/purchase-orders': typeof PurchaseOrdersRoute
   '/quality': typeof QualityRoute
   '/quotations': typeof QuotationsRoute
+  '/quote-currency-marks': typeof QuoteCurrencyMarksRoute
   '/quote-invoices': typeof QuoteInvoicesRoute
   '/rag-sop-marks': typeof RagSopMarksRoute
   '/rail': typeof RailRoute
@@ -2338,6 +2347,7 @@ export interface FileRouteTypes {
     | '/purchase-orders'
     | '/quality'
     | '/quotations'
+    | '/quote-currency-marks'
     | '/quote-invoices'
     | '/rag-sop-marks'
     | '/rail'
@@ -2579,6 +2589,7 @@ export interface FileRouteTypes {
     | '/purchase-orders'
     | '/quality'
     | '/quotations'
+    | '/quote-currency-marks'
     | '/quote-invoices'
     | '/rag-sop-marks'
     | '/rail'
@@ -2820,6 +2831,7 @@ export interface FileRouteTypes {
     | '/purchase-orders'
     | '/quality'
     | '/quotations'
+    | '/quote-currency-marks'
     | '/quote-invoices'
     | '/rag-sop-marks'
     | '/rail'
@@ -3062,6 +3074,7 @@ export interface RootRouteChildren {
   PurchaseOrdersRoute: typeof PurchaseOrdersRoute
   QualityRoute: typeof QualityRoute
   QuotationsRoute: typeof QuotationsRoute
+  QuoteCurrencyMarksRoute: typeof QuoteCurrencyMarksRoute
   QuoteInvoicesRoute: typeof QuoteInvoicesRoute
   RagSopMarksRoute: typeof RagSopMarksRoute
   RailRoute: typeof RailRoute
@@ -4295,6 +4308,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof QuotationsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/quote-currency-marks': {
+      id: '/quote-currency-marks'
+      path: '/quote-currency-marks'
+      fullPath: '/quote-currency-marks'
+      preLoaderRoute: typeof QuoteCurrencyMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/quote-invoices': {
       id: '/quote-invoices'
       path: '/quote-invoices'
@@ -4982,6 +5002,7 @@ const rootRouteChildren: RootRouteChildren = {
   PurchaseOrdersRoute: PurchaseOrdersRoute,
   QualityRoute: QualityRoute,
   QuotationsRoute: QuotationsRoute,
+  QuoteCurrencyMarksRoute: QuoteCurrencyMarksRoute,
   QuoteInvoicesRoute: QuoteInvoicesRoute,
   RagSopMarksRoute: RagSopMarksRoute,
   RailRoute: RailRoute,

@@ -14760,6 +14760,80 @@
         ]
       }
     },
+    "/api/v1/quote-currency-marks": {
+      "get": {
+        "tags": [
+          "quote-currency-mark"
+        ],
+        "summary": "List Quote Currency Marks",
+        "operationId": "list_quote_currency_marks_api_v1_quote_currency_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/QuoteCurrencyMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Quote Currency Marks Api V1 Quote Currency Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "quote-currency-mark"
+        ],
+        "summary": "Create Quote Currency Mark",
+        "operationId": "create_quote_currency_mark_api_v1_quote_currency_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuoteCurrencyMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuoteCurrencyMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/demo-gps-marks": {
       "get": {
         "tags": [
@@ -36820,6 +36894,71 @@
           "named_place"
         ],
         "title": "QuotationResponse"
+      },
+      "QuoteCurrencyMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "currency_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Currency Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "currency_kind",
+          "source_ref"
+        ],
+        "title": "QuoteCurrencyMarkCreate"
+      },
+      "QuoteCurrencyMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "currency_kind": {
+            "type": "string",
+            "title": "Currency Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "currency_kind",
+          "source_ref"
+        ],
+        "title": "QuoteCurrencyMarkResponse"
       },
       "QuoteInvoiceSettlementCreate": {
         "properties": {
