@@ -1,4 +1,4 @@
-- **447.0 leftover:** AI3.1 wersja/bbox/pewność (**448.0**) · PATCH quote/rfp · EXPLAIN UPDATE JSONB. 447.0 = PATCH `candidates` na pending/`rate_line`.
+- **447.0 leftover:** AI3.1 wersja/bbox/pewność (**448.0**) · PATCH quote/rfp · EXPLAIN UPDATE JSONB. 447.0 = PATCH `candidates` na pending/`rate_line`. Import `isort` w follow-up commicie (ruff I001).
 - **446.0 leftover:** Brier · auto-champion · detektor/próg · trzy BC · `data_source` (AI5) · AI3.0 PATCH szkicu (**447.0**). 446.0 = POST bez wpisu CRPS/MAE.
 - **445.0 leftover:** zapis `prediction_ledger` (**446.0**) · Brier · auto-champion · detektor/próg · trzy BC · `data_source` (AI5). 445.0 = widok średnich per dzień UTC. EXPLAIN widoku = leftover.
 - **444.0 leftover:** dryf (**445.0**) · auto-champion · Brier · zapis `prediction_ledger` · trzy BC · `data_source` (AI5). 444.0 = widok średnich per `model_version`. EXPLAIN widoku = leftover.
