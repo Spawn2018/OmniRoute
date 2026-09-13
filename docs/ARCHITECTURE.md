@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **456.0** BR6.0 — HITL `crm_opportunity` (katalog okazji). **Etap:** Plan — **457.0** BR2.0 `position_event`. Spec: brak — `/plan-modul`. **Następny:** **457.0** HITL pozycja jako byt. Nie live GPS. Nie `tracking_event`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **456.0** BR6.0 — HITL `crm_opportunity` (katalog okazji). **Etap:** plaster — **457.0** BR2.0 `position_event`. Delta zaakceptowana (`/noc`). Wolno `/plaster`. **Następny:** **457.0** HITL pozycja jako byt. Nie live GPS. Nie `tracking_event`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

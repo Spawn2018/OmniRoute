@@ -84,6 +84,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | **455.0** `route_plan_mark` w kodzie (`CONFIRMED`, git). Następny = **BR6.0** CRM ponad leada (`REQUIREMENT`). Valhalla / AI5 `REJECTED` na tym wierszu. |
 | 2026-09-13 | BR6.0 plan (**456.0**): HITL `crm_opportunity`. Activity / pipeline silnik `REJECTED` na tym wierszu. |
 | 2026-09-13 | **456.0** `crm_opportunity` w kodzie (`CONFIRMED`, git). Następny = **BR2.0** pozycja (`REQUIREMENT`). Pipeline / AI5 `REJECTED` na tym wierszu. |
+| 2026-09-13 | BR2.0 plan (**457.0**): HITL `position_event`. Live GPS / lat-lng `REJECTED` na tym wierszu. |
 
 ---
 

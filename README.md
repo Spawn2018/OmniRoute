@@ -88,9 +88,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **456.0** BR6.0 — HITL `crm_opportunity` (katalog okazji)
-- **Etap:** Plan — **457.0** BR2.0 `position_event`. Spec: brak — `/plan-modul`.
+- **Etap:** plaster — **457.0** BR2.0 `position_event`. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
 - **Następny:** **457.0** HITL pozycja jako byt. Nie live GPS. Nie `tracking_event`.
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

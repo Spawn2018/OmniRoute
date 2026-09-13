@@ -6,7 +6,7 @@
 
 **Ostatni plaster:** **456.0** BR6.0 — HITL `crm_opportunity` (katalog okazji)
 
-**Etap:** Plan — **457.0** BR2.0 `position_event`. Spec: brak — `/plan-modul`.
+**Etap:** plaster — **457.0** BR2.0 `position_event`. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
 
 **Noc:** `/noc 20` do **2026-09-13T20:00+02**.
 
@@ -14,7 +14,7 @@
 
 Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 457.0. Nie otwieraj AI0. Nie startuj leftover Valhalla / pipeline.
 
-**Spec (jedyna na sesję):** brak — `/plan-modul`
+**Spec (jedyna na sesję):** [docs/deltas/open/457.0-position-event.md](../deltas/open/457.0-position-event.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 
