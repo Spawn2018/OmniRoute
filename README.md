@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **434.0** AI1.2 HITL `counterfactual_run`
-- **Etap:** Plan — **AI1.3** / **435.0** (delta zaakceptowana `/noc`, wolno `/plaster`)
-- **Następny:** **435.0** AI1.3 HITL `benefit_ledger` — method_label + hours_saved + saved_amount Decimal.
+- **Ostatni plaster:** **435.0** AI1.3 HITL `benefit_ledger`
+- **Etap:** Plan — **AI1.4** / **436.0** (brak delty, `/plan-modul`)
+- **Następny:** **436.0** AI1.4 HITL słowniki otwarte: `twin_kind`, `data_source`, `autonomy_level`, `suggestion_kind`.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

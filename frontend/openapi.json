@@ -16610,6 +16610,80 @@
         ]
       }
     },
+    "/api/v1/benefit-ledgers": {
+      "get": {
+        "tags": [
+          "benefit-ledgers"
+        ],
+        "summary": "List Benefit Ledgers",
+        "operationId": "list_benefit_ledgers_api_v1_benefit_ledgers_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/BenefitLedgerResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Benefit Ledgers Api V1 Benefit Ledgers Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "benefit-ledgers"
+        ],
+        "summary": "Create Benefit Ledger",
+        "operationId": "create_benefit_ledger_api_v1_benefit_ledgers_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BenefitLedgerCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BenefitLedgerResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/bookkeepings": {
       "get": {
         "tags": [
@@ -22856,6 +22930,103 @@
           "source_ref"
         ],
         "title": "BankPaymentResponse"
+      },
+      "BenefitLedgerCreate": {
+        "properties": {
+          "benefit_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Benefit Code"
+          },
+          "method_label": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Method Label"
+          },
+          "hours_saved": {
+            "type": "string",
+            "title": "Hours Saved"
+          },
+          "saved_amount": {
+            "type": "string",
+            "title": "Saved Amount"
+          },
+          "saved_currency": {
+            "type": "string",
+            "maxLength": 3,
+            "minLength": 3,
+            "title": "Saved Currency"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "benefit_code",
+          "method_label",
+          "hours_saved",
+          "saved_amount",
+          "saved_currency",
+          "source_ref"
+        ],
+        "title": "BenefitLedgerCreate"
+      },
+      "BenefitLedgerResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "benefit_code": {
+            "type": "string",
+            "title": "Benefit Code"
+          },
+          "method_label": {
+            "type": "string",
+            "title": "Method Label"
+          },
+          "hours_saved": {
+            "type": "string",
+            "title": "Hours Saved"
+          },
+          "saved_amount": {
+            "type": "string",
+            "title": "Saved Amount"
+          },
+          "saved_currency": {
+            "type": "string",
+            "title": "Saved Currency"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "benefit_code",
+          "method_label",
+          "hours_saved",
+          "saved_amount",
+          "saved_currency",
+          "source_ref"
+        ],
+        "title": "BenefitLedgerResponse"
       },
       "BidDecisionMarkCreate": {
         "properties": {

@@ -17,6 +17,7 @@ import { Route as AiRouteImport } from './routes/ai'
 import { Route as AirRouteImport } from './routes/air'
 import { Route as AirRa3MarksRouteImport } from './routes/air-ra3-marks'
 import { Route as AsnsRouteImport } from './routes/asns'
+import { Route as BenefitLedgersRouteImport } from './routes/benefit-ledgers'
 import { Route as BidDecisionMarksRouteImport } from './routes/bid-decision-marks'
 import { Route as BillingMarksRouteImport } from './routes/billing-marks'
 import { Route as BinPackMarksRouteImport } from './routes/bin-pack-marks'
@@ -292,6 +293,11 @@ const AirRa3MarksRoute = AirRa3MarksRouteImport.update({
 const AsnsRoute = AsnsRouteImport.update({
   id: '/asns',
   path: '/asns',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BenefitLedgersRoute = BenefitLedgersRouteImport.update({
+  id: '/benefit-ledgers',
+  path: '/benefit-ledgers',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BidDecisionMarksRoute = BidDecisionMarksRouteImport.update({
@@ -1485,6 +1491,7 @@ export interface FileRoutesByFullPath {
   '/air': typeof AirRoute
   '/air-ra3-marks': typeof AirRa3MarksRoute
   '/asns': typeof AsnsRoute
+  '/benefit-ledgers': typeof BenefitLedgersRoute
   '/bid-decision-marks': typeof BidDecisionMarksRoute
   '/billing-marks': typeof BillingMarksRoute
   '/bin-pack-marks': typeof BinPackMarksRoute
@@ -1731,6 +1738,7 @@ export interface FileRoutesByTo {
   '/air': typeof AirRoute
   '/air-ra3-marks': typeof AirRa3MarksRoute
   '/asns': typeof AsnsRoute
+  '/benefit-ledgers': typeof BenefitLedgersRoute
   '/bid-decision-marks': typeof BidDecisionMarksRoute
   '/billing-marks': typeof BillingMarksRoute
   '/bin-pack-marks': typeof BinPackMarksRoute
@@ -1978,6 +1986,7 @@ export interface FileRoutesById {
   '/air': typeof AirRoute
   '/air-ra3-marks': typeof AirRa3MarksRoute
   '/asns': typeof AsnsRoute
+  '/benefit-ledgers': typeof BenefitLedgersRoute
   '/bid-decision-marks': typeof BidDecisionMarksRoute
   '/billing-marks': typeof BillingMarksRoute
   '/bin-pack-marks': typeof BinPackMarksRoute
@@ -2226,6 +2235,7 @@ export interface FileRouteTypes {
     | '/air'
     | '/air-ra3-marks'
     | '/asns'
+    | '/benefit-ledgers'
     | '/bid-decision-marks'
     | '/billing-marks'
     | '/bin-pack-marks'
@@ -2472,6 +2482,7 @@ export interface FileRouteTypes {
     | '/air'
     | '/air-ra3-marks'
     | '/asns'
+    | '/benefit-ledgers'
     | '/bid-decision-marks'
     | '/billing-marks'
     | '/bin-pack-marks'
@@ -2718,6 +2729,7 @@ export interface FileRouteTypes {
     | '/air'
     | '/air-ra3-marks'
     | '/asns'
+    | '/benefit-ledgers'
     | '/bid-decision-marks'
     | '/billing-marks'
     | '/bin-pack-marks'
@@ -2965,6 +2977,7 @@ export interface RootRouteChildren {
   AirRoute: typeof AirRoute
   AirRa3MarksRoute: typeof AirRa3MarksRoute
   AsnsRoute: typeof AsnsRoute
+  BenefitLedgersRoute: typeof BenefitLedgersRoute
   BidDecisionMarksRoute: typeof BidDecisionMarksRoute
   BillingMarksRoute: typeof BillingMarksRoute
   BinPackMarksRoute: typeof BinPackMarksRoute
@@ -3259,6 +3272,13 @@ declare module '@tanstack/react-router' {
       path: '/asns'
       fullPath: '/asns'
       preLoaderRoute: typeof AsnsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/benefit-ledgers': {
+      id: '/benefit-ledgers'
+      path: '/benefit-ledgers'
+      fullPath: '/benefit-ledgers'
+      preLoaderRoute: typeof BenefitLedgersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/bid-decision-marks': {
@@ -4925,6 +4945,7 @@ const rootRouteChildren: RootRouteChildren = {
   AirRoute: AirRoute,
   AirRa3MarksRoute: AirRa3MarksRoute,
   AsnsRoute: AsnsRoute,
+  BenefitLedgersRoute: BenefitLedgersRoute,
   BidDecisionMarksRoute: BidDecisionMarksRoute,
   BillingMarksRoute: BillingMarksRoute,
   BinPackMarksRoute: BinPackMarksRoute,

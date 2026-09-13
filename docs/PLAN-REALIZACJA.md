@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **435.0** AI1.3 HITL `benefit_ledger` — method_label + hours_saved + saved_amount Decimal.
+**Następny:** **436.0** AI1.4 HITL słowniki otwarte: `twin_kind`, `data_source`, `autonomy_level`, `suggestion_kind`.
 <!-- os-status:end -->
 
 ```mermaid
@@ -754,7 +754,7 @@ Dump TMS 2026-09-13 (badania `04b` A–H × 10; CargoWise/Qargo/interLAN zostaj�
 | AI1.0 | `suggestion_ledger` — każda podpowiedź: BC, encja, przedział/pewność, wersja modelu i promptu, reakcja człowieka `accept\|modify\|reject` **i na co zmienił** | **DONE w kodzie** (432.0 / 342) | HITL append-only, bez zapisu LLM (HC-04); leftover: outcome zamknięty 433.0 / słowniki / trzy BC; dump `04b`: silniki MQ zostają HITL + ten wiersz |
 | AI1.1 | `outcome_ledger` — co się naprawdę stało | **DONE w kodzie** (433.0 / 343) | HITL actual_value Decimal; złączenie / CRPS = leftover AI2; bez FK do suggestion_ledger |
 | AI1.2 | `counterfactual_run` — scenariusz, punkt odniesienia, dźwignie, wynik; niemutowalny | **DONE w kodzie** (434.0 / 344) | HITL etykiety jako dane; silnik = leftover AI4.1; nie klon what_if_mark |
-| AI1.3 | `benefit_ledger` — zaoszczędzony czas i pieniądze **z jawną metodą punktu odniesienia** | plan 435.0 (delta `/noc`) | HITL method_label + Decimal; nie druga marża; nie SQL z charge |
+| AI1.3 | `benefit_ledger` — zaoszczędzony czas i pieniądze **z jawną metodą punktu odniesienia** | **DONE w kodzie** (435.0 / 345) | HITL method_label + Decimal; nie druga marża; nie SQL z charge |
 | AI1.4 | Słowniki otwarte: `twin_kind`, `data_source`, `autonomy_level`, `suggestion_kind` | po AI1.0 | rodzaj bytu = wiersz, nie `CHECK` ani `ENUM` |
 | AI2.0 | CRPS, Brier, MAE **liczone** ze złączenia AI1.0×AI1.1 | po AI1.1 | podnosi V1 leftover champion/challenger / drift; dump `04b`: Oracle LML 95% interval = metoda, nie CRPS/MAE; `prediction_ledger` HITL aż AI2 |
 | AI2.1 | champion/challenger + wykrywanie dryfu | po AI2.0 | V1 leftover |

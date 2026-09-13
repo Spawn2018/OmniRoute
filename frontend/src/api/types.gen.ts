@@ -389,6 +389,74 @@ export type BankPaymentResponse = {
 };
 
 /**
+ * BenefitLedgerCreate
+ */
+export type BenefitLedgerCreate = {
+    /**
+     * Benefit Code
+     */
+    benefit_code: string;
+    /**
+     * Method Label
+     */
+    method_label: string;
+    /**
+     * Hours Saved
+     */
+    hours_saved: string;
+    /**
+     * Saved Amount
+     */
+    saved_amount: string;
+    /**
+     * Saved Currency
+     */
+    saved_currency: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * BenefitLedgerResponse
+ */
+export type BenefitLedgerResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Benefit Code
+     */
+    benefit_code: string;
+    /**
+     * Method Label
+     */
+    method_label: string;
+    /**
+     * Hours Saved
+     */
+    hours_saved: string;
+    /**
+     * Saved Amount
+     */
+    saved_amount: string;
+    /**
+     * Saved Currency
+     */
+    saved_currency: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * BidDecisionMarkCreate
  */
 export type BidDecisionMarkCreate = {
@@ -23687,6 +23755,49 @@ export type CreateCounterfactualRunApiV1CounterfactualRunsPostResponses = {
 };
 
 export type CreateCounterfactualRunApiV1CounterfactualRunsPostResponse = CreateCounterfactualRunApiV1CounterfactualRunsPostResponses[keyof CreateCounterfactualRunApiV1CounterfactualRunsPostResponses];
+
+export type ListBenefitLedgersApiV1BenefitLedgersGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/benefit-ledgers';
+};
+
+export type ListBenefitLedgersApiV1BenefitLedgersGetResponses = {
+    /**
+     * Response List Benefit Ledgers Api V1 Benefit Ledgers Get
+     *
+     * Successful Response
+     */
+    200: Array<BenefitLedgerResponse>;
+};
+
+export type ListBenefitLedgersApiV1BenefitLedgersGetResponse = ListBenefitLedgersApiV1BenefitLedgersGetResponses[keyof ListBenefitLedgersApiV1BenefitLedgersGetResponses];
+
+export type CreateBenefitLedgerApiV1BenefitLedgersPostData = {
+    body: BenefitLedgerCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/benefit-ledgers';
+};
+
+export type CreateBenefitLedgerApiV1BenefitLedgersPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateBenefitLedgerApiV1BenefitLedgersPostError = CreateBenefitLedgerApiV1BenefitLedgersPostErrors[keyof CreateBenefitLedgerApiV1BenefitLedgersPostErrors];
+
+export type CreateBenefitLedgerApiV1BenefitLedgersPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: BenefitLedgerResponse;
+};
+
+export type CreateBenefitLedgerApiV1BenefitLedgersPostResponse = CreateBenefitLedgerApiV1BenefitLedgersPostResponses[keyof CreateBenefitLedgerApiV1BenefitLedgersPostResponses];
 
 export type ListBookkeepingApiV1BookkeepingsGetData = {
     body?: never;

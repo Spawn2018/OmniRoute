@@ -650,6 +650,10 @@ class InvalidCounterfactualRun(DomainError):
     """Przebieg AI1.2: HITL etykiety scenariusza — nie silnik i nie kwota."""
 
 
+class InvalidBenefitLedger(DomainError):
+    """Ledger AI1.3: HITL method_label + Decimal — nie druga marża i nie SQL z charge."""
+
+
 class InvalidWeatherObservation(DomainError):
     """Pogoda V2: HITL warunek + UN/LOCODE + czas — nie Open-Meteo i nie ETA."""
 

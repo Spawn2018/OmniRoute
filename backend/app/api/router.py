@@ -7,6 +7,7 @@ from app.api import (
     air_ra3_marks,
     asns,
     bank_payments,
+    benefit_ledgers,
     bid_decision_marks,
     billing_marks,
     bin_pack_marks,
@@ -447,6 +448,7 @@ api_router.include_router(erru_marks.router)
 api_router.include_router(mobile_client_marks.router)
 api_router.include_router(cost_to_serve.router)
 api_router.include_router(counterfactual_runs.router)
+api_router.include_router(benefit_ledgers.router)
 api_router.include_router(bookkeeping.router)
 api_router.include_router(collective_invoices.router)
 api_router.include_router(gdpr_requests.router)
