@@ -88,9 +88,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **444.0** AI2.1 `version_score` — średnie MAE/CRPS per `model_version`
-- **Etap:** Plan — **445.0** AI2.1 leftover dryf. Brak delty. `/plan-modul`.
-- **Następny:** **445.0** AI2.1 leftover: dryf per `model_version` (oś czasu). Nie auto-champion. Nie Brier.
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Etap:** plaster — **445.0** AI2.1 leftover `version_window`. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
+- **Następny:** **445.0** widok: `created_on` + `pair_count` + średnie MAE/CRPS per `model_version` i dzień UTC. Nie detektor. Nie auto-champion.
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **444.0** AI2.1 `version_score` — średnie MAE/CRPS per `model_version`. **Etap:** Plan — **445.0** AI2.1 leftover dryf. Brak delty. `/plan-modul`. **Następny:** **445.0** AI2.1 leftover: dryf per `model_version` (oś czasu). Nie auto-champion. Nie Brier. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **444.0** AI2.1 `version_score` — średnie MAE/CRPS per `model_version`. **Etap:** plaster — **445.0** AI2.1 leftover `version_window`. Delta zaakceptowana (`/noc`). Wolno `/plaster`. **Następny:** **445.0** widok: `created_on` + `pair_count` + średnie MAE/CRPS per `model_version` i dzień UTC. Nie detektor. Nie auto-champion. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

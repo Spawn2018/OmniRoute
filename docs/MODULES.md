@@ -74,6 +74,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | AI1.2 | Przebieg what-if | 434.0 `counterfactual_run` | **ukończony (HITL)** · etykiety; leftover silnik AI4.1 / benefit_ledger |
 | AI2.0 | Wynik przedziału | 443.0 `interval_score` | **ukończony (SQL)** · widok MAE+CRPS; leftover Brier / zapis `prediction_ledger` / AI2.1 |
 | AI2.1 | Wynik wersji | 444.0 `version_score` | **ukończony (SQL)** · średnie per model_version; leftover dryf / auto-champion |
+| AI2.1 | Wynik okna wersji | 445.0 `version_window` | **plan** · średnie per dzień UTC; leftover detektor / auto-champion |
 | G2.20 | Kółko HITL | 266.0 `circle_sim` | **ukończony (HITL)** · kod + para unload/load; leftover silnik 500k / km / P |
 | G2.21 | Km ładowny HITL | 267.0 `lane_km` | **ukończony (HITL)** · ładowny/pusty/dolot Decimal; leftover P / silnik 500k |
 | F9 | Konektor Optima HITL | 268.0 `erp_connector` | **ukończony (HITL)** · kod + kind `optima`; leftover XL / live SOAP / FS+FZ |

@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **444.0** AI2.1 `version_score` — średnie MAE/CRPS per `model_version`
 
-**Etap:** Plan — **445.0** AI2.1 leftover dryf. Brak delty. `/plan-modul`.
+**Etap:** plaster — **445.0** AI2.1 leftover `version_window`. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
 
 **Noc:** `/noc 20` do **2026-09-13T20:00+02**.
 
-**Następny:** **445.0** AI2.1 leftover: dryf per `model_version` (oś czasu). Nie auto-champion. Nie Brier.
+**Następny:** **445.0** widok: `created_on` + `pair_count` + średnie MAE/CRPS per `model_version` i dzień UTC. Nie detektor. Nie auto-champion.
 
 Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 445.0. Nie otwieraj AI0.
 
-**Spec (jedyna na sesję):** brak — **445.0** wymaga `/plan-modul`.
+**Spec (jedyna na sesję):** [docs/deltas/open/445.0-version-window.md](../deltas/open/445.0-version-window.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 

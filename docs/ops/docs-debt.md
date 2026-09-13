@@ -1,3 +1,4 @@
+- **445.0 plan:** AI2.1 leftover `version_window`. Leftover po zamknięciu: detektor/próg · auto-champion · Brier · zapis `prediction_ledger`.
 - **444.0 leftover:** dryf (**445.0**) · auto-champion · Brier · zapis `prediction_ledger` · trzy BC · `data_source` (AI5). 444.0 = widok średnich per `model_version`. EXPLAIN widoku = leftover.
 
 - **443.0 leftover:** Brier · zapis `prediction_ledger` · AI2.1 / 444.0 · trzy BC · `data_source` (AI5). 443.0 = widok MAE/CRPS. EXPLAIN widoku = leftover.
