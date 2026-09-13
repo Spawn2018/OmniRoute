@@ -127,6 +127,7 @@ type organization
     define can_manage_cabotage_marks: member
     define can_manage_combined_transport_marks: member
     define can_manage_ferry_art9_marks: member
+    define can_manage_ferry_booking_marks: member
     define can_manage_fuel_anomaly_marks: member
     define can_manage_fleet_cost_marks: member
     define can_manage_bin_pack_marks: member

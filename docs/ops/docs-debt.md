@@ -1,5 +1,6 @@
 - **456.0 leftover:** activity · pipeline · FK leada/party · dedup NIP · cold-send. 456.0 = HITL `crm_opportunity`.
 - **460.0 leftover:** para UN/LOCODE · wolumen · FK do okazji/party · pipeline · HubSpot live. 460.0 = HITL `sales_lane`.
+- **466.0 leftover:** live rezerwacja · bilet HTTP · solver art. 9 · FK do `trip` / `stop` / `route_plan_mark`. 466.0 = HITL `ferry_booking_mark`.
 - **465.0 leftover:** live DDD · Driver Time Solver · godziny SQL · FK do `trip` / `resource` / `route_plan_mark`. 465.0 = HITL `tacho_plan_mark`.
 - **464.0 leftover:** solver OR · wymiary Decimal · osie Decimal · FK do `load_plan_mark`. 464.0 = HITL `load_order_mark`.
 - **463.0 leftover:** silnik hubów · OR konsolidacji · matching cutoff · FK do `groupage_line`. 463.0 = HITL `groupage_dispatcher_mark`.

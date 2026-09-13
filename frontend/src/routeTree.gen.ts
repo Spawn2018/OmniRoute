@@ -88,6 +88,7 @@ import { Route as ExecutiveMarksRouteImport } from './routes/executive-marks'
 import { Route as ExtractionsRouteImport } from './routes/extractions'
 import { Route as FairShareMarksRouteImport } from './routes/fair-share-marks'
 import { Route as FerryArt9MarksRouteImport } from './routes/ferry-art9-marks'
+import { Route as FerryBookingMarksRouteImport } from './routes/ferry-booking-marks'
 import { Route as FilingSchemeMarksRouteImport } from './routes/filing-scheme-marks'
 import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as FleetRouteImport } from './routes/fleet'
@@ -666,6 +667,11 @@ const FairShareMarksRoute = FairShareMarksRouteImport.update({
 const FerryArt9MarksRoute = FerryArt9MarksRouteImport.update({
   id: '/ferry-art9-marks',
   path: '/ferry-art9-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FerryBookingMarksRoute = FerryBookingMarksRouteImport.update({
+  id: '/ferry-booking-marks',
+  path: '/ferry-booking-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FilingSchemeMarksRoute = FilingSchemeMarksRouteImport.update({
@@ -1670,6 +1676,7 @@ export interface FileRoutesByFullPath {
   '/extractions': typeof ExtractionsRoute
   '/fair-share-marks': typeof FairShareMarksRoute
   '/ferry-art9-marks': typeof FerryArt9MarksRoute
+  '/ferry-booking-marks': typeof FerryBookingMarksRoute
   '/filing-scheme-marks': typeof FilingSchemeMarksRoute
   '/finance': typeof FinanceRoute
   '/fleet': typeof FleetRoute
@@ -1935,6 +1942,7 @@ export interface FileRoutesByTo {
   '/extractions': typeof ExtractionsRoute
   '/fair-share-marks': typeof FairShareMarksRoute
   '/ferry-art9-marks': typeof FerryArt9MarksRoute
+  '/ferry-booking-marks': typeof FerryBookingMarksRoute
   '/filing-scheme-marks': typeof FilingSchemeMarksRoute
   '/finance': typeof FinanceRoute
   '/fleet': typeof FleetRoute
@@ -2201,6 +2209,7 @@ export interface FileRoutesById {
   '/extractions': typeof ExtractionsRoute
   '/fair-share-marks': typeof FairShareMarksRoute
   '/ferry-art9-marks': typeof FerryArt9MarksRoute
+  '/ferry-booking-marks': typeof FerryBookingMarksRoute
   '/filing-scheme-marks': typeof FilingSchemeMarksRoute
   '/finance': typeof FinanceRoute
   '/fleet': typeof FleetRoute
@@ -2468,6 +2477,7 @@ export interface FileRouteTypes {
     | '/extractions'
     | '/fair-share-marks'
     | '/ferry-art9-marks'
+    | '/ferry-booking-marks'
     | '/filing-scheme-marks'
     | '/finance'
     | '/fleet'
@@ -2733,6 +2743,7 @@ export interface FileRouteTypes {
     | '/extractions'
     | '/fair-share-marks'
     | '/ferry-art9-marks'
+    | '/ferry-booking-marks'
     | '/filing-scheme-marks'
     | '/finance'
     | '/fleet'
@@ -2998,6 +3009,7 @@ export interface FileRouteTypes {
     | '/extractions'
     | '/fair-share-marks'
     | '/ferry-art9-marks'
+    | '/ferry-booking-marks'
     | '/filing-scheme-marks'
     | '/finance'
     | '/fleet'
@@ -3264,6 +3276,7 @@ export interface RootRouteChildren {
   ExtractionsRoute: typeof ExtractionsRoute
   FairShareMarksRoute: typeof FairShareMarksRoute
   FerryArt9MarksRoute: typeof FerryArt9MarksRoute
+  FerryBookingMarksRoute: typeof FerryBookingMarksRoute
   FilingSchemeMarksRoute: typeof FilingSchemeMarksRoute
   FinanceRoute: typeof FinanceRoute
   FleetRoute: typeof FleetRoute
@@ -4003,6 +4016,13 @@ declare module '@tanstack/react-router' {
       path: '/ferry-art9-marks'
       fullPath: '/ferry-art9-marks'
       preLoaderRoute: typeof FerryArt9MarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ferry-booking-marks': {
+      id: '/ferry-booking-marks'
+      path: '/ferry-booking-marks'
+      fullPath: '/ferry-booking-marks'
+      preLoaderRoute: typeof FerryBookingMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/filing-scheme-marks': {
@@ -5376,6 +5396,7 @@ const rootRouteChildren: RootRouteChildren = {
   ExtractionsRoute: ExtractionsRoute,
   FairShareMarksRoute: FairShareMarksRoute,
   FerryArt9MarksRoute: FerryArt9MarksRoute,
+  FerryBookingMarksRoute: FerryBookingMarksRoute,
   FilingSchemeMarksRoute: FilingSchemeMarksRoute,
   FinanceRoute: FinanceRoute,
   FleetRoute: FleetRoute,

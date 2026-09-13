@@ -103,6 +103,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | BR3.3 plan (**465.0**): HITL `tacho_plan_mark`. Live DDD / solver godzin / klej do `tacho_office_mark` `REJECTED` na tym wierszu. |
 | 2026-09-13 | **465.0** `tacho_plan_mark` w kodzie (`CONFIRMED`, git). Następny = **BR4.0** promy (`REQUIREMENT`). Live DDD / Expo / AI5 `REJECTED` na tym wierszu. |
 | 2026-09-13 | BR4.0 plan (**466.0**): HITL `ferry_booking_mark`. Live rezerwacja / solver art. 9 / klej do `ferry_art9_mark` `REJECTED` na tym wierszu. |
+| 2026-09-13 | **466.0** `ferry_booking_mark` w kodzie (`CONFIRMED`, git). Następny = **BR4.1** OOG (`REQUIREMENT`). Live bilet / Expo / AI5 `REJECTED` na tym wierszu. |
 
 ---
 
@@ -242,6 +243,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | BR3.3 (**465.0**) = HITL `tacho_plan_mark` (`plan|window|rest|other`). Live DDD / solver godzin / klej do office `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
 | 2026-09-13 | **465.0** w kodzie (`CONFIRMED`, git). Katalog ograniczenia tacho w planie. Następny = **BR4.0** (`REQUIREMENT`). Live DDD leftover. | CURRENT + plaster 465.0 `/noc` |
 | 2026-09-13 | BR4.0 (**466.0**) = HITL `ferry_booking_mark` (`booking|window|sailing|other`). Live rezerwacja / solver art. 9 / klej do `ferry_art9_mark` `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
+| 2026-09-13 | **466.0** w kodzie (`CONFIRMED`, git). Katalog rezerwacji promu. Następny = **BR4.1** (`REQUIREMENT`). Live bilet leftover. | CURRENT + plaster 466.0 `/noc` |
 
 ---
 ---
@@ -869,9 +871,9 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | nazwy z PDF-ów bez wiersza w planie | **136** (z czego 28 to aliasy) |
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
-Ostatni ukończony plaster: **465.0** (HITL `tacho_plan_mark`).
-Następny = **466.0** BR4.0 HITL `ferry_booking_mark` (`REQUIREMENT`).
-AI1.0–AI1.4 oraz 443.0–465.0 są w kodzie (`CONFIRMED`); `data_source`
+Ostatni ukończony plaster: **466.0** (HITL `ferry_booking_mark`).
+Następny = **467.0** BR4.1 plan HITL OOG (`REQUIREMENT`).
+AI1.0–AI1.4 oraz 443.0–466.0 są w kodzie (`CONFIRMED`); `data_source`
 zostaje w AI5 (`REQUIREMENT`). Teza B.1 zostaje: szerokość katalogów nie zastępuje pomiaru.
 
 ## C.2 Bliźniaki — scalona taksonomia
@@ -946,9 +948,10 @@ bo bez ewidencji magazynowej nie ma zastawu na towarze.
 - **Symulacja kółek** — do 500 tysięcy wariantów, liczona w SQL
 
 **Grupa 4 — gałęzie transportu bez pokrycia.**
-- **Promy** — plan **466.0** HITL `ferry_booking_mark` (`REQUIREMENT`);
-  `ferry_art9_mark` zostaje rest/watchdog/crossing. Live rezerwacja /
-  solver art. 9 `REJECTED` na tym wierszu.
+- **Promy** — katalog HITL `ferry_booking_mark` jest (`CONFIRMED`, 466.0);
+  leftover live rezerwacja / bilet HTTP / solver art. 9 (`REQUIREMENT`).
+  `ferry_art9_mark` zostaje rest/watchdog/crossing. Klej do art. 9
+  `REJECTED` na katalogu.
 - **Ładunki ponadnormatywne** — zezwolenia, pilotaż, trasa specjalna
 - **Konsolidacja morska LCL** — konsole, CFS, kalkulacja
 - **NAC i agent nominowany** — rola w przepływie dokumentowym

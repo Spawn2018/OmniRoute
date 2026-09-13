@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **465.0** BR3.3 — HITL `tacho_plan_mark`
-- **Etap:** Plaster — **466.0** BR4.0 promy. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
-- **Następny:** **466.0** HITL `ferry_booking_mark`. Nie live rezerwacja. Nie solver art. 9.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **466.0** BR4.0 — HITL `ferry_booking_mark`
+- **Etap:** Plan — **467.0** BR4.1 ładunki ponadnormatywne (zezwolenia, pilotaż, trasa).
+- **Następny:** **467.0** plan HITL OOG. Nie wymiary Decimal. Nie live zezwolenie.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

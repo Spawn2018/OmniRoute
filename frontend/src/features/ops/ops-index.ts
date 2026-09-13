@@ -719,6 +719,11 @@ export const OPS_JOBS = [
     job: "katalog ferry_art9_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.ferryBookingMark.route,
+    label: "Rezerwacja promu",
+    job: "katalog ferry_booking_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.fuelAnomalyMark.route,
     label: "Fuel anomaly",
     job: "katalog fuel_anomaly_mark HITL",
@@ -1585,6 +1590,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "463.0": "/groupage-dispatcher-marks",
   "464.0": "/load-order-marks",
   "465.0": "/tacho-plan-marks",
+  "466.0": "/ferry-booking-marks",
   "267.0": "/lane-kms",
   "268.0": "/erp-connectors",
   "269.0": "/terminal-slot-connectors",

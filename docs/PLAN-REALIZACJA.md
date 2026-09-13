@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **466.0** HITL `ferry_booking_mark`. Nie live rezerwacja. Nie solver art. 9.
+**Następny:** **467.0** plan HITL OOG. Nie wymiary Decimal. Nie live zezwolenie.
 <!-- os-status:end -->
 
 ```mermaid
@@ -799,7 +799,7 @@ Dump TMS `04b`: WMS nie jest dekoracją (Manhattan Active TM+WMS+Yard+Labour, In
 | BR3.1 | planowanie załadunku: osie, wymiary, kolejność, tunele | po BR3.0 | **464.0** DONE HITL `load_order_mark`; leftover: solver · wymiary Decimal |
 | BR3.2 | dyspozytor drobnicy: linie, huby, cutoffy, konsolidacja | po D1/D5 | **463.0** DONE HITL `groupage_dispatcher_mark`; leftover: silnik hubów · konsolidacja |
 | BR3.3 | tacho jako **ograniczenie planu**, nie raport po fakcie | po BR3.0 + V7 | **465.0** DONE HITL `tacho_plan_mark`; leftover live DDD · solver godzin; office zostaje |
-| BR4.0 | promy: rezerwacja, okna, art. 9 | po T | **466.0** delta HITL `ferry_booking_mark`; nie live bilet; art. 9 zostaje |
+| BR4.0 | promy: rezerwacja, okna, art. 9 | po T | **466.0** DONE HITL `ferry_booking_mark`; leftover live bilet · solver art. 9; art. 9 zostaje |
 | BR4.1 | ładunki ponadnormatywne: zezwolenia, pilotaż, trasa specjalna | po BR3.1 | podnosi G5 |
 | BR4.2 | konsolidacja morska LCL: konsole, CFS | po D | |
 | BR4.3 | NAC i agent nominowany | po I | rola w przepływie dokumentowym |
@@ -934,13 +934,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

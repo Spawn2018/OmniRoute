@@ -4,21 +4,21 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **465.0** BR3.3 — HITL `tacho_plan_mark`
+**Ostatni plaster:** **466.0** BR4.0 — HITL `ferry_booking_mark`
 
-**Etap:** Plaster — **466.0** BR4.0 promy. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
+**Etap:** Plan — **467.0** BR4.1 ładunki ponadnormatywne (zezwolenia, pilotaż, trasa).
 
 **Noc:** `/noc 7` do **2026-09-14T07:00+02**.
 
-**Następny:** **466.0** HITL `ferry_booking_mark`. Nie live rezerwacja. Nie solver art. 9.
+**Następny:** **467.0** plan HITL OOG. Nie wymiary Decimal. Nie live zezwolenie.
 
-Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 466.0. Nie otwieraj AI0. Nie startuj leftover Valhalla / live DDD / Expo / Alpega / HubSpot.
+Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 467.0. Nie otwieraj AI0. Nie startuj leftover Valhalla / live bilet / Expo / Alpega / HubSpot.
 
-**Spec (jedyna na sesję):** [deltas/open/466.0.md](../deltas/open/466.0.md)
+**Spec (jedyna na sesję):** brak — `/plan-modul` BR4.1
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 
-**Uczciwość:** HITL zostaje. LLM nie liczy. `charge` = marża. Impersonate ≠ decrypt. `charge.source_ref` **jest** (129.0 / 072) — nie otwieraj plastra AI0. **AI1.0–AI1.4**, **443.0–465.0** w kodzie. `data_source` = AI5.
+**Uczciwość:** HITL zostaje. LLM nie liczy. `charge` = marża. Impersonate ≠ decrypt. `charge.source_ref` **jest** (129.0 / 072) — nie otwieraj plastra AI0. **AI1.0–AI1.4**, **443.0–466.0** w kodzie. `data_source` = AI5.
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
@@ -60,6 +60,7 @@ Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll �
 **2026-09-13:** Plaster **463.0** zamknięty (`/noc`) — HITL `groupage_dispatcher_mark`.
 **2026-09-13:** Plaster **464.0** zamknięty (`/noc`) — HITL `load_order_mark`.
 **2026-09-13:** Plaster **465.0** zamknięty (`/noc`) — HITL `tacho_plan_mark`.
+**2026-09-13:** Plaster **466.0** zamknięty (`/noc`) — HITL `ferry_booking_mark`.
 **2026-09-13:** Kanon Fali AI/BR w PLAN; `docs/VISION.md`; HC-04 przepisane (Q1–Q2).
 **2026-09-13:** Dump CT (badania `03` B.1–B.3, B.7–B.10) w kanonie VISION + PLAN Fala AI/BR; B.4–B.6 FourKites/BY/Kinaxis nietknięte.
 **2026-09-13:** Dump TMS top-10 (badania `04b` A–H × 10) w kanonie VISION + PLAN Fala AI/BR. CargoWise/Qargo/interLAN zostają w `04`.

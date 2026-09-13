@@ -870,3 +870,5 @@
 - 2026-09-13T18:45:00Z | 464.0 | load_order_mark | DONE | HITL catalog order_kind sequence/stack/door/other; bez solvera / wymiarów
 
 - 2026-09-13T19:15:00Z | 465.0 | tacho_plan_mark | DONE | HITL catalog constraint_kind plan/window/rest/other; bez live DDD / solvera godzin
+
+- 2026-09-13T19:35:00Z | 466.0 | ferry_booking_mark | DONE | HITL catalog booking_kind booking/window/sailing/other; bez live biletu / solvera art. 9

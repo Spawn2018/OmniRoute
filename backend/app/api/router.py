@@ -82,6 +82,7 @@ from app.api import (
     extractions,
     fair_share_marks,
     ferry_art9_marks,
+    ferry_booking_marks,
     field_carry_forwards,
     filing_scheme_marks,
     fleet_cost_marks,
@@ -514,6 +515,7 @@ api_router.include_router(what_if_marks.router)
 api_router.include_router(cabotage_marks.router)
 api_router.include_router(combined_transport_marks.router)
 api_router.include_router(ferry_art9_marks.router)
+api_router.include_router(ferry_booking_marks.router)
 api_router.include_router(fuel_anomaly_marks.router)
 api_router.include_router(fuel_card_marks.router)
 api_router.include_router(fleet_cost_marks.router)

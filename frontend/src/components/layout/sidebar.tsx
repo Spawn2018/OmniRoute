@@ -97,6 +97,7 @@ const NAV = [
   { to: "/groupage-dispatcher-marks", label: "Dyspozytor drobnicy" },
   { to: "/load-order-marks", label: "Kolejność załadunku" },
   { to: "/tacho-plan-marks", label: "Tacho w planie" },
+  { to: "/ferry-booking-marks", label: "Rezerwacja promu" },
   { to: "/position-events", label: "Zdarzenie pozycji" },
   { to: "/telematics-devices", label: "Urządzenie telematyczne" },
   { to: "/tracking-consents", label: "Zgoda na śledzenie" },

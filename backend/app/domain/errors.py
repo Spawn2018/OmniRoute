@@ -966,6 +966,10 @@ class InvalidFerryArt9Mark(DomainError):
     """EXP2.13: HITL ferry art. 9 — nie tacho / Driver Time Solver."""
 
 
+class InvalidFerryBookingMark(DomainError):
+    """BR4.0: HITL rezerwacja promu — nie live bilet / solver art. 9."""
+
+
 class InvalidFuelAnomalyMark(DomainError):
     """EXP2.14: HITL karta/anomalia paliwa — nie live card / telemetry."""
 

@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **465.0** BR3.3 — HITL `tacho_plan_mark` **Następny:** **466.0** HITL `ferry_booking_mark`. Nie live rezerwacja. Nie solver art. 9.
+**Stan (z CURRENT.md):** **466.0** BR4.0 — HITL `ferry_booking_mark` **Następny:** **467.0** plan HITL OOG. Nie wymiary Decimal. Nie live zezwolenie.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

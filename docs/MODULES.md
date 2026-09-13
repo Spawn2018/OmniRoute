@@ -80,6 +80,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | BR3.1 | Znacznik kolejności załadunku HITL | 464.0 `load_order_mark` | **ukończony (HITL)** · kind sequence/stack/door/other; leftover solver / wymiary |
 | BR3.2 | Znacznik dyspozytora drobnicy HITL | 463.0 `groupage_dispatcher_mark` | **ukończony (HITL)** · kind line/hub/cutoff/consol/other; leftover silnik hubów |
 | BR3.3 | Znacznik tacho w planie HITL | 465.0 `tacho_plan_mark` | **ukończony (HITL)** · kind plan/window/rest/other; leftover live DDD / solver godzin |
+| BR4.0 | Znacznik rezerwacji promu HITL | 466.0 `ferry_booking_mark` | **ukończony (HITL)** · kind booking/window/sailing/other; leftover live bilet / solver art. 9 |
 | BR6.0 | Okazja CRM HITL | 456.0 `crm_opportunity` | **ukończony (HITL)** · stage open/won/lost/other; leftover activity / pipeline |
 | BR6.1 | Korytarz sprzedażowy HITL | 460.0 `sales_lane` | **ukończony (HITL)** · kind repeat/spot/other; leftover UN/LOCODE / wolumen |
 | BR6.2 | Tryb przetargu załadowcy HITL | 461.0 `shipper_tender_mark` | **ukończony (HITL)** · kind round/bench/spot/other; leftover rundy / like-for-like |
