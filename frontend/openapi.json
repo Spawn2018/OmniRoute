@@ -14686,6 +14686,80 @@
         ]
       }
     },
+    "/api/v1/bid-decision-marks": {
+      "get": {
+        "tags": [
+          "bid-decision-mark"
+        ],
+        "summary": "List Bid Decision Marks",
+        "operationId": "list_bid_decision_marks_api_v1_bid_decision_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/BidDecisionMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Bid Decision Marks Api V1 Bid Decision Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "bid-decision-mark"
+        ],
+        "summary": "Create Bid Decision Mark",
+        "operationId": "create_bid_decision_mark_api_v1_bid_decision_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BidDecisionMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BidDecisionMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/demo-gps-marks": {
       "get": {
         "tags": [
@@ -22412,6 +22486,71 @@
           "source_ref"
         ],
         "title": "BankPaymentResponse"
+      },
+      "BidDecisionMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "decision_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Decision Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "decision_kind",
+          "source_ref"
+        ],
+        "title": "BidDecisionMarkCreate"
+      },
+      "BidDecisionMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "decision_kind": {
+            "type": "string",
+            "title": "Decision Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "decision_kind",
+          "source_ref"
+        ],
+        "title": "BidDecisionMarkResponse"
       },
       "BillingMarkCreate": {
         "properties": {

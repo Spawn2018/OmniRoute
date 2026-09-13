@@ -271,6 +271,7 @@
 | znacznik roli przewoznika | haulier_role_mark | EXP1 HITL booked\|actual\|other; nie FK party |
 | znacznik diversion | diversion_mark | EXP1 HITL diversion\|reroute\|other; nie FK shipment |
 | znacznik spot/contract | spot_contract_mark | EXP1 HITL spot\|contract\|other; nie FK quotation |
+| znacznik bid decision | bid_decision_mark | EXP1 HITL go\|no_go\|hold\|other; nie kolumna quotation |
 | fabryka demo | demo_sim | Demo-1; nie GBOX klienta |
 | zakłócenie demo | demo_disruption | korki/wypadki fixture |
 | zużycie platformy | platform_usage_daily | Admin-P; agregat; nie cross-tenant SELECT |

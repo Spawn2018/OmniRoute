@@ -796,3 +796,5 @@
 - 2026-09-12T21:41:56Z · 427.0 · diversion_mark · DONE · HITL stance_kind diversion|reroute|other · migracja 337 · /diversion-marks
 
 - 2026-09-12T22:09:38Z · 428.0 · spot_contract_mark · DONE · HITL deal_kind spot|contract|other · migracja 338 · /spot-contract-marks
+
+- 2026-09-13T01:36:00Z · 429.0 · bid_decision_mark · DONE · HITL decision_kind go|no_go|hold|other · migracja 339 · /bid-decision-marks

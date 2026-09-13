@@ -7,6 +7,7 @@ from app.api import (
     air_ra3_marks,
     asns,
     bank_payments,
+    bid_decision_marks,
     billing_marks,
     bin_pack_marks,
     bonded_marks,
@@ -415,6 +416,7 @@ api_router.include_router(delay_forecasts.router)
 api_router.include_router(demand_snapshot_marks.router)
 api_router.include_router(diversion_marks.router)
 api_router.include_router(spot_contract_marks.router)
+api_router.include_router(bid_decision_marks.router)
 api_router.include_router(demo_gps_marks.router)
 api_router.include_router(demo_sim_marks.router)
 api_router.include_router(demo_wipe_marks.router)

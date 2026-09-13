@@ -168,6 +168,7 @@ type organization
     define can_manage_haulier_role_marks: member
     define can_manage_diversion_marks: member
     define can_manage_spot_contract_marks: member
+    define can_manage_bid_decision_marks: member
     define can_manage_impersonate_guard_marks: member
 
     define can_manage_fuel_card_marks: member

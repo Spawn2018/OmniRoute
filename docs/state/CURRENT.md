@@ -4,17 +4,17 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **428.0** EXP1 HITL `spot_contract_mark`
+**Ostatni plaster:** **429.0** EXP1 HITL `bid_decision_mark`
 
-**Etap:** Plaster — **429.0** EXP1 (delta zaakceptowana `/noc`)
+**Etap:** Plan — **430.0** EXP1
 
 **Noc:** `/noc 10` do 2026-09-13T10:00+02. Umowa: [nocna-zmiana.md](../ops/nocna-zmiana.md).
 
-**Następny:** **429.0** EXP1 HITL `bid_decision_mark` (go|no_go|hold|other) — wolno `/plaster`.
+**Następny:** **430.0** EXP1 HITL `quote_currency_mark` (account|pay|other) — currency_account vs currency_pay.
 
-Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj 71–429.
+Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj 71–430.
 
-**Spec (jedyna na sesję):** [docs/deltas/open/429.0-bid-decision-mark.md](../deltas/open/429.0-bid-decision-mark.md)
+**Spec (jedyna na sesję):** (brak — plan 430.0 po nocnej zmianie).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c**.
 
@@ -25,3 +25,4 @@ Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj 71–4
 **2026-09-12:** Plaster **426.0** zamknięty (`/noc`) — HITL `haulier_role_mark`.
 **2026-09-12:** Plaster **427.0** zamknięty (`/noc`) — HITL `diversion_mark`.
 **2026-09-13:** Plaster **428.0** zamknięty (`/noc`) — HITL `spot_contract_mark`.
+**2026-09-13:** Plaster **429.0** zamknięty (`/noc`) — HITL `bid_decision_mark`.

@@ -389,6 +389,50 @@ export type BankPaymentResponse = {
 };
 
 /**
+ * BidDecisionMarkCreate
+ */
+export type BidDecisionMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Decision Kind
+     */
+    decision_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * BidDecisionMarkResponse
+ */
+export type BidDecisionMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Decision Kind
+     */
+    decision_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * BillingMarkCreate
  */
 export type BillingMarkCreate = {
@@ -22209,6 +22253,49 @@ export type CreateSpotContractMarkApiV1SpotContractMarksPostResponses = {
 };
 
 export type CreateSpotContractMarkApiV1SpotContractMarksPostResponse = CreateSpotContractMarkApiV1SpotContractMarksPostResponses[keyof CreateSpotContractMarkApiV1SpotContractMarksPostResponses];
+
+export type ListBidDecisionMarksApiV1BidDecisionMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/bid-decision-marks';
+};
+
+export type ListBidDecisionMarksApiV1BidDecisionMarksGetResponses = {
+    /**
+     * Response List Bid Decision Marks Api V1 Bid Decision Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<BidDecisionMarkResponse>;
+};
+
+export type ListBidDecisionMarksApiV1BidDecisionMarksGetResponse = ListBidDecisionMarksApiV1BidDecisionMarksGetResponses[keyof ListBidDecisionMarksApiV1BidDecisionMarksGetResponses];
+
+export type CreateBidDecisionMarkApiV1BidDecisionMarksPostData = {
+    body: BidDecisionMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/bid-decision-marks';
+};
+
+export type CreateBidDecisionMarkApiV1BidDecisionMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateBidDecisionMarkApiV1BidDecisionMarksPostError = CreateBidDecisionMarkApiV1BidDecisionMarksPostErrors[keyof CreateBidDecisionMarkApiV1BidDecisionMarksPostErrors];
+
+export type CreateBidDecisionMarkApiV1BidDecisionMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: BidDecisionMarkResponse;
+};
+
+export type CreateBidDecisionMarkApiV1BidDecisionMarksPostResponse = CreateBidDecisionMarkApiV1BidDecisionMarksPostResponses[keyof CreateBidDecisionMarkApiV1BidDecisionMarksPostResponses];
 
 export type ListDemoGpsMarksApiV1DemoGpsMarksGetData = {
     body?: never;

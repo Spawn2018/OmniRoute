@@ -1042,6 +1042,10 @@ class InvalidSpotContractMark(DomainError):
     """EXP1: HITL spot_contract_mark — nie FK quotation / cargo_value."""
 
 
+class InvalidBidDecisionMark(DomainError):
+    """EXP1: HITL bid_decision_mark — nie kolumna quotation / auto-award."""
+
+
 class InvalidImpersonateGuardMark(DomainError):
     """EXP0.12: HITL impersonate≠unwrap — nie crypto / Auth0 live."""
 
