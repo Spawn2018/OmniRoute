@@ -172,6 +172,7 @@ from app.api import (
     phyto_ata_marks,
     plan_snapshots,
     po_batch_marks,
+    po_financing_marks,
     po_lines,
     po_plant_marks,
     po_sku_marks,
@@ -426,6 +427,7 @@ api_router.include_router(telematics_connectors.router)
 api_router.include_router(telematics_devices.router)
 api_router.include_router(erp_connectors.router)
 api_router.include_router(factoring_connectors.router)
+api_router.include_router(po_financing_marks.router)
 api_router.include_router(customer_contracts.router)
 api_router.include_router(exchange_connectors.router)
 api_router.include_router(idp_connectors.router)

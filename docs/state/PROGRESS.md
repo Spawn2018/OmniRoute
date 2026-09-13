@@ -875,6 +875,7 @@
 
 - 2026-09-13T19:50:00Z | 467.0 | oog_permit_mark | DONE | HITL catalog permit_kind permit/pilot/route/other; bez wymiarùw / live zezwolenia
 
+- 2026-09-14T03:45:00Z | 472.0 | po_financing_mark | DONE | HITL catalog financing_kind po/release/advance/other; bez FK purchase_order / wycena zapasu
 - 2026-09-14T02:15:00Z | 471.0 | factoring_connector | DONE | HITL catalog system_kind smeo/other; bez live SMEO HTTP / FK sales_invoice
 - 2026-09-14T01:35:00Z | 470.0 | silk_corridor_mark | DONE | HITL catalog corridor_kind silk/block_train/transit/other; bez live CR Express / lane_pattern
 - 2026-09-13T23:45:00Z | 469.0 | nac_mark | DONE | HITL catalog nac_kind nac/nominated/agent/other; bez live NAC / FK stakeholder

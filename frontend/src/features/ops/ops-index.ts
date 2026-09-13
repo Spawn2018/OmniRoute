@@ -604,6 +604,11 @@ export const OPS_JOBS = [
     job: "katalog factoring_connector HITL",
   },
   {
+    route: BUSINESS_LISTS.poFinancingMark.route,
+    label: "Finansowanie zamówienia",
+    job: "katalog po_financing_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.loadOrderMark.route,
     label: "Kolejność załadunku",
     job: "katalog load_order_mark HITL",
@@ -1621,6 +1626,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "469.0": "/nac-marks",
   "470.0": "/silk-corridor-marks",
   "471.0": "/factoring-connectors",
+  "472.0": "/po-financing-marks",
   "267.0": "/lane-kms",
   "268.0": "/erp-connectors",
   "269.0": "/terminal-slot-connectors",

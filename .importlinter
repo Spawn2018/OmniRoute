@@ -133,6 +133,7 @@ modules =
     app.services.lcl_console_marks
     app.services.nac_marks
     app.services.silk_corridor_marks
+    app.services.po_financing_marks
     app.services.load_order_marks
     app.services.load_plan_marks
     app.services.cmms_marks
@@ -663,6 +664,9 @@ forbidden_modules =
     app.services.silk_corridor_marks
     app.repositories.silk_corridor_marks
     app.models.silk_corridor_mark
+    app.services.po_financing_marks
+    app.repositories.po_financing_marks
+    app.models.po_financing_mark
     app.services.load_order_marks
     app.repositories.load_order_marks
     app.models.load_order_mark

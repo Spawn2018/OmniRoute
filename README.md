@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **471.0** BR5.0 — HITL `factoring_connector`
-- **Etap:** Plan — delta **472.0** BR5.1 `po_financing_mark`. Zero kodu do akceptacji delty.
-- **Następny:** akceptacja delty **472.0** → `/plaster` HITL `po_financing_mark`. Nie FK do `purchase_order`. Nie zgaduj plaster ID.
+- **Ostatni plaster:** **472.0** BR5.1 — HITL `po_financing_mark`
+- **Etap:** Plan — delta **473.0** BR5.2 giełdy transportowe (katalog konektora). Zero kodu do akceptacji delty.
+- **Następny:** akceptacja delty **473.0** → `/plaster` HITL katalog giełdy. Nie live Trans.eu/TIMOCOM. Nie zgaduj plaster ID.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
