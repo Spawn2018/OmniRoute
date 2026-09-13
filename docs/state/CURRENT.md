@@ -6,7 +6,7 @@
 
 **Ostatni plaster:** **439.0** AI1.4 leftover FK `suggestion_ledger` → `suggestion_kind`
 
-**Etap:** Plan — **AI1.4 leftover** / **440.0**
+**Etap:** Plan — **AI1.4 leftover** / **440.0** (delta zaakceptowana `/noc`, wolno `/plaster`)
 
 **Noc:** `/noc 11` do **2026-09-13T11:00+02**.
 
@@ -14,11 +14,11 @@
 
 Park: `data_source` (licencja, AI5) · `outcome_ledger.outcome_kind` CHECK · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 440.0. Nie startuj AI2 (CRPS).
 
-**Spec (jedyna na sesję):** brak — `/plan-modul` na 440.0.
+**Spec (jedyna na sesję):** [docs/deltas/open/440.0-twin-mark-kind-fk.md](../deltas/open/440.0-twin-mark-kind-fk.md).
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 
-**Uczciwość:** HITL zostaje. LLM nie liczy. `charge` = marża. Impersonate ≠ decrypt. `charge.source_ref` **jest** (129.0 / 072) — nie otwieraj plastra AI0. **AI1.0–AI1.3** + trzy słowniki + FK ledgeru w kodzie. `data_source` = AI5. CRPS zostaje w AI2. `twin_mark` CHECK zostaje do 440.0.
+**Uczciwość:** HITL zostaje. LLM nie liczy. `charge` = marża. Impersonate ≠ decrypt. `charge.source_ref` **jest** (129.0 / 072) — nie otwieraj plastra AI0. **AI1.0–AI1.3** + trzy słowniki + FK ledgeru w kodzie. `data_source` = AI5. CRPS zostaje w AI2. `twin_mark` CHECK zdejmuje 440.0.
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 

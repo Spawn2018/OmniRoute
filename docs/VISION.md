@@ -3,7 +3,7 @@
 ```
 status:        roboczy kanon
 wersja:        0.3
-ostatnia zmiana: 2026-09-13 10:00
+ostatnia zmiana: 2026-09-13 10:10
 ```
 
 ## Jak czytać
@@ -50,6 +50,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | **438.0** `autonomy_level` w kodzie. Następny = leftover FK `suggestion_ledger`. |
 | 2026-09-13 | AI1.4 plan (**439.0**): FK `suggestion_ledger` → `suggestion_kind`. twin_mark CHECK zostaje. |
 | 2026-09-13 | **439.0** FK ledgeru w kodzie. Następny = leftover FK `twin_mark`. |
+| 2026-09-13 | AI1.4 plan (**440.0**): FK `twin_mark` → `twin_kind`. outcome_kind CHECK zostaje. |
 
 ---
 
@@ -59,7 +60,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 status:        roboczy kanon (zastępuje "Informacje z claude/vision.md" z 2026-08-29)
 wersja:        0.1
 utworzony:     2026-09-13
-ostatnia zmiana: 2026-09-13 10:00
+ostatnia zmiana: 2026-09-13 10:10
 autor ustaleń: Sebastian Bożek (właściciel produktu)
 redakcja:      agent, na podstawie dokumentów 01-07 i 09-11 w tym katalogu
 lokalizacja:   docs/VISION.md (repozytorium OmniRoute)
@@ -136,6 +137,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | **438.0** `autonomy_level` w kodzie (`CONFIRMED`, git). Następny = FK `suggestion_ledger` (`REQUIREMENT`, B.3). `data_source` = AI5. CRPS `REJECTED` na tym wierszu. | CURRENT + plaster 438.0 `/noc` |
 | 2026-09-13 | AI1.4 (**439.0**) = FK `(organization_id, suggestion_kind)` → słownik. CHECK listy `REJECTED`. Import `suggestion_kinds` z ledgeru `REJECTED`. `twin_mark` CHECK zostaje. | `/plan-modul` `/noc`; VISION B.3 |
 | 2026-09-13 | **439.0** FK `suggestion_ledger` w kodzie (`CONFIRMED`, git). Następny = FK `twin_mark` (`REQUIREMENT`). `data_source` = AI5. CRPS `REJECTED` na tym wierszu. | CURRENT + plaster 439.0 `/noc` |
+| 2026-09-13 | AI1.4 (**440.0**) = FK `(organization_id, twin_kind)` → słownik. CHECK ośmiu `REJECTED`. Import `twin_kinds` ze znacznika `REJECTED`. `outcome_kind` CHECK zostaje. | `/plan-modul` `/noc`; VISION C.2 |
 
 ---
 ---
