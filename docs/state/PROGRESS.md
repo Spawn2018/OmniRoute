@@ -801,4 +801,6 @@
 
 - 2026-09-13T02:10:00Z · 430.0 · quote_currency_mark · DONE · HITL currency_kind account|pay|other · migracja 340 · /quote-currency-marks
 
+- 2026-09-13T06:40:00Z · 431.0 · quote_validity_mark · DONE · HITL validity_kind open|revised|superseded|other · migracja 341 · /quote-validity-marks
+
 - 2026-09-13T05:40:00Z · kanon · Fala AI + Fala BR w PLAN · VISION.md · HC-04 L0?2/L3?5 · AI0 ju? w kodzie (072) · nast?pny leftover 431.0

@@ -393,11 +393,12 @@ describe("U-routes-breadth standing", () => {
       "428.0": "/spot-contract-marks",
       "429.0": "/bid-decision-marks",
       "430.0": "/quote-currency-marks",
+      "431.0": "/quote-validity-marks",
     })
     expect(OPS_JOBS.map((job) => job.route)).toEqual(
       expect.arrayContaining(Object.values(SHIPPED_CHARGE_ROUTES)),
     )
-    expect(OPS_JOBS).toHaveLength(247)
+    expect(OPS_JOBS).toHaveLength(248)
 
     expect(OPS_JOBS.length).not.toBe(157)
 

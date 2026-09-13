@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **431.0** EXP1 HITL `quote_validity_mark` (open|revised|superseded|other) — leftover valid_until/revision.
+**Następny:** **AI1.0** `suggestion_ledger` — podpowiedź: BC, encja, przedział/pewność, wersja modelu i promptu, reakcja `accept|modify|reject` i na co zmienił.
 <!-- os-status:end -->
 
 ```mermaid
@@ -751,7 +751,7 @@ Dump TMS 2026-09-13 (badania `04b` A–H × 10; CargoWise/Qargo/interLAN zostaj�
 | ID | Co | Status | Uwagi |
 |---|---|---|---|
 | **AI0** | `charge.source_ref` — pochodzenie kwoty na opłacie | **DONE w kodzie** (129.0 / 072) | nullable stare fixture; obowiązkowe na nowym INSERT (`require_source_ref`) |
-| AI1.0 | `suggestion_ledger` — każda podpowiedź: BC, encja, przedział/pewność, wersja modelu i promptu, reakcja człowieka `accept\|modify\|reject` **i na co zmienił** | pierwsze silniki (po leftover EXP1 pinu) | jedna tabela = sygnał uczenia + obserwacja bliźniaka + baza pomiaru; dump `04b`: leftover silniki MQ (VSR/LML/Optimizer/Archer/what-if) zostają HITL aż AI1.0; 431.0 nie implikuje silnika |
+| AI1.0 | `suggestion_ledger` — każda podpowiedź: BC, encja, przedział/pewność, wersja modelu i promptu, reakcja człowieka `accept\|modify\|reject` **i na co zmienił** | plan (431.0 DONE 2026-09-13) | jedna tabela = sygnał uczenia + obserwacja bliźniaka + baza pomiaru; dump `04b`: leftover silniki MQ (VSR/LML/Optimizer/Archer/what-if) zostają HITL aż AI1.0; leftover kolumn valid_until/revision_no na quotation zostaje po katalogu 431.0 |
 | AI1.1 | `outcome_ledger` — co się naprawdę stało | po AI1.0 | złączenie z AI1.0 daje metryki liczone, nie wpisywane |
 | AI1.2 | `counterfactual_run` — scenariusz, punkt odniesienia, dźwignie, wynik; niemutowalny | po AI1.0 | bliźniak operacyjnie; podnosi W1 leftover silników |
 | AI1.3 | `benefit_ledger` — zaoszczędzony czas i pieniądze **z jawną metodą punktu odniesienia** | po AI0 + AI1.1 | bez zapisanej metody liczba jest nieweryfikowalna; dump `04b`: druga marża SAP/Oracle/Shipwell = zakaz |

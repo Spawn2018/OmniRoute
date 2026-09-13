@@ -267,6 +267,7 @@ def _organization_exp1_shipment_catalog_relations() -> dict[str, Userset]:
         "can_manage_spot_contract_marks": _member(),
         "can_manage_bid_decision_marks": _member(),
         "can_manage_quote_currency_marks": _member(),
+        "can_manage_quote_validity_marks": _member(),
     }
 
 

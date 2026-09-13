@@ -14834,6 +14834,80 @@
         ]
       }
     },
+    "/api/v1/quote-validity-marks": {
+      "get": {
+        "tags": [
+          "quote-validity-mark"
+        ],
+        "summary": "List Quote Validity Marks",
+        "operationId": "list_quote_validity_marks_api_v1_quote_validity_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/QuoteValidityMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Quote Validity Marks Api V1 Quote Validity Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "quote-validity-mark"
+        ],
+        "summary": "Create Quote Validity Mark",
+        "operationId": "create_quote_validity_mark_api_v1_quote_validity_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuoteValidityMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuoteValidityMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/demo-gps-marks": {
       "get": {
         "tags": [
@@ -37022,6 +37096,71 @@
           "source_ref"
         ],
         "title": "QuoteInvoiceSettlementResponse"
+      },
+      "QuoteValidityMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Mark Code"
+          },
+          "validity_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Validity Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "validity_kind",
+          "source_ref"
+        ],
+        "title": "QuoteValidityMarkCreate"
+      },
+      "QuoteValidityMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "validity_kind": {
+            "type": "string",
+            "title": "Validity Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "validity_kind",
+          "source_ref"
+        ],
+        "title": "QuoteValidityMarkResponse"
       },
       "RagSopMarkCreate": {
         "properties": {

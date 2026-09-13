@@ -9653,6 +9653,50 @@ export type QuoteInvoiceSettlementResponse = {
 };
 
 /**
+ * QuoteValidityMarkCreate
+ */
+export type QuoteValidityMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Validity Kind
+     */
+    validity_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * QuoteValidityMarkResponse
+ */
+export type QuoteValidityMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Validity Kind
+     */
+    validity_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * RagSopMarkCreate
  */
 export type RagSopMarkCreate = {
@@ -22383,6 +22427,49 @@ export type CreateQuoteCurrencyMarkApiV1QuoteCurrencyMarksPostResponses = {
 };
 
 export type CreateQuoteCurrencyMarkApiV1QuoteCurrencyMarksPostResponse = CreateQuoteCurrencyMarkApiV1QuoteCurrencyMarksPostResponses[keyof CreateQuoteCurrencyMarkApiV1QuoteCurrencyMarksPostResponses];
+
+export type ListQuoteValidityMarksApiV1QuoteValidityMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/quote-validity-marks';
+};
+
+export type ListQuoteValidityMarksApiV1QuoteValidityMarksGetResponses = {
+    /**
+     * Response List Quote Validity Marks Api V1 Quote Validity Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<QuoteValidityMarkResponse>;
+};
+
+export type ListQuoteValidityMarksApiV1QuoteValidityMarksGetResponse = ListQuoteValidityMarksApiV1QuoteValidityMarksGetResponses[keyof ListQuoteValidityMarksApiV1QuoteValidityMarksGetResponses];
+
+export type CreateQuoteValidityMarkApiV1QuoteValidityMarksPostData = {
+    body: QuoteValidityMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/quote-validity-marks';
+};
+
+export type CreateQuoteValidityMarkApiV1QuoteValidityMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateQuoteValidityMarkApiV1QuoteValidityMarksPostError = CreateQuoteValidityMarkApiV1QuoteValidityMarksPostErrors[keyof CreateQuoteValidityMarkApiV1QuoteValidityMarksPostErrors];
+
+export type CreateQuoteValidityMarkApiV1QuoteValidityMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: QuoteValidityMarkResponse;
+};
+
+export type CreateQuoteValidityMarkApiV1QuoteValidityMarksPostResponse = CreateQuoteValidityMarkApiV1QuoteValidityMarksPostResponses[keyof CreateQuoteValidityMarkApiV1QuoteValidityMarksPostResponses];
 
 export type ListDemoGpsMarksApiV1DemoGpsMarksGetData = {
     body?: never;

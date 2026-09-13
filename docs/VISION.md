@@ -106,6 +106,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | Dump Control Tower (badania `03` B.1–B.3, B.7–B.10): antypattern Oracle buy/sell; p44/LSP44 jeden OpenAPI dwa GTM; trójka PLANNED/ACTUAL/ESTIMATE; zakaz float geo; GTT model+tolerance; wzorzec benchu o9 cuOpt; Shippeo Triple SLA bez claimu liczb; Shippeo≠Overhaul; e2open=WiseTech; Infor sieć ≠ RLS; auto-approve zakaz; luka `charge`+`benefit_ledger` u siódemki. B.4–B.6 nietknięte. [WYCOFANE 2026-09-13: „TMS `04b` nadal w toku” — dump `04b` jest w kanonie]. | public docs w `03`; decyzje Omni = `REQUIREMENT` / `REJECTED` / `CONFIRMED` w A–E |
 | 2026-09-13 | Dump TMS top-10 (badania `04b`, A–H × 10 poza CargoWise/Qargo/interLAN): klon drugiej marży REJECTED (SAP `Profitability` na FWO; Oracle `Job.Profit` + osobne buy/sell shipments; Shipwell `customer_charge_line_items` + `vendor_charge_line_items` + `markup`); JSON `number` / integer cents ≠ Decimal HC; AI-write bo MQ ma (Shipwell Swifty/MCP, Uber 30+ agents, SAP calc on save) REJECTED; Oracle LML 95% `Prediction Low/High` = jedyna publiczna metoda przedziału, nie CRPS/MAE; Fala BR WMS evidenced (Manhattan Active TM+WMS+Yard+Labour; Infios Archer OMS/WMS/TMS; SAP EWM); BR6.2 = Alpega TenderEasy + Freight Bench (multi-round, like-for-like, spot; nie auto-award); e2open ≠ CargoWise (close 03.08.2025, „very little product overlap”); Uber Freight konflikt osi danych HHL; CHR Navisphere nie ISV; żaden z 10 nie sprzedaje dwóch skór TSL+Watch Tower + Postgres RLS; KSeF/JPK/SENT nie publiczne; leftover silniki (VSR, LML, Optimizer, Archer, what-if) zostają HITL + `suggestion_ledger` (AI1.0 po 431.0). 431.0 `quote_validity_mark` nie wynika z tej dziesiątki. | public docs w `04b`; decyzje Omni = `REQUIREMENT` / `REJECTED` / `CONFIRMED` w A–E |
 | 2026-09-13 | Bramka publikacji: Cloudflare jako warstwa bezpieczeństwa (DNS + proxy, TLS Full/strict, HSTS, WAF, rate limit, Access) **zanim** SPA operatora jest publiczna. Nie marketing CDN. Nie zastępuje RLS/HITL/Auth0 I1/I2. Nie plaster `/noc`. 431.0 zostaje. | polecenie właściciela 2026-09-13; stan repo `CONFIRMED`; limity planów = public docs Cloudflare (cytowane w B.8), nie nasz cennik |
+| 2026-09-13 | Leftover EXP1 katalogów quotation zamknięty: **431.0** `quote_validity_mark` w kodzie (`CONFIRMED`, git). Następny = **AI1.0** `suggestion_ledger` (`REQUIREMENT`, PLAN Fala AI). Kolumny `valid_until` / `revision_no` / `supersedes_id` na `quotation` zostają leftover (`REQUIREMENT`). | CURRENT + plaster 431.0 `/noc` |
 
 ---
 ---
@@ -717,9 +718,10 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | nazwy z PDF-ów bez wiersza w planie | **136** (z czego 28 to aliasy) |
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
-Ostatni ukończony plaster: **430.0** (`quote_currency_mark`), następny w kolejce
-**431.0** (`quote_validity_mark`). Te numery potwierdzają tezę z części B.1:
-tempo jest wysokie, ale praca idzie w szerokość katalogów, nie w głąb silników.
+Ostatni ukończony plaster: **431.0** (`quote_validity_mark`), następny w kolejce
+**AI1.0** (`suggestion_ledger`). Katalogi leftover EXP1 quotation są zamknięte
+(`CONFIRMED`); pierwszy silnik Fali AI jest w planie (`REQUIREMENT`). Teza B.1
+zostaje: szerokość katalogów nie zastępuje silnika.
 
 ## C.2 Bliźniaki — scalona taksonomia
 

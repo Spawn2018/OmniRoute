@@ -4,27 +4,28 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **430.0** EXP1 HITL `quote_currency_mark`
+**Ostatni plaster:** **431.0** EXP1 HITL `quote_validity_mark`
 
-**Etap:** Plan — **431.0** EXP1 (delta zaakceptowana `/noc`, wolno `/plaster`)
+**Etap:** Plan — **AI1.0**
 
 **Noc:** `/noc 11` do **2026-09-13T11:00+02**.
 
-**Następny:** **431.0** EXP1 HITL `quote_validity_mark` (open|revised|superseded|other) — leftover valid_until/revision.
+**Następny:** **AI1.0** `suggestion_ledger` — podpowiedź: BC, encja, przedział/pewność, wersja modelu i promptu, reakcja `accept|modify|reject` i na co zmienił.
 
-Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj 71–431.
+Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza AI1.0.
 
-**Spec (jedyna na sesję):** [docs/deltas/open/431.0-quote-validity-mark.md](../deltas/open/431.0-quote-validity-mark.md).
+**Spec (jedyna na sesję):** (brak — plan AI1.0).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [docs/VISION.md](../VISION.md).
 
-**Uczciwość:** HITL zostaje. LLM nie liczy. `charge` = marża. Impersonate ≠ decrypt. `charge.source_ref` **jest** (129.0 / 072) — nie otwieraj plastra AI0. Pierwszy silnik Fali AI = **AI1.0** `suggestion_ledger` (po 431.0 albo gdy CURRENT wskaże).
+**Uczciwość:** HITL zostaje. LLM nie liczy. `charge` = marża. Impersonate ≠ decrypt. `charge.source_ref` **jest** (129.0 / 072) — nie otwieraj plastra AI0. Leftover EXP1 quotation katalogów zamknięty (**431.0**). Pierwszy silnik Fali AI = **AI1.0** `suggestion_ledger`.
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
 **2026-09-13:** Plaster **428.0** zamknięty (`/noc`) — HITL `spot_contract_mark`.
 **2026-09-13:** Plaster **429.0** zamknięty (`/noc`) — HITL `bid_decision_mark`.
 **2026-09-13:** Plaster **430.0** zamknięty (`/noc`) — HITL `quote_currency_mark`.
+**2026-09-13:** Plaster **431.0** zamknięty (`/noc`) — HITL `quote_validity_mark`. **Następny: AI1.0.**
 **2026-09-13:** Kanon Fali AI/BR w PLAN; `docs/VISION.md`; HC-04 przepisane (Q1–Q2).
 **2026-09-13:** Dump CT (badania `03` B.1–B.3, B.7–B.10) w kanonie VISION + PLAN Fala AI/BR; B.4–B.6 FourKites/BY/Kinaxis nietknięte. **Następny zostaje 431.0.**
 **2026-09-13:** Dump TMS top-10 (badania `04b` A–H × 10) w kanonie VISION + PLAN Fala AI/BR. CargoWise/Qargo/interLAN zostają w `04`. **Następny zostaje 431.0.**

@@ -1050,6 +1050,10 @@ class InvalidQuoteCurrencyMark(DomainError):
     """EXP1: HITL quote_currency_mark — nie kolumna quotation / NBP."""
 
 
+class InvalidQuoteValidityMark(DomainError):
+    """EXP1: HITL quote_validity_mark — nie kolumna quotation / data ważności."""
+
+
 class InvalidImpersonateGuardMark(DomainError):
     """EXP0.12: HITL impersonate≠unwrap — nie crypto / Auth0 live."""
 

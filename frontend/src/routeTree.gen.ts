@@ -176,6 +176,7 @@ import { Route as QualityRouteImport } from './routes/quality'
 import { Route as QuotationsRouteImport } from './routes/quotations'
 import { Route as QuoteCurrencyMarksRouteImport } from './routes/quote-currency-marks'
 import { Route as QuoteInvoicesRouteImport } from './routes/quote-invoices'
+import { Route as QuoteValidityMarksRouteImport } from './routes/quote-validity-marks'
 import { Route as RagSopMarksRouteImport } from './routes/rag-sop-marks'
 import { Route as RailRouteImport } from './routes/rail'
 import { Route as RailCimMarksRouteImport } from './routes/rail-cim-marks'
@@ -1085,6 +1086,11 @@ const QuoteInvoicesRoute = QuoteInvoicesRouteImport.update({
   path: '/quote-invoices',
   getParentRoute: () => rootRouteImport,
 } as any)
+const QuoteValidityMarksRoute = QuoteValidityMarksRouteImport.update({
+  id: '/quote-validity-marks',
+  path: '/quote-validity-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RagSopMarksRoute = RagSopMarksRouteImport.update({
   id: '/rag-sop-marks',
   path: '/rag-sop-marks',
@@ -1620,6 +1626,7 @@ export interface FileRoutesByFullPath {
   '/quotations': typeof QuotationsRoute
   '/quote-currency-marks': typeof QuoteCurrencyMarksRoute
   '/quote-invoices': typeof QuoteInvoicesRoute
+  '/quote-validity-marks': typeof QuoteValidityMarksRoute
   '/rag-sop-marks': typeof RagSopMarksRoute
   '/rail': typeof RailRoute
   '/rail-cim-marks': typeof RailCimMarksRoute
@@ -1862,6 +1869,7 @@ export interface FileRoutesByTo {
   '/quotations': typeof QuotationsRoute
   '/quote-currency-marks': typeof QuoteCurrencyMarksRoute
   '/quote-invoices': typeof QuoteInvoicesRoute
+  '/quote-validity-marks': typeof QuoteValidityMarksRoute
   '/rag-sop-marks': typeof RagSopMarksRoute
   '/rail': typeof RailRoute
   '/rail-cim-marks': typeof RailCimMarksRoute
@@ -2105,6 +2113,7 @@ export interface FileRoutesById {
   '/quotations': typeof QuotationsRoute
   '/quote-currency-marks': typeof QuoteCurrencyMarksRoute
   '/quote-invoices': typeof QuoteInvoicesRoute
+  '/quote-validity-marks': typeof QuoteValidityMarksRoute
   '/rag-sop-marks': typeof RagSopMarksRoute
   '/rail': typeof RailRoute
   '/rail-cim-marks': typeof RailCimMarksRoute
@@ -2349,6 +2358,7 @@ export interface FileRouteTypes {
     | '/quotations'
     | '/quote-currency-marks'
     | '/quote-invoices'
+    | '/quote-validity-marks'
     | '/rag-sop-marks'
     | '/rail'
     | '/rail-cim-marks'
@@ -2591,6 +2601,7 @@ export interface FileRouteTypes {
     | '/quotations'
     | '/quote-currency-marks'
     | '/quote-invoices'
+    | '/quote-validity-marks'
     | '/rag-sop-marks'
     | '/rail'
     | '/rail-cim-marks'
@@ -2833,6 +2844,7 @@ export interface FileRouteTypes {
     | '/quotations'
     | '/quote-currency-marks'
     | '/quote-invoices'
+    | '/quote-validity-marks'
     | '/rag-sop-marks'
     | '/rail'
     | '/rail-cim-marks'
@@ -3076,6 +3088,7 @@ export interface RootRouteChildren {
   QuotationsRoute: typeof QuotationsRoute
   QuoteCurrencyMarksRoute: typeof QuoteCurrencyMarksRoute
   QuoteInvoicesRoute: typeof QuoteInvoicesRoute
+  QuoteValidityMarksRoute: typeof QuoteValidityMarksRoute
   RagSopMarksRoute: typeof RagSopMarksRoute
   RailRoute: typeof RailRoute
   RailCimMarksRoute: typeof RailCimMarksRoute
@@ -4322,6 +4335,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof QuoteInvoicesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/quote-validity-marks': {
+      id: '/quote-validity-marks'
+      path: '/quote-validity-marks'
+      fullPath: '/quote-validity-marks'
+      preLoaderRoute: typeof QuoteValidityMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/rag-sop-marks': {
       id: '/rag-sop-marks'
       path: '/rag-sop-marks'
@@ -5004,6 +5024,7 @@ const rootRouteChildren: RootRouteChildren = {
   QuotationsRoute: QuotationsRoute,
   QuoteCurrencyMarksRoute: QuoteCurrencyMarksRoute,
   QuoteInvoicesRoute: QuoteInvoicesRoute,
+  QuoteValidityMarksRoute: QuoteValidityMarksRoute,
   RagSopMarksRoute: RagSopMarksRoute,
   RailRoute: RailRoute,
   RailCimMarksRoute: RailCimMarksRoute,

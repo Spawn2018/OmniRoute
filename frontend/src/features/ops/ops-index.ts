@@ -909,6 +909,11 @@ export const OPS_JOBS = [
     job: "katalog quote_currency_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.quoteValidityMark.route,
+    label: "Quote validity",
+    job: "katalog quote_validity_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.csrdMark.route,
     label: "CSRD",
     job: "katalog csrd_mark HITL",
@@ -1598,6 +1603,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "428.0": "/spot-contract-marks",
   "429.0": "/bid-decision-marks",
   "430.0": "/quote-currency-marks",
+  "431.0": "/quote-validity-marks",
 } as const
 
 
