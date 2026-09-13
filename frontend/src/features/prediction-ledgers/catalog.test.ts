@@ -12,8 +12,6 @@ describe("ledgerWrite", () => {
         horizonStamp: " h24h ",
         lowStamp: " 30 ",
         highStamp: " 90 ",
-        crpsStamp: " 0.25 ",
-        maeStamp: " 12 ",
         modelStamp: " hist_eta ",
         originStamp: "tenant:manual",
       }),
@@ -22,8 +20,6 @@ describe("ledgerWrite", () => {
       horizon_code: "h24h",
       interval_low: "30",
       interval_high: "90",
-      crps: "0.25",
-      mae: "12",
       model_code: "hist_eta",
       source_ref: "tenant:manual",
     })
@@ -46,5 +42,8 @@ describe("prediction_ledger surface for 193.0", () => {
     expect(panel).not.toContain("leaflet")
     expect(panel).not.toContain("CatalogCreateForm")
     expect(src("features/ops/ops-index.ts")).toContain('"193.0": "/prediction-ledgers"')
+    expect(src("features/ops/ops-index.ts")).toContain('"446.0": "/prediction-ledgers"')
+    expect(panel).not.toContain("aria-label=\"CRPS\"")
+    expect(panel).not.toContain("aria-label=\"MAE\"")
   })
 })

@@ -1670,6 +1670,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "443.0": "/interval-scores",
   "444.0": "/version-scores",
   "445.0": "/version-windows",
+  "446.0": "/prediction-ledgers",
 } as const
 
 

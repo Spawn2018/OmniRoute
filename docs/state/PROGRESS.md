@@ -832,3 +832,5 @@
 - 2026-09-13T11:55:00Z ? 444.0 ? version_score ? DONE ? srednie MAE/CRPS per model_version ? migracja 354
 
 - 2026-09-13T12:00:00Z ? 445.0 ? version_window ? DONE ? srednie MAE/CRPS per model_version i dzien UTC ? migracja 355
+
+- 2026-09-13T12:25:00Z ? 446.0 ? prediction_ledger ? DONE ? POST bez wpisanego CRPS/MAE; kolumny nullable ? migracja 356

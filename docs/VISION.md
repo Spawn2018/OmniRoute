@@ -63,6 +63,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | AI2.1 leftover plan (**445.0**): widok `version_window` średnie MAE/CRPS per `model_version` i dzień UTC z `created_at`. Detektor/próg i auto-champion = leftover. |
 | 2026-09-13 | **445.0** `version_window` w kodzie (`CONFIRMED`, git). Następny = leftover wpisu metryki na `prediction_ledger` (**446.0**, `REQUIREMENT`). Detektor/próg `REJECTED`. Auto-champion `REJECTED`. |
 | 2026-09-13 | AI2 leftover plan (**446.0**): `prediction_ledger` POST bez `crps`/`mae`; kolumny nullable. Metryka liczona = `interval_score`. Drop kolumn i kopia widoku `REJECTED`. |
+| 2026-09-13 | **446.0** `prediction_ledger` bez wpisu metryki (`CONFIRMED`, git). Warunek AI2 „nie przyjmuje wpisanej metryki” spełniony na nowym INSERT. Następny = **AI3.0** PATCH szkicu (`REQUIREMENT`). Brier leftover (brak p). |
 
 ---
 
@@ -162,6 +163,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | AI2.1 leftover (**445.0**) = `version_window`: średnie per wersja i dzień. Detektor/próg `REJECTED`. Auto-champion `REJECTED`. | `/plan-modul` `/noc`; VISION B.2 |
 | 2026-09-13 | **445.0** `version_window` w kodzie (`CONFIRMED`, git). Następny = zamknięcie wpisu CRPS/MAE na `prediction_ledger` (**446.0**, `REQUIREMENT`). Detektor/próg i auto-champion `REJECTED`. Brier zostaje leftover (brak p). | CURRENT + plaster 445.0 `/noc` |
 | 2026-09-13 | AI2 leftover (**446.0**) = `prediction_ledger` przestaje przyjmować wpisane CRPS/MAE. Kolumny nullable. Kopia `interval_score` i drop `REJECTED`. Brier / auto-champion leftover. | `/plan-modul` `/noc`; VISION B.2 · E AI2 |
+| 2026-09-13 | **446.0** w kodzie (`CONFIRMED`, git). Nowy INSERT bez `crps`/`mae`. Następny = **AI3.0** PATCH `extraction_draft` (`REQUIREMENT`). Brier leftover. | CURRENT + plaster 446.0 `/noc` |
 
 ---
 ---
@@ -505,11 +507,12 @@ wymaga prawdopodobieństwa, którego ledger nie ma. Champion/dryf = AI2.1
 pokazuje średnie, nie przełącza modelu. **445.0 (`CONFIRMED`, git `/noc`):**
 widok `version_window` pokazuje średnie per dzień UTC z `created_at`, nie stawia
 flagi dryfu. Detektor/próg `REJECTED`. Auto-champion `REJECTED`.
-`prediction_ledger` przestaje przyjmować wpisaną metrykę w **446.0**
-(`REQUIREMENT`): POST bez `crps`/`mae`, kolumny nullable, historia wpisu zostaje.
+**446.0 (`CONFIRMED`, git `/noc`):** `prediction_ledger` nie przyjmuje wpisanej
+metryki. POST bez `crps`/`mae`, kolumny nullable, historia wpisu zostaje.
 Kopia `interval_score` do wiersza `REJECTED`. Drop kolumn `REJECTED`.
 Brier leftover (brak p). Auto-champion `REJECTED`. Warunek zakończenia AI2
-w tabeli E: metryka liczy się z danych (`interval_score`), nie z pola.
+w tabeli E: nowy INSERT nie niesie wpisanej metryki; metryka liczy się
+z `interval_score`. Stare wiersze z wpisem zostają do odczytu.
 
 **`counterfactual_run`** — bliźniak w sensie operacyjnym: nazwany scenariusz,
 punkt odniesienia, lista przestawionych dźwigni, wynik. Niemutowalny i odtwarzalny,
@@ -788,8 +791,8 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | nazwy z PDF-ów bez wiersza w planie | **136** (z czego 28 to aliasy) |
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
-Ostatni ukończony plaster: **445.0** (`version_window` średnie per dzień UTC).
-Następny = **446.0** `prediction_ledger` bez wpisanego CRPS/MAE (`REQUIREMENT`).
+Ostatni ukończony plaster: **446.0** (`prediction_ledger` bez wpisanego CRPS/MAE).
+Następny = **447.0** AI3.0 PATCH szkicu ekstrakcji (`REQUIREMENT`).
 AI1.0–AI1.4, 443.0, 444.0 i 445.0 są w kodzie (`CONFIRMED`); `data_source`
 zostaje w AI5 (`REQUIREMENT`). Teza B.1 zostaje: szerokość katalogów nie zastępuje pomiaru.
 

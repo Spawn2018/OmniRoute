@@ -19,6 +19,17 @@ def test_migration_133_creates_prediction_ledger_and_forces_rls() -> None:
     assert "drop_table" in source.split("def downgrade")[1]
 
 
+def test_migration_356_makes_scores_nullable() -> None:
+    source = (
+        _ROOT / "backend/alembic/versions/356_prediction_ledger_null.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "356_prediction_ledger_null"' in source
+    assert 'down_revision: str | None = "355_version_window"' in source
+    assert "nullable=True" in source
+    assert "interval_scores" not in source
+    assert "float(" not in source
+
+
 def test_prediction_ledger_service_does_not_import_parents() -> None:
     service = (_SERVICES / "prediction_ledgers" / "prediction_ledger_service.py").read_text(
         encoding="utf-8"
@@ -27,6 +38,9 @@ def test_prediction_ledger_service_does_not_import_parents() -> None:
     assert "app.services.stops" not in service
     assert "app.services.extraction" not in service
     assert "app.services.charges" not in service
+    assert "interval_scores" not in service
+    assert "require_crps" not in service
+    assert "require_mae" not in service
     assert "httpx" not in service
     assert "UPDATE" not in service
     assert "delete(" not in service
@@ -51,3 +65,6 @@ def test_generated_api_types_include_prediction_ledger() -> None:
     )
     assert "PredictionLedgerResponse" in source
     assert "PredictionLedgerCreate" in source
+    create = source.split("export type PredictionLedgerCreate = {", 1)[1].split("};", 1)[0]
+    assert "crps" not in create
+    assert "mae" not in create

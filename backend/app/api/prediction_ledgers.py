@@ -1,3 +1,4 @@
+from decimal import Decimal
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, status
@@ -21,8 +22,6 @@ class PredictionLedgerCreate(BaseModel):
     horizon_code: str
     interval_low: str
     interval_high: str
-    crps: str
-    mae: str
     model_code: str
     source_ref: str
 
@@ -36,10 +35,16 @@ class PredictionLedgerResponse(BaseModel):
     horizon_code: str
     interval_low: str
     interval_high: str
-    crps: str
-    mae: str
+    crps: str | None
+    mae: str | None
     model_code: str
     source_ref: str
+
+
+def _stamp(value: Decimal | None) -> str | None:
+    if value is None:
+        return None
+    return format(value, "f")
 
 
 def _as_row(row: PredictionLedger) -> PredictionLedgerResponse:
@@ -50,8 +55,8 @@ def _as_row(row: PredictionLedger) -> PredictionLedgerResponse:
         horizon_code=row.horizon_code,
         interval_low=format(row.interval_low, "f"),
         interval_high=format(row.interval_high, "f"),
-        crps=format(row.crps, "f"),
-        mae=format(row.mae, "f"),
+        crps=_stamp(row.crps),
+        mae=_stamp(row.mae),
         model_code=row.model_code,
         source_ref=row.source_ref,
     )
@@ -84,8 +89,6 @@ async def create_prediction_ledger(
         horizon_code=body.horizon_code,
         interval_low=body.interval_low,
         interval_high=body.interval_high,
-        crps=body.crps,
-        mae=body.mae,
         model_code=body.model_code,
         source_ref=body.source_ref,
     )

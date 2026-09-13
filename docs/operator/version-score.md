@@ -9,5 +9,5 @@ Nie wpisujesz średnich. Nie przełączasz tu modelu na champion.
 Mniejsza średnia CRPS oznacza lepsze dopasowanie przedziału do faktu
 — decyzja, którą wersję zostawić, jest twoja.
 
-Dryf w czasie nie jest na tym ekranie. Wpisane CRPS na ledgerze predykcji
-zostaje osobnym katalogiem.
+Dryf w czasie nie jest na tym ekranie. Ledger predykcji nie przyjmuje już
+wpisanego CRPS — liczone liczby są na wyniku przedziału.

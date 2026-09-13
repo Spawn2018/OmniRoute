@@ -9,8 +9,6 @@ type LedgerDraft = {
   horizonStamp: string
   lowStamp: string
   highStamp: string
-  crpsStamp: string
-  maeStamp: string
   modelStamp: string
   originStamp: string
 }
@@ -20,8 +18,6 @@ const EMPTY_LEDGER: LedgerDraft = {
   horizonStamp: "h24h",
   lowStamp: "30",
   highStamp: "90",
-  crpsStamp: "0.25",
-  maeStamp: "12",
   modelStamp: "hist_eta",
   originStamp: "fixture://prediction-ledger/",
 }
@@ -46,7 +42,7 @@ function LedgerSave(args: { organizationId: string | null }) {
       }}
     >
       <p className="text-xs text-muted-foreground">
-        Przedział i metryka po fakcie. Serwis nie liczy CRPS. Marża zostaje na `/charges`.
+        Przedział i kod modelu. CRPS i MAE liczy widok wyniku przedziału. Marża zostaje na `/charges`.
       </p>
       <label className="flex flex-col gap-1 text-xs">
         Rodzaj
@@ -96,26 +92,6 @@ function LedgerSave(args: { organizationId: string | null }) {
         />
       </label>
       <label className="flex flex-col gap-1 text-xs">
-        CRPS
-        <input
-          aria-label="CRPS"
-          className="h-9 rounded-md border bg-background px-2 font-mono"
-          value={draft.crpsStamp}
-          onChange={(change) => setDraft({ ...draft, crpsStamp: change.target.value })}
-          required
-        />
-      </label>
-      <label className="flex flex-col gap-1 text-xs">
-        MAE
-        <input
-          aria-label="MAE"
-          className="h-9 rounded-md border bg-background px-2 font-mono"
-          value={draft.maeStamp}
-          onChange={(change) => setDraft({ ...draft, maeStamp: change.target.value })}
-          required
-        />
-      </label>
-      <label className="flex flex-col gap-1 text-xs">
         Kod modelu (snake)
         <input
           aria-label="Kod modelu"
@@ -152,7 +128,7 @@ function LedgerRows(args: { organizationId: string | null }) {
       <ul data-prediction-ledger="rows" className="flex flex-col gap-1 text-xs">
         {(listed.data ?? []).map((row) => (
           <li key={row.id} className="font-mono">
-            {row.prediction_kind} {row.horizon_code} crps {row.crps}
+            {row.prediction_kind} {row.horizon_code} {row.model_code}
           </li>
         ))}
       </ul>

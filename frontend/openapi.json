@@ -37377,14 +37377,6 @@
             "type": "string",
             "title": "Interval High"
           },
-          "crps": {
-            "type": "string",
-            "title": "Crps"
-          },
-          "mae": {
-            "type": "string",
-            "title": "Mae"
-          },
           "model_code": {
             "type": "string",
             "title": "Model Code"
@@ -37401,8 +37393,6 @@
           "horizon_code",
           "interval_low",
           "interval_high",
-          "crps",
-          "mae",
           "model_code",
           "source_ref"
         ],
@@ -37437,11 +37427,25 @@
             "title": "Interval High"
           },
           "crps": {
-            "type": "string",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Crps"
           },
           "mae": {
-            "type": "string",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Mae"
           },
           "model_code": {

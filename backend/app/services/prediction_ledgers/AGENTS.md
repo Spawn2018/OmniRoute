@@ -1,6 +1,7 @@
 # BC prediction_ledger (B0b / V1)
 
-HITL ledger predykcji per tenant. Przedział N7 + CRPS/MAE jako dane. Nie silnik. Nie scoring osoby.
+HITL ledger predykcji per tenant. Przedział N7. CRPS/MAE tylko historia
+nullable. Nowy INSERT bez wpisu. Nie silnik. Nie scoring osoby.
 
 ## Dozwolone zależności
 - `app.models.prediction_ledger`

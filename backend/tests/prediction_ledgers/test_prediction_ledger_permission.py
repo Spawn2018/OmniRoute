@@ -21,8 +21,6 @@ _ENDPOINTS = (
             "horizon_code": "h24h",
             "interval_low": "30",
             "interval_high": "90",
-            "crps": "0.25",
-            "mae": "12",
             "model_code": "hist_eta",
             "source_ref": "fixture://prediction-ledger/1",
         },

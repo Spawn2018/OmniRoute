@@ -11,4 +11,4 @@ zmieniłeś, nie `none`.
 
 `amount`, `margin` i liczby zmiennoprzecinkowe są odrzucane. Zmiana wiersza =
 nowy rekord (brak UPDATE). Model językowy tu nic nie zapisuje i nic nie liczy.
-Ledger predykcji (`prediction_ledger`) zostaje osobnym katalogiem CRPS/MAE.
+Ledger predykcji (`prediction_ledger`) zostaje osobnym katalogiem przedziału; CRPS/MAE liczy wynik przedziału.

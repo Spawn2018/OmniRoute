@@ -405,6 +405,7 @@ describe("U-routes-breadth standing", () => {
       "443.0": "/interval-scores",
       "444.0": "/version-scores",
       "445.0": "/version-windows",
+      "446.0": "/prediction-ledgers",
     })
     expect(OPS_JOBS.map((job) => job.route)).toEqual(
       expect.arrayContaining(Object.values(SHIPPED_CHARGE_ROUTES)),

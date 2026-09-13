@@ -1,3 +1,4 @@
+from decimal import Decimal
 from unittest.mock import AsyncMock
 from uuid import UUID, uuid4
 
@@ -6,12 +7,10 @@ from fastapi.testclient import TestClient
 
 from app.api.deps import require_tenant_session, set_authz_checker
 from app.domain.prediction_ledger import (
-    require_crps,
     require_horizon_code,
     require_interval_bound,
     require_interval_order,
     require_ledger_source_ref,
-    require_mae,
     require_model_code,
     require_prediction_kind,
 )
@@ -49,8 +48,6 @@ class StubLedgerDesk:
         horizon_code: object,
         interval_low: object,
         interval_high: object,
-        crps: object,
-        mae: object,
         model_code: object,
         source_ref: object,
     ) -> PredictionLedger:
@@ -64,8 +61,8 @@ class StubLedgerDesk:
             horizon_code=require_horizon_code(horizon_code),
             interval_low=low,
             interval_high=high,
-            crps=require_crps(crps),
-            mae=require_mae(mae),
+            crps=None,
+            mae=None,
             model_code=require_model_code(model_code),
             source_ref=require_ledger_source_ref(source_ref),
             created_by=user_id,
@@ -100,8 +97,6 @@ def _payload(**overrides: object) -> dict[str, object]:
         "horizon_code": "h24h",
         "interval_low": "30",
         "interval_high": "90",
-        "crps": "0.25",
-        "mae": "12",
         "model_code": "hist_eta",
         "source_ref": "fixture://prediction-ledger/1",
     }
@@ -118,22 +113,49 @@ def test_http_create_and_list_prediction_ledger(catalog_client: object) -> None:
     body = created.json()
     assert body["organization_id"] == str(org_id)
     assert body["prediction_kind"] == "eta"
-    assert body["crps"] == "0.2500"
+    assert body["crps"] is None
+    assert body["mae"] is None
     assert "buy_amount" not in body
     listed = client.get("/api/v1/prediction-ledgers", headers=headers)
     assert listed.status_code == 200
     assert listed.json()[0]["id"] == body["id"]
 
 
-def test_http_create_missing_crps_is_400(catalog_client: object) -> None:
+def test_http_create_rejects_handwritten_crps(catalog_client: object) -> None:
     client, _desk = catalog_client
     response = client.post(
         "/api/v1/prediction-ledgers",
         headers=bearer_auth_headers(),
-        json=_payload(crps=""),
+        json=_payload(crps="0.25"),
     )
-    assert response.status_code == 400
-    assert "crps" in response.json()["detail"]
+    assert response.status_code == 422
+
+
+def test_http_list_keeps_legacy_crps(catalog_client: object) -> None:
+    client, desk = catalog_client
+    org_id = uuid4()
+    desk.rows.append(
+        PredictionLedger(
+            id=uuid4(),
+            organization_id=org_id,
+            prediction_kind="eta",
+            horizon_code="h24h",
+            interval_low=Decimal("30"),
+            interval_high=Decimal("90"),
+            crps=Decimal("0.2500"),
+            mae=Decimal("12.0000"),
+            model_code="hist_eta",
+            source_ref="fixture://prediction-ledger/legacy",
+            created_by=uuid4(),
+        )
+    )
+    listed = client.get(
+        "/api/v1/prediction-ledgers",
+        headers=bearer_auth_headers(organization_id=org_id),
+    )
+    assert listed.status_code == 200
+    assert listed.json()[0]["crps"] == "0.2500"
+    assert listed.json()[0]["mae"] == "12.0000"
 
 
 def test_http_create_bad_kind_is_400(catalog_client: object) -> None:

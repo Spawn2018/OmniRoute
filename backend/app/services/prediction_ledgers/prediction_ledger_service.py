@@ -3,12 +3,10 @@ from uuid import UUID, uuid4
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.prediction_ledger import (
-    require_crps,
     require_horizon_code,
     require_interval_bound,
     require_interval_order,
     require_ledger_source_ref,
-    require_mae,
     require_model_code,
     require_prediction_kind,
 )
@@ -34,8 +32,6 @@ class PredictionLedgerService:
         horizon_code: object,
         interval_low: object,
         interval_high: object,
-        crps: object,
-        mae: object,
         model_code: object,
         source_ref: object,
     ) -> PredictionLedger:
@@ -49,8 +45,8 @@ class PredictionLedgerService:
             horizon_code=require_horizon_code(horizon_code),
             interval_low=low,
             interval_high=high,
-            crps=require_crps(crps),
-            mae=require_mae(mae),
+            crps=None,
+            mae=None,
             model_code=require_model_code(model_code),
             source_ref=require_ledger_source_ref(source_ref),
             created_by=user_id,

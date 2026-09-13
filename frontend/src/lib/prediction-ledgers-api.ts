@@ -10,8 +10,8 @@ export type LedgerMark = {
   horizon_code: string
   interval_low: string
   interval_high: string
-  crps: string
-  mae: string
+  crps: string | null
+  mae: string | null
   model_code: string
   source_ref: string
 }
@@ -21,8 +21,6 @@ export type LedgerMarkWrite = {
   horizon_code: string
   interval_low: string
   interval_high: string
-  crps: string
-  mae: string
   model_code: string
   source_ref: string
 }
@@ -32,8 +30,6 @@ export function ledgerWrite(draft: {
   horizonStamp: string
   lowStamp: string
   highStamp: string
-  crpsStamp: string
-  maeStamp: string
   modelStamp: string
   originStamp: string
 }): LedgerMarkWrite {
@@ -42,8 +38,6 @@ export function ledgerWrite(draft: {
     horizon_code: draft.horizonStamp.trim(),
     interval_low: draft.lowStamp.trim(),
     interval_high: draft.highStamp.trim(),
-    crps: draft.crpsStamp.trim(),
-    mae: draft.maeStamp.trim(),
     model_code: draft.modelStamp.trim(),
     source_ref: draft.originStamp.trim(),
   }

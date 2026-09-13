@@ -71,6 +71,23 @@ async def test_prediction_ledger_rls_isolates_tenants(session, two_tenants) -> N
 
 @pytest.mark.integration
 @pytest.mark.asyncio
+async def test_prediction_ledger_accepts_null_scores(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    user_a = two_tenants["user_a"]
+    await bind_tenant(session, org_a.id)
+    row = _row(organization_id=org_a.id, created_by=user_a.id)
+    row.crps = None
+    row.mae = None
+    session.add(row)
+    await session.flush()
+    loaded = await session.get(PredictionLedger, row.id)
+    assert loaded is not None
+    assert loaded.crps is None
+    assert loaded.mae is None
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
 async def test_prediction_ledger_rejects_duplicate_source_ref(session, two_tenants) -> None:
     org_a = two_tenants["org_a"]
     user_a = two_tenants["user_a"]

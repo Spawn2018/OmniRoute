@@ -9503,14 +9503,6 @@ export type PredictionLedgerCreate = {
      */
     interval_high: string;
     /**
-     * Crps
-     */
-    crps: string;
-    /**
-     * Mae
-     */
-    mae: string;
-    /**
      * Model Code
      */
     model_code: string;
@@ -9551,11 +9543,11 @@ export type PredictionLedgerResponse = {
     /**
      * Crps
      */
-    crps: string;
+    crps: string | null;
     /**
      * Mae
      */
-    mae: string;
+    mae: string | null;
     /**
      * Model Code
      */
