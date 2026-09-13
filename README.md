@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **441.0** AI1.4 leftover HITL `outcome_kind` (otwarty słownik)
-- **Etap:** plaster — **442.0** FK `outcome_ledger` → `outcome_kind`. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
-- **Następny:** **442.0** AI1.4 leftover FK `outcome_ledger.outcome_kind` → `outcome_kind.kind_code` (`ON DELETE RESTRICT`). Wzorzec **439.0**.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **442.0** AI1.4 leftover FK `outcome_ledger` → `outcome_kind`
+- **Etap:** Plan — **AI2.0** CRPS / Brier / MAE liczone ze złączenia `suggestion_ledger` × `outcome_ledger`
+- **Następny:** **AI2.0** CRPS, Brier, MAE **liczone** ze złączenia AI1.0 × AI1.1. Wzorzec: Postgres liczy, model nie.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

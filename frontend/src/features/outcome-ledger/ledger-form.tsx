@@ -7,13 +7,6 @@ import {
   makeOutcomeLedgerPayload,
 } from "@/lib/outcome-ledgers-api"
 
-const KINDS = [
-  { value: "eta", label: "ETA" },
-  { value: "rate", label: "Stawka" },
-  { value: "route", label: "Trasa" },
-  { value: "other", label: "Inne" },
-] as const
-
 const EXAMPLE_ENTITY = "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
 const EXAMPLE_SUGGESTION = "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb"
 
@@ -86,18 +79,13 @@ export function OutcomeLedgerComposer(props: { organizationId: string | null }) 
       </label>
       <label className="text-xs">
         outcome_kind
-        <select
-          aria-label="outcome_kind eta rate route other"
-          className="mt-1 h-9 w-full rounded border px-2 text-sm"
+        <input
+          aria-label="outcome_kind open dict"
+          className="mt-1 h-9 w-full rounded border px-2 font-mono text-sm"
           onChange={(e) => setKind(e.target.value)}
+          required
           value={kind}
-        >
-          {KINDS.map((opt) => (
-            <option key={opt.value} value={opt.value}>
-              {opt.label}
-            </option>
-          ))}
-        </select>
+        />
       </label>
       <label className="text-xs">
         actual_value

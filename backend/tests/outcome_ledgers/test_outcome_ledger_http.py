@@ -32,6 +32,24 @@ def test_migration_343_creates_outcome_ledger_and_rls() -> None:
     assert "suggestion_ledger.id" not in source
 
 
+def test_migration_352_replaces_kind_list_with_fk() -> None:
+    source = (_ROOT / "backend/alembic/versions/352_outcome_ledger_kind_fk.py").read_text(
+        encoding="utf-8",
+    )
+    assert 'revision: str = "352_outcome_ledger_kind_fk"' in source
+    assert 'down_revision: str | None = "351_outcome_kind"' in source
+    assert "fk_outcome_ledger_kind" in source
+    assert "IN (" not in source
+    assert "ck_outcome_ledger_kind" in source
+
+
+def test_service_maps_missing_dictionary_kind() -> None:
+    source = (
+        _ROOT / "backend/app/services/outcome_ledgers/outcome_ledger_service.py"
+    ).read_text(encoding="utf-8")
+    assert "fk_outcome_ledger_kind" in source
+
+
 def test_importlinter_lists_outcome_ledger_on_deny() -> None:
     source = (_ROOT / ".importlinter").read_text(encoding="utf-8")
     forbidden = source.split("[importlinter:contract:extraction-no-rates]", 1)[1]
@@ -183,12 +201,24 @@ def test_post_rejects_float_actual(outcome_ledger_http: object) -> None:
     assert response.status_code == 422
 
 
+def test_post_accepts_open_kind(outcome_ledger_http: object) -> None:
+    client, desk = outcome_ledger_http
+    response = client.post(
+        "/api/v1/outcome-ledgers",
+        headers=bearer_auth_headers(),
+        json=_payload(outcome_kind="tender"),
+    )
+    assert response.status_code == 201
+    assert response.json()["outcome_kind"] == "tender"
+    assert len(desk.rows) == 1
+
+
 def test_post_rejects_bad_kind(outcome_ledger_http: object) -> None:
     client, _desk = outcome_ledger_http
     response = client.post(
         "/api/v1/outcome-ledgers",
         headers=bearer_auth_headers(),
-        json=_payload(outcome_kind="person_score"),
+        json=_payload(outcome_kind="1x"),
     )
     assert response.status_code == 400
     assert "rodzaj" in response.json()["detail"]

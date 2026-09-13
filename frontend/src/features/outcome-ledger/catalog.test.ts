@@ -42,5 +42,7 @@ describe("outcome_ledger surface for 433.0", () => {
     expect(panel).not.toContain("leaflet")
     expect(panel).not.toContain("CatalogCreateForm")
     expect(src("features/ops/ops-index.ts")).toContain('"433.0": "/outcome-ledgers"')
+    expect(panel).toContain('aria-label="outcome_kind open dict"')
+    expect(panel).not.toContain("<select")
   })
 })

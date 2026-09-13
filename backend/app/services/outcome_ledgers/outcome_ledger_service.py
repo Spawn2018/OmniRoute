@@ -1,7 +1,9 @@
 from uuid import UUID, uuid4
 
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.domain.errors import InvalidOutcomeLedger
 from app.domain.outcome_ledger import OutcomeLedgerDraft, parse_outcome_ledger_row
 from app.models.outcome_ledger import OutcomeLedger
 from app.repositories.outcome_ledgers.outcome_ledger_repository import (
@@ -54,4 +56,10 @@ class OutcomeLedgerService:
             actual_value,
             source_ref,
         )
-        return await self._rows.add(_as_entity(organization_id, user_id, draft))
+        try:
+            return await self._rows.add(_as_entity(organization_id, user_id, draft))
+        except IntegrityError as orig:
+            detail = str(orig.orig) if orig.orig is not None else str(orig)
+            if "fk_outcome_ledger_kind" in detail:
+                raise InvalidOutcomeLedger("rodzaj: brak w słowniku") from orig
+            raise InvalidOutcomeLedger("zapis ledgeru odrzucony") from orig

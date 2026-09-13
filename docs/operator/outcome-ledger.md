@@ -1,6 +1,9 @@
 # Operator: ledger wyniku
 
-Katalog HITL dla faktu (`eta` / `rate` / `route` / `other`).
+Katalog HITL dla faktu.
+Rodzaj (`outcome_kind`) musi już istnieć w słowniku rodzajów wyniku.
+Nowy rodzaj zapisujesz najpierw tam, potem tu.
+
 Zapisujesz kontekst BC, UUID encji, UUID podpowiedzi (jako dana, nie powiązanie)
 oraz `actual_value` — liczbę dziesiętną tego, co się naprawdę stało.
 

@@ -21,7 +21,7 @@ class OutcomeLedgerCreate(BaseModel):
     target_bc: str = Field(min_length=2, max_length=32)
     entity_id: str = Field(min_length=36, max_length=36)
     suggestion_id: str = Field(min_length=36, max_length=36)
-    outcome_kind: str = Field(min_length=2, max_length=16)
+    outcome_kind: str = Field(min_length=2, max_length=32)
     actual_value: str
     source_ref: str = Field(min_length=1, max_length=256)
 

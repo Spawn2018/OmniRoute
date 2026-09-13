@@ -3,7 +3,7 @@
 ```
 status:        roboczy kanon
 wersja:        0.3
-ostatnia zmiana: 2026-09-13 12:40
+ostatnia zmiana: 2026-09-13 12:55
 ```
 
 ## Jak czytać
@@ -55,6 +55,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | AI1.4 plan (**441.0**): HITL `outcome_kind` bez CHECK. outcome_ledger CHECK zostaje. |
 | 2026-09-13 | **441.0** `outcome_kind` w kodzie. Następny = leftover FK `outcome_ledger`. |
 | 2026-09-13 | AI1.4 plan (**442.0**): FK `outcome_ledger` → `outcome_kind`. CHECK listy `REJECTED`. Import `outcome_kinds` z ledgeru `REJECTED`. `data_source` = AI5. |
+| 2026-09-13 | **442.0** FK `outcome_ledger` w kodzie (`CONFIRMED`, git). Następny = **AI2.0** CRPS (`REQUIREMENT`). `data_source` = AI5. |
 
 ---
 
@@ -64,7 +65,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 status:        roboczy kanon (zastępuje "Informacje z claude/vision.md" z 2026-08-29)
 wersja:        0.1
 utworzony:     2026-09-13
-ostatnia zmiana: 2026-09-13 12:40
+ostatnia zmiana: 2026-09-13 12:55
 autor ustaleń: Sebastian Bożek (właściciel produktu)
 redakcja:      agent, na podstawie dokumentów 01-07 i 09-11 w tym katalogu
 lokalizacja:   docs/VISION.md (repozytorium OmniRoute)
@@ -145,6 +146,8 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | **440.0** FK `twin_mark` w kodzie (`CONFIRMED`, git). Następny = HITL `outcome_kind` (`REQUIREMENT`). `data_source` = AI5. CRPS `REJECTED` na tym wierszu. | CURRENT + plaster 440.0 `/noc` |
 | 2026-09-13 | AI1.4 (**441.0**) = HITL `outcome_kind`: `kind_code` bez CHECK/ENUM. Zmiana `outcome_ledger` `REJECTED`. `data_source` leftover AI5. | `/plan-modul` `/noc`; VISION B.3 |
 | 2026-09-13 | **441.0** `outcome_kind` w kodzie (`CONFIRMED`, git). Następny = FK `outcome_ledger` (`REQUIREMENT`). `data_source` = AI5. CRPS `REJECTED` na tym wierszu. | CURRENT + plaster 441.0 `/noc` |
+| 2026-09-13 | AI1.4 (**442.0**) = FK `(organization_id, outcome_kind)` → słownik. CHECK listy `REJECTED`. Import `outcome_kinds` z ledgeru `REJECTED`. | `/plan-modul` `/noc`; VISION B.3 |
+| 2026-09-13 | **442.0** FK `outcome_ledger` w kodzie (`CONFIRMED`, git). Następny = **AI2.0** CRPS (`REQUIREMENT`). `data_source` = AI5. | CURRENT + plaster 442.0 `/noc` |
 
 ---
 ---
@@ -546,7 +549,7 @@ w tabeli słownikowej.**
 - **`autonomy_level`** — poziom autonomii jako **dana per tenant** (`CONFIRMED`,
   438.0). Per klient (FK) zostaje leftover. Nie stała w kodzie (część B.4).
 - **`suggestion_kind`** — nowy rodzaj podpowiedzi to wiersz (`CONFIRMED`, 436.0).
-- **`outcome_kind`** — nowy rodzaj wyniku to wiersz (`CONFIRMED`, 441.0). FK z `outcome_ledger` = **442.0** (`REQUIREMENT`); CHECK listy na ledgerze `REJECTED` w tym plasterze.
+- **`outcome_kind`** — nowy rodzaj wyniku to wiersz (`CONFIRMED`, 441.0). FK z `outcome_ledger` (`CONFIRMED`, 442.0). CHECK listy na ledgerze `REJECTED`.
 
 **Model zdarzeń SAP GTT** (`REQUIREMENT`, `03` B.7, PDF LBN 2.0 z 19.04.2025):
 planned event + **okno tolerancji**, unplanned, adres XRI
@@ -757,11 +760,10 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | nazwy z PDF-ów bez wiersza w planie | **136** (z czego 28 to aliasy) |
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
-Ostatni ukończony plaster: **441.0** (HITL `outcome_kind`). **442.0** =
-FK `outcome_ledger` → `outcome_kind` (`REQUIREMENT`, delta `/noc`). AI1.0–AI1.3, cztery
-słowniki i FK ledgeru oraz `twin_mark` są w kodzie (`CONFIRMED`); `data_source`
-zostaje w AI5 (`REQUIREMENT`). CRPS ze złączenia zostaje w AI2 (`REQUIREMENT`).
-Teza B.1 zostaje: szerokość katalogów nie zastępuje pomiaru.
+Ostatni ukończony plaster: **442.0** (FK `outcome_ledger` → `outcome_kind`).
+Następny = **AI2.0** CRPS/Brier/MAE liczone (`REQUIREMENT`). AI1.0–AI1.4
+(słowniki + FK) są w kodzie (`CONFIRMED`); `data_source` zostaje w AI5
+(`REQUIREMENT`). Teza B.1 zostaje: szerokość katalogów nie zastępuje pomiaru.
 
 ## C.2 Bliźniaki — scalona taksonomia
 

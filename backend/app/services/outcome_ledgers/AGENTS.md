@@ -16,3 +16,4 @@ Decimal + source_ref. Nie CRPS liczone. Nie FK do suggestion_ledger.
 - HTTP
 - UPDATE / DELETE wiersza
 - FK do suggestion_ledger / shipment / trip
+- import `outcome_kinds` (FK rodzaju jest w bazie)

@@ -6,7 +6,6 @@ from uuid import UUID
 from app.domain.errors import InvalidOutcomeLedger
 
 _CODE = re.compile(r"^[a-z][a-z0-9_]{1,31}$")
-_KINDS = frozenset({"eta", "rate", "route", "other"})
 _MANUAL = "tenant:manual"
 _FIX = "fixture://outcome-ledger/"
 _FOUR = Decimal("0.0001")
@@ -75,8 +74,6 @@ def parse_outcome_ledger_row(
     source_ref: object,
 ) -> OutcomeLedgerDraft:
     kind = _snake(outcome_kind, "rodzaj")
-    if kind not in _KINDS:
-        raise InvalidOutcomeLedger("rodzaj: eta, rate, route albo other")
     return OutcomeLedgerDraft(
         target_bc=_snake(target_bc, "kontekst"),
         entity_id=_uuid_field(entity_id, "encja"),

@@ -823,4 +823,7 @@
 
 - 2026-09-13T08:50:00Z ? 441.0 ? outcome_kind ? DONE ? HITL otwarty kind_code bez CHECK ? migracja 351 ? /outcome-kinds
 
+- 2026-09-13T10:55:00Z ? 442.0 ? outcome_ledger FK ? DONE ? zdjety CHECK kind; FK do outcome_kind ? migracja 352
+
+
 - 2026-09-13T05:40:00Z ? kanon ? Fala AI + Fala BR w PLAN ? VISION.md ? HC-04 L0?2/L3?5 ? AI0 ju? w kodzie (072) ? nast?pny leftover 431.0

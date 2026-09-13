@@ -43,9 +43,14 @@ def test_parse_rejects_float_actual() -> None:
         _ok(actual_value=1.5)
 
 
+def test_parse_accepts_open_kind() -> None:
+    draft = _ok(outcome_kind="tender")
+    assert draft.outcome_kind == "tender"
+
+
 def test_parse_rejects_bad_kind() -> None:
     with pytest.raises(InvalidOutcomeLedger, match="rodzaj"):
-        _ok(outcome_kind="person_score")
+        _ok(outcome_kind="1x")
 
 
 def test_parse_rejects_bad_suggestion() -> None:
