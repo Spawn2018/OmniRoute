@@ -2,8 +2,8 @@
 
 ```
 status:        roboczy kanon
-wersja:        0.5
-ostatnia zmiana: 2026-09-13 22:25
+wersja:        0.6
+ostatnia zmiana: 2026-09-13 22:40
 ```
 
 ## Jak czytać
@@ -110,6 +110,7 @@ zostają w badaniach `04`).
 | 2026-09-13 | C.3 **Grupa 8**: help desk produktu (ticket → agent → akceptacja właściciela) + mobile całego OmniRoute. Leftover PLAN **Plat-HD** / **Mob**. Nie 468.0. |
 | 2026-09-13 | D.7 readiness (Murphy 2026 + audyt PDF/czat): Three-Bucket, Definition Gap, szwy eskalacji = leftover. Mission Control / wektor / druga warstwa semantyczna / Bertha `REJECTED`. |
 | 2026-09-13 | Ciało C.3 Grupa 8 + D.7 + skrót `03` B.4–B.6 w A.2. E.3: HC-04 i FK `plan_snapshot` zamknięte. [WYCOFANE 2026-09-13: „B.4–B.6 nietknięte w dumpie” — skrót jest w kanonie]. |
+| 2026-09-13 | D.7: pięć jobów z audytu GPT jako leftover (definicja KPI per strona; brama L3; SOP agenta; ulga nie sens; promień wybuchu). Nie nowy BC. Nie 468.0. |
 
 ---
 
@@ -1307,8 +1308,27 @@ ChatGPT / Gemini: `18` §11. „90 % projektów AI pada” = slogan `[C]`, nie f
 
 **Leftover / proces, nie nowy BC:** Grupa 8 (**Plat-HD**, **Mob**);
 Love/Hate i Three-Bucket = playbook HHL (`02`), nie tabela; Shadow AI =
-proces onboardingu; Blast radius / Ten-Decisions = runbook; Closet sprint =
-`/refaktor` + jeden obszar danych — **nie** wycinanie 60 % planu.
+proces onboardingu; Closet sprint = `/refaktor` + jeden obszar danych —
+**nie** wycinanie 60 % planu.
+
+Pięć jobów z audytu GPT (`REQUIREMENT`, leftover, nie nowy BC, nie 468.0):
+
+1. **Definicja KPI per strona rynku** — ten sam skrót (OTD / OTIF) może mieć
+   inną formułę u HHL, klienta, przewoźnika i wieży. `GLOSSARY` pilnuje *naszych*
+   nazw. Leftover: słownik definicji z właścicielem i źródłem prawdy; AI nie
+   wymyśla wzoru. Nie pasek „72 % readiness”. W PLAN: AI5.0 + wiersz `otif_mark`.
+2. **Brama przed L3** — zanim `autonomy_level` wejdzie na 3: jest źródło prawdy,
+   właściciel danych, kto łapie wyjątek, rollback, audit. Checklist produktu,
+   nie silnik. W PLAN: **AI8.2** (+ AI5.0 przy pierwszym ingestcie).
+3. **SOP agenta — jedna strona** — po co jest, jakie dane, read/write, kiedy
+   woła człowieka, log, rollback, kto jest właścicielem. `customer_sop` to SOP
+   klienta, nie kontrakt agenta. W PLAN: **AI8.2**.
+4. **Najpierw ulga, nie sens pracy** — priorytet automatyzacji: to, czego
+   operator nienawidzi, nie to, czym jest jego rzemiosło. Zasada kolejki BR/AI,
+   nie scoring `Pain × Frequency` w bazie.
+5. **Promień wybuchu przed zapisem** — co najgorszego zrobi agent, zanim
+   dostanie write. Runbook przy L3. W PLAN: **AI8.2**. Nie Ten-Decisions jako
+   silnik.
 
 **`REJECTED`:** Mission Control jako produkt; 40 agentów; Bertha / CoS tenanta;
 OMNI READINESS ENGINE jako osobny BC; warstwa semantyczna jako osobny BC;

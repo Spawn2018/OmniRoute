@@ -716,14 +716,14 @@ Dump CT `03` i TMS `04b` **potwierdzają leftover silników** (jeden `charge`, H
 | AI4.0 | `plan_snapshot` z FK do shipment/trip/resource | po AI1; **Q3=tak** | **452.0 DONE** FK złożone RESTRICT; leftover: AI4.1 · CASCADE `REJECTED` |
 | AI4.1 | silnik what-if na `counterfactual_run` | po AI4.0 | **453.0 DONE** FK przebieg→migawka + widok `what_if_replay`; leftover: solver liczb · AI4.2 · JSON dźwigni; analog Kinaxis Maestro / scenariusz = HITL, nie live (`03` B.6) |
 | AI4.2 | symulacja kółek **w SQL**, do 500k wariantów | po AI4.1 | **454.0 DONE** widok `circle_sim_pair`; leftover: generator 500k · km · VRP |
-| AI5.0 | warstwa ingest danych zewnętrznych + `data_source` z licencją | po AI1.4 | katalog: badania `09` / `10` |
+| AI5.0 | warstwa ingest danych zewnętrznych + `data_source` z licencją | po AI1.4 | katalog: badania `09` / `10`; leftover: brama „źródło prawdy + właściciel + wyjątek” przed pierwszym ingestem produkcyjnym; definicja KPI per strona (OTD/OTIF) — AI nie wymyśla wzoru; nie OMNI READINESS ENGINE; nie pasek 72 % |
 | AI5.1 | cechy modelu predykcyjnego z danych zewnętrznych | po AI5.0 | podnosi V2/V4 |
 | AI6.0 | graf skutku biznesowego: Shipment → Inventory → SKU → Production Line → Customer Order → Revenue → Margin → Cash | po AI5.1 + CI1 | Watch Tower technicznie; podnosi V6 leftover EBITDA i CT |
 | AI7.0 | Cost Allocation Engine — 12 poziomów, 6 kategorii, 23 klucze → `TRUE CONTRIBUTION MARGIN` | po AI0 | marża zostaje w `margin()` |
 | AI7.1 | Cyfrowy CFO — narracja **po** SQL, nigdy zamiast | po AI7.0 | anomalia nie jest dowodem; model nie liczy |
 | AI8.0 | kaskada stylu Global → Company → Department → User → Customer → Person-to-Person → Context | po AI2.0 | bliźniak osoby = styl i relacja, nigdy ocena wyników |
 | AI8.1 | `STYLE FIDELITY SCORE`, bramka 85% | po AI8.0 | szkic niebrzmiący jak ten użytkownik nie jest proponowany |
-| AI8.2 | poziomy autonomii 0–5 jako dana per tenant i per klient, domyślnie 1 | po AI9.2; **Q1=tak** | L0–2 bez zapisu AI; L3–5 tylko w zapisanych granicach + audit; auto-zejście jakości przed L3 (Q2); dump `04b`: Shipwell/Uber/SAP AI-write = zakaz; MQ nie zdejmuje HC-04 |
+| AI8.2 | poziomy autonomii 0–5 jako dana per tenant i per klient, domyślnie 1 | po AI9.2; **Q1=tak** | L0–2 bez zapisu AI; L3–5 tylko w zapisanych granicach + audit; auto-zejście jakości przed L3 (Q2); leftover: brama L3 (SoT + owner + wyjątek + rollback) · SOP agenta 1 strona · promień wybuchu przed write · priorytet „ulga nie sens”; nie scoring Pain×Frequency; nie Bertha; dump `04b`: Shipwell/Uber/SAP AI-write = zakaz; MQ nie zdejmuje HC-04 |
 | AI9.0 | etykieta art. 50 przy treści z modelu | równolegle od AI3 | AI Act |
 | AI9.1 | przeciwdziałanie automation bias w interfejsie | równolegle od AI3 | AI Act art. 14 ust. 4 lit. b |
 | AI9.2 | rejestr ryzyka + program zgodności | przed AI8.2 | warunek wejścia na poziom 3 |

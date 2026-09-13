@@ -68,3 +68,4 @@ Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll �
 **2026-09-13:** Dump TMS top-10 (badania `04b` A–H × 10) w kanonie VISION + PLAN Fala AI/BR. CargoWise/Qargo/interLAN zostają w `04`.
 **2026-09-13:** Cloudflare = bramka publikacji (VISION B.8; PLAN park live public). Access ≠ Auth0 S53. Nie Q `/noc`.
 **2026-09-13:** Scalenie docs (Murphy/GPT filtr D.7, C.3 Grupa 8, PLAN żywy + `PLAN-HISTORIA.md`, leftover Plat-HD/Mob). Następny nadal **468.0**. Nie AI0. Nie Expo. Nie Valhalla.
+**2026-09-13:** Leftover GPT (D.7): definicja KPI per strona · brama L3 · SOP agenta · ulga nie sens · promień wybuchu — na AI5.0 / AI8.2 / GLOSSARY. Następny nadal **468.0**.
