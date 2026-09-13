@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **458.0** BR2.1 — HITL `telematics_device` (katalog urządzenia) **Następny:** **459.0** HITL zgoda na śledzenie. Nie live GPS. Nie poll.
+**Stan (z CURRENT.md):** **458.0** BR2.1 — HITL `telematics_device` (katalog urządzenia) **Następny:** **459.0** HITL zgoda na śledzenie. Nie live GPS. Nie kolumna na kontakcie.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

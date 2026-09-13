@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **458.0** BR2.1 — HITL `telematics_device` (katalog urządzenia). **Etap:** Plan — **459.0** BR2.2 zgoda na śledzenie. Brak delty. `/plan-modul`. **Następny:** **459.0** HITL zgoda na śledzenie. Nie live GPS. Nie poll. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **458.0** BR2.1 — HITL `telematics_device` (katalog urządzenia). **Etap:** plaster — **459.0** BR2.2 `tracking_consent`. Delta zaakceptowana (`/noc`). Wolno `/plaster`. **Następny:** **459.0** HITL zgoda na śledzenie. Nie live GPS. Nie kolumna na kontakcie. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

@@ -88,6 +88,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | **457.0** `position_event` w kodzie (`CONFIRMED`, git). Następny = **BR2.1** urządzenie (`REQUIREMENT`). Live GPS / AI5 `REJECTED` na tym wierszu. |
 | 2026-09-13 | BR2.1 plan (**458.0**): HITL `telematics_device`. Parowanie / live GPS `REJECTED` na tym wierszu. |
 | 2026-09-13 | **458.0** `telematics_device` w kodzie (`CONFIRMED`, git). Następny = **BR2.2** zgoda (`REQUIREMENT`). Parowanie / AI5 `REJECTED` na tym wierszu. |
+| 2026-09-13 | BR2.2 plan (**459.0**): HITL `tracking_consent`. Kolumna na `party_contact` / live GPS `REJECTED` na tym wierszu. |
 
 ---
 
@@ -212,6 +213,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | **457.0** w kodzie (`CONFIRMED`, git). Katalog zdarzenia pozycji. Następny = **BR2.1** (`REQUIREMENT`). Współrzędne / poll leftover. | CURRENT + plaster 457.0 `/noc` |
 | 2026-09-13 | BR2.1 (**458.0**) = HITL `telematics_device` (`tracker|fault|other`). Parowanie / live GPS `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
 | 2026-09-13 | **458.0** w kodzie (`CONFIRMED`, git). Katalog urządzenia. Następny = **BR2.2** (`REQUIREMENT`). Parowanie leftover. | CURRENT + plaster 458.0 `/noc` |
+| 2026-09-13 | BR2.2 (**459.0**) = HITL `tracking_consent` (`party|driver|other`). Kolumna na kontakcie / live GPS `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
 
 ---
 ---

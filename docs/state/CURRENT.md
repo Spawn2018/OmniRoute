@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **458.0** BR2.1 — HITL `telematics_device` (katalog urządzenia)
 
-**Etap:** Plan — **459.0** BR2.2 zgoda na śledzenie. Brak delty. `/plan-modul`.
+**Etap:** plaster — **459.0** BR2.2 `tracking_consent`. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
 
 **Noc:** `/noc 20` do **2026-09-13T20:00+02**.
 
-**Następny:** **459.0** HITL zgoda na śledzenie. Nie live GPS. Nie poll.
+**Następny:** **459.0** HITL zgoda na śledzenie. Nie live GPS. Nie kolumna na kontakcie.
 
 Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 459.0. Nie otwieraj AI0. Nie startuj leftover Valhalla / pipeline / parowanie live.
 
-**Spec (jedyna na sesję):** brak — /plan-modul
+**Spec (jedyna na sesję):** [docs/deltas/open/459.0-tracking-consent.md](../deltas/open/459.0-tracking-consent.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 
