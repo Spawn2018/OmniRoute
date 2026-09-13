@@ -15338,6 +15338,36 @@
         ]
       }
     },
+    "/api/v1/version-windows": {
+      "get": {
+        "tags": [
+          "version-windows"
+        ],
+        "summary": "List Version Windows",
+        "operationId": "list_version_windows_api_v1_version_windows_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/VersionWindowResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Version Windows Api V1 Version Windows Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/demo-gps-marks": {
       "get": {
         "tags": [
@@ -44418,6 +44448,46 @@
           "avg_crps"
         ],
         "title": "VersionScoreResponse"
+      },
+      "VersionWindowResponse": {
+        "properties": {
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "model_version": {
+            "type": "string",
+            "title": "Model Version"
+          },
+          "created_on": {
+            "type": "string",
+            "format": "date",
+            "title": "Created On"
+          },
+          "pair_count": {
+            "type": "integer",
+            "title": "Pair Count"
+          },
+          "avg_mae": {
+            "type": "string",
+            "title": "Avg Mae"
+          },
+          "avg_crps": {
+            "type": "string",
+            "title": "Avg Crps"
+          }
+        },
+        "type": "object",
+        "required": [
+          "organization_id",
+          "model_version",
+          "created_on",
+          "pair_count",
+          "avg_mae",
+          "avg_crps"
+        ],
+        "title": "VersionWindowResponse"
       },
       "VisibilityConnectorCreate": {
         "properties": {

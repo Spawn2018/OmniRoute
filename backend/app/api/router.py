@@ -248,6 +248,7 @@ from app.api import (
     un_segregation_marks,
     vda_odette_marks,
     version_scores,
+    version_windows,
     visibility_connectors,
     war_room_marks,
     weather_observations,
@@ -438,6 +439,7 @@ api_router.include_router(outcome_kinds.router)
 api_router.include_router(outcome_ledgers.router)
 api_router.include_router(interval_scores.router)
 api_router.include_router(version_scores.router)
+api_router.include_router(version_windows.router)
 api_router.include_router(demo_gps_marks.router)
 api_router.include_router(demo_sim_marks.router)
 api_router.include_router(demo_wipe_marks.router)

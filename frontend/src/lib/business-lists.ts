@@ -202,6 +202,10 @@ export const BUSINESS_LISTS = {
     route: "/version-scores",
     tableKey: "version_score",
   },
+  versionWindow: {
+    route: "/version-windows",
+    tableKey: "version_window",
+  },
   outcomeKind: {
     route: "/outcome-kinds",
     tableKey: "outcome_kind",
@@ -484,6 +488,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/outcome-ledgers",
   "/interval-scores",
   "/version-scores",
+  "/version-windows",
   "/outcome-kinds",
   "/counterfactual-runs",
   "/benefit-ledgers",

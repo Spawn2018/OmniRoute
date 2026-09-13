@@ -13973,6 +13973,36 @@ export type VersionScoreResponse = {
 };
 
 /**
+ * VersionWindowResponse
+ */
+export type VersionWindowResponse = {
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Model Version
+     */
+    model_version: string;
+    /**
+     * Created On
+     */
+    created_on: string;
+    /**
+     * Pair Count
+     */
+    pair_count: number;
+    /**
+     * Avg Mae
+     */
+    avg_mae: string;
+    /**
+     * Avg Crps
+     */
+    avg_crps: string;
+};
+
+/**
  * VisibilityConnectorCreate
  */
 export type VisibilityConnectorCreate = {
@@ -23229,6 +23259,24 @@ export type ListVersionScoresApiV1VersionScoresGetResponses = {
 };
 
 export type ListVersionScoresApiV1VersionScoresGetResponse = ListVersionScoresApiV1VersionScoresGetResponses[keyof ListVersionScoresApiV1VersionScoresGetResponses];
+
+export type ListVersionWindowsApiV1VersionWindowsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/version-windows';
+};
+
+export type ListVersionWindowsApiV1VersionWindowsGetResponses = {
+    /**
+     * Response List Version Windows Api V1 Version Windows Get
+     *
+     * Successful Response
+     */
+    200: Array<VersionWindowResponse>;
+};
+
+export type ListVersionWindowsApiV1VersionWindowsGetResponse = ListVersionWindowsApiV1VersionWindowsGetResponses[keyof ListVersionWindowsApiV1VersionWindowsGetResponses];
 
 export type ListDemoGpsMarksApiV1DemoGpsMarksGetData = {
     body?: never;

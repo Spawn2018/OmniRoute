@@ -81,6 +81,7 @@ def test_authorization_model_includes_table_view_permission() -> None:
     assert "can_manage_outcome_ledgers" in org.relations
     assert "can_manage_interval_scores" in org.relations
     assert "can_manage_version_scores" in org.relations
+    assert "can_manage_version_windows" in org.relations
     assert "can_manage_counterfactual_runs" in org.relations
     assert "can_manage_benefit_ledgers" in org.relations
     assert "can_manage_suggestion_kinds" in org.relations
@@ -319,6 +320,9 @@ def test_authorization_model_includes_table_view_permission() -> None:
     version_scores = org.relations["can_manage_version_scores"]
     assert version_scores.computed_userset is not None
     assert version_scores.computed_userset.relation == "member"
+    version_windows = org.relations["can_manage_version_windows"]
+    assert version_windows.computed_userset is not None
+    assert version_windows.computed_userset.relation == "member"
     counterfactual_runs = org.relations["can_manage_counterfactual_runs"]
     assert counterfactual_runs.computed_userset is not None
     assert counterfactual_runs.computed_userset.relation == "member"

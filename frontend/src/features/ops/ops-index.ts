@@ -939,6 +939,11 @@ export const OPS_JOBS = [
     job: "średnie MAE/CRPS per model_version",
   },
   {
+    route: BUSINESS_LISTS.versionWindow.route,
+    label: "Wynik okna wersji",
+    job: "średnie MAE/CRPS per model_version i dzień UTC",
+  },
+  {
     route: BUSINESS_LISTS.counterfactualRun.route,
     label: "Przebieg what-if",
     job: "katalog counterfactual_run HITL",
@@ -1664,6 +1669,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "441.0": "/outcome-kinds",
   "443.0": "/interval-scores",
   "444.0": "/version-scores",
+  "445.0": "/version-windows",
 } as const
 
 

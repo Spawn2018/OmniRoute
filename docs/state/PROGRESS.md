@@ -830,3 +830,5 @@
 - 2026-09-13T11:20:00Z ? 443.0 ? interval_score ? DONE ? widok MAE/CRPS SQL ? migracja 353
 
 - 2026-09-13T11:55:00Z ? 444.0 ? version_score ? DONE ? srednie MAE/CRPS per model_version ? migracja 354
+
+- 2026-09-13T12:00:00Z ? 445.0 ? version_window ? DONE ? srednie MAE/CRPS per model_version i dzien UTC ? migracja 355

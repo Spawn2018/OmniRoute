@@ -61,6 +61,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | AI2.1 plan (**444.0**): widok `version_score` średnie MAE/CRPS per `model_version`. Auto-champion i dryf = leftover. |
 | 2026-09-13 | **444.0** `version_score` w kodzie (`CONFIRMED`, git). Następny = leftover dryf (**445.0**, `REQUIREMENT`). Auto-champion `REJECTED`. |
 | 2026-09-13 | AI2.1 leftover plan (**445.0**): widok `version_window` średnie MAE/CRPS per `model_version` i dzień UTC z `created_at`. Detektor/próg i auto-champion = leftover. |
+| 2026-09-13 | **445.0** `version_window` w kodzie (`CONFIRMED`, git). Następny = leftover wpisu metryki na `prediction_ledger` (**446.0**, `REQUIREMENT`). Detektor/próg `REJECTED`. Auto-champion `REJECTED`. |
 
 ---
 
@@ -158,6 +159,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | AI2.1 (**444.0**) = `version_score`: średnie MAE/CRPS per wersja modelu. Auto-champion / dryf `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION B.2 |
 | 2026-09-13 | **444.0** `version_score` w kodzie (`CONFIRMED`, git). Następny = leftover dryf **445.0** (`REQUIREMENT`). Auto-champion `REJECTED`. | CURRENT + plaster 444.0 `/noc` |
 | 2026-09-13 | AI2.1 leftover (**445.0**) = `version_window`: średnie per wersja i dzień. Detektor/próg `REJECTED`. Auto-champion `REJECTED`. | `/plan-modul` `/noc`; VISION B.2 |
+| 2026-09-13 | **445.0** `version_window` w kodzie (`CONFIRMED`, git). Następny = zamknięcie wpisu CRPS/MAE na `prediction_ledger` (**446.0**, `REQUIREMENT`). Detektor/próg i auto-champion `REJECTED`. Brier zostaje leftover (brak p). | CURRENT + plaster 445.0 `/noc` |
 
 ---
 ---
@@ -498,10 +500,11 @@ plus funkcja SQL `IMMUTABLE`. MAE = odległość od środka przedziału. CRPS = 
 zamknięty dla rozkładu jednostajnego na `[low, high]`. Brier (`REJECTED` na 443.0)
 wymaga prawdopodobieństwa, którego ledger nie ma. Champion/dryf = AI2.1
 (`REQUIREMENT`). **444.0 (`CONFIRMED`, git `/noc`):** widok `version_score`
-pokazuje średnie, nie przełącza modelu. Dryf = leftover **445.0** (`REQUIREMENT`): widok dzienny `version_window`,
-nie detektor. Auto-champion `REJECTED`. `prediction_ledger` nadal przyjmuje
-wpisaną metrykę (`REQUIREMENT` leftover fali) aż warunek zakończenia AI2
-w tabeli E.
+pokazuje średnie, nie przełącza modelu. **445.0 (`CONFIRMED`, git `/noc`):**
+widok `version_window` pokazuje średnie per dzień UTC z `created_at`, nie stawia
+flagi dryfu. Detektor/próg `REJECTED`. Auto-champion `REJECTED`.
+`prediction_ledger` nadal przyjmuje wpisaną metrykę (`REQUIREMENT` leftover
+**446.0**) aż warunek zakończenia AI2 w tabeli E.
 
 **`counterfactual_run`** — bliźniak w sensie operacyjnym: nazwany scenariusz,
 punkt odniesienia, lista przestawionych dźwigni, wynik. Niemutowalny i odtwarzalny,
@@ -780,10 +783,10 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | nazwy z PDF-ów bez wiersza w planie | **136** (z czego 28 to aliasy) |
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
-Ostatni ukończony plaster: **444.0** (`version_score` średnie MAE/CRPS).
-Następny = **445.0** `version_window` (`REQUIREMENT`). AI1.0–AI1.4, 443.0 i 444.0
-są w kodzie (`CONFIRMED`); `data_source` zostaje w AI5
-(`REQUIREMENT`). Teza B.1 zostaje: szerokość katalogów nie zastępuje pomiaru.
+Ostatni ukończony plaster: **445.0** (`version_window` średnie per dzień UTC).
+Następny = **446.0** zamknięcie wpisu metryki na `prediction_ledger` (`REQUIREMENT`).
+AI1.0–AI1.4, 443.0, 444.0 i 445.0 są w kodzie (`CONFIRMED`); `data_source`
+zostaje w AI5 (`REQUIREMENT`). Teza B.1 zostaje: szerokość katalogów nie zastępuje pomiaru.
 
 ## C.2 Bliźniaki — scalona taksonomia
 
