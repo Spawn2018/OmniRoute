@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **464.0** BR3.1 — HITL `load_order_mark`
 
-**Etap:** Plan — **465.0** BR3.3 tacho jako ograniczenie planu.
+**Etap:** Plaster — **465.0** BR3.3 tacho jako ograniczenie planu. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
 
 **Noc:** `/noc 7` do **2026-09-14T07:00+02**.
 
-**Następny:** **465.0** tacho jako ograniczenie planu. Nie raport po fakcie. Nie live DDD.
+**Następny:** **465.0** HITL `tacho_plan_mark`. Nie live DDD. Nie solver godzin.
 
 Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 465.0. Nie otwieraj AI0. Nie startuj leftover Valhalla / silnik hubów / solver załadunku / Expo / Alpega / HubSpot.
 
-**Spec (jedyna na sesję):** brak — `/plan-modul` na 465.0
+**Spec (jedyna na sesję):** [deltas/open/465.0.md](../deltas/open/465.0.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 

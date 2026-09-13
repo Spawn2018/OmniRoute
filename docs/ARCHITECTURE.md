@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **464.0** BR3.1 — HITL `load_order_mark`. **Etap:** Plan — **465.0** BR3.3 tacho jako ograniczenie planu. **Następny:** **465.0** tacho jako ograniczenie planu. Nie raport po fakcie. Nie live DDD. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **464.0** BR3.1 — HITL `load_order_mark`. **Etap:** Plaster — **465.0** BR3.3 tacho jako ograniczenie planu. Delta zaakceptowana (`/noc`). Wolno `/plaster`. **Następny:** **465.0** HITL `tacho_plan_mark`. Nie live DDD. Nie solver godzin. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

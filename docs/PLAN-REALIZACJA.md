@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **465.0** tacho jako ograniczenie planu. Nie raport po fakcie. Nie live DDD.
+**Następny:** **465.0** HITL `tacho_plan_mark`. Nie live DDD. Nie solver godzin.
 <!-- os-status:end -->
 
 ```mermaid
@@ -798,7 +798,7 @@ Dump TMS `04b`: WMS nie jest dekoracją (Manhattan Active TM+WMS+Yard+Labour, In
 | BR3.0 | planowanie tras — **solver, nie model językowy** | **start HHL** | **455.0** DONE HITL `route_plan_mark`; leftover: Valhalla · VRP · km |
 | BR3.1 | planowanie załadunku: osie, wymiary, kolejność, tunele | po BR3.0 | **464.0** DONE HITL `load_order_mark`; leftover: solver · wymiary Decimal |
 | BR3.2 | dyspozytor drobnicy: linie, huby, cutoffy, konsolidacja | po D1/D5 | **463.0** DONE HITL `groupage_dispatcher_mark`; leftover: silnik hubów · konsolidacja |
-| BR3.3 | tacho jako **ograniczenie planu**, nie raport po fakcie | po BR3.0 + V7 | |
+| BR3.3 | tacho jako **ograniczenie planu**, nie raport po fakcie | po BR3.0 + V7 | **465.0** delta HITL `tacho_plan_mark`; nie live DDD; office zostaje |
 | BR4.0 | promy: rezerwacja, okna, art. 9 | po T | podnosi EXP2.13 |
 | BR4.1 | ładunki ponadnormatywne: zezwolenia, pilotaż, trasa specjalna | po BR3.1 | podnosi G5 |
 | BR4.2 | konsolidacja morska LCL: konsole, CFS | po D | |

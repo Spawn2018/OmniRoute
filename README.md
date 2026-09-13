@@ -88,8 +88,8 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **464.0** BR3.1 — HITL `load_order_mark`
-- **Etap:** Plan — **465.0** BR3.3 tacho jako ograniczenie planu.
-- **Następny:** **465.0** tacho jako ograniczenie planu. Nie raport po fakcie. Nie live DDD.
+- **Etap:** Plaster — **465.0** BR3.3 tacho jako ograniczenie planu. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
+- **Następny:** **465.0** HITL `tacho_plan_mark`. Nie live DDD. Nie solver godzin.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

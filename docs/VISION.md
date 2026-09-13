@@ -100,6 +100,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | **463.0** `groupage_dispatcher_mark` w kodzie (`CONFIRMED`, git). Następny = **BR3.1** planowanie załadunku (`REQUIREMENT`). Silnik hubów / Expo / AI5 `REJECTED` na tym wierszu. |
 | 2026-09-13 | BR3.1 plan (**464.0**): HITL `load_order_mark`. Solver / wymiary Decimal / klej do `load_plan_mark` `REJECTED` na tym wierszu. |
 | 2026-09-13 | **464.0** `load_order_mark` w kodzie (`CONFIRMED`, git). Następny = **BR3.3** tacho w planie (`REQUIREMENT`). Solver / Expo / AI5 `REJECTED` na tym wierszu. |
+| 2026-09-13 | BR3.3 plan (**465.0**): HITL `tacho_plan_mark`. Live DDD / solver godzin / klej do `tacho_office_mark` `REJECTED` na tym wierszu. |
 
 ---
 
@@ -236,6 +237,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | **463.0** w kodzie (`CONFIRMED`, git). Katalog stance dyspozytora. Następny = **BR3.1** (`REQUIREMENT`). Silnik hubów leftover. | CURRENT + plaster 463.0 `/noc` |
 | 2026-09-13 | BR3.1 (**464.0**) = HITL `load_order_mark` (`sequence|stack|door|other`). Solver / wymiary Decimal / klej do G6 `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
 | 2026-09-13 | **464.0** w kodzie (`CONFIRMED`, git). Katalog kolejności załadunku. Następny = **BR3.3** (`REQUIREMENT`). Solver leftover. | CURRENT + plaster 464.0 `/noc` |
+| 2026-09-13 | BR3.3 (**465.0**) = HITL `tacho_plan_mark` (`plan|window|rest|other`). Live DDD / solver godzin / klej do office `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
 
 ---
 ---
@@ -864,7 +866,7 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
 Ostatni ukończony plaster: **464.0** (HITL `load_order_mark`).
-Następny = **465.0** BR3.3 tacho jako ograniczenie planu (`REQUIREMENT`).
+Następny = **465.0** BR3.3 HITL `tacho_plan_mark` (`REQUIREMENT`).
 AI1.0–AI1.4 oraz 443.0–464.0 są w kodzie (`CONFIRMED`); `data_source`
 zostaje w AI5 (`REQUIREMENT`). Teza B.1 zostaje: szerokość katalogów nie zastępuje pomiaru.
 
@@ -933,7 +935,9 @@ bo bez ewidencji magazynowej nie ma zastawu na towarze.
 - **Dyspozytor drobnicy** — katalog HITL `groupage_dispatcher_mark` jest
   (`CONFIRMED`, 463.0); leftover silnik hubów / konsolidacja (`REQUIREMENT`).
   Klej do `groupage_line` `REJECTED` na katalogu.
-- **Tacho w planowaniu** — czas pracy kierowcy jako ograniczenie planu, nie raport po fakcie
+- **Tacho w planowaniu** — plan **465.0** HITL `tacho_plan_mark`
+  (`REQUIREMENT`); `tacho_office_mark` zostaje office/card/ddd. Live DDD /
+  solver godzin `REJECTED` na tym wierszu.
 - **Symulacja kółek** — do 500 tysięcy wariantów, liczona w SQL
 
 **Grupa 4 — gałęzie transportu bez pokrycia.**
