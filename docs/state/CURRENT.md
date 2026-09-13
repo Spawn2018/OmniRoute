@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **462.0** BR6.5 — HITL `campaign_mark`
 
-**Etap:** Plan — **463.0** BR3.2 dyspozytor drobnicy. Brak delty. `/plan-modul`.
+**Etap:** Plaster — **463.0** BR3.2 dyspozytor drobnicy. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
 
-**Noc:** `/noc 20` do **2026-09-13T20:00+02**.
+**Noc:** `/noc 7` do **2026-09-14T07:00+02**.
 
-**Następny:** **463.0** HITL dyspozytor drobnicy. Nie silnik hubów. Nie live.
+**Następny:** **463.0** HITL `groupage_dispatcher_mark`. Nie silnik hubów. Nie live.
 
 Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 463.0. Nie otwieraj AI0. Nie startuj leftover Valhalla / atrybucja live / Expo / Alpega / HubSpot.
 
-**Spec (jedyna na sesję):** brak — `/plan-modul`
+**Spec (jedyna na sesję):** [deltas/open/463.0.md](../deltas/open/463.0.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 

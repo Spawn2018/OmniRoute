@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **462.0** BR6.5 — HITL `campaign_mark`. **Etap:** Plan — **463.0** BR3.2 dyspozytor drobnicy. Brak delty. `/plan-modul`. **Następny:** **463.0** HITL dyspozytor drobnicy. Nie silnik hubów. Nie live. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **462.0** BR6.5 — HITL `campaign_mark`. **Etap:** Plaster — **463.0** BR3.2 dyspozytor drobnicy. Delta zaakceptowana (`/noc`). Wolno `/plaster`. **Następny:** **463.0** HITL `groupage_dispatcher_mark`. Nie silnik hubów. Nie live. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

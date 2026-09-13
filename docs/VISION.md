@@ -96,6 +96,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | **461.0** `shipper_tender_mark` w kodzie (`CONFIRMED`, git). Następny = **BR6.5** marketing (`REQUIREMENT`). Expo BR6.3 / AI5 `REJECTED` na tym wierszu. |
 | 2026-09-13 | BR6.5 plan (**462.0**): HITL `campaign_mark`. Atrybucja live / klej do `funnel_mark` `REJECTED` na tym wierszu. |
 | 2026-09-13 | **462.0** `campaign_mark` w kodzie (`CONFIRMED`, git). Następny = **BR3.2** dyspozytor drobnicy (`REQUIREMENT`). Atrybucja live / Expo BR6.3 / AI5 `REJECTED` na tym wierszu. |
+| 2026-09-13 | BR3.2 plan (**463.0**): HITL `groupage_dispatcher_mark`. Silnik hubów / klej do `groupage_line` `REJECTED` na tym wierszu. |
 
 ---
 
@@ -228,6 +229,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | **461.0** w kodzie (`CONFIRMED`, git). Katalog trybu załadowcy. Następny = **BR6.5** (`REQUIREMENT`). Rundy leftover. Expo BR6.3 park. | CURRENT + plaster 461.0 `/noc` |
 | 2026-09-13 | BR6.5 (**462.0**) = HITL `campaign_mark` (`campaign|attribution|other`). Atrybucja live / `funnel_mark` `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
 | 2026-09-13 | **462.0** w kodzie (`CONFIRMED`, git). Katalog kampanii. Następny = **BR3.2** (`REQUIREMENT`). Atrybucja leftover. Expo BR6.3 park. | CURRENT + plaster 462.0 `/noc` |
+| 2026-09-13 | BR3.2 (**463.0**) = HITL `groupage_dispatcher_mark` (`line|hub|cutoff|consol|other`). Silnik hubów / klej do `groupage_line` `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
 
 ---
 ---
@@ -920,7 +922,9 @@ bo bez ewidencji magazynowej nie ma zastawu na towarze.
 - **Planowanie tras** — katalog HITL `route_plan_mark` jest (`CONFIRMED`, 455.0);
   leftover solver Valhalla / VRP / km (`REQUIREMENT`, patrz D.3). Nie model językowy.
 - **Planowanie załadunku** — osie, wymiary, kolejność, ograniczenia tunelowe
-- **Dyspozytor drobnicy** — linie, huby, cutoffy, konsolidacja
+- **Dyspozytor drobnicy** — plan **463.0** HITL `groupage_dispatcher_mark`
+  (`REQUIREMENT`); silnik hubów / konsolidacja leftover (`REQUIREMENT`).
+  Klej do `groupage_line` `REJECTED` na tym wierszu.
 - **Tacho w planowaniu** — czas pracy kierowcy jako ograniczenie planu, nie raport po fakcie
 - **Symulacja kółek** — do 500 tysięcy wariantów, liczona w SQL
 
