@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **449.0** AI3.2 — `payload.extract_path` text|image (etykieta)
-- **Etap:** plaster — **450.0** AI3.3 golden. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
-- **Następny:** **450.0** własny zbiór golden + bramka pytest. Nie liczby z papieru. Nie Excel. Nie live vision.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **450.0** AI3.3 — własny golden + bramka pytest
+- **Etap:** Plan — **451.0** AI3.4 Excel. Wolno `/plan-modul`. Zero kodu.
+- **Następny:** **451.0** ekstrakcja z Excela. Nie live vision. Nie liczby z papieru. Nie zapis z modelu.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

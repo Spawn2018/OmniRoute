@@ -1,0 +1,12 @@
+[
+  {
+    "source_ref": "doc://promptfoo/thc",
+    "input_text": "THC 100 EUR",
+    "expected": [{"code": "THC", "amount_text": "100", "currency": "EUR"}]
+  },
+  {
+    "source_ref": "doc://promptfoo/baf",
+    "input_text": "BAF 12 USD; weekend note",
+    "expected": [{"code": "BAF", "amount_text": "12", "currency": "USD"}]
+  }
+]

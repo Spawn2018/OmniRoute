@@ -47,6 +47,29 @@ def require_extract_path(raw: object) -> str:
     return token
 
 
+def _golden_triple(row: object) -> tuple[str, str, str]:
+    if type(row) is not dict:
+        raise InvalidExtractionDraft("kandydat golden musi być obiektem")
+    code = row.get("code")
+    amount_text = row.get("amount_text")
+    currency = row.get("currency")
+    if type(code) is not str or type(amount_text) is not str or type(currency) is not str:
+        raise InvalidExtractionDraft("kandydat golden: code, amount_text, currency")
+    return (code, amount_text, currency)
+
+
+def unmatched_golden_candidates(actual: object, expected: object) -> list[tuple[str, str, str]]:
+    if type(actual) is not list or type(expected) is not list:
+        raise InvalidExtractionDraft("listy kandydatów golden")
+    got = {_golden_triple(row) for row in actual}
+    missing: list[tuple[str, str, str]] = []
+    for row in expected:
+        triple = _golden_triple(row)
+        if triple not in got:
+            missing.append(triple)
+    return missing
+
+
 def require_rate_candidates_editable(draft_kind: object) -> None:
     if draft_kind != _RATE:
         raise ExtractionCandidatesNotEditable("edycja kandydatów tylko dla szkicu rate_line")
