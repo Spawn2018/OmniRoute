@@ -3,7 +3,7 @@
 ```
 status:        roboczy kanon
 wersja:        0.3
-ostatnia zmiana: 2026-09-13 07:55
+ostatnia zmiana: 2026-09-13 08:05
 ```
 
 ## Jak czytać
@@ -40,6 +40,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | **433.0** `outcome_ledger` w kodzie. Następny = AI1.2 `counterfactual_run`. CRPS liczone = AI2. |
 | 2026-09-13 | AI1.2 plan (**434.0**): HITL `counterfactual_run` etykiety. Silnik = AI4.1. |
 | 2026-09-13 | **434.0** `counterfactual_run` w kodzie. Następny = AI1.3 `benefit_ledger`. |
+| 2026-09-13 | AI1.3 plan (**435.0**): HITL `benefit_ledger` z metodą punktu odniesienia. Druga marża = zakaz. |
 
 ---
 
@@ -116,6 +117,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | **433.0** `outcome_ledger` w kodzie (`CONFIRMED`, git). Następny = **AI1.2** `counterfactual_run` (`REQUIREMENT`). CRPS liczone / FK do podpowiedzi zostają `REJECTED` na tym wierszu. | CURRENT + plaster 433.0 `/noc` |
 | 2026-09-13 | AI1.2 (**434.0**) = HITL `counterfactual_run`: `run_code` + etykiety baseline / dźwigni / wyniku. Silnik what-if `REJECTED` (AI4.1). Kwota oszczędności `REJECTED` (AI1.3). Nie klon `what_if_mark` / `plan_snapshot`. | `/plan-modul` `/noc`; VISION B.2 |
 | 2026-09-13 | **434.0** `counterfactual_run` w kodzie (`CONFIRMED`, git). Następny = **AI1.3** `benefit_ledger` (`REQUIREMENT`). Silnik what-if zostaje `REJECTED` na tym wierszu. | CURRENT + plaster 434.0 `/noc` |
+| 2026-09-13 | AI1.3 (**435.0**) = HITL `benefit_ledger`: `method_label` + `hours_saved` + `saved_amount` Decimal. Druga marża `REJECTED`. Liczenie z `charge` `REJECTED`. | `/plan-modul` `/noc`; VISION B.2 |
 
 ---
 ---
