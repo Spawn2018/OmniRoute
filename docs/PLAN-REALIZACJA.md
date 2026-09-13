@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **455.0** BR3.0 start HHL. Nie live Valhalla. Nie LLM-VRP. Nie AI5 (`data_source` = park).
+**Następny:** **455.0** HITL znacznik planu trasy. Nie Valhalla. Nie LLM-VRP.
 <!-- os-status:end -->
 
 ```mermaid
@@ -795,7 +795,7 @@ Dump TMS `04b`: WMS nie jest dekoracją (Manhattan Active TM+WMS+Yard+Labour, In
 | BR2.1 | urządzenia telematyczne: cykl życia, parowanie z pojazdem, awarie | po BR2.0 | OmniTelematics |
 | BR2.2 | zgoda na śledzenie jako dana, per kontrahent i per kierowca | po BR2.0 | `party_contact.tracking_consent` |
 | BR2.3 | aplikacja kierowcy: zlecenie, POD, skan, status, tryb offline | po BR2.1 | wzorzec offline: Briefcase Builder |
-| BR3.0 | planowanie tras — **solver, nie model językowy** | **start HHL** | Valhalla (MIT) wygrywa z ORS/VROOM na licencji |
+| BR3.0 | planowanie tras — **solver, nie model językowy** | **start HHL** | **455.0** plan `/noc` = HITL `route_plan_mark`; leftover: Valhalla · VRP · km |
 | BR3.1 | planowanie załadunku: osie, wymiary, kolejność, tunele | po BR3.0 | podnosi G6 |
 | BR3.2 | dyspozytor drobnicy: linie, huby, cutoffy, konsolidacja | po D1/D5 | |
 | BR3.3 | tacho jako **ograniczenie planu**, nie raport po fakcie | po BR3.0 + V7 | |

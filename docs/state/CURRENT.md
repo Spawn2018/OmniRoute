@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **454.0** AI4.2 — widok `circle_sim_pair` (para uzupełniająca w SQL)
 
-**Etap:** Plan — **455.0** BR3.0 planowanie tras. Spec: brak — `/plan-modul`.
+**Etap:** plaster — **455.0** BR3.0 `route_plan_mark`. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
 
 **Noc:** `/noc 20` do **2026-09-13T20:00+02**.
 
-**Następny:** **455.0** BR3.0 start HHL. Nie live Valhalla. Nie LLM-VRP. Nie AI5 (`data_source` = park).
+**Następny:** **455.0** HITL znacznik planu trasy. Nie Valhalla. Nie LLM-VRP.
 
 Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 455.0. Nie otwieraj AI0.
 
-**Spec (jedyna na sesję):** brak — `/plan-modul`
+**Spec (jedyna na sesję):** [docs/deltas/open/455.0-route-plan-mark.md](../deltas/open/455.0-route-plan-mark.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 

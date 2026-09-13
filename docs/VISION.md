@@ -80,6 +80,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | **453.0** FK przebieg + widok `what_if_replay` w kodzie (`CONFIRMED`, git). Następny = **AI4.2** kółka SQL (`REQUIREMENT`). Solver liczb `REJECTED` na tym wierszu. |
 | 2026-09-13 | AI4.2 plan (**454.0**): widok SQL pary uzupełniającej `circle_sim`. Generator 500k / km / VRP `REJECTED` na tym wierszu. |
 | 2026-09-13 | **454.0** widok `circle_sim_pair` w kodzie (`CONFIRMED`, git). Następny = **BR3.0** start HHL (`REQUIREMENT`). Generator 500k / AI5 `REJECTED` na tym wierszu. |
+| 2026-09-13 | BR3.0 plan (**455.0**): HITL `route_plan_mark`. Valhalla / LLM-VRP `REJECTED` na tym wierszu. |
 
 ---
 
@@ -196,6 +197,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | **453.0** w kodzie (`CONFIRMED`, git). FK złożone RESTRICT + widok powtórki. Następny = **AI4.2** (`REQUIREMENT`). Solver liczb `REJECTED`. | CURRENT + plaster 453.0 `/noc` |
 | 2026-09-13 | AI4.2 (**454.0**) = widok `circle_sim_pair` (samozłączenie unload↔load). Generator 500k / km `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E AI4 |
 | 2026-09-13 | **454.0** w kodzie (`CONFIRMED`, git). Para w SQL. Następny = **BR3.0** (`REQUIREMENT`). AI5 `data_source` zostaje park. | CURRENT + plaster 454.0 `/noc` |
+| 2026-09-13 | BR3.0 (**455.0**) = HITL `route_plan_mark` (`route|stop|window|other`). Valhalla `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
 
 ---
 ---
