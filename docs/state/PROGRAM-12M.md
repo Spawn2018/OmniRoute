@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **455.0** BR3.0 — HITL `route_plan_mark` (katalog planu trasy) **Następny:** **456.0** HITL okazja CRM. Nie auto-pipeline. Nie cold-send.
+**Stan (z CURRENT.md):** **456.0** BR6.0 — HITL `crm_opportunity` (katalog okazji) **Następny:** **457.0** HITL pozycja jako byt. Nie live GPS. Nie `tracking_event`.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

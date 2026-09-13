@@ -46,6 +46,7 @@ from app.api import (
     counterfactual_runs,
     credit_reviews,
     crm_leads,
+    crm_opportunities,
     csrd_marks,
     customer_contracts,
     customer_po_marks,
@@ -483,6 +484,7 @@ api_router.include_router(party_lane_scorecards.router)
 api_router.include_router(credit_reviews.router)
 api_router.include_router(csrd_marks.router)
 api_router.include_router(crm_leads.router)
+api_router.include_router(crm_opportunities.router)
 api_router.include_router(customer_sops.router)
 api_router.include_router(cutoff_marks.router)
 api_router.include_router(ports.router)

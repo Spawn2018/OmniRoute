@@ -119,6 +119,7 @@ modules =
     app.services.penalty_marks
     app.services.intervention_outcomes
     app.services.crm_leads
+    app.services.crm_opportunities
     app.services.lc_checklists
     app.services.ncts_drafts
     app.services.oog_marks
@@ -605,6 +606,9 @@ forbidden_modules =
     app.services.crm_leads
     app.repositories.crm_leads
     app.models.crm_lead
+    app.services.crm_opportunities
+    app.repositories.crm_opportunities
+    app.models.crm_opportunity
     app.services.lc_checklists
     app.repositories.lc_checklists
     app.models.lc_checklist

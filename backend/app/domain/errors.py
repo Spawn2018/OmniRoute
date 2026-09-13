@@ -826,6 +826,10 @@ class InvalidCrmLead(DomainError):
     """G1: HITL lead CRM — nie cold-send."""
 
 
+class InvalidCrmOpportunity(DomainError):
+    """BR6.0: HITL okazja CRM — nie pipeline / activity / cold-send."""
+
+
 class InvalidLcChecklist(DomainError):
     """G3: HITL checklista LC — nie bank due."""
 

@@ -83,6 +83,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | BR3.0 plan (**455.0**): HITL `route_plan_mark`. Valhalla / LLM-VRP `REJECTED` na tym wierszu. |
 | 2026-09-13 | **455.0** `route_plan_mark` w kodzie (`CONFIRMED`, git). Następny = **BR6.0** CRM ponad leada (`REQUIREMENT`). Valhalla / AI5 `REJECTED` na tym wierszu. |
 | 2026-09-13 | BR6.0 plan (**456.0**): HITL `crm_opportunity`. Activity / pipeline silnik `REJECTED` na tym wierszu. |
+| 2026-09-13 | **456.0** `crm_opportunity` w kodzie (`CONFIRMED`, git). Następny = **BR2.0** pozycja (`REQUIREMENT`). Pipeline / AI5 `REJECTED` na tym wierszu. |
 
 ---
 
@@ -202,6 +203,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | BR3.0 (**455.0**) = HITL `route_plan_mark` (`route|stop|window|other`). Valhalla `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
 | 2026-09-13 | **455.0** w kodzie (`CONFIRMED`, git). Katalog planu trasy. Następny = **BR6.0** (`REQUIREMENT`). Valhalla leftover. | CURRENT + plaster 455.0 `/noc` |
 | 2026-09-13 | BR6.0 (**456.0**) = HITL `crm_opportunity` (`open|won|lost|other`). Activity / pipeline `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
+| 2026-09-13 | **456.0** w kodzie (`CONFIRMED`, git). Katalog okazji. Następny = **BR2.0** (`REQUIREMENT`). Pipeline leftover. | CURRENT + plaster 456.0 `/noc` |
 
 ---
 ---
@@ -829,9 +831,9 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | nazwy z PDF-ów bez wiersza w planie | **136** (z czego 28 to aliasy) |
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
-Ostatni ukończony plaster: **455.0** (HITL `route_plan_mark`).
-Następny = **456.0** BR6.0 CRM ponad leada (`REQUIREMENT`).
-AI1.0–AI1.4 oraz 443.0–455.0 są w kodzie (`CONFIRMED`); `data_source`
+Ostatni ukończony plaster: **456.0** (HITL `crm_opportunity`).
+Następny = **457.0** BR2.0 pozycja jako byt (`REQUIREMENT`).
+AI1.0–AI1.4 oraz 443.0–456.0 są w kodzie (`CONFIRMED`); `data_source`
 zostaje w AI5 (`REQUIREMENT`). Teza B.1 zostaje: szerokość katalogów nie zastępuje pomiaru.
 
 ## C.2 Bliźniaki — scalona taksonomia
@@ -880,7 +882,8 @@ bo bez ewidencji magazynowej nie ma zastawu na towarze.
 - **Zabezpieczenie na towarze** — powiązanie pozycji magazynowej z finansowaniem
 
 **Grupa 2 — własna telematyka (OmniTelematics).** Koło zamachowe danych z części A.5.
-- **Pozycja jako osobny byt** — `position_event`, wyraźnie oddzielony od `tracking_event`
+- **Pozycja jako osobny byt** — `position_event` nadal brak (`REQUIREMENT`, BR2.0);
+  wyraźnie oddzielony od `tracking_event`. Live GPS `REJECTED` na katalogu.
 - **Urządzenia i ich cykl życia** — sparowanie z pojazdem, stan, awarie
 - **Zgoda na śledzenie** — jako dana, per kontrahent i per kierowca
 - **Aplikacja kierowcy** — zlecenie, POD, skan, status, komunikacja, tryb offline

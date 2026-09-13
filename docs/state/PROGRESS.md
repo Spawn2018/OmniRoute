@@ -851,3 +851,4 @@
 
 - 2026-09-13T15:15:00Z | 454.0 | circle_sim | DONE | widok circle_sim_pair unload-load; bez generatora 500k
 - 2026-09-13T15:40:00Z | 455.0 | route_plan_mark | DONE | HITL catalog plan_kind route/stop/window/other; bez Valhalla
+- 2026-09-13T16:00:00Z | 456.0 | crm_opportunity | DONE | HITL catalog stage_kind open/won/lost/other; bez pipeline

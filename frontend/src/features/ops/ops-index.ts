@@ -1265,6 +1265,11 @@ export const OPS_JOBS = [
     job: "katalog crm_lead HITL",
   },
   {
+    route: BUSINESS_LISTS.crmOpportunity.route,
+    label: "Okazja CRM",
+    job: "katalog crm_opportunity HITL",
+  },
+  {
     route: BUSINESS_LISTS.exchangeConnector.route,
     label: "Konektor giełdy",
     job: "katalog exchange_connector HITL",
@@ -1525,6 +1530,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "266.0": "/circle-sims",
   "454.0": "/circle-sims",
   "455.0": "/route-plan-marks",
+  "456.0": "/crm-opportunities",
   "267.0": "/lane-kms",
   "268.0": "/erp-connectors",
   "269.0": "/terminal-slot-connectors",
