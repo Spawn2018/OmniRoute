@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **452.0** AI4.0 — FK złożone RESTRICT na `plan_snapshot`. **Etap:** Plan — **453.0** AI4.1 silnik what-if. Brak delty. `/plan-modul`. **Następny:** **453.0** what-if na `counterfactual_run`. Nie live HTTP. Nie AI4.2. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **452.0** AI4.0 — FK złożone RESTRICT na `plan_snapshot`. **Etap:** plaster — **453.0** AI4.1 what-if replay. Delta zaakceptowana (`/noc`). Wolno `/plaster`. **Następny:** **453.0** FK przebieg → migawka + widok SQL. Nie solver. Nie AI4.2. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

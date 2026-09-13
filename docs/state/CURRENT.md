@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **452.0** AI4.0 — FK złożone RESTRICT na `plan_snapshot`
 
-**Etap:** Plan — **453.0** AI4.1 silnik what-if. Brak delty. `/plan-modul`.
+**Etap:** plaster — **453.0** AI4.1 what-if replay. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
 
 **Noc:** `/noc 20` do **2026-09-13T20:00+02**.
 
-**Następny:** **453.0** what-if na `counterfactual_run`. Nie live HTTP. Nie AI4.2.
+**Następny:** **453.0** FK przebieg → migawka + widok SQL. Nie solver. Nie AI4.2.
 
 Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 453.0. Nie otwieraj AI0.
 
-**Spec (jedyna na sesję):** brak — /plan-modul
+**Spec (jedyna na sesję):** [docs/deltas/open/453.0-what-if-replay.md](../deltas/open/453.0-what-if-replay.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 
