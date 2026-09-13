@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **466.0** BR4.0 — HITL `ferry_booking_mark`
 
-**Etap:** Plan — **467.0** BR4.1 ładunki ponadnormatywne (zezwolenia, pilotaż, trasa).
+**Etap:** Plaster — **467.0** BR4.1 OOG zezwolenie/pilotaż. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
 
 **Noc:** `/noc 7` do **2026-09-14T07:00+02**.
 
-**Następny:** **467.0** plan HITL OOG. Nie wymiary Decimal. Nie live zezwolenie.
+**Następny:** **467.0** HITL `oog_permit_mark`. Nie wymiary Decimal. Nie live zezwolenie.
 
 Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 467.0. Nie otwieraj AI0. Nie startuj leftover Valhalla / live bilet / Expo / Alpega / HubSpot.
 
-**Spec (jedyna na sesję):** brak — `/plan-modul` BR4.1
+**Spec (jedyna na sesję):** [deltas/open/467.0.md](../deltas/open/467.0.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 

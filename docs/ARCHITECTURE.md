@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **466.0** BR4.0 — HITL `ferry_booking_mark`. **Etap:** Plan — **467.0** BR4.1 ładunki ponadnormatywne (zezwolenia, pilotaż, trasa). **Następny:** **467.0** plan HITL OOG. Nie wymiary Decimal. Nie live zezwolenie. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **466.0** BR4.0 — HITL `ferry_booking_mark`. **Etap:** Plaster — **467.0** BR4.1 OOG zezwolenie/pilotaż. Delta zaakceptowana (`/noc`). Wolno `/plaster`. **Następny:** **467.0** HITL `oog_permit_mark`. Nie wymiary Decimal. Nie live zezwolenie. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
