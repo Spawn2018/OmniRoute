@@ -90,7 +90,7 @@
 | skrót hasła | password_hash | argon2id; nigdy plaintext w API |
 | pochodzenie | source_ref | obowiązkowe |
 | zastąpiona przez | superseded_by | stary wiersz wskazuje nowy; kwoty się nie nadpisuje |
-| szkic ekstrakcji | extraction_draft | HITL przed zapisem domeny |
+| szkic ekstrakcji | extraction_draft | HITL przed zapisem domeny; 447.0 PATCH `candidates` na pending |
 | szkic RFP | tender_rfp | G2.9b `draft_kind`; accept → `tender_rfp_intake`; nie zapis z LLM |
 | syntetyk ewaluacji | synthetic document | fixture extract/eval (`synth://`); zero PDF klienta |
 | stub Presidio | InstructorPresidioStub | tylko ścieżka instructor; nie każdy endpoint |

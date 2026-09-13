@@ -6,19 +6,19 @@
 
 **Ostatni plaster:** **446.0** AI2 leftover — `prediction_ledger` bez wpisanego CRPS/MAE
 
-**Etap:** Plan — **447.0** AI3.0 `PATCH` na `extraction_draft` + edycja w UI przed akceptacją. Komenda `/plan-modul`.
+**Etap:** plaster — **447.0** AI3.0 `PATCH` `extraction_draft`. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
 
 **Noc:** `/noc 20` do **2026-09-13T20:00+02**.
 
-**Następny:** **447.0** edycja szkicu ekstrakcji przed akceptacją. Nie zapis z modelu. Nie accept 1.3.
+**Następny:** **447.0** edycja `payload.candidates` na szkicu `pending` / `rate_line` przed akceptacją. Nie zapis z modelu. Nie wersja szkicu.
 
 Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 447.0. Nie otwieraj AI0.
 
-**Spec (jedyna na sesję):** brak otwartej delty — `/plan-modul` według PLAN § Fala AI AI3.0.
+**Spec (jedyna na sesję):** [docs/deltas/open/447.0-extraction-draft-patch.md](../deltas/open/447.0-extraction-draft-patch.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 
-**Uczciwość:** HITL zostaje. LLM nie liczy. `charge` = marża. Impersonate ≠ decrypt. `charge.source_ref` **jest** (129.0 / 072) — nie otwieraj plastra AI0. **AI1.0–AI1.4**, **443.0–446.0** w kodzie. `data_source` = AI5. Wpisane CRPS na nowym `prediction_ledger` **nie wchodzi**.
+**Uczciwość:** HITL zostaje. LLM nie liczy. `charge` = marża. Impersonate ≠ decrypt. `charge.source_ref` **jest** (129.0 / 072) — nie otwieraj plastra AI0. **AI1.0–AI1.4**, **443.0–446.0** w kodzie. `data_source` = AI5.
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 

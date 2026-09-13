@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **446.0** AI2 leftover — `prediction_ledger` bez wpisanego CRPS/MAE. **Etap:** Plan — **447.0** AI3.0 `PATCH` na `extraction_draft` + edycja w UI przed akceptacją. Komenda `/plan-modul`. **Następny:** **447.0** edycja szkicu ekstrakcji przed akceptacją. Nie zapis z modelu. Nie accept 1.3. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **446.0** AI2 leftover — `prediction_ledger` bez wpisanego CRPS/MAE. **Etap:** plaster — **447.0** AI3.0 `PATCH` `extraction_draft`. Delta zaakceptowana (`/noc`). Wolno `/plaster`. **Następny:** **447.0** edycja `payload.candidates` na szkicu `pending` / `rate_line` przed akceptacją. Nie zapis z modelu. Nie wersja szkicu. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **446.0** AI2 leftover — `prediction_ledger` bez wpisanego CRPS/MAE **Następny:** **447.0** edycja szkicu ekstrakcji przed akceptacją. Nie zapis z modelu. Nie accept 1.3.
+**Stan (z CURRENT.md):** **446.0** AI2 leftover — `prediction_ledger` bez wpisanego CRPS/MAE **Następny:** **447.0** edycja `payload.candidates` na szkicu `pending` / `rate_line` przed akceptacją. Nie zapis z modelu. Nie wersja szkicu.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.
