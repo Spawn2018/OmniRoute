@@ -4,24 +4,25 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **467.0** BR4.1 — HITL `oog_permit_mark`
+**Ostatni plaster:** **468.0** BR4.2 — HITL `lcl_console_mark`
 
-**Etap:** Plan — delta **468.0** zaakceptowana (`/noc`). Wolno `/plaster`.
+**Etap:** Plan — następny **BR4.3** NAC i agent nominowany. Komenda `/plan-modul`. Zero kodu produktu.
 
 **Noc:** `/noc 7` do **2026-09-14T07:00+02**.
 
-**Następny:** plaster **468.0** HITL `lcl_console_mark`. Nie live CFS. Nie druga tabela LCL.
+**Następny:** plan **469.0** (BR4.3) HITL rola NAC / agent nominowany. Nie live NAC HTTP. Nie FK do `shipment_stakeholder`.
 
-Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 468.0. Nie otwieraj AI0. Nie startuj leftover Valhalla / live CFS / Expo / Alpega / HubSpot.
+Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza BR4.3. Nie otwieraj AI0. Nie startuj leftover Valhalla / live CFS / Expo / Alpega / HubSpot.
 
-**Spec (jedyna na sesję):** [468.0](../deltas/open/468.0.md)
+**Spec (jedyna na sesję):** brak — delta po `/plan-modul`
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 
-**Uczciwość:** HITL zostaje. LLM nie liczy. `charge` = marża. Impersonate ≠ decrypt. `charge.source_ref` **jest** (129.0 / 072) — nie otwieraj plastra AI0. **AI1.0–AI1.4**, **443.0–467.0** w kodzie. `data_source` = AI5.
+**Uczciwość:** HITL zostaje. LLM nie liczy. `charge` = marża. Impersonate ≠ decrypt. `charge.source_ref` **jest** (129.0 / 072) — nie otwieraj plastra AI0. **AI1.0–AI1.4**, **443.0–468.0** w kodzie. `data_source` = AI5.
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
+**2026-09-13:** Plaster **468.0** zamknięty (`/noc`) — HITL `lcl_console_mark`.
 **2026-09-13:** Plaster **428.0** zamknięty (`/noc`) — HITL `spot_contract_mark`.
 **2026-09-13:** Plaster **429.0** zamknięty (`/noc`) — HITL `bid_decision_mark`.
 **2026-09-13:** Plaster **430.0** zamknięty (`/noc`) — HITL `quote_currency_mark`.

@@ -870,6 +870,10 @@ class InvalidOogPermitMark(DomainError):
     """BR4.1: HITL zezwolenie OOG — nie wymiary Decimal / live urząd."""
 
 
+class InvalidLclConsoleMark(DomainError):
+    """BR4.2: HITL konsola LCL/CFS — nie live CFS / CBM."""
+
+
 class InvalidLoadPlanMark(DomainError):
     """G6: HITL znacznik planu załadunku — nie solver OR."""
 

@@ -120,6 +120,7 @@ from app.api import (
     lane_patterns,
     language_code_marks,
     lc_checklists,
+    lcl_console_marks,
     legal_hold_marks,
     lez_marks,
     line_impact_marks,
@@ -358,6 +359,7 @@ api_router.include_router(fuel_indexes.router)
 api_router.include_router(kreptd_licences.router)
 api_router.include_router(lane_patterns.router)
 api_router.include_router(lane_kms.router)
+api_router.include_router(lcl_console_marks.router)
 api_router.include_router(lc_checklists.router)
 api_router.include_router(language_code_marks.router)
 api_router.include_router(ncts_drafts.router)

@@ -128,6 +128,7 @@ import { Route as LanePatternsRouteImport } from './routes/lane-patterns'
 import { Route as LanguageCodeMarksRouteImport } from './routes/language-code-marks'
 import { Route as LcChecklistsRouteImport } from './routes/lc-checklists'
 import { Route as LclRouteImport } from './routes/lcl'
+import { Route as LclConsoleMarksRouteImport } from './routes/lcl-console-marks'
 import { Route as LegalHoldMarksRouteImport } from './routes/legal-hold-marks'
 import { Route as LezMarksRouteImport } from './routes/lez-marks'
 import { Route as LineImpactMarksRouteImport } from './routes/line-impact-marks'
@@ -868,6 +869,11 @@ const LcChecklistsRoute = LcChecklistsRouteImport.update({
 const LclRoute = LclRouteImport.update({
   id: '/lcl',
   path: '/lcl',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LclConsoleMarksRoute = LclConsoleMarksRouteImport.update({
+  id: '/lcl-console-marks',
+  path: '/lcl-console-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LegalHoldMarksRoute = LegalHoldMarksRouteImport.update({
@@ -1722,6 +1728,7 @@ export interface FileRoutesByFullPath {
   '/language-code-marks': typeof LanguageCodeMarksRoute
   '/lc-checklists': typeof LcChecklistsRoute
   '/lcl': typeof LclRoute
+  '/lcl-console-marks': typeof LclConsoleMarksRoute
   '/legal-hold-marks': typeof LegalHoldMarksRoute
   '/lez-marks': typeof LezMarksRoute
   '/line-impact-marks': typeof LineImpactMarksRoute
@@ -1989,6 +1996,7 @@ export interface FileRoutesByTo {
   '/language-code-marks': typeof LanguageCodeMarksRoute
   '/lc-checklists': typeof LcChecklistsRoute
   '/lcl': typeof LclRoute
+  '/lcl-console-marks': typeof LclConsoleMarksRoute
   '/legal-hold-marks': typeof LegalHoldMarksRoute
   '/lez-marks': typeof LezMarksRoute
   '/line-impact-marks': typeof LineImpactMarksRoute
@@ -2257,6 +2265,7 @@ export interface FileRoutesById {
   '/language-code-marks': typeof LanguageCodeMarksRoute
   '/lc-checklists': typeof LcChecklistsRoute
   '/lcl': typeof LclRoute
+  '/lcl-console-marks': typeof LclConsoleMarksRoute
   '/legal-hold-marks': typeof LegalHoldMarksRoute
   '/lez-marks': typeof LezMarksRoute
   '/line-impact-marks': typeof LineImpactMarksRoute
@@ -2526,6 +2535,7 @@ export interface FileRouteTypes {
     | '/language-code-marks'
     | '/lc-checklists'
     | '/lcl'
+    | '/lcl-console-marks'
     | '/legal-hold-marks'
     | '/lez-marks'
     | '/line-impact-marks'
@@ -2793,6 +2803,7 @@ export interface FileRouteTypes {
     | '/language-code-marks'
     | '/lc-checklists'
     | '/lcl'
+    | '/lcl-console-marks'
     | '/legal-hold-marks'
     | '/lez-marks'
     | '/line-impact-marks'
@@ -3060,6 +3071,7 @@ export interface FileRouteTypes {
     | '/language-code-marks'
     | '/lc-checklists'
     | '/lcl'
+    | '/lcl-console-marks'
     | '/legal-hold-marks'
     | '/lez-marks'
     | '/line-impact-marks'
@@ -3328,6 +3340,7 @@ export interface RootRouteChildren {
   LanguageCodeMarksRoute: typeof LanguageCodeMarksRoute
   LcChecklistsRoute: typeof LcChecklistsRoute
   LclRoute: typeof LclRoute
+  LclConsoleMarksRoute: typeof LclConsoleMarksRoute
   LegalHoldMarksRoute: typeof LegalHoldMarksRoute
   LezMarksRoute: typeof LezMarksRoute
   LineImpactMarksRoute: typeof LineImpactMarksRoute
@@ -4309,6 +4322,13 @@ declare module '@tanstack/react-router' {
       path: '/lcl'
       fullPath: '/lcl'
       preLoaderRoute: typeof LclRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lcl-console-marks': {
+      id: '/lcl-console-marks'
+      path: '/lcl-console-marks'
+      fullPath: '/lcl-console-marks'
+      preLoaderRoute: typeof LclConsoleMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/legal-hold-marks': {
@@ -5456,6 +5476,7 @@ const rootRouteChildren: RootRouteChildren = {
   LanguageCodeMarksRoute: LanguageCodeMarksRoute,
   LcChecklistsRoute: LcChecklistsRoute,
   LclRoute: LclRoute,
+  LclConsoleMarksRoute: LclConsoleMarksRoute,
   LegalHoldMarksRoute: LegalHoldMarksRoute,
   LezMarksRoute: LezMarksRoute,
   LineImpactMarksRoute: LineImpactMarksRoute,

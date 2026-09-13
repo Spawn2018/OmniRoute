@@ -107,6 +107,7 @@ zostają w badaniach `04`).
 | 2026-09-13 | BR4.1 plan (**467.0**): HITL `oog_permit_mark`. Wymiary Decimal / live zezwolenie / klej do `oog_mark` `REJECTED` na tym wierszu. |
 | 2026-09-13 | **467.0** `oog_permit_mark` w kodzie (`CONFIRMED`, git). Następny = **BR4.2** LCL (`REQUIREMENT`). Wymiary / Expo / AI5 `REJECTED` na tym wierszu. |
 | 2026-09-13 | BR4.2 plan (**468.0**): HITL `lcl_console_mark`. Live CFS / CBM / druga tabela LCL `REJECTED` na tym wierszu. |
+| 2026-09-13 | **468.0** `lcl_console_mark` w kodzie (`CONFIRMED`, git). Następny = **BR4.3** NAC (`REQUIREMENT`). Live CFS / Expo / AI5 `REJECTED` na tym wierszu. |
 | 2026-09-13 | C.3 **Grupa 8**: help desk produktu (ticket → agent → akceptacja właściciela) + mobile całego OmniRoute. Leftover PLAN **Plat-HD** / **Mob**. Nie 468.0. |
 | 2026-09-13 | D.7 readiness (Murphy 2026 + audyt PDF/czat): Three-Bucket, Definition Gap, szwy eskalacji = leftover. Mission Control / wektor / druga warstwa semantyczna / Bertha `REJECTED`. |
 | 2026-09-13 | Ciało C.3 Grupa 8 + D.7 + skrót `03` B.4–B.6 w A.2. E.3: HC-04 i FK `plan_snapshot` zamknięte. [WYCOFANE 2026-09-13: „B.4–B.6 nietknięte w dumpie” — skrót jest w kanonie]. |
@@ -255,6 +256,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | BR4.1 (**467.0**) = HITL `oog_permit_mark` (`permit|pilot|route|other`). Wymiary Decimal / live zezwolenie / klej do G5 `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
 | 2026-09-13 | **467.0** w kodzie (`CONFIRMED`, git). Katalog zezwolenia OOG. Następny = **BR4.2** (`REQUIREMENT`). Wymiary leftover. | CURRENT + plaster 467.0 `/noc` |
 | 2026-09-13 | BR4.2 (**468.0**) = HITL `lcl_console_mark` (`console|cfs|other`). Live CFS / CBM / klej do D6 `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
+| 2026-09-13 | **468.0** w kodzie (`CONFIRMED`, git). Katalog konsoli LCL/CFS. Następny = **BR4.3** (`REQUIREMENT`). Live CFS leftover. | CURRENT + plaster 468.0 `/noc` |
 
 ---
 ---
@@ -897,9 +899,9 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | nazwy z PDF-ów bez wiersza w planie | **136** (z czego 28 to aliasy) |
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
-Ostatni ukończony plaster: **467.0** (HITL `oog_permit_mark`).
-Następny = **468.0** plaster HITL `lcl_console_mark` (`REQUIREMENT`).
-AI1.0–AI1.4 oraz 443.0–467.0 są w kodzie (`CONFIRMED`); `data_source`
+Ostatni ukończony plaster: **468.0** (HITL `lcl_console_mark`).
+Następny = **BR4.3** plan NAC i agent nominowany (`REQUIREMENT`).
+AI1.0–AI1.4 oraz 443.0–468.0 są w kodzie (`CONFIRMED`); `data_source`
 zostaje w AI5 (`REQUIREMENT`). Teza B.1 zostaje: szerokość katalogów nie zastępuje pomiaru.
 
 ## C.2 Bliźniaki — scalona taksonomia
@@ -982,8 +984,8 @@ bo bez ewidencji magazynowej nie ma zastawu na towarze.
   (`CONFIRMED`, 467.0); leftover wymiary Decimal / live zezwolenie
   (`REQUIREMENT`). `oog_mark` zostaje oog/lashing/escort. Klej do G5
   `REJECTED` na katalogu.
-- **Konsolidacja morska LCL** — plan **468.0**: HITL `lcl_console_mark`
-  (`REQUIREMENT`); leftover live CFS / kalkulacja CBM (`REQUIREMENT`).
+- **Konsolidacja morska LCL** — katalog HITL `lcl_console_mark` jest
+  (`CONFIRMED`, 468.0); leftover live CFS / kalkulacja CBM (`REQUIREMENT`).
   Druga tabela LCL `REJECTED`. `ocean_bill` zostaje HBL/MBL. Odcinek
   `ocean_lcl` zostaje na `shipment_leg`. Klej do D6 `REJECTED` na katalogu.
 - **NAC i agent nominowany** — rola w przepływie dokumentowym

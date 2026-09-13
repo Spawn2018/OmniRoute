@@ -133,6 +133,7 @@ from app.models.lc_checklist import LcChecklist  # noqa: F401
 from app.models.ncts_draft import NctsDraft  # noqa: F401
 from app.models.oog_mark import OogMark  # noqa: F401
 from app.models.oog_permit_mark import OogPermitMark  # noqa: F401
+from app.models.lcl_console_mark import LclConsoleMark  # noqa: F401
 from app.models.load_order_mark import LoadOrderMark  # noqa: F401
 from app.models.load_plan_mark import LoadPlanMark  # noqa: F401
 from app.models.route_plan_mark import RoutePlanMark  # noqa: F401
