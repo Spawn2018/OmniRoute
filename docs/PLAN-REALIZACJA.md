@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **464.0** HITL planowanie załadunku. Nie solver. Nie wymiary Decimal.
+**Następny:** **464.0** HITL `load_order_mark`. Nie solver. Nie wymiary Decimal.
 <!-- os-status:end -->
 
 ```mermaid
@@ -796,7 +796,7 @@ Dump TMS `04b`: WMS nie jest dekoracją (Manhattan Active TM+WMS+Yard+Labour, In
 | BR2.2 | zgoda na śledzenie jako dana, per kontrahent i per kierowca | po BR2.0 | **459.0** DONE HITL `tracking_consent`; leftover: kolumna na `party_contact` |
 | BR2.3 | aplikacja kierowcy: zlecenie, POD, skan, status, tryb offline | po BR2.1 | wzorzec offline: Briefcase Builder |
 | BR3.0 | planowanie tras — **solver, nie model językowy** | **start HHL** | **455.0** DONE HITL `route_plan_mark`; leftover: Valhalla · VRP · km |
-| BR3.1 | planowanie załadunku: osie, wymiary, kolejność, tunele | po BR3.0 | podnosi G6 |
+| BR3.1 | planowanie załadunku: osie, wymiary, kolejność, tunele | po BR3.0 | **464.0** delta HITL `load_order_mark`; nie solver; G6 zostaje |
 | BR3.2 | dyspozytor drobnicy: linie, huby, cutoffy, konsolidacja | po D1/D5 | **463.0** DONE HITL `groupage_dispatcher_mark`; leftover: silnik hubów · konsolidacja |
 | BR3.3 | tacho jako **ograniczenie planu**, nie raport po fakcie | po BR3.0 + V7 | |
 | BR4.0 | promy: rezerwacja, okna, art. 9 | po T | podnosi EXP2.13 |

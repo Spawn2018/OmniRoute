@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **463.0** BR3.2 — HITL `groupage_dispatcher_mark`
 
-**Etap:** Plan — **464.0** BR3.1 planowanie załadunku. Brak delty. `/plan-modul`.
+**Etap:** Plaster — **464.0** BR3.1 planowanie załadunku. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
 
 **Noc:** `/noc 7` do **2026-09-14T07:00+02**.
 
-**Następny:** **464.0** HITL planowanie załadunku. Nie solver. Nie wymiary Decimal.
+**Następny:** **464.0** HITL `load_order_mark`. Nie solver. Nie wymiary Decimal.
 
 Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 464.0. Nie otwieraj AI0. Nie startuj leftover Valhalla / silnik hubów / Expo / Alpega / HubSpot.
 
-**Spec (jedyna na sesję):** brak — `/plan-modul`
+**Spec (jedyna na sesję):** [deltas/open/464.0.md](../deltas/open/464.0.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 

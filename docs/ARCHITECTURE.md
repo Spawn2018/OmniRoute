@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **463.0** BR3.2 — HITL `groupage_dispatcher_mark`. **Etap:** Plan — **464.0** BR3.1 planowanie załadunku. Brak delty. `/plan-modul`. **Następny:** **464.0** HITL planowanie załadunku. Nie solver. Nie wymiary Decimal. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **463.0** BR3.2 — HITL `groupage_dispatcher_mark`. **Etap:** Plaster — **464.0** BR3.1 planowanie załadunku. Delta zaakceptowana (`/noc`). Wolno `/plaster`. **Następny:** **464.0** HITL `load_order_mark`. Nie solver. Nie wymiary Decimal. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

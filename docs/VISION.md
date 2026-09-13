@@ -98,6 +98,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | **462.0** `campaign_mark` w kodzie (`CONFIRMED`, git). Następny = **BR3.2** dyspozytor drobnicy (`REQUIREMENT`). Atrybucja live / Expo BR6.3 / AI5 `REJECTED` na tym wierszu. |
 | 2026-09-13 | BR3.2 plan (**463.0**): HITL `groupage_dispatcher_mark`. Silnik hubów / klej do `groupage_line` `REJECTED` na tym wierszu. |
 | 2026-09-13 | **463.0** `groupage_dispatcher_mark` w kodzie (`CONFIRMED`, git). Następny = **BR3.1** planowanie załadunku (`REQUIREMENT`). Silnik hubów / Expo / AI5 `REJECTED` na tym wierszu. |
+| 2026-09-13 | BR3.1 plan (**464.0**): HITL `load_order_mark`. Solver / wymiary Decimal / klej do `load_plan_mark` `REJECTED` na tym wierszu. |
 
 ---
 
@@ -232,6 +233,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | **462.0** w kodzie (`CONFIRMED`, git). Katalog kampanii. Następny = **BR3.2** (`REQUIREMENT`). Atrybucja leftover. Expo BR6.3 park. | CURRENT + plaster 462.0 `/noc` |
 | 2026-09-13 | BR3.2 (**463.0**) = HITL `groupage_dispatcher_mark` (`line|hub|cutoff|consol|other`). Silnik hubów / klej do `groupage_line` `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
 | 2026-09-13 | **463.0** w kodzie (`CONFIRMED`, git). Katalog stance dyspozytora. Następny = **BR3.1** (`REQUIREMENT`). Silnik hubów leftover. | CURRENT + plaster 463.0 `/noc` |
+| 2026-09-13 | BR3.1 (**464.0**) = HITL `load_order_mark` (`sequence|stack|door|other`). Solver / wymiary Decimal / klej do G6 `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
 
 ---
 ---
@@ -923,8 +925,9 @@ bo bez ewidencji magazynowej nie ma zastawu na towarze.
 **Grupa 3 — planowanie i optymalizacja.** Najbardziej „silnikowa" grupa, dziś nieobecna.
 - **Planowanie tras** — katalog HITL `route_plan_mark` jest (`CONFIRMED`, 455.0);
   leftover solver Valhalla / VRP / km (`REQUIREMENT`, patrz D.3). Nie model językowy.
-- **Planowanie załadunku** — następny **464.0** (`REQUIREMENT`); G6 `load_plan_mark`
-  jest; leftover osie / kolejność / solver. Wymiary Decimal `REJECTED` na katalogu.
+- **Planowanie załadunku** — plan **464.0** HITL `load_order_mark`
+  (`REQUIREMENT`); G6 `load_plan_mark` zostaje osiami/tunelem. Solver /
+  wymiary Decimal `REJECTED` na tym wierszu.
 - **Dyspozytor drobnicy** — katalog HITL `groupage_dispatcher_mark` jest
   (`CONFIRMED`, 463.0); leftover silnik hubów / konsolidacja (`REQUIREMENT`).
   Klej do `groupage_line` `REJECTED` na katalogu.
