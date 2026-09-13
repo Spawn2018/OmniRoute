@@ -6,19 +6,19 @@
 
 **Ostatni plaster:** **432.0** AI1.0 HITL `suggestion_ledger`
 
-**Etap:** Plan — **AI1.1** / **433.0** (wolno `/plan-modul`)
+**Etap:** Plan — **AI1.1** / **433.0** (delta zaakceptowana `/noc`, wolno `/plaster`)
 
 **Noc:** `/noc 11` do **2026-09-13T11:00+02**.
 
-**Następny:** **433.0** AI1.1 HITL `outcome_ledger` — co się naprawdę stało (złączenie z suggestion_ledger później).
+**Następny:** **433.0** AI1.1 HITL `outcome_ledger` — target_bc + entity_id + suggestion_id + actual_value Decimal.
 
 Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 433.0.
 
-**Spec (jedyna na sesję):** brak delty — najpierw plan AI1.1.
+**Spec (jedyna na sesję):** [docs/deltas/open/433.0-outcome-ledger.md](../deltas/open/433.0-outcome-ledger.md).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [docs/VISION.md](../VISION.md).
 
-**Uczciwość:** HITL zostaje. LLM nie liczy. `charge` = marża. Impersonate ≠ decrypt. `charge.source_ref` **jest** (129.0 / 072) — nie otwieraj plastra AI0. **AI1.0** `suggestion_ledger` w kodzie (**432.0**). Następny silnik Fali AI = **AI1.1** `outcome_ledger`.
+**Uczciwość:** HITL zostaje. LLM nie liczy. `charge` = marża. Impersonate ≠ decrypt. `charge.source_ref` **jest** (129.0 / 072) — nie otwieraj plastra AI0. **AI1.0** `suggestion_ledger` w kodzie (**432.0**). Następny = **AI1.1** `outcome_ledger`. CRPS zostaje w AI2.
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 

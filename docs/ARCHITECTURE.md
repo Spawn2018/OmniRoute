@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **432.0** AI1.0 HITL `suggestion_ledger`. **Etap:** Plan — **AI1.1** / **433.0** (wolno `/plan-modul`). **Następny:** **433.0** AI1.1 HITL `outcome_ledger` — co się naprawdę stało (złączenie z suggestion_ledger później). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **432.0** AI1.0 HITL `suggestion_ledger`. **Etap:** Plan — **AI1.1** / **433.0** (delta zaakceptowana `/noc`, wolno `/plaster`). **Następny:** **433.0** AI1.1 HITL `outcome_ledger` — target_bc + entity_id + suggestion_id + actual_value Decimal. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
