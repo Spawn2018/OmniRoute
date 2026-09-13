@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **448.0** AI3.1 — `payload.revision` + `bbox_text` / `confidence_text`
 
-**Etap:** Plan — **449.0** AI3.2 ścieżka obraz wprost jako challenger. Komenda `/plan-modul`. Zero kodu.
+**Etap:** plaster — **449.0** AI3.2 `extract_path` text|image. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
 
 **Noc:** `/noc 20` do **2026-09-13T20:00+02**.
 
-**Następny:** **449.0** obraz wprost vs tekst (challenger). Nie Excel. Nie golden. Nie zapis z modelu.
+**Następny:** **449.0** etykieta ścieżki obraz vs tekst. Nie live vision. Nie Excel. Nie zapis z modelu.
 
 Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 449.0. Nie otwieraj AI0.
 
-**Spec (jedyna na sesję):** brak — najpierw `/plan-modul`.
+**Spec (jedyna na sesję):** [docs/deltas/open/449.0-extraction-image-path.md](../deltas/open/449.0-extraction-image-path.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 

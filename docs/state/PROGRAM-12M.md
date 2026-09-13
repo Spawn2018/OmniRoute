@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **448.0** AI3.1 — `payload.revision` + `bbox_text` / `confidence_text` **Następny:** **449.0** obraz wprost vs tekst (challenger). Nie Excel. Nie golden. Nie zapis z modelu.
+**Stan (z CURRENT.md):** **448.0** AI3.1 — `payload.revision` + `bbox_text` / `confidence_text` **Następny:** **449.0** etykieta ścieżki obraz vs tekst. Nie live vision. Nie Excel. Nie zapis z modelu.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

@@ -1,4 +1,5 @@
-- **448.0 leftover:** AI3.2 obraz wprost (**449.0**) · historia wierszy · PATCH quote/rfp. 448.0 = `revision` + `bbox_text`/`confidence_text`.
+- **449.0 plan:** AI3.2 `extract_path` text|image. Leftover po zamknięciu: live vision · AI3.3 golden · AI3.4 Excel.
+- **448.0 leftover:** AI3.2 (**449.0**) · historia wierszy · PATCH quote/rfp. 448.0 = `revision` + `bbox_text`/`confidence_text`.
 - **447.0 leftover:** AI3.1 (**448.0**) · PATCH quote/rfp · EXPLAIN UPDATE JSONB. 447.0 = PATCH `candidates` na pending/`rate_line`. Import `isort` w follow-up commicie (ruff I001).
 - **446.0 leftover:** Brier · auto-champion · detektor/próg · trzy BC · `data_source` (AI5) · AI3.0 PATCH szkicu (**447.0**). 446.0 = POST bez wpisu CRPS/MAE.
 - **445.0 leftover:** zapis `prediction_ledger` (**446.0**) · Brier · auto-champion · detektor/próg · trzy BC · `data_source` (AI5). 445.0 = widok średnich per dzień UTC. EXPLAIN widoku = leftover.

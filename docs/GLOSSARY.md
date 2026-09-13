@@ -90,7 +90,8 @@
 | skrót hasła | password_hash | argon2id; nigdy plaintext w API |
 | pochodzenie | source_ref | obowiązkowe |
 | zastąpiona przez | superseded_by | stary wiersz wskazuje nowy; kwoty się nie nadpisuje |
-| szkic ekstrakcji | extraction_draft | HITL przed zapisem domeny; 447.0 PATCH `candidates`; 448.0 `payload.revision` |
+| szkic ekstrakcji | extraction_draft | HITL przed zapisem domeny; 447.0 PATCH; 448.0 revision; 449.0 `extract_path` |
+| ścieżka ekstrakcji | extract_path | `text` albo `image`; etykieta, nie live vision |
 | ramka kandydata | bbox_text | dana na kandydacie; nie float; nie rysunek PDF |
 | pewność kandydata | confidence_text | dana na kandydacie; nie float; nie próg auto-accept |
 | szkic RFP | tender_rfp | G2.9b `draft_kind`; accept → `tender_rfp_intake`; nie zapis z LLM |

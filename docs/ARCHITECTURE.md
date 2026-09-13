@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **448.0** AI3.1 — `payload.revision` + `bbox_text` / `confidence_text`. **Etap:** Plan — **449.0** AI3.2 ścieżka obraz wprost jako challenger. Komenda `/plan-modul`. Zero kodu. **Następny:** **449.0** obraz wprost vs tekst (challenger). Nie Excel. Nie golden. Nie zapis z modelu. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **448.0** AI3.1 — `payload.revision` + `bbox_text` / `confidence_text`. **Etap:** plaster — **449.0** AI3.2 `extract_path` text|image. Delta zaakceptowana (`/noc`). Wolno `/plaster`. **Następny:** **449.0** etykieta ścieżki obraz vs tekst. Nie live vision. Nie Excel. Nie zapis z modelu. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
