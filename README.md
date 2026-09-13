@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **457.0** BR2.0 — HITL `position_event` (katalog zdarzenia)
-- **Etap:** plaster — **458.0** BR2.1 `telematics_device`. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
-- **Następny:** **458.0** HITL katalog urządzenia. Nie live GPS. Nie parowanie.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **458.0** BR2.1 — HITL `telematics_device` (katalog urządzenia)
+- **Etap:** Plan — **459.0** BR2.2 zgoda na śledzenie. Brak delty. `/plan-modul`.
+- **Następny:** **459.0** HITL zgoda na śledzenie. Nie live GPS. Nie poll.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

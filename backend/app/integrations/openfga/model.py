@@ -43,6 +43,7 @@ def _organization_core_relations() -> dict[str, Userset]:
         "can_manage_outbox_events": _member(),
         "can_manage_entity_events": _member(),
         "can_manage_telematics_connectors": _member(),
+        "can_manage_telematics_devices": _member(),
         "can_manage_erp_connectors": _member(),
         "can_manage_exchange_connectors": _member(),
         "can_manage_visibility_connectors": _member(),

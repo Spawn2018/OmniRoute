@@ -199,8 +199,8 @@ import { Route as RemediationOptionsRouteImport } from './routes/remediation-opt
 import { Route as RepairPlaybooksRouteImport } from './routes/repair-playbooks'
 import { Route as RoadRouteImport } from './routes/road'
 import { Route as RoleViewMarksRouteImport } from './routes/role-view-marks'
-import { Route as RoutePlanMarksRouteImport } from './routes/route-plan-marks'
 import { Route as RolloutRouteImport } from './routes/rollout'
+import { Route as RoutePlanMarksRouteImport } from './routes/route-plan-marks'
 import { Route as RoutingGuideEnforcementsRouteImport } from './routes/routing-guide-enforcements'
 import { Route as RoutingGuideMatchesRouteImport } from './routes/routing-guide-matches'
 import { Route as RoutingGuidesRouteImport } from './routes/routing-guides'
@@ -224,6 +224,7 @@ import { Route as SwitchBlLoiMarksRouteImport } from './routes/switch-bl-loi-mar
 import { Route as TachoOfficeMarksRouteImport } from './routes/tacho-office-marks'
 import { Route as TaskTemplatesRouteImport } from './routes/task-templates'
 import { Route as TelematicsConnectorsRouteImport } from './routes/telematics-connectors'
+import { Route as TelematicsDevicesRouteImport } from './routes/telematics-devices'
 import { Route as TenantContractKeksRouteImport } from './routes/tenant-contract-keks'
 import { Route as TenderAwardReviewsRouteImport } from './routes/tender-award-reviews'
 import { Route as TenderBidStancesRouteImport } from './routes/tender-bid-stances'
@@ -1215,14 +1216,14 @@ const RoleViewMarksRoute = RoleViewMarksRouteImport.update({
   path: '/role-view-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
-const RoutePlanMarksRoute = RoutePlanMarksRouteImport.update({
-  id: '/route-plan-marks',
-  path: '/route-plan-marks',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const RolloutRoute = RolloutRouteImport.update({
   id: '/rollout',
   path: '/rollout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RoutePlanMarksRoute = RoutePlanMarksRouteImport.update({
+  id: '/route-plan-marks',
+  path: '/route-plan-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RoutingGuideEnforcementsRoute =
@@ -1339,6 +1340,11 @@ const TaskTemplatesRoute = TaskTemplatesRouteImport.update({
 const TelematicsConnectorsRoute = TelematicsConnectorsRouteImport.update({
   id: '/telematics-connectors',
   path: '/telematics-connectors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TelematicsDevicesRoute = TelematicsDevicesRouteImport.update({
+  id: '/telematics-devices',
+  path: '/telematics-devices',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TenantContractKeksRoute = TenantContractKeksRouteImport.update({
@@ -1733,8 +1739,8 @@ export interface FileRoutesByFullPath {
   '/repair-playbooks': typeof RepairPlaybooksRoute
   '/road': typeof RoadRoute
   '/role-view-marks': typeof RoleViewMarksRoute
-  '/route-plan-marks': typeof RoutePlanMarksRoute
   '/rollout': typeof RolloutRoute
+  '/route-plan-marks': typeof RoutePlanMarksRoute
   '/routing-guide-enforcements': typeof RoutingGuideEnforcementsRoute
   '/routing-guide-matches': typeof RoutingGuideMatchesRoute
   '/routing-guides': typeof RoutingGuidesRoute
@@ -1758,6 +1764,7 @@ export interface FileRoutesByFullPath {
   '/tacho-office-marks': typeof TachoOfficeMarksRoute
   '/task-templates': typeof TaskTemplatesRoute
   '/telematics-connectors': typeof TelematicsConnectorsRoute
+  '/telematics-devices': typeof TelematicsDevicesRoute
   '/tenant-contract-keks': typeof TenantContractKeksRoute
   '/tender-award-reviews': typeof TenderAwardReviewsRoute
   '/tender-bid-stances': typeof TenderBidStancesRoute
@@ -1990,8 +1997,8 @@ export interface FileRoutesByTo {
   '/repair-playbooks': typeof RepairPlaybooksRoute
   '/road': typeof RoadRoute
   '/role-view-marks': typeof RoleViewMarksRoute
-  '/route-plan-marks': typeof RoutePlanMarksRoute
   '/rollout': typeof RolloutRoute
+  '/route-plan-marks': typeof RoutePlanMarksRoute
   '/routing-guide-enforcements': typeof RoutingGuideEnforcementsRoute
   '/routing-guide-matches': typeof RoutingGuideMatchesRoute
   '/routing-guides': typeof RoutingGuidesRoute
@@ -2015,6 +2022,7 @@ export interface FileRoutesByTo {
   '/tacho-office-marks': typeof TachoOfficeMarksRoute
   '/task-templates': typeof TaskTemplatesRoute
   '/telematics-connectors': typeof TelematicsConnectorsRoute
+  '/telematics-devices': typeof TelematicsDevicesRoute
   '/tenant-contract-keks': typeof TenantContractKeksRoute
   '/tender-award-reviews': typeof TenderAwardReviewsRoute
   '/tender-bid-stances': typeof TenderBidStancesRoute
@@ -2248,8 +2256,8 @@ export interface FileRoutesById {
   '/repair-playbooks': typeof RepairPlaybooksRoute
   '/road': typeof RoadRoute
   '/role-view-marks': typeof RoleViewMarksRoute
-  '/route-plan-marks': typeof RoutePlanMarksRoute
   '/rollout': typeof RolloutRoute
+  '/route-plan-marks': typeof RoutePlanMarksRoute
   '/routing-guide-enforcements': typeof RoutingGuideEnforcementsRoute
   '/routing-guide-matches': typeof RoutingGuideMatchesRoute
   '/routing-guides': typeof RoutingGuidesRoute
@@ -2273,6 +2281,7 @@ export interface FileRoutesById {
   '/tacho-office-marks': typeof TachoOfficeMarksRoute
   '/task-templates': typeof TaskTemplatesRoute
   '/telematics-connectors': typeof TelematicsConnectorsRoute
+  '/telematics-devices': typeof TelematicsDevicesRoute
   '/tenant-contract-keks': typeof TenantContractKeksRoute
   '/tender-award-reviews': typeof TenderAwardReviewsRoute
   '/tender-bid-stances': typeof TenderBidStancesRoute
@@ -2507,8 +2516,8 @@ export interface FileRouteTypes {
     | '/repair-playbooks'
     | '/road'
     | '/role-view-marks'
-    | '/route-plan-marks'
     | '/rollout'
+    | '/route-plan-marks'
     | '/routing-guide-enforcements'
     | '/routing-guide-matches'
     | '/routing-guides'
@@ -2532,6 +2541,7 @@ export interface FileRouteTypes {
     | '/tacho-office-marks'
     | '/task-templates'
     | '/telematics-connectors'
+    | '/telematics-devices'
     | '/tenant-contract-keks'
     | '/tender-award-reviews'
     | '/tender-bid-stances'
@@ -2764,8 +2774,8 @@ export interface FileRouteTypes {
     | '/repair-playbooks'
     | '/road'
     | '/role-view-marks'
-    | '/route-plan-marks'
     | '/rollout'
+    | '/route-plan-marks'
     | '/routing-guide-enforcements'
     | '/routing-guide-matches'
     | '/routing-guides'
@@ -2789,6 +2799,7 @@ export interface FileRouteTypes {
     | '/tacho-office-marks'
     | '/task-templates'
     | '/telematics-connectors'
+    | '/telematics-devices'
     | '/tenant-contract-keks'
     | '/tender-award-reviews'
     | '/tender-bid-stances'
@@ -3021,8 +3032,8 @@ export interface FileRouteTypes {
     | '/repair-playbooks'
     | '/road'
     | '/role-view-marks'
-    | '/route-plan-marks'
     | '/rollout'
+    | '/route-plan-marks'
     | '/routing-guide-enforcements'
     | '/routing-guide-matches'
     | '/routing-guides'
@@ -3046,6 +3057,7 @@ export interface FileRouteTypes {
     | '/tacho-office-marks'
     | '/task-templates'
     | '/telematics-connectors'
+    | '/telematics-devices'
     | '/tenant-contract-keks'
     | '/tender-award-reviews'
     | '/tender-bid-stances'
@@ -3279,8 +3291,8 @@ export interface RootRouteChildren {
   RepairPlaybooksRoute: typeof RepairPlaybooksRoute
   RoadRoute: typeof RoadRoute
   RoleViewMarksRoute: typeof RoleViewMarksRoute
-  RoutePlanMarksRoute: typeof RoutePlanMarksRoute
   RolloutRoute: typeof RolloutRoute
+  RoutePlanMarksRoute: typeof RoutePlanMarksRoute
   RoutingGuideEnforcementsRoute: typeof RoutingGuideEnforcementsRoute
   RoutingGuideMatchesRoute: typeof RoutingGuideMatchesRoute
   RoutingGuidesRoute: typeof RoutingGuidesRoute
@@ -3304,6 +3316,7 @@ export interface RootRouteChildren {
   TachoOfficeMarksRoute: typeof TachoOfficeMarksRoute
   TaskTemplatesRoute: typeof TaskTemplatesRoute
   TelematicsConnectorsRoute: typeof TelematicsConnectorsRoute
+  TelematicsDevicesRoute: typeof TelematicsDevicesRoute
   TenantContractKeksRoute: typeof TenantContractKeksRoute
   TenderAwardReviewsRoute: typeof TenderAwardReviewsRoute
   TenderBidStancesRoute: typeof TenderBidStancesRoute
@@ -4678,18 +4691,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RoleViewMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/route-plan-marks': {
-      id: '/route-plan-marks'
-      path: '/route-plan-marks'
-      fullPath: '/route-plan-marks'
-      preLoaderRoute: typeof RoutePlanMarksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/rollout': {
       id: '/rollout'
       path: '/rollout'
       fullPath: '/rollout'
       preLoaderRoute: typeof RolloutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/route-plan-marks': {
+      id: '/route-plan-marks'
+      path: '/route-plan-marks'
+      fullPath: '/route-plan-marks'
+      preLoaderRoute: typeof RoutePlanMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/routing-guide-enforcements': {
@@ -4851,6 +4864,13 @@ declare module '@tanstack/react-router' {
       path: '/telematics-connectors'
       fullPath: '/telematics-connectors'
       preLoaderRoute: typeof TelematicsConnectorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/telematics-devices': {
+      id: '/telematics-devices'
+      path: '/telematics-devices'
+      fullPath: '/telematics-devices'
+      preLoaderRoute: typeof TelematicsDevicesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tenant-contract-keks': {
@@ -5327,8 +5347,8 @@ const rootRouteChildren: RootRouteChildren = {
   RepairPlaybooksRoute: RepairPlaybooksRoute,
   RoadRoute: RoadRoute,
   RoleViewMarksRoute: RoleViewMarksRoute,
-  RoutePlanMarksRoute: RoutePlanMarksRoute,
   RolloutRoute: RolloutRoute,
+  RoutePlanMarksRoute: RoutePlanMarksRoute,
   RoutingGuideEnforcementsRoute: RoutingGuideEnforcementsRoute,
   RoutingGuideMatchesRoute: RoutingGuideMatchesRoute,
   RoutingGuidesRoute: RoutingGuidesRoute,
@@ -5352,6 +5372,7 @@ const rootRouteChildren: RootRouteChildren = {
   TachoOfficeMarksRoute: TachoOfficeMarksRoute,
   TaskTemplatesRoute: TaskTemplatesRoute,
   TelematicsConnectorsRoute: TelematicsConnectorsRoute,
+  TelematicsDevicesRoute: TelematicsDevicesRoute,
   TenantContractKeksRoute: TenantContractKeksRoute,
   TenderAwardReviewsRoute: TenderAwardReviewsRoute,
   TenderBidStancesRoute: TenderBidStancesRoute,

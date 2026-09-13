@@ -219,6 +219,7 @@ from app.api import (
     tacho_office_marks,
     task_templates,
     telematics_connectors,
+    telematics_devices,
     tenancy,
     tenant_contract_keks,
     tender_award_reviews,
@@ -399,6 +400,7 @@ api_router.include_router(prediction_ledgers.router)
 api_router.include_router(weather_observations.router)
 api_router.include_router(free_time_clocks.router)
 api_router.include_router(telematics_connectors.router)
+api_router.include_router(telematics_devices.router)
 api_router.include_router(erp_connectors.router)
 api_router.include_router(customer_contracts.router)
 api_router.include_router(exchange_connectors.router)

@@ -255,6 +255,7 @@ modules =
     app.services.weather_observations
     app.services.free_time_clocks
     app.services.telematics_connectors
+    app.services.telematics_devices
     app.services.tower_impacts
     app.services.twin_kinds
     app.services.twin_marks
@@ -1078,6 +1079,9 @@ forbidden_modules =
     app.services.telematics_connectors
     app.repositories.telematics_connectors
     app.models.telematics_connector
+    app.services.telematics_devices
+    app.repositories.telematics_devices
+    app.models.telematics_device
     app.services.tower_impacts
     app.repositories.tower_impacts
     app.models.tower_impact

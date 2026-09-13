@@ -238,6 +238,7 @@ from app.models.what_if_replay import WhatIfReplay  # noqa: F401
 from app.models.weather_observation import WeatherObservation  # noqa: F401
 from app.models.free_time_clock import FreeTimeClock  # noqa: F401
 from app.models.telematics_connector import TelematicsConnector  # noqa: F401
+from app.models.telematics_device import TelematicsDevice  # noqa: F401
 from app.models.tower_impact import TowerImpact  # noqa: F401
 from app.models.twin_kind import TwinKind  # noqa: F401
 from app.models.twin_mark import TwinMark  # noqa: F401

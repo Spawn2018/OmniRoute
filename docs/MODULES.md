@@ -79,6 +79,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | BR3.0 | Znacznik planu trasy HITL | 455.0 `route_plan_mark` | **ukończony (HITL)** · kind route/stop/window/other; leftover Valhalla / VRP / km |
 | BR6.0 | Okazja CRM HITL | 456.0 `crm_opportunity` | **ukończony (HITL)** · stage open/won/lost/other; leftover activity / pipeline |
 | BR2.0 | Zdarzenie pozycji HITL | 457.0 `position_event` | **ukończony (HITL)** · kind gps/manual/other; leftover współrzędne / poll |
+| BR2.1 | Urządzenie telematyczne HITL | 458.0 `telematics_device` | **ukończony (HITL)** · kind tracker/fault/other; leftover parowanie / poll |
 | G2.21 | Km ładowny HITL | 267.0 `lane_km` | **ukończony (HITL)** · ładowny/pusty/dolot Decimal; leftover P / silnik 500k |
 | F9 | Konektor Optima HITL | 268.0 `erp_connector` | **ukończony (HITL)** · kod + kind `optima`; leftover XL / live SOAP / FS+FZ |
 | T8 | Konektor slotu HITL | 269.0 `terminal_slot_connector` | **ukończony (HITL)** · mode + godziny N4; leftover live API / `terminal_appointment` / confirmed |

@@ -219,6 +219,11 @@ export const OPS_JOBS = [
     job: "HITL reżim + dostawca bez live poll",
   },
   {
+    route: BUSINESS_LISTS.telematicsDevice.route,
+    label: "Urządzenie telematyczne",
+    job: "katalog telematics_device HITL",
+  },
+  {
     route: BUSINESS_LISTS.towerImpact.route,
     label: "Skutek wieży",
     job: "HITL etap łańcucha bez scoringu",
@@ -1537,6 +1542,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "455.0": "/route-plan-marks",
   "456.0": "/crm-opportunities",
   "457.0": "/position-events",
+  "458.0": "/telematics-devices",
   "267.0": "/lane-kms",
   "268.0": "/erp-connectors",
   "269.0": "/terminal-slot-connectors",
