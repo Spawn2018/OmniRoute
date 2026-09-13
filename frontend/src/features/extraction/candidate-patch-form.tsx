@@ -11,7 +11,7 @@ type CandidatePatchFormProps = {
   onSave: (draftId: string, candidates: ExtractionCandidate[]) => void
 }
 
-type CandidateField = "code" | "amount_text" | "currency" | "note"
+type CandidateField = "code" | "amount_text" | "currency" | "note" | "bbox_text" | "confidence_text"
 
 function replaceField(
   rows: ExtractionCandidate[],
@@ -62,6 +62,18 @@ function CandidatePatchRow({
           disabled={disabled}
           value={candidate.note ?? ""}
           onChange={(event) => onField(index, "note", event.target.value)}
+        />
+        <Input
+          aria-label={`Ramka kandydata ${index + 1}`}
+          disabled={disabled}
+          value={candidate.bbox_text ?? ""}
+          onChange={(event) => onField(index, "bbox_text", event.target.value)}
+        />
+        <Input
+          aria-label={`Pewność kandydata ${index + 1}`}
+          disabled={disabled}
+          value={candidate.confidence_text ?? ""}
+          onChange={(event) => onField(index, "confidence_text", event.target.value)}
         />
       </div>
     </li>

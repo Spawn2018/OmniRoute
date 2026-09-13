@@ -10,6 +10,8 @@ class ExtractedChargeCandidate(BaseModel):
     amount_text: str = Field(min_length=1, max_length=64)
     currency: str = Field(min_length=3, max_length=3)
     note: str = ""
+    bbox_text: str = ""
+    confidence_text: str = ""
 
 
 class ExtractionPayload(BaseModel):
@@ -21,3 +23,4 @@ class ExtractionPayload(BaseModel):
     parser_name: str = "plain"
     parser_challenger: str | None = None
     ab_delta_chars: int | None = None
+    revision: int = 0

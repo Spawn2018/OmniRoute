@@ -8,6 +8,7 @@ from app.domain.errors import (
     InvalidTenderRfpIntake,
 )
 from app.domain.extraction_draft import (
+    next_extraction_revision,
     require_extraction_draft_kind,
     require_rate_candidates_editable,
     require_tender_rfp_payload,
@@ -24,6 +25,13 @@ def test_draft_kind_accepts_carrier_quote() -> None:
 
 def test_draft_kind_accepts_tender_rfp() -> None:
     assert require_extraction_draft_kind("tender_rfp") == "tender_rfp"
+
+
+def test_next_extraction_revision_bumps_or_starts() -> None:
+    assert next_extraction_revision(0) == 1
+    assert next_extraction_revision(3) == 4
+    assert next_extraction_revision(None) == 1
+    assert next_extraction_revision(True) == 1
 
 
 def test_rate_candidates_editable_only_rate_line() -> None:

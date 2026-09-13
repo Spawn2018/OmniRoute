@@ -225,6 +225,8 @@ async def test_http_patch_live_replaces_candidates_without_rate_line(
     assert patched.json()["payload"]["source_ref"] == "doc://patch"
     listed = await live_client.get("/api/v1/extractions", headers=headers)
     assert listed.json()[0]["payload"]["candidates"][0]["amount_text"] == "12"
+    assert created.json()["payload"]["revision"] == 0
+    assert patched.json()["payload"]["revision"] == 1
     rates = await live_client.get("/api/v1/rate-lines", headers=headers)
     assert rates.status_code == 200
     assert rates.json() == []

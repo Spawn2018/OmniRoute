@@ -13,6 +13,8 @@ export type ExtractionCandidate = {
   amount_text: string
   currency: string
   note?: string
+  bbox_text?: string
+  confidence_text?: string
 }
 
 export type ExtractionPayload = {
@@ -22,6 +24,7 @@ export type ExtractionPayload = {
   parser_name?: string
   parser_challenger?: string | null
   ab_delta_chars?: number | null
+  revision?: number
 }
 
 export type ExtractionDraft = {
@@ -105,6 +108,8 @@ function asPayload(raw: { [key: string]: unknown }): ExtractionPayload {
       amount_text: row.amount_text,
       currency: row.currency,
       note: typeof row.note === "string" ? row.note : undefined,
+      bbox_text: typeof row.bbox_text === "string" ? row.bbox_text : undefined,
+      confidence_text: typeof row.confidence_text === "string" ? row.confidence_text : undefined,
     })
   }
   const regionsRaw = Array.isArray(raw.unparsed_regions) ? raw.unparsed_regions : []
@@ -115,6 +120,7 @@ function asPayload(raw: { [key: string]: unknown }): ExtractionPayload {
     parser_name: typeof raw.parser_name === "string" ? raw.parser_name : undefined,
     parser_challenger: typeof raw.parser_challenger === "string" ? raw.parser_challenger : null,
     ab_delta_chars: typeof raw.ab_delta_chars === "number" ? raw.ab_delta_chars : null,
+    revision: typeof raw.revision === "number" ? raw.revision : 0,
   }
 }
 

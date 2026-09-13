@@ -34,6 +34,7 @@ async def test_extract_to_draft_stores_payload_without_rate_line() -> None:
     assert draft.payload["source_ref"] == "doc://x"
     assert "unparsed_regions" in draft.payload
     assert draft.payload["candidates"][0]["code"] == "THC"
+    assert draft.payload["revision"] == 0
     session.add.assert_called_once()
 
 
@@ -171,6 +172,7 @@ async def test_patch_candidates_replaces_only_candidates() -> None:
     assert patched.payload["source_ref"] == "doc://x"
     assert patched.payload["unparsed_regions"] == ["weekend"]
     assert patched.payload["parser_name"] == "plain"
+    assert patched.payload["revision"] == 1
     extractor.extract.assert_not_called()
 
 

@@ -41,6 +41,7 @@ describe("hitlSplitView", () => {
     expect(view.preview).toContain("THC 100 EUR")
     expect(view.candidates).toEqual([{ code: "THC", amount_text: "100", currency: "EUR" }])
     expect(view.unparsedRegions).toEqual(["note weekend"])
+    expect(view.revision).toBe(0)
     expect(hitlGeneratedContentLabel(view)).toBe(HITL_AI_LABEL)
   })
 
@@ -78,6 +79,8 @@ describe("hitlSplitView", () => {
     expect(html).toContain("Zapisz poprawkę")
     expect(html).toContain("Kod kandydata 1")
     expect(html).toContain("Kwota kandydata 1")
+    expect(html).toContain("Ramka kandydata 1")
+    expect(html).toContain("wersja 0")
   })
 
   it("does not show the AI label when no draft is selected", () => {

@@ -11,6 +11,7 @@ from app.domain.errors import DraftNotPending, ResourceNotFound, UnparseableDocu
 from app.domain.extraction_draft import (
     extraction_carrier_quote_kind,
     extraction_tender_rfp_kind,
+    next_extraction_revision,
     require_carrier_quote_payload,
     require_extraction_draft_kind,
     require_rate_candidates_editable,
@@ -166,6 +167,7 @@ class ExtractionService:
         require_rate_candidates_editable(draft.draft_kind)
         payload = dict(draft.payload)
         payload["candidates"] = candidates
+        payload["revision"] = next_extraction_revision(payload.get("revision"))
         draft.payload = payload
         flag_modified(draft, "payload")
         await self._session.flush()
@@ -193,6 +195,7 @@ def _quote_payload(source_ref: str, raw: object) -> dict[str, object]:
         "amount": stored.amount,
         "currency": stored.currency,
         "transit_days": stored.transit_days,
+        "revision": 0,
     }
 
 
@@ -204,4 +207,5 @@ def _rfp_payload(source_ref: str, raw: object) -> dict[str, object]:
         "candidates": [],
         "tender_id": str(stored.tender_id),
         "intake_code": stored.intake_code,
+        "revision": 0,
     }

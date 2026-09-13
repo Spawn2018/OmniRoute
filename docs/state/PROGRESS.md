@@ -836,3 +836,5 @@
 - 2026-09-13T12:25:00Z ? 446.0 ? prediction_ledger ? DONE ? POST bez wpisanego CRPS/MAE; kolumny nullable ? migracja 356
 
 - 2026-09-13T12:50:00Z | 447.0 | extraction_draft | DONE | PATCH candidates na pending/rate_line przed accept; bez nowej tabeli
+
+- 2026-09-13T13:15:00Z | 448.0 | extraction_draft | DONE | payload.revision + bbox_text/confidence_text; bez tabeli historii

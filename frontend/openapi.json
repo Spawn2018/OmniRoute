@@ -29963,6 +29963,16 @@
             "type": "string",
             "title": "Note",
             "default": ""
+          },
+          "bbox_text": {
+            "type": "string",
+            "title": "Bbox Text",
+            "default": ""
+          },
+          "confidence_text": {
+            "type": "string",
+            "title": "Confidence Text",
+            "default": ""
           }
         },
         "additionalProperties": false,

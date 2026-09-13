@@ -27,6 +27,12 @@ def extraction_tender_rfp_kind() -> str:
     return _RFP
 
 
+def next_extraction_revision(raw: object) -> int:
+    if type(raw) is not int or raw < 0:
+        return 1
+    return raw + 1
+
+
 def require_rate_candidates_editable(draft_kind: object) -> None:
     if draft_kind != _RATE:
         raise ExtractionCandidatesNotEditable("edycja kandydatów tylko dla szkicu rate_line")

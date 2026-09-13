@@ -67,6 +67,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | AI3.0 plan (**447.0**): `PATCH` `payload.candidates` na szkicu `pending`/`rate_line`. Wersja/bbox = AI3.1. Zapis `rate_line` z serwisu `REJECTED`. |
 | 2026-09-13 | **447.0** `PATCH` kandydatów w kodzie (`CONFIRMED`, git). Następny = **AI3.1** wersja/`bbox`/pewność (`REQUIREMENT`). Zapis z modelu `REJECTED`. |
 | 2026-09-13 | AI3.1 plan (**448.0**): `payload.revision` + `bbox_text` / `confidence_text`. Tabela historii `REJECTED`. Float `REJECTED`. |
+| 2026-09-13 | **448.0** wersja/ramka/pewność w kodzie (`CONFIRMED`, git). Następny = **AI3.2** obraz wprost (`REQUIREMENT`). Historia wierszy leftover. |
 
 ---
 
@@ -170,6 +171,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | AI3.0 (**447.0**) = `PATCH` kandydatów na szkicu przed accept. Wersjonowanie/bbox `REJECTED` (AI3.1). Zapis z modelu `REJECTED` (HC-04). | `/plan-modul` `/noc`; VISION E AI3 |
 | 2026-09-13 | **447.0** w kodzie (`CONFIRMED`, git). PATCH `candidates` na pending/`rate_line`. Następny = **AI3.1** wersja/`bbox` (`REQUIREMENT`). Quote/rfp PATCH leftover. | CURRENT + plaster 447.0 `/noc` |
 | 2026-09-13 | AI3.1 (**448.0**) = licznik `revision` + ramka/pewność jako tekst. Historia wierszy `REJECTED`. Float `REJECTED`. Zapis z modelu `REJECTED`. | `/plan-modul` `/noc`; VISION E AI3 |
+| 2026-09-13 | **448.0** w kodzie (`CONFIRMED`, git). `revision` + `bbox_text`/`confidence_text`. Następny = **AI3.2** obraz wprost (`REQUIREMENT`). | CURRENT + plaster 448.0 `/noc` |
 
 ---
 ---
@@ -797,8 +799,8 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | nazwy z PDF-ów bez wiersza w planie | **136** (z czego 28 to aliasy) |
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
-Ostatni ukończony plaster: **447.0** (`PATCH` `extraction_draft.candidates` przed accept).
-Następny = **448.0** AI3.1 `payload.revision` + `bbox_text` / `confidence_text` (`REQUIREMENT`).
+Ostatni ukończony plaster: **448.0** (`payload.revision` + ramka/pewność tekst).
+Następny = **449.0** AI3.2 obraz wprost jako challenger (`REQUIREMENT`).
 AI1.0–AI1.4 oraz 443.0–447.0 są w kodzie (`CONFIRMED`); `data_source`
 zostaje w AI5 (`REQUIREMENT`). Teza B.1 zostaje: szerokość katalogów nie zastępuje pomiaru.
 

@@ -66,6 +66,7 @@ class StubExtractionService:
                 "parser_name": parser_name,
                 "parser_challenger": parser_challenger,
                 "ab_delta_chars": ab_delta_chars,
+                "revision": 0,
             },
             created_at=_NOW,
             updated_at=_NOW,
@@ -127,6 +128,8 @@ class StubExtractionService:
             )
         payload = dict(self.draft.payload)
         payload["candidates"] = candidates
+        current = payload.get("revision")
+        payload["revision"] = current + 1 if type(current) is int else 1
         self.draft.payload = payload
         return self.draft
 
@@ -330,11 +333,20 @@ def test_http_patch_pending_rate_line_replaces_candidates(happy_client: TestClie
     assert patched.status_code == 200
     body = patched.json()
     assert body["payload"]["candidates"] == [
-        {"code": "BAF", "amount_text": "12", "currency": "USD", "note": "HITL"},
+        {
+            "code": "BAF",
+            "amount_text": "12",
+            "currency": "USD",
+            "note": "HITL",
+            "bbox_text": "",
+            "confidence_text": "",
+        },
     ]
     assert body["payload"]["source_ref"] == "doc://x"
     listed = happy_client.get("/api/v1/extractions", headers=headers)
     assert listed.json()[0]["payload"]["candidates"][0]["code"] == "BAF"
+    assert created.json()["payload"]["revision"] == 0
+    assert body["payload"]["revision"] == 1
 
 
 def test_http_patch_not_pending_returns_409(happy_client: TestClient) -> None:
@@ -352,6 +364,71 @@ def test_http_patch_not_pending_returns_409(happy_client: TestClient) -> None:
         json={"candidates": [{"code": "THC", "amount_text": "11", "currency": "EUR"}]},
     )
     assert patched.status_code == 409
+
+
+def test_http_extract_starts_revision_at_zero(happy_client: TestClient) -> None:
+    response = happy_client.post(
+        "/api/v1/extractions",
+        headers=bearer_auth_headers(),
+        json={"source_ref": "doc://x", "input_text": "THC 10 EUR"},
+    )
+    assert response.status_code == 201
+    assert response.json()["payload"]["revision"] == 0
+
+
+def test_http_patch_bbox_and_confidence_text(happy_client: TestClient) -> None:
+    headers = bearer_auth_headers()
+    created = happy_client.post(
+        "/api/v1/extractions",
+        headers=headers,
+        json={"source_ref": "doc://x", "input_text": "THC 10 EUR"},
+    )
+    draft_id = created.json()["id"]
+    patched = happy_client.patch(
+        f"/api/v1/extractions/{draft_id}",
+        headers=headers,
+        json={
+            "candidates": [
+                {
+                    "code": "THC",
+                    "amount_text": "10",
+                    "currency": "EUR",
+                    "bbox_text": "10,20,80,40",
+                    "confidence_text": "high",
+                },
+            ],
+        },
+    )
+    assert patched.status_code == 200
+    row = patched.json()["payload"]["candidates"][0]
+    assert row["bbox_text"] == "10,20,80,40"
+    assert row["confidence_text"] == "high"
+    assert patched.json()["payload"]["revision"] == 1
+
+
+def test_http_patch_float_confidence_returns_422(happy_client: TestClient) -> None:
+    headers = bearer_auth_headers()
+    created = happy_client.post(
+        "/api/v1/extractions",
+        headers=headers,
+        json={"source_ref": "doc://x", "input_text": "THC 10 EUR"},
+    )
+    draft_id = created.json()["id"]
+    patched = happy_client.patch(
+        f"/api/v1/extractions/{draft_id}",
+        headers=headers,
+        json={
+            "candidates": [
+                {
+                    "code": "THC",
+                    "amount_text": "10",
+                    "currency": "EUR",
+                    "confidence": 0.9,
+                },
+            ],
+        },
+    )
+    assert patched.status_code == 422
 
 
 def test_http_patch_extra_field_returns_422(happy_client: TestClient) -> None:

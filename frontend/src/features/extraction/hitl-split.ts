@@ -11,6 +11,7 @@ export type HitlSplitReview = {
   preview: string
   candidates: ExtractionCandidate[]
   unparsedRegions: string[]
+  revision: number
 }
 
 export type HitlSplitView = HitlSplitEmpty | HitlSplitReview
@@ -32,5 +33,6 @@ export function hitlSplitView(draft: ExtractionDraft | null): HitlSplitView {
     preview: draft.input_text,
     candidates: draft.payload.candidates,
     unparsedRegions: draft.payload.unparsed_regions,
+    revision: draft.payload.revision ?? 0,
   }
 }

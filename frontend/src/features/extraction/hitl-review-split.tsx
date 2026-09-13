@@ -72,7 +72,9 @@ export function HitlReviewSplit({
       </section>
       <section className="min-w-0 rounded-md border border-border bg-card p-3">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
-          <h3 className="text-xs font-medium text-muted-foreground">Recenzja</h3>
+          <h3 className="text-xs font-medium text-muted-foreground">
+            Recenzja · wersja {view.revision}
+          </h3>
           <p
             data-generated-content="ai"
             role="status"

@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **447.0** AI3.0 — `PATCH` `payload.candidates` na szkicu `pending` / `rate_line`
-- **Etap:** plaster — **448.0** AI3.1 wersja + `bbox_text` + `confidence_text`. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
-- **Następny:** **448.0** `payload.revision` + ramka i pewność jako tekst na kandydacie. Nie tabela historii. Nie zapis z modelu.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **448.0** AI3.1 — `payload.revision` + `bbox_text` / `confidence_text`
+- **Etap:** Plan — **449.0** AI3.2 ścieżka obraz wprost jako challenger. Komenda `/plan-modul`. Zero kodu.
+- **Następny:** **449.0** obraz wprost vs tekst (challenger). Nie Excel. Nie golden. Nie zapis z modelu.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

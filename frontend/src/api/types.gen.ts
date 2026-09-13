@@ -4560,6 +4560,14 @@ export type ExtractionCandidatePatch = {
      * Note
      */
     note?: string;
+    /**
+     * Bbox Text
+     */
+    bbox_text?: string;
+    /**
+     * Confidence Text
+     */
+    confidence_text?: string;
 };
 
 /**
