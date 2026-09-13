@@ -96,6 +96,7 @@ const NAV = [
   { to: "/campaign-marks", label: "Kampania marketingowa" },
   { to: "/groupage-dispatcher-marks", label: "Dyspozytor drobnicy" },
   { to: "/load-order-marks", label: "Kolejność załadunku" },
+  { to: "/tacho-plan-marks", label: "Tacho w planie" },
   { to: "/position-events", label: "Zdarzenie pozycji" },
   { to: "/telematics-devices", label: "Urządzenie telematyczne" },
   { to: "/tracking-consents", label: "Zgoda na śledzenie" },

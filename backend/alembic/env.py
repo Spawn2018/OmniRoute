@@ -209,6 +209,7 @@ from app.models.nvocc_mark import NvoccMark  # noqa: F401
 from app.models.multi_manning_mark import MultiManningMark  # noqa: F401
 from app.models.posting_mark import PostingMark  # noqa: F401
 from app.models.tacho_office_mark import TachoOfficeMark  # noqa: F401
+from app.models.tacho_plan_mark import TachoPlanMark  # noqa: F401
 from app.models.lez_mark import LezMark  # noqa: F401
 from app.models.label_parking_mark import LabelParkingMark  # noqa: F401
 from app.models.ab_sus_mark import AbSusMark  # noqa: F401

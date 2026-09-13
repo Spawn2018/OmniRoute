@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **464.0** BR3.1 — HITL `load_order_mark`
-- **Etap:** Plaster — **465.0** BR3.3 tacho jako ograniczenie planu. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
-- **Następny:** **465.0** HITL `tacho_plan_mark`. Nie live DDD. Nie solver godzin.
+- **Ostatni plaster:** **465.0** BR3.3 — HITL `tacho_plan_mark`
+- **Etap:** Plan — **466.0** BR4.0 promy (rezerwacja, okna, art. 9).
+- **Następny:** **466.0** plan HITL promu. Nie live rezerwacja. Nie solver art. 9.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

@@ -227,6 +227,7 @@ import { Route as SuggestionKindsRouteImport } from './routes/suggestion-kinds'
 import { Route as SuggestionLedgersRouteImport } from './routes/suggestion-ledgers'
 import { Route as SwitchBlLoiMarksRouteImport } from './routes/switch-bl-loi-marks'
 import { Route as TachoOfficeMarksRouteImport } from './routes/tacho-office-marks'
+import { Route as TachoPlanMarksRouteImport } from './routes/tacho-plan-marks'
 import { Route as TaskTemplatesRouteImport } from './routes/task-templates'
 import { Route as TelematicsConnectorsRouteImport } from './routes/telematics-connectors'
 import { Route as TelematicsDevicesRouteImport } from './routes/telematics-devices'
@@ -1363,6 +1364,11 @@ const TachoOfficeMarksRoute = TachoOfficeMarksRouteImport.update({
   path: '/tacho-office-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TachoPlanMarksRoute = TachoPlanMarksRouteImport.update({
+  id: '/tacho-plan-marks',
+  path: '/tacho-plan-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TaskTemplatesRoute = TaskTemplatesRouteImport.update({
   id: '/task-templates',
   path: '/task-templates',
@@ -1803,6 +1809,7 @@ export interface FileRoutesByFullPath {
   '/suggestion-ledgers': typeof SuggestionLedgersRoute
   '/switch-bl-loi-marks': typeof SwitchBlLoiMarksRoute
   '/tacho-office-marks': typeof TachoOfficeMarksRoute
+  '/tacho-plan-marks': typeof TachoPlanMarksRoute
   '/task-templates': typeof TaskTemplatesRoute
   '/telematics-connectors': typeof TelematicsConnectorsRoute
   '/telematics-devices': typeof TelematicsDevicesRoute
@@ -2067,6 +2074,7 @@ export interface FileRoutesByTo {
   '/suggestion-ledgers': typeof SuggestionLedgersRoute
   '/switch-bl-loi-marks': typeof SwitchBlLoiMarksRoute
   '/tacho-office-marks': typeof TachoOfficeMarksRoute
+  '/tacho-plan-marks': typeof TachoPlanMarksRoute
   '/task-templates': typeof TaskTemplatesRoute
   '/telematics-connectors': typeof TelematicsConnectorsRoute
   '/telematics-devices': typeof TelematicsDevicesRoute
@@ -2332,6 +2340,7 @@ export interface FileRoutesById {
   '/suggestion-ledgers': typeof SuggestionLedgersRoute
   '/switch-bl-loi-marks': typeof SwitchBlLoiMarksRoute
   '/tacho-office-marks': typeof TachoOfficeMarksRoute
+  '/tacho-plan-marks': typeof TachoPlanMarksRoute
   '/task-templates': typeof TaskTemplatesRoute
   '/telematics-connectors': typeof TelematicsConnectorsRoute
   '/telematics-devices': typeof TelematicsDevicesRoute
@@ -2598,6 +2607,7 @@ export interface FileRouteTypes {
     | '/suggestion-ledgers'
     | '/switch-bl-loi-marks'
     | '/tacho-office-marks'
+    | '/tacho-plan-marks'
     | '/task-templates'
     | '/telematics-connectors'
     | '/telematics-devices'
@@ -2862,6 +2872,7 @@ export interface FileRouteTypes {
     | '/suggestion-ledgers'
     | '/switch-bl-loi-marks'
     | '/tacho-office-marks'
+    | '/tacho-plan-marks'
     | '/task-templates'
     | '/telematics-connectors'
     | '/telematics-devices'
@@ -3126,6 +3137,7 @@ export interface FileRouteTypes {
     | '/suggestion-ledgers'
     | '/switch-bl-loi-marks'
     | '/tacho-office-marks'
+    | '/tacho-plan-marks'
     | '/task-templates'
     | '/telematics-connectors'
     | '/telematics-devices'
@@ -3391,6 +3403,7 @@ export interface RootRouteChildren {
   SuggestionLedgersRoute: typeof SuggestionLedgersRoute
   SwitchBlLoiMarksRoute: typeof SwitchBlLoiMarksRoute
   TachoOfficeMarksRoute: typeof TachoOfficeMarksRoute
+  TachoPlanMarksRoute: typeof TachoPlanMarksRoute
   TaskTemplatesRoute: typeof TaskTemplatesRoute
   TelematicsConnectorsRoute: typeof TelematicsConnectorsRoute
   TelematicsDevicesRoute: typeof TelematicsDevicesRoute
@@ -4965,6 +4978,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TachoOfficeMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tacho-plan-marks': {
+      id: '/tacho-plan-marks'
+      path: '/tacho-plan-marks'
+      fullPath: '/tacho-plan-marks'
+      preLoaderRoute: typeof TachoPlanMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/task-templates': {
       id: '/task-templates'
       path: '/task-templates'
@@ -5495,6 +5515,7 @@ const rootRouteChildren: RootRouteChildren = {
   SuggestionLedgersRoute: SuggestionLedgersRoute,
   SwitchBlLoiMarksRoute: SwitchBlLoiMarksRoute,
   TachoOfficeMarksRoute: TachoOfficeMarksRoute,
+  TachoPlanMarksRoute: TachoPlanMarksRoute,
   TaskTemplatesRoute: TaskTemplatesRoute,
   TelematicsConnectorsRoute: TelematicsConnectorsRoute,
   TelematicsDevicesRoute: TelematicsDevicesRoute,

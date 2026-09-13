@@ -222,6 +222,7 @@ from app.api import (
     switch_bl_loi_marks,
     table_views,
     tacho_office_marks,
+    tacho_plan_marks,
     task_templates,
     telematics_connectors,
     telematics_devices,
@@ -311,6 +312,7 @@ api_router.include_router(multi_manning_marks.router)
 api_router.include_router(named_place_marks.router)
 api_router.include_router(posting_marks.router)
 api_router.include_router(tacho_office_marks.router)
+api_router.include_router(tacho_plan_marks.router)
 api_router.include_router(label_parking_marks.router)
 api_router.include_router(lez_marks.router)
 api_router.include_router(line_impact_marks.router)

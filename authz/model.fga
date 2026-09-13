@@ -199,6 +199,7 @@ type organization
     define can_manage_posting_marks: member
     define can_manage_position_events: member
     define can_manage_tacho_office_marks: member
+    define can_manage_tacho_plan_marks: member
     define can_manage_lez_marks: member
     define can_manage_label_parking_marks: member
     define can_manage_ab_sus_marks: member

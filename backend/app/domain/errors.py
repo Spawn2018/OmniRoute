@@ -1242,6 +1242,10 @@ class InvalidTachoOfficeMark(DomainError):
     """EXP4.10: HITL tacho office — nie tacho live / DDD parse."""
 
 
+class InvalidTachoPlanMark(DomainError):
+    """BR3.3: HITL tacho w planie — nie live DDD / solver godzin."""
+
+
 class InvalidLezMark(DomainError):
     """EXP4.11: HITL LEZ/zakazy — nie LEZ live / mapa."""
 

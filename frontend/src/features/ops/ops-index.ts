@@ -1065,6 +1065,11 @@ export const OPS_JOBS = [
     job: "katalog tacho_office_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.tachoPlanMark.route,
+    label: "Tacho w planie",
+    job: "katalog tacho_plan_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.lezMark.route,
     label: "LEZ / zakazy",
     job: "katalog lez_mark HITL",
@@ -1579,6 +1584,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "462.0": "/campaign-marks",
   "463.0": "/groupage-dispatcher-marks",
   "464.0": "/load-order-marks",
+  "465.0": "/tacho-plan-marks",
   "267.0": "/lane-kms",
   "268.0": "/erp-connectors",
   "269.0": "/terminal-slot-connectors",

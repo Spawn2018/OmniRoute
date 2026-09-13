@@ -233,6 +233,7 @@ modules =
     app.services.position_events
     app.services.posting_marks
     app.services.tacho_office_marks
+    app.services.tacho_plan_marks
     app.services.lez_marks
     app.services.label_parking_marks
     app.services.ab_sus_marks
@@ -1040,6 +1041,9 @@ forbidden_modules =
     app.services.tacho_office_marks
     app.repositories.tacho_office_marks
     app.models.tacho_office_mark
+    app.services.tacho_plan_marks
+    app.repositories.tacho_plan_marks
+    app.models.tacho_plan_mark
     app.services.lez_marks
     app.repositories.lez_marks
     app.models.lez_mark
