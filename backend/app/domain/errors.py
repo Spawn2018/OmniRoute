@@ -866,6 +866,10 @@ class InvalidOogMark(DomainError):
     """G5: HITL znacznik OOG — nie wymiary."""
 
 
+class InvalidOogPermitMark(DomainError):
+    """BR4.1: HITL zezwolenie OOG — nie wymiary Decimal / live urząd."""
+
+
 class InvalidLoadPlanMark(DomainError):
     """G6: HITL znacznik planu załadunku — nie solver OR."""
 

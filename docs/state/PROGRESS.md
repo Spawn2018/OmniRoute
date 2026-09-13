@@ -872,3 +872,5 @@
 - 2026-09-13T19:15:00Z | 465.0 | tacho_plan_mark | DONE | HITL catalog constraint_kind plan/window/rest/other; bez live DDD / solvera godzin
 
 - 2026-09-13T19:35:00Z | 466.0 | ferry_booking_mark | DONE | HITL catalog booking_kind booking/window/sailing/other; bez live biletu / solvera art. 9
+
+- 2026-09-13T19:50:00Z | 467.0 | oog_permit_mark | DONE | HITL catalog permit_kind permit/pilot/route/other; bez wymiarów / live zezwolenia

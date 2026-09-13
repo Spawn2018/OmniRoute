@@ -146,6 +146,7 @@ from app.api import (
     ocean_feeder_marks,
     offboarding_marks,
     oog_marks,
+    oog_permit_marks,
     operational_exceptions,
     operator_decisions,
     operator_notices,
@@ -346,6 +347,7 @@ api_router.include_router(ocean_alliance_marks.router)
 api_router.include_router(ocean_bills.router)
 api_router.include_router(ocean_feeder_marks.router)
 api_router.include_router(oog_marks.router)
+api_router.include_router(oog_permit_marks.router)
 api_router.include_router(consignments.router)
 api_router.include_router(pallet_balances.router)
 api_router.include_router(document_templates.router)

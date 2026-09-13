@@ -98,6 +98,7 @@ const NAV = [
   { to: "/load-order-marks", label: "Kolejność załadunku" },
   { to: "/tacho-plan-marks", label: "Tacho w planie" },
   { to: "/ferry-booking-marks", label: "Rezerwacja promu" },
+  { to: "/oog-permit-marks", label: "Zezwolenie OOG" },
   { to: "/position-events", label: "Zdarzenie pozycji" },
   { to: "/telematics-devices", label: "Urządzenie telematyczne" },
   { to: "/tracking-consents", label: "Zgoda na śledzenie" },

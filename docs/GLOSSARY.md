@@ -240,6 +240,7 @@
 | znacznik kolejności załadunku | load_order_mark | BR3.1 HITL katalog; leftover solver OR / wymiary Decimal |
 | znacznik tacho w planie | tacho_plan_mark | BR3.3 HITL katalog; leftover live DDD / solver godzin |
 | znacznik rezerwacji promu | ferry_booking_mark | BR4.0 HITL katalog; leftover live bilet / solver art. 9 |
+| znacznik zezwolenia OOG | oog_permit_mark | BR4.1 HITL katalog; leftover wymiary Decimal / live zezwolenie |
 | znacznik planu załadunku | load_plan_mark | G6 HITL katalog; leftover solver OR / osie / tunel ADR |
 | znacznik planu trasy | route_plan_mark | BR3.0 HITL katalog; leftover Valhalla / VRP / km |
 | znacznik CMMS | cmms_mark | G7 HITL katalog; leftover work_order / DTC V5 / kara kierowcy |
