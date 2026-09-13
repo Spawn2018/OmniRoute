@@ -1,3 +1,4 @@
+- **453.0 leftover:** AI4.2 kółka SQL · solver liczb · JSON dźwigni · CASCADE. 453.0 = FK przebieg → migawka + widok `what_if_replay`.
 - **452.0 plan:** AI4.0 FK `plan_snapshot` RESTRICT. Leftover po zamknięciu: AI4.1 · CASCADE.
 - **451.0 leftover:** `.xls` · wiele arkuszy · openpyxl · formuły. 451.0 = pierwszy arkusz OOXML → tekst.
 - **450.0 leftover:** AI3.4 zamknięty w 451.0 · większy golden · instructor w CI · live vision · how-to (brak jobu zapisu w 450). 450.0 = 2 przypadki vs MockExtractor.

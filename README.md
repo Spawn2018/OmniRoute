@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **452.0** AI4.0 — FK złożone RESTRICT na `plan_snapshot`
-- **Etap:** plaster — **453.0** AI4.1 what-if replay. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
-- **Następny:** **453.0** FK przebieg → migawka + widok SQL. Nie solver. Nie AI4.2.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **453.0** AI4.1 — FK `counterfactual_run` → `plan_snapshot` + widok `what_if_replay`
+- **Etap:** Plan — **454.0** AI4.2 kółka w SQL. Spec: brak — `/plan-modul`.
+- **Następny:** **454.0** symulacja kółek w SQL (do 500k). Nie solver w Pythonie. Nie kwota.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

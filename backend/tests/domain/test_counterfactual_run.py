@@ -1,12 +1,17 @@
+from uuid import uuid4
+
 import pytest
 
 from app.domain.counterfactual_run import parse_counterfactual_run_row
 from app.domain.errors import InvalidCounterfactualRun
 
+_SNAP = uuid4()
+
 
 def _ok(**extra: object) -> object:
     body: dict[str, object] = {
         "run_code": "fuel_spike",
+        "plan_snapshot_id": str(_SNAP),
         "baseline_label": "plan z wczoraj",
         "levers_label": "paliwo w gore",
         "result_label": "eta plus dwie godziny",
@@ -15,6 +20,7 @@ def _ok(**extra: object) -> object:
     body.update(extra)
     return parse_counterfactual_run_row(
         body["run_code"],
+        body["plan_snapshot_id"],
         body["baseline_label"],
         body["levers_label"],
         body["result_label"],
@@ -27,6 +33,12 @@ def test_parse_accepts_manual_row() -> None:
     assert draft.run_code == "fuel_spike"
     assert draft.baseline_label == "plan z wczoraj"
     assert draft.result_label == "eta plus dwie godziny"
+    assert draft.plan_snapshot_id == _SNAP
+
+
+def test_parse_rejects_bad_snapshot() -> None:
+    with pytest.raises(InvalidCounterfactualRun, match="migawka"):
+        _ok(plan_snapshot_id="nie-uuid")
 
 
 def test_parse_rejects_bad_code() -> None:

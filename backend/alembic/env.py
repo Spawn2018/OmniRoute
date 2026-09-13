@@ -230,6 +230,7 @@ from app.models.version_score import VersionScore  # noqa: F401
 from app.models.version_window import VersionWindow  # noqa: F401
 from app.models.benefit_ledger import BenefitLedger  # noqa: F401
 from app.models.counterfactual_run import CounterfactualRun  # noqa: F401
+from app.models.what_if_replay import WhatIfReplay  # noqa: F401
 from app.models.weather_observation import WeatherObservation  # noqa: F401
 from app.models.free_time_clock import FreeTimeClock  # noqa: F401
 from app.models.telematics_connector import TelematicsConnector  # noqa: F401

@@ -12,12 +12,14 @@ _DENIED = "Brak uprawnienia can_manage_counterfactual_runs na organization"
 
 _CALLS = (
     ("GET", "/api/v1/counterfactual-runs", None, None),
+    ("GET", "/api/v1/what-if-replays", None, None),
     (
         "POST",
         "/api/v1/counterfactual-runs",
         None,
         {
             "run_code": "fuel_spike",
+            "plan_snapshot_id": "00000000-0000-0000-0000-000000000001",
             "baseline_label": "plan z wczoraj",
             "levers_label": "paliwo w gore",
             "result_label": "eta plus dwie godziny",

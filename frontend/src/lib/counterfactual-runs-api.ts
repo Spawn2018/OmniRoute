@@ -5,6 +5,7 @@ export type CounterfactualRunRow = {
   id: string
   organization_id: string
   run_code: string
+  plan_snapshot_id: string
   baseline_label: string
   levers_label: string
   result_label: string
@@ -13,13 +14,30 @@ export type CounterfactualRunRow = {
 
 export type CounterfactualRunPayload = {
   run_code: string
+  plan_snapshot_id: string
   baseline_label: string
   levers_label: string
   result_label: string
   source_ref: string
 }
 
+export type WhatIfReplayRow = {
+  organization_id: string
+  run_id: string
+  run_code: string
+  baseline_label: string
+  levers_label: string
+  result_label: string
+  source_ref: string
+  plan_snapshot_id: string
+  snapshot_code: string
+  shipment_id: string
+  trip_id: string
+  resource_id: string
+}
+
 const ENDPOINT = "/api/v1/counterfactual-runs" as const
+const REPLAY_ENDPOINT = "/api/v1/what-if-replays" as const
 
 function authJsonHeaders(extra?: Record<string, string>): HeadersInit {
   return {
@@ -31,6 +49,7 @@ function authJsonHeaders(extra?: Record<string, string>): HeadersInit {
 
 export function makeCounterfactualRunPayload(draft: {
   runCode: string
+  snapshotId: string
   baselineLabel: string
   leversLabel: string
   resultLabel: string
@@ -38,6 +57,7 @@ export function makeCounterfactualRunPayload(draft: {
 }): CounterfactualRunPayload {
   return {
     run_code: draft.runCode.trim(),
+    plan_snapshot_id: draft.snapshotId.trim(),
     baseline_label: draft.baselineLabel.trim(),
     levers_label: draft.leversLabel.trim(),
     result_label: draft.resultLabel.trim(),
@@ -54,6 +74,17 @@ export async function loadCounterfactualRuns(): Promise<CounterfactualRunRow[]> 
     )
   }
   return (await response.json()) as CounterfactualRunRow[]
+}
+
+export async function loadWhatIfReplays(): Promise<WhatIfReplayRow[]> {
+  const response = await fetch(REPLAY_ENDPOINT, { headers: authJsonHeaders() })
+  if (!response.ok) {
+    throw new ApiError(
+      await readApiDetail(response, "Powtorka what-if niedostepna"),
+      httpErrorStatus(response),
+    )
+  }
+  return (await response.json()) as WhatIfReplayRow[]
 }
 
 export async function createCounterfactualRun(

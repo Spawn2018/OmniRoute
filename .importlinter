@@ -892,6 +892,7 @@ forbidden_modules =
     app.services.counterfactual_runs
     app.repositories.counterfactual_runs
     app.models.counterfactual_run
+    app.models.what_if_replay
     app.services.benefit_ledgers
     app.repositories.benefit_ledgers
     app.models.benefit_ledger

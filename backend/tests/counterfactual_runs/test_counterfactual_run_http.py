@@ -30,11 +30,27 @@ def test_migration_344_creates_counterfactual_run_and_rls() -> None:
     assert "plan_snapshot.id" not in source
 
 
+def test_migration_358_adds_snapshot_fk_and_replay_view() -> None:
+    source = (_ROOT / "backend/alembic/versions/358_cf_run_snap.py").read_text(
+        encoding="utf-8",
+    )
+    assert 'revision: str = "358_cf_run_snap"' in source
+    assert 'down_revision: str | None = "357_plan_snap_fk"' in source
+    assert 'ondelete="RESTRICT"' in source
+    assert 'ondelete="CASCADE"' not in source
+    assert "security_invoker = true" in source
+    assert "fk_counterfactual_run_snapshot" in source
+    assert "CREATE VIEW what_if_replay" in source
+    assert "amount" not in source
+    assert "float(" not in source.lower()
+
+
 def test_importlinter_lists_counterfactual_run_on_deny() -> None:
     source = (_ROOT / ".importlinter").read_text(encoding="utf-8")
     forbidden = source.split("[importlinter:contract:extraction-no-rates]", 1)[1]
     assert "app.services.counterfactual_runs" in forbidden
     assert "app.models.counterfactual_run" in forbidden
+    assert "app.models.what_if_replay" in forbidden
 
 
 def test_api_types_include_counterfactual_run() -> None:
@@ -78,12 +94,16 @@ class InMemoryCounterfactualDesk:
     async def list_rows(self) -> list[CounterfactualRun]:
         return list(self.rows)
 
+    async def list_replays(self) -> list[object]:
+        return []
+
     async def persist_run(
         self,
         *,
         organization_id: UUID,
         user_id: UUID,
         run_code: object,
+        plan_snapshot_id: object,
         baseline_label: object,
         levers_label: object,
         result_label: object,
@@ -91,6 +111,7 @@ class InMemoryCounterfactualDesk:
     ) -> CounterfactualRun:
         draft = parse_counterfactual_run_row(
             run_code,
+            plan_snapshot_id,
             baseline_label,
             levers_label,
             result_label,
@@ -100,6 +121,7 @@ class InMemoryCounterfactualDesk:
             id=uuid4(),
             organization_id=organization_id,
             run_code=draft.run_code,
+            plan_snapshot_id=draft.plan_snapshot_id,
             baseline_label=draft.baseline_label,
             levers_label=draft.levers_label,
             result_label=draft.result_label,
@@ -133,6 +155,7 @@ def counterfactual_http(monkeypatch: pytest.MonkeyPatch) -> object:
 def _payload(**extra: object) -> dict[str, object]:
     body: dict[str, object] = {
         "run_code": "fuel_spike",
+        "plan_snapshot_id": str(uuid4()),
         "baseline_label": "plan z wczoraj",
         "levers_label": "paliwo w gore",
         "result_label": "eta plus dwie godziny",
@@ -151,6 +174,7 @@ def test_post_persists(counterfactual_http: object) -> None:
     )
     assert response.status_code == 201
     assert response.json()["run_code"] == "fuel_spike"
+    assert response.json()["plan_snapshot_id"] == str(desk.rows[0].plan_snapshot_id)
     assert response.headers.get("X-Omni-Catalog") == "counterfactual-run"
     assert len(desk.rows) == 1
 
@@ -186,6 +210,38 @@ def test_post_rejects_foreign_source_ref(counterfactual_http: object) -> None:
     )
     assert response.status_code == 400
     assert "wskazanie" in response.json()["detail"]
+
+
+def test_post_rejects_bad_snapshot(counterfactual_http: object) -> None:
+    client, _desk = counterfactual_http
+    response = client.post(
+        "/api/v1/counterfactual-runs",
+        headers=bearer_auth_headers(),
+        json=_payload(plan_snapshot_id="nie-uuid"),
+    )
+    assert response.status_code == 400
+    assert "migawka" in response.json()["detail"]
+
+
+def test_get_replays_is_200(counterfactual_http: object) -> None:
+    client, _desk = counterfactual_http
+    response = client.get(
+        "/api/v1/what-if-replays",
+        headers=bearer_auth_headers(),
+    )
+    assert response.status_code == 200
+    assert response.json() == []
+
+
+def test_post_replay_is_405(counterfactual_http: object) -> None:
+    client, _desk = counterfactual_http
+    response = client.post(
+        "/api/v1/what-if-replays",
+        headers=bearer_auth_headers(),
+        json=_payload(),
+    )
+    assert response.status_code == 405
+    assert "odczytem" in response.json()["detail"]
 
 
 def test_get_lists_rows(counterfactual_http: object) -> None:

@@ -71,7 +71,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | B0b | Ledger predykcji | 193.0 `prediction_ledger` · 265.0 `plan_snapshot` · 446.0 · 452.0 | **ukończony (HITL)** · przedział; nowy INSERT bez CRPS/MAE; leftover Brier / champion; FK snapshot RESTRICT |
 | AI1.0 | Ledger podpowiedzi | 432.0 `suggestion_ledger` | **ukończony (HITL)** · przedział + reaction + changed_to; leftover outcome_ledger / CRPS liczone |
 | AI1.1 | Ledger wyniku | 433.0 `outcome_ledger` | **ukończony (HITL)** · actual_value Decimal; leftover CRPS liczone / złączenie |
-| AI1.2 | Przebieg what-if | 434.0 `counterfactual_run` | **ukończony (HITL)** · etykiety; leftover silnik AI4.1 / benefit_ledger |
+| AI1.2 | Przebieg what-if | 434.0 `counterfactual_run` · 453.0 | **ukończony (HITL)** · etykiety + FK migawki + widok powtórki; leftover solver / AI4.2 |
 | AI2.0 | Wynik przedziału | 443.0 `interval_score` | **ukończony (SQL)** · widok MAE+CRPS; leftover Brier / zapis `prediction_ledger` / AI2.1 |
 | AI2.1 | Wynik wersji | 444.0 `version_score` | **ukończony (SQL)** · średnie per model_version; leftover dryf / auto-champion |
 | AI2.1 | Wynik okna wersji | 445.0 `version_window` | **ukończony (SQL)** · średnie per dzień UTC; leftover zapis `prediction_ledger` / Brier |

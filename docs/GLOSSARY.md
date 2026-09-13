@@ -143,7 +143,7 @@
 | wynik okna wersji | version_window | AI2.1 średnie MAE/CRPS per model_version i dzień UTC; nie detektor |
 | wynik okna wersji | version_window | AI2.1 leftover: średnie MAE/CRPS per model_version i dzień UTC z created_at; nie detektor |
 | rodzaj wyniku | outcome_kind | AI1.4 HITL otwarty słownik kind_code; FK z outcome_ledger (442.0) |
-| przebieg what-if | counterfactual_run | AI1.2 HITL etykiety baseline/dźwigni/wyniku; nie silnik; nie kwota |
+| przebieg what-if | counterfactual_run | AI1.2 HITL etykiety + AI4.1 FK do `plan_snapshot` i widok `what_if_replay`; nie silnik liczb; nie kwota |
 | ledger oszczędności | benefit_ledger | AI1.3 HITL method_label + hours_saved + saved_amount Decimal; nie druga marża; nie SQL z charge |
 | rodzaj podpowiedzi | suggestion_kind | AI1.4 HITL otwarty słownik kind_code; nie CHECK; nie kolumna ledgeru |
 | migawka planu | plan_snapshot | B0b; 265.0 HITL wersja planu; 452.0 FK złożone RESTRICT; nie silnik; nie kółka |

@@ -846,3 +846,5 @@
 - 2026-09-13T14:15:00Z | 451.0 | extraction_draft | DONE | xlsx_sheet stdlib pierwszy arkusz; bez openpyxl
 
 - 2026-09-13T14:30:00Z | 452.0 | plan_snapshot | DONE | FK zlozone RESTRICT shipment/trip/resource; bez CASCADE
+
+- 2026-09-13T15:00:00Z | 453.0 | counterfactual_run | DONE | FK plan_snapshot RESTRICT + widok what_if_replay; bez solvera

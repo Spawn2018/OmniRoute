@@ -77,6 +77,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | AI4.0 plan (**452.0**): FK złożone RESTRICT. CASCADE `REJECTED`. What-if `REJECTED` na tym wierszu. |
 | 2026-09-13 | **452.0** FK `plan_snapshot` w kodzie (`CONFIRMED`, git). Następny = **AI4.1** what-if (`REQUIREMENT`). CASCADE `REJECTED`. |
 | 2026-09-13 | AI4.1 plan (**453.0**): FK `counterfactual_run` → `plan_snapshot` + widok SQL powtórki. Solver / AI4.2 `REJECTED` na tym wierszu. |
+| 2026-09-13 | **453.0** FK przebieg + widok `what_if_replay` w kodzie (`CONFIRMED`, git). Następny = **AI4.2** kółka SQL (`REQUIREMENT`). Solver liczb `REJECTED` na tym wierszu. |
 
 ---
 
@@ -190,6 +191,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | AI4.0 (**452.0**) = FK `plan_snapshot` → shipment/trip/resource, `ON DELETE RESTRICT`. CASCADE `REJECTED`. | `/plan-modul` `/noc`; VISION E AI4 |
 | 2026-09-13 | **452.0** w kodzie (`CONFIRMED`, git). FK złożone RESTRICT. Następny = **AI4.1** (`REQUIREMENT`). | CURRENT + plaster 452.0 `/noc` |
 | 2026-09-13 | AI4.1 (**453.0**) = FK przebieg → migawka + widok `what_if_replay`. Solver / kółka 500k `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E AI4 |
+| 2026-09-13 | **453.0** w kodzie (`CONFIRMED`, git). FK złożone RESTRICT + widok powtórki. Następny = **AI4.2** (`REQUIREMENT`). Solver liczb `REJECTED`. | CURRENT + plaster 453.0 `/noc` |
 
 ---
 ---
@@ -817,9 +819,9 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | nazwy z PDF-ów bez wiersza w planie | **136** (z czego 28 to aliasy) |
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
-Ostatni ukończony plaster: **452.0** (FK `plan_snapshot` RESTRICT).
-Następny = **453.0** AI4.1 what-if na `counterfactual_run` (`REQUIREMENT`).
-AI1.0–AI1.4 oraz 443.0–452.0 są w kodzie (`CONFIRMED`); `data_source`
+Ostatni ukończony plaster: **453.0** (FK przebieg → migawka + widok `what_if_replay`).
+Następny = **454.0** AI4.2 kółka w SQL (`REQUIREMENT`).
+AI1.0–AI1.4 oraz 443.0–453.0 są w kodzie (`CONFIRMED`); `data_source`
 zostaje w AI5 (`REQUIREMENT`). Teza B.1 zostaje: szerokość katalogów nie zastępuje pomiaru.
 
 ## C.2 Bliźniaki — scalona taksonomia

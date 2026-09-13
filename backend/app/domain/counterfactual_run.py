@@ -1,5 +1,6 @@
 import re
 from dataclasses import dataclass
+from uuid import UUID
 
 from app.domain.errors import InvalidCounterfactualRun
 
@@ -11,6 +12,7 @@ _FIX = "fixture://counterfactual-run/"
 @dataclass(frozen=True)
 class CounterfactualRunDraft:
     run_code: str
+    plan_snapshot_id: UUID
     baseline_label: str
     levers_label: str
     result_label: str
@@ -46,8 +48,20 @@ def _source_ref(raw: object) -> str:
     return pointer
 
 
+def require_plan_snapshot_id(raw: object) -> UUID:
+    if isinstance(raw, UUID):
+        return raw
+    if type(raw) is not str:
+        raise InvalidCounterfactualRun("migawka")
+    try:
+        return UUID(raw.strip())
+    except ValueError as exc:
+        raise InvalidCounterfactualRun("migawka") from exc
+
+
 def parse_counterfactual_run_row(
     run_code: object,
+    plan_snapshot_id: object,
     baseline_label: object,
     levers_label: object,
     result_label: object,
@@ -55,6 +69,7 @@ def parse_counterfactual_run_row(
 ) -> CounterfactualRunDraft:
     return CounterfactualRunDraft(
         run_code=_snake(run_code, "kod"),
+        plan_snapshot_id=require_plan_snapshot_id(plan_snapshot_id),
         baseline_label=_label(baseline_label, "punkt"),
         levers_label=_label(levers_label, "dźwignie"),
         result_label=_label(result_label, "wynik"),

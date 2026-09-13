@@ -10,6 +10,7 @@ import {
 export function CounterfactualRunComposer(props: { organizationId: string | null }) {
   const qc = useQueryClient()
   const [runCode, setRunCode] = useState("fuel_spike")
+  const [snapshotId, setSnapshotId] = useState("")
   const [baselineLabel, setBaselineLabel] = useState("plan z wczoraj")
   const [leversLabel, setLeversLabel] = useState("paliwo w gore")
   const [resultLabel, setResultLabel] = useState("eta plus dwie godziny")
@@ -19,6 +20,7 @@ export function CounterfactualRunComposer(props: { organizationId: string | null
       createCounterfactualRun(
         makeCounterfactualRunPayload({
           runCode,
+          snapshotId,
           baselineLabel,
           leversLabel,
           resultLabel,
@@ -29,6 +31,9 @@ export function CounterfactualRunComposer(props: { organizationId: string | null
       setRef("fixture://counterfactual-run/")
       void qc.invalidateQueries({
         queryKey: ["counterfactual-runs", props.organizationId],
+      })
+      void qc.invalidateQueries({
+        queryKey: ["what-if-replays", props.organizationId],
       })
     },
   })
@@ -50,6 +55,16 @@ export function CounterfactualRunComposer(props: { organizationId: string | null
           onChange={(e) => setRunCode(e.target.value)}
           required
           value={runCode}
+        />
+      </label>
+      <label className="text-xs">
+        plan_snapshot_id — musi istnieć
+        <input
+          aria-label="plan_snapshot_id musi istniec"
+          className="mt-1 h-9 w-full rounded border px-2 font-mono text-sm"
+          onChange={(e) => setSnapshotId(e.target.value)}
+          required
+          value={snapshotId}
         />
       </label>
       <label className="text-xs">
