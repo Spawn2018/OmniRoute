@@ -2,8 +2,8 @@
 
 ```
 status:        roboczy kanon
-wersja:        0.3
-ostatnia zmiana: 2026-09-13 13:50
+wersja:        0.5
+ostatnia zmiana: 2026-09-13 22:25
 ```
 
 ## Jak czytać
@@ -21,9 +21,9 @@ Pięć części oryginalnego planu „Domknięcie badań i wizji”:
 Pełny tekst A–E zostaje też poniżej (jedno miejsce na czytanie ciągłe).
 Egzekucja zapisu: `.cursor/rules/wizja-zywa.mdc` (alwaysApply).
 Zrzuty obiektów Control Tower: badania `03-BENCHMARK-CONTROL-TOWER.md`
-(B.1–B.3, B.7–B.10; B.4–B.6 FourKites / Blue Yonder / Kinaxis nietknięte w dumpie
-2026-09-13). Benchmark TMS top-10 (`04b`) — dump 2026-09-13 (A–H × 10;
-CargoWise / Qargo / interLAN zostają w badaniach `04`).
+(B.1–B.10; skrót FourKites / Blue Yonder / Kinaxis w A.2). Benchmark TMS
+top-10 (`04b`) — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN
+zostają w badaniach `04`).
 
 ## Dziennik zmian
 
@@ -33,10 +33,10 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | Rozbicie na 08a–e; Q1–Q13 wiążące (HC-04 L0–2/L3–5; FK plan_snapshot; nauka per tenant + SuperAdmin na całości; start HHL BR3.0/BR6.0/BR2.0; inwestorowi zero liczb skali) |
 | 2026-09-13 | Scalenie do `docs/VISION.md`; AI0 = już w kodzie (072); `/noc` stop |
 | 2026-09-13 | Reguła `.cursor/rules/wizja-zywa.mdc`: decyzje produktowe w tej samej turze do tego pliku |
-| 2026-09-13 | Dump CT badania `03` B.1–B.3, B.7–B.10: Oracle buy/sell = antywzorzec; p44/LSP44 = dwa GTM, jeden OpenAPI; GTT+o9+Shippeo+e2open+Infor; auto-approve zakaz; luka `charge`/`benefit_ledger`. B.4–B.6 nietknięte. [WYCOFANE 2026-09-13: „TMS `04b` nietknięte” — dump `04b` jest w kanonie]. |
+| 2026-09-13 | Dump CT badania `03` B.1–B.3, B.7–B.10: Oracle buy/sell = antywzorzec; p44/LSP44 = dwa GTM, jeden OpenAPI; GTT+o9+Shippeo+e2open+Infor; auto-approve zakaz; luka `charge`/`benefit_ledger`. [WYCOFANE 2026-09-13: „B.4–B.6 nietknięte” — skrót w A.2]. [WYCOFANE 2026-09-13: „TMS `04b` nietknięte” — dump `04b` jest w kanonie]. |
 | 2026-09-13 | Dump TMS top-10 badania `04b` (A–H × 10): druga marża REJECTED; Decimal CONFIRMED; AI-write MQ REJECTED; Oracle LML 95% jedyna publiczna metoda przedziału; WMS+BR6.2 evidenced; e2open≠CargoWise; Uber konflikt danych; CHR nie ISV; luka dwóch skór+RLS; KSeF/JPK/SENT nasze; leftover silniki HITL. 431.0 nie wynika z dziesiątki. |
 | 2026-09-13 | [WYCOFANE] zdania „TMS `04b` w toku / nietknięte” — dump jest w kanonie |
-| 2026-09-13 | Bramka publikacji: Cloudflare jako warstwa bezpieczeństwa przed ruchem publicznym (B.8). Nie plaster, nie `/noc`, nie AI0. 431.0 zostaje. |
+| 2026-09-13 | Bramka publikacji: Cloudflare jako warstwa bezpieczeństwa przed ruchem publicznym (B.8). Nie plaster, nie `/noc`, nie AI0. [WYCOFANE 2026-09-13: „431.0 zostaje” jako next-ID — **431.0** jest w kodzie]. |
 | 2026-09-13 | **433.0** `outcome_ledger` w kodzie. Następny = AI1.2 `counterfactual_run`. CRPS liczone = AI2. |
 | 2026-09-13 | AI1.2 plan (**434.0**): HITL `counterfactual_run` etykiety. Silnik = AI4.1. |
 | 2026-09-13 | **434.0** `counterfactual_run` w kodzie. Następny = AI1.3 `benefit_ledger`. |
@@ -107,6 +107,9 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | BR4.1 plan (**467.0**): HITL `oog_permit_mark`. Wymiary Decimal / live zezwolenie / klej do `oog_mark` `REJECTED` na tym wierszu. |
 | 2026-09-13 | **467.0** `oog_permit_mark` w kodzie (`CONFIRMED`, git). Następny = **BR4.2** LCL (`REQUIREMENT`). Wymiary / Expo / AI5 `REJECTED` na tym wierszu. |
 | 2026-09-13 | BR4.2 plan (**468.0**): HITL `lcl_console_mark`. Live CFS / CBM / druga tabela LCL `REJECTED` na tym wierszu. |
+| 2026-09-13 | C.3 **Grupa 8**: help desk produktu (ticket → agent → akceptacja właściciela) + mobile całego OmniRoute. Leftover PLAN **Plat-HD** / **Mob**. Nie 468.0. |
+| 2026-09-13 | D.7 readiness (Murphy 2026 + audyt PDF/czat): Three-Bucket, Definition Gap, szwy eskalacji = leftover. Mission Control / wektor / druga warstwa semantyczna / Bertha `REJECTED`. |
+| 2026-09-13 | Ciało C.3 Grupa 8 + D.7 + skrót `03` B.4–B.6 w A.2. E.3: HC-04 i FK `plan_snapshot` zamknięte. [WYCOFANE 2026-09-13: „B.4–B.6 nietknięte w dumpie” — skrót jest w kanonie]. |
 
 ---
 
@@ -116,7 +119,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 status:        roboczy kanon (zastępuje "Informacje z claude/vision.md" z 2026-08-29)
 wersja:        0.1
 utworzony:     2026-09-13
-ostatnia zmiana: 2026-09-13 13:35
+ostatnia zmiana: 2026-09-13 22:20
 autor ustaleń: Sebastian Bożek (właściciel produktu)
 redakcja:      agent, na podstawie dokumentów 01-07 i 09-11 w tym katalogu
 lokalizacja:   docs/VISION.md (repozytorium OmniRoute)
@@ -173,7 +176,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | Dziesięć decyzji wiążących właściciela zapisanych jako kanon (część A.3, B.4, D.2). | prompt właściciela 2026-09-13 + odpowiedzi na pytania |
 | 2026-09-13 | Dodano część C.3 — brakujące moduły. Powód: właściciel wskazał wprost, że plan budowy musi objąć to, czego dziś się nie buduje. | polecenie właściciela 2026-09-13 |
 | 2026-09-13 | Wskazano regułę `.cursor/rules/wizja-zywa.mdc`. Kanon = ten plik, nie trzecia kopia. | polecenie właściciela 2026-09-13 |
-| 2026-09-13 | Dump Control Tower (badania `03` B.1–B.3, B.7–B.10): antypattern Oracle buy/sell; p44/LSP44 jeden OpenAPI dwa GTM; trójka PLANNED/ACTUAL/ESTIMATE; zakaz float geo; GTT model+tolerance; wzorzec benchu o9 cuOpt; Shippeo Triple SLA bez claimu liczb; Shippeo≠Overhaul; e2open=WiseTech; Infor sieć ≠ RLS; auto-approve zakaz; luka `charge`+`benefit_ledger` u siódemki. B.4–B.6 nietknięte. [WYCOFANE 2026-09-13: „TMS `04b` nadal w toku” — dump `04b` jest w kanonie]. | public docs w `03`; decyzje Omni = `REQUIREMENT` / `REJECTED` / `CONFIRMED` w A–E |
+| 2026-09-13 | Dump Control Tower (badania `03` B.1–B.3, B.7–B.10): antypattern Oracle buy/sell; p44/LSP44 jeden OpenAPI dwa GTM; trójka PLANNED/ACTUAL/ESTIMATE; zakaz float geo; GTT model+tolerance; wzorzec benchu o9 cuOpt; Shippeo Triple SLA bez claimu liczb; Shippeo≠Overhaul; e2open=WiseTech; Infor sieć ≠ RLS; auto-approve zakaz; luka `charge`+`benefit_ledger` u siódemki. [WYCOFANE 2026-09-13: „B.4–B.6 nietknięte” — skrót w A.2]. [WYCOFANE 2026-09-13: „TMS `04b` nadal w toku” — dump `04b` jest w kanonie]. | public docs w `03`; decyzje Omni = `REQUIREMENT` / `REJECTED` / `CONFIRMED` w A–E |
 | 2026-09-13 | Dump TMS top-10 (badania `04b`, A–H × 10 poza CargoWise/Qargo/interLAN): klon drugiej marży REJECTED (SAP `Profitability` na FWO; Oracle `Job.Profit` + osobne buy/sell shipments; Shipwell `customer_charge_line_items` + `vendor_charge_line_items` + `markup`); JSON `number` / integer cents ≠ Decimal HC; AI-write bo MQ ma (Shipwell Swifty/MCP, Uber 30+ agents, SAP calc on save) REJECTED; Oracle LML 95% `Prediction Low/High` = jedyna publiczna metoda przedziału, nie CRPS/MAE; Fala BR WMS evidenced (Manhattan Active TM+WMS+Yard+Labour; Infios Archer OMS/WMS/TMS; SAP EWM); BR6.2 = Alpega TenderEasy + Freight Bench (multi-round, like-for-like, spot; nie auto-award); e2open ≠ CargoWise (close 03.08.2025, „very little product overlap”); Uber Freight konflikt osi danych HHL; CHR Navisphere nie ISV; żaden z 10 nie sprzedaje dwóch skór TSL+Watch Tower + Postgres RLS; KSeF/JPK/SENT nie publiczne; leftover silniki (VSR, LML, Optimizer, Archer, what-if) zostają HITL + `suggestion_ledger` (AI1.0 po 431.0). 431.0 `quote_validity_mark` nie wynika z tej dziesiątki. | public docs w `04b`; decyzje Omni = `REQUIREMENT` / `REJECTED` / `CONFIRMED` w A–E |
 | 2026-09-13 | Bramka publikacji: Cloudflare jako warstwa bezpieczeństwa (DNS + proxy, TLS Full/strict, HSTS, WAF, rate limit, Access) **zanim** SPA operatora jest publiczna. Nie marketing CDN. Nie zastępuje RLS/HITL/Auth0 I1/I2. Nie plaster `/noc`. 431.0 zostaje. | polecenie właściciela 2026-09-13; stan repo `CONFIRMED`; limity planów = public docs Cloudflare (cytowane w B.8), nie nasz cennik |
 | 2026-09-13 | Leftover EXP1 katalogów quotation zamknięty: **431.0** `quote_validity_mark` w kodzie (`CONFIRMED`, git). Następny = **AI1.0** `suggestion_ledger` (`REQUIREMENT`, PLAN Fala AI). Kolumny `valid_until` / `revision_no` / `supersedes_id` na `quotation` zostają leftover (`REQUIREMENT`). | CURRENT + plaster 431.0 `/noc` |
@@ -333,6 +336,22 @@ sprzedaje tego pakietu. Luka z A.2 stoi.
 **CHR Navisphere nie jest ISV** (`CONFIRMED`, `04b` §10): platforma
 C.H. Robinson (+ TMC / Managed Solutions). Argument sprzedaży:
 „nie siedzisz na platformie konkurencyjnego 3PL”.
+
+**FourKites / Blue Yonder / Kinaxis** (`CONFIRMED` publicznie w `03` B.4–B.6;
+skrót do kanonu 2026-09-13, bez zgadywania liczb klientów):
+FourKites nazywa pięć bliźniaków (`Order`, `Shipment`, `Inventory`, `Asset`,
+`Facility`) plus `Loft™` jako środowisko agentów. To analogia do **naszej
+taksonomii** C.2, nie nowa tabela-twin i nie obiekt API — schemat bliźniaka
+w publicznym API **NIE POTWIERDZONE**. GraphQL z repo third-party
+**NIE POTWIERDZONE** jako publiczne API FourKites — nie obiecywać.
+Blue Yonder `Supply Chain Command Center` = przebrandowane One Network
+(`CONFIRMED` przypis first-party). `docs.onenetwork.com` jest publiczna;
+część pól nowszego BY bywa za logowaniem — w kanonie tylko to, co `03`
+ma jako POTWIERDZONE. Kinaxis `Maestro®` (dawniej `RapidResponse®`) jest
+wzorcem what-if / concurrent planning. Mechanizm kopii planu jest
+publicznie opisany jako scenariusz; analog `plan_snapshot` +
+`counterfactual_run` **już jest w kodzie jako HITL** (265.0 / 434.0 /
+452.0 / 453.0). Solver what-if zostaje leftover AI4.1, nie runtime.
 
 ## A.3 Co niniejszym unieważniamy
 
@@ -622,8 +641,8 @@ Jedna konstrukcja, pięć wymagań.
 **Trójka plan / fakt / estymata** (`REQUIREMENT`, `03` B.1): project44 publikuje
 `TrackedShipmentDateTime.type` = `PLANNED` | `ACTUAL` | `ESTIMATE` oraz długi
 enum `TrackedShipmentEvent.type`. To jest bliżej `entity_event` /
-`prediction_ledger` niż marketingowych „twins" FourKites (karta `03` B.4
-nietknięta w dumpie 2026-09-13). p44 **nie** publikuje CRPS/MAE — nasze AI2
+`prediction_ledger` niż marketingowych „twins" FourKites (karta `03` B.4; skrót w A.2).
+p44 **nie** publikuje CRPS/MAE — nasze AI2
 nadal liczy metryki z danych.
 
 **Oracle LML** (`CONFIRMED`, `04b` §2.E, otmol `ml_perform_prediction`):
@@ -698,10 +717,9 @@ wyniku na **własnym** zbiorze golden — nie na benchmarku z literatury i nie n
 liczbie od dostawcy. Poniżej progu poziom się nie włącza, a jeśli wynik spadnie,
 poziom schodzi automatycznie.
 
-**Konflikt do domknięcia** (`TO_VERIFY`): `HC-04` w `GROUNDING.md` mówi dziś,
-że AI nie zapisuje. Poziomy 3–5 tego wymagają. **Kanon musi zostać przepisany
-świadomie**, z zapisaniem, co dokładnie wolno na jakim poziomie — a nie obejmowany
-milczeniem w kodzie.
+**Konflikt HC-04** — [WYCOFANE 2026-09-13: Q1–Q2 + przepisanie
+`GROUNDING.md`]. HC-04 mówi: L0–2 bez zapisu AI; L3–5 tylko w zapisanych
+granicach + audit; auto-zejście jakości przed L3. LLM nadal nie liczy.
 
 ## B.5 Hierarchia stylu — dlaczego bliźniak człowieka jest legalny
 
@@ -998,6 +1016,24 @@ bo bez ewidencji magazynowej nie ma zastawu na towarze.
 - **Sala operacyjna (war room)** — dziś tylko katalog rodzaju incydentu
 - **Wpływ na linię produkcyjną** — dziś tylko katalog znacznika
 
+**Grupa 8 — help desk produktu i sterowanie z telefonu.**
+Wymóg właściciela z 2026-09-13 oraz workflow z rozmowy blueprinting / matrycy
+7 IX (`IT Support Agent`). Leftover PLAN: **Plat-HD** i dopisek **Mob**.
+Nie 468.0. Nie Expo live. Nie nowy BC w tej nocy.
+- **Ticket / help desk / customer support produktu OmniRoute** (`REQUIREMENT`) —
+  użytkownik zgłasza **błąd programu**, nie pytanie operacyjne o zlecenie.
+  Agent przegląda zgłoszenie i proponuje naprawę. Wdrożenie naprawy tylko po
+  akceptacji właściciela (HITL). Źródło nazwy w analizie:
+  `docs/analysis/benchmark-tms-2026.md` — „ticket → analiza → propozycja
+  naprawy → człowiek zatwierdza”, status BRAK, fala HZ.
+  To **nie** jest: Operational Service Agent, Customer Chat, CI8
+  `repair_playbook`, `capa_mark`, `operator_notice`.
+- **Aplikacja mobilna do sterowania całym OmniRoute** (`REQUIREMENT`) — iOS i
+  Android; z telefonu widać i zatwierdza się m.in. naprawy ze zgłoszeń powyżej.
+  To **nie** jest: BR6.3 (apka sprzedaży), BR2.3 (apka kierowcy), X1–X5
+  (portale), pusty wiersz `Mob` (Expo po S53+X bez tego zakresu).
+  `mobile_client_mark` to katalog znaczników HITL, nie ta aplikacja.
+
 **Uwaga metodyczna o tej liście.** Nie jest to lista życzeń. Każda pozycja ma
 pokrycie w materiałach źródłowych z okresu 29 VIII – 11 IX i jest częścią tych
 **25 funkcji niezaplanowanych** oraz **75 tematów bez własnego wiersza w planie**
@@ -1260,6 +1296,26 @@ Dodatkowo ustalenie o statusie usterki w kanonie: **`llm-guard` jest projektem
 zarchiwizowanym**, a `GROUNDING.md` wskazuje go jako cel twardego wymagania.
 To martwy cel i trzeba go zastąpić.
 
+## D.7 Filtr Murphy / GPT / Gemini — brać i nie brać
+
+Źródło książki: badania `18` (Murphy 2026, `[C]` field report). Audyt PDF-ów
+ChatGPT / Gemini: `18` §11. „90 % projektów AI pada” = slogan `[C]`, nie fakt.
+
+**Już jest (`CONFIRMED`) — nie otwierać plastra:** HITL + `operator_decision`;
+`charge` + `source_ref` = SSoT marży; `GLOSSARY` = Definition Gap; RLS;
+`customer_sop` / `task_template`; WIP=1 / jeden plaster; AI9.1 (automation bias).
+
+**Leftover / proces, nie nowy BC:** Grupa 8 (**Plat-HD**, **Mob**);
+Love/Hate i Three-Bucket = playbook HHL (`02`), nie tabela; Shadow AI =
+proces onboardingu; Blast radius / Ten-Decisions = runbook; Closet sprint =
+`/refaktor` + jeden obszar danych — **nie** wycinanie 60 % planu.
+
+**`REJECTED`:** Mission Control jako produkt; 40 agentów; Bertha / CoS tenanta;
+OMNI READINESS ENGINE jako osobny BC; warstwa semantyczna jako osobny BC;
+pgvector na przetargach; Next.js / Astro; Cloudflare AI Gateway jako Q;
+RLHF jako silnik; LLM na kwotach / marży; auto-send; drugi SSoT marży.
+Cloudflare = bramka publikacji (B.8). Access ≠ Auth0 S53.
+
 ---
 ---
 
@@ -1314,7 +1370,7 @@ Fala AI **nie staje obok** istniejących fal V, W, CT i CI. **Podnosi je** —
 te fale mają dziś zamknięte katalogi HITL i jawnie wpisane w planie pozycje
 „leftover silnik…". Fala AI jest właśnie tym leftoverem, dociągniętym do końca.
 
-Dump CT 2026-09-13 (`03` B.1–B.3, B.7–B.10) **potwierdza leftover silników** —
+Dump CT 2026-09-13 (`03` B.1–B.10; skrót B.4–B.6 w A.2) **potwierdza leftover silników** —
 nie otwiera nowych katalogów HITL. Oracle buy/sell jest antywzorcem. p44
 `PLANNED` / `ACTUAL` / `ESTIMATE` zasila analog AI1/AI2. Luka `charge` +
 `benefit_ledger` u siódemki wzmacnia AI1.3. `charge.source_ref` już jest —
@@ -1350,8 +1406,9 @@ przed silnikiem stawek, WMS przed strumieniem Trade-Tech.
 Lista jest krótka, ale każda pozycja blokuje konkretną decyzję projektową.
 **Żadnej z nich nie rozstrzygam samodzielnie.**
 
-1. **`HC-04` wobec poziomów autonomii.** Kanon mówi „AI nie zapisuje", poziomy 3-5
-   tego wymagają. Wymaga przepisania `GROUNDING.md`, nie ustalenia w rozmowie.
+1. **`HC-04` wobec poziomów autonomii.** [WYCOFANE 2026-09-13: Q1–Q2 —
+   `GROUNDING.md` przepisane. L0–2 bez zapisu AI; L3–5 w zapisanych granicach
+   + audit; auto-zejście jakości przed L3.]
 2. **Klucz obcy w `plan_snapshot`.** [WYCOFANE 2026-09-13: Q3 + 452.0 —
    FK złożone `(organization_id, id)` + `ON DELETE RESTRICT`. CASCADE `REJECTED`.]
 3. **Memoryzacja modelu** przy uczeniu międzytenantowym — problem techniczny,
@@ -1360,8 +1417,8 @@ Lista jest krótka, ale każda pozycja blokuje konkretną decyzję projektową.
    i ~147 mln PLN wyceny w roku trzecim. Dwa horyzonty czy dwie definicje.
 5. **Koncentracja na jednej grupie kapitałowej** — wolumen kontra dowód rynkowy.
 6. **Zależności przechodnie `docling`** — niesprawdzone pod kątem AGPL.
-7. **Dwa prompty referencyjne** — znalezione i opisane w dokumencie `01` §16;
-   właściciel chce dodać pełne wersje jako ostatni krok.
+7. **Dwa prompty referencyjne.** [WYCOFANE 2026-09-13: Q13 — pełne wersje
+   w badaniach `01b-PROMPTY-REFERENCYJNE.md`.]
 8. **Domena produkcyjna** hosta SPA/API pod Cloudflare — nie zapisana
    (`TO_VERIFY`). Bez niej nie ma strefy ani Access.
 9. **Czy właściciel ma już konto Cloudflare** — nie potwierdzone

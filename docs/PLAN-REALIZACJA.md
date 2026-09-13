@@ -1,32 +1,20 @@
-# Plan realizacji OmniRoute — jedyny kanon (2026-09-01; oś pin 2026-09-08c)
+# Plan realizacji OmniRoute — jedyny kanon (oś pin 2026-09-08c)
 
-**To jest jeden plan.** Pierwotna fabryka Cursor (fazy 0→A→B→C→D, leftover 0.11–0.15) i nakładka 12m (Wave A → Charge → U-* → powrót do MODULES) to **jedna oś czasu**, nie dwa drogi. Rozjazd był tylko po plasterze **0.15 hasła**. Rdzeń nigdy się nie rozszedł: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`, pętla post-plaster.
+**Jedna oś.** Pin **2026-09-08c** + Fala AI + Fala BR. Nic z pinu nie wypada.
+**Teraz** = [CURRENT.md](state/CURRENT.md). **Oś** = ten plik. Historia fabryki
+(mermaid 0–D, Wave A, Charge, rzeka T3→CI9) = [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
+Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 
-**Alias (nie kanon):** [docs/state/PROGRAM-12M.md](state/PROGRAM-12M.md) — krótki wskaźnik + wklejka starych promptów.  
-**Plan Cursor (historia fabryki):** `.cursor/plans/omniroute-realizacja.plan.md` — nie czytaj z niego „następny = OAuth / D0”.  
-**ADR:** [0001 Cursor factory](adr/0001-cursor-software-factory-weryfikacja.md) · [0002 Frontend 2026](adr/0002-frontend-platform-2026.md) · [0003 System UI](adr/0003-frontend-ui-system-2026.md)  
-**Repo:** https://github.com/Spawn2018/OmniRoute  
-**Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
+**Alias (nie kanon):** [PROGRAM-12M.md](state/PROGRAM-12M.md).  
+**Plan Cursor (historia):** `.cursor/plans/omniroute-realizacja.plan.md` — nie czytaj z niego „następny”.  
+**ADR:** [0001](adr/0001-cursor-software-factory-weryfikacja.md) · [0002](adr/0002-frontend-platform-2026.md) · [0003](adr/0003-frontend-ui-system-2026.md)  
+**Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
 **Następny:** plaster **468.0** HITL `lcl_console_mark`. Nie live CFS. Nie druga tabela LCL.
 <!-- os-status:end -->
 
-```mermaid
-flowchart LR
-  P0[Faza0] --> PA[FazaA]
-  PA --> PB[FazaB]
-  PB --> PC[FazaC]
-  PC --> PD[FazaD]
-  PD --> L15[0.11_0.15]
-  L15 --> WA[WaveA_D0_0.23]
-  WA --> CH[Charge_0.24_1.3]
-  CH --> FE[U_star]
-  FE --> AI[2.1_2.2]
-  AI --> Q[2.0_M21]
-  Q --> S[3.0_M03]
-  S --> Q1[Q1_4.0_port]
-```
+Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
 
 ---
 
@@ -34,21 +22,31 @@ flowchart LR
 
 | Plik | Rola |
 |---|---|
-| **ten dokument** | Jedyny plan: oś, reguły, honesty gate, co dalej. |
-| [VISION.md](VISION.md) | Żywa wizja produktu (2026-09-13): dwie strony rynku, substrat pomiaru, Fala AI/BR. |
-| [CURRENT.md](state/CURRENT.md) | Co jest „teraz” w tej sesji (ostatni plaster, następny, spec). |
+| **ten dokument** | Jedyny plan: oś pinu, standing, gate, kolejka. |
+| [VISION.md](VISION.md) | Czym jest produkt (A.1: dwie skóry + pomiar). |
+| [CURRENT.md](state/CURRENT.md) | **Teraz** — ostatni plaster, następny, spec. |
 | [PROGRESS.md](state/PROGRESS.md) | Historia plastrów — fakty, nie kolejka. |
-| [MODULES.md](MODULES.md) | **Żywy** rejestr: tylko to, co jest w kodzie (+ M-02 parked aż S16). Kolejka Q, Q-E i Fala S: ten dokument § Kolejka. |
-| Archiwum `Informacje z claude/` | Pełny katalog ~70 M-xx. **Zostaje na dysku. Nie dumpować.** |
-| Spec `docs/spec/<nazwa>.md` | Jedna na sesję plastra. Szkielet uzupełniany przy starcie, nie z góry. |
+| [MODULES.md](MODULES.md) | Żywy rejestr tego, co jest w kodzie. |
+| [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md) | Fabryka 0–D, Wave A, Charge, rzeka nocy. Nie „następny”. |
+| Badania `D:\OMNIROUTE-badania` | Dowody. `12-FALA-AI-KOLEJKA.md` = SUPERSEDED. |
 
-Dwa katalogi to nie dwa produkty. Archiwum = magazyn specyfikacji. `MODULES.md` = to, co już jest w kodzie. **Kolejność budowy** jest w tym dokumencie (§ Kolejka), nie w pamięci operatora. Gdy CURRENT wskazuje wydmuszkę: najpierw tryb **Plan** (`/plan-modul`), potem `/plaster`. Zakaz 70 pustych stubów.
+Gdy CURRENT wskazuje wydmuszkę: najpierw **Plan** (`/plan-modul`), potem `/plaster`. Zakaz 70 pustych stubów. „Następny plaster” pisze tylko CURRENT (i `just docs` → `os-status`).
 
 ---
 
 ## Cel produktu
 
-Wielodostępna platforma spedycyjna na sprzedaż: stawki, wyceny, zlecenia; wielu tenantów; ruch produkcyjny. Dwie strony rynku (wykonawca + zleceniodawca) i pomiar naukowy podpowiedzi: [VISION.md](VISION.md). Horyzont „12m” = standing rules i anti-cele, nie „czekaj rok na moduły”.
+Z [VISION.md](VISION.md) **A.1** (dosłownie, nie „platforma spedycyjna”):
+
+OmniRoute to wielotenantowe oprogramowanie klasy „inteligentne zarządzanie
+firmą”, które obsługuje jednocześnie obie strony rynku transportu: wykonawcę
+usługi (spedycja, przewoźnik, operator logistyczny) i jej zleceniodawcę
+(korporacja, załadowca, właściciel łańcucha dostaw), a jego przewagą nie jest
+lista funkcji, lecz to, że **każda podpowiedź systemu jest mierzona metodą
+naukową i rozliczana z tego, ile realnie oszczędziła**.
+
+Jedna baza, dwie skóry, nie dwa codebase’y. A.2–A.5 i C.3: ten sam plik wizji.
+Horyzont „12m” = standing rules i anti-cele, nie „czekaj rok na moduły”.
 
 ## Cel jakości (4,4–5)
 
@@ -114,61 +112,7 @@ Ekstrakcja HITL, brak scoringu osoby fizycznej = **minimal risk**. **Zakaz:** au
 
 ---
 
-## Fabryka 0–D — ukończona
-
-| Faza | Co dała | Status |
-|------|---------|--------|
-| 0 GitHub | private repo Spawn2018/OmniRoute, CI `gate.yml` | DONE |
-| A Cursor OS | AGENTS, GROUNDING, rules, skills, hooks | DONE |
-| A.5 IDE | gh + GitHub MCP | DONE |
-| B.1 szkielet | FastAPI, alembic, docker-compose | DONE |
-| B.2 / 0.3 | RLS: `organization`, `app_user`, test izolacji | DONE |
-| B.3 Gate | ruff/mypy/pytest/import-linter + PG | DONE |
-| B.4 / 0.4 | OpenFGA model, `require_permission`, CI | DONE |
-| B.5 / 0.5 | Vite, Compiler, TanStack, shadcn, ⌘K, lazy PostHog | DONE |
-| B.6 / 0.6 | DataTableShell, ColumnEditor, `table_view` RLS, vitest | DONE |
-| B.7 | branch protection = procedura (Free private 403) | DONE (procedura) |
-| C.1–C.5 / 0.7–0.10 | HITL, instructor, docling A/B, langfuse no-op, promptfoo echo | DONE |
-| leftover 0.11–0.15 | XOR vitest, JWT, split HITL, HTTP unit, hasła+refresh | DONE |
-| D minimal | agentlint, pr-nudge, rytm refaktor/retro | DONE |
-
-**Dług świadomy poza zakresem teraz:** Auth0 BFF (I1/I2 odroczone); k6; vulture; żywy OpenAI w gate; Presidio-all; branch protection UI po Pro.
-
-TanStack Start: Thoughtworks Assess — **nie** fundament; SPA wystarczy.
-
----
-
-## Overlay 12m — Wave A (D0–0.23) — Exit DONE
-
-Fala bezpieczeństwa i honesty **przed** powrotem do MODULES. Wave FE **nie** jest częścią Wave A.
-
-| ID | Daje | Zabija |
-|---|---|---|
-| **D0** | AGENTS dziś/później, `.cursorignore` dump, leftover≠DONE | overclaim Infisical/Temporal |
-| **0.15 T0** | `document_base64` max_length → 422 przed decode | DoS |
-| **0.16 T1** | rola `omniroute_app` NOBYPASSRLS | superuser omija RLS |
-| **0.17 T2** | matryca izolacji S1–S6 + WITH CHECK | luki SQL |
-| **0.18** | HTTP extract na żywej PG; token A / draft B → 404 | stub serwisu jako „HTTP done” |
-| **0.19 A1** | undeclared `/api/v1` = deny; playground off | HC-05 konwencja |
-| **0.20 A2** | `can_review_extractions` = reviewer, nie member | każdy member = admin |
-| **0.21 T4** | `hello_token` default false (ON tylko local+CI) | mint UUID na sieci |
-| **0.22 T5** | iss/aud/jti, TTL 15 min, `token_version` | goły HMAC |
-| **0.23 S1** | `JWT_SECRET` z GitHub Encrypted Secrets | literał w YAML |
-
----
-
-## Charge 0.24–1.3 — DONE
-
-| ID | Moduł | Daje | Nie mylić z |
-|---|---|---|---|
-| **0.24** | ops | pip-audit, pin SHA Actions, `/ready`, request-id | nie w local `just gate`; k6/vulture echo |
-| **0.25** | domain | Money Decimal + `<Money/>` na HITL | nie tabela `charge` / `rate_line` |
-| **1.0** | M-06 | `charge_code` katalog + aliasy + `/charge-codes` | luźny string; nie stawka |
-| **1.1** | M-07 | `rate_line` immutable + `source_ref` + `/rate-lines` | `charge` / marża |
-| **1.2** | M-08 | `charge` buy+sell + `margin()` + `/charges` | accept HITL |
-| **1.3** | M-20 | accept → `rate_line` w jednej transakcji HTTP | ExtractionService → rates; outbox; sell z LLM |
-
----
+Historia Fabryki 0–D, Wave A (D0–0.23) i Charge 0.24–1.3: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md). ID zostają tam; tu nie sterują nocą.
 
 ## Wave FE U-* — ID na origin; Exit **nie** claim
 
@@ -220,7 +164,10 @@ I1 (BFF + PKCE + cookie; org z `app_metadata`; first-login bez org = odmowa) i I
 
 Gdy user **ma** tenant: SPA Vite → BFF FastAPI → Auth0; cookie HttpOnly; Secure; SameSite=Lax; region EU / SCC jeśli plan pozwala. **Nie** w tym samym plasterze co hasła.
 
-**Park — live public / Cloudflare (2026-09-13):** właściciel chce Cloudflare jako warstwę bezpieczeństwa **zanim** SPA jest publiczna. To **nie** jest Q `/noc` i **nie** zdejmuje leftover **S53** Auth0 I1/I2. Access (Zero Trust przed hostem) ≠ IdP tenanta. Pin **2026-09-08c** bez zmian. **431.0** zostaje następnym plastrem. Kanon: [VISION.md](VISION.md) § B.8. Karta STRIDE: [threat-model-tenant-hitl.md](ops/threat-model-tenant-hitl.md) (dopisek edge).
+**Park — live public / Cloudflare (2026-09-13):** właściciel chce Cloudflare jako warstwę bezpieczeństwa **zanim** SPA jest publiczna. To **nie** jest Q `/noc` i **nie** zdejmuje leftover **S53** Auth0 I1/I2. Access (Zero Trust przed hostem) ≠ IdP tenanta. Pin **2026-09-08c** bez zmian.
+[WYCOFANE 2026-09-13: „431.0 zostaje następnym plastrem” — **431.0** jest w kodzie;
+żywe „następny” = tylko CURRENT / `os-status`]. Kanon: [VISION.md](VISION.md) § B.8.
+Karta STRIDE: [threat-model-tenant-hitl.md](ops/threat-model-tenant-hitl.md) (dopisek edge).
 
 ---
 
@@ -303,6 +250,12 @@ Wydmuszka ≠ 70 pustych stubów w repo. Plan ustala **jeden** plaster. Kod pows
 ---
 
 ## Kolejka realizacji (jedno po drugim)
+
+Semantyka kolumn (Fala *): `ID | Co | Status | Leftover | Źródło | Zakaz`.
+Status tylko: `DONE` / `HITL` / `leftover silnik` / `park live` / `czeka`.
+Tabele historyczne S/Q zachowują swoje kolumny — ID nie ginie. Dump CT/TMS =
+jedno zdanie + link do badań `03` / `04b`. Nowy leftover = dopisek w Uwagach
+istniejącego wiersza.
 
 Źródło nazw: archiwum `REJESTR-MODULOW-I-PLAN-v2.md` (na dysku, nie dumpować specyfikacji). **Kolejność budowy ≠ numer M-xx** — numery archiwum i żywy kod się rozjechały (patrz mapa kolizji).
 
@@ -395,7 +348,7 @@ M-01 tenancy · M-03 `organization_setting` (część: `default_currency`) · M-
 | **Q-E3** | How-to jobów zapisu + C4 w ARCHITECTURE | 62.0 | zamknięty (`docs/deltas/archived/62.0-operator-howto-c4.md`) |
 | **Q-E4** | Threat model tenant+HITL + CodeQL w CI | 63.0 | zamknięty (`docs/deltas/archived/63.0-threat-model-codeql.md`) |
 | po Q-E4 | **Fala S**, named parks (Auth0 / portale / AIS) | — | w osi; live gdy CURRENT wskaże Q |
-| po parks | **P0** → pełna oś pinu **2026-09-08c** (O/I/U/T/D/P/G2/F/C/V/W/X/Plat/CT/CI/G/EXP) | Plan → plaster | **O4 138.0 zamknięty; O5 139.0 następny** |
+| po parks | **P0** → pełna oś pinu **2026-09-08c** (O/I/U/T/D/P/G2/F/C/V/W/X/Plat/CT/CI/G/EXP) | Plan → plaster | O4 138.0 zamknięty. [WYCOFANE 2026-09-13: „O5 139.0 następny” — żywe „następny” = tylko CURRENT / `os-status`] |
 
 ### Fala S — pogłębienie wydmuszek (po Q-E4, nie zamiast Q-E1)
 
@@ -475,21 +428,19 @@ Reguły kolejności (żeby `/noc` nie złożył awarii):
 | **S56** | Pogłębienie M-57 (kat. M-58) | 116.0 | zamknięty (`docs/deltas/archived/116.0-copilot-watchtower.md`) | Szkice na wieży. Nie nowy czat |
 | S57 | Kat. M-59 narracja po SQL | 117.0 | zamknięty (`docs/deltas/archived/117.0-finance-narrative.md`) | Zdania z pól SQL. LLM nie liczy |
 | S58 | Kat. M-60 drafty po SOP | 118.0 | zamknięty (`docs/deltas/archived/118.0-sop-drafts.md`) | SOP `blocks_auto` na `/ai`. Nigdy auto-send |
-| S59 | M-68 OTel, M-69 QA, M-70 rollout | 119.0 park | named park (`docs/deltas/archived/119.0-otel-rollout-named-park.md`) | Aż konsument outboxa / umowa SaaS. Nie k6. 2026-09-13: edge Cloudflare / publikacja HTTP parked (VISION B.8) — nie zdejmuje **431.0** |
+| S59 | M-68 OTel, M-69 QA, M-70 rollout | 119.0 park | named park (`docs/deltas/archived/119.0-otel-rollout-named-park.md`) | Aż konsument outboxa / umowa SaaS. Nie k6. 2026-09-13: edge Cloudflare / publikacja HTTP parked (VISION B.8). [WYCOFANE 2026-09-13: „nie zdejmuje 431.0” jako next-ID — **431.0** jest w kodzie] |
 
 Po S59 named parks **live** (S53 Auth0, S55 ogólnik portali, S21, S50, S54, S59, AIS) czekają na swoje Q w CURRENT. Katalog 71–212 wpinany gdy jest poprzednik (cło/WMS po C/D; fintech po F). Luki **M-203, M-204** puste — nie zgaduj.
 
 Pin operatora **2026-09-08c** (akceptacja „Luki i ulepszenia”): **nic nie wypada**. Oś:
 
-`P0 → O0 → M10-1/M10-2 → B0a → O1–O3 → I0/U2 → O4–O8 → N5 → U1+U5 → I1–I4 → U4 → T1–T8 → B0b → U3 → D1–D9 → P1–P6 → G2.0–G2.23 → F1–F11 → C1–C9 → V1–V8 → W1–W5 → S53 → X1–X9 → WA1 → Plat → Demo-1 → CT1–CT12 → CI9 → CI1–CI8 → G1+G3–G17 → EXP2–EXP8 (co nie wkleiło się w falę) → Mob → K0 → Fala AI → Fala BR`
+`P0 → O0 → M10-1/M10-2 → B0a → O1–O3 → I0/U2 → O4–O8 → N5 → U1+U5 → I1–I4 → U4 → T1–T8 → B0b → U3 → D1–D9 → P1–P6 → G2.0–G2.23 → F1–F11 → C1–C9 → V1–V8 → W1–W5 → S53 → X1–X9 → WA1 → Plat (+Plat-HD) → Demo-1 → CT1–CT12 → CI9 → CI1–CI8 → G1+G3–G17 → EXP2–EXP8 (co nie wkleiło się w falę) → Mob → K0 → Fala AI → Fala BR`
 
 Klej (nie osobny rok): **U6** + **M-72** = DoD każdego UI; **N** i **A** wchodzą z falą w kolumnie „Gdzie”; **EXP0/EXP1** = pola przy `/plan-modul` obiektu. Fala **X** i **Mob** po **S53**. `/noc` nie zgaduje S53 przy cutoffie T3; S53 rusza gdy CURRENT dojdzie do tego wiersza. Park = brak testu HTTP / sekretu na **live**, nie skip leftoveru HITL.
 
 ### Oś leftoverów `/noc` (przyczyna, nie skip)
 
-Kolejka żywa jest w [CURRENT.md](state/CURRENT.md). `/noc` jedzie ją bez wycinania. Godzina ucina **nowy** plaster, nie wiersz pinu.
-
-Kolejność (WIP=1 na `main`): T3 cutoffy na `container` → eventy `entity_event` z warstwy API (2a/2b; BC nie importuje `entity_events`) → `stop_group`/EXP1 → km/`/fleet` → `consignment` → T6 mapa → SQL na `charge` → lookup/KSeF TE → outbox T5 → `plan_snapshot` (DONE 265.0) → `circle_sim` HITL (DONE 266.0) → leftover km ładowny/pusty/dolot (DONE 267.0) → leftover F9 Optima fixture (DONE 268.0) → leftover T8 slot capability (DONE 269.0) → leftover S53 HITL `idp_connector` (DONE 270.0) → leftover S55 HITL `exchange_connector` (DONE 271.0) → leftover CI9 HITL `customer_contract` nagłówek (DONE 272.0) → leftover CI9 opaque `blob_ciphertext` (DONE 273.0; present/absent, nie szyfr) → leftover CI9 KEK mark (DONE 274.0; znacznik, nie klucz) → leftover CT7 HITL `visibility_connector` (DONE 275.0; token `p44`, nie live) → leftover CT1 HITL `purchase_order` nagłówek (DONE 276.0) → leftover CT1 HITL `po_line` (DONE 277.0) → leftover CT1 HITL `asn` (DONE 278.0) → leftover CT4 HITL `routing_guide` (DONE 279.0; auto shipment/CT2 parked z powodem) → leftover CT3 HITL `otif_mark` (DONE 280.0) → leftover CT6 HITL `sap_connector` (DONE 281.0) → leftover CT12 HITL `capa_mark` (DONE 282.0) → leftover CT10 HITL `freight_audit_mark` (DONE 283.0) → leftover CT11 HITL `collaboration_mark` (DONE 284.0) → leftover 409/compose / reszta pinu. `plan_snapshot` **po** obiektach, **przed** kółkami — nie w jednym worku ze stopami. Cały łańcuch XL→WAPRO nie wchodzi przed outbox. P6c auto-award = zakaz.
+Kolejka żywa jest w [CURRENT.md](state/CURRENT.md). `/noc` jedzie ją bez wycinania. Godzina ucina **nowy** plaster, nie wiersz pinu. Rzeka T3→CI9 (dziennik nocy, nie „co dalej”): [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
 
 Bliźniak = wzorzec (stan RLS + `entity_event` + opcjonalnie kopia planu / karta komunikacji), nie druga tabela `*_twin`. Rodziny rosną katalogiem. AI szuka i proponuje; `operator_decision` zamyka. LLM nie liczy.
 
@@ -648,7 +599,7 @@ Karta: [karty-pol-fala-w.md](analysis/karty-pol-fala-w.md).
 
 | ID | Co | Status | Poza |
 |---|---|---|---|
-| W1 | 8 twinów (pojazd, kierowca, kontener, zlecenie, sieć, plan, urząd, ładunek) | zamknięty HITL katalog ([199.0](deltas/archived/199.0-twin-mark.md)); `plan_snapshot` DONE 265.0; `circle_sim` HITL DONE 266.0; leftover 8 silników | twin ≠ fizyka; kółka HITL = G2.20; dump CT `03`: leftover 8 silników zostaje (nie nowy katalog HITL); FourKites twins = B.4 nietknięte |
+| W1 | 8 twinów (pojazd, kierowca, kontener, zlecenie, sieć, plan, urząd, ładunek) | zamknięty HITL katalog ([199.0](deltas/archived/199.0-twin-mark.md)); `plan_snapshot` DONE 265.0; `circle_sim` HITL DONE 266.0; leftover 8 silników | twin ≠ fizyka; kółka HITL = G2.20; dump CT `03`: leftover 8 silników zostaje (nie nowy katalog HITL); FourKites 5 twins + Loft = taksonomia, nie nowa tabela (VISION A.2) |
 | W2 | war room + koalescencja N8 | zamknięty HITL katalog ([200.0](deltas/archived/200.0-war-room-mark.md)); leftover N8 / T8 live API / widok sklejony | drugi czat |
 | W3 | memory graph na `entity_event` | 201.0 HITL `memory_edge` [delta](deltas/archived/201.0-memory-edge.md); leftover graf / pgvector / FK zdarzeń | RAG na stawkach / umowach CI |
 | W4 | Executive AI = narracja po SQL | 202.0 HITL `executive_mark` [delta](deltas/archived/202.0-executive-mark.md); leftover zdania SQL / 117.0 | LLM sumuje |
@@ -676,7 +627,8 @@ Karta: [karty-pol-fala-plat.md](analysis/karty-pol-fala-plat.md). R1 (responsive
 | Plat-DR | PITR; RPO≤15 min; RTO≤4 h; restore stage co tydzień | | backup bez restore |
 | Plat-Scale | k6 real 10k VU na stage | | copy „15k” bez pomiaru |
 | **Demo-1** | 10 mies. + 150 aut `demo_sim`; GPS live 7 dni; wipe `USUN` | pełne po T+V+D+G6 | flota klienta na sali; prawdziwe PDF umów |
-| **Mob** | Expo iOS/Android + EAS OTA z Admin-P | po S53+X | |
+| **Plat-HD** | ticket produktu: zgłoszenie błędu programu → analiza agenta → akceptacja właściciela przed naprawą | czeka | VISION C.3 Grupa 8; karta `20`; nie 468.0; nie CI8 / CAPA / `operator_notice` |
+| **Mob** | Expo iOS/Android + EAS OTA z Admin-P; **dopisek:** sterowanie całym OmniRoute, w tym akceptacja napraw z **Plat-HD** | po S53+X | nie klon BR6.3 / BR2.3; nie `mobile_client_mark`; nie Expo live teraz |
 
 ### Fala CT — wieża załadowcy / 4PL
 
@@ -742,16 +694,14 @@ Pełna lista: [karty-pol-fala-exp.md](analysis/karty-pol-fala-exp.md). `/noc` po
 ### Fala AI — silniki nad katalogami HITL (podnosi V, W, CT, CI)
 
 Wizja: [VISION.md](VISION.md). Ta fala **nie dokłada katalogów** — dobudowuje warstwę liczącą pod katalogi zamknięte w V/W/CT/CI.
-`charge.source_ref` jest w kodzie (plaster 129.0, migracja 072) — **AI0 nie jest następnym plastrem**. Pierwszy silnik = **AI1.0**. Kolejność twarda: AI1 → AI2 → reszta. AI4 i AI8.2 odblokowane decyzjami Q1–Q3 (13 IX).
+`charge.source_ref` jest w kodzie (plaster 129.0, migracja 072) — **AI0 nie jest następnym plastrem**. Kolejność twarda: AI1 → AI2 → reszta. AI4 i AI8.2 odblokowane Q1–Q3.
 
-Dump CT 2026-09-13 (badania `03` B.1–B.3, B.7–B.10; B.4–B.6 FourKites/BY/Kinaxis nietknięte) **potwierdza leftover silników** — bez nowych katalogów HITL. Oracle `perspective` / `sellShipments` / `calculateDirectCostBuy`|`Sell` = antywzorzec (zostaje jeden `charge` + `margin()`). p44 `PLANNED` / `ACTUAL` / `ESTIMATE` = analog AI1/AI2 (`entity_event` / `prediction_ledger`); CRPS/MAE liczy nasze AI2, nie vendor. Auto-approve (LSP44 „80%+ auto-resolve”, Infor „without manual intervention”, Oracle `autoApproveAdjustedCosts`) = zakaz; agenci tylko za `operator_decision`.
-
-Dump TMS 2026-09-13 (badania `04b` A–H × 10; CargoWise/Qargo/interLAN zostają w `04`) — komplementarny do dumpa CT. Bez drugiej marży (SAP `Profitability` / Oracle `Job.Profit` / Shipwell dwa stosy + `markup`). Bez AI-write „bo MQ ma” (Shipwell Swifty/MCP, Uber 30+ agents, SAP calc on save). WMS + BR6.2 evidenced (Manhattan Active / Infios Archer / SAP EWM; Alpega TenderEasy + Freight Bench, nie auto-award). Uber Freight = konflikt osi danych HHL — nie kopiować live CT/GPS. KSeF/JPK/SENT nie publiczne u dziesiątki — leftover fiskalne PL nasze. Leftover silniki (VSR, LML, Optimizer, Archer, what-if) zostają HITL + `suggestion_ledger` (AI1.0 po 431.0). 431.0 `quote_validity_mark` nie wynika z tej dziesiątki.
+Dump CT `03` i TMS `04b` **potwierdzają leftover silników** (jeden `charge`, HITL, solver nie LLM). Skrót FourKites / BY / Kinaxis: VISION A.2. Treść dumpów zostaje w badaniach.
 
 | ID | Co | Status | Uwagi |
 |---|---|---|---|
 | **AI0** | `charge.source_ref` — pochodzenie kwoty na opłacie | **DONE w kodzie** (129.0 / 072) | nullable stare fixture; obowiązkowe na nowym INSERT (`require_source_ref`) |
-| AI1.0 | `suggestion_ledger` — każda podpowiedź: BC, encja, przedział/pewność, wersja modelu i promptu, reakcja człowieka `accept\|modify\|reject` **i na co zmienił** | **DONE w kodzie** (432.0 / 342) | HITL append-only, bez zapisu LLM (HC-04); leftover: outcome zamknięty 433.0 / słowniki / trzy BC; dump `04b`: silniki MQ zostają HITL + ten wiersz |
+| AI1.0 | `suggestion_ledger` — każda podpowiedź: BC, encja, przedział/pewność, wersja modelu i promptu, reakcja człowieka `accept\|modify\|reject` **i na co zmienił** | **DONE w kodzie** (432.0 / 342) | HITL append-only, bez zapisu LLM (HC-04); leftover: outcome zamknięty 433.0 / słowniki / trzy BC; dump `04b`: silniki MQ zostają HITL + ten wiersz; `03` B.4 Five twins = taksonomia, nie nowa tabela |
 | AI1.1 | `outcome_ledger` — co się naprawdę stało | **DONE w kodzie** (433.0 / 343) | HITL actual_value Decimal; złączenie / CRPS = leftover AI2; bez FK do suggestion_ledger |
 | AI1.2 | `counterfactual_run` — scenariusz, punkt odniesienia, dźwignie, wynik; niemutowalny | **DONE w kodzie** (434.0 / 344 · 453.0 / 358) | HITL etykiety + FK migawki + widok powtórki; leftover: solver liczb · AI4.2; nie klon what_if_mark |
 | AI1.3 | `benefit_ledger` — zaoszczędzony czas i pieniądze **z jawną metodą punktu odniesienia** | **DONE w kodzie** (435.0 / 345) | HITL method_label + Decimal; nie druga marża; nie SQL z charge |
@@ -764,7 +714,7 @@ Dump TMS 2026-09-13 (badania `04b` A–H × 10; CargoWise/Qargo/interLAN zostaj�
 | AI3.3 | własny zbiór golden + bramka wydaniowa na progach | po AI3.2 | **450.0 DONE** pytest vs THC/BAF; leftover: większy zbiór · instructor CI · 96,6% `TO_VERIFY` |
 | AI3.4 | ekstrakcja z Excela (dziś tylko PDF) | po AI3.1 | **451.0 DONE** `xlsx_sheet` stdlib; leftover: `.xls` · wiele arkuszy · openpyxl |
 | AI4.0 | `plan_snapshot` z FK do shipment/trip/resource | po AI1; **Q3=tak** | **452.0 DONE** FK złożone RESTRICT; leftover: AI4.1 · CASCADE `REJECTED` |
-| AI4.1 | silnik what-if na `counterfactual_run` | po AI4.0 | **453.0 DONE** FK przebieg→migawka + widok `what_if_replay`; leftover: solver liczb · AI4.2 · JSON dźwigni |
+| AI4.1 | silnik what-if na `counterfactual_run` | po AI4.0 | **453.0 DONE** FK przebieg→migawka + widok `what_if_replay`; leftover: solver liczb · AI4.2 · JSON dźwigni; analog Kinaxis Maestro / scenariusz = HITL, nie live (`03` B.6) |
 | AI4.2 | symulacja kółek **w SQL**, do 500k wariantów | po AI4.1 | **454.0 DONE** widok `circle_sim_pair`; leftover: generator 500k · km · VRP |
 | AI5.0 | warstwa ingest danych zewnętrznych + `data_source` z licencją | po AI1.4 | katalog: badania `09` / `10` |
 | AI5.1 | cechy modelu predykcyjnego z danych zewnętrznych | po AI5.0 | podnosi V2/V4 |
@@ -780,11 +730,9 @@ Dump TMS 2026-09-13 (badania `04b` A–H × 10; CargoWise/Qargo/interLAN zostaj�
 
 ### Fala BR — moduły brakujące (równolegle do AI, nie po niej)
 
-Uzasadnienie: [VISION.md](VISION.md) część C.3. Nie zależą od substratu AI — zależą od osi wejścia (A.5): telematyka przed silnikiem stawek, WMS przed strumieniem Trade-Tech. Start HHL (Q9): **BR3.0**, **BR6.0**, **BR2.0**. Q10: druga ścieżka nasycenia danymi, jeśli telematyka HHL opóźniona.
+Uzasadnienie: [VISION.md](VISION.md) C.3 (w tym Grupa 8). Nie zależą od substratu AI — zależą od osi wejścia (A.5). Start HHL (Q9): **BR3.0**, **BR6.0**, **BR2.0**.
 
-Dump CT: Shippeo ≠ Overhaul (Shippeo 04.05.2026 = Logward / execution; Overhaul = ryzyko ładunku). p44 i LSP44 (14.07.2026) = dwa GTM, **ten sam** OpenAPI v4 — jedna baza, dwie skóry, nie dwa codebase’y. Wzorzec publikacji benchmarku solvera (o9 cuOpt 23.07.2026: ~30 mln zmiennych, 57,4 s vs 661,7 s, Δ objective 0,008%) — do BR3.0 (Valhalla/solver liczy, nie LLM). e2open w grupie WiseTech od 03–04.08.2025 (INTTRA + Harmony + CargoWise) — nie dublować CargoWise+Harmony; Harmony Agent bez HITL = zakaz.
-
-Dump TMS `04b`: WMS nie jest dekoracją (Manhattan Active TM+WMS+Yard+Labour, Infios Archer OMS/WMS/TMS, SAP EWM) — wzmacnia **BR1.0** (Zbrudzewo / Trade-Tech), nie live yard/T8. **BR6.2** = Alpega TenderEasy + Freight Bench (multi-round, like-for-like, spot; nie auto-award). e2open ≠ CargoWise (close 03.08.2025, „very little product overlap”) — holding ma nogę LSP i nogę shipper/network; nie obiecywać Harmony+CargoWise jako jednego produktu. Uber Freight konkuruje o „kto jeździ gdzie i za ile” — konflikt z darmową telematyką HHL (**BR2.0** zostaje `position_event`, nie live GPS).
+Dump `03` / `04b`: WMS i BR6.2 evidenced; p44/LSP44 = dwie skóry jeden OpenAPI; solver liczy, nie LLM. Treść zostaje w VISION / badaniach.
 
 | ID | Co | Status | Uwagi |
 |---|---|---|---|
@@ -823,31 +771,7 @@ Dump TMS `04b`: WMS nie jest dekoracją (Manhattan Active TM+WMS+Yard+Labour, In
 | **K0** | inwentaryzacja **nazw** z rejestru (ID+nazwa+1 linia; nie dump archiwum) | zamknięty ([400.0](deltas/archived/400.0-k0-inventory.md); [K0-inventory.md](state/K0-inventory.md)) |
 | K1…Kn | tylko nazwane i niepokryte | puste ID zostają puste |
 
-### Fala 2 — po Q6, w tej kolejności, każda pozycja = Plan potem plaster
-
-M-11 Automatyczne kontakty · M-12 Sieci i stowarzyszenia · M-13 Karta wyników kontrahenta · M-16 Procedury operacyjne klienta · M-18 Opłaty portowe warunkowe · M-19 Stawki live i kanały · M-14 Ocena kredytowa (zakaz auto-scoringu osoby) · M-15 Wirtualny Dyrektor Finansowy (LLM nie liczy).
-
-**M-14 Ocena kredytowa:** w kolejce po M-13, ale Plan **musi** zakazać automatycznego scoringu `natural_person` / JDG (AI Act). M-15 VDF — po M-14, LLM nie liczy.
-
-### Fala 3 — ofertowanie
-
-M-23 Waluty w ofercie (czyta `nbp_rate` z 6.0, nie drugi katalog) · M-24 Ryzyko oferty · M-25 Negocjacja i wynik · M-26 Dokument oferty · M-27 Wycena wsadowa · M-28 Zapytania od klientów · M-29 Wykrywanie akceptacji · M-30 Zapytania do agentów/armatorów · M-31 Porównanie odpowiedzi.
-
-### Fala 4 — komunikacja
-
-M-32 Integracja pocztowa · M-33 Dodatek do Outlooka · M-34 Powiadomienia. Copilot/mail = label Art. 50 (U-art50).
-
-### Fala 5 — zlecenie
-
-M-35 Zlecenie · M-36 Tracking · M-37 Wyjątki · M-38 Dokumenty zlecenia · M-39 EDI.
-
-### Fala 6 — finanse
-
-M-40 Fakturowanie i KSeF · M-41 Rozliczenie wyceny z fakturą · M-42 Bank i płatności · M-43 Koszt pieniądza · M-44 Różnice kursowe · M-45 Przepływy · M-46 Koszt obsługi klienta · M-47 Księgowość (integracja). Kwoty Decimal; LLM nie liczy.
-
-### Fala 7–11 — modały, compliance, AI, portal, ops
-
-M-48…M-51 modały · M-52…M-56 compliance (M-53 sankcje, M-56 RODO) · M-57…M-60 AI (HITL; Art. 50; nie scoring osoby) · M-61…M-67 rynek/portal/subskrypcja · M-68…M-70 obserwowalność, jakość, wdrożenie.
+Zdublowane listy Fal 2–11 (M-xx): [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md). Status żywy = tabela Fala 1 + katalog M-01…M-70.
 
 ### Parked (w katalogu, nie w kolejce aktywnej)
 
@@ -909,7 +833,7 @@ Nie implementuj z tej tabeli „na zapas”. To mapa, żeby nic nie zginęło. S
 
 ## Anti-cele (odmów) + nie pytaj ponownie
 
-Temporal/Hatchet/outbox na zapas · Infisical · 70 pustych M-xx · k6 50k · OTel-sprint · `just perf` / k6 echo jako DoD · Presidio na każdym endpoincie · żywy OpenAI w gate · `can_*` = member · accept bez HITL · hasła+Auth0 w jednym plasterze · persony `.cursor/agents/` · dump Claude · zmiana starych migracji · Next.js · pgvector „bo stos” · required checks na Free · twierdzenie że 0.12 = IdP · OCR-teatr · zamknięcie Wave FE na adapter+RTL · „powierzchnia 2026” przed Exit Wave FE · auto credit scoring `natural_person` / JDG · zdejmowanie HITL w D0 · Base UI bez ADR · mapa w initial JS · optimistic na kwocie/`accept` · cztery silniki tabel Fiori · 5,0 na tablicy-odczycie · agent sam sobie stawia 4,4 · „szybkie” przy 0 wierszach `rate_line` · drugi plik `AUDIT_PLAN.md` · `.cursorrules` obok AGENTS.
+Temporal/Hatchet/outbox na zapas · Infisical · 70 pustych M-xx · k6 50k · OTel-sprint · `just perf` / k6 echo jako DoD · Presidio na każdym endpoincie · żywy OpenAI w gate · `can_*` = member · accept bez HITL · hasła+Auth0 w jednym plasterze · persony `.cursor/agents/` · dump Claude · zmiana starych migracji · Next.js · Astro · pgvector „bo stos” · Mission Control jako produkt · Bertha / CoS tenanta · 40 agentów · OMNI READINESS ENGINE jako BC · Cloudflare AI Gateway jako Q · required checks na Free · twierdzenie że 0.12 = IdP · OCR-teatr · zamknięcie Wave FE na adapter+RTL · „powierzchnia 2026” przed Exit Wave FE · auto credit scoring `natural_person` / JDG · zdejmowanie HITL w D0 · Base UI bez ADR · mapa w initial JS · optimistic na kwocie/`accept` · cztery silniki tabel Fiori · 5,0 na tablicy-odczycie · agent sam sobie stawia 4,4 · „szybkie” przy 0 wierszach `rate_line` · drugi plik `AUDIT_PLAN.md` · `.cursorrules` obok AGENTS.
 
 **Nie pytaj ponownie:** Auth0 I1/I2 (aż user ma tenant), IdP, Infisical, Temporal, Pro, dump, „adapter wystarczy na powierzchnię 2026”, „0.12/0.15 = IdP”, start M-02 bez zdarzeń, kompromis na Exit Wave FE, F9.1 bez żywej nazwy.
 
