@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **470.0** BR4.4 — HITL `silk_corridor_mark`
 
-**Etap:** Plan — następny **BR5.0** faktoring. Komenda `/plan-modul`. Zero kodu do akceptacji delty.
+**Etap:** Plan — delta **471.0** BR5.0 `factoring_connector`. Zero kodu do akceptacji delty.
 
 **Noc:** `/noc 7` do **2026-09-14T07:00+02**.
 
-**Następny:** `/plan-modul` **BR5.0** faktoring (integracja z partnerem). Nie live HTTP bez nazwy partnera. Nie zgaduj plaster ID.
+**Następny:** akceptacja delty **471.0** → `/plaster` HITL `factoring_connector`. Nie live SMEO HTTP. Nie zgaduj plaster ID.
 
-Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów · live CR Express · SMEO bez nazwy. Nie zgaduj poza BR5.0 planem. Nie otwieraj AI0. Nie startuj leftover Valhalla / live CFS / Expo / Alpega / HubSpot.
+Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów · live CR Express · live SMEO HTTP. Nie otwieraj AI0. Nie startuj leftover Valhalla / live CFS / Expo / Alpega / HubSpot / BR5.1 PO Financing.
 
-**Spec (jedyna na sesję):** brak — najpierw delta BR5.0 w `docs/deltas/open/`
+**Spec (jedyna na sesję):** [471.0.md](../deltas/open/471.0.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 
@@ -22,6 +22,7 @@ Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll �
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
+**2026-09-14:** Plan **471.0** (`/noc`) — HITL `factoring_connector`. Wolno plaster po akceptacji.
 **2026-09-14:** Plaster **470.0** zamknięty (`/noc`) — HITL `silk_corridor_mark`.
 **2026-09-14:** Plan **470.0** (`/noc`) — HITL `silk_corridor_mark`. Wolno plaster.
 **2026-09-13:** Plaster **469.0** zamknięty (`/noc`) — HITL `nac_mark`.

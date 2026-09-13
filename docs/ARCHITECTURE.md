@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **470.0** BR4.4 — HITL `silk_corridor_mark`. **Etap:** Plan — następny **BR5.0** faktoring. Komenda `/plan-modul`. Zero kodu do akceptacji delty. **Następny:** `/plan-modul` **BR5.0** faktoring (integracja z partnerem). Nie live HTTP bez nazwy partnera. Nie zgaduj plaster ID. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **470.0** BR4.4 — HITL `silk_corridor_mark`. **Etap:** Plan — delta **471.0** BR5.0 `factoring_connector`. Zero kodu do akceptacji delty. **Następny:** akceptacja delty **471.0** → `/plaster` HITL `factoring_connector`. Nie live SMEO HTTP. Nie zgaduj plaster ID. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

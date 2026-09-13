@@ -88,8 +88,8 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **470.0** BR4.4 — HITL `silk_corridor_mark`
-- **Etap:** Plan — następny **BR5.0** faktoring. Komenda `/plan-modul`. Zero kodu do akceptacji delty.
-- **Następny:** `/plan-modul` **BR5.0** faktoring (integracja z partnerem). Nie live HTTP bez nazwy partnera. Nie zgaduj plaster ID.
+- **Etap:** Plan — delta **471.0** BR5.0 `factoring_connector`. Zero kodu do akceptacji delty.
+- **Następny:** akceptacja delty **471.0** → `/plaster` HITL `factoring_connector`. Nie live SMEO HTTP. Nie zgaduj plaster ID.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
