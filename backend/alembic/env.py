@@ -113,6 +113,7 @@ from app.models.circle_sim import CircleSim  # noqa: F401
 from app.models.circle_sim_pair import CircleSimPair  # noqa: F401
 from app.models.lane_km import LaneKm  # noqa: F401
 from app.models.erp_connector import ErpConnector  # noqa: F401
+from app.models.factoring_connector import FactoringConnector  # noqa: F401
 from app.models.customer_contract import CustomerContract  # noqa: F401
 from app.models.tenant_contract_kek import TenantContractKek  # noqa: F401
 from app.models.visibility_connector import VisibilityConnector  # noqa: F401

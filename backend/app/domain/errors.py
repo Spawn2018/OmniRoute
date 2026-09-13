@@ -746,6 +746,10 @@ class InvalidErpConnector(DomainError):
     """F9: HITL konektor Optima jako dane — nie live SOAP i nie sekrety."""
 
 
+class InvalidFactoringConnector(DomainError):
+    """BR5.0: HITL konektor faktoringu jako dane — nie live SMEO HTTP i nie sekrety."""
+
+
 class InvalidTerminalSlotConnector(DomainError):
     """T8: HITL capability slotu + godziny N4 — nie booking i nie confirmed z formularza."""
 

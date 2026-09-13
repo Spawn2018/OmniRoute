@@ -85,6 +85,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | BR4.2 | Znacznik konsoli LCL HITL | 468.0 `lcl_console_mark` | **ukończony (HITL)** · kind console/cfs/other; leftover live CFS / CBM |
 | BR4.3 | Znacznik NAC HITL | 469.0 `nac_mark` | **ukończony (HITL)** · kind nac/nominated/agent/other; leftover live NAC / auto-send |
 | BR4.4 | Znacznik Jedwabnego Szlaku HITL | 470.0 `silk_corridor_mark` | **ukończony (HITL)** · kind silk/block_train/transit/other; leftover live CR Express / UN/LOCODE |
+| BR5.0 | Konektor faktoringu HITL | 471.0 `factoring_connector` | **ukończony (HITL)** · kind smeo/other; leftover live SMEO HTTP / workflow F7 |
 | BR6.0 | Okazja CRM HITL | 456.0 `crm_opportunity` | **ukończony (HITL)** · stage open/won/lost/other; leftover activity / pipeline |
 | BR6.1 | Korytarz sprzedażowy HITL | 460.0 `sales_lane` | **ukończony (HITL)** · kind repeat/spot/other; leftover UN/LOCODE / wolumen |
 | BR6.2 | Tryb przetargu załadowcy HITL | 461.0 `shipper_tender_mark` | **ukończony (HITL)** · kind round/bench/spot/other; leftover rundy / like-for-like |

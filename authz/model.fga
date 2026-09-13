@@ -245,6 +245,7 @@ type organization
     define can_manage_telematics_connectors: member
     define can_manage_telematics_devices: member
     define can_manage_erp_connectors: member
+    define can_manage_factoring_connectors: member
     define can_manage_exchange_connectors: member
     define can_manage_idp_connectors: member
     define can_manage_terminal_slot_connectors: member

@@ -74,6 +74,7 @@ def _organization_ops_relations() -> dict[str, Userset]:
         "can_manage_sales_lanes": _member(),
         "can_manage_quote_invoice_settlements": _member(),
         "can_manage_bank_payments": _member(),
+        "can_manage_factoring_connectors": _member(),
         "can_manage_money_costs": _member(),
         "can_manage_fx_differences": _member(),
         "can_manage_cash_flows": _member(),

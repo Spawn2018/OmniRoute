@@ -86,6 +86,7 @@ import { Route as ExceptionsRouteImport } from './routes/exceptions'
 import { Route as ExchangeConnectorsRouteImport } from './routes/exchange-connectors'
 import { Route as ExecutiveMarksRouteImport } from './routes/executive-marks'
 import { Route as ExtractionsRouteImport } from './routes/extractions'
+import { Route as FactoringConnectorsRouteImport } from './routes/factoring-connectors'
 import { Route as FairShareMarksRouteImport } from './routes/fair-share-marks'
 import { Route as FerryArt9MarksRouteImport } from './routes/ferry-art9-marks'
 import { Route as FerryBookingMarksRouteImport } from './routes/ferry-booking-marks'
@@ -661,6 +662,11 @@ const ExecutiveMarksRoute = ExecutiveMarksRouteImport.update({
 const ExtractionsRoute = ExtractionsRouteImport.update({
   id: '/extractions',
   path: '/extractions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FactoringConnectorsRoute = FactoringConnectorsRouteImport.update({
+  id: '/factoring-connectors',
+  path: '/factoring-connectors',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FairShareMarksRoute = FairShareMarksRouteImport.update({
@@ -1698,6 +1704,7 @@ export interface FileRoutesByFullPath {
   '/exchange-connectors': typeof ExchangeConnectorsRoute
   '/executive-marks': typeof ExecutiveMarksRoute
   '/extractions': typeof ExtractionsRoute
+  '/factoring-connectors': typeof FactoringConnectorsRoute
   '/fair-share-marks': typeof FairShareMarksRoute
   '/ferry-art9-marks': typeof FerryArt9MarksRoute
   '/ferry-booking-marks': typeof FerryBookingMarksRoute
@@ -1968,6 +1975,7 @@ export interface FileRoutesByTo {
   '/exchange-connectors': typeof ExchangeConnectorsRoute
   '/executive-marks': typeof ExecutiveMarksRoute
   '/extractions': typeof ExtractionsRoute
+  '/factoring-connectors': typeof FactoringConnectorsRoute
   '/fair-share-marks': typeof FairShareMarksRoute
   '/ferry-art9-marks': typeof FerryArt9MarksRoute
   '/ferry-booking-marks': typeof FerryBookingMarksRoute
@@ -2239,6 +2247,7 @@ export interface FileRoutesById {
   '/exchange-connectors': typeof ExchangeConnectorsRoute
   '/executive-marks': typeof ExecutiveMarksRoute
   '/extractions': typeof ExtractionsRoute
+  '/factoring-connectors': typeof FactoringConnectorsRoute
   '/fair-share-marks': typeof FairShareMarksRoute
   '/ferry-art9-marks': typeof FerryArt9MarksRoute
   '/ferry-booking-marks': typeof FerryBookingMarksRoute
@@ -2511,6 +2520,7 @@ export interface FileRouteTypes {
     | '/exchange-connectors'
     | '/executive-marks'
     | '/extractions'
+    | '/factoring-connectors'
     | '/fair-share-marks'
     | '/ferry-art9-marks'
     | '/ferry-booking-marks'
@@ -2781,6 +2791,7 @@ export interface FileRouteTypes {
     | '/exchange-connectors'
     | '/executive-marks'
     | '/extractions'
+    | '/factoring-connectors'
     | '/fair-share-marks'
     | '/ferry-art9-marks'
     | '/ferry-booking-marks'
@@ -3051,6 +3062,7 @@ export interface FileRouteTypes {
     | '/exchange-connectors'
     | '/executive-marks'
     | '/extractions'
+    | '/factoring-connectors'
     | '/fair-share-marks'
     | '/ferry-art9-marks'
     | '/ferry-booking-marks'
@@ -3322,6 +3334,7 @@ export interface RootRouteChildren {
   ExchangeConnectorsRoute: typeof ExchangeConnectorsRoute
   ExecutiveMarksRoute: typeof ExecutiveMarksRoute
   ExtractionsRoute: typeof ExtractionsRoute
+  FactoringConnectorsRoute: typeof FactoringConnectorsRoute
   FairShareMarksRoute: typeof FairShareMarksRoute
   FerryArt9MarksRoute: typeof FerryArt9MarksRoute
   FerryBookingMarksRoute: typeof FerryBookingMarksRoute
@@ -4054,6 +4067,13 @@ declare module '@tanstack/react-router' {
       path: '/extractions'
       fullPath: '/extractions'
       preLoaderRoute: typeof ExtractionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/factoring-connectors': {
+      id: '/factoring-connectors'
+      path: '/factoring-connectors'
+      fullPath: '/factoring-connectors'
+      preLoaderRoute: typeof FactoringConnectorsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/fair-share-marks': {
@@ -5474,6 +5494,7 @@ const rootRouteChildren: RootRouteChildren = {
   ExchangeConnectorsRoute: ExchangeConnectorsRoute,
   ExecutiveMarksRoute: ExecutiveMarksRoute,
   ExtractionsRoute: ExtractionsRoute,
+  FactoringConnectorsRoute: FactoringConnectorsRoute,
   FairShareMarksRoute: FairShareMarksRoute,
   FerryArt9MarksRoute: FerryArt9MarksRoute,
   FerryBookingMarksRoute: FerryBookingMarksRoute,

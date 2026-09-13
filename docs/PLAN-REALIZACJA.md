@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** akceptacja delty **471.0** → `/plaster` HITL `factoring_connector`. Nie live SMEO HTTP. Nie zgaduj plaster ID.
+**Następny:** `/plan-modul` **BR5.1** PO Financing (rdzeń Trade-Tech). Nie live HTTP bez umowy partnera. Nie zgaduj plaster ID.
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -752,7 +752,7 @@ Dump `03` / `04b`: WMS i BR6.2 evidenced; p44/LSP44 = dwie skóry jeden OpenAPI;
 | BR4.2 | konsolidacja morska LCL: konsole, CFS | po D | **468.0** DONE HITL `lcl_console_mark`; leftover live CFS · CBM; D6 zostaje |
 | BR4.3 | NAC i agent nominowany | po I | **469.0** DONE HITL `nac_mark`; leftover live NAC · auto-send; I2/I3 zostają |
 | BR4.4 | korytarz Chiny-Europa (Jedwabny Szlak) | po BR3.0 | **470.0** DONE HITL `silk_corridor_mark`; leftover UN/LOCODE · km · live CR Express; 110.0 zostaje |
-| BR5.0 | faktoring — integracja z partnerem | po F | **471.0** plan HITL `factoring_connector` (SMEO|other); leftover live SMEO HTTP · workflow F7; F wave zostaje |
+| BR5.0 | faktoring — integracja z partnerem | po F | **471.0** DONE HITL `factoring_connector`; leftover live SMEO HTTP · workflow F7; F wave zostaje |
 | BR5.1 | finansowanie zamówienia (PO Financing) | po BR1.2 + BR5.0 | rdzeń Trade-Tech |
 | BR5.2 | giełdy transportowe: wymiana ofert | po S55 | dziś tylko katalog konektora |
 | BR6.0 | CRM ponad leada: okazja, aktywność, pipeline | **start HHL** | **456.0** DONE HITL `crm_opportunity`; leftover: activity · pipeline |

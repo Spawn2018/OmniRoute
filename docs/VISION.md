@@ -113,6 +113,7 @@ zostają w badaniach `04`).
 | 2026-09-14 | BR4.4 plan (**470.0**): HITL `silk_corridor_mark`. Live CR Express / FK do `shipment_leg` / para UN/LOCODE `REJECTED` na tym wierszu. |
 | 2026-09-14 | **470.0** `silk_corridor_mark` w kodzie (`CONFIRMED`, git). Następny = **BR5.0** faktoring (`REQUIREMENT`). Live CR Express / Expo / AI5 `REJECTED` na tym wierszu. |
 | 2026-09-14 | BR5.0 plan (**471.0**): HITL `factoring_connector` (SMEO|other). Live SMEO HTTP / FK do `sales_invoice` / workflow wypłaty `REJECTED` na tym wierszu. |
+| 2026-09-14 | **471.0** `factoring_connector` w kodzie (`CONFIRMED`, git). Następny = **BR5.1** PO Financing (`REQUIREMENT`). Live SMEO HTTP / Expo / AI5 `REJECTED` na tym wierszu. |
 | 2026-09-13 | C.3 **Grupa 8**: help desk produktu (ticket → agent → akceptacja właściciela) + mobile całego OmniRoute. Leftover PLAN **Plat-HD** / **Mob**. Nie 468.0. |
 | 2026-09-13 | D.7 readiness (Murphy 2026 + audyt PDF/czat): Three-Bucket, Definition Gap, szwy eskalacji = leftover. Mission Control / wektor / druga warstwa semantyczna / Bertha `REJECTED`. |
 | 2026-09-13 | Ciało C.3 Grupa 8 + D.7 + skrót `03` B.4–B.6 w A.2. E.3: HC-04 i FK `plan_snapshot` zamknięte. [WYCOFANE 2026-09-13: „B.4–B.6 nietknięte w dumpie” — skrót jest w kanonie]. |
@@ -908,9 +909,9 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | nazwy z PDF-ów bez wiersza w planie | **136** (z czego 28 to aliasy) |
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
-Ostatni ukończony plaster: **470.0** (HITL `silk_corridor_mark`).
-Następny = **471.0** plaster `factoring_connector` po akceptacji delty (`REQUIREMENT`).
-AI1.0–AI1.4 oraz 443.0–470.0 są w kodzie (`CONFIRMED`); `data_source`
+Ostatni ukończony plaster: **471.0** (HITL `factoring_connector`).
+Następny = **BR5.1** plan PO Financing (`REQUIREMENT`).
+AI1.0–AI1.4 oraz 443.0–471.0 są w kodzie (`CONFIRMED`); `data_source`
 zostaje w AI5 (`REQUIREMENT`). Teza B.1 zostaje: szerokość katalogów nie zastępuje pomiaru.
 
 ## C.2 Bliźniaki — scalona taksonomia
@@ -1003,8 +1004,8 @@ bo bez ewidencji magazynowej nie ma zastawu na towarze.
   live CR Express / para UN/LOCODE (`REQUIREMENT`)
 
 **Grupa 5 — finanse i pieniądz.**
-- **Faktoring** — katalog HITL `factoring_connector` w delcie **471.0**
-  (`REQUIREMENT`); partner SMEO w osi wejścia (`CONFIRMED`, VISION A.5);
+- **Faktoring** — katalog HITL `factoring_connector` jest
+  (`CONFIRMED`, 471.0); partner SMEO w osi wejścia (`CONFIRMED`, A.5);
   leftover live SMEO HTTP / workflow wypłaty F7 (`REQUIREMENT`)
 - **Finansowanie zamówienia** (PO Financing) — rdzeń strumienia Trade-Tech
 - **Giełdy transportowe** — dziś tylko katalog konektora, brak wymiany ofert

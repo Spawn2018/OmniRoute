@@ -101,6 +101,7 @@ modules =
     app.services.circle_sims
     app.services.lane_kms
     app.services.erp_connectors
+    app.services.factoring_connectors
     app.services.customer_contracts
     app.services.tenant_contract_keks
     app.services.visibility_connectors
@@ -564,6 +565,9 @@ forbidden_modules =
     app.services.erp_connectors
     app.repositories.erp_connectors
     app.models.erp_connector
+    app.services.factoring_connectors
+    app.repositories.factoring_connectors
+    app.models.factoring_connector
     app.services.customer_contracts
     app.repositories.customer_contracts
     app.models.customer_contract

@@ -80,6 +80,7 @@ from app.api import (
     exchange_connectors,
     executive_marks,
     extractions,
+    factoring_connectors,
     fair_share_marks,
     ferry_art9_marks,
     ferry_booking_marks,
@@ -424,6 +425,7 @@ api_router.include_router(free_time_clocks.router)
 api_router.include_router(telematics_connectors.router)
 api_router.include_router(telematics_devices.router)
 api_router.include_router(erp_connectors.router)
+api_router.include_router(factoring_connectors.router)
 api_router.include_router(customer_contracts.router)
 api_router.include_router(exchange_connectors.router)
 api_router.include_router(idp_connectors.router)

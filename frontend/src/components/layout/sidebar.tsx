@@ -102,6 +102,7 @@ const NAV = [
   { to: "/lcl-console-marks", label: "Konsola LCL" },
   { to: "/nac-marks", label: "NAC i agent" },
   { to: "/silk-corridor-marks", label: "Jedwabny Szlak" },
+  { to: "/factoring-connectors", label: "Faktoring" },
   { to: "/position-events", label: "Zdarzenie pozycji" },
   { to: "/telematics-devices", label: "Urządzenie telematyczne" },
   { to: "/tracking-consents", label: "Zgoda na śledzenie" },
