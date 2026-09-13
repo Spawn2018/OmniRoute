@@ -106,6 +106,7 @@ from app.models.party_document import PartyDocument  # noqa: F401
 from app.models.carbon_method import CarbonMethod  # noqa: F401
 from app.models.plan_snapshot import PlanSnapshot  # noqa: F401
 from app.models.circle_sim import CircleSim  # noqa: F401
+from app.models.circle_sim_pair import CircleSimPair  # noqa: F401
 from app.models.lane_km import LaneKm  # noqa: F401
 from app.models.erp_connector import ErpConnector  # noqa: F401
 from app.models.customer_contract import CustomerContract  # noqa: F401

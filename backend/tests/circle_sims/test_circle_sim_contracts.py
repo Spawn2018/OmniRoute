@@ -55,6 +55,22 @@ def test_importlinter_lists_circle_sims_as_independent() -> None:
     forbidden = source.split("[importlinter:contract:extraction-no-rates]", 1)[1]
     assert "app.services.circle_sims" in forbidden
     assert "app.models.circle_sim" in forbidden
+    assert "app.models.circle_sim_pair" in forbidden
+
+
+def test_migration_359_adds_pair_view() -> None:
+    source = (_ROOT / "backend/alembic/versions/359_circle_pair.py").read_text(
+        encoding="utf-8",
+    )
+    assert 'revision: str = "359_circle_pair"' in source
+    assert 'down_revision: str | None = "358_cf_run_snap"' in source
+    assert "security_invoker = true" in source
+    assert "CREATE VIEW circle_sim_pair" in source
+    assert "a.id < b.id" in source
+    assert "amount" not in source
+    assert "loaded_km" not in source
+    assert "n_overlap" not in source
+    assert "float(" not in source.lower()
 
 
 def test_generated_api_types_include_circle_sim() -> None:

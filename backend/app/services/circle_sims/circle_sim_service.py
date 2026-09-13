@@ -8,6 +8,7 @@ from app.domain.circle_sim import (
     require_sim_code,
 )
 from app.models.circle_sim import CircleSim
+from app.models.circle_sim_pair import CircleSimPair
 from app.repositories.circle_sims.circle_sim_repository import CircleSimRepository
 
 
@@ -17,6 +18,9 @@ class CircleSimService:
 
     async def list_rows(self) -> list[CircleSim]:
         return await self._rows.fetch_rows()
+
+    async def list_pairs(self) -> list[CircleSimPair]:
+        return await self._rows.list_pairs()
 
     async def persist_circle_sim(
         self,

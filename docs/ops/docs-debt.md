@@ -1,3 +1,4 @@
+- **454.0 leftover:** generator 500k · km · `n_overlap` · VRP · EXPLAIN p95. 454.0 = widok `circle_sim_pair`.
 - **453.0 leftover:** AI4.2 kółka SQL · solver liczb · JSON dźwigni · CASCADE. 453.0 = FK przebieg → migawka + widok `what_if_replay`.
 - **452.0 plan:** AI4.0 FK `plan_snapshot` RESTRICT. Leftover po zamknięciu: AI4.1 · CASCADE.
 - **451.0 leftover:** `.xls` · wiele arkuszy · openpyxl · formuły. 451.0 = pierwszy arkusz OOXML → tekst.

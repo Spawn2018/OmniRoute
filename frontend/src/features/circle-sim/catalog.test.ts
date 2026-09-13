@@ -40,5 +40,8 @@ describe("circle_sim surface for 266.0", () => {
     expect(panel).not.toContain("leaflet")
     expect(panel).not.toContain("CatalogCreateForm")
     expect(src("features/ops/ops-index.ts")).toContain('"266.0": "/circle-sims"')
+    expect(src("features/ops/ops-index.ts")).toContain('"454.0": "/circle-sims"')
+    expect(page).toContain("listCircleSimPairs")
+    expect(page).toContain("para zamyka się w SQL")
   })
 })

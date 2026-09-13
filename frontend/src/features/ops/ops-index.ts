@@ -1518,6 +1518,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "265.0": "/plan-snapshots",
   "452.0": "/plan-snapshots",
   "266.0": "/circle-sims",
+  "454.0": "/circle-sims",
   "267.0": "/lane-kms",
   "268.0": "/erp-connectors",
   "269.0": "/terminal-slot-connectors",

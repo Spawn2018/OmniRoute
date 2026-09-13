@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **453.0** AI4.1 — FK `counterfactual_run` → `plan_snapshot` + widok `what_if_replay`
-- **Etap:** plaster — **454.0** AI4.2 kółka w SQL. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
-- **Następny:** **454.0** widok pary uzupełniającej kółek. Nie generator 500k. Nie km.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **454.0** AI4.2 — widok `circle_sim_pair` (para uzupełniająca w SQL)
+- **Etap:** Plan — **455.0** BR3.0 planowanie tras. Spec: brak — `/plan-modul`.
+- **Następny:** **455.0** BR3.0 start HHL. Nie live Valhalla. Nie LLM-VRP. Nie AI5 (`data_source` = park).
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

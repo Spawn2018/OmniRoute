@@ -7,6 +7,9 @@ Na `/circle-sims` dopisujesz **nazwane kółko** tenanta: kod snake oraz parę U
 3. Podaj `source_ref` (`fixture://circle-sim/…` albo `tenant:manual`).
 4. „Zapisz kółko”. Ten sam kod, ta sama para albo to samo `source_ref` u tenanta nie wejdzie drugi raz.
 
-Czego tu nie ma: silnik ≥500k, km ładowny/pusty/dolot, P overlap, lista przewoźników, LLM-VRP, what-if, mapa, suma w przeglądarce. Wzorzec korytarza zostaje na `/lane-patterns`. Marża zostaje na `/charges`.
+Para uzupełniająca (rozładunek jednego = załadunek drugiego) liczy się w SQL.
+Silnik 500k wariantów i km zostają poza tym ekranem.
+
+Czego tu nie ma: generator 500k, km ładowny/pusty/dolot, P overlap, lista przewoźników, LLM-VRP, what-if liczby, mapa, suma w przeglądarce. Wzorzec korytarza zostaje na `/lane-patterns`. Marża zostaje na `/charges`.
 
 Nazwy w kodzie: `circle_sim` · `sim_code` · `unload_unlocode` · `load_unlocode` · `source_ref`.

@@ -12,6 +12,7 @@ from tests.http_auth import bearer_auth_headers
 _ROOT_DENIED = "Brak uprawnienia can_manage_circle_sims na organization"
 _ENDPOINTS = (
     ("GET", "/api/v1/circle-sims", None, None),
+    ("GET", "/api/v1/circle-sim-pairs", None, None),
     (
         "POST",
         "/api/v1/circle-sims",

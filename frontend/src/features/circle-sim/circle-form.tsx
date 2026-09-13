@@ -26,6 +26,7 @@ export function CircleSave(args: { organizationId: string | null }) {
     onSuccess: () => {
       setDraft({ ...EMPTY_CIRCLE })
       void cache.invalidateQueries({ queryKey: ["circle-sims", args.organizationId] })
+      void cache.invalidateQueries({ queryKey: ["circle-sim-pairs", args.organizationId] })
     },
   })
   return (

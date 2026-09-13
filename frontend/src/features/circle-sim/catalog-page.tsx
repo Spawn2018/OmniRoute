@@ -3,7 +3,12 @@ import { createColumnHelper } from "@tanstack/react-table"
 import { CatalogError, CatalogHeading, TenantSessionNotice } from "@/components/catalog/catalog-parts"
 import { DataTableShell } from "@/components/data-table/data-table-shell"
 import { BUSINESS_LISTS } from "@/lib/business-lists"
-import { listCircleSims, type CircleSimRow } from "@/lib/circle-sims-api"
+import {
+  listCircleSimPairs,
+  listCircleSims,
+  type CircleSimPairRow,
+  type CircleSimRow,
+} from "@/lib/circle-sims-api"
 import { getTenantContext } from "@/lib/tenant"
 import { CircleSave } from "./circle-form"
 
@@ -23,6 +28,14 @@ const COLUMN_LABELS = {
   source_ref: "Pochodzenie",
 }
 
+const pairHelper = createColumnHelper<CircleSimPairRow>()
+const PAIR_COLS = [
+  pairHelper.accessor("left_sim_code", { header: "Lewy" }),
+  pairHelper.accessor("right_sim_code", { header: "Prawy" }),
+  pairHelper.accessor("unload_unlocode", { header: "Rozładunek" }),
+  pairHelper.accessor("load_unlocode", { header: "Załadunek" }),
+]
+
 function CircleRows(args: { organizationId: string | null }) {
   const listed = useQuery({
     queryKey: ["circle-sims", args.organizationId],
@@ -30,15 +43,34 @@ function CircleRows(args: { organizationId: string | null }) {
     enabled: Boolean(args.organizationId),
     retry: false,
   })
+  const pairs = useQuery({
+    queryKey: ["circle-sim-pairs", args.organizationId],
+    queryFn: listCircleSimPairs,
+    enabled: Boolean(args.organizationId),
+    retry: false,
+  })
   return (
-    <div className="min-w-0 flex-1">
+    <div className="min-w-0 flex-1 space-y-4">
       {listed.isError ? <CatalogError error={listed.error} /> : null}
+      {pairs.isError ? <CatalogError error={pairs.error} /> : null}
       <DataTableShell
         tableKey={BUSINESS_LISTS.circleSim.tableKey}
         columns={columns}
         data={listed.data ?? []}
         columnLabels={COLUMN_LABELS}
         globalFilterPlaceholder="Szukaj kółka…"
+      />
+      <DataTableShell
+        tableKey={`${BUSINESS_LISTS.circleSim.tableKey}-pair`}
+        columns={PAIR_COLS}
+        data={pairs.data ?? []}
+        columnLabels={{
+          left_sim_code: "Lewy",
+          right_sim_code: "Prawy",
+          unload_unlocode: "Rozładunek",
+          load_unlocode: "Załadunek",
+        }}
+        globalFilterPlaceholder="Szukaj pary…"
       />
     </div>
   )
@@ -52,7 +84,7 @@ export function CircleDesk() {
     <section className="flex flex-col gap-4" data-circle-sim="desk">
       <CatalogHeading
         title="Kółko"
-        subtitle="G2.20 circle_sim · para unload/load jako dane · nie silnik"
+        subtitle="AI4.2 · para zamyka się w SQL · nie generator 500k · nie km"
       />
       {!ready ? <TenantSessionNotice /> : null}
       {ready ? (

@@ -35,6 +35,9 @@ class StubCircleDesk:
     async def list_rows(self) -> list[CircleSim]:
         return list(self.rows)
 
+    async def list_pairs(self) -> list[object]:
+        return []
+
     async def persist_circle_sim(
         self,
         *,
@@ -106,6 +109,24 @@ def test_http_create_and_list_circle_sim(catalog_client: object) -> None:
     listed = client.get("/api/v1/circle-sims", headers=headers)
     assert listed.status_code == 200
     assert listed.json()[0]["id"] == body["id"]
+
+
+def test_get_pairs_is_200(catalog_client: object) -> None:
+    client, _desk = catalog_client
+    response = client.get("/api/v1/circle-sim-pairs", headers=bearer_auth_headers())
+    assert response.status_code == 200
+    assert response.json() == []
+
+
+def test_post_pairs_is_405(catalog_client: object) -> None:
+    client, _desk = catalog_client
+    response = client.post(
+        "/api/v1/circle-sim-pairs",
+        headers=bearer_auth_headers(),
+        json=_payload(),
+    )
+    assert response.status_code == 405
+    assert "odczytem" in response.json()["detail"]
 
 
 def test_http_create_bad_code_is_400(catalog_client: object) -> None:

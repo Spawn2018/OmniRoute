@@ -4,21 +4,21 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **453.0** AI4.1 — FK `counterfactual_run` → `plan_snapshot` + widok `what_if_replay`
+**Ostatni plaster:** **454.0** AI4.2 — widok `circle_sim_pair` (para uzupełniająca w SQL)
 
-**Etap:** plaster — **454.0** AI4.2 kółka w SQL. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
+**Etap:** Plan — **455.0** BR3.0 planowanie tras. Spec: brak — `/plan-modul`.
 
 **Noc:** `/noc 20` do **2026-09-13T20:00+02**.
 
-**Następny:** **454.0** widok pary uzupełniającej kółek. Nie generator 500k. Nie km.
+**Następny:** **455.0** BR3.0 start HHL. Nie live Valhalla. Nie LLM-VRP. Nie AI5 (`data_source` = park).
 
-Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 454.0. Nie otwieraj AI0.
+Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 455.0. Nie otwieraj AI0.
 
-**Spec (jedyna na sesję):** [docs/deltas/open/454.0-circle-sql-pairs.md](../deltas/open/454.0-circle-sql-pairs.md)
+**Spec (jedyna na sesję):** brak — `/plan-modul`
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 
-**Uczciwość:** HITL zostaje. LLM nie liczy. `charge` = marża. Impersonate ≠ decrypt. `charge.source_ref` **jest** (129.0 / 072) — nie otwieraj plastra AI0. **AI1.0–AI1.4**, **443.0–453.0** w kodzie. `data_source` = AI5.
+**Uczciwość:** HITL zostaje. LLM nie liczy. `charge` = marża. Impersonate ≠ decrypt. `charge.source_ref` **jest** (129.0 / 072) — nie otwieraj plastra AI0. **AI1.0–AI1.4**, **443.0–454.0** w kodzie. `data_source` = AI5.
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
@@ -48,6 +48,7 @@ Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll �
 **2026-09-13:** Plaster **451.0** zamknięty (`/noc`) — parser pierwszego arkusza `.xlsx`.
 **2026-09-13:** Plaster **452.0** zamknięty (`/noc`) — FK `plan_snapshot` RESTRICT.
 **2026-09-13:** Plaster **453.0** zamknięty (`/noc`) — FK przebieg → migawka + widok `what_if_replay`.
+**2026-09-13:** Plaster **454.0** zamknięty (`/noc`) — widok `circle_sim_pair`.
 **2026-09-13:** Kanon Fali AI/BR w PLAN; `docs/VISION.md`; HC-04 przepisane (Q1–Q2).
 **2026-09-13:** Dump CT (badania `03` B.1–B.3, B.7–B.10) w kanonie VISION + PLAN Fala AI/BR; B.4–B.6 FourKites/BY/Kinaxis nietknięte.
 **2026-09-13:** Dump TMS top-10 (badania `04b` A–H × 10) w kanonie VISION + PLAN Fala AI/BR. CargoWise/Qargo/interLAN zostają w `04`.

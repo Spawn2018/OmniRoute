@@ -532,6 +532,7 @@ forbidden_modules =
     app.services.circle_sims
     app.repositories.circle_sims
     app.models.circle_sim
+    app.models.circle_sim_pair
     app.services.lane_kms
     app.repositories.lane_kms
     app.models.lane_km

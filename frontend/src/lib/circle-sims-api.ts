@@ -2,6 +2,7 @@ import { ApiError, httpErrorStatus, readApiDetail } from "@/lib/api"
 import { requireAuthHeaders } from "@/lib/tenant"
 
 const PATH = "/api/v1/circle-sims"
+const PAIR_PATH = "/api/v1/circle-sim-pairs"
 
 export type CircleSimRow = {
   id: string
@@ -10,6 +11,16 @@ export type CircleSimRow = {
   unload_unlocode: string
   load_unlocode: string
   source_ref: string
+}
+
+export type CircleSimPairRow = {
+  organization_id: string
+  left_sim_id: string
+  right_sim_id: string
+  left_sim_code: string
+  right_sim_code: string
+  unload_unlocode: string
+  load_unlocode: string
 }
 
 export type CircleSimWrite = {
@@ -44,6 +55,14 @@ export async function listCircleSims(): Promise<CircleSimRow[]> {
   return parseCircle(
     await fetch(PATH, { headers: requireAuthHeaders() }),
     "Błąd listy kółek",
+    200,
+  )
+}
+
+export async function listCircleSimPairs(): Promise<CircleSimPairRow[]> {
+  return parseCircle(
+    await fetch(PAIR_PATH, { headers: requireAuthHeaders() }),
+    "Błąd listy par kółek",
     200,
   )
 }

@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **453.0** AI4.1 — FK `counterfactual_run` → `plan_snapshot` + widok `what_if_replay`. **Etap:** plaster — **454.0** AI4.2 kółka w SQL. Delta zaakceptowana (`/noc`). Wolno `/plaster`. **Następny:** **454.0** widok pary uzupełniającej kółek. Nie generator 500k. Nie km. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **454.0** AI4.2 — widok `circle_sim_pair` (para uzupełniająca w SQL). **Etap:** Plan — **455.0** BR3.0 planowanie tras. Spec: brak — `/plan-modul`. **Następny:** **455.0** BR3.0 start HHL. Nie live Valhalla. Nie LLM-VRP. Nie AI5 (`data_source` = park). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

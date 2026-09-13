@@ -261,7 +261,7 @@
 | znacznik śladu | tender_carbon_mark | G2.14 HITL declared/exempt na `tender`; nie kg; nie kalkulator |
 | wzorzec korytarza | lane_pattern | G2.19 HITL para UN/LOCODE; nie km; nie circle_sim; nie `tender_lane` |
 | oferta przetargowa kupna | tender_quote | P6 ważność + limit orderów; nie auto-award; nie obiekt `tender` |
-| kółko | circle_sim | G2.20 HITL kod + para unload/load UN/LOCODE; nie silnik 500k; nie km; nie `lane_pattern` |
+| kółko | circle_sim | G2.20 HITL kod + para unload/load; AI4.2 widok `circle_sim_pair` unload↔load; nie generator 500k; nie km |
 | km ładowny | lane_km | G2.21 HITL ładowny/pusty/dolot Decimal; nie Haversine; nie `trip`; nie `circle_sim` |
 | KREPTD | kreptd | G2.23; GITD/ITD; oficjalne API |
 | licencja KREPTD | kreptd_licence | G2.23 HITL numer licencji na `party`; nie scrape; nie Citizen API |

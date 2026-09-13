@@ -1,9 +1,11 @@
 # BC circle_sim (G2.20)
 
-HITL katalog kółka per tenant. sim_code + para UN/LOCODE unload/load + source_ref. Nie silnik ≥500k. Nie km.
+HITL katalog kółka per tenant. sim_code + para UN/LOCODE unload/load + source_ref.
+Widok `circle_sim_pair` = samozłączenie unload↔load, nie generator 500k. Nie km.
 
 ## Dozwolone zależności
 - `app.models.circle_sim`
+- `app.models.circle_sim_pair`
 - `app.repositories.circle_sims`
 - `app.domain`
 

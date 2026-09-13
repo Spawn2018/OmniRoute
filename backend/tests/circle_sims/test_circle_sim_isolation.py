@@ -6,6 +6,7 @@ from sqlalchemy.exc import IntegrityError
 
 from app.core.database import bind_tenant
 from app.models.circle_sim import CircleSim
+from app.models.circle_sim_pair import CircleSimPair
 
 
 def _row(
@@ -61,6 +62,64 @@ async def test_circle_sim_rls_isolates_tenants(session, two_tenants) -> None:
     await bind_tenant(session, org_b.id)
     visible_b = list((await session.scalars(select(CircleSim))).all())
     assert {row.id for row in visible_b} == {row_b.id}
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_circle_sim_pair_view_isolates_and_matches(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    org_b = two_tenants["org_b"]
+    user_a = two_tenants["user_a"]
+    user_b = two_tenants["user_b"]
+
+    await bind_tenant(session, org_a.id)
+    out = _row(
+        organization_id=org_a.id,
+        created_by=user_a.id,
+        sim_code="out_a",
+        unload_unlocode="PLGDY",
+        load_unlocode="DEHAM",
+        source_ref="fixture://circle-sim/out-a",
+    )
+    back = _row(
+        organization_id=org_a.id,
+        created_by=user_a.id,
+        sim_code="back_a",
+        unload_unlocode="DEHAM",
+        load_unlocode="PLGDY",
+        source_ref="fixture://circle-sim/back-a",
+    )
+    session.add_all([out, back])
+    await session.flush()
+
+    await bind_tenant(session, org_b.id)
+    session.add(
+        _row(
+            organization_id=org_b.id,
+            created_by=user_b.id,
+            sim_code="out_b",
+            unload_unlocode="PLGDY",
+            load_unlocode="DEHAM",
+            source_ref="fixture://circle-sim/out-b",
+        )
+    )
+    session.add(
+        _row(
+            organization_id=org_b.id,
+            created_by=user_b.id,
+            sim_code="back_b",
+            unload_unlocode="DEHAM",
+            load_unlocode="PLGDY",
+            source_ref="fixture://circle-sim/back-b",
+        )
+    )
+    await session.flush()
+
+    session.expunge_all()
+    await bind_tenant(session, org_a.id)
+    pairs = list((await session.scalars(select(CircleSimPair))).all())
+    assert len(pairs) == 1
+    assert {pairs[0].left_sim_id, pairs[0].right_sim_id} == {out.id, back.id}
 
 
 @pytest.mark.integration
