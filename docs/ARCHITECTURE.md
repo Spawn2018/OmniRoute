@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **438.0** AI1.4 HITL `autonomy_level`. **Etap:** Plan — **AI1.4 leftover** / **439.0** (delta zaakceptowana `/noc`, wolno `/plaster`). **Następny:** **439.0** AI1.4 leftover FK `suggestion_ledger.suggestion_kind` → `suggestion_kind` (`ON DELETE RESTRICT`). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **439.0** AI1.4 leftover FK `suggestion_ledger` → `suggestion_kind`. **Etap:** Plan — **AI1.4 leftover** / **440.0**. **Następny:** **440.0** AI1.4 leftover FK `twin_mark.twin_kind` → `twin_kind` (`ON DELETE RESTRICT`). Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

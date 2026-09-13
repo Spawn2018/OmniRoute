@@ -6,7 +6,6 @@ from uuid import UUID
 from app.domain.errors import InvalidSuggestionLedger
 
 _CODE = re.compile(r"^[a-z][a-z0-9_]{1,31}$")
-_KINDS = frozenset({"eta", "rate", "route", "other"})
 _REACTIONS = frozenset({"accept", "modify", "reject"})
 _MANUAL = "tenant:manual"
 _FIX = "fixture://suggestion-ledger/"
@@ -98,8 +97,6 @@ def parse_suggestion_ledger_row(
     source_ref: object,
 ) -> SuggestionLedgerDraft:
     kind = _snake(suggestion_kind, "rodzaj")
-    if kind not in _KINDS:
-        raise InvalidSuggestionLedger("rodzaj: eta, rate, route albo other")
     verdict = _snake(reaction, "reakcja")
     if verdict not in _REACTIONS:
         raise InvalidSuggestionLedger("reakcja: accept, modify albo reject")

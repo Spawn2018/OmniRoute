@@ -41134,7 +41134,7 @@
           },
           "suggestion_kind": {
             "type": "string",
-            "maxLength": 16,
+            "maxLength": 32,
             "minLength": 2,
             "title": "Suggestion Kind"
           },

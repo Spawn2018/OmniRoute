@@ -60,6 +60,11 @@ def test_parse_rejects_modify_none() -> None:
         _ok(reaction="modify", changed_to="none")
 
 
+def test_parse_accepts_open_kind() -> None:
+    draft = _ok(suggestion_kind="tender_twin")
+    assert draft.suggestion_kind == "tender_twin"
+
+
 def test_parse_rejects_bad_kind() -> None:
     with pytest.raises(InvalidSuggestionLedger, match="rodzaj"):
-        _ok(suggestion_kind="person_score")
+        _ok(suggestion_kind="1x")

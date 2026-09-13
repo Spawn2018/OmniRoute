@@ -7,13 +7,6 @@ import {
   makeSuggestionLedgerPayload,
 } from "@/lib/suggestion-ledgers-api"
 
-const KINDS = [
-  { value: "eta", label: "ETA" },
-  { value: "rate", label: "Stawka" },
-  { value: "route", label: "Trasa" },
-  { value: "other", label: "Inne" },
-] as const
-
 const REACTIONS = [
   { value: "accept", label: "Accept" },
   { value: "modify", label: "Modify" },
@@ -91,18 +84,13 @@ export function SuggestionLedgerComposer(props: { organizationId: string | null 
       </label>
       <label className="text-xs">
         suggestion_kind
-        <select
-          aria-label="suggestion_kind eta rate route other"
-          className="mt-1 h-9 w-full rounded border px-2 text-sm"
+        <input
+          aria-label="suggestion_kind open dict"
+          className="mt-1 h-9 w-full rounded border px-2 font-mono text-sm"
           onChange={(e) => setKind(e.target.value)}
+          required
           value={kind}
-        >
-          {KINDS.map((opt) => (
-            <option key={opt.value} value={opt.value}>
-              {opt.label}
-            </option>
-          ))}
-        </select>
+        />
       </label>
       <label className="text-xs">
         interval_low

@@ -1,7 +1,9 @@
 from uuid import UUID, uuid4
 
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.domain.errors import InvalidSuggestionLedger
 from app.domain.suggestion_ledger import SuggestionLedgerDraft, parse_suggestion_ledger_row
 from app.models.suggestion_ledger import SuggestionLedger
 from app.repositories.suggestion_ledgers.suggestion_ledger_repository import (
@@ -66,4 +68,10 @@ class SuggestionLedgerService:
             changed_to,
             source_ref,
         )
-        return await self._rows.add(_as_entity(organization_id, user_id, draft))
+        try:
+            return await self._rows.add(_as_entity(organization_id, user_id, draft))
+        except IntegrityError as orig:
+            detail = str(orig.orig) if orig.orig is not None else str(orig)
+            if "fk_suggestion_ledger_kind" in detail:
+                raise InvalidSuggestionLedger("rodzaj: brak w słowniku") from orig
+            raise InvalidSuggestionLedger("zapis ledgeru odrzucony") from orig

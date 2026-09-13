@@ -1,13 +1,20 @@
 import uuid
 from decimal import Decimal
 
-from sqlalchemy import CheckConstraint, ForeignKey, Index, Numeric, String, UniqueConstraint
+from sqlalchemy import (
+    CheckConstraint,
+    ForeignKey,
+    ForeignKeyConstraint,
+    Index,
+    Numeric,
+    String,
+    UniqueConstraint,
+)
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.models.base import Base, TimestampMixin
 
-_KIND_SQL = "suggestion_kind IN ('eta','rate','route','other')"
 _REACTION_SQL = "reaction IN ('accept','modify','reject')"
 _SNAKE = r"^[a-z][a-z0-9_]{1,31}$"
 _CHANGED_SQL = (
@@ -25,7 +32,12 @@ class SuggestionLedger(Base, TimestampMixin):
             "source_ref",
             name="uq_suggestion_ledger_org_source_ref",
         ),
-        CheckConstraint(_KIND_SQL, name="ck_suggestion_ledger_kind"),
+        ForeignKeyConstraint(
+            ["organization_id", "suggestion_kind"],
+            ["suggestion_kind.organization_id", "suggestion_kind.kind_code"],
+            name="fk_suggestion_ledger_kind",
+            ondelete="RESTRICT",
+        ),
         CheckConstraint(_REACTION_SQL, name="ck_suggestion_ledger_reaction"),
         CheckConstraint("interval_high >= interval_low", name="ck_suggestion_ledger_interval"),
         CheckConstraint(_CHANGED_SQL, name="ck_suggestion_ledger_changed"),
@@ -51,7 +63,7 @@ class SuggestionLedger(Base, TimestampMixin):
     )
     target_bc: Mapped[str] = mapped_column(String(32), nullable=False)
     entity_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), nullable=False)
-    suggestion_kind: Mapped[str] = mapped_column(String(16), nullable=False)
+    suggestion_kind: Mapped[str] = mapped_column(String(32), nullable=False)
     interval_low: Mapped[Decimal] = mapped_column(Numeric(14, 4), nullable=False)
     interval_high: Mapped[Decimal] = mapped_column(Numeric(14, 4), nullable=False)
     model_version: Mapped[str] = mapped_column(String(32), nullable=False)

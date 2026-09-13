@@ -16,3 +16,4 @@ HITL ledger podpowiedzi per tenant. target_bc + entity_id + przedział Decimal
 - HTTP
 - UPDATE / DELETE wiersza
 - FK do shipment / trip / quotation
+- import `suggestion_kinds` (FK rodzaju jest w bazie)

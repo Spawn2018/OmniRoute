@@ -3,12 +3,30 @@ from uuid import uuid4
 
 import pytest
 from sqlalchemy import select
+from sqlalchemy.exc import IntegrityError
 
 from app.core.database import bind_tenant
+from app.models.suggestion_kind import SuggestionKind
 from app.models.suggestion_ledger import SuggestionLedger
 
 _ENTITY_A = uuid4()
 _ENTITY_B = uuid4()
+
+
+def _kind(
+    *,
+    organization_id,
+    created_by,
+    kind_code: str,
+    source_ref: str,
+) -> SuggestionKind:
+    return SuggestionKind(
+        id=uuid4(),
+        organization_id=organization_id,
+        kind_code=kind_code,
+        source_ref=source_ref,
+        created_by=created_by,
+    )
 
 
 def _row(
@@ -46,11 +64,29 @@ async def test_suggestion_ledger_rls_isolates_tenants(session, two_tenants) -> N
     user_b = two_tenants["user_b"]
 
     await bind_tenant(session, org_a.id)
+    session.add(
+        _kind(
+            organization_id=org_a.id,
+            created_by=user_a.id,
+            kind_code="eta",
+            source_ref="fixture://suggestion-kind/a-eta",
+        )
+    )
+    await session.flush()
     row_a = _row(organization_id=org_a.id, created_by=user_a.id)
     session.add(row_a)
     await session.flush()
 
     await bind_tenant(session, org_b.id)
+    session.add(
+        _kind(
+            organization_id=org_b.id,
+            created_by=user_b.id,
+            kind_code="rate",
+            source_ref="fixture://suggestion-kind/b-rate",
+        )
+    )
+    await session.flush()
     row_b = _row(
         organization_id=org_b.id,
         created_by=user_b.id,
@@ -65,3 +101,21 @@ async def test_suggestion_ledger_rls_isolates_tenants(session, two_tenants) -> N
     await bind_tenant(session, org_a.id)
     visible = list((await session.scalars(select(SuggestionLedger))).all())
     assert {row.id for row in visible} == {row_a.id}
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_suggestion_ledger_fk_rejects_unknown_kind(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    user_a = two_tenants["user_a"]
+    await bind_tenant(session, org_a.id)
+    session.add(
+        _row(
+            organization_id=org_a.id,
+            created_by=user_a.id,
+            suggestion_kind="tender_twin",
+            source_ref="fixture://suggestion-ledger/missing-kind",
+        )
+    )
+    with pytest.raises(IntegrityError):
+        await session.flush()

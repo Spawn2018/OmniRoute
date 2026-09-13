@@ -20,7 +20,7 @@ class SuggestionLedgerCreate(BaseModel):
 
     target_bc: str = Field(min_length=2, max_length=32)
     entity_id: str = Field(min_length=36, max_length=36)
-    suggestion_kind: str = Field(min_length=2, max_length=16)
+    suggestion_kind: str = Field(min_length=2, max_length=32)
     interval_low: str
     interval_high: str
     model_version: str = Field(min_length=2, max_length=32)

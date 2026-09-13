@@ -43,7 +43,7 @@ export function SuggestionLedgerBoard() {
       <section className="space-y-3 border-r border-sky-800/20 pr-4">
         <CatalogHeading
           title="Ledger podpowiedzi"
-          subtitle="AI1.0 · eta|rate|route|other · accept|modify|reject · bez zapisu LLM"
+          subtitle="AI1.0 · kind ze słownika · accept|modify|reject · bez zapisu LLM"
         />
         <ul className="list-disc space-y-1 pl-5 text-sm text-muted-foreground">
           <li>HITL zapis podpowiedzi i reakcji człowieka — tylko dane.</li>

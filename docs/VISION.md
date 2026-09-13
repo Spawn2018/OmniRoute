@@ -3,7 +3,7 @@
 ```
 status:        roboczy kanon
 wersja:        0.3
-ostatnia zmiana: 2026-09-13 09:40
+ostatnia zmiana: 2026-09-13 10:00
 ```
 
 ## Jak czytać
@@ -49,6 +49,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | AI1.4 plan (**438.0**): HITL `autonomy_level` bez CHECK i bez FK klienta. |
 | 2026-09-13 | **438.0** `autonomy_level` w kodzie. Następny = leftover FK `suggestion_ledger`. |
 | 2026-09-13 | AI1.4 plan (**439.0**): FK `suggestion_ledger` → `suggestion_kind`. twin_mark CHECK zostaje. |
+| 2026-09-13 | **439.0** FK ledgeru w kodzie. Następny = leftover FK `twin_mark`. |
 
 ---
 
@@ -58,7 +59,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 status:        roboczy kanon (zastępuje "Informacje z claude/vision.md" z 2026-08-29)
 wersja:        0.1
 utworzony:     2026-09-13
-ostatnia zmiana: 2026-09-13 09:40
+ostatnia zmiana: 2026-09-13 10:00
 autor ustaleń: Sebastian Bożek (właściciel produktu)
 redakcja:      agent, na podstawie dokumentów 01-07 i 09-11 w tym katalogu
 lokalizacja:   docs/VISION.md (repozytorium OmniRoute)
@@ -134,6 +135,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | AI1.4 (**438.0**) = HITL `autonomy_level`: `level_code` bez CHECK/ENUM. FK `party` `REJECTED`. `data_source` leftover AI5. Silnik L3+ `REJECTED`. | `/plan-modul` `/noc`; VISION B.3 · B.4 |
 | 2026-09-13 | **438.0** `autonomy_level` w kodzie (`CONFIRMED`, git). Następny = FK `suggestion_ledger` (`REQUIREMENT`, B.3). `data_source` = AI5. CRPS `REJECTED` na tym wierszu. | CURRENT + plaster 438.0 `/noc` |
 | 2026-09-13 | AI1.4 (**439.0**) = FK `(organization_id, suggestion_kind)` → słownik. CHECK listy `REJECTED`. Import `suggestion_kinds` z ledgeru `REJECTED`. `twin_mark` CHECK zostaje. | `/plan-modul` `/noc`; VISION B.3 |
+| 2026-09-13 | **439.0** FK `suggestion_ledger` w kodzie (`CONFIRMED`, git). Następny = FK `twin_mark` (`REQUIREMENT`). `data_source` = AI5. CRPS `REJECTED` na tym wierszu. | CURRENT + plaster 439.0 `/noc` |
 
 ---
 ---
@@ -745,10 +747,9 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | nazwy z PDF-ów bez wiersza w planie | **136** (z czego 28 to aliasy) |
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
-Ostatni ukończony plaster: **438.0** (`autonomy_level`), następny w kolejce
-**AI1.4 leftover** (FK `suggestion_ledger`). AI1.0–AI1.3 i trzy słowniki
-(`suggestion_kind`, `twin_kind`, `autonomy_level`) są w kodzie (`CONFIRMED`);
-`data_source` zostaje w AI5 (`REQUIREMENT`).
+Ostatni ukończony plaster: **439.0** (FK `suggestion_ledger`), następny w kolejce
+**AI1.4 leftover** (FK `twin_mark`). AI1.0–AI1.3, trzy słowniki i FK ledgeru
+są w kodzie (`CONFIRMED`); `data_source` zostaje w AI5 (`REQUIREMENT`).
 CRPS ze złączenia zostaje w AI2 (`REQUIREMENT`). Teza B.1 zostaje:
 szerokość katalogów nie zastępuje pomiaru.
 
