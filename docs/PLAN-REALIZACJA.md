@@ -755,7 +755,7 @@ Dump TMS 2026-09-13 (badania `04b` A–H × 10; CargoWise/Qargo/interLAN zostaj�
 | AI1.1 | `outcome_ledger` — co się naprawdę stało | **DONE w kodzie** (433.0 / 343) | HITL actual_value Decimal; złączenie / CRPS = leftover AI2; bez FK do suggestion_ledger |
 | AI1.2 | `counterfactual_run` — scenariusz, punkt odniesienia, dźwignie, wynik; niemutowalny | **DONE w kodzie** (434.0 / 344) | HITL etykiety jako dane; silnik = leftover AI4.1; nie klon what_if_mark |
 | AI1.3 | `benefit_ledger` — zaoszczędzony czas i pieniądze **z jawną metodą punktu odniesienia** | **DONE w kodzie** (435.0 / 345) | HITL method_label + Decimal; nie druga marża; nie SQL z charge |
-| AI1.4 | Słowniki otwarte: `twin_kind`, `data_source`, `autonomy_level`, `suggestion_kind` | 436.0–438.0 DONE | leftover FK `suggestion_ledger` (439.0) · `twin_mark` CHECK · `data_source` (AI5) |
+| AI1.4 | Słowniki otwarte: `twin_kind`, `data_source`, `autonomy_level`, `suggestion_kind` | plan 439.0 (delta `/noc`) + 436.0–438.0 DONE | 439.0 = FK ledger→słownik; leftover twin_mark CHECK · data_source (AI5) |
 | AI2.0 | CRPS, Brier, MAE **liczone** ze złączenia AI1.0×AI1.1 | po AI1.1 | podnosi V1 leftover champion/challenger / drift; dump `04b`: Oracle LML 95% interval = metoda, nie CRPS/MAE; `prediction_ledger` HITL aż AI2 |
 | AI2.1 | champion/challenger + wykrywanie dryfu | po AI2.0 | V1 leftover |
 | AI3.0 | `PATCH` na `extraction_draft` + edycja w interfejsie przed akceptacją | po AI2.0 | dziś accept/reject zmienia tylko status |
