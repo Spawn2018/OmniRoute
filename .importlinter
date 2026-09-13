@@ -185,6 +185,7 @@ modules =
     app.services.outcome_ledgers
     app.services.counterfactual_runs
     app.services.benefit_ledgers
+    app.services.suggestion_kinds
     app.services.demo_gps_marks
     app.services.demo_sim_marks
     app.services.demo_wipe_marks
@@ -876,6 +877,9 @@ forbidden_modules =
     app.services.benefit_ledgers
     app.repositories.benefit_ledgers
     app.models.benefit_ledger
+    app.services.suggestion_kinds
+    app.repositories.suggestion_kinds
+    app.models.suggestion_kind
     app.services.demo_gps_marks
     app.repositories.demo_gps_marks
     app.models.demo_gps_mark

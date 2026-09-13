@@ -654,6 +654,10 @@ class InvalidBenefitLedger(DomainError):
     """Ledger AI1.3: HITL method_label + Decimal — nie druga marża i nie SQL z charge."""
 
 
+class InvalidSuggestionKind(DomainError):
+    """Słownik AI1.4: HITL kind_code bez CHECK — nie ledger i nie ENUM."""
+
+
 class InvalidWeatherObservation(DomainError):
     """Pogoda V2: HITL warunek + UN/LOCODE + czas — nie Open-Meteo i nie ETA."""
 

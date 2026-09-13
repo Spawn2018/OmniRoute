@@ -3,7 +3,7 @@
 ```
 status:        roboczy kanon
 wersja:        0.3
-ostatnia zmiana: 2026-09-13 08:28
+ostatnia zmiana: 2026-09-13 08:42
 ```
 
 ## Jak czytać
@@ -43,6 +43,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | AI1.3 plan (**435.0**): HITL `benefit_ledger` z metodą punktu odniesienia. Druga marża = zakaz. |
 | 2026-09-13 | **435.0** `benefit_ledger` w kodzie. Następny = AI1.4 słowniki otwarte. |
 | 2026-09-13 | AI1.4 plan (**436.0**): pierwszy słownik = HITL `suggestion_kind` bez CHECK. |
+| 2026-09-13 | **436.0** `suggestion_kind` w kodzie. Następny = leftover `twin_kind`. |
 
 ---
 
@@ -52,7 +53,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 status:        roboczy kanon (zastępuje "Informacje z claude/vision.md" z 2026-08-29)
 wersja:        0.1
 utworzony:     2026-09-13
-ostatnia zmiana: 2026-09-13 08:28
+ostatnia zmiana: 2026-09-13 08:42
 autor ustaleń: Sebastian Bożek (właściciel produktu)
 redakcja:      agent, na podstawie dokumentów 01-07 i 09-11 w tym katalogu
 lokalizacja:   docs/VISION.md (repozytorium OmniRoute)
@@ -122,6 +123,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | AI1.3 (**435.0**) = HITL `benefit_ledger`: `method_label` + `hours_saved` + `saved_amount` Decimal. Druga marża `REJECTED`. Liczenie z `charge` `REJECTED`. | `/plan-modul` `/noc`; VISION B.2 |
 | 2026-09-13 | **435.0** `benefit_ledger` w kodzie (`CONFIRMED`, git). Następny = **AI1.4** słowniki (`REQUIREMENT`). Druga marża i SQL z `charge` zostają `REJECTED` na tym wierszu. | CURRENT + plaster 435.0 `/noc` |
 | 2026-09-13 | AI1.4 (**436.0**) = HITL `suggestion_kind`: `kind_code` bez CHECK/ENUM. `twin_kind` / `data_source` / `autonomy_level` leftover. FK z `suggestion_ledger` `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION B.3 |
+| 2026-09-13 | **436.0** `suggestion_kind` w kodzie (`CONFIRMED`, git). Następny = **twin_kind** słownik (`REQUIREMENT`, C.2). CHECK na `suggestion_ledger` zostaje `REJECTED` na tym wierszu. | CURRENT + plaster 436.0 `/noc` |
 
 ---
 ---
@@ -733,8 +735,8 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | nazwy z PDF-ów bez wiersza w planie | **136** (z czego 28 to aliasy) |
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
-Ostatni ukończony plaster: **435.0** (`benefit_ledger`), następny w kolejce
-**AI1.4** (słowniki otwarte). AI1.0–AI1.3 są w kodzie (`CONFIRMED`);
+Ostatni ukończony plaster: **436.0** (`suggestion_kind`), następny w kolejce
+**AI1.4 leftover** (`twin_kind`). AI1.0–AI1.3 i pierwszy słownik są w kodzie (`CONFIRMED`);
 CRPS ze złączenia zostaje w AI2 (`REQUIREMENT`). Teza B.1 zostaje:
 szerokość katalogów nie zastępuje pomiaru.
 

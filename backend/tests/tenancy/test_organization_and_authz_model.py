@@ -81,6 +81,7 @@ def test_authorization_model_includes_table_view_permission() -> None:
     assert "can_manage_outcome_ledgers" in org.relations
     assert "can_manage_counterfactual_runs" in org.relations
     assert "can_manage_benefit_ledgers" in org.relations
+    assert "can_manage_suggestion_kinds" in org.relations
     assert "can_manage_plan_snapshots" in org.relations
     assert "can_manage_circle_sims" in org.relations
     assert "can_manage_lane_kms" in org.relations
@@ -314,6 +315,9 @@ def test_authorization_model_includes_table_view_permission() -> None:
     benefit_ledgers = org.relations["can_manage_benefit_ledgers"]
     assert benefit_ledgers.computed_userset is not None
     assert benefit_ledgers.computed_userset.relation == "member"
+    suggestion_kinds = org.relations["can_manage_suggestion_kinds"]
+    assert suggestion_kinds.computed_userset is not None
+    assert suggestion_kinds.computed_userset.relation == "member"
     plan_snapshots = org.relations["can_manage_plan_snapshots"]
     assert plan_snapshots.computed_userset is not None
     assert plan_snapshots.computed_userset.relation == "member"

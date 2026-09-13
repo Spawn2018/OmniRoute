@@ -11805,6 +11805,42 @@ export type SubcontractEdgeMarkResponse = {
 };
 
 /**
+ * SuggestionKindCreate
+ */
+export type SuggestionKindCreate = {
+    /**
+     * Kind Code
+     */
+    kind_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * SuggestionKindResponse
+ */
+export type SuggestionKindResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Kind Code
+     */
+    kind_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * SuggestionLedgerCreate
  */
 export type SuggestionLedgerCreate = {
@@ -22809,6 +22845,49 @@ export type CreateSuggestionLedgerApiV1SuggestionLedgersPostResponses = {
 };
 
 export type CreateSuggestionLedgerApiV1SuggestionLedgersPostResponse = CreateSuggestionLedgerApiV1SuggestionLedgersPostResponses[keyof CreateSuggestionLedgerApiV1SuggestionLedgersPostResponses];
+
+export type ListSuggestionKindsApiV1SuggestionKindsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/suggestion-kinds';
+};
+
+export type ListSuggestionKindsApiV1SuggestionKindsGetResponses = {
+    /**
+     * Response List Suggestion Kinds Api V1 Suggestion Kinds Get
+     *
+     * Successful Response
+     */
+    200: Array<SuggestionKindResponse>;
+};
+
+export type ListSuggestionKindsApiV1SuggestionKindsGetResponse = ListSuggestionKindsApiV1SuggestionKindsGetResponses[keyof ListSuggestionKindsApiV1SuggestionKindsGetResponses];
+
+export type CreateSuggestionKindApiV1SuggestionKindsPostData = {
+    body: SuggestionKindCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/suggestion-kinds';
+};
+
+export type CreateSuggestionKindApiV1SuggestionKindsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateSuggestionKindApiV1SuggestionKindsPostError = CreateSuggestionKindApiV1SuggestionKindsPostErrors[keyof CreateSuggestionKindApiV1SuggestionKindsPostErrors];
+
+export type CreateSuggestionKindApiV1SuggestionKindsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: SuggestionKindResponse;
+};
+
+export type CreateSuggestionKindApiV1SuggestionKindsPostResponse = CreateSuggestionKindApiV1SuggestionKindsPostResponses[keyof CreateSuggestionKindApiV1SuggestionKindsPostResponses];
 
 export type ListOutcomeLedgersApiV1OutcomeLedgersGetData = {
     body?: never;

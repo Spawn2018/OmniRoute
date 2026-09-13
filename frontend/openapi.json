@@ -14982,6 +14982,80 @@
         ]
       }
     },
+    "/api/v1/suggestion-kinds": {
+      "get": {
+        "tags": [
+          "suggestion-kinds"
+        ],
+        "summary": "List Suggestion Kinds",
+        "operationId": "list_suggestion_kinds_api_v1_suggestion_kinds_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SuggestionKindResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Suggestion Kinds Api V1 Suggestion Kinds Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "suggestion-kinds"
+        ],
+        "summary": "Create Suggestion Kind",
+        "operationId": "create_suggestion_kind_api_v1_suggestion_kinds_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SuggestionKindCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuggestionKindResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/outcome-ledgers": {
       "get": {
         "tags": [
@@ -40789,6 +40863,59 @@
           "source_ref"
         ],
         "title": "SubcontractEdgeMarkResponse"
+      },
+      "SuggestionKindCreate": {
+        "properties": {
+          "kind_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Kind Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "kind_code",
+          "source_ref"
+        ],
+        "title": "SuggestionKindCreate"
+      },
+      "SuggestionKindResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "kind_code": {
+            "type": "string",
+            "title": "Kind Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "kind_code",
+          "source_ref"
+        ],
+        "title": "SuggestionKindResponse"
       },
       "SuggestionLedgerCreate": {
         "properties": {

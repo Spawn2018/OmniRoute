@@ -212,6 +212,7 @@ import { Route as SlotGuaranteeMarksRouteImport } from './routes/slot-guarantee-
 import { Route as SpendMarksRouteImport } from './routes/spend-marks'
 import { Route as SpotContractMarksRouteImport } from './routes/spot-contract-marks'
 import { Route as SubcontractEdgeMarksRouteImport } from './routes/subcontract-edge-marks'
+import { Route as SuggestionKindsRouteImport } from './routes/suggestion-kinds'
 import { Route as SuggestionLedgersRouteImport } from './routes/suggestion-ledgers'
 import { Route as SwitchBlLoiMarksRouteImport } from './routes/switch-bl-loi-marks'
 import { Route as TachoOfficeMarksRouteImport } from './routes/tacho-office-marks'
@@ -1271,6 +1272,11 @@ const SubcontractEdgeMarksRoute = SubcontractEdgeMarksRouteImport.update({
   path: '/subcontract-edge-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SuggestionKindsRoute = SuggestionKindsRouteImport.update({
+  id: '/suggestion-kinds',
+  path: '/suggestion-kinds',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SuggestionLedgersRoute = SuggestionLedgersRouteImport.update({
   id: '/suggestion-ledgers',
   path: '/suggestion-ledgers',
@@ -1686,6 +1692,7 @@ export interface FileRoutesByFullPath {
   '/spend-marks': typeof SpendMarksRoute
   '/spot-contract-marks': typeof SpotContractMarksRoute
   '/subcontract-edge-marks': typeof SubcontractEdgeMarksRoute
+  '/suggestion-kinds': typeof SuggestionKindsRoute
   '/suggestion-ledgers': typeof SuggestionLedgersRoute
   '/switch-bl-loi-marks': typeof SwitchBlLoiMarksRoute
   '/tacho-office-marks': typeof TachoOfficeMarksRoute
@@ -1933,6 +1940,7 @@ export interface FileRoutesByTo {
   '/spend-marks': typeof SpendMarksRoute
   '/spot-contract-marks': typeof SpotContractMarksRoute
   '/subcontract-edge-marks': typeof SubcontractEdgeMarksRoute
+  '/suggestion-kinds': typeof SuggestionKindsRoute
   '/suggestion-ledgers': typeof SuggestionLedgersRoute
   '/switch-bl-loi-marks': typeof SwitchBlLoiMarksRoute
   '/tacho-office-marks': typeof TachoOfficeMarksRoute
@@ -2181,6 +2189,7 @@ export interface FileRoutesById {
   '/spend-marks': typeof SpendMarksRoute
   '/spot-contract-marks': typeof SpotContractMarksRoute
   '/subcontract-edge-marks': typeof SubcontractEdgeMarksRoute
+  '/suggestion-kinds': typeof SuggestionKindsRoute
   '/suggestion-ledgers': typeof SuggestionLedgersRoute
   '/switch-bl-loi-marks': typeof SwitchBlLoiMarksRoute
   '/tacho-office-marks': typeof TachoOfficeMarksRoute
@@ -2430,6 +2439,7 @@ export interface FileRouteTypes {
     | '/spend-marks'
     | '/spot-contract-marks'
     | '/subcontract-edge-marks'
+    | '/suggestion-kinds'
     | '/suggestion-ledgers'
     | '/switch-bl-loi-marks'
     | '/tacho-office-marks'
@@ -2677,6 +2687,7 @@ export interface FileRouteTypes {
     | '/spend-marks'
     | '/spot-contract-marks'
     | '/subcontract-edge-marks'
+    | '/suggestion-kinds'
     | '/suggestion-ledgers'
     | '/switch-bl-loi-marks'
     | '/tacho-office-marks'
@@ -2924,6 +2935,7 @@ export interface FileRouteTypes {
     | '/spend-marks'
     | '/spot-contract-marks'
     | '/subcontract-edge-marks'
+    | '/suggestion-kinds'
     | '/suggestion-ledgers'
     | '/switch-bl-loi-marks'
     | '/tacho-office-marks'
@@ -3172,6 +3184,7 @@ export interface RootRouteChildren {
   SpendMarksRoute: typeof SpendMarksRoute
   SpotContractMarksRoute: typeof SpotContractMarksRoute
   SubcontractEdgeMarksRoute: typeof SubcontractEdgeMarksRoute
+  SuggestionKindsRoute: typeof SuggestionKindsRoute
   SuggestionLedgersRoute: typeof SuggestionLedgersRoute
   SwitchBlLoiMarksRoute: typeof SwitchBlLoiMarksRoute
   TachoOfficeMarksRoute: typeof TachoOfficeMarksRoute
@@ -4639,6 +4652,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SubcontractEdgeMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/suggestion-kinds': {
+      id: '/suggestion-kinds'
+      path: '/suggestion-kinds'
+      fullPath: '/suggestion-kinds'
+      preLoaderRoute: typeof SuggestionKindsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/suggestion-ledgers': {
       id: '/suggestion-ledgers'
       path: '/suggestion-ledgers'
@@ -5140,6 +5160,7 @@ const rootRouteChildren: RootRouteChildren = {
   SpendMarksRoute: SpendMarksRoute,
   SpotContractMarksRoute: SpotContractMarksRoute,
   SubcontractEdgeMarksRoute: SubcontractEdgeMarksRoute,
+  SuggestionKindsRoute: SuggestionKindsRoute,
   SuggestionLedgersRoute: SuggestionLedgersRoute,
   SwitchBlLoiMarksRoute: SwitchBlLoiMarksRoute,
   TachoOfficeMarksRoute: TachoOfficeMarksRoute,

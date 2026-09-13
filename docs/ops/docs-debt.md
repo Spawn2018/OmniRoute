@@ -1,4 +1,5 @@
-- **435.0 leftover:** AI1.4 słowniki otwarte; trzy BC piszą do substratu; silnik AI4.1; CRPS liczone (AI2). 435.0 = HITL `benefit_ledger`.
+- **436.0 leftover:** AI1.4 `twin_kind` / `data_source` / `autonomy_level`; zdjęcie CHECK na suggestion_ledger i twin_mark + FK; trzy BC piszą do substratu; silnik AI4.1; CRPS liczone (AI2). 436.0 = HITL `suggestion_kind`.
+- **435.0 leftover:** AI1.4 pierwszy słownik zamknięty w 436.0; leftover twin/data_source/autonomy; trzy BC piszą do substratu; silnik AI4.1; CRPS liczone (AI2). 435.0 = HITL `benefit_ledger`.
 - **434.0 leftover:** AI1.3 zamknięty w 435.0; AI1.4 słowniki otwarte; trzy BC piszą do substratu; silnik AI4.1; CRPS liczone (AI2). 434.0 = HITL `counterfactual_run`.
 - **433.0 leftover:** AI1.2 zamknięty w 434.0; AI1.3 `benefit_ledger`; AI1.4 słowniki otwarte; trzy BC piszą do substratu; CRPS liczone (AI2). 433.0 = HITL `outcome_ledger`.
 - **432.0 leftover:** AI1.1 zamknięty w 433.0; AI1.4 słowniki otwarte; trzy BC piszą do substratu; CRPS liczone (AI2). 432.0 = HITL `suggestion_ledger`.

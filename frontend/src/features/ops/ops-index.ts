@@ -934,6 +934,11 @@ export const OPS_JOBS = [
     job: "katalog benefit_ledger HITL",
   },
   {
+    route: BUSINESS_LISTS.suggestionKind.route,
+    label: "Rodzaj podpowiedzi",
+    job: "katalog suggestion_kind HITL",
+  },
+  {
     route: BUSINESS_LISTS.csrdMark.route,
     label: "CSRD",
     job: "katalog csrd_mark HITL",
@@ -1628,6 +1633,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "433.0": "/outcome-ledgers",
   "434.0": "/counterfactual-runs",
   "435.0": "/benefit-ledgers",
+  "436.0": "/suggestion-kinds",
 } as const
 
 
