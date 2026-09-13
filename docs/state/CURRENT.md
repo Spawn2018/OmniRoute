@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **437.0** AI1.4 HITL `twin_kind`
 
-**Etap:** Plan — **AI1.4 leftover** / **438.0**
+**Etap:** Plan — **AI1.4 leftover** / **438.0** (delta zaakceptowana `/noc`, wolno `/plaster`)
 
 **Noc:** `/noc 11` do **2026-09-13T11:00+02**.
 
-**Następny:** **438.0** AI1.4 HITL `autonomy_level` — otwarty słownik, bez FK klienta.
+**Następny:** **438.0** AI1.4 HITL `autonomy_level` — otwarty słownik level_code, bez CHECK, bez FK klienta.
 
 Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 438.0.
 
-**Spec (jedyna na sesję):** brak — `/plan-modul` na 438.0.
+**Spec (jedyna na sesję):** [docs/deltas/open/438.0-autonomy-level.md](../deltas/open/438.0-autonomy-level.md).
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 

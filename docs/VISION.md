@@ -3,7 +3,7 @@
 ```
 status:        roboczy kanon
 wersja:        0.3
-ostatnia zmiana: 2026-09-13 09:10
+ostatnia zmiana: 2026-09-13 09:20
 ```
 
 ## Jak czytać
@@ -46,6 +46,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | **436.0** `suggestion_kind` w kodzie. Następny = leftover `twin_kind`. |
 | 2026-09-13 | AI1.4 plan (**437.0**): HITL `twin_kind` bez CHECK. twin_mark CHECK zostaje. |
 | 2026-09-13 | **437.0** `twin_kind` w kodzie. Następny = leftover `autonomy_level`. `data_source` = AI5. |
+| 2026-09-13 | AI1.4 plan (**438.0**): HITL `autonomy_level` bez CHECK i bez FK klienta. |
 
 ---
 
@@ -55,7 +56,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 status:        roboczy kanon (zastępuje "Informacje z claude/vision.md" z 2026-08-29)
 wersja:        0.1
 utworzony:     2026-09-13
-ostatnia zmiana: 2026-09-13 09:10
+ostatnia zmiana: 2026-09-13 09:20
 autor ustaleń: Sebastian Bożek (właściciel produktu)
 redakcja:      agent, na podstawie dokumentów 01-07 i 09-11 w tym katalogu
 lokalizacja:   docs/VISION.md (repozytorium OmniRoute)
@@ -128,6 +129,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | **436.0** `suggestion_kind` w kodzie (`CONFIRMED`, git). Następny = **twin_kind** słownik (`REQUIREMENT`, C.2). CHECK na `suggestion_ledger` zostaje `REJECTED` na tym wierszu. | CURRENT + plaster 436.0 `/noc` |
 | 2026-09-13 | AI1.4 (**437.0**) = HITL `twin_kind`: `kind_code` bez CHECK/ENUM. Zmiana `twin_mark` `REJECTED`. `data_source` / `autonomy_level` leftover. | `/plan-modul` `/noc`; VISION C.2 |
 | 2026-09-13 | **437.0** `twin_kind` w kodzie (`CONFIRMED`, git). Następny = **autonomy_level** (`REQUIREMENT`, B.3). `data_source` = AI5 (`REQUIREMENT`). CHECK na `twin_mark` zostaje `REJECTED` na tym wierszu. | CURRENT + plaster 437.0 `/noc` |
+| 2026-09-13 | AI1.4 (**438.0**) = HITL `autonomy_level`: `level_code` bez CHECK/ENUM. FK `party` `REJECTED`. `data_source` leftover AI5. Silnik L3+ `REJECTED`. | `/plan-modul` `/noc`; VISION B.3 · B.4 |
 
 ---
 ---
