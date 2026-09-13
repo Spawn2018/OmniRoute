@@ -1,4 +1,5 @@
-- **443.0 leftover:** Brier · zapis `prediction_ledger` · AI2.1 · trzy BC · `data_source` (AI5). 443.0 = widok MAE/CRPS. EXPLAIN widoku = leftover.
+- **444.0 plan:** AI2.1 `version_score`. Leftover po zamknięciu: dryf · auto-champion · Brier · zapis `prediction_ledger`.
+- **443.0 leftover:** Brier · zapis `prediction_ledger` · AI2.1 / 444.0 · trzy BC · `data_source` (AI5). 443.0 = widok MAE/CRPS. EXPLAIN widoku = leftover.
 - **442.0 leftover:** `data_source` (park AI5) · trzy BC · AI4.1 · CRPS (AI2.0 / 443.0). 442.0 = FK `outcome_ledger` → `outcome_kind`.
 - **441.0 leftover:** AI1.4 FK `outcome_ledger` → `outcome_kind` (442.0) · `data_source` (park AI5); trzy BC; silnik AI4.1; CRPS (AI2). 441.0 = HITL `outcome_kind`.
 - **440.0 leftover:** AI1.4 HITL `outcome_kind` zamknięty w 441.0 · FK `outcome_ledger` (442.0) · `data_source` (park AI5); trzy BC; silnik AI4.1; CRPS (AI2). 440.0 = FK `twin_mark` → `twin_kind`.

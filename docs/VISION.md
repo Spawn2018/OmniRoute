@@ -3,7 +3,7 @@
 ```
 status:        roboczy kanon
 wersja:        0.3
-ostatnia zmiana: 2026-09-13 13:20
+ostatnia zmiana: 2026-09-13 13:35
 ```
 
 ## Jak czytać
@@ -58,6 +58,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | **442.0** FK `outcome_ledger` w kodzie (`CONFIRMED`, git). Następny = **AI2.0** CRPS (`REQUIREMENT`). `data_source` = AI5. |
 | 2026-09-13 | AI2.0 plan (**443.0**): widok `interval_score` + funkcja SQL MAE/CRPS. Wpis `prediction_ledger` zostaje. Brier/AI2.1 = leftover. |
 | 2026-09-13 | **443.0** `interval_score` w kodzie (`CONFIRMED`, git). Następny = **AI2.1** champion/dryf (`REQUIREMENT`). Brier zostaje leftover. |
+| 2026-09-13 | AI2.1 plan (**444.0**): widok `version_score` średnie MAE/CRPS per `model_version`. Auto-champion i dryf = leftover. |
 
 ---
 
@@ -67,7 +68,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 status:        roboczy kanon (zastępuje "Informacje z claude/vision.md" z 2026-08-29)
 wersja:        0.1
 utworzony:     2026-09-13
-ostatnia zmiana: 2026-09-13 13:20
+ostatnia zmiana: 2026-09-13 13:35
 autor ustaleń: Sebastian Bożek (właściciel produktu)
 redakcja:      agent, na podstawie dokumentów 01-07 i 09-11 w tym katalogu
 lokalizacja:   docs/VISION.md (repozytorium OmniRoute)
@@ -152,6 +153,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | **442.0** FK `outcome_ledger` w kodzie (`CONFIRMED`, git). Następny = **AI2.0** CRPS (`REQUIREMENT`). `data_source` = AI5. | CURRENT + plaster 442.0 `/noc` |
 | 2026-09-13 | AI2.0 (**443.0**) = `interval_score`: MAE + CRPS jednostajne liczy Postgres. Wpis CRPS na `prediction_ledger` zostaje. Brier / champion `REJECTED`. | `/plan-modul` `/noc`; VISION B.2 |
 | 2026-09-13 | **443.0** `interval_score` w kodzie (`CONFIRMED`, git). Następny = **AI2.1** champion/dryf (`REQUIREMENT`). Brier / zapis `prediction_ledger` zostają leftover. | CURRENT + plaster 443.0 `/noc` |
+| 2026-09-13 | AI2.1 (**444.0**) = `version_score`: średnie MAE/CRPS per wersja modelu. Auto-champion / dryf `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION B.2 |
 
 ---
 ---
@@ -491,7 +493,8 @@ różnica między obecnym `prediction_ledger` a tym, czego wymaga wizja.
 plus funkcja SQL `IMMUTABLE`. MAE = odległość od środka przedziału. CRPS = wzór
 zamknięty dla rozkładu jednostajnego na `[low, high]`. Brier (`REJECTED` na 443.0)
 wymaga prawdopodobieństwa, którego ledger nie ma. Champion/dryf = AI2.1
-(`REQUIREMENT`). `prediction_ledger` nadal przyjmuje wpisaną metrykę
+(`REQUIREMENT`). **444.0:** widok `version_score` pokazuje średnie, nie przełącza
+modelu. Dryf = leftover. `prediction_ledger` nadal przyjmuje wpisaną metrykę
 (`REQUIREMENT` leftover fali) aż warunek zakończenia AI2 w tabeli E.
 
 **`counterfactual_run`** — bliźniak w sensie operacyjnym: nazwany scenariusz,
@@ -772,7 +775,7 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
 Ostatni ukończony plaster: **443.0** (`interval_score` MAE/CRPS SQL).
-Następny = **AI2.1** champion/challenger + dryf (`REQUIREMENT`). AI1.0–AI1.4
+Następny = **444.0** AI2.1 `version_score` (`REQUIREMENT`). AI1.0–AI1.4
 i 443.0 są w kodzie (`CONFIRMED`); `data_source` zostaje w AI5
 (`REQUIREMENT`). Teza B.1 zostaje: szerokość katalogów nie zastępuje pomiaru.
 

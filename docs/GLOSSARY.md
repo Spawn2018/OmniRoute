@@ -136,6 +136,7 @@
 | ledger podpowiedzi | suggestion_ledger | AI1.0 HITL przedział + reaction + changed_to; nie zapis LLM; nie CRPS liczone |
 | ledger wyniku | outcome_ledger | AI1.1 HITL actual_value Decimal; UUID podpowiedzi jako dana |
 | wynik przedziału | interval_score | AI2.0 MAE+CRPS liczone w SQL ze złączenia ledgerów; nie wpis |
+| wynik wersji | version_score | AI2.1 średnie MAE/CRPS per model_version; nie auto-champion |
 | rodzaj wyniku | outcome_kind | AI1.4 HITL otwarty słownik kind_code; FK z outcome_ledger (442.0) |
 | przebieg what-if | counterfactual_run | AI1.2 HITL etykiety baseline/dźwigni/wyniku; nie silnik; nie kwota |
 | ledger oszczędności | benefit_ledger | AI1.3 HITL method_label + hours_saved + saved_amount Decimal; nie druga marża; nie SQL z charge |

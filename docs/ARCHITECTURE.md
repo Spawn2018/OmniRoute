@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **443.0** AI2.0 `interval_score` — MAE/CRPS liczone w Postgresie. **Etap:** Plan — **AI2.1** champion/challenger + wykrywanie dryfu. Wymaga `/plan-modul`. **Następny:** **AI2.1** champion/challenger + dryf (po 443.0). Nie zapis `prediction_ledger`. Nie Brier. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **443.0** AI2.0 `interval_score` — MAE/CRPS liczone w Postgresie. **Etap:** plaster — **444.0** AI2.1 `version_score`. Delta zaakceptowana (`/noc`). Wolno `/plaster`. **Następny:** **444.0** AI2.1 widok: `pair_count` + średnie MAE/CRPS per `model_version`. Nie auto-champion. Nie dryf. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

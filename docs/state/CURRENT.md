@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **443.0** AI2.0 `interval_score` — MAE/CRPS liczone w Postgresie
 
-**Etap:** Plan — **AI2.1** champion/challenger + wykrywanie dryfu. Wymaga `/plan-modul`.
+**Etap:** plaster — **444.0** AI2.1 `version_score`. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
 
 **Noc:** `/noc 20` do **2026-09-13T20:00+02**.
 
-**Następny:** **AI2.1** champion/challenger + dryf (po 443.0). Nie zapis `prediction_ledger`. Nie Brier.
+**Następny:** **444.0** AI2.1 widok: `pair_count` + średnie MAE/CRPS per `model_version`. Nie auto-champion. Nie dryf.
 
-Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza AI2.1. Nie otwieraj AI0.
+Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 444.0. Nie otwieraj AI0.
 
-**Spec (jedyna na sesję):** brak — AI2.1 wymaga planu
+**Spec (jedyna na sesję):** [docs/deltas/open/444.0-version-score.md](../deltas/open/444.0-version-score.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 
