@@ -77,6 +77,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | AI2.1 | Wynik okna wersji | 445.0 `version_window` | **ukończony (SQL)** · średnie per dzień UTC; leftover zapis `prediction_ledger` / Brier |
 | G2.20 | Kółko HITL | 266.0 `circle_sim` · 454.0 | **ukończony (HITL+SQL)** · para uzupełniająca w widoku; leftover generator 500k / km / VRP |
 | BR3.0 | Znacznik planu trasy HITL | 455.0 `route_plan_mark` | **ukończony (HITL)** · kind route/stop/window/other; leftover Valhalla / VRP / km |
+| BR3.1 | Znacznik kolejności załadunku HITL | 464.0 `load_order_mark` | **ukończony (HITL)** · kind sequence/stack/door/other; leftover solver / wymiary |
 | BR3.2 | Znacznik dyspozytora drobnicy HITL | 463.0 `groupage_dispatcher_mark` | **ukończony (HITL)** · kind line/hub/cutoff/consol/other; leftover silnik hubów |
 | BR6.0 | Okazja CRM HITL | 456.0 `crm_opportunity` | **ukończony (HITL)** · stage open/won/lost/other; leftover activity / pipeline |
 | BR6.1 | Korytarz sprzedażowy HITL | 460.0 `sales_lane` | **ukończony (HITL)** · kind repeat/spot/other; leftover UN/LOCODE / wolumen |

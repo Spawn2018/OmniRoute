@@ -150,6 +150,7 @@ def _organization_ci_catalog_relations() -> dict[str, Userset]:
         "can_manage_calibration_marks": _member(),
         "can_manage_campaign_marks": _member(),
         "can_manage_groupage_dispatcher_marks": _member(),
+        "can_manage_load_order_marks": _member(),
         "can_manage_repair_playbooks": _member(),
         "can_manage_spend_marks": _member(),
         "can_manage_penalty_marks": _member(),

@@ -99,6 +99,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | BR3.2 plan (**463.0**): HITL `groupage_dispatcher_mark`. Silnik hubów / klej do `groupage_line` `REJECTED` na tym wierszu. |
 | 2026-09-13 | **463.0** `groupage_dispatcher_mark` w kodzie (`CONFIRMED`, git). Następny = **BR3.1** planowanie załadunku (`REQUIREMENT`). Silnik hubów / Expo / AI5 `REJECTED` na tym wierszu. |
 | 2026-09-13 | BR3.1 plan (**464.0**): HITL `load_order_mark`. Solver / wymiary Decimal / klej do `load_plan_mark` `REJECTED` na tym wierszu. |
+| 2026-09-13 | **464.0** `load_order_mark` w kodzie (`CONFIRMED`, git). Następny = **BR3.3** tacho w planie (`REQUIREMENT`). Solver / Expo / AI5 `REJECTED` na tym wierszu. |
 
 ---
 
@@ -234,6 +235,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | BR3.2 (**463.0**) = HITL `groupage_dispatcher_mark` (`line|hub|cutoff|consol|other`). Silnik hubów / klej do `groupage_line` `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
 | 2026-09-13 | **463.0** w kodzie (`CONFIRMED`, git). Katalog stance dyspozytora. Następny = **BR3.1** (`REQUIREMENT`). Silnik hubów leftover. | CURRENT + plaster 463.0 `/noc` |
 | 2026-09-13 | BR3.1 (**464.0**) = HITL `load_order_mark` (`sequence|stack|door|other`). Solver / wymiary Decimal / klej do G6 `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
+| 2026-09-13 | **464.0** w kodzie (`CONFIRMED`, git). Katalog kolejności załadunku. Następny = **BR3.3** (`REQUIREMENT`). Solver leftover. | CURRENT + plaster 464.0 `/noc` |
 
 ---
 ---
@@ -861,9 +863,9 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | nazwy z PDF-ów bez wiersza w planie | **136** (z czego 28 to aliasy) |
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
-Ostatni ukończony plaster: **463.0** (HITL `groupage_dispatcher_mark`).
-Następny = **464.0** BR3.1 planowanie załadunku (`REQUIREMENT`).
-AI1.0–AI1.4 oraz 443.0–463.0 są w kodzie (`CONFIRMED`); `data_source`
+Ostatni ukończony plaster: **464.0** (HITL `load_order_mark`).
+Następny = **465.0** BR3.3 tacho jako ograniczenie planu (`REQUIREMENT`).
+AI1.0–AI1.4 oraz 443.0–464.0 są w kodzie (`CONFIRMED`); `data_source`
 zostaje w AI5 (`REQUIREMENT`). Teza B.1 zostaje: szerokość katalogów nie zastępuje pomiaru.
 
 ## C.2 Bliźniaki — scalona taksonomia
@@ -925,9 +927,9 @@ bo bez ewidencji magazynowej nie ma zastawu na towarze.
 **Grupa 3 — planowanie i optymalizacja.** Najbardziej „silnikowa" grupa, dziś nieobecna.
 - **Planowanie tras** — katalog HITL `route_plan_mark` jest (`CONFIRMED`, 455.0);
   leftover solver Valhalla / VRP / km (`REQUIREMENT`, patrz D.3). Nie model językowy.
-- **Planowanie załadunku** — plan **464.0** HITL `load_order_mark`
-  (`REQUIREMENT`); G6 `load_plan_mark` zostaje osiami/tunelem. Solver /
-  wymiary Decimal `REJECTED` na tym wierszu.
+- **Planowanie załadunku** — katalog HITL `load_order_mark` jest
+  (`CONFIRMED`, 464.0); leftover solver / wymiary Decimal (`REQUIREMENT`).
+  Klej do G6 `REJECTED` na katalogu. G6 `load_plan_mark` zostaje osiami/tunelem.
 - **Dyspozytor drobnicy** — katalog HITL `groupage_dispatcher_mark` jest
   (`CONFIRMED`, 463.0); leftover silnik hubów / konsolidacja (`REQUIREMENT`).
   Klej do `groupage_line` `REJECTED` na katalogu.

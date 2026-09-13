@@ -866,3 +866,5 @@
 - 2026-09-13T17:50:00Z | 462.0 | campaign_mark | DONE | HITL catalog campaign_kind campaign/attribution/other; bez funnel_mark
 
 - 2026-09-13T18:22:00Z | 463.0 | groupage_dispatcher_mark | DONE | HITL catalog dispatcher_kind line/hub/cutoff/consol/other; bez silnika hubów
+
+- 2026-09-13T18:45:00Z | 464.0 | load_order_mark | DONE | HITL catalog order_kind sequence/stack/door/other; bez solvera / wymiarów

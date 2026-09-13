@@ -122,6 +122,7 @@ from app.api import (
     legal_hold_marks,
     lez_marks,
     line_impact_marks,
+    load_order_marks,
     load_plan_marks,
     local_charges,
     locations,
@@ -364,6 +365,7 @@ api_router.include_router(repair_playbooks.router)
 api_router.include_router(spend_marks.router)
 api_router.include_router(penalty_marks.router)
 api_router.include_router(intervention_outcomes.router)
+api_router.include_router(load_order_marks.router)
 api_router.include_router(load_plan_marks.router)
 api_router.include_router(cmms_marks.router)
 api_router.include_router(legal_hold_marks.router)

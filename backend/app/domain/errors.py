@@ -870,6 +870,10 @@ class InvalidLoadPlanMark(DomainError):
     """G6: HITL znacznik planu załadunku — nie solver OR."""
 
 
+class InvalidLoadOrderMark(DomainError):
+    """BR3.1: HITL kolejność załadunku — nie solver / wymiary Decimal."""
+
+
 class InvalidCmmsMark(DomainError):
     """G7: HITL znacznik CMMS — nie work_order."""
 

@@ -130,6 +130,7 @@ import { Route as LclRouteImport } from './routes/lcl'
 import { Route as LegalHoldMarksRouteImport } from './routes/legal-hold-marks'
 import { Route as LezMarksRouteImport } from './routes/lez-marks'
 import { Route as LineImpactMarksRouteImport } from './routes/line-impact-marks'
+import { Route as LoadOrderMarksRouteImport } from './routes/load-order-marks'
 import { Route as LoadPlanMarksRouteImport } from './routes/load-plan-marks'
 import { Route as LocalChargesRouteImport } from './routes/local-charges'
 import { Route as LocationsRouteImport } from './routes/locations'
@@ -874,6 +875,11 @@ const LezMarksRoute = LezMarksRouteImport.update({
 const LineImpactMarksRoute = LineImpactMarksRouteImport.update({
   id: '/line-impact-marks',
   path: '/line-impact-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoadOrderMarksRoute = LoadOrderMarksRouteImport.update({
+  id: '/load-order-marks',
+  path: '/load-order-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoadPlanMarksRoute = LoadPlanMarksRouteImport.update({
@@ -1700,6 +1706,7 @@ export interface FileRoutesByFullPath {
   '/legal-hold-marks': typeof LegalHoldMarksRoute
   '/lez-marks': typeof LezMarksRoute
   '/line-impact-marks': typeof LineImpactMarksRoute
+  '/load-order-marks': typeof LoadOrderMarksRoute
   '/load-plan-marks': typeof LoadPlanMarksRoute
   '/local-charges': typeof LocalChargesRoute
   '/locations': typeof LocationsRoute
@@ -1963,6 +1970,7 @@ export interface FileRoutesByTo {
   '/legal-hold-marks': typeof LegalHoldMarksRoute
   '/lez-marks': typeof LezMarksRoute
   '/line-impact-marks': typeof LineImpactMarksRoute
+  '/load-order-marks': typeof LoadOrderMarksRoute
   '/load-plan-marks': typeof LoadPlanMarksRoute
   '/local-charges': typeof LocalChargesRoute
   '/locations': typeof LocationsRoute
@@ -2227,6 +2235,7 @@ export interface FileRoutesById {
   '/legal-hold-marks': typeof LegalHoldMarksRoute
   '/lez-marks': typeof LezMarksRoute
   '/line-impact-marks': typeof LineImpactMarksRoute
+  '/load-order-marks': typeof LoadOrderMarksRoute
   '/load-plan-marks': typeof LoadPlanMarksRoute
   '/local-charges': typeof LocalChargesRoute
   '/locations': typeof LocationsRoute
@@ -2492,6 +2501,7 @@ export interface FileRouteTypes {
     | '/legal-hold-marks'
     | '/lez-marks'
     | '/line-impact-marks'
+    | '/load-order-marks'
     | '/load-plan-marks'
     | '/local-charges'
     | '/locations'
@@ -2755,6 +2765,7 @@ export interface FileRouteTypes {
     | '/legal-hold-marks'
     | '/lez-marks'
     | '/line-impact-marks'
+    | '/load-order-marks'
     | '/load-plan-marks'
     | '/local-charges'
     | '/locations'
@@ -3018,6 +3029,7 @@ export interface FileRouteTypes {
     | '/legal-hold-marks'
     | '/lez-marks'
     | '/line-impact-marks'
+    | '/load-order-marks'
     | '/load-plan-marks'
     | '/local-charges'
     | '/locations'
@@ -3282,6 +3294,7 @@ export interface RootRouteChildren {
   LegalHoldMarksRoute: typeof LegalHoldMarksRoute
   LezMarksRoute: typeof LezMarksRoute
   LineImpactMarksRoute: typeof LineImpactMarksRoute
+  LoadOrderMarksRoute: typeof LoadOrderMarksRoute
   LoadPlanMarksRoute: typeof LoadPlanMarksRoute
   LocalChargesRoute: typeof LocalChargesRoute
   LocationsRoute: typeof LocationsRoute
@@ -4271,6 +4284,13 @@ declare module '@tanstack/react-router' {
       path: '/line-impact-marks'
       fullPath: '/line-impact-marks'
       preLoaderRoute: typeof LineImpactMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/load-order-marks': {
+      id: '/load-order-marks'
+      path: '/load-order-marks'
+      fullPath: '/load-order-marks'
+      preLoaderRoute: typeof LoadOrderMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/load-plan-marks': {
@@ -5378,6 +5398,7 @@ const rootRouteChildren: RootRouteChildren = {
   LegalHoldMarksRoute: LegalHoldMarksRoute,
   LezMarksRoute: LezMarksRoute,
   LineImpactMarksRoute: LineImpactMarksRoute,
+  LoadOrderMarksRoute: LoadOrderMarksRoute,
   LoadPlanMarksRoute: LoadPlanMarksRoute,
   LocalChargesRoute: LocalChargesRoute,
   LocationsRoute: LocationsRoute,
