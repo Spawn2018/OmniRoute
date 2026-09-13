@@ -6,19 +6,19 @@
 
 **Ostatni plaster:** **442.0** AI1.4 leftover FK `outcome_ledger` → `outcome_kind`
 
-**Etap:** Plan — **AI2.0** CRPS / Brier / MAE liczone ze złączenia `suggestion_ledger` × `outcome_ledger`
+**Etap:** plaster — **443.0** AI2.0 `interval_score`. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
 
 **Noc:** `/noc 20` do **2026-09-13T20:00+02**.
 
-**Następny:** **AI2.0** CRPS, Brier, MAE **liczone** ze złączenia AI1.0 × AI1.1. Wzorzec: Postgres liczy, model nie.
+**Następny:** **443.0** AI2.0 widok + funkcja SQL: MAE i CRPS ze złączenia `suggestion_ledger` × `outcome_ledger`. Nie wpis. Nie `prediction_ledger`.
 
-Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza AI2.0. Nie otwieraj AI0.
+Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 443.0. Nie otwieraj AI0.
 
-**Spec (jedyna na sesję):** brak — **AI2.0** wymaga planu.
+**Spec (jedyna na sesję):** [docs/deltas/open/443.0-interval-score.md](../deltas/open/443.0-interval-score.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 
-**Uczciwość:** HITL zostaje. LLM nie liczy. `charge` = marża. Impersonate ≠ decrypt. `charge.source_ref` **jest** (129.0 / 072) — nie otwieraj plastra AI0. **AI1.0–AI1.4** (słowniki + FK ledgeru, `twin_mark`, `outcome_ledger`) w kodzie. `data_source` = AI5. CRPS = **AI2.0**.
+**Uczciwość:** HITL zostaje. LLM nie liczy. `charge` = marża. Impersonate ≠ decrypt. `charge.source_ref` **jest** (129.0 / 072) — nie otwieraj plastra AI0. **AI1.0–AI1.4** w kodzie. `data_source` = AI5. CRPS liczone = **443.0**. Wpisane CRPS na `prediction_ledger` zostaje do leftoveru fali.
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 

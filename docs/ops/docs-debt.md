@@ -1,4 +1,5 @@
-- **442.0 leftover:** `data_source` (park AI5) · trzy BC · AI4.1 · CRPS (AI2.0). 442.0 = FK `outcome_ledger` → `outcome_kind`.
+- **443.0 plan:** AI2.0 `interval_score` (delta `/noc`). Leftover po zamknięciu: Brier · zapis `prediction_ledger` · AI2.1 · trzy BC · `data_source` (AI5).
+- **442.0 leftover:** `data_source` (park AI5) · trzy BC · AI4.1 · CRPS (AI2.0 / 443.0). 442.0 = FK `outcome_ledger` → `outcome_kind`.
 - **441.0 leftover:** AI1.4 FK `outcome_ledger` → `outcome_kind` (442.0) · `data_source` (park AI5); trzy BC; silnik AI4.1; CRPS (AI2). 441.0 = HITL `outcome_kind`.
 - **440.0 leftover:** AI1.4 HITL `outcome_kind` zamknięty w 441.0 · FK `outcome_ledger` (442.0) · `data_source` (park AI5); trzy BC; silnik AI4.1; CRPS (AI2). 440.0 = FK `twin_mark` → `twin_kind`.
 - **439.0 leftover:** AI1.4 FK `twin_mark` zamknięty w 440.0 · `data_source` (park AI5) · `outcome_ledger.outcome_kind` CHECK; trzy BC; silnik AI4.1; CRPS (AI2). 439.0 = FK `suggestion_ledger` → `suggestion_kind`.

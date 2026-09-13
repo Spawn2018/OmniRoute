@@ -3,7 +3,7 @@
 ```
 status:        roboczy kanon
 wersja:        0.3
-ostatnia zmiana: 2026-09-13 12:55
+ostatnia zmiana: 2026-09-13 13:05
 ```
 
 ## Jak czytać
@@ -56,6 +56,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | **441.0** `outcome_kind` w kodzie. Następny = leftover FK `outcome_ledger`. |
 | 2026-09-13 | AI1.4 plan (**442.0**): FK `outcome_ledger` → `outcome_kind`. CHECK listy `REJECTED`. Import `outcome_kinds` z ledgeru `REJECTED`. `data_source` = AI5. |
 | 2026-09-13 | **442.0** FK `outcome_ledger` w kodzie (`CONFIRMED`, git). Następny = **AI2.0** CRPS (`REQUIREMENT`). `data_source` = AI5. |
+| 2026-09-13 | AI2.0 plan (**443.0**): widok `interval_score` + funkcja SQL MAE/CRPS. Wpis `prediction_ledger` zostaje. Brier/AI2.1 = leftover. |
 
 ---
 
@@ -65,7 +66,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 status:        roboczy kanon (zastępuje "Informacje z claude/vision.md" z 2026-08-29)
 wersja:        0.1
 utworzony:     2026-09-13
-ostatnia zmiana: 2026-09-13 12:55
+ostatnia zmiana: 2026-09-13 13:05
 autor ustaleń: Sebastian Bożek (właściciel produktu)
 redakcja:      agent, na podstawie dokumentów 01-07 i 09-11 w tym katalogu
 lokalizacja:   docs/VISION.md (repozytorium OmniRoute)
@@ -148,6 +149,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | **441.0** `outcome_kind` w kodzie (`CONFIRMED`, git). Następny = FK `outcome_ledger` (`REQUIREMENT`). `data_source` = AI5. CRPS `REJECTED` na tym wierszu. | CURRENT + plaster 441.0 `/noc` |
 | 2026-09-13 | AI1.4 (**442.0**) = FK `(organization_id, outcome_kind)` → słownik. CHECK listy `REJECTED`. Import `outcome_kinds` z ledgeru `REJECTED`. | `/plan-modul` `/noc`; VISION B.3 |
 | 2026-09-13 | **442.0** FK `outcome_ledger` w kodzie (`CONFIRMED`, git). Następny = **AI2.0** CRPS (`REQUIREMENT`). `data_source` = AI5. | CURRENT + plaster 442.0 `/noc` |
+| 2026-09-13 | AI2.0 (**443.0**) = `interval_score`: MAE + CRPS jednostajne liczy Postgres. Wpis CRPS na `prediction_ledger` zostaje. Brier / champion `REJECTED`. | `/plan-modul` `/noc`; VISION B.2 |
 
 ---
 ---
@@ -483,6 +485,13 @@ z korekty człowieka, a to jest najcenniejszy sygnał, jaki ten produkt będzie 
 daje CRPS, Brier i MAE **policzone z danych**, a nie wpisane w pole. Tu jest cała
 różnica między obecnym `prediction_ledger` a tym, czego wymaga wizja.
 
+**443.0 (`REQUIREMENT`, `/noc`):** pierwszy plaster AI2.0 to widok `interval_score`
+plus funkcja SQL `IMMUTABLE`. MAE = odległość od środka przedziału. CRPS = wzór
+zamknięty dla rozkładu jednostajnego na `[low, high]`. Brier (`REJECTED` na 443.0)
+wymaga prawdopodobieństwa, którego ledger nie ma. Champion/dryf = AI2.1.
+`prediction_ledger` nadal przyjmuje wpisaną metrykę (`REQUIREMENT` leftover fali)
+aż warunek zakończenia AI2 w tabeli E.
+
 **`counterfactual_run`** — bliźniak w sensie operacyjnym: nazwany scenariusz,
 punkt odniesienia, lista przestawionych dźwigni, wynik. Niemutowalny i odtwarzalny,
 bo odpowiedź na pytanie „co by było gdyby" bez możliwości powtórzenia przebiegu
@@ -761,7 +770,7 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
 Ostatni ukończony plaster: **442.0** (FK `outcome_ledger` → `outcome_kind`).
-Następny = **AI2.0** CRPS/Brier/MAE liczone (`REQUIREMENT`). AI1.0–AI1.4
+Następny = **443.0** AI2.0 `interval_score` (`REQUIREMENT`). AI1.0–AI1.4
 (słowniki + FK) są w kodzie (`CONFIRMED`); `data_source` zostaje w AI5
 (`REQUIREMENT`). Teza B.1 zostaje: szerokość katalogów nie zastępuje pomiaru.
 

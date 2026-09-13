@@ -88,9 +88,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **442.0** AI1.4 leftover FK `outcome_ledger` → `outcome_kind`
-- **Etap:** Plan — **AI2.0** CRPS / Brier / MAE liczone ze złączenia `suggestion_ledger` × `outcome_ledger`
-- **Następny:** **AI2.0** CRPS, Brier, MAE **liczone** ze złączenia AI1.0 × AI1.1. Wzorzec: Postgres liczy, model nie.
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Etap:** plaster — **443.0** AI2.0 `interval_score`. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
+- **Następny:** **443.0** AI2.0 widok + funkcja SQL: MAE i CRPS ze złączenia `suggestion_ledger` × `outcome_ledger`. Nie wpis. Nie `prediction_ledger`.
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

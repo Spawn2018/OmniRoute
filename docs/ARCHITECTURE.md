@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **442.0** AI1.4 leftover FK `outcome_ledger` → `outcome_kind`. **Etap:** Plan — **AI2.0** CRPS / Brier / MAE liczone ze złączenia `suggestion_ledger` × `outcome_ledger`. **Następny:** **AI2.0** CRPS, Brier, MAE **liczone** ze złączenia AI1.0 × AI1.1. Wzorzec: Postgres liczy, model nie. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **442.0** AI1.4 leftover FK `outcome_ledger` → `outcome_kind`. **Etap:** plaster — **443.0** AI2.0 `interval_score`. Delta zaakceptowana (`/noc`). Wolno `/plaster`. **Następny:** **443.0** AI2.0 widok + funkcja SQL: MAE i CRPS ze złączenia `suggestion_ledger` × `outcome_ledger`. Nie wpis. Nie `prediction_ledger`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
