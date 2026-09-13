@@ -1,4 +1,5 @@
-- **440.0 leftover:** AI1.4 HITL `outcome_kind` (441.0) · FK `outcome_ledger` po słowniku · `data_source` (park AI5); trzy BC; silnik AI4.1; CRPS (AI2). 440.0 = FK `twin_mark` → `twin_kind`.
+- **441.0 leftover:** AI1.4 FK `outcome_ledger` → `outcome_kind` (442.0) · `data_source` (park AI5); trzy BC; silnik AI4.1; CRPS (AI2). 441.0 = HITL `outcome_kind`.
+- **440.0 leftover:** AI1.4 HITL `outcome_kind` zamknięty w 441.0 · FK `outcome_ledger` (442.0) · `data_source` (park AI5); trzy BC; silnik AI4.1; CRPS (AI2). 440.0 = FK `twin_mark` → `twin_kind`.
 - **439.0 leftover:** AI1.4 FK `twin_mark` zamknięty w 440.0 · `data_source` (park AI5) · `outcome_ledger.outcome_kind` CHECK; trzy BC; silnik AI4.1; CRPS (AI2). 439.0 = FK `suggestion_ledger` → `suggestion_kind`.
 - **438.0 leftover:** AI1.4 FK `suggestion_ledger` zamknięty w 439.0 · CHECK `twin_mark` · `data_source` (park AI5); trzy BC piszą; silnik AI4.1; CRPS (AI2). 438.0 = HITL `autonomy_level`.
 - **437.0 leftover:** AI1.4 `autonomy_level` zamknięty w 438.0 · `data_source` (park AI5, licencja); zdjęcie CHECK na suggestion_ledger i twin_mark + FK; trzy BC piszą do substratu; silnik AI4.1; CRPS liczone (AI2). 437.0 = HITL `twin_kind`.

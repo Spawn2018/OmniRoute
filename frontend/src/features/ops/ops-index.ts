@@ -944,6 +944,11 @@ export const OPS_JOBS = [
     job: "katalog suggestion_kind HITL",
   },
   {
+    route: BUSINESS_LISTS.outcomeKind.route,
+    label: "Rodzaj wyniku",
+    job: "katalog outcome_kind HITL",
+  },
+  {
     route: BUSINESS_LISTS.autonomyLevel.route,
     label: "Poziom autonomii",
     job: "katalog autonomy_level HITL",
@@ -1646,6 +1651,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "436.0": "/suggestion-kinds",
   "437.0": "/twin-kinds",
   "438.0": "/autonomy-levels",
+  "441.0": "/outcome-kinds",
 } as const
 
 

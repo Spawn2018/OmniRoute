@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **440.0** AI1.4 leftover FK `twin_mark` → `twin_kind`
-- **Etap:** Plan — **AI1.4 leftover** / **441.0** (delta zaakceptowana `/noc`, wolno `/plaster`)
-- **Następny:** **441.0** AI1.4 leftover HITL `outcome_kind` (otwarty słownik, bez CHECK listy).
+- **Ostatni plaster:** **441.0** AI1.4 leftover HITL `outcome_kind` (otwarty słownik)
+- **Etap:** Plan — **AI1.4 leftover** / **442.0** FK `outcome_ledger` → `outcome_kind`
+- **Następny:** **442.0** AI1.4 leftover FK `outcome_ledger.outcome_kind` → `outcome_kind.kind_code` (`ON DELETE RESTRICT`). Wzorzec **439.0**.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **440.0** AI1.4 leftover FK `twin_mark` → `twin_kind` **Następny:** **441.0** AI1.4 leftover HITL `outcome_kind` (otwarty słownik, bez CHECK listy).
+**Stan (z CURRENT.md):** **441.0** AI1.4 leftover HITL `outcome_kind` (otwarty słownik) **Następny:** **442.0** AI1.4 leftover FK `outcome_ledger.outcome_kind` → `outcome_kind.kind_code` (`ON DELETE RESTRICT`). Wzorzec **439.0**.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

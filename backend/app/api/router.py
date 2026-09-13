@@ -147,6 +147,7 @@ from app.api import (
     organization_settings,
     otif_marks,
     outbox_events,
+    outcome_kinds,
     outcome_ledgers,
     pallet_balances,
     pallet_pool_marks,
@@ -431,6 +432,7 @@ api_router.include_router(quote_validity_marks.router)
 api_router.include_router(suggestion_ledgers.router)
 api_router.include_router(suggestion_kinds.router)
 api_router.include_router(autonomy_levels.router)
+api_router.include_router(outcome_kinds.router)
 api_router.include_router(outcome_ledgers.router)
 api_router.include_router(demo_gps_marks.router)
 api_router.include_router(demo_sim_marks.router)

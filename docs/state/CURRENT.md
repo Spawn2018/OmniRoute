@@ -4,21 +4,21 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **440.0** AI1.4 leftover FK `twin_mark` → `twin_kind`
+**Ostatni plaster:** **441.0** AI1.4 leftover HITL `outcome_kind` (otwarty słownik)
 
-**Etap:** Plan — **AI1.4 leftover** / **441.0** (delta zaakceptowana `/noc`, wolno `/plaster`)
+**Etap:** Plan — **AI1.4 leftover** / **442.0** FK `outcome_ledger` → `outcome_kind`
 
 **Noc:** `/noc 11` do **2026-09-13T11:00+02**.
 
-**Następny:** **441.0** AI1.4 leftover HITL `outcome_kind` (otwarty słownik, bez CHECK listy).
+**Następny:** **442.0** AI1.4 leftover FK `outcome_ledger.outcome_kind` → `outcome_kind.kind_code` (`ON DELETE RESTRICT`). Wzorzec **439.0**.
 
-Park: `data_source` (licencja, AI5) · FK `outcome_ledger` (po słowniku) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 441.0. Nie startuj AI2 (CRPS).
+Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 442.0. Nie startuj AI2 (CRPS).
 
-**Spec (jedyna na sesję):** [docs/deltas/open/441.0-outcome-kind.md](../deltas/open/441.0-outcome-kind.md).
+**Spec (jedyna na sesję):** brak — **442.0** wymaga planu.
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 
-**Uczciwość:** HITL zostaje. LLM nie liczy. `charge` = marża. Impersonate ≠ decrypt. `charge.source_ref` **jest** (129.0 / 072) — nie otwieraj plastra AI0. **AI1.0–AI1.3** + trzy słowniki + FK ledgeru i `twin_mark` w kodzie. `data_source` = AI5. CRPS zostaje w AI2. `outcome_ledger` CHECK zostaje do 441+.
+**Uczciwość:** HITL zostaje. LLM nie liczy. `charge` = marża. Impersonate ≠ decrypt. `charge.source_ref` **jest** (129.0 / 072) — nie otwieraj plastra AI0. **AI1.0–AI1.3** + cztery słowniki + FK ledgeru i `twin_mark` w kodzie. `data_source` = AI5. CRPS zostaje w AI2. `outcome_ledger` CHECK zostaje do **442.0**.
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 

@@ -194,6 +194,10 @@ export const BUSINESS_LISTS = {
     route: "/outcome-ledgers",
     tableKey: "outcome_ledger",
   },
+  outcomeKind: {
+    route: "/outcome-kinds",
+    tableKey: "outcome_kind",
+  },
   counterfactualRun: {
     route: "/counterfactual-runs",
     tableKey: "counterfactual_run",
@@ -470,6 +474,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/quote-validity-marks",
   "/suggestion-ledgers",
   "/outcome-ledgers",
+  "/outcome-kinds",
   "/counterfactual-runs",
   "/benefit-ledgers",
   "/suggestion-kinds",

@@ -15130,6 +15130,80 @@
         ]
       }
     },
+    "/api/v1/outcome-kinds": {
+      "get": {
+        "tags": [
+          "outcome-kinds"
+        ],
+        "summary": "List Outcome Kinds",
+        "operationId": "list_outcome_kinds_api_v1_outcome_kinds_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/OutcomeKindResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Outcome Kinds Api V1 Outcome Kinds Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "outcome-kinds"
+        ],
+        "summary": "Create Outcome Kind",
+        "operationId": "create_outcome_kind_api_v1_outcome_kinds_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OutcomeKindCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OutcomeKindResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/outcome-ledgers": {
       "get": {
         "tags": [
@@ -35188,6 +35262,59 @@
           "source_ref"
         ],
         "title": "OutboxEventResponse"
+      },
+      "OutcomeKindCreate": {
+        "properties": {
+          "kind_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Kind Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "kind_code",
+          "source_ref"
+        ],
+        "title": "OutcomeKindCreate"
+      },
+      "OutcomeKindResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "kind_code": {
+            "type": "string",
+            "title": "Kind Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "kind_code",
+          "source_ref"
+        ],
+        "title": "OutcomeKindResponse"
       },
       "OutcomeLedgerCreate": {
         "properties": {

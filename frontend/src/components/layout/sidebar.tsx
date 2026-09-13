@@ -79,6 +79,7 @@ const NAV = [
   { to: "/prediction-ledgers", label: "Ledger predykcji" },
   { to: "/suggestion-ledgers", label: "Ledger podpowiedzi" },
   { to: "/outcome-ledgers", label: "Ledger wyniku" },
+  { to: "/outcome-kinds", label: "Rodzaj wyniku" },
   { to: "/counterfactual-runs", label: "Przebieg what-if" },
   { to: "/benefit-ledgers", label: "Ledger oszczędności" },
   { to: "/suggestion-kinds", label: "Rodzaj podpowiedzi" },

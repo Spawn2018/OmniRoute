@@ -8251,6 +8251,42 @@ export type OutboxEventResponse = {
 };
 
 /**
+ * OutcomeKindCreate
+ */
+export type OutcomeKindCreate = {
+    /**
+     * Kind Code
+     */
+    kind_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * OutcomeKindResponse
+ */
+export type OutcomeKindResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Kind Code
+     */
+    kind_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * OutcomeLedgerCreate
  */
 export type OutcomeLedgerCreate = {
@@ -23003,6 +23039,49 @@ export type CreateAutonomyLevelApiV1AutonomyLevelsPostResponses = {
 };
 
 export type CreateAutonomyLevelApiV1AutonomyLevelsPostResponse = CreateAutonomyLevelApiV1AutonomyLevelsPostResponses[keyof CreateAutonomyLevelApiV1AutonomyLevelsPostResponses];
+
+export type ListOutcomeKindsApiV1OutcomeKindsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/outcome-kinds';
+};
+
+export type ListOutcomeKindsApiV1OutcomeKindsGetResponses = {
+    /**
+     * Response List Outcome Kinds Api V1 Outcome Kinds Get
+     *
+     * Successful Response
+     */
+    200: Array<OutcomeKindResponse>;
+};
+
+export type ListOutcomeKindsApiV1OutcomeKindsGetResponse = ListOutcomeKindsApiV1OutcomeKindsGetResponses[keyof ListOutcomeKindsApiV1OutcomeKindsGetResponses];
+
+export type CreateOutcomeKindApiV1OutcomeKindsPostData = {
+    body: OutcomeKindCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/outcome-kinds';
+};
+
+export type CreateOutcomeKindApiV1OutcomeKindsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateOutcomeKindApiV1OutcomeKindsPostError = CreateOutcomeKindApiV1OutcomeKindsPostErrors[keyof CreateOutcomeKindApiV1OutcomeKindsPostErrors];
+
+export type CreateOutcomeKindApiV1OutcomeKindsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: OutcomeKindResponse;
+};
+
+export type CreateOutcomeKindApiV1OutcomeKindsPostResponse = CreateOutcomeKindApiV1OutcomeKindsPostResponses[keyof CreateOutcomeKindApiV1OutcomeKindsPostResponses];
 
 export type ListOutcomeLedgersApiV1OutcomeLedgersGetData = {
     body?: never;

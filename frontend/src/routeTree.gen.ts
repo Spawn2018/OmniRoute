@@ -152,6 +152,7 @@ import { Route as OogMarksRouteImport } from './routes/oog-marks'
 import { Route as OrganizationSettingsRouteImport } from './routes/organization-settings'
 import { Route as OtifMarksRouteImport } from './routes/otif-marks'
 import { Route as OutboxRouteImport } from './routes/outbox'
+import { Route as OutcomeKindsRouteImport } from './routes/outcome-kinds'
 import { Route as OutcomeLedgersRouteImport } from './routes/outcome-ledgers'
 import { Route as PalletBalancesRouteImport } from './routes/pallet-balances'
 import { Route as PalletPoolMarksRouteImport } from './routes/pallet-pool-marks'
@@ -973,6 +974,11 @@ const OutboxRoute = OutboxRouteImport.update({
   path: '/outbox',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OutcomeKindsRoute = OutcomeKindsRouteImport.update({
+  id: '/outcome-kinds',
+  path: '/outcome-kinds',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OutcomeLedgersRoute = OutcomeLedgersRouteImport.update({
   id: '/outcome-ledgers',
   path: '/outcome-ledgers',
@@ -1644,6 +1650,7 @@ export interface FileRoutesByFullPath {
   '/organization-settings': typeof OrganizationSettingsRoute
   '/otif-marks': typeof OtifMarksRoute
   '/outbox': typeof OutboxRoute
+  '/outcome-kinds': typeof OutcomeKindsRoute
   '/outcome-ledgers': typeof OutcomeLedgersRoute
   '/pallet-balances': typeof PalletBalancesRoute
   '/pallet-pool-marks': typeof PalletPoolMarksRoute
@@ -1894,6 +1901,7 @@ export interface FileRoutesByTo {
   '/organization-settings': typeof OrganizationSettingsRoute
   '/otif-marks': typeof OtifMarksRoute
   '/outbox': typeof OutboxRoute
+  '/outcome-kinds': typeof OutcomeKindsRoute
   '/outcome-ledgers': typeof OutcomeLedgersRoute
   '/pallet-balances': typeof PalletBalancesRoute
   '/pallet-pool-marks': typeof PalletPoolMarksRoute
@@ -2145,6 +2153,7 @@ export interface FileRoutesById {
   '/organization-settings': typeof OrganizationSettingsRoute
   '/otif-marks': typeof OtifMarksRoute
   '/outbox': typeof OutboxRoute
+  '/outcome-kinds': typeof OutcomeKindsRoute
   '/outcome-ledgers': typeof OutcomeLedgersRoute
   '/pallet-balances': typeof PalletBalancesRoute
   '/pallet-pool-marks': typeof PalletPoolMarksRoute
@@ -2397,6 +2406,7 @@ export interface FileRouteTypes {
     | '/organization-settings'
     | '/otif-marks'
     | '/outbox'
+    | '/outcome-kinds'
     | '/outcome-ledgers'
     | '/pallet-balances'
     | '/pallet-pool-marks'
@@ -2647,6 +2657,7 @@ export interface FileRouteTypes {
     | '/organization-settings'
     | '/otif-marks'
     | '/outbox'
+    | '/outcome-kinds'
     | '/outcome-ledgers'
     | '/pallet-balances'
     | '/pallet-pool-marks'
@@ -2897,6 +2908,7 @@ export interface FileRouteTypes {
     | '/organization-settings'
     | '/otif-marks'
     | '/outbox'
+    | '/outcome-kinds'
     | '/outcome-ledgers'
     | '/pallet-balances'
     | '/pallet-pool-marks'
@@ -3148,6 +3160,7 @@ export interface RootRouteChildren {
   OrganizationSettingsRoute: typeof OrganizationSettingsRoute
   OtifMarksRoute: typeof OtifMarksRoute
   OutboxRoute: typeof OutboxRoute
+  OutcomeKindsRoute: typeof OutcomeKindsRoute
   OutcomeLedgersRoute: typeof OutcomeLedgersRoute
   PalletBalancesRoute: typeof PalletBalancesRoute
   PalletPoolMarksRoute: typeof PalletPoolMarksRoute
@@ -4258,6 +4271,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OutboxRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/outcome-kinds': {
+      id: '/outcome-kinds'
+      path: '/outcome-kinds'
+      fullPath: '/outcome-kinds'
+      preLoaderRoute: typeof OutcomeKindsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/outcome-ledgers': {
       id: '/outcome-ledgers'
       path: '/outcome-ledgers'
@@ -5140,6 +5160,7 @@ const rootRouteChildren: RootRouteChildren = {
   OrganizationSettingsRoute: OrganizationSettingsRoute,
   OtifMarksRoute: OtifMarksRoute,
   OutboxRoute: OutboxRoute,
+  OutcomeKindsRoute: OutcomeKindsRoute,
   OutcomeLedgersRoute: OutcomeLedgersRoute,
   PalletBalancesRoute: PalletBalancesRoute,
   PalletPoolMarksRoute: PalletPoolMarksRoute,

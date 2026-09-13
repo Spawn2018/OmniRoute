@@ -53,6 +53,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | AI1.4 plan (**440.0**): FK `twin_mark` → `twin_kind`. outcome_kind CHECK zostaje. |
 | 2026-09-13 | **440.0** FK `twin_mark` w kodzie. Następny = leftover `outcome_kind`. |
 | 2026-09-13 | AI1.4 plan (**441.0**): HITL `outcome_kind` bez CHECK. outcome_ledger CHECK zostaje. |
+| 2026-09-13 | **441.0** `outcome_kind` w kodzie. Następny = leftover FK `outcome_ledger`. |
 
 ---
 
@@ -142,6 +143,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | AI1.4 (**440.0**) = FK `(organization_id, twin_kind)` → słownik. CHECK ośmiu `REJECTED`. Import `twin_kinds` ze znacznika `REJECTED`. `outcome_kind` CHECK zostaje. | `/plan-modul` `/noc`; VISION C.2 |
 | 2026-09-13 | **440.0** FK `twin_mark` w kodzie (`CONFIRMED`, git). Następny = HITL `outcome_kind` (`REQUIREMENT`). `data_source` = AI5. CRPS `REJECTED` na tym wierszu. | CURRENT + plaster 440.0 `/noc` |
 | 2026-09-13 | AI1.4 (**441.0**) = HITL `outcome_kind`: `kind_code` bez CHECK/ENUM. Zmiana `outcome_ledger` `REJECTED`. `data_source` leftover AI5. | `/plan-modul` `/noc`; VISION B.3 |
+| 2026-09-13 | **441.0** `outcome_kind` w kodzie (`CONFIRMED`, git). Następny = FK `outcome_ledger` (`REQUIREMENT`). `data_source` = AI5. CRPS `REJECTED` na tym wierszu. | CURRENT + plaster 441.0 `/noc` |
 
 ---
 ---
@@ -542,7 +544,8 @@ w tabeli słownikowej.**
   przy każdym wierszu. To jest miejsce, w którym mieszka katalog z dokumentu `10`.
 - **`autonomy_level`** — poziom autonomii jako **dana per tenant** (`CONFIRMED`,
   438.0). Per klient (FK) zostaje leftover. Nie stała w kodzie (część B.4).
-- **`suggestion_kind`** — nowy rodzaj podpowiedzi to wiersz.
+- **`suggestion_kind`** — nowy rodzaj podpowiedzi to wiersz (`CONFIRMED`, 436.0).
+- **`outcome_kind`** — nowy rodzaj wyniku to wiersz (`CONFIRMED`, 441.0). CHECK na `outcome_ledger` zostaje do FK.
 
 **Model zdarzeń SAP GTT** (`REQUIREMENT`, `03` B.7, PDF LBN 2.0 z 19.04.2025):
 planned event + **okno tolerancji**, unplanned, adres XRI
@@ -753,10 +756,10 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | nazwy z PDF-ów bez wiersza w planie | **136** (z czego 28 to aliasy) |
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
-Ostatni ukończony plaster: **440.0** (FK `twin_mark`), następny w kolejce
-**AI1.4 leftover** (HITL `outcome_kind`). AI1.0–AI1.3, trzy słowniki i FK
-ledgeru oraz `twin_mark` są w kodzie (`CONFIRMED`); `data_source` zostaje
-w AI5 (`REQUIREMENT`). CRPS ze złączenia zostaje w AI2 (`REQUIREMENT`).
+Ostatni ukończony plaster: **441.0** (HITL `outcome_kind`), następny w kolejce
+**AI1.4 leftover** (FK `outcome_ledger` → `outcome_kind`). AI1.0–AI1.3, cztery
+słowniki i FK ledgeru oraz `twin_mark` są w kodzie (`CONFIRMED`); `data_source`
+zostaje w AI5 (`REQUIREMENT`). CRPS ze złączenia zostaje w AI2 (`REQUIREMENT`).
 Teza B.1 zostaje: szerokość katalogów nie zastępuje pomiaru.
 
 ## C.2 Bliźniaki — scalona taksonomia
@@ -877,7 +880,7 @@ nie zakładać ani że jest, ani że jej nie ma.
 
 Do tego cztery tabele substratu z części B.2 (`suggestion_ledger`, `outcome_ledger`,
 `counterfactual_run`, `benefit_ledger`) i cztery słowniki z B.3 (`twin_kind`,
-`data_source`, `autonomy_level`, `suggestion_kind`).
+`data_source`, `autonomy_level`, `suggestion_kind`, `outcome_kind`).
 
 ## C.5 Rozszerzenia istniejących obiektów
 

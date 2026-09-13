@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **441.0** AI1.4 leftover HITL `outcome_kind` (otwarty słownik, bez CHECK listy).
+**Następny:** **442.0** AI1.4 leftover FK `outcome_ledger.outcome_kind` → `outcome_kind.kind_code` (`ON DELETE RESTRICT`). Wzorzec **439.0**.
 <!-- os-status:end -->
 
 ```mermaid
@@ -755,7 +755,7 @@ Dump TMS 2026-09-13 (badania `04b` A–H × 10; CargoWise/Qargo/interLAN zostaj�
 | AI1.1 | `outcome_ledger` — co się naprawdę stało | **DONE w kodzie** (433.0 / 343) | HITL actual_value Decimal; złączenie / CRPS = leftover AI2; bez FK do suggestion_ledger |
 | AI1.2 | `counterfactual_run` — scenariusz, punkt odniesienia, dźwignie, wynik; niemutowalny | **DONE w kodzie** (434.0 / 344) | HITL etykiety jako dane; silnik = leftover AI4.1; nie klon what_if_mark |
 | AI1.3 | `benefit_ledger` — zaoszczędzony czas i pieniądze **z jawną metodą punktu odniesienia** | **DONE w kodzie** (435.0 / 345) | HITL method_label + Decimal; nie druga marża; nie SQL z charge |
-| AI1.4 | Słowniki otwarte: `twin_kind`, `data_source`, `autonomy_level`, `suggestion_kind` | 436.0–440.0 DONE | leftover `outcome_kind` (441.0, delta) · `data_source` (AI5) |
+| AI1.4 | Słowniki otwarte: `twin_kind`, `data_source`, `autonomy_level`, `suggestion_kind` | 436.0–441.0 DONE | leftover FK `outcome_ledger` (442.0) · `data_source` (AI5) |
 | AI2.0 | CRPS, Brier, MAE **liczone** ze złączenia AI1.0×AI1.1 | po AI1.1 | podnosi V1 leftover champion/challenger / drift; dump `04b`: Oracle LML 95% interval = metoda, nie CRPS/MAE; `prediction_ledger` HITL aż AI2 |
 | AI2.1 | champion/challenger + wykrywanie dryfu | po AI2.0 | V1 leftover |
 | AI3.0 | `PATCH` na `extraction_draft` + edycja w interfejsie przed akceptacją | po AI2.0 | dziś accept/reject zmienia tylko status |

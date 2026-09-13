@@ -646,6 +646,10 @@ class InvalidOutcomeLedger(DomainError):
     """Ledger AI1.1: HITL fakt Decimal — nie CRPS liczone i nie FK do podpowiedzi."""
 
 
+class InvalidOutcomeKind(DomainError):
+    """Słownik AI1.4: HITL kind_code bez CHECK — nie ledger i nie ENUM."""
+
+
 class InvalidCounterfactualRun(DomainError):
     """Przebieg AI1.2: HITL etykiety scenariusza — nie silnik i nie kwota."""
 
