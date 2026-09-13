@@ -91,6 +91,7 @@ const NAV = [
   { to: "/circle-sims", label: "Kółko" },
   { to: "/route-plan-marks", label: "Znacznik planu trasy" },
   { to: "/crm-opportunities", label: "Okazja CRM" },
+  { to: "/position-events", label: "Zdarzenie pozycji" },
   { to: "/lane-kms", label: "Km ładowny" },
   { to: "/erp-connectors", label: "Konektor Optima" },
   { to: "/idp-connectors", label: "Konektor Auth0" },

@@ -1206,6 +1206,10 @@ class InvalidPostingMark(DomainError):
     """EXP4.9: HITL posting — nie posting live / tacho DDD."""
 
 
+class InvalidPositionEvent(DomainError):
+    """BR2.0: HITL zdarzenie pozycji — nie live GPS / wspolrzedne / poll."""
+
+
 class InvalidTachoOfficeMark(DomainError):
     """EXP4.10: HITL tacho office — nie tacho live / DDD parse."""
 

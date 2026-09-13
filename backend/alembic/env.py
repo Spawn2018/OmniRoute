@@ -43,6 +43,7 @@ from app.models.organization_setting import OrganizationSetting  # noqa: F401
 from app.models.extraction_draft import ExtractionDraft  # noqa: F401
 from app.models.table_view import TableView  # noqa: F401
 from app.models.port import Port  # noqa: F401
+from app.models.position_event import PositionEvent  # noqa: F401
 from app.models.location import Location, LocationZoneMember  # noqa: F401
 from app.models.terminal import Terminal  # noqa: F401
 from app.models.party import Party  # noqa: F401

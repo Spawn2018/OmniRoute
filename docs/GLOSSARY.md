@@ -227,6 +227,7 @@
 | wynik interwencji | intervention_outcome | CI7 HITL katalog; leftover saved SQL |
 | lead CRM | crm_lead | G1 HITL katalog; leftover szansa/activity |
 | okazja CRM | crm_opportunity | BR6.0 HITL katalog; leftover activity / pipeline |
+| zdarzenie pozycji | position_event | BR2.0 HITL katalog; leftover współrzędne / poll |
 | checklista LC | lc_checklist | G3 HITL katalog; leftover bank/due |
 | szkic NCTS | ncts_draft | G4 HITL katalog; leftover PUESC/plomby |
 | znacznik OOG | oog_mark | G5 HITL katalog; leftover wymiary/cert |

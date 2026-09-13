@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **457.0** HITL pozycja jako byt. Nie live GPS. Nie `tracking_event`.
+**Następny:** **458.0** HITL katalog urządzenia. Nie live GPS. Nie poll.
 <!-- os-status:end -->
 
 ```mermaid
@@ -791,7 +791,7 @@ Dump TMS `04b`: WMS nie jest dekoracją (Manhattan Active TM+WMS+Yard+Labour, In
 | BR1.0 | WMS: przyjęcie, lokalizacja, kompletacja, wydanie, inwentaryzacja | rozstrzygnięte: **w zakresie** | warunek Trade-Tech; magazyn w Zbrudzewie; dump `04b`: Manhattan Active / Infios Archer / SAP EWM — WMS nie dekoracja |
 | BR1.1 | RFID i identyfikacja automatyczna | po BR1.0 | czytniki, bramki, znakowanie |
 | BR1.2 | zapas jako obiekt finansowy: wycena, wiekowanie, Inventory Release | po BR1.0 | bez tego nie ma zastawu na towarze |
-| BR2.0 | `position_event` — pozycja jako osobny byt | **start HHL** (po leftover V5) | **457.0** plan `/noc` = HITL `position_event`; leftover: lat/lng · poll |
+| BR2.0 | `position_event` — pozycja jako osobny byt | **start HHL** (po leftover V5) | **457.0** DONE HITL `position_event`; leftover: lat/lng · poll |
 | BR2.1 | urządzenia telematyczne: cykl życia, parowanie z pojazdem, awarie | po BR2.0 | OmniTelematics |
 | BR2.2 | zgoda na śledzenie jako dana, per kontrahent i per kierowca | po BR2.0 | `party_contact.tracking_consent` |
 | BR2.3 | aplikacja kierowcy: zlecenie, POD, skan, status, tryb offline | po BR2.1 | wzorzec offline: Briefcase Builder |
@@ -934,13 +934,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

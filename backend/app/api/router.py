@@ -169,6 +169,7 @@ from app.api import (
     po_sku_marks,
     port_surcharges,
     ports,
+    position_events,
     posting_marks,
     prediction_ledgers,
     profit_center_marks,
@@ -488,6 +489,7 @@ api_router.include_router(crm_opportunities.router)
 api_router.include_router(customer_sops.router)
 api_router.include_router(cutoff_marks.router)
 api_router.include_router(ports.router)
+api_router.include_router(position_events.router)
 api_router.include_router(port_surcharges.router)
 api_router.include_router(locations.router)
 api_router.include_router(terminals.router)

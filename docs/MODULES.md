@@ -78,6 +78,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | G2.20 | Kółko HITL | 266.0 `circle_sim` · 454.0 | **ukończony (HITL+SQL)** · para uzupełniająca w widoku; leftover generator 500k / km / VRP |
 | BR3.0 | Znacznik planu trasy HITL | 455.0 `route_plan_mark` | **ukończony (HITL)** · kind route/stop/window/other; leftover Valhalla / VRP / km |
 | BR6.0 | Okazja CRM HITL | 456.0 `crm_opportunity` | **ukończony (HITL)** · stage open/won/lost/other; leftover activity / pipeline |
+| BR2.0 | Zdarzenie pozycji HITL | 457.0 `position_event` | **ukończony (HITL)** · kind gps/manual/other; leftover współrzędne / poll |
 | G2.21 | Km ładowny HITL | 267.0 `lane_km` | **ukończony (HITL)** · ładowny/pusty/dolot Decimal; leftover P / silnik 500k |
 | F9 | Konektor Optima HITL | 268.0 `erp_connector` | **ukończony (HITL)** · kod + kind `optima`; leftover XL / live SOAP / FS+FZ |
 | T8 | Konektor slotu HITL | 269.0 `terminal_slot_connector` | **ukończony (HITL)** · mode + godziny N4; leftover live API / `terminal_appointment` / confirmed |
@@ -103,7 +104,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | CT12 | Znacznik CAPA HITL | 282.0 `capa_mark` | **ukończony (HITL katalog rodzaju)** · leftover workflow |
 | V2 | Pogoda HITL | 194.0 `stop` ETA · 195.0 `weather_observation` | **ukończony (HITL)** · dwa ETA + warunek/stacja; leftover Open-Meteo / myto |
 | V3 | Zegar D&D HITL | 196.0 `free_time_clock` | **ukończony (HITL)** · rodzaj + dni wolne; leftover countdown / charge / blank sailing |
-| V5 | Konektor GPS HITL | 197.0 `telematics_connector` | **ukończony (HITL)** · reżim + dostawca; leftover position_event / ciphertext / 3 dni U4 |
+| V5 | Konektor GPS HITL | 197.0 `telematics_connector` | **ukończony (HITL)** · reżim + dostawca; leftover ciphertext / 3 dni U4; `position_event` katalog 457.0 (leftover współrzędne / poll) |
 | V6 | Impact wieży HITL | 198.0 `tower_impact` | **ukończony (HITL)** · etap łańcucha + status umowy; leftover silnik EBITDA / sla_clause / scoring |
 | W1 | Bliźniak HITL | 199.0 `twin_mark` | **ukończony (HITL)** · 8 rodzajów; leftover 8 silników fizyki (`plan_snapshot` DONE 265.0) |
 | W2 | Sala kryzysowa HITL | 200.0 `war_room_mark` | **ukończony (HITL)** · rodzaj incydentu; leftover N8 / T8 live API / widok sklejony |

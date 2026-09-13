@@ -175,6 +175,7 @@ import { Route as PoPlantMarksRouteImport } from './routes/po-plant-marks'
 import { Route as PoSkuMarksRouteImport } from './routes/po-sku-marks'
 import { Route as PortSurchargesRouteImport } from './routes/port-surcharges'
 import { Route as PortsRouteImport } from './routes/ports'
+import { Route as PositionEventsRouteImport } from './routes/position-events'
 import { Route as PostingMarksRouteImport } from './routes/posting-marks'
 import { Route as PredictionLedgersRouteImport } from './routes/prediction-ledgers'
 import { Route as ProfitCenterMarksRouteImport } from './routes/profit-center-marks'
@@ -1094,6 +1095,11 @@ const PortsRoute = PortsRouteImport.update({
   path: '/ports',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PositionEventsRoute = PositionEventsRouteImport.update({
+  id: '/position-events',
+  path: '/position-events',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PostingMarksRoute = PostingMarksRouteImport.update({
   id: '/posting-marks',
   path: '/posting-marks',
@@ -1703,6 +1709,7 @@ export interface FileRoutesByFullPath {
   '/po-sku-marks': typeof PoSkuMarksRoute
   '/port-surcharges': typeof PortSurchargesRoute
   '/ports': typeof PortsRoute
+  '/position-events': typeof PositionEventsRoute
   '/posting-marks': typeof PostingMarksRoute
   '/prediction-ledgers': typeof PredictionLedgersRoute
   '/profit-center-marks': typeof ProfitCenterMarksRoute
@@ -1959,6 +1966,7 @@ export interface FileRoutesByTo {
   '/po-sku-marks': typeof PoSkuMarksRoute
   '/port-surcharges': typeof PortSurchargesRoute
   '/ports': typeof PortsRoute
+  '/position-events': typeof PositionEventsRoute
   '/posting-marks': typeof PostingMarksRoute
   '/prediction-ledgers': typeof PredictionLedgersRoute
   '/profit-center-marks': typeof ProfitCenterMarksRoute
@@ -2216,6 +2224,7 @@ export interface FileRoutesById {
   '/po-sku-marks': typeof PoSkuMarksRoute
   '/port-surcharges': typeof PortSurchargesRoute
   '/ports': typeof PortsRoute
+  '/position-events': typeof PositionEventsRoute
   '/posting-marks': typeof PostingMarksRoute
   '/prediction-ledgers': typeof PredictionLedgersRoute
   '/profit-center-marks': typeof ProfitCenterMarksRoute
@@ -2474,6 +2483,7 @@ export interface FileRouteTypes {
     | '/po-sku-marks'
     | '/port-surcharges'
     | '/ports'
+    | '/position-events'
     | '/posting-marks'
     | '/prediction-ledgers'
     | '/profit-center-marks'
@@ -2730,6 +2740,7 @@ export interface FileRouteTypes {
     | '/po-sku-marks'
     | '/port-surcharges'
     | '/ports'
+    | '/position-events'
     | '/posting-marks'
     | '/prediction-ledgers'
     | '/profit-center-marks'
@@ -2986,6 +2997,7 @@ export interface FileRouteTypes {
     | '/po-sku-marks'
     | '/port-surcharges'
     | '/ports'
+    | '/position-events'
     | '/posting-marks'
     | '/prediction-ledgers'
     | '/profit-center-marks'
@@ -3243,6 +3255,7 @@ export interface RootRouteChildren {
   PoSkuMarksRoute: typeof PoSkuMarksRoute
   PortSurchargesRoute: typeof PortSurchargesRoute
   PortsRoute: typeof PortsRoute
+  PositionEventsRoute: typeof PositionEventsRoute
   PostingMarksRoute: typeof PostingMarksRoute
   PredictionLedgersRoute: typeof PredictionLedgersRoute
   ProfitCenterMarksRoute: typeof ProfitCenterMarksRoute
@@ -4497,6 +4510,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/position-events': {
+      id: '/position-events'
+      path: '/position-events'
+      fullPath: '/position-events'
+      preLoaderRoute: typeof PositionEventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/posting-marks': {
       id: '/posting-marks'
       path: '/posting-marks'
@@ -5283,6 +5303,7 @@ const rootRouteChildren: RootRouteChildren = {
   PoSkuMarksRoute: PoSkuMarksRoute,
   PortSurchargesRoute: PortSurchargesRoute,
   PortsRoute: PortsRoute,
+  PositionEventsRoute: PositionEventsRoute,
   PostingMarksRoute: PostingMarksRoute,
   PredictionLedgersRoute: PredictionLedgersRoute,
   ProfitCenterMarksRoute: ProfitCenterMarksRoute,

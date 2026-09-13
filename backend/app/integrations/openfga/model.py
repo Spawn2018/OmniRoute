@@ -253,6 +253,7 @@ def _organization_exp4_mode_catalog_relations() -> dict[str, Userset]:
         "can_manage_nvocc_marks": _member(),
         "can_manage_multi_manning_marks": _member(),
         "can_manage_posting_marks": _member(),
+        "can_manage_position_events": _member(),
         "can_manage_tacho_office_marks": _member(),
         "can_manage_lez_marks": _member(),
         "can_manage_label_parking_marks": _member(),

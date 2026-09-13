@@ -224,6 +224,7 @@ modules =
 
     app.services.nvocc_marks
     app.services.multi_manning_marks
+    app.services.position_events
     app.services.posting_marks
     app.services.tacho_office_marks
     app.services.lez_marks
@@ -1005,6 +1006,9 @@ forbidden_modules =
     app.services.multi_manning_marks
     app.repositories.multi_manning_marks
     app.models.multi_manning_mark
+    app.services.position_events
+    app.repositories.position_events
+    app.models.position_event
     app.services.posting_marks
     app.repositories.posting_marks
     app.models.posting_mark
