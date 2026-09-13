@@ -2,6 +2,7 @@ from pathlib import Path
 
 _ROOT = Path(__file__).resolve().parents[3]
 _MIGRATION = _ROOT / "backend" / "alembic" / "versions" / "198_plan_snapshot.py"
+_FK_MIGRATION = _ROOT / "backend" / "alembic" / "versions" / "357_plan_snap_fk.py"
 _SERVICES = _ROOT / "backend" / "app" / "services"
 
 
@@ -27,6 +28,23 @@ def test_migration_198_creates_plan_snapshot_and_forces_rls() -> None:
     assert "drop_table" in source.split("def downgrade")[1]
 
 
+def test_migration_357_adds_composite_restrict_fks() -> None:
+    source = _FK_MIGRATION.read_text(encoding="utf-8")
+    assert 'revision: str = "357_plan_snap_fk"' in source
+    assert len("357_plan_snap_fk") <= 32
+    assert 'down_revision: str | None = "356_prediction_ledger_null"' in source
+    assert "fk_plan_snapshot_shipment" in source
+    assert "fk_plan_snapshot_trip" in source
+    assert "fk_plan_snapshot_resource" in source
+    assert "uq_trip_org_id" in source
+    assert 'ondelete="RESTRICT"' in source
+    assert 'ondelete="CASCADE"' not in source
+    assert "def downgrade" in source
+    down = source.split("def downgrade")[1]
+    assert "fk_plan_snapshot_shipment" in down
+    assert "uq_trip_org_id" in down
+
+
 def test_plan_snapshot_service_is_append_only_and_isolated() -> None:
     service = (_SERVICES / "plan_snapshots" / "plan_snapshot_service.py").read_text(
         encoding="utf-8"
@@ -42,6 +60,9 @@ def test_plan_snapshot_service_is_append_only_and_isolated() -> None:
     assert ".update(" not in service
     assert "buy_amount" not in service
     assert "circle_sim" not in service
+    assert "fk_plan_snapshot_" in service
+    assert "trójka musi istnieć" in service
+    assert "app.services.shipments" not in service
 
 
 def test_importlinter_lists_plan_snapshots_as_independent() -> None:

@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **451.0** AI3.4 — parser `xlsx_sheet` (stdlib) **Następny:** **452.0** FK snapshot → shipment/trip/resource. Nie CASCADE. Nie silnik what-if.
+**Stan (z CURRENT.md):** **452.0** AI4.0 — FK złożone RESTRICT na `plan_snapshot` **Następny:** **453.0** what-if na `counterfactual_run`. Nie live HTTP. Nie AI4.2.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

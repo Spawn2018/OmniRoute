@@ -44,8 +44,8 @@ export function SnapshotSave(args: { organizationId: string | null }) {
       }}
     >
       <p className="text-xs text-muted-foreground">
-        Wersja planu jako dane: kod, trójka UUID (zlecenie / przejazd / zasób), autor i czas.
-        Serwis nie czyta tych obiektów i nie liczy km. Marża zostaje na `/charges`.
+        Wersja planu: kod, trójka UUID (zlecenie / przejazd / zasób), autor i czas.
+        Trójka musi już istnieć u tenanta. Serwis nie liczy km. Marża zostaje na `/charges`.
       </p>
       <label className="flex flex-col gap-1 text-xs">
         Kod migawki (snake 2–32)
@@ -58,7 +58,7 @@ export function SnapshotSave(args: { organizationId: string | null }) {
         />
       </label>
       <label className="flex flex-col gap-1 text-xs">
-        UUID zlecenia (dane, bez FK)
+        UUID zlecenia (musi istnieć)
         <input
           aria-label="UUID zlecenia"
           className="h-9 rounded-md border bg-background px-2 font-mono"
@@ -68,7 +68,7 @@ export function SnapshotSave(args: { organizationId: string | null }) {
         />
       </label>
       <label className="flex flex-col gap-1 text-xs">
-        UUID przejazdu (dane, bez FK)
+        UUID przejazdu (musi istnieć)
         <input
           aria-label="UUID przejazdu"
           className="h-9 rounded-md border bg-background px-2 font-mono"
@@ -78,7 +78,7 @@ export function SnapshotSave(args: { organizationId: string | null }) {
         />
       </label>
       <label className="flex flex-col gap-1 text-xs">
-        UUID zasobu (dane, bez FK)
+        UUID zasobu (musi istnieć)
         <input
           aria-label="UUID zasobu"
           className="h-9 rounded-md border bg-background px-2 font-mono"

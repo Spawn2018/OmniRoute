@@ -146,7 +146,7 @@
 | przebieg what-if | counterfactual_run | AI1.2 HITL etykiety baseline/dźwigni/wyniku; nie silnik; nie kwota |
 | ledger oszczędności | benefit_ledger | AI1.3 HITL method_label + hours_saved + saved_amount Decimal; nie druga marża; nie SQL z charge |
 | rodzaj podpowiedzi | suggestion_kind | AI1.4 HITL otwarty słownik kind_code; nie CHECK; nie kolumna ledgeru |
-| migawka planu | plan_snapshot | B0b; 265.0 HITL wersja planu (trójka UUID bez FK); nie silnik; nie kółka |
+| migawka planu | plan_snapshot | B0b; 265.0 HITL wersja planu; 452.0 FK złożone RESTRICT; nie silnik; nie kółka |
 | operator terminalu | operator_name / operator_party_id | tekst zostaje; FK nullable do `party` od 5.0 |
 | kontrahent | party | katalog M-10; jeden podmiot, wiele ról |
 | identyfikator podatkowy | tax_id | NIP / VAT krajowy; `resolve` po tokenie |

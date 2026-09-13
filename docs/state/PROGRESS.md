@@ -844,3 +844,5 @@
 - 2026-09-13T14:10:00Z | 450.0 | extraction_draft | DONE | owned golden THC/BAF vs MockExtractor; bez liczb z papieru
 
 - 2026-09-13T14:15:00Z | 451.0 | extraction_draft | DONE | xlsx_sheet stdlib pierwszy arkusz; bez openpyxl
+
+- 2026-09-13T14:30:00Z | 452.0 | plan_snapshot | DONE | FK zlozone RESTRICT shipment/trip/resource; bez CASCADE

@@ -715,7 +715,7 @@ class InvalidTaskTemplate(DomainError):
 
 
 class InvalidPlanSnapshot(DomainError):
-    """B0b: HITL wersja planu — nie silnik, nie kółka i nie FK do trip/shipment."""
+    """B0b: HITL wersja planu — nie silnik, nie kółka. FK trójki od 452.0."""
 
 
 class InvalidCircleSim(DomainError):

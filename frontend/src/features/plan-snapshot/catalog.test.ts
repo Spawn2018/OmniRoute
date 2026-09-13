@@ -46,5 +46,7 @@ describe("plan_snapshot surface for 265.0", () => {
     expect(panel).not.toContain("leaflet")
     expect(panel).not.toContain("CatalogCreateForm")
     expect(src("features/ops/ops-index.ts")).toContain('"265.0": "/plan-snapshots"')
+    expect(src("features/ops/ops-index.ts")).toContain('"452.0": "/plan-snapshots"')
+    expect(panel).toContain("musi istnieć")
   })
 })

@@ -121,7 +121,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **271.0 leftover:** live Trans.eu / TIMOCOM / Transporeon / Teleroute; X1–X5 SPA / OAuth2 / konsument outboxa; C9 snapshot; V5b `exchange_message`. Tu tylko `exchange_connector` HITL kod + kind `trans_eu` + `source_ref`. Nie live HTTP. Nie sekrety.
 - **268.0 leftover:** XL / Symfonia / nexo / GT / enova / WAPRO; live SOAP/agent; `purchase_invoice` / FS+FZ; sekrety / ciphertext. Tu tylko `erp_connector` HITL kod + kind `optima` + `source_ref`. Nie live HTTP. Nie SQL `sa`.
 - **266.0 leftover:** km ładowny/pusty/dolot (G2.21); P=`n_overlap` / lista P (G2.22); silnik `circle_sim` ≥500k. Tu tylko `circle_sim` HITL `sim_code` + para UN/LOCODE unload/load + `source_ref`. Nie silnik. Nie km.
-- **265.0 leftover:** `circle_sim` HITL DONE 266.0. Zostaje km ładowny (G2.21–G2.22) / silnik 500k; TT z actuals `stop`; what-if V8; 8 silników fizyki. Tu tylko `plan_snapshot` HITL trójka UUID bez FK + autor + czas + `source_ref`. Nie silnik. Nie mapa.
+- **265.0 leftover:** `circle_sim` HITL DONE 266.0. FK trójki DONE 452.0 (RESTRICT). Zostaje km ładowny (G2.21–G2.22) / silnik 500k; TT z actuals `stop`; what-if V8; 8 silników fizyki. Nie silnik. Nie mapa.
 - **193.0 leftover:** `plan_snapshot` DONE 265.0. Zostaje TT z actuals; champion/challenger / drift; GPS / AIS wieży. Tu tylko `prediction_ledger` HITL przedział + CRPS/MAE + `source_ref`. Nie silnik. Nie scoring osoby.
 - **192.0 leftover:** packing group / grupy zgodności 1.xA / live IMO. Tu tylko `adr_tunnel_code` + `segregation_group` HITL na `dangerous_good`. LLM nie nadaje klasy.
 

@@ -10,6 +10,7 @@ from sqlalchemy import (
     Numeric,
     String,
     Text,
+    UniqueConstraint,
 )
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
@@ -78,6 +79,7 @@ class Trip(Base, TimestampMixin):
             ondelete="RESTRICT",
         ),
         Index("ix_trip_org_status", "organization_id", "status"),
+        UniqueConstraint("organization_id", "id", name="uq_trip_org_id"),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)

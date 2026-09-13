@@ -1,7 +1,15 @@
 import uuid
 from datetime import datetime
 
-from sqlalchemy import CheckConstraint, DateTime, ForeignKey, Index, String, UniqueConstraint
+from sqlalchemy import (
+    CheckConstraint,
+    DateTime,
+    ForeignKey,
+    ForeignKeyConstraint,
+    Index,
+    String,
+    UniqueConstraint,
+)
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -31,10 +39,28 @@ class PlanSnapshot(Base, TimestampMixin):
             name="ck_plan_snapshot_author",
         ),
         Index("ix_plan_snapshot_organization_id", "organization_id"),
+        ForeignKeyConstraint(
+            ["organization_id", "shipment_id"],
+            ["shipment.organization_id", "shipment.id"],
+            name="fk_plan_snapshot_shipment",
+            ondelete="RESTRICT",
+        ),
+        ForeignKeyConstraint(
+            ["organization_id", "trip_id"],
+            ["trip.organization_id", "trip.id"],
+            name="fk_plan_snapshot_trip",
+            ondelete="RESTRICT",
+        ),
+        ForeignKeyConstraint(
+            ["organization_id", "resource_id"],
+            ["resource.organization_id", "resource.id"],
+            name="fk_plan_snapshot_resource",
+            ondelete="RESTRICT",
+        ),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
-    # RLS: migawka planu tego tenanta — UUID trójki to dane, nie FK.
+    # RLS: migawka planu tego tenanta. Trójka ma FK RESTRICT (452.0).
     organization_id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True), ForeignKey("organization.id", ondelete="RESTRICT"), nullable=False
     )

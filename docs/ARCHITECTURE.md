@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **451.0** AI3.4 — parser `xlsx_sheet` (stdlib). **Etap:** plaster — **452.0** AI4.0 FK `plan_snapshot`. Delta zaakceptowana (`/noc`). Wolno `/plaster`. **Następny:** **452.0** FK snapshot → shipment/trip/resource. Nie CASCADE. Nie silnik what-if. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **452.0** AI4.0 — FK złożone RESTRICT na `plan_snapshot`. **Etap:** Plan — **453.0** AI4.1 silnik what-if. Brak delty. `/plan-modul`. **Następny:** **453.0** what-if na `counterfactual_run`. Nie live HTTP. Nie AI4.2. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

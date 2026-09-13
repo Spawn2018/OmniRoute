@@ -1,7 +1,9 @@
 from uuid import UUID, uuid4
 
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.domain.errors import InvalidPlanSnapshot
 from app.domain.plan_snapshot import (
     require_author_label,
     require_recorded_at,
@@ -47,4 +49,10 @@ class PlanSnapshotService:
             source_ref=require_snapshot_source_ref(source_ref),
             created_by=user_id,
         )
-        return await self._rows.add(row)
+        try:
+            return await self._rows.add(row)
+        except IntegrityError as exc:
+            detail = str(getattr(exc, "orig", exc))
+            if "fk_plan_snapshot_" in detail:
+                raise InvalidPlanSnapshot("trójka musi istnieć w tym tenancie") from exc
+            raise

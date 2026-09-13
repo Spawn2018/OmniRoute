@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **451.0** AI3.4 — parser `xlsx_sheet` (stdlib)
-- **Etap:** plaster — **452.0** AI4.0 FK `plan_snapshot`. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
-- **Następny:** **452.0** FK snapshot → shipment/trip/resource. Nie CASCADE. Nie silnik what-if.
+- **Ostatni plaster:** **452.0** AI4.0 — FK złożone RESTRICT na `plan_snapshot`
+- **Etap:** Plan — **453.0** AI4.1 silnik what-if. Brak delty. `/plan-modul`.
+- **Następny:** **453.0** what-if na `counterfactual_run`. Nie live HTTP. Nie AI4.2.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
