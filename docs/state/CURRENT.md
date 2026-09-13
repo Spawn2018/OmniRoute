@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **436.0** AI1.4 HITL `suggestion_kind`
 
-**Etap:** Plan — **AI1.4 leftover** / **437.0** (brak delty, `/plan-modul`)
+**Etap:** Plan — **AI1.4 leftover** / **437.0** (delta zaakceptowana `/noc`, wolno `/plaster`)
 
 **Noc:** `/noc 11` do **2026-09-13T11:00+02**.
 
-**Następny:** **437.0** AI1.4 leftover HITL `twin_kind` — otwarty słownik (C.2), bez CHECK na twin_mark.
+**Następny:** **437.0** AI1.4 HITL `twin_kind` — otwarty słownik kind_code, bez CHECK.
 
 Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 437.0.
 
-**Spec (jedyna na sesję):** brak — najpierw delta `docs/deltas/open/437.0-*.md`.
+**Spec (jedyna na sesję):** [docs/deltas/open/437.0-twin-kind.md](../deltas/open/437.0-twin-kind.md).
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 
