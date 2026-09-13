@@ -130,6 +130,7 @@ modules =
     app.services.oog_marks
     app.services.oog_permit_marks
     app.services.lcl_console_marks
+    app.services.nac_marks
     app.services.load_order_marks
     app.services.load_plan_marks
     app.services.cmms_marks
@@ -651,6 +652,9 @@ forbidden_modules =
     app.services.lcl_console_marks
     app.repositories.lcl_console_marks
     app.models.lcl_console_mark
+    app.services.nac_marks
+    app.repositories.nac_marks
+    app.models.nac_mark
     app.services.load_order_marks
     app.repositories.load_order_marks
     app.models.load_order_mark

@@ -4,71 +4,24 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **468.0** BR4.2 — HITL `lcl_console_mark`
+**Ostatni plaster:** **469.0** BR4.3 — HITL `nac_mark`
 
-**Etap:** Plan — delta **469.0** zaakceptowana (`/noc`). Wolno `/plaster`.
+**Etap:** Plan — następny **BR4.4** Jedwabny Szlak. Komenda `/plan-modul`. Zero kodu do akceptacji delty.
 
 **Noc:** `/noc 7` do **2026-09-14T07:00+02**.
 
-**Następny:** plaster **469.0** HITL `nac_mark`. Nie live NAC HTTP. Nie FK do `shipment_stakeholder`.
+**Następny:** `/plan-modul` **BR4.4** korytarz Chiny-Europa (Jedwabny Szlak). Nie live HTTP. Nie zgaduj plaster ID.
 
-Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 469.0. Nie otwieraj AI0. Nie startuj leftover Valhalla / live CFS / Expo / Alpega / HubSpot.
+Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów · live NAC HTTP. Nie zgaduj poza BR4.4 planem. Nie otwieraj AI0. Nie startuj leftover Valhalla / live CFS / Expo / Alpega / HubSpot.
 
-**Spec (jedyna na sesję):** [469.0](../deltas/open/469.0.md)
+**Spec (jedyna na sesję):** brak — najpierw delta BR4.4 w `docs/deltas/open/`
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 
-**Uczciwość:** HITL zostaje. LLM nie liczy. `charge` = marża. Impersonate ≠ decrypt. `charge.source_ref` **jest** (129.0 / 072) — nie otwieraj plastra AI0. **AI1.0–AI1.4**, **443.0–468.0** w kodzie. `data_source` = AI5.
+**Uczciwość:** HITL zostaje. LLM nie liczy. `charge` = marża. Impersonate ≠ decrypt. `charge.source_ref` **jest** (129.0 / 072) — nie otwieraj plastra AI0. **AI1.0–AI1.4**, **443.0–469.0** w kodzie. `data_source` = AI5.
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-13:** Plaster **468.0** zamknięty (`/noc`) — HITL `lcl_console_mark`.
+**2026-09-13:** Plaster **469.0** zamknięty (`/noc`) — HITL `nac_mark`.
 **2026-09-13:** Plan **469.0** (`/noc`) — HITL `nac_mark`. Wolno plaster.
-**2026-09-13:** Plaster **428.0** zamknięty (`/noc`) — HITL `spot_contract_mark`.
-**2026-09-13:** Plaster **429.0** zamknięty (`/noc`) — HITL `bid_decision_mark`.
-**2026-09-13:** Plaster **430.0** zamknięty (`/noc`) — HITL `quote_currency_mark`.
-**2026-09-13:** Plaster **431.0** zamknięty (`/noc`) — HITL `quote_validity_mark`.
-**2026-09-13:** Plaster **432.0** zamknięty (`/noc`) — HITL `suggestion_ledger`.
-**2026-09-13:** Plaster **433.0** zamknięty (`/noc`) — HITL `outcome_ledger`.
-**2026-09-13:** Plaster **434.0** zamknięty (`/noc`) — HITL `counterfactual_run`.
-**2026-09-13:** Plaster **435.0** zamknięty (`/noc`) — HITL `benefit_ledger`.
-**2026-09-13:** Plaster **436.0** zamknięty (`/noc`) — HITL `suggestion_kind`.
-**2026-09-13:** Plaster **437.0** zamknięty (`/noc`) — HITL `twin_kind`.
-**2026-09-13:** Plaster **438.0** zamknięty (`/noc`) — HITL `autonomy_level`.
-**2026-09-13:** Plaster **439.0** zamknięty (`/noc`) — FK `suggestion_ledger` → `suggestion_kind`.
-**2026-09-13:** Plaster **440.0** zamknięty (`/noc`) — FK `twin_mark` → `twin_kind`.
-**2026-09-13:** Plaster **441.0** zamknięty (`/noc`) — HITL `outcome_kind`.
-**2026-09-13:** Plaster **442.0** zamknięty (`/noc`) — FK `outcome_ledger` → `outcome_kind`.
-**2026-09-13:** Plaster **443.0** zamknięty (`/noc`) — widok `interval_score` MAE/CRPS SQL.
-**2026-09-13:** Plaster **444.0** zamknięty (`/noc`) — widok `version_score` średnie per `model_version`.
-**2026-09-13:** Plaster **445.0** zamknięty (`/noc`) — widok `version_window` średnie per dzień UTC.
-**2026-09-13:** Plaster **446.0** zamknięty (`/noc`) — `prediction_ledger` bez wpisanego CRPS/MAE.
-**2026-09-13:** Plaster **447.0** zamknięty (`/noc`) — `PATCH` kandydatów na szkicu przed akceptacją.
-**2026-09-13:** Plaster **448.0** zamknięty (`/noc`) — wersja szkicu + ramka i pewność jako tekst.
-**2026-09-13:** Plaster **449.0** zamknięty (`/noc`) — etykieta ścieżki `extract_path` text|image.
-**2026-09-13:** Plaster **450.0** zamknięty (`/noc`) — własny golden + bramka pytest.
-**2026-09-13:** Plaster **451.0** zamknięty (`/noc`) — parser pierwszego arkusza `.xlsx`.
-**2026-09-13:** Plaster **452.0** zamknięty (`/noc`) — FK `plan_snapshot` RESTRICT.
-**2026-09-13:** Plaster **453.0** zamknięty (`/noc`) — FK przebieg → migawka + widok `what_if_replay`.
-**2026-09-13:** Plaster **454.0** zamknięty (`/noc`) — widok `circle_sim_pair`.
-**2026-09-13:** Plaster **455.0** zamknięty (`/noc`) — HITL `route_plan_mark`.
-**2026-09-13:** Plaster **456.0** zamknięty (`/noc`) — HITL `crm_opportunity`.
-**2026-09-13:** Plaster **457.0** zamknięty (`/noc`) — HITL `position_event`.
-**2026-09-13:** Plaster **458.0** zamknięty (`/noc`) — HITL `telematics_device`.
-**2026-09-13:** Plaster **459.0** zamknięty (`/noc`) — HITL `tracking_consent`.
-**2026-09-13:** Plaster **460.0** zamknięty (`/noc`) — HITL `sales_lane`.
-**2026-09-13:** Plaster **461.0** zamknięty (`/noc`) — HITL `shipper_tender_mark`.
-**2026-09-13:** Plaster **462.0** zamknięty (`/noc`) — HITL `campaign_mark`.
-**2026-09-13:** Plaster **463.0** zamknięty (`/noc`) — HITL `groupage_dispatcher_mark`.
-**2026-09-13:** Plaster **464.0** zamknięty (`/noc`) — HITL `load_order_mark`.
-**2026-09-13:** Plaster **465.0** zamknięty (`/noc`) — HITL `tacho_plan_mark`.
-**2026-09-13:** Plaster **466.0** zamknięty (`/noc`) — HITL `ferry_booking_mark`.
-**2026-09-13:** Plaster **467.0** zamknięty (`/noc`) — HITL `oog_permit_mark`.
-**2026-09-13:** Plan **468.0** (`/noc`) — HITL `lcl_console_mark`. Wolno plaster.
-**2026-09-13:** Kanon Fali AI/BR w PLAN; `docs/VISION.md`; HC-04 przepisane (Q1–Q2).
-**2026-09-13:** Dump CT (badania `03` B.1–B.3, B.7–B.10) w kanonie VISION + PLAN Fala AI/BR; B.4–B.6 FourKites/BY/Kinaxis nietknięte.
-**2026-09-13:** Dump TMS top-10 (badania `04b` A–H × 10) w kanonie VISION + PLAN Fala AI/BR. CargoWise/Qargo/interLAN zostają w `04`.
-**2026-09-13:** Cloudflare = bramka publikacji (VISION B.8; PLAN park live public). Access ≠ Auth0 S53. Nie Q `/noc`.
-**2026-09-13:** Scalenie docs (Murphy/GPT filtr D.7, C.3 Grupa 8, PLAN żywy + `PLAN-HISTORIA.md`, leftover Plat-HD/Mob). Następny nadal **468.0**. Nie AI0. Nie Expo. Nie Valhalla.
-**2026-09-13:** Leftover GPT (D.7): definicja KPI per strona · brama L3 · SOP agenta · ulga nie sens · promień wybuchu — na AI5.0 / AI8.2 / GLOSSARY. Następny nadal **468.0**.
-**2026-09-13:** Kanon vs badania (D.8): leftover `07` na AI3 · mapa C.4 → C1/C8/C9/V5/X7–X9/F9–F11. Następny nadal **468.0**.
+**2026-09-13:** Plaster **468.0** zamknięty (`/noc`) — HITL `lcl_console_mark`.

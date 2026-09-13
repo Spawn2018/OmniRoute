@@ -83,6 +83,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | BR4.0 | Znacznik rezerwacji promu HITL | 466.0 `ferry_booking_mark` | **ukończony (HITL)** · kind booking/window/sailing/other; leftover live bilet / solver art. 9 |
 | BR4.1 | Znacznik zezwolenia OOG HITL | 467.0 `oog_permit_mark` | **ukończony (HITL)** · kind permit/pilot/route/other; leftover wymiary Decimal / live zezwolenie |
 | BR4.2 | Znacznik konsoli LCL HITL | 468.0 `lcl_console_mark` | **ukończony (HITL)** · kind console/cfs/other; leftover live CFS / CBM |
+| BR4.3 | Znacznik NAC HITL | 469.0 `nac_mark` | **ukończony (HITL)** · kind nac/nominated/agent/other; leftover live NAC / auto-send |
 | BR6.0 | Okazja CRM HITL | 456.0 `crm_opportunity` | **ukończony (HITL)** · stage open/won/lost/other; leftover activity / pipeline |
 | BR6.1 | Korytarz sprzedażowy HITL | 460.0 `sales_lane` | **ukończony (HITL)** · kind repeat/spot/other; leftover UN/LOCODE / wolumen |
 | BR6.2 | Tryb przetargu załadowcy HITL | 461.0 `shipper_tender_mark` | **ukończony (HITL)** · kind round/bench/spot/other; leftover rundy / like-for-like |

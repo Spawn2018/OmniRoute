@@ -874,6 +874,10 @@ class InvalidLclConsoleMark(DomainError):
     """BR4.2: HITL konsola LCL/CFS — nie live CFS / CBM."""
 
 
+class InvalidNacMark(DomainError):
+    """BR4.3: HITL NAC / agent nominowany — nie live NAC HTTP."""
+
+
 class InvalidLoadPlanMark(DomainError):
     """G6: HITL znacznik planu załadunku — nie solver OR."""
 

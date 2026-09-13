@@ -875,4 +875,5 @@
 
 - 2026-09-13T19:50:00Z | 467.0 | oog_permit_mark | DONE | HITL catalog permit_kind permit/pilot/route/other; bez wymiarów / live zezwolenia
 
+- 2026-09-13T23:45:00Z | 469.0 | nac_mark | DONE | HITL catalog nac_kind nac/nominated/agent/other; bez live NAC / FK stakeholder
 - 2026-09-13T23:05:00Z | 468.0 | lcl_console_mark | DONE | HITL catalog console_kind console/cfs/other; bez live CFS / CBM

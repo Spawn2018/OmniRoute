@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** plaster **469.0** HITL `nac_mark`. Nie live NAC HTTP. Nie FK do `shipment_stakeholder`.
+**Następny:** `/plan-modul` **BR4.4** korytarz Chiny-Europa (Jedwabny Szlak). Nie live HTTP. Nie zgaduj plaster ID.
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -750,7 +750,7 @@ Dump `03` / `04b`: WMS i BR6.2 evidenced; p44/LSP44 = dwie skóry jeden OpenAPI;
 | BR4.0 | promy: rezerwacja, okna, art. 9 | po T | **466.0** DONE HITL `ferry_booking_mark`; leftover live bilet · solver art. 9; art. 9 zostaje |
 | BR4.1 | ładunki ponadnormatywne: zezwolenia, pilotaż, trasa specjalna | po BR3.1 | **467.0** DONE HITL `oog_permit_mark`; leftover wymiary Decimal · live zezwolenie; G5 zostaje |
 | BR4.2 | konsolidacja morska LCL: konsole, CFS | po D | **468.0** DONE HITL `lcl_console_mark`; leftover live CFS · CBM; D6 zostaje |
-| BR4.3 | NAC i agent nominowany | po I | plan **469.0** HITL `nac_mark`; leftover live NAC · auto-send; I2/I3 zostają |
+| BR4.3 | NAC i agent nominowany | po I | **469.0** DONE HITL `nac_mark`; leftover live NAC · auto-send; I2/I3 zostają |
 | BR4.4 | korytarz Chiny-Europa (Jedwabny Szlak) | po BR3.0 | |
 | BR5.0 | faktoring — integracja z partnerem | po F | SMEO w osi wejścia |
 | BR5.1 | finansowanie zamówienia (PO Financing) | po BR1.2 + BR5.0 | rdzeń Trade-Tech |

@@ -137,6 +137,7 @@ from app.api import (
     monitoring_schemes,
     mqc_marks,
     multi_manning_marks,
+    nac_marks,
     named_place_marks,
     nbp_rates,
     ncts_drafts,
@@ -360,6 +361,7 @@ api_router.include_router(kreptd_licences.router)
 api_router.include_router(lane_patterns.router)
 api_router.include_router(lane_kms.router)
 api_router.include_router(lcl_console_marks.router)
+api_router.include_router(nac_marks.router)
 api_router.include_router(lc_checklists.router)
 api_router.include_router(language_code_marks.router)
 api_router.include_router(ncts_drafts.router)

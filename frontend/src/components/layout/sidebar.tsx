@@ -100,6 +100,7 @@ const NAV = [
   { to: "/ferry-booking-marks", label: "Rezerwacja promu" },
   { to: "/oog-permit-marks", label: "Zezwolenie OOG" },
   { to: "/lcl-console-marks", label: "Konsola LCL" },
+  { to: "/nac-marks", label: "NAC i agent" },
   { to: "/position-events", label: "Zdarzenie pozycji" },
   { to: "/telematics-devices", label: "Urządzenie telematyczne" },
   { to: "/tracking-consents", label: "Zgoda na śledzenie" },

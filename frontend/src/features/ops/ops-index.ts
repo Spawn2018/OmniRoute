@@ -589,6 +589,11 @@ export const OPS_JOBS = [
     job: "katalog lcl_console_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.nacMark.route,
+    label: "NAC i agent nominowany",
+    job: "katalog nac_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.loadOrderMark.route,
     label: "Kolejność załadunku",
     job: "katalog load_order_mark HITL",
@@ -1603,6 +1608,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "466.0": "/ferry-booking-marks",
   "467.0": "/oog-permit-marks",
   "468.0": "/lcl-console-marks",
+  "469.0": "/nac-marks",
   "267.0": "/lane-kms",
   "268.0": "/erp-connectors",
   "269.0": "/terminal-slot-connectors",
