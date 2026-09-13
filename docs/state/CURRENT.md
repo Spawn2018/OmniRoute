@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **430.0** EXP1 HITL `quote_currency_mark`
 
-**Etap:** Plan — **431.0** EXP1
+**Etap:** Plan — **431.0** EXP1 (delta zaakceptowana `/noc`, wolno `/plaster`)
 
-**Noc:** `/noc` **stop** (2026-09-13). Nie startuj nowej nocy bez polecenia.
+**Noc:** `/noc 11` do **2026-09-13T11:00+02**.
 
 **Następny:** **431.0** EXP1 HITL `quote_validity_mark` (open|revised|superseded|other) — leftover valid_until/revision.
 
 Park: Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj 71–431.
 
-**Spec (jedyna na sesję):** (brak — plan 431.0).
+**Spec (jedyna na sesję):** [docs/deltas/open/431.0-quote-validity-mark.md](../deltas/open/431.0-quote-validity-mark.md).
 
 **Kanon:** [docs/PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [docs/VISION.md](../VISION.md).
 
