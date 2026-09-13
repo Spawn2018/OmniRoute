@@ -74,6 +74,7 @@ Lokalny `just gate` zbiera `code-gate` i `meta-gate`. Playground Swagger/ReDoc j
 |---|---|
 | Co robić w tej sesji | [docs/state/CURRENT.md](docs/state/CURRENT.md) |
 | Jedyny plan realizacji | [docs/PLAN-REALIZACJA.md](docs/PLAN-REALIZACJA.md) |
+| Żywa wizja produktu | [docs/VISION.md](docs/VISION.md) |
 | Kontrakt agenta | [AGENTS.md](AGENTS.md) |
 | Twarde ograniczenia (HC) | [GROUNDING.md](GROUNDING.md) |
 | Słownik PL/EN | [docs/GLOSSARY.md](docs/GLOSSARY.md) |

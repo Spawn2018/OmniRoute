@@ -35,6 +35,7 @@ flowchart LR
 | Plik | Rola |
 |---|---|
 | **ten dokument** | Jedyny plan: oś, reguły, honesty gate, co dalej. |
+| [VISION.md](VISION.md) | Żywa wizja produktu (2026-09-13): dwie strony rynku, substrat pomiaru, Fala AI/BR. |
 | [CURRENT.md](state/CURRENT.md) | Co jest „teraz” w tej sesji (ostatni plaster, następny, spec). |
 | [PROGRESS.md](state/PROGRESS.md) | Historia plastrów — fakty, nie kolejka. |
 | [MODULES.md](MODULES.md) | **Żywy** rejestr: tylko to, co jest w kodzie (+ M-02 parked aż S16). Kolejka Q, Q-E i Fala S: ten dokument § Kolejka. |
@@ -47,7 +48,7 @@ Dwa katalogi to nie dwa produkty. Archiwum = magazyn specyfikacji. `MODULES.md` 
 
 ## Cel produktu
 
-Wielodostępna platforma spedycyjna na sprzedaż: stawki, wyceny, zlecenia; wielu tenantów; ruch produkcyjny. Horyzont „12m” = standing rules i anti-cele, nie „czekaj rok na moduły”.
+Wielodostępna platforma spedycyjna na sprzedaż: stawki, wyceny, zlecenia; wielu tenantów; ruch produkcyjny. Dwie strony rynku (wykonawca + zleceniodawca) i pomiar naukowy podpowiedzi: [VISION.md](VISION.md). Horyzont „12m” = standing rules i anti-cele, nie „czekaj rok na moduły”.
 
 ## Cel jakości (4,4–5)
 
@@ -57,7 +58,7 @@ Nota **4,4–5** stawia karta i diff — nie prompt „pisz jak senior”. Kalib
 
 Trzy twarde reguły: (1) szybkość jest liczbą z budżetu AGENTS albo jawnym N/A — k6-echo nie zamyka; (2) dług ukryty zakazany — wiersz w [docs-debt.md](ops/docs-debt.md) z „dlaczego” albo gwoźdź w diffie; (3) komentarz mówi *dlaczego* (ustawa, HC), linia powtarzająca kod obniża notę. Dokumentacja programu ≠ `AGENTS.md`.
 
-Procedura nie jedzie „aż 5,0 sama”. Hamulec: karta [post-plaster.md](ops/post-plaster.md). Spłata starego 3,x: `/refaktor` (max 3). Kolejka: **Fala E** (zamknięta), **Fala S** (pogłębienia; live Auth0/portale/M-02 konsument gdy CURRENT wskaże to Q), potem **P0** + oś pinu **2026-09-08c** (O/I/U/T/D/P/G2/F/C/V/W/X/WA/Plat/Demo/CT/CI/G/EXP/K0). Leftover HITL/SQL **nie** jest skipem nocy. F9.1 bez żywej nazwy aż wiersze **S56–S58** (zamknięte). Nie zgaduj 71–212. Puste ID zostają puste.
+Procedura nie jedzie „aż 5,0 sama”. Hamulec: karta [post-plaster.md](ops/post-plaster.md). Spłata starego 3,x: `/refaktor` (max 3). Kolejka: **Fala E** (zamknięta), **Fala S** (pogłębienia; live Auth0/portale/M-02 konsument gdy CURRENT wskaże to Q), potem **P0** + oś pinu **2026-09-08c** (O/I/U/T/D/P/G2/F/C/V/W/X/WA/Plat/Demo/CT/CI/G/EXP/K0), potem **Fala AI** (silniki nad HITL) i **Fala BR** (moduły brakujące; start HHL: BR3.0 / BR6.0 / BR2.0). Leftover HITL/SQL **nie** jest skipem nocy. F9.1 bez żywej nazwy aż wiersze **S56–S58** (zamknięte). Nie zgaduj 71–212. Puste ID zostają puste.
 
 ---
 
@@ -478,7 +479,7 @@ Po S59 named parks **live** (S53 Auth0, S55 ogólnik portali, S21, S50, S54, S59
 
 Pin operatora **2026-09-08c** (akceptacja „Luki i ulepszenia”): **nic nie wypada**. Oś:
 
-`P0 → O0 → M10-1/M10-2 → B0a → O1–O3 → I0/U2 → O4–O8 → N5 → U1+U5 → I1–I4 → U4 → T1–T8 → B0b → U3 → D1–D9 → P1–P6 → G2.0–G2.23 → F1–F11 → C1–C9 → V1–V8 → W1–W5 → S53 → X1–X9 → WA1 → Plat → Demo-1 → CT1–CT12 → CI9 → CI1–CI8 → G1+G3–G17 → EXP2–EXP8 (co nie wkleiło się w falę) → Mob → K0`
+`P0 → O0 → M10-1/M10-2 → B0a → O1–O3 → I0/U2 → O4–O8 → N5 → U1+U5 → I1–I4 → U4 → T1–T8 → B0b → U3 → D1–D9 → P1–P6 → G2.0–G2.23 → F1–F11 → C1–C9 → V1–V8 → W1–W5 → S53 → X1–X9 → WA1 → Plat → Demo-1 → CT1–CT12 → CI9 → CI1–CI8 → G1+G3–G17 → EXP2–EXP8 (co nie wkleiło się w falę) → Mob → K0 → Fala AI → Fala BR`
 
 Klej (nie osobny rok): **U6** + **M-72** = DoD każdego UI; **N** i **A** wchodzą z falą w kolumnie „Gdzie”; **EXP0/EXP1** = pola przy `/plan-modul` obiektu. Fala **X** i **Mob** po **S53**. `/noc` nie zgaduje S53 przy cutoffie T3; S53 rusza gdy CURRENT dojdzie do tego wiersza. Park = brak testu HTTP / sekretu na **live**, nie skip leftoveru HITL.
 
@@ -494,7 +495,7 @@ Protokół nocy: [nocna-zmiana.md](ops/nocna-zmiana.md). Lista API operatora: [a
 
 Karty: [karty-pol-fala-o.md](analysis/karty-pol-fala-o.md) · [i](analysis/karty-pol-fala-i.md) · [u](analysis/karty-pol-fala-u.md) · [n](analysis/karty-pol-fala-n.md) · [a](analysis/karty-pol-fala-a.md) · [t](analysis/karty-pol-fala-t.md) · [d](analysis/karty-pol-fala-d.md) · [p](analysis/karty-pol-fala-p.md) · [f](analysis/karty-pol-fala-f.md) · [c](analysis/karty-pol-fala-c.md) · [v](analysis/karty-pol-fala-v.md) · [w](analysis/karty-pol-fala-w.md) · [x](analysis/karty-pol-fala-x.md) · [g](analysis/karty-pol-fala-g.md) · [g2](analysis/karty-pol-g2-tender.md) · [ci](analysis/karty-pol-fala-ci.md) · [ct](analysis/karty-pol-fala-ct.md) · [plat](analysis/karty-pol-fala-plat.md) · [exp](analysis/karty-pol-fala-exp.md). Pola: [pola-wizja-2026-09.md](analysis/pola-wizja-2026-09.md).
 
-Reguły: tabela+RLS przed HTTP; TO_VERIFY = park, nie teatr API; WIP=1; `/plan-modul` potem `/plaster`; LLM nie liczy; HITL zostaje; `charge` = marża; umowy CI = CI9 (zero AI, zero super-admina); zakaz scrapingu; zakaz copy „8 min / 15k userów / 500k od ręki / −12% Bayer jako nasza liczba”.
+Reguły: tabela+RLS przed HTTP; TO_VERIFY = park, nie teatr API; WIP=1; `/plan-modul` potem `/plaster`; LLM nie liczy; HITL zostaje; `charge` = marża; umowy CI = CI9 (zero AI w API operatora tenanta; SuperAdmin ma pełny dostęp poza tym API — decyzja 13 IX); zakaz scrapingu; zakaz copy „8 min / 15k userów / 500k od ręki / −12% Bayer jako nasza liczba”.
 
 ### Leftover P0 + M10 + B0a + Fala O + Fala I — **następna oś**
 
@@ -603,7 +604,7 @@ Karta: [karty-pol-g2-tender.md](analysis/karty-pol-g2-tender.md). P6 = oferty od
 
 | ID | Co | Status | Uwagi |
 |---|---|---|---|
-| F1 | KSeF live FA(3) + VAT matrix N12 | po S35 | mandat 2026; nie LLM VAT |
+| F1 | KSeF live FA(3) + VAT matrix N12 | po S35 | mandat 2026; nie LLM VAT; dump `04b`: KSeF/JPK nie publiczne u TMS top-10 — leftover fiskalne PL nasze |
 | F2–F4 | skonto, noty, CAMT+HITL + period lock N13 | zamknięty HITL F2 katalog ([189.0](deltas/archived/189.0-cash-discount.md)); leftover Decimal / F3 noty / F4 CAMT | karta [karty-pol-fala-f.md](analysis/karty-pol-fala-f.md) |
 | **N2** | `trips_to_bill` | po T2+F1 | |
 | F5 / F7 | diety / faktoring | TO_VERIFY | nie LLM diet |
@@ -620,7 +621,7 @@ Karta: [karty-pol-g2-tender.md](analysis/karty-pol-g2-tender.md). P6 = oferty od
 
 | ID | Co | Status | Uwagi |
 |---|---|---|---|
-| C1 / C6–C8 | SENT, BDO, `monitoring_scheme`, `party_document` 409 + KREPTD C8 | zamknięty HITL C7 katalog ([187.0](deltas/archived/187.0-monitoring-scheme.md)); zamknięty HITL C8 katalog ([188.0](deltas/archived/188.0-party-document.md)); leftover C1 filing / 409 / `relation_document_requirement` | karta [karty-pol-fala-c.md](analysis/karty-pol-fala-c.md) |
+| C1 / C6–C8 | SENT, BDO, `monitoring_scheme`, `party_document` 409 + KREPTD C8 | zamknięty HITL C7 katalog ([187.0](deltas/archived/187.0-monitoring-scheme.md)); zamknięty HITL C8 katalog ([188.0](deltas/archived/188.0-party-document.md)); leftover C1 filing / 409 / `relation_document_requirement` | karta [karty-pol-fala-c.md](analysis/karty-pol-fala-c.md); dump `04b`: SENT nie publiczne u TMS top-10 |
 | C2 | AIS/AES/Intrastat | TO_VERIFY PUESC | |
 | C3–C5 / C9 | lookup live, eCMR 2027 (EXP2.18), CO₂+metodyka, Trans.eu snapshot | zamknięty HITL C5 katalog ([190.0](deltas/archived/190.0-carbon-method.md)); leftover C3 live VIES/GUS / C4 eCMR / C9 Trans.eu | C9 bez scrapingu opinii |
 | **EXP0.8** | `cargo_claim` deadline CMR 7/21/365 + OS&D | zamknięty HITL OS&D + terminy ([191.0](deltas/archived/191.0-cargo-claim-cmr.md)); leftover Deadline Engine / evidence / S11 | nie kwota z LLM |
@@ -630,14 +631,14 @@ Karta: [karty-pol-g2-tender.md](analysis/karty-pol-g2-tender.md). P6 = oferty od
 
 | ID | Co | Status | Uwagi |
 |---|---|---|---|
-| V1 | Prediction Ledger + N7 przedział/kalibracja | zamknięty HITL CRPS/MAE ([193.0](deltas/archived/193.0-prediction-ledger.md)); leftover champion/challenger / drift | punkt bez CRPS = zakaz |
+| V1 | Prediction Ledger + N7 przedział/kalibracja | zamknięty HITL CRPS/MAE ([193.0](deltas/archived/193.0-prediction-ledger.md)); leftover champion/challenger / drift | punkt bez CRPS = zakaz; dump CT `03`: p44 PLANNED/ACTUAL/ESTIMATE analog, vendor bez CRPS/MAE — leftover AI2 liczy; Triple SLA Shippeo ZA LOGOWANIEM, nie claimować; dump `04b`: Oracle LML 95% interval = metoda, nie CRPS; ledger HITL aż AI2 |
 | V2 / V2b | ETA **dwa czasy** `eta_physical`/`eta_legal` + pogoda; myto → `charge`+`source_ref` | ETA HITL zamknięte ([194.0](deltas/archived/194.0-stop-eta.md)); pogoda HITL zamknięta ([195.0](deltas/archived/195.0-weather-observation.md)); leftover Open-Meteo / geometria / myto | brak taryfy = warning |
 | V3 | D&D / rollover + zegar N3 + blank sailing EXP2.7 | zamknięty HITL katalog ([196.0](deltas/archived/196.0-free-time-clock.md)); leftover N3 countdown / szkic charge / kolumny na container / blank sailing | |
 | V4 | AIS wieży | leftover S32 | nie V5 |
 | V5 / V5b | hub GPS; `omni_telematic` vs `external_api` 3 dni **robocze** (U4) | zamknięty HITL katalog ([197.0](deltas/archived/197.0-telematics-connector.md)); leftover `position_event` / ciphertext / 3 dni U4 / V5b | zero własnego HW |
-| V6 | wieża impact; bez `sla_clause` = „brak danych umowy” (EXP0.1 → CI5) | zamknięty HITL katalog ([198.0](deltas/archived/198.0-tower-impact.md)); leftover silnik EBITDA / `sla_clause` CI5 / V8 | nie scoring osoby |
+| V6 | wieża impact; bez `sla_clause` = „brak danych umowy” (EXP0.1 → CI5) | zamknięty HITL katalog ([198.0](deltas/archived/198.0-tower-impact.md)); leftover silnik EBITDA / `sla_clause` CI5 / V8 | nie scoring osoby; dump CT `03`: GTT planned+tolerance / unplanned / XRI — leftover silnik, otwarty słownik milestone (nie lista w kodzie) |
 | V7 | tacho / posting; TO_VERIFY prawo | | apka nie poprawia firmware |
-| V8 | what-if na `plan_snapshot` (paliwo/port/bankructwo) EXP2.10 | po B0b | nie „AI widzi wojnę” |
+| V8 | what-if na `plan_snapshot` (paliwo/port/bankructwo) EXP2.10 | po B0b | nie „AI widzi wojnę”; dump `04b`: LML/Optimizer/Archer/what-if u konkurencji = runtime; u nas HITL aż AI4.1 |
 
 ### Fala W — twins / war room (po V)
 
@@ -645,7 +646,7 @@ Karta: [karty-pol-fala-w.md](analysis/karty-pol-fala-w.md).
 
 | ID | Co | Status | Poza |
 |---|---|---|---|
-| W1 | 8 twinów (pojazd, kierowca, kontener, zlecenie, sieć, plan, urząd, ładunek) | zamknięty HITL katalog ([199.0](deltas/archived/199.0-twin-mark.md)); `plan_snapshot` DONE 265.0; `circle_sim` HITL DONE 266.0; leftover 8 silników | twin ≠ fizyka; kółka HITL = G2.20 |
+| W1 | 8 twinów (pojazd, kierowca, kontener, zlecenie, sieć, plan, urząd, ładunek) | zamknięty HITL katalog ([199.0](deltas/archived/199.0-twin-mark.md)); `plan_snapshot` DONE 265.0; `circle_sim` HITL DONE 266.0; leftover 8 silników | twin ≠ fizyka; kółka HITL = G2.20; dump CT `03`: leftover 8 silników zostaje (nie nowy katalog HITL); FourKites twins = B.4 nietknięte |
 | W2 | war room + koalescencja N8 | zamknięty HITL katalog ([200.0](deltas/archived/200.0-war-room-mark.md)); leftover N8 / T8 live API / widok sklejony | drugi czat |
 | W3 | memory graph na `entity_event` | 201.0 HITL `memory_edge` [delta](deltas/archived/201.0-memory-edge.md); leftover graf / pgvector / FK zdarzeń | RAG na stawkach / umowach CI |
 | W4 | Executive AI = narracja po SQL | 202.0 HITL `executive_mark` [delta](deltas/archived/202.0-executive-mark.md); leftover zdania SQL / 117.0 | LLM sumuje |
@@ -735,6 +736,83 @@ Karta: [karty-pol-fala-g.md](analysis/karty-pol-fala-g.md). G2 wyżej.
 ### Fala EXP — silniki i pola, które nie wkleiły się wyżej
 
 Pełna lista: [karty-pol-fala-exp.md](analysis/karty-pol-fala-exp.md). `/noc` po G: kolejne EXP2.x / EXP3.x / EXP4.x / EXP5.x których jeszcze nie ma w T–CI. EXP0 = poprawka przy pierwszej fali obiektu. EXP8 = świadome odrzuty (zostają).
+
+### Fala AI — silniki nad katalogami HITL (podnosi V, W, CT, CI)
+
+Wizja: [VISION.md](VISION.md). Ta fala **nie dokłada katalogów** — dobudowuje warstwę liczącą pod katalogi zamknięte w V/W/CT/CI.
+`charge.source_ref` jest w kodzie (plaster 129.0, migracja 072) — **AI0 nie jest następnym plastrem**. Pierwszy silnik = **AI1.0**. Kolejność twarda: AI1 → AI2 → reszta. AI4 i AI8.2 odblokowane decyzjami Q1–Q3 (13 IX).
+
+Dump CT 2026-09-13 (badania `03` B.1–B.3, B.7–B.10; B.4–B.6 FourKites/BY/Kinaxis nietknięte) **potwierdza leftover silników** — bez nowych katalogów HITL. Oracle `perspective` / `sellShipments` / `calculateDirectCostBuy`|`Sell` = antywzorzec (zostaje jeden `charge` + `margin()`). p44 `PLANNED` / `ACTUAL` / `ESTIMATE` = analog AI1/AI2 (`entity_event` / `prediction_ledger`); CRPS/MAE liczy nasze AI2, nie vendor. Auto-approve (LSP44 „80%+ auto-resolve”, Infor „without manual intervention”, Oracle `autoApproveAdjustedCosts`) = zakaz; agenci tylko za `operator_decision`.
+
+Dump TMS 2026-09-13 (badania `04b` A–H × 10; CargoWise/Qargo/interLAN zostają w `04`) — komplementarny do dumpa CT. Bez drugiej marży (SAP `Profitability` / Oracle `Job.Profit` / Shipwell dwa stosy + `markup`). Bez AI-write „bo MQ ma” (Shipwell Swifty/MCP, Uber 30+ agents, SAP calc on save). WMS + BR6.2 evidenced (Manhattan Active / Infios Archer / SAP EWM; Alpega TenderEasy + Freight Bench, nie auto-award). Uber Freight = konflikt osi danych HHL — nie kopiować live CT/GPS. KSeF/JPK/SENT nie publiczne u dziesiątki — leftover fiskalne PL nasze. Leftover silniki (VSR, LML, Optimizer, Archer, what-if) zostają HITL + `suggestion_ledger` (AI1.0 po 431.0). 431.0 `quote_validity_mark` nie wynika z tej dziesiątki.
+
+| ID | Co | Status | Uwagi |
+|---|---|---|---|
+| **AI0** | `charge.source_ref` — pochodzenie kwoty na opłacie | **DONE w kodzie** (129.0 / 072) | nullable stare fixture; obowiązkowe na nowym INSERT (`require_source_ref`) |
+| AI1.0 | `suggestion_ledger` — każda podpowiedź: BC, encja, przedział/pewność, wersja modelu i promptu, reakcja człowieka `accept\|modify\|reject` **i na co zmienił** | pierwsze silniki (po leftover EXP1 pinu) | jedna tabela = sygnał uczenia + obserwacja bliźniaka + baza pomiaru; dump `04b`: leftover silniki MQ (VSR/LML/Optimizer/Archer/what-if) zostają HITL aż AI1.0; 431.0 nie implikuje silnika |
+| AI1.1 | `outcome_ledger` — co się naprawdę stało | po AI1.0 | złączenie z AI1.0 daje metryki liczone, nie wpisywane |
+| AI1.2 | `counterfactual_run` — scenariusz, punkt odniesienia, dźwignie, wynik; niemutowalny | po AI1.0 | bliźniak operacyjnie; podnosi W1 leftover silników |
+| AI1.3 | `benefit_ledger` — zaoszczędzony czas i pieniądze **z jawną metodą punktu odniesienia** | po AI0 + AI1.1 | bez zapisanej metody liczba jest nieweryfikowalna; dump `04b`: druga marża SAP/Oracle/Shipwell = zakaz |
+| AI1.4 | Słowniki otwarte: `twin_kind`, `data_source`, `autonomy_level`, `suggestion_kind` | po AI1.0 | rodzaj bytu = wiersz, nie `CHECK` ani `ENUM` |
+| AI2.0 | CRPS, Brier, MAE **liczone** ze złączenia AI1.0×AI1.1 | po AI1.1 | podnosi V1 leftover champion/challenger / drift; dump `04b`: Oracle LML 95% interval = metoda, nie CRPS/MAE; `prediction_ledger` HITL aż AI2 |
+| AI2.1 | champion/challenger + wykrywanie dryfu | po AI2.0 | V1 leftover |
+| AI3.0 | `PATCH` na `extraction_draft` + edycja w interfejsie przed akceptacją | po AI2.0 | dziś accept/reject zmienia tylko status |
+| AI3.1 | wersjonowanie szkicu + `draft_kind` + `bbox` i pewność w JSONB | po AI3.0 | rozszerzenie istniejącego obiektu |
+| AI3.2 | ścieżka **obraz wprost** jako challenger dla obecnej ścieżki przez tekst | po AI3.1 | preprint 96,50% / 92,71% vs markdown — faktury, nie taryfy; mierzyć u siebie; wolno cytować z caveat (Q8) |
+| AI3.3 | własny zbiór golden + bramka wydaniowa na progach | po AI3.2 | 96,6% i 92,71% = cel z bramką na **własnym** zbiorze |
+| AI3.4 | ekstrakcja z Excela (dziś tylko PDF) | po AI3.1 | taryfy częściej w Excelu |
+| AI4.0 | `plan_snapshot` z FK do shipment/trip/resource | po AI1; **Q3=tak** | `ON DELETE RESTRICT`; nadal zakaz UPDATE/DELETE wiersza snapshot |
+| AI4.1 | silnik what-if na `counterfactual_run` | po AI4.0 | podnosi V8 i W1; dump `04b`: what-if/Optimizer/Archer u konkurencji = runtime, u nas HITL aż ten wiersz |
+| AI4.2 | symulacja kółek **w SQL**, do 500k wariantów | po AI4.1 | nie w Pythonie; podnosi G2.20 |
+| AI5.0 | warstwa ingest danych zewnętrznych + `data_source` z licencją | po AI1.4 | katalog: badania `09` / `10` |
+| AI5.1 | cechy modelu predykcyjnego z danych zewnętrznych | po AI5.0 | podnosi V2/V4 |
+| AI6.0 | graf skutku biznesowego: Shipment → Inventory → SKU → Production Line → Customer Order → Revenue → Margin → Cash | po AI5.1 + CI1 | Watch Tower technicznie; podnosi V6 leftover EBITDA i CT |
+| AI7.0 | Cost Allocation Engine — 12 poziomów, 6 kategorii, 23 klucze → `TRUE CONTRIBUTION MARGIN` | po AI0 | marża zostaje w `margin()` |
+| AI7.1 | Cyfrowy CFO — narracja **po** SQL, nigdy zamiast | po AI7.0 | anomalia nie jest dowodem; model nie liczy |
+| AI8.0 | kaskada stylu Global → Company → Department → User → Customer → Person-to-Person → Context | po AI2.0 | bliźniak osoby = styl i relacja, nigdy ocena wyników |
+| AI8.1 | `STYLE FIDELITY SCORE`, bramka 85% | po AI8.0 | szkic niebrzmiący jak ten użytkownik nie jest proponowany |
+| AI8.2 | poziomy autonomii 0–5 jako dana per tenant i per klient, domyślnie 1 | po AI9.2; **Q1=tak** | L0–2 bez zapisu AI; L3–5 tylko w zapisanych granicach + audit; auto-zejście jakości przed L3 (Q2); dump `04b`: Shipwell/Uber/SAP AI-write = zakaz; MQ nie zdejmuje HC-04 |
+| AI9.0 | etykieta art. 50 przy treści z modelu | równolegle od AI3 | AI Act |
+| AI9.1 | przeciwdziałanie automation bias w interfejsie | równolegle od AI3 | AI Act art. 14 ust. 4 lit. b |
+| AI9.2 | rejestr ryzyka + program zgodności | przed AI8.2 | warunek wejścia na poziom 3 |
+
+### Fala BR — moduły brakujące (równolegle do AI, nie po niej)
+
+Uzasadnienie: [VISION.md](VISION.md) część C.3. Nie zależą od substratu AI — zależą od osi wejścia (A.5): telematyka przed silnikiem stawek, WMS przed strumieniem Trade-Tech. Start HHL (Q9): **BR3.0**, **BR6.0**, **BR2.0**. Q10: druga ścieżka nasycenia danymi, jeśli telematyka HHL opóźniona.
+
+Dump CT: Shippeo ≠ Overhaul (Shippeo 04.05.2026 = Logward / execution; Overhaul = ryzyko ładunku). p44 i LSP44 (14.07.2026) = dwa GTM, **ten sam** OpenAPI v4 — jedna baza, dwie skóry, nie dwa codebase’y. Wzorzec publikacji benchmarku solvera (o9 cuOpt 23.07.2026: ~30 mln zmiennych, 57,4 s vs 661,7 s, Δ objective 0,008%) — do BR3.0 (Valhalla/solver liczy, nie LLM). e2open w grupie WiseTech od 03–04.08.2025 (INTTRA + Harmony + CargoWise) — nie dublować CargoWise+Harmony; Harmony Agent bez HITL = zakaz.
+
+Dump TMS `04b`: WMS nie jest dekoracją (Manhattan Active TM+WMS+Yard+Labour, Infios Archer OMS/WMS/TMS, SAP EWM) — wzmacnia **BR1.0** (Zbrudzewo / Trade-Tech), nie live yard/T8. **BR6.2** = Alpega TenderEasy + Freight Bench (multi-round, like-for-like, spot; nie auto-award). e2open ≠ CargoWise (close 03.08.2025, „very little product overlap”) — holding ma nogę LSP i nogę shipper/network; nie obiecywać Harmony+CargoWise jako jednego produktu. Uber Freight konkuruje o „kto jeździ gdzie i za ile” — konflikt z darmową telematyką HHL (**BR2.0** zostaje `position_event`, nie live GPS).
+
+| ID | Co | Status | Uwagi |
+|---|---|---|---|
+| BR1.0 | WMS: przyjęcie, lokalizacja, kompletacja, wydanie, inwentaryzacja | rozstrzygnięte: **w zakresie** | warunek Trade-Tech; magazyn w Zbrudzewie; dump `04b`: Manhattan Active / Infios Archer / SAP EWM — WMS nie dekoracja |
+| BR1.1 | RFID i identyfikacja automatyczna | po BR1.0 | czytniki, bramki, znakowanie |
+| BR1.2 | zapas jako obiekt finansowy: wycena, wiekowanie, Inventory Release | po BR1.0 | bez tego nie ma zastawu na towarze |
+| BR2.0 | `position_event` — pozycja jako osobny byt | **start HHL** (po leftover V5) | `tracking_event` nie jest GPS; dump `04b`: Uber Freight konflikt osi danych; nie live GPS |
+| BR2.1 | urządzenia telematyczne: cykl życia, parowanie z pojazdem, awarie | po BR2.0 | OmniTelematics |
+| BR2.2 | zgoda na śledzenie jako dana, per kontrahent i per kierowca | po BR2.0 | `party_contact.tracking_consent` |
+| BR2.3 | aplikacja kierowcy: zlecenie, POD, skan, status, tryb offline | po BR2.1 | wzorzec offline: Briefcase Builder |
+| BR3.0 | planowanie tras — **solver, nie model językowy** | **start HHL** | Valhalla (MIT) wygrywa z ORS/VROOM na licencji |
+| BR3.1 | planowanie załadunku: osie, wymiary, kolejność, tunele | po BR3.0 | podnosi G6 |
+| BR3.2 | dyspozytor drobnicy: linie, huby, cutoffy, konsolidacja | po D1/D5 | |
+| BR3.3 | tacho jako **ograniczenie planu**, nie raport po fakcie | po BR3.0 + V7 | |
+| BR4.0 | promy: rezerwacja, okna, art. 9 | po T | podnosi EXP2.13 |
+| BR4.1 | ładunki ponadnormatywne: zezwolenia, pilotaż, trasa specjalna | po BR3.1 | podnosi G5 |
+| BR4.2 | konsolidacja morska LCL: konsole, CFS | po D | |
+| BR4.3 | NAC i agent nominowany | po I | rola w przepływie dokumentowym |
+| BR4.4 | korytarz Chiny-Europa (Jedwabny Szlak) | po BR3.0 | |
+| BR5.0 | faktoring — integracja z partnerem | po F | SMEO w osi wejścia |
+| BR5.1 | finansowanie zamówienia (PO Financing) | po BR1.2 + BR5.0 | rdzeń Trade-Tech |
+| BR5.2 | giełdy transportowe: wymiana ofert | po S55 | dziś tylko katalog konektora |
+| BR6.0 | CRM ponad leada: okazja, aktywność, pipeline | **start HHL** | dziś wyłącznie `crm_lead` |
+| BR6.1 | **korytarz jako obiekt sprzedażowy** | po BR6.0 | HubSpot/Salesforce nie mają „lane” |
+| BR6.2 | przetargi korporacyjne po stronie załadowcy | po G2 | druga strona istniejącego `tender`; dump `04b`: Alpega TenderEasy + Freight Bench (multi-round, like-for-like, spot); nie auto-award |
+| BR6.3 | aplikacja mobilna sprzedaży iOS/Android | po BR6.0 | Expo/RN; web UI się nie przenosi |
+| BR6.4 | portale: klienta, przewoźnika, podwykonawcy | po S53 | zbieżne z X1–X5 |
+| BR6.5 | marketing: kampanie, atrybucja, lejek | po BR6.0 | |
+| BR7.0 | sala operacyjna — warstwa działająca | po W2 leftover | dziś tylko katalog rodzaju incydentu |
+| BR7.1 | wpływ na linię produkcyjną — warstwa liczona | po AI6.0 | dziś tylko katalog znacznika |
 
 ### Fala K — katalog 71–212
 

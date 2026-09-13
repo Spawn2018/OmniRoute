@@ -76,6 +76,8 @@ PostgreSQL 16 · OpenFGA · Langfuse (trace, no-op bez kluczy) · PostHog
 ## Dokumentacja
 
 - Stan: `docs/state/CURRENT.md`
+- Wizja: `docs/VISION.md`
+- Plan: `docs/PLAN-REALIZACJA.md`
 - ADR: `docs/adr/`
 - Spec: `docs/spec/`
 - Knowledge (retrieve, nie dump): `docs/_knowledge/`

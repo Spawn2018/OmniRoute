@@ -28,6 +28,7 @@ zakazane, aż będzie realne zdarzenie async między BC albo wektor. JWT hello �
 | Decyzje | `docs/adr/` |
 | Bieżące zadanie | `docs/state/CURRENT.md` |
 | Plan realizacji (jedyny) | `docs/PLAN-REALIZACJA.md` |
+| Żywa wizja | `docs/VISION.md` · `.cursor/rules/wizja-zywa.mdc` |
 | Historia plastrów | `docs/state/PROGRESS.md` |
 
 `Informacje z claude/` zostaje na dysku; **nie ładuj** (`.cursorignore`).
@@ -123,5 +124,5 @@ Przekroczenie blokuje merge.
 - Sekrety nigdy w kodzie. `.env` w `.gitignore`. CI/produkcja: **GitHub Encrypted Secrets**.
   **Zakaz Infisical.**
 - Każdy endpoint ma jawną deklarację uprawnień. Brak = odmowa.
-- Wejście zewnętrzne: cel HC = llm-guard + presidio; dziś guard regex, presidio = 0.10+.
+- Wejście zewnętrzne: dziś guard regex, presidio = 0.10+. Pakiet `llm-guard` jest **zarchiwizowany** — nie cel HC; nowy strażnik ML = osobna decyzja.
 - Zapytania SQL generowane przez model przechodzą przez `sqlglot` przed wykonaniem.

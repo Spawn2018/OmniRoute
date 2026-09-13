@@ -21,11 +21,12 @@
 - Stawki niemutowalne; zmiana = nowy rekord + `superseded_by`.
 - Ekstrakcja wymaga `unparsed_regions` w odpowiedzi.
 
-## HC-04 Zero write-autonomii AI
+## HC-04 Zapis AI tylko w granicach autonomii
 
-- AI generuje propozycję (JSON/intent). **Nie zapisuje** do bazy produkcyjnej.
-- Zapis tylko przez `service` po walidacji Pydantic + regułach biznesowych.
-- Ekstrakcja wymaga akceptacji człowieka przed zapisem.
+- Poziomy **0–2** (domyślnie 1): AI generuje propozycję (JSON/intent). **Nie zapisuje** do bazy produkcyjnej. Zapis tylko przez `service` po walidacji Pydantic + regułach biznesowych. Ekstrakcja wymaga akceptacji człowieka przed zapisem.
+- Poziomy **3–5**: AI może zapisać **wyłącznie** w granicach zapisanych jako dana (per tenant, per klient) + wiersz w dzienniku audytu. Poza granicą = odmowa.
+- Automatyczne zejście poziomu przy spadku jakości (CRPS / Brier / MAE / fidelity) **zanim** jakikolwiek tenant dostanie poziom 3.
+- L3–5 nie zdejmuje `source_ref`, Decimal ani `charge` = marża. LLM **nadal nie liczy**.
 
 ## HC-05 Bezpieczeństwo i sekrety
 

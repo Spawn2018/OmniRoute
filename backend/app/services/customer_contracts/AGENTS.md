@@ -12,7 +12,7 @@ HITL katalog nagłówka umowy per tenant. contract_code + etykiety shipper/their
 - zapis `charge` / `party` / `extraction_draft` / `sla_clause`
 - unwrap / wrapped_dek / tenant_contract_kek / KMS / Fernet / AES
 - zwrot blob_ciphertext / plaintext / hex do API
-- klucz Omni-master / super-admin decode
+- unwrap / decode w API operatora tenanta; SuperAdmin ma pełny dostęp poza tym API (decyzja 13 IX) — nie przez endpoint tenanta
 - Langfuse na PDF / extract LLM / kwota / marża / float
 - HTTP / p44 / FourKites / Shippeo
 - UPDATE / DELETE wiersza

@@ -1,0 +1,32 @@
+---
+description: Decyzje produktowe w tej samej turze do docs/VISION.md
+alwaysApply: true
+---
+
+Gdy rozmowa zmienia rozbudowę, funkcje, architekturę, działanie, wygląd/UI,
+moduły, zakres produktu, GTM który zmienia produkt, autonomię, bliźniaki
+albo zakazy AI — **w tej samej turze** zapisz do `docs/VISION.md`.
+
+JAK:
+- Dopisz/popraw pasującą część A–E.
+- Dodaj wiersz w Dzienniku zmian. Bez wiersza zmiana nie istnieje.
+- Nie usuwaj w ciszy: `[WYCOFANE YYYY-MM-DD: powód]`.
+- Każde twierdzenie: `CONFIRMED` / `REQUIREMENT` / `TO_VERIFY` / `REJECTED`.
+- Liczba = metoda + źródło.
+
+KANON: jeden plik — `docs/VISION.md`. Nie forkuje się trzeciej wizji.
+`D:\OMNIROUTE-badania\08-WIZJA-OMNIROUTE.md` ruszasz tylko gdy już edytujesz
+badania; wtedy zsynchronizuj z kanonem, nie odwrotnie.
+`Informacje z claude/vision.md` — nie ładuj.
+
+NIE:
+- Zrzut czatu do VISION.
+- Wymyślone nazwy kolumn.
+- Plaster z tekstu wizji. `/noc` czyta CURRENT + PLAN § Kolejka, nie wizję jako next-ID.
+- AI0 jako nowy plaster — `charge.source_ref` już jest (129.0 / 072).
+- Start 431.0 ani `/noc` z tej reguły.
+
+KOLEJKA: nowy leftover, nowy wiersz Fali AI/BR albo zdjęty zakaz →
+`docs/PLAN-REALIZACJA.md`: **dopisz** w Uwagi/Status istniejącego wiersza.
+Nie zastępuj pinu **2026-09-08c**. Nie przeskakuj **431.0**.
+CURRENT: kolejka bez zmian, dopóki człowiek nie wskaże inaczej.

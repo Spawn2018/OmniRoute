@@ -7,11 +7,11 @@ HC z `GROUNDING.md` — nie negocjuj:
 
 - `organization_id` w każdej tabeli biznesowej; RLS + test izolacji.
 - Zero zapytań cross-tenant. Brak = błąd blokujący merge.
-- AI nie zapisuje do bazy produkcyjnej. Zapis przez `service` + walidacja.
+- AI nie zapisuje do bazy na L0–2. L3–5 tylko w zapisanych granicach + audit (`GROUNDING.md` HC-04). Zapis przez `service` + walidacja.
 - Sekrety tenanta szyfrowane; nigdy w kodzie/logach/promptach.
 - Endpoint bez jawnej deklaracji uprawnień (OpenFGA) = odmowa.
 - Ekstrakcja LLM: human-in-the-loop przed zapisem (draft + accept).
-  Guard regex jest w kodzie; żywy `llm-guard` (transformers) i `presidio`
-  to **cel HC**, nie „już na każdym endpoincie”.
+  Guard regex jest w kodzie. `llm-guard` (transformers) jest **zarchiwizowany** —
+  nie cel HC. `presidio` = 0.10+, nie „już na każdym endpoincie”.
 - Idempotencja na wywołaniach zewnętrznych; zdarzenia przez outbox —
   **cel HC**, nie działający system (pisz outbox gdy są zdarzenia między modułami).

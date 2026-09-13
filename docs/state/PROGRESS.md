@@ -800,3 +800,5 @@
 - 2026-09-13T01:36:00Z · 429.0 · bid_decision_mark · DONE · HITL decision_kind go|no_go|hold|other · migracja 339 · /bid-decision-marks
 
 - 2026-09-13T02:10:00Z · 430.0 · quote_currency_mark · DONE · HITL currency_kind account|pay|other · migracja 340 · /quote-currency-marks
+
+- 2026-09-13T05:40:00Z · kanon · Fala AI + Fala BR w PLAN · VISION.md · HC-04 L0?2/L3?5 · AI0 ju? w kodzie (072) · nast?pny leftover 431.0
