@@ -291,7 +291,7 @@ export function ExtractionQueuePage() {
           />
         </label>
         <label className="block text-xs text-muted-foreground">
-          Albo plik (PDF / tekst)
+          Albo plik (PDF / tekst / Excel)
           <input
             className="mt-1 block w-full text-sm"
             type="file"

@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **450.0** AI3.3 — własny golden + bramka pytest
-- **Etap:** plaster — **451.0** AI3.4 Excel. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
-- **Następny:** **451.0** parser xlsx (stdlib). Nie openpyxl. Nie .xls. Nie zapis z modelu.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **451.0** AI3.4 — parser `xlsx_sheet` (stdlib)
+- **Etap:** Plan — **452.0** AI4.0 `plan_snapshot` FK. Wolno `/plan-modul`. Zero kodu.
+- **Następny:** **452.0** FK snapshot → shipment/trip/resource. Nie CASCADE. Nie silnik what-if.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

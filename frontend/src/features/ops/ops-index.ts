@@ -1674,6 +1674,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "447.0": "/extractions",
   "448.0": "/extractions",
   "449.0": "/extractions",
+  "451.0": "/extractions",
 } as const
 
 

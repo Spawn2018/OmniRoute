@@ -842,3 +842,5 @@
 - 2026-09-13T13:40:00Z | 449.0 | extraction_draft | DONE | extract_path text|image etykieta; bez live vision
 
 - 2026-09-13T14:10:00Z | 450.0 | extraction_draft | DONE | owned golden THC/BAF vs MockExtractor; bez liczb z papieru
+
+- 2026-09-13T14:15:00Z | 451.0 | extraction_draft | DONE | xlsx_sheet stdlib pierwszy arkusz; bez openpyxl

@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **451.0** parser xlsx (stdlib). Nie openpyxl. Nie .xls. Nie zapis z modelu.
+**Następny:** **452.0** FK snapshot → shipment/trip/resource. Nie CASCADE. Nie silnik what-if.
 <!-- os-status:end -->
 
 ```mermaid
@@ -762,7 +762,7 @@ Dump TMS 2026-09-13 (badania `04b` A–H × 10; CargoWise/Qargo/interLAN zostaj�
 | AI3.1 | wersjonowanie szkicu + `draft_kind` + `bbox` i pewność w JSONB | po AI3.0 | **448.0 DONE** `payload.revision` + `bbox_text`/`confidence_text`; leftover: historia wierszy |
 | AI3.2 | ścieżka **obraz wprost** jako challenger dla obecnej ścieżki przez tekst | po AI3.1 | **449.0 DONE** `extract_path` text|image etykieta; leftover: live vision · AI3.3 · AI3.4 |
 | AI3.3 | własny zbiór golden + bramka wydaniowa na progach | po AI3.2 | **450.0 DONE** pytest vs THC/BAF; leftover: większy zbiór · instructor CI · 96,6% `TO_VERIFY` |
-| AI3.4 | ekstrakcja z Excela (dziś tylko PDF) | po AI3.1 | **451.0** plan `/noc` = `xlsx_sheet` stdlib, pierwszy arkusz; leftover: `.xls` · wiele arkuszy |
+| AI3.4 | ekstrakcja z Excela (dziś tylko PDF) | po AI3.1 | **451.0 DONE** `xlsx_sheet` stdlib; leftover: `.xls` · wiele arkuszy · openpyxl |
 | AI4.0 | `plan_snapshot` z FK do shipment/trip/resource | po AI1; **Q3=tak** | `ON DELETE RESTRICT`; nadal zakaz UPDATE/DELETE wiersza snapshot |
 | AI4.1 | silnik what-if na `counterfactual_run` | po AI4.0 | podnosi V8 i W1; dump `04b`: what-if/Optimizer/Archer u konkurencji = runtime, u nas HITL aż ten wiersz |
 | AI4.2 | symulacja kółek **w SQL**, do 500k wariantów | po AI4.1 | nie w Pythonie; podnosi G2.20 |
@@ -934,13 +934,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

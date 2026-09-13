@@ -1,0 +1,82 @@
+"""Pierwszy arkusz OOXML → tekst. Bez openpyxl. Kwoty zostają tekstem z XML."""
+
+from io import BytesIO
+from xml.etree.ElementTree import Element, fromstring
+from zipfile import BadZipFile, ZipFile
+
+from app.domain.errors import UnparseableDocument
+from app.integrations.docling.parser import DocumentText
+
+
+def _local(tag: str) -> str:
+    return tag.rsplit("}", 1)[-1]
+
+
+def _shared_strings(archive: ZipFile) -> list[str]:
+    if "xl/sharedStrings.xml" not in archive.namelist():
+        return []
+    root = fromstring(archive.read("xl/sharedStrings.xml"))
+    values: list[str] = []
+    for item in root:
+        if _local(item.tag) != "si":
+            continue
+        values.append("".join(node.text or "" for node in item.iter() if _local(node.tag) == "t"))
+    return values
+
+
+def _cell_text(cell: Element, shared: list[str]) -> str:
+    kind = cell.get("t")
+    if kind == "inlineStr":
+        return "".join(node.text or "" for node in cell.iter() if _local(node.tag) == "t")
+    value = ""
+    for node in cell:
+        if _local(node.tag) == "v":
+            value = node.text or ""
+            break
+    if kind == "s":
+        index = int(value) if value.isdigit() else -1
+        if 0 <= index < len(shared):
+            return shared[index]
+        return ""
+    return value
+
+
+def _sheet_path(names: list[str]) -> str:
+    if "xl/worksheets/sheet1.xml" in names:
+        return "xl/worksheets/sheet1.xml"
+    sheets = sorted(
+        name for name in names if name.startswith("xl/worksheets/sheet") and name.endswith(".xml")
+    )
+    if not sheets:
+        raise UnparseableDocument("xlsx bez arkusza")
+    return sheets[0]
+
+
+def _sheet_lines(root: Element, shared: list[str]) -> list[str]:
+    lines: list[str] = []
+    for row in root.iter():
+        if _local(row.tag) != "row":
+            continue
+        parts = [_cell_text(cell, shared) for cell in row if _local(cell.tag) == "c"]
+        line = " ".join(part for part in parts if part.strip())
+        if line:
+            lines.append(line)
+    return lines
+
+
+class XlsxSheetParser:
+    def parse(self, *, source_ref: str, raw_bytes: bytes) -> DocumentText:
+        del source_ref
+        try:
+            archive = ZipFile(BytesIO(raw_bytes))
+        except BadZipFile as exc:
+            raise UnparseableDocument("xlsx nieczytelne") from exc
+        names = archive.namelist()
+        if "xl/workbook.xml" not in names:
+            raise UnparseableDocument("xlsx bez skoroszytu")
+        shared = _shared_strings(archive)
+        root = fromstring(archive.read(_sheet_path(names)))
+        text = "\n".join(_sheet_lines(root, shared)).strip()
+        if not text:
+            raise UnparseableDocument("xlsx bez tekstu")
+        return DocumentText(text=text, parser_name="xlsx_sheet")

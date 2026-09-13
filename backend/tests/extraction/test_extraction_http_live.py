@@ -1,3 +1,5 @@
+from base64 import b64encode
+
 import pytest
 import pytest_asyncio
 from httpx import ASGITransport, AsyncClient
@@ -6,6 +8,7 @@ from sqlalchemy.ext.asyncio import async_sessionmaker
 from app.api.deps import set_authz_checker
 from app.core.database import get_session
 from app.main import app
+from tests.extraction.test_xlsx_sheet import _xlsx_bytes
 from tests.http_auth import bearer_auth_headers
 
 
@@ -312,6 +315,31 @@ async def test_http_extract_live_image_path_does_not_write_rate_line(
     listed = await live_client.get("/api/v1/extractions", headers=headers)
     assert listed.status_code == 200
     assert listed.json()[0]["payload"]["extract_path"] == "image"
+    rates = await live_client.get("/api/v1/rate-lines", headers=headers)
+    assert rates.status_code == 200
+    assert rates.json() == []
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_http_extract_live_xlsx_creates_pending_draft(
+    live_client: AsyncClient,
+    two_tenants,
+) -> None:
+    org_a = two_tenants["org_a"]
+    user_a = two_tenants["user_a"]
+    headers = bearer_auth_headers(organization_id=org_a.id, user_id=user_a.id)
+    created = await live_client.post(
+        "/api/v1/extractions",
+        headers=headers,
+        json={
+            "source_ref": "doc://xlsx",
+            "document_base64": b64encode(_xlsx_bytes()).decode("ascii"),
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["payload"]["parser_name"] == "xlsx_sheet"
+    assert created.json()["payload"]["candidates"][0]["code"] == "THC"
     rates = await live_client.get("/api/v1/rate-lines", headers=headers)
     assert rates.status_code == 200
     assert rates.json() == []

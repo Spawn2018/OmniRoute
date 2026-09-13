@@ -73,6 +73,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | AI3.3 plan (**450.0**): własny golden + pytest. 96,6% / 92,71% = `TO_VERIFY` literatura, nie fakt Omni (`REJECTED` w kodzie). |
 | 2026-09-13 | **450.0** golden w kodzie (`CONFIRMED`, git). Następny = **AI3.4** Excel (`REQUIREMENT`). 96,6% zostaje `TO_VERIFY`. |
 | 2026-09-13 | AI3.4 plan (**451.0**): parser `xlsx_sheet` stdlib. `openpyxl` `REJECTED`. `.xls` leftover. |
+| 2026-09-13 | **451.0** `xlsx_sheet` w kodzie (`CONFIRMED`, git). Następny = **AI4.0** FK `plan_snapshot` (`REQUIREMENT`). `.xls` leftover. |
 
 ---
 
@@ -182,6 +183,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | AI3.3 (**450.0**) = własny zbiór golden + bramka pytest. Liczby z preprintu `REJECTED` jako stała. Excel/vision `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E AI3 |
 | 2026-09-13 | **450.0** w kodzie (`CONFIRMED`, git). Dwa przypadki THC/BAF vs `MockExtractor`. Następny = **AI3.4** Excel (`REQUIREMENT`). | CURRENT + plaster 450.0 `/noc` |
 | 2026-09-13 | AI3.4 (**451.0**) = OOXML pierwszy arkusz → tekst. Nowa zależność `REJECTED`. Vision `REJECTED`. | `/plan-modul` `/noc`; VISION E AI3 |
+| 2026-09-13 | **451.0** w kodzie (`CONFIRMED`, git). `parser_name=xlsx_sheet`. Następny = **AI4.0** (`REQUIREMENT`). | CURRENT + plaster 451.0 `/noc` |
 
 ---
 ---
@@ -809,9 +811,9 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | nazwy z PDF-ów bez wiersza w planie | **136** (z czego 28 to aliasy) |
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
-Ostatni ukończony plaster: **450.0** (golden + pytest).
-Następny = **451.0** AI3.4 `xlsx_sheet` (`REQUIREMENT`). `openpyxl` `REJECTED`.
-AI1.0–AI1.4 oraz 443.0–450.0 są w kodzie (`CONFIRMED`); `data_source`
+Ostatni ukończony plaster: **451.0** (`xlsx_sheet`).
+Następny = **452.0** AI4.0 FK `plan_snapshot` (`REQUIREMENT`). `.xls` leftover.
+AI1.0–AI1.4 oraz 443.0–451.0 są w kodzie (`CONFIRMED`); `data_source`
 zostaje w AI5 (`REQUIREMENT`). Teza B.1 zostaje: szerokość katalogów nie zastępuje pomiaru.
 
 ## C.2 Bliźniaki — scalona taksonomia

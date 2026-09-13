@@ -13,6 +13,7 @@ from app.integrations.docling.parser import (
 )
 from app.integrations.docling.provider import default_parser
 from app.services.extraction.extraction_service import ExtractionService
+from tests.extraction.test_xlsx_sheet import _xlsx_bytes
 
 _FAKE_PDF = b"%PDF-1.1\n(THC 10 EUR extra)\n%%EOF"
 
@@ -30,6 +31,7 @@ class _FixedParser:
 def test_fingerprint_pdf_vs_text() -> None:
     assert layout_fingerprint(_FAKE_PDF) == "pdf"
     assert layout_fingerprint(b"THC 10 EUR") == "text"
+    assert layout_fingerprint(b"PK\x03\x04not-a-zip") == "text"
 
 
 def test_deterministic_pdf_strings_extracts_charge_line() -> None:
@@ -112,6 +114,22 @@ async def test_extract_from_document_image_path_still_uses_text_parser() -> None
     )
     assert draft.payload["extract_path"] == "image"
     assert draft.payload["parser_name"] == "pdf_strings"
+
+
+@pytest.mark.asyncio
+async def test_extract_from_document_xlsx_stores_parser_name() -> None:
+    session = AsyncMock()
+    session.add = MagicMock()
+    session.flush = AsyncMock()
+    service = ExtractionService(session, parser=DeterministicDocumentParser())
+    draft = await service.extract_from_document(
+        organization_id=uuid4(),
+        user_id=uuid4(),
+        source_ref="doc://xlsx",
+        raw_bytes=_xlsx_bytes(),
+    )
+    assert draft.payload["parser_name"] == "xlsx_sheet"
+    assert draft.payload["candidates"][0]["code"] == "THC"
 
 
 @pytest.mark.asyncio

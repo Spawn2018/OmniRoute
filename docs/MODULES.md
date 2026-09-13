@@ -10,7 +10,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | ID | Moduł | Plaster | Status |
 |---|---|---|---|
 | M-01 | Wielodostępność / tenancy | 0.3 RLS + 0.4 OpenFGA + 0.12 JWT + 0.15 hasła | **ukończony (fundament)** · Auth0 I1/I2 **odroczone** (brak tenanta); sesja email+hasło+JWT ≠ IdP |
-| M-20 | Ekstrakcja dokumentów | 0.7–0.14 HITL + T0 + 0.18 live HTTP PG + 1.3 accept→rate_line + U-art50 + U-pdf-spans + 2.1–2.2 · 66.0 z `inbound_message` · **447.0** PATCH · **448.0** revision · **449.0** `extract_path` · **450.0** golden | **ukończony (fundament)** · **451.0** plan Excel; ExtractionService nie importuje rates ani inbound |
+| M-20 | Ekstrakcja dokumentów | 0.7–0.14 HITL + T0 + 0.18 live HTTP PG + 1.3 accept→rate_line + U-art50 + U-pdf-spans + 2.1–2.2 · 66.0 z `inbound_message` · **447.0** PATCH · **448.0** revision · **449.0** `extract_path` · **450.0** golden · **451.0** xlsx | **ukończony (fundament)** · ExtractionService nie importuje rates ani inbound |
 | M-02 | Outbox / idempotencja | 79.0 `outbox_event` · 264.0 `task_template_saved` | **ukończony (fundament)** · dwa kindy; nie Temporal; nie konsument |
 | M-03 | Konfiguracja jako dane | 3.0 `organization_setting` · 71.0 prefiks/szablon | **ukończony (fundament)** · allowlista; nie sekrety; numer oferty w 72.0 |
 | M-06 | charge_code + aliasy | 1.0 katalog | **ukończony (fundament)** · aliasy na wierszu; nie `rate_line` / `charge` |
@@ -68,7 +68,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-69 | Jakość | 49.0 `extraction_quality` | **ukończony (fundament)** · tablica `unparsed_regions`; nie scoring; nie tabela QA |
 | M-70 | Wdrożenie | 50.0 `tenant_rollout` | **ukończony (fundament)** · tablica `default_currency`; nie tabela rollout; nie upsert |
 | M-71 | Szyna decyzji operatora | 74.0 `operator_decision` · 77.0 lock · 121.0 `changed` | **ukończony (leftover S11b)** · pending → accept/changed/reject + `lock_version`; nie extract 1.3; nie send |
-| B0b | Ledger predykcji | 193.0 `prediction_ledger` · 265.0 `plan_snapshot` · 446.0 | **ukończony (HITL)** · przedział; nowy INSERT bez CRPS/MAE; leftover Brier / champion |
+| B0b | Ledger predykcji | 193.0 `prediction_ledger` · 265.0 `plan_snapshot` · 446.0 | **ukończony (HITL)** · przedział; nowy INSERT bez CRPS/MAE; leftover Brier / champion · **452.0** FK snapshot |
 | AI1.0 | Ledger podpowiedzi | 432.0 `suggestion_ledger` | **ukończony (HITL)** · przedział + reaction + changed_to; leftover outcome_ledger / CRPS liczone |
 | AI1.1 | Ledger wyniku | 433.0 `outcome_ledger` | **ukończony (HITL)** · actual_value Decimal; leftover CRPS liczone / złączenie |
 | AI1.2 | Przebieg what-if | 434.0 `counterfactual_run` | **ukończony (HITL)** · etykiety; leftover silnik AI4.1 / benefit_ledger |
