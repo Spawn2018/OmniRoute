@@ -200,6 +200,7 @@ type organization
     define can_manage_role_view_marks: member
     define can_manage_rag_sop_marks: member
     define can_manage_copy_ban_marks: member
+    define can_manage_route_plan_marks: member
     define can_manage_erru_marks: member
     define can_manage_mobile_client_marks: member
     define can_manage_freight_audit_marks: member

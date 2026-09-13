@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **454.0** AI4.2 — widok `circle_sim_pair` (para uzupełniająca w SQL)
-- **Etap:** plaster — **455.0** BR3.0 `route_plan_mark`. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
-- **Następny:** **455.0** HITL znacznik planu trasy. Nie Valhalla. Nie LLM-VRP.
+- **Ostatni plaster:** **455.0** BR3.0 — HITL `route_plan_mark` (katalog planu trasy)
+- **Etap:** Plan — **456.0** BR6.0 CRM ponad leada. Spec: brak — `/plan-modul`.
+- **Następny:** **456.0** HITL okazja CRM. Nie auto-pipeline. Nie cold-send.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

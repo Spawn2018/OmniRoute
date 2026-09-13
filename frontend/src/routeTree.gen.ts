@@ -197,6 +197,7 @@ import { Route as RemediationOptionsRouteImport } from './routes/remediation-opt
 import { Route as RepairPlaybooksRouteImport } from './routes/repair-playbooks'
 import { Route as RoadRouteImport } from './routes/road'
 import { Route as RoleViewMarksRouteImport } from './routes/role-view-marks'
+import { Route as RoutePlanMarksRouteImport } from './routes/route-plan-marks'
 import { Route as RolloutRouteImport } from './routes/rollout'
 import { Route as RoutingGuideEnforcementsRouteImport } from './routes/routing-guide-enforcements'
 import { Route as RoutingGuideMatchesRouteImport } from './routes/routing-guide-matches'
@@ -1202,6 +1203,11 @@ const RoleViewMarksRoute = RoleViewMarksRouteImport.update({
   path: '/role-view-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RoutePlanMarksRoute = RoutePlanMarksRouteImport.update({
+  id: '/route-plan-marks',
+  path: '/route-plan-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RolloutRoute = RolloutRouteImport.update({
   id: '/rollout',
   path: '/rollout',
@@ -1713,6 +1719,7 @@ export interface FileRoutesByFullPath {
   '/repair-playbooks': typeof RepairPlaybooksRoute
   '/road': typeof RoadRoute
   '/role-view-marks': typeof RoleViewMarksRoute
+  '/route-plan-marks': typeof RoutePlanMarksRoute
   '/rollout': typeof RolloutRoute
   '/routing-guide-enforcements': typeof RoutingGuideEnforcementsRoute
   '/routing-guide-matches': typeof RoutingGuideMatchesRoute
@@ -1967,6 +1974,7 @@ export interface FileRoutesByTo {
   '/repair-playbooks': typeof RepairPlaybooksRoute
   '/road': typeof RoadRoute
   '/role-view-marks': typeof RoleViewMarksRoute
+  '/route-plan-marks': typeof RoutePlanMarksRoute
   '/rollout': typeof RolloutRoute
   '/routing-guide-enforcements': typeof RoutingGuideEnforcementsRoute
   '/routing-guide-matches': typeof RoutingGuideMatchesRoute
@@ -2222,6 +2230,7 @@ export interface FileRoutesById {
   '/repair-playbooks': typeof RepairPlaybooksRoute
   '/road': typeof RoadRoute
   '/role-view-marks': typeof RoleViewMarksRoute
+  '/route-plan-marks': typeof RoutePlanMarksRoute
   '/rollout': typeof RolloutRoute
   '/routing-guide-enforcements': typeof RoutingGuideEnforcementsRoute
   '/routing-guide-matches': typeof RoutingGuideMatchesRoute
@@ -2478,6 +2487,7 @@ export interface FileRouteTypes {
     | '/repair-playbooks'
     | '/road'
     | '/role-view-marks'
+    | '/route-plan-marks'
     | '/rollout'
     | '/routing-guide-enforcements'
     | '/routing-guide-matches'
@@ -2732,6 +2742,7 @@ export interface FileRouteTypes {
     | '/repair-playbooks'
     | '/road'
     | '/role-view-marks'
+    | '/route-plan-marks'
     | '/rollout'
     | '/routing-guide-enforcements'
     | '/routing-guide-matches'
@@ -2986,6 +2997,7 @@ export interface FileRouteTypes {
     | '/repair-playbooks'
     | '/road'
     | '/role-view-marks'
+    | '/route-plan-marks'
     | '/rollout'
     | '/routing-guide-enforcements'
     | '/routing-guide-matches'
@@ -3241,6 +3253,7 @@ export interface RootRouteChildren {
   RepairPlaybooksRoute: typeof RepairPlaybooksRoute
   RoadRoute: typeof RoadRoute
   RoleViewMarksRoute: typeof RoleViewMarksRoute
+  RoutePlanMarksRoute: typeof RoutePlanMarksRoute
   RolloutRoute: typeof RolloutRoute
   RoutingGuideEnforcementsRoute: typeof RoutingGuideEnforcementsRoute
   RoutingGuideMatchesRoute: typeof RoutingGuideMatchesRoute
@@ -4625,6 +4638,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RoleViewMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/route-plan-marks': {
+      id: '/route-plan-marks'
+      path: '/route-plan-marks'
+      fullPath: '/route-plan-marks'
+      preLoaderRoute: typeof RoutePlanMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/rollout': {
       id: '/rollout'
       path: '/rollout'
@@ -5265,6 +5285,7 @@ const rootRouteChildren: RootRouteChildren = {
   RepairPlaybooksRoute: RepairPlaybooksRoute,
   RoadRoute: RoadRoute,
   RoleViewMarksRoute: RoleViewMarksRoute,
+  RoutePlanMarksRoute: RoutePlanMarksRoute,
   RolloutRoute: RolloutRoute,
   RoutingGuideEnforcementsRoute: RoutingGuideEnforcementsRoute,
   RoutingGuideMatchesRoute: RoutingGuideMatchesRoute,

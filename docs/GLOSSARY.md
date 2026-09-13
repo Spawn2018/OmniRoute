@@ -230,6 +230,7 @@
 | szkic NCTS | ncts_draft | G4 HITL katalog; leftover PUESC/plomby |
 | znacznik OOG | oog_mark | G5 HITL katalog; leftover wymiary/cert |
 | znacznik planu załadunku | load_plan_mark | G6 HITL katalog; leftover solver OR / osie / tunel ADR |
+| znacznik planu trasy | route_plan_mark | BR3.0 HITL katalog; leftover Valhalla / VRP / km |
 | znacznik CMMS | cmms_mark | G7 HITL katalog; leftover work_order / DTC V5 / kara kierowcy |
 | znacznik legal hold | legal_hold_mark | G8 HITL katalog; leftover eIDAS crypto / wipe / F1 |
 | znacznik spółki | company_mark | G10 HITL katalog; leftover company_id FK / drugi tenant |

@@ -1268,3 +1268,7 @@ class RoutingGuideOffGuide(DomainError):
 
 class InvalidRoutingGuideMatch(DomainError):
     """CT4 leftover: HITL tryb dopasowania przewodnika — nie silnik."""
+
+
+class InvalidRoutePlanMark(DomainError):
+    """BR3.0: HITL znacznik planu trasy — nie Valhalla / VRP / km."""

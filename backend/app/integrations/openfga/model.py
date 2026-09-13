@@ -262,6 +262,7 @@ def _organization_exp4_mode_catalog_relations() -> dict[str, Userset]:
         "can_manage_role_view_marks": _member(),
         "can_manage_rag_sop_marks": _member(),
         "can_manage_copy_ban_marks": _member(),
+        "can_manage_route_plan_marks": _member(),
         "can_manage_erru_marks": _member(),
         "can_manage_mobile_client_marks": _member(),
     }

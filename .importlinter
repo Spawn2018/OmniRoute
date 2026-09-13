@@ -232,6 +232,7 @@ modules =
     app.services.funnel_marks
     app.services.mail_accept_marks
     app.services.role_view_marks
+    app.services.route_plan_marks
     app.services.rag_sop_marks
     app.services.copy_ban_marks
     app.services.erru_marks
@@ -616,6 +617,9 @@ forbidden_modules =
     app.services.load_plan_marks
     app.repositories.load_plan_marks
     app.models.load_plan_mark
+    app.services.route_plan_marks
+    app.repositories.route_plan_marks
+    app.models.route_plan_mark
     app.services.cmms_marks
     app.repositories.cmms_marks
     app.models.cmms_mark

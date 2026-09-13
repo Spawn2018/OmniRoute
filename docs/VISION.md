@@ -81,6 +81,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | AI4.2 plan (**454.0**): widok SQL pary uzupełniającej `circle_sim`. Generator 500k / km / VRP `REJECTED` na tym wierszu. |
 | 2026-09-13 | **454.0** widok `circle_sim_pair` w kodzie (`CONFIRMED`, git). Następny = **BR3.0** start HHL (`REQUIREMENT`). Generator 500k / AI5 `REJECTED` na tym wierszu. |
 | 2026-09-13 | BR3.0 plan (**455.0**): HITL `route_plan_mark`. Valhalla / LLM-VRP `REJECTED` na tym wierszu. |
+| 2026-09-13 | **455.0** `route_plan_mark` w kodzie (`CONFIRMED`, git). Następny = **BR6.0** CRM ponad leada (`REQUIREMENT`). Valhalla / AI5 `REJECTED` na tym wierszu. |
 
 ---
 
@@ -198,6 +199,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | AI4.2 (**454.0**) = widok `circle_sim_pair` (samozłączenie unload↔load). Generator 500k / km `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E AI4 |
 | 2026-09-13 | **454.0** w kodzie (`CONFIRMED`, git). Para w SQL. Następny = **BR3.0** (`REQUIREMENT`). AI5 `data_source` zostaje park. | CURRENT + plaster 454.0 `/noc` |
 | 2026-09-13 | BR3.0 (**455.0**) = HITL `route_plan_mark` (`route|stop|window|other`). Valhalla `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
+| 2026-09-13 | **455.0** w kodzie (`CONFIRMED`, git). Katalog planu trasy. Następny = **BR6.0** (`REQUIREMENT`). Valhalla leftover. | CURRENT + plaster 455.0 `/noc` |
 
 ---
 ---
@@ -825,9 +827,9 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | nazwy z PDF-ów bez wiersza w planie | **136** (z czego 28 to aliasy) |
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
-Ostatni ukończony plaster: **454.0** (widok `circle_sim_pair`).
-Następny = **455.0** BR3.0 planowanie tras (`REQUIREMENT`).
-AI1.0–AI1.4 oraz 443.0–454.0 są w kodzie (`CONFIRMED`); `data_source`
+Ostatni ukończony plaster: **455.0** (HITL `route_plan_mark`).
+Następny = **456.0** BR6.0 CRM ponad leada (`REQUIREMENT`).
+AI1.0–AI1.4 oraz 443.0–455.0 są w kodzie (`CONFIRMED`); `data_source`
 zostaje w AI5 (`REQUIREMENT`). Teza B.1 zostaje: szerokość katalogów nie zastępuje pomiaru.
 
 ## C.2 Bliźniaki — scalona taksonomia
@@ -882,7 +884,8 @@ bo bez ewidencji magazynowej nie ma zastawu na towarze.
 - **Aplikacja kierowcy** — zlecenie, POD, skan, status, komunikacja, tryb offline
 
 **Grupa 3 — planowanie i optymalizacja.** Najbardziej „silnikowa" grupa, dziś nieobecna.
-- **Planowanie tras** — z twardym warunkiem: solver, nie model językowy (patrz D.3)
+- **Planowanie tras** — katalog HITL `route_plan_mark` jest (`CONFIRMED`, 455.0);
+  leftover solver Valhalla / VRP / km (`REQUIREMENT`, patrz D.3). Nie model językowy.
 - **Planowanie załadunku** — osie, wymiary, kolejność, ograniczenia tunelowe
 - **Dyspozytor drobnicy** — linie, huby, cutoffy, konsolidacja
 - **Tacho w planowaniu** — czas pracy kierowcy jako ograniczenie planu, nie raport po fakcie
