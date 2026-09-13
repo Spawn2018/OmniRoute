@@ -564,17 +564,17 @@ Karta: [karty-pol-g2-tender.md](analysis/karty-pol-g2-tender.md). P6 = oferty od
 | F6 | windykacja + blokada zlecenia | po T2 | S11; zakaz auto art. 22 |
 | **M14b** | Szkic oceny kredytowej | po M-14 | LLM nie liczy limitu |
 | F8 | Peppol + MPP/split (EXP2.20) | kalendarz UE | nie zastępuje KSeF |
-| F9 | `purchase_invoice` + ERP FS+FZ | zamknięty HITL catalog Optima fixture ([268.0](deltas/archived/268.0-erp-connector.md)); leftover XL / live SOAP / FS+FZ | zakaz SQL `sa` |
+| F9 | `purchase_invoice` + ERP FS+FZ | zamknięty HITL catalog Optima fixture ([268.0](deltas/archived/268.0-erp-connector.md)); leftover XL / live SOAP / FS+FZ / `erp_series_map` / `erp_export` / `purchase_invoice` | zakaz SQL `sa` |
 | **N14** | self-billing podwykonawcy | po F9+D | |
-| F10 | ingest FV HITL + ranking SQL | po F9 + X9 | nigdy auto-link |
-| F11 | książka PP EN+USS+EPO | TO_VERIFY umowa | **≠ e-Doręczenia** (EXP2.19) |
+| F10 | ingest FV HITL + ranking SQL | po F9 + X9 | leftover `invoice_match_candidate` / `purchase_invoice_allocation`; nigdy auto-link |
+| F11 | książka PP EN+USS+EPO | TO_VERIFY umowa | leftover `postal_dispatch` / `postal_epo`; **≠ e-Doręczenia** (EXP2.19) |
 | **EXP2.1** | working capital: DSO, cash-at-risk, aging | 338.0 HITL katalog `working_capital_mark` (capital_kind); leftover DSO SQL / druga marża | nie druga marża |
 
 ### Fala C — celna / compliance
 
 | ID | Co | Status | Uwagi |
 |---|---|---|---|
-| C1 / C6–C8 | SENT, BDO, `monitoring_scheme`, `party_document` 409 + KREPTD C8 | zamknięty HITL C7 katalog ([187.0](deltas/archived/187.0-monitoring-scheme.md)); zamknięty HITL C8 katalog ([188.0](deltas/archived/188.0-party-document.md)); leftover C1 filing / 409 / `relation_document_requirement` | karta [karty-pol-fala-c.md](analysis/karty-pol-fala-c.md); dump `04b`: SENT nie publiczne u TMS top-10 |
+| C1 / C6–C8 | SENT, BDO, `monitoring_scheme`, `party_document` 409 + KREPTD C8 | zamknięty HITL C7 katalog ([187.0](deltas/archived/187.0-monitoring-scheme.md)); zamknięty HITL C8 katalog ([188.0](deltas/archived/188.0-party-document.md)); leftover C1 `shipment_monitoring_filing` / 409 / `relation_document_requirement` | karta [karty-pol-fala-c.md](analysis/karty-pol-fala-c.md); dump `04b`: SENT nie publiczne u TMS top-10 |
 | C2 | AIS/AES/Intrastat | TO_VERIFY PUESC | |
 | C3–C5 / C9 | lookup live, eCMR 2027 (EXP2.18), CO₂+metodyka, Trans.eu snapshot | zamknięty HITL C5 katalog ([190.0](deltas/archived/190.0-carbon-method.md)); leftover C3 live VIES/GUS / C4 eCMR / C9 Trans.eu | C9 bez scrapingu opinii |
 | **EXP0.8** | `cargo_claim` deadline CMR 7/21/365 + OS&D | zamknięty HITL OS&D + terminy ([191.0](deltas/archived/191.0-cargo-claim-cmr.md)); leftover Deadline Engine / evidence / S11 | nie kwota z LLM |
@@ -588,7 +588,7 @@ Karta: [karty-pol-g2-tender.md](analysis/karty-pol-g2-tender.md). P6 = oferty od
 | V2 / V2b | ETA **dwa czasy** `eta_physical`/`eta_legal` + pogoda; myto → `charge`+`source_ref` | ETA HITL zamknięte ([194.0](deltas/archived/194.0-stop-eta.md)); pogoda HITL zamknięta ([195.0](deltas/archived/195.0-weather-observation.md)); leftover Open-Meteo / geometria / myto | brak taryfy = warning |
 | V3 | D&D / rollover + zegar N3 + blank sailing EXP2.7 | zamknięty HITL katalog ([196.0](deltas/archived/196.0-free-time-clock.md)); leftover N3 countdown / szkic charge / kolumny na container / blank sailing | |
 | V4 | AIS wieży | leftover S32 | nie V5 |
-| V5 / V5b | hub GPS; `omni_telematic` vs `external_api` 3 dni **robocze** (U4) | zamknięty HITL katalog ([197.0](deltas/archived/197.0-telematics-connector.md)); leftover `position_event` / ciphertext / 3 dni U4 / V5b | zero własnego HW |
+| V5 / V5b | hub GPS; `omni_telematic` vs `external_api` 3 dni **robocze** (U4) | zamknięty HITL katalog ([197.0](deltas/archived/197.0-telematics-connector.md)); leftover `resource_telematics_link` / ciphertext / 3 dni U4 / V5b `exchange_message`; `position_event` HITL = **457.0** | zero własnego HW |
 | V6 | wieża impact; bez `sla_clause` = „brak danych umowy” (EXP0.1 → CI5) | zamknięty HITL katalog ([198.0](deltas/archived/198.0-tower-impact.md)); leftover silnik EBITDA / `sla_clause` CI5 / V8 | nie scoring osoby; dump CT `03`: GTT planned+tolerance / unplanned / XRI — leftover silnik, otwarty słownik milestone (nie lista w kodzie) |
 | V7 | tacho / posting; TO_VERIFY prawo | | apka nie poprawia firmware |
 | V8 | what-if na `plan_snapshot` (paliwo/port/bankructwo) EXP2.10 | po B0b | nie „AI widzi wojnę”; dump `04b`: LML/Optimizer/Archer/what-if u konkurencji = runtime; u nas HITL aż AI4.1 |
@@ -610,7 +610,7 @@ Karta: [karty-pol-fala-w.md](analysis/karty-pol-fala-w.md).
 | ID | Co | Status | Uwagi |
 |---|---|---|---|
 | X1–X5 | portal klienta/przewoźnika, apka, outbox consumer, OAuth2 | po S53 + T2 | zastępuje ogólnik S55 |
-| X6–X9 | ePOD, lejek PDF (piksel tylko zgoda), podkłady, skan OpenCV | X8 bez OSMF CDN | karta [karty-pol-fala-x.md](analysis/karty-pol-fala-x.md) |
+| X6–X9 | ePOD, lejek PDF (piksel tylko zgoda), podkłady, skan OpenCV | X8 bez OSMF CDN | leftover: `quote_engagement` / `quote_view_token` (X7) · `map_basemap` (X8) · `scan_enhance_run` (X9); karta [karty-pol-fala-x.md](analysis/karty-pol-fala-x.md) |
 | **WA1** | WhatsApp Cloud API (Meta WABA); send S11; inbound → HITL | po X + N17 | nie scrape; nie bramki cienia |
 | **G9** | SMS + WeChat oficjalne API | z WA1 | TO_VERIFY |
 | **G17** | LinkedIn: paste URL + schowek; nie InMail live | z G1+O4 | nie scrape |
@@ -671,7 +671,7 @@ Karta: [karty-pol-fala-g.md](analysis/karty-pol-fala-g.md). G2 wyżej.
 
 | ID | Co | Klej | Poza |
 |---|---|---|---|
-| G1 | CRM lead→szansa | 323.0 HITL katalog `crm_lead` (stage_kind); leftover opportunity/activity/dedup/X7 | cold auto-send |
+| G1 | CRM lead→szansa | 323.0 HITL `crm_lead`; **456.0** HITL `crm_opportunity`; leftover activity/pipeline/dedup/X7 | cold auto-send |
 | G3 | LC checklista | 324.0 HITL katalog `lc_checklist` (status_kind); leftover bank/due/U5/I3 | bank live |
 | G4 | NCTS T1/T2 szkic | 325.0 HITL katalog `ncts_draft` (transit_kind); leftover plomby/C2/PUESC | teatr PUESC |
 | G5 | OOG / lashing / eskort | 326.0 HITL katalog `oog_mark` (escort_kind); leftover wymiary/cert/T1 | |
@@ -708,15 +708,15 @@ Dump CT `03` i TMS `04b` **potwierdzają leftover silników** (jeden `charge`, H
 | AI1.4 | Słowniki otwarte: `twin_kind`, `data_source`, `autonomy_level`, `suggestion_kind` | 436.0–442.0 DONE | leftover `data_source` (AI5) |
 | AI2.0 | CRPS, Brier, MAE **liczone** ze złączenia AI1.0×AI1.1 | po AI1.1 | **443.0 DONE** widok; **446.0 DONE** bez wpisu na `prediction_ledger`; leftover: Brier (brak p) · dump `04b`: Oracle LML 95% interval = metoda, nie CRPS/MAE |
 | AI2.1 | champion/challenger + wykrywanie dryfu | po AI2.0 | **444.0 DONE** widok średnich; **445.0 DONE** widok dzienny; leftover: detektor/próg `REJECTED` · auto-champion `REJECTED` · zapis `prediction_ledger` (**446.0**) · V1 |
-| AI3.0 | `PATCH` na `extraction_draft` + edycja w interfejsie przed akceptacją | po AI2.0 | **447.0 DONE** PATCH `candidates` na pending/`rate_line`; leftover: wersja/bbox (AI3.1) · quote/rfp PATCH |
-| AI3.1 | wersjonowanie szkicu + `draft_kind` + `bbox` i pewność w JSONB | po AI3.0 | **448.0 DONE** `payload.revision` + `bbox_text`/`confidence_text`; leftover: historia wierszy |
-| AI3.2 | ścieżka **obraz wprost** jako challenger dla obecnej ścieżki przez tekst | po AI3.1 | **449.0 DONE** `extract_path` text|image etykieta; leftover: live vision · AI3.3 · AI3.4 |
-| AI3.3 | własny zbiór golden + bramka wydaniowa na progach | po AI3.2 | **450.0 DONE** pytest vs THC/BAF; leftover: większy zbiór · instructor CI · 96,6% `TO_VERIFY` |
+| AI3.0 | `PATCH` na `extraction_draft` + edycja w interfejsie przed akceptacją | po AI2.0 | **447.0 DONE** PATCH `candidates` na pending/`rate_line`; leftover: wersja/bbox (AI3.1) · quote/rfp PATCH · próg **70%** pewności przed akceptacją zbiorczą (`07`) |
+| AI3.1 | wersjonowanie szkicu + `draft_kind` + `bbox` i pewność w JSONB | po AI3.0 | **448.0 DONE** `payload.revision` + `bbox_text`/`confidence_text`; leftover: historia wierszy · **prompt jako dana**, nie kod (`07`) |
+| AI3.2 | ścieżka **obraz wprost** jako challenger dla obecnej ścieżki przez tekst | po AI3.1 | **449.0 DONE** `extract_path` text|image etykieta; leftover: live vision · pełny pipeline zdjęcia OpenCV/CLAHE (`07` / X9) · AI3.3 · AI3.4 |
+| AI3.3 | własny zbiór golden + bramka wydaniowa na progach | po AI3.2 | **450.0 DONE** pytest vs THC/BAF; leftover: pętla 500 / 2 000 / 5 000 · DocLayNet / PubTables-1M / CORD / Kleister (licencje, `07`) · instructor CI · 96,6% `TO_VERIFY`; FUNSD / RVL-CDIP `REJECTED` |
 | AI3.4 | ekstrakcja z Excela (dziś tylko PDF) | po AI3.1 | **451.0 DONE** `xlsx_sheet` stdlib; leftover: `.xls` · wiele arkuszy · openpyxl |
 | AI4.0 | `plan_snapshot` z FK do shipment/trip/resource | po AI1; **Q3=tak** | **452.0 DONE** FK złożone RESTRICT; leftover: AI4.1 · CASCADE `REJECTED` |
 | AI4.1 | silnik what-if na `counterfactual_run` | po AI4.0 | **453.0 DONE** FK przebieg→migawka + widok `what_if_replay`; leftover: solver liczb · AI4.2 · JSON dźwigni; analog Kinaxis Maestro / scenariusz = HITL, nie live (`03` B.6) |
 | AI4.2 | symulacja kółek **w SQL**, do 500k wariantów | po AI4.1 | **454.0 DONE** widok `circle_sim_pair`; leftover: generator 500k · km · VRP |
-| AI5.0 | warstwa ingest danych zewnętrznych + `data_source` z licencją | po AI1.4 | katalog: badania `09` / `10`; leftover: brama „źródło prawdy + właściciel + wyjątek” przed pierwszym ingestem produkcyjnym; definicja KPI per strona (OTD/OTIF) — AI nie wymyśla wzoru; nie OMNI READINESS ENGINE; nie pasek 72 % |
+| AI5.0 | warstwa ingest danych zewnętrznych + `data_source` z licencją | po AI1.4 | katalog: badania `09` / `10`; **22 dostępy P0** z VISION C.1 = ten katalog, nie 22 plastry; leftover: brama „źródło prawdy + właściciel + wyjątek” przed pierwszym ingestem produkcyjnym; definicja KPI per strona (OTD/OTIF) — AI nie wymyśla wzoru; nie OMNI READINESS ENGINE; nie pasek 72 % |
 | AI5.1 | cechy modelu predykcyjnego z danych zewnętrznych | po AI5.0 | podnosi V2/V4 |
 | AI6.0 | graf skutku biznesowego: Shipment → Inventory → SKU → Production Line → Customer Order → Revenue → Margin → Cash | po AI5.1 + CI1 | Watch Tower technicznie; podnosi V6 leftover EBITDA i CT |
 | AI7.0 | Cost Allocation Engine — 12 poziomów, 6 kategorii, 23 klucze → `TRUE CONTRIBUTION MARGIN` | po AI0 | marża zostaje w `margin()` |

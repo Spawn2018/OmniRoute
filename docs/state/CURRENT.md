@@ -69,3 +69,4 @@ Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll �
 **2026-09-13:** Cloudflare = bramka publikacji (VISION B.8; PLAN park live public). Access ≠ Auth0 S53. Nie Q `/noc`.
 **2026-09-13:** Scalenie docs (Murphy/GPT filtr D.7, C.3 Grupa 8, PLAN żywy + `PLAN-HISTORIA.md`, leftover Plat-HD/Mob). Następny nadal **468.0**. Nie AI0. Nie Expo. Nie Valhalla.
 **2026-09-13:** Leftover GPT (D.7): definicja KPI per strona · brama L3 · SOP agenta · ulga nie sens · promień wybuchu — na AI5.0 / AI8.2 / GLOSSARY. Następny nadal **468.0**.
+**2026-09-13:** Kanon vs badania (D.8): leftover `07` na AI3 · mapa C.4 → C1/C8/C9/V5/X7–X9/F9–F11. Następny nadal **468.0**.

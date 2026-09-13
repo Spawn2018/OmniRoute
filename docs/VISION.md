@@ -2,8 +2,8 @@
 
 ```
 status:        roboczy kanon
-wersja:        0.6
-ostatnia zmiana: 2026-09-13 22:40
+wersja:        0.7
+ostatnia zmiana: 2026-09-13 22:55
 ```
 
 ## Jak czytać
@@ -111,6 +111,7 @@ zostają w badaniach `04`).
 | 2026-09-13 | D.7 readiness (Murphy 2026 + audyt PDF/czat): Three-Bucket, Definition Gap, szwy eskalacji = leftover. Mission Control / wektor / druga warstwa semantyczna / Bertha `REJECTED`. |
 | 2026-09-13 | Ciało C.3 Grupa 8 + D.7 + skrót `03` B.4–B.6 w A.2. E.3: HC-04 i FK `plan_snapshot` zamknięte. [WYCOFANE 2026-09-13: „B.4–B.6 nietknięte w dumpie” — skrót jest w kanonie]. |
 | 2026-09-13 | D.7: pięć jobów z audytu GPT jako leftover (definicja KPI per strona; brama L3; SOP agenta; ulga nie sens; promień wybuchu). Nie nowy BC. Nie 468.0. |
+| 2026-09-13 | D.8: badania ≠ drugi kanon. C.4 mapa leftover. AI3 leftover z `07`. C.3 Grupa 6: `crm_opportunity` jest. E.3 Q11 zamknięte. Nie 468.0. |
 
 ---
 
@@ -932,9 +933,9 @@ To jest część dopisana na wprost sformułowane polecenie właściciela: *„w
 budowy aplikacji chcę także brakujące moduły i wszystko inne, bo nowa zaktualizowana
 wizja OmniRoute przecież uwzględnia dużo więcej niż obecnie się buduje"*.
 
-Poniższe pozycje **nie mają dziś ani kodu, ani miejsca w kolejce** albo mają
-wyłącznie katalog HITL bez warstwy operacyjnej. Podział na grupy odpowiada temu,
-co blokuje co.
+Poniższe pozycje **albo nie mają kodu, albo mają wyłącznie katalog HITL**
+bez warstwy operacyjnej. Każda ma wiersz w PLAN (Fala BR / Plat-HD / Mob /
+AI5–AI7). Podział na grupy odpowiada temu, co blokuje co.
 
 **Grupa 1 — magazyn i fizyczny towar.** Warunek konieczny dla strumienia Trade-Tech,
 bo bez ewidencji magazynowej nie ma zastawu na towarze.
@@ -996,8 +997,9 @@ bo bez ewidencji magazynowej nie ma zastawu na towarze.
 - **Cost Allocation Engine** — dwanaście poziomów, `TRUE CONTRIBUTION MARGIN`
 
 **Grupa 6 — sprzedaż, klient i marketing.** Szczegóły w dokumencie `11`.
-- **CRM ponad leada** — dziś w kodzie jest **wyłącznie `crm_lead`**; nie ma okazji
-  sprzedażowej, aktywności ani pipeline'u (`CONFIRMED`, audyt kodu)
+- **CRM ponad leada** — katalog HITL `crm_opportunity` jest
+  (`CONFIRMED`, 456.0); `crm_lead` zostaje. Leftover aktywność / pipeline
+  (`REQUIREMENT`). Cold auto-send `REJECTED`.
 - **Korytarz jako obiekt sprzedażowy** — katalog HITL `sales_lane` jest
   (`CONFIRMED`, 460.0); leftover para UN/LOCODE i wolumen (`REQUIREMENT`).
   HubSpot/Salesforce live `REJECTED` na tym wierszu. W TSL decyduje powtarzalny
@@ -1055,11 +1057,27 @@ Lista dosłowna z rozmowy „blueprinting" (`CONFIRMED`, dokument `01` §14.1):
 `postal_epo` · `purchase_invoice` · `purchase_invoice_allocation` · `quote_engagement` ·
 `quote_view_token`
 
-Część z nich już powstała w międzyczasie (`resource`, `trip`, `stop`,
-`telematics_connector`, `entity_event`, `weather_observation`, `party_document`,
-`monitoring_scheme`, `document_template`, `shipment_package`, `erp_connector`).
-**Przed wpisaniem do kolejki każdą trzeba sprawdzić w `backend/alembic/versions/`** —
-nie zakładać ani że jest, ani że jej nie ma.
+**Mapa 2026-09-13 (Alembic + leftover istniejącego ID — nie nowe Q):**
+
+| Nazwa z blueprinting | Stan |
+|---|---|
+| `resource` · `trip` · `stop` · `telematics_connector` · `entity_event` · `weather_observation` · `party_document` · `monitoring_scheme` · `document_template` · `shipment_package` · `erp_connector` · `position_event` | **jest** (HITL / katalog) |
+| `relation_document_requirement` | leftover **C8** |
+| `resource_telematics_link` | leftover **V5** |
+| `exchange_message` | leftover **V5b** |
+| `party_exchange_snapshot` | leftover **C9** |
+| `shipment_monitoring_filing` | leftover **C1** |
+| `map_basemap` · `user_map_prefs` · `tenant_map_provider` | leftover **X8** |
+| `erp_series_map` · `erp_export` | leftover **F9** |
+| `scan_enhance_run` | leftover **X9** |
+| `invoice_match_candidate` | leftover **F10** |
+| `network_print_requirement` | leftover **D9** |
+| `postal_dispatch` · `postal_tracking_event` · `postal_epo` | leftover **F11** |
+| `purchase_invoice` · `purchase_invoice_allocation` | leftover **F9** / **F10** |
+| `quote_engagement` · `quote_view_token` | leftover **X7** |
+
+Nowa tabela = INSERT przy wskazanym ID, gdy CURRENT tam wskaże. Nie 32 plastry
+z tej listy. Nie zgadywać kolumn.
 
 Do tego cztery tabele substratu z części B.2 (`suggestion_ledger`, `outcome_ledger`,
 `counterfactual_run`, `benefit_ledger`) i cztery słowniki z B.3 (`twin_kind`,
@@ -1070,10 +1088,12 @@ Do tego cztery tabele substratu z części B.2 (`suggestion_ledger`, `outcome_le
 - **`charge.source_ref`** — [WYCOFANE 2026-09-13 jako luka P0 do zrobienia:
   jest w kodzie, plaster 129.0 / 072]. Warunek `benefit_ledger` pozostaje
   (część B.1 / B.2).
-- `shipment.shipment_ref`
-- `sales_invoice.delivery_channel`
-- `extraction_draft.draft_kind` + `bbox` i poziom pewności w JSONB
-- `party_contact.tracking_consent`
+- `shipment.shipment_ref` — leftover pinu, nie 468.0
+- `sales_invoice.delivery_channel` — leftover **F1** / kanał e-faktury
+- `extraction_draft.draft_kind` + `bbox` / pewność w JSONB — **448.0**
+  (`CONFIRMED`); leftover historia wierszy (AI3.1)
+- `party_contact.tracking_consent` — leftover kolumny; katalog
+  `tracking_consent` jest (`CONFIRMED`, 459.0)
 
 ---
 ---
@@ -1336,6 +1356,19 @@ pgvector na przetargach; Next.js / Astro; Cloudflare AI Gateway jako Q;
 RLHF jako silnik; LLM na kwotach / marży; auto-send; drugi SSoT marży.
 Cloudflare = bramka publikacji (B.8). Access ≠ Auth0 S53.
 
+## D.8 Badania na `D:\` a kanon w repo
+
+Folder `D:\OMNIROUTE-badania` jest **dowodem**, nie drugim planem i nie
+repozytorium programu. Do `docs/VISION.md` i `docs/PLAN-REALIZACJA.md`
+wchodzi: `REQUIREMENT` / `CONFIRMED` / leftover na **istniejącym** ID /
+świadome `REJECTED`. Nie wchodzi: zrzut czatu (`99`), eseje vendorów
+(`03`/`04`/`04b` — zostaje skrót w A.2), playbook sprzedaży (`02`),
+metodyka modeli (`05`/`06`), szkice CURRENT (`14`), kolejka
+`12-FALA-AI-KOLEJKA.md` (SUPERSEDED), książka Murphy jako BC (`18`).
+
+**22 dostępy P0** z C.1 = katalog `09`/`10`, pierwszy ingest = **AI5.0**,
+nie 22 plastry. Zero live HTTP, dopóki CURRENT nie wskaże AI5.
+
 ---
 ---
 
@@ -1433,8 +1466,8 @@ Lista jest krótka, ale każda pozycja blokuje konkretną decyzję projektową.
    FK złożone `(organization_id, id)` + `ON DELETE RESTRICT`. CASCADE `REJECTED`.]
 3. **Memoryzacja modelu** przy uczeniu międzytenantowym — problem techniczny,
    którego nie rozwiązuje zapis w umowie.
-4. **Rozbieżność skali** — „setki milionów EUR" wobec 29,2 mln PLN przychodu
-   i ~147 mln PLN wyceny w roku trzecim. Dwa horyzonty czy dwie definicje.
+4. **Rozbieżność skali.** [WYCOFANE 2026-09-13: Q11 — dwa horyzonty
+   tej samej ścieżki. Q12 — inwestorowi dziś zero liczb skali.]
 5. **Koncentracja na jednej grupie kapitałowej** — wolumen kontra dowód rynkowy.
 6. **Zależności przechodnie `docling`** — niesprawdzone pod kątem AGPL.
 7. **Dwa prompty referencyjne.** [WYCOFANE 2026-09-13: Q13 — pełne wersje
