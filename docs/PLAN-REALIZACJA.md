@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **444.0** AI2.1 widok: `pair_count` + średnie MAE/CRPS per `model_version`. Nie auto-champion. Nie dryf.
+**Następny:** **445.0** AI2.1 leftover: dryf per `model_version` (oś czasu). Nie auto-champion. Nie Brier.
 <!-- os-status:end -->
 
 ```mermaid
@@ -757,7 +757,7 @@ Dump TMS 2026-09-13 (badania `04b` A–H × 10; CargoWise/Qargo/interLAN zostaj�
 | AI1.3 | `benefit_ledger` — zaoszczędzony czas i pieniądze **z jawną metodą punktu odniesienia** | **DONE w kodzie** (435.0 / 345) | HITL method_label + Decimal; nie druga marża; nie SQL z charge |
 | AI1.4 | Słowniki otwarte: `twin_kind`, `data_source`, `autonomy_level`, `suggestion_kind` | 436.0–442.0 DONE | leftover `data_source` (AI5) |
 | AI2.0 | CRPS, Brier, MAE **liczone** ze złączenia AI1.0×AI1.1 | po AI1.1 | **443.0 DONE** widok MAE/CRPS; leftover: Brier · zapis `prediction_ledger` · AI2.1; dump `04b`: Oracle LML 95% interval = metoda, nie CRPS/MAE |
-| AI2.1 | champion/challenger + wykrywanie dryfu | po AI2.0 | 444.0 delta `/noc` = widok średnich per `model_version`; leftover: dryf · auto-champion · V1 |
+| AI2.1 | champion/challenger + wykrywanie dryfu | po AI2.0 | **444.0 DONE** widok średnich per `model_version`; leftover: dryf (**445.0**) · auto-champion · V1 |
 | AI3.0 | `PATCH` na `extraction_draft` + edycja w interfejsie przed akceptacją | po AI2.0 | dziś accept/reject zmienia tylko status |
 | AI3.1 | wersjonowanie szkicu + `draft_kind` + `bbox` i pewność w JSONB | po AI3.0 | rozszerzenie istniejącego obiektu |
 | AI3.2 | ścieżka **obraz wprost** jako challenger dla obecnej ścieżki przez tekst | po AI3.1 | preprint 96,50% / 92,71% vs markdown — faktury, nie taryfy; mierzyć u siebie; wolno cytować z caveat (Q8) |
@@ -934,13 +934,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

@@ -185,6 +185,7 @@ modules =
     app.services.outcome_kinds
     app.services.outcome_ledgers
     app.services.interval_scores
+    app.services.version_scores
     app.services.counterfactual_runs
     app.services.benefit_ledgers
     app.services.suggestion_kinds
@@ -881,6 +882,9 @@ forbidden_modules =
     app.services.interval_scores
     app.repositories.interval_scores
     app.models.interval_score
+    app.services.version_scores
+    app.repositories.version_scores
+    app.models.version_score
     app.services.counterfactual_runs
     app.repositories.counterfactual_runs
     app.models.counterfactual_run

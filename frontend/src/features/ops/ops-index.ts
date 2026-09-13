@@ -934,6 +934,11 @@ export const OPS_JOBS = [
     job: "odczyt MAE/CRPS ze złączenia",
   },
   {
+    route: BUSINESS_LISTS.versionScore.route,
+    label: "Wynik wersji",
+    job: "średnie MAE/CRPS per model_version",
+  },
+  {
     route: BUSINESS_LISTS.counterfactualRun.route,
     label: "Przebieg what-if",
     job: "katalog counterfactual_run HITL",
@@ -1658,6 +1663,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "438.0": "/autonomy-levels",
   "441.0": "/outcome-kinds",
   "443.0": "/interval-scores",
+  "444.0": "/version-scores",
 } as const
 
 

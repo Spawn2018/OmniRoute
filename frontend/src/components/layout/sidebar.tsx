@@ -80,6 +80,7 @@ const NAV = [
   { to: "/suggestion-ledgers", label: "Ledger podpowiedzi" },
   { to: "/outcome-ledgers", label: "Ledger wyniku" },
   { to: "/interval-scores", label: "Wynik przedziału" },
+  { to: "/version-scores", label: "Wynik wersji" },
   { to: "/outcome-kinds", label: "Rodzaj wyniku" },
   { to: "/counterfactual-runs", label: "Przebieg what-if" },
   { to: "/benefit-ledgers", label: "Ledger oszczędności" },

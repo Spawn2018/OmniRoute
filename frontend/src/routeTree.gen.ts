@@ -250,6 +250,7 @@ import { Route as TwinKindsRouteImport } from './routes/twin-kinds'
 import { Route as TwinMarksRouteImport } from './routes/twin-marks'
 import { Route as UnSegregationMarksRouteImport } from './routes/un-segregation-marks'
 import { Route as VdaOdetteMarksRouteImport } from './routes/vda-odette-marks'
+import { Route as VersionScoresRouteImport } from './routes/version-scores'
 import { Route as VisibilityConnectorsRouteImport } from './routes/visibility-connectors'
 import { Route as WarRoomMarksRouteImport } from './routes/war-room-marks'
 import { Route as WatchtowerRouteImport } from './routes/watchtower'
@@ -1466,6 +1467,11 @@ const VdaOdetteMarksRoute = VdaOdetteMarksRouteImport.update({
   path: '/vda-odette-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const VersionScoresRoute = VersionScoresRouteImport.update({
+  id: '/version-scores',
+  path: '/version-scores',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const VisibilityConnectorsRoute = VisibilityConnectorsRouteImport.update({
   id: '/visibility-connectors',
   path: '/visibility-connectors',
@@ -1754,6 +1760,7 @@ export interface FileRoutesByFullPath {
   '/twin-marks': typeof TwinMarksRoute
   '/un-segregation-marks': typeof UnSegregationMarksRoute
   '/vda-odette-marks': typeof VdaOdetteMarksRoute
+  '/version-scores': typeof VersionScoresRoute
   '/visibility-connectors': typeof VisibilityConnectorsRoute
   '/war-room-marks': typeof WarRoomMarksRoute
   '/watchtower': typeof WatchtowerRoute
@@ -2006,6 +2013,7 @@ export interface FileRoutesByTo {
   '/twin-marks': typeof TwinMarksRoute
   '/un-segregation-marks': typeof UnSegregationMarksRoute
   '/vda-odette-marks': typeof VdaOdetteMarksRoute
+  '/version-scores': typeof VersionScoresRoute
   '/visibility-connectors': typeof VisibilityConnectorsRoute
   '/war-room-marks': typeof WarRoomMarksRoute
   '/watchtower': typeof WatchtowerRoute
@@ -2259,6 +2267,7 @@ export interface FileRoutesById {
   '/twin-marks': typeof TwinMarksRoute
   '/un-segregation-marks': typeof UnSegregationMarksRoute
   '/vda-odette-marks': typeof VdaOdetteMarksRoute
+  '/version-scores': typeof VersionScoresRoute
   '/visibility-connectors': typeof VisibilityConnectorsRoute
   '/war-room-marks': typeof WarRoomMarksRoute
   '/watchtower': typeof WatchtowerRoute
@@ -2513,6 +2522,7 @@ export interface FileRouteTypes {
     | '/twin-marks'
     | '/un-segregation-marks'
     | '/vda-odette-marks'
+    | '/version-scores'
     | '/visibility-connectors'
     | '/war-room-marks'
     | '/watchtower'
@@ -2765,6 +2775,7 @@ export interface FileRouteTypes {
     | '/twin-marks'
     | '/un-segregation-marks'
     | '/vda-odette-marks'
+    | '/version-scores'
     | '/visibility-connectors'
     | '/war-room-marks'
     | '/watchtower'
@@ -3017,6 +3028,7 @@ export interface FileRouteTypes {
     | '/twin-marks'
     | '/un-segregation-marks'
     | '/vda-odette-marks'
+    | '/version-scores'
     | '/visibility-connectors'
     | '/war-room-marks'
     | '/watchtower'
@@ -3270,6 +3282,7 @@ export interface RootRouteChildren {
   TwinMarksRoute: typeof TwinMarksRoute
   UnSegregationMarksRoute: typeof UnSegregationMarksRoute
   VdaOdetteMarksRoute: typeof VdaOdetteMarksRoute
+  VersionScoresRoute: typeof VersionScoresRoute
   VisibilityConnectorsRoute: typeof VisibilityConnectorsRoute
   WarRoomMarksRoute: typeof WarRoomMarksRoute
   WatchtowerRoute: typeof WatchtowerRoute
@@ -4970,6 +4983,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VdaOdetteMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/version-scores': {
+      id: '/version-scores'
+      path: '/version-scores'
+      fullPath: '/version-scores'
+      preLoaderRoute: typeof VersionScoresRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/visibility-connectors': {
       id: '/visibility-connectors'
       path: '/visibility-connectors'
@@ -5278,6 +5298,7 @@ const rootRouteChildren: RootRouteChildren = {
   TwinMarksRoute: TwinMarksRoute,
   UnSegregationMarksRoute: UnSegregationMarksRoute,
   VdaOdetteMarksRoute: VdaOdetteMarksRoute,
+  VersionScoresRoute: VersionScoresRoute,
   VisibilityConnectorsRoute: VisibilityConnectorsRoute,
   WarRoomMarksRoute: WarRoomMarksRoute,
   WatchtowerRoute: WatchtowerRoute,

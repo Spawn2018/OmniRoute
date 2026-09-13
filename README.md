@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **443.0** AI2.0 `interval_score` — MAE/CRPS liczone w Postgresie
-- **Etap:** plaster — **444.0** AI2.1 `version_score`. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
-- **Następny:** **444.0** AI2.1 widok: `pair_count` + średnie MAE/CRPS per `model_version`. Nie auto-champion. Nie dryf.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **444.0** AI2.1 `version_score` — średnie MAE/CRPS per `model_version`
+- **Etap:** Plan — **445.0** AI2.1 leftover dryf. Brak delty. `/plan-modul`.
+- **Następny:** **445.0** AI2.1 leftover: dryf per `model_version` (oś czasu). Nie auto-champion. Nie Brier.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

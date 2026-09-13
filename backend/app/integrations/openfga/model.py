@@ -127,6 +127,7 @@ def _organization_ai_catalog_relations() -> dict[str, Userset]:
         "can_manage_outcome_kinds": _member(),
         "can_manage_outcome_ledgers": _member(),
         "can_manage_interval_scores": _member(),
+        "can_manage_version_scores": _member(),
         "can_manage_counterfactual_runs": _member(),
         "can_manage_benefit_ledgers": _member(),
         "can_manage_suggestion_kinds": _member(),

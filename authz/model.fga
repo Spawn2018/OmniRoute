@@ -216,6 +216,7 @@ type organization
     define can_manage_outcome_kinds: member
     define can_manage_outcome_ledgers: member
     define can_manage_interval_scores: member
+    define can_manage_version_scores: member
     define can_manage_counterfactual_runs: member
     define can_manage_benefit_ledgers: member
     define can_manage_suggestion_kinds: member

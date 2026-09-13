@@ -13947,6 +13947,32 @@ export type VdaOdetteMarkResponse = {
 };
 
 /**
+ * VersionScoreResponse
+ */
+export type VersionScoreResponse = {
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Model Version
+     */
+    model_version: string;
+    /**
+     * Pair Count
+     */
+    pair_count: number;
+    /**
+     * Avg Mae
+     */
+    avg_mae: string;
+    /**
+     * Avg Crps
+     */
+    avg_crps: string;
+};
+
+/**
  * VisibilityConnectorCreate
  */
 export type VisibilityConnectorCreate = {
@@ -23185,6 +23211,24 @@ export type ListIntervalScoresApiV1IntervalScoresGetResponses = {
 };
 
 export type ListIntervalScoresApiV1IntervalScoresGetResponse = ListIntervalScoresApiV1IntervalScoresGetResponses[keyof ListIntervalScoresApiV1IntervalScoresGetResponses];
+
+export type ListVersionScoresApiV1VersionScoresGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/version-scores';
+};
+
+export type ListVersionScoresApiV1VersionScoresGetResponses = {
+    /**
+     * Response List Version Scores Api V1 Version Scores Get
+     *
+     * Successful Response
+     */
+    200: Array<VersionScoreResponse>;
+};
+
+export type ListVersionScoresApiV1VersionScoresGetResponse = ListVersionScoresApiV1VersionScoresGetResponses[keyof ListVersionScoresApiV1VersionScoresGetResponses];
 
 export type ListDemoGpsMarksApiV1DemoGpsMarksGetData = {
     body?: never;

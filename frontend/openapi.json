@@ -15308,6 +15308,36 @@
         ]
       }
     },
+    "/api/v1/version-scores": {
+      "get": {
+        "tags": [
+          "version-scores"
+        ],
+        "summary": "List Version Scores",
+        "operationId": "list_version_scores_api_v1_version_scores_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/VersionScoreResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Version Scores Api V1 Version Scores Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/demo-gps-marks": {
       "get": {
         "tags": [
@@ -44354,6 +44384,40 @@
           "source_ref"
         ],
         "title": "VdaOdetteMarkResponse"
+      },
+      "VersionScoreResponse": {
+        "properties": {
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "model_version": {
+            "type": "string",
+            "title": "Model Version"
+          },
+          "pair_count": {
+            "type": "integer",
+            "title": "Pair Count"
+          },
+          "avg_mae": {
+            "type": "string",
+            "title": "Avg Mae"
+          },
+          "avg_crps": {
+            "type": "string",
+            "title": "Avg Crps"
+          }
+        },
+        "type": "object",
+        "required": [
+          "organization_id",
+          "model_version",
+          "pair_count",
+          "avg_mae",
+          "avg_crps"
+        ],
+        "title": "VersionScoreResponse"
       },
       "VisibilityConnectorCreate": {
         "properties": {
