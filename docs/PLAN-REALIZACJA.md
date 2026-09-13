@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **434.0** AI1.2 HITL `counterfactual_run` — scenariusz + punkt odniesienia + dźwignie + wynik; niemutowalny.
+**Następny:** **434.0** AI1.2 HITL `counterfactual_run` — run_code + baseline_label + levers_label + result_label.
 <!-- os-status:end -->
 
 ```mermaid
@@ -753,7 +753,7 @@ Dump TMS 2026-09-13 (badania `04b` A–H × 10; CargoWise/Qargo/interLAN zostaj�
 | **AI0** | `charge.source_ref` — pochodzenie kwoty na opłacie | **DONE w kodzie** (129.0 / 072) | nullable stare fixture; obowiązkowe na nowym INSERT (`require_source_ref`) |
 | AI1.0 | `suggestion_ledger` — każda podpowiedź: BC, encja, przedział/pewność, wersja modelu i promptu, reakcja człowieka `accept\|modify\|reject` **i na co zmienił** | **DONE w kodzie** (432.0 / 342) | HITL append-only, bez zapisu LLM (HC-04); leftover: outcome zamknięty 433.0 / słowniki / trzy BC; dump `04b`: silniki MQ zostają HITL + ten wiersz |
 | AI1.1 | `outcome_ledger` — co się naprawdę stało | **DONE w kodzie** (433.0 / 343) | HITL actual_value Decimal; złączenie / CRPS = leftover AI2; bez FK do suggestion_ledger |
-| AI1.2 | `counterfactual_run` — scenariusz, punkt odniesienia, dźwignie, wynik; niemutowalny | plan 434.0 (433.0 DONE) | bliźniak operacyjnie; podnosi W1 leftover silników |
+| AI1.2 | `counterfactual_run` — scenariusz, punkt odniesienia, dźwignie, wynik; niemutowalny | plan 434.0 (delta `/noc`) | HITL etykiety jako dane; silnik = leftover AI4.1; nie klon what_if_mark |
 | AI1.3 | `benefit_ledger` — zaoszczędzony czas i pieniądze **z jawną metodą punktu odniesienia** | po AI0 + AI1.1 | bez zapisanej metody liczba jest nieweryfikowalna; dump `04b`: druga marża SAP/Oracle/Shipwell = zakaz |
 | AI1.4 | Słowniki otwarte: `twin_kind`, `data_source`, `autonomy_level`, `suggestion_kind` | po AI1.0 | rodzaj bytu = wiersz, nie `CHECK` ani `ENUM` |
 | AI2.0 | CRPS, Brier, MAE **liczone** ze złączenia AI1.0×AI1.1 | po AI1.1 | podnosi V1 leftover champion/challenger / drift; dump `04b`: Oracle LML 95% interval = metoda, nie CRPS/MAE; `prediction_ledger` HITL aż AI2 |

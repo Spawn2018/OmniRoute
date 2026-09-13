@@ -88,8 +88,8 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **433.0** AI1.1 HITL `outcome_ledger`
-- **Etap:** Plan — **AI1.2** / **434.0**
-- **Następny:** **434.0** AI1.2 HITL `counterfactual_run` — scenariusz + punkt odniesienia + dźwignie + wynik; niemutowalny.
+- **Etap:** Plan — **AI1.2** / **434.0** (delta zaakceptowana `/noc`, wolno `/plaster`)
+- **Następny:** **434.0** AI1.2 HITL `counterfactual_run` — run_code + baseline_label + levers_label + result_label.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

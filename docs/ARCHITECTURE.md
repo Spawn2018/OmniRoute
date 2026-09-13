@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **433.0** AI1.1 HITL `outcome_ledger`. **Etap:** Plan — **AI1.2** / **434.0**. **Następny:** **434.0** AI1.2 HITL `counterfactual_run` — scenariusz + punkt odniesienia + dźwignie + wynik; niemutowalny. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **433.0** AI1.1 HITL `outcome_ledger`. **Etap:** Plan — **AI1.2** / **434.0** (delta zaakceptowana `/noc`, wolno `/plaster`). **Następny:** **434.0** AI1.2 HITL `counterfactual_run` — run_code + baseline_label + levers_label + result_label. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
