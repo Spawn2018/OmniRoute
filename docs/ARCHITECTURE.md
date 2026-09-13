@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **457.0** BR2.0 — HITL `position_event` (katalog zdarzenia). **Etap:** Plan — **458.0** BR2.1 urządzenie telematyczne. Brak delty. `/plan-modul`. **Następny:** **458.0** HITL katalog urządzenia. Nie live GPS. Nie poll. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **457.0** BR2.0 — HITL `position_event` (katalog zdarzenia). **Etap:** plaster — **458.0** BR2.1 `telematics_device`. Delta zaakceptowana (`/noc`). Wolno `/plaster`. **Następny:** **458.0** HITL katalog urządzenia. Nie live GPS. Nie parowanie. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

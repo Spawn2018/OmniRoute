@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **457.0** BR2.0 — HITL `position_event` (katalog zdarzenia)
 
-**Etap:** Plan — **458.0** BR2.1 urządzenie telematyczne. Brak delty. `/plan-modul`.
+**Etap:** plaster — **458.0** BR2.1 `telematics_device`. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
 
 **Noc:** `/noc 20` do **2026-09-13T20:00+02**.
 
-**Następny:** **458.0** HITL katalog urządzenia. Nie live GPS. Nie poll.
+**Następny:** **458.0** HITL katalog urządzenia. Nie live GPS. Nie parowanie.
 
 Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 458.0. Nie otwieraj AI0. Nie startuj leftover Valhalla / pipeline / współrzędne live.
 
-**Spec (jedyna na sesję):** brak — /plan-modul
+**Spec (jedyna na sesję):** [docs/deltas/open/458.0-telematics-device.md](../deltas/open/458.0-telematics-device.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 
