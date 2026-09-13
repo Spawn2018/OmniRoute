@@ -220,6 +220,8 @@ I1 (BFF + PKCE + cookie; org z `app_metadata`; first-login bez org = odmowa) i I
 
 Gdy user **ma** tenant: SPA Vite → BFF FastAPI → Auth0; cookie HttpOnly; Secure; SameSite=Lax; region EU / SCC jeśli plan pozwala. **Nie** w tym samym plasterze co hasła.
 
+**Park — live public / Cloudflare (2026-09-13):** właściciel chce Cloudflare jako warstwę bezpieczeństwa **zanim** SPA jest publiczna. To **nie** jest Q `/noc` i **nie** zdejmuje leftover **S53** Auth0 I1/I2. Access (Zero Trust przed hostem) ≠ IdP tenanta. Pin **2026-09-08c** bez zmian. **431.0** zostaje następnym plastrem. Kanon: [VISION.md](VISION.md) § B.8. Karta STRIDE: [threat-model-tenant-hitl.md](ops/threat-model-tenant-hitl.md) (dopisek edge).
+
 ---
 
 ## Moduły w kodzie (żywy rejestr)
@@ -467,13 +469,13 @@ Reguły kolejności (żeby `/noc` nie złożył awarii):
 | S50 | Arch. M-111 flota | 112.0 park | named park (`docs/deltas/archived/112.0-fleet-named-park.md`) | Brak jobu „własne auto”. Nie TMS |
 | S51 | Żywe **M-55** reklamacja | 113.0 | zamknięty (`docs/deltas/archived/113.0-cargo-claim.md`) | Reklamacja na zleceniu. Nie kwota. Nie scoring |
 | S52 | Kat. M-54 oszustwo | 114.0 | zamknięty (`docs/deltas/archived/114.0-fraud-flag.md`) | Flaga na kontrahencie. Nie scoring osoby |
-| **S53** | M-04 / Auth0 | 270.0 | zamknięty (`docs/deltas/archived/270.0-idp-connector.md`) | HITL `idp_connector` fixture; JWT hello zostaje; live I1/I2 parked. Przed portalami |
+| **S53** | M-04 / Auth0 | 270.0 | zamknięty (`docs/deltas/archived/270.0-idp-connector.md`) | HITL `idp_connector` fixture; JWT hello zostaje; live I1/I2 parked. Przed portalami. 2026-09-13: Cloudflare Access (VISION B.8) ≠ Auth0 I1/I2 i **nie** zdejmuje tego leftoveru; park live public — nie Q `/noc` |
 | S54 | Arch. M-76 status klienta | 115.0 park | named park (`docs/deltas/archived/115.0-client-status-named-park.md`) | Aż Auth0 S53. Nie wieża operatora |
 | **S55** | F10 M-61…M-67, M-73, M-199 | 271.0 | zamknięty (`docs/deltas/archived/271.0-exchange-connector.md`) | HITL `exchange_connector` fixture `trans_eu`; giełda live parked |
 | **S56** | Pogłębienie M-57 (kat. M-58) | 116.0 | zamknięty (`docs/deltas/archived/116.0-copilot-watchtower.md`) | Szkice na wieży. Nie nowy czat |
 | S57 | Kat. M-59 narracja po SQL | 117.0 | zamknięty (`docs/deltas/archived/117.0-finance-narrative.md`) | Zdania z pól SQL. LLM nie liczy |
 | S58 | Kat. M-60 drafty po SOP | 118.0 | zamknięty (`docs/deltas/archived/118.0-sop-drafts.md`) | SOP `blocks_auto` na `/ai`. Nigdy auto-send |
-| S59 | M-68 OTel, M-69 QA, M-70 rollout | 119.0 park | named park (`docs/deltas/archived/119.0-otel-rollout-named-park.md`) | Aż konsument outboxa / umowa SaaS. Nie k6 |
+| S59 | M-68 OTel, M-69 QA, M-70 rollout | 119.0 park | named park (`docs/deltas/archived/119.0-otel-rollout-named-park.md`) | Aż konsument outboxa / umowa SaaS. Nie k6. 2026-09-13: edge Cloudflare / publikacja HTTP parked (VISION B.8) — nie zdejmuje **431.0** |
 
 Po S59 named parks **live** (S53 Auth0, S55 ogólnik portali, S21, S50, S54, S59, AIS) czekają na swoje Q w CURRENT. Katalog 71–212 wpinany gdy jest poprzednik (cło/WMS po C/D; fintech po F). Luki **M-203, M-204** puste — nie zgaduj.
 
@@ -852,7 +854,8 @@ M-48…M-51 modały · M-52…M-56 compliance (M-53 sankcje, M-56 RODO) · M-57�
 | ID | Dlaczego nie teraz | Kiedy |
 |---|---|---|
 | **M-02** outbox | **DONE 79.0** (`inbound_message_saved`). Konsument leftover | S17+ |
-| **Auth0 I1/I2** | Brak tenanta / brak sekretu live | po HITL **270.0**. JWT hello zostaje |
+| **Auth0 I1/I2** | Brak tenanta / brak sekretu live | po HITL **270.0**. JWT hello zostaje. Cloudflare Access (B.8) **nie** zastępuje tego wiersza |
+| **Live public / Cloudflare** | Brak domeny i originu produkcyjnego; Access ≠ IdP | park; [VISION B.8](VISION.md); leftover S53 Auth0 zostaje; nie Q `/noc` |
 | **Watchtower / mapa** | **DONE 94.0 + 124.0** lista + liczniki + lazy placeholder | AIS leftover, nie F9.1 |
 | **Portale F10** | Brak IdP | **S55** po **S53** |
 | **M-04 SSO** | OpenFGA hello ≠ IdP | Razem z Auth0 **S53** |

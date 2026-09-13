@@ -3,7 +3,7 @@
 ```
 status:        roboczy kanon
 wersja:        0.3
-ostatnia zmiana: 2026-09-13 06:05
+ostatnia zmiana: 2026-09-13 06:20
 ```
 
 ## Jak czytać
@@ -36,6 +36,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | Dump CT badania `03` B.1–B.3, B.7–B.10: Oracle buy/sell = antywzorzec; p44/LSP44 = dwa GTM, jeden OpenAPI; GTT+o9+Shippeo+e2open+Infor; auto-approve zakaz; luka `charge`/`benefit_ledger`. B.4–B.6 nietknięte. [WYCOFANE 2026-09-13: „TMS `04b` nietknięte” — dump `04b` jest w kanonie]. |
 | 2026-09-13 | Dump TMS top-10 badania `04b` (A–H × 10): druga marża REJECTED; Decimal CONFIRMED; AI-write MQ REJECTED; Oracle LML 95% jedyna publiczna metoda przedziału; WMS+BR6.2 evidenced; e2open≠CargoWise; Uber konflikt danych; CHR nie ISV; luka dwóch skór+RLS; KSeF/JPK/SENT nasze; leftover silniki HITL. 431.0 nie wynika z dziesiątki. |
 | 2026-09-13 | [WYCOFANE] zdania „TMS `04b` w toku / nietknięte” — dump jest w kanonie |
+| 2026-09-13 | Bramka publikacji: Cloudflare jako warstwa bezpieczeństwa przed ruchem publicznym (B.8). Nie plaster, nie `/noc`, nie AI0. 431.0 zostaje. |
 
 ---
 
@@ -104,6 +105,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | Wskazano regułę `.cursor/rules/wizja-zywa.mdc`. Kanon = ten plik, nie trzecia kopia. | polecenie właściciela 2026-09-13 |
 | 2026-09-13 | Dump Control Tower (badania `03` B.1–B.3, B.7–B.10): antypattern Oracle buy/sell; p44/LSP44 jeden OpenAPI dwa GTM; trójka PLANNED/ACTUAL/ESTIMATE; zakaz float geo; GTT model+tolerance; wzorzec benchu o9 cuOpt; Shippeo Triple SLA bez claimu liczb; Shippeo≠Overhaul; e2open=WiseTech; Infor sieć ≠ RLS; auto-approve zakaz; luka `charge`+`benefit_ledger` u siódemki. B.4–B.6 nietknięte. [WYCOFANE 2026-09-13: „TMS `04b` nadal w toku” — dump `04b` jest w kanonie]. | public docs w `03`; decyzje Omni = `REQUIREMENT` / `REJECTED` / `CONFIRMED` w A–E |
 | 2026-09-13 | Dump TMS top-10 (badania `04b`, A–H × 10 poza CargoWise/Qargo/interLAN): klon drugiej marży REJECTED (SAP `Profitability` na FWO; Oracle `Job.Profit` + osobne buy/sell shipments; Shipwell `customer_charge_line_items` + `vendor_charge_line_items` + `markup`); JSON `number` / integer cents ≠ Decimal HC; AI-write bo MQ ma (Shipwell Swifty/MCP, Uber 30+ agents, SAP calc on save) REJECTED; Oracle LML 95% `Prediction Low/High` = jedyna publiczna metoda przedziału, nie CRPS/MAE; Fala BR WMS evidenced (Manhattan Active TM+WMS+Yard+Labour; Infios Archer OMS/WMS/TMS; SAP EWM); BR6.2 = Alpega TenderEasy + Freight Bench (multi-round, like-for-like, spot; nie auto-award); e2open ≠ CargoWise (close 03.08.2025, „very little product overlap”); Uber Freight konflikt osi danych HHL; CHR Navisphere nie ISV; żaden z 10 nie sprzedaje dwóch skór TSL+Watch Tower + Postgres RLS; KSeF/JPK/SENT nie publiczne; leftover silniki (VSR, LML, Optimizer, Archer, what-if) zostają HITL + `suggestion_ledger` (AI1.0 po 431.0). 431.0 `quote_validity_mark` nie wynika z tej dziesiątki. | public docs w `04b`; decyzje Omni = `REQUIREMENT` / `REJECTED` / `CONFIRMED` w A–E |
+| 2026-09-13 | Bramka publikacji: Cloudflare jako warstwa bezpieczeństwa (DNS + proxy, TLS Full/strict, HSTS, WAF, rate limit, Access) **zanim** SPA operatora jest publiczna. Nie marketing CDN. Nie zastępuje RLS/HITL/Auth0 I1/I2. Nie plaster `/noc`. 431.0 zostaje. | polecenie właściciela 2026-09-13; stan repo `CONFIRMED`; limity planów = public docs Cloudflare (cytowane w B.8), nie nasz cennik |
 
 ---
 ---
@@ -618,6 +620,80 @@ i pomiar.
 **Nowe pole** — migracja + rozszerzenie modelu + typ na froncie; bez zmian
 w zastosowanych migracjach, zawsze nowa.
 
+## B.8 Bramka publikacji — Cloudflare jako warstwa bezpieczeństwa
+
+Właściciel (2026-09-13): **wdrożyć Cloudflare jako warstwę bezpieczeństwa zanim
+aplikacja będzie publiczna.** To jest bramka **publikacji HTTP**, nie plaster
+produktu i nie marketingowy CDN. Nie zmienia kolejki `/noc`. Następny plaster
+zostaje **431.0**. `charge.source_ref` już jest — nie otwierać AI0.
+
+**Stan repo (`CONFIRMED`, audyt 2026-09-13):** nie ma Traefik / Caddy / nginx
+w drzewie. `docker-compose.yml` wystawia tylko PostgreSQL 16 i OpenFGA
+(playground). FastAPI (`backend/app/main.py`) ma `RequestIdMiddleware`;
+**brak** CORS, HSTS, TrustedHost i rate limitu w aplikacji. SPA Vite
+proxy `/api` i `/health` na `127.0.0.1:8000` — to jest deweloperka, nie edge.
+C4 w `docs/ARCHITECTURE.md` rysuje operator → HTTPS SPA → JSON API; origin
+produkcyjny **nie** jest nazwany. Jedyna wzmianka „Cloudflare” w docs to e-mail
+Palletforce za ich proxy (`docs/analysis/dostepy-do-zdobycia.md`) — nie nasza
+strefa. Auth produkcyjny = leftover **S53** Auth0 I1/I2 (HITL `idp_connector`
+270.0; live parked). Sekrety: GitHub Encrypted Secrets. **Zakaz Infisical.**
+Hetzner jako host originu pojawia się tylko w historycznym planie fabryki
+(`.cursor/plans/omniroute-realizacja.plan.md`) — **nie** jest wybranym
+hostingiem (`TO_VERIFY`).
+
+Cloudflare **nie zastępuje** RLS, OpenFGA, HITL ani `charge` = marża.
+Model nadal nie liczy. Access przed SPA **nie** jest IdP tenanta.
+
+### Co jest REQUIREMENT przed ruchem publicznym (konto + domena + origin)
+
+Fakty planów poniżej są z **publicznej dokumentacji Cloudflare**, nie z naszego
+cennika. Kwot planu nie zapisujemy.
+
+| Warstwa | Status | Źródło publiczne / uwaga Omni |
+|---|---|---|
+| DNS strefy + **proxy (orange cloud)** na hoście SPA/API | `REQUIREMENT` | [Proxy status](https://developers.cloudflare.com/dns/proxy-status/). Bez proxy nie ma WAF/HSTS/Access na tym hoście. |
+| TLS na krawędzi; do originu **Full** albo **Full (strict)**, nie Flexible | `REQUIREMENT` | [Encryption modes](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/) (aktualizacja 2026-04-16): Cloudflare zaleca Full / Full (strict); Full (strict) wymaga certyfikatu originu (publiczne CA albo Cloudflare Origin CA). Flexible = HTTP do originu — `REJECTED` na publikację. |
+| HSTS po działającym HTTPS | `REQUIREMENT` | [HSTS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/http-strict-transport-security/) (2026-08-14): dostępne na planie Free. Preload / `includeSubDomains` dopiero gdy wszystkie hosty mają HTTPS (`TO_VERIFY` przy konfiguracji). |
+| WAF **Cloudflare Free Managed Ruleset** | `REQUIREMENT` | [Managed Rules — Availability](https://developers.cloudflare.com/waf/managed-rules/) (2026-09-08): Free Managed Ruleset na **wszystkich** planach (wysokoudarowe, szeroko eksploatowane luki). |
+| WAF **Cloudflare Managed Ruleset** + **OWASP Core Ruleset** | `REQUIREMENT` na publikację z otwartym Internetem; **nie** na planie Free | Ta sama tabela: Managed + OWASP = **Pro i wyżej**. To nie jest „później, bo nie chcemy” — to limit planu dostawcy. Kupno Pro **nie** jest plastrem. |
+| Jedna reguła **rate limiting** na `/api` (IP, okno 10 s) | `REQUIREMENT` na Free | [Rate limiting — Availability](https://developers.cloudflare.com/waf/rate-limiting-rules/) (2026-08-25): Free = 1 reguła, charakterystyka IP, okres 10 s, mitigacja 10 s. Więcej reguł / dłuższe okna = Pro+ (limit dostawcy, nie nasza cena). |
+| **Cloudflare Access** (Zero Trust) przed SPA operatora i `/api` | `REQUIREMENT` *zanim* publiczni tenantci | [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) (2026-09-04): Access jest **deny by default**; Allow po e-mailu / końcówce domeny / IdP. To zamek przed publikacją, nie login tenanta. **Nie** zdejmuje leftover S53 Auth0 I1/I2. |
+| DDoS L3/L7 na ruchu proxowanym | `REQUIREMENT` (wchodzi z orange cloud) | Kolejność faz WAF: HTTP DDoS (`ddos_l7`) przed custom/rate/managed ([Managed Rules — execution order](https://developers.cloudflare.com/waf/managed-rules/), 2026-09-08). |
+
+### Co jest później albo ostrożnie
+
+| Warstwa | Status | Dlaczego |
+|---|---|---|
+| **Bot Fight Mode** na całej strefie | `TO_VERIFY` przed włączeniem na `/api` | [Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/) (2026-08-03): darmowy; **chroni całą domenę bez ograniczenia ścieżki**; może challenge'ować API; **nie da się** pominąć regułą WAF Skip. Na pre-publish Access + 1 rate limit na `/api` wystarcza. Super Bot Fight Mode (Skip na Ruleset Engine) = później, płatny. |
+| Challenge tylko na nadużycie `/api` | `REQUIREMENT` = rate limit (wyżej); Bot Fight ≠ ten sam mechanizm | Rate limit na Free jest ścieżkowy. Bot Fight — nie. |
+| Workers / cache HTML / image CDN / marketing | `REJECTED` jako cel tej bramki | To nie jest warstwa bezpieczeństwa publikacji. |
+| Cloudflare jako magazyn sekretów tenanta / kluczy LLM / Postgres | `REJECTED` | HC-05: sekrety tenanta szyfrowane kluczem tenanta; GitHub Encrypted Secrets; zakaz Infisical. Baza i OpenFGA **nie** idą przez publiczny proxy jako porty 5432/8080. |
+
+### Czego nie kłaść na Cloudflare
+
+- `POSTGRES_*`, JWT, `OPENAI_API_KEY`, klucze tenantów, wrapped DEK / KEK.
+- Playground OpenFGA (`3000`) i port bazy — zostają w sieci prywatnej originu.
+- Treść umów / `blob_ciphertext` — Access nie jest unwrap.
+- Live Auth0 / Graph / portale — leftover S53 / S55; Access ich nie zastępuje.
+
+### Kroki właściciela (konto, nie kod)
+
+1. Czy jest już konto Cloudflare i jaka jest domena produkcyjna — `TO_VERIFY`.
+2. Dodać strefę, wskazać nameservery, poczekać na active.
+3. Rekord A/AAAA/CNAME hosta aplikacji: **Proxied**.
+4. Certyfikat originu + tryb **Full (strict)**.
+5. HSTS po pierwszym czystym HTTPS.
+6. Włączyć Free Managed Ruleset.
+7. Jedna reguła rate limit na `http.request.uri.path` zaczynające się od `/api`.
+8. Zero Trust: aplikacja Access na ten host; Allow dla e-maili operatora
+   (albo końcówka domeny firmy); **nie** Include Everyone.
+9. Origin: tylko ruch z Cloudflare (po Access). Porty PG/OpenFGA niepubliczne.
+10. Plan Pro — gdy trzeba Managed + OWASP na otwarty Internet. Kwota = cennik
+    dostawcy w dashboardzie, nie liczba w tym pliku.
+
+Dopóki Access zamyka host, aplikacja **nie jest publiczna** w sensie tej bramki,
+nawet jeśli DNS już wskazuje na Cloudflare.
+
 ---
 ---
 
@@ -1099,6 +1175,19 @@ Lista jest krótka, ale każda pozycja blokuje konkretną decyzję projektową.
 6. **Zależności przechodnie `docling`** — niesprawdzone pod kątem AGPL.
 7. **Dwa prompty referencyjne** — znalezione i opisane w dokumencie `01` §16;
    właściciel chce dodać pełne wersje jako ostatni krok.
+8. **Domena produkcyjna** hosta SPA/API pod Cloudflare — nie zapisana
+   (`TO_VERIFY`). Bez niej nie ma strefy ani Access.
+9. **Czy właściciel ma już konto Cloudflare** — nie potwierdzone
+   (`TO_VERIFY`).
+10. **Origin produkcyjny** (gdzie granian + SPA + PG) — Hetzner jest tylko
+    w historycznym planie fabryki, nie w kanonie (`TO_VERIFY`).
+11. **Limit miejsc Zero Trust / Access** na planie, który wybierze właściciel —
+    tabela [account limits](https://developers.cloudflare.com/cloudflare-one/account-limits/)
+    (2026-09-04) nie podaje liczby miejsc Free; nie zgadywać (`TO_VERIFY`
+    w dashboardzie Cloudflare One).
+12. **Umowa powierzenia (DPA) z Cloudflare** przed danymi osobowymi tenantów
+    na krawędzi — `TO_VERIFY` z prawnikiem; pre-publish Access na e-mailach
+    operatora jest węższy niż ruch płacących tenantów.
 
 ---
 

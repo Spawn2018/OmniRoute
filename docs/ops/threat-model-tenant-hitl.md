@@ -17,6 +17,14 @@ Aktorzy: operator tenanta (member), recenzent (`can_review_extractions`), proces
 
 ## Świadomie poza kartą
 
-Portale, Auth0, outbox (parked). Auto-scoring `natural_person`. CodeQL na prywatnym Free = GitHub Code Security (GHAS) — workflow jest, **nie** w `just gate`.
+Portale, Auth0 I1/I2, outbox (parked). Auto-scoring `natural_person`. CodeQL na prywatnym Free = GitHub Code Security (GHAS) — workflow jest, **nie** w `just gate`.
+
+## Edge — Cloudflare (dopisek 2026-09-13, poza Q-E4)
+
+Właściciel wymaga warstwy bezpieczeństwa **zanim** SPA jest publiczna. Kanon: [VISION.md](../VISION.md) § B.8. To nie jest plaster i nie zdejmuje leftover S53.
+
+Dziś w kodzie nie ma CORS, HSTS ani rate limitu (`main.py` = `RequestIdMiddleware`). DoS w tabeli STRIDE dotyczy `document_base64`, nie Internetu. Cloudflare (DNS + proxy, TLS Full/strict, HSTS, Free Managed Ruleset, 1 reguła rate limit na `/api`, Access deny-by-default) zamyka host operatora **przed** publicznymi tenantami. Managed + OWASP = plan Pro dostawcy, nie Free. Bot Fight Mode chroni całą domenę i może challenge'ować `/api` — nie włączać na API bez sprawdzenia.
+
+Nie kłaść na krawędź: Postgres, klucze LLM, sekrety tenanta, playground OpenFGA. Access ≠ Auth0. RLS i HITL zostają w aplikacji.
 
 LLM nie liczy. `charge` = marża. Nic z extractu do bazy bez człowieka.
