@@ -3,7 +3,7 @@
 ```
 status:        roboczy kanon
 wersja:        0.3
-ostatnia zmiana: 2026-09-13 07:40
+ostatnia zmiana: 2026-09-13 07:55
 ```
 
 ## Jak czytać
@@ -39,6 +39,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | Bramka publikacji: Cloudflare jako warstwa bezpieczeństwa przed ruchem publicznym (B.8). Nie plaster, nie `/noc`, nie AI0. 431.0 zostaje. |
 | 2026-09-13 | **433.0** `outcome_ledger` w kodzie. Następny = AI1.2 `counterfactual_run`. CRPS liczone = AI2. |
 | 2026-09-13 | AI1.2 plan (**434.0**): HITL `counterfactual_run` etykiety. Silnik = AI4.1. |
+| 2026-09-13 | **434.0** `counterfactual_run` w kodzie. Następny = AI1.3 `benefit_ledger`. |
 
 ---
 
@@ -114,6 +115,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | AI1.1 (**433.0**) = HITL `outcome_ledger`: `actual_value` Decimal + UUID podpowiedzi jako dana. CRPS/MAE liczone `REJECTED` (AI2). FK do `suggestion_ledger` `REJECTED`. | `/plan-modul` `/noc`; VISION B.2 |
 | 2026-09-13 | **433.0** `outcome_ledger` w kodzie (`CONFIRMED`, git). Następny = **AI1.2** `counterfactual_run` (`REQUIREMENT`). CRPS liczone / FK do podpowiedzi zostają `REJECTED` na tym wierszu. | CURRENT + plaster 433.0 `/noc` |
 | 2026-09-13 | AI1.2 (**434.0**) = HITL `counterfactual_run`: `run_code` + etykiety baseline / dźwigni / wyniku. Silnik what-if `REJECTED` (AI4.1). Kwota oszczędności `REJECTED` (AI1.3). Nie klon `what_if_mark` / `plan_snapshot`. | `/plan-modul` `/noc`; VISION B.2 |
+| 2026-09-13 | **434.0** `counterfactual_run` w kodzie (`CONFIRMED`, git). Następny = **AI1.3** `benefit_ledger` (`REQUIREMENT`). Silnik what-if zostaje `REJECTED` na tym wierszu. | CURRENT + plaster 434.0 `/noc` |
 
 ---
 ---
@@ -725,8 +727,8 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | nazwy z PDF-ów bez wiersza w planie | **136** (z czego 28 to aliasy) |
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
-Ostatni ukończony plaster: **433.0** (`outcome_ledger`), następny w kolejce
-**AI1.2** (`counterfactual_run`). AI1.0 i AI1.1 są w kodzie (`CONFIRMED`);
+Ostatni ukończony plaster: **434.0** (`counterfactual_run`), następny w kolejce
+**AI1.3** (`benefit_ledger`). AI1.0–AI1.2 są w kodzie (`CONFIRMED`);
 CRPS ze złączenia zostaje w AI2 (`REQUIREMENT`). Teza B.1 zostaje:
 szerokość katalogów nie zastępuje pomiaru.
 

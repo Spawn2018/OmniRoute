@@ -79,6 +79,7 @@ const NAV = [
   { to: "/prediction-ledgers", label: "Ledger predykcji" },
   { to: "/suggestion-ledgers", label: "Ledger podpowiedzi" },
   { to: "/outcome-ledgers", label: "Ledger wyniku" },
+  { to: "/counterfactual-runs", label: "Przebieg what-if" },
   { to: "/plan-snapshots", label: "Migawka planu" },
   { to: "/circle-sims", label: "Kółko" },
   { to: "/lane-kms", label: "Km ładowny" },

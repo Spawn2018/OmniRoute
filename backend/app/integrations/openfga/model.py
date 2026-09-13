@@ -114,6 +114,7 @@ def _organization_ops_catalog_relations() -> dict[str, Userset]:
         "can_manage_prediction_ledgers": _member(),
         "can_manage_suggestion_ledgers": _member(),
         "can_manage_outcome_ledgers": _member(),
+        "can_manage_counterfactual_runs": _member(),
         "can_manage_plan_snapshots": _member(),
         "can_manage_circle_sims": _member(),
         "can_manage_lane_kms": _member(),

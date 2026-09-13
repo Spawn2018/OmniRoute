@@ -48,6 +48,7 @@ import { Route as ConsignmentsRouteImport } from './routes/consignments'
 import { Route as CopyBanMarksRouteImport } from './routes/copy-ban-marks'
 import { Route as CostAllocationMarksRouteImport } from './routes/cost-allocation-marks'
 import { Route as CostToServeRouteImport } from './routes/cost-to-serve'
+import { Route as CounterfactualRunsRouteImport } from './routes/counterfactual-runs'
 import { Route as CreditReviewsRouteImport } from './routes/credit-reviews'
 import { Route as CrmLeadsRouteImport } from './routes/crm-leads'
 import { Route as CsrdMarksRouteImport } from './routes/csrd-marks'
@@ -446,6 +447,11 @@ const CostAllocationMarksRoute = CostAllocationMarksRouteImport.update({
 const CostToServeRoute = CostToServeRouteImport.update({
   id: '/cost-to-serve',
   path: '/cost-to-serve',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CounterfactualRunsRoute = CounterfactualRunsRouteImport.update({
+  id: '/counterfactual-runs',
+  path: '/counterfactual-runs',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CreditReviewsRoute = CreditReviewsRouteImport.update({
@@ -1510,6 +1516,7 @@ export interface FileRoutesByFullPath {
   '/copy-ban-marks': typeof CopyBanMarksRoute
   '/cost-allocation-marks': typeof CostAllocationMarksRoute
   '/cost-to-serve': typeof CostToServeRoute
+  '/counterfactual-runs': typeof CounterfactualRunsRoute
   '/credit-reviews': typeof CreditReviewsRoute
   '/crm-leads': typeof CrmLeadsRoute
   '/csrd-marks': typeof CsrdMarksRoute
@@ -1755,6 +1762,7 @@ export interface FileRoutesByTo {
   '/copy-ban-marks': typeof CopyBanMarksRoute
   '/cost-allocation-marks': typeof CostAllocationMarksRoute
   '/cost-to-serve': typeof CostToServeRoute
+  '/counterfactual-runs': typeof CounterfactualRunsRoute
   '/credit-reviews': typeof CreditReviewsRoute
   '/crm-leads': typeof CrmLeadsRoute
   '/csrd-marks': typeof CsrdMarksRoute
@@ -2001,6 +2009,7 @@ export interface FileRoutesById {
   '/copy-ban-marks': typeof CopyBanMarksRoute
   '/cost-allocation-marks': typeof CostAllocationMarksRoute
   '/cost-to-serve': typeof CostToServeRoute
+  '/counterfactual-runs': typeof CounterfactualRunsRoute
   '/credit-reviews': typeof CreditReviewsRoute
   '/crm-leads': typeof CrmLeadsRoute
   '/csrd-marks': typeof CsrdMarksRoute
@@ -2248,6 +2257,7 @@ export interface FileRouteTypes {
     | '/copy-ban-marks'
     | '/cost-allocation-marks'
     | '/cost-to-serve'
+    | '/counterfactual-runs'
     | '/credit-reviews'
     | '/crm-leads'
     | '/csrd-marks'
@@ -2493,6 +2503,7 @@ export interface FileRouteTypes {
     | '/copy-ban-marks'
     | '/cost-allocation-marks'
     | '/cost-to-serve'
+    | '/counterfactual-runs'
     | '/credit-reviews'
     | '/crm-leads'
     | '/csrd-marks'
@@ -2738,6 +2749,7 @@ export interface FileRouteTypes {
     | '/copy-ban-marks'
     | '/cost-allocation-marks'
     | '/cost-to-serve'
+    | '/counterfactual-runs'
     | '/credit-reviews'
     | '/crm-leads'
     | '/csrd-marks'
@@ -2984,6 +2996,7 @@ export interface RootRouteChildren {
   CopyBanMarksRoute: typeof CopyBanMarksRoute
   CostAllocationMarksRoute: typeof CostAllocationMarksRoute
   CostToServeRoute: typeof CostToServeRoute
+  CounterfactualRunsRoute: typeof CounterfactualRunsRoute
   CreditReviewsRoute: typeof CreditReviewsRoute
   CrmLeadsRoute: typeof CrmLeadsRoute
   CsrdMarksRoute: typeof CsrdMarksRoute
@@ -3463,6 +3476,13 @@ declare module '@tanstack/react-router' {
       path: '/cost-to-serve'
       fullPath: '/cost-to-serve'
       preLoaderRoute: typeof CostToServeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/counterfactual-runs': {
+      id: '/counterfactual-runs'
+      path: '/counterfactual-runs'
+      fullPath: '/counterfactual-runs'
+      preLoaderRoute: typeof CounterfactualRunsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/credit-reviews': {
@@ -4936,6 +4956,7 @@ const rootRouteChildren: RootRouteChildren = {
   CopyBanMarksRoute: CopyBanMarksRoute,
   CostAllocationMarksRoute: CostAllocationMarksRoute,
   CostToServeRoute: CostToServeRoute,
+  CounterfactualRunsRoute: CounterfactualRunsRoute,
   CreditReviewsRoute: CreditReviewsRoute,
   CrmLeadsRoute: CrmLeadsRoute,
   CsrdMarksRoute: CsrdMarksRoute,

@@ -16536,6 +16536,80 @@
         ]
       }
     },
+    "/api/v1/counterfactual-runs": {
+      "get": {
+        "tags": [
+          "counterfactual-runs"
+        ],
+        "summary": "List Counterfactual Runs",
+        "operationId": "list_counterfactual_runs_api_v1_counterfactual_runs_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CounterfactualRunResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Counterfactual Runs Api V1 Counterfactual Runs Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "counterfactual-runs"
+        ],
+        "summary": "Create Counterfactual Run",
+        "operationId": "create_counterfactual_run_api_v1_counterfactual_runs_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CounterfactualRunCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CounterfactualRunResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/bookkeepings": {
       "get": {
         "tags": [
@@ -26518,6 +26592,95 @@
           "source_ref"
         ],
         "title": "CostToServeResponse"
+      },
+      "CounterfactualRunCreate": {
+        "properties": {
+          "run_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Run Code"
+          },
+          "baseline_label": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Baseline Label"
+          },
+          "levers_label": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Levers Label"
+          },
+          "result_label": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Result Label"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "run_code",
+          "baseline_label",
+          "levers_label",
+          "result_label",
+          "source_ref"
+        ],
+        "title": "CounterfactualRunCreate"
+      },
+      "CounterfactualRunResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "run_code": {
+            "type": "string",
+            "title": "Run Code"
+          },
+          "baseline_label": {
+            "type": "string",
+            "title": "Baseline Label"
+          },
+          "levers_label": {
+            "type": "string",
+            "title": "Levers Label"
+          },
+          "result_label": {
+            "type": "string",
+            "title": "Result Label"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "run_code",
+          "baseline_label",
+          "levers_label",
+          "result_label",
+          "source_ref"
+        ],
+        "title": "CounterfactualRunResponse"
       },
       "CreditReviewAttachBureau": {
         "properties": {

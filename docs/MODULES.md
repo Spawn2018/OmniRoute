@@ -71,6 +71,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | B0b | Ledger predykcji | 193.0 `prediction_ledger` · 265.0 `plan_snapshot` | **ukończony (HITL)** · przedział + CRPS/MAE + wersja planu; leftover champion / drift |
 | AI1.0 | Ledger podpowiedzi | 432.0 `suggestion_ledger` | **ukończony (HITL)** · przedział + reaction + changed_to; leftover outcome_ledger / CRPS liczone |
 | AI1.1 | Ledger wyniku | 433.0 `outcome_ledger` | **ukończony (HITL)** · actual_value Decimal; leftover CRPS liczone / złączenie |
+| AI1.2 | Przebieg what-if | 434.0 `counterfactual_run` | **ukończony (HITL)** · etykiety; leftover silnik AI4.1 / benefit_ledger |
 | G2.20 | Kółko HITL | 266.0 `circle_sim` | **ukończony (HITL)** · kod + para unload/load; leftover silnik 500k / km / P |
 | G2.21 | Km ładowny HITL | 267.0 `lane_km` | **ukończony (HITL)** · ładowny/pusty/dolot Decimal; leftover P / silnik 500k |
 | F9 | Konektor Optima HITL | 268.0 `erp_connector` | **ukończony (HITL)** · kod + kind `optima`; leftover XL / live SOAP / FS+FZ |

@@ -194,6 +194,10 @@ export const BUSINESS_LISTS = {
     route: "/outcome-ledgers",
     tableKey: "outcome_ledger",
   },
+  counterfactualRun: {
+    route: "/counterfactual-runs",
+    tableKey: "counterfactual_run",
+  },
   demoGpsMark: { route: "/demo-gps-marks", tableKey: "demo_gps_mark" },
   demoSimMark: { route: "/demo-sim-marks", tableKey: "demo_sim_mark" },
   demoWipeMark: { route: "/demo-wipe-marks", tableKey: "demo_wipe_mark" },
@@ -453,6 +457,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/quote-validity-marks",
   "/suggestion-ledgers",
   "/outcome-ledgers",
+  "/counterfactual-runs",
   "/demo-gps-marks",
   "/demo-sim-marks",
   "/demo-wipe-marks",

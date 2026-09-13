@@ -646,6 +646,10 @@ class InvalidOutcomeLedger(DomainError):
     """Ledger AI1.1: HITL fakt Decimal — nie CRPS liczone i nie FK do podpowiedzi."""
 
 
+class InvalidCounterfactualRun(DomainError):
+    """Przebieg AI1.2: HITL etykiety scenariusza — nie silnik i nie kwota."""
+
+
 class InvalidWeatherObservation(DomainError):
     """Pogoda V2: HITL warunek + UN/LOCODE + czas — nie Open-Meteo i nie ETA."""
 

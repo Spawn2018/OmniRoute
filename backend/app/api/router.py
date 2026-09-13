@@ -41,6 +41,7 @@ from app.api import (
     copy_ban_marks,
     cost_allocation_marks,
     cost_to_serve,
+    counterfactual_runs,
     credit_reviews,
     crm_leads,
     csrd_marks,
@@ -445,6 +446,7 @@ api_router.include_router(copy_ban_marks.router)
 api_router.include_router(erru_marks.router)
 api_router.include_router(mobile_client_marks.router)
 api_router.include_router(cost_to_serve.router)
+api_router.include_router(counterfactual_runs.router)
 api_router.include_router(bookkeeping.router)
 api_router.include_router(collective_invoices.router)
 api_router.include_router(gdpr_requests.router)

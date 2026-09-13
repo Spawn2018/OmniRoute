@@ -133,6 +133,7 @@
 | ledger predykcji | prediction_ledger | B0b/V1; 193.0 HITL przedział + CRPS/MAE jako dane; zakaz „AI przewiduje” bez CRPS |
 | ledger podpowiedzi | suggestion_ledger | AI1.0 HITL przedział + reaction + changed_to; nie zapis LLM; nie CRPS liczone |
 | ledger wyniku | outcome_ledger | AI1.1 HITL actual_value Decimal; nie CRPS liczone; UUID podpowiedzi jako dana |
+| przebieg what-if | counterfactual_run | AI1.2 HITL etykiety baseline/dźwigni/wyniku; nie silnik; nie kwota |
 | migawka planu | plan_snapshot | B0b; 265.0 HITL wersja planu (trójka UUID bez FK); nie silnik; nie kółka |
 | operator terminalu | operator_name / operator_party_id | tekst zostaje; FK nullable do `party` od 5.0 |
 | kontrahent | party | katalog M-10; jeden podmiot, wiele ról |

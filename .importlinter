@@ -183,6 +183,7 @@ modules =
     app.services.quote_validity_marks
     app.services.suggestion_ledgers
     app.services.outcome_ledgers
+    app.services.counterfactual_runs
     app.services.demo_gps_marks
     app.services.demo_sim_marks
     app.services.demo_wipe_marks
@@ -868,6 +869,9 @@ forbidden_modules =
     app.services.outcome_ledgers
     app.repositories.outcome_ledgers
     app.models.outcome_ledger
+    app.services.counterfactual_runs
+    app.repositories.counterfactual_runs
+    app.models.counterfactual_run
     app.services.demo_gps_marks
     app.repositories.demo_gps_marks
     app.models.demo_gps_mark

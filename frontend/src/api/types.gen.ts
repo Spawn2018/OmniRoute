@@ -2623,6 +2623,66 @@ export type CostToServeResponse = {
 };
 
 /**
+ * CounterfactualRunCreate
+ */
+export type CounterfactualRunCreate = {
+    /**
+     * Run Code
+     */
+    run_code: string;
+    /**
+     * Baseline Label
+     */
+    baseline_label: string;
+    /**
+     * Levers Label
+     */
+    levers_label: string;
+    /**
+     * Result Label
+     */
+    result_label: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CounterfactualRunResponse
+ */
+export type CounterfactualRunResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Run Code
+     */
+    run_code: string;
+    /**
+     * Baseline Label
+     */
+    baseline_label: string;
+    /**
+     * Levers Label
+     */
+    levers_label: string;
+    /**
+     * Result Label
+     */
+    result_label: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * CreditReviewAttachBureau
  */
 export type CreditReviewAttachBureau = {
@@ -23584,6 +23644,49 @@ export type CreateCostToServeApiV1CostToServesPostResponses = {
 };
 
 export type CreateCostToServeApiV1CostToServesPostResponse = CreateCostToServeApiV1CostToServesPostResponses[keyof CreateCostToServeApiV1CostToServesPostResponses];
+
+export type ListCounterfactualRunsApiV1CounterfactualRunsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/counterfactual-runs';
+};
+
+export type ListCounterfactualRunsApiV1CounterfactualRunsGetResponses = {
+    /**
+     * Response List Counterfactual Runs Api V1 Counterfactual Runs Get
+     *
+     * Successful Response
+     */
+    200: Array<CounterfactualRunResponse>;
+};
+
+export type ListCounterfactualRunsApiV1CounterfactualRunsGetResponse = ListCounterfactualRunsApiV1CounterfactualRunsGetResponses[keyof ListCounterfactualRunsApiV1CounterfactualRunsGetResponses];
+
+export type CreateCounterfactualRunApiV1CounterfactualRunsPostData = {
+    body: CounterfactualRunCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/counterfactual-runs';
+};
+
+export type CreateCounterfactualRunApiV1CounterfactualRunsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCounterfactualRunApiV1CounterfactualRunsPostError = CreateCounterfactualRunApiV1CounterfactualRunsPostErrors[keyof CreateCounterfactualRunApiV1CounterfactualRunsPostErrors];
+
+export type CreateCounterfactualRunApiV1CounterfactualRunsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CounterfactualRunResponse;
+};
+
+export type CreateCounterfactualRunApiV1CounterfactualRunsPostResponse = CreateCounterfactualRunApiV1CounterfactualRunsPostResponses[keyof CreateCounterfactualRunApiV1CounterfactualRunsPostResponses];
 
 export type ListBookkeepingApiV1BookkeepingsGetData = {
     body?: never;

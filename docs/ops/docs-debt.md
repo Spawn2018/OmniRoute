@@ -1,4 +1,5 @@
-- **433.0 leftover:** AI1.2 `counterfactual_run`; AI1.3 `benefit_ledger`; AI1.4 słowniki otwarte; trzy BC piszą do substratu; CRPS liczone (AI2). 433.0 = HITL `outcome_ledger`.
+- **434.0 leftover:** AI1.3 `benefit_ledger`; AI1.4 słowniki otwarte; trzy BC piszą do substratu; silnik AI4.1; CRPS liczone (AI2). 434.0 = HITL `counterfactual_run`.
+- **433.0 leftover:** AI1.2 zamknięty w 434.0; AI1.3 `benefit_ledger`; AI1.4 słowniki otwarte; trzy BC piszą do substratu; CRPS liczone (AI2). 433.0 = HITL `outcome_ledger`.
 - **432.0 leftover:** AI1.1 zamknięty w 433.0; AI1.4 słowniki otwarte; trzy BC piszą do substratu; CRPS liczone (AI2). 432.0 = HITL `suggestion_ledger`.
 - **431.0 leftover:** kolumny `valid_until` / `revision_no` / `supersedes_id` na `quotation`. 431.0 = HITL `quote_validity_mark` (validity_kind). AI1.0 zamknięty w 432.0.
 - **340.0 leftover:** allocation SQL; ABC engine; druga marża; klej charge. 340.0 = HITL `cost_allocation_mark` (alloc_kind).

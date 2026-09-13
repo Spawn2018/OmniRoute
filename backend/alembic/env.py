@@ -222,6 +222,7 @@ from app.models.terminal_slot_connector import TerminalSlotConnector  # noqa: F4
 from app.models.prediction_ledger import PredictionLedger  # noqa: F401
 from app.models.suggestion_ledger import SuggestionLedger  # noqa: F401
 from app.models.outcome_ledger import OutcomeLedger  # noqa: F401
+from app.models.counterfactual_run import CounterfactualRun  # noqa: F401
 from app.models.weather_observation import WeatherObservation  # noqa: F401
 from app.models.free_time_clock import FreeTimeClock  # noqa: F401
 from app.models.telematics_connector import TelematicsConnector  # noqa: F401
