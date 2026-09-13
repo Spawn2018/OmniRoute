@@ -6,7 +6,7 @@
 
 **Ostatni plaster:** **455.0** BR3.0 — HITL `route_plan_mark` (katalog planu trasy)
 
-**Etap:** Plan — **456.0** BR6.0 CRM ponad leada. Spec: brak — `/plan-modul`.
+**Etap:** plaster — **456.0** BR6.0 `crm_opportunity`. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
 
 **Noc:** `/noc 20` do **2026-09-13T20:00+02**.
 
@@ -14,7 +14,7 @@
 
 Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 456.0. Nie otwieraj AI0. Nie startuj leftover Valhalla.
 
-**Spec (jedyna na sesję):** brak — `/plan-modul`
+**Spec (jedyna na sesję):** [docs/deltas/open/456.0-crm-opportunity.md](../deltas/open/456.0-crm-opportunity.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 

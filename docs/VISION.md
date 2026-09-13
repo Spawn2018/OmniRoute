@@ -82,6 +82,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | **454.0** widok `circle_sim_pair` w kodzie (`CONFIRMED`, git). Następny = **BR3.0** start HHL (`REQUIREMENT`). Generator 500k / AI5 `REJECTED` na tym wierszu. |
 | 2026-09-13 | BR3.0 plan (**455.0**): HITL `route_plan_mark`. Valhalla / LLM-VRP `REJECTED` na tym wierszu. |
 | 2026-09-13 | **455.0** `route_plan_mark` w kodzie (`CONFIRMED`, git). Następny = **BR6.0** CRM ponad leada (`REQUIREMENT`). Valhalla / AI5 `REJECTED` na tym wierszu. |
+| 2026-09-13 | BR6.0 plan (**456.0**): HITL `crm_opportunity`. Activity / pipeline silnik `REJECTED` na tym wierszu. |
 
 ---
 
@@ -200,6 +201,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | **454.0** w kodzie (`CONFIRMED`, git). Para w SQL. Następny = **BR3.0** (`REQUIREMENT`). AI5 `data_source` zostaje park. | CURRENT + plaster 454.0 `/noc` |
 | 2026-09-13 | BR3.0 (**455.0**) = HITL `route_plan_mark` (`route|stop|window|other`). Valhalla `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
 | 2026-09-13 | **455.0** w kodzie (`CONFIRMED`, git). Katalog planu trasy. Następny = **BR6.0** (`REQUIREMENT`). Valhalla leftover. | CURRENT + plaster 455.0 `/noc` |
+| 2026-09-13 | BR6.0 (**456.0**) = HITL `crm_opportunity` (`open|won|lost|other`). Activity / pipeline `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
 
 ---
 ---

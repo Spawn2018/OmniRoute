@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **455.0** BR3.0 — HITL `route_plan_mark` (katalog planu trasy). **Etap:** Plan — **456.0** BR6.0 CRM ponad leada. Spec: brak — `/plan-modul`. **Następny:** **456.0** HITL okazja CRM. Nie auto-pipeline. Nie cold-send. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **455.0** BR3.0 — HITL `route_plan_mark` (katalog planu trasy). **Etap:** plaster — **456.0** BR6.0 `crm_opportunity`. Delta zaakceptowana (`/noc`). Wolno `/plaster`. **Następny:** **456.0** HITL okazja CRM. Nie auto-pipeline. Nie cold-send. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

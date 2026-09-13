@@ -807,7 +807,7 @@ Dump TMS `04b`: WMS nie jest dekoracją (Manhattan Active TM+WMS+Yard+Labour, In
 | BR5.0 | faktoring — integracja z partnerem | po F | SMEO w osi wejścia |
 | BR5.1 | finansowanie zamówienia (PO Financing) | po BR1.2 + BR5.0 | rdzeń Trade-Tech |
 | BR5.2 | giełdy transportowe: wymiana ofert | po S55 | dziś tylko katalog konektora |
-| BR6.0 | CRM ponad leada: okazja, aktywność, pipeline | **start HHL** | dziś wyłącznie `crm_lead` |
+| BR6.0 | CRM ponad leada: okazja, aktywność, pipeline | **start HHL** | **456.0** plan `/noc` = HITL `crm_opportunity`; leftover: activity · pipeline |
 | BR6.1 | **korytarz jako obiekt sprzedażowy** | po BR6.0 | HubSpot/Salesforce nie mają „lane” |
 | BR6.2 | przetargi korporacyjne po stronie załadowcy | po G2 | druga strona istniejącego `tender`; dump `04b`: Alpega TenderEasy + Freight Bench (multi-round, like-for-like, spot); nie auto-award |
 | BR6.3 | aplikacja mobilna sprzedaży iOS/Android | po BR6.0 | Expo/RN; web UI się nie przenosi |
@@ -934,13 +934,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->
