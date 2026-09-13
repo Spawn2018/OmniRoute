@@ -92,6 +92,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | **459.0** `tracking_consent` w kodzie (`CONFIRMED`, git). Następny = **BR6.1** korytarz (`REQUIREMENT`). Expo BR2.3 / AI5 `REJECTED` na tym wierszu. |
 | 2026-09-13 | BR6.1 plan (**460.0**): HITL `sales_lane`. UN/LOCODE / pipeline / HubSpot live `REJECTED` na tym wierszu. |
 | 2026-09-13 | **460.0** `sales_lane` w kodzie (`CONFIRMED`, git). Następny = **BR6.2** przetarg załadowcy (`REQUIREMENT`). Expo / AI5 `REJECTED` na tym wierszu. |
+| 2026-09-13 | BR6.2 plan (**461.0**): HITL `shipper_tender_mark`. Druga tabela `tender` / auto-award / Alpega live `REJECTED` na tym wierszu. |
 
 ---
 
@@ -220,6 +221,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | **459.0** w kodzie (`CONFIRMED`, git). Katalog zgody. Następny = **BR6.1** (`REQUIREMENT`). Kolumna na kontakcie leftover. Expo BR2.3 park. | CURRENT + plaster 459.0 `/noc` |
 | 2026-09-13 | BR6.1 (**460.0**) = HITL `sales_lane` (`repeat|spot|other`). UN/LOCODE / pipeline / HubSpot live `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
 | 2026-09-13 | **460.0** w kodzie (`CONFIRMED`, git). Katalog korytarza sprzedaży. Następny = **BR6.2** (`REQUIREMENT`). UN/LOCODE leftover. | CURRENT + plaster 460.0 `/noc` |
+| 2026-09-13 | BR6.2 (**461.0**) = HITL `shipper_tender_mark` (`round|bench|spot|other`). Druga tabela `tender` / auto-award / Alpega live `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
 
 ---
 ---
@@ -937,10 +939,10 @@ bo bez ewidencji magazynowej nie ma zastawu na towarze.
   (`CONFIRMED`, 460.0); leftover para UN/LOCODE i wolumen (`REQUIREMENT`).
   HubSpot/Salesforce live `REJECTED` na tym wierszu. W TSL decyduje powtarzalny
   wolumen na korytarzu, nie jednorazowy deal.
-- **Przetargi korporacyjne po stronie załadowcy** — druga strona istniejącego `tender`
-  (`REQUIREMENT` evidenced `04b` §7: Alpega TenderEasy + Freight Bench =
-  kanon przetargu załadowcy EU — multi-round, like-for-like, spot.
-  Nie auto-award.)
+- **Przetargi korporacyjne po stronie załadowcy** — katalog HITL
+  `shipper_tender_mark` w planie (`REQUIREMENT`, 461.0); leftover rundy i
+  like-for-like (`REQUIREMENT`). Druga tabela `tender` i auto-award `REJECTED`
+  na tym wierszu. Alpega TenderEasy + Freight Bench = kanon EU, nie live.
 - **Aplikacja mobilna dla sprzedaży** — iOS i Android
 - **Portale** — klienta, przewoźnika, podwykonawcy
 - **Marketing i automatyzacja** — kampanie, atrybucja, lejek

@@ -88,9 +88,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **460.0** BR6.1 — HITL `sales_lane` (katalog korytarza)
-- **Etap:** Plan — **461.0** BR6.2 przetarg załadowcy. Brak delty. `/plan-modul`.
-- **Następny:** **461.0** HITL przetarg po stronie załadowcy. Nie auto-award. Nie live.
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Etap:** plaster — **461.0** BR6.2 `shipper_tender_mark`. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
+- **Następny:** **461.0** HITL tryb przetargu załadowcy. Nie auto-award. Nie druga tabela `tender`. Nie live.
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

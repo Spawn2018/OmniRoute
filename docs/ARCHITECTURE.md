@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **460.0** BR6.1 — HITL `sales_lane` (katalog korytarza). **Etap:** Plan — **461.0** BR6.2 przetarg załadowcy. Brak delty. `/plan-modul`. **Następny:** **461.0** HITL przetarg po stronie załadowcy. Nie auto-award. Nie live. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **460.0** BR6.1 — HITL `sales_lane` (katalog korytarza). **Etap:** plaster — **461.0** BR6.2 `shipper_tender_mark`. Delta zaakceptowana (`/noc`). Wolno `/plaster`. **Następny:** **461.0** HITL tryb przetargu załadowcy. Nie auto-award. Nie druga tabela `tender`. Nie live. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

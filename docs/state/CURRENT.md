@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **460.0** BR6.1 — HITL `sales_lane` (katalog korytarza)
 
-**Etap:** Plan — **461.0** BR6.2 przetarg załadowcy. Brak delty. `/plan-modul`.
+**Etap:** plaster — **461.0** BR6.2 `shipper_tender_mark`. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
 
 **Noc:** `/noc 20` do **2026-09-13T20:00+02**.
 
-**Następny:** **461.0** HITL przetarg po stronie załadowcy. Nie auto-award. Nie live.
+**Następny:** **461.0** HITL tryb przetargu załadowcy. Nie auto-award. Nie druga tabela `tender`. Nie live.
 
 Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 461.0. Nie otwieraj AI0. Nie startuj leftover Valhalla / pipeline / BR2.3 Expo.
 
-**Spec (jedyna na sesję):** brak — /plan-modul
+**Spec (jedyna na sesję):** [docs/deltas/open/461.0-shipper-tender-mark.md](../deltas/open/461.0-shipper-tender-mark.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 
