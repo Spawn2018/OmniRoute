@@ -1,3 +1,4 @@
+- **446.0 plan:** AI2 leftover `prediction_ledger` bez wpisanego CRPS/MAE. Leftover po zamknięciu: Brier · auto-champion · detektor/próg.
 - **445.0 leftover:** zapis `prediction_ledger` (**446.0**) · Brier · auto-champion · detektor/próg · trzy BC · `data_source` (AI5). 445.0 = widok średnich per dzień UTC. EXPLAIN widoku = leftover.
 - **444.0 leftover:** dryf (**445.0**) · auto-champion · Brier · zapis `prediction_ledger` · trzy BC · `data_source` (AI5). 444.0 = widok średnich per `model_version`. EXPLAIN widoku = leftover.
 

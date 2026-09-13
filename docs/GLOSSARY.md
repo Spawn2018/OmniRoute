@@ -132,7 +132,7 @@
 | przypisanie roli | party_role_assignment | 132.0; wiele ról na jednym `party`; nie osobny kontrahent na rolę |
 | JDG | is_sole_trader | 132.0; kredyt tylko HITL recenzją |
 | kontrahent nadrzędny | parent_party_id | 132.0; grupa / oddział; FK tenanta |
-| ledger predykcji | prediction_ledger | B0b/V1; 193.0 HITL przedział + CRPS/MAE jako dane; zakaz „AI przewiduje” bez CRPS |
+| ledger predykcji | prediction_ledger | B0b/V1; 193.0 HITL przedział; 446.0 zdejmuje wpis CRPS/MAE; metryka = interval_score |
 | ledger podpowiedzi | suggestion_ledger | AI1.0 HITL przedział + reaction + changed_to; nie zapis LLM; nie CRPS liczone |
 | ledger wyniku | outcome_ledger | AI1.1 HITL actual_value Decimal; UUID podpowiedzi jako dana |
 | wynik przedziału | interval_score | AI2.0 MAE+CRPS liczone w SQL ze złączenia ledgerów; nie wpis |

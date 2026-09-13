@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **445.0** AI2.1 leftover `version_window` — średnie MAE/CRPS per `model_version` i dzień UTC. **Etap:** Plan — **446.0** AI2 leftover: `prediction_ledger` przestaje przyjmować wpisane CRPS/MAE. Komenda `/plan-modul`. **Następny:** **446.0** zamknięcie wpisu metryki na `prediction_ledger`. Metryka liczy się z `interval_score`. Nie auto-champion. Nie detektor. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **445.0** AI2.1 leftover `version_window` — średnie MAE/CRPS per `model_version` i dzień UTC. **Etap:** plaster — **446.0** AI2 leftover: `prediction_ledger` bez wpisanego CRPS/MAE. Delta zaakceptowana (`/noc`). Wolno `/plaster`. **Następny:** **446.0** POST bez `crps`/`mae`. Kolumny nullable. Metryka liczy się z `interval_score`. Nie auto-champion. Nie detektor. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

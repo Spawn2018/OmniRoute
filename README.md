@@ -88,9 +88,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **445.0** AI2.1 leftover `version_window` — średnie MAE/CRPS per `model_version` i dzień UTC
-- **Etap:** Plan — **446.0** AI2 leftover: `prediction_ledger` przestaje przyjmować wpisane CRPS/MAE. Komenda `/plan-modul`.
-- **Następny:** **446.0** zamknięcie wpisu metryki na `prediction_ledger`. Metryka liczy się z `interval_score`. Nie auto-champion. Nie detektor.
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Etap:** plaster — **446.0** AI2 leftover: `prediction_ledger` bez wpisanego CRPS/MAE. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
+- **Następny:** **446.0** POST bez `crps`/`mae`. Kolumny nullable. Metryka liczy się z `interval_score`. Nie auto-champion. Nie detektor.
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

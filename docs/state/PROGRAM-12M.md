@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **445.0** AI2.1 leftover `version_window` — średnie MAE/CRPS per `model_version` i dzień UTC **Następny:** **446.0** zamknięcie wpisu metryki na `prediction_ledger`. Metryka liczy się z `interval_score`. Nie auto-champion. Nie detektor.
+**Stan (z CURRENT.md):** **445.0** AI2.1 leftover `version_window` — średnie MAE/CRPS per `model_version` i dzień UTC **Następny:** **446.0** POST bez `crps`/`mae`. Kolumny nullable. Metryka liczy się z `interval_score`. Nie auto-champion. Nie detektor.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

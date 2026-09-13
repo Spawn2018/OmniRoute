@@ -6,19 +6,19 @@
 
 **Ostatni plaster:** **445.0** AI2.1 leftover `version_window` — średnie MAE/CRPS per `model_version` i dzień UTC
 
-**Etap:** Plan — **446.0** AI2 leftover: `prediction_ledger` przestaje przyjmować wpisane CRPS/MAE. Komenda `/plan-modul`.
+**Etap:** plaster — **446.0** AI2 leftover: `prediction_ledger` bez wpisanego CRPS/MAE. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
 
 **Noc:** `/noc 20` do **2026-09-13T20:00+02**.
 
-**Następny:** **446.0** zamknięcie wpisu metryki na `prediction_ledger`. Metryka liczy się z `interval_score`. Nie auto-champion. Nie detektor.
+**Następny:** **446.0** POST bez `crps`/`mae`. Kolumny nullable. Metryka liczy się z `interval_score`. Nie auto-champion. Nie detektor.
 
 Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 446.0. Nie otwieraj AI0.
 
-**Spec (jedyna na sesję):** brak otwartej delty — `/plan-modul` według PLAN § Fala AI (wpis metryki na prediction_ledger).
+**Spec (jedyna na sesję):** [docs/deltas/open/446.0-prediction-ledger-score.md](../deltas/open/446.0-prediction-ledger-score.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 
-**Uczciwość:** HITL zostaje. LLM nie liczy. `charge` = marża. Impersonate ≠ decrypt. `charge.source_ref` **jest** (129.0 / 072) — nie otwieraj plastra AI0. **AI1.0–AI1.4**, **443.0**, **444.0** i **445.0** w kodzie. `data_source` = AI5. Wpisane CRPS na `prediction_ledger` = leftover **446.0**.
+**Uczciwość:** HITL zostaje. LLM nie liczy. `charge` = marża. Impersonate ≠ decrypt. `charge.source_ref` **jest** (129.0 / 072) — nie otwieraj plastra AI0. **AI1.0–AI1.4**, **443.0**, **444.0** i **445.0** w kodzie. `data_source` = AI5. Wpisane CRPS na `prediction_ledger` = ten plaster (**446.0**).
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
