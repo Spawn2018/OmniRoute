@@ -7,7 +7,6 @@ from sqlalchemy.orm.attributes import flag_modified
 from app.ai_transforms.extraction.input_guard import ExtractionInputGuard
 from app.ai_transforms.extraction.protocol import DocumentExtractor
 from app.ai_transforms.extraction.provider import default_extractor
-
 from app.domain.errors import DraftNotPending, ResourceNotFound, UnparseableDocument
 from app.domain.extraction_draft import (
     extraction_carrier_quote_kind,
