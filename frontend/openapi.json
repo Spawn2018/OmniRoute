@@ -15278,6 +15278,36 @@
         ]
       }
     },
+    "/api/v1/interval-scores": {
+      "get": {
+        "tags": [
+          "interval-scores"
+        ],
+        "summary": "List Interval Scores",
+        "operationId": "list_interval_scores_api_v1_interval_scores_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/IntervalScoreResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Interval Scores Api V1 Interval Scores Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/demo-gps-marks": {
       "get": {
         "tags": [
@@ -31900,6 +31930,63 @@
           "source_ref"
         ],
         "title": "IntegrationHubMarkResponse"
+      },
+      "IntervalScoreResponse": {
+        "properties": {
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "outcome_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Outcome Id"
+          },
+          "suggestion_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Suggestion Id"
+          },
+          "entity_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Entity Id"
+          },
+          "interval_low": {
+            "type": "string",
+            "title": "Interval Low"
+          },
+          "interval_high": {
+            "type": "string",
+            "title": "Interval High"
+          },
+          "actual_value": {
+            "type": "string",
+            "title": "Actual Value"
+          },
+          "mae": {
+            "type": "string",
+            "title": "Mae"
+          },
+          "crps": {
+            "type": "string",
+            "title": "Crps"
+          }
+        },
+        "type": "object",
+        "required": [
+          "organization_id",
+          "outcome_id",
+          "suggestion_id",
+          "entity_id",
+          "interval_low",
+          "interval_high",
+          "actual_value",
+          "mae",
+          "crps"
+        ],
+        "title": "IntervalScoreResponse"
       },
       "InterventionOutcomeCreate": {
         "properties": {

@@ -112,19 +112,25 @@ def _organization_ops_catalog_relations() -> dict[str, Userset]:
         "can_manage_tenant_contract_keks": _member(),
         "can_manage_cash_discounts": _member(),
         "can_manage_carbon_methods": _member(),
-        "can_manage_prediction_ledgers": _member(),
-        "can_manage_suggestion_ledgers": _member(),
-        "can_manage_outcome_kinds": _member(),
-        "can_manage_outcome_ledgers": _member(),
-        "can_manage_counterfactual_runs": _member(),
-        "can_manage_benefit_ledgers": _member(),
-        "can_manage_suggestion_kinds": _member(),
-        "can_manage_autonomy_levels": _member(),
         "can_manage_plan_snapshots": _member(),
         "can_manage_circle_sims": _member(),
         "can_manage_lane_kms": _member(),
         "can_manage_weather_observations": _member(),
         "can_manage_free_time_clocks": _member(),
+    }
+
+
+def _organization_ai_catalog_relations() -> dict[str, Userset]:
+    return {
+        "can_manage_prediction_ledgers": _member(),
+        "can_manage_suggestion_ledgers": _member(),
+        "can_manage_outcome_kinds": _member(),
+        "can_manage_outcome_ledgers": _member(),
+        "can_manage_interval_scores": _member(),
+        "can_manage_counterfactual_runs": _member(),
+        "can_manage_benefit_ledgers": _member(),
+        "can_manage_suggestion_kinds": _member(),
+        "can_manage_autonomy_levels": _member(),
     }
 
 
@@ -307,6 +313,7 @@ def _organization_relations() -> dict[str, Userset]:
         **_organization_core_relations(),
         **_organization_ops_relations(),
         **_organization_ops_catalog_relations(),
+        **_organization_ai_catalog_relations(),
         **_organization_ci_catalog_relations(),
         **_organization_g_catalog_relations(),
         **_organization_exp2_catalog_relations(),

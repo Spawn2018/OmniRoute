@@ -184,6 +184,7 @@ modules =
     app.services.suggestion_ledgers
     app.services.outcome_kinds
     app.services.outcome_ledgers
+    app.services.interval_scores
     app.services.counterfactual_runs
     app.services.benefit_ledgers
     app.services.suggestion_kinds
@@ -877,6 +878,9 @@ forbidden_modules =
     app.services.outcome_ledgers
     app.repositories.outcome_ledgers
     app.models.outcome_ledger
+    app.services.interval_scores
+    app.repositories.interval_scores
+    app.models.interval_score
     app.services.counterfactual_runs
     app.repositories.counterfactual_runs
     app.models.counterfactual_run

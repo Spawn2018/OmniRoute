@@ -827,3 +827,4 @@
 
 
 - 2026-09-13T05:40:00Z ? kanon ? Fala AI + Fala BR w PLAN ? VISION.md ? HC-04 L0?2/L3?5 ? AI0 ju? w kodzie (072) ? nast?pny leftover 431.0
+- 2026-09-13T11:20:00Z ? 443.0 ? interval_score ? DONE ? widok MAE/CRPS SQL ? migracja 353

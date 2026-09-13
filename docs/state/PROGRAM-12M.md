@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **442.0** AI1.4 leftover FK `outcome_ledger` → `outcome_kind` **Następny:** **443.0** AI2.0 widok + funkcja SQL: MAE i CRPS ze złączenia `suggestion_ledger` × `outcome_ledger`. Nie wpis. Nie `prediction_ledger`.
+**Stan (z CURRENT.md):** **443.0** AI2.0 `interval_score` — MAE/CRPS liczone w Postgresie **Następny:** **AI2.1** champion/challenger + dryf (po 443.0). Nie zapis `prediction_ledger`. Nie Brier.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

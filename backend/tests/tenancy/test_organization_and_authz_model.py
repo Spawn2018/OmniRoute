@@ -79,6 +79,7 @@ def test_authorization_model_includes_table_view_permission() -> None:
     assert "can_manage_prediction_ledgers" in org.relations
     assert "can_manage_suggestion_ledgers" in org.relations
     assert "can_manage_outcome_ledgers" in org.relations
+    assert "can_manage_interval_scores" in org.relations
     assert "can_manage_counterfactual_runs" in org.relations
     assert "can_manage_benefit_ledgers" in org.relations
     assert "can_manage_suggestion_kinds" in org.relations
@@ -311,6 +312,9 @@ def test_authorization_model_includes_table_view_permission() -> None:
     outcome_ledgers = org.relations["can_manage_outcome_ledgers"]
     assert outcome_ledgers.computed_userset is not None
     assert outcome_ledgers.computed_userset.relation == "member"
+    interval_scores = org.relations["can_manage_interval_scores"]
+    assert interval_scores.computed_userset is not None
+    assert interval_scores.computed_userset.relation == "member"
     counterfactual_runs = org.relations["can_manage_counterfactual_runs"]
     assert counterfactual_runs.computed_userset is not None
     assert counterfactual_runs.computed_userset.relation == "member"

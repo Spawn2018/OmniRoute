@@ -110,6 +110,7 @@ import { Route as IdpConnectorsRouteImport } from './routes/idp-connectors'
 import { Route as ImpactScenariosRouteImport } from './routes/impact-scenarios'
 import { Route as ImpersonateGuardMarksRouteImport } from './routes/impersonate-guard-marks'
 import { Route as IntegrationHubMarksRouteImport } from './routes/integration-hub-marks'
+import { Route as IntervalScoresRouteImport } from './routes/interval-scores'
 import { Route as InterventionOutcomesRouteImport } from './routes/intervention-outcomes'
 import { Route as InventoryPositionMarksRouteImport } from './routes/inventory-position-marks'
 import { Route as InvoicesRouteImport } from './routes/invoices'
@@ -762,6 +763,11 @@ const ImpersonateGuardMarksRoute = ImpersonateGuardMarksRouteImport.update({
 const IntegrationHubMarksRoute = IntegrationHubMarksRouteImport.update({
   id: '/integration-hub-marks',
   path: '/integration-hub-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IntervalScoresRoute = IntervalScoresRouteImport.update({
+  id: '/interval-scores',
+  path: '/interval-scores',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InterventionOutcomesRoute = InterventionOutcomesRouteImport.update({
@@ -1608,6 +1614,7 @@ export interface FileRoutesByFullPath {
   '/impact-scenarios': typeof ImpactScenariosRoute
   '/impersonate-guard-marks': typeof ImpersonateGuardMarksRoute
   '/integration-hub-marks': typeof IntegrationHubMarksRoute
+  '/interval-scores': typeof IntervalScoresRoute
   '/intervention-outcomes': typeof InterventionOutcomesRoute
   '/inventory-position-marks': typeof InventoryPositionMarksRoute
   '/invoices': typeof InvoicesRoute
@@ -1859,6 +1866,7 @@ export interface FileRoutesByTo {
   '/impact-scenarios': typeof ImpactScenariosRoute
   '/impersonate-guard-marks': typeof ImpersonateGuardMarksRoute
   '/integration-hub-marks': typeof IntegrationHubMarksRoute
+  '/interval-scores': typeof IntervalScoresRoute
   '/intervention-outcomes': typeof InterventionOutcomesRoute
   '/inventory-position-marks': typeof InventoryPositionMarksRoute
   '/invoices': typeof InvoicesRoute
@@ -2111,6 +2119,7 @@ export interface FileRoutesById {
   '/impact-scenarios': typeof ImpactScenariosRoute
   '/impersonate-guard-marks': typeof ImpersonateGuardMarksRoute
   '/integration-hub-marks': typeof IntegrationHubMarksRoute
+  '/interval-scores': typeof IntervalScoresRoute
   '/intervention-outcomes': typeof InterventionOutcomesRoute
   '/inventory-position-marks': typeof InventoryPositionMarksRoute
   '/invoices': typeof InvoicesRoute
@@ -2364,6 +2373,7 @@ export interface FileRouteTypes {
     | '/impact-scenarios'
     | '/impersonate-guard-marks'
     | '/integration-hub-marks'
+    | '/interval-scores'
     | '/intervention-outcomes'
     | '/inventory-position-marks'
     | '/invoices'
@@ -2615,6 +2625,7 @@ export interface FileRouteTypes {
     | '/impact-scenarios'
     | '/impersonate-guard-marks'
     | '/integration-hub-marks'
+    | '/interval-scores'
     | '/intervention-outcomes'
     | '/inventory-position-marks'
     | '/invoices'
@@ -2866,6 +2877,7 @@ export interface FileRouteTypes {
     | '/impact-scenarios'
     | '/impersonate-guard-marks'
     | '/integration-hub-marks'
+    | '/interval-scores'
     | '/intervention-outcomes'
     | '/inventory-position-marks'
     | '/invoices'
@@ -3118,6 +3130,7 @@ export interface RootRouteChildren {
   ImpactScenariosRoute: typeof ImpactScenariosRoute
   ImpersonateGuardMarksRoute: typeof ImpersonateGuardMarksRoute
   IntegrationHubMarksRoute: typeof IntegrationHubMarksRoute
+  IntervalScoresRoute: typeof IntervalScoresRoute
   InterventionOutcomesRoute: typeof InterventionOutcomesRoute
   InventoryPositionMarksRoute: typeof InventoryPositionMarksRoute
   InvoicesRoute: typeof InvoicesRoute
@@ -3975,6 +3988,13 @@ declare module '@tanstack/react-router' {
       path: '/integration-hub-marks'
       fullPath: '/integration-hub-marks'
       preLoaderRoute: typeof IntegrationHubMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/interval-scores': {
+      id: '/interval-scores'
+      path: '/interval-scores'
+      fullPath: '/interval-scores'
+      preLoaderRoute: typeof IntervalScoresRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/intervention-outcomes': {
@@ -5118,6 +5138,7 @@ const rootRouteChildren: RootRouteChildren = {
   ImpactScenariosRoute: ImpactScenariosRoute,
   ImpersonateGuardMarksRoute: ImpersonateGuardMarksRoute,
   IntegrationHubMarksRoute: IntegrationHubMarksRoute,
+  IntervalScoresRoute: IntervalScoresRoute,
   InterventionOutcomesRoute: InterventionOutcomesRoute,
   InventoryPositionMarksRoute: InventoryPositionMarksRoute,
   InvoicesRoute: InvoicesRoute,

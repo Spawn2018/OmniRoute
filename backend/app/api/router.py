@@ -104,6 +104,7 @@ from app.api import (
     inbound_messages,
     incoterm_responsibilities,
     integration_hub_marks,
+    interval_scores,
     intervention_outcomes,
     inventory_position_marks,
     iso_nis2_marks,
@@ -434,6 +435,7 @@ api_router.include_router(suggestion_kinds.router)
 api_router.include_router(autonomy_levels.router)
 api_router.include_router(outcome_kinds.router)
 api_router.include_router(outcome_ledgers.router)
+api_router.include_router(interval_scores.router)
 api_router.include_router(demo_gps_marks.router)
 api_router.include_router(demo_sim_marks.router)
 api_router.include_router(demo_wipe_marks.router)

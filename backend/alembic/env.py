@@ -225,6 +225,7 @@ from app.models.suggestion_kind import SuggestionKind  # noqa: F401
 from app.models.suggestion_ledger import SuggestionLedger  # noqa: F401
 from app.models.outcome_kind import OutcomeKind  # noqa: F401
 from app.models.outcome_ledger import OutcomeLedger  # noqa: F401
+from app.models.interval_score import IntervalScore  # noqa: F401
 from app.models.benefit_ledger import BenefitLedger  # noqa: F401
 from app.models.counterfactual_run import CounterfactualRun  # noqa: F401
 from app.models.weather_observation import WeatherObservation  # noqa: F401

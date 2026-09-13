@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **443.0** AI2.0 widok + funkcja SQL: MAE i CRPS ze złączenia `suggestion_ledger` × `outcome_ledger`. Nie wpis. Nie `prediction_ledger`.
+**Następny:** **AI2.1** champion/challenger + dryf (po 443.0). Nie zapis `prediction_ledger`. Nie Brier.
 <!-- os-status:end -->
 
 ```mermaid
@@ -756,7 +756,7 @@ Dump TMS 2026-09-13 (badania `04b` A–H × 10; CargoWise/Qargo/interLAN zostaj�
 | AI1.2 | `counterfactual_run` — scenariusz, punkt odniesienia, dźwignie, wynik; niemutowalny | **DONE w kodzie** (434.0 / 344) | HITL etykiety jako dane; silnik = leftover AI4.1; nie klon what_if_mark |
 | AI1.3 | `benefit_ledger` — zaoszczędzony czas i pieniądze **z jawną metodą punktu odniesienia** | **DONE w kodzie** (435.0 / 345) | HITL method_label + Decimal; nie druga marża; nie SQL z charge |
 | AI1.4 | Słowniki otwarte: `twin_kind`, `data_source`, `autonomy_level`, `suggestion_kind` | 436.0–442.0 DONE | leftover `data_source` (AI5) |
-| AI2.0 | CRPS, Brier, MAE **liczone** ze złączenia AI1.0×AI1.1 | po AI1.1 | 443.0 delta `/noc` = widok MAE/CRPS; leftover: Brier · zapis `prediction_ledger` · AI2.1; dump `04b`: Oracle LML 95% interval = metoda, nie CRPS/MAE |
+| AI2.0 | CRPS, Brier, MAE **liczone** ze złączenia AI1.0×AI1.1 | po AI1.1 | **443.0 DONE** widok MAE/CRPS; leftover: Brier · zapis `prediction_ledger` · AI2.1; dump `04b`: Oracle LML 95% interval = metoda, nie CRPS/MAE |
 | AI2.1 | champion/challenger + wykrywanie dryfu | po AI2.0 | V1 leftover |
 | AI3.0 | `PATCH` na `extraction_draft` + edycja w interfejsie przed akceptacją | po AI2.0 | dziś accept/reject zmienia tylko status |
 | AI3.1 | wersjonowanie szkicu + `draft_kind` + `bbox` i pewność w JSONB | po AI3.0 | rozszerzenie istniejącego obiektu |
@@ -934,13 +934,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

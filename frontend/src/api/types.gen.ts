@@ -6001,6 +6001,48 @@ export type IntegrationHubMarkResponse = {
 };
 
 /**
+ * IntervalScoreResponse
+ */
+export type IntervalScoreResponse = {
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Outcome Id
+     */
+    outcome_id: string;
+    /**
+     * Suggestion Id
+     */
+    suggestion_id: string;
+    /**
+     * Entity Id
+     */
+    entity_id: string;
+    /**
+     * Interval Low
+     */
+    interval_low: string;
+    /**
+     * Interval High
+     */
+    interval_high: string;
+    /**
+     * Actual Value
+     */
+    actual_value: string;
+    /**
+     * Mae
+     */
+    mae: string;
+    /**
+     * Crps
+     */
+    crps: string;
+};
+
+/**
  * InterventionOutcomeCreate
  */
 export type InterventionOutcomeCreate = {
@@ -23125,6 +23167,24 @@ export type CreateOutcomeLedgerApiV1OutcomeLedgersPostResponses = {
 };
 
 export type CreateOutcomeLedgerApiV1OutcomeLedgersPostResponse = CreateOutcomeLedgerApiV1OutcomeLedgersPostResponses[keyof CreateOutcomeLedgerApiV1OutcomeLedgersPostResponses];
+
+export type ListIntervalScoresApiV1IntervalScoresGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/interval-scores';
+};
+
+export type ListIntervalScoresApiV1IntervalScoresGetResponses = {
+    /**
+     * Response List Interval Scores Api V1 Interval Scores Get
+     *
+     * Successful Response
+     */
+    200: Array<IntervalScoreResponse>;
+};
+
+export type ListIntervalScoresApiV1IntervalScoresGetResponse = ListIntervalScoresApiV1IntervalScoresGetResponses[keyof ListIntervalScoresApiV1IntervalScoresGetResponses];
 
 export type ListDemoGpsMarksApiV1DemoGpsMarksGetData = {
     body?: never;

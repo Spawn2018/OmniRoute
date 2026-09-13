@@ -194,6 +194,10 @@ export const BUSINESS_LISTS = {
     route: "/outcome-ledgers",
     tableKey: "outcome_ledger",
   },
+  intervalScore: {
+    route: "/interval-scores",
+    tableKey: "interval_score",
+  },
   outcomeKind: {
     route: "/outcome-kinds",
     tableKey: "outcome_kind",
@@ -474,6 +478,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/quote-validity-marks",
   "/suggestion-ledgers",
   "/outcome-ledgers",
+  "/interval-scores",
   "/outcome-kinds",
   "/counterfactual-runs",
   "/benefit-ledgers",
