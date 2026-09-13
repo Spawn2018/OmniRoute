@@ -149,6 +149,7 @@ import { Route as OogMarksRouteImport } from './routes/oog-marks'
 import { Route as OrganizationSettingsRouteImport } from './routes/organization-settings'
 import { Route as OtifMarksRouteImport } from './routes/otif-marks'
 import { Route as OutboxRouteImport } from './routes/outbox'
+import { Route as OutcomeLedgersRouteImport } from './routes/outcome-ledgers'
 import { Route as PalletBalancesRouteImport } from './routes/pallet-balances'
 import { Route as PalletPoolMarksRouteImport } from './routes/pallet-pool-marks'
 import { Route as PartiesRouteImport } from './routes/parties'
@@ -952,6 +953,11 @@ const OutboxRoute = OutboxRouteImport.update({
   path: '/outbox',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OutcomeLedgersRoute = OutcomeLedgersRouteImport.update({
+  id: '/outcome-ledgers',
+  path: '/outcome-ledgers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PalletBalancesRoute = PalletBalancesRouteImport.update({
   id: '/pallet-balances',
   path: '/pallet-balances',
@@ -1605,6 +1611,7 @@ export interface FileRoutesByFullPath {
   '/organization-settings': typeof OrganizationSettingsRoute
   '/otif-marks': typeof OtifMarksRoute
   '/outbox': typeof OutboxRoute
+  '/outcome-ledgers': typeof OutcomeLedgersRoute
   '/pallet-balances': typeof PalletBalancesRoute
   '/pallet-pool-marks': typeof PalletPoolMarksRoute
   '/parties': typeof PartiesRoute
@@ -1849,6 +1856,7 @@ export interface FileRoutesByTo {
   '/organization-settings': typeof OrganizationSettingsRoute
   '/otif-marks': typeof OtifMarksRoute
   '/outbox': typeof OutboxRoute
+  '/outcome-ledgers': typeof OutcomeLedgersRoute
   '/pallet-balances': typeof PalletBalancesRoute
   '/pallet-pool-marks': typeof PalletPoolMarksRoute
   '/parties': typeof PartiesRoute
@@ -2094,6 +2102,7 @@ export interface FileRoutesById {
   '/organization-settings': typeof OrganizationSettingsRoute
   '/otif-marks': typeof OtifMarksRoute
   '/outbox': typeof OutboxRoute
+  '/outcome-ledgers': typeof OutcomeLedgersRoute
   '/pallet-balances': typeof PalletBalancesRoute
   '/pallet-pool-marks': typeof PalletPoolMarksRoute
   '/parties': typeof PartiesRoute
@@ -2340,6 +2349,7 @@ export interface FileRouteTypes {
     | '/organization-settings'
     | '/otif-marks'
     | '/outbox'
+    | '/outcome-ledgers'
     | '/pallet-balances'
     | '/pallet-pool-marks'
     | '/parties'
@@ -2584,6 +2594,7 @@ export interface FileRouteTypes {
     | '/organization-settings'
     | '/otif-marks'
     | '/outbox'
+    | '/outcome-ledgers'
     | '/pallet-balances'
     | '/pallet-pool-marks'
     | '/parties'
@@ -2828,6 +2839,7 @@ export interface FileRouteTypes {
     | '/organization-settings'
     | '/otif-marks'
     | '/outbox'
+    | '/outcome-ledgers'
     | '/pallet-balances'
     | '/pallet-pool-marks'
     | '/parties'
@@ -3073,6 +3085,7 @@ export interface RootRouteChildren {
   OrganizationSettingsRoute: typeof OrganizationSettingsRoute
   OtifMarksRoute: typeof OtifMarksRoute
   OutboxRoute: typeof OutboxRoute
+  OutcomeLedgersRoute: typeof OutcomeLedgersRoute
   PalletBalancesRoute: typeof PalletBalancesRoute
   PalletPoolMarksRoute: typeof PalletPoolMarksRoute
   PartiesRoute: typeof PartiesRoute
@@ -4159,6 +4172,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OutboxRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/outcome-ledgers': {
+      id: '/outcome-ledgers'
+      path: '/outcome-ledgers'
+      fullPath: '/outcome-ledgers'
+      preLoaderRoute: typeof OutcomeLedgersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pallet-balances': {
       id: '/pallet-balances'
       path: '/pallet-balances'
@@ -5017,6 +5037,7 @@ const rootRouteChildren: RootRouteChildren = {
   OrganizationSettingsRoute: OrganizationSettingsRoute,
   OtifMarksRoute: OtifMarksRoute,
   OutboxRoute: OutboxRoute,
+  OutcomeLedgersRoute: OutcomeLedgersRoute,
   PalletBalancesRoute: PalletBalancesRoute,
   PalletPoolMarksRoute: PalletPoolMarksRoute,
   PartiesRoute: PartiesRoute,

@@ -182,6 +182,7 @@ modules =
     app.services.quote_currency_marks
     app.services.quote_validity_marks
     app.services.suggestion_ledgers
+    app.services.outcome_ledgers
     app.services.demo_gps_marks
     app.services.demo_sim_marks
     app.services.demo_wipe_marks
@@ -864,6 +865,9 @@ forbidden_modules =
     app.services.suggestion_ledgers
     app.repositories.suggestion_ledgers
     app.models.suggestion_ledger
+    app.services.outcome_ledgers
+    app.repositories.outcome_ledgers
+    app.models.outcome_ledger
     app.services.demo_gps_marks
     app.repositories.demo_gps_marks
     app.models.demo_gps_mark

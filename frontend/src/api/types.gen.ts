@@ -8087,6 +8087,74 @@ export type OutboxEventResponse = {
 };
 
 /**
+ * OutcomeLedgerCreate
+ */
+export type OutcomeLedgerCreate = {
+    /**
+     * Target Bc
+     */
+    target_bc: string;
+    /**
+     * Entity Id
+     */
+    entity_id: string;
+    /**
+     * Suggestion Id
+     */
+    suggestion_id: string;
+    /**
+     * Outcome Kind
+     */
+    outcome_kind: string;
+    /**
+     * Actual Value
+     */
+    actual_value: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * OutcomeLedgerResponse
+ */
+export type OutcomeLedgerResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Target Bc
+     */
+    target_bc: string;
+    /**
+     * Entity Id
+     */
+    entity_id: string;
+    /**
+     * Suggestion Id
+     */
+    suggestion_id: string;
+    /**
+     * Outcome Kind
+     */
+    outcome_kind: string;
+    /**
+     * Actual Value
+     */
+    actual_value: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * PalletBalanceCreate
  */
 export type PalletBalanceCreate = {
@@ -22613,6 +22681,49 @@ export type CreateSuggestionLedgerApiV1SuggestionLedgersPostResponses = {
 };
 
 export type CreateSuggestionLedgerApiV1SuggestionLedgersPostResponse = CreateSuggestionLedgerApiV1SuggestionLedgersPostResponses[keyof CreateSuggestionLedgerApiV1SuggestionLedgersPostResponses];
+
+export type ListOutcomeLedgersApiV1OutcomeLedgersGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/outcome-ledgers';
+};
+
+export type ListOutcomeLedgersApiV1OutcomeLedgersGetResponses = {
+    /**
+     * Response List Outcome Ledgers Api V1 Outcome Ledgers Get
+     *
+     * Successful Response
+     */
+    200: Array<OutcomeLedgerResponse>;
+};
+
+export type ListOutcomeLedgersApiV1OutcomeLedgersGetResponse = ListOutcomeLedgersApiV1OutcomeLedgersGetResponses[keyof ListOutcomeLedgersApiV1OutcomeLedgersGetResponses];
+
+export type CreateOutcomeLedgerApiV1OutcomeLedgersPostData = {
+    body: OutcomeLedgerCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/outcome-ledgers';
+};
+
+export type CreateOutcomeLedgerApiV1OutcomeLedgersPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateOutcomeLedgerApiV1OutcomeLedgersPostError = CreateOutcomeLedgerApiV1OutcomeLedgersPostErrors[keyof CreateOutcomeLedgerApiV1OutcomeLedgersPostErrors];
+
+export type CreateOutcomeLedgerApiV1OutcomeLedgersPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: OutcomeLedgerResponse;
+};
+
+export type CreateOutcomeLedgerApiV1OutcomeLedgersPostResponse = CreateOutcomeLedgerApiV1OutcomeLedgersPostResponses[keyof CreateOutcomeLedgerApiV1OutcomeLedgersPostResponses];
 
 export type ListDemoGpsMarksApiV1DemoGpsMarksGetData = {
     body?: never;

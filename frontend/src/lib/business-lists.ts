@@ -190,6 +190,10 @@ export const BUSINESS_LISTS = {
     route: "/suggestion-ledgers",
     tableKey: "suggestion_ledger",
   },
+  outcomeLedger: {
+    route: "/outcome-ledgers",
+    tableKey: "outcome_ledger",
+  },
   demoGpsMark: { route: "/demo-gps-marks", tableKey: "demo_gps_mark" },
   demoSimMark: { route: "/demo-sim-marks", tableKey: "demo_sim_mark" },
   demoWipeMark: { route: "/demo-wipe-marks", tableKey: "demo_wipe_mark" },
@@ -448,6 +452,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/quote-currency-marks",
   "/quote-validity-marks",
   "/suggestion-ledgers",
+  "/outcome-ledgers",
   "/demo-gps-marks",
   "/demo-sim-marks",
   "/demo-wipe-marks",

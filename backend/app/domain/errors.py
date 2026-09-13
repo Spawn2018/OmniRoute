@@ -642,6 +642,10 @@ class InvalidSuggestionLedger(DomainError):
     """Ledger AI1.0: HITL podpowiedź + reakcja — nie zapis LLM i nie CRPS liczone."""
 
 
+class InvalidOutcomeLedger(DomainError):
+    """Ledger AI1.1: HITL fakt Decimal — nie CRPS liczone i nie FK do podpowiedzi."""
+
+
 class InvalidWeatherObservation(DomainError):
     """Pogoda V2: HITL warunek + UN/LOCODE + czas — nie Open-Meteo i nie ETA."""
 

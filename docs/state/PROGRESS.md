@@ -805,4 +805,6 @@
 
 - 2026-09-13T07:05:00Z · 432.0 · suggestion_ledger · DONE · HITL target_bc + interval + reaction + changed_to · migracja 342 · /suggestion-ledgers
 
+- 2026-09-13T07:20:00Z · 433.0 · outcome_ledger · DONE · HITL target_bc + suggestion_id + actual_value Decimal · migracja 343 · /outcome-ledgers
+
 - 2026-09-13T05:40:00Z · kanon · Fala AI + Fala BR w PLAN · VISION.md · HC-04 L0?2/L3?5 · AI0 ju? w kodzie (072) · nast?pny leftover 431.0

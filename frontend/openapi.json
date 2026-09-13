@@ -14982,6 +14982,80 @@
         ]
       }
     },
+    "/api/v1/outcome-ledgers": {
+      "get": {
+        "tags": [
+          "outcome-ledgers"
+        ],
+        "summary": "List Outcome Ledgers",
+        "operationId": "list_outcome_ledgers_api_v1_outcome_ledgers_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/OutcomeLedgerResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Outcome Ledgers Api V1 Outcome Ledgers Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "outcome-ledgers"
+        ],
+        "summary": "Create Outcome Ledger",
+        "operationId": "create_outcome_ledger_api_v1_outcome_ledgers_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OutcomeLedgerCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OutcomeLedgerResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/demo-gps-marks": {
       "get": {
         "tags": [
@@ -34505,6 +34579,107 @@
           "source_ref"
         ],
         "title": "OutboxEventResponse"
+      },
+      "OutcomeLedgerCreate": {
+        "properties": {
+          "target_bc": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Target Bc"
+          },
+          "entity_id": {
+            "type": "string",
+            "maxLength": 36,
+            "minLength": 36,
+            "title": "Entity Id"
+          },
+          "suggestion_id": {
+            "type": "string",
+            "maxLength": 36,
+            "minLength": 36,
+            "title": "Suggestion Id"
+          },
+          "outcome_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Outcome Kind"
+          },
+          "actual_value": {
+            "type": "string",
+            "title": "Actual Value"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "target_bc",
+          "entity_id",
+          "suggestion_id",
+          "outcome_kind",
+          "actual_value",
+          "source_ref"
+        ],
+        "title": "OutcomeLedgerCreate"
+      },
+      "OutcomeLedgerResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "target_bc": {
+            "type": "string",
+            "title": "Target Bc"
+          },
+          "entity_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Entity Id"
+          },
+          "suggestion_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Suggestion Id"
+          },
+          "outcome_kind": {
+            "type": "string",
+            "title": "Outcome Kind"
+          },
+          "actual_value": {
+            "type": "string",
+            "title": "Actual Value"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "target_bc",
+          "entity_id",
+          "suggestion_id",
+          "outcome_kind",
+          "actual_value",
+          "source_ref"
+        ],
+        "title": "OutcomeLedgerResponse"
       },
       "PalletBalanceCreate": {
         "properties": {

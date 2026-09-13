@@ -3,7 +3,7 @@
 ```
 status:        roboczy kanon
 wersja:        0.3
-ostatnia zmiana: 2026-09-13 06:20
+ostatnia zmiana: 2026-09-13 07:20
 ```
 
 ## Jak czytać
@@ -37,6 +37,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | Dump TMS top-10 badania `04b` (A–H × 10): druga marża REJECTED; Decimal CONFIRMED; AI-write MQ REJECTED; Oracle LML 95% jedyna publiczna metoda przedziału; WMS+BR6.2 evidenced; e2open≠CargoWise; Uber konflikt danych; CHR nie ISV; luka dwóch skór+RLS; KSeF/JPK/SENT nasze; leftover silniki HITL. 431.0 nie wynika z dziesiątki. |
 | 2026-09-13 | [WYCOFANE] zdania „TMS `04b` w toku / nietknięte” — dump jest w kanonie |
 | 2026-09-13 | Bramka publikacji: Cloudflare jako warstwa bezpieczeństwa przed ruchem publicznym (B.8). Nie plaster, nie `/noc`, nie AI0. 431.0 zostaje. |
+| 2026-09-13 | **433.0** `outcome_ledger` w kodzie. Następny = AI1.2 `counterfactual_run`. CRPS liczone = AI2. |
 
 ---
 
@@ -110,6 +111,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | AI1.0 pierwszy plaster (**432.0**) = HITL `suggestion_ledger` append-only: przedział Decimal + `reaction` + `changed_to`. Zapis z modelu na L0–2 `REJECTED` (HC-04). `outcome_ledger` / słowniki AI1.4 / trzy BC autosave = leftover fali (`REQUIREMENT`). Nie klon `prediction_ledger` ani `operator_decision`. | `/plan-modul` `/noc`; VISION B.2 + HC-04 |
 | 2026-09-13 | **432.0** `suggestion_ledger` w kodzie (`CONFIRMED`, git). Następny = **AI1.1** `outcome_ledger` (`REQUIREMENT`). Zapis LLM / CRPS liczone / FK encji zostają `REJECTED` na tym wierszu. | CURRENT + plaster 432.0 `/noc` |
 | 2026-09-13 | AI1.1 (**433.0**) = HITL `outcome_ledger`: `actual_value` Decimal + UUID podpowiedzi jako dana. CRPS/MAE liczone `REJECTED` (AI2). FK do `suggestion_ledger` `REJECTED`. | `/plan-modul` `/noc`; VISION B.2 |
+| 2026-09-13 | **433.0** `outcome_ledger` w kodzie (`CONFIRMED`, git). Następny = **AI1.2** `counterfactual_run` (`REQUIREMENT`). CRPS liczone / FK do podpowiedzi zostają `REJECTED` na tym wierszu. | CURRENT + plaster 433.0 `/noc` |
 
 ---
 ---
@@ -721,9 +723,9 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | nazwy z PDF-ów bez wiersza w planie | **136** (z czego 28 to aliasy) |
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
-Ostatni ukończony plaster: **432.0** (`suggestion_ledger`), następny w kolejce
-**AI1.1** (`outcome_ledger`). Pierwszy silnik Fali AI jest w kodzie (`CONFIRMED`);
-złączenie z wynikiem zostaje w planie (`REQUIREMENT`). Teza B.1 zostaje:
+Ostatni ukończony plaster: **433.0** (`outcome_ledger`), następny w kolejce
+**AI1.2** (`counterfactual_run`). AI1.0 i AI1.1 są w kodzie (`CONFIRMED`);
+CRPS ze złączenia zostaje w AI2 (`REQUIREMENT`). Teza B.1 zostaje:
 szerokość katalogów nie zastępuje pomiaru.
 
 ## C.2 Bliźniaki — scalona taksonomia
