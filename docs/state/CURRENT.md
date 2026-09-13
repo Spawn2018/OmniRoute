@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **465.0** BR3.3 — HITL `tacho_plan_mark`
 
-**Etap:** Plan — **466.0** BR4.0 promy (rezerwacja, okna, art. 9).
+**Etap:** Plaster — **466.0** BR4.0 promy. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
 
 **Noc:** `/noc 7` do **2026-09-14T07:00+02**.
 
-**Następny:** **466.0** plan HITL promu. Nie live rezerwacja. Nie solver art. 9.
+**Następny:** **466.0** HITL `ferry_booking_mark`. Nie live rezerwacja. Nie solver art. 9.
 
-Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 466.0. Nie otwieraj AI0. Nie startuj leftover Valhalla / live DDD / solver załadunku / Expo / Alpega / HubSpot.
+Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 466.0. Nie otwieraj AI0. Nie startuj leftover Valhalla / live DDD / Expo / Alpega / HubSpot.
 
-**Spec (jedyna na sesję):** brak — `/plan-modul` BR4.0
+**Spec (jedyna na sesję):** [deltas/open/466.0.md](../deltas/open/466.0.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 
