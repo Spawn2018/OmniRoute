@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **453.0** AI4.1 — FK `counterfactual_run` → `plan_snapshot` + widok `what_if_replay`
 
-**Etap:** Plan — **454.0** AI4.2 kółka w SQL. Spec: brak — `/plan-modul`.
+**Etap:** plaster — **454.0** AI4.2 kółka w SQL. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
 
 **Noc:** `/noc 20` do **2026-09-13T20:00+02**.
 
-**Następny:** **454.0** symulacja kółek w SQL (do 500k). Nie solver w Pythonie. Nie kwota.
+**Następny:** **454.0** widok pary uzupełniającej kółek. Nie generator 500k. Nie km.
 
 Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 454.0. Nie otwieraj AI0.
 
-**Spec (jedyna na sesję):** brak — `/plan-modul`
+**Spec (jedyna na sesję):** [docs/deltas/open/454.0-circle-sql-pairs.md](../deltas/open/454.0-circle-sql-pairs.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 
