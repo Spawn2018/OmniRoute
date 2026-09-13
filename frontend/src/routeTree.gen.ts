@@ -250,6 +250,7 @@ import { Route as ThreeWayMarksRouteImport } from './routes/three-way-marks'
 import { Route as TimeToFixMarksRouteImport } from './routes/time-to-fix-marks'
 import { Route as TowerImpactsRouteImport } from './routes/tower-impacts'
 import { Route as TrackingRouteImport } from './routes/tracking'
+import { Route as TrackingConsentsRouteImport } from './routes/tracking-consents'
 import { Route as TwinKindsRouteImport } from './routes/twin-kinds'
 import { Route as TwinMarksRouteImport } from './routes/twin-marks'
 import { Route as UnSegregationMarksRouteImport } from './routes/un-segregation-marks'
@@ -1472,6 +1473,11 @@ const TrackingRoute = TrackingRouteImport.update({
   path: '/tracking',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TrackingConsentsRoute = TrackingConsentsRouteImport.update({
+  id: '/tracking-consents',
+  path: '/tracking-consents',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TwinKindsRoute = TwinKindsRouteImport.update({
   id: '/twin-kinds',
   path: '/twin-kinds',
@@ -1790,6 +1796,7 @@ export interface FileRoutesByFullPath {
   '/time-to-fix-marks': typeof TimeToFixMarksRoute
   '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
+  '/tracking-consents': typeof TrackingConsentsRoute
   '/twin-kinds': typeof TwinKindsRoute
   '/twin-marks': typeof TwinMarksRoute
   '/un-segregation-marks': typeof UnSegregationMarksRoute
@@ -2048,6 +2055,7 @@ export interface FileRoutesByTo {
   '/time-to-fix-marks': typeof TimeToFixMarksRoute
   '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
+  '/tracking-consents': typeof TrackingConsentsRoute
   '/twin-kinds': typeof TwinKindsRoute
   '/twin-marks': typeof TwinMarksRoute
   '/un-segregation-marks': typeof UnSegregationMarksRoute
@@ -2307,6 +2315,7 @@ export interface FileRoutesById {
   '/time-to-fix-marks': typeof TimeToFixMarksRoute
   '/tower-impacts': typeof TowerImpactsRoute
   '/tracking': typeof TrackingRoute
+  '/tracking-consents': typeof TrackingConsentsRoute
   '/twin-kinds': typeof TwinKindsRoute
   '/twin-marks': typeof TwinMarksRoute
   '/un-segregation-marks': typeof UnSegregationMarksRoute
@@ -2567,6 +2576,7 @@ export interface FileRouteTypes {
     | '/time-to-fix-marks'
     | '/tower-impacts'
     | '/tracking'
+    | '/tracking-consents'
     | '/twin-kinds'
     | '/twin-marks'
     | '/un-segregation-marks'
@@ -2825,6 +2835,7 @@ export interface FileRouteTypes {
     | '/time-to-fix-marks'
     | '/tower-impacts'
     | '/tracking'
+    | '/tracking-consents'
     | '/twin-kinds'
     | '/twin-marks'
     | '/un-segregation-marks'
@@ -3083,6 +3094,7 @@ export interface FileRouteTypes {
     | '/time-to-fix-marks'
     | '/tower-impacts'
     | '/tracking'
+    | '/tracking-consents'
     | '/twin-kinds'
     | '/twin-marks'
     | '/un-segregation-marks'
@@ -3342,6 +3354,7 @@ export interface RootRouteChildren {
   TimeToFixMarksRoute: typeof TimeToFixMarksRoute
   TowerImpactsRoute: typeof TowerImpactsRoute
   TrackingRoute: typeof TrackingRoute
+  TrackingConsentsRoute: typeof TrackingConsentsRoute
   TwinKindsRoute: typeof TwinKindsRoute
   TwinMarksRoute: typeof TwinMarksRoute
   UnSegregationMarksRoute: typeof UnSegregationMarksRoute
@@ -5048,6 +5061,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TrackingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tracking-consents': {
+      id: '/tracking-consents'
+      path: '/tracking-consents'
+      fullPath: '/tracking-consents'
+      preLoaderRoute: typeof TrackingConsentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/twin-kinds': {
       id: '/twin-kinds'
       path: '/twin-kinds'
@@ -5398,6 +5418,7 @@ const rootRouteChildren: RootRouteChildren = {
   TimeToFixMarksRoute: TimeToFixMarksRoute,
   TowerImpactsRoute: TowerImpactsRoute,
   TrackingRoute: TrackingRoute,
+  TrackingConsentsRoute: TrackingConsentsRoute,
   TwinKindsRoute: TwinKindsRoute,
   TwinMarksRoute: TwinMarksRoute,
   UnSegregationMarksRoute: UnSegregationMarksRoute,

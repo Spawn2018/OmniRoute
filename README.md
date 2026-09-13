@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **458.0** BR2.1 — HITL `telematics_device` (katalog urządzenia)
-- **Etap:** plaster — **459.0** BR2.2 `tracking_consent`. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
-- **Następny:** **459.0** HITL zgoda na śledzenie. Nie live GPS. Nie kolumna na kontakcie.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **459.0** BR2.2 — HITL `tracking_consent` (katalog zgody)
+- **Etap:** Plan — **460.0** BR6.1 korytarz sprzedażowy. Brak delty. `/plan-modul`.
+- **Następny:** **460.0** HITL korytarz jako obiekt sprzedaży. Nie pipeline CRM. Nie live.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

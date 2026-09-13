@@ -89,6 +89,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | BR2.1 plan (**458.0**): HITL `telematics_device`. Parowanie / live GPS `REJECTED` na tym wierszu. |
 | 2026-09-13 | **458.0** `telematics_device` w kodzie (`CONFIRMED`, git). Następny = **BR2.2** zgoda (`REQUIREMENT`). Parowanie / AI5 `REJECTED` na tym wierszu. |
 | 2026-09-13 | BR2.2 plan (**459.0**): HITL `tracking_consent`. Kolumna na `party_contact` / live GPS `REJECTED` na tym wierszu. |
+| 2026-09-13 | **459.0** `tracking_consent` w kodzie (`CONFIRMED`, git). Następny = **BR6.1** korytarz (`REQUIREMENT`). Expo BR2.3 / AI5 `REJECTED` na tym wierszu. |
 
 ---
 
@@ -214,6 +215,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | BR2.1 (**458.0**) = HITL `telematics_device` (`tracker|fault|other`). Parowanie / live GPS `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
 | 2026-09-13 | **458.0** w kodzie (`CONFIRMED`, git). Katalog urządzenia. Następny = **BR2.2** (`REQUIREMENT`). Parowanie leftover. | CURRENT + plaster 458.0 `/noc` |
 | 2026-09-13 | BR2.2 (**459.0**) = HITL `tracking_consent` (`party|driver|other`). Kolumna na kontakcie / live GPS `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
+| 2026-09-13 | **459.0** w kodzie (`CONFIRMED`, git). Katalog zgody. Następny = **BR6.1** (`REQUIREMENT`). Kolumna na kontakcie leftover. Expo BR2.3 park. | CURRENT + plaster 459.0 `/noc` |
 
 ---
 ---
@@ -841,9 +843,9 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | nazwy z PDF-ów bez wiersza w planie | **136** (z czego 28 to aliasy) |
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
-Ostatni ukończony plaster: **458.0** (HITL `telematics_device`).
-Następny = **459.0** BR2.2 zgoda na śledzenie (`REQUIREMENT`).
-AI1.0–AI1.4 oraz 443.0–458.0 są w kodzie (`CONFIRMED`); `data_source`
+Ostatni ukończony plaster: **459.0** (HITL `tracking_consent`).
+Następny = **460.0** BR6.1 korytarz sprzedażowy (`REQUIREMENT`).
+AI1.0–AI1.4 oraz 443.0–459.0 są w kodzie (`CONFIRMED`); `data_source`
 zostaje w AI5 (`REQUIREMENT`). Teza B.1 zostaje: szerokość katalogów nie zastępuje pomiaru.
 
 ## C.2 Bliźniaki — scalona taksonomia
@@ -898,7 +900,8 @@ bo bez ewidencji magazynowej nie ma zastawu na towarze.
 - **Urządzenia i ich cykl życia** — katalog HITL `telematics_device` jest
   (`CONFIRMED`, 458.0); leftover parowanie z pojazdem / silnik awarii
   (`REQUIREMENT`). Live poll `REJECTED` na katalogu.
-- **Zgoda na śledzenie** — jako dana, per kontrahent i per kierowca
+- **Zgoda na śledzenie** — katalog HITL `tracking_consent` jest (`CONFIRMED`, 459.0);
+  leftover kolumna na `party_contact` (`REQUIREMENT`). Live poll `REJECTED` na katalogu.
 - **Aplikacja kierowcy** — zlecenie, POD, skan, status, komunikacja, tryb offline
 
 **Grupa 3 — planowanie i optymalizacja.** Najbardziej „silnikowa" grupa, dziś nieobecna.

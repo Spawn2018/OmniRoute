@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **459.0** HITL zgoda na śledzenie. Nie live GPS. Nie kolumna na kontakcie.
+**Następny:** **460.0** HITL korytarz jako obiekt sprzedaży. Nie pipeline CRM. Nie live.
 <!-- os-status:end -->
 
 ```mermaid
@@ -793,7 +793,7 @@ Dump TMS `04b`: WMS nie jest dekoracją (Manhattan Active TM+WMS+Yard+Labour, In
 | BR1.2 | zapas jako obiekt finansowy: wycena, wiekowanie, Inventory Release | po BR1.0 | bez tego nie ma zastawu na towarze |
 | BR2.0 | `position_event` — pozycja jako osobny byt | **start HHL** (po leftover V5) | **457.0** DONE HITL `position_event`; leftover: lat/lng · poll |
 | BR2.1 | urządzenia telematyczne: cykl życia, parowanie z pojazdem, awarie | po BR2.0 | **458.0** DONE HITL `telematics_device`; leftover: parowanie · poll |
-| BR2.2 | zgoda na śledzenie jako dana, per kontrahent i per kierowca | po BR2.0 | **459.0** plan `/noc` = HITL `tracking_consent`; leftover: kolumna na `party_contact` |
+| BR2.2 | zgoda na śledzenie jako dana, per kontrahent i per kierowca | po BR2.0 | **459.0** DONE HITL `tracking_consent`; leftover: kolumna na `party_contact` |
 | BR2.3 | aplikacja kierowcy: zlecenie, POD, skan, status, tryb offline | po BR2.1 | wzorzec offline: Briefcase Builder |
 | BR3.0 | planowanie tras — **solver, nie model językowy** | **start HHL** | **455.0** DONE HITL `route_plan_mark`; leftover: Valhalla · VRP · km |
 | BR3.1 | planowanie załadunku: osie, wymiary, kolejność, tunele | po BR3.0 | podnosi G6 |
@@ -934,13 +934,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

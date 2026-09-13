@@ -394,6 +394,11 @@ export const OPS_JOBS = [
     job: "lane POL/POD z wyceny",
   },
   {
+    route: BUSINESS_LISTS.trackingConsent.route,
+    label: "Zgoda na śledzenie",
+    job: "katalog tracking_consent HITL",
+  },
+  {
     route: BUSINESS_LISTS.operationalException.route,
     label: "Wyjątki",
     job: "wyceny z party bez pełnego POL/POD",
@@ -1543,6 +1548,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "456.0": "/crm-opportunities",
   "457.0": "/position-events",
   "458.0": "/telematics-devices",
+  "459.0": "/tracking-consents",
   "267.0": "/lane-kms",
   "268.0": "/erp-connectors",
   "269.0": "/terminal-slot-connectors",

@@ -93,6 +93,7 @@ const NAV = [
   { to: "/crm-opportunities", label: "Okazja CRM" },
   { to: "/position-events", label: "Zdarzenie pozycji" },
   { to: "/telematics-devices", label: "Urządzenie telematyczne" },
+  { to: "/tracking-consents", label: "Zgoda na śledzenie" },
   { to: "/lane-kms", label: "Km ładowny" },
   { to: "/erp-connectors", label: "Konektor Optima" },
   { to: "/idp-connectors", label: "Konektor Auth0" },

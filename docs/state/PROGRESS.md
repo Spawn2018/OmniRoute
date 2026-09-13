@@ -856,3 +856,5 @@
 - 2026-09-13T16:15:00Z | 457.0 | position_event | DONE | HITL catalog source_kind gps/manual/other; bez live GPS
 
 - 2026-09-13T16:40:00Z | 458.0 | telematics_device | DONE | HITL catalog device_kind tracker/fault/other; bez parowania
+
+- 2026-09-13T16:55:00Z | 459.0 | tracking_consent | DONE | HITL catalog consent_kind party/driver/other; bez kolumny na kontakcie

@@ -63,6 +63,7 @@ def _organization_ops_relations() -> dict[str, Userset]:
     return {
         "can_manage_shipments": _member(),
         "can_manage_tracking": _member(),
+        "can_manage_tracking_consents": _member(),
         "can_manage_shipment_documents": _member(),
         "can_manage_exceptions": _member(),
         "can_manage_cargo_claims": _member(),

@@ -51,6 +51,7 @@ modules =
     app.services.channel_quotes
     app.services.shipments
     app.services.shipment_stakeholders
+    app.services.tracking_consents
     app.services.tracking_events
     app.services.shipment_documents
     app.services.operational_exceptions
@@ -383,6 +384,9 @@ forbidden_modules =
     app.services.shipment_stakeholders
     app.repositories.shipment_stakeholders
     app.models.shipment_stakeholder
+    app.services.tracking_consents
+    app.repositories.tracking_consents
+    app.models.tracking_consent
     app.services.tracking_events
     app.repositories.tracking_events
     app.models.tracking_event

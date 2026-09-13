@@ -245,6 +245,7 @@ from app.api import (
     three_way_marks,
     time_to_fix_marks,
     tower_impacts,
+    tracking_consents,
     tracking_events,
     trips,
     twin_kinds,
@@ -323,6 +324,7 @@ api_router.include_router(switch_bl_loi_marks.router)
 api_router.include_router(resources.router)
 api_router.include_router(trips.router)
 api_router.include_router(containers.router)
+api_router.include_router(tracking_consents.router)
 api_router.include_router(tracking_events.router)
 api_router.include_router(shipment_documents.router)
 api_router.include_router(shipment_packages.router)
