@@ -14,7 +14,7 @@
 
 Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów · live SMEO HTTP · wycena zapasu BR1.2 · FK PO po BR1.2. Nie otwieraj AI0. Nie startuj leftover Valhalla / live CFS / Expo / Alpega / HubSpot.
 
-**Spec (jedyna na sesję):** brak — delta **473.0** do utworzenia
+**Spec (jedyna na sesję):** [473.0.md](../deltas/open/473.0.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 

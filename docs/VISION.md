@@ -116,6 +116,7 @@ zostają w badaniach `04`).
 | 2026-09-14 | **471.0** `factoring_connector` w kodzie (`CONFIRMED`, git). Następny = **BR5.1** PO Financing (`REQUIREMENT`). Live SMEO HTTP / Expo / AI5 `REJECTED` na tym wierszu. |
 | 2026-09-14 | BR5.1 plan (**472.0**): HITL `po_financing_mark`. FK do `purchase_order` / wycena zapasu BR1.2 / live partner HTTP `REJECTED` na tym wierszu. |
 | 2026-09-14 | **472.0** `po_financing_mark` w kodzie (`CONFIRMED`, git). Następny = **BR5.2** giełdy transportowe (`REQUIREMENT`). Live partner HTTP / FK PO / Expo `REJECTED` na tym wierszu. |
+| 2026-09-14 | BR5.2 plan (**473.0**): rozszerzenie CHECK `exchange_connector.system_kind` (timocom|teleroute|transporeon|other). Live HTTP / auto-post / nowa tabela `REJECTED` na tym wierszu. |
 | 2026-09-13 | C.3 **Grupa 8**: help desk produktu (ticket → agent → akceptacja właściciela) + mobile całego OmniRoute. Leftover PLAN **Plat-HD** / **Mob**. Nie 468.0. |
 | 2026-09-13 | D.7 readiness (Murphy 2026 + audyt PDF/czat): Three-Bucket, Definition Gap, szwy eskalacji = leftover. Mission Control / wektor / druga warstwa semantyczna / Bertha `REJECTED`. |
 | 2026-09-13 | Ciało C.3 Grupa 8 + D.7 + skrót `03` B.4–B.6 w A.2. E.3: HC-04 i FK `plan_snapshot` zamknięte. [WYCOFANE 2026-09-13: „B.4–B.6 nietknięte w dumpie” — skrót jest w kanonie]. |
