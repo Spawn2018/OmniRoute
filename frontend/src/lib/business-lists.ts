@@ -186,6 +186,10 @@ export const BUSINESS_LISTS = {
     route: "/quote-validity-marks",
     tableKey: "quote_validity_mark",
   },
+  suggestionLedger: {
+    route: "/suggestion-ledgers",
+    tableKey: "suggestion_ledger",
+  },
   demoGpsMark: { route: "/demo-gps-marks", tableKey: "demo_gps_mark" },
   demoSimMark: { route: "/demo-sim-marks", tableKey: "demo_sim_mark" },
   demoWipeMark: { route: "/demo-wipe-marks", tableKey: "demo_wipe_mark" },
@@ -443,6 +447,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/bid-decision-marks",
   "/quote-currency-marks",
   "/quote-validity-marks",
+  "/suggestion-ledgers",
   "/demo-gps-marks",
   "/demo-sim-marks",
   "/demo-wipe-marks",

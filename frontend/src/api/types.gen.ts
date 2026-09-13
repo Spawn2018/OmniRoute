@@ -11609,6 +11609,106 @@ export type SubcontractEdgeMarkResponse = {
 };
 
 /**
+ * SuggestionLedgerCreate
+ */
+export type SuggestionLedgerCreate = {
+    /**
+     * Target Bc
+     */
+    target_bc: string;
+    /**
+     * Entity Id
+     */
+    entity_id: string;
+    /**
+     * Suggestion Kind
+     */
+    suggestion_kind: string;
+    /**
+     * Interval Low
+     */
+    interval_low: string;
+    /**
+     * Interval High
+     */
+    interval_high: string;
+    /**
+     * Model Version
+     */
+    model_version: string;
+    /**
+     * Prompt Version
+     */
+    prompt_version: string;
+    /**
+     * Reaction
+     */
+    reaction: string;
+    /**
+     * Changed To
+     */
+    changed_to: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * SuggestionLedgerResponse
+ */
+export type SuggestionLedgerResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Target Bc
+     */
+    target_bc: string;
+    /**
+     * Entity Id
+     */
+    entity_id: string;
+    /**
+     * Suggestion Kind
+     */
+    suggestion_kind: string;
+    /**
+     * Interval Low
+     */
+    interval_low: string;
+    /**
+     * Interval High
+     */
+    interval_high: string;
+    /**
+     * Model Version
+     */
+    model_version: string;
+    /**
+     * Prompt Version
+     */
+    prompt_version: string;
+    /**
+     * Reaction
+     */
+    reaction: string;
+    /**
+     * Changed To
+     */
+    changed_to: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * SwitchBlLoiMarkCreate
  */
 export type SwitchBlLoiMarkCreate = {
@@ -22470,6 +22570,49 @@ export type CreateQuoteValidityMarkApiV1QuoteValidityMarksPostResponses = {
 };
 
 export type CreateQuoteValidityMarkApiV1QuoteValidityMarksPostResponse = CreateQuoteValidityMarkApiV1QuoteValidityMarksPostResponses[keyof CreateQuoteValidityMarkApiV1QuoteValidityMarksPostResponses];
+
+export type ListSuggestionLedgersApiV1SuggestionLedgersGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/suggestion-ledgers';
+};
+
+export type ListSuggestionLedgersApiV1SuggestionLedgersGetResponses = {
+    /**
+     * Response List Suggestion Ledgers Api V1 Suggestion Ledgers Get
+     *
+     * Successful Response
+     */
+    200: Array<SuggestionLedgerResponse>;
+};
+
+export type ListSuggestionLedgersApiV1SuggestionLedgersGetResponse = ListSuggestionLedgersApiV1SuggestionLedgersGetResponses[keyof ListSuggestionLedgersApiV1SuggestionLedgersGetResponses];
+
+export type CreateSuggestionLedgerApiV1SuggestionLedgersPostData = {
+    body: SuggestionLedgerCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/suggestion-ledgers';
+};
+
+export type CreateSuggestionLedgerApiV1SuggestionLedgersPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateSuggestionLedgerApiV1SuggestionLedgersPostError = CreateSuggestionLedgerApiV1SuggestionLedgersPostErrors[keyof CreateSuggestionLedgerApiV1SuggestionLedgersPostErrors];
+
+export type CreateSuggestionLedgerApiV1SuggestionLedgersPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: SuggestionLedgerResponse;
+};
+
+export type CreateSuggestionLedgerApiV1SuggestionLedgersPostResponse = CreateSuggestionLedgerApiV1SuggestionLedgersPostResponses[keyof CreateSuggestionLedgerApiV1SuggestionLedgersPostResponses];
 
 export type ListDemoGpsMarksApiV1DemoGpsMarksGetData = {
     body?: never;

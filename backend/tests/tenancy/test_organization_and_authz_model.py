@@ -77,6 +77,7 @@ def test_authorization_model_includes_table_view_permission() -> None:
     assert "can_manage_cash_discounts" in org.relations
     assert "can_manage_carbon_methods" in org.relations
     assert "can_manage_prediction_ledgers" in org.relations
+    assert "can_manage_suggestion_ledgers" in org.relations
     assert "can_manage_plan_snapshots" in org.relations
     assert "can_manage_circle_sims" in org.relations
     assert "can_manage_lane_kms" in org.relations
@@ -298,6 +299,9 @@ def test_authorization_model_includes_table_view_permission() -> None:
     prediction_ledgers = org.relations["can_manage_prediction_ledgers"]
     assert prediction_ledgers.computed_userset is not None
     assert prediction_ledgers.computed_userset.relation == "member"
+    suggestion_ledgers = org.relations["can_manage_suggestion_ledgers"]
+    assert suggestion_ledgers.computed_userset is not None
+    assert suggestion_ledgers.computed_userset.relation == "member"
     plan_snapshots = org.relations["can_manage_plan_snapshots"]
     assert plan_snapshots.computed_userset is not None
     assert plan_snapshots.computed_userset.relation == "member"

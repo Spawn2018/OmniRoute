@@ -638,6 +638,10 @@ class InvalidPredictionLedger(DomainError):
     """Ledger B0b/V1: HITL przedział + CRPS/MAE jako dane — nie silnik i nie scoring osoby."""
 
 
+class InvalidSuggestionLedger(DomainError):
+    """Ledger AI1.0: HITL podpowiedź + reakcja — nie zapis LLM i nie CRPS liczone."""
+
+
 class InvalidWeatherObservation(DomainError):
     """Pogoda V2: HITL warunek + UN/LOCODE + czas — nie Open-Meteo i nie ETA."""
 

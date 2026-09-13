@@ -181,6 +181,7 @@ modules =
     app.services.bid_decision_marks
     app.services.quote_currency_marks
     app.services.quote_validity_marks
+    app.services.suggestion_ledgers
     app.services.demo_gps_marks
     app.services.demo_sim_marks
     app.services.demo_wipe_marks
@@ -860,6 +861,9 @@ forbidden_modules =
     app.services.quote_validity_marks
     app.repositories.quote_validity_marks
     app.models.quote_validity_mark
+    app.services.suggestion_ledgers
+    app.repositories.suggestion_ledgers
+    app.models.suggestion_ledger
     app.services.demo_gps_marks
     app.repositories.demo_gps_marks
     app.models.demo_gps_mark

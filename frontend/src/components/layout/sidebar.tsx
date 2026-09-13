@@ -77,6 +77,7 @@ const NAV = [
   { to: "/cash-discounts", label: "Skonto" },
   { to: "/carbon-methods", label: "Metodyka CO₂" },
   { to: "/prediction-ledgers", label: "Ledger predykcji" },
+  { to: "/suggestion-ledgers", label: "Ledger podpowiedzi" },
   { to: "/plan-snapshots", label: "Migawka planu" },
   { to: "/circle-sims", label: "Kółko" },
   { to: "/lane-kms", label: "Km ładowny" },

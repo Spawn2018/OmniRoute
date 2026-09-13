@@ -803,4 +803,6 @@
 
 - 2026-09-13T06:40:00Z · 431.0 · quote_validity_mark · DONE · HITL validity_kind open|revised|superseded|other · migracja 341 · /quote-validity-marks
 
+- 2026-09-13T07:05:00Z · 432.0 · suggestion_ledger · DONE · HITL target_bc + interval + reaction + changed_to · migracja 342 · /suggestion-ledgers
+
 - 2026-09-13T05:40:00Z · kanon · Fala AI + Fala BR w PLAN · VISION.md · HC-04 L0?2/L3?5 · AI0 ju? w kodzie (072) · nast?pny leftover 431.0

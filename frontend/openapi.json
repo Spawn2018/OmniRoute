@@ -14908,6 +14908,80 @@
         ]
       }
     },
+    "/api/v1/suggestion-ledgers": {
+      "get": {
+        "tags": [
+          "suggestion-ledgers"
+        ],
+        "summary": "List Suggestion Ledgers",
+        "operationId": "list_suggestion_ledgers_api_v1_suggestion_ledgers_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SuggestionLedgerResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Suggestion Ledgers Api V1 Suggestion Ledgers Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "suggestion-ledgers"
+        ],
+        "summary": "Create Suggestion Ledger",
+        "operationId": "create_suggestion_ledger_api_v1_suggestion_ledgers_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SuggestionLedgerCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuggestionLedgerResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/demo-gps-marks": {
       "get": {
         "tags": [
@@ -40206,6 +40280,152 @@
           "source_ref"
         ],
         "title": "SubcontractEdgeMarkResponse"
+      },
+      "SuggestionLedgerCreate": {
+        "properties": {
+          "target_bc": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Target Bc"
+          },
+          "entity_id": {
+            "type": "string",
+            "maxLength": 36,
+            "minLength": 36,
+            "title": "Entity Id"
+          },
+          "suggestion_kind": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Suggestion Kind"
+          },
+          "interval_low": {
+            "type": "string",
+            "title": "Interval Low"
+          },
+          "interval_high": {
+            "type": "string",
+            "title": "Interval High"
+          },
+          "model_version": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Model Version"
+          },
+          "prompt_version": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Prompt Version"
+          },
+          "reaction": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 2,
+            "title": "Reaction"
+          },
+          "changed_to": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Changed To"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "target_bc",
+          "entity_id",
+          "suggestion_kind",
+          "interval_low",
+          "interval_high",
+          "model_version",
+          "prompt_version",
+          "reaction",
+          "changed_to",
+          "source_ref"
+        ],
+        "title": "SuggestionLedgerCreate"
+      },
+      "SuggestionLedgerResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "target_bc": {
+            "type": "string",
+            "title": "Target Bc"
+          },
+          "entity_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Entity Id"
+          },
+          "suggestion_kind": {
+            "type": "string",
+            "title": "Suggestion Kind"
+          },
+          "interval_low": {
+            "type": "string",
+            "title": "Interval Low"
+          },
+          "interval_high": {
+            "type": "string",
+            "title": "Interval High"
+          },
+          "model_version": {
+            "type": "string",
+            "title": "Model Version"
+          },
+          "prompt_version": {
+            "type": "string",
+            "title": "Prompt Version"
+          },
+          "reaction": {
+            "type": "string",
+            "title": "Reaction"
+          },
+          "changed_to": {
+            "type": "string",
+            "title": "Changed To"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "target_bc",
+          "entity_id",
+          "suggestion_kind",
+          "interval_low",
+          "interval_high",
+          "model_version",
+          "prompt_version",
+          "reaction",
+          "changed_to",
+          "source_ref"
+        ],
+        "title": "SuggestionLedgerResponse"
       },
       "SwitchBlLoiMarkCreate": {
         "properties": {

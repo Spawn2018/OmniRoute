@@ -1,4 +1,5 @@
-- **431.0 leftover:** kolumny `valid_until` / `revision_no` / `supersedes_id` na `quotation`; silnik AI1.0. 431.0 = HITL `quote_validity_mark` (validity_kind).
+- **432.0 leftover:** AI1.1 `outcome_ledger`; AI1.4 słowniki otwarte; trzy BC piszą do substratu; CRPS liczone (AI2). 432.0 = HITL `suggestion_ledger`.
+- **431.0 leftover:** kolumny `valid_until` / `revision_no` / `supersedes_id` na `quotation`. 431.0 = HITL `quote_validity_mark` (validity_kind). AI1.0 zamknięty w 432.0.
 - **340.0 leftover:** allocation SQL; ABC engine; druga marża; klej charge. 340.0 = HITL `cost_allocation_mark` (alloc_kind).
 - **339.0 leftover:** silnik make-or-buy; allocation SQL; druga marża; klej charge. 339.0 = HITL `make_or_buy_mark` (buy_kind).
 - **338.0 leftover:** DSO SQL; cash-at-risk SQL; aging SQL; druga marża; klej F1. 338.0 = HITL `working_capital_mark` (capital_kind).

@@ -131,6 +131,7 @@
 | JDG | is_sole_trader | 132.0; kredyt tylko HITL recenzją |
 | kontrahent nadrzędny | parent_party_id | 132.0; grupa / oddział; FK tenanta |
 | ledger predykcji | prediction_ledger | B0b/V1; 193.0 HITL przedział + CRPS/MAE jako dane; zakaz „AI przewiduje” bez CRPS |
+| ledger podpowiedzi | suggestion_ledger | AI1.0 HITL przedział + reaction + changed_to; nie zapis LLM; nie CRPS liczone |
 | migawka planu | plan_snapshot | B0b; 265.0 HITL wersja planu (trójka UUID bez FK); nie silnik; nie kółka |
 | operator terminalu | operator_name / operator_party_id | tekst zostaje; FK nullable do `party` od 5.0 |
 | kontrahent | party | katalog M-10; jeden podmiot, wiele ról |

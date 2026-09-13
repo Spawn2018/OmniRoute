@@ -203,6 +203,7 @@ from app.api import (
     spot_contract_marks,
     stops,
     subcontract_edge_marks,
+    suggestion_ledgers,
     switch_bl_loi_marks,
     table_views,
     tacho_office_marks,
@@ -421,6 +422,7 @@ api_router.include_router(spot_contract_marks.router)
 api_router.include_router(bid_decision_marks.router)
 api_router.include_router(quote_currency_marks.router)
 api_router.include_router(quote_validity_marks.router)
+api_router.include_router(suggestion_ledgers.router)
 api_router.include_router(demo_gps_marks.router)
 api_router.include_router(demo_sim_marks.router)
 api_router.include_router(demo_wipe_marks.router)

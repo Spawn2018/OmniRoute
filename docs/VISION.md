@@ -108,6 +108,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | Bramka publikacji: Cloudflare jako warstwa bezpieczeństwa (DNS + proxy, TLS Full/strict, HSTS, WAF, rate limit, Access) **zanim** SPA operatora jest publiczna. Nie marketing CDN. Nie zastępuje RLS/HITL/Auth0 I1/I2. Nie plaster `/noc`. 431.0 zostaje. | polecenie właściciela 2026-09-13; stan repo `CONFIRMED`; limity planów = public docs Cloudflare (cytowane w B.8), nie nasz cennik |
 | 2026-09-13 | Leftover EXP1 katalogów quotation zamknięty: **431.0** `quote_validity_mark` w kodzie (`CONFIRMED`, git). Następny = **AI1.0** `suggestion_ledger` (`REQUIREMENT`, PLAN Fala AI). Kolumny `valid_until` / `revision_no` / `supersedes_id` na `quotation` zostają leftover (`REQUIREMENT`). | CURRENT + plaster 431.0 `/noc` |
 | 2026-09-13 | AI1.0 pierwszy plaster (**432.0**) = HITL `suggestion_ledger` append-only: przedział Decimal + `reaction` + `changed_to`. Zapis z modelu na L0–2 `REJECTED` (HC-04). `outcome_ledger` / słowniki AI1.4 / trzy BC autosave = leftover fali (`REQUIREMENT`). Nie klon `prediction_ledger` ani `operator_decision`. | `/plan-modul` `/noc`; VISION B.2 + HC-04 |
+| 2026-09-13 | **432.0** `suggestion_ledger` w kodzie (`CONFIRMED`, git). Następny = **AI1.1** `outcome_ledger` (`REQUIREMENT`). Zapis LLM / CRPS liczone / FK encji zostają `REJECTED` na tym wierszu. | CURRENT + plaster 432.0 `/noc` |
 
 ---
 ---
@@ -719,10 +720,10 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | nazwy z PDF-ów bez wiersza w planie | **136** (z czego 28 to aliasy) |
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
-Ostatni ukończony plaster: **431.0** (`quote_validity_mark`), następny w kolejce
-**AI1.0** (`suggestion_ledger`). Katalogi leftover EXP1 quotation są zamknięte
-(`CONFIRMED`); pierwszy silnik Fali AI jest w planie (`REQUIREMENT`). Teza B.1
-zostaje: szerokość katalogów nie zastępuje silnika.
+Ostatni ukończony plaster: **432.0** (`suggestion_ledger`), następny w kolejce
+**AI1.1** (`outcome_ledger`). Pierwszy silnik Fali AI jest w kodzie (`CONFIRMED`);
+złączenie z wynikiem zostaje w planie (`REQUIREMENT`). Teza B.1 zostaje:
+szerokość katalogów nie zastępuje pomiaru.
 
 ## C.2 Bliźniaki — scalona taksonomia
 

@@ -209,6 +209,7 @@ import { Route as SlotGuaranteeMarksRouteImport } from './routes/slot-guarantee-
 import { Route as SpendMarksRouteImport } from './routes/spend-marks'
 import { Route as SpotContractMarksRouteImport } from './routes/spot-contract-marks'
 import { Route as SubcontractEdgeMarksRouteImport } from './routes/subcontract-edge-marks'
+import { Route as SuggestionLedgersRouteImport } from './routes/suggestion-ledgers'
 import { Route as SwitchBlLoiMarksRouteImport } from './routes/switch-bl-loi-marks'
 import { Route as TachoOfficeMarksRouteImport } from './routes/tacho-office-marks'
 import { Route as TaskTemplatesRouteImport } from './routes/task-templates'
@@ -1252,6 +1253,11 @@ const SubcontractEdgeMarksRoute = SubcontractEdgeMarksRouteImport.update({
   path: '/subcontract-edge-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SuggestionLedgersRoute = SuggestionLedgersRouteImport.update({
+  id: '/suggestion-ledgers',
+  path: '/suggestion-ledgers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SwitchBlLoiMarksRoute = SwitchBlLoiMarksRouteImport.update({
   id: '/switch-bl-loi-marks',
   path: '/switch-bl-loi-marks',
@@ -1659,6 +1665,7 @@ export interface FileRoutesByFullPath {
   '/spend-marks': typeof SpendMarksRoute
   '/spot-contract-marks': typeof SpotContractMarksRoute
   '/subcontract-edge-marks': typeof SubcontractEdgeMarksRoute
+  '/suggestion-ledgers': typeof SuggestionLedgersRoute
   '/switch-bl-loi-marks': typeof SwitchBlLoiMarksRoute
   '/tacho-office-marks': typeof TachoOfficeMarksRoute
   '/task-templates': typeof TaskTemplatesRoute
@@ -1902,6 +1909,7 @@ export interface FileRoutesByTo {
   '/spend-marks': typeof SpendMarksRoute
   '/spot-contract-marks': typeof SpotContractMarksRoute
   '/subcontract-edge-marks': typeof SubcontractEdgeMarksRoute
+  '/suggestion-ledgers': typeof SuggestionLedgersRoute
   '/switch-bl-loi-marks': typeof SwitchBlLoiMarksRoute
   '/tacho-office-marks': typeof TachoOfficeMarksRoute
   '/task-templates': typeof TaskTemplatesRoute
@@ -2146,6 +2154,7 @@ export interface FileRoutesById {
   '/spend-marks': typeof SpendMarksRoute
   '/spot-contract-marks': typeof SpotContractMarksRoute
   '/subcontract-edge-marks': typeof SubcontractEdgeMarksRoute
+  '/suggestion-ledgers': typeof SuggestionLedgersRoute
   '/switch-bl-loi-marks': typeof SwitchBlLoiMarksRoute
   '/tacho-office-marks': typeof TachoOfficeMarksRoute
   '/task-templates': typeof TaskTemplatesRoute
@@ -2391,6 +2400,7 @@ export interface FileRouteTypes {
     | '/spend-marks'
     | '/spot-contract-marks'
     | '/subcontract-edge-marks'
+    | '/suggestion-ledgers'
     | '/switch-bl-loi-marks'
     | '/tacho-office-marks'
     | '/task-templates'
@@ -2634,6 +2644,7 @@ export interface FileRouteTypes {
     | '/spend-marks'
     | '/spot-contract-marks'
     | '/subcontract-edge-marks'
+    | '/suggestion-ledgers'
     | '/switch-bl-loi-marks'
     | '/tacho-office-marks'
     | '/task-templates'
@@ -2877,6 +2888,7 @@ export interface FileRouteTypes {
     | '/spend-marks'
     | '/spot-contract-marks'
     | '/subcontract-edge-marks'
+    | '/suggestion-ledgers'
     | '/switch-bl-loi-marks'
     | '/tacho-office-marks'
     | '/task-templates'
@@ -3121,6 +3133,7 @@ export interface RootRouteChildren {
   SpendMarksRoute: typeof SpendMarksRoute
   SpotContractMarksRoute: typeof SpotContractMarksRoute
   SubcontractEdgeMarksRoute: typeof SubcontractEdgeMarksRoute
+  SuggestionLedgersRoute: typeof SuggestionLedgersRoute
   SwitchBlLoiMarksRoute: typeof SwitchBlLoiMarksRoute
   TachoOfficeMarksRoute: typeof TachoOfficeMarksRoute
   TaskTemplatesRoute: typeof TaskTemplatesRoute
@@ -4566,6 +4579,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SubcontractEdgeMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/suggestion-ledgers': {
+      id: '/suggestion-ledgers'
+      path: '/suggestion-ledgers'
+      fullPath: '/suggestion-ledgers'
+      preLoaderRoute: typeof SuggestionLedgersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/switch-bl-loi-marks': {
       id: '/switch-bl-loi-marks'
       path: '/switch-bl-loi-marks'
@@ -5057,6 +5077,7 @@ const rootRouteChildren: RootRouteChildren = {
   SpendMarksRoute: SpendMarksRoute,
   SpotContractMarksRoute: SpotContractMarksRoute,
   SubcontractEdgeMarksRoute: SubcontractEdgeMarksRoute,
+  SuggestionLedgersRoute: SuggestionLedgersRoute,
   SwitchBlLoiMarksRoute: SwitchBlLoiMarksRoute,
   TachoOfficeMarksRoute: TachoOfficeMarksRoute,
   TaskTemplatesRoute: TaskTemplatesRoute,

@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **431.0** EXP1 HITL `quote_validity_mark`
-- **Etap:** Plan — **AI1.0** / **432.0** (delta zaakceptowana `/noc`, wolno `/plaster`)
-- **Następny:** **432.0** AI1.0 HITL `suggestion_ledger` — target_bc + entity_id + przedział Decimal + reaction + changed_to.
+- **Ostatni plaster:** **432.0** AI1.0 HITL `suggestion_ledger`
+- **Etap:** Plan — **AI1.1** / **433.0** (wolno `/plan-modul`)
+- **Następny:** **433.0** AI1.1 HITL `outcome_ledger` — co się naprawdę stało (złączenie z suggestion_ledger później).
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
