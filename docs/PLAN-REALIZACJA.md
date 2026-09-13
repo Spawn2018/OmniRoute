@@ -9,7 +9,7 @@
 **Stan żywy:** [CURRENT.md](state/CURRENT.md) — ten wiersz nie trzyma SHA (context rot: tu stało `8fb8c93` / 3.0 przy żywym 127.0).
 
 <!-- os-status:start -->
-**Następny:** **460.0** HITL korytarz jako obiekt sprzedaży. Nie pipeline CRM. Nie live.
+**Następny:** **460.0** HITL korytarz sprzedażowy. Nie pipeline CRM. Nie UN/LOCODE. Nie live.
 <!-- os-status:end -->
 
 ```mermaid
@@ -808,7 +808,7 @@ Dump TMS `04b`: WMS nie jest dekoracją (Manhattan Active TM+WMS+Yard+Labour, In
 | BR5.1 | finansowanie zamówienia (PO Financing) | po BR1.2 + BR5.0 | rdzeń Trade-Tech |
 | BR5.2 | giełdy transportowe: wymiana ofert | po S55 | dziś tylko katalog konektora |
 | BR6.0 | CRM ponad leada: okazja, aktywność, pipeline | **start HHL** | **456.0** DONE HITL `crm_opportunity`; leftover: activity · pipeline |
-| BR6.1 | **korytarz jako obiekt sprzedażowy** | po BR6.0 | HubSpot/Salesforce nie mają „lane” |
+| BR6.1 | **korytarz jako obiekt sprzedażowy** | po BR6.0 | plan **460.0** HITL `sales_lane`; leftover: UN/LOCODE · wolumen; HubSpot/Salesforce nie mają „lane” |
 | BR6.2 | przetargi korporacyjne po stronie załadowcy | po G2 | druga strona istniejącego `tender`; dump `04b`: Alpega TenderEasy + Freight Bench (multi-round, like-for-like, spot); nie auto-award |
 | BR6.3 | aplikacja mobilna sprzedaży iOS/Android | po BR6.0 | Expo/RN; web UI się nie przenosi |
 | BR6.4 | portale: klienta, przewoźnika, podwykonawcy | po S53 | zbieżne z X1–X5 |
@@ -934,13 +934,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

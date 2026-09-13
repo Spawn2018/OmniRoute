@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **459.0** BR2.2 — HITL `tracking_consent` (katalog zgody)
 
-**Etap:** Plan — **460.0** BR6.1 korytarz sprzedażowy. Brak delty. `/plan-modul`.
+**Etap:** plaster — **460.0** BR6.1 `sales_lane`. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
 
 **Noc:** `/noc 20` do **2026-09-13T20:00+02**.
 
-**Następny:** **460.0** HITL korytarz jako obiekt sprzedaży. Nie pipeline CRM. Nie live.
+**Następny:** **460.0** HITL korytarz sprzedażowy. Nie pipeline CRM. Nie UN/LOCODE. Nie live.
 
 Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 460.0. Nie otwieraj AI0. Nie startuj leftover Valhalla / pipeline / BR2.3 Expo.
 
-**Spec (jedyna na sesję):** brak — /plan-modul
+**Spec (jedyna na sesję):** [docs/deltas/open/460.0-sales-lane.md](../deltas/open/460.0-sales-lane.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 

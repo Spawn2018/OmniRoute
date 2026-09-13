@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **459.0** BR2.2 — HITL `tracking_consent` (katalog zgody). **Etap:** Plan — **460.0** BR6.1 korytarz sprzedażowy. Brak delty. `/plan-modul`. **Następny:** **460.0** HITL korytarz jako obiekt sprzedaży. Nie pipeline CRM. Nie live. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **459.0** BR2.2 — HITL `tracking_consent` (katalog zgody). **Etap:** plaster — **460.0** BR6.1 `sales_lane`. Delta zaakceptowana (`/noc`). Wolno `/plaster`. **Następny:** **460.0** HITL korytarz sprzedażowy. Nie pipeline CRM. Nie UN/LOCODE. Nie live. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

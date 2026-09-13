@@ -88,9 +88,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **459.0** BR2.2 — HITL `tracking_consent` (katalog zgody)
-- **Etap:** Plan — **460.0** BR6.1 korytarz sprzedażowy. Brak delty. `/plan-modul`.
-- **Następny:** **460.0** HITL korytarz jako obiekt sprzedaży. Nie pipeline CRM. Nie live.
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Etap:** plaster — **460.0** BR6.1 `sales_lane`. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
+- **Następny:** **460.0** HITL korytarz sprzedażowy. Nie pipeline CRM. Nie UN/LOCODE. Nie live.
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

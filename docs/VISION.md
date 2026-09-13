@@ -90,6 +90,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | **458.0** `telematics_device` w kodzie (`CONFIRMED`, git). Następny = **BR2.2** zgoda (`REQUIREMENT`). Parowanie / AI5 `REJECTED` na tym wierszu. |
 | 2026-09-13 | BR2.2 plan (**459.0**): HITL `tracking_consent`. Kolumna na `party_contact` / live GPS `REJECTED` na tym wierszu. |
 | 2026-09-13 | **459.0** `tracking_consent` w kodzie (`CONFIRMED`, git). Następny = **BR6.1** korytarz (`REQUIREMENT`). Expo BR2.3 / AI5 `REJECTED` na tym wierszu. |
+| 2026-09-13 | BR6.1 plan (**460.0**): HITL `sales_lane`. UN/LOCODE / pipeline / HubSpot live `REJECTED` na tym wierszu. |
 
 ---
 
@@ -216,6 +217,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | **458.0** w kodzie (`CONFIRMED`, git). Katalog urządzenia. Następny = **BR2.2** (`REQUIREMENT`). Parowanie leftover. | CURRENT + plaster 458.0 `/noc` |
 | 2026-09-13 | BR2.2 (**459.0**) = HITL `tracking_consent` (`party|driver|other`). Kolumna na kontakcie / live GPS `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
 | 2026-09-13 | **459.0** w kodzie (`CONFIRMED`, git). Katalog zgody. Następny = **BR6.1** (`REQUIREMENT`). Kolumna na kontakcie leftover. Expo BR2.3 park. | CURRENT + plaster 459.0 `/noc` |
+| 2026-09-13 | BR6.1 (**460.0**) = HITL `sales_lane` (`repeat|spot|other`). UN/LOCODE / pipeline / HubSpot live `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E Fala BR |
 
 ---
 ---
@@ -929,8 +931,10 @@ bo bez ewidencji magazynowej nie ma zastawu na towarze.
 **Grupa 6 — sprzedaż, klient i marketing.** Szczegóły w dokumencie `11`.
 - **CRM ponad leada** — dziś w kodzie jest **wyłącznie `crm_lead`**; nie ma okazji
   sprzedażowej, aktywności ani pipeline'u (`CONFIRMED`, audyt kodu)
-- **Korytarz jako obiekt sprzedażowy** — ani HubSpot, ani Salesforce nie ma pojęcia
-  „lane"; w TSL decyduje powtarzalny wolumen na korytarzu, nie jednorazowy deal
+- **Korytarz jako obiekt sprzedażowy** — katalog HITL `sales_lane` w planie
+  (`REQUIREMENT`, 460.0); leftover para UN/LOCODE i wolumen (`REQUIREMENT`).
+  HubSpot/Salesforce live `REJECTED` na tym wierszu. W TSL decyduje powtarzalny
+  wolumen na korytarzu, nie jednorazowy deal.
 - **Przetargi korporacyjne po stronie załadowcy** — druga strona istniejącego `tender`
   (`REQUIREMENT` evidenced `04b` §7: Alpega TenderEasy + Freight Bench =
   kanon przetargu załadowcy EU — multi-round, like-for-like, spot.
