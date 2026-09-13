@@ -478,6 +478,10 @@ class InvalidShipmentStakeholder(DomainError):
     """Strona zlecenia: rola z allowlisty i party_id — nie dispatch, nie EXP1."""
 
 
+class InvalidShipperTenderMark(DomainError):
+    """BR6.2: HITL tryb zaladowcy — nie druga tabela tender / auto-award / Alpega."""
+
+
 class InvalidDocumentDispatchRule(DomainError):
     """Reguła adresata: trójka incoterm×strona×rodzaj → rola I2 — nie send."""
 

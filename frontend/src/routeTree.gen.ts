@@ -213,6 +213,7 @@ import { Route as SessionRouteImport } from './routes/session'
 import { Route as ShipmentDocumentsRouteImport } from './routes/shipment-documents'
 import { Route as ShipmentPackagesRouteImport } from './routes/shipment-packages'
 import { Route as ShipmentsRouteImport } from './routes/shipments'
+import { Route as ShipperTenderMarksRouteImport } from './routes/shipper-tender-marks'
 import { Route as SidImportMarksRouteImport } from './routes/sid-import-marks'
 import { Route as SlaClausesRouteImport } from './routes/sla-clauses'
 import { Route as SlotGuaranteeMarksRouteImport } from './routes/slot-guarantee-marks'
@@ -1289,6 +1290,11 @@ const ShipmentsRoute = ShipmentsRouteImport.update({
   path: '/shipments',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShipperTenderMarksRoute = ShipperTenderMarksRouteImport.update({
+  id: '/shipper-tender-marks',
+  path: '/shipper-tender-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SidImportMarksRoute = SidImportMarksRouteImport.update({
   id: '/sid-import-marks',
   path: '/sid-import-marks',
@@ -1765,6 +1771,7 @@ export interface FileRoutesByFullPath {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/shipper-tender-marks': typeof ShipperTenderMarksRoute
   '/sid-import-marks': typeof SidImportMarksRoute
   '/sla-clauses': typeof SlaClausesRoute
   '/slot-guarantee-marks': typeof SlotGuaranteeMarksRoute
@@ -2025,6 +2032,7 @@ export interface FileRoutesByTo {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/shipper-tender-marks': typeof ShipperTenderMarksRoute
   '/sid-import-marks': typeof SidImportMarksRoute
   '/sla-clauses': typeof SlaClausesRoute
   '/slot-guarantee-marks': typeof SlotGuaranteeMarksRoute
@@ -2286,6 +2294,7 @@ export interface FileRoutesById {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/shipper-tender-marks': typeof ShipperTenderMarksRoute
   '/sid-import-marks': typeof SidImportMarksRoute
   '/sla-clauses': typeof SlaClausesRoute
   '/slot-guarantee-marks': typeof SlotGuaranteeMarksRoute
@@ -2548,6 +2557,7 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/shipper-tender-marks'
     | '/sid-import-marks'
     | '/sla-clauses'
     | '/slot-guarantee-marks'
@@ -2808,6 +2818,7 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/shipper-tender-marks'
     | '/sid-import-marks'
     | '/sla-clauses'
     | '/slot-guarantee-marks'
@@ -3068,6 +3079,7 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/shipper-tender-marks'
     | '/sid-import-marks'
     | '/sla-clauses'
     | '/slot-guarantee-marks'
@@ -3329,6 +3341,7 @@ export interface RootRouteChildren {
   ShipmentDocumentsRoute: typeof ShipmentDocumentsRoute
   ShipmentPackagesRoute: typeof ShipmentPackagesRoute
   ShipmentsRoute: typeof ShipmentsRoute
+  ShipperTenderMarksRoute: typeof ShipperTenderMarksRoute
   SidImportMarksRoute: typeof SidImportMarksRoute
   SlaClausesRoute: typeof SlaClausesRoute
   SlotGuaranteeMarksRoute: typeof SlotGuaranteeMarksRoute
@@ -4815,6 +4828,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShipmentsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/shipper-tender-marks': {
+      id: '/shipper-tender-marks'
+      path: '/shipper-tender-marks'
+      fullPath: '/shipper-tender-marks'
+      preLoaderRoute: typeof ShipperTenderMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sid-import-marks': {
       id: '/sid-import-marks'
       path: '/sid-import-marks'
@@ -5401,6 +5421,7 @@ const rootRouteChildren: RootRouteChildren = {
   ShipmentDocumentsRoute: ShipmentDocumentsRoute,
   ShipmentPackagesRoute: ShipmentPackagesRoute,
   ShipmentsRoute: ShipmentsRoute,
+  ShipperTenderMarksRoute: ShipperTenderMarksRoute,
   SidImportMarksRoute: SidImportMarksRoute,
   SlaClausesRoute: SlaClausesRoute,
   SlotGuaranteeMarksRoute: SlotGuaranteeMarksRoute,

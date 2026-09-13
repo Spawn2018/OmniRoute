@@ -92,6 +92,7 @@ const NAV = [
   { to: "/route-plan-marks", label: "Znacznik planu trasy" },
   { to: "/crm-opportunities", label: "Okazja CRM" },
   { to: "/sales-lanes", label: "Korytarz sprzedażowy" },
+  { to: "/shipper-tender-marks", label: "Przetarg załadowcy" },
   { to: "/position-events", label: "Zdarzenie pozycji" },
   { to: "/telematics-devices", label: "Urządzenie telematyczne" },
   { to: "/tracking-consents", label: "Zgoda na śledzenie" },

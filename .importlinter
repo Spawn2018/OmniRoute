@@ -50,6 +50,7 @@ modules =
     app.services.port_surcharges
     app.services.channel_quotes
     app.services.shipments
+    app.services.shipper_tender_marks
     app.services.shipment_stakeholders
     app.services.tracking_consents
     app.services.tracking_events
@@ -385,6 +386,9 @@ forbidden_modules =
     app.services.shipment_stakeholders
     app.repositories.shipment_stakeholders
     app.models.shipment_stakeholder
+    app.services.shipper_tender_marks
+    app.repositories.shipper_tender_marks
+    app.models.shipper_tender_mark
     app.services.tracking_consents
     app.repositories.tracking_consents
     app.models.tracking_consent

@@ -29,6 +29,7 @@ type organization
     define can_manage_outbox_events: member
     define can_manage_entity_events: member
     define can_manage_shipments: member
+    define can_manage_shipper_tender_marks: member
     define can_manage_tracking: member
     define can_manage_tracking_consents: member
     define can_manage_shipment_documents: member
