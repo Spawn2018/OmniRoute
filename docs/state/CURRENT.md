@@ -6,7 +6,7 @@
 
 **Ostatni plaster:** **451.0** AI3.4 — parser `xlsx_sheet` (stdlib)
 
-**Etap:** Plan — **452.0** AI4.0 `plan_snapshot` FK. Wolno `/plan-modul`. Zero kodu.
+**Etap:** plaster — **452.0** AI4.0 FK `plan_snapshot`. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
 
 **Noc:** `/noc 20` do **2026-09-13T20:00+02**.
 
@@ -14,7 +14,7 @@
 
 Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 452.0. Nie otwieraj AI0.
 
-**Spec (jedyna na sesję):** brak — `/plan-modul`
+**Spec (jedyna na sesję):** [docs/deltas/open/452.0-plan-snapshot-fk.md](../deltas/open/452.0-plan-snapshot-fk.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 

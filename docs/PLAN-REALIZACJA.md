@@ -763,7 +763,7 @@ Dump TMS 2026-09-13 (badania `04b` A–H × 10; CargoWise/Qargo/interLAN zostaj�
 | AI3.2 | ścieżka **obraz wprost** jako challenger dla obecnej ścieżki przez tekst | po AI3.1 | **449.0 DONE** `extract_path` text|image etykieta; leftover: live vision · AI3.3 · AI3.4 |
 | AI3.3 | własny zbiór golden + bramka wydaniowa na progach | po AI3.2 | **450.0 DONE** pytest vs THC/BAF; leftover: większy zbiór · instructor CI · 96,6% `TO_VERIFY` |
 | AI3.4 | ekstrakcja z Excela (dziś tylko PDF) | po AI3.1 | **451.0 DONE** `xlsx_sheet` stdlib; leftover: `.xls` · wiele arkuszy · openpyxl |
-| AI4.0 | `plan_snapshot` z FK do shipment/trip/resource | po AI1; **Q3=tak** | `ON DELETE RESTRICT`; nadal zakaz UPDATE/DELETE wiersza snapshot |
+| AI4.0 | `plan_snapshot` z FK do shipment/trip/resource | po AI1; **Q3=tak** | **452.0** plan `/noc` = FK złożone RESTRICT; leftover: AI4.1 · CASCADE `REJECTED` |
 | AI4.1 | silnik what-if na `counterfactual_run` | po AI4.0 | podnosi V8 i W1; dump `04b`: what-if/Optimizer/Archer u konkurencji = runtime, u nas HITL aż ten wiersz |
 | AI4.2 | symulacja kółek **w SQL**, do 500k wariantów | po AI4.1 | nie w Pythonie; podnosi G2.20 |
 | AI5.0 | warstwa ingest danych zewnętrznych + `data_source` z licencją | po AI1.4 | katalog: badania `09` / `10` |

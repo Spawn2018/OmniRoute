@@ -74,6 +74,7 @@ CargoWise / Qargo / interLAN zostają w badaniach `04`).
 | 2026-09-13 | **450.0** golden w kodzie (`CONFIRMED`, git). Następny = **AI3.4** Excel (`REQUIREMENT`). 96,6% zostaje `TO_VERIFY`. |
 | 2026-09-13 | AI3.4 plan (**451.0**): parser `xlsx_sheet` stdlib. `openpyxl` `REJECTED`. `.xls` leftover. |
 | 2026-09-13 | **451.0** `xlsx_sheet` w kodzie (`CONFIRMED`, git). Następny = **AI4.0** FK `plan_snapshot` (`REQUIREMENT`). `.xls` leftover. |
+| 2026-09-13 | AI4.0 plan (**452.0**): FK złożone RESTRICT. CASCADE `REJECTED`. What-if `REJECTED` na tym wierszu. |
 
 ---
 
@@ -184,6 +185,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | **450.0** w kodzie (`CONFIRMED`, git). Dwa przypadki THC/BAF vs `MockExtractor`. Następny = **AI3.4** Excel (`REQUIREMENT`). | CURRENT + plaster 450.0 `/noc` |
 | 2026-09-13 | AI3.4 (**451.0**) = OOXML pierwszy arkusz → tekst. Nowa zależność `REJECTED`. Vision `REJECTED`. | `/plan-modul` `/noc`; VISION E AI3 |
 | 2026-09-13 | **451.0** w kodzie (`CONFIRMED`, git). `parser_name=xlsx_sheet`. Następny = **AI4.0** (`REQUIREMENT`). | CURRENT + plaster 451.0 `/noc` |
+| 2026-09-13 | AI4.0 (**452.0**) = FK `plan_snapshot` → shipment/trip/resource, `ON DELETE RESTRICT`. CASCADE `REJECTED`. | `/plan-modul` `/noc`; VISION E AI4 |
 
 ---
 ---
@@ -812,7 +814,7 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
 Ostatni ukończony plaster: **451.0** (`xlsx_sheet`).
-Następny = **452.0** AI4.0 FK `plan_snapshot` (`REQUIREMENT`). `.xls` leftover.
+Następny = **452.0** AI4.0 FK `plan_snapshot` RESTRICT (`REQUIREMENT`). CASCADE `REJECTED`.
 AI1.0–AI1.4 oraz 443.0–451.0 są w kodzie (`CONFIRMED`); `data_source`
 zostaje w AI5 (`REQUIREMENT`). Teza B.1 zostaje: szerokość katalogów nie zastępuje pomiaru.
 
