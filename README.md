@@ -88,9 +88,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **450.0** AI3.3 — własny golden + bramka pytest
-- **Etap:** Plan — **451.0** AI3.4 Excel. Wolno `/plan-modul`. Zero kodu.
-- **Następny:** **451.0** ekstrakcja z Excela. Nie live vision. Nie liczby z papieru. Nie zapis z modelu.
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Etap:** plaster — **451.0** AI3.4 Excel. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
+- **Następny:** **451.0** parser xlsx (stdlib). Nie openpyxl. Nie .xls. Nie zapis z modelu.
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

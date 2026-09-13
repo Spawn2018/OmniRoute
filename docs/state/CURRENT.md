@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **450.0** AI3.3 — własny golden + bramka pytest
 
-**Etap:** Plan — **451.0** AI3.4 Excel. Wolno `/plan-modul`. Zero kodu.
+**Etap:** plaster — **451.0** AI3.4 Excel. Delta zaakceptowana (`/noc`). Wolno `/plaster`.
 
 **Noc:** `/noc 20` do **2026-09-13T20:00+02**.
 
-**Następny:** **451.0** ekstrakcja z Excela. Nie live vision. Nie liczby z papieru. Nie zapis z modelu.
+**Następny:** **451.0** parser xlsx (stdlib). Nie openpyxl. Nie .xls. Nie zapis z modelu.
 
 Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów. Nie zgaduj poza 451.0. Nie otwieraj AI0.
 
-**Spec (jedyna na sesję):** brak — `/plan-modul`
+**Spec (jedyna na sesję):** [docs/deltas/open/451.0-extraction-xlsx.md](../deltas/open/451.0-extraction-xlsx.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 
