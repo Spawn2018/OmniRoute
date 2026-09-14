@@ -44,8 +44,10 @@ Czytaj CURRENT + kolejkę. Leftover HITL/SQL z **Następny** = praca, nie skip. 
 
 1. `python scripts/quality/factory_cycle.py --close` — exit 0.
 2. Istnieje `docs/_bench/cases/<ID>-*.md` dla plastra z CURRENT; plik **w tym samym commicie** co zamknięcie. Brak bench = **zakaz** `git push`.
-3. Commit. Dopiero potem `git push origin main`.
-4. Limit wall-clock na gate/push: **20 min**. Po timeoutie: nie dokładaj kolejnych wiszących shelli — ubij drzewo w **nowym** oknie PowerShell (`Stop-Process` poza Cursor), `status: idle`, napraw fail (np. brak bench), jeden push. Unikaj `2>&1 | Select-Object -Last N` na pełnym coverage gate.
+3. Commit. Dopiero potem push:
+   `powershell -ExecutionPolicy Bypass -File scripts/git-push-main.ps1`
+   (nie `git push … 2>&1 | Select-Object` — NativeCommandError + duży stderr wieszają PS/Cursor).
+4. Limit wall-clock na gate/push: **20 min**. Po timeoutie: nie dokładaj kolejnych wiszących shelli — ubij drzewo w **nowym** oknie PowerShell (`Stop-Process` poza Cursor), `status: idle`, napraw fail (np. brak bench), jeden push przez `git-push-main.ps1`.
 5. Po pushu: CI (`gh run watch` / najnowszy run na `main`); czerwone → napraw + push, do skutku albo do godziny. WIP=1.
 
 Moduł niecały → następny plaster (plan jeśli trzeba, potem kod).  

@@ -38,8 +38,13 @@ test:
     pytest backend/tests -m "not integration" -q
     pytest backend/tests -m integration -q
 
+# --cov-report=: bez tabeli per-plik w terminalu (megabajty na fail zawieszają PowerShell / Cursor).
+# Próg 80% zostaje (--cov-fail-under). Pełny raport lokalnie: just test-unit-cov
 test-unit:
-    pytest backend/tests -m "not integration" -q --cov=app --cov-fail-under=80
+    pytest backend/tests -m "not integration" -q --cov=app --cov-report= --cov-fail-under=80
+
+test-unit-cov:
+    pytest backend/tests -m "not integration" -q --cov=app --cov-report=term-missing:skip-covered --cov-fail-under=80
 
 test-integration:
     pytest backend/tests -m integration -q

@@ -28,7 +28,7 @@ Planowanie zostaje (delta, zakres, testy zanim kod). Znika tylko czekanie na kli
 
 ### Close → commit → push
 
-Bez `docs/_bench/cases/<ID>-*.md` dla plastra z CURRENT **zakaz** `git push` (pre-push padnie na `test_live_current_has_a_bench_case`). Kolejność: `factory_cycle.py --close` → commit z benchem → push. Gate/push: limit **20 min**; po timeoutie ubij osierocone `python`/`git` w **osobnym** oknie PowerShell, nie dokładaj wiszących shelli w Cursorze.
+Bez `docs/_bench/cases/<ID>-*.md` dla plastra z CURRENT **zakaz** `git push` (pre-push padnie na `test_live_current_has_a_bench_case`). Kolejność: `factory_cycle.py --close` → commit z benchem → `powershell -File scripts/git-push-main.ps1` (nie `git push 2>&1 | Select-Object`). Gate/push: limit **20 min**; po timeoutie ubij osierocone `python`/`git` w **osobnym** oknie PowerShell, nie dokładaj wiszących shelli w Cursorze. `just test-unit` nie drukuje tabeli coverage w terminalu (próg 80% zostaje).
 
 ### Strażnik (`loop-noc`)
 

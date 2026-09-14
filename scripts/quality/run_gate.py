@@ -2,6 +2,7 @@
 """Lokalny just gate: zbiera code-gate i meta-gate, nie przerywa po pierwszym."""
 from __future__ import annotations
 
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -11,7 +12,8 @@ ROOT = Path(__file__).resolve().parents[2]
 
 def _just(recipe: str) -> int:
     print(f"\n=== {recipe} ===\n", flush=True)
-    return subprocess.call(["just", recipe], cwd=ROOT)
+    env = {**os.environ, "PYTHONUNBUFFERED": "1"}
+    return subprocess.call(["just", recipe], cwd=ROOT, env=env)
 
 
 def main() -> int:
