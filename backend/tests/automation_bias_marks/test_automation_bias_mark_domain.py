@@ -1,7 +1,7 @@
 import pytest
 
-from app.domain.errors import InvalidAutomationBiasMark
 from app.domain.automation_bias_mark import parse_automation_bias_mark_row
+from app.domain.errors import InvalidAutomationBiasMark
 
 
 def test_parse_automation_bias_mark_row_accepts_manual() -> None:
