@@ -20,13 +20,23 @@ Ty: komputer nie usypia, Cursor otwarty. Drugi `/noc` na `main` = zakaz. Pas pom
 
 1. Czytaj `CURRENT.md`. **Etap: Refaktor** → `/refaktor` (max 3), karta post-plaster, commit i push — nie `/plan-modul`.
 2. **Etap: Plan** → `/plan-modul` w Agencie (nie przełączaj na tryb Plan w Cursorze — ten ekran czeka na Ciebie). Opcja rekomendowana. Delta + CURRENT. **Commit i push.** Zero kodu produktu.
-3. **`/plaster`** (gdy Etap nie jest Plan ani Refaktor): preflight już zrobił retrieve; **nie** wołaj `--start plaster` (NOC-LIVE ≠ stop). Plan plików bez `akceptuję` → czerwone `/testy` → kod → `/po-plastrze` → `factory_cycle --close` → zamknięcie. **Commit i push** na `origin/main`. Naprawia do skutku. Po pushu czeka na CI GitHub i poprawia, aż zielone albo padnie godzina.
+3. **`/plaster`** (gdy Etap nie jest Plan ani Refaktor): preflight już zrobił retrieve; **nie** wołaj `--start plaster` (NOC-LIVE ≠ stop). Plan plików bez `akceptuję` → czerwone `/testy` → kod → `/po-plastrze` → **`factory_cycle --close` (exit 0) + bench w tym samym commicie** → zamknięcie. **Commit, potem push** na `origin/main`. Naprawia do skutku. Po pushu czeka na CI GitHub i poprawia, aż zielone albo padnie godzina.
 4. Kolejny plaster tego modułu, potem kolejne Q z CURRENT (**oś leftoverów**, nie skip named park HITL) — aż do godziny.
 5. Po godzinie: nie zaczyna nowego planu ani plastra. Dokańcza rozgrzebane, puszcza, **raport**.
 
 Planowanie zostaje (delta, zakres, testy zanim kod). Znika tylko czekanie na kliknięcie.
 
-Strażnik co 15 minut (`/loop`, `loop-noc`): jeśli sesja umarła (brak bicia serca > 25 min) i jest przed godziną — wraca do CURRENT, nie do pamięci czatu. Jeśli właśnie trwa pytest/commit — budzik nic nie robi. Szablon: [NOC-LIVE.example.md](../state/NOC-LIVE.example.md). Żywy plik jest lokalny (gitignore), nie commitować.
+### Close → commit → push
+
+Bez `docs/_bench/cases/<ID>-*.md` dla plastra z CURRENT **zakaz** `git push` (pre-push padnie na `test_live_current_has_a_bench_case`). Kolejność: `factory_cycle.py --close` → commit z benchem → push. Gate/push: limit **20 min**; po timeoutie ubij osierocone `python`/`git` w **osobnym** oknie PowerShell, nie dokładaj wiszących shelli w Cursorze.
+
+### Strażnik (`loop-noc`)
+
+Co 15 minut (`/loop`, nazwa `loop-noc`) **w tej samej sesji Agent** co `/noc` — nie fire-and-forget `Task` z czatu-rodzica, który kończy turę.
+
+- `busy` + `last_beat` < 25 min → nic nie rób (pytest/commit żyje).
+- `last_beat` > 25 min **także przy `busy`** → sesja martwa: ubij orphan, `idle`, preflight, jeden cykl z CURRENT.
+- Szablon: [NOC-LIVE.example.md](../state/NOC-LIVE.example.md). Żywy plik lokalny (gitignore).
 
 ## Leftover ≠ skip
 
@@ -40,7 +50,7 @@ M-02 konsument, Auth0, portale — **live** tylko gdy CURRENT **wskazuje ten ID 
 
 Godzina, jeden plaster kodu, jeden `git push` na `origin/main` zostają.
 
-- **Koordynator** = ta sesja `/noc`: `CURRENT.md`, Alembic, push, raport.
+- **Koordynator** = ta sesja `/noc` (nie background-only subagent całego `/noc`): `CURRENT.md`, Alembic, push, raport, `loop-noc`.
 - **Warstwa 0:** w tej samej sesji wolno Task `explore`, pingi, `gh run watch`, `/loop`, oraz zapis **w git worktree** tylko `docs/deltas/open/**` po zielonym CI N. Przy `status: busy` zero drugiego zapisu w drzewie `main`.
 - **Warstwa 1 (opcjonalny drugi czat):** nie drugi `/noc`. `powershell -File scripts/noc-preflight.ps1 -Helper` z katalogu worktree. `writer_preflight.py --allow-noc-helper`. Nigdy `--allow-noc` na pomocniku. Nigdy `git push origin/main`.
 - Merge delty N+1: tylko koordynator, `status: idle`, CI zielone, `git merge --ff-only`. Konflikt = abort.
@@ -53,8 +63,10 @@ Godzina, jeden plaster kodu, jeden `git push` na `origin/main` zostają.
 - LLM nie liczy. `charge` = marża. Decimal.
 - ExtractionService nie importuje rates.
 - Brak `organization_id` / RLS / testu izolacji = nie push.
+- Brak bench `docs/_bench/cases/<ID>-*.md` po `factory_cycle --close` = nie push.
 - Brudne drzewo, rozjazd z origin, nie-main = preflight FAIL (koordynator).
 - Bez `--no-verify` i bez force-push.
+- Pełne `/noc` jako fire-and-forget background Task = zakaz.
 
 Zarys modułu: Plan rozbija na plastry i robi gęsty job operatora (ekran + baza + flagi w ustawieniach tam, gdzie da się wyciąć na produkcji). Nie 70 pustych szafek.
 
