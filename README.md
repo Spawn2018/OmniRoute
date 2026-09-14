@@ -88,9 +88,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **484.0** AI8.0 — HITL `style_cascade_mark`
-- **Etap:** Plan — po AI8.0. Następny = **AI8.1** STYLE FIDELITY (leftover) albo **AI5.0** `data_source` (park licencja).
-- **Następny:** **485.0** AI8.1 — plan STYLE FIDELITY SCORE (bramka 85%; nie scoring osoby)
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Etap:** Plaster — delta **485.0** zaakceptowana (`/noc 8`). Wolno `/plaster`.
+- **Następny:** **485.0** AI8.1 — HITL `style_fidelity_mark` (stancja bramki; nie score 85%)
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

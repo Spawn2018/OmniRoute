@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **484.0** AI8.0 — HITL `style_cascade_mark`. **Etap:** Plan — po AI8.0. Następny = **AI8.1** STYLE FIDELITY (leftover) albo **AI5.0** `data_source` (park licencja). **Następny:** **485.0** AI8.1 — plan STYLE FIDELITY SCORE (bramka 85%; nie scoring osoby) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **484.0** AI8.0 — HITL `style_cascade_mark`. **Etap:** Plaster — delta **485.0** zaakceptowana (`/noc 8`). Wolno `/plaster`. **Następny:** **485.0** AI8.1 — HITL `style_fidelity_mark` (stancja bramki; nie score 85%) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
