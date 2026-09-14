@@ -205,6 +205,7 @@ from app.api import (
     repair_playbooks,
     resources,
     rfid_marks,
+    risk_register_marks,
     role_view_marks,
     route_plan_marks,
     routing_guide_enforcements,
@@ -442,6 +443,7 @@ api_router.include_router(inventory_collateral_marks.router)
 api_router.include_router(ops_room_marks.router)
 api_router.include_router(line_impact_layer_marks.router)
 api_router.include_router(product_ticket_marks.router)
+api_router.include_router(risk_register_marks.router)
 api_router.include_router(customer_contracts.router)
 api_router.include_router(exchange_connectors.router)
 api_router.include_router(idp_connectors.router)

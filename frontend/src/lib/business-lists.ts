@@ -92,6 +92,10 @@ export const BUSINESS_LISTS = {
     route: "/product-ticket-marks",
     tableKey: "product_ticket_mark",
   },
+  riskRegisterMark: {
+    route: "/risk-register-marks",
+    tableKey: "risk_register_mark",
+  },
   loadOrderMark: { route: "/load-order-marks", tableKey: "load_order_mark" },
   loadPlanMark: { route: "/load-plan-marks", tableKey: "load_plan_mark" },
   routePlanMark: { route: "/route-plan-marks", tableKey: "route_plan_mark" },
@@ -465,6 +469,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/ops-room-marks",
   "/line-impact-layer-marks",
   "/product-ticket-marks",
+  "/risk-register-marks",
   "/load-order-marks",
   "/load-plan-marks",
   "/route-plan-marks",

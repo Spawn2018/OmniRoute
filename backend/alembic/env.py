@@ -122,6 +122,7 @@ from app.models.inventory_collateral_mark import InventoryCollateralMark  # noqa
 from app.models.ops_room_mark import OpsRoomMark  # noqa: F401
 from app.models.line_impact_layer_mark import LineImpactLayerMark  # noqa: F401
 from app.models.product_ticket_mark import ProductTicketMark  # noqa: F401
+from app.models.risk_register_mark import RiskRegisterMark  # noqa: F401
 from app.models.customer_contract import CustomerContract  # noqa: F401
 from app.models.tenant_contract_kek import TenantContractKek  # noqa: F401
 from app.models.visibility_connector import VisibilityConnector  # noqa: F401

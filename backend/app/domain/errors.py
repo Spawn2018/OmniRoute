@@ -918,6 +918,10 @@ class InvalidProductTicketMark(DomainError):
     """Plat-HD: HITL ticket produktu — nie CAPA / nie auto-naprawa / nie operator_notice."""
 
 
+class InvalidRiskRegisterMark(DomainError):
+    """AI9.2: HITL rejestr ryzyka — nie scoring osoby / nie L3 silnik."""
+
+
 class InvalidLoadPlanMark(DomainError):
     """G6: HITL znacznik planu załadunku — nie solver OR."""
 
