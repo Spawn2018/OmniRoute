@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **482.0** AI9.1 — HITL `automation_bias_mark`. **Etap:** Plan — po AI9.1. Następny = **AI8.2** brama L3 leftover (park silnik) albo **AI5.0** `data_source` (park licencja). `/noc 20` stop 20:00 — bez nowego plastra po godzinie. **Następny:** **483.0** AI8.2 — plan brama L3 (leftover; nie silnik L3) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **482.0** AI9.1 — HITL `automation_bias_mark`. **Etap:** Plan — delta **483.0** zaakceptowana (`/noc 20`). Wolno `/plaster`. **Następny:** **483.0** AI8.2 — HITL `l3_gate_mark` (checklista bramy L3) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
