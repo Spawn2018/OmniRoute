@@ -155,6 +155,7 @@ from app.api import (
     operational_exceptions,
     operator_decisions,
     operator_notices,
+    ops_room_marks,
     organization_calendars,
     organization_settings,
     otif_marks,
@@ -436,6 +437,7 @@ api_router.include_router(wms_flow_marks.router)
 api_router.include_router(rfid_marks.router)
 api_router.include_router(inventory_finance_marks.router)
 api_router.include_router(inventory_collateral_marks.router)
+api_router.include_router(ops_room_marks.router)
 api_router.include_router(customer_contracts.router)
 api_router.include_router(exchange_connectors.router)
 api_router.include_router(idp_connectors.router)

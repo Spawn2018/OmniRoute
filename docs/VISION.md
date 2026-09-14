@@ -125,6 +125,7 @@ zostają w badaniach `04`).
 | 2026-09-14 | BR1.2 plan (**476.0**): HITL `inventory_finance_mark` (valuation|aging|release|other). Wycena SQL / wartość Decimal / FK position·PO / live zastaw `REJECTED` na tym wierszu. |
 | 2026-09-14 | **476.0** `inventory_finance_mark` w kodzie (`CONFIRMED`, git). Następny = **BR1.3** zabezpieczenie na towarze (`REQUIREMENT`). Wycena SQL `REJECTED` na tym wierszu. |
 | 2026-09-14 | BR1.3 plan (**477.0**): HITL `inventory_collateral_mark` (pledge|lien|hold|other). FK position·PO / live zastaw / wartość `REJECTED` na tym wierszu. |
+| 2026-09-14 | **478.0** `ops_room_mark` w kodzie (`CONFIRMED`, git). Następny = **BR7.1** wpływ na linię (`REQUIREMENT`). N8 / widok sklejony / T8 live leftover. Drugi czat `REJECTED` na tym wierszu. |
 | 2026-09-14 | Plan **478.0** BR7.0 `ops_room_mark` (`REQUIREMENT`). `war_room_mark` zostaje. N8 / widok sklejony / T8 live leftover. Drugi czat `REJECTED` na tym wierszu. |
 | 2026-09-14 | **477.0** `inventory_collateral_mark` w kodzie (`CONFIRMED`, git). Następny = **BR7.0** sala operacyjna (`REQUIREMENT`). Live zastaw `REJECTED` na tym wierszu. |
 | 2026-09-13 | C.3 **Grupa 8**: help desk produktu (ticket → agent → akceptacja właściciela) + mobile całego OmniRoute. Leftover PLAN **Plat-HD** / **Mob**. Nie 468.0. |
@@ -1049,9 +1050,9 @@ bo bez ewidencji magazynowej nie ma zastawu na towarze.
 **Grupa 7 — Watch Tower jako produkt.**
 - **Graf skutku biznesowego** — kaskada do marży i gotówki (część B.6, punkt 6)
 - **Sala operacyjna (war room)** — katalog rodzaju incydentu `war_room_mark`
-  jest (`CONFIRMED`, 200.0). Plan HITL warstwy działającej `ops_room_mark`
-  (`REQUIREMENT`, 478.0). Leftover N8 / widok sklejony / T8 live (`REQUIREMENT`).
-  Drugi czat `REJECTED` na tym wierszu.
+  jest (`CONFIRMED`, 200.0). Katalog HITL warstwy działającej `ops_room_mark`
+  jest (`CONFIRMED`, 478.0). Leftover N8 / widok sklejony / T8 live
+  (`REQUIREMENT`). Drugi czat `REJECTED` na tym wierszu.
 - **Wpływ na linię produkcyjną** — dziś tylko katalog znacznika
 
 **Grupa 8 — help desk produktu i sterowanie z telefonu.**

@@ -110,6 +110,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **202.0 leftover:** zdania z agregatów SQL (117.0 / M-15); suma LLM / EBITDA; ranking W5 + auto-award. Tu tylko `executive_mark` HITL `question_kind` + `source_ref`. Nie suma. Nie narracja.
 - **201.0 leftover:** graf / FK na `entity_event`; pgvector; RAG na stawkach / umowach CI. Tu tylko `memory_edge` HITL `edge_kind` + `source_ref`. Nie wyszukiwanie. Nie wektor.
 - **200.0 leftover:** koalescencja N8; drugi czat; T8 `confirmed` z live API; widok sklejający M-37 + pending S11 + V6 + mapa. Tu tylko `war_room_mark` HITL `incident_kind` + `source_ref`. Nie scalanie. Nie czat.
+- **478.0 leftover:** N8 / widok sklejony / T8 live zostają (BR7.0 dodał tylko HITL `ops_room_mark` layer_kind). Nie drugi czat.
 - **199.0 leftover:** `plan_snapshot` DONE 265.0. Zostaje 8 silników fizyki; V7 tacho TO_VERIFY; V8 what-if. Tu tylko `twin_mark` HITL `twin_kind` + `source_ref`. Nie fizyka. Nie kółka G2.20.
 - **198.0 leftover:** silnik stock→produkcja→sprzedaż→EBITDA; `sla_clause` / kara CI5; what-if V8; scoring osoby; klejenie CT2. Tu tylko `tower_impact` HITL `chain_stage` + `contract_data_status` + `source_ref`. Nie silnik. Nie kara.
 - **196.0 leftover:** N3 countdown remaining + szkic `charge`; `demurrage_free_days` na `container`; blank sailing / congestion / Gate OS; live HTTP armatora. Tu tylko `free_time_clock` HITL `clock_kind` + `free_days` + `source_ref`. Nie odliczanie. Nie marża.

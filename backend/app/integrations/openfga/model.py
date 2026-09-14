@@ -170,6 +170,7 @@ def _organization_br_catalog_relations() -> dict[str, Userset]:
         "can_manage_rfid_marks": _member(),
         "can_manage_inventory_finance_marks": _member(),
         "can_manage_inventory_collateral_marks": _member(),
+        "can_manage_ops_room_marks": _member(),
     }
 
 

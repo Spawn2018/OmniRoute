@@ -906,6 +906,10 @@ class InvalidInventoryCollateralMark(DomainError):
     """BR1.3: HITL zabezpieczenie na towarze — nie FK pozycji / nie live zastaw."""
 
 
+class InvalidOpsRoomMark(DomainError):
+    """BR7.0: HITL warstwa sali operacyjnej — nie N8 / nie widok sklejony."""
+
+
 class InvalidLoadPlanMark(DomainError):
     """G6: HITL znacznik planu załadunku — nie solver OR."""
 

@@ -161,6 +161,7 @@ import { Route as OceanFeederMarksRouteImport } from './routes/ocean-feeder-mark
 import { Route as OffboardingMarksRouteImport } from './routes/offboarding-marks'
 import { Route as OogMarksRouteImport } from './routes/oog-marks'
 import { Route as OogPermitMarksRouteImport } from './routes/oog-permit-marks'
+import { Route as OpsRoomMarksRouteImport } from './routes/ops-room-marks'
 import { Route as OrganizationSettingsRouteImport } from './routes/organization-settings'
 import { Route as OtifMarksRouteImport } from './routes/otif-marks'
 import { Route as OutboxRouteImport } from './routes/outbox'
@@ -1045,6 +1046,11 @@ const OogPermitMarksRoute = OogPermitMarksRouteImport.update({
   path: '/oog-permit-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OpsRoomMarksRoute = OpsRoomMarksRouteImport.update({
+  id: '/ops-room-marks',
+  path: '/ops-room-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OrganizationSettingsRoute = OrganizationSettingsRouteImport.update({
   id: '/organization-settings',
   path: '/organization-settings',
@@ -1810,6 +1816,7 @@ export interface FileRoutesByFullPath {
   '/offboarding-marks': typeof OffboardingMarksRoute
   '/oog-marks': typeof OogMarksRoute
   '/oog-permit-marks': typeof OogPermitMarksRoute
+  '/ops-room-marks': typeof OpsRoomMarksRoute
   '/organization-settings': typeof OrganizationSettingsRoute
   '/otif-marks': typeof OtifMarksRoute
   '/outbox': typeof OutboxRoute
@@ -2086,6 +2093,7 @@ export interface FileRoutesByTo {
   '/offboarding-marks': typeof OffboardingMarksRoute
   '/oog-marks': typeof OogMarksRoute
   '/oog-permit-marks': typeof OogPermitMarksRoute
+  '/ops-room-marks': typeof OpsRoomMarksRoute
   '/organization-settings': typeof OrganizationSettingsRoute
   '/otif-marks': typeof OtifMarksRoute
   '/outbox': typeof OutboxRoute
@@ -2363,6 +2371,7 @@ export interface FileRoutesById {
   '/offboarding-marks': typeof OffboardingMarksRoute
   '/oog-marks': typeof OogMarksRoute
   '/oog-permit-marks': typeof OogPermitMarksRoute
+  '/ops-room-marks': typeof OpsRoomMarksRoute
   '/organization-settings': typeof OrganizationSettingsRoute
   '/otif-marks': typeof OtifMarksRoute
   '/outbox': typeof OutboxRoute
@@ -2641,6 +2650,7 @@ export interface FileRouteTypes {
     | '/offboarding-marks'
     | '/oog-marks'
     | '/oog-permit-marks'
+    | '/ops-room-marks'
     | '/organization-settings'
     | '/otif-marks'
     | '/outbox'
@@ -2917,6 +2927,7 @@ export interface FileRouteTypes {
     | '/offboarding-marks'
     | '/oog-marks'
     | '/oog-permit-marks'
+    | '/ops-room-marks'
     | '/organization-settings'
     | '/otif-marks'
     | '/outbox'
@@ -3193,6 +3204,7 @@ export interface FileRouteTypes {
     | '/offboarding-marks'
     | '/oog-marks'
     | '/oog-permit-marks'
+    | '/ops-room-marks'
     | '/organization-settings'
     | '/otif-marks'
     | '/outbox'
@@ -3470,6 +3482,7 @@ export interface RootRouteChildren {
   OffboardingMarksRoute: typeof OffboardingMarksRoute
   OogMarksRoute: typeof OogMarksRoute
   OogPermitMarksRoute: typeof OogPermitMarksRoute
+  OpsRoomMarksRoute: typeof OpsRoomMarksRoute
   OrganizationSettingsRoute: typeof OrganizationSettingsRoute
   OtifMarksRoute: typeof OtifMarksRoute
   OutboxRoute: typeof OutboxRoute
@@ -4660,6 +4673,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OogPermitMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ops-room-marks': {
+      id: '/ops-room-marks'
+      path: '/ops-room-marks'
+      fullPath: '/ops-room-marks'
+      preLoaderRoute: typeof OpsRoomMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/organization-settings': {
       id: '/organization-settings'
       path: '/organization-settings'
@@ -5670,6 +5690,7 @@ const rootRouteChildren: RootRouteChildren = {
   OffboardingMarksRoute: OffboardingMarksRoute,
   OogMarksRoute: OogMarksRoute,
   OogPermitMarksRoute: OogPermitMarksRoute,
+  OpsRoomMarksRoute: OpsRoomMarksRoute,
   OrganizationSettingsRoute: OrganizationSettingsRoute,
   OtifMarksRoute: OtifMarksRoute,
   OutboxRoute: OutboxRoute,

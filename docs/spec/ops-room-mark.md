@@ -8,4 +8,4 @@ shift / board / escalation. Nie N8. Nie drugi czat. Nie widok sklejony.
 - Unique `(organization_id, mark_code)` i `(organization_id, source_ref)`
 - Job: `/ops-room-marks`
 
-Delta: [478.0](../deltas/open/478.0.md) (po zamknięciu → archived).
+Delta: [478.0](../deltas/archived/478.0-ops-room-mark.md).

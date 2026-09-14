@@ -138,6 +138,7 @@ modules =
     app.services.rfid_marks
     app.services.inventory_finance_marks
     app.services.inventory_collateral_marks
+    app.services.ops_room_marks
     app.services.load_order_marks
     app.services.load_plan_marks
     app.services.cmms_marks
@@ -683,6 +684,9 @@ forbidden_modules =
     app.services.inventory_collateral_marks
     app.repositories.inventory_collateral_marks
     app.models.inventory_collateral_mark
+    app.services.ops_room_marks
+    app.repositories.ops_room_marks
+    app.models.ops_room_mark
     app.services.load_order_marks
     app.repositories.load_order_marks
     app.models.load_order_mark
