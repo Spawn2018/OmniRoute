@@ -159,6 +159,17 @@ def _organization_ci_catalog_relations() -> dict[str, Userset]:
     }
 
 
+def _organization_br_catalog_relations() -> dict[str, Userset]:
+    return {
+        "can_manage_oog_permit_marks": _member(),
+        "can_manage_lcl_console_marks": _member(),
+        "can_manage_nac_marks": _member(),
+        "can_manage_silk_corridor_marks": _member(),
+        "can_manage_po_financing_marks": _member(),
+        "can_manage_wms_flow_marks": _member(),
+    }
+
+
 def _organization_g_catalog_relations() -> dict[str, Userset]:
     return {
         "can_manage_crm_leads": _member(),
@@ -166,11 +177,6 @@ def _organization_g_catalog_relations() -> dict[str, Userset]:
         "can_manage_lc_checklists": _member(),
         "can_manage_ncts_drafts": _member(),
         "can_manage_oog_marks": _member(),
-        "can_manage_oog_permit_marks": _member(),
-        "can_manage_lcl_console_marks": _member(),
-        "can_manage_nac_marks": _member(),
-        "can_manage_silk_corridor_marks": _member(),
-        "can_manage_po_financing_marks": _member(),
         "can_manage_load_plan_marks": _member(),
         "can_manage_cmms_marks": _member(),
         "can_manage_legal_hold_marks": _member(),
@@ -335,6 +341,7 @@ def _organization_relations() -> dict[str, Userset]:
         **_organization_ops_catalog_relations(),
         **_organization_ai_catalog_relations(),
         **_organization_ci_catalog_relations(),
+        **_organization_br_catalog_relations(),
         **_organization_g_catalog_relations(),
         **_organization_exp2_catalog_relations(),
         **_organization_tender_relations(),

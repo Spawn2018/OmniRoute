@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **474.0** **BR1.0** WMS — HITL `wms_flow_mark` (katalog przepływu magazynowego)
+**Następny:** **BR1.1** RFID i identyfikacja automatyczna — wskaż Q z [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Kolejka
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -736,7 +736,7 @@ Dump `03` / `04b`: WMS i BR6.2 evidenced; p44/LSP44 = dwie skóry jeden OpenAPI;
 
 | ID | Co | Status | Uwagi |
 |---|---|---|---|
-| BR1.0 | WMS: przyjęcie, lokalizacja, kompletacja, wydanie, inwentaryzacja | rozstrzygnięte: **w zakresie** | **474.0** Plan HITL `wms_flow_mark`; leftover live WMS HTTP · RFID · qty · lokalizacja bin |
+| BR1.0 | WMS: przyjęcie, lokalizacja, kompletacja, wydanie, inwentaryzacja | rozstrzygnięte: **w zakresie** | **474.0** DONE HITL `wms_flow_mark`; leftover live WMS HTTP · RFID · qty · lokalizacja bin |
 | BR1.1 | RFID i identyfikacja automatyczna | po BR1.0 | czytniki, bramki, znakowanie |
 | BR1.2 | zapas jako obiekt finansowy: wycena, wiekowanie, Inventory Release | po BR1.0 | bez tego nie ma zastawu na towarze |
 | BR2.0 | `position_event` — pozycja jako osobny byt | **start HHL** (po leftover V5) | **457.0** DONE HITL `position_event`; leftover: lat/lng · poll |
@@ -858,13 +858,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

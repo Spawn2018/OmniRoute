@@ -119,6 +119,7 @@ zostają w badaniach `04`).
 | 2026-09-14 | BR5.2 plan (**473.0**): rozszerzenie CHECK `exchange_connector.system_kind` (timocom|teleroute|transporeon|other). Live HTTP / auto-post / nowa tabela `REJECTED` na tym wierszu. |
 | 2026-09-14 | **473.0** CHECK `exchange_connector` rozszerzony (`CONFIRMED`, git). Fala BR pin do BR5.2 zamknięta. Live giełda HTTP / wymiana ofert `REJECTED` na tym wierszu. |
 | 2026-09-14 | BR1.0 plan (**474.0**): HITL `wms_flow_mark` (receipt|location|pick|ship|count|other). Live WMS HTTP / RFID / qty / FK bin `REJECTED` na tym wierszu. |
+| 2026-09-14 | **474.0** `wms_flow_mark` w kodzie (`CONFIRMED`, git). Następny = **BR1.1** RFID (`REQUIREMENT`). Live WMS HTTP / qty `REJECTED` na tym wierszu. |
 | 2026-09-13 | C.3 **Grupa 8**: help desk produktu (ticket → agent → akceptacja właściciela) + mobile całego OmniRoute. Leftover PLAN **Plat-HD** / **Mob**. Nie 468.0. |
 | 2026-09-13 | D.7 readiness (Murphy 2026 + audyt PDF/czat): Three-Bucket, Definition Gap, szwy eskalacji = leftover. Mission Control / wektor / druga warstwa semantyczna / Bertha `REJECTED`. |
 | 2026-09-13 | Ciało C.3 Grupa 8 + D.7 + skrót `03` B.4–B.6 w A.2. E.3: HC-04 i FK `plan_snapshot` zamknięte. [WYCOFANE 2026-09-13: „B.4–B.6 nietknięte w dumpie” — skrót jest w kanonie]. |
@@ -914,9 +915,9 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | nazwy z PDF-ów bez wiersza w planie | **136** (z czego 28 to aliasy) |
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
-Ostatni ukończony plaster: **473.0** (rozszerzenie CHECK `exchange_connector`).
+Ostatni ukończony plaster: **474.0** (HITL `wms_flow_mark`).
 Następny = wskazanie Q z pin **2026-09-08c** — nie zgaduj (`REQUIREMENT`).
-AI1.0–AI1.4 oraz 443.0–473.0 są w kodzie (`CONFIRMED`); `data_source`
+AI1.0–AI1.4 oraz 443.0–474.0 są w kodzie (`CONFIRMED`); `data_source`
 zostaje w AI5 (`REQUIREMENT`). Teza B.1 zostaje: szerokość katalogów nie zastępuje pomiaru.
 
 ## C.2 Bliźniaki — scalona taksonomia

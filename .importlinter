@@ -134,6 +134,7 @@ modules =
     app.services.nac_marks
     app.services.silk_corridor_marks
     app.services.po_financing_marks
+    app.services.wms_flow_marks
     app.services.load_order_marks
     app.services.load_plan_marks
     app.services.cmms_marks
@@ -665,8 +666,11 @@ forbidden_modules =
     app.repositories.silk_corridor_marks
     app.models.silk_corridor_mark
     app.services.po_financing_marks
+    app.services.wms_flow_marks
     app.repositories.po_financing_marks
     app.models.po_financing_mark
+    app.repositories.wms_flow_marks
+    app.models.wms_flow_mark
     app.services.load_order_marks
     app.repositories.load_order_marks
     app.models.load_order_mark

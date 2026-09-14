@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **473.0** BR5.2 — rozszerzenie CHECK `exchange_connector`
-- **Etap:** Plaster — delta **474.0** zaakceptowana (`/noc`). Wolno `/plaster`.
-- **Następny:** **474.0** **BR1.0** WMS — HITL `wms_flow_mark` (katalog przepływu magazynowego)
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **474.0** BR1.0 — HITL `wms_flow_mark`
+- **Etap:** Plan — kolejka po BR1.0 pin **2026-09-08c** (nie zgaduj Q). Zero kodu bez delty.
+- **Następny:** **BR1.1** RFID i identyfikacja automatyczna — wskaż Q z [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Kolejka
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

@@ -890,6 +890,10 @@ class InvalidPoFinancingMark(DomainError):
     """BR5.1: HITL PO Financing — nie FK purchase_order / nie wycena zapasu."""
 
 
+class InvalidWmsFlowMark(DomainError):
+    """BR1.0: HITL przepływ WMS — nie live WMS / nie qty / nie RFID."""
+
+
 class InvalidLoadPlanMark(DomainError):
     """G6: HITL znacznik planu załadunku — nie solver OR."""
 

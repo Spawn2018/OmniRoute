@@ -7,4 +7,4 @@ Katalog znacznika przepływu WMS per tenant. HITL rodzaj operacji magazynowej. N
 - Unique `(organization_id, mark_code)` i `(organization_id, source_ref)`
 - Job: `/wms-flow-marks`
 
-Delta: [474.0](../deltas/open/474.0.md).
+Delta: [474.0](../deltas/archived/474.0-wms-flow-mark.md).

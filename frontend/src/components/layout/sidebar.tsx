@@ -104,6 +104,7 @@ const NAV = [
   { to: "/silk-corridor-marks", label: "Jedwabny Szlak" },
   { to: "/factoring-connectors", label: "Faktoring" },
   { to: "/po-financing-marks", label: "PO Financing" },
+  { to: "/wms-flow-marks", label: "Przepływ WMS" },
   { to: "/position-events", label: "Zdarzenie pozycji" },
   { to: "/telematics-devices", label: "Urządzenie telematyczne" },
   { to: "/tracking-consents", label: "Zgoda na śledzenie" },

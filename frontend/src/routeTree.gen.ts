@@ -276,6 +276,7 @@ import { Route as WatchtowerRouteImport } from './routes/watchtower'
 import { Route as WeatherObservationsRouteImport } from './routes/weather-observations'
 import { Route as WebhookOutboxMarksRouteImport } from './routes/webhook-outbox-marks'
 import { Route as WhatIfMarksRouteImport } from './routes/what-if-marks'
+import { Route as WmsFlowMarksRouteImport } from './routes/wms-flow-marks'
 import { Route as WorkingCapitalMarksRouteImport } from './routes/working-capital-marks'
 import { Route as YardMarksRouteImport } from './routes/yard-marks'
 import { Route as TenancyUsersRouteImport } from './routes/tenancy.users'
@@ -1616,6 +1617,11 @@ const WhatIfMarksRoute = WhatIfMarksRouteImport.update({
   path: '/what-if-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WmsFlowMarksRoute = WmsFlowMarksRouteImport.update({
+  id: '/wms-flow-marks',
+  path: '/wms-flow-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WorkingCapitalMarksRoute = WorkingCapitalMarksRouteImport.update({
   id: '/working-capital-marks',
   path: '/working-capital-marks',
@@ -1900,6 +1906,7 @@ export interface FileRoutesByFullPath {
   '/weather-observations': typeof WeatherObservationsRoute
   '/webhook-outbox-marks': typeof WebhookOutboxMarksRoute
   '/what-if-marks': typeof WhatIfMarksRoute
+  '/wms-flow-marks': typeof WmsFlowMarksRoute
   '/working-capital-marks': typeof WorkingCapitalMarksRoute
   '/yard-marks': typeof YardMarksRoute
   '/tenancy/users': typeof TenancyUsersRoute
@@ -2172,6 +2179,7 @@ export interface FileRoutesByTo {
   '/weather-observations': typeof WeatherObservationsRoute
   '/webhook-outbox-marks': typeof WebhookOutboxMarksRoute
   '/what-if-marks': typeof WhatIfMarksRoute
+  '/wms-flow-marks': typeof WmsFlowMarksRoute
   '/working-capital-marks': typeof WorkingCapitalMarksRoute
   '/yard-marks': typeof YardMarksRoute
   '/tenancy/users': typeof TenancyUsersRoute
@@ -2445,6 +2453,7 @@ export interface FileRoutesById {
   '/weather-observations': typeof WeatherObservationsRoute
   '/webhook-outbox-marks': typeof WebhookOutboxMarksRoute
   '/what-if-marks': typeof WhatIfMarksRoute
+  '/wms-flow-marks': typeof WmsFlowMarksRoute
   '/working-capital-marks': typeof WorkingCapitalMarksRoute
   '/yard-marks': typeof YardMarksRoute
   '/tenancy/users': typeof TenancyUsersRoute
@@ -2719,6 +2728,7 @@ export interface FileRouteTypes {
     | '/weather-observations'
     | '/webhook-outbox-marks'
     | '/what-if-marks'
+    | '/wms-flow-marks'
     | '/working-capital-marks'
     | '/yard-marks'
     | '/tenancy/users'
@@ -2991,6 +3001,7 @@ export interface FileRouteTypes {
     | '/weather-observations'
     | '/webhook-outbox-marks'
     | '/what-if-marks'
+    | '/wms-flow-marks'
     | '/working-capital-marks'
     | '/yard-marks'
     | '/tenancy/users'
@@ -3263,6 +3274,7 @@ export interface FileRouteTypes {
     | '/weather-observations'
     | '/webhook-outbox-marks'
     | '/what-if-marks'
+    | '/wms-flow-marks'
     | '/working-capital-marks'
     | '/yard-marks'
     | '/tenancy/users'
@@ -3536,6 +3548,7 @@ export interface RootRouteChildren {
   WeatherObservationsRoute: typeof WeatherObservationsRoute
   WebhookOutboxMarksRoute: typeof WebhookOutboxMarksRoute
   WhatIfMarksRoute: typeof WhatIfMarksRoute
+  WmsFlowMarksRoute: typeof WmsFlowMarksRoute
   WorkingCapitalMarksRoute: typeof WorkingCapitalMarksRoute
   YardMarksRoute: typeof YardMarksRoute
   TenancyUsersRoute: typeof TenancyUsersRoute
@@ -5412,6 +5425,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WhatIfMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/wms-flow-marks': {
+      id: '/wms-flow-marks'
+      path: '/wms-flow-marks'
+      fullPath: '/wms-flow-marks'
+      preLoaderRoute: typeof WmsFlowMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/working-capital-marks': {
       id: '/working-capital-marks'
       path: '/working-capital-marks'
@@ -5704,6 +5724,7 @@ const rootRouteChildren: RootRouteChildren = {
   WeatherObservationsRoute: WeatherObservationsRoute,
   WebhookOutboxMarksRoute: WebhookOutboxMarksRoute,
   WhatIfMarksRoute: WhatIfMarksRoute,
+  WmsFlowMarksRoute: WmsFlowMarksRoute,
   WorkingCapitalMarksRoute: WorkingCapitalMarksRoute,
   YardMarksRoute: YardMarksRoute,
   TenancyUsersRoute: TenancyUsersRoute,
