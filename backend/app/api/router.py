@@ -6,6 +6,7 @@ from app.api import (
     aeo_dossier_marks,
     air_ra3_marks,
     asns,
+    automation_bias_marks,
     autonomy_levels,
     bank_payments,
     benefit_ledgers,
@@ -444,6 +445,7 @@ api_router.include_router(ops_room_marks.router)
 api_router.include_router(line_impact_layer_marks.router)
 api_router.include_router(product_ticket_marks.router)
 api_router.include_router(risk_register_marks.router)
+api_router.include_router(automation_bias_marks.router)
 api_router.include_router(customer_contracts.router)
 api_router.include_router(exchange_connectors.router)
 api_router.include_router(idp_connectors.router)

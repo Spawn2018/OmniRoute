@@ -922,6 +922,10 @@ class InvalidRiskRegisterMark(DomainError):
     """AI9.2: HITL rejestr ryzyka — nie scoring osoby / nie L3 silnik."""
 
 
+class InvalidAutomationBiasMark(DomainError):
+    """AI9.1: HITL mitygacja automation bias — nie ui-04 przebudowa / nie auto-accept."""
+
+
 class InvalidLoadPlanMark(DomainError):
     """G6: HITL znacznik planu załadunku — nie solver OR."""
 

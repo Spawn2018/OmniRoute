@@ -112,6 +112,7 @@ const NAV = [
   { to: "/line-impact-layer-marks", label: "Warstwa liczona linii" },
   { to: "/product-ticket-marks", label: "Ticket produktu" },
   { to: "/risk-register-marks", label: "Rejestr ryzyka" },
+  { to: "/automation-bias-marks", label: "Automation bias" },
   { to: "/position-events", label: "Zdarzenie pozycji" },
   { to: "/telematics-devices", label: "Urządzenie telematyczne" },
   { to: "/tracking-consents", label: "Zgoda na śledzenie" },

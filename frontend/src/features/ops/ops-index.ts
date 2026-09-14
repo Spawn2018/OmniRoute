@@ -649,6 +649,11 @@ export const OPS_JOBS = [
     job: "katalog risk_register_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.automationBiasMark.route,
+    label: "Automation bias",
+    job: "katalog automation_bias_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.loadOrderMark.route,
     label: "Kolejność załadunku",
     job: "katalog load_order_mark HITL",
@@ -1675,6 +1680,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "479.0": "/line-impact-layer-marks",
   "480.0": "/product-ticket-marks",
   "481.0": "/risk-register-marks",
+  "482.0": "/automation-bias-marks",
   "267.0": "/lane-kms",
   "268.0": "/erp-connectors",
   "269.0": "/terminal-slot-connectors",

@@ -17,6 +17,7 @@ import { Route as AiRouteImport } from './routes/ai'
 import { Route as AirRouteImport } from './routes/air'
 import { Route as AirRa3MarksRouteImport } from './routes/air-ra3-marks'
 import { Route as AsnsRouteImport } from './routes/asns'
+import { Route as AutomationBiasMarksRouteImport } from './routes/automation-bias-marks'
 import { Route as AutonomyLevelsRouteImport } from './routes/autonomy-levels'
 import { Route as BenefitLedgersRouteImport } from './routes/benefit-ledgers'
 import { Route as BidDecisionMarksRouteImport } from './routes/bid-decision-marks'
@@ -326,6 +327,11 @@ const AirRa3MarksRoute = AirRa3MarksRouteImport.update({
 const AsnsRoute = AsnsRouteImport.update({
   id: '/asns',
   path: '/asns',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AutomationBiasMarksRoute = AutomationBiasMarksRouteImport.update({
+  id: '/automation-bias-marks',
+  path: '/automation-bias-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AutonomyLevelsRoute = AutonomyLevelsRouteImport.update({
@@ -1690,6 +1696,7 @@ export interface FileRoutesByFullPath {
   '/air': typeof AirRoute
   '/air-ra3-marks': typeof AirRa3MarksRoute
   '/asns': typeof AsnsRoute
+  '/automation-bias-marks': typeof AutomationBiasMarksRoute
   '/autonomy-levels': typeof AutonomyLevelsRoute
   '/benefit-ledgers': typeof BenefitLedgersRoute
   '/bid-decision-marks': typeof BidDecisionMarksRoute
@@ -1970,6 +1977,7 @@ export interface FileRoutesByTo {
   '/air': typeof AirRoute
   '/air-ra3-marks': typeof AirRa3MarksRoute
   '/asns': typeof AsnsRoute
+  '/automation-bias-marks': typeof AutomationBiasMarksRoute
   '/autonomy-levels': typeof AutonomyLevelsRoute
   '/benefit-ledgers': typeof BenefitLedgersRoute
   '/bid-decision-marks': typeof BidDecisionMarksRoute
@@ -2251,6 +2259,7 @@ export interface FileRoutesById {
   '/air': typeof AirRoute
   '/air-ra3-marks': typeof AirRa3MarksRoute
   '/asns': typeof AsnsRoute
+  '/automation-bias-marks': typeof AutomationBiasMarksRoute
   '/autonomy-levels': typeof AutonomyLevelsRoute
   '/benefit-ledgers': typeof BenefitLedgersRoute
   '/bid-decision-marks': typeof BidDecisionMarksRoute
@@ -2533,6 +2542,7 @@ export interface FileRouteTypes {
     | '/air'
     | '/air-ra3-marks'
     | '/asns'
+    | '/automation-bias-marks'
     | '/autonomy-levels'
     | '/benefit-ledgers'
     | '/bid-decision-marks'
@@ -2813,6 +2823,7 @@ export interface FileRouteTypes {
     | '/air'
     | '/air-ra3-marks'
     | '/asns'
+    | '/automation-bias-marks'
     | '/autonomy-levels'
     | '/benefit-ledgers'
     | '/bid-decision-marks'
@@ -3093,6 +3104,7 @@ export interface FileRouteTypes {
     | '/air'
     | '/air-ra3-marks'
     | '/asns'
+    | '/automation-bias-marks'
     | '/autonomy-levels'
     | '/benefit-ledgers'
     | '/bid-decision-marks'
@@ -3374,6 +3386,7 @@ export interface RootRouteChildren {
   AirRoute: typeof AirRoute
   AirRa3MarksRoute: typeof AirRa3MarksRoute
   AsnsRoute: typeof AsnsRoute
+  AutomationBiasMarksRoute: typeof AutomationBiasMarksRoute
   AutonomyLevelsRoute: typeof AutonomyLevelsRoute
   BenefitLedgersRoute: typeof BenefitLedgersRoute
   BidDecisionMarksRoute: typeof BidDecisionMarksRoute
@@ -3702,6 +3715,13 @@ declare module '@tanstack/react-router' {
       path: '/asns'
       fullPath: '/asns'
       preLoaderRoute: typeof AsnsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/automation-bias-marks': {
+      id: '/automation-bias-marks'
+      path: '/automation-bias-marks'
+      fullPath: '/automation-bias-marks'
+      preLoaderRoute: typeof AutomationBiasMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/autonomy-levels': {
@@ -5606,6 +5626,7 @@ const rootRouteChildren: RootRouteChildren = {
   AirRoute: AirRoute,
   AirRa3MarksRoute: AirRa3MarksRoute,
   AsnsRoute: AsnsRoute,
+  AutomationBiasMarksRoute: AutomationBiasMarksRoute,
   AutonomyLevelsRoute: AutonomyLevelsRoute,
   BenefitLedgersRoute: BenefitLedgersRoute,
   BidDecisionMarksRoute: BidDecisionMarksRoute,
