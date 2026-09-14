@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **478.0** BR7.0 — HITL `ops_room_mark`. **Etap:** Plan — kolejka po BR7.0 pin **2026-09-08c** (nie zgaduj Q). Zero kodu bez delty. **Następny:** **BR7.1** wpływ na linię produkcyjną — warstwa liczona — wskaż Q z [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Kolejka Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **478.0** BR7.0 — HITL `ops_room_mark`. **Etap:** Plan — delta **479.0** zaakceptowana (`/noc 20`). Wolno `/plaster`. **Następny:** **479.0** BR7.1 — HITL `line_impact_layer_mark` (warstwa liczona wpływu na linię) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

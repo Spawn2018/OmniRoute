@@ -88,8 +88,8 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **478.0** BR7.0 — HITL `ops_room_mark`
-- **Etap:** Plan — kolejka po BR7.0 pin **2026-09-08c** (nie zgaduj Q). Zero kodu bez delty.
-- **Następny:** **BR7.1** wpływ na linię produkcyjną — warstwa liczona — wskaż Q z [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Kolejka
+- **Etap:** Plan — delta **479.0** zaakceptowana (`/noc 20`). Wolno `/plaster`.
+- **Następny:** **479.0** BR7.1 — HITL `line_impact_layer_mark` (warstwa liczona wpływu na linię)
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

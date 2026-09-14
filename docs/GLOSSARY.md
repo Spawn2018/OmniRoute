@@ -34,6 +34,7 @@ kolumn. Nie 468.0.
 | poziom autonomii | autonomy_level | AI1.4 HITL otwarty słownik level_code; nie CHECK; nie FK klienta |
 | sala kryzysowa | war_room_mark | W2 HITL 200.0 rodzaj incydentu; nie N8; nie drugi czat; nie T8 API |
 | sala operacyjna | ops_room_mark | BR7.0 HITL warstwa działająca (shift/board/escalation); nie N8; nie widok sklejony |
+| warstwa liczona linii | line_impact_layer_mark | BR7.1 HITL scored/forecast/actual; nie SQL EBITDA; nie plant live |
 | krawędź pamięci | memory_edge | W3 HITL 201.0 rodzaj krawędzi; nie RAG; nie graf na entity_event |
 | pytanie zarządu | executive_mark | W4 HITL 202.0 rodzaj pytania; nie suma LLM; nie narracja SQL |
 | oś rankingu | rank_mark | W5 HITL 203.0 oś zakupu; nie auto-award; nie N szkiców |
