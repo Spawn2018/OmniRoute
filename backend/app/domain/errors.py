@@ -894,6 +894,10 @@ class InvalidWmsFlowMark(DomainError):
     """BR1.0: HITL przepływ WMS — nie live WMS / nie qty / nie RFID."""
 
 
+class InvalidRfidMark(DomainError):
+    """BR1.1: HITL RFID — nie live poll / nie EPC / nie FK bin."""
+
+
 class InvalidLoadPlanMark(DomainError):
     """G6: HITL znacznik planu załadunku — nie solver OR."""
 

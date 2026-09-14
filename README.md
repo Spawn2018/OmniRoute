@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **474.0** BR1.0 — HITL `wms_flow_mark`
-- **Etap:** Plan — delta **475.0** zaakceptowana, wolno `/plaster`. Pin **2026-09-08c**.
-- **Następny:** **475.0** BR1.1 — HITL `rfid_mark` (plaster)
+- **Ostatni plaster:** **475.0** BR1.1 — HITL `rfid_mark`
+- **Etap:** Plan — kolejka po BR1.1 pin **2026-09-08c** (nie zgaduj Q). Zero kodu bez delty.
+- **Następny:** **BR1.2** zapas jako obiekt finansowy — wskaż Q z [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Kolejka
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

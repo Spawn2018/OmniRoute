@@ -875,6 +875,7 @@
 
 - 2026-09-13T19:50:00Z | 467.0 | oog_permit_mark | DONE | HITL catalog permit_kind permit/pilot/route/other; bez wymiarùw / live zezwolenia
 
+- 2026-09-14T10:00:00Z | 475.0 | rfid_mark | DONE | HITL catalog rfid_kind reader/gate/tag/other; bez live poll / EPC / FK bin
 - 2026-09-14T09:00:00Z | 474.0 | wms_flow_mark | DONE | HITL catalog flow_kind receipt/location/pick/ship/count/other; bez live WMS / RFID / qty
 - 2026-09-14T04:50:00Z | 473.0 | exchange_connector kinds | DONE | ALTER CHECK system_kind P0; bez live HTTP / auto-post / nowa tabela
 - 2026-09-14T03:45:00Z | 472.0 | po_financing_mark | DONE | HITL catalog financing_kind po/release/advance/other; bez FK purchase_order / wycena zapasu

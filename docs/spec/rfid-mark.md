@@ -7,4 +7,4 @@ Katalog znacznika RFID per tenant. HITL czytnik, bramka lub znakowanie. Nie live
 - Unique `(organization_id, mark_code)` i `(organization_id, source_ref)`
 - Job: `/rfid-marks`
 
-Delta: [475.0](../deltas/open/475.0.md).
+Delta: [475.0](../deltas/archived/475.0-rfid-mark.md).

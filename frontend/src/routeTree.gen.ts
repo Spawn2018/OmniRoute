@@ -206,6 +206,7 @@ import { Route as RegistryPollMarksRouteImport } from './routes/registry-poll-ma
 import { Route as RegulatoryRadarMarksRouteImport } from './routes/regulatory-radar-marks'
 import { Route as RemediationOptionsRouteImport } from './routes/remediation-options'
 import { Route as RepairPlaybooksRouteImport } from './routes/repair-playbooks'
+import { Route as RfidMarksRouteImport } from './routes/rfid-marks'
 import { Route as RoadRouteImport } from './routes/road'
 import { Route as RoleViewMarksRouteImport } from './routes/role-view-marks'
 import { Route as RolloutRouteImport } from './routes/rollout'
@@ -1266,6 +1267,11 @@ const RepairPlaybooksRoute = RepairPlaybooksRouteImport.update({
   path: '/repair-playbooks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RfidMarksRoute = RfidMarksRouteImport.update({
+  id: '/rfid-marks',
+  path: '/rfid-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RoadRoute = RoadRouteImport.update({
   id: '/road',
   path: '/road',
@@ -1836,6 +1842,7 @@ export interface FileRoutesByFullPath {
   '/regulatory-radar-marks': typeof RegulatoryRadarMarksRoute
   '/remediation-options': typeof RemediationOptionsRoute
   '/repair-playbooks': typeof RepairPlaybooksRoute
+  '/rfid-marks': typeof RfidMarksRoute
   '/road': typeof RoadRoute
   '/role-view-marks': typeof RoleViewMarksRoute
   '/rollout': typeof RolloutRoute
@@ -2109,6 +2116,7 @@ export interface FileRoutesByTo {
   '/regulatory-radar-marks': typeof RegulatoryRadarMarksRoute
   '/remediation-options': typeof RemediationOptionsRoute
   '/repair-playbooks': typeof RepairPlaybooksRoute
+  '/rfid-marks': typeof RfidMarksRoute
   '/road': typeof RoadRoute
   '/role-view-marks': typeof RoleViewMarksRoute
   '/rollout': typeof RolloutRoute
@@ -2383,6 +2391,7 @@ export interface FileRoutesById {
   '/regulatory-radar-marks': typeof RegulatoryRadarMarksRoute
   '/remediation-options': typeof RemediationOptionsRoute
   '/repair-playbooks': typeof RepairPlaybooksRoute
+  '/rfid-marks': typeof RfidMarksRoute
   '/road': typeof RoadRoute
   '/role-view-marks': typeof RoleViewMarksRoute
   '/rollout': typeof RolloutRoute
@@ -2658,6 +2667,7 @@ export interface FileRouteTypes {
     | '/regulatory-radar-marks'
     | '/remediation-options'
     | '/repair-playbooks'
+    | '/rfid-marks'
     | '/road'
     | '/role-view-marks'
     | '/rollout'
@@ -2931,6 +2941,7 @@ export interface FileRouteTypes {
     | '/regulatory-radar-marks'
     | '/remediation-options'
     | '/repair-playbooks'
+    | '/rfid-marks'
     | '/road'
     | '/role-view-marks'
     | '/rollout'
@@ -3204,6 +3215,7 @@ export interface FileRouteTypes {
     | '/regulatory-radar-marks'
     | '/remediation-options'
     | '/repair-playbooks'
+    | '/rfid-marks'
     | '/road'
     | '/role-view-marks'
     | '/rollout'
@@ -3478,6 +3490,7 @@ export interface RootRouteChildren {
   RegulatoryRadarMarksRoute: typeof RegulatoryRadarMarksRoute
   RemediationOptionsRoute: typeof RemediationOptionsRoute
   RepairPlaybooksRoute: typeof RepairPlaybooksRoute
+  RfidMarksRoute: typeof RfidMarksRoute
   RoadRoute: typeof RoadRoute
   RoleViewMarksRoute: typeof RoleViewMarksRoute
   RolloutRoute: typeof RolloutRoute
@@ -4935,6 +4948,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RepairPlaybooksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/rfid-marks': {
+      id: '/rfid-marks'
+      path: '/rfid-marks'
+      fullPath: '/rfid-marks'
+      preLoaderRoute: typeof RfidMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/road': {
       id: '/road'
       path: '/road'
@@ -5654,6 +5674,7 @@ const rootRouteChildren: RootRouteChildren = {
   RegulatoryRadarMarksRoute: RegulatoryRadarMarksRoute,
   RemediationOptionsRoute: RemediationOptionsRoute,
   RepairPlaybooksRoute: RepairPlaybooksRoute,
+  RfidMarksRoute: RfidMarksRoute,
   RoadRoute: RoadRoute,
   RoleViewMarksRoute: RoleViewMarksRoute,
   RolloutRoute: RolloutRoute,

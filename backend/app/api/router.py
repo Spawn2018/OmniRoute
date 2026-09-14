@@ -199,6 +199,7 @@ from app.api import (
     remediation_options,
     repair_playbooks,
     resources,
+    rfid_marks,
     role_view_marks,
     route_plan_marks,
     routing_guide_enforcements,
@@ -430,6 +431,7 @@ api_router.include_router(erp_connectors.router)
 api_router.include_router(factoring_connectors.router)
 api_router.include_router(po_financing_marks.router)
 api_router.include_router(wms_flow_marks.router)
+api_router.include_router(rfid_marks.router)
 api_router.include_router(customer_contracts.router)
 api_router.include_router(exchange_connectors.router)
 api_router.include_router(idp_connectors.router)
