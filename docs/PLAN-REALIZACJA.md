@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **BR7.0** sala operacyjna — warstwa działająca — wskaż Q z [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Kolejka
+**Następny:** **478.0** BR7.0 — HITL `ops_room_mark` (warstwa działająca sali operacyjnej)
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -762,7 +762,7 @@ Dump `03` / `04b`: WMS i BR6.2 evidenced; p44/LSP44 = dwie skóry jeden OpenAPI;
 | BR6.3 | aplikacja mobilna sprzedaży iOS/Android | po BR6.0 | Expo/RN; web UI się nie przenosi |
 | BR6.4 | portale: klienta, przewoźnika, podwykonawcy | po S53 | zbieżne z X1–X5 |
 | BR6.5 | marketing: kampanie, atrybucja, lejek | po BR6.0 | **462.0** DONE HITL `campaign_mark`; leftover: atrybucja live; nie `funnel_mark` |
-| BR7.0 | sala operacyjna — warstwa działająca | po W2 leftover | dziś tylko katalog rodzaju incydentu |
+| BR7.0 | sala operacyjna — warstwa działająca | po W2 leftover | Plan **478.0** HITL `ops_room_mark` (shift/board/escalation); leftover N8 · widok sklejony · T8 live; `war_room_mark` zostaje |
 | BR7.1 | wpływ na linię produkcyjną — warstwa liczona | po AI6.0 | dziś tylko katalog znacznika |
 
 ### Fala K — katalog 71–212
