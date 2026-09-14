@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **474.0** BR1.0 — HITL `wms_flow_mark`. **Etap:** Plan — kolejka po BR1.0 pin **2026-09-08c** (nie zgaduj Q). Zero kodu bez delty. **Następny:** **BR1.1** RFID i identyfikacja automatyczna — wskaż Q z [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Kolejka Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **474.0** BR1.0 — HITL `wms_flow_mark`. **Etap:** Plan — delta **475.0** zaakceptowana, wolno `/plaster`. Pin **2026-09-08c**. **Następny:** **475.0** BR1.1 — HITL `rfid_mark` (plaster) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
