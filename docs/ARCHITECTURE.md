@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **483.0** AI8.2 — HITL `l3_gate_mark`. **Etap:** Plan — po AI8.2. Następny = **AI8.0** kaskada stylu (leftover) albo **AI5.0** `data_source` (park licencja). `/noc 20` stop 20:00 — bez nowego plastra po godzinie. **Następny:** **484.0** AI8.0 — plan kaskada stylu (leftover; nie scoring osoby) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **483.0** AI8.2 — HITL `l3_gate_mark`. **Etap:** Plaster — delta **484.0** zaakceptowana (`/noc 8`). Wolno `/plaster`. **Następny:** **484.0** AI8.0 — HITL `style_cascade_mark` (kaskada stylu; nie scoring osoby) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
