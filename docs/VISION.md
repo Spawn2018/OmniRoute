@@ -125,6 +125,7 @@ zostają w badaniach `04`).
 | 2026-09-14 | BR1.2 plan (**476.0**): HITL `inventory_finance_mark` (valuation|aging|release|other). Wycena SQL / wartość Decimal / FK position·PO / live zastaw `REJECTED` na tym wierszu. |
 | 2026-09-14 | **476.0** `inventory_finance_mark` w kodzie (`CONFIRMED`, git). Następny = **BR1.3** zabezpieczenie na towarze (`REQUIREMENT`). Wycena SQL `REJECTED` na tym wierszu. |
 | 2026-09-14 | BR1.3 plan (**477.0**): HITL `inventory_collateral_mark` (pledge|lien|hold|other). FK position·PO / live zastaw / wartość `REJECTED` na tym wierszu. |
+| 2026-09-14 | **484.0** `style_cascade_mark` w kodzie (`CONFIRMED`, git). Następny = **AI8.1** STYLE FIDELITY leftover (`REQUIREMENT`). Scoring osoby / silnik stylu / FK party `REJECTED` na tym wierszu. |
 | 2026-09-14 | Plan **484.0** AI8.0 `style_cascade_mark` (`REQUIREMENT`). Kaskada Global→…→Context jako HITL katalog poziomów; nie silnik stylu. STYLE FIDELITY / scoring osoby / FK party `REJECTED` na tym wierszu. |
 | 2026-09-14 | **483.0** `l3_gate_mark` w kodzie (`CONFIRMED`, git). Następny = **AI8.0** kaskada stylu leftover (`REQUIREMENT`). L3 write / scoring Pain×Frequency / Bertha `REJECTED` na tym wierszu. |
 | 2026-09-14 | Plan **483.0** AI8.2 `l3_gate_mark` (`REQUIREMENT`). Checklista bramy L3 (SoT/owner/exception/rollback/blast) jako HITL, nie silnik. L3 write / scoring Pain×Frequency / Bertha `REJECTED` na tym wierszu. SOP agenta = how-to 1 strona. |

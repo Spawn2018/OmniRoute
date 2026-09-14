@@ -238,6 +238,7 @@ import { Route as SlaClausesRouteImport } from './routes/sla-clauses'
 import { Route as SlotGuaranteeMarksRouteImport } from './routes/slot-guarantee-marks'
 import { Route as SpendMarksRouteImport } from './routes/spend-marks'
 import { Route as SpotContractMarksRouteImport } from './routes/spot-contract-marks'
+import { Route as StyleCascadeMarksRouteImport } from './routes/style-cascade-marks'
 import { Route as SubcontractEdgeMarksRouteImport } from './routes/subcontract-edge-marks'
 import { Route as SuggestionKindsRouteImport } from './routes/suggestion-kinds'
 import { Route as SuggestionLedgersRouteImport } from './routes/suggestion-ledgers'
@@ -1437,6 +1438,11 @@ const SpotContractMarksRoute = SpotContractMarksRouteImport.update({
   path: '/spot-contract-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StyleCascadeMarksRoute = StyleCascadeMarksRouteImport.update({
+  id: '/style-cascade-marks',
+  path: '/style-cascade-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SubcontractEdgeMarksRoute = SubcontractEdgeMarksRouteImport.update({
   id: '/subcontract-edge-marks',
   path: '/subcontract-edge-marks',
@@ -1923,6 +1929,7 @@ export interface FileRoutesByFullPath {
   '/slot-guarantee-marks': typeof SlotGuaranteeMarksRoute
   '/spend-marks': typeof SpendMarksRoute
   '/spot-contract-marks': typeof SpotContractMarksRoute
+  '/style-cascade-marks': typeof StyleCascadeMarksRoute
   '/subcontract-edge-marks': typeof SubcontractEdgeMarksRoute
   '/suggestion-kinds': typeof SuggestionKindsRoute
   '/suggestion-ledgers': typeof SuggestionLedgersRoute
@@ -2205,6 +2212,7 @@ export interface FileRoutesByTo {
   '/slot-guarantee-marks': typeof SlotGuaranteeMarksRoute
   '/spend-marks': typeof SpendMarksRoute
   '/spot-contract-marks': typeof SpotContractMarksRoute
+  '/style-cascade-marks': typeof StyleCascadeMarksRoute
   '/subcontract-edge-marks': typeof SubcontractEdgeMarksRoute
   '/suggestion-kinds': typeof SuggestionKindsRoute
   '/suggestion-ledgers': typeof SuggestionLedgersRoute
@@ -2488,6 +2496,7 @@ export interface FileRoutesById {
   '/slot-guarantee-marks': typeof SlotGuaranteeMarksRoute
   '/spend-marks': typeof SpendMarksRoute
   '/spot-contract-marks': typeof SpotContractMarksRoute
+  '/style-cascade-marks': typeof StyleCascadeMarksRoute
   '/subcontract-edge-marks': typeof SubcontractEdgeMarksRoute
   '/suggestion-kinds': typeof SuggestionKindsRoute
   '/suggestion-ledgers': typeof SuggestionLedgersRoute
@@ -2772,6 +2781,7 @@ export interface FileRouteTypes {
     | '/slot-guarantee-marks'
     | '/spend-marks'
     | '/spot-contract-marks'
+    | '/style-cascade-marks'
     | '/subcontract-edge-marks'
     | '/suggestion-kinds'
     | '/suggestion-ledgers'
@@ -3054,6 +3064,7 @@ export interface FileRouteTypes {
     | '/slot-guarantee-marks'
     | '/spend-marks'
     | '/spot-contract-marks'
+    | '/style-cascade-marks'
     | '/subcontract-edge-marks'
     | '/suggestion-kinds'
     | '/suggestion-ledgers'
@@ -3336,6 +3347,7 @@ export interface FileRouteTypes {
     | '/slot-guarantee-marks'
     | '/spend-marks'
     | '/spot-contract-marks'
+    | '/style-cascade-marks'
     | '/subcontract-edge-marks'
     | '/suggestion-kinds'
     | '/suggestion-ledgers'
@@ -3619,6 +3631,7 @@ export interface RootRouteChildren {
   SlotGuaranteeMarksRoute: typeof SlotGuaranteeMarksRoute
   SpendMarksRoute: typeof SpendMarksRoute
   SpotContractMarksRoute: typeof SpotContractMarksRoute
+  StyleCascadeMarksRoute: typeof StyleCascadeMarksRoute
   SubcontractEdgeMarksRoute: typeof SubcontractEdgeMarksRoute
   SuggestionKindsRoute: typeof SuggestionKindsRoute
   SuggestionLedgersRoute: typeof SuggestionLedgersRoute
@@ -5277,6 +5290,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SpotContractMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/style-cascade-marks': {
+      id: '/style-cascade-marks'
+      path: '/style-cascade-marks'
+      fullPath: '/style-cascade-marks'
+      preLoaderRoute: typeof StyleCascadeMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/subcontract-edge-marks': {
       id: '/subcontract-edge-marks'
       path: '/subcontract-edge-marks'
@@ -5867,6 +5887,7 @@ const rootRouteChildren: RootRouteChildren = {
   SlotGuaranteeMarksRoute: SlotGuaranteeMarksRoute,
   SpendMarksRoute: SpendMarksRoute,
   SpotContractMarksRoute: SpotContractMarksRoute,
+  StyleCascadeMarksRoute: StyleCascadeMarksRoute,
   SubcontractEdgeMarksRoute: SubcontractEdgeMarksRoute,
   SuggestionKindsRoute: SuggestionKindsRoute,
   SuggestionLedgersRoute: SuggestionLedgersRoute,

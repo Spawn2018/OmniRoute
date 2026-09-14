@@ -104,6 +104,10 @@ export const BUSINESS_LISTS = {
     route: "/l3-gate-marks",
     tableKey: "l3_gate_mark",
   },
+  styleCascadeMark: {
+    route: "/style-cascade-marks",
+    tableKey: "style_cascade_mark",
+  },
   loadOrderMark: { route: "/load-order-marks", tableKey: "load_order_mark" },
   loadPlanMark: { route: "/load-plan-marks", tableKey: "load_plan_mark" },
   routePlanMark: { route: "/route-plan-marks", tableKey: "route_plan_mark" },
@@ -480,6 +484,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/risk-register-marks",
   "/automation-bias-marks",
   "/l3-gate-marks",
+  "/style-cascade-marks",
   "/load-order-marks",
   "/load-plan-marks",
   "/route-plan-marks",

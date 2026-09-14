@@ -144,6 +144,7 @@ modules =
     app.services.risk_register_marks
     app.services.automation_bias_marks
     app.services.l3_gate_marks
+    app.services.style_cascade_marks
     app.services.load_order_marks
     app.services.load_plan_marks
     app.services.cmms_marks
@@ -707,6 +708,9 @@ forbidden_modules =
     app.services.l3_gate_marks
     app.repositories.l3_gate_marks
     app.models.l3_gate_mark
+    app.services.style_cascade_marks
+    app.repositories.style_cascade_marks
+    app.models.style_cascade_mark
     app.services.load_order_marks
     app.repositories.load_order_marks
     app.models.load_order_mark

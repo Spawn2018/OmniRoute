@@ -114,6 +114,7 @@ const NAV = [
   { to: "/risk-register-marks", label: "Rejestr ryzyka" },
   { to: "/automation-bias-marks", label: "Automation bias" },
   { to: "/l3-gate-marks", label: "Brama L3" },
+  { to: "/style-cascade-marks", label: "Kaskada stylu" },
   { to: "/position-events", label: "Zdarzenie pozycji" },
   { to: "/telematics-devices", label: "Urządzenie telematyczne" },
   { to: "/tracking-consents", label: "Zgoda na śledzenie" },

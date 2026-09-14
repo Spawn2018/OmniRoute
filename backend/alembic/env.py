@@ -125,6 +125,7 @@ from app.models.product_ticket_mark import ProductTicketMark  # noqa: F401
 from app.models.risk_register_mark import RiskRegisterMark  # noqa: F401
 from app.models.automation_bias_mark import AutomationBiasMark  # noqa: F401
 from app.models.l3_gate_mark import L3GateMark  # noqa: F401
+from app.models.style_cascade_mark import StyleCascadeMark  # noqa: F401
 from app.models.customer_contract import CustomerContract  # noqa: F401
 from app.models.tenant_contract_kek import TenantContractKek  # noqa: F401
 from app.models.visibility_connector import VisibilityConnector  # noqa: F401
