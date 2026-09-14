@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **481.0** Mob — plan (Expo park; nie `mobile_client_mark`)
+**Następny:** **481.0** AI9.2 — HITL `risk_register_mark` (rejestr ryzyka)
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -628,7 +628,7 @@ Karta: [karty-pol-fala-plat.md](analysis/karty-pol-fala-plat.md). R1 (responsive
 | Plat-Scale | k6 real 10k VU na stage | | copy „15k” bez pomiaru |
 | **Demo-1** | 10 mies. + 150 aut `demo_sim`; GPS live 7 dni; wipe `USUN` | pełne po T+V+D+G6 | flota klienta na sali; prawdziwe PDF umów |
 | **Plat-HD** | ticket produktu: zgłoszenie błędu programu → analiza agenta → akceptacja właściciela przed naprawą | **480.0** DONE HITL `product_ticket_mark` (report/triage/owner_ok); leftover workflow naprawy · Mob; nie CAPA / `operator_notice` |
-| **Mob** | Expo iOS/Android + EAS OTA z Admin-P; **dopisek:** sterowanie całym OmniRoute, w tym akceptacja napraw z **Plat-HD** | po S53+X | nie klon BR6.3 / BR2.3; nie `mobile_client_mark`; nie Expo live teraz |
+| **Mob** | Expo iOS/Android + EAS OTA z Admin-P; **dopisek:** sterowanie całym OmniRoute, w tym akceptacja napraw z **Plat-HD** | po S53+X | park Expo `/noc 20` po **480.0**; nie klon BR6.3 / BR2.3; nie `mobile_client_mark`; nie Expo live teraz; następny buildowalny = **AI9.2** HITL |
 
 ### Fala CT — wieża załadowcy / 4PL
 
@@ -726,7 +726,7 @@ Dump CT `03` i TMS `04b` **potwierdzają leftover silników** (jeden `charge`, H
 | AI8.2 | poziomy autonomii 0–5 jako dana per tenant i per klient, domyślnie 1 | po AI9.2; **Q1=tak** | L0–2 bez zapisu AI; L3–5 tylko w zapisanych granicach + audit; auto-zejście jakości przed L3 (Q2); leftover: brama L3 (SoT + owner + wyjątek + rollback) · SOP agenta 1 strona · promień wybuchu przed write · priorytet „ulga nie sens”; nie scoring Pain×Frequency; nie Bertha; dump `04b`: Shipwell/Uber/SAP AI-write = zakaz; MQ nie zdejmuje HC-04 |
 | AI9.0 | etykieta art. 50 przy treści z modelu | równolegle od AI3 | AI Act |
 | AI9.1 | przeciwdziałanie automation bias w interfejsie | równolegle od AI3 | AI Act art. 14 ust. 4 lit. b |
-| AI9.2 | rejestr ryzyka + program zgodności | przed AI8.2 | warunek wejścia na poziom 3 |
+| AI9.2 | rejestr ryzyka + program zgodności | przed AI8.2 | Plan **481.0** HITL `risk_register_mark`; leftover program PDF · brama L3; U-art50 UI zostaje |
 
 ### Fala BR — moduły brakujące (równolegle do AI, nie po niej)
 

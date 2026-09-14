@@ -88,8 +88,8 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **480.0** Plat-HD — HITL `product_ticket_mark`
-- **Etap:** Plan — **Mob** (po Plat-HD). Expo/EAS = park (CURRENT). Plan: HITL nie klonuje `mobile_client_mark`; bez live. Jeśli brak węższej opcji bez Expo → w delcie `REJECTED` live i ustaw Następny na Fala AI.
-- **Następny:** **481.0** Mob — plan (Expo park; nie `mobile_client_mark`)
+- **Etap:** Plan — delta **481.0** zaakceptowana (`/noc 20`). Wolno `/plaster`.
+- **Następny:** **481.0** AI9.2 — HITL `risk_register_mark` (rejestr ryzyka)
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

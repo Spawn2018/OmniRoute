@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **480.0** Plat-HD — HITL `product_ticket_mark`. **Etap:** Plan — **Mob** (po Plat-HD). Expo/EAS = park (CURRENT). Plan: HITL nie klonuje `mobile_client_mark`; bez live. Jeśli brak węższej opcji bez Expo → w delcie `REJECTED` live i ustaw Następny na Fala AI. **Następny:** **481.0** Mob — plan (Expo park; nie `mobile_client_mark`) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **480.0** Plat-HD — HITL `product_ticket_mark`. **Etap:** Plan — delta **481.0** zaakceptowana (`/noc 20`). Wolno `/plaster`. **Następny:** **481.0** AI9.2 — HITL `risk_register_mark` (rejestr ryzyka) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
