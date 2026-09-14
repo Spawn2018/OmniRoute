@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **BR1.2** zapas jako obiekt finansowy — wskaż Q z [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Kolejka
+**Następny:** **476.0** BR1.2 — HITL `inventory_finance_mark` (wycena|aging|release|other)
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -738,7 +738,7 @@ Dump `03` / `04b`: WMS i BR6.2 evidenced; p44/LSP44 = dwie skóry jeden OpenAPI;
 |---|---|---|---|
 | BR1.0 | WMS: przyjęcie, lokalizacja, kompletacja, wydanie, inwentaryzacja | rozstrzygnięte: **w zakresie** | **474.0** DONE HITL `wms_flow_mark`; leftover live WMS HTTP · RFID · qty · lokalizacja bin |
 | BR1.1 | RFID i identyfikacja automatyczna | po BR1.0 | **475.0** DONE HITL `rfid_mark`; leftover live RFID · EPC · parowanie bin |
-| BR1.2 | zapas jako obiekt finansowy: wycena, wiekowanie, Inventory Release | po BR1.0 | bez tego nie ma zastawu na towarze |
+| BR1.2 | zapas jako obiekt finansowy: wycena, wiekowanie, Inventory Release | po BR1.0 | plan **476.0** HITL `inventory_finance_mark`; leftover wycena/wiekowanie SQL · wartość · FK position/PO · live zastaw |
 | BR2.0 | `position_event` — pozycja jako osobny byt | **start HHL** (po leftover V5) | **457.0** DONE HITL `position_event`; leftover: lat/lng · poll |
 | BR2.1 | urządzenia telematyczne: cykl życia, parowanie z pojazdem, awarie | po BR2.0 | **458.0** DONE HITL `telematics_device`; leftover: parowanie · poll |
 | BR2.2 | zgoda na śledzenie jako dana, per kontrahent i per kierowca | po BR2.0 | **459.0** DONE HITL `tracking_consent`; leftover: kolumna na `party_contact` |
@@ -858,13 +858,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->
