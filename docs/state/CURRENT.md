@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **476.0** BR1.2 — HITL `inventory_finance_mark`
 
-**Etap:** Plan — kolejka po BR1.2 pin **2026-09-08c** (nie zgaduj Q). Zero kodu bez delty.
+**Etap:** Plaster — delta **477.0** zaakceptowana (`/noc 20`). Wolno `/plaster`.
 
 **Noc:** `/noc 20` do **2026-09-14T20:00+02**.
 
-**Następny:** **BR1.3** zabezpieczenie na towarze — wskaż Q z [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Kolejka
+**Następny:** **477.0** BR1.3 — HITL `inventory_collateral_mark` (pledge|lien|hold|other)
 
-**Park:** `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów · live SMEO HTTP · wycena zapasu SQL · FK PO · live giełda HTTP · live WMS HTTP · live RFID HTTP. Nie otwieraj AI0. Nie startuj leftover Valhalla / live CFS / Expo / Alpega / HubSpot.
+**Park:** `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów · live SMEO HTTP · wycena zapasu SQL · FK PO · live giełda HTTP · live WMS HTTP · live RFID HTTP · live zastaw. Nie otwieraj AI0. Nie startuj leftover Valhalla / live CFS / Expo / Alpega / HubSpot.
 
-**Spec (jedyna na sesję):** brak — czeka na plan BR1.3
+**Spec (jedyna na sesję):** [inventory-collateral-mark.md](../spec/inventory-collateral-mark.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 
@@ -22,9 +22,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
+**2026-09-14:** Plan **477.0** (`/noc 20`) — BR1.3 katalog `inventory_collateral_mark`.
 **2026-09-14:** Plaster **476.0** zamknięty (`/noc 20`) — HITL `inventory_finance_mark`.
 **2026-09-14:** Plan **476.0** (`/noc 20`) — BR1.2 katalog `inventory_finance_mark`.
 **2026-09-14:** Plaster **475.0** zamknięty (`/noc 17`) — HITL `rfid_mark`.
-**2026-09-14:** Plan **475.0** (`/noc 17`) — BR1.1 RFID katalog `rfid_mark`.
-**2026-09-14:** Plaster **474.0** zamknięty (`/noc 17`) — HITL `wms_flow_mark`.
-**2026-09-14:** Plan **474.0** (`/noc 17`) — BR1.0 WMS katalog `wms_flow_mark`.

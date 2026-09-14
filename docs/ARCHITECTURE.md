@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **476.0** BR1.2 — HITL `inventory_finance_mark`. **Etap:** Plan — kolejka po BR1.2 pin **2026-09-08c** (nie zgaduj Q). Zero kodu bez delty. **Następny:** **BR1.3** zabezpieczenie na towarze — wskaż Q z [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Kolejka Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **476.0** BR1.2 — HITL `inventory_finance_mark`. **Etap:** Plaster — delta **477.0** zaakceptowana (`/noc 20`). Wolno `/plaster`. **Następny:** **477.0** BR1.3 — HITL `inventory_collateral_mark` (pledge|lien|hold|other) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
