@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **473.0** BR5.2 — rozszerzenie CHECK `exchange_connector`. **Etap:** Plan — kolejka po Fali BR pin **2026-09-08c** (nie zgaduj Q). Zero kodu bez delty. **Następny:** wskaż Q z [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Kolejka — nie startuj 431.0 ani poza pinem bez człowieka. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **473.0** BR5.2 — rozszerzenie CHECK `exchange_connector`. **Etap:** Plaster — delta **474.0** zaakceptowana (`/noc`). Wolno `/plaster`. **Następny:** **474.0** **BR1.0** WMS — HITL `wms_flow_mark` (katalog przepływu magazynowego) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

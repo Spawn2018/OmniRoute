@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **473.0** BR5.2 — rozszerzenie CHECK `exchange_connector`
 
-**Etap:** Plan — kolejka po Fali BR pin **2026-09-08c** (nie zgaduj Q). Zero kodu bez delty.
+**Etap:** Plaster — delta **474.0** zaakceptowana (`/noc`). Wolno `/plaster`.
 
-**Noc:** `/noc 7` do **2026-09-14T07:00+02**.
+**Noc:** `/noc 17` do **2026-09-14T17:00+02**.
 
-**Następny:** wskaż Q z [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Kolejka — nie startuj 431.0 ani poza pinem bez człowieka.
+**Następny:** **474.0** **BR1.0** WMS — HITL `wms_flow_mark` (katalog przepływu magazynowego)
 
-Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów · live SMEO HTTP · wycena zapasu BR1.2 · FK PO po BR1.2 · live giełda HTTP. Nie otwieraj AI0. Nie startuj leftover Valhalla / live CFS / Expo / Alpega / HubSpot.
+**Park:** `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów · live SMEO HTTP · wycena zapasu BR1.2 · FK PO po BR1.2 · live giełda HTTP · live WMS HTTP. Nie otwieraj AI0. Nie startuj leftover Valhalla / live CFS / Expo / Alpega / HubSpot.
 
-**Spec (jedyna na sesję):** brak — czeka na wskazanie Q
+**Spec (jedyna na sesję):** [wms-flow-mark.md](../spec/wms-flow-mark.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan, § Kolejka pin **2026-09-08c** + **Fala AI** + **Fala BR**. Wizja: [VISION.md](../VISION.md).
 
@@ -22,7 +22,6 @@ Park: `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll �
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
+**2026-09-14:** Plan **474.0** (`/noc 17`) — BR1.0 WMS katalog `wms_flow_mark`.
 **2026-09-14:** Plaster **473.0** zamknięty (`/noc`) — rozszerzenie CHECK `exchange_connector`.
 **2026-09-14:** Plan **473.0** (`/noc`) — BR5.2 giełdy katalog konektora.
-**2026-09-14:** Plaster **472.0** zamknięty (`/noc`) — HITL `po_financing_mark`.
-**2026-09-14:** Plaster **471.0** zamknięty (`/noc`) — HITL `factoring_connector`.
