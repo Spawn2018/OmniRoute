@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **Plat-HD** help desk produktu — ticket → analiza → akceptacja właściciela — wskaż Q z [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Plat / VISION C.3 Grupa 8
+**Następny:** **480.0** Plat-HD — HITL `product_ticket_mark` (ticket produktu)
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -627,7 +627,7 @@ Karta: [karty-pol-fala-plat.md](analysis/karty-pol-fala-plat.md). R1 (responsive
 | Plat-DR | PITR; RPO≤15 min; RTO≤4 h; restore stage co tydzień | | backup bez restore |
 | Plat-Scale | k6 real 10k VU na stage | | copy „15k” bez pomiaru |
 | **Demo-1** | 10 mies. + 150 aut `demo_sim`; GPS live 7 dni; wipe `USUN` | pełne po T+V+D+G6 | flota klienta na sali; prawdziwe PDF umów |
-| **Plat-HD** | ticket produktu: zgłoszenie błędu programu → analiza agenta → akceptacja właściciela przed naprawą | Plan po BR7.1 (`/noc 20`) | VISION C.3 Grupa 8; karta `20`; nie 468.0; nie CI8 / CAPA / `operator_notice` |
+| **Plat-HD** | ticket produktu: zgłoszenie błędu programu → analiza agenta → akceptacja właściciela przed naprawą | Plan **480.0** HITL `product_ticket_mark` (report/triage/owner_ok); leftover workflow naprawy · Mob; nie CAPA / `operator_notice` |
 | **Mob** | Expo iOS/Android + EAS OTA z Admin-P; **dopisek:** sterowanie całym OmniRoute, w tym akceptacja napraw z **Plat-HD** | po S53+X | nie klon BR6.3 / BR2.3; nie `mobile_client_mark`; nie Expo live teraz |
 
 ### Fala CT — wieża załadowcy / 4PL

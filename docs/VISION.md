@@ -125,6 +125,7 @@ zostają w badaniach `04`).
 | 2026-09-14 | BR1.2 plan (**476.0**): HITL `inventory_finance_mark` (valuation|aging|release|other). Wycena SQL / wartość Decimal / FK position·PO / live zastaw `REJECTED` na tym wierszu. |
 | 2026-09-14 | **476.0** `inventory_finance_mark` w kodzie (`CONFIRMED`, git). Następny = **BR1.3** zabezpieczenie na towarze (`REQUIREMENT`). Wycena SQL `REJECTED` na tym wierszu. |
 | 2026-09-14 | BR1.3 plan (**477.0**): HITL `inventory_collateral_mark` (pledge|lien|hold|other). FK position·PO / live zastaw / wartość `REJECTED` na tym wierszu. |
+| 2026-09-14 | Plan **480.0** Plat-HD `product_ticket_mark` (`REQUIREMENT`). CAPA / `operator_notice` / auto-fix `REJECTED` na tym wierszu. Leftover workflow naprawy · Mob. |
 | 2026-09-14 | **479.0** `line_impact_layer_mark` w kodzie (`CONFIRMED`, git). Następny = **Plat-HD** (`REQUIREMENT`). SQL/EBITDA leftover. Silnik w Pythonie `REJECTED` na tym wierszu. |
 | 2026-09-14 | Plan **479.0** BR7.1 `line_impact_layer_mark` (`REQUIREMENT`). `line_impact_mark` zostaje. SQL/EBITDA leftover. Silnik w Pythonie `REJECTED` na tym wierszu. |
 | 2026-09-14 | **478.0** `ops_room_mark` w kodzie (`CONFIRMED`, git). Następny = **BR7.1** wpływ na linię (`REQUIREMENT`). N8 / widok sklejony / T8 live leftover. Drugi czat `REJECTED` na tym wierszu. |

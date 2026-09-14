@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **479.0** BR7.1 — HITL `line_impact_layer_mark`. **Etap:** Plan — kolejka po BR7.1 pin **2026-09-08c** (nie zgaduj Q). Zero kodu bez delty. **Następny:** **Plat-HD** help desk produktu — ticket → analiza → akceptacja właściciela — wskaż Q z [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Plat / VISION C.3 Grupa 8 Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **479.0** BR7.1 — HITL `line_impact_layer_mark`. **Etap:** Plan — delta **480.0** zaakceptowana (`/noc 20`). Wolno `/plaster`. **Następny:** **480.0** Plat-HD — HITL `product_ticket_mark` (ticket produktu) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
