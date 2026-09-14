@@ -49,9 +49,20 @@ def collect_paths(text: str) -> set[str]:
     return found
 
 
+# Lokalne gitignore — w CI ich nie ma; szablon w repo wystarczy jako dowód.
+LOCAL_GITIGNORE_OK = frozenset(
+    {
+        "docs/state/NOC-LIVE.md",
+    }
+)
+
+
 def _unverifiable_token(rel: str) -> bool:
     """Adres, fragment prozy albo wzorzec z placeholderem — nie ścieżka w repo."""
     if rel.startswith(("http://", "https://", "mailto:")):
+        return True
+    # Absolut Windows / UNC — poza OmniRoute (np. katalog badań).
+    if re.match(r"^[A-Za-z]:/", rel) or rel.startswith("//"):
         return True
     if any(ch in rel for ch in (" ", "(", ")", "except", "→")):
         return True
@@ -69,6 +80,12 @@ def _unverifiable_token(rel: str) -> bool:
 def exists(rel: str, base: Path) -> bool:
     if _unverifiable_token(rel):
         return True
+
+    if rel in LOCAL_GITIGNORE_OK:
+        # Żywy plik lokalny; w CI sprawdzamy tylko szablon *.example.md.
+        example = ROOT / "docs" / "state" / "NOC-LIVE.example.md"
+        if example.exists():
+            return True
 
     # Link w Markdownie jest względny wobec własnego pliku, nie wobec ROOT —
     # bez tego poprawne `../deltas/...` z docs/state/CURRENT.md wygląda na martwy ref.

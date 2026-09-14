@@ -74,3 +74,16 @@ def test_relative_link_to_absent_file_is_still_reported() -> None:
     refs = _load_refs()
     state = _ROOT / "docs" / "state"
     assert not refs.exists("../deltas/archived/9.9-nie-ma.md", state)
+
+
+def test_gitignore_noc_live_ok_when_example_exists() -> None:
+    refs = _load_refs()
+    state = _ROOT / "docs" / "state"
+    assert (state / "NOC-LIVE.example.md").exists()
+    assert refs.exists("docs/state/NOC-LIVE.md", state)
+
+
+def test_windows_absolute_outside_repo_is_unverifiable() -> None:
+    refs = _load_refs()
+    assert refs._unverifiable_token("D:/OMNIROUTE-badania/08-WIZJA-OMNIROUTE.md")
+    assert refs.exists("D:/OMNIROUTE-badania/08-WIZJA-OMNIROUTE.md", _ROOT)
