@@ -8,7 +8,7 @@
 
 **Etap:** Plan — następne Q z Fali AI (wydmuszka / leftover). Komenda `/plan-modul`. Zero kodu produktu do delty.
 
-**Noc:** `/noc 8` do **2026-09-15T08:00+02**.
+**Noc:** stop operatora **2026-09-15 ~01:03+02** (`/noc stop`). Poprzednio `/noc 8` do 08:00.
 
 **Następny:** **487.0** AI9.1 leftover — ui-04 pewność per pole (katalog HITL; nie przebudowa splitu)
 
