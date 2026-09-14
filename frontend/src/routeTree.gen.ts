@@ -134,6 +134,7 @@ import { Route as LclRouteImport } from './routes/lcl'
 import { Route as LclConsoleMarksRouteImport } from './routes/lcl-console-marks'
 import { Route as LegalHoldMarksRouteImport } from './routes/legal-hold-marks'
 import { Route as LezMarksRouteImport } from './routes/lez-marks'
+import { Route as LineImpactLayerMarksRouteImport } from './routes/line-impact-layer-marks'
 import { Route as LineImpactMarksRouteImport } from './routes/line-impact-marks'
 import { Route as LoadOrderMarksRouteImport } from './routes/load-order-marks'
 import { Route as LoadPlanMarksRouteImport } from './routes/load-plan-marks'
@@ -909,6 +910,11 @@ const LegalHoldMarksRoute = LegalHoldMarksRouteImport.update({
 const LezMarksRoute = LezMarksRouteImport.update({
   id: '/lez-marks',
   path: '/lez-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LineImpactLayerMarksRoute = LineImpactLayerMarksRouteImport.update({
+  id: '/line-impact-layer-marks',
+  path: '/line-impact-layer-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LineImpactMarksRoute = LineImpactMarksRouteImport.update({
@@ -1789,6 +1795,7 @@ export interface FileRoutesByFullPath {
   '/lcl-console-marks': typeof LclConsoleMarksRoute
   '/legal-hold-marks': typeof LegalHoldMarksRoute
   '/lez-marks': typeof LezMarksRoute
+  '/line-impact-layer-marks': typeof LineImpactLayerMarksRoute
   '/line-impact-marks': typeof LineImpactMarksRoute
   '/load-order-marks': typeof LoadOrderMarksRoute
   '/load-plan-marks': typeof LoadPlanMarksRoute
@@ -2066,6 +2073,7 @@ export interface FileRoutesByTo {
   '/lcl-console-marks': typeof LclConsoleMarksRoute
   '/legal-hold-marks': typeof LegalHoldMarksRoute
   '/lez-marks': typeof LezMarksRoute
+  '/line-impact-layer-marks': typeof LineImpactLayerMarksRoute
   '/line-impact-marks': typeof LineImpactMarksRoute
   '/load-order-marks': typeof LoadOrderMarksRoute
   '/load-plan-marks': typeof LoadPlanMarksRoute
@@ -2344,6 +2352,7 @@ export interface FileRoutesById {
   '/lcl-console-marks': typeof LclConsoleMarksRoute
   '/legal-hold-marks': typeof LegalHoldMarksRoute
   '/lez-marks': typeof LezMarksRoute
+  '/line-impact-layer-marks': typeof LineImpactLayerMarksRoute
   '/line-impact-marks': typeof LineImpactMarksRoute
   '/load-order-marks': typeof LoadOrderMarksRoute
   '/load-plan-marks': typeof LoadPlanMarksRoute
@@ -2623,6 +2632,7 @@ export interface FileRouteTypes {
     | '/lcl-console-marks'
     | '/legal-hold-marks'
     | '/lez-marks'
+    | '/line-impact-layer-marks'
     | '/line-impact-marks'
     | '/load-order-marks'
     | '/load-plan-marks'
@@ -2900,6 +2910,7 @@ export interface FileRouteTypes {
     | '/lcl-console-marks'
     | '/legal-hold-marks'
     | '/lez-marks'
+    | '/line-impact-layer-marks'
     | '/line-impact-marks'
     | '/load-order-marks'
     | '/load-plan-marks'
@@ -3177,6 +3188,7 @@ export interface FileRouteTypes {
     | '/lcl-console-marks'
     | '/legal-hold-marks'
     | '/lez-marks'
+    | '/line-impact-layer-marks'
     | '/line-impact-marks'
     | '/load-order-marks'
     | '/load-plan-marks'
@@ -3455,6 +3467,7 @@ export interface RootRouteChildren {
   LclConsoleMarksRoute: typeof LclConsoleMarksRoute
   LegalHoldMarksRoute: typeof LegalHoldMarksRoute
   LezMarksRoute: typeof LezMarksRoute
+  LineImpactLayerMarksRoute: typeof LineImpactLayerMarksRoute
   LineImpactMarksRoute: typeof LineImpactMarksRoute
   LoadOrderMarksRoute: typeof LoadOrderMarksRoute
   LoadPlanMarksRoute: typeof LoadPlanMarksRoute
@@ -4482,6 +4495,13 @@ declare module '@tanstack/react-router' {
       path: '/lez-marks'
       fullPath: '/lez-marks'
       preLoaderRoute: typeof LezMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/line-impact-layer-marks': {
+      id: '/line-impact-layer-marks'
+      path: '/line-impact-layer-marks'
+      fullPath: '/line-impact-layer-marks'
+      preLoaderRoute: typeof LineImpactLayerMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/line-impact-marks': {
@@ -5663,6 +5683,7 @@ const rootRouteChildren: RootRouteChildren = {
   LclConsoleMarksRoute: LclConsoleMarksRoute,
   LegalHoldMarksRoute: LegalHoldMarksRoute,
   LezMarksRoute: LezMarksRoute,
+  LineImpactLayerMarksRoute: LineImpactLayerMarksRoute,
   LineImpactMarksRoute: LineImpactMarksRoute,
   LoadOrderMarksRoute: LoadOrderMarksRoute,
   LoadPlanMarksRoute: LoadPlanMarksRoute,

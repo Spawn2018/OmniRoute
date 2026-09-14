@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **478.0** BR7.0 — HITL `ops_room_mark`
-- **Etap:** Plan — delta **479.0** zaakceptowana (`/noc 20`). Wolno `/plaster`.
-- **Następny:** **479.0** BR7.1 — HITL `line_impact_layer_mark` (warstwa liczona wpływu na linię)
+- **Ostatni plaster:** **479.0** BR7.1 — HITL `line_impact_layer_mark`
+- **Etap:** Plan — kolejka po BR7.1 pin **2026-09-08c** (nie zgaduj Q). Zero kodu bez delty.
+- **Następny:** **Plat-HD** help desk produktu — ticket → analiza → akceptacja właściciela — wskaż Q z [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Plat / VISION C.3 Grupa 8
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

@@ -910,6 +910,10 @@ class InvalidOpsRoomMark(DomainError):
     """BR7.0: HITL warstwa sali operacyjnej — nie N8 / nie widok sklejony."""
 
 
+class InvalidLineImpactLayerMark(DomainError):
+    """BR7.1: HITL warstwa liczona linii — nie SQL EBITDA / nie plant live."""
+
+
 class InvalidLoadPlanMark(DomainError):
     """G6: HITL znacznik planu załadunku — nie solver OR."""
 

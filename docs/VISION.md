@@ -125,6 +125,7 @@ zostają w badaniach `04`).
 | 2026-09-14 | BR1.2 plan (**476.0**): HITL `inventory_finance_mark` (valuation|aging|release|other). Wycena SQL / wartość Decimal / FK position·PO / live zastaw `REJECTED` na tym wierszu. |
 | 2026-09-14 | **476.0** `inventory_finance_mark` w kodzie (`CONFIRMED`, git). Następny = **BR1.3** zabezpieczenie na towarze (`REQUIREMENT`). Wycena SQL `REJECTED` na tym wierszu. |
 | 2026-09-14 | BR1.3 plan (**477.0**): HITL `inventory_collateral_mark` (pledge|lien|hold|other). FK position·PO / live zastaw / wartość `REJECTED` na tym wierszu. |
+| 2026-09-14 | **479.0** `line_impact_layer_mark` w kodzie (`CONFIRMED`, git). Następny = **Plat-HD** (`REQUIREMENT`). SQL/EBITDA leftover. Silnik w Pythonie `REJECTED` na tym wierszu. |
 | 2026-09-14 | Plan **479.0** BR7.1 `line_impact_layer_mark` (`REQUIREMENT`). `line_impact_mark` zostaje. SQL/EBITDA leftover. Silnik w Pythonie `REJECTED` na tym wierszu. |
 | 2026-09-14 | **478.0** `ops_room_mark` w kodzie (`CONFIRMED`, git). Następny = **BR7.1** wpływ na linię (`REQUIREMENT`). N8 / widok sklejony / T8 live leftover. Drugi czat `REJECTED` na tym wierszu. |
 | 2026-09-14 | Plan **478.0** BR7.0 `ops_room_mark` (`REQUIREMENT`). `war_room_mark` zostaje. N8 / widok sklejony / T8 live leftover. Drugi czat `REJECTED` na tym wierszu. |
@@ -1055,9 +1056,9 @@ bo bez ewidencji magazynowej nie ma zastawu na towarze.
   jest (`CONFIRMED`, 478.0). Leftover N8 / widok sklejony / T8 live
   (`REQUIREMENT`). Drugi czat `REJECTED` na tym wierszu.
 - **Wpływ na linię produkcyjną** — katalog znacznika skutku `line_impact_mark`
-  jest (`CONFIRMED`, 409.0). Plan HITL warstwy liczonej `line_impact_layer_mark`
-  (`REQUIREMENT`, 479.0). Leftover SQL / EBITDA / plant feed (`REQUIREMENT`).
-  Silnik liczący w Pythonie `REJECTED` na tym wierszu.
+  jest (`CONFIRMED`, 409.0). Katalog HITL warstwy liczonej
+  `line_impact_layer_mark` jest (`CONFIRMED`, 479.0). Leftover SQL / EBITDA /
+  plant feed (`REQUIREMENT`). Silnik liczący w Pythonie `REJECTED` na tym wierszu.
 
 **Grupa 8 — help desk produktu i sterowanie z telefonu.**
 Wymóg właściciela z 2026-09-13 oraz workflow z rozmowy blueprinting / matrycy

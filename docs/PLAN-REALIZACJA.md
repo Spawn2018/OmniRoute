@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **479.0** BR7.1 — HITL `line_impact_layer_mark` (warstwa liczona wpływu na linię)
+**Następny:** **Plat-HD** help desk produktu — ticket → analiza → akceptacja właściciela — wskaż Q z [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Plat / VISION C.3 Grupa 8
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -627,7 +627,7 @@ Karta: [karty-pol-fala-plat.md](analysis/karty-pol-fala-plat.md). R1 (responsive
 | Plat-DR | PITR; RPO≤15 min; RTO≤4 h; restore stage co tydzień | | backup bez restore |
 | Plat-Scale | k6 real 10k VU na stage | | copy „15k” bez pomiaru |
 | **Demo-1** | 10 mies. + 150 aut `demo_sim`; GPS live 7 dni; wipe `USUN` | pełne po T+V+D+G6 | flota klienta na sali; prawdziwe PDF umów |
-| **Plat-HD** | ticket produktu: zgłoszenie błędu programu → analiza agenta → akceptacja właściciela przed naprawą | czeka | VISION C.3 Grupa 8; karta `20`; nie 468.0; nie CI8 / CAPA / `operator_notice` |
+| **Plat-HD** | ticket produktu: zgłoszenie błędu programu → analiza agenta → akceptacja właściciela przed naprawą | Plan po BR7.1 (`/noc 20`) | VISION C.3 Grupa 8; karta `20`; nie 468.0; nie CI8 / CAPA / `operator_notice` |
 | **Mob** | Expo iOS/Android + EAS OTA z Admin-P; **dopisek:** sterowanie całym OmniRoute, w tym akceptacja napraw z **Plat-HD** | po S53+X | nie klon BR6.3 / BR2.3; nie `mobile_client_mark`; nie Expo live teraz |
 
 ### Fala CT — wieża załadowcy / 4PL
@@ -763,7 +763,7 @@ Dump `03` / `04b`: WMS i BR6.2 evidenced; p44/LSP44 = dwie skóry jeden OpenAPI;
 | BR6.4 | portale: klienta, przewoźnika, podwykonawcy | po S53 | zbieżne z X1–X5 |
 | BR6.5 | marketing: kampanie, atrybucja, lejek | po BR6.0 | **462.0** DONE HITL `campaign_mark`; leftover: atrybucja live; nie `funnel_mark` |
 | BR7.0 | sala operacyjna — warstwa działająca | po W2 leftover | **478.0** DONE HITL `ops_room_mark`; leftover N8 · widok sklejony · T8 live; `war_room_mark` zostaje |
-| BR7.1 | wpływ na linię produkcyjną — warstwa liczona | po AI6.0 | Plan **479.0** HITL `line_impact_layer_mark` (scored/forecast/actual); leftover SQL · EBITDA · plant feed; `line_impact_mark` zostaje |
+| BR7.1 | wpływ na linię produkcyjną — warstwa liczona | po AI6.0 | **479.0** DONE HITL `line_impact_layer_mark`; leftover SQL · EBITDA · plant feed; `line_impact_mark` zostaje |
 
 ### Fala K — katalog 71–212
 

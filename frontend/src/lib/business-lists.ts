@@ -84,6 +84,10 @@ export const BUSINESS_LISTS = {
     route: "/ops-room-marks",
     tableKey: "ops_room_mark",
   },
+  lineImpactLayerMark: {
+    route: "/line-impact-layer-marks",
+    tableKey: "line_impact_layer_mark",
+  },
   loadOrderMark: { route: "/load-order-marks", tableKey: "load_order_mark" },
   loadPlanMark: { route: "/load-plan-marks", tableKey: "load_plan_mark" },
   routePlanMark: { route: "/route-plan-marks", tableKey: "route_plan_mark" },
@@ -455,6 +459,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/inventory-finance-marks",
   "/inventory-collateral-marks",
   "/ops-room-marks",
+  "/line-impact-layer-marks",
   "/load-order-marks",
   "/load-plan-marks",
   "/route-plan-marks",

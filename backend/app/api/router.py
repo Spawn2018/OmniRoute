@@ -126,6 +126,7 @@ from app.api import (
     lcl_console_marks,
     legal_hold_marks,
     lez_marks,
+    line_impact_layer_marks,
     line_impact_marks,
     load_order_marks,
     load_plan_marks,
@@ -438,6 +439,7 @@ api_router.include_router(rfid_marks.router)
 api_router.include_router(inventory_finance_marks.router)
 api_router.include_router(inventory_collateral_marks.router)
 api_router.include_router(ops_room_marks.router)
+api_router.include_router(line_impact_layer_marks.router)
 api_router.include_router(customer_contracts.router)
 api_router.include_router(exchange_connectors.router)
 api_router.include_router(idp_connectors.router)

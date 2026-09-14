@@ -8,4 +8,4 @@ scored / forecast / actual. Nie SQL. Nie EBITDA. Nie plant live.
 - Unique `(organization_id, mark_code)` i `(organization_id, source_ref)`
 - Job: `/line-impact-layer-marks`
 
-Delta: [479.0](../deltas/open/479.0.md) (po zamknięciu → archived).
+Delta: [479.0](../deltas/archived/479.0-line-impact-layer-mark.md).
