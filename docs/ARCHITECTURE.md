@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **485.0** AI8.1 — HITL `style_fidelity_mark`. **Etap:** Plan — po AI8.1. Następny = leftover **auto-zejście jakości L3** albo **AI5.0** `data_source` (park licencja). **Następny:** **486.0** AI8.2 leftover — plan auto-zejście jakości HITL (nie L3 write; nie score osoby) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **485.0** AI8.1 — HITL `style_fidelity_mark`. **Etap:** Plaster — delta **486.0** zaakceptowana (`/noc 8`). Wolno `/plaster`. **Następny:** **486.0** AI8.2 leftover — HITL `quality_descent_mark` (powód zejścia; nie silnik) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

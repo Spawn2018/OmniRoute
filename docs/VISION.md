@@ -125,6 +125,7 @@ zostają w badaniach `04`).
 | 2026-09-14 | BR1.2 plan (**476.0**): HITL `inventory_finance_mark` (valuation|aging|release|other). Wycena SQL / wartość Decimal / FK position·PO / live zastaw `REJECTED` na tym wierszu. |
 | 2026-09-14 | **476.0** `inventory_finance_mark` w kodzie (`CONFIRMED`, git). Następny = **BR1.3** zabezpieczenie na towarze (`REQUIREMENT`). Wycena SQL `REJECTED` na tym wierszu. |
 | 2026-09-14 | BR1.3 plan (**477.0**): HITL `inventory_collateral_mark` (pledge|lien|hold|other). FK position·PO / live zastaw / wartość `REJECTED` na tym wierszu. |
+| 2026-09-14 | Plan **486.0** leftover AI8.2 `quality_descent_mark` (`REQUIREMENT`). Powód zejścia jakości (mae/crps/brier/manual) jako HITL; nie silnik auto-zejścia. L3 write / MAE SQL / scoring osoby `REJECTED` na tym wierszu. |
 | 2026-09-14 | **485.0** `style_fidelity_mark` w kodzie (`CONFIRMED`, git). Następny = leftover auto-zejście jakości L3 (`REQUIREMENT`). Score SQL/LLM / scoring osoby / auto-block mail `REJECTED` na tym wierszu. |
 | 2026-09-14 | Plan **485.0** AI8.1 `style_fidelity_mark` (`REQUIREMENT`). Stancja bramki fidelity jako HITL (pass/hold/reject/exempt); nie wyliczanie 85%. Score SQL/LLM / scoring osoby / auto-block mail `REJECTED` na tym wierszu. |
 | 2026-09-14 | **484.0** `style_cascade_mark` w kodzie (`CONFIRMED`, git). Następny = **AI8.1** STYLE FIDELITY leftover (`REQUIREMENT`). Scoring osoby / silnik stylu / FK party `REJECTED` na tym wierszu. |
