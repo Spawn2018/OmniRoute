@@ -914,6 +914,10 @@ class InvalidLineImpactLayerMark(DomainError):
     """BR7.1: HITL warstwa liczona linii — nie SQL EBITDA / nie plant live."""
 
 
+class InvalidProductTicketMark(DomainError):
+    """Plat-HD: HITL ticket produktu — nie CAPA / nie auto-naprawa / nie operator_notice."""
+
+
 class InvalidLoadPlanMark(DomainError):
     """G6: HITL znacznik planu załadunku — nie solver OR."""
 

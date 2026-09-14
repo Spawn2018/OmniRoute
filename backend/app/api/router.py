@@ -185,6 +185,7 @@ from app.api import (
     position_events,
     posting_marks,
     prediction_ledgers,
+    product_ticket_marks,
     profit_center_marks,
     purchase_orders,
     quotations,
@@ -440,6 +441,7 @@ api_router.include_router(inventory_finance_marks.router)
 api_router.include_router(inventory_collateral_marks.router)
 api_router.include_router(ops_room_marks.router)
 api_router.include_router(line_impact_layer_marks.router)
+api_router.include_router(product_ticket_marks.router)
 api_router.include_router(customer_contracts.router)
 api_router.include_router(exchange_connectors.router)
 api_router.include_router(idp_connectors.router)

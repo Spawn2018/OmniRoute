@@ -110,6 +110,7 @@ const NAV = [
   { to: "/inventory-collateral-marks", label: "Zabezpieczenie na towarze" },
   { to: "/ops-room-marks", label: "Sala operacyjna" },
   { to: "/line-impact-layer-marks", label: "Warstwa liczona linii" },
+  { to: "/product-ticket-marks", label: "Ticket produktu" },
   { to: "/position-events", label: "Zdarzenie pozycji" },
   { to: "/telematics-devices", label: "Urządzenie telematyczne" },
   { to: "/tracking-consents", label: "Zgoda na śledzenie" },

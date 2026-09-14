@@ -191,6 +191,7 @@ import { Route as PortsRouteImport } from './routes/ports'
 import { Route as PositionEventsRouteImport } from './routes/position-events'
 import { Route as PostingMarksRouteImport } from './routes/posting-marks'
 import { Route as PredictionLedgersRouteImport } from './routes/prediction-ledgers'
+import { Route as ProductTicketMarksRouteImport } from './routes/product-ticket-marks'
 import { Route as ProfitCenterMarksRouteImport } from './routes/profit-center-marks'
 import { Route as PurchaseOrdersRouteImport } from './routes/purchase-orders'
 import { Route as QualityRouteImport } from './routes/quality'
@@ -1197,6 +1198,11 @@ const PredictionLedgersRoute = PredictionLedgersRouteImport.update({
   path: '/prediction-ledgers',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProductTicketMarksRoute = ProductTicketMarksRouteImport.update({
+  id: '/product-ticket-marks',
+  path: '/product-ticket-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProfitCenterMarksRoute = ProfitCenterMarksRouteImport.update({
   id: '/profit-center-marks',
   path: '/profit-center-marks',
@@ -1852,6 +1858,7 @@ export interface FileRoutesByFullPath {
   '/position-events': typeof PositionEventsRoute
   '/posting-marks': typeof PostingMarksRoute
   '/prediction-ledgers': typeof PredictionLedgersRoute
+  '/product-ticket-marks': typeof ProductTicketMarksRoute
   '/profit-center-marks': typeof ProfitCenterMarksRoute
   '/purchase-orders': typeof PurchaseOrdersRoute
   '/quality': typeof QualityRoute
@@ -2130,6 +2137,7 @@ export interface FileRoutesByTo {
   '/position-events': typeof PositionEventsRoute
   '/posting-marks': typeof PostingMarksRoute
   '/prediction-ledgers': typeof PredictionLedgersRoute
+  '/product-ticket-marks': typeof ProductTicketMarksRoute
   '/profit-center-marks': typeof ProfitCenterMarksRoute
   '/purchase-orders': typeof PurchaseOrdersRoute
   '/quality': typeof QualityRoute
@@ -2409,6 +2417,7 @@ export interface FileRoutesById {
   '/position-events': typeof PositionEventsRoute
   '/posting-marks': typeof PostingMarksRoute
   '/prediction-ledgers': typeof PredictionLedgersRoute
+  '/product-ticket-marks': typeof ProductTicketMarksRoute
   '/profit-center-marks': typeof ProfitCenterMarksRoute
   '/purchase-orders': typeof PurchaseOrdersRoute
   '/quality': typeof QualityRoute
@@ -2689,6 +2698,7 @@ export interface FileRouteTypes {
     | '/position-events'
     | '/posting-marks'
     | '/prediction-ledgers'
+    | '/product-ticket-marks'
     | '/profit-center-marks'
     | '/purchase-orders'
     | '/quality'
@@ -2967,6 +2977,7 @@ export interface FileRouteTypes {
     | '/position-events'
     | '/posting-marks'
     | '/prediction-ledgers'
+    | '/product-ticket-marks'
     | '/profit-center-marks'
     | '/purchase-orders'
     | '/quality'
@@ -3245,6 +3256,7 @@ export interface FileRouteTypes {
     | '/position-events'
     | '/posting-marks'
     | '/prediction-ledgers'
+    | '/product-ticket-marks'
     | '/profit-center-marks'
     | '/purchase-orders'
     | '/quality'
@@ -3524,6 +3536,7 @@ export interface RootRouteChildren {
   PositionEventsRoute: typeof PositionEventsRoute
   PostingMarksRoute: typeof PostingMarksRoute
   PredictionLedgersRoute: typeof PredictionLedgersRoute
+  ProductTicketMarksRoute: typeof ProductTicketMarksRoute
   ProfitCenterMarksRoute: typeof ProfitCenterMarksRoute
   PurchaseOrdersRoute: typeof PurchaseOrdersRoute
   QualityRoute: typeof QualityRoute
@@ -4896,6 +4909,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PredictionLedgersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/product-ticket-marks': {
+      id: '/product-ticket-marks'
+      path: '/product-ticket-marks'
+      fullPath: '/product-ticket-marks'
+      preLoaderRoute: typeof ProductTicketMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/profit-center-marks': {
       id: '/profit-center-marks'
       path: '/profit-center-marks'
@@ -5740,6 +5760,7 @@ const rootRouteChildren: RootRouteChildren = {
   PositionEventsRoute: PositionEventsRoute,
   PostingMarksRoute: PostingMarksRoute,
   PredictionLedgersRoute: PredictionLedgersRoute,
+  ProductTicketMarksRoute: ProductTicketMarksRoute,
   ProfitCenterMarksRoute: ProfitCenterMarksRoute,
   PurchaseOrdersRoute: PurchaseOrdersRoute,
   QualityRoute: QualityRoute,

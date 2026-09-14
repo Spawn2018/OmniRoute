@@ -94,6 +94,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | BR1.3 | Zabezpieczenie na towarze HITL | 477.0 `inventory_collateral_mark` | **ukończony (HITL)** · kind pledge/lien/hold/other; leftover FK position · live zastaw |
 | BR7.0 | Sala operacyjna — warstwa HITL | 478.0 `ops_room_mark` | **ukończony (HITL)** · layer shift/board/escalation/other; leftover N8 · widok sklejony · T8 live |
 | BR7.1 | Wpływ na linię — warstwa liczona HITL | 479.0 `line_impact_layer_mark` | **ukończony (HITL)** · scored/forecast/actual/other; leftover SQL · EBITDA · plant feed |
+| Plat-HD | Ticket produktu HITL | 480.0 `product_ticket_mark` | **ukończony (HITL)** · report/triage/owner_ok/other; leftover workflow naprawy · Mob; nie CAPA |
 | BR6.0 | Okazja CRM HITL | 456.0 `crm_opportunity` | **ukończony (HITL)** · stage open/won/lost/other; leftover activity / pipeline |
 | BR6.1 | Korytarz sprzedażowy HITL | 460.0 `sales_lane` | **ukończony (HITL)** · kind repeat/spot/other; leftover UN/LOCODE / wolumen |
 | BR6.2 | Tryb przetargu załadowcy HITL | 461.0 `shipper_tender_mark` | **ukończony (HITL)** · kind round/bench/spot/other; leftover rundy / like-for-like |

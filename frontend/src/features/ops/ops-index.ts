@@ -639,6 +639,11 @@ export const OPS_JOBS = [
     job: "katalog line_impact_layer_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.productTicketMark.route,
+    label: "Ticket produktu",
+    job: "katalog product_ticket_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.loadOrderMark.route,
     label: "Kolejność załadunku",
     job: "katalog load_order_mark HITL",
@@ -1663,6 +1668,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "477.0": "/inventory-collateral-marks",
   "478.0": "/ops-room-marks",
   "479.0": "/line-impact-layer-marks",
+  "480.0": "/product-ticket-marks",
   "267.0": "/lane-kms",
   "268.0": "/erp-connectors",
   "269.0": "/terminal-slot-connectors",
