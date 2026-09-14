@@ -116,6 +116,7 @@ const NAV = [
   { to: "/l3-gate-marks", label: "Brama L3" },
   { to: "/style-cascade-marks", label: "Kaskada stylu" },
   { to: "/style-fidelity-marks", label: "STYLE FIDELITY" },
+  { to: "/quality-descent-marks", label: "Zejście jakości" },
   { to: "/position-events", label: "Zdarzenie pozycji" },
   { to: "/telematics-devices", label: "Urządzenie telematyczne" },
   { to: "/tracking-consents", label: "Zgoda na śledzenie" },

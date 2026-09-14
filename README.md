@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **485.0** AI8.1 — HITL `style_fidelity_mark`
-- **Etap:** Plaster — delta **486.0** zaakceptowana (`/noc 8`). Wolno `/plaster`.
-- **Następny:** **486.0** AI8.2 leftover — HITL `quality_descent_mark` (powód zejścia; nie silnik)
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **486.0** AI8.2 leftover — HITL `quality_descent_mark`
+- **Etap:** Plan — następne Q z Fali AI (wydmuszka / leftover). Komenda `/plan-modul`. Zero kodu produktu do delty.
+- **Następny:** **487.0** AI9.1 leftover — ui-04 pewność per pole (katalog HITL; nie przebudowa splitu)
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

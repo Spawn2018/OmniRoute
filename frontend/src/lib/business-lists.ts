@@ -112,6 +112,10 @@ export const BUSINESS_LISTS = {
     route: "/style-fidelity-marks",
     tableKey: "style_fidelity_mark",
   },
+  qualityDescentMark: {
+    route: "/quality-descent-marks",
+    tableKey: "quality_descent_mark",
+  },
   loadOrderMark: { route: "/load-order-marks", tableKey: "load_order_mark" },
   loadPlanMark: { route: "/load-plan-marks", tableKey: "load_plan_mark" },
   routePlanMark: { route: "/route-plan-marks", tableKey: "route_plan_mark" },
@@ -490,6 +494,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/l3-gate-marks",
   "/style-cascade-marks",
   "/style-fidelity-marks",
+  "/quality-descent-marks",
   "/load-order-marks",
   "/load-plan-marks",
   "/route-plan-marks",

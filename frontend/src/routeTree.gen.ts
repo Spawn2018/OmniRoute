@@ -197,6 +197,7 @@ import { Route as ProductTicketMarksRouteImport } from './routes/product-ticket-
 import { Route as ProfitCenterMarksRouteImport } from './routes/profit-center-marks'
 import { Route as PurchaseOrdersRouteImport } from './routes/purchase-orders'
 import { Route as QualityRouteImport } from './routes/quality'
+import { Route as QualityDescentMarksRouteImport } from './routes/quality-descent-marks'
 import { Route as QuotationsRouteImport } from './routes/quotations'
 import { Route as QuoteCurrencyMarksRouteImport } from './routes/quote-currency-marks'
 import { Route as QuoteInvoicesRouteImport } from './routes/quote-invoices'
@@ -1233,6 +1234,11 @@ const QualityRoute = QualityRouteImport.update({
   path: '/quality',
   getParentRoute: () => rootRouteImport,
 } as any)
+const QualityDescentMarksRoute = QualityDescentMarksRouteImport.update({
+  id: '/quality-descent-marks',
+  path: '/quality-descent-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const QuotationsRoute = QuotationsRouteImport.update({
   id: '/quotations',
   path: '/quotations',
@@ -1894,6 +1900,7 @@ export interface FileRoutesByFullPath {
   '/profit-center-marks': typeof ProfitCenterMarksRoute
   '/purchase-orders': typeof PurchaseOrdersRoute
   '/quality': typeof QualityRoute
+  '/quality-descent-marks': typeof QualityDescentMarksRoute
   '/quotations': typeof QuotationsRoute
   '/quote-currency-marks': typeof QuoteCurrencyMarksRoute
   '/quote-invoices': typeof QuoteInvoicesRoute
@@ -2178,6 +2185,7 @@ export interface FileRoutesByTo {
   '/profit-center-marks': typeof ProfitCenterMarksRoute
   '/purchase-orders': typeof PurchaseOrdersRoute
   '/quality': typeof QualityRoute
+  '/quality-descent-marks': typeof QualityDescentMarksRoute
   '/quotations': typeof QuotationsRoute
   '/quote-currency-marks': typeof QuoteCurrencyMarksRoute
   '/quote-invoices': typeof QuoteInvoicesRoute
@@ -2463,6 +2471,7 @@ export interface FileRoutesById {
   '/profit-center-marks': typeof ProfitCenterMarksRoute
   '/purchase-orders': typeof PurchaseOrdersRoute
   '/quality': typeof QualityRoute
+  '/quality-descent-marks': typeof QualityDescentMarksRoute
   '/quotations': typeof QuotationsRoute
   '/quote-currency-marks': typeof QuoteCurrencyMarksRoute
   '/quote-invoices': typeof QuoteInvoicesRoute
@@ -2749,6 +2758,7 @@ export interface FileRouteTypes {
     | '/profit-center-marks'
     | '/purchase-orders'
     | '/quality'
+    | '/quality-descent-marks'
     | '/quotations'
     | '/quote-currency-marks'
     | '/quote-invoices'
@@ -3033,6 +3043,7 @@ export interface FileRouteTypes {
     | '/profit-center-marks'
     | '/purchase-orders'
     | '/quality'
+    | '/quality-descent-marks'
     | '/quotations'
     | '/quote-currency-marks'
     | '/quote-invoices'
@@ -3317,6 +3328,7 @@ export interface FileRouteTypes {
     | '/profit-center-marks'
     | '/purchase-orders'
     | '/quality'
+    | '/quality-descent-marks'
     | '/quotations'
     | '/quote-currency-marks'
     | '/quote-invoices'
@@ -3602,6 +3614,7 @@ export interface RootRouteChildren {
   ProfitCenterMarksRoute: typeof ProfitCenterMarksRoute
   PurchaseOrdersRoute: typeof PurchaseOrdersRoute
   QualityRoute: typeof QualityRoute
+  QualityDescentMarksRoute: typeof QualityDescentMarksRoute
   QuotationsRoute: typeof QuotationsRoute
   QuoteCurrencyMarksRoute: typeof QuoteCurrencyMarksRoute
   QuoteInvoicesRoute: typeof QuoteInvoicesRoute
@@ -5016,6 +5029,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof QualityRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/quality-descent-marks': {
+      id: '/quality-descent-marks'
+      path: '/quality-descent-marks'
+      fullPath: '/quality-descent-marks'
+      preLoaderRoute: typeof QualityDescentMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/quotations': {
       id: '/quotations'
       path: '/quotations'
@@ -5866,6 +5886,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProfitCenterMarksRoute: ProfitCenterMarksRoute,
   PurchaseOrdersRoute: PurchaseOrdersRoute,
   QualityRoute: QualityRoute,
+  QualityDescentMarksRoute: QualityDescentMarksRoute,
   QuotationsRoute: QuotationsRoute,
   QuoteCurrencyMarksRoute: QuoteCurrencyMarksRoute,
   QuoteInvoicesRoute: QuoteInvoicesRoute,

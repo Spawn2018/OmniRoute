@@ -669,6 +669,11 @@ export const OPS_JOBS = [
     job: "katalog style_fidelity_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.qualityDescentMark.route,
+    label: "Zejście jakości",
+    job: "katalog quality_descent_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.loadOrderMark.route,
     label: "Kolejność załadunku",
     job: "katalog load_order_mark HITL",
@@ -1699,6 +1704,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "483.0": "/l3-gate-marks",
   "484.0": "/style-cascade-marks",
   "485.0": "/style-fidelity-marks",
+  "486.0": "/quality-descent-marks",
   "267.0": "/lane-kms",
   "268.0": "/erp-connectors",
   "269.0": "/terminal-slot-connectors",

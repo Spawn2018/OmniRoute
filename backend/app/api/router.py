@@ -190,6 +190,7 @@ from app.api import (
     product_ticket_marks,
     profit_center_marks,
     purchase_orders,
+    quality_descent_marks,
     quotations,
     quote_currency_marks,
     quote_invoice_settlements,
@@ -452,6 +453,7 @@ api_router.include_router(automation_bias_marks.router)
 api_router.include_router(l3_gate_marks.router)
 api_router.include_router(style_cascade_marks.router)
 api_router.include_router(style_fidelity_marks.router)
+api_router.include_router(quality_descent_marks.router)
 api_router.include_router(customer_contracts.router)
 api_router.include_router(exchange_connectors.router)
 api_router.include_router(idp_connectors.router)
