@@ -15,36 +15,37 @@ export type AutomationBiasMarkPayload = {
   source_ref: string
 }
 
-const ENDPOINT = "/api/v1/automation-bias-marks"
+const PATH = "/api/v1/automation-bias-marks"
 
-export function buildAutomationBiasMarkWrite(input: {
+export function buildAutomationBiasMarkWrite(args: {
   code: string
   kind: string
   origin: string
 }): AutomationBiasMarkPayload {
-  const mark_code = input.code.trim()
-  const bias_kind = input.kind.trim().toLowerCase()
-  const source_ref = input.origin.trim()
-  return { mark_code, bias_kind, source_ref }
+  return {
+    mark_code: args.code.trim(),
+    bias_kind: args.kind.trim().toLowerCase(),
+    source_ref: args.origin.trim(),
+  }
 }
 
 export async function fetchAutomationBiasMarks(): Promise<AutomationBiasMarkRow[]> {
-  const response = await fetch(ENDPOINT, {
+  const reply = await fetch(PATH, {
     headers: { ...requireAuthHeaders(), Accept: "application/json" },
   })
-  if (response.ok) {
-    return (await response.json()) as AutomationBiasMarkRow[]
+  if (!reply.ok) {
+    throw new ApiError(
+      await readApiDetail(reply, "Nie udało się wczytać katalogu automation bias"),
+      httpErrorStatus(reply),
+    )
   }
-  throw new ApiError(
-    await readApiDetail(response, "Nie udało się wczytać wpisów mitygacji automation bias"),
-    httpErrorStatus(response),
-  )
+  return (await reply.json()) as AutomationBiasMarkRow[]
 }
 
 export async function saveAutomationBiasMark(
-  body: AutomationBiasMarkPayload,
+  payload: AutomationBiasMarkPayload,
 ): Promise<AutomationBiasMarkRow> {
-  const response = await fetch(ENDPOINT, {
+  const reply = await fetch(PATH, {
     method: "POST",
     headers: {
       ...requireAuthHeaders(),
@@ -52,13 +53,13 @@ export async function saveAutomationBiasMark(
       "Content-Type": "application/json",
       "X-Omni-Intent": "automation-bias-hitl",
     },
-    body: JSON.stringify(body),
+    body: JSON.stringify(payload),
   })
-  if (response.status === 201) {
-    return (await response.json()) as AutomationBiasMarkRow
+  if (reply.status !== 201) {
+    throw new ApiError(
+      await readApiDetail(reply, "Nie udało się zapisać znacznika automation bias"),
+      httpErrorStatus(reply),
+    )
   }
-  throw new ApiError(
-    await readApiDetail(response, "Nie udało się zapisać mitygacji automation bias"),
-    httpErrorStatus(response),
-  )
+  return (await reply.json()) as AutomationBiasMarkRow
 }

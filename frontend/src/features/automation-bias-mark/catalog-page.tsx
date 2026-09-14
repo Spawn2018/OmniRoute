@@ -10,46 +10,47 @@ import {
 import { getTenantContext } from "@/lib/tenant"
 import { AutomationBiasMarkSave } from "./mark-form"
 
-const col = createColumnHelper<AutomationBiasMarkRow>()
+const helper = createColumnHelper<AutomationBiasMarkRow>()
+
+const COLUMNS = [
+  helper.accessor("mark_code", { header: "Oznaczenie" }),
+  helper.accessor("bias_kind", { header: "Mitygacja" }),
+  helper.accessor("source_ref", { header: "Źródło" }),
+]
 
 export function AutomationBiasMarkDesk() {
-  const tenant = getTenantContext()
-  const org = tenant.organizationId
-  const sessionOk = Boolean(org && tenant.userId)
-  const rows = useQuery({
-    enabled: sessionOk,
+  const ctx = getTenantContext()
+  const orgId = ctx.organizationId
+  const ready = Boolean(orgId && ctx.userId)
+  const listed = useQuery({
+    enabled: ready,
     queryFn: fetchAutomationBiasMarks,
-    queryKey: ["automation-bias-marks", org],
+    queryKey: ["automation-bias-marks", orgId],
     retry: false,
   })
-  const tableCols = [
-    col.accessor("mark_code", { header: "Oznaczenie" }),
-    col.accessor("bias_kind", { header: "Rodzaj" }),
-    col.accessor("source_ref", { header: "Pochodzenie" }),
-  ]
 
   return (
-    <main className="space-y-5 p-1" data-automation-bias="desk">
+    <section className="flex flex-col gap-6" data-automation-bias-mark="board">
       <CatalogHeading
         title="Automation bias"
-        subtitle="AI9.1 · confirm / delay / review · bez przebudowy ui-04, scoringu i auto-accept"
+        subtitle="AI9.1 automation_bias_mark · HITL confirm/delay/review · nie ui-04 · nie auto-accept"
       />
-      {sessionOk ? null : <TenantSessionNotice />}
-      {rows.error ? <CatalogError error={rows.error} /> : null}
-      {sessionOk && !rows.error ? (
+      {!ready ? <TenantSessionNotice /> : null}
+      {listed.error ? <CatalogError error={listed.error} /> : null}
+      {ready ? <AutomationBiasMarkSave organizationId={orgId} /> : null}
+      {ready && !listed.error ? (
         <DataTableShell
           columnLabels={{
             mark_code: "Oznaczenie",
-            bias_kind: "Rodzaj",
-            source_ref: "Pochodzenie",
+            bias_kind: "Mitygacja",
+            source_ref: "Źródło",
           }}
-          columns={tableCols}
-          data={rows.data ?? []}
-          globalFilterPlaceholder="Szukaj stancji…"
+          columns={COLUMNS}
+          data={listed.data ?? []}
+          globalFilterPlaceholder="Filtruj stancje bias…"
           tableKey={BUSINESS_LISTS.automationBiasMark.tableKey}
         />
       ) : null}
-      {sessionOk ? <AutomationBiasMarkSave organizationId={org} /> : null}
-    </main>
+    </section>
   )
 }

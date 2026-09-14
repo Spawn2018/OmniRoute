@@ -37,12 +37,12 @@ class AutomationBiasMark(Base, TimestampMixin):
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
-    # RLS: ticket produktu — HITL, nie scoring / auto-accept.
+    # RLS: stancja mitygacji automation bias — HITL, nie ui-04 / auto-accept.
     organization_id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True),
         ForeignKey("organization.id", ondelete="RESTRICT"),
         nullable=False,
     )
-    mark_code: Mapped[str] = mapped_column(String(32), nullable=False)
     bias_kind: Mapped[str] = mapped_column(String(16), nullable=False)
+    mark_code: Mapped[str] = mapped_column(String(32), nullable=False)
     source_ref: Mapped[str] = mapped_column(String(256), nullable=False)
