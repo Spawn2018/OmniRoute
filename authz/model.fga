@@ -117,6 +117,7 @@ type organization
     define can_manage_product_ticket_marks: member
     define can_manage_risk_register_marks: member
     define can_manage_automation_bias_marks: member
+    define can_manage_l3_gate_marks: member
     define can_manage_load_plan_marks: member
     define can_manage_cmms_marks: member
     define can_manage_legal_hold_marks: member

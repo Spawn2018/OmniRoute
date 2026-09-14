@@ -126,6 +126,7 @@ import { Route as IsoNis2MarksRouteImport } from './routes/iso-nis2-marks'
 import { Route as JitJisMarksRouteImport } from './routes/jit-jis-marks'
 import { Route as JobMetricMarksRouteImport } from './routes/job-metric-marks'
 import { Route as KreptdLicencesRouteImport } from './routes/kreptd-licences'
+import { Route as L3GateMarksRouteImport } from './routes/l3-gate-marks'
 import { Route as LabelParkingMarksRouteImport } from './routes/label-parking-marks'
 import { Route as LaneKmsRouteImport } from './routes/lane-kms'
 import { Route as LanePatternsRouteImport } from './routes/lane-patterns'
@@ -873,6 +874,11 @@ const JobMetricMarksRoute = JobMetricMarksRouteImport.update({
 const KreptdLicencesRoute = KreptdLicencesRouteImport.update({
   id: '/kreptd-licences',
   path: '/kreptd-licences',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const L3GateMarksRoute = L3GateMarksRouteImport.update({
+  id: '/l3-gate-marks',
+  path: '/l3-gate-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LabelParkingMarksRoute = LabelParkingMarksRouteImport.update({
@@ -1805,6 +1811,7 @@ export interface FileRoutesByFullPath {
   '/jit-jis-marks': typeof JitJisMarksRoute
   '/job-metric-marks': typeof JobMetricMarksRoute
   '/kreptd-licences': typeof KreptdLicencesRoute
+  '/l3-gate-marks': typeof L3GateMarksRoute
   '/label-parking-marks': typeof LabelParkingMarksRoute
   '/lane-kms': typeof LaneKmsRoute
   '/lane-patterns': typeof LanePatternsRoute
@@ -2086,6 +2093,7 @@ export interface FileRoutesByTo {
   '/jit-jis-marks': typeof JitJisMarksRoute
   '/job-metric-marks': typeof JobMetricMarksRoute
   '/kreptd-licences': typeof KreptdLicencesRoute
+  '/l3-gate-marks': typeof L3GateMarksRoute
   '/label-parking-marks': typeof LabelParkingMarksRoute
   '/lane-kms': typeof LaneKmsRoute
   '/lane-patterns': typeof LanePatternsRoute
@@ -2368,6 +2376,7 @@ export interface FileRoutesById {
   '/jit-jis-marks': typeof JitJisMarksRoute
   '/job-metric-marks': typeof JobMetricMarksRoute
   '/kreptd-licences': typeof KreptdLicencesRoute
+  '/l3-gate-marks': typeof L3GateMarksRoute
   '/label-parking-marks': typeof LabelParkingMarksRoute
   '/lane-kms': typeof LaneKmsRoute
   '/lane-patterns': typeof LanePatternsRoute
@@ -2651,6 +2660,7 @@ export interface FileRouteTypes {
     | '/jit-jis-marks'
     | '/job-metric-marks'
     | '/kreptd-licences'
+    | '/l3-gate-marks'
     | '/label-parking-marks'
     | '/lane-kms'
     | '/lane-patterns'
@@ -2932,6 +2942,7 @@ export interface FileRouteTypes {
     | '/jit-jis-marks'
     | '/job-metric-marks'
     | '/kreptd-licences'
+    | '/l3-gate-marks'
     | '/label-parking-marks'
     | '/lane-kms'
     | '/lane-patterns'
@@ -3213,6 +3224,7 @@ export interface FileRouteTypes {
     | '/jit-jis-marks'
     | '/job-metric-marks'
     | '/kreptd-licences'
+    | '/l3-gate-marks'
     | '/label-parking-marks'
     | '/lane-kms'
     | '/lane-patterns'
@@ -3495,6 +3507,7 @@ export interface RootRouteChildren {
   JitJisMarksRoute: typeof JitJisMarksRoute
   JobMetricMarksRoute: typeof JobMetricMarksRoute
   KreptdLicencesRoute: typeof KreptdLicencesRoute
+  L3GateMarksRoute: typeof L3GateMarksRoute
   LabelParkingMarksRoute: typeof LabelParkingMarksRoute
   LaneKmsRoute: typeof LaneKmsRoute
   LanePatternsRoute: typeof LanePatternsRoute
@@ -4478,6 +4491,13 @@ declare module '@tanstack/react-router' {
       path: '/kreptd-licences'
       fullPath: '/kreptd-licences'
       preLoaderRoute: typeof KreptdLicencesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/l3-gate-marks': {
+      id: '/l3-gate-marks'
+      path: '/l3-gate-marks'
+      fullPath: '/l3-gate-marks'
+      preLoaderRoute: typeof L3GateMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/label-parking-marks': {
@@ -5735,6 +5755,7 @@ const rootRouteChildren: RootRouteChildren = {
   JitJisMarksRoute: JitJisMarksRoute,
   JobMetricMarksRoute: JobMetricMarksRoute,
   KreptdLicencesRoute: KreptdLicencesRoute,
+  L3GateMarksRoute: L3GateMarksRoute,
   LabelParkingMarksRoute: LabelParkingMarksRoute,
   LaneKmsRoute: LaneKmsRoute,
   LanePatternsRoute: LanePatternsRoute,

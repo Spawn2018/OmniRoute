@@ -119,6 +119,7 @@ from app.api import (
     jit_jis_marks,
     job_metric_marks,
     kreptd_licences,
+    l3_gate_marks,
     label_parking_marks,
     lane_kms,
     lane_patterns,
@@ -446,6 +447,7 @@ api_router.include_router(line_impact_layer_marks.router)
 api_router.include_router(product_ticket_marks.router)
 api_router.include_router(risk_register_marks.router)
 api_router.include_router(automation_bias_marks.router)
+api_router.include_router(l3_gate_marks.router)
 api_router.include_router(customer_contracts.router)
 api_router.include_router(exchange_connectors.router)
 api_router.include_router(idp_connectors.router)

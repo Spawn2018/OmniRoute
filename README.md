@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **482.0** AI9.1 — HITL `automation_bias_mark`
-- **Etap:** Plan — delta **483.0** zaakceptowana (`/noc 20`). Wolno `/plaster`.
-- **Następny:** **483.0** AI8.2 — HITL `l3_gate_mark` (checklista bramy L3)
+- **Ostatni plaster:** **483.0** AI8.2 — HITL `l3_gate_mark`
+- **Etap:** Plan — po AI8.2. Następny = **AI8.0** kaskada stylu (leftover) albo **AI5.0** `data_source` (park licencja). `/noc 20` stop 20:00 — bez nowego plastra po godzinie.
+- **Następny:** **484.0** AI8.0 — plan kaskada stylu (leftover; nie scoring osoby)
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

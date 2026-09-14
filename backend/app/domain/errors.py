@@ -926,6 +926,10 @@ class InvalidAutomationBiasMark(DomainError):
     """AI9.1: HITL mitygacja automation bias — nie ui-04 przebudowa / nie auto-accept."""
 
 
+class InvalidL3GateMark(DomainError):
+    """AI8.2: HITL checklista bramy L3 — nie silnik write / nie mutacja autonomy_level."""
+
+
 class InvalidLoadPlanMark(DomainError):
     """G6: HITL znacznik planu załadunku — nie solver OR."""
 

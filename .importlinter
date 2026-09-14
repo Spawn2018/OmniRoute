@@ -143,6 +143,7 @@ modules =
     app.services.product_ticket_marks
     app.services.risk_register_marks
     app.services.automation_bias_marks
+    app.services.l3_gate_marks
     app.services.load_order_marks
     app.services.load_plan_marks
     app.services.cmms_marks
@@ -703,6 +704,9 @@ forbidden_modules =
     app.services.automation_bias_marks
     app.repositories.automation_bias_marks
     app.models.automation_bias_mark
+    app.services.l3_gate_marks
+    app.repositories.l3_gate_marks
+    app.models.l3_gate_mark
     app.services.load_order_marks
     app.repositories.load_order_marks
     app.models.load_order_mark
