@@ -8,4 +8,4 @@ wiekowanie lub Inventory Release. Nie silnik wyceny. Nie SQL aging. Nie kwota.
 - Unique `(organization_id, mark_code)` i `(organization_id, source_ref)`
 - Job: `/inventory-finance-marks`
 
-Delta: [476.0](../deltas/open/476.0.md).
+Delta: [476.0](../deltas/archived/476.0-inventory-finance-mark.md).

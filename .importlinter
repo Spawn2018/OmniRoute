@@ -136,6 +136,7 @@ modules =
     app.services.po_financing_marks
     app.services.wms_flow_marks
     app.services.rfid_marks
+    app.services.inventory_finance_marks
     app.services.load_order_marks
     app.services.load_plan_marks
     app.services.cmms_marks
@@ -675,6 +676,9 @@ forbidden_modules =
     app.services.rfid_marks
     app.repositories.rfid_marks
     app.models.rfid_mark
+    app.services.inventory_finance_marks
+    app.repositories.inventory_finance_marks
+    app.models.inventory_finance_mark
     app.services.load_order_marks
     app.repositories.load_order_marks
     app.models.load_order_mark

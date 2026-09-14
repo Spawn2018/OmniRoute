@@ -72,6 +72,10 @@ export const BUSINESS_LISTS = {
   poFinancingMark: { route: "/po-financing-marks", tableKey: "po_financing_mark" },
   wmsFlowMark: { route: "/wms-flow-marks", tableKey: "wms_flow_mark" },
   rfidMark: { route: "/rfid-marks", tableKey: "rfid_mark" },
+  inventoryFinanceMark: {
+    route: "/inventory-finance-marks",
+    tableKey: "inventory_finance_mark",
+  },
   loadOrderMark: { route: "/load-order-marks", tableKey: "load_order_mark" },
   loadPlanMark: { route: "/load-plan-marks", tableKey: "load_plan_mark" },
   routePlanMark: { route: "/route-plan-marks", tableKey: "route_plan_mark" },
@@ -440,6 +444,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/po-financing-marks",
   "/wms-flow-marks",
   "/rfid-marks",
+  "/inventory-finance-marks",
   "/load-order-marks",
   "/load-plan-marks",
   "/route-plan-marks",

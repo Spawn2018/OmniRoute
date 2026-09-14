@@ -117,6 +117,7 @@ import { Route as ImpersonateGuardMarksRouteImport } from './routes/impersonate-
 import { Route as IntegrationHubMarksRouteImport } from './routes/integration-hub-marks'
 import { Route as IntervalScoresRouteImport } from './routes/interval-scores'
 import { Route as InterventionOutcomesRouteImport } from './routes/intervention-outcomes'
+import { Route as InventoryFinanceMarksRouteImport } from './routes/inventory-finance-marks'
 import { Route as InventoryPositionMarksRouteImport } from './routes/inventory-position-marks'
 import { Route as InvoicesRouteImport } from './routes/invoices'
 import { Route as IsoNis2MarksRouteImport } from './routes/iso-nis2-marks'
@@ -820,6 +821,11 @@ const IntervalScoresRoute = IntervalScoresRouteImport.update({
 const InterventionOutcomesRoute = InterventionOutcomesRouteImport.update({
   id: '/intervention-outcomes',
   path: '/intervention-outcomes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InventoryFinanceMarksRoute = InventoryFinanceMarksRouteImport.update({
+  id: '/inventory-finance-marks',
+  path: '/inventory-finance-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InventoryPositionMarksRoute = InventoryPositionMarksRouteImport.update({
@@ -1753,6 +1759,7 @@ export interface FileRoutesByFullPath {
   '/integration-hub-marks': typeof IntegrationHubMarksRoute
   '/interval-scores': typeof IntervalScoresRoute
   '/intervention-outcomes': typeof InterventionOutcomesRoute
+  '/inventory-finance-marks': typeof InventoryFinanceMarksRoute
   '/inventory-position-marks': typeof InventoryPositionMarksRoute
   '/invoices': typeof InvoicesRoute
   '/iso-nis2-marks': typeof IsoNis2MarksRoute
@@ -2027,6 +2034,7 @@ export interface FileRoutesByTo {
   '/integration-hub-marks': typeof IntegrationHubMarksRoute
   '/interval-scores': typeof IntervalScoresRoute
   '/intervention-outcomes': typeof InterventionOutcomesRoute
+  '/inventory-finance-marks': typeof InventoryFinanceMarksRoute
   '/inventory-position-marks': typeof InventoryPositionMarksRoute
   '/invoices': typeof InvoicesRoute
   '/iso-nis2-marks': typeof IsoNis2MarksRoute
@@ -2302,6 +2310,7 @@ export interface FileRoutesById {
   '/integration-hub-marks': typeof IntegrationHubMarksRoute
   '/interval-scores': typeof IntervalScoresRoute
   '/intervention-outcomes': typeof InterventionOutcomesRoute
+  '/inventory-finance-marks': typeof InventoryFinanceMarksRoute
   '/inventory-position-marks': typeof InventoryPositionMarksRoute
   '/invoices': typeof InvoicesRoute
   '/iso-nis2-marks': typeof IsoNis2MarksRoute
@@ -2578,6 +2587,7 @@ export interface FileRouteTypes {
     | '/integration-hub-marks'
     | '/interval-scores'
     | '/intervention-outcomes'
+    | '/inventory-finance-marks'
     | '/inventory-position-marks'
     | '/invoices'
     | '/iso-nis2-marks'
@@ -2852,6 +2862,7 @@ export interface FileRouteTypes {
     | '/integration-hub-marks'
     | '/interval-scores'
     | '/intervention-outcomes'
+    | '/inventory-finance-marks'
     | '/inventory-position-marks'
     | '/invoices'
     | '/iso-nis2-marks'
@@ -3126,6 +3137,7 @@ export interface FileRouteTypes {
     | '/integration-hub-marks'
     | '/interval-scores'
     | '/intervention-outcomes'
+    | '/inventory-finance-marks'
     | '/inventory-position-marks'
     | '/invoices'
     | '/iso-nis2-marks'
@@ -3401,6 +3413,7 @@ export interface RootRouteChildren {
   IntegrationHubMarksRoute: typeof IntegrationHubMarksRoute
   IntervalScoresRoute: typeof IntervalScoresRoute
   InterventionOutcomesRoute: typeof InterventionOutcomesRoute
+  InventoryFinanceMarksRoute: typeof InventoryFinanceMarksRoute
   InventoryPositionMarksRoute: typeof InventoryPositionMarksRoute
   InvoicesRoute: typeof InvoicesRoute
   IsoNis2MarksRoute: typeof IsoNis2MarksRoute
@@ -4323,6 +4336,13 @@ declare module '@tanstack/react-router' {
       path: '/intervention-outcomes'
       fullPath: '/intervention-outcomes'
       preLoaderRoute: typeof InterventionOutcomesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inventory-finance-marks': {
+      id: '/inventory-finance-marks'
+      path: '/inventory-finance-marks'
+      fullPath: '/inventory-finance-marks'
+      preLoaderRoute: typeof InventoryFinanceMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/inventory-position-marks': {
@@ -5585,6 +5605,7 @@ const rootRouteChildren: RootRouteChildren = {
   IntegrationHubMarksRoute: IntegrationHubMarksRoute,
   IntervalScoresRoute: IntervalScoresRoute,
   InterventionOutcomesRoute: InterventionOutcomesRoute,
+  InventoryFinanceMarksRoute: InventoryFinanceMarksRoute,
   InventoryPositionMarksRoute: InventoryPositionMarksRoute,
   InvoicesRoute: InvoicesRoute,
   IsoNis2MarksRoute: IsoNis2MarksRoute,

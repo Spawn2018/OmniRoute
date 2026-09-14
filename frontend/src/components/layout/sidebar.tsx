@@ -106,6 +106,7 @@ const NAV = [
   { to: "/po-financing-marks", label: "PO Financing" },
   { to: "/wms-flow-marks", label: "Przepływ WMS" },
   { to: "/rfid-marks", label: "RFID magazyn" },
+  { to: "/inventory-finance-marks", label: "Zapas finansowy" },
   { to: "/position-events", label: "Zdarzenie pozycji" },
   { to: "/telematics-devices", label: "Urządzenie telematyczne" },
   { to: "/tracking-consents", label: "Zgoda na śledzenie" },

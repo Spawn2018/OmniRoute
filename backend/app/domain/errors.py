@@ -898,6 +898,10 @@ class InvalidRfidMark(DomainError):
     """BR1.1: HITL RFID — nie live poll / nie EPC / nie FK bin."""
 
 
+class InvalidInventoryFinanceMark(DomainError):
+    """BR1.2: HITL zapas finansowy — nie wycena SQL / nie kwota / nie FK."""
+
+
 class InvalidLoadPlanMark(DomainError):
     """G6: HITL znacznik planu załadunku — nie solver OR."""
 

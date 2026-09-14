@@ -123,6 +123,7 @@ zostają w badaniach `04`).
 | 2026-09-14 | BR1.1 plan (**475.0**): HITL `rfid_mark` (reader|gate|tag|other). Live RFID HTTP / EPC / FK bin `REJECTED` na tym wierszu. |
 | 2026-09-14 | **475.0** `rfid_mark` w kodzie (`CONFIRMED`, git). Następny = **BR1.2** Inventory Release (`REQUIREMENT`). Live RFID poll `REJECTED` na tym wierszu. |
 | 2026-09-14 | BR1.2 plan (**476.0**): HITL `inventory_finance_mark` (valuation|aging|release|other). Wycena SQL / wartość Decimal / FK position·PO / live zastaw `REJECTED` na tym wierszu. |
+| 2026-09-14 | **476.0** `inventory_finance_mark` w kodzie (`CONFIRMED`, git). Następny = **BR1.3** zabezpieczenie na towarze (`REQUIREMENT`). Wycena SQL `REJECTED` na tym wierszu. |
 | 2026-09-13 | C.3 **Grupa 8**: help desk produktu (ticket → agent → akceptacja właściciela) + mobile całego OmniRoute. Leftover PLAN **Plat-HD** / **Mob**. Nie 468.0. |
 | 2026-09-13 | D.7 readiness (Murphy 2026 + audyt PDF/czat): Three-Bucket, Definition Gap, szwy eskalacji = leftover. Mission Control / wektor / druga warstwa semantyczna / Bertha `REJECTED`. |
 | 2026-09-13 | Ciało C.3 Grupa 8 + D.7 + skrót `03` B.4–B.6 w A.2. E.3: HC-04 i FK `plan_snapshot` zamknięte. [WYCOFANE 2026-09-13: „B.4–B.6 nietknięte w dumpie” — skrót jest w kanonie]. |
@@ -918,9 +919,9 @@ ile z wizji jest zrobione (`CONFIRMED`, dokument `01` §14):
 | nazwy z PDF-ów bez wiersza w planie | **136** (z czego 28 to aliasy) |
 | dostępy do zdobycia | **49** pozycji, z tego **22** o statusie P0 |
 
-Ostatni ukończony plaster: **475.0** (HITL `rfid_mark`).
+Ostatni ukończony plaster: **476.0** (HITL `inventory_finance_mark`).
 Następny = wskazanie Q z pin **2026-09-08c** — nie zgaduj (`REQUIREMENT`).
-AI1.0–AI1.4 oraz 443.0–475.0 są w kodzie (`CONFIRMED`); `data_source`
+AI1.0–AI1.4 oraz 443.0–476.0 są w kodzie (`CONFIRMED`); `data_source`
 zostaje w AI5 (`REQUIREMENT`). Teza B.1 zostaje: szerokość katalogów nie zastępuje pomiaru.
 
 ## C.2 Bliźniaki — scalona taksonomia
