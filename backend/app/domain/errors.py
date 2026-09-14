@@ -902,6 +902,10 @@ class InvalidInventoryFinanceMark(DomainError):
     """BR1.2: HITL zapas finansowy — nie wycena SQL / nie kwota / nie FK."""
 
 
+class InvalidInventoryCollateralMark(DomainError):
+    """BR1.3: HITL zabezpieczenie na towarze — nie FK pozycji / nie live zastaw."""
+
+
 class InvalidLoadPlanMark(DomainError):
     """G6: HITL znacznik planu załadunku — nie solver OR."""
 

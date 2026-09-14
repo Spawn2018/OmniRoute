@@ -202,6 +202,7 @@ kolumn. Nie 468.0.
 | przepływ WMS | wms_flow_mark | BR1.0 HITL 474.0 receipt/location/pick/ship/count/other + source_ref; nie live WMS; nie qty; nie RFID |
 | RFID magazyn | rfid_mark | BR1.1 HITL 475.0 reader/gate/tag/other + source_ref; nie live poll; nie EPC; nie FK bin |
 | zapas finansowy | inventory_finance_mark | BR1.2 HITL 476.0 valuation/aging/release/other + source_ref; nie wycena SQL; nie kwota; nie FK |
+| zabezpieczenie na towarze | inventory_collateral_mark | BR1.3 HITL 477.0 pledge/lien/hold/other + source_ref; nie FK pozycji; nie live zastaw |
 | konektor widoczności | visibility_connector | CT7 HITL 275.0/294.0 kod + kind `p44`\|`fourkites`\|`shippeo` + source_ref; nie live HTTP; nie sekrety; nie AIS |
 | zamówienie zakupu | purchase_order | CT1 HITL 276.0 nagłówek `po_code` + opcjonalny `plant_label` + source_ref; nie shipment |
 | znacznik plant PO | po_plant_mark | EXP3.0b HITL plant\|batch\|sku\|other; nie live EDI; nie auto shipment |

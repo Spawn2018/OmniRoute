@@ -118,6 +118,7 @@ from app.models.po_financing_mark import PoFinancingMark  # noqa: F401
 from app.models.wms_flow_mark import WmsFlowMark  # noqa: F401
 from app.models.rfid_mark import RfidMark  # noqa: F401
 from app.models.inventory_finance_mark import InventoryFinanceMark  # noqa: F401
+from app.models.inventory_collateral_mark import InventoryCollateralMark  # noqa: F401
 from app.models.customer_contract import CustomerContract  # noqa: F401
 from app.models.tenant_contract_kek import TenantContractKek  # noqa: F401
 from app.models.visibility_connector import VisibilityConnector  # noqa: F401

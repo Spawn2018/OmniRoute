@@ -8,4 +8,4 @@ przenośna lub hold. Nie FK pozycji. Nie live zastaw. Nie kwota.
 - Unique `(organization_id, mark_code)` i `(organization_id, source_ref)`
 - Job: `/inventory-collateral-marks`
 
-Delta: [477.0](../deltas/open/477.0.md).
+Delta: [477.0](../deltas/archived/477.0-inventory-collateral-mark.md).

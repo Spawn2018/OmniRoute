@@ -91,7 +91,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | BR1.0 | Przepływ WMS HITL | 474.0 `wms_flow_mark` | **ukończony (HITL)** · kind receipt/location/pick/ship/count/other; leftover live WMS · RFID · qty |
 | BR1.1 | RFID HITL | 475.0 `rfid_mark` | **ukończony (HITL)** · kind reader/gate/tag/other; leftover live poll · EPC |
 | BR1.2 | Zapas finansowy HITL | 476.0 `inventory_finance_mark` | **ukończony (HITL)** · kind valuation/aging/release/other; leftover wycena SQL · wartość · FK |
-| BR1.3 | Zabezpieczenie na towarze HITL | 477.0 `inventory_collateral_mark` | **plan** · kind pledge/lien/hold/other; leftover FK position · live zastaw |
+| BR1.3 | Zabezpieczenie na towarze HITL | 477.0 `inventory_collateral_mark` | **ukończony (HITL)** · kind pledge/lien/hold/other; leftover FK position · live zastaw |
 | BR6.0 | Okazja CRM HITL | 456.0 `crm_opportunity` | **ukończony (HITL)** · stage open/won/lost/other; leftover activity / pipeline |
 | BR6.1 | Korytarz sprzedażowy HITL | 460.0 `sales_lane` | **ukończony (HITL)** · kind repeat/spot/other; leftover UN/LOCODE / wolumen |
 | BR6.2 | Tryb przetargu załadowcy HITL | 461.0 `shipper_tender_mark` | **ukończony (HITL)** · kind round/bench/spot/other; leftover rundy / like-for-like |

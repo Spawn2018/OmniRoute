@@ -111,6 +111,7 @@ from app.api import (
     integration_hub_marks,
     interval_scores,
     intervention_outcomes,
+    inventory_collateral_marks,
     inventory_finance_marks,
     inventory_position_marks,
     iso_nis2_marks,
@@ -434,6 +435,7 @@ api_router.include_router(po_financing_marks.router)
 api_router.include_router(wms_flow_marks.router)
 api_router.include_router(rfid_marks.router)
 api_router.include_router(inventory_finance_marks.router)
+api_router.include_router(inventory_collateral_marks.router)
 api_router.include_router(customer_contracts.router)
 api_router.include_router(exchange_connectors.router)
 api_router.include_router(idp_connectors.router)

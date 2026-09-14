@@ -624,6 +624,11 @@ export const OPS_JOBS = [
     job: "katalog inventory_finance_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.inventoryCollateralMark.route,
+    label: "Zabezpieczenie na towarze",
+    job: "katalog inventory_collateral_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.loadOrderMark.route,
     label: "Kolejność załadunku",
     job: "katalog load_order_mark HITL",
@@ -1645,6 +1650,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "474.0": "/wms-flow-marks",
   "475.0": "/rfid-marks",
   "476.0": "/inventory-finance-marks",
+  "477.0": "/inventory-collateral-marks",
   "267.0": "/lane-kms",
   "268.0": "/erp-connectors",
   "269.0": "/terminal-slot-connectors",
