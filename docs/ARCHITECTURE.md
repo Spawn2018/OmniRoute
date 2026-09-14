@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **481.0** AI9.2 — HITL `risk_register_mark`. **Etap:** Plan — po AI9.2. Następny = **AI9.1** automation bias UI (leftover) albo **AI8.2** brama L3. `/noc 20`: start plan **482.0** AI9.1 (węższy UI leftover, bez L3). **Następny:** **482.0** AI9.1 — plan przeciwdziałanie automation bias (UI) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **481.0** AI9.2 — HITL `risk_register_mark`. **Etap:** Plan — delta **482.0** zaakceptowana (`/noc 20`). Wolno `/plaster`. **Następny:** **482.0** AI9.1 — HITL `automation_bias_mark` (mitygacja bias) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

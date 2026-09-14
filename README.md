@@ -88,8 +88,8 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **481.0** AI9.2 — HITL `risk_register_mark`
-- **Etap:** Plan — po AI9.2. Następny = **AI9.1** automation bias UI (leftover) albo **AI8.2** brama L3. `/noc 20`: start plan **482.0** AI9.1 (węższy UI leftover, bez L3).
-- **Następny:** **482.0** AI9.1 — plan przeciwdziałanie automation bias (UI)
+- **Etap:** Plan — delta **482.0** zaakceptowana (`/noc 20`). Wolno `/plaster`.
+- **Następny:** **482.0** AI9.1 — HITL `automation_bias_mark` (mitygacja bias)
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **482.0** AI9.1 — plan przeciwdziałanie automation bias (UI)
+**Następny:** **482.0** AI9.1 — HITL `automation_bias_mark` (mitygacja bias)
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -725,7 +725,7 @@ Dump CT `03` i TMS `04b` **potwierdzają leftover silników** (jeden `charge`, H
 | AI8.1 | `STYLE FIDELITY SCORE`, bramka 85% | po AI8.0 | szkic niebrzmiący jak ten użytkownik nie jest proponowany |
 | AI8.2 | poziomy autonomii 0–5 jako dana per tenant i per klient, domyślnie 1 | po AI9.2; **Q1=tak** | L0–2 bez zapisu AI; L3–5 tylko w zapisanych granicach + audit; auto-zejście jakości przed L3 (Q2); leftover: brama L3 (SoT + owner + wyjątek + rollback) · SOP agenta 1 strona · promień wybuchu przed write · priorytet „ulga nie sens”; nie scoring Pain×Frequency; nie Bertha; dump `04b`: Shipwell/Uber/SAP AI-write = zakaz; MQ nie zdejmuje HC-04 |
 | AI9.0 | etykieta art. 50 przy treści z modelu | równolegle od AI3 | AI Act |
-| AI9.1 | przeciwdziałanie automation bias w interfejsie | równolegle od AI3 | AI Act art. 14 ust. 4 lit. b |
+| AI9.1 | przeciwdziałanie automation bias w interfejsie | równolegle od AI3 | Plan **482.0** HITL `automation_bias_mark`; leftover ui-04 pewność; U-art50 zostaje |
 | AI9.2 | rejestr ryzyka + program zgodności | przed AI8.2 | **481.0** DONE HITL `risk_register_mark`; leftover program PDF · brama L3; U-art50 UI zostaje |
 
 ### Fala BR — moduły brakujące (równolegle do AI, nie po niej)
