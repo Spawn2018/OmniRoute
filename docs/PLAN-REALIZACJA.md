@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **485.0** AI8.1 — HITL `style_fidelity_mark` (stancja bramki; nie score 85%)
+**Następny:** **486.0** AI8.2 leftover — plan auto-zejście jakości HITL (nie L3 write; nie score osoby)
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -722,7 +722,7 @@ Dump CT `03` i TMS `04b` **potwierdzają leftover silników** (jeden `charge`, H
 | AI7.0 | Cost Allocation Engine — 12 poziomów, 6 kategorii, 23 klucze → `TRUE CONTRIBUTION MARGIN` | po AI0 | marża zostaje w `margin()` |
 | AI7.1 | Cyfrowy CFO — narracja **po** SQL, nigdy zamiast | po AI7.0 | anomalia nie jest dowodem; model nie liczy |
 | AI8.0 | kaskada stylu Global → Company → Department → User → Customer → Person-to-Person → Context | po AI2.0 | bliźniak osoby = styl i relacja, nigdy ocena wyników; **484.0** DONE HITL `style_cascade_mark`; leftover: AI8.1 fidelity · silnik stylu |
-| AI8.1 | `STYLE FIDELITY SCORE`, bramka 85% | po AI8.0 | szkic niebrzmiący jak ten użytkownik nie jest proponowany; plan **485.0** HITL `style_fidelity_mark` (stancja pass/hold/reject/exempt); leftover: silnik score · auto-bramka |
+| AI8.1 | `STYLE FIDELITY SCORE`, bramka 85% | po AI8.0 | szkic niebrzmiący jak ten użytkownik nie jest proponowany; **485.0** DONE HITL `style_fidelity_mark` (pass/hold/reject/exempt); leftover: silnik score · auto-bramka |
 | AI8.2 | poziomy autonomii 0–5 jako dana per tenant i per klient, domyślnie 1 | po AI9.2; **Q1=tak** | `autonomy_level` HITL (438.0); **483.0** DONE HITL `l3_gate_mark` (SoT/owner/exception/rollback/blast); leftover: auto-zejście jakości · L3 write park; SOP 1 strona w operator/; nie scoring Pain×Frequency; nie Bertha |
 | AI9.0 | etykieta art. 50 przy treści z modelu | równolegle od AI3 | AI Act |
 | AI9.1 | przeciwdziałanie automation bias w interfejsie | równolegle od AI3 | **482.0** DONE HITL `automation_bias_mark`; leftover ui-04 pewność; U-art50 zostaje |
@@ -859,13 +859,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

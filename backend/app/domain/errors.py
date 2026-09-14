@@ -934,6 +934,10 @@ class InvalidStyleCascadeMark(DomainError):
     """AI8.0: HITL poziom kaskady stylu — nie fidelity / nie scoring osoby."""
 
 
+class InvalidStyleFidelityMark(DomainError):
+    """AI8.1: HITL stancja bramki fidelity — nie wyliczanie progu / nie ocena osoby."""
+
+
 class InvalidLoadPlanMark(DomainError):
     """G6: HITL znacznik planu załadunku — nie solver OR."""
 

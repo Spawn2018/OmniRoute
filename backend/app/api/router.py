@@ -233,6 +233,7 @@ from app.api import (
     spot_contract_marks,
     stops,
     style_cascade_marks,
+    style_fidelity_marks,
     subcontract_edge_marks,
     suggestion_kinds,
     suggestion_ledgers,
@@ -450,6 +451,7 @@ api_router.include_router(risk_register_marks.router)
 api_router.include_router(automation_bias_marks.router)
 api_router.include_router(l3_gate_marks.router)
 api_router.include_router(style_cascade_marks.router)
+api_router.include_router(style_fidelity_marks.router)
 api_router.include_router(customer_contracts.router)
 api_router.include_router(exchange_connectors.router)
 api_router.include_router(idp_connectors.router)
