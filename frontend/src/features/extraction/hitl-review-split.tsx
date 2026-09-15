@@ -84,7 +84,9 @@ export function HitlReviewSplit({
           </p>
         </div>
         {draft.status === "pending" &&
-        draft.draft_kind === "rate_line" &&
+        (draft.draft_kind === "rate_line" ||
+          draft.draft_kind === "carrier_quote" ||
+          draft.draft_kind === "tender_rfp") &&
         onPatchCandidates !== undefined ? (
           <CandidatePatchForm
             draftId={view.draftId}

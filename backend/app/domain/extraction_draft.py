@@ -71,8 +71,10 @@ def unmatched_golden_candidates(actual: object, expected: object) -> list[tuple[
 
 
 def require_rate_candidates_editable(draft_kind: object) -> None:
-    if draft_kind != _RATE:
-        raise ExtractionCandidatesNotEditable("edycja kandydatów tylko dla szkicu rate_line")
+    if draft_kind not in {_RATE, _QUOTE, _RFP}:
+        raise ExtractionCandidatesNotEditable(
+            "edycja kandydatów tylko dla rate_line, carrier_quote albo tender_rfp",
+        )
 
 
 def require_extraction_draft_kind(raw: object) -> str:

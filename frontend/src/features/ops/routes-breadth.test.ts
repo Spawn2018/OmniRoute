@@ -454,6 +454,7 @@ describe("U-routes-breadth standing", () => {
       "445.0": "/version-windows",
       "446.0": "/prediction-ledgers",
       "447.0": "/extractions",
+      "500.0": "/extractions",
       "448.0": "/extractions",
       "449.0": "/extractions",
       "451.0": "/extractions",

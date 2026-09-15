@@ -219,8 +219,35 @@ async def test_patch_candidates_rejects_non_pending() -> None:
 
 
 @pytest.mark.asyncio
-async def test_patch_candidates_rejects_non_rate_line() -> None:
+async def test_patch_candidates_allows_carrier_quote() -> None:
     session = AsyncMock()
+    session.flush = AsyncMock()
+    draft = ExtractionDraft(
+        id=uuid4(),
+        organization_id=uuid4(),
+        status="pending",
+        draft_kind="carrier_quote",
+        source_ref="doc://q",
+        input_text="quote",
+        payload={
+            "source_ref": "doc://q",
+            "unparsed_regions": [],
+            "candidates": [{"code": "FRT", "amount_text": "100", "currency": "EUR"}],
+        },
+    )
+    session.get = AsyncMock(return_value=draft)
+    service = ExtractionService(session, extractor=MagicMock())
+    patched = await service.patch_candidates(
+        draft_id=draft.id,
+        candidates=[{"code": "FRT", "amount_text": "110", "currency": "EUR"}],
+    )
+    assert patched.payload["candidates"][0]["amount_text"] == "110"
+
+
+@pytest.mark.asyncio
+async def test_patch_candidates_allows_tender_rfp() -> None:
+    session = AsyncMock()
+    session.flush = AsyncMock()
     draft = ExtractionDraft(
         id=uuid4(),
         organization_id=uuid4(),
@@ -228,7 +255,32 @@ async def test_patch_candidates_rejects_non_rate_line() -> None:
         draft_kind="tender_rfp",
         source_ref="doc://rfp",
         input_text="RFP",
-        payload={"source_ref": "doc://rfp", "unparsed_regions": [], "candidates": []},
+        payload={
+            "source_ref": "doc://rfp",
+            "unparsed_regions": [],
+            "candidates": [],
+        },
+    )
+    session.get = AsyncMock(return_value=draft)
+    service = ExtractionService(session, extractor=MagicMock())
+    patched = await service.patch_candidates(
+        draft_id=draft.id,
+        candidates=[{"code": "THC", "amount_text": "1", "currency": "EUR"}],
+    )
+    assert len(patched.payload["candidates"]) == 1
+
+
+@pytest.mark.asyncio
+async def test_patch_candidates_rejects_unknown_kind() -> None:
+    session = AsyncMock()
+    draft = ExtractionDraft(
+        id=uuid4(),
+        organization_id=uuid4(),
+        status="pending",
+        draft_kind="purchase_invoice",
+        source_ref="doc://x",
+        input_text="x",
+        payload={"source_ref": "doc://x", "unparsed_regions": [], "candidates": []},
     )
     session.get = AsyncMock(return_value=draft)
     service = ExtractionService(session, extractor=MagicMock())

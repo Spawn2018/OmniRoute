@@ -1,6 +1,7 @@
 ﻿# Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
+| 2026-09-15 | 500.0 | AI3.0 PATCH candidates carrier_quote/tender_rfp | 2026-09-15 | PRZESZLO | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-15 | 499.0 | BR6.2 shipper_award_mark HITL | 2026-09-15 | PRZESZLO | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-15 | 498.0 | BR6.2 shipper_bind_mark HITL | 2026-09-15 | PRZESZLO | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-15 | 497.0 | BR6.1 sales_bind_mark HITL | 2026-09-15 | PRZESZLO | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |

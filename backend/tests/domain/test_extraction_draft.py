@@ -44,10 +44,12 @@ def test_next_extraction_revision_bumps_or_starts() -> None:
     assert next_extraction_revision(True) == 1
 
 
-def test_rate_candidates_editable_only_rate_line() -> None:
+def test_rate_candidates_editable_allowlist() -> None:
     require_rate_candidates_editable("rate_line")
+    require_rate_candidates_editable("carrier_quote")
+    require_rate_candidates_editable("tender_rfp")
     with pytest.raises(ExtractionCandidatesNotEditable, match="rate_line"):
-        require_rate_candidates_editable("tender_rfp")
+        require_rate_candidates_editable("purchase_invoice")
 
 
 def test_draft_kind_rejects_unknown() -> None:

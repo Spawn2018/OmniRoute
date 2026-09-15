@@ -125,9 +125,9 @@ class StubExtractionService:
             raise ResourceNotFound("Szkic ekstrakcji nie istnieje")
         if self.draft.status != "pending":
             raise DraftNotPending("Szkic nie jest w statusie pending")
-        if self.draft.draft_kind != "rate_line":
+        if self.draft.draft_kind not in {"rate_line", "carrier_quote", "tender_rfp"}:
             raise ExtractionCandidatesNotEditable(
-                "edycja kandydatów tylko dla szkicu rate_line",
+                "edycja kandydatów tylko dla rate_line, carrier_quote albo tender_rfp",
             )
         payload = dict(self.draft.payload)
         payload["candidates"] = candidates
@@ -536,7 +536,7 @@ def test_http_patch_computed_amount_returns_422(happy_client: TestClient) -> Non
     assert patched.status_code == 422
 
 
-def test_http_patch_tender_rfp_returns_422(happy_client: TestClient) -> None:
+def test_http_patch_pending_tender_rfp_replaces_candidates(happy_client: TestClient) -> None:
     headers = bearer_auth_headers()
     created = happy_client.post(
         "/api/v1/extractions",
@@ -557,7 +557,19 @@ def test_http_patch_tender_rfp_returns_422(happy_client: TestClient) -> None:
         headers=headers,
         json={"candidates": [{"code": "THC", "amount_text": "1", "currency": "EUR"}]},
     )
-    assert patched.status_code == 422
+    assert patched.status_code == 200
+    body = patched.json()
+    assert body["payload"]["candidates"] == [
+        {
+            "code": "THC",
+            "amount_text": "1",
+            "currency": "EUR",
+            "note": "",
+            "bbox_text": "",
+            "confidence_text": "",
+        },
+    ]
+    assert body["payload"]["revision"] == 1
 
 
 def test_http_accepts_tender_rfp_draft_kind(happy_client: TestClient) -> None:
