@@ -1,7 +1,7 @@
 import pytest
 
-from app.domain.ingest_gate_mark import parse_ingest_gate_mark_row
 from app.domain.errors import InvalidIngestGateMark
+from app.domain.ingest_gate_mark import parse_ingest_gate_mark_row
 
 
 def test_parse_ingest_gate_mark_row_accepts_manual() -> None:
