@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **516.0** AI7.0 — HITL `allocation_key`
-- **Etap:** Plan — delta **517.0** zaakceptowana (`/noc 7`); wolno `/plaster`
-- **Następny:** **517.0** AI7.0 leftover — HITL `cost_category_mark` (6 kategorii PDF; nie SQL; nie TCM)
+- **Ostatni plaster:** **517.0** AI7.0 leftover — HITL `cost_category_mark`
+- **Etap:** Plan — delta **518.0** AI7.0 leftover 12 poziomów alokacji (przed `/plaster`)
+- **Następny:** **518.0** AI7.0 leftover — HITL 12 poziomów alokacji (otwarty słownik; nie SQL; nie TCM)
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

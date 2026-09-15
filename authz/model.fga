@@ -147,6 +147,7 @@ type organization
     define can_manage_working_capital_marks: member
     define can_manage_make_or_buy_marks: member
     define can_manage_cost_allocation_marks: member
+    define can_manage_cost_category_marks: member
     define can_manage_cargo_cover_marks: member
     define can_manage_sanctions_marks: member
     define can_manage_subcontract_edge_marks: member

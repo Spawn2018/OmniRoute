@@ -769,6 +769,11 @@ export const OPS_JOBS = [
     job: "katalog cost_allocation_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.costCategoryMark.route,
+    label: "Cost category",
+    job: "katalog cost_category_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.cargoCoverMark.route,
     label: "Cargo cover",
     job: "katalog cargo_cover_mark HITL",
@@ -1767,6 +1772,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "514.0": "/extractions",
   "515.0": "/extractions",
   "516.0": "/allocation-keys",
+  "517.0": "/cost-category-marks",
   "461.0": "/shipper-tender-marks",
   "462.0": "/campaign-marks",
   "463.0": "/groupage-dispatcher-marks",

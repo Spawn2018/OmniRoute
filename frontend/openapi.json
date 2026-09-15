@@ -16113,6 +16113,80 @@
         ]
       }
     },
+    "/api/v1/cost-category-marks": {
+      "get": {
+        "tags": [
+          "cost-category-marks"
+        ],
+        "summary": "List Cost Category Marks",
+        "operationId": "list_cost_category_marks_api_v1_cost_category_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CostCategoryMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Cost Category Marks Api V1 Cost Category Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "cost-category-marks"
+        ],
+        "summary": "Create Cost Category Mark",
+        "operationId": "create_cost_category_mark_api_v1_cost_category_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CostCategoryMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CostCategoryMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/asns": {
       "get": {
         "tags": [
@@ -30854,6 +30928,65 @@
           "source_ref"
         ],
         "title": "CostAllocationMarkResponse"
+      },
+      "CostCategoryMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "category_kind": {
+            "type": "string",
+            "title": "Category Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "category_kind",
+          "source_ref"
+        ],
+        "title": "CostCategoryMarkCreate"
+      },
+      "CostCategoryMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "category_kind": {
+            "type": "string",
+            "title": "Category Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "category_kind",
+          "source_ref"
+        ],
+        "title": "CostCategoryMarkResponse"
       },
       "CostToServeCreate": {
         "properties": {

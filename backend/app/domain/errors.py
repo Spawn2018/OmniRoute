@@ -1058,6 +1058,10 @@ class InvalidCostAllocationMark(DomainError):
     """EXP2.3: HITL cost allocation — nie allocation SQL."""
 
 
+class InvalidCostCategoryMark(DomainError):
+    """AI7.0 leftover: HITL kategoria kosztu — nie allocation SQL."""
+
+
 class InvalidCargoCoverMark(DomainError):
     """EXP2.4: HITL cargo cover — nie live insurance."""
 

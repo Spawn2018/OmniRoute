@@ -53,6 +53,7 @@ import { Route as ComplianceProgramMarksRouteImport } from './routes/compliance-
 import { Route as ConsignmentsRouteImport } from './routes/consignments'
 import { Route as CopyBanMarksRouteImport } from './routes/copy-ban-marks'
 import { Route as CostAllocationMarksRouteImport } from './routes/cost-allocation-marks'
+import { Route as CostCategoryMarksRouteImport } from './routes/cost-category-marks'
 import { Route as CostToServeRouteImport } from './routes/cost-to-serve'
 import { Route as CounterfactualRunsRouteImport } from './routes/counterfactual-runs'
 import { Route as CreditReviewsRouteImport } from './routes/credit-reviews'
@@ -524,6 +525,11 @@ const CopyBanMarksRoute = CopyBanMarksRouteImport.update({
 const CostAllocationMarksRoute = CostAllocationMarksRouteImport.update({
   id: '/cost-allocation-marks',
   path: '/cost-allocation-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CostCategoryMarksRoute = CostCategoryMarksRouteImport.update({
+  id: '/cost-category-marks',
+  path: '/cost-category-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CostToServeRoute = CostToServeRouteImport.update({
@@ -1834,6 +1840,7 @@ export interface FileRoutesByFullPath {
   '/consignments': typeof ConsignmentsRoute
   '/copy-ban-marks': typeof CopyBanMarksRoute
   '/cost-allocation-marks': typeof CostAllocationMarksRoute
+  '/cost-category-marks': typeof CostCategoryMarksRoute
   '/cost-to-serve': typeof CostToServeRoute
   '/counterfactual-runs': typeof CounterfactualRunsRoute
   '/credit-reviews': typeof CreditReviewsRoute
@@ -2132,6 +2139,7 @@ export interface FileRoutesByTo {
   '/consignments': typeof ConsignmentsRoute
   '/copy-ban-marks': typeof CopyBanMarksRoute
   '/cost-allocation-marks': typeof CostAllocationMarksRoute
+  '/cost-category-marks': typeof CostCategoryMarksRoute
   '/cost-to-serve': typeof CostToServeRoute
   '/counterfactual-runs': typeof CounterfactualRunsRoute
   '/credit-reviews': typeof CreditReviewsRoute
@@ -2431,6 +2439,7 @@ export interface FileRoutesById {
   '/consignments': typeof ConsignmentsRoute
   '/copy-ban-marks': typeof CopyBanMarksRoute
   '/cost-allocation-marks': typeof CostAllocationMarksRoute
+  '/cost-category-marks': typeof CostCategoryMarksRoute
   '/cost-to-serve': typeof CostToServeRoute
   '/counterfactual-runs': typeof CounterfactualRunsRoute
   '/credit-reviews': typeof CreditReviewsRoute
@@ -2731,6 +2740,7 @@ export interface FileRouteTypes {
     | '/consignments'
     | '/copy-ban-marks'
     | '/cost-allocation-marks'
+    | '/cost-category-marks'
     | '/cost-to-serve'
     | '/counterfactual-runs'
     | '/credit-reviews'
@@ -3029,6 +3039,7 @@ export interface FileRouteTypes {
     | '/consignments'
     | '/copy-ban-marks'
     | '/cost-allocation-marks'
+    | '/cost-category-marks'
     | '/cost-to-serve'
     | '/counterfactual-runs'
     | '/credit-reviews'
@@ -3327,6 +3338,7 @@ export interface FileRouteTypes {
     | '/consignments'
     | '/copy-ban-marks'
     | '/cost-allocation-marks'
+    | '/cost-category-marks'
     | '/cost-to-serve'
     | '/counterfactual-runs'
     | '/credit-reviews'
@@ -3626,6 +3638,7 @@ export interface RootRouteChildren {
   ConsignmentsRoute: typeof ConsignmentsRoute
   CopyBanMarksRoute: typeof CopyBanMarksRoute
   CostAllocationMarksRoute: typeof CostAllocationMarksRoute
+  CostCategoryMarksRoute: typeof CostCategoryMarksRoute
   CostToServeRoute: typeof CostToServeRoute
   CounterfactualRunsRoute: typeof CounterfactualRunsRoute
   CreditReviewsRoute: typeof CreditReviewsRoute
@@ -4188,6 +4201,13 @@ declare module '@tanstack/react-router' {
       path: '/cost-allocation-marks'
       fullPath: '/cost-allocation-marks'
       preLoaderRoute: typeof CostAllocationMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cost-category-marks': {
+      id: '/cost-category-marks'
+      path: '/cost-category-marks'
+      fullPath: '/cost-category-marks'
+      preLoaderRoute: typeof CostCategoryMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cost-to-serve': {
@@ -6002,6 +6022,7 @@ const rootRouteChildren: RootRouteChildren = {
   ConsignmentsRoute: ConsignmentsRoute,
   CopyBanMarksRoute: CopyBanMarksRoute,
   CostAllocationMarksRoute: CostAllocationMarksRoute,
+  CostCategoryMarksRoute: CostCategoryMarksRoute,
   CostToServeRoute: CostToServeRoute,
   CounterfactualRunsRoute: CounterfactualRunsRoute,
   CreditReviewsRoute: CreditReviewsRoute,

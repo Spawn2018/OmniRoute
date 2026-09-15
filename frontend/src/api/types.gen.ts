@@ -2885,6 +2885,50 @@ export type CostAllocationMarkResponse = {
 };
 
 /**
+ * CostCategoryMarkCreate
+ */
+export type CostCategoryMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Category Kind
+     */
+    category_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CostCategoryMarkResponse
+ */
+export type CostCategoryMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Category Kind
+     */
+    category_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * CostToServeCreate
  */
 export type CostToServeCreate = {
@@ -25818,6 +25862,49 @@ export type CreateCostAllocationMarkApiV1CostAllocationMarksPostResponses = {
 };
 
 export type CreateCostAllocationMarkApiV1CostAllocationMarksPostResponse = CreateCostAllocationMarkApiV1CostAllocationMarksPostResponses[keyof CreateCostAllocationMarkApiV1CostAllocationMarksPostResponses];
+
+export type ListCostCategoryMarksApiV1CostCategoryMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/cost-category-marks';
+};
+
+export type ListCostCategoryMarksApiV1CostCategoryMarksGetResponses = {
+    /**
+     * Response List Cost Category Marks Api V1 Cost Category Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<CostCategoryMarkResponse>;
+};
+
+export type ListCostCategoryMarksApiV1CostCategoryMarksGetResponse = ListCostCategoryMarksApiV1CostCategoryMarksGetResponses[keyof ListCostCategoryMarksApiV1CostCategoryMarksGetResponses];
+
+export type CreateCostCategoryMarkApiV1CostCategoryMarksPostData = {
+    body: CostCategoryMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/cost-category-marks';
+};
+
+export type CreateCostCategoryMarkApiV1CostCategoryMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCostCategoryMarkApiV1CostCategoryMarksPostError = CreateCostCategoryMarkApiV1CostCategoryMarksPostErrors[keyof CreateCostCategoryMarkApiV1CostCategoryMarksPostErrors];
+
+export type CreateCostCategoryMarkApiV1CostCategoryMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CostCategoryMarkResponse;
+};
+
+export type CreateCostCategoryMarkApiV1CostCategoryMarksPostResponse = CreateCostCategoryMarkApiV1CostCategoryMarksPostResponses[keyof CreateCostCategoryMarkApiV1CostCategoryMarksPostResponses];
 
 export type ListAsnsApiV1AsnsGetData = {
     body?: never;
