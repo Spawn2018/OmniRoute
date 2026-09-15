@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **510.0** AI3.3 leftover — golden ≥2000 **Następny:** **511.0** AI3.3 leftover — pętla golden ≥5000 pytest (nie DocLayNet; nie live vision)
+**Stan (z CURRENT.md):** **511.0** AI3.3 leftover — golden ≥5000 **Następny:** **512.0** AI3.4 leftover — openpyxl parser Excel (nie live vision)
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

@@ -1,4 +1,4 @@
-import json
+﻿import json
 from pathlib import Path
 
 import pytest
@@ -19,7 +19,7 @@ _DOMAIN = (
 def _owned_cases() -> list[object]:
     raw = json.loads(_OWNED.read_text(encoding="utf-8"))
     assert type(raw) is list
-    assert len(raw) >= 2000
+    assert len(raw) >= 5000
     return raw
 
 
