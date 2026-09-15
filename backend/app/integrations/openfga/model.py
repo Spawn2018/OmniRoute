@@ -141,6 +141,7 @@ def _organization_ai_catalog_relations() -> dict[str, Userset]:
         "can_manage_suggestion_kinds": _member(),
         "can_manage_autonomy_levels": _member(),
         "can_manage_allocation_keys": _member(),
+        "can_manage_allocation_levels": _member(),
     }
 
 

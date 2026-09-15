@@ -232,6 +232,7 @@ modules =
     app.services.suggestion_kinds
     app.services.autonomy_levels
     app.services.allocation_keys
+    app.services.allocation_levels
     app.services.demo_gps_marks
     app.services.demo_sim_marks
     app.services.demo_wipe_marks
@@ -1075,6 +1076,9 @@ forbidden_modules =
     app.services.allocation_keys
     app.repositories.allocation_keys
     app.models.allocation_key
+    app.services.allocation_levels
+    app.repositories.allocation_levels
+    app.models.allocation_level
     app.services.demo_gps_marks
     app.repositories.demo_gps_marks
     app.models.demo_gps_mark

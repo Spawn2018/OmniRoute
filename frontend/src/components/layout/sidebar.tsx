@@ -88,6 +88,7 @@ const NAV = [
   { to: "/suggestion-kinds", label: "Rodzaj podpowiedzi" },
   { to: "/autonomy-levels", label: "Poziom autonomii" },
   { to: "/allocation-keys", label: "Klucz alokacji" },
+  { to: "/allocation-levels", label: "Poziom alokacji" },
   { to: "/cost-category-marks", label: "Kategoria kosztu" },
   { to: "/plan-snapshots", label: "Migawka planu" },
   { to: "/circle-sims", label: "Kółko" },

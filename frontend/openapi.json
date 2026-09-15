@@ -17725,6 +17725,80 @@
         ]
       }
     },
+    "/api/v1/allocation-levels": {
+      "get": {
+        "tags": [
+          "allocation-levels"
+        ],
+        "summary": "List Allocation Levels",
+        "operationId": "list_allocation_levels_api_v1_allocation_levels_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/AllocationLevelResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Allocation Levels Api V1 Allocation Levels Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "allocation-levels"
+        ],
+        "summary": "Create Allocation Level",
+        "operationId": "create_allocation_level_api_v1_allocation_levels_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AllocationLevelCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AllocationLevelResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/outcome-kinds": {
       "get": {
         "tags": [
@@ -26530,6 +26604,59 @@
           "source_ref"
         ],
         "title": "AllocationKeyResponse"
+      },
+      "AllocationLevelCreate": {
+        "properties": {
+          "level_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Level Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "level_code",
+          "source_ref"
+        ],
+        "title": "AllocationLevelCreate"
+      },
+      "AllocationLevelResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "level_code": {
+            "type": "string",
+            "title": "Level Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "level_code",
+          "source_ref"
+        ],
+        "title": "AllocationLevelResponse"
       },
       "AppUserResponse": {
         "properties": {

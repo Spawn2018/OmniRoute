@@ -217,6 +217,42 @@ export type AllocationKeyResponse = {
 };
 
 /**
+ * AllocationLevelCreate
+ */
+export type AllocationLevelCreate = {
+    /**
+     * Level Code
+     */
+    level_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * AllocationLevelResponse
+ */
+export type AllocationLevelResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Level Code
+     */
+    level_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * AppUserResponse
  */
 export type AppUserResponse = {
@@ -26795,6 +26831,49 @@ export type CreateAllocationKeyApiV1AllocationKeysPostResponses = {
 };
 
 export type CreateAllocationKeyApiV1AllocationKeysPostResponse = CreateAllocationKeyApiV1AllocationKeysPostResponses[keyof CreateAllocationKeyApiV1AllocationKeysPostResponses];
+
+export type ListAllocationLevelsApiV1AllocationLevelsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/allocation-levels';
+};
+
+export type ListAllocationLevelsApiV1AllocationLevelsGetResponses = {
+    /**
+     * Response List Allocation Levels Api V1 Allocation Levels Get
+     *
+     * Successful Response
+     */
+    200: Array<AllocationLevelResponse>;
+};
+
+export type ListAllocationLevelsApiV1AllocationLevelsGetResponse = ListAllocationLevelsApiV1AllocationLevelsGetResponses[keyof ListAllocationLevelsApiV1AllocationLevelsGetResponses];
+
+export type CreateAllocationLevelApiV1AllocationLevelsPostData = {
+    body: AllocationLevelCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/allocation-levels';
+};
+
+export type CreateAllocationLevelApiV1AllocationLevelsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateAllocationLevelApiV1AllocationLevelsPostError = CreateAllocationLevelApiV1AllocationLevelsPostErrors[keyof CreateAllocationLevelApiV1AllocationLevelsPostErrors];
+
+export type CreateAllocationLevelApiV1AllocationLevelsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: AllocationLevelResponse;
+};
+
+export type CreateAllocationLevelApiV1AllocationLevelsPostResponse = CreateAllocationLevelApiV1AllocationLevelsPostResponses[keyof CreateAllocationLevelApiV1AllocationLevelsPostResponses];
 
 export type ListOutcomeKindsApiV1OutcomeKindsGetData = {
     body?: never;

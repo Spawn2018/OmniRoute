@@ -17,6 +17,7 @@ import { Route as AiRouteImport } from './routes/ai'
 import { Route as AirRouteImport } from './routes/air'
 import { Route as AirRa3MarksRouteImport } from './routes/air-ra3-marks'
 import { Route as AllocationKeysRouteImport } from './routes/allocation-keys'
+import { Route as AllocationLevelsRouteImport } from './routes/allocation-levels'
 import { Route as AsnsRouteImport } from './routes/asns'
 import { Route as AutomationBiasMarksRouteImport } from './routes/automation-bias-marks'
 import { Route as AutonomyLevelsRouteImport } from './routes/autonomy-levels'
@@ -345,6 +346,11 @@ const AirRa3MarksRoute = AirRa3MarksRouteImport.update({
 const AllocationKeysRoute = AllocationKeysRouteImport.update({
   id: '/allocation-keys',
   path: '/allocation-keys',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AllocationLevelsRoute = AllocationLevelsRouteImport.update({
+  id: '/allocation-levels',
+  path: '/allocation-levels',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AsnsRoute = AsnsRouteImport.update({
@@ -1804,6 +1810,7 @@ export interface FileRoutesByFullPath {
   '/air': typeof AirRoute
   '/air-ra3-marks': typeof AirRa3MarksRoute
   '/allocation-keys': typeof AllocationKeysRoute
+  '/allocation-levels': typeof AllocationLevelsRoute
   '/asns': typeof AsnsRoute
   '/automation-bias-marks': typeof AutomationBiasMarksRoute
   '/autonomy-levels': typeof AutonomyLevelsRoute
@@ -2103,6 +2110,7 @@ export interface FileRoutesByTo {
   '/air': typeof AirRoute
   '/air-ra3-marks': typeof AirRa3MarksRoute
   '/allocation-keys': typeof AllocationKeysRoute
+  '/allocation-levels': typeof AllocationLevelsRoute
   '/asns': typeof AsnsRoute
   '/automation-bias-marks': typeof AutomationBiasMarksRoute
   '/autonomy-levels': typeof AutonomyLevelsRoute
@@ -2403,6 +2411,7 @@ export interface FileRoutesById {
   '/air': typeof AirRoute
   '/air-ra3-marks': typeof AirRa3MarksRoute
   '/allocation-keys': typeof AllocationKeysRoute
+  '/allocation-levels': typeof AllocationLevelsRoute
   '/asns': typeof AsnsRoute
   '/automation-bias-marks': typeof AutomationBiasMarksRoute
   '/autonomy-levels': typeof AutonomyLevelsRoute
@@ -2704,6 +2713,7 @@ export interface FileRouteTypes {
     | '/air'
     | '/air-ra3-marks'
     | '/allocation-keys'
+    | '/allocation-levels'
     | '/asns'
     | '/automation-bias-marks'
     | '/autonomy-levels'
@@ -3003,6 +3013,7 @@ export interface FileRouteTypes {
     | '/air'
     | '/air-ra3-marks'
     | '/allocation-keys'
+    | '/allocation-levels'
     | '/asns'
     | '/automation-bias-marks'
     | '/autonomy-levels'
@@ -3302,6 +3313,7 @@ export interface FileRouteTypes {
     | '/air'
     | '/air-ra3-marks'
     | '/allocation-keys'
+    | '/allocation-levels'
     | '/asns'
     | '/automation-bias-marks'
     | '/autonomy-levels'
@@ -3602,6 +3614,7 @@ export interface RootRouteChildren {
   AirRoute: typeof AirRoute
   AirRa3MarksRoute: typeof AirRa3MarksRoute
   AllocationKeysRoute: typeof AllocationKeysRoute
+  AllocationLevelsRoute: typeof AllocationLevelsRoute
   AsnsRoute: typeof AsnsRoute
   AutomationBiasMarksRoute: typeof AutomationBiasMarksRoute
   AutonomyLevelsRoute: typeof AutonomyLevelsRoute
@@ -3949,6 +3962,13 @@ declare module '@tanstack/react-router' {
       path: '/allocation-keys'
       fullPath: '/allocation-keys'
       preLoaderRoute: typeof AllocationKeysRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/allocation-levels': {
+      id: '/allocation-levels'
+      path: '/allocation-levels'
+      fullPath: '/allocation-levels'
+      preLoaderRoute: typeof AllocationLevelsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/asns': {
@@ -5986,6 +6006,7 @@ const rootRouteChildren: RootRouteChildren = {
   AirRoute: AirRoute,
   AirRa3MarksRoute: AirRa3MarksRoute,
   AllocationKeysRoute: AllocationKeysRoute,
+  AllocationLevelsRoute: AllocationLevelsRoute,
   AsnsRoute: AsnsRoute,
   AutomationBiasMarksRoute: AutomationBiasMarksRoute,
   AutonomyLevelsRoute: AutonomyLevelsRoute,

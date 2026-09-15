@@ -694,6 +694,10 @@ class InvalidAllocationKey(DomainError):
     """Obcy klucz alokacji kosztów."""
 
 
+class InvalidAllocationLevel(DomainError):
+    """Słownik AI7.0: HITL level_code 12 poziomów — nie TCM i nie ENUM."""
+
+
 class InvalidAutonomyLevel(DomainError):
     """Słownik AI1.4: HITL level_code bez CHECK — nie FK klienta i nie ENUM."""
 
