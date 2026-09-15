@@ -100,6 +100,22 @@ def test_xlsx_openpyxl_reads_split_cells() -> None:
     assert "EUR" in parsed.text
 
 
+def test_xlsx_formula_without_cache_keeps_formula_text() -> None:
+    book = Workbook()
+    sheet = book.active
+    assert sheet is not None
+    sheet["A1"] = "THC"
+    sheet["B1"] = "=10+0"
+    sheet["C1"] = "EUR"
+    buffer = BytesIO()
+    book.save(buffer)
+    parsed = XlsxSheetParser().parse(source_ref="doc://x", raw_bytes=buffer.getvalue())
+    assert "THC" in parsed.text
+    assert "EUR" in parsed.text
+    assert "=10+0" in parsed.text
+    assert "10.0" not in parsed.text
+
+
 def test_fixture_two_xlsx_still_readable_via_openpyxl() -> None:
     path = Path(__file__).resolve().parent / "fixtures" / "two.xlsx"
     second = XlsxSheetParser().parse(

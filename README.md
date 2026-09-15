@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **513.0** AI3 leftover — Instructor × golden stub
-- **Etap:** Plan — delta **514.0** AI3.4 leftover formuły bez cache (przed `/plaster`)
-- **Następny:** **514.0** AI3.4 leftover — xlsx formuły bez cache Excel (nie live vision; nie DocLayNet)
+- **Ostatni plaster:** **514.0** AI3.4 leftover — formuły bez cache
+- **Etap:** Plan — delta **515.0** AI3.1 leftover undo historii JSONB (przed `/plaster`)
+- **Następny:** **515.0** AI3.1 leftover — undo szkicu z `payload.history` (nie live vision; nie DocLayNet)
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

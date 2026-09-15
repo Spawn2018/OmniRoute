@@ -7,7 +7,8 @@ kandydatów. Nic nie idzie do stawek, dopóki nie wciśniesz Akceptuj.
 2. Wybierz ścieżkę `text` albo `image`. `image` to tylko etykieta — plik i tak idzie przez obecny parser do tekstu.
 3. Wklej tekst albo wybierz plik (PDF, tekst, `.xlsx` albo `.xls`). Przy Excelu
    wybierz arkusz przez `sheet_index` (od zera) albo `sheet_name` (dokładna nazwa).
-   `.xlsx` czyta openpyxl (wartości z cache formuł, gdy Excel je zapisał).
+   `.xlsx` czyta openpyxl (wartości z cache formuł, gdy Excel je zapisał;
+   bez cache widać tekst formuły, bez wyliczania w OmniRoute).
    `source_ref` musi wskazywać dokument.
 4. „Ekstrahuj → szkic”. Otwórz wiersz. Nowy szkic ma wersję 0. Ścieżka `image` nie uruchamia osobnego modelu na pikselach.
 5. Popraw kod, kwotę jako tekst, walutę, notatkę, ramkę i pewność (tekst, nie liczba z modelu).
