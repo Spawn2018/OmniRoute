@@ -898,6 +898,10 @@ class InvalidShipperAwardMark(DomainError):
     """BR6.2 leftover: HITL stance award załadowcy — nie Alpega / auto-award SQL."""
 
 
+class InvalidExtractionPromptMark(DomainError):
+    """AI3.1 leftover: HITL prompt jako dana — nie wiring LLM."""
+
+
 class InvalidLcChecklist(DomainError):
     """G3: HITL checklista LC — nie bank due."""
 

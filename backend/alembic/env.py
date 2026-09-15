@@ -67,6 +67,7 @@ from app.models.crm_link_mark import CrmLinkMark  # noqa: F401
 from app.models.sales_bind_mark import SalesBindMark  # noqa: F401
 from app.models.shipper_bind_mark import ShipperBindMark  # noqa: F401
 from app.models.shipper_award_mark import ShipperAwardMark  # noqa: F401
+from app.models.extraction_prompt_mark import ExtractionPromptMark  # noqa: F401
 from app.models.shipper_round_mark import ShipperRoundMark  # noqa: F401
 from app.models.shipper_tender_mark import ShipperTenderMark  # noqa: F401
 from app.models.tracking_consent import TrackingConsent  # noqa: F401

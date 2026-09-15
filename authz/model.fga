@@ -109,6 +109,7 @@ type organization
     define can_manage_sales_bind_marks: member
     define can_manage_shipper_bind_marks: member
     define can_manage_shipper_award_marks: member
+    define can_manage_extraction_prompt_marks: member
     define can_manage_lc_checklists: member
     define can_manage_ncts_drafts: member
     define can_manage_oog_marks: member

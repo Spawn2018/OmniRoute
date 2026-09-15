@@ -1445,6 +1445,11 @@ export const OPS_JOBS = [
     job: "katalog shipper_award_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.extractionPromptMark.route,
+    label: "Prompt ekstrakcji",
+    job: "katalog extraction_prompt_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.salesLane.route,
     label: "Korytarz sprzedażowy",
     job: "katalog sales_lane HITL",
@@ -1746,6 +1751,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "497.0": "/sales-bind-marks",
   "498.0": "/shipper-bind-marks",
   "499.0": "/shipper-award-marks",
+  "502.0": "/extraction-prompt-marks",
   "461.0": "/shipper-tender-marks",
   "462.0": "/campaign-marks",
   "463.0": "/groupage-dispatcher-marks",

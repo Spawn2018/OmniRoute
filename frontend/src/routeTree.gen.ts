@@ -91,6 +91,7 @@ import { Route as Eur1AtrMarksRouteImport } from './routes/eur1-atr-marks'
 import { Route as ExceptionsRouteImport } from './routes/exceptions'
 import { Route as ExchangeConnectorsRouteImport } from './routes/exchange-connectors'
 import { Route as ExecutiveMarksRouteImport } from './routes/executive-marks'
+import { Route as ExtractionPromptMarksRouteImport } from './routes/extraction-prompt-marks'
 import { Route as ExtractionsRouteImport } from './routes/extractions'
 import { Route as FactoringConnectorsRouteImport } from './routes/factoring-connectors'
 import { Route as FairShareMarksRouteImport } from './routes/fair-share-marks'
@@ -712,6 +713,11 @@ const ExchangeConnectorsRoute = ExchangeConnectorsRouteImport.update({
 const ExecutiveMarksRoute = ExecutiveMarksRouteImport.update({
   id: '/executive-marks',
   path: '/executive-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExtractionPromptMarksRoute = ExtractionPromptMarksRouteImport.update({
+  id: '/extraction-prompt-marks',
+  path: '/extraction-prompt-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ExtractionsRoute = ExtractionsRouteImport.update({
@@ -1860,6 +1866,7 @@ export interface FileRoutesByFullPath {
   '/exceptions': typeof ExceptionsRoute
   '/exchange-connectors': typeof ExchangeConnectorsRoute
   '/executive-marks': typeof ExecutiveMarksRoute
+  '/extraction-prompt-marks': typeof ExtractionPromptMarksRoute
   '/extractions': typeof ExtractionsRoute
   '/factoring-connectors': typeof FactoringConnectorsRoute
   '/fair-share-marks': typeof FairShareMarksRoute
@@ -2156,6 +2163,7 @@ export interface FileRoutesByTo {
   '/exceptions': typeof ExceptionsRoute
   '/exchange-connectors': typeof ExchangeConnectorsRoute
   '/executive-marks': typeof ExecutiveMarksRoute
+  '/extraction-prompt-marks': typeof ExtractionPromptMarksRoute
   '/extractions': typeof ExtractionsRoute
   '/factoring-connectors': typeof FactoringConnectorsRoute
   '/fair-share-marks': typeof FairShareMarksRoute
@@ -2453,6 +2461,7 @@ export interface FileRoutesById {
   '/exceptions': typeof ExceptionsRoute
   '/exchange-connectors': typeof ExchangeConnectorsRoute
   '/executive-marks': typeof ExecutiveMarksRoute
+  '/extraction-prompt-marks': typeof ExtractionPromptMarksRoute
   '/extractions': typeof ExtractionsRoute
   '/factoring-connectors': typeof FactoringConnectorsRoute
   '/fair-share-marks': typeof FairShareMarksRoute
@@ -2751,6 +2760,7 @@ export interface FileRouteTypes {
     | '/exceptions'
     | '/exchange-connectors'
     | '/executive-marks'
+    | '/extraction-prompt-marks'
     | '/extractions'
     | '/factoring-connectors'
     | '/fair-share-marks'
@@ -3047,6 +3057,7 @@ export interface FileRouteTypes {
     | '/exceptions'
     | '/exchange-connectors'
     | '/executive-marks'
+    | '/extraction-prompt-marks'
     | '/extractions'
     | '/factoring-connectors'
     | '/fair-share-marks'
@@ -3343,6 +3354,7 @@ export interface FileRouteTypes {
     | '/exceptions'
     | '/exchange-connectors'
     | '/executive-marks'
+    | '/extraction-prompt-marks'
     | '/extractions'
     | '/factoring-connectors'
     | '/fair-share-marks'
@@ -3640,6 +3652,7 @@ export interface RootRouteChildren {
   ExceptionsRoute: typeof ExceptionsRoute
   ExchangeConnectorsRoute: typeof ExchangeConnectorsRoute
   ExecutiveMarksRoute: typeof ExecutiveMarksRoute
+  ExtractionPromptMarksRoute: typeof ExtractionPromptMarksRoute
   ExtractionsRoute: typeof ExtractionsRoute
   FactoringConnectorsRoute: typeof FactoringConnectorsRoute
   FairShareMarksRoute: typeof FairShareMarksRoute
@@ -4428,6 +4441,13 @@ declare module '@tanstack/react-router' {
       path: '/executive-marks'
       fullPath: '/executive-marks'
       preLoaderRoute: typeof ExecutiveMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/extraction-prompt-marks': {
+      id: '/extraction-prompt-marks'
+      path: '/extraction-prompt-marks'
+      fullPath: '/extraction-prompt-marks'
+      preLoaderRoute: typeof ExtractionPromptMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/extractions': {
@@ -6000,6 +6020,7 @@ const rootRouteChildren: RootRouteChildren = {
   ExceptionsRoute: ExceptionsRoute,
   ExchangeConnectorsRoute: ExchangeConnectorsRoute,
   ExecutiveMarksRoute: ExecutiveMarksRoute,
+  ExtractionPromptMarksRoute: ExtractionPromptMarksRoute,
   ExtractionsRoute: ExtractionsRoute,
   FactoringConnectorsRoute: FactoringConnectorsRoute,
   FairShareMarksRoute: FairShareMarksRoute,

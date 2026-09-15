@@ -135,6 +135,7 @@ modules =
     app.services.sales_bind_marks
     app.services.shipper_bind_marks
     app.services.shipper_award_marks
+    app.services.extraction_prompt_marks
     app.services.lc_checklists
     app.services.ncts_drafts
     app.services.oog_marks
@@ -695,6 +696,9 @@ forbidden_modules =
     app.services.shipper_award_marks
     app.repositories.shipper_award_marks
     app.models.shipper_award_mark
+    app.services.extraction_prompt_marks
+    app.repositories.extraction_prompt_marks
+    app.models.extraction_prompt_mark
     app.services.lc_checklists
     app.repositories.lc_checklists
     app.models.lc_checklist

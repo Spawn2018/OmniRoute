@@ -85,6 +85,7 @@ from app.api import (
     eur1_atr_marks,
     exchange_connectors,
     executive_marks,
+    extraction_prompt_marks,
     extractions,
     factoring_connectors,
     fair_share_marks,
@@ -563,6 +564,7 @@ api_router.include_router(crm_link_marks.router)
 api_router.include_router(sales_bind_marks.router)
 api_router.include_router(shipper_bind_marks.router)
 api_router.include_router(shipper_award_marks.router)
+api_router.include_router(extraction_prompt_marks.router)
 api_router.include_router(customer_sops.router)
 api_router.include_router(cutoff_marks.router)
 api_router.include_router(ports.router)

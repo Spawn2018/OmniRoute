@@ -197,6 +197,7 @@ def _organization_crm_sales_relations() -> dict[str, Userset]:
         "can_manage_sales_bind_marks": _member(),
         "can_manage_shipper_bind_marks": _member(),
         "can_manage_shipper_award_marks": _member(),
+        "can_manage_extraction_prompt_marks": _member(),
     }
 
 
