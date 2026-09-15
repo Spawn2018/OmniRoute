@@ -134,6 +134,7 @@ from app.api import (
     iso_nis2_marks,
     jit_jis_marks,
     job_metric_marks,
+    kpi_definition_marks,
     kreptd_licences,
     l3_gate_marks,
     label_parking_marks,
@@ -509,6 +510,7 @@ api_router.include_router(data_sources.router)
 api_router.include_router(ingest_gate_marks.router)
 api_router.include_router(model_feature_marks.router)
 api_router.include_router(cfo_narrative_marks.router)
+api_router.include_router(kpi_definition_marks.router)
 api_router.include_router(asns.router)
 api_router.include_router(otif_marks.router)
 api_router.include_router(routing_guide_enforcements.router)

@@ -107,6 +107,10 @@ export const BUSINESS_LISTS = {
     route: "/cfo-narrative-marks",
     tableKey: "cfo_narrative_mark",
   },
+  kpiDefinitionMark: {
+    route: "/kpi-definition-marks",
+    tableKey: "kpi_definition_mark",
+  },
   automationBiasMark: {
     route: "/automation-bias-marks",
     tableKey: "automation_bias_mark",
@@ -593,6 +597,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/offboarding-marks",
   "/jit-jis-marks",
   "/job-metric-marks",
+  "/kpi-definition-marks",
   "/vda-odette-marks",
   "/inventory-position-marks",
   "/fair-share-marks",

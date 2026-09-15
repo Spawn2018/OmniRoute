@@ -236,7 +236,7 @@ kolumn. Nie 468.0.
 | awizo wysyłki | asn | CT1 HITL 278.0 `asn_code` + FK nagłówka + etykiety; nie live EDI 856; nie auto shipment |
 | przewodnik routingu | routing_guide | CT4 HITL 279.0 `guide_code` + etykiety; nie 409 egzekucja; nie mapa |
 | tryb egzekucji przewodnika | routing_guide_enforcement | CT4 leftover HITL 285.0 `mark_code` + kind record_only\|block_409; nie żywy 409 |
-| znacznik OTIF | otif_mark | CT3 HITL 280.0 `mark_code` + `scope_kind` pickup\|delivery\|sku; nie OTIF%; nie scoring SQL; leftover: definicja per strona rynku (AI5.0 / D.7) |
+| znacznik OTIF | otif_mark | CT3 HITL 280.0 `mark_code` + `scope_kind` pickup\|delivery\|sku; nie OTIF%; nie scoring SQL; definicja per strona = `kpi_definition_mark` (**526.0**) |
 | tryb dopasowania przewodnika | routing_guide_match | CT4 HITL 288.0 kind guide_code_only\|lane_label\|mode_label; nie silnik |
 | znacznik współpracy 3 stron | collaboration_mark | CT11 HITL 284.0 `mark_code` + role shipper\|carrier\|consignee; nie wspólny SELECT |
 | znacznik audytu frachtu | freight_audit_mark | CT10 HITL 283.0 `mark_code` + kind expected_vs_invoice\|expected_vs_charge; nie SQL vs charge |

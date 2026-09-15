@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **525.0** AI7.1 — HITL `cfo_narrative_mark` **Następny:** **526.0** AI5.0 leftover — HITL `kpi_definition_mark` (definicja KPI per strona; nie wzór z modelu)
+**Stan (z CURRENT.md):** **526.0** AI5.0 leftover — HITL `kpi_definition_mark` **Następny:** **527.0** N6 — `margin_floor` Decimal per tenant/lane (409 albo S11; nie LLM)
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

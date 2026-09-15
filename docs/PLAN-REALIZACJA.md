@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **526.0** AI5.0 leftover — HITL `kpi_definition_mark` (definicja KPI per strona; nie wzór z modelu)
+**Następny:** **527.0** N6 — `margin_floor` Decimal per tenant/lane (409 albo S11; nie LLM)
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -529,7 +529,7 @@ Przy `/plan-modul`: karta T + [EXP1](analysis/karty-pol-fala-exp.md) (stop/konte
 | ID | Co | Status | Uwagi |
 |---|---|---|---|
 | P1–P3 | rate card / szablony / FSC + indeks BAF/CAF (EXP1) + A11 nowy wiersz | P1 zamknięty ([163.0](deltas/archived/163.0-rate-card.md); leftover P1b matching GET ([205.0](deltas/archived/205.0-rate-card-match.md)); leftover P1c–d); P2 zamknięty ([164.0](deltas/archived/164.0-charge-template.md); leftover P2c exclusion daterange ([206.0](deltas/archived/206.0-charge-template-span.md))); P3 zamknięty ([165.0](deltas/archived/165.0-fuel-index.md); leftover P3b–d) | po T7 + M-18; dane + SQL; nie T-SQL |
-| **N6** | `margin_floor` per tenant/lane → 409 albo S11 | po P0+P1 | Decimal; nie LLM |
+| **N6** | `margin_floor` per tenant/lane → 409 albo S11 | po P0+P1 | Decimal; nie LLM; **527.0** plan (`/noc 7`) |
 | P4 | Local Charge Library + THC/ISPS/seal/amendment (EXP4.5) + warning | zamknięty ([166.0](deltas/archived/166.0-local-charge.md); leftover P4b `port_unlocode` ([207.0](deltas/archived/207.0-local-charge-port.md)); leftover P4b rest `iso_size_type` ([208.0](deltas/archived/208.0-local-charge-iso.md)); leftover P4b armator/serwis; leftover P4c) | po O2; warning ≠ fakt |
 | P5 | expected vs actual na `trip` | zamknięty ([167.0](deltas/archived/167.0-trip-expected-buy.md); leftover P5b–c) | po T2; nie druga marża |
 | P6 | tender quotes (buy) | zamknięty ([168.0](deltas/archived/168.0-tender-quote.md); leftover P6b–c) | po M-25; nie auto-award; klej G2 |
@@ -716,7 +716,7 @@ Dump CT `03` i TMS `04b` **potwierdzają leftover silników** (jeden `charge`, H
 | AI4.0 | `plan_snapshot` z FK do shipment/trip/resource | po AI1; **Q3=tak** | **452.0 DONE** FK złożone RESTRICT; leftover: AI4.1 · CASCADE `REJECTED` |
 | AI4.1 | silnik what-if na `counterfactual_run` | po AI4.0 | **453.0 DONE** FK przebieg→migawka + widok `what_if_replay`; leftover: solver liczb · AI4.2 · JSON dźwigni; analog Kinaxis Maestro / scenariusz = HITL, nie live (`03` B.6) |
 | AI4.2 | symulacja kółek **w SQL**, do 500k wariantów | po AI4.1 | **454.0 DONE** widok `circle_sim_pair`; leftover: generator 500k · km · VRP |
-| AI5.0 | warstwa ingest danych zewnętrznych + `data_source` z licencją | po AI1.4 | katalog: badania `09` / `10`; **22 dostępy P0** z VISION C.1 = ten katalog, nie 22 plastry; **522.0** DONE HITL `data_source`; **523.0** DONE HITL `ingest_gate_mark`; leftover: live ingest · **526.0** delta HITL `kpi_definition_mark` (otd\|otif\|custom) — AI nie wymyśla wzoru; nie OMNI READINESS ENGINE; nie pasek 72 % |
+| AI5.0 | warstwa ingest danych zewnętrznych + `data_source` z licencją | po AI1.4 | katalog: badania `09` / `10`; **22 dostępy P0** z VISION C.1 = ten katalog, nie 22 plastry; **522.0** DONE HITL `data_source`; **523.0** DONE HITL `ingest_gate_mark`; **526.0** DONE HITL `kpi_definition_mark` (otd\|otif\|custom); leftover: live ingest · wzór KPI egzekucja — AI nie wymyśla wzoru; nie OMNI READINESS ENGINE; nie pasek 72 % |
 | AI5.1 | cechy modelu predykcyjnego z danych zewnętrznych | po AI5.0 | podnosi V2/V4; **524.0** DONE HITL `model_feature_mark`; leftover: live train (park) |
 | AI6.0 | graf skutku biznesowego: Shipment → Inventory → SKU → Production Line → Customer Order → Revenue → Margin → Cash | po AI5.1 + CI1 | Watch Tower technicznie; **519.0** DONE HITL `impact_node_mark`; **520.0** DONE HITL `impact_edge_mark`; leftover: SQL · EBITDA · CT (park) |
 | AI7.0 | Cost Allocation Engine — 12 poziomów, 6 kategorii, 23 klucze → `TRUE CONTRIBUTION MARGIN` | po AI0 | marża zostaje w `margin()`; **516.0** DONE `allocation_key`; **517.0** DONE `cost_category_mark`; **518.0** DONE `allocation_level`; leftover: SQL · TCM · AI7.1 |

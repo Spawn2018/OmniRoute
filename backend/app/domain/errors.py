@@ -998,6 +998,10 @@ class InvalidCfoNarrativeMark(DomainError):
     """AI7.1: HITL etykieta narracji CFO — nie silnik / nie druga marża."""
 
 
+class InvalidKpiDefinitionMark(DomainError):
+    """AI5.0 leftover: HITL definicja KPI — nie wzór z modelu / nie OTIF%."""
+
+
 class InvalidL3GateMark(DomainError):
     """AI8.2: HITL checklista bramy L3 — nie silnik write / nie mutacja autonomy_level."""
 

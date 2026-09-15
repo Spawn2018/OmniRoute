@@ -141,6 +141,7 @@ import { Route as InvoicesRouteImport } from './routes/invoices'
 import { Route as IsoNis2MarksRouteImport } from './routes/iso-nis2-marks'
 import { Route as JitJisMarksRouteImport } from './routes/jit-jis-marks'
 import { Route as JobMetricMarksRouteImport } from './routes/job-metric-marks'
+import { Route as KpiDefinitionMarksRouteImport } from './routes/kpi-definition-marks'
 import { Route as KreptdLicencesRouteImport } from './routes/kreptd-licences'
 import { Route as L3GateMarksRouteImport } from './routes/l3-gate-marks'
 import { Route as LabelParkingMarksRouteImport } from './routes/label-parking-marks'
@@ -974,6 +975,11 @@ const JitJisMarksRoute = JitJisMarksRouteImport.update({
 const JobMetricMarksRoute = JobMetricMarksRouteImport.update({
   id: '/job-metric-marks',
   path: '/job-metric-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KpiDefinitionMarksRoute = KpiDefinitionMarksRouteImport.update({
+  id: '/kpi-definition-marks',
+  path: '/kpi-definition-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const KreptdLicencesRoute = KreptdLicencesRouteImport.update({
@@ -1976,6 +1982,7 @@ export interface FileRoutesByFullPath {
   '/iso-nis2-marks': typeof IsoNis2MarksRoute
   '/jit-jis-marks': typeof JitJisMarksRoute
   '/job-metric-marks': typeof JobMetricMarksRoute
+  '/kpi-definition-marks': typeof KpiDefinitionMarksRoute
   '/kreptd-licences': typeof KreptdLicencesRoute
   '/l3-gate-marks': typeof L3GateMarksRoute
   '/label-parking-marks': typeof LabelParkingMarksRoute
@@ -2283,6 +2290,7 @@ export interface FileRoutesByTo {
   '/iso-nis2-marks': typeof IsoNis2MarksRoute
   '/jit-jis-marks': typeof JitJisMarksRoute
   '/job-metric-marks': typeof JobMetricMarksRoute
+  '/kpi-definition-marks': typeof KpiDefinitionMarksRoute
   '/kreptd-licences': typeof KreptdLicencesRoute
   '/l3-gate-marks': typeof L3GateMarksRoute
   '/label-parking-marks': typeof LabelParkingMarksRoute
@@ -2591,6 +2599,7 @@ export interface FileRoutesById {
   '/iso-nis2-marks': typeof IsoNis2MarksRoute
   '/jit-jis-marks': typeof JitJisMarksRoute
   '/job-metric-marks': typeof JobMetricMarksRoute
+  '/kpi-definition-marks': typeof KpiDefinitionMarksRoute
   '/kreptd-licences': typeof KreptdLicencesRoute
   '/l3-gate-marks': typeof L3GateMarksRoute
   '/label-parking-marks': typeof LabelParkingMarksRoute
@@ -2900,6 +2909,7 @@ export interface FileRouteTypes {
     | '/iso-nis2-marks'
     | '/jit-jis-marks'
     | '/job-metric-marks'
+    | '/kpi-definition-marks'
     | '/kreptd-licences'
     | '/l3-gate-marks'
     | '/label-parking-marks'
@@ -3207,6 +3217,7 @@ export interface FileRouteTypes {
     | '/iso-nis2-marks'
     | '/jit-jis-marks'
     | '/job-metric-marks'
+    | '/kpi-definition-marks'
     | '/kreptd-licences'
     | '/l3-gate-marks'
     | '/label-parking-marks'
@@ -3514,6 +3525,7 @@ export interface FileRouteTypes {
     | '/iso-nis2-marks'
     | '/jit-jis-marks'
     | '/job-metric-marks'
+    | '/kpi-definition-marks'
     | '/kreptd-licences'
     | '/l3-gate-marks'
     | '/label-parking-marks'
@@ -3822,6 +3834,7 @@ export interface RootRouteChildren {
   IsoNis2MarksRoute: typeof IsoNis2MarksRoute
   JitJisMarksRoute: typeof JitJisMarksRoute
   JobMetricMarksRoute: typeof JobMetricMarksRoute
+  KpiDefinitionMarksRoute: typeof KpiDefinitionMarksRoute
   KreptdLicencesRoute: typeof KreptdLicencesRoute
   L3GateMarksRoute: typeof L3GateMarksRoute
   LabelParkingMarksRoute: typeof LabelParkingMarksRoute
@@ -4921,6 +4934,13 @@ declare module '@tanstack/react-router' {
       path: '/job-metric-marks'
       fullPath: '/job-metric-marks'
       preLoaderRoute: typeof JobMetricMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kpi-definition-marks': {
+      id: '/kpi-definition-marks'
+      path: '/kpi-definition-marks'
+      fullPath: '/kpi-definition-marks'
+      preLoaderRoute: typeof KpiDefinitionMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/kreptd-licences': {
@@ -6270,6 +6290,7 @@ const rootRouteChildren: RootRouteChildren = {
   IsoNis2MarksRoute: IsoNis2MarksRoute,
   JitJisMarksRoute: JitJisMarksRoute,
   JobMetricMarksRoute: JobMetricMarksRoute,
+  KpiDefinitionMarksRoute: KpiDefinitionMarksRoute,
   KreptdLicencesRoute: KreptdLicencesRoute,
   L3GateMarksRoute: L3GateMarksRoute,
   LabelParkingMarksRoute: LabelParkingMarksRoute,
