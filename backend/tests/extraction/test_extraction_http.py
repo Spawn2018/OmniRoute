@@ -9,11 +9,13 @@ from app.api.accept_extraction import ExtractionAcceptResult
 from app.api.deps import require_tenant_session, set_authz_checker
 from app.domain.errors import (
     DraftNotPending,
-    ExtractionCandidatesNotEditable,
     ResourceNotFound,
     UnknownChargeCode,
 )
-from app.domain.extraction_draft import require_extraction_draft_kind
+from app.domain.extraction_draft import (
+    require_extraction_draft_kind,
+    require_rate_candidates_editable,
+)
 from app.main import app
 from app.models.extraction_draft import ExtractionDraft
 from app.models.rate_line import RateLine
@@ -125,10 +127,7 @@ class StubExtractionService:
             raise ResourceNotFound("Szkic ekstrakcji nie istnieje")
         if self.draft.status != "pending":
             raise DraftNotPending("Szkic nie jest w statusie pending")
-        if self.draft.draft_kind not in {"rate_line", "carrier_quote", "tender_rfp"}:
-            raise ExtractionCandidatesNotEditable(
-                "edycja kandydatów tylko dla rate_line, carrier_quote albo tender_rfp",
-            )
+        require_rate_candidates_editable(self.draft.draft_kind)
         payload = dict(self.draft.payload)
         payload["candidates"] = candidates
         current = payload.get("revision")

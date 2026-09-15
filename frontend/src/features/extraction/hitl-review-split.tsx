@@ -2,7 +2,7 @@ import { lazy, Suspense } from "react"
 import { Money } from "@/components/money"
 import { Button } from "@/components/ui/button"
 import { CandidatePatchForm } from "@/features/extraction/candidate-patch-form"
-import { hitlGeneratedContentLabel, hitlSplitView } from "@/features/extraction/hitl-split"
+import { hitlGeneratedContentLabel, hitlSplitView, draftAllowsCandidatePatch } from "@/features/extraction/hitl-split"
 import {
   hitlPreviewSegments,
   hitlPreviewSpans,
@@ -84,9 +84,7 @@ export function HitlReviewSplit({
           </p>
         </div>
         {draft.status === "pending" &&
-        (draft.draft_kind === "rate_line" ||
-          draft.draft_kind === "carrier_quote" ||
-          draft.draft_kind === "tender_rfp") &&
+        draftAllowsCandidatePatch(draft.draft_kind) &&
         onPatchCandidates !== undefined ? (
           <CandidatePatchForm
             draftId={view.draftId}

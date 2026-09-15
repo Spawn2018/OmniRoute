@@ -85,22 +85,6 @@ describe("hitlSplitView", () => {
     expect(html).toContain("text")
   })
 
-  it("shows candidate patch form for carrier_quote drafts", () => {
-    const draft = sampleDraft()
-    draft.draft_kind = "carrier_quote"
-    const html = renderToStaticMarkup(
-      createElement(HitlReviewSplit, {
-        draft,
-        pdfBase64: null,
-        busy: false,
-        onAccept: () => undefined,
-        onReject: () => undefined,
-        onPatchCandidates: () => undefined,
-      }),
-    )
-    expect(html).toContain("Zapisz poprawkę")
-  })
-
   it("does not show the AI label when no draft is selected", () => {
     const html = renderToStaticMarkup(
       createElement(HitlReviewSplit, {

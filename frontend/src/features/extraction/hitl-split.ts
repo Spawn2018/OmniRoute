@@ -1,5 +1,11 @@
 import type { ExtractionCandidate, ExtractionDraft } from "@/lib/extractions-api"
 
+const CANDIDATE_PATCH_KINDS = new Set(["rate_line", "carrier_quote", "tender_rfp"])
+
+export function draftAllowsCandidatePatch(draftKind: string): boolean {
+  return CANDIDATE_PATCH_KINDS.has(draftKind)
+}
+
 export type HitlSplitEmpty = {
   kind: "empty"
 }
