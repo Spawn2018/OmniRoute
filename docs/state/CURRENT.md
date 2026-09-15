@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **518.0** AI7.0 leftover — HITL `allocation_level`
 
-**Etap:** Plan — delta **519.0** (AI6.0 HITL substrat grafu skutku); komenda `/plan-modul`
+**Etap:** Plan — delta **519.0** zaakceptowana (`/noc 7`); wolno `/plaster`
 
 **Noc:** `/noc 7` do **2026-09-16T07:00+02**.
 
-**Następny:** **519.0** AI6.0 — HITL substrat Business Impact Graph (nie SQL EBITDA; nie TCM)
+**Następny:** **519.0** AI6.0 — HITL `impact_node_mark` (8 węzłów kaskady; nie SQL; nie EBITDA)
 
 **Park:** `data_source` (licencja, AI5) · SQL alokacji / TCM / AI7.1 · Graph live · Expo/EAS · GPS live poll · unwrap umów · live SMEO HTTP · wycena zapasu SQL · FK PO · live giełda HTTP · live WMS HTTP · live RFID HTTP · live zastaw · N8 / T8 · SQL line impact / EBITDA · BR2.3/BR6.3 Expo · auto-fix bez owner · Mob Expo · L3 write · silnik porównania stylu · silnik auto-zejścia · HubSpot live · Alpega live · cold-send CRM · auto-award SQL · live vision · żywy OpenAI w CI · DocLayNet · wiring Instructor (`07`). Nie otwieraj AI0.
 
-**Spec (jedyna na sesję):** (brak — najpierw `/plan-modul` → `docs/deltas/open/519.0-*.md`)
+**Spec (jedyna na sesję):** [docs/deltas/open/519.0-impact-node-mark.md](../deltas/open/519.0-impact-node-mark.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan. Wizja: [VISION.md](../VISION.md).
 
@@ -22,7 +22,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
+**2026-09-15:** Plan **519.0** zaakceptowany (`/noc 7`) — HITL `impact_node_mark`; bez SQL / EBITDA.
 **2026-09-15:** Plaster **518.0** zamknięty (`/noc 7`) — HITL `allocation_level`.
 **2026-09-15:** Plan **518.0** zaakceptowany (`/noc 7`) — HITL `allocation_level`; bez SQL / TCM.
 **2026-09-15:** Plaster **517.0** zamknięty (`/noc 7`) — HITL `cost_category_mark`.
-**2026-09-15:** Plaster **516.0** zamknięty (`/noc 7`) — HITL `allocation_key`.

@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **518.0** AI7.0 leftover — HITL `allocation_level`. **Etap:** Plan — delta **519.0** (AI6.0 HITL substrat grafu skutku); komenda `/plan-modul`. **Następny:** **519.0** AI6.0 — HITL substrat Business Impact Graph (nie SQL EBITDA; nie TCM) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **518.0** AI7.0 leftover — HITL `allocation_level`. **Etap:** Plan — delta **519.0** zaakceptowana (`/noc 7`); wolno `/plaster`. **Następny:** **519.0** AI6.0 — HITL `impact_node_mark` (8 węzłów kaskady; nie SQL; nie EBITDA) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
