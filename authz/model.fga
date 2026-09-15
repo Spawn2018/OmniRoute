@@ -129,6 +129,7 @@ type organization
     define can_manage_article50_marks: member
     define can_manage_data_sources: member
     define can_manage_ingest_gate_marks: member
+    define can_manage_model_feature_marks: member
     define can_manage_automation_bias_marks: member
     define can_manage_l3_gate_marks: member
     define can_manage_style_cascade_marks: member

@@ -154,6 +154,7 @@ from app.api import (
     make_or_buy_marks,
     memory_edges,
     mobile_client_marks,
+    model_feature_marks,
     money_costs,
     monitoring_schemes,
     mqc_marks,
@@ -505,6 +506,7 @@ api_router.include_router(impact_node_marks.router)
 api_router.include_router(article50_marks.router)
 api_router.include_router(data_sources.router)
 api_router.include_router(ingest_gate_marks.router)
+api_router.include_router(model_feature_marks.router)
 api_router.include_router(asns.router)
 api_router.include_router(otif_marks.router)
 api_router.include_router(routing_guide_enforcements.router)

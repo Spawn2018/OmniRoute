@@ -990,6 +990,10 @@ class InvalidIngestGateMark(DomainError):
     """AI5.0 leftover: HITL brama ingest — nie live HTTP."""
 
 
+class InvalidModelFeatureMark(DomainError):
+    """AI5.1: HITL etykieta cechy modelu — nie live train."""
+
+
 class InvalidL3GateMark(DomainError):
     """AI8.2: HITL checklista bramy L3 — nie silnik write / nie mutacja autonomy_level."""
 

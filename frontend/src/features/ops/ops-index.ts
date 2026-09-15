@@ -663,6 +663,11 @@ export const OPS_JOBS = [
     label: "Brama ingest",
     job: "katalog ingest_gate_mark HITL",
   },
+  {
+    route: BUSINESS_LISTS.modelFeatureMark.route,
+    label: "Cecha modelu",
+    job: "katalog model_feature_mark HITL",
+  },
 {
     route: BUSINESS_LISTS.automationBiasMark.route,
     label: "Automation bias",
@@ -1809,6 +1814,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "521.0": "/article50-marks",
   "522.0": "/data-sources",
   "523.0": "/ingest-gate-marks",
+  "524.0": "/model-feature-marks",
   "461.0": "/shipper-tender-marks",
   "462.0": "/campaign-marks",
   "463.0": "/groupage-dispatcher-marks",
