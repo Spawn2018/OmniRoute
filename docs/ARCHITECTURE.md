@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **517.0** AI7.0 leftover — HITL `cost_category_mark`. **Etap:** Plan — delta **518.0** AI7.0 leftover 12 poziomów alokacji (przed `/plaster`). **Następny:** **518.0** AI7.0 leftover — HITL 12 poziomów alokacji (otwarty słownik; nie SQL; nie TCM) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **517.0** AI7.0 leftover — HITL `cost_category_mark`. **Etap:** Plan — delta **518.0** zaakceptowana (`/noc 7`); wolno `/plaster`. **Następny:** **518.0** AI7.0 leftover — HITL `allocation_level` (otwarty słownik poziomów; nie SQL; nie TCM) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

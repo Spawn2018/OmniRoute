@@ -34,6 +34,7 @@ kolumn. Nie 468.0.
 | poziom autonomii | autonomy_level | AI1.4 HITL otwarty słownik level_code; nie CHECK; nie FK klienta |
 | klucz alokacji kosztów | allocation_key | AI7.0 HITL otwarty słownik key_code; nie SQL alokacji; nie druga marża; nie cost_allocation_mark |
 | kategoria kosztu | cost_category_mark | AI7.0 HITL 6 kategorii PDF + other; nie SQL; nie TCM; nie cost_allocation_mark |
+| poziom alokacji kosztów | allocation_level | AI7.0 HITL otwarty słownik level_code; nie CHECK 12; nie SQL; nie TCM |
 | sala kryzysowa | war_room_mark | W2 HITL 200.0 rodzaj incydentu; nie N8; nie drugi czat; nie T8 API |
 | sala operacyjna | ops_room_mark | BR7.0 HITL warstwa działająca (shift/board/escalation); nie N8; nie widok sklejony |
 | warstwa liczona linii | line_impact_layer_mark | BR7.1 HITL scored/forecast/actual; nie SQL EBITDA; nie plant live |
