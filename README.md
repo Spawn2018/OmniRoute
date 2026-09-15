@@ -88,9 +88,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **495.0** BR6.0 leftover — HITL `crm_dedup_mark`
-- **Etap:** Plan — leftover BR6.0 FK stance. Komenda `/plan-modul`.
-- **Następny:** **496.0** BR6.0 leftover — HITL stance FK (`link_kind` lead|party|other; nie cold-send, nie merge SQL)
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Etap:** Plaster — delta **496.0** zaakceptowana. Komenda `/plaster`.
+- **Następny:** **496.0** BR6.0 leftover — HITL `crm_link_mark` (`link_kind` lead|party|other; nie FK UUID, nie cold-send)
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 
