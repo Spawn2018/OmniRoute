@@ -88,8 +88,8 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **516.0** AI7.0 — HITL `allocation_key`
-- **Etap:** Plan — delta **517.0** AI7.0 leftover 6 kategorii kosztów (przed `/plaster`)
-- **Następny:** **517.0** AI7.0 leftover — HITL kategorie kosztów (6 z PDF; nie SQL; nie TCM)
+- **Etap:** Plan — delta **517.0** zaakceptowana (`/noc 7`); wolno `/plaster`
+- **Następny:** **517.0** AI7.0 leftover — HITL `cost_category_mark` (6 kategorii PDF; nie SQL; nie TCM)
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

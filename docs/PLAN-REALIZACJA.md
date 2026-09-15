@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **517.0** AI7.0 leftover — HITL kategorie kosztów (6 z PDF; nie SQL; nie TCM)
+**Następny:** **517.0** AI7.0 leftover — HITL `cost_category_mark` (6 kategorii PDF; nie SQL; nie TCM)
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -719,7 +719,7 @@ Dump CT `03` i TMS `04b` **potwierdzają leftover silników** (jeden `charge`, H
 | AI5.0 | warstwa ingest danych zewnętrznych + `data_source` z licencją | po AI1.4 | katalog: badania `09` / `10`; **22 dostępy P0** z VISION C.1 = ten katalog, nie 22 plastry; leftover: brama „źródło prawdy + właściciel + wyjątek” przed pierwszym ingestem produkcyjnym; definicja KPI per strona (OTD/OTIF) — AI nie wymyśla wzoru; nie OMNI READINESS ENGINE; nie pasek 72 % |
 | AI5.1 | cechy modelu predykcyjnego z danych zewnętrznych | po AI5.0 | podnosi V2/V4 |
 | AI6.0 | graf skutku biznesowego: Shipment → Inventory → SKU → Production Line → Customer Order → Revenue → Margin → Cash | po AI5.1 + CI1 | Watch Tower technicznie; podnosi V6 leftover EBITDA i CT |
-| AI7.0 | Cost Allocation Engine — 12 poziomów, 6 kategorii, 23 klucze → `TRUE CONTRIBUTION MARGIN` | po AI0 | marża zostaje w `margin()`; **516.0** DONE HITL `allocation_key`; leftover: 12 poziomów · 6 kategorii · SQL · TCM · AI7.1 |
+| AI7.0 | Cost Allocation Engine — 12 poziomów, 6 kategorii, 23 klucze → `TRUE CONTRIBUTION MARGIN` | po AI0 | marża zostaje w `margin()`; **516.0** DONE HITL `allocation_key`; **517.0** plan HITL `cost_category_mark` (6 kategorii); leftover: 12 poziomów · SQL · TCM · AI7.1 |
 | AI7.1 | Cyfrowy CFO — narracja **po** SQL, nigdy zamiast | po AI7.0 | anomalia nie jest dowodem; model nie liczy |
 | AI8.0 | kaskada stylu Global → Company → Department → User → Customer → Person-to-Person → Context | po AI2.0 | bliźniak osoby = styl i relacja, nigdy ocena wyników; **484.0** DONE HITL `style_cascade_mark`; leftover: AI8.1 fidelity · silnik stylu |
 | AI8.1 | `STYLE FIDELITY SCORE`, bramka 85% | po AI8.0 | szkic niebrzmiący jak ten użytkownik nie jest proponowany; **485.0** DONE HITL `style_fidelity_mark` (pass/hold/reject/exempt); leftover: silnik score · auto-bramka |

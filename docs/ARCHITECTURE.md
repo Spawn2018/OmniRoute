@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **516.0** AI7.0 — HITL `allocation_key`. **Etap:** Plan — delta **517.0** AI7.0 leftover 6 kategorii kosztów (przed `/plaster`). **Następny:** **517.0** AI7.0 leftover — HITL kategorie kosztów (6 z PDF; nie SQL; nie TCM) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **516.0** AI7.0 — HITL `allocation_key`. **Etap:** Plan — delta **517.0** zaakceptowana (`/noc 7`); wolno `/plaster`. **Następny:** **517.0** AI7.0 leftover — HITL `cost_category_mark` (6 kategorii PDF; nie SQL; nie TCM) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
