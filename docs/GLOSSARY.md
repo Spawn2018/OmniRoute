@@ -34,6 +34,7 @@ kolumn. Nie 468.0.
 | źródło danych | data_source | AI5.0 HITL source_code + license_label + rights_scope; nie live ingest; nie CHECK listy |
 | brama ingest | ingest_gate_mark | AI5.0 leftover HITL truth|owner|exception; nie live ingest |
 | cecha modelu | model_feature_mark | AI5.1 HITL numeric|categorical|derived; nie live train; nie feature store |
+| narracja CFO | cfo_narrative_mark | AI7.1 HITL anomaly|story|summary; nie silnik narracji; nie druga marża |
 | poziom autonomii | autonomy_level | AI1.4 HITL otwarty słownik level_code; nie CHECK; nie FK klienta |
 | klucz alokacji kosztów | allocation_key | AI7.0 HITL otwarty słownik key_code; nie SQL alokacji; nie druga marża; nie cost_allocation_mark |
 | kategoria kosztu | cost_category_mark | AI7.0 HITL 6 kategorii PDF + other; nie SQL; nie TCM; nie cost_allocation_mark |
