@@ -22,7 +22,13 @@ class DocumentText:
 
 
 class DocumentParser(Protocol):
-    def parse(self, *, source_ref: str, raw_bytes: bytes) -> DocumentText: ...
+    def parse(
+        self,
+        *,
+        source_ref: str,
+        raw_bytes: bytes,
+        sheet_index: int = 0,
+    ) -> DocumentText: ...
 
 
 def _zip_has_workbook(raw_bytes: bytes) -> bool:
@@ -48,16 +54,28 @@ def layout_fingerprint(raw_bytes: bytes) -> str:
 class StubDocumentParser:
     """UTF-8 z bajtów — cenniki wklejone jako tekst."""
 
-    def parse(self, *, source_ref: str, raw_bytes: bytes) -> DocumentText:
-        del source_ref
+    def parse(
+        self,
+        *,
+        source_ref: str,
+        raw_bytes: bytes,
+        sheet_index: int = 0,
+    ) -> DocumentText:
+        del source_ref, sheet_index
         return DocumentText(text=raw_bytes.decode("utf-8", errors="replace"), parser_name="stub")
 
 
 class PdfStringsParser:
     """Deterministyczny extractor stringów z PDF — parser A bez ML."""
 
-    def parse(self, *, source_ref: str, raw_bytes: bytes) -> DocumentText:
-        del source_ref
+    def parse(
+        self,
+        *,
+        source_ref: str,
+        raw_bytes: bytes,
+        sheet_index: int = 0,
+    ) -> DocumentText:
+        del source_ref, sheet_index
         chunks = [match.decode("ascii") for match in _PRINTABLE_RUN.findall(raw_bytes)]
         text = "\n".join(chunks).strip()
         if not text:
@@ -66,16 +84,38 @@ class PdfStringsParser:
 
 
 class DeterministicDocumentParser:
-    def parse(self, *, source_ref: str, raw_bytes: bytes) -> DocumentText:
+    def parse(
+        self,
+        *,
+        source_ref: str,
+        raw_bytes: bytes,
+        sheet_index: int = 0,
+    ) -> DocumentText:
         kind = layout_fingerprint(raw_bytes)
         if kind == "pdf":
-            return PdfStringsParser().parse(source_ref=source_ref, raw_bytes=raw_bytes)
+            return PdfStringsParser().parse(
+                source_ref=source_ref,
+                raw_bytes=raw_bytes,
+                sheet_index=sheet_index,
+            )
         if kind == "xlsx":
             from app.integrations.docling.xlsx_sheet import XlsxSheetParser
 
-            return XlsxSheetParser().parse(source_ref=source_ref, raw_bytes=raw_bytes)
+            return XlsxSheetParser().parse(
+                source_ref=source_ref,
+                raw_bytes=raw_bytes,
+                sheet_index=sheet_index,
+            )
         if kind == "xls":
             from app.integrations.docling.xls_sheet import XlsSheetParser
 
-            return XlsSheetParser().parse(source_ref=source_ref, raw_bytes=raw_bytes)
-        return StubDocumentParser().parse(source_ref=source_ref, raw_bytes=raw_bytes)
+            return XlsSheetParser().parse(
+                source_ref=source_ref,
+                raw_bytes=raw_bytes,
+                sheet_index=sheet_index,
+            )
+        return StubDocumentParser().parse(
+            source_ref=source_ref,
+            raw_bytes=raw_bytes,
+            sheet_index=sheet_index,
+        )

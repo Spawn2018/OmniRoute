@@ -65,12 +65,14 @@ export function extractionCreateBody(args: {
     intake_code: string
   }
   extractPath?: string
+  sheetIndex?: number
 }): {
   source_ref: string
   input_text?: string
   document_base64?: string
   draft_kind?: string
   extract_path?: string
+  sheet_index?: number
   quote?: (typeof args)["quote"]
   rfp?: (typeof args)["rfp"]
 } {
@@ -80,6 +82,7 @@ export function extractionCreateBody(args: {
     document_base64?: string
     draft_kind?: string
     extract_path?: string
+    sheet_index?: number
     quote?: (typeof args)["quote"]
     rfp?: (typeof args)["rfp"]
   } =
@@ -97,6 +100,15 @@ export function extractionCreateBody(args: {
   }
   if (args.extractPath !== undefined && args.extractPath !== "") {
     body.extract_path = args.extractPath
+  }
+  if (
+    args.sheetIndex !== undefined &&
+    Number.isInteger(args.sheetIndex) &&
+    args.sheetIndex >= 0 &&
+    args.documentBase64 !== null &&
+    args.documentBase64.length > 0
+  ) {
+    body.sheet_index = args.sheetIndex
   }
   return body
 }

@@ -125,10 +125,15 @@ class ExtractionService:
         quote_payload: object = None,
         rfp_payload: object = None,
         extract_path: object = None,
+        sheet_index: int = 0,
     ) -> ExtractionDraft:
         if len(raw_bytes) > _MAX_DOCUMENT_BYTES:
             raise UnparseableDocument("Dokument przekracza 2 MB")
-        parsed = self._parser.parse(source_ref=source_ref, raw_bytes=raw_bytes)
+        parsed = self._parser.parse(
+            source_ref=source_ref,
+            raw_bytes=raw_bytes,
+            sheet_index=sheet_index,
+        )
         return await self.extract_to_draft(
             organization_id=organization_id,
             user_id=user_id,

@@ -50,6 +50,7 @@ class ExtractRequest(BaseModel):
     )
     draft_kind: str | None = None
     extract_path: Literal["text", "image"] | None = None
+    sheet_index: int | None = Field(default=None, ge=0)
     quote: CarrierQuoteExtract | None = None
     rfp: TenderRfpExtract | None = None
 
@@ -59,6 +60,8 @@ class ExtractRequest(BaseModel):
         has_doc = self.document_base64 is not None
         if has_text == has_doc:
             raise ValueError("Podaj dokładnie jedno: input_text albo document_base64")
+        if self.sheet_index is not None and not has_doc:
+            raise ValueError("sheet_index tylko z document_base64")
         return self
 
 
@@ -121,6 +124,7 @@ async def create_extraction_draft(
             quote_payload=None if body.quote is None else body.quote.model_dump(),
             rfp_payload=None if body.rfp is None else body.rfp.model_dump(),
             extract_path=body.extract_path,
+            sheet_index=0 if body.sheet_index is None else body.sheet_index,
         )
     else:
         if body.input_text is None:

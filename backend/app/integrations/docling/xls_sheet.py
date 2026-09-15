@@ -53,8 +53,16 @@ def _sheet_lines(book: xlrd.Book, sheet: xlrd.sheet.Sheet) -> list[str]:
 
 
 class XlsSheetParser:
-    def parse(self, *, source_ref: str, raw_bytes: bytes) -> DocumentText:
+    def parse(
+        self,
+        *,
+        source_ref: str,
+        raw_bytes: bytes,
+        sheet_index: int = 0,
+    ) -> DocumentText:
         del source_ref
+        if sheet_index < 0:
+            raise UnparseableDocument("sheet_index poza zakresem")
         if not is_ole_compound(raw_bytes):
             raise UnparseableDocument("xls bez nagłówka OLE")
         try:
@@ -63,7 +71,9 @@ class XlsSheetParser:
             raise UnparseableDocument("xls nieczytelne") from exc
         if book.nsheets < 1:
             raise UnparseableDocument("xls bez arkusza")
-        sheet = book.sheet_by_index(0)
+        if sheet_index >= book.nsheets:
+            raise UnparseableDocument("sheet_index poza zakresem")
+        sheet = book.sheet_by_index(sheet_index)
         text = "\n".join(_sheet_lines(book, sheet)).strip()
         if not text:
             raise UnparseableDocument("xls bez tekstu")

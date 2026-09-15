@@ -1,4 +1,4 @@
-"""Pierwszy arkusz OOXML → tekst. Bez openpyxl. Kwoty zostają tekstem z XML."""
+"""Pierwszy lub wskazany arkusz OOXML → tekst. Bez openpyxl. Kwoty zostają tekstem z XML."""
 
 from io import BytesIO
 from xml.etree.ElementTree import Element, fromstring
@@ -41,15 +41,13 @@ def _cell_text(cell: Element, shared: list[str]) -> str:
     return value
 
 
-def _sheet_path(names: list[str]) -> str:
-    if "xl/worksheets/sheet1.xml" in names:
-        return "xl/worksheets/sheet1.xml"
-    sheets = sorted(
+def _sheet_paths(names: list[str]) -> list[str]:
+    numbered = sorted(
         name for name in names if name.startswith("xl/worksheets/sheet") and name.endswith(".xml")
     )
-    if not sheets:
+    if not numbered:
         raise UnparseableDocument("xlsx bez arkusza")
-    return sheets[0]
+    return numbered
 
 
 def _sheet_lines(root: Element, shared: list[str]) -> list[str]:
@@ -65,8 +63,16 @@ def _sheet_lines(root: Element, shared: list[str]) -> list[str]:
 
 
 class XlsxSheetParser:
-    def parse(self, *, source_ref: str, raw_bytes: bytes) -> DocumentText:
+    def parse(
+        self,
+        *,
+        source_ref: str,
+        raw_bytes: bytes,
+        sheet_index: int = 0,
+    ) -> DocumentText:
         del source_ref
+        if sheet_index < 0:
+            raise UnparseableDocument("sheet_index poza zakresem")
         try:
             archive = ZipFile(BytesIO(raw_bytes))
         except BadZipFile as exc:
@@ -74,8 +80,11 @@ class XlsxSheetParser:
         names = archive.namelist()
         if "xl/workbook.xml" not in names:
             raise UnparseableDocument("xlsx bez skoroszytu")
+        paths = _sheet_paths(names)
+        if sheet_index >= len(paths):
+            raise UnparseableDocument("sheet_index poza zakresem")
         shared = _shared_strings(archive)
-        root = fromstring(archive.read(_sheet_path(names)))
+        root = fromstring(archive.read(paths[sheet_index]))
         text = "\n".join(_sheet_lines(root, shared)).strip()
         if not text:
             raise UnparseableDocument("xlsx bez tekstu")

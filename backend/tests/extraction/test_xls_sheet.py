@@ -32,3 +32,18 @@ def test_xls_empty_sheet_is_unparseable() -> None:
 def test_xls_parser_requires_ole() -> None:
     with pytest.raises(UnparseableDocument, match="OLE"):
         XlsSheetParser().parse(source_ref="doc://x", raw_bytes=b"PK\x03\x04not-ole")
+
+
+def test_xls_sheet_index_reads_second_sheet() -> None:
+    raw = (_FIXTURES / "two.xls").read_bytes()
+    first = XlsSheetParser().parse(source_ref="doc://x", raw_bytes=raw, sheet_index=0)
+    second = XlsSheetParser().parse(source_ref="doc://x", raw_bytes=raw, sheet_index=1)
+    assert "BAF" in first.text
+    assert "THC" in second.text
+    assert "EUR" in second.text
+
+
+def test_xls_sheet_index_out_of_range() -> None:
+    raw = (_FIXTURES / "two.xls").read_bytes()
+    with pytest.raises(UnparseableDocument, match="sheet_index"):
+        XlsSheetParser().parse(source_ref="doc://x", raw_bytes=raw, sheet_index=9)

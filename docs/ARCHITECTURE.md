@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **506.0** AI3.4 leftover — odczyt `.xls` BIFF. **Etap:** Plan — delta **507.0** AI3.4 leftover wybór arkusza (przed `/plaster`). **Następny:** **507.0** AI3.4 leftover — HITL indeks/nazwa arkusza (nie openpyxl; nie live vision) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **507.0** AI3.4 leftover — `sheet_index` HITL. **Etap:** Plan — delta **508.0** AI3.4 leftover `sheet_name` (przed `/plaster`). **Następny:** **508.0** AI3.4 leftover — HITL `sheet_name` (nie openpyxl; nie live vision) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

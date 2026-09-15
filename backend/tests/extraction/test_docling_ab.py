@@ -23,8 +23,14 @@ class _FixedParser:
         self._text = text
         self._name = name
 
-    def parse(self, *, source_ref: str, raw_bytes: bytes) -> DocumentText:
-        del source_ref, raw_bytes
+    def parse(
+        self,
+        *,
+        source_ref: str,
+        raw_bytes: bytes,
+        sheet_index: int = 0,
+    ) -> DocumentText:
+        del source_ref, raw_bytes, sheet_index
         return DocumentText(text=self._text, parser_name=self._name)
 
 
@@ -51,8 +57,14 @@ def test_ab_picks_longer_text_and_records_delta() -> None:
 
 def test_ab_falls_back_when_challenger_missing() -> None:
     class _Missing:
-        def parse(self, *, source_ref: str, raw_bytes: bytes) -> DocumentText:
-            del source_ref, raw_bytes
+        def parse(
+            self,
+            *,
+            source_ref: str,
+            raw_bytes: bytes,
+            sheet_index: int = 0,
+        ) -> DocumentText:
+            del source_ref, raw_bytes, sheet_index
             raise DocumentParserUnavailable("brak docling")
 
     parsed = AbDocumentParser(_FixedParser("aa", "a"), _Missing()).parse(

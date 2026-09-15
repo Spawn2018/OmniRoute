@@ -45,4 +45,15 @@ describe("extractionCreateBody", () => {
       },
     })
   })
+
+  it("sends sheet_index with document_base64", () => {
+    expect(
+      extractionCreateBody({
+        sourceRef: "doc://x",
+        inputText: "ignored",
+        documentBase64: "YQ==",
+        sheetIndex: 1,
+      }),
+    ).toEqual({ source_ref: "doc://x", document_base64: "YQ==", sheet_index: 1 })
+  })
 })

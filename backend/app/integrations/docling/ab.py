@@ -9,10 +9,24 @@ class AbDocumentParser:
         self._primary = primary
         self._challenger = challenger
 
-    def parse(self, *, source_ref: str, raw_bytes: bytes) -> DocumentText:
-        primary = self._primary.parse(source_ref=source_ref, raw_bytes=raw_bytes)
+    def parse(
+        self,
+        *,
+        source_ref: str,
+        raw_bytes: bytes,
+        sheet_index: int = 0,
+    ) -> DocumentText:
+        primary = self._primary.parse(
+            source_ref=source_ref,
+            raw_bytes=raw_bytes,
+            sheet_index=sheet_index,
+        )
         try:
-            challenger = self._challenger.parse(source_ref=source_ref, raw_bytes=raw_bytes)
+            challenger = self._challenger.parse(
+                source_ref=source_ref,
+                raw_bytes=raw_bytes,
+                sheet_index=sheet_index,
+            )
         except DocumentParserUnavailable:
             return DocumentText(text=primary.text, parser_name=primary.parser_name)
 

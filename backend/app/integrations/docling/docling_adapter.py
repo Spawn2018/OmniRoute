@@ -10,8 +10,14 @@ from app.integrations.docling.parser import DocumentText
 
 
 class DoclingDocumentParser:
-    def parse(self, *, source_ref: str, raw_bytes: bytes) -> DocumentText:
-        del source_ref
+    def parse(
+        self,
+        *,
+        source_ref: str,
+        raw_bytes: bytes,
+        sheet_index: int = 0,
+    ) -> DocumentText:
+        del source_ref, sheet_index
         try:
             from docling.document_converter import DocumentConverter
         except ImportError as exc:

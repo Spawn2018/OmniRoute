@@ -1,4 +1,5 @@
 from io import BytesIO
+from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZipFile
 
 import pytest
@@ -65,3 +66,17 @@ def test_xlsx_empty_sheet_is_unparseable() -> None:
 def test_xlsx_parser_requires_workbook() -> None:
     with pytest.raises(UnparseableDocument, match="skoroszytu"):
         XlsxSheetParser().parse(source_ref="doc://x", raw_bytes=_zip_without_workbook())
+
+
+def test_xlsx_sheet_index_reads_second_sheet() -> None:
+    raw = (Path(__file__).resolve().parent / "fixtures" / "two.xlsx").read_bytes()
+    first = XlsxSheetParser().parse(source_ref="doc://x", raw_bytes=raw, sheet_index=0)
+    second = XlsxSheetParser().parse(source_ref="doc://x", raw_bytes=raw, sheet_index=1)
+    assert "BAF" in first.text
+    assert "THC 10 EUR" in second.text
+
+
+def test_xlsx_sheet_index_out_of_range() -> None:
+    raw = (Path(__file__).resolve().parent / "fixtures" / "two.xlsx").read_bytes()
+    with pytest.raises(UnparseableDocument, match="sheet_index"):
+        XlsxSheetParser().parse(source_ref="doc://x", raw_bytes=raw, sheet_index=9)
