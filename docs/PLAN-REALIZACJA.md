@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **509.0** AI3.3 leftover — golden ≥500 vs MockExtractor (nie DocLayNet; nie live vision)
+**Następny:** **510.0** AI3.3 leftover — pętla golden ≥2000 pytest (nie DocLayNet; nie live vision)
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -711,7 +711,7 @@ Dump CT `03` i TMS `04b` **potwierdzają leftover silników** (jeden `charge`, H
 | AI3.0 | `PATCH` na `extraction_draft` + edycja w interfejsie przed akceptacją | po AI2.0 | **447.0 DONE** PATCH `candidates`; **500.0 DONE** quote/rfp; **501.0 DONE** próg 70%; **504.0 DONE** partial `candidate_indexes`; **505.0 DONE** `hitl_confidence_min`; leftover: live vision (`07`) |
 | AI3.1 | wersjonowanie szkicu + `draft_kind` + `bbox` i pewność w JSONB | po AI3.0 | **448.0 DONE** `payload.revision` + `bbox_text`/`confidence_text`; **502.0 DONE** HITL `extraction_prompt_mark`; **503.0 DONE** `payload.history`; leftover: wiring Instructor (`07`) · undo |
 | AI3.2 | ścieżka **obraz wprost** jako challenger dla obecnej ścieżki przez tekst | po AI3.1 | **449.0 DONE** `extract_path` text|image etykieta; leftover: live vision · pełny pipeline zdjęcia OpenCV/CLAHE (`07` / X9) · AI3.3 · AI3.4 |
-| AI3.3 | własny zbiór golden + bramka wydaniowa na progach | po AI3.2 | **450.0 DONE** pytest vs THC/BAF; **509.0** plan golden ≥500 (`/noc 15`); leftover po 509: pętla 2 000 / 5 000 · DocLayNet / PubTables-1M / CORD / Kleister (licencje, `07`) · instructor CI · 96,6% `TO_VERIFY`; FUNSD / RVL-CDIP `REJECTED` |
+| AI3.3 | własny zbiór golden + bramka wydaniowa na progach | po AI3.2 | **450.0 DONE** pytest vs THC/BAF; **509.0 DONE** golden ≥500; leftover: pętla 2 000 (**510.0**) / 5 000 · DocLayNet / PubTables-1M / CORD / Kleister (licencje, `07`) · instructor CI · 96,6% `TO_VERIFY`; FUNSD / RVL-CDIP `REJECTED` |
 | AI3.4 | ekstrakcja z Excela (dziś tylko PDF) | po AI3.1 | **451.0 DONE** `xlsx_sheet` stdlib; **506.0 DONE** `.xls` xlrd; **507.0 DONE** `sheet_index`; **508.0 DONE** `sheet_name`; leftover: openpyxl |
 | AI4.0 | `plan_snapshot` z FK do shipment/trip/resource | po AI1; **Q3=tak** | **452.0 DONE** FK złożone RESTRICT; leftover: AI4.1 · CASCADE `REJECTED` |
 | AI4.1 | silnik what-if na `counterfactual_run` | po AI4.0 | **453.0 DONE** FK przebieg→migawka + widok `what_if_replay`; leftover: solver liczb · AI4.2 · JSON dźwigni; analog Kinaxis Maestro / scenariusz = HITL, nie live (`03` B.6) |
@@ -859,13 +859,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

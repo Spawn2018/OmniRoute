@@ -2,11 +2,5501 @@
   {
     "source_ref": "doc://promptfoo/thc",
     "input_text": "THC 100 EUR",
-    "expected": [{"code": "THC", "amount_text": "100", "currency": "EUR"}]
+    "expected": [
+      {
+        "code": "THC",
+        "amount_text": "100",
+        "currency": "EUR"
+      }
+    ]
   },
   {
     "source_ref": "doc://promptfoo/baf",
     "input_text": "BAF 12 USD; weekend note",
-    "expected": [{"code": "BAF", "amount_text": "12", "currency": "USD"}]
+    "expected": [
+      {
+        "code": "BAF",
+        "amount_text": "12",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thc-1-eur",
+    "input_text": "THC 1 EUR",
+    "expected": [
+      {
+        "code": "THC",
+        "amount_text": "1",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thc-1-usd",
+    "input_text": "THC 1 USD",
+    "expected": [
+      {
+        "code": "THC",
+        "amount_text": "1",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thc-1-pln",
+    "input_text": "THC 1 PLN",
+    "expected": [
+      {
+        "code": "THC",
+        "amount_text": "1",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thc-1-gbp",
+    "input_text": "THC 1 GBP",
+    "expected": [
+      {
+        "code": "THC",
+        "amount_text": "1",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thc-12-eur",
+    "input_text": "THC 12 EUR",
+    "expected": [
+      {
+        "code": "THC",
+        "amount_text": "12",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thc-12-usd",
+    "input_text": "THC 12 USD",
+    "expected": [
+      {
+        "code": "THC",
+        "amount_text": "12",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thc-12-pln",
+    "input_text": "THC 12 PLN",
+    "expected": [
+      {
+        "code": "THC",
+        "amount_text": "12",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thc-12-gbp",
+    "input_text": "THC 12 GBP",
+    "expected": [
+      {
+        "code": "THC",
+        "amount_text": "12",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thc-100-usd",
+    "input_text": "THC 100 USD",
+    "expected": [
+      {
+        "code": "THC",
+        "amount_text": "100",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thc-100-pln",
+    "input_text": "THC 100 PLN",
+    "expected": [
+      {
+        "code": "THC",
+        "amount_text": "100",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thc-100-gbp",
+    "input_text": "THC 100 GBP",
+    "expected": [
+      {
+        "code": "THC",
+        "amount_text": "100",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thc-250p5-eur",
+    "input_text": "THC 250.5 EUR",
+    "expected": [
+      {
+        "code": "THC",
+        "amount_text": "250.5",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thc-250p5-usd",
+    "input_text": "THC 250.5 USD",
+    "expected": [
+      {
+        "code": "THC",
+        "amount_text": "250.5",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thc-250p5-pln",
+    "input_text": "THC 250.5 PLN",
+    "expected": [
+      {
+        "code": "THC",
+        "amount_text": "250.5",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thc-250p5-gbp",
+    "input_text": "THC 250.5 GBP",
+    "expected": [
+      {
+        "code": "THC",
+        "amount_text": "250.5",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thc-999p99-eur",
+    "input_text": "THC 999.99 EUR",
+    "expected": [
+      {
+        "code": "THC",
+        "amount_text": "999.99",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thc-999p99-usd",
+    "input_text": "THC 999.99 USD",
+    "expected": [
+      {
+        "code": "THC",
+        "amount_text": "999.99",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thc-999p99-pln",
+    "input_text": "THC 999.99 PLN",
+    "expected": [
+      {
+        "code": "THC",
+        "amount_text": "999.99",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thc-999p99-gbp",
+    "input_text": "THC 999.99 GBP",
+    "expected": [
+      {
+        "code": "THC",
+        "amount_text": "999.99",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/baf-1-eur",
+    "input_text": "BAF 1 EUR",
+    "expected": [
+      {
+        "code": "BAF",
+        "amount_text": "1",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/baf-1-usd",
+    "input_text": "BAF 1 USD",
+    "expected": [
+      {
+        "code": "BAF",
+        "amount_text": "1",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/baf-1-pln",
+    "input_text": "BAF 1 PLN",
+    "expected": [
+      {
+        "code": "BAF",
+        "amount_text": "1",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/baf-1-gbp",
+    "input_text": "BAF 1 GBP",
+    "expected": [
+      {
+        "code": "BAF",
+        "amount_text": "1",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/baf-12-eur",
+    "input_text": "BAF 12 EUR",
+    "expected": [
+      {
+        "code": "BAF",
+        "amount_text": "12",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/baf-12-pln",
+    "input_text": "BAF 12 PLN",
+    "expected": [
+      {
+        "code": "BAF",
+        "amount_text": "12",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/baf-12-gbp",
+    "input_text": "BAF 12 GBP",
+    "expected": [
+      {
+        "code": "BAF",
+        "amount_text": "12",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/baf-100-eur",
+    "input_text": "BAF 100 EUR",
+    "expected": [
+      {
+        "code": "BAF",
+        "amount_text": "100",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/baf-100-usd",
+    "input_text": "BAF 100 USD",
+    "expected": [
+      {
+        "code": "BAF",
+        "amount_text": "100",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/baf-100-pln",
+    "input_text": "BAF 100 PLN",
+    "expected": [
+      {
+        "code": "BAF",
+        "amount_text": "100",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/baf-100-gbp",
+    "input_text": "BAF 100 GBP",
+    "expected": [
+      {
+        "code": "BAF",
+        "amount_text": "100",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/baf-250p5-eur",
+    "input_text": "BAF 250.5 EUR",
+    "expected": [
+      {
+        "code": "BAF",
+        "amount_text": "250.5",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/baf-250p5-usd",
+    "input_text": "BAF 250.5 USD",
+    "expected": [
+      {
+        "code": "BAF",
+        "amount_text": "250.5",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/baf-250p5-pln",
+    "input_text": "BAF 250.5 PLN",
+    "expected": [
+      {
+        "code": "BAF",
+        "amount_text": "250.5",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/baf-250p5-gbp",
+    "input_text": "BAF 250.5 GBP",
+    "expected": [
+      {
+        "code": "BAF",
+        "amount_text": "250.5",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/baf-999p99-eur",
+    "input_text": "BAF 999.99 EUR",
+    "expected": [
+      {
+        "code": "BAF",
+        "amount_text": "999.99",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/baf-999p99-usd",
+    "input_text": "BAF 999.99 USD",
+    "expected": [
+      {
+        "code": "BAF",
+        "amount_text": "999.99",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/baf-999p99-pln",
+    "input_text": "BAF 999.99 PLN",
+    "expected": [
+      {
+        "code": "BAF",
+        "amount_text": "999.99",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/baf-999p99-gbp",
+    "input_text": "BAF 999.99 GBP",
+    "expected": [
+      {
+        "code": "BAF",
+        "amount_text": "999.99",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/caf-1-eur",
+    "input_text": "CAF 1 EUR",
+    "expected": [
+      {
+        "code": "CAF",
+        "amount_text": "1",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/caf-1-usd",
+    "input_text": "CAF 1 USD",
+    "expected": [
+      {
+        "code": "CAF",
+        "amount_text": "1",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/caf-1-pln",
+    "input_text": "CAF 1 PLN",
+    "expected": [
+      {
+        "code": "CAF",
+        "amount_text": "1",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/caf-1-gbp",
+    "input_text": "CAF 1 GBP",
+    "expected": [
+      {
+        "code": "CAF",
+        "amount_text": "1",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/caf-12-eur",
+    "input_text": "CAF 12 EUR",
+    "expected": [
+      {
+        "code": "CAF",
+        "amount_text": "12",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/caf-12-usd",
+    "input_text": "CAF 12 USD",
+    "expected": [
+      {
+        "code": "CAF",
+        "amount_text": "12",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/caf-12-pln",
+    "input_text": "CAF 12 PLN",
+    "expected": [
+      {
+        "code": "CAF",
+        "amount_text": "12",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/caf-12-gbp",
+    "input_text": "CAF 12 GBP",
+    "expected": [
+      {
+        "code": "CAF",
+        "amount_text": "12",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/caf-100-eur",
+    "input_text": "CAF 100 EUR",
+    "expected": [
+      {
+        "code": "CAF",
+        "amount_text": "100",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/caf-100-usd",
+    "input_text": "CAF 100 USD",
+    "expected": [
+      {
+        "code": "CAF",
+        "amount_text": "100",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/caf-100-pln",
+    "input_text": "CAF 100 PLN",
+    "expected": [
+      {
+        "code": "CAF",
+        "amount_text": "100",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/caf-100-gbp",
+    "input_text": "CAF 100 GBP",
+    "expected": [
+      {
+        "code": "CAF",
+        "amount_text": "100",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/caf-250p5-eur",
+    "input_text": "CAF 250.5 EUR",
+    "expected": [
+      {
+        "code": "CAF",
+        "amount_text": "250.5",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/caf-250p5-usd",
+    "input_text": "CAF 250.5 USD",
+    "expected": [
+      {
+        "code": "CAF",
+        "amount_text": "250.5",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/caf-250p5-pln",
+    "input_text": "CAF 250.5 PLN",
+    "expected": [
+      {
+        "code": "CAF",
+        "amount_text": "250.5",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/caf-250p5-gbp",
+    "input_text": "CAF 250.5 GBP",
+    "expected": [
+      {
+        "code": "CAF",
+        "amount_text": "250.5",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/caf-999p99-eur",
+    "input_text": "CAF 999.99 EUR",
+    "expected": [
+      {
+        "code": "CAF",
+        "amount_text": "999.99",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/caf-999p99-usd",
+    "input_text": "CAF 999.99 USD",
+    "expected": [
+      {
+        "code": "CAF",
+        "amount_text": "999.99",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/caf-999p99-pln",
+    "input_text": "CAF 999.99 PLN",
+    "expected": [
+      {
+        "code": "CAF",
+        "amount_text": "999.99",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/caf-999p99-gbp",
+    "input_text": "CAF 999.99 GBP",
+    "expected": [
+      {
+        "code": "CAF",
+        "amount_text": "999.99",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/isps-1-eur",
+    "input_text": "ISPS 1 EUR",
+    "expected": [
+      {
+        "code": "ISPS",
+        "amount_text": "1",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/isps-1-usd",
+    "input_text": "ISPS 1 USD",
+    "expected": [
+      {
+        "code": "ISPS",
+        "amount_text": "1",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/isps-1-pln",
+    "input_text": "ISPS 1 PLN",
+    "expected": [
+      {
+        "code": "ISPS",
+        "amount_text": "1",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/isps-1-gbp",
+    "input_text": "ISPS 1 GBP",
+    "expected": [
+      {
+        "code": "ISPS",
+        "amount_text": "1",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/isps-12-eur",
+    "input_text": "ISPS 12 EUR",
+    "expected": [
+      {
+        "code": "ISPS",
+        "amount_text": "12",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/isps-12-usd",
+    "input_text": "ISPS 12 USD",
+    "expected": [
+      {
+        "code": "ISPS",
+        "amount_text": "12",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/isps-12-pln",
+    "input_text": "ISPS 12 PLN",
+    "expected": [
+      {
+        "code": "ISPS",
+        "amount_text": "12",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/isps-12-gbp",
+    "input_text": "ISPS 12 GBP",
+    "expected": [
+      {
+        "code": "ISPS",
+        "amount_text": "12",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/isps-100-eur",
+    "input_text": "ISPS 100 EUR",
+    "expected": [
+      {
+        "code": "ISPS",
+        "amount_text": "100",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/isps-100-usd",
+    "input_text": "ISPS 100 USD",
+    "expected": [
+      {
+        "code": "ISPS",
+        "amount_text": "100",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/isps-100-pln",
+    "input_text": "ISPS 100 PLN",
+    "expected": [
+      {
+        "code": "ISPS",
+        "amount_text": "100",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/isps-100-gbp",
+    "input_text": "ISPS 100 GBP",
+    "expected": [
+      {
+        "code": "ISPS",
+        "amount_text": "100",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/isps-250p5-eur",
+    "input_text": "ISPS 250.5 EUR",
+    "expected": [
+      {
+        "code": "ISPS",
+        "amount_text": "250.5",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/isps-250p5-usd",
+    "input_text": "ISPS 250.5 USD",
+    "expected": [
+      {
+        "code": "ISPS",
+        "amount_text": "250.5",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/isps-250p5-pln",
+    "input_text": "ISPS 250.5 PLN",
+    "expected": [
+      {
+        "code": "ISPS",
+        "amount_text": "250.5",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/isps-250p5-gbp",
+    "input_text": "ISPS 250.5 GBP",
+    "expected": [
+      {
+        "code": "ISPS",
+        "amount_text": "250.5",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/isps-999p99-eur",
+    "input_text": "ISPS 999.99 EUR",
+    "expected": [
+      {
+        "code": "ISPS",
+        "amount_text": "999.99",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/isps-999p99-usd",
+    "input_text": "ISPS 999.99 USD",
+    "expected": [
+      {
+        "code": "ISPS",
+        "amount_text": "999.99",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/isps-999p99-pln",
+    "input_text": "ISPS 999.99 PLN",
+    "expected": [
+      {
+        "code": "ISPS",
+        "amount_text": "999.99",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/isps-999p99-gbp",
+    "input_text": "ISPS 999.99 GBP",
+    "expected": [
+      {
+        "code": "ISPS",
+        "amount_text": "999.99",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dem-1-eur",
+    "input_text": "DEM 1 EUR",
+    "expected": [
+      {
+        "code": "DEM",
+        "amount_text": "1",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dem-1-usd",
+    "input_text": "DEM 1 USD",
+    "expected": [
+      {
+        "code": "DEM",
+        "amount_text": "1",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dem-1-pln",
+    "input_text": "DEM 1 PLN",
+    "expected": [
+      {
+        "code": "DEM",
+        "amount_text": "1",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dem-1-gbp",
+    "input_text": "DEM 1 GBP",
+    "expected": [
+      {
+        "code": "DEM",
+        "amount_text": "1",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dem-12-eur",
+    "input_text": "DEM 12 EUR",
+    "expected": [
+      {
+        "code": "DEM",
+        "amount_text": "12",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dem-12-usd",
+    "input_text": "DEM 12 USD",
+    "expected": [
+      {
+        "code": "DEM",
+        "amount_text": "12",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dem-12-pln",
+    "input_text": "DEM 12 PLN",
+    "expected": [
+      {
+        "code": "DEM",
+        "amount_text": "12",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dem-12-gbp",
+    "input_text": "DEM 12 GBP",
+    "expected": [
+      {
+        "code": "DEM",
+        "amount_text": "12",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dem-100-eur",
+    "input_text": "DEM 100 EUR",
+    "expected": [
+      {
+        "code": "DEM",
+        "amount_text": "100",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dem-100-usd",
+    "input_text": "DEM 100 USD",
+    "expected": [
+      {
+        "code": "DEM",
+        "amount_text": "100",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dem-100-pln",
+    "input_text": "DEM 100 PLN",
+    "expected": [
+      {
+        "code": "DEM",
+        "amount_text": "100",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dem-100-gbp",
+    "input_text": "DEM 100 GBP",
+    "expected": [
+      {
+        "code": "DEM",
+        "amount_text": "100",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dem-250p5-eur",
+    "input_text": "DEM 250.5 EUR",
+    "expected": [
+      {
+        "code": "DEM",
+        "amount_text": "250.5",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dem-250p5-usd",
+    "input_text": "DEM 250.5 USD",
+    "expected": [
+      {
+        "code": "DEM",
+        "amount_text": "250.5",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dem-250p5-pln",
+    "input_text": "DEM 250.5 PLN",
+    "expected": [
+      {
+        "code": "DEM",
+        "amount_text": "250.5",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dem-250p5-gbp",
+    "input_text": "DEM 250.5 GBP",
+    "expected": [
+      {
+        "code": "DEM",
+        "amount_text": "250.5",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dem-999p99-eur",
+    "input_text": "DEM 999.99 EUR",
+    "expected": [
+      {
+        "code": "DEM",
+        "amount_text": "999.99",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dem-999p99-usd",
+    "input_text": "DEM 999.99 USD",
+    "expected": [
+      {
+        "code": "DEM",
+        "amount_text": "999.99",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dem-999p99-pln",
+    "input_text": "DEM 999.99 PLN",
+    "expected": [
+      {
+        "code": "DEM",
+        "amount_text": "999.99",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dem-999p99-gbp",
+    "input_text": "DEM 999.99 GBP",
+    "expected": [
+      {
+        "code": "DEM",
+        "amount_text": "999.99",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/det-1-eur",
+    "input_text": "DET 1 EUR",
+    "expected": [
+      {
+        "code": "DET",
+        "amount_text": "1",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/det-1-usd",
+    "input_text": "DET 1 USD",
+    "expected": [
+      {
+        "code": "DET",
+        "amount_text": "1",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/det-1-pln",
+    "input_text": "DET 1 PLN",
+    "expected": [
+      {
+        "code": "DET",
+        "amount_text": "1",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/det-1-gbp",
+    "input_text": "DET 1 GBP",
+    "expected": [
+      {
+        "code": "DET",
+        "amount_text": "1",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/det-12-eur",
+    "input_text": "DET 12 EUR",
+    "expected": [
+      {
+        "code": "DET",
+        "amount_text": "12",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/det-12-usd",
+    "input_text": "DET 12 USD",
+    "expected": [
+      {
+        "code": "DET",
+        "amount_text": "12",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/det-12-pln",
+    "input_text": "DET 12 PLN",
+    "expected": [
+      {
+        "code": "DET",
+        "amount_text": "12",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/det-12-gbp",
+    "input_text": "DET 12 GBP",
+    "expected": [
+      {
+        "code": "DET",
+        "amount_text": "12",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/det-100-eur",
+    "input_text": "DET 100 EUR",
+    "expected": [
+      {
+        "code": "DET",
+        "amount_text": "100",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/det-100-usd",
+    "input_text": "DET 100 USD",
+    "expected": [
+      {
+        "code": "DET",
+        "amount_text": "100",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/det-100-pln",
+    "input_text": "DET 100 PLN",
+    "expected": [
+      {
+        "code": "DET",
+        "amount_text": "100",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/det-100-gbp",
+    "input_text": "DET 100 GBP",
+    "expected": [
+      {
+        "code": "DET",
+        "amount_text": "100",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/det-250p5-eur",
+    "input_text": "DET 250.5 EUR",
+    "expected": [
+      {
+        "code": "DET",
+        "amount_text": "250.5",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/det-250p5-usd",
+    "input_text": "DET 250.5 USD",
+    "expected": [
+      {
+        "code": "DET",
+        "amount_text": "250.5",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/det-250p5-pln",
+    "input_text": "DET 250.5 PLN",
+    "expected": [
+      {
+        "code": "DET",
+        "amount_text": "250.5",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/det-250p5-gbp",
+    "input_text": "DET 250.5 GBP",
+    "expected": [
+      {
+        "code": "DET",
+        "amount_text": "250.5",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/det-999p99-eur",
+    "input_text": "DET 999.99 EUR",
+    "expected": [
+      {
+        "code": "DET",
+        "amount_text": "999.99",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/det-999p99-usd",
+    "input_text": "DET 999.99 USD",
+    "expected": [
+      {
+        "code": "DET",
+        "amount_text": "999.99",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/det-999p99-pln",
+    "input_text": "DET 999.99 PLN",
+    "expected": [
+      {
+        "code": "DET",
+        "amount_text": "999.99",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/det-999p99-gbp",
+    "input_text": "DET 999.99 GBP",
+    "expected": [
+      {
+        "code": "DET",
+        "amount_text": "999.99",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ofc-1-eur",
+    "input_text": "OFC 1 EUR",
+    "expected": [
+      {
+        "code": "OFC",
+        "amount_text": "1",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ofc-1-usd",
+    "input_text": "OFC 1 USD",
+    "expected": [
+      {
+        "code": "OFC",
+        "amount_text": "1",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ofc-1-pln",
+    "input_text": "OFC 1 PLN",
+    "expected": [
+      {
+        "code": "OFC",
+        "amount_text": "1",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ofc-1-gbp",
+    "input_text": "OFC 1 GBP",
+    "expected": [
+      {
+        "code": "OFC",
+        "amount_text": "1",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ofc-12-eur",
+    "input_text": "OFC 12 EUR",
+    "expected": [
+      {
+        "code": "OFC",
+        "amount_text": "12",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ofc-12-usd",
+    "input_text": "OFC 12 USD",
+    "expected": [
+      {
+        "code": "OFC",
+        "amount_text": "12",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ofc-12-pln",
+    "input_text": "OFC 12 PLN",
+    "expected": [
+      {
+        "code": "OFC",
+        "amount_text": "12",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ofc-12-gbp",
+    "input_text": "OFC 12 GBP",
+    "expected": [
+      {
+        "code": "OFC",
+        "amount_text": "12",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ofc-100-eur",
+    "input_text": "OFC 100 EUR",
+    "expected": [
+      {
+        "code": "OFC",
+        "amount_text": "100",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ofc-100-usd",
+    "input_text": "OFC 100 USD",
+    "expected": [
+      {
+        "code": "OFC",
+        "amount_text": "100",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ofc-100-pln",
+    "input_text": "OFC 100 PLN",
+    "expected": [
+      {
+        "code": "OFC",
+        "amount_text": "100",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ofc-100-gbp",
+    "input_text": "OFC 100 GBP",
+    "expected": [
+      {
+        "code": "OFC",
+        "amount_text": "100",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ofc-250p5-eur",
+    "input_text": "OFC 250.5 EUR",
+    "expected": [
+      {
+        "code": "OFC",
+        "amount_text": "250.5",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ofc-250p5-usd",
+    "input_text": "OFC 250.5 USD",
+    "expected": [
+      {
+        "code": "OFC",
+        "amount_text": "250.5",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ofc-250p5-pln",
+    "input_text": "OFC 250.5 PLN",
+    "expected": [
+      {
+        "code": "OFC",
+        "amount_text": "250.5",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ofc-250p5-gbp",
+    "input_text": "OFC 250.5 GBP",
+    "expected": [
+      {
+        "code": "OFC",
+        "amount_text": "250.5",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ofc-999p99-eur",
+    "input_text": "OFC 999.99 EUR",
+    "expected": [
+      {
+        "code": "OFC",
+        "amount_text": "999.99",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ofc-999p99-usd",
+    "input_text": "OFC 999.99 USD",
+    "expected": [
+      {
+        "code": "OFC",
+        "amount_text": "999.99",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ofc-999p99-pln",
+    "input_text": "OFC 999.99 PLN",
+    "expected": [
+      {
+        "code": "OFC",
+        "amount_text": "999.99",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ofc-999p99-gbp",
+    "input_text": "OFC 999.99 GBP",
+    "expected": [
+      {
+        "code": "OFC",
+        "amount_text": "999.99",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/pss-1-eur",
+    "input_text": "PSS 1 EUR",
+    "expected": [
+      {
+        "code": "PSS",
+        "amount_text": "1",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/pss-1-usd",
+    "input_text": "PSS 1 USD",
+    "expected": [
+      {
+        "code": "PSS",
+        "amount_text": "1",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/pss-1-pln",
+    "input_text": "PSS 1 PLN",
+    "expected": [
+      {
+        "code": "PSS",
+        "amount_text": "1",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/pss-1-gbp",
+    "input_text": "PSS 1 GBP",
+    "expected": [
+      {
+        "code": "PSS",
+        "amount_text": "1",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/pss-12-eur",
+    "input_text": "PSS 12 EUR",
+    "expected": [
+      {
+        "code": "PSS",
+        "amount_text": "12",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/pss-12-usd",
+    "input_text": "PSS 12 USD",
+    "expected": [
+      {
+        "code": "PSS",
+        "amount_text": "12",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/pss-12-pln",
+    "input_text": "PSS 12 PLN",
+    "expected": [
+      {
+        "code": "PSS",
+        "amount_text": "12",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/pss-12-gbp",
+    "input_text": "PSS 12 GBP",
+    "expected": [
+      {
+        "code": "PSS",
+        "amount_text": "12",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/pss-100-eur",
+    "input_text": "PSS 100 EUR",
+    "expected": [
+      {
+        "code": "PSS",
+        "amount_text": "100",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/pss-100-usd",
+    "input_text": "PSS 100 USD",
+    "expected": [
+      {
+        "code": "PSS",
+        "amount_text": "100",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/pss-100-pln",
+    "input_text": "PSS 100 PLN",
+    "expected": [
+      {
+        "code": "PSS",
+        "amount_text": "100",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/pss-100-gbp",
+    "input_text": "PSS 100 GBP",
+    "expected": [
+      {
+        "code": "PSS",
+        "amount_text": "100",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/pss-250p5-eur",
+    "input_text": "PSS 250.5 EUR",
+    "expected": [
+      {
+        "code": "PSS",
+        "amount_text": "250.5",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/pss-250p5-usd",
+    "input_text": "PSS 250.5 USD",
+    "expected": [
+      {
+        "code": "PSS",
+        "amount_text": "250.5",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/pss-250p5-pln",
+    "input_text": "PSS 250.5 PLN",
+    "expected": [
+      {
+        "code": "PSS",
+        "amount_text": "250.5",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/pss-250p5-gbp",
+    "input_text": "PSS 250.5 GBP",
+    "expected": [
+      {
+        "code": "PSS",
+        "amount_text": "250.5",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/pss-999p99-eur",
+    "input_text": "PSS 999.99 EUR",
+    "expected": [
+      {
+        "code": "PSS",
+        "amount_text": "999.99",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/pss-999p99-usd",
+    "input_text": "PSS 999.99 USD",
+    "expected": [
+      {
+        "code": "PSS",
+        "amount_text": "999.99",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/pss-999p99-pln",
+    "input_text": "PSS 999.99 PLN",
+    "expected": [
+      {
+        "code": "PSS",
+        "amount_text": "999.99",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/pss-999p99-gbp",
+    "input_text": "PSS 999.99 GBP",
+    "expected": [
+      {
+        "code": "PSS",
+        "amount_text": "999.99",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/wrs-1-eur",
+    "input_text": "WRS 1 EUR",
+    "expected": [
+      {
+        "code": "WRS",
+        "amount_text": "1",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/wrs-1-usd",
+    "input_text": "WRS 1 USD",
+    "expected": [
+      {
+        "code": "WRS",
+        "amount_text": "1",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/wrs-1-pln",
+    "input_text": "WRS 1 PLN",
+    "expected": [
+      {
+        "code": "WRS",
+        "amount_text": "1",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/wrs-1-gbp",
+    "input_text": "WRS 1 GBP",
+    "expected": [
+      {
+        "code": "WRS",
+        "amount_text": "1",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/wrs-12-eur",
+    "input_text": "WRS 12 EUR",
+    "expected": [
+      {
+        "code": "WRS",
+        "amount_text": "12",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/wrs-12-usd",
+    "input_text": "WRS 12 USD",
+    "expected": [
+      {
+        "code": "WRS",
+        "amount_text": "12",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/wrs-12-pln",
+    "input_text": "WRS 12 PLN",
+    "expected": [
+      {
+        "code": "WRS",
+        "amount_text": "12",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/wrs-12-gbp",
+    "input_text": "WRS 12 GBP",
+    "expected": [
+      {
+        "code": "WRS",
+        "amount_text": "12",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/wrs-100-eur",
+    "input_text": "WRS 100 EUR",
+    "expected": [
+      {
+        "code": "WRS",
+        "amount_text": "100",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/wrs-100-usd",
+    "input_text": "WRS 100 USD",
+    "expected": [
+      {
+        "code": "WRS",
+        "amount_text": "100",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/wrs-100-pln",
+    "input_text": "WRS 100 PLN",
+    "expected": [
+      {
+        "code": "WRS",
+        "amount_text": "100",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/wrs-100-gbp",
+    "input_text": "WRS 100 GBP",
+    "expected": [
+      {
+        "code": "WRS",
+        "amount_text": "100",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/wrs-250p5-eur",
+    "input_text": "WRS 250.5 EUR",
+    "expected": [
+      {
+        "code": "WRS",
+        "amount_text": "250.5",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/wrs-250p5-usd",
+    "input_text": "WRS 250.5 USD",
+    "expected": [
+      {
+        "code": "WRS",
+        "amount_text": "250.5",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/wrs-250p5-pln",
+    "input_text": "WRS 250.5 PLN",
+    "expected": [
+      {
+        "code": "WRS",
+        "amount_text": "250.5",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/wrs-250p5-gbp",
+    "input_text": "WRS 250.5 GBP",
+    "expected": [
+      {
+        "code": "WRS",
+        "amount_text": "250.5",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/wrs-999p99-eur",
+    "input_text": "WRS 999.99 EUR",
+    "expected": [
+      {
+        "code": "WRS",
+        "amount_text": "999.99",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/wrs-999p99-usd",
+    "input_text": "WRS 999.99 USD",
+    "expected": [
+      {
+        "code": "WRS",
+        "amount_text": "999.99",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/wrs-999p99-pln",
+    "input_text": "WRS 999.99 PLN",
+    "expected": [
+      {
+        "code": "WRS",
+        "amount_text": "999.99",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/wrs-999p99-gbp",
+    "input_text": "WRS 999.99 GBP",
+    "expected": [
+      {
+        "code": "WRS",
+        "amount_text": "999.99",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/lss-1-eur",
+    "input_text": "LSS 1 EUR",
+    "expected": [
+      {
+        "code": "LSS",
+        "amount_text": "1",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/lss-1-usd",
+    "input_text": "LSS 1 USD",
+    "expected": [
+      {
+        "code": "LSS",
+        "amount_text": "1",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/lss-1-pln",
+    "input_text": "LSS 1 PLN",
+    "expected": [
+      {
+        "code": "LSS",
+        "amount_text": "1",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/lss-1-gbp",
+    "input_text": "LSS 1 GBP",
+    "expected": [
+      {
+        "code": "LSS",
+        "amount_text": "1",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/lss-12-eur",
+    "input_text": "LSS 12 EUR",
+    "expected": [
+      {
+        "code": "LSS",
+        "amount_text": "12",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/lss-12-usd",
+    "input_text": "LSS 12 USD",
+    "expected": [
+      {
+        "code": "LSS",
+        "amount_text": "12",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/lss-12-pln",
+    "input_text": "LSS 12 PLN",
+    "expected": [
+      {
+        "code": "LSS",
+        "amount_text": "12",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/lss-12-gbp",
+    "input_text": "LSS 12 GBP",
+    "expected": [
+      {
+        "code": "LSS",
+        "amount_text": "12",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/lss-100-eur",
+    "input_text": "LSS 100 EUR",
+    "expected": [
+      {
+        "code": "LSS",
+        "amount_text": "100",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/lss-100-usd",
+    "input_text": "LSS 100 USD",
+    "expected": [
+      {
+        "code": "LSS",
+        "amount_text": "100",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/lss-100-pln",
+    "input_text": "LSS 100 PLN",
+    "expected": [
+      {
+        "code": "LSS",
+        "amount_text": "100",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/lss-100-gbp",
+    "input_text": "LSS 100 GBP",
+    "expected": [
+      {
+        "code": "LSS",
+        "amount_text": "100",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/lss-250p5-eur",
+    "input_text": "LSS 250.5 EUR",
+    "expected": [
+      {
+        "code": "LSS",
+        "amount_text": "250.5",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/lss-250p5-usd",
+    "input_text": "LSS 250.5 USD",
+    "expected": [
+      {
+        "code": "LSS",
+        "amount_text": "250.5",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/lss-250p5-pln",
+    "input_text": "LSS 250.5 PLN",
+    "expected": [
+      {
+        "code": "LSS",
+        "amount_text": "250.5",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/lss-250p5-gbp",
+    "input_text": "LSS 250.5 GBP",
+    "expected": [
+      {
+        "code": "LSS",
+        "amount_text": "250.5",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/lss-999p99-eur",
+    "input_text": "LSS 999.99 EUR",
+    "expected": [
+      {
+        "code": "LSS",
+        "amount_text": "999.99",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/lss-999p99-usd",
+    "input_text": "LSS 999.99 USD",
+    "expected": [
+      {
+        "code": "LSS",
+        "amount_text": "999.99",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/lss-999p99-pln",
+    "input_text": "LSS 999.99 PLN",
+    "expected": [
+      {
+        "code": "LSS",
+        "amount_text": "999.99",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/lss-999p99-gbp",
+    "input_text": "LSS 999.99 GBP",
+    "expected": [
+      {
+        "code": "LSS",
+        "amount_text": "999.99",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/doc-1-eur",
+    "input_text": "DOC 1 EUR",
+    "expected": [
+      {
+        "code": "DOC",
+        "amount_text": "1",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/doc-1-usd",
+    "input_text": "DOC 1 USD",
+    "expected": [
+      {
+        "code": "DOC",
+        "amount_text": "1",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/doc-1-pln",
+    "input_text": "DOC 1 PLN",
+    "expected": [
+      {
+        "code": "DOC",
+        "amount_text": "1",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/doc-1-gbp",
+    "input_text": "DOC 1 GBP",
+    "expected": [
+      {
+        "code": "DOC",
+        "amount_text": "1",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/doc-12-eur",
+    "input_text": "DOC 12 EUR",
+    "expected": [
+      {
+        "code": "DOC",
+        "amount_text": "12",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/doc-12-usd",
+    "input_text": "DOC 12 USD",
+    "expected": [
+      {
+        "code": "DOC",
+        "amount_text": "12",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/doc-12-pln",
+    "input_text": "DOC 12 PLN",
+    "expected": [
+      {
+        "code": "DOC",
+        "amount_text": "12",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/doc-12-gbp",
+    "input_text": "DOC 12 GBP",
+    "expected": [
+      {
+        "code": "DOC",
+        "amount_text": "12",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/doc-100-eur",
+    "input_text": "DOC 100 EUR",
+    "expected": [
+      {
+        "code": "DOC",
+        "amount_text": "100",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/doc-100-usd",
+    "input_text": "DOC 100 USD",
+    "expected": [
+      {
+        "code": "DOC",
+        "amount_text": "100",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/doc-100-pln",
+    "input_text": "DOC 100 PLN",
+    "expected": [
+      {
+        "code": "DOC",
+        "amount_text": "100",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/doc-100-gbp",
+    "input_text": "DOC 100 GBP",
+    "expected": [
+      {
+        "code": "DOC",
+        "amount_text": "100",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/doc-250p5-eur",
+    "input_text": "DOC 250.5 EUR",
+    "expected": [
+      {
+        "code": "DOC",
+        "amount_text": "250.5",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/doc-250p5-usd",
+    "input_text": "DOC 250.5 USD",
+    "expected": [
+      {
+        "code": "DOC",
+        "amount_text": "250.5",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/doc-250p5-pln",
+    "input_text": "DOC 250.5 PLN",
+    "expected": [
+      {
+        "code": "DOC",
+        "amount_text": "250.5",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/doc-250p5-gbp",
+    "input_text": "DOC 250.5 GBP",
+    "expected": [
+      {
+        "code": "DOC",
+        "amount_text": "250.5",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/doc-999p99-eur",
+    "input_text": "DOC 999.99 EUR",
+    "expected": [
+      {
+        "code": "DOC",
+        "amount_text": "999.99",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/doc-999p99-usd",
+    "input_text": "DOC 999.99 USD",
+    "expected": [
+      {
+        "code": "DOC",
+        "amount_text": "999.99",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/doc-999p99-pln",
+    "input_text": "DOC 999.99 PLN",
+    "expected": [
+      {
+        "code": "DOC",
+        "amount_text": "999.99",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/doc-999p99-gbp",
+    "input_text": "DOC 999.99 GBP",
+    "expected": [
+      {
+        "code": "DOC",
+        "amount_text": "999.99",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/blf-1-eur",
+    "input_text": "BLF 1 EUR",
+    "expected": [
+      {
+        "code": "BLF",
+        "amount_text": "1",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/blf-1-usd",
+    "input_text": "BLF 1 USD",
+    "expected": [
+      {
+        "code": "BLF",
+        "amount_text": "1",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/blf-1-pln",
+    "input_text": "BLF 1 PLN",
+    "expected": [
+      {
+        "code": "BLF",
+        "amount_text": "1",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/blf-1-gbp",
+    "input_text": "BLF 1 GBP",
+    "expected": [
+      {
+        "code": "BLF",
+        "amount_text": "1",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/blf-12-eur",
+    "input_text": "BLF 12 EUR",
+    "expected": [
+      {
+        "code": "BLF",
+        "amount_text": "12",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/blf-12-usd",
+    "input_text": "BLF 12 USD",
+    "expected": [
+      {
+        "code": "BLF",
+        "amount_text": "12",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/blf-12-pln",
+    "input_text": "BLF 12 PLN",
+    "expected": [
+      {
+        "code": "BLF",
+        "amount_text": "12",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/blf-12-gbp",
+    "input_text": "BLF 12 GBP",
+    "expected": [
+      {
+        "code": "BLF",
+        "amount_text": "12",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/blf-100-eur",
+    "input_text": "BLF 100 EUR",
+    "expected": [
+      {
+        "code": "BLF",
+        "amount_text": "100",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/blf-100-usd",
+    "input_text": "BLF 100 USD",
+    "expected": [
+      {
+        "code": "BLF",
+        "amount_text": "100",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/blf-100-pln",
+    "input_text": "BLF 100 PLN",
+    "expected": [
+      {
+        "code": "BLF",
+        "amount_text": "100",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/blf-100-gbp",
+    "input_text": "BLF 100 GBP",
+    "expected": [
+      {
+        "code": "BLF",
+        "amount_text": "100",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/blf-250p5-eur",
+    "input_text": "BLF 250.5 EUR",
+    "expected": [
+      {
+        "code": "BLF",
+        "amount_text": "250.5",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/blf-250p5-usd",
+    "input_text": "BLF 250.5 USD",
+    "expected": [
+      {
+        "code": "BLF",
+        "amount_text": "250.5",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/blf-250p5-pln",
+    "input_text": "BLF 250.5 PLN",
+    "expected": [
+      {
+        "code": "BLF",
+        "amount_text": "250.5",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/blf-250p5-gbp",
+    "input_text": "BLF 250.5 GBP",
+    "expected": [
+      {
+        "code": "BLF",
+        "amount_text": "250.5",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/blf-999p99-eur",
+    "input_text": "BLF 999.99 EUR",
+    "expected": [
+      {
+        "code": "BLF",
+        "amount_text": "999.99",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/blf-999p99-usd",
+    "input_text": "BLF 999.99 USD",
+    "expected": [
+      {
+        "code": "BLF",
+        "amount_text": "999.99",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/blf-999p99-pln",
+    "input_text": "BLF 999.99 PLN",
+    "expected": [
+      {
+        "code": "BLF",
+        "amount_text": "999.99",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/blf-999p99-gbp",
+    "input_text": "BLF 999.99 GBP",
+    "expected": [
+      {
+        "code": "BLF",
+        "amount_text": "999.99",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ams-1-eur",
+    "input_text": "AMS 1 EUR",
+    "expected": [
+      {
+        "code": "AMS",
+        "amount_text": "1",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ams-1-usd",
+    "input_text": "AMS 1 USD",
+    "expected": [
+      {
+        "code": "AMS",
+        "amount_text": "1",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ams-1-pln",
+    "input_text": "AMS 1 PLN",
+    "expected": [
+      {
+        "code": "AMS",
+        "amount_text": "1",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ams-1-gbp",
+    "input_text": "AMS 1 GBP",
+    "expected": [
+      {
+        "code": "AMS",
+        "amount_text": "1",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ams-12-eur",
+    "input_text": "AMS 12 EUR",
+    "expected": [
+      {
+        "code": "AMS",
+        "amount_text": "12",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ams-12-usd",
+    "input_text": "AMS 12 USD",
+    "expected": [
+      {
+        "code": "AMS",
+        "amount_text": "12",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ams-12-pln",
+    "input_text": "AMS 12 PLN",
+    "expected": [
+      {
+        "code": "AMS",
+        "amount_text": "12",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ams-12-gbp",
+    "input_text": "AMS 12 GBP",
+    "expected": [
+      {
+        "code": "AMS",
+        "amount_text": "12",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ams-100-eur",
+    "input_text": "AMS 100 EUR",
+    "expected": [
+      {
+        "code": "AMS",
+        "amount_text": "100",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ams-100-usd",
+    "input_text": "AMS 100 USD",
+    "expected": [
+      {
+        "code": "AMS",
+        "amount_text": "100",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ams-100-pln",
+    "input_text": "AMS 100 PLN",
+    "expected": [
+      {
+        "code": "AMS",
+        "amount_text": "100",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ams-100-gbp",
+    "input_text": "AMS 100 GBP",
+    "expected": [
+      {
+        "code": "AMS",
+        "amount_text": "100",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ams-250p5-eur",
+    "input_text": "AMS 250.5 EUR",
+    "expected": [
+      {
+        "code": "AMS",
+        "amount_text": "250.5",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ams-250p5-usd",
+    "input_text": "AMS 250.5 USD",
+    "expected": [
+      {
+        "code": "AMS",
+        "amount_text": "250.5",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ams-250p5-pln",
+    "input_text": "AMS 250.5 PLN",
+    "expected": [
+      {
+        "code": "AMS",
+        "amount_text": "250.5",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ams-250p5-gbp",
+    "input_text": "AMS 250.5 GBP",
+    "expected": [
+      {
+        "code": "AMS",
+        "amount_text": "250.5",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ams-999p99-eur",
+    "input_text": "AMS 999.99 EUR",
+    "expected": [
+      {
+        "code": "AMS",
+        "amount_text": "999.99",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ams-999p99-usd",
+    "input_text": "AMS 999.99 USD",
+    "expected": [
+      {
+        "code": "AMS",
+        "amount_text": "999.99",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ams-999p99-pln",
+    "input_text": "AMS 999.99 PLN",
+    "expected": [
+      {
+        "code": "AMS",
+        "amount_text": "999.99",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ams-999p99-gbp",
+    "input_text": "AMS 999.99 GBP",
+    "expected": [
+      {
+        "code": "AMS",
+        "amount_text": "999.99",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ens-1-eur",
+    "input_text": "ENS 1 EUR",
+    "expected": [
+      {
+        "code": "ENS",
+        "amount_text": "1",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ens-1-usd",
+    "input_text": "ENS 1 USD",
+    "expected": [
+      {
+        "code": "ENS",
+        "amount_text": "1",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ens-1-pln",
+    "input_text": "ENS 1 PLN",
+    "expected": [
+      {
+        "code": "ENS",
+        "amount_text": "1",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ens-1-gbp",
+    "input_text": "ENS 1 GBP",
+    "expected": [
+      {
+        "code": "ENS",
+        "amount_text": "1",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ens-12-eur",
+    "input_text": "ENS 12 EUR",
+    "expected": [
+      {
+        "code": "ENS",
+        "amount_text": "12",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ens-12-usd",
+    "input_text": "ENS 12 USD",
+    "expected": [
+      {
+        "code": "ENS",
+        "amount_text": "12",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ens-12-pln",
+    "input_text": "ENS 12 PLN",
+    "expected": [
+      {
+        "code": "ENS",
+        "amount_text": "12",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ens-12-gbp",
+    "input_text": "ENS 12 GBP",
+    "expected": [
+      {
+        "code": "ENS",
+        "amount_text": "12",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ens-100-eur",
+    "input_text": "ENS 100 EUR",
+    "expected": [
+      {
+        "code": "ENS",
+        "amount_text": "100",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ens-100-usd",
+    "input_text": "ENS 100 USD",
+    "expected": [
+      {
+        "code": "ENS",
+        "amount_text": "100",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ens-100-pln",
+    "input_text": "ENS 100 PLN",
+    "expected": [
+      {
+        "code": "ENS",
+        "amount_text": "100",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ens-100-gbp",
+    "input_text": "ENS 100 GBP",
+    "expected": [
+      {
+        "code": "ENS",
+        "amount_text": "100",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ens-250p5-eur",
+    "input_text": "ENS 250.5 EUR",
+    "expected": [
+      {
+        "code": "ENS",
+        "amount_text": "250.5",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ens-250p5-usd",
+    "input_text": "ENS 250.5 USD",
+    "expected": [
+      {
+        "code": "ENS",
+        "amount_text": "250.5",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ens-250p5-pln",
+    "input_text": "ENS 250.5 PLN",
+    "expected": [
+      {
+        "code": "ENS",
+        "amount_text": "250.5",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ens-250p5-gbp",
+    "input_text": "ENS 250.5 GBP",
+    "expected": [
+      {
+        "code": "ENS",
+        "amount_text": "250.5",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ens-999p99-eur",
+    "input_text": "ENS 999.99 EUR",
+    "expected": [
+      {
+        "code": "ENS",
+        "amount_text": "999.99",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ens-999p99-usd",
+    "input_text": "ENS 999.99 USD",
+    "expected": [
+      {
+        "code": "ENS",
+        "amount_text": "999.99",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ens-999p99-pln",
+    "input_text": "ENS 999.99 PLN",
+    "expected": [
+      {
+        "code": "ENS",
+        "amount_text": "999.99",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/ens-999p99-gbp",
+    "input_text": "ENS 999.99 GBP",
+    "expected": [
+      {
+        "code": "ENS",
+        "amount_text": "999.99",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/vgm-1-eur",
+    "input_text": "VGM 1 EUR",
+    "expected": [
+      {
+        "code": "VGM",
+        "amount_text": "1",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/vgm-1-usd",
+    "input_text": "VGM 1 USD",
+    "expected": [
+      {
+        "code": "VGM",
+        "amount_text": "1",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/vgm-1-pln",
+    "input_text": "VGM 1 PLN",
+    "expected": [
+      {
+        "code": "VGM",
+        "amount_text": "1",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/vgm-1-gbp",
+    "input_text": "VGM 1 GBP",
+    "expected": [
+      {
+        "code": "VGM",
+        "amount_text": "1",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/vgm-12-eur",
+    "input_text": "VGM 12 EUR",
+    "expected": [
+      {
+        "code": "VGM",
+        "amount_text": "12",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/vgm-12-usd",
+    "input_text": "VGM 12 USD",
+    "expected": [
+      {
+        "code": "VGM",
+        "amount_text": "12",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/vgm-12-pln",
+    "input_text": "VGM 12 PLN",
+    "expected": [
+      {
+        "code": "VGM",
+        "amount_text": "12",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/vgm-12-gbp",
+    "input_text": "VGM 12 GBP",
+    "expected": [
+      {
+        "code": "VGM",
+        "amount_text": "12",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/vgm-100-eur",
+    "input_text": "VGM 100 EUR",
+    "expected": [
+      {
+        "code": "VGM",
+        "amount_text": "100",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/vgm-100-usd",
+    "input_text": "VGM 100 USD",
+    "expected": [
+      {
+        "code": "VGM",
+        "amount_text": "100",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/vgm-100-pln",
+    "input_text": "VGM 100 PLN",
+    "expected": [
+      {
+        "code": "VGM",
+        "amount_text": "100",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/vgm-100-gbp",
+    "input_text": "VGM 100 GBP",
+    "expected": [
+      {
+        "code": "VGM",
+        "amount_text": "100",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/vgm-250p5-eur",
+    "input_text": "VGM 250.5 EUR",
+    "expected": [
+      {
+        "code": "VGM",
+        "amount_text": "250.5",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/vgm-250p5-usd",
+    "input_text": "VGM 250.5 USD",
+    "expected": [
+      {
+        "code": "VGM",
+        "amount_text": "250.5",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/vgm-250p5-pln",
+    "input_text": "VGM 250.5 PLN",
+    "expected": [
+      {
+        "code": "VGM",
+        "amount_text": "250.5",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/vgm-250p5-gbp",
+    "input_text": "VGM 250.5 GBP",
+    "expected": [
+      {
+        "code": "VGM",
+        "amount_text": "250.5",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/vgm-999p99-eur",
+    "input_text": "VGM 999.99 EUR",
+    "expected": [
+      {
+        "code": "VGM",
+        "amount_text": "999.99",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/vgm-999p99-usd",
+    "input_text": "VGM 999.99 USD",
+    "expected": [
+      {
+        "code": "VGM",
+        "amount_text": "999.99",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/vgm-999p99-pln",
+    "input_text": "VGM 999.99 PLN",
+    "expected": [
+      {
+        "code": "VGM",
+        "amount_text": "999.99",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/vgm-999p99-gbp",
+    "input_text": "VGM 999.99 GBP",
+    "expected": [
+      {
+        "code": "VGM",
+        "amount_text": "999.99",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/seal-1-eur",
+    "input_text": "SEAL 1 EUR",
+    "expected": [
+      {
+        "code": "SEAL",
+        "amount_text": "1",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/seal-1-usd",
+    "input_text": "SEAL 1 USD",
+    "expected": [
+      {
+        "code": "SEAL",
+        "amount_text": "1",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/seal-1-pln",
+    "input_text": "SEAL 1 PLN",
+    "expected": [
+      {
+        "code": "SEAL",
+        "amount_text": "1",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/seal-1-gbp",
+    "input_text": "SEAL 1 GBP",
+    "expected": [
+      {
+        "code": "SEAL",
+        "amount_text": "1",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/seal-12-eur",
+    "input_text": "SEAL 12 EUR",
+    "expected": [
+      {
+        "code": "SEAL",
+        "amount_text": "12",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/seal-12-usd",
+    "input_text": "SEAL 12 USD",
+    "expected": [
+      {
+        "code": "SEAL",
+        "amount_text": "12",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/seal-12-pln",
+    "input_text": "SEAL 12 PLN",
+    "expected": [
+      {
+        "code": "SEAL",
+        "amount_text": "12",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/seal-12-gbp",
+    "input_text": "SEAL 12 GBP",
+    "expected": [
+      {
+        "code": "SEAL",
+        "amount_text": "12",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/seal-100-eur",
+    "input_text": "SEAL 100 EUR",
+    "expected": [
+      {
+        "code": "SEAL",
+        "amount_text": "100",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/seal-100-usd",
+    "input_text": "SEAL 100 USD",
+    "expected": [
+      {
+        "code": "SEAL",
+        "amount_text": "100",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/seal-100-pln",
+    "input_text": "SEAL 100 PLN",
+    "expected": [
+      {
+        "code": "SEAL",
+        "amount_text": "100",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/seal-100-gbp",
+    "input_text": "SEAL 100 GBP",
+    "expected": [
+      {
+        "code": "SEAL",
+        "amount_text": "100",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/seal-250p5-eur",
+    "input_text": "SEAL 250.5 EUR",
+    "expected": [
+      {
+        "code": "SEAL",
+        "amount_text": "250.5",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/seal-250p5-usd",
+    "input_text": "SEAL 250.5 USD",
+    "expected": [
+      {
+        "code": "SEAL",
+        "amount_text": "250.5",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/seal-250p5-pln",
+    "input_text": "SEAL 250.5 PLN",
+    "expected": [
+      {
+        "code": "SEAL",
+        "amount_text": "250.5",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/seal-250p5-gbp",
+    "input_text": "SEAL 250.5 GBP",
+    "expected": [
+      {
+        "code": "SEAL",
+        "amount_text": "250.5",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/seal-999p99-eur",
+    "input_text": "SEAL 999.99 EUR",
+    "expected": [
+      {
+        "code": "SEAL",
+        "amount_text": "999.99",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/seal-999p99-usd",
+    "input_text": "SEAL 999.99 USD",
+    "expected": [
+      {
+        "code": "SEAL",
+        "amount_text": "999.99",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/seal-999p99-pln",
+    "input_text": "SEAL 999.99 PLN",
+    "expected": [
+      {
+        "code": "SEAL",
+        "amount_text": "999.99",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/seal-999p99-gbp",
+    "input_text": "SEAL 999.99 GBP",
+    "expected": [
+      {
+        "code": "SEAL",
+        "amount_text": "999.99",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/stor-1-eur",
+    "input_text": "STOR 1 EUR",
+    "expected": [
+      {
+        "code": "STOR",
+        "amount_text": "1",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/stor-1-usd",
+    "input_text": "STOR 1 USD",
+    "expected": [
+      {
+        "code": "STOR",
+        "amount_text": "1",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/stor-1-pln",
+    "input_text": "STOR 1 PLN",
+    "expected": [
+      {
+        "code": "STOR",
+        "amount_text": "1",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/stor-1-gbp",
+    "input_text": "STOR 1 GBP",
+    "expected": [
+      {
+        "code": "STOR",
+        "amount_text": "1",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/stor-12-eur",
+    "input_text": "STOR 12 EUR",
+    "expected": [
+      {
+        "code": "STOR",
+        "amount_text": "12",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/stor-12-usd",
+    "input_text": "STOR 12 USD",
+    "expected": [
+      {
+        "code": "STOR",
+        "amount_text": "12",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/stor-12-pln",
+    "input_text": "STOR 12 PLN",
+    "expected": [
+      {
+        "code": "STOR",
+        "amount_text": "12",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/stor-12-gbp",
+    "input_text": "STOR 12 GBP",
+    "expected": [
+      {
+        "code": "STOR",
+        "amount_text": "12",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/stor-100-eur",
+    "input_text": "STOR 100 EUR",
+    "expected": [
+      {
+        "code": "STOR",
+        "amount_text": "100",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/stor-100-usd",
+    "input_text": "STOR 100 USD",
+    "expected": [
+      {
+        "code": "STOR",
+        "amount_text": "100",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/stor-100-pln",
+    "input_text": "STOR 100 PLN",
+    "expected": [
+      {
+        "code": "STOR",
+        "amount_text": "100",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/stor-100-gbp",
+    "input_text": "STOR 100 GBP",
+    "expected": [
+      {
+        "code": "STOR",
+        "amount_text": "100",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/stor-250p5-eur",
+    "input_text": "STOR 250.5 EUR",
+    "expected": [
+      {
+        "code": "STOR",
+        "amount_text": "250.5",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/stor-250p5-usd",
+    "input_text": "STOR 250.5 USD",
+    "expected": [
+      {
+        "code": "STOR",
+        "amount_text": "250.5",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/stor-250p5-pln",
+    "input_text": "STOR 250.5 PLN",
+    "expected": [
+      {
+        "code": "STOR",
+        "amount_text": "250.5",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/stor-250p5-gbp",
+    "input_text": "STOR 250.5 GBP",
+    "expected": [
+      {
+        "code": "STOR",
+        "amount_text": "250.5",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/stor-999p99-eur",
+    "input_text": "STOR 999.99 EUR",
+    "expected": [
+      {
+        "code": "STOR",
+        "amount_text": "999.99",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/stor-999p99-usd",
+    "input_text": "STOR 999.99 USD",
+    "expected": [
+      {
+        "code": "STOR",
+        "amount_text": "999.99",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/stor-999p99-pln",
+    "input_text": "STOR 999.99 PLN",
+    "expected": [
+      {
+        "code": "STOR",
+        "amount_text": "999.99",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/stor-999p99-gbp",
+    "input_text": "STOR 999.99 GBP",
+    "expected": [
+      {
+        "code": "STOR",
+        "amount_text": "999.99",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/refr-1-eur",
+    "input_text": "REFR 1 EUR",
+    "expected": [
+      {
+        "code": "REFR",
+        "amount_text": "1",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/refr-1-usd",
+    "input_text": "REFR 1 USD",
+    "expected": [
+      {
+        "code": "REFR",
+        "amount_text": "1",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/refr-1-pln",
+    "input_text": "REFR 1 PLN",
+    "expected": [
+      {
+        "code": "REFR",
+        "amount_text": "1",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/refr-1-gbp",
+    "input_text": "REFR 1 GBP",
+    "expected": [
+      {
+        "code": "REFR",
+        "amount_text": "1",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/refr-12-eur",
+    "input_text": "REFR 12 EUR",
+    "expected": [
+      {
+        "code": "REFR",
+        "amount_text": "12",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/refr-12-usd",
+    "input_text": "REFR 12 USD",
+    "expected": [
+      {
+        "code": "REFR",
+        "amount_text": "12",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/refr-12-pln",
+    "input_text": "REFR 12 PLN",
+    "expected": [
+      {
+        "code": "REFR",
+        "amount_text": "12",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/refr-12-gbp",
+    "input_text": "REFR 12 GBP",
+    "expected": [
+      {
+        "code": "REFR",
+        "amount_text": "12",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/refr-100-eur",
+    "input_text": "REFR 100 EUR",
+    "expected": [
+      {
+        "code": "REFR",
+        "amount_text": "100",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/refr-100-usd",
+    "input_text": "REFR 100 USD",
+    "expected": [
+      {
+        "code": "REFR",
+        "amount_text": "100",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/refr-100-pln",
+    "input_text": "REFR 100 PLN",
+    "expected": [
+      {
+        "code": "REFR",
+        "amount_text": "100",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/refr-100-gbp",
+    "input_text": "REFR 100 GBP",
+    "expected": [
+      {
+        "code": "REFR",
+        "amount_text": "100",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/refr-250p5-eur",
+    "input_text": "REFR 250.5 EUR",
+    "expected": [
+      {
+        "code": "REFR",
+        "amount_text": "250.5",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/refr-250p5-usd",
+    "input_text": "REFR 250.5 USD",
+    "expected": [
+      {
+        "code": "REFR",
+        "amount_text": "250.5",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/refr-250p5-pln",
+    "input_text": "REFR 250.5 PLN",
+    "expected": [
+      {
+        "code": "REFR",
+        "amount_text": "250.5",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/refr-250p5-gbp",
+    "input_text": "REFR 250.5 GBP",
+    "expected": [
+      {
+        "code": "REFR",
+        "amount_text": "250.5",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/refr-999p99-eur",
+    "input_text": "REFR 999.99 EUR",
+    "expected": [
+      {
+        "code": "REFR",
+        "amount_text": "999.99",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/refr-999p99-usd",
+    "input_text": "REFR 999.99 USD",
+    "expected": [
+      {
+        "code": "REFR",
+        "amount_text": "999.99",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/refr-999p99-pln",
+    "input_text": "REFR 999.99 PLN",
+    "expected": [
+      {
+        "code": "REFR",
+        "amount_text": "999.99",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/refr-999p99-gbp",
+    "input_text": "REFR 999.99 GBP",
+    "expected": [
+      {
+        "code": "REFR",
+        "amount_text": "999.99",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/oog-1-eur",
+    "input_text": "OOG 1 EUR",
+    "expected": [
+      {
+        "code": "OOG",
+        "amount_text": "1",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/oog-1-usd",
+    "input_text": "OOG 1 USD",
+    "expected": [
+      {
+        "code": "OOG",
+        "amount_text": "1",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/oog-1-pln",
+    "input_text": "OOG 1 PLN",
+    "expected": [
+      {
+        "code": "OOG",
+        "amount_text": "1",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/oog-1-gbp",
+    "input_text": "OOG 1 GBP",
+    "expected": [
+      {
+        "code": "OOG",
+        "amount_text": "1",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/oog-12-eur",
+    "input_text": "OOG 12 EUR",
+    "expected": [
+      {
+        "code": "OOG",
+        "amount_text": "12",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/oog-12-usd",
+    "input_text": "OOG 12 USD",
+    "expected": [
+      {
+        "code": "OOG",
+        "amount_text": "12",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/oog-12-pln",
+    "input_text": "OOG 12 PLN",
+    "expected": [
+      {
+        "code": "OOG",
+        "amount_text": "12",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/oog-12-gbp",
+    "input_text": "OOG 12 GBP",
+    "expected": [
+      {
+        "code": "OOG",
+        "amount_text": "12",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/oog-100-eur",
+    "input_text": "OOG 100 EUR",
+    "expected": [
+      {
+        "code": "OOG",
+        "amount_text": "100",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/oog-100-usd",
+    "input_text": "OOG 100 USD",
+    "expected": [
+      {
+        "code": "OOG",
+        "amount_text": "100",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/oog-100-pln",
+    "input_text": "OOG 100 PLN",
+    "expected": [
+      {
+        "code": "OOG",
+        "amount_text": "100",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/oog-100-gbp",
+    "input_text": "OOG 100 GBP",
+    "expected": [
+      {
+        "code": "OOG",
+        "amount_text": "100",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/oog-250p5-eur",
+    "input_text": "OOG 250.5 EUR",
+    "expected": [
+      {
+        "code": "OOG",
+        "amount_text": "250.5",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/oog-250p5-usd",
+    "input_text": "OOG 250.5 USD",
+    "expected": [
+      {
+        "code": "OOG",
+        "amount_text": "250.5",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/oog-250p5-pln",
+    "input_text": "OOG 250.5 PLN",
+    "expected": [
+      {
+        "code": "OOG",
+        "amount_text": "250.5",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/oog-250p5-gbp",
+    "input_text": "OOG 250.5 GBP",
+    "expected": [
+      {
+        "code": "OOG",
+        "amount_text": "250.5",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/oog-999p99-eur",
+    "input_text": "OOG 999.99 EUR",
+    "expected": [
+      {
+        "code": "OOG",
+        "amount_text": "999.99",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/oog-999p99-usd",
+    "input_text": "OOG 999.99 USD",
+    "expected": [
+      {
+        "code": "OOG",
+        "amount_text": "999.99",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/oog-999p99-pln",
+    "input_text": "OOG 999.99 PLN",
+    "expected": [
+      {
+        "code": "OOG",
+        "amount_text": "999.99",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/oog-999p99-gbp",
+    "input_text": "OOG 999.99 GBP",
+    "expected": [
+      {
+        "code": "OOG",
+        "amount_text": "999.99",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dgc-1-eur",
+    "input_text": "DGC 1 EUR",
+    "expected": [
+      {
+        "code": "DGC",
+        "amount_text": "1",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dgc-1-usd",
+    "input_text": "DGC 1 USD",
+    "expected": [
+      {
+        "code": "DGC",
+        "amount_text": "1",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dgc-1-pln",
+    "input_text": "DGC 1 PLN",
+    "expected": [
+      {
+        "code": "DGC",
+        "amount_text": "1",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dgc-1-gbp",
+    "input_text": "DGC 1 GBP",
+    "expected": [
+      {
+        "code": "DGC",
+        "amount_text": "1",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dgc-12-eur",
+    "input_text": "DGC 12 EUR",
+    "expected": [
+      {
+        "code": "DGC",
+        "amount_text": "12",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dgc-12-usd",
+    "input_text": "DGC 12 USD",
+    "expected": [
+      {
+        "code": "DGC",
+        "amount_text": "12",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dgc-12-pln",
+    "input_text": "DGC 12 PLN",
+    "expected": [
+      {
+        "code": "DGC",
+        "amount_text": "12",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dgc-12-gbp",
+    "input_text": "DGC 12 GBP",
+    "expected": [
+      {
+        "code": "DGC",
+        "amount_text": "12",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dgc-100-eur",
+    "input_text": "DGC 100 EUR",
+    "expected": [
+      {
+        "code": "DGC",
+        "amount_text": "100",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dgc-100-usd",
+    "input_text": "DGC 100 USD",
+    "expected": [
+      {
+        "code": "DGC",
+        "amount_text": "100",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dgc-100-pln",
+    "input_text": "DGC 100 PLN",
+    "expected": [
+      {
+        "code": "DGC",
+        "amount_text": "100",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dgc-100-gbp",
+    "input_text": "DGC 100 GBP",
+    "expected": [
+      {
+        "code": "DGC",
+        "amount_text": "100",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dgc-250p5-eur",
+    "input_text": "DGC 250.5 EUR",
+    "expected": [
+      {
+        "code": "DGC",
+        "amount_text": "250.5",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dgc-250p5-usd",
+    "input_text": "DGC 250.5 USD",
+    "expected": [
+      {
+        "code": "DGC",
+        "amount_text": "250.5",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dgc-250p5-pln",
+    "input_text": "DGC 250.5 PLN",
+    "expected": [
+      {
+        "code": "DGC",
+        "amount_text": "250.5",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dgc-250p5-gbp",
+    "input_text": "DGC 250.5 GBP",
+    "expected": [
+      {
+        "code": "DGC",
+        "amount_text": "250.5",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dgc-999p99-eur",
+    "input_text": "DGC 999.99 EUR",
+    "expected": [
+      {
+        "code": "DGC",
+        "amount_text": "999.99",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dgc-999p99-usd",
+    "input_text": "DGC 999.99 USD",
+    "expected": [
+      {
+        "code": "DGC",
+        "amount_text": "999.99",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dgc-999p99-pln",
+    "input_text": "DGC 999.99 PLN",
+    "expected": [
+      {
+        "code": "DGC",
+        "amount_text": "999.99",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/dgc-999p99-gbp",
+    "input_text": "DGC 999.99 GBP",
+    "expected": [
+      {
+        "code": "DGC",
+        "amount_text": "999.99",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/cfs-1-eur",
+    "input_text": "CFS 1 EUR",
+    "expected": [
+      {
+        "code": "CFS",
+        "amount_text": "1",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/cfs-1-usd",
+    "input_text": "CFS 1 USD",
+    "expected": [
+      {
+        "code": "CFS",
+        "amount_text": "1",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/cfs-1-pln",
+    "input_text": "CFS 1 PLN",
+    "expected": [
+      {
+        "code": "CFS",
+        "amount_text": "1",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/cfs-1-gbp",
+    "input_text": "CFS 1 GBP",
+    "expected": [
+      {
+        "code": "CFS",
+        "amount_text": "1",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/cfs-12-eur",
+    "input_text": "CFS 12 EUR",
+    "expected": [
+      {
+        "code": "CFS",
+        "amount_text": "12",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/cfs-12-usd",
+    "input_text": "CFS 12 USD",
+    "expected": [
+      {
+        "code": "CFS",
+        "amount_text": "12",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/cfs-12-pln",
+    "input_text": "CFS 12 PLN",
+    "expected": [
+      {
+        "code": "CFS",
+        "amount_text": "12",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/cfs-12-gbp",
+    "input_text": "CFS 12 GBP",
+    "expected": [
+      {
+        "code": "CFS",
+        "amount_text": "12",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/cfs-100-eur",
+    "input_text": "CFS 100 EUR",
+    "expected": [
+      {
+        "code": "CFS",
+        "amount_text": "100",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/cfs-100-usd",
+    "input_text": "CFS 100 USD",
+    "expected": [
+      {
+        "code": "CFS",
+        "amount_text": "100",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/cfs-100-pln",
+    "input_text": "CFS 100 PLN",
+    "expected": [
+      {
+        "code": "CFS",
+        "amount_text": "100",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/cfs-100-gbp",
+    "input_text": "CFS 100 GBP",
+    "expected": [
+      {
+        "code": "CFS",
+        "amount_text": "100",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/cfs-250p5-eur",
+    "input_text": "CFS 250.5 EUR",
+    "expected": [
+      {
+        "code": "CFS",
+        "amount_text": "250.5",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/cfs-250p5-usd",
+    "input_text": "CFS 250.5 USD",
+    "expected": [
+      {
+        "code": "CFS",
+        "amount_text": "250.5",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/cfs-250p5-pln",
+    "input_text": "CFS 250.5 PLN",
+    "expected": [
+      {
+        "code": "CFS",
+        "amount_text": "250.5",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/cfs-250p5-gbp",
+    "input_text": "CFS 250.5 GBP",
+    "expected": [
+      {
+        "code": "CFS",
+        "amount_text": "250.5",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/cfs-999p99-eur",
+    "input_text": "CFS 999.99 EUR",
+    "expected": [
+      {
+        "code": "CFS",
+        "amount_text": "999.99",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/cfs-999p99-usd",
+    "input_text": "CFS 999.99 USD",
+    "expected": [
+      {
+        "code": "CFS",
+        "amount_text": "999.99",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/cfs-999p99-pln",
+    "input_text": "CFS 999.99 PLN",
+    "expected": [
+      {
+        "code": "CFS",
+        "amount_text": "999.99",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/cfs-999p99-gbp",
+    "input_text": "CFS 999.99 GBP",
+    "expected": [
+      {
+        "code": "CFS",
+        "amount_text": "999.99",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thd-1-eur",
+    "input_text": "THD 1 EUR",
+    "expected": [
+      {
+        "code": "THD",
+        "amount_text": "1",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thd-1-usd",
+    "input_text": "THD 1 USD",
+    "expected": [
+      {
+        "code": "THD",
+        "amount_text": "1",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thd-1-pln",
+    "input_text": "THD 1 PLN",
+    "expected": [
+      {
+        "code": "THD",
+        "amount_text": "1",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thd-1-gbp",
+    "input_text": "THD 1 GBP",
+    "expected": [
+      {
+        "code": "THD",
+        "amount_text": "1",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thd-12-eur",
+    "input_text": "THD 12 EUR",
+    "expected": [
+      {
+        "code": "THD",
+        "amount_text": "12",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thd-12-usd",
+    "input_text": "THD 12 USD",
+    "expected": [
+      {
+        "code": "THD",
+        "amount_text": "12",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thd-12-pln",
+    "input_text": "THD 12 PLN",
+    "expected": [
+      {
+        "code": "THD",
+        "amount_text": "12",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thd-12-gbp",
+    "input_text": "THD 12 GBP",
+    "expected": [
+      {
+        "code": "THD",
+        "amount_text": "12",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thd-100-eur",
+    "input_text": "THD 100 EUR",
+    "expected": [
+      {
+        "code": "THD",
+        "amount_text": "100",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thd-100-usd",
+    "input_text": "THD 100 USD",
+    "expected": [
+      {
+        "code": "THD",
+        "amount_text": "100",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thd-100-pln",
+    "input_text": "THD 100 PLN",
+    "expected": [
+      {
+        "code": "THD",
+        "amount_text": "100",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thd-100-gbp",
+    "input_text": "THD 100 GBP",
+    "expected": [
+      {
+        "code": "THD",
+        "amount_text": "100",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thd-250p5-eur",
+    "input_text": "THD 250.5 EUR",
+    "expected": [
+      {
+        "code": "THD",
+        "amount_text": "250.5",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thd-250p5-usd",
+    "input_text": "THD 250.5 USD",
+    "expected": [
+      {
+        "code": "THD",
+        "amount_text": "250.5",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thd-250p5-pln",
+    "input_text": "THD 250.5 PLN",
+    "expected": [
+      {
+        "code": "THD",
+        "amount_text": "250.5",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thd-250p5-gbp",
+    "input_text": "THD 250.5 GBP",
+    "expected": [
+      {
+        "code": "THD",
+        "amount_text": "250.5",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thd-999p99-eur",
+    "input_text": "THD 999.99 EUR",
+    "expected": [
+      {
+        "code": "THD",
+        "amount_text": "999.99",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thd-999p99-usd",
+    "input_text": "THD 999.99 USD",
+    "expected": [
+      {
+        "code": "THD",
+        "amount_text": "999.99",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thd-999p99-pln",
+    "input_text": "THD 999.99 PLN",
+    "expected": [
+      {
+        "code": "THD",
+        "amount_text": "999.99",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thd-999p99-gbp",
+    "input_text": "THD 999.99 GBP",
+    "expected": [
+      {
+        "code": "THD",
+        "amount_text": "999.99",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/eir-1-eur",
+    "input_text": "EIR 1 EUR",
+    "expected": [
+      {
+        "code": "EIR",
+        "amount_text": "1",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/eir-1-usd",
+    "input_text": "EIR 1 USD",
+    "expected": [
+      {
+        "code": "EIR",
+        "amount_text": "1",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/eir-1-pln",
+    "input_text": "EIR 1 PLN",
+    "expected": [
+      {
+        "code": "EIR",
+        "amount_text": "1",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/eir-1-gbp",
+    "input_text": "EIR 1 GBP",
+    "expected": [
+      {
+        "code": "EIR",
+        "amount_text": "1",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/eir-12-eur",
+    "input_text": "EIR 12 EUR",
+    "expected": [
+      {
+        "code": "EIR",
+        "amount_text": "12",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/eir-12-usd",
+    "input_text": "EIR 12 USD",
+    "expected": [
+      {
+        "code": "EIR",
+        "amount_text": "12",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/eir-12-pln",
+    "input_text": "EIR 12 PLN",
+    "expected": [
+      {
+        "code": "EIR",
+        "amount_text": "12",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/eir-12-gbp",
+    "input_text": "EIR 12 GBP",
+    "expected": [
+      {
+        "code": "EIR",
+        "amount_text": "12",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/eir-100-eur",
+    "input_text": "EIR 100 EUR",
+    "expected": [
+      {
+        "code": "EIR",
+        "amount_text": "100",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/eir-100-usd",
+    "input_text": "EIR 100 USD",
+    "expected": [
+      {
+        "code": "EIR",
+        "amount_text": "100",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/eir-100-pln",
+    "input_text": "EIR 100 PLN",
+    "expected": [
+      {
+        "code": "EIR",
+        "amount_text": "100",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/eir-100-gbp",
+    "input_text": "EIR 100 GBP",
+    "expected": [
+      {
+        "code": "EIR",
+        "amount_text": "100",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/eir-250p5-eur",
+    "input_text": "EIR 250.5 EUR",
+    "expected": [
+      {
+        "code": "EIR",
+        "amount_text": "250.5",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/eir-250p5-usd",
+    "input_text": "EIR 250.5 USD",
+    "expected": [
+      {
+        "code": "EIR",
+        "amount_text": "250.5",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/eir-250p5-pln",
+    "input_text": "EIR 250.5 PLN",
+    "expected": [
+      {
+        "code": "EIR",
+        "amount_text": "250.5",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/eir-250p5-gbp",
+    "input_text": "EIR 250.5 GBP",
+    "expected": [
+      {
+        "code": "EIR",
+        "amount_text": "250.5",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/eir-999p99-eur",
+    "input_text": "EIR 999.99 EUR",
+    "expected": [
+      {
+        "code": "EIR",
+        "amount_text": "999.99",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/eir-999p99-usd",
+    "input_text": "EIR 999.99 USD",
+    "expected": [
+      {
+        "code": "EIR",
+        "amount_text": "999.99",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/eir-999p99-pln",
+    "input_text": "EIR 999.99 PLN",
+    "expected": [
+      {
+        "code": "EIR",
+        "amount_text": "999.99",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/eir-999p99-gbp",
+    "input_text": "EIR 999.99 GBP",
+    "expected": [
+      {
+        "code": "EIR",
+        "amount_text": "999.99",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/fsc-1-eur",
+    "input_text": "FSC 1 EUR",
+    "expected": [
+      {
+        "code": "FSC",
+        "amount_text": "1",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/fsc-1-usd",
+    "input_text": "FSC 1 USD",
+    "expected": [
+      {
+        "code": "FSC",
+        "amount_text": "1",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/fsc-1-pln",
+    "input_text": "FSC 1 PLN",
+    "expected": [
+      {
+        "code": "FSC",
+        "amount_text": "1",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/fsc-1-gbp",
+    "input_text": "FSC 1 GBP",
+    "expected": [
+      {
+        "code": "FSC",
+        "amount_text": "1",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/fsc-12-eur",
+    "input_text": "FSC 12 EUR",
+    "expected": [
+      {
+        "code": "FSC",
+        "amount_text": "12",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/fsc-12-usd",
+    "input_text": "FSC 12 USD",
+    "expected": [
+      {
+        "code": "FSC",
+        "amount_text": "12",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/fsc-12-pln",
+    "input_text": "FSC 12 PLN",
+    "expected": [
+      {
+        "code": "FSC",
+        "amount_text": "12",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/fsc-12-gbp",
+    "input_text": "FSC 12 GBP",
+    "expected": [
+      {
+        "code": "FSC",
+        "amount_text": "12",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/fsc-100-eur",
+    "input_text": "FSC 100 EUR",
+    "expected": [
+      {
+        "code": "FSC",
+        "amount_text": "100",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/fsc-100-usd",
+    "input_text": "FSC 100 USD",
+    "expected": [
+      {
+        "code": "FSC",
+        "amount_text": "100",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/fsc-100-pln",
+    "input_text": "FSC 100 PLN",
+    "expected": [
+      {
+        "code": "FSC",
+        "amount_text": "100",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/fsc-100-gbp",
+    "input_text": "FSC 100 GBP",
+    "expected": [
+      {
+        "code": "FSC",
+        "amount_text": "100",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/fsc-250p5-eur",
+    "input_text": "FSC 250.5 EUR",
+    "expected": [
+      {
+        "code": "FSC",
+        "amount_text": "250.5",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/fsc-250p5-usd",
+    "input_text": "FSC 250.5 USD",
+    "expected": [
+      {
+        "code": "FSC",
+        "amount_text": "250.5",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/fsc-250p5-pln",
+    "input_text": "FSC 250.5 PLN",
+    "expected": [
+      {
+        "code": "FSC",
+        "amount_text": "250.5",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/fsc-250p5-gbp",
+    "input_text": "FSC 250.5 GBP",
+    "expected": [
+      {
+        "code": "FSC",
+        "amount_text": "250.5",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/fsc-999p99-eur",
+    "input_text": "FSC 999.99 EUR",
+    "expected": [
+      {
+        "code": "FSC",
+        "amount_text": "999.99",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/fsc-999p99-usd",
+    "input_text": "FSC 999.99 USD",
+    "expected": [
+      {
+        "code": "FSC",
+        "amount_text": "999.99",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/fsc-999p99-pln",
+    "input_text": "FSC 999.99 PLN",
+    "expected": [
+      {
+        "code": "FSC",
+        "amount_text": "999.99",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/fsc-999p99-gbp",
+    "input_text": "FSC 999.99 GBP",
+    "expected": [
+      {
+        "code": "FSC",
+        "amount_text": "999.99",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thu-1-eur",
+    "input_text": "THU 1 EUR",
+    "expected": [
+      {
+        "code": "THU",
+        "amount_text": "1",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thu-1-usd",
+    "input_text": "THU 1 USD",
+    "expected": [
+      {
+        "code": "THU",
+        "amount_text": "1",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thu-1-pln",
+    "input_text": "THU 1 PLN",
+    "expected": [
+      {
+        "code": "THU",
+        "amount_text": "1",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thu-1-gbp",
+    "input_text": "THU 1 GBP",
+    "expected": [
+      {
+        "code": "THU",
+        "amount_text": "1",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thu-12-eur",
+    "input_text": "THU 12 EUR",
+    "expected": [
+      {
+        "code": "THU",
+        "amount_text": "12",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thu-12-usd",
+    "input_text": "THU 12 USD",
+    "expected": [
+      {
+        "code": "THU",
+        "amount_text": "12",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thu-12-pln",
+    "input_text": "THU 12 PLN",
+    "expected": [
+      {
+        "code": "THU",
+        "amount_text": "12",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thu-12-gbp",
+    "input_text": "THU 12 GBP",
+    "expected": [
+      {
+        "code": "THU",
+        "amount_text": "12",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thu-100-eur",
+    "input_text": "THU 100 EUR",
+    "expected": [
+      {
+        "code": "THU",
+        "amount_text": "100",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thu-100-usd",
+    "input_text": "THU 100 USD",
+    "expected": [
+      {
+        "code": "THU",
+        "amount_text": "100",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thu-100-pln",
+    "input_text": "THU 100 PLN",
+    "expected": [
+      {
+        "code": "THU",
+        "amount_text": "100",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thu-100-gbp",
+    "input_text": "THU 100 GBP",
+    "expected": [
+      {
+        "code": "THU",
+        "amount_text": "100",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thu-250p5-eur",
+    "input_text": "THU 250.5 EUR",
+    "expected": [
+      {
+        "code": "THU",
+        "amount_text": "250.5",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thu-250p5-usd",
+    "input_text": "THU 250.5 USD",
+    "expected": [
+      {
+        "code": "THU",
+        "amount_text": "250.5",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thu-250p5-pln",
+    "input_text": "THU 250.5 PLN",
+    "expected": [
+      {
+        "code": "THU",
+        "amount_text": "250.5",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thu-250p5-gbp",
+    "input_text": "THU 250.5 GBP",
+    "expected": [
+      {
+        "code": "THU",
+        "amount_text": "250.5",
+        "currency": "GBP"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thu-999p99-eur",
+    "input_text": "THU 999.99 EUR",
+    "expected": [
+      {
+        "code": "THU",
+        "amount_text": "999.99",
+        "currency": "EUR"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thu-999p99-usd",
+    "input_text": "THU 999.99 USD",
+    "expected": [
+      {
+        "code": "THU",
+        "amount_text": "999.99",
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thu-999p99-pln",
+    "input_text": "THU 999.99 PLN",
+    "expected": [
+      {
+        "code": "THU",
+        "amount_text": "999.99",
+        "currency": "PLN"
+      }
+    ]
+  },
+  {
+    "source_ref": "doc://golden/thu-999p99-gbp",
+    "input_text": "THU 999.99 GBP",
+    "expected": [
+      {
+        "code": "THU",
+        "amount_text": "999.99",
+        "currency": "GBP"
+      }
+    ]
   }
 ]

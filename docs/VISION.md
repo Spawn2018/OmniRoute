@@ -73,6 +73,7 @@ zostają w badaniach `04`).
 | 2026-09-13 | AI3.3 plan (**450.0**): własny golden + pytest. 96,6% / 92,71% = `TO_VERIFY` literatura, nie fakt Omni (`REJECTED` w kodzie). |
 | 2026-09-13 | **450.0** golden w kodzie (`CONFIRMED`, git). Następny = **AI3.4** Excel (`REQUIREMENT`). 96,6% zostaje `TO_VERIFY`. |
 | 2026-09-15 | AI3.3 leftover plan (**509.0**): golden ≥500 vs MockExtractor (`REQUIREMENT`). DocLayNet / 2k / 5k / live vision `REJECTED`. |
+| 2026-09-15 | **509.0** golden ≥500 w kodzie (`CONFIRMED`, git). Następny = pętla 2 000 (`REQUIREMENT`). DocLayNet `REJECTED`. |
 | 2026-09-13 | AI3.4 plan (**451.0**): parser `xlsx_sheet` stdlib. `openpyxl` `REJECTED`. `.xls` leftover. |
 | 2026-09-13 | **451.0** `xlsx_sheet` w kodzie (`CONFIRMED`, git). Następny = **AI4.0** FK `plan_snapshot` (`REQUIREMENT`). `.xls` leftover. |
 | 2026-09-13 | AI4.0 plan (**452.0**): FK złożone RESTRICT. CASCADE `REJECTED`. What-if `REJECTED` na tym wierszu. |
@@ -294,6 +295,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-13 | AI3.3 (**450.0**) = własny zbiór golden + bramka pytest. Liczby z preprintu `REJECTED` jako stała. Excel/vision `REJECTED` na tym wierszu. | `/plan-modul` `/noc`; VISION E AI3 |
 | 2026-09-13 | **450.0** w kodzie (`CONFIRMED`, git). Dwa przypadki THC/BAF vs `MockExtractor`. Następny = **AI3.4** Excel (`REQUIREMENT`). | CURRENT + plaster 450.0 `/noc` |
 | 2026-09-15 | AI3.3 leftover (**509.0**) = pętla golden ≥500 vs MockExtractor. DocLayNet / 2k / 5k / live vision `REJECTED`. | `/plan-modul` `/noc 15`; VISION E AI3 |
+| 2026-09-15 | **509.0** w kodzie (`CONFIRMED`, git). 500 przypadków vs `MockExtractor`. Następny = **510.0** ≥2000 (`REQUIREMENT`). | CURRENT + plaster 509.0 `/noc 15` |
 | 2026-09-13 | AI3.4 (**451.0**) = OOXML pierwszy arkusz → tekst. Nowa zależność `REJECTED`. Vision `REJECTED`. | `/plan-modul` `/noc`; VISION E AI3 |
 | 2026-09-13 | **451.0** w kodzie (`CONFIRMED`, git). `parser_name=xlsx_sheet`. Następny = **AI4.0** (`REQUIREMENT`). | CURRENT + plaster 451.0 `/noc` |
 | 2026-09-13 | AI4.0 (**452.0**) = FK `plan_snapshot` → shipment/trip/resource, `ON DELETE RESTRICT`. CASCADE `REJECTED`. | `/plan-modul` `/noc`; VISION E AI4 |
