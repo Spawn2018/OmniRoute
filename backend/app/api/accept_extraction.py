@@ -1,3 +1,4 @@
+from decimal import Decimal, InvalidOperation
 from typing import NamedTuple
 from uuid import UUID
 
@@ -23,9 +24,15 @@ from app.models.extraction_draft import ExtractionDraft
 from app.models.rate_line import RateLine
 from app.services.channel_quotes.channel_quote_service import ChannelQuoteService
 from app.services.extraction.extraction_service import ExtractionService
+from app.services.organization_settings.organization_setting_service import (
+    OrganizationSettingService,
+)
 from app.services.rate_lines.rate_line_service import RateLineService
 from app.services.tender_rfp_intakes.tender_rfp_intake_service import TenderRfpIntakeService
 from app.services.tenders.tender_service import TenderService
+
+_HITL_KEY = "hitl_confidence_min"
+_DEFAULT_HITL = Decimal("0.70")
 
 
 class ExtractionAcceptResult(NamedTuple):
@@ -45,12 +52,14 @@ class AcceptExtractionToRates:
         quotes: ChannelQuoteService | None = None,
         intakes: TenderRfpIntakeService | None = None,
         boards: TenderService | None = None,
+        settings: OrganizationSettingService | None = None,
     ) -> None:
         self._extraction = extraction or ExtractionService(session)
         self._rates = rates or RateLineService(session)
         self._quotes = quotes or ChannelQuoteService(session)
         self._intakes = intakes or TenderRfpIntakeService(session)
         self._boards = boards or TenderService(session)
+        self._settings = settings or OrganizationSettingService(session)
 
     async def accept(
         self,
@@ -78,6 +87,15 @@ class AcceptExtractionToRates:
             return ExtractionAcceptResult(draft, [], [quote])
         raise AcceptRequiresRateLine("Szkic nie jest rate_line")
 
+    async def _hitl_threshold(self) -> Decimal:
+        row = await self._settings.get_setting(_HITL_KEY)
+        if row is None:
+            return _DEFAULT_HITL
+        try:
+            return Decimal(row.setting_value)
+        except InvalidOperation:
+            return _DEFAULT_HITL
+
     async def _accept_rates(
         self,
         draft: ExtractionDraft,
@@ -88,7 +106,7 @@ class AcceptExtractionToRates:
         payload = _require_rate_payload(draft)
         indexes = require_candidate_indexes(candidate_indexes, len(payload.candidates))
         selected, remaining = split_candidates_by_indexes(payload.candidates, indexes)
-        require_bulk_accept_confidence(selected)
+        require_bulk_accept_confidence(selected, threshold=await self._hitl_threshold())
         origin = require_source_ref(draft.source_ref)
         written: list[RateLine] = []
         for candidate in selected:

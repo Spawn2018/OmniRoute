@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **504.0** AI3.0 leftover — partial accept `candidate_indexes` **Następny:** **505.0** AI3.0 leftover — próg pewności HITL w `organization_setting` (nie live vision; nie Instructor)
+**Stan (z CURRENT.md):** **505.0** AI3.0 leftover — `hitl_confidence_min` w organization_setting **Następny:** **506.0** AI3.4 leftover — odczyt `.xls` (nie live vision; nie Instructor; nie openpyxl multi-sheet)
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

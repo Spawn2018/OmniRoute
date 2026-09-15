@@ -19,10 +19,11 @@ Czego tu nie ma: cofanie do starej wersji, ponowne wołanie modelu, zapis `charg
 rysowanie ramki na PDF. Marża zostaje na `/charges`.
 
 Przy dwóch i więcej **zaznaczonych** kandydatach Akceptuj działa tylko gdy każdy
-ma pewność co najmniej 0,70 (tekst `0.70` / `70%` / `green` / `yellow` / `high`).
+ma pewność co najmniej progu tenanta `hitl_confidence_min` z `/organization-settings`
+(domyślnie 0,70; tekst `0.70` / `70%` / `green` / `yellow` / `high`).
 Pusty, `orange`, `hold` albo niższy ułamek blokuje zbiorczą akceptację — popraw
-pewność albo zaznacz jednego kandydata.
+pewność, zaznacz jednego kandydata albo podnieś próg w ustawieniach.
 
 Nazwy w kodzie: `extraction_draft` · `payload.revision` · `payload.history` ·
 `candidate_indexes` · `payload.extract_path` · `bbox_text` · `confidence_text` ·
-brama zbiorcza 501.0 · partial 504.0.
+`hitl_confidence_min` · brama zbiorcza 501.0 · partial 504.0 · ustawienie 505.0.

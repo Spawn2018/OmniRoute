@@ -42,6 +42,7 @@ export function OrganizationSettingCatalogPage() {
   const [fxBasis, setFxBasis] = useState("etd")
   const [fxOffset, setFxOffset] = useState("-1")
   const [fxTable, setFxTable] = useState("nbp_a")
+  const [hitlMin, setHitlMin] = useState("0.70")
   const signedIn = Boolean(ctx.organizationId && ctx.userId)
 
   const query = useQuery({
@@ -143,6 +144,20 @@ export function OrganizationSettingCatalogPage() {
         organizationSettingUpsertBody({
           settingKey: "fx_rate_table",
           settingValue: fxTable,
+        }),
+      ),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({
+        queryKey: ["organization-settings", ctx.organizationId],
+      })
+    },
+  })
+  const saveHitlMin = useMutation({
+    mutationFn: () =>
+      upsertOrganizationSetting(
+        organizationSettingUpsertBody({
+          settingKey: "hitl_confidence_min",
+          settingValue: hitlMin,
         }),
       ),
     onSuccess: () => {
@@ -344,6 +359,25 @@ export function OrganizationSettingCatalogPage() {
         </Button>
       </form>
 
+      <form
+        className="flex flex-col gap-2 rounded-md border border-border bg-card p-3 md:flex-row md:flex-wrap"
+        onSubmit={(event) => {
+          event.preventDefault()
+          saveHitlMin.mutate()
+        }}
+      >
+        <Input
+          aria-label="Próg pewności HITL hitl_confidence_min"
+          placeholder="0.70"
+          value={hitlMin}
+          onChange={(event) => setHitlMin(event.target.value)}
+          required
+        />
+        <Button type="submit" disabled={saveHitlMin.isPending || !signedIn}>
+          Zapisz hitl_confidence_min
+        </Button>
+      </form>
+
       {saveMutation.isError ? <CatalogError error={saveMutation.error} /> : null}
       {savePrefix.isError ? <CatalogError error={savePrefix.error} /> : null}
       {saveTemplate.isError ? <CatalogError error={saveTemplate.error} /> : null}
@@ -352,6 +386,7 @@ export function OrganizationSettingCatalogPage() {
       {saveFxBasis.isError ? <CatalogError error={saveFxBasis.error} /> : null}
       {saveFxOffset.isError ? <CatalogError error={saveFxOffset.error} /> : null}
       {saveFxTable.isError ? <CatalogError error={saveFxTable.error} /> : null}
+      {saveHitlMin.isError ? <CatalogError error={saveHitlMin.error} /> : null}
 
       <CalendarOverridePanel canWrite={signedIn} />
 

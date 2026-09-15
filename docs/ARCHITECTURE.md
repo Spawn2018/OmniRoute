@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **504.0** AI3.0 leftover — partial accept `candidate_indexes`. **Etap:** Plan — delta **505.0** AI3.0 leftover M-03 `hitl_confidence_*` (przed `/plaster`). **Następny:** **505.0** AI3.0 leftover — próg pewności HITL w `organization_setting` (nie live vision; nie Instructor) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **505.0** AI3.0 leftover — `hitl_confidence_min` w organization_setting. **Etap:** Plan — delta **506.0** AI3.4 leftover Excel `.xls` (przed `/plaster`). **Następny:** **506.0** AI3.4 leftover — odczyt `.xls` (nie live vision; nie Instructor; nie openpyxl multi-sheet) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

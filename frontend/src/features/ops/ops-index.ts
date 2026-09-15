@@ -1754,6 +1754,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "502.0": "/extraction-prompt-marks",
   "503.0": "/extractions",
   "504.0": "/extractions",
+  "505.0": "/organization-settings",
   "461.0": "/shipper-tender-marks",
   "462.0": "/campaign-marks",
   "463.0": "/groupage-dispatcher-marks",

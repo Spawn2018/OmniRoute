@@ -135,8 +135,9 @@ def require_rate_candidates_editable(draft_kind: object) -> None:
         )
 
 
-def bulk_accept_confidence_ok(raw: object) -> bool:
-    """Czy pewność kandydata pozwala na accept zbiorczy (próg 0,70)."""
+def bulk_accept_confidence_ok(raw: object, *, threshold: Decimal | None = None) -> bool:
+    """Czy pewność kandydata pozwala na accept zbiorczy (domyślnie 0,70)."""
+    minimum = threshold if threshold is not None else _BULK_MIN
     if type(raw) is not str:
         return False
     token = raw.strip().lower().replace(",", ".")
@@ -151,7 +152,7 @@ def bulk_accept_confidence_ok(raw: object) -> bool:
             value = Decimal(token[:-1].strip()) / Decimal(100)
         except InvalidOperation:
             return False
-        return value >= _BULK_MIN
+        return value >= minimum
     try:
         value = Decimal(token)
     except InvalidOperation:
@@ -160,19 +161,24 @@ def bulk_accept_confidence_ok(raw: object) -> bool:
         if value > Decimal(100):
             return False
         value = value / Decimal(100)
-    return value >= _BULK_MIN
+    return value >= minimum
 
 
-def require_bulk_accept_confidence(candidates: Sequence[object]) -> None:
-    """≥2 kandydatów: każdy musi przejść próg 0,70; jeden wiersz = HITL bez bramki."""
+def require_bulk_accept_confidence(
+    candidates: Sequence[object],
+    *,
+    threshold: Decimal | None = None,
+) -> None:
+    """≥2 kandydatów: każdy musi przejść próg; jeden wiersz = HITL bez bramki."""
+    minimum = threshold if threshold is not None else _BULK_MIN
     if len(candidates) < 2:
         return
     for index, row in enumerate(candidates):
         text = _confidence_text_of(row)
-        if bulk_accept_confidence_ok(text):
+        if bulk_accept_confidence_ok(text, threshold=minimum):
             continue
         raise BulkAcceptConfidenceBelow(
-            f"kandydat {index + 1}: pewność poniżej progu zbiorczego 0,70",
+            f"kandydat {index + 1}: pewność poniżej progu zbiorczego {minimum}",
         )
 
 

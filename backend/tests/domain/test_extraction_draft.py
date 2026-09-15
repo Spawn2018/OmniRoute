@@ -1,3 +1,4 @@
+from decimal import Decimal
 from uuid import uuid4
 
 import pytest
@@ -145,6 +146,24 @@ def test_bulk_accept_gate_allows_all_high() -> None:
             {"code": "BAF", "amount_text": "5", "currency": "EUR", "confidence_text": "0.70"},
         ],
     )
+
+
+def test_bulk_accept_respects_custom_threshold() -> None:
+    require_bulk_accept_confidence(
+        [
+            {"confidence_text": "0.90"},
+            {"confidence_text": "0.80"},
+        ],
+        threshold=Decimal("0.80"),
+    )
+    with pytest.raises(BulkAcceptConfidenceBelow, match="0.80"):
+        require_bulk_accept_confidence(
+            [
+                {"confidence_text": "0.90"},
+                {"confidence_text": "0.75"},
+            ],
+            threshold=Decimal("0.80"),
+        )
 
 
 def test_draft_kind_rejects_unknown() -> None:

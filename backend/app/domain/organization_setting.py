@@ -1,3 +1,5 @@
+from decimal import Decimal, InvalidOperation
+
 from app.domain.errors import InvalidMoney, InvalidOrganizationSetting
 from app.domain.money import Currency
 
@@ -11,6 +13,7 @@ ALLOWED_SETTING_KEYS = frozenset(
         "fx_rate_basis",
         "fx_rate_offset_days",
         "fx_rate_table",
+        "hitl_confidence_min",
     },
 )
 ALLOWED_PRINT_TEMPLATES = frozenset({"plain", "letter"})
@@ -96,6 +99,17 @@ def normalize_fx_rate_table(raw: str) -> str:
     return token
 
 
+def normalize_hitl_confidence_min(raw: str) -> str:
+    token = raw.strip().replace(",", ".")
+    try:
+        value = Decimal(token)
+    except InvalidOperation as exc:
+        raise InvalidOrganizationSetting("hitl_confidence_min: ułamek 0.50–1.00") from exc
+    if value < Decimal("0.50") or value > Decimal("1.00"):
+        raise InvalidOrganizationSetting("hitl_confidence_min: ułamek 0.50–1.00")
+    return format(value, "f")
+
+
 _VALUE_PARSERS = {
     "default_currency": normalize_default_currency,
     "quotation_number_prefix": normalize_quotation_number_prefix,
@@ -105,6 +119,7 @@ _VALUE_PARSERS = {
     "fx_rate_basis": normalize_fx_rate_basis,
     "fx_rate_offset_days": normalize_fx_rate_offset_days,
     "fx_rate_table": normalize_fx_rate_table,
+    "hitl_confidence_min": normalize_hitl_confidence_min,
 }
 
 

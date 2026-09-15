@@ -73,3 +73,15 @@ def test_normalize_fx_rate_rejects_unknown() -> None:
         normalize_setting_value("fx_rate_offset_days", "2")
     with pytest.raises(InvalidOrganizationSetting, match="kurs"):
         normalize_setting_value("fx_rate_table", "nbp_c")
+
+
+def test_normalize_hitl_confidence_min_accepts_fraction() -> None:
+    assert normalize_setting_key(" Hitl_Confidence_Min ") == "hitl_confidence_min"
+    assert normalize_setting_value("hitl_confidence_min", " 0,80 ") == "0.80"
+
+
+def test_normalize_hitl_confidence_min_rejects_out_of_range() -> None:
+    with pytest.raises(InvalidOrganizationSetting, match="0.50"):
+        normalize_setting_value("hitl_confidence_min", "0.40")
+    with pytest.raises(InvalidOrganizationSetting, match="0.50"):
+        normalize_setting_value("hitl_confidence_min", "abc")

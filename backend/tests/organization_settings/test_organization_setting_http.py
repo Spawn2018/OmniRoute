@@ -142,6 +142,27 @@ def test_http_upsert_fx_rate_bad_value_is_400(settings_client: TestClient) -> No
     assert "dni" in offset.json()["detail"]
 
 
+def test_http_upsert_hitl_confidence_min(settings_client: TestClient) -> None:
+    created = settings_client.put(
+        "/api/v1/organization-settings",
+        headers=bearer_auth_headers(),
+        json={"setting_key": "hitl_confidence_min", "setting_value": "0.80"},
+    )
+    assert created.status_code == 200
+    assert created.json()["setting_key"] == "hitl_confidence_min"
+    assert created.json()["setting_value"] == "0.80"
+
+
+def test_http_upsert_hitl_confidence_min_rejects_low(settings_client: TestClient) -> None:
+    response = settings_client.put(
+        "/api/v1/organization-settings",
+        headers=bearer_auth_headers(),
+        json={"setting_key": "hitl_confidence_min", "setting_value": "0.40"},
+    )
+    assert response.status_code == 400
+    assert "0.50" in response.json()["detail"]
+
+
 def test_list_settings_forbidden_without_permission() -> None:
     set_authz_checker(DenyAllAuthz())
     client = TestClient(app)
