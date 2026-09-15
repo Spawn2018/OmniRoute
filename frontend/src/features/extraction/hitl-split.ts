@@ -1,9 +1,39 @@
 import type { ExtractionCandidate, ExtractionDraft } from "@/lib/extractions-api"
 
 const CANDIDATE_PATCH_KINDS = new Set(["rate_line", "carrier_quote", "tender_rfp"])
+const BULK_OK_BANDS = new Set(["green", "yellow", "high"])
+const BULK_BAD_BANDS = new Set(["orange", "hold", "low", "poor"])
+const BULK_MIN = 0.7
 
 export function draftAllowsCandidatePatch(draftKind: string): boolean {
   return CANDIDATE_PATCH_KINDS.has(draftKind)
+}
+
+export function bulkAcceptConfidenceOk(raw: string | undefined): boolean {
+  const token = (raw ?? "").trim().toLowerCase().replace(",", ".")
+  if (token === "") {
+    return false
+  }
+  if (BULK_OK_BANDS.has(token)) {
+    return true
+  }
+  if (BULK_BAD_BANDS.has(token)) {
+    return false
+  }
+  if (token.endsWith("%")) {
+    const pct = Number(token.slice(0, -1).trim())
+    return Number.isFinite(pct) && pct / 100 >= BULK_MIN
+  }
+  const value = Number(token)
+  if (!Number.isFinite(value)) {
+    return false
+  }
+  const ratio = value > 1 ? value / 100 : value
+  return ratio >= BULK_MIN && ratio <= 1
+}
+
+export function bulkAcceptBlocked(candidates: ExtractionCandidate[]): boolean {
+  return candidates.length >= 2 && candidates.some((row) => !bulkAcceptConfidenceOk(row.confidence_text))
 }
 
 export type HitlSplitEmpty = {

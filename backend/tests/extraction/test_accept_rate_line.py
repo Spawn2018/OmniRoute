@@ -8,6 +8,7 @@ import pytest
 from app.api.accept_extraction import AcceptExtractionToRates
 from app.domain.errors import (
     AcceptRequiresRateLine,
+    BulkAcceptConfidenceBelow,
     InvalidMoney,
     InvalidSourceRef,
     UnknownChargeCode,
@@ -159,8 +160,18 @@ async def test_second_candidate_failure_rolls_back_whole_accept() -> None:
     session.commit = AsyncMock()
     draft = _pending_draft(
         candidates=[
-            {"code": "THC", "amount_text": "10", "currency": "EUR"},
-            {"code": "XYZ", "amount_text": "1", "currency": "EUR"},
+            {
+                "code": "THC",
+                "amount_text": "10",
+                "currency": "EUR",
+                "confidence_text": "0.90",
+            },
+            {
+                "code": "XYZ",
+                "amount_text": "1",
+                "currency": "EUR",
+                "confidence_text": "0.90",
+            },
         ],
     )
     extraction = AsyncMock()
@@ -178,6 +189,70 @@ async def test_second_candidate_failure_rolls_back_whole_accept() -> None:
 
     assert rates.create_buy_rate.await_count == 2
     session.commit.assert_not_called()
+
+
+@pytest.mark.asyncio
+async def test_bulk_accept_blocks_low_confidence_before_rates() -> None:
+    session = AsyncMock()
+    session.commit = AsyncMock()
+    draft = _pending_draft(
+        candidates=[
+            {
+                "code": "THC",
+                "amount_text": "10",
+                "currency": "EUR",
+                "confidence_text": "0.90",
+            },
+            {
+                "code": "BAF",
+                "amount_text": "5",
+                "currency": "EUR",
+                "confidence_text": "0.40",
+            },
+        ],
+    )
+    extraction = AsyncMock()
+    extraction.accept = AsyncMock(return_value=draft)
+    rates = AsyncMock()
+
+    with pytest.raises(BulkAcceptConfidenceBelow, match="progu zbiorczego"):
+        await AcceptExtractionToRates(session, extraction=extraction, rates=rates).accept(
+            draft_id=draft.id,
+            user_id=uuid4(),
+        )
+
+    rates.create_buy_rate.assert_not_called()
+    session.commit.assert_not_called()
+
+
+@pytest.mark.asyncio
+async def test_single_low_confidence_accept_still_writes() -> None:
+    session = AsyncMock()
+    session.commit = AsyncMock()
+    draft = _pending_draft(
+        candidates=[
+            {
+                "code": "THC",
+                "amount_text": "10",
+                "currency": "EUR",
+                "confidence_text": "0.40",
+            },
+        ],
+    )
+    extraction = AsyncMock()
+    extraction.accept = AsyncMock(return_value=draft)
+    rates = AsyncMock()
+    created = _rate(draft)
+    rates.create_buy_rate = AsyncMock(return_value=created)
+
+    outcome = await AcceptExtractionToRates(
+        session,
+        extraction=extraction,
+        rates=rates,
+    ).accept(draft_id=draft.id, user_id=uuid4())
+
+    assert outcome.rate_lines == [created]
+    rates.create_buy_rate.assert_awaited_once()
 
 
 @pytest.mark.asyncio

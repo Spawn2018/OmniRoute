@@ -4,6 +4,8 @@ import { describe, expect, it } from "vitest"
 import { HitlReviewSplit } from "@/features/extraction/hitl-review-split"
 import {
   HITL_AI_LABEL,
+  bulkAcceptBlocked,
+  bulkAcceptConfidenceOk,
   hitlGeneratedContentLabel,
   hitlSplitView,
 } from "@/features/extraction/hitl-split"
@@ -30,6 +32,23 @@ function sampleDraft(): ExtractionDraft {
 describe("hitlSplitView", () => {
   it("returns empty when no draft is selected", () => {
     expect(hitlSplitView(null)).toEqual({ kind: "empty" })
+  })
+
+  it("gates bulk accept below 0.70 confidence", () => {
+    expect(bulkAcceptConfidenceOk("0.70")).toBe(true)
+    expect(bulkAcceptConfidenceOk("0.69")).toBe(false)
+    expect(bulkAcceptConfidenceOk("hold")).toBe(false)
+    expect(
+      bulkAcceptBlocked([
+        { code: "THC", amount_text: "10", currency: "EUR", confidence_text: "0.90" },
+        { code: "BAF", amount_text: "5", currency: "EUR", confidence_text: "0.40" },
+      ]),
+    ).toBe(true)
+    expect(
+      bulkAcceptBlocked([
+        { code: "THC", amount_text: "10", currency: "EUR", confidence_text: "0.40" },
+      ]),
+    ).toBe(false)
   })
 
   it("puts source text in preview and candidates in the review pane", () => {

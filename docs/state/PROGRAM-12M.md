@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **500.0** AI3.0 leftover — PATCH `candidates` dla `carrier_quote` / `tender_rfp` **Następny:** **501.0** AI3.0 leftover — próg **70%** pewności przed akceptacją zbiorczą (nie live vision)
+**Stan (z CURRENT.md):** **501.0** AI3.0 leftover — próg **70%** przed akceptacją zbiorczą **Następny:** **502.0** AI3.1 leftover — historia wierszy szkicu · **prompt jako dana** (nie live vision)
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

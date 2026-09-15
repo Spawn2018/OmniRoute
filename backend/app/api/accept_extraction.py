@@ -9,6 +9,7 @@ from app.domain.errors import AcceptRequiresRateLine
 from app.domain.extraction_draft import (
     extraction_carrier_quote_kind,
     extraction_tender_rfp_kind,
+    require_bulk_accept_confidence,
     require_carrier_quote_payload,
     require_extraction_draft_kind,
     require_tender_rfp_payload,
@@ -66,6 +67,7 @@ class AcceptExtractionToRates:
 
     async def _write_rates(self, draft: ExtractionDraft, user_id: UUID) -> list[RateLine]:
         payload = _require_rate_payload(draft)
+        require_bulk_accept_confidence(payload.candidates)
         origin = require_source_ref(draft.source_ref)
         written: list[RateLine] = []
         for candidate in payload.candidates:

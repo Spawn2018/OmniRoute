@@ -2,7 +2,12 @@ import { lazy, Suspense } from "react"
 import { Money } from "@/components/money"
 import { Button } from "@/components/ui/button"
 import { CandidatePatchForm } from "@/features/extraction/candidate-patch-form"
-import { hitlGeneratedContentLabel, hitlSplitView, draftAllowsCandidatePatch } from "@/features/extraction/hitl-split"
+import {
+  hitlGeneratedContentLabel,
+  hitlSplitView,
+  draftAllowsCandidatePatch,
+  bulkAcceptBlocked,
+} from "@/features/extraction/hitl-split"
 import {
   hitlPreviewSegments,
   hitlPreviewSpans,
@@ -113,12 +118,18 @@ export function HitlReviewSplit({
             Nierozpoznane: {view.unparsedRegions.join(" · ")}
           </p>
         ) : null}
+        {draft.status === "pending" && bulkAcceptBlocked(view.candidates) ? (
+          <p className="mt-2 text-xs text-destructive" role="status">
+            Akceptacja zbiorcza zablokowana: któryś kandydat ma pewność poniżej 0,70.
+            Podnieś pewność w poprawce albo zostaw jednego kandydata.
+          </p>
+        ) : null}
         <div className="mt-3 flex gap-1">
           <Button
             type="button"
             size="sm"
             data-operator-target="accept"
-            disabled={busy}
+            disabled={busy || (draft.status === "pending" && bulkAcceptBlocked(view.candidates))}
             onClick={() => onAccept(view.draftId)}
           >
             Akceptuj

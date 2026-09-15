@@ -1,8 +1,11 @@
+from collections.abc import Sequence
+from decimal import Decimal, InvalidOperation
 from typing import NamedTuple
 from uuid import UUID
 
 from app.domain.errors import (
     AcceptRequiresChannelQuote,
+    BulkAcceptConfidenceBelow,
     ExtractionCandidatesNotEditable,
     InvalidExtractionDraft,
     InvalidTenderRfpIntake,
@@ -16,6 +19,9 @@ _KINDS = frozenset({_RATE, _QUOTE, _RFP})
 _PATH_TEXT = "text"
 _PATH_IMAGE = "image"
 _PATHS = frozenset({_PATH_TEXT, _PATH_IMAGE})
+_BULK_MIN = Decimal("0.70")
+_OK_BANDS = frozenset({"green", "yellow", "high"})
+_BAD_BANDS = frozenset({"orange", "hold", "low", "poor"})
 
 
 def extraction_rate_kind() -> str:
@@ -75,6 +81,53 @@ def require_rate_candidates_editable(draft_kind: object) -> None:
         raise ExtractionCandidatesNotEditable(
             "edycja kandydatów tylko dla rate_line, carrier_quote albo tender_rfp",
         )
+
+
+def bulk_accept_confidence_ok(raw: object) -> bool:
+    """Czy pewność kandydata pozwala na accept zbiorczy (próg 0,70)."""
+    if type(raw) is not str:
+        return False
+    token = raw.strip().lower().replace(",", ".")
+    if token == "":
+        return False
+    if token in _OK_BANDS:
+        return True
+    if token in _BAD_BANDS:
+        return False
+    if token.endswith("%"):
+        try:
+            value = Decimal(token[:-1].strip()) / Decimal(100)
+        except InvalidOperation:
+            return False
+        return value >= _BULK_MIN
+    try:
+        value = Decimal(token)
+    except InvalidOperation:
+        return False
+    if value > Decimal(1):
+        if value > Decimal(100):
+            return False
+        value = value / Decimal(100)
+    return value >= _BULK_MIN
+
+
+def require_bulk_accept_confidence(candidates: Sequence[object]) -> None:
+    """≥2 kandydatów: każdy musi przejść próg 0,70; jeden wiersz = HITL bez bramki."""
+    if len(candidates) < 2:
+        return
+    for index, row in enumerate(candidates):
+        text = _confidence_text_of(row)
+        if bulk_accept_confidence_ok(text):
+            continue
+        raise BulkAcceptConfidenceBelow(
+            f"kandydat {index + 1}: pewność poniżej progu zbiorczego 0,70",
+        )
+
+
+def _confidence_text_of(row: object) -> object:
+    if isinstance(row, dict):
+        return row.get("confidence_text", "")
+    return getattr(row, "confidence_text", "")
 
 
 def require_extraction_draft_kind(raw: object) -> str:

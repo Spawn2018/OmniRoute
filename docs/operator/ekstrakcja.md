@@ -13,6 +13,11 @@ kandydatów. Nic nie idzie do stawek, dopóki nie wciśniesz Akceptuj.
 7. Potem Akceptuj (stawka kupna) albo Odrzuć. Szkic już zaakceptowany nie przyjmie poprawki.
 
 Czego tu nie ma: historia kopii wiersza, ponowne wołanie modelu, zapis `charge`,
-rysowanie ramki na PDF, próg 70% zbiorczy. Marża zostaje na `/charges`.
+rysowanie ramki na PDF, partial write części kandydatów. Marża zostaje na `/charges`.
 
-Nazwy w kodzie: `extraction_draft` · `payload.revision` · `payload.extract_path` · `bbox_text` · `confidence_text`.
+Przy dwóch i więcej kandydatach Akceptuj działa tylko gdy każdy ma pewność
+co najmniej 0,70 (tekst `0.70` / `70%` / `green` / `yellow` / `high`). Pusty,
+`orange`, `hold` albo niższy ułamek blokuje zbiorczą akceptację — popraw
+pewność albo zostaw jednego kandydata (akceptacja indywidualna bez bramki).
+
+Nazwy w kodzie: `extraction_draft` · `payload.revision` · `payload.extract_path` · `bbox_text` · `confidence_text` · brama zbiorcza 501.0.

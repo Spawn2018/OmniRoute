@@ -6,9 +6,12 @@ from app.domain.errors import (
     ExtractionCandidatesNotEditable,
     InvalidExtractionDraft,
     InvalidTenderRfpIntake,
+    BulkAcceptConfidenceBelow,
 )
 from app.domain.extraction_draft import (
+    bulk_accept_confidence_ok,
     next_extraction_revision,
+    require_bulk_accept_confidence,
     require_extract_path,
     require_extraction_draft_kind,
     require_rate_candidates_editable,
@@ -50,6 +53,55 @@ def test_rate_candidates_editable_allowlist() -> None:
     require_rate_candidates_editable("tender_rfp")
     with pytest.raises(ExtractionCandidatesNotEditable, match="rate_line"):
         require_rate_candidates_editable("purchase_invoice")
+
+
+def test_bulk_accept_confidence_ok_bands_and_decimal() -> None:
+    assert bulk_accept_confidence_ok("0.70") is True
+    assert bulk_accept_confidence_ok("0,85") is True
+    assert bulk_accept_confidence_ok("85%") is True
+    assert bulk_accept_confidence_ok("green") is True
+    assert bulk_accept_confidence_ok("yellow") is True
+    assert bulk_accept_confidence_ok("0.69") is False
+    assert bulk_accept_confidence_ok("69%") is False
+    assert bulk_accept_confidence_ok("orange") is False
+    assert bulk_accept_confidence_ok("hold") is False
+    assert bulk_accept_confidence_ok("") is False
+    assert bulk_accept_confidence_ok("mystery") is False
+
+
+def test_bulk_accept_gate_skips_single_candidate() -> None:
+    require_bulk_accept_confidence(
+        [{"code": "THC", "amount_text": "10", "currency": "EUR", "confidence_text": ""}],
+    )
+
+
+def test_bulk_accept_gate_blocks_low_among_many() -> None:
+    with pytest.raises(BulkAcceptConfidenceBelow, match="progu zbiorczego"):
+        require_bulk_accept_confidence(
+            [
+                {
+                    "code": "THC",
+                    "amount_text": "10",
+                    "currency": "EUR",
+                    "confidence_text": "0.90",
+                },
+                {
+                    "code": "BAF",
+                    "amount_text": "5",
+                    "currency": "EUR",
+                    "confidence_text": "0.50",
+                },
+            ],
+        )
+
+
+def test_bulk_accept_gate_allows_all_high() -> None:
+    require_bulk_accept_confidence(
+        [
+            {"code": "THC", "amount_text": "10", "currency": "EUR", "confidence_text": "high"},
+            {"code": "BAF", "amount_text": "5", "currency": "EUR", "confidence_text": "0.70"},
+        ],
+    )
 
 
 def test_draft_kind_rejects_unknown() -> None:

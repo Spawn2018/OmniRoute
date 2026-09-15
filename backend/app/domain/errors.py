@@ -154,6 +154,10 @@ class ExtractionCandidatesNotEditable(DomainError):
     """PATCH candidates tylko na szkicu rate_line."""
 
 
+class BulkAcceptConfidenceBelow(DomainError):
+    """Accept zbiorczy (≥2 kandydatów) poniżej progu 0,70 — nie auto-accept."""
+
+
 class AcceptRequiresChannelQuote(DomainError):
     """Accept szkicu oferty bez party, lane, dnia albo kwoty."""
 
