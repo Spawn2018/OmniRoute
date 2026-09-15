@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **525.0** AI7.1 — HITL `cfo_narrative_mark` (narracja po SQL; nie druga marża)
+**Następny:** **526.0** AI5.0 leftover — HITL `kpi_definition_mark` (definicja KPI per strona; nie wzór z modelu)
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
