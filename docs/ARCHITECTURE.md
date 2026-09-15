@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **496.0** BR6.0 leftover — HITL `crm_link_mark`. **Etap:** Plan — leftover BR6.1 FK stance. Komenda `/plan-modul`. **Następny:** **497.0** BR6.1 leftover — HITL `sales_bind_mark` (`bind_kind` opportunity|party|other; nie HubSpot live, nie FK UUID) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **496.0** BR6.0 leftover — HITL `crm_link_mark`. **Etap:** Plaster — delta **497.0** zaakceptowana. Komenda `/plaster`. **Następny:** **497.0** BR6.1 leftover — HITL `sales_bind_mark` (`bind_kind` opportunity|party|other; nie HubSpot, nie FK UUID) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
