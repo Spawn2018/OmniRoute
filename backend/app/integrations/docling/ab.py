@@ -15,17 +15,20 @@ class AbDocumentParser:
         source_ref: str,
         raw_bytes: bytes,
         sheet_index: int = 0,
+        sheet_name: str | None = None,
     ) -> DocumentText:
         primary = self._primary.parse(
             source_ref=source_ref,
             raw_bytes=raw_bytes,
             sheet_index=sheet_index,
+            sheet_name=sheet_name,
         )
         try:
             challenger = self._challenger.parse(
                 source_ref=source_ref,
                 raw_bytes=raw_bytes,
                 sheet_index=sheet_index,
+                sheet_name=sheet_name,
             )
         except DocumentParserUnavailable:
             return DocumentText(text=primary.text, parser_name=primary.parser_name)

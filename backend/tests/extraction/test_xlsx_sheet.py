@@ -76,7 +76,13 @@ def test_xlsx_sheet_index_reads_second_sheet() -> None:
     assert "THC 10 EUR" in second.text
 
 
-def test_xlsx_sheet_index_out_of_range() -> None:
+def test_xlsx_sheet_name_reads_named_sheet() -> None:
     raw = (Path(__file__).resolve().parent / "fixtures" / "two.xlsx").read_bytes()
-    with pytest.raises(UnparseableDocument, match="sheet_index"):
-        XlsxSheetParser().parse(source_ref="doc://x", raw_bytes=raw, sheet_index=9)
+    second = XlsxSheetParser().parse(source_ref="doc://x", raw_bytes=raw, sheet_name="Sheet2")
+    assert "THC 10 EUR" in second.text
+
+
+def test_xlsx_sheet_name_unknown() -> None:
+    raw = (Path(__file__).resolve().parent / "fixtures" / "two.xlsx").read_bytes()
+    with pytest.raises(UnparseableDocument, match="sheet_name"):
+        XlsxSheetParser().parse(source_ref="doc://x", raw_bytes=raw, sheet_name="missing")

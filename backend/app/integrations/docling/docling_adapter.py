@@ -16,8 +16,9 @@ class DoclingDocumentParser:
         source_ref: str,
         raw_bytes: bytes,
         sheet_index: int = 0,
+        sheet_name: str | None = None,
     ) -> DocumentText:
-        del source_ref, sheet_index
+        del source_ref, sheet_index, sheet_name
         try:
             from docling.document_converter import DocumentConverter
         except ImportError as exc:

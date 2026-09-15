@@ -29,8 +29,9 @@ class _FixedParser:
         source_ref: str,
         raw_bytes: bytes,
         sheet_index: int = 0,
+        sheet_name: str | None = None,
     ) -> DocumentText:
-        del source_ref, raw_bytes, sheet_index
+        del source_ref, raw_bytes, sheet_index, sheet_name
         return DocumentText(text=self._text, parser_name=self._name)
 
 
@@ -63,8 +64,9 @@ def test_ab_falls_back_when_challenger_missing() -> None:
             source_ref: str,
             raw_bytes: bytes,
             sheet_index: int = 0,
+            sheet_name: str | None = None,
         ) -> DocumentText:
-            del source_ref, raw_bytes, sheet_index
+            del source_ref, raw_bytes, sheet_index, sheet_name
             raise DocumentParserUnavailable("brak docling")
 
     parsed = AbDocumentParser(_FixedParser("aa", "a"), _Missing()).parse(

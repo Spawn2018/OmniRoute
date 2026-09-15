@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **507.0** AI3.4 leftover — `sheet_index` HITL
-- **Etap:** Plan — delta **508.0** AI3.4 leftover `sheet_name` (przed `/plaster`)
-- **Następny:** **508.0** AI3.4 leftover — HITL `sheet_name` (nie openpyxl; nie live vision)
+- **Ostatni plaster:** **508.0** AI3.4 leftover — `sheet_name` HITL
+- **Etap:** Plan — delta **509.0** AI3.3 leftover golden THC/BAF (przed `/plaster`)
+- **Następny:** **509.0** AI3.3 leftover — kolejne fixture golden pytest (nie DocLayNet; nie live vision)
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

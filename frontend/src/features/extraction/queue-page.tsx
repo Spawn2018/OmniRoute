@@ -52,6 +52,7 @@ export function ExtractionQueuePage() {
   const [rfpIntakeCode, setRfpIntakeCode] = useState("scope")
   const [extractPath, setExtractPath] = useState("text")
   const [sheetIndex, setSheetIndex] = useState("0")
+  const [sheetName, setSheetName] = useState("")
 
   const query = useQuery({
     queryKey: ["extractions", "pending", ctx.organizationId],
@@ -73,9 +74,13 @@ export function ExtractionQueuePage() {
           draftKind,
           extractPath,
           sheetIndex: (() => {
+            if (sheetName.trim() !== "") {
+              return undefined
+            }
             const parsed = Number.parseInt(sheetIndex, 10)
             return Number.isFinite(parsed) && parsed >= 0 ? parsed : 0
           })(),
+          sheetName: sheetName.trim() !== "" ? sheetName.trim() : undefined,
           quote:
             draftKind === "carrier_quote"
               ? {
@@ -322,16 +327,28 @@ export function ExtractionQueuePage() {
           {fileName ? <span className="mt-1 block text-xs">{fileName}</span> : null}
         </label>
         {documentBase64 ? (
-          <label className="block text-xs text-muted-foreground">
-            Indeks arkusza Excel (0 = pierwszy)
-            <Input
-              className="mt-1"
-              aria-label="Indeks arkusza Excel"
-              inputMode="numeric"
-              value={sheetIndex}
-              onChange={(event) => setSheetIndex(event.target.value)}
-            />
-          </label>
+          <div className="grid gap-2 lg:grid-cols-2">
+            <label className="block text-xs text-muted-foreground">
+              Indeks arkusza Excel (0 = pierwszy)
+              <Input
+                className="mt-1"
+                aria-label="Indeks arkusza Excel"
+                inputMode="numeric"
+                value={sheetIndex}
+                disabled={sheetName.trim() !== ""}
+                onChange={(event) => setSheetIndex(event.target.value)}
+              />
+            </label>
+            <label className="block text-xs text-muted-foreground">
+              Albo nazwa arkusza
+              <Input
+                className="mt-1"
+                aria-label="Nazwa arkusza Excel"
+                value={sheetName}
+                onChange={(event) => setSheetName(event.target.value)}
+              />
+            </label>
+          </div>
         ) : null}
         <Button
           type="button"

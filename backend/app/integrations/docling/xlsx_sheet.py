@@ -50,6 +50,38 @@ def _sheet_paths(names: list[str]) -> list[str]:
     return numbered
 
 
+def _sheet_names(archive: ZipFile) -> list[str]:
+    root = fromstring(archive.read("xl/workbook.xml"))
+    labels: list[str] = []
+    for node in root.iter():
+        if _local(node.tag) != "sheet":
+            continue
+        name = node.get("name")
+        if name is None or name.strip() == "":
+            continue
+        labels.append(name)
+    return labels
+
+
+def _resolve_sheet_path(
+    archive: ZipFile,
+    names: list[str],
+    *,
+    sheet_index: int,
+    sheet_name: str | None,
+) -> str:
+    paths = _sheet_paths(names)
+    if sheet_name is not None:
+        labels = _sheet_names(archive)
+        for index, label in enumerate(labels):
+            if label == sheet_name and index < len(paths):
+                return paths[index]
+        raise UnparseableDocument("sheet_name poza zakresem")
+    if sheet_index < 0 or sheet_index >= len(paths):
+        raise UnparseableDocument("sheet_index poza zakresem")
+    return paths[sheet_index]
+
+
 def _sheet_lines(root: Element, shared: list[str]) -> list[str]:
     lines: list[str] = []
     for row in root.iter():
@@ -69,6 +101,7 @@ class XlsxSheetParser:
         source_ref: str,
         raw_bytes: bytes,
         sheet_index: int = 0,
+        sheet_name: str | None = None,
     ) -> DocumentText:
         del source_ref
         if sheet_index < 0:
@@ -80,11 +113,14 @@ class XlsxSheetParser:
         names = archive.namelist()
         if "xl/workbook.xml" not in names:
             raise UnparseableDocument("xlsx bez skoroszytu")
-        paths = _sheet_paths(names)
-        if sheet_index >= len(paths):
-            raise UnparseableDocument("sheet_index poza zakresem")
+        path = _resolve_sheet_path(
+            archive,
+            names,
+            sheet_index=sheet_index,
+            sheet_name=sheet_name,
+        )
         shared = _shared_strings(archive)
-        root = fromstring(archive.read(paths[sheet_index]))
+        root = fromstring(archive.read(path))
         text = "\n".join(_sheet_lines(root, shared)).strip()
         if not text:
             raise UnparseableDocument("xlsx bez tekstu")

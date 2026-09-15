@@ -66,6 +66,7 @@ export function extractionCreateBody(args: {
   }
   extractPath?: string
   sheetIndex?: number
+  sheetName?: string
 }): {
   source_ref: string
   input_text?: string
@@ -73,6 +74,7 @@ export function extractionCreateBody(args: {
   draft_kind?: string
   extract_path?: string
   sheet_index?: number
+  sheet_name?: string
   quote?: (typeof args)["quote"]
   rfp?: (typeof args)["rfp"]
 } {
@@ -83,6 +85,7 @@ export function extractionCreateBody(args: {
     draft_kind?: string
     extract_path?: string
     sheet_index?: number
+    sheet_name?: string
     quote?: (typeof args)["quote"]
     rfp?: (typeof args)["rfp"]
   } =
@@ -101,12 +104,16 @@ export function extractionCreateBody(args: {
   if (args.extractPath !== undefined && args.extractPath !== "") {
     body.extract_path = args.extractPath
   }
-  if (
+  const hasDoc =
+    args.documentBase64 !== null && args.documentBase64.length > 0
+  const named = args.sheetName !== undefined && args.sheetName.trim() !== ""
+  if (hasDoc && named) {
+    body.sheet_name = args.sheetName!.trim()
+  } else if (
+    hasDoc &&
     args.sheetIndex !== undefined &&
     Number.isInteger(args.sheetIndex) &&
-    args.sheetIndex >= 0 &&
-    args.documentBase64 !== null &&
-    args.documentBase64.length > 0
+    args.sheetIndex >= 0
   ) {
     body.sheet_index = args.sheetIndex
   }

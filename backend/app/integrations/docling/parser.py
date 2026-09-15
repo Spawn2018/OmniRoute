@@ -28,6 +28,7 @@ class DocumentParser(Protocol):
         source_ref: str,
         raw_bytes: bytes,
         sheet_index: int = 0,
+        sheet_name: str | None = None,
     ) -> DocumentText: ...
 
 
@@ -60,8 +61,9 @@ class StubDocumentParser:
         source_ref: str,
         raw_bytes: bytes,
         sheet_index: int = 0,
+        sheet_name: str | None = None,
     ) -> DocumentText:
-        del source_ref, sheet_index
+        del source_ref, sheet_index, sheet_name
         return DocumentText(text=raw_bytes.decode("utf-8", errors="replace"), parser_name="stub")
 
 
@@ -74,8 +76,9 @@ class PdfStringsParser:
         source_ref: str,
         raw_bytes: bytes,
         sheet_index: int = 0,
+        sheet_name: str | None = None,
     ) -> DocumentText:
-        del source_ref, sheet_index
+        del source_ref, sheet_index, sheet_name
         chunks = [match.decode("ascii") for match in _PRINTABLE_RUN.findall(raw_bytes)]
         text = "\n".join(chunks).strip()
         if not text:
@@ -90,6 +93,7 @@ class DeterministicDocumentParser:
         source_ref: str,
         raw_bytes: bytes,
         sheet_index: int = 0,
+        sheet_name: str | None = None,
     ) -> DocumentText:
         kind = layout_fingerprint(raw_bytes)
         if kind == "pdf":
@@ -97,6 +101,7 @@ class DeterministicDocumentParser:
                 source_ref=source_ref,
                 raw_bytes=raw_bytes,
                 sheet_index=sheet_index,
+                sheet_name=sheet_name,
             )
         if kind == "xlsx":
             from app.integrations.docling.xlsx_sheet import XlsxSheetParser
@@ -105,6 +110,7 @@ class DeterministicDocumentParser:
                 source_ref=source_ref,
                 raw_bytes=raw_bytes,
                 sheet_index=sheet_index,
+                sheet_name=sheet_name,
             )
         if kind == "xls":
             from app.integrations.docling.xls_sheet import XlsSheetParser
@@ -113,9 +119,11 @@ class DeterministicDocumentParser:
                 source_ref=source_ref,
                 raw_bytes=raw_bytes,
                 sheet_index=sheet_index,
+                sheet_name=sheet_name,
             )
         return StubDocumentParser().parse(
             source_ref=source_ref,
             raw_bytes=raw_bytes,
             sheet_index=sheet_index,
+            sheet_name=sheet_name,
         )

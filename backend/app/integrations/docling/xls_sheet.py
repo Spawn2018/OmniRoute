@@ -59,6 +59,7 @@ class XlsSheetParser:
         source_ref: str,
         raw_bytes: bytes,
         sheet_index: int = 0,
+        sheet_name: str | None = None,
     ) -> DocumentText:
         del source_ref
         if sheet_index < 0:
@@ -71,9 +72,15 @@ class XlsSheetParser:
             raise UnparseableDocument("xls nieczytelne") from exc
         if book.nsheets < 1:
             raise UnparseableDocument("xls bez arkusza")
-        if sheet_index >= book.nsheets:
-            raise UnparseableDocument("sheet_index poza zakresem")
-        sheet = book.sheet_by_index(sheet_index)
+        if sheet_name is not None:
+            try:
+                sheet = book.sheet_by_name(sheet_name)
+            except XLRDError as exc:
+                raise UnparseableDocument("sheet_name poza zakresem") from exc
+        else:
+            if sheet_index >= book.nsheets:
+                raise UnparseableDocument("sheet_index poza zakresem")
+            sheet = book.sheet_by_index(sheet_index)
         text = "\n".join(_sheet_lines(book, sheet)).strip()
         if not text:
             raise UnparseableDocument("xls bez tekstu")

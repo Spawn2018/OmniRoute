@@ -56,4 +56,16 @@ describe("extractionCreateBody", () => {
       }),
     ).toEqual({ source_ref: "doc://x", document_base64: "YQ==", sheet_index: 1 })
   })
+
+  it("sends sheet_name instead of sheet_index when named", () => {
+    expect(
+      extractionCreateBody({
+        sourceRef: "doc://x",
+        inputText: "ignored",
+        documentBase64: "YQ==",
+        sheetIndex: 1,
+        sheetName: "Sheet2",
+      }),
+    ).toEqual({ source_ref: "doc://x", document_base64: "YQ==", sheet_name: "Sheet2" })
+  })
 })

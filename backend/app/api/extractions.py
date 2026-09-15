@@ -51,6 +51,7 @@ class ExtractRequest(BaseModel):
     draft_kind: str | None = None
     extract_path: Literal["text", "image"] | None = None
     sheet_index: int | None = Field(default=None, ge=0)
+    sheet_name: str | None = Field(default=None, min_length=1, max_length=128)
     quote: CarrierQuoteExtract | None = None
     rfp: TenderRfpExtract | None = None
 
@@ -60,8 +61,10 @@ class ExtractRequest(BaseModel):
         has_doc = self.document_base64 is not None
         if has_text == has_doc:
             raise ValueError("Podaj dokładnie jedno: input_text albo document_base64")
-        if self.sheet_index is not None and not has_doc:
-            raise ValueError("sheet_index tylko z document_base64")
+        if (self.sheet_index is not None or self.sheet_name is not None) and not has_doc:
+            raise ValueError("sheet_index/sheet_name tylko z document_base64")
+        if self.sheet_name is not None and self.sheet_index is not None:
+            raise ValueError("podaj sheet_name albo sheet_index, nie oba")
         return self
 
 
@@ -110,37 +113,54 @@ async def create_extraction_draft(
     identity: SessionIdentity = Depends(get_current_identity),
 ) -> ExtractionDraftResponse:
     service = ExtractionService(session)
+    draft = await _extract_from_request(service, body, identity)
+    await session.commit()
+    return _draft_response(draft)
+
+
+async def _extract_from_request(
+    service: ExtractionService,
+    body: ExtractRequest,
+    identity: SessionIdentity,
+) -> object:
+    quote = None if body.quote is None else body.quote.model_dump()
+    rfp = None if body.rfp is None else body.rfp.model_dump()
     if body.document_base64 is not None:
         try:
             raw_bytes = b64decode(body.document_base64, validate=True)
         except BinasciiError as exc:
             raise UnparseableDocument("document_base64 niepoprawne") from exc
-        draft = await service.extract_from_document(
+        return await service.extract_from_document(
             organization_id=identity.organization_id,
             user_id=identity.user_id,
             source_ref=body.source_ref,
             raw_bytes=raw_bytes,
             draft_kind=body.draft_kind,
-            quote_payload=None if body.quote is None else body.quote.model_dump(),
-            rfp_payload=None if body.rfp is None else body.rfp.model_dump(),
+            quote_payload=quote,
+            rfp_payload=rfp,
             extract_path=body.extract_path,
             sheet_index=0 if body.sheet_index is None else body.sheet_index,
+            sheet_name=_optional_sheet_name(body.sheet_name),
         )
-    else:
-        if body.input_text is None:
-            raise UnparseableDocument("Brak input_text")
-        draft = await service.extract_to_draft(
-            organization_id=identity.organization_id,
-            user_id=identity.user_id,
-            source_ref=body.source_ref,
-            input_text=body.input_text,
-            draft_kind=body.draft_kind,
-            quote_payload=None if body.quote is None else body.quote.model_dump(),
-            rfp_payload=None if body.rfp is None else body.rfp.model_dump(),
-            extract_path=body.extract_path,
-        )
-    await session.commit()
-    return _draft_response(draft)
+    if body.input_text is None:
+        raise UnparseableDocument("Brak input_text")
+    return await service.extract_to_draft(
+        organization_id=identity.organization_id,
+        user_id=identity.user_id,
+        source_ref=body.source_ref,
+        input_text=body.input_text,
+        draft_kind=body.draft_kind,
+        quote_payload=quote,
+        rfp_payload=rfp,
+        extract_path=body.extract_path,
+    )
+
+
+def _optional_sheet_name(raw: str | None) -> str | None:
+    if raw is None:
+        return None
+    token = raw.strip()
+    return None if token == "" else token
 
 
 @router.patch("/{draft_id}", response_model=ExtractionDraftResponse)
