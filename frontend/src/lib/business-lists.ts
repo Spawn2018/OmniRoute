@@ -96,6 +96,7 @@ export const BUSINESS_LISTS = {
     route: "/risk-register-marks",
     tableKey: "risk_register_mark",
   },
+  article50Mark: { route: "/article50-marks", tableKey: "article50_mark" },
   automationBiasMark: {
     route: "/automation-bias-marks",
     tableKey: "automation_bias_mark",
@@ -519,6 +520,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/line-impact-layer-marks",
   "/product-ticket-marks",
   "/risk-register-marks",
+  "/article50-marks",
   "/automation-bias-marks",
   "/l3-gate-marks",
   "/style-cascade-marks",

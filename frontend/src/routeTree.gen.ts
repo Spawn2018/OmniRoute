@@ -18,6 +18,7 @@ import { Route as AirRouteImport } from './routes/air'
 import { Route as AirRa3MarksRouteImport } from './routes/air-ra3-marks'
 import { Route as AllocationKeysRouteImport } from './routes/allocation-keys'
 import { Route as AllocationLevelsRouteImport } from './routes/allocation-levels'
+import { Route as Article50MarksRouteImport } from './routes/article50-marks'
 import { Route as AsnsRouteImport } from './routes/asns'
 import { Route as AutomationBiasMarksRouteImport } from './routes/automation-bias-marks'
 import { Route as AutonomyLevelsRouteImport } from './routes/autonomy-levels'
@@ -353,6 +354,11 @@ const AllocationKeysRoute = AllocationKeysRouteImport.update({
 const AllocationLevelsRoute = AllocationLevelsRouteImport.update({
   id: '/allocation-levels',
   path: '/allocation-levels',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Article50MarksRoute = Article50MarksRouteImport.update({
+  id: '/article50-marks',
+  path: '/article50-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AsnsRoute = AsnsRouteImport.update({
@@ -1823,6 +1829,7 @@ export interface FileRoutesByFullPath {
   '/air-ra3-marks': typeof AirRa3MarksRoute
   '/allocation-keys': typeof AllocationKeysRoute
   '/allocation-levels': typeof AllocationLevelsRoute
+  '/article50-marks': typeof Article50MarksRoute
   '/asns': typeof AsnsRoute
   '/automation-bias-marks': typeof AutomationBiasMarksRoute
   '/autonomy-levels': typeof AutonomyLevelsRoute
@@ -2125,6 +2132,7 @@ export interface FileRoutesByTo {
   '/air-ra3-marks': typeof AirRa3MarksRoute
   '/allocation-keys': typeof AllocationKeysRoute
   '/allocation-levels': typeof AllocationLevelsRoute
+  '/article50-marks': typeof Article50MarksRoute
   '/asns': typeof AsnsRoute
   '/automation-bias-marks': typeof AutomationBiasMarksRoute
   '/autonomy-levels': typeof AutonomyLevelsRoute
@@ -2428,6 +2436,7 @@ export interface FileRoutesById {
   '/air-ra3-marks': typeof AirRa3MarksRoute
   '/allocation-keys': typeof AllocationKeysRoute
   '/allocation-levels': typeof AllocationLevelsRoute
+  '/article50-marks': typeof Article50MarksRoute
   '/asns': typeof AsnsRoute
   '/automation-bias-marks': typeof AutomationBiasMarksRoute
   '/autonomy-levels': typeof AutonomyLevelsRoute
@@ -2732,6 +2741,7 @@ export interface FileRouteTypes {
     | '/air-ra3-marks'
     | '/allocation-keys'
     | '/allocation-levels'
+    | '/article50-marks'
     | '/asns'
     | '/automation-bias-marks'
     | '/autonomy-levels'
@@ -3034,6 +3044,7 @@ export interface FileRouteTypes {
     | '/air-ra3-marks'
     | '/allocation-keys'
     | '/allocation-levels'
+    | '/article50-marks'
     | '/asns'
     | '/automation-bias-marks'
     | '/autonomy-levels'
@@ -3336,6 +3347,7 @@ export interface FileRouteTypes {
     | '/air-ra3-marks'
     | '/allocation-keys'
     | '/allocation-levels'
+    | '/article50-marks'
     | '/asns'
     | '/automation-bias-marks'
     | '/autonomy-levels'
@@ -3639,6 +3651,7 @@ export interface RootRouteChildren {
   AirRa3MarksRoute: typeof AirRa3MarksRoute
   AllocationKeysRoute: typeof AllocationKeysRoute
   AllocationLevelsRoute: typeof AllocationLevelsRoute
+  Article50MarksRoute: typeof Article50MarksRoute
   AsnsRoute: typeof AsnsRoute
   AutomationBiasMarksRoute: typeof AutomationBiasMarksRoute
   AutonomyLevelsRoute: typeof AutonomyLevelsRoute
@@ -3995,6 +4008,13 @@ declare module '@tanstack/react-router' {
       path: '/allocation-levels'
       fullPath: '/allocation-levels'
       preLoaderRoute: typeof AllocationLevelsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/article50-marks': {
+      id: '/article50-marks'
+      path: '/article50-marks'
+      fullPath: '/article50-marks'
+      preLoaderRoute: typeof Article50MarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/asns': {
@@ -6047,6 +6067,7 @@ const rootRouteChildren: RootRouteChildren = {
   AirRa3MarksRoute: AirRa3MarksRoute,
   AllocationKeysRoute: AllocationKeysRoute,
   AllocationLevelsRoute: AllocationLevelsRoute,
+  Article50MarksRoute: Article50MarksRoute,
   AsnsRoute: AsnsRoute,
   AutomationBiasMarksRoute: AutomationBiasMarksRoute,
   AutonomyLevelsRoute: AutonomyLevelsRoute,

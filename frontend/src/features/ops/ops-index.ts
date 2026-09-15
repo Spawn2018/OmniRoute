@@ -648,7 +648,12 @@ export const OPS_JOBS = [
     label: "Rejestr ryzyka",
     job: "katalog risk_register_mark HITL",
   },
-  {
+    {
+    route: BUSINESS_LISTS.article50Mark.route,
+    label: "Art. 50",
+    job: "katalog article50_mark HITL",
+  },
+{
     route: BUSINESS_LISTS.automationBiasMark.route,
     label: "Automation bias",
     job: "katalog automation_bias_mark HITL",
@@ -1791,6 +1796,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "518.0": "/allocation-levels",
   "519.0": "/impact-node-marks",
   "520.0": "/impact-edge-marks",
+  "521.0": "/article50-marks",
   "461.0": "/shipper-tender-marks",
   "462.0": "/campaign-marks",
   "463.0": "/groupage-dispatcher-marks",

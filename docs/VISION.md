@@ -97,6 +97,7 @@ zostają w badaniach `04`).
 | 2026-09-15 | AI6.0 leftover plan (**520.0**): HITL `impact_edge_mark` para from/to (`REQUIREMENT`). SQL/EBITDA/FK węzeł `REJECTED`. |
 | 2026-09-15 | **520.0** `impact_edge_mark` w kodzie (`CONFIRMED`, git). AI6 HITL substrat DONE. Następny = **AI9.0** (`REQUIREMENT`). SQL/EBITDA park. |
 | 2026-09-15 | AI9.0 plan (**521.0**): HITL `article50_mark` etykieta art. 50 (`REQUIREMENT`). U-art50 UI / scoring `REJECTED`. |
+| 2026-09-15 | **521.0** `article50_mark` w kodzie (`CONFIRMED`, git). AI9.0 HITL DONE. Następny = **AI5.0** HITL `data_source` (`REQUIREMENT`). U-art50 UI / live ingest park. |
 | 2026-09-13 | AI3.4 plan (**451.0**): parser `xlsx_sheet` stdlib. `openpyxl` `REJECTED`. `.xls` leftover. |
 | 2026-09-13 | **451.0** `xlsx_sheet` w kodzie (`CONFIRMED`, git). Następny = **AI4.0** FK `plan_snapshot` (`REQUIREMENT`). `.xls` leftover. |
 | 2026-09-13 | AI4.0 plan (**452.0**): FK złożone RESTRICT. CASCADE `REJECTED`. What-if `REJECTED` na tym wierszu. |

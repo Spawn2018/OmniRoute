@@ -152,6 +152,7 @@ modules =
     app.services.line_impact_layer_marks
     app.services.product_ticket_marks
     app.services.risk_register_marks
+    app.services.article50_marks
     app.services.automation_bias_marks
     app.services.l3_gate_marks
     app.services.style_cascade_marks
@@ -752,6 +753,9 @@ forbidden_modules =
     app.services.risk_register_marks
     app.repositories.risk_register_marks
     app.models.risk_register_mark
+    app.services.article50_marks
+    app.repositories.article50_marks
+    app.models.article50_mark
     app.services.automation_bias_marks
     app.repositories.automation_bias_marks
     app.models.automation_bias_mark

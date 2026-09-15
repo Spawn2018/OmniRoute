@@ -7,6 +7,7 @@ from app.api import (
     air_ra3_marks,
     allocation_keys,
     allocation_levels,
+    article50_marks,
     asns,
     automation_bias_marks,
     autonomy_levels,
@@ -499,6 +500,7 @@ api_router.include_router(cost_allocation_marks.router)
 api_router.include_router(cost_category_marks.router)
 api_router.include_router(impact_edge_marks.router)
 api_router.include_router(impact_node_marks.router)
+api_router.include_router(article50_marks.router)
 api_router.include_router(asns.router)
 api_router.include_router(otif_marks.router)
 api_router.include_router(routing_guide_enforcements.router)

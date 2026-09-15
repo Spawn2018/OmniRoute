@@ -275,6 +275,50 @@ export type AppUserResponse = {
 };
 
 /**
+ * Article50MarkCreate
+ */
+export type Article50MarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Label Kind
+     */
+    label_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * Article50MarkResponse
+ */
+export type Article50MarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Label Kind
+     */
+    label_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * AsnCreate
  */
 export type AsnCreate = {
@@ -26123,6 +26167,49 @@ export type CreateImpactNodeMarkApiV1ImpactNodeMarksPostResponses = {
 };
 
 export type CreateImpactNodeMarkApiV1ImpactNodeMarksPostResponse = CreateImpactNodeMarkApiV1ImpactNodeMarksPostResponses[keyof CreateImpactNodeMarkApiV1ImpactNodeMarksPostResponses];
+
+export type ListArticle50MarksApiV1Article50MarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/article50-marks';
+};
+
+export type ListArticle50MarksApiV1Article50MarksGetResponses = {
+    /**
+     * Response List Article50 Marks Api V1 Article50 Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<Article50MarkResponse>;
+};
+
+export type ListArticle50MarksApiV1Article50MarksGetResponse = ListArticle50MarksApiV1Article50MarksGetResponses[keyof ListArticle50MarksApiV1Article50MarksGetResponses];
+
+export type CreateArticle50MarkApiV1Article50MarksPostData = {
+    body: Article50MarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/article50-marks';
+};
+
+export type CreateArticle50MarkApiV1Article50MarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateArticle50MarkApiV1Article50MarksPostError = CreateArticle50MarkApiV1Article50MarksPostErrors[keyof CreateArticle50MarkApiV1Article50MarksPostErrors];
+
+export type CreateArticle50MarkApiV1Article50MarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: Article50MarkResponse;
+};
+
+export type CreateArticle50MarkApiV1Article50MarksPostResponse = CreateArticle50MarkApiV1Article50MarksPostResponses[keyof CreateArticle50MarkApiV1Article50MarksPostResponses];
 
 export type ListAsnsApiV1AsnsGetData = {
     body?: never;

@@ -978,6 +978,10 @@ class InvalidAutomationBiasMark(DomainError):
     """AI9.1: HITL mitygacja automation bias — nie ui-04 przebudowa / nie auto-accept."""
 
 
+class InvalidArticle50Mark(DomainError):
+    """AI9.0: HITL etykieta art. 50 — nie U-art50 UI / nie scoring."""
+
+
 class InvalidL3GateMark(DomainError):
     """AI8.2: HITL checklista bramy L3 — nie silnik write / nie mutacja autonomy_level."""
 

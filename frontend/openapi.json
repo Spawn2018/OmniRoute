@@ -16335,6 +16335,80 @@
         ]
       }
     },
+    "/api/v1/article50-marks": {
+      "get": {
+        "tags": [
+          "article50-marks"
+        ],
+        "summary": "List Article50 Marks",
+        "operationId": "list_article50_marks_api_v1_article50_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Article50MarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Article50 Marks Api V1 Article50 Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "article50-marks"
+        ],
+        "summary": "Create Article50 Mark",
+        "operationId": "create_article50_mark_api_v1_article50_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Article50MarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Article50MarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/asns": {
       "get": {
         "tags": [
@@ -26836,6 +26910,65 @@
           "display_name"
         ],
         "title": "AppUserResponse"
+      },
+      "Article50MarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "label_kind": {
+            "type": "string",
+            "title": "Label Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "label_kind",
+          "source_ref"
+        ],
+        "title": "Article50MarkCreate"
+      },
+      "Article50MarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "label_kind": {
+            "type": "string",
+            "title": "Label Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "label_kind",
+          "source_ref"
+        ],
+        "title": "Article50MarkResponse"
       },
       "AsnCreate": {
         "properties": {
