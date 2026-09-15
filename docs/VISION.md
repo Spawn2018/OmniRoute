@@ -125,6 +125,7 @@ zostają w badaniach `04`).
 | 2026-09-14 | BR1.2 plan (**476.0**): HITL `inventory_finance_mark` (valuation|aging|release|other). Wycena SQL / wartość Decimal / FK position·PO / live zastaw `REJECTED` na tym wierszu. |
 | 2026-09-14 | **476.0** `inventory_finance_mark` w kodzie (`CONFIRMED`, git). Następny = **BR1.3** zabezpieczenie na towarze (`REQUIREMENT`). Wycena SQL `REJECTED` na tym wierszu. |
 | 2026-09-14 | BR1.3 plan (**477.0**): HITL `inventory_collateral_mark` (pledge|lien|hold|other). FK position·PO / live zastaw / wartość `REJECTED` na tym wierszu. |
+| 2026-09-15 | Plan **488.0** AI9.2 leftover `compliance_program_mark` (`REQUIREMENT`). Stancja draft/review/signed/exempt; nie PDF bytes. U-art50 / L3 write `REJECTED`. |
 | 2026-09-15 | **487.0** `field_confidence_mark` w kodzie (`CONFIRMED`, git). Następny = leftover AI9.2 program PDF (`REQUIREMENT`). Przebudowa ui-04 / float auto-accept `REJECTED` na tym wierszu. |
 | 2026-09-15 | Plan **487.0** AI9.1 leftover `field_confidence_mark` (`REQUIREMENT`). Pasma green/yellow/orange/hold; nie przebudowa ui-04. Float / auto-accept `REJECTED`. |
 | 2026-09-14 | **486.0** `quality_descent_mark` w kodzie (`CONFIRMED`, git). Następny = leftover ui-04 pewność per pole (`REQUIREMENT`). Silnik auto-zejścia / L3 write / MAE SQL `REJECTED` na tym wierszu. |

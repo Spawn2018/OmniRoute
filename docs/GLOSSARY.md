@@ -37,6 +37,7 @@ kolumn. Nie 468.0.
 | warstwa liczona linii | line_impact_layer_mark | BR7.1 HITL scored/forecast/actual; nie SQL EBITDA; nie plant live |
 | ticket produktu | product_ticket_mark | Plat-HD HITL report/triage/owner_ok; nie CAPA; nie auto-naprawa; nie operator_notice |
 | rejestr ryzyka | risk_register_mark | AI9.2 HITL open/mitigated/accepted; nie scoring osoby; nie L3 silnik |
+| program zgodności | compliance_program_mark | AI9.2 leftover HITL draft/review/signed/exempt; nie PDF bytes; nie U-art50 |
 | automation bias | automation_bias_mark | AI9.1 HITL confirm/delay/review; nie ui-04 przebudowa; nie auto-accept |
 | pewność per pole (pasmo) | field_confidence_mark | AI9.1 leftover HITL green/yellow/orange/hold; nie float; nie przebudowa splitu |
 | brama L3 | l3_gate_mark | AI8.2 HITL sot/owner/exception/rollback/blast; nie L3 write; nie mutacja autonomy_level |

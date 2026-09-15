@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **487.0** AI9.1 leftover — HITL `field_confidence_mark`. **Etap:** Plan — następne Q z Fali AI (wydmuszka / leftover). Komenda `/plan-modul`. Zero kodu produktu do delty. **Następny:** **488.0** AI9.2 leftover — program zgodności PDF (katalog HITL; nie U-art50) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **487.0** AI9.1 leftover — HITL `field_confidence_mark`. **Etap:** Plaster — delta **488.0** zaakceptowana (`/noc 8`). Wolno `/plaster`. **Następny:** **488.0** AI9.2 leftover — HITL `compliance_program_mark` (program zgodności; nie PDF; nie U-art50) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
