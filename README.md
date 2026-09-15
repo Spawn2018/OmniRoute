@@ -88,9 +88,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **508.0** AI3.4 leftover — `sheet_name` HITL
-- **Etap:** Plan — delta **509.0** AI3.3 leftover golden THC/BAF (przed `/plaster`)
-- **Następny:** **509.0** AI3.3 leftover — kolejne fixture golden pytest (nie DocLayNet; nie live vision)
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Etap:** Plaster — delta **509.0** zaakceptowana (`/noc 15`); wolno `/plaster`
+- **Następny:** **509.0** AI3.3 leftover — golden ≥500 vs MockExtractor (nie DocLayNet; nie live vision)
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

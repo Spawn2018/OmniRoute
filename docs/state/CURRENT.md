@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **508.0** AI3.4 leftover — `sheet_name` HITL
 
-**Etap:** Plan — delta **509.0** AI3.3 leftover golden THC/BAF (przed `/plaster`)
+**Etap:** Plaster — delta **509.0** zaakceptowana (`/noc 15`); wolno `/plaster`
 
 **Noc:** `/noc 15` do **2026-09-15T15:00+02**.
 
-**Następny:** **509.0** AI3.3 leftover — kolejne fixture golden pytest (nie DocLayNet; nie live vision)
+**Następny:** **509.0** AI3.3 leftover — golden ≥500 vs MockExtractor (nie DocLayNet; nie live vision)
 
 **Park:** `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów · live SMEO HTTP · wycena zapasu SQL · FK PO · live giełda HTTP · live WMS HTTP · live RFID HTTP · live zastaw · N8 / T8 · SQL line impact / EBITDA · BR2.3/BR6.3 Expo · auto-fix bez owner · Mob Expo · L3 write · silnik porównania stylu · silnik auto-zejścia · HubSpot live · Alpega live · cold-send CRM · auto-award SQL · live vision · wiring Instructor · undo historii JSONB · quote/RFP partial · openpyxl · DocLayNet. Nie otwieraj AI0.
 
-**Spec (jedyna na sesję):** brak — najpierw plan-modul dla 509.0
+**Spec (jedyna na sesję):** [docs/deltas/open/509.0-extraction-golden-500.md](../deltas/open/509.0-extraction-golden-500.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan. Wizja: [VISION.md](../VISION.md).
 
@@ -22,6 +22,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
+**2026-09-15:** Plan **509.0** zaakceptowany (`/noc 15`) — golden ≥500; DocLayNet / 2k / 5k `REJECTED`.
 **2026-09-15:** Plaster **508.0** zamknięty (`/noc 15`) — `sheet_name` HITL.
 **2026-09-15:** Plan **508.0** zaakceptowany (`/noc 15`) — `sheet_name`; openpyxl `REJECTED`.
 **2026-09-15:** Plaster **507.0** zamknięty (`/noc 15`) — `sheet_index` HITL.
