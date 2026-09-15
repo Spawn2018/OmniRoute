@@ -6439,6 +6439,58 @@ export type IdpConnectorResponse = {
 };
 
 /**
+ * ImpactEdgeMarkCreate
+ */
+export type ImpactEdgeMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * From Kind
+     */
+    from_kind: string;
+    /**
+     * To Kind
+     */
+    to_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ImpactEdgeMarkResponse
+ */
+export type ImpactEdgeMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * From Kind
+     */
+    from_kind: string;
+    /**
+     * To Kind
+     */
+    to_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * ImpactNodeMarkCreate
  */
 export type ImpactNodeMarkCreate = {
@@ -25985,6 +26037,49 @@ export type CreateCostCategoryMarkApiV1CostCategoryMarksPostResponses = {
 };
 
 export type CreateCostCategoryMarkApiV1CostCategoryMarksPostResponse = CreateCostCategoryMarkApiV1CostCategoryMarksPostResponses[keyof CreateCostCategoryMarkApiV1CostCategoryMarksPostResponses];
+
+export type ListImpactEdgeMarksApiV1ImpactEdgeMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/impact-edge-marks';
+};
+
+export type ListImpactEdgeMarksApiV1ImpactEdgeMarksGetResponses = {
+    /**
+     * Response List Impact Edge Marks Api V1 Impact Edge Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<ImpactEdgeMarkResponse>;
+};
+
+export type ListImpactEdgeMarksApiV1ImpactEdgeMarksGetResponse = ListImpactEdgeMarksApiV1ImpactEdgeMarksGetResponses[keyof ListImpactEdgeMarksApiV1ImpactEdgeMarksGetResponses];
+
+export type CreateImpactEdgeMarkApiV1ImpactEdgeMarksPostData = {
+    body: ImpactEdgeMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/impact-edge-marks';
+};
+
+export type CreateImpactEdgeMarkApiV1ImpactEdgeMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateImpactEdgeMarkApiV1ImpactEdgeMarksPostError = CreateImpactEdgeMarkApiV1ImpactEdgeMarksPostErrors[keyof CreateImpactEdgeMarkApiV1ImpactEdgeMarksPostErrors];
+
+export type CreateImpactEdgeMarkApiV1ImpactEdgeMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ImpactEdgeMarkResponse;
+};
+
+export type CreateImpactEdgeMarkApiV1ImpactEdgeMarksPostResponse = CreateImpactEdgeMarkApiV1ImpactEdgeMarksPostResponses[keyof CreateImpactEdgeMarkApiV1ImpactEdgeMarksPostResponses];
 
 export type ListImpactNodeMarksApiV1ImpactNodeMarksGetData = {
     body?: never;

@@ -178,6 +178,7 @@ from app.models.working_capital_mark import WorkingCapitalMark  # noqa: F401
 from app.models.make_or_buy_mark import MakeOrBuyMark  # noqa: F401
 from app.models.cost_allocation_mark import CostAllocationMark  # noqa: F401
 from app.models.cost_category_mark import CostCategoryMark  # noqa: F401
+from app.models.impact_edge_mark import ImpactEdgeMark  # noqa: F401
 from app.models.impact_node_mark import ImpactNodeMark  # noqa: F401
 from app.models.cargo_cover_mark import CargoCoverMark  # noqa: F401
 from app.models.sanctions_mark import SanctionsMark  # noqa: F401

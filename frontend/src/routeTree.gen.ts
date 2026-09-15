@@ -123,6 +123,7 @@ import { Route as HaulierRoleMarksRouteImport } from './routes/haulier-role-mark
 import { Route as HealthRouteImport } from './routes/health'
 import { Route as HighValueMarksRouteImport } from './routes/high-value-marks'
 import { Route as IdpConnectorsRouteImport } from './routes/idp-connectors'
+import { Route as ImpactEdgeMarksRouteImport } from './routes/impact-edge-marks'
 import { Route as ImpactNodeMarksRouteImport } from './routes/impact-node-marks'
 import { Route as ImpactScenariosRouteImport } from './routes/impact-scenarios'
 import { Route as ImpersonateGuardMarksRouteImport } from './routes/impersonate-guard-marks'
@@ -877,6 +878,11 @@ const HighValueMarksRoute = HighValueMarksRouteImport.update({
 const IdpConnectorsRoute = IdpConnectorsRouteImport.update({
   id: '/idp-connectors',
   path: '/idp-connectors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImpactEdgeMarksRoute = ImpactEdgeMarksRouteImport.update({
+  id: '/impact-edge-marks',
+  path: '/impact-edge-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ImpactNodeMarksRoute = ImpactNodeMarksRouteImport.update({
@@ -1922,6 +1928,7 @@ export interface FileRoutesByFullPath {
   '/health': typeof HealthRoute
   '/high-value-marks': typeof HighValueMarksRoute
   '/idp-connectors': typeof IdpConnectorsRoute
+  '/impact-edge-marks': typeof ImpactEdgeMarksRoute
   '/impact-node-marks': typeof ImpactNodeMarksRoute
   '/impact-scenarios': typeof ImpactScenariosRoute
   '/impersonate-guard-marks': typeof ImpersonateGuardMarksRoute
@@ -2223,6 +2230,7 @@ export interface FileRoutesByTo {
   '/health': typeof HealthRoute
   '/high-value-marks': typeof HighValueMarksRoute
   '/idp-connectors': typeof IdpConnectorsRoute
+  '/impact-edge-marks': typeof ImpactEdgeMarksRoute
   '/impact-node-marks': typeof ImpactNodeMarksRoute
   '/impact-scenarios': typeof ImpactScenariosRoute
   '/impersonate-guard-marks': typeof ImpersonateGuardMarksRoute
@@ -2525,6 +2533,7 @@ export interface FileRoutesById {
   '/health': typeof HealthRoute
   '/high-value-marks': typeof HighValueMarksRoute
   '/idp-connectors': typeof IdpConnectorsRoute
+  '/impact-edge-marks': typeof ImpactEdgeMarksRoute
   '/impact-node-marks': typeof ImpactNodeMarksRoute
   '/impact-scenarios': typeof ImpactScenariosRoute
   '/impersonate-guard-marks': typeof ImpersonateGuardMarksRoute
@@ -2828,6 +2837,7 @@ export interface FileRouteTypes {
     | '/health'
     | '/high-value-marks'
     | '/idp-connectors'
+    | '/impact-edge-marks'
     | '/impact-node-marks'
     | '/impact-scenarios'
     | '/impersonate-guard-marks'
@@ -3129,6 +3139,7 @@ export interface FileRouteTypes {
     | '/health'
     | '/high-value-marks'
     | '/idp-connectors'
+    | '/impact-edge-marks'
     | '/impact-node-marks'
     | '/impact-scenarios'
     | '/impersonate-guard-marks'
@@ -3430,6 +3441,7 @@ export interface FileRouteTypes {
     | '/health'
     | '/high-value-marks'
     | '/idp-connectors'
+    | '/impact-edge-marks'
     | '/impact-node-marks'
     | '/impact-scenarios'
     | '/impersonate-guard-marks'
@@ -3732,6 +3744,7 @@ export interface RootRouteChildren {
   HealthRoute: typeof HealthRoute
   HighValueMarksRoute: typeof HighValueMarksRoute
   IdpConnectorsRoute: typeof IdpConnectorsRoute
+  ImpactEdgeMarksRoute: typeof ImpactEdgeMarksRoute
   ImpactNodeMarksRoute: typeof ImpactNodeMarksRoute
   ImpactScenariosRoute: typeof ImpactScenariosRoute
   ImpersonateGuardMarksRoute: typeof ImpersonateGuardMarksRoute
@@ -4717,6 +4730,13 @@ declare module '@tanstack/react-router' {
       path: '/idp-connectors'
       fullPath: '/idp-connectors'
       preLoaderRoute: typeof IdpConnectorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/impact-edge-marks': {
+      id: '/impact-edge-marks'
+      path: '/impact-edge-marks'
+      fullPath: '/impact-edge-marks'
+      preLoaderRoute: typeof ImpactEdgeMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/impact-node-marks': {
@@ -6132,6 +6152,7 @@ const rootRouteChildren: RootRouteChildren = {
   HealthRoute: HealthRoute,
   HighValueMarksRoute: HighValueMarksRoute,
   IdpConnectorsRoute: IdpConnectorsRoute,
+  ImpactEdgeMarksRoute: ImpactEdgeMarksRoute,
   ImpactNodeMarksRoute: ImpactNodeMarksRoute,
   ImpactScenariosRoute: ImpactScenariosRoute,
   ImpersonateGuardMarksRoute: ImpersonateGuardMarksRoute,

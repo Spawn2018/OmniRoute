@@ -16187,6 +16187,80 @@
         ]
       }
     },
+    "/api/v1/impact-edge-marks": {
+      "get": {
+        "tags": [
+          "impact-edge-marks"
+        ],
+        "summary": "List Impact Edge Marks",
+        "operationId": "list_impact_edge_marks_api_v1_impact_edge_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ImpactEdgeMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Impact Edge Marks Api V1 Impact Edge Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "impact-edge-marks"
+        ],
+        "summary": "Create Impact Edge Mark",
+        "operationId": "create_impact_edge_mark_api_v1_impact_edge_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ImpactEdgeMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImpactEdgeMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/impact-node-marks": {
       "get": {
         "tags": [
@@ -36227,6 +36301,75 @@
           "source_ref"
         ],
         "title": "IdpConnectorResponse"
+      },
+      "ImpactEdgeMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "from_kind": {
+            "type": "string",
+            "title": "From Kind"
+          },
+          "to_kind": {
+            "type": "string",
+            "title": "To Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "from_kind",
+          "to_kind",
+          "source_ref"
+        ],
+        "title": "ImpactEdgeMarkCreate"
+      },
+      "ImpactEdgeMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "from_kind": {
+            "type": "string",
+            "title": "From Kind"
+          },
+          "to_kind": {
+            "type": "string",
+            "title": "To Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "from_kind",
+          "to_kind",
+          "source_ref"
+        ],
+        "title": "ImpactEdgeMarkResponse"
       },
       "ImpactNodeMarkCreate": {
         "properties": {

@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **519.0** AI6.0 — HITL `impact_node_mark`
-- **Etap:** Plan — delta **520.0** zaakceptowana (`/noc 7`); wolno `/plaster`
-- **Następny:** **520.0** AI6.0 leftover — HITL `impact_edge_mark` (para from/to; nie SQL; nie EBITDA)
+- **Ostatni plaster:** **520.0** AI6.0 leftover — HITL `impact_edge_mark`
+- **Etap:** Plan — delta **521.0** (AI9.0 HITL etykieta art. 50); komenda `/plan-modul`
+- **Następny:** **521.0** AI9.0 — HITL etykieta art. 50 (nie live UI U-art50; nie scoring)
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
