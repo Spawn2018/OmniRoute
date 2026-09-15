@@ -17,6 +17,7 @@ dependencies = [
     "pyjwt>=2.9",
     "pydantic-settings>=2.6",
     "sqlalchemy[asyncio]>=2.0",
+    "openpyxl>=3.1.5",
     "xlrd>=2.0.1",
 ]
 
@@ -32,6 +33,7 @@ dev = [
     "pip-audit>=2.7",
     "ruff>=0.8",
     "types-xlrd>=1.0",
+    "types-openpyxl>=3.1",
 ]
 ai = [
     "instructor>=1.7",

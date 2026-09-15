@@ -3,39 +3,35 @@ from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZipFile
 
 import pytest
+from openpyxl import Workbook
 
 from app.domain.errors import UnparseableDocument
 from app.integrations.docling.parser import DeterministicDocumentParser, layout_fingerprint
 from app.integrations.docling.xlsx_sheet import XlsxSheetParser
 
-_WORKBOOK = """<?xml version="1.0"?>
-<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
-  <sheets><sheet name="Sheet1" sheetId="1" r:id="rId1"/></sheets>
-</workbook>
-"""
 
-_SHEET_THC = """<?xml version="1.0"?>
-<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
-  <sheetData>
-    <row r="1">
-      <c r="A1" t="inlineStr"><is><t>THC 10 EUR</t></is></c>
-    </row>
-  </sheetData>
-</worksheet>
-"""
-
-_SHEET_EMPTY = """<?xml version="1.0"?>
-<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
-  <sheetData></sheetData>
-</worksheet>
-"""
-
-
-def _xlsx_bytes(sheet: str = _SHEET_THC) -> bytes:
+def _xlsx_bytes(*, text: str = "THC 10 EUR", empty: bool = False) -> bytes:
+    book = Workbook()
+    sheet = book.active
+    assert sheet is not None
+    sheet.title = "Sheet1"
+    if not empty:
+        sheet["A1"] = text
     buffer = BytesIO()
-    with ZipFile(buffer, "w", ZIP_DEFLATED) as archive:
-        archive.writestr("xl/workbook.xml", _WORKBOOK)
-        archive.writestr("xl/worksheets/sheet1.xml", sheet)
+    book.save(buffer)
+    return buffer.getvalue()
+
+
+def _two_sheet_xlsx() -> bytes:
+    book = Workbook()
+    first = book.active
+    assert first is not None
+    first.title = "Sheet1"
+    first["A1"] = "BAF 12 USD"
+    second = book.create_sheet("Sheet2")
+    second["A1"] = "THC 10 EUR"
+    buffer = BytesIO()
+    book.save(buffer)
     return buffer.getvalue()
 
 
@@ -60,7 +56,7 @@ def test_xlsx_sheet_extracts_charge_line() -> None:
 
 def test_xlsx_empty_sheet_is_unparseable() -> None:
     with pytest.raises(UnparseableDocument, match="tekstu"):
-        XlsxSheetParser().parse(source_ref="doc://x", raw_bytes=_xlsx_bytes(_SHEET_EMPTY))
+        XlsxSheetParser().parse(source_ref="doc://x", raw_bytes=_xlsx_bytes(empty=True))
 
 
 def test_xlsx_parser_requires_workbook() -> None:
@@ -69,7 +65,7 @@ def test_xlsx_parser_requires_workbook() -> None:
 
 
 def test_xlsx_sheet_index_reads_second_sheet() -> None:
-    raw = (Path(__file__).resolve().parent / "fixtures" / "two.xlsx").read_bytes()
+    raw = _two_sheet_xlsx()
     first = XlsxSheetParser().parse(source_ref="doc://x", raw_bytes=raw, sheet_index=0)
     second = XlsxSheetParser().parse(source_ref="doc://x", raw_bytes=raw, sheet_index=1)
     assert "BAF" in first.text
@@ -77,12 +73,38 @@ def test_xlsx_sheet_index_reads_second_sheet() -> None:
 
 
 def test_xlsx_sheet_name_reads_named_sheet() -> None:
-    raw = (Path(__file__).resolve().parent / "fixtures" / "two.xlsx").read_bytes()
+    raw = _two_sheet_xlsx()
     second = XlsxSheetParser().parse(source_ref="doc://x", raw_bytes=raw, sheet_name="Sheet2")
     assert "THC 10 EUR" in second.text
 
 
 def test_xlsx_sheet_name_unknown() -> None:
-    raw = (Path(__file__).resolve().parent / "fixtures" / "two.xlsx").read_bytes()
+    raw = _two_sheet_xlsx()
     with pytest.raises(UnparseableDocument, match="sheet_name"):
         XlsxSheetParser().parse(source_ref="doc://x", raw_bytes=raw, sheet_name="missing")
+
+
+def test_xlsx_openpyxl_reads_split_cells() -> None:
+    book = Workbook()
+    sheet = book.active
+    assert sheet is not None
+    sheet["A1"] = "THC"
+    sheet["B1"] = 10
+    sheet["C1"] = "EUR"
+    buffer = BytesIO()
+    book.save(buffer)
+    parsed = XlsxSheetParser().parse(source_ref="doc://x", raw_bytes=buffer.getvalue())
+    assert parsed.parser_name == "xlsx_sheet"
+    assert "THC" in parsed.text
+    assert "10" in parsed.text
+    assert "EUR" in parsed.text
+
+
+def test_fixture_two_xlsx_still_readable_via_openpyxl() -> None:
+    path = Path(__file__).resolve().parent / "fixtures" / "two.xlsx"
+    second = XlsxSheetParser().parse(
+        source_ref="doc://x",
+        raw_bytes=path.read_bytes(),
+        sheet_name="Sheet2",
+    )
+    assert "THC 10 EUR" in second.text

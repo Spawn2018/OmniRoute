@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **511.0** AI3.3 leftover — golden ≥5000
-- **Etap:** Plan — delta **512.0** AI3.4 leftover openpyxl (przed `/plaster`)
-- **Następny:** **512.0** AI3.4 leftover — openpyxl parser Excel (nie live vision)
+- **Ostatni plaster:** **512.0** AI3.4 leftover — openpyxl
+- **Etap:** Plan — delta **513.0** AI3 leftover Instructor w CI (przed `/plaster`)
+- **Następny:** **513.0** AI3 leftover — Instructor w CI (nie live OpenAI; nie DocLayNet)
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
