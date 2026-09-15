@@ -98,6 +98,7 @@ export const BUSINESS_LISTS = {
   },
   article50Mark: { route: "/article50-marks", tableKey: "article50_mark" },
   dataSource: { route: "/data-sources", tableKey: "data_source" },
+  ingestGateMark: { route: "/ingest-gate-marks", tableKey: "ingest_gate_mark" },
   automationBiasMark: {
     route: "/automation-bias-marks",
     tableKey: "automation_bias_mark",
@@ -523,6 +524,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/risk-register-marks",
   "/article50-marks",
   "/data-sources",
+  "/ingest-gate-marks",
   "/automation-bias-marks",
   "/l3-gate-marks",
   "/style-cascade-marks",

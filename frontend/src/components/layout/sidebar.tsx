@@ -129,6 +129,7 @@ const NAV = [
   { to: "/risk-register-marks", label: "Rejestr ryzyka" },
   { to: "/article50-marks", label: "Art. 50" },
   { to: "/data-sources", label: "Zrodla danych" },
+  { to: "/ingest-gate-marks", label: "Brama ingest" },
   { to: "/automation-bias-marks", label: "Automation bias" },
   { to: "/l3-gate-marks", label: "Brama L3" },
   { to: "/style-cascade-marks", label: "Kaskada stylu" },

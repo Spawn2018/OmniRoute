@@ -123,6 +123,7 @@ from app.api import (
     impersonate_guard_marks,
     inbound_messages,
     incoterm_responsibilities,
+    ingest_gate_marks,
     integration_hub_marks,
     interval_scores,
     intervention_outcomes,
@@ -503,6 +504,7 @@ api_router.include_router(impact_edge_marks.router)
 api_router.include_router(impact_node_marks.router)
 api_router.include_router(article50_marks.router)
 api_router.include_router(data_sources.router)
+api_router.include_router(ingest_gate_marks.router)
 api_router.include_router(asns.router)
 api_router.include_router(otif_marks.router)
 api_router.include_router(routing_guide_enforcements.router)

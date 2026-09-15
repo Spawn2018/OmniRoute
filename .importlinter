@@ -154,6 +154,7 @@ modules =
     app.services.risk_register_marks
     app.services.article50_marks
     app.services.data_sources
+    app.services.ingest_gate_marks
     app.services.automation_bias_marks
     app.services.l3_gate_marks
     app.services.style_cascade_marks
@@ -760,6 +761,9 @@ forbidden_modules =
     app.services.data_sources
     app.repositories.data_sources
     app.models.data_source
+    app.services.ingest_gate_marks
+    app.repositories.ingest_gate_marks
+    app.models.ingest_gate_mark
     app.services.automation_bias_marks
     app.repositories.automation_bias_marks
     app.models.automation_bias_mark

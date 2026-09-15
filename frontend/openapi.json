@@ -16483,6 +16483,80 @@
         ]
       }
     },
+    "/api/v1/ingest-gate-marks": {
+      "get": {
+        "tags": [
+          "ingest-gate-marks"
+        ],
+        "summary": "List Ingest Gate Marks",
+        "operationId": "list_ingest_gate_marks_api_v1_ingest_gate_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/IngestGateMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Ingest Gate Marks Api V1 Ingest Gate Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "ingest-gate-marks"
+        ],
+        "summary": "Create Ingest Gate Mark",
+        "operationId": "create_ingest_gate_mark_api_v1_ingest_gate_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IngestGateMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IngestGateMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/asns": {
       "get": {
         "tags": [
@@ -37166,6 +37240,65 @@
           "superseded_by"
         ],
         "title": "IncotermResponsibilityResponse"
+      },
+      "IngestGateMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "gate_kind": {
+            "type": "string",
+            "title": "Gate Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "gate_kind",
+          "source_ref"
+        ],
+        "title": "IngestGateMarkCreate"
+      },
+      "IngestGateMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "gate_kind": {
+            "type": "string",
+            "title": "Gate Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "gate_kind",
+          "source_ref"
+        ],
+        "title": "IngestGateMarkResponse"
       },
       "InquiryMemberRankResponse": {
         "properties": {

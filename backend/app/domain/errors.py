@@ -986,6 +986,10 @@ class InvalidDataSource(DomainError):
     """AI5.0: HITL slownik zrodla — nie live ingest / nie CHECK listy."""
 
 
+class InvalidIngestGateMark(DomainError):
+    """AI5.0 leftover: HITL brama ingest — nie live HTTP."""
+
+
 class InvalidL3GateMark(DomainError):
     """AI8.2: HITL checklista bramy L3 — nie silnik write / nie mutacja autonomy_level."""
 

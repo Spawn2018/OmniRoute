@@ -658,6 +658,11 @@ export const OPS_JOBS = [
     label: "Zrodla danych",
     job: "katalog data_source HITL",
   },
+  {
+    route: BUSINESS_LISTS.ingestGateMark.route,
+    label: "Brama ingest",
+    job: "katalog ingest_gate_mark HITL",
+  },
 {
     route: BUSINESS_LISTS.automationBiasMark.route,
     label: "Automation bias",
@@ -1803,6 +1808,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "520.0": "/impact-edge-marks",
   "521.0": "/article50-marks",
   "522.0": "/data-sources",
+  "523.0": "/ingest-gate-marks",
   "461.0": "/shipper-tender-marks",
   "462.0": "/campaign-marks",
   "463.0": "/groupage-dispatcher-marks",

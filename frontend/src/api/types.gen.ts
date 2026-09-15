@@ -6933,6 +6933,50 @@ export type IncotermResponsibilityResponse = {
 };
 
 /**
+ * IngestGateMarkCreate
+ */
+export type IngestGateMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Gate Kind
+     */
+    gate_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * IngestGateMarkResponse
+ */
+export type IngestGateMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Gate Kind
+     */
+    gate_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * InquiryMemberRankResponse
  */
 export type InquiryMemberRankResponse = {
@@ -26305,6 +26349,49 @@ export type CreateDataSourceApiV1DataSourcesPostResponses = {
 };
 
 export type CreateDataSourceApiV1DataSourcesPostResponse = CreateDataSourceApiV1DataSourcesPostResponses[keyof CreateDataSourceApiV1DataSourcesPostResponses];
+
+export type ListIngestGateMarksApiV1IngestGateMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/ingest-gate-marks';
+};
+
+export type ListIngestGateMarksApiV1IngestGateMarksGetResponses = {
+    /**
+     * Response List Ingest Gate Marks Api V1 Ingest Gate Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<IngestGateMarkResponse>;
+};
+
+export type ListIngestGateMarksApiV1IngestGateMarksGetResponse = ListIngestGateMarksApiV1IngestGateMarksGetResponses[keyof ListIngestGateMarksApiV1IngestGateMarksGetResponses];
+
+export type CreateIngestGateMarkApiV1IngestGateMarksPostData = {
+    body: IngestGateMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/ingest-gate-marks';
+};
+
+export type CreateIngestGateMarkApiV1IngestGateMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateIngestGateMarkApiV1IngestGateMarksPostError = CreateIngestGateMarkApiV1IngestGateMarksPostErrors[keyof CreateIngestGateMarkApiV1IngestGateMarksPostErrors];
+
+export type CreateIngestGateMarkApiV1IngestGateMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: IngestGateMarkResponse;
+};
+
+export type CreateIngestGateMarkApiV1IngestGateMarksPostResponse = CreateIngestGateMarkApiV1IngestGateMarksPostResponses[keyof CreateIngestGateMarkApiV1IngestGateMarksPostResponses];
 
 export type ListAsnsApiV1AsnsGetData = {
     body?: never;

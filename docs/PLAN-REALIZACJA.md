@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **523.0** AI5.0 leftover — HITL `ingest_gate_mark` (brama źródło/właściciel/wyjątek; nie live ingest)
+**Następny:** **524.0** AI5.1 — HITL `model_feature_mark` (etykieta cechy modelu; nie live train)
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -716,8 +716,8 @@ Dump CT `03` i TMS `04b` **potwierdzają leftover silników** (jeden `charge`, H
 | AI4.0 | `plan_snapshot` z FK do shipment/trip/resource | po AI1; **Q3=tak** | **452.0 DONE** FK złożone RESTRICT; leftover: AI4.1 · CASCADE `REJECTED` |
 | AI4.1 | silnik what-if na `counterfactual_run` | po AI4.0 | **453.0 DONE** FK przebieg→migawka + widok `what_if_replay`; leftover: solver liczb · AI4.2 · JSON dźwigni; analog Kinaxis Maestro / scenariusz = HITL, nie live (`03` B.6) |
 | AI4.2 | symulacja kółek **w SQL**, do 500k wariantów | po AI4.1 | **454.0 DONE** widok `circle_sim_pair`; leftover: generator 500k · km · VRP |
-| AI5.0 | warstwa ingest danych zewnętrznych + `data_source` z licencją | po AI1.4 | katalog: badania `09` / `10`; **22 dostępy P0** z VISION C.1 = ten katalog, nie 22 plastry; **522.0** DONE HITL `data_source`; leftover: brama „źródło prawdy + właściciel + wyjątek” (**523.0**); definicja KPI per strona (OTD/OTIF) — AI nie wymyśla wzoru; nie OMNI READINESS ENGINE; nie pasek 72 % |
-| AI5.1 | cechy modelu predykcyjnego z danych zewnętrznych | po AI5.0 | podnosi V2/V4 |
+| AI5.0 | warstwa ingest danych zewnętrznych + `data_source` z licencją | po AI1.4 | katalog: badania `09` / `10`; **22 dostępy P0** z VISION C.1 = ten katalog, nie 22 plastry; **522.0** DONE HITL `data_source`; **523.0** DONE HITL `ingest_gate_mark`; leftover: live ingest · definicja KPI per strona (OTD/OTIF) — AI nie wymyśla wzoru; nie OMNI READINESS ENGINE; nie pasek 72 % |
+| AI5.1 | cechy modelu predykcyjnego z danych zewnętrznych | po AI5.0 | podnosi V2/V4; **524.0** plan HITL `model_feature_mark` |
 | AI6.0 | graf skutku biznesowego: Shipment → Inventory → SKU → Production Line → Customer Order → Revenue → Margin → Cash | po AI5.1 + CI1 | Watch Tower technicznie; **519.0** DONE HITL `impact_node_mark`; **520.0** DONE HITL `impact_edge_mark`; leftover: SQL · EBITDA · CT (park) |
 | AI7.0 | Cost Allocation Engine — 12 poziomów, 6 kategorii, 23 klucze → `TRUE CONTRIBUTION MARGIN` | po AI0 | marża zostaje w `margin()`; **516.0** DONE `allocation_key`; **517.0** DONE `cost_category_mark`; **518.0** DONE `allocation_level`; leftover: SQL · TCM · AI7.1 (park) |
 | AI7.1 | Cyfrowy CFO — narracja **po** SQL, nigdy zamiast | po AI7.0 | anomalia nie jest dowodem; model nie liczy |

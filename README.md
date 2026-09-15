@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **522.0** AI5.0 — HITL `data_source`
-- **Etap:** Plan — delta **523.0** zaakceptowana (`/noc 7`); wolno `/plaster`
-- **Następny:** **523.0** AI5.0 leftover — HITL `ingest_gate_mark` (brama źródło/właściciel/wyjątek; nie live ingest)
+- **Ostatni plaster:** **523.0** AI5.0 leftover — HITL `ingest_gate_mark`
+- **Etap:** Plan — brak delty; komenda `/plan-modul`
+- **Następny:** **524.0** AI5.1 — HITL `model_feature_mark` (etykieta cechy modelu; nie live train)
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

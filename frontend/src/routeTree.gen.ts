@@ -129,6 +129,7 @@ import { Route as ImpactEdgeMarksRouteImport } from './routes/impact-edge-marks'
 import { Route as ImpactNodeMarksRouteImport } from './routes/impact-node-marks'
 import { Route as ImpactScenariosRouteImport } from './routes/impact-scenarios'
 import { Route as ImpersonateGuardMarksRouteImport } from './routes/impersonate-guard-marks'
+import { Route as IngestGateMarksRouteImport } from './routes/ingest-gate-marks'
 import { Route as IntegrationHubMarksRouteImport } from './routes/integration-hub-marks'
 import { Route as IntervalScoresRouteImport } from './routes/interval-scores'
 import { Route as InterventionOutcomesRouteImport } from './routes/intervention-outcomes'
@@ -910,6 +911,11 @@ const ImpactScenariosRoute = ImpactScenariosRouteImport.update({
 const ImpersonateGuardMarksRoute = ImpersonateGuardMarksRouteImport.update({
   id: '/impersonate-guard-marks',
   path: '/impersonate-guard-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IngestGateMarksRoute = IngestGateMarksRouteImport.update({
+  id: '/ingest-gate-marks',
+  path: '/ingest-gate-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IntegrationHubMarksRoute = IntegrationHubMarksRouteImport.update({
@@ -1946,6 +1952,7 @@ export interface FileRoutesByFullPath {
   '/impact-node-marks': typeof ImpactNodeMarksRoute
   '/impact-scenarios': typeof ImpactScenariosRoute
   '/impersonate-guard-marks': typeof ImpersonateGuardMarksRoute
+  '/ingest-gate-marks': typeof IngestGateMarksRoute
   '/integration-hub-marks': typeof IntegrationHubMarksRoute
   '/interval-scores': typeof IntervalScoresRoute
   '/intervention-outcomes': typeof InterventionOutcomesRoute
@@ -2250,6 +2257,7 @@ export interface FileRoutesByTo {
   '/impact-node-marks': typeof ImpactNodeMarksRoute
   '/impact-scenarios': typeof ImpactScenariosRoute
   '/impersonate-guard-marks': typeof ImpersonateGuardMarksRoute
+  '/ingest-gate-marks': typeof IngestGateMarksRoute
   '/integration-hub-marks': typeof IntegrationHubMarksRoute
   '/interval-scores': typeof IntervalScoresRoute
   '/intervention-outcomes': typeof InterventionOutcomesRoute
@@ -2555,6 +2563,7 @@ export interface FileRoutesById {
   '/impact-node-marks': typeof ImpactNodeMarksRoute
   '/impact-scenarios': typeof ImpactScenariosRoute
   '/impersonate-guard-marks': typeof ImpersonateGuardMarksRoute
+  '/ingest-gate-marks': typeof IngestGateMarksRoute
   '/integration-hub-marks': typeof IntegrationHubMarksRoute
   '/interval-scores': typeof IntervalScoresRoute
   '/intervention-outcomes': typeof InterventionOutcomesRoute
@@ -2861,6 +2870,7 @@ export interface FileRouteTypes {
     | '/impact-node-marks'
     | '/impact-scenarios'
     | '/impersonate-guard-marks'
+    | '/ingest-gate-marks'
     | '/integration-hub-marks'
     | '/interval-scores'
     | '/intervention-outcomes'
@@ -3165,6 +3175,7 @@ export interface FileRouteTypes {
     | '/impact-node-marks'
     | '/impact-scenarios'
     | '/impersonate-guard-marks'
+    | '/ingest-gate-marks'
     | '/integration-hub-marks'
     | '/interval-scores'
     | '/intervention-outcomes'
@@ -3469,6 +3480,7 @@ export interface FileRouteTypes {
     | '/impact-node-marks'
     | '/impact-scenarios'
     | '/impersonate-guard-marks'
+    | '/ingest-gate-marks'
     | '/integration-hub-marks'
     | '/interval-scores'
     | '/intervention-outcomes'
@@ -3774,6 +3786,7 @@ export interface RootRouteChildren {
   ImpactNodeMarksRoute: typeof ImpactNodeMarksRoute
   ImpactScenariosRoute: typeof ImpactScenariosRoute
   ImpersonateGuardMarksRoute: typeof ImpersonateGuardMarksRoute
+  IngestGateMarksRoute: typeof IngestGateMarksRoute
   IntegrationHubMarksRoute: typeof IntegrationHubMarksRoute
   IntervalScoresRoute: typeof IntervalScoresRoute
   InterventionOutcomesRoute: typeof InterventionOutcomesRoute
@@ -4798,6 +4811,13 @@ declare module '@tanstack/react-router' {
       path: '/impersonate-guard-marks'
       fullPath: '/impersonate-guard-marks'
       preLoaderRoute: typeof ImpersonateGuardMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ingest-gate-marks': {
+      id: '/ingest-gate-marks'
+      path: '/ingest-gate-marks'
+      fullPath: '/ingest-gate-marks'
+      preLoaderRoute: typeof IngestGateMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/integration-hub-marks': {
@@ -6198,6 +6218,7 @@ const rootRouteChildren: RootRouteChildren = {
   ImpactNodeMarksRoute: ImpactNodeMarksRoute,
   ImpactScenariosRoute: ImpactScenariosRoute,
   ImpersonateGuardMarksRoute: ImpersonateGuardMarksRoute,
+  IngestGateMarksRoute: IngestGateMarksRoute,
   IntegrationHubMarksRoute: IntegrationHubMarksRoute,
   IntervalScoresRoute: IntervalScoresRoute,
   InterventionOutcomesRoute: InterventionOutcomesRoute,
