@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **512.0** AI3.4 leftover — openpyxl. **Etap:** Plan — delta **513.0** AI3 leftover Instructor w CI (przed `/plaster`). **Następny:** **513.0** AI3 leftover — Instructor w CI (nie live OpenAI; nie DocLayNet) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **513.0** AI3 leftover — Instructor × golden stub. **Etap:** Plan — delta **514.0** AI3.4 leftover formuły bez cache (przed `/plaster`). **Następny:** **514.0** AI3.4 leftover — xlsx formuły bez cache Excel (nie live vision; nie DocLayNet) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

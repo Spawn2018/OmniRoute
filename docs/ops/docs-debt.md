@@ -23,8 +23,8 @@
 - **453.0 leftover:** AI4.2 kółka SQL · solver liczb · JSON dźwigni · CASCADE. 453.0 = FK przebieg → migawka + widok `what_if_replay`.
 - **452.0 plan:** AI4.0 FK `plan_snapshot` RESTRICT. Leftover po zamknięciu: AI4.1 · CASCADE.
 - **451.0 leftover:** `.xls` → **506.0** · arkusze → **507/508** · openpyxl → **512.0 DONE** · formuły bez cache. 451.0 = pierwszy arkusz OOXML → tekst.
-- **512.0 leftover:** live vision · Instructor CI (**513.0**) · formuły bez cache Excel · DocLayNet. 512.0 = openpyxl na `.xlsx`.
-- **511.0 leftover:** DocLayNet park · instructor CI · live vision · how-to. 511.0 = golden ≥5000 vs MockExtractor. openpyxl = **512.0 DONE**.
+- **513.0 leftover:** DocLayNet park · żywy OpenAI w CI · live vision · how-to. 513.0 = Instructor stub × golden. Następny Excel = **514.0** formuły bez cache.
+- **512.0 leftover:** live vision · Instructor CI → **513.0 DONE** · formuły bez cache Excel (**514.0**) · DocLayNet. 512.0 = openpyxl na `.xlsx`.
 - **510.0 leftover:** pętla 5 000 → **511.0 DONE** · DocLayNet park · instructor CI · live vision · how-to. 510.0 = golden ≥2000 vs MockExtractor.
 - **509.0 leftover:** pętla 2 000 → **510.0 DONE** · 5 000 · DocLayNet park · instructor CI · live vision · how-to. 509.0 = golden ≥500 vs MockExtractor.
 - **450.0 leftover:** AI3.4 zamknięty w 451.0 · większy golden → **509.0 DONE** · instructor w CI · live vision · how-to (brak jobu zapisu w 450). 450.0 = 2 przypadki vs MockExtractor.

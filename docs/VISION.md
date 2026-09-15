@@ -80,6 +80,8 @@ zostają w badaniach `04`).
 | 2026-09-15 | **511.0** golden ≥5000 w kodzie (`CONFIRMED`, git). Następny = openpyxl AI3.4 leftover (`REQUIREMENT`). DocLayNet `REJECTED`. |
 | 2026-09-15 | AI3.4 leftover plan (**512.0**): openpyxl na `.xlsx` (`REQUIREMENT`). Wcześniejszy `REJECTED` z 451.0 zdjęty dla leftoveru. Live vision `REJECTED`. |
 | 2026-09-15 | **512.0** openpyxl w kodzie (`CONFIRMED`, git). Następny = Instructor CI leftover (`REQUIREMENT`). Live vision `REJECTED`. |
+| 2026-09-15 | AI3 leftover plan (**513.0**): Instructor×golden stub bez sieci (`REQUIREMENT`). Żywy OpenAI / DocLayNet `REJECTED`. |
+| 2026-09-15 | **513.0** Instructor×golden w kodzie (`CONFIRMED`, git). Następny = formuły bez cache (`REQUIREMENT`). Żywy OpenAI `REJECTED`. |
 | 2026-09-13 | AI3.4 plan (**451.0**): parser `xlsx_sheet` stdlib. `openpyxl` `REJECTED`. `.xls` leftover. |
 | 2026-09-13 | **451.0** `xlsx_sheet` w kodzie (`CONFIRMED`, git). Następny = **AI4.0** FK `plan_snapshot` (`REQUIREMENT`). `.xls` leftover. |
 | 2026-09-13 | AI4.0 plan (**452.0**): FK złożone RESTRICT. CASCADE `REJECTED`. What-if `REJECTED` na tym wierszu. |
@@ -308,6 +310,8 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-15 | **511.0** w kodzie (`CONFIRMED`, git). 5000 przypadków vs `MockExtractor`. Następny = **512.0** openpyxl (`REQUIREMENT`). | CURRENT + plaster 511.0 `/noc 15` |
 | 2026-09-15 | AI3.4 leftover (**512.0**) = openpyxl na `.xlsx`. Live vision `REJECTED`. | `/plan-modul` `/noc 15`; VISION E AI3 |
 | 2026-09-15 | **512.0** w kodzie (`CONFIRMED`, git). `XlsxSheetParser` przez openpyxl. Następny = **513.0** Instructor CI (`REQUIREMENT`). | CURRENT + plaster 512.0 `/noc 15` |
+| 2026-09-15 | AI3 leftover (**513.0**) = Instructor×golden stub w gate. Żywy OpenAI / DocLayNet `REJECTED`. | `/plan-modul` `/noc 15`; VISION E AI3 |
+| 2026-09-15 | **513.0** w kodzie (`CONFIRMED`, git). Instructor stub × golden. Następny = **514.0** formuły (`REQUIREMENT`). | CURRENT + plaster 513.0 `/noc 15` |
 | 2026-09-13 | AI3.4 (**451.0**) = OOXML pierwszy arkusz → tekst. Nowa zależność `REJECTED`. Vision `REJECTED`. | `/plan-modul` `/noc`; VISION E AI3 |
 | 2026-09-13 | **451.0** w kodzie (`CONFIRMED`, git). `parser_name=xlsx_sheet`. Następny = **AI4.0** (`REQUIREMENT`). | CURRENT + plaster 451.0 `/noc` |
 | 2026-09-13 | AI4.0 (**452.0**) = FK `plan_snapshot` → shipment/trip/resource, `ON DELETE RESTRICT`. CASCADE `REJECTED`. | `/plan-modul` `/noc`; VISION E AI4 |

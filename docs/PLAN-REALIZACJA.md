@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **513.0** AI3 leftover — Instructor w CI (nie live OpenAI; nie DocLayNet)
+**Następny:** **514.0** AI3.4 leftover — xlsx formuły bez cache Excel (nie live vision; nie DocLayNet)
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -711,8 +711,8 @@ Dump CT `03` i TMS `04b` **potwierdzają leftover silników** (jeden `charge`, H
 | AI3.0 | `PATCH` na `extraction_draft` + edycja w interfejsie przed akceptacją | po AI2.0 | **447.0 DONE** PATCH `candidates`; **500.0 DONE** quote/rfp; **501.0 DONE** próg 70%; **504.0 DONE** partial `candidate_indexes`; **505.0 DONE** `hitl_confidence_min`; leftover: live vision (`07`) |
 | AI3.1 | wersjonowanie szkicu + `draft_kind` + `bbox` i pewność w JSONB | po AI3.0 | **448.0 DONE** `payload.revision` + `bbox_text`/`confidence_text`; **502.0 DONE** HITL `extraction_prompt_mark`; **503.0 DONE** `payload.history`; leftover: wiring Instructor (`07`) · undo |
 | AI3.2 | ścieżka **obraz wprost** jako challenger dla obecnej ścieżki przez tekst | po AI3.1 | **449.0 DONE** `extract_path` text|image etykieta; leftover: live vision · pełny pipeline zdjęcia OpenCV/CLAHE (`07` / X9) · AI3.3 · AI3.4 |
-| AI3.3 | własny zbiór golden + bramka wydaniowa na progach | po AI3.2 | **450.0 DONE** pytest vs THC/BAF; **509.0 DONE** ≥500; **510.0 DONE** ≥2000; **511.0 DONE** ≥5000; leftover: DocLayNet / PubTables-1M / CORD / Kleister (licencje, `07`) · instructor CI · 96,6% `TO_VERIFY`; FUNSD / RVL-CDIP `REJECTED` |
-| AI3.4 | ekstrakcja z Excela (dziś tylko PDF) | po AI3.1 | **451.0 DONE** `xlsx_sheet` stdlib; **506.0 DONE** `.xls` xlrd; **507.0 DONE** `sheet_index`; **508.0 DONE** `sheet_name`; **512.0 DONE** openpyxl; leftover: live vision · formuły bez cache |
+| AI3.3 | własny zbiór golden + bramka wydaniowa na progach | po AI3.2 | **450.0 DONE** pytest vs THC/BAF; **509.0 DONE** ≥500; **510.0 DONE** ≥2000; **511.0 DONE** ≥5000; **513.0 DONE** Instructor×golden stub; leftover: DocLayNet / PubTables-1M / CORD / Kleister (licencje, `07`) · żywy OpenAI w CI · 96,6% `TO_VERIFY`; FUNSD / RVL-CDIP `REJECTED` |
+| AI3.4 | ekstrakcja z Excela (dziś tylko PDF) | po AI3.1 | **451.0 DONE** `xlsx_sheet` stdlib; **506.0 DONE** `.xls` xlrd; **507.0 DONE** `sheet_index`; **508.0 DONE** `sheet_name`; **512.0 DONE** openpyxl; leftover: live vision · formuły bez cache (**514.0**) |
 | AI4.0 | `plan_snapshot` z FK do shipment/trip/resource | po AI1; **Q3=tak** | **452.0 DONE** FK złożone RESTRICT; leftover: AI4.1 · CASCADE `REJECTED` |
 | AI4.1 | silnik what-if na `counterfactual_run` | po AI4.0 | **453.0 DONE** FK przebieg→migawka + widok `what_if_replay`; leftover: solver liczb · AI4.2 · JSON dźwigni; analog Kinaxis Maestro / scenariusz = HITL, nie live (`03` B.6) |
 | AI4.2 | symulacja kółek **w SQL**, do 500k wariantów | po AI4.1 | **454.0 DONE** widok `circle_sim_pair`; leftover: generator 500k · km · VRP |
