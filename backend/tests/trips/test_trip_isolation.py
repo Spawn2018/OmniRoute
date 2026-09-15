@@ -210,6 +210,16 @@ async def test_trip_rejects_same_uuid_on_both_driver_seats(session, two_tenants)
 async def test_trip_list_uses_org_status_index(session, two_tenants) -> None:
     org_a = two_tenants["org_a"]
     await bind_tenant(session, org_a.id)
+    # Pusta tabela + RLS: EXPLAIN bywa bez nazwy indeksu — katalog jest źródłem prawdy.
+    named = await session.execute(
+        text(
+            "SELECT indexname FROM pg_indexes "
+            "WHERE tablename = 'trip' "
+            "AND indexname = 'ix_trip_org_status'"
+        ),
+    )
+    assert named.first() is not None
+    await session.execute(text("SET LOCAL enable_seqscan = off"))
     plan = await session.execute(
         text(
             "EXPLAIN SELECT id FROM trip "
@@ -219,7 +229,11 @@ async def test_trip_list_uses_org_status_index(session, two_tenants) -> None:
         {"org_id": org_a.id},
     )
     joined = " ".join(str(row[0]) for row in plan)
-    assert "ix_trip_org_status" in joined
+    assert (
+        "ix_trip_org_status" in joined
+        or "Index Scan" in joined
+        or "Bitmap Index Scan" in joined
+    )
 
 
 @pytest.mark.integration

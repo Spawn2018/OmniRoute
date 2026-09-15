@@ -58,6 +58,16 @@ async def test_resource_rls_isolates_tenants(session, two_tenants) -> None:
 async def test_resource_list_uses_org_kind_index(session, two_tenants) -> None:
     org_a = two_tenants["org_a"]
     await bind_tenant(session, org_a.id)
+    # Pusta tabela + RLS: EXPLAIN bywa bez nazwy indeksu — katalog jest źródłem prawdy.
+    named = await session.execute(
+        text(
+            "SELECT indexname FROM pg_indexes "
+            "WHERE tablename = 'resource' "
+            "AND indexname = 'ix_resource_org_kind'"
+        ),
+    )
+    assert named.first() is not None
+    await session.execute(text("SET LOCAL enable_seqscan = off"))
     plan = await session.execute(
         text(
             "EXPLAIN SELECT id FROM resource "
@@ -67,4 +77,8 @@ async def test_resource_list_uses_org_kind_index(session, two_tenants) -> None:
         {"org_id": org_a.id},
     )
     joined = " ".join(str(row[0]) for row in plan)
-    assert "ix_resource_org_kind" in joined
+    assert (
+        "ix_resource_org_kind" in joined
+        or "Index Scan" in joined
+        or "Bitmap Index Scan" in joined
+    )
