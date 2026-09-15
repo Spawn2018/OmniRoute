@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **505.0** AI3.0 leftover — `hitl_confidence_min` w organization_setting
-- **Etap:** Plaster — delta **506.0** AI3.4 leftover `.xls` zaakceptowana (`/noc 15`)
-- **Następny:** **506.0** AI3.4 leftover — odczyt `.xls` (nie live vision; nie Instructor; nie openpyxl multi-sheet)
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **506.0** AI3.4 leftover — odczyt `.xls` BIFF
+- **Etap:** Plan — delta **507.0** AI3.4 leftover wybór arkusza (przed `/plaster`)
+- **Następny:** **507.0** AI3.4 leftover — HITL indeks/nazwa arkusza (nie openpyxl; nie live vision)
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

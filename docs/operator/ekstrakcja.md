@@ -5,7 +5,8 @@ kandydatów. Nic nie idzie do stawek, dopóki nie wciśniesz Akceptuj.
 
 1. Ustaw sesję tenanta. Rodzaj szkicu zostaw `rate_line`, jeśli poprawiasz cennik.
 2. Wybierz ścieżkę `text` albo `image`. `image` to tylko etykieta — plik i tak idzie przez obecny parser do tekstu.
-3. Wklej tekst albo wybierz plik (PDF, tekst albo `.xlsx` — pierwszy arkusz). `source_ref` musi wskazywać dokument.
+3. Wklej tekst albo wybierz plik (PDF, tekst, `.xlsx` albo `.xls` — pierwszy arkusz).
+   `source_ref` musi wskazywać dokument.
 4. „Ekstrahuj → szkic”. Otwórz wiersz. Nowy szkic ma wersję 0. Ścieżka `image` nie uruchamia osobnego modelu na pikselach.
 5. Popraw kod, kwotę jako tekst, walutę, notatkę, ramkę i pewność (tekst, nie liczba z modelu).
    Działa dla szkiców `rate_line`, `carrier_quote` i `tender_rfp`.

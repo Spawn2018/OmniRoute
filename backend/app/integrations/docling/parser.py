@@ -38,6 +38,10 @@ def layout_fingerprint(raw_bytes: bytes) -> str:
         return "pdf"
     if raw_bytes.startswith(b"PK") and _zip_has_workbook(raw_bytes):
         return "xlsx"
+    from app.integrations.docling.xls_sheet import is_ole_compound
+
+    if is_ole_compound(raw_bytes):
+        return "xls"
     return "text"
 
 
@@ -70,4 +74,8 @@ class DeterministicDocumentParser:
             from app.integrations.docling.xlsx_sheet import XlsxSheetParser
 
             return XlsxSheetParser().parse(source_ref=source_ref, raw_bytes=raw_bytes)
+        if kind == "xls":
+            from app.integrations.docling.xls_sheet import XlsSheetParser
+
+            return XlsSheetParser().parse(source_ref=source_ref, raw_bytes=raw_bytes)
         return StubDocumentParser().parse(source_ref=source_ref, raw_bytes=raw_bytes)
