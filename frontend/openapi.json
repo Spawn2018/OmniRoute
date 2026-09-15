@@ -16409,6 +16409,80 @@
         ]
       }
     },
+    "/api/v1/data-sources": {
+      "get": {
+        "tags": [
+          "data-sources"
+        ],
+        "summary": "List Data Sources",
+        "operationId": "list_data_sources_api_v1_data_sources_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/DataSourceResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Data Sources Api V1 Data Sources Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "data-sources"
+        ],
+        "summary": "Create Data Source",
+        "operationId": "create_data_source_api_v1_data_sources_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DataSourceCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataSourceResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/asns": {
       "get": {
         "tags": [
@@ -32670,6 +32744,75 @@
           "source_ref"
         ],
         "title": "DangerousGoodResponse"
+      },
+      "DataSourceCreate": {
+        "properties": {
+          "source_code": {
+            "type": "string",
+            "title": "Source Code"
+          },
+          "license_label": {
+            "type": "string",
+            "title": "License Label"
+          },
+          "rights_scope": {
+            "type": "string",
+            "title": "Rights Scope"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "source_code",
+          "license_label",
+          "rights_scope",
+          "source_ref"
+        ],
+        "title": "DataSourceCreate"
+      },
+      "DataSourceResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "source_code": {
+            "type": "string",
+            "title": "Source Code"
+          },
+          "license_label": {
+            "type": "string",
+            "title": "License Label"
+          },
+          "rights_scope": {
+            "type": "string",
+            "title": "Rights Scope"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "source_code",
+          "license_label",
+          "rights_scope",
+          "source_ref"
+        ],
+        "title": "DataSourceResponse"
       },
       "DelayForecastCreate": {
         "properties": {

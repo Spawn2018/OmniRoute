@@ -71,6 +71,7 @@ import { Route as CustomerPoMarksRouteImport } from './routes/customer-po-marks'
 import { Route as CustomerSopsRouteImport } from './routes/customer-sops'
 import { Route as CutoffMarksRouteImport } from './routes/cutoff-marks'
 import { Route as DangerousGoodsRouteImport } from './routes/dangerous-goods'
+import { Route as DataSourcesRouteImport } from './routes/data-sources'
 import { Route as DecisionsRouteImport } from './routes/decisions'
 import { Route as DelayForecastsRouteImport } from './routes/delay-forecasts'
 import { Route as DemandSnapshotMarksRouteImport } from './routes/demand-snapshot-marks'
@@ -619,6 +620,11 @@ const CutoffMarksRoute = CutoffMarksRouteImport.update({
 const DangerousGoodsRoute = DangerousGoodsRouteImport.update({
   id: '/dangerous-goods',
   path: '/dangerous-goods',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DataSourcesRoute = DataSourcesRouteImport.update({
+  id: '/data-sources',
+  path: '/data-sources',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DecisionsRoute = DecisionsRouteImport.update({
@@ -1882,6 +1888,7 @@ export interface FileRoutesByFullPath {
   '/customer-sops': typeof CustomerSopsRoute
   '/cutoff-marks': typeof CutoffMarksRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
+  '/data-sources': typeof DataSourcesRoute
   '/decisions': typeof DecisionsRoute
   '/delay-forecasts': typeof DelayForecastsRoute
   '/demand-snapshot-marks': typeof DemandSnapshotMarksRoute
@@ -2185,6 +2192,7 @@ export interface FileRoutesByTo {
   '/customer-sops': typeof CustomerSopsRoute
   '/cutoff-marks': typeof CutoffMarksRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
+  '/data-sources': typeof DataSourcesRoute
   '/decisions': typeof DecisionsRoute
   '/delay-forecasts': typeof DelayForecastsRoute
   '/demand-snapshot-marks': typeof DemandSnapshotMarksRoute
@@ -2489,6 +2497,7 @@ export interface FileRoutesById {
   '/customer-sops': typeof CustomerSopsRoute
   '/cutoff-marks': typeof CutoffMarksRoute
   '/dangerous-goods': typeof DangerousGoodsRoute
+  '/data-sources': typeof DataSourcesRoute
   '/decisions': typeof DecisionsRoute
   '/delay-forecasts': typeof DelayForecastsRoute
   '/demand-snapshot-marks': typeof DemandSnapshotMarksRoute
@@ -2794,6 +2803,7 @@ export interface FileRouteTypes {
     | '/customer-sops'
     | '/cutoff-marks'
     | '/dangerous-goods'
+    | '/data-sources'
     | '/decisions'
     | '/delay-forecasts'
     | '/demand-snapshot-marks'
@@ -3097,6 +3107,7 @@ export interface FileRouteTypes {
     | '/customer-sops'
     | '/cutoff-marks'
     | '/dangerous-goods'
+    | '/data-sources'
     | '/decisions'
     | '/delay-forecasts'
     | '/demand-snapshot-marks'
@@ -3400,6 +3411,7 @@ export interface FileRouteTypes {
     | '/customer-sops'
     | '/cutoff-marks'
     | '/dangerous-goods'
+    | '/data-sources'
     | '/decisions'
     | '/delay-forecasts'
     | '/demand-snapshot-marks'
@@ -3704,6 +3716,7 @@ export interface RootRouteChildren {
   CustomerSopsRoute: typeof CustomerSopsRoute
   CutoffMarksRoute: typeof CutoffMarksRoute
   DangerousGoodsRoute: typeof DangerousGoodsRoute
+  DataSourcesRoute: typeof DataSourcesRoute
   DecisionsRoute: typeof DecisionsRoute
   DelayForecastsRoute: typeof DelayForecastsRoute
   DemandSnapshotMarksRoute: typeof DemandSnapshotMarksRoute
@@ -4379,6 +4392,13 @@ declare module '@tanstack/react-router' {
       path: '/dangerous-goods'
       fullPath: '/dangerous-goods'
       preLoaderRoute: typeof DangerousGoodsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/data-sources': {
+      id: '/data-sources'
+      path: '/data-sources'
+      fullPath: '/data-sources'
+      preLoaderRoute: typeof DataSourcesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/decisions': {
@@ -6120,6 +6140,7 @@ const rootRouteChildren: RootRouteChildren = {
   CustomerSopsRoute: CustomerSopsRoute,
   CutoffMarksRoute: CutoffMarksRoute,
   DangerousGoodsRoute: DangerousGoodsRoute,
+  DataSourcesRoute: DataSourcesRoute,
   DecisionsRoute: DecisionsRoute,
   DelayForecastsRoute: DelayForecastsRoute,
   DemandSnapshotMarksRoute: DemandSnapshotMarksRoute,

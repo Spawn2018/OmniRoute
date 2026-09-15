@@ -3871,6 +3871,58 @@ export type DangerousGoodResponse = {
 };
 
 /**
+ * DataSourceCreate
+ */
+export type DataSourceCreate = {
+    /**
+     * Source Code
+     */
+    source_code: string;
+    /**
+     * License Label
+     */
+    license_label: string;
+    /**
+     * Rights Scope
+     */
+    rights_scope: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * DataSourceResponse
+ */
+export type DataSourceResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Source Code
+     */
+    source_code: string;
+    /**
+     * License Label
+     */
+    license_label: string;
+    /**
+     * Rights Scope
+     */
+    rights_scope: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * DelayForecastCreate
  */
 export type DelayForecastCreate = {
@@ -26210,6 +26262,49 @@ export type CreateArticle50MarkApiV1Article50MarksPostResponses = {
 };
 
 export type CreateArticle50MarkApiV1Article50MarksPostResponse = CreateArticle50MarkApiV1Article50MarksPostResponses[keyof CreateArticle50MarkApiV1Article50MarksPostResponses];
+
+export type ListDataSourcesApiV1DataSourcesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/data-sources';
+};
+
+export type ListDataSourcesApiV1DataSourcesGetResponses = {
+    /**
+     * Response List Data Sources Api V1 Data Sources Get
+     *
+     * Successful Response
+     */
+    200: Array<DataSourceResponse>;
+};
+
+export type ListDataSourcesApiV1DataSourcesGetResponse = ListDataSourcesApiV1DataSourcesGetResponses[keyof ListDataSourcesApiV1DataSourcesGetResponses];
+
+export type CreateDataSourceApiV1DataSourcesPostData = {
+    body: DataSourceCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/data-sources';
+};
+
+export type CreateDataSourceApiV1DataSourcesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateDataSourceApiV1DataSourcesPostError = CreateDataSourceApiV1DataSourcesPostErrors[keyof CreateDataSourceApiV1DataSourcesPostErrors];
+
+export type CreateDataSourceApiV1DataSourcesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: DataSourceResponse;
+};
+
+export type CreateDataSourceApiV1DataSourcesPostResponse = CreateDataSourceApiV1DataSourcesPostResponses[keyof CreateDataSourceApiV1DataSourcesPostResponses];
 
 export type ListAsnsApiV1AsnsGetData = {
     body?: never;

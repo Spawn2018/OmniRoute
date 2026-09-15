@@ -132,6 +132,7 @@ from app.models.line_impact_layer_mark import LineImpactLayerMark  # noqa: F401
 from app.models.product_ticket_mark import ProductTicketMark  # noqa: F401
 from app.models.risk_register_mark import RiskRegisterMark  # noqa: F401
 from app.models.article50_mark import Article50Mark  # noqa: F401
+from app.models.data_source import DataSource  # noqa: F401
 from app.models.automation_bias_mark import AutomationBiasMark  # noqa: F401
 from app.models.l3_gate_mark import L3GateMark  # noqa: F401
 from app.models.style_cascade_mark import StyleCascadeMark  # noqa: F401

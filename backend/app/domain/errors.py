@@ -982,6 +982,10 @@ class InvalidArticle50Mark(DomainError):
     """AI9.0: HITL etykieta art. 50 — nie U-art50 UI / nie scoring."""
 
 
+class InvalidDataSource(DomainError):
+    """AI5.0: HITL slownik zrodla — nie live ingest / nie CHECK listy."""
+
+
 class InvalidL3GateMark(DomainError):
     """AI8.2: HITL checklista bramy L3 — nie silnik write / nie mutacja autonomy_level."""
 

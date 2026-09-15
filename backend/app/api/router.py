@@ -65,6 +65,7 @@ from app.api import (
     customer_sops,
     cutoff_marks,
     dangerous_goods,
+    data_sources,
     delay_forecasts,
     demand_snapshot_marks,
     demo_gps_marks,
@@ -501,6 +502,7 @@ api_router.include_router(cost_category_marks.router)
 api_router.include_router(impact_edge_marks.router)
 api_router.include_router(impact_node_marks.router)
 api_router.include_router(article50_marks.router)
+api_router.include_router(data_sources.router)
 api_router.include_router(asns.router)
 api_router.include_router(otif_marks.router)
 api_router.include_router(routing_guide_enforcements.router)
