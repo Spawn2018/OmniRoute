@@ -3,10 +3,10 @@ from uuid import uuid4
 import pytest
 
 from app.domain.errors import (
+    BulkAcceptConfidenceBelow,
     ExtractionCandidatesNotEditable,
     InvalidExtractionDraft,
     InvalidTenderRfpIntake,
-    BulkAcceptConfidenceBelow,
 )
 from app.domain.extraction_draft import (
     bulk_accept_confidence_ok,
