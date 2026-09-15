@@ -882,6 +882,10 @@ class InvalidCrmLinkMark(DomainError):
     """BR6.0 leftover: HITL stance link CRM — nie FK UUID / cold-send."""
 
 
+class InvalidSalesBindMark(DomainError):
+    """BR6.1 leftover: HITL stance bind sprzedaży — nie HubSpot / FK UUID."""
+
+
 class InvalidLcChecklist(DomainError):
     """G3: HITL checklista LC — nie bank due."""
 

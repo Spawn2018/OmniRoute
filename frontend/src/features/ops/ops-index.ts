@@ -1430,6 +1430,11 @@ export const OPS_JOBS = [
     job: "katalog crm_link_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.salesBindMark.route,
+    label: "Bind sprzedaży",
+    job: "katalog sales_bind_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.salesLane.route,
     label: "Korytarz sprzedażowy",
     job: "katalog sales_lane HITL",
@@ -1728,6 +1733,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "494.0": "/shipper-like-marks",
   "495.0": "/crm-dedup-marks",
   "496.0": "/crm-link-marks",
+  "497.0": "/sales-bind-marks",
   "461.0": "/shipper-tender-marks",
   "462.0": "/campaign-marks",
   "463.0": "/groupage-dispatcher-marks",

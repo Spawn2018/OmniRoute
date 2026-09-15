@@ -95,6 +95,7 @@ const NAV = [
   { to: "/crm-pipeline-marks", label: "Etap CRM" },
   { to: "/crm-dedup-marks", label: "Dedup CRM" },
   { to: "/crm-link-marks", label: "Link CRM" },
+  { to: "/sales-bind-marks", label: "Bind sprzedaży" },
   { to: "/sales-lanes", label: "Korytarz sprzedażowy" },
   { to: "/shipper-like-marks", label: "Like-for-like załadowcy" },
   { to: "/shipper-round-marks", label: "Runda załadowcy" },

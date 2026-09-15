@@ -229,6 +229,7 @@ import { Route as RoutePlanMarksRouteImport } from './routes/route-plan-marks'
 import { Route as RoutingGuideEnforcementsRouteImport } from './routes/routing-guide-enforcements'
 import { Route as RoutingGuideMatchesRouteImport } from './routes/routing-guide-matches'
 import { Route as RoutingGuidesRouteImport } from './routes/routing-guides'
+import { Route as SalesBindMarksRouteImport } from './routes/sales-bind-marks'
 import { Route as SalesLanesRouteImport } from './routes/sales-lanes'
 import { Route as SanctionsRouteImport } from './routes/sanctions'
 import { Route as SanctionsMarksRouteImport } from './routes/sanctions-marks'
@@ -1403,6 +1404,11 @@ const RoutingGuidesRoute = RoutingGuidesRouteImport.update({
   path: '/routing-guides',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SalesBindMarksRoute = SalesBindMarksRouteImport.update({
+  id: '/sales-bind-marks',
+  path: '/sales-bind-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SalesLanesRoute = SalesLanesRouteImport.update({
   id: '/sales-lanes',
   path: '/sales-lanes',
@@ -1980,6 +1986,7 @@ export interface FileRoutesByFullPath {
   '/routing-guide-enforcements': typeof RoutingGuideEnforcementsRoute
   '/routing-guide-matches': typeof RoutingGuideMatchesRoute
   '/routing-guides': typeof RoutingGuidesRoute
+  '/sales-bind-marks': typeof SalesBindMarksRoute
   '/sales-lanes': typeof SalesLanesRoute
   '/sanctions': typeof SanctionsRoute
   '/sanctions-marks': typeof SanctionsMarksRoute
@@ -2273,6 +2280,7 @@ export interface FileRoutesByTo {
   '/routing-guide-enforcements': typeof RoutingGuideEnforcementsRoute
   '/routing-guide-matches': typeof RoutingGuideMatchesRoute
   '/routing-guides': typeof RoutingGuidesRoute
+  '/sales-bind-marks': typeof SalesBindMarksRoute
   '/sales-lanes': typeof SalesLanesRoute
   '/sanctions': typeof SanctionsRoute
   '/sanctions-marks': typeof SanctionsMarksRoute
@@ -2567,6 +2575,7 @@ export interface FileRoutesById {
   '/routing-guide-enforcements': typeof RoutingGuideEnforcementsRoute
   '/routing-guide-matches': typeof RoutingGuideMatchesRoute
   '/routing-guides': typeof RoutingGuidesRoute
+  '/sales-bind-marks': typeof SalesBindMarksRoute
   '/sales-lanes': typeof SalesLanesRoute
   '/sanctions': typeof SanctionsRoute
   '/sanctions-marks': typeof SanctionsMarksRoute
@@ -2862,6 +2871,7 @@ export interface FileRouteTypes {
     | '/routing-guide-enforcements'
     | '/routing-guide-matches'
     | '/routing-guides'
+    | '/sales-bind-marks'
     | '/sales-lanes'
     | '/sanctions'
     | '/sanctions-marks'
@@ -3155,6 +3165,7 @@ export interface FileRouteTypes {
     | '/routing-guide-enforcements'
     | '/routing-guide-matches'
     | '/routing-guides'
+    | '/sales-bind-marks'
     | '/sales-lanes'
     | '/sanctions'
     | '/sanctions-marks'
@@ -3448,6 +3459,7 @@ export interface FileRouteTypes {
     | '/routing-guide-enforcements'
     | '/routing-guide-matches'
     | '/routing-guides'
+    | '/sales-bind-marks'
     | '/sales-lanes'
     | '/sanctions'
     | '/sanctions-marks'
@@ -3742,6 +3754,7 @@ export interface RootRouteChildren {
   RoutingGuideEnforcementsRoute: typeof RoutingGuideEnforcementsRoute
   RoutingGuideMatchesRoute: typeof RoutingGuideMatchesRoute
   RoutingGuidesRoute: typeof RoutingGuidesRoute
+  SalesBindMarksRoute: typeof SalesBindMarksRoute
   SalesLanesRoute: typeof SalesLanesRoute
   SanctionsRoute: typeof SanctionsRoute
   SanctionsMarksRoute: typeof SanctionsMarksRoute
@@ -5357,6 +5370,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RoutingGuidesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sales-bind-marks': {
+      id: '/sales-bind-marks'
+      path: '/sales-bind-marks'
+      fullPath: '/sales-bind-marks'
+      preLoaderRoute: typeof SalesBindMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sales-lanes': {
       id: '/sales-lanes'
       path: '/sales-lanes'
@@ -6078,6 +6098,7 @@ const rootRouteChildren: RootRouteChildren = {
   RoutingGuideEnforcementsRoute: RoutingGuideEnforcementsRoute,
   RoutingGuideMatchesRoute: RoutingGuideMatchesRoute,
   RoutingGuidesRoute: RoutingGuidesRoute,
+  SalesBindMarksRoute: SalesBindMarksRoute,
   SalesLanesRoute: SalesLanesRoute,
   SanctionsRoute: SanctionsRoute,
   SanctionsMarksRoute: SanctionsMarksRoute,

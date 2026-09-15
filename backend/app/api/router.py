@@ -220,6 +220,7 @@ from app.api import (
     routing_guide_enforcements,
     routing_guide_matches,
     routing_guides,
+    sales_bind_marks,
     sales_invoices,
     sales_lanes,
     sanctions_marks,
@@ -557,6 +558,7 @@ api_router.include_router(crm_activities.router)
 api_router.include_router(crm_pipeline_marks.router)
 api_router.include_router(crm_dedup_marks.router)
 api_router.include_router(crm_link_marks.router)
+api_router.include_router(sales_bind_marks.router)
 api_router.include_router(customer_sops.router)
 api_router.include_router(cutoff_marks.router)
 api_router.include_router(ports.router)

@@ -1,3 +1,4 @@
+- **497.0 leftover:** HubSpot live park · FK UUID. 497.0 = HITL `sales_bind_mark`.
 - **496.0 leftover:** cold-send · FK UUID · merge SQL. 496.0 = HITL `crm_link_mark`.
 - **495.0 leftover:** FK · cold-send · merge SQL. 495.0 = HITL `crm_dedup_mark`. **496.0** = HITL `crm_link_mark` (DONE).
 - **456.0 leftover:** FK leada/party · dedup NIP · cold-send. 456.0 = HITL `crm_opportunity`. **489.0** = HITL `crm_activity` (DONE). **490.0** = HITL `crm_pipeline_mark` (DONE). **495.0** = HITL `crm_dedup_mark` (DONE).
