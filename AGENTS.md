@@ -32,6 +32,7 @@ zakazane, aż będzie realne zdarzenie async między BC albo wektor. JWT hello �
 | Historia plastrów | `docs/state/PROGRESS.md` |
 
 `Informacje z claude/` zostaje na dysku; **nie ładuj** (`.cursorignore`).
+Badania `D:\OMNIROUTE-badania`: surowiec. Do repo (plan/kanon/agent/kontrakt) tylko po stopie `/noc` i jawnym poleceniu.
 Historyczny kontrakt: `Informacje z claude/AGENTS.ARCHIVE.md` — nie kanon.
 
 **Schemat czytasz z `backend/alembic/versions/`** (najnowsza migracja tej tabeli) **i z modeli tego BC.** Nie czytaj wszystkich modeli.

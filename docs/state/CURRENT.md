@@ -6,9 +6,11 @@
 
 **Ostatni plaster:** **526.0** AI5.0 leftover — HITL `kpi_definition_mark`
 
-**Etap:** Plan — delta **527.0** zaakceptowana (`/noc 7`); wolno `/plaster`
+**Etap:** Plan — delta **527.0** zaakceptowana; wolno `/plaster`
 
-**Noc:** `/noc 7` do **2026-09-16T07:00+02**.
+**Noc:** **stop** (operator 2026-09-16T00:41+02). `NOC-LIVE` = stop. Nie wznawiaj `/noc` z tej karty.
+
+**Miejsce pracy:** produkt = to repo + GitHub. `D:\OMNIROUTE-badania` = surowiec. Promocja (plan/kanon/agent/kontrakt) **tylko** po stopie `/noc` **i** jawnym poleceniu.
 
 **Następny:** **527.0** N6 — HITL `margin_floor` Decimal (para UN/LOCODE; nie 409 w tym plasterze)
 

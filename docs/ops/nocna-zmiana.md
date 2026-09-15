@@ -4,6 +4,8 @@ Operator odpalasz w Cursorze, tryb Agent: **`/noc 7`** (albo `/noc 8`). To jest 
 
 To nie jest drugi plan produktu. Kolejka: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Oś leftoverów `/noc`. Tablica: [CURRENT.md](../state/CURRENT.md). Numer plastra **nie** jest wpisany w `/noc` — agent zawsze czyta CURRENT. Po Fali E: **Fala S** (pogłębienia). `/plaster` przy Etap Refaktor = stop (`/refaktor`).
 
+**Dwa foldery.** Gdy ta pętla **chodzi** (`NOC-LIVE` = `busy`): commit/push/CI = OmniRoute + GitHub; nowe notatki = `D:\OMNIROUTE-badania`. **Zakaz** promocji badań do kanonu / skilli / kontraktów w trakcie nocy. Gdy noc **stoi**: produkt zostaje w tym repo; przeniesienie z badań (plan, kanon, agent, kontrakt) **tylko** po jawnym poleceniu operatora. VISION D.8.
+
 ## Zanim cokolwiek ruszy
 
 Za każdym włączeniem i przed każdym **nowym** cyklem:

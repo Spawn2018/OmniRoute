@@ -3,7 +3,7 @@
 ```
 status:        roboczy kanon
 wersja:        0.7
-ostatnia zmiana: 2026-09-13 22:55
+ostatnia zmiana: 2026-09-16 01:00
 ```
 
 ## Jak czytać
@@ -221,6 +221,8 @@ zostają w badaniach `04`).
 | 2026-09-13 | Ciało C.3 Grupa 8 + D.7 + skrót `03` B.4–B.6 w A.2. E.3: HC-04 i FK `plan_snapshot` zamknięte. [WYCOFANE 2026-09-13: „B.4–B.6 nietknięte w dumpie” — skrót jest w kanonie]. |
 | 2026-09-13 | D.7: pięć jobów z audytu GPT jako leftover (definicja KPI per strona; brama L3; SOP agenta; ulga nie sens; promień wybuchu). Nie nowy BC. Nie 468.0. |
 | 2026-09-13 | D.8: badania ≠ drugi kanon. C.4 mapa leftover. AI3 leftover z `07`. C.3 Grupa 6: `crm_opportunity` jest. E.3 Q11 zamknięte. Nie 468.0. |
+| 2026-09-16 | D.8: przy `/noc` busy badania = schowek pomysłów/wizji (`REQUIREMENT`). Przy idle/stop praca = repo OmniRoute + GitHub (`REQUIREMENT`). Badania nadal ≠ drugi kanon (`CONFIRMED`). Nie 527.0 z tej karty. |
+| 2026-09-16 | D.8: badania = surowiec na nowe plany/kanony/agentów/kontrakty w repo — **tylko** po stopie `/noc` **i** jawnym poleceniu człowieka (`REQUIREMENT`). Sam idle ≠ promocja. [WYCOFANE 2026-09-16: „idle = przenieś pakiet SH do repo”.] |
 
 ---
 
@@ -230,7 +232,7 @@ zostają w badaniach `04`).
 status:        roboczy kanon (zastępuje "Informacje z claude/vision.md" z 2026-08-29)
 wersja:        0.1
 utworzony:     2026-09-13
-ostatnia zmiana: 2026-09-13 22:20
+ostatnia zmiana: 2026-09-16 01:00
 autor ustaleń: Sebastian Bożek (właściciel produktu)
 redakcja:      agent, na podstawie dokumentów 01-07 i 09-11 w tym katalogu
 lokalizacja:   docs/VISION.md (repozytorium OmniRoute)
@@ -1516,13 +1518,26 @@ Cloudflare = bramka publikacji (B.8). Access ≠ Auth0 S53.
 
 ## D.8 Badania na `D:\` a kanon w repo
 
-Folder `D:\OMNIROUTE-badania` jest **dowodem**, nie drugim planem i nie
-repozytorium programu. Do `docs/VISION.md` i `docs/PLAN-REALIZACJA.md`
-wchodzi: `REQUIREMENT` / `CONFIRMED` / leftover na **istniejącym** ID /
-świadome `REJECTED`. Nie wchodzi: zrzut czatu (`99`), eseje vendorów
-(`03`/`04`/`04b` — zostaje skrót w A.2), playbook sprzedaży (`02`),
-metodyka modeli (`05`/`06`), szkice CURRENT (`14`), kolejka
-`12-FALA-AI-KOLEJKA.md` (SUPERSEDED), książka Murphy jako BC (`18`).
+Folder `D:\OMNIROUTE-badania` jest **dowodem** i **surowcem**: pomysły, szkice
+wizji, plany, kontrakty, skille, agenci. Nie jest drugim CURRENT.
+
+- **`/noc` busy (`REQUIREMENT`):** pętla plastra, commit, push, CI = to
+  repozytorium + GitHub (jak `docs/ops/nocna-zmiana.md`). Nowe notatki
+  (plany, wizja, SH, „ulepsz elite”) → tylko badania. Zero promocji do
+  kanonu / `.cursor` / `docs/ops`. Nie ładuj `22`–`24` do cyklu.
+- **`/noc` idle albo stop (`REQUIREMENT`):** praca produktu (kolejka
+  CURRENT, plaster, gate, push) = OmniRoute + GitHub. Badania **nie**
+  wlewają się same. Nowy plan, kanon, agent, skill, kontrakt, PROC z
+  badań → **tylko** po jawnym poleceniu człowieka („przenieś / zainstaluj
+  / zrób kanon z badań”). Sam stop nocy ≠ zgoda. Bez tego zdania: zero
+  kopii z badań do repo.
+
+Do `docs/VISION.md` i `docs/PLAN-REALIZACJA.md` wchodzi: `REQUIREMENT` /
+`CONFIRMED` / leftover na **istniejącym** ID / świadome `REJECTED`. Nie
+wchodzi: zrzut czatu (`99`), eseje vendorów (`03`/`04`/`04b` — zostaje
+skrót w A.2), playbook sprzedaży (`02`), metodyka modeli (`05`/`06`),
+szkice CURRENT (`14`), kolejka `12-FALA-AI-KOLEJKA.md` (SUPERSEDED),
+książka Murphy jako BC (`18`), pakiet SH (`22`/`23`/`24` / `*-OS.md`).
 
 **22 dostępy P0** z C.1 = katalog `09`/`10`, pierwszy ingest = **AI5.0**,
 nie 22 plastry. Zero live HTTP, dopóki CURRENT nie wskaże AI5.

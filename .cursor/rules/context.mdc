@@ -16,6 +16,7 @@ NIE RÓB:
 - Nie przeszukuj repozytorium rekurencyjnie bez skill `lowca-duplikatow`.
 - Nie otwieraj więcej niż jednego pliku spec.
 - Nie ładuj `Informacje z claude/` ani `docs/_source/` do kontekstu.
+- `D:\OMNIROUTE-badania` = surowiec. Przy `/noc` busy: tylko tam nowe notatki; zero promocji do kanonu. Przy idle: produkt tutaj + GitHub. Plan/kanon/agent/kontrakt z badań **tylko** po jawnym poleceniu.
 - Nie zgaduj nazw kolumn ani endpointów.
 
 Brakuje informacji **spoza** CURRENT/kolejki → zapytaj jednym pytaniem. Nie eksploruj. Nie pytaj „co chcesz budować”, gdy CURRENT wskazuje Q.

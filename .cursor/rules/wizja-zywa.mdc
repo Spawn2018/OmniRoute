@@ -15,8 +15,10 @@ JAK:
 - Liczba = metoda + źródło.
 
 KANON: jeden plik — `docs/VISION.md`. Nie forkuje się trzeciej wizji.
-`D:\OMNIROUTE-badania\08-WIZJA-OMNIROUTE.md` ruszasz tylko gdy już edytujesz
-badania; wtedy zsynchronizuj z kanonem, nie odwrotnie.
+`D:\OMNIROUTE-badania` = surowiec (w tym `08*`). Promocja do tego kanonu /
+agentów / kontraktów: stop `/noc` **i** jawne polecenie. Sam idle ≠ zgoda.
+`08-WIZJA-OMNIROUTE.md` ruszasz tylko gdy już edytujesz badania; wtedy
+zsynchronizuj z kanonem, nie odwrotnie.
 `Informacje z claude/vision.md` — nie ładuj.
 
 NIE:

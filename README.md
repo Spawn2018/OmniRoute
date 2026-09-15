@@ -88,7 +88,7 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **526.0** AI5.0 leftover — HITL `kpi_definition_mark`
-- **Etap:** Plan — delta **527.0** zaakceptowana (`/noc 7`); wolno `/plaster`
+- **Etap:** Plan — delta **527.0** zaakceptowana; wolno `/plaster`
 - **Następny:** **527.0** N6 — HITL `margin_floor` Decimal (para UN/LOCODE; nie 409 w tym plasterze)
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`

@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **526.0** AI5.0 leftover — HITL `kpi_definition_mark`. **Etap:** Plan — delta **527.0** zaakceptowana (`/noc 7`); wolno `/plaster`. **Następny:** **527.0** N6 — HITL `margin_floor` Decimal (para UN/LOCODE; nie 409 w tym plasterze) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **526.0** AI5.0 leftover — HITL `kpi_definition_mark`. **Etap:** Plan — delta **527.0** zaakceptowana; wolno `/plaster`. **Następny:** **527.0** N6 — HITL `margin_floor` Decimal (para UN/LOCODE; nie 409 w tym plasterze) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

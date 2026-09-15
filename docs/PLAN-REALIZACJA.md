@@ -28,7 +28,7 @@ Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
 | [PROGRESS.md](state/PROGRESS.md) | Historia plastrów — fakty, nie kolejka. |
 | [MODULES.md](MODULES.md) | Żywy rejestr tego, co jest w kodzie. |
 | [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md) | Fabryka 0–D, Wave A, Charge, rzeka nocy. Nie „następny”. |
-| Badania `D:\OMNIROUTE-badania` | Dowody. `12-FALA-AI-KOLEJKA.md` = SUPERSEDED. |
+| Badania `D:\OMNIROUTE-badania` | Surowiec (plany, kanony, agenci, kontrakty). Promocja do repo **tylko** po stopie `/noc` + jawnym poleceniu. `12` = SUPERSEDED. |
 
 Gdy CURRENT wskazuje wydmuszkę: najpierw **Plan** (`/plan-modul`), potem `/plaster`. Zakaz 70 pustych stubów. „Następny plaster” pisze tylko CURRENT (i `just docs` → `os-status`).
 
