@@ -192,6 +192,7 @@ def _organization_g_catalog_relations() -> dict[str, Userset]:
         "can_manage_crm_opportunities": _member(),
         "can_manage_crm_activities": _member(),
         "can_manage_crm_pipeline_marks": _member(),
+        "can_manage_crm_dedup_marks": _member(),
         "can_manage_lc_checklists": _member(),
         "can_manage_ncts_drafts": _member(),
         "can_manage_oog_marks": _member(),

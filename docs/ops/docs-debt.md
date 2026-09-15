@@ -1,6 +1,7 @@
-- **456.0 leftover:** FK leada/party · dedup NIP · cold-send. 456.0 = HITL `crm_opportunity`. **489.0** = HITL `crm_activity` (DONE). **490.0** = HITL `crm_pipeline_mark` (DONE).
-- **489.0 leftover:** FK · dedup NIP · cold-send. 489.0 = HITL `crm_activity`. **490.0** = HITL `crm_pipeline_mark` (DONE).
-- **490.0 leftover:** silnik lejka · FK · dedup NIP · cold-send. 490.0 = HITL `crm_pipeline_mark`.
+- **495.0 leftover:** FK · cold-send · merge SQL. 495.0 = HITL `crm_dedup_mark`.
+- **456.0 leftover:** FK leada/party · dedup NIP · cold-send. 456.0 = HITL `crm_opportunity`. **489.0** = HITL `crm_activity` (DONE). **490.0** = HITL `crm_pipeline_mark` (DONE). **495.0** = HITL `crm_dedup_mark` (DONE).
+- **489.0 leftover:** FK · dedup NIP · cold-send. 489.0 = HITL `crm_activity`. **490.0** = HITL `crm_pipeline_mark` (DONE). **495.0** = HITL `crm_dedup_mark` (DONE).
+- **490.0 leftover:** silnik lejka · FK · dedup NIP · cold-send. 490.0 = HITL `crm_pipeline_mark`. **495.0** = HITL `crm_dedup_mark` (DONE).
 - **460.0 leftover:** HubSpot live park · FK do okazji/party. 460.0 = HITL `sales_lane`. **491.0** = para UN/LOCODE (DONE). **492.0** = `volume_label` (DONE).
 - **491.0 leftover:** HubSpot live · FK. 491.0 = para UN/LOCODE na `sales_lane`. Wolumen = **492.0** DONE.
 - **492.0 leftover:** HubSpot live park · FK. 492.0 = `volume_label` tekst na `sales_lane`.

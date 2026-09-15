@@ -62,6 +62,7 @@ from app.models.mail_draft import MailDraft  # noqa: F401
 from app.models.outbox_event import OutboxEvent  # noqa: F401
 from app.models.shipment import Shipment  # noqa: F401
 from app.models.shipper_like_mark import ShipperLikeMark  # noqa: F401
+from app.models.crm_dedup_mark import CrmDedupMark  # noqa: F401
 from app.models.shipper_round_mark import ShipperRoundMark  # noqa: F401
 from app.models.shipper_tender_mark import ShipperTenderMark  # noqa: F401
 from app.models.tracking_consent import TrackingConsent  # noqa: F401

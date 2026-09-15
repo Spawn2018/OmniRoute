@@ -56,6 +56,7 @@ import { Route as CostToServeRouteImport } from './routes/cost-to-serve'
 import { Route as CounterfactualRunsRouteImport } from './routes/counterfactual-runs'
 import { Route as CreditReviewsRouteImport } from './routes/credit-reviews'
 import { Route as CrmActivitiesRouteImport } from './routes/crm-activities'
+import { Route as CrmDedupMarksRouteImport } from './routes/crm-dedup-marks'
 import { Route as CrmLeadsRouteImport } from './routes/crm-leads'
 import { Route as CrmOpportunitiesRouteImport } from './routes/crm-opportunities'
 import { Route as CrmPipelineMarksRouteImport } from './routes/crm-pipeline-marks'
@@ -532,6 +533,11 @@ const CreditReviewsRoute = CreditReviewsRouteImport.update({
 const CrmActivitiesRoute = CrmActivitiesRouteImport.update({
   id: '/crm-activities',
   path: '/crm-activities',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CrmDedupMarksRoute = CrmDedupMarksRouteImport.update({
+  id: '/crm-dedup-marks',
+  path: '/crm-dedup-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CrmLeadsRoute = CrmLeadsRouteImport.update({
@@ -1795,6 +1801,7 @@ export interface FileRoutesByFullPath {
   '/counterfactual-runs': typeof CounterfactualRunsRoute
   '/credit-reviews': typeof CreditReviewsRoute
   '/crm-activities': typeof CrmActivitiesRoute
+  '/crm-dedup-marks': typeof CrmDedupMarksRoute
   '/crm-leads': typeof CrmLeadsRoute
   '/crm-opportunities': typeof CrmOpportunitiesRoute
   '/crm-pipeline-marks': typeof CrmPipelineMarksRoute
@@ -2086,6 +2093,7 @@ export interface FileRoutesByTo {
   '/counterfactual-runs': typeof CounterfactualRunsRoute
   '/credit-reviews': typeof CreditReviewsRoute
   '/crm-activities': typeof CrmActivitiesRoute
+  '/crm-dedup-marks': typeof CrmDedupMarksRoute
   '/crm-leads': typeof CrmLeadsRoute
   '/crm-opportunities': typeof CrmOpportunitiesRoute
   '/crm-pipeline-marks': typeof CrmPipelineMarksRoute
@@ -2378,6 +2386,7 @@ export interface FileRoutesById {
   '/counterfactual-runs': typeof CounterfactualRunsRoute
   '/credit-reviews': typeof CreditReviewsRoute
   '/crm-activities': typeof CrmActivitiesRoute
+  '/crm-dedup-marks': typeof CrmDedupMarksRoute
   '/crm-leads': typeof CrmLeadsRoute
   '/crm-opportunities': typeof CrmOpportunitiesRoute
   '/crm-pipeline-marks': typeof CrmPipelineMarksRoute
@@ -2671,6 +2680,7 @@ export interface FileRouteTypes {
     | '/counterfactual-runs'
     | '/credit-reviews'
     | '/crm-activities'
+    | '/crm-dedup-marks'
     | '/crm-leads'
     | '/crm-opportunities'
     | '/crm-pipeline-marks'
@@ -2962,6 +2972,7 @@ export interface FileRouteTypes {
     | '/counterfactual-runs'
     | '/credit-reviews'
     | '/crm-activities'
+    | '/crm-dedup-marks'
     | '/crm-leads'
     | '/crm-opportunities'
     | '/crm-pipeline-marks'
@@ -3253,6 +3264,7 @@ export interface FileRouteTypes {
     | '/counterfactual-runs'
     | '/credit-reviews'
     | '/crm-activities'
+    | '/crm-dedup-marks'
     | '/crm-leads'
     | '/crm-opportunities'
     | '/crm-pipeline-marks'
@@ -3545,6 +3557,7 @@ export interface RootRouteChildren {
   CounterfactualRunsRoute: typeof CounterfactualRunsRoute
   CreditReviewsRoute: typeof CreditReviewsRoute
   CrmActivitiesRoute: typeof CrmActivitiesRoute
+  CrmDedupMarksRoute: typeof CrmDedupMarksRoute
   CrmLeadsRoute: typeof CrmLeadsRoute
   CrmOpportunitiesRoute: typeof CrmOpportunitiesRoute
   CrmPipelineMarksRoute: typeof CrmPipelineMarksRoute
@@ -4118,6 +4131,13 @@ declare module '@tanstack/react-router' {
       path: '/crm-activities'
       fullPath: '/crm-activities'
       preLoaderRoute: typeof CrmActivitiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/crm-dedup-marks': {
+      id: '/crm-dedup-marks'
+      path: '/crm-dedup-marks'
+      fullPath: '/crm-dedup-marks'
+      preLoaderRoute: typeof CrmDedupMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/crm-leads': {
@@ -5865,6 +5885,7 @@ const rootRouteChildren: RootRouteChildren = {
   CounterfactualRunsRoute: CounterfactualRunsRoute,
   CreditReviewsRoute: CreditReviewsRoute,
   CrmActivitiesRoute: CrmActivitiesRoute,
+  CrmDedupMarksRoute: CrmDedupMarksRoute,
   CrmLeadsRoute: CrmLeadsRoute,
   CrmOpportunitiesRoute: CrmOpportunitiesRoute,
   CrmPipelineMarksRoute: CrmPipelineMarksRoute,

@@ -874,6 +874,10 @@ class InvalidCrmPipelineMark(DomainError):
     """BR6.0 leftover: HITL etap CRM — nie silnik lejka / FK / cold-send."""
 
 
+class InvalidCrmDedupMark(DomainError):
+    """BR6.0 leftover: HITL stance dedup CRM — nie merge SQL / cold-send."""
+
+
 class InvalidLcChecklist(DomainError):
     """G3: HITL checklista LC — nie bank due."""
 

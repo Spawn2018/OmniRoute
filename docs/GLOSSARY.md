@@ -248,6 +248,7 @@ kolumn. Nie 468.0.
 | okazja CRM | crm_opportunity | BR6.0 HITL katalog; leftover activity / pipeline |
 | aktywność CRM | crm_activity | BR6.0 leftover HITL katalog; nie silnik lejka |
 | etap CRM | crm_pipeline_mark | BR6.0 leftover HITL katalog etapu; nie silnik lejka |
+| dedup CRM | crm_dedup_mark | BR6.0 leftover HITL stance dedup; nie merge SQL |
 | korytarz sprzedażowy | sales_lane | BR6.1 HITL katalog; leftover UN/LOCODE / wolumen |
 | tryb przetargu załadowcy | shipper_tender_mark | BR6.2 HITL katalog; leftover rundy / like-for-like |
 | znacznik kampanii | campaign_mark | BR6.5 HITL katalog; leftover atrybucja live / lejek X7 |
