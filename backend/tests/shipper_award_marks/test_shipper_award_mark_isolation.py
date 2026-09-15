@@ -43,7 +43,7 @@ async def test_shipper_award_mark_rls_isolates_tenants(session, two_tenants) -> 
         organization_id=org_b.id,
         created_by=user_b.id,
         mark_code="shipper_award_hold_02",
-        award_kind="party",
+        award_kind="hold",
         source_ref="fixture://shipper-award-mark/b",
     )
     session.add(row_b)
