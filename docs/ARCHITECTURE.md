@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **501.0** AI3.0 leftover — próg **70%** przed akceptacją zbiorczą. **Etap:** Plan — delta **502.0** AI3.1 leftover historia wierszy / prompt jako dana (przed `/plaster`). **Następny:** **502.0** AI3.1 leftover — historia wierszy szkicu · **prompt jako dana** (nie live vision) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **501.0** AI3.0 leftover — próg **70%** przed akceptacją zbiorczą. **Etap:** Plaster — delta **502.0** zaakceptowana (`docs/deltas/open/502.0-extraction-prompt-mark.md`); wolno `/plaster`. **Następny:** **502.0** AI3.1 leftover — HITL `extraction_prompt_mark` (prompt jako dana; nie live vision) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

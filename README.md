@@ -88,9 +88,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **501.0** AI3.0 leftover — próg **70%** przed akceptacją zbiorczą
-- **Etap:** Plan — delta **502.0** AI3.1 leftover historia wierszy / prompt jako dana (przed `/plaster`)
-- **Następny:** **502.0** AI3.1 leftover — historia wierszy szkicu · **prompt jako dana** (nie live vision)
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Etap:** Plaster — delta **502.0** zaakceptowana (`docs/deltas/open/502.0-extraction-prompt-mark.md`); wolno `/plaster`
+- **Następny:** **502.0** AI3.1 leftover — HITL `extraction_prompt_mark` (prompt jako dana; nie live vision)
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

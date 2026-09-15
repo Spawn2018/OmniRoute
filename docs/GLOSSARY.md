@@ -110,6 +110,7 @@ kolumn. Nie 468.0.
 | ramka kandydata | bbox_text | dana na kandydacie; nie float; nie rysunek PDF |
 | pewność kandydata | confidence_text | dana na kandydacie; nie float; nie próg auto-accept |
 | brama accept zbiorczy | bulk_accept_confidence | 501.0 Decimal 0,70 na `confidence_text` przy ≥2 kandydatach; jeden wiersz = HITL bez bramki; nie auto-accept |
+| prompt ekstrakcji (katalog) | extraction_prompt_mark | 502.0 HITL extract\|system\|other; prompt jako dana; nie wiring LLM |
 | szkic RFP | tender_rfp | G2.9b `draft_kind`; accept → `tender_rfp_intake`; nie zapis z LLM |
 | syntetyk ewaluacji | synthetic document | fixture extract/eval (`synth://`); zero PDF klienta |
 | stub Presidio | InstructorPresidioStub | tylko ścieżka instructor; nie każdy endpoint |
