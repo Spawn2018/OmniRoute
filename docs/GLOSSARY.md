@@ -109,6 +109,7 @@ kolumn. Nie 468.0.
 | ścieżka ekstrakcji | extract_path | `text` albo `image`; etykieta, nie live vision |
 | ramka kandydata | bbox_text | dana na kandydacie; nie float; nie rysunek PDF |
 | pewność kandydata | confidence_text | dana na kandydacie; nie float; nie próg auto-accept |
+| brama accept zbiorczy | bulk_accept_confidence | 501.0 Decimal 0,70 na `confidence_text` przy ≥2 kandydatach; jeden wiersz = HITL bez bramki; nie auto-accept |
 | szkic RFP | tender_rfp | G2.9b `draft_kind`; accept → `tender_rfp_intake`; nie zapis z LLM |
 | syntetyk ewaluacji | synthetic document | fixture extract/eval (`synth://`); zero PDF klienta |
 | stub Presidio | InstructorPresidioStub | tylko ścieżka instructor; nie każdy endpoint |

@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **500.0** AI3.0 leftover — PATCH `candidates` dla `carrier_quote` / `tender_rfp`. **Etap:** Plan — delta **501.0** AI3.0 leftover próg 70% (przed `/plaster`). **Następny:** **501.0** AI3.0 leftover — próg **70%** pewności przed akceptacją zbiorczą (nie live vision) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **500.0** AI3.0 leftover — PATCH `candidates` dla `carrier_quote` / `tender_rfp`. **Etap:** Plaster — delta **501.0** zaakceptowana (`docs/deltas/open/501.0-extraction-bulk-confidence-gate.md`); wolno `/plaster`. **Następny:** **501.0** AI3.0 leftover — próg **70%** pewności przed akceptacją zbiorczą (nie live vision) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

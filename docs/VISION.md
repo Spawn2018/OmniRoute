@@ -125,6 +125,7 @@ zostają w badaniach `04`).
 | 2026-09-14 | BR1.2 plan (**476.0**): HITL `inventory_finance_mark` (valuation|aging|release|other). Wycena SQL / wartość Decimal / FK position·PO / live zastaw `REJECTED` na tym wierszu. |
 | 2026-09-14 | **476.0** `inventory_finance_mark` w kodzie (`CONFIRMED`, git). Następny = **BR1.3** zabezpieczenie na towarze (`REQUIREMENT`). Wycena SQL `REJECTED` na tym wierszu. |
 | 2026-09-14 | BR1.3 plan (**477.0**): HITL `inventory_collateral_mark` (pledge|lien|hold|other). FK position·PO / live zastaw / wartość `REJECTED` na tym wierszu. |
+| 2026-09-15 | Plan **501.0** AI3.0 leftover brama 70% przed accept zbiorczym (`REQUIREMENT`). Decimal 0,70 w domenie na `confidence_text`; ≥2 kandydatów. Auto-accept / float / partial write / live vision `REJECTED` na tym wierszu. |
 | 2026-09-15 | **500.0** PATCH `candidates` dla `carrier_quote`/`tender_rfp` w kodzie (`CONFIRMED`, git). Nazwy `quotation`/`customer_rfq` = błędny skrót planu (`REJECTED`). Następny = AI3.0 leftover próg 70% (`REQUIREMENT`). Vision live `REJECTED`. |
 | 2026-09-15 | Plan **500.0** AI3.0 leftover PATCH `carrier_quote`/`tender_rfp` (`REQUIREMENT`). Próg 70% / vision `REJECTED` na tym wierszu. |
 | 2026-09-15 | **499.0** `shipper_award_mark` w kodzie (`CONFIRMED`, git). Fala BR6.2 HITL domknięta; Alpega / auto-award SQL `REJECTED`. Następny = AI3.0 leftover PATCH quote/rfq (`REQUIREMENT`). |
