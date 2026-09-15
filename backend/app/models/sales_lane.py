@@ -41,6 +41,10 @@ class SalesLane(Base, TimestampMixin):
             "origin_unlocode <> destination_unlocode",
             name="ck_sales_lane_unlocode_pair",
         ),
+        CheckConstraint(
+            "char_length(btrim(volume_label)) BETWEEN 1 AND 64",
+            name="ck_sales_lane_volume_label",
+        ),
         Index("ix_sales_lane_organization_id", "organization_id"),
     )
 
@@ -53,4 +57,5 @@ class SalesLane(Base, TimestampMixin):
     lane_kind: Mapped[str] = mapped_column(String(16), nullable=False)
     origin_unlocode: Mapped[str] = mapped_column(String(5), nullable=False)
     destination_unlocode: Mapped[str] = mapped_column(String(5), nullable=False)
+    volume_label: Mapped[str] = mapped_column(String(64), nullable=False)
     source_ref: Mapped[str] = mapped_column(String(256), nullable=False)

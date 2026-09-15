@@ -21,6 +21,7 @@ class SalesLaneCreate(BaseModel):
     lane_kind: str
     origin_unlocode: str
     destination_unlocode: str
+    volume_label: str
     source_ref: str
 
 
@@ -33,6 +34,7 @@ class SalesLaneResponse(BaseModel):
     lane_kind: str
     origin_unlocode: str
     destination_unlocode: str
+    volume_label: str
     source_ref: str
 
 
@@ -68,6 +70,7 @@ async def create_sales_lane(
         source_ref=body.source_ref,
         origin_unlocode=body.origin_unlocode,
         destination_unlocode=body.destination_unlocode,
+        volume_label=body.volume_label,
     )
     await session.commit()
     return _row(saved)

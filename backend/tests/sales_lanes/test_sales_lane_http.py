@@ -41,6 +41,17 @@ def test_migration_396_adds_sales_lane_unlocode_pair() -> None:
         assert banned not in source
 
 
+def test_migration_397_adds_sales_lane_volume_label() -> None:
+    source = (_ROOT / "backend/alembic/versions/397_sales_lane_volume.py").read_text(
+        encoding="utf-8",
+    )
+    assert 'revision: str = "397_sales_lane_volume"' in source
+    assert 'down_revision: str | None = "396_sales_lane_unlocode"' in source
+    assert "volume_label" in source
+    for banned in ("amount", "margin", "float(", "httpx", "currency"):
+        assert banned not in source
+
+
 def test_importlinter_lists_sales_lane_on_deny_list() -> None:
     source = (_ROOT / ".importlinter").read_text(encoding="utf-8")
     forbidden = source.split("[importlinter:contract:extraction-no-rates]", 1)[1]
@@ -93,13 +104,15 @@ class InMemoryLaneDesk:
         source_ref: object,
         origin_unlocode: object,
         destination_unlocode: object,
+        volume_label: object,
     ) -> SalesLane:
-        code, kind, origin, frm, to = parse_sales_lane_row(
+        code, kind, origin, frm, to, vol = parse_sales_lane_row(
             lane_code,
             lane_kind,
             source_ref,
             origin_unlocode,
             destination_unlocode,
+            volume_label,
         )
         row = SalesLane(
             id=uuid4(),
@@ -108,6 +121,7 @@ class InMemoryLaneDesk:
             lane_kind=kind,
             origin_unlocode=frm,
             destination_unlocode=to,
+            volume_label=vol,
             source_ref=origin,
             created_by=user_id,
         )
@@ -141,6 +155,7 @@ def _payload(**extra: object) -> dict[str, object]:
         "lane_kind": "repeat",
         "origin_unlocode": "PLGDN",
         "destination_unlocode": "DEHAM",
+        "volume_label": "40ft_weekly",
         "source_ref": "fixture://sales-lane/a",
     }
     body.update(extra)

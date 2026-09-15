@@ -14,6 +14,7 @@ const COLUMNS = [
   helper.accessor("lane_kind", { header: "Rodzaj" }),
   helper.accessor("origin_unlocode", { header: "Origin" }),
   helper.accessor("destination_unlocode", { header: "Destination" }),
+  helper.accessor("volume_label", { header: "Wolumen" }),
   helper.accessor("source_ref", { header: "Pochodzenie" }),
 ]
 
@@ -32,7 +33,7 @@ export function SalesLaneDesk() {
     <section className="flex flex-col gap-5" data-sales-lane="board">
       <CatalogHeading
         title="Korytarz sprzedażowy"
-        subtitle="BR6.1 sales_lane · katalog HITL · para UN/LOCODE · nie HubSpot"
+        subtitle="BR6.1 sales_lane · katalog HITL · para UN/LOCODE · etykieta wolumenu · nie HubSpot"
       />
       {!ready ? <TenantSessionNotice /> : null}
       {ready ? <SalesLaneSave organizationId={orgId} /> : null}
@@ -44,6 +45,7 @@ export function SalesLaneDesk() {
             lane_kind: "Rodzaj",
             origin_unlocode: "Origin",
             destination_unlocode: "Destination",
+            volume_label: "Wolumen",
             source_ref: "Pochodzenie",
           }}
           columns={COLUMNS}

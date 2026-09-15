@@ -8,6 +8,7 @@ _KINDS = frozenset({"repeat", "spot", "other"})
 _MANUAL = "tenant:manual"
 _PREFIX = "fixture://sales-lane/"
 _REF_CAP = 256
+_LABEL_CAP = 64
 
 
 def _parse_lane_pair(origin_raw: object, dest_raw: object) -> tuple[str, str]:
@@ -23,13 +24,23 @@ def _parse_lane_pair(origin_raw: object, dest_raw: object) -> tuple[str, str]:
     return origin, dest
 
 
+def _parse_volume_label(raw: object) -> str:
+    if type(raw) is not str:
+        raise InvalidSalesLane("etykieta wolumenu musi być tekstem")
+    label = raw.strip()
+    if label == "" or len(label) > _LABEL_CAP:
+        raise InvalidSalesLane("etykieta wolumenu: 1–64 znaków")
+    return label
+
+
 def parse_sales_lane_row(
     code: object,
     kind: object,
     origin_ref: object,
     origin_raw: object,
     dest_raw: object,
-) -> tuple[str, str, str, str, str]:
+    volume_raw: object,
+) -> tuple[str, str, str, str, str, str]:
     if type(code) is not str:
         raise InvalidSalesLane("oznaczenie musi być tekstem")
     slug = code.strip()
@@ -49,4 +60,5 @@ def parse_sales_lane_row(
     if len(pointer) > _REF_CAP:
         raise InvalidSalesLane("obce wskazanie zapisu korytarza za dlugie")
     origin, dest = _parse_lane_pair(origin_raw, dest_raw)
-    return slug, token, pointer, origin, dest
+    volume = _parse_volume_label(volume_raw)
+    return slug, token, pointer, origin, dest, volume

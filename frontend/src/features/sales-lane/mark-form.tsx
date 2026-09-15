@@ -12,17 +12,19 @@ export function SalesLaneSave(args: { organizationId: string | null }) {
   const [kind, setKind] = useState<string>("repeat")
   const [originCode, setOriginCode] = useState("PLGDN")
   const [destCode, setDestCode] = useState("DEHAM")
+  const [volumeLabel, setVolumeLabel] = useState("40ft_weekly")
   const [origin, setOrigin] = useState("fixture://sales-lane/")
   const save = useMutation({
     mutationFn: () =>
       saveSalesLane(
-        buildSalesLaneWrite({ code, kind, originCode, destCode, origin }),
+        buildSalesLaneWrite({ code, kind, originCode, destCode, volumeLabel, origin }),
       ),
     onSuccess: () => {
       setCode("sln_repeat_01")
       setKind("repeat")
       setOriginCode("PLGDN")
       setDestCode("DEHAM")
+      setVolumeLabel("40ft_weekly")
       setOrigin("fixture://sales-lane/")
       void cache.invalidateQueries({ queryKey: ["sales-lanes", args.organizationId] })
     },
@@ -84,6 +86,17 @@ export function SalesLaneSave(args: { organizationId: string | null }) {
           onChange={(change) => setDestCode(change.target.value)}
           required
           value={destCode}
+        />
+      </label>
+      <label className="grid gap-1 text-xs">
+        Etykieta wolumenu (tekst 1–64)
+        <input
+          aria-label="Etykieta wolumenu"
+          className="h-9 rounded-md border bg-background px-2 font-mono"
+          maxLength={64}
+          onChange={(change) => setVolumeLabel(change.target.value)}
+          required
+          value={volumeLabel}
         />
       </label>
       <CatalogSourceRefField

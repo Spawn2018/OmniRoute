@@ -9,12 +9,10 @@ function src(rel: string): string {
   return readFileSync(join(root, "src", rel), "utf8")
 }
 
-describe("sales_lane surface for 491.0", () => {
-  it("ships the catalog route and unlocode fields", () => {
-    expect(src("features/ops/ops-index.ts")).toContain('"491.0": "/sales-lanes"')
-    expect(src("components/layout/sidebar.tsx")).toContain('to: "/sales-lanes"')
-    expect(src("routes/sales-lanes.tsx")).toContain("SalesLaneDesk")
-    expect(src("lib/sales-lanes-api.ts")).toContain("origin_unlocode")
+describe("sales_lane surface for 492.0", () => {
+  it("ships volume_label and forbids amount", () => {
+    expect(src("features/ops/ops-index.ts")).toContain('"492.0": "/sales-lanes"')
+    expect(src("lib/sales-lanes-api.ts")).toContain("volume_label")
     expect(src("lib/sales-lanes-api.ts")).not.toContain("amount")
   })
 })

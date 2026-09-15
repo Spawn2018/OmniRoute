@@ -10,6 +10,7 @@ export type SalesLaneRow = {
   lane_kind: string
   origin_unlocode: string
   destination_unlocode: string
+  volume_label: string
   source_ref: string
 }
 
@@ -18,6 +19,7 @@ export type SalesLaneWrite = {
   lane_kind: string
   origin_unlocode: string
   destination_unlocode: string
+  volume_label: string
   source_ref: string
 }
 
@@ -26,6 +28,7 @@ export function buildSalesLaneWrite(fields: {
   kind: string
   originCode: string
   destCode: string
+  volumeLabel: string
   origin: string
 }): SalesLaneWrite {
   return {
@@ -33,6 +36,7 @@ export function buildSalesLaneWrite(fields: {
     lane_kind: fields.kind.trim().toLowerCase(),
     origin_unlocode: fields.originCode.trim().toUpperCase(),
     destination_unlocode: fields.destCode.trim().toUpperCase(),
+    volume_label: fields.volumeLabel.trim(),
     source_ref: fields.origin.trim(),
   }
 }

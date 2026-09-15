@@ -20,6 +20,7 @@ _CALLS = (
             "lane_kind": "repeat",
             "origin_unlocode": "PLGDN",
             "destination_unlocode": "DEHAM",
+            "volume_label": "40ft_weekly",
             "source_ref": "fixture://sales-lane/a",
         },
     ),

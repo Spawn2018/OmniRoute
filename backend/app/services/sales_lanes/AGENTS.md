@@ -1,8 +1,8 @@
 # BC sales_lane (BR6.1)
 
 HITL katalog korytarza sprzedazy per tenant. lane_code + lane_kind
-repeat|spot|other + para UN/LOCODE + source_ref. Nie tender_lane.
-Nie lane_pattern. Nie HubSpot.
+repeat|spot|other + para UN/LOCODE + volume_label (tekst 1–64) +
+source_ref. Nie tender_lane. Nie lane_pattern. Nie HubSpot. Nie float.
 
 ## Dozwolone zaleznosci
 - `app.models.sales_lane`

@@ -101,7 +101,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | AI8.0 | Kaskada stylu HITL | 484.0 `style_cascade_mark` | **ukończony (HITL)** · global/company/department/user/customer/person/context/other; leftover AI8.1 fidelity · silnik stylu |
 | AI8.1 | STYLE FIDELITY HITL | 485.0 `style_fidelity_mark` | **ukończony (HITL)** · pass/hold/reject/exempt/other; leftover silnik porównania · auto-bramka |
 | BR6.0 | Okazja + aktywność + etap CRM HITL | 456.0 `crm_opportunity`; 489.0 `crm_activity`; 490.0 `crm_pipeline_mark` | **ukończony (HITL)** · leftover FK · dedup · cold-send |
-| BR6.1 | Korytarz sprzedażowy HITL | 460.0 `sales_lane` | **ukończony (HITL)** · kind repeat/spot/other; leftover UN/LOCODE / wolumen |
+| BR6.1 | Korytarz sprzedażowy HITL | 460.0 `sales_lane` · 491.0 UN/LOCODE · 492.0 `volume_label` | **ukończony (HITL)** · leftover HubSpot live / FK |
 | BR6.2 | Tryb przetargu załadowcy HITL | 461.0 `shipper_tender_mark` | **ukończony (HITL)** · kind round/bench/spot/other; leftover rundy / like-for-like |
 | BR6.5 | Znacznik kampanii HITL | 462.0 `campaign_mark` | **ukończony (HITL)** · kind campaign/attribution/other; leftover atrybucja live / lejek X7 |
 | BR2.0 | Zdarzenie pozycji HITL | 457.0 `position_event` | **ukończony (HITL)** · kind gps/manual/other; leftover współrzędne / poll |

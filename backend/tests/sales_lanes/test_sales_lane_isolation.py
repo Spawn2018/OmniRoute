@@ -15,6 +15,7 @@ def _row(
     lane_kind: str = "repeat",
     origin_unlocode: str = "PLGDN",
     destination_unlocode: str = "DEHAM",
+    volume_label: str = "40ft_weekly",
     source_ref: str = "tenant:manual",
 ) -> SalesLane:
     return SalesLane(
@@ -24,6 +25,7 @@ def _row(
         lane_kind=lane_kind,
         origin_unlocode=origin_unlocode,
         destination_unlocode=destination_unlocode,
+        volume_label=volume_label,
         source_ref=source_ref,
         created_by=created_by,
     )

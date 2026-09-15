@@ -125,6 +125,7 @@ zostają w badaniach `04`).
 | 2026-09-14 | BR1.2 plan (**476.0**): HITL `inventory_finance_mark` (valuation|aging|release|other). Wycena SQL / wartość Decimal / FK position·PO / live zastaw `REJECTED` na tym wierszu. |
 | 2026-09-14 | **476.0** `inventory_finance_mark` w kodzie (`CONFIRMED`, git). Następny = **BR1.3** zabezpieczenie na towarze (`REQUIREMENT`). Wycena SQL `REJECTED` na tym wierszu. |
 | 2026-09-14 | BR1.3 plan (**477.0**): HITL `inventory_collateral_mark` (pledge|lien|hold|other). FK position·PO / live zastaw / wartość `REJECTED` na tym wierszu. |
+| 2026-09-15 | **492.0** `volume_label` na `sales_lane` (`CONFIRMED`, git). Następny = leftover BR6.2 rundy (`REQUIREMENT`). HubSpot live / float / FK `REJECTED` na tym wierszu. |
 | 2026-09-15 | **491.0** para UN/LOCODE na `sales_lane` (`CONFIRMED`, git). Następny = leftover wolumen (`REQUIREMENT`). FK port / HubSpot / km `REJECTED` na tym wierszu. |
 | 2026-09-15 | Plan **491.0** BR6.1 leftover para UN/LOCODE na `sales_lane` (`REQUIREMENT`). Nie FK port. HubSpot / km `REJECTED`. |
 | 2026-09-15 | **490.0** `crm_pipeline_mark` w kodzie (`CONFIRMED`, git). Następny = leftover BR6.1 UN/LOCODE na `sales_lane` (`REQUIREMENT`). FK lead/opportunity/activity/party `REJECTED` na tym wierszu. |
@@ -1057,15 +1058,17 @@ bo bez ewidencji magazynowej nie ma zastawu na towarze.
 
 **Grupa 6 — sprzedaż, klient i marketing.** Szczegóły w dokumencie `11`.
 - **CRM ponad leada** — katalog HITL `crm_opportunity` jest
-  (`CONFIRMED`, 456.0); `crm_lead` zostaje. Leftover aktywność / pipeline
-  (`REQUIREMENT`). Cold auto-send `REJECTED`.
+  (`CONFIRMED`, 456.0); `crm_activity` (`CONFIRMED`, 489.0);
+  `crm_pipeline_mark` (`CONFIRMED`, 490.0); `crm_lead` zostaje.
+  Leftover FK / dedup / cold-send (`REQUIREMENT`). Cold auto-send `REJECTED`.
 - **Korytarz jako obiekt sprzedażowy** — katalog HITL `sales_lane` jest
-  (`CONFIRMED`, 460.0); leftover para UN/LOCODE i wolumen (`REQUIREMENT`).
+  (`CONFIRMED`, 460.0); para UN/LOCODE (`CONFIRMED`, 491.0); `volume_label`
+  tekst (`CONFIRMED`, 492.0). Leftover HubSpot live / FK (`REQUIREMENT`).
   HubSpot/Salesforce live `REJECTED` na tym wierszu. W TSL decyduje powtarzalny
   wolumen na korytarzu, nie jednorazowy deal.
 - **Przetargi korporacyjne po stronie załadowcy** — katalog HITL
-  `shipper_tender_mark` jest (`CONFIRMED`, 461.0); leftover rundy i
-  like-for-like (`REQUIREMENT`). Druga tabela `tender` i auto-award `REJECTED`
+  `shipper_tender_mark` jest (`CONFIRMED`, 461.0); leftover rundy (**493.0**)
+  i like-for-like (`REQUIREMENT`). Druga tabela `tender` i auto-award `REJECTED`
   na tym wierszu. Alpega TenderEasy + Freight Bench = kanon EU, nie live.
 - **Aplikacja mobilna dla sprzedaży** — iOS i Android
 - **Portale** — klienta, przewoźnika, podwykonawcy
