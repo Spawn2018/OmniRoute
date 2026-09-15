@@ -2,12 +2,13 @@ import { readFileSync } from "node:fs"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 import { describe, expect, it } from "vitest"
+import { partyConflictHref, partyCreateBody } from "@/lib/parties-api"
 
 const srcRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..")
 
 describe("partyCreateBody", () => {
-  it("trims legal name, folds country and tax id, splits roles", async () => {
-    const { partyCreateBody } = await import("@/lib/parties-api")
+  // Timeout 5s padał przy obciążonym gate (dynamic import); stały import = deterministyczny.
+  it("trims legal name, folds country and tax id, splits roles", () => {
     expect(
       partyCreateBody({
         legalName: " ACME Sp. z o.o. ",
@@ -23,8 +24,7 @@ describe("partyCreateBody", () => {
     })
   })
 
-  it("folds VAT UE, EORI and DUNS when present", async () => {
-    const { partyCreateBody, partyConflictHref } = await import("@/lib/parties-api")
+  it("folds VAT UE, EORI and DUNS when present", () => {
     expect(
       partyCreateBody({
         legalName: "ACME",
