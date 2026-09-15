@@ -118,6 +118,7 @@ const NAV = [
   { to: "/style-fidelity-marks", label: "STYLE FIDELITY" },
   { to: "/quality-descent-marks", label: "Zejście jakości" },
   { to: "/field-confidence-marks", label: "Pewność per pole" },
+  { to: "/compliance-program-marks", label: "Program zgodności" },
   { to: "/position-events", label: "Zdarzenie pozycji" },
   { to: "/telematics-devices", label: "Urządzenie telematyczne" },
   { to: "/tracking-consents", label: "Zgoda na śledzenie" },

@@ -120,6 +120,10 @@ export const BUSINESS_LISTS = {
     route: "/field-confidence-marks",
     tableKey: "field_confidence_mark",
   },
+  complianceProgramMark: {
+    route: "/compliance-program-marks",
+    tableKey: "compliance_program_mark",
+  },
   loadOrderMark: { route: "/load-order-marks", tableKey: "load_order_mark" },
   loadPlanMark: { route: "/load-plan-marks", tableKey: "load_plan_mark" },
   routePlanMark: { route: "/route-plan-marks", tableKey: "route_plan_mark" },
@@ -500,6 +504,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/style-fidelity-marks",
   "/quality-descent-marks",
   "/field-confidence-marks",
+  "/compliance-program-marks",
   "/load-order-marks",
   "/load-plan-marks",
   "/route-plan-marks",

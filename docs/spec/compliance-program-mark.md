@@ -8,4 +8,4 @@ draft / review / signed / exempt. Nie PDF. Nie U-art50.
 - Unique `(organization_id, mark_code)` i `(organization_id, source_ref)`
 - Job: `/compliance-program-marks`
 
-Delta: [488.0](../deltas/open/488.0.md).
+Delta: [488.0](../deltas/archived/488.0-compliance-program-mark.md).

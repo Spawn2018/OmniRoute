@@ -148,6 +148,7 @@ modules =
     app.services.style_fidelity_marks
     app.services.quality_descent_marks
     app.services.field_confidence_marks
+    app.services.compliance_program_marks
     app.services.load_order_marks
     app.services.load_plan_marks
     app.services.cmms_marks
@@ -723,6 +724,9 @@ forbidden_modules =
     app.services.field_confidence_marks
     app.repositories.field_confidence_marks
     app.models.field_confidence_mark
+    app.services.compliance_program_marks
+    app.repositories.compliance_program_marks
+    app.models.compliance_program_mark
     app.services.load_order_marks
     app.repositories.load_order_marks
     app.models.load_order_mark

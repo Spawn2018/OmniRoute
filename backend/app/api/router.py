@@ -40,6 +40,7 @@ from app.api import (
     combined_transport_marks,
     commodity_codes,
     company_marks,
+    compliance_program_marks,
     consignments,
     containers,
     copy_ban_marks,
@@ -456,6 +457,7 @@ api_router.include_router(style_cascade_marks.router)
 api_router.include_router(style_fidelity_marks.router)
 api_router.include_router(quality_descent_marks.router)
 api_router.include_router(field_confidence_marks.router)
+api_router.include_router(compliance_program_marks.router)
 api_router.include_router(customer_contracts.router)
 api_router.include_router(exchange_connectors.router)
 api_router.include_router(idp_connectors.router)

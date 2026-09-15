@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **488.0** AI9.2 leftover — HITL `compliance_program_mark` (program zgodności; nie PDF; nie U-art50)
+**Następny:** **489.0** BR6.0 leftover — aktywność CRM (katalog HITL; nie pipeline silnik)
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -726,7 +726,7 @@ Dump CT `03` i TMS `04b` **potwierdzają leftover silników** (jeden `charge`, H
 | AI8.2 | poziomy autonomii 0–5 jako dana per tenant i per klient, domyślnie 1 | po AI9.2; **Q1=tak** | `autonomy_level` HITL (438.0); **483.0** DONE HITL `l3_gate_mark`; **486.0** DONE HITL `quality_descent_mark` (powód zejścia); leftover: silnik auto-zejścia · L3 write park; SOP 1 strona w operator/; nie scoring Pain×Frequency; nie Bertha |
 | AI9.0 | etykieta art. 50 przy treści z modelu | równolegle od AI3 | AI Act |
 | AI9.1 | przeciwdziałanie automation bias w interfejsie | równolegle od AI3 | **482.0** DONE HITL `automation_bias_mark`; **487.0** DONE HITL `field_confidence_mark` (pasma ui-04); U-art50 zostaje |
-| AI9.2 | rejestr ryzyka + program zgodności | przed AI8.2 | **481.0** DONE HITL `risk_register_mark`; leftover program PDF (**488.0** delta HITL `compliance_program_mark`); brama L3 DONE 483.0; U-art50 UI zostaje |
+| AI9.2 | rejestr ryzyka + program zgodności | przed AI8.2 | **481.0** DONE HITL `risk_register_mark`; **488.0** DONE HITL `compliance_program_mark`; brama L3 DONE 483.0; U-art50 UI zostaje |
 
 ### Fala BR — moduły brakujące (równolegle do AI, nie po niej)
 
@@ -756,7 +756,7 @@ Dump `03` / `04b`: WMS i BR6.2 evidenced; p44/LSP44 = dwie skóry jeden OpenAPI;
 | BR5.0 | faktoring — integracja z partnerem | po F | **471.0** DONE HITL `factoring_connector`; leftover live SMEO HTTP · workflow F7; F wave zostaje |
 | BR5.1 | finansowanie zamówienia (PO Financing) | po BR1.2 + BR5.0 | **472.0** DONE HITL `po_financing_mark`; leftover FK PO · wycena zapasu BR1.2 |
 | BR5.2 | giełdy transportowe: wymiana ofert | po S55 | **473.0** DONE rozszerzenie CHECK `exchange_connector`; leftover live HTTP · auto-post · wymiana ofert |
-| BR6.0 | CRM ponad leada: okazja, aktywność, pipeline | **start HHL** | **456.0** DONE HITL `crm_opportunity`; leftover: activity · pipeline |
+| BR6.0 | CRM ponad leada: okazja, aktywność, pipeline | **start HHL** | **456.0** DONE HITL `crm_opportunity`; leftover: activity (**489.0** plan) · pipeline |
 | BR6.1 | **korytarz jako obiekt sprzedażowy** | po BR6.0 | **460.0** DONE HITL `sales_lane`; leftover: UN/LOCODE · wolumen; HubSpot/Salesforce nie mają „lane” |
 | BR6.2 | przetargi korporacyjne po stronie załadowcy | po G2 | **461.0** DONE HITL `shipper_tender_mark`; leftover: rundy · like-for-like; Alpega/Freight Bench nie live; nie auto-award |
 | BR6.3 | aplikacja mobilna sprzedaży iOS/Android | po BR6.0 | Expo/RN; web UI się nie przenosi |
@@ -859,13 +859,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

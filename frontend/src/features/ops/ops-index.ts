@@ -679,6 +679,11 @@ export const OPS_JOBS = [
     job: "katalog field_confidence_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.complianceProgramMark.route,
+    label: "Program zgodności",
+    job: "katalog compliance_program_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.loadOrderMark.route,
     label: "Kolejność załadunku",
     job: "katalog load_order_mark HITL",
@@ -1711,6 +1716,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "485.0": "/style-fidelity-marks",
   "486.0": "/quality-descent-marks",
   "487.0": "/field-confidence-marks",
+  "488.0": "/compliance-program-marks",
   "267.0": "/lane-kms",
   "268.0": "/erp-connectors",
   "269.0": "/terminal-slot-connectors",

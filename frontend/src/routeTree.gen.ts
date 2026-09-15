@@ -48,6 +48,7 @@ import { Route as CollaborationMarksRouteImport } from './routes/collaboration-m
 import { Route as CombinedTransportMarksRouteImport } from './routes/combined-transport-marks'
 import { Route as CommodityCodesRouteImport } from './routes/commodity-codes'
 import { Route as CompanyMarksRouteImport } from './routes/company-marks'
+import { Route as ComplianceProgramMarksRouteImport } from './routes/compliance-program-marks'
 import { Route as ConsignmentsRouteImport } from './routes/consignments'
 import { Route as CopyBanMarksRouteImport } from './routes/copy-ban-marks'
 import { Route as CostAllocationMarksRouteImport } from './routes/cost-allocation-marks'
@@ -487,6 +488,11 @@ const CommodityCodesRoute = CommodityCodesRouteImport.update({
 const CompanyMarksRoute = CompanyMarksRouteImport.update({
   id: '/company-marks',
   path: '/company-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComplianceProgramMarksRoute = ComplianceProgramMarksRouteImport.update({
+  id: '/compliance-program-marks',
+  path: '/compliance-program-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ConsignmentsRoute = ConsignmentsRouteImport.update({
@@ -1757,6 +1763,7 @@ export interface FileRoutesByFullPath {
   '/combined-transport-marks': typeof CombinedTransportMarksRoute
   '/commodity-codes': typeof CommodityCodesRoute
   '/company-marks': typeof CompanyMarksRoute
+  '/compliance-program-marks': typeof ComplianceProgramMarksRoute
   '/consignments': typeof ConsignmentsRoute
   '/copy-ban-marks': typeof CopyBanMarksRoute
   '/cost-allocation-marks': typeof CostAllocationMarksRoute
@@ -2043,6 +2050,7 @@ export interface FileRoutesByTo {
   '/combined-transport-marks': typeof CombinedTransportMarksRoute
   '/commodity-codes': typeof CommodityCodesRoute
   '/company-marks': typeof CompanyMarksRoute
+  '/compliance-program-marks': typeof ComplianceProgramMarksRoute
   '/consignments': typeof ConsignmentsRoute
   '/copy-ban-marks': typeof CopyBanMarksRoute
   '/cost-allocation-marks': typeof CostAllocationMarksRoute
@@ -2330,6 +2338,7 @@ export interface FileRoutesById {
   '/combined-transport-marks': typeof CombinedTransportMarksRoute
   '/commodity-codes': typeof CommodityCodesRoute
   '/company-marks': typeof CompanyMarksRoute
+  '/compliance-program-marks': typeof ComplianceProgramMarksRoute
   '/consignments': typeof ConsignmentsRoute
   '/copy-ban-marks': typeof CopyBanMarksRoute
   '/cost-allocation-marks': typeof CostAllocationMarksRoute
@@ -2618,6 +2627,7 @@ export interface FileRouteTypes {
     | '/combined-transport-marks'
     | '/commodity-codes'
     | '/company-marks'
+    | '/compliance-program-marks'
     | '/consignments'
     | '/copy-ban-marks'
     | '/cost-allocation-marks'
@@ -2904,6 +2914,7 @@ export interface FileRouteTypes {
     | '/combined-transport-marks'
     | '/commodity-codes'
     | '/company-marks'
+    | '/compliance-program-marks'
     | '/consignments'
     | '/copy-ban-marks'
     | '/cost-allocation-marks'
@@ -3190,6 +3201,7 @@ export interface FileRouteTypes {
     | '/combined-transport-marks'
     | '/commodity-codes'
     | '/company-marks'
+    | '/compliance-program-marks'
     | '/consignments'
     | '/copy-ban-marks'
     | '/cost-allocation-marks'
@@ -3477,6 +3489,7 @@ export interface RootRouteChildren {
   CombinedTransportMarksRoute: typeof CombinedTransportMarksRoute
   CommodityCodesRoute: typeof CommodityCodesRoute
   CompanyMarksRoute: typeof CompanyMarksRoute
+  ComplianceProgramMarksRoute: typeof ComplianceProgramMarksRoute
   ConsignmentsRoute: typeof ConsignmentsRoute
   CopyBanMarksRoute: typeof CopyBanMarksRoute
   CostAllocationMarksRoute: typeof CostAllocationMarksRoute
@@ -3997,6 +4010,13 @@ declare module '@tanstack/react-router' {
       path: '/company-marks'
       fullPath: '/company-marks'
       preLoaderRoute: typeof CompanyMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compliance-program-marks': {
+      id: '/compliance-program-marks'
+      path: '/compliance-program-marks'
+      fullPath: '/compliance-program-marks'
+      preLoaderRoute: typeof ComplianceProgramMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/consignments': {
@@ -5757,6 +5777,7 @@ const rootRouteChildren: RootRouteChildren = {
   CombinedTransportMarksRoute: CombinedTransportMarksRoute,
   CommodityCodesRoute: CommodityCodesRoute,
   CompanyMarksRoute: CompanyMarksRoute,
+  ComplianceProgramMarksRoute: ComplianceProgramMarksRoute,
   ConsignmentsRoute: ConsignmentsRoute,
   CopyBanMarksRoute: CopyBanMarksRoute,
   CostAllocationMarksRoute: CostAllocationMarksRoute,

@@ -180,6 +180,7 @@ def _organization_br_catalog_relations() -> dict[str, Userset]:
         "can_manage_style_fidelity_marks": _member(),
         "can_manage_quality_descent_marks": _member(),
         "can_manage_field_confidence_marks": _member(),
+        "can_manage_compliance_program_marks": _member(),
     }
 
 
