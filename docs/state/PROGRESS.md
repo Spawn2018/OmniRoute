@@ -1,6 +1,7 @@
 # Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
+| 2026-09-15 | 493.0 | BR6.2 shipper_round_mark HITL | 2026-09-15 | PRZESZLO | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-15 | 492.0 | BR6.1 sales_lane volume_label | 2026-09-15 | PRZESZLO | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-15 | 491.0 | BR6.1 sales_lane UN/LOCODE | 2026-09-15 | PRZESZLO | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-15 | 490.0 | BR6.0 crm_pipeline_mark HITL | 2026-09-15 | PRZESZLO | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |

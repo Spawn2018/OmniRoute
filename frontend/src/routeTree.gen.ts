@@ -236,6 +236,7 @@ import { Route as SessionRouteImport } from './routes/session'
 import { Route as ShipmentDocumentsRouteImport } from './routes/shipment-documents'
 import { Route as ShipmentPackagesRouteImport } from './routes/shipment-packages'
 import { Route as ShipmentsRouteImport } from './routes/shipments'
+import { Route as ShipperRoundMarksRouteImport } from './routes/shipper-round-marks'
 import { Route as ShipperTenderMarksRouteImport } from './routes/shipper-tender-marks'
 import { Route as SidImportMarksRouteImport } from './routes/sid-import-marks'
 import { Route as SilkCorridorMarksRouteImport } from './routes/silk-corridor-marks'
@@ -1434,6 +1435,11 @@ const ShipmentsRoute = ShipmentsRouteImport.update({
   path: '/shipments',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShipperRoundMarksRoute = ShipperRoundMarksRouteImport.update({
+  id: '/shipper-round-marks',
+  path: '/shipper-round-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShipperTenderMarksRoute = ShipperTenderMarksRouteImport.update({
   id: '/shipper-tender-marks',
   path: '/shipper-tender-marks',
@@ -1963,6 +1969,7 @@ export interface FileRoutesByFullPath {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/shipper-round-marks': typeof ShipperRoundMarksRoute
   '/shipper-tender-marks': typeof ShipperTenderMarksRoute
   '/sid-import-marks': typeof SidImportMarksRoute
   '/silk-corridor-marks': typeof SilkCorridorMarksRoute
@@ -2252,6 +2259,7 @@ export interface FileRoutesByTo {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/shipper-round-marks': typeof ShipperRoundMarksRoute
   '/shipper-tender-marks': typeof ShipperTenderMarksRoute
   '/sid-import-marks': typeof SidImportMarksRoute
   '/silk-corridor-marks': typeof SilkCorridorMarksRoute
@@ -2542,6 +2550,7 @@ export interface FileRoutesById {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/shipper-round-marks': typeof ShipperRoundMarksRoute
   '/shipper-tender-marks': typeof ShipperTenderMarksRoute
   '/sid-import-marks': typeof SidImportMarksRoute
   '/silk-corridor-marks': typeof SilkCorridorMarksRoute
@@ -2833,6 +2842,7 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/shipper-round-marks'
     | '/shipper-tender-marks'
     | '/sid-import-marks'
     | '/silk-corridor-marks'
@@ -3122,6 +3132,7 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/shipper-round-marks'
     | '/shipper-tender-marks'
     | '/sid-import-marks'
     | '/silk-corridor-marks'
@@ -3411,6 +3422,7 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/shipper-round-marks'
     | '/shipper-tender-marks'
     | '/sid-import-marks'
     | '/silk-corridor-marks'
@@ -3701,6 +3713,7 @@ export interface RootRouteChildren {
   ShipmentDocumentsRoute: typeof ShipmentDocumentsRoute
   ShipmentPackagesRoute: typeof ShipmentPackagesRoute
   ShipmentsRoute: typeof ShipmentsRoute
+  ShipperRoundMarksRoute: typeof ShipperRoundMarksRoute
   ShipperTenderMarksRoute: typeof ShipperTenderMarksRoute
   SidImportMarksRoute: typeof SidImportMarksRoute
   SilkCorridorMarksRoute: typeof SilkCorridorMarksRoute
@@ -5354,6 +5367,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShipmentsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/shipper-round-marks': {
+      id: '/shipper-round-marks'
+      path: '/shipper-round-marks'
+      fullPath: '/shipper-round-marks'
+      preLoaderRoute: typeof ShipperRoundMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shipper-tender-marks': {
       id: '/shipper-tender-marks'
       path: '/shipper-tender-marks'
@@ -6005,6 +6025,7 @@ const rootRouteChildren: RootRouteChildren = {
   ShipmentDocumentsRoute: ShipmentDocumentsRoute,
   ShipmentPackagesRoute: ShipmentPackagesRoute,
   ShipmentsRoute: ShipmentsRoute,
+  ShipperRoundMarksRoute: ShipperRoundMarksRoute,
   ShipperTenderMarksRoute: ShipperTenderMarksRoute,
   SidImportMarksRoute: SidImportMarksRoute,
   SilkCorridorMarksRoute: SilkCorridorMarksRoute,

@@ -229,6 +229,7 @@ from app.api import (
     shipment_packages,
     shipment_stakeholders,
     shipments,
+    shipper_round_marks,
     shipper_tender_marks,
     sid_import_marks,
     silk_corridor_marks,
@@ -348,6 +349,7 @@ api_router.include_router(rate_lines.router)
 api_router.include_router(channel_quotes.router)
 api_router.include_router(quotations.router)
 api_router.include_router(shipments.router)
+api_router.include_router(shipper_round_marks.router)
 api_router.include_router(shipper_tender_marks.router)
 api_router.include_router(shipment_stakeholders.router)
 api_router.include_router(stops.router)

@@ -61,6 +61,7 @@ from app.models.operator_notice import OperatorNotice  # noqa: F401
 from app.models.mail_draft import MailDraft  # noqa: F401
 from app.models.outbox_event import OutboxEvent  # noqa: F401
 from app.models.shipment import Shipment  # noqa: F401
+from app.models.shipper_round_mark import ShipperRoundMark  # noqa: F401
 from app.models.shipper_tender_mark import ShipperTenderMark  # noqa: F401
 from app.models.tracking_consent import TrackingConsent  # noqa: F401
 from app.models.tracking_event import TrackingEvent  # noqa: F401

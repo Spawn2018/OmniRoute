@@ -94,6 +94,7 @@ const NAV = [
   { to: "/crm-activities", label: "Aktywność CRM" },
   { to: "/crm-pipeline-marks", label: "Etap CRM" },
   { to: "/sales-lanes", label: "Korytarz sprzedażowy" },
+  { to: "/shipper-round-marks", label: "Runda załadowcy" },
   { to: "/shipper-tender-marks", label: "Przetarg załadowcy" },
   { to: "/campaign-marks", label: "Kampania marketingowa" },
   { to: "/groupage-dispatcher-marks", label: "Dyspozytor drobnicy" },

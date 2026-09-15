@@ -482,6 +482,10 @@ class InvalidShipperTenderMark(DomainError):
     """BR6.2: HITL tryb zaladowcy — nie druga tabela tender / auto-award / Alpega."""
 
 
+class InvalidShipperRoundMark(DomainError):
+    """BR6.2 leftover: HITL runda zaladowcy — nie Alpega / like-for-like SQL."""
+
+
 class InvalidDocumentDispatchRule(DomainError):
     """Reguła adresata: trójka incoterm×strona×rodzaj → rola I2 — nie send."""
 
