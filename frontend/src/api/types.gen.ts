@@ -6439,6 +6439,50 @@ export type IdpConnectorResponse = {
 };
 
 /**
+ * ImpactNodeMarkCreate
+ */
+export type ImpactNodeMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Node Kind
+     */
+    node_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ImpactNodeMarkResponse
+ */
+export type ImpactNodeMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Node Kind
+     */
+    node_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * ImpactScenarioCreate
  */
 export type ImpactScenarioCreate = {
@@ -25941,6 +25985,49 @@ export type CreateCostCategoryMarkApiV1CostCategoryMarksPostResponses = {
 };
 
 export type CreateCostCategoryMarkApiV1CostCategoryMarksPostResponse = CreateCostCategoryMarkApiV1CostCategoryMarksPostResponses[keyof CreateCostCategoryMarkApiV1CostCategoryMarksPostResponses];
+
+export type ListImpactNodeMarksApiV1ImpactNodeMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/impact-node-marks';
+};
+
+export type ListImpactNodeMarksApiV1ImpactNodeMarksGetResponses = {
+    /**
+     * Response List Impact Node Marks Api V1 Impact Node Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<ImpactNodeMarkResponse>;
+};
+
+export type ListImpactNodeMarksApiV1ImpactNodeMarksGetResponse = ListImpactNodeMarksApiV1ImpactNodeMarksGetResponses[keyof ListImpactNodeMarksApiV1ImpactNodeMarksGetResponses];
+
+export type CreateImpactNodeMarkApiV1ImpactNodeMarksPostData = {
+    body: ImpactNodeMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/impact-node-marks';
+};
+
+export type CreateImpactNodeMarkApiV1ImpactNodeMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateImpactNodeMarkApiV1ImpactNodeMarksPostError = CreateImpactNodeMarkApiV1ImpactNodeMarksPostErrors[keyof CreateImpactNodeMarkApiV1ImpactNodeMarksPostErrors];
+
+export type CreateImpactNodeMarkApiV1ImpactNodeMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ImpactNodeMarkResponse;
+};
+
+export type CreateImpactNodeMarkApiV1ImpactNodeMarksPostResponse = CreateImpactNodeMarkApiV1ImpactNodeMarksPostResponses[keyof CreateImpactNodeMarkApiV1ImpactNodeMarksPostResponses];
 
 export type ListAsnsApiV1AsnsGetData = {
     body?: never;

@@ -1066,6 +1066,10 @@ class InvalidCostCategoryMark(DomainError):
     """AI7.0 leftover: HITL kategoria kosztu — nie allocation SQL."""
 
 
+class InvalidImpactNodeMark(DomainError):
+    """AI6.0: HITL węzeł skutku — nie SQL grafu i nie EBITDA."""
+
+
 class InvalidCargoCoverMark(DomainError):
     """EXP2.4: HITL cargo cover — nie live insurance."""
 

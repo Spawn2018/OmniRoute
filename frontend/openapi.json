@@ -16187,6 +16187,80 @@
         ]
       }
     },
+    "/api/v1/impact-node-marks": {
+      "get": {
+        "tags": [
+          "impact-node-marks"
+        ],
+        "summary": "List Impact Node Marks",
+        "operationId": "list_impact_node_marks_api_v1_impact_node_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ImpactNodeMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Impact Node Marks Api V1 Impact Node Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "impact-node-marks"
+        ],
+        "summary": "Create Impact Node Mark",
+        "operationId": "create_impact_node_mark_api_v1_impact_node_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ImpactNodeMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImpactNodeMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/asns": {
       "get": {
         "tags": [
@@ -36153,6 +36227,65 @@
           "source_ref"
         ],
         "title": "IdpConnectorResponse"
+      },
+      "ImpactNodeMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "node_kind": {
+            "type": "string",
+            "title": "Node Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "node_kind",
+          "source_ref"
+        ],
+        "title": "ImpactNodeMarkCreate"
+      },
+      "ImpactNodeMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "node_kind": {
+            "type": "string",
+            "title": "Node Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "node_kind",
+          "source_ref"
+        ],
+        "title": "ImpactNodeMarkResponse"
       },
       "ImpactScenarioCreate": {
         "properties": {

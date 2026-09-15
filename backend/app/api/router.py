@@ -115,6 +115,7 @@ from app.api import (
     haulier_role_marks,
     high_value_marks,
     idp_connectors,
+    impact_node_marks,
     impact_scenarios,
     impersonate_guard_marks,
     inbound_messages,
@@ -495,6 +496,7 @@ api_router.include_router(working_capital_marks.router)
 api_router.include_router(make_or_buy_marks.router)
 api_router.include_router(cost_allocation_marks.router)
 api_router.include_router(cost_category_marks.router)
+api_router.include_router(impact_node_marks.router)
 api_router.include_router(asns.router)
 api_router.include_router(otif_marks.router)
 api_router.include_router(routing_guide_enforcements.router)

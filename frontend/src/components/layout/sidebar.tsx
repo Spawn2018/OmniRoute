@@ -90,6 +90,7 @@ const NAV = [
   { to: "/allocation-keys", label: "Klucz alokacji" },
   { to: "/allocation-levels", label: "Poziom alokacji" },
   { to: "/cost-category-marks", label: "Kategoria kosztu" },
+  { to: "/impact-node-marks", label: "Wezel skutku" },
   { to: "/plan-snapshots", label: "Migawka planu" },
   { to: "/circle-sims", label: "Kółko" },
   { to: "/route-plan-marks", label: "Znacznik planu trasy" },

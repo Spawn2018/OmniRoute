@@ -175,6 +175,7 @@ modules =
     app.services.make_or_buy_marks
     app.services.cost_allocation_marks
     app.services.cost_category_marks
+    app.services.impact_node_marks
     app.services.cargo_cover_marks
     app.services.sanctions_marks
     app.services.subcontract_edge_marks
@@ -822,6 +823,9 @@ forbidden_modules =
     app.services.cost_category_marks
     app.repositories.cost_category_marks
     app.models.cost_category_mark
+    app.services.impact_node_marks
+    app.repositories.impact_node_marks
+    app.models.impact_node_mark
     app.services.cargo_cover_marks
     app.repositories.cargo_cover_marks
     app.models.cargo_cover_mark
