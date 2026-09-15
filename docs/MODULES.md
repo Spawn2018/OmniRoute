@@ -96,7 +96,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | BR7.1 | Wpływ na linię — warstwa liczona HITL | 479.0 `line_impact_layer_mark` | **ukończony (HITL)** · scored/forecast/actual/other; leftover SQL · EBITDA · plant feed |
 | Plat-HD | Ticket produktu HITL | 480.0 `product_ticket_mark` | **ukończony (HITL)** · report/triage/owner_ok/other; leftover workflow naprawy · Mob; nie CAPA |
 | AI9.2 | Rejestr ryzyka HITL | 481.0 `risk_register_mark` | **ukończony (HITL)** · open/mitigated/accepted/other; leftover program PDF · L3; U-art50 zostaje |
-| AI9.1 | Automation bias HITL | 482.0 `automation_bias_mark` | **ukończony (HITL)** · confirm/delay/review/other; leftover ui-04; U-art50 zostaje |
+| AI9.1 | Automation bias HITL | 482.0 `automation_bias_mark` · **487.0** plan `field_confidence_mark` | **ukończony (HITL bias)** · leftover ui-04 pewność w delcie; U-art50 zostaje |
 | AI8.2 | Brama L3 HITL | 483.0 `l3_gate_mark` · 486.0 `quality_descent_mark` | **ukończony (HITL)** · gate + powód zejścia mae/crps/brier/manual/other; leftover silnik auto-zejścia · L3 write park |
 | AI8.0 | Kaskada stylu HITL | 484.0 `style_cascade_mark` | **ukończony (HITL)** · global/company/department/user/customer/person/context/other; leftover AI8.1 fidelity · silnik stylu |
 | AI8.1 | STYLE FIDELITY HITL | 485.0 `style_fidelity_mark` | **ukończony (HITL)** · pass/hold/reject/exempt/other; leftover silnik porównania · auto-bramka |

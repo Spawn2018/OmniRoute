@@ -38,6 +38,7 @@ kolumn. Nie 468.0.
 | ticket produktu | product_ticket_mark | Plat-HD HITL report/triage/owner_ok; nie CAPA; nie auto-naprawa; nie operator_notice |
 | rejestr ryzyka | risk_register_mark | AI9.2 HITL open/mitigated/accepted; nie scoring osoby; nie L3 silnik |
 | automation bias | automation_bias_mark | AI9.1 HITL confirm/delay/review; nie ui-04 przebudowa; nie auto-accept |
+| pewność per pole (pasmo) | field_confidence_mark | AI9.1 leftover HITL green/yellow/orange/hold; nie float; nie przebudowa splitu |
 | brama L3 | l3_gate_mark | AI8.2 HITL sot/owner/exception/rollback/blast; nie L3 write; nie mutacja autonomy_level |
 | ticket produktu | product_ticket_mark | Plat-HD HITL report/triage/owner_ok; nie CAPA; nie auto-naprawa |
 | krawędź pamięci | memory_edge | W3 HITL 201.0 rodzaj krawędzi; nie RAG; nie graf na entity_event |
