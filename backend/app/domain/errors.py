@@ -942,6 +942,10 @@ class InvalidQualityDescentMark(DomainError):
     """AI8.2 leftover: HITL powod zejscia jakosci — nie silnik auto / nie L3 write."""
 
 
+class InvalidFieldConfidenceMark(DomainError):
+    """AI9.1 leftover: HITL pasmo pewnosci per pole — nie ui-04 / nie float auto-accept."""
+
+
 class InvalidLoadPlanMark(DomainError):
     """G6: HITL znacznik planu załadunku — nie solver OR."""
 

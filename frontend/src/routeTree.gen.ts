@@ -91,6 +91,7 @@ import { Route as FactoringConnectorsRouteImport } from './routes/factoring-conn
 import { Route as FairShareMarksRouteImport } from './routes/fair-share-marks'
 import { Route as FerryArt9MarksRouteImport } from './routes/ferry-art9-marks'
 import { Route as FerryBookingMarksRouteImport } from './routes/ferry-booking-marks'
+import { Route as FieldConfidenceMarksRouteImport } from './routes/field-confidence-marks'
 import { Route as FilingSchemeMarksRouteImport } from './routes/filing-scheme-marks'
 import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as FleetRouteImport } from './routes/fleet'
@@ -701,6 +702,11 @@ const FerryArt9MarksRoute = FerryArt9MarksRouteImport.update({
 const FerryBookingMarksRoute = FerryBookingMarksRouteImport.update({
   id: '/ferry-booking-marks',
   path: '/ferry-booking-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FieldConfidenceMarksRoute = FieldConfidenceMarksRouteImport.update({
+  id: '/field-confidence-marks',
+  path: '/field-confidence-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FilingSchemeMarksRoute = FilingSchemeMarksRouteImport.update({
@@ -1794,6 +1800,7 @@ export interface FileRoutesByFullPath {
   '/fair-share-marks': typeof FairShareMarksRoute
   '/ferry-art9-marks': typeof FerryArt9MarksRoute
   '/ferry-booking-marks': typeof FerryBookingMarksRoute
+  '/field-confidence-marks': typeof FieldConfidenceMarksRoute
   '/filing-scheme-marks': typeof FilingSchemeMarksRoute
   '/finance': typeof FinanceRoute
   '/fleet': typeof FleetRoute
@@ -2079,6 +2086,7 @@ export interface FileRoutesByTo {
   '/fair-share-marks': typeof FairShareMarksRoute
   '/ferry-art9-marks': typeof FerryArt9MarksRoute
   '/ferry-booking-marks': typeof FerryBookingMarksRoute
+  '/field-confidence-marks': typeof FieldConfidenceMarksRoute
   '/filing-scheme-marks': typeof FilingSchemeMarksRoute
   '/finance': typeof FinanceRoute
   '/fleet': typeof FleetRoute
@@ -2365,6 +2373,7 @@ export interface FileRoutesById {
   '/fair-share-marks': typeof FairShareMarksRoute
   '/ferry-art9-marks': typeof FerryArt9MarksRoute
   '/ferry-booking-marks': typeof FerryBookingMarksRoute
+  '/field-confidence-marks': typeof FieldConfidenceMarksRoute
   '/filing-scheme-marks': typeof FilingSchemeMarksRoute
   '/finance': typeof FinanceRoute
   '/fleet': typeof FleetRoute
@@ -2652,6 +2661,7 @@ export interface FileRouteTypes {
     | '/fair-share-marks'
     | '/ferry-art9-marks'
     | '/ferry-booking-marks'
+    | '/field-confidence-marks'
     | '/filing-scheme-marks'
     | '/finance'
     | '/fleet'
@@ -2937,6 +2947,7 @@ export interface FileRouteTypes {
     | '/fair-share-marks'
     | '/ferry-art9-marks'
     | '/ferry-booking-marks'
+    | '/field-confidence-marks'
     | '/filing-scheme-marks'
     | '/finance'
     | '/fleet'
@@ -3222,6 +3233,7 @@ export interface FileRouteTypes {
     | '/fair-share-marks'
     | '/ferry-art9-marks'
     | '/ferry-booking-marks'
+    | '/field-confidence-marks'
     | '/filing-scheme-marks'
     | '/finance'
     | '/fleet'
@@ -3508,6 +3520,7 @@ export interface RootRouteChildren {
   FairShareMarksRoute: typeof FairShareMarksRoute
   FerryArt9MarksRoute: typeof FerryArt9MarksRoute
   FerryBookingMarksRoute: typeof FerryBookingMarksRoute
+  FieldConfidenceMarksRoute: typeof FieldConfidenceMarksRoute
   FilingSchemeMarksRoute: typeof FilingSchemeMarksRoute
   FinanceRoute: typeof FinanceRoute
   FleetRoute: typeof FleetRoute
@@ -4285,6 +4298,13 @@ declare module '@tanstack/react-router' {
       path: '/ferry-booking-marks'
       fullPath: '/ferry-booking-marks'
       preLoaderRoute: typeof FerryBookingMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/field-confidence-marks': {
+      id: '/field-confidence-marks'
+      path: '/field-confidence-marks'
+      fullPath: '/field-confidence-marks'
+      preLoaderRoute: typeof FieldConfidenceMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/filing-scheme-marks': {
@@ -5780,6 +5800,7 @@ const rootRouteChildren: RootRouteChildren = {
   FairShareMarksRoute: FairShareMarksRoute,
   FerryArt9MarksRoute: FerryArt9MarksRoute,
   FerryBookingMarksRoute: FerryBookingMarksRoute,
+  FieldConfidenceMarksRoute: FieldConfidenceMarksRoute,
   FilingSchemeMarksRoute: FilingSchemeMarksRoute,
   FinanceRoute: FinanceRoute,
   FleetRoute: FleetRoute,

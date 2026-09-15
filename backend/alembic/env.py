@@ -128,6 +128,7 @@ from app.models.l3_gate_mark import L3GateMark  # noqa: F401
 from app.models.style_cascade_mark import StyleCascadeMark  # noqa: F401
 from app.models.style_fidelity_mark import StyleFidelityMark  # noqa: F401
 from app.models.quality_descent_mark import QualityDescentMark  # noqa: F401
+from app.models.field_confidence_mark import FieldConfidenceMark  # noqa: F401
 from app.models.customer_contract import CustomerContract  # noqa: F401
 from app.models.tenant_contract_kek import TenantContractKek  # noqa: F401
 from app.models.visibility_connector import VisibilityConnector  # noqa: F401

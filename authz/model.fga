@@ -121,6 +121,7 @@ type organization
     define can_manage_style_cascade_marks: member
     define can_manage_style_fidelity_marks: member
     define can_manage_quality_descent_marks: member
+    define can_manage_field_confidence_marks: member
     define can_manage_load_plan_marks: member
     define can_manage_cmms_marks: member
     define can_manage_legal_hold_marks: member

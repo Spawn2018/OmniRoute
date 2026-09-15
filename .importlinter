@@ -147,6 +147,7 @@ modules =
     app.services.style_cascade_marks
     app.services.style_fidelity_marks
     app.services.quality_descent_marks
+    app.services.field_confidence_marks
     app.services.load_order_marks
     app.services.load_plan_marks
     app.services.cmms_marks
@@ -719,6 +720,9 @@ forbidden_modules =
     app.services.quality_descent_marks
     app.repositories.quality_descent_marks
     app.models.quality_descent_mark
+    app.services.field_confidence_marks
+    app.repositories.field_confidence_marks
+    app.models.field_confidence_mark
     app.services.load_order_marks
     app.repositories.load_order_marks
     app.models.load_order_mark

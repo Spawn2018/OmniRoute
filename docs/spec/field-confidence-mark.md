@@ -8,4 +8,4 @@ green / yellow / orange / hold. Nie przebudowa splitu. Nie float.
 - Unique `(organization_id, mark_code)` i `(organization_id, source_ref)`
 - Job: `/field-confidence-marks`
 
-Delta: [487.0](../deltas/open/487.0.md).
+Delta: [487.0](../deltas/archived/487.0-field-confidence-mark.md).

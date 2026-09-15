@@ -86,6 +86,7 @@ from app.api import (
     ferry_art9_marks,
     ferry_booking_marks,
     field_carry_forwards,
+    field_confidence_marks,
     filing_scheme_marks,
     fleet_cost_marks,
     fraud_flags,
@@ -454,6 +455,7 @@ api_router.include_router(l3_gate_marks.router)
 api_router.include_router(style_cascade_marks.router)
 api_router.include_router(style_fidelity_marks.router)
 api_router.include_router(quality_descent_marks.router)
+api_router.include_router(field_confidence_marks.router)
 api_router.include_router(customer_contracts.router)
 api_router.include_router(exchange_connectors.router)
 api_router.include_router(idp_connectors.router)
