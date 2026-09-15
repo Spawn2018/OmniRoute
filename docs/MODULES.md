@@ -102,7 +102,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | AI8.1 | STYLE FIDELITY HITL | 485.0 `style_fidelity_mark` | **ukończony (HITL)** · pass/hold/reject/exempt/other; leftover silnik porównania · auto-bramka |
 | BR6.0 | Okazja + aktywność + etap + dedup + link CRM HITL | 456.0 `crm_opportunity`; 489.0 `crm_activity`; 490.0 `crm_pipeline_mark`; 495.0 `crm_dedup_mark`; 496.0 `crm_link_mark` | **ukończony (HITL)** · leftover cold-send park |
 | BR6.1 | Korytarz sprzedażowy HITL | 460.0 `sales_lane` · 491.0 UN/LOCODE · 492.0 `volume_label` · 497.0 `sales_bind_mark` | **ukończony (HITL)** · leftover HubSpot live park |
-| BR6.2 | Tryb przetargu załadowcy HITL | 461.0 · 493.0 · 494.0 | **ukończony (HITL)** · leftover Alpega live / FK |
+| BR6.2 | Tryb przetargu załadowcy HITL | 461.0 · 493.0 · 494.0 · 498.0 `shipper_bind_mark` | **ukończony (HITL)** · leftover Alpega live / auto-award |
 | BR6.5 | Znacznik kampanii HITL | 462.0 `campaign_mark` | **ukończony (HITL)** · kind campaign/attribution/other; leftover atrybucja live / lejek X7 |
 | BR2.0 | Zdarzenie pozycji HITL | 457.0 `position_event` | **ukończony (HITL)** · kind gps/manual/other; leftover współrzędne / poll |
 | BR2.1 | Urządzenie telematyczne HITL | 458.0 `telematics_device` | **ukończony (HITL)** · kind tracker/fault/other; leftover parowanie / poll |

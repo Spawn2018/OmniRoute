@@ -251,6 +251,7 @@ kolumn. Nie 468.0.
 | dedup CRM | crm_dedup_mark | BR6.0 leftover HITL stance dedup; nie merge SQL |
 | link CRM | crm_link_mark | BR6.0 leftover HITL stance powiązania; nie FK UUID |
 | bind sprzedaży | sales_bind_mark | BR6.1 leftover HITL stance wiązania korytarza; nie HubSpot |
+| bind załadowcy | shipper_bind_mark | BR6.2 leftover HITL stance wiązania tender|party; nie Alpega |
 | korytarz sprzedażowy | sales_lane | BR6.1 HITL katalog; leftover UN/LOCODE / wolumen |
 | tryb przetargu załadowcy | shipper_tender_mark | BR6.2 HITL katalog; leftover rundy / like-for-like |
 | znacznik kampanii | campaign_mark | BR6.5 HITL katalog; leftover atrybucja live / lejek X7 |

@@ -886,6 +886,10 @@ class InvalidSalesBindMark(DomainError):
     """BR6.1 leftover: HITL stance bind sprzedaży — nie HubSpot / FK UUID."""
 
 
+class InvalidShipperBindMark(DomainError):
+    """BR6.2 leftover: HITL stance bind załadowcy — nie Alpega / FK UUID."""
+
+
 class InvalidLcChecklist(DomainError):
     """G3: HITL checklista LC — nie bank due."""
 

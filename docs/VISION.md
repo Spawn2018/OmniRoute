@@ -125,8 +125,9 @@ zostają w badaniach `04`).
 | 2026-09-14 | BR1.2 plan (**476.0**): HITL `inventory_finance_mark` (valuation|aging|release|other). Wycena SQL / wartość Decimal / FK position·PO / live zastaw `REJECTED` na tym wierszu. |
 | 2026-09-14 | **476.0** `inventory_finance_mark` w kodzie (`CONFIRMED`, git). Następny = **BR1.3** zabezpieczenie na towarze (`REQUIREMENT`). Wycena SQL `REJECTED` na tym wierszu. |
 | 2026-09-14 | BR1.3 plan (**477.0**): HITL `inventory_collateral_mark` (pledge|lien|hold|other). FK position·PO / live zastaw / wartość `REJECTED` na tym wierszu. |
-| 2026-09-15 | **497.0** `sales_bind_mark` w kodzie (`CONFIRMED`, git). Następny = leftover BR6.2 FK stance (`REQUIREMENT`). HubSpot / Alpega live `REJECTED` na tym wierszu. |
+| 2026-09-15 | **498.0** `shipper_bind_mark` w kodzie (`CONFIRMED`, git). Następny = leftover BR6.2 auto-award stance (`REQUIREMENT`). Alpega live `REJECTED` na tym wierszu. |
 | 2026-09-15 | Plan **498.0** BR6.2 leftover `shipper_bind_mark` (`REQUIREMENT`). Stance tender/party; nie FK UUID. Alpega live / auto-award `REJECTED`. |
+| 2026-09-15 | **497.0** `sales_bind_mark` w kodzie (`CONFIRMED`, git). Następny = leftover BR6.2 FK stance (`REQUIREMENT`). HubSpot / Alpega live `REJECTED` na tym wierszu. |
 | 2026-09-15 | Plan **497.0** BR6.1 leftover `sales_bind_mark` (`REQUIREMENT`). Stance opportunity/party; nie FK UUID. HubSpot live `REJECTED`. |
 | 2026-09-15 | **496.0** `crm_link_mark` w kodzie (`CONFIRMED`, git). Następny = leftover BR6.1 FK stance (`REQUIREMENT`). Cold-send / HubSpot live `REJECTED` na tym wierszu. |
 | 2026-09-15 | Plan **496.0** BR6.0 leftover `crm_link_mark` (`REQUIREMENT`). Stance lead/party; nie FK UUID. Cold-send / merge `REJECTED`. |

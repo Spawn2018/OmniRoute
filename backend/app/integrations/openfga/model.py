@@ -186,7 +186,7 @@ def _organization_br_catalog_relations() -> dict[str, Userset]:
     }
 
 
-def _organization_g_catalog_relations() -> dict[str, Userset]:
+def _organization_crm_sales_relations() -> dict[str, Userset]:
     return {
         "can_manage_crm_leads": _member(),
         "can_manage_crm_opportunities": _member(),
@@ -195,6 +195,13 @@ def _organization_g_catalog_relations() -> dict[str, Userset]:
         "can_manage_crm_dedup_marks": _member(),
         "can_manage_crm_link_marks": _member(),
         "can_manage_sales_bind_marks": _member(),
+        "can_manage_shipper_bind_marks": _member(),
+    }
+
+
+def _organization_g_catalog_relations() -> dict[str, Userset]:
+    return {
+        **_organization_crm_sales_relations(),
         "can_manage_lc_checklists": _member(),
         "can_manage_ncts_drafts": _member(),
         "can_manage_oog_marks": _member(),

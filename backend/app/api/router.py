@@ -232,6 +232,7 @@ from app.api import (
     shipment_packages,
     shipment_stakeholders,
     shipments,
+    shipper_bind_marks,
     shipper_like_marks,
     shipper_round_marks,
     shipper_tender_marks,
@@ -559,6 +560,7 @@ api_router.include_router(crm_pipeline_marks.router)
 api_router.include_router(crm_dedup_marks.router)
 api_router.include_router(crm_link_marks.router)
 api_router.include_router(sales_bind_marks.router)
+api_router.include_router(shipper_bind_marks.router)
 api_router.include_router(customer_sops.router)
 api_router.include_router(cutoff_marks.router)
 api_router.include_router(ports.router)

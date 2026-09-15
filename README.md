@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **497.0** BR6.1 leftover — HITL `sales_bind_mark`
-- **Etap:** Plaster — delta **498.0** zaakceptowana (`/noc 8`). Wolno `/plaster`.
-- **Następny:** **498.0** BR6.2 leftover — HITL `shipper_bind_mark` (`bind_kind` tender|party|other; nie Alpega live, nie FK UUID)
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **498.0** BR6.2 leftover — HITL `shipper_bind_mark`
+- **Etap:** Plan — leftover BR6.2 auto-award stance. Komenda `/plan-modul`.
+- **Następny:** **499.0** BR6.2 leftover — HITL `shipper_award_mark` (`award_kind` go|hold|no_award|other; nie Alpega live, nie auto-award SQL)
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

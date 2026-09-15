@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **497.0** BR6.1 leftover — HITL `sales_bind_mark` **Następny:** **498.0** BR6.2 leftover — HITL `shipper_bind_mark` (`bind_kind` tender|party|other; nie Alpega live, nie FK UUID)
+**Stan (z CURRENT.md):** **498.0** BR6.2 leftover — HITL `shipper_bind_mark` **Następny:** **499.0** BR6.2 leftover — HITL `shipper_award_mark` (`award_kind` go|hold|no_award|other; nie Alpega live, nie auto-award SQL)
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

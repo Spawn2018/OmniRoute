@@ -1,3 +1,4 @@
+- **498.0 leftover:** Alpega live park · FK UUID · auto-award. 498.0 = HITL `shipper_bind_mark`.
 - **497.0 leftover:** HubSpot live park · FK UUID. 497.0 = HITL `sales_bind_mark`.
 - **496.0 leftover:** cold-send · FK UUID · merge SQL. 496.0 = HITL `crm_link_mark`.
 - **495.0 leftover:** FK · cold-send · merge SQL. 495.0 = HITL `crm_dedup_mark`. **496.0** = HITL `crm_link_mark` (DONE).
