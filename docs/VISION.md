@@ -125,6 +125,7 @@ zostają w badaniach `04`).
 | 2026-09-14 | BR1.2 plan (**476.0**): HITL `inventory_finance_mark` (valuation|aging|release|other). Wycena SQL / wartość Decimal / FK position·PO / live zastaw `REJECTED` na tym wierszu. |
 | 2026-09-14 | **476.0** `inventory_finance_mark` w kodzie (`CONFIRMED`, git). Następny = **BR1.3** zabezpieczenie na towarze (`REQUIREMENT`). Wycena SQL `REJECTED` na tym wierszu. |
 | 2026-09-14 | BR1.3 plan (**477.0**): HITL `inventory_collateral_mark` (pledge|lien|hold|other). FK position·PO / live zastaw / wartość `REJECTED` na tym wierszu. |
+| 2026-09-15 | **489.0** `crm_activity` w kodzie (`CONFIRMED`, git). Następny = leftover BR6.0 pipeline (`REQUIREMENT`). FK lead/opportunity / cold-send `REJECTED` na tym wierszu. |
 | 2026-09-15 | Plan **489.0** BR6.0 leftover `crm_activity` (`REQUIREMENT`). Rodzaj call/meeting/email/note; nie pipeline. FK lead/opportunity / cold-send `REJECTED`. |
 | 2026-09-15 | **488.0** `compliance_program_mark` w kodzie (`CONFIRMED`, git). Następny = leftover BR6.0 activity (`REQUIREMENT`). PDF bytes / U-art50 `REJECTED` na tym wierszu. |
 | 2026-09-15 | Plan **488.0** AI9.2 leftover `compliance_program_mark` (`REQUIREMENT`). Stancja draft/review/signed/exempt; nie PDF bytes. U-art50 / L3 write `REJECTED`. |

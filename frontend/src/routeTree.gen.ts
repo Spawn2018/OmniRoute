@@ -55,6 +55,7 @@ import { Route as CostAllocationMarksRouteImport } from './routes/cost-allocatio
 import { Route as CostToServeRouteImport } from './routes/cost-to-serve'
 import { Route as CounterfactualRunsRouteImport } from './routes/counterfactual-runs'
 import { Route as CreditReviewsRouteImport } from './routes/credit-reviews'
+import { Route as CrmActivitiesRouteImport } from './routes/crm-activities'
 import { Route as CrmLeadsRouteImport } from './routes/crm-leads'
 import { Route as CrmOpportunitiesRouteImport } from './routes/crm-opportunities'
 import { Route as CsrdMarksRouteImport } from './routes/csrd-marks'
@@ -523,6 +524,11 @@ const CounterfactualRunsRoute = CounterfactualRunsRouteImport.update({
 const CreditReviewsRoute = CreditReviewsRouteImport.update({
   id: '/credit-reviews',
   path: '/credit-reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CrmActivitiesRoute = CrmActivitiesRouteImport.update({
+  id: '/crm-activities',
+  path: '/crm-activities',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CrmLeadsRoute = CrmLeadsRouteImport.update({
@@ -1770,6 +1776,7 @@ export interface FileRoutesByFullPath {
   '/cost-to-serve': typeof CostToServeRoute
   '/counterfactual-runs': typeof CounterfactualRunsRoute
   '/credit-reviews': typeof CreditReviewsRoute
+  '/crm-activities': typeof CrmActivitiesRoute
   '/crm-leads': typeof CrmLeadsRoute
   '/crm-opportunities': typeof CrmOpportunitiesRoute
   '/csrd-marks': typeof CsrdMarksRoute
@@ -2057,6 +2064,7 @@ export interface FileRoutesByTo {
   '/cost-to-serve': typeof CostToServeRoute
   '/counterfactual-runs': typeof CounterfactualRunsRoute
   '/credit-reviews': typeof CreditReviewsRoute
+  '/crm-activities': typeof CrmActivitiesRoute
   '/crm-leads': typeof CrmLeadsRoute
   '/crm-opportunities': typeof CrmOpportunitiesRoute
   '/csrd-marks': typeof CsrdMarksRoute
@@ -2345,6 +2353,7 @@ export interface FileRoutesById {
   '/cost-to-serve': typeof CostToServeRoute
   '/counterfactual-runs': typeof CounterfactualRunsRoute
   '/credit-reviews': typeof CreditReviewsRoute
+  '/crm-activities': typeof CrmActivitiesRoute
   '/crm-leads': typeof CrmLeadsRoute
   '/crm-opportunities': typeof CrmOpportunitiesRoute
   '/csrd-marks': typeof CsrdMarksRoute
@@ -2634,6 +2643,7 @@ export interface FileRouteTypes {
     | '/cost-to-serve'
     | '/counterfactual-runs'
     | '/credit-reviews'
+    | '/crm-activities'
     | '/crm-leads'
     | '/crm-opportunities'
     | '/csrd-marks'
@@ -2921,6 +2931,7 @@ export interface FileRouteTypes {
     | '/cost-to-serve'
     | '/counterfactual-runs'
     | '/credit-reviews'
+    | '/crm-activities'
     | '/crm-leads'
     | '/crm-opportunities'
     | '/csrd-marks'
@@ -3208,6 +3219,7 @@ export interface FileRouteTypes {
     | '/cost-to-serve'
     | '/counterfactual-runs'
     | '/credit-reviews'
+    | '/crm-activities'
     | '/crm-leads'
     | '/crm-opportunities'
     | '/csrd-marks'
@@ -3496,6 +3508,7 @@ export interface RootRouteChildren {
   CostToServeRoute: typeof CostToServeRoute
   CounterfactualRunsRoute: typeof CounterfactualRunsRoute
   CreditReviewsRoute: typeof CreditReviewsRoute
+  CrmActivitiesRoute: typeof CrmActivitiesRoute
   CrmLeadsRoute: typeof CrmLeadsRoute
   CrmOpportunitiesRoute: typeof CrmOpportunitiesRoute
   CsrdMarksRoute: typeof CsrdMarksRoute
@@ -4059,6 +4072,13 @@ declare module '@tanstack/react-router' {
       path: '/credit-reviews'
       fullPath: '/credit-reviews'
       preLoaderRoute: typeof CreditReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/crm-activities': {
+      id: '/crm-activities'
+      path: '/crm-activities'
+      fullPath: '/crm-activities'
+      preLoaderRoute: typeof CrmActivitiesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/crm-leads': {
@@ -5784,6 +5804,7 @@ const rootRouteChildren: RootRouteChildren = {
   CostToServeRoute: CostToServeRoute,
   CounterfactualRunsRoute: CounterfactualRunsRoute,
   CreditReviewsRoute: CreditReviewsRoute,
+  CrmActivitiesRoute: CrmActivitiesRoute,
   CrmLeadsRoute: CrmLeadsRoute,
   CrmOpportunitiesRoute: CrmOpportunitiesRoute,
   CsrdMarksRoute: CsrdMarksRoute,

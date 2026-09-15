@@ -126,6 +126,7 @@ modules =
     app.services.intervention_outcomes
     app.services.crm_leads
     app.services.crm_opportunities
+    app.services.crm_activities
     app.services.lc_checklists
     app.services.ncts_drafts
     app.services.oog_marks
@@ -658,6 +659,9 @@ forbidden_modules =
     app.services.crm_opportunities
     app.repositories.crm_opportunities
     app.models.crm_opportunity
+    app.services.crm_activities
+    app.repositories.crm_activities
+    app.models.crm_activity
     app.services.lc_checklists
     app.repositories.lc_checklists
     app.models.lc_checklist

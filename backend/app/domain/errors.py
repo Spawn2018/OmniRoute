@@ -858,6 +858,10 @@ class InvalidCrmOpportunity(DomainError):
     """BR6.0: HITL okazja CRM — nie pipeline / activity / cold-send."""
 
 
+class InvalidCrmActivity(DomainError):
+    """BR6.0 leftover: HITL aktywność CRM — nie pipeline / FK / cold-send."""
+
+
 class InvalidLcChecklist(DomainError):
     """G3: HITL checklista LC — nie bank due."""
 

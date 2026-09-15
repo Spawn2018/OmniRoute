@@ -100,7 +100,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | AI8.2 | Brama L3 HITL | 483.0 `l3_gate_mark` · 486.0 `quality_descent_mark` | **ukończony (HITL)** · gate + powód zejścia mae/crps/brier/manual/other; leftover silnik auto-zejścia · L3 write park |
 | AI8.0 | Kaskada stylu HITL | 484.0 `style_cascade_mark` | **ukończony (HITL)** · global/company/department/user/customer/person/context/other; leftover AI8.1 fidelity · silnik stylu |
 | AI8.1 | STYLE FIDELITY HITL | 485.0 `style_fidelity_mark` | **ukończony (HITL)** · pass/hold/reject/exempt/other; leftover silnik porównania · auto-bramka |
-| BR6.0 | Okazja CRM HITL | 456.0 `crm_opportunity` | **ukończony (HITL)** · stage open/won/lost/other; leftover activity / pipeline |
+| BR6.0 | Okazja + aktywność CRM HITL | 456.0 `crm_opportunity`; 489.0 `crm_activity` | **ukończony (HITL)** · leftover pipeline |
 | BR6.1 | Korytarz sprzedażowy HITL | 460.0 `sales_lane` | **ukończony (HITL)** · kind repeat/spot/other; leftover UN/LOCODE / wolumen |
 | BR6.2 | Tryb przetargu załadowcy HITL | 461.0 `shipper_tender_mark` | **ukończony (HITL)** · kind round/bench/spot/other; leftover rundy / like-for-like |
 | BR6.5 | Znacznik kampanii HITL | 462.0 `campaign_mark` | **ukończony (HITL)** · kind campaign/attribution/other; leftover atrybucja live / lejek X7 |
