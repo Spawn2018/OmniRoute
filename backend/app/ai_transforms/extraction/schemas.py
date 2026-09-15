@@ -14,6 +14,13 @@ class ExtractedChargeCandidate(BaseModel):
     confidence_text: str = ""
 
 
+class ExtractionHistoryEntry(BaseModel):
+    """Poprzednia wersja kandydatów w JSONB — nie tabela historii."""
+
+    revision: int
+    candidates: list[ExtractedChargeCandidate] = Field(default_factory=list)
+
+
 class ExtractionPayload(BaseModel):
     """HC-03: source_ref + unparsed_regions obowiązkowe; LLM nie liczy kwot."""
 
@@ -25,3 +32,4 @@ class ExtractionPayload(BaseModel):
     ab_delta_chars: int | None = None
     revision: int = 0
     extract_path: str = "text"
+    history: list[ExtractionHistoryEntry] = Field(default_factory=list)

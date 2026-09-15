@@ -42,6 +42,24 @@ def next_extraction_revision(raw: object) -> int:
     return raw + 1
 
 
+def append_extraction_history(
+    history: object,
+    *,
+    revision: object,
+    candidates: object,
+) -> list[dict[str, object]]:
+    """Snapshot przed PATCH — JSONB, nie tabela (448.0 REJECTED)."""
+    entries: list[dict[str, object]] = []
+    if type(history) is list:
+        for row in history:
+            if type(row) is dict:
+                entries.append(dict(row))
+    prior_revision = revision if type(revision) is int and revision >= 0 else 0
+    prior_candidates = list(candidates) if type(candidates) is list else []
+    entries.append({"revision": prior_revision, "candidates": prior_candidates})
+    return entries
+
+
 def require_extract_path(raw: object) -> str:
     if raw is None:
         return _PATH_TEXT

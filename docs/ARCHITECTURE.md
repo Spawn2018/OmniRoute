@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **502.0** AI3.1 leftover — HITL `extraction_prompt_mark`. **Etap:** Plaster — delta **503.0** zaakceptowana (`/noc 15`); wolno `/plaster`. **Następny:** **503.0** AI3.1 leftover — historia wierszy szkicu w JSONB (nie tabela; nie live vision) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **503.0** AI3.1 leftover — `payload.history` JSONB. **Etap:** Plan — delta **504.0** AI3.0 leftover partial write (przed `/plaster`). **Następny:** **504.0** AI3.0 leftover — partial write przy accept (nie live vision; nie Instructor) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

@@ -1,6 +1,7 @@
 ﻿# Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
+| 2026-09-15 | 503.0 | AI3.1 payload.history JSONB | 2026-09-15 | PRZESZLO | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-15 | 502.0 | AI3.1 extraction_prompt_mark HITL | 2026-09-15 | PRZESZLO | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-15 | 501.0 | AI3.0 brama 70% accept zbiorczy | 2026-09-15 | PRZESZLO | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-15 | 500.0 | AI3.0 PATCH candidates carrier_quote/tender_rfp | 2026-09-15 | PRZESZLO | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |

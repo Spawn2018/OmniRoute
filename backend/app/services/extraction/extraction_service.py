@@ -9,6 +9,7 @@ from app.ai_transforms.extraction.protocol import DocumentExtractor
 from app.ai_transforms.extraction.provider import default_extractor
 from app.domain.errors import DraftNotPending, ResourceNotFound, UnparseableDocument
 from app.domain.extraction_draft import (
+    append_extraction_history,
     extraction_carrier_quote_kind,
     extraction_tender_rfp_kind,
     next_extraction_revision,
@@ -167,6 +168,11 @@ class ExtractionService:
         draft = await self._require_pending(draft_id)
         require_rate_candidates_editable(draft.draft_kind)
         payload = dict(draft.payload)
+        payload["history"] = append_extraction_history(
+            payload.get("history"),
+            revision=payload.get("revision"),
+            candidates=payload.get("candidates"),
+        )
         payload["candidates"] = candidates
         payload["revision"] = next_extraction_revision(payload.get("revision"))
         draft.payload = payload
@@ -197,6 +203,7 @@ def _quote_payload(source_ref: str, raw: object) -> dict[str, object]:
         "currency": stored.currency,
         "transit_days": stored.transit_days,
         "revision": 0,
+        "history": [],
     }
 
 
@@ -209,4 +216,5 @@ def _rfp_payload(source_ref: str, raw: object) -> dict[str, object]:
         "tender_id": str(stored.tender_id),
         "intake_code": stored.intake_code,
         "revision": 0,
+        "history": [],
     }

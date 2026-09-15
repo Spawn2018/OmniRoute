@@ -197,11 +197,50 @@ async def test_patch_candidates_replaces_only_candidates() -> None:
     assert patched.payload["unparsed_regions"] == ["weekend"]
     assert patched.payload["parser_name"] == "plain"
     assert patched.payload["revision"] == 1
+    assert patched.payload["history"] == [
+        {
+            "revision": 0,
+            "candidates": [{"code": "THC", "amount_text": "10", "currency": "EUR"}],
+        },
+    ]
     extractor.extract.assert_not_called()
 
 
 @pytest.mark.asyncio
-async def test_patch_candidates_rejects_non_pending() -> None:
+async def test_patch_candidates_appends_second_history_entry() -> None:
+    session = AsyncMock()
+    session.flush = AsyncMock()
+    extractor = MagicMock()
+    draft = ExtractionDraft(
+        id=uuid4(),
+        organization_id=uuid4(),
+        status="pending",
+        draft_kind="rate_line",
+        source_ref="doc://x",
+        input_text="THC 10 EUR",
+        payload={
+            "source_ref": "doc://x",
+            "unparsed_regions": [],
+            "candidates": [{"code": "BAF", "amount_text": "12", "currency": "USD"}],
+            "revision": 1,
+            "history": [
+                {
+                    "revision": 0,
+                    "candidates": [{"code": "THC", "amount_text": "10", "currency": "EUR"}],
+                },
+            ],
+        },
+    )
+    session.get = AsyncMock(return_value=draft)
+    service = ExtractionService(session, extractor=extractor)
+    patched = await service.patch_candidates(
+        draft_id=draft.id,
+        candidates=[{"code": "THC", "amount_text": "11", "currency": "EUR"}],
+    )
+    assert patched.payload["revision"] == 2
+    assert len(patched.payload["history"]) == 2
+    assert patched.payload["history"][1]["revision"] == 1
+    assert patched.payload["history"][1]["candidates"][0]["code"] == "BAF"
     session = AsyncMock()
     draft = ExtractionDraft(
         id=uuid4(),

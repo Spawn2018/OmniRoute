@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **502.0** AI3.1 leftover — HITL `extraction_prompt_mark`
-- **Etap:** Plaster — delta **503.0** zaakceptowana (`/noc 15`); wolno `/plaster`
-- **Następny:** **503.0** AI3.1 leftover — historia wierszy szkicu w JSONB (nie tabela; nie live vision)
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **503.0** AI3.1 leftover — `payload.history` JSONB
+- **Etap:** Plan — delta **504.0** AI3.0 leftover partial write (przed `/plaster`)
+- **Następny:** **504.0** AI3.0 leftover — partial write przy accept (nie live vision; nie Instructor)
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

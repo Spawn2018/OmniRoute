@@ -25,7 +25,7 @@
 - **451.0 leftover:** `.xls` · wiele arkuszy · openpyxl · formuły. 451.0 = pierwszy arkusz OOXML → tekst.
 - **450.0 leftover:** AI3.4 zamknięty w 451.0 · większy golden · instructor w CI · live vision · how-to (brak jobu zapisu w 450). 450.0 = 2 przypadki vs MockExtractor.
 - **449.0 leftover:** AI3.3 zamknięty w 450.0 · AI3.4 Excel · live vision · extra=forbid na całym POST extract (zostaje ignore). 449.0 = etykieta `extract_path`.
-- **448.0 leftover:** AI3.2 zamknięty w 449.0 · historia wierszy · PATCH quote/rfp. 448.0 = `revision` + `bbox_text`/`confidence_text`.
+- **448.0 leftover:** AI3.2 zamknięty w 449.0 · historia wierszy → **503.0** · PATCH quote/rfp → **500.0**. 448.0 = `revision` + `bbox_text`/`confidence_text`.
 - **447.0 leftover:** AI3.1 (**448.0**) · PATCH quote/rfp · EXPLAIN UPDATE JSONB. 447.0 = PATCH `candidates` na pending/`rate_line`. Import `isort` w follow-up commicie (ruff I001).
 - **446.0 leftover:** Brier · auto-champion · detektor/próg · trzy BC · `data_source` (AI5) · AI3.0 PATCH szkicu (**447.0**). 446.0 = POST bez wpisu CRPS/MAE.
 - **445.0 leftover:** zapis `prediction_ledger` (**446.0**) · Brier · auto-champion · detektor/próg · trzy BC · `data_source` (AI5). 445.0 = widok średnich per dzień UTC. EXPLAIN widoku = leftover.

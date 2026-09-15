@@ -125,6 +125,7 @@ zostają w badaniach `04`).
 | 2026-09-14 | BR1.2 plan (**476.0**): HITL `inventory_finance_mark` (valuation|aging|release|other). Wycena SQL / wartość Decimal / FK position·PO / live zastaw `REJECTED` na tym wierszu. |
 | 2026-09-14 | **476.0** `inventory_finance_mark` w kodzie (`CONFIRMED`, git). Następny = **BR1.3** zabezpieczenie na towarze (`REQUIREMENT`). Wycena SQL `REJECTED` na tym wierszu. |
 | 2026-09-14 | BR1.3 plan (**477.0**): HITL `inventory_collateral_mark` (pledge|lien|hold|other). FK position·PO / live zastaw / wartość `REJECTED` na tym wierszu. |
+| 2026-09-15 | **503.0** `payload.history` w kodzie (`CONFIRMED`, git). Snapshot przy PATCH. Następny = AI3.0 leftover partial write (`REQUIREMENT`). Tabela historii / undo / Instructor / live vision `REJECTED`. |
 | 2026-09-15 | Plan **503.0** AI3.1 leftover historia wierszy w `payload.history` JSONB (`REQUIREMENT`). Snapshot przy PATCH. Tabela historii / undo / Instructor / live vision `REJECTED`. |
 | 2026-09-15 | **502.0** `extraction_prompt_mark` w kodzie (`CONFIRMED`, git). Prompt jako dana HITL. Następny = historia JSONB leftover (`REQUIREMENT`). Wiring LLM / tabela historii / live vision `REJECTED`. |
 | 2026-09-15 | Plan **502.0** AI3.1 leftover `extraction_prompt_mark` (`REQUIREMENT`). Prompt jako dana HITL; nie wiring LLM. Tabela historii `REJECTED` (jak 448.0). Live vision `REJECTED`. |
@@ -1183,7 +1184,7 @@ Do tego cztery tabele substratu z części B.2 (`suggestion_ledger`, `outcome_le
 - `shipment.shipment_ref` — leftover pinu, nie 468.0
 - `sales_invoice.delivery_channel` — leftover **F1** / kanał e-faktury
 - `extraction_draft.draft_kind` + `bbox` / pewność w JSONB — **448.0**
-  (`CONFIRMED`); leftover historia wierszy → **503.0** `payload.history` (`REQUIREMENT`)
+  (`CONFIRMED`); **503.0** `payload.history` (`CONFIRMED`); leftover undo / Instructor (`07`)
 - `party_contact.tracking_consent` — leftover kolumny; katalog
   `tracking_consent` jest (`CONFIRMED`, 459.0)
 

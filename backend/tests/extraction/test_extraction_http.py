@@ -71,6 +71,7 @@ class StubExtractionService:
                 "ab_delta_chars": ab_delta_chars,
                 "revision": 0,
                 "extract_path": extract_path,
+                "history": [],
             },
             created_at=_NOW,
             updated_at=_NOW,
@@ -129,6 +130,17 @@ class StubExtractionService:
             raise DraftNotPending("Szkic nie jest w statusie pending")
         require_rate_candidates_editable(self.draft.draft_kind)
         payload = dict(self.draft.payload)
+        prior_revision = payload.get("revision")
+        prior_candidates = payload.get("candidates")
+        history = payload.get("history")
+        entries = list(history) if type(history) is list else []
+        entries.append(
+            {
+                "revision": prior_revision if type(prior_revision) is int else 0,
+                "candidates": list(prior_candidates) if type(prior_candidates) is list else [],
+            },
+        )
+        payload["history"] = entries
         payload["candidates"] = candidates
         current = payload.get("revision")
         payload["revision"] = current + 1 if type(current) is int else 1
@@ -368,7 +380,16 @@ def test_http_patch_pending_rate_line_replaces_candidates(happy_client: TestClie
     listed = happy_client.get("/api/v1/extractions", headers=headers)
     assert listed.json()[0]["payload"]["candidates"][0]["code"] == "BAF"
     assert created.json()["payload"]["revision"] == 0
+    assert created.json()["payload"]["history"] == []
     assert body["payload"]["revision"] == 1
+    assert body["payload"]["history"] == [
+        {
+            "revision": 0,
+            "candidates": [
+                {"code": "THC", "amount_text": "10", "currency": "EUR"},
+            ],
+        },
+    ]
 
 
 def test_http_patch_not_pending_returns_409(happy_client: TestClient) -> None:

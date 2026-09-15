@@ -9,6 +9,7 @@ from app.domain.errors import (
     InvalidTenderRfpIntake,
 )
 from app.domain.extraction_draft import (
+    append_extraction_history,
     bulk_accept_confidence_ok,
     next_extraction_revision,
     require_bulk_accept_confidence,
@@ -45,6 +46,27 @@ def test_next_extraction_revision_bumps_or_starts() -> None:
     assert next_extraction_revision(3) == 4
     assert next_extraction_revision(None) == 1
     assert next_extraction_revision(True) == 1
+
+
+def test_append_extraction_history_starts_and_grows() -> None:
+    first = append_extraction_history(
+        None,
+        revision=0,
+        candidates=[{"code": "THC", "amount_text": "10", "currency": "EUR"}],
+    )
+    assert first == [
+        {
+            "revision": 0,
+            "candidates": [{"code": "THC", "amount_text": "10", "currency": "EUR"}],
+        },
+    ]
+    second = append_extraction_history(
+        first,
+        revision=1,
+        candidates=[{"code": "BAF", "amount_text": "12", "currency": "USD"}],
+    )
+    assert len(second) == 2
+    assert second[1]["revision"] == 1
 
 
 def test_rate_candidates_editable_allowlist() -> None:

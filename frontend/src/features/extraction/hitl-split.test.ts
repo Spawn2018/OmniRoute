@@ -62,7 +62,36 @@ describe("hitlSplitView", () => {
     expect(view.unparsedRegions).toEqual(["note weekend"])
     expect(view.revision).toBe(0)
     expect(view.extractPath).toBe("text")
+    expect(view.history).toEqual([])
     expect(hitlGeneratedContentLabel(view)).toBe(HITL_AI_LABEL)
+  })
+
+  it("lists prior revision snapshots from payload history", () => {
+    const draft = sampleDraft()
+    draft.payload.history = [
+      {
+        revision: 0,
+        candidates: [{ code: "THC", amount_text: "100", currency: "EUR" }],
+      },
+    ]
+    draft.payload.revision = 1
+    const view = hitlSplitView(draft)
+    expect(view.kind).toBe("review")
+    if (view.kind !== "review") {
+      return
+    }
+    expect(view.history).toEqual([{ revision: 0, candidateCount: 1 }])
+    const html = renderToStaticMarkup(
+      createElement(HitlReviewSplit, {
+        draft,
+        pdfBase64: null,
+        busy: false,
+        onAccept: () => undefined,
+        onReject: () => undefined,
+      }),
+    )
+    expect(html).toContain("data-testid=\"extraction-history\"")
+    expect(html).toContain("wersja 0: 1 kandydatów")
   })
 
   it("does not mark empty HITL as generated content", () => {

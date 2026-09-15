@@ -17,6 +17,11 @@ export type ExtractionCandidate = {
   confidence_text?: string
 }
 
+export type ExtractionHistoryEntry = {
+  revision: number
+  candidates: ExtractionCandidate[]
+}
+
 export type ExtractionPayload = {
   source_ref: string
   unparsed_regions: string[]
@@ -26,6 +31,7 @@ export type ExtractionPayload = {
   ab_delta_chars?: number | null
   revision?: number
   extract_path?: string
+  history?: ExtractionHistoryEntry[]
 }
 
 export type ExtractionDraft = {
@@ -120,6 +126,23 @@ function asPayload(raw: { [key: string]: unknown }): ExtractionPayload {
     })
   }
   const regionsRaw = Array.isArray(raw.unparsed_regions) ? raw.unparsed_regions : []
+  const historyRaw = Array.isArray(raw.history) ? raw.history : []
+  const history: ExtractionHistoryEntry[] = []
+  for (const entry of historyRaw) {
+    if (typeof entry !== "object" || entry === null) {
+      continue
+    }
+    const row = entry as Record<string, unknown>
+    if (typeof row.revision !== "number") {
+      continue
+    }
+    const nested = asPayload({
+      source_ref: "",
+      unparsed_regions: [],
+      candidates: Array.isArray(row.candidates) ? row.candidates : [],
+    })
+    history.push({ revision: row.revision, candidates: nested.candidates })
+  }
   return {
     source_ref: typeof raw.source_ref === "string" ? raw.source_ref : "",
     unparsed_regions: regionsRaw.filter((r): r is string => typeof r === "string"),
@@ -129,6 +152,7 @@ function asPayload(raw: { [key: string]: unknown }): ExtractionPayload {
     ab_delta_chars: typeof raw.ab_delta_chars === "number" ? raw.ab_delta_chars : null,
     revision: typeof raw.revision === "number" ? raw.revision : 0,
     extract_path: typeof raw.extract_path === "string" ? raw.extract_path : "text",
+    history,
   }
 }
 

@@ -88,6 +88,15 @@ export function HitlReviewSplit({
             {hitlGeneratedContentLabel(view)}
           </p>
         </div>
+        {view.history.length > 0 ? (
+          <ul className="mt-2 space-y-1 text-xs text-muted-foreground" data-testid="extraction-history">
+            {view.history.map((entry) => (
+              <li key={entry.revision}>
+                wersja {entry.revision}: {entry.candidateCount} kandydatów
+              </li>
+            ))}
+          </ul>
+        ) : null}
         {draft.status === "pending" &&
         draftAllowsCandidatePatch(draft.draft_kind) &&
         onPatchCandidates !== undefined ? (
