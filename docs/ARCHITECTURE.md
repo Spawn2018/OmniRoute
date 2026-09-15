@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **509.0** AI3.3 leftover — golden ≥500. **Etap:** Plaster — delta **510.0** zaakceptowana (`/noc 15`); wolno `/plaster`. **Następny:** **510.0** AI3.3 leftover — golden ≥2000 vs MockExtractor (nie DocLayNet; nie live vision) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **510.0** AI3.3 leftover — golden ≥2000. **Etap:** Plan — delta **511.0** AI3.3 leftover golden ≥5000 (przed `/plaster`). **Następny:** **511.0** AI3.3 leftover — pętla golden ≥5000 pytest (nie DocLayNet; nie live vision) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
