@@ -125,6 +125,7 @@ zostają w badaniach `04`).
 | 2026-09-14 | BR1.2 plan (**476.0**): HITL `inventory_finance_mark` (valuation|aging|release|other). Wycena SQL / wartość Decimal / FK position·PO / live zastaw `REJECTED` na tym wierszu. |
 | 2026-09-14 | **476.0** `inventory_finance_mark` w kodzie (`CONFIRMED`, git). Następny = **BR1.3** zabezpieczenie na towarze (`REQUIREMENT`). Wycena SQL `REJECTED` na tym wierszu. |
 | 2026-09-14 | BR1.3 plan (**477.0**): HITL `inventory_collateral_mark` (pledge|lien|hold|other). FK position·PO / live zastaw / wartość `REJECTED` na tym wierszu. |
+| 2026-09-15 | Plan **495.0** BR6.0 leftover `crm_dedup_mark` (`REQUIREMENT`). Stance nip/vat/email; nie merge SQL. Cold-send / FK `REJECTED`. |
 | 2026-09-15 | **494.0** `shipper_like_mark` w kodzie (`CONFIRMED`, git). Następny = leftover BR6.0 dedup (`REQUIREMENT`). Alpega live / SQL `REJECTED` na tym wierszu. |
 | 2026-09-15 | Plan **494.0** BR6.2 leftover `shipper_like_mark` (`REQUIREMENT`). Stance match/gap/bench; nie SQL. Alpega / FK `REJECTED`. |
 | 2026-09-15 | **493.0** `shipper_round_mark` w kodzie (`CONFIRMED`, git). Następny = leftover like-for-like (`REQUIREMENT`). Alpega live / FK / SQL `REJECTED` na tym wierszu. |
