@@ -262,6 +262,7 @@ from app.models.idp_connector import IdpConnector  # noqa: F401
 from app.models.terminal_slot_connector import TerminalSlotConnector  # noqa: F401
 from app.models.prediction_ledger import PredictionLedger  # noqa: F401
 from app.models.autonomy_level import AutonomyLevel  # noqa: F401
+from app.models.allocation_key import AllocationKey  # noqa: F401
 from app.models.suggestion_kind import SuggestionKind  # noqa: F401
 from app.models.suggestion_ledger import SuggestionLedger  # noqa: F401
 from app.models.outcome_kind import OutcomeKind  # noqa: F401

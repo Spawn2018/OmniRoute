@@ -5,6 +5,7 @@ from app.api import (
     abandoned_rto_marks,
     aeo_dossier_marks,
     air_ra3_marks,
+    allocation_keys,
     asns,
     automation_bias_marks,
     autonomy_levels,
@@ -510,6 +511,7 @@ api_router.include_router(quote_validity_marks.router)
 api_router.include_router(suggestion_ledgers.router)
 api_router.include_router(suggestion_kinds.router)
 api_router.include_router(autonomy_levels.router)
+api_router.include_router(allocation_keys.router)
 api_router.include_router(outcome_kinds.router)
 api_router.include_router(outcome_ledgers.router)
 api_router.include_router(interval_scores.router)

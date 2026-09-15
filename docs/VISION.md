@@ -87,6 +87,7 @@ zostają w badaniach `04`).
 | 2026-09-15 | AI3.1 leftover plan (**515.0**): undo ostatniego `payload.history` (`REQUIREMENT`). Undo do dowolnej rewizji `REJECTED`. |
 | 2026-09-15 | **515.0** undo w kodzie (`CONFIRMED`, git). Następny = **AI7.0** (`REQUIREMENT`). Instructor wiring park. |
 | 2026-09-15 | AI7.0 plan (**516.0**): HITL `allocation_key` (`REQUIREMENT`). SQL / TCM / druga marża / live ERP `REJECTED`. |
+| 2026-09-15 | **516.0** `allocation_key` w kodzie (`CONFIRMED`, git). Następny = 6 kategorii leftover (`REQUIREMENT`). SQL/TCM park. |
 | 2026-09-13 | AI3.4 plan (**451.0**): parser `xlsx_sheet` stdlib. `openpyxl` `REJECTED`. `.xls` leftover. |
 | 2026-09-13 | **451.0** `xlsx_sheet` w kodzie (`CONFIRMED`, git). Następny = **AI4.0** FK `plan_snapshot` (`REQUIREMENT`). `.xls` leftover. |
 | 2026-09-13 | AI4.0 plan (**452.0**): FK złożone RESTRICT. CASCADE `REJECTED`. What-if `REJECTED` na tym wierszu. |
@@ -322,6 +323,7 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-15 | AI3.1 leftover (**515.0**) = undo ostatniego `payload.history`. Undo do dowolnej rewizji / live vision `REJECTED`. | `/plan-modul` `/noc 15`; VISION E AI3 |
 | 2026-09-15 | **515.0** w kodzie (`CONFIRMED`, git). POST undo. Następny = **516.0** AI7.0 (`REQUIREMENT`). Instructor wiring park. | CURRENT + plaster 515.0 `/noc 15` |
 | 2026-09-15 | AI7.0 (**516.0**) = HITL otwarty słownik `allocation_key`. SQL alokacji / TCM / druga marża / live ERP `REJECTED` na tym wierszu. | `/plan-modul` `/noc 7`; VISION B.6 |
+| 2026-09-15 | **516.0** w kodzie (`CONFIRMED`, git). `allocation_key` HITL. Następny = **517.0** 6 kategorii (`REQUIREMENT`). SQL/TCM `REJECTED`. | CURRENT + plaster 516.0 `/noc 7` |
 | 2026-09-13 | AI3.4 (**451.0**) = OOXML pierwszy arkusz → tekst. Nowa zależność `REJECTED`. Vision `REJECTED`. | `/plan-modul` `/noc`; VISION E AI3 |
 | 2026-09-13 | **451.0** w kodzie (`CONFIRMED`, git). `parser_name=xlsx_sheet`. Następny = **AI4.0** (`REQUIREMENT`). | CURRENT + plaster 451.0 `/noc` |
 | 2026-09-13 | AI4.0 (**452.0**) = FK `plan_snapshot` → shipment/trip/resource, `ON DELETE RESTRICT`. CASCADE `REJECTED`. | `/plan-modul` `/noc`; VISION E AI4 |

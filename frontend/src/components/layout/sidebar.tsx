@@ -87,6 +87,7 @@ const NAV = [
   { to: "/benefit-ledgers", label: "Ledger oszczędności" },
   { to: "/suggestion-kinds", label: "Rodzaj podpowiedzi" },
   { to: "/autonomy-levels", label: "Poziom autonomii" },
+  { to: "/allocation-keys", label: "Klucz alokacji" },
   { to: "/plan-snapshots", label: "Migawka planu" },
   { to: "/circle-sims", label: "Kółko" },
   { to: "/route-plan-marks", label: "Znacznik planu trasy" },

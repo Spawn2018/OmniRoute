@@ -1,6 +1,7 @@
 ﻿# Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
+| 2026-09-15 | 516.0 | AI7.0 allocation_key | 2026-09-15 | PRZESZLO | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-15 | 515.0 | AI3.1 history undo | 2026-09-15 | PRZESZLO | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-15 | 514.0 | AI3.4 xlsx formula no-cache | 2026-09-15 | PRZESZLO | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-15 | 513.0 | AI3 instructor x golden stub | 2026-09-15 | PRZESZLO | N/A | N/A | OK | OK | leftover | PRZESZLO | N/A | N/A | PRZESZLO |

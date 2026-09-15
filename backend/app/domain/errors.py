@@ -690,6 +690,10 @@ class InvalidSuggestionKind(DomainError):
     """Słownik AI1.4: HITL kind_code bez CHECK — nie ledger i nie ENUM."""
 
 
+class InvalidAllocationKey(DomainError):
+    """Obcy klucz alokacji kosztów."""
+
+
 class InvalidAutonomyLevel(DomainError):
     """Słownik AI1.4: HITL level_code bez CHECK — nie FK klienta i nie ENUM."""
 

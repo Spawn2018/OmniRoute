@@ -1099,6 +1099,11 @@ export const OPS_JOBS = [
     job: "katalog autonomy_level HITL",
   },
   {
+    route: BUSINESS_LISTS.allocationKey.route,
+    label: "Klucz alokacji",
+    job: "katalog allocation_key HITL",
+  },
+  {
     route: BUSINESS_LISTS.csrdMark.route,
     label: "CSRD",
     job: "katalog csrd_mark HITL",
@@ -1761,6 +1766,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "512.0": "/extractions",
   "514.0": "/extractions",
   "515.0": "/extractions",
+  "516.0": "/allocation-keys",
   "461.0": "/shipper-tender-marks",
   "462.0": "/campaign-marks",
   "463.0": "/groupage-dispatcher-marks",

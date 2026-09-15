@@ -181,6 +181,42 @@ export type AirRa3MarkResponse = {
 };
 
 /**
+ * AllocationKeyCreate
+ */
+export type AllocationKeyCreate = {
+    /**
+     * Key Code
+     */
+    key_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * AllocationKeyResponse
+ */
+export type AllocationKeyResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Key Code
+     */
+    key_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * AppUserResponse
  */
 export type AppUserResponse = {
@@ -26629,6 +26665,49 @@ export type CreateAutonomyLevelApiV1AutonomyLevelsPostResponses = {
 };
 
 export type CreateAutonomyLevelApiV1AutonomyLevelsPostResponse = CreateAutonomyLevelApiV1AutonomyLevelsPostResponses[keyof CreateAutonomyLevelApiV1AutonomyLevelsPostResponses];
+
+export type ListAllocationKeysApiV1AllocationKeysGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/allocation-keys';
+};
+
+export type ListAllocationKeysApiV1AllocationKeysGetResponses = {
+    /**
+     * Response List Allocation Keys Api V1 Allocation Keys Get
+     *
+     * Successful Response
+     */
+    200: Array<AllocationKeyResponse>;
+};
+
+export type ListAllocationKeysApiV1AllocationKeysGetResponse = ListAllocationKeysApiV1AllocationKeysGetResponses[keyof ListAllocationKeysApiV1AllocationKeysGetResponses];
+
+export type CreateAllocationKeyApiV1AllocationKeysPostData = {
+    body: AllocationKeyCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/allocation-keys';
+};
+
+export type CreateAllocationKeyApiV1AllocationKeysPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateAllocationKeyApiV1AllocationKeysPostError = CreateAllocationKeyApiV1AllocationKeysPostErrors[keyof CreateAllocationKeyApiV1AllocationKeysPostErrors];
+
+export type CreateAllocationKeyApiV1AllocationKeysPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: AllocationKeyResponse;
+};
+
+export type CreateAllocationKeyApiV1AllocationKeysPostResponse = CreateAllocationKeyApiV1AllocationKeysPostResponses[keyof CreateAllocationKeyApiV1AllocationKeysPostResponses];
 
 export type ListOutcomeKindsApiV1OutcomeKindsGetData = {
     body?: never;

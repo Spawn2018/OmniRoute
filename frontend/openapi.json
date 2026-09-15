@@ -17577,6 +17577,80 @@
         ]
       }
     },
+    "/api/v1/allocation-keys": {
+      "get": {
+        "tags": [
+          "allocation-keys"
+        ],
+        "summary": "List Allocation Keys",
+        "operationId": "list_allocation_keys_api_v1_allocation_keys_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/AllocationKeyResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Allocation Keys Api V1 Allocation Keys Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "allocation-keys"
+        ],
+        "summary": "Create Allocation Key",
+        "operationId": "create_allocation_key_api_v1_allocation_keys_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AllocationKeyCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AllocationKeyResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/outcome-kinds": {
       "get": {
         "tags": [
@@ -26329,6 +26403,59 @@
           "source_ref"
         ],
         "title": "AirRa3MarkResponse"
+      },
+      "AllocationKeyCreate": {
+        "properties": {
+          "key_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Key Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "key_code",
+          "source_ref"
+        ],
+        "title": "AllocationKeyCreate"
+      },
+      "AllocationKeyResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "key_code": {
+            "type": "string",
+            "title": "Key Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "key_code",
+          "source_ref"
+        ],
+        "title": "AllocationKeyResponse"
       },
       "AppUserResponse": {
         "properties": {
