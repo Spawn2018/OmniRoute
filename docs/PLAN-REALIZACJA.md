@@ -756,7 +756,7 @@ Dump `03` / `04b`: WMS i BR6.2 evidenced; p44/LSP44 = dwie skóry jeden OpenAPI;
 | BR5.0 | faktoring — integracja z partnerem | po F | **471.0** DONE HITL `factoring_connector`; leftover live SMEO HTTP · workflow F7; F wave zostaje |
 | BR5.1 | finansowanie zamówienia (PO Financing) | po BR1.2 + BR5.0 | **472.0** DONE HITL `po_financing_mark`; leftover FK PO · wycena zapasu BR1.2 |
 | BR5.2 | giełdy transportowe: wymiana ofert | po S55 | **473.0** DONE rozszerzenie CHECK `exchange_connector`; leftover live HTTP · auto-post · wymiana ofert |
-| BR6.0 | CRM ponad leada: okazja, aktywność, pipeline | **start HHL** | **456.0** DONE HITL `crm_opportunity`; leftover: activity (**489.0** plan) · pipeline |
+| BR6.0 | CRM ponad leada: okazja, aktywność, pipeline | **start HHL** | **456.0** DONE HITL `crm_opportunity`; leftover: activity (**489.0** delta `/noc 8`) · pipeline |
 | BR6.1 | **korytarz jako obiekt sprzedażowy** | po BR6.0 | **460.0** DONE HITL `sales_lane`; leftover: UN/LOCODE · wolumen; HubSpot/Salesforce nie mają „lane” |
 | BR6.2 | przetargi korporacyjne po stronie załadowcy | po G2 | **461.0** DONE HITL `shipper_tender_mark`; leftover: rundy · like-for-like; Alpega/Freight Bench nie live; nie auto-award |
 | BR6.3 | aplikacja mobilna sprzedaży iOS/Android | po BR6.0 | Expo/RN; web UI się nie przenosi |
@@ -859,13 +859,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->
