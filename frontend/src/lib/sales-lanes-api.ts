@@ -8,23 +8,31 @@ export type SalesLaneRow = {
   organization_id: string
   lane_code: string
   lane_kind: string
+  origin_unlocode: string
+  destination_unlocode: string
   source_ref: string
 }
 
 export type SalesLaneWrite = {
   lane_code: string
   lane_kind: string
+  origin_unlocode: string
+  destination_unlocode: string
   source_ref: string
 }
 
 export function buildSalesLaneWrite(fields: {
   code: string
   kind: string
+  originCode: string
+  destCode: string
   origin: string
 }): SalesLaneWrite {
   return {
     lane_code: fields.code.trim(),
     lane_kind: fields.kind.trim().toLowerCase(),
+    origin_unlocode: fields.originCode.trim().toUpperCase(),
+    destination_unlocode: fields.destCode.trim().toUpperCase(),
     source_ref: fields.origin.trim(),
   }
 }

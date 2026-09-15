@@ -18,6 +18,8 @@ _CALLS = (
         {
             "lane_code": "sln_repeat_01",
             "lane_kind": "repeat",
+            "origin_unlocode": "PLGDN",
+            "destination_unlocode": "DEHAM",
             "source_ref": "fixture://sales-lane/a",
         },
     ),

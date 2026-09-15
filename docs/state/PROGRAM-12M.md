@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **490.0** BR6.0 leftover — HITL `crm_pipeline_mark` **Następny:** **491.0** BR6.1 leftover — para UN/LOCODE na `sales_lane` (katalog HITL; nie HubSpot live)
+**Stan (z CURRENT.md):** **491.0** BR6.1 leftover — para UN/LOCODE na `sales_lane` **Następny:** **492.0** BR6.1 leftover — wolumen HITL na `sales_lane` (`volume_label` tekst; nie float)
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

@@ -1702,6 +1702,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "458.0": "/telematics-devices",
   "459.0": "/tracking-consents",
   "460.0": "/sales-lanes",
+  "491.0": "/sales-lanes",
   "461.0": "/shipper-tender-marks",
   "462.0": "/campaign-marks",
   "463.0": "/groupage-dispatcher-marks",

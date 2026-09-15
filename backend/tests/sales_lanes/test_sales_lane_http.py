@@ -28,6 +28,19 @@ def test_migration_365_creates_sales_lane_and_forces_rls() -> None:
         assert banned not in source
 
 
+def test_migration_396_adds_sales_lane_unlocode_pair() -> None:
+    source = (_ROOT / "backend/alembic/versions/396_sales_lane_unlocode.py").read_text(
+        encoding="utf-8",
+    )
+    assert 'revision: str = "396_sales_lane_unlocode"' in source
+    assert 'down_revision: str | None = "395_crm_pipeline_mark"' in source
+    assert "origin_unlocode" in source
+    assert "destination_unlocode" in source
+    assert "ck_sales_lane_unlocode_pair" in source
+    for banned in ("amount", "margin", "float(", "httpx", "currency"):
+        assert banned not in source
+
+
 def test_importlinter_lists_sales_lane_on_deny_list() -> None:
     source = (_ROOT / ".importlinter").read_text(encoding="utf-8")
     forbidden = source.split("[importlinter:contract:extraction-no-rates]", 1)[1]
@@ -78,17 +91,23 @@ class InMemoryLaneDesk:
         lane_code: object,
         lane_kind: object,
         source_ref: object,
+        origin_unlocode: object,
+        destination_unlocode: object,
     ) -> SalesLane:
-        code, kind, origin = parse_sales_lane_row(
+        code, kind, origin, frm, to = parse_sales_lane_row(
             lane_code,
             lane_kind,
             source_ref,
+            origin_unlocode,
+            destination_unlocode,
         )
         row = SalesLane(
             id=uuid4(),
             organization_id=organization_id,
             lane_code=code,
             lane_kind=kind,
+            origin_unlocode=frm,
+            destination_unlocode=to,
             source_ref=origin,
             created_by=user_id,
         )
@@ -120,6 +139,8 @@ def _payload(**extra: object) -> dict[str, object]:
     body: dict[str, object] = {
         "lane_code": "sln_repeat_01",
         "lane_kind": "repeat",
+        "origin_unlocode": "PLGDN",
+        "destination_unlocode": "DEHAM",
         "source_ref": "fixture://sales-lane/a",
     }
     body.update(extra)
@@ -135,6 +156,7 @@ def test_post_sales_lane_persists(lane_http: object) -> None:
     )
     assert response.status_code == 201
     assert response.json()["lane_kind"] == "repeat"
+    assert response.json()["origin_unlocode"] == "PLGDN"
     assert len(desk.rows) == 1
 
 
@@ -158,6 +180,17 @@ def test_post_sales_lane_rejects_bad_kind(lane_http: object) -> None:
     )
     assert response.status_code == 400
     assert "rodzaj" in response.json()["detail"]
+
+
+def test_post_sales_lane_rejects_bad_unlocode(lane_http: object) -> None:
+    client, _desk = lane_http
+    response = client.post(
+        "/api/v1/sales-lanes",
+        headers=bearer_auth_headers(),
+        json=_payload(origin_unlocode="XX"),
+    )
+    assert response.status_code == 400
+    assert "para miejsc" in response.json()["detail"]
 
 
 def test_post_sales_lane_rejects_foreign_source_ref(

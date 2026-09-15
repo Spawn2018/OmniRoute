@@ -24,17 +24,23 @@ class SalesLaneService:
         lane_code: object,
         lane_kind: object,
         source_ref: object,
+        origin_unlocode: object,
+        destination_unlocode: object,
     ) -> SalesLane:
-        code, kind, origin = parse_sales_lane_row(
+        code, kind, origin, from_code, to_code = parse_sales_lane_row(
             lane_code,
             lane_kind,
             source_ref,
+            origin_unlocode,
+            destination_unlocode,
         )
         row = SalesLane(
             id=uuid4(),
             organization_id=organization_id,
             lane_code=code,
             lane_kind=kind,
+            origin_unlocode=from_code,
+            destination_unlocode=to_code,
             source_ref=origin,
             created_by=user_id,
         )

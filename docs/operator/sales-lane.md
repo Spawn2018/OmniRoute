@@ -1,10 +1,10 @@
 # Korytarz sprzedażowy (BR6.1)
 
 Operator zapisuje katalogowy korytarz: kod, `lane_kind`
-(`repeat` / `spot` / `other`) i `source_ref`. To dane HITL,
-nie para UN/LOCODE i nie pipeline CRM.
+(`repeat` / `spot` / `other`), parę UN/LOCODE (origin / destination)
+i `source_ref`. To dane HITL, nie mapa i nie HubSpot.
 
 Nie liczy kwot. Marża nadal tylko na `charge`.
-Para miejsc i wolumen zostają leftover.
+Wolumen zostaje leftover.
 
 Ścieżka UI: `/sales-lanes`.

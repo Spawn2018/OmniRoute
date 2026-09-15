@@ -19,6 +19,8 @@ class SalesLaneCreate(BaseModel):
 
     lane_code: str
     lane_kind: str
+    origin_unlocode: str
+    destination_unlocode: str
     source_ref: str
 
 
@@ -29,6 +31,8 @@ class SalesLaneResponse(BaseModel):
     organization_id: UUID
     lane_code: str
     lane_kind: str
+    origin_unlocode: str
+    destination_unlocode: str
     source_ref: str
 
 
@@ -62,6 +66,8 @@ async def create_sales_lane(
         lane_code=body.lane_code,
         lane_kind=body.lane_kind,
         source_ref=body.source_ref,
+        origin_unlocode=body.origin_unlocode,
+        destination_unlocode=body.destination_unlocode,
     )
     await session.commit()
     return _row(saved)

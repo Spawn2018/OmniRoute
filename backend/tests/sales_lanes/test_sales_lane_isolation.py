@@ -13,6 +13,8 @@ def _row(
     created_by,
     lane_code: str = "sln_repeat_01",
     lane_kind: str = "repeat",
+    origin_unlocode: str = "PLGDN",
+    destination_unlocode: str = "DEHAM",
     source_ref: str = "tenant:manual",
 ) -> SalesLane:
     return SalesLane(
@@ -20,6 +22,8 @@ def _row(
         organization_id=organization_id,
         lane_code=lane_code,
         lane_kind=lane_kind,
+        origin_unlocode=origin_unlocode,
+        destination_unlocode=destination_unlocode,
         source_ref=source_ref,
         created_by=created_by,
     )
@@ -44,6 +48,8 @@ async def test_sales_lane_rls_isolates_tenants(session, two_tenants) -> None:
         created_by=user_b.id,
         lane_code="sln_spot_02",
         lane_kind="spot",
+        origin_unlocode="PLWAW",
+        destination_unlocode="NLRTM",
         source_ref="fixture://sales-lane/b",
     )
     session.add(row_b)

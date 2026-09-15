@@ -29,14 +29,28 @@ class SalesLane(Base, TimestampMixin):
             "lane_kind IN ('repeat', 'spot', 'other')",
             name="ck_sales_lane_kind",
         ),
+        CheckConstraint(
+            r"origin_unlocode ~ '^[A-Z]{2}[A-Z0-9]{3}$'",
+            name="ck_sales_lane_origin_unlocode",
+        ),
+        CheckConstraint(
+            r"destination_unlocode ~ '^[A-Z]{2}[A-Z0-9]{3}$'",
+            name="ck_sales_lane_destination_unlocode",
+        ),
+        CheckConstraint(
+            "origin_unlocode <> destination_unlocode",
+            name="ck_sales_lane_unlocode_pair",
+        ),
         Index("ix_sales_lane_organization_id", "organization_id"),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
-    # RLS: korytarz sprzedazy tego tenanta — katalog HITL, nie para UN/LOCODE.
+    # RLS: korytarz sprzedazy tego tenanta — katalog HITL z para miejsc.
     organization_id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True), ForeignKey("organization.id", ondelete="RESTRICT"), nullable=False
     )
     lane_code: Mapped[str] = mapped_column(String(32), nullable=False)
     lane_kind: Mapped[str] = mapped_column(String(16), nullable=False)
+    origin_unlocode: Mapped[str] = mapped_column(String(5), nullable=False)
+    destination_unlocode: Mapped[str] = mapped_column(String(5), nullable=False)
     source_ref: Mapped[str] = mapped_column(String(256), nullable=False)

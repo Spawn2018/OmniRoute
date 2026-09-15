@@ -1,7 +1,8 @@
 - **456.0 leftover:** FK leada/party · dedup NIP · cold-send. 456.0 = HITL `crm_opportunity`. **489.0** = HITL `crm_activity` (DONE). **490.0** = HITL `crm_pipeline_mark` (DONE).
 - **489.0 leftover:** FK · dedup NIP · cold-send. 489.0 = HITL `crm_activity`. **490.0** = HITL `crm_pipeline_mark` (DONE).
 - **490.0 leftover:** silnik lejka · FK · dedup NIP · cold-send. 490.0 = HITL `crm_pipeline_mark`.
-- **460.0 leftover:** para UN/LOCODE · wolumen · FK do okazji/party · pipeline · HubSpot live. 460.0 = HITL `sales_lane`.
+- **460.0 leftover:** wolumen · FK do okazji/party · HubSpot live. 460.0 = HITL `sales_lane`. **491.0** = para UN/LOCODE (DONE).
+- **491.0 leftover:** wolumen · HubSpot live · FK. 491.0 = para UN/LOCODE na `sales_lane`.
 - **467.0 leftover:** wymiary Decimal · live zezwolenie · escort party FK · FK do `oog_mark`. 467.0 = HITL `oog_permit_mark`.
 - **466.0 leftover:** live rezerwacja · bilet HTTP · solver art. 9 · FK do `trip` / `stop` / `route_plan_mark`. 466.0 = HITL `ferry_booking_mark`.
 - **465.0 leftover:** live DDD · Driver Time Solver · godziny SQL · FK do `trip` / `resource` / `route_plan_mark`. 465.0 = HITL `tacho_plan_mark`.

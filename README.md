@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **490.0** BR6.0 leftover — HITL `crm_pipeline_mark`
+- **Ostatni plaster:** **491.0** BR6.1 leftover — para UN/LOCODE na `sales_lane`
 - **Etap:** Plan — następne Q z Fali BR (wydmuszka / leftover). Komenda `/plan-modul`. Zero kodu produktu do delty.
-- **Następny:** **491.0** BR6.1 leftover — para UN/LOCODE na `sales_lane` (katalog HITL; nie HubSpot live)
+- **Następny:** **492.0** BR6.1 leftover — wolumen HITL na `sales_lane` (`volume_label` tekst; nie float)
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

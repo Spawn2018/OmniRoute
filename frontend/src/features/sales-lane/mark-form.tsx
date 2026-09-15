@@ -10,12 +10,19 @@ export function SalesLaneSave(args: { organizationId: string | null }) {
   const cache = useQueryClient()
   const [code, setCode] = useState("sln_repeat_01")
   const [kind, setKind] = useState<string>("repeat")
+  const [originCode, setOriginCode] = useState("PLGDN")
+  const [destCode, setDestCode] = useState("DEHAM")
   const [origin, setOrigin] = useState("fixture://sales-lane/")
   const save = useMutation({
-    mutationFn: () => saveSalesLane(buildSalesLaneWrite({ code, kind, origin })),
+    mutationFn: () =>
+      saveSalesLane(
+        buildSalesLaneWrite({ code, kind, originCode, destCode, origin }),
+      ),
     onSuccess: () => {
       setCode("sln_repeat_01")
       setKind("repeat")
+      setOriginCode("PLGDN")
+      setDestCode("DEHAM")
       setOrigin("fixture://sales-lane/")
       void cache.invalidateQueries({ queryKey: ["sales-lanes", args.organizationId] })
     },
@@ -30,7 +37,7 @@ export function SalesLaneSave(args: { organizationId: string | null }) {
       }}
     >
       <p className="text-xs text-muted-foreground">
-        Korytarz sprzedaży jako katalog HITL. Rodzaj to dana, nie para miejsc i nie pipeline.
+        Korytarz sprzedaży jako katalog HITL. Para UN/LOCODE to dana, nie mapa i nie HubSpot.
       </p>
       <label className="grid gap-1 text-xs">
         Kod (snake 2–32)
@@ -57,6 +64,28 @@ export function SalesLaneSave(args: { organizationId: string | null }) {
           </label>
         ))}
       </fieldset>
+      <label className="grid gap-1 text-xs">
+        Origin UN/LOCODE
+        <input
+          aria-label="Origin UN/LOCODE"
+          className="h-9 rounded-md border bg-background px-2 font-mono uppercase"
+          maxLength={5}
+          onChange={(change) => setOriginCode(change.target.value)}
+          required
+          value={originCode}
+        />
+      </label>
+      <label className="grid gap-1 text-xs">
+        Destination UN/LOCODE
+        <input
+          aria-label="Destination UN/LOCODE"
+          className="h-9 rounded-md border bg-background px-2 font-mono uppercase"
+          maxLength={5}
+          onChange={(change) => setDestCode(change.target.value)}
+          required
+          value={destCode}
+        />
+      </label>
       <CatalogSourceRefField
         label="source_ref (tenant:manual albo fixture://sales-lane/…)"
         ariaLabel="Pochodzenie korytarza sprzedażowego"
