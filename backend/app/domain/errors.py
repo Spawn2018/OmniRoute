@@ -862,6 +862,10 @@ class InvalidCrmActivity(DomainError):
     """BR6.0 leftover: HITL aktywność CRM — nie pipeline / FK / cold-send."""
 
 
+class InvalidCrmPipelineMark(DomainError):
+    """BR6.0 leftover: HITL etap CRM — nie silnik lejka / FK / cold-send."""
+
+
 class InvalidLcChecklist(DomainError):
     """G3: HITL checklista LC — nie bank due."""
 

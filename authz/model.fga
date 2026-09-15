@@ -101,6 +101,7 @@ type organization
     define can_manage_crm_leads: member
     define can_manage_crm_opportunities: member
     define can_manage_crm_activities: member
+    define can_manage_crm_pipeline_marks: member
     define can_manage_lc_checklists: member
     define can_manage_ncts_drafts: member
     define can_manage_oog_marks: member

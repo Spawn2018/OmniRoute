@@ -147,6 +147,7 @@ from app.models.intervention_outcome import InterventionOutcome  # noqa: F401
 from app.models.crm_lead import CrmLead  # noqa: F401
 from app.models.crm_opportunity import CrmOpportunity  # noqa: F401
 from app.models.crm_activity import CrmActivity  # noqa: F401
+from app.models.crm_pipeline_mark import CrmPipelineMark  # noqa: F401
 from app.models.lc_checklist import LcChecklist  # noqa: F401
 from app.models.ncts_draft import NctsDraft  # noqa: F401
 from app.models.oog_mark import OogMark  # noqa: F401

@@ -1415,6 +1415,11 @@ export const OPS_JOBS = [
     job: "katalog crm_activity HITL",
   },
   {
+    route: BUSINESS_LISTS.crmPipelineMark.route,
+    label: "Etap CRM",
+    job: "katalog crm_pipeline_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.salesLane.route,
     label: "Korytarz sprzedażowy",
     job: "katalog sales_lane HITL",
@@ -1692,6 +1697,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "455.0": "/route-plan-marks",
   "456.0": "/crm-opportunities",
   "489.0": "/crm-activities",
+  "490.0": "/crm-pipeline-marks",
   "457.0": "/position-events",
   "458.0": "/telematics-devices",
   "459.0": "/tracking-consents",
