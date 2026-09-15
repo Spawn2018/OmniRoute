@@ -88,8 +88,8 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **515.0** AI3.1 leftover — undo z `payload.history`
-- **Etap:** Plan — delta **516.0** AI7.0 Cost Allocation Engine (przed `/plaster`)
-- **Następny:** **516.0** AI7.0 — Cost Allocation Engine (nie druga marża; nie live ERP)
+- **Etap:** Plan — delta **516.0** zaakceptowana (`/noc 7`); wolno `/plaster`
+- **Następny:** **516.0** AI7.0 — HITL `allocation_key` (otwarty słownik kluczy; nie SQL; nie druga marża)
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
