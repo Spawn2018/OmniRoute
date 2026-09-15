@@ -88,7 +88,7 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **525.0** AI7.1 — HITL `cfo_narrative_mark`
-- **Etap:** Plan — brak delty; komenda `/plan-modul`
+- **Etap:** Plan — delta **526.0** zaakceptowana (`/noc 7`); wolno `/plaster`
 - **Następny:** **526.0** AI5.0 leftover — HITL `kpi_definition_mark` (definicja KPI per strona; nie wzór z modelu)
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
