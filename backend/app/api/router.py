@@ -29,6 +29,7 @@ from app.api import (
     carrier_inquiries,
     cash_discounts,
     cash_flows,
+    cfo_narrative_marks,
     channel_quotes,
     charge_codes,
     charge_templates,
@@ -507,6 +508,7 @@ api_router.include_router(article50_marks.router)
 api_router.include_router(data_sources.router)
 api_router.include_router(ingest_gate_marks.router)
 api_router.include_router(model_feature_marks.router)
+api_router.include_router(cfo_narrative_marks.router)
 api_router.include_router(asns.router)
 api_router.include_router(otif_marks.router)
 api_router.include_router(routing_guide_enforcements.router)

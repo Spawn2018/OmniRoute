@@ -156,6 +156,7 @@ modules =
     app.services.data_sources
     app.services.ingest_gate_marks
     app.services.model_feature_marks
+    app.services.cfo_narrative_marks
     app.services.automation_bias_marks
     app.services.l3_gate_marks
     app.services.style_cascade_marks
@@ -768,6 +769,9 @@ forbidden_modules =
     app.services.model_feature_marks
     app.repositories.model_feature_marks
     app.models.model_feature_mark
+    app.services.cfo_narrative_marks
+    app.repositories.cfo_narrative_marks
+    app.models.cfo_narrative_mark
     app.services.automation_bias_marks
     app.repositories.automation_bias_marks
     app.models.automation_bias_mark

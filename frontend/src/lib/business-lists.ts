@@ -103,6 +103,10 @@ export const BUSINESS_LISTS = {
     route: "/model-feature-marks",
     tableKey: "model_feature_mark",
   },
+  cfoNarrativeMark: {
+    route: "/cfo-narrative-marks",
+    tableKey: "cfo_narrative_mark",
+  },
   automationBiasMark: {
     route: "/automation-bias-marks",
     tableKey: "automation_bias_mark",
@@ -530,6 +534,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/data-sources",
   "/ingest-gate-marks",
   "/model-feature-marks",
+  "/cfo-narrative-marks",
   "/automation-bias-marks",
   "/l3-gate-marks",
   "/style-cascade-marks",

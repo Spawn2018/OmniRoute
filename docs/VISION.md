@@ -105,6 +105,7 @@ zostają w badaniach `04`).
 | 2026-09-15 | AI5.1 plan (**524.0**): HITL `model_feature_mark` numeric|categorical|derived (`REQUIREMENT`). Live train / feature store `REJECTED`. |
 | 2026-09-15 | **524.0** `model_feature_mark` w kodzie (`CONFIRMED`, git). AI5.1 HITL DONE. Następny = **AI7.1** HITL narracja CFO (`REQUIREMENT`). Live train / TCM park. |
 | 2026-09-15 | AI7.1 plan (**525.0**): HITL `cfo_narrative_mark` anomaly|story|summary (`REQUIREMENT`). Silnik narracji / druga marża `REJECTED`. |
+| 2026-09-15 | **525.0** `cfo_narrative_mark` w kodzie (`CONFIRMED`, git). AI7.1 HITL DONE. Następny = leftover KPI AI5 (`REQUIREMENT`). Silnik narracji / TCM park. |
 | 2026-09-13 | AI3.4 plan (**451.0**): parser `xlsx_sheet` stdlib. `openpyxl` `REJECTED`. `.xls` leftover. |
 | 2026-09-13 | **451.0** `xlsx_sheet` w kodzie (`CONFIRMED`, git). Następny = **AI4.0** FK `plan_snapshot` (`REQUIREMENT`). `.xls` leftover. |
 | 2026-09-13 | AI4.0 plan (**452.0**): FK złożone RESTRICT. CASCADE `REJECTED`. What-if `REJECTED` na tym wierszu. |

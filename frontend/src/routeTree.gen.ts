@@ -36,6 +36,7 @@ import { Route as CarbonMethodsRouteImport } from './routes/carbon-methods'
 import { Route as CargoCoverMarksRouteImport } from './routes/cargo-cover-marks'
 import { Route as CashDiscountsRouteImport } from './routes/cash-discounts'
 import { Route as CashflowsRouteImport } from './routes/cashflows'
+import { Route as CfoNarrativeMarksRouteImport } from './routes/cfo-narrative-marks'
 import { Route as ChannelQuotesRouteImport } from './routes/channel-quotes'
 import { Route as ChargeCodesRouteImport } from './routes/charge-codes'
 import { Route as ChargeTemplatesRouteImport } from './routes/charge-templates'
@@ -447,6 +448,11 @@ const CashDiscountsRoute = CashDiscountsRouteImport.update({
 const CashflowsRoute = CashflowsRouteImport.update({
   id: '/cashflows',
   path: '/cashflows',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CfoNarrativeMarksRoute = CfoNarrativeMarksRouteImport.update({
+  id: '/cfo-narrative-marks',
+  path: '/cfo-narrative-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ChannelQuotesRoute = ChannelQuotesRouteImport.update({
@@ -1865,6 +1871,7 @@ export interface FileRoutesByFullPath {
   '/cargo-cover-marks': typeof CargoCoverMarksRoute
   '/cash-discounts': typeof CashDiscountsRoute
   '/cashflows': typeof CashflowsRoute
+  '/cfo-narrative-marks': typeof CfoNarrativeMarksRoute
   '/channel-quotes': typeof ChannelQuotesRoute
   '/charge-codes': typeof ChargeCodesRoute
   '/charge-templates': typeof ChargeTemplatesRoute
@@ -2171,6 +2178,7 @@ export interface FileRoutesByTo {
   '/cargo-cover-marks': typeof CargoCoverMarksRoute
   '/cash-discounts': typeof CashDiscountsRoute
   '/cashflows': typeof CashflowsRoute
+  '/cfo-narrative-marks': typeof CfoNarrativeMarksRoute
   '/channel-quotes': typeof ChannelQuotesRoute
   '/charge-codes': typeof ChargeCodesRoute
   '/charge-templates': typeof ChargeTemplatesRoute
@@ -2478,6 +2486,7 @@ export interface FileRoutesById {
   '/cargo-cover-marks': typeof CargoCoverMarksRoute
   '/cash-discounts': typeof CashDiscountsRoute
   '/cashflows': typeof CashflowsRoute
+  '/cfo-narrative-marks': typeof CfoNarrativeMarksRoute
   '/channel-quotes': typeof ChannelQuotesRoute
   '/charge-codes': typeof ChargeCodesRoute
   '/charge-templates': typeof ChargeTemplatesRoute
@@ -2786,6 +2795,7 @@ export interface FileRouteTypes {
     | '/cargo-cover-marks'
     | '/cash-discounts'
     | '/cashflows'
+    | '/cfo-narrative-marks'
     | '/channel-quotes'
     | '/charge-codes'
     | '/charge-templates'
@@ -3092,6 +3102,7 @@ export interface FileRouteTypes {
     | '/cargo-cover-marks'
     | '/cash-discounts'
     | '/cashflows'
+    | '/cfo-narrative-marks'
     | '/channel-quotes'
     | '/charge-codes'
     | '/charge-templates'
@@ -3398,6 +3409,7 @@ export interface FileRouteTypes {
     | '/cargo-cover-marks'
     | '/cash-discounts'
     | '/cashflows'
+    | '/cfo-narrative-marks'
     | '/channel-quotes'
     | '/charge-codes'
     | '/charge-templates'
@@ -3705,6 +3717,7 @@ export interface RootRouteChildren {
   CargoCoverMarksRoute: typeof CargoCoverMarksRoute
   CashDiscountsRoute: typeof CashDiscountsRoute
   CashflowsRoute: typeof CashflowsRoute
+  CfoNarrativeMarksRoute: typeof CfoNarrativeMarksRoute
   ChannelQuotesRoute: typeof ChannelQuotesRoute
   ChargeCodesRoute: typeof ChargeCodesRoute
   ChargeTemplatesRoute: typeof ChargeTemplatesRoute
@@ -4173,6 +4186,13 @@ declare module '@tanstack/react-router' {
       path: '/cashflows'
       fullPath: '/cashflows'
       preLoaderRoute: typeof CashflowsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cfo-narrative-marks': {
+      id: '/cfo-narrative-marks'
+      path: '/cfo-narrative-marks'
+      fullPath: '/cfo-narrative-marks'
+      preLoaderRoute: typeof CfoNarrativeMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/channel-quotes': {
@@ -6145,6 +6165,7 @@ const rootRouteChildren: RootRouteChildren = {
   CargoCoverMarksRoute: CargoCoverMarksRoute,
   CashDiscountsRoute: CashDiscountsRoute,
   CashflowsRoute: CashflowsRoute,
+  CfoNarrativeMarksRoute: CfoNarrativeMarksRoute,
   ChannelQuotesRoute: ChannelQuotesRoute,
   ChargeCodesRoute: ChargeCodesRoute,
   ChargeTemplatesRoute: ChargeTemplatesRoute,

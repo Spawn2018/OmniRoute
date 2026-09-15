@@ -994,6 +994,10 @@ class InvalidModelFeatureMark(DomainError):
     """AI5.1: HITL etykieta cechy modelu — nie live train."""
 
 
+class InvalidCfoNarrativeMark(DomainError):
+    """AI7.1: HITL etykieta narracji CFO — nie silnik / nie druga marża."""
+
+
 class InvalidL3GateMark(DomainError):
     """AI8.2: HITL checklista bramy L3 — nie silnik write / nie mutacja autonomy_level."""
 

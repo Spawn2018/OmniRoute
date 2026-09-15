@@ -668,6 +668,11 @@ export const OPS_JOBS = [
     label: "Cecha modelu",
     job: "katalog model_feature_mark HITL",
   },
+  {
+    route: BUSINESS_LISTS.cfoNarrativeMark.route,
+    label: "Narracja CFO",
+    job: "katalog cfo_narrative_mark HITL",
+  },
 {
     route: BUSINESS_LISTS.automationBiasMark.route,
     label: "Automation bias",
@@ -1815,6 +1820,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "522.0": "/data-sources",
   "523.0": "/ingest-gate-marks",
   "524.0": "/model-feature-marks",
+  "525.0": "/cfo-narrative-marks",
   "461.0": "/shipper-tender-marks",
   "462.0": "/campaign-marks",
   "463.0": "/groupage-dispatcher-marks",
