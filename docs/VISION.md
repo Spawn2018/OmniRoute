@@ -125,6 +125,7 @@ zostają w badaniach `04`).
 | 2026-09-14 | BR1.2 plan (**476.0**): HITL `inventory_finance_mark` (valuation|aging|release|other). Wycena SQL / wartość Decimal / FK position·PO / live zastaw `REJECTED` na tym wierszu. |
 | 2026-09-14 | **476.0** `inventory_finance_mark` w kodzie (`CONFIRMED`, git). Następny = **BR1.3** zabezpieczenie na towarze (`REQUIREMENT`). Wycena SQL `REJECTED` na tym wierszu. |
 | 2026-09-14 | BR1.3 plan (**477.0**): HITL `inventory_collateral_mark` (pledge|lien|hold|other). FK position·PO / live zastaw / wartość `REJECTED` na tym wierszu. |
+| 2026-09-15 | Plan **500.0** AI3.0 leftover PATCH `quotation`/`customer_rfq` (`REQUIREMENT`). Próg 70% / vision `REJECTED` na tym wierszu. |
 | 2026-09-15 | **499.0** `shipper_award_mark` w kodzie (`CONFIRMED`, git). Fala BR6.2 HITL domknięta; Alpega / auto-award SQL `REJECTED`. Następny = AI3.0 leftover PATCH quote/rfq (`REQUIREMENT`). |
 | 2026-09-15 | Plan **499.0** BR6.2 leftover `shipper_award_mark` (`REQUIREMENT`). Stance go/hold/no_award; nie auto-award SQL. Alpega live `REJECTED`. |
 | 2026-09-15 | **498.0** `shipper_bind_mark` w kodzie (`CONFIRMED`, git). Następny = leftover BR6.2 auto-award stance (`REQUIREMENT`). Alpega live `REJECTED` na tym wierszu. |

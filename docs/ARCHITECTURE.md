@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **499.0** BR6.2 leftover — HITL `shipper_award_mark`. **Etap:** Plan — po BR6.2 HITL. Komenda `/plan-modul`. **Następny:** **500.0** AI3.0 leftover — PATCH `candidates` na `quotation` / `customer_rfq` (nie live vision; nie próg 70%) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **499.0** BR6.2 leftover — HITL `shipper_award_mark`. **Etap:** Plaster — delta **500.0** zaakceptowana (`/noc 8`). Wolno `/plaster`. **Następny:** **500.0** AI3.0 leftover — PATCH `candidates` na `quotation` / `customer_rfq` (nie live vision; nie próg 70%) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
