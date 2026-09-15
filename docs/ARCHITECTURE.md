@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **489.0** BR6.0 leftover — HITL `crm_activity`. **Etap:** Plan — następne Q z Fali BR (wydmuszka / leftover). Komenda `/plan-modul`. Zero kodu produktu do delty. **Następny:** **490.0** BR6.0 leftover — pipeline CRM (katalog HITL; nie silnik) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **489.0** BR6.0 leftover — HITL `crm_activity`. **Etap:** Plaster — delta **490.0** zaakceptowana `/noc 8`; spec `docs/deltas/open/490.0.md`. **Następny:** **490.0** BR6.0 leftover — etap CRM (katalog HITL; nie silnik) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

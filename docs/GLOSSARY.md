@@ -246,7 +246,8 @@ kolumn. Nie 468.0.
 | wynik interwencji | intervention_outcome | CI7 HITL katalog; leftover saved SQL |
 | lead CRM | crm_lead | G1 HITL katalog; leftover szansa/activity |
 | okazja CRM | crm_opportunity | BR6.0 HITL katalog; leftover activity / pipeline |
-| aktywność CRM | crm_activity | BR6.0 leftover HITL katalog; leftover pipeline |
+| aktywność CRM | crm_activity | BR6.0 leftover HITL katalog; nie silnik lejka |
+| etap CRM | crm_pipeline_mark | BR6.0 leftover HITL katalog etapu; nie silnik lejka |
 | korytarz sprzedażowy | sales_lane | BR6.1 HITL katalog; leftover UN/LOCODE / wolumen |
 | tryb przetargu załadowcy | shipper_tender_mark | BR6.2 HITL katalog; leftover rundy / like-for-like |
 | znacznik kampanii | campaign_mark | BR6.5 HITL katalog; leftover atrybucja live / lejek X7 |
