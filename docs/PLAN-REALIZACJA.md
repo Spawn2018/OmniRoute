@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **512.0** AI3.4 leftover — openpyxl parser Excel (nie live vision)
+**Następny:** **513.0** AI3 leftover — Instructor w CI (nie live OpenAI; nie DocLayNet)
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
