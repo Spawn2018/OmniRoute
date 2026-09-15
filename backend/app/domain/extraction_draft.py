@@ -60,6 +60,40 @@ def append_extraction_history(
     return entries
 
 
+def require_candidate_indexes(raw: object, size: int) -> list[int] | None:
+    """None = wszyscy. Lista 0-based, unikalna, w zakresie."""
+    if raw is None:
+        return None
+    if type(raw) is not list:
+        raise InvalidExtractionDraft("candidate_indexes musi być listą")
+    if len(raw) == 0:
+        raise InvalidExtractionDraft("candidate_indexes nie może być puste")
+    seen: set[int] = set()
+    ordered: list[int] = []
+    for entry in raw:
+        if type(entry) is not int or isinstance(entry, bool):
+            raise InvalidExtractionDraft("indeks kandydata musi być liczbą całkowitą")
+        if entry < 0 or entry >= size:
+            raise InvalidExtractionDraft("indeks kandydata poza zakresem")
+        if entry in seen:
+            raise InvalidExtractionDraft("indeks kandydata powtórzony")
+        seen.add(entry)
+        ordered.append(entry)
+    return ordered
+
+
+def split_candidates_by_indexes(
+    candidates: Sequence[object],
+    indexes: list[int] | None,
+) -> tuple[list[object], list[object]]:
+    if indexes is None:
+        return list(candidates), []
+    chosen = [candidates[index] for index in indexes]
+    skip = set(indexes)
+    leftover = [row for position, row in enumerate(candidates) if position not in skip]
+    return chosen, leftover
+
+
 def require_extract_path(raw: object) -> str:
     if raw is None:
         return _PATH_TEXT

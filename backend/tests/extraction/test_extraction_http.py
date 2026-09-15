@@ -157,6 +157,7 @@ class StubAcceptToRates:
         *,
         draft_id: UUID,
         user_id: UUID,
+        candidate_indexes: list[int] | None = None,
     ) -> ExtractionAcceptResult:
         draft = await self._stub.accept(draft_id=draft_id, user_id=user_id)
         rate = RateLine(
@@ -167,6 +168,8 @@ class StubAcceptToRates:
             currency="EUR",
             source_ref=draft.source_ref,
         )
+        if candidate_indexes is not None and len(candidate_indexes) == 0:
+            raise AssertionError("puste indeksy")
         return ExtractionAcceptResult(draft, [rate], [])
 
 
@@ -296,7 +299,7 @@ def test_http_accept_unknown_code_returns_polish_400(monkeypatch: pytest.MonkeyP
         def __init__(self, _session: object) -> None:
             pass
 
-        async def accept(self, *, draft_id: UUID, user_id: UUID):
+        async def accept(self, *, draft_id: UUID, user_id: UUID, **_unused: object):
             await stub.accept(draft_id=draft_id, user_id=user_id)
             raise UnknownChargeCode("nieznany kod opłaty: LOOSE")
 

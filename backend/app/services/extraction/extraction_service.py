@@ -151,6 +151,35 @@ class ExtractionService:
         await self._session.flush()
         return draft
 
+    async def require_pending(self, draft_id: UUID) -> ExtractionDraft:
+        return await self._require_pending(draft_id)
+
+    async def apply_rate_accept_result(
+        self,
+        *,
+        draft_id: UUID,
+        user_id: UUID,
+        remaining_candidates: list[dict[str, object]],
+        mark_accepted: bool,
+    ) -> ExtractionDraft:
+        draft = await self._require_pending(draft_id)
+        payload = dict(draft.payload)
+        payload["history"] = append_extraction_history(
+            payload.get("history"),
+            revision=payload.get("revision"),
+            candidates=payload.get("candidates"),
+        )
+        payload["candidates"] = remaining_candidates
+        payload["revision"] = next_extraction_revision(payload.get("revision"))
+        draft.payload = payload
+        flag_modified(draft, "payload")
+        if mark_accepted:
+            draft.status = "accepted"
+            draft.reviewed_by = user_id
+            draft.reviewed_at = datetime.now(UTC)
+        await self._session.flush()
+        return draft
+
     async def reject(self, *, draft_id: UUID, user_id: UUID) -> ExtractionDraft:
         draft = await self._require_pending(draft_id)
         draft.status = "rejected"

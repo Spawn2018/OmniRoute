@@ -100,7 +100,8 @@ export function ExtractionQueuePage() {
   const [acceptedRateNote, setAcceptedRateNote] = useState(false)
 
   const acceptMutation = useMutation({
-    mutationFn: (draftId: string) => acceptExtractionDraft(draftId),
+    mutationFn: (args: { draftId: string; candidateIndexes?: number[] }) =>
+      acceptExtractionDraft(args.draftId, args.candidateIndexes),
     onSuccess: () => {
       track("extraction_draft_accepted")
       setAcceptedRateNote(true)
@@ -341,7 +342,9 @@ export function ExtractionQueuePage() {
         busy={
           acceptMutation.isPending || rejectMutation.isPending || patchMutation.isPending
         }
-        onAccept={(draftId) => acceptMutation.mutate(draftId)}
+        onAccept={(draftId, candidateIndexes) =>
+          acceptMutation.mutate({ draftId, candidateIndexes })
+        }
         onReject={(draftId) => rejectMutation.mutate(draftId)}
         onPatchCandidates={(draftId, candidates) =>
           patchMutation.mutate({ draftId, candidates })

@@ -155,16 +155,25 @@ async def patch_extraction_draft(
     return _draft_response(draft)
 
 
+class ExtractionAcceptRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    candidate_indexes: list[int] | None = None
+
+
 @router.post("/{draft_id}/accept", response_model=ExtractionDraftResponse)
 async def accept_extraction_draft(
     draft_id: UUID,
+    body: ExtractionAcceptRequest | None = None,
     _authz: None = Depends(require_permission("can_review_extractions", "organization")),
     session: AsyncSession = Depends(require_tenant_session),
     identity: SessionIdentity = Depends(get_current_identity),
 ) -> ExtractionDraftResponse:
+    indexes = None if body is None else body.candidate_indexes
     outcome = await AcceptExtractionToRates(session).accept(
         draft_id=draft_id,
         user_id=identity.user_id,
+        candidate_indexes=indexes,
     )
     await session.commit()
     return _draft_response(outcome.draft, outcome.rate_lines, outcome.channel_quotes)

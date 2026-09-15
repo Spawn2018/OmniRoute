@@ -4,15 +4,18 @@ from uuid import UUID
 from pydantic import ValidationError
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.ai_transforms.extraction.schemas import ExtractionPayload
-from app.domain.errors import AcceptRequiresRateLine
+from app.ai_transforms.extraction.schemas import ExtractedChargeCandidate, ExtractionPayload
+from app.domain.errors import AcceptRequiresRateLine, InvalidExtractionDraft
 from app.domain.extraction_draft import (
     extraction_carrier_quote_kind,
+    extraction_rate_kind,
     extraction_tender_rfp_kind,
     require_bulk_accept_confidence,
+    require_candidate_indexes,
     require_carrier_quote_payload,
     require_extraction_draft_kind,
     require_tender_rfp_payload,
+    split_candidates_by_indexes,
 )
 from app.domain.rate_line import require_source_ref
 from app.models.channel_quote import ChannelQuote
@@ -54,34 +57,60 @@ class AcceptExtractionToRates:
         *,
         draft_id: UUID,
         user_id: UUID,
+        candidate_indexes: list[int] | None = None,
     ) -> ExtractionAcceptResult:
+        pending = await self._extraction.require_pending(draft_id)
+        kind = require_extraction_draft_kind(getattr(pending, "draft_kind", None))
+        if kind == extraction_rate_kind():
+            return await self._accept_rates(
+                pending,
+                user_id,
+                candidate_indexes=candidate_indexes,
+            )
+        if candidate_indexes is not None:
+            raise InvalidExtractionDraft("partial accept tylko dla rate_line")
         draft = await self._extraction.accept(draft_id=draft_id, user_id=user_id)
-        kind = require_extraction_draft_kind(getattr(draft, "draft_kind", None))
         if kind == extraction_tender_rfp_kind():
             await self._write_intake(draft, user_id)
             return ExtractionAcceptResult(draft, [], [])
         if kind == extraction_carrier_quote_kind():
             quote = await self._write_channel_quote(draft, user_id)
             return ExtractionAcceptResult(draft, [], [quote])
-        return ExtractionAcceptResult(draft, await self._write_rates(draft, user_id), [])
+        raise AcceptRequiresRateLine("Szkic nie jest rate_line")
 
-    async def _write_rates(self, draft: ExtractionDraft, user_id: UUID) -> list[RateLine]:
+    async def _accept_rates(
+        self,
+        draft: ExtractionDraft,
+        user_id: UUID,
+        *,
+        candidate_indexes: list[int] | None,
+    ) -> ExtractionAcceptResult:
         payload = _require_rate_payload(draft)
-        require_bulk_accept_confidence(payload.candidates)
+        indexes = require_candidate_indexes(candidate_indexes, len(payload.candidates))
+        selected, remaining = split_candidates_by_indexes(payload.candidates, indexes)
+        require_bulk_accept_confidence(selected)
         origin = require_source_ref(draft.source_ref)
         written: list[RateLine] = []
-        for candidate in payload.candidates:
+        for candidate in selected:
+            row = _as_charge_candidate(candidate)
             written.append(
                 await self._rates.create_buy_rate(
                     organization_id=draft.organization_id,
                     user_id=user_id,
-                    charge_code=candidate.code,
-                    amount=candidate.amount_text,
-                    currency=candidate.currency,
+                    charge_code=row.code,
+                    amount=row.amount_text,
+                    currency=row.currency,
                     source_ref=origin,
                 ),
             )
-        return written
+        leftover = [_as_charge_candidate(row).model_dump() for row in remaining]
+        updated = await self._extraction.apply_rate_accept_result(
+            draft_id=draft.id,
+            user_id=user_id,
+            remaining_candidates=leftover,
+            mark_accepted=len(leftover) == 0,
+        )
+        return ExtractionAcceptResult(updated, written, [])
 
     async def _write_channel_quote(self, draft: ExtractionDraft, user_id: UUID) -> ChannelQuote:
         stored = require_carrier_quote_payload(draft.payload)
@@ -110,11 +139,17 @@ class AcceptExtractionToRates:
         )
 
 
+def _as_charge_candidate(raw: object) -> ExtractedChargeCandidate:
+    if isinstance(raw, ExtractedChargeCandidate):
+        return raw
+    return ExtractedChargeCandidate.model_validate(raw)
+
+
 def _require_rate_payload(draft: ExtractionDraft) -> ExtractionPayload:
     try:
         payload = ExtractionPayload.model_validate(draft.payload)
     except ValidationError as exc:
         raise AcceptRequiresRateLine("Szkic nie zawiera poprawnych kandydatów stawki") from exc
-    if len(payload.candidates) == 0:
-        raise AcceptRequiresRateLine("Akceptacja wymaga kandydata stawki kupna")
+    if not payload.candidates:
+        raise AcceptRequiresRateLine("Szkic nie zawiera kandydatów stawki")
     return payload

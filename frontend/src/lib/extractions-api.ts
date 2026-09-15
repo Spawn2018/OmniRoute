@@ -221,10 +221,27 @@ export async function patchExtractionCandidates(
   return toDraft(data)
 }
 
-export async function acceptExtractionDraft(draftId: string): Promise<ExtractionDraft> {
-  const { data, error, response } = await acceptExtractionDraftApiV1ExtractionsDraftIdAcceptPost({
-    path: { draft_id: draftId },
-  })
+export async function acceptExtractionDraft(
+  draftId: string,
+  candidateIndexes?: number[],
+): Promise<ExtractionDraft> {
+  type AcceptOpts = {
+    path: { draft_id: string }
+    body?: { candidate_indexes: number[] }
+  }
+  type AcceptResult = {
+    data?: ExtractionDraftResponse
+    error?: unknown
+    response: Response
+  }
+  const options: AcceptOpts = { path: { draft_id: draftId } }
+  if (candidateIndexes !== undefined) {
+    options.body = { candidate_indexes: candidateIndexes }
+  }
+  const call = acceptExtractionDraftApiV1ExtractionsDraftIdAcceptPost as (
+    opts: AcceptOpts,
+  ) => Promise<AcceptResult>
+  const { data, error, response } = await call(options)
   if (error || !data) {
     throw new ApiError(JSON.stringify(error) || "Błąd akceptacji", httpErrorStatus(response))
   }

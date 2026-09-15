@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **503.0** AI3.1 leftover — `payload.history` JSONB
-- **Etap:** Plan — delta **504.0** AI3.0 leftover partial write (przed `/plaster`)
-- **Następny:** **504.0** AI3.0 leftover — partial write przy accept (nie live vision; nie Instructor)
+- **Ostatni plaster:** **504.0** AI3.0 leftover — partial accept `candidate_indexes`
+- **Etap:** Plan — delta **505.0** AI3.0 leftover M-03 `hitl_confidence_*` (przed `/plaster`)
+- **Następny:** **505.0** AI3.0 leftover — próg pewności HITL w `organization_setting` (nie live vision; nie Instructor)
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

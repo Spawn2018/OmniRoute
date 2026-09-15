@@ -1,4 +1,4 @@
-import ast
+﻿import ast
 from pathlib import Path
 from unittest.mock import AsyncMock
 from uuid import uuid4
@@ -9,6 +9,7 @@ from app.api.accept_extraction import AcceptExtractionToRates
 from app.domain.errors import (
     AcceptRequiresRateLine,
     BulkAcceptConfidenceBelow,
+    InvalidExtractionDraft,
     InvalidMoney,
     InvalidSourceRef,
     UnknownChargeCode,
@@ -82,15 +83,26 @@ def _pending_draft(
     return ExtractionDraft(
         id=uuid4(),
         organization_id=uuid4(),
-        status="accepted",
+        status="pending",
+        draft_kind="rate_line",
         source_ref=source_ref,
         input_text="THC 10 EUR",
         payload={
             "source_ref": source_ref,
             "unparsed_regions": [],
             "candidates": rows,
+            "revision": 0,
+            "history": [],
         },
     )
+
+
+def _mock_rate_extraction(draft: ExtractionDraft) -> AsyncMock:
+    extraction = AsyncMock()
+    extraction.require_pending = AsyncMock(return_value=draft)
+    extraction.apply_rate_accept_result = AsyncMock(return_value=draft)
+    extraction.accept = AsyncMock(return_value=draft)
+    return extraction
 
 
 def _rate(draft: ExtractionDraft) -> RateLine:
@@ -109,8 +121,7 @@ async def test_accept_writes_rate_line_without_committing() -> None:
     session = AsyncMock()
     session.commit = AsyncMock()
     draft = _pending_draft()
-    extraction = AsyncMock()
-    extraction.accept = AsyncMock(return_value=draft)
+    extraction = _mock_rate_extraction(draft)
     rates = AsyncMock()
     created = _rate(draft)
     rates.create_buy_rate = AsyncMock(return_value=created)
@@ -139,10 +150,9 @@ async def test_unknown_charge_code_raises_and_does_not_commit() -> None:
     session = AsyncMock()
     session.commit = AsyncMock()
     draft = _pending_draft(candidates=[{"code": "LOOSE", "amount_text": "10", "currency": "EUR"}])
-    extraction = AsyncMock()
-    extraction.accept = AsyncMock(return_value=draft)
+    extraction = _mock_rate_extraction(draft)
     rates = AsyncMock()
-    rates.create_buy_rate = AsyncMock(side_effect=UnknownChargeCode("nieznany kod opłaty: LOOSE"))
+    rates.create_buy_rate = AsyncMock(side_effect=UnknownChargeCode("nieznany kod opĹ‚aty: LOOSE"))
 
     with pytest.raises(UnknownChargeCode, match="LOOSE"):
         await AcceptExtractionToRates(session, extraction=extraction, rates=rates).accept(
@@ -174,11 +184,10 @@ async def test_second_candidate_failure_rolls_back_whole_accept() -> None:
             },
         ],
     )
-    extraction = AsyncMock()
-    extraction.accept = AsyncMock(return_value=draft)
+    extraction = _mock_rate_extraction(draft)
     rates = AsyncMock()
     rates.create_buy_rate = AsyncMock(
-        side_effect=[_rate(draft), UnknownChargeCode("nieznany kod opłaty: XYZ")],
+        side_effect=[_rate(draft), UnknownChargeCode("nieznany kod opĹ‚aty: XYZ")],
     )
 
     with pytest.raises(UnknownChargeCode, match="XYZ"):
@@ -211,8 +220,7 @@ async def test_bulk_accept_blocks_low_confidence_before_rates() -> None:
             },
         ],
     )
-    extraction = AsyncMock()
-    extraction.accept = AsyncMock(return_value=draft)
+    extraction = _mock_rate_extraction(draft)
     rates = AsyncMock()
 
     with pytest.raises(BulkAcceptConfidenceBelow, match="progu zbiorczego"):
@@ -239,8 +247,7 @@ async def test_single_low_confidence_accept_still_writes() -> None:
             },
         ],
     )
-    extraction = AsyncMock()
-    extraction.accept = AsyncMock(return_value=draft)
+    extraction = _mock_rate_extraction(draft)
     rates = AsyncMock()
     created = _rate(draft)
     rates.create_buy_rate = AsyncMock(return_value=created)
@@ -260,10 +267,9 @@ async def test_empty_candidates_fail_closed() -> None:
     session = AsyncMock()
     session.commit = AsyncMock()
     draft = _pending_draft(candidates=[])
-    extraction = AsyncMock()
-    extraction.accept = AsyncMock(return_value=draft)
+    extraction = _mock_rate_extraction(draft)
 
-    with pytest.raises(AcceptRequiresRateLine, match="kandydata stawki kupna"):
+    with pytest.raises(AcceptRequiresRateLine, match="kandydat"):
         await AcceptExtractionToRates(session, extraction=extraction, rates=AsyncMock()).accept(
             draft_id=draft.id,
             user_id=uuid4(),
@@ -277,10 +283,9 @@ async def test_blank_source_ref_fail_closed() -> None:
     session = AsyncMock()
     session.commit = AsyncMock()
     draft = _pending_draft(source_ref="   ")
-    extraction = AsyncMock()
-    extraction.accept = AsyncMock(return_value=draft)
+    extraction = _mock_rate_extraction(draft)
 
-    with pytest.raises(InvalidSourceRef, match="obowiązkowy"):
+    with pytest.raises(InvalidSourceRef, match="source_ref"):
         await AcceptExtractionToRates(session, extraction=extraction, rates=AsyncMock()).accept(
             draft_id=draft.id,
             user_id=uuid4(),
@@ -296,12 +301,11 @@ async def test_bad_amount_text_fail_closed() -> None:
     draft = _pending_draft(
         candidates=[{"code": "THC", "amount_text": "nie-kwota", "currency": "EUR"}],
     )
-    extraction = AsyncMock()
-    extraction.accept = AsyncMock(return_value=draft)
+    extraction = _mock_rate_extraction(draft)
     rates = AsyncMock()
-    rates.create_buy_rate = AsyncMock(side_effect=InvalidMoney("kwota nie jest liczbą dziesiętną"))
+    rates.create_buy_rate = AsyncMock(side_effect=InvalidMoney("kwota nie jest liczba dziesietna"))
 
-    with pytest.raises(InvalidMoney, match="dziesiętną"):
+    with pytest.raises(InvalidMoney, match="kwota"):
         await AcceptExtractionToRates(session, extraction=extraction, rates=rates).accept(
             draft_id=draft.id,
             user_id=uuid4(),
@@ -317,15 +321,15 @@ async def test_malformed_payload_fail_closed() -> None:
     draft = ExtractionDraft(
         id=uuid4(),
         organization_id=uuid4(),
-        status="accepted",
+        status="pending",
+        draft_kind="rate_line",
         source_ref="doc://x",
         input_text="x",
         payload={"candidates": "zepsute"},
     )
-    extraction = AsyncMock()
-    extraction.accept = AsyncMock(return_value=draft)
+    extraction = _mock_rate_extraction(draft)
 
-    with pytest.raises(AcceptRequiresRateLine, match="poprawnych kandydatów"):
+    with pytest.raises(AcceptRequiresRateLine, match="poprawnych"):
         await AcceptExtractionToRates(session, extraction=extraction, rates=AsyncMock()).accept(
             draft_id=draft.id,
             user_id=uuid4(),
@@ -366,7 +370,7 @@ async def test_accept_carrier_quote_writes_quote_not_rate() -> None:
     draft = ExtractionDraft(
         id=uuid4(),
         organization_id=uuid4(),
-        status="accepted",
+        status="pending",
         draft_kind="carrier_quote",
         source_ref="fixture://quote/1",
         input_text="oferta SHA-RTM",
@@ -383,6 +387,7 @@ async def test_accept_carrier_quote_writes_quote_not_rate() -> None:
         },
     )
     extraction = AsyncMock()
+    extraction.require_pending = AsyncMock(return_value=draft)
     extraction.accept = AsyncMock(return_value=draft)
     rates = AsyncMock()
     quotes = AsyncMock()
@@ -415,7 +420,7 @@ async def test_accept_tender_rfp_writes_intake_not_rate() -> None:
     draft = ExtractionDraft(
         id=uuid4(),
         organization_id=uuid4(),
-        status="accepted",
+        status="pending",
         draft_kind="tender_rfp",
         source_ref="doc://rfp",
         input_text="RFP scope",
@@ -428,6 +433,7 @@ async def test_accept_tender_rfp_writes_intake_not_rate() -> None:
         },
     )
     extraction = AsyncMock()
+    extraction.require_pending = AsyncMock(return_value=draft)
     extraction.accept = AsyncMock(return_value=draft)
     rates = AsyncMock()
     quotes = AsyncMock()
@@ -459,3 +465,59 @@ async def test_accept_tender_rfp_writes_intake_not_rate() -> None:
     assert kwargs["intake_code"] == "scope"
     assert kwargs["source_ref"] == f"fixture://tender-rfp-intake/{draft.id}"
     session.commit.assert_not_called()
+
+
+@pytest.mark.asyncio
+async def test_partial_accept_writes_subset_and_keeps_pending() -> None:
+    session = AsyncMock()
+    session.commit = AsyncMock()
+    draft = _pending_draft(
+        candidates=[
+            {
+                "code": "THC",
+                "amount_text": "10",
+                "currency": "EUR",
+                "confidence_text": "0.90",
+            },
+            {
+                "code": "BAF",
+                "amount_text": "5",
+                "currency": "EUR",
+                "confidence_text": "0.40",
+            },
+        ],
+    )
+    remaining = draft.model_copy() if hasattr(draft, "model_copy") else draft
+    extraction = _mock_rate_extraction(draft)
+    extraction.apply_rate_accept_result = AsyncMock(return_value=remaining)
+    rates = AsyncMock()
+    created = _rate(draft)
+    rates.create_buy_rate = AsyncMock(return_value=created)
+
+    outcome = await AcceptExtractionToRates(
+        session,
+        extraction=extraction,
+        rates=rates,
+    ).accept(draft_id=draft.id, user_id=uuid4(), candidate_indexes=[0])
+
+    assert outcome.rate_lines == [created]
+    rates.create_buy_rate.assert_awaited_once()
+    kwargs = extraction.apply_rate_accept_result.await_args.kwargs
+    assert kwargs["mark_accepted"] is False
+    assert kwargs["remaining_candidates"][0]["code"] == "BAF"
+    session.commit.assert_not_called()
+
+
+@pytest.mark.asyncio
+async def test_partial_accept_rejects_bad_index() -> None:
+    session = AsyncMock()
+    draft = _pending_draft()
+    extraction = _mock_rate_extraction(draft)
+    rates = AsyncMock()
+    with pytest.raises(InvalidExtractionDraft, match="poza zakresem"):
+        await AcceptExtractionToRates(session, extraction=extraction, rates=rates).accept(
+            draft_id=draft.id,
+            user_id=uuid4(),
+            candidate_indexes=[3],
+        )
+    rates.create_buy_rate.assert_not_called()

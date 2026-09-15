@@ -13,10 +13,12 @@ from app.domain.extraction_draft import (
     bulk_accept_confidence_ok,
     next_extraction_revision,
     require_bulk_accept_confidence,
+    require_candidate_indexes,
     require_extract_path,
     require_extraction_draft_kind,
     require_rate_candidates_editable,
     require_tender_rfp_payload,
+    split_candidates_by_indexes,
 )
 
 
@@ -67,6 +69,25 @@ def test_append_extraction_history_starts_and_grows() -> None:
     )
     assert len(second) == 2
     assert second[1]["revision"] == 1
+
+
+def test_require_candidate_indexes_none_means_all() -> None:
+    assert require_candidate_indexes(None, 3) is None
+
+
+def test_require_candidate_indexes_rejects_oob_and_dup() -> None:
+    with pytest.raises(InvalidExtractionDraft):
+        require_candidate_indexes([0, 0], 2)
+    with pytest.raises(InvalidExtractionDraft):
+        require_candidate_indexes([2], 2)
+    assert require_candidate_indexes([1, 0], 2) == [1, 0]
+
+
+def test_split_candidates_by_indexes_partial() -> None:
+    rows = ["a", "b", "c"]
+    chosen, leftover = split_candidates_by_indexes(rows, [0, 2])
+    assert chosen == ["a", "c"]
+    assert leftover == ["b"]
 
 
 def test_rate_candidates_editable_allowlist() -> None:

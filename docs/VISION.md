@@ -125,6 +125,8 @@ zostają w badaniach `04`).
 | 2026-09-14 | BR1.2 plan (**476.0**): HITL `inventory_finance_mark` (valuation|aging|release|other). Wycena SQL / wartość Decimal / FK position·PO / live zastaw `REJECTED` na tym wierszu. |
 | 2026-09-14 | **476.0** `inventory_finance_mark` w kodzie (`CONFIRMED`, git). Następny = **BR1.3** zabezpieczenie na towarze (`REQUIREMENT`). Wycena SQL `REJECTED` na tym wierszu. |
 | 2026-09-14 | BR1.3 plan (**477.0**): HITL `inventory_collateral_mark` (pledge|lien|hold|other). FK position·PO / live zastaw / wartość `REJECTED` na tym wierszu. |
+| 2026-09-15 | **504.0** partial accept `candidate_indexes` w kodzie (`CONFIRMED`, git). Reszta pending. Następny = M-03 `hitl_confidence_*` (`REQUIREMENT`). Quote/RFP partial / auto-accept / Instructor / live vision `REJECTED`. |
+| 2026-09-15 | Plan **504.0** AI3.0 leftover partial write przy accept (`REQUIREMENT`). Indeksy kandydatów; reszta pending. Quote/RFP partial / auto-accept / Instructor / live vision `REJECTED`. |
 | 2026-09-15 | **503.0** `payload.history` w kodzie (`CONFIRMED`, git). Snapshot przy PATCH. Następny = AI3.0 leftover partial write (`REQUIREMENT`). Tabela historii / undo / Instructor / live vision `REJECTED`. |
 | 2026-09-15 | Plan **503.0** AI3.1 leftover historia wierszy w `payload.history` JSONB (`REQUIREMENT`). Snapshot przy PATCH. Tabela historii / undo / Instructor / live vision `REJECTED`. |
 | 2026-09-15 | **502.0** `extraction_prompt_mark` w kodzie (`CONFIRMED`, git). Prompt jako dana HITL. Następny = historia JSONB leftover (`REQUIREMENT`). Wiring LLM / tabela historii / live vision `REJECTED`. |
