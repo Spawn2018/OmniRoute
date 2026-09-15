@@ -15,11 +15,13 @@ kandydatów. Nic nie idzie do stawek, dopóki nie wciśniesz Akceptuj.
    Działa dla szkiców `rate_line`, `carrier_quote` i `tender_rfp`.
 6. „Zapisz poprawkę” podnosi wersję o jeden i dopisuje poprzednich kandydatów
    do `payload.history` (JSONB, nie osobna tabela). Źródło i nierozpoznane fragmenty zostają.
-7. Potem Akceptuj (stawka kupna) albo Odrzuć. Przy `rate_line` zaznacz checkboxami,
+7. „Cofnij” przywraca ostatni wpis z historii (kandydaci + numer wersji) i skraca listę.
+   Działa tylko gdy historia nie jest pusta — nie wybierasz dowolnej starej wersji.
+8. Potem Akceptuj (stawka kupna) albo Odrzuć. Przy `rate_line` zaznacz checkboxami,
    których kandydatów zapisać — reszta zostaje w szkicu `pending`. Accept czyta
    bieżących kandydatów — nie historię. Quote/RFP nadal akceptujesz w całości.
 
-Czego tu nie ma: cofanie do starej wersji, ponowne wołanie modelu, zapis `charge`,
+Czego tu nie ma: cofanie do wskazanej rewizji z listy, ponowne wołanie modelu, zapis `charge`,
 rysowanie ramki na PDF. Marża zostaje na `/charges`.
 
 Przy dwóch i więcej **zaznaczonych** kandydatach Akceptuj działa tylko gdy każdy

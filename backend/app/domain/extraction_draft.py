@@ -60,6 +60,34 @@ def append_extraction_history(
     return entries
 
 
+class UndoneExtractionHistory(NamedTuple):
+    history: list[dict[str, object]]
+    candidates: list[object]
+    revision: int
+
+
+def undo_extraction_history(history: object) -> UndoneExtractionHistory:
+    """Przywróć ostatni snapshot; bez nowego wpisu (515.0)."""
+    if type(history) is not list or len(history) == 0:
+        raise InvalidExtractionDraft("brak historii do cofnięcia")
+    entries: list[dict[str, object]] = []
+    for row in history:
+        if type(row) is dict:
+            entries.append(dict(row))
+    if len(entries) == 0:
+        raise InvalidExtractionDraft("brak historii do cofnięcia")
+    last = entries.pop()
+    revision_raw = last.get("revision")
+    revision = revision_raw if type(revision_raw) is int and revision_raw >= 0 else 0
+    candidates_raw = last.get("candidates")
+    candidates = list(candidates_raw) if type(candidates_raw) is list else []
+    return UndoneExtractionHistory(
+        history=entries,
+        candidates=candidates,
+        revision=revision,
+    )
+
+
 def require_candidate_indexes(raw: object, size: int) -> list[int] | None:
     """None = wszyscy. Lista 0-based, unikalna, w zakresie."""
     if raw is None:

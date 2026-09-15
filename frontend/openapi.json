@@ -522,6 +522,23 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/ExtractionAcceptRequest"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Body"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -553,6 +570,54 @@
         ],
         "summary": "Reject Extraction Draft",
         "operationId": "reject_extraction_draft_api_v1_extractions__draft_id__reject_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "draft_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Draft Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExtractionDraftResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/extractions/{draft_id}/undo": {
+      "post": {
+        "tags": [
+          "extractions"
+        ],
+        "summary": "Undo Extraction Draft",
+        "operationId": "undo_extraction_draft_api_v1_extractions__draft_id__undo_post",
         "security": [
           {
             "HTTPBearer": []
@@ -3345,6 +3410,80 @@
         ]
       }
     },
+    "/api/v1/route-plan-marks": {
+      "get": {
+        "tags": [
+          "route-plan-marks"
+        ],
+        "summary": "List Route Plan Marks",
+        "operationId": "list_route_plan_marks_api_v1_route_plan_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/RoutePlanMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Route Plan Marks Api V1 Route Plan Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "route-plan-marks"
+        ],
+        "summary": "Create Route Plan Mark",
+        "operationId": "create_route_plan_mark_api_v1_route_plan_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoutePlanMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoutePlanMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/rag-sop-marks": {
       "get": {
         "tags": [
@@ -4359,6 +4498,80 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/TachoOfficeMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/tacho-plan-marks": {
+      "get": {
+        "tags": [
+          "tacho-plan-marks"
+        ],
+        "summary": "List Tacho Plan Marks",
+        "operationId": "list_tacho_plan_marks_api_v1_tacho_plan_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TachoPlanMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Tacho Plan Marks Api V1 Tacho Plan Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "tacho-plan-marks"
+        ],
+        "summary": "Create Tacho Plan Mark",
+        "operationId": "create_tacho_plan_mark_api_v1_tacho_plan_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TachoPlanMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TachoPlanMarkResponse"
                 }
               }
             }
@@ -5710,6 +5923,228 @@
         ]
       }
     },
+    "/api/v1/shipper-like-marks": {
+      "get": {
+        "tags": [
+          "shipper-like-marks"
+        ],
+        "summary": "List Shipper Like Marks",
+        "operationId": "list_shipper_like_marks_api_v1_shipper_like_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ShipperLikeMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Shipper Like Marks Api V1 Shipper Like Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "shipper-like-marks"
+        ],
+        "summary": "Create Shipper Like Mark",
+        "operationId": "create_shipper_like_mark_api_v1_shipper_like_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipperLikeMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShipperLikeMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/shipper-round-marks": {
+      "get": {
+        "tags": [
+          "shipper-round-marks"
+        ],
+        "summary": "List Shipper Round Marks",
+        "operationId": "list_shipper_round_marks_api_v1_shipper_round_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ShipperRoundMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Shipper Round Marks Api V1 Shipper Round Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "shipper-round-marks"
+        ],
+        "summary": "Create Shipper Round Mark",
+        "operationId": "create_shipper_round_mark_api_v1_shipper_round_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipperRoundMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShipperRoundMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/shipper-tender-marks": {
+      "get": {
+        "tags": [
+          "shipper-tender-marks"
+        ],
+        "summary": "List Shipper Tender Marks",
+        "operationId": "list_shipper_tender_marks_api_v1_shipper_tender_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ShipperTenderMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Shipper Tender Marks Api V1 Shipper Tender Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "shipper-tender-marks"
+        ],
+        "summary": "Create Shipper Tender Mark",
+        "operationId": "create_shipper_tender_mark_api_v1_shipper_tender_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipperTenderMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShipperTenderMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/shipment-stakeholders": {
       "get": {
         "tags": [
@@ -6354,6 +6789,80 @@
             }
           }
         }
+      }
+    },
+    "/api/v1/tracking-consents": {
+      "get": {
+        "tags": [
+          "tracking-consents"
+        ],
+        "summary": "List Tracking Consents",
+        "operationId": "list_tracking_consents_api_v1_tracking_consents_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TrackingConsentResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Tracking Consents Api V1 Tracking Consents Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "tracking-consents"
+        ],
+        "summary": "Create Tracking Consent",
+        "operationId": "create_tracking_consent_api_v1_tracking_consents_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TrackingConsentCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrackingConsentResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
       }
     },
     "/api/v1/tracking-events": {
@@ -7244,6 +7753,80 @@
         ]
       }
     },
+    "/api/v1/oog-permit-marks": {
+      "get": {
+        "tags": [
+          "oog-permit-marks"
+        ],
+        "summary": "List Oog Permit Marks",
+        "operationId": "list_oog_permit_marks_api_v1_oog_permit_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/OogPermitMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Oog Permit Marks Api V1 Oog Permit Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "oog-permit-marks"
+        ],
+        "summary": "Create Oog Permit Mark",
+        "operationId": "create_oog_permit_mark_api_v1_oog_permit_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OogPermitMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OogPermitMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/consignments": {
       "get": {
         "tags": [
@@ -8042,6 +8625,228 @@
         ]
       }
     },
+    "/api/v1/lcl-console-marks": {
+      "get": {
+        "tags": [
+          "lcl-console-marks"
+        ],
+        "summary": "List Lcl Console Marks",
+        "operationId": "list_lcl_console_marks_api_v1_lcl_console_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/LclConsoleMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Lcl Console Marks Api V1 Lcl Console Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "lcl-console-marks"
+        ],
+        "summary": "Create Lcl Console Mark",
+        "operationId": "create_lcl_console_mark_api_v1_lcl_console_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LclConsoleMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LclConsoleMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/nac-marks": {
+      "get": {
+        "tags": [
+          "nac-marks"
+        ],
+        "summary": "List Nac Marks",
+        "operationId": "list_nac_marks_api_v1_nac_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/NacMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Nac Marks Api V1 Nac Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "nac-marks"
+        ],
+        "summary": "Create Nac Mark",
+        "operationId": "create_nac_mark_api_v1_nac_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NacMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NacMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/silk-corridor-marks": {
+      "get": {
+        "tags": [
+          "silk-corridor-marks"
+        ],
+        "summary": "List Silk Corridor Marks",
+        "operationId": "list_silk_corridor_marks_api_v1_silk_corridor_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SilkCorridorMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Silk Corridor Marks Api V1 Silk Corridor Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "silk-corridor-marks"
+        ],
+        "summary": "Create Silk Corridor Mark",
+        "operationId": "create_silk_corridor_mark_api_v1_silk_corridor_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SilkCorridorMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SilkCorridorMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/lc-checklists": {
       "get": {
         "tags": [
@@ -8338,6 +9143,36 @@
         ]
       }
     },
+    "/api/v1/circle-sim-pairs": {
+      "get": {
+        "tags": [
+          "circle-sim-pairs"
+        ],
+        "summary": "List Circle Sim Pairs",
+        "operationId": "list_circle_sim_pairs_api_v1_circle_sim_pairs_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CircleSimPairResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Circle Sim Pairs Api V1 Circle Sim Pairs Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/clause-notices": {
       "get": {
         "tags": [
@@ -8464,6 +9299,80 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/CalibrationMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/campaign-marks": {
+      "get": {
+        "tags": [
+          "campaign-marks"
+        ],
+        "summary": "List Campaign Marks",
+        "operationId": "list_campaign_marks_api_v1_campaign_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CampaignMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Campaign Marks Api V1 Campaign Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "campaign-marks"
+        ],
+        "summary": "Create Campaign Mark",
+        "operationId": "create_campaign_mark_api_v1_campaign_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CampaignMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CampaignMarkResponse"
                 }
               }
             }
@@ -8760,6 +9669,80 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/InterventionOutcomeResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/load-order-marks": {
+      "get": {
+        "tags": [
+          "load-order-marks"
+        ],
+        "summary": "List Load Order Marks",
+        "operationId": "list_load_order_marks_api_v1_load_order_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/LoadOrderMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Load Order Marks Api V1 Load Order Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "load-order-marks"
+        ],
+        "summary": "Create Load Order Mark",
+        "operationId": "create_load_order_mark_api_v1_load_order_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoadOrderMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoadOrderMarkResponse"
                 }
               }
             }
@@ -11134,6 +12117,80 @@
         }
       }
     },
+    "/api/v1/sales-lanes": {
+      "get": {
+        "tags": [
+          "sales-lanes"
+        ],
+        "summary": "List Sales Lanes",
+        "operationId": "list_sales_lanes_api_v1_sales_lanes_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SalesLaneResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Sales Lanes Api V1 Sales Lanes Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "sales-lanes"
+        ],
+        "summary": "Create Sales Lane",
+        "operationId": "create_sales_lane_api_v1_sales_lanes_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SalesLaneCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SalesLaneResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/schedule-exception-marks": {
       "get": {
         "tags": [
@@ -12096,6 +13153,80 @@
         ]
       }
     },
+    "/api/v1/telematics-devices": {
+      "get": {
+        "tags": [
+          "telematics-devices"
+        ],
+        "summary": "List Telematics Devices",
+        "operationId": "list_telematics_devices_api_v1_telematics_devices_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TelematicsDeviceResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Telematics Devices Api V1 Telematics Devices Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "telematics-devices"
+        ],
+        "summary": "Create Telematics Device",
+        "operationId": "create_telematics_device_api_v1_telematics_devices_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TelematicsDeviceCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TelematicsDeviceResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/erp-connectors": {
       "get": {
         "tags": [
@@ -12148,6 +13279,1264 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ErpConnectorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/factoring-connectors": {
+      "get": {
+        "tags": [
+          "factoring-connectors"
+        ],
+        "summary": "List Factoring Connectors",
+        "operationId": "list_factoring_connectors_api_v1_factoring_connectors_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/FactoringConnectorResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Factoring Connectors Api V1 Factoring Connectors Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "factoring-connectors"
+        ],
+        "summary": "Create Factoring Connector",
+        "operationId": "create_factoring_connector_api_v1_factoring_connectors_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FactoringConnectorCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FactoringConnectorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/po-financing-marks": {
+      "get": {
+        "tags": [
+          "po-financing-marks"
+        ],
+        "summary": "List Po Financing Marks",
+        "operationId": "list_po_financing_marks_api_v1_po_financing_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PoFinancingMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Po Financing Marks Api V1 Po Financing Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "po-financing-marks"
+        ],
+        "summary": "Create Po Financing Mark",
+        "operationId": "create_po_financing_mark_api_v1_po_financing_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PoFinancingMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PoFinancingMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/wms-flow-marks": {
+      "get": {
+        "tags": [
+          "wms-flow-marks"
+        ],
+        "summary": "List Wms Flow Marks",
+        "operationId": "list_wms_flow_marks_api_v1_wms_flow_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/WmsFlowMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Wms Flow Marks Api V1 Wms Flow Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "wms-flow-marks"
+        ],
+        "summary": "Create Wms Flow Mark",
+        "operationId": "create_wms_flow_mark_api_v1_wms_flow_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WmsFlowMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WmsFlowMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/rfid-marks": {
+      "get": {
+        "tags": [
+          "rfid-marks"
+        ],
+        "summary": "List Rfid Marks",
+        "operationId": "list_rfid_marks_api_v1_rfid_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/RfidMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Rfid Marks Api V1 Rfid Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "rfid-marks"
+        ],
+        "summary": "Create Rfid Mark",
+        "operationId": "create_rfid_mark_api_v1_rfid_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RfidMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RfidMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/inventory-finance-marks": {
+      "get": {
+        "tags": [
+          "inventory-finance-marks"
+        ],
+        "summary": "List Inventory Finance Marks",
+        "operationId": "list_inventory_finance_marks_api_v1_inventory_finance_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/InventoryFinanceMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Inventory Finance Marks Api V1 Inventory Finance Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "inventory-finance-marks"
+        ],
+        "summary": "Create Inventory Finance Mark",
+        "operationId": "create_inventory_finance_mark_api_v1_inventory_finance_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventoryFinanceMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InventoryFinanceMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/inventory-collateral-marks": {
+      "get": {
+        "tags": [
+          "inventory-collateral-marks"
+        ],
+        "summary": "List Inventory Collateral Marks",
+        "operationId": "list_inventory_collateral_marks_api_v1_inventory_collateral_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/InventoryCollateralMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Inventory Collateral Marks Api V1 Inventory Collateral Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "inventory-collateral-marks"
+        ],
+        "summary": "Create Inventory Collateral Mark",
+        "operationId": "create_inventory_collateral_mark_api_v1_inventory_collateral_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventoryCollateralMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InventoryCollateralMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/ops-room-marks": {
+      "get": {
+        "tags": [
+          "ops-room-marks"
+        ],
+        "summary": "List Ops Room Marks",
+        "operationId": "list_ops_room_marks_api_v1_ops_room_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/OpsRoomMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Ops Room Marks Api V1 Ops Room Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "ops-room-marks"
+        ],
+        "summary": "Create Ops Room Mark",
+        "operationId": "create_ops_room_mark_api_v1_ops_room_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OpsRoomMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OpsRoomMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/line-impact-layer-marks": {
+      "get": {
+        "tags": [
+          "line-impact-layer-marks"
+        ],
+        "summary": "List Line Impact Layer Marks",
+        "operationId": "list_line_impact_layer_marks_api_v1_line_impact_layer_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/LineImpactLayerMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Line Impact Layer Marks Api V1 Line Impact Layer Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "line-impact-layer-marks"
+        ],
+        "summary": "Create Line Impact Layer Mark",
+        "operationId": "create_line_impact_layer_mark_api_v1_line_impact_layer_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LineImpactLayerMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LineImpactLayerMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/product-ticket-marks": {
+      "get": {
+        "tags": [
+          "product-ticket-marks"
+        ],
+        "summary": "List Product Ticket Marks",
+        "operationId": "list_product_ticket_marks_api_v1_product_ticket_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ProductTicketMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Product Ticket Marks Api V1 Product Ticket Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "product-ticket-marks"
+        ],
+        "summary": "Create Product Ticket Mark",
+        "operationId": "create_product_ticket_mark_api_v1_product_ticket_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductTicketMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductTicketMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/risk-register-marks": {
+      "get": {
+        "tags": [
+          "risk-register-marks"
+        ],
+        "summary": "List Risk Register Marks",
+        "operationId": "list_risk_register_marks_api_v1_risk_register_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/RiskRegisterMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Risk Register Marks Api V1 Risk Register Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "risk-register-marks"
+        ],
+        "summary": "Create Risk Register Mark",
+        "operationId": "create_risk_register_mark_api_v1_risk_register_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RiskRegisterMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RiskRegisterMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/automation-bias-marks": {
+      "get": {
+        "tags": [
+          "automation-bias-marks"
+        ],
+        "summary": "List Automation Bias Marks",
+        "operationId": "list_automation_bias_marks_api_v1_automation_bias_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/AutomationBiasMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Automation Bias Marks Api V1 Automation Bias Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "automation-bias-marks"
+        ],
+        "summary": "Create Automation Bias Mark",
+        "operationId": "create_automation_bias_mark_api_v1_automation_bias_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AutomationBiasMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AutomationBiasMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/l3-gate-marks": {
+      "get": {
+        "tags": [
+          "l3-gate-marks"
+        ],
+        "summary": "List L3 Gate Marks",
+        "operationId": "list_l3_gate_marks_api_v1_l3_gate_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/L3GateMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List L3 Gate Marks Api V1 L3 Gate Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "l3-gate-marks"
+        ],
+        "summary": "Create L3 Gate Mark",
+        "operationId": "create_l3_gate_mark_api_v1_l3_gate_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/L3GateMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/L3GateMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/style-cascade-marks": {
+      "get": {
+        "tags": [
+          "style-cascade-marks"
+        ],
+        "summary": "List Style Cascade Marks",
+        "operationId": "list_style_cascade_marks_api_v1_style_cascade_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/StyleCascadeMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Style Cascade Marks Api V1 Style Cascade Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "style-cascade-marks"
+        ],
+        "summary": "Create Style Cascade Mark",
+        "operationId": "create_style_cascade_mark_api_v1_style_cascade_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StyleCascadeMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StyleCascadeMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/style-fidelity-marks": {
+      "get": {
+        "tags": [
+          "style-fidelity-marks"
+        ],
+        "summary": "List Style Fidelity Marks",
+        "operationId": "list_style_fidelity_marks_api_v1_style_fidelity_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/StyleFidelityMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Style Fidelity Marks Api V1 Style Fidelity Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "style-fidelity-marks"
+        ],
+        "summary": "Create Style Fidelity Mark",
+        "operationId": "create_style_fidelity_mark_api_v1_style_fidelity_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StyleFidelityMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StyleFidelityMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/quality-descent-marks": {
+      "get": {
+        "tags": [
+          "quality-descent-marks"
+        ],
+        "summary": "List Quality Descent Marks",
+        "operationId": "list_quality_descent_marks_api_v1_quality_descent_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/QualityDescentMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Quality Descent Marks Api V1 Quality Descent Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "quality-descent-marks"
+        ],
+        "summary": "Create Quality Descent Mark",
+        "operationId": "create_quality_descent_mark_api_v1_quality_descent_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QualityDescentMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QualityDescentMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/field-confidence-marks": {
+      "get": {
+        "tags": [
+          "field-confidence-marks"
+        ],
+        "summary": "List Field Confidence Marks",
+        "operationId": "list_field_confidence_marks_api_v1_field_confidence_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/FieldConfidenceMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Field Confidence Marks Api V1 Field Confidence Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "field-confidence-marks"
+        ],
+        "summary": "Create Field Confidence Mark",
+        "operationId": "create_field_confidence_mark_api_v1_field_confidence_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FieldConfidenceMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FieldConfidenceMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/compliance-program-marks": {
+      "get": {
+        "tags": [
+          "compliance-program-marks"
+        ],
+        "summary": "List Compliance Program Marks",
+        "operationId": "list_compliance_program_marks_api_v1_compliance_program_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ComplianceProgramMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Compliance Program Marks Api V1 Compliance Program Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "compliance-program-marks"
+        ],
+        "summary": "Create Compliance Program Mark",
+        "operationId": "create_compliance_program_mark_api_v1_compliance_program_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ComplianceProgramMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComplianceProgramMarkResponse"
                 }
               }
             }
@@ -17054,6 +19443,36 @@
         ]
       }
     },
+    "/api/v1/what-if-replays": {
+      "get": {
+        "tags": [
+          "what-if-replays"
+        ],
+        "summary": "List What If Replays",
+        "operationId": "list_what_if_replays_api_v1_what_if_replays_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/WhatIfReplayResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List What If Replays Api V1 What If Replays Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/benefit-ledgers": {
       "get": {
         "tags": [
@@ -17450,6 +19869,80 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/GeneralAverageMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/groupage-dispatcher-marks": {
+      "get": {
+        "tags": [
+          "groupage-dispatcher-marks"
+        ],
+        "summary": "List Groupage Dispatcher Marks",
+        "operationId": "list_groupage_dispatcher_marks_api_v1_groupage_dispatcher_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/GroupageDispatcherMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Groupage Dispatcher Marks Api V1 Groupage Dispatcher Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "groupage-dispatcher-marks"
+        ],
+        "summary": "Create Groupage Dispatcher Mark",
+        "operationId": "create_groupage_dispatcher_mark_api_v1_groupage_dispatcher_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GroupageDispatcherMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupageDispatcherMarkResponse"
                 }
               }
             }
@@ -19406,6 +21899,672 @@
         ]
       }
     },
+    "/api/v1/crm-opportunities": {
+      "get": {
+        "tags": [
+          "crm-opportunities"
+        ],
+        "summary": "List Crm Opportunities",
+        "operationId": "list_crm_opportunities_api_v1_crm_opportunities_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CrmOpportunityResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Crm Opportunities Api V1 Crm Opportunities Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "crm-opportunities"
+        ],
+        "summary": "Create Crm Opportunity",
+        "operationId": "create_crm_opportunity_api_v1_crm_opportunities_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CrmOpportunityCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CrmOpportunityResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/crm-activities": {
+      "get": {
+        "tags": [
+          "crm-activities"
+        ],
+        "summary": "List Crm Activities",
+        "operationId": "list_crm_activities_api_v1_crm_activities_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CrmActivityResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Crm Activities Api V1 Crm Activities Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "crm-activities"
+        ],
+        "summary": "Create Crm Activity",
+        "operationId": "create_crm_activity_api_v1_crm_activities_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CrmActivityCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CrmActivityResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/crm-pipeline-marks": {
+      "get": {
+        "tags": [
+          "crm-pipeline-marks"
+        ],
+        "summary": "List Crm Pipeline Marks",
+        "operationId": "list_crm_pipeline_marks_api_v1_crm_pipeline_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CrmPipelineMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Crm Pipeline Marks Api V1 Crm Pipeline Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "crm-pipeline-marks"
+        ],
+        "summary": "Create Crm Pipeline Mark",
+        "operationId": "create_crm_pipeline_mark_api_v1_crm_pipeline_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CrmPipelineMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CrmPipelineMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/crm-dedup-marks": {
+      "get": {
+        "tags": [
+          "crm-dedup-marks"
+        ],
+        "summary": "List Crm Dedup Marks",
+        "operationId": "list_crm_dedup_marks_api_v1_crm_dedup_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CrmDedupMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Crm Dedup Marks Api V1 Crm Dedup Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "crm-dedup-marks"
+        ],
+        "summary": "Create Crm Dedup Mark",
+        "operationId": "create_crm_dedup_mark_api_v1_crm_dedup_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CrmDedupMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CrmDedupMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/crm-link-marks": {
+      "get": {
+        "tags": [
+          "crm-link-marks"
+        ],
+        "summary": "List Crm Link Marks",
+        "operationId": "list_crm_link_marks_api_v1_crm_link_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CrmLinkMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Crm Link Marks Api V1 Crm Link Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "crm-link-marks"
+        ],
+        "summary": "Create Crm Link Mark",
+        "operationId": "create_crm_link_mark_api_v1_crm_link_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CrmLinkMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CrmLinkMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/sales-bind-marks": {
+      "get": {
+        "tags": [
+          "sales-bind-marks"
+        ],
+        "summary": "List Sales Bind Marks",
+        "operationId": "list_sales_bind_marks_api_v1_sales_bind_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SalesBindMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Sales Bind Marks Api V1 Sales Bind Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "sales-bind-marks"
+        ],
+        "summary": "Create Sales Bind Mark",
+        "operationId": "create_sales_bind_mark_api_v1_sales_bind_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SalesBindMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SalesBindMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/shipper-bind-marks": {
+      "get": {
+        "tags": [
+          "shipper-bind-marks"
+        ],
+        "summary": "List Shipper Bind Marks",
+        "operationId": "list_shipper_bind_marks_api_v1_shipper_bind_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ShipperBindMarkOut"
+                  },
+                  "type": "array",
+                  "title": "Response List Shipper Bind Marks Api V1 Shipper Bind Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "shipper-bind-marks"
+        ],
+        "summary": "Create Shipper Bind Mark",
+        "operationId": "create_shipper_bind_mark_api_v1_shipper_bind_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipperBindMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShipperBindMarkOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/shipper-award-marks": {
+      "get": {
+        "tags": [
+          "shipper-award-marks"
+        ],
+        "summary": "List Shipper Award Marks",
+        "operationId": "list_shipper_award_marks_api_v1_shipper_award_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ShipperAwardMarkOut"
+                  },
+                  "type": "array",
+                  "title": "Response List Shipper Award Marks Api V1 Shipper Award Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "shipper-award-marks"
+        ],
+        "summary": "Create Shipper Award Mark",
+        "operationId": "create_shipper_award_mark_api_v1_shipper_award_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipperAwardMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShipperAwardMarkOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/extraction-prompt-marks": {
+      "get": {
+        "tags": [
+          "extraction-prompt-marks"
+        ],
+        "summary": "List Extraction Prompt Marks",
+        "operationId": "list_extraction_prompt_marks_api_v1_extraction_prompt_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ExtractionPromptMarkOut"
+                  },
+                  "type": "array",
+                  "title": "Response List Extraction Prompt Marks Api V1 Extraction Prompt Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "extraction-prompt-marks"
+        ],
+        "summary": "Create Extraction Prompt Mark",
+        "operationId": "create_extraction_prompt_mark_api_v1_extraction_prompt_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExtractionPromptMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExtractionPromptMarkOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/customer-sops": {
       "get": {
         "tags": [
@@ -19859,6 +23018,80 @@
             }
           }
         }
+      }
+    },
+    "/api/v1/position-events": {
+      "get": {
+        "tags": [
+          "position-events"
+        ],
+        "summary": "List Position Events",
+        "operationId": "list_position_events_api_v1_position_events_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PositionEventResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Position Events Api V1 Position Events Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "position-events"
+        ],
+        "summary": "Create Position Event",
+        "operationId": "create_position_event_api_v1_position_events_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PositionEventCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PositionEventResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
       }
     },
     "/api/v1/port-surcharges": {
@@ -20862,6 +24095,80 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/FerryArt9MarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/ferry-booking-marks": {
+      "get": {
+        "tags": [
+          "ferry-booking-marks"
+        ],
+        "summary": "List Ferry Booking Marks",
+        "operationId": "list_ferry_booking_marks_api_v1_ferry_booking_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/FerryBookingMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Ferry Booking Marks Api V1 Ferry Booking Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "ferry-booking-marks"
+        ],
+        "summary": "Create Ferry Booking Mark",
+        "operationId": "create_ferry_booking_mark_api_v1_ferry_booking_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FerryBookingMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FerryBookingMarkResponse"
                 }
               }
             }
@@ -23227,6 +26534,65 @@
         ],
         "title": "AsnResponse"
       },
+      "AutomationBiasMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "bias_kind": {
+            "type": "string",
+            "title": "Bias Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "bias_kind",
+          "source_ref"
+        ],
+        "title": "AutomationBiasMarkCreate"
+      },
+      "AutomationBiasMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "bias_kind": {
+            "type": "string",
+            "title": "Bias Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "bias_kind",
+          "source_ref"
+        ],
+        "title": "AutomationBiasMarkResponse"
+      },
       "AutonomyLevelCreate": {
         "properties": {
           "level_code": {
@@ -24041,6 +27407,65 @@
           "source_ref"
         ],
         "title": "CalibrationMarkResponse"
+      },
+      "CampaignMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "campaign_kind": {
+            "type": "string",
+            "title": "Campaign Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "campaign_kind",
+          "source_ref"
+        ],
+        "title": "CampaignMarkCreate"
+      },
+      "CampaignMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "campaign_kind": {
+            "type": "string",
+            "title": "Campaign Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "campaign_kind",
+          "source_ref"
+        ],
+        "title": "CampaignMarkResponse"
       },
       "CapaMarkCreate": {
         "properties": {
@@ -25582,6 +29007,52 @@
         ],
         "title": "CircleSimCreate"
       },
+      "CircleSimPairResponse": {
+        "properties": {
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "left_sim_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Left Sim Id"
+          },
+          "right_sim_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Right Sim Id"
+          },
+          "left_sim_code": {
+            "type": "string",
+            "title": "Left Sim Code"
+          },
+          "right_sim_code": {
+            "type": "string",
+            "title": "Right Sim Code"
+          },
+          "unload_unlocode": {
+            "type": "string",
+            "title": "Unload Unlocode"
+          },
+          "load_unlocode": {
+            "type": "string",
+            "title": "Load Unlocode"
+          }
+        },
+        "type": "object",
+        "required": [
+          "organization_id",
+          "left_sim_id",
+          "right_sim_id",
+          "left_sim_code",
+          "right_sim_code",
+          "unload_unlocode",
+          "load_unlocode"
+        ],
+        "title": "CircleSimPairResponse"
+      },
       "CircleSimResponse": {
         "properties": {
           "id": {
@@ -26123,6 +29594,65 @@
           "source_ref"
         ],
         "title": "CompanyMarkResponse"
+      },
+      "ComplianceProgramMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "program_kind": {
+            "type": "string",
+            "title": "Program Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "program_kind",
+          "source_ref"
+        ],
+        "title": "ComplianceProgramMarkCreate"
+      },
+      "ComplianceProgramMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "program_kind": {
+            "type": "string",
+            "title": "Program Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "program_kind",
+          "source_ref"
+        ],
+        "title": "ComplianceProgramMarkResponse"
       },
       "ConsignmentCreate": {
         "properties": {
@@ -27269,6 +30799,10 @@
             "minLength": 2,
             "title": "Run Code"
           },
+          "plan_snapshot_id": {
+            "type": "string",
+            "title": "Plan Snapshot Id"
+          },
           "baseline_label": {
             "type": "string",
             "maxLength": 256,
@@ -27298,6 +30832,7 @@
         "type": "object",
         "required": [
           "run_code",
+          "plan_snapshot_id",
           "baseline_label",
           "levers_label",
           "result_label",
@@ -27321,6 +30856,11 @@
             "type": "string",
             "title": "Run Code"
           },
+          "plan_snapshot_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Plan Snapshot Id"
+          },
           "baseline_label": {
             "type": "string",
             "title": "Baseline Label"
@@ -27343,6 +30883,7 @@
           "id",
           "organization_id",
           "run_code",
+          "plan_snapshot_id",
           "baseline_label",
           "levers_label",
           "result_label",
@@ -27470,6 +31011,124 @@
         ],
         "title": "CreditReviewResponse"
       },
+      "CrmActivityCreate": {
+        "properties": {
+          "activity_code": {
+            "type": "string",
+            "title": "Activity Code"
+          },
+          "activity_kind": {
+            "type": "string",
+            "title": "Activity Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "activity_code",
+          "activity_kind",
+          "source_ref"
+        ],
+        "title": "CrmActivityCreate"
+      },
+      "CrmActivityResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "activity_code": {
+            "type": "string",
+            "title": "Activity Code"
+          },
+          "activity_kind": {
+            "type": "string",
+            "title": "Activity Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "activity_code",
+          "activity_kind",
+          "source_ref"
+        ],
+        "title": "CrmActivityResponse"
+      },
+      "CrmDedupMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "dedup_kind": {
+            "type": "string",
+            "title": "Dedup Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "dedup_kind",
+          "source_ref"
+        ],
+        "title": "CrmDedupMarkCreate"
+      },
+      "CrmDedupMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "dedup_kind": {
+            "type": "string",
+            "title": "Dedup Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "dedup_kind",
+          "source_ref"
+        ],
+        "title": "CrmDedupMarkResponse"
+      },
       "CrmLeadCreate": {
         "properties": {
           "lead_code": {
@@ -27528,6 +31187,183 @@
           "source_ref"
         ],
         "title": "CrmLeadResponse"
+      },
+      "CrmLinkMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "link_kind": {
+            "type": "string",
+            "title": "Link Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "link_kind",
+          "source_ref"
+        ],
+        "title": "CrmLinkMarkCreate"
+      },
+      "CrmLinkMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "link_kind": {
+            "type": "string",
+            "title": "Link Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "link_kind",
+          "source_ref"
+        ],
+        "title": "CrmLinkMarkResponse"
+      },
+      "CrmOpportunityCreate": {
+        "properties": {
+          "opportunity_code": {
+            "type": "string",
+            "title": "Opportunity Code"
+          },
+          "stage_kind": {
+            "type": "string",
+            "title": "Stage Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "opportunity_code",
+          "stage_kind",
+          "source_ref"
+        ],
+        "title": "CrmOpportunityCreate"
+      },
+      "CrmOpportunityResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "opportunity_code": {
+            "type": "string",
+            "title": "Opportunity Code"
+          },
+          "stage_kind": {
+            "type": "string",
+            "title": "Stage Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "opportunity_code",
+          "stage_kind",
+          "source_ref"
+        ],
+        "title": "CrmOpportunityResponse"
+      },
+      "CrmPipelineMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "pipeline_kind": {
+            "type": "string",
+            "title": "Pipeline Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "pipeline_kind",
+          "source_ref"
+        ],
+        "title": "CrmPipelineMarkCreate"
+      },
+      "CrmPipelineMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "pipeline_kind": {
+            "type": "string",
+            "title": "Pipeline Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "pipeline_kind",
+          "source_ref"
+        ],
+        "title": "CrmPipelineMarkResponse"
       },
       "CsrdMarkCreate": {
         "properties": {
@@ -29927,6 +33763,31 @@
             ],
             "title": "Extract Path"
           },
+          "sheet_index": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sheet Index"
+          },
+          "sheet_name": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 128,
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sheet Name"
+          },
           "quote": {
             "anyOf": [
               {
@@ -29953,6 +33814,27 @@
           "source_ref"
         ],
         "title": "ExtractRequest"
+      },
+      "ExtractionAcceptRequest": {
+        "properties": {
+          "candidate_indexes": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "integer"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Candidate Indexes"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "ExtractionAcceptRequest"
       },
       "ExtractionCandidatePatch": {
         "properties": {
@@ -30104,6 +33986,127 @@
         ],
         "title": "ExtractionDraftResponse"
       },
+      "ExtractionPromptMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code",
+            "description": "snake HITL"
+          },
+          "prompt_kind": {
+            "type": "string",
+            "title": "Prompt Kind",
+            "description": "extract|system|other"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref",
+            "description": "tenant:manual lub fixture"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "prompt_kind",
+          "source_ref"
+        ],
+        "title": "ExtractionPromptMarkCreate"
+      },
+      "ExtractionPromptMarkOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "prompt_kind": {
+            "type": "string",
+            "title": "Prompt Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "prompt_kind",
+          "source_ref"
+        ],
+        "title": "ExtractionPromptMarkOut"
+      },
+      "FactoringConnectorCreate": {
+        "properties": {
+          "connector_code": {
+            "type": "string",
+            "title": "Connector Code"
+          },
+          "system_kind": {
+            "type": "string",
+            "title": "System Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "connector_code",
+          "system_kind",
+          "source_ref"
+        ],
+        "title": "FactoringConnectorCreate"
+      },
+      "FactoringConnectorResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "connector_code": {
+            "type": "string",
+            "title": "Connector Code"
+          },
+          "system_kind": {
+            "type": "string",
+            "title": "System Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "connector_code",
+          "system_kind",
+          "source_ref"
+        ],
+        "title": "FactoringConnectorResponse"
+      },
       "FairShareMarkCreate": {
         "properties": {
           "mark_code": {
@@ -30222,6 +34225,65 @@
         ],
         "title": "FerryArt9MarkResponse"
       },
+      "FerryBookingMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "booking_kind": {
+            "type": "string",
+            "title": "Booking Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "booking_kind",
+          "source_ref"
+        ],
+        "title": "FerryBookingMarkCreate"
+      },
+      "FerryBookingMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "booking_kind": {
+            "type": "string",
+            "title": "Booking Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "booking_kind",
+          "source_ref"
+        ],
+        "title": "FerryBookingMarkResponse"
+      },
       "FieldCarryForwardCreate": {
         "properties": {
           "quotation_id": {
@@ -30305,6 +34367,65 @@
           "superseded_by"
         ],
         "title": "FieldCarryForwardResponse"
+      },
+      "FieldConfidenceMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "band_kind": {
+            "type": "string",
+            "title": "Band Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "band_kind",
+          "source_ref"
+        ],
+        "title": "FieldConfidenceMarkCreate"
+      },
+      "FieldConfidenceMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "band_kind": {
+            "type": "string",
+            "title": "Band Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "band_kind",
+          "source_ref"
+        ],
+        "title": "FieldConfidenceMarkResponse"
       },
       "FilingSchemeMarkCreate": {
         "properties": {
@@ -31113,6 +35234,65 @@
           "source_ref"
         ],
         "title": "GeneralAverageMarkResponse"
+      },
+      "GroupageDispatcherMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "dispatcher_kind": {
+            "type": "string",
+            "title": "Dispatcher Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "dispatcher_kind",
+          "source_ref"
+        ],
+        "title": "GroupageDispatcherMarkCreate"
+      },
+      "GroupageDispatcherMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "dispatcher_kind": {
+            "type": "string",
+            "title": "Dispatcher Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "dispatcher_kind",
+          "source_ref"
+        ],
+        "title": "GroupageDispatcherMarkResponse"
       },
       "GroupageLineCreate": {
         "properties": {
@@ -32242,6 +36422,124 @@
         ],
         "title": "InterventionOutcomeResponse"
       },
+      "InventoryCollateralMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "collateral_kind": {
+            "type": "string",
+            "title": "Collateral Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "collateral_kind",
+          "source_ref"
+        ],
+        "title": "InventoryCollateralMarkCreate"
+      },
+      "InventoryCollateralMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "collateral_kind": {
+            "type": "string",
+            "title": "Collateral Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "collateral_kind",
+          "source_ref"
+        ],
+        "title": "InventoryCollateralMarkResponse"
+      },
+      "InventoryFinanceMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "finance_kind": {
+            "type": "string",
+            "title": "Finance Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "finance_kind",
+          "source_ref"
+        ],
+        "title": "InventoryFinanceMarkCreate"
+      },
+      "InventoryFinanceMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "finance_kind": {
+            "type": "string",
+            "title": "Finance Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "finance_kind",
+          "source_ref"
+        ],
+        "title": "InventoryFinanceMarkResponse"
+      },
       "InventoryPositionMarkCreate": {
         "properties": {
           "mark_code": {
@@ -32544,6 +36842,65 @@
           "source_ref"
         ],
         "title": "KreptdLicenceResponse"
+      },
+      "L3GateMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "gate_kind": {
+            "type": "string",
+            "title": "Gate Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "gate_kind",
+          "source_ref"
+        ],
+        "title": "L3GateMarkCreate"
+      },
+      "L3GateMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "gate_kind": {
+            "type": "string",
+            "title": "Gate Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "gate_kind",
+          "source_ref"
+        ],
+        "title": "L3GateMarkResponse"
       },
       "LabelParkingMarkCreate": {
         "properties": {
@@ -33071,6 +37428,65 @@
         ],
         "title": "LcChecklistResponse"
       },
+      "LclConsoleMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "console_kind": {
+            "type": "string",
+            "title": "Console Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "console_kind",
+          "source_ref"
+        ],
+        "title": "LclConsoleMarkCreate"
+      },
+      "LclConsoleMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "console_kind": {
+            "type": "string",
+            "title": "Console Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "console_kind",
+          "source_ref"
+        ],
+        "title": "LclConsoleMarkResponse"
+      },
       "LegalHoldMarkCreate": {
         "properties": {
           "mark_code": {
@@ -33195,6 +37611,65 @@
         ],
         "title": "LezMarkResponse"
       },
+      "LineImpactLayerMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "layer_kind": {
+            "type": "string",
+            "title": "Layer Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "layer_kind",
+          "source_ref"
+        ],
+        "title": "LineImpactLayerMarkCreate"
+      },
+      "LineImpactLayerMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "layer_kind": {
+            "type": "string",
+            "title": "Layer Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "layer_kind",
+          "source_ref"
+        ],
+        "title": "LineImpactLayerMarkResponse"
+      },
       "LineImpactMarkCreate": {
         "properties": {
           "mark_code": {
@@ -33259,6 +37734,65 @@
           "source_ref"
         ],
         "title": "LineImpactMarkResponse"
+      },
+      "LoadOrderMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "order_kind": {
+            "type": "string",
+            "title": "Order Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "order_kind",
+          "source_ref"
+        ],
+        "title": "LoadOrderMarkCreate"
+      },
+      "LoadOrderMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "order_kind": {
+            "type": "string",
+            "title": "Order Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "order_kind",
+          "source_ref"
+        ],
+        "title": "LoadOrderMarkResponse"
       },
       "LoadPlanMarkCreate": {
         "properties": {
@@ -34238,6 +38772,65 @@
         ],
         "title": "MultiManningMarkResponse"
       },
+      "NacMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "nac_kind": {
+            "type": "string",
+            "title": "Nac Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "nac_kind",
+          "source_ref"
+        ],
+        "title": "NacMarkCreate"
+      },
+      "NacMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "nac_kind": {
+            "type": "string",
+            "title": "Nac Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "nac_kind",
+          "source_ref"
+        ],
+        "title": "NacMarkResponse"
+      },
       "NamedPlaceMarkCreate": {
         "properties": {
           "mark_code": {
@@ -35042,6 +39635,65 @@
         ],
         "title": "OogMarkResponse"
       },
+      "OogPermitMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "permit_kind": {
+            "type": "string",
+            "title": "Permit Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "permit_kind",
+          "source_ref"
+        ],
+        "title": "OogPermitMarkCreate"
+      },
+      "OogPermitMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "permit_kind": {
+            "type": "string",
+            "title": "Permit Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "permit_kind",
+          "source_ref"
+        ],
+        "title": "OogPermitMarkResponse"
+      },
       "OperationalExceptionCreate": {
         "properties": {
           "shipment_id": {
@@ -35288,6 +39940,65 @@
           "source_ref"
         ],
         "title": "OperatorNoticeResponse"
+      },
+      "OpsRoomMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "layer_kind": {
+            "type": "string",
+            "title": "Layer Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "layer_kind",
+          "source_ref"
+        ],
+        "title": "OpsRoomMarkCreate"
+      },
+      "OpsRoomMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "layer_kind": {
+            "type": "string",
+            "title": "Layer Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "layer_kind",
+          "source_ref"
+        ],
+        "title": "OpsRoomMarkResponse"
       },
       "OrganizationCalendarCreate": {
         "properties": {
@@ -36748,6 +41459,65 @@
         ],
         "title": "PoBatchMarkResponse"
       },
+      "PoFinancingMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "financing_kind": {
+            "type": "string",
+            "title": "Financing Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "financing_kind",
+          "source_ref"
+        ],
+        "title": "PoFinancingMarkCreate"
+      },
+      "PoFinancingMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "financing_kind": {
+            "type": "string",
+            "title": "Financing Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "financing_kind",
+          "source_ref"
+        ],
+        "title": "PoFinancingMarkResponse"
+      },
       "PoLineCreate": {
         "properties": {
           "purchase_order_id": {
@@ -37429,6 +42199,65 @@
         ],
         "title": "PortSurchargeResponse"
       },
+      "PositionEventCreate": {
+        "properties": {
+          "event_code": {
+            "type": "string",
+            "title": "Event Code"
+          },
+          "source_kind": {
+            "type": "string",
+            "title": "Source Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "event_code",
+          "source_kind",
+          "source_ref"
+        ],
+        "title": "PositionEventCreate"
+      },
+      "PositionEventResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "event_code": {
+            "type": "string",
+            "title": "Event Code"
+          },
+          "source_kind": {
+            "type": "string",
+            "title": "Source Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "event_code",
+          "source_kind",
+          "source_ref"
+        ],
+        "title": "PositionEventResponse"
+      },
       "PostingMarkCreate": {
         "properties": {
           "mark_code": {
@@ -37607,6 +42436,65 @@
         ],
         "title": "PredictionLedgerResponse"
       },
+      "ProductTicketMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "ticket_kind": {
+            "type": "string",
+            "title": "Ticket Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "ticket_kind",
+          "source_ref"
+        ],
+        "title": "ProductTicketMarkCreate"
+      },
+      "ProductTicketMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "ticket_kind": {
+            "type": "string",
+            "title": "Ticket Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "ticket_kind",
+          "source_ref"
+        ],
+        "title": "ProductTicketMarkResponse"
+      },
       "ProfitCenterMarkCreate": {
         "properties": {
           "mark_code": {
@@ -37743,6 +42631,65 @@
           "source_ref"
         ],
         "title": "PurchaseOrderResponse"
+      },
+      "QualityDescentMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "descent_kind": {
+            "type": "string",
+            "title": "Descent Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "descent_kind",
+          "source_ref"
+        ],
+        "title": "QualityDescentMarkCreate"
+      },
+      "QualityDescentMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "descent_kind": {
+            "type": "string",
+            "title": "Descent Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "descent_kind",
+          "source_ref"
+        ],
+        "title": "QualityDescentMarkResponse"
       },
       "QuotationBatchCreate": {
         "properties": {
@@ -39270,6 +44217,124 @@
         ],
         "title": "ResourceResponse"
       },
+      "RfidMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "rfid_kind": {
+            "type": "string",
+            "title": "Rfid Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "rfid_kind",
+          "source_ref"
+        ],
+        "title": "RfidMarkCreate"
+      },
+      "RfidMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "rfid_kind": {
+            "type": "string",
+            "title": "Rfid Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "rfid_kind",
+          "source_ref"
+        ],
+        "title": "RfidMarkResponse"
+      },
+      "RiskRegisterMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "risk_kind": {
+            "type": "string",
+            "title": "Risk Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "risk_kind",
+          "source_ref"
+        ],
+        "title": "RiskRegisterMarkCreate"
+      },
+      "RiskRegisterMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "risk_kind": {
+            "type": "string",
+            "title": "Risk Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "risk_kind",
+          "source_ref"
+        ],
+        "title": "RiskRegisterMarkResponse"
+      },
       "RoleViewMarkCreate": {
         "properties": {
           "mark_code": {
@@ -39334,6 +44399,65 @@
           "source_ref"
         ],
         "title": "RoleViewMarkResponse"
+      },
+      "RoutePlanMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "plan_kind": {
+            "type": "string",
+            "title": "Plan Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "plan_kind",
+          "source_ref"
+        ],
+        "title": "RoutePlanMarkCreate"
+      },
+      "RoutePlanMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "plan_kind": {
+            "type": "string",
+            "title": "Plan Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "plan_kind",
+          "source_ref"
+        ],
+        "title": "RoutePlanMarkResponse"
       },
       "RoutingGuideCreate": {
         "properties": {
@@ -39548,6 +44672,65 @@
         ],
         "title": "RoutingGuideResponse"
       },
+      "SalesBindMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "bind_kind": {
+            "type": "string",
+            "title": "Bind Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "bind_kind",
+          "source_ref"
+        ],
+        "title": "SalesBindMarkCreate"
+      },
+      "SalesBindMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "bind_kind": {
+            "type": "string",
+            "title": "Bind Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "bind_kind",
+          "source_ref"
+        ],
+        "title": "SalesBindMarkResponse"
+      },
       "SalesInvoiceCreate": {
         "properties": {
           "shipment_id": {
@@ -39657,6 +44840,95 @@
           "ksef_noted_at"
         ],
         "title": "SalesInvoiceResponse"
+      },
+      "SalesLaneCreate": {
+        "properties": {
+          "lane_code": {
+            "type": "string",
+            "title": "Lane Code"
+          },
+          "lane_kind": {
+            "type": "string",
+            "title": "Lane Kind"
+          },
+          "origin_unlocode": {
+            "type": "string",
+            "title": "Origin Unlocode"
+          },
+          "destination_unlocode": {
+            "type": "string",
+            "title": "Destination Unlocode"
+          },
+          "volume_label": {
+            "type": "string",
+            "title": "Volume Label"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "lane_code",
+          "lane_kind",
+          "origin_unlocode",
+          "destination_unlocode",
+          "volume_label",
+          "source_ref"
+        ],
+        "title": "SalesLaneCreate"
+      },
+      "SalesLaneResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "lane_code": {
+            "type": "string",
+            "title": "Lane Code"
+          },
+          "lane_kind": {
+            "type": "string",
+            "title": "Lane Kind"
+          },
+          "origin_unlocode": {
+            "type": "string",
+            "title": "Origin Unlocode"
+          },
+          "destination_unlocode": {
+            "type": "string",
+            "title": "Destination Unlocode"
+          },
+          "volume_label": {
+            "type": "string",
+            "title": "Volume Label"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "lane_code",
+          "lane_kind",
+          "origin_unlocode",
+          "destination_unlocode",
+          "volume_label",
+          "source_ref"
+        ],
+        "title": "SalesLaneResponse"
       },
       "SanctionsMarkCreate": {
         "properties": {
@@ -40680,6 +45952,304 @@
         ],
         "title": "ShipmentStakeholderResponse"
       },
+      "ShipperAwardMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code",
+            "description": "snake HITL"
+          },
+          "award_kind": {
+            "type": "string",
+            "title": "Award Kind",
+            "description": "go|hold|no_award|other"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref",
+            "description": "tenant:manual lub fixture"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "award_kind",
+          "source_ref"
+        ],
+        "title": "ShipperAwardMarkCreate"
+      },
+      "ShipperAwardMarkOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "award_kind": {
+            "type": "string",
+            "title": "Award Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "award_kind",
+          "source_ref"
+        ],
+        "title": "ShipperAwardMarkOut"
+      },
+      "ShipperBindMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "bind_kind": {
+            "type": "string",
+            "title": "Bind Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "bind_kind",
+          "source_ref"
+        ],
+        "title": "ShipperBindMarkCreate"
+      },
+      "ShipperBindMarkOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "bind_kind": {
+            "type": "string",
+            "title": "Bind Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "bind_kind",
+          "source_ref"
+        ],
+        "title": "ShipperBindMarkOut"
+      },
+      "ShipperLikeMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "like_kind": {
+            "type": "string",
+            "title": "Like Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "like_kind",
+          "source_ref"
+        ],
+        "title": "ShipperLikeMarkCreate"
+      },
+      "ShipperLikeMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "like_kind": {
+            "type": "string",
+            "title": "Like Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "like_kind",
+          "source_ref"
+        ],
+        "title": "ShipperLikeMarkResponse"
+      },
+      "ShipperRoundMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "round_kind": {
+            "type": "string",
+            "title": "Round Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "round_kind",
+          "source_ref"
+        ],
+        "title": "ShipperRoundMarkCreate"
+      },
+      "ShipperRoundMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "round_kind": {
+            "type": "string",
+            "title": "Round Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "round_kind",
+          "source_ref"
+        ],
+        "title": "ShipperRoundMarkResponse"
+      },
+      "ShipperTenderMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "shipper_kind": {
+            "type": "string",
+            "title": "Shipper Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "shipper_kind",
+          "source_ref"
+        ],
+        "title": "ShipperTenderMarkCreate"
+      },
+      "ShipperTenderMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "shipper_kind": {
+            "type": "string",
+            "title": "Shipper Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "shipper_kind",
+          "source_ref"
+        ],
+        "title": "ShipperTenderMarkResponse"
+      },
       "SidImportMarkCreate": {
         "properties": {
           "mark_code": {
@@ -40738,6 +46308,65 @@
           "source_ref"
         ],
         "title": "SidImportMarkResponse"
+      },
+      "SilkCorridorMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "corridor_kind": {
+            "type": "string",
+            "title": "Corridor Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "corridor_kind",
+          "source_ref"
+        ],
+        "title": "SilkCorridorMarkCreate"
+      },
+      "SilkCorridorMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "corridor_kind": {
+            "type": "string",
+            "title": "Corridor Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "corridor_kind",
+          "source_ref"
+        ],
+        "title": "SilkCorridorMarkResponse"
       },
       "SlaClauseCreate": {
         "properties": {
@@ -41419,6 +47048,124 @@
         ],
         "title": "StopResponse"
       },
+      "StyleCascadeMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "cascade_kind": {
+            "type": "string",
+            "title": "Cascade Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "cascade_kind",
+          "source_ref"
+        ],
+        "title": "StyleCascadeMarkCreate"
+      },
+      "StyleCascadeMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "cascade_kind": {
+            "type": "string",
+            "title": "Cascade Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "cascade_kind",
+          "source_ref"
+        ],
+        "title": "StyleCascadeMarkResponse"
+      },
+      "StyleFidelityMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "fidelity_kind": {
+            "type": "string",
+            "title": "Fidelity Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "fidelity_kind",
+          "source_ref"
+        ],
+        "title": "StyleFidelityMarkCreate"
+      },
+      "StyleFidelityMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "fidelity_kind": {
+            "type": "string",
+            "title": "Fidelity Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "fidelity_kind",
+          "source_ref"
+        ],
+        "title": "StyleFidelityMarkResponse"
+      },
       "SubcontractEdgeMarkCreate": {
         "properties": {
           "mark_code": {
@@ -41948,6 +47695,65 @@
         ],
         "title": "TachoOfficeMarkResponse"
       },
+      "TachoPlanMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "constraint_kind": {
+            "type": "string",
+            "title": "Constraint Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "constraint_kind",
+          "source_ref"
+        ],
+        "title": "TachoPlanMarkCreate"
+      },
+      "TachoPlanMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "constraint_kind": {
+            "type": "string",
+            "title": "Constraint Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "constraint_kind",
+          "source_ref"
+        ],
+        "title": "TachoPlanMarkResponse"
+      },
       "TaskTemplateCreate": {
         "properties": {
           "template_code": {
@@ -42065,6 +47871,65 @@
           "source_ref"
         ],
         "title": "TelematicsConnectorResponse"
+      },
+      "TelematicsDeviceCreate": {
+        "properties": {
+          "device_code": {
+            "type": "string",
+            "title": "Device Code"
+          },
+          "device_kind": {
+            "type": "string",
+            "title": "Device Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "device_code",
+          "device_kind",
+          "source_ref"
+        ],
+        "title": "TelematicsDeviceCreate"
+      },
+      "TelematicsDeviceResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "device_code": {
+            "type": "string",
+            "title": "Device Code"
+          },
+          "device_kind": {
+            "type": "string",
+            "title": "Device Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "device_code",
+          "device_kind",
+          "source_ref"
+        ],
+        "title": "TelematicsDeviceResponse"
       },
       "TenantContractKekCreate": {
         "properties": {
@@ -43878,6 +49743,65 @@
         ],
         "title": "TowerImpactResponse"
       },
+      "TrackingConsentCreate": {
+        "properties": {
+          "consent_code": {
+            "type": "string",
+            "title": "Consent Code"
+          },
+          "consent_kind": {
+            "type": "string",
+            "title": "Consent Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "consent_code",
+          "consent_kind",
+          "source_ref"
+        ],
+        "title": "TrackingConsentCreate"
+      },
+      "TrackingConsentResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "consent_code": {
+            "type": "string",
+            "title": "Consent Code"
+          },
+          "consent_kind": {
+            "type": "string",
+            "title": "Consent Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "consent_code",
+          "consent_kind",
+          "source_ref"
+        ],
+        "title": "TrackingConsentResponse"
+      },
       "TrackingEventCreate": {
         "properties": {
           "shipment_id": {
@@ -44933,6 +50857,139 @@
           "source_ref"
         ],
         "title": "WhatIfMarkResponse"
+      },
+      "WhatIfReplayResponse": {
+        "properties": {
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "run_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Run Id"
+          },
+          "run_code": {
+            "type": "string",
+            "title": "Run Code"
+          },
+          "baseline_label": {
+            "type": "string",
+            "title": "Baseline Label"
+          },
+          "levers_label": {
+            "type": "string",
+            "title": "Levers Label"
+          },
+          "result_label": {
+            "type": "string",
+            "title": "Result Label"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          },
+          "plan_snapshot_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Plan Snapshot Id"
+          },
+          "snapshot_code": {
+            "type": "string",
+            "title": "Snapshot Code"
+          },
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "trip_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Trip Id"
+          },
+          "resource_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Resource Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "organization_id",
+          "run_id",
+          "run_code",
+          "baseline_label",
+          "levers_label",
+          "result_label",
+          "source_ref",
+          "plan_snapshot_id",
+          "snapshot_code",
+          "shipment_id",
+          "trip_id",
+          "resource_id"
+        ],
+        "title": "WhatIfReplayResponse"
+      },
+      "WmsFlowMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "flow_kind": {
+            "type": "string",
+            "title": "Flow Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "flow_kind",
+          "source_ref"
+        ],
+        "title": "WmsFlowMarkCreate"
+      },
+      "WmsFlowMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "flow_kind": {
+            "type": "string",
+            "title": "Flow Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "flow_kind",
+          "source_ref"
+        ],
+        "title": "WmsFlowMarkResponse"
       },
       "WorkingCapitalMarkCreate": {
         "properties": {

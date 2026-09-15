@@ -15,6 +15,7 @@ from app.domain.errors import (
 from app.domain.extraction_draft import (
     require_extraction_draft_kind,
     require_rate_candidates_editable,
+    undo_extraction_history,
 )
 from app.main import app
 from app.models.extraction_draft import ExtractionDraft
@@ -144,6 +145,20 @@ class StubExtractionService:
         payload["candidates"] = candidates
         current = payload.get("revision")
         payload["revision"] = current + 1 if type(current) is int else 1
+        self.draft.payload = payload
+        return self.draft
+
+    async def undo_candidates(self, *, draft_id: UUID) -> ExtractionDraft:
+        if self.draft is None or self.draft.id != draft_id:
+            raise ResourceNotFound("Szkic ekstrakcji nie istnieje")
+        if self.draft.status != "pending":
+            raise DraftNotPending("Szkic nie jest w statusie pending")
+        require_rate_candidates_editable(self.draft.draft_kind)
+        undone = undo_extraction_history(self.draft.payload.get("history"))
+        payload = dict(self.draft.payload)
+        payload["history"] = undone.history
+        payload["candidates"] = undone.candidates
+        payload["revision"] = undone.revision
         self.draft.payload = payload
         return self.draft
 
@@ -393,6 +408,43 @@ def test_http_patch_pending_rate_line_replaces_candidates(happy_client: TestClie
             ],
         },
     ]
+
+
+def test_http_undo_restores_prior_candidates(happy_client: TestClient) -> None:
+    headers = bearer_auth_headers()
+    created = happy_client.post(
+        "/api/v1/extractions",
+        headers=headers,
+        json={"source_ref": "doc://x", "input_text": "THC 10 EUR"},
+    )
+    draft_id = created.json()["id"]
+    happy_client.patch(
+        f"/api/v1/extractions/{draft_id}",
+        headers=headers,
+        json={
+            "candidates": [
+                {"code": "BAF", "amount_text": "12", "currency": "USD"},
+            ],
+        },
+    )
+    undone = happy_client.post(f"/api/v1/extractions/{draft_id}/undo", headers=headers)
+    assert undone.status_code == 200
+    body = undone.json()
+    assert body["payload"]["revision"] == 0
+    assert body["payload"]["history"] == []
+    assert body["payload"]["candidates"][0]["code"] == "THC"
+
+
+def test_http_undo_empty_history_returns_400(happy_client: TestClient) -> None:
+    headers = bearer_auth_headers()
+    created = happy_client.post(
+        "/api/v1/extractions",
+        headers=headers,
+        json={"source_ref": "doc://x", "input_text": "THC 10 EUR"},
+    )
+    draft_id = created.json()["id"]
+    response = happy_client.post(f"/api/v1/extractions/{draft_id}/undo", headers=headers)
+    assert response.status_code == 400
 
 
 def test_http_patch_not_pending_returns_409(happy_client: TestClient) -> None:

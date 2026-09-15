@@ -20,6 +20,7 @@ from app.domain.extraction_draft import (
     require_rate_candidates_editable,
     require_tender_rfp_payload,
     split_candidates_by_indexes,
+    undo_extraction_history,
 )
 
 
@@ -70,6 +71,35 @@ def test_append_extraction_history_starts_and_grows() -> None:
     )
     assert len(second) == 2
     assert second[1]["revision"] == 1
+
+
+def test_undo_extraction_history_restores_last_snapshot() -> None:
+    history = [
+        {
+            "revision": 0,
+            "candidates": [{"code": "THC", "amount_text": "10", "currency": "EUR"}],
+        },
+        {
+            "revision": 1,
+            "candidates": [{"code": "BAF", "amount_text": "12", "currency": "USD"}],
+        },
+    ]
+    undone = undo_extraction_history(history)
+    assert undone.revision == 1
+    assert undone.candidates == [{"code": "BAF", "amount_text": "12", "currency": "USD"}]
+    assert undone.history == [
+        {
+            "revision": 0,
+            "candidates": [{"code": "THC", "amount_text": "10", "currency": "EUR"}],
+        },
+    ]
+
+
+def test_undo_extraction_history_rejects_empty() -> None:
+    with pytest.raises(InvalidExtractionDraft, match="historii"):
+        undo_extraction_history([])
+    with pytest.raises(InvalidExtractionDraft, match="historii"):
+        undo_extraction_history(None)
 
 
 def test_require_candidate_indexes_none_means_all() -> None:

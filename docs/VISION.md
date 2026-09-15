@@ -84,6 +84,8 @@ zostają w badaniach `04`).
 | 2026-09-15 | **513.0** Instructor×golden w kodzie (`CONFIRMED`, git). Następny = formuły bez cache (`REQUIREMENT`). Żywy OpenAI `REJECTED`. |
 | 2026-09-15 | AI3.4 leftover plan (**514.0**): formuła bez cache jako tekst (`REQUIREMENT`). Ewaluacja `REJECTED`. |
 | 2026-09-15 | **514.0** formuły bez cache w kodzie (`CONFIRMED`, git). Następny = undo historii (`REQUIREMENT`). Live vision `REJECTED`. |
+| 2026-09-15 | AI3.1 leftover plan (**515.0**): undo ostatniego `payload.history` (`REQUIREMENT`). Undo do dowolnej rewizji `REJECTED`. |
+| 2026-09-15 | **515.0** undo w kodzie (`CONFIRMED`, git). Następny = **AI7.0** (`REQUIREMENT`). Instructor wiring park. |
 | 2026-09-13 | AI3.4 plan (**451.0**): parser `xlsx_sheet` stdlib. `openpyxl` `REJECTED`. `.xls` leftover. |
 | 2026-09-13 | **451.0** `xlsx_sheet` w kodzie (`CONFIRMED`, git). Następny = **AI4.0** FK `plan_snapshot` (`REQUIREMENT`). `.xls` leftover. |
 | 2026-09-13 | AI4.0 plan (**452.0**): FK złożone RESTRICT. CASCADE `REJECTED`. What-if `REJECTED` na tym wierszu. |
@@ -316,6 +318,8 @@ TMS `04b` — dump 2026-09-13 (A–H × 10; CargoWise / Qargo / interLAN w `04`)
 | 2026-09-15 | **513.0** w kodzie (`CONFIRMED`, git). Instructor stub × golden. Następny = **514.0** formuły (`REQUIREMENT`). | CURRENT + plaster 513.0 `/noc 15` |
 | 2026-09-15 | AI3.4 leftover (**514.0**) = tekst formuły bez cache Excel. Ewaluacja `REJECTED`. | `/plan-modul` `/noc 15`; VISION E AI3 |
 | 2026-09-15 | **514.0** w kodzie (`CONFIRMED`, git). Formuła bez cache. Następny = **515.0** undo (`REQUIREMENT`). | CURRENT + plaster 514.0 `/noc 15` |
+| 2026-09-15 | AI3.1 leftover (**515.0**) = undo ostatniego `payload.history`. Undo do dowolnej rewizji / live vision `REJECTED`. | `/plan-modul` `/noc 15`; VISION E AI3 |
+| 2026-09-15 | **515.0** w kodzie (`CONFIRMED`, git). POST undo. Następny = **516.0** AI7.0 (`REQUIREMENT`). Instructor wiring park. | CURRENT + plaster 515.0 `/noc 15` |
 | 2026-09-13 | AI3.4 (**451.0**) = OOXML pierwszy arkusz → tekst. Nowa zależność `REJECTED`. Vision `REJECTED`. | `/plan-modul` `/noc`; VISION E AI3 |
 | 2026-09-13 | **451.0** w kodzie (`CONFIRMED`, git). `parser_name=xlsx_sheet`. Następny = **AI4.0** (`REQUIREMENT`). | CURRENT + plaster 451.0 `/noc` |
 | 2026-09-13 | AI4.0 (**452.0**) = FK `plan_snapshot` → shipment/trip/resource, `ON DELETE RESTRICT`. CASCADE `REJECTED`. | `/plan-modul` `/noc`; VISION E AI4 |
@@ -1210,7 +1214,8 @@ Do tego cztery tabele substratu z części B.2 (`suggestion_ledger`, `outcome_le
 - `shipment.shipment_ref` — leftover pinu, nie 468.0
 - `sales_invoice.delivery_channel` — leftover **F1** / kanał e-faktury
 - `extraction_draft.draft_kind` + `bbox` / pewność w JSONB — **448.0**
-  (`CONFIRMED`); **503.0** `payload.history` (`CONFIRMED`); leftover undo / Instructor (`07`)
+  (`CONFIRMED`); **503.0** `payload.history` (`CONFIRMED`); **515.0** undo
+  (`CONFIRMED`); leftover Instructor (`07`)
 - `party_contact.tracking_consent` — leftover kolumny; katalog
   `tracking_consent` jest (`CONFIRMED`, 459.0)
 

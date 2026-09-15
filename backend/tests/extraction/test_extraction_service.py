@@ -258,6 +258,66 @@ async def test_patch_candidates_appends_second_history_entry() -> None:
 
 
 @pytest.mark.asyncio
+async def test_undo_candidates_restores_last_history() -> None:
+    session = AsyncMock()
+    session.flush = AsyncMock()
+    draft = ExtractionDraft(
+        id=uuid4(),
+        organization_id=uuid4(),
+        status="pending",
+        draft_kind="rate_line",
+        source_ref="doc://x",
+        input_text="THC 10 EUR",
+        payload={
+            "source_ref": "doc://x",
+            "unparsed_regions": [],
+            "candidates": [{"code": "BAF", "amount_text": "12", "currency": "USD"}],
+            "revision": 1,
+            "history": [
+                {
+                    "revision": 0,
+                    "candidates": [{"code": "THC", "amount_text": "10", "currency": "EUR"}],
+                },
+            ],
+        },
+    )
+    session.get = AsyncMock(return_value=draft)
+    service = ExtractionService(session, extractor=MagicMock())
+    restored = await service.undo_candidates(draft_id=draft.id)
+    assert restored.payload["revision"] == 0
+    assert restored.payload["candidates"] == [
+        {"code": "THC", "amount_text": "10", "currency": "EUR"},
+    ]
+    assert restored.payload["history"] == []
+
+
+@pytest.mark.asyncio
+async def test_undo_candidates_empty_history_raises() -> None:
+    from app.domain.errors import InvalidExtractionDraft
+
+    session = AsyncMock()
+    draft = ExtractionDraft(
+        id=uuid4(),
+        organization_id=uuid4(),
+        status="pending",
+        draft_kind="rate_line",
+        source_ref="doc://x",
+        input_text="x",
+        payload={
+            "source_ref": "doc://x",
+            "unparsed_regions": [],
+            "candidates": [],
+            "revision": 0,
+            "history": [],
+        },
+    )
+    session.get = AsyncMock(return_value=draft)
+    service = ExtractionService(session, extractor=MagicMock())
+    with pytest.raises(InvalidExtractionDraft, match="historii"):
+        await service.undo_candidates(draft_id=draft.id)
+
+
+@pytest.mark.asyncio
 async def test_patch_candidates_allows_carrier_quote() -> None:
     session = AsyncMock()
     session.flush = AsyncMock()

@@ -293,6 +293,50 @@ export type AsnResponse = {
 };
 
 /**
+ * AutomationBiasMarkCreate
+ */
+export type AutomationBiasMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Bias Kind
+     */
+    bias_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * AutomationBiasMarkResponse
+ */
+export type AutomationBiasMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Bias Kind
+     */
+    bias_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * AutonomyLevelCreate
  */
 export type AutonomyLevelCreate = {
@@ -858,6 +902,50 @@ export type CalibrationMarkResponse = {
      * Sample Ready
      */
     sample_ready: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CampaignMarkCreate
+ */
+export type CampaignMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Campaign Kind
+     */
+    campaign_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CampaignMarkResponse
+ */
+export type CampaignMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Campaign Kind
+     */
+    campaign_kind: string;
     /**
      * Source Ref
      */
@@ -1801,6 +1889,40 @@ export type CircleSimCreate = {
 };
 
 /**
+ * CircleSimPairResponse
+ */
+export type CircleSimPairResponse = {
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Left Sim Id
+     */
+    left_sim_id: string;
+    /**
+     * Right Sim Id
+     */
+    right_sim_id: string;
+    /**
+     * Left Sim Code
+     */
+    left_sim_code: string;
+    /**
+     * Right Sim Code
+     */
+    right_sim_code: string;
+    /**
+     * Unload Unlocode
+     */
+    unload_unlocode: string;
+    /**
+     * Load Unlocode
+     */
+    load_unlocode: string;
+};
+
+/**
  * CircleSimResponse
  */
 export type CircleSimResponse = {
@@ -2188,6 +2310,50 @@ export type CompanyMarkResponse = {
      * Seat Kind
      */
     seat_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ComplianceProgramMarkCreate
+ */
+export type ComplianceProgramMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Program Kind
+     */
+    program_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ComplianceProgramMarkResponse
+ */
+export type ComplianceProgramMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Program Kind
+     */
+    program_kind: string;
     /**
      * Source Ref
      */
@@ -2735,6 +2901,10 @@ export type CounterfactualRunCreate = {
      */
     run_code: string;
     /**
+     * Plan Snapshot Id
+     */
+    plan_snapshot_id: string;
+    /**
      * Baseline Label
      */
     baseline_label: string;
@@ -2768,6 +2938,10 @@ export type CounterfactualRunResponse = {
      * Run Code
      */
     run_code: string;
+    /**
+     * Plan Snapshot Id
+     */
+    plan_snapshot_id: string;
     /**
      * Baseline Label
      */
@@ -2857,6 +3031,94 @@ export type CreditReviewResponse = {
 };
 
 /**
+ * CrmActivityCreate
+ */
+export type CrmActivityCreate = {
+    /**
+     * Activity Code
+     */
+    activity_code: string;
+    /**
+     * Activity Kind
+     */
+    activity_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CrmActivityResponse
+ */
+export type CrmActivityResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Activity Code
+     */
+    activity_code: string;
+    /**
+     * Activity Kind
+     */
+    activity_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CrmDedupMarkCreate
+ */
+export type CrmDedupMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Dedup Kind
+     */
+    dedup_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CrmDedupMarkResponse
+ */
+export type CrmDedupMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Dedup Kind
+     */
+    dedup_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * CrmLeadCreate
  */
 export type CrmLeadCreate = {
@@ -2894,6 +3156,138 @@ export type CrmLeadResponse = {
      * Stage Kind
      */
     stage_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CrmLinkMarkCreate
+ */
+export type CrmLinkMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Link Kind
+     */
+    link_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CrmLinkMarkResponse
+ */
+export type CrmLinkMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Link Kind
+     */
+    link_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CrmOpportunityCreate
+ */
+export type CrmOpportunityCreate = {
+    /**
+     * Opportunity Code
+     */
+    opportunity_code: string;
+    /**
+     * Stage Kind
+     */
+    stage_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CrmOpportunityResponse
+ */
+export type CrmOpportunityResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Opportunity Code
+     */
+    opportunity_code: string;
+    /**
+     * Stage Kind
+     */
+    stage_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CrmPipelineMarkCreate
+ */
+export type CrmPipelineMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Pipeline Kind
+     */
+    pipeline_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CrmPipelineMarkResponse
+ */
+export type CrmPipelineMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Pipeline Kind
+     */
+    pipeline_kind: string;
     /**
      * Source Ref
      */
@@ -4540,8 +4934,26 @@ export type ExtractRequest = {
      * Extract Path
      */
     extract_path?: 'text' | 'image' | null;
+    /**
+     * Sheet Index
+     */
+    sheet_index?: number | null;
+    /**
+     * Sheet Name
+     */
+    sheet_name?: string | null;
     quote?: CarrierQuoteExtract | null;
     rfp?: TenderRfpExtract | null;
+};
+
+/**
+ * ExtractionAcceptRequest
+ */
+export type ExtractionAcceptRequest = {
+    /**
+     * Candidate Indexes
+     */
+    candidate_indexes?: Array<number> | null;
 };
 
 /**
@@ -4637,6 +5049,100 @@ export type ExtractionDraftResponse = {
 };
 
 /**
+ * ExtractionPromptMarkCreate
+ */
+export type ExtractionPromptMarkCreate = {
+    /**
+     * Mark Code
+     *
+     * snake HITL
+     */
+    mark_code: string;
+    /**
+     * Prompt Kind
+     *
+     * extract|system|other
+     */
+    prompt_kind: string;
+    /**
+     * Source Ref
+     *
+     * tenant:manual lub fixture
+     */
+    source_ref: string;
+};
+
+/**
+ * ExtractionPromptMarkOut
+ */
+export type ExtractionPromptMarkOut = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Prompt Kind
+     */
+    prompt_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * FactoringConnectorCreate
+ */
+export type FactoringConnectorCreate = {
+    /**
+     * Connector Code
+     */
+    connector_code: string;
+    /**
+     * System Kind
+     */
+    system_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * FactoringConnectorResponse
+ */
+export type FactoringConnectorResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Connector Code
+     */
+    connector_code: string;
+    /**
+     * System Kind
+     */
+    system_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * FairShareMarkCreate
  */
 export type FairShareMarkCreate = {
@@ -4725,6 +5231,50 @@ export type FerryArt9MarkResponse = {
 };
 
 /**
+ * FerryBookingMarkCreate
+ */
+export type FerryBookingMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Booking Kind
+     */
+    booking_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * FerryBookingMarkResponse
+ */
+export type FerryBookingMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Booking Kind
+     */
+    booking_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * FieldCarryForwardCreate
  */
 export type FieldCarryForwardCreate = {
@@ -4776,6 +5326,50 @@ export type FieldCarryForwardResponse = {
      * Superseded By
      */
     superseded_by: string | null;
+};
+
+/**
+ * FieldConfidenceMarkCreate
+ */
+export type FieldConfidenceMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Band Kind
+     */
+    band_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * FieldConfidenceMarkResponse
+ */
+export type FieldConfidenceMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Band Kind
+     */
+    band_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
 };
 
 /**
@@ -5356,6 +5950,50 @@ export type GeneralAverageMarkResponse = {
      * Average Kind
      */
     average_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * GroupageDispatcherMarkCreate
+ */
+export type GroupageDispatcherMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Dispatcher Kind
+     */
+    dispatcher_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * GroupageDispatcherMarkResponse
+ */
+export type GroupageDispatcherMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Dispatcher Kind
+     */
+    dispatcher_kind: string;
     /**
      * Source Ref
      */
@@ -6131,6 +6769,94 @@ export type InterventionOutcomeResponse = {
 };
 
 /**
+ * InventoryCollateralMarkCreate
+ */
+export type InventoryCollateralMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Collateral Kind
+     */
+    collateral_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * InventoryCollateralMarkResponse
+ */
+export type InventoryCollateralMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Collateral Kind
+     */
+    collateral_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * InventoryFinanceMarkCreate
+ */
+export type InventoryFinanceMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Finance Kind
+     */
+    finance_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * InventoryFinanceMarkResponse
+ */
+export type InventoryFinanceMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Finance Kind
+     */
+    finance_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * InventoryPositionMarkCreate
  */
 export type InventoryPositionMarkCreate = {
@@ -6344,6 +7070,50 @@ export type KreptdLicenceResponse = {
      * Licence No
      */
     licence_no: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * L3GateMarkCreate
+ */
+export type L3GateMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Gate Kind
+     */
+    gate_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * L3GateMarkResponse
+ */
+export type L3GateMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Gate Kind
+     */
+    gate_kind: string;
     /**
      * Source Ref
      */
@@ -6691,6 +7461,50 @@ export type LcChecklistResponse = {
 };
 
 /**
+ * LclConsoleMarkCreate
+ */
+export type LclConsoleMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Console Kind
+     */
+    console_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * LclConsoleMarkResponse
+ */
+export type LclConsoleMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Console Kind
+     */
+    console_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * LegalHoldMarkCreate
  */
 export type LegalHoldMarkCreate = {
@@ -6779,6 +7593,50 @@ export type LezMarkResponse = {
 };
 
 /**
+ * LineImpactLayerMarkCreate
+ */
+export type LineImpactLayerMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Layer Kind
+     */
+    layer_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * LineImpactLayerMarkResponse
+ */
+export type LineImpactLayerMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Layer Kind
+     */
+    layer_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * LineImpactMarkCreate
  */
 export type LineImpactMarkCreate = {
@@ -6816,6 +7674,50 @@ export type LineImpactMarkResponse = {
      * Impact Kind
      */
     impact_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * LoadOrderMarkCreate
+ */
+export type LoadOrderMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Order Kind
+     */
+    order_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * LoadOrderMarkResponse
+ */
+export type LoadOrderMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Order Kind
+     */
+    order_kind: string;
     /**
      * Source Ref
      */
@@ -7451,6 +8353,50 @@ export type MultiManningMarkResponse = {
 };
 
 /**
+ * NacMarkCreate
+ */
+export type NacMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Nac Kind
+     */
+    nac_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * NacMarkResponse
+ */
+export type NacMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Nac Kind
+     */
+    nac_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * NamedPlaceMarkCreate
  */
 export type NamedPlaceMarkCreate = {
@@ -7991,6 +8937,50 @@ export type OogMarkResponse = {
 };
 
 /**
+ * OogPermitMarkCreate
+ */
+export type OogPermitMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Permit Kind
+     */
+    permit_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * OogPermitMarkResponse
+ */
+export type OogPermitMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Permit Kind
+     */
+    permit_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * OperationalExceptionCreate
  */
 export type OperationalExceptionCreate = {
@@ -8150,6 +9140,50 @@ export type OperatorNoticeResponse = {
      * Read At
      */
     read_at: string | null;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * OpsRoomMarkCreate
+ */
+export type OpsRoomMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Layer Kind
+     */
+    layer_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * OpsRoomMarkResponse
+ */
+export type OpsRoomMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Layer Kind
+     */
+    layer_kind: string;
     /**
      * Source Ref
      */
@@ -9103,6 +10137,50 @@ export type PoBatchMarkResponse = {
 };
 
 /**
+ * PoFinancingMarkCreate
+ */
+export type PoFinancingMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Financing Kind
+     */
+    financing_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * PoFinancingMarkResponse
+ */
+export type PoFinancingMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Financing Kind
+     */
+    financing_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * PoLineCreate
  */
 export type PoLineCreate = {
@@ -9483,6 +10561,50 @@ export type PortSurchargeResponse = {
 };
 
 /**
+ * PositionEventCreate
+ */
+export type PositionEventCreate = {
+    /**
+     * Event Code
+     */
+    event_code: string;
+    /**
+     * Source Kind
+     */
+    source_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * PositionEventResponse
+ */
+export type PositionEventResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Event Code
+     */
+    event_code: string;
+    /**
+     * Source Kind
+     */
+    source_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * PostingMarkCreate
  */
 export type PostingMarkCreate = {
@@ -9603,6 +10725,50 @@ export type PredictionLedgerResponse = {
 };
 
 /**
+ * ProductTicketMarkCreate
+ */
+export type ProductTicketMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Ticket Kind
+     */
+    ticket_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ProductTicketMarkResponse
+ */
+export type ProductTicketMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Ticket Kind
+     */
+    ticket_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * ProfitCenterMarkCreate
  */
 export type ProfitCenterMarkCreate = {
@@ -9684,6 +10850,50 @@ export type PurchaseOrderResponse = {
      * Plant Label
      */
     plant_label: string | null;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * QualityDescentMarkCreate
+ */
+export type QualityDescentMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Descent Kind
+     */
+    descent_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * QualityDescentMarkResponse
+ */
+export type QualityDescentMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Descent Kind
+     */
+    descent_kind: string;
     /**
      * Source Ref
      */
@@ -10621,6 +11831,94 @@ export type ResourceResponse = {
 };
 
 /**
+ * RfidMarkCreate
+ */
+export type RfidMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Rfid Kind
+     */
+    rfid_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * RfidMarkResponse
+ */
+export type RfidMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Rfid Kind
+     */
+    rfid_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * RiskRegisterMarkCreate
+ */
+export type RiskRegisterMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Risk Kind
+     */
+    risk_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * RiskRegisterMarkResponse
+ */
+export type RiskRegisterMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Risk Kind
+     */
+    risk_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * RoleViewMarkCreate
  */
 export type RoleViewMarkCreate = {
@@ -10658,6 +11956,50 @@ export type RoleViewMarkResponse = {
      * View Kind
      */
     view_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * RoutePlanMarkCreate
+ */
+export type RoutePlanMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Plan Kind
+     */
+    plan_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * RoutePlanMarkResponse
+ */
+export type RoutePlanMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Plan Kind
+     */
+    plan_kind: string;
     /**
      * Source Ref
      */
@@ -10805,6 +12147,50 @@ export type RoutingGuideResponse = {
 };
 
 /**
+ * SalesBindMarkCreate
+ */
+export type SalesBindMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Bind Kind
+     */
+    bind_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * SalesBindMarkResponse
+ */
+export type SalesBindMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Bind Kind
+     */
+    bind_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * SalesInvoiceCreate
  */
 export type SalesInvoiceCreate = {
@@ -10872,6 +12258,74 @@ export type SalesInvoiceResponse = {
      * Ksef Noted At
      */
     ksef_noted_at: string | null;
+};
+
+/**
+ * SalesLaneCreate
+ */
+export type SalesLaneCreate = {
+    /**
+     * Lane Code
+     */
+    lane_code: string;
+    /**
+     * Lane Kind
+     */
+    lane_kind: string;
+    /**
+     * Origin Unlocode
+     */
+    origin_unlocode: string;
+    /**
+     * Destination Unlocode
+     */
+    destination_unlocode: string;
+    /**
+     * Volume Label
+     */
+    volume_label: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * SalesLaneResponse
+ */
+export type SalesLaneResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Lane Code
+     */
+    lane_code: string;
+    /**
+     * Lane Kind
+     */
+    lane_kind: string;
+    /**
+     * Origin Unlocode
+     */
+    origin_unlocode: string;
+    /**
+     * Destination Unlocode
+     */
+    destination_unlocode: string;
+    /**
+     * Volume Label
+     */
+    volume_label: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
 };
 
 /**
@@ -11491,6 +12945,232 @@ export type ShipmentStakeholderResponse = {
 };
 
 /**
+ * ShipperAwardMarkCreate
+ */
+export type ShipperAwardMarkCreate = {
+    /**
+     * Mark Code
+     *
+     * snake HITL
+     */
+    mark_code: string;
+    /**
+     * Award Kind
+     *
+     * go|hold|no_award|other
+     */
+    award_kind: string;
+    /**
+     * Source Ref
+     *
+     * tenant:manual lub fixture
+     */
+    source_ref: string;
+};
+
+/**
+ * ShipperAwardMarkOut
+ */
+export type ShipperAwardMarkOut = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Award Kind
+     */
+    award_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ShipperBindMarkCreate
+ */
+export type ShipperBindMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Bind Kind
+     */
+    bind_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ShipperBindMarkOut
+ */
+export type ShipperBindMarkOut = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Bind Kind
+     */
+    bind_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ShipperLikeMarkCreate
+ */
+export type ShipperLikeMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Like Kind
+     */
+    like_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ShipperLikeMarkResponse
+ */
+export type ShipperLikeMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Like Kind
+     */
+    like_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ShipperRoundMarkCreate
+ */
+export type ShipperRoundMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Round Kind
+     */
+    round_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ShipperRoundMarkResponse
+ */
+export type ShipperRoundMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Round Kind
+     */
+    round_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ShipperTenderMarkCreate
+ */
+export type ShipperTenderMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Shipper Kind
+     */
+    shipper_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ShipperTenderMarkResponse
+ */
+export type ShipperTenderMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Shipper Kind
+     */
+    shipper_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * SidImportMarkCreate
  */
 export type SidImportMarkCreate = {
@@ -11528,6 +13208,50 @@ export type SidImportMarkResponse = {
      * Sid Kind
      */
     sid_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * SilkCorridorMarkCreate
+ */
+export type SilkCorridorMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Corridor Kind
+     */
+    corridor_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * SilkCorridorMarkResponse
+ */
+export type SilkCorridorMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Corridor Kind
+     */
+    corridor_kind: string;
     /**
      * Source Ref
      */
@@ -11911,6 +13635,94 @@ export type StopResponse = {
 };
 
 /**
+ * StyleCascadeMarkCreate
+ */
+export type StyleCascadeMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Cascade Kind
+     */
+    cascade_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * StyleCascadeMarkResponse
+ */
+export type StyleCascadeMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Cascade Kind
+     */
+    cascade_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * StyleFidelityMarkCreate
+ */
+export type StyleFidelityMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Fidelity Kind
+     */
+    fidelity_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * StyleFidelityMarkResponse
+ */
+export type StyleFidelityMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Fidelity Kind
+     */
+    fidelity_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * SubcontractEdgeMarkCreate
  */
 export type SubcontractEdgeMarkCreate = {
@@ -12273,6 +14085,50 @@ export type TachoOfficeMarkResponse = {
 };
 
 /**
+ * TachoPlanMarkCreate
+ */
+export type TachoPlanMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Constraint Kind
+     */
+    constraint_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TachoPlanMarkResponse
+ */
+export type TachoPlanMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Constraint Kind
+     */
+    constraint_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * TaskTemplateCreate
  */
 export type TaskTemplateCreate = {
@@ -12354,6 +14210,50 @@ export type TelematicsConnectorResponse = {
      * Provider Code
      */
     provider_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TelematicsDeviceCreate
+ */
+export type TelematicsDeviceCreate = {
+    /**
+     * Device Code
+     */
+    device_code: string;
+    /**
+     * Device Kind
+     */
+    device_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TelematicsDeviceResponse
+ */
+export type TelematicsDeviceResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Device Code
+     */
+    device_code: string;
+    /**
+     * Device Kind
+     */
+    device_kind: string;
     /**
      * Source Ref
      */
@@ -13615,6 +15515,50 @@ export type TowerImpactResponse = {
 };
 
 /**
+ * TrackingConsentCreate
+ */
+export type TrackingConsentCreate = {
+    /**
+     * Consent Code
+     */
+    consent_code: string;
+    /**
+     * Consent Kind
+     */
+    consent_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TrackingConsentResponse
+ */
+export type TrackingConsentResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Consent Code
+     */
+    consent_code: string;
+    /**
+     * Consent Kind
+     */
+    consent_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * TrackingEventCreate
  */
 export type TrackingEventCreate = {
@@ -14267,6 +16211,104 @@ export type WhatIfMarkResponse = {
 };
 
 /**
+ * WhatIfReplayResponse
+ */
+export type WhatIfReplayResponse = {
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Run Id
+     */
+    run_id: string;
+    /**
+     * Run Code
+     */
+    run_code: string;
+    /**
+     * Baseline Label
+     */
+    baseline_label: string;
+    /**
+     * Levers Label
+     */
+    levers_label: string;
+    /**
+     * Result Label
+     */
+    result_label: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+    /**
+     * Plan Snapshot Id
+     */
+    plan_snapshot_id: string;
+    /**
+     * Snapshot Code
+     */
+    snapshot_code: string;
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Trip Id
+     */
+    trip_id: string;
+    /**
+     * Resource Id
+     */
+    resource_id: string;
+};
+
+/**
+ * WmsFlowMarkCreate
+ */
+export type WmsFlowMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Flow Kind
+     */
+    flow_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * WmsFlowMarkResponse
+ */
+export type WmsFlowMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Flow Kind
+     */
+    flow_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * WorkingCapitalMarkCreate
  */
 export type WorkingCapitalMarkCreate = {
@@ -14727,7 +16769,10 @@ export type PatchExtractionDraftApiV1ExtractionsDraftIdPatchResponses = {
 export type PatchExtractionDraftApiV1ExtractionsDraftIdPatchResponse = PatchExtractionDraftApiV1ExtractionsDraftIdPatchResponses[keyof PatchExtractionDraftApiV1ExtractionsDraftIdPatchResponses];
 
 export type AcceptExtractionDraftApiV1ExtractionsDraftIdAcceptPostData = {
-    body?: never;
+    /**
+     * Body
+     */
+    body?: ExtractionAcceptRequest | null;
     path: {
         /**
          * Draft Id
@@ -14785,6 +16830,36 @@ export type RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostResponses = {
 };
 
 export type RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostResponse = RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostResponses[keyof RejectExtractionDraftApiV1ExtractionsDraftIdRejectPostResponses];
+
+export type UndoExtractionDraftApiV1ExtractionsDraftIdUndoPostData = {
+    body?: never;
+    path: {
+        /**
+         * Draft Id
+         */
+        draft_id: string;
+    };
+    query?: never;
+    url: '/api/v1/extractions/{draft_id}/undo';
+};
+
+export type UndoExtractionDraftApiV1ExtractionsDraftIdUndoPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type UndoExtractionDraftApiV1ExtractionsDraftIdUndoPostError = UndoExtractionDraftApiV1ExtractionsDraftIdUndoPostErrors[keyof UndoExtractionDraftApiV1ExtractionsDraftIdUndoPostErrors];
+
+export type UndoExtractionDraftApiV1ExtractionsDraftIdUndoPostResponses = {
+    /**
+     * Successful Response
+     */
+    200: ExtractionDraftResponse;
+};
+
+export type UndoExtractionDraftApiV1ExtractionsDraftIdUndoPostResponse = UndoExtractionDraftApiV1ExtractionsDraftIdUndoPostResponses[keyof UndoExtractionDraftApiV1ExtractionsDraftIdUndoPostResponses];
 
 export type ListChargeCodesApiV1ChargeCodesGetData = {
     body?: never;
@@ -16370,6 +18445,49 @@ export type CreateRoleViewMarkApiV1RoleViewMarksPostResponses = {
 
 export type CreateRoleViewMarkApiV1RoleViewMarksPostResponse = CreateRoleViewMarkApiV1RoleViewMarksPostResponses[keyof CreateRoleViewMarkApiV1RoleViewMarksPostResponses];
 
+export type ListRoutePlanMarksApiV1RoutePlanMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/route-plan-marks';
+};
+
+export type ListRoutePlanMarksApiV1RoutePlanMarksGetResponses = {
+    /**
+     * Response List Route Plan Marks Api V1 Route Plan Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<RoutePlanMarkResponse>;
+};
+
+export type ListRoutePlanMarksApiV1RoutePlanMarksGetResponse = ListRoutePlanMarksApiV1RoutePlanMarksGetResponses[keyof ListRoutePlanMarksApiV1RoutePlanMarksGetResponses];
+
+export type CreateRoutePlanMarkApiV1RoutePlanMarksPostData = {
+    body: RoutePlanMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/route-plan-marks';
+};
+
+export type CreateRoutePlanMarkApiV1RoutePlanMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateRoutePlanMarkApiV1RoutePlanMarksPostError = CreateRoutePlanMarkApiV1RoutePlanMarksPostErrors[keyof CreateRoutePlanMarkApiV1RoutePlanMarksPostErrors];
+
+export type CreateRoutePlanMarkApiV1RoutePlanMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: RoutePlanMarkResponse;
+};
+
+export type CreateRoutePlanMarkApiV1RoutePlanMarksPostResponse = CreateRoutePlanMarkApiV1RoutePlanMarksPostResponses[keyof CreateRoutePlanMarkApiV1RoutePlanMarksPostResponses];
+
 export type ListRagSopMarksApiV1RagSopMarksGetData = {
     body?: never;
     path?: never;
@@ -16971,6 +19089,49 @@ export type CreateTachoOfficeMarkApiV1TachoOfficeMarksPostResponses = {
 };
 
 export type CreateTachoOfficeMarkApiV1TachoOfficeMarksPostResponse = CreateTachoOfficeMarkApiV1TachoOfficeMarksPostResponses[keyof CreateTachoOfficeMarkApiV1TachoOfficeMarksPostResponses];
+
+export type ListTachoPlanMarksApiV1TachoPlanMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tacho-plan-marks';
+};
+
+export type ListTachoPlanMarksApiV1TachoPlanMarksGetResponses = {
+    /**
+     * Response List Tacho Plan Marks Api V1 Tacho Plan Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<TachoPlanMarkResponse>;
+};
+
+export type ListTachoPlanMarksApiV1TachoPlanMarksGetResponse = ListTachoPlanMarksApiV1TachoPlanMarksGetResponses[keyof ListTachoPlanMarksApiV1TachoPlanMarksGetResponses];
+
+export type CreateTachoPlanMarkApiV1TachoPlanMarksPostData = {
+    body: TachoPlanMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tacho-plan-marks';
+};
+
+export type CreateTachoPlanMarkApiV1TachoPlanMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTachoPlanMarkApiV1TachoPlanMarksPostError = CreateTachoPlanMarkApiV1TachoPlanMarksPostErrors[keyof CreateTachoPlanMarkApiV1TachoPlanMarksPostErrors];
+
+export type CreateTachoPlanMarkApiV1TachoPlanMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TachoPlanMarkResponse;
+};
+
+export type CreateTachoPlanMarkApiV1TachoPlanMarksPostResponse = CreateTachoPlanMarkApiV1TachoPlanMarksPostResponses[keyof CreateTachoPlanMarkApiV1TachoPlanMarksPostResponses];
 
 export type ListLabelParkingMarksApiV1LabelParkingMarksGetData = {
     body?: never;
@@ -17710,6 +19871,135 @@ export type CreateShipmentApiV1ShipmentsPostResponses = {
 
 export type CreateShipmentApiV1ShipmentsPostResponse = CreateShipmentApiV1ShipmentsPostResponses[keyof CreateShipmentApiV1ShipmentsPostResponses];
 
+export type ListShipperLikeMarksApiV1ShipperLikeMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/shipper-like-marks';
+};
+
+export type ListShipperLikeMarksApiV1ShipperLikeMarksGetResponses = {
+    /**
+     * Response List Shipper Like Marks Api V1 Shipper Like Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<ShipperLikeMarkResponse>;
+};
+
+export type ListShipperLikeMarksApiV1ShipperLikeMarksGetResponse = ListShipperLikeMarksApiV1ShipperLikeMarksGetResponses[keyof ListShipperLikeMarksApiV1ShipperLikeMarksGetResponses];
+
+export type CreateShipperLikeMarkApiV1ShipperLikeMarksPostData = {
+    body: ShipperLikeMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/shipper-like-marks';
+};
+
+export type CreateShipperLikeMarkApiV1ShipperLikeMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateShipperLikeMarkApiV1ShipperLikeMarksPostError = CreateShipperLikeMarkApiV1ShipperLikeMarksPostErrors[keyof CreateShipperLikeMarkApiV1ShipperLikeMarksPostErrors];
+
+export type CreateShipperLikeMarkApiV1ShipperLikeMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ShipperLikeMarkResponse;
+};
+
+export type CreateShipperLikeMarkApiV1ShipperLikeMarksPostResponse = CreateShipperLikeMarkApiV1ShipperLikeMarksPostResponses[keyof CreateShipperLikeMarkApiV1ShipperLikeMarksPostResponses];
+
+export type ListShipperRoundMarksApiV1ShipperRoundMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/shipper-round-marks';
+};
+
+export type ListShipperRoundMarksApiV1ShipperRoundMarksGetResponses = {
+    /**
+     * Response List Shipper Round Marks Api V1 Shipper Round Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<ShipperRoundMarkResponse>;
+};
+
+export type ListShipperRoundMarksApiV1ShipperRoundMarksGetResponse = ListShipperRoundMarksApiV1ShipperRoundMarksGetResponses[keyof ListShipperRoundMarksApiV1ShipperRoundMarksGetResponses];
+
+export type CreateShipperRoundMarkApiV1ShipperRoundMarksPostData = {
+    body: ShipperRoundMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/shipper-round-marks';
+};
+
+export type CreateShipperRoundMarkApiV1ShipperRoundMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateShipperRoundMarkApiV1ShipperRoundMarksPostError = CreateShipperRoundMarkApiV1ShipperRoundMarksPostErrors[keyof CreateShipperRoundMarkApiV1ShipperRoundMarksPostErrors];
+
+export type CreateShipperRoundMarkApiV1ShipperRoundMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ShipperRoundMarkResponse;
+};
+
+export type CreateShipperRoundMarkApiV1ShipperRoundMarksPostResponse = CreateShipperRoundMarkApiV1ShipperRoundMarksPostResponses[keyof CreateShipperRoundMarkApiV1ShipperRoundMarksPostResponses];
+
+export type ListShipperTenderMarksApiV1ShipperTenderMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/shipper-tender-marks';
+};
+
+export type ListShipperTenderMarksApiV1ShipperTenderMarksGetResponses = {
+    /**
+     * Response List Shipper Tender Marks Api V1 Shipper Tender Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<ShipperTenderMarkResponse>;
+};
+
+export type ListShipperTenderMarksApiV1ShipperTenderMarksGetResponse = ListShipperTenderMarksApiV1ShipperTenderMarksGetResponses[keyof ListShipperTenderMarksApiV1ShipperTenderMarksGetResponses];
+
+export type CreateShipperTenderMarkApiV1ShipperTenderMarksPostData = {
+    body: ShipperTenderMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/shipper-tender-marks';
+};
+
+export type CreateShipperTenderMarkApiV1ShipperTenderMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateShipperTenderMarkApiV1ShipperTenderMarksPostError = CreateShipperTenderMarkApiV1ShipperTenderMarksPostErrors[keyof CreateShipperTenderMarkApiV1ShipperTenderMarksPostErrors];
+
+export type CreateShipperTenderMarkApiV1ShipperTenderMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ShipperTenderMarkResponse;
+};
+
+export type CreateShipperTenderMarkApiV1ShipperTenderMarksPostResponse = CreateShipperTenderMarkApiV1ShipperTenderMarksPostResponses[keyof CreateShipperTenderMarkApiV1ShipperTenderMarksPostResponses];
+
 export type ListShipmentStakeholdersApiV1ShipmentStakeholdersGetData = {
     body?: never;
     path?: never;
@@ -18080,6 +20370,49 @@ export type CreateContainerApiV1ContainersPostResponses = {
 };
 
 export type CreateContainerApiV1ContainersPostResponse = CreateContainerApiV1ContainersPostResponses[keyof CreateContainerApiV1ContainersPostResponses];
+
+export type ListTrackingConsentsApiV1TrackingConsentsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tracking-consents';
+};
+
+export type ListTrackingConsentsApiV1TrackingConsentsGetResponses = {
+    /**
+     * Response List Tracking Consents Api V1 Tracking Consents Get
+     *
+     * Successful Response
+     */
+    200: Array<TrackingConsentResponse>;
+};
+
+export type ListTrackingConsentsApiV1TrackingConsentsGetResponse = ListTrackingConsentsApiV1TrackingConsentsGetResponses[keyof ListTrackingConsentsApiV1TrackingConsentsGetResponses];
+
+export type CreateTrackingConsentApiV1TrackingConsentsPostData = {
+    body: TrackingConsentCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tracking-consents';
+};
+
+export type CreateTrackingConsentApiV1TrackingConsentsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTrackingConsentApiV1TrackingConsentsPostError = CreateTrackingConsentApiV1TrackingConsentsPostErrors[keyof CreateTrackingConsentApiV1TrackingConsentsPostErrors];
+
+export type CreateTrackingConsentApiV1TrackingConsentsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TrackingConsentResponse;
+};
+
+export type CreateTrackingConsentApiV1TrackingConsentsPostResponse = CreateTrackingConsentApiV1TrackingConsentsPostResponses[keyof CreateTrackingConsentApiV1TrackingConsentsPostResponses];
 
 export type ListTrackingEventsApiV1TrackingEventsGetData = {
     body?: never;
@@ -18597,6 +20930,49 @@ export type CreateOogMarkApiV1OogMarksPostResponses = {
 
 export type CreateOogMarkApiV1OogMarksPostResponse = CreateOogMarkApiV1OogMarksPostResponses[keyof CreateOogMarkApiV1OogMarksPostResponses];
 
+export type ListOogPermitMarksApiV1OogPermitMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/oog-permit-marks';
+};
+
+export type ListOogPermitMarksApiV1OogPermitMarksGetResponses = {
+    /**
+     * Response List Oog Permit Marks Api V1 Oog Permit Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<OogPermitMarkResponse>;
+};
+
+export type ListOogPermitMarksApiV1OogPermitMarksGetResponse = ListOogPermitMarksApiV1OogPermitMarksGetResponses[keyof ListOogPermitMarksApiV1OogPermitMarksGetResponses];
+
+export type CreateOogPermitMarkApiV1OogPermitMarksPostData = {
+    body: OogPermitMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/oog-permit-marks';
+};
+
+export type CreateOogPermitMarkApiV1OogPermitMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateOogPermitMarkApiV1OogPermitMarksPostError = CreateOogPermitMarkApiV1OogPermitMarksPostErrors[keyof CreateOogPermitMarkApiV1OogPermitMarksPostErrors];
+
+export type CreateOogPermitMarkApiV1OogPermitMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: OogPermitMarkResponse;
+};
+
+export type CreateOogPermitMarkApiV1OogPermitMarksPostResponse = CreateOogPermitMarkApiV1OogPermitMarksPostResponses[keyof CreateOogPermitMarkApiV1OogPermitMarksPostResponses];
+
 export type ListConsignmentsApiV1ConsignmentsGetData = {
     body?: never;
     path?: never;
@@ -19059,6 +21435,135 @@ export type CreateLaneKmApiV1LaneKmsPostResponses = {
 
 export type CreateLaneKmApiV1LaneKmsPostResponse = CreateLaneKmApiV1LaneKmsPostResponses[keyof CreateLaneKmApiV1LaneKmsPostResponses];
 
+export type ListLclConsoleMarksApiV1LclConsoleMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/lcl-console-marks';
+};
+
+export type ListLclConsoleMarksApiV1LclConsoleMarksGetResponses = {
+    /**
+     * Response List Lcl Console Marks Api V1 Lcl Console Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<LclConsoleMarkResponse>;
+};
+
+export type ListLclConsoleMarksApiV1LclConsoleMarksGetResponse = ListLclConsoleMarksApiV1LclConsoleMarksGetResponses[keyof ListLclConsoleMarksApiV1LclConsoleMarksGetResponses];
+
+export type CreateLclConsoleMarkApiV1LclConsoleMarksPostData = {
+    body: LclConsoleMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/lcl-console-marks';
+};
+
+export type CreateLclConsoleMarkApiV1LclConsoleMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateLclConsoleMarkApiV1LclConsoleMarksPostError = CreateLclConsoleMarkApiV1LclConsoleMarksPostErrors[keyof CreateLclConsoleMarkApiV1LclConsoleMarksPostErrors];
+
+export type CreateLclConsoleMarkApiV1LclConsoleMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: LclConsoleMarkResponse;
+};
+
+export type CreateLclConsoleMarkApiV1LclConsoleMarksPostResponse = CreateLclConsoleMarkApiV1LclConsoleMarksPostResponses[keyof CreateLclConsoleMarkApiV1LclConsoleMarksPostResponses];
+
+export type ListNacMarksApiV1NacMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/nac-marks';
+};
+
+export type ListNacMarksApiV1NacMarksGetResponses = {
+    /**
+     * Response List Nac Marks Api V1 Nac Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<NacMarkResponse>;
+};
+
+export type ListNacMarksApiV1NacMarksGetResponse = ListNacMarksApiV1NacMarksGetResponses[keyof ListNacMarksApiV1NacMarksGetResponses];
+
+export type CreateNacMarkApiV1NacMarksPostData = {
+    body: NacMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/nac-marks';
+};
+
+export type CreateNacMarkApiV1NacMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateNacMarkApiV1NacMarksPostError = CreateNacMarkApiV1NacMarksPostErrors[keyof CreateNacMarkApiV1NacMarksPostErrors];
+
+export type CreateNacMarkApiV1NacMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: NacMarkResponse;
+};
+
+export type CreateNacMarkApiV1NacMarksPostResponse = CreateNacMarkApiV1NacMarksPostResponses[keyof CreateNacMarkApiV1NacMarksPostResponses];
+
+export type ListSilkCorridorMarksApiV1SilkCorridorMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/silk-corridor-marks';
+};
+
+export type ListSilkCorridorMarksApiV1SilkCorridorMarksGetResponses = {
+    /**
+     * Response List Silk Corridor Marks Api V1 Silk Corridor Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<SilkCorridorMarkResponse>;
+};
+
+export type ListSilkCorridorMarksApiV1SilkCorridorMarksGetResponse = ListSilkCorridorMarksApiV1SilkCorridorMarksGetResponses[keyof ListSilkCorridorMarksApiV1SilkCorridorMarksGetResponses];
+
+export type CreateSilkCorridorMarkApiV1SilkCorridorMarksPostData = {
+    body: SilkCorridorMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/silk-corridor-marks';
+};
+
+export type CreateSilkCorridorMarkApiV1SilkCorridorMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateSilkCorridorMarkApiV1SilkCorridorMarksPostError = CreateSilkCorridorMarkApiV1SilkCorridorMarksPostErrors[keyof CreateSilkCorridorMarkApiV1SilkCorridorMarksPostErrors];
+
+export type CreateSilkCorridorMarkApiV1SilkCorridorMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: SilkCorridorMarkResponse;
+};
+
+export type CreateSilkCorridorMarkApiV1SilkCorridorMarksPostResponse = CreateSilkCorridorMarkApiV1SilkCorridorMarksPostResponses[keyof CreateSilkCorridorMarkApiV1SilkCorridorMarksPostResponses];
+
 export type ListLcChecklistsApiV1LcChecklistsGetData = {
     body?: never;
     path?: never;
@@ -19231,6 +21736,24 @@ export type CreateCircleSimApiV1CircleSimsPostResponses = {
 
 export type CreateCircleSimApiV1CircleSimsPostResponse = CreateCircleSimApiV1CircleSimsPostResponses[keyof CreateCircleSimApiV1CircleSimsPostResponses];
 
+export type ListCircleSimPairsApiV1CircleSimPairsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/circle-sim-pairs';
+};
+
+export type ListCircleSimPairsApiV1CircleSimPairsGetResponses = {
+    /**
+     * Response List Circle Sim Pairs Api V1 Circle Sim Pairs Get
+     *
+     * Successful Response
+     */
+    200: Array<CircleSimPairResponse>;
+};
+
+export type ListCircleSimPairsApiV1CircleSimPairsGetResponse = ListCircleSimPairsApiV1CircleSimPairsGetResponses[keyof ListCircleSimPairsApiV1CircleSimPairsGetResponses];
+
 export type ListClauseNoticesApiV1ClauseNoticesGetData = {
     body?: never;
     path?: never;
@@ -19316,6 +21839,49 @@ export type CreateCalibrationMarkApiV1CalibrationMarksPostResponses = {
 };
 
 export type CreateCalibrationMarkApiV1CalibrationMarksPostResponse = CreateCalibrationMarkApiV1CalibrationMarksPostResponses[keyof CreateCalibrationMarkApiV1CalibrationMarksPostResponses];
+
+export type ListCampaignMarksApiV1CampaignMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/campaign-marks';
+};
+
+export type ListCampaignMarksApiV1CampaignMarksGetResponses = {
+    /**
+     * Response List Campaign Marks Api V1 Campaign Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<CampaignMarkResponse>;
+};
+
+export type ListCampaignMarksApiV1CampaignMarksGetResponse = ListCampaignMarksApiV1CampaignMarksGetResponses[keyof ListCampaignMarksApiV1CampaignMarksGetResponses];
+
+export type CreateCampaignMarkApiV1CampaignMarksPostData = {
+    body: CampaignMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/campaign-marks';
+};
+
+export type CreateCampaignMarkApiV1CampaignMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCampaignMarkApiV1CampaignMarksPostError = CreateCampaignMarkApiV1CampaignMarksPostErrors[keyof CreateCampaignMarkApiV1CampaignMarksPostErrors];
+
+export type CreateCampaignMarkApiV1CampaignMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CampaignMarkResponse;
+};
+
+export type CreateCampaignMarkApiV1CampaignMarksPostResponse = CreateCampaignMarkApiV1CampaignMarksPostResponses[keyof CreateCampaignMarkApiV1CampaignMarksPostResponses];
 
 export type ListRepairPlaybooksApiV1RepairPlaybooksGetData = {
     body?: never;
@@ -19488,6 +22054,49 @@ export type CreateInterventionOutcomeApiV1InterventionOutcomesPostResponses = {
 };
 
 export type CreateInterventionOutcomeApiV1InterventionOutcomesPostResponse = CreateInterventionOutcomeApiV1InterventionOutcomesPostResponses[keyof CreateInterventionOutcomeApiV1InterventionOutcomesPostResponses];
+
+export type ListLoadOrderMarksApiV1LoadOrderMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/load-order-marks';
+};
+
+export type ListLoadOrderMarksApiV1LoadOrderMarksGetResponses = {
+    /**
+     * Response List Load Order Marks Api V1 Load Order Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<LoadOrderMarkResponse>;
+};
+
+export type ListLoadOrderMarksApiV1LoadOrderMarksGetResponse = ListLoadOrderMarksApiV1LoadOrderMarksGetResponses[keyof ListLoadOrderMarksApiV1LoadOrderMarksGetResponses];
+
+export type CreateLoadOrderMarkApiV1LoadOrderMarksPostData = {
+    body: LoadOrderMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/load-order-marks';
+};
+
+export type CreateLoadOrderMarkApiV1LoadOrderMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateLoadOrderMarkApiV1LoadOrderMarksPostError = CreateLoadOrderMarkApiV1LoadOrderMarksPostErrors[keyof CreateLoadOrderMarkApiV1LoadOrderMarksPostErrors];
+
+export type CreateLoadOrderMarkApiV1LoadOrderMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: LoadOrderMarkResponse;
+};
+
+export type CreateLoadOrderMarkApiV1LoadOrderMarksPostResponse = CreateLoadOrderMarkApiV1LoadOrderMarksPostResponses[keyof CreateLoadOrderMarkApiV1LoadOrderMarksPostResponses];
 
 export type ListLoadPlanMarksApiV1LoadPlanMarksGetData = {
     body?: never;
@@ -20852,6 +23461,49 @@ export type NoteSalesInvoiceKsefApiV1SalesInvoicesInvoiceIdNoteKsefPostResponses
 
 export type NoteSalesInvoiceKsefApiV1SalesInvoicesInvoiceIdNoteKsefPostResponse = NoteSalesInvoiceKsefApiV1SalesInvoicesInvoiceIdNoteKsefPostResponses[keyof NoteSalesInvoiceKsefApiV1SalesInvoicesInvoiceIdNoteKsefPostResponses];
 
+export type ListSalesLanesApiV1SalesLanesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/sales-lanes';
+};
+
+export type ListSalesLanesApiV1SalesLanesGetResponses = {
+    /**
+     * Response List Sales Lanes Api V1 Sales Lanes Get
+     *
+     * Successful Response
+     */
+    200: Array<SalesLaneResponse>;
+};
+
+export type ListSalesLanesApiV1SalesLanesGetResponse = ListSalesLanesApiV1SalesLanesGetResponses[keyof ListSalesLanesApiV1SalesLanesGetResponses];
+
+export type CreateSalesLaneApiV1SalesLanesPostData = {
+    body: SalesLaneCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/sales-lanes';
+};
+
+export type CreateSalesLaneApiV1SalesLanesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateSalesLaneApiV1SalesLanesPostError = CreateSalesLaneApiV1SalesLanesPostErrors[keyof CreateSalesLaneApiV1SalesLanesPostErrors];
+
+export type CreateSalesLaneApiV1SalesLanesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: SalesLaneResponse;
+};
+
+export type CreateSalesLaneApiV1SalesLanesPostResponse = CreateSalesLaneApiV1SalesLanesPostResponses[keyof CreateSalesLaneApiV1SalesLanesPostResponses];
+
 export type ListScheduleExceptionMarksApiV1ScheduleExceptionMarksGetData = {
     body?: never;
     path?: never;
@@ -21411,6 +24063,49 @@ export type CreateTelematicsConnectorApiV1TelematicsConnectorsPostResponses = {
 
 export type CreateTelematicsConnectorApiV1TelematicsConnectorsPostResponse = CreateTelematicsConnectorApiV1TelematicsConnectorsPostResponses[keyof CreateTelematicsConnectorApiV1TelematicsConnectorsPostResponses];
 
+export type ListTelematicsDevicesApiV1TelematicsDevicesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/telematics-devices';
+};
+
+export type ListTelematicsDevicesApiV1TelematicsDevicesGetResponses = {
+    /**
+     * Response List Telematics Devices Api V1 Telematics Devices Get
+     *
+     * Successful Response
+     */
+    200: Array<TelematicsDeviceResponse>;
+};
+
+export type ListTelematicsDevicesApiV1TelematicsDevicesGetResponse = ListTelematicsDevicesApiV1TelematicsDevicesGetResponses[keyof ListTelematicsDevicesApiV1TelematicsDevicesGetResponses];
+
+export type CreateTelematicsDeviceApiV1TelematicsDevicesPostData = {
+    body: TelematicsDeviceCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/telematics-devices';
+};
+
+export type CreateTelematicsDeviceApiV1TelematicsDevicesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTelematicsDeviceApiV1TelematicsDevicesPostError = CreateTelematicsDeviceApiV1TelematicsDevicesPostErrors[keyof CreateTelematicsDeviceApiV1TelematicsDevicesPostErrors];
+
+export type CreateTelematicsDeviceApiV1TelematicsDevicesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TelematicsDeviceResponse;
+};
+
+export type CreateTelematicsDeviceApiV1TelematicsDevicesPostResponse = CreateTelematicsDeviceApiV1TelematicsDevicesPostResponses[keyof CreateTelematicsDeviceApiV1TelematicsDevicesPostResponses];
+
 export type ListErpConnectorsApiV1ErpConnectorsGetData = {
     body?: never;
     path?: never;
@@ -21453,6 +24148,737 @@ export type CreateErpConnectorApiV1ErpConnectorsPostResponses = {
 };
 
 export type CreateErpConnectorApiV1ErpConnectorsPostResponse = CreateErpConnectorApiV1ErpConnectorsPostResponses[keyof CreateErpConnectorApiV1ErpConnectorsPostResponses];
+
+export type ListFactoringConnectorsApiV1FactoringConnectorsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/factoring-connectors';
+};
+
+export type ListFactoringConnectorsApiV1FactoringConnectorsGetResponses = {
+    /**
+     * Response List Factoring Connectors Api V1 Factoring Connectors Get
+     *
+     * Successful Response
+     */
+    200: Array<FactoringConnectorResponse>;
+};
+
+export type ListFactoringConnectorsApiV1FactoringConnectorsGetResponse = ListFactoringConnectorsApiV1FactoringConnectorsGetResponses[keyof ListFactoringConnectorsApiV1FactoringConnectorsGetResponses];
+
+export type CreateFactoringConnectorApiV1FactoringConnectorsPostData = {
+    body: FactoringConnectorCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/factoring-connectors';
+};
+
+export type CreateFactoringConnectorApiV1FactoringConnectorsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateFactoringConnectorApiV1FactoringConnectorsPostError = CreateFactoringConnectorApiV1FactoringConnectorsPostErrors[keyof CreateFactoringConnectorApiV1FactoringConnectorsPostErrors];
+
+export type CreateFactoringConnectorApiV1FactoringConnectorsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: FactoringConnectorResponse;
+};
+
+export type CreateFactoringConnectorApiV1FactoringConnectorsPostResponse = CreateFactoringConnectorApiV1FactoringConnectorsPostResponses[keyof CreateFactoringConnectorApiV1FactoringConnectorsPostResponses];
+
+export type ListPoFinancingMarksApiV1PoFinancingMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/po-financing-marks';
+};
+
+export type ListPoFinancingMarksApiV1PoFinancingMarksGetResponses = {
+    /**
+     * Response List Po Financing Marks Api V1 Po Financing Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<PoFinancingMarkResponse>;
+};
+
+export type ListPoFinancingMarksApiV1PoFinancingMarksGetResponse = ListPoFinancingMarksApiV1PoFinancingMarksGetResponses[keyof ListPoFinancingMarksApiV1PoFinancingMarksGetResponses];
+
+export type CreatePoFinancingMarkApiV1PoFinancingMarksPostData = {
+    body: PoFinancingMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/po-financing-marks';
+};
+
+export type CreatePoFinancingMarkApiV1PoFinancingMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreatePoFinancingMarkApiV1PoFinancingMarksPostError = CreatePoFinancingMarkApiV1PoFinancingMarksPostErrors[keyof CreatePoFinancingMarkApiV1PoFinancingMarksPostErrors];
+
+export type CreatePoFinancingMarkApiV1PoFinancingMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: PoFinancingMarkResponse;
+};
+
+export type CreatePoFinancingMarkApiV1PoFinancingMarksPostResponse = CreatePoFinancingMarkApiV1PoFinancingMarksPostResponses[keyof CreatePoFinancingMarkApiV1PoFinancingMarksPostResponses];
+
+export type ListWmsFlowMarksApiV1WmsFlowMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/wms-flow-marks';
+};
+
+export type ListWmsFlowMarksApiV1WmsFlowMarksGetResponses = {
+    /**
+     * Response List Wms Flow Marks Api V1 Wms Flow Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<WmsFlowMarkResponse>;
+};
+
+export type ListWmsFlowMarksApiV1WmsFlowMarksGetResponse = ListWmsFlowMarksApiV1WmsFlowMarksGetResponses[keyof ListWmsFlowMarksApiV1WmsFlowMarksGetResponses];
+
+export type CreateWmsFlowMarkApiV1WmsFlowMarksPostData = {
+    body: WmsFlowMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/wms-flow-marks';
+};
+
+export type CreateWmsFlowMarkApiV1WmsFlowMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateWmsFlowMarkApiV1WmsFlowMarksPostError = CreateWmsFlowMarkApiV1WmsFlowMarksPostErrors[keyof CreateWmsFlowMarkApiV1WmsFlowMarksPostErrors];
+
+export type CreateWmsFlowMarkApiV1WmsFlowMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: WmsFlowMarkResponse;
+};
+
+export type CreateWmsFlowMarkApiV1WmsFlowMarksPostResponse = CreateWmsFlowMarkApiV1WmsFlowMarksPostResponses[keyof CreateWmsFlowMarkApiV1WmsFlowMarksPostResponses];
+
+export type ListRfidMarksApiV1RfidMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/rfid-marks';
+};
+
+export type ListRfidMarksApiV1RfidMarksGetResponses = {
+    /**
+     * Response List Rfid Marks Api V1 Rfid Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<RfidMarkResponse>;
+};
+
+export type ListRfidMarksApiV1RfidMarksGetResponse = ListRfidMarksApiV1RfidMarksGetResponses[keyof ListRfidMarksApiV1RfidMarksGetResponses];
+
+export type CreateRfidMarkApiV1RfidMarksPostData = {
+    body: RfidMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/rfid-marks';
+};
+
+export type CreateRfidMarkApiV1RfidMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateRfidMarkApiV1RfidMarksPostError = CreateRfidMarkApiV1RfidMarksPostErrors[keyof CreateRfidMarkApiV1RfidMarksPostErrors];
+
+export type CreateRfidMarkApiV1RfidMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: RfidMarkResponse;
+};
+
+export type CreateRfidMarkApiV1RfidMarksPostResponse = CreateRfidMarkApiV1RfidMarksPostResponses[keyof CreateRfidMarkApiV1RfidMarksPostResponses];
+
+export type ListInventoryFinanceMarksApiV1InventoryFinanceMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/inventory-finance-marks';
+};
+
+export type ListInventoryFinanceMarksApiV1InventoryFinanceMarksGetResponses = {
+    /**
+     * Response List Inventory Finance Marks Api V1 Inventory Finance Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<InventoryFinanceMarkResponse>;
+};
+
+export type ListInventoryFinanceMarksApiV1InventoryFinanceMarksGetResponse = ListInventoryFinanceMarksApiV1InventoryFinanceMarksGetResponses[keyof ListInventoryFinanceMarksApiV1InventoryFinanceMarksGetResponses];
+
+export type CreateInventoryFinanceMarkApiV1InventoryFinanceMarksPostData = {
+    body: InventoryFinanceMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/inventory-finance-marks';
+};
+
+export type CreateInventoryFinanceMarkApiV1InventoryFinanceMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateInventoryFinanceMarkApiV1InventoryFinanceMarksPostError = CreateInventoryFinanceMarkApiV1InventoryFinanceMarksPostErrors[keyof CreateInventoryFinanceMarkApiV1InventoryFinanceMarksPostErrors];
+
+export type CreateInventoryFinanceMarkApiV1InventoryFinanceMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: InventoryFinanceMarkResponse;
+};
+
+export type CreateInventoryFinanceMarkApiV1InventoryFinanceMarksPostResponse = CreateInventoryFinanceMarkApiV1InventoryFinanceMarksPostResponses[keyof CreateInventoryFinanceMarkApiV1InventoryFinanceMarksPostResponses];
+
+export type ListInventoryCollateralMarksApiV1InventoryCollateralMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/inventory-collateral-marks';
+};
+
+export type ListInventoryCollateralMarksApiV1InventoryCollateralMarksGetResponses = {
+    /**
+     * Response List Inventory Collateral Marks Api V1 Inventory Collateral Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<InventoryCollateralMarkResponse>;
+};
+
+export type ListInventoryCollateralMarksApiV1InventoryCollateralMarksGetResponse = ListInventoryCollateralMarksApiV1InventoryCollateralMarksGetResponses[keyof ListInventoryCollateralMarksApiV1InventoryCollateralMarksGetResponses];
+
+export type CreateInventoryCollateralMarkApiV1InventoryCollateralMarksPostData = {
+    body: InventoryCollateralMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/inventory-collateral-marks';
+};
+
+export type CreateInventoryCollateralMarkApiV1InventoryCollateralMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateInventoryCollateralMarkApiV1InventoryCollateralMarksPostError = CreateInventoryCollateralMarkApiV1InventoryCollateralMarksPostErrors[keyof CreateInventoryCollateralMarkApiV1InventoryCollateralMarksPostErrors];
+
+export type CreateInventoryCollateralMarkApiV1InventoryCollateralMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: InventoryCollateralMarkResponse;
+};
+
+export type CreateInventoryCollateralMarkApiV1InventoryCollateralMarksPostResponse = CreateInventoryCollateralMarkApiV1InventoryCollateralMarksPostResponses[keyof CreateInventoryCollateralMarkApiV1InventoryCollateralMarksPostResponses];
+
+export type ListOpsRoomMarksApiV1OpsRoomMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/ops-room-marks';
+};
+
+export type ListOpsRoomMarksApiV1OpsRoomMarksGetResponses = {
+    /**
+     * Response List Ops Room Marks Api V1 Ops Room Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<OpsRoomMarkResponse>;
+};
+
+export type ListOpsRoomMarksApiV1OpsRoomMarksGetResponse = ListOpsRoomMarksApiV1OpsRoomMarksGetResponses[keyof ListOpsRoomMarksApiV1OpsRoomMarksGetResponses];
+
+export type CreateOpsRoomMarkApiV1OpsRoomMarksPostData = {
+    body: OpsRoomMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/ops-room-marks';
+};
+
+export type CreateOpsRoomMarkApiV1OpsRoomMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateOpsRoomMarkApiV1OpsRoomMarksPostError = CreateOpsRoomMarkApiV1OpsRoomMarksPostErrors[keyof CreateOpsRoomMarkApiV1OpsRoomMarksPostErrors];
+
+export type CreateOpsRoomMarkApiV1OpsRoomMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: OpsRoomMarkResponse;
+};
+
+export type CreateOpsRoomMarkApiV1OpsRoomMarksPostResponse = CreateOpsRoomMarkApiV1OpsRoomMarksPostResponses[keyof CreateOpsRoomMarkApiV1OpsRoomMarksPostResponses];
+
+export type ListLineImpactLayerMarksApiV1LineImpactLayerMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/line-impact-layer-marks';
+};
+
+export type ListLineImpactLayerMarksApiV1LineImpactLayerMarksGetResponses = {
+    /**
+     * Response List Line Impact Layer Marks Api V1 Line Impact Layer Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<LineImpactLayerMarkResponse>;
+};
+
+export type ListLineImpactLayerMarksApiV1LineImpactLayerMarksGetResponse = ListLineImpactLayerMarksApiV1LineImpactLayerMarksGetResponses[keyof ListLineImpactLayerMarksApiV1LineImpactLayerMarksGetResponses];
+
+export type CreateLineImpactLayerMarkApiV1LineImpactLayerMarksPostData = {
+    body: LineImpactLayerMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/line-impact-layer-marks';
+};
+
+export type CreateLineImpactLayerMarkApiV1LineImpactLayerMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateLineImpactLayerMarkApiV1LineImpactLayerMarksPostError = CreateLineImpactLayerMarkApiV1LineImpactLayerMarksPostErrors[keyof CreateLineImpactLayerMarkApiV1LineImpactLayerMarksPostErrors];
+
+export type CreateLineImpactLayerMarkApiV1LineImpactLayerMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: LineImpactLayerMarkResponse;
+};
+
+export type CreateLineImpactLayerMarkApiV1LineImpactLayerMarksPostResponse = CreateLineImpactLayerMarkApiV1LineImpactLayerMarksPostResponses[keyof CreateLineImpactLayerMarkApiV1LineImpactLayerMarksPostResponses];
+
+export type ListProductTicketMarksApiV1ProductTicketMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/product-ticket-marks';
+};
+
+export type ListProductTicketMarksApiV1ProductTicketMarksGetResponses = {
+    /**
+     * Response List Product Ticket Marks Api V1 Product Ticket Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<ProductTicketMarkResponse>;
+};
+
+export type ListProductTicketMarksApiV1ProductTicketMarksGetResponse = ListProductTicketMarksApiV1ProductTicketMarksGetResponses[keyof ListProductTicketMarksApiV1ProductTicketMarksGetResponses];
+
+export type CreateProductTicketMarkApiV1ProductTicketMarksPostData = {
+    body: ProductTicketMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/product-ticket-marks';
+};
+
+export type CreateProductTicketMarkApiV1ProductTicketMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateProductTicketMarkApiV1ProductTicketMarksPostError = CreateProductTicketMarkApiV1ProductTicketMarksPostErrors[keyof CreateProductTicketMarkApiV1ProductTicketMarksPostErrors];
+
+export type CreateProductTicketMarkApiV1ProductTicketMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ProductTicketMarkResponse;
+};
+
+export type CreateProductTicketMarkApiV1ProductTicketMarksPostResponse = CreateProductTicketMarkApiV1ProductTicketMarksPostResponses[keyof CreateProductTicketMarkApiV1ProductTicketMarksPostResponses];
+
+export type ListRiskRegisterMarksApiV1RiskRegisterMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/risk-register-marks';
+};
+
+export type ListRiskRegisterMarksApiV1RiskRegisterMarksGetResponses = {
+    /**
+     * Response List Risk Register Marks Api V1 Risk Register Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<RiskRegisterMarkResponse>;
+};
+
+export type ListRiskRegisterMarksApiV1RiskRegisterMarksGetResponse = ListRiskRegisterMarksApiV1RiskRegisterMarksGetResponses[keyof ListRiskRegisterMarksApiV1RiskRegisterMarksGetResponses];
+
+export type CreateRiskRegisterMarkApiV1RiskRegisterMarksPostData = {
+    body: RiskRegisterMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/risk-register-marks';
+};
+
+export type CreateRiskRegisterMarkApiV1RiskRegisterMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateRiskRegisterMarkApiV1RiskRegisterMarksPostError = CreateRiskRegisterMarkApiV1RiskRegisterMarksPostErrors[keyof CreateRiskRegisterMarkApiV1RiskRegisterMarksPostErrors];
+
+export type CreateRiskRegisterMarkApiV1RiskRegisterMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: RiskRegisterMarkResponse;
+};
+
+export type CreateRiskRegisterMarkApiV1RiskRegisterMarksPostResponse = CreateRiskRegisterMarkApiV1RiskRegisterMarksPostResponses[keyof CreateRiskRegisterMarkApiV1RiskRegisterMarksPostResponses];
+
+export type ListAutomationBiasMarksApiV1AutomationBiasMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/automation-bias-marks';
+};
+
+export type ListAutomationBiasMarksApiV1AutomationBiasMarksGetResponses = {
+    /**
+     * Response List Automation Bias Marks Api V1 Automation Bias Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<AutomationBiasMarkResponse>;
+};
+
+export type ListAutomationBiasMarksApiV1AutomationBiasMarksGetResponse = ListAutomationBiasMarksApiV1AutomationBiasMarksGetResponses[keyof ListAutomationBiasMarksApiV1AutomationBiasMarksGetResponses];
+
+export type CreateAutomationBiasMarkApiV1AutomationBiasMarksPostData = {
+    body: AutomationBiasMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/automation-bias-marks';
+};
+
+export type CreateAutomationBiasMarkApiV1AutomationBiasMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateAutomationBiasMarkApiV1AutomationBiasMarksPostError = CreateAutomationBiasMarkApiV1AutomationBiasMarksPostErrors[keyof CreateAutomationBiasMarkApiV1AutomationBiasMarksPostErrors];
+
+export type CreateAutomationBiasMarkApiV1AutomationBiasMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: AutomationBiasMarkResponse;
+};
+
+export type CreateAutomationBiasMarkApiV1AutomationBiasMarksPostResponse = CreateAutomationBiasMarkApiV1AutomationBiasMarksPostResponses[keyof CreateAutomationBiasMarkApiV1AutomationBiasMarksPostResponses];
+
+export type ListL3GateMarksApiV1L3GateMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/l3-gate-marks';
+};
+
+export type ListL3GateMarksApiV1L3GateMarksGetResponses = {
+    /**
+     * Response List L3 Gate Marks Api V1 L3 Gate Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<L3GateMarkResponse>;
+};
+
+export type ListL3GateMarksApiV1L3GateMarksGetResponse = ListL3GateMarksApiV1L3GateMarksGetResponses[keyof ListL3GateMarksApiV1L3GateMarksGetResponses];
+
+export type CreateL3GateMarkApiV1L3GateMarksPostData = {
+    body: L3GateMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/l3-gate-marks';
+};
+
+export type CreateL3GateMarkApiV1L3GateMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateL3GateMarkApiV1L3GateMarksPostError = CreateL3GateMarkApiV1L3GateMarksPostErrors[keyof CreateL3GateMarkApiV1L3GateMarksPostErrors];
+
+export type CreateL3GateMarkApiV1L3GateMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: L3GateMarkResponse;
+};
+
+export type CreateL3GateMarkApiV1L3GateMarksPostResponse = CreateL3GateMarkApiV1L3GateMarksPostResponses[keyof CreateL3GateMarkApiV1L3GateMarksPostResponses];
+
+export type ListStyleCascadeMarksApiV1StyleCascadeMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/style-cascade-marks';
+};
+
+export type ListStyleCascadeMarksApiV1StyleCascadeMarksGetResponses = {
+    /**
+     * Response List Style Cascade Marks Api V1 Style Cascade Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<StyleCascadeMarkResponse>;
+};
+
+export type ListStyleCascadeMarksApiV1StyleCascadeMarksGetResponse = ListStyleCascadeMarksApiV1StyleCascadeMarksGetResponses[keyof ListStyleCascadeMarksApiV1StyleCascadeMarksGetResponses];
+
+export type CreateStyleCascadeMarkApiV1StyleCascadeMarksPostData = {
+    body: StyleCascadeMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/style-cascade-marks';
+};
+
+export type CreateStyleCascadeMarkApiV1StyleCascadeMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateStyleCascadeMarkApiV1StyleCascadeMarksPostError = CreateStyleCascadeMarkApiV1StyleCascadeMarksPostErrors[keyof CreateStyleCascadeMarkApiV1StyleCascadeMarksPostErrors];
+
+export type CreateStyleCascadeMarkApiV1StyleCascadeMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: StyleCascadeMarkResponse;
+};
+
+export type CreateStyleCascadeMarkApiV1StyleCascadeMarksPostResponse = CreateStyleCascadeMarkApiV1StyleCascadeMarksPostResponses[keyof CreateStyleCascadeMarkApiV1StyleCascadeMarksPostResponses];
+
+export type ListStyleFidelityMarksApiV1StyleFidelityMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/style-fidelity-marks';
+};
+
+export type ListStyleFidelityMarksApiV1StyleFidelityMarksGetResponses = {
+    /**
+     * Response List Style Fidelity Marks Api V1 Style Fidelity Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<StyleFidelityMarkResponse>;
+};
+
+export type ListStyleFidelityMarksApiV1StyleFidelityMarksGetResponse = ListStyleFidelityMarksApiV1StyleFidelityMarksGetResponses[keyof ListStyleFidelityMarksApiV1StyleFidelityMarksGetResponses];
+
+export type CreateStyleFidelityMarkApiV1StyleFidelityMarksPostData = {
+    body: StyleFidelityMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/style-fidelity-marks';
+};
+
+export type CreateStyleFidelityMarkApiV1StyleFidelityMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateStyleFidelityMarkApiV1StyleFidelityMarksPostError = CreateStyleFidelityMarkApiV1StyleFidelityMarksPostErrors[keyof CreateStyleFidelityMarkApiV1StyleFidelityMarksPostErrors];
+
+export type CreateStyleFidelityMarkApiV1StyleFidelityMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: StyleFidelityMarkResponse;
+};
+
+export type CreateStyleFidelityMarkApiV1StyleFidelityMarksPostResponse = CreateStyleFidelityMarkApiV1StyleFidelityMarksPostResponses[keyof CreateStyleFidelityMarkApiV1StyleFidelityMarksPostResponses];
+
+export type ListQualityDescentMarksApiV1QualityDescentMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/quality-descent-marks';
+};
+
+export type ListQualityDescentMarksApiV1QualityDescentMarksGetResponses = {
+    /**
+     * Response List Quality Descent Marks Api V1 Quality Descent Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<QualityDescentMarkResponse>;
+};
+
+export type ListQualityDescentMarksApiV1QualityDescentMarksGetResponse = ListQualityDescentMarksApiV1QualityDescentMarksGetResponses[keyof ListQualityDescentMarksApiV1QualityDescentMarksGetResponses];
+
+export type CreateQualityDescentMarkApiV1QualityDescentMarksPostData = {
+    body: QualityDescentMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/quality-descent-marks';
+};
+
+export type CreateQualityDescentMarkApiV1QualityDescentMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateQualityDescentMarkApiV1QualityDescentMarksPostError = CreateQualityDescentMarkApiV1QualityDescentMarksPostErrors[keyof CreateQualityDescentMarkApiV1QualityDescentMarksPostErrors];
+
+export type CreateQualityDescentMarkApiV1QualityDescentMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: QualityDescentMarkResponse;
+};
+
+export type CreateQualityDescentMarkApiV1QualityDescentMarksPostResponse = CreateQualityDescentMarkApiV1QualityDescentMarksPostResponses[keyof CreateQualityDescentMarkApiV1QualityDescentMarksPostResponses];
+
+export type ListFieldConfidenceMarksApiV1FieldConfidenceMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/field-confidence-marks';
+};
+
+export type ListFieldConfidenceMarksApiV1FieldConfidenceMarksGetResponses = {
+    /**
+     * Response List Field Confidence Marks Api V1 Field Confidence Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<FieldConfidenceMarkResponse>;
+};
+
+export type ListFieldConfidenceMarksApiV1FieldConfidenceMarksGetResponse = ListFieldConfidenceMarksApiV1FieldConfidenceMarksGetResponses[keyof ListFieldConfidenceMarksApiV1FieldConfidenceMarksGetResponses];
+
+export type CreateFieldConfidenceMarkApiV1FieldConfidenceMarksPostData = {
+    body: FieldConfidenceMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/field-confidence-marks';
+};
+
+export type CreateFieldConfidenceMarkApiV1FieldConfidenceMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateFieldConfidenceMarkApiV1FieldConfidenceMarksPostError = CreateFieldConfidenceMarkApiV1FieldConfidenceMarksPostErrors[keyof CreateFieldConfidenceMarkApiV1FieldConfidenceMarksPostErrors];
+
+export type CreateFieldConfidenceMarkApiV1FieldConfidenceMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: FieldConfidenceMarkResponse;
+};
+
+export type CreateFieldConfidenceMarkApiV1FieldConfidenceMarksPostResponse = CreateFieldConfidenceMarkApiV1FieldConfidenceMarksPostResponses[keyof CreateFieldConfidenceMarkApiV1FieldConfidenceMarksPostResponses];
+
+export type ListComplianceProgramMarksApiV1ComplianceProgramMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/compliance-program-marks';
+};
+
+export type ListComplianceProgramMarksApiV1ComplianceProgramMarksGetResponses = {
+    /**
+     * Response List Compliance Program Marks Api V1 Compliance Program Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<ComplianceProgramMarkResponse>;
+};
+
+export type ListComplianceProgramMarksApiV1ComplianceProgramMarksGetResponse = ListComplianceProgramMarksApiV1ComplianceProgramMarksGetResponses[keyof ListComplianceProgramMarksApiV1ComplianceProgramMarksGetResponses];
+
+export type CreateComplianceProgramMarkApiV1ComplianceProgramMarksPostData = {
+    body: ComplianceProgramMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/compliance-program-marks';
+};
+
+export type CreateComplianceProgramMarkApiV1ComplianceProgramMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateComplianceProgramMarkApiV1ComplianceProgramMarksPostError = CreateComplianceProgramMarkApiV1ComplianceProgramMarksPostErrors[keyof CreateComplianceProgramMarkApiV1ComplianceProgramMarksPostErrors];
+
+export type CreateComplianceProgramMarkApiV1ComplianceProgramMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ComplianceProgramMarkResponse;
+};
+
+export type CreateComplianceProgramMarkApiV1ComplianceProgramMarksPostResponse = CreateComplianceProgramMarkApiV1ComplianceProgramMarksPostResponses[keyof CreateComplianceProgramMarkApiV1ComplianceProgramMarksPostResponses];
 
 export type ListCustomerContractsApiV1CustomerContractsGetData = {
     body?: never;
@@ -24290,6 +27716,24 @@ export type CreateCounterfactualRunApiV1CounterfactualRunsPostResponses = {
 
 export type CreateCounterfactualRunApiV1CounterfactualRunsPostResponse = CreateCounterfactualRunApiV1CounterfactualRunsPostResponses[keyof CreateCounterfactualRunApiV1CounterfactualRunsPostResponses];
 
+export type ListWhatIfReplaysApiV1WhatIfReplaysGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/what-if-replays';
+};
+
+export type ListWhatIfReplaysApiV1WhatIfReplaysGetResponses = {
+    /**
+     * Response List What If Replays Api V1 What If Replays Get
+     *
+     * Successful Response
+     */
+    200: Array<WhatIfReplayResponse>;
+};
+
+export type ListWhatIfReplaysApiV1WhatIfReplaysGetResponse = ListWhatIfReplaysApiV1WhatIfReplaysGetResponses[keyof ListWhatIfReplaysApiV1WhatIfReplaysGetResponses];
+
 export type ListBenefitLedgersApiV1BenefitLedgersGetData = {
     body?: never;
     path?: never;
@@ -24534,6 +27978,49 @@ export type CreateGeneralAverageMarkApiV1GeneralAverageMarksPostResponses = {
 };
 
 export type CreateGeneralAverageMarkApiV1GeneralAverageMarksPostResponse = CreateGeneralAverageMarkApiV1GeneralAverageMarksPostResponses[keyof CreateGeneralAverageMarkApiV1GeneralAverageMarksPostResponses];
+
+export type ListGroupageDispatcherMarksApiV1GroupageDispatcherMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/groupage-dispatcher-marks';
+};
+
+export type ListGroupageDispatcherMarksApiV1GroupageDispatcherMarksGetResponses = {
+    /**
+     * Response List Groupage Dispatcher Marks Api V1 Groupage Dispatcher Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<GroupageDispatcherMarkResponse>;
+};
+
+export type ListGroupageDispatcherMarksApiV1GroupageDispatcherMarksGetResponse = ListGroupageDispatcherMarksApiV1GroupageDispatcherMarksGetResponses[keyof ListGroupageDispatcherMarksApiV1GroupageDispatcherMarksGetResponses];
+
+export type CreateGroupageDispatcherMarkApiV1GroupageDispatcherMarksPostData = {
+    body: GroupageDispatcherMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/groupage-dispatcher-marks';
+};
+
+export type CreateGroupageDispatcherMarkApiV1GroupageDispatcherMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateGroupageDispatcherMarkApiV1GroupageDispatcherMarksPostError = CreateGroupageDispatcherMarkApiV1GroupageDispatcherMarksPostErrors[keyof CreateGroupageDispatcherMarkApiV1GroupageDispatcherMarksPostErrors];
+
+export type CreateGroupageDispatcherMarkApiV1GroupageDispatcherMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: GroupageDispatcherMarkResponse;
+};
+
+export type CreateGroupageDispatcherMarkApiV1GroupageDispatcherMarksPostResponse = CreateGroupageDispatcherMarkApiV1GroupageDispatcherMarksPostResponses[keyof CreateGroupageDispatcherMarkApiV1GroupageDispatcherMarksPostResponses];
 
 export type ListGroupageLinesApiV1GroupageLinesGetData = {
     body?: never;
@@ -25648,6 +29135,393 @@ export type CreateCrmLeadApiV1CrmLeadsPostResponses = {
 
 export type CreateCrmLeadApiV1CrmLeadsPostResponse = CreateCrmLeadApiV1CrmLeadsPostResponses[keyof CreateCrmLeadApiV1CrmLeadsPostResponses];
 
+export type ListCrmOpportunitiesApiV1CrmOpportunitiesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/crm-opportunities';
+};
+
+export type ListCrmOpportunitiesApiV1CrmOpportunitiesGetResponses = {
+    /**
+     * Response List Crm Opportunities Api V1 Crm Opportunities Get
+     *
+     * Successful Response
+     */
+    200: Array<CrmOpportunityResponse>;
+};
+
+export type ListCrmOpportunitiesApiV1CrmOpportunitiesGetResponse = ListCrmOpportunitiesApiV1CrmOpportunitiesGetResponses[keyof ListCrmOpportunitiesApiV1CrmOpportunitiesGetResponses];
+
+export type CreateCrmOpportunityApiV1CrmOpportunitiesPostData = {
+    body: CrmOpportunityCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/crm-opportunities';
+};
+
+export type CreateCrmOpportunityApiV1CrmOpportunitiesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCrmOpportunityApiV1CrmOpportunitiesPostError = CreateCrmOpportunityApiV1CrmOpportunitiesPostErrors[keyof CreateCrmOpportunityApiV1CrmOpportunitiesPostErrors];
+
+export type CreateCrmOpportunityApiV1CrmOpportunitiesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CrmOpportunityResponse;
+};
+
+export type CreateCrmOpportunityApiV1CrmOpportunitiesPostResponse = CreateCrmOpportunityApiV1CrmOpportunitiesPostResponses[keyof CreateCrmOpportunityApiV1CrmOpportunitiesPostResponses];
+
+export type ListCrmActivitiesApiV1CrmActivitiesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/crm-activities';
+};
+
+export type ListCrmActivitiesApiV1CrmActivitiesGetResponses = {
+    /**
+     * Response List Crm Activities Api V1 Crm Activities Get
+     *
+     * Successful Response
+     */
+    200: Array<CrmActivityResponse>;
+};
+
+export type ListCrmActivitiesApiV1CrmActivitiesGetResponse = ListCrmActivitiesApiV1CrmActivitiesGetResponses[keyof ListCrmActivitiesApiV1CrmActivitiesGetResponses];
+
+export type CreateCrmActivityApiV1CrmActivitiesPostData = {
+    body: CrmActivityCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/crm-activities';
+};
+
+export type CreateCrmActivityApiV1CrmActivitiesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCrmActivityApiV1CrmActivitiesPostError = CreateCrmActivityApiV1CrmActivitiesPostErrors[keyof CreateCrmActivityApiV1CrmActivitiesPostErrors];
+
+export type CreateCrmActivityApiV1CrmActivitiesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CrmActivityResponse;
+};
+
+export type CreateCrmActivityApiV1CrmActivitiesPostResponse = CreateCrmActivityApiV1CrmActivitiesPostResponses[keyof CreateCrmActivityApiV1CrmActivitiesPostResponses];
+
+export type ListCrmPipelineMarksApiV1CrmPipelineMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/crm-pipeline-marks';
+};
+
+export type ListCrmPipelineMarksApiV1CrmPipelineMarksGetResponses = {
+    /**
+     * Response List Crm Pipeline Marks Api V1 Crm Pipeline Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<CrmPipelineMarkResponse>;
+};
+
+export type ListCrmPipelineMarksApiV1CrmPipelineMarksGetResponse = ListCrmPipelineMarksApiV1CrmPipelineMarksGetResponses[keyof ListCrmPipelineMarksApiV1CrmPipelineMarksGetResponses];
+
+export type CreateCrmPipelineMarkApiV1CrmPipelineMarksPostData = {
+    body: CrmPipelineMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/crm-pipeline-marks';
+};
+
+export type CreateCrmPipelineMarkApiV1CrmPipelineMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCrmPipelineMarkApiV1CrmPipelineMarksPostError = CreateCrmPipelineMarkApiV1CrmPipelineMarksPostErrors[keyof CreateCrmPipelineMarkApiV1CrmPipelineMarksPostErrors];
+
+export type CreateCrmPipelineMarkApiV1CrmPipelineMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CrmPipelineMarkResponse;
+};
+
+export type CreateCrmPipelineMarkApiV1CrmPipelineMarksPostResponse = CreateCrmPipelineMarkApiV1CrmPipelineMarksPostResponses[keyof CreateCrmPipelineMarkApiV1CrmPipelineMarksPostResponses];
+
+export type ListCrmDedupMarksApiV1CrmDedupMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/crm-dedup-marks';
+};
+
+export type ListCrmDedupMarksApiV1CrmDedupMarksGetResponses = {
+    /**
+     * Response List Crm Dedup Marks Api V1 Crm Dedup Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<CrmDedupMarkResponse>;
+};
+
+export type ListCrmDedupMarksApiV1CrmDedupMarksGetResponse = ListCrmDedupMarksApiV1CrmDedupMarksGetResponses[keyof ListCrmDedupMarksApiV1CrmDedupMarksGetResponses];
+
+export type CreateCrmDedupMarkApiV1CrmDedupMarksPostData = {
+    body: CrmDedupMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/crm-dedup-marks';
+};
+
+export type CreateCrmDedupMarkApiV1CrmDedupMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCrmDedupMarkApiV1CrmDedupMarksPostError = CreateCrmDedupMarkApiV1CrmDedupMarksPostErrors[keyof CreateCrmDedupMarkApiV1CrmDedupMarksPostErrors];
+
+export type CreateCrmDedupMarkApiV1CrmDedupMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CrmDedupMarkResponse;
+};
+
+export type CreateCrmDedupMarkApiV1CrmDedupMarksPostResponse = CreateCrmDedupMarkApiV1CrmDedupMarksPostResponses[keyof CreateCrmDedupMarkApiV1CrmDedupMarksPostResponses];
+
+export type ListCrmLinkMarksApiV1CrmLinkMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/crm-link-marks';
+};
+
+export type ListCrmLinkMarksApiV1CrmLinkMarksGetResponses = {
+    /**
+     * Response List Crm Link Marks Api V1 Crm Link Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<CrmLinkMarkResponse>;
+};
+
+export type ListCrmLinkMarksApiV1CrmLinkMarksGetResponse = ListCrmLinkMarksApiV1CrmLinkMarksGetResponses[keyof ListCrmLinkMarksApiV1CrmLinkMarksGetResponses];
+
+export type CreateCrmLinkMarkApiV1CrmLinkMarksPostData = {
+    body: CrmLinkMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/crm-link-marks';
+};
+
+export type CreateCrmLinkMarkApiV1CrmLinkMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCrmLinkMarkApiV1CrmLinkMarksPostError = CreateCrmLinkMarkApiV1CrmLinkMarksPostErrors[keyof CreateCrmLinkMarkApiV1CrmLinkMarksPostErrors];
+
+export type CreateCrmLinkMarkApiV1CrmLinkMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CrmLinkMarkResponse;
+};
+
+export type CreateCrmLinkMarkApiV1CrmLinkMarksPostResponse = CreateCrmLinkMarkApiV1CrmLinkMarksPostResponses[keyof CreateCrmLinkMarkApiV1CrmLinkMarksPostResponses];
+
+export type ListSalesBindMarksApiV1SalesBindMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/sales-bind-marks';
+};
+
+export type ListSalesBindMarksApiV1SalesBindMarksGetResponses = {
+    /**
+     * Response List Sales Bind Marks Api V1 Sales Bind Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<SalesBindMarkResponse>;
+};
+
+export type ListSalesBindMarksApiV1SalesBindMarksGetResponse = ListSalesBindMarksApiV1SalesBindMarksGetResponses[keyof ListSalesBindMarksApiV1SalesBindMarksGetResponses];
+
+export type CreateSalesBindMarkApiV1SalesBindMarksPostData = {
+    body: SalesBindMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/sales-bind-marks';
+};
+
+export type CreateSalesBindMarkApiV1SalesBindMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateSalesBindMarkApiV1SalesBindMarksPostError = CreateSalesBindMarkApiV1SalesBindMarksPostErrors[keyof CreateSalesBindMarkApiV1SalesBindMarksPostErrors];
+
+export type CreateSalesBindMarkApiV1SalesBindMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: SalesBindMarkResponse;
+};
+
+export type CreateSalesBindMarkApiV1SalesBindMarksPostResponse = CreateSalesBindMarkApiV1SalesBindMarksPostResponses[keyof CreateSalesBindMarkApiV1SalesBindMarksPostResponses];
+
+export type ListShipperBindMarksApiV1ShipperBindMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/shipper-bind-marks';
+};
+
+export type ListShipperBindMarksApiV1ShipperBindMarksGetResponses = {
+    /**
+     * Response List Shipper Bind Marks Api V1 Shipper Bind Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<ShipperBindMarkOut>;
+};
+
+export type ListShipperBindMarksApiV1ShipperBindMarksGetResponse = ListShipperBindMarksApiV1ShipperBindMarksGetResponses[keyof ListShipperBindMarksApiV1ShipperBindMarksGetResponses];
+
+export type CreateShipperBindMarkApiV1ShipperBindMarksPostData = {
+    body: ShipperBindMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/shipper-bind-marks';
+};
+
+export type CreateShipperBindMarkApiV1ShipperBindMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateShipperBindMarkApiV1ShipperBindMarksPostError = CreateShipperBindMarkApiV1ShipperBindMarksPostErrors[keyof CreateShipperBindMarkApiV1ShipperBindMarksPostErrors];
+
+export type CreateShipperBindMarkApiV1ShipperBindMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ShipperBindMarkOut;
+};
+
+export type CreateShipperBindMarkApiV1ShipperBindMarksPostResponse = CreateShipperBindMarkApiV1ShipperBindMarksPostResponses[keyof CreateShipperBindMarkApiV1ShipperBindMarksPostResponses];
+
+export type ListShipperAwardMarksApiV1ShipperAwardMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/shipper-award-marks';
+};
+
+export type ListShipperAwardMarksApiV1ShipperAwardMarksGetResponses = {
+    /**
+     * Response List Shipper Award Marks Api V1 Shipper Award Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<ShipperAwardMarkOut>;
+};
+
+export type ListShipperAwardMarksApiV1ShipperAwardMarksGetResponse = ListShipperAwardMarksApiV1ShipperAwardMarksGetResponses[keyof ListShipperAwardMarksApiV1ShipperAwardMarksGetResponses];
+
+export type CreateShipperAwardMarkApiV1ShipperAwardMarksPostData = {
+    body: ShipperAwardMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/shipper-award-marks';
+};
+
+export type CreateShipperAwardMarkApiV1ShipperAwardMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateShipperAwardMarkApiV1ShipperAwardMarksPostError = CreateShipperAwardMarkApiV1ShipperAwardMarksPostErrors[keyof CreateShipperAwardMarkApiV1ShipperAwardMarksPostErrors];
+
+export type CreateShipperAwardMarkApiV1ShipperAwardMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ShipperAwardMarkOut;
+};
+
+export type CreateShipperAwardMarkApiV1ShipperAwardMarksPostResponse = CreateShipperAwardMarkApiV1ShipperAwardMarksPostResponses[keyof CreateShipperAwardMarkApiV1ShipperAwardMarksPostResponses];
+
+export type ListExtractionPromptMarksApiV1ExtractionPromptMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/extraction-prompt-marks';
+};
+
+export type ListExtractionPromptMarksApiV1ExtractionPromptMarksGetResponses = {
+    /**
+     * Response List Extraction Prompt Marks Api V1 Extraction Prompt Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<ExtractionPromptMarkOut>;
+};
+
+export type ListExtractionPromptMarksApiV1ExtractionPromptMarksGetResponse = ListExtractionPromptMarksApiV1ExtractionPromptMarksGetResponses[keyof ListExtractionPromptMarksApiV1ExtractionPromptMarksGetResponses];
+
+export type CreateExtractionPromptMarkApiV1ExtractionPromptMarksPostData = {
+    body: ExtractionPromptMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/extraction-prompt-marks';
+};
+
+export type CreateExtractionPromptMarkApiV1ExtractionPromptMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateExtractionPromptMarkApiV1ExtractionPromptMarksPostError = CreateExtractionPromptMarkApiV1ExtractionPromptMarksPostErrors[keyof CreateExtractionPromptMarkApiV1ExtractionPromptMarksPostErrors];
+
+export type CreateExtractionPromptMarkApiV1ExtractionPromptMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ExtractionPromptMarkOut;
+};
+
+export type CreateExtractionPromptMarkApiV1ExtractionPromptMarksPostResponse = CreateExtractionPromptMarkApiV1ExtractionPromptMarksPostResponses[keyof CreateExtractionPromptMarkApiV1ExtractionPromptMarksPostResponses];
+
 export type ListCustomerSopsApiV1CustomerSopsGetData = {
     body?: never;
     path?: never;
@@ -25914,6 +29788,49 @@ export type ResolvePortApiV1PortsResolveGetResponses = {
 };
 
 export type ResolvePortApiV1PortsResolveGetResponse = ResolvePortApiV1PortsResolveGetResponses[keyof ResolvePortApiV1PortsResolveGetResponses];
+
+export type ListPositionEventsApiV1PositionEventsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/position-events';
+};
+
+export type ListPositionEventsApiV1PositionEventsGetResponses = {
+    /**
+     * Response List Position Events Api V1 Position Events Get
+     *
+     * Successful Response
+     */
+    200: Array<PositionEventResponse>;
+};
+
+export type ListPositionEventsApiV1PositionEventsGetResponse = ListPositionEventsApiV1PositionEventsGetResponses[keyof ListPositionEventsApiV1PositionEventsGetResponses];
+
+export type CreatePositionEventApiV1PositionEventsPostData = {
+    body: PositionEventCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/position-events';
+};
+
+export type CreatePositionEventApiV1PositionEventsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreatePositionEventApiV1PositionEventsPostError = CreatePositionEventApiV1PositionEventsPostErrors[keyof CreatePositionEventApiV1PositionEventsPostErrors];
+
+export type CreatePositionEventApiV1PositionEventsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: PositionEventResponse;
+};
+
+export type CreatePositionEventApiV1PositionEventsPostResponse = CreatePositionEventApiV1PositionEventsPostResponses[keyof CreatePositionEventApiV1PositionEventsPostResponses];
 
 export type ListPortSurchargesApiV1PortSurchargesGetData = {
     body?: never;
@@ -26490,6 +30407,49 @@ export type CreateFerryArt9MarkApiV1FerryArt9MarksPostResponses = {
 };
 
 export type CreateFerryArt9MarkApiV1FerryArt9MarksPostResponse = CreateFerryArt9MarkApiV1FerryArt9MarksPostResponses[keyof CreateFerryArt9MarkApiV1FerryArt9MarksPostResponses];
+
+export type ListFerryBookingMarksApiV1FerryBookingMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/ferry-booking-marks';
+};
+
+export type ListFerryBookingMarksApiV1FerryBookingMarksGetResponses = {
+    /**
+     * Response List Ferry Booking Marks Api V1 Ferry Booking Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<FerryBookingMarkResponse>;
+};
+
+export type ListFerryBookingMarksApiV1FerryBookingMarksGetResponse = ListFerryBookingMarksApiV1FerryBookingMarksGetResponses[keyof ListFerryBookingMarksApiV1FerryBookingMarksGetResponses];
+
+export type CreateFerryBookingMarkApiV1FerryBookingMarksPostData = {
+    body: FerryBookingMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/ferry-booking-marks';
+};
+
+export type CreateFerryBookingMarkApiV1FerryBookingMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateFerryBookingMarkApiV1FerryBookingMarksPostError = CreateFerryBookingMarkApiV1FerryBookingMarksPostErrors[keyof CreateFerryBookingMarkApiV1FerryBookingMarksPostErrors];
+
+export type CreateFerryBookingMarkApiV1FerryBookingMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: FerryBookingMarkResponse;
+};
+
+export type CreateFerryBookingMarkApiV1FerryBookingMarksPostResponse = CreateFerryBookingMarkApiV1FerryBookingMarksPostResponses[keyof CreateFerryBookingMarkApiV1FerryBookingMarksPostResponses];
 
 export type ListFuelAnomalyMarksApiV1FuelAnomalyMarksGetData = {
     body?: never;

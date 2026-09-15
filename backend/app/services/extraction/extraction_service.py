@@ -18,6 +18,7 @@ from app.domain.extraction_draft import (
     require_extraction_draft_kind,
     require_rate_candidates_editable,
     require_tender_rfp_payload,
+    undo_extraction_history,
 )
 from app.integrations.docling.parser import DocumentParser
 from app.integrations.docling.provider import default_parser
@@ -211,6 +212,19 @@ class ExtractionService:
         )
         payload["candidates"] = candidates
         payload["revision"] = next_extraction_revision(payload.get("revision"))
+        draft.payload = payload
+        flag_modified(draft, "payload")
+        await self._session.flush()
+        return draft
+
+    async def undo_candidates(self, *, draft_id: UUID) -> ExtractionDraft:
+        draft = await self._require_pending(draft_id)
+        require_rate_candidates_editable(draft.draft_kind)
+        undone = undo_extraction_history(draft.payload.get("history"))
+        payload = dict(draft.payload)
+        payload["history"] = undone.history
+        payload["candidates"] = undone.candidates
+        payload["revision"] = undone.revision
         draft.payload = payload
         flag_modified(draft, "payload")
         await self._session.flush()

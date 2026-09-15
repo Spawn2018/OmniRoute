@@ -216,6 +216,18 @@ async def reject_extraction_draft(
     return _draft_response(draft)
 
 
+@router.post("/{draft_id}/undo", response_model=ExtractionDraftResponse)
+async def undo_extraction_draft(
+    draft_id: UUID,
+    _authz: None = Depends(require_permission("can_review_extractions", "organization")),
+    session: AsyncSession = Depends(require_tenant_session),
+) -> ExtractionDraftResponse:
+    service = ExtractionService(session)
+    draft = await service.undo_candidates(draft_id=draft_id)
+    await session.commit()
+    return _draft_response(draft)
+
+
 def _draft_response(
     draft: object,
     rates: list[RateLine] | None = None,

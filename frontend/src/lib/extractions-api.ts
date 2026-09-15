@@ -4,6 +4,7 @@ import {
   listExtractionDraftsApiV1ExtractionsGet,
   patchExtractionDraftApiV1ExtractionsDraftIdPatch,
   rejectExtractionDraftApiV1ExtractionsDraftIdRejectPost,
+  undoExtractionDraftApiV1ExtractionsDraftIdUndoPost,
 } from "@/api/sdk.gen"
 import type { ExtractRequest, ExtractionDraftResponse } from "@/api/types.gen"
 import { ApiError, httpErrorStatus } from "@/lib/api"
@@ -273,6 +274,16 @@ export async function rejectExtractionDraft(draftId: string): Promise<Extraction
   })
   if (error || !data) {
     throw new ApiError(JSON.stringify(error) || "Błąd odrzucenia", httpErrorStatus(response))
+  }
+  return toDraft(data)
+}
+
+export async function undoExtractionDraft(draftId: string): Promise<ExtractionDraft> {
+  const { data, error, response } = await undoExtractionDraftApiV1ExtractionsDraftIdUndoPost({
+    path: { draft_id: draftId },
+  })
+  if (error || !data) {
+    throw new ApiError(JSON.stringify(error) || "Błąd cofnięcia szkicu", httpErrorStatus(response))
   }
   return toDraft(data)
 }

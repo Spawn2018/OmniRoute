@@ -94,6 +94,28 @@ describe("hitlSplitView", () => {
     expect(html).toContain("wersja 0: 1 kandydatów")
   })
 
+  it("shows undo when history exists and handler is set", () => {
+    const draft = sampleDraft()
+    draft.payload.history = [
+      {
+        revision: 0,
+        candidates: [{ code: "THC", amount_text: "10", currency: "EUR" }],
+      },
+    ]
+    draft.payload.revision = 1
+    const html = renderToStaticMarkup(
+      createElement(HitlReviewSplit, {
+        draft,
+        pdfBase64: null,
+        busy: false,
+        onAccept: () => undefined,
+        onReject: () => undefined,
+        onUndo: () => undefined,
+      }),
+    )
+    expect(html).toContain("data-testid=\"extraction-undo\"")
+  })
+
   it("does not mark empty HITL as generated content", () => {
     expect(hitlGeneratedContentLabel(hitlSplitView(null))).toBeNull()
   })

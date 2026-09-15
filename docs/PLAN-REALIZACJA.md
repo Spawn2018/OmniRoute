@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **515.0** AI3.1 leftover — undo szkicu z `payload.history` (nie live vision; nie DocLayNet)
+**Następny:** **516.0** AI7.0 — Cost Allocation Engine (nie druga marża; nie live ERP)
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -709,7 +709,7 @@ Dump CT `03` i TMS `04b` **potwierdzają leftover silników** (jeden `charge`, H
 | AI2.0 | CRPS, Brier, MAE **liczone** ze złączenia AI1.0×AI1.1 | po AI1.1 | **443.0 DONE** widok; **446.0 DONE** bez wpisu na `prediction_ledger`; leftover: Brier (brak p) · dump `04b`: Oracle LML 95% interval = metoda, nie CRPS/MAE |
 | AI2.1 | champion/challenger + wykrywanie dryfu | po AI2.0 | **444.0 DONE** widok średnich; **445.0 DONE** widok dzienny; leftover: detektor/próg `REJECTED` · auto-champion `REJECTED` · zapis `prediction_ledger` (**446.0**) · V1 |
 | AI3.0 | `PATCH` na `extraction_draft` + edycja w interfejsie przed akceptacją | po AI2.0 | **447.0 DONE** PATCH `candidates`; **500.0 DONE** quote/rfp; **501.0 DONE** próg 70%; **504.0 DONE** partial `candidate_indexes`; **505.0 DONE** `hitl_confidence_min`; leftover: live vision (`07`) |
-| AI3.1 | wersjonowanie szkicu + `draft_kind` + `bbox` i pewność w JSONB | po AI3.0 | **448.0 DONE** `payload.revision` + `bbox_text`/`confidence_text`; **502.0 DONE** HITL `extraction_prompt_mark`; **503.0 DONE** `payload.history`; **515.0** w toku — undo z historii; leftover: wiring Instructor (`07`) |
+| AI3.1 | wersjonowanie szkicu + `draft_kind` + `bbox` i pewność w JSONB | po AI3.0 | **448.0 DONE** `payload.revision` + `bbox_text`/`confidence_text`; **502.0 DONE** HITL `extraction_prompt_mark`; **503.0 DONE** `payload.history`; **515.0 DONE** undo z historii; leftover: wiring Instructor (`07`) |
 | AI3.2 | ścieżka **obraz wprost** jako challenger dla obecnej ścieżki przez tekst | po AI3.1 | **449.0 DONE** `extract_path` text|image etykieta; leftover: live vision · pełny pipeline zdjęcia OpenCV/CLAHE (`07` / X9) · AI3.3 · AI3.4 |
 | AI3.3 | własny zbiór golden + bramka wydaniowa na progach | po AI3.2 | **450.0 DONE** pytest vs THC/BAF; **509.0 DONE** ≥500; **510.0 DONE** ≥2000; **511.0 DONE** ≥5000; **513.0 DONE** Instructor×golden stub; leftover: DocLayNet / PubTables-1M / CORD / Kleister (licencje, `07`) · żywy OpenAI w CI · 96,6% `TO_VERIFY`; FUNSD / RVL-CDIP `REJECTED` |
 | AI3.4 | ekstrakcja z Excela (dziś tylko PDF) | po AI3.1 | **451.0 DONE** `xlsx_sheet` stdlib; **506.0 DONE** `.xls` xlrd; **507.0 DONE** `sheet_index`; **508.0 DONE** `sheet_name`; **512.0 DONE** openpyxl; **514.0 DONE** formuły bez cache; leftover: live vision |
@@ -859,13 +859,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

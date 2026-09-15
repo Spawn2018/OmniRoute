@@ -23,6 +23,7 @@ type HitlReviewSplitProps = {
   busy: boolean
   onAccept: (draftId: string, candidateIndexes?: number[]) => void
   onReject: (draftId: string) => void
+  onUndo?: (draftId: string) => void
   onPatchCandidates?: (draftId: string, candidates: ExtractionCandidate[]) => void
 }
 
@@ -32,6 +33,7 @@ export function HitlReviewSplit({
   busy,
   onAccept,
   onReject,
+  onUndo,
   onPatchCandidates,
 }: HitlReviewSplitProps) {
   const view = hitlSplitView(draft)
@@ -197,6 +199,18 @@ export function HitlReviewSplit({
           >
             Akceptuj
           </Button>
+          {onUndo !== undefined && review.history.length > 0 ? (
+            <Button
+              type="button"
+              size="sm"
+              variant="outline"
+              data-testid="extraction-undo"
+              disabled={busy}
+              onClick={() => onUndo(review.draftId)}
+            >
+              Cofnij
+            </Button>
+          ) : null}
           <Button
             type="button"
             size="sm"

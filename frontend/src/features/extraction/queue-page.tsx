@@ -16,6 +16,7 @@ import {
   fetchExtractionDrafts,
   patchExtractionCandidates,
   rejectExtractionDraft,
+  undoExtractionDraft,
   type ExtractionCandidate,
   type ExtractionDraft,
 } from "@/lib/extractions-api"
@@ -134,6 +135,14 @@ export function ExtractionQueuePage() {
       patchExtractionCandidates(args.draftId, args.candidates),
     onSuccess: () => {
       track("extraction_draft_patched")
+      invalidate()
+    },
+  })
+
+  const undoMutation = useMutation({
+    mutationFn: (draftId: string) => undoExtractionDraft(draftId),
+    onSuccess: () => {
+      track("extraction_draft_undone")
       invalidate()
     },
   })
@@ -374,12 +383,16 @@ export function ExtractionQueuePage() {
         draft={query.data?.find((row) => row.id === selectedDraftId) ?? null}
         pdfBase64={documentBase64}
         busy={
-          acceptMutation.isPending || rejectMutation.isPending || patchMutation.isPending
+          acceptMutation.isPending ||
+          rejectMutation.isPending ||
+          patchMutation.isPending ||
+          undoMutation.isPending
         }
         onAccept={(draftId, candidateIndexes) =>
           acceptMutation.mutate({ draftId, candidateIndexes })
         }
         onReject={(draftId) => rejectMutation.mutate(draftId)}
+        onUndo={(draftId) => undoMutation.mutate(draftId)}
         onPatchCandidates={(draftId, candidates) =>
           patchMutation.mutate({ draftId, candidates })
         }
@@ -389,6 +402,9 @@ export function ExtractionQueuePage() {
       ) : null}
       {patchMutation.isError ? (
         <p className="text-sm text-destructive">{(patchMutation.error as Error).message}</p>
+      ) : null}
+      {undoMutation.isError ? (
+        <p className="text-sm text-destructive">{(undoMutation.error as Error).message}</p>
       ) : null}
       {acceptedRateNote ? (
         <p className="text-sm">
