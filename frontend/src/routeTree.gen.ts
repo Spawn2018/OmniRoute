@@ -236,6 +236,7 @@ import { Route as SessionRouteImport } from './routes/session'
 import { Route as ShipmentDocumentsRouteImport } from './routes/shipment-documents'
 import { Route as ShipmentPackagesRouteImport } from './routes/shipment-packages'
 import { Route as ShipmentsRouteImport } from './routes/shipments'
+import { Route as ShipperLikeMarksRouteImport } from './routes/shipper-like-marks'
 import { Route as ShipperRoundMarksRouteImport } from './routes/shipper-round-marks'
 import { Route as ShipperTenderMarksRouteImport } from './routes/shipper-tender-marks'
 import { Route as SidImportMarksRouteImport } from './routes/sid-import-marks'
@@ -1435,6 +1436,11 @@ const ShipmentsRoute = ShipmentsRouteImport.update({
   path: '/shipments',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShipperLikeMarksRoute = ShipperLikeMarksRouteImport.update({
+  id: '/shipper-like-marks',
+  path: '/shipper-like-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShipperRoundMarksRoute = ShipperRoundMarksRouteImport.update({
   id: '/shipper-round-marks',
   path: '/shipper-round-marks',
@@ -1969,6 +1975,7 @@ export interface FileRoutesByFullPath {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/shipper-like-marks': typeof ShipperLikeMarksRoute
   '/shipper-round-marks': typeof ShipperRoundMarksRoute
   '/shipper-tender-marks': typeof ShipperTenderMarksRoute
   '/sid-import-marks': typeof SidImportMarksRoute
@@ -2259,6 +2266,7 @@ export interface FileRoutesByTo {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/shipper-like-marks': typeof ShipperLikeMarksRoute
   '/shipper-round-marks': typeof ShipperRoundMarksRoute
   '/shipper-tender-marks': typeof ShipperTenderMarksRoute
   '/sid-import-marks': typeof SidImportMarksRoute
@@ -2550,6 +2558,7 @@ export interface FileRoutesById {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/shipper-like-marks': typeof ShipperLikeMarksRoute
   '/shipper-round-marks': typeof ShipperRoundMarksRoute
   '/shipper-tender-marks': typeof ShipperTenderMarksRoute
   '/sid-import-marks': typeof SidImportMarksRoute
@@ -2842,6 +2851,7 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/shipper-like-marks'
     | '/shipper-round-marks'
     | '/shipper-tender-marks'
     | '/sid-import-marks'
@@ -3132,6 +3142,7 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/shipper-like-marks'
     | '/shipper-round-marks'
     | '/shipper-tender-marks'
     | '/sid-import-marks'
@@ -3422,6 +3433,7 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/shipper-like-marks'
     | '/shipper-round-marks'
     | '/shipper-tender-marks'
     | '/sid-import-marks'
@@ -3713,6 +3725,7 @@ export interface RootRouteChildren {
   ShipmentDocumentsRoute: typeof ShipmentDocumentsRoute
   ShipmentPackagesRoute: typeof ShipmentPackagesRoute
   ShipmentsRoute: typeof ShipmentsRoute
+  ShipperLikeMarksRoute: typeof ShipperLikeMarksRoute
   ShipperRoundMarksRoute: typeof ShipperRoundMarksRoute
   ShipperTenderMarksRoute: typeof ShipperTenderMarksRoute
   SidImportMarksRoute: typeof SidImportMarksRoute
@@ -5367,6 +5380,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShipmentsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/shipper-like-marks': {
+      id: '/shipper-like-marks'
+      path: '/shipper-like-marks'
+      fullPath: '/shipper-like-marks'
+      preLoaderRoute: typeof ShipperLikeMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shipper-round-marks': {
       id: '/shipper-round-marks'
       path: '/shipper-round-marks'
@@ -6025,6 +6045,7 @@ const rootRouteChildren: RootRouteChildren = {
   ShipmentDocumentsRoute: ShipmentDocumentsRoute,
   ShipmentPackagesRoute: ShipmentPackagesRoute,
   ShipmentsRoute: ShipmentsRoute,
+  ShipperLikeMarksRoute: ShipperLikeMarksRoute,
   ShipperRoundMarksRoute: ShipperRoundMarksRoute,
   ShipperTenderMarksRoute: ShipperTenderMarksRoute,
   SidImportMarksRoute: SidImportMarksRoute,

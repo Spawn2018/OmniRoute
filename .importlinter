@@ -50,6 +50,7 @@ modules =
     app.services.port_surcharges
     app.services.channel_quotes
     app.services.shipments
+    app.services.shipper_like_marks
     app.services.shipper_round_marks
     app.services.shipper_tender_marks
     app.services.shipment_stakeholders
@@ -415,6 +416,9 @@ forbidden_modules =
     app.services.shipment_stakeholders
     app.repositories.shipment_stakeholders
     app.models.shipment_stakeholder
+    app.services.shipper_like_marks
+    app.repositories.shipper_like_marks
+    app.models.shipper_like_mark
     app.services.shipper_round_marks
     app.repositories.shipper_round_marks
     app.models.shipper_round_mark

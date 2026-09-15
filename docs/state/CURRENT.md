@@ -4,24 +4,24 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **493.0** BR6.2 leftover — HITL `shipper_round_mark`
+**Ostatni plaster:** **494.0** BR6.2 leftover — HITL `shipper_like_mark`
 
-**Etap:** Plaster — delta **494.0** zaakceptowana. Komenda `/plaster`.
+**Etap:** Plan — następne Q z Fali BR (wydmuszka / leftover). Komenda `/plan-modul`. Zero kodu produktu do delty.
 
 **Noc:** `/noc 8` do **2026-09-15T08:00+02**.
 
-**Następny:** **494.0** BR6.2 leftover — HITL `shipper_like_mark` (`like_kind` match|gap|bench|other; nie Alpega)
+**Następny:** **495.0** BR6.0 leftover — HITL dedup NIP stance (`crm_dedup_mark`; nie cold-send)
 
-**Park:** `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów · live SMEO HTTP · wycena zapasu SQL · FK PO · live giełda HTTP · live WMS HTTP · live RFID HTTP · live zastaw · N8 / T8 · SQL line impact / EBITDA · BR2.3/BR6.3 Expo · auto-fix bez owner · Mob Expo · L3 write · silnik porównania stylu · silnik auto-zejścia · HubSpot live. Nie otwieraj AI0.
+**Park:** `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów · live SMEO HTTP · wycena zapasu SQL · FK PO · live giełda HTTP · live WMS HTTP · live RFID HTTP · live zastaw · N8 / T8 · SQL line impact / EBITDA · BR2.3/BR6.3 Expo · auto-fix bez owner · Mob Expo · L3 write · silnik porównania stylu · silnik auto-zejścia · HubSpot live · Alpega live. Nie otwieraj AI0.
 
-**Spec (jedyna na sesję):** [docs/deltas/open/494.0.md](../deltas/open/494.0.md)
+**Spec (jedyna na sesję):** brak — najpierw delta **495.0** (`/plan-modul`).
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan. Wizja: [VISION.md](../VISION.md).
 
-**Uczciwość:** HITL zostaje. LLM nie liczy. `charge` = marża. **443.0–493.0** w kodzie.
+**Uczciwość:** HITL zostaje. LLM nie liczy. `charge` = marża. **443.0–494.0** w kodzie.
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-15:** Delta **494.0** zaakceptowana (`/noc 8`) — wolno plaster.
+**2026-09-15:** Plaster **494.0** zamknięty (`/noc 8`) — HITL `shipper_like_mark`.
 **2026-09-15:** Plaster **493.0** zamknięty (`/noc 8`) — HITL `shipper_round_mark`.
 **2026-09-15:** Plaster **492.0** zamknięty (`/noc 8`) — `volume_label` na `sales_lane`.

@@ -486,6 +486,10 @@ class InvalidShipperRoundMark(DomainError):
     """BR6.2 leftover: HITL runda zaladowcy — nie Alpega / like-for-like SQL."""
 
 
+class InvalidShipperLikeMark(DomainError):
+    """BR6.2 leftover: HITL stance like-for-like — nie Alpega / SQL."""
+
+
 class InvalidDocumentDispatchRule(DomainError):
     """Reguła adresata: trójka incoterm×strona×rodzaj → rola I2 — nie send."""
 

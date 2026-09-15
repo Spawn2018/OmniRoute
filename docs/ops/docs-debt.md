@@ -10,8 +10,9 @@
 - **464.0 leftover:** solver OR · wymiary Decimal · osie Decimal · FK do `load_plan_mark`. 464.0 = HITL `load_order_mark`.
 - **463.0 leftover:** silnik hubów · OR konsolidacji · matching cutoff · FK do `groupage_line`. 463.0 = HITL `groupage_dispatcher_mark`.
 - **462.0 leftover:** atrybucja live · lejek X7 · FK do `funnel_mark` / `crm_opportunity` · campaign HTTP. 462.0 = HITL `campaign_mark`.
-- **461.0 leftover:** like-for-like · Alpega live · FK · auto-award · BR6.3 Expo (park). 461.0 = HITL `shipper_tender_mark`. **493.0** = rundy DONE.
-- **493.0 leftover:** like-for-like · Alpega live · FK · auto-award. 493.0 = HITL `shipper_round_mark`.
+- **461.0 leftover:** Alpega live · FK · auto-award · BR6.3 Expo (park). 461.0 = HITL `shipper_tender_mark`. **493.0** rundy DONE. **494.0** like-for-like DONE.
+- **493.0 leftover:** Alpega live · FK · auto-award. 493.0 = HITL `shipper_round_mark`.
+- **494.0 leftover:** Alpega live · FK · auto-award. 494.0 = HITL `shipper_like_mark`.
 - **455.0 leftover:** Valhalla live · VRP · km · tacho constraint (BR3.3) · BR3.1 załadunek. 455.0 = HITL `route_plan_mark`.
 - **454.0 leftover:** generator 500k · km · `n_overlap` · VRP · EXPLAIN p95. 454.0 = widok `circle_sim_pair`.
 - **453.0 leftover:** AI4.2 kółka SQL · solver liczb · JSON dźwigni · CASCADE. 453.0 = FK przebieg → migawka + widok `what_if_replay`.
