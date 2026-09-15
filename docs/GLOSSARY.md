@@ -37,6 +37,7 @@ kolumn. Nie 468.0.
 | poziom alokacji kosztów | allocation_level | AI7.0 HITL otwarty słownik level_code; nie CHECK 12; nie SQL; nie TCM |
 | węzeł skutku biznesowego | impact_node_mark | AI6.0 HITL 8 węzłów kaskady + other; nie SQL grafu; nie EBITDA; nie tower_impact |
 | krawędź skutku biznesowego | impact_edge_mark | AI6.0 HITL para from_kind/to_kind; nie FK węzeł; nie SQL grafu; nie EBITDA |
+| etykieta art. 50 | article50_mark | AI9.0 HITL generated|exempt|human|other; nie U-art50 UI; nie scoring |
 | sala kryzysowa | war_room_mark | W2 HITL 200.0 rodzaj incydentu; nie N8; nie drugi czat; nie T8 API |
 | sala operacyjna | ops_room_mark | BR7.0 HITL warstwa działająca (shift/board/escalation); nie N8; nie widok sklejony |
 | warstwa liczona linii | line_impact_layer_mark | BR7.1 HITL scored/forecast/actual; nie SQL EBITDA; nie plant live |

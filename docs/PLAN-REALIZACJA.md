@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **521.0** AI9.0 — HITL etykieta art. 50 (nie live UI U-art50; nie scoring)
+**Następny:** **521.0** AI9.0 — HITL `article50_mark` (etykieta art. 50; nie U-art50 UI)
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -724,7 +724,7 @@ Dump CT `03` i TMS `04b` **potwierdzają leftover silników** (jeden `charge`, H
 | AI8.0 | kaskada stylu Global → Company → Department → User → Customer → Person-to-Person → Context | po AI2.0 | bliźniak osoby = styl i relacja, nigdy ocena wyników; **484.0** DONE HITL `style_cascade_mark`; leftover: AI8.1 fidelity · silnik stylu |
 | AI8.1 | `STYLE FIDELITY SCORE`, bramka 85% | po AI8.0 | szkic niebrzmiący jak ten użytkownik nie jest proponowany; **485.0** DONE HITL `style_fidelity_mark` (pass/hold/reject/exempt); leftover: silnik score · auto-bramka |
 | AI8.2 | poziomy autonomii 0–5 jako dana per tenant i per klient, domyślnie 1 | po AI9.2; **Q1=tak** | `autonomy_level` HITL (438.0); **483.0** DONE HITL `l3_gate_mark`; **486.0** DONE HITL `quality_descent_mark` (powód zejścia); leftover: silnik auto-zejścia · L3 write park; SOP 1 strona w operator/; nie scoring Pain×Frequency; nie Bertha |
-| AI9.0 | etykieta art. 50 przy treści z modelu | równolegle od AI3 | AI Act |
+| AI9.0 | etykieta art. 50 przy treści z modelu | równolegle od AI3 | AI Act; **521.0** plan HITL `article50_mark`; leftover: U-art50 UI |
 | AI9.1 | przeciwdziałanie automation bias w interfejsie | równolegle od AI3 | **482.0** DONE HITL `automation_bias_mark`; **487.0** DONE HITL `field_confidence_mark` (pasma ui-04); U-art50 zostaje |
 | AI9.2 | rejestr ryzyka + program zgodności | przed AI8.2 | **481.0** DONE HITL `risk_register_mark`; **488.0** DONE HITL `compliance_program_mark`; brama L3 DONE 483.0; U-art50 UI zostaje |
 

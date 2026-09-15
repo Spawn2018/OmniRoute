@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **520.0** AI6.0 leftover — HITL `impact_edge_mark`. **Etap:** Plan — delta **521.0** (AI9.0 HITL etykieta art. 50); komenda `/plan-modul`. **Następny:** **521.0** AI9.0 — HITL etykieta art. 50 (nie live UI U-art50; nie scoring) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **520.0** AI6.0 leftover — HITL `impact_edge_mark`. **Etap:** Plan — delta **521.0** zaakceptowana (`/noc 7`); wolno `/plaster`. **Następny:** **521.0** AI9.0 — HITL `article50_mark` (etykieta art. 50; nie U-art50 UI) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
