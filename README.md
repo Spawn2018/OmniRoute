@@ -88,9 +88,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **492.0** BR6.1 leftover — `volume_label` tekst na `sales_lane`
-- **Etap:** Plan — następne Q z Fali BR (wydmuszka / leftover). Komenda `/plan-modul`. Zero kodu produktu do delty.
-- **Następny:** **493.0** BR6.2 leftover — HITL rundy przetargu załadowcy (`shipper_round_mark`; nie Alpega live)
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Etap:** Plaster — delta **493.0** zaakceptowana. Komenda `/plaster`.
+- **Następny:** **493.0** BR6.2 leftover — HITL `shipper_round_mark` (`round_kind` first|second|final|other; nie Alpega)
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

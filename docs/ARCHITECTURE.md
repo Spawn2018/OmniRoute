@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **492.0** BR6.1 leftover — `volume_label` tekst na `sales_lane`. **Etap:** Plan — następne Q z Fali BR (wydmuszka / leftover). Komenda `/plan-modul`. Zero kodu produktu do delty. **Następny:** **493.0** BR6.2 leftover — HITL rundy przetargu załadowcy (`shipper_round_mark`; nie Alpega live) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **492.0** BR6.1 leftover — `volume_label` tekst na `sales_lane`. **Etap:** Plaster — delta **493.0** zaakceptowana. Komenda `/plaster`. **Następny:** **493.0** BR6.2 leftover — HITL `shipper_round_mark` (`round_kind` first|second|final|other; nie Alpega) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

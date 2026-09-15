@@ -125,6 +125,7 @@ zostają w badaniach `04`).
 | 2026-09-14 | BR1.2 plan (**476.0**): HITL `inventory_finance_mark` (valuation|aging|release|other). Wycena SQL / wartość Decimal / FK position·PO / live zastaw `REJECTED` na tym wierszu. |
 | 2026-09-14 | **476.0** `inventory_finance_mark` w kodzie (`CONFIRMED`, git). Następny = **BR1.3** zabezpieczenie na towarze (`REQUIREMENT`). Wycena SQL `REJECTED` na tym wierszu. |
 | 2026-09-14 | BR1.3 plan (**477.0**): HITL `inventory_collateral_mark` (pledge|lien|hold|other). FK position·PO / live zastaw / wartość `REJECTED` na tym wierszu. |
+| 2026-09-15 | Plan **493.0** BR6.2 leftover `shipper_round_mark` (`REQUIREMENT`). Runda first/second/final; nie Alpega. FK / like-for-like SQL `REJECTED`. |
 | 2026-09-15 | **492.0** `volume_label` na `sales_lane` (`CONFIRMED`, git). Następny = leftover BR6.2 rundy (`REQUIREMENT`). HubSpot live / float / FK `REJECTED` na tym wierszu. |
 | 2026-09-15 | **491.0** para UN/LOCODE na `sales_lane` (`CONFIRMED`, git). Następny = leftover wolumen (`REQUIREMENT`). FK port / HubSpot / km `REJECTED` na tym wierszu. |
 | 2026-09-15 | Plan **491.0** BR6.1 leftover para UN/LOCODE na `sales_lane` (`REQUIREMENT`). Nie FK port. HubSpot / km `REJECTED`. |
