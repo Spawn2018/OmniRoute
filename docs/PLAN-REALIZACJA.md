@@ -758,7 +758,7 @@ Dump `03` / `04b`: WMS i BR6.2 evidenced; p44/LSP44 = dwie skóry jeden OpenAPI;
 | BR5.2 | giełdy transportowe: wymiana ofert | po S55 | **473.0** DONE rozszerzenie CHECK `exchange_connector`; leftover live HTTP · auto-post · wymiana ofert |
 | BR6.0 | CRM ponad leada: okazja, aktywność, etap | **start HHL** | **456.0** DONE HITL `crm_opportunity`; **489.0** DONE HITL `crm_activity`; **490.0** DONE HITL `crm_pipeline_mark`; **495.0** DONE HITL `crm_dedup_mark`; **496.0** DONE HITL `crm_link_mark`; leftover: cold-send park |
 | BR6.1 | **korytarz jako obiekt sprzedażowy** | po BR6.0 | **460.0** DONE HITL `sales_lane`; **491.0** DONE para UN/LOCODE; **492.0** DONE `volume_label` tekst; **497.0** DONE HITL `sales_bind_mark`; leftover: HubSpot live park |
-| BR6.2 | przetargi korporacyjne po stronie załadowcy | po G2 | **461.0** DONE HITL `shipper_tender_mark`; **493.0** DONE HITL `shipper_round_mark`; **494.0** DONE HITL `shipper_like_mark`; **498.0** DONE HITL `shipper_bind_mark`; leftover: Alpega live park · auto-award stance (**499.0** plan) |
+| BR6.2 | przetargi korporacyjne po stronie załadowcy | po G2 | **461.0** DONE HITL `shipper_tender_mark`; **493.0** DONE HITL `shipper_round_mark`; **494.0** DONE HITL `shipper_like_mark`; **498.0** DONE HITL `shipper_bind_mark`; leftover: Alpega live park · auto-award stance (**499.0** delta OK, plaster) |
 | BR6.3 | aplikacja mobilna sprzedaży iOS/Android | po BR6.0 | Expo/RN; web UI się nie przenosi |
 | BR6.4 | portale: klienta, przewoźnika, podwykonawcy | po S53 | zbieżne z X1–X5 |
 | BR6.5 | marketing: kampanie, atrybucja, lejek | po BR6.0 | **462.0** DONE HITL `campaign_mark`; leftover: atrybucja live; nie `funnel_mark` |
@@ -859,13 +859,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

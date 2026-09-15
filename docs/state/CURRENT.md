@@ -6,7 +6,7 @@
 
 **Ostatni plaster:** **498.0** BR6.2 leftover — HITL `shipper_bind_mark`
 
-**Etap:** Plan — leftover BR6.2 auto-award stance. Komenda `/plan-modul`.
+**Etap:** Plaster — delta **499.0** zaakceptowana (`/noc 8`). Wolno `/plaster`.
 
 **Noc:** `/noc 8` do **2026-09-15T08:00+02**.
 
@@ -14,7 +14,7 @@
 
 **Park:** `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów · live SMEO HTTP · wycena zapasu SQL · FK PO · live giełda HTTP · live WMS HTTP · live RFID HTTP · live zastaw · N8 / T8 · SQL line impact / EBITDA · BR2.3/BR6.3 Expo · auto-fix bez owner · Mob Expo · L3 write · silnik porównania stylu · silnik auto-zejścia · HubSpot live · Alpega live · cold-send CRM. Nie otwieraj AI0.
 
-**Spec (jedyna na sesję):** brak — najpierw delta **499.0**.
+**Spec (jedyna na sesję):** [docs/deltas/open/499.0.md](../deltas/open/499.0.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan. Wizja: [VISION.md](../VISION.md).
 
