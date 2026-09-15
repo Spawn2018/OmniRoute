@@ -6,15 +6,15 @@
 
 **Ostatni plaster:** **493.0** BR6.2 leftover — HITL `shipper_round_mark`
 
-**Etap:** Plan — następne Q z Fali BR (wydmuszka / leftover). Komenda `/plan-modul`. Zero kodu produktu do delty.
+**Etap:** Plaster — delta **494.0** zaakceptowana. Komenda `/plaster`.
 
 **Noc:** `/noc 8` do **2026-09-15T08:00+02**.
 
-**Następny:** **494.0** BR6.2 leftover — HITL like-for-like (`shipper_like_mark`; nie Alpega live)
+**Następny:** **494.0** BR6.2 leftover — HITL `shipper_like_mark` (`like_kind` match|gap|bench|other; nie Alpega)
 
 **Park:** `data_source` (licencja, AI5) · Graph live · Expo/EAS · GPS live poll · unwrap umów · live SMEO HTTP · wycena zapasu SQL · FK PO · live giełda HTTP · live WMS HTTP · live RFID HTTP · live zastaw · N8 / T8 · SQL line impact / EBITDA · BR2.3/BR6.3 Expo · auto-fix bez owner · Mob Expo · L3 write · silnik porównania stylu · silnik auto-zejścia · HubSpot live. Nie otwieraj AI0.
 
-**Spec (jedyna na sesję):** brak — najpierw delta **494.0** (`/plan-modul`).
+**Spec (jedyna na sesję):** [docs/deltas/open/494.0.md](../deltas/open/494.0.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan. Wizja: [VISION.md](../VISION.md).
 
@@ -22,6 +22,6 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
+**2026-09-15:** Delta **494.0** zaakceptowana (`/noc 8`) — wolno plaster.
 **2026-09-15:** Plaster **493.0** zamknięty (`/noc 8`) — HITL `shipper_round_mark`.
 **2026-09-15:** Plaster **492.0** zamknięty (`/noc 8`) — `volume_label` na `sales_lane`.
-**2026-09-15:** Plaster **491.0** zamknięty (`/noc 8`) — para UN/LOCODE na `sales_lane`.
