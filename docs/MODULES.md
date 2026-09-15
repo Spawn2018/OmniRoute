@@ -100,7 +100,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | AI8.2 | Brama L3 HITL | 483.0 `l3_gate_mark` · 486.0 `quality_descent_mark` | **ukończony (HITL)** · gate + powód zejścia mae/crps/brier/manual/other; leftover silnik auto-zejścia · L3 write park |
 | AI8.0 | Kaskada stylu HITL | 484.0 `style_cascade_mark` | **ukończony (HITL)** · global/company/department/user/customer/person/context/other; leftover AI8.1 fidelity · silnik stylu |
 | AI8.1 | STYLE FIDELITY HITL | 485.0 `style_fidelity_mark` | **ukończony (HITL)** · pass/hold/reject/exempt/other; leftover silnik porównania · auto-bramka |
-| BR6.0 | Okazja + aktywność + etap + dedup CRM HITL | 456.0 `crm_opportunity`; 489.0 `crm_activity`; 490.0 `crm_pipeline_mark`; 495.0 `crm_dedup_mark` | **ukończony (HITL)** · leftover FK · cold-send |
+| BR6.0 | Okazja + aktywność + etap + dedup + link CRM HITL | 456.0 `crm_opportunity`; 489.0 `crm_activity`; 490.0 `crm_pipeline_mark`; 495.0 `crm_dedup_mark`; 496.0 `crm_link_mark` | **ukończony (HITL)** · leftover cold-send park |
 | BR6.1 | Korytarz sprzedażowy HITL | 460.0 `sales_lane` · 491.0 UN/LOCODE · 492.0 `volume_label` | **ukończony (HITL)** · leftover HubSpot live / FK |
 | BR6.2 | Tryb przetargu załadowcy HITL | 461.0 · 493.0 · 494.0 | **ukończony (HITL)** · leftover Alpega live / FK |
 | BR6.5 | Znacznik kampanii HITL | 462.0 `campaign_mark` | **ukończony (HITL)** · kind campaign/attribution/other; leftover atrybucja live / lejek X7 |

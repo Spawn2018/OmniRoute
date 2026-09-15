@@ -878,6 +878,10 @@ class InvalidCrmDedupMark(DomainError):
     """BR6.0 leftover: HITL stance dedup CRM — nie merge SQL / cold-send."""
 
 
+class InvalidCrmLinkMark(DomainError):
+    """BR6.0 leftover: HITL stance link CRM — nie FK UUID / cold-send."""
+
+
 class InvalidLcChecklist(DomainError):
     """G3: HITL checklista LC — nie bank due."""
 

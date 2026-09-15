@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **495.0** BR6.0 leftover — HITL `crm_dedup_mark` **Następny:** **496.0** BR6.0 leftover — HITL `crm_link_mark` (`link_kind` lead|party|other; nie FK UUID, nie cold-send)
+**Stan (z CURRENT.md):** **496.0** BR6.0 leftover — HITL `crm_link_mark` **Następny:** **497.0** BR6.1 leftover — HITL `sales_bind_mark` (`bind_kind` opportunity|party|other; nie HubSpot live, nie FK UUID)
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

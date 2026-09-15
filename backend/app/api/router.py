@@ -51,6 +51,7 @@ from app.api import (
     crm_activities,
     crm_dedup_marks,
     crm_leads,
+    crm_link_marks,
     crm_opportunities,
     crm_pipeline_marks,
     csrd_marks,
@@ -555,6 +556,7 @@ api_router.include_router(crm_opportunities.router)
 api_router.include_router(crm_activities.router)
 api_router.include_router(crm_pipeline_marks.router)
 api_router.include_router(crm_dedup_marks.router)
+api_router.include_router(crm_link_marks.router)
 api_router.include_router(customer_sops.router)
 api_router.include_router(cutoff_marks.router)
 api_router.include_router(ports.router)

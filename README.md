@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **495.0** BR6.0 leftover — HITL `crm_dedup_mark`
-- **Etap:** Plaster — delta **496.0** zaakceptowana. Komenda `/plaster`.
-- **Następny:** **496.0** BR6.0 leftover — HITL `crm_link_mark` (`link_kind` lead|party|other; nie FK UUID, nie cold-send)
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **496.0** BR6.0 leftover — HITL `crm_link_mark`
+- **Etap:** Plan — leftover BR6.1 FK stance. Komenda `/plan-modul`.
+- **Następny:** **497.0** BR6.1 leftover — HITL `sales_bind_mark` (`bind_kind` opportunity|party|other; nie HubSpot live, nie FK UUID)
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

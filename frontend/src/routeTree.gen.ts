@@ -58,6 +58,7 @@ import { Route as CreditReviewsRouteImport } from './routes/credit-reviews'
 import { Route as CrmActivitiesRouteImport } from './routes/crm-activities'
 import { Route as CrmDedupMarksRouteImport } from './routes/crm-dedup-marks'
 import { Route as CrmLeadsRouteImport } from './routes/crm-leads'
+import { Route as CrmLinkMarksRouteImport } from './routes/crm-link-marks'
 import { Route as CrmOpportunitiesRouteImport } from './routes/crm-opportunities'
 import { Route as CrmPipelineMarksRouteImport } from './routes/crm-pipeline-marks'
 import { Route as CsrdMarksRouteImport } from './routes/csrd-marks'
@@ -543,6 +544,11 @@ const CrmDedupMarksRoute = CrmDedupMarksRouteImport.update({
 const CrmLeadsRoute = CrmLeadsRouteImport.update({
   id: '/crm-leads',
   path: '/crm-leads',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CrmLinkMarksRoute = CrmLinkMarksRouteImport.update({
+  id: '/crm-link-marks',
+  path: '/crm-link-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CrmOpportunitiesRoute = CrmOpportunitiesRouteImport.update({
@@ -1803,6 +1809,7 @@ export interface FileRoutesByFullPath {
   '/crm-activities': typeof CrmActivitiesRoute
   '/crm-dedup-marks': typeof CrmDedupMarksRoute
   '/crm-leads': typeof CrmLeadsRoute
+  '/crm-link-marks': typeof CrmLinkMarksRoute
   '/crm-opportunities': typeof CrmOpportunitiesRoute
   '/crm-pipeline-marks': typeof CrmPipelineMarksRoute
   '/csrd-marks': typeof CsrdMarksRoute
@@ -2095,6 +2102,7 @@ export interface FileRoutesByTo {
   '/crm-activities': typeof CrmActivitiesRoute
   '/crm-dedup-marks': typeof CrmDedupMarksRoute
   '/crm-leads': typeof CrmLeadsRoute
+  '/crm-link-marks': typeof CrmLinkMarksRoute
   '/crm-opportunities': typeof CrmOpportunitiesRoute
   '/crm-pipeline-marks': typeof CrmPipelineMarksRoute
   '/csrd-marks': typeof CsrdMarksRoute
@@ -2388,6 +2396,7 @@ export interface FileRoutesById {
   '/crm-activities': typeof CrmActivitiesRoute
   '/crm-dedup-marks': typeof CrmDedupMarksRoute
   '/crm-leads': typeof CrmLeadsRoute
+  '/crm-link-marks': typeof CrmLinkMarksRoute
   '/crm-opportunities': typeof CrmOpportunitiesRoute
   '/crm-pipeline-marks': typeof CrmPipelineMarksRoute
   '/csrd-marks': typeof CsrdMarksRoute
@@ -2682,6 +2691,7 @@ export interface FileRouteTypes {
     | '/crm-activities'
     | '/crm-dedup-marks'
     | '/crm-leads'
+    | '/crm-link-marks'
     | '/crm-opportunities'
     | '/crm-pipeline-marks'
     | '/csrd-marks'
@@ -2974,6 +2984,7 @@ export interface FileRouteTypes {
     | '/crm-activities'
     | '/crm-dedup-marks'
     | '/crm-leads'
+    | '/crm-link-marks'
     | '/crm-opportunities'
     | '/crm-pipeline-marks'
     | '/csrd-marks'
@@ -3266,6 +3277,7 @@ export interface FileRouteTypes {
     | '/crm-activities'
     | '/crm-dedup-marks'
     | '/crm-leads'
+    | '/crm-link-marks'
     | '/crm-opportunities'
     | '/crm-pipeline-marks'
     | '/csrd-marks'
@@ -3559,6 +3571,7 @@ export interface RootRouteChildren {
   CrmActivitiesRoute: typeof CrmActivitiesRoute
   CrmDedupMarksRoute: typeof CrmDedupMarksRoute
   CrmLeadsRoute: typeof CrmLeadsRoute
+  CrmLinkMarksRoute: typeof CrmLinkMarksRoute
   CrmOpportunitiesRoute: typeof CrmOpportunitiesRoute
   CrmPipelineMarksRoute: typeof CrmPipelineMarksRoute
   CsrdMarksRoute: typeof CsrdMarksRoute
@@ -4145,6 +4158,13 @@ declare module '@tanstack/react-router' {
       path: '/crm-leads'
       fullPath: '/crm-leads'
       preLoaderRoute: typeof CrmLeadsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/crm-link-marks': {
+      id: '/crm-link-marks'
+      path: '/crm-link-marks'
+      fullPath: '/crm-link-marks'
+      preLoaderRoute: typeof CrmLinkMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/crm-opportunities': {
@@ -5887,6 +5907,7 @@ const rootRouteChildren: RootRouteChildren = {
   CrmActivitiesRoute: CrmActivitiesRoute,
   CrmDedupMarksRoute: CrmDedupMarksRoute,
   CrmLeadsRoute: CrmLeadsRoute,
+  CrmLinkMarksRoute: CrmLinkMarksRoute,
   CrmOpportunitiesRoute: CrmOpportunitiesRoute,
   CrmPipelineMarksRoute: CrmPipelineMarksRoute,
   CsrdMarksRoute: CsrdMarksRoute,
