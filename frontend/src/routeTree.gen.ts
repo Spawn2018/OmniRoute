@@ -239,6 +239,7 @@ import { Route as SessionRouteImport } from './routes/session'
 import { Route as ShipmentDocumentsRouteImport } from './routes/shipment-documents'
 import { Route as ShipmentPackagesRouteImport } from './routes/shipment-packages'
 import { Route as ShipmentsRouteImport } from './routes/shipments'
+import { Route as ShipperAwardMarksRouteImport } from './routes/shipper-award-marks'
 import { Route as ShipperBindMarksRouteImport } from './routes/shipper-bind-marks'
 import { Route as ShipperLikeMarksRouteImport } from './routes/shipper-like-marks'
 import { Route as ShipperRoundMarksRouteImport } from './routes/shipper-round-marks'
@@ -1455,6 +1456,11 @@ const ShipmentsRoute = ShipmentsRouteImport.update({
   path: '/shipments',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShipperAwardMarksRoute = ShipperAwardMarksRouteImport.update({
+  id: '/shipper-award-marks',
+  path: '/shipper-award-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShipperBindMarksRoute = ShipperBindMarksRouteImport.update({
   id: '/shipper-bind-marks',
   path: '/shipper-bind-marks',
@@ -2002,6 +2008,7 @@ export interface FileRoutesByFullPath {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/shipper-award-marks': typeof ShipperAwardMarksRoute
   '/shipper-bind-marks': typeof ShipperBindMarksRoute
   '/shipper-like-marks': typeof ShipperLikeMarksRoute
   '/shipper-round-marks': typeof ShipperRoundMarksRoute
@@ -2297,6 +2304,7 @@ export interface FileRoutesByTo {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/shipper-award-marks': typeof ShipperAwardMarksRoute
   '/shipper-bind-marks': typeof ShipperBindMarksRoute
   '/shipper-like-marks': typeof ShipperLikeMarksRoute
   '/shipper-round-marks': typeof ShipperRoundMarksRoute
@@ -2593,6 +2601,7 @@ export interface FileRoutesById {
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
+  '/shipper-award-marks': typeof ShipperAwardMarksRoute
   '/shipper-bind-marks': typeof ShipperBindMarksRoute
   '/shipper-like-marks': typeof ShipperLikeMarksRoute
   '/shipper-round-marks': typeof ShipperRoundMarksRoute
@@ -2890,6 +2899,7 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/shipper-award-marks'
     | '/shipper-bind-marks'
     | '/shipper-like-marks'
     | '/shipper-round-marks'
@@ -3185,6 +3195,7 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/shipper-award-marks'
     | '/shipper-bind-marks'
     | '/shipper-like-marks'
     | '/shipper-round-marks'
@@ -3480,6 +3491,7 @@ export interface FileRouteTypes {
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
+    | '/shipper-award-marks'
     | '/shipper-bind-marks'
     | '/shipper-like-marks'
     | '/shipper-round-marks'
@@ -3776,6 +3788,7 @@ export interface RootRouteChildren {
   ShipmentDocumentsRoute: typeof ShipmentDocumentsRoute
   ShipmentPackagesRoute: typeof ShipmentPackagesRoute
   ShipmentsRoute: typeof ShipmentsRoute
+  ShipperAwardMarksRoute: typeof ShipperAwardMarksRoute
   ShipperBindMarksRoute: typeof ShipperBindMarksRoute
   ShipperLikeMarksRoute: typeof ShipperLikeMarksRoute
   ShipperRoundMarksRoute: typeof ShipperRoundMarksRoute
@@ -5453,6 +5466,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShipmentsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/shipper-award-marks': {
+      id: '/shipper-award-marks'
+      path: '/shipper-award-marks'
+      fullPath: '/shipper-award-marks'
+      preLoaderRoute: typeof ShipperAwardMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shipper-bind-marks': {
       id: '/shipper-bind-marks'
       path: '/shipper-bind-marks'
@@ -6128,6 +6148,7 @@ const rootRouteChildren: RootRouteChildren = {
   ShipmentDocumentsRoute: ShipmentDocumentsRoute,
   ShipmentPackagesRoute: ShipmentPackagesRoute,
   ShipmentsRoute: ShipmentsRoute,
+  ShipperAwardMarksRoute: ShipperAwardMarksRoute,
   ShipperBindMarksRoute: ShipperBindMarksRoute,
   ShipperLikeMarksRoute: ShipperLikeMarksRoute,
   ShipperRoundMarksRoute: ShipperRoundMarksRoute,

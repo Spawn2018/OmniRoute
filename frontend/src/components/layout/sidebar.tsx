@@ -97,6 +97,7 @@ const NAV = [
   { to: "/crm-link-marks", label: "Link CRM" },
   { to: "/sales-bind-marks", label: "Bind sprzedaży" },
   { to: "/shipper-bind-marks", label: "Bind załadowcy" },
+  { to: "/shipper-award-marks", label: "Award załadowcy" },
   { to: "/sales-lanes", label: "Korytarz sprzedażowy" },
   { to: "/shipper-like-marks", label: "Like-for-like załadowcy" },
   { to: "/shipper-round-marks", label: "Runda załadowcy" },

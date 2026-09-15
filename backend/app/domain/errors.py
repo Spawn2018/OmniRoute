@@ -890,6 +890,10 @@ class InvalidShipperBindMark(DomainError):
     """BR6.2 leftover: HITL stance bind załadowcy — nie Alpega / FK UUID."""
 
 
+class InvalidShipperAwardMark(DomainError):
+    """BR6.2 leftover: HITL stance award załadowcy — nie Alpega / auto-award SQL."""
+
+
 class InvalidLcChecklist(DomainError):
     """G3: HITL checklista LC — nie bank due."""
 
