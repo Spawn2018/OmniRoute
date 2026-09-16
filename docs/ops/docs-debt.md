@@ -1,3 +1,4 @@
+- **529.0 leftover:** wpis przekazania z polami S/B/A/R · wiązanie z tablicą T6 · N8. 529.0 = HITL `handover_sbar_mark` (znacznik; nie drugi czat).
 - **528.0 leftover:** kopiowanie allowlisty pól z poprzedniego zlecenia przez U1 · silnik similar SQL · F2b Decimal na skonto przy klonie FV. 528.0 = HITL `shipment_clone_mark` (intencja; nie drugi SoR).
 - **527.0 leftover:** 409 gdy sell−buy < floor na POST charge · S11 · matching lane. 527.0 = HITL `margin_floor` Decimal + UN/LOCODE.
 - **499.0 leftover:** Alpega live park · auto-award SQL. 499.0 = HITL `shipper_award_mark`.

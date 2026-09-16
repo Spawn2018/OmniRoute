@@ -249,6 +249,7 @@ kolumn. Nie 468.0.
 | przesyłka | consignment | N1; 260.0 tabela na shipment; LTL/LCL=N; nie paczka; nie FTL unique |
 | podłoga marży | margin_floor | N6; HITL Decimal DONE 527.0; leftover 409/S11 |
 | intencja klonu zlecenia | shipment_clone_mark | N9; HITL DONE 528.0; leftover copy/U1 / similar SQL |
+| przekazanie zmiany SBAR | handover_sbar_mark | N11; HITL DONE 529.0; leftover notatka S/B/A/R · T6 bind |
 | ETA fizyczne | eta_physical | V2 HITL 194.0 na `stop`; GPS/korek leftover; nie jedyny znacznik |
 | ETA prawne | eta_legal | V2 HITL 194.0 na `stop`; zakaz jazdy/tacho leftover |
 | obserwacja pogody | weather_observation | V2 HITL 195.0; Open-Meteo/geometria leftover; nie ETA |

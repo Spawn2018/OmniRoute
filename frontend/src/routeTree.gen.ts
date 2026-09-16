@@ -122,6 +122,7 @@ import { Route as GeneralAverageMarksRouteImport } from './routes/general-averag
 import { Route as GroupageRouteImport } from './routes/groupage'
 import { Route as GroupageDispatcherMarksRouteImport } from './routes/groupage-dispatcher-marks'
 import { Route as GroupageTariffsRouteImport } from './routes/groupage-tariffs'
+import { Route as HandoverSbarMarksRouteImport } from './routes/handover-sbar-marks'
 import { Route as HaulierRoleMarksRouteImport } from './routes/haulier-role-marks'
 import { Route as HealthRouteImport } from './routes/health'
 import { Route as HighValueMarksRouteImport } from './routes/high-value-marks'
@@ -881,6 +882,11 @@ const GroupageDispatcherMarksRoute = GroupageDispatcherMarksRouteImport.update({
 const GroupageTariffsRoute = GroupageTariffsRouteImport.update({
   id: '/groupage-tariffs',
   path: '/groupage-tariffs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HandoverSbarMarksRoute = HandoverSbarMarksRouteImport.update({
+  id: '/handover-sbar-marks',
+  path: '/handover-sbar-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HaulierRoleMarksRoute = HaulierRoleMarksRouteImport.update({
@@ -1975,6 +1981,7 @@ export interface FileRoutesByFullPath {
   '/groupage': typeof GroupageRoute
   '/groupage-dispatcher-marks': typeof GroupageDispatcherMarksRoute
   '/groupage-tariffs': typeof GroupageTariffsRoute
+  '/handover-sbar-marks': typeof HandoverSbarMarksRoute
   '/haulier-role-marks': typeof HaulierRoleMarksRoute
   '/health': typeof HealthRoute
   '/high-value-marks': typeof HighValueMarksRoute
@@ -2285,6 +2292,7 @@ export interface FileRoutesByTo {
   '/groupage': typeof GroupageRoute
   '/groupage-dispatcher-marks': typeof GroupageDispatcherMarksRoute
   '/groupage-tariffs': typeof GroupageTariffsRoute
+  '/handover-sbar-marks': typeof HandoverSbarMarksRoute
   '/haulier-role-marks': typeof HaulierRoleMarksRoute
   '/health': typeof HealthRoute
   '/high-value-marks': typeof HighValueMarksRoute
@@ -2596,6 +2604,7 @@ export interface FileRoutesById {
   '/groupage': typeof GroupageRoute
   '/groupage-dispatcher-marks': typeof GroupageDispatcherMarksRoute
   '/groupage-tariffs': typeof GroupageTariffsRoute
+  '/handover-sbar-marks': typeof HandoverSbarMarksRoute
   '/haulier-role-marks': typeof HaulierRoleMarksRoute
   '/health': typeof HealthRoute
   '/high-value-marks': typeof HighValueMarksRoute
@@ -2908,6 +2917,7 @@ export interface FileRouteTypes {
     | '/groupage'
     | '/groupage-dispatcher-marks'
     | '/groupage-tariffs'
+    | '/handover-sbar-marks'
     | '/haulier-role-marks'
     | '/health'
     | '/high-value-marks'
@@ -3218,6 +3228,7 @@ export interface FileRouteTypes {
     | '/groupage'
     | '/groupage-dispatcher-marks'
     | '/groupage-tariffs'
+    | '/handover-sbar-marks'
     | '/haulier-role-marks'
     | '/health'
     | '/high-value-marks'
@@ -3528,6 +3539,7 @@ export interface FileRouteTypes {
     | '/groupage'
     | '/groupage-dispatcher-marks'
     | '/groupage-tariffs'
+    | '/handover-sbar-marks'
     | '/haulier-role-marks'
     | '/health'
     | '/high-value-marks'
@@ -3839,6 +3851,7 @@ export interface RootRouteChildren {
   GroupageRoute: typeof GroupageRoute
   GroupageDispatcherMarksRoute: typeof GroupageDispatcherMarksRoute
   GroupageTariffsRoute: typeof GroupageTariffsRoute
+  HandoverSbarMarksRoute: typeof HandoverSbarMarksRoute
   HaulierRoleMarksRoute: typeof HaulierRoleMarksRoute
   HealthRoute: typeof HealthRoute
   HighValueMarksRoute: typeof HighValueMarksRoute
@@ -4827,6 +4840,13 @@ declare module '@tanstack/react-router' {
       path: '/groupage-tariffs'
       fullPath: '/groupage-tariffs'
       preLoaderRoute: typeof GroupageTariffsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/handover-sbar-marks': {
+      id: '/handover-sbar-marks'
+      path: '/handover-sbar-marks'
+      fullPath: '/handover-sbar-marks'
+      preLoaderRoute: typeof HandoverSbarMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/haulier-role-marks': {
@@ -6311,6 +6331,7 @@ const rootRouteChildren: RootRouteChildren = {
   GroupageRoute: GroupageRoute,
   GroupageDispatcherMarksRoute: GroupageDispatcherMarksRoute,
   GroupageTariffsRoute: GroupageTariffsRoute,
+  HandoverSbarMarksRoute: HandoverSbarMarksRoute,
   HaulierRoleMarksRoute: HaulierRoleMarksRoute,
   HealthRoute: HealthRoute,
   HighValueMarksRoute: HighValueMarksRoute,

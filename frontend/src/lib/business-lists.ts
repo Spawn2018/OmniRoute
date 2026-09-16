@@ -119,6 +119,10 @@ export const BUSINESS_LISTS = {
     route: "/shipment-clone-marks",
     tableKey: "shipment_clone_mark",
   },
+  handoverSbarMark: {
+    route: "/handover-sbar-marks",
+    tableKey: "handover_sbar_mark",
+  },
   automationBiasMark: {
     route: "/automation-bias-marks",
     tableKey: "automation_bias_mark",
@@ -608,6 +612,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/kpi-definition-marks",
   "/margin-floors",
   "/shipment-clone-marks",
+  "/handover-sbar-marks",
   "/vda-odette-marks",
   "/inventory-position-marks",
   "/fair-share-marks",

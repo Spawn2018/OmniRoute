@@ -112,6 +112,8 @@ zostają w badaniach `04`).
 | 2026-09-16 | **527.0** `margin_floor` w kodzie (`CONFIRMED`, git). N6 HITL DONE. Następny = **N9** `shipment_clone_mark` (`REQUIREMENT`). 409/S11 leftover. |
 | 2026-09-16 | N9 plan (**528.0**): HITL `shipment_clone_mark` last_similar|manual_pick|other (`REQUIREMENT`). Auto-copy / drugi SoR `REJECTED`. |
 | 2026-09-16 | **528.0** `shipment_clone_mark` w kodzie (`CONFIRMED`, git). N9 HITL intencja DONE. Następny = **N11** handover SBAR (`REQUIREMENT`). Copy/U1 leftover. |
+| 2026-09-16 | N11 plan (**529.0**): HITL `handover_sbar_mark` situation\|background\|assessment\|recommendation (`REQUIREMENT`). Drugi czat / auto SBAR z LLM `REJECTED`. |
+| 2026-09-16 | **529.0** `handover_sbar_mark` w kodzie (`CONFIRMED`, git). N11 HITL DONE. Następny = kolejne Q z PLAN (`REQUIREMENT`). Notatka S/B/A/R leftover. |
 | 2026-09-13 | AI3.4 plan (**451.0**): parser `xlsx_sheet` stdlib. `openpyxl` `REJECTED`. `.xls` leftover. |
 | 2026-09-13 | **451.0** `xlsx_sheet` w kodzie (`CONFIRMED`, git). Następny = **AI4.0** FK `plan_snapshot` (`REQUIREMENT`). `.xls` leftover. |
 | 2026-09-13 | AI4.0 plan (**452.0**): FK złożone RESTRICT. CASCADE `REJECTED`. What-if `REJECTED` na tym wierszu. |

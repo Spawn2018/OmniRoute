@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **528.0** N9 — HITL `shipment_clone_mark`
-- **Etap:** Plan **529.0** — wolno `/plan-modul` (N11 handover SBAR)
-- **Następny:** **529.0** N11 — HITL handover SBAR zmiany (po T6)
+- **Ostatni plaster:** **529.0** N11 — HITL `handover_sbar_mark`
+- **Etap:** Plan **530.0** — wolno `/plan-modul` (N2 trips_to_bill)
+- **Następny:** **530.0** N2 — HITL `trips_to_bill` (po T2+F1)
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

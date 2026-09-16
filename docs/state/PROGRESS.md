@@ -1,6 +1,7 @@
 ﻿# Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
+| 2026-09-16 | 529.0 | N11 handover_sbar_mark | 2026-09-16 | PRZESZLO | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-16 | 528.0 | N9 shipment_clone_mark | 2026-09-16 | PRZESZLO | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-16 | 527.0 | N6 margin_floor | 2026-09-16 | PRZESZLO | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-16 | SH-R16 | fabryka audyt braków 16b | 2026-09-16 | DOCS | N/A | N/A | OK | OK | N/A | DOCS | N/A | N/A | DOCS |

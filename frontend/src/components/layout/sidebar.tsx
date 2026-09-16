@@ -135,6 +135,7 @@ const NAV = [
   { to: "/kpi-definition-marks", label: "Definicja KPI" },
   { to: "/margin-floors", label: "Podłoga marży" },
   { to: "/shipment-clone-marks", label: "Intencja klonu" },
+  { to: "/handover-sbar-marks", label: "Przekazanie SBAR" },
   { to: "/automation-bias-marks", label: "Automation bias" },
   { to: "/l3-gate-marks", label: "Brama L3" },
   { to: "/style-cascade-marks", label: "Kaskada stylu" },
