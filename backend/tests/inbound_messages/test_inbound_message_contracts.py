@@ -112,6 +112,18 @@ def test_migration_038_adds_graph_external_id() -> None:
     assert "037_operator_decision_lock" in source
 
 
+def test_migration_421_adds_rfc822_headers() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "421_inbound_rfc822.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "421_inbound_rfc822"' in source
+    assert 'down_revision: str | None = "420_trip_bill_mark"' in source
+    assert "rfc822_message_id" in source
+    assert "in_reply_to" in source
+    assert "ix_inbound_message_org_rfc822" in source
+    assert "FORCE ROW LEVEL SECURITY" not in source
+
+
 def test_inbound_extract_api_does_not_accept_rates() -> None:
     source = (_ROOT / "backend" / "app" / "api" / "inbound_messages.py").read_text(
         encoding="utf-8",

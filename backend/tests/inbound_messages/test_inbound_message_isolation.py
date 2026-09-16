@@ -131,3 +131,40 @@ async def test_inbound_graph_external_id_unique_per_tenant(session, two_tenants)
     session.add(dup)
     with pytest.raises(IntegrityError):
         await session.flush()
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_inbound_rfc822_headers_isolated_per_tenant(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    org_b = two_tenants["org_b"]
+    user_a = two_tenants["user_a"]
+    user_b = two_tenants["user_b"]
+    shared_mid = "<shared@carrier.example>"
+
+    mail_a = _message(organization_id=org_a.id, user_id=user_a.id, suffix="ra")
+    mail_a.rfc822_message_id = shared_mid
+    mail_a.in_reply_to = "<parent-a@carrier.example>"
+    mail_b = _message(organization_id=org_b.id, user_id=user_b.id, suffix="rb")
+    mail_b.rfc822_message_id = shared_mid
+    mail_b.in_reply_to = "<parent-b@carrier.example>"
+
+    await bind_tenant(session, org_a.id)
+    session.add(mail_a)
+    await session.flush()
+    await bind_tenant(session, org_b.id)
+    session.add(mail_b)
+    await session.flush()
+
+    session.expunge_all()
+    await bind_tenant(session, org_a.id)
+    visible_a = list((await session.scalars(select(InboundMessage))).all())
+    assert {row.id for row in visible_a} == {mail_a.id}
+    assert visible_a[0].rfc822_message_id == shared_mid
+    assert visible_a[0].in_reply_to == "<parent-a@carrier.example>"
+
+    session.expunge_all()
+    await bind_tenant(session, org_b.id)
+    visible_b = list((await session.scalars(select(InboundMessage))).all())
+    assert {row.id for row in visible_b} == {mail_b.id}
+    assert visible_b[0].in_reply_to == "<parent-b@carrier.example>"

@@ -66,6 +66,10 @@ describe("mail-integration surface for 25.0", () => {
     expect(page).toContain("ingestMailboxInboundMessage")
     expect(page).toContain("Ingest skrzynka")
     expect(page).toContain('data-inbound-message="mailbox-ingest"')
+    expect(page).toContain('aria-label="Message-ID"')
+    expect(page).toContain('aria-label="In-Reply-To"')
+    expect(api).toContain("rfc822_message_id")
+    expect(api).toContain("in_reply_to")
     const rfqApi = readFileSync(path.join(srcRoot, "lib/customer-rfqs-api.ts"), "utf8")
     expect(rfqApi).toContain("/api/v1/customer-rfqs")
     expect(rfqApi).not.toContain("amount")
@@ -89,6 +93,8 @@ describe("O8 mail group_by", () => {
         status: "stored",
         party_id: "p-nl",
         external_id: null,
+        rfc822_message_id: null,
+        in_reply_to: null,
       },
       {
         id: "m2",
@@ -100,6 +106,8 @@ describe("O8 mail group_by", () => {
         status: "stored",
         party_id: "p-pl",
         external_id: null,
+        rfc822_message_id: null,
+        in_reply_to: null,
       },
     ]
     const parties = [

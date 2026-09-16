@@ -26,6 +26,8 @@ class InboundMessageCreate(BaseModel):
     from_address: str = Field(min_length=1, max_length=320)
     subject: str = Field(min_length=1, max_length=512)
     body_text: str = Field(min_length=1, max_length=65536)
+    rfc822_message_id: str | None = Field(default=None, max_length=512)
+    in_reply_to: str | None = Field(default=None, max_length=512)
 
 
 class InboundGraphIngest(BaseModel):
@@ -60,6 +62,8 @@ class InboundMessageResponse(BaseModel):
     status: str
     party_id: UUID | None
     external_id: str | None
+    rfc822_message_id: str | None
+    in_reply_to: str | None
 
 
 class InboundExtractResponse(BaseModel):
@@ -95,6 +99,8 @@ async def create_inbound_message(
         from_address=body.from_address,
         subject=body.subject,
         body_text=body.body_text,
+        rfc822_message_id=body.rfc822_message_id,
+        in_reply_to=body.in_reply_to,
     )
     await OutboxEventService(session).record_message_saved(
         organization_id=identity.organization_id,

@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **536.0** rfc822 Message-ID / In-Reply-To na `inbound_message` · potem G0 / UXCL-L1. Nie AI0.
+**Następny:** **UXCL-L1** instrumentacja extract-accept (Plan→plaster) · potem AI3-payload / Plat-HD / G0 park. Nie AI0. Nie SH-R16-13 w `/noc`.
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -468,7 +468,7 @@ Pogłębienie żywych M-07/M-08 (`source_ref`), M-10, M-12, M-13, M-19, M-20, M-
 | **O5** | `party_lane_scorecard` + szablon podpowiedzi z SQL | Plan → plaster | **delta 139.0 zaakceptowana** | `sample_size=0` i tak ma tekst. Nie LLM. Nie scoring osoby |
 | **O6** | `extraction_draft.draft_kind=carrier_quote` → HITL → `channel_quote` + `answered` | Plan → plaster | zamknięty leftover HITL ([531.0](deltas/archived/531.0-carrier-quote-hitl.md); leftover `quote_recorded` przy accept [534.0](deltas/archived/534.0-quote-recorded-on-accept.md)) | ExtractionService nie zapisuje stawek |
 | **O7** | Kraj ISO na liście agentów (`party.country_code` już jest) + filtr | Plan → plaster | zamknięty ([532.0](deltas/archived/532.0-agent-country-filter.md); EXPLAIN [535.0](deltas/archived/535.0-buy-desk-explain.md)) | Holandia na SHA→RTM. Nie druga kolumna kraju |
-| **O8** | Buy-desk: group-by edytowalny (party/kraj/wątek/status) + saved view | Plan → plaster | zamknięty ([533.0](deltas/archived/533.0-buy-desk-groupby.md); EXPLAIN [535.0](deltas/archived/535.0-buy-desk-explain.md); leftover rfc822 → [536.0](deltas/open/536.0-inbound-rfc822.md)) | Nie nowy czat. Audyt [incoterms-booking-customs-ux.md](analysis/incoterms-booking-customs-ux.md) |
+| **O8** | Buy-desk: group-by edytowalny (party/kraj/wątek/status) + saved view | Plan → plaster | zamknięty ([533.0](deltas/archived/533.0-buy-desk-groupby.md); EXPLAIN [535.0](deltas/archived/535.0-buy-desk-explain.md); rfc822 [536.0](deltas/archived/536.0-inbound-rfc822.md)) | Nie nowy czat. Audyt [incoterms-booking-customs-ux.md](analysis/incoterms-booking-customs-ux.md) |
 | **N5** | Cisza agenta: SLA `no_reply_after` (U4 dni robocze) → notice | Plan → plaster | zamknięty (`docs/deltas/archived/143.0-inquiry-no-reply.md`) | nie auto-send ponaglenia |
 
 ### Fala U — klej oferty i UI (w osi, nie leftover)
@@ -798,7 +798,7 @@ Zdublowane listy Fal 2–11 (M-xx): [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md). 
 | **SH-R16-13** | Dependabot 1 paczka / tydzień WIP=1 | rytuał idle | czeka (zakaz auto-PR w `/noc`) | nie auto-PR w nocy |
 | **SH-R16-14** | Fire/archiwum skill >4 tyg. | rytuał P-Y | DONE 2026-09-16 ([pulses/SKILLS-PULSE-2026-W38.md](ops/pulses/SKILLS-PULSE-2026-W38.md)) — 0 do fire | friday / IDLE |
 | **SH-R16-15** | PARK-RADAR Q3/Q4 2026 | rytuał kwartał | DONE 2026-09-16 Q3 ([pulses/PARK-RADAR-2026-Q3.md](ops/pulses/PARK-RADAR-2026-Q3.md)) | idle ≤30 min |
-| **UXCL-L1** | Instrumentacja extract-accept | Plan→plaster | park→CURRENT | po privacy; D2 akceptuję |
+| **UXCL-L1** | Instrumentacja extract-accept | Plan→plaster | NOW (CURRENT) | po privacy; D2 akceptuję |
 | **AI3-payload** | Payload / delta AI vs człowiek | Plan→plaster | park→CURRENT | SH-R16-5 |
 | **Plat-HD-flow** | Obieg ticket→owner | Plan→plaster | park | G0+G1 + D2 owner |
 | **G0-SH** | Host/IdP/CF | — | park | PREMORT→PRR→LAUNCH |

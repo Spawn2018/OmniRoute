@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **535.0** EXPLAIN · rytuały SH-R16-12/14/15
-- **Etap:** Plan — delta **536.0** zaakceptowana (`/noc`); wolno `/plaster`
-- **Następny:** **536.0** rfc822 Message-ID / In-Reply-To na `inbound_message` · potem G0 / UXCL-L1. Nie AI0.
+- **Ostatni plaster:** **536.0** inbound rfc822 Message-ID / In-Reply-To
+- **Etap:** Plan — następne **UXCL-L1** (wydmuszka); komenda `/plan-modul`, nie `/plaster`
+- **Następny:** **UXCL-L1** instrumentacja extract-accept (Plan→plaster) · potem AI3-payload / Plat-HD / G0 park. Nie AI0. Nie SH-R16-13 w `/noc`.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

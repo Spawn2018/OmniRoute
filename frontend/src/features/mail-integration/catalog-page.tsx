@@ -59,6 +59,14 @@ const columns = [
     header: "external_id",
     cell: (info) => info.getValue() ?? "—",
   }),
+  helper.accessor("rfc822_message_id", {
+    header: "Message-ID",
+    cell: (info) => info.getValue() ?? "—",
+  }),
+  helper.accessor("in_reply_to", {
+    header: "In-Reply-To",
+    cell: (info) => info.getValue() ?? "—",
+  }),
 ]
 const COLUMN_LABELS = {
   from_address: "Nadawca",
@@ -67,6 +75,8 @@ const COLUMN_LABELS = {
   party_id: "party_id",
   source_ref: "Źródło",
   external_id: "external_id",
+  rfc822_message_id: "Message-ID",
+  in_reply_to: "In-Reply-To",
 }
 
 const EMPTY_DRAFT = {
@@ -74,6 +84,8 @@ const EMPTY_DRAFT = {
   from_address: "",
   subject: "",
   body_text: "",
+  rfc822_message_id: "",
+  in_reply_to: "",
 }
 
 export function MailIntegrationPage() {
@@ -307,6 +319,20 @@ export function MailIntegrationPage() {
             value={draft.body_text}
             onChange={(event) => setDraft({ ...draft, body_text: event.target.value })}
             required
+          />
+          <Input
+            aria-label="Message-ID"
+            placeholder="<id@example.com>"
+            value={draft.rfc822_message_id}
+            onChange={(event) =>
+              setDraft({ ...draft, rfc822_message_id: event.target.value })
+            }
+          />
+          <Input
+            aria-label="In-Reply-To"
+            placeholder="<parent@example.com>"
+            value={draft.in_reply_to}
+            onChange={(event) => setDraft({ ...draft, in_reply_to: event.target.value })}
           />
           <Button type="submit" disabled={!ready || createMutation.isPending}>
             Zapisz fixture

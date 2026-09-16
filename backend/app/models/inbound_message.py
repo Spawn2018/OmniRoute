@@ -54,3 +54,5 @@ class InboundMessage(Base, TimestampMixin):
     status: Mapped[str] = mapped_column(String(8), nullable=False)
     party_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
     external_id: Mapped[str | None] = mapped_column(String(256), nullable=True)
+    rfc822_message_id: Mapped[str | None] = mapped_column(String(512), nullable=True)
+    in_reply_to: Mapped[str | None] = mapped_column(String(512), nullable=True)

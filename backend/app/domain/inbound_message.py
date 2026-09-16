@@ -10,11 +10,26 @@ _FROM_MAX = 320
 _SUBJECT_MAX = 512
 _BODY_MAX = 65536
 _EXTRACT_TEXT_MAX = 50_000
+_RFC822_MAX = 512
 
 
 def inbound_draft_status() -> str:
     return _DRAFT
 
+
+def require_optional_rfc822_header(raw: object, *, field: str) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidInboundMessage(f"{field} musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    if "\n" in token or "\r" in token:
+        raise InvalidInboundMessage(f"{field}: bez nowych linii")
+    if len(token) > _RFC822_MAX:
+        raise InvalidInboundMessage(f"{field} za długi")
+    return token
 
 def require_inbound_source_ref(raw: object) -> str:
     origin = require_source_ref(raw)

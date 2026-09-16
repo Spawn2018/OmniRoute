@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **535.0** EXPLAIN · rytuały SH-R16-12/14/15 **Następny:** **536.0** rfc822 Message-ID / In-Reply-To na `inbound_message` · potem G0 / UXCL-L1. Nie AI0.
+**Stan (z CURRENT.md):** **536.0** inbound rfc822 Message-ID / In-Reply-To **Następny:** **UXCL-L1** instrumentacja extract-accept (Plan→plaster) · potem AI3-payload / Plat-HD / G0 park. Nie AI0. Nie SH-R16-13 w `/noc`.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

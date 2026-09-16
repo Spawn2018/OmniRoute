@@ -11,6 +11,8 @@ export type InboundMessage = {
   status: string
   party_id: string | null
   external_id: string | null
+  rfc822_message_id: string | null
+  in_reply_to: string | null
 }
 
 export function inboundMessageCreateBody(input: {
@@ -18,18 +20,38 @@ export function inboundMessageCreateBody(input: {
   from_address: string
   subject: string
   body_text: string
+  rfc822_message_id?: string
+  in_reply_to?: string
 }): {
   source_ref: string
   from_address: string
   subject: string
   body_text: string
+  rfc822_message_id?: string
+  in_reply_to?: string
 } {
-  return {
+  const body: {
+    source_ref: string
+    from_address: string
+    subject: string
+    body_text: string
+    rfc822_message_id?: string
+    in_reply_to?: string
+  } = {
     source_ref: input.source_ref.trim(),
     from_address: input.from_address.trim(),
     subject: input.subject.trim(),
     body_text: input.body_text.trim(),
   }
+  const messageId = input.rfc822_message_id?.trim() ?? ""
+  const replyTo = input.in_reply_to?.trim() ?? ""
+  if (messageId !== "") {
+    body.rfc822_message_id = messageId
+  }
+  if (replyTo !== "") {
+    body.in_reply_to = replyTo
+  }
+  return body
 }
 
 async function readInboundMessage(
@@ -60,6 +82,8 @@ export async function createInboundMessage(body: {
   from_address: string
   subject: string
   body_text: string
+  rfc822_message_id?: string
+  in_reply_to?: string
 }): Promise<InboundMessage> {
   const response = await fetch("/api/v1/inbound-messages", {
     method: "POST",

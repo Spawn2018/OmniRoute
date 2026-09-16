@@ -12,6 +12,7 @@ from app.domain.inbound_message import (
     require_graph_source_ref,
     require_inbound_source_ref,
     require_mailbox_source_ref,
+    require_optional_rfc822_header,
     require_subject,
 )
 
@@ -102,3 +103,25 @@ def test_inbound_extract_text_joins_subject_and_body() -> None:
 def test_inbound_extract_text_rejects_over_extract_limit() -> None:
     with pytest.raises(InvalidInboundMessage, match="extract"):
         inbound_extract_text("RFQ", "x" * 50_000)
+
+
+def test_optional_rfc822_none_and_blank() -> None:
+    assert require_optional_rfc822_header(None, field="Message-ID") is None
+    assert require_optional_rfc822_header("  ", field="Message-ID") is None
+
+
+def test_optional_rfc822_trims() -> None:
+    assert (
+        require_optional_rfc822_header(" <id@example.com> ", field="Message-ID")
+        == "<id@example.com>"
+    )
+
+
+def test_optional_rfc822_rejects_newline() -> None:
+    with pytest.raises(InvalidInboundMessage, match="linii"):
+        require_optional_rfc822_header("<id@ex.com>\nextra", field="Message-ID")
+
+
+def test_optional_rfc822_rejects_too_long() -> None:
+    with pytest.raises(InvalidInboundMessage, match="długi"):
+        require_optional_rfc822_header("x" * 513, field="In-Reply-To")

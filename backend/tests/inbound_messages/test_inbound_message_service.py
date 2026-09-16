@@ -29,7 +29,31 @@ async def test_create_normalizes_fixture_fields() -> None:
     assert created.subject == "RFQ Gdynia"
     assert created.body_text == "1x40HC"
     assert created.party_id is None
+    assert created.rfc822_message_id is None
+    assert created.in_reply_to is None
     session.add.assert_called_once()
+
+
+@pytest.mark.asyncio
+async def test_create_stores_optional_rfc822_headers() -> None:
+    session = AsyncMock()
+    session.add = MagicMock()
+    session.flush = AsyncMock()
+    service = InboundMessageService(session)
+
+    created = await service.create_message(
+        organization_id=uuid4(),
+        user_id=uuid4(),
+        source_ref="fixture://inbound-mail/42",
+        from_address="ops@carrier.example",
+        subject="RFQ",
+        body_text="1x40HC",
+        rfc822_message_id=" <mid@carrier.example> ",
+        in_reply_to=" <parent@carrier.example> ",
+    )
+
+    assert created.rfc822_message_id == "<mid@carrier.example>"
+    assert created.in_reply_to == "<parent@carrier.example>"
 
 
 @pytest.mark.asyncio

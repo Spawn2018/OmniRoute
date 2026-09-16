@@ -6,6 +6,7 @@ from fastapi.testclient import TestClient
 
 from app.api.deps import require_tenant_session, set_authz_checker
 from app.domain.errors import ResourceNotFound
+from app.domain.inbound_message import require_optional_rfc822_header
 from app.main import app
 from app.models.extraction_draft import ExtractionDraft
 from app.models.inbound_message import InboundMessage
@@ -41,6 +42,8 @@ class StubInboundMessageService:
         from_address: str,
         subject: str,
         body_text: str,
+        rfc822_message_id: object = None,
+        in_reply_to: object = None,
     ) -> InboundMessage:
         row = InboundMessage(
             id=uuid4(),
@@ -50,6 +53,14 @@ class StubInboundMessageService:
             subject=subject.strip(),
             body_text=body_text.strip(),
             status="draft",
+            rfc822_message_id=require_optional_rfc822_header(
+                rfc822_message_id,
+                field="Message-ID",
+            ),
+            in_reply_to=require_optional_rfc822_header(
+                in_reply_to,
+                field="In-Reply-To",
+            ),
             created_by=user_id,
         )
         self.rows.append(row)
@@ -204,6 +215,8 @@ def test_http_create_and_list_inbound_messages(catalog_client: TestClient) -> No
     assert body["source_ref"] == "fixture://inbound-mail/1"
     assert body["status"] == "draft"
     assert body["party_id"] is None
+    assert body["rfc822_message_id"] is None
+    assert body["in_reply_to"] is None
     assert "amount" not in body
 
     listed = catalog_client.get("/api/v1/inbound-messages", headers=headers)
@@ -212,6 +225,42 @@ def test_http_create_and_list_inbound_messages(catalog_client: TestClient) -> No
     assert len(rows) == 1
     assert rows[0]["id"] == body["id"]
     assert len(StubOutboxEventService.recorded) == 1
+
+
+def test_http_create_with_rfc822_headers(catalog_client: TestClient) -> None:
+    headers = bearer_auth_headers(organization_id=uuid4())
+    created = catalog_client.post(
+        "/api/v1/inbound-messages",
+        headers=headers,
+        json={
+            "source_ref": "fixture://inbound-mail/rfc",
+            "from_address": "ops@carrier.example",
+            "subject": "Re: RFQ",
+            "body_text": "ok",
+            "rfc822_message_id": " <mid@carrier.example> ",
+            "in_reply_to": " <parent@carrier.example> ",
+        },
+    )
+    assert created.status_code == 201
+    body = created.json()
+    assert body["rfc822_message_id"] == "<mid@carrier.example>"
+    assert body["in_reply_to"] == "<parent@carrier.example>"
+
+
+def test_http_create_rejects_rfc822_newline(catalog_client: TestClient) -> None:
+    response = catalog_client.post(
+        "/api/v1/inbound-messages",
+        headers=bearer_auth_headers(organization_id=uuid4()),
+        json={
+            "source_ref": "fixture://inbound-mail/bad",
+            "from_address": "ops@carrier.example",
+            "subject": "RFQ",
+            "body_text": "ok",
+            "rfc822_message_id": "<mid@ex.com>\nextra",
+        },
+    )
+    assert response.status_code == 400
+    assert "linii" in response.json()["detail"]
 
 
 def test_http_create_rejects_client_status(catalog_client: TestClient) -> None:
