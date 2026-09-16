@@ -1,7 +1,7 @@
 ﻿# Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
-| 2026-09-16 | 539.0 | N6 leftover 409 margin_floor | 2026-09-16 | PRZESZLO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
+| 2026-09-16 | 539.0 | N6 leftover 409 margin_floor | 2026-09-16 | PRZESZLO (gate success) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-16 | 538.0 | O8 leftover mail thread group_by | 2026-09-16 | PRZESZLO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-16 | 537.0 | UXCL-L1 L0 extract-accept | 2026-09-16 | PRZESZLO (gate success) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-16 | 536.0 | O8 leftover inbound rfc822 | 2026-09-16 | PRZESZLO (gate success) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
