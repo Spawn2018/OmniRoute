@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **535.0** leftover O7/O8 — EXPLAIN JOIN buy-desk · rytuał **SH-R16-12** DONE
-- **Etap:** park — SH-R16-13…15 · leftover O8 rfc822 · G0 (nie AI0)
-- **Następny:** SH-R16-13 Dependabot 1/tyg · SH-R16-14 fire skill · SH-R16-15 PARK-RADAR · leftover O8 rfc822 · G0. Nie AI0.
+- **Ostatni plaster:** **535.0** EXPLAIN · rytuały **SH-R16-12/14/15** DONE · **13** czeka (nie `/noc`)
+- **Etap:** park — leftover O8 rfc822 · SH-R16-13 Dependabot (idle dzień) · G0 · UXCL-L1 (nie AI0)
+- **Następny:** leftover O8 rfc822 · albo UXCL-L1 · G0. SH-R16-13 tylko poza nocą. Nie AI0.
 - **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

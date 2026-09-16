@@ -68,8 +68,8 @@ Szablony: **29/29** w `docs/ops/szablony/`. Playbooki/RACI: [fabryka-playbooki-s
 | **SH-R16-11** | Meta-KPI Closure ≤14d w PROC | docs | **DONE** 2026-09-16b | egzekucja po UXCL-L1 |
 | **SH-R16-12** | FACTORY-PULSE pierwsze liczby | rytuał P-Y | **DONE** 2026-09-16 | [pulses/FACTORY-PULSE-2026-W38.md](pulses/FACTORY-PULSE-2026-W38.md) |
 | **SH-R16-13** | Dependabot 1 paczka / tydzień | rytuał idle | **czeka** | nie auto-PR w nocy |
-| **SH-R16-14** | Fire skill >4 tyg. | rytuał P-Y | **czeka** | friday / IDLE |
-| **SH-R16-15** | PARK-RADAR Q3/Q4 2026 | rytuał kwartał | **czeka** | idle ≤30 min |
+| **SH-R16-14** | Fire skill >4 tyg. | rytuał P-Y | **DONE** 2026-09-16 | [pulses/SKILLS-PULSE-2026-W38.md](pulses/SKILLS-PULSE-2026-W38.md) |
+| **SH-R16-15** | PARK-RADAR Q3/Q4 2026 | rytuał kwartał | **DONE** Q3 2026-09-16 | [pulses/PARK-RADAR-2026-Q3.md](pulses/PARK-RADAR-2026-Q3.md) |
 
 Po **SH-R16-8…11** (docs): `/noc` produkt = **527.0**, potem UXCL-L1/AI3. Rytuały **12–15** = gdy idle/P-Y (nie skip — wiersz w PLAN).
 
@@ -423,9 +423,9 @@ Nie ogłaszaj elite. Nie zdejmuj pinu 2026-09-08c.
 | Playbooki P-A…P-Y, RACI, cooling 14d, CEO budget, Diátaxis | `ops/fabryka-playbooki-sh.md` (SH-R16-9) |
 | Meta-KPI Closure ≤14d | PROC + SH-R16-11 |
 | FACTORY-PULSE liczby | **SH-R16-12** czeka idle |
-| Dependabot 1/tydzień | **SH-R16-13** czeka idle |
-| Fire skill >4 tyg. | **SH-R16-14** czeka P-Y |
-| PARK-RADAR kwartał | **SH-R16-15** czeka |
+| Dependabot 1/tydzień | **SH-R16-13** czeka idle (nie `/noc`) |
+| Fire skill >4 tyg. | **SH-R16-14** DONE 2026-09-16 |
+| PARK-RADAR kwartał | **SH-R16-15** DONE Q3 2026-09-16 |
 | UXCL-L1 / AI3 / Plat-HD / G0 / SBOM… | PLAN § Fala SH-R16 + §1.2–1.3 |
 
 ### 5.4 Nowe R16 (uzupełnienie luk)

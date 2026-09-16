@@ -1,6 +1,7 @@
 ﻿# Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
+| 2026-09-16 | SH-R16-14/15 | skills fire + PARK-RADAR Q3 | 2026-09-16 | DOCS | N/A | N/A | OK | OK | N/A | DOCS | N/A | N/A | DOCS |
 | 2026-09-16 | SH-R16-12 | FACTORY-PULSE W38 | 2026-09-16 | DOCS | N/A | N/A | OK | OK | N/A | DOCS | N/A | N/A | DOCS |
 | 2026-09-16 | 535.0 | O7/O8 EXPLAIN buy-desk JOIN | 2026-09-16 | PRZESZLO (gate success) | N/A | EXPLAIN | OK | OK | N/A | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-16 | 534.0 | O6 quote_recorded on accept | 2026-09-16 | PRZESZLO (CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |

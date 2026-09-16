@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** SH-R16-13 Dependabot 1/tyg · SH-R16-14 fire skill · SH-R16-15 PARK-RADAR · leftover O8 rfc822 · G0. Nie AI0.
+**Następny:** leftover O8 rfc822 · albo UXCL-L1 · G0. SH-R16-13 tylko poza nocą. Nie AI0.
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -795,9 +795,9 @@ Zdublowane listy Fal 2–11 (M-xx): [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md). 
 | **SH-R16-10** | Rejestr: uzupełnienie R16 gap + statusy spójne | docs | DONE 2026-09-16b | — |
 | **SH-R16-11** | Meta-KPI UXCL Closure ≤14 dni — wiersz w PROC + CLOSURE | docs | DONE 2026-09-16b | egzekucja = po UXCL-L1 |
 | **SH-R16-12** | FACTORY-PULSE pierwsze liczby (`gh`) | rytuał P-Y | DONE 2026-09-16 ([pulses/FACTORY-PULSE-2026-W38.md](ops/pulses/FACTORY-PULSE-2026-W38.md)) | `/noc` idle + P-Y |
-| **SH-R16-13** | Dependabot 1 paczka / tydzień WIP=1 | rytuał idle | czeka | nie auto-PR w nocy |
-| **SH-R16-14** | Fire/archiwum skill >4 tyg. | rytuał P-Y | czeka | friday / IDLE |
-| **SH-R16-15** | PARK-RADAR Q3/Q4 2026 | rytuał kwartał | czeka | idle ≤30 min |
+| **SH-R16-13** | Dependabot 1 paczka / tydzień WIP=1 | rytuał idle | czeka (zakaz auto-PR w `/noc`) | nie auto-PR w nocy |
+| **SH-R16-14** | Fire/archiwum skill >4 tyg. | rytuał P-Y | DONE 2026-09-16 ([pulses/SKILLS-PULSE-2026-W38.md](ops/pulses/SKILLS-PULSE-2026-W38.md)) — 0 do fire | friday / IDLE |
+| **SH-R16-15** | PARK-RADAR Q3/Q4 2026 | rytuał kwartał | DONE 2026-09-16 Q3 ([pulses/PARK-RADAR-2026-Q3.md](ops/pulses/PARK-RADAR-2026-Q3.md)) | idle ≤30 min |
 | **UXCL-L1** | Instrumentacja extract-accept | Plan→plaster | park→CURRENT | po privacy; D2 akceptuję |
 | **AI3-payload** | Payload / delta AI vs człowiek | Plan→plaster | park→CURRENT | SH-R16-5 |
 | **Plat-HD-flow** | Obieg ticket→owner | Plan→plaster | park | G0+G1 + D2 owner |
