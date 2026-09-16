@@ -4,8 +4,10 @@ from uuid import uuid4
 import pytest
 
 from app.domain.carrier_inquiry import (
+    carrier_inquiry_answered_status,
     carrier_inquiry_draft_status,
     carrier_inquiry_manual_source,
+    require_answerable_status,
     require_answered_quote,
     require_inquiry_status,
     require_member_batch,
@@ -18,6 +20,10 @@ from app.domain.errors import InvalidCarrierInquiry
 
 def test_carrier_inquiry_draft_is_draft() -> None:
     assert carrier_inquiry_draft_status() == "draft"
+
+
+def test_carrier_inquiry_answered_token() -> None:
+    assert carrier_inquiry_answered_status() == "answered"
 
 
 def test_carrier_inquiry_source_is_manual() -> None:
@@ -38,6 +44,19 @@ def test_inquiry_status_rejects_unknown() -> None:
     with pytest.raises(InvalidCarrierInquiry, match="allowlisty"):
         require_inquiry_status("flying")
     assert require_inquiry_status("queued") == "queued"
+
+
+def test_answerable_status_allows_sent_queued_draft() -> None:
+    assert require_answerable_status("sent") == "sent"
+    assert require_answerable_status("queued") == "queued"
+    assert require_answerable_status("draft") == "draft"
+
+
+def test_answerable_status_rejects_answered_and_declined() -> None:
+    with pytest.raises(InvalidCarrierInquiry, match="nie pozwala"):
+        require_answerable_status("answered")
+    with pytest.raises(InvalidCarrierInquiry, match="nie pozwala"):
+        require_answerable_status("declined")
 
 
 def test_answered_quote_rejected_on_draft() -> None:

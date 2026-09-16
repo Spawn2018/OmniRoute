@@ -241,7 +241,7 @@ class ExtractionService:
 
 def _quote_payload(source_ref: str, raw: object) -> dict[str, object]:
     stored = require_carrier_quote_payload(raw)
-    return {
+    payload: dict[str, object] = {
         "source_ref": source_ref,
         "unparsed_regions": [],
         "candidates": [],
@@ -255,6 +255,9 @@ def _quote_payload(source_ref: str, raw: object) -> dict[str, object]:
         "revision": 0,
         "history": [],
     }
+    if stored.carrier_inquiry_id is not None:
+        payload["carrier_inquiry_id"] = str(stored.carrier_inquiry_id)
+    return payload
 
 
 def _rfp_payload(source_ref: str, raw: object) -> dict[str, object]:

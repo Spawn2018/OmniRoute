@@ -76,14 +76,19 @@ function PendingAiBoard() {
     <div>
       {drafts.isError ? <CatalogError error={drafts.error} /> : null}
       <ul>
-        {rows.map((row) => (
-          <li key={row.id} className="text-xs">
-            {row.source_ref} {row.status} {row.draft_kind}{" "}
-            <Link className="underline" to="/extractions">
-              HITL
-            </Link>
-          </li>
-        ))}
+        {rows.map((row) => {
+          const inquiryRaw = row.payload?.carrier_inquiry_id
+          const inquiryId = typeof inquiryRaw === "string" ? inquiryRaw : null
+          return (
+            <li key={row.id} className="text-xs">
+              {row.source_ref} {row.status} {row.draft_kind}
+              {inquiryId !== null ? ` inquiry ${inquiryId}` : ""}{" "}
+              <Link className="underline" to="/extractions">
+                HITL
+              </Link>
+            </li>
+          )
+        })}
       </ul>
     </div>
   )

@@ -49,6 +49,7 @@ export function ExtractionQueuePage() {
   const [quoteDate, setQuoteDate] = useState("2026-09-08")
   const [quoteAmount, setQuoteAmount] = useState("")
   const [quoteCurrency, setQuoteCurrency] = useState("USD")
+  const [quoteInquiryId, setQuoteInquiryId] = useState("")
   const [rfpTenderId, setRfpTenderId] = useState("")
   const [rfpIntakeCode, setRfpIntakeCode] = useState("scope")
   const [extractPath, setExtractPath] = useState("text")
@@ -91,6 +92,9 @@ export function ExtractionQueuePage() {
                   quote_date: quoteDate.trim(),
                   amount: quoteAmount.trim(),
                   currency: quoteCurrency.trim(),
+                  ...(quoteInquiryId.trim() !== ""
+                    ? { carrier_inquiry_id: quoteInquiryId.trim() }
+                    : {}),
                 }
               : undefined,
           rfp:
@@ -282,6 +286,12 @@ export function ExtractionQueuePage() {
             <Input aria-label="Dzień oferty" placeholder="quote_date" value={quoteDate} onChange={(e) => setQuoteDate(e.target.value)} />
             <Input aria-label="Kwota oferty" placeholder="amount" value={quoteAmount} onChange={(e) => setQuoteAmount(e.target.value)} />
             <Input aria-label="Waluta oferty" placeholder="currency" value={quoteCurrency} onChange={(e) => setQuoteCurrency(e.target.value)} />
+            <Input
+              aria-label="Zapytanie oferty"
+              placeholder="carrier_inquiry_id (opcjonalnie)"
+              value={quoteInquiryId}
+              onChange={(e) => setQuoteInquiryId(e.target.value)}
+            />
           </div>
         ) : null}
         {draftKind === "tender_rfp" ? (

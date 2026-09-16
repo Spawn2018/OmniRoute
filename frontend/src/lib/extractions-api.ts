@@ -33,6 +33,7 @@ export type ExtractionPayload = {
   revision?: number
   extract_path?: string
   history?: ExtractionHistoryEntry[]
+  carrier_inquiry_id?: string
 }
 
 export type ExtractionDraft = {
@@ -60,6 +61,7 @@ export function extractionCreateBody(args: {
     amount: string
     currency: string
     transit_days?: number
+    carrier_inquiry_id?: string
   }
   rfp?: {
     tender_id: string
@@ -173,6 +175,8 @@ function asPayload(raw: { [key: string]: unknown }): ExtractionPayload {
     revision: typeof raw.revision === "number" ? raw.revision : 0,
     extract_path: typeof raw.extract_path === "string" ? raw.extract_path : "text",
     history,
+    carrier_inquiry_id:
+      typeof raw.carrier_inquiry_id === "string" ? raw.carrier_inquiry_id : undefined,
   }
 }
 

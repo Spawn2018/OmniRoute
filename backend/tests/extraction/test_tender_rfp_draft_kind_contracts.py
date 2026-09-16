@@ -20,7 +20,12 @@ def test_accept_api_writes_intake_extraction_service_does_not() -> None:
     accept = _ACCEPT.read_text(encoding="utf-8")
     service = _SERVICE.read_text(encoding="utf-8")
     assert "TenderRfpIntakeService" in accept
+    assert "CarrierInquiryService" in accept
+    assert "mark_answered" in accept
     assert "TenderRfpIntakeService" not in service
+    assert "CarrierInquiryService" not in service
     assert "app.services.tenders" not in service
     assert "app.services.tender_rfp_intakes" not in service
+    assert "app.services.carrier_inquiries" not in service
+    assert "app.services.channel_quotes" not in service
     assert "httpx" not in accept

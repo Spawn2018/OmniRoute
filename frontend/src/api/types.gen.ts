@@ -1504,6 +1504,10 @@ export type CarrierQuoteExtract = {
      * Transit Days
      */
     transit_days?: number | null;
+    /**
+     * Carrier Inquiry Id
+     */
+    carrier_inquiry_id?: string | null;
 };
 
 /**
@@ -1588,6 +1592,50 @@ export type CashFlowResponse = {
      * Bank Payment Id
      */
     bank_payment_id: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CfoNarrativeMarkCreate
+ */
+export type CfoNarrativeMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Narrative Kind
+     */
+    narrative_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CfoNarrativeMarkResponse
+ */
+export type CfoNarrativeMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Narrative Kind
+     */
+    narrative_kind: string;
     /**
      * Source Ref
      */
@@ -6371,6 +6419,50 @@ export type HttpValidationError = {
 };
 
 /**
+ * HandoverSbarMarkCreate
+ */
+export type HandoverSbarMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Sbar Kind
+     */
+    sbar_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * HandoverSbarMarkResponse
+ */
+export type HandoverSbarMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Sbar Kind
+     */
+    sbar_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * HaulierRoleMarkCreate
  */
 export type HaulierRoleMarkCreate = {
@@ -7378,6 +7470,50 @@ export type JobMetricMarkResponse = {
      * Metric Kind
      */
     metric_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * KpiDefinitionMarkCreate
+ */
+export type KpiDefinitionMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Kpi Kind
+     */
+    kpi_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * KpiDefinitionMarkResponse
+ */
+export type KpiDefinitionMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Kpi Kind
+     */
+    kpi_kind: string;
     /**
      * Source Ref
      */
@@ -8457,6 +8593,74 @@ export type MakeOrBuyMarkResponse = {
 };
 
 /**
+ * MarginFloorCreate
+ */
+export type MarginFloorCreate = {
+    /**
+     * Floor Code
+     */
+    floor_code: string;
+    /**
+     * Origin Unlocode
+     */
+    origin_unlocode: string;
+    /**
+     * Destination Unlocode
+     */
+    destination_unlocode: string;
+    /**
+     * Floor Amount
+     */
+    floor_amount: string;
+    /**
+     * Floor Currency
+     */
+    floor_currency: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * MarginFloorResponse
+ */
+export type MarginFloorResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Floor Code
+     */
+    floor_code: string;
+    /**
+     * Origin Unlocode
+     */
+    origin_unlocode: string;
+    /**
+     * Destination Unlocode
+     */
+    destination_unlocode: string;
+    /**
+     * Floor Amount
+     */
+    floor_amount: string;
+    /**
+     * Floor Currency
+     */
+    floor_currency: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * MemoryEdgeCreate
  */
 export type MemoryEdgeCreate = {
@@ -8530,6 +8734,50 @@ export type MobileClientMarkResponse = {
      * Client Kind
      */
     client_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ModelFeatureMarkCreate
+ */
+export type ModelFeatureMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Feature Kind
+     */
+    feature_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ModelFeatureMarkResponse
+ */
+export type ModelFeatureMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Feature Kind
+     */
+    feature_kind: string;
     /**
      * Source Ref
      */
@@ -12957,6 +13205,50 @@ export type SessionTokenResponse = {
 };
 
 /**
+ * ShipmentCloneMarkCreate
+ */
+export type ShipmentCloneMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Clone Kind
+     */
+    clone_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ShipmentCloneMarkResponse
+ */
+export type ShipmentCloneMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Clone Kind
+     */
+    clone_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * ShipmentCreate
  */
 export type ShipmentCreate = {
@@ -15956,6 +16248,50 @@ export type TrackingEventResponse = {
      * Occurred At
      */
     occurred_at: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TripBillMarkCreate
+ */
+export type TripBillMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Bill Kind
+     */
+    bill_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TripBillMarkResponse
+ */
+export type TripBillMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Bill Kind
+     */
+    bill_kind: string;
     /**
      * Source Ref
      */
@@ -26392,6 +26728,307 @@ export type CreateIngestGateMarkApiV1IngestGateMarksPostResponses = {
 };
 
 export type CreateIngestGateMarkApiV1IngestGateMarksPostResponse = CreateIngestGateMarkApiV1IngestGateMarksPostResponses[keyof CreateIngestGateMarkApiV1IngestGateMarksPostResponses];
+
+export type ListModelFeatureMarksApiV1ModelFeatureMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/model-feature-marks';
+};
+
+export type ListModelFeatureMarksApiV1ModelFeatureMarksGetResponses = {
+    /**
+     * Response List Model Feature Marks Api V1 Model Feature Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<ModelFeatureMarkResponse>;
+};
+
+export type ListModelFeatureMarksApiV1ModelFeatureMarksGetResponse = ListModelFeatureMarksApiV1ModelFeatureMarksGetResponses[keyof ListModelFeatureMarksApiV1ModelFeatureMarksGetResponses];
+
+export type CreateModelFeatureMarkApiV1ModelFeatureMarksPostData = {
+    body: ModelFeatureMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/model-feature-marks';
+};
+
+export type CreateModelFeatureMarkApiV1ModelFeatureMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateModelFeatureMarkApiV1ModelFeatureMarksPostError = CreateModelFeatureMarkApiV1ModelFeatureMarksPostErrors[keyof CreateModelFeatureMarkApiV1ModelFeatureMarksPostErrors];
+
+export type CreateModelFeatureMarkApiV1ModelFeatureMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ModelFeatureMarkResponse;
+};
+
+export type CreateModelFeatureMarkApiV1ModelFeatureMarksPostResponse = CreateModelFeatureMarkApiV1ModelFeatureMarksPostResponses[keyof CreateModelFeatureMarkApiV1ModelFeatureMarksPostResponses];
+
+export type ListCfoNarrativeMarksApiV1CfoNarrativeMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/cfo-narrative-marks';
+};
+
+export type ListCfoNarrativeMarksApiV1CfoNarrativeMarksGetResponses = {
+    /**
+     * Response List Cfo Narrative Marks Api V1 Cfo Narrative Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<CfoNarrativeMarkResponse>;
+};
+
+export type ListCfoNarrativeMarksApiV1CfoNarrativeMarksGetResponse = ListCfoNarrativeMarksApiV1CfoNarrativeMarksGetResponses[keyof ListCfoNarrativeMarksApiV1CfoNarrativeMarksGetResponses];
+
+export type CreateCfoNarrativeMarkApiV1CfoNarrativeMarksPostData = {
+    body: CfoNarrativeMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/cfo-narrative-marks';
+};
+
+export type CreateCfoNarrativeMarkApiV1CfoNarrativeMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCfoNarrativeMarkApiV1CfoNarrativeMarksPostError = CreateCfoNarrativeMarkApiV1CfoNarrativeMarksPostErrors[keyof CreateCfoNarrativeMarkApiV1CfoNarrativeMarksPostErrors];
+
+export type CreateCfoNarrativeMarkApiV1CfoNarrativeMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CfoNarrativeMarkResponse;
+};
+
+export type CreateCfoNarrativeMarkApiV1CfoNarrativeMarksPostResponse = CreateCfoNarrativeMarkApiV1CfoNarrativeMarksPostResponses[keyof CreateCfoNarrativeMarkApiV1CfoNarrativeMarksPostResponses];
+
+export type ListKpiDefinitionMarksApiV1KpiDefinitionMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/kpi-definition-marks';
+};
+
+export type ListKpiDefinitionMarksApiV1KpiDefinitionMarksGetResponses = {
+    /**
+     * Response List Kpi Definition Marks Api V1 Kpi Definition Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<KpiDefinitionMarkResponse>;
+};
+
+export type ListKpiDefinitionMarksApiV1KpiDefinitionMarksGetResponse = ListKpiDefinitionMarksApiV1KpiDefinitionMarksGetResponses[keyof ListKpiDefinitionMarksApiV1KpiDefinitionMarksGetResponses];
+
+export type CreateKpiDefinitionMarkApiV1KpiDefinitionMarksPostData = {
+    body: KpiDefinitionMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/kpi-definition-marks';
+};
+
+export type CreateKpiDefinitionMarkApiV1KpiDefinitionMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateKpiDefinitionMarkApiV1KpiDefinitionMarksPostError = CreateKpiDefinitionMarkApiV1KpiDefinitionMarksPostErrors[keyof CreateKpiDefinitionMarkApiV1KpiDefinitionMarksPostErrors];
+
+export type CreateKpiDefinitionMarkApiV1KpiDefinitionMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: KpiDefinitionMarkResponse;
+};
+
+export type CreateKpiDefinitionMarkApiV1KpiDefinitionMarksPostResponse = CreateKpiDefinitionMarkApiV1KpiDefinitionMarksPostResponses[keyof CreateKpiDefinitionMarkApiV1KpiDefinitionMarksPostResponses];
+
+export type ListMarginFloorsApiV1MarginFloorsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/margin-floors';
+};
+
+export type ListMarginFloorsApiV1MarginFloorsGetResponses = {
+    /**
+     * Response List Margin Floors Api V1 Margin Floors Get
+     *
+     * Successful Response
+     */
+    200: Array<MarginFloorResponse>;
+};
+
+export type ListMarginFloorsApiV1MarginFloorsGetResponse = ListMarginFloorsApiV1MarginFloorsGetResponses[keyof ListMarginFloorsApiV1MarginFloorsGetResponses];
+
+export type CreateMarginFloorApiV1MarginFloorsPostData = {
+    body: MarginFloorCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/margin-floors';
+};
+
+export type CreateMarginFloorApiV1MarginFloorsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateMarginFloorApiV1MarginFloorsPostError = CreateMarginFloorApiV1MarginFloorsPostErrors[keyof CreateMarginFloorApiV1MarginFloorsPostErrors];
+
+export type CreateMarginFloorApiV1MarginFloorsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: MarginFloorResponse;
+};
+
+export type CreateMarginFloorApiV1MarginFloorsPostResponse = CreateMarginFloorApiV1MarginFloorsPostResponses[keyof CreateMarginFloorApiV1MarginFloorsPostResponses];
+
+export type ListShipmentCloneMarksApiV1ShipmentCloneMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/shipment-clone-marks';
+};
+
+export type ListShipmentCloneMarksApiV1ShipmentCloneMarksGetResponses = {
+    /**
+     * Response List Shipment Clone Marks Api V1 Shipment Clone Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<ShipmentCloneMarkResponse>;
+};
+
+export type ListShipmentCloneMarksApiV1ShipmentCloneMarksGetResponse = ListShipmentCloneMarksApiV1ShipmentCloneMarksGetResponses[keyof ListShipmentCloneMarksApiV1ShipmentCloneMarksGetResponses];
+
+export type CreateShipmentCloneMarkApiV1ShipmentCloneMarksPostData = {
+    body: ShipmentCloneMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/shipment-clone-marks';
+};
+
+export type CreateShipmentCloneMarkApiV1ShipmentCloneMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateShipmentCloneMarkApiV1ShipmentCloneMarksPostError = CreateShipmentCloneMarkApiV1ShipmentCloneMarksPostErrors[keyof CreateShipmentCloneMarkApiV1ShipmentCloneMarksPostErrors];
+
+export type CreateShipmentCloneMarkApiV1ShipmentCloneMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ShipmentCloneMarkResponse;
+};
+
+export type CreateShipmentCloneMarkApiV1ShipmentCloneMarksPostResponse = CreateShipmentCloneMarkApiV1ShipmentCloneMarksPostResponses[keyof CreateShipmentCloneMarkApiV1ShipmentCloneMarksPostResponses];
+
+export type ListHandoverSbarMarksApiV1HandoverSbarMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/handover-sbar-marks';
+};
+
+export type ListHandoverSbarMarksApiV1HandoverSbarMarksGetResponses = {
+    /**
+     * Response List Handover Sbar Marks Api V1 Handover Sbar Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<HandoverSbarMarkResponse>;
+};
+
+export type ListHandoverSbarMarksApiV1HandoverSbarMarksGetResponse = ListHandoverSbarMarksApiV1HandoverSbarMarksGetResponses[keyof ListHandoverSbarMarksApiV1HandoverSbarMarksGetResponses];
+
+export type CreateHandoverSbarMarkApiV1HandoverSbarMarksPostData = {
+    body: HandoverSbarMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/handover-sbar-marks';
+};
+
+export type CreateHandoverSbarMarkApiV1HandoverSbarMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateHandoverSbarMarkApiV1HandoverSbarMarksPostError = CreateHandoverSbarMarkApiV1HandoverSbarMarksPostErrors[keyof CreateHandoverSbarMarkApiV1HandoverSbarMarksPostErrors];
+
+export type CreateHandoverSbarMarkApiV1HandoverSbarMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: HandoverSbarMarkResponse;
+};
+
+export type CreateHandoverSbarMarkApiV1HandoverSbarMarksPostResponse = CreateHandoverSbarMarkApiV1HandoverSbarMarksPostResponses[keyof CreateHandoverSbarMarkApiV1HandoverSbarMarksPostResponses];
+
+export type ListTripBillMarksApiV1TripBillMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/trip-bill-marks';
+};
+
+export type ListTripBillMarksApiV1TripBillMarksGetResponses = {
+    /**
+     * Response List Trip Bill Marks Api V1 Trip Bill Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<TripBillMarkResponse>;
+};
+
+export type ListTripBillMarksApiV1TripBillMarksGetResponse = ListTripBillMarksApiV1TripBillMarksGetResponses[keyof ListTripBillMarksApiV1TripBillMarksGetResponses];
+
+export type CreateTripBillMarkApiV1TripBillMarksPostData = {
+    body: TripBillMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/trip-bill-marks';
+};
+
+export type CreateTripBillMarkApiV1TripBillMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTripBillMarkApiV1TripBillMarksPostError = CreateTripBillMarkApiV1TripBillMarksPostErrors[keyof CreateTripBillMarkApiV1TripBillMarksPostErrors];
+
+export type CreateTripBillMarkApiV1TripBillMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TripBillMarkResponse;
+};
+
+export type CreateTripBillMarkApiV1TripBillMarksPostResponse = CreateTripBillMarkApiV1TripBillMarksPostResponses[keyof CreateTripBillMarkApiV1TripBillMarksPostResponses];
 
 export type ListAsnsApiV1AsnsGetData = {
     body?: never;

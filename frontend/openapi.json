@@ -16557,6 +16557,524 @@
         ]
       }
     },
+    "/api/v1/model-feature-marks": {
+      "get": {
+        "tags": [
+          "model-feature-marks"
+        ],
+        "summary": "List Model Feature Marks",
+        "operationId": "list_model_feature_marks_api_v1_model_feature_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ModelFeatureMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Model Feature Marks Api V1 Model Feature Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "model-feature-marks"
+        ],
+        "summary": "Create Model Feature Mark",
+        "operationId": "create_model_feature_mark_api_v1_model_feature_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModelFeatureMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelFeatureMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/cfo-narrative-marks": {
+      "get": {
+        "tags": [
+          "cfo-narrative-marks"
+        ],
+        "summary": "List Cfo Narrative Marks",
+        "operationId": "list_cfo_narrative_marks_api_v1_cfo_narrative_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CfoNarrativeMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Cfo Narrative Marks Api V1 Cfo Narrative Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "cfo-narrative-marks"
+        ],
+        "summary": "Create Cfo Narrative Mark",
+        "operationId": "create_cfo_narrative_mark_api_v1_cfo_narrative_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CfoNarrativeMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CfoNarrativeMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/kpi-definition-marks": {
+      "get": {
+        "tags": [
+          "kpi-definition-marks"
+        ],
+        "summary": "List Kpi Definition Marks",
+        "operationId": "list_kpi_definition_marks_api_v1_kpi_definition_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/KpiDefinitionMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Kpi Definition Marks Api V1 Kpi Definition Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "kpi-definition-marks"
+        ],
+        "summary": "Create Kpi Definition Mark",
+        "operationId": "create_kpi_definition_mark_api_v1_kpi_definition_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/KpiDefinitionMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KpiDefinitionMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/margin-floors": {
+      "get": {
+        "tags": [
+          "margin-floors"
+        ],
+        "summary": "List Margin Floors",
+        "operationId": "list_margin_floors_api_v1_margin_floors_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/MarginFloorResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Margin Floors Api V1 Margin Floors Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "margin-floors"
+        ],
+        "summary": "Create Margin Floor",
+        "operationId": "create_margin_floor_api_v1_margin_floors_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MarginFloorCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MarginFloorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/shipment-clone-marks": {
+      "get": {
+        "tags": [
+          "shipment-clone-marks"
+        ],
+        "summary": "List Shipment Clone Marks",
+        "operationId": "list_shipment_clone_marks_api_v1_shipment_clone_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ShipmentCloneMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Shipment Clone Marks Api V1 Shipment Clone Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "shipment-clone-marks"
+        ],
+        "summary": "Create Shipment Clone Mark",
+        "operationId": "create_shipment_clone_mark_api_v1_shipment_clone_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipmentCloneMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShipmentCloneMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/handover-sbar-marks": {
+      "get": {
+        "tags": [
+          "handover-sbar-marks"
+        ],
+        "summary": "List Handover Sbar Marks",
+        "operationId": "list_handover_sbar_marks_api_v1_handover_sbar_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HandoverSbarMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Handover Sbar Marks Api V1 Handover Sbar Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "handover-sbar-marks"
+        ],
+        "summary": "Create Handover Sbar Mark",
+        "operationId": "create_handover_sbar_mark_api_v1_handover_sbar_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HandoverSbarMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HandoverSbarMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/trip-bill-marks": {
+      "get": {
+        "tags": [
+          "trip-bill-marks"
+        ],
+        "summary": "List Trip Bill Marks",
+        "operationId": "list_trip_bill_marks_api_v1_trip_bill_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TripBillMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Trip Bill Marks Api V1 Trip Bill Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "trip-bill-marks"
+        ],
+        "summary": "Create Trip Bill Mark",
+        "operationId": "create_trip_bill_mark_api_v1_trip_bill_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TripBillMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TripBillMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/asns": {
       "get": {
         "tags": [
@@ -28979,6 +29497,18 @@
               }
             ],
             "title": "Transit Days"
+          },
+          "carrier_inquiry_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Carrier Inquiry Id"
           }
         },
         "additionalProperties": false,
@@ -29116,6 +29646,65 @@
           "source_ref"
         ],
         "title": "CashFlowResponse"
+      },
+      "CfoNarrativeMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "narrative_kind": {
+            "type": "string",
+            "title": "Narrative Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "narrative_kind",
+          "source_ref"
+        ],
+        "title": "CfoNarrativeMarkCreate"
+      },
+      "CfoNarrativeMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "narrative_kind": {
+            "type": "string",
+            "title": "Narrative Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "narrative_kind",
+          "source_ref"
+        ],
+        "title": "CfoNarrativeMarkResponse"
       },
       "ChannelQuoteCreate": {
         "properties": {
@@ -36407,6 +36996,65 @@
         "type": "object",
         "title": "HTTPValidationError"
       },
+      "HandoverSbarMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "sbar_kind": {
+            "type": "string",
+            "title": "Sbar Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "sbar_kind",
+          "source_ref"
+        ],
+        "title": "HandoverSbarMarkCreate"
+      },
+      "HandoverSbarMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "sbar_kind": {
+            "type": "string",
+            "title": "Sbar Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "sbar_kind",
+          "source_ref"
+        ],
+        "title": "HandoverSbarMarkResponse"
+      },
       "HaulierRoleMarkCreate": {
         "properties": {
           "mark_code": {
@@ -37853,6 +38501,65 @@
           "source_ref"
         ],
         "title": "JobMetricMarkResponse"
+      },
+      "KpiDefinitionMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "kpi_kind": {
+            "type": "string",
+            "title": "Kpi Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "kpi_kind",
+          "source_ref"
+        ],
+        "title": "KpiDefinitionMarkCreate"
+      },
+      "KpiDefinitionMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "kpi_kind": {
+            "type": "string",
+            "title": "Kpi Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "kpi_kind",
+          "source_ref"
+        ],
+        "title": "KpiDefinitionMarkResponse"
       },
       "KreptdLicenceCreate": {
         "properties": {
@@ -39494,6 +40201,105 @@
         ],
         "title": "MakeOrBuyMarkResponse"
       },
+      "MarginFloorCreate": {
+        "properties": {
+          "floor_code": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "title": "Floor Code"
+          },
+          "origin_unlocode": {
+            "type": "string",
+            "maxLength": 5,
+            "minLength": 5,
+            "title": "Origin Unlocode"
+          },
+          "destination_unlocode": {
+            "type": "string",
+            "maxLength": 5,
+            "minLength": 5,
+            "title": "Destination Unlocode"
+          },
+          "floor_amount": {
+            "type": "string",
+            "title": "Floor Amount"
+          },
+          "floor_currency": {
+            "type": "string",
+            "maxLength": 3,
+            "minLength": 3,
+            "title": "Floor Currency"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "floor_code",
+          "origin_unlocode",
+          "destination_unlocode",
+          "floor_amount",
+          "floor_currency",
+          "source_ref"
+        ],
+        "title": "MarginFloorCreate"
+      },
+      "MarginFloorResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "floor_code": {
+            "type": "string",
+            "title": "Floor Code"
+          },
+          "origin_unlocode": {
+            "type": "string",
+            "title": "Origin Unlocode"
+          },
+          "destination_unlocode": {
+            "type": "string",
+            "title": "Destination Unlocode"
+          },
+          "floor_amount": {
+            "type": "string",
+            "title": "Floor Amount"
+          },
+          "floor_currency": {
+            "type": "string",
+            "title": "Floor Currency"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "floor_code",
+          "origin_unlocode",
+          "destination_unlocode",
+          "floor_amount",
+          "floor_currency",
+          "source_ref"
+        ],
+        "title": "MarginFloorResponse"
+      },
       "MemoryEdgeCreate": {
         "properties": {
           "edge_kind": {
@@ -39607,6 +40413,65 @@
           "source_ref"
         ],
         "title": "MobileClientMarkResponse"
+      },
+      "ModelFeatureMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "feature_kind": {
+            "type": "string",
+            "title": "Feature Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "feature_kind",
+          "source_ref"
+        ],
+        "title": "ModelFeatureMarkCreate"
+      },
+      "ModelFeatureMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "feature_kind": {
+            "type": "string",
+            "title": "Feature Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "feature_kind",
+          "source_ref"
+        ],
+        "title": "ModelFeatureMarkResponse"
       },
       "MoneyCostCreate": {
         "properties": {
@@ -46438,6 +47303,65 @@
         ],
         "title": "SessionTokenResponse"
       },
+      "ShipmentCloneMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "clone_kind": {
+            "type": "string",
+            "title": "Clone Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "clone_kind",
+          "source_ref"
+        ],
+        "title": "ShipmentCloneMarkCreate"
+      },
+      "ShipmentCloneMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "clone_kind": {
+            "type": "string",
+            "title": "Clone Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "clone_kind",
+          "source_ref"
+        ],
+        "title": "ShipmentCloneMarkResponse"
+      },
       "ShipmentCreate": {
         "properties": {
           "quotation_id": {
@@ -50946,6 +51870,65 @@
           "source_ref"
         ],
         "title": "TrackingEventResponse"
+      },
+      "TripBillMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "bill_kind": {
+            "type": "string",
+            "title": "Bill Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "bill_kind",
+          "source_ref"
+        ],
+        "title": "TripBillMarkCreate"
+      },
+      "TripBillMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "bill_kind": {
+            "type": "string",
+            "title": "Bill Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "bill_kind",
+          "source_ref"
+        ],
+        "title": "TripBillMarkResponse"
       },
       "TripCreate": {
         "properties": {

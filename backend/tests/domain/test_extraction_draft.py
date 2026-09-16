@@ -4,6 +4,7 @@ from uuid import uuid4
 import pytest
 
 from app.domain.errors import (
+    AcceptRequiresChannelQuote,
     BulkAcceptConfidenceBelow,
     ExtractionCandidatesNotEditable,
     InvalidExtractionDraft,
@@ -15,6 +16,7 @@ from app.domain.extraction_draft import (
     next_extraction_revision,
     require_bulk_accept_confidence,
     require_candidate_indexes,
+    require_carrier_quote_payload,
     require_extract_path,
     require_extraction_draft_kind,
     require_rate_candidates_editable,
@@ -211,3 +213,50 @@ def test_tender_rfp_payload_reads_board_and_code() -> None:
 def test_tender_rfp_payload_rejects_empty_code() -> None:
     with pytest.raises(InvalidTenderRfpIntake, match="przyjęcie"):
         require_tender_rfp_payload({"tender_id": str(uuid4()), "intake_code": "X"})
+
+
+def test_carrier_quote_payload_optional_inquiry_id() -> None:
+    party = uuid4()
+    origin = uuid4()
+    dest = uuid4()
+    inquiry = uuid4()
+    without = require_carrier_quote_payload(
+        {
+            "party_id": str(party),
+            "origin_port_id": str(origin),
+            "destination_port_id": str(dest),
+            "quote_date": "2026-09-16",
+            "amount": "10.0000",
+            "currency": "USD",
+        },
+    )
+    assert without.carrier_inquiry_id is None
+    with_id = require_carrier_quote_payload(
+        {
+            "party_id": str(party),
+            "origin_port_id": str(origin),
+            "destination_port_id": str(dest),
+            "quote_date": "2026-09-16",
+            "amount": "10.0000",
+            "currency": "USD",
+            "carrier_inquiry_id": str(inquiry),
+            "transit_days": 7,
+        },
+    )
+    assert with_id.carrier_inquiry_id == inquiry
+    assert with_id.transit_days == 7
+
+
+def test_carrier_quote_payload_rejects_bad_inquiry_uuid() -> None:
+    with pytest.raises(AcceptRequiresChannelQuote, match="UUID"):
+        require_carrier_quote_payload(
+            {
+                "party_id": str(uuid4()),
+                "origin_port_id": str(uuid4()),
+                "destination_port_id": str(uuid4()),
+                "quote_date": "2026-09-16",
+                "amount": "10.0000",
+                "currency": "USD",
+                "carrier_inquiry_id": "not-a-uuid",
+            },
+        )

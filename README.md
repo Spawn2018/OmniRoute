@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **530.0** N2 — HITL `trip_bill_mark`
-- **Etap:** Plan **531.0** — delta zaakceptowana; wolno `/plaster` (O6 leftover `answered`)
-- **Następny:** **531.0** O6 leftover — HITL accept `carrier_quote` → `channel_quote` + inquiry `answered`
+- **Ostatni plaster:** **531.0** O6 — HITL accept `carrier_quote` → `answered`
+- **Etap:** Plan **532.0** — `/plan-modul` (O7 kraj ISO na liście agentów)
+- **Następny:** **532.0** O7 — kraj ISO na liście agentów + filtr
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

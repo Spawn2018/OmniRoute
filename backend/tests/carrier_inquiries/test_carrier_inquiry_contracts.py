@@ -23,6 +23,7 @@ def test_migration_043_creates_carrier_inquiry_and_forces_rls() -> None:
 
 def test_inquiry_service_stays_inside_own_bc() -> None:
     source = _SERVICE.read_text(encoding="utf-8")
+    assert "mark_answered" in source
     assert "app.services.networks" not in source
     assert "app.services.quotations" not in source
     assert "app.services.entity_events" not in source

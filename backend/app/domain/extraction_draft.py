@@ -235,6 +235,7 @@ class CarrierQuoteDraft(NamedTuple):
     amount: str
     currency: str
     transit_days: int | None
+    carrier_inquiry_id: UUID | None
 
 
 def _as_uuid(raw: object, field: str) -> UUID:
@@ -246,6 +247,12 @@ def _as_uuid(raw: object, field: str) -> UUID:
         return UUID(raw.strip())
     except ValueError as exc:
         raise AcceptRequiresChannelQuote(f"{field} musi być UUID") from exc
+
+
+def _optional_uuid(raw: object, field: str) -> UUID | None:
+    if raw is None:
+        return None
+    return _as_uuid(raw, field)
 
 
 def _as_text(raw: object, field: str) -> str:
@@ -268,6 +275,7 @@ def require_carrier_quote_payload(raw: object) -> CarrierQuoteDraft:
         amount=_as_text(raw.get("amount"), "amount"),
         currency=_as_text(raw.get("currency"), "currency"),
         transit_days=days,
+        carrier_inquiry_id=_optional_uuid(raw.get("carrier_inquiry_id"), "carrier_inquiry_id"),
     )
 
 

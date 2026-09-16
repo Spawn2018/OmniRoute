@@ -7,8 +7,10 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.carrier_inquiry import (
     InquiryMemberRank,
+    carrier_inquiry_answered_status,
     carrier_inquiry_draft_status,
     carrier_inquiry_manual_source,
+    require_answerable_status,
     require_answered_quote,
     require_inquiry_port_id,
     require_inquiry_status,
@@ -42,6 +44,30 @@ class CarrierInquiryService:
         if found is None:
             raise ResourceNotFound(f"nieznane zapytanie: {inquiry_id}")
         found.no_reply_after = require_no_reply_after(no_reply_after)
+        return await self._inquiries.save(found)
+
+    async def mark_answered(
+        self,
+        *,
+        inquiry_id: UUID,
+        quoted_amount: object,
+        quoted_currency: object,
+        quoted_transit_days: object = None,
+    ) -> CarrierInquiry:
+        found = await self._inquiries.get(inquiry_id)
+        if found is None:
+            raise ResourceNotFound(f"nieznane zapytanie: {inquiry_id}")
+        require_answerable_status(found.status)
+        money, iso, days = require_answered_quote(
+            status=carrier_inquiry_answered_status(),
+            quoted_amount=quoted_amount,
+            quoted_currency=quoted_currency,
+            quoted_transit_days=quoted_transit_days,
+        )
+        found.status = carrier_inquiry_answered_status()
+        found.quoted_amount = money
+        found.quoted_currency = iso
+        found.quoted_transit_days = days
         return await self._inquiries.save(found)
 
     async def list_member_ranks(self) -> list[InquiryMemberRank]:

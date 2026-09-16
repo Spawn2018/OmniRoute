@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **530.0** N2 — HITL `trip_bill_mark`. **Etap:** Plan **531.0** — delta zaakceptowana; wolno `/plaster` (O6 leftover `answered`). **Następny:** **531.0** O6 leftover — HITL accept `carrier_quote` → `channel_quote` + inquiry `answered` Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **531.0** O6 — HITL accept `carrier_quote` → `answered`. **Etap:** Plan **532.0** — `/plan-modul` (O7 kraj ISO na liście agentów). **Następny:** **532.0** O7 — kraj ISO na liście agentów + filtr Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

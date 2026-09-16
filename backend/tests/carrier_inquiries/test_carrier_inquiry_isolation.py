@@ -7,6 +7,7 @@ from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError
 
 from app.core.database import bind_tenant
+from app.domain.errors import InvalidCarrierInquiry, ResourceNotFound
 from app.models.carrier_inquiry import CarrierInquiry
 from app.models.network import Network
 from app.models.network_member import NetworkMember
@@ -201,3 +202,86 @@ async def test_carrier_inquiry_overdue_is_sql_current_date(session, two_tenants)
 
     rows = await CarrierInquiryService(session).list_inquiries(silent="overdue")
     assert [row.id for row in rows] == [past.id]
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_mark_answered_updates_sent_inquiry(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    user_a = two_tenants["user_a"]
+    net_a = _network(organization_id=org_a.id, user_id=user_a.id, suffix="m")
+    member_a = _member(organization_id=org_a.id, user_id=user_a.id, network=net_a, suffix="m")
+    inquiry = _inquiry(organization_id=org_a.id, user_id=user_a.id, member=member_a)
+    inquiry.status = "sent"
+
+    await bind_tenant(session, org_a.id)
+    session.add(net_a)
+    await session.flush()
+    session.add(member_a)
+    await session.flush()
+    session.add(inquiry)
+    await session.flush()
+
+    updated = await CarrierInquiryService(session).mark_answered(
+        inquiry_id=inquiry.id,
+        quoted_amount="15.0000",
+        quoted_currency="USD",
+        quoted_transit_days=9,
+    )
+    assert updated.status == "answered"
+    assert updated.quoted_amount == Decimal("15.0000")
+    assert updated.quoted_currency == "USD"
+    assert updated.quoted_transit_days == 9
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_mark_answered_rejects_already_answered(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    user_a = two_tenants["user_a"]
+    net_a = _network(organization_id=org_a.id, user_id=user_a.id, suffix="n")
+    member_a = _member(organization_id=org_a.id, user_id=user_a.id, network=net_a, suffix="n")
+    inquiry = _answered(organization_id=org_a.id, user_id=user_a.id, member=member_a)
+
+    await bind_tenant(session, org_a.id)
+    session.add(net_a)
+    await session.flush()
+    session.add(member_a)
+    await session.flush()
+    session.add(inquiry)
+    await session.flush()
+
+    with pytest.raises(InvalidCarrierInquiry, match="nie pozwala"):
+        await CarrierInquiryService(session).mark_answered(
+            inquiry_id=inquiry.id,
+            quoted_amount="20.0000",
+            quoted_currency="EUR",
+        )
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_mark_answered_isolates_foreign_inquiry(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    org_b = two_tenants["org_b"]
+    user_b = two_tenants["user_b"]
+    net_b = _network(organization_id=org_b.id, user_id=user_b.id, suffix="f")
+    member_b = _member(organization_id=org_b.id, user_id=user_b.id, network=net_b, suffix="f")
+    inquiry_b = _inquiry(organization_id=org_b.id, user_id=user_b.id, member=member_b)
+    inquiry_b.status = "queued"
+
+    await bind_tenant(session, org_b.id)
+    session.add(net_b)
+    await session.flush()
+    session.add(member_b)
+    await session.flush()
+    session.add(inquiry_b)
+    await session.flush()
+
+    await bind_tenant(session, org_a.id)
+    with pytest.raises(ResourceNotFound, match="zapytanie"):
+        await CarrierInquiryService(session).mark_answered(
+            inquiry_id=inquiry_b.id,
+            quoted_amount="10.0000",
+            quoted_currency="USD",
+        )

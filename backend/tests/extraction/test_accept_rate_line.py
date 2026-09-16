@@ -9,9 +9,11 @@ from app.api.accept_extraction import AcceptExtractionToRates
 from app.domain.errors import (
     AcceptRequiresRateLine,
     BulkAcceptConfidenceBelow,
+    InvalidCarrierInquiry,
     InvalidExtractionDraft,
     InvalidMoney,
     InvalidSourceRef,
+    ResourceNotFound,
     UnknownChargeCode,
 )
 from app.models.extraction_draft import ExtractionDraft
@@ -29,6 +31,8 @@ _FORBIDDEN_IMPORTS = (
     "app.models.charge",
     "app.services.channel_quotes",
     "app.models.channel_quote",
+    "app.services.carrier_inquiries",
+    "app.models.carrier_inquiry",
     "app.services.tender_rfp_intakes",
     "app.services.tenders",
     "app.models.tender_rfp_intake",
@@ -473,6 +477,7 @@ async def test_accept_carrier_quote_writes_quote_not_rate() -> None:
     extraction.accept = AsyncMock(return_value=draft)
     rates = AsyncMock()
     quotes = AsyncMock()
+    inquiries = AsyncMock()
     created = AsyncMock()
     created.id = uuid4()
     quotes.create_quote = AsyncMock(return_value=created)
@@ -482,16 +487,160 @@ async def test_accept_carrier_quote_writes_quote_not_rate() -> None:
         extraction=extraction,
         rates=rates,
         quotes=quotes,
+        inquiries=inquiries,
     ).accept(draft_id=draft.id, user_id=uuid4())
 
     assert outcome.rate_lines == []
     assert outcome.channel_quotes == [created]
     rates.create_buy_rate.assert_not_called()
     quotes.create_quote.assert_awaited_once()
+    inquiries.mark_answered.assert_not_called()
     kwargs = quotes.create_quote.await_args.kwargs
     assert kwargs["party_id"] == party_id
     assert kwargs["source_ref"] == "fixture://quote/1"
     session.commit.assert_not_called()
+
+
+@pytest.mark.asyncio
+async def test_accept_carrier_quote_marks_inquiry_answered() -> None:
+    session = AsyncMock()
+    party_id = uuid4()
+    origin = uuid4()
+    dest = uuid4()
+    inquiry_id = uuid4()
+    draft = ExtractionDraft(
+        id=uuid4(),
+        organization_id=uuid4(),
+        status="pending",
+        draft_kind="carrier_quote",
+        source_ref="fixture://quote/answered",
+        input_text="oferta",
+        payload={
+            "party_id": str(party_id),
+            "origin_port_id": str(origin),
+            "destination_port_id": str(dest),
+            "quote_date": "2026-09-16",
+            "amount": "12.5000",
+            "currency": "EUR",
+            "transit_days": 14,
+            "carrier_inquiry_id": str(inquiry_id),
+            "source_ref": "fixture://quote/answered",
+            "unparsed_regions": [],
+            "candidates": [],
+        },
+    )
+    extraction = AsyncMock()
+    extraction.require_pending = AsyncMock(return_value=draft)
+    extraction.accept = AsyncMock(return_value=draft)
+    rates = AsyncMock()
+    quotes = AsyncMock()
+    inquiries = AsyncMock()
+    created = AsyncMock()
+    created.id = uuid4()
+    quotes.create_quote = AsyncMock(return_value=created)
+    inquiries.mark_answered = AsyncMock(return_value=AsyncMock())
+
+    outcome = await AcceptExtractionToRates(
+        session,
+        extraction=extraction,
+        rates=rates,
+        quotes=quotes,
+        inquiries=inquiries,
+    ).accept(draft_id=draft.id, user_id=uuid4())
+
+    assert outcome.channel_quotes == [created]
+    quotes.create_quote.assert_awaited_once()
+    inquiries.mark_answered.assert_awaited_once_with(
+        inquiry_id=inquiry_id,
+        quoted_amount="12.5000",
+        quoted_currency="EUR",
+        quoted_transit_days=14,
+    )
+
+
+@pytest.mark.asyncio
+async def test_accept_carrier_quote_bad_inquiry_status_rejects() -> None:
+    session = AsyncMock()
+    inquiry_id = uuid4()
+    draft = ExtractionDraft(
+        id=uuid4(),
+        organization_id=uuid4(),
+        status="pending",
+        draft_kind="carrier_quote",
+        source_ref="fixture://quote/bad",
+        input_text="oferta",
+        payload={
+            "party_id": str(uuid4()),
+            "origin_port_id": str(uuid4()),
+            "destination_port_id": str(uuid4()),
+            "quote_date": "2026-09-16",
+            "amount": "10.0000",
+            "currency": "USD",
+            "carrier_inquiry_id": str(inquiry_id),
+            "source_ref": "fixture://quote/bad",
+            "unparsed_regions": [],
+            "candidates": [],
+        },
+    )
+    extraction = AsyncMock()
+    extraction.require_pending = AsyncMock(return_value=draft)
+    extraction.accept = AsyncMock(return_value=draft)
+    quotes = AsyncMock()
+    quotes.create_quote = AsyncMock(return_value=AsyncMock(id=uuid4()))
+    inquiries = AsyncMock()
+    inquiries.mark_answered = AsyncMock(
+        side_effect=InvalidCarrierInquiry("status zapytania nie pozwala na answered"),
+    )
+
+    with pytest.raises(InvalidCarrierInquiry, match="nie pozwala"):
+        await AcceptExtractionToRates(
+            session,
+            extraction=extraction,
+            rates=AsyncMock(),
+            quotes=quotes,
+            inquiries=inquiries,
+        ).accept(draft_id=draft.id, user_id=uuid4())
+
+
+@pytest.mark.asyncio
+async def test_accept_carrier_quote_foreign_inquiry_not_found() -> None:
+    session = AsyncMock()
+    draft = ExtractionDraft(
+        id=uuid4(),
+        organization_id=uuid4(),
+        status="pending",
+        draft_kind="carrier_quote",
+        source_ref="fixture://quote/x",
+        input_text="oferta",
+        payload={
+            "party_id": str(uuid4()),
+            "origin_port_id": str(uuid4()),
+            "destination_port_id": str(uuid4()),
+            "quote_date": "2026-09-16",
+            "amount": "10.0000",
+            "currency": "USD",
+            "carrier_inquiry_id": str(uuid4()),
+            "source_ref": "fixture://quote/x",
+            "unparsed_regions": [],
+            "candidates": [],
+        },
+    )
+    extraction = AsyncMock()
+    extraction.require_pending = AsyncMock(return_value=draft)
+    extraction.accept = AsyncMock(return_value=draft)
+    quotes = AsyncMock()
+    quotes.create_quote = AsyncMock(return_value=AsyncMock(id=uuid4()))
+    inquiries = AsyncMock()
+    inquiries.mark_answered = AsyncMock(side_effect=ResourceNotFound("nieznane zapytanie"))
+
+    with pytest.raises(ResourceNotFound, match="zapytanie"):
+        await AcceptExtractionToRates(
+            session,
+            extraction=extraction,
+            rates=AsyncMock(),
+            quotes=quotes,
+            inquiries=inquiries,
+        ).accept(draft_id=draft.id, user_id=uuid4())
 
 
 @pytest.mark.asyncio

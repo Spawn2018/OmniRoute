@@ -22,6 +22,7 @@ from app.domain.rate_line import require_source_ref
 from app.models.channel_quote import ChannelQuote
 from app.models.extraction_draft import ExtractionDraft
 from app.models.rate_line import RateLine
+from app.services.carrier_inquiries.carrier_inquiry_service import CarrierInquiryService
 from app.services.channel_quotes.channel_quote_service import ChannelQuoteService
 from app.services.extraction.extraction_service import ExtractionService
 from app.services.organization_settings.organization_setting_service import (
@@ -50,6 +51,7 @@ class AcceptExtractionToRates:
         extraction: ExtractionService | None = None,
         rates: RateLineService | None = None,
         quotes: ChannelQuoteService | None = None,
+        inquiries: CarrierInquiryService | None = None,
         intakes: TenderRfpIntakeService | None = None,
         boards: TenderService | None = None,
         settings: OrganizationSettingService | None = None,
@@ -57,6 +59,7 @@ class AcceptExtractionToRates:
         self._extraction = extraction or ExtractionService(session)
         self._rates = rates or RateLineService(session)
         self._quotes = quotes or ChannelQuoteService(session)
+        self._inquiries = inquiries or CarrierInquiryService(session)
         self._intakes = intakes or TenderRfpIntakeService(session)
         self._boards = boards or TenderService(session)
         self._settings = settings or OrganizationSettingService(session)
@@ -132,7 +135,7 @@ class AcceptExtractionToRates:
 
     async def _write_channel_quote(self, draft: ExtractionDraft, user_id: UUID) -> ChannelQuote:
         stored = require_carrier_quote_payload(draft.payload)
-        return await self._quotes.create_quote(
+        quote = await self._quotes.create_quote(
             organization_id=draft.organization_id,
             user_id=user_id,
             party_id=stored.party_id,
@@ -144,6 +147,14 @@ class AcceptExtractionToRates:
             transit_days=stored.transit_days,
             source_ref=draft.source_ref,
         )
+        if stored.carrier_inquiry_id is not None:
+            await self._inquiries.mark_answered(
+                inquiry_id=stored.carrier_inquiry_id,
+                quoted_amount=stored.amount,
+                quoted_currency=stored.currency,
+                quoted_transit_days=stored.transit_days,
+            )
+        return quote
 
     async def _write_intake(self, draft: ExtractionDraft, user_id: UUID) -> None:
         stored = require_tender_rfp_payload(draft.payload)

@@ -11,8 +11,10 @@ from app.domain.channel_quote import (
 from app.domain.errors import InvalidCarrierInquiry
 
 _DRAFT = "draft"
+_ANSWERED = "answered"
 _MANUAL = "tenant:manual"
 _STATUSES = frozenset({"draft", "queued", "sent", "answered", "declined"})
+_ANSWERABLE = frozenset({"draft", "queued", "sent"})
 
 
 def carrier_inquiry_draft_status() -> str:
@@ -86,6 +88,19 @@ def require_member_batch(raw: object) -> list[UUID]:
     return [require_network_member_id(item) for item in raw]
 
 
+def require_answerable_status(raw: object) -> str:
+    if type(raw) is not str:
+        raise InvalidCarrierInquiry("status zapytania musi być tekstem")
+    token = raw.strip()
+    if token not in _ANSWERABLE:
+        raise InvalidCarrierInquiry("status zapytania nie pozwala na answered")
+    return token
+
+
+def carrier_inquiry_answered_status() -> str:
+    return _ANSWERED
+
+
 def require_answered_quote(
     *,
     status: str,
@@ -93,7 +108,7 @@ def require_answered_quote(
     quoted_currency: object,
     quoted_transit_days: object,
 ) -> tuple[Decimal | None, str | None, int | None]:
-    if status != "answered":
+    if status != _ANSWERED:
         if quoted_amount is not None or quoted_currency is not None:
             raise InvalidCarrierInquiry("kwota odpowiedzi tylko przy answered")
         if quoted_transit_days is not None:

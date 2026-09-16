@@ -33,6 +33,7 @@ class CarrierQuoteExtract(BaseModel):
     amount: str
     currency: str
     transit_days: int | None = None
+    carrier_inquiry_id: UUID | None = None
 
 
 class TenderRfpExtract(BaseModel):
