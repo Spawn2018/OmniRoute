@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **528.0** N9 — F2 + klon ostatniego podobnego zlecenia (Plan → plaster; nie drugi SoR)
+**Następny:** **528.0** N9 — HITL `shipment_clone_mark` (intencja klonu; nie drugi SoR)
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -482,7 +482,7 @@ Karta: [karty-pol-fala-u.md](analysis/karty-pol-fala-u.md). **U6** + **M-72** = 
 | **U5** | `document_checklist_rule` (incoterm×side×mode) + `blocks_dispatch` | zamknięty (z U1, 144.0) | z U1 | ≠ C8 polisa podwykonawcy |
 | **U4** | `organization_calendar` + `is_working_day`; grace V5 = 3 dni **robocze** | zamknięty (`docs/deltas/archived/149.0-organization-calendar.md`) | po I4, przed T1 | nie `+3` kalendarzowe |
 | **U3** | `shipment_leg.kind=air` HAWB/MAWB + pule; lotnisko = `port` air | zamknięty ([154.0](deltas/archived/154.0-air.md); leftover U3b HAWB/MAWB [209.0](deltas/archived/209.0-air-hawb.md); leftover U3c pule) | po T, przed D | nie live IATA bez umowy |
-| **N9** | F2 + klon ostatniego podobnego zlecenia | Plan → plaster | z U1 | nie drugi SoR |
+| **N9** | F2 + klon ostatniego podobnego zlecenia | Plan → plaster; **528.0** delta HITL `shipment_clone_mark` (kopiowanie leftover) | z U1 | nie drugi SoR |
 
 ### Fala I — Incoterms, booking, odprawa (po U1; zlecenie już jest)
 

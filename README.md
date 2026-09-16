@@ -88,8 +88,8 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **527.0** N6 — HITL `margin_floor` Decimal
-- **Etap:** Plan **528.0** — wolno `/plan-modul` (nie `/plaster`)
-- **Następny:** **528.0** N9 — F2 + klon ostatniego podobnego zlecenia (Plan → plaster; nie drugi SoR)
+- **Etap:** Plan **528.0** zaakceptowana — wolno `/plaster`
+- **Następny:** **528.0** N9 — HITL `shipment_clone_mark` (intencja klonu; nie drugi SoR)
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **527.0** N6 — HITL `margin_floor` Decimal. **Etap:** Plan **528.0** — wolno `/plan-modul` (nie `/plaster`). **Następny:** **528.0** N9 — F2 + klon ostatniego podobnego zlecenia (Plan → plaster; nie drugi SoR) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **527.0** N6 — HITL `margin_floor` Decimal. **Etap:** Plan **528.0** zaakceptowana — wolno `/plaster`. **Następny:** **528.0** N9 — HITL `shipment_clone_mark` (intencja klonu; nie drugi SoR) Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
