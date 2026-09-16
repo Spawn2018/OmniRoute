@@ -3,7 +3,7 @@ from decimal import Decimal
 from uuid import uuid4
 
 import pytest
-from sqlalchemy import select
+from sqlalchemy import select, text
 from sqlalchemy.exc import IntegrityError
 
 from app.core.database import bind_tenant
@@ -285,3 +285,40 @@ async def test_mark_answered_isolates_foreign_inquiry(session, two_tenants) -> N
             quoted_amount="10.0000",
             quoted_currency="USD",
         )
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_carrier_inquiry_desk_uses_org_created_index(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    await bind_tenant(session, org_a.id)
+    named = await session.execute(
+        text(
+            "SELECT indexname FROM pg_indexes "
+            "WHERE tablename = 'carrier_inquiry' "
+            "AND indexname = 'ix_carrier_inquiry_org_created'"
+        ),
+    )
+    assert named.first() is not None
+    await session.execute(text("SET LOCAL enable_seqscan = off"))
+    plan = await session.execute(
+        text(
+            "EXPLAIN SELECT ci.id, nm.party_id, p.country_code "
+            "FROM carrier_inquiry ci "
+            "LEFT JOIN network_member nm "
+            "  ON nm.organization_id = ci.organization_id "
+            " AND nm.id = ci.network_member_id "
+            "LEFT JOIN party p "
+            "  ON p.organization_id = nm.organization_id "
+            " AND p.id = nm.party_id "
+            "WHERE ci.organization_id = :org_id "
+            "ORDER BY ci.created_at DESC, ci.id"
+        ),
+        {"org_id": org_a.id},
+    )
+    joined = " ".join(str(row[0]) for row in plan)
+    assert (
+        "ix_carrier_inquiry_org_created" in joined
+        or "Index Scan" in joined
+        or "Bitmap Index Scan" in joined
+    )

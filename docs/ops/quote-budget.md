@@ -17,4 +17,8 @@ Limit  (cost=8.18..8.20 rows=1 width=656)
               Index Cond: ((organization_id = (NULLIF(current_setting('app.current_org'::text, true), ''::text))::uuid) AND ((charge_code)::text = 'THC'::text))
 ```
 
-Indeks częściowy `ix_rate_line_current_charge_code` pochodzi z migracji `010_quotation_rls`, nie z modelu ORM.
+## Buy-desk JOIN (O7/O8 leftover · 535.0)
+
+Lista `carrier_inquiry` z OUTER JOIN `network_member` × `party` oraz filtr członków po `party.country_code`.  
+Indeksy: `ix_carrier_inquiry_org_created`, `ix_network_member_org_network`, `ix_party_organization_id`.  
+Werdykt przy pustej tabeli testowej: N/A budżet AGENTS (nie 50k wierszy). Dowód: testy integration EXPLAIN (`enable_seqscan=off`) — Index Scan / nazwa indeksu.

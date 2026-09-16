@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **535.0** leftover O7/O8 EXPLAIN JOIN buy-desk · potem SH-R16-12…15 · G0. Nie AI0.
+**Następny:** SH-R16-12 FACTORY-PULSE · SH-R16-13…15 · leftover O8 rfc822 · G0. Nie AI0.
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -467,8 +467,8 @@ Pogłębienie żywych M-07/M-08 (`source_ref`), M-10, M-12, M-13, M-19, M-20, M-
 | **O4** | Checkboxy + default N z M-03; N× `mail_draft`; ranking SQL | Plan → plaster | zamknięty (`docs/deltas/archived/138.0-inquiry-mail-draft-batch.md`) | Send = S18 po S11. Zakaz auto-send. Graph HTTP leftover |
 | **O5** | `party_lane_scorecard` + szablon podpowiedzi z SQL | Plan → plaster | **delta 139.0 zaakceptowana** | `sample_size=0` i tak ma tekst. Nie LLM. Nie scoring osoby |
 | **O6** | `extraction_draft.draft_kind=carrier_quote` → HITL → `channel_quote` + `answered` | Plan → plaster | zamknięty leftover HITL ([531.0](deltas/archived/531.0-carrier-quote-hitl.md); leftover `quote_recorded` przy accept [534.0](deltas/archived/534.0-quote-recorded-on-accept.md)) | ExtractionService nie zapisuje stawek |
-| **O7** | Kraj ISO na liście agentów (`party.country_code` już jest) + filtr | Plan → plaster | zamknięty ([532.0](deltas/archived/532.0-agent-country-filter.md); leftover EXPLAIN → [535.0](deltas/open/535.0-buy-desk-explain.md)) | Holandia na SHA→RTM. Nie druga kolumna kraju |
-| **O8** | Buy-desk: group-by edytowalny (party/kraj/wątek/status) + saved view | Plan → plaster | zamknięty ([533.0](deltas/archived/533.0-buy-desk-groupby.md); leftover rfc822; EXPLAIN → [535.0](deltas/open/535.0-buy-desk-explain.md)) | Nie nowy czat. Audyt [incoterms-booking-customs-ux.md](analysis/incoterms-booking-customs-ux.md) |
+| **O7** | Kraj ISO na liście agentów (`party.country_code` już jest) + filtr | Plan → plaster | zamknięty ([532.0](deltas/archived/532.0-agent-country-filter.md); EXPLAIN [535.0](deltas/archived/535.0-buy-desk-explain.md)) | Holandia na SHA→RTM. Nie druga kolumna kraju |
+| **O8** | Buy-desk: group-by edytowalny (party/kraj/wątek/status) + saved view | Plan → plaster | zamknięty ([533.0](deltas/archived/533.0-buy-desk-groupby.md); leftover rfc822; EXPLAIN [535.0](deltas/archived/535.0-buy-desk-explain.md)) | Nie nowy czat. Audyt [incoterms-booking-customs-ux.md](analysis/incoterms-booking-customs-ux.md) |
 | **N5** | Cisza agenta: SLA `no_reply_after` (U4 dni robocze) → notice | Plan → plaster | zamknięty (`docs/deltas/archived/143.0-inquiry-no-reply.md`) | nie auto-send ponaglenia |
 
 ### Fala U — klej oferty i UI (w osi, nie leftover)
@@ -892,13 +892,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

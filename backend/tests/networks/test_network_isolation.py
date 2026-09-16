@@ -1,7 +1,7 @@
 from uuid import uuid4
 
 import pytest
-from sqlalchemy import select
+from sqlalchemy import select, text
 from sqlalchemy.exc import IntegrityError
 
 from app.core.database import bind_tenant
@@ -180,3 +180,44 @@ async def test_network_member_rejects_foreign_party(session, two_tenants) -> Non
     )
     with pytest.raises(IntegrityError):
         await session.flush()
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
+async def test_network_member_country_join_uses_indexes(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    await bind_tenant(session, org_a.id)
+    named = await session.execute(
+        text(
+            "SELECT indexname FROM pg_indexes "
+            "WHERE tablename IN ('network_member', 'party') "
+            "AND indexname IN ("
+            "  'ix_network_member_organization_id',"
+            "  'ix_network_member_org_network',"
+            "  'ix_party_organization_id'"
+            ")"
+        ),
+    )
+    assert named.first() is not None
+    await session.execute(text("SET LOCAL enable_seqscan = off"))
+    plan = await session.execute(
+        text(
+            "EXPLAIN SELECT nm.id "
+            "FROM network_member nm "
+            "JOIN party p "
+            "  ON p.organization_id = nm.organization_id "
+            " AND p.id = nm.party_id "
+            "WHERE nm.organization_id = :org_id "
+            "  AND nm.network_id = :network_id "
+            "  AND p.country_code = 'NL' "
+            "ORDER BY nm.member_code"
+        ),
+        {"org_id": org_a.id, "network_id": uuid4()},
+    )
+    joined = " ".join(str(row[0]) for row in plan)
+    assert (
+        "ix_party_organization_id" in joined
+        or "ix_network_member" in joined
+        or "Index Scan" in joined
+        or "Bitmap Index Scan" in joined
+    )

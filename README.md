@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **534.0** O6 leftover — `quote_recorded` przy accept HITL
-- **Etap:** Plan — delta **535.0** zaakceptowana (`/noc`); wolno `/plaster`
-- **Następny:** **535.0** leftover O7/O8 EXPLAIN JOIN buy-desk · potem SH-R16-12…15 · G0. Nie AI0.
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **535.0** leftover O7/O8 — EXPLAIN JOIN buy-desk
+- **Etap:** park — SH-R16-12…15 · leftover O8 rfc822 · G0 (nie AI0)
+- **Następny:** SH-R16-12 FACTORY-PULSE · SH-R16-13…15 · leftover O8 rfc822 · G0. Nie AI0.
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 
