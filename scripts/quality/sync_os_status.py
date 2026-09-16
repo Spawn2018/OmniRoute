@@ -7,6 +7,7 @@ nie kłamał „następny = Charge 0.25” przy plasterze 3.0.
 from __future__ import annotations
 
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -64,16 +65,20 @@ def parse_current(text: str) -> OsStatus:
 
 
 def package_dirs(root: Path) -> list[str]:
+    # HEAD, nie dysk: lokalny WIP BC nie rozwala CI meta-gate.
     if not root.is_dir():
         return []
-    names = [
-        path.name
-        for path in root.iterdir()
-        if path.is_dir()
-        and not path.name.startswith(".")
-        and path.name != "__pycache__"
-    ]
-    return sorted(names)
+    rel = root.relative_to(ROOT).as_posix()
+    listed = subprocess.run(
+        ["git", "ls-tree", "-d", "--name-only", f"HEAD:{rel}"],
+        cwd=ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    if listed.returncode != 0:
+        return []
+    return sorted(Path(line).name for line in listed.stdout.splitlines() if line)
 
 
 def _mid(start: str, end: str, inner: str) -> str:
