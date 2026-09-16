@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **UXCL-L1** instrumentacja extract-accept (Plan→plaster) · potem AI3-payload / Plat-HD / G0 park. Nie AI0. Nie SH-R16-13 w `/noc`.
+**Następny:** **537.0** UXCL-L1 L0 privacy + allowlista extract-accept · potem AI3-payload / Plat-HD / G0 park. Nie AI0. Nie SH-R16-13 w `/noc`.
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -798,7 +798,7 @@ Zdublowane listy Fal 2–11 (M-xx): [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md). 
 | **SH-R16-13** | Dependabot 1 paczka / tydzień WIP=1 | rytuał idle | czeka (zakaz auto-PR w `/noc`) | nie auto-PR w nocy |
 | **SH-R16-14** | Fire/archiwum skill >4 tyg. | rytuał P-Y | DONE 2026-09-16 ([pulses/SKILLS-PULSE-2026-W38.md](ops/pulses/SKILLS-PULSE-2026-W38.md)) — 0 do fire | friday / IDLE |
 | **SH-R16-15** | PARK-RADAR Q3/Q4 2026 | rytuał kwartał | DONE 2026-09-16 Q3 ([pulses/PARK-RADAR-2026-Q3.md](ops/pulses/PARK-RADAR-2026-Q3.md)) | idle ≤30 min |
-| **UXCL-L1** | Instrumentacja extract-accept | Plan→plaster | NOW (CURRENT) | po privacy; D2 akceptuję |
+| **UXCL-L1** | Instrumentacja extract-accept | Plan→plaster | delta [537.0](deltas/open/537.0-uxcl-l1-extract-accept.md) (`/noc`) | po privacy; D2 akceptuję; eventy już na `/extractions` |
 | **AI3-payload** | Payload / delta AI vs człowiek | Plan→plaster | park→CURRENT | SH-R16-5 |
 | **Plat-HD-flow** | Obieg ticket→owner | Plan→plaster | park | G0+G1 + D2 owner |
 | **G0-SH** | Host/IdP/CF | — | park | PREMORT→PRR→LAUNCH |

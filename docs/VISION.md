@@ -122,6 +122,7 @@ zostają w badaniach `04`).
 | 2026-09-16 | **532.0** O7 w kodzie (`CONFIRMED`, git po push). API JOIN `party.country_code` + UI param. Leftover EXPLAIN. Następny = **O8** buy-desk (`REQUIREMENT`). |
 | 2026-09-16 | **533.0** O8 buy-desk group-by + `table_view` w kodzie (`CONFIRMED`, git po push). Wątek = lane POL/POD. Nowy czat / rfc822 `REJECTED` na tym wierszu. Następny = park leftover O6 `quote_recorded` · SH-R16-12…15 (`REQUIREMENT`). |
 | 2026-09-16 | **536.0** O8 leftover rfc822 na `inbound_message` w kodzie (`CONFIRMED`, git po push). Message-ID / In-Reply-To HITL. Live Graph fill / group-by buy-desk po rfc822 `REJECTED` na tym wierszu. Następny = **UXCL-L1** (`REQUIREMENT`). |
+| 2026-09-16 | Plan **537.0** UXCL-L1: L0 privacy + allowlista istniejących `extraction_draft_*` (`REQUIREMENT`). Job#2 charge / replay / A/B `REJECTED`. |
 | 2026-09-13 | AI3.4 plan (**451.0**): parser `xlsx_sheet` stdlib. `openpyxl` `REJECTED`. `.xls` leftover. |
 | 2026-09-13 | **451.0** `xlsx_sheet` w kodzie (`CONFIRMED`, git). Następny = **AI4.0** FK `plan_snapshot` (`REQUIREMENT`). `.xls` leftover. |
 | 2026-09-13 | AI4.0 plan (**452.0**): FK złożone RESTRICT. CASCADE `REJECTED`. What-if `REJECTED` na tym wierszu. |
