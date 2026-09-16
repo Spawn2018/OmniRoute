@@ -120,6 +120,7 @@ zostają w badaniach `04`).
 | 2026-09-16 | **531.0** O6 leftover w kodzie (`CONFIRMED`, git po push). Accept → `channel_quote` + opcjonalnie inquiry `answered`. Leftover `quote_recorded` przy accept. Następny = **O7** kraj ISO (`REQUIREMENT`). |
 | 2026-09-16 | Plan **532.0** O7: filtr `country_code` na `GET …/networks/{id}/members` JOIN `party` (`REQUIREMENT`). UI 141.0 już filtruje w pamięci (`CONFIRMED`). Druga kolumna kraju / scrape / live HTTP `REJECTED`. |
 | 2026-09-16 | **532.0** O7 w kodzie (`CONFIRMED`, git po push). API JOIN `party.country_code` + UI param. Leftover EXPLAIN. Następny = **O8** buy-desk (`REQUIREMENT`). |
+| 2026-09-16 | **533.0** O8 buy-desk group-by + `table_view` w kodzie (`CONFIRMED`, git po push). Wątek = lane POL/POD. Nowy czat / rfc822 `REJECTED` na tym wierszu. Następny = park leftover O6 `quote_recorded` · SH-R16-12…15 (`REQUIREMENT`). |
 | 2026-09-13 | AI3.4 plan (**451.0**): parser `xlsx_sheet` stdlib. `openpyxl` `REJECTED`. `.xls` leftover. |
 | 2026-09-13 | **451.0** `xlsx_sheet` w kodzie (`CONFIRMED`, git). Następny = **AI4.0** FK `plan_snapshot` (`REQUIREMENT`). `.xls` leftover. |
 | 2026-09-13 | AI4.0 plan (**452.0**): FK złożone RESTRICT. CASCADE `REJECTED`. What-if `REJECTED` na tym wierszu. |

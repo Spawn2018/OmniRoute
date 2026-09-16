@@ -10,6 +10,7 @@ from app.domain.carrier_inquiry import (
     InquiryMemberRank,
     carrier_inquiry_draft_status,
     require_answered_quote,
+    require_buy_desk_group_by,
     require_inquiry_status,
     require_member_batch,
     require_no_reply_after,
@@ -18,6 +19,7 @@ from app.domain.carrier_inquiry import (
 from app.domain.errors import ResourceNotFound, UnknownNetworkMember
 from app.main import app
 from app.models.carrier_inquiry import CarrierInquiry
+from app.repositories.carrier_inquiries.carrier_inquiry_repository import InquiryDeskRow
 from tests.http_auth import bearer_auth_headers
 
 
@@ -47,15 +49,28 @@ class StubInquiryService:
         self._session = session
         self.rows: list[CarrierInquiry] = []
 
-    async def list_inquiries(self, silent: object = None) -> list[CarrierInquiry]:
+    async def list_inquiries(
+        self,
+        silent: object = None,
+        group_by: object = None,
+    ) -> list[CarrierInquiry]:
+        return [row.inquiry for row in await self.list_desk_rows(silent=silent, group_by=group_by)]
+
+    async def list_desk_rows(
+        self,
+        silent: object = None,
+        group_by: object = None,
+    ) -> list[InquiryDeskRow]:
+        require_buy_desk_group_by(group_by)
         if require_silent_filter(silent) == "overdue":
             today = date.today()
-            return [
+            chosen = [
                 row
                 for row in self.rows
                 if row.no_reply_after is not None and row.no_reply_after < today
             ]
-        return list(self.rows)
+            return [InquiryDeskRow(row, None, None) for row in chosen]
+        return [InquiryDeskRow(row, None, None) for row in self.rows]
 
     async def set_no_reply_after(
         self,
@@ -316,6 +331,11 @@ def test_http_overdue_filter_skips_blank_and_future(inquiry_client: object) -> N
     assert [row["id"] for row in listed.json()] == [overdue.json()["id"]]
     bad = client.get("/api/v1/carrier-inquiries?silent=thread", headers=headers)
     assert bad.status_code == 400
+    grouped = client.get("/api/v1/carrier-inquiries?group_by=thread", headers=headers)
+    assert grouped.status_code == 200
+    rejected = client.get("/api/v1/carrier-inquiries?group_by=chat", headers=headers)
+    assert rejected.status_code == 400
+    assert "allowlist" in rejected.json()["detail"]
 
 
 def test_http_patch_sets_no_reply_after(inquiry_client: object) -> None:

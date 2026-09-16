@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **532.0** O7 — filtr `country_code` na liście członków sieci. **Etap:** Plan **533.0** — `/plan-modul` (O8 buy-desk group-by + saved view). **Następny:** **533.0** O8 — Buy-desk: group-by edytowalny + saved view Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **533.0** O8 — buy-desk group-by + saved view. **Etap:** park — leftover O6 `quote_recorded` · SH-R16-12…15 · G0 (nie AI0). **Następny:** park — leftover O6 `quote_recorded` przy accept · leftover O7/O8 EXPLAIN · SH-R16-12…15 · G0. Nie AI0. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

@@ -4,11 +4,13 @@ from uuid import uuid4
 import pytest
 
 from app.domain.carrier_inquiry import (
+    buy_desk_group_key,
     carrier_inquiry_answered_status,
     carrier_inquiry_draft_status,
     carrier_inquiry_manual_source,
     require_answerable_status,
     require_answered_quote,
+    require_buy_desk_group_by,
     require_inquiry_status,
     require_member_batch,
     require_network_member_id,
@@ -89,3 +91,46 @@ def test_silent_filter_only_overdue() -> None:
     assert require_silent_filter("overdue") == "overdue"
     with pytest.raises(InvalidCarrierInquiry, match="overdue"):
         require_silent_filter("thread")
+
+
+def test_buy_desk_group_by_allowlist() -> None:
+    assert require_buy_desk_group_by(None) == "party"
+    assert require_buy_desk_group_by("thread") == "thread"
+    with pytest.raises(InvalidCarrierInquiry, match="allowlist"):
+        require_buy_desk_group_by("chat")
+    party = uuid4()
+    origin = uuid4()
+    dest = uuid4()
+    assert (
+        buy_desk_group_key(
+            group_by="party",
+            status="queued",
+            party_id=party,
+            country_code="NL",
+            origin_port_id=origin,
+            destination_port_id=dest,
+        )
+        == str(party)
+    )
+    assert (
+        buy_desk_group_key(
+            group_by="country",
+            status="queued",
+            party_id=party,
+            country_code="NL",
+            origin_port_id=origin,
+            destination_port_id=dest,
+        )
+        == "NL"
+    )
+    assert (
+        buy_desk_group_key(
+            group_by="thread",
+            status="queued",
+            party_id=party,
+            country_code="NL",
+            origin_port_id=origin,
+            destination_port_id=dest,
+        )
+        == f"{origin}|{dest}"
+    )

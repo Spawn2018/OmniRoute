@@ -14,6 +14,14 @@ import {
   patchInquirySilence,
   topRankedMemberIds,
 } from "@/lib/carrier-inquiries-api"
+import {
+  BUY_DESK_GROUP_BY,
+  DEFAULT_BUY_DESK_GROUP_BY,
+  buyDeskGroupByOrDefault,
+  groupCarrierInquiries,
+  type BuyDeskGroupBy,
+} from "@/lib/inquiry-groups"
+import { createTableView, listTableViews } from "@/lib/table-views-api"
 import { createOperatorNotice, noReplyNoticeCreateBody } from "@/lib/operator-notices-api"
 import { createMailDraftBatch, fetchMailDrafts, mailDraftBatchBody } from "@/lib/mail-drafts-api"
 import { fetchOrganizationSettings, inquiryDefaultN } from "@/lib/organization-settings-api"
@@ -96,6 +104,9 @@ export function NetworkCatalogPage() {
   const [askedSilence, setAskedSilence] = useState("")
   const [silenceInquiryId, setSilenceInquiryId] = useState("")
   const [silenceDate, setSilenceDate] = useState("")
+  const [groupBy, setGroupBy] = useState<BuyDeskGroupBy>(DEFAULT_BUY_DESK_GROUP_BY)
+  const [viewName, setViewName] = useState("")
+  const [activeViewId, setActiveViewId] = useState("")
   const sessionReady = Boolean(ctx.organizationId && ctx.userId)
 
   const query = useQuery({
@@ -133,8 +144,14 @@ export function NetworkCatalogPage() {
   const countryByPartyId = partyCountryMap(parties.data ?? [])
   const visibleMembers = members.data ?? []
   const inquiries = useQuery({
-    queryKey: ["carrier-inquiries", ctx.organizationId],
-    queryFn: () => fetchCarrierInquiries(),
+    queryKey: ["carrier-inquiries", ctx.organizationId, groupBy],
+    queryFn: () => fetchCarrierInquiries(undefined, groupBy),
+    enabled: sessionReady,
+    retry: false,
+  })
+  const deskViews = useQuery({
+    queryKey: ["table-views", "carrier_inquiry", ctx.organizationId],
+    queryFn: () => listTableViews("carrier_inquiry"),
     enabled: sessionReady,
     retry: false,
   })
@@ -163,6 +180,27 @@ export function NetworkCatalogPage() {
     retry: false,
   })
   const defaultN = inquiryDefaultN(settings.data ?? [])
+  const saveDeskView = useMutation({
+    mutationFn: () =>
+      createTableView({
+        table_key: "carrier_inquiry",
+        name: viewName.trim(),
+        config: {
+          column_order: [],
+          column_visibility: {},
+          filters: {},
+          sorting: [],
+          density: "compact",
+          group_by: groupBy,
+        },
+      }),
+    onSuccess: () => {
+      setViewName("")
+      void queryClient.invalidateQueries({
+        queryKey: ["table-views", "carrier_inquiry", ctx.organizationId],
+      })
+    },
+  })
   const askMember = useMutation({
     mutationFn: () => createCarrierInquiry(askedMemberId, askedSilence),
     onSuccess: () => {
@@ -399,6 +437,68 @@ export function NetworkCatalogPage() {
       </section>
       <section className="space-y-2" data-carrier-inquiry="catalog">
         <h2 className="text-sm font-medium">Zapytania do agentów</h2>
+        <label className="flex flex-col gap-1 text-xs">
+          group_by
+          <select
+            aria-label="Grupowanie zapytań"
+            className="h-8 rounded-md border border-border bg-card px-2 text-sm"
+            value={groupBy}
+            onChange={(event) => setGroupBy(buyDeskGroupByOrDefault(event.target.value))}
+          >
+            {BUY_DESK_GROUP_BY.map((token) => (
+              <option key={token} value={token}>
+                {token}
+              </option>
+            ))}
+          </select>
+        </label>
+        <form
+          className="flex flex-col gap-2 rounded-md border border-border bg-card p-3 lg:flex-row"
+          data-carrier-inquiry="saved-view"
+          onSubmit={(event) => {
+            event.preventDefault()
+            if (sessionReady && viewName.trim() !== "") saveDeskView.mutate()
+          }}
+        >
+          <select
+            aria-label="Zapisany widok zapytań"
+            className="h-8 rounded-md border border-border bg-card px-2 text-sm"
+            value={activeViewId}
+            onChange={(event) => {
+              const viewId = event.target.value
+              setActiveViewId(viewId)
+              const found = (deskViews.data ?? []).find((row) => row.id === viewId)
+              if (found?.config.group_by !== undefined) {
+                setGroupBy(buyDeskGroupByOrDefault(found.config.group_by))
+              }
+            }}
+          >
+            <option value="">Bieżący (niezapisany)</option>
+            {(deskViews.data ?? []).map((row) => (
+              <option key={row.id} value={row.id}>
+                {row.name}
+              </option>
+            ))}
+          </select>
+          <Input
+            aria-label="Nazwa widoku zapytań"
+            placeholder="np. po kraju"
+            value={viewName}
+            onChange={(event) => setViewName(event.target.value)}
+          />
+          <Button type="submit" disabled={!sessionReady || saveDeskView.isPending || viewName.trim() === ""}>
+            Zapisz widok
+          </Button>
+        </form>
+        {saveDeskView.isError ? <CatalogError error={saveDeskView.error} /> : null}
+        {deskViews.isError ? <CatalogError error={deskViews.error} /> : null}
+        <ul className="text-xs" data-carrier-inquiry="groups">
+          {groupCarrierInquiries(inquiries.data ?? [], groupBy).map((group) => (
+            <li key={group.key}>
+              {group.key} · {group.rows.length}
+            </li>
+          ))}
+        </ul>
         <form
           className="flex flex-col gap-2 rounded-md border border-border bg-card p-3 lg:flex-row"
           onSubmit={(event) => {

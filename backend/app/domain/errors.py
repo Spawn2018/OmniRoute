@@ -451,7 +451,7 @@ class InvalidOperatorNotice(DomainError):
 
 
 class InvalidTableView(DomainError):
-    """Widok tabeli: group_by spoza allowlisty — nie nowa kolumna, nie wątek."""
+    """Widok tabeli: group_by spoza allowlisty — nie nowa kolumna, nie czat."""
 
 
 class InvalidMailDraft(DomainError):

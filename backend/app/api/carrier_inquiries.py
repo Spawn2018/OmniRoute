@@ -76,9 +76,17 @@ class CarrierInquiryResponse(BaseModel):
     quoted_currency: str | None
     quoted_transit_days: int | None
     no_reply_after: date | None
+    party_id: UUID | None = None
+    country_code: str | None = None
 
     @classmethod
-    def from_row(cls, row: CarrierInquiry) -> "CarrierInquiryResponse":
+    def from_row(
+        cls,
+        row: CarrierInquiry,
+        *,
+        party_id: UUID | None = None,
+        country_code: str | None = None,
+    ) -> "CarrierInquiryResponse":
         money = row.quoted_amount
         return cls(
             id=row.id,
@@ -92,6 +100,8 @@ class CarrierInquiryResponse(BaseModel):
             quoted_currency=row.quoted_currency,
             quoted_transit_days=row.quoted_transit_days,
             no_reply_after=row.no_reply_after,
+            party_id=party_id,
+            country_code=country_code,
         )
 
 
@@ -121,11 +131,22 @@ async def _append_queued_event(
 @router.get("", response_model=list[CarrierInquiryResponse])
 async def list_carrier_inquiries(
     silent: str | None = Query(default=None),
+    group_by: str | None = Query(default=None),
     _authz: None = Depends(_AUTHZ),
     session: AsyncSession = Depends(require_tenant_session),
 ) -> list[CarrierInquiryResponse]:
-    rows = await CarrierInquiryService(session).list_inquiries(silent=silent)
-    return [CarrierInquiryResponse.from_row(row) for row in rows]
+    rows = await CarrierInquiryService(session).list_desk_rows(
+        silent=silent,
+        group_by=group_by,
+    )
+    return [
+        CarrierInquiryResponse.from_row(
+            row.inquiry,
+            party_id=row.party_id,
+            country_code=row.country_code,
+        )
+        for row in rows
+    ]
 
 
 @router.get("/ranking", response_model=list[InquiryMemberRankResponse])

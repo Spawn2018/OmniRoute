@@ -15,6 +15,8 @@ _ANSWERED = "answered"
 _MANUAL = "tenant:manual"
 _STATUSES = frozenset({"draft", "queued", "sent", "answered", "declined"})
 _ANSWERABLE = frozenset({"draft", "queued", "sent"})
+_GROUP_BY = frozenset({"party", "country", "status", "thread"})
+_GROUP_DEFAULT = "party"
 
 
 def carrier_inquiry_draft_status() -> str:
@@ -28,6 +30,48 @@ def carrier_inquiry_manual_source() -> str:
 class InquiryMemberRank(NamedTuple):
     network_member_id: UUID
     answered_count: int
+
+
+def default_buy_desk_group_by() -> str:
+    return _GROUP_DEFAULT
+
+
+def require_buy_desk_group_by(raw: object) -> str:
+    if raw is None:
+        return _GROUP_DEFAULT
+    if type(raw) is not str:
+        raise InvalidCarrierInquiry("group_by musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return _GROUP_DEFAULT
+    if token not in _GROUP_BY:
+        raise InvalidCarrierInquiry("group_by spoza allowlisty")
+    return token
+
+
+def buy_desk_group_key(
+    *,
+    group_by: str,
+    status: str,
+    party_id: UUID | None,
+    country_code: str | None,
+    origin_port_id: UUID | None,
+    destination_port_id: UUID | None,
+) -> str:
+    token = require_buy_desk_group_by(group_by)
+    if token == "status":
+        return status
+    if token == "country":
+        if country_code is None or country_code == "":
+            return "—"
+        return country_code
+    if token == "thread":
+        origin = "—" if origin_port_id is None else str(origin_port_id)
+        dest = "—" if destination_port_id is None else str(destination_port_id)
+        return f"{origin}|{dest}"
+    if party_id is None:
+        return "—"
+    return str(party_id)
 
 
 def require_network_member_id(raw: object) -> UUID:

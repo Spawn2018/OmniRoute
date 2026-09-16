@@ -1,3 +1,4 @@
+from typing import NamedTuple
 from uuid import UUID
 
 from sqlalchemy import func, select
@@ -5,6 +6,14 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.carrier_inquiry import InquiryMemberRank
 from app.models.carrier_inquiry import CarrierInquiry
+from app.models.network_member import NetworkMember
+from app.models.party import Party
+
+
+class InquiryDeskRow(NamedTuple):
+    inquiry: CarrierInquiry
+    party_id: UUID | None
+    country_code: str | None
 
 
 class CarrierInquiryRepository:
@@ -12,24 +21,41 @@ class CarrierInquiryRepository:
         self._session = session
 
     async def list_recent(self) -> list[CarrierInquiry]:
-        rows = await self._session.scalars(
-            select(CarrierInquiry).order_by(
-                CarrierInquiry.created_at.desc(),
-                CarrierInquiry.id,
-            ),
-        )
-        return list(rows.all())
+        return [row.inquiry for row in await self.list_desk(overdue=False)]
 
     async def list_overdue(self) -> list[CarrierInquiry]:
-        rows = await self._session.scalars(
-            select(CarrierInquiry)
-            .where(CarrierInquiry.no_reply_after < func.current_date())
-            .order_by(
+        return [row.inquiry for row in await self.list_desk(overdue=True)]
+
+    async def list_desk(self, *, overdue: bool) -> list[InquiryDeskRow]:
+        stmt = (
+            select(CarrierInquiry, NetworkMember.party_id, Party.country_code)
+            .outerjoin(
+                NetworkMember,
+                (NetworkMember.organization_id == CarrierInquiry.organization_id)
+                & (NetworkMember.id == CarrierInquiry.network_member_id),
+            )
+            .outerjoin(
+                Party,
+                (Party.organization_id == NetworkMember.organization_id)
+                & (Party.id == NetworkMember.party_id),
+            )
+        )
+        if overdue:
+            stmt = stmt.where(CarrierInquiry.no_reply_after < func.current_date())
+            stmt = stmt.order_by(
                 CarrierInquiry.no_reply_after.asc(),
                 CarrierInquiry.id,
-            ),
-        )
-        return list(rows.all())
+            )
+        else:
+            stmt = stmt.order_by(
+                CarrierInquiry.created_at.desc(),
+                CarrierInquiry.id,
+            )
+        rows = await self._session.execute(stmt)
+        return [
+            InquiryDeskRow(inquiry, party_id, country_code)
+            for inquiry, party_id, country_code in rows.all()
+        ]
 
     async def get(self, inquiry_id: UUID) -> CarrierInquiry | None:
         found = await self._session.scalar(

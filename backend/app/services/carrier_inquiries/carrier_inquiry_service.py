@@ -12,6 +12,7 @@ from app.domain.carrier_inquiry import (
     carrier_inquiry_manual_source,
     require_answerable_status,
     require_answered_quote,
+    require_buy_desk_group_by,
     require_inquiry_port_id,
     require_inquiry_status,
     require_member_batch,
@@ -23,6 +24,7 @@ from app.domain.errors import ResourceNotFound, UnknownNetworkMember, UnknownPor
 from app.models.carrier_inquiry import CarrierInquiry
 from app.repositories.carrier_inquiries.carrier_inquiry_repository import (
     CarrierInquiryRepository,
+    InquiryDeskRow,
 )
 
 
@@ -30,10 +32,21 @@ class CarrierInquiryService:
     def __init__(self, session: AsyncSession) -> None:
         self._inquiries = CarrierInquiryRepository(session)
 
-    async def list_inquiries(self, silent: object = None) -> list[CarrierInquiry]:
-        if require_silent_filter(silent) == "overdue":
-            return await self._inquiries.list_overdue()
-        return await self._inquiries.list_recent()
+    async def list_inquiries(
+        self,
+        silent: object = None,
+        group_by: object = None,
+    ) -> list[CarrierInquiry]:
+        return [row.inquiry for row in await self.list_desk_rows(silent=silent, group_by=group_by)]
+
+    async def list_desk_rows(
+        self,
+        silent: object = None,
+        group_by: object = None,
+    ) -> list[InquiryDeskRow]:
+        require_buy_desk_group_by(group_by)
+        overdue = require_silent_filter(silent) == "overdue"
+        return await self._inquiries.list_desk(overdue=overdue)
 
     async def set_no_reply_after(
         self,

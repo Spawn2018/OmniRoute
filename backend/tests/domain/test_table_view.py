@@ -16,15 +16,14 @@ def test_default_group_by_is_party() -> None:
     assert require_mail_group_by("status") == "status"
 
 
-def test_thread_group_by_is_rejected() -> None:
+def test_thread_group_by_is_allowed() -> None:
+    assert require_mail_group_by("thread") == "thread"
+    assert normalize_table_view_config({"density": "compact", "group_by": "thread"})[
+        "group_by"
+    ] == "thread"
+
+
+def test_normalize_config_rejects_chat() -> None:
     with pytest.raises(InvalidTableView, match="allowlist"):
-        require_mail_group_by("thread")
-
-
-def test_normalize_config_rejects_thread() -> None:
-    with pytest.raises(InvalidTableView, match="allowlist"):
-        normalize_table_view_config({"density": "compact", "group_by": "thread"})
-
-
-def test_normalize_config_keeps_other_keys_when_group_missing() -> None:
+        require_mail_group_by("chat")
     assert normalize_table_view_config({"density": "compact"}) == {"density": "compact"}

@@ -51,6 +51,8 @@ def test_inquiry_service_stays_inside_own_bc() -> None:
     ).read_text(encoding="utf-8")
     assert "func.count().filter" in ranking
     assert "answered" in ranking
+    assert "Party.country_code" in ranking
+    assert "app.services.parties" not in source
 
 
 def test_importlinter_lists_carrier_inquiries_as_independent() -> None:

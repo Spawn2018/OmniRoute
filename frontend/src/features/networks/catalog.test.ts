@@ -7,6 +7,7 @@ import {
   inquiryIdsForMembers,
   topRankedMemberIds,
 } from "@/lib/carrier-inquiries-api"
+import { groupCarrierInquiries } from "@/lib/inquiry-groups"
 import { mailDraftBatchBody } from "@/lib/mail-drafts-api"
 import { noReplyNoticeCreateBody } from "@/lib/operator-notices-api"
 import { inquiryDefaultN } from "@/lib/organization-settings-api"
@@ -72,6 +73,11 @@ describe("networks catalog surface for 9.0", () => {
     expect(page).toContain("fetchNetworkMembers")
     expect(page).toContain("countryFilter")
     expect(page).toContain("fetchParties")
+    expect(page).toContain("groupCarrierInquiries")
+    expect(page).toContain('data-carrier-inquiry="groups"')
+    expect(page).toContain('data-carrier-inquiry="saved-view"')
+    expect(page).toContain("createTableView")
+    expect(page).toContain("listTableViews")
     expect(page).not.toContain("cheerio")
     expect(page).not.toContain("httpx")
   })
@@ -121,6 +127,8 @@ describe("O4 ranking and draft batch helpers", () => {
             quoted_currency: "USD",
             quoted_transit_days: null,
             no_reply_after: null,
+            party_id: null,
+            country_code: null,
           },
           {
             id: "i2",
@@ -134,6 +142,8 @@ describe("O4 ranking and draft batch helpers", () => {
             quoted_currency: null,
             quoted_transit_days: null,
             no_reply_after: null,
+            party_id: null,
+            country_code: null,
           },
         ],
         ["a"],
@@ -182,6 +192,45 @@ describe("O7 country filter helpers", () => {
     expect(membersListQuery("")).toBe("")
     expect(membersListQuery(" nl ")).toBe("country_code=NL")
     expect(membersListQuery("12")).toBe("country_code=12")
+  })
+})
+
+describe("O8 buy-desk group_by", () => {
+  it("groups inquiries by country and thread lane", () => {
+    const rows = [
+      {
+        id: "i1",
+        organization_id: "o",
+        network_member_id: "m1",
+        source_ref: "tenant:manual",
+        status: "queued",
+        origin_port_id: "pol",
+        destination_port_id: "pod",
+        quoted_amount: null,
+        quoted_currency: null,
+        quoted_transit_days: null,
+        no_reply_after: null,
+        party_id: "p-nl",
+        country_code: "NL",
+      },
+      {
+        id: "i2",
+        organization_id: "o",
+        network_member_id: "m2",
+        source_ref: "tenant:manual",
+        status: "sent",
+        origin_port_id: "pol",
+        destination_port_id: "pod",
+        quoted_amount: null,
+        quoted_currency: null,
+        quoted_transit_days: null,
+        no_reply_after: null,
+        party_id: "p-pl",
+        country_code: "PL",
+      },
+    ]
+    expect(groupCarrierInquiries(rows, "country").map((row) => row.key)).toEqual(["NL", "PL"])
+    expect(groupCarrierInquiries(rows, "thread").map((row) => row.key)).toEqual(["pol|pod"])
   })
 })
 

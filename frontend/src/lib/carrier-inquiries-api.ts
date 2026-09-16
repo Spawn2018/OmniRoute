@@ -18,6 +18,8 @@ export type CarrierInquiry = {
   quoted_currency: string | null
   quoted_transit_days: number | null
   no_reply_after: string | null
+  party_id: string | null
+  country_code: string | null
 }
 
 export function carrierInquiryBatchBody(input: {
@@ -86,8 +88,19 @@ export async function fetchCarrierInquiryRanking(): Promise<InquiryMemberRank[]>
   return (await response.json()) as InquiryMemberRank[]
 }
 
-export async function fetchCarrierInquiries(silent?: "overdue"): Promise<CarrierInquiry[]> {
-  const suffix = silent === "overdue" ? "?silent=overdue" : ""
+export async function fetchCarrierInquiries(
+  silent?: "overdue",
+  groupBy?: string,
+): Promise<CarrierInquiry[]> {
+  const params = new URLSearchParams()
+  if (silent === "overdue") {
+    params.set("silent", "overdue")
+  }
+  const token = groupBy?.trim() ?? ""
+  if (token !== "") {
+    params.set("group_by", token)
+  }
+  const suffix = params.toString() === "" ? "" : `?${params.toString()}`
   const response = await fetch(`/api/v1/carrier-inquiries${suffix}`, {
     headers: requireAuthHeaders(),
   })

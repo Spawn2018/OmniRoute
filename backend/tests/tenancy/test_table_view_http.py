@@ -67,18 +67,18 @@ def view_client(monkeypatch: pytest.MonkeyPatch) -> object:
     set_authz_checker(None)
 
 
-def test_http_rejects_thread_group_by(view_client: object) -> None:
+def test_http_accepts_thread_group_by(view_client: object) -> None:
     response = view_client.post(
         "/api/v1/tenancy/table-views",
         headers=bearer_auth_headers(),
         json={
-            "table_key": "inbound_message",
+            "table_key": "carrier_inquiry",
             "name": "buy-desk",
             "config": {"group_by": "thread"},
         },
     )
-    assert response.status_code == 400
-    assert "allowlist" in response.json()["detail"]
+    assert response.status_code == 201
+    assert response.json()["config"]["group_by"] == "thread"
 
 
 def test_http_accepts_party_group_by(view_client: object) -> None:

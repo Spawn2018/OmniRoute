@@ -6,6 +6,7 @@ export type TableViewConfig = {
   filters: Record<string, string>
   sorting: Array<{ id: string; desc: string }>
   density: TableDensity
+  group_by?: string
 }
 
 export type TableViewRecord = {

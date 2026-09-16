@@ -137,7 +137,7 @@ kolumn. Nie 468.0.
 | zapytanie od klienta | customer_inquiry | 21.0 ślad wycen per party; nie tabela RFQ; nie IMAP |
 | zapytanie ofertowe | customer_rfq | 67.0 obiekt; 68.0 wycena; 70.0 `commodity_code_id`; nie kwota na RFQ |
 | wykrywanie akceptacji | offer_acceptance | 22.0 pending; 86.0 decyzja S11 na `quotation`; nie HITL accept; nie IMAP |
-| zapytanie do armatora | carrier_inquiry | 83.0 obiekt buy do `network_member`; Fala O: batch, statusy `queued`/`sent`/`answered`, lane; N5 data ciszy `no_reply_after`; 23.0 ślad `channel_quote`; nie RFQ; nie live HTTP |
+| zapytanie do armatora | carrier_inquiry | 83.0 obiekt buy do `network_member`; Fala O: batch, statusy `queued`/`sent`/`answered`, lane; N5 data ciszy `no_reply_after`; **533.0** O8 group_by party/kraj/wątek(lane)/status + `table_view`; 23.0 ślad `channel_quote`; nie RFQ; nie live HTTP; nie nowy czat |
 | porównanie odpowiedzi | response_comparison | 84.0 zapis `charge` (buy kanał, sell wycena); 24.0 zestawienie na POL/POD; nie odejmuj w JS |
 | integracja pocztowa | mail_integration | 25.0 tablica znanych adresów na `/mail`; 64.0 dopina `inbound_message`; nie IMAP |
 | wiadomość przychodząca | inbound_message | 64.0 tabela per tenant; 66.0 treść → extract HITL; 78.0/80.0 ingest `graph://` / `imap://` + `external_id`; 79.0 zdarzenie outbox; nie live skrzynka; nie send; nie blob |

@@ -22,6 +22,7 @@ function toRecord(view: TableViewResponse): TableViewRecord {
       filters: (cfg.filters as Record<string, string>) ?? {},
       sorting: (cfg.sorting as TableViewConfig["sorting"]) ?? [],
       density: resolveTableDensity(cfg.density, true),
+      group_by: typeof cfg.group_by === "string" ? cfg.group_by : undefined,
     },
   }
 }

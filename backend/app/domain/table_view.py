@@ -1,6 +1,6 @@
 from app.domain.errors import InvalidTableView
 
-_ALLOWED = frozenset({"party", "country", "status"})
+_ALLOWED = frozenset({"party", "country", "status", "thread"})
 _DEFAULT = "party"
 
 
