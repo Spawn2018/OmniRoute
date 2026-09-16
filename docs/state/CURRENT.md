@@ -8,7 +8,7 @@
 
 **Etap:** Plan — delta **527.0** zaakceptowana; wolno `/plaster`
 
-**Noc:** **stop** (operator `/noc stop` 2026-09-16T01:38+02). `NOC-LIVE` = stop. Nie wznawiaj `/noc` z tej karty.
+**Noc:** **stop** (operator `/noc stop` 2026-09-16T02:56+02). `NOC-LIVE` = stop. Nie wznawiaj `/noc` z tej karty.
 
 **Miejsce pracy:** produkt = to repo + GitHub. `D:\OMNIROUTE-badania` = surowiec. Promocja (plan/kanon/agent/kontrakt) **tylko** po stopie `/noc` **i** jawnym poleceniu.
 
