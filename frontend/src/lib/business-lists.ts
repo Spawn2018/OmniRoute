@@ -115,6 +115,10 @@ export const BUSINESS_LISTS = {
     route: "/margin-floors",
     tableKey: "margin_floor",
   },
+  shipmentCloneMark: {
+    route: "/shipment-clone-marks",
+    tableKey: "shipment_clone_mark",
+  },
   automationBiasMark: {
     route: "/automation-bias-marks",
     tableKey: "automation_bias_mark",

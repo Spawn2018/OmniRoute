@@ -1006,6 +1006,10 @@ class InvalidMarginFloor(DomainError):
     """N6: HITL podłoga marży Decimal + UN/LOCODE — nie 409 na charge."""
 
 
+class InvalidShipmentCloneMark(DomainError):
+    """N9: HITL intencja klonu zlecenia — nie drugi SoR / nie auto-copy."""
+
+
 class InvalidL3GateMark(DomainError):
     """AI8.2: HITL checklista bramy L3 — nie silnik write / nie mutacja autonomy_level."""
 

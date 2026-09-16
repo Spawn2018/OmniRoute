@@ -134,6 +134,7 @@ const NAV = [
   { to: "/cfo-narrative-marks", label: "Narracja CFO" },
   { to: "/kpi-definition-marks", label: "Definicja KPI" },
   { to: "/margin-floors", label: "Podłoga marży" },
+  { to: "/shipment-clone-marks", label: "Intencja klonu" },
   { to: "/automation-bias-marks", label: "Automation bias" },
   { to: "/l3-gate-marks", label: "Brama L3" },
   { to: "/style-cascade-marks", label: "Kaskada stylu" },

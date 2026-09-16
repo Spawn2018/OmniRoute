@@ -684,6 +684,11 @@ export const OPS_JOBS = [
     job: "katalog margin_floor HITL",
   },
   {
+    route: BUSINESS_LISTS.shipmentCloneMark.route,
+    label: "Intencja klonu",
+    job: "katalog shipment_clone_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.automationBiasMark.route,
     label: "Automation bias",
     job: "katalog automation_bias_mark HITL",
@@ -1833,6 +1838,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "525.0": "/cfo-narrative-marks",
   "526.0": "/kpi-definition-marks",
   "527.0": "/margin-floors",
+  "528.0": "/shipment-clone-marks",
   "461.0": "/shipper-tender-marks",
   "462.0": "/campaign-marks",
   "463.0": "/groupage-dispatcher-marks",

@@ -240,6 +240,7 @@ from app.api import (
     sap_connectors,
     schedule_exception_marks,
     session,
+    shipment_clone_marks,
     shipment_documents,
     shipment_legs,
     shipment_packages,
@@ -513,6 +514,7 @@ api_router.include_router(model_feature_marks.router)
 api_router.include_router(cfo_narrative_marks.router)
 api_router.include_router(kpi_definition_marks.router)
 api_router.include_router(margin_floors.router)
+api_router.include_router(shipment_clone_marks.router)
 api_router.include_router(asns.router)
 api_router.include_router(otif_marks.router)
 api_router.include_router(routing_guide_enforcements.router)

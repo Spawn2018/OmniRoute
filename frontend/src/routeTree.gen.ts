@@ -249,6 +249,7 @@ import { Route as SanctionsMarksRouteImport } from './routes/sanctions-marks'
 import { Route as SapConnectorsRouteImport } from './routes/sap-connectors'
 import { Route as ScheduleExceptionMarksRouteImport } from './routes/schedule-exception-marks'
 import { Route as SessionRouteImport } from './routes/session'
+import { Route as ShipmentCloneMarksRouteImport } from './routes/shipment-clone-marks'
 import { Route as ShipmentDocumentsRouteImport } from './routes/shipment-documents'
 import { Route as ShipmentPackagesRouteImport } from './routes/shipment-packages'
 import { Route as ShipmentsRouteImport } from './routes/shipments'
@@ -1519,6 +1520,11 @@ const SessionRoute = SessionRouteImport.update({
   path: '/session',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShipmentCloneMarksRoute = ShipmentCloneMarksRouteImport.update({
+  id: '/shipment-clone-marks',
+  path: '/shipment-clone-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShipmentDocumentsRoute = ShipmentDocumentsRouteImport.update({
   id: '/shipment-documents',
   path: '/shipment-documents',
@@ -2096,6 +2102,7 @@ export interface FileRoutesByFullPath {
   '/sap-connectors': typeof SapConnectorsRoute
   '/schedule-exception-marks': typeof ScheduleExceptionMarksRoute
   '/session': typeof SessionRoute
+  '/shipment-clone-marks': typeof ShipmentCloneMarksRoute
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
@@ -2405,6 +2412,7 @@ export interface FileRoutesByTo {
   '/sap-connectors': typeof SapConnectorsRoute
   '/schedule-exception-marks': typeof ScheduleExceptionMarksRoute
   '/session': typeof SessionRoute
+  '/shipment-clone-marks': typeof ShipmentCloneMarksRoute
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
@@ -2715,6 +2723,7 @@ export interface FileRoutesById {
   '/sap-connectors': typeof SapConnectorsRoute
   '/schedule-exception-marks': typeof ScheduleExceptionMarksRoute
   '/session': typeof SessionRoute
+  '/shipment-clone-marks': typeof ShipmentCloneMarksRoute
   '/shipment-documents': typeof ShipmentDocumentsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
@@ -3026,6 +3035,7 @@ export interface FileRouteTypes {
     | '/sap-connectors'
     | '/schedule-exception-marks'
     | '/session'
+    | '/shipment-clone-marks'
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
@@ -3335,6 +3345,7 @@ export interface FileRouteTypes {
     | '/sap-connectors'
     | '/schedule-exception-marks'
     | '/session'
+    | '/shipment-clone-marks'
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
@@ -3644,6 +3655,7 @@ export interface FileRouteTypes {
     | '/sap-connectors'
     | '/schedule-exception-marks'
     | '/session'
+    | '/shipment-clone-marks'
     | '/shipment-documents'
     | '/shipment-packages'
     | '/shipments'
@@ -3954,6 +3966,7 @@ export interface RootRouteChildren {
   SapConnectorsRoute: typeof SapConnectorsRoute
   ScheduleExceptionMarksRoute: typeof ScheduleExceptionMarksRoute
   SessionRoute: typeof SessionRoute
+  ShipmentCloneMarksRoute: typeof ShipmentCloneMarksRoute
   ShipmentDocumentsRoute: typeof ShipmentDocumentsRoute
   ShipmentPackagesRoute: typeof ShipmentPackagesRoute
   ShipmentsRoute: typeof ShipmentsRoute
@@ -5705,6 +5718,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SessionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/shipment-clone-marks': {
+      id: '/shipment-clone-marks'
+      path: '/shipment-clone-marks'
+      fullPath: '/shipment-clone-marks'
+      preLoaderRoute: typeof ShipmentCloneMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shipment-documents': {
       id: '/shipment-documents'
       path: '/shipment-documents'
@@ -6418,6 +6438,7 @@ const rootRouteChildren: RootRouteChildren = {
   SapConnectorsRoute: SapConnectorsRoute,
   ScheduleExceptionMarksRoute: ScheduleExceptionMarksRoute,
   SessionRoute: SessionRoute,
+  ShipmentCloneMarksRoute: ShipmentCloneMarksRoute,
   ShipmentDocumentsRoute: ShipmentDocumentsRoute,
   ShipmentPackagesRoute: ShipmentPackagesRoute,
   ShipmentsRoute: ShipmentsRoute,
